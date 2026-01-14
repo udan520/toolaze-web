@@ -1,0 +1,26 @@
+When I ask you to create a new landing page or SEO page for Toolaze, ALWAYS reference 'docs/SEO_MASTER_LAYOUT.md'. Use the exact HTML structure, Tailwind classes, and Style 1 (Soft Smart Tech) design system defined in that file. Do not deviate from the Blue/Purple gradient palette. Replace only the text content based on the user's specific tool requirements.
+
+**GLOBAL NAVIGATION BAR**: All pages MUST use the exact same navigation bar structure with sticky functionality. The navigation includes:
+- **Container**: `id="mainNav"` and `class="sticky-nav py-6 px-6 flex justify-between items-center max-w-6xl mx-auto w-full relative"`
+- **Logo** (left-aligned): Links to homepage with SVG logo (32x32px) and text "Toolaze" (NO period/dot after Toolaze)
+- **Menu Items** (right-aligned): 
+  - Quick Tools dropdown (hover to show Image Compression link)
+  - About Us link
+- **Logo SVG**: 32x32px, white background, rounded-lg, shadow-md shadow-indigo-100
+- **Logo Text**: `text-3xl font-extrabold text-indigo-600 tracking-tighter` with `hover:opacity-80 transition-opacity`
+- **Menu Style**: `hidden md:flex gap-8 text-sm font-bold text-slate-500 items-center`
+- **Dropdown**: Uses group hover with opacity/visibility transitions, white background, rounded-xl, shadow-lg
+- **Sticky Behavior**: Navigation bar MUST be sticky at the top when scrolling down. Add CSS: `nav.sticky-nav { position: sticky; top: 0; z-index: 9999; transition: all 0.3s ease; }` and `nav.sticky-nav.scrolled { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); box-shadow: 0 4px 20px -5px rgba(79, 70, 229, 0.1); }`
+- **JavaScript**: MUST include scroll event listener that adds 'scrolled' class when scroll position > 50px. See docs/SEO_MASTER_LAYOUT.md section 2 for complete code.
+Always use the exact navigation structure to maintain consistency across all pages.
+
+**BREADCRUMB NAVIGATION**: 
+- Homepage: NO breadcrumb
+- ALL other pages: MUST include breadcrumb navigation
+- Format: `Home / [Parent] / [Current Page]` if parent exists, or `Home / [Current Page]` if no clear parent
+- Examples: Quick Tools page = `Home / Quick Tools`, Image Compressor = `Home / Quick Tools / Image Compression`, About = `Home / About Us`
+See 'docs/SEO_MASTER_LAYOUT.md' section 3 for the exact breadcrumb structure.
+
+**FOOTER STANDARD**: All pages MUST use the standard footer defined in 'docs/SEO_MASTER_LAYOUT.md' section 4. The footer uses a dark slate background (bg-slate-900) with navigation links and copyright information. Always use the exact footer structure from the documentation to maintain consistency across all pages.
+
+**SECTION BACKGROUND ALTERNATION**: CRITICAL - Always alternate section backgrounds between `bg-white` and `bg-[#F8FAFF]` to create visual separation. Different content blocks (e.g., "Why Choose Toolaze?" vs "FAQ") MUST have different background colors so users can clearly distinguish between sections. Follow the pattern: alternate white and light indigo backgrounds throughout the page.

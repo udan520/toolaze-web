@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toolaze - Free AI Image Compressor & Local Tools</title>
+    <meta name="description" content="Compress images locally in your browser. No server uploads, 100% private, free AI tools for creators.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Poppins', 'sans-serif'] },
+                    colors: { brand: { light: '#F8FAFF' } },
+                    boxShadow: { 'soft': '0 20px 40px -15px rgba(79, 70, 229, 0.1)' },
+                    animation: { 'float': 'float 3s ease-in-out infinite' },
+                    keyframes: { float: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-10px)' } } }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #F8FAFF; color: #334155; }
+        .desc-text { font-size: 14px; line-height: 1.6; color: #64748B; }
+        .text-gradient { background: linear-gradient(135deg, #4f46e5 0%, #9333ea 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        .bg-gradient-brand { background: linear-gradient(135deg, #4f46e5 0%, #9333ea 100%); }
+        .rounded-super { border-radius: 2.5rem; }
+        details > summary { list-style: none; cursor: pointer; }
+        details > summary::-webkit-details-marker { display: none; }
+
+        /* Sticky Navigation */
+        nav.sticky-nav { position: sticky; top: 0; z-index: 9999; transition: all 0.3s ease; }
+        nav.sticky-nav.scrolled { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); box-shadow: 0 4px 20px -5px rgba(79, 70, 229, 0.1); }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen overflow-x-hidden">
+
+    <nav id="mainNav" class="sticky-nav w-full">
+        <div class="py-6 px-6 flex justify-between items-center max-w-6xl mx-auto w-full relative">
+            <a href="index.html" class="text-3xl font-extrabold text-indigo-600 tracking-tighter flex items-center gap-3 hover:opacity-80 transition-opacity">
+                <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" class="shadow-md shadow-indigo-100 rounded-lg">
+                    <rect width="40" height="40" rx="12" fill="white"/>
+                    <path d="M12 12H22C23.1 12 24 12.9 24 14V28C24 29.1 23.1 30 22 30H18C16.9 30 16 29.1 16 28V16H12C10.9 16 10 15.1 10 14V14C10 12.9 10.9 12 12 12Z" fill="url(#paint_wink)"/>
+                    <circle cx="29" cy="14" r="3" fill="url(#paint_wink)"/>
+                    <defs><linearGradient id="paint_wink" x1="10" y1="12" x2="29" y2="30" gradientUnits="userSpaceOnUse"><stop stop-color="#4F46E5"/><stop offset="1" stop-color="#9333EA"/></linearGradient></defs>
+                </svg>
+                Toolaze
+            </a>
+            <div class="hidden md:flex gap-8 text-sm font-bold text-slate-700 items-center">
+                <div class="relative group">
+                    <button class="hover:text-indigo-600 transition-colors flex items-center gap-1">
+                        Quick Tools
+                        <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="absolute top-full left-0 mt-2 w-48 bg-white rounded-xl shadow-lg border border-indigo-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                        <div class="py-2">
+                            <a href="quick-tools/image-compressor/index.html" class="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors">Image Compression</a>
+                        </div>
+                    </div>
+                </div>
+                <a href="about/index.html" class="hover:text-indigo-600 transition-colors">About Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="pt-10 pb-20 px-6">
+        <div class="max-w-4xl mx-auto text-center mb-10">
+            <span class="inline-block py-1 px-3 rounded-full bg-indigo-50 text-indigo-600 text-xs font-bold tracking-widest uppercase mb-4 border border-indigo-100">v1.0 Now Live</span>
+            <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 mb-6" style="line-height: 1.3;">
+                Free Lightweight <br> <span class="text-gradient">Image Tools Platform.</span>
+            </h1>
+            <p class="text-lg text-slate-500 max-w-xl mx-auto">
+                Professional image processing tools that run entirely in your browser. No uploads, no limits, forever free.
+            </p>
+        </div>
+
+        <div class="max-w-2xl mx-auto text-center">
+            <a href="quick-tools/image-compressor/index.html" class="inline-block px-8 py-4 bg-gradient-brand text-white text-lg font-bold rounded-full shadow-lg shadow-indigo-200 hover:shadow-indigo-400 transition-all hover:scale-105">
+                Try Image Compressor Now →
+            </a>
+        </div>
+    </header>
+
+    <section id="tools" class="py-20 px-6 bg-white border-t border-indigo-50/50">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex justify-between items-end mb-10">
+                <div>
+                    <h2 class="text-3xl font-bold text-slate-900">More Lazy Tools Coming Soon</h2>
+                    <p class="text-slate-500 mt-2">One suite. Infinite lazy possibilities.</p>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <a href="quick-tools/image-compressor/index.html" class="p-6 rounded-3xl bg-[#F8FAFF] border-2 border-indigo-100 hover:border-indigo-300 transition-all group relative overflow-hidden">
+                    <div class="absolute top-4 right-4 bg-green-100 text-green-700 text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-wide">Live</div>
+                    <div class="w-12 h-12 bg-gradient-brand rounded-xl flex items-center justify-center mb-4 shadow-lg shadow-indigo-200 group-hover:scale-110 transition-transform">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-white">
+                            <rect x="4" y="5" width="16" height="14" rx="2" stroke="currentColor" stroke-width="2"/>
+                            <path d="M8 10L12 7L16 10V17H8V10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="9" cy="12" r="1" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-slate-900">Image Compressor</h3>
+                    <p class="text-xs text-slate-500 mt-2">Smart lossy compression for JPG/PNG.</p>
+                </a>
+
+                <div class="p-6 rounded-3xl bg-slate-50 border border-slate-100 opacity-60 grayscale cursor-not-allowed relative">
+                    <div class="absolute top-4 right-4 bg-slate-200 text-slate-500 text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-wide">Coming Soon</div>
+                    <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-2xl mb-4 text-slate-300">🔄</div>
+                    <h3 class="font-bold text-slate-400">Format Converter</h3>
+                    <p class="text-xs text-slate-400 mt-2">HEIC to JPG, PNG to WEBP.</p>
+                </div>
+
+                <div class="p-6 rounded-3xl bg-slate-50 border border-slate-100 opacity-60 grayscale cursor-not-allowed relative">
+                    <div class="absolute top-4 right-4 bg-slate-200 text-slate-500 text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-wide">Coming Soon</div>
+                    <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-2xl mb-4 text-slate-300">📐</div>
+                    <h3 class="font-bold text-slate-400">Image Resize</h3>
+                    <p class="text-xs text-slate-400 mt-2">Resize images to exact dimensions.</p>
+                </div>
+                
+                <div class="p-6 rounded-3xl bg-slate-50 border border-slate-100 opacity-60 grayscale cursor-not-allowed relative">
+                    <div class="absolute top-4 right-4 bg-slate-200 text-slate-500 text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-wide">Coming Soon</div>
+                    <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-2xl mb-4 text-slate-300">🎬</div>
+                    <h3 class="font-bold text-slate-400">Video Compressor</h3>
+                    <p class="text-xs text-slate-400 mt-2">Compress videos without quality loss.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-6 bg-white border-t border-indigo-50/50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-sm font-bold text-purple-500 uppercase tracking-widest bg-purple-50 px-4 py-2 rounded-full inline-block mb-6">Why Toolaze?</span>
+                <h2 class="text-5xl md:text-6xl font-extrabold text-slate-900 mb-6">Built for Privacy & Performance</h2>
+                <p class="text-xl text-slate-500 max-w-2xl mx-auto">Everything you need to know about why Toolaze is the smart choice for creators who value privacy and quality.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-[#F8FAFF] p-8 rounded-3xl border border-indigo-50 hover:shadow-lg transition-shadow">
+                    <div class="flex items-start gap-6">
+                        <div class="flex-shrink-0 w-16 h-16 rounded-2xl bg-indigo-100 flex items-center justify-center text-indigo-600 font-bold text-2xl">1</div>
+                        <div>
+                            <h4 class="text-xl font-bold text-slate-900 mb-3">Privacy First Architecture</h4>
+                            <p class="text-base text-slate-600 leading-relaxed">Unlike other tools, we don't send your images to a remote server. Everything happens right here in your browser using WebAssembly. Your files never leave your device, ensuring complete privacy and security.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-[#F8FAFF] p-8 rounded-3xl border border-indigo-50 hover:shadow-lg transition-shadow">
+                    <div class="flex items-start gap-6">
+                        <div class="flex-shrink-0 w-16 h-16 rounded-2xl bg-purple-100 flex items-center justify-center text-purple-600 font-bold text-2xl">2</div>
+                        <div>
+                            <h4 class="text-xl font-bold text-slate-900 mb-3">Unlimited & Free</h4>
+                            <p class="text-base text-slate-600 leading-relaxed">Compress as many images as you want. No daily limits, no paywalls, no watermarks. All tools are completely free forever with no hidden costs or premium tiers.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-[#F8FAFF] p-8 rounded-3xl border border-indigo-50 hover:shadow-lg transition-shadow">
+                    <div class="flex items-start gap-6">
+                        <div class="flex-shrink-0 w-16 h-16 rounded-2xl bg-indigo-100 flex items-center justify-center text-indigo-600 font-bold text-2xl">3</div>
+                        <div>
+                            <h4 class="text-xl font-bold text-slate-900 mb-3">Lossless Quality Control</h4>
+                            <p class="text-base text-slate-600 leading-relaxed">Our advanced compression algorithms reduce file sizes by up to 90% while maintaining visual quality. You control the compression level to balance size and quality perfectly.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-[#F8FAFF] p-8 rounded-3xl border border-indigo-50 hover:shadow-lg transition-shadow">
+                    <div class="flex items-start gap-6">
+                        <div class="flex-shrink-0 w-16 h-16 rounded-2xl bg-purple-100 flex items-center justify-center text-purple-600 font-bold text-2xl">4</div>
+                        <div>
+                            <h4 class="text-xl font-bold text-slate-900 mb-3">No Registration Required</h4>
+                            <p class="text-base text-slate-600 leading-relaxed">Start using our tools immediately without creating an account. No email signup, no personal information collection. Just open the tool and get started.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-6 bg-[#F8FAFF] border-t border-indigo-50/50">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 text-center mb-12">Frequently Asked Questions</h2>
+            <div class="space-y-4">
+                <details class="bg-white p-6 rounded-2xl border border-indigo-50 hover:shadow-md transition-shadow">
+                    <summary class="font-bold text-slate-900 cursor-pointer flex items-center justify-between">
+                        <span>How does Toolaze compress images without uploading them?</span>
+                        <span class="text-indigo-600 text-xl">+</span>
+                    </summary>
+                    <p class="text-sm text-slate-500 mt-4">Toolaze uses WebAssembly and browser-based image processing APIs to compress images directly in your browser. Your files are processed locally on your device, never sent to any server. This ensures complete privacy and faster processing.</p>
+                </details>
+                <details class="bg-white p-6 rounded-2xl border border-indigo-50 hover:shadow-md transition-shadow">
+                    <summary class="font-bold text-slate-900 cursor-pointer flex items-center justify-between">
+                        <span>What image formats does Toolaze support?</span>
+                        <span class="text-indigo-600 text-xl">+</span>
+                    </summary>
+                    <p class="text-sm text-slate-500 mt-4">Currently, our Image Compressor supports JPG, PNG, and WEBP formats. We're working on adding support for more formats including HEIC, BMP, and TIFF in future updates.</p>
+                </details>
+                <details class="bg-white p-6 rounded-2xl border border-indigo-50 hover:shadow-md transition-shadow">
+                    <summary class="font-bold text-slate-900 cursor-pointer flex items-center justify-between">
+                        <span>Is there a file size limit?</span>
+                        <span class="text-indigo-600 text-xl">+</span>
+                    </summary>
+                    <p class="text-sm text-slate-500 mt-4">There's no theoretical file size limit. However, very large images may cause browser slowdown depending on your device's performance and available memory. We recommend processing large files in smaller batches for the best experience.</p>
+                </details>
+                <details class="bg-white p-6 rounded-2xl border border-indigo-50 hover:shadow-md transition-shadow">
+                    <summary class="font-bold text-slate-900 cursor-pointer flex items-center justify-between">
+                        <span>Will Toolaze always be free?</span>
+                        <span class="text-indigo-600 text-xl">+</span>
+                    </summary>
+                    <p class="text-sm text-slate-500 mt-4">Yes! Toolaze is committed to providing free tools forever. We believe in making powerful image processing tools accessible to everyone without any cost barriers or premium subscriptions.</p>
+                </details>
+                <details class="bg-white p-6 rounded-2xl border border-indigo-50 hover:shadow-md transition-shadow">
+                    <summary class="font-bold text-slate-900 cursor-pointer flex items-center justify-between">
+                        <span>How much can I compress my images?</span>
+                        <span class="text-indigo-600 text-xl">+</span>
+                    </summary>
+                    <p class="text-sm text-slate-500 mt-4">Compression results vary depending on the original image quality and format. Typically, you can achieve 50-90% size reduction while maintaining acceptable visual quality. You can adjust compression settings to find the perfect balance for your needs.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-900 pt-16 pb-8 px-6 mt-auto">
+        <div class="max-w-6xl mx-auto">
+            <!-- Navigation Links -->
+            <nav class="mb-8" aria-label="Footer navigation">
+                <ul class="flex flex-wrap justify-center gap-6 md:gap-8 text-sm">
+                    <li><a href="index.html" class="text-slate-300 hover:text-indigo-400 transition-colors font-medium">Home</a></li>
+                    <li><a href="#tools" class="text-slate-300 hover:text-indigo-400 transition-colors font-medium">All Tools</a></li>
+                    <li><a href="about/index.html" class="text-slate-300 hover:text-indigo-400 transition-colors font-medium">About Us</a></li>
+                    <li><a href="privacy/index.html" class="text-slate-300 hover:text-indigo-400 transition-colors font-medium">Privacy Policy</a></li>
+                    <li><a href="terms/index.html" class="text-slate-300 hover:text-indigo-400 transition-colors font-medium">Terms of Service</a></li>
+                    <li><a href="mailto:support@toolaze.com" class="text-slate-300 hover:text-indigo-400 transition-colors font-medium">Contact</a></li>
+                </ul>
+            </nav>
+
+            <!-- Copyright -->
+            <div class="text-center pt-6 border-t border-slate-700">
+                <p class="text-xs text-slate-400 mb-2">
+                    © <span id="currentYear">2026</span> Toolaze Lab. All rights reserved.
+                </p>
+                <p class="text-[10px] text-slate-500 font-bold uppercase tracking-[0.3em]">
+                    Free Online Tools • No Registration Required • 100% Private
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Update copyright year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // Sticky navigation on scroll
+        (function() {
+            const nav = document.getElementById('mainNav');
+            if (nav) {
+                let lastScroll = 0;
+                window.addEventListener('scroll', () => {
+                    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+                    if (currentScroll > 50) {
+                        nav.classList.add('scrolled');
+                    } else {
+                        nav.classList.remove('scrolled');
+                    }
+                    lastScroll = currentScroll;
+                });
+            }
+        })();
+    </script>
+</body>
+</html>
