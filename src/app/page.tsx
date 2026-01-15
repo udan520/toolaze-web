@@ -68,15 +68,9 @@ export default async function HomePage() {
         </div>
 
         <div className="max-w-2xl mx-auto text-center">
-          {toolList.length > 0 ? (
-            <Link href={`/${toolList[0].tool}/${toolList[0].slug}`} className="inline-block px-8 py-4 bg-gradient-brand text-white text-lg font-bold rounded-full shadow-lg shadow-indigo-200 hover:shadow-indigo-400 transition-all hover:scale-105">
-              Try Image Compressor Now →
-            </Link>
-          ) : (
-            <Link href="/image-compressor/png-to-100kb" className="inline-block px-8 py-4 bg-gradient-brand text-white text-lg font-bold rounded-full shadow-lg shadow-indigo-200 hover:shadow-indigo-400 transition-all hover:scale-105">
-              Try Image Compressor Now →
-            </Link>
-          )}
+          <Link href="/image-compressor" className="inline-block px-8 py-4 bg-gradient-brand text-white text-lg font-bold rounded-full shadow-lg shadow-indigo-200 hover:shadow-indigo-400 transition-all hover:scale-105">
+            Try Image Compressor Now →
+          </Link>
         </div>
       </header>
 
