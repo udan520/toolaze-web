@@ -1,27 +1,18 @@
-import Link from 'next/link';
+import Link from 'next/link'
+import Navigation from '@/components/Navigation'
+import Footer from '@/components/Footer'
+import Breadcrumb from '@/components/Breadcrumb'
 
 export default function TermsPage() {
   return (
-    <div className="overflow-x-hidden min-h-screen bg-[#F8FAFF]">
-      {/* Navigation */}
-      <nav className="py-6 flex justify-center bg-[#F8FAFF]">
-        <Link href="/" className="text-3xl font-extrabold text-indigo-600 tracking-tighter cursor-pointer flex items-center gap-3">
-          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="shadow-lg shadow-indigo-100 rounded-xl">
-            <rect width="40" height="40" rx="12" fill="white"/>
-            <path d="M12 12H22C23.1 12 24 12.9 24 14V28C24 29.1 23.1 30 22 30H18C16.9 30 16 29.1 16 28V16H12C10.9 16 10 15.1 10 14V14C10 12.9 10.9 12 12 12Z" fill="url(#paint_wink)"/>
-            <circle cx="29" cy="14" r="3" fill="url(#paint_wink)"/>
-            <defs>
-              <linearGradient id="paint_wink" x1="10" y1="12" x2="29" y2="30" gradientUnits="userSpaceOnUse">
-                <stop stopColor="#4F46E5"/>
-                <stop offset="1" stopColor="#9333EA"/>
-              </linearGradient>
-            </defs>
-          </svg>
-          Toolaze.
-        </Link>
-      </nav>
+    <>
+      <Navigation />
+      
+      <Breadcrumb items={[
+        { label: 'Home', href: '/' },
+        { label: 'Terms of Service' },
+      ]} />
 
-      {/* Main Content */}
       <main className="bg-white py-24 px-6 border-t border-indigo-50/50">
         <div className="max-w-3xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4">Terms of Service</h1>
@@ -109,32 +100,7 @@ export default function TermsPage() {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="bg-slate-900 pt-16 pb-8 px-6">
-        <div className="max-w-6xl mx-auto">
-          {/* Navigation Links */}
-          <nav className="mb-8" aria-label="Footer navigation">
-            <ul className="flex flex-wrap justify-center gap-6 md:gap-8 text-sm">
-              <li><Link href="/" className="text-slate-300 hover:text-indigo-400 transition-colors font-medium">Home</Link></li>
-              <li><Link href="/tools" className="text-slate-300 hover:text-indigo-400 transition-colors font-medium">All Tools</Link></li>
-              <li><Link href="/about" className="text-slate-300 hover:text-indigo-400 transition-colors font-medium">About Us</Link></li>
-              <li><Link href="/privacy" className="text-slate-300 hover:text-indigo-400 transition-colors font-medium">Privacy Policy</Link></li>
-              <li><Link href="/terms" className="text-slate-300 hover:text-indigo-400 transition-colors font-medium">Terms of Service</Link></li>
-              <li><a href="mailto:support@toolaze.com" className="text-slate-300 hover:text-indigo-400 transition-colors font-medium">Contact</a></li>
-            </ul>
-          </nav>
-
-          {/* Copyright */}
-          <div className="text-center pt-6 border-t border-slate-700">
-            <p className="text-xs text-slate-400 mb-2">
-              © <span>{new Date().getFullYear()}</span> Toolaze Lab. All rights reserved.
-            </p>
-            <p className="text-[10px] text-slate-500 font-bold uppercase tracking-[0.3em]">
-              Free Online Tools • No Registration Required • 100% Private
-            </p>
-          </div>
-        </div>
-      </footer>
-    </div>
-  );
+      <Footer />
+    </>
+  )
 }

@@ -1,0 +1,156 @@
+{
+  "jpg-to-20kb": {
+    "metadata": {
+      "title": "Compress JPG to 20KB - Precision Tool for Official Portals | Toolaze",
+      "description": "Precisely compress JPG images to under 20KB for government and exam registrations. 100% browser-side processing for total privacy. Batch process up to 100 files."
+    },
+    "hero": {
+      "h1": "Compress JPG to 20KB",
+      "sub": "Meet Strict Registration Limits",
+      "desc": "Designed for official portals with extreme file size caps. Reach the 20KB threshold accurately while maintaining the JPG format required for your application."
+    },
+    "intro": {
+      "title": "Why 20KB Matters",
+      "content": "Many government and academic portals enforce a strict 20KB limit. Toolaze uses math-driven browser-side processing to help you hit these targets. Since all processing happens locally on your device, your personal ID photos and sensitive documents are never uploaded to a server."
+    },
+    "specs": {
+      "engine": "Browser-Native Processing",
+      "capacity": "Batch upload up to 100 images",
+      "logic": "Target KB/MB Precision Control",
+      "privacy": "100% Client-Side (No Uploads)"
+    },
+    "scenes": [
+      { "title": "Government Exams", "desc": "Perfect for SSC, UPSC, and regional civil service portal requirements." },
+      { "title": "Bank Account Opening", "desc": "Ensure your ID scans meet the small file size requirements for instant verification." }
+    ],
+    "faq": [
+      { "q": "Why did my resolution change?", "a": "To reach the 20KB limit, the tool automatically adjusts quality and dimensions to ensure the file size target is met." },
+      { "q": "Are my photos secure?", "a": "Yes. Every image is processed locally in your browser. No data is ever sent to our servers." }
+    ],
+    "compare": { "toolaze": "Targeted 20KB output, Local processing, 100% Free", "others": "Random file sizes, Cloud uploads, Paid exports" }
+  },
+
+  "png-to-100kb": {
+    "metadata": {
+      "title": "Compress PNG to 100KB - Maintain Transparency | Toolaze",
+      "description": "Optimize PNGs to 100KB for web performance. Keeps original transparency and format. Process up to 100 images in your browser for free."
+    },
+    "hero": {
+      "h1": "PNG to 100KB Compression",
+      "sub": "Transparent, Fast, and Professional",
+      "desc": "The preferred tool for web developers. Reduce PNG file size to 100KB without losing transparency, ensuring your site passes Lighthouse audits with ease."
+    },
+    "intro": {
+      "title": "Professional Web Optimization",
+      "content": "Heavy PNGs slow down your site. Toolaze optimizes your PNG files locally by re-mapping pixels to hit your 100KB target. We maintain the Alpha channel, ensuring your transparent backgrounds remain perfectly clear for your UI/UX needs."
+    },
+    "specs": {
+      "engine": "Local Canvas Mapping",
+      "limit": "No input file size restrictions",
+      "logic": "Specific KB/MB Target Targeting",
+      "output": "Maintains Original PNG Format"
+    },
+    "scenes": [
+      { "title": "Lighthouse Optimization", "desc": "Help your hero images and icons meet the 100KB performance threshold." },
+      { "title": "Documentation Assets", "desc": "Keep your PDF and Word document sizes low by optimizing embedded PNG screenshots." }
+    ],
+    "faq": [
+      { "q": "Does it keep the transparency?", "a": "Yes. Toolaze is specifically designed to preserve the Alpha channel during the compression process." },
+      { "q": "Can I process many files at once?", "a": "You can batch process up to 100 PNG files in a single session." }
+    ],
+    "compare": { "toolaze": "Preserves transparency, Local processing, No ads", "others": "Converts to JPG, Watermarks, Subscription required" }
+  },
+
+  "uscis-photo-240kb": {
+    "metadata": {
+      "title": "USCIS Photo 240KB Compressor - Secure Visa Processing | Toolaze",
+      "description": "Meet the DS-160 240KB requirement for US Visa photos. 100% private browser-side processing. No facial alterations, keeping your data real and secure."
+    },
+    "hero": {
+      "h1": "USCIS Photo 240KB Tool",
+      "sub": "Guaranteed Visa Compliance",
+      "desc": "Specifically calibrated for the US Visa (DS-160) and USCIS systems. Shrink your passport photo to under 240KB instantly and securely on your own computer."
+    },
+    "intro": {
+      "title": "Secure Document Handling",
+      "content": "Visa applications require high privacy. Toolaze processes your biometric photos entirely within your browser. By using local math-based compression, we ensure your photo stays under the 240KB official limit without sending your identity to the cloud."
+    },
+    "specs": {
+      "engine": "Math-Driven Browser Processing",
+      "batch": "Process up to 100 photos at once",
+      "logic": "240KB Specific Target",
+      "privacy": "Zero Server Storage"
+    },
+    "scenes": [
+      { "title": "DS-160 Application", "desc": "Ensure your photo uploads successfully during the final stage of your visa form." },
+      { "title": "Green Card Lottery", "desc": "Perfect for meeting the digital photo size requirements for the annual DV Lottery." }
+    ],
+    "faq": [
+      { "q": "What if it can't reach 240KB?", "a": "For very high-resolution originals, the tool will scale the dimensions to ensure the 240KB target is reached." },
+      { "q": "Does it edit my face?", "a": "No. We provide pure technical compression to ensure your facial features remain 100% authentic for immigration standards." }
+    ],
+    "compare": { "toolaze": "Total privacy, Authentic results, Free", "others": "Privacy risks, Auto-beautification risks, Hidden fees" }
+  },
+
+  "image-to-50kb": {
+    "metadata": {
+      "title": "Compress Image to 50KB - Universal Online Tool | Toolaze",
+      "description": "Compress JPG, PNG, WebP, or BMP to exactly 50KB. Perfect for resumes and online forms. 100% free with batch processing for 100 images."
+    },
+    "hero": {
+      "h1": "Universal 50KB Compressor",
+      "sub": "One Size, Every Platform",
+      "desc": "50KB is the most common requirement for online forms. Whether you start with a 5MB or 50MB file, Toolaze helps you reach 50KB in seconds without changing your file format."
+    },
+    "intro": {
+      "title": "The Standard for Online Forms",
+      "content": "From school admissions to resume portals, 50KB is the universal gateway. Toolaze eliminates the guesswork by letting you specify '50KB' as your target. Our browser-side engine handles the heavy lifting, keeping your original format intact for maximum compatibility."
+    },
+    "specs": {
+      "engine": "Native Canvas API",
+      "formats": "JPG, PNG, WebP, BMP Support",
+      "logic": "KB/MB Target Selection",
+      "batch": "Supports 100 files simultaneously"
+    },
+    "scenes": [
+      { "title": "Resume Portals", "desc": "Ensure your headshot is light enough for any ATS or recruitment system." },
+      { "title": "Admission Forms", "desc": "Meet the strict 50KB requirements for university and competitive exam registrations." }
+    ],
+    "faq": [
+      { "q": "Which formats are supported?", "a": "We support JPG, JPEG, PNG, WebP, and BMP. Your file will be downloaded in its original format." },
+      { "q": "Is it really free?", "a": "Yes, Toolaze is 100% free with no ads and no limits on the number of times you use it." }
+    ],
+    "compare": { "toolaze": "No size limits, Batch process 100 files, Local", "others": "File size caps, Single file limits, Subscription popups" }
+  },
+
+  "passport-photo-200kb": {
+    "metadata": {
+      "title": "Passport Photo 200KB Compressor - Secure & Fast | Toolaze",
+      "description": "Compress your passport photo to 200KB for online renewals. Retains original format and facial clarity. 100% private and free tool."
+    },
+    "hero": {
+      "h1": "200KB Passport Photo Tool",
+      "sub": "Global Standard Compatibility",
+      "desc": "Online passport renewal systems in the UK, Australia, and many other nations require photos between 200KB and 500KB. Toolaze ensures you hit the 200KB mark securely."
+    },
+    "intro": {
+      "title": "Privacy for Your Most Sensitive Data",
+      "content": "Your passport photo is your most sensitive digital asset. Toolaze processes your data locally, meaning your biometric information never leaves your browser. We focus on technical clarity, ensuring your photo meets the file size requirement without artificial alterations."
+    },
+    "specs": {
+      "engine": "Secure Client-Side Algorithm",
+      "batch": "Handles up to 100 photos",
+      "logic": "Precision 200KB Targeting",
+      "output": "Original Format Retention"
+    },
+    "scenes": [
+      { "title": "Online Passport Renewal", "desc": "Perfect for meeting the upload limits for national digital identity platforms." },
+      { "title": "Employment Background Checks", "desc": "Ensure your ID scans are small enough for HR software while remaining sharp." }
+    ],
+    "faq": [
+      { "q": "Will my photo be blurred?", "a": "200KB provides plenty of space for a sharp headshot. Toolaze prioritizes detail retention while meeting the size target." },
+      { "q": "Can I use this for multiple family members?", "a": "Yes, you can batch process up to 100 photos at once, making it ideal for family travel applications." }
+    ],
+    "compare": { "toolaze": "Original format, Local security, Batch ready", "others": "Forces format change, Cloud security risks, No batching" }
+  }
+}

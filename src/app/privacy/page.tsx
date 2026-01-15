@@ -1,27 +1,18 @@
-import Link from 'next/link';
+import Link from 'next/link'
+import Navigation from '@/components/Navigation'
+import Footer from '@/components/Footer'
+import Breadcrumb from '@/components/Breadcrumb'
 
 export default function PrivacyPage() {
   return (
-    <div className="overflow-x-hidden min-h-screen bg-[#F8FAFF]">
-      {/* Navigation */}
-      <nav className="py-6 flex justify-center bg-[#F8FAFF]">
-        <Link href="/" className="text-3xl font-extrabold text-indigo-600 tracking-tighter cursor-pointer flex items-center gap-3">
-          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="shadow-lg shadow-indigo-100 rounded-xl">
-            <rect width="40" height="40" rx="12" fill="white"/>
-            <path d="M12 12H22C23.1 12 24 12.9 24 14V28C24 29.1 23.1 30 22 30H18C16.9 30 16 29.1 16 28V16H12C10.9 16 10 15.1 10 14V14C10 12.9 10.9 12 12 12Z" fill="url(#paint_wink)"/>
-            <circle cx="29" cy="14" r="3" fill="url(#paint_wink)"/>
-            <defs>
-              <linearGradient id="paint_wink" x1="10" y1="12" x2="29" y2="30" gradientUnits="userSpaceOnUse">
-                <stop stopColor="#4F46E5"/>
-                <stop offset="1" stopColor="#9333EA"/>
-              </linearGradient>
-            </defs>
-          </svg>
-          Toolaze.
-        </Link>
-      </nav>
+    <>
+      <Navigation />
+      
+      <Breadcrumb items={[
+        { label: 'Home', href: '/' },
+        { label: 'Privacy Policy' },
+      ]} />
 
-      {/* Main Content */}
       <main className="bg-white py-24 px-6 border-t border-indigo-50/50">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4">Privacy Policy</h1>
@@ -94,19 +85,7 @@ export default function PrivacyPage() {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="bg-white pt-20 pb-10 px-6 text-center border-t border-indigo-50">
-        <div className="mb-12">
-          <div className="text-2xl mb-2 text-yellow-400 tracking-widest">⭐⭐⭐⭐⭐</div>
-          <div className="text-xs font-bold text-slate-400 uppercase tracking-widest">4.9/5 from 10k+ Creators</div>
-        </div>
-        <div className="flex flex-wrap justify-center gap-6 mb-12 text-sm font-bold text-indigo-600">
-          <Link href="/" className="hover:text-purple-600 transition-colors">Home</Link>
-          <Link href="/privacy" className="hover:text-purple-600 transition-colors">Privacy Policy</Link>
-          <a href="mailto:support@toolaze.com" className="hover:text-purple-600 transition-colors">Contact</a>
-        </div>
-        <p className="text-[10px] text-slate-300 font-bold uppercase tracking-[0.3em]">© 2026 Toolaze Lab.</p>
-      </footer>
-    </div>
-  );
+      <Footer />
+    </>
+  )
 }
