@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
 import './globals.css'
 import ErrorSuppressor from '@/components/ErrorSuppressor'
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 export const metadata: Metadata = {
   title: 'Toolaze - Free AI Image Compressor & Local Tools',
@@ -21,6 +22,7 @@ export default function RootLayout({
       <body className="flex flex-col min-h-screen overflow-x-hidden font-sans antialiased" suppressHydrationWarning>
         <ErrorSuppressor />
         {children}
+        <GoogleAnalytics gaId="G-8KFZMZZ67F" />
       </body>
     </html>
   )
