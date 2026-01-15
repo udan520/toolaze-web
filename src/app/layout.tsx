@@ -8,7 +8,22 @@ export const metadata: Metadata = {
   title: 'Toolaze - Free AI Image Compressor & Local Tools',
   description: 'Compress images locally in your browser. No server uploads, 100% private, free AI tools for creators.',
   icons: {
-    icon: '/favicon.svg',
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+    shortcut: '/favicon.svg',
+  },
+  manifest: '/site.webmanifest',
+  themeColor: '#4F46E5',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'default',
+    title: 'Toolaze',
   },
 }
 
