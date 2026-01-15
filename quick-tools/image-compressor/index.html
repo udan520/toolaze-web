@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Free Image Compressor - Batch Compress Images Online | Toolaze</title>
     <meta name="description" content="Free online image compressor. Batch compress up to 100 images at once. Supports JPG, PNG, WebP, BMP. Set exact target size. Fast, private, no sign-up required.">
+    <link rel="icon" type="image/svg+xml" href="../../../favicon.svg">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -478,7 +479,7 @@
                 const id = 'id' + Math.random().toString(36).substr(2, 9);
                 const item = { 
                     id, file, 
-                    origSize: (file.size / 1024).toFixed(1),
+                    origSize: formatFileSize(file.size),
                     blob: null, url: null, 
                     rawUrl: URL.createObjectURL(file),
                     thumbReady: false 
@@ -496,7 +497,7 @@
                         <div class="item-info">
                             <div class="filename">${file.name}</div>
                             <div class="size-tag">
-                                <span>Original: ${item.origSize} KB</span>
+                                <span>Original: ${item.origSize}</span>
                                 <span id="newsize-${id}"></span>
                             </div>
                         </div>
@@ -514,6 +515,21 @@
             const downloadAllBtn = document.getElementById('downloadAllBtn');
             downloadAllBtn.classList.remove('show');
             downloadAllBtn.style.display = 'none';
+            
+            // Scroll to Start Batch Compression button, 20px from menu bar
+            setTimeout(() => {
+                const startBtn = document.getElementById('startBtn');
+                if (startBtn) {
+                    const nav = document.getElementById('mainNav');
+                    const navHeight = nav ? nav.offsetHeight : 0;
+                    const targetPosition = startBtn.getBoundingClientRect().top + window.pageYOffset - navHeight - 20;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            }, 100);
+            
             processThumbnails();
         }
 
@@ -584,10 +600,33 @@
             } catch (e) { console.error(e); }
         }
 
+        // Helper function to format file size
+        function formatFileSize(bytes) {
+            const kb = bytes / 1024;
+            if (kb >= 1024) {
+                return (kb / 1024).toFixed(1) + ' M';
+            }
+            return kb.toFixed(1) + ' KB';
+        }
+
+        // Detect iOS device
+        function isIOS() {
+            return /iPad|iPhone|iPod/.test(navigator.userAgent) || 
+                   (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+        }
+
         function forceDownload(url, filename) {
             const a = document.createElement('a');
             a.href = url;
-            a.download = filename;
+            
+            // On iOS, remove download attribute to trigger native save dialog
+            if (isIOS()) {
+                a.target = '_blank';
+                // Remove download attribute to allow native iOS save to photo album
+            } else {
+                a.download = filename;
+            }
+            
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
@@ -630,8 +669,8 @@
                     
                     item.url = URL.createObjectURL(item.blob);
                     
-                    const newSizeKB = (item.blob.size / 1024).toFixed(1);
-                    document.getElementById(`newsize-${item.id}`).innerHTML = `New: <span class="size-reduced">${newSizeKB} KB</span>`;
+                    const newSize = formatFileSize(item.blob.size);
+                    document.getElementById(`newsize-${item.id}`).innerHTML = `New: <span class="size-reduced">${newSize}</span>`;
                     
                     // Update thumbnail to show compressed image
                     const thumbImg = document.getElementById(`img-${item.id}`);
@@ -744,8 +783,8 @@
                 }
                 item.url = URL.createObjectURL(item.blob);
                 
-                const newSizeKB = (item.blob.size / 1024).toFixed(1);
-                document.getElementById(`newsize-${itemId}`).innerHTML = `New: <span class="size-reduced">${newSizeKB} KB</span>`;
+                const newSize = formatFileSize(item.blob.size);
+                document.getElementById(`newsize-${itemId}`).innerHTML = `New: <span class="size-reduced">${newSize}</span>`;
                 
                 // Update thumbnail to show compressed image
                 const thumbImg = document.getElementById(`img-${itemId}`);
@@ -870,7 +909,13 @@
             const zip = new JSZip();
             queue.forEach(i => { if (i.blob) zip.file(`min_${i.file.name.split('.')[0]}.jpg`, i.blob); });
             const content = await zip.generateAsync({type:"blob"});
-            forceDownload(URL.createObjectURL(content), "compressed_images.zip");
+            // For ZIP download, always use download attribute (keep existing logic)
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(content);
+            a.download = "compressed_images.zip";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
         };
     </script>
 </body>
