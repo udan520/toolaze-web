@@ -36,7 +36,7 @@ export default function Navigation() {
   const thirdLevelItems = useMemo(() => {
     try {
       const toolSlugs = getAllSlugs('image-compressor')
-      return toolSlugs.slice(0, 8).map(slug => {
+      return toolSlugs.map(slug => {
         const toolData = getSeoContent('image-compressor', slug)
         return {
           slug,
@@ -97,7 +97,7 @@ export default function Navigation() {
                     </Link>
                     {/* 三级菜单（hover到二级时显示） */}
                     {item.hasThirdLevel && thirdLevelItems.length > 0 && (
-                      <div className="submenu-group-hover absolute left-full top-0 ml-2 w-64 bg-white rounded-xl shadow-lg border border-indigo-50 opacity-0 invisible transition-all duration-200 z-50 max-h-[400px] overflow-y-auto">
+                      <div className="submenu-group-hover absolute left-full top-0 ml-2 w-64 bg-white rounded-xl shadow-lg border border-indigo-50 opacity-0 invisible transition-all duration-200 z-50 max-h-screen overflow-y-auto">
                         <div className="py-2">
                           {thirdLevelItems.map((thirdItem) => (
                             <Link

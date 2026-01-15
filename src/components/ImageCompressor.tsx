@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
-import JSZip from 'jszip'
 
 interface FileItem {
   id: string
@@ -431,6 +430,8 @@ export default function ImageCompressor({ initialTarget }: ImageCompressorProps)
   }
 
   const handleDownloadAll = async () => {
+    // 动态导入 JSZip 以避免构建时的 vendor chunk 问题
+    const JSZip = (await import('jszip')).default
     const zip = new JSZip()
     queue.forEach(item => {
       if (item.blob) {

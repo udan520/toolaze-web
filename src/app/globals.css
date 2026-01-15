@@ -55,11 +55,12 @@ nav.sticky-nav {
   top: 0;
   z-index: 9999;
   transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
 }
 
 nav.sticky-nav.scrolled {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.98);
   box-shadow: 0 4px 20px -5px rgba(79, 70, 229, 0.1);
 }
 
