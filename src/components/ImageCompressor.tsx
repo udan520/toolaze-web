@@ -86,7 +86,16 @@ export default function ImageCompressor({ initialTarget }: ImageCompressorProps)
     if (isIOS() && navigator.share && item?.blob) {
       // 使用 iOS 原生 Web Share API
       try {
-        const file = new File([item.blob], filename, { type: item.blob.type || 'image/jpeg' })
+        // 压缩器始终输出JPG格式，确保MIME类型正确
+        let blob = item.blob
+        const mimeType = 'image/jpeg'
+        
+        // 确保blob的MIME类型正确，如果不匹配则重新创建blob
+        if (blob.type !== mimeType) {
+          blob = new Blob([blob], { type: mimeType })
+        }
+        
+        const file = new File([blob], filename, { type: mimeType })
         
         if (navigator.canShare && navigator.canShare({ files: [file] })) {
           await navigator.share({
