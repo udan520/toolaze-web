@@ -93,11 +93,34 @@ export default async function HomePage() {
                 >
                   <div className="absolute top-4 right-4 bg-green-100 text-green-700 text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-wide">Live</div>
                   <div className="w-12 h-12 bg-gradient-brand rounded-xl flex items-center justify-center mb-4 shadow-lg shadow-indigo-200 group-hover:scale-110 transition-transform">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white">
-                      <rect x="4" y="5" width="16" height="14" rx="2" stroke="currentColor" strokeWidth="2"/>
-                      <path d="M8 10L12 7L16 10V17H8V10Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                      <circle cx="9" cy="12" r="1" fill="currentColor"/>
-                    </svg>
+                    {item.tool === 'image-converter' || item.tool === 'image-conversion' ? (
+                      // 图片格式转换图标
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white">
+                        {/* 浅蓝色背景矩形 */}
+                        <rect x="2" y="2" width="20" height="20" rx="2.5" fill="white" opacity="0.3"/>
+                        {/* 深蓝色转换箭头（对角线） */}
+                        <path d="M5 5L19 19M19 5L5 19" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
+                        {/* 图片图标（前景） */}
+                        <rect x="7" y="9" width="10" height="7" rx="1.5" fill="currentColor"/>
+                        <circle cx="9.5" cy="11.5" r="0.8" fill="white"/>
+                        <path d="M11.5 13.5L13.5 11.5L15.5 13.5" stroke="white" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+                      </svg>
+                    ) : (
+                      // 图片压缩图标
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white">
+                        {/* 四个方块，表示压缩 */}
+                        <rect x="3" y="3" width="7" height="7" rx="1.5" fill="currentColor"/>
+                        <rect x="14" y="3" width="7" height="7" rx="1.5" fill="currentColor"/>
+                        <rect x="3" y="14" width="7" height="7" rx="1.5" fill="currentColor"/>
+                        <rect x="14" y="14" width="7" height="7" rx="1.5" fill="currentColor"/>
+                        {/* 向内箭头（左上和右下） */}
+                        <path d="M6.5 6.5L9 9M9 6.5L6.5 9" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M17.5 17.5L15 15M15 17.5L17.5 15" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                        {/* 向外箭头（右上和左下） */}
+                        <path d="M17.5 6.5L15 9M15 6.5L17.5 9" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M6.5 17.5L9 15M9 17.5L6.5 15" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    )}
                   </div>
                   <h3 className="font-bold text-slate-900 mb-2">
                     {(item.title || '').replace(/<[^>]*>/g, '').substring(0, 50)}
@@ -112,10 +135,19 @@ export default async function HomePage() {
               <Link href="/image-compressor/png-to-100kb" className="p-6 rounded-3xl bg-[#F8FAFF] border-2 border-indigo-100 hover:border-indigo-300 transition-all group relative overflow-hidden">
                 <div className="absolute top-4 right-4 bg-green-100 text-green-700 text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-wide">Live</div>
                 <div className="w-12 h-12 bg-gradient-brand rounded-xl flex items-center justify-center mb-4 shadow-lg shadow-indigo-200 group-hover:scale-110 transition-transform">
+                  {/* 图片压缩图标 */}
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white">
-                    <rect x="4" y="5" width="16" height="14" rx="2" stroke="currentColor" strokeWidth="2"/>
-                    <path d="M8 10L12 7L16 10V17H8V10Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <circle cx="9" cy="12" r="1" fill="currentColor"/>
+                    {/* 四个方块，表示压缩 */}
+                    <rect x="3" y="3" width="7" height="7" rx="1.5" fill="currentColor"/>
+                    <rect x="14" y="3" width="7" height="7" rx="1.5" fill="currentColor"/>
+                    <rect x="3" y="14" width="7" height="7" rx="1.5" fill="currentColor"/>
+                    <rect x="14" y="14" width="7" height="7" rx="1.5" fill="currentColor"/>
+                    {/* 向内箭头（左上和右下） */}
+                    <path d="M6.5 6.5L9 9M9 6.5L6.5 9" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M17.5 17.5L15 15M15 17.5L17.5 15" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                    {/* 向外箭头（右上和左下） */}
+                    <path d="M17.5 6.5L15 9M15 6.5L17.5 9" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M6.5 17.5L9 15M9 17.5L6.5 15" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </div>
                 <h3 className="font-bold text-slate-900">Image Compressor</h3>
