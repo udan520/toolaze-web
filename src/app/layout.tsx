@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
+import Script from 'next/script'
 import './globals.css'
 import ErrorSuppressor from '@/components/ErrorSuppressor'
-import { GoogleAnalytics } from '@next/third-parties/google'
 
 export const metadata: Metadata = {
   title: 'Toolaze - Free AI Image Compressor & Local Tools',
@@ -22,7 +22,19 @@ export default function RootLayout({
       <body className="flex flex-col min-h-screen overflow-x-hidden font-sans antialiased" suppressHydrationWarning>
         <ErrorSuppressor />
         {children}
-        <GoogleAnalytics gaId="G-8KFZMZZ67F" />
+        {/* Google Analytics - Must be at the end of body for static export */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-8KFZMZZ67F"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-8KFZMZZ67F');
+          `}
+        </Script>
       </body>
     </html>
   )
