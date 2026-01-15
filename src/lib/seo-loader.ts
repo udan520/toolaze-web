@@ -1,10 +1,14 @@
 import imageCompressionData from '@/data/image-compression.json';
+import imageConverterData from '@/data/image-converter.json';
 
 export function getSeoContent(tool: string, slug: string) {
   try {
-    // 目前仅处理图片压缩类工具
     if (tool === 'image-compressor' || tool === 'image-compression') {
       const data = (imageCompressionData as any)[slug]
+      return data || null
+    }
+    if (tool === 'image-converter' || tool === 'image-conversion') {
+      const data = (imageConverterData as any)[slug]
       return data || null
     }
     return null
@@ -19,16 +23,28 @@ export function getAllSlugs(tool: string) {
   if (tool === 'image-compressor' || tool === 'image-compression') {
     return Object.keys(imageCompressionData);
   }
+  if (tool === 'image-converter' || tool === 'image-conversion') {
+    return Object.keys(imageConverterData);
+  }
   return [];
 }
 
 // 获取所有工具列表（用于主页）
 export async function getAllTools(): Promise<Array<{ tool: string; slug: string }>> {
   const tools: Array<{ tool: string; slug: string }> = []
-  const slugs = getAllSlugs('image-compressor')
-  for (const slug of slugs) {
+  
+  // 添加图片压缩工具
+  const compressorSlugs = getAllSlugs('image-compressor')
+  for (const slug of compressorSlugs) {
     tools.push({ tool: 'image-compressor', slug })
   }
+  
+  // 添加图片转换工具
+  const converterSlugs = getAllSlugs('image-converter')
+  for (const slug of converterSlugs) {
+    tools.push({ tool: 'image-converter', slug })
+  }
+  
   return tools
 }
 

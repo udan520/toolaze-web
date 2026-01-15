@@ -27,6 +27,14 @@ const nextConfig = {
           },
         },
       };
+      
+      // 排除 heic2any 从 SSR，因为它只在客户端运行
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        fs: false,
+        path: false,
+        crypto: false,
+      };
     }
     return config;
   },

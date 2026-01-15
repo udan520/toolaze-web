@@ -246,7 +246,8 @@ nav.sticky-nav.scrolled {
 
 .size-tag {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 2px;
   color: #64748b;
   margin-top: 2px;
 }

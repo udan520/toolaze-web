@@ -14,38 +14,35 @@ interface FileItem {
   thumbReady: boolean
 }
 
-interface ImageCompressorProps {
-  initialTarget?: string | number
+type ImageFormat = 'jpg' | 'png' | 'webp'
+
+interface ImageConverterProps {
+  initialFormat?: string
 }
 
-export default function ImageCompressor({ initialTarget }: ImageCompressorProps) {
-  // Parse target from slug
-  const parseTargetFromSlug = (slug: string | number | undefined): { size: number; unit: 'KB' | 'MB' } => {
-    if (typeof slug === 'number') {
-      return { size: slug, unit: 'KB' }
-    }
+export default function ImageConverter({ initialFormat }: ImageConverterProps) {
+  // Parse format from slug
+  const parseFormatFromSlug = (slug: string | undefined): ImageFormat => {
     if (!slug || typeof slug !== 'string') {
-      return { size: 200, unit: 'KB' }
+      return 'jpg'
     }
     
-    const kbMatch = slug.match(/(\d+)kb/i)
-    if (kbMatch) {
-      return { size: parseInt(kbMatch[1], 10), unit: 'KB' }
+    const formatMatch = slug.match(/-to-(jpg|jpeg|png|webp)$/i)
+    if (formatMatch) {
+      const format = formatMatch[1].toLowerCase()
+      if (format === 'jpeg') return 'jpg'
+      if (format === 'jpg' || format === 'png' || format === 'webp') {
+        return format as ImageFormat
+      }
     }
     
-    const mbMatch = slug.match(/(\d+)mb/i)
-    if (mbMatch) {
-      return { size: parseInt(mbMatch[1], 10), unit: 'MB' }
-    }
-    
-    return { size: 200, unit: 'KB' }
+    return 'jpg'
   }
 
-  const parsedTarget = parseTargetFromSlug(initialTarget)
+  const parsedFormat = parseFormatFromSlug(initialFormat)
   const [queue, setQueue] = useState<FileItem[]>([])
   const [isProcessing, setIsProcessing] = useState(false)
-  const [targetSize, setTargetSize] = useState(parsedTarget.size)
-  const [unit, setUnit] = useState<'KB' | 'MB'>(parsedTarget.unit)
+  const [targetFormat, setTargetFormat] = useState<ImageFormat>(parsedFormat)
   const [toasts, setToasts] = useState<Array<{ id: string; msg: string; type: string }>>([])
   const [modalImage, setModalImage] = useState<string | null>(null)
   const [fileStates, setFileStates] = useState<Record<string, { status: string; newSize?: string; thumbUrl?: string }>>({})
@@ -84,7 +81,6 @@ export default function ImageCompressor({ initialTarget }: ImageCompressorProps)
     const item = queue.find(i => i.url === url || i.rawUrl === url)
     
     if (isIOS() && navigator.share && item?.blob) {
-      // 使用 iOS 原生 Web Share API
       try {
         const file = new File([item.blob], filename, { type: item.blob.type || 'image/jpeg' })
         
@@ -98,17 +94,14 @@ export default function ImageCompressor({ initialTarget }: ImageCompressorProps)
           return
         }
       } catch (error: any) {
-        // 如果用户取消分享，不显示错误
         if (error.name !== 'AbortError') {
           console.error('Share failed:', error)
-          // 如果分享失败，回退到普通下载
         } else {
-          return // 用户取消，直接返回
+          return
         }
       }
     }
     
-    // 非 iOS 或分享失败时，使用普通下载
     const a = document.createElement('a')
     a.href = url
     a.download = filename
@@ -117,7 +110,7 @@ export default function ImageCompressor({ initialTarget }: ImageCompressorProps)
     document.body.removeChild(a)
   }
 
-  const compressImage = (rawUrl: string, maxSize: number): Promise<Blob> => {
+  const convertImage = (rawUrl: string, format: ImageFormat): Promise<Blob> => {
     return new Promise((resolve, reject) => {
       const img = new Image()
       img.onerror = () => reject(new Error('Failed to load image'))
@@ -129,24 +122,44 @@ export default function ImageCompressor({ initialTarget }: ImageCompressorProps)
             reject(new Error('Failed to get canvas context'))
             return
           }
-          let w = img.width, h = img.height, q = 0.92, res: Blob | null = null
-
-          for (let i = 0; i < 7; i++) {
-            canvas.width = w
-            canvas.height = h
-            ctx.drawImage(img, 0, 0, w, h)
-            res = await new Promise<Blob | null>(r => canvas.toBlob(r, 'image/jpeg', q))
-            if (res && res.size <= maxSize) break
-            q -= 0.15
-            if (q < 0.3) {
-              w *= 0.8
-              h *= 0.8
-            }
+          
+          canvas.width = img.width
+          canvas.height = img.height
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
+          
+          let mimeType: string
+          let quality: number | undefined
+          
+          switch (format) {
+            case 'jpg':
+              mimeType = 'image/jpeg'
+              quality = 0.92
+              break
+            case 'png':
+              mimeType = 'image/png'
+              quality = undefined // PNG doesn't support quality
+              break
+            case 'webp':
+              mimeType = 'image/webp'
+              quality = 0.92
+              break
+            default:
+              mimeType = 'image/jpeg'
+              quality = 0.92
           }
-          if (res) {
-            resolve(res)
+          
+          const blob = await new Promise<Blob | null>(r => {
+            if (quality !== undefined) {
+              canvas.toBlob(r, mimeType, quality)
+            } else {
+              canvas.toBlob(r, mimeType)
+            }
+          })
+          
+          if (blob) {
+            resolve(blob)
           } else {
-            reject(new Error('Compression failed'))
+            reject(new Error('Conversion failed'))
           }
         } catch (e) {
           reject(e)
@@ -328,7 +341,7 @@ export default function ImageCompressor({ initialTarget }: ImageCompressorProps)
         file: processedFile,
         origSize: formatFileSize(file.size),
         origFormat: origFormat,
-        outputFormat: 'JPG',
+        outputFormat: targetFormat.toUpperCase(),
         blob: null,
         url: null,
         rawUrl: URL.createObjectURL(processedFile),
@@ -344,7 +357,6 @@ export default function ImageCompressor({ initialTarget }: ImageCompressorProps)
     setQueue(prev => [...newItems, ...prev])
     processThumbnails(newItems)
 
-    // Scroll to start button
     setTimeout(() => {
       if (startBtnRef.current) {
         const nav = document.getElementById('mainNav')
@@ -361,7 +373,6 @@ export default function ImageCompressor({ initialTarget }: ImageCompressorProps)
   const handleStart = async () => {
     if (queue.length === 0 || isProcessing) return
     setIsProcessing(true)
-    const target = targetSize * (unit === 'MB' ? 1024 * 1024 : 1024)
     
     if (downloadAllBtnRef.current) {
       downloadAllBtnRef.current.classList.remove('show')
@@ -380,11 +391,11 @@ export default function ImageCompressor({ initialTarget }: ImageCompressorProps)
 
       try {
         const timeoutPromise = new Promise<Blob>((_, reject) => 
-          setTimeout(() => reject(new Error('Compression timeout after 60 seconds')), 60000)
+          setTimeout(() => reject(new Error('Conversion timeout after 60 seconds')), 60000)
         )
         
         const blob = await Promise.race([
-          compressImage(item.rawUrl, target),
+          convertImage(item.rawUrl, targetFormat),
           timeoutPromise
         ])
         
@@ -392,7 +403,7 @@ export default function ImageCompressor({ initialTarget }: ImageCompressorProps)
         const newSize = formatFileSize(blob.size)
         
         setQueue(prev => prev.map(i => 
-          i.id === item.id ? { ...i, blob, url } : i
+          i.id === item.id ? { ...i, blob, url, outputFormat: targetFormat.toUpperCase() } : i
         ))
         
         setFileStates(prev => ({
@@ -406,15 +417,15 @@ export default function ImageCompressor({ initialTarget }: ImageCompressorProps)
         }))
         
         const errorMsg = (error as Error).message?.includes('timeout') 
-          ? `Compression timeout: ${item.file.name}` 
-          : `Failed to compress: ${item.file.name}`
+          ? `Conversion timeout: ${item.file.name}` 
+          : `Failed to convert: ${item.file.name}`
         showToast(errorMsg, 'error')
       }
     }
 
     setIsProcessing(false)
-    const hasCompressed = queue.some(item => item.blob !== null)
-    if (hasCompressed) {
+    const hasConverted = queue.some(item => item.blob !== null)
+    if (hasConverted) {
       showToast('Processing completed!', 'success')
       if (downloadAllBtnRef.current) {
         downloadAllBtnRef.current.classList.add('show')
@@ -423,11 +434,9 @@ export default function ImageCompressor({ initialTarget }: ImageCompressorProps)
     }
   }
 
-  const retryCompress = async (itemId: string) => {
+  const retryConvert = async (itemId: string) => {
     const item = queue.find(i => i.id === itemId)
     if (!item) return
-    
-    const target = targetSize * (unit === 'MB' ? 1024 * 1024 : 1024)
     
     setFileStates(prev => ({
       ...prev,
@@ -436,11 +445,11 @@ export default function ImageCompressor({ initialTarget }: ImageCompressorProps)
 
     try {
       const timeoutPromise = new Promise<Blob>((_, reject) => 
-        setTimeout(() => reject(new Error('Compression timeout after 60 seconds')), 60000)
+        setTimeout(() => reject(new Error('Conversion timeout after 60 seconds')), 60000)
       )
       
       const blob = await Promise.race([
-        compressImage(item.rawUrl, target),
+        convertImage(item.rawUrl, targetFormat),
         timeoutPromise
       ])
       
@@ -452,7 +461,7 @@ export default function ImageCompressor({ initialTarget }: ImageCompressorProps)
       const newSize = formatFileSize(blob.size)
       
       setQueue(prev => prev.map(i => 
-        i.id === itemId ? { ...i, blob, url } : i
+        i.id === itemId ? { ...i, blob, url, outputFormat: targetFormat.toUpperCase() } : i
       ))
       
       setFileStates(prev => ({
@@ -462,8 +471,8 @@ export default function ImageCompressor({ initialTarget }: ImageCompressorProps)
       
       showToast(`Retry successful: ${item.file.name}`, 'success')
       
-      const hasCompressed = queue.some(i => i.blob !== null)
-      if (downloadAllBtnRef.current && hasCompressed) {
+      const hasConverted = queue.some(i => i.blob !== null)
+      if (downloadAllBtnRef.current && hasConverted) {
         downloadAllBtnRef.current.classList.add('show')
         downloadAllBtnRef.current.style.display = 'inline-flex'
       }
@@ -497,9 +506,9 @@ export default function ImageCompressor({ initialTarget }: ImageCompressorProps)
       return newStates
     })
     
-    const hasCompressed = queue.some(i => i.id !== id && i.blob !== null)
+    const hasConverted = queue.some(i => i.id !== id && i.blob !== null)
     if (downloadAllBtnRef.current) {
-      if (hasCompressed) {
+      if (hasConverted) {
         downloadAllBtnRef.current.classList.add('show')
         downloadAllBtnRef.current.style.display = 'inline-flex'
       } else {
@@ -527,18 +536,19 @@ export default function ImageCompressor({ initialTarget }: ImageCompressorProps)
   }
 
   const handleDownloadAll = async () => {
-    // 动态导入 JSZip 以避免构建时的 vendor chunk 问题
     const JSZip = (await import('jszip')).default
     const zip = new JSZip()
     queue.forEach(item => {
       if (item.blob) {
-        zip.file(`min_${item.file.name.split('.')[0]}.jpg`, item.blob)
+        const originalName = item.file.name.split('.')[0]
+        const extension = targetFormat === 'jpg' ? 'jpg' : targetFormat
+        zip.file(`${originalName}.${extension}`, item.blob)
       }
     })
     const content = await zip.generateAsync({ type: 'blob' })
     const a = document.createElement('a')
     a.href = URL.createObjectURL(content)
-    a.download = 'compressed_images.zip'
+    a.download = `converted_images.${targetFormat}.zip`
     document.body.appendChild(a)
     a.click()
     document.body.removeChild(a)
@@ -553,8 +563,15 @@ export default function ImageCompressor({ initialTarget }: ImageCompressorProps)
     setModalImage(null)
   }
 
+  // 当 targetFormat 变化时，更新队列中所有项的 outputFormat
   useEffect(() => {
-    // Check for files from homepage
+    setQueue(prev => prev.map(item => ({
+      ...item,
+      outputFormat: targetFormat.toUpperCase()
+    })))
+  }, [targetFormat])
+
+  useEffect(() => {
     try {
       if (typeof window === 'undefined' || !window.sessionStorage) return
       
@@ -597,7 +614,6 @@ export default function ImageCompressor({ initialTarget }: ImageCompressorProps)
       console.warn('SessionStorage access blocked:', error)
     }
 
-    // Drag and drop handlers
     const dropZone = dropZoneRef.current
     if (!dropZone) return
 
@@ -652,9 +668,13 @@ export default function ImageCompressor({ initialTarget }: ImageCompressorProps)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const hasCompressed = queue.some(item => item.blob !== null)
+  const hasConverted = queue.some(item => item.blob !== null)
   const showControls = queue.length > 0
   const showGallery = queue.length > 0
+
+  const getFileExtension = (format: ImageFormat): string => {
+    return format === 'jpg' ? 'jpg' : format
+  }
 
   return (
     <>
@@ -712,7 +732,6 @@ export default function ImageCompressor({ initialTarget }: ImageCompressorProps)
         </div>
       )}
 
-
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="bg-white rounded-super p-6 shadow-soft border border-indigo-50">
           <div
@@ -748,22 +767,16 @@ export default function ImageCompressor({ initialTarget }: ImageCompressorProps)
 
           {showControls && (
             <div className="controls mt-6" id="controlsSection">
-              <span className="font-semibold text-slate-700">Target Size:</span>
-              <input 
-                type="number" 
-                id="targetSize"
-                value={targetSize}
-                onChange={(e) => setTargetSize(Number(e.target.value))}
-                style={{ width: '70px', padding: '8px', border: '1px solid #cbd5e1', borderRadius: '6px' }}
-              />
+              <span className="font-semibold text-slate-700">Convert to:</span>
               <select 
-                id="unit"
-                value={unit}
-                onChange={(e) => setUnit(e.target.value as 'KB' | 'MB')}
-                style={{ padding: '8px', borderRadius: '6px', border: '1px solid #cbd5e1' }}
+                id="targetFormat"
+                value={targetFormat}
+                onChange={(e) => setTargetFormat(e.target.value as ImageFormat)}
+                style={{ padding: '8px', borderRadius: '6px', border: '1px solid #cbd5e1', minWidth: '100px' }}
               >
-                <option value="KB">KB</option>
-                <option value="MB">MB</option>
+                <option value="jpg">JPG</option>
+                <option value="png">PNG</option>
+                <option value="webp">WebP</option>
               </select>
               <div style={{ width: '20px' }}></div>
               <button 
@@ -774,14 +787,14 @@ export default function ImageCompressor({ initialTarget }: ImageCompressorProps)
                 disabled={isProcessing}
                 style={{ padding: '12px 24px !important' }}
               >
-                <span id="btnText">{isProcessing ? 'Processing...' : 'Start Batch Compression'}</span>
+                <span id="btnText">{isProcessing ? 'Processing...' : 'Start Batch Conversion'}</span>
               </button>
               <button 
                 id="downloadAllBtn"
                 ref={downloadAllBtnRef}
                 className="btn-green" 
                 onClick={handleDownloadAll}
-                style={{ padding: '12px 24px !important', display: hasCompressed ? 'inline-flex' : 'none' }}
+                style={{ padding: '12px 24px !important', display: hasConverted ? 'inline-flex' : 'none' }}
               >
                 Download All (ZIP)
               </button>
@@ -850,7 +863,7 @@ export default function ImageCompressor({ initialTarget }: ImageCompressorProps)
                         {state.status === 'Error' && (
                           <button 
                             className="single-dl retry-btn"
-                            onClick={() => retryCompress(item.id)}
+                            onClick={() => retryConvert(item.id)}
                           >
                             Retry
                           </button>
@@ -858,7 +871,11 @@ export default function ImageCompressor({ initialTarget }: ImageCompressorProps)
                         {state.status === 'Done' && item.url && (
                           <button 
                             className="single-dl"
-                            onClick={() => forceDownload(item.url!, `min_${item.file.name}`)}
+                            onClick={() => {
+                              const originalName = item.file.name.split('.')[0]
+                              const extension = getFileExtension(targetFormat)
+                              forceDownload(item.url!, `${originalName}.${extension}`)
+                            }}
                           >
                             Download
                           </button>

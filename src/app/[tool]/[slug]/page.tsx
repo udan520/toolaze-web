@@ -5,6 +5,7 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import Breadcrumb from '@/components/Breadcrumb'
 import ImageCompressor from '@/components/ImageCompressor'
+import ImageConverter from '@/components/ImageConverter'
 import Rating from '@/components/blocks/Rating'
 import type { Metadata } from 'next'
 import React from 'react'
@@ -42,11 +43,28 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 // 2. 告诉 Next.js 在打包时生成哪些静态页面 (SSG)
 export async function generateStaticParams() {
-  const slugs = getAllSlugs('image-compressor')
-  return slugs.map((slug) => ({
-    tool: 'image-compressor',
-    slug: slug,
-  }))
+  const compressorSlugs = getAllSlugs('image-compressor')
+  const converterSlugs = getAllSlugs('image-converter')
+  
+  const params = []
+  
+  // 添加图片压缩工具的页面
+  for (const slug of compressorSlugs) {
+    params.push({
+      tool: 'image-compressor',
+      slug: slug,
+    })
+  }
+  
+  // 添加图片转换工具的页面
+  for (const slug of converterSlugs) {
+    params.push({
+      tool: 'image-converter',
+      slug: slug,
+    })
+  }
+  
+  return params
 }
 
 // 格式化 tool 名称为显示名称
@@ -146,29 +164,61 @@ export default async function LandingPage({ params }: PageProps) {
       return null
     }
 
+    // 根据工具类型判断
+    const isConverter = resolvedParams.tool === 'image-converter' || resolvedParams.tool === 'image-conversion'
+    
     // 默认内容（如果没有提供，使用通用内容）
-    const whyToolazeTitle = content.sections?.whyToolaze?.title || "Stop Losing Time on Slow Image Compression Tools"
-    const whyToolazeDesc = content.intro?.content || content.sections?.whyToolaze?.description || "Traditional image compressors are slow, limit file counts, and often compromise quality. Toolaze compresses images with precise size control, maintaining visual quality while dramatically reducing file sizes."
-    const whyToolazeFeatures = content.sections?.whyToolaze?.features || [
-      { icon: '📂', title: 'Batch Processing', desc: 'Compress up to 100 images at once' },
-      { icon: '🎯', title: 'Precise Size Control', desc: 'Set exact target size in KB or MB' },
-      { icon: '💎', title: '100% Free', desc: 'No ads forever.' }
-    ]
+    const whyToolazeTitle = content.sections?.whyToolaze?.title || (isConverter 
+      ? "Convert Images Without Quality Loss"
+      : "Stop Losing Time on Slow Image Compression Tools")
+    const whyToolazeDesc = content.intro?.content || content.sections?.whyToolaze?.description || (isConverter
+      ? "Convert images between JPG, PNG, and WebP formats instantly. Our browser-based converter processes images locally, ensuring complete privacy and fast conversion. Perfect for web developers, designers, and content creators."
+      : "Traditional image compressors are slow, limit file counts, and often compromise quality. Toolaze compresses images with precise size control, maintaining visual quality while dramatically reducing file sizes.")
+    const whyToolazeFeatures = content.sections?.whyToolaze?.features || (isConverter
+      ? [
+          { icon: '📂', title: 'Batch Processing', desc: 'Convert up to 100 images at once' },
+          { icon: '🎯', title: 'Multiple Formats', desc: 'JPG, PNG, WebP, and HEIC support' },
+          { icon: '💎', title: '100% Free', desc: 'No ads forever.' }
+        ]
+      : [
+          { icon: '📂', title: 'Batch Processing', desc: 'Compress up to 100 images at once' },
+          { icon: '🎯', title: 'Precise Size Control', desc: 'Set exact target size in KB or MB' },
+          { icon: '💎', title: '100% Free', desc: 'No ads forever.' }
+        ])
 
+    // 根据工具类型设置不同的默认步骤
+    const defaultUploadDesc = isConverter 
+      ? 'Drag and drop up to 100 images or folders. Supports JPG, PNG, WebP, BMP, and HEIC formats.'
+      : 'Drag and drop up to 100 images or folders. Supports JPG, PNG, WebP, and BMP formats.'
+    const defaultSecondStep = isConverter
+      ? { title: 'Choose Format', desc: 'Select your target format: JPG, PNG, or WebP. Our converter maintains quality during conversion.' }
+      : { title: 'Set Target Size', desc: 'Choose your desired file size in KB or MB. Our algorithm compresses images precisely to your target.' }
+    const defaultDownloadDesc = isConverter
+      ? 'Download individual converted images or all at once as a ZIP file. Fast and efficient.'
+      : 'Download individual compressed images or all at once as a ZIP file. Fast and efficient.'
+    
     const howToUseSteps = content.sections?.howToUse?.steps || [
-      { title: 'Upload Images', desc: 'Drag and drop up to 100 images or folders. Supports JPG, PNG, WebP, and BMP formats.' },
-      { title: 'Set Target Size', desc: 'Choose your desired file size in KB or MB. Our algorithm compresses images precisely to your target.' },
-      { title: 'Download Results', desc: 'Download individual compressed images or all at once as a ZIP file. Fast and efficient.' }
+      { title: 'Upload Images', desc: defaultUploadDesc },
+      defaultSecondStep,
+      { title: 'Download Results', desc: defaultDownloadDesc }
     ]
 
-    const scenariosData = content.scenes || content.sections?.scenarios || [
-      { icon: '💻', title: 'For Web Developers', description: 'Optimize images for websites and apps. Reduce load times while maintaining quality for better SEO and user experience.' },
-      { icon: '🛒', title: 'For E-commerce', description: 'Compress product images in bulk. Faster page loads mean better conversion rates and improved search rankings.' },
-      { icon: '📱', title: 'For Content Creators', description: 'Prepare images for social media and blogs. Batch process multiple images quickly without quality loss.' }
-    ]
+    const scenariosData = content.scenes || content.sections?.scenarios || (isConverter
+      ? [
+          { icon: '💻', title: 'For Web Developers', description: 'Convert images to WebP for better performance. Optimize formats for faster page loads and improved SEO.' },
+          { icon: '🎨', title: 'For Designers', description: 'Convert between formats for different design needs. Preserve transparency with PNG or optimize with JPG.' },
+          { icon: '📱', title: 'For Content Creators', description: 'Batch convert images for social media and blogs. Ensure compatibility across all platforms.' }
+        ]
+      : [
+          { icon: '💻', title: 'For Web Developers', description: 'Optimize images for websites and apps. Reduce load times while maintaining quality for better SEO and user experience.' },
+          { icon: '🛒', title: 'For E-commerce', description: 'Compress product images in bulk. Faster page loads mean better conversion rates and improved search rankings.' },
+          { icon: '📱', title: 'For Content Creators', description: 'Prepare images for social media and blogs. Batch process multiple images quickly without quality loss.' }
+        ])
 
     const comparisonData = content.sections?.comparison || content.compare ? {
-      toolaze: content.compare?.toolaze || content.sections?.comparison?.toolaze || 'Batch up to 100 images, Precise size control, Multiple format support, 100% private & free, No sign-up required',
+      toolaze: content.compare?.toolaze || content.sections?.comparison?.toolaze || (isConverter
+        ? 'Batch up to 100 images, Multiple format support, Quality preserved, 100% private & free, No sign-up required'
+        : 'Batch up to 100 images, Precise size control, Multiple format support, 100% private & free, No sign-up required'),
       others: content.compare?.others || content.sections?.comparison?.others || 'Limited batch size, No precise control, Format restrictions, Privacy concerns, Registration required'
     } : null
 
@@ -206,7 +256,7 @@ export default async function LandingPage({ params }: PageProps) {
                 {content.hero?.h1 ? (
                   renderH1WithGradient(content.hero.h1)
                 ) : (
-                  <>Free <span className="text-gradient">Image Compressor</span></>
+                  <>Free <span className="text-gradient">{isConverter ? 'Image Converter' : 'Image Compressor'}</span></>
                 )}
               </h1>
               <p className="desc-text text-lg md:text-xl max-w-2xl mx-auto">
@@ -215,11 +265,17 @@ export default async function LandingPage({ params }: PageProps) {
                     {content.hero.sub}. {content.hero.desc}
                   </>
                 ) : (
-                  content.hero?.desc || content.hero?.sub || 'Batch compress up to 100 images at once. Set exact target size. Fast, private, 100% free. No sign-up required.'
+                  content.hero?.desc || content.hero?.sub || (isConverter
+                    ? 'Convert images between JPG, PNG, and WebP formats. Batch convert up to 100 images. Fast, private, 100% free. No sign-up required.'
+                    : 'Batch compress up to 100 images at once. Set exact target size. Fast, private, 100% free. No sign-up required.')
                 )}
               </p>
             </div>
-            <ImageCompressor initialTarget={resolvedParams.slug} />
+            {resolvedParams.tool === 'image-converter' || resolvedParams.tool === 'image-conversion' ? (
+              <ImageConverter initialFormat={resolvedParams.slug} />
+            ) : (
+              <ImageCompressor initialTarget={resolvedParams.slug} />
+            )}
           </header>
 
           {/* 2. Why Toolaze 板块 */}
@@ -357,7 +413,7 @@ export default async function LandingPage({ params }: PageProps) {
           {recommendedTools.length > 0 && (
             <section className="py-24 px-6 bg-[#F8FAFF]">
               <div className="max-w-6xl mx-auto">
-                <h2 className="text-3xl font-extrabold text-center text-slate-900 mb-12">More Image Compression Tools</h2>
+                <h2 className="text-3xl font-extrabold text-center text-slate-900 mb-12">More {resolvedParams.tool === 'image-converter' ? 'Image Converter' : 'Image Compression'} Tools</h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   {recommendedTools.map((tool, idx) => (
                     <Link

@@ -32,22 +32,22 @@ export default function Navigation() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // 获取所有可用的三级工具功能（使用 useMemo 缓存）
-  const thirdLevelItems = useMemo(() => {
+  // 获取三级菜单项的函数
+  const getThirdLevelItems = (tool: string, basePath: string) => {
     try {
-      const toolSlugs = getAllSlugs('image-compressor')
+      const toolSlugs = getAllSlugs(tool)
       return toolSlugs.map(slug => {
-        const toolData = getSeoContent('image-compressor', slug)
+        const toolData = getSeoContent(tool, slug)
         return {
           slug,
           title: toolData?.hero?.h1 ? extractPageTitle(toolData.hero.h1) : slug,
-          href: `/image-compressor/${slug}`,
+          href: `${basePath}/${slug}`,
         }
       }).filter(item => item.title && item.href)
     } catch (error) {
       return []
     }
-  }, [])
+  }
 
   // 二级菜单项
   const secondLevelItems = [
@@ -55,6 +55,13 @@ export default function Navigation() {
       title: 'Image Compression',
       href: '/image-compressor',
       hasThirdLevel: true,
+      tool: 'image-compressor',
+    },
+    {
+      title: 'Image Converter',
+      href: '/image-converter',
+      hasThirdLevel: true,
+      tool: 'image-converter',
     },
   ]
 
@@ -96,21 +103,24 @@ export default function Navigation() {
                       )}
                     </Link>
                     {/* 三级菜单（hover到二级时显示） */}
-                    {item.hasThirdLevel && thirdLevelItems.length > 0 && (
-                      <div className="submenu-group-hover absolute left-full top-0 ml-2 w-64 bg-white rounded-xl shadow-lg border border-indigo-50 opacity-0 invisible transition-all duration-200 z-50 max-h-screen overflow-y-auto">
-                        <div className="py-2">
-                          {thirdLevelItems.map((thirdItem) => (
-                            <Link
-                              key={thirdItem.slug}
-                              href={thirdItem.href}
-                              className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors"
-                            >
-                              {thirdItem.title}
-                            </Link>
-                          ))}
+                    {item.hasThirdLevel && item.tool && (() => {
+                      const thirdLevelItems = getThirdLevelItems(item.tool, item.href)
+                      return thirdLevelItems.length > 0 ? (
+                        <div className="submenu-group-hover absolute left-full top-0 ml-2 w-64 bg-white rounded-xl shadow-lg border border-indigo-50 opacity-0 invisible transition-all duration-200 z-50 max-h-screen overflow-y-auto">
+                          <div className="py-2">
+                            {thirdLevelItems.map((thirdItem) => (
+                              <Link
+                                key={thirdItem.slug}
+                                href={thirdItem.href}
+                                className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors"
+                              >
+                                {thirdItem.title}
+                              </Link>
+                            ))}
+                          </div>
                         </div>
-                      </div>
-                    )}
+                      ) : null
+                    })()}
                   </div>
                 ))}
               </div>
