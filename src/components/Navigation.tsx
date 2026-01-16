@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { useEffect, useRef, useMemo } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { getAllSlugs, getSeoContent } from '@/lib/seo-loader'
 
 // 格式化 tool 名称为显示名称（与页面中的函数一致）
@@ -14,6 +14,9 @@ function extractPageTitle(h1: string): string {
 
 export default function Navigation() {
   const navRef = useRef<HTMLElement>(null)
+  const menuRef = useRef<HTMLDivElement>(null)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [expandedSubmenus, setExpandedSubmenus] = useState<Set<string>>(new Set())
 
   useEffect(() => {
     const nav = navRef.current
@@ -31,6 +34,21 @@ export default function Navigation() {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  // 点击外部关闭移动端菜单
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (mobileMenuOpen && menuRef.current && !menuRef.current.contains(event.target as Node) && navRef.current && !navRef.current.contains(event.target as Node)) {
+        setMobileMenuOpen(false)
+        setExpandedSubmenus(new Set())
+      }
+    }
+
+    if (mobileMenuOpen) {
+      document.addEventListener('mousedown', handleClickOutside)
+      return () => document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [mobileMenuOpen])
 
   // 获取三级菜单项的函数
   const getThirdLevelItems = (tool: string, basePath: string) => {
@@ -104,6 +122,31 @@ export default function Navigation() {
           </svg>
           Toolaze
         </Link>
+        
+        {/* 移动端菜单按钮 - 右上角 */}
+        <button
+          onClick={() => {
+            setMobileMenuOpen(!mobileMenuOpen)
+            // 关闭菜单时重置子菜单展开状态
+            if (mobileMenuOpen) {
+              setExpandedSubmenus(new Set())
+            }
+          }}
+          className="md:hidden absolute right-4 z-50 p-2 text-slate-700 hover:text-indigo-600 transition-colors"
+          aria-label="Toggle menu"
+        >
+          {mobileMenuOpen ? (
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          ) : (
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          )}
+        </button>
+
+        {/* 桌面端菜单 */}
         <div className="hidden md:flex gap-8 text-sm font-bold text-slate-700 items-center">
           {/* 一级菜单：Quick Tools */}
           <div className="relative group">
@@ -158,6 +201,98 @@ export default function Navigation() {
           </div>
           <Link href="/about" className="hover:text-indigo-600 transition-colors">About Us</Link>
         </div>
+
+        {/* 移动端菜单面板 */}
+        {mobileMenuOpen && (
+          <div ref={menuRef} className="block md:!hidden absolute top-full left-0 right-0 bg-white shadow-xl border-t border-indigo-50 z-40">
+            <div className="px-6 py-4 space-y-4">
+              {/* Quick Tools 部分 */}
+              <div className="border-b border-indigo-50 pb-4">
+                <div className="text-sm font-bold text-slate-700 mb-3">Quick Tools</div>
+                <div className="space-y-2">
+                  {secondLevelItems.map((item) => {
+                    const isExpanded = expandedSubmenus.has(item.title)
+                    const thirdLevelItems = item.hasThirdLevel && item.tool ? getThirdLevelItems(item.tool, item.href) : []
+                    
+                    return (
+                      <div key={item.title}>
+                        <div className="flex items-center">
+                          <Link
+                            href={item.href}
+                            onClick={() => {
+                              setMobileMenuOpen(false)
+                              setExpandedSubmenus(new Set())
+                            }}
+                            className="flex-1 flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
+                          >
+                            {item.icon && item.icon}
+                            <span>{item.title}</span>
+                          </Link>
+                          {thirdLevelItems.length > 0 && (
+                            <button
+                              onClick={(e) => {
+                                e.preventDefault()
+                                setExpandedSubmenus(prev => {
+                                  const newSet = new Set(prev)
+                                  if (newSet.has(item.title)) {
+                                    newSet.delete(item.title)
+                                  } else {
+                                    newSet.add(item.title)
+                                  }
+                                  return newSet
+                                })
+                              }}
+                              className="p-2 text-slate-500 hover:text-indigo-600 transition-colors"
+                              aria-label={isExpanded ? 'Collapse submenu' : 'Expand submenu'}
+                            >
+                              <svg 
+                                className={`w-4 h-4 transition-transform ${isExpanded ? 'rotate-90' : ''}`} 
+                                fill="none" 
+                                stroke="currentColor" 
+                                viewBox="0 0 24 24"
+                              >
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                              </svg>
+                            </button>
+                          )}
+                        </div>
+                        {/* 移动端三级菜单 - 默认折叠 */}
+                        {isExpanded && thirdLevelItems.length > 0 && (
+                          <div className="ml-5 mt-2 space-y-1">
+                            {thirdLevelItems.map((thirdItem) => (
+                              <Link
+                                key={thirdItem.slug}
+                                href={thirdItem.href}
+                                onClick={() => {
+                                  setMobileMenuOpen(false)
+                                  setExpandedSubmenus(new Set())
+                                }}
+                                className="block px-3 py-2 text-sm text-slate-500 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
+                              >
+                                {thirdItem.title}
+                              </Link>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    )
+                  })}
+                </div>
+              </div>
+              {/* About Us */}
+              <Link
+                href="/about"
+                onClick={() => {
+                  setMobileMenuOpen(false)
+                  setExpandedSubmenus(new Set())
+                }}
+                className="block px-3 py-2 text-sm font-bold text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
+              >
+                About Us
+              </Link>
+            </div>
+          </div>
+        )}
       </div>
     </nav>
   )

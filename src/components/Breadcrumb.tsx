@@ -11,7 +11,7 @@ interface BreadcrumbProps {
 
 export default function Breadcrumb({ items }: BreadcrumbProps) {
   return (
-    <div className="px-6 max-w-6xl mx-auto w-full mb-4">
+    <div className="px-6 max-w-6xl mx-auto w-full mt-8 mb-4">
       <nav className="text-sm text-slate-500" aria-label="Breadcrumb">
         <ol className="flex items-center gap-2">
           {items.map((item, index) => (

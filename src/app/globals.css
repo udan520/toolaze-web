@@ -64,6 +64,13 @@ nav.sticky-nav.scrolled {
   box-shadow: 0 4px 20px -5px rgba(79, 70, 229, 0.1);
 }
 
+/* 隐藏桌面端的移动菜单按钮 */
+@media (min-width: 768px) {
+  nav.sticky-nav button[aria-label="Toggle menu"] {
+    display: none !important;
+  }
+}
+
 /* Three-level menu hover support */
 .submenu-group:hover .submenu-group-hover {
   opacity: 1 !important;

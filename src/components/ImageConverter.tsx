@@ -82,7 +82,29 @@ export default function ImageConverter({ initialFormat }: ImageConverterProps) {
     
     if (isIOS() && navigator.share && item?.blob) {
       try {
-        const file = new File([item.blob], filename, { type: item.blob.type || 'image/jpeg' })
+        // 根据目标格式设置正确的MIME类型，确保iOS保存时格式正确
+        let mimeType: string
+        switch (targetFormat) {
+          case 'jpg':
+            mimeType = 'image/jpeg'
+            break
+          case 'png':
+            mimeType = 'image/png'
+            break
+          case 'webp':
+            mimeType = 'image/webp'
+            break
+          default:
+            mimeType = item.blob.type || 'image/jpeg'
+        }
+        
+        // 确保blob的MIME类型正确，如果不匹配则重新创建blob
+        let blob = item.blob
+        if (blob.type !== mimeType) {
+          blob = new Blob([blob], { type: mimeType })
+        }
+        
+        const file = new File([blob], filename, { type: mimeType })
         
         if (navigator.canShare && navigator.canShare({ files: [file] })) {
           await navigator.share({
@@ -380,13 +402,14 @@ export default function ImageConverter({ initialFormat }: ImageConverterProps) {
     }
     
     for (const item of queue) {
+      // 清理之前的转换结果，使用新的格式重新转换
       if (item.url) {
         URL.revokeObjectURL(item.url)
       }
       
       setFileStates(prev => ({
         ...prev,
-        [item.id]: { ...prev[item.id], status: 'Running' }
+        [item.id]: { ...prev[item.id], status: 'Running', newSize: undefined }
       }))
 
       try {
@@ -563,13 +586,7 @@ export default function ImageConverter({ initialFormat }: ImageConverterProps) {
     setModalImage(null)
   }
 
-  // 当 targetFormat 变化时，更新队列中所有项的 outputFormat
-  useEffect(() => {
-    setQueue(prev => prev.map(item => ({
-      ...item,
-      outputFormat: targetFormat.toUpperCase()
-    })))
-  }, [targetFormat])
+  // 格式切换时不立即更新，等点击开始按钮后再转换
 
   useEffect(() => {
     try {
