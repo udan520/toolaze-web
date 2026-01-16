@@ -7,6 +7,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Terms of Service - Toolaze',
   description: 'Toolaze Terms of Service - Free AI image tools with local processing. No registration required.',
+  robots: 'index, follow',
   alternates: {
     canonical: 'https://toolaze.com/terms',
   },

@@ -17,6 +17,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: 'Free Image Compressor - Batch Compress Images Online | Toolaze',
     description: 'Batch compress up to 100 images at once. Set exact target size. Fast, private, 100% free. No sign-up required.',
+    robots: 'index, follow',
     alternates: {
       canonical: 'https://toolaze.com/image-compressor',
     },

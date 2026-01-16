@@ -7,6 +7,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Privacy Policy - Toolaze',
   description: 'Toolaze Privacy Policy - We process all images locally in your browser. Your files never leave your device.',
+  robots: 'index, follow',
   alternates: {
     canonical: 'https://toolaze.com/privacy',
   },

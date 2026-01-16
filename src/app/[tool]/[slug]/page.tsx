@@ -26,6 +26,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     if (!content) {
       return {
         title: 'Tool Not Found | Toolaze',
+        robots: 'index, follow',
       }
     }
     
@@ -35,6 +36,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return {
       title: content.metadata.title,
       description: content.metadata.description,
+      robots: 'index, follow',
       alternates: {
         canonical: canonicalUrl,
       },
@@ -43,6 +45,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     console.error('Error generating metadata:', error)
     return {
       title: 'Tool Not Found | Toolaze',
+      robots: 'index, follow',
     }
   }
 }

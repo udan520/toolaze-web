@@ -17,6 +17,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: 'Free Image Converter - Batch Convert Images Online | Toolaze',
     description: 'Convert images between JPG, PNG, and WebP formats. Batch convert up to 100 images. Fast, private, 100% free. No sign-up required.',
+    robots: 'index, follow',
     alternates: {
       canonical: 'https://toolaze.com/image-converter',
     },

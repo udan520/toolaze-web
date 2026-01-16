@@ -7,6 +7,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Toolaze - Free AI Image Compressor & Local Tools',
   description: 'Compress images locally in your browser. No server uploads, 100% private, free AI tools for creators.',
+  robots: 'index, follow',
   alternates: {
     canonical: 'https://toolaze.com',
   },
