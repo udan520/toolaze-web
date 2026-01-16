@@ -1,407 +1,272 @@
 {
   "jpg-to-png": {
     "metadata": {
-      "title": "Convert JPG to PNG - Free Online Image Converter | Toolaze",
-      "description": "Convert JPG/JPEG images to PNG format instantly. Batch convert up to 100 images. 100% free, private, no uploads required."
+      "title": "Convertir JPG en PNG - Convertisseur d'Images Online Gratuit | Toolaze",
+      "description": "Convertissez les images JPG/JPEG au format PNG instantanément. Conversion par lots jusqu'à 100 images. 100% gratuit, privé, aucun téléchargement requis."
     },
     "hero": {
-      "h1": "JPG to PNG Converter",
-      "sub": "Lossless Format Conversion",
-      "desc": "Convert your JPG images to PNG format while preserving quality. Perfect for images that need transparency support or lossless compression."
+      "h1": "Convertisseur JPG en PNG",
+      "sub": "Conversion de Format Sans Perte",
+      "desc": "Convertissez vos images JPG au format PNG tout en préservant la qualité. Parfait pour les images qui nécessitent un support de transparence ou une compression sans perte."
     },
     "intro": {
-      "title": "Why Convert JPG to PNG?",
-      "content": "PNG format supports transparency and lossless compression, making it ideal for logos, graphics, and images that require high quality. Our converter processes images locally in your browser, ensuring complete privacy."
+      "title": "Pourquoi Convertir JPG en PNG?",
+      "content": "Le format PNG prend en charge la transparence et la compression sans perte, ce qui le rend idéal pour les logotypes, graphiques et images qui nécessitent une haute qualité. Notre convertisseur traite les images localement dans votre navigateur, garantissant une confidentialité complète."
     },
     "specs": {
-      "engine": "Browser-Native Conversion",
-      "limit": "Batch up to 100 images",
-      "logic": "Lossless Quality Preservation",
-      "privacy": "100% Client-Side Processing"
+      "engine": "Conversion Native du Navigateur",
+      "limit": "Lots jusqu'à 100 images",
+      "logic": "Préservation de Qualité Sans Perte",
+      "privacy": "100% Traitement Côté Client"
     },
     "scenes": [
-      {
-        "title": "Logo Conversion",
-        "desc": "Convert logos from JPG to PNG to add transparency support."
-      },
-      {
-        "title": "Graphic Design",
-        "desc": "Switch to PNG for lossless quality in design projects."
-      }
+      { "title": "Conversion de Logotype", "desc": "Convertissez les logotypes de JPG en PNG pour ajouter le support de transparence." },
+      { "title": "Design Graphique", "desc": "Passez à PNG pour une qualité sans perte dans les projets de design." }
     ],
     "faq": [
-      {
-        "q": "Will the quality be preserved?",
-        "a": "Yes, PNG is a lossless format, so quality is fully preserved during conversion."
-      },
-      {
-        "q": "Can I convert multiple files?",
-        "a": "Yes, you can batch convert up to 100 images at once."
-      }
+      { "q": "La qualité sera-t-elle préservée?", "a": "Oui, PNG est un format sans perte, donc la qualité est entièrement préservée pendant la conversion." },
+      { "q": "Puis-je convertir plusieurs fichiers?", "a": "Oui, vous pouvez convertir par lots jusqu'à 100 images à la fois." }
     ],
-    "compare": {
-      "toolaze": "Batch conversion, Lossless quality, Free",
-      "others": "Single file limits, Quality loss, Paid"
-    }
+    "compare": { "toolaze": "Conversion par lots, Qualité sans perte, Gratuit", "others": "Limites de fichier unique, Perte de qualité, Payant" }
   },
   "png-to-jpg": {
     "metadata": {
-      "title": "Convert PNG to JPG - Free Online Image Converter | Toolaze",
-      "description": "Convert PNG images to JPG format instantly. Batch convert up to 100 images. Reduce file size while maintaining quality. 100% free and private."
+      "title": "Convertir PNG en JPG - Convertisseur d'Images Online Gratuit | Toolaze",
+      "description": "Convertissez les images PNG au format JPG instantanément. Conversion par lots jusqu'à 100 images. Réduisez la taille du fichier tout en maintenant la qualité. 100% gratuit et privé."
     },
     "hero": {
-      "h1": "PNG to JPG Converter",
-      "sub": "Reduce File Size",
-      "desc": "Convert PNG images to JPG format to reduce file size significantly. Perfect for web optimization and storage savings."
+      "h1": "Convertisseur PNG en JPG",
+      "sub": "Réduire la Taille du Fichier",
+      "desc": "Convertissez les images PNG au format JPG pour réduire considérablement la taille du fichier. Parfait pour l'optimisation web et les économies de stockage."
     },
     "intro": {
-      "title": "Optimize Your Images",
-      "content": "JPG format offers much smaller file sizes compared to PNG, making it ideal for web use and storage. Our converter maintains visual quality while dramatically reducing file size."
+      "title": "Optimisez Vos Images",
+      "content": "Le format JPG offre des tailles de fichier beaucoup plus petites par rapport à PNG, ce qui le rend idéal pour l'utilisation web et le stockage. Notre convertisseur maintient la qualité visuelle tout en réduisant drastiquement la taille du fichier."
     },
     "specs": {
-      "engine": "Format Conversion Engine",
-      "limit": "Batch up to 100 images",
-      "logic": "Quality-Optimized Conversion",
-      "privacy": "Local Browser Processing"
+      "engine": "Moteur de Conversion de Format",
+      "limit": "Lots jusqu'à 100 images",
+      "logic": "Conversion Optimisée de Qualité",
+      "privacy": "Traitement Local du Navigateur"
     },
     "scenes": [
-      {
-        "title": "Web Optimization",
-        "desc": "Convert PNG to JPG for faster website loading."
-      },
-      {
-        "title": "Storage Savings",
-        "desc": "Reduce storage space by converting PNG to JPG."
-      }
+      { "title": "Optimisation Web", "desc": "Convertissez PNG en JPG pour un chargement de site web plus rapide." },
+      { "title": "Économies de Stockage", "desc": "Réduisez l'espace de stockage en convertissant PNG en JPG." }
     ],
     "faq": [
-      {
-        "q": "Will transparency be preserved?",
-        "a": "No, JPG doesn't support transparency. The transparent areas will become white."
-      },
-      {
-        "q": "How much smaller will files be?",
-        "a": "JPG files are typically 50-80% smaller than PNG files."
-      }
+      { "q": "La transparence sera-t-elle préservée?", "a": "Non, JPG ne prend pas en charge la transparence. Les zones transparentes deviendront blanches." },
+      { "q": "Combien plus petits seront les fichiers?", "a": "Les fichiers JPG sont généralement 50-80% plus petits que les fichiers PNG." }
     ],
-    "compare": {
-      "toolaze": "Batch processing, Quality control, Free",
-      "others": "Single file, No control, Paid"
-    }
+    "compare": { "toolaze": "Traitement par lots, Contrôle de qualité, Gratuit", "others": "Fichier unique, Pas de contrôle, Payant" }
   },
   "webp-to-jpg": {
     "metadata": {
-      "title": "Convert WebP to JPG - Free Online Image Converter | Toolaze",
-      "description": "Convert WebP images to JPG format instantly. Batch convert up to 100 images. Compatible with all devices and platforms. 100% free."
+      "title": "Convertir WebP en JPG - Convertisseur d'Images Online Gratuit | Toolaze",
+      "description": "Convertissez les images WebP au format JPG instantanément. Conversion par lots jusqu'à 100 images. Compatible avec tous les appareils et plateformes. 100% gratuit."
     },
     "hero": {
-      "h1": "WebP to JPG Converter",
-      "sub": "Universal Compatibility",
-      "desc": "Convert WebP images to JPG for maximum compatibility across all devices, platforms, and applications."
+      "h1": "Convertisseur WebP en JPG",
+      "sub": "Compatibilité Universelle",
+      "desc": "Convertissez les images WebP en JPG pour une compatibilité maximale sur tous les appareils, plateformes et applications."
     },
     "intro": {
-      "title": "Wide Compatibility",
-      "content": "While WebP offers great compression, JPG has universal support across all platforms. Convert your WebP images to JPG for maximum compatibility."
+      "title": "Large Compatibilité",
+      "content": "Bien que WebP offre une excellente compression, JPG a un support universel sur toutes les plateformes. Convertissez vos images WebP en JPG pour une compatibilité maximale."
     },
     "specs": {
-      "engine": "Format Conversion Engine",
-      "limit": "Batch up to 100 images",
-      "logic": "Compatibility-First Conversion",
-      "privacy": "100% Local Processing"
+      "engine": "Moteur de Conversion de Format",
+      "limit": "Lots jusqu'à 100 images",
+      "logic": "Conversion Prioritaire de Compatibilité",
+      "privacy": "100% Traitement Local"
     },
     "scenes": [
-      {
-        "title": "Legacy Support",
-        "desc": "Convert WebP to JPG for older devices and software."
-      },
-      {
-        "title": "Email Attachments",
-        "desc": "Ensure email clients can display your images."
-      }
+      { "title": "Support Legacy", "desc": "Convertissez WebP en JPG pour les appareils et logiciels plus anciens." },
+      { "title": "Pièces Jointes Email", "desc": "Assurez-vous que les clients email peuvent afficher vos images." }
     ],
     "faq": [
-      {
-        "q": "Why convert WebP to JPG?",
-        "a": "JPG has universal support, while WebP may not be supported by older devices or software."
-      },
-      {
-        "q": "Will quality be affected?",
-        "a": "JPG uses lossy compression, but we maintain high quality during conversion."
-      }
+      { "q": "Pourquoi convertir WebP en JPG?", "a": "JPG a un support universel, tandis que WebP peut ne pas être pris en charge par les appareils ou logiciels plus anciens." },
+      { "q": "La qualité sera-t-elle affectée?", "a": "JPG utilise une compression avec perte, mais nous maintenons une haute qualité pendant la conversion." }
     ],
-    "compare": {
-      "toolaze": "Batch convert, High quality, Free",
-      "others": "One by one, Quality loss, Subscription"
-    }
+    "compare": { "toolaze": "Convertir par lots, Haute qualité, Gratuit", "others": "Un par un, Perte de qualité, Abonnement" }
   },
   "webp-to-png": {
     "metadata": {
-      "title": "Convert WebP to PNG - Free Online Image Converter | Toolaze",
-      "description": "Convert WebP images to PNG format instantly. Batch convert up to 100 images. Preserve transparency and quality. 100% free and private."
+      "title": "Convertir WebP en PNG - Convertisseur d'Images Online Gratuit | Toolaze",
+      "description": "Convertissez les images WebP au format PNG instantanément. Conversion par lots jusqu'à 100 images. Préservez la transparence et la qualité. 100% gratuit et privé."
     },
     "hero": {
-      "h1": "WebP to PNG Converter",
-      "sub": "Preserve Transparency",
-      "desc": "Convert WebP images to PNG format while preserving transparency and maintaining high quality. Perfect for graphics and logos."
+      "h1": "Convertisseur WebP en PNG",
+      "sub": "Préserver la Transparence",
+      "desc": "Convertissez les images WebP au format PNG tout en préservant la transparence et en maintenant une haute qualité. Parfait pour les graphiques et logotypes."
     },
     "intro": {
-      "title": "Transparency Support",
-      "content": "PNG format supports transparency, making it ideal for graphics, logos, and images that need transparent backgrounds. Convert your WebP images to PNG for better compatibility."
+      "title": "Support de Transparence",
+      "content": "Le format PNG prend en charge la transparence, ce qui le rend idéal pour les graphiques, logotypes et images qui nécessitent des arrière-plans transparents. Convertissez vos images WebP en PNG pour une meilleure compatibilité."
     },
     "specs": {
-      "engine": "Transparency-Preserving Engine",
-      "limit": "Batch up to 100 images",
-      "logic": "Lossless Conversion",
-      "privacy": "Browser-Based Processing"
+      "engine": "Moteur Préservant la Transparence",
+      "limit": "Lots jusqu'à 100 images",
+      "logic": "Conversion Sans Perte",
+      "privacy": "Traitement Basé sur Navigateur"
     },
     "scenes": [
-      {
-        "title": "Graphic Design",
-        "desc": "Convert WebP to PNG for design software compatibility."
-      },
-      {
-        "title": "Logo Conversion",
-        "desc": "Preserve transparency when converting logos."
-      }
+      { "title": "Design Graphique", "desc": "Convertissez WebP en PNG pour la compatibilité avec les logiciels de design." },
+      { "title": "Conversion de Logotype", "desc": "Préservez la transparence lors de la conversion de logotypes." }
     ],
     "faq": [
-      {
-        "q": "Will transparency be preserved?",
-        "a": "Yes, PNG supports transparency, so transparent areas will be preserved."
-      },
-      {
-        "q": "Is the conversion lossless?",
-        "a": "PNG is a lossless format, so quality is fully preserved."
-      }
+      { "q": "La transparence sera-t-elle préservée?", "a": "Oui, PNG prend en charge la transparence, donc les zones transparentes seront préservées." },
+      { "q": "La conversion est-elle sans perte?", "a": "PNG est un format sans perte, donc la qualité est entièrement préservée." }
     ],
-    "compare": {
-      "toolaze": "Transparency support, Batch convert, Free",
-      "others": "No transparency, Single file, Paid"
-    }
+    "compare": { "toolaze": "Support de transparence, Convertir par lots, Gratuit", "others": "Pas de transparence, Fichier unique, Payant" }
   },
   "png-to-webp": {
     "metadata": {
-      "title": "Convert PNG to WebP - Free Online Image Converter | Toolaze",
-      "description": "Convert PNG images to WebP format instantly. Batch convert up to 100 images. Reduce file size by up to 30% while maintaining quality. 100% free."
+      "title": "Convertir PNG en WebP - Convertisseur d'Images Online Gratuit | Toolaze",
+      "description": "Convertissez les images PNG au format WebP instantanément. Conversion par lots jusqu'à 100 images. Réduisez la taille du fichier jusqu'à 30% tout en maintenant la qualité. 100% gratuit."
     },
     "hero": {
-      "h1": "PNG to WebP Converter",
-      "sub": "Modern Format Optimization",
-      "desc": "Convert PNG images to WebP format for smaller file sizes and faster loading. WebP offers superior compression while maintaining visual quality."
+      "h1": "Convertisseur PNG en WebP",
+      "sub": "Optimisation de Format Moderne",
+      "desc": "Convertissez les images PNG au format WebP pour des tailles de fichier plus petites et un chargement plus rapide. WebP offre une compression supérieure tout en maintenant la qualité visuelle."
     },
     "intro": {
-      "title": "Modern Web Format",
-      "content": "WebP is a modern image format that provides 25-35% better compression than PNG while maintaining similar quality. Perfect for modern web applications."
+      "title": "Format Web Moderne",
+      "content": "WebP est un format d'image moderne qui fournit 25-35% de meilleure compression que PNG tout en maintenant une qualité similaire. Parfait pour les applications web modernes."
     },
     "specs": {
-      "engine": "WebP Conversion Engine",
-      "limit": "Batch up to 100 images",
-      "logic": "Quality-Preserving Conversion",
-      "privacy": "Local Browser Processing"
+      "engine": "Moteur de Conversion WebP",
+      "limit": "Lots jusqu'à 100 images",
+      "logic": "Conversion Préservant la Qualité",
+      "privacy": "Traitement Local du Navigateur"
     },
     "scenes": [
-      {
-        "title": "Web Performance",
-        "desc": "Convert PNG to WebP for faster website loading."
-      },
-      {
-        "title": "Mobile Apps",
-        "desc": "Reduce app size with WebP format."
-      }
+      { "title": "Performance Web", "desc": "Convertissez PNG en WebP pour un chargement de site web plus rapide." },
+      { "title": "Applications Mobiles", "desc": "Réduisez la taille de l'application avec le format WebP." }
     ],
     "faq": [
-      {
-        "q": "How much smaller are WebP files?",
-        "a": "WebP files are typically 25-35% smaller than PNG files with similar quality."
-      },
-      {
-        "q": "Is WebP widely supported?",
-        "a": "WebP is supported by all modern browsers and mobile devices."
-      }
+      { "q": "Combien plus petits sont les fichiers WebP?", "a": "Les fichiers WebP sont généralement 25-35% plus petits que les fichiers PNG avec une qualité similaire." },
+      { "q": "WebP est-il largement pris en charge?", "a": "WebP est pris en charge par tous les navigateurs modernes et appareils mobiles." }
     ],
-    "compare": {
-      "toolaze": "Batch convert, Quality preserved, Free",
-      "others": "Single file, Quality loss, Paid"
-    }
+    "compare": { "toolaze": "Convertir par lots, Qualité préservée, Gratuit", "others": "Fichier unique, Perte de qualité, Payant" }
   },
   "jpg-to-webp": {
     "metadata": {
-      "title": "Convert JPG to WebP - Free Online Image Converter | Toolaze",
-      "description": "Convert JPG images to WebP format instantly. Batch convert up to 100 images. Reduce file size by up to 30% while maintaining quality. 100% free."
+      "title": "Convertir JPG en WebP - Convertisseur d'Images Online Gratuit | Toolaze",
+      "description": "Convertissez les images JPG au format WebP instantanément. Conversion par lots jusqu'à 100 images. Réduisez la taille du fichier jusqu'à 30% tout en maintenant la qualité. 100% gratuit."
     },
     "hero": {
-      "h1": "JPG to WebP Converter",
-      "sub": "Superior Compression",
-      "desc": "Convert JPG images to WebP format for even smaller file sizes. WebP offers better compression than JPG while maintaining similar visual quality."
+      "h1": "Convertisseur JPG en WebP",
+      "sub": "Compression Supérieure",
+      "desc": "Convertissez les images JPG au format WebP pour des tailles de fichier encore plus petites. WebP offre une meilleure compression que JPG tout en maintenant une qualité visuelle similaire."
     },
     "intro": {
-      "title": "Better Compression",
-      "content": "WebP format provides 25-30% better compression than JPG while maintaining similar visual quality. Perfect for modern web applications and mobile apps."
+      "title": "Meilleure Compression",
+      "content": "Le format WebP fournit 25-30% de meilleure compression que JPG tout en maintenant une qualité visuelle similaire. Parfait pour les applications web modernes et les applications mobiles."
     },
     "specs": {
-      "engine": "WebP Conversion Engine",
-      "limit": "Batch up to 100 images",
-      "logic": "Quality-Optimized Conversion",
-      "privacy": "100% Client-Side"
+      "engine": "Moteur de Conversion WebP",
+      "limit": "Lots jusqu'à 100 images",
+      "logic": "Conversion Optimisée de Qualité",
+      "privacy": "100% Côté Client"
     },
     "scenes": [
-      {
-        "title": "Website Optimization",
-        "desc": "Convert JPG to WebP for faster page loads."
-      },
-      {
-        "title": "Mobile Optimization",
-        "desc": "Reduce data usage with smaller WebP files."
-      }
+      { "title": "Optimisation de Site Web", "desc": "Convertissez JPG en WebP pour des chargements de page plus rapides." },
+      { "title": "Optimisation Mobile", "desc": "Réduisez l'utilisation des données avec des fichiers WebP plus petits." }
     ],
     "faq": [
-      {
-        "q": "Is WebP better than JPG?",
-        "a": "WebP offers 25-30% better compression than JPG with similar quality."
-      },
-      {
-        "q": "Will all browsers support WebP?",
-        "a": "All modern browsers support WebP. Older browsers may need fallbacks."
-      }
+      { "q": "WebP est-il meilleur que JPG?", "a": "WebP offre 25-30% de meilleure compression que JPG avec une qualité similaire." },
+      { "q": "Tous les navigateurs prendront-ils en charge WebP?", "a": "Tous les navigateurs modernes prennent en charge WebP. Les navigateurs plus anciens peuvent nécessiter des alternatives." }
     ],
-    "compare": {
-      "toolaze": "Batch processing, Better compression, Free",
-      "others": "Single file, Same size, Paid"
-    }
+    "compare": { "toolaze": "Traitement par lots, Meilleure compression, Gratuit", "others": "Fichier unique, Même taille, Payant" }
   },
   "heic-to-jpg": {
     "metadata": {
-      "title": "Convert HEIC to JPG - Free Online Image Converter | Toolaze",
-      "description": "Convert HEIC/HEIF images to JPG format instantly. Batch convert up to 100 images. Perfect for iPhone photos. 100% free, private, no uploads required."
+      "title": "Convertir HEIC en JPG - Convertisseur d'Images Online Gratuit | Toolaze",
+      "description": "Convertissez les images HEIC/HEIF au format JPG instantanément. Conversion par lots jusqu'à 100 images. Parfait pour les photos iPhone. 100% gratuit, privé, aucun téléchargement requis."
     },
     "hero": {
-      "h1": "HEIC to JPG Converter",
-      "sub": "iPhone Photo Conversion",
-      "desc": "Convert HEIC images from your iPhone to JPG format for universal compatibility. Works with all devices and platforms."
+      "h1": "Convertisseur HEIC en JPG",
+      "sub": "Conversion de Photos iPhone",
+      "desc": "Convertissez les images HEIC de votre iPhone au format JPG pour une compatibilité universelle. Fonctionne avec tous les appareils et plateformes."
     },
     "intro": {
-      "title": "Universal Compatibility",
-      "content": "HEIC is Apple's modern image format, but JPG has universal support across all devices and platforms. Convert your HEIC photos to JPG for maximum compatibility."
+      "title": "Compatibilité Universelle",
+      "content": "HEIC est le format d'image moderne d'Apple, mais JPG a un support universel sur tous les appareils et plateformes. Convertissez vos photos HEIC en JPG pour une compatibilité maximale."
     },
     "specs": {
-      "engine": "HEIC Conversion Engine",
-      "limit": "Batch up to 100 images",
-      "logic": "Quality-Preserving Conversion",
-      "privacy": "100% Client-Side Processing"
+      "engine": "Moteur de Conversion HEIC",
+      "limit": "Lots jusqu'à 100 images",
+      "logic": "Conversion Préservant la Qualité",
+      "privacy": "100% Traitement Côté Client"
     },
     "scenes": [
-      {
-        "title": "iPhone Photos",
-        "desc": "Convert iPhone HEIC photos to JPG for sharing and storage."
-      },
-      {
-        "title": "Cross-Platform Sharing",
-        "desc": "Ensure your images work on all devices and platforms."
-      }
+      { "title": "Photos iPhone", "desc": "Convertissez les photos HEIC d'iPhone en JPG pour le partage et le stockage." },
+      { "title": "Partage Multi-Plateforme", "desc": "Assurez-vous que vos images fonctionnent sur tous les appareils et plateformes." }
     ],
     "faq": [
-      {
-        "q": "What is HEIC format?",
-        "a": "HEIC is Apple's modern image format used by iPhones. It offers better compression than JPG but has limited compatibility."
-      },
-      {
-        "q": "Will quality be preserved?",
-        "a": "Yes, we maintain high quality during conversion from HEIC to JPG."
-      }
+      { "q": "Qu'est-ce que le format HEIC?", "a": "HEIC est le format d'image moderne d'Apple utilisé par les iPhones. Il offre une meilleure compression que JPG mais a une compatibilité limitée." },
+      { "q": "La qualité sera-t-elle préservée?", "a": "Oui, nous maintenons une haute qualité pendant la conversion de HEIC en JPG." }
     ],
-    "compare": {
-      "toolaze": "Batch convert, High quality, Free",
-      "others": "Single file, Quality loss, Paid"
-    }
+    "compare": { "toolaze": "Convertir par lots, Haute qualité, Gratuit", "others": "Fichier unique, Perte de qualité, Payant" }
   },
   "heic-to-png": {
     "metadata": {
-      "title": "Convert HEIC to PNG - Free Online Image Converter | Toolaze",
-      "description": "Convert HEIC/HEIF images to PNG format instantly. Batch convert up to 100 images. Preserve quality and transparency. 100% free and private."
+      "title": "Convertir HEIC en PNG - Convertisseur d'Images Online Gratuit | Toolaze",
+      "description": "Convertissez les images HEIC/HEIF au format PNG instantanément. Conversion par lots jusqu'à 100 images. Préservez la qualité et la transparence. 100% gratuit et privé."
     },
     "hero": {
-      "h1": "HEIC to PNG Converter",
-      "sub": "Lossless Quality Conversion",
-      "desc": "Convert HEIC images to PNG format while preserving quality. PNG supports transparency and is widely compatible across all platforms."
+      "h1": "Convertisseur HEIC en PNG",
+      "sub": "Conversion de Qualité Sans Perte",
+      "desc": "Convertissez les images HEIC au format PNG tout en préservant la qualité. PNG prend en charge la transparence et est largement compatible sur toutes les plateformes."
     },
     "intro": {
-      "title": "Lossless Conversion",
-      "content": "PNG is a lossless format that supports transparency, making it ideal for graphics and images that require high quality. Convert your HEIC images to PNG for better compatibility."
+      "title": "Conversion Sans Perte",
+      "content": "PNG est un format sans perte qui prend en charge la transparence, ce qui le rend idéal pour les graphiques et images qui nécessitent une haute qualité. Convertissez vos images HEIC en PNG pour une meilleure compatibilité."
     },
     "specs": {
-      "engine": "HEIC to PNG Converter",
-      "limit": "Batch up to 100 images",
-      "logic": "Lossless Quality Preservation",
-      "privacy": "Local Browser Processing"
+      "engine": "Convertisseur HEIC en PNG",
+      "limit": "Lots jusqu'à 100 images",
+      "logic": "Préservation de Qualité Sans Perte",
+      "privacy": "Traitement Local du Navigateur"
     },
     "scenes": [
-      {
-        "title": "Graphic Design",
-        "desc": "Convert HEIC to PNG for design software compatibility."
-      },
-      {
-        "title": "Quality Preservation",
-        "desc": "Maintain lossless quality when converting HEIC images."
-      }
+      { "title": "Design Graphique", "desc": "Convertissez HEIC en PNG pour la compatibilité avec les logiciels de design." },
+      { "title": "Préservation de Qualité", "desc": "Maintenez une qualité sans perte lors de la conversion d'images HEIC." }
     ],
     "faq": [
-      {
-        "q": "Will transparency be preserved?",
-        "a": "PNG supports transparency, so if your HEIC image has transparency, it will be preserved."
-      },
-      {
-        "q": "Is the conversion lossless?",
-        "a": "PNG is a lossless format, so quality is fully preserved during conversion."
-      }
+      { "q": "La transparence sera-t-elle préservée?", "a": "PNG prend en charge la transparence, donc si votre image HEIC a de la transparence, elle sera préservée." },
+      { "q": "La conversion est-elle sans perte?", "a": "PNG est un format sans perte, donc la qualité est entièrement préservée pendant la conversion." }
     ],
-    "compare": {
-      "toolaze": "Batch convert, Lossless quality, Free",
-      "others": "Single file, Quality loss, Paid"
-    }
+    "compare": { "toolaze": "Convertir par lots, Qualité sans perte, Gratuit", "others": "Fichier unique, Perte de qualité, Payant" }
   },
   "heic-to-webp": {
     "metadata": {
-      "title": "Convert HEIC to WebP - Free Online Image Converter | Toolaze",
-      "description": "Convert HEIC/HEIF images to WebP format instantly. Batch convert up to 100 images. Modern format with superior compression. 100% free."
+      "title": "Convertir HEIC en WebP - Convertisseur d'Images Online Gratuit | Toolaze",
+      "description": "Convertissez les images HEIC/HEIF au format WebP instantanément. Conversion par lots jusqu'à 100 images. Format moderne avec compression supérieure. 100% gratuit."
     },
     "hero": {
-      "h1": "HEIC to WebP Converter",
-      "sub": "Modern Format Conversion",
-      "desc": "Convert HEIC images to WebP format for smaller file sizes and better web performance. WebP offers superior compression while maintaining quality."
+      "h1": "Convertisseur HEIC en WebP",
+      "sub": "Conversion de Format Moderne",
+      "desc": "Convertissez les images HEIC au format WebP pour des tailles de fichier plus petites et de meilleures performances web. WebP offre une compression supérieure tout en maintenant la qualité."
     },
     "intro": {
-      "title": "Modern Web Format",
-      "content": "WebP is a modern image format that provides excellent compression and quality. Convert your HEIC images to WebP for better web performance and smaller file sizes."
+      "title": "Format Web Moderne",
+      "content": "WebP est un format d'image moderne qui fournit une excellente compression et qualité. Convertissez vos images HEIC en WebP pour de meilleures performances web et des tailles de fichier plus petites."
     },
     "specs": {
-      "engine": "HEIC to WebP Converter",
-      "limit": "Batch up to 100 images",
-      "logic": "Quality-Preserving Conversion",
-      "privacy": "100% Client-Side"
+      "engine": "Convertisseur HEIC en WebP",
+      "limit": "Lots jusqu'à 100 images",
+      "logic": "Conversion Préservant la Qualité",
+      "privacy": "100% Côté Client"
     },
     "scenes": [
-      {
-        "title": "Web Optimization",
-        "desc": "Convert HEIC to WebP for faster website loading."
-      },
-      {
-        "title": "Mobile Apps",
-        "desc": "Reduce app size with WebP format conversion."
-      }
+      { "title": "Optimisation Web", "desc": "Convertissez HEIC en WebP pour un chargement de site web plus rapide." },
+      { "title": "Applications Mobiles", "desc": "Réduisez la taille de l'application avec la conversion de format WebP." }
     ],
     "faq": [
-      {
-        "q": "Why convert HEIC to WebP?",
-        "a": "WebP offers better compression than HEIC while maintaining quality, and has wider browser support."
-      },
-      {
-        "q": "Is WebP widely supported?",
-        "a": "WebP is supported by all modern browsers and mobile devices."
-      }
+      { "q": "Pourquoi convertir HEIC en WebP?", "a": "WebP offre une meilleure compression que HEIC tout en maintenant la qualité, et a un support de navigateur plus large." },
+      { "q": "WebP est-il largement pris en charge?", "a": "WebP est pris en charge par tous les navigateurs modernes et appareils mobiles." }
     ],
-    "compare": {
-      "toolaze": "Batch processing, Better compression, Free",
-      "others": "Single file, Same size, Paid"
-    }
+    "compare": { "toolaze": "Traitement par lots, Meilleure compression, Gratuit", "others": "Fichier unique, Même taille, Payant" }
   }
 }

@@ -149,11 +149,16 @@ export default async function HomePage({ params }: PageProps) {
                 component: undefined,
               }
             }
+            // 提取标题（移除 HTML 标签）
+            const title = data?.hero?.h1 ? data.hero.h1.replace(/<[^>]*>/g, '').trim() : `${tool}/${slug}`
+            // 使用 sub 或 desc 作为描述
+            const description = data?.hero?.sub || data?.hero?.desc || data?.metadata?.description || ''
+            
             return {
               tool,
               slug,
-              title: data?.hero?.h1 || `${tool}/${slug}`,
-              description: data?.hero?.sub || '',
+              title: title,
+              description: description,
               component: data?.component,
             }
           } catch (error) {

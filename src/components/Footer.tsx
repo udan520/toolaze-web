@@ -45,7 +45,7 @@ const locales = [
   { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
   { code: 'ja', name: '日本語', flag: '🇯🇵' },
   { code: 'es', name: 'Español', flag: '🇪🇸' },
-  { code: 'zh-TW', name: '中文 (繁體)', flag: '🇹🇼' },
+  { code: 'zh-TW', name: '中文 (繁體)', flag: '🇨🇳' },
   { code: 'pt', name: 'Português', flag: '🇵🇹' },
   { code: 'fr', name: 'Français', flag: '🇫🇷' },
   { code: 'ko', name: '한국어', flag: '🇰🇷' },
@@ -130,7 +130,7 @@ export default function Footer() {
                 aria-label="Language selector"
                 aria-expanded={isLanguageMenuOpen}
               >
-                <span className="text-base">{currentLocaleInfo.flag}</span>
+                <span className="text-base leading-none flag-emoji">{currentLocaleInfo.flag}</span>
                 <span className="hidden sm:inline">{currentLocaleInfo.name}</span>
                 <svg 
                   className={`w-4 h-4 transition-transform ${isLanguageMenuOpen ? 'rotate-180' : ''}`} 
@@ -159,7 +159,7 @@ export default function Footer() {
                           onClick={() => setIsLanguageMenuOpen(false)}
                           className="flex items-center gap-3 px-4 py-2 text-sm text-slate-300 hover:bg-indigo-600 hover:text-white transition-all group"
                         >
-                          <span className="text-base">{locale.flag}</span>
+                          <span className="text-base leading-none flag-emoji">{locale.flag}</span>
                           <span className="font-medium group-hover:text-white">{locale.name}</span>
                         </Link>
                       ))}

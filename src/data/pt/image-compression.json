@@ -1,497 +1,332 @@
 {
   "jpg-to-20kb": {
     "metadata": {
-      "title": "Compress JPG to 20KB - Precision Tool for Official Portals | Toolaze",
-      "description": "Precisely compress JPG images to under 20KB for government and exam registrations. 100% browser-side processing for total privacy. Batch process up to 100 files."
+      "title": "Comprimir JPG para 20KB - Ferramenta de Precisão para Portais Oficiais | Toolaze",
+      "description": "Comprima imagens JPG com precisão para menos de 20KB para registros governamentais e exames. Processamento 100% no navegador para total privacidade. Processe até 100 arquivos em lote."
     },
     "hero": {
-      "h1": "Compress JPG to 20KB",
-      "sub": "Meet Strict Registration Limits",
-      "desc": "Designed for official portals with extreme file size caps. Reach the 20KB threshold accurately while maintaining the JPG format required for your application."
+      "h1": "Comprimir JPG para 20KB",
+      "sub": "Atenda Limites Rigorosos de Registro",
+      "desc": "Projetado para portais oficiais com limites extremos de tamanho de arquivo. Atinga o limite de 20KB com precisão mantendo o formato JPG necessário para sua aplicação."
     },
     "intro": {
-      "title": "Why 20KB Matters",
-      "content": "Many government and academic portals enforce a strict 20KB limit. Toolaze uses math-driven browser-side processing to help you hit these targets. Since all processing happens locally on your device, your personal ID photos and sensitive documents are never uploaded to a server."
+      "title": "Por Que 20KB Importa",
+      "content": "Muitos portais governamentais e acadêmicos aplicam um limite rigoroso de 20KB. Toolaze usa processamento baseado em matemática no navegador para ajudá-lo a atingir esses objetivos. Como todo o processamento acontece localmente no seu dispositivo, suas fotos de identidade pessoal e documentos sensíveis nunca são enviados para um servidor."
     },
     "specs": {
-      "engine": "Browser-Native Processing",
-      "capacity": "Batch upload up to 100 images",
-      "logic": "Target KB/MB Precision Control",
-      "privacy": "100% Client-Side (No Uploads)"
+      "engine": "Processamento Nativo do Navegador",
+      "capacity": "Upload em lote de até 100 imagens",
+      "logic": "Controle de Precisão KB/MB Alvo",
+      "privacy": "100% Lado do Cliente (Sem Uploads)"
     },
     "scenes": [
-      {
-        "title": "Government Exams",
-        "desc": "Perfect for SSC, UPSC, and regional civil service portal requirements."
-      },
-      {
-        "title": "Bank Account Opening",
-        "desc": "Ensure your ID scans meet the small file size requirements for instant verification."
-      }
+      { "title": "Exames Governamentais", "desc": "Perfeito para requisitos de portais de serviço civil SSC, UPSC e regionais." },
+      { "title": "Abertura de Conta Bancária", "desc": "Garanta que suas digitalizações de identidade atendam aos requisitos de pequeno tamanho de arquivo para verificação instantânea." }
     ],
     "faq": [
-      {
-        "q": "Why did my resolution change?",
-        "a": "To reach the 20KB limit, the tool automatically adjusts quality and dimensions to ensure the file size target is met."
-      },
-      {
-        "q": "Are my photos secure?",
-        "a": "Yes. Every image is processed locally in your browser. No data is ever sent to our servers."
-      }
+      { "q": "Por que minha resolução mudou?", "a": "Para atingir o limite de 20KB, a ferramenta ajusta automaticamente qualidade e dimensões para garantir que o objetivo de tamanho de arquivo seja atingido." },
+      { "q": "Minhas fotos estão seguras?", "a": "Sim. Cada imagem é processada localmente no seu navegador. Nenhum dado é enviado aos nossos servidores." }
     ],
-    "compare": {
-      "toolaze": "Targeted 20KB output, Local processing, 100% Free",
-      "others": "Random file sizes, Cloud uploads, Paid exports"
-    }
+    "compare": { "toolaze": "Saída 20KB direcionada, Processamento local, 100% Grátis", "others": "Tamanhos de arquivo aleatórios, Uploads na nuvem, Exportações pagas" }
   },
   "png-to-100kb": {
     "metadata": {
-      "title": "Compress PNG to 100KB - Maintain Transparency | Toolaze",
-      "description": "Optimize PNGs to 100KB for web performance. Keeps original transparency and format. Process up to 100 images in your browser for free."
+      "title": "Comprimir PNG para 100KB - Manter Transparência | Toolaze",
+      "description": "Otimize PNGs para 100KB para desempenho web. Mantém transparência e formato originais. Processe até 100 imagens no seu navegador gratuitamente."
     },
     "hero": {
-      "h1": "PNG to 100KB Compression",
-      "sub": "Transparent, Fast, and Professional",
-      "desc": "The preferred tool for web developers. Reduce PNG file size to 100KB without losing transparency, ensuring your site passes Lighthouse audits with ease."
+      "h1": "Compressão PNG para 100KB",
+      "sub": "Transparente, Rápido e Profissional",
+      "desc": "A ferramenta preferida dos desenvolvedores web. Reduza o tamanho do arquivo PNG para 100KB sem perder transparência, garantindo que seu site passe nas auditorias Lighthouse com facilidade."
     },
     "intro": {
-      "title": "Professional Web Optimization",
-      "content": "Heavy PNGs slow down your site. Toolaze optimizes your PNG files locally by re-mapping pixels to hit your 100KB target. We maintain the Alpha channel, ensuring your transparent backgrounds remain perfectly clear for your UI/UX needs."
+      "title": "Otimização Web Profissional",
+      "content": "PNGs pesados desaceleram seu site. Toolaze otimiza seus arquivos PNG localmente remapeando pixels para atingir seu objetivo de 100KB. Mantemos o canal Alpha, garantindo que seus fundos transparentes permaneçam perfeitamente claros para suas necessidades UI/UX."
     },
     "specs": {
-      "engine": "Local Canvas Mapping",
-      "limit": "No input file size restrictions",
-      "logic": "Specific KB/MB Target Targeting",
-      "output": "Maintains Original PNG Format"
+      "engine": "Mapeamento Canvas Local",
+      "limit": "Sem restrições de tamanho de arquivo de entrada",
+      "logic": "Direcionamento Específico KB/MB",
+      "output": "Mantém Formato PNG Original"
     },
     "scenes": [
-      {
-        "title": "Lighthouse Optimization",
-        "desc": "Help your hero images and icons meet the 100KB performance threshold."
-      },
-      {
-        "title": "Documentation Assets",
-        "desc": "Keep your PDF and Word document sizes low by optimizing embedded PNG screenshots."
-      }
+      { "title": "Otimização Lighthouse", "desc": "Ajude suas imagens hero e ícones a atingir o limite de desempenho de 100KB." },
+      { "title": "Recursos de Documentação", "desc": "Mantenha os tamanhos dos seus documentos PDF e Word baixos otimizando capturas de tela PNG incorporadas." }
     ],
     "faq": [
-      {
-        "q": "Does it keep the transparency?",
-        "a": "Yes. Toolaze is specifically designed to preserve the Alpha channel during the compression process."
-      },
-      {
-        "q": "Can I process many files at once?",
-        "a": "You can batch process up to 100 PNG files in a single session."
-      }
+      { "q": "Mantém a transparência?", "a": "Sim. Toolaze é especificamente projetado para preservar o canal Alpha durante o processo de compressão." },
+      { "q": "Posso processar muitos arquivos de uma vez?", "a": "Você pode processar em lote até 100 arquivos PNG em uma única sessão." }
     ],
-    "compare": {
-      "toolaze": "Preserves transparency, Local processing, No ads",
-      "others": "Converts to JPG, Watermarks, Subscription required"
-    }
+    "compare": { "toolaze": "Preserva transparência, Processamento local, Sem anúncios", "others": "Converte para JPG, Marcas d'água, Assinatura necessária" }
   },
   "uscis-photo-240kb": {
     "metadata": {
-      "title": "USCIS Photo 240KB Compressor - Secure Visa Processing | Toolaze",
-      "description": "Meet the DS-160 240KB requirement for US Visa photos. 100% private browser-side processing. No facial alterations, keeping your data real and secure."
+      "title": "Compressor de Foto USCIS 240KB - Processamento Seguro de Visto | Toolaze",
+      "description": "Atenda o requisito DS-160 de 240KB para fotos de visto americano. Processamento 100% privado no navegador. Sem alterações faciais, mantendo seus dados reais e seguros."
     },
     "hero": {
-      "h1": "USCIS Photo 240KB Tool",
-      "sub": "Guaranteed Visa Compliance",
-      "desc": "Specifically calibrated for the US Visa (DS-160) and USCIS systems. Shrink your passport photo to under 240KB instantly and securely on your own computer."
+      "h1": "Ferramenta Foto USCIS 240KB",
+      "sub": "Conformidade de Visto Garantida",
+      "desc": "Especificamente calibrado para sistemas de Visto Americano (DS-160) e USCIS. Reduza sua foto de passaporte para menos de 240KB instantaneamente e com segurança no seu próprio computador."
     },
     "intro": {
-      "title": "Secure Document Handling",
-      "content": "Visa applications require high privacy. Toolaze processes your biometric photos entirely within your browser. By using local math-based compression, we ensure your photo stays under the 240KB official limit without sending your identity to the cloud."
+      "title": "Manuseio Seguro de Documentos",
+      "content": "Aplicações de visto requerem alta privacidade. Toolaze processa suas fotos biométricas inteiramente no seu navegador. Usando compressão local baseada em matemática, garantimos que sua foto permaneça abaixo do limite oficial de 240KB sem enviar sua identidade para a nuvem."
     },
     "specs": {
-      "engine": "Math-Driven Browser Processing",
-      "batch": "Process up to 100 photos at once",
-      "logic": "240KB Specific Target",
-      "privacy": "Zero Server Storage"
+      "engine": "Processamento do Navegador Baseado em Matemática",
+      "batch": "Processe até 100 fotos de uma vez",
+      "logic": "Alvo Específico 240KB",
+      "privacy": "Armazenamento Zero no Servidor"
     },
     "scenes": [
-      {
-        "title": "DS-160 Application",
-        "desc": "Ensure your photo uploads successfully during the final stage of your visa form."
-      },
-      {
-        "title": "Green Card Lottery",
-        "desc": "Perfect for meeting the digital photo size requirements for the annual DV Lottery."
-      }
+      { "title": "Aplicação DS-160", "desc": "Garanta que sua foto seja carregada com sucesso durante o estágio final do seu formulário de visto." },
+      { "title": "Loteria Green Card", "desc": "Perfeito para atender aos requisitos de tamanho de foto digital para a loteria DV anual." }
     ],
     "faq": [
-      {
-        "q": "What if it can't reach 240KB?",
-        "a": "For very high-resolution originals, the tool will scale the dimensions to ensure the 240KB target is reached."
-      },
-      {
-        "q": "Does it edit my face?",
-        "a": "No. We provide pure technical compression to ensure your facial features remain 100% authentic for immigration standards."
-      }
+      { "q": "E se não conseguir atingir 240KB?", "a": "Para originais de muito alta resolução, a ferramenta dimensionará as dimensões para garantir que o objetivo de 240KB seja atingido." },
+      { "q": "Edita meu rosto?", "a": "Não. Fornecemos compressão técnica pura para garantir que suas características faciais permaneçam 100% autênticas para padrões de imigração." }
     ],
-    "compare": {
-      "toolaze": "Total privacy, Authentic results, Free",
-      "others": "Privacy risks, Auto-beautification risks, Hidden fees"
-    }
+    "compare": { "toolaze": "Privacidade total, Resultados autênticos, Grátis", "others": "Riscos de privacidade, Riscos de auto-embelezamento, Taxas ocultas" }
   },
   "image-to-50kb": {
     "metadata": {
-      "title": "Compress Image to 50KB - Universal Online Tool | Toolaze",
-      "description": "Compress JPG, PNG, WebP, or BMP to exactly 50KB. Perfect for resumes and online forms. 100% free with batch processing for 100 images."
+      "title": "Comprimir Imagem para 50KB - Ferramenta Online Universal | Toolaze",
+      "description": "Comprima JPG, PNG, WebP ou BMP exatamente para 50KB. Perfeito para currículos e formulários online. 100% grátis com processamento em lote para 100 imagens."
     },
     "hero": {
-      "h1": "Universal 50KB Compressor",
-      "sub": "One Size, Every Platform",
-      "desc": "50KB is the most common requirement for online forms. Whether you start with a 5MB or 50MB file, Toolaze helps you reach 50KB in seconds without changing your file format."
+      "h1": "Compressor Universal 50KB",
+      "sub": "Um Tamanho, Cada Plataforma",
+      "desc": "50KB é o requisito mais comum para formulários online. Seja você começando com um arquivo de 5MB ou 50MB, Toolaze ajuda você a atingir 50KB em segundos sem mudar o formato do arquivo."
     },
     "intro": {
-      "title": "The Standard for Online Forms",
-      "content": "From school admissions to resume portals, 50KB is the universal gateway. Toolaze eliminates the guesswork by letting you specify '50KB' as your target. Our browser-side engine handles the heavy lifting, keeping your original format intact for maximum compatibility."
+      "title": "O Padrão para Formulários Online",
+      "content": "De admissões escolares a portais de currículo, 50KB é o gateway universal. Toolaze elimina suposições permitindo que você especifique '50KB' como seu alvo. Nosso motor no navegador lida com o trabalho pesado, mantendo seu formato original intacto para máxima compatibilidade."
     },
     "specs": {
-      "engine": "Native Canvas API",
-      "formats": "JPG, PNG, WebP, BMP Support",
-      "logic": "KB/MB Target Selection",
-      "batch": "Supports 100 files simultaneously"
+      "engine": "API Canvas Nativa",
+      "formats": "Suporte JPG, PNG, WebP, BMP",
+      "logic": "Seleção de Alvo KB/MB",
+      "batch": "Suporta 100 arquivos simultaneamente"
     },
     "scenes": [
-      {
-        "title": "Resume Portals",
-        "desc": "Ensure your headshot is light enough for any ATS or recruitment system."
-      },
-      {
-        "title": "Admission Forms",
-        "desc": "Meet the strict 50KB requirements for university and competitive exam registrations."
-      }
+      { "title": "Portais de Currículo", "desc": "Garanta que sua foto de perfil seja leve o suficiente para qualquer sistema ATS ou de recrutamento." },
+      { "title": "Formulários de Admissão", "desc": "Atenda aos requisitos rigorosos de 50KB para registros universitários e exames competitivos." }
     ],
     "faq": [
-      {
-        "q": "Which formats are supported?",
-        "a": "We support JPG, JPEG, PNG, WebP, and BMP. Your file will be downloaded in its original format."
-      },
-      {
-        "q": "Is it really free?",
-        "a": "Yes, Toolaze is 100% free with no ads and no limits on the number of times you use it."
-      }
+      { "q": "Quais formatos são suportados?", "a": "Suportamos JPG, JPEG, PNG, WebP e BMP. Seu arquivo será baixado em seu formato original." },
+      { "q": "É realmente grátis?", "a": "Sim, Toolaze é 100% grátis sem anúncios e sem limites no número de vezes que você o usa." }
     ],
-    "compare": {
-      "toolaze": "No size limits, Batch process 100 files, Local",
-      "others": "File size caps, Single file limits, Subscription popups"
-    }
+    "compare": { "toolaze": "Sem limites de tamanho, Processe em lote 100 arquivos, Local", "others": "Limites de tamanho de arquivo, Limites de arquivo único, Popups de assinatura" }
   },
   "passport-photo-200kb": {
     "metadata": {
-      "title": "Passport Photo 200KB Compressor - Secure & Fast | Toolaze",
-      "description": "Compress your passport photo to 200KB for online renewals. Retains original format and facial clarity. 100% private and free tool."
+      "title": "Compressor de Foto de Passaporte 200KB - Seguro e Rápido | Toolaze",
+      "description": "Comprima sua foto de passaporte para 200KB para renovações online. Mantém formato original e clareza facial. Ferramenta 100% privada e grátis."
     },
     "hero": {
-      "h1": "200KB Passport Photo Tool",
-      "sub": "Global Standard Compatibility",
-      "desc": "Online passport renewal systems in the UK, Australia, and many other nations require photos between 200KB and 500KB. Toolaze ensures you hit the 200KB mark securely."
+      "h1": "Ferramenta Foto de Passaporte 200KB",
+      "sub": "Compatibilidade com Padrão Global",
+      "desc": "Sistemas de renovação de passaporte online no Reino Unido, Austrália e muitas outras nações requerem fotos entre 200KB e 500KB. Toolaze garante que você atinja a marca de 200KB com segurança."
     },
     "intro": {
-      "title": "Privacy for Your Most Sensitive Data",
-      "content": "Your passport photo is your most sensitive digital asset. Toolaze processes your data locally, meaning your biometric information never leaves your browser. We focus on technical clarity, ensuring your photo meets the file size requirement without artificial alterations."
+      "title": "Privacidade para Seus Dados Mais Sensíveis",
+      "content": "Sua foto de passaporte é seu ativo digital mais sensível. Toolaze processa seus dados localmente, o que significa que suas informações biométricas nunca saem do seu navegador. Focamos em clareza técnica, garantindo que sua foto atenda ao requisito de tamanho de arquivo sem alterações artificiais."
     },
     "specs": {
-      "engine": "Secure Client-Side Algorithm",
-      "batch": "Handles up to 100 photos",
-      "logic": "Precision 200KB Targeting",
-      "output": "Original Format Retention"
+      "engine": "Algoritmo Seguro do Lado do Cliente",
+      "batch": "Processa até 100 fotos",
+      "logic": "Direcionamento de Precisão 200KB",
+      "output": "Retenção de Formato Original"
     },
     "scenes": [
-      {
-        "title": "Online Passport Renewal",
-        "desc": "Perfect for meeting the upload limits for national digital identity platforms."
-      },
-      {
-        "title": "Employment Background Checks",
-        "desc": "Ensure your ID scans are small enough for HR software while remaining sharp."
-      }
+      { "title": "Renovação de Passaporte Online", "desc": "Perfeito para atender aos limites de upload para plataformas de identidade digital nacional." },
+      { "title": "Verificações de Antecedentes de Emprego", "desc": "Garanta que suas digitalizações de identidade sejam pequenas o suficiente para software de RH enquanto permanecem nítidas." }
     ],
     "faq": [
-      {
-        "q": "Will my photo be blurred?",
-        "a": "200KB provides plenty of space for a sharp headshot. Toolaze prioritizes detail retention while meeting the size target."
-      },
-      {
-        "q": "Can I use this for multiple family members?",
-        "a": "Yes, you can batch process up to 100 photos at once, making it ideal for family travel applications."
-      }
+      { "q": "Minha foto ficará desfocada?", "a": "200KB fornece muito espaço para uma foto de perfil nítida. Toolaze prioriza a retenção de detalhes enquanto atinge o objetivo de tamanho." },
+      { "q": "Posso usar isso para vários membros da família?", "a": "Sim, você pode processar em lote até 100 fotos de uma vez, tornando-o ideal para aplicações de viagem familiar." }
     ],
-    "compare": {
-      "toolaze": "Original format, Local security, Batch ready",
-      "others": "Forces format change, Cloud security risks, No batching"
-    }
+    "compare": { "toolaze": "Formato original, Segurança local, Pronto para lote", "others": "Força mudança de formato, Riscos de segurança na nuvem, Sem processamento em lote" }
   },
   "amazon-product-10mb": {
     "metadata": {
-      "title": "Amazon Product Photo Compressor - Optimize for Sales | Toolaze",
-      "description": "Compress Amazon product photos to under 10MB limit without quality loss. Safe for seller central uploads. Batch process 100 images."
+      "title": "Compressor de Foto de Produto Amazon - Otimize para Vendas | Toolaze",
+      "description": "Comprima fotos de produto Amazon abaixo do limite de 10MB sem perda de qualidade. Seguro para uploads Seller Central. Processe em lote 100 imagens."
     },
     "hero": {
-      "h1": "Amazon Product Image Optimizer",
-      "sub": "Fix Seller Central Upload Errors",
-      "desc": "Amazon requires main images to be high quality but technically under 10MB. We help you reduce file size while keeping the zoom capability sharp."
+      "h1": "Otimizador de Imagem de Produto Amazon",
+      "sub": "Corrija Erros de Upload Seller Central",
+      "desc": "Amazon requer que imagens principais sejam de alta qualidade mas tecnicamente abaixo de 10MB. Ajudamos você a reduzir o tamanho do arquivo mantendo a capacidade de zoom nítida."
     },
     "intro": {
-      "title": "Speed Up Your Listings",
-      "content": "While Amazon allows up to 10MB, huge files slow down your product page loading speed, hurting conversion rates. Toolaze optimizes your listing images to a sweet spot (under 2MB recommended) for instant loading on mobile apps."
+      "title": "Acelere Seus Listings",
+      "content": "Embora Amazon permita até 10MB, arquivos enormes desaceleram a velocidade de carregamento da sua página de produto, prejudicando taxas de conversão. Toolaze otimiza suas imagens de listing para um ponto ideal (abaixo de 2MB recomendado) para carregamento instantâneo em aplicativos móveis."
     },
     "specs": {
-      "engine": "E-commerce Sharpness Tuned",
-      "limit": "Target 10MB or 2MB (Optimal)",
-      "logic": "High-Fidelity Compression",
-      "privacy": "100% Local (Safe for IP)"
+      "engine": "Nitidez Ajustada para E-commerce",
+      "limit": "Alvo 10MB ou 2MB (Ótimo)",
+      "logic": "Compressão Alta Fidelidade",
+      "privacy": "100% Local (Seguro para IP)"
     },
     "scenes": [
-      {
-        "title": "Main Listing Image",
-        "desc": "Ensure your white-background hero shot uploads instantly."
-      },
-      {
-        "title": "A+ Content",
-        "desc": "Optimize heavy lifestyle images for your brand story section."
-      }
+      { "title": "Imagem Principal do Listing", "desc": "Garanta que sua foto hero com fundo branco carregue instantaneamente." },
+      { "title": "Conteúdo A+", "desc": "Otimize imagens de estilo de vida pesadas para sua seção de história da marca." }
     ],
     "faq": [
-      {
-        "q": "Will this ruin the zoom feature?",
-        "a": "No. We prioritize retaining resolution while reducing file weight, so customers can still zoom in on details."
-      },
-      {
-        "q": "Is it safe for unreleased products?",
-        "a": "Yes. Processing happens in your browser. Your product photos are never sent to our server."
-      }
+      { "q": "Isso arruinará a função zoom?", "a": "Não. Priorizamos reter a resolução enquanto reduzimos o peso do arquivo, para que clientes ainda possam ampliar detalhes." },
+      { "q": "É seguro para produtos não lançados?", "a": "Sim. O processamento acontece no seu navegador. Suas fotos de produto nunca são enviadas ao nosso servidor." }
     ],
-    "compare": {
-      "toolaze": "Seller-focused, Bulk mode, Free",
-      "others": "Generic compression, Single file limits"
-    }
+    "compare": { "toolaze": "Focado em vendedor, Modo em massa, Grátis", "others": "Compressão genérica, Limites de arquivo único" }
   },
   "etsy-listing-1mb": {
     "metadata": {
-      "title": "Etsy Image Compressor - Fix Upload Issues | Toolaze",
-      "description": "Compress photos for Etsy listings to under 1MB. Best for handmade sellers. Keep colors vibrant while fixing 'File too big' errors."
+      "title": "Compressor de Imagem Etsy - Corrija Problemas de Upload | Toolaze",
+      "description": "Comprima fotos para listings Etsy abaixo de 1MB. Melhor para vendedores artesanais. Mantenha cores vibrantes enquanto corrige erros 'Arquivo muito grande'."
     },
     "hero": {
-      "h1": "Etsy Listing Photo Tool",
-      "sub": "Perfect for Handmade Sellers",
-      "desc": "Etsy recommends images under 1MB for the best browsing experience. If your raw camera photos are too big, we shrink them without washing out your colors."
+      "h1": "Ferramenta de Foto de Listing Etsy",
+      "sub": "Perfeito para Vendedores Artesanais",
+      "desc": "Etsy recomenda imagens abaixo de 1MB para a melhor experiência de navegação. Se suas fotos brutas da câmera são muito grandes, as reduzimos sem desbotar suas cores."
     },
     "intro": {
-      "title": "Showcase Details, Not Pixels",
-      "content": "Etsy shoppers love details. Our local compression algorithm is tuned to preserve textures and colors—crucial for selling physical goods—while drastically reducing the file weight to meet platform recommendations."
+      "title": "Mostre Detalhes, Não Pixels",
+      "content": "Compradores Etsy amam detalhes. Nosso algoritmo de compressão local é ajustado para preservar texturas e cores—crucial para vender bens físicos—enquanto reduz drasticamente o peso do arquivo para atender recomendações da plataforma."
     },
     "specs": {
-      "engine": "Texture-Preserving Algorithm",
-      "limit": "Under 1MB Target",
-      "logic": "Smart Resolution Scaling",
-      "privacy": "Your Designs Stay Private"
+      "engine": "Algoritmo que Preserva Texturas",
+      "limit": "Alvo Abaixo de 1MB",
+      "logic": "Redimensionamento Inteligente de Resolução",
+      "privacy": "Seus Designs Permanecem Privados"
     },
     "scenes": [
-      {
-        "title": "Listing Thumbnails",
-        "desc": "Make sure your shop loads fast on the Etsy mobile app."
-      },
-      {
-        "title": "Digital Downloads",
-        "desc": "Reduce the size of your digital art files for easier customer delivery."
-      }
+      { "title": "Miniaturas de Listing", "desc": "Garanta que sua loja carregue rapidamente no aplicativo móvel Etsy." },
+      { "title": "Downloads Digitais", "desc": "Reduza o tamanho dos seus arquivos de arte digital para entrega mais fácil ao cliente." }
     ],
     "faq": [
-      {
-        "q": "Does it support JPG?",
-        "a": "Yes, Etsy prefers JPG for listing photos. We optimize them perfectly."
-      },
-      {
-        "q": "Why 1MB?",
-        "a": "Etsy warns that files over 1MB may not upload or will load very slowly for buyers."
-      }
+      { "q": "Suporta JPG?", "a": "Sim, Etsy prefere JPG para fotos de listing. Nós as otimizamos perfeitamente." },
+      { "q": "Por que 1MB?", "a": "Etsy avisa que arquivos acima de 1MB podem não carregar ou carregar muito lentamente para compradores." }
     ],
-    "compare": {
-      "toolaze": "Texture preserving, Color accurate, Fast",
-      "others": "Washed out colors, Slow uploads"
-    }
+    "compare": { "toolaze": "Preserva texturas, Cores precisas, Rápido", "others": "Cores desbotadas, Uploads lentos" }
   },
   "ebay-picture-fast": {
     "metadata": {
-      "title": "eBay Picture Optimizer - Faster Mobile Loading | Toolaze",
-      "description": "Optimize eBay listing photos for mobile buyers. Compress to 500KB-1.5MB for fast loading. Free bulk tool for power sellers."
+      "title": "Otimizador de Imagem eBay - Carregamento Móvel Mais Rápido | Toolaze",
+      "description": "Otimize fotos de listing eBay para compradores móveis. Comprima para 500KB-1.5MB para carregamento rápido. Ferramenta em massa grátis para vendedores profissionais."
     },
     "hero": {
-      "h1": "eBay Fast-Load Optimizer",
-      "sub": "Boost Your Mobile Sales",
-      "desc": "Over 60% of eBay transactions happen on mobile. Heavy images mean lost customers. Optimize your inventory photos to load instantly on 4G networks."
+      "h1": "Otimizador de Carregamento Rápido eBay",
+      "sub": "Impulsione Suas Vendas Móveis",
+      "desc": "Mais de 60% das transações eBay acontecem em dispositivos móveis. Imagens pesadas significam clientes perdidos. Otimize suas fotos de inventário para carregar instantaneamente em redes 4G."
     },
     "intro": {
-      "title": "Mobile-First Selling",
-      "content": "eBay's search algorithm favors listings that load fast. By compressing your images to a mobile-friendly size (500KB-1.5MB), you improve your chances of ranking higher and selling faster."
+      "title": "Venda Mobile-First",
+      "content": "O algoritmo de busca do eBay favorece listings que carregam rapidamente. Comprimindo suas imagens para um tamanho amigável ao móvel (500KB-1.5MB), você melhora suas chances de classificação mais alta e venda mais rápida."
     },
     "specs": {
-      "engine": "Mobile-First Compression",
-      "limit": "Flexible (500KB - 7MB)",
-      "logic": "Batch Processing Ready",
-      "privacy": "Client-Side Speed"
+      "engine": "Compressão Mobile-First",
+      "limit": "Flexível (500KB - 7MB)",
+      "logic": "Pronto para Processamento em Lote",
+      "privacy": "Velocidade do Lado do Cliente"
     },
     "scenes": [
-      {
-        "title": "Bulk Uploads",
-        "desc": "Process photos for 100 items at once to save listing time."
-      },
-      {
-        "title": "Gallery Plus",
-        "desc": "Ensure your zoomed images are light enough to open instantly."
-      }
+      { "title": "Uploads em Massa", "desc": "Processe fotos para 100 itens de uma vez para economizar tempo de listing." },
+      { "title": "Gallery Plus", "desc": "Garanta que suas imagens ampliadas sejam leves o suficiente para abrir instantaneamente." }
     ],
     "faq": [
-      {
-        "q": "How many photos can I process?",
-        "a": "You can process up to 100 images at once, perfect for bulk listing."
-      },
-      {
-        "q": "Will my photos look pixelated?",
-        "a": "No, we optimize the data structure of the image, keeping the visual quality high."
-      }
+      { "q": "Quantas fotos posso processar?", "a": "Você pode processar até 100 imagens de uma vez, perfeito para listings em massa." },
+      { "q": "Minhas fotos parecerão pixeladas?", "a": "Não, otimizamos a estrutura de dados da imagem, mantendo alta a qualidade visual." }
     ],
-    "compare": {
-      "toolaze": "Bulk tool, Mobile optimized, No signup",
-      "others": "One by one, Signup required"
-    }
+    "compare": { "toolaze": "Ferramenta em massa, Otimizada para móvel, Sem cadastro", "others": "Um por um, Cadastro necessário" }
   },
   "youtube-thumbnail-2mb": {
     "metadata": {
-      "title": "YouTube Thumbnail Compressor - Fix 2MB Limit Error | Toolaze",
-      "description": "Compress YouTube thumbnails to under 2MB instantly. Fix 'File is bigger than 2MB' upload errors. Keep your click-bait quality high."
+      "title": "Compressor de Miniatura YouTube - Corrija Erro de Limite 2MB | Toolaze",
+      "description": "Comprima miniaturas YouTube abaixo de 2MB instantaneamente. Corrija erros de upload 'O arquivo é maior que 2MB'. Mantenha alta a qualidade do seu click-bait."
     },
     "hero": {
-      "h1": "YouTube Thumbnail Fixer (Under 2MB)",
-      "sub": "Solved: 'File is bigger than 2MB'",
-      "desc": "YouTube has a strict 2MB limit for custom thumbnails. If your high-res Photoshop export is rejected, use Toolaze to hit the 2MB mark without visible quality loss."
+      "h1": "Corretor de Miniatura YouTube (Abaixo de 2MB)",
+      "sub": "Resolvido: 'O arquivo é maior que 2MB'",
+      "desc": "YouTube tem um limite rigoroso de 2MB para miniaturas personalizadas. Se sua exportação de alta resolução do Photoshop for rejeitada, use Toolaze para atingir a marca de 2MB sem perda de qualidade visível."
     },
     "intro": {
-      "title": "Don't Sacrifice CTR",
-      "content": "You don't need to lower your resolution to 720p. Toolaze uses intelligent compression to keep your text crisp and faces sharp, reducing only the invisible data to get you under the 2MB barrier."
+      "title": "Não Sacrifique CTR",
+      "content": "Você não precisa baixar sua resolução para 720p. Toolaze usa compressão inteligente para manter seu texto nítido e rostos afiados, reduzindo apenas os dados invisíveis para levá-lo abaixo da barreira de 2MB."
     },
     "specs": {
-      "engine": "Visual-Priority Engine",
-      "limit": "Strict < 2MB Limit",
-      "logic": "Boundary-Pushing Compression",
-      "privacy": "No Watermarks"
+      "engine": "Motor de Prioridade Visual",
+      "limit": "Limite Rigoroso < 2MB",
+      "logic": "Compressão que Empurra Limites",
+      "privacy": "Sem Marcas d'Água"
     },
     "scenes": [
-      {
-        "title": "4K Thumbnails",
-        "desc": "Keep your 1920x1080 or 4K source dimensions while reducing file size."
-      },
-      {
-        "title": "Gaming Channels",
-        "desc": "Compress complex, colorful game screenshots to fit the limit."
-      }
+      { "title": "Miniaturas 4K", "desc": "Mantenha suas dimensões de origem 1920x1080 ou 4K enquanto reduz o tamanho do arquivo." },
+      { "title": "Canais de Gaming", "desc": "Comprima capturas de tela de jogos complexas e coloridas para se ajustar ao limite." }
     ],
     "faq": [
-      {
-        "q": "Can I keep 1920x1080 resolution?",
-        "a": "Yes! We reduce file size, not necessarily dimensions, unless absolutely needed."
-      },
-      {
-        "q": "Does it support PNG?",
-        "a": "Yes, but for thumbnails, JPG is often better for keeping size under 2MB."
-      }
+      { "q": "Posso manter resolução 1920x1080?", "a": "Sim! Reduzimos o tamanho do arquivo, não necessariamente as dimensões, a menos que absolutamente necessário." },
+      { "q": "Suporta PNG?", "a": "Sim, mas para miniaturas, JPG é frequentemente melhor para manter o tamanho abaixo de 2MB." }
     ],
-    "compare": {
-      "toolaze": "High CTR focus, 2MB Guarantee",
-      "others": "Blurry results, Random sizing"
-    }
+    "compare": { "toolaze": "Foco em CTR alto, Garantia 2MB", "others": "Resultados desfocados, Tamanhos aleatórios" }
   },
   "discord-emoji-256kb": {
     "metadata": {
-      "title": "Discord Emoji Compressor - Under 256KB Tool | Toolaze",
-      "description": "Compress images to 256KB for Discord Emotes and Stickers. Precise resizing for server admins. Supports PNG and JPG."
+      "title": "Compressor de Emoji Discord - Ferramenta Abaixo de 256KB | Toolaze",
+      "description": "Comprima imagens para 256KB para Emotes e Stickers Discord. Redimensionamento preciso para administradores de servidor. Suporta PNG e JPG."
     },
     "hero": {
-      "h1": "Discord Emoji & Sticker Sizer",
-      "sub": "Strict 256KB Compliance",
-      "desc": "Discord enforces a hard 256KB limit for uploaded emojis. Toolaze guarantees your meme or icon fits this tiny limit so you can upload it to your server immediately."
+      "h1": "Redimensionador de Emoji e Sticker Discord",
+      "sub": "Conformidade Rigorosa 256KB",
+      "desc": "Discord aplica um limite rigoroso de 256KB para emojis carregados. Toolaze garante que seu meme ou ícone se ajuste a este pequeno limite para que você possa carregá-lo no seu servidor imediatamente."
     },
     "intro": {
-      "title": "Perfect for Nitro & Servers",
-      "content": "Whether you are uploading a custom emoji for your guild or a sticker, the 256KB limit is strict. We use aggressive optimization to keep your transparent backgrounds clean and files small."
+      "title": "Perfeito para Nitro e Servidores",
+      "content": "Seja você carregando um emoji personalizado para sua guilda ou um sticker, o limite de 256KB é rigoroso. Usamos otimização agressiva para manter seus fundos transparentes limpos e arquivos pequenos."
     },
     "specs": {
-      "engine": "Hard-Limit Enforcer",
-      "limit": "Strict 256KB",
-      "logic": "Aggressive Optimization",
-      "privacy": "Browser-Based"
+      "engine": "Aplicador de Limite Rigoroso",
+      "limit": "Rigoroso 256KB",
+      "logic": "Otimização Agressiva",
+      "privacy": "Baseado em Navegador"
     },
     "scenes": [
-      {
-        "title": "Custom Server Emotes",
-        "desc": "Perfect for standard and animated static emotes."
-      },
-      {
-        "title": "Profile Banners",
-        "desc": "Help Nitro users optimize their banners to avoid compression artifacts."
-      }
+      { "title": "Emotes de Servidor Personalizados", "desc": "Perfeito para emotes estáticos padrão e animados." },
+      { "title": "Banners de Perfil", "desc": "Ajude usuários Nitro a otimizar seus banners para evitar artefatos de compressão." }
     ],
     "faq": [
-      {
-        "q": "Will transparency work?",
-        "a": "Yes, if you upload a PNG, we preserve the transparency."
-      },
-      {
-        "q": "Is this for animated emojis?",
-        "a": "Currently works best for static images (JPG/PNG/WebP)."
-      }
+      { "q": "A transparência funcionará?", "a": "Sim, se você carregar um PNG, preservamos a transparência." },
+      { "q": "Isso é para emojis animados?", "a": "Atualmente funciona melhor para imagens estáticas (JPG/PNG/WebP)." }
     ],
-    "compare": {
-      "toolaze": "Strict 256KB cap, Transparency safe",
-      "others": "Misses file limit, Loses transparency"
-    }
+    "compare": { "toolaze": "Limite rigoroso 256KB, Transparência segura", "others": "Falta limite de arquivo, Perde transparência" }
   },
   "email-signature-20kb": {
     "metadata": {
-      "title": "Email Signature Image Compressor - Outlook & Gmail Friendly | Toolaze",
-      "description": "Compress logos and headshots to 20KB for email signatures. Prevent attachments from being blocked. Crisp quality for retina displays."
+      "title": "Compressor de Imagem de Assinatura de Email - Compatível com Outlook e Gmail | Toolaze",
+      "description": "Comprima logotipos e fotos de perfil para 20KB para assinaturas de email. Previne que anexos sejam bloqueados. Qualidade nítida para displays retina."
     },
     "hero": {
-      "h1": "Email Signature Optimizer",
-      "sub": "Stop Getting Flagged as Spam",
-      "desc": "Large images in email signatures can cause your emails to be marked as spam or load slowly. Compress your logo or photo to a tiny 20KB-50KB footprint."
+      "h1": "Otimizador de Assinatura de Email",
+      "sub": "Pare de Ser Marcado como Spam",
+      "desc": "Imagens grandes em assinaturas de email podem causar que seus emails sejam marcados como spam ou carreguem lentamente. Comprima seu logotipo ou foto para uma pegada minúscula de 20KB-50KB."
     },
     "intro": {
-      "title": "Professional & Lightweight",
-      "content": "A heavy email signature is unprofessional and drains mobile data. Toolaze shrinks your company logo and headshot so they load instantly even on slow connections, keeping your emails looking sharp."
+      "title": "Profissional e Leve",
+      "content": "Uma assinatura de email pesada é pouco profissional e drena dados móveis. Toolaze reduz seu logotipo de empresa e foto de perfil para que carreguem instantaneamente mesmo em conexões lentas, mantendo seus emails nítidos."
     },
     "specs": {
-      "engine": "Logo-Sharp Algorithm",
-      "limit": "Small Footprint (20KB)",
-      "logic": "Transparency Support",
-      "privacy": "Secure & Private"
+      "engine": "Algoritmo de Nitidez de Logotipo",
+      "limit": "Pegada Pequena (20KB)",
+      "logic": "Suporte de Transparência",
+      "privacy": "Seguro e Privado"
     },
     "scenes": [
-      {
-        "title": "Corporate Headshots",
-        "desc": "Keep your face clear but the file size invisible."
-      },
-      {
-        "title": "Company Logos",
-        "desc": "Ensure your transparent PNG logo loads instantly on mobile data."
-      }
+      { "title": "Fotos de Perfil Corporativas", "desc": "Mantenha seu rosto claro mas o tamanho do arquivo invisível." },
+      { "title": "Logotipos de Empresa", "desc": "Garanta que seu logotipo PNG transparente carregue instantaneamente em dados móveis." }
     ],
     "faq": [
-      {
-        "q": "Will it look blurry on Retina screens?",
-        "a": "We optimize specifically to keep edges sharp, even at small file sizes."
-      },
-      {
-        "q": "Does Outlook support this?",
-        "a": "Yes, small JPG or PNG files are the most compatible format for Outlook signatures."
-      }
+      { "q": "Parecerá desfocado em telas Retina?", "a": "Otimizamos especificamente para manter bordas nítidas, mesmo em tamanhos de arquivo pequenos." },
+      { "q": "Outlook suporta isso?", "a": "Sim, pequenos arquivos JPG ou PNG são o formato mais compatível para assinaturas Outlook." }
     ],
-    "compare": {
-      "toolaze": "Spam-filter safe, Retina ready",
-      "others": "Too heavy, pixelated edges"
-    }
+    "compare": { "toolaze": "Seguro para filtro de spam, Pronto para Retina", "others": "Muito pesado, Bordas pixeladas" }
   }
 }

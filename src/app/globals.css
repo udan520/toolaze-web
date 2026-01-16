@@ -7,10 +7,21 @@
 @layer base {
   body {
     @apply bg-[#F8FAFF] text-slate-900;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins', 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', 'Segoe UI Symbol', sans-serif;
     background-color: #F8FAFF;
     color: #334155;
   }
+}
+
+/* Ensure emoji flags display correctly */
+.flag-emoji {
+  font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', 'Segoe UI Symbol', 'Twemoji Mozilla', sans-serif;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  display: inline-block;
+  vertical-align: baseline;
 }
 
 /* Body styles are now in @layer base */

@@ -97,16 +97,8 @@ function formatToolName(tool: string): string {
 
 // 从 hero.h1 中提取页面标题（用于面包屑）
 function extractPageTitle(h1: string): string {
-  // 移除 HTML 标签
-  let cleanH1 = h1.replace(/<[^>]*>/g, '')
-  
-  // 移除常见前缀动词
-  cleanH1 = cleanH1.replace(/^(Compress|Free|Convert|Optimize|Reduce)\s+/i, '')
-  
-  // 移除末尾的 "Compression"、"Tool" 等词
-  cleanH1 = cleanH1.replace(/\s+(Compression|Tool|Compressor|Converter|Optimizer)$/i, '')
-  
-  return cleanH1.trim() || h1.replace(/<[^>]*>/g, '')
+  // 只移除 HTML 标签，保留所有翻译内容
+  return h1.replace(/<[^>]*>/g, '').trim()
 }
 
 // 智能识别核心关键词并应用渐变
@@ -265,10 +257,11 @@ export default async function LandingPage({ params }: PageProps) {
 
     // 构建面包屑导航
     const toolLabel = isConverter ? breadcrumbT.imageConverter : breadcrumbT.imageCompression
+    const pageTitle = content.hero?.h1 ? extractPageTitle(content.hero.h1) : (toolTranslations?.title || 'Page')
     const breadcrumbItems = [
       { label: breadcrumbT.home, href: locale === 'en' ? '/' : `/${locale}` },
       { label: toolLabel, href: `/${locale === 'en' ? '' : locale + '/'}${resolvedParams.tool}` },
-      { label: content.hero?.h1 ? extractPageTitle(content.hero.h1) : 'Page' },
+      { label: pageTitle },
     ]
 
     // 获取推荐的其他功能（排除当前页面）
