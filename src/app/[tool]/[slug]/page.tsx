@@ -29,9 +29,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       }
     }
     
+    const baseUrl = 'https://toolaze.com'
+    const canonicalUrl = `${baseUrl}/${resolvedParams.tool}/${resolvedParams.slug}`
+    
     return {
       title: content.metadata.title,
       description: content.metadata.description,
+      alternates: {
+        canonical: canonicalUrl,
+      },
     }
   } catch (error) {
     console.error('Error generating metadata:', error)

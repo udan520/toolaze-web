@@ -2,6 +2,15 @@ import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import Breadcrumb from '@/components/Breadcrumb'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Terms of Service - Toolaze',
+  description: 'Toolaze Terms of Service - Free AI image tools with local processing. No registration required.',
+  alternates: {
+    canonical: 'https://toolaze.com/terms',
+  },
+}
 
 export default function TermsPage() {
   return (

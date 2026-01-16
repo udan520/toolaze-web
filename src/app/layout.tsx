@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   icons: {
     icon: '/favicon.svg',
   },
+  alternates: {
+    canonical: 'https://toolaze.com',
+  },
 }
 
 export default function RootLayout({

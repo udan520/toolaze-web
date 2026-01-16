@@ -24,3 +24,38 @@ See 'docs/SEO_MASTER_LAYOUT.md' section 3 for the exact breadcrumb structure.
 **FOOTER STANDARD**: All pages MUST use the standard footer defined in 'docs/SEO_MASTER_LAYOUT.md' section 4. The footer uses a dark slate background (bg-slate-900) with navigation links and copyright information. Always use the exact footer structure from the documentation to maintain consistency across all pages.
 
 **SECTION BACKGROUND ALTERNATION**: CRITICAL - Always alternate section backgrounds between `bg-white` and `bg-[#F8FAFF]` to create visual separation. Different content blocks (e.g., "Why Choose Toolaze?" vs "FAQ") MUST have different background colors so users can clearly distinguish between sections. Follow the pattern: alternate white and light indigo backgrounds throughout the page.
+
+**CANONICAL URL TAG**: MANDATORY - ALL pages MUST include a canonical URL tag in their metadata. This is critical for SEO to prevent duplicate content issues.
+- **Base URL**: `https://toolaze.com`
+- **Implementation**: Add `alternates.canonical` to the page's `Metadata` object
+- **Format**: 
+  - Homepage: `https://toolaze.com`
+  - Dynamic routes: `https://toolaze.com/{tool}/{slug}`
+  - Static pages: `https://toolaze.com/{path}` (e.g., `/about`, `/privacy`, `/terms`, `/image-compressor`, `/image-converter`)
+- **Example for static page**:
+  ```typescript
+  export const metadata: Metadata = {
+    title: 'Page Title - Toolaze',
+    description: 'Page description',
+    alternates: {
+      canonical: 'https://toolaze.com/page-path',
+    },
+  }
+  ```
+- **Example for dynamic route**:
+  ```typescript
+  export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+    const resolvedParams = await params
+    const baseUrl = 'https://toolaze.com'
+    const canonicalUrl = `${baseUrl}/${resolvedParams.tool}/${resolvedParams.slug}`
+    
+    return {
+      title: 'Page Title',
+      description: 'Page description',
+      alternates: {
+        canonical: canonicalUrl,
+      },
+    }
+  }
+  ```
+- **When creating new pages**: ALWAYS include the canonical URL in the metadata. Never skip this step.

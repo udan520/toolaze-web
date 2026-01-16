@@ -2,6 +2,15 @@ import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import Breadcrumb from '@/components/Breadcrumb'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'About Us - Toolaze',
+  description: 'Learn about Toolaze - Free AI image tools that run locally in your browser. Privacy-first, unlimited, forever free.',
+  alternates: {
+    canonical: 'https://toolaze.com/about',
+  },
+}
 
 export default function AboutPage() {
   return (

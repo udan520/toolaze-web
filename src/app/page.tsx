@@ -2,6 +2,15 @@ import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { getAllTools, loadToolData } from '@/lib/seo-loader'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Toolaze - Free AI Image Compressor & Local Tools',
+  description: 'Compress images locally in your browser. No server uploads, 100% private, free AI tools for creators.',
+  alternates: {
+    canonical: 'https://toolaze.com',
+  },
+}
 
 export default async function HomePage() {
   let toolList: Array<{ tool: string; slug: string; title: string; description: string; component?: string }> = []

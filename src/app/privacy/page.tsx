@@ -2,6 +2,15 @@ import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import Breadcrumb from '@/components/Breadcrumb'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Privacy Policy - Toolaze',
+  description: 'Toolaze Privacy Policy - We process all images locally in your browser. Your files never leave your device.',
+  alternates: {
+    canonical: 'https://toolaze.com/privacy',
+  },
+}
 
 export default function PrivacyPage() {
   return (
