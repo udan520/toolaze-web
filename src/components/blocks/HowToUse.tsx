@@ -6,16 +6,25 @@ interface HowToUseProps {
       description: string
     }>
   }
+  title?: string
 }
 
-export default function HowToUse({ data }: HowToUseProps) {
+export default function HowToUse({ data, title }: HowToUseProps) {
   if (!data || !data.steps || data.steps.length === 0) return null
+
+  const sectionTitle = title || 'How to Use Toolaze?'
 
   return (
     <section className="py-24 px-6 bg-[#F8FAFF] border-t border-indigo-50/50">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-3xl font-extrabold text-center text-slate-900 mb-20">
-          How to Use <span className="text-indigo-600">Toolaze?</span>
+          {sectionTitle.includes('Toolaze') ? (
+            <>
+              {sectionTitle.split('Toolaze')[0]}<span className="text-indigo-600">Toolaze</span>{sectionTitle.split('Toolaze')[1]}
+            </>
+          ) : (
+            sectionTitle
+          )}
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-16 text-center">
           {data.steps.map((step) => (

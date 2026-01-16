@@ -2,13 +2,54 @@
 
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
+import { usePathname } from 'next/navigation'
 import { getAllSlugs, getSeoContent } from '@/lib/seo-loader'
+
+const locales = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
+
+// 翻译数据(默认英语)
+const defaultNavTranslations = {
+  quickTools: 'Quick Tools',
+  imageCompression: 'Image Compression',
+  imageConverter: 'Image Converter',
+  aboutUs: 'About Us'
+}
+
+// 加载导航翻译的函数
+async function loadNavTranslations(locale: string) {
+  try {
+    let normalizedLocale = locale
+    if (locale === 'zh' || locale === 'zh-CN' || locale === 'zh-HK') {
+      normalizedLocale = 'zh-TW'
+    }
+    
+    if (normalizedLocale === 'en') {
+      const data = await import('@/data/en/common.json')
+      return data.default?.nav || defaultNavTranslations
+    }
+    
+    try {
+      const data = await import(`@/data/${normalizedLocale}/common.json`)
+      return data.default?.nav || defaultNavTranslations
+    } catch {
+      return defaultNavTranslations
+    }
+  } catch {
+    return defaultNavTranslations
+  }
+}
 
 // 格式化 tool 名称为显示名称（与页面中的函数一致）
 function extractPageTitle(h1: string): string {
+  if (!h1) return ''
+  // 移除HTML标签
   let cleanH1 = h1.replace(/<[^>]*>/g, '')
-  cleanH1 = cleanH1.replace(/^(Compress|Free|Convert|Optimize|Reduce)\s+/i, '')
-  cleanH1 = cleanH1.replace(/\s+(Compression|Tool|Compressor|Converter|Optimizer)$/i, '')
+  // 对于英文，移除常见前缀和后缀
+  // 对于其他语言，直接返回清理后的标题
+  if (/^[a-zA-Z]/.test(cleanH1)) {
+    cleanH1 = cleanH1.replace(/^(Compress|Free|Convert|Optimize|Reduce)\s+/i, '')
+    cleanH1 = cleanH1.replace(/\s+(Compression|Tool|Compressor|Converter|Optimizer)$/i, '')
+  }
   return cleanH1.trim() || h1.replace(/<[^>]*>/g, '')
 }
 
@@ -17,6 +58,116 @@ export default function Navigation() {
   const menuRef = useRef<HTMLDivElement>(null)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [expandedSubmenus, setExpandedSubmenus] = useState<Set<string>>(new Set())
+  const [navTranslations, setNavTranslations] = useState(defaultNavTranslations)
+  const [thirdLevelMenuData, setThirdLevelMenuData] = useState<Record<string, Array<{slug: string, title: string, href: string}>>>({})
+  const pathname = usePathname()
+  
+  // 检测当前语言
+  const getCurrentLocale = (): string => {
+    if (!pathname) return 'en'
+    const pathParts = pathname.split('/').filter(Boolean)
+    const firstPart = pathParts[0] || ''
+    return locales.includes(firstPart) ? firstPart : 'en'
+  }
+  
+  const currentLocale = getCurrentLocale()
+  
+  // 加载翻译
+  useEffect(() => {
+    loadNavTranslations(currentLocale).then(setNavTranslations)
+  }, [currentLocale])
+  
+  // 加载三级菜单数据
+  useEffect(() => {
+    const loadThirdLevelItems = async () => {
+      const locale = getCurrentLocale()
+      const data: Record<string, Array<{slug: string, title: string, href: string}>> = {}
+      
+      // 生成带语言前缀的链接的辅助函数
+      const getHref = (href: string): string => {
+        if (href.startsWith('http')) return href
+        if (locale === 'en') return href
+        if (href.startsWith(`/${locale}`)) return href
+        return `/${locale}${href}`
+      }
+      
+      // 加载 Image Compressor 的三级菜单
+      try {
+        const compressorSlugs = await getAllSlugs('image-compressor', locale)
+        const compressorItems = await Promise.all(
+          compressorSlugs.map(async (slug) => {
+            const toolData = await getSeoContent('image-compressor', slug, locale)
+            let title = slug
+            if (toolData?.hero?.h1) {
+              title = toolData.hero.h1.replace(/<[^>]*>/g, '').trim()
+              if (!title) title = slug
+            }
+            return {
+              slug,
+              title,
+              href: getHref(`/image-compressor/${slug}`),
+            }
+          })
+        )
+        data['image-compressor'] = compressorItems.filter(item => item.title && item.href)
+      } catch (error) {
+        data['image-compressor'] = []
+      }
+      
+      // 加载 Image Converter 的三级菜单
+      try {
+        const converterSlugs = await getAllSlugs('image-converter', locale)
+        const converterItems = await Promise.all(
+          converterSlugs.map(async (slug) => {
+            const toolData = await getSeoContent('image-converter', slug, locale)
+            let title = slug
+            if (toolData?.hero?.h1) {
+              title = toolData.hero.h1.replace(/<[^>]*>/g, '').trim()
+              if (!title) title = slug
+            }
+            return {
+              slug,
+              title,
+              href: getHref(`/image-converter/${slug}`),
+            }
+          })
+        )
+        data['image-converter'] = converterItems.filter(item => item.title && item.href)
+      } catch (error) {
+        data['image-converter'] = []
+      }
+      
+      setThirdLevelMenuData(data)
+    }
+    
+    loadThirdLevelItems()
+  }, [currentLocale, pathname])
+  
+  // 生成带语言前缀的链接（英语不使用 /en 前缀）
+  const getLocalizedHref = (href: string): string => {
+    // 如果 href 是绝对路径，直接返回
+    if (href.startsWith('http')) {
+      return href
+    }
+    
+    // 英语版本：直接返回，不添加 /en
+    if (currentLocale === 'en') {
+      return href
+    }
+    
+    // 如果 href 已经包含当前语言前缀，直接返回
+    if (href.startsWith(`/${currentLocale}`)) {
+      return href
+    }
+    
+    // 其他语言：添加语言前缀
+    return `/${currentLocale}${href}`
+  }
+  
+  // 获取三级菜单项的函数（使用已加载的数据）
+  const getThirdLevelItems = (tool: string): Array<{slug: string, title: string, href: string}> => {
+    return thirdLevelMenuData[tool] || []
+  }
 
   useEffect(() => {
     const nav = navRef.current
@@ -50,28 +201,12 @@ export default function Navigation() {
     }
   }, [mobileMenuOpen])
 
-  // 获取三级菜单项的函数
-  const getThirdLevelItems = (tool: string, basePath: string) => {
-    try {
-      const toolSlugs = getAllSlugs(tool)
-      return toolSlugs.map(slug => {
-        const toolData = getSeoContent(tool, slug)
-        return {
-          slug,
-          title: toolData?.hero?.h1 ? extractPageTitle(toolData.hero.h1) : slug,
-          href: `${basePath}/${slug}`,
-        }
-      }).filter(item => item.title && item.href)
-    } catch (error) {
-      return []
-    }
-  }
 
-  // 二级菜单项
+  // 二级菜单项（动态生成以包含语言前缀）
   const secondLevelItems = [
     {
-      title: 'Image Compression',
-      href: '/image-compressor',
+      title: navTranslations.imageCompression,
+      href: getLocalizedHref('/image-compressor'),
       hasThirdLevel: true,
       tool: 'image-compressor',
       icon: (
@@ -91,8 +226,8 @@ export default function Navigation() {
       ),
     },
     {
-      title: 'Image Converter',
-      href: '/image-converter',
+      title: navTranslations.imageConverter,
+      href: getLocalizedHref('/image-converter'),
       hasThirdLevel: true,
       tool: 'image-converter',
       icon: (
@@ -113,7 +248,7 @@ export default function Navigation() {
   return (
     <nav id="mainNav" ref={navRef} className="sticky-nav w-full">
       <div className="py-6 px-6 flex justify-center items-center max-w-6xl mx-auto w-full relative">
-        <Link href="/" className="absolute left-6 text-3xl font-extrabold text-indigo-600 tracking-tighter flex items-center gap-3 hover:opacity-80 transition-opacity">
+        <Link href={getLocalizedHref('/')} className="absolute left-6 text-3xl font-extrabold text-indigo-600 tracking-tighter flex items-center gap-3 hover:opacity-80 transition-opacity">
           <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="shadow-md shadow-indigo-100 rounded-lg">
             <rect width="40" height="40" rx="12" fill="white"/>
             <path d="M12 12H22C23.1 12 24 12.9 24 14V28C24 29.1 23.1 30 22 30H18C16.9 30 16 29.1 16 28V16H12C10.9 16 10 15.1 10 14V14C10 12.9 10.9 12 12 12Z" fill="url(#paint_wink)"/>
@@ -151,7 +286,7 @@ export default function Navigation() {
           {/* 一级菜单：Quick Tools */}
           <div className="relative group">
             <button className="hover:text-indigo-600 transition-colors flex items-center gap-1">
-              Quick Tools
+              {navTranslations.quickTools}
               <svg className="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
               </svg>
@@ -159,27 +294,27 @@ export default function Navigation() {
             {/* 二级菜单下拉 */}
             <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-lg border border-indigo-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
               <div className="py-2">
-                {secondLevelItems.map((item) => (
-                  <div key={item.title} className="relative submenu-group">
-                    <Link
-                      href={item.href}
-                      className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center justify-between whitespace-nowrap"
-                    >
-                      <div className="flex items-center gap-2">
-                        {item.icon && item.icon}
-                        <span>{item.title}</span>
-                      </div>
-                      {item.hasThirdLevel && (
-                        <svg className="w-3 h-3 ml-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
-                        </svg>
-                      )}
-                    </Link>
-                    {/* 三级菜单（hover到二级时显示） */}
-                    {item.hasThirdLevel && item.tool && (() => {
-                      const thirdLevelItems = getThirdLevelItems(item.tool, item.href)
-                      return thirdLevelItems.length > 0 ? (
-                        <div className="submenu-group-hover absolute left-full top-0 ml-2 w-64 bg-white rounded-xl shadow-lg border border-indigo-50 opacity-0 invisible transition-all duration-200 z-50 max-h-screen overflow-y-auto">
+                {secondLevelItems.map((item) => {
+                  const thirdLevelItems = item.hasThirdLevel && item.tool ? getThirdLevelItems(item.tool) : []
+                  return (
+                    <div key={item.title} className="relative submenu-item-group">
+                      <Link
+                        href={item.href}
+                        className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center justify-between whitespace-nowrap"
+                      >
+                        <div className="flex items-center gap-2">
+                          {item.icon && item.icon}
+                          <span>{item.title}</span>
+                        </div>
+                        {item.hasThirdLevel && (
+                          <svg className="w-3 h-3 ml-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
+                          </svg>
+                        )}
+                      </Link>
+                      {/* 三级菜单（hover到二级时显示） */}
+                      {item.hasThirdLevel && thirdLevelItems.length > 0 && (
+                        <div className="third-level-menu absolute left-full top-0 ml-2 w-64 bg-white rounded-xl shadow-lg border border-indigo-50 opacity-0 invisible transition-all duration-200 z-50 max-h-screen overflow-y-auto">
                           <div className="py-2">
                             {thirdLevelItems.map((thirdItem) => (
                               <Link
@@ -192,14 +327,14 @@ export default function Navigation() {
                             ))}
                           </div>
                         </div>
-                      ) : null
-                    })()}
-                  </div>
-                ))}
+                      )}
+                    </div>
+                  )
+                })}
               </div>
             </div>
           </div>
-          <Link href="/about" className="hover:text-indigo-600 transition-colors">About Us</Link>
+          <Link href={getLocalizedHref('/about')} className="hover:text-indigo-600 transition-colors">{navTranslations.aboutUs}</Link>
         </div>
 
         {/* 移动端菜单面板 */}
@@ -208,11 +343,11 @@ export default function Navigation() {
             <div className="px-6 py-4 space-y-4">
               {/* Quick Tools 部分 */}
               <div className="border-b border-indigo-50 pb-4">
-                <div className="text-sm font-bold text-slate-700 mb-3">Quick Tools</div>
+                <div className="text-sm font-bold text-slate-700 mb-3">{navTranslations.quickTools}</div>
                 <div className="space-y-2">
                   {secondLevelItems.map((item) => {
                     const isExpanded = expandedSubmenus.has(item.title)
-                    const thirdLevelItems = item.hasThirdLevel && item.tool ? getThirdLevelItems(item.tool, item.href) : []
+                    const thirdLevelItems = item.hasThirdLevel && item.tool ? getThirdLevelItems(item.tool) : []
                     
                     return (
                       <div key={item.title}>
@@ -281,14 +416,14 @@ export default function Navigation() {
               </div>
               {/* About Us */}
               <Link
-                href="/about"
+                href={getLocalizedHref('/about')}
                 onClick={() => {
                   setMobileMenuOpen(false)
                   setExpandedSubmenus(new Set())
                 }}
                 className="block px-3 py-2 text-sm font-bold text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
               >
-                About Us
+                {navTranslations.aboutUs}
               </Link>
             </div>
           </div>

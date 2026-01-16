@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Toolaze Logic Tester</title>
+    <style>
+        body { font-family: system-ui, -apple-system, sans-serif; max-width: 600px; margin: 40px auto; padding: 20px; background: #f0f4f8; }
+        .card { background: white; padding: 30px; border-radius: 16px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-align: center; }
+        .upload-box { border: 2px dashed #cbd5e1; padding: 40px; border-radius: 12px; cursor: pointer; transition: 0.2s; }
+        .upload-box:hover { border-color: #6366f1; background: #eef2ff; }
+        select, button { padding: 10px 20px; font-size: 16px; border-radius: 8px; margin-top: 20px; }
+        button { background: #6366f1; color: white; border: none; cursor: pointer; font-weight: bold; }
+        button:hover { background: #4f46e5; }
+        #results { margin-top: 30px; text-align: left; }
+        .item { background: #f8fafc; padding: 15px; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; }
+        .tag { background: #dcfce7; color: #166534; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; }
+        a { color: #6366f1; text-decoration: none; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>🧩 Toolaze 逻辑验证器</h2>
+    <p style="color: #64748b; font-size: 14px;">不依赖 React，直接测试 Canvas 转换核心算法</p>
+    
+    <div class="upload-box" onclick="document.getElementById('fileInput').click()">
+        <p>点击选择图片 (支持多选)</p>
+        <input type="file" id="fileInput" multiple accept="image/*" style="display:none">
+    </div>
+
+    <div id="controls" style="display:none;">
+        <select id="formatSelect">
+            <option value="image/jpeg">转为 JPG (测试白底填充)</option>
+            <option value="image/png">转为 PNG</option>
+            <option value="image/webp">转为 WEBP</option>
+            <option value="image/bmp">转为 BMP</option>
+        </select>
+        <button onclick="processFiles()">开始转换测试</button>
+    </div>
+
+    <div id="results"></div>
+</div>
+
+<script>
+    let selectedFiles = [];
+    const fileInput = document.getElementById('fileInput');
+    const controls = document.getElementById('controls');
+    const resultsDiv = document.getElementById('results');
+
+    // 监听文件选择
+    fileInput.addEventListener('change', (e) => {
+        selectedFiles = Array.from(e.target.files);
+        if (selectedFiles.length > 0) {
+            controls.style.display = 'block';
+            resultsDiv.innerHTML = `<p style="color:#64748b">已选择 ${selectedFiles.length} 张图片，请点击转换...</p>`;
+        }
+    });
+
+    // --- 核心逻辑 (与 React 版完全一致) ---
+    async function processFiles() {
+        const targetMime = document.getElementById('formatSelect').value;
+        const targetExt = targetMime.split('/')[1].replace('jpeg', 'jpg');
+        
+        resultsDiv.innerHTML = ''; // 清空结果
+
+        for (const file of selectedFiles) {
+            try {
+                // 1. 读取并转换
+                const dataUrl = await convertToFormat(file, targetMime);
+                
+                // 2. 估算大小
+                const sizeKB = Math.round((dataUrl.length * 3 / 4) / 1024);
+                
+                // 3. 显示结果
+                const div = document.createElement('div');
+                div.className = 'item';
+                div.innerHTML = `
+                    <div>
+                        <strong>${file.name}</strong> <br>
+                        <span style="font-size:12px; color:#94a3b8">-> ${sizeKB} KB (${targetExt.toUpperCase()})</span>
+                    </div>
+                    <a href="${dataUrl}" download="test-${file.name.split('.')[0]}.${targetExt}">下载验证</a>
+                `;
+                resultsDiv.appendChild(div);
+
+            } catch (err) {
+                console.error(err);
+                alert('转换失败: ' + file.name);
+            }
+        }
+    }
+
+    // --- Canvas 引擎 (核心算法) ---
+    function convertToFormat(file, targetMime) {
+        return new Promise((resolve, reject) => {
+            const img = new Image();
+            const reader = new FileReader();
+
+            reader.onload = (e) => { img.src = e.target.result; };
+            
+            img.onload = () => {
+                const canvas = document.createElement('canvas');
+                canvas.width = img.width;
+                canvas.height = img.height;
+                const ctx = canvas.getContext('2d');
+
+                // 🔥 关键验证点：透明度处理 🔥
+                // 如果目标是 JPG 或 BMP，填充白色背景
+                if (targetMime === 'image/jpeg' || targetMime === 'image/bmp') {
+                    ctx.fillStyle = '#FFFFFF'; // 白色
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                }
+
+                ctx.drawImage(img, 0, 0);
+                resolve(canvas.toDataURL(targetMime, 0.9));
+            };
+            
+            reader.readAsDataURL(file);
+        });
+    }
+</script>
+
+</body>
+</html>

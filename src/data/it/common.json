@@ -1,0 +1,482 @@
+{
+  "nav": {
+    "quickTools": "Strumenti Rapidi",
+    "imageCompression": "Compressione Immagini",
+    "imageConverter": "Convertitore Immagini",
+    "aboutUs": "Chi Siamo"
+  },
+  "home": {
+    "metadata": {
+      "title": "Toolaze - Compressore Immagini AI Gratuito e Strumenti Locali",
+      "description": "Comprimi immagini localmente nel tuo browser. Nessun caricamento server, 100% privato, strumenti AI gratuiti per creatori."
+    },
+    "badge": "v1.0 Ora Live",
+    "title": "Piattaforma Strumenti Immagine Leggeri Gratuiti.",
+    "titleLine1": "Gratuito Leggero",
+    "titleLine2": "Piattaforma Strumenti Immagine.",
+    "subtitle": "Strumenti professionali di elaborazione immagini che funzionano interamente nel tuo browser. Nessun caricamento, nessun limite, gratuito per sempre.",
+    "cta": "Prova il Compressore Immagini Ora →",
+    "sectionToolsTitle": "Tutti gli Strumenti Disponibili",
+    "sectionToolsSubtitle": "Una suite. Infinite possibilità.",
+    "badgeLive": "Live",
+    "badgeComingSoon": "Prossimamente",
+    "toolImageCompressor": "Compressore Immagini",
+    "toolImageCompressorDesc": "Compressione con perdita intelligente per JPG/PNG.",
+    "toolFormatConverter": "Convertitore Formato",
+    "toolFormatConverterDesc": "HEIC a JPG, PNG a WEBP.",
+    "toolImageResize": "Ridimensionamento Immagine",
+    "toolImageResizeDesc": "Ridimensiona immagini alle dimensioni esatte.",
+    "toolVideoCompressor": "Compressore Video",
+    "toolVideoCompressorDesc": "Comprimi video senza perdita di qualità.",
+    "whyToolaze": {
+      "badge": "Perché Toolaze?",
+      "title": "Costruito per Privacy e Prestazioni",
+      "subtitle": "Tutto ciò che devi sapere sul perché Toolaze è la scelta intelligente per i creatori che valorizzano privacy e qualità."
+    },
+    "features": {
+      "privacy": {
+        "title": "Architettura Privacy First",
+        "desc": "A differenza di altri strumenti, non inviamo le tue immagini a un server remoto. Tutto avviene qui nel tuo browser usando WebAssembly. I tuoi file non lasciano mai il tuo dispositivo, garantendo privacy e sicurezza complete."
+      },
+      "unlimited": {
+        "title": "Illimitato e Gratuito",
+        "desc": "Comprimi quante immagini vuoi. Nessun limite giornaliero, nessun paywall, nessuna watermark. Tutti gli strumenti sono completamente gratuiti per sempre senza costi nascosti o livelli premium."
+      },
+      "quality": {
+        "title": "Controllo Qualità Senza Perdite",
+        "desc": "I nostri algoritmi di compressione avanzati riducono le dimensioni dei file fino al 90% mantenendo la qualità visiva. Tu controlli il livello di compressione per bilanciare perfettamente dimensione e qualità."
+      },
+      "noRegistration": {
+        "title": "Nessuna Registrazione Richiesta",
+        "desc": "Inizia a usare i nostri strumenti immediatamente senza creare un account. Nessuna iscrizione email, nessuna raccolta di informazioni personali. Apri semplicemente lo strumento e inizia."
+      }
+    },
+    "faq": {
+      "title": "Domande Frequenti",
+      "items": [
+        {
+          "q": "Come comprime Toolaze le immagini senza caricarle?",
+          "a": "Toolaze usa WebAssembly e API di elaborazione immagini basate sul browser per comprimere le immagini direttamente nel tuo browser. I tuoi file vengono elaborati localmente sul tuo dispositivo, mai inviati a un server. Questo garantisce privacy completa e elaborazione più veloce."
+        },
+        {
+          "q": "Quali formati di immagine supporta Toolaze?",
+          "a": "Attualmente, il nostro Compressore Immagini supporta i formati JPG, PNG e WEBP. Stiamo lavorando per aggiungere il supporto per più formati inclusi HEIC, BMP e TIFF negli aggiornamenti futuri."
+        },
+        {
+          "q": "C'è un limite di dimensione del file?",
+          "a": "Non c'è un limite teorico di dimensione del file. Tuttavia, immagini molto grandi possono causare rallentamenti del browser a seconda delle prestazioni del tuo dispositivo e della memoria disponibile. Raccomandiamo di elaborare file grandi in lotti più piccoli per la migliore esperienza."
+        },
+        {
+          "q": "Toolaze sarà sempre gratuito?",
+          "a": "Sì! Toolaze si impegna a fornire strumenti gratuiti per sempre. Crediamo nel rendere strumenti potenti di elaborazione immagini accessibili a tutti senza barriere di costo o abbonamenti premium."
+        },
+        {
+          "q": "Quanto posso comprimere le mie immagini?",
+          "a": "I risultati della compressione variano a seconda della qualità e del formato dell'immagine originale. Tipicamente, puoi ottenere una riduzione delle dimensioni del 50-90% mantenendo una qualità visiva accettabile. Puoi regolare le impostazioni di compressione per trovare il perfetto equilibrio per le tue esigenze."
+        }
+      ]
+    }
+  },
+  "footer": {
+    "home": "Home",
+    "allTools": "Tutti gli Strumenti",
+    "aboutUs": "Chi Siamo",
+    "privacyPolicy": "Informativa sulla Privacy",
+    "termsOfService": "Termini di Servizio",
+    "contact": "Contatti",
+    "copyright": "© {year} Toolaze Lab. Tutti i diritti riservati.",
+    "tagline": "Strumenti Online Gratuiti • Nessuna Registrazione Richiesta • 100% Privato"
+  },
+  "breadcrumb": {
+    "home": "Home",
+    "quickTools": "Strumenti Rapidi",
+    "imageCompression": "Compressione Immagini",
+    "imageConverter": "Convertitore Immagini",
+    "aboutUs": "Chi Siamo",
+    "privacyPolicy": "Informativa sulla Privacy",
+    "termsOfService": "Termini di Servizio"
+  },
+  "about": {
+    "metadata": {
+      "title": "Chi Siamo - Toolaze",
+      "description": "Scopri Toolaze - Strumenti immagine AI gratuiti che funzionano localmente nel tuo browser. Privacy prima, illimitato, gratuito per sempre."
+    },
+    "title": "Noi Gestiamo lo Strumento. Tu Gestisci la Pigrizia.",
+    "titleTool": "Strumento",
+    "titleLaze": "Pigrizia",
+    "subtitle": "La produttività non riguarda il lavorare di più. Si tratta di essere abbastanza intelligenti da lasciare che l'IA faccia il lavoro pesante.",
+    "whyToolaze": {
+      "title": "Perché \"Toolaze\"?",
+      "content1": "Il nome deriva da una filosofia semplice: Strumento + Pigrizia.",
+      "content2": "Crediamo che come creatore, la tua energia sia limitata. Ogni minuto che passi a ridimensionare immagini, convertire formati o preoccuparti della privacy del server è un minuto rubato alla tua creatività.",
+      "content3": "Abbiamo costruito Toolaze per essere la soluzione \"pigra\" definitiva. Usiamo l'IA Locale avanzata per automatizzare istantaneamente le cose tecniche noiose nel tuo browser. Nessun caricamento, nessuna attesa, nessuna frizione.",
+      "content4": "Quindi vai avanti, sii un po' pigro. Abbiamo coperto gli strumenti."
+    },
+    "features": {
+      "privacy": {
+        "title": "Pigrizia sulla Privacy",
+        "desc": "Rilassati. I tuoi file non lasciano mai il tuo dispositivo. Zero rischio di perdite di dati significa zero ansia per te."
+      },
+      "waiting": {
+        "title": "Pigrizia sull'Attesa",
+        "desc": "Perché aspettare i caricamenti? Il nostro motore WebAssembly locale elabora i file istantaneamente. Fatto in un battito di ciglia."
+      },
+      "cost": {
+        "title": "Pigrizia sui Costi",
+        "desc": "Tieni il portafoglio chiuso. Non abbiamo costose bollette del server, quindi non devi pagare tariffe di abbonamento."
+      }
+    },
+    "cta": {
+      "title": "Pronto a lavorare meno?",
+      "subtitle": "Prova i nostri strumenti e riprenditi il tuo tempo creativo.",
+      "button": "Inizia a Essere Pigro Ora →"
+    }
+  },
+  "common": {
+    "tryNow": "Prova Ora →",
+    "rating": {
+      "rating": "4.9/5 DA 10K+ CREATORI",
+      "description": "Unisciti a migliaia di utenti soddisfatti che si fidano di Toolaze per compressione immagini veloce, sicura e gratuita. Nessuna registrazione richiesta, elaborazione 100% privata."
+    },
+    "tool": {
+      "dropZone": {
+        "title": "Clicca o Trascina Immagini/Cartelle Qui",
+        "formats": "JPG, PNG, WebP, BMP, HEIC (Max 100 file)"
+      },
+      "controls": {
+        "targetSize": "Dimensione Obiettivo:",
+        "convertTo": "Converti in:",
+        "processing": "Elaborazione in corso...",
+        "startCompression": "Avvia Compressione in Batch",
+        "startConversion": "Avvia Conversione in Batch",
+        "downloadAll": "Scarica Tutto (ZIP)",
+        "download": "Scarica",
+        "clear": "Cancella Tutto",
+        "retry": "Riprova"
+      },
+      "messages": {
+        "processingCompleted": "Elaborazione completata!",
+        "convertedHeic": "HEIC convertito in JPG:",
+        "failedConvertHeic": "Conversione HEIC fallita:",
+        "compressionTimeout": "Timeout compressione:",
+        "failedCompress": "Compressione fallita:",
+        "conversionTimeout": "Timeout conversione:",
+        "failedConvert": "Conversione fallita:",
+        "retrySuccessful": "Riprova riuscita:",
+        "retryTimeout": "Timeout riprova:",
+        "retryFailed": "Riprova fallita:",
+        "listCleared": "Lista cancellata"
+      },
+      "gallery": {
+        "title": "Anteprima Galleria",
+        "added": "Aggiunto:",
+        "original": "Originale:",
+        "new": "Nuovo:"
+      },
+      "status": {
+        "waiting": "In Attesa",
+        "running": "In Esecuzione",
+        "done": "Completato",
+        "error": "Errore"
+      },
+      "trustBar": {
+        "private": "100% Privato",
+        "localBrowser": "API Browser Locale",
+        "noServerLogs": "Nessun Log Server"
+      }
+    }
+  },
+  "imageCompressor": {
+    "metadata": {
+      "title": "Compressore Immagini Gratuito - Comprimi Immagini in Batch Online | Toolaze",
+      "description": "Comprimi fino a 100 immagini alla volta. Imposta la dimensione obiettivo esatta. Veloce, privato, 100% gratuito. Nessuna registrazione richiesta."
+    },
+    "moreTools": "Altri Strumenti di Compressione Immagini",
+    "title": "Compressore Immagini Gratuito",
+    "subtitle": "Comprimi fino a 100 immagini alla volta. Imposta la dimensione obiettivo esatta. Veloce, privato, 100% gratuito. Nessuna registrazione richiesta.",
+    "whyToolaze": {
+      "badge": "Perché Toolaze?",
+      "title": "Smetti di Perdere Tempo con Strumenti di Compressione Immagini Lenti",
+      "desc": "I compressori di immagini tradizionali sono lenti, limitano il numero di file e spesso compromettono la qualità. Toolaze comprime fino a 100 immagini simultaneamente con controllo preciso delle dimensioni, mantenendo la qualità visiva riducendo drasticamente le dimensioni dei file. Perfetto per sviluppatori web, fotografi e creatori di contenuti."
+    },
+    "features": {
+      "batch": {
+        "title": "Elaborazione in Batch",
+        "desc": "Comprimi fino a 100 immagini alla volta"
+      },
+      "precise": {
+        "title": "Controllo Preciso delle Dimensioni",
+        "desc": "Imposta la dimensione obiettivo esatta in KB o MB"
+      },
+      "free": {
+        "title": "100% Gratuito",
+        "desc": "Nessuna pubblicità per sempre."
+      }
+    },
+    "howToUse": {
+      "title": "Come Usare Toolaze?",
+      "step1": {
+        "title": "Carica Immagini",
+        "desc": "Trascina e rilascia fino a 100 immagini o cartelle. Supporta i formati JPG, PNG, WebP e BMP."
+      },
+      "step2": {
+        "title": "Imposta Dimensione Obiettivo",
+        "desc": "Scegli la dimensione del file desiderata in KB o MB. Il nostro algoritmo comprime le immagini precisamente al tuo obiettivo."
+      },
+      "step3": {
+        "title": "Scarica Risultati",
+        "desc": "Scarica immagini compresse individuali o tutte insieme come file ZIP. Veloce ed efficiente."
+      }
+    },
+    "comparison": {
+      "toolaze": "Toolaze 💎",
+      "otherTools": "Altri Strumenti",
+      "vs": "VS",
+      "smartChoice": "Scelta Intelligente",
+      "features": {
+        "batch100": "Batch fino a 100 immagini",
+        "preciseControl": "Controllo preciso delle dimensioni",
+        "multipleFormat": "Supporto multipli formati",
+        "privateFree": "100% privato e gratuito",
+        "noSignup": "Nessuna registrazione richiesta",
+        "limitedBatch": "Dimensione batch limitata",
+        "noPreciseControl": "Nessun controllo preciso",
+        "formatRestrictions": "Restrizioni formato",
+        "privacyConcerns": "Preoccupazioni privacy",
+        "registrationRequired": "Registrazione richiesta"
+      }
+    },
+    "scenarios": {
+      "title": "Casi d'Uso",
+      "developers": {
+        "title": "Per Sviluppatori Web",
+        "desc": "Ottimizza immagini per siti web e app. Riduci i tempi di caricamento mantenendo la qualità per un migliore SEO e esperienza utente."
+      },
+      "ecommerce": {
+        "title": "Per E-commerce",
+        "desc": "Comprimi immagini di prodotti in massa. Caricamenti di pagina più veloci significano migliori tassi di conversione e classifiche di ricerca migliorate."
+      },
+      "creators": {
+        "title": "Per Creatori di Contenuti",
+        "desc": "Prepara immagini per social media e blog. Elabora più immagini rapidamente in batch senza perdita di qualità."
+      }
+    },
+    "faq": {
+      "title": "Domande Frequenti",
+      "formats": {
+        "q": "Quali formati di immagine sono supportati?",
+        "a": "Toolaze supporta i formati JPG, JPEG, PNG, WebP e BMP. Tutte le immagini compresse vengono emesse come file JPEG ottimizzati."
+      },
+      "free": {
+        "q": "Questo strumento è davvero gratuito?",
+        "a": "Sì! Toolaze è 100% gratuito senza pubblicità, senza registrazione e senza costi nascosti. Tutta l'elaborazione avviene nel tuo browser."
+      },
+      "batchLimit": {
+        "q": "Posso comprimere più di 100 immagini?",
+        "a": "La dimensione massima del batch è di 100 file per sessione. Per batch più grandi, elaborali semplicemente in più sessioni."
+      },
+      "privacy": {
+        "q": "Le mie immagini vengono caricate su un server?",
+        "a": "No! Tutta l'elaborazione delle immagini avviene localmente nel tuo browser usando JavaScript. Le tue immagini non lasciano mai il tuo dispositivo, garantendo privacy completa."
+      },
+      "maxSize": {
+        "q": "Qual è la dimensione massima del file che posso comprimere?",
+        "a": "Non c'è un limite teorico di dimensione del file. Tuttavia, immagini molto grandi possono causare rallentamenti del browser a seconda delle prestazioni del tuo dispositivo e della memoria disponibile. Raccomandiamo di elaborare file grandi in lotti più piccoli per la migliore esperienza."
+      }
+    }
+  },
+  "imageConverter": {
+    "metadata": {
+      "title": "Convertitore Immagini Gratuito - Converti Immagini in Batch Online | Toolaze",
+      "description": "Converti immagini tra i formati JPG, PNG e WebP. Conversione in batch fino a 100 immagini. Veloce, privato, 100% gratuito. Nessuna registrazione richiesta."
+    },
+    "moreTools": "Altri Strumenti Convertitore Immagini",
+    "title": "Convertitore Immagini Gratuito",
+    "subtitle": "Converti immagini tra i formati JPG, PNG e WebP. Conversione in batch fino a 100 immagini. Veloce, privato, 100% gratuito. Nessuna registrazione richiesta.",
+    "whyToolaze": {
+      "badge": "Perché Toolaze?",
+      "title": "Converti Immagini Senza Perdita di Qualità",
+      "desc": "Converti immagini tra i formati JPG, PNG e WebP istantaneamente. Il nostro convertitore basato sul browser elabora le immagini localmente, garantendo privacy completa e conversione veloce. Perfetto per sviluppatori web, designer e creatori di contenuti."
+    },
+    "features": {
+      "batch": {
+        "title": "Elaborazione in Batch",
+        "desc": "Converti fino a 100 immagini alla volta"
+      },
+      "formats": {
+        "title": "Formati Multipli",
+        "desc": "Supporto JPG, PNG, WebP e HEIC"
+      },
+      "free": {
+        "title": "100% Gratuito",
+        "desc": "Nessuna pubblicità per sempre."
+      }
+    },
+    "howToUse": {
+      "title": "Come Usare Toolaze?",
+      "step1": {
+        "title": "Carica Immagini",
+        "desc": "Trascina e rilascia fino a 100 immagini o cartelle. Supporta i formati JPG, PNG, WebP, BMP e HEIC."
+      },
+      "step2": {
+        "title": "Scegli Formato",
+        "desc": "Seleziona il formato obiettivo: JPG, PNG o WebP. Il nostro convertitore mantiene la qualità durante la conversione."
+      },
+      "step3": {
+        "title": "Scarica Risultati",
+        "desc": "Scarica immagini convertite individuali o tutte insieme come file ZIP. Veloce ed efficiente."
+      }
+    },
+    "comparison": {
+      "toolaze": "Toolaze 💎",
+      "otherTools": "Altri Strumenti",
+      "vs": "VS",
+      "smartChoice": "Scelta Intelligente",
+      "features": {
+        "batch100": "Batch fino a 100 immagini",
+        "multipleFormat": "Supporto multipli formati",
+        "qualityPreserved": "Qualità preservata",
+        "privateFree": "100% privato e gratuito",
+        "noSignup": "Nessuna registrazione richiesta",
+        "limitedBatch": "Dimensione batch limitata",
+        "formatRestrictions": "Restrizioni formato",
+        "qualityLoss": "Perdita di qualità",
+        "privacyConcerns": "Preoccupazioni privacy",
+        "registrationRequired": "Registrazione richiesta"
+      }
+    },
+    "scenarios": {
+      "title": "Casi d'Uso",
+      "developers": {
+        "title": "Per Sviluppatori Web",
+        "desc": "Converti immagini in WebP per prestazioni migliori. Ottimizza formati per caricamenti di pagina più veloci e SEO migliorato."
+      },
+      "designers": {
+        "title": "Per Designer",
+        "desc": "Converti tra formati per diverse esigenze di design. Preserva la trasparenza con PNG o ottimizza con JPG."
+      },
+      "creators": {
+        "title": "Per Creatori di Contenuti",
+        "desc": "Converti immagini in batch per social media e blog. Assicura compatibilità su tutte le piattaforme."
+      }
+    },
+    "faq": {
+      "title": "Domande Frequenti",
+      "formats": {
+        "q": "Quali formati di immagine sono supportati?",
+        "a": "Toolaze supporta la conversione tra i formati JPG, PNG e WebP. Puoi caricare immagini nei formati JPG, PNG, WebP, BMP o HEIC."
+      },
+      "free": {
+        "q": "Questo strumento è davvero gratuito?",
+        "a": "Sì! Toolaze è 100% gratuito senza pubblicità, senza registrazione e senza costi nascosti. Tutta l'elaborazione avviene nel tuo browser."
+      },
+      "batchLimit": {
+        "q": "Posso convertire più di 100 immagini?",
+        "a": "La dimensione massima del batch è di 100 file per sessione. Per batch più grandi, elaborali semplicemente in più sessioni."
+      },
+      "privacy": {
+        "q": "Le mie immagini vengono caricate su un server?",
+        "a": "No! Tutta la conversione di immagini avviene localmente nel tuo browser usando JavaScript. Le tue immagini non lasciano mai il tuo dispositivo, garantendo privacy completa."
+      },
+      "quality": {
+        "q": "La qualità sarà preservata durante la conversione?",
+        "a": "La preservazione della qualità dipende dal formato obiettivo. PNG è senza perdite, mentre JPG e WebP usano compressione con perdite ma mantengono alta qualità visiva."
+      }
+    }
+  },
+  "privacy": {
+    "metadata": {
+      "title": "Informativa sulla Privacy - Toolaze",
+      "description": "Informativa sulla Privacy Toolaze - Elaboriamo tutte le immagini localmente nel tuo browser. I tuoi file non lasciano mai il tuo dispositivo."
+    },
+    "title": "Informativa sulla Privacy",
+    "lastUpdated": "Ultimo Aggiornamento:",
+    "date": "14 gennaio 2026",
+    "intro": "Presso Toolaze (\"noi\", \"nostro\" o \"nostri\"), accessibile da https://toolaze.com, la nostra principale priorità è la privacy dei nostri visitatori. Questo documento Informativa sulla Privacy contiene i tipi di informazioni che vengono raccolte e registrate da Toolaze e come le usiamo.",
+    "section1": {
+      "title": "1. Promessa Privacy Centrale: Elaborazione Locale",
+      "content": "Ci differenziamo dando priorità alla tua privacy. Non carichiamo le tue immagini o video sui nostri server.",
+      "points": [
+        "Tutta l'elaborazione dei file avviene localmente nel tuo browser web.",
+        "I tuoi file non lasciano mai il tuo dispositivo.",
+        "Non possiamo visualizzare, copiare o vendere il tuo contenuto."
+      ]
+    },
+    "section2": {
+      "title": "2. Informazioni che Raccogliamo",
+      "content": "Non raccogliamo i tuoi file. Possiamo raccogliere informazioni anonime non personali per migliorare il nostro servizio:",
+      "logFiles": {
+        "title": "A. File di Log",
+        "content": "Toolaze segue una procedura standard di utilizzo dei file di log. Questi file registrano i visitatori quando visitano i siti web. Le informazioni raccolte includono indirizzi del protocollo Internet (IP), tipo di browser, timestamp data e ora e pagine di riferimento/uscita. Queste non sono collegate a informazioni personalmente identificabili."
+      },
+      "cookies": {
+        "title": "B. Cookie",
+        "content": "Toolaze usa \"cookie\" esclusivamente per memorizzare informazioni sulle preferenze dei visitatori (ad esempio, impostazioni modalità scura) e per ottimizzare l'esperienza utente."
+      }
+    },
+    "section3": {
+      "title": "3. Analisi",
+      "content": "Usiamo Google Analytics per capire come viene utilizzato il nostro sito web per migliorare l'esperienza utente (ad esempio, quali strumenti sono più popolari). Tutti i dati utente raccolti sono anonimi e aggregati. Non usiamo questi dati per il profilo pubblicitario."
+    },
+    "section4": {
+      "title": "4. Diritti GDPR e CCPA",
+      "content": "Rispettiamo i tuoi diritti sui dati. Poiché non archiviamo dati personali o file, non \"vendiamo\" i tuoi dati. Hai il diritto di richiedere informazioni sulle nostre pratiche sui dati in qualsiasi momento."
+    },
+    "section5": {
+      "title": "5. Contattaci",
+      "content": "Se hai domande aggiuntive, non esitare a contattarci a support@toolaze.com."
+    }
+  },
+  "terms": {
+    "metadata": {
+      "title": "Termini di Servizio - Toolaze",
+      "description": "Termini di Servizio Toolaze - Strumenti immagine AI gratuiti con elaborazione locale. Nessuna registrazione richiesta."
+    },
+    "title": "Termini di Servizio",
+    "lastUpdated": "Ultimo Aggiornamento:",
+    "date": "14 gennaio 2026",
+    "intro": "Benvenuto su Toolaze! Accedendo o utilizzando il nostro sito web (https://toolaze.com), accetti di essere vincolato da questi Termini di Servizio (\"Termini\"). Se non sei d'accordo con una parte dei termini, non puoi accedere al Servizio.",
+    "section1": {
+      "title": "1. Descrizione del Servizio",
+      "content": "Toolaze fornisce strumenti AI gratuiti basati sul web per l'elaborazione di immagini e video (ad esempio, compressione, conversione, modifica).",
+      "localProcessing": "Elaborazione Locale: La nostra caratteristica distintiva è che elaboriamo i file localmente nel tuo browser usando la tecnologia WebAssembly. Non carichiamo né archiviamo i tuoi file sui nostri server."
+    },
+    "section2": {
+      "title": "2. Uso del Servizio",
+      "license": "Licenza: Ti concediamo una licenza limitata, non esclusiva, non trasferibile per usare i nostri strumenti per scopi personali o commerciali, a condizione che tu rispetti questi Termini.",
+      "noRegistration": "Nessuna Registrazione: Non è necessario creare un account per usare i nostri strumenti attuali.",
+      "prohibitedActs": "Atti Proibiti: Accetti di non:",
+      "prohibitedList": [
+        "Fare reverse engineering, decompilare o tentare di estrarre il codice sorgente del Servizio.",
+        "Usare il Servizio per elaborare contenuti illegali.",
+        "Usare script automatizzati (bot) che influenzano la stabilità del nostro sito web."
+      ]
+    },
+    "section3": {
+      "title": "3. Contenuto e Dati Utente",
+      "ownership": "Tua Proprietà: Mantieni tutti i diritti e la proprietà delle immagini o video che elabori usando Toolaze. Non rivendichiamo diritti di proprietà intellettuale sul tuo contenuto.",
+      "noLiability": "Nessuna Responsabilità per la Perdita di Dati: Poiché non archiviamo i tuoi file, non possiamo recuperarli per te. Sei l'unico responsabile del backup dei tuoi dati originali. Se il tuo browser si blocca o la pagina si aggiorna durante l'elaborazione, qualsiasi progresso non salvato può essere perso, e Toolaze non è responsabile di tale perdita."
+    },
+    "section4": {
+      "title": "4. Proprietà Intellettuale",
+      "content": "Il Servizio stesso (escluso il tuo contenuto), inclusi il suo contenuto originale, funzionalità, codice e funzionalità, è e rimarrà proprietà esclusiva di Toolaze e dei suoi licenzianti. I nostri marchi (incluso il nome \"Toolaze\" e il Logo) non possono essere usati senza consenso scritto preventivo."
+    },
+    "section5": {
+      "title": "5. Disclaimer sulle Garanzie (\"COSÌ COM'È\")",
+      "content": "Il Servizio è fornito \"COSÌ COM'È\" e \"COME DISPONIBILE\". Toolaze non fa dichiarazioni o garanzie di alcun tipo, espresse o implicite, riguardo al funzionamento del Servizio o all'accuratezza dei risultati dell'elaborazione IA.",
+      "guarantee": "Non garantiamo che la qualità dell'immagine dopo la compressione soddisfi perfettamente le tue aspettative, poiché gli algoritmi IA possono variare in base ai tipi di file."
+    },
+    "section6": {
+      "title": "6. Limitazione di Responsabilità",
+      "content": "In nessun caso Toolaze sarà responsabile di danni indiretti, incidentali, speciali, consequenziali o punitivi, inclusi senza limitazione, perdita di profitti, dati, uso o goodwill, risultanti dal tuo uso del Servizio."
+    },
+    "section7": {
+      "title": "7. Modifiche ai Termini",
+      "content": "Ci riserviamo il diritto di modificare o sostituire questi Termini in qualsiasi momento. Continuando ad accedere al nostro Servizio dopo che quelle revisioni diventano effettive, accetti di essere vincolato dai termini rivisti."
+    },
+    "section8": {
+      "title": "8. Contattaci",
+      "content": "Se hai domande su questi Termini, ti preghiamo di contattarci a: support@toolaze.com"
+    }
+  }
+}

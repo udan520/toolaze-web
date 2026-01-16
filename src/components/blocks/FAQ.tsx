@@ -8,17 +8,20 @@ interface FAQProps {
     a: string
   }>
   showTitle?: boolean
+  title?: string
 }
 
-export default function FAQ({ items, data, showTitle = true }: FAQProps) {
+export default function FAQ({ items, data, showTitle = true, title }: FAQProps) {
   const faqList = items || data || []
   if (!faqList || faqList.length === 0) return null
+
+  const faqTitle = title || 'Frequently Asked Questions'
 
   return (
     <section className="py-24 px-6 bg-white border-t border-indigo-50/50">
       <div className="max-w-3xl mx-auto">
         {showTitle && (
-          <h2 className="text-3xl font-extrabold text-center text-slate-900 mb-12">Frequently Asked Questions</h2>
+          <h2 className="text-3xl font-extrabold text-center text-slate-900 mb-12">{faqTitle}</h2>
         )}
         <div className="space-y-4">
           {faqList.map((item, index) => (

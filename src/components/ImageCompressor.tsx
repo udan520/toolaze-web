@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
+import { useCommonTranslations } from '@/lib/use-common-translations'
 
 interface FileItem {
   id: string
@@ -19,6 +20,16 @@ interface ImageCompressorProps {
 }
 
 export default function ImageCompressor({ initialTarget }: ImageCompressorProps) {
+  const t = useCommonTranslations()
+  const toolT = t?.common?.tool || {
+    dropZone: { title: 'Click or Drag Images/Folders Here', formats: 'JPG, PNG, WebP, BMP, HEIC (Max 100 files)' },
+    controls: { targetSize: 'Target Size:', processing: 'Processing...', startCompression: 'Start Batch Compression', downloadAll: 'Download All (ZIP)', download: 'Download', clear: 'Clear All', retry: 'Retry' },
+    messages: { processingCompleted: 'Processing completed!', convertedHeic: 'Converted HEIC to JPG:', failedConvertHeic: 'Failed to convert HEIC:', compressionTimeout: 'Compression timeout:', failedCompress: 'Failed to compress:' },
+    gallery: { title: 'Gallery Preview', added: 'Added:', original: 'Original:', new: 'New:' },
+    status: { waiting: 'Waiting', running: 'Running', done: 'Done', error: 'Error' },
+    trustBar: { private: '100% Private', localBrowser: 'Local Browser API', noServerLogs: 'No Server Logs' }
+  }
+  
   // Parse target from slug
   const parseTargetFromSlug = (slug: string | number | undefined): { size: number; unit: 'KB' | 'MB' } => {
     if (typeof slug === 'number') {
@@ -312,7 +323,7 @@ export default function ImageCompressor({ initialTarget }: ImageCompressorProps)
         try {
           processedFile = await convertHeicToJpeg(file)
           isHeic = true
-          showToast(`Converted HEIC to JPG: ${file.name}`, 'info')
+          showToast(`${toolT.messages.convertedHeic} ${file.name}`, 'info')
         } catch (error: any) {
           const errorMsg = error?.message || 'Unknown error'
           // 如果错误是 "already browser readable"，说明文件已经是可读格式，直接使用原文件
@@ -321,7 +332,7 @@ export default function ImageCompressor({ initialTarget }: ImageCompressorProps)
             processedFile = file
           } else {
             console.error('HEIC conversion failed:', error)
-            showToast(`Failed to convert HEIC: ${file.name}. ${errorMsg}`, 'error')
+            showToast(`${toolT.messages.failedConvertHeic} ${file.name}. ${errorMsg}`, 'error')
             continue
           }
         }
@@ -415,8 +426,8 @@ export default function ImageCompressor({ initialTarget }: ImageCompressorProps)
         }))
         
         const errorMsg = (error as Error).message?.includes('timeout') 
-          ? `Compression timeout: ${item.file.name}` 
-          : `Failed to compress: ${item.file.name}`
+          ? `${toolT.messages.compressionTimeout} ${item.file.name}` 
+          : `${toolT.messages.failedCompress} ${item.file.name}`
         showToast(errorMsg, 'error')
       }
     }
@@ -424,7 +435,7 @@ export default function ImageCompressor({ initialTarget }: ImageCompressorProps)
     setIsProcessing(false)
     const hasCompressed = queue.some(item => item.blob !== null)
     if (hasCompressed) {
-      showToast('Processing completed!', 'success')
+      showToast(toolT.messages.processingCompleted, 'success')
       if (downloadAllBtnRef.current) {
         downloadAllBtnRef.current.classList.add('show')
         downloadAllBtnRef.current.style.display = 'inline-flex'
@@ -737,8 +748,8 @@ export default function ImageCompressor({ initialTarget }: ImageCompressorProps)
                 <path d="M12 5V15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </div>
-            <h3 className="text-xl md:text-2xl font-bold text-slate-800 mb-2">Click or Drag Images/Folders Here</h3>
-            <p className="text-[12px] font-bold text-indigo-400 uppercase tracking-widest">JPG, PNG, WebP, BMP, HEIC (Max 100 files)</p>
+            <h3 className="text-xl md:text-2xl font-bold text-slate-800 mb-2">{toolT.dropZone.title}</h3>
+            <p className="text-[12px] font-bold text-indigo-400 uppercase tracking-widest">{toolT.dropZone.formats}</p>
             <input 
               type="file" 
               id="fileInput"
@@ -757,7 +768,7 @@ export default function ImageCompressor({ initialTarget }: ImageCompressorProps)
 
           {showControls && (
             <div className="controls mt-6" id="controlsSection">
-              <span className="font-semibold text-slate-700">Target Size:</span>
+              <span className="font-semibold text-slate-700">{toolT.controls.targetSize}</span>
               <input 
                 type="number" 
                 id="targetSize"
@@ -783,7 +794,7 @@ export default function ImageCompressor({ initialTarget }: ImageCompressorProps)
                 disabled={isProcessing}
                 style={{ padding: '12px 24px !important' }}
               >
-                <span id="btnText">{isProcessing ? 'Processing...' : 'Start Batch Compression'}</span>
+                <span id="btnText">{isProcessing ? toolT.controls.processing : toolT.controls.startCompression}</span>
               </button>
               <button 
                 id="downloadAllBtn"
@@ -792,7 +803,7 @@ export default function ImageCompressor({ initialTarget }: ImageCompressorProps)
                 onClick={handleDownloadAll}
                 style={{ padding: '12px 24px !important', display: hasCompressed ? 'inline-flex' : 'none' }}
               >
-                Download All (ZIP)
+                {toolT.controls.downloadAll}
               </button>
               <div style={{ flexGrow: 1 }}></div>
               <button 
@@ -801,7 +812,7 @@ export default function ImageCompressor({ initialTarget }: ImageCompressorProps)
                 onClick={handleClear}
                 style={{ padding: '12px 24px !important' }}
               >
-                Clear List
+                {toolT.controls.clear}
               </button>
             </div>
           )}
@@ -809,8 +820,8 @@ export default function ImageCompressor({ initialTarget }: ImageCompressorProps)
           {showGallery && (
             <>
               <div className="gallery-header mt-8" id="galleryHeader">
-                <b className="text-lg font-bold text-slate-800">Gallery Preview</b>
-                <span className="counter-pill" id="counter">Added: {queue.length} / 100</span>
+                <b className="text-lg font-bold text-slate-800">{toolT.gallery?.title || 'Gallery Preview'}</b>
+                <span className="counter-pill" id="counter">{toolT.gallery?.added || 'Added:'} {queue.length} / 100</span>
               </div>
 
               <div className="file-list mt-4" id="fileList">
@@ -823,7 +834,11 @@ export default function ImageCompressor({ initialTarget }: ImageCompressorProps)
                   return (
                     <div key={item.id} className="file-item" id={item.id}>
                       <div className={`status-badge ${statusClass}`} id={`tag-${item.id}`}>
-                        {state.status}
+                        {state.status === 'Waiting' ? (toolT.status?.waiting || 'Waiting') :
+                         state.status === 'Running' ? (toolT.status?.running || 'Running') :
+                         state.status === 'Done' ? (toolT.status?.done || 'Done') :
+                         state.status === 'Error' ? (toolT.status?.error || 'Error') :
+                         state.status}
                       </div>
                       <button 
                         className="delete-btn" 
@@ -849,9 +864,9 @@ export default function ImageCompressor({ initialTarget }: ImageCompressorProps)
                       <div className="item-info">
                         <div className="filename">{item.file.name}</div>
                         <div className="size-tag">
-                          <span>Original: {item.origSize} ({item.origFormat})</span>
+                          <span>{toolT.gallery?.original || 'Original:'} {item.origSize} ({item.origFormat})</span>
                           <span id={`newsize-${item.id}`}>
-                            {state.newSize && <span className="size-reduced">New: {state.newSize} ({item.outputFormat})</span>}
+                            {state.newSize && <span className="size-reduced">{toolT.gallery?.new || 'New:'} {state.newSize} ({item.outputFormat})</span>}
                           </span>
                         </div>
                       </div>
@@ -861,7 +876,7 @@ export default function ImageCompressor({ initialTarget }: ImageCompressorProps)
                             className="single-dl retry-btn"
                             onClick={() => retryCompress(item.id)}
                           >
-                            Retry
+                            {toolT.controls.retry}
                           </button>
                         )}
                         {state.status === 'Done' && item.url && (
@@ -869,7 +884,7 @@ export default function ImageCompressor({ initialTarget }: ImageCompressorProps)
                             className="single-dl"
                             onClick={() => forceDownload(item.url!, `min_${item.file.name}`)}
                           >
-                            Download
+                            {toolT.controls.download}
                           </button>
                         )}
                       </div>
@@ -881,9 +896,9 @@ export default function ImageCompressor({ initialTarget }: ImageCompressorProps)
           )}
         </div>
         <div className="mt-8 flex flex-wrap justify-center gap-4 text-[11px] font-bold text-indigo-900/60 uppercase tracking-widest">
-          <span>🔒 100% Private</span> <span className="hidden md:block">|</span>
-          <span>⚡ Local Browser API</span> <span className="hidden md:block">|</span>
-          <span>🚫 No Server Logs</span>
+          <span>🔒 {toolT.trustBar?.private || '100% Private'}</span> <span className="hidden md:block">|</span>
+          <span>⚡ {toolT.trustBar?.localBrowser || 'Local Browser API'}</span> <span className="hidden md:block">|</span>
+          <span>🚫 {toolT.trustBar?.noServerLogs || 'No Server Logs'}</span>
         </div>
       </div>
     </>

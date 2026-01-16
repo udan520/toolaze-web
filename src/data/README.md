@@ -1,98 +1,84 @@
-# Tool Data Structure
+# 多语言 SEO 内容管理
 
-This directory contains JSON files that define the content and SEO metadata for each tool page.
-
-## Directory Structure
+## 目录结构
 
 ```
 src/data/
-├── [tool-name]/
-│   ├── [slug].json
-│   └── [another-slug].json
-└── ...
+├── en/                    # 英语源文件（主要内容）
+│   ├── image-compression.json
+│   └── image-converter.json
+├── de/                    # 德语
+├── ja/                    # 日语
+├── es/                    # 西班牙语
+├── zh-TW/                 # 繁体中文
+├── pt/                    # 葡萄牙语
+├── fr/                    # 法语
+├── ko/                    # 韩语
+└── it/                    # 意大利语
 ```
 
-## Example: `image-compression/png-to-100kb.json`
+## 工作流程
 
-Each JSON file should follow this structure:
+### 1. 修改英语内容
+编辑 `src/data/en/image-compression.json` 或 `src/data/en/image-converter.json`
 
+### 2. 同步到其他语言
+运行同步脚本：
+
+```bash
+npm run sync-locales
+```
+
+这个脚本会：
+- ✅ 自动检测英语版本中的所有 slug
+- ✅ 为每个语言创建/更新对应的 JSON 文件
+- ✅ **保留已翻译的内容**，只添加新的 slug 或字段
+- ✅ 新内容使用英语作为模板，可以后续翻译
+
+### 3. 翻译内容
+编辑各个语言目录下的 JSON 文件，翻译标记为英语的内容。
+
+## 同步脚本说明
+
+`scripts/sync-locales.ts` 的智能合并逻辑：
+
+- **已翻译的内容**：完全保留，不会被覆盖
+- **新的 slug**：自动添加，使用英语版本作为模板
+- **新的字段**：如果英语版本添加了新字段，会自动添加到所有语言版本
+- **删除的 slug**：如果从英语版本中删除了某个 slug，其他语言版本会保留（不会自动删除）
+
+## 示例
+
+### 添加新的 slug
+
+1. 在 `src/data/en/image-compression.json` 中添加：
 ```json
 {
-  "tool": "image-compression",
-  "slug": "png-to-100kb",
-  "title": "Page Title for SEO | Toolaze",
-  "description": "Meta description for SEO",
-  "h1": "Free <span class=\"text-gradient\">Tool Name</span>",
-  "heroDescription": "Hero section description text",
-  "sections": {
-    "whyToolaze": {
-      "headline": "Headline text",
-      "description": "Description text",
-      "features": [
-        {
-          "icon": "📂",
-          "title": "Feature Title",
-          "description": "Feature description"
-        }
-      ]
-    },
-    "howToUse": {
-      "steps": [
-        {
-          "number": 1,
-          "title": "Step Title",
-          "description": "Step description"
-        }
-      ]
-    },
-    "comparison": {
-      "toolaze": {
-        "features": ["✅ Feature 1", "✅ Feature 2"]
-      },
-      "competitors": {
-        "features": ["❌ Limitation 1", "❌ Limitation 2"]
-      }
-    },
-    "scenarios": [
-      {
-        "icon": "💻",
-        "title": "Scenario Title",
-        "description": "Scenario description"
-      }
-    ],
-    "faq": [
-      {
-        "question": "Question text?",
-        "answer": "Answer text"
-      }
-    ]
-  },
-  "component": "ImageCompressor"
+  "new-slug": {
+    "metadata": {
+      "title": "New Tool Title",
+      "description": "Description..."
+    }
+  }
 }
 ```
 
-## Adding a New Tool
+2. 运行 `npm run sync-locales`
 
-1. Create a new directory under `src/data/` with your tool name (e.g., `image-resize`)
-2. Create a JSON file with your slug name (e.g., `resize-to-500px.json`)
-3. Fill in all required fields
-4. If you need a custom component, add it to `src/components/` and register it in `src/app/[tool]/[slug]/page.tsx` in the `componentMap`
+3. 所有语言文件会自动添加 `new-slug`，使用英语内容作为模板
 
-## URL Structure
+### 修改现有 slug
 
-The URL will be: `/{tool}/{slug}`
+1. 在 `src/data/en/image-compression.json` 中修改某个 slug 的内容
+2. 运行 `npm run sync-locales`
+3. 其他语言文件中：
+   - **已翻译的字段**：保持不变
+   - **新增的字段**：自动添加（使用英语）
+   - **修改的字段**：如果该字段未被翻译，会更新为新的英语内容
 
-Example: `/image-compression/png-to-100kb`
+## 注意事项
 
-## Required Fields
-
-- `tool`: Must match the directory name
-- `slug`: Must match the filename (without .json)
-- `title`: SEO title
-- `description`: SEO meta description
-- `h1`: Main heading (can include HTML)
-- `heroDescription`: Hero section text
-
-## Optional Sections
-
-All sections under `sections` are optional. Include only the sections you need for your tool page.
+- ⚠️ **英语版本是源文件**，修改时要注意结构完整性
+- ✅ **翻译文件中的内容会被保留**，同步不会覆盖已翻译的内容
+- 📝 新内容默认使用英语，需要手动翻译到其他语言
+- 🔄 建议每次修改英语内容后都运行一次同步脚本

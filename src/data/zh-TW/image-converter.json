@@ -1,0 +1,280 @@
+{
+  "jpg-to-png": {
+    "metadata": {
+      "title": "JPG 轉 PNG - 免費線上圖片轉換器 | Toolaze",
+      "description": "即時將 JPG/JPEG 圖片轉換為 PNG 格式。批次轉換最多 100 張圖片。100% 免費、隱私、無需上傳。"
+    },
+    "hero": {
+      "h1": "JPG 轉 PNG 轉換器",
+      "sub": "無損格式轉換",
+      "desc": "將您的 JPG 圖片轉換為 PNG 格式，同時保持品質。完美適用於需要透明度支援或無損壓縮的圖片。"
+    },
+    "intro": {
+      "title": "為什麼要將 JPG 轉換為 PNG？",
+      "content": "PNG 格式支援透明度和無損壓縮，使其成為標誌、圖形和需要高品質圖片的理想選擇。我們的轉換器在您的瀏覽器中本地處理圖片，確保完全隱私。"
+    },
+    "specs": {
+      "engine": "瀏覽器原生轉換",
+      "limit": "批次最多 100 張圖片",
+      "logic": "無損品質保留",
+      "privacy": "100% 客戶端處理"
+    },
+    "scenes": [
+      { "title": "標誌轉換", "desc": "將標誌從 JPG 轉換為 PNG 以添加透明度支援。" },
+      { "title": "平面設計", "desc": "在設計專案中切換到 PNG 以獲得無損品質。" }
+    ],
+    "faq": [
+      { "q": "品質會保留嗎？", "a": "是的，PNG 是無損格式，因此在轉換過程中品質完全保留。" },
+      { "q": "可以轉換多個檔案嗎？", "a": "是的，您可以一次批次轉換最多 100 張圖片。" }
+    ],
+    "compare": { "toolaze": "批次轉換，無損品質，免費", "others": "單檔限制，品質損失，付費" }
+  },
+
+  "png-to-jpg": {
+    "metadata": {
+      "title": "PNG 轉 JPG - 免費線上圖片轉換器 | Toolaze",
+      "description": "即時將 PNG 圖片轉換為 JPG 格式。批次轉換最多 100 張圖片。減少檔案大小同時保持品質。100% 免費且隱私。"
+    },
+    "hero": {
+      "h1": "PNG 轉 JPG 轉換器",
+      "sub": "減少檔案大小",
+      "desc": "將 PNG 圖片轉換為 JPG 格式以大幅減少檔案大小。完美適用於網站優化和儲存節省。"
+    },
+    "intro": {
+      "title": "優化您的圖片",
+      "content": "JPG 格式提供比 PNG 小得多的檔案大小，使其成為網站使用和儲存的理想選擇。我們的轉換器在大幅減少檔案大小的同時保持視覺品質。"
+    },
+    "specs": {
+      "engine": "格式轉換引擎",
+      "limit": "批次最多 100 張圖片",
+      "logic": "品質優化轉換",
+      "privacy": "本地瀏覽器處理"
+    },
+    "scenes": [
+      { "title": "網站優化", "desc": "將 PNG 轉換為 JPG 以加快網站載入速度。" },
+      { "title": "儲存節省", "desc": "透過將 PNG 轉換為 JPG 來減少儲存空間。" }
+    ],
+    "faq": [
+      { "q": "透明度會保留嗎？", "a": "不會，JPG 不支援透明度。透明區域將變成白色。" },
+      { "q": "檔案會小多少？", "a": "JPG 檔案通常比 PNG 檔案小 50-80%。" }
+    ],
+    "compare": { "toolaze": "批次處理，品質控制，免費", "others": "單檔，無控制，付費" }
+  },
+
+  "webp-to-jpg": {
+    "metadata": {
+      "title": "WebP 轉 JPG - 免費線上圖片轉換器 | Toolaze",
+      "description": "即時將 WebP 圖片轉換為 JPG 格式。批次轉換最多 100 張圖片。與所有裝置和平台相容。100% 免費。"
+    },
+    "hero": {
+      "h1": "WebP 轉 JPG 轉換器",
+      "sub": "通用相容性",
+      "desc": "將 WebP 圖片轉換為 JPG 以在所有裝置、平台和應用程式中獲得最大相容性。"
+    },
+    "intro": {
+      "title": "廣泛相容性",
+      "content": "雖然 WebP 提供出色的壓縮，但 JPG 在所有平台上都有通用支援。將您的 WebP 圖片轉換為 JPG 以獲得最大相容性。"
+    },
+    "specs": {
+      "engine": "格式轉換引擎",
+      "limit": "批次最多 100 張圖片",
+      "logic": "相容性優先轉換",
+      "privacy": "100% 本地處理"
+    },
+    "scenes": [
+      { "title": "舊版支援", "desc": "將 WebP 轉換為 JPG 以支援舊裝置和軟體。" },
+      { "title": "電子郵件附件", "desc": "確保電子郵件客戶端可以顯示您的圖片。" }
+    ],
+    "faq": [
+      { "q": "為什麼要將 WebP 轉換為 JPG？", "a": "JPG 有通用支援，而 WebP 可能不被舊裝置或軟體支援。" },
+      { "q": "品質會受影響嗎？", "a": "JPG 使用有損壓縮，但我們在轉換過程中保持高品質。" }
+    ],
+    "compare": { "toolaze": "批次轉換，高品質，免費", "others": "一次一個，品質損失，訂閱" }
+  },
+
+  "webp-to-png": {
+    "metadata": {
+      "title": "WebP 轉 PNG - 免費線上圖片轉換器 | Toolaze",
+      "description": "即時將 WebP 圖片轉換為 PNG 格式。批次轉換最多 100 張圖片。保留透明度和品質。100% 免費且隱私。"
+    },
+    "hero": {
+      "h1": "WebP 轉 PNG 轉換器",
+      "sub": "保留透明度",
+      "desc": "將 WebP 圖片轉換為 PNG 格式，同時保留透明度和保持高品質。完美適用於圖形和標誌。"
+    },
+    "intro": {
+      "title": "透明度支援",
+      "content": "PNG 格式支援透明度，使其成為圖形、標誌和需要透明背景圖片的理想選擇。將您的 WebP 圖片轉換為 PNG 以獲得更好的相容性。"
+    },
+    "specs": {
+      "engine": "透明度保留引擎",
+      "limit": "批次最多 100 張圖片",
+      "logic": "無損轉換",
+      "privacy": "基於瀏覽器處理"
+    },
+    "scenes": [
+      { "title": "平面設計", "desc": "將 WebP 轉換為 PNG 以獲得設計軟體相容性。" },
+      { "title": "標誌轉換", "desc": "轉換標誌時保留透明度。" }
+    ],
+    "faq": [
+      { "q": "透明度會保留嗎？", "a": "是的，PNG 支援透明度，因此透明區域將被保留。" },
+      { "q": "轉換是無損的嗎？", "a": "PNG 是無損格式，因此品質完全保留。" }
+    ],
+    "compare": { "toolaze": "透明度支援，批次轉換，免費", "others": "無透明度，單檔，付費" }
+  },
+
+  "png-to-webp": {
+    "metadata": {
+      "title": "PNG 轉 WebP - 免費線上圖片轉換器 | Toolaze",
+      "description": "即時將 PNG 圖片轉換為 WebP 格式。批次轉換最多 100 張圖片。減少檔案大小最多 30%，同時保持品質。100% 免費。"
+    },
+    "hero": {
+      "h1": "PNG 轉 WebP 轉換器",
+      "sub": "現代格式優化",
+      "desc": "將 PNG 圖片轉換為 WebP 格式以獲得較小的檔案大小和更快的載入。WebP 提供優越的壓縮，同時保持視覺品質。"
+    },
+    "intro": {
+      "title": "現代網站格式",
+      "content": "WebP 是一種現代圖片格式，提供比 PNG 好 25-35% 的壓縮，同時保持相似的品質。完美適用於現代網站應用程式。"
+    },
+    "specs": {
+      "engine": "WebP 轉換引擎",
+      "limit": "批次最多 100 張圖片",
+      "logic": "品質保留轉換",
+      "privacy": "本地瀏覽器處理"
+    },
+    "scenes": [
+      { "title": "網站效能", "desc": "將 PNG 轉換為 WebP 以加快網站載入速度。" },
+      { "title": "行動應用程式", "desc": "使用 WebP 格式減少應用程式大小。" }
+    ],
+    "faq": [
+      { "q": "WebP 檔案小多少？", "a": "WebP 檔案通常比 PNG 檔案小 25-35%，品質相似。" },
+      { "q": "WebP 廣泛支援嗎？", "a": "WebP 受到所有現代瀏覽器和行動裝置的支援。" }
+    ],
+    "compare": { "toolaze": "批次轉換，品質保留，免費", "others": "單檔，品質損失，付費" }
+  },
+
+  "jpg-to-webp": {
+    "metadata": {
+      "title": "JPG 轉 WebP - 免費線上圖片轉換器 | Toolaze",
+      "description": "即時將 JPG 圖片轉換為 WebP 格式。批次轉換最多 100 張圖片。減少檔案大小最多 30%，同時保持品質。100% 免費。"
+    },
+    "hero": {
+      "h1": "JPG 轉 WebP 轉換器",
+      "sub": "優越壓縮",
+      "desc": "將 JPG 圖片轉換為 WebP 格式以獲得更小的檔案大小。WebP 提供比 JPG 更好的壓縮，同時保持相似的視覺品質。"
+    },
+    "intro": {
+      "title": "更好的壓縮",
+      "content": "WebP 格式提供比 JPG 好 25-30% 的壓縮，同時保持相似的視覺品質。完美適用於現代網站應用程式和行動應用程式。"
+    },
+    "specs": {
+      "engine": "WebP 轉換引擎",
+      "limit": "批次最多 100 張圖片",
+      "logic": "品質優化轉換",
+      "privacy": "100% 客戶端"
+    },
+    "scenes": [
+      { "title": "網站優化", "desc": "將 JPG 轉換為 WebP 以加快頁面載入速度。" },
+      { "title": "行動優化", "desc": "使用較小的 WebP 檔案減少數據使用。" }
+    ],
+    "faq": [
+      { "q": "WebP 比 JPG 好嗎？", "a": "WebP 提供比 JPG 好 25-30% 的壓縮，品質相似。" },
+      { "q": "所有瀏覽器都支援 WebP 嗎？", "a": "所有現代瀏覽器都支援 WebP。舊版瀏覽器可能需要後備方案。" }
+    ],
+    "compare": { "toolaze": "批次處理，更好壓縮，免費", "others": "單檔，相同大小，付費" }
+  },
+
+  "heic-to-jpg": {
+    "metadata": {
+      "title": "HEIC 轉 JPG - 免費線上圖片轉換器 | Toolaze",
+      "description": "即時將 HEIC/HEIF 圖片轉換為 JPG 格式。批次轉換最多 100 張圖片。完美適用於 iPhone 照片。100% 免費、隱私、無需上傳。"
+    },
+    "hero": {
+      "h1": "HEIC 轉 JPG 轉換器",
+      "sub": "iPhone 照片轉換",
+      "desc": "將您 iPhone 的 HEIC 圖片轉換為 JPG 格式以獲得通用相容性。適用於所有裝置和平台。"
+    },
+    "intro": {
+      "title": "通用相容性",
+      "content": "HEIC 是 Apple 的現代圖片格式，但 JPG 在所有裝置和平台上都有通用支援。將您的 HEIC 照片轉換為 JPG 以獲得最大相容性。"
+    },
+    "specs": {
+      "engine": "HEIC 轉換引擎",
+      "limit": "批次最多 100 張圖片",
+      "logic": "品質保留轉換",
+      "privacy": "100% 客戶端處理"
+    },
+    "scenes": [
+      { "title": "iPhone 照片", "desc": "將 iPhone HEIC 照片轉換為 JPG 以便分享和儲存。" },
+      { "title": "跨平台分享", "desc": "確保您的圖片在所有裝置和平台上都能使用。" }
+    ],
+    "faq": [
+      { "q": "什麼是 HEIC 格式？", "a": "HEIC 是 Apple 的現代圖片格式，由 iPhone 使用。它提供比 JPG 更好的壓縮，但相容性有限。" },
+      { "q": "品質會保留嗎？", "a": "是的，我們在從 HEIC 轉換為 JPG 的過程中保持高品質。" }
+    ],
+    "compare": { "toolaze": "批次轉換，高品質，免費", "others": "單檔，品質損失，付費" }
+  },
+
+  "heic-to-png": {
+    "metadata": {
+      "title": "HEIC 轉 PNG - 免費線上圖片轉換器 | Toolaze",
+      "description": "即時將 HEIC/HEIF 圖片轉換為 PNG 格式。批次轉換最多 100 張圖片。保留品質和透明度。100% 免費且隱私。"
+    },
+    "hero": {
+      "h1": "HEIC 轉 PNG 轉換器",
+      "sub": "無損品質轉換",
+      "desc": "將 HEIC 圖片轉換為 PNG 格式，同時保留品質。PNG 支援透明度，並在所有平台上廣泛相容。"
+    },
+    "intro": {
+      "title": "無損轉換",
+      "content": "PNG 是一種支援透明度的無損格式，使其成為圖形和需要高品質圖片的理想選擇。將您的 HEIC 圖片轉換為 PNG 以獲得更好的相容性。"
+    },
+    "specs": {
+      "engine": "HEIC 轉 PNG 轉換器",
+      "limit": "批次最多 100 張圖片",
+      "logic": "無損品質保留",
+      "privacy": "本地瀏覽器處理"
+    },
+    "scenes": [
+      { "title": "平面設計", "desc": "將 HEIC 轉換為 PNG 以獲得設計軟體相容性。" },
+      { "title": "品質保留", "desc": "轉換 HEIC 圖片時保持無損品質。" }
+    ],
+    "faq": [
+      { "q": "透明度會保留嗎？", "a": "PNG 支援透明度，因此如果您的 HEIC 圖片有透明度，它將被保留。" },
+      { "q": "轉換是無損的嗎？", "a": "PNG 是無損格式，因此在轉換過程中品質完全保留。" }
+    ],
+    "compare": { "toolaze": "批次轉換，無損品質，免費", "others": "單檔，品質損失，付費" }
+  },
+
+  "heic-to-webp": {
+    "metadata": {
+      "title": "HEIC 轉 WebP - 免費線上圖片轉換器 | Toolaze",
+      "description": "即時將 HEIC/HEIF 圖片轉換為 WebP 格式。批次轉換最多 100 張圖片。現代格式，優越壓縮。100% 免費。"
+    },
+    "hero": {
+      "h1": "HEIC 轉 WebP 轉換器",
+      "sub": "現代格式轉換",
+      "desc": "將 HEIC 圖片轉換為 WebP 格式以獲得較小的檔案大小和更好的網站效能。WebP 提供優越的壓縮，同時保持品質。"
+    },
+    "intro": {
+      "title": "現代網站格式",
+      "content": "WebP 是一種現代圖片格式，提供出色的壓縮和品質。將您的 HEIC 圖片轉換為 WebP 以獲得更好的網站效能和較小的檔案大小。"
+    },
+    "specs": {
+      "engine": "HEIC 轉 WebP 轉換器",
+      "limit": "批次最多 100 張圖片",
+      "logic": "品質保留轉換",
+      "privacy": "100% 客戶端"
+    },
+    "scenes": [
+      { "title": "網站優化", "desc": "將 HEIC 轉換為 WebP 以加快網站載入速度。" },
+      { "title": "行動應用程式", "desc": "透過 WebP 格式轉換減少應用程式大小。" }
+    ],
+    "faq": [
+      { "q": "為什麼要將 HEIC 轉換為 WebP？", "a": "WebP 提供比 HEIC 更好的壓縮，同時保持品質，並具有更廣泛的瀏覽器支援。" },
+      { "q": "WebP 廣泛支援嗎？", "a": "WebP 受到所有現代瀏覽器和行動裝置的支援。" }
+    ],
+    "compare": { "toolaze": "批次處理，更好壓縮，免費", "others": "單檔，相同大小，付費" }
+  }
+}

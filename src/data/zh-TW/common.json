@@ -1,0 +1,491 @@
+{
+  "nav": {
+    "quickTools": "快速工具",
+    "imageCompression": "圖片壓縮",
+    "imageConverter": "圖片轉換",
+    "aboutUs": "關於我們"
+  },
+  "home": {
+    "metadata": {
+      "title": "Toolaze - 免費 AI 圖片壓縮工具和本地工具",
+      "description": "在瀏覽器中本地壓縮圖片。無需上傳到伺服器，100% 隱私，為創作者提供的免費 AI 工具。"
+    },
+    "badge": "v1.0 現已上線",
+    "title": "免費輕量圖片工具平台",
+    "titleLine1": "免費輕量",
+    "titleLine2": "圖片工具平台",
+    "subtitle": "完全在瀏覽器中運行的專業圖片處理工具。無需上傳，無限制，永遠免費。",
+    "cta": "立即試用圖片壓縮工具 →",
+    "sectionToolsTitle": "所有可用工具",
+    "sectionToolsSubtitle": "一套工具，無限可能。",
+    "badgeLive": "已上線",
+    "badgeComingSoon": "即將推出",
+    "toolImageCompressor": "圖片壓縮工具",
+    "toolImageCompressorDesc": "JPG/PNG 智能有損壓縮",
+    "toolFormatConverter": "格式轉換工具",
+    "toolFormatConverterDesc": "HEIC 轉 JPG，PNG 轉 WEBP",
+    "toolImageResize": "圖片調整大小",
+    "toolImageResizeDesc": "精確調整圖片尺寸",
+    "toolVideoCompressor": "影片壓縮工具",
+    "toolVideoCompressorDesc": "無損壓縮影片",
+    "whyToolaze": {
+      "badge": "為什麼選擇 Toolaze？",
+      "title": "為隱私與效能而生",
+      "subtitle": "了解為什麼 Toolaze 是重視隱私和品質的創作者的明智選擇。"
+    },
+    "features": {
+      "privacy": {
+        "title": "隱私優先架構",
+        "desc": "與其他工具不同，我們不會將您的圖片發送到遠端伺服器。所有處理都在您的瀏覽器中使用 WebAssembly 完成。您的檔案永遠不會離開您的裝置，確保完全隱私和安全。"
+      },
+      "unlimited": {
+        "title": "無限且免費",
+        "desc": "您可以壓縮任意數量的圖片。沒有每日限制，沒有付費牆，沒有浮水印。所有工具永遠完全免費，沒有任何隱藏費用或高級版本。"
+      },
+      "quality": {
+        "title": "無損品質控制",
+        "desc": "我們先進的壓縮算法可在保持視覺品質的同時將檔案大小減少高達 90%。您可以控制壓縮級別，完美平衡大小和品質。"
+      },
+      "noRegistration": {
+        "title": "無需註冊",
+        "desc": "無需建立帳戶即可立即使用我們的工具。無需電子郵件註冊，不收集個人資訊。只需打開工具即可開始使用。"
+      }
+    },
+    "faq": {
+      "title": "常見問題",
+      "items": [
+        {
+          "q": "Toolaze 如何在不上傳的情況下壓縮圖片？",
+          "a": "Toolaze 使用 WebAssembly 和瀏覽器內建的圖片處理 API 直接在您的瀏覽器中壓縮圖片。您的檔案在裝置上本地處理，永遠不會發送到任何伺服器。這確保了完全的隱私和更快的處理速度。"
+        },
+        {
+          "q": "Toolaze 支援哪些圖片格式？",
+          "a": "目前，我們的圖片壓縮工具支援 JPG、PNG 和 WEBP 格式。我們正在努力在未來的更新中新增對更多格式的支援，包括 HEIC、BMP 和 TIFF。"
+        },
+        {
+          "q": "是否有檔案大小限制？",
+          "a": "理論上沒有檔案大小限制。但是，根據您裝置的效能和可用記憶體，非常大的圖片可能會導致瀏覽器變慢。我們建議將大型檔案分批處理以獲得最佳體驗。"
+        },
+        {
+          "q": "Toolaze 會永遠免費嗎？",
+          "a": "是的！Toolaze 承諾永遠提供免費工具。我們相信應該讓每個人都能使用強大的圖片處理工具，而沒有任何成本障礙或高級訂閱。"
+        },
+        {
+          "q": "我可以將圖片壓縮到多小？",
+          "a": "壓縮結果取決於原始圖片品質和格式。通常，您可以在保持可接受的視覺品質的同時實現 50-90% 的大小減少。您可以調整壓縮設定以找到適合您需求的完美平衡。"
+        }
+      ]
+    }
+  },
+  "footer": {
+    "home": "首頁",
+    "allTools": "所有工具",
+    "aboutUs": "關於我們",
+    "privacyPolicy": "隱私政策",
+    "termsOfService": "服務條款",
+    "contact": "聯絡我們",
+    "copyright": "© {year} Toolaze Lab. 版權所有。",
+    "tagline": "免費線上工具 • 無需註冊 • 100% 隱私"
+  },
+  "breadcrumb": {
+    "home": "首頁",
+    "quickTools": "快速工具",
+    "imageCompression": "圖片壓縮",
+    "imageConverter": "圖片轉換",
+    "aboutUs": "關於我們",
+    "privacyPolicy": "隱私政策",
+    "termsOfService": "服務條款"
+  },
+  "about": {
+    "metadata": {
+      "title": "關於我們 - Toolaze",
+      "description": "了解 Toolaze - 在瀏覽器中本地運行的免費 AI 圖片工具。隱私優先，無限制，永遠免費。"
+    },
+    "title": "我們處理工具。您處理懶惰。",
+    "titleTool": "工具",
+    "titleLaze": "懶惰",
+    "subtitle": "生產力不是關於更努力地工作。而是關於足夠聰明，讓 AI 來做繁重的工作。",
+    "whyToolaze": {
+      "title": "為什麼是「Toolaze」？",
+      "content1": "這個名字來自一個簡單的哲學：工具 + 懶惰。",
+      "content2": "我們相信，作為創作者，您的精力是有限的。您花在調整圖片大小、轉換格式或擔心伺服器隱私上的每一分鐘，都是從您的創造力中偷走的一分鐘。",
+      "content3": "我們將 Toolaze 打造成終極「懶惰」解決方案。我們使用先進的本地 AI 在您的瀏覽器中即時自動化無聊的技術工作。無需上傳，無需等待，無摩擦。",
+      "content4": "所以，繼續吧，稍微懶惰一點。我們已經為您準備好了工具。"
+    },
+    "features": {
+      "privacy": {
+        "title": "在隱私上懶惰",
+        "desc": "放鬆。您的檔案永遠不會離開您的裝置。零資料外洩風險意味著您零焦慮。"
+      },
+      "waiting": {
+        "title": "在等待上懶惰",
+        "desc": "為什麼要等待上傳？我們的本地 WebAssembly 引擎即時處理檔案。眨眼之間完成。"
+      },
+      "cost": {
+        "title": "在成本上懶惰",
+        "desc": "保持您的錢包關閉。我們沒有昂貴的伺服器帳單，所以您不必支付訂閱費用。"
+      }
+    },
+    "cta": {
+      "title": "準備好少工作一點了嗎？",
+      "subtitle": "試試我們的工具，重新獲得您的創意時間。",
+      "button": "現在開始懶惰 →"
+    }
+  },
+  "breadcrumb": {
+    "home": "首頁",
+    "quickTools": "快速工具",
+    "imageCompression": "圖片壓縮",
+    "imageConverter": "圖片轉換",
+    "aboutUs": "關於我們",
+    "privacyPolicy": "隱私政策",
+    "termsOfService": "服務條款"
+  },
+  "common": {
+    "tryNow": "立即試用 →",
+    "rating": {
+      "rating": "4.9/5 來自 10,000+ 創作者",
+      "description": "加入數千名滿意用戶，他們信任 Toolaze 提供快速、安全且免費的圖片壓縮。無需註冊，100% 隱私處理。"
+    },
+    "tool": {
+      "dropZone": {
+        "title": "點擊或拖放圖片/資料夾到此處",
+        "formats": "JPG、PNG、WebP、BMP、HEIC（最多 100 個檔案）"
+      },
+      "controls": {
+        "targetSize": "目標大小：",
+        "convertTo": "轉換為：",
+        "processing": "處理中...",
+        "startCompression": "開始批次壓縮",
+        "startConversion": "開始批次轉換",
+        "downloadAll": "下載全部（ZIP）",
+        "download": "下載",
+        "clear": "清除全部",
+        "retry": "重試"
+      },
+      "messages": {
+        "processingCompleted": "處理完成！",
+        "convertedHeic": "已將 HEIC 轉換為 JPG：",
+        "failedConvertHeic": "轉換 HEIC 失敗：",
+        "compressionTimeout": "壓縮超時：",
+        "failedCompress": "壓縮失敗：",
+        "conversionTimeout": "轉換超時：",
+        "failedConvert": "轉換失敗：",
+        "retrySuccessful": "重試成功：",
+        "retryTimeout": "重試超時：",
+        "retryFailed": "重試失敗：",
+        "listCleared": "列表已清除"
+      },
+      "gallery": {
+        "title": "圖片預覽",
+        "added": "已添加：",
+        "original": "原始：",
+        "new": "新："
+      },
+      "status": {
+        "waiting": "等待中",
+        "running": "處理中",
+        "done": "完成",
+        "error": "錯誤"
+      },
+      "trustBar": {
+        "private": "100% 隱私",
+        "localBrowser": "本地瀏覽器 API",
+        "noServerLogs": "無伺服器日誌"
+      }
+    }
+  },
+  "imageCompressor": {
+    "metadata": {
+      "title": "免費圖片壓縮工具 - 批次壓縮圖片線上工具 | Toolaze",
+      "description": "一次批次壓縮最多 100 張圖片。設定精確目標大小。快速、隱私、100% 免費。無需註冊。"
+    },
+    "moreTools": "更多圖片壓縮工具",
+    "title": "免費圖片壓縮工具",
+    "subtitle": "一次批次壓縮最多 100 張圖片。設定精確目標大小。快速、隱私、100% 免費。無需註冊。",
+    "whyToolaze": {
+      "badge": "為什麼選擇 Toolaze？",
+      "title": "停止在緩慢的圖片壓縮工具上浪費時間",
+      "desc": "傳統的圖片壓縮工具速度慢，限制檔案數量，並且經常妥協品質。Toolaze 可同時壓縮最多 100 張圖片，具有精確的大小控制，在顯著減少檔案大小的同時保持視覺品質。非常適合網頁開發者、攝影師和內容創作者。"
+    },
+    "features": {
+      "batch": {
+        "title": "批次處理",
+        "desc": "一次壓縮最多 100 張圖片"
+      },
+      "precise": {
+        "title": "精確大小控制",
+        "desc": "設定精確的目標大小（KB 或 MB）"
+      },
+      "free": {
+        "title": "100% 免費",
+        "desc": "永遠無廣告。"
+      }
+    },
+    "howToUse": {
+      "title": "如何使用 Toolaze？",
+      "step1": {
+        "title": "上傳圖片",
+        "desc": "拖放最多 100 張圖片或資料夾。支援 JPG、PNG、WebP 和 BMP 格式。"
+      },
+      "step2": {
+        "title": "設定目標大小",
+        "desc": "選擇您想要的檔案大小（KB 或 MB）。我們的算法會精確地將圖片壓縮到您的目標。"
+      },
+      "step3": {
+        "title": "下載結果",
+        "desc": "下載個別壓縮的圖片或一次性下載所有圖片為 ZIP 檔案。快速高效。"
+      }
+    },
+    "comparison": {
+      "toolaze": "Toolaze 💎",
+      "otherTools": "其他工具",
+      "vs": "VS",
+      "smartChoice": "明智選擇",
+      "features": {
+        "batch100": "批次處理最多 100 張圖片",
+        "preciseControl": "精確大小控制",
+        "multipleFormat": "多種格式支援",
+        "privateFree": "100% 隱私且免費",
+        "noSignup": "無需註冊",
+        "limitedBatch": "有限的批次大小",
+        "noPreciseControl": "無精確控制",
+        "formatRestrictions": "格式限制",
+        "privacyConcerns": "隱私問題",
+        "registrationRequired": "需要註冊"
+      }
+    },
+    "scenarios": {
+      "title": "使用案例",
+      "developers": {
+        "title": "適用於網頁開發者",
+        "desc": "為網站和應用程式優化圖片。在保持品質的同時減少載入時間，以獲得更好的 SEO 和用戶體驗。"
+      },
+      "ecommerce": {
+        "title": "適用於電子商務",
+        "desc": "批量壓縮產品圖片。更快的頁面載入意味著更好的轉換率和改進的搜尋排名。"
+      },
+      "creators": {
+        "title": "適用於內容創作者",
+        "desc": "為社交媒體和部落格準備圖片。快速批次處理多張圖片，無品質損失。"
+      }
+    },
+    "faq": {
+      "title": "常見問題",
+      "formats": {
+        "q": "支援哪些圖片格式？",
+        "a": "Toolaze 支援 JPG、JPEG、PNG、WebP 和 BMP 格式。所有壓縮的圖片都輸出為優化的 JPEG 檔案。"
+      },
+      "free": {
+        "q": "這個工具真的免費嗎？",
+        "a": "是的！Toolaze 100% 免費，無廣告、無註冊、無隱藏費用。所有處理都在您的瀏覽器中進行。"
+      },
+      "batchLimit": {
+        "q": "我可以壓縮超過 100 張圖片嗎？",
+        "a": "每個會話的最大批次大小為 100 個檔案。對於更大的批次，只需在多個會話中處理它們。"
+      },
+      "privacy": {
+        "q": "我的圖片會上傳到伺服器嗎？",
+        "a": "不會！所有圖片處理都在您的瀏覽器中使用 JavaScript 本地進行。您的圖片永遠不會離開您的裝置，確保完全隱私。"
+      },
+      "maxSize": {
+        "q": "我可以壓縮的最大檔案大小是多少？",
+        "a": "理論上沒有檔案大小限制。但是，根據您裝置的效能和可用記憶體，非常大的圖片可能會導致瀏覽器變慢。我們建議將大型檔案分批處理以獲得最佳體驗。"
+      }
+    }
+  },
+  "imageConverter": {
+    "metadata": {
+      "title": "免費圖片轉換工具 - 批次轉換圖片線上工具 | Toolaze",
+      "description": "在 JPG、PNG 和 WebP 格式之間轉換圖片。批次轉換最多 100 張圖片。快速、隱私、100% 免費。無需註冊。"
+    },
+    "moreTools": "更多圖片轉換工具",
+    "title": "免費圖片轉換工具",
+    "subtitle": "在 JPG、PNG 和 WebP 格式之間轉換圖片。批次轉換最多 100 張圖片。快速、隱私、100% 免費。無需註冊。",
+    "whyToolaze": {
+      "badge": "為什麼選擇 Toolaze？",
+      "title": "無品質損失轉換圖片",
+      "desc": "在 JPG、PNG 和 WebP 格式之間即時轉換圖片。我們基於瀏覽器的轉換器在本地處理圖片，確保完全隱私和快速轉換。非常適合網頁開發者、設計師和內容創作者。"
+    },
+    "features": {
+      "batch": {
+        "title": "批次處理",
+        "desc": "一次轉換最多 100 張圖片"
+      },
+      "formats": {
+        "title": "多種格式",
+        "desc": "支援 JPG、PNG、WebP 和 HEIC"
+      },
+      "free": {
+        "title": "100% 免費",
+        "desc": "永遠無廣告。"
+      }
+    },
+    "howToUse": {
+      "title": "如何使用 Toolaze？",
+      "step1": {
+        "title": "上傳圖片",
+        "desc": "拖放最多 100 張圖片或資料夾。支援 JPG、PNG、WebP、BMP 和 HEIC 格式。"
+      },
+      "step2": {
+        "title": "選擇格式",
+        "desc": "選擇您的目標格式：JPG、PNG 或 WebP。我們的轉換器在轉換過程中保持品質。"
+      },
+      "step3": {
+        "title": "下載結果",
+        "desc": "下載個別轉換的圖片或一次性下載所有圖片為 ZIP 檔案。快速高效。"
+      }
+    },
+    "comparison": {
+      "toolaze": "Toolaze 💎",
+      "otherTools": "其他工具",
+      "vs": "VS",
+      "smartChoice": "明智選擇",
+      "features": {
+        "batch100": "批次處理最多 100 張圖片",
+        "multipleFormat": "多種格式支援",
+        "qualityPreserved": "保持品質",
+        "privateFree": "100% 隱私且免費",
+        "noSignup": "無需註冊",
+        "limitedBatch": "有限的批次大小",
+        "formatRestrictions": "格式限制",
+        "qualityLoss": "品質損失",
+        "privacyConcerns": "隱私問題",
+        "registrationRequired": "需要註冊"
+      }
+    },
+    "scenarios": {
+      "title": "使用案例",
+      "developers": {
+        "title": "適用於網頁開發者",
+        "desc": "將圖片轉換為 WebP 以獲得更好的效能。優化格式以加快頁面載入速度並改進 SEO。"
+      },
+      "designers": {
+        "title": "適用於設計師",
+        "desc": "根據不同的設計需求在格式之間轉換。使用 PNG 保留透明度或使用 JPG 優化。"
+      },
+      "creators": {
+        "title": "適用於內容創作者",
+        "desc": "為社交媒體和部落格批次轉換圖片。確保在所有平台上的相容性。"
+      }
+    },
+    "faq": {
+      "title": "常見問題",
+      "formats": {
+        "q": "支援哪些圖片格式？",
+        "a": "Toolaze 支援在 JPG、PNG 和 WebP 格式之間轉換。您可以上傳 JPG、PNG、WebP、BMP 或 HEIC 格式的圖片。"
+      },
+      "free": {
+        "q": "這個工具真的免費嗎？",
+        "a": "是的！Toolaze 100% 免費，無廣告、無註冊、無隱藏費用。所有處理都在您的瀏覽器中進行。"
+      },
+      "batchLimit": {
+        "q": "我可以轉換超過 100 張圖片嗎？",
+        "a": "每個會話的最大批次大小為 100 個檔案。對於更大的批次，只需在多個會話中處理它們。"
+      },
+      "privacy": {
+        "q": "我的圖片會上傳到伺服器嗎？",
+        "a": "不會！所有圖片轉換都在您的瀏覽器中使用 JavaScript 本地進行。您的圖片永遠不會離開您的裝置，確保完全隱私。"
+      },
+      "quality": {
+        "q": "轉換過程中會保持品質嗎？",
+        "a": "品質保持取決於目標格式。PNG 是無損的，而 JPG 和 WebP 使用有損壓縮但保持高視覺品質。"
+      }
+    }
+  },
+  "privacy": {
+    "metadata": {
+      "title": "隱私政策 - Toolaze",
+      "description": "Toolaze 隱私政策 - 我們在您的瀏覽器中本地處理所有圖片。您的檔案永遠不會離開您的裝置。"
+    },
+    "title": "隱私政策",
+    "lastUpdated": "最後更新：",
+    "date": "2026年1月14日",
+    "intro": "在 Toolaze（「我們」、「我們的」或「我方」），可從 https://toolaze.com 訪問，我們的首要任務是保護訪客的隱私。本隱私政策文件包含 Toolaze 收集和記錄的資訊類型以及我們如何使用這些資訊。",
+    "section1": {
+      "title": "1. 核心隱私承諾：本地處理",
+      "content": "我們通過優先考慮您的隱私來區分自己。我們不會將您的圖片或影片上傳到我們的伺服器。",
+      "points": [
+        "所有檔案處理都在您的網頁瀏覽器內本地進行。",
+        "您的檔案永遠不會離開您的裝置。",
+        "我們無法查看、複製或出售您的內容。"
+      ]
+    },
+    "section2": {
+      "title": "2. 我們收集的資訊",
+      "content": "我們不收集您的檔案。我們可能會收集匿名非個人資訊以改善我們的服務：",
+      "logFiles": {
+        "title": "A. 日誌檔案",
+        "content": "Toolaze 遵循使用日誌檔案的標準程序。這些檔案在訪客訪問網站時記錄訪客。收集的資訊包括網際網路協議（IP）地址、瀏覽器類型、日期和時間戳記以及引用/退出頁面。這些資訊不會連結到任何個人可識別的資訊。"
+      },
+      "cookies": {
+        "title": "B. Cookie",
+        "content": "Toolaze 僅使用「Cookie」來儲存訪客偏好設定（例如，深色模式設定）並優化用戶體驗。"
+      }
+    },
+    "section3": {
+      "title": "3. 分析",
+      "content": "我們使用 Google Analytics 來了解我們網站的使用情況，以改善用戶體驗（例如，哪些工具最受歡迎）。收集的所有用戶資料都是匿名和匯總的。我們不使用這些資料進行廣告分析。"
+    },
+    "section4": {
+      "title": "4. GDPR 和 CCPA 權利",
+      "content": "我們尊重您的資料權利。由於我們不儲存個人資料或檔案，我們不會「出售」您的資料。您有權隨時要求有關我們資料做法的資訊。"
+    },
+    "section5": {
+      "title": "5. 聯絡我們",
+      "content": "如果您有其他問題，請隨時透過 support@toolaze.com 與我們聯絡。"
+    }
+  },
+  "terms": {
+    "metadata": {
+      "title": "服務條款 - Toolaze",
+      "description": "Toolaze 服務條款 - 具有本地處理功能的免費 AI 圖片工具。無需註冊。"
+    },
+    "title": "服務條款",
+    "lastUpdated": "最後更新：",
+    "date": "2026年1月14日",
+    "intro": "歡迎使用 Toolaze！透過訪問或使用我們的網站（https://toolaze.com），您同意受這些服務條款（「條款」）的約束。如果您不同意條款的任何部分，您可能無法訪問服務。",
+    "section1": {
+      "title": "1. 服務說明",
+      "content": "Toolaze 提供免費的基於網路的 AI 工具，用於圖片和影片處理（例如，壓縮、轉換、編輯）。",
+      "localProcessing": "本地處理：我們的獨特功能是我們使用 WebAssembly 技術在您的瀏覽器中本地處理檔案。我們不會將您的檔案上傳或儲存在我們的伺服器上。"
+    },
+    "section2": {
+      "title": "2. 服務使用",
+      "license": "許可證：我們授予您有限的、非獨家的、不可轉讓的許可證，以在您遵守這些條款的前提下，將我們的工具用於個人或商業目的。",
+      "noRegistration": "無需註冊：您無需建立帳戶即可使用我們當前的工具。",
+      "prohibitedActs": "禁止行為：您同意不：",
+      "prohibitedList": [
+        "對服務進行反向工程、反編譯或嘗試提取源代碼。",
+        "使用服務處理非法內容。",
+        "使用影響我們網站穩定性的自動化腳本（機器人）。"
+      ]
+    },
+    "section3": {
+      "title": "3. 用戶內容和資料",
+      "ownership": "您的所有權：您保留使用 Toolaze 處理的圖片或影片的所有權利和所有權。我們對您的內容不主張任何智慧財產權。",
+      "noLiability": "資料遺失不承擔責任：由於我們不儲存您的檔案，我們無法為您恢復它們。您全權負責備份您的原始資料。如果您的瀏覽器崩潰或在處理過程中頁面刷新，任何未儲存的進度可能會遺失，Toolaze 對此類遺失不承擔責任。"
+    },
+    "section4": {
+      "title": "4. 智慧財產權",
+      "content": "服務本身（不包括您的內容），包括其原始內容、功能、代碼和功能，是並將繼續是 Toolaze 及其許可方的專有財產。我們的商標（包括「Toolaze」名稱和標誌）未經事先書面同意不得使用。"
+    },
+    "section5": {
+      "title": "5. 免責聲明（「按現狀」）",
+      "content": "服務以「按現狀」和「按可用」的基礎提供。Toolaze 對服務的運作或 AI 處理結果的準確性不作任何明示或暗示的陳述或保證。",
+      "guarantee": "我們不保證壓縮後的圖片品質會完全符合您的期望，因為 AI 算法可能會根據檔案類型而有所不同。"
+    },
+    "section6": {
+      "title": "6. 責任限制",
+      "content": "在任何情況下，Toolaze 均不對因您使用服務而產生的任何間接、偶然、特殊、後果性或懲罰性損害負責，包括但不限於利潤、資料、使用或商譽的損失。"
+    },
+    "section7": {
+      "title": "7. 條款變更",
+      "content": "我們保留隨時修改或替換這些條款的權利。在這些修訂生效後繼續訪問我們的服務，即表示您同意受修訂後的條款約束。"
+    },
+    "section8": {
+      "title": "8. 聯絡我們",
+      "content": "如果您對這些條款有任何疑問，請透過以下方式與我們聯絡：support@toolaze.com"
+    }
+  }
+}

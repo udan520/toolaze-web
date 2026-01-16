@@ -1,4 +1,5 @@
-import { getSeoContent, getAllSlugs } from '@/lib/seo-loader'
+import { getSeoContent, getAllSlugs, loadCommonTranslations } from '@/lib/seo-loader'
+import { generateHreflangAlternates } from '@/lib/hreflang'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import Navigation from '@/components/Navigation'
@@ -12,6 +13,7 @@ import React from 'react'
 
 interface PageProps {
   params: Promise<{
+    locale: string
     tool: string
     slug: string
   }>
@@ -21,7 +23,8 @@ interface PageProps {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   try {
     const resolvedParams = await params
-    const content = getSeoContent(resolvedParams.tool, resolvedParams.slug)
+    const locale = resolvedParams.locale || 'en'
+    const content = await getSeoContent(resolvedParams.tool, resolvedParams.slug, locale)
     
     if (!content) {
       return {
@@ -30,15 +33,16 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       }
     }
     
-    const baseUrl = 'https://toolaze.com'
-    const canonicalUrl = `${baseUrl}/${resolvedParams.tool}/${resolvedParams.slug}`
+    const pathWithoutLocale = `/${resolvedParams.tool}/${resolvedParams.slug}`
+    const hreflang = generateHreflangAlternates(locale, pathWithoutLocale)
     
     return {
       title: content.metadata.title,
       description: content.metadata.description,
       robots: 'index, follow',
       alternates: {
-        canonical: canonicalUrl,
+        canonical: hreflang.canonical,
+        languages: hreflang.languages,
       },
     }
   } catch (error) {
@@ -52,25 +56,31 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 // 2. 告诉 Next.js 在打包时生成哪些静态页面 (SSG)
 export async function generateStaticParams() {
-  const compressorSlugs = getAllSlugs('image-compressor')
-  const converterSlugs = getAllSlugs('image-converter')
-  
+  const locales = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
   const params = []
   
-  // 添加图片压缩工具的页面
-  for (const slug of compressorSlugs) {
-    params.push({
-      tool: 'image-compressor',
-      slug: slug,
-    })
-  }
-  
-  // 添加图片转换工具的页面
-  for (const slug of converterSlugs) {
-    params.push({
-      tool: 'image-converter',
-      slug: slug,
-    })
+  for (const locale of locales) {
+    // 使用英语版本获取所有 slug（因为所有语言版本应该有相同的 slug）
+    const compressorSlugs = await getAllSlugs('image-compressor', 'en')
+    const converterSlugs = await getAllSlugs('image-converter', 'en')
+    
+    // 添加图片压缩工具的页面
+    for (const slug of compressorSlugs) {
+      params.push({
+        locale: locale,
+        tool: 'image-compressor',
+        slug: slug,
+      })
+    }
+    
+    // 添加图片转换工具的页面
+    for (const slug of converterSlugs) {
+      params.push({
+        locale: locale,
+        tool: 'image-converter',
+        slug: slug,
+      })
+    }
   }
   
   return params
@@ -151,6 +161,7 @@ function renderH1WithGradient(h1: string): React.ReactElement {
 export default async function LandingPage({ params }: PageProps) {
   try {
     const resolvedParams = await params
+    const locale = resolvedParams.locale || 'en'
     
     if (!resolvedParams.tool || !resolvedParams.slug) {
       console.error('Missing params:', resolvedParams)
@@ -158,7 +169,7 @@ export default async function LandingPage({ params }: PageProps) {
       return null
     }
     
-    const content = getSeoContent(resolvedParams.tool, resolvedParams.slug)
+    const content = await getSeoContent(resolvedParams.tool, resolvedParams.slug, locale)
 
     if (!content) {
       console.error('Content not found for:', resolvedParams.tool, resolvedParams.slug)
@@ -173,83 +184,106 @@ export default async function LandingPage({ params }: PageProps) {
       return null
     }
 
-    // 根据工具类型判断
+    // Load translations
+    const t = await loadCommonTranslations(locale)
     const isConverter = resolvedParams.tool === 'image-converter' || resolvedParams.tool === 'image-conversion'
-    
-    // 默认内容（如果没有提供，使用通用内容）
-    const whyToolazeTitle = content.sections?.whyToolaze?.title || (isConverter 
+    const toolTranslations = isConverter ? t?.imageConverter : t?.imageCompressor
+    const breadcrumbT = t?.breadcrumb || { home: 'Home', imageCompression: 'Image Compression', imageConverter: 'Image Converter' }
+
+    // 默认内容（如果没有提供，使用翻译内容）
+    const whyToolazeTitle = content.sections?.whyToolaze?.title || toolTranslations?.whyToolaze?.title || (isConverter 
       ? "Convert Images Without Quality Loss"
       : "Stop Losing Time on Slow Image Compression Tools")
-    const whyToolazeDesc = content.intro?.content || content.sections?.whyToolaze?.description || (isConverter
+    const whyToolazeDesc = content.intro?.content || content.sections?.whyToolaze?.description || toolTranslations?.whyToolaze?.desc || (isConverter
       ? "Convert images between JPG, PNG, and WebP formats instantly. Our browser-based converter processes images locally, ensuring complete privacy and fast conversion. Perfect for web developers, designers, and content creators."
       : "Traditional image compressors are slow, limit file counts, and often compromise quality. Toolaze compresses images with precise size control, maintaining visual quality while dramatically reducing file sizes.")
     const whyToolazeFeatures = content.sections?.whyToolaze?.features || (isConverter
       ? [
-          { icon: '📂', title: 'Batch Processing', desc: 'Convert up to 100 images at once' },
-          { icon: '🎯', title: 'Multiple Formats', desc: 'JPG, PNG, WebP, and HEIC support' },
-          { icon: '💎', title: '100% Free', desc: 'No ads forever.' }
+          { icon: '📂', title: toolTranslations?.features?.batch?.title || 'Batch Processing', desc: toolTranslations?.features?.batch?.desc || 'Convert up to 100 images at once' },
+          { icon: '🎯', title: toolTranslations?.features?.formats?.title || 'Multiple Formats', desc: toolTranslations?.features?.formats?.desc || 'JPG, PNG, WebP, and HEIC support' },
+          { icon: '💎', title: toolTranslations?.features?.free?.title || '100% Free', desc: toolTranslations?.features?.free?.desc || 'No ads forever.' }
         ]
       : [
-          { icon: '📂', title: 'Batch Processing', desc: 'Compress up to 100 images at once' },
-          { icon: '🎯', title: 'Precise Size Control', desc: 'Set exact target size in KB or MB' },
-          { icon: '💎', title: '100% Free', desc: 'No ads forever.' }
+          { icon: '📂', title: toolTranslations?.features?.batch?.title || 'Batch Processing', desc: toolTranslations?.features?.batch?.desc || 'Compress up to 100 images at once' },
+          { icon: '🎯', title: toolTranslations?.features?.precise?.title || 'Precise Size Control', desc: toolTranslations?.features?.precise?.desc || 'Set exact target size in KB or MB' },
+          { icon: '💎', title: toolTranslations?.features?.free?.title || '100% Free', desc: toolTranslations?.features?.free?.desc || 'No ads forever.' }
         ])
 
-    // 根据工具类型设置不同的默认步骤
+    // 根据工具类型设置不同的默认步骤（使用翻译）
     const defaultUploadDesc = isConverter 
-      ? 'Drag and drop up to 100 images or folders. Supports JPG, PNG, WebP, BMP, and HEIC formats.'
-      : 'Drag and drop up to 100 images or folders. Supports JPG, PNG, WebP, and BMP formats.'
+      ? (toolTranslations?.howToUse?.step1?.desc || 'Drag and drop up to 100 images or folders. Supports JPG, PNG, WebP, BMP, and HEIC formats.')
+      : (toolTranslations?.howToUse?.step1?.desc || 'Drag and drop up to 100 images or folders. Supports JPG, PNG, WebP, and BMP formats.')
     const defaultSecondStep = isConverter
-      ? { title: 'Choose Format', desc: 'Select your target format: JPG, PNG, or WebP. Our converter maintains quality during conversion.' }
-      : { title: 'Set Target Size', desc: 'Choose your desired file size in KB or MB. Our algorithm compresses images precisely to your target.' }
+      ? { title: toolTranslations?.howToUse?.step2?.title || 'Choose Format', desc: toolTranslations?.howToUse?.step2?.desc || 'Select your target format: JPG, PNG, or WebP. Our converter maintains quality during conversion.' }
+      : { title: toolTranslations?.howToUse?.step2?.title || 'Set Target Size', desc: toolTranslations?.howToUse?.step2?.desc || 'Choose your desired file size in KB or MB. Our algorithm compresses images precisely to your target.' }
     const defaultDownloadDesc = isConverter
-      ? 'Download individual converted images or all at once as a ZIP file. Fast and efficient.'
-      : 'Download individual compressed images or all at once as a ZIP file. Fast and efficient.'
+      ? (toolTranslations?.howToUse?.step3?.desc || 'Download individual converted images or all at once as a ZIP file. Fast and efficient.')
+      : (toolTranslations?.howToUse?.step3?.desc || 'Download individual compressed images or all at once as a ZIP file. Fast and efficient.')
     
     const howToUseSteps = content.sections?.howToUse?.steps || [
-      { title: 'Upload Images', desc: defaultUploadDesc },
+      { title: toolTranslations?.howToUse?.step1?.title || 'Upload Images', desc: defaultUploadDesc },
       defaultSecondStep,
-      { title: 'Download Results', desc: defaultDownloadDesc }
+      { title: toolTranslations?.howToUse?.step3?.title || 'Download Results', desc: defaultDownloadDesc }
     ]
 
     const scenariosData = content.scenes || content.sections?.scenarios || (isConverter
       ? [
-          { icon: '💻', title: 'For Web Developers', description: 'Convert images to WebP for better performance. Optimize formats for faster page loads and improved SEO.' },
-          { icon: '🎨', title: 'For Designers', description: 'Convert between formats for different design needs. Preserve transparency with PNG or optimize with JPG.' },
-          { icon: '📱', title: 'For Content Creators', description: 'Batch convert images for social media and blogs. Ensure compatibility across all platforms.' }
+          { icon: '💻', title: toolTranslations?.scenarios?.developers?.title || 'For Web Developers', description: toolTranslations?.scenarios?.developers?.desc || 'Convert images to WebP for better performance. Optimize formats for faster page loads and improved SEO.' },
+          { icon: '🎨', title: toolTranslations?.scenarios?.designers?.title || 'For Designers', description: toolTranslations?.scenarios?.designers?.desc || 'Convert between formats for different design needs. Preserve transparency with PNG or optimize with JPG.' },
+          { icon: '📱', title: toolTranslations?.scenarios?.creators?.title || 'For Content Creators', description: toolTranslations?.scenarios?.creators?.desc || 'Batch convert images for social media and blogs. Ensure compatibility across all platforms.' }
         ]
       : [
-          { icon: '💻', title: 'For Web Developers', description: 'Optimize images for websites and apps. Reduce load times while maintaining quality for better SEO and user experience.' },
-          { icon: '🛒', title: 'For E-commerce', description: 'Compress product images in bulk. Faster page loads mean better conversion rates and improved search rankings.' },
-          { icon: '📱', title: 'For Content Creators', description: 'Prepare images for social media and blogs. Batch process multiple images quickly without quality loss.' }
+          { icon: '💻', title: toolTranslations?.scenarios?.developers?.title || 'For Web Developers', description: toolTranslations?.scenarios?.developers?.desc || 'Optimize images for websites and apps. Reduce load times while maintaining quality for better SEO and user experience.' },
+          { icon: '🛒', title: toolTranslations?.scenarios?.ecommerce?.title || 'For E-commerce', description: toolTranslations?.scenarios?.ecommerce?.desc || 'Compress product images in bulk. Faster page loads mean better conversion rates and improved search rankings.' },
+          { icon: '📱', title: toolTranslations?.scenarios?.creators?.title || 'For Content Creators', description: toolTranslations?.scenarios?.creators?.desc || 'Prepare images for social media and blogs. Batch process multiple images quickly without quality loss.' }
         ])
 
     const comparisonData = content.sections?.comparison || content.compare ? {
       toolaze: content.compare?.toolaze || content.sections?.comparison?.toolaze || (isConverter
-        ? 'Batch up to 100 images, Multiple format support, Quality preserved, 100% private & free, No sign-up required'
-        : 'Batch up to 100 images, Precise size control, Multiple format support, 100% private & free, No sign-up required'),
-      others: content.compare?.others || content.sections?.comparison?.others || 'Limited batch size, No precise control, Format restrictions, Privacy concerns, Registration required'
+        ? [
+            toolTranslations?.comparison?.features?.batch100 || 'Batch up to 100 images',
+            toolTranslations?.comparison?.features?.multipleFormat || 'Multiple format support',
+            toolTranslations?.comparison?.features?.qualityPreserved || 'Quality preserved',
+            toolTranslations?.comparison?.features?.privateFree || '100% private & free',
+            toolTranslations?.comparison?.features?.noSignup || 'No sign-up required'
+          ].filter(Boolean).join(', ')
+        : [
+            toolTranslations?.comparison?.features?.batch100 || 'Batch up to 100 images',
+            toolTranslations?.comparison?.features?.preciseControl || 'Precise size control',
+            toolTranslations?.comparison?.features?.multipleFormat || 'Multiple format support',
+            toolTranslations?.comparison?.features?.privateFree || '100% private & free',
+            toolTranslations?.comparison?.features?.noSignup || 'No sign-up required'
+          ].filter(Boolean).join(', ')),
+      others: content.compare?.others || content.sections?.comparison?.others || [
+        toolTranslations?.comparison?.features?.limitedBatch || 'Limited batch size',
+        toolTranslations?.comparison?.features?.noPreciseControl || 'No precise control',
+        toolTranslations?.comparison?.features?.formatRestrictions || 'Format restrictions',
+        toolTranslations?.comparison?.features?.privacyConcerns || 'Privacy concerns',
+        toolTranslations?.comparison?.features?.registrationRequired || 'Registration required'
+      ].filter(Boolean).join(', ')
     } : null
 
     // 构建面包屑导航
+    const toolLabel = isConverter ? breadcrumbT.imageConverter : breadcrumbT.imageCompression
     const breadcrumbItems = [
-      { label: 'Home', href: '/' },
-      { label: formatToolName(resolvedParams.tool), href: `/${resolvedParams.tool}` },
+      { label: breadcrumbT.home, href: locale === 'en' ? '/' : `/${locale}` },
+      { label: toolLabel, href: `/${locale === 'en' ? '' : locale + '/'}${resolvedParams.tool}` },
       { label: content.hero?.h1 ? extractPageTitle(content.hero.h1) : 'Page' },
     ]
 
     // 获取推荐的其他功能（排除当前页面）
-    const allSlugs = getAllSlugs(resolvedParams.tool)
+    const allSlugs = await getAllSlugs(resolvedParams.tool, locale)
     const otherSlugs = allSlugs.filter(slug => slug !== resolvedParams.slug).slice(0, 3)
-    const recommendedTools = otherSlugs.map(slug => {
-      const toolData = getSeoContent(resolvedParams.tool, slug)
+    const recommendedTools = await Promise.all(otherSlugs.map(async (slug) => {
+      const toolData = await getSeoContent(resolvedParams.tool, slug, locale)
       return {
         slug,
         title: toolData?.hero?.h1 ? extractPageTitle(toolData.hero.h1) : slug,
         description: toolData?.hero?.desc || toolData?.hero?.sub || toolData?.metadata?.description || '',
-        href: `/${resolvedParams.tool}/${slug}`,
+        href: `/${locale}/${resolvedParams.tool}/${slug}`,
       }
-    }).filter(tool => tool.title && tool.href)
+    }))
+    const filteredRecommendedTools = recommendedTools.filter(tool => tool.title && tool.href)
 
     return (
       <>
@@ -291,7 +325,7 @@ export default async function LandingPage({ params }: PageProps) {
           <section className="bg-white py-24 px-6 border-t border-indigo-50/50">
             <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               <div className="text-left space-y-6">
-                <span className="text-xs font-bold text-purple-500 uppercase tracking-widest bg-purple-50 px-3 py-1 rounded-full">Why Toolaze?</span>
+                <span className="text-xs font-bold text-purple-500 uppercase tracking-widest bg-purple-50 px-3 py-1 rounded-full">{toolTranslations?.whyToolaze?.badge || 'Why Toolaze?'}</span>
                 <h2 className="text-3xl font-extrabold text-slate-900 leading-tight">{whyToolazeTitle}</h2>
                 <p className="desc-text text-lg">{whyToolazeDesc}</p>
               </div>
@@ -320,7 +354,19 @@ export default async function LandingPage({ params }: PageProps) {
           {/* 3. How To Use 板块 */}
           <section className="py-24 px-6 bg-[#F8FAFF]">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-extrabold text-center text-slate-900 mb-20">How to Use <span className="text-indigo-600">Toolaze?</span></h2>
+              <h2 className="text-3xl font-extrabold text-center text-slate-900 mb-20">
+                {toolTranslations?.howToUse?.title ? (
+                  toolTranslations.howToUse.title.includes('Toolaze') ? (
+                    <>
+                      {toolTranslations.howToUse.title.split('Toolaze')[0]}<span className="text-indigo-600">Toolaze</span>{toolTranslations.howToUse.title.split('Toolaze')[1]}
+                    </>
+                  ) : (
+                    toolTranslations.howToUse.title
+                  )
+                ) : (
+                  <>How to Use <span className="text-indigo-600">Toolaze?</span></>
+                )}
+              </h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-16 text-center">
                 {howToUseSteps.map((step: any, idx: number) => (
                   <div key={idx} className="group">
@@ -345,8 +391,8 @@ export default async function LandingPage({ params }: PageProps) {
               <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
                 <div className="md:col-span-5 relative order-1">
                   <div className="relative bg-white rounded-[2rem] p-10 shadow-2xl shadow-indigo-500/20 border border-white">
-                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-brand text-white text-[10px] font-black uppercase px-4 py-1.5 rounded-full shadow-lg">Smart Choice</div>
-                    <h3 className="font-bold text-slate-900 text-xl mb-8 border-b border-indigo-50 pb-4">Toolaze 💎</h3>
+                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-brand text-white text-[10px] font-black uppercase px-4 py-1.5 rounded-full shadow-lg">{toolTranslations?.comparison?.smartChoice || 'Smart Choice'}</div>
+                    <h3 className="font-bold text-slate-900 text-xl mb-8 border-b border-indigo-50 pb-4">{toolTranslations?.comparison?.toolaze || 'Toolaze 💎'}</h3>
                     <ul className="space-y-3 text-sm text-slate-700">
                       {comparisonData.toolaze.split(', ').map((item: string, idx: number) => (
                         <li key={idx} className="flex items-center gap-2">
@@ -357,9 +403,9 @@ export default async function LandingPage({ params }: PageProps) {
                     </ul>
                   </div>
                 </div>
-                <div className="hidden md:flex md:col-span-2 justify-center order-2 font-black text-indigo-200 text-2xl">VS</div>
+                <div className="hidden md:flex md:col-span-2 justify-center order-2 font-black text-indigo-200 text-2xl">{toolTranslations?.comparison?.vs || 'VS'}</div>
                 <div className="md:col-span-5 bg-white/60 rounded-3xl p-8 border border-slate-200/60 opacity-80 grayscale order-3">
-                  <h3 className="font-bold text-slate-500 text-lg mb-8 border-b border-slate-200 pb-4">Other Tools</h3>
+                  <h3 className="font-bold text-slate-500 text-lg mb-8 border-b border-slate-200 pb-4">{toolTranslations?.comparison?.otherTools || 'Other Tools'}</h3>
                   <ul className="space-y-3 text-sm text-slate-500">
                     {comparisonData.others.split(', ').map((item: string, idx: number) => (
                       <li key={idx} className="flex items-center gap-2">
@@ -376,11 +422,13 @@ export default async function LandingPage({ params }: PageProps) {
           {/* 5. Scenarios 板块 */}
           {scenariosData && scenariosData.length > 0 && (
             <section className="py-24 px-6 bg-[#F8FAFF]">
-              <div className={`max-w-6xl mx-auto grid grid-cols-1 gap-6 ${
-                scenariosData.length === 2 
-                  ? 'md:grid-cols-2 md:max-w-4xl md:justify-center' 
-                  : 'md:grid-cols-3'
-              }`}>
+              <div className="max-w-6xl mx-auto">
+                <h2 className="text-3xl font-extrabold text-center text-slate-900 mb-12">{toolTranslations?.scenarios?.title || 'Use Cases'}</h2>
+                <div className={`grid grid-cols-1 gap-6 ${
+                  scenariosData.length === 2 
+                    ? 'md:grid-cols-2 md:max-w-4xl md:mx-auto md:justify-center' 
+                    : 'md:grid-cols-3'
+                }`}>
                 {scenariosData.map((scenario: any, idx: number) => (
                   <div key={idx} className="bg-white p-8 rounded-3xl border border-indigo-50 shadow-sm">
                     <div className={`w-12 h-12 rounded-2xl flex items-center justify-center text-2xl mb-4 ${
@@ -396,6 +444,7 @@ export default async function LandingPage({ params }: PageProps) {
                     </p>
                   </div>
                 ))}
+                </div>
               </div>
             </section>
           )}
@@ -404,7 +453,7 @@ export default async function LandingPage({ params }: PageProps) {
           {content.faq && Array.isArray(content.faq) && content.faq.length > 0 && (
             <section className="py-24 px-6 bg-white">
               <div className="max-w-3xl mx-auto space-y-4">
-                <h2 className="text-3xl font-extrabold text-center text-slate-900 mb-12">Frequently Asked Questions</h2>
+                <h2 className="text-3xl font-extrabold text-center text-slate-900 mb-12">{toolTranslations?.faq?.title || 'Frequently Asked Questions'}</h2>
                 {content.faq.map((item: any, idx: number) => (
                   <details key={idx} className="bg-[#F8FAFF] rounded-2xl p-6 border border-indigo-50">
                     <summary className="font-bold text-slate-800 cursor-pointer flex items-center justify-between">
@@ -419,12 +468,17 @@ export default async function LandingPage({ params }: PageProps) {
           )}
 
           {/* 7. Recommended Tools 板块 */}
-          {recommendedTools.length > 0 && (
+          {filteredRecommendedTools.length > 0 && (
             <section className="py-24 px-6 bg-[#F8FAFF]">
               <div className="max-w-6xl mx-auto">
-                <h2 className="text-3xl font-extrabold text-center text-slate-900 mb-12">More {resolvedParams.tool === 'image-converter' ? 'Image Converter' : 'Image Compression'} Tools</h2>
+                <h2 className="text-3xl font-extrabold text-center text-slate-900 mb-12">
+                  {isConverter 
+                    ? (t?.imageConverter?.moreTools || `More Image Converter Tools`)
+                    : (t?.imageCompressor?.moreTools || `More Image Compression Tools`)
+                  }
+                </h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  {recommendedTools.map((tool, idx) => (
+                  {filteredRecommendedTools.map((tool, idx) => (
                     <Link
                       key={tool.slug}
                       href={tool.href}
@@ -442,7 +496,7 @@ export default async function LandingPage({ params }: PageProps) {
                         {tool.description}
                       </p>
                       <div className="mt-4 text-sm font-bold text-indigo-600 group-hover:text-purple-600 transition-colors">
-                        Try Now →
+                        {t?.common?.tryNow || 'Try Now →'}
                       </div>
                     </Link>
                   ))}
@@ -452,7 +506,10 @@ export default async function LandingPage({ params }: PageProps) {
           )}
 
           {/* 8. Rating 板块 */}
-          <Rating />
+          <Rating 
+            rating={t?.common?.rating?.rating}
+            description={t?.common?.rating?.description}
+          />
         </main>
 
         <Footer />

@@ -11,9 +11,10 @@ interface ScenariosProps {
     title: string
     desc: string
   }>
+  title?: string
 }
 
-export default function Scenarios({ data, scenes }: ScenariosProps) {
+export default function Scenarios({ data, scenes, title }: ScenariosProps) {
   const scenarioList: Array<{ title: string; desc?: string; description?: string; icon?: string }> = []
   
   if (data) {
@@ -25,10 +26,12 @@ export default function Scenarios({ data, scenes }: ScenariosProps) {
   
   if (scenarioList.length === 0) return null
 
+  const sectionTitle = title || 'Use Cases'
+
   return (
     <section className="py-24 px-6 bg-[#F8FAFF] border-t border-indigo-50/50">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl font-extrabold text-center text-slate-900 mb-12">Use Cases</h2>
+        <h2 className="text-3xl font-extrabold text-center text-slate-900 mb-12">{sectionTitle}</h2>
         <div className={`grid grid-cols-1 gap-6 ${
           scenarioList.length === 2 
             ? 'md:grid-cols-2 md:max-w-4xl md:mx-auto md:justify-center' 

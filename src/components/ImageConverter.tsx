@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
+import { useCommonTranslations } from '@/lib/use-common-translations'
 
 interface FileItem {
   id: string
@@ -21,6 +22,16 @@ interface ImageConverterProps {
 }
 
 export default function ImageConverter({ initialFormat }: ImageConverterProps) {
+  const t = useCommonTranslations()
+  const toolT = t?.common?.tool || {
+    dropZone: { title: 'Click or Drag Images/Folders Here', formats: 'JPG, PNG, WebP, BMP, HEIC (Max 100 files)' },
+    controls: { targetSize: 'Target Size:', convertTo: 'Convert to:', processing: 'Processing...', startConversion: 'Start Batch Conversion', downloadAll: 'Download All (ZIP)', download: 'Download', clear: 'Clear All', retry: 'Retry' },
+    messages: { processingCompleted: 'Processing completed!', convertedHeic: 'Converted HEIC to JPG:', failedConvertHeic: 'Failed to convert HEIC:', conversionTimeout: 'Conversion timeout:', failedConvert: 'Failed to convert:', retrySuccessful: 'Retry successful:', retryTimeout: 'Retry timeout:', retryFailed: 'Retry failed:', listCleared: 'List cleared' },
+    gallery: { title: 'Gallery Preview', added: 'Added:', original: 'Original:', new: 'New:' },
+    status: { waiting: 'Waiting', running: 'Running', done: 'Done', error: 'Error' },
+    trustBar: { private: '100% Private', localBrowser: 'Local Browser API', noServerLogs: 'No Server Logs' }
+  }
+  
   // Parse format from slug
   const parseFormatFromSlug = (slug: string | undefined): ImageFormat => {
     if (!slug || typeof slug !== 'string') {
@@ -338,7 +349,7 @@ export default function ImageConverter({ initialFormat }: ImageConverterProps) {
         try {
           processedFile = await convertHeicToJpeg(file)
           isHeic = true
-          showToast(`Converted HEIC to JPG: ${file.name}`, 'info')
+          showToast(`${toolT.messages.convertedHeic} ${file.name}`, 'info')
         } catch (error: any) {
           const errorMsg = error?.message || 'Unknown error'
           // 如果错误是 "already browser readable"，说明文件已经是可读格式，直接使用原文件
@@ -347,7 +358,7 @@ export default function ImageConverter({ initialFormat }: ImageConverterProps) {
             processedFile = file
           } else {
             console.error('HEIC conversion failed:', error)
-            showToast(`Failed to convert HEIC: ${file.name}. ${errorMsg}`, 'error')
+            showToast(`${toolT.messages.failedConvertHeic} ${file.name}. ${errorMsg}`, 'error')
             continue
           }
         }
@@ -441,7 +452,7 @@ export default function ImageConverter({ initialFormat }: ImageConverterProps) {
         
         const errorMsg = (error as Error).message?.includes('timeout') 
           ? `Conversion timeout: ${item.file.name}` 
-          : `Failed to convert: ${item.file.name}`
+          : `${toolT.messages.failedConvert} ${item.file.name}`
         showToast(errorMsg, 'error')
       }
     }
@@ -449,7 +460,7 @@ export default function ImageConverter({ initialFormat }: ImageConverterProps) {
     setIsProcessing(false)
     const hasConverted = queue.some(item => item.blob !== null)
     if (hasConverted) {
-      showToast('Processing completed!', 'success')
+      showToast(toolT.messages.processingCompleted, 'success')
       if (downloadAllBtnRef.current) {
         downloadAllBtnRef.current.classList.add('show')
         downloadAllBtnRef.current.style.display = 'inline-flex'
@@ -492,7 +503,7 @@ export default function ImageConverter({ initialFormat }: ImageConverterProps) {
         [itemId]: { ...prev[itemId], status: 'Done', newSize, thumbUrl: url }
       }))
       
-      showToast(`Retry successful: ${item.file.name}`, 'success')
+      showToast(`${toolT.messages.retrySuccessful} ${item.file.name}`, 'success')
       
       const hasConverted = queue.some(i => i.blob !== null)
       if (downloadAllBtnRef.current && hasConverted) {
@@ -506,8 +517,8 @@ export default function ImageConverter({ initialFormat }: ImageConverterProps) {
       }))
       
       const errorMsg = (error as Error).message?.includes('timeout') 
-        ? `Retry timeout: ${item.file.name}` 
-        : `Retry failed: ${item.file.name}`
+        ? `${toolT.messages.retryTimeout} ${item.file.name}` 
+        : `${toolT.messages.retryFailed} ${item.file.name}`
       showToast(errorMsg, 'error')
     }
   }
@@ -555,7 +566,7 @@ export default function ImageConverter({ initialFormat }: ImageConverterProps) {
       downloadAllBtnRef.current.classList.remove('show')
       downloadAllBtnRef.current.style.display = 'none'
     }
-    showToast('List cleared', 'info')
+    showToast(toolT.messages.listCleared, 'info')
   }
 
   const handleDownloadAll = async () => {
@@ -764,8 +775,8 @@ export default function ImageConverter({ initialFormat }: ImageConverterProps) {
                 <path d="M12 5V15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </div>
-            <h3 className="text-xl md:text-2xl font-bold text-slate-800 mb-2">Click or Drag Images/Folders Here</h3>
-            <p className="text-[12px] font-bold text-indigo-400 uppercase tracking-widest">JPG, PNG, WebP, BMP, HEIC (Max 100 files)</p>
+            <h3 className="text-xl md:text-2xl font-bold text-slate-800 mb-2">{toolT.dropZone.title}</h3>
+            <p className="text-[12px] font-bold text-indigo-400 uppercase tracking-widest">{toolT.dropZone.formats}</p>
             <input 
               type="file" 
               id="fileInput"
@@ -784,7 +795,7 @@ export default function ImageConverter({ initialFormat }: ImageConverterProps) {
 
           {showControls && (
             <div className="controls mt-6" id="controlsSection">
-              <span className="font-semibold text-slate-700">Convert to:</span>
+              <span className="font-semibold text-slate-700">{toolT.controls.convertTo}</span>
               <select 
                 id="targetFormat"
                 value={targetFormat}
@@ -804,7 +815,7 @@ export default function ImageConverter({ initialFormat }: ImageConverterProps) {
                 disabled={isProcessing}
                 style={{ padding: '12px 24px !important' }}
               >
-                <span id="btnText">{isProcessing ? 'Processing...' : 'Start Batch Conversion'}</span>
+                <span id="btnText">{isProcessing ? toolT.controls.processing : toolT.controls.startConversion}</span>
               </button>
               <button 
                 id="downloadAllBtn"
@@ -813,7 +824,7 @@ export default function ImageConverter({ initialFormat }: ImageConverterProps) {
                 onClick={handleDownloadAll}
                 style={{ padding: '12px 24px !important', display: hasConverted ? 'inline-flex' : 'none' }}
               >
-                Download All (ZIP)
+                {toolT.controls.downloadAll}
               </button>
               <div style={{ flexGrow: 1 }}></div>
               <button 
@@ -822,7 +833,7 @@ export default function ImageConverter({ initialFormat }: ImageConverterProps) {
                 onClick={handleClear}
                 style={{ padding: '12px 24px !important' }}
               >
-                Clear List
+                {toolT.controls.clear}
               </button>
             </div>
           )}
@@ -830,8 +841,8 @@ export default function ImageConverter({ initialFormat }: ImageConverterProps) {
           {showGallery && (
             <>
               <div className="gallery-header mt-8" id="galleryHeader">
-                <b className="text-lg font-bold text-slate-800">Gallery Preview</b>
-                <span className="counter-pill" id="counter">Added: {queue.length} / 100</span>
+                <b className="text-lg font-bold text-slate-800">{toolT.gallery?.title || 'Gallery Preview'}</b>
+                <span className="counter-pill" id="counter">{toolT.gallery?.added || 'Added:'} {queue.length} / 100</span>
               </div>
 
               <div className="file-list mt-4" id="fileList">
@@ -844,7 +855,11 @@ export default function ImageConverter({ initialFormat }: ImageConverterProps) {
                   return (
                     <div key={item.id} className="file-item" id={item.id}>
                       <div className={`status-badge ${statusClass}`} id={`tag-${item.id}`}>
-                        {state.status}
+                        {state.status === 'Waiting' ? (toolT.status?.waiting || 'Waiting') :
+                         state.status === 'Running' ? (toolT.status?.running || 'Running') :
+                         state.status === 'Done' ? (toolT.status?.done || 'Done') :
+                         state.status === 'Error' ? (toolT.status?.error || 'Error') :
+                         state.status}
                       </div>
                       <button 
                         className="delete-btn" 
@@ -870,9 +885,9 @@ export default function ImageConverter({ initialFormat }: ImageConverterProps) {
                       <div className="item-info">
                         <div className="filename">{item.file.name}</div>
                         <div className="size-tag">
-                          <span>Original: {item.origSize} ({item.origFormat})</span>
+                          <span>{toolT.gallery?.original || 'Original:'} {item.origSize} ({item.origFormat})</span>
                           <span id={`newsize-${item.id}`}>
-                            {state.newSize && <span className="size-reduced">New: {state.newSize} ({item.outputFormat})</span>}
+                            {state.newSize && <span className="size-reduced">{toolT.gallery?.new || 'New:'} {state.newSize} ({item.outputFormat})</span>}
                           </span>
                         </div>
                       </div>
@@ -882,7 +897,7 @@ export default function ImageConverter({ initialFormat }: ImageConverterProps) {
                             className="single-dl retry-btn"
                             onClick={() => retryConvert(item.id)}
                           >
-                            Retry
+                            {toolT.controls.retry}
                           </button>
                         )}
                         {state.status === 'Done' && item.url && (
@@ -894,7 +909,7 @@ export default function ImageConverter({ initialFormat }: ImageConverterProps) {
                               forceDownload(item.url!, `${originalName}.${extension}`)
                             }}
                           >
-                            Download
+                            {toolT.controls.download}
                           </button>
                         )}
                       </div>
@@ -906,9 +921,9 @@ export default function ImageConverter({ initialFormat }: ImageConverterProps) {
           )}
         </div>
         <div className="mt-8 flex flex-wrap justify-center gap-4 text-[11px] font-bold text-indigo-900/60 uppercase tracking-widest">
-          <span>🔒 100% Private</span> <span className="hidden md:block">|</span>
-          <span>⚡ Local Browser API</span> <span className="hidden md:block">|</span>
-          <span>🚫 No Server Logs</span>
+          <span>🔒 {toolT.trustBar?.private || '100% Private'}</span> <span className="hidden md:block">|</span>
+          <span>⚡ {toolT.trustBar?.localBrowser || 'Local Browser API'}</span> <span className="hidden md:block">|</span>
+          <span>🚫 {toolT.trustBar?.noServerLogs || 'No Server Logs'}</span>
         </div>
       </div>
     </>

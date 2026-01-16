@@ -72,7 +72,31 @@ nav.sticky-nav.scrolled {
 }
 
 /* Three-level menu hover support */
-.submenu-group:hover .submenu-group-hover {
+.submenu-item-group:hover .third-level-menu {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Ensure hover area includes gap between menus for smooth transition */
+.submenu-item-group {
+  position: relative;
+}
+
+/* Create a bridge area for smooth hover transition between second and third level */
+.submenu-item-group::after {
+  content: '';
+  position: absolute;
+  right: -12px;
+  top: 0;
+  bottom: 0;
+  width: 12px;
+  z-index: 48;
+  pointer-events: none;
+}
+
+/* Keep third level menu visible when hovering over it or the bridge */
+.submenu-item-group:hover .third-level-menu,
+.third-level-menu:hover {
   opacity: 1 !important;
   visibility: visible !important;
 }
