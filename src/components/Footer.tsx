@@ -12,6 +12,7 @@ const defaultTranslations = {
   privacyPolicy: 'Privacy Policy',
   termsOfService: 'Terms of Service',
   contact: 'Contact',
+  language: 'Language',
   copyright: '© {year} Toolaze Lab. All rights reserved.',
   tagline: 'Free Online Tools • No Registration Required • 100% Private'
 }
@@ -41,15 +42,15 @@ async function loadTranslations(locale: string) {
 }
 
 const locales = [
-  { code: 'en', name: 'English', flag: '🇺🇸' },
-  { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
-  { code: 'ja', name: '日本語', flag: '🇯🇵' },
-  { code: 'es', name: 'Español', flag: '🇪🇸' },
-  { code: 'zh-TW', name: '中文 (繁體)', flag: '🇨🇳' },
-  { code: 'pt', name: 'Português', flag: '🇵🇹' },
-  { code: 'fr', name: 'Français', flag: '🇫🇷' },
-  { code: 'ko', name: '한국어', flag: '🇰🇷' },
-  { code: 'it', name: 'Italiano', flag: '🇮🇹' },
+  { code: 'en', name: 'English', countryCode: 'US', flag: '🇺🇸' },
+  { code: 'de', name: 'Deutsch', countryCode: 'DE', flag: '🇩🇪' },
+  { code: 'ja', name: '日本語', countryCode: 'JP', flag: '🇯🇵' },
+  { code: 'es', name: 'Español', countryCode: 'ES', flag: '🇪🇸' },
+  { code: 'zh-TW', name: '中文(繁體)', countryCode: 'CN', flag: '🇨🇳' },
+  { code: 'pt', name: 'Português', countryCode: 'PT', flag: '🇵🇹' },
+  { code: 'fr', name: 'Français', countryCode: 'FR', flag: '🇫🇷' },
+  { code: 'ko', name: '한국어', countryCode: 'KR', flag: '🇰🇷' },
+  { code: 'it', name: 'Italiano', countryCode: 'IT', flag: '🇮🇹' },
 ]
 
 export default function Footer() {
@@ -127,13 +128,13 @@ export default function Footer() {
               <button
                 onClick={() => setIsLanguageMenuOpen(!isLanguageMenuOpen)}
                 className="flex items-center gap-2 text-slate-300 hover:text-indigo-400 transition-colors font-medium px-3 py-1 rounded-lg hover:bg-slate-800"
-                aria-label="Language selector"
+                aria-label={translations.language || 'Language selector'}
                 aria-expanded={isLanguageMenuOpen}
               >
                 <span className="text-base leading-none flag-emoji">{currentLocaleInfo.flag}</span>
-                <span className="hidden sm:inline">{currentLocaleInfo.name}</span>
+                <span className="hidden sm:inline font-medium">{currentLocaleInfo.name}</span>
                 <svg 
-                  className={`w-4 h-4 transition-transform ${isLanguageMenuOpen ? 'rotate-180' : ''}`} 
+                  className={isLanguageMenuOpen ? 'w-4 h-4 transition-transform rotate-180' : 'w-4 h-4 transition-transform'} 
                   fill="none" 
                   stroke="currentColor" 
                   viewBox="0 0 24 24"

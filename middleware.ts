@@ -91,26 +91,36 @@ export function middleware(request: NextRequest) {
     return NextResponse.next()
   }
 
-  // 如果访问 /en 或 /en/*，重定向到根路径（移除 /en）
-  if (pathname === '/en' || pathname.startsWith('/en/')) {
-    const newPath = pathname === '/en' ? '/' : pathname.replace('/en', '')
-    const newUrl = new URL(newPath, request.url)
-    newUrl.search = request.nextUrl.search
-    return NextResponse.redirect(newUrl)
-  }
-
   // 检查路径是否已经包含非英语的语言代码
   const pathnameHasLocale = locales.some(
     (locale) => locale !== 'en' && (pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`)
   )
 
+  // 如果访问 /en 或 /en/*，且不是内部 rewrite 路径，重定向到根路径（移除 /en）
+  // 但工具页面需要保留 /en 前缀用于内部路由，所以不重定向工具页面
+  if (pathname === '/en' || pathname.startsWith('/en/')) {
+    // 检查是否是工具页面，如果是，不重定向（允许内部 rewrite）
+    const enPathParts = pathname.replace('/en', '').split('/').filter(Boolean)
+    const isEnToolPage = enPathParts.length === 2 && (
+      enPathParts[0] === 'image-compressor' || 
+      enPathParts[0] === 'image-converter'
+    )
+    
+    // 如果是工具页面，跳过重定向（这可能是内部 rewrite 路径）
+    if (!isEnToolPage) {
+      const newPath = pathname === '/en' ? '/' : pathname.replace('/en', '')
+      const newUrl = new URL(newPath, request.url)
+      newUrl.search = request.nextUrl.search
+      return NextResponse.redirect(newUrl)
+    }
+  }
+
   // 如果路径不包含语言代码，根据浏览器语言决定
   if (!pathnameHasLocale) {
     const locale = getLocale(request)
     
-    // 如果是英语，直接使用根路径（不添加 /en，也不 rewrite）
+    // 如果是英语，直接使用根路径的页面（工具页面由根路径的路由文件处理）
     if (locale === 'en') {
-      // 直接返回，使用根路径的页面（src/app/page.tsx 等）
       const response = NextResponse.next()
       response.headers.set('x-locale', 'en')
       return response

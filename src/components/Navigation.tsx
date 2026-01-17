@@ -173,6 +173,8 @@ export default function Navigation() {
     const nav = navRef.current
     if (!nav) return
 
+    // Simple scroll handler - only manages scrolled class
+    // Let CSS handle sticky positioning completely
     const handleScroll = () => {
       const currentScroll = window.pageYOffset || document.documentElement.scrollTop
       if (currentScroll > 50) {
@@ -182,8 +184,11 @@ export default function Navigation() {
       }
     }
 
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
   }, [])
 
   // 点击外部关闭移动端菜单

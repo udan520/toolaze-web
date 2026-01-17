@@ -5,9 +5,9 @@
       "description": "Precisely compress JPG images to under 20KB for government and exam registrations. 100% browser-side processing for total privacy. Batch process up to 100 files."
     },
     "hero": {
-      "h1": "Compress JPG to 20KB",
-      "sub": "Meet Strict Registration Limits",
-      "desc": "Designed for official portals with extreme file size caps. Reach the 20KB threshold accurately while maintaining the JPG format required for your application."
+      "h1": "JPGを20KBに圧縮",
+      "sub": "厳格な登録制限に対応",
+      "desc": "極端なファイルサイズ制限がある公式ポータル向けに設計。アプリケーションに必要なJPG形式を維持しながら、20KBの閾値を正確に達成します。"
     },
     "intro": {
       "title": "Why 20KB Matters",
@@ -50,9 +50,9 @@
       "description": "Optimize PNGs to 100KB for web performance. Keeps original transparency and format. Process up to 100 images in your browser for free."
     },
     "hero": {
-      "h1": "PNG to 100KB Compression",
-      "sub": "Transparent, Fast, and Professional",
-      "desc": "The preferred tool for web developers. Reduce PNG file size to 100KB without losing transparency, ensuring your site passes Lighthouse audits with ease."
+      "h1": "PNGを100KBに圧縮",
+      "sub": "透明、高速、プロフェッショナル",
+      "desc": "ウェブ開発者に最適なツール。透明度を失うことなくPNGファイルサイズを100KBに削減し、サイトがLighthouse監査を簡単に通過できるようにします。"
     },
     "intro": {
       "title": "Professional Web Optimization",
@@ -95,9 +95,9 @@
       "description": "Meet the DS-160 240KB requirement for US Visa photos. 100% private browser-side processing. No facial alterations, keeping your data real and secure."
     },
     "hero": {
-      "h1": "USCIS Photo 240KB Tool",
-      "sub": "Guaranteed Visa Compliance",
-      "desc": "Specifically calibrated for the US Visa (DS-160) and USCIS systems. Shrink your passport photo to under 240KB instantly and securely on your own computer."
+      "h1": "USCIS写真240KBツール",
+      "sub": "ビザ準拠を保証",
+      "desc": "米国ビザ（DS-160）およびUSCISシステム向けに特別に調整。パスポート写真を240KB未満に瞬時に安全に縮小します。"
     },
     "intro": {
       "title": "Secure Document Handling",
@@ -140,8 +140,8 @@
       "description": "Compress JPG, PNG, WebP, or BMP to exactly 50KB. Perfect for resumes and online forms. 100% free with batch processing for 100 images."
     },
     "hero": {
-      "h1": "Universal 50KB Compressor",
-      "sub": "One Size, Every Platform",
+      "h1": "ユニバーサル50KB圧縮ツール",
+      "sub": "すべてのプラットフォームに対応",
       "desc": "50KB is the most common requirement for online forms. Whether you start with a 5MB or 50MB file, Toolaze helps you reach 50KB in seconds without changing your file format."
     },
     "intro": {
@@ -185,8 +185,8 @@
       "description": "Compress your passport photo to 200KB for online renewals. Retains original format and facial clarity. 100% private and free tool."
     },
     "hero": {
-      "h1": "200KB Passport Photo Tool",
-      "sub": "Global Standard Compatibility",
+      "h1": "200KBパスポート写真ツール",
+      "sub": "グローバル標準互換性",
       "desc": "Online passport renewal systems in the UK, Australia, and many other nations require photos between 200KB and 500KB. Toolaze ensures you hit the 200KB mark securely."
     },
     "intro": {
@@ -230,8 +230,8 @@
       "description": "Compress Amazon product photos to under 10MB limit without quality loss. Safe for seller central uploads. Batch process 100 images."
     },
     "hero": {
-      "h1": "Amazon Product Image Optimizer",
-      "sub": "Fix Seller Central Upload Errors",
+      "h1": "Amazon商品画像最適化ツール",
+      "sub": "Seller Centralアップロードエラーを修正",
       "desc": "Amazon requires main images to be high quality but technically under 10MB. We help you reduce file size while keeping the zoom capability sharp."
     },
     "intro": {
@@ -275,8 +275,8 @@
       "description": "Compress photos for Etsy listings to under 1MB. Best for handmade sellers. Keep colors vibrant while fixing 'File too big' errors."
     },
     "hero": {
-      "h1": "Etsy Listing Photo Tool",
-      "sub": "Perfect for Handmade Sellers",
+      "h1": "Etsy出品写真ツール",
+      "sub": "ハンドメイド販売者に最適",
       "desc": "Etsy recommends images under 1MB for the best browsing experience. If your raw camera photos are too big, we shrink them without washing out your colors."
     },
     "intro": {
@@ -320,8 +320,8 @@
       "description": "Optimize eBay listing photos for mobile buyers. Compress to 500KB-1.5MB for fast loading. Free bulk tool for power sellers."
     },
     "hero": {
-      "h1": "eBay Fast-Load Optimizer",
-      "sub": "Boost Your Mobile Sales",
+      "h1": "eBay高速読み込み最適化ツール",
+      "sub": "モバイル売上を向上",
       "desc": "Over 60% of eBay transactions happen on mobile. Heavy images mean lost customers. Optimize your inventory photos to load instantly on 4G networks."
     },
     "intro": {
@@ -365,8 +365,8 @@
       "description": "Compress YouTube thumbnails to under 2MB instantly. Fix 'File is bigger than 2MB' upload errors. Keep your click-bait quality high."
     },
     "hero": {
-      "h1": "YouTube Thumbnail Fixer (Under 2MB)",
-      "sub": "Solved: 'File is bigger than 2MB'",
+      "h1": "YouTubeサムネイル修正ツール（2MB未満）",
+      "sub": "解決：'ファイルが2MBより大きい'エラー",
       "desc": "YouTube has a strict 2MB limit for custom thumbnails. If your high-res Photoshop export is rejected, use Toolaze to hit the 2MB mark without visible quality loss."
     },
     "intro": {
@@ -410,8 +410,8 @@
       "description": "Compress images to 256KB for Discord Emotes and Stickers. Precise resizing for server admins. Supports PNG and JPG."
     },
     "hero": {
-      "h1": "Discord Emoji & Sticker Sizer",
-      "sub": "Strict 256KB Compliance",
+      "h1": "Discord絵文字・ステッカーサイズ調整ツール",
+      "sub": "厳格な256KB準拠",
       "desc": "Discord enforces a hard 256KB limit for uploaded emojis. Toolaze guarantees your meme or icon fits this tiny limit so you can upload it to your server immediately."
     },
     "intro": {
@@ -455,8 +455,8 @@
       "description": "Compress logos and headshots to 20KB for email signatures. Prevent attachments from being blocked. Crisp quality for retina displays."
     },
     "hero": {
-      "h1": "Email Signature Optimizer",
-      "sub": "Stop Getting Flagged as Spam",
+      "h1": "メール署名最適化ツール",
+      "sub": "スパム判定を防止",
       "desc": "Large images in email signatures can cause your emails to be marked as spam or load slowly. Compress your logo or photo to a tiny 20KB-50KB footprint."
     },
     "intro": {
