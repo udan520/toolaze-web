@@ -3,6 +3,7 @@ import type { ReactNode } from 'react'
 import Script from 'next/script'
 import './globals.css'
 import ErrorSuppressor from '@/components/ErrorSuppressor'
+import HtmlLangSetter from '@/components/HtmlLangSetter'
 
 export const metadata: Metadata = {
   title: 'Toolaze - Free AI Image Compressor & Local Tools',
@@ -39,6 +40,26 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body className="flex flex-col min-h-screen overflow-x-hidden font-sans antialiased" suppressHydrationWarning>
+        {/* 在页面解析时立即设置正确的 lang 属性 */}
+        <Script
+          id="set-html-lang"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                const path = window.location.pathname;
+                const locales = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it'];
+                const pathSegments = path.split('/').filter(Boolean);
+                const firstSegment = pathSegments[0] || '';
+                const locale = locales.includes(firstSegment) ? firstSegment : 'en';
+                if (document.documentElement) {
+                  document.documentElement.lang = locale;
+                }
+              })();
+            `,
+          }}
+        />
+        <HtmlLangSetter />
         <ErrorSuppressor />
         {children}
         {/* Google Analytics - Must be at the end of body for static export */}
