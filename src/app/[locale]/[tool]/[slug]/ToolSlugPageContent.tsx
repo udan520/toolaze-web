@@ -285,9 +285,44 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
             </div>
           </section>
 
-          {/* 4. Comparison 板块 */}
+          {/* 4. Performance Metrics 板块 */}
+          {content.sections?.performanceMetrics && (
+            <section className="py-24 px-6 bg-white">
+              <div className="max-w-4xl mx-auto">
+                <h2 className="text-3xl font-extrabold text-center text-slate-900 mb-12">
+                  {content.sections.performanceMetrics.title || 'Performance Metrics'}
+                </h2>
+                <div className="bg-[#F8FAFF] rounded-3xl border border-indigo-50 overflow-hidden">
+                  <div className="overflow-x-auto">
+                    <table className="w-full">
+                      <thead>
+                        <tr className="bg-indigo-50 border-b border-indigo-100">
+                          <th className="px-6 py-4 text-left text-sm font-bold text-slate-900 uppercase tracking-wider">Performance Metric</th>
+                          <th className="px-6 py-4 text-left text-sm font-bold text-slate-900 uppercase tracking-wider">Toolaze Specification</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-indigo-50">
+                        {content.sections.performanceMetrics.metrics?.map((metric: any, idx: number) => (
+                          <tr key={idx} className="hover:bg-white/50 transition-colors">
+                            <td className="px-6 py-4 text-sm font-bold text-slate-700 whitespace-nowrap">
+                              {metric.label}
+                            </td>
+                            <td className="px-6 py-4 text-sm text-slate-600">
+                              {metric.value}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </section>
+          )}
+
+          {/* 5. Comparison 板块 */}
           {comparisonData && (
-            <section className="py-24 px-6 bg-white relative overflow-hidden">
+            <section className="py-24 px-6 bg-[#F8FAFF] relative overflow-hidden">
               <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
                 <div className="md:col-span-5 relative order-1">
                   <div className="relative bg-white rounded-[2rem] p-10 shadow-2xl shadow-indigo-500/20 border border-white">
@@ -319,9 +354,9 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
             </section>
           )}
 
-          {/* 5. Scenarios 板块 */}
+          {/* 6. Scenarios 板块 */}
           {scenariosData && scenariosData.length > 0 && (
-            <section className="py-24 px-6 bg-[#F8FAFF]">
+            <section className="py-24 px-6 bg-white">
               <div className="max-w-6xl mx-auto">
                 <h2 className="text-3xl font-extrabold text-center text-slate-900 mb-12">{toolTranslations?.scenarios?.title || 'Use Cases'}</h2>
                 <div className={`grid grid-cols-1 gap-6 ${
@@ -349,9 +384,9 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
             </section>
           )}
 
-          {/* 6. FAQ 板块 */}
+          {/* 7. FAQ 板块 */}
           {content.faq && Array.isArray(content.faq) && content.faq.length > 0 && (
-            <section className="py-24 px-6 bg-white">
+            <section className="py-24 px-6 bg-[#F8FAFF]">
               <div className="max-w-3xl mx-auto space-y-4">
                 <h2 className="text-3xl font-extrabold text-center text-slate-900 mb-12">{toolTranslations?.faq?.title || 'Frequently Asked Questions'}</h2>
                 {content.faq.map((item: any, idx: number) => (
@@ -367,9 +402,9 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
             </section>
           )}
 
-          {/* 7. Recommended Tools 板块 */}
+          {/* 8. Recommended Tools 板块 */}
           {filteredRecommendedTools.length > 0 && (
-            <section className="py-24 px-6 bg-[#F8FAFF]">
+            <section className="py-24 px-6 bg-white">
               <div className="max-w-6xl mx-auto">
                 <h2 className="text-3xl font-extrabold text-center text-slate-900 mb-12">
                   {isConverter 
@@ -405,10 +440,10 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
             </section>
           )}
 
-          {/* 8. Rating 板块 */}
+          {/* 9. Rating 板块 */}
           <Rating 
             rating={t?.common?.rating?.rating}
-            description={t?.common?.rating?.description}
+            description={content.rating?.text || t?.common?.rating?.description}
           />
         </main>
 

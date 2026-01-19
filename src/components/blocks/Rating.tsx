@@ -8,7 +8,7 @@ export default function Rating({ rating, description }: RatingProps) {
   const defaultDescription = description || 'Join thousands of satisfied users who trust Toolaze for fast, secure, and free image compression. No registration required, 100% private processing.'
 
   return (
-    <section className="py-24 px-6 bg-white border-t border-indigo-50/50">
+    <section className="py-24 px-6 bg-[#F8FAFF] border-t border-indigo-50/50">
       <div className="max-w-4xl mx-auto text-center">
         <div className="flex flex-col items-center gap-4">
           <div className="flex gap-1">
