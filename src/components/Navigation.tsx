@@ -91,26 +91,36 @@ export default function Navigation() {
         return `/${locale}${href}`
       }
       
-      // 加载 Image Compressor 的三级菜单
+      // 加载 Image Compressor 的三级菜单（显示所有压缩工具）
       try {
         const compressorSlugs = await getAllSlugs('image-compressor', locale)
-        const compressorItems = await Promise.all(
-          compressorSlugs.map(async (slug) => {
-            const toolData = await getSeoContent('image-compressor', slug, locale)
-            let title = slug
-            if (toolData?.hero?.h1) {
-              title = toolData.hero.h1.replace(/<[^>]*>/g, '').trim()
-              if (!title) title = slug
-            }
-            return {
-              slug,
-              title,
-              href: getHref(`/image-compressor/${slug}`),
-            }
-          })
-        )
-        data['image-compressor'] = compressorItems.filter(item => item.title && item.href)
+        if (compressorSlugs && compressorSlugs.length > 0) {
+          const compressorItems = await Promise.all(
+            compressorSlugs.map(async (slug) => {
+              try {
+                const toolData = await getSeoContent('image-compressor', slug, locale)
+                let title = slug
+                if (toolData?.hero?.h1) {
+                  title = toolData.hero.h1.replace(/<[^>]*>/g, '').trim()
+                  if (!title) title = slug
+                }
+                return {
+                  slug,
+                  title,
+                  href: getHref(`/image-compressor/${slug}`),
+                }
+              } catch (err) {
+                // 如果单个项加载失败，返回 null，后续会被过滤掉
+                return null
+              }
+            })
+          )
+          data['image-compressor'] = compressorItems.filter(item => item && item.title && item.href)
+        } else {
+          data['image-compressor'] = []
+        }
       } catch (error) {
+        console.error('Failed to load image-compressor menu items:', error)
         data['image-compressor'] = []
       }
       
@@ -119,20 +129,25 @@ export default function Navigation() {
         const converterSlugs = await getAllSlugs('image-converter', locale)
         const converterItems = await Promise.all(
           converterSlugs.map(async (slug) => {
-            const toolData = await getSeoContent('image-converter', slug, locale)
-            let title = slug
-            if (toolData?.hero?.h1) {
-              title = toolData.hero.h1.replace(/<[^>]*>/g, '').trim()
-              if (!title) title = slug
-            }
-            return {
-              slug,
-              title,
-              href: getHref(`/image-converter/${slug}`),
+            try {
+              const toolData = await getSeoContent('image-converter', slug, locale)
+              let title = slug
+              if (toolData?.hero?.h1) {
+                title = toolData.hero.h1.replace(/<[^>]*>/g, '').trim()
+                if (!title) title = slug
+              }
+              return {
+                slug,
+                title,
+                href: getHref(`/image-converter/${slug}`),
+              }
+            } catch (err) {
+              // 如果单个项加载失败，返回 null，后续会被过滤掉
+              return null
             }
           })
         )
-        data['image-converter'] = converterItems.filter(item => item.title && item.href)
+        data['image-converter'] = converterItems.filter(item => item && item.title && item.href)
       } catch (error) {
         data['image-converter'] = []
       }
@@ -297,12 +312,12 @@ export default function Navigation() {
               </svg>
             </button>
             {/* 二级菜单下拉 */}
-            <div className="absolute top-full left-0 mt-2 w-auto min-w-[200px] max-w-[320px] bg-white rounded-xl shadow-lg border border-indigo-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+            <div className="absolute top-full left-0 mt-2 w-auto min-w-[200px] max-w-[320px] bg-white rounded-xl shadow-lg border border-indigo-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 overflow-visible">
               <div className="py-2">
                 {secondLevelItems.map((item) => {
                   const thirdLevelItems = item.hasThirdLevel && item.tool ? getThirdLevelItems(item.tool) : []
                   return (
-                    <div key={item.title} className="relative submenu-item-group">
+                    <div key={item.title} className="relative group/secondary">
                       <Link
                         href={item.href}
                         className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center justify-between whitespace-nowrap"
@@ -317,9 +332,9 @@ export default function Navigation() {
                           </svg>
                         )}
                       </Link>
-                      {/* 三级菜单（hover到二级时显示） */}
+                      {/* 三级菜单（hover到二级菜单项时才显示） */}
                       {item.hasThirdLevel && thirdLevelItems.length > 0 && (
-                        <div className="third-level-menu absolute left-full top-0 ml-2 w-auto min-w-[240px] max-w-[400px] bg-white rounded-xl shadow-lg border border-indigo-50 opacity-0 invisible transition-all duration-200 z-50 max-h-screen overflow-y-auto">
+                        <div className="absolute left-full top-0 ml-1 w-auto min-w-[240px] max-w-[400px] bg-white rounded-xl shadow-lg border border-indigo-50 opacity-0 invisible group-hover/secondary:opacity-100 group-hover/secondary:visible transition-all duration-200 z-[60]">
                           <div className="py-2">
                             {thirdLevelItems.map((thirdItem) => (
                               <Link

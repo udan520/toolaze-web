@@ -14,7 +14,7 @@
     "faq"
   ],
   "hero": {
-    "h1": "Unbegrenzter HEIC zu JPG Konverter",
+    "h1": "HEIC zu JPG Konverter",
     "desc": "Konvertieren Sie HEIC kostenlos online zu JPG. Ziehen Sie einfach Ihre HEIC-Bilder unten hinein, um sie in Sekunden zu JPG zu konvertieren."
   },
   "intro": {
@@ -36,38 +36,38 @@
       {
         "icon": "⚡",
         "iconType": "speed",
-        "title": "Schnelle HEIC-Konvertierung",
-        "desc": "Mit neuesten Technologien verarbeiten wir die Konvertierung in Ihrem Browser und sparen Ihnen Zeit, indem wir den Upload überspringen."
+        "title": "Sofortige lokale Verarbeitung",
+        "desc": "Unsere fortschrittliche Browser-Engine verarbeitet die HEIC-Konvertierung direkt auf Ihrem Gerät und eliminiert Upload-Wartezeiten, sodass Ergebnisse in Sekunden geliefert werden."
       },
       {
         "icon": "💎",
         "iconType": "unlimited",
-        "title": "Werbefrei",
-        "desc": "Wir betreiben den HEIC zu JPG Konverter vollständig kostenlos und ohne Bannerwerbung."
+        "title": "Keine Werbung",
+        "desc": "Genießen Sie eine vollständig saubere Oberfläche ohne Werbebanner, Pop-ups oder Ablenkungen—nur reine Konvertierungsfunktionalität."
       },
       {
         "icon": "📦",
         "iconType": "batch",
-        "title": "Batch-Konvertierung von HEIC",
-        "desc": "Konvertieren Sie Ihre HEIC-Bilder einzeln zu JPG oder verarbeiten Sie mehrere Dateien gleichzeitig, um die Dinge zu beschleunigen."
+        "title": "Massenkonvertierung",
+        "desc": "Bearbeiten Sie einzelne Dateien oder transformieren Sie ganze Sammlungen von bis zu 100 HEIC-Bildern gleichzeitig für maximale Effizienz."
       },
       {
         "icon": "🌐",
         "iconType": "browser",
-        "title": "Browserbasiert",
-        "desc": "Die Konvertierung erfolgt in Ihrem Browser, was bedeutet, dass sie schnell, privat ist und Sie keine Software installieren müssen."
+        "title": "Keine Installation erforderlich",
+        "desc": "Alles läuft direkt in Ihrem Webbrowser mit clientseitiger Technologie—keine Downloads, keine Plugins, keine Systemänderungen erforderlich."
       },
       {
         "icon": "👤",
         "iconType": "easy",
-        "title": "Benutzerfreundlich",
-        "desc": "Toolazes kostenloser Online-Konverter ist darauf ausgelegt, einfach und intuitiv für eine reibungslose Benutzererfahrung zu sein."
+        "title": "Optimierte Benutzeroberfläche",
+        "desc": "Unser Konverter bietet ein klares, benutzerfreundliches Design, das die Formatkonvertierung für alle zugänglich macht, unabhängig von technischen Fähigkeiten."
       },
       {
         "icon": "🔒",
         "iconType": "privacy",
-        "title": "Privat & Sicher",
-        "desc": "Wir können Ihre Bilder nicht speichern oder sehen, da sie direkt in Ihrem Browser verarbeitet werden - keine Uploads zu unserem Server."
+        "title": "Vollständiger Datenschutz",
+        "desc": "Die gesamte Bildverarbeitung erfolgt lokal auf Ihrem Computer—Ihre Dateien werden niemals an externe Server gesendet, was absolute Privatsphäre und Sicherheit garantiert."
       }
     ]
   },

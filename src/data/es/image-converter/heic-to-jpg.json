@@ -14,7 +14,7 @@
     "faq"
   ],
   "hero": {
-    "h1": "Convertidor HEIC a JPG Ilimitado",
+    "h1": "Convertidor HEIC a JPG",
     "desc": "Convierte HEIC a JPG en línea de forma gratuita. Simplemente arrastra tus imágenes HEIC a continuación para convertirlas a JPG en segundos."
   },
   "intro": {
@@ -36,38 +36,38 @@
       {
         "icon": "⚡",
         "iconType": "speed",
-        "title": "Conversión rápida de HEIC",
-        "desc": "Utilizando las últimas tecnologías, procesamos la conversión en tu navegador, ahorrándote tiempo al omitir la subida."
+        "title": "Procesamiento local instantáneo",
+        "desc": "Nuestro motor de navegador avanzado maneja la conversión HEIC directamente en tu dispositivo, eliminando los tiempos de espera de carga y entregando resultados en segundos."
       },
       {
         "icon": "💎",
         "iconType": "unlimited",
-        "title": "Sin anuncios",
-        "desc": "Operamos el convertidor HEIC a JPG completamente gratis y sin ejecutar ningún anuncio banner."
+        "title": "Cero anuncios",
+        "desc": "Disfruta de una interfaz completamente limpia sin banners promocionales, ventanas emergentes o distracciones—solo funcionalidad pura de conversión."
       },
       {
         "icon": "📦",
         "iconType": "batch",
-        "title": "Conversión por lotes de HEIC",
-        "desc": "Convierte tus imágenes HEIC a JPG individualmente o procesa múltiples archivos en masa para acelerar el proceso."
+        "title": "Soporte para conversión masiva",
+        "desc": "Maneja archivos individuales o transforma colecciones completas de hasta 100 imágenes HEIC simultáneamente para máxima eficiencia."
       },
       {
         "icon": "🌐",
         "iconType": "browser",
-        "title": "Basado en navegador",
-        "desc": "La conversión ocurre en tu navegador, lo que significa que es rápida, privada y no tienes que instalar software."
+        "title": "Sin instalación requerida",
+        "desc": "Todo funciona directamente en tu navegador web usando tecnología del lado del cliente—sin descargas, sin complementos, sin modificaciones del sistema necesarias."
       },
       {
         "icon": "👤",
         "iconType": "easy",
-        "title": "Fácil de usar",
-        "desc": "El convertidor en línea gratuito de Toolaze está diseñado para ser simple e intuitivo para una experiencia de usuario sin fricciones."
+        "title": "Interfaz optimizada",
+        "desc": "Nuestro convertidor presenta un diseño limpio y fácil de usar que hace que la conversión de formatos sea accesible para todos, independientemente de las habilidades técnicas."
       },
       {
         "icon": "🔒",
         "iconType": "privacy",
-        "title": "Privado y seguro",
-        "desc": "No podemos almacenar ni ver tus imágenes ya que se procesan directamente en tu navegador - sin subidas a nuestro servidor."
+        "title": "Protección completa de datos",
+        "desc": "Todo el procesamiento de imágenes ocurre localmente en tu máquina—tus archivos nunca viajan a servidores externos, garantizando privacidad y seguridad absolutas."
       }
     ]
   },

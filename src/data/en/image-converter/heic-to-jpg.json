@@ -14,7 +14,7 @@
     "faq"
   ],
   "hero": {
-    "h1": "Unlimited HEIC to JPG Converter",
+    "h1": "HEIC to JPG Converter",
     "desc": "Convert HEIC to JPG online for free. Simply drop your HEIC images below to convert them to JPG in seconds."
   },
   "intro": {
@@ -36,38 +36,38 @@
       {
         "icon": "⚡",
         "iconType": "speed",
-        "title": "Fast HEIC Conversion",
-        "desc": "Using the latest technologies, we process the conversion in your browser, saving you time by skipping the upload."
+        "title": "Instant Local Processing",
+        "desc": "Our advanced browser engine handles HEIC conversion right on your device, eliminating upload wait times and delivering results in seconds."
       },
       {
         "icon": "💎",
         "iconType": "unlimited",
-        "title": "Ad-Free",
-        "desc": "We operate the HEIC to JPG converter entirely free and without running any banner ads."
+        "title": "Zero Advertisements",
+        "desc": "Enjoy a completely clean interface with no promotional banners, pop-ups, or distractions—just pure conversion functionality."
       },
       {
         "icon": "📦",
         "iconType": "batch",
-        "title": "Batch-Convert HEIC",
-        "desc": "Convert your HEIC images to JPG individually or process multiple files in bulk to speed things up."
+        "title": "Mass Conversion Support",
+        "desc": "Handle single files or transform entire collections of up to 100 HEIC images simultaneously for maximum efficiency."
       },
       {
         "icon": "🌐",
         "iconType": "browser",
-        "title": "Browser-Based",
-        "desc": "The conversion happens in your browser, meaning it's fast, private, and you don't have to install software."
+        "title": "No Installation Required",
+        "desc": "Everything runs directly in your web browser using client-side technology—no downloads, no plugins, no system modifications needed."
       },
       {
         "icon": "👤",
         "iconType": "easy",
-        "title": "Easy-to-Use",
-        "desc": "Toolaze's free online converter is designed to be simple and intuitive for a frictionless user experience."
+        "title": "Streamlined Interface",
+        "desc": "Our converter features a clean, user-friendly design that makes format conversion accessible to everyone, regardless of technical skill."
       },
       {
         "icon": "🔒",
         "iconType": "privacy",
-        "title": "Private & Secure",
-        "desc": "We can't store or see your images as they are processed directly in your browser - no uploads to our server."
+        "title": "Complete Data Protection",
+        "desc": "All image processing occurs locally on your machine—your files never travel to external servers, guaranteeing absolute privacy and security."
       }
     ]
   },
