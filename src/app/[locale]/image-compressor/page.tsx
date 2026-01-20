@@ -254,7 +254,7 @@ export default async function ImageCompressorPage({ params }: PageProps) {
         {/* 6. Scenarios 板块 */}
         <Scenarios 
           title={translations.scenarios?.title || 'Use Cases'}
-          data={[
+          scenarios={[
           {
             icon: '💻',
             title: translations.scenarios.developers.title,

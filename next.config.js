@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export', // 开启静态导出
+  // 仅在构建时启用静态导出，开发模式下禁用
+  ...(process.env.NODE_ENV === 'production' ? { output: 'export' } : {}),
   images: {
     unoptimized: true, // 静态导出必须禁用 Next.js 的默认图片优化
   },

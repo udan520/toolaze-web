@@ -167,7 +167,7 @@ export default function ImageConverterPage() {
         </section>
 
         {/* 6. Scenarios 板块 */}
-        <Scenarios data={[
+        <Scenarios scenarios={[
           {
             icon: '💻',
             title: 'For Web Developers',

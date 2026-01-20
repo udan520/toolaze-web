@@ -337,7 +337,7 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
               comparison: (bgClass: string) => (
                 <Comparison
                   key="comparison"
-                  compare={comparisonData}
+                  compare={comparisonData ?? undefined}
                   title={content.comparison?.title || toolTranslations?.comparison?.title}
                   labels={{
                     smartChoice: toolTranslations?.comparison?.smartChoice,
