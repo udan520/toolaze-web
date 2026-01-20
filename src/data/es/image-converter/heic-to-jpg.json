@@ -1,0 +1,184 @@
+{
+  "metadata": {
+    "title": "Convertidor HEIC a JPG Ilimitado: 100% Privado, Procesamiento Local por Lotes | Toolaze",
+    "description": "Convierte imágenes HEIC/HEIF al formato JPG al instante. Tamaños de archivo ilimitados, procesamiento por lotes de hasta 100 imágenes. 100% privado, procesamiento local. Sin subidas, sin esperas—rendimiento profesional directamente en tu dispositivo."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Convertidor HEIC a JPG Ilimitado",
+    "desc": "Convierte HEIC a JPG en línea de forma gratuita. Simplemente arrastra tus imágenes HEIC a continuación para convertirlas a JPG en segundos."
+  },
+  "intro": {
+    "title": "¿Por qué convertir HEIC a JPG? Entendiendo la diferencia de formato",
+    "content": [
+      {
+        "title": "HEIC vs JPG: ¿Cuál es la diferencia?",
+        "text": "HEIC (High Efficiency Image Container) es el formato de imagen moderno de Apple que utiliza algoritmos de compresión avanzados para reducir el tamaño de los archivos hasta en un 50% en comparación con JPG, manteniendo una mejor calidad de imagen. Sin embargo, los archivos HEIC son compatibles principalmente en dispositivos Apple y sistemas más nuevos. JPG (JPEG) es el estándar universal que funciona en prácticamente todos los dispositivos, plataformas y aplicaciones en todo el mundo, convirtiéndolo en el formato preferido para compartir, subir y compatibilidad."
+      },
+      {
+        "title": "¿Por qué convertir HEIC a JPG?",
+        "text": "Convertir HEIC a JPG es esencial cuando necesitas compartir fotos con usuarios de Windows, subir imágenes a sitios web o plataformas de redes sociales que no admiten HEIC, enviar fotos por correo electrónico sin problemas de compatibilidad, o usar imágenes en aplicaciones que requieren formato JPG. JPG garantiza que tus fotos sean accesibles en todas partes, desde sistemas heredados hasta plataformas web modernas, sin barreras de conversión o preocupaciones de calidad."
+      }
+    ]
+  },
+  "features": {
+    "title": "Características principales",
+    "items": [
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Conversión rápida de HEIC",
+        "desc": "Utilizando las últimas tecnologías, procesamos la conversión en tu navegador, ahorrándote tiempo al omitir la subida."
+      },
+      {
+        "icon": "💎",
+        "iconType": "unlimited",
+        "title": "Sin anuncios",
+        "desc": "Operamos el convertidor HEIC a JPG completamente gratis y sin ejecutar ningún anuncio banner."
+      },
+      {
+        "icon": "📦",
+        "iconType": "batch",
+        "title": "Conversión por lotes de HEIC",
+        "desc": "Convierte tus imágenes HEIC a JPG individualmente o procesa múltiples archivos en masa para acelerar el proceso."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "Basado en navegador",
+        "desc": "La conversión ocurre en tu navegador, lo que significa que es rápida, privada y no tienes que instalar software."
+      },
+      {
+        "icon": "👤",
+        "iconType": "easy",
+        "title": "Fácil de usar",
+        "desc": "El convertidor en línea gratuito de Toolaze está diseñado para ser simple e intuitivo para una experiencia de usuario sin fricciones."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Privado y seguro",
+        "desc": "No podemos almacenar ni ver tus imágenes ya que se procesan directamente en tu navegador - sin subidas a nuestro servidor."
+      }
+    ]
+  },
+  "specs": {
+    "engine": "Decodificador HEVC activo - Aceleración GPU local",
+    "limit": "Lotes de 100+ listos - Tamaños de archivo ilimitados",
+    "logic": "Preservación completa de EXIF (GPS, Fecha, etiquetas de dispositivo)",
+    "privacy": "100% del lado del cliente (alimentado por Web-Assembly)"
+  },
+  "performanceMetrics": {
+    "title": "Construido para necesidades profesionales a gran escala",
+    "metrics": [
+      {
+        "label": "Formato de entrada",
+        "value": "HEIC (Apple High Efficiency Image Format)"
+      },
+      {
+        "label": "Formato de salida",
+        "value": "JPG (Calidad fotográfica estándar)"
+      },
+      {
+        "label": "Tamaño máximo de lote",
+        "value": "100 imágenes por sesión"
+      },
+      {
+        "label": "Límite de tamaño de archivo",
+        "value": "Ilimitado (Maneja archivos de alta resolución de 100MB+)"
+      },
+      {
+        "label": "Lógica de datos",
+        "value": "100% del lado del cliente (alimentado por Web-Assembly)"
+      },
+      {
+        "label": "Soporte EXIF",
+        "value": "Preservación completa de etiquetas GPS, Fecha y Dispositivo"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Cómo convertir HEIC a JPG",
+    "steps": [
+      {
+        "title": "Subir archivos HEIC",
+        "desc": "Arrastra y suelta tus imágenes HEIC en el convertidor."
+      },
+      {
+        "title": "Convertir",
+        "desc": "Haz clic en convertir y espera unos segundos."
+      },
+      {
+        "title": "Descargar",
+        "desc": "Descarga tus archivos JPG al instante."
+      }
+    ]
+  },
+  "comparison": {
+    "toolaze": "Tamaños de archivo ilimitados, Lotes de 100+ imágenes, Procesamiento 100% local, Preservación completa de EXIF, Sin subidas, Gratis para siempre",
+    "others": "Límites de archivo de 20MB, 10 conversiones por día, Subidas a la nube requeridas, Datos EXIF eliminados, Colas de servidor, Actualizaciones de pago"
+  },
+  "scenes": [
+    {
+      "title": "Fotógrafos de iPhone",
+      "icon": "📸",
+      "desc": "Haz una copia de seguridad rápida de toda tu biblioteca HEIC a JPG para visualización fácil en PCs con Windows o televisores inteligentes."
+    },
+    {
+      "title": "Gerentes de redes sociales",
+      "icon": "📱",
+      "desc": "Transforma activos HEIC en formatos JPG optimizados para carga instantánea en plataformas que aún no admiten los nuevos estándares de Apple."
+    },
+    {
+      "title": "Productividad de oficina",
+      "icon": "💼",
+      "desc": "Comparte renders o fotos de alta fidelidad de 50MB+ como archivos adjuntos JPG ligeros sin que se bloquee tu cliente de correo electrónico."
+    }
+  ],
+  "rating": {
+    "text": "\"Finalmente, una herramienta que respeta mi privacidad y maneja mis lotes de 100 fotos sin problemas.\" - Únete a más de 10,000 desarrolladores y fotógrafos que han hecho de Toolaze su laboratorio principal para optimización de imágenes segura e ilimitada."
+  },
+  "faq": [
+    {
+      "q": "¿Cuál es la diferencia entre los formatos HEIC y JPG?",
+      "a": "HEIC (High Efficiency Image Container) es el formato moderno de Apple que ofrece mejor compresión (archivos hasta un 50% más pequeños) y calidad de imagen superior en comparación con JPG. Sin embargo, HEIC es compatible principalmente en dispositivos Apple y sistemas más nuevos. JPG es el estándar universal que funciona en prácticamente todos los dispositivos, plataformas y aplicaciones, lo que lo hace ideal para compartir y compatibilidad entre diferentes sistemas."
+    },
+    {
+      "q": "¿Por qué necesito convertir HEIC a JPG?",
+      "a": "Convertir HEIC a JPG es esencial al compartir fotos con usuarios de Windows, subir a sitios web o plataformas de redes sociales que no admiten HEIC, enviar imágenes por correo electrónico sin problemas de compatibilidad, o usar fotos en aplicaciones que requieren formato JPG. JPG garantiza que tus imágenes sean accesibles en todas partes sin barreras de conversión."
+    },
+    {
+      "q": "¿La conversión de HEIC a JPG reducirá la calidad de la imagen?",
+      "a": "Toolaze utiliza algoritmos de conversión avanzados para mantener la más alta calidad de imagen posible durante la conversión de HEIC a JPG. Aunque JPG es un formato con pérdida, nuestro convertidor preserva la fidelidad visual y garantiza que tus imágenes convertidas se vean prácticamente idénticas a los archivos HEIC originales, con pérdida de calidad mínima."
+    },
+    {
+      "q": "¿Puedo convertir archivos HEIC en Windows sin instalar software?",
+      "a": "¡Sí! Toolaze es un convertidor basado en navegador que funciona completamente en tu navegador web. No necesitas instalar ningún software o complemento. Simplemente abre Toolaze en tu navegador, sube tus archivos HEIC y conviértelos a JPG al instante—sin descargas ni instalaciones requeridas."
+    },
+    {
+      "q": "¿Cuántos archivos HEIC puedo convertir a la vez?",
+      "a": "Toolaze admite conversión por lotes de hasta 100 archivos HEIC por sesión. Puedes arrastrar y soltar múltiples archivos a la vez, y todos se convertirán al formato JPG simultáneamente. No hay límites de tamaño de archivo individual, por lo que puedes convertir archivos HEIC grandes sin restricciones."
+    },
+    {
+      "q": "¿Perderé la información GPS y de hora de mi foto al convertir?",
+      "a": "No. Toolaze preserva todos los metadatos EXIF, incluyendo coordenadas GPS, fecha de captura, configuración de cámara y etiquetas de ubicación. Tus archivos JPG convertidos conservarán todos los metadatos originales de tus archivos HEIC, garantizando que no se pierda información durante la conversión."
+    },
+    {
+      "q": "¿La conversión de HEIC a JPG es gratuita y segura?",
+      "a": "Sí, Toolaze es completamente gratuito para siempre sin costos ocultos ni anuncios. Más importante aún, toda la conversión ocurre localmente en tu navegador usando tecnología del lado del cliente. Tus archivos HEIC nunca salen de tu dispositivo—nunca se suben a ningún servidor, garantizando 100% de privacidad y seguridad para tus fotos."
+    }
+  ],
+  "compare": {
+    "toolaze": "Conversión ilimitada de HEIC a JPG, Arquitectura local primero, Sin límites de tamaño de archivo, Preservación completa de EXIF, Procesamiento 100% privado",
+    "others": "Límites de archivo de 20MB, Subidas a la nube requeridas, Colas de servidor, Datos EXIF eliminados, Preocupaciones de privacidad"
+  }
+}

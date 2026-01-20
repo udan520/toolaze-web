@@ -1,0 +1,45 @@
+{
+  "metadata": {
+    "title": "HEIC zu WebP konvertieren - Kostenloser Online-Bildkonverter | Toolaze",
+    "description": "Konvertieren Sie HEIC/HEIF-Bilder sofort in WebP-Format. Batch-Konvertierung von bis zu 100 Bildern. Modernes Format mit überlegener Komprimierung. 100% kostenlos."
+  },
+  "hero": {
+    "h1": "HEIC zu WebP Konverter",
+    "sub": "Moderne Formatkonvertierung",
+    "desc": "Konvertieren Sie HEIC-Bilder in WebP-Format für kleinere Dateigrößen und bessere Web-Performance. WebP bietet überlegene Komprimierung bei erhaltener Qualität."
+  },
+  "intro": {
+    "title": "Modernes Web-Format",
+    "content": "WebP ist ein modernes Bildformat, das ausgezeichnete Komprimierung und Qualität bietet. Konvertieren Sie Ihre HEIC-Bilder zu WebP für bessere Web-Performance und kleinere Dateigrößen."
+  },
+  "specs": {
+    "engine": "HEIC zu WebP Konverter",
+    "limit": "Batch bis zu 100 Bilder",
+    "logic": "Qualitäts-erhaltende Konvertierung",
+    "privacy": "100% Client-seitig"
+  },
+  "scenes": [
+    {
+      "title": "Web-Optimierung",
+      "desc": "Konvertieren Sie HEIC zu WebP für schnelleres Website-Laden."
+    },
+    {
+      "title": "Mobile Apps",
+      "desc": "Reduzieren Sie App-Größe mit WebP-Format-Konvertierung."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Warum HEIC zu WebP konvertieren?",
+      "a": "WebP bietet bessere Komprimierung als HEIC bei erhaltener Qualität und hat breitere Browser-Unterstützung."
+    },
+    {
+      "q": "Ist WebP weit verbreitet unterstützt?",
+      "a": "WebP wird von allen modernen Browsern und mobilen Geräten unterstützt."
+    }
+  ],
+  "compare": {
+    "toolaze": "Batch-Verarbeitung, Bessere Komprimierung, Kostenlos",
+    "others": "Einzeldatei, Gleiche Größe, Bezahlt"
+  }
+}

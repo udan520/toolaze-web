@@ -1,0 +1,44 @@
+{
+  "metadata": {
+    "title": "Convert HEIC to PNG - Free Online Image Converter | Toolaze",
+    "description": "Convert HEIC/HEIF images to PNG format instantly. Batch convert up to 100 images. Preserve quality and transparency. 100% free and private."
+  },
+  "hero": {
+    "h1": "HEIC to PNG Converter",
+    "desc": "Convert HEIC to PNG online for free. Simply drop your HEIC images below to convert them to PNG in seconds."
+  },
+  "intro": {
+    "title": "Lossless Conversion",
+    "content": "PNG is a lossless format that supports transparency, making it ideal for graphics and images that require high quality. Convert your HEIC images to PNG for better compatibility."
+  },
+  "specs": {
+    "engine": "HEIC to PNG Converter",
+    "limit": "Batch up to 100 images",
+    "logic": "Lossless Quality Preservation",
+    "privacy": "Local Browser Processing"
+  },
+  "scenes": [
+    {
+      "title": "Graphic Design",
+      "desc": "Convert HEIC to PNG for design software compatibility."
+    },
+    {
+      "title": "Quality Preservation",
+      "desc": "Maintain lossless quality when converting HEIC images."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Will transparency be preserved?",
+      "a": "PNG supports transparency, so if your HEIC image has transparency, it will be preserved."
+    },
+    {
+      "q": "Is the conversion lossless?",
+      "a": "PNG is a lossless format, so quality is fully preserved during conversion."
+    }
+  ],
+  "compare": {
+    "toolaze": "Batch convert, Lossless quality, Free",
+    "others": "Single file, Quality loss, Paid"
+  }
+}

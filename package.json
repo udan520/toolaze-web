@@ -10,7 +10,9 @@
     "build": "next build",
     "start": "next start -p 3006",
     "lint": "next lint",
-    "sync-locales": "tsx scripts/sync-locales.ts"
+    "sync-locales": "tsx scripts/sync-locales.ts",
+    "sync-individual": "tsx scripts/sync-individual-locales.ts",
+    "sync-exact": "tsx scripts/sync-exact-copy.ts"
   },
   "dependencies": {
     "@next/third-parties": "^16.1.2",

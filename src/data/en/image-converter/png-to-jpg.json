@@ -1,0 +1,44 @@
+{
+  "metadata": {
+    "title": "Convert PNG to JPG - Free Online Image Converter | Toolaze",
+    "description": "Convert PNG images to JPG format instantly. Batch convert up to 100 images. Reduce file size while maintaining quality. 100% free and private."
+  },
+  "hero": {
+    "h1": "PNG to JPG Converter",
+    "desc": "Convert PNG to JPG online for free. Simply drop your PNG images below to convert them to JPG in seconds."
+  },
+  "intro": {
+    "title": "Optimize Your Images",
+    "content": "JPG format offers much smaller file sizes compared to PNG, making it ideal for web use and storage. Our converter maintains visual quality while dramatically reducing file size."
+  },
+  "specs": {
+    "engine": "Format Conversion Engine",
+    "limit": "Batch up to 100 images",
+    "logic": "Quality-Optimized Conversion",
+    "privacy": "Local Browser Processing"
+  },
+  "scenes": [
+    {
+      "title": "Web Optimization",
+      "desc": "Convert PNG to JPG for faster website loading."
+    },
+    {
+      "title": "Storage Savings",
+      "desc": "Reduce storage space by converting PNG to JPG."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Will transparency be preserved?",
+      "a": "No, JPG doesn't support transparency. The transparent areas will become white."
+    },
+    {
+      "q": "How much smaller will files be?",
+      "a": "JPG files are typically 50-80% smaller than PNG files."
+    }
+  ],
+  "compare": {
+    "toolaze": "Batch processing, Quality control, Free",
+    "others": "Single file, No control, Paid"
+  }
+}

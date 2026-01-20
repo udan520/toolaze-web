@@ -1,0 +1,44 @@
+{
+  "metadata": {
+    "title": "Convert WebP to JPG - Free Online Image Converter | Toolaze",
+    "description": "Convert WebP images to JPG format instantly. Batch convert up to 100 images. Compatible with all devices and platforms. 100% free."
+  },
+  "hero": {
+    "h1": "WebP to JPG Converter",
+    "desc": "Convert WebP to JPG online for free. Simply drop your WebP images below to convert them to JPG in seconds."
+  },
+  "intro": {
+    "title": "Wide Compatibility",
+    "content": "While WebP offers great compression, JPG has universal support across all platforms. Convert your WebP images to JPG for maximum compatibility."
+  },
+  "specs": {
+    "engine": "Format Conversion Engine",
+    "limit": "Batch up to 100 images",
+    "logic": "Compatibility-First Conversion",
+    "privacy": "100% Local Processing"
+  },
+  "scenes": [
+    {
+      "title": "Legacy Support",
+      "desc": "Convert WebP to JPG for older devices and software."
+    },
+    {
+      "title": "Email Attachments",
+      "desc": "Ensure email clients can display your images."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Why convert WebP to JPG?",
+      "a": "JPG has universal support, while WebP may not be supported by older devices or software."
+    },
+    {
+      "q": "Will quality be affected?",
+      "a": "JPG uses lossy compression, but we maintain high quality during conversion."
+    }
+  ],
+  "compare": {
+    "toolaze": "Batch convert, High quality, Free",
+    "others": "One by one, Quality loss, Subscription"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "metadata": {
+    "title": "Converter PNG para JPG - Conversor de Imagens Online Grátis | Toolaze",
+    "description": "Converta imagens PNG para formato JPG instantaneamente. Conversão em lote até 100 imagens. Reduza tamanho de arquivo mantendo qualidade. 100% grátis e privado."
+  },
+  "hero": {
+    "h1": "Conversor PNG para JPG",
+    "sub": "Reduzir Tamanho de Arquivo",
+    "desc": "Converta imagens PNG para formato JPG para reduzir significativamente o tamanho do arquivo. Perfeito para otimização web e economia de armazenamento."
+  },
+  "intro": {
+    "title": "Otimize Suas Imagens",
+    "content": "O formato JPG oferece tamanhos de arquivo muito menores comparado a PNG, tornando-o ideal para uso web e armazenamento. Nosso conversor mantém qualidade visual enquanto reduz drasticamente o tamanho do arquivo."
+  },
+  "specs": {
+    "engine": "Motor de Conversão de Formato",
+    "limit": "Lote até 100 imagens",
+    "logic": "Conversão Otimizada de Qualidade",
+    "privacy": "Processamento Local do Navegador"
+  },
+  "scenes": [
+    {
+      "title": "Otimização Web",
+      "desc": "Converta PNG para JPG para carregamento de site web mais rápido."
+    },
+    {
+      "title": "Economia de Armazenamento",
+      "desc": "Reduza espaço de armazenamento convertendo PNG para JPG."
+    }
+  ],
+  "faq": [
+    {
+      "q": "A transparência será preservada?",
+      "a": "Não, JPG não suporta transparência. As áreas transparentes se tornarão brancas."
+    },
+    {
+      "q": "Quanto menores serão os arquivos?",
+      "a": "Arquivos JPG são tipicamente 50-80% menores que arquivos PNG."
+    }
+  ],
+  "compare": {
+    "toolaze": "Processamento em lote, Controle de qualidade, Grátis",
+    "others": "Arquivo único, Sem controle, Pago"
+  }
+}

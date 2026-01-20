@@ -1,0 +1,45 @@
+{
+  "metadata": {
+    "title": "Convertir WebP a PNG - Convertidor de Imágenes Online Gratis | Toolaze",
+    "description": "Convierte imágenes WebP a formato PNG instantáneamente. Conversión por lotes de hasta 100 imágenes. Preserva transparencia y calidad. 100% gratis y privado."
+  },
+  "hero": {
+    "h1": "Convertidor WebP a PNG",
+    "sub": "Preservar Transparencia",
+    "desc": "Convierte imágenes WebP a formato PNG preservando transparencia y manteniendo alta calidad. Perfecto para gráficos y logotipos."
+  },
+  "intro": {
+    "title": "Soporte de Transparencia",
+    "content": "El formato PNG admite transparencia, lo que lo hace ideal para gráficos, logotipos e imágenes que necesitan fondos transparentes. Convierte tus imágenes WebP a PNG para mejor compatibilidad."
+  },
+  "specs": {
+    "engine": "Motor que Preserva Transparencia",
+    "limit": "Lote de hasta 100 imágenes",
+    "logic": "Conversión Sin Pérdida",
+    "privacy": "Procesamiento Basado en Navegador"
+  },
+  "scenes": [
+    {
+      "title": "Diseño Gráfico",
+      "desc": "Convierte WebP a PNG para compatibilidad con software de diseño."
+    },
+    {
+      "title": "Conversión de Logotipos",
+      "desc": "Preserva transparencia al convertir logotipos."
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Se preservará la transparencia?",
+      "a": "Sí, PNG admite transparencia, por lo que las áreas transparentes se preservarán."
+    },
+    {
+      "q": "¿Es la conversión sin pérdida?",
+      "a": "PNG es un formato sin pérdida, por lo que la calidad se preserva completamente."
+    }
+  ],
+  "compare": {
+    "toolaze": "Soporte de transparencia, Convertir por lotes, Gratis",
+    "others": "Sin transparencia, Archivo único, De pago"
+  }
+}

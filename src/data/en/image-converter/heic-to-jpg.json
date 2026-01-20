@@ -1,0 +1,184 @@
+{
+  "metadata": {
+    "title": "Unlimited HEIC to JPG Converter: 100% Private Local Batch Processing | Toolaze",
+    "description": "Convert HEIC/HEIF images to JPG format instantly. Unlimited file sizes, batch process up to 100 images. 100% private, local processing. No uploads, no waiting—professional performance directly on your device."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Unlimited HEIC to JPG Converter",
+    "desc": "Convert HEIC to JPG online for free. Simply drop your HEIC images below to convert them to JPG in seconds."
+  },
+  "intro": {
+    "title": "Why Convert HEIC to JPG? Understanding the Format Difference",
+    "content": [
+      {
+        "title": "HEIC vs JPG: What's the Difference?",
+        "text": "HEIC (High Efficiency Image Container) is Apple's modern image format that uses advanced compression algorithms to reduce file sizes by up to 50% compared to JPG, while maintaining better image quality. However, HEIC files are primarily supported on Apple devices and newer systems. JPG (JPEG) is the universal standard that works on virtually every device, platform, and application worldwide, making it the go-to format for sharing, uploading, and compatibility."
+      },
+      {
+        "title": "Why Convert HEIC to JPG?",
+        "text": "Converting HEIC to JPG is essential when you need to share photos with Windows users, upload images to websites or social media platforms that don't support HEIC, email photos without compatibility issues, or use images in applications that require JPG format. JPG ensures your photos are accessible everywhere, from legacy systems to modern web platforms, without any conversion barriers or quality concerns."
+      }
+    ]
+  },
+  "features": {
+    "title": "Key Features",
+    "items": [
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Fast HEIC Conversion",
+        "desc": "Using the latest technologies, we process the conversion in your browser, saving you time by skipping the upload."
+      },
+      {
+        "icon": "💎",
+        "iconType": "unlimited",
+        "title": "Ad-Free",
+        "desc": "We operate the HEIC to JPG converter entirely free and without running any banner ads."
+      },
+      {
+        "icon": "📦",
+        "iconType": "batch",
+        "title": "Batch-Convert HEIC",
+        "desc": "Convert your HEIC images to JPG individually or process multiple files in bulk to speed things up."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "Browser-Based",
+        "desc": "The conversion happens in your browser, meaning it's fast, private, and you don't have to install software."
+      },
+      {
+        "icon": "👤",
+        "iconType": "easy",
+        "title": "Easy-to-Use",
+        "desc": "Toolaze's free online converter is designed to be simple and intuitive for a frictionless user experience."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Private & Secure",
+        "desc": "We can't store or see your images as they are processed directly in your browser - no uploads to our server."
+      }
+    ]
+  },
+  "specs": {
+    "engine": "HEVC Decoder Active - Local GPU Acceleration",
+    "limit": "Batch 100+ Ready - Unlimited File Sizes",
+    "logic": "Full EXIF Preservation (GPS, Date, Device tags)",
+    "privacy": "100% Client-Side (Web-Assembly Powered)"
+  },
+  "performanceMetrics": {
+    "title": "Built for Large-Scale Professional Needs",
+    "metrics": [
+      {
+        "label": "Input Format",
+        "value": "HEIC (Apple High Efficiency Image Format)"
+      },
+      {
+        "label": "Output Format",
+        "value": "JPG (Standard Photographic Quality)"
+      },
+      {
+        "label": "Max Batch Size",
+        "value": "100 Images per session"
+      },
+      {
+        "label": "File Size Limit",
+        "value": "Unlimited (Handles 100MB+ high-res files)"
+      },
+      {
+        "label": "Data Logic",
+        "value": "100% Client-Side (Web-Assembly Powered)"
+      },
+      {
+        "label": "EXIF Support",
+        "value": "Full preservation of GPS, Date, and Device tags"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "How to Convert HEIC to JPG",
+    "steps": [
+      {
+        "title": "Upload HEIC Files",
+        "desc": "Drag and drop your HEIC images into the converter."
+      },
+      {
+        "title": "Convert",
+        "desc": "Click convert and wait a few seconds."
+      },
+      {
+        "title": "Download",
+        "desc": "Download your JPG files instantly."
+      }
+    ]
+  },
+  "comparison": {
+    "toolaze": "Unlimited file sizes, Batch 100+ images, 100% local processing, Full EXIF preservation, No uploads, Free forever",
+    "others": "20MB file limits, 10 conversions per day, Cloud uploads required, EXIF data stripped, Server queues, Paid upgrades"
+  },
+  "scenes": [
+    {
+      "title": "iPhone Photographers",
+      "icon": "📸",
+      "desc": "Quickly backup your entire HEIC library to JPG for easy viewing on Windows PCs or smart TVs."
+    },
+    {
+      "title": "Social Media Managers",
+      "icon": "📱",
+      "desc": "Transform HEIC assets into optimized JPG formats for instant upload to platforms that don't yet support Apple's new standards."
+    },
+    {
+      "title": "Office Productivity",
+      "icon": "💼",
+      "desc": "Share large 50MB+ high-fidelity renders or photos as lightweight JPG attachments without crashing your email client."
+    }
+  ],
+  "rating": {
+    "text": "\"Finally, a tool that respects my privacy and handles my 100-photo batches without a hitch.\" - Join 10,000+ developers and photographers who have made Toolaze their primary lab for secure, unlimited image optimization."
+  },
+  "faq": [
+    {
+      "q": "What is the difference between HEIC and JPG format?",
+      "a": "HEIC (High Efficiency Image Container) is Apple's modern format that offers better compression (up to 50% smaller files) and superior image quality compared to JPG. However, HEIC is primarily supported on Apple devices and newer systems. JPG is the universal standard that works on virtually every device, platform, and application, making it ideal for sharing and compatibility across different systems."
+    },
+    {
+      "q": "Why do I need to convert HEIC to JPG?",
+      "a": "Converting HEIC to JPG is essential when sharing photos with Windows users, uploading to websites or social media platforms that don't support HEIC, emailing images without compatibility issues, or using photos in applications that require JPG format. JPG ensures your images are accessible everywhere without conversion barriers."
+    },
+    {
+      "q": "Will converting HEIC to JPG reduce image quality?",
+      "a": "Toolaze uses advanced conversion algorithms to maintain the highest possible image quality during HEIC to JPG conversion. While JPG is a lossy format, our converter preserves visual fidelity and ensures your converted images look virtually identical to the original HEIC files, with minimal quality loss."
+    },
+    {
+      "q": "Can I convert HEIC files on Windows without installing software?",
+      "a": "Yes! Toolaze is a browser-based converter that works entirely in your web browser. You don't need to install any software or plugins. Simply open Toolaze in your browser, upload your HEIC files, and convert them to JPG instantly—no downloads or installations required."
+    },
+    {
+      "q": "How many HEIC files can I convert at once?",
+      "a": "Toolaze supports batch conversion of up to 100 HEIC files per session. You can drag and drop multiple files at once, and they'll all be converted to JPG format simultaneously. There are no individual file size limits, so you can convert large HEIC files without restrictions."
+    },
+    {
+      "q": "Will I lose my photo's GPS and time information when converting?",
+      "a": "No. Toolaze preserves all EXIF metadata, including GPS coordinates, shooting date, camera settings, and location tags. Your converted JPG files will retain all the original metadata from your HEIC files, ensuring no information is lost during conversion."
+    },
+    {
+      "q": "Is HEIC to JPG conversion free and secure?",
+      "a": "Yes, Toolaze is completely free forever with no hidden costs or ads. More importantly, all conversion happens locally in your browser using client-side technology. Your HEIC files never leave your device—they're never uploaded to any server, ensuring 100% privacy and security for your photos."
+    }
+  ],
+  "compare": {
+    "toolaze": "Unlimited HEIC to JPG conversion, Local-first architecture, No file size limits, Full EXIF preservation, 100% private processing",
+    "others": "20MB file limits, Cloud uploads required, Server queues, EXIF data stripped, Privacy concerns"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "metadata": {
+    "title": "Convertir PNG en JPG - Convertisseur d'Images Online Gratuit | Toolaze",
+    "description": "Convertissez les images PNG au format JPG instantanément. Conversion par lots jusqu'à 100 images. Réduisez la taille du fichier tout en maintenant la qualité. 100% gratuit et privé."
+  },
+  "hero": {
+    "h1": "Convertisseur PNG en JPG",
+    "sub": "Réduire la Taille du Fichier",
+    "desc": "Convertissez les images PNG au format JPG pour réduire considérablement la taille du fichier. Parfait pour l'optimisation web et les économies de stockage."
+  },
+  "intro": {
+    "title": "Optimisez Vos Images",
+    "content": "Le format JPG offre des tailles de fichier beaucoup plus petites par rapport à PNG, ce qui le rend idéal pour l'utilisation web et le stockage. Notre convertisseur maintient la qualité visuelle tout en réduisant drastiquement la taille du fichier."
+  },
+  "specs": {
+    "engine": "Moteur de Conversion de Format",
+    "limit": "Lots jusqu'à 100 images",
+    "logic": "Conversion Optimisée de Qualité",
+    "privacy": "Traitement Local du Navigateur"
+  },
+  "scenes": [
+    {
+      "title": "Optimisation Web",
+      "desc": "Convertissez PNG en JPG pour un chargement de site web plus rapide."
+    },
+    {
+      "title": "Économies de Stockage",
+      "desc": "Réduisez l'espace de stockage en convertissant PNG en JPG."
+    }
+  ],
+  "faq": [
+    {
+      "q": "La transparence sera-t-elle préservée?",
+      "a": "Non, JPG ne prend pas en charge la transparence. Les zones transparentes deviendront blanches."
+    },
+    {
+      "q": "Combien plus petits seront les fichiers?",
+      "a": "Les fichiers JPG sont généralement 50-80% plus petits que les fichiers PNG."
+    }
+  ],
+  "compare": {
+    "toolaze": "Traitement par lots, Contrôle de qualité, Gratuit",
+    "others": "Fichier unique, Pas de contrôle, Payant"
+  }
+}

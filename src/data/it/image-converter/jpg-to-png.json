@@ -1,0 +1,45 @@
+{
+  "metadata": {
+    "title": "Converti JPG in PNG - Convertitore Immagini Online Gratuito | Toolaze",
+    "description": "Converti immagini JPG/JPEG in formato PNG istantaneamente. Conversione batch fino a 100 immagini. 100% gratuito, privato, nessun caricamento richiesto."
+  },
+  "hero": {
+    "h1": "Convertitore JPG in PNG",
+    "sub": "Conversione Formato Senza Perdita",
+    "desc": "Converti le tue immagini JPG in formato PNG preservando la qualità. Perfetto per immagini che necessitano supporto trasparenza o compressione senza perdita."
+  },
+  "intro": {
+    "title": "Perché Convertire JPG in PNG?",
+    "content": "Il formato PNG supporta trasparenza e compressione senza perdita, rendendolo ideale per loghi, grafici e immagini che richiedono alta qualità. Il nostro convertitore elabora immagini localmente nel tuo browser, garantendo privacy completa."
+  },
+  "specs": {
+    "engine": "Conversione Nativa Browser",
+    "limit": "Batch fino a 100 immagini",
+    "logic": "Preservazione Qualità Senza Perdita",
+    "privacy": "100% Elaborazione Lato Client"
+  },
+  "scenes": [
+    {
+      "title": "Conversione Logo",
+      "desc": "Converti loghi da JPG a PNG per aggiungere supporto trasparenza."
+    },
+    {
+      "title": "Design Grafico",
+      "desc": "Passa a PNG per qualità senza perdita in progetti di design."
+    }
+  ],
+  "faq": [
+    {
+      "q": "La qualità sarà preservata?",
+      "a": "Sì, PNG è un formato senza perdita, quindi la qualità è completamente preservata durante la conversione."
+    },
+    {
+      "q": "Posso convertire più file?",
+      "a": "Sì, puoi convertire in batch fino a 100 immagini alla volta."
+    }
+  ],
+  "compare": {
+    "toolaze": "Conversione batch, Qualità senza perdita, Gratuito",
+    "others": "Limiti file singolo, Perdita qualità, A pagamento"
+  }
+}

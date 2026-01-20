@@ -1,0 +1,45 @@
+{
+  "metadata": {
+    "title": "PNG zu JPG konvertieren - Kostenloser Online-Bildkonverter | Toolaze",
+    "description": "Konvertieren Sie PNG-Bilder sofort in JPG-Format. Batch-Konvertierung von bis zu 100 Bildern. Reduzieren Sie die Dateigröße bei erhaltener Qualität. 100% kostenlos und privat."
+  },
+  "hero": {
+    "h1": "PNG zu JPG Konverter",
+    "sub": "Dateigröße reduzieren",
+    "desc": "Konvertieren Sie PNG-Bilder in JPG-Format, um die Dateigröße erheblich zu reduzieren. Perfekt für Web-Optimierung und Speicherplatzersparnis."
+  },
+  "intro": {
+    "title": "Optimieren Sie Ihre Bilder",
+    "content": "JPG-Format bietet viel kleinere Dateigrößen im Vergleich zu PNG, was es ideal für Web-Nutzung und Speicherung macht. Unser Konverter behält die visuelle Qualität bei, während die Dateigröße drastisch reduziert wird."
+  },
+  "specs": {
+    "engine": "Format-Konvertierungs-Engine",
+    "limit": "Batch bis zu 100 Bilder",
+    "logic": "Qualitäts-optimierte Konvertierung",
+    "privacy": "Lokale Browser-Verarbeitung"
+  },
+  "scenes": [
+    {
+      "title": "Web-Optimierung",
+      "desc": "Konvertieren Sie PNG zu JPG für schnelleres Website-Laden."
+    },
+    {
+      "title": "Speicherplatzersparnis",
+      "desc": "Reduzieren Sie Speicherplatz durch Konvertierung von PNG zu JPG."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Wird Transparenz erhalten?",
+      "a": "Nein, JPG unterstützt keine Transparenz. Transparente Bereiche werden weiß."
+    },
+    {
+      "q": "Wie viel kleiner werden Dateien sein?",
+      "a": "JPG-Dateien sind typischerweise 50-80% kleiner als PNG-Dateien."
+    }
+  ],
+  "compare": {
+    "toolaze": "Batch-Verarbeitung, Qualitätskontrolle, Kostenlos",
+    "others": "Einzeldatei, Keine Kontrolle, Bezahlt"
+  }
+}

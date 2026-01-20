@@ -1,0 +1,44 @@
+{
+  "metadata": {
+    "title": "Convert JPG to PNG - Free Online Image Converter | Toolaze",
+    "description": "Convert JPG/JPEG images to PNG format instantly. Batch convert up to 100 images. 100% free, private, no uploads required."
+  },
+  "hero": {
+    "h1": "JPG to PNG Converter",
+    "desc": "Convert JPG to PNG online for free. Simply drop your JPG images below to convert them to PNG in seconds."
+  },
+  "intro": {
+    "title": "Why Convert JPG to PNG?",
+    "content": "PNG format supports transparency and lossless compression, making it ideal for logos, graphics, and images that require high quality. Our converter processes images locally in your browser, ensuring complete privacy."
+  },
+  "specs": {
+    "engine": "Browser-Native Conversion",
+    "limit": "Batch up to 100 images",
+    "logic": "Lossless Quality Preservation",
+    "privacy": "100% Client-Side Processing"
+  },
+  "scenes": [
+    {
+      "title": "Logo Conversion",
+      "desc": "Convert logos from JPG to PNG to add transparency support."
+    },
+    {
+      "title": "Graphic Design",
+      "desc": "Switch to PNG for lossless quality in design projects."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Will the quality be preserved?",
+      "a": "Yes, PNG is a lossless format, so quality is fully preserved during conversion."
+    },
+    {
+      "q": "Can I convert multiple files?",
+      "a": "Yes, you can batch convert up to 100 images at once."
+    }
+  ],
+  "compare": {
+    "toolaze": "Batch conversion, Lossless quality, Free",
+    "others": "Single file limits, Quality loss, Paid"
+  }
+}

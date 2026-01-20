@@ -23,7 +23,7 @@ export default function WhyToolaze({ data, badge }: WhyToolazeProps) {
           <span className="text-xs font-bold text-purple-500 uppercase tracking-widest bg-purple-50 px-3 py-1 rounded-full">
             {badgeText}
           </span>
-          <h2 className="text-3xl font-extrabold text-slate-900 leading-tight">{data.headline}</h2>
+          <h2 className="text-4xl font-extrabold text-slate-900 leading-tight">{data.headline}</h2>
           <p className="desc-text text-lg">{data.description}</p>
         </div>
         <div className="grid gap-4">

@@ -1,0 +1,45 @@
+{
+  "metadata": {
+    "title": "JPG zu WebP konvertieren - Kostenloser Online-Bildkonverter | Toolaze",
+    "description": "Konvertieren Sie JPG-Bilder sofort in WebP-Format. Batch-Konvertierung von bis zu 100 Bildern. Reduzieren Sie die Dateigröße um bis zu 30% bei erhaltener Qualität. 100% kostenlos."
+  },
+  "hero": {
+    "h1": "JPG zu WebP Konverter",
+    "sub": "Überlegene Komprimierung",
+    "desc": "Konvertieren Sie JPG-Bilder in WebP-Format für noch kleinere Dateigrößen. WebP bietet bessere Komprimierung als JPG bei ähnlicher visueller Qualität."
+  },
+  "intro": {
+    "title": "Bessere Komprimierung",
+    "content": "WebP-Format bietet 25-30% bessere Komprimierung als JPG bei ähnlicher visueller Qualität. Perfekt für moderne Web-Anwendungen und mobile Apps."
+  },
+  "specs": {
+    "engine": "WebP-Konvertierungs-Engine",
+    "limit": "Batch bis zu 100 Bilder",
+    "logic": "Qualitäts-optimierte Konvertierung",
+    "privacy": "100% Client-seitig"
+  },
+  "scenes": [
+    {
+      "title": "Website-Optimierung",
+      "desc": "Konvertieren Sie JPG zu WebP für schnelleres Seitenladen."
+    },
+    {
+      "title": "Mobile Optimierung",
+      "desc": "Reduzieren Sie Datenverbrauch mit kleineren WebP-Dateien."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Ist WebP besser als JPG?",
+      "a": "WebP bietet 25-30% bessere Komprimierung als JPG mit ähnlicher Qualität."
+    },
+    {
+      "q": "Werden alle Browser WebP unterstützen?",
+      "a": "Alle modernen Browser unterstützen WebP. Ältere Browser benötigen möglicherweise Fallbacks."
+    }
+  ],
+  "compare": {
+    "toolaze": "Batch-Verarbeitung, Bessere Komprimierung, Kostenlos",
+    "others": "Einzeldatei, Gleiche Größe, Bezahlt"
+  }
+}

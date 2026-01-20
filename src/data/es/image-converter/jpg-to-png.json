@@ -1,0 +1,45 @@
+{
+  "metadata": {
+    "title": "Convertir JPG a PNG - Convertidor de Imágenes Online Gratis | Toolaze",
+    "description": "Convierte imágenes JPG/JPEG a formato PNG instantáneamente. Conversión por lotes de hasta 100 imágenes. 100% gratis, privado, no se requieren subidas."
+  },
+  "hero": {
+    "h1": "Convertidor JPG a PNG",
+    "sub": "Conversión de Formato Sin Pérdida",
+    "desc": "Convierte tus imágenes JPG a formato PNG preservando la calidad. Perfecto para imágenes que necesitan soporte de transparencia o compresión sin pérdida."
+  },
+  "intro": {
+    "title": "¿Por Qué Convertir JPG a PNG?",
+    "content": "El formato PNG admite transparencia y compresión sin pérdida, lo que lo hace ideal para logotipos, gráficos e imágenes que requieren alta calidad. Nuestro convertidor procesa imágenes localmente en tu navegador, asegurando privacidad completa."
+  },
+  "specs": {
+    "engine": "Conversión Nativa del Navegador",
+    "limit": "Lote de hasta 100 imágenes",
+    "logic": "Preservación de Calidad Sin Pérdida",
+    "privacy": "100% Procesamiento del Lado del Cliente"
+  },
+  "scenes": [
+    {
+      "title": "Conversión de Logotipos",
+      "desc": "Convierte logotipos de JPG a PNG para agregar soporte de transparencia."
+    },
+    {
+      "title": "Diseño Gráfico",
+      "desc": "Cambia a PNG para calidad sin pérdida en proyectos de diseño."
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Se preservará la calidad?",
+      "a": "Sí, PNG es un formato sin pérdida, por lo que la calidad se preserva completamente durante la conversión."
+    },
+    {
+      "q": "¿Puedo convertir múltiples archivos?",
+      "a": "Sí, puedes convertir por lotes hasta 100 imágenes a la vez."
+    }
+  ],
+  "compare": {
+    "toolaze": "Conversión por lotes, Calidad sin pérdida, Gratis",
+    "others": "Límites de archivo único, Pérdida de calidad, De pago"
+  }
+}

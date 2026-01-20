@@ -1,0 +1,45 @@
+{
+  "metadata": {
+    "title": "Convertir HEIC en WebP - Convertisseur d'Images Online Gratuit | Toolaze",
+    "description": "Convertissez les images HEIC/HEIF au format WebP instantanément. Conversion par lots jusqu'à 100 images. Format moderne avec compression supérieure. 100% gratuit."
+  },
+  "hero": {
+    "h1": "Convertisseur HEIC en WebP",
+    "sub": "Conversion de Format Moderne",
+    "desc": "Convertissez les images HEIC au format WebP pour des tailles de fichier plus petites et de meilleures performances web. WebP offre une compression supérieure tout en maintenant la qualité."
+  },
+  "intro": {
+    "title": "Format Web Moderne",
+    "content": "WebP est un format d'image moderne qui fournit une excellente compression et qualité. Convertissez vos images HEIC en WebP pour de meilleures performances web et des tailles de fichier plus petites."
+  },
+  "specs": {
+    "engine": "Convertisseur HEIC en WebP",
+    "limit": "Lots jusqu'à 100 images",
+    "logic": "Conversion Préservant la Qualité",
+    "privacy": "100% Côté Client"
+  },
+  "scenes": [
+    {
+      "title": "Optimisation Web",
+      "desc": "Convertissez HEIC en WebP pour un chargement de site web plus rapide."
+    },
+    {
+      "title": "Applications Mobiles",
+      "desc": "Réduisez la taille de l'application avec la conversion de format WebP."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Pourquoi convertir HEIC en WebP?",
+      "a": "WebP offre une meilleure compression que HEIC tout en maintenant la qualité, et a un support de navigateur plus large."
+    },
+    {
+      "q": "WebP est-il largement pris en charge?",
+      "a": "WebP est pris en charge par tous les navigateurs modernes et appareils mobiles."
+    }
+  ],
+  "compare": {
+    "toolaze": "Traitement par lots, Meilleure compression, Gratuit",
+    "others": "Fichier unique, Même taille, Payant"
+  }
+}

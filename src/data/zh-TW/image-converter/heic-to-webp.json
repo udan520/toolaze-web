@@ -1,0 +1,45 @@
+{
+  "metadata": {
+    "title": "HEIC 轉 WebP - 免費線上圖片轉換器 | Toolaze",
+    "description": "即時將 HEIC/HEIF 圖片轉換為 WebP 格式。批次轉換最多 100 張圖片。現代格式，優越壓縮。100% 免費。"
+  },
+  "hero": {
+    "h1": "HEIC 轉 WebP 轉換器",
+    "sub": "現代格式轉換",
+    "desc": "將 HEIC 圖片轉換為 WebP 格式以獲得較小的檔案大小和更好的網站效能。WebP 提供優越的壓縮，同時保持品質。"
+  },
+  "intro": {
+    "title": "現代網站格式",
+    "content": "WebP 是一種現代圖片格式，提供出色的壓縮和品質。將您的 HEIC 圖片轉換為 WebP 以獲得更好的網站效能和較小的檔案大小。"
+  },
+  "specs": {
+    "engine": "HEIC 轉 WebP 轉換器",
+    "limit": "批次最多 100 張圖片",
+    "logic": "品質保留轉換",
+    "privacy": "100% 客戶端"
+  },
+  "scenes": [
+    {
+      "title": "網站優化",
+      "desc": "將 HEIC 轉換為 WebP 以加快網站載入速度。"
+    },
+    {
+      "title": "行動應用程式",
+      "desc": "透過 WebP 格式轉換減少應用程式大小。"
+    }
+  ],
+  "faq": [
+    {
+      "q": "為什麼要將 HEIC 轉換為 WebP？",
+      "a": "WebP 提供比 HEIC 更好的壓縮，同時保持品質，並具有更廣泛的瀏覽器支援。"
+    },
+    {
+      "q": "WebP 廣泛支援嗎？",
+      "a": "WebP 受到所有現代瀏覽器和行動裝置的支援。"
+    }
+  ],
+  "compare": {
+    "toolaze": "批次處理，更好壓縮，免費",
+    "others": "單檔，相同大小，付費"
+  }
+}

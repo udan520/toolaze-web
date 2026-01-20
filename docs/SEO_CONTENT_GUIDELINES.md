@@ -1,0 +1,337 @@
+# SEO 内容编写规范
+
+> **核心原则**：所有 SEO 内容必须严格按照 `FEATURE_SPECIFICATIONS.md` 中的功能介绍进行编写。
+
+## 内容编写原则
+
+### ✅ 必须遵守
+
+1. **全局样式规范**
+   - **H2 标题统一规范**：
+     - 所有 SEO 板块的 H2 标题必须统一使用 `text-4xl`（36px）
+     - Tailwind CSS 类：`text-4xl font-extrabold text-center text-slate-900`
+     - 不允许使用响应式字体大小（如 `text-3xl md:text-4xl`），统一为固定 36px
+     - 适用板块：Intro、Features、How To Use、Performance Metrics、Comparison、Scenarios、Rating、FAQ 等所有 SEO 板块
+     - **目的**：保持视觉一致性和品牌统一性
+
+2. **功能真实性**
+   - 只写 `FEATURE_SPECIFICATIONS.md` 中明确支持的功能
+   - 不支持的功能绝对不能写（如：不支持 video 就不能写 video 转换）
+   - 未使用的技术不能写（如：没有 AI 就不能说 AI 技术）
+
+2. **技术准确性**
+   - 只提及实际使用的技术栈
+   - 不能夸大技术能力
+   - 不能使用未实现的技术术语
+
+3. **内容一致性**
+   - 所有页面的功能描述必须一致
+   - 不能在不同页面中描述不同的功能支持
+
+4. **Hero 板块规范**
+   - Hero 板块**仅保留** `h1` 和 `desc` 两个字段
+   - **不显示** `sub` 字段（即使 JSON 中有，也不会在页面上显示）
+   - **h1 要求**：
+     - 简洁明了，只包含核心工具名称
+     - 示例：`"Unlimited HEIC to JPG Converter"`
+   - **desc 要求**：
+     - 长度适中，不要太长（建议 1-2 句话，约 15-25 个单词）
+     - 点名工具的核心优势
+     - 格式示例：`"Convert HEIC to JPG online for free. Simply drop your HEIC images below to convert them to JPG in seconds."`
+     - 应该包含：工具功能 + 免费 + 简单操作说明
+   - **最佳实践**：
+     - desc 应该简洁有力，突出核心价值
+     - 避免冗长的描述，保持 Hero 区域的简洁性
+     - 让用户快速理解工具能做什么
+
+5. **How To Use 板块规范**
+   - How To Use 板块用于说明工具的使用步骤
+   - **标题格式要求**：
+     - **统一格式**：所有页面的 howToUse.title 必须使用 "How to [动作]" 格式
+     - **格式示例**：
+       - ✅ `"How to Convert HEIC to JPG"`
+       - ✅ `"How to Convert PNG to WebP"`
+       - ✅ `"How to Compress Images"`
+       - ❌ `"Convert 100 HEIC Files in 3 Simple Steps"`（不使用描述性标题）
+     - **SEO 优势**：统一使用 "How to" 格式更符合用户搜索习惯
+   - **步骤配置**：
+     - 每个步骤包含 `title` 和 `desc` 字段
+     - 步骤数量：通常 3 个步骤
+     - 步骤描述要简洁明了，突出核心操作
+
+6. **Intro 板块规范**
+   - Intro 板块用于详细说明工具的价值和优势
+   - **推荐布局**：Picflow 风格混合方案（标题 + 图标行 + 描述段落 + 底部卡片）
+     - **标题区域**：居中显示，包含 badge 和 title（H2）
+     - **图标行**：标题下方，3-4 个极简线条图标，展示核心功能（Privacy, Speed, Unlimited, Batch）
+     - **描述区域**：图标行下方，居中显示，限制最大宽度（max-w-4xl），1-2 段文字（100-150 单词）
+     - **底部卡片区域**：三张大卡片（Engine, Limit, Privacy），减少与上方文字的视觉冲突
+     - **段落分隔**：使用 `\n\n` 分隔多个段落，提升可读性
+     - **配色方案**：保持 AI 蓝紫色科技感风格（indigo-600, purple-600）
+   - **图标行配置**（`intro.iconRow`）：
+     - **推荐数量**：3-4 个图标
+     - **图标类型**：支持 `privacy`、`speed`、`unlimited`、`batch`（极简线条 SVG）
+     - **配置格式**：`{ "icon": "privacy", "label": "Privacy" }`
+     - **样式**：极简线条图标，圆形边框，indigo 配色
+   - **底部卡片配置**（`intro.bottomCards`）：
+     - **推荐数量**：3 张卡片（Engine, Limit, Privacy）
+     - **配置方式**：在 `intro.bottomCards` 数组中配置，每个卡片包含 `icon`、`title`、`desc`
+     - **图标要求**：使用 emoji 格式
+     - **描述长度**：每个卡片的 desc 建议 10-20 个单词，简洁有力
+   - **描述文字要求**（卡片式设计）：
+     - **显示方式**：两段文字自动渲染为两个有设计感的卡片（2列布局）
+     - **卡片设计**：
+       - 白色背景，圆角卡片（`rounded-2xl`）
+       - 每个卡片有对应的图标（第一段：隐私锁图标，第二段：兼容性勾选图标）
+       - 渐变背景装饰（第一段：indigo，第二段：purple）
+       - 悬停效果（`hover:shadow-md`）
+     - **内容要求**：
+       - **推荐 2 段**，每段 40-60 单词
+       - 使用 `\n\n` 分隔段落
+       - 第一段：强调隐私保护核心价值
+       - 第二段：说明技术优势或兼容性问题
+     - **颜色**：使用 `text-slate-700`，确保 SEO 关键词覆盖
+     - **位置**：标题下方，特性卡片网格上方
+     - **布局**：响应式 2 列布局（移动端 1 列，桌面端 2 列）
+   - **混合方案优势**：
+     - **SEO 友好**：描述段落提供丰富的关键词和语义内容（100-150 单词）
+     - **视觉清晰**：图标行快速传达核心价值，底部卡片展示技术细节
+     - **层次分明**：标题 → 图标行 → 描述 → 卡片，视觉层次清晰
+     - **科技感**：极简线条图标 + AI 蓝紫色配色，符合现代设计趋势
+   - **content 字段单词数建议**：
+     - **推荐范围**：150-250 个单词
+     - **最佳长度**：180-220 个单词
+     - **最小长度**：不少于 120 个单词
+     - **最大长度**：不超过 300 个单词
+   - **内容要求**：
+     - 深入阐述工具的核心价值和优势
+     - 可以包含用户痛点、解决方案、技术优势等
+     - **强烈推荐**：将长段落拆分为 2-3 个段落（使用 `\n\n` 分隔）
+     - 每个段落建议 60-100 个单词，提升可读性
+     - 保持专业性和可读性
+   - **最佳实践**：
+     - 第一段：强调核心价值或解决的主要问题（60-80 单词）
+     - 第二段：详细说明技术优势或使用场景（60-100 单词）
+     - 第三段（可选）：补充说明或总结（40-60 单词）
+     - 使用段落分隔让内容更易读，避免大段文字造成视觉疲劳
+     - 确保内容丰富但不冗长，保持用户阅读兴趣
+
+5. **场景图标规范**
+   - Use Cases（Scenarios）板块中的每个场景**必须**配置对应的图标
+   - **推荐**：每个场景都应该有 `icon` 字段，且不能为空
+   - **自动生成机制**：
+     - 如果场景缺少 `icon` 字段，系统会根据场景标题和描述自动生成合适的图标
+     - 即使 JSON 中某些场景没有配置 icon，系统也会根据场景内容自动生成合适的图标，确保每个场景都有对应的图标显示
+     - 自动生成基于关键词匹配，会分析场景的 `title` 和 `description`/`desc` 字段
+   - 图标必须与场景内容相关，不能使用相同的图标
+   - 图标使用 emoji 格式，放在 `scenes` 数组的每个对象中的 `icon` 字段
+   - 图标不能为空字符串
+   - **自动匹配规则**（当缺少 icon 时）：
+     - 摄影师/照片相关 → 📸（相机）
+     - 社交媒体相关 → 📱（手机）
+     - 办公/商务相关 → 💼（公文包）
+     - 开发者/网站相关 → 💻（电脑）
+     - 电商/购物相关 → 🛒（购物车）
+     - 设计师/创意相关 → 🎨（调色板）
+     - 内容创作者 → 📝（记事本）
+     - 其他 → 💼（默认）
+   - **最佳实践**：
+     - 虽然系统会自动生成 icon，但建议手动为每个场景配置合适的 icon
+     - 手动配置的 icon 优先级高于自动生成的 icon
+     - 确保每个场景的 icon 与内容相关且不重复
+   - 示例：
+     - 摄影师场景 → 📸（相机）
+     - 社交媒体场景 → 📱（手机）
+     - 办公场景 → 💼（公文包）
+     - 开发者场景 → 💻（电脑）
+     - 电商场景 → 🛒（购物车）
+
+5. **FAQ 板块规范**
+   - **数量要求**：每个三级页面的 FAQ 板块**至少**要有 5 个问题
+   - **内容定制**：FAQ 必须根据不同的三级页面来定制，不能使用通用的 FAQ
+   - **长尾关键词覆盖**：尽可能覆盖一些长尾关键词，提高 SEO 效果
+   - **重复度限制**：每个三级页面的 FAQ 内容重复度不得高于 40%
+     - 不同页面的 FAQ 问题应该针对该页面的具体功能和特点
+     - 避免在不同页面使用相同或高度相似的问题
+   - **问题设计原则**：
+     - 问题应该针对该工具的具体功能和使用场景
+     - 包含用户可能关心的技术细节、使用限制、隐私安全等问题
+     - 使用自然语言，符合用户搜索习惯
+     - 答案要准确、详细，基于功能介绍文件
+   - **示例**：
+     - HEIC to JPG 页面：可以包含关于 HEIC 格式、EXIF 保留、文件大小限制等问题
+     - PNG to WebP 页面：可以包含关于 WebP 格式优势、透明度支持、浏览器兼容性等问题
+     - 不同页面的 FAQ 应该有不同的侧重点和问题角度
+
+### ❌ 禁止事项
+
+1. **禁止夸大功能**
+   - ❌ 不能写不支持的功能
+   - ❌ 不能写未实现的技术
+   - ❌ 不能写超出实际能力的特性
+
+2. **禁止技术误导**
+   - ❌ 没有 AI 就不能说 AI
+   - ❌ 不支持 video 就不能写 video
+   - ❌ 不是云端处理就不能说云端
+
+3. **禁止内容矛盾**
+   - ❌ 不同页面描述不一致
+   - ❌ 功能列表与实际不符
+
+4. **禁止 FAQ 内容重复**
+   - ❌ 不同三级页面使用相同或高度相似的 FAQ
+   - ❌ FAQ 数量少于 5 个
+   - ❌ FAQ 内容重复度超过 40%
+   - ❌ 使用通用的、不针对具体页面的 FAQ
+
+---
+
+## 内容编写流程
+
+### 1. 查看功能介绍
+在编写任何 SEO 内容前，必须先查看 `docs/FEATURE_SPECIFICATIONS.md`
+
+### 2. 确认功能支持
+确认要写的功能是否在支持列表中
+
+### 3. 编写 SEO 内容
+基于功能介绍进行 SEO 扩写，但必须：
+- 保持功能描述准确
+- 不添加不支持的功能
+- 不提及未使用的技术
+
+### 4. 检查清单
+- [ ] 所有功能都在支持列表中
+- [ ] 没有提及不支持的功能
+- [ ] 技术描述准确
+- [ ] 内容与其他页面一致
+- [ ] Use Cases 板块的每个场景都配置了对应的图标（`icon` 字段，且不为空）
+- [ ] 场景图标不重复，且与场景内容相关
+- [ ] 如果场景缺少 icon，系统会自动根据场景内容生成合适的图标
+- [ ] FAQ 板块至少有 5 个问题
+- [ ] FAQ 内容针对该三级页面定制，不是通用内容
+- [ ] FAQ 覆盖了长尾关键词
+- [ ] FAQ 内容与其他三级页面的重复度低于 40%
+
+---
+
+## 示例
+
+### ✅ 正确示例
+
+**功能介绍文件说**：支持 JPG、PNG、WebP、HEIC 格式转换
+
+**SEO 内容可以写**：
+- "Convert between JPG, PNG, WebP, and HEIC formats"
+- "Support multiple image formats including HEIC"
+- "Transform HEIC photos to JPG format"
+
+**Use Cases 场景配置正确示例**：
+```json
+"scenes": [
+  {
+    "title": "iPhone Photographers",
+    "icon": "📸",
+    "desc": "Quickly backup your entire HEIC library..."
+  },
+  {
+    "title": "Social Media Managers",
+    "icon": "📱",
+    "desc": "Transform HEIC assets into optimized JPG..."
+  },
+  {
+    "title": "Office Productivity",
+    "icon": "💼",
+    "desc": "Share large 50MB+ high-fidelity renders..."
+  }
+]
+```
+
+### ❌ 错误示例
+
+**功能介绍文件说**：不支持 video 格式
+
+**SEO 内容不能写**：
+- ❌ "Convert video to images"（不支持 video）
+- ❌ "AI-powered conversion"（没有 AI）
+- ❌ "Cloud processing"（不是云端处理）
+
+**Use Cases 场景配置错误示例**：
+```json
+"scenes": [
+  {
+    "title": "iPhone Photographers",
+    "desc": "..."  // ❌ 缺少 icon 字段
+  },
+  {
+    "title": "Social Media Managers",
+    "icon": "💻",  // ❌ 图标与内容不匹配（应该用 📱）
+    "desc": "..."
+  },
+  {
+    "title": "Office Productivity",
+    "icon": "💻",  // ❌ 图标重复（与上面相同）
+    "desc": "..."
+  }
+]
+```
+
+**FAQ 配置正确示例**（HEIC to JPG 页面）：
+```json
+"faq": [
+  {
+    "q": "Will I lose my photo's GPS and time information?",
+    "a": "No. Toolaze preserves all EXIF metadata, ensuring your JPG exports keep the original shooting date, camera settings, and location tags."
+  },
+  {
+    "q": "Can I really convert a 200MB HEIC file?",
+    "a": "Yes. Unlike competitors who have strict bandwidth limits, Toolaze has no file size restrictions. If your computer has the RAM to open it, Toolaze can convert it."
+  },
+  {
+    "q": "Why does Toolaze emphasize \"Local Processing\"?",
+    "a": "Speed and security. By processing data on your device, we skip the slow \"Upload\" and \"Download\" phases. It's the fastest and most secure way to handle image data."
+  },
+  {
+    "q": "Does Toolaze support batch converting multiple HEIC files?",
+    "a": "Yes. You can convert up to 100 HEIC images in a single batch, making it perfect for photographers who need to process entire photo libraries."
+  },
+  {
+    "q": "What makes HEIC to JPG conversion different from other formats?",
+    "a": "HEIC uses advanced HEVC encoding, which requires specialized decoding. Toolaze uses WebAssembly-powered HEVC decoder to handle Apple's proprietary format locally in your browser."
+  }
+]
+```
+
+**FAQ 配置错误示例**：
+```json
+"faq": [
+  {
+    "q": "How do I convert images?",  // ❌ 问题太通用，不是针对 HEIC to JPG
+    "a": "..."
+  }
+]
+// ❌ 只有 3 个问题，少于要求的 5 个
+```
+
+**FAQ 重复度检查**：
+- ✅ 正确：HEIC to JPG 页面的 FAQ 关注 HEIC 格式、EXIF 保留、文件大小等
+- ✅ 正确：PNG to WebP 页面的 FAQ 关注 WebP 优势、透明度、浏览器兼容性等
+- ❌ 错误：两个页面的 FAQ 有超过 40% 的问题相同或高度相似
+
+---
+
+## 文件位置
+
+- **功能介绍**：`docs/FEATURE_SPECIFICATIONS.md`
+- **SEO 规范**：`docs/SEO_CONTENT_GUIDELINES.md`（本文件）
+- **页面布局**：`docs/SEO_MASTER_LAYOUT.md`
+
+---
+
+## 更新说明
+
+当功能介绍更新时：
+1. 更新 `FEATURE_SPECIFICATIONS.md`
+2. 检查所有现有 SEO 内容是否符合新规范
+3. 更新不符合规范的 SEO 内容

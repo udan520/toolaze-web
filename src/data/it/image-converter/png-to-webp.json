@@ -1,0 +1,45 @@
+{
+  "metadata": {
+    "title": "Converti PNG in WebP - Convertitore Immagini Online Gratuito | Toolaze",
+    "description": "Converti immagini PNG in formato WebP istantaneamente. Conversione batch fino a 100 immagini. Riduci dimensione file fino al 30% mantenendo qualità. 100% gratuito."
+  },
+  "hero": {
+    "h1": "Convertitore PNG in WebP",
+    "sub": "Ottimizzazione Formato Moderno",
+    "desc": "Converti immagini PNG in formato WebP per dimensioni file più piccole e caricamento più veloce. WebP offre compressione superiore mantenendo qualità visiva."
+  },
+  "intro": {
+    "title": "Formato Web Moderno",
+    "content": "WebP è un formato immagine moderno che fornisce 25-35% migliore compressione rispetto a PNG mantenendo qualità simile. Perfetto per applicazioni web moderne."
+  },
+  "specs": {
+    "engine": "Motore Conversione WebP",
+    "limit": "Batch fino a 100 immagini",
+    "logic": "Conversione che Preserva Qualità",
+    "privacy": "Elaborazione Browser Locale"
+  },
+  "scenes": [
+    {
+      "title": "Prestazioni Web",
+      "desc": "Converti PNG in WebP per caricamento sito web più veloce."
+    },
+    {
+      "title": "App Mobili",
+      "desc": "Riduci dimensione app con formato WebP."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Quanto più piccoli sono i file WebP?",
+      "a": "I file WebP sono tipicamente 25-35% più piccoli dei file PNG con qualità simile."
+    },
+    {
+      "q": "WebP è ampiamente supportato?",
+      "a": "WebP è supportato da tutti i browser moderni e dispositivi mobili."
+    }
+  ],
+  "compare": {
+    "toolaze": "Converti batch, Qualità preservata, Gratuito",
+    "others": "File singolo, Perdita qualità, A pagamento"
+  }
+}

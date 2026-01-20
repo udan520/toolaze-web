@@ -1,0 +1,45 @@
+{
+  "metadata": {
+    "title": "Converter HEIC para PNG - Conversor de Imagens Online Grátis | Toolaze",
+    "description": "Converta imagens HEIC/HEIF para formato PNG instantaneamente. Conversão em lote até 100 imagens. Preserve qualidade e transparência. 100% grátis e privado."
+  },
+  "hero": {
+    "h1": "Conversor HEIC para PNG",
+    "sub": "Conversão de Qualidade Sem Perda",
+    "desc": "Converta imagens HEIC para formato PNG preservando qualidade. PNG suporta transparência e é amplamente compatível em todas as plataformas."
+  },
+  "intro": {
+    "title": "Conversão Sem Perda",
+    "content": "PNG é um formato sem perda que suporta transparência, tornando-o ideal para gráficos e imagens que requerem alta qualidade. Converta suas imagens HEIC para PNG para melhor compatibilidade."
+  },
+  "specs": {
+    "engine": "Conversor HEIC para PNG",
+    "limit": "Lote até 100 imagens",
+    "logic": "Preservação de Qualidade Sem Perda",
+    "privacy": "Processamento Local do Navegador"
+  },
+  "scenes": [
+    {
+      "title": "Design Gráfico",
+      "desc": "Converta HEIC para PNG para compatibilidade com software de design."
+    },
+    {
+      "title": "Preservação de Qualidade",
+      "desc": "Mantenha qualidade sem perda ao converter imagens HEIC."
+    }
+  ],
+  "faq": [
+    {
+      "q": "A transparência será preservada?",
+      "a": "PNG suporta transparência, então se sua imagem HEIC tem transparência, será preservada."
+    },
+    {
+      "q": "A conversão é sem perda?",
+      "a": "PNG é um formato sem perda, então a qualidade é completamente preservada durante a conversão."
+    }
+  ],
+  "compare": {
+    "toolaze": "Converter em lote, Qualidade sem perda, Grátis",
+    "others": "Arquivo único, Perda de qualidade, Pago"
+  }
+}

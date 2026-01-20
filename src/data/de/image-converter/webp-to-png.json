@@ -1,0 +1,45 @@
+{
+  "metadata": {
+    "title": "WebP zu PNG konvertieren - Kostenloser Online-Bildkonverter | Toolaze",
+    "description": "Konvertieren Sie WebP-Bilder sofort in PNG-Format. Batch-Konvertierung von bis zu 100 Bildern. Erhalten Sie Transparenz und Qualität. 100% kostenlos und privat."
+  },
+  "hero": {
+    "h1": "WebP zu PNG Konverter",
+    "sub": "Transparenz erhalten",
+    "desc": "Konvertieren Sie WebP-Bilder in PNG-Format bei erhaltener Transparenz und hoher Qualität. Perfekt für Grafiken und Logos."
+  },
+  "intro": {
+    "title": "Transparenz-Unterstützung",
+    "content": "PNG-Format unterstützt Transparenz, was es ideal für Grafiken, Logos und Bilder macht, die transparente Hintergründe benötigen. Konvertieren Sie Ihre WebP-Bilder zu PNG für bessere Kompatibilität."
+  },
+  "specs": {
+    "engine": "Transparenz-erhaltende Engine",
+    "limit": "Batch bis zu 100 Bilder",
+    "logic": "Verlustfreie Konvertierung",
+    "privacy": "Browser-basierte Verarbeitung"
+  },
+  "scenes": [
+    {
+      "title": "Grafikdesign",
+      "desc": "Konvertieren Sie WebP zu PNG für Design-Software-Kompatibilität."
+    },
+    {
+      "title": "Logo-Konvertierung",
+      "desc": "Erhalten Sie Transparenz bei der Konvertierung von Logos."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Wird Transparenz erhalten?",
+      "a": "Ja, PNG unterstützt Transparenz, daher werden transparente Bereiche erhalten."
+    },
+    {
+      "q": "Ist die Konvertierung verlustfrei?",
+      "a": "PNG ist ein verlustfreies Format, daher wird die Qualität vollständig erhalten."
+    }
+  ],
+  "compare": {
+    "toolaze": "Transparenz-Unterstützung, Batch konvertieren, Kostenlos",
+    "others": "Keine Transparenz, Einzeldatei, Bezahlt"
+  }
+}

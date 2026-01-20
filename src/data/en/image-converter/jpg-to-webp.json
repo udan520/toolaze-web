@@ -1,0 +1,44 @@
+{
+  "metadata": {
+    "title": "Convert JPG to WebP - Free Online Image Converter | Toolaze",
+    "description": "Convert JPG images to WebP format instantly. Batch convert up to 100 images. Reduce file size by up to 30% while maintaining quality. 100% free."
+  },
+  "hero": {
+    "h1": "JPG to WebP Converter",
+    "desc": "Convert JPG to WebP online for free. Simply drop your JPG images below to convert them to WebP in seconds."
+  },
+  "intro": {
+    "title": "Better Compression",
+    "content": "WebP format provides 25-30% better compression than JPG while maintaining similar visual quality. Perfect for modern web applications and mobile apps."
+  },
+  "specs": {
+    "engine": "WebP Conversion Engine",
+    "limit": "Batch up to 100 images",
+    "logic": "Quality-Optimized Conversion",
+    "privacy": "100% Client-Side"
+  },
+  "scenes": [
+    {
+      "title": "Website Optimization",
+      "desc": "Convert JPG to WebP for faster page loads."
+    },
+    {
+      "title": "Mobile Optimization",
+      "desc": "Reduce data usage with smaller WebP files."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Is WebP better than JPG?",
+      "a": "WebP offers 25-30% better compression than JPG with similar quality."
+    },
+    {
+      "q": "Will all browsers support WebP?",
+      "a": "All modern browsers support WebP. Older browsers may need fallbacks."
+    }
+  ],
+  "compare": {
+    "toolaze": "Batch processing, Better compression, Free",
+    "others": "Single file, Same size, Paid"
+  }
+}

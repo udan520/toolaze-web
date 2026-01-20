@@ -1,6 +1,19 @@
 // 支持的所有语言列表
 const SUPPORTED_LOCALES = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
 
+// Image Converter 工具的所有 slug 列表
+const IMAGE_CONVERTER_SLUGS = [
+  'jpg-to-png',
+  'png-to-jpg',
+  'webp-to-jpg',
+  'webp-to-png',
+  'png-to-webp',
+  'jpg-to-webp',
+  'heic-to-jpg',
+  'heic-to-png',
+  'heic-to-webp',
+]
+
 // 动态导入 JSON 数据（支持多语言）
 async function loadJsonData(locale: string, filename: string) {
   try {
@@ -117,6 +130,186 @@ export async function loadCommonTranslations(locale: string = 'en') {
   }
 }
 
+// 动态加载独立的工具 JSON 文件（仅用于 image-converter）
+// 使用显式的导入路径以确保 webpack 能够静态分析
+async function loadToolJsonFile(locale: string, tool: string, slug: string) {
+  try {
+    // 规范化的 locale（处理 zh -> zh-TW 等映射）
+    let normalizedLocale = locale
+    if (locale === 'zh' || locale === 'zh-CN' || locale === 'zh-HK') {
+      normalizedLocale = 'zh-TW'
+    }
+    
+    // 如果语言不在支持列表中，回退到英语
+    if (!SUPPORTED_LOCALES.includes(normalizedLocale)) {
+      normalizedLocale = 'en'
+    }
+
+    // 验证 slug 是否有效
+    if (!IMAGE_CONVERTER_SLUGS.includes(slug)) {
+      return null
+    }
+
+    // 使用显式的导入路径以确保 webpack 能够静态分析
+    let data: any = null
+    
+    try {
+      // 根据 locale 和 slug 动态导入对应的文件
+      // 使用显式路径映射以确保 webpack 能够静态分析
+      switch (normalizedLocale) {
+        case 'en':
+          switch (slug) {
+            case 'jpg-to-png': data = await import('@/data/en/image-converter/jpg-to-png.json'); break
+            case 'png-to-jpg': data = await import('@/data/en/image-converter/png-to-jpg.json'); break
+            case 'webp-to-jpg': data = await import('@/data/en/image-converter/webp-to-jpg.json'); break
+            case 'webp-to-png': data = await import('@/data/en/image-converter/webp-to-png.json'); break
+            case 'png-to-webp': data = await import('@/data/en/image-converter/png-to-webp.json'); break
+            case 'jpg-to-webp': data = await import('@/data/en/image-converter/jpg-to-webp.json'); break
+            case 'heic-to-jpg': data = await import('@/data/en/image-converter/heic-to-jpg.json'); break
+            case 'heic-to-png': data = await import('@/data/en/image-converter/heic-to-png.json'); break
+            case 'heic-to-webp': data = await import('@/data/en/image-converter/heic-to-webp.json'); break
+          }
+          break
+        case 'de':
+          switch (slug) {
+            case 'jpg-to-png': data = await import('@/data/de/image-converter/jpg-to-png.json'); break
+            case 'png-to-jpg': data = await import('@/data/de/image-converter/png-to-jpg.json'); break
+            case 'webp-to-jpg': data = await import('@/data/de/image-converter/webp-to-jpg.json'); break
+            case 'webp-to-png': data = await import('@/data/de/image-converter/webp-to-png.json'); break
+            case 'png-to-webp': data = await import('@/data/de/image-converter/png-to-webp.json'); break
+            case 'jpg-to-webp': data = await import('@/data/de/image-converter/jpg-to-webp.json'); break
+            case 'heic-to-jpg': data = await import('@/data/de/image-converter/heic-to-jpg.json'); break
+            case 'heic-to-png': data = await import('@/data/de/image-converter/heic-to-png.json'); break
+            case 'heic-to-webp': data = await import('@/data/de/image-converter/heic-to-webp.json'); break
+          }
+          break
+        case 'ja':
+          switch (slug) {
+            case 'jpg-to-png': data = await import('@/data/ja/image-converter/jpg-to-png.json'); break
+            case 'png-to-jpg': data = await import('@/data/ja/image-converter/png-to-jpg.json'); break
+            case 'webp-to-jpg': data = await import('@/data/ja/image-converter/webp-to-jpg.json'); break
+            case 'webp-to-png': data = await import('@/data/ja/image-converter/webp-to-png.json'); break
+            case 'png-to-webp': data = await import('@/data/ja/image-converter/png-to-webp.json'); break
+            case 'jpg-to-webp': data = await import('@/data/ja/image-converter/jpg-to-webp.json'); break
+            case 'heic-to-jpg': data = await import('@/data/ja/image-converter/heic-to-jpg.json'); break
+            case 'heic-to-png': data = await import('@/data/ja/image-converter/heic-to-png.json'); break
+            case 'heic-to-webp': data = await import('@/data/ja/image-converter/heic-to-webp.json'); break
+          }
+          break
+        case 'es':
+          switch (slug) {
+            case 'jpg-to-png': data = await import('@/data/es/image-converter/jpg-to-png.json'); break
+            case 'png-to-jpg': data = await import('@/data/es/image-converter/png-to-jpg.json'); break
+            case 'webp-to-jpg': data = await import('@/data/es/image-converter/webp-to-jpg.json'); break
+            case 'webp-to-png': data = await import('@/data/es/image-converter/webp-to-png.json'); break
+            case 'png-to-webp': data = await import('@/data/es/image-converter/png-to-webp.json'); break
+            case 'jpg-to-webp': data = await import('@/data/es/image-converter/jpg-to-webp.json'); break
+            case 'heic-to-jpg': data = await import('@/data/es/image-converter/heic-to-jpg.json'); break
+            case 'heic-to-png': data = await import('@/data/es/image-converter/heic-to-png.json'); break
+            case 'heic-to-webp': data = await import('@/data/es/image-converter/heic-to-webp.json'); break
+          }
+          break
+        case 'zh-TW':
+          switch (slug) {
+            case 'jpg-to-png': data = await import('@/data/zh-TW/image-converter/jpg-to-png.json'); break
+            case 'png-to-jpg': data = await import('@/data/zh-TW/image-converter/png-to-jpg.json'); break
+            case 'webp-to-jpg': data = await import('@/data/zh-TW/image-converter/webp-to-jpg.json'); break
+            case 'webp-to-png': data = await import('@/data/zh-TW/image-converter/webp-to-png.json'); break
+            case 'png-to-webp': data = await import('@/data/zh-TW/image-converter/png-to-webp.json'); break
+            case 'jpg-to-webp': data = await import('@/data/zh-TW/image-converter/jpg-to-webp.json'); break
+            case 'heic-to-jpg': data = await import('@/data/zh-TW/image-converter/heic-to-jpg.json'); break
+            case 'heic-to-png': data = await import('@/data/zh-TW/image-converter/heic-to-png.json'); break
+            case 'heic-to-webp': data = await import('@/data/zh-TW/image-converter/heic-to-webp.json'); break
+          }
+          break
+        case 'pt':
+          switch (slug) {
+            case 'jpg-to-png': data = await import('@/data/pt/image-converter/jpg-to-png.json'); break
+            case 'png-to-jpg': data = await import('@/data/pt/image-converter/png-to-jpg.json'); break
+            case 'webp-to-jpg': data = await import('@/data/pt/image-converter/webp-to-jpg.json'); break
+            case 'webp-to-png': data = await import('@/data/pt/image-converter/webp-to-png.json'); break
+            case 'png-to-webp': data = await import('@/data/pt/image-converter/png-to-webp.json'); break
+            case 'jpg-to-webp': data = await import('@/data/pt/image-converter/jpg-to-webp.json'); break
+            case 'heic-to-jpg': data = await import('@/data/pt/image-converter/heic-to-jpg.json'); break
+            case 'heic-to-png': data = await import('@/data/pt/image-converter/heic-to-png.json'); break
+            case 'heic-to-webp': data = await import('@/data/pt/image-converter/heic-to-webp.json'); break
+          }
+          break
+        case 'fr':
+          switch (slug) {
+            case 'jpg-to-png': data = await import('@/data/fr/image-converter/jpg-to-png.json'); break
+            case 'png-to-jpg': data = await import('@/data/fr/image-converter/png-to-jpg.json'); break
+            case 'webp-to-jpg': data = await import('@/data/fr/image-converter/webp-to-jpg.json'); break
+            case 'webp-to-png': data = await import('@/data/fr/image-converter/webp-to-png.json'); break
+            case 'png-to-webp': data = await import('@/data/fr/image-converter/png-to-webp.json'); break
+            case 'jpg-to-webp': data = await import('@/data/fr/image-converter/jpg-to-webp.json'); break
+            case 'heic-to-jpg': data = await import('@/data/fr/image-converter/heic-to-jpg.json'); break
+            case 'heic-to-png': data = await import('@/data/fr/image-converter/heic-to-png.json'); break
+            case 'heic-to-webp': data = await import('@/data/fr/image-converter/heic-to-webp.json'); break
+          }
+          break
+        case 'ko':
+          switch (slug) {
+            case 'jpg-to-png': data = await import('@/data/ko/image-converter/jpg-to-png.json'); break
+            case 'png-to-jpg': data = await import('@/data/ko/image-converter/png-to-jpg.json'); break
+            case 'webp-to-jpg': data = await import('@/data/ko/image-converter/webp-to-jpg.json'); break
+            case 'webp-to-png': data = await import('@/data/ko/image-converter/webp-to-png.json'); break
+            case 'png-to-webp': data = await import('@/data/ko/image-converter/png-to-webp.json'); break
+            case 'jpg-to-webp': data = await import('@/data/ko/image-converter/jpg-to-webp.json'); break
+            case 'heic-to-jpg': data = await import('@/data/ko/image-converter/heic-to-jpg.json'); break
+            case 'heic-to-png': data = await import('@/data/ko/image-converter/heic-to-png.json'); break
+            case 'heic-to-webp': data = await import('@/data/ko/image-converter/heic-to-webp.json'); break
+          }
+          break
+        case 'it':
+          switch (slug) {
+            case 'jpg-to-png': data = await import('@/data/it/image-converter/jpg-to-png.json'); break
+            case 'png-to-jpg': data = await import('@/data/it/image-converter/png-to-jpg.json'); break
+            case 'webp-to-jpg': data = await import('@/data/it/image-converter/webp-to-jpg.json'); break
+            case 'webp-to-png': data = await import('@/data/it/image-converter/webp-to-png.json'); break
+            case 'png-to-webp': data = await import('@/data/it/image-converter/png-to-webp.json'); break
+            case 'jpg-to-webp': data = await import('@/data/it/image-converter/jpg-to-webp.json'); break
+            case 'heic-to-jpg': data = await import('@/data/it/image-converter/heic-to-jpg.json'); break
+            case 'heic-to-png': data = await import('@/data/it/image-converter/heic-to-png.json'); break
+            case 'heic-to-webp': data = await import('@/data/it/image-converter/heic-to-webp.json'); break
+          }
+          break
+      }
+      
+      if (data) {
+        return data.default || data
+      }
+    } catch (importError) {
+      // 如果指定语言文件不存在，回退到英语
+      if (normalizedLocale !== 'en') {
+        try {
+          switch (slug) {
+            case 'jpg-to-png': data = await import('@/data/en/image-converter/jpg-to-png.json'); break
+            case 'png-to-jpg': data = await import('@/data/en/image-converter/png-to-jpg.json'); break
+            case 'webp-to-jpg': data = await import('@/data/en/image-converter/webp-to-jpg.json'); break
+            case 'webp-to-png': data = await import('@/data/en/image-converter/webp-to-png.json'); break
+            case 'png-to-webp': data = await import('@/data/en/image-converter/png-to-webp.json'); break
+            case 'jpg-to-webp': data = await import('@/data/en/image-converter/jpg-to-webp.json'); break
+            case 'heic-to-jpg': data = await import('@/data/en/image-converter/heic-to-jpg.json'); break
+            case 'heic-to-png': data = await import('@/data/en/image-converter/heic-to-png.json'); break
+            case 'heic-to-webp': data = await import('@/data/en/image-converter/heic-to-webp.json'); break
+          }
+          if (data) {
+            return data.default || data
+          }
+        } catch (fallbackError) {
+          return null
+        }
+      }
+      return null
+    }
+    
+    return null
+  } catch (error) {
+    return null
+  }
+}
+
 export async function getSeoContent(tool: string, slug: string, locale: string = 'en') {
   try {
     if (tool === 'image-compressor' || tool === 'image-compression') {
@@ -127,6 +320,12 @@ export async function getSeoContent(tool: string, slug: string, locale: string =
       return null;
     }
     if (tool === 'image-converter' || tool === 'image-conversion') {
+      // 优先尝试加载独立的 JSON 文件
+      const independentData = await loadToolJsonFile(locale, 'image-converter', slug);
+      if (independentData) {
+        return independentData;
+      }
+      // 如果独立文件不存在，回退到旧的加载方式（向后兼容）
       const data = await loadJsonData(locale, 'image-converter.json');
       if (data && data[slug]) {
         return data[slug];
@@ -148,8 +347,9 @@ export async function getAllSlugs(tool: string, locale: string = 'en') {
       return data ? Object.keys(data) : [];
     }
     if (tool === 'image-converter' || tool === 'image-conversion') {
-      const data = await loadJsonData(locale, 'image-converter.json');
-      return data ? Object.keys(data) : [];
+      // 对于 image-converter，使用预定义的 slug 列表
+      // 这样可以避免加载整个 JSON 文件，只返回可用的工具列表
+      return IMAGE_CONVERTER_SLUGS;
     }
     return [];
   } catch (error) {

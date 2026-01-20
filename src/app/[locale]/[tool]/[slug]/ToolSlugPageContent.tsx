@@ -6,7 +6,14 @@ import Footer from '@/components/Footer'
 import Breadcrumb from '@/components/Breadcrumb'
 import ImageCompressor from '@/components/ImageCompressor'
 import ImageConverter from '@/components/ImageConverter'
+import Intro from '@/components/blocks/Intro'
+import Features from '@/components/blocks/Features'
+import PerformanceMetrics from '@/components/blocks/PerformanceMetrics'
+import HowToUse from '@/components/blocks/HowToUse'
+import Comparison from '@/components/blocks/Comparison'
+import Scenarios from '@/components/blocks/Scenarios'
 import Rating from '@/components/blocks/Rating'
+import FAQ from '@/components/blocks/FAQ'
 import React from 'react'
 
 interface ToolSlugPageContentProps {
@@ -20,6 +27,28 @@ function extractPageTitle(h1: string): string {
   return h1.replace(/<[^>]*>/g, '').trim()
 }
 
+// 提取简化的核心标题（用于面包屑和菜单，去掉修饰词如 "Unlimited"）
+function extractSimpleTitle(h1: string): string {
+  const cleaned = h1.replace(/<[^>]*>/g, '').trim()
+  
+  // 移除常见的修饰词
+  const modifiers = [
+    /^Unlimited\s+/i,
+    /^Free\s+/i,
+    /^Professional\s+/i,
+    /^Advanced\s+/i,
+    /^Premium\s+/i,
+    /\s*:\s*.*$/i, // 移除冒号后的所有内容
+  ]
+  
+  let result = cleaned
+  for (const pattern of modifiers) {
+    result = result.replace(pattern, '')
+  }
+  
+  return result.trim() || cleaned
+}
+
 // 智能识别核心关键词并应用渐变
 function renderH1WithGradient(h1: string): React.ReactElement {
   if (h1.includes('<span')) {
@@ -28,7 +57,7 @@ function renderH1WithGradient(h1: string): React.ReactElement {
 
   const keywordPatterns = [
     { pattern: /\d+\s*(KB|MB|kb|mb)/gi, name: 'size' },
-    { pattern: /\b(JPG|JPEG|PNG|WebP|BMP|GIF|Image|Images)\b/gi, name: 'format' },
+    { pattern: /\b(HEIC|HEIF|JPG|JPEG|PNG|WebP|BMP|GIF|Image|Images)\b/gi, name: 'format' },
     { pattern: /\b(Compressor|Compression|Tool|Converter|Optimizer|Reducer)\b/gi, name: 'tool' },
   ]
 
@@ -90,13 +119,24 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
     const breadcrumbT = t?.breadcrumb || { home: 'Home', imageCompression: 'Image Compression', imageConverter: 'Image Converter' }
 
     // 默认内容（如果没有提供，使用翻译内容）
-    const whyToolazeTitle = content.sections?.whyToolaze?.title || toolTranslations?.whyToolaze?.title || (isConverter 
+    // 优先使用 JSON 中的 intro.title 和 intro.content
+    const whyToolazeTitle = content.intro?.title || content.sections?.whyToolaze?.title || toolTranslations?.whyToolaze?.title || (isConverter 
       ? "Convert Images Without Quality Loss"
       : "Stop Losing Time on Slow Image Compression Tools")
     const whyToolazeDesc = content.intro?.content || content.sections?.whyToolaze?.description || toolTranslations?.whyToolaze?.desc || (isConverter
       ? "Convert images between JPG, PNG, and WebP formats instantly. Our browser-based converter processes images locally, ensuring complete privacy and fast conversion. Perfect for web developers, designers, and content creators."
       : "Traditional image compressors are slow, limit file counts, and often compromise quality. Toolaze compresses images with precise size control, maintaining visual quality while dramatically reducing file sizes.")
-    const whyToolazeFeatures = content.sections?.whyToolaze?.features || (isConverter
+    // 优先使用 JSON 中的 specs 字段，转换为特性卡片格式（支持 6 个特性点）
+    // 如果 intro.features 存在，优先使用；否则从 specs 转换；最后使用默认特性
+    const whyToolazeFeatures = content.intro?.features || content.sections?.whyToolaze?.features || (content.specs ? [
+      { icon: '⚡', title: 'Fast Conversion', desc: content.specs.engine },
+      { icon: '📦', title: 'Batch Processing', desc: content.specs.limit },
+      { icon: '🔒', title: 'Private & Secure', desc: content.specs.privacy },
+      ...(content.specs.logic ? [{ icon: '🎯', title: 'Quality Preservation', desc: content.specs.logic }] : []),
+      // 添加更多通用特性点，确保有 6 个特性
+      { icon: '🌐', title: 'Browser-Based', desc: 'No software installation required. Works directly in your browser.' },
+      { icon: '💎', title: '100% Free', desc: 'Completely free forever. No ads, no hidden costs.' }
+    ].slice(0, 6) : (isConverter
       ? [
           { icon: '📂', title: toolTranslations?.features?.batch?.title || 'Batch Processing', desc: toolTranslations?.features?.batch?.desc || 'Convert up to 100 images at once' },
           { icon: '🎯', title: toolTranslations?.features?.formats?.title || 'Multiple Formats', desc: toolTranslations?.features?.formats?.desc || 'JPG, PNG, WebP, and HEIC support' },
@@ -106,7 +146,7 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
           { icon: '📂', title: toolTranslations?.features?.batch?.title || 'Batch Processing', desc: toolTranslations?.features?.batch?.desc || 'Compress up to 100 images at once' },
           { icon: '🎯', title: toolTranslations?.features?.precise?.title || 'Precise Size Control', desc: toolTranslations?.features?.precise?.desc || 'Set exact target size in KB or MB' },
           { icon: '💎', title: toolTranslations?.features?.free?.title || '100% Free', desc: toolTranslations?.features?.free?.desc || 'No ads forever.' }
-        ])
+        ]))
 
     // 根据工具类型设置不同的默认步骤（使用翻译）
     const defaultUploadDesc = isConverter 
@@ -119,7 +159,7 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
       ? (toolTranslations?.howToUse?.step3?.desc || 'Download individual converted images or all at once as a ZIP file. Fast and efficient.')
       : (toolTranslations?.howToUse?.step3?.desc || 'Download individual compressed images or all at once as a ZIP file. Fast and efficient.')
     
-    const howToUseSteps = content.sections?.howToUse?.steps || [
+    const howToUseSteps = content.howToUse?.steps || content.sections?.howToUse?.steps || [
       { title: toolTranslations?.howToUse?.step1?.title || 'Upload Images', desc: defaultUploadDesc },
       defaultSecondStep,
       { title: toolTranslations?.howToUse?.step3?.title || 'Download Results', desc: defaultDownloadDesc }
@@ -137,8 +177,8 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
           { icon: '📱', title: toolTranslations?.scenarios?.creators?.title || 'For Content Creators', description: toolTranslations?.scenarios?.creators?.desc || 'Prepare images for social media and blogs. Batch process multiple images quickly without quality loss.' }
         ])
 
-    const comparisonData = content.sections?.comparison || content.compare ? {
-      toolaze: content.compare?.toolaze || content.sections?.comparison?.toolaze || (isConverter
+    const comparisonData = content.comparison || content.sections?.comparison || content.compare ? {
+      toolaze: content.compare?.toolaze || content.comparison?.toolaze || content.sections?.comparison?.toolaze || (isConverter
         ? [
             toolTranslations?.comparison?.features?.batch100 || 'Batch up to 100 images',
             toolTranslations?.comparison?.features?.multipleFormat || 'Multiple format support',
@@ -153,7 +193,7 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
             toolTranslations?.comparison?.features?.privateFree || '100% private & free',
             toolTranslations?.comparison?.features?.noSignup || 'No sign-up required'
           ].filter(Boolean).join(', ')),
-      others: content.compare?.others || content.sections?.comparison?.others || [
+      others: content.compare?.others || content.comparison?.others || content.sections?.comparison?.others || [
         toolTranslations?.comparison?.features?.limitedBatch || 'Limited batch size',
         toolTranslations?.comparison?.features?.noPreciseControl || 'No precise control',
         toolTranslations?.comparison?.features?.formatRestrictions || 'Format restrictions',
@@ -164,7 +204,7 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
 
     // 构建面包屑导航
     const toolLabel = isConverter ? breadcrumbT.imageConverter : breadcrumbT.imageCompression
-    const pageTitle = content.hero?.h1 ? extractPageTitle(content.hero.h1) : (toolTranslations?.title || 'Page')
+    const pageTitle = content.hero?.h1 ? extractSimpleTitle(content.hero.h1) : (toolTranslations?.title || 'Page')
     const breadcrumbItems = [
       { label: breadcrumbT.home, href: locale === 'en' ? '/' : `/${locale}` },
       { label: toolLabel, href: `/${locale === 'en' ? '' : locale + '/'}${tool}` },
@@ -178,12 +218,24 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
       const toolData = await getSeoContent(tool, s, locale)
       return {
         slug: s,
-        title: toolData?.hero?.h1 ? extractPageTitle(toolData.hero.h1) : s,
-        description: toolData?.hero?.desc || toolData?.hero?.sub || toolData?.metadata?.description || '',
+        title: toolData?.hero?.h1 ? extractSimpleTitle(toolData.hero.h1) : s,
+        description: toolData?.hero?.desc || toolData?.metadata?.description || '',
         href: `/${locale}/${tool}/${s}`,
       }
     }))
     const filteredRecommendedTools = recommendedTools.filter(t => t.title && t.href)
+
+    // 获取板块顺序配置（优先使用 JSON 中的 sectionsOrder，否则使用默认顺序）
+    const defaultSectionsOrder = [
+      'howToUse',
+      'intro',
+      'performanceMetrics',
+      'comparison',
+      'scenes',
+      'rating',
+      'faq'
+    ]
+    const sectionsOrder = content.sectionsOrder || defaultSectionsOrder
 
     return (
       <>
@@ -192,27 +244,48 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
         <Breadcrumb items={breadcrumbItems} />
 
         <main className="min-h-screen bg-[#F8FAFF]">
-          {/* 1. Hero 板块 - 包含标题、描述、工具卡片和信任条 */}
-          <header className="bg-[#F8FAFF] pb-12 px-6">
-            <div className="max-w-4xl mx-auto text-center pt-8 mb-12">
-              <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 leading-tight text-slate-900">
+          {/* 1. Hero 板块 - 固定在最前面，不参与动态顺序 */}
+          <header className="bg-[#F8FAFF] pb-8 md:pb-12 px-6">
+            <div className="max-w-4xl mx-auto text-center pt-6 md:pt-8 mb-6 md:mb-12">
+              <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-3 md:mb-4 leading-tight text-slate-900">
                 {content.hero?.h1 ? (
                   renderH1WithGradient(content.hero.h1)
                 ) : (
                   <>Free <span className="text-gradient">{isConverter ? 'Image Converter' : 'Image Compressor'}</span></>
                 )}
               </h1>
-              <p className="desc-text text-lg md:text-xl max-w-2xl mx-auto">
-                {content.hero?.sub && content.hero?.desc ? (
-                  <>
-                    {content.hero.sub}. {content.hero.desc}
-                  </>
-                ) : (
-                  content.hero?.desc || content.hero?.sub || (isConverter
-                    ? 'Convert images between JPG, PNG, and WebP formats. Batch convert up to 100 images. Fast, private, 100% free. No sign-up required.'
-                    : 'Batch compress up to 100 images at once. Set exact target size. Fast, private, 100% free. No sign-up required.')
-                )}
-              </p>
+              {content.hero?.desc && (
+                <p className="text-base md:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+                  {content.hero.desc}
+                </p>
+              )}
+              {!content.hero?.desc && (
+                <p className="text-base md:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+                  {isConverter
+                    ? (() => {
+                        // 根据 slug 生成默认描述
+                        if (slug.includes('heic-to-jpg')) {
+                          return 'Convert HEIC to JPG online for free. Simply drop your HEIC images below to convert them to JPG in seconds.'
+                        } else if (slug.includes('heic-to-png')) {
+                          return 'Convert HEIC to PNG online for free. Simply drop your HEIC images below to convert them to PNG in seconds.'
+                        } else if (slug.includes('png-to-jpg')) {
+                          return 'Convert PNG to JPG online for free. Simply drop your PNG images below to convert them to JPG in seconds.'
+                        } else if (slug.includes('jpg-to-png')) {
+                          return 'Convert JPG to PNG online for free. Simply drop your JPG images below to convert them to PNG in seconds.'
+                        } else if (slug.includes('webp-to-jpg')) {
+                          return 'Convert WebP to JPG online for free. Simply drop your WebP images below to convert them to JPG in seconds.'
+                        } else if (slug.includes('webp-to-png')) {
+                          return 'Convert WebP to PNG online for free. Simply drop your WebP images below to convert them to PNG in seconds.'
+                        } else if (slug.includes('png-to-webp')) {
+                          return 'Convert PNG to WebP online for free. Simply drop your PNG images below to convert them to WebP in seconds.'
+                        } else if (slug.includes('jpg-to-webp')) {
+                          return 'Convert JPG to WebP online for free. Simply drop your JPG images below to convert them to WebP in seconds.'
+                        }
+                        return 'Convert images online for free. Simply drop your images below to convert them in seconds.'
+                      })()
+                    : 'Compress images online for free. Simply drop your images below to compress them in seconds.'}
+                </p>
+              )}
             </div>
             {tool === 'image-converter' || tool === 'image-conversion' ? (
               <ImageConverter initialFormat={slug} />
@@ -221,190 +294,102 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
             )}
           </header>
 
-          {/* 2. Why Toolaze 板块 */}
-          <section className="bg-white py-24 px-6 border-t border-indigo-50/50">
-            <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-              <div className="text-left space-y-6">
-                <span className="text-xs font-bold text-purple-500 uppercase tracking-widest bg-purple-50 px-3 py-1 rounded-full">{toolTranslations?.whyToolaze?.badge || 'Why Toolaze?'}</span>
-                <h2 className="text-3xl font-extrabold text-slate-900 leading-tight">{whyToolazeTitle}</h2>
-                <p className="desc-text text-lg">{whyToolazeDesc}</p>
-              </div>
-              <div className="grid gap-4">
-                {whyToolazeFeatures.map((feature: any, idx: number) => (
-                  <div key={idx} className="bg-[#F8FAFF] p-6 rounded-3xl border border-indigo-50 flex items-center gap-4">
-                    <div className={`w-12 h-12 rounded-2xl flex items-center justify-center text-2xl ${
-                      idx === 0 ? 'bg-indigo-100' : idx === 1 ? 'bg-purple-100' : 'bg-blue-100'
-                    }`}>
-                      {typeof feature === 'object' ? feature.icon || '📂' : '📂'}
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-slate-800">
-                        {typeof feature === 'object' ? feature.title : feature}
-                      </h4>
-                      <p className="text-xs text-slate-500">
-                        {typeof feature === 'object' ? feature.desc : ''}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
+          {/* 动态渲染板块 - 根据 sectionsOrder 配置 */}
+          {(() => {
+            // 定义各个板块的渲染函数
+            const sectionRenderers: Record<string, (bgClass: string, index: number) => React.ReactNode> = {
+              intro: (bgClass: string) => (
+                <Intro
+                  key="intro"
+                  title={whyToolazeTitle}
+                  description={whyToolazeDesc}
+                  bgClass={bgClass}
+                />
+              ),
+              features: (bgClass: string) => {
+                // 优先使用独立的 features 字段，向后兼容 intro.features
+                const featuresData = content.features?.items || content.intro?.features || whyToolazeFeatures
+                return (
+                  <Features
+                    key="features"
+                    title={content.features?.title || 'Key Features'}
+                    features={featuresData}
+                    bgClass={bgClass}
+                  />
+                )
+              },
+              performanceMetrics: (bgClass: string) => (
+                <PerformanceMetrics
+                  key="performanceMetrics"
+                  title={content.performanceMetrics?.title || content.sections?.performanceMetrics?.title}
+                  metrics={content.performanceMetrics?.metrics || content.sections?.performanceMetrics?.metrics}
+                  bgClass={bgClass}
+                />
+              ),
+              howToUse: (bgClass: string) => (
+                <HowToUse
+                  key="howToUse"
+                  title={content.howToUse?.title || content.sections?.howToUse?.title || toolTranslations?.howToUse?.title}
+                  steps={howToUseSteps}
+                  bgClass={bgClass}
+                />
+              ),
+              comparison: (bgClass: string) => (
+                <Comparison
+                  key="comparison"
+                  compare={comparisonData}
+                  title={content.comparison?.title || toolTranslations?.comparison?.title}
+                  labels={{
+                    smartChoice: toolTranslations?.comparison?.smartChoice,
+                    toolaze: toolTranslations?.comparison?.toolaze,
+                    vs: toolTranslations?.comparison?.vs,
+                    otherTools: toolTranslations?.comparison?.otherTools,
+                  }}
+                  bgClass={bgClass}
+                />
+              ),
+              scenes: (bgClass: string) => (
+                <Scenarios
+                  key="scenes"
+                  title={toolTranslations?.scenarios?.title}
+                  scenarios={scenariosData}
+                  bgClass={bgClass}
+                />
+              ),
+              rating: (bgClass: string) => (
+                <Rating
+                  key="rating"
+                  title={content.rating?.title || t?.common?.rating?.title}
+                  rating={t?.common?.rating?.rating}
+                  description={content.rating?.text || t?.common?.rating?.description}
+                  bgClass={bgClass}
+                />
+              ),
+              faq: (bgClass: string) => (
+                <FAQ
+                  key="faq"
+                  title={toolTranslations?.faq?.title}
+                  items={content.faq}
+                  bgClass={bgClass}
+                />
+              ),
+            }
 
-          {/* 3. How To Use 板块 */}
-          <section className="py-24 px-6 bg-[#F8FAFF]">
-            <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-extrabold text-center text-slate-900 mb-20">
-                {toolTranslations?.howToUse?.title ? (
-                  toolTranslations.howToUse.title.includes('Toolaze') ? (
-                    <>
-                      {toolTranslations.howToUse.title.split('Toolaze')[0]}<span className="text-indigo-600">Toolaze</span>{toolTranslations.howToUse.title.split('Toolaze')[1]}
-                    </>
-                  ) : (
-                    toolTranslations.howToUse.title
-                  )
-                ) : (
-                  <>How to Use <span className="text-indigo-600">Toolaze</span>?</>
-                )}
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-16 text-center">
-                {howToUseSteps.map((step: any, idx: number) => (
-                  <div key={idx} className="group">
-                    <div className="w-20 h-20 mb-8 mx-auto rounded-full bg-gradient-brand flex items-center justify-center text-white shadow-xl shadow-indigo-100 ring-4 ring-white text-2xl font-bold">
-                      {idx + 1}
-                    </div>
-                    <h3 className="text-xl font-bold text-slate-800 mb-2">
-                      {typeof step === 'object' ? step.title : step}
-                    </h3>
-                    <p className="desc-text max-w-[240px] mx-auto">
-                      {typeof step === 'object' ? step.desc : ''}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
+            // 根据 sectionsOrder 动态渲染板块，并处理背景色交替
+            // Hero 是 bg-[#F8FAFF]，所以第一个动态板块应该是 bg-white
+            return sectionsOrder.map((sectionKey: string, index: number) => {
+              const renderer = sectionRenderers[sectionKey]
+              if (!renderer) return null
+              
+              // 背景色交替：index 0 = white, index 1 = #F8FAFF, index 2 = white, ...
+              const bgClass = index % 2 === 0 ? 'bg-white' : 'bg-[#F8FAFF]'
+              return renderer(bgClass, index)
+            }).filter(Boolean)
+          })()}
 
-          {/* 4. Performance Metrics 板块 */}
-          {content.sections?.performanceMetrics && (
-            <section className="py-24 px-6 bg-white">
-              <div className="max-w-4xl mx-auto">
-                <h2 className="text-3xl font-extrabold text-center text-slate-900 mb-12">
-                  {content.sections.performanceMetrics.title || 'Performance Metrics'}
-                </h2>
-                <div className="bg-[#F8FAFF] rounded-3xl border border-indigo-50 overflow-hidden">
-                  <div className="overflow-x-auto">
-                    <table className="w-full">
-                      <thead>
-                        <tr className="bg-indigo-50 border-b border-indigo-100">
-                          <th className="px-6 py-4 text-left text-sm font-bold text-slate-900 uppercase tracking-wider">Performance Metric</th>
-                          <th className="px-6 py-4 text-left text-sm font-bold text-slate-900 uppercase tracking-wider">Toolaze Specification</th>
-                        </tr>
-                      </thead>
-                      <tbody className="divide-y divide-indigo-50">
-                        {content.sections.performanceMetrics.metrics?.map((metric: any, idx: number) => (
-                          <tr key={idx} className="hover:bg-white/50 transition-colors">
-                            <td className="px-6 py-4 text-sm font-bold text-slate-700 whitespace-nowrap">
-                              {metric.label}
-                            </td>
-                            <td className="px-6 py-4 text-sm text-slate-600">
-                              {metric.value}
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </section>
-          )}
-
-          {/* 5. Comparison 板块 */}
-          {comparisonData && (
-            <section className="py-24 px-6 bg-[#F8FAFF] relative overflow-hidden">
-              <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
-                <div className="md:col-span-5 relative order-1">
-                  <div className="relative bg-white rounded-[2rem] p-10 shadow-2xl shadow-indigo-500/20 border border-white">
-                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-brand text-white text-[10px] font-black uppercase px-4 py-1.5 rounded-full shadow-lg">{toolTranslations?.comparison?.smartChoice || 'Smart Choice'}</div>
-                    <h3 className="font-bold text-slate-900 text-xl mb-8 border-b border-indigo-50 pb-4">{toolTranslations?.comparison?.toolaze || 'Toolaze 💎'}</h3>
-                    <ul className="space-y-3 text-sm text-slate-700">
-                      {comparisonData.toolaze.split(', ').map((item: string, idx: number) => (
-                        <li key={idx} className="flex items-center gap-2">
-                          <span className="text-green-600 font-bold">✅</span>
-                          <span>{item.trim()}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-                <div className="hidden md:flex md:col-span-2 justify-center order-2 font-black text-indigo-200 text-2xl">{toolTranslations?.comparison?.vs || 'VS'}</div>
-                <div className="md:col-span-5 bg-white/60 rounded-3xl p-8 border border-slate-200/60 opacity-80 grayscale order-3">
-                  <h3 className="font-bold text-slate-500 text-lg mb-8 border-b border-slate-200 pb-4">{toolTranslations?.comparison?.otherTools || 'Other Tools'}</h3>
-                  <ul className="space-y-3 text-sm text-slate-500">
-                    {comparisonData.others.split(', ').map((item: string, idx: number) => (
-                      <li key={idx} className="flex items-center gap-2">
-                        <span className="text-red-500 font-bold">❌</span>
-                        <span>{item.trim()}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </section>
-          )}
-
-          {/* 6. Scenarios 板块 */}
-          {scenariosData && scenariosData.length > 0 && (
-            <section className="py-24 px-6 bg-white">
-              <div className="max-w-6xl mx-auto">
-                <h2 className="text-3xl font-extrabold text-center text-slate-900 mb-12">{toolTranslations?.scenarios?.title || 'Use Cases'}</h2>
-                <div className={`grid grid-cols-1 gap-6 ${
-                  scenariosData.length === 2 
-                    ? 'md:grid-cols-2 md:max-w-4xl md:mx-auto md:justify-center' 
-                    : 'md:grid-cols-3'
-                }`}>
-                {scenariosData.map((scenario: any, idx: number) => (
-                  <div key={idx} className="bg-white p-8 rounded-3xl border border-indigo-50 shadow-sm">
-                    <div className={`w-12 h-12 rounded-2xl flex items-center justify-center text-2xl mb-4 ${
-                      idx === 0 ? 'bg-indigo-100' : idx === 1 ? 'bg-purple-100' : 'bg-blue-100'
-                    }`}>
-                      {scenario.icon || '💻'}
-                    </div>
-                    <h3 className="text-xl font-bold text-slate-800 mb-3">
-                      {scenario.title || scenario.title}
-                    </h3>
-                    <p className="desc-text">
-                      {scenario.description || scenario.desc || ''}
-                    </p>
-                  </div>
-                ))}
-                </div>
-              </div>
-            </section>
-          )}
-
-          {/* 7. FAQ 板块 */}
-          {content.faq && Array.isArray(content.faq) && content.faq.length > 0 && (
-            <section className="py-24 px-6 bg-[#F8FAFF]">
-              <div className="max-w-3xl mx-auto space-y-4">
-                <h2 className="text-3xl font-extrabold text-center text-slate-900 mb-12">{toolTranslations?.faq?.title || 'Frequently Asked Questions'}</h2>
-                {content.faq.map((item: any, idx: number) => (
-                  <details key={idx} className="bg-[#F8FAFF] rounded-2xl p-6 border border-indigo-50">
-                    <summary className="font-bold text-slate-800 cursor-pointer flex items-center justify-between">
-                      {item.q || item.question}
-                      <span className="text-indigo-600 text-xl">+</span>
-                    </summary>
-                    <p className="desc-text mt-4">{item.a || item.answer}</p>
-                  </details>
-                ))}
-              </div>
-            </section>
-          )}
-
-          {/* 8. Recommended Tools 板块 */}
+          {/* 9. Recommended Tools 板块 */}
           {filteredRecommendedTools.length > 0 && (
-            <section className="py-24 px-6 bg-white">
+            <section className="py-24 px-6 bg-[#F8FAFF]">
               <div className="max-w-6xl mx-auto">
                 <h2 className="text-3xl font-extrabold text-center text-slate-900 mb-12">
                   {isConverter 
@@ -439,12 +424,6 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
               </div>
             </section>
           )}
-
-          {/* 9. Rating 板块 */}
-          <Rating 
-            rating={t?.common?.rating?.rating}
-            description={content.rating?.text || t?.common?.rating?.description}
-          />
         </main>
 
         <Footer />
