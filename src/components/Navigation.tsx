@@ -115,7 +115,9 @@ export default function Navigation() {
               }
             })
           )
-          data['image-compressor'] = compressorItems.filter(item => item && item.title && item.href)
+          data['image-compressor'] = compressorItems.filter((item): item is { slug: string; title: string; href: string } => 
+            item !== null && item.title !== undefined && item.href !== undefined
+          )
         } else {
           data['image-compressor'] = []
         }
@@ -147,7 +149,9 @@ export default function Navigation() {
             }
           })
         )
-        data['image-converter'] = converterItems.filter(item => item && item.title && item.href)
+        data['image-converter'] = converterItems.filter((item): item is { slug: string; title: string; href: string } => 
+          item !== null && item.title !== undefined && item.href !== undefined
+        )
       } catch (error) {
         data['image-converter'] = []
       }

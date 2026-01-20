@@ -74,20 +74,27 @@ if (fs.existsSync(packageJsonPath)) {
 }
 
 // 4. 检查是否有 TypeScript 错误（可选）
+// 注意：在 CI/CD 环境中跳过构建测试，避免递归构建
 console.log('\n4. 运行构建测试...');
-const { execSync } = require('child_process');
-try {
-  console.log('   正在测试构建...');
-  execSync('npm run build', { 
-    stdio: 'pipe',
-    cwd: process.cwd(),
-    timeout: 300000 // 5 分钟超时
-  });
-  console.log('   ✅ 构建测试通过');
-} catch (error) {
-  errors.push('❌ 构建测试失败，请检查构建错误');
-  hasError = true;
-  console.log('   ❌ 构建失败');
+const isCI = process.env.CI === 'true' || process.env.CF_PAGES === '1' || process.env.VERCEL === '1';
+if (isCI) {
+  console.log('   ⏭️  在 CI/CD 环境中跳过构建测试（避免递归）');
+} else {
+  const { execSync } = require('child_process');
+  try {
+    console.log('   正在测试构建...');
+    // 使用 SKIP_PREBUILD 环境变量来避免递归
+    execSync('SKIP_PREBUILD=true npm run build', { 
+      stdio: 'pipe',
+      cwd: process.cwd(),
+      timeout: 300000 // 5 分钟超时
+    });
+    console.log('   ✅ 构建测试通过');
+  } catch (error) {
+    errors.push('❌ 构建测试失败，请检查构建错误');
+    hasError = true;
+    console.log('   ❌ 构建失败');
+  }
 }
 
 // 5. 检查输出目录
