@@ -1,7 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // 仅在构建时启用静态导出，开发模式下禁用
-  ...(process.env.NODE_ENV === 'production' ? { output: 'export' } : {}),
+  // 强制启用静态导出（Cloudflare Pages 需要）
+  // Cloudflare Pages 使用静态文件托管，必须启用静态导出
+  output: 'export',
   images: {
     unoptimized: true, // 静态导出必须禁用 Next.js 的默认图片优化
   },
