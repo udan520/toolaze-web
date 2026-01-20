@@ -12,7 +12,9 @@
     "lint": "next lint",
     "sync-locales": "tsx scripts/sync-locales.ts",
     "sync-individual": "tsx scripts/sync-individual-locales.ts",
-    "sync-exact": "tsx scripts/sync-exact-copy.ts"
+    "sync-exact": "tsx scripts/sync-exact-copy.ts",
+    "pre-deploy": "node scripts/pre-deploy-check.js",
+    "prebuild": "npm run pre-deploy"
   },
   "dependencies": {
     "@next/third-parties": "^16.1.2",
