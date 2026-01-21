@@ -62,8 +62,25 @@ export default async function HomePage() {
     toolList = []
   }
 
+  // Organization Schema for Google Search Logo
+  // Google requires logo to be at least 112x112px, using 192x192px logo
+  const organizationSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Toolaze',
+    url: 'https://toolaze.com',
+    logo: 'https://toolaze.com/web-app-manifest-192x192.png',
+    sameAs: [],
+    description: 'Free AI Image Compressor & Local Tools - Professional image processing tools that run entirely in your browser.',
+  }
+
   return (
     <>
+      {/* Organization Schema for Google Search Logo */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
       <Navigation />
 
       <header className="pt-10 pb-20 px-6">

@@ -37,9 +37,27 @@ export default function RootLayout({
 }: {
   children: ReactNode
 }) {
+  // Organization Schema for Google Search Logo
+  const organizationSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Toolaze',
+    url: 'https://toolaze.com',
+    logo: 'https://toolaze.com/web-app-manifest-192x192.png',
+    sameAs: [],
+    description: 'Free AI Image Compressor & Local Tools - Professional image processing tools that run entirely in your browser.',
+  }
+
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body className="flex flex-col min-h-screen overflow-x-hidden font-sans antialiased" suppressHydrationWarning>
+        {/* Organization Schema for Google Search Logo */}
+        <Script
+          id="organization-schema"
+          type="application/ld+json"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
         {/* 在页面解析时立即设置正确的 lang 属性 */}
         <Script
           id="set-html-lang"
