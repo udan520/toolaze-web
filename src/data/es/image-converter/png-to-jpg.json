@@ -1,45 +1,193 @@
 {
+  "in_menu": true,
   "metadata": {
-    "title": "Convertir PNG a JPG - Convertidor de Imágenes Online Gratis | Toolaze",
-    "description": "Convierte imágenes PNG a formato JPG instantáneamente. Conversión por lotes de hasta 100 imágenes. Reduce el tamaño del archivo mientras mantiene la calidad. 100% gratis y privado."
+    "title": "Convertir PNG a JPG Online (Gratis, Lote y Sin Anuncios) - Toolaze",
+    "description": "¿Cómo convertir PNG a JPG? 1. Subir PNG 2. Convertir automáticamente 3. Descargar JPG. Reducir tamaño de archivo en 70% manteniendo calidad. Seguro y Privado."
   },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
   "hero": {
-    "h1": "Convertidor PNG a JPG",
-    "sub": "Reducir Tamaño de Archivo",
-    "desc": "Convierte imágenes PNG a formato JPG para reducir significativamente el tamaño del archivo. Perfecto para optimización web y ahorro de almacenamiento."
+    "h1": "Convertidor de PNG a JPG",
+    "desc": "Convierte PNG a JPG online gratis. Simplemente arrastra tus imágenes PNG aquí para convertirlas a JPG en segundos."
   },
   "intro": {
-    "title": "Optimiza Tus Imágenes",
-    "content": "El formato JPG ofrece tamaños de archivo mucho más pequeños en comparación con PNG, lo que lo hace ideal para uso web y almacenamiento. Nuestro convertidor mantiene la calidad visual mientras reduce drásticamente el tamaño del archivo."
+    "title": "¿Por qué convertir PNG a JPG? Optimizar tamaño de archivo y rendimiento",
+    "content": [
+      {
+        "title": "PNG vs JPG: Entender las compensaciones",
+        "text": "PNG (Portable Network Graphics) es un formato sin pérdidas que preserva calidad perfecta de imagen y admite transparencia completa con canales alfa, lo que lo hace ideal para gráficos, logotipos e imágenes que requieren precisión perfecta a nivel de píxel. Sin embargo, los archivos PNG son significativamente más grandes, a menudo 2-5 veces más grandes que los archivos JPG equivalentes, lo que puede ralentizar los tiempos de carga del sitio web, consumir espacio de almacenamiento excesivo y aumentar los costos de ancho de banda. JPG (JPEG) usa compresión con pérdidas optimizada para fotografías e imágenes complejas, logrando tamaños de archivo 50-80% más pequeños mientras mantiene calidad visualmente aceptable para la mayoría de los casos de uso. JPG no admite transparencia, pero para fotografías e imágenes sin fondos transparentes, JPG ofrece el equilibrio perfecto entre calidad y tamaño de archivo."
+      },
+      {
+        "title": "¿Por qué convertir PNG a JPG?",
+        "text": "Convertir PNG a JPG se vuelve esencial cuando necesitas optimizar el rendimiento del sitio web y reducir los tiempos de carga, quieres ahorrar espacio de almacenamiento significativo para grandes colecciones de imágenes, necesitas reducir los costos de ancho de banda para alojamiento web o almacenamiento en la nube, o estás trabajando con fotografías que no requieren transparencia. El formato JPG es universalmente compatible en todas las plataformas y dispositivos, lo que lo convierte en la opción estándar para imágenes web, cargas en redes sociales y fotografía digital donde la optimización del tamaño de archivo importa más que la precisión perfecta a nivel de píxel."
+      }
+    ]
+  },
+  "features": {
+    "title": "Capacidades de conversión avanzadas",
+    "items": [
+      {
+        "icon": "📉",
+        "iconType": "optimization",
+        "title": "Reducción dramática del tamaño de archivo",
+        "desc": "Transforma tus imágenes PNG al formato JPG y reduce los tamaños de archivo en 50-80% mientras mantienes excelente calidad visual para fotografías e imágenes complejas."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Seguridad total de datos",
+        "desc": "Cada conversión ocurre completamente dentro de tu navegador: tus archivos PNG nunca viajan a servidores externos, garantizando privacidad y seguridad completas."
+      },
+      {
+        "icon": "📦",
+        "iconType": "batch",
+        "title": "Soporte de conversión masiva",
+        "desc": "Maneja bibliotecas completas de imágenes de hasta 100 archivos PNG a la vez, convirtiéndolos todos al formato JPG optimizado en una sola operación."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Velocidad de procesamiento instantánea",
+        "desc": "Nuestro motor impulsado por navegador convierte PNG a JPG inmediatamente sin retrasos del servidor, colas de subida o tiempos de espera de descarga."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Completamente gratis siempre",
+        "desc": "Accede a conversiones ilimitadas de PNG a JPG sin costo: sin niveles premium, sin tarifas de suscripción, sin interrupciones publicitarias nunca."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "No se requiere configuración",
+        "desc": "Ejecuta todo directamente en tu navegador web usando procesamiento avanzado del lado del cliente: no se requiere instalación de software ni extensiones del navegador."
+      }
+    ]
   },
   "specs": {
-    "engine": "Motor de Conversión de Formato",
-    "limit": "Lote de hasta 100 imágenes",
-    "logic": "Conversión Optimizada de Calidad",
-    "privacy": "Procesamiento Local del Navegador"
+    "engine": "Motor Canvas API - Procesamiento nativo del navegador",
+    "limit": "Lote 100+ imágenes - Tamaños de archivo ilimitados",
+    "logic": "Conversión optimizada de calidad (Compresión inteligente)",
+    "privacy": "100% del lado del cliente (Procesamiento local del navegador)"
+  },
+  "performanceMetrics": {
+    "title": "Especificaciones técnicas",
+    "metrics": [
+      {
+        "label": "Formato de entrada",
+        "value": "PNG (Portable Network Graphics)"
+      },
+      {
+        "label": "Formato de salida",
+        "value": "JPG/JPEG (Joint Photographic Experts Group)"
+      },
+      {
+        "label": "Tamaño máximo de lote",
+        "value": "100 imágenes por sesión"
+      },
+      {
+        "label": "Límite de tamaño de archivo",
+        "value": "Ilimitado (Limitado por memoria del navegador)"
+      },
+      {
+        "label": "Tipo de compresión",
+        "value": "Con pérdidas (Optimizado para reducción de tamaño de archivo)"
+      },
+      {
+        "label": "Reducción de tamaño de archivo",
+        "value": "50-80% más pequeño que PNG original"
+      },
+      {
+        "label": "Ubicación de procesamiento",
+        "value": "100% del lado del cliente (Canvas API del navegador)"
+      },
+      {
+        "label": "Datos EXIF",
+        "value": "Preservados durante la conversión"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Cómo convertir PNG a JPG",
+    "steps": [
+      {
+        "title": "Sube tus archivos PNG",
+        "desc": "Arrastra y suelta tus imágenes PNG en la interfaz del convertidor o haz clic para seleccionar múltiples archivos PNG de tu computadora."
+      },
+      {
+        "title": "Conversión automática a JPG",
+        "desc": "Nuestro convertidor procesa automáticamente tus archivos PNG y los transforma al formato JPG optimizado con compresión inteligente."
+      },
+      {
+        "title": "Descarga archivos JPG optimizados",
+        "desc": "Descarga tus archivos JPG convertidos instantáneamente. Cada JPG está optimizado para tamaño de archivo más pequeño mientras mantiene calidad visual."
+      }
+    ]
+  },
+  "comparison": {
+    "toolaze": "Tamaños de archivo ilimitados, Lote 100+ imágenes PNG, Compresión JPG inteligente, Reducción de tamaño 50-80%, 100% procesamiento local, Sin subidas, Gratis para siempre",
+    "others": "Límites de archivo de 20MB, Solo conversión de archivo único, Calidad de compresión pobre, Reducción de tamaño mínima, Subidas a la nube requeridas, Colas del servidor, Actualizaciones de pago"
   },
   "scenes": [
     {
-      "title": "Optimización Web",
-      "desc": "Convierte PNG a JPG para carga más rápida del sitio web."
+      "title": "Desarrolladores web",
+      "icon": "💻",
+      "desc": "Optimiza imágenes PNG al formato JPG para tiempos de carga más rápidos del sitio web, reduciendo costos de ancho de banda y mejorando la experiencia del usuario con imágenes más pequeñas y de carga más rápida."
     },
     {
-      "title": "Ahorro de Almacenamiento",
-      "desc": "Reduce el espacio de almacenamiento convirtiendo PNG a JPG."
+      "title": "Fotógrafos",
+      "icon": "📸",
+      "desc": "Convierte grandes archivos de fotos PNG al formato JPG compacto para almacenamiento y compartir eficientes, manteniendo excelente calidad visual mientras ahorras espacio significativo en disco."
+    },
+    {
+      "title": "Creadores de contenido",
+      "icon": "📱",
+      "desc": "Transforma capturas de pantalla PNG y gráficos al formato JPG para cargas en redes sociales, asegurando velocidades de carga más rápidas y mejor compatibilidad con plataformas."
     }
   ],
+  "rating": {
+    "text": "\"Este convertidor redujo a la mitad los tamaños de archivo de mis imágenes sin pérdida de calidad notable. Perfecto para optimizar el rendimiento de mi sitio web.\" - Únete a miles de desarrolladores web y creadores de contenido que confían en Toolaze para optimización eficiente de imágenes."
+  },
   "faq": [
     {
-      "q": "¿Se preservará la transparencia?",
-      "a": "No, JPG no admite transparencia. Las áreas transparentes se volverán blancas."
+      "q": "¿Perderé transparencia al convertir PNG a JPG?",
+      "a": "Sí, el formato JPG no admite transparencia. Cuando conviertes PNG a JPG, cualquier área transparente en tu imagen PNG se llenará con un fondo de color sólido (típicamente blanco). Si tu imagen PNG tiene transparencia que necesitas preservar, debes mantenerla en formato PNG o usar un formato que admita transparencia como PNG o WebP. Sin embargo, para fotografías e imágenes sin fondos transparentes, convertir a JPG es ideal para optimización del tamaño de archivo."
     },
     {
-      "q": "¿Cuánto más pequeños serán los archivos?",
-      "a": "Los archivos JPG suelen ser 50-80% más pequeños que los archivos PNG."
+      "q": "¿Cuánto más pequeños serán los archivos JPG en comparación con PNG?",
+      "a": "Los archivos JPG son típicamente 50-80% más pequeños que los archivos PNG. Por ejemplo, una fotografía PNG de 2MB podría convertirse en un archivo JPG de 400KB-1MB, dependiendo del contenido de la imagen y la configuración de compresión. Esta reducción dramática de tamaño hace que JPG sea ideal para uso web, donde los tiempos de carga más rápidos y el ancho de banda reducido son prioridades. Sin embargo, la reducción exacta varía según la complejidad de la imagen: las fotografías con muchos colores se comprimen mejor que los gráficos simples con pocos colores."
+    },
+    {
+      "q": "¿Reducirá la calidad de la imagen convertir PNG a JPG?",
+      "a": "JPG usa compresión con pérdidas, lo que significa que ocurre cierta pérdida de calidad durante la conversión. Sin embargo, para fotografías e imágenes complejas, la pérdida de calidad suele ser mínima y visualmente imperceptible en tamaños de visualización normales. La compensación vale la pena por la reducción significativa del tamaño de archivo. Para gráficos simples, logotipos o imágenes con texto, PNG podría ser mejor para preservar bordes nítidos y calidad perfecta. Toolaze usa algoritmos de compresión optimizados para mantener la mejor calidad posible mientras logra la máxima reducción del tamaño de archivo."
+    },
+    {
+      "q": "¿Es gratuita y segura la conversión de PNG a JPG?",
+      "a": "Sí, Toolaze es completamente gratis para siempre sin costos ocultos, suscripciones o anuncios. Más importante aún, toda la conversión ocurre localmente en tu navegador usando tecnología del lado del cliente. Tus archivos PNG nunca abandonan tu dispositivo: nunca se suben a ningún servidor, garantizando 100% de privacidad y seguridad para tus imágenes."
+    },
+    {
+      "q": "¿Puedo convertir múltiples archivos PNG a JPG a la vez?",
+      "a": "Sí, Toolaze admite conversión por lotes de hasta 100 archivos PNG por sesión. Puedes arrastrar y soltar múltiples archivos PNG a la vez, y todos se convertirán al formato JPG simultáneamente. No hay límites de tamaño de archivo individual, por lo que puedes convertir archivos PNG grandes sin restricciones."
+    },
+    {
+      "q": "¿Se preservarán mis datos EXIF al convertir PNG a JPG?",
+      "a": "Sí, Toolaze preserva todos los metadatos EXIF durante la conversión, incluyendo coordenadas GPS, fecha de captura, configuraciones de cámara y otras etiquetas de metadatos. Tus archivos JPG convertidos retendrán todos los metadatos originales de tus archivos PNG, asegurando que no se pierda información durante la conversión."
+    },
+    {
+      "q": "¿Cuál es la diferencia entre los formatos PNG y JPG?",
+      "a": "PNG usa compresión sin pérdidas, preservando calidad perfecta pero creando archivos más grandes (típicamente 2-5 veces más grandes que JPG). PNG admite completamente transparencia con canales alfa, lo que lo hace ideal para gráficos y logotipos. JPG usa compresión con pérdidas optimizada para fotografías, logrando tamaños de archivo 50-80% más pequeños mientras mantiene calidad visualmente aceptable. JPG no admite transparencia pero es perfecto para fotografías e imágenes web donde la optimización del tamaño de archivo es importante."
     }
   ],
   "compare": {
-    "toolaze": "Procesamiento por lotes, Control de calidad, Gratis",
-    "others": "Archivo único, Sin control, De pago"
+    "toolaze": "Conversión ilimitada de PNG a JPG, Algoritmos de compresión inteligentes, Reducción de tamaño de archivo 50-80%, Arquitectura local primero, Sin límites de tamaño de archivo, Preservación completa de EXIF, 100% procesamiento privado",
+    "others": "Límites de archivo de 20MB, Subidas a la nube requeridas, Calidad de compresión pobre, Reducción de tamaño mínima, Colas del servidor, Datos EXIF eliminados, Preocupaciones de privacidad"
   }
 }

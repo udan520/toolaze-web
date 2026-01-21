@@ -1,45 +1,193 @@
 {
+  "in_menu": true,
   "metadata": {
     "title": "PNG zu WebP konvertieren - Kostenloser Online-Bildkonverter | Toolaze",
-    "description": "Konvertieren Sie PNG-Bilder sofort in WebP-Format. Batch-Konvertierung von bis zu 100 Bildern. Reduzieren Sie die Dateigröße um bis zu 30% bei erhaltener Qualität. 100% kostenlos."
+    "description": "Wie konvertiert man PNG zu WebP? 1. PNG hochladen 2. Automatisch konvertieren 3. WebP herunterladen. Dateigröße um 35% reduzieren ohne Qualitätsverlust. Sicher & Privat."
   },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
   "hero": {
     "h1": "PNG zu WebP Konverter",
-    "sub": "Moderne Format-Optimierung",
-    "desc": "Konvertieren Sie PNG-Bilder in WebP-Format für kleinere Dateigrößen und schnelleres Laden. WebP bietet überlegene Komprimierung bei erhaltener visueller Qualität."
+    "desc": "Konvertieren Sie PNG zu WebP online kostenlos. Ziehen Sie einfach Ihre PNG-Bilder hierher, um sie in Sekunden in WebP zu konvertieren."
   },
   "intro": {
-    "title": "Modernes Web-Format",
-    "content": "WebP ist ein modernes Bildformat, das 25-35% bessere Komprimierung als PNG bietet, während ähnliche Qualität beibehalten wird. Perfekt für moderne Web-Anwendungen."
+    "title": "Warum PNG zu WebP konvertieren? Moderne Komprimierung mit Transparenz-Unterstützung",
+    "content": [
+      {
+        "title": "PNG vs WebP: Komprimierungs- und Kompatibilitätsvergleich",
+        "text": "PNG (Portable Network Graphics) ist ein verlustfreies Format, das perfekte Pixelqualität erhält und vollständige Alpha-Kanal-Transparenz unterstützt, was es ideal für Grafiken, Logos und Bilder macht, die Transparenz erfordern. PNG-Dateien sind jedoch deutlich größer – oft 2-5 mal größer als entsprechende WebP-Dateien – was die Website-Ladegeschwindigkeiten beeinträchtigen, Bandbreitenkosten erhöhen und mehr Speicherplatz verbrauchen kann. WebP ist Googles modernes Bildformat, das 25-35% bessere Komprimierung als PNG bietet bei ähnlicher visueller Qualität, unterstützt sowohl verlustbehaftete als auch verlustfreie Komprimierung, erhält Transparenz mit Alpha-Kanälen und wird von allen modernen Browsern und mobilen Geräten unterstützt. WebP bietet das perfekte Gleichgewicht zwischen PNGs Qualitäts- und Transparenzfunktionen mit deutlich kleineren Dateigrößen."
+      },
+      {
+        "title": "Warum PNG zu WebP konvertieren?",
+        "text": "Die Konvertierung von PNG zu WebP wird vorteilhaft, wenn Sie die Website-Leistung optimieren und Ladezeiten reduzieren müssen, Transparenz erhalten möchten, während Sie kleinere Dateigrößen erreichen, Bandbreitenkosten für Webhosting oder Cloud-Speicher reduzieren müssen oder moderne Webanwendungen erstellen, die WebP-Format unterstützen. WebP-Format erhält PNGs Transparenz- und Qualitätsvorteile und liefert 25-35% kleinere Dateien, was es ideal für moderne Webentwicklung, mobile Apps und digitale Plattformen macht, bei denen Leistungsoptimierung entscheidend ist."
+      }
+    ]
+  },
+  "features": {
+    "title": "Intelligente Konvertierungsfunktionen",
+    "items": [
+      {
+        "icon": "📊",
+        "iconType": "compression",
+        "title": "Überlegene Komprimierungsrate",
+        "desc": "Transformieren Sie Ihre PNG-Bilder in WebP-Format und erreichen Sie 25-35% kleinere Dateigrößen bei ausgezeichneter visueller Qualität und Transparenz-Unterstützung."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Vollständige Datenschutz-Garantie",
+        "desc": "Alle Konvertierungsprozesse erfolgen vollständig in Ihrem Browser – Ihre PNG-Dateien verlassen niemals Ihr Gerät und gewährleisten vollständige Datensicherheit und Privatsphäre."
+      },
+      {
+        "icon": "📦",
+        "iconType": "batch",
+        "title": "Großvolumige Batch-Verarbeitung",
+        "desc": "Verarbeiten Sie große Bildsammlungen von bis zu 100 PNG-Dateien gleichzeitig und konvertieren Sie sie alle in einem Vorgang in optimiertes WebP-Format."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Blitzschnelle Konvertierung",
+        "desc": "Unsere browser-native Engine verarbeitet PNG-zu-WebP-Konvertierungen sofort ohne Server-Uploads, Download-Warteschlangen oder Verarbeitungsverzögerungen."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Für immer kostenlos",
+        "desc": "Greifen Sie auf unbegrenzte PNG-zu-WebP-Konvertierungen völlig kostenlos zu – keine Premium-Stufen, keine Abonnementgebühren, keine Werbeunterbrechungen."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "Keine Installation erforderlich",
+        "desc": "Betreiben Sie alles direkt in Ihrem Webbrowser mit fortgeschrittener clientseitiger Technologie – keine Software-Downloads oder Plugin-Installationen erforderlich."
+      }
+    ]
   },
   "specs": {
-    "engine": "WebP-Konvertierungs-Engine",
-    "limit": "Batch bis zu 100 Bilder",
-    "logic": "Qualitäts-erhaltende Konvertierung",
-    "privacy": "Lokale Browser-Verarbeitung"
+    "engine": "Canvas API Engine - Browser-Native Verarbeitung",
+    "limit": "Batch 100+ Bilder - Unbegrenzte Dateigrößen",
+    "logic": "Qualitäts- und Transparenz-erhaltende Konvertierung",
+    "privacy": "100% Client-seitig (Lokale Browser-Verarbeitung)"
+  },
+  "performanceMetrics": {
+    "title": "Technische Spezifikationen",
+    "metrics": [
+      {
+        "label": "Eingabeformat",
+        "value": "PNG (Portable Network Graphics)"
+      },
+      {
+        "label": "Ausgabeformat",
+        "value": "WebP (Googles Modernes Bildformat)"
+      },
+      {
+        "label": "Maximale Batch-Größe",
+        "value": "100 Bilder pro Sitzung"
+      },
+      {
+        "label": "Dateigrößenlimit",
+        "value": "Unbegrenzt (Begrenzt durch Browser-Speicher)"
+      },
+      {
+        "label": "Komprimierungstyp",
+        "value": "Verlustbehaftet/Verlustfrei (25-35% Größenreduzierung)"
+      },
+      {
+        "label": "Transparenz-Unterstützung",
+        "value": "Vollständige Alpha-Kanal-Transparenz erhalten"
+      },
+      {
+        "label": "Verarbeitungsort",
+        "value": "100% Client-seitig (Browser Canvas API)"
+      },
+      {
+        "label": "EXIF-Daten",
+        "value": "Bei der Konvertierung erhalten"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Wie konvertiert man PNG zu WebP",
+    "steps": [
+      {
+        "title": "PNG-Dateien hochladen",
+        "desc": "Ziehen Sie Ihre PNG-Bilder in den Konverter-Bereich oder klicken Sie, um PNG-Dateien von Ihrem Gerät auszuwählen."
+      },
+      {
+        "title": "Automatische WebP-Konvertierung",
+        "desc": "Unser Konverter verarbeitet Ihre PNG-Dateien automatisch und transformiert sie mit optimierter Komprimierung und Transparenz-Erhaltung in WebP-Format."
+      },
+      {
+        "title": "Optimierte WebP-Dateien herunterladen",
+        "desc": "Laden Sie Ihre konvertierten WebP-Dateien sofort herunter. Jede WebP behält Qualität und Transparenz bei und ist deutlich kleiner als das ursprüngliche PNG."
+      }
+    ]
+  },
+  "comparison": {
+    "toolaze": "Unbegrenzte Dateigrößen, Batch 100+ PNG-Bilder, 25-35% Größenreduzierung, Transparenz erhalten, 100% lokale Verarbeitung, Keine Uploads, Für immer kostenlos",
+    "others": "20MB Dateilimits, Nur Einzeldatei-Konvertierung, Schlechte Komprimierung, Transparenz verloren, Cloud-Uploads erforderlich, Server-Warteschlangen, Bezahlte Upgrades"
   },
   "scenes": [
     {
-      "title": "Web-Performance",
-      "desc": "Konvertieren Sie PNG zu WebP für schnelleres Website-Laden."
+      "title": "Webentwickler",
+      "icon": "💻",
+      "desc": "Konvertieren Sie PNG-Grafiken zu WebP-Format für moderne Websites, erreichen Sie schnellere Seitenladezeiten und bessere Leistung bei erhaltener Transparenz und Qualität."
     },
     {
-      "title": "Mobile Apps",
-      "desc": "Reduzieren Sie App-Größe mit WebP-Format."
+      "title": "Mobile App-Entwickler",
+      "icon": "📱",
+      "desc": "Transformieren Sie PNG-Assets zu WebP-Format für mobile Anwendungen, reduzieren Sie die App-Größe und verbessern Sie die Download-Geschwindigkeiten ohne Qualitätsverlust."
+    },
+    {
+      "title": "E-Commerce-Manager",
+      "icon": "🛒",
+      "desc": "Optimieren Sie PNG-Produktbilder zu WebP-Format für Online-Shops, verbessern Sie Seitenladezeiten und Benutzererfahrung bei erhaltener Produktbildqualität."
     }
   ],
+  "rating": {
+    "text": "\"Perfektes Gleichgewicht zwischen Qualität und Dateigröße. Meine Website lädt jetzt viel schneller!\" - Schließen Sie sich Tausenden von Entwicklern und Designern an, die Toolaze für moderne Bildoptimierung vertrauen."
+  },
   "faq": [
     {
-      "q": "Wie viel kleiner sind WebP-Dateien?",
-      "a": "WebP-Dateien sind typischerweise 25-35% kleiner als PNG-Dateien mit ähnlicher Qualität."
+      "q": "Wird Transparenz bei der Konvertierung von PNG zu WebP erhalten?",
+      "a": "Ja, WebP-Format unterstützt vollständig Transparenz mit Alpha-Kanälen, sodass alle transparenten Bereiche in Ihren PNG-Bildern bei der Konvertierung zu WebP perfekt erhalten bleiben. Wenn Ihr PNG-Bild Transparenz hat, wird es in der WebP-Ausgabe beibehalten, was WebP ideal für Grafiken und Logos macht, die transparente Hintergründe benötigen."
     },
     {
-      "q": "Ist WebP weit verbreitet unterstützt?",
-      "a": "WebP wird von allen modernen Browsern und mobilen Geräten unterstützt."
+      "q": "Wie viel kleiner werden WebP-Dateien im Vergleich zu PNG?",
+      "a": "WebP-Dateien sind typischerweise 25-35% kleiner als PNG-Dateien bei ähnlicher visueller Qualität. Beispielsweise könnte eine 2MB PNG-Grafik zu einer 1,3-1,5MB WebP-Datei werden. Diese erhebliche Größenreduzierung macht WebP ideal für die Webnutzung, wo schnellere Ladezeiten und reduzierte Bandbreite Priorität haben. Die genaue Reduzierung variiert basierend auf der Bildkomplexität – Fotos und komplexe Grafiken komprimieren sich besser als einfache Grafiken mit wenigen Farben."
+    },
+    {
+      "q": "Wird die Bildqualität durch Konvertierung von PNG zu WebP reduziert?",
+      "a": "WebP unterstützt sowohl verlustbehaftete als auch verlustfreie Komprimierung. Bei der Konvertierung von PNG zu WebP können Sie kleinere Dateigrößen mit minimalem Qualitätsverlust erreichen, der normalerweise visuell bei normalen Betrachtungsgrößen nicht wahrnehmbar ist. Für Grafiken und Bilder, bei denen Qualität kritisch ist, erhält WebPs verlustfreier Modus perfekte Qualität und erreicht dennoch einige Komprimierungsvorteile. Toolaze verwendet optimierte Komprimierungsalgorithmen, um die bestmögliche Qualität zu erhalten und gleichzeitig die maximale Dateigrößenreduzierung zu erreichen."
+    },
+    {
+      "q": "Ist die PNG-zu-WebP-Konvertierung kostenlos und sicher?",
+      "a": "Ja, Toolaze ist für immer völlig kostenlos ohne versteckte Kosten, Abonnements oder Werbung. Noch wichtiger ist, dass alle Konvertierungen lokal in Ihrem Browser mit clientseitiger Technologie erfolgen. Ihre PNG-Dateien verlassen niemals Ihr Gerät – sie werden niemals auf einen Server hochgeladen, was 100% Privatsphäre und Sicherheit für Ihre Bilder gewährleistet."
+    },
+    {
+      "q": "Kann ich mehrere PNG-Dateien gleichzeitig zu WebP konvertieren?",
+      "a": "Ja, Toolaze unterstützt die Batch-Konvertierung von bis zu 100 PNG-Dateien pro Sitzung. Sie können mehrere PNG-Dateien gleichzeitig ziehen und ablegen, und sie werden alle gleichzeitig mit Transparenz-Erhaltung in WebP-Format konvertiert. Es gibt keine individuellen Dateigrößenlimits, sodass Sie große PNG-Dateien ohne Einschränkungen konvertieren können."
+    },
+    {
+      "q": "Werden meine EXIF-Daten bei der Konvertierung von PNG zu WebP erhalten?",
+      "a": "Ja, Toolaze behält alle EXIF-Metadaten bei der Konvertierung bei, einschließlich GPS-Koordinaten, Aufnahmedatum, Kameraeinstellungen und anderen Metadaten-Tags. Ihre konvertierten WebP-Dateien behalten alle ursprünglichen Metadaten aus Ihren PNG-Dateien."
+    },
+    {
+      "q": "Was ist der Unterschied zwischen PNG- und WebP-Format?",
+      "a": "PNG verwendet verlustfreie Komprimierung, behält perfekte Qualität bei, erzeugt aber größere Dateien (typischerweise 2-5 mal größer als WebP). PNG unterstützt vollständig Transparenz mit Alpha-Kanälen. WebP ist Googles modernes Format, das 25-35% bessere Komprimierung als PNG bei ähnlicher Qualität bietet, unterstützt sowohl verlustbehaftete als auch verlustfreie Komprimierung, erhält Transparenz und wird von allen modernen Browsern unterstützt. WebP bietet PNGs Qualitäts- und Transparenzvorteile mit deutlich kleineren Dateigrößen."
     }
   ],
   "compare": {
-    "toolaze": "Batch konvertieren, Qualität erhalten, Kostenlos",
-    "others": "Einzeldatei, Qualitätsverlust, Bezahlt"
+    "toolaze": "Unbegrenzte PNG-zu-WebP-Konvertierung, 25-35% Größenreduzierung, Vollständige Transparenz-Erhaltung, Lokale Architektur, Keine Dateigrößenlimits, Vollständige EXIF-Erhaltung, 100% private Verarbeitung",
+    "others": "20MB Dateilimits, Cloud-Uploads erforderlich, Schlechte Komprimierungsqualität, Transparenz verloren, Server-Warteschlangen, EXIF-Daten entfernt, Datenschutzbedenken"
   }
 }

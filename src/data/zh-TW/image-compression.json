@@ -5,6 +5,16 @@
       "title": "JPG 壓縮到 20KB 線上工具（免費、批次處理、安全） - Toolaze",
       "description": "如何將 JPG 壓縮到 20KB？1. 上傳 JPG 圖片 2. 設定 20KB 目標 3. 下載壓縮檔。符合嚴格政府網站限制。在保持品質的同時將檔案大小減少 90%。安全且私密。"
     },
+    "sectionsOrder": [
+      "howToUse",
+      "features",
+      "intro",
+      "performanceMetrics",
+      "comparison",
+      "scenes",
+      "rating",
+      "faq"
+    ],
     "hero": {
       "h1": "JPG 壓縮到 20KB",
       "desc": "將 JPG 圖片精確壓縮到 20KB，適用於官方網站和考試報名。只需將您的 JPG 圖片拖放到下方，即可在數秒內完成壓縮。"
@@ -167,10 +177,21 @@
     }
   },
   "png-to-100kb": {
+    "in_menu": false,
     "metadata": {
       "title": "PNG 壓縮到 100KB - 保持透明背景 | Toolaze",
       "description": "將 PNG 圖片優化至 100KB，提升網站效能。保持原始透明度和格式。在瀏覽器中免費處理最多 100 張圖片。"
     },
+    "sectionsOrder": [
+      "howToUse",
+      "features",
+      "intro",
+      "performanceMetrics",
+      "comparison",
+      "scenes",
+      "rating",
+      "faq"
+    ],
     "hero": {
       "h1": "PNG 壓縮到 100KB",
       "sub": "透明、快速、專業",
@@ -234,7 +255,6 @@
       "toolaze": "保留透明度，本地處理，無廣告",
       "others": "轉換為 JPG，浮水印，需要訂閱"
     },
-    "in_menu": false,
     "features": {
       "title": "PNG to 100KB Compression Features",
       "items": [
@@ -331,10 +351,21 @@
     }
   },
   "uscis-photo-240kb": {
+    "in_menu": false,
     "metadata": {
       "title": "美國簽證照片 240KB 壓縮工具 - 安全簽證處理 | Toolaze",
       "description": "符合美國簽證 DS-160 表格 240KB 要求。100% 隱私的瀏覽器端處理。不進行人臉修改，保持資料真實安全。"
     },
+    "sectionsOrder": [
+      "howToUse",
+      "features",
+      "intro",
+      "performanceMetrics",
+      "comparison",
+      "scenes",
+      "rating",
+      "faq"
+    ],
     "hero": {
       "h1": "美國簽證照片 240KB 工具",
       "sub": "保證簽證合規",
@@ -398,7 +429,6 @@
       "toolaze": "完全隱私，真實結果，免費",
       "others": "隱私風險，自動美化風險，隱藏費用"
     },
-    "in_menu": false,
     "features": {
       "title": "USCIS Photo 240KB Compression Features",
       "items": [
@@ -495,10 +525,21 @@
     }
   },
   "image-to-50kb": {
+    "in_menu": false,
     "metadata": {
       "title": "圖片壓縮到 50KB - 通用線上工具 | Toolaze",
       "description": "將 JPG、PNG、WebP 或 BMP 精確壓縮至 50KB。完美適用於履歷和線上表單。100% 免費，可批次處理 100 張圖片。"
     },
+    "sectionsOrder": [
+      "howToUse",
+      "features",
+      "intro",
+      "performanceMetrics",
+      "comparison",
+      "scenes",
+      "rating",
+      "faq"
+    ],
     "hero": {
       "h1": "通用 50KB 壓縮工具",
       "sub": "一個尺寸，所有平台",
@@ -563,7 +604,6 @@
       "toolaze": "無大小限制，批次處理 100 個檔案，本地",
       "others": "檔案大小上限，單檔限制，訂閱彈窗"
     },
-    "in_menu": false,
     "features": {
       "title": "50KB Image Compression Features",
       "items": [
@@ -660,10 +700,21 @@
     }
   },
   "passport-photo-200kb": {
+    "in_menu": false,
     "metadata": {
       "title": "護照照片 200KB 壓縮工具 - 安全快速 | Toolaze",
       "description": "將您的護照照片壓縮至 200KB，適用於線上換發。保留原始格式和臉部清晰度。100% 隱私且免費的工具。"
     },
+    "sectionsOrder": [
+      "howToUse",
+      "features",
+      "intro",
+      "performanceMetrics",
+      "comparison",
+      "scenes",
+      "rating",
+      "faq"
+    ],
     "hero": {
       "h1": "200KB 護照照片工具",
       "sub": "全球標準相容性",
@@ -728,7 +779,6 @@
       "toolaze": "原始格式，本地安全，批次就緒",
       "others": "強制格式變更，雲端安全風險，無批次處理"
     },
-    "in_menu": false,
     "features": {
       "title": "200KB Passport Photo Compression Features",
       "items": [
@@ -825,10 +875,21 @@
     }
   },
   "amazon-product-10mb": {
+    "in_menu": false,
     "metadata": {
       "title": "Amazon 商品照片壓縮工具 - 優化銷售 | Toolaze",
       "description": "將 Amazon 商品照片壓縮至 10MB 限制以下，不損失品質。適用於賣家中心上傳。批次處理 100 張圖片。"
     },
+    "sectionsOrder": [
+      "howToUse",
+      "features",
+      "intro",
+      "performanceMetrics",
+      "comparison",
+      "scenes",
+      "rating",
+      "faq"
+    ],
     "hero": {
       "h1": "Amazon 商品圖片優化工具",
       "sub": "修復賣家中心上傳錯誤",
@@ -891,7 +952,6 @@
       "toolaze": "賣家導向，大量模式，免費",
       "others": "通用壓縮，單檔限制"
     },
-    "in_menu": false,
     "features": {
       "title": "Amazon Product Image Optimization Features",
       "items": [
@@ -988,10 +1048,21 @@
     }
   },
   "etsy-listing-1mb": {
+    "in_menu": false,
     "metadata": {
       "title": "Etsy 圖片壓縮工具 - 修復上傳問題 | Toolaze",
       "description": "將 Etsy 商品照片壓縮至 1MB 以下。最適合手工賣家。在修復「檔案太大」錯誤的同時保持色彩鮮豔。"
     },
+    "sectionsOrder": [
+      "howToUse",
+      "features",
+      "intro",
+      "performanceMetrics",
+      "comparison",
+      "scenes",
+      "rating",
+      "faq"
+    ],
     "hero": {
       "h1": "Etsy 商品照片工具",
       "sub": "完美適合手工賣家",
@@ -1054,7 +1125,6 @@
       "toolaze": "保留紋理，色彩準確，快速",
       "others": "色彩淡化，上傳緩慢"
     },
-    "in_menu": false,
     "features": {
       "title": "Etsy Listing Image Optimization Features",
       "items": [
@@ -1151,10 +1221,21 @@
     }
   },
   "ebay-picture-fast": {
+    "in_menu": false,
     "metadata": {
       "title": "eBay 圖片優化工具 - 加快行動載入 | Toolaze",
       "description": "為行動買家優化 eBay 商品照片。壓縮至 500KB-1.5MB 以快速載入。免費大量工具，適合專業賣家。"
     },
+    "sectionsOrder": [
+      "howToUse",
+      "features",
+      "intro",
+      "performanceMetrics",
+      "comparison",
+      "scenes",
+      "rating",
+      "faq"
+    ],
     "hero": {
       "h1": "eBay 快速載入優化工具",
       "sub": "提升您的行動銷售",
@@ -1217,7 +1298,6 @@
       "toolaze": "大量工具，行動優化，無需註冊",
       "others": "一次一個，需要註冊"
     },
-    "in_menu": false,
     "features": {
       "title": "eBay Image Optimization Features",
       "items": [
@@ -1314,10 +1394,21 @@
     }
   },
   "youtube-thumbnail-2mb": {
+    "in_menu": false,
     "metadata": {
       "title": "YouTube 縮圖壓縮工具 - 修復 2MB 限制錯誤 | Toolaze",
       "description": "即時將 YouTube 縮圖壓縮至 2MB 以下。修復「檔案大於 2MB」的上傳錯誤。保持您的點擊誘餌品質。"
     },
+    "sectionsOrder": [
+      "howToUse",
+      "features",
+      "intro",
+      "performanceMetrics",
+      "comparison",
+      "scenes",
+      "rating",
+      "faq"
+    ],
     "hero": {
       "h1": "YouTube 縮圖修復工具（低於 2MB）",
       "sub": "已解決：「檔案大於 2MB」",
@@ -1376,7 +1467,6 @@
       "toolaze": "高點擊率專注，2MB 保證",
       "others": "模糊結果，隨機尺寸"
     },
-    "in_menu": false,
     "features": {
       "title": "YouTube Thumbnail Compression Features",
       "items": [
@@ -1466,13 +1556,28 @@
     },
     "rating": {
       "text": "\"Fixed my YouTube upload errors instantly! Thumbnails stay under 2MB with perfect quality.\" - Join thousands of creators who trust Toolaze for YouTube thumbnail optimization."
+    },
+    "comparison": {
+      "toolaze": "高點擊率專注，2MB 保證",
+      "others": "模糊結果，隨機尺寸"
     }
   },
   "discord-emoji-256kb": {
+    "in_menu": false,
     "metadata": {
       "title": "Discord 表情符號壓縮工具 - 低於 256KB 工具 | Toolaze",
       "description": "將圖片壓縮至 256KB，適用於 Discord 表情符號和貼紙。為伺服器管理員提供精確調整大小。支援 PNG 和 JPG。"
     },
+    "sectionsOrder": [
+      "howToUse",
+      "features",
+      "intro",
+      "performanceMetrics",
+      "comparison",
+      "scenes",
+      "rating",
+      "faq"
+    ],
     "hero": {
       "h1": "Discord 表情符號和貼紙大小調整工具",
       "sub": "嚴格 256KB 合規",
@@ -1535,7 +1640,6 @@
       "toolaze": "嚴格 256KB 上限，透明度安全",
       "others": "錯過檔案限制，失去透明度"
     },
-    "in_menu": false,
     "features": {
       "title": "Discord Emoji Compression Features",
       "items": [
@@ -1632,10 +1736,21 @@
     }
   },
   "email-signature-20kb": {
+    "in_menu": false,
     "metadata": {
       "title": "電子郵件簽名圖片壓縮工具 - Outlook 和 Gmail 友善 | Toolaze",
       "description": "將標誌和證件照壓縮至 20KB，適用於電子郵件簽名。防止附件被阻擋。為 Retina 顯示器提供清晰品質。"
     },
+    "sectionsOrder": [
+      "howToUse",
+      "features",
+      "intro",
+      "performanceMetrics",
+      "comparison",
+      "scenes",
+      "rating",
+      "faq"
+    ],
     "hero": {
       "h1": "電子郵件簽名優化工具",
       "sub": "停止被標記為垃圾郵件",
@@ -1698,7 +1813,6 @@
       "toolaze": "垃圾郵件過濾器安全，Retina 就緒",
       "others": "太重，像素化邊緣"
     },
-    "in_menu": false,
     "features": {
       "title": "Email Signature Image Optimization Features",
       "items": [
@@ -1800,6 +1914,16 @@
       "title": "Compress JPG Online (Free, Batch & No Ads) - Toolaze",
       "description": "How to compress JPG images? 1. Upload JPG 2. Set target size 3. Download compressed. Reduce file size by 60% while maintaining quality. Secure & Private."
     },
+    "sectionsOrder": [
+      "howToUse",
+      "features",
+      "intro",
+      "performanceMetrics",
+      "comparison",
+      "scenes",
+      "rating",
+      "faq"
+    ],
     "hero": {
       "h1": "JPG Compressor",
       "desc": "Compress JPG images online for free. Simply drop your JPG images below to compress them in seconds."
@@ -1975,6 +2099,16 @@
       "title": "Compress PNG Online (Free, Batch & No Ads) - Toolaze",
       "description": "How to compress PNG images? 1. Upload PNG 2. Set target size 3. Download compressed. Reduce file size by 50% while preserving transparency. Secure & Private."
     },
+    "sectionsOrder": [
+      "howToUse",
+      "features",
+      "intro",
+      "performanceMetrics",
+      "comparison",
+      "scenes",
+      "rating",
+      "faq"
+    ],
     "hero": {
       "h1": "PNG Compressor",
       "desc": "Compress PNG images online for free. Simply drop your PNG images below to compress them in seconds."
@@ -2150,6 +2284,16 @@
       "title": "Compress WebP Online (Free, Batch & No Ads) - Toolaze",
       "description": "How to compress WebP images? 1. Upload WebP 2. Set target size 3. Download compressed. Reduce file size by 30% while maintaining quality. Secure & Private."
     },
+    "sectionsOrder": [
+      "howToUse",
+      "features",
+      "intro",
+      "performanceMetrics",
+      "comparison",
+      "scenes",
+      "rating",
+      "faq"
+    ],
     "hero": {
       "h1": "WebP Compressor",
       "desc": "Compress WebP images online for free. Simply drop your WebP images below to compress them in seconds."
@@ -2325,6 +2469,16 @@
       "title": "Compress Image Online (Free, Batch & No Ads) - Toolaze",
       "description": "How to compress images? 1. Upload image 2. Set target size 3. Download compressed. Reduce file size by 60% while maintaining quality. Secure & Private."
     },
+    "sectionsOrder": [
+      "howToUse",
+      "features",
+      "intro",
+      "performanceMetrics",
+      "comparison",
+      "scenes",
+      "rating",
+      "faq"
+    ],
     "hero": {
       "h1": "Image Compressor",
       "desc": "Compress images online for free. Simply drop your images below to compress them in seconds."
@@ -2500,6 +2654,16 @@
       "title": "Batch Compress Images Online (Free, No Ads & Fast) - Toolaze",
       "description": "How to batch compress images? 1. Upload multiple images 2. Set target size 3. Download all. Compress up to 100 images at once. Secure & Private."
     },
+    "sectionsOrder": [
+      "howToUse",
+      "features",
+      "intro",
+      "performanceMetrics",
+      "comparison",
+      "scenes",
+      "rating",
+      "faq"
+    ],
     "hero": {
       "h1": "Batch Image Compressor",
       "desc": "Compress multiple images at once online for free. Simply drop your images below to compress them in seconds."

@@ -1,45 +1,193 @@
 {
+  "in_menu": true,
   "metadata": {
-    "title": "Converter WebP para PNG - Conversor de Imagens Online Grátis | Toolaze",
-    "description": "Converta imagens WebP para formato PNG instantaneamente. Conversão em lote até 100 imagens. Preserve transparência e qualidade. 100% grátis e privado."
+    "title": "Converter WebP para PNG Online (Grátis, Lote e Sem Anúncios) - Toolaze",
+    "description": "Como converter WebP para PNG? 1. Fazer upload de WebP 2. Converter automaticamente 3. Baixar PNG. Preserve transparência com qualidade sem perda. Seguro e Privado."
   },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
   "hero": {
     "h1": "Conversor WebP para PNG",
-    "sub": "Preservar Transparência",
-    "desc": "Converta imagens WebP para formato PNG preservando transparência e mantendo alta qualidade. Perfeito para gráficos e logotipos."
+    "desc": "Converta WebP para PNG online gratuitamente. Simplesmente arraste suas imagens WebP abaixo para convertê-las para PNG em segundos."
   },
   "intro": {
-    "title": "Suporte de Transparência",
-    "content": "O formato PNG suporta transparência, tornando-o ideal para gráficos, logotipos e imagens que precisam de fundos transparentes. Converta suas imagens WebP para PNG para melhor compatibilidade."
+    "title": "Por que converter WebP para PNG? Preservando transparência e qualidade",
+    "content": [
+      {
+        "title": "WebP vs PNG: Características de formato e casos de uso",
+        "text": "WebP é o formato de imagem moderno do Google que fornece excelente compressão—tipicamente tamanhos de arquivo 25-35% menores que PNG enquanto mantém qualidade similar. WebP suporta compressão com perda e sem perda, transparência com canais alfa e animação, tornando-o ideal para aplicações web modernas. No entanto, WebP tem limitações de compatibilidade: muitos navegadores mais antigos, aplicações de software de design e sistemas legados não suportam formato WebP. PNG (Portable Network Graphics) é um formato sem perda que preserva qualidade perfeita em nível de pixel, suporta transparência completa do canal alfa e tem suporte universal em todas as plataformas, software de design e aplicações. PNG é o padrão da indústria para gráficos, logotipos, ícones e imagens que requerem transparência e qualidade sem perda."
+      },
+      {
+        "title": "Por que converter WebP para PNG?",
+        "text": "Converter WebP para PNG torna-se essencial quando você precisa preservar transparência para gráficos e logotipos, requer qualidade sem perda para trabalho de design e gráficos profissionais, precisa de compatibilidade com software de design que não suporta WebP, ou quer garantir que suas imagens funcionem em todas as plataformas e aplicações. O formato PNG garante preservação de qualidade pixel-perfeita, suporte completo de transparência e compatibilidade universal, tornando-o a escolha preferida para designers gráficos, desenvolvedores web e profissionais que precisam de transparência e qualidade sem compromisso."
+      }
+    ]
+  },
+  "features": {
+    "title": "Recursos de conversão profissionais",
+    "items": [
+      {
+        "icon": "🎨",
+        "iconType": "quality",
+        "title": "Preservação de qualidade sem perda",
+        "desc": "Transforme suas imagens WebP em formato PNG mantendo qualidade perfeita em nível de pixel com zero artefatos de compressão ou degradação de qualidade."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Proteção absoluta de privacidade",
+        "desc": "Cada conversão ocorre inteiramente no seu navegador—seus arquivos WebP nunca deixam seu dispositivo, garantindo segurança completa de dados e privacidade."
+      },
+      {
+        "icon": "📦",
+        "iconType": "batch",
+        "title": "Suporte para conversão em massa",
+        "desc": "Processe bibliotecas inteiras de imagens de até 100 arquivos WebP de uma vez, convertendo-os todos para formato PNG com preservação de transparência."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Processamento instantâneo",
+        "desc": "Nosso motor baseado em navegador converte WebP para PNG imediatamente sem atrasos de servidor, filas de upload ou períodos de espera para download."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Completamente grátis sempre",
+        "desc": "Acesse conversões ilimitadas de WebP para PNG sem custo—sem assinaturas premium, sem taxas ocultas, sem interrupções publicitárias."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "Zero instalação necessária",
+        "desc": "Execute tudo diretamente no seu navegador web usando processamento avançado do lado do cliente—sem downloads de software ou extensões de navegador necessárias."
+      }
+    ]
   },
   "specs": {
-    "engine": "Motor que Preserva Transparência",
-    "limit": "Lote até 100 imagens",
-    "logic": "Conversão Sem Perda",
-    "privacy": "Processamento Baseado em Navegador"
+    "engine": "Alimentado por Canvas API - Processamento nativo do navegador",
+    "limit": "Lote 100+ Imagens - Tamanhos de arquivo ilimitados",
+    "logic": "Preservação completa de qualidade e transparência (conversão sem perda)",
+    "privacy": "100% Lado do cliente (processamento local do navegador)"
+  },
+  "performanceMetrics": {
+    "title": "Especificações técnicas",
+    "metrics": [
+      {
+        "label": "Formato de entrada",
+        "value": "WebP (Formato de imagem moderno do Google)"
+      },
+      {
+        "label": "Formato de saída",
+        "value": "PNG (Portable Network Graphics)"
+      },
+      {
+        "label": "Tamanho máximo do lote",
+        "value": "100 imagens por sessão"
+      },
+      {
+        "label": "Limite de tamanho de arquivo",
+        "value": "Ilimitado (limitado pela memória do navegador)"
+      },
+      {
+        "label": "Tipo de compressão",
+        "value": "Sem perda (sem degradação de qualidade)"
+      },
+      {
+        "label": "Suporte de transparência",
+        "value": "Transparência completa do canal alfa preservada"
+      },
+      {
+        "label": "Localização do processamento",
+        "value": "100% Lado do cliente (Canvas API do navegador)"
+      },
+      {
+        "label": "Dados EXIF",
+        "value": "Preservados durante a conversão"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Como converter WebP para PNG",
+    "steps": [
+      {
+        "title": "Fazer upload dos seus arquivos WebP",
+        "desc": "Arraste e solte suas imagens WebP na interface do conversor ou clique para selecionar vários arquivos WebP do seu computador."
+      },
+      {
+        "title": "Conversão automática para PNG",
+        "desc": "Nosso conversor processa automaticamente seus arquivos WebP e os transforma em formato PNG com transparência completa e preservação de qualidade."
+      },
+      {
+        "title": "Baixar resultados PNG",
+        "desc": "Baixe seus arquivos PNG convertidos instantaneamente. Cada PNG mantém qualidade perfeita e preserva todas as informações de transparência."
+      }
+    ]
+  },
+  "comparison": {
+    "toolaze": "Tamanhos de arquivo ilimitados, Lote 100+ imagens WebP, Conversão PNG sem perda, Preservação completa de transparência, Compatibilidade universal, Processamento 100% local, Sem uploads, Grátis para sempre",
+    "others": "Limites de arquivo de 20MB, Apenas conversão de arquivo único, Perda de qualidade durante conversão, Transparência não preservada, Compatibilidade limitada, Uploads na nuvem necessários, Filas de servidor, Atualizações pagas"
   },
   "scenes": [
     {
-      "title": "Design Gráfico",
-      "desc": "Converta WebP para PNG para compatibilidade com software de design."
+      "title": "Designers gráficos",
+      "icon": "🎨",
+      "desc": "Converta gráficos WebP para formato PNG para compatibilidade com software de design, garantindo que seus logotipos e gráficos mantenham transparência e qualidade pixel-perfeita em fluxos de trabalho de design profissional."
     },
     {
-      "title": "Conversão de Logotipo",
-      "desc": "Preserve transparência ao converter logotipos."
+      "title": "Desenvolvedores web",
+      "icon": "💻",
+      "desc": "Transforme imagens WebP para PNG para projetos web que requerem fundos transparentes, garantindo que seus gráficos funcionem perfeitamente em todos os navegadores e plataformas."
+    },
+    {
+      "title": "Designers de marca",
+      "icon": "🏢",
+      "desc": "Mude de formato WebP para PNG para manter qualidade impecável para ativos de marca, garantindo que seus logotipos e gráficos pareçam perfeitos em todas as aplicações e mídias."
     }
   ],
+  "rating": {
+    "text": "\"Preservação perfeita de transparência e qualidade. Exatamente o que preciso para meus projetos de design.\" - Junte-se a milhares de designers e desenvolvedores que confiam no Toolaze para conversão de imagem profissional."
+  },
   "faq": [
     {
-      "q": "A transparência será preservada?",
-      "a": "Sim, PNG suporta transparência, então áreas transparentes serão preservadas."
+      "q": "A transparência será preservada ao converter WebP para PNG?",
+      "a": "Sim, o formato PNG suporta completamente transparência com canais alfa, então todas as áreas transparentes nas suas imagens WebP serão perfeitamente preservadas ao converter para PNG. Se sua imagem WebP tem transparência, será mantida na saída PNG. Isso torna PNG ideal para gráficos, logotipos e imagens que precisam de fundos transparentes."
     },
     {
-      "q": "A conversão é sem perda?",
-      "a": "PNG é um formato sem perda, então a qualidade é completamente preservada."
+      "q": "A conversão de WebP para PNG é sem perda?",
+      "a": "Sim, PNG é um formato sem perda, então converter WebP para PNG preserva qualidade perfeita com zero artefatos de compressão ou degradação de qualidade. A conversão mantém precisão pixel-perfeita, tornando PNG ideal para gráficos, logotipos e imagens onde qualidade é crítica. No entanto, note que arquivos PNG são tipicamente maiores que arquivos WebP porque PNG usa compressão sem perda."
+    },
+    {
+      "q": "Por que converter WebP para PNG em vez de manter WebP?",
+      "a": "Embora WebP ofereça excelente compressão, tem limitações de compatibilidade. Muitas aplicações de software de design, navegadores mais antigos e sistemas legados não suportam formato WebP. PNG tem suporte universal em todas as plataformas, software de design e aplicações, tornando-o o padrão da indústria para gráficos e imagens que requerem transparência. Converter para PNG garante que suas imagens funcionem em todos os lugares e mantenham qualidade perfeita."
+    },
+    {
+      "q": "A conversão de WebP para PNG é gratuita e segura?",
+      "a": "Sim, Toolaze é completamente grátis para sempre sem custos ocultos, assinaturas ou anúncios. Mais importante, toda a conversão acontece localmente no seu navegador usando tecnologia do lado do cliente. Seus arquivos WebP nunca deixam seu dispositivo—eles nunca são enviados para nenhum servidor, garantindo 100% de privacidade e segurança para suas imagens."
+    },
+    {
+      "q": "Posso converter vários arquivos WebP para PNG de uma vez?",
+      "a": "Sim, Toolaze suporta conversão em lote de até 100 arquivos WebP por sessão. Você pode arrastar e soltar vários arquivos WebP de uma vez, e todos serão convertidos para formato PNG simultaneamente com preservação de transparência. Não há limites de tamanho de arquivo individual, então você pode converter arquivos WebP grandes sem restrições."
+    },
+    {
+      "q": "Meus dados EXIF serão preservados ao converter WebP para PNG?",
+      "a": "Sim, Toolaze preserva todos os metadados EXIF durante a conversão, incluindo coordenadas GPS, data de captura, configurações da câmera e outras tags de metadados. Seus arquivos PNG convertidos reterão todos os metadados originais dos seus arquivos WebP."
+    },
+    {
+      "q": "Qual é a diferença entre os formatos WebP e PNG?",
+      "a": "WebP é o formato moderno do Google oferecendo compressão 25-35% melhor que PNG com qualidade similar, e suporta compressão com perda e sem perda, transparência e animação. No entanto, WebP tem compatibilidade limitada com navegadores mais antigos e software de design. PNG é um formato sem perda com suporte universal, preservação perfeita de qualidade em nível de pixel e transparência completa do canal alfa, tornando-o o padrão da indústria para gráficos e trabalho de design profissional."
     }
   ],
   "compare": {
-    "toolaze": "Suporte de transparência, Converter em lote, Grátis",
-    "others": "Sem transparência, Arquivo único, Pago"
+    "toolaze": "Conversão ilimitada de WebP para PNG, Preservação de qualidade sem perda, Suporte completo de transparência, Compatibilidade universal, Arquitetura local-first, Sem limites de tamanho de arquivo, Preservação completa de EXIF, Processamento 100% privado",
+    "others": "Limites de arquivo de 20MB, Uploads na nuvem necessários, Perda de qualidade durante conversão, Transparência não preservada, Compatibilidade limitada, Filas de servidor, Dados EXIF removidos, Preocupações com privacidade"
   }
 }

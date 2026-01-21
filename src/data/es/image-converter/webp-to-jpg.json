@@ -1,45 +1,193 @@
 {
+  "in_menu": true,
   "metadata": {
-    "title": "Convertir WebP a JPG - Convertidor de Imágenes Online Gratis | Toolaze",
-    "description": "Convierte imágenes WebP a formato JPG instantáneamente. Conversión por lotes de hasta 100 imágenes. Compatible con todos los dispositivos y plataformas. 100% gratis."
+    "title": "Convertir WebP a JPG Online (Gratis, Lote y Sin Anuncios) - Toolaze",
+    "description": "¿Cómo convertir WebP a JPG? 1. Subir WebP 2. Convertir automáticamente 3. Descargar JPG. Compatibilidad universal en todos los dispositivos. Seguro y Privado."
   },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
   "hero": {
-    "h1": "Convertidor WebP a JPG",
-    "sub": "Compatibilidad Universal",
-    "desc": "Convierte imágenes WebP a JPG para máxima compatibilidad en todos los dispositivos, plataformas y aplicaciones."
+    "h1": "Convertidor de WebP a JPG",
+    "desc": "Convierte WebP a JPG online gratis. Simplemente arrastra tus imágenes WebP aquí para convertirlas a JPG en segundos."
   },
   "intro": {
-    "title": "Amplia Compatibilidad",
-    "content": "Aunque WebP ofrece gran compresión, JPG tiene soporte universal en todas las plataformas. Convierte tus imágenes WebP a JPG para máxima compatibilidad."
+    "title": "¿Por qué convertir WebP a JPG? Asegurar compatibilidad universal",
+    "content": [
+      {
+        "title": "WebP vs JPG: Diferencias de compatibilidad y soporte",
+        "text": "WebP es el formato de imagen moderno de Google que ofrece compresión superior, típicamente 25-35% tamaños de archivo más pequeños que JPG mientras mantiene calidad visual similar. WebP admite compresión tanto con pérdidas como sin pérdidas, transparencia y animación, lo que lo convierte en una excelente opción para aplicaciones web modernas. Sin embargo, WebP tiene limitaciones significativas de compatibilidad: navegadores más antiguos (especialmente Internet Explorer), aplicaciones de software heredadas, clientes de correo electrónico y muchas aplicaciones móviles no admiten formato WebP, causando que las imágenes fallen al mostrarse o requieran formatos de respaldo. JPG (JPEG) es el estándar universal que funciona en prácticamente todos los dispositivos, plataformas, aplicaciones y navegadores, desde los sistemas más antiguos hasta los más nuevos, asegurando que tus imágenes se muestren correctamente en todas partes sin problemas de compatibilidad."
+      },
+      {
+        "title": "¿Por qué convertir WebP a JPG?",
+        "text": "Convertir WebP a JPG se vuelve necesario cuando necesitas asegurar que las imágenes funcionen en navegadores más antiguos y sistemas heredados, quieres compartir imágenes a través de clientes de correo electrónico que no admiten WebP, necesitas usar imágenes en aplicaciones de software que requieren formato JPG, o quieres máxima compatibilidad para compartir multiplataforma. El formato JPG garantiza que tus imágenes se mostrarán correctamente en cualquier dispositivo, en cualquier aplicación y en cualquier plataforma, lo que lo convierte en la opción más segura para compartir imágenes universal, archivado y casos de uso críticos de compatibilidad donde el soporte de formato no puede asumirse."
+      }
+    ]
+  },
+  "features": {
+    "title": "Características de conversión confiables",
+    "items": [
+      {
+        "icon": "🌐",
+        "iconType": "compatibility",
+        "title": "Soporte de formato universal",
+        "desc": "Transforma tus imágenes WebP al formato JPG para compatibilidad garantizada en todos los navegadores, dispositivos y aplicaciones en todo el mundo."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Garantía completa de privacidad",
+        "desc": "Toda la conversión de WebP a JPG ocurre localmente en tu navegador: tus imágenes nunca abandonan tu dispositivo, asegurando protección absoluta de datos."
+      },
+      {
+        "icon": "📦",
+        "iconType": "batch",
+        "title": "Procesamiento por lotes eficiente",
+        "desc": "Convierte colecciones completas de hasta 100 imágenes WebP simultáneamente al formato JPG en una sola sesión de conversión."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Velocidad de conversión rápida",
+        "desc": "Nuestro motor nativo del navegador procesa conversiones de WebP a JPG instantáneamente sin retrasos del servidor o tiempos de espera de subida."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Gratis para siempre",
+        "desc": "Disfruta de conversiones ilimitadas de WebP a JPG sin costo absoluto: sin planes premium, sin tarifas de suscripción, sin anuncios."
+      },
+      {
+        "icon": "🛠️",
+        "iconType": "easy",
+        "title": "No se requiere configuración",
+        "desc": "Todo opera directamente en tu navegador web usando tecnología del lado del cliente: no se requiere instalación de software ni configuración."
+      }
+    ]
   },
   "specs": {
-    "engine": "Motor de Conversión de Formato",
-    "limit": "Lote de hasta 100 imágenes",
-    "logic": "Conversión Prioritaria de Compatibilidad",
-    "privacy": "100% Procesamiento Local"
+    "engine": "Motor Canvas API - Procesamiento nativo del navegador",
+    "limit": "Lote 100+ imágenes - Tamaños de archivo ilimitados",
+    "logic": "Conversión prioritaria de compatibilidad (Formato universal)",
+    "privacy": "100% del lado del cliente (Procesamiento local del navegador)"
+  },
+  "performanceMetrics": {
+    "title": "Especificaciones técnicas",
+    "metrics": [
+      {
+        "label": "Formato de entrada",
+        "value": "WebP (Formato de imagen moderno de Google)"
+      },
+      {
+        "label": "Formato de salida",
+        "value": "JPG/JPEG (Formato estándar universal)"
+      },
+      {
+        "label": "Tamaño máximo de lote",
+        "value": "100 imágenes por sesión"
+      },
+      {
+        "label": "Límite de tamaño de archivo",
+        "value": "Ilimitado (Limitado por memoria del navegador)"
+      },
+      {
+        "label": "Tipo de compresión",
+        "value": "Con pérdidas (Optimizado para compatibilidad)"
+      },
+      {
+        "label": "Compatibilidad del navegador",
+        "value": "100% (Funciona en todos los navegadores y dispositivos)"
+      },
+      {
+        "label": "Ubicación de procesamiento",
+        "value": "100% del lado del cliente (Canvas API del navegador)"
+      },
+      {
+        "label": "Datos EXIF",
+        "value": "Preservados durante la conversión"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Cómo convertir WebP a JPG",
+    "steps": [
+      {
+        "title": "Sube tus archivos WebP",
+        "desc": "Arrastra y suelta tus imágenes WebP en el área del convertidor o haz clic para navegar y seleccionar archivos WebP de tu dispositivo."
+      },
+      {
+        "title": "Conversión automática a JPG",
+        "desc": "Nuestro convertidor procesa automáticamente tus archivos WebP y los transforma al formato JPG universalmente compatible."
+      },
+      {
+        "title": "Descarga archivos JPG compatibles",
+        "desc": "Descarga tus archivos JPG convertidos instantáneamente. Cada JPG funciona perfectamente en todos los dispositivos, navegadores y aplicaciones."
+      }
+    ]
+  },
+  "comparison": {
+    "toolaze": "Tamaños de archivo ilimitados, Lote 100+ imágenes WebP, Compatibilidad JPG universal, 100% procesamiento local, Sin subidas, Funciona en todos los dispositivos, Gratis para siempre",
+    "others": "Límites de archivo de 20MB, Solo conversión de archivo único, Soporte limitado del navegador, Subidas a la nube requeridas, Colas del servidor, Problemas de compatibilidad, Actualizaciones de pago"
   },
   "scenes": [
     {
-      "title": "Soporte Legacy",
-      "desc": "Convierte WebP a JPG para dispositivos y software antiguos."
+      "title": "Usuarios de correo electrónico",
+      "icon": "📧",
+      "desc": "Convierte imágenes WebP al formato JPG para adjuntos de correo electrónico, asegurando que todos los destinatarios puedan ver tus imágenes independientemente de su cliente de correo o dispositivo."
     },
     {
-      "title": "Adjuntos de Email",
-      "desc": "Asegura que los clientes de email puedan mostrar tus imágenes."
+      "title": "Usuarios de sistemas heredados",
+      "icon": "💻",
+      "desc": "Transforma archivos WebP a JPG para computadoras más antiguas, aplicaciones de software y sistemas que no admiten formato WebP moderno."
+    },
+    {
+      "title": "Compartidores multiplataforma",
+      "icon": "📱",
+      "desc": "Cambia de WebP a JPG para máxima compatibilidad al compartir imágenes en diferentes plataformas, dispositivos y redes sociales."
     }
   ],
+  "rating": {
+    "text": "\"Finalmente, un convertidor que asegura que mis imágenes funcionen en todas partes. ¡No más dolores de cabeza de compatibilidad!\" - Únete a miles de usuarios que confían en Toolaze para conversión de formato confiable."
+  },
   "faq": [
     {
-      "q": "¿Por qué convertir WebP a JPG?",
-      "a": "JPG tiene soporte universal, mientras que WebP puede no ser compatible con dispositivos o software antiguos."
+      "q": "¿Por qué necesito convertir WebP a JPG?",
+      "a": "El formato WebP ofrece compresión excelente pero tiene compatibilidad limitada. Muchos navegadores más antiguos (especialmente Internet Explorer), clientes de correo electrónico, aplicaciones de software heredadas y aplicaciones móviles no admiten WebP, causando que las imágenes fallen al mostrarse. JPG es el estándar universal que funciona en prácticamente todos los dispositivos, navegadores y aplicaciones en todo el mundo, asegurando que tus imágenes se muestren correctamente en todas partes sin problemas de compatibilidad."
     },
     {
-      "q": "¿Se verá afectada la calidad?",
-      "a": "JPG usa compresión con pérdida, pero mantenemos alta calidad durante la conversión."
+      "q": "¿Reducirá la calidad de la imagen convertir WebP a JPG?",
+      "a": "JPG usa compresión con pérdidas, por lo que ocurre cierta pérdida de calidad durante la conversión. Sin embargo, para la mayoría de fotografías e imágenes complejas, la pérdida de calidad es mínima y visualmente imperceptible en tamaños de visualización normales. Toolaze usa algoritmos de compresión optimizados para mantener la mejor calidad posible mientras asegura compatibilidad universal. La compensación vale la pena por compatibilidad garantizada en todas las plataformas y dispositivos."
+    },
+    {
+      "q": "¿Puedo convertir imágenes WebP con transparencia a JPG?",
+      "a": "Sí, puedes convertir imágenes WebP con transparencia a JPG, pero el formato JPG no admite transparencia. Al convertir, las áreas transparentes se llenarán con un fondo de color sólido (típicamente blanco). Si necesitas preservar transparencia, considera convertir a formato PNG en su lugar, que admite transparencia completa del canal alfa."
+    },
+    {
+      "q": "¿Es gratuita y segura la conversión de WebP a JPG?",
+      "a": "Sí, Toolaze es completamente gratis para siempre sin costos ocultos, suscripciones o anuncios. Más importante aún, toda la conversión ocurre localmente en tu navegador usando tecnología del lado del cliente. Tus archivos WebP nunca abandonan tu dispositivo: nunca se suben a ningún servidor, garantizando 100% de privacidad y seguridad para tus imágenes."
+    },
+    {
+      "q": "¿Puedo convertir múltiples archivos WebP a JPG a la vez?",
+      "a": "Sí, Toolaze admite conversión por lotes de hasta 100 archivos WebP por sesión. Puedes arrastrar y soltar múltiples archivos WebP a la vez, y todos se convertirán al formato JPG simultáneamente. No hay límites de tamaño de archivo individual, por lo que puedes convertir archivos WebP grandes sin restricciones."
+    },
+    {
+      "q": "¿Se preservarán mis datos EXIF al convertir WebP a JPG?",
+      "a": "Sí, Toolaze preserva todos los metadatos EXIF durante la conversión, incluyendo coordenadas GPS, fecha de captura, configuraciones de cámara y otras etiquetas de metadatos. Tus archivos JPG convertidos retendrán todos los metadatos originales de tus archivos WebP."
+    },
+    {
+      "q": "¿Cuál es la diferencia entre los formatos WebP y JPG?",
+      "a": "WebP es el formato moderno de Google que ofrece 25-35% mejor compresión que JPG con calidad similar, y admite transparencia y animación. Sin embargo, WebP tiene compatibilidad limitada: muchos navegadores más antiguos, clientes de correo electrónico y aplicaciones no lo admiten. JPG es el estándar universal que funciona en todas partes, usa compresión con pérdidas optimizada para fotografías, y no admite transparencia, pero garantiza compatibilidad en todas las plataformas y dispositivos."
     }
   ],
   "compare": {
-    "toolaze": "Convertir por lotes, Alta calidad, Gratis",
-    "others": "Uno por uno, Pérdida de calidad, Suscripción"
+    "toolaze": "Conversión ilimitada de WebP a JPG, Garantía de compatibilidad universal, Arquitectura local primero, Sin límites de tamaño de archivo, Preservación completa de EXIF, 100% procesamiento privado, Funciona en todos los dispositivos",
+    "others": "Límites de archivo de 20MB, Subidas a la nube requeridas, Soporte limitado del navegador, Colas del servidor, Datos EXIF eliminados, Preocupaciones de privacidad, Problemas de compatibilidad"
   }
 }

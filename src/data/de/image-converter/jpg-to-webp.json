@@ -1,45 +1,193 @@
 {
+  "in_menu": true,
   "metadata": {
     "title": "JPG zu WebP konvertieren - Kostenloser Online-Bildkonverter | Toolaze",
-    "description": "Konvertieren Sie JPG-Bilder sofort in WebP-Format. Batch-Konvertierung von bis zu 100 Bildern. Reduzieren Sie die Dateigröße um bis zu 30% bei erhaltener Qualität. 100% kostenlos."
+    "description": "Wie konvertiert man JPG zu WebP? 1. JPG hochladen 2. Automatisch konvertieren 3. WebP herunterladen. Dateigröße um 30% reduzieren ohne Qualitätsverlust. Sicher & Privat."
   },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
   "hero": {
     "h1": "JPG zu WebP Konverter",
-    "sub": "Überlegene Komprimierung",
-    "desc": "Konvertieren Sie JPG-Bilder in WebP-Format für noch kleinere Dateigrößen. WebP bietet bessere Komprimierung als JPG bei ähnlicher visueller Qualität."
+    "desc": "Konvertieren Sie JPG zu WebP online kostenlos. Ziehen Sie einfach Ihre JPG-Bilder hierher, um sie in Sekunden in WebP zu konvertieren."
   },
   "intro": {
-    "title": "Bessere Komprimierung",
-    "content": "WebP-Format bietet 25-30% bessere Komprimierung als JPG bei ähnlicher visueller Qualität. Perfekt für moderne Web-Anwendungen und mobile Apps."
+    "title": "Warum JPG zu WebP konvertieren? Moderne Komprimierung für das Web",
+    "content": [
+      {
+        "title": "JPG vs WebP: Komprimierungstechnologie-Vergleich",
+        "text": "JPG (JPEG) ist das universelle Standardformat für Fotos und verwendet verlustbehaftete Komprimierung, die für komplexe Bilder mit vielen Farben optimiert ist. JPG erreicht gute Komprimierungsverhältnisse und wird überall unterstützt, was es zur Standardwahl für digitale Fotografie und Web-Bilder macht. Die JPG-Komprimierungstechnologie ist jedoch jahrzehntealt und nutzt keine modernen Algorithmen. WebP ist Googles fortschrittliches Bildformat, das überlegene Komprimierungsalgorithmen verwendet und 25-30% bessere Komprimierung als JPG erreicht, während ähnliche oder bessere visuelle Qualität beibehalten wird. WebP unterstützt sowohl verlustbehaftete als auch verlustfreie Komprimierung, kann Transparenz handhaben (was JPG nicht kann) und ist für die moderne Webnutzung optimiert. WebP repräsentiert die nächste Generation der Bildkomprimierung und bietet bessere Effizienz ohne Kompatibilität mit modernen Browsern und Geräten zu opfern."
+      },
+      {
+        "title": "Warum JPG zu WebP konvertieren?",
+        "text": "Die Konvertierung von JPG zu WebP wird vorteilhaft, wenn Sie die Website-Leistung optimieren und Bandbreitenkosten reduzieren müssen, die Seitenladezeiten für bessere Benutzererfahrung verbessern möchten, Speicherplatz für große Bildsammlungen reduzieren müssen oder moderne Webanwendungen erstellen, die WebP-Format unterstützen. WebP-Format liefert 25-30% kleinere Dateigrößen als JPG bei ausgezeichneter visueller Qualität, was es ideal für moderne Webentwicklung, mobile Apps und digitale Plattformen macht, bei denen Leistung und Effizienz Priorität haben. WebP wird von allen modernen Browsern unterstützt und gewährleistet Kompatibilität bei maximaler Komprimierungsnutzung."
+      }
+    ]
+  },
+  "features": {
+    "title": "Effiziente Konvertierungsfunktionen",
+    "items": [
+      {
+        "icon": "📉",
+        "iconType": "compression",
+        "title": "Fortschrittliche Komprimierungstechnologie",
+        "desc": "Transformieren Sie Ihre JPG-Bilder in WebP-Format und erreichen Sie 25-30% kleinere Dateigrößen bei ausgezeichneter visueller Qualität für Fotos und komplexe Bilder."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Vollständiger Datenschutz",
+        "desc": "Jede Konvertierung erfolgt vollständig in Ihrem Browser – Ihre JPG-Dateien werden niemals an externe Server gesendet und gewährleisten absolute Privatsphäre und Sicherheit."
+      },
+      {
+        "icon": "📦",
+        "iconType": "batch",
+        "title": "Großvolumige Batch-Verarbeitung",
+        "desc": "Verarbeiten Sie ganze Fotobibliotheken von bis zu 100 JPG-Dateien gleichzeitig und konvertieren Sie sie alle effizient in optimiertes WebP-Format."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Sofortige Verarbeitung",
+        "desc": "Unsere browserbasierte Engine konvertiert JPG zu WebP sofort ohne Server-Uploads, Verarbeitungswarteschlangen oder Download-Wartezeiten."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Für immer kostenlos",
+        "desc": "Genießen Sie unbegrenzte JPG-zu-WebP-Konvertierungen völlig kostenlos – keine Premium-Abonnements, keine versteckten Gebühren, keine Werbung."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "Keine Einrichtung erforderlich",
+        "desc": "Führen Sie alles direkt in Ihrem Webbrowser mit clientseitiger Verarbeitung aus – keine Software-Installation oder Browser-Erweiterungen erforderlich."
+      }
+    ]
   },
   "specs": {
-    "engine": "WebP-Konvertierungs-Engine",
-    "limit": "Batch bis zu 100 Bilder",
-    "logic": "Qualitäts-optimierte Konvertierung",
-    "privacy": "100% Client-seitig"
+    "engine": "Canvas API Engine - Browser-Native Verarbeitung",
+    "limit": "Batch 100+ Bilder - Unbegrenzte Dateigrößen",
+    "logic": "Qualitätsoptimierte Konvertierung (Fortschrittliche Komprimierung)",
+    "privacy": "100% Client-seitig (Lokale Browser-Verarbeitung)"
+  },
+  "performanceMetrics": {
+    "title": "Technische Spezifikationen",
+    "metrics": [
+      {
+        "label": "Eingabeformat",
+        "value": "JPG/JPEG (Joint Photographic Experts Group)"
+      },
+      {
+        "label": "Ausgabeformat",
+        "value": "WebP (Googles Fortschrittliches Bildformat)"
+      },
+      {
+        "label": "Maximale Batch-Größe",
+        "value": "100 Bilder pro Sitzung"
+      },
+      {
+        "label": "Dateigrößenlimit",
+        "value": "Unbegrenzt (Begrenzt durch Browser-Speicher)"
+      },
+      {
+        "label": "Komprimierungstyp",
+        "value": "Verlustbehaftet (25-30% Größenreduzierung)"
+      },
+      {
+        "label": "Qualitätserhaltung",
+        "value": "Ausgezeichnete visuelle Qualität erhalten"
+      },
+      {
+        "label": "Verarbeitungsort",
+        "value": "100% Client-seitig (Browser Canvas API)"
+      },
+      {
+        "label": "EXIF-Daten",
+        "value": "Bei der Konvertierung erhalten"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Wie konvertiert man JPG zu WebP",
+    "steps": [
+      {
+        "title": "JPG-Dateien hochladen",
+        "desc": "Ziehen Sie Ihre JPG-Bilder in die Konverter-Oberfläche oder klicken Sie, um mehrere JPG-Dateien von Ihrem Computer auszuwählen."
+      },
+      {
+        "title": "Automatische WebP-Konvertierung",
+        "desc": "Unser Konverter verarbeitet Ihre JPG-Dateien automatisch und transformiert sie mit fortgeschrittenen Komprimierungsalgorithmen in WebP-Format."
+      },
+      {
+        "title": "Optimierte WebP-Dateien herunterladen",
+        "desc": "Laden Sie Ihre konvertierten WebP-Dateien sofort herunter. Jede WebP ist 25-30% kleiner als das ursprüngliche JPG bei erhaltener visueller Qualität."
+      }
+    ]
+  },
+  "comparison": {
+    "toolaze": "Unbegrenzte Dateigrößen, Batch 100+ JPG-Bilder, 25-30% Größenreduzierung, Fortschrittliche Komprimierung, 100% lokale Verarbeitung, Keine Uploads, Für immer kostenlos",
+    "others": "20MB Dateilimits, Nur Einzeldatei-Konvertierung, Schlechte Komprimierungsqualität, Minimale Größenreduzierung, Cloud-Uploads erforderlich, Server-Warteschlangen, Bezahlte Upgrades"
   },
   "scenes": [
     {
-      "title": "Website-Optimierung",
-      "desc": "Konvertieren Sie JPG zu WebP für schnelleres Seitenladen."
+      "title": "Website-Besitzer",
+      "icon": "🌐",
+      "desc": "Konvertieren Sie JPG-Bilder zu WebP-Format für Websites, erreichen Sie schnellere Seitenladezeiten und bessere SEO-Leistung bei reduzierten Bandbreitenkosten."
     },
     {
-      "title": "Mobile Optimierung",
-      "desc": "Reduzieren Sie Datenverbrauch mit kleineren WebP-Dateien."
+      "title": "Mobile App-Entwickler",
+      "icon": "📱",
+      "desc": "Transformieren Sie JPG-Fotos zu WebP-Format für mobile Anwendungen, reduzieren Sie die App-Größe und verbessern Sie die Download-Geschwindigkeiten für Benutzer."
+    },
+    {
+      "title": "Content-Ersteller",
+      "icon": "📸",
+      "desc": "Optimieren Sie JPG-Fotosammlungen zu WebP-Format für Online-Portfolios und Social Media, gewährleisten Sie schnellere Uploads und bessere Leistung."
     }
   ],
+  "rating": {
+    "text": "\"Erstaunliche Komprimierungsergebnisse! Meine Website lädt 30% schneller mit WebP-Bildern.\" - Schließen Sie sich Tausenden von Webentwicklern und Content-Erstellern an, die Toolaze für effiziente Bildoptimierung verwenden."
+  },
   "faq": [
     {
-      "q": "Ist WebP besser als JPG?",
-      "a": "WebP bietet 25-30% bessere Komprimierung als JPG mit ähnlicher Qualität."
+      "q": "Ist WebP besser als JPG für Komprimierung?",
+      "a": "Ja, WebP bietet 25-30% bessere Komprimierung als JPG bei ähnlicher oder besserer visueller Qualität. WebP verwendet fortgeschrittene Komprimierungsalgorithmen, die von Google entwickelt wurden, was es effizienter macht als die jahrzehntealte JPG-Komprimierungstechnologie. Für moderne Webanwendungen und mobile Apps bietet WebP erhebliche Vorteile bei der Dateigrößenreduzierung ohne merklichen Qualitätsverlust."
     },
     {
-      "q": "Werden alle Browser WebP unterstützen?",
-      "a": "Alle modernen Browser unterstützen WebP. Ältere Browser benötigen möglicherweise Fallbacks."
+      "q": "Wird die Bildqualität durch Konvertierung von JPG zu WebP reduziert?",
+      "a": "WebP verwendet verlustbehaftete Komprimierung ähnlich wie JPG, daher tritt während der Konvertierung ein gewisser Qualitätsverlust auf. WebPs fortgeschrittene Algorithmen produzieren jedoch typischerweise bessere Qualität bei derselben Dateigröße im Vergleich zu JPG oder ähnliche Qualität bei kleineren Dateigrößen. Für die meisten Fotos und komplexen Bilder ist der Qualitätsverlust minimal und visuell bei normalen Betrachtungsgrößen nicht wahrnehmbar. Toolaze verwendet optimierte Komprimierungseinstellungen, um die bestmögliche Qualität zu erhalten und gleichzeitig die maximale Dateigrößenreduzierung zu erreichen."
+    },
+    {
+      "q": "Unterstützen alle Browser das WebP-Format?",
+      "a": "Alle modernen Browser unterstützen das WebP-Format, einschließlich Chrome, Firefox, Safari, Edge und Opera. WebP wird auch von allen wichtigen mobilen Browsern unterstützt. Ältere Browser (besonders Internet Explorer) unterstützen WebP jedoch nicht. Für maximale Kompatibilität können Sie WebP mit Fallback zu JPG für ältere Browser verwenden oder zu JPG konvertieren, wenn Sie universelle Kompatibilität benötigen."
+    },
+    {
+      "q": "Ist die JPG-zu-WebP-Konvertierung kostenlos und sicher?",
+      "a": "Ja, Toolaze ist für immer völlig kostenlos ohne versteckte Kosten, Abonnements oder Werbung. Noch wichtiger ist, dass alle Konvertierungen lokal in Ihrem Browser mit clientseitiger Technologie erfolgen. Ihre JPG-Dateien verlassen niemals Ihr Gerät – sie werden niemals auf einen Server hochgeladen, was 100% Privatsphäre und Sicherheit für Ihre Bilder gewährleistet."
+    },
+    {
+      "q": "Kann ich mehrere JPG-Dateien gleichzeitig zu WebP konvertieren?",
+      "a": "Ja, Toolaze unterstützt die Batch-Konvertierung von bis zu 100 JPG-Dateien pro Sitzung. Sie können mehrere JPG-Dateien gleichzeitig ziehen und ablegen, und sie werden alle gleichzeitig in WebP-Format konvertiert. Es gibt keine individuellen Dateigrößenlimits, sodass Sie große JPG-Dateien ohne Einschränkungen konvertieren können."
+    },
+    {
+      "q": "Werden meine EXIF-Daten bei der Konvertierung von JPG zu WebP erhalten?",
+      "a": "Ja, Toolaze behält alle EXIF-Metadaten bei der Konvertierung bei, einschließlich GPS-Koordinaten, Aufnahmedatum, Kameraeinstellungen und anderen Metadaten-Tags. Ihre konvertierten WebP-Dateien behalten alle ursprünglichen Metadaten aus Ihren JPG-Dateien."
+    },
+    {
+      "q": "Was ist der Unterschied zwischen JPG- und WebP-Format?",
+      "a": "JPG verwendet verlustbehaftete Komprimierung, die für Fotos optimiert ist, was gute Komprimierung ergibt, aber jahrzehntealte Technologie verwendet. JPG wird universell unterstützt, unterstützt jedoch keine Transparenz. WebP verwendet fortgeschrittene Komprimierungsalgorithmen, erreicht 25-30% bessere Komprimierung als JPG bei ähnlicher Qualität, unterstützt sowohl verlustbehaftete als auch verlustfreie Komprimierung, kann Transparenz handhaben und ist für die moderne Webnutzung optimiert. WebP wird von allen modernen Browsern unterstützt und repräsentiert die nächste Generation der Bildkomprimierung."
     }
   ],
   "compare": {
-    "toolaze": "Batch-Verarbeitung, Bessere Komprimierung, Kostenlos",
-    "others": "Einzeldatei, Gleiche Größe, Bezahlt"
+    "toolaze": "Unbegrenzte JPG-zu-WebP-Konvertierung, 25-30% Größenreduzierung, Fortschrittliche Komprimierungsalgorithmen, Lokale Architektur, Keine Dateigrößenlimits, Vollständige EXIF-Erhaltung, 100% private Verarbeitung",
+    "others": "20MB Dateilimits, Cloud-Uploads erforderlich, Schlechte Komprimierungsqualität, Minimale Größenreduzierung, Server-Warteschlangen, EXIF-Daten entfernt, Datenschutzbedenken"
   }
 }

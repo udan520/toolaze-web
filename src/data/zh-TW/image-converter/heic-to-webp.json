@@ -1,45 +1,193 @@
 {
+  "in_menu": true,
   "metadata": {
-    "title": "HEIC 轉 WebP - 免費線上圖片轉換器 | Toolaze",
-    "description": "即時將 HEIC/HEIF 圖片轉換為 WebP 格式。批次轉換最多 100 張圖片。現代格式，優越壓縮。100% 免費。"
+    "title": "HEIC 轉 WebP 線上轉換（免費、批次處理、無廣告） - Toolaze",
+    "description": "如何將 HEIC 轉換為 WebP？1. 上傳 HEIC 2. 自動轉換 3. 下載 WebP。在保持品質的同時減少檔案大小。安全且私密。"
   },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
   "hero": {
     "h1": "HEIC 轉 WebP 轉換器",
-    "sub": "現代格式轉換",
-    "desc": "將 HEIC 圖片轉換為 WebP 格式以獲得較小的檔案大小和更好的網站效能。WebP 提供優越的壓縮，同時保持品質。"
+    "desc": "免費線上將 HEIC 轉換為 WebP。只需將您的 HEIC 圖片拖放到下方，即可在幾秒內轉換為 WebP。"
   },
   "intro": {
-    "title": "現代網站格式",
-    "content": "WebP 是一種現代圖片格式，提供出色的壓縮和品質。將您的 HEIC 圖片轉換為 WebP 以獲得更好的網站效能和較小的檔案大小。"
+    "title": "為什麼要將 HEIC 轉換為 WebP？具有廣泛相容性的現代壓縮",
+    "content": [
+      {
+        "title": "HEIC vs WebP：格式比較和使用案例",
+        "text": "HEIC（高效影像容器）是 Apple 的現代圖片格式，使用高級 HEVC 編碼實現比 JPG 小 50% 的檔案大小，同時保持優越的圖片品質。HEIC 支援透明度、高動態範圍（HDR）和高級功能，使其成為 Apple 裝置的理想選擇。然而，HEIC 有重要的相容性限制：它主要在 Apple 裝置和較新的系統上受支援，在與 Windows 使用者分享、上傳到網站或在不相容 HEIC 的應用程式中使用時會造成問題。WebP 是 Google 的現代圖片格式，提供出色的壓縮，通常比 JPG 好 25-35%，支援有損和無損壓縮，使用 Alpha 通道保留透明度，並受到所有現代瀏覽器和行動裝置的支援。WebP 提供了 HEIC 壓縮效率與通用相容性之間的完美平衡。"
+      },
+      {
+        "title": "為什麼要將 HEIC 轉換為 WebP？",
+        "text": "當您需要優化網站效能並減少載入時間、希望在實現更小檔案大小的同時保持透明度、需要與現代網頁瀏覽器和應用程式相容，或正在構建支援 WebP 格式的網頁應用程式時，將 HEIC 轉換為 WebP 會變得有益。WebP 格式保留了 HEIC 的透明度和品質優勢，同時提供通用瀏覽器支援，使其成為效能優化和相容性是優先事項的現代網頁開發、行動應用程式和數位平台的理想選擇。WebP 受到所有現代瀏覽器的支援，確保您的 iPhone 照片在網路上完美運作。"
+      }
+    ]
+  },
+  "features": {
+    "title": "高級轉換功能",
+    "items": [
+      {
+        "icon": "📊",
+        "iconType": "compression",
+        "title": "高效的壓縮技術",
+        "desc": "將您的 HEIC 圖片轉換為 WebP 格式，在保持出色的視覺品質和透明度支援的同時，實現最佳的檔案大小。"
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "絕對隱私保護",
+        "desc": "每次轉換完全在您的瀏覽器內進行，您的 HEIC 檔案永遠不會離開您的裝置，確保完整的資料安全和隱私。"
+      },
+      {
+        "icon": "📦",
+        "iconType": "batch",
+        "title": "大量轉換支援",
+        "desc": "一次處理最多 100 個 HEIC 檔案的整個 iPhone 照片庫，將它們全部高效地轉換為優化的 WebP 格式。"
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "即時處理",
+        "desc": "我們的 WebAssembly 驅動 HEVC 解碼器立即處理 HEIC 到 WebP 的轉換，無需伺服器上傳或處理延遲。"
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "永遠完全免費",
+        "desc": "免費存取無限的 HEIC 到 WebP 轉換，無需高級訂閱、隱藏費用或廣告中斷。"
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "無需安裝",
+        "desc": "使用 WebAssembly 技術直接在您的網頁瀏覽器中運行一切，無需軟體下載或瀏覽器擴充功能。"
+      }
+    ]
   },
   "specs": {
-    "engine": "HEIC 轉 WebP 轉換器",
-    "limit": "批次最多 100 張圖片",
-    "logic": "品質保留轉換",
-    "privacy": "100% 客戶端"
+    "engine": "HEVC 解碼器啟用 - WebAssembly 驅動處理",
+    "limit": "批次 100+ 圖片 - 無限制檔案大小",
+    "logic": "保留品質和透明度的轉換",
+    "privacy": "100% 客戶端（本地瀏覽器處理）"
+  },
+  "performanceMetrics": {
+    "title": "技術規格",
+    "metrics": [
+      {
+        "label": "輸入格式",
+        "value": "HEIC/HEIF (Apple 高效影像格式)"
+      },
+      {
+        "label": "輸出格式",
+        "value": "WebP (Google 的現代圖片格式)"
+      },
+      {
+        "label": "最大批次大小",
+        "value": "每次會話 100 張圖片"
+      },
+      {
+        "label": "檔案大小限制",
+        "value": "無限制（受瀏覽器記憶體限制）"
+      },
+      {
+        "label": "壓縮類型",
+        "value": "有損/無損（優化壓縮）"
+      },
+      {
+        "label": "透明度支援",
+        "value": "完整的 Alpha 通道透明度保留"
+      },
+      {
+        "label": "處理位置",
+        "value": "100% 客戶端（WebAssembly HEVC 解碼器）"
+      },
+      {
+        "label": "EXIF 資料",
+        "value": "轉換期間保留"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "如何將 HEIC 轉換為 WebP",
+    "steps": [
+      {
+        "title": "上傳您的 HEIC 檔案",
+        "desc": "將您的 HEIC 圖片拖放到轉換器介面，或點擊從您的 iPhone 或裝置中選擇 HEIC 檔案。"
+      },
+      {
+        "title": "自動 WebP 轉換",
+        "desc": "我們的轉換器使用 WebAssembly 驅動的 HEVC 解碼器自動處理您的 HEIC 檔案，並使用優化的壓縮將它們轉換為 WebP 格式。"
+      },
+      {
+        "title": "下載優化的 WebP 檔案",
+        "desc": "立即下載您轉換後的 WebP 檔案。每個 WebP 在針對網頁使用進行優化的同時保持品質和透明度。"
+      }
+    ]
+  },
+  "comparison": {
+    "toolaze": "無限制檔案大小、批次 100+ HEIC 圖片、優化的 WebP 壓縮、透明度保留、WebAssembly 驅動、100% 本地處理、無需上傳、永久免費",
+    "others": "20MB 檔案限制、僅單一檔案轉換、壓縮品質差、透明度丟失、需要雲端上傳、伺服器佇列、付費升級"
   },
   "scenes": [
     {
-      "title": "網站優化",
-      "desc": "將 HEIC 轉換為 WebP 以加快網站載入速度。"
+      "title": "網站開發者",
+      "icon": "💻",
+      "desc": "將 HEIC iPhone 照片轉換為 WebP 格式用於現代網站，在保持透明度和品質的同時實現更快的頁面載入和更好的效能。"
     },
     {
-      "title": "行動應用程式",
-      "desc": "透過 WebP 格式轉換減少應用程式大小。"
+      "title": "行動應用程式開發者",
+      "icon": "📱",
+      "desc": "將 HEIC 圖片轉換為 WebP 格式用於行動應用程式，在不犧牲圖片品質的情況下減少應用程式大小並提高下載速度。"
+    },
+    {
+      "title": "內容創作者",
+      "icon": "📸",
+      "desc": "將 HEIC 照片集合優化為 WebP 格式用於線上作品集和社群媒體，確保更快的上傳和更好的網頁相容性。"
     }
   ],
+  "rating": {
+    "text": "\"為我的網站將 iPhone 照片轉換為 WebP 的完美解決方案。出色的壓縮和品質！\" - 加入數千名信任 Toolaze 進行高效 HEIC 轉換的開發者和創作者。"
+  },
   "faq": [
     {
-      "q": "為什麼要將 HEIC 轉換為 WebP？",
-      "a": "WebP 提供比 HEIC 更好的壓縮，同時保持品質，並具有更廣泛的瀏覽器支援。"
+      "q": "為什麼要將 HEIC 轉換為 WebP 而不是 JPG？",
+      "a": "WebP 提供比 JPG 更好的壓縮（25-35% 更小的檔案），同時保持相似的品質，並且 WebP 支援 JPG 不支援的透明度。WebP 也受到所有現代瀏覽器的支援，使其成為網頁使用的理想選擇。雖然 HEIC 提供更好的壓縮，但它相容性有限。WebP 提供了壓縮效率與通用瀏覽器支援之間的完美平衡，使其成為現代網頁應用程式和行動應用程式的理想選擇。"
     },
     {
-      "q": "WebP 廣泛支援嗎？",
-      "a": "WebP 受到所有現代瀏覽器和行動裝置的支援。"
+      "q": "將 HEIC 轉換為 WebP 時會保留透明度嗎？",
+      "a": "是的，WebP 格式完全支援 Alpha 通道透明度，因此如果您的 HEIC 圖片具有透明度，在轉換為 WebP 時將完美保留。HEIC 格式支援透明度，WebP 保留了此功能，使 WebP 成為來自 iPhone 照片的需要透明背景的圖形、標誌和圖片的理想選擇。"
+    },
+    {
+      "q": "將 HEIC 轉換為 WebP 會降低圖片品質嗎？",
+      "a": "WebP 支援有損和無損壓縮。將 HEIC 轉換為 WebP 時，您可以實現更小的檔案大小，品質損失最小，通常在正常檢視大小下視覺上無法察覺。WebP 的高級壓縮演算法通常在更小的檔案大小下產生出色的品質。對於品質至關重要的圖片，WebP 的無損模式可保留完美品質，同時仍能實現一些壓縮優勢。"
+    },
+    {
+      "q": "HEIC 到 WebP 的轉換是否免費且安全？",
+      "a": "是的，Toolaze 永遠完全免費，沒有隱藏成本、訂閱或廣告。最重要的是，所有轉換都使用 WebAssembly 驅動的 HEVC 解碼器技術在您的瀏覽器中本地進行。您的 HEIC 檔案永遠不會離開您的裝置，永遠不會上傳到任何伺服器，確保您的 iPhone 照片 100% 的隱私和安全性。"
+    },
+    {
+      "q": "我可以一次將多個 HEIC 檔案轉換為 WebP 嗎？",
+      "a": "是的，Toolaze 支援每次會話批次轉換最多 100 個 HEIC 檔案。您可以一次拖放多個 HEIC 檔案，它們都會同時轉換為 WebP 格式並保留透明度。沒有個別檔案大小限制，因此您可以無限制地轉換大型 HEIC 檔案。"
+    },
+    {
+      "q": "將 HEIC 轉換為 WebP 時，我的 EXIF 資料會保留嗎？",
+      "a": "是的，Toolaze 在轉換期間保留所有 EXIF 元資料，包括 GPS 座標、拍攝日期、相機設定和其他元資料標籤。您轉換後的 WebP 檔案將保留 HEIC 檔案中的所有原始元資料。"
+    },
+    {
+      "q": "HEIC 和 WebP 格式有什麼區別？",
+      "a": "HEIC 是 Apple 使用 HEVC 編碼的現代格式，提供比 JPG 小 50% 的檔案，品質優越，並支援透明度和 HDR。然而，HEIC 相容性有限，主要在 Apple 裝置上受支援。WebP 是 Google 的現代格式，提供比 JPG 好 25-35% 的壓縮，支援有損和無損壓縮，保留透明度，並受到所有現代瀏覽器的支援。WebP 提供了比 HEIC 更好的相容性，同時保持了出色的壓縮和品質。"
     }
   ],
   "compare": {
-    "toolaze": "批次處理，更好壓縮，免費",
-    "others": "單檔，相同大小，付費"
+    "toolaze": "無限制 HEIC 到 WebP 轉換、優化壓縮、完整透明度保留、WebAssembly 驅動、通用瀏覽器支援、無檔案大小限制、完整 EXIF 保留、100% 私密處理",
+    "others": "20MB 檔案限制、需要雲端上傳、壓縮品質差、透明度丟失、有限的瀏覽器支援、伺服器佇列、EXIF 資料被移除、隱私疑慮"
   }
 }

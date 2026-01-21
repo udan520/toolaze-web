@@ -1,45 +1,193 @@
 {
+  "in_menu": true,
   "metadata": {
-    "title": "Converter JPG para PNG - Conversor de Imagens Online Grátis | Toolaze",
-    "description": "Converta imagens JPG/JPEG para formato PNG instantaneamente. Conversão em lote até 100 imagens. 100% grátis, privado, nenhum upload necessário."
+    "title": "Converter JPG para PNG Online (Grátis, Lote e Sem Anúncios) - Toolaze",
+    "description": "Como converter JPG para PNG? 1. Fazer upload de JPG 2. Converter automaticamente 3. Baixar PNG. Adicione suporte de transparência com qualidade sem perda. Seguro e Privado."
   },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
   "hero": {
     "h1": "Conversor JPG para PNG",
-    "sub": "Conversão de Formato Sem Perda",
-    "desc": "Converta suas imagens JPG para formato PNG preservando qualidade. Perfeito para imagens que precisam de suporte de transparência ou compressão sem perda."
+    "desc": "Converta JPG para PNG online gratuitamente. Simplesmente arraste suas imagens JPG abaixo para convertê-las para PNG em segundos."
   },
   "intro": {
-    "title": "Por Que Converter JPG para PNG?",
-    "content": "O formato PNG suporta transparência e compressão sem perda, tornando-o ideal para logotipos, gráficos e imagens que requerem alta qualidade. Nosso conversor processa imagens localmente no seu navegador, garantindo privacidade completa."
+    "title": "Por que converter JPG para PNG? Entendendo as diferenças de formato",
+    "content": [
+      {
+        "title": "JPG vs PNG: Qual é a diferença?",
+        "text": "JPG (JPEG) é um formato de compressão com perda perfeito para fotografias e imagens com muitas cores, oferecendo tamanhos de arquivo menores ao custo de alguma perda de qualidade. No entanto, JPG tem limitações significativas: não suporta transparência, tornando-o inadequado para logotipos, gráficos com fundos transparentes ou imagens que precisam sobrepor em diferentes fundos. PNG (Portable Network Graphics) é um formato sem perda que preserva cada pixel perfeitamente, suporta transparência completa do canal alfa e é ideal para gráficos, logotipos, ícones e imagens onde qualidade e transparência são essenciais."
+      },
+      {
+        "title": "Por que converter JPG para PNG?",
+        "text": "Converter JPG para PNG torna-se necessário quando você precisa de suporte de transparência para logotipos ou gráficos, requer preservação de qualidade sem perda para trabalho de design, precisa de imagens que possam sobrepor perfeitamente em diferentes fundos, ou quer evitar artefatos de compressão que JPG introduz. PNG garante que suas imagens mantenham qualidade pixel-perfeita e possam ser usadas em fluxos de trabalho de design profissional, projetos de desenvolvimento web e materiais de marca onde transparência e qualidade são não negociáveis."
+      }
+    ]
+  },
+  "features": {
+    "title": "Recursos de conversão poderosos",
+    "items": [
+      {
+        "icon": "🎨",
+        "iconType": "quality",
+        "title": "Conversão de qualidade sem perda",
+        "desc": "Transforme suas imagens JPG em formato PNG mantendo qualidade perfeita em nível de pixel com zero artefatos de compressão."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Proteção completa de privacidade",
+        "desc": "Toda a conversão acontece localmente no seu navegador—seus arquivos JPG nunca deixam seu dispositivo, garantindo segurança absoluta de dados."
+      },
+      {
+        "icon": "📦",
+        "iconType": "batch",
+        "title": "Capacidade de processamento em massa",
+        "desc": "Processe coleções inteiras de até 100 imagens JPG simultaneamente, convertendo-as todas para formato PNG em uma sessão."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Desempenho ultrarrápido",
+        "desc": "Nosso motor nativo do navegador processa conversões de JPG para PNG instantaneamente sem esperar uploads de servidor ou downloads."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Zero custo para sempre",
+        "desc": "Desfrute de conversões ilimitadas de JPG para PNG completamente grátis—sem assinaturas, sem taxas ocultas, sem anúncios."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "Nenhuma instalação necessária",
+        "desc": "Tudo funciona diretamente no seu navegador web usando tecnologia do lado do cliente—sem downloads de software ou instalações de plugins necessárias."
+      }
+    ]
   },
   "specs": {
-    "engine": "Conversão Nativa do Navegador",
-    "limit": "Lote até 100 imagens",
-    "logic": "Preservação de Qualidade Sem Perda",
-    "privacy": "100% Processamento do Lado do Cliente"
+    "engine": "Alimentado por Canvas API - Processamento nativo do navegador",
+    "limit": "Lote 100+ Imagens - Tamanhos de arquivo ilimitados",
+    "logic": "Preservação completa de qualidade (conversão sem perda)",
+    "privacy": "100% Lado do cliente (processamento local do navegador)"
+  },
+  "performanceMetrics": {
+    "title": "Especificações técnicas",
+    "metrics": [
+      {
+        "label": "Formato de entrada",
+        "value": "JPG/JPEG (Joint Photographic Experts Group)"
+      },
+      {
+        "label": "Formato de saída",
+        "value": "PNG (Portable Network Graphics)"
+      },
+      {
+        "label": "Tamanho máximo do lote",
+        "value": "100 imagens por sessão"
+      },
+      {
+        "label": "Limite de tamanho de arquivo",
+        "value": "Ilimitado (limitado pela memória do navegador)"
+      },
+      {
+        "label": "Tipo de compressão",
+        "value": "Sem perda (sem degradação de qualidade)"
+      },
+      {
+        "label": "Suporte de transparência",
+        "value": "Transparência completa do canal alfa habilitada"
+      },
+      {
+        "label": "Localização do processamento",
+        "value": "100% Lado do cliente (Canvas API do navegador)"
+      },
+      {
+        "label": "Dados EXIF",
+        "value": "Preservados durante a conversão"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Como converter JPG para PNG",
+    "steps": [
+      {
+        "title": "Fazer upload dos seus arquivos JPG",
+        "desc": "Arraste e solte suas imagens JPG na área do conversor ou clique para navegar e selecionar arquivos do seu dispositivo."
+      },
+      {
+        "title": "Conversão automática",
+        "desc": "Nosso conversor processa automaticamente seus arquivos JPG e os transforma em formato PNG com qualidade sem perda."
+      },
+      {
+        "title": "Baixar resultados PNG",
+        "desc": "Baixe seus arquivos PNG convertidos instantaneamente. Cada PNG mantém qualidade perfeita e suporta transparência."
+      }
+    ]
+  },
+  "comparison": {
+    "toolaze": "Tamanhos de arquivo ilimitados, Lote 100+ imagens JPG, Conversão PNG sem perda, Suporte completo de transparência, Processamento 100% local, Sem uploads, Grátis para sempre",
+    "others": "Limites de arquivo de 20MB, Apenas conversão de arquivo único, Perda de qualidade durante conversão, Sem suporte de transparência, Uploads na nuvem necessários, Filas de servidor, Atualizações pagas"
   },
   "scenes": [
     {
-      "title": "Conversão de Logotipo",
-      "desc": "Converta logotipos de JPG para PNG para adicionar suporte de transparência."
+      "title": "Designers gráficos",
+      "icon": "🎨",
+      "desc": "Transforme gráficos JPG em formato PNG para adicionar suporte de transparência para logotipos, ícones e elementos de design que precisam sobrepor perfeitamente em vários fundos."
     },
     {
-      "title": "Design Gráfico",
-      "desc": "Mude para PNG para qualidade sem perda em projetos de design."
+      "title": "Desenvolvedores web",
+      "icon": "💻",
+      "desc": "Converta imagens JPG para PNG para projetos web que requerem fundos transparentes, garantindo que seus gráficos se misturem perfeitamente com qualquer design ou esquema de cores do site."
+    },
+    {
+      "title": "Designers de marca",
+      "icon": "🏢",
+      "desc": "Mude de formato JPG para PNG para manter qualidade pixel-perfeita para ativos de marca, garantindo que seus logotipos e gráficos pareçam impecáveis em todas as mídias e aplicações."
     }
   ],
+  "rating": {
+    "text": "\"Finalmente, um conversor que me dá verdadeiro suporte de transparência sem perda de qualidade. Perfeito para meu fluxo de trabalho de design.\" - Junte-se a milhares de designers e desenvolvedores que confiam no Toolaze para conversão de imagem de nível profissional."
+  },
   "faq": [
     {
-      "q": "A qualidade será preservada?",
-      "a": "Sim, PNG é um formato sem perda, então a qualidade é completamente preservada durante a conversão."
+      "q": "Posso adicionar transparência a imagens JPG convertendo para PNG?",
+      "a": "Converter JPG para PNG criará um arquivo PNG, mas o formato JPG não suporta transparência, então as áreas transparentes serão preenchidas com uma cor sólida (geralmente branco). Se você precisa de transparência verdadeira, precisará editar a imagem em um editor gráfico após a conversão para remover o fundo. No entanto, o formato PNG suporta transparência, então uma vez convertido, você pode trabalhar com a imagem em software de design para adicionar ou modificar transparência."
     },
     {
-      "q": "Posso converter múltiplos arquivos?",
-      "a": "Sim, você pode converter em lote até 100 imagens de uma vez."
+      "q": "Converter JPG para PNG melhorará a qualidade da imagem?",
+      "a": "PNG é um formato sem perda, então converter JPG para PNG impedirá qualquer perda adicional de qualidade. No entanto, não restaurará qualidade que já foi perdida durante a compressão JPG original. O PNG convertido manterá o nível de qualidade atual do seu arquivo JPG, e edições futuras não introduzirão artefatos de compressão adicionais já que PNG usa compressão sem perda."
+    },
+    {
+      "q": "Quanto maiores serão os arquivos PNG comparados ao JPG?",
+      "a": "Arquivos PNG são tipicamente 2-5 vezes maiores que arquivos JPG porque PNG usa compressão sem perda enquanto JPG usa compressão com perda. Por exemplo, um JPG de 500KB pode se tornar um arquivo PNG de 1.5-2.5MB. Este é o trade-off para qualidade sem perda e suporte de transparência. No entanto, arquivos PNG comprimem melhor para imagens com menos cores (como logotipos e gráficos) comparado a fotografias."
+    },
+    {
+      "q": "A conversão de JPG para PNG é gratuita e segura?",
+      "a": "Sim, Toolaze é completamente grátis para sempre sem custos ocultos ou anúncios. Mais importante, toda a conversão acontece localmente no seu navegador usando tecnologia do lado do cliente. Seus arquivos JPG nunca deixam seu dispositivo—eles nunca são enviados para nenhum servidor, garantindo 100% de privacidade e segurança para suas imagens."
+    },
+    {
+      "q": "Posso converter vários arquivos JPG para PNG de uma vez?",
+      "a": "Sim, Toolaze suporta conversão em lote de até 100 arquivos JPG por sessão. Você pode arrastar e soltar vários arquivos de uma vez, e todos serão convertidos para formato PNG simultaneamente. Não há limites de tamanho de arquivo individual, então você pode converter arquivos JPG grandes sem restrições."
+    },
+    {
+      "q": "Meus dados EXIF serão preservados ao converter JPG para PNG?",
+      "a": "Sim, Toolaze preserva todos os metadados EXIF durante a conversão, incluindo coordenadas GPS, data de captura, configurações da câmera e outras tags de metadados. Seus arquivos PNG convertidos reterão todos os metadados originais dos seus arquivos JPG."
+    },
+    {
+      "q": "Qual é a diferença entre os formatos JPG e PNG?",
+      "a": "JPG usa compressão com perda otimizada para fotografias, resultando em tamanhos de arquivo menores mas alguma perda de qualidade. JPG não suporta transparência. PNG usa compressão sem perda, preservando qualidade perfeita mas criando arquivos maiores. PNG suporta completamente transparência com canais alfa, tornando-o ideal para gráficos, logotipos e imagens que precisam de fundos transparentes ou qualidade pixel-perfeita."
     }
   ],
   "compare": {
-    "toolaze": "Conversão em lote, Qualidade sem perda, Grátis",
-    "others": "Limites de arquivo único, Perda de qualidade, Pago"
+    "toolaze": "Conversão ilimitada de JPG para PNG, Preservação de qualidade sem perda, Suporte completo de transparência, Arquitetura local-first, Sem limites de tamanho de arquivo, Preservação completa de EXIF, Processamento 100% privado",
+    "others": "Limites de arquivo de 20MB, Uploads na nuvem necessários, Perda de qualidade durante conversão, Sem recursos de transparência, Filas de servidor, Dados EXIF removidos, Preocupações com privacidade"
   }
 }

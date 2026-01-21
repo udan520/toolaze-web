@@ -4,6 +4,16 @@
       "title": "Comprimi JPG a 20KB Online (Gratuito, Batch e Sicuro) - Toolaze",
       "description": "Come comprimere JPG a 20KB? 1. Carica immagine JPG 2. Imposta obiettivo 20KB 3. Scarica compresso. Rispetta limiti rigorosi dei portali governativi. Riduci la dimensione del file del 90% mantenendo la qualità. Sicuro e Privato."
     },
+    "sectionsOrder": [
+      "howToUse",
+      "features",
+      "intro",
+      "performanceMetrics",
+      "comparison",
+      "scenes",
+      "rating",
+      "faq"
+    ],
     "hero": {
       "h1": "Comprimi JPG a 20KB",
       "desc": "Comprimi immagini JPG esattamente a 20KB per portali ufficiali e registrazioni d'esame. Trascina semplicemente le tue immagini JPG qui sotto per comprimerle in pochi secondi."
@@ -166,10 +176,21 @@
     }
   },
   "png-to-100kb": {
+    "in_menu": false,
     "metadata": {
       "title": "Comprimi PNG a 100KB - Mantieni Trasparenza | Toolaze",
       "description": "Ottimizza PNG a 100KB per prestazioni web. Mantiene trasparenza e formato originali. Elabora fino a 100 immagini nel tuo browser gratuitamente."
     },
+    "sectionsOrder": [
+      "howToUse",
+      "features",
+      "intro",
+      "performanceMetrics",
+      "comparison",
+      "scenes",
+      "rating",
+      "faq"
+    ],
     "hero": {
       "h1": "Compressione PNG a 100KB",
       "sub": "Trasparente, Veloce e Professionale",
@@ -233,7 +254,6 @@
       "toolaze": "Preserva trasparenza, Elaborazione locale, Nessuna pubblicità",
       "others": "Converte in JPG, Filigrane, Richiede abbonamento"
     },
-    "in_menu": false,
     "features": {
       "title": "PNG to 100KB Compression Features",
       "items": [
@@ -330,10 +350,21 @@
     }
   },
   "uscis-photo-240kb": {
+    "in_menu": false,
     "metadata": {
       "title": "Compressore Foto USCIS 240KB - Elaborazione Visto Sicura | Toolaze",
       "description": "Soddisfa il requisito DS-160 di 240KB per foto visto USA. Elaborazione 100% privata lato browser. Nessuna alterazione facciale, mantenendo i tuoi dati reali e sicuri."
     },
+    "sectionsOrder": [
+      "howToUse",
+      "features",
+      "intro",
+      "performanceMetrics",
+      "comparison",
+      "scenes",
+      "rating",
+      "faq"
+    ],
     "hero": {
       "h1": "Strumento Foto USCIS 240KB",
       "sub": "Conformità Visto Garantita",
@@ -397,7 +428,6 @@
       "toolaze": "Privacy totale, Risultati autentici, Gratuito",
       "others": "Rischi privacy, Rischi auto-abbellimento, Tariffe nascoste"
     },
-    "in_menu": false,
     "features": {
       "title": "USCIS Photo 240KB Compression Features",
       "items": [
@@ -494,10 +524,21 @@
     }
   },
   "image-to-50kb": {
+    "in_menu": false,
     "metadata": {
       "title": "Comprimi Immagine a 50KB - Strumento Online Universale | Toolaze",
       "description": "Comprimi JPG, PNG, WebP o BMP esattamente a 50KB. Perfetto per curriculum e moduli online. 100% gratuito con elaborazione batch per 100 immagini."
     },
+    "sectionsOrder": [
+      "howToUse",
+      "features",
+      "intro",
+      "performanceMetrics",
+      "comparison",
+      "scenes",
+      "rating",
+      "faq"
+    ],
     "hero": {
       "h1": "Compressore Universale 50KB",
       "sub": "Una Dimensione, Ogni Piattaforma",
@@ -562,7 +603,6 @@
       "toolaze": "Nessun limite dimensione, Elabora batch 100 file, Locale",
       "others": "Limiti dimensione file, Limiti file singolo, Popup abbonamento"
     },
-    "in_menu": false,
     "features": {
       "title": "50KB Image Compression Features",
       "items": [
@@ -659,10 +699,21 @@
     }
   },
   "passport-photo-200kb": {
+    "in_menu": false,
     "metadata": {
       "title": "Compressore Foto Passaporto 200KB - Sicuro e Veloce | Toolaze",
       "description": "Comprimi la tua foto passaporto a 200KB per rinnovi online. Mantiene formato originale e chiarezza facciale. Strumento 100% privato e gratuito."
     },
+    "sectionsOrder": [
+      "howToUse",
+      "features",
+      "intro",
+      "performanceMetrics",
+      "comparison",
+      "scenes",
+      "rating",
+      "faq"
+    ],
     "hero": {
       "h1": "Strumento Foto Passaporto 200KB",
       "sub": "Compatibilità Standard Globale",
@@ -727,7 +778,6 @@
       "toolaze": "Formato originale, Sicurezza locale, Pronto per batch",
       "others": "Forza cambio formato, Rischi sicurezza cloud, Nessun batch"
     },
-    "in_menu": false,
     "features": {
       "title": "200KB Passport Photo Compression Features",
       "items": [
@@ -824,10 +874,21 @@
     }
   },
   "amazon-product-10mb": {
+    "in_menu": false,
     "metadata": {
       "title": "Compressore Foto Prodotto Amazon - Ottimizza per Vendite | Toolaze",
       "description": "Comprimi foto prodotto Amazon sotto il limite di 10MB senza perdita di qualità. Sicuro per caricamenti Seller Central. Elabora batch 100 immagini."
     },
+    "sectionsOrder": [
+      "howToUse",
+      "features",
+      "intro",
+      "performanceMetrics",
+      "comparison",
+      "scenes",
+      "rating",
+      "faq"
+    ],
     "hero": {
       "h1": "Ottimizzatore Immagine Prodotto Amazon",
       "sub": "Correggi Errori Caricamento Seller Central",
@@ -890,7 +951,6 @@
       "toolaze": "Focalizzato venditore, Modalità bulk, Gratuito",
       "others": "Compressione generica, Limiti file singolo"
     },
-    "in_menu": false,
     "features": {
       "title": "Amazon Product Image Optimization Features",
       "items": [
@@ -987,10 +1047,21 @@
     }
   },
   "etsy-listing-1mb": {
+    "in_menu": false,
     "metadata": {
       "title": "Compressore Immagine Etsy - Corregge Problemi Caricamento | Toolaze",
       "description": "Comprimi foto per inserzioni Etsy sotto 1MB. Migliore per venditori artigianali. Mantieni colori vibranti mentre correggi errori 'File troppo grande'."
     },
+    "sectionsOrder": [
+      "howToUse",
+      "features",
+      "intro",
+      "performanceMetrics",
+      "comparison",
+      "scenes",
+      "rating",
+      "faq"
+    ],
     "hero": {
       "h1": "Strumento Foto Inserzione Etsy",
       "sub": "Perfetto per Venditori Artigianali",
@@ -1053,7 +1124,6 @@
       "toolaze": "Preserva texture, Colori accurati, Veloce",
       "others": "Colori sbiaditi, Caricamenti lenti"
     },
-    "in_menu": false,
     "features": {
       "title": "Etsy Listing Image Optimization Features",
       "items": [
@@ -1150,10 +1220,21 @@
     }
   },
   "ebay-picture-fast": {
+    "in_menu": false,
     "metadata": {
       "title": "Ottimizzatore Immagine eBay - Caricamento Mobile Più Veloce | Toolaze",
       "description": "Ottimizza foto inserzione eBay per acquirenti mobili. Comprimi a 500KB-1.5MB per caricamento veloce. Strumento bulk gratuito per venditori professionali."
     },
+    "sectionsOrder": [
+      "howToUse",
+      "features",
+      "intro",
+      "performanceMetrics",
+      "comparison",
+      "scenes",
+      "rating",
+      "faq"
+    ],
     "hero": {
       "h1": "Ottimizzatore Caricamento Veloce eBay",
       "sub": "Aumenta le Tue Vendite Mobili",
@@ -1216,7 +1297,6 @@
       "toolaze": "Strumento bulk, Ottimizzato mobile, Nessuna registrazione",
       "others": "Uno per uno, Richiede registrazione"
     },
-    "in_menu": false,
     "features": {
       "title": "eBay Image Optimization Features",
       "items": [
@@ -1313,10 +1393,21 @@
     }
   },
   "youtube-thumbnail-2mb": {
+    "in_menu": false,
     "metadata": {
       "title": "Compressore Miniature YouTube - Corregge Errore Limite 2MB | Toolaze",
       "description": "Comprimi miniature YouTube sotto 2MB istantaneamente. Corregge errori caricamento 'Il file è più grande di 2MB'. Mantieni alta la qualità del tuo click-bait."
     },
+    "sectionsOrder": [
+      "howToUse",
+      "features",
+      "intro",
+      "performanceMetrics",
+      "comparison",
+      "scenes",
+      "rating",
+      "faq"
+    ],
     "hero": {
       "h1": "Correttore Miniature YouTube (Sotto 2MB)",
       "sub": "Risolto: 'Il file è più grande di 2MB'",
@@ -1375,7 +1466,6 @@
       "toolaze": "Focus CTR alto, Garanzia 2MB",
       "others": "Risultati sfocati, Dimensioni casuali"
     },
-    "in_menu": false,
     "features": {
       "title": "YouTube Thumbnail Compression Features",
       "items": [
@@ -1465,13 +1555,28 @@
     },
     "rating": {
       "text": "\"Fixed my YouTube upload errors instantly! Thumbnails stay under 2MB with perfect quality.\" - Join thousands of creators who trust Toolaze for YouTube thumbnail optimization."
+    },
+    "comparison": {
+      "toolaze": "Focus CTR alto, Garanzia 2MB",
+      "others": "Risultati sfocati, Dimensioni casuali"
     }
   },
   "discord-emoji-256kb": {
+    "in_menu": false,
     "metadata": {
       "title": "Compressore Emoji Discord - Strumento Sotto 256KB | Toolaze",
       "description": "Comprimi immagini a 256KB per Emote e Sticker Discord. Ridimensionamento preciso per amministratori server. Supporta PNG e JPG."
     },
+    "sectionsOrder": [
+      "howToUse",
+      "features",
+      "intro",
+      "performanceMetrics",
+      "comparison",
+      "scenes",
+      "rating",
+      "faq"
+    ],
     "hero": {
       "h1": "Ridimensionatore Emoji e Sticker Discord",
       "sub": "Conformità Rigorosa 256KB",
@@ -1534,7 +1639,6 @@
       "toolaze": "Limite rigoroso 256KB, Trasparenza sicura",
       "others": "Manca limite file, Perde trasparenza"
     },
-    "in_menu": false,
     "features": {
       "title": "Discord Emoji Compression Features",
       "items": [
@@ -1631,10 +1735,21 @@
     }
   },
   "email-signature-20kb": {
+    "in_menu": false,
     "metadata": {
       "title": "Compressore Immagine Firma Email - Compatibile Outlook e Gmail | Toolaze",
       "description": "Comprimi loghi e foto profilo a 20KB per firme email. Previeni che gli allegati vengano bloccati. Qualità nitida per display retina."
     },
+    "sectionsOrder": [
+      "howToUse",
+      "features",
+      "intro",
+      "performanceMetrics",
+      "comparison",
+      "scenes",
+      "rating",
+      "faq"
+    ],
     "hero": {
       "h1": "Ottimizzatore Firma Email",
       "sub": "Smetti di Essere Contrassegnato come Spam",
@@ -1697,7 +1812,6 @@
       "toolaze": "Sicuro filtro spam, Pronto Retina",
       "others": "Troppo pesante, Bordi pixelati"
     },
-    "in_menu": false,
     "features": {
       "title": "Email Signature Image Optimization Features",
       "items": [
@@ -1799,6 +1913,16 @@
       "title": "Compress JPG Online (Free, Batch & No Ads) - Toolaze",
       "description": "How to compress JPG images? 1. Upload JPG 2. Set target size 3. Download compressed. Reduce file size by 60% while maintaining quality. Secure & Private."
     },
+    "sectionsOrder": [
+      "howToUse",
+      "features",
+      "intro",
+      "performanceMetrics",
+      "comparison",
+      "scenes",
+      "rating",
+      "faq"
+    ],
     "hero": {
       "h1": "JPG Compressor",
       "desc": "Compress JPG images online for free. Simply drop your JPG images below to compress them in seconds."
@@ -1974,6 +2098,16 @@
       "title": "Compress PNG Online (Free, Batch & No Ads) - Toolaze",
       "description": "How to compress PNG images? 1. Upload PNG 2. Set target size 3. Download compressed. Reduce file size by 50% while preserving transparency. Secure & Private."
     },
+    "sectionsOrder": [
+      "howToUse",
+      "features",
+      "intro",
+      "performanceMetrics",
+      "comparison",
+      "scenes",
+      "rating",
+      "faq"
+    ],
     "hero": {
       "h1": "PNG Compressor",
       "desc": "Compress PNG images online for free. Simply drop your PNG images below to compress them in seconds."
@@ -2149,6 +2283,16 @@
       "title": "Compress WebP Online (Free, Batch & No Ads) - Toolaze",
       "description": "How to compress WebP images? 1. Upload WebP 2. Set target size 3. Download compressed. Reduce file size by 30% while maintaining quality. Secure & Private."
     },
+    "sectionsOrder": [
+      "howToUse",
+      "features",
+      "intro",
+      "performanceMetrics",
+      "comparison",
+      "scenes",
+      "rating",
+      "faq"
+    ],
     "hero": {
       "h1": "WebP Compressor",
       "desc": "Compress WebP images online for free. Simply drop your WebP images below to compress them in seconds."
@@ -2324,6 +2468,16 @@
       "title": "Compress Image Online (Free, Batch & No Ads) - Toolaze",
       "description": "How to compress images? 1. Upload image 2. Set target size 3. Download compressed. Reduce file size by 60% while maintaining quality. Secure & Private."
     },
+    "sectionsOrder": [
+      "howToUse",
+      "features",
+      "intro",
+      "performanceMetrics",
+      "comparison",
+      "scenes",
+      "rating",
+      "faq"
+    ],
     "hero": {
       "h1": "Image Compressor",
       "desc": "Compress images online for free. Simply drop your images below to compress them in seconds."
@@ -2499,6 +2653,16 @@
       "title": "Batch Compress Images Online (Free, No Ads & Fast) - Toolaze",
       "description": "How to batch compress images? 1. Upload multiple images 2. Set target size 3. Download all. Compress up to 100 images at once. Secure & Private."
     },
+    "sectionsOrder": [
+      "howToUse",
+      "features",
+      "intro",
+      "performanceMetrics",
+      "comparison",
+      "scenes",
+      "rating",
+      "faq"
+    ],
     "hero": {
       "h1": "Batch Image Compressor",
       "desc": "Compress multiple images at once online for free. Simply drop your images below to compress them in seconds."

@@ -1,45 +1,193 @@
 {
+  "in_menu": true,
   "metadata": {
-    "title": "Converti HEIC in PNG - Convertitore Immagini Online Gratuito | Toolaze",
-    "description": "Converti immagini HEIC/HEIF in formato PNG istantaneamente. Conversione batch fino a 100 immagini. Preserva qualità e trasparenza. 100% gratuito e privato."
+    "title": "Converti HEIC in PNG Online (Gratuito, Batch & Nessuna Pubblicità) - Toolaze",
+    "description": "Come convertire HEIC in PNG? 1. Carica HEIC 2. Conversione automatica 3. Scarica PNG. Preserva qualità e trasparenza. Sicuro e Privato."
   },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
   "hero": {
     "h1": "Convertitore HEIC in PNG",
-    "sub": "Conversione Qualità Senza Perdita",
-    "desc": "Converti immagini HEIC in formato PNG preservando qualità. PNG supporta trasparenza ed è ampiamente compatibile su tutte le piattaforme."
+    "desc": "Converti HEIC in PNG online gratuitamente. Trascina semplicemente le tue immagini HEIC qui sotto per convertirle in PNG in pochi secondi."
   },
   "intro": {
-    "title": "Conversione Senza Perdita",
-    "content": "PNG è un formato senza perdita che supporta trasparenza, rendendolo ideale per grafici e immagini che richiedono alta qualità. Converti le tue immagini HEIC in PNG per migliore compatibilità."
+    "title": "Perché Convertire HEIC in PNG? Preservare Qualità e Trasparenza",
+    "content": [
+      {
+        "title": "HEIC vs PNG: Caratteristiche Formato e Compatibilità",
+        "text": "HEIC (High Efficiency Image Container) è il formato immagine moderno di Apple che utilizza codifica HEVC avanzata per raggiungere dimensioni file del 50% più piccole rispetto a JPG mantenendo qualità immagine superiore. HEIC supporta trasparenza, alta gamma dinamica (HDR) e funzionalità avanzate, rendendolo ideale per dispositivi Apple. Tuttavia, HEIC ha limitazioni di compatibilità significative: è principalmente supportato su dispositivi Apple e sistemi più nuovi, causando problemi quando si condivide con utenti Windows, si carica su siti web o si utilizza in applicazioni che non supportano HEIC. PNG (Portable Network Graphics) è un formato senza perdita che preserva qualità perfetta a livello di pixel, supporta trasparenza completa del canale alfa e ha supporto universale su tutte le piattaforme, software di design e applicazioni. PNG è lo standard del settore per grafici, loghi e immagini che richiedono trasparenza e qualità senza perdita."
+      },
+      {
+        "title": "Perché Convertire HEIC in PNG?",
+        "text": "Convertire HEIC in PNG diventa necessario quando hai bisogno di preservare trasparenza per grafici e loghi da foto iPhone, richiedi qualità senza perdita per lavoro di design e grafici professionali, hai bisogno di compatibilità con software di design che non supporta HEIC, o vuoi garantire che le tue immagini funzionino su tutte le piattaforme e applicazioni. Il formato PNG garantisce preservazione qualità pixel-perfetta, supporto trasparenza completo e compatibilità universale, rendendolo la scelta preferita per grafici designer, sviluppatori web e professionisti che necessitano trasparenza e qualità senza compromessi, specialmente quando lavorano con foto iPhone che devono essere utilizzate in flussi di lavoro professionali."
+      }
+    ]
+  },
+  "features": {
+    "title": "Funzionalità di Conversione Professionali",
+    "items": [
+      {
+        "icon": "🎨",
+        "iconType": "quality",
+        "title": "Preservazione Qualità Perfetta",
+        "desc": "Trasforma le tue immagini HEIC in formato PNG mantenendo qualità impeccabile a livello di pixel con zero artefatti di compressione o degradazione qualità."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Garanzia Privacy Completa",
+        "desc": "Tutti i processi di conversione avvengono interamente nel tuo browser—i tuoi file HEIC non lasciano mai il tuo dispositivo, garantendo protezione dati assoluta."
+      },
+      {
+        "icon": "📦",
+        "iconType": "batch",
+        "title": "Elaborazione Batch Efficiente",
+        "desc": "Converti intere librerie di foto iPhone fino a 100 file HEIC simultaneamente in formato PNG con preservazione trasparenza."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Velocità di Conversione Rapida",
+        "desc": "Il nostro decodificatore HEVC alimentato da WebAssembly elabora conversioni HEIC in PNG istantaneamente senza caricamenti server o ritardi di elaborazione."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Gratuito Per Sempre",
+        "desc": "Accedi a conversioni illimitate da HEIC a PNG senza costi—nessun piano premium, nessuna tariffa di abbonamento, nessuna interruzione pubblicitaria."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "Nessuna Installazione Necessaria",
+        "desc": "Tutto funziona direttamente nel tuo browser web utilizzando tecnologia WebAssembly lato client—nessun download software o plugin richiesti."
+      }
+    ]
   },
   "specs": {
-    "engine": "Convertitore HEIC in PNG",
-    "limit": "Batch fino a 100 immagini",
-    "logic": "Preservazione Qualità Senza Perdita",
-    "privacy": "Elaborazione Browser Locale"
+    "engine": "Decodificatore HEVC Attivo - Elaborazione Alimentata da WebAssembly",
+    "limit": "Batch 100+ Immagini - Dimensioni File Illimitate",
+    "logic": "Preservazione Qualità e Trasparenza Completa (Conversione Senza Perdita)",
+    "privacy": "100% Lato Client (Elaborazione Browser Locale)"
+  },
+  "performanceMetrics": {
+    "title": "Specifiche Tecniche",
+    "metrics": [
+      {
+        "label": "Formato di Input",
+        "value": "HEIC/HEIF (Formato Immagine Alta Efficienza Apple)"
+      },
+      {
+        "label": "Formato di Output",
+        "value": "PNG (Portable Network Graphics)"
+      },
+      {
+        "label": "Dimensione Batch Massima",
+        "value": "100 Immagini per sessione"
+      },
+      {
+        "label": "Limite Dimensione File",
+        "value": "Illimitato (Limitato dalla memoria del browser)"
+      },
+      {
+        "label": "Tipo di Compressione",
+        "value": "Senze Perdita (Nessuna degradazione qualità)"
+      },
+      {
+        "label": "Supporto Trasparenza",
+        "value": "Trasparenza canale alfa completa preservata"
+      },
+      {
+        "label": "Posizione Elaborazione",
+        "value": "100% Lato Client (Decodificatore HEVC WebAssembly)"
+      },
+      {
+        "label": "Dati EXIF",
+        "value": "Preservati durante la conversione"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Come Convertire HEIC in PNG",
+    "steps": [
+      {
+        "title": "Carica i Tuoi File HEIC",
+        "desc": "Trascina e rilascia le tue immagini HEIC nell'area del convertitore o clicca per sfogliare e selezionare file HEIC dal tuo iPhone o dispositivo."
+      },
+      {
+        "title": "Conversione PNG Automatica",
+        "desc": "Il nostro convertitore elabora automaticamente i tuoi file HEIC utilizzando decodificatore HEVC alimentato da WebAssembly e li trasforma in formato PNG con qualità senza perdita."
+      },
+      {
+        "title": "Scarica Risultati PNG",
+        "desc": "Scarica immediatamente i tuoi file PNG convertiti. Ogni PNG mantiene qualità perfetta e preserva tutte le informazioni di trasparenza dalle tue immagini HEIC."
+      }
+    ]
+  },
+  "comparison": {
+    "toolaze": "Dimensioni file illimitate, Batch 100+ immagini HEIC, Conversione PNG senza perdita, Preservazione trasparenza completa, Alimentato da WebAssembly, Elaborazione 100% locale, Nessun caricamento, Gratuito per sempre",
+    "others": "Limiti file 20MB, Solo conversione file singolo, Perdita qualità durante conversione, Trasparenza non preservata, Caricamenti cloud richiesti, Code server, Aggiornamenti a pagamento"
   },
   "scenes": [
     {
-      "title": "Design Grafico",
-      "desc": "Converti HEIC in PNG per compatibilità software design."
+      "title": "Grafici Designer",
+      "icon": "🎨",
+      "desc": "Converti foto HEIC iPhone in formato PNG per compatibilità software di design, garantendo che i tuoi grafici mantengano trasparenza e qualità pixel-perfetta nei flussi di lavoro professionali."
     },
     {
-      "title": "Preservazione Qualità",
-      "desc": "Mantieni qualità senza perdita quando converti immagini HEIC."
+      "title": "Sviluppatori Web",
+      "icon": "💻",
+      "desc": "Trasforma immagini HEIC in PNG per progetti web che richiedono sfondi trasparenti, garantendo che i tuoi grafici funzionino perfettamente su tutti i browser e piattaforme."
+    },
+    {
+      "title": "Servizi di Stampa",
+      "icon": "🖨️",
+      "desc": "Converti foto HEIC in formato PNG per servizi di stampa, garantendo qualità senza perdita e compatibilità con software e attrezzature di stampa professionali."
     }
   ],
+  "rating": {
+    "text": "\"Perfetto per convertire le mie foto iPhone in PNG per lavoro di design. Qualità e trasparenza sono preservate perfettamente.\" - Unisciti a migliaia di designer e sviluppatori che si fidano di Toolaze per conversione HEIC professionale."
+  },
   "faq": [
     {
-      "q": "La trasparenza sarà preservata?",
-      "a": "PNG supporta trasparenza, quindi se la tua immagine HEIC ha trasparenza, sarà preservata."
+      "q": "La trasparenza sarà preservata quando converto HEIC in PNG?",
+      "a": "Sì, il formato PNG supporta completamente la trasparenza con canali alfa, quindi se la tua immagine HEIC ha trasparenza, sarà perfettamente preservata quando converti in PNG. Il formato HEIC supporta trasparenza e PNG preserva questa funzionalità, rendendo PNG ideale per grafici, loghi e immagini che necessitano sfondi trasparenti da foto iPhone."
     },
     {
-      "q": "La conversione è senza perdita?",
-      "a": "PNG è un formato senza perdita, quindi la qualità è completamente preservata durante la conversione."
+      "q": "La conversione da HEIC a PNG è senza perdita?",
+      "a": "Sì, PNG è un formato senza perdita, quindi convertire HEIC in PNG preserva qualità perfetta con zero artefatti di compressione o degradazione qualità. La conversione mantiene precisione pixel-perfetta, rendendo PNG ideale per grafici, loghi e immagini dove la qualità è critica. Tuttavia, nota che i file PNG sono tipicamente più grandi dei file HEIC perché PNG utilizza compressione senza perdita mentre HEIC utilizza codifica HEVC avanzata."
+    },
+    {
+      "q": "Perché convertire HEIC in PNG invece di JPG?",
+      "a": "Mentre JPG offre compatibilità universale, PNG fornisce preservazione qualità senza perdita e supporto trasparenza completo. Se la tua immagine HEIC ha trasparenza o hai bisogno di qualità pixel-perfetta per lavoro di design, PNG è la scelta migliore. PNG ha anche supporto universale su tutte le piattaforme e software di design, rendendolo ideale per grafici e loghi professionali. JPG è migliore per fotografie senza trasparenza dove l'ottimizzazione dimensione file è più importante della qualità perfetta."
+    },
+    {
+      "q": "La conversione da HEIC a PNG è gratuita e sicura?",
+      "a": "Sì, Toolaze è completamente gratuito per sempre senza costi nascosti, abbonamenti o pubblicità. Ancora più importante, tutta la conversione avviene localmente nel tuo browser utilizzando tecnologia decodificatore HEVC alimentata da WebAssembly. I tuoi file HEIC non lasciano mai il tuo dispositivo—non vengono mai caricati su alcun server, garantendo privacy e sicurezza al 100% per le tue foto iPhone."
+    },
+    {
+      "q": "Posso convertire più file HEIC in PNG alla volta?",
+      "a": "Sì, Toolaze supporta la conversione batch fino a 100 file HEIC per sessione. Puoi trascinare e rilasciare più file HEIC alla volta e verranno tutti convertiti in formato PNG simultaneamente con preservazione trasparenza. Non ci sono limiti di dimensione file individuali, quindi puoi convertire grandi file HEIC senza restrizioni."
+    },
+    {
+      "q": "I miei dati EXIF saranno preservati quando converto HEIC in PNG?",
+      "a": "Sì, Toolaze preserva tutti i metadati EXIF durante la conversione, inclusi coordinate GPS, data di scatto, impostazioni della fotocamera e altri tag di metadati. I tuoi file PNG convertiti conserveranno tutti i metadati originali dai tuoi file HEIC, garantendo che nessuna informazione vada persa durante la conversione."
+    },
+    {
+      "q": "Qual è la differenza tra formato HEIC e PNG?",
+      "a": "HEIC è il formato moderno di Apple che utilizza codifica HEVC, offrendo file del 50% più piccoli rispetto a JPG con qualità superiore e supporta trasparenza e HDR. Tuttavia, HEIC ha compatibilità limitata—principalmente supportato su dispositivi Apple. PNG è un formato senza perdita con supporto universale, preservazione qualità pixel-perfetta e trasparenza completa del canale alfa, rendendolo lo standard del settore per grafici e lavoro di design professionale. I file PNG sono tipicamente più grandi di HEIC ma garantiscono compatibilità ovunque."
     }
   ],
   "compare": {
-    "toolaze": "Converti batch, Qualità senza perdita, Gratuito",
-    "others": "File singolo, Perdita qualità, A pagamento"
+    "toolaze": "Conversione illimitata HEIC in PNG, Preservazione qualità senza perdita, Supporto trasparenza completo, Alimentato da WebAssembly, Compatibilità universale, Nessun limite dimensione file, Preservazione EXIF completa, Elaborazione 100% privata",
+    "others": "Limiti file 20MB, Caricamenti cloud richiesti, Perdita qualità durante conversione, Trasparenza non preservata, Compatibilità limitata, Code server, Dati EXIF rimossi, Preoccupazioni privacy"
   }
 }
