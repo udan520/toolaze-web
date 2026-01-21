@@ -133,20 +133,12 @@
       "button": "現在開始懶惰 →"
     }
   },
-  "breadcrumb": {
-    "home": "首頁",
-    "quickTools": "快速工具",
-    "imageCompression": "圖片壓縮",
-    "imageConverter": "圖片轉換",
-    "aboutUs": "關於我們",
-    "privacyPolicy": "隱私政策",
-    "termsOfService": "服務條款"
-  },
   "common": {
     "tryNow": "立即試用 →",
     "rating": {
       "rating": "4.9/5 來自 10,000+ 創作者",
-      "description": "加入數千名滿意用戶，他們信任 Toolaze 提供快速、安全且免費的圖片壓縮。無需註冊，100% 隱私處理。"
+      "description": "加入數千名滿意用戶，他們信任 Toolaze 提供快速、安全且免費的圖片壓縮。無需註冊，100% 隱私處理。",
+      "title": "受到數千名創作者的信任"
     },
     "tool": {
       "dropZone": {
@@ -194,6 +186,25 @@
         "localBrowser": "本地瀏覽器 API",
         "noServerLogs": "無伺服器日誌"
       }
+    },
+    "allTools": "所有工具",
+    "primaryTools": "主要工具",
+    "specializedTools": "專業工具",
+    "allImageCompressionTools": "所有圖片壓縮工具",
+    "allImageConverterTools": "所有圖片轉換工具",
+    "allImageCompressionToolsDesc": "瀏覽所有可用的圖片壓縮工具。找到適合您特定需求的完美工具。",
+    "allImageConverterToolsDesc": "瀏覽所有可用的圖片轉換工具。在 JPG、PNG、WebP 和 HEIC 格式之間轉換。",
+    "primaryToolsDesc": "適用於一般使用案例的基本壓縮工具。",
+    "primaryConverterToolsDesc": "適用於一般使用案例的基本轉換工具。",
+    "specializedToolsDesc": "適用於特定平台和使用案例的專業壓縮工具。",
+    "specializedConverterToolsDesc": "適用於特定平台和使用案例的專業轉換工具。",
+    "performanceMetrics": {
+      "metricColumn": "效能指標",
+      "specificationColumn": "Toolaze 規格"
+    },
+    "viewAllTools": {
+      "related": "查看所有相關工具",
+      "all": "查看所有工具"
     }
   },
   "imageCompressor": {
@@ -254,7 +265,8 @@
         "formatRestrictions": "格式限制",
         "privacyConcerns": "隱私問題",
         "registrationRequired": "需要註冊"
-      }
+      },
+      "title": "為什麼選擇 Toolaze？"
     },
     "scenarios": {
       "title": "使用案例",
@@ -353,7 +365,8 @@
         "qualityLoss": "品質損失",
         "privacyConcerns": "隱私問題",
         "registrationRequired": "需要註冊"
-      }
+      },
+      "title": "為什麼選擇 Toolaze？"
     },
     "scenarios": {
       "title": "使用案例",

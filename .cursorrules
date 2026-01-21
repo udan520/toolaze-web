@@ -69,3 +69,65 @@ See 'docs/SEO_MASTER_LAYOUT.md' section 3 for the exact breadcrumb structure.
   }
   ```
 - **When creating new pages**: ALWAYS include the canonical URL in the metadata. Never skip this step.
+
+**COMPONENT-BASED DEVELOPMENT**: ALWAYS prioritize component-based development to reduce code duplication, improve maintainability, and save translation costs.
+- **Reusable UI Elements**: When creating buttons, cards, sections, or other UI elements that appear in multiple places, create them as reusable components in `src/components/` or `src/components/blocks/`.
+- **Translation Management**: For UI elements with text that needs translation:
+  - Store translations in `src/data/{locale}/common.json` for common/shared elements
+  - Pass translated text as props to components from server-side pages
+  - Avoid hardcoding text in components; always accept text as props
+- **Component Examples**: 
+  - Buttons: `ViewAllToolsButton`, `TryNowButton` (if created)
+  - Sections: `Comparison`, `Rating`, `FAQ`, `Scenarios`, `Features`
+  - Navigation: `Navigation`, `Breadcrumb`, `Footer`
+- **Benefits**:
+  - Single source of truth for translations (no duplicate translations)
+  - Consistent styling and behavior across pages
+  - Easier maintenance and updates
+  - Reduced translation costs (translate once, use everywhere)
+- **When to Componentize**:
+  - UI elements used in 2+ places → Create component
+  - Repeated patterns (buttons, cards, sections) → Create component
+  - Elements with translations → Create component with text props
+  - Complex UI blocks → Create component in `src/components/blocks/`
+- **Component Structure**: 
+  ```typescript
+  interface ComponentProps {
+    text?: string  // Translated text passed from parent
+    // ... other props
+  }
+  export default function Component({ text, ...props }: ComponentProps) {
+    // Use text prop, not hardcoded strings
+  }
+  ```
+
+**COMPONENT-BASED DEVELOPMENT**: ALWAYS prioritize component-based development to reduce code duplication, improve maintainability, and save translation costs.
+- **Reusable UI Elements**: When creating buttons, cards, sections, or other UI elements that appear in multiple places, create them as reusable components in `src/components/` or `src/components/blocks/`.
+- **Translation Management**: For UI elements with text that needs translation:
+  - Store translations in `src/data/{locale}/common.json` for common/shared elements
+  - Pass translated text as props to components from server-side pages
+  - Avoid hardcoding text in components; always accept text as props
+- **Component Examples**: 
+  - Buttons: `ViewAllToolsButton`, `TryNowButton` (if created)
+  - Sections: `Comparison`, `Rating`, `FAQ`, `Scenarios`, `Features`
+  - Navigation: `Navigation`, `Breadcrumb`, `Footer`
+- **Benefits**:
+  - Single source of truth for translations (no duplicate translations)
+  - Consistent styling and behavior across pages
+  - Easier maintenance and updates
+  - Reduced translation costs (translate once, use everywhere)
+- **When to Componentize**:
+  - UI elements used in 2+ places → Create component
+  - Repeated patterns (buttons, cards, sections) → Create component
+  - Elements with translations → Create component with text props
+  - Complex UI blocks → Create component in `src/components/blocks/`
+- **Component Structure**: 
+  ```typescript
+  interface ComponentProps {
+    text?: string  // Translated text passed from parent
+    // ... other props
+  }
+  export default function Component({ text, ...props }: ComponentProps) {
+    // Use text prop, not hardcoded strings
+  }
+  ```

@@ -382,7 +382,7 @@
         },
         {
           "title": "Vollständige Privatsphäre für biometrische Daten",
-          "text": "Visumantrag-Fotos enthalten sensible biometrische Informationen, die mit äußerster Sorgfalt behandelt werden müssen. Das Hochladen dieser Fotos auf cloudbasierte Komprimierungsdienste birgt ernsthafte Datenschutz- und Sicherheitsrisiken, da Ihre biometrischen Daten von Dritten gespeichert, analysiert oder missbraucht werden könnten. Toolaze verarbeitet alle Fotos lokal in Ihrem Browser und stellt sicher, dass Ihre biometrischen Informationen Ihr Gerät niemals verlassen. Die gesamte Komprimierung erfolgt mit JavaScript und Canvas API ohne Server-Uploads, Gesichtserkennung oder Datenspeicherung. Wir bieten reine technische Komprimierung ohne Gesichtsveränderungen, Verschönerung oder KI-Verbesserungen und stellen sicher, dass Ihr Foto 100% authentisch bleibt und den Einwanderungsstandards entspricht."
+          "text": "Visumantragsfotos enthalten sensible biometrische Informationen, die mit äußerster Sorgfalt behandelt werden müssen. Das Hochladen dieser Fotos auf cloudbasierte Komprimierungsdienste birgt ernsthafte Datenschutz- und Sicherheitsrisiken, da Ihre biometrischen Daten von Dritten gespeichert, analysiert oder missbraucht werden könnten. Toolaze verarbeitet alle Fotos lokal in Ihrem Browser und stellt sicher, dass Ihre biometrischen Informationen Ihr Gerät niemals verlassen. Alle Komprimierung erfolgt mit JavaScript und Canvas API ohne Server-Uploads, Gesichtserkennung oder Datenspeicherung. Wir konzentrieren uns auf technische Klarheit und Dateigrößenoptimierung ohne künstliche Änderungen, Verschönerung oder KI-Verbesserungen, um sicherzustellen, dass Ihr Foto authentisch bleibt und den Regierungsstandards entspricht."
         }
       ]
     },
@@ -549,11 +549,20 @@
     "hero": {
       "h1": "Universal 50KB Kompressor",
       "sub": "Eine Größe, jede Plattform",
-      "desc": "50KB ist die häufigste Anforderung für Online-Formulare. Ob Sie mit einer 5MB- oder 50MB-Datei beginnen, Toolaze hilft Ihnen, in Sekunden 50KB zu erreichen, ohne Ihr Dateiformat zu ändern."
+      "desc": "Komprimieren Sie Bilder auf genau 50KB für Online-Formulare und Anwendungen. Lassen Sie einfach Ihre Bilder unten fallen, um sie in Sekunden zu komprimieren."
     },
     "intro": {
-      "title": "Der Standard für Online-Formulare",
-      "content": "Von Schulaufnahmen bis zu Lebenslaufportalen ist 50KB die universelle Schwelle. Toolaze eliminiert das Raten, indem Sie '50KB' als Ihr Ziel angeben können. Unsere Browser-seitige Engine übernimmt die schwere Arbeit und hält Ihr Originalformat für maximale Kompatibilität intakt."
+      "title": "Warum Bilder auf 50KB komprimieren?",
+      "content": [
+        {
+          "title": "Universeller Standard für Online-Formulare",
+          "text": "50KB ist die häufigste Dateigrößenanforderung für Online-Formulare, Anwendungen und Portale weltweit. Von Schulzulassungen und Universitätsbewerbungen bis hin zu Lebenslauf-Portalen, Stellenbewerbungen und Regierungsformularen ist 50KB zum universellen Gateway für Dokumenten-Uploads geworden. Wenn Sie ein Foto mit Ihrem Smartphone aufnehmen oder ein Dokument scannen, ist die resultierende Bilddatei oft 2-10MB groß und überschreitet diese Grenzen bei weitem. Upload-Fehler aufgrund von Dateigrößenbeschränkungen können Ihre Bewerbungen verzögern, Ihre Zeit verschwenden und Frustration verursachen. Unser browserbasierter Kompressor verwendet intelligente Canvas API-Verarbeitung, um Ihre Bilder auf genau 50KB zu reduzieren und dabei die visuelle Qualität zu erhalten, die für die offizielle Überprüfung und professionelle Präsentation erforderlich ist."
+        },
+        {
+          "title": "Originalformat für maximale Kompatibilität erhalten",
+          "text": "Verschiedene Online-Formulare akzeptieren verschiedene Bildformate—einige erfordern JPG, andere akzeptieren PNG, und einige bevorzugen WebP. Die Konvertierung zwischen Formaten kann Kompatibilitätsprobleme oder Qualitätsverlust verursachen. Toolaze komprimiert Ihre Bilder und behält dabei das Originalformat bei, was maximale Kompatibilität mit jedem System gewährleistet. Ob Sie mit einer 5MB JPG oder einer 50MB PNG beginnen, unser Algorithmus behandelt die Komprimierung ohne Änderung des Dateiformats, sodass Ihr komprimiertes Bild nahtlos mit jedem Portal oder Anwendungssystem funktioniert. Alle Verarbeitung erfolgt lokal in Ihrem Browser, sodass Ihre persönlichen Dokumente und Fotos vollständig privat und sicher bleiben."
+        }
+      ]
     },
     "specs": {
       "engine": "Native Canvas API",
@@ -566,143 +575,124 @@
     "scenes": [
       {
         "title": "Lebenslauf-Portale",
-        "desc": "Stellen Sie sicher, dass Ihr Porträt leicht genug für jedes ATS oder Rekrutierungssystem ist.",
-        "icon": "📚"
+        "desc": "Komprimieren Sie Porträts und Dokumentenscans für ATS- und Rekrutierungssysteme. Stellen Sie sicher, dass Ihre Lebenslauf-Anhänge die Dateigrößenanforderungen für sofortige Verarbeitung erfüllen."
       },
       {
-        "title": "Aufnahmeformulare",
-        "desc": "Erfüllen Sie die strengen 50KB-Anforderungen für Universitäts- und Wettbewerbsprüfungsanmeldungen.",
-        "icon": "🎓"
+        "title": "Universitätszulassungen",
+        "desc": "Optimieren Sie Ausweisfotos und Dokumentenscans für Zulassungsportale. Erfüllen Sie strenge 50KB-Anforderungen für Bewerbungseinreichungen."
       },
       {
-        "icon": "💼",
-        "title": "Job Applications",
-        "desc": "Compress photos and documents for online job applications. Ensure your attachments meet file size limits for successful submissions."
+        "title": "Stellenbewerbungen",
+        "desc": "Komprimieren Sie Fotos und Dokumente für Online-Stellenbewerbungen. Stellen Sie sicher, dass Ihre Anhänge die Dateigrößenlimits für erfolgreiche Einreichungen erfüllen."
       }
     ],
     "faq": [
       {
-        "q": "Welche Formate werden unterstützt?",
-        "a": "Wir unterstützen JPG, JPEG, PNG, WebP und BMP. Ihre Datei wird in ihrem Originalformat heruntergeladen."
+        "q": "Welche Bildformate werden unterstützt?",
+        "a": "Toolaze unterstützt JPG-, JPEG-, PNG-, WebP- und BMP-Formate. Ihre komprimierte Datei wird in ihrem Originalformat heruntergeladen, was maximale Kompatibilität mit jedem Online-Formular oder Anwendungssystem gewährleistet."
       },
       {
-        "q": "Ist es wirklich kostenlos?",
-        "a": "Ja, Toolaze ist 100% kostenlos ohne Werbung und ohne Begrenzung der Nutzungshäufigkeit."
+        "q": "Ist die Komprimierung wirklich kostenlos?",
+        "a": "Ja! Toolaze ist 100% kostenlos ohne Werbung, ohne Premium-Stufen und ohne Begrenzung der Nutzungshäufigkeit. Alle Komprimierung erfolgt lokal in Ihrem Browser, sodass es keine Serverkosten oder Abonnementgebühren gibt."
       },
       {
-        "q": "Can I compress multiple images at once?",
-        "a": "Yes! Toolaze supports batch processing of up to 100 images simultaneously. Perfect for processing multiple documents or photos for bulk application submissions."
+        "q": "Kann ich mehrere Bilder gleichzeitig komprimieren?",
+        "a": "Ja! Toolaze unterstützt die Stapelverarbeitung von bis zu 100 Bildern gleichzeitig. Perfekt für die Verarbeitung mehrerer Dokumente oder Fotos für Massenantragseinreichungen."
       },
       {
-        "q": "Will my compressed image still be accepted by online forms?",
-        "a": "Yes. Toolaze maintains the visual quality needed for official verification while meeting the strict 50KB file size requirement. The compressed images maintain clarity and readability required by online forms and portals."
+        "q": "Wird mein komprimiertes Bild noch von Online-Formularen akzeptiert?",
+        "a": "Ja. Toolaze erhält die visuelle Qualität, die für die offizielle Überprüfung erforderlich ist, während die strenge 50KB-Dateigrößenanforderung erfüllt wird. Die komprimierten Bilder behalten die Klarheit und Lesbarkeit bei, die von Online-Formularen und Portalen erforderlich sind."
       },
       {
-        "q": "What if my original image is already under 50KB?",
-        "a": "If your image is already under 50KB, the tool will optimize it further to ensure it meets the exact requirement while preserving quality. The compression algorithm focuses on removing invisible data rather than reducing visual quality."
+        "q": "Was ist, wenn mein Originalbild bereits unter 50KB liegt?",
+        "a": "Wenn Ihr Bild bereits unter 50KB liegt, optimiert das Tool es weiter, um sicherzustellen, dass es die genaue Anforderung erfüllt und dabei die Qualität erhält. Der Komprimierungsalgorithmus konzentriert sich darauf, unsichtbare Daten zu entfernen, anstatt die visuelle Qualität zu reduzieren."
       },
       {
-        "q": "Does it work for passport photos and ID documents?",
-        "a": "Yes, Toolaze can compress passport photos and ID document scans to 50KB. However, note that some applications may have different size requirements (e.g., USCIS requires 240KB). Always check your specific application requirements before compressing."
+        "q": "Funktioniert es für Reisepassfotos und Ausweisdokumente?",
+        "a": "Ja, Toolaze kann Reisepassfotos und Ausweisdokumentenscans auf 50KB komprimieren. Beachten Sie jedoch, dass einige Anwendungen möglicherweise unterschiedliche Größenanforderungen haben (z. B. erfordert USCIS 240KB). Überprüfen Sie immer Ihre spezifischen Anwendungsanforderungen vor der Komprimierung."
       }
     ],
-    "compare": {
-      "toolaze": "Keine Größenbeschränkungen, Batch-Verarbeitung 100 Dateien, Lokal",
-      "others": "Dateigrößenobergrenzen, Einzeldatentlimits, Abonnement-Popups"
-    },
     "features": {
-      "title": "50KB Image Compression Features",
+      "title": "50KB Bildkomprimierungsfunktionen",
       "items": [
         {
-          "icon": "🎯",
-          "iconType": "compression",
-          "title": "Precise 50KB Target",
-          "desc": "Compress images to exactly 50KB. Meet universal online form requirements with precision while maintaining visual quality for official verification."
+          "title": "Präzises 50KB-Ziel",
+          "desc": "Komprimieren Sie Bilder auf genau 50KB. Erfüllen Sie universelle Online-Formularanforderungen mit Präzision und erhalten Sie dabei die visuelle Qualität für die offizielle Überprüfung."
         },
         {
-          "icon": "🔒",
-          "iconType": "privacy",
-          "title": "100% Private Processing",
-          "desc": "All compression happens locally in your browser. Your personal documents and photos never leave your device, ensuring complete privacy and security."
+          "title": "100% Private Verarbeitung",
+          "desc": "Alle Komprimierung erfolgt lokal in Ihrem Browser. Ihre persönlichen Dokumente und Fotos verlassen niemals Ihr Gerät und gewährleisten vollständige Privatsphäre und Sicherheit."
         },
         {
-          "icon": "📦",
-          "iconType": "batch",
-          "title": "Batch Processing",
-          "desc": "Process up to 100 images simultaneously. Perfect for bulk document processing and multiple application submissions."
+          "title": "Stapelverarbeitung",
+          "desc": "Verarbeiten Sie bis zu 100 Bilder gleichzeitig. Perfekt für die Massenverarbeitung von Dokumenten und mehrere Antragseinreichungen."
         },
         {
-          "icon": "⚡",
-          "iconType": "speed",
-          "title": "Instant Compression",
-          "desc": "Browser-native Canvas API processing ensures instant compression without server uploads or waiting queues. Get your documents ready immediately."
+          "title": "Sofortige Komprimierung",
+          "desc": "Die browser-native Canvas API-Verarbeitung gewährleistet sofortige Komprimierung ohne Server-Uploads oder Warteschlangen. Bereiten Sie Ihre Dokumente sofort vor."
         },
         {
-          "icon": "💎",
-          "iconType": "free",
-          "title": "Free Forever",
-          "desc": "Unlimited image compression completely free—no premium tiers, no subscription fees, no advertisements. Perfect for all users."
+          "title": "Für Immer Kostenlos",
+          "desc": "Unbegrenzte Bildkomprimierung völlig kostenlos—keine Premium-Stufen, keine Abonnementgebühren, keine Werbung. Perfekt für alle Benutzer."
         },
         {
-          "icon": "📄",
-          "iconType": "quality",
-          "title": "Format Preserved",
-          "desc": "Maintain original image format (JPG, PNG, WebP, BMP). Keep compatibility with any online form or application system."
+          "title": "Format Erhalten",
+          "desc": "Behalten Sie das ursprüngliche Bildformat bei (JPG, PNG, WebP, BMP). Behalten Sie die Kompatibilität mit jedem Online-Formular oder Anwendungssystem."
         }
       ]
     },
     "performanceMetrics": {
-      "title": "Technical Specifications",
+      "title": "Technische Spezifikationen",
       "metrics": [
         {
-          "label": "Input Format",
-          "value": "JPG, PNG, WebP, BMP (All image formats)"
+          "label": "Eingabeformat",
+          "value": "JPG, PNG, WebP, BMP (Alle Bildformate)"
         },
         {
-          "label": "Output Format",
-          "value": "Original format preserved"
+          "label": "Ausgabeformat",
+          "value": "Originalformat erhalten"
         },
         {
-          "label": "File Size Limit",
-          "value": "Exactly 50KB (Universal form requirement)"
+          "label": "Dateigrößenlimit",
+          "value": "Genau 50KB (Universelle Formularanforderung)"
         },
         {
-          "label": "Resolution Support",
-          "value": "Up to 4K (3840x2160) - Auto-adjusted for size"
+          "label": "Auflösungsunterstützung",
+          "value": "Bis zu 4K (3840x2160) - Automatisch für Größe angepasst"
         },
         {
-          "label": "Batch Processing",
-          "value": "Up to 100 images per session"
+          "label": "Stapelverarbeitung",
+          "value": "Bis zu 100 Bilder pro Sitzung"
         },
         {
-          "label": "Processing Speed",
-          "value": "Instant browser-side compression"
+          "label": "Verarbeitungsgeschwindigkeit",
+          "value": "Sofortige browser-seitige Komprimierung"
         }
       ]
     },
     "howToUse": {
-      "title": "How to Compress Image to 50KB",
+      "title": "Wie man Bilder auf 50KB komprimiert",
       "steps": [
         {
-          "title": "Upload Image",
-          "desc": "Drag and drop your image or click to browse. Supports JPG, PNG, WebP, and BMP formats from any source."
+          "title": "Bild hochladen",
+          "desc": "Ziehen Sie Ihr Bild per Drag & Drop oder klicken Sie zum Durchsuchen. Unterstützt JPG-, PNG-, WebP- und BMP-Formate von jeder Quelle."
         },
         {
-          "title": "Set 50KB Target",
-          "desc": "The tool automatically sets the target to exactly 50KB. Our algorithm compresses your image precisely to meet online form requirements."
+          "title": "50KB-Ziel festlegen",
+          "desc": "Das Tool setzt das Ziel automatisch auf genau 50KB. Unser Algorithmus komprimiert Ihr Bild präzise, um Online-Formularanforderungen zu erfüllen."
         },
         {
-          "title": "Download Compressed",
-          "desc": "Download your compressed image instantly. The file is guaranteed to be under 50KB and ready to upload to any online form."
+          "title": "Komprimiertes herunterladen",
+          "desc": "Laden Sie Ihr komprimiertes Bild sofort herunter. Die Datei ist garantiert unter 50KB und bereit zum Hochladen auf jedes Online-Formular."
         }
       ]
     },
     "comparison": {
-      "toolaze": "Precise 50KB output, Original format preserved, 100% browser-side processing, No watermarks or quality loss, Batch process up to 100 images, Free forever",
-      "others": "Random file sizes may exceed 50KB, Format conversion required, Server uploads required, Watermarks or quality degradation, Limited batch processing, Subscription fees or ads"
+      "toolaze": "Präzise 50KB-Ausgabe, Originalformat erhalten, 100% browser-seitige Verarbeitung, Keine Wasserzeichen oder Qualitätsverlust, Stapelverarbeitung bis zu 100 Bildern, Für immer kostenlos",
+      "others": "Zufällige Dateigrößen können 50KB überschreiten, Formatkonvertierung erforderlich, Server-Uploads erforderlich, Wasserzeichen oder Qualitätsverschlechterung, Begrenzte Stapelverarbeitung, Abonnementgebühren oder Werbung"
     },
     "rating": {
-      "text": "\"Hit the 50KB mark perfectly for my university application. No more guessing!\" - Join thousands of students and professionals who trust Toolaze for online form compliance."
+      "text": "\"Perfekt die 50KB-Marke für meine Universitätsbewerbung getroffen. Kein Raten mehr!\" - Schließen Sie sich Tausenden von Studenten und Fachleuten an, die Toolaze für Online-Formular-Compliance vertrauen."
     }
   },
   "passport-photo-200kb": {
@@ -728,7 +718,16 @@
     },
     "intro": {
       "title": "Privatsphäre für Ihre sensibelsten Daten",
-      "content": "Ihr Passfoto ist Ihr sensibelstes digitales Asset. Toolaze verarbeitet Ihre Daten lokal, was bedeutet, dass Ihre biometrischen Informationen Ihren Browser niemals verlassen. Wir konzentrieren uns auf technische Klarheit und stellen sicher, dass Ihr Foto die Dateigrößenanforderung erfüllt, ohne künstliche Änderungen."
+      "content": [
+        {
+          "title": "Globale Passverlängerungsanforderungen",
+          "text": "Unser browserbasierter Kompressor verarbeitet Ihre Dateien lokal mit Canvas API und gewährleistet vollständige Privatsphäre und schnelle Komprimierung, ohne Ihre Bilder auf einen Server hochzuladen."
+        },
+        {
+          "title": "Vollständige Privatsphäre für biometrische Daten",
+          "text": "Passfotos enthalten sensible biometrische Informationen, die mit äußerster Sorgfalt behandelt werden müssen. Das Hochladen dieser Fotos auf cloudbasierte Komprimierungsdienste birgt ernsthafte Datenschutz- und Sicherheitsrisiken, da Ihre biometrischen Daten von Dritten gespeichert, analysiert oder missbraucht werden könnten. Toolaze verarbeitet alle Fotos lokal in Ihrem Browser und stellt sicher, dass Ihre biometrischen Informationen Ihr Gerät niemals verlassen. Alle Komprimierung erfolgt mit JavaScript und Canvas API ohne Server-Uploads, Gesichtserkennung oder Datenspeicherung. Wir konzentrieren uns auf technische Klarheit und Dateigrößenoptimierung ohne künstliche Änderungen, Verschönerung oder KI-Verbesserungen, um sicherzustellen, dass Ihr Foto authentisch bleibt und den Regierungsstandards entspricht."
+        }
+      ]
     },
     "specs": {
       "engine": "Sicherer Client-seitiger Algorithmus",
@@ -757,88 +756,84 @@
     ],
     "faq": [
       {
-        "q": "Wird mein Foto unscharf?",
-        "a": "200KB bietet viel Platz für ein scharfes Porträt. Toolaze priorisiert Detailerhaltung, während das Größenziel erreicht wird."
+        "q": "Wird mein Passfoto nach der Komprimierung unscharf?",
+        "a": "Nein. 200KB bieten viel Platz für ein scharfes Porträt. Toolaze priorisiert Detailerhaltung und Gesichtsklarheit, während das Größenziel erreicht wird. Der Komprimierungsalgorithmus konzentriert sich darauf, unsichtbare Daten zu entfernen, anstatt die visuelle Qualität zu reduzieren."
       },
       {
         "q": "Kann ich dies für mehrere Familienmitglieder verwenden?",
-        "a": "Ja, Sie können bis zu 100 Fotos auf einmal batch-verarbeiten, was es ideal für Familienreiseanträge macht."
+        "a": "Ja! Toolaze unterstützt die Stapelverarbeitung von bis zu 100 Passfotos gleichzeitig. Perfekt für die Verarbeitung von Fotos für gesamte Familienreiseanträge oder mehrere Verlängerungseinreichungen effizient."
       },
       {
-        "q": "Are my biometric photos secure and private?",
-        "a": "Yes! All compression happens locally in your browser using JavaScript and Canvas API. Your passport photos never leave your device, ensuring complete privacy and security. No data is ever sent to our servers or stored anywhere."
+        "q": "Sind meine biometrischen Fotos sicher und privat?",
+        "a": "Ja! Alle Komprimierung erfolgt lokal in Ihrem Browser mit JavaScript und Canvas API. Ihre Passfotos verlassen niemals Ihr Gerät und gewährleisten vollständige Privatsphäre und Sicherheit. Keine Daten werden jemals an unsere Server gesendet oder irgendwo gespeichert."
       },
       {
-        "q": "Will my compressed photo be accepted by passport renewal portals?",
-        "a": "Yes. Toolaze maintains the visual quality and clarity required for official identification while meeting the strict 200KB file size requirement. The compressed photos maintain facial clarity and meet government passport photo specifications."
+        "q": "Wird mein komprimiertes Foto von Passverlängerungsportalen akzeptiert?",
+        "a": "Ja. Toolaze behält die visuelle Qualität und Klarheit bei, die für die offizielle Identifikation erforderlich ist, während die strenge 200KB-Dateigrößenanforderung erfüllt wird. Die komprimierten Fotos behalten die Gesichtsklarheit bei und erfüllen die staatlichen Passfoto-Spezifikationen."
       },
       {
-        "q": "What countries accept 200KB passport photos?",
-        "a": "Many countries accept passport photos between 200KB and 500KB, including the UK, Australia, Canada, New Zealand, and others. Always check your specific country's requirements before compressing, as some may have different size limits."
+        "q": "Welche Länder akzeptieren 200KB Passfotos?",
+        "a": "Viele Länder akzeptieren Passfotos zwischen 200KB und 500KB, einschließlich Großbritannien, Australien, Kanada, Neuseeland und anderen. Überprüfen Sie immer die Anforderungen Ihres spezifischen Landes vor der Komprimierung, da einige möglicherweise unterschiedliche Größenlimits haben."
       },
       {
-        "q": "Does the tool alter my facial features?",
-        "a": "No! Toolaze provides pure technical compression without any facial alterations, beautification, or AI enhancements. Your facial features remain 100% authentic, which is essential for passport and identification purposes."
+        "q": "Verändert das Tool meine Gesichtszüge?",
+        "a": "Nein! Toolaze bietet reine technische Komprimierung ohne Gesichtsveränderungen, Verschönerung oder KI-Verbesserungen. Ihre Gesichtszüge bleiben zu 100% authentisch, was für Pass- und Identifikationszwecke unerlässlich ist."
       }
     ],
-    "compare": {
-      "toolaze": "Originalformat, Lokale Sicherheit, Batch-bereit",
-      "others": "Erzwingt Formatänderung, Cloud-Sicherheitsrisiken, Kein Batching"
-    },
     "features": {
-      "title": "200KB Passport Photo Compression Features",
+      "title": "Reisepassfoto 200KB Komprimierungsfunktionen",
       "items": [
         {
           "icon": "🎯",
           "iconType": "compression",
-          "title": "Precise 200KB Target",
+          "title": "Präzises 200KB-Ziel",
           "desc": "Compress passport photos to exactly 200KB. Meet UK, Australia, and global renewal requirements with precision while maintaining photo clarity."
         },
         {
           "icon": "🔒",
           "iconType": "privacy",
-          "title": "100% Private Processing",
+          "title": "100% Private Verarbeitung",
           "desc": "All compression happens locally in your browser. Your biometric photos never leave your device, ensuring complete privacy and security."
         },
         {
           "icon": "📦",
           "iconType": "batch",
-          "title": "Batch Processing",
+          "title": "Stapelverarbeitung",
           "desc": "Process up to 100 passport photos simultaneously. Perfect for family travel applications or multiple renewal submissions."
         },
         {
           "icon": "⚡",
           "iconType": "speed",
-          "title": "Instant Compression",
+          "title": "Sofortige Komprimierung",
           "desc": "Browser-native Canvas API processing ensures instant compression without server uploads or waiting queues. Get your passport photos ready immediately."
         },
         {
           "icon": "💎",
           "iconType": "free",
-          "title": "Free Forever",
+          "title": "Für Immer Kostenlos",
           "desc": "Unlimited photo compression completely free—no premium tiers, no subscription fees, no advertisements. Perfect for all applicants."
         },
         {
           "icon": "📄",
           "iconType": "quality",
-          "title": "Format Preserved",
+          "title": "Format Erhalten",
           "desc": "Maintain original image format and facial clarity. Keep your photos sharp enough for official identification while meeting the 200KB limit."
         }
       ]
     },
     "performanceMetrics": {
-      "title": "Technical Specifications",
+      "title": "Technische Spezifikationen",
       "metrics": [
         {
-          "label": "Input Format",
+          "label": "Eingabeformat",
           "value": "JPG, PNG (Passport photos)"
         },
         {
-          "label": "Output Format",
+          "label": "Ausgabeformat",
           "value": "Original format preserved"
         },
         {
-          "label": "File Size Limit",
+          "label": "Dateigrößenlimit",
           "value": "200KB (UK, Australia renewal requirement)"
         },
         {
@@ -846,38 +841,38 @@
           "value": "Meets government passport photo specifications"
         },
         {
-          "label": "Batch Processing",
+          "label": "Stapelverarbeitung",
           "value": "Up to 100 photos per session"
         },
         {
-          "label": "Processing Speed",
+          "label": "Verarbeitungsgeschwindigkeit",
           "value": "Instant browser-side compression"
         }
       ]
     },
     "howToUse": {
-      "title": "How to Compress Passport Photo to 200KB",
+      "title": "Wie man Reisepassfotos auf 200KB komprimiert",
       "steps": [
         {
           "title": "Upload Passport Photo",
-          "desc": "Drag and drop your passport photo or click to browse. Supports JPG and PNG formats from smartphones, cameras, or photo studios."
+          "desc": "Ziehen Sie Ihr Bild per Drag & Drop oder klicken Sie zum Durchsuchen."
         },
         {
-          "title": "Set 200KB Target",
+          "title": "200KB-Ziel festlegen",
           "desc": "The tool automatically sets the target to 200KB. Our algorithm compresses your photo precisely to meet renewal requirements while maintaining clarity."
         },
         {
           "title": "Download Optimized",
-          "desc": "Download your compressed photo instantly. The file is guaranteed to be under 200KB and ready to upload to passport renewal portals."
+          "desc": "Laden Sie Ihr komprimiertes Bild sofort herunter. Die Datei ist bereit für die Verwendung."
         }
       ]
     },
     "comparison": {
-      "toolaze": "Precise 200KB output, Original format preserved, 100% browser-side processing, No watermarks or quality loss, Batch process up to 100 photos, Free forever",
-      "others": "Random file sizes may exceed limits, Format conversion required, Server uploads required, Watermarks or quality degradation, Limited batch processing, Subscription fees or ads"
+      "toolaze": "Präzise Ausgabe, 100% Browser-seitige Verarbeitung, Keine Wasserzeichen oder Qualitätsverlust, Stapelverarbeitung bis zu 100 Bildern, Für immer kostenlos, Vollständige Privatsphäre",
+      "others": "Zufällige Dateigrößen können überschritten werden, Server-Uploads erforderlich, Wasserzeichen oder Qualitätsverschlechterung, Begrenzte Stapelverarbeitung, Abonnementgebühren oder Werbung, Datenschutzbedenken"
     },
     "rating": {
-      "text": "\"My UK passport renewal went smoothly! Photo uploaded instantly without any issues.\" - Join thousands of travelers who trust Toolaze for global passport renewal compliance."
+      "text": "\"My UK passport renewal went smoothly! Photo uploaded instantly without any issues.\" - Schließen Sie sich Tausenden von Benutzern an, die Toolaze vertrauen."
     }
   },
   "amazon-product-10mb": {
@@ -903,7 +898,16 @@
     },
     "intro": {
       "title": "Beschleunigen Sie Ihre Listings",
-      "content": "Während Amazon bis zu 10MB erlaubt, verlangsamen riesige Dateien die Ladegeschwindigkeit Ihrer Produktseite und beeinträchtigen Conversion-Raten. Toolaze optimiert Ihre Listing-Bilder auf einen Sweet Spot (unter 2MB empfohlen) für sofortiges Laden in mobilen Apps."
+      "content": [
+        {
+          "title": "Amazon Seller Central Upload-Anforderungen",
+          "text": "Unser browserbasierter Kompressor verarbeitet Ihre Dateien lokal mit Canvas API und gewährleistet vollständige Privatsphäre und schnelle Komprimierung, ohne Ihre Bilder auf einen Server hochzuladen."
+        },
+        {
+          "title": "Schützen Sie Ihr Produkt-IP und Geschäftsgeheimnisse",
+          "text": "Als Amazon-Verkäufer sind Ihre Produktfotos wertvolles geistiges Eigentum, das geschützt werden muss. Das Hochladen unveröffentlichter Produkte oder proprietärer Designs auf cloudbasierte Komprimierungsdienste birgt ernsthafte Sicherheitsrisiken, da Ihre Bilder von Wettbewerbern gespeichert, analysiert oder missbraucht werden könnten. Toolaze verarbeitet alle Bilder lokal in Ihrem Browser und stellt sicher, dass Ihre Produktfotos Ihr Gerät niemals verlassen. Alle Komprimierung erfolgt mit JavaScript und Canvas API ohne Server-Uploads, Wasserzeichen oder Datenspeicherung. Ihre Geschäftsgeheimnisse und Produktdesigns bleiben während des gesamten Komprimierungsprozesses vollständig privat und sicher, was es sicher für unveröffentlichte Produkte und proprietäre Informationen macht."
+        }
+      ]
     },
     "specs": {
       "engine": "E-Commerce-Schärfe-Abstimmung",
@@ -924,8 +928,8 @@
       },
       {
         "icon": "🎨",
-        "title": "A+ Content Creators",
-        "desc": "Optimize heavy lifestyle images for your brand story section. Reduce file sizes while maintaining visual appeal for enhanced brand storytelling."
+        "title": "A+ Content-Ersteller",
+        "desc": "Reduzieren Sie Dateigrößen erheblich bei gleichzeitiger Beibehaltung der Qualität."
       }
     ],
     "faq": [
@@ -938,28 +942,24 @@
         "a": "Ja. Die Verarbeitung erfolgt in Ihrem Browser. Ihre Produktfotos werden niemals an unseren Server gesendet."
       },
       {
-        "q": "Can I process multiple product images at once?",
-        "a": "Yes! Toolaze supports batch processing of up to 100 product images simultaneously. Perfect for power sellers who need to optimize entire product catalogs or bulk listings efficiently."
+        "q": "Kann ich mehrere product-Dateien gleichzeitig komprimieren?",
+        "a": "Ja! Toolaze unterstützt die Stapelverarbeitung von bis zu 100 Bildern gleichzeitig. Perfekt für die Verarbeitung mehrerer Dateien in einem Vorgang."
       },
       {
         "q": "What's the optimal file size for Amazon product images?",
         "a": "While Amazon allows up to 10MB, we recommend compressing to under 2MB for optimal loading speed. Smaller files load faster on mobile devices, improving user experience and potentially boosting your search rankings."
       },
       {
-        "q": "Are my product photos uploaded to a server?",
-        "a": "No! All compression happens locally in your browser. Your product photos never leave your device, ensuring complete privacy and security for your intellectual property."
+        "q": "Werden meine Dateien auf einen Server hochgeladen?",
+        "a": "Ja! Die gesamte Komprimierung erfolgt lokal in Ihrem Browser mit JavaScript und Canvas-API. Ihre Bilder verlassen Ihr Gerät niemals und gewährleisten vollständige Privatsphäre und Sicherheit."
       },
       {
         "q": "Will optimized images improve my Amazon search rankings?",
         "a": "Yes. Amazon's algorithm considers page load speed as a ranking factor. Faster-loading images can improve your listing's performance metrics and increase visibility in search results, potentially leading to more sales."
       }
     ],
-    "compare": {
-      "toolaze": "Verkäufer-fokussiert, Bulk-Modus, Kostenlos",
-      "others": "Generische Komprimierung, Einzeldatentlimits"
-    },
     "features": {
-      "title": "Amazon Product Image Optimization Features",
+      "title": "Amazon-Produktbild-Optimierungsfunktionen",
       "items": [
         {
           "icon": "🎯",
@@ -970,13 +970,13 @@
         {
           "icon": "🔒",
           "iconType": "privacy",
-          "title": "100% Private Processing",
+          "title": "100% Private Verarbeitung",
           "desc": "All compression happens locally in your browser. Your product photos never leave your device, ensuring complete privacy and IP protection."
         },
         {
           "icon": "📦",
           "iconType": "batch",
-          "title": "Batch Processing",
+          "title": "Stapelverarbeitung",
           "desc": "Process up to 100 product images simultaneously. Optimize entire product catalogs in one operation, perfect for power sellers and bulk listings."
         },
         {
@@ -988,7 +988,7 @@
         {
           "icon": "💎",
           "iconType": "free",
-          "title": "Free Forever",
+          "title": "Für Immer Kostenlos",
           "desc": "Unlimited image optimization completely free—no premium tiers, no subscription fees, no advertisements. Perfect for sellers of all sizes."
         },
         {
@@ -1000,40 +1000,40 @@
       ]
     },
     "performanceMetrics": {
-      "title": "Technical Specifications",
+      "title": "Technische Spezifikationen",
       "metrics": [
         {
-          "label": "Input Format",
+          "label": "Eingabeformat",
           "value": "JPG, PNG, WebP (Product listing images)"
         },
         {
-          "label": "Output Format",
+          "label": "Ausgabeformat",
           "value": "JPG (Optimized for Amazon)"
         },
         {
-          "label": "File Size Limit",
+          "label": "Dateigrößenlimit",
           "value": "Under 10MB (Amazon requirement, 2MB recommended)"
         },
         {
-          "label": "Resolution Support",
+          "label": "Auflösungsunterstützung",
           "value": "Up to 4K (3840x2160) - Zoom capability preserved"
         },
         {
-          "label": "Batch Processing",
+          "label": "Stapelverarbeitung",
           "value": "Up to 100 images per session"
         },
         {
-          "label": "Processing Speed",
+          "label": "Verarbeitungsgeschwindigkeit",
           "value": "Instant browser-side compression"
         }
       ]
     },
     "howToUse": {
-      "title": "How to Optimize Amazon Product Images",
+      "title": "Wie man Amazon-Produktbilder optimiert",
       "steps": [
         {
           "title": "Upload Product Photos",
-          "desc": "Drag and drop your Amazon product images or click to browse. Supports JPG, PNG, and WebP formats from cameras or design tools."
+          "desc": "Ziehen Sie Ihr Bild per Drag & Drop oder klicken Sie zum Durchsuchen."
         },
         {
           "title": "Set Under 10MB Target",
@@ -1046,11 +1046,11 @@
       ]
     },
     "comparison": {
-      "toolaze": "Under 10MB guarantee, Zoom capability preserved, 100% browser-side processing, No watermarks or quality loss, Batch process up to 100 images, Free forever, IP protection",
-      "others": "Random file sizes may exceed 10MB, Reduces resolution unnecessarily, Server uploads required, Watermarks or quality degradation, Limited batch processing, Subscription fees or ads, Privacy concerns"
+      "toolaze": "Unter 10MB Garantie, Zoom-Fähigkeit erhalten, 100% Browser-seitige Verarbeitung, Keine Wasserzeichen oder Qualitätsverlust, Stapelverarbeitung bis zu 100 Bildern, Für immer kostenlos, IP-Schutz",
+      "others": "Zufällige Dateigrößen können überschritten werden, Server-Uploads erforderlich, Wasserzeichen oder Qualitätsverschlechterung, Begrenzte Stapelverarbeitung, Abonnementgebühren oder Werbung, Datenschutzbedenken"
     },
     "rating": {
-      "text": "\"Fixed my Seller Central upload errors instantly! Product images load faster and my listings rank higher.\" - Join thousands of Amazon sellers who trust Toolaze for e-commerce optimization."
+      "text": "\"Fixed my Seller Central upload errors instantly! Product images load faster and my listings rank higher.\" - Schließen Sie sich Tausenden von Benutzern an, die Toolaze vertrauen."
     }
   },
   "etsy-listing-1mb": {
@@ -1072,11 +1072,20 @@
     "hero": {
       "h1": "Etsy Listing Foto Tool",
       "sub": "Perfekt für Handwerksverkäufer",
-      "desc": "Etsy empfiehlt Bilder unter 1MB für die beste Browsing-Erfahrung. Wenn Ihre rohen Kamera-Fotos zu groß sind, verkleinern wir sie, ohne Ihre Farben zu verwaschen."
+      "desc": "Komprimieren Sie Etsy-Listing-Bilder auf unter 1MB für schnelleres Laden des Shops. Lassen Sie einfach Ihre Produktfotos unten fallen, um sie zu optimieren und dabei Farben und Texturen zu erhalten."
     },
     "intro": {
-      "title": "Zeigen Sie Details, nicht Pixel",
-      "content": "Etsy-Shopper lieben Details. Unser lokaler Komprimierungsalgorithmus ist darauf abgestimmt, Texturen und Farben zu erhalten - entscheidend für den Verkauf physischer Güter - während die Dateigröße drastisch reduziert wird, um Plattformempfehlungen zu erfüllen."
+      "title": "Warum Etsy-Listing-Bilder optimieren?",
+      "content": [
+        {
+          "title": "Etsys 1MB-Empfehlung für bessere Leistung",
+          "text": "Etsy empfiehlt Listing-Bilder unter 1MB für die beste Browsing-Erfahrung. Wenn Sie Produktfotos mit einer professionellen Kamera oder einem Smartphone aufnehmen, sind die resultierenden Bilder oft 3-10MB groß und überschreiten diese Empfehlung bei weitem. Große Bilddateien verursachen nicht nur 'Datei zu groß'-Upload-Fehler, sondern verlangsamen auch die Ladegeschwindigkeit Ihres Shops, besonders auf mobilen Geräten, auf denen die meisten Etsy-Käufer surfen. Langsam ladende Shops schaden Ihren Suchrankings, reduzieren das Käuferengagement und können zu verlorenen Verkäufen führen. Etsy warnt, dass Dateien über 1MB möglicherweise nicht ordnungsgemäß hochgeladen werden oder für Käufer sehr langsam laden, was eine schlechte Einkaufserfahrung schafft. Unser browserbasierter Kompressor verwendet intelligente Canvas API-Verarbeitung, um Ihre Listing-Bilddateigrößen zu reduzieren und dabei die Texturen, Farben und Details zu erhalten, die für den Verkauf von handgefertigten und physischen Waren entscheidend sind."
+        },
+        {
+          "title": "Handgefertigte Produktdetails und Farben erhalten",
+          "text": "Etsy-Käufer lieben es, Details zu sehen—die Textur von handgefertigtem Schmuck, die lebendigen Farben von Kunstdrucken, die feine Handwerkskunst von Vintage-Artikeln. Das Komprimieren von Bildern sollte nicht bedeuten, diese entscheidenden Verkaufspunkte zu opfern. Toolazes Komprimierungsalgorithmus ist speziell darauf ausgelegt, Texturen und Farben zu erhalten und gleichzeitig das Dateigewicht drastisch zu reduzieren. Wir erhalten Farbgenauigkeit und Detailklarheit und stellen sicher, dass Ihre handgefertigten Produkte in Suchergebnissen und Produktseiten am besten aussehen. Alle Verarbeitung erfolgt lokal in Ihrem Browser, sodass Ihre einzigartigen Produktdesigns und Fotografien Ihr Gerät niemals verlassen und vollständige Privatsphäre und Sicherheit für Ihre kreative Arbeit gewährleisten."
+        }
+      ]
     },
     "specs": {
       "engine": "Textur-Erhaltungsalgorithmus",
@@ -1086,144 +1095,125 @@
     },
     "scenes": [
       {
-        "title": "Listing-Miniaturansichten",
-        "desc": "Stellen Sie sicher, dass Ihr Shop in der Etsy-Mobil-App schnell lädt.",
-        "icon": "🛍️"
+        "title": "Handwerksverkäufer",
+        "desc": "Optimieren Sie Produktfotos für handgefertigte Artikel. Erhalten Sie Texturen, Farben und feine Details, die Ihre Handwerkskunst zeigen und Käufer anziehen."
       },
       {
-        "title": "Digitale Downloads",
-        "desc": "Reduzieren Sie die Größe Ihrer digitalen Kunstdateien für einfachere Kundenzustellung.",
-        "icon": "📱"
+        "title": "Mobile Shop-Optimierung",
+        "desc": "Stellen Sie sicher, dass Ihr Shop in der Etsy-Mobil-App schnell lädt. Verbessern Sie die Käufererfahrung und Suchrankings mit schneller ladenden Listing-Bildern."
       },
       {
-        "icon": "🎨",
-        "title": "Digital Art Sellers",
-        "desc": "Reduce the size of digital art files for easier customer delivery. Optimize preview images while maintaining color accuracy for your artwork."
+        "title": "Digitale Kunstverkäufer",
+        "desc": "Reduzieren Sie die Größe digitaler Kunstdateien für einfachere Kundenzustellung. Optimieren Sie Vorschaubilder und erhalten Sie dabei die Farbgenauigkeit für Ihre Kunstwerke."
       }
     ],
     "faq": [
       {
-        "q": "Unterstützt es JPG?",
-        "a": "Ja, Etsy bevorzugt JPG für Listing-Fotos. Wir optimieren sie perfekt."
+        "q": "Unterstützt es JPG-Format für Etsy-Listings?",
+        "a": "Ja! Etsy bevorzugt JPG-Format für Listing-Fotos, und Toolaze optimiert sie perfekt. JPG-Format bietet die beste Balance zwischen Dateigröße und Bildqualität für Etsys Plattform."
       },
       {
-        "q": "Warum 1MB?",
-        "a": "Etsy warnt, dass Dateien über 1MB möglicherweise nicht hochgeladen werden oder für Käufer sehr langsam laden."
+        "q": "Warum ist 1MB die empfohlene Größe für Etsy?",
+        "a": "Etsy empfiehlt Bilder unter 1MB, weil größere Dateien das Laden des Shops verlangsamen, besonders auf mobilen Geräten. Dateien über 1MB werden möglicherweise nicht ordnungsgemäß hochgeladen oder laden sehr langsam für Käufer, was eine schlechte Einkaufserfahrung schafft und möglicherweise Ihre Suchrankings beeinträchtigt."
       },
       {
-        "q": "Will my product colors look washed out after compression?",
-        "a": "No! Toolaze's compression algorithm is specifically tuned to preserve vibrant colors and textures. The compression focuses on optimizing the image structure rather than reducing color quality, ensuring your handmade products look their best."
+        "q": "Werden meine Produktfarben nach der Komprimierung ausgewaschen aussehen?",
+        "a": "Nein! Toolazes Komprimierungsalgorithmus ist speziell darauf ausgelegt, lebendige Farben und Texturen zu erhalten. Die Komprimierung konzentriert sich darauf, die Bildstruktur zu optimieren, anstatt die Farbqualität zu reduzieren, und stellt sicher, dass Ihre handgefertigten Produkte am besten aussehen."
       },
       {
-        "q": "Can I process multiple listing images at once?",
-        "a": "Yes! Toolaze supports batch processing of up to 100 listing images simultaneously. Perfect for optimizing entire product catalogs or bulk shop updates efficiently."
+        "q": "Kann ich mehrere Listing-Bilder gleichzeitig verarbeiten?",
+        "a": "Ja! Toolaze unterstützt die Stapelverarbeitung von bis zu 100 Listing-Bildern gleichzeitig. Perfekt für die Optimierung gesamter Produktkataloge oder Bulk-Shop-Updates effizient."
       },
       {
-        "q": "Are my product photos uploaded to a server?",
-        "a": "No! All compression happens locally in your browser using JavaScript and Canvas API. Your product photos and designs never leave your device, ensuring complete privacy and security for your creative work."
+        "q": "Werden meine Produktfotos auf einen Server hochgeladen?",
+        "a": "Nein! Alle Komprimierung erfolgt lokal in Ihrem Browser mit JavaScript und Canvas API. Ihre Produktfotos und Designs verlassen niemals Ihr Gerät und gewährleisten vollständige Privatsphäre und Sicherheit für Ihre kreative Arbeit."
       },
       {
-        "q": "Will optimized images improve my Etsy search rankings?",
-        "a": "Yes. Faster-loading shops perform better in Etsy's search algorithm. Optimized images improve your shop's loading speed, which can boost your search rankings and increase buyer engagement, potentially leading to more sales."
+        "q": "Verbessern optimierte Bilder meine Etsy-Suchrankings?",
+        "a": "Ja. Schneller ladende Shops schneiden besser in Etsys Suchalgorithmus ab. Optimierte Bilder verbessern die Ladegeschwindigkeit Ihres Shops, was Ihre Suchrankings steigern und das Käuferengagement erhöhen kann, was möglicherweise zu mehr Verkäufen führt."
       }
     ],
-    "compare": {
-      "toolaze": "Textur erhaltend, Farbgenau, Schnell",
-      "others": "Verwaschene Farben, Langsame Uploads"
-    },
     "features": {
-      "title": "Etsy Listing Image Optimization Features",
+      "title": "Etsy-Listing-Optimierungsfunktionen",
       "items": [
         {
-          "icon": "🎯",
-          "iconType": "compression",
-          "title": "Under 1MB Target",
-          "desc": "Compress listing images to under 1MB. Meet Etsy's recommendations for faster shop loading and better search rankings."
+          "title": "Unter 1MB Ziel",
+          "desc": "Komprimieren Sie Listing-Bilder auf unter 1MB. Erfüllen Sie Etsys Empfehlungen für schnelleres Laden des Shops und bessere Suchrankings."
         },
         {
-          "icon": "🔒",
-          "iconType": "privacy",
-          "title": "100% Private Processing",
-          "desc": "All compression happens locally in your browser. Your product photos and designs never leave your device, ensuring complete privacy."
+          "title": "100% Private Verarbeitung",
+          "desc": "Alle Komprimierung erfolgt lokal in Ihrem Browser. Ihre Produktfotos und Designs verlassen niemals Ihr Gerät und gewährleisten vollständige Privatsphäre."
         },
         {
-          "icon": "📦",
-          "iconType": "batch",
-          "title": "Batch Processing",
-          "desc": "Process up to 100 listing images simultaneously. Optimize entire product catalogs in one operation for efficient shop management."
+          "title": "Stapelverarbeitung",
+          "desc": "Verarbeiten Sie bis zu 100 Listing-Bilder gleichzeitig. Optimieren Sie gesamte Produktkataloge in einem Vorgang für effizientes Shop-Management."
         },
         {
-          "icon": "⚡",
-          "iconType": "speed",
-          "title": "Instant Optimization",
-          "desc": "Browser-native Canvas API processing ensures instant compression without server uploads or waiting queues. Get your listings live faster."
+          "title": "Sofortige Optimierung",
+          "desc": "Browser-native Canvas API-Verarbeitung gewährleistet sofortige Komprimierung ohne Server-Uploads oder Warteschlangen. Bringen Sie Ihre Listings schneller live."
         },
         {
-          "icon": "💎",
-          "iconType": "free",
-          "title": "Free Forever",
-          "desc": "Unlimited image optimization completely free—no premium tiers, no subscription fees, no advertisements. Perfect for sellers of all sizes."
+          "title": "Für Immer Kostenlos",
+          "desc": "Unbegrenzte Bildoptimierung völlig kostenlos—keine Premium-Stufen, keine Abonnementgebühren, keine Werbung. Perfekt für Verkäufer aller Größen."
         },
         {
-          "icon": "🎨",
-          "iconType": "quality",
-          "title": "Colors & Textures Preserved",
-          "desc": "Maintain vibrant colors and fine textures. Keep your handmade products looking their best while reducing file size for faster loading."
+          "title": "Farben & Texturen erhalten",
+          "desc": "Behalten Sie lebendige Farben und feine Texturen. Halten Sie Ihre handgefertigten Produkte am besten aussehend, während Sie die Dateigröße für schnelleres Laden reduzieren."
         }
       ]
     },
     "performanceMetrics": {
-      "title": "Technical Specifications",
+      "title": "Technische Spezifikationen",
       "metrics": [
         {
-          "label": "Input Format",
-          "value": "JPG, PNG, WebP (Product listing images)"
+          "label": "Eingabeformat",
+          "value": "JPG, PNG, WebP (Produkt-Listing-Bilder)"
         },
         {
-          "label": "Output Format",
-          "value": "JPG (Optimized for Etsy, preferred format)"
+          "label": "Ausgabeformat",
+          "value": "JPG (Optimiert für Etsy, bevorzugtes Format)"
         },
         {
-          "label": "File Size Limit",
-          "value": "Under 1MB (Etsy recommendation)"
+          "label": "Dateigrößenlimit",
+          "value": "Unter 1MB (Etsy-Empfehlung)"
         },
         {
-          "label": "Color Preservation",
-          "value": "Vibrant colors and textures maintained"
+          "label": "Farberhaltung",
+          "value": "Lebendige Farben und Texturen erhalten"
         },
         {
-          "label": "Batch Processing",
-          "value": "Up to 100 images per session"
+          "label": "Stapelverarbeitung",
+          "value": "Bis zu 100 Bilder pro Sitzung"
         },
         {
-          "label": "Processing Speed",
-          "value": "Instant browser-side compression"
+          "label": "Verarbeitungsgeschwindigkeit",
+          "value": "Sofortige browser-seitige Komprimierung"
         }
       ]
     },
     "howToUse": {
-      "title": "How to Optimize Etsy Listing Images",
+      "title": "Wie man Etsy-Listing-Bilder optimiert",
       "steps": [
         {
-          "title": "Upload Product Photos",
-          "desc": "Drag and drop your Etsy listing images or click to browse. Supports JPG, PNG, and WebP formats from cameras or design tools."
+          "title": "Produktfotos hochladen",
+          "desc": "Ziehen Sie Ihre Etsy-Listing-Bilder per Drag & Drop oder klicken Sie zum Durchsuchen. Unterstützt JPG-, PNG- und WebP-Formate von Kameras oder Design-Tools."
         },
         {
-          "title": "Set Under 1MB Target",
-          "desc": "The tool automatically sets the target to under 1MB. Our algorithm compresses your images while preserving colors and textures."
+          "title": "Unter 1MB Ziel festlegen",
+          "desc": "Das Tool setzt das Ziel automatisch auf unter 1MB. Unser Algorithmus komprimiert Ihre Bilder und erhält dabei Farben und Texturen."
         },
         {
-          "title": "Download Optimized",
-          "desc": "Download your optimized images instantly. Files are ready to upload to Etsy, improving your shop's loading speed and search rankings."
+          "title": "Optimiertes herunterladen",
+          "desc": "Laden Sie Ihre optimierten Bilder sofort herunter. Dateien sind bereit zum Hochladen auf Etsy und verbessern die Ladegeschwindigkeit Ihres Shops und Suchrankings."
         }
       ]
     },
     "comparison": {
-      "toolaze": "Under 1MB guarantee, Colors and textures preserved, 100% browser-side processing, No watermarks or quality loss, Batch process up to 100 images, Free forever",
-      "others": "Random file sizes may exceed 1MB, Washed out colors or lost textures, Server uploads required, Watermarks or quality degradation, Limited batch processing, Subscription fees or ads"
+      "toolaze": "Unter 1MB Garantie, Farben und Texturen erhalten, 100% browser-seitige Verarbeitung, Keine Wasserzeichen oder Qualitätsverlust, Stapelverarbeitung bis zu 100 Bildern, Für immer kostenlos",
+      "others": "Zufällige Dateigrößen können überschritten werden, Ausgewaschene Farben oder verlorene Texturen, Server-Uploads erforderlich, Wasserzeichen oder Qualitätsverschlechterung, Begrenzte Stapelverarbeitung, Abonnementgebühren oder Werbung"
     },
     "rating": {
-      "text": "\"My Etsy shop loads so much faster now! Colors stayed vibrant and textures are perfect.\" - Join thousands of handmade sellers who trust Toolaze for preserving product details."
+      "text": "\"Mein Etsy-Shop lädt jetzt so viel schneller! Farben blieben lebendig und Texturen sind perfekt.\" - Schließen Sie sich Tausenden von Handwerksverkäufern an, die Toolaze für die Erhaltung von Produktdetails vertrauen."
     }
   },
   "ebay-picture-fast": {
@@ -1245,11 +1235,20 @@
     "hero": {
       "h1": "eBay Schnell-Lade-Optimierer",
       "sub": "Steigern Sie Ihre mobilen Verkäufe",
-      "desc": "Über 60% der eBay-Transaktionen finden auf mobilen Geräten statt. Schwere Bilder bedeuten verlorene Kunden. Optimieren Sie Ihre Inventar-Fotos, um sofort auf 4G-Netzwerken zu laden."
+      "desc": "Optimieren Sie eBay-Listing-Bilder für schnelles mobiles Laden. Lassen Sie einfach Ihre Produktfotos unten fallen, um sie für bessere Suchrankings und schnellere Verkäufe zu komprimieren."
     },
     "intro": {
-      "title": "Mobile-First-Verkauf",
-      "content": "eBays Suchalgorithmus bevorzugt Listings, die schnell laden. Durch Komprimieren Ihrer Bilder auf eine mobile-freundliche Größe (500KB-1.5MB) verbessern Sie Ihre Chancen, höher zu ranken und schneller zu verkaufen."
+      "title": "Warum eBay-Bilder für Mobile optimieren?",
+      "content": [
+        {
+          "title": "Mobile-First-Einkaufserfahrung",
+          "text": "Über 60% der eBay-Transaktionen finden auf mobilen Geräten statt. Wenn Ihre Listing-Bilder zu groß sind, laden sie langsam auf 4G-Netzwerken, was potenzielle Käufer dazu veranlasst, Ihre Listings zu verlassen, bevor sie Ihre Produkte überhaupt sehen. eBays Suchalgorithmus bevorzugt aktiv Listings, die schnell laden, was bedeutet, dass schneller ladende Bilder Ihr Suchranking verbessern und Ihre Verkaufschancen erhöhen können. Große Bilddateien frustrieren nicht nur mobile Käufer, sondern verschwenden auch ihre Datenpläne, was zu geringerem Engagement und weniger Conversions führt."
+        },
+        {
+          "title": "Suchrankings und Verkäufe steigern",
+          "text": "eBays Best-Match-Algorithmus berücksichtigt die Seitenladegeschwindigkeit als Ranking-Faktor. Durch Komprimieren Ihrer Listing-Bilder auf mobile-freundliche Größen (typischerweise 500KB-1.5MB) verbessern Sie die Leistungsmetriken Ihrer Listings und erhöhen die Sichtbarkeit in Suchergebnissen. Unser browserbasierter Kompressor verwendet intelligente Canvas API-Verarbeitung, um Dateigrößen zu reduzieren und dabei Produktdetails, Farbgenauigkeit und visuelle Attraktivität zu erhalten. Alle Verarbeitung erfolgt lokal in Ihrem Browser, sodass Ihre Produktfotos privat und sicher bleiben, ohne Wasserzeichen oder Qualitätsverschlechterung, die Ihren professionellen Verkäuferruf schädigen könnten."
+        }
+      ]
     },
     "specs": {
       "engine": "Mobile-First-Komprimierung",
@@ -1259,144 +1258,125 @@
     },
     "scenes": [
       {
-        "title": "Bulk-Uploads",
-        "desc": "Verarbeiten Sie Fotos für 100 Artikel auf einmal, um Listing-Zeit zu sparen.",
-        "icon": "🛒"
+        "title": "Power-Seller",
+        "desc": "Optimieren Sie Hunderte von Produktbildern für Bulk-Listings. Verarbeiten Sie gesamte Kataloge schnell und konsistent, um professionelle Qualität über alle Listings hinweg zu erhalten."
       },
       {
-        "title": "Gallery Plus",
-        "desc": "Stellen Sie sicher, dass Ihre gezoomten Bilder leicht genug sind, um sofort zu öffnen.",
-        "icon": "📱"
+        "title": "Mobile-First-Verkäufer",
+        "desc": "Stellen Sie sicher, dass Ihre Listings auf mobilen Geräten sofort laden. Verbessern Sie die Käufererfahrung und reduzieren Sie Absprungraten bei langsamen 4G-Verbindungen."
       },
       {
-        "icon": "📸",
-        "title": "Gallery Plus Users",
-        "desc": "Optimize high-resolution zoom images for eBay Gallery Plus. Keep images light enough to open instantly while maintaining detail for close-up views."
+        "title": "Gallery Plus Benutzer",
+        "desc": "Optimieren Sie hochauflösende Zoom-Bilder für eBay Gallery Plus. Halten Sie Bilder leicht genug, um sofort zu öffnen, während Sie Details für Nahaufnahmen erhalten."
       }
     ],
     "faq": [
       {
-        "q": "Wie viele Fotos kann ich verarbeiten?",
-        "a": "Sie können bis zu 100 Bilder auf einmal verarbeiten, perfekt für Bulk-Listings."
+        "q": "Welche Dateigröße sollte ich für eBay-Listings verwenden?",
+        "a": "Für optimales mobiles Laden und Suchrankings komprimieren Sie Ihre eBay-Listing-Bilder auf 500KB-1.5MB. Dies gewährleistet schnelles Laden auf 4G-Netzwerken und behält gleichzeitig ausreichende Qualität für Käufer bei, um Produktdetails klar zu sehen."
       },
       {
-        "q": "Werden meine Fotos pixelig aussehen?",
-        "a": "Nein, wir optimieren die Datenstruktur des Bildes und halten die visuelle Qualität hoch."
+        "q": "Wird das Komprimieren von Bildern die Qualität meiner Produktfotos beeinträchtigen?",
+        "a": "Nein. Toolaze verwendet intelligente Komprimierungsalgorithmen, die Produktdetails, Farbgenauigkeit und visuelle Attraktivität erhalten. Die Komprimierung konzentriert sich darauf, unsichtbare Daten zu entfernen, anstatt die visuelle Qualität zu reduzieren, und stellt sicher, dass Ihre Listings professionell aussehen."
       },
       {
-        "q": "Can I process multiple product images at once?",
-        "a": "Yes! Toolaze supports batch processing of up to 100 images simultaneously. Perfect for power sellers who need to optimize entire product catalogs or bulk listings efficiently."
+        "q": "Kann ich mehrere Produktbilder gleichzeitig verarbeiten?",
+        "a": "Ja! Toolaze unterstützt die Stapelverarbeitung von bis zu 100 Bildern gleichzeitig. Perfekt für Power-Seller, die gesamte Produktkataloge oder Bulk-Listings effizient optimieren müssen."
       },
       {
-        "q": "Are my product photos uploaded to a server?",
-        "a": "No! All compression happens locally in your browser using JavaScript and Canvas API. Your product photos never leave your device, ensuring complete privacy and security for your inventory."
+        "q": "Werden meine Produktfotos auf einen Server hochgeladen?",
+        "a": "Nein! Alle Komprimierung erfolgt lokal in Ihrem Browser mit JavaScript und Canvas API. Ihre Produktfotos verlassen niemals Ihr Gerät und gewährleisten vollständige Privatsphäre und Sicherheit für Ihr Inventar."
       },
       {
-        "q": "Will optimized images improve my eBay search rankings?",
-        "a": "Yes. eBay's Best Match algorithm considers page load speed as a ranking factor. Faster-loading images can improve your listing's performance metrics and increase visibility in search results, potentially leading to more sales."
+        "q": "Verbessern optimierte Bilder meine eBay-Suchrankings?",
+        "a": "Ja. eBays Best-Match-Algorithmus berücksichtigt die Seitenladegeschwindigkeit als Ranking-Faktor. Schneller ladende Bilder können die Leistungsmetriken Ihrer Listings verbessern und die Sichtbarkeit in Suchergebnissen erhöhen, was möglicherweise zu mehr Verkäufen führt."
       },
       {
-        "q": "What image formats does eBay support?",
-        "a": "eBay supports JPG, PNG, and GIF formats. Toolaze can compress JPG, PNG, WebP, and BMP images, with JPG being the recommended format for eBay listings due to its smaller file size and wide compatibility."
+        "q": "Welche Bildformate unterstützt eBay?",
+        "a": "eBay unterstützt JPG-, PNG- und GIF-Formate. Toolaze kann JPG-, PNG-, WebP- und BMP-Bilder komprimieren, wobei JPG aufgrund seiner kleineren Dateigröße und breiten Kompatibilität das empfohlene Format für eBay-Listings ist."
       }
     ],
-    "compare": {
-      "toolaze": "Bulk-Tool, Mobil optimiert, Keine Anmeldung",
-      "others": "Eins nach dem anderen, Anmeldung erforderlich"
-    },
     "features": {
-      "title": "eBay Image Optimization Features",
+      "title": "eBay-Bild-Optimierungsfunktionen",
       "items": [
         {
-          "icon": "📱",
-          "iconType": "mobile",
-          "title": "Mobile-Optimized Sizes",
-          "desc": "Compress images to 500KB-1.5MB for instant mobile loading. Improve your eBay search rankings and reduce buyer bounce rates on slow connections."
+          "title": "Mobile-optimierte Größen",
+          "desc": "Komprimieren Sie Bilder auf 500KB-1.5MB für sofortiges mobiles Laden. Verbessern Sie Ihre eBay-Suchrankings und reduzieren Sie Käufer-Absprungraten bei langsamen Verbindungen."
         },
         {
-          "icon": "🔒",
-          "iconType": "privacy",
-          "title": "100% Private Processing",
-          "desc": "All compression happens locally in your browser. Your product photos never leave your device, ensuring complete privacy and security for your inventory."
+          "title": "100% Private Verarbeitung",
+          "desc": "Alle Komprimierung erfolgt lokal in Ihrem Browser. Ihre Produktfotos verlassen niemals Ihr Gerät und gewährleisten vollständige Privatsphäre und Sicherheit für Ihr Inventar."
         },
         {
-          "icon": "📦",
-          "iconType": "batch",
-          "title": "Batch Processing",
-          "desc": "Process up to 100 listing images simultaneously. Optimize entire product catalogs in one operation, perfect for power sellers and bulk listings."
+          "title": "Stapelverarbeitung",
+          "desc": "Verarbeiten Sie bis zu 100 Listing-Bilder gleichzeitig. Optimieren Sie gesamte Produktkataloge in einem Vorgang, perfekt für Power-Seller und Bulk-Listings."
         },
         {
-          "icon": "⚡",
-          "iconType": "speed",
-          "title": "Instant Optimization",
-          "desc": "Browser-native Canvas API processing ensures instant compression without server uploads or waiting queues. Get your listings live faster."
+          "title": "Sofortige Optimierung",
+          "desc": "Browser-native Canvas API-Verarbeitung gewährleistet sofortige Komprimierung ohne Server-Uploads oder Warteschlangen. Bringen Sie Ihre Listings schneller live."
         },
         {
-          "icon": "💎",
-          "iconType": "free",
-          "title": "Free Forever",
-          "desc": "Unlimited image optimization completely free—no premium tiers, no subscription fees, no advertisements. Perfect for sellers of all sizes."
+          "title": "Für Immer Kostenlos",
+          "desc": "Unbegrenzte Bildoptimierung völlig kostenlos—keine Premium-Stufen, keine Abonnementgebühren, keine Werbung. Perfekt für Verkäufer aller Größen."
         },
         {
-          "icon": "🎨",
-          "iconType": "quality",
-          "title": "Quality Preserved",
-          "desc": "Maintain product detail and color accuracy. Keep your images crisp and professional while reducing file size for faster mobile loading."
+          "title": "Qualität Erhalten",
+          "desc": "Behalten Sie Produktdetails und Farbgenauigkeit bei. Halten Sie Ihre Bilder scharf und professionell, während Sie die Dateigröße für schnelleres mobiles Laden reduzieren."
         }
       ]
     },
     "performanceMetrics": {
-      "title": "Technical Specifications",
+      "title": "Technische Spezifikationen",
       "metrics": [
         {
-          "label": "Input Format",
-          "value": "JPG, PNG, WebP, BMP (Product listing images)"
+          "label": "Eingabeformat",
+          "value": "JPG, PNG, WebP, BMP (Produkt-Listing-Bilder)"
         },
         {
-          "label": "Output Format",
-          "value": "JPG (Optimized for eBay listings)"
+          "label": "Ausgabeformat",
+          "value": "JPG (Optimiert für eBay-Listings)"
         },
         {
-          "label": "Recommended Size",
-          "value": "500KB - 1.5MB (Mobile-optimized)"
+          "label": "Empfohlene Größe",
+          "value": "500KB - 1.5MB (Mobile-optimiert)"
         },
         {
-          "label": "Resolution Support",
-          "value": "Up to 4K (3840x2160) - Dimensions preserved"
+          "label": "Auflösungsunterstützung",
+          "value": "Bis zu 4K (3840x2160) - Abmessungen erhalten"
         },
         {
-          "label": "Batch Processing",
-          "value": "Up to 100 images per session"
+          "label": "Stapelverarbeitung",
+          "value": "Bis zu 100 Bilder pro Sitzung"
         },
         {
-          "label": "Processing Speed",
-          "value": "Instant browser-side compression"
+          "label": "Verarbeitungsgeschwindigkeit",
+          "value": "Sofortige browser-seitige Komprimierung"
         }
       ]
     },
     "howToUse": {
-      "title": "How to Optimize eBay Images",
+      "title": "Wie man eBay-Bilder optimiert",
       "steps": [
         {
-          "title": "Upload Listing Photos",
-          "desc": "Drag and drop your eBay product images or click to browse. Supports JPG, PNG, WebP, and BMP formats up to 4K resolution."
+          "title": "Listing-Fotos hochladen",
+          "desc": "Ziehen Sie Ihre eBay-Produktbilder per Drag & Drop oder klicken Sie zum Durchsuchen. Unterstützt JPG-, PNG-, WebP- und BMP-Formate bis zu 4K-Auflösung."
         },
         {
-          "title": "Set Mobile-Friendly Size",
-          "desc": "Set your target size to 500KB-1.5MB for optimal mobile loading. Our algorithm compresses your images while preserving product detail and color accuracy."
+          "title": "Mobile-freundliche Größe festlegen",
+          "desc": "Setzen Sie Ihre Zielgröße auf 500KB-1.5MB für optimales mobiles Laden. Unser Algorithmus komprimiert Ihre Bilder und erhält dabei Produktdetails und Farbgenauigkeit."
         },
         {
-          "title": "Download Optimized",
-          "desc": "Download your optimized images instantly. Files are ready to upload to eBay, improving your listing load speed and search rankings."
+          "title": "Optimiertes herunterladen",
+          "desc": "Laden Sie Ihre optimierten Bilder sofort herunter. Dateien sind bereit zum Hochladen auf eBay und verbessern die Ladegeschwindigkeit Ihrer Listings und Suchrankings."
         }
       ]
     },
     "comparison": {
-      "toolaze": "Mobile-optimized sizes (500KB-1.5MB), Batch process up to 100 images, 100% browser-side processing, No watermarks or quality loss, Preserves product detail and colors, Free forever",
-      "others": "Random file sizes may be too large, Limited batch processing, Server uploads required, Watermarks or quality degradation, May reduce image quality unnecessarily, Subscription fees or ads"
+      "toolaze": "Mobile-optimierte Größen (500KB-1.5MB), Stapelverarbeitung bis zu 100 Bildern, 100% browser-seitige Verarbeitung, Keine Wasserzeichen oder Qualitätsverlust, Erhält Produktdetails und Farben, Für immer kostenlos",
+      "others": "Zufällige Dateigrößen können zu groß sein, Begrenzte Stapelverarbeitung, Server-Uploads erforderlich, Wasserzeichen oder Qualitätsverschlechterung, Kann Bildqualität unnötig reduzieren, Abonnementgebühren oder Werbung"
     },
     "rating": {
-      "text": "\"My eBay listings load instantly on mobile now! Search rankings improved and sales increased.\" - Join thousands of eBay sellers who trust Toolaze for mobile-first optimization."
+      "text": "\"Meine eBay-Listings laden jetzt sofort auf Mobile! Suchrankings verbessert und Verkäufe gestiegen.\" - Schließen Sie sich Tausenden von eBay-Verkäufern an, die Toolaze für Mobile-First-Optimierung vertrauen."
     }
   },
   "youtube-thumbnail-2mb": {
@@ -1422,7 +1402,16 @@
     },
     "intro": {
       "title": "Opfern Sie nicht CTR",
-      "content": "Sie müssen Ihre Auflösung nicht auf 720p senken. Toolaze verwendet intelligente Komprimierung, um Ihren Text scharf und Gesichter scharf zu halten, reduziert nur die unsichtbaren Daten, um Sie unter die 2MB-Barriere zu bringen."
+      "content": [
+        {
+          "title": "Die 2MB-Grenze von YouTube",
+          "text": "Unser browserbasierter Kompressor verarbeitet Ihre Dateien lokal mit Canvas API und gewährleistet vollständige Privatsphäre und schnelle Komprimierung, ohne Ihre Bilder auf einen Server hochzuladen."
+        },
+        {
+          "title": "Klickraten beibehalten",
+          "text": "Ein großartiges Thumbnail ist entscheidend für den YouTube-Erfolg—es ist das Erste, was Zuschauer sehen, und beeinflusst direkt Ihre Klickrate (CTR). Das Komprimieren von Thumbnails sollte nicht bedeuten, Qualität zu opfern oder die Auflösung zu reduzieren. Toolaze erhält Textklarheit, Gesichtsdetails und lebendige Farben bei, während unsichtbare Daten intelligent entfernt werden, um Sie unter die 2MB-Barriere zu bringen. Alle Verarbeitung erfolgt lokal in Ihrem Browser, sodass Ihre Thumbnail-Designs privat und sicher bleiben, ohne Wasserzeichen oder Qualitätsverschlechterung."
+        }
+      ]
     },
     "specs": {
       "engine": "Visuell-Prioritäts-Engine",
@@ -1458,23 +1447,19 @@
       },
       {
         "q": "Will my thumbnail look blurry after compression?",
-        "a": "No. Toolaze uses intelligent compression algorithms that preserve text clarity, facial details, and vibrant colors. The compression focuses on removing invisible data rather than reducing visual quality."
+        "a": "Nein. Toolaze verwendet intelligente Komprimierungsalgorithmen, die die visuelle Qualität erhalten und gleichzeitig die Dateigröße reduzieren. Die Komprimierung konzentriert sich darauf, unsichtbare Daten zu entfernen und die Bildstruktur zu optimieren, anstatt die Auflösung unnötig zu reduzieren."
       },
       {
-        "q": "Are my thumbnail designs uploaded to a server?",
-        "a": "No! All compression happens locally in your browser using JavaScript and Canvas API. Your thumbnail designs never leave your device, ensuring complete privacy and security."
+        "q": "Werden meine Dateien auf einen Server hochgeladen?",
+        "a": "Ja! Die gesamte Komprimierung erfolgt lokal in Ihrem Browser mit JavaScript und Canvas-API. Ihre Bilder verlassen Ihr Gerät niemals und gewährleisten vollständige Privatsphäre und Sicherheit."
       },
       {
-        "q": "Can I compress multiple thumbnails at once?",
-        "a": "Yes! Toolaze supports batch processing of up to 100 thumbnails simultaneously. Perfect for compressing thumbnails for an entire video series or channel rebrand."
+        "q": "Kann ich mehrere thumbnails-Dateien gleichzeitig komprimieren?",
+        "a": "Ja! Toolaze unterstützt die Stapelverarbeitung von bis zu 100 Bildern gleichzeitig. Perfekt für die Verarbeitung mehrerer Dateien in einem Vorgang."
       }
     ],
-    "compare": {
-      "toolaze": "Hoher CTR-Fokus, 2MB-Garantie",
-      "others": "Verschwommene Ergebnisse, Zufällige Größen"
-    },
     "features": {
-      "title": "YouTube Thumbnail Compression Features",
+      "title": "YouTube-Thumbnail-Optimierungsfunktionen",
       "items": [
         {
           "icon": "🎯",
@@ -1485,70 +1470,70 @@
         {
           "icon": "🔒",
           "iconType": "privacy",
-          "title": "100% Private Processing",
+          "title": "100% Private Verarbeitung",
           "desc": "All compression happens locally in your browser. Your thumbnail designs never leave your device, ensuring complete privacy and security."
         },
         {
           "icon": "📦",
           "iconType": "batch",
-          "title": "Batch Processing",
+          "title": "Stapelverarbeitung",
           "desc": "Compress up to 100 thumbnails simultaneously. Process entire video series thumbnails in one operation."
         },
         {
           "icon": "⚡",
           "iconType": "speed",
-          "title": "Instant Compression",
-          "desc": "Browser-native Canvas API processing ensures instant compression without server uploads or waiting queues."
+          "title": "Sofortige Komprimierung",
+          "desc": "Die browser-native Canvas API-Verarbeitung gewährleistet sofortige Komprimierung ohne Server-Uploads oder Warteschlangen."
         },
         {
           "icon": "💎",
           "iconType": "free",
-          "title": "Free Forever",
+          "title": "Für Immer Kostenlos",
           "desc": "Unlimited thumbnail compression completely free—no premium tiers, no subscription fees, no advertisements."
         },
         {
           "icon": "🎨",
           "iconType": "quality",
-          "title": "Quality Preserved",
+          "title": "Qualität Erhalten",
           "desc": "Maintain text sharpness and image clarity. Keep your 1920x1080 or 4K dimensions while reducing file size."
         }
       ]
     },
     "performanceMetrics": {
-      "title": "Technical Specifications",
+      "title": "Technische Spezifikationen",
       "metrics": [
         {
-          "label": "Input Format",
+          "label": "Eingabeformat",
           "value": "JPG, PNG, WebP (Thumbnail images)"
         },
         {
-          "label": "Output Format",
+          "label": "Ausgabeformat",
           "value": "JPG (Optimized for YouTube)"
         },
         {
-          "label": "File Size Limit",
+          "label": "Dateigrößenlimit",
           "value": "Under 2MB (YouTube requirement)"
         },
         {
-          "label": "Resolution Support",
+          "label": "Auflösungsunterstützung",
           "value": "Up to 4K (3840x2160) - Dimensions preserved"
         },
         {
-          "label": "Batch Processing",
+          "label": "Stapelverarbeitung",
           "value": "Up to 100 thumbnails per session"
         },
         {
-          "label": "Processing Speed",
+          "label": "Verarbeitungsgeschwindigkeit",
           "value": "Instant browser-side compression"
         }
       ]
     },
     "howToUse": {
-      "title": "How to Compress YouTube Thumbnails",
+      "title": "Wie man YouTube-Thumbnails optimiert",
       "steps": [
         {
           "title": "Upload Thumbnail",
-          "desc": "Drag and drop your YouTube thumbnail image or click to browse. Supports JPG, PNG, and WebP formats up to 4K resolution."
+          "desc": "Ziehen Sie Ihr Bild per Drag & Drop oder klicken Sie zum Durchsuchen."
         },
         {
           "title": "Set 2MB Target",
@@ -1556,12 +1541,12 @@
         },
         {
           "title": "Download Optimized",
-          "desc": "Download your compressed thumbnail instantly. The file is guaranteed to be under 2MB and ready to upload to YouTube without errors."
+          "desc": "Laden Sie Ihr komprimiertes Bild sofort herunter. Die Datei ist bereit für die Verwendung."
         }
       ]
     },
     "rating": {
-      "text": "\"Fixed my YouTube upload errors instantly! Thumbnails stay under 2MB with perfect quality.\" - Join thousands of creators who trust Toolaze for YouTube thumbnail optimization."
+      "text": "\"Fixed my YouTube upload errors instantly! Thumbnails stay under 2MB with perfect quality.\" - Schließen Sie sich Tausenden von Benutzern an, die Toolaze vertrauen."
     },
     "comparison": {
       "toolaze": "Hoher CTR-Fokus, 2MB-Garantie",
@@ -1591,7 +1576,16 @@
     },
     "intro": {
       "title": "Perfekt für Nitro & Server",
-      "content": "Ob Sie ein benutzerdefiniertes Emoji für Ihre Gilde oder einen Sticker hochladen, die 256KB-Grenze ist streng. Wir verwenden aggressive Optimierung, um Ihre transparenten Hintergründe sauber und Dateien klein zu halten."
+      "content": [
+        {
+          "title": "Die strenge 256KB-Dateigrößengrenze von Discord",
+          "text": "Unser browserbasierter Kompressor verarbeitet Ihre Dateien lokal mit Canvas API und gewährleistet vollständige Privatsphäre und schnelle Komprimierung, ohne Ihre Bilder auf einen Server hochzuladen."
+        },
+        {
+          "title": "Transparenz für benutzerdefinierte Server-Emotes erhalten",
+          "text": "Benutzerdefinierte Discord-Emojis erfordern oft transparente Hintergründe, um sich nahtlos mit Discord's Oberfläche zu verbinden und im Chat professionell auszusehen. Das Konvertieren von PNG-Emojis zu JPG, um die Dateigröße zu reduzieren, zerstört diese Transparenz und zwingt Sie, solide Hintergründe zu verwenden, die unprofessionell aussehen. Unser Komprimierungsalgorithmus behält den Alpha-Kanal während des gesamten Prozesses bei und stellt sicher, dass Ihre transparenten Hintergründe perfekt klar bleiben und Ihre benutzerdefinierten Emotes scharf bleiben. Alle Verarbeitung erfolgt lokal in Ihrem Browser, sodass Ihre Emoji-Designs Ihr Gerät niemals verlassen und vollständig privat und sicher bleiben."
+        }
+      ]
     },
     "specs": {
       "engine": "Harte Grenzen-Erzwinger",
@@ -1613,7 +1607,7 @@
       {
         "icon": "🖼️",
         "title": "Profile Banners",
-        "desc": "Help Nitro users optimize their profile banners. Reduce file sizes while avoiding compression artifacts for crisp, professional-looking banners."
+        "desc": "Reduzieren Sie Dateigrößen erheblich bei gleichzeitiger Beibehaltung der Qualität."
       }
     ],
     "faq": [
@@ -1626,28 +1620,24 @@
         "a": "Funktioniert derzeit am besten für statische Bilder (JPG/PNG/WebP)."
       },
       {
-        "q": "Can I compress multiple emojis at once?",
-        "a": "Yes! Toolaze supports batch processing of up to 100 emoji images simultaneously. Perfect for optimizing entire emoji sets for server customization efficiently."
+        "q": "Kann ich mehrere emojis-Dateien gleichzeitig komprimieren?",
+        "a": "Ja! Toolaze unterstützt die Stapelverarbeitung von bis zu 100 Bildern gleichzeitig. Perfekt für die Verarbeitung mehrerer Dateien in einem Vorgang."
       },
       {
-        "q": "Are my emoji designs uploaded to a server?",
-        "a": "No! All compression happens locally in your browser using JavaScript and Canvas API. Your emoji designs never leave your device, ensuring complete privacy and security."
+        "q": "Werden meine Dateien auf einen Server hochgeladen?",
+        "a": "Ja! Die gesamte Komprimierung erfolgt lokal in Ihrem Browser mit JavaScript und Canvas-API. Ihre Bilder verlassen Ihr Gerät niemals und gewährleisten vollständige Privatsphäre und Sicherheit."
       },
       {
-        "q": "What's the difference between emoji and sticker compression?",
+        "q": "Was ist der Unterschied zwischen verschiedenen Komprimierungsformaten?",
         "a": "Both emojis and stickers have the same 256KB limit on Discord. Emojis are typically smaller (128x128px) and used in chat, while stickers can be larger (up to 320x320px) and are available to Nitro users. Toolaze handles both formats with the same precision."
       },
       {
-        "q": "Will my compressed emoji look pixelated?",
-        "a": "No. Toolaze uses intelligent compression algorithms that preserve visual quality while reducing file size. The compression focuses on optimizing the image structure rather than reducing resolution unnecessarily, ensuring your emojis look crisp and professional."
+        "q": "Werden meine Bilder nach der Komprimierung pixelig aussehen?",
+        "a": "Nein. Toolaze verwendet intelligente Komprimierungsalgorithmen, die die visuelle Qualität erhalten und gleichzeitig die Dateigröße reduzieren. Die Komprimierung konzentriert sich darauf, unsichtbare Daten zu entfernen und die Bildstruktur zu optimieren, anstatt die Auflösung unnötig zu reduzieren."
       }
     ],
-    "compare": {
-      "toolaze": "Strenge 256KB-Obergrenze, Transparenz-sicher",
-      "others": "Verfehlt Dateigrenze, Verliert Transparenz"
-    },
     "features": {
-      "title": "Discord Emoji Compression Features",
+      "title": "Discord-Emoji-Optimierungsfunktionen",
       "items": [
         {
           "icon": "🎯",
@@ -1658,25 +1648,25 @@
         {
           "icon": "🔒",
           "iconType": "privacy",
-          "title": "100% Private Processing",
+          "title": "100% Private Verarbeitung",
           "desc": "All compression happens locally in your browser. Your emoji designs never leave your device, ensuring complete privacy and security."
         },
         {
           "icon": "📦",
           "iconType": "batch",
-          "title": "Batch Processing",
+          "title": "Stapelverarbeitung",
           "desc": "Process up to 100 emoji images simultaneously. Optimize entire emoji sets for server customization in one operation."
         },
         {
           "icon": "⚡",
           "iconType": "speed",
-          "title": "Instant Compression",
+          "title": "Sofortige Komprimierung",
           "desc": "Browser-native Canvas API processing ensures instant compression without server uploads or waiting queues. Get your emotes ready immediately."
         },
         {
           "icon": "💎",
           "iconType": "free",
-          "title": "Free Forever",
+          "title": "Für Immer Kostenlos",
           "desc": "Unlimited emoji compression completely free—no premium tiers, no subscription fees, no advertisements. Perfect for server admins."
         },
         {
@@ -1688,18 +1678,18 @@
       ]
     },
     "performanceMetrics": {
-      "title": "Technical Specifications",
+      "title": "Technische Spezifikationen",
       "metrics": [
         {
-          "label": "Input Format",
+          "label": "Eingabeformat",
           "value": "PNG, JPG, WebP (Emoji and sticker images)"
         },
         {
-          "label": "Output Format",
+          "label": "Ausgabeformat",
           "value": "PNG (Transparency preserved) or JPG"
         },
         {
-          "label": "File Size Limit",
+          "label": "Dateigrößenlimit",
           "value": "Exactly 256KB (Discord requirement)"
         },
         {
@@ -1707,38 +1697,38 @@
           "value": "Alpha channel preserved for PNG emojis"
         },
         {
-          "label": "Batch Processing",
+          "label": "Stapelverarbeitung",
           "value": "Up to 100 emoji images per session"
         },
         {
-          "label": "Processing Speed",
+          "label": "Verarbeitungsgeschwindigkeit",
           "value": "Instant browser-side compression"
         }
       ]
     },
     "howToUse": {
-      "title": "How to Compress Discord Emoji to 256KB",
+      "title": "Wie man Discord-Emojis optimiert",
       "steps": [
         {
-          "title": "Upload Emoji Image",
-          "desc": "Drag and drop your emoji image or click to browse. Supports PNG, JPG, and WebP formats. PNG is recommended for transparent backgrounds."
+          "title": "Emoji-Bild hochladen",
+          "desc": "Ziehen Sie Ihr Bild per Drag & Drop oder klicken Sie zum Durchsuchen."
         },
         {
-          "title": "Set 256KB Target",
-          "desc": "The tool automatically sets the target to exactly 256KB. Our algorithm compresses your emoji while preserving transparency and visual quality."
+          "title": "256KB-Ziel festlegen",
+          "desc": "Das Tool setzt das Ziel automatisch auf genau 256KB. Unser Algorithmus komprimiert Ihr Bild präzise, um die Anforderungen zu erfüllen und dabei die Qualität zu erhalten."
         },
         {
           "title": "Download Optimized",
-          "desc": "Download your compressed emoji instantly. The file is guaranteed to be under 256KB and ready to upload to Discord without errors."
+          "desc": "Laden Sie Ihr komprimiertes Bild sofort herunter. Die Datei ist bereit für die Verwendung."
         }
       ]
     },
     "comparison": {
-      "toolaze": "Strict 256KB cap, Transparency preserved, 100% browser-side processing, No watermarks or quality loss, Batch process up to 100 emojis, Free forever",
-      "others": "May exceed 256KB limit, Loses transparency, Server uploads required, Watermarks or quality degradation, Limited batch processing, Subscription fees or ads"
+      "toolaze": "Strenge 256KB-Obergrenze, Transparenz erhalten, 100% Browser-seitige Verarbeitung, Keine Wasserzeichen oder Qualitätsverlust, Stapelverarbeitung bis zu 100 Emojis, Für immer kostenlos",
+      "others": "Kann 256KB-Limit überschreiten, Verliert Transparenz, Server-Uploads erforderlich, Wasserzeichen oder Qualitätsverschlechterung, Begrenzte Stapelverarbeitung, Abonnementgebühren oder Werbung"
     },
     "rating": {
-      "text": "\"My custom Discord emojis uploaded perfectly! Transparency stayed intact and the 256KB limit was no problem.\" - Join thousands of server admins who trust Toolaze for Discord customization."
+      "text": "\"My custom Discord emojis uploaded perfectly! Transparency stayed intact and the 256KB limit was no problem.\" - Schließen Sie sich Tausenden von Benutzern an, die Toolaze vertrauen."
     }
   },
   "email-signature-20kb": {
@@ -1764,7 +1754,16 @@
     },
     "intro": {
       "title": "Professionell & leichtgewichtig",
-      "content": "Eine schwere E-Mail-Signatur ist unprofessionell und verbraucht mobile Daten. Toolaze verkleinert Ihr Firmenlogo und Porträt, damit sie auch bei langsamen Verbindungen sofort laden und Ihre E-Mails scharf aussehen lassen."
+      "content": [
+        {
+          "title": "Spam-Filter verhindern und Zustellbarkeit verbessern",
+          "text": "Unser browserbasierter Kompressor verarbeitet Ihre Dateien lokal mit Canvas API und gewährleistet vollständige Privatsphäre und schnelle Komprimierung, ohne Ihre Bilder auf einen Server hochzuladen."
+        },
+        {
+          "title": "Professionelles Erscheinungsbild auf allen Geräten",
+          "text": "Eine schwere E-Mail-Signatur ist unprofessionell und verbraucht mobile Daten für die Empfänger. Wenn Ihre Signaturbilder zu groß sind, laden sie langsam auf langsamen Verbindungen, was einen schlechten Eindruck erweckt und möglicherweise dazu führt, dass Empfänger Ihre E-Mail löschen, bevor sie sie lesen. Toolaze verkleinert Ihr Firmenlogo und Ihr Porträtfoto, sodass sie auch auf 3G-Netzwerken sofort laden und Ihre E-Mails scharf und professionell aussehen lassen. Wir optimieren speziell für Retina-Displays und hochauflösende Bildschirme und stellen sicher, dass Ihr Logo und Ihr Porträtfoto auch bei kleinen Dateigrößen scharf und klar bleiben. Alle Verarbeitung erfolgt lokal in Ihrem Browser, sodass Ihre Unternehmensbranding-Assets Ihr Gerät niemals verlassen und vollständig privat und sicher bleiben."
+        }
+      ]
     },
     "specs": {
       "engine": "Logo-Scharf-Algorithmus",
@@ -1786,7 +1785,7 @@
       {
         "icon": "📧",
         "title": "Team Signatures",
-        "desc": "Batch process entire team's signature images. Optimize logos and headshots for consistent professional branding across all team members."
+        "desc": "Verarbeiten Sie mehrere Bilder schnell ohne Qualitätsverlust."
       }
     ],
     "faq": [
@@ -1799,12 +1798,12 @@
         "a": "Ja, kleine JPG- oder PNG-Dateien sind das kompatibelste Format für Outlook-Signaturen."
       },
       {
-        "q": "Can I compress multiple signature images at once?",
-        "a": "Yes! Toolaze supports batch processing of up to 100 signature images simultaneously. Perfect for optimizing entire team's logos and headshots for consistent professional branding."
+        "q": "Kann ich mehrere signature-Dateien gleichzeitig komprimieren?",
+        "a": "Ja! Toolaze unterstützt die Stapelverarbeitung von bis zu 100 Bildern gleichzeitig. Perfekt für die Verarbeitung mehrerer Dateien in einem Vorgang."
       },
       {
-        "q": "Are my corporate logos uploaded to a server?",
-        "a": "No! All compression happens locally in your browser using JavaScript and Canvas API. Your company logos and headshots never leave your device, ensuring complete privacy and security for your corporate branding assets."
+        "q": "Werden meine Dateien auf einen Server hochgeladen?",
+        "a": "Ja! Die gesamte Komprimierung erfolgt lokal in Ihrem Browser mit JavaScript und Canvas-API. Ihre Bilder verlassen Ihr Gerät niemals und gewährleisten vollständige Privatsphäre und Sicherheit."
       },
       {
         "q": "What file size should I use for email signatures?",
@@ -1815,10 +1814,6 @@
         "a": "Yes! If you upload a PNG logo with transparency, Toolaze preserves the Alpha channel throughout compression. Your transparent backgrounds remain perfectly clear, making your logo look professional in email signatures."
       }
     ],
-    "compare": {
-      "toolaze": "Spam-Filter-sicher, Retina-bereit",
-      "others": "Zu schwer, Pixelierte Kanten"
-    },
     "features": {
       "title": "Email Signature Image Optimization Features",
       "items": [
@@ -1831,13 +1826,13 @@
         {
           "icon": "🔒",
           "iconType": "privacy",
-          "title": "100% Private Processing",
+          "title": "100% Private Verarbeitung",
           "desc": "All compression happens locally in your browser. Your corporate logos and headshots never leave your device, ensuring complete privacy."
         },
         {
           "icon": "📦",
           "iconType": "batch",
-          "title": "Batch Processing",
+          "title": "Stapelverarbeitung",
           "desc": "Process up to 100 signature images simultaneously. Optimize entire team's logos and headshots in one operation."
         },
         {
@@ -1849,7 +1844,7 @@
         {
           "icon": "💎",
           "iconType": "free",
-          "title": "Free Forever",
+          "title": "Für Immer Kostenlos",
           "desc": "Unlimited image optimization completely free—no premium tiers, no subscription fees, no advertisements. Perfect for businesses of all sizes."
         },
         {
@@ -1864,11 +1859,11 @@
       "title": "Technical Specifications",
       "metrics": [
         {
-          "label": "Input Format",
+          "label": "Eingabeformat",
           "value": "JPG, PNG (Logos and headshots)"
         },
         {
-          "label": "Output Format",
+          "label": "Ausgabeformat",
           "value": "JPG or PNG (Optimized for email)"
         },
         {
@@ -1880,11 +1875,11 @@
           "value": "PNG transparency preserved"
         },
         {
-          "label": "Batch Processing",
+          "label": "Stapelverarbeitung",
           "value": "Up to 100 images per session"
         },
         {
-          "label": "Processing Speed",
+          "label": "Verarbeitungsgeschwindigkeit",
           "value": "Instant browser-side compression"
         }
       ]
@@ -1894,10 +1889,10 @@
       "steps": [
         {
           "title": "Upload Logo or Headshot",
-          "desc": "Drag and drop your company logo or professional headshot or click to browse. Supports JPG and PNG formats with transparency."
+          "desc": "Ziehen Sie Ihr Bild per Drag & Drop oder klicken Sie zum Durchsuchen."
         },
         {
-          "title": "Set 20KB Target",
+          "title": "20KB-Ziel festlegen",
           "desc": "The tool automatically sets the target to 20KB-50KB. Our algorithm compresses your image while maintaining crisp quality for Retina displays."
         },
         {
@@ -1907,18 +1902,18 @@
       ]
     },
     "comparison": {
-      "toolaze": "Spam-filter safe (20KB-50KB), Retina-ready quality, 100% browser-side processing, No watermarks or quality loss, Batch process up to 100 images, Free forever",
-      "others": "Too heavy (triggers spam filters), Pixelated edges on Retina screens, Server uploads required, Watermarks or quality degradation, Limited batch processing, Subscription fees or ads"
+      "toolaze": "Spam-Filter sicher (20KB-50KB), Retina-taugliche Qualität, 100% Browser-seitige Verarbeitung, Keine Wasserzeichen oder Qualitätsverlust, Stapelverarbeitung bis zu 100 Bildern, Für immer kostenlos",
+      "others": "Zu schwer (löst Spam-Filter aus), Verpixelte Kanten auf Retina-Bildschirmen, Server-Uploads erforderlich, Wasserzeichen oder Qualitätsverschlechterung, Begrenzte Stapelverarbeitung, Abonnementgebühren oder Werbung"
     },
     "rating": {
-      "text": "\"No more spam filters! My email signatures load instantly and look crisp on Retina displays.\" - Join thousands of professionals who trust Toolaze for email signature optimization."
+      "text": "\"No more spam filters! My email signatures load instantly and look crisp on Retina displays.\" - Schließen Sie sich Tausenden von Benutzern an, die Toolaze vertrauen."
     }
   },
   "compress-jpg": {
     "in_menu": true,
     "metadata": {
-      "title": "Compress JPG Online (Free, Batch & No Ads) - Toolaze",
-      "description": "How to compress JPG images? 1. Upload JPG 2. Set target size 3. Download compressed. Reduce file size by 60% while maintaining quality. Secure & Private."
+      "title": "JPG online komprimieren (Kostenlos, Batch & Keine Werbung) - Toolaze",
+      "description": "Wie komprimiere ich JPG-Bilder? 1. JPG hochladen 2. Zielgröße festlegen 3. Komprimiert herunterladen. Dateigröße um 60% reduzieren bei gleichbleibender Qualität. Sicher & Privat."
     },
     "sectionsOrder": [
       "howToUse",
@@ -1931,60 +1926,60 @@
       "faq"
     ],
     "hero": {
-      "h1": "JPG Compressor",
-      "desc": "Compress JPG images online for free. Simply drop your JPG images below to compress them in seconds."
+      "h1": "JPG-Kompressor",
+      "desc": "Komprimieren Sie JPG-Bilder online kostenlos. Ziehen Sie Ihre JPG-Bilder einfach unten ab, um sie in Sekunden zu komprimieren."
     },
     "intro": {
-      "title": "Why Compress JPG Images?",
+      "title": "Warum JPG-Bilder komprimieren?",
       "content": [
         {
-          "title": "JPG Compression Benefits",
-          "text": "JPG (JPEG) is the most widely used image format for photos and web images. However, large JPG files can slow down websites, consume storage space, and cause upload failures. Compressing JPG images reduces file size by 50-70% while maintaining acceptable visual quality, making them perfect for web use, email attachments, and online forms. Our browser-based compressor processes your JPG files locally using Canvas API, ensuring complete privacy and fast compression without uploading your images to any server."
+          "title": "Vorteile der JPG-Komprimierung",
+          "text": "JPG (JPEG) ist das am weitesten verbreitete Bildformat für Fotos und Web-Bilder. Große JPG-Dateien können jedoch Websites verlangsamen, Speicherplatz verbrauchen und Upload-Fehler verursachen. Die Komprimierung von JPG-Bildern reduziert die Dateigröße um 50-70%, während eine akzeptable visuelle Qualität erhalten bleibt, was sie perfekt für die Webnutzung, E-Mail-Anhänge und Online-Formulare macht. Unser browserbasierter Kompressor verarbeitet Ihre JPG-Dateien lokal mit Canvas API und gewährleistet vollständige Privatsphäre und schnelle Komprimierung, ohne Ihre Bilder auf einen Server hochzuladen."
         },
         {
-          "title": "When to Compress JPG",
-          "text": "Compress JPG images when you need to reduce file size for faster website loading, meet upload size limits for online forms or email attachments, save storage space on your device or cloud storage, or optimize images for social media platforms. Our tool supports precise size control, allowing you to set exact target sizes in KB or MB, making it perfect for meeting specific requirements while maintaining image quality."
+          "title": "Wann JPG komprimieren",
+          "text": "Komprimieren Sie JPG-Bilder, wenn Sie die Dateigröße für schnellere Website-Ladezeiten reduzieren müssen, Upload-Größenlimits für Online-Formulare oder E-Mail-Anhänge erfüllen müssen, Speicherplatz auf Ihrem Gerät oder Cloud-Speicher sparen möchten oder Bilder für Social-Media-Plattformen optimieren möchten. Unser Tool unterstützt präzise Größensteuerung und ermöglicht es Ihnen, exakte Zielgrößen in KB oder MB festzulegen, was es perfekt macht, um spezifische Anforderungen zu erfüllen und gleichzeitig die Bildqualität zu erhalten."
         }
       ]
     },
     "features": {
-      "title": "JPG Compression Features",
+      "title": "JPG-Komprimierungsfunktionen",
       "items": [
         {
           "icon": "📊",
           "iconType": "compression",
-          "title": "Precise Size Control",
-          "desc": "Set exact target sizes in KB or MB. Compress JPG images to meet specific requirements while maintaining visual quality."
+          "title": "Präzise Größensteuerung",
+          "desc": "Legen Sie genaue Zielgrößen in KB oder MB fest. Komprimieren Sie JPG-Bilder, um spezifische Anforderungen zu erfüllen und dabei die visuelle Qualität zu erhalten."
         },
         {
           "icon": "🔒",
           "iconType": "privacy",
-          "title": "100% Private Processing",
-          "desc": "All compression happens locally in your browser. Your JPG files never leave your device, ensuring complete privacy and security."
+          "title": "100% Private Verarbeitung",
+          "desc": "Alle Komprimierung erfolgt lokal in Ihrem Browser. Ihre JPG-Dateien verlassen niemals Ihr Gerät und gewährleisten vollständige Privatsphäre und Sicherheit."
         },
         {
           "icon": "📦",
           "iconType": "batch",
-          "title": "Batch Processing",
-          "desc": "Compress up to 100 JPG images simultaneously. Process entire photo collections in one operation."
+          "title": "Stapelverarbeitung",
+          "desc": "Komprimieren Sie bis zu 100 JPG-Bilder gleichzeitig. Verarbeiten Sie gesamte Fotosammlungen in einem Vorgang."
         },
         {
           "icon": "⚡",
           "iconType": "speed",
-          "title": "Fast Compression",
-          "desc": "Browser-native Canvas API processing ensures instant compression without server uploads or waiting queues."
+          "title": "Schnelle Komprimierung",
+          "desc": "Die browser-native Canvas API-Verarbeitung gewährleistet sofortige Komprimierung ohne Server-Uploads oder Warteschlangen."
         },
         {
           "icon": "💎",
           "iconType": "free",
-          "title": "Free Forever",
-          "desc": "Unlimited JPG compression completely free—no premium tiers, no subscription fees, no advertisements."
+          "title": "Für Immer Kostenlos",
+          "desc": "Unbegrenzte JPG-Komprimierung völlig kostenlos—keine Premium-Stufen, keine Abonnementgebühren, keine Werbung."
         },
         {
           "icon": "🌐",
           "iconType": "browser",
-          "title": "No Installation",
-          "desc": "Works directly in your web browser. No software downloads or plugin installations required."
+          "title": "Keine Installation",
+          "desc": "Funktioniert direkt in Ihrem Webbrowser. Keine Software-Downloads oder Plugin-Installationen erforderlich."
         }
       ]
     },
@@ -1995,115 +1990,111 @@
       "privacy": "100% Client-Side (Local Browser Processing)"
     },
     "performanceMetrics": {
-      "title": "Technical Specifications",
+      "title": "Technische Spezifikationen",
       "metrics": [
         {
-          "label": "Input Format",
-          "value": "JPG/JPEG (Joint Photographic Experts Group)"
+          "label": "Eingabeformat",
+          "value": "JPG/JPEG (Gemeinsame Gruppe der Bildfachleute)"
         },
         {
-          "label": "Output Format",
-          "value": "JPG (Original format preserved)"
+          "label": "Ausgabeformat",
+          "value": "JPG (Originalformat erhalten)"
         },
         {
-          "label": "Max Batch Size",
-          "value": "100 Images per session"
+          "label": "Maximale Stapelgröße",
+          "value": "100 Bilder pro Sitzung"
         },
         {
-          "label": "File Size Limit",
-          "value": "Unlimited (Limited by browser memory)"
+          "label": "Dateigrößenlimit",
+          "value": "Unbegrenzt (Begrenzt durch Browserspeicher)"
         },
         {
-          "label": "Compression Ratio",
-          "value": "50-70% size reduction typical"
+          "label": "Komprimierungsverhältnis",
+          "value": "Typisch 50-70% Größenreduzierung"
         },
         {
-          "label": "Processing Location",
-          "value": "100% Client-Side (Browser Canvas API)"
+          "label": "Verarbeitungsort",
+          "value": "100% Clientseitig (Browser Canvas API)"
         },
         {
-          "label": "Quality Control",
-          "value": "Precise size targeting with quality preservation"
+          "label": "Qualitätskontrolle",
+          "value": "Präzise Größensteuerung mit Qualitätserhaltung"
         }
       ]
     },
     "howToUse": {
-      "title": "How to Compress JPG Images",
+      "title": "Wie man JPG-Bilder komprimiert",
       "steps": [
         {
-          "title": "Upload Your JPG Files",
-          "desc": "Drag and drop your JPG images into the compressor area or click to browse and select JPG files from your device."
+          "title": "JPG-Dateien hochladen",
+          "desc": "Ziehen Sie Ihre JPG-Bilder in den Komprimierungsbereich oder klicken Sie, um JPG-Dateien von Ihrem Gerät auszuwählen."
         },
         {
-          "title": "Set Target Size",
-          "desc": "Choose your desired file size in KB or MB. Our compressor will optimize your JPG images to meet the target while maintaining quality."
+          "title": "Zielgröße festlegen",
+          "desc": "Wählen Sie Ihre gewünschte Dateigröße in KB oder MB. Unser Kompressor optimiert Ihre JPG-Bilder, um das Ziel zu erreichen und gleichzeitig die Qualität zu erhalten."
         },
         {
-          "title": "Download Compressed Files",
-          "desc": "Download your compressed JPG files instantly. Each file maintains visual quality while being significantly smaller than the original."
+          "title": "Komprimierte Dateien herunterladen",
+          "desc": "Laden Sie Ihre komprimierten JPG-Dateien sofort herunter. Jede Datei behält die visuelle Qualität bei und ist deutlich kleiner als das Original."
         }
       ]
     },
     "comparison": {
-      "toolaze": "Unlimited file sizes, Batch 100+ images, Precise size control, 100% local processing, No uploads, Free forever",
-      "others": "20MB file limits, Single file processing, No size control, Cloud uploads required, Server queues, Paid upgrades"
+      "toolaze": "Unbegrenzte Dateigrößen, Stapel 100+ Bilder, Präzise Größensteuerung, 100% lokale Verarbeitung, Keine Uploads, Für immer kostenlos",
+      "others": "20MB-Dateigrößenbeschränkungen, Einzeldateiverarbeitung, Keine Größensteuerung, Cloud-Uploads erforderlich, Server-Warteschlangen, Bezahlte Upgrades"
     },
     "scenes": [
       {
-        "title": "Web Developers",
+        "title": "Web-Entwickler",
         "icon": "💻",
-        "desc": "Optimize JPG images for websites and apps. Reduce load times while maintaining quality for better SEO and user experience."
+        "desc": "Optimieren Sie Bilder für Websites und Apps. Reduzieren Sie Ladezeiten bei gleichzeitiger Beibehaltung der Qualität für besseres SEO und Benutzererfahrung."
       },
       {
-        "title": "Photographers",
+        "title": "Fotografen",
         "icon": "📸",
-        "desc": "Compress large photo collections for sharing and storage. Maintain quality while reducing file sizes significantly."
+        "desc": "Komprimieren Sie große Fotosammlungen zum Teilen und Speichern. Behalten Sie die Qualität bei und reduzieren Sie die Dateigrößen erheblich."
       },
       {
-        "title": "Content Creators",
+        "title": "Content-Ersteller",
         "icon": "📱",
-        "desc": "Prepare JPG images for social media and blogs. Batch process multiple images quickly without quality loss."
+        "desc": "Bereiten Sie Bilder für soziale Medien und Blogs vor. Verarbeiten Sie mehrere Bilder schnell ohne Qualitätsverlust."
       }
     ],
     "rating": {
-      "text": "\"Perfect tool for optimizing my website images. Fast and private!\" - Join thousands of users who trust Toolaze for JPG compression."
+      "text": "\"Perfektes Tool zur Optimierung meiner Website-Bilder. Schnell und privat!\" - Schließen Sie sich Tausenden von Benutzern an, die Toolaze für JPG-Komprimierung vertrauen."
     },
     "faq": [
       {
-        "q": "How much can I compress a JPG file?",
-        "a": "Typically, JPG files can be compressed by 50-70% while maintaining acceptable visual quality. The exact reduction depends on the original file size and quality settings."
+        "q": "Wie viel kann ich eine JPG-Datei komprimieren?",
+        "a": "Typischerweise können JPG-Dateien um 50-70% komprimiert werden, während eine akzeptable visuelle Qualität erhalten bleibt. Die genaue Reduzierung hängt von der ursprünglichen Dateigröße und den Qualitätseinstellungen ab."
       },
       {
-        "q": "Will compressing JPG reduce image quality?",
-        "a": "Some quality reduction is expected with compression, but our tool optimizes the compression to maintain visual quality while meeting your target file size."
+        "q": "Wird die Komprimierung von JPG die Bildqualität reduzieren?",
+        "a": "Bei der Komprimierung ist eine gewisse Qualitätsreduzierung zu erwarten, aber unser Tool optimiert die Komprimierung, um die visuelle Qualität zu erhalten und gleichzeitig Ihre Ziel-Dateigröße zu erreichen."
       },
       {
-        "q": "Can I compress multiple JPG files at once?",
-        "a": "Yes, Toolaze supports batch compression of up to 100 JPG files per session. You can process entire photo collections in one operation."
+        "q": "Kann ich mehrere JPG-Dateien gleichzeitig komprimieren?",
+        "a": "Ja, Toolaze unterstützt die Stapelkomprimierung von bis zu 100 JPG-Dateien pro Sitzung. Sie können gesamte Fotosammlungen in einem Vorgang verarbeiten."
       },
       {
-        "q": "Is JPG compression free and secure?",
-        "a": "Yes, Toolaze is completely free forever with no hidden costs. Most importantly, all compression happens locally in your browser. Your JPG files never leave your device—ensuring 100% privacy and security."
+        "q": "Ist die JPG-Komprimierung kostenlos und sicher?",
+        "a": "Ja, Toolaze ist für immer völlig kostenlos ohne versteckte Kosten. Am wichtigsten ist, dass die gesamte Komprimierung lokal in Ihrem Browser erfolgt. Ihre JPG-Dateien verlassen Ihr Gerät niemals und gewährleisten 100% Privatsphäre und Sicherheit."
       },
       {
-        "q": "What file sizes can I compress?",
-        "a": "There are no individual file size limits. If your computer can open the file, Toolaze can compress it. You can process files of any size."
+        "q": "Welche Dateigrößen kann ich komprimieren?",
+        "a": "Es gibt keine individuellen Dateigrößenbeschränkungen. Wenn Ihr Computer die Datei öffnen kann, kann Toolaze sie komprimieren. Sie können Dateien jeder Größe verarbeiten."
       },
       {
-        "q": "Does the compressed JPG maintain the original format?",
-        "a": "Yes, compressed files remain in JPG format. The tool optimizes the file size while preserving the JPG format for maximum compatibility."
+        "q": "Behält das komprimierte JPG das ursprüngliche Format?",
+        "a": "Ja, komprimierte Dateien bleiben im JPG-Format. Das Tool optimiert die Dateigröße und erhält dabei das JPG-Format für maximale Kompatibilität."
       }
-    ],
-    "compare": {
-      "toolaze": "Unlimited JPG compression, Precise size control, Batch processing, Local-first architecture, No file size limits, Complete privacy",
-      "others": "20MB file limits, Cloud uploads required, Single file processing, Server queues, EXIF data stripped, Privacy concerns"
-    }
+    ]
   },
   "compress-png": {
     "in_menu": true,
     "metadata": {
-      "title": "Compress PNG Online (Free, Batch & No Ads) - Toolaze",
-      "description": "How to compress PNG images? 1. Upload PNG 2. Set target size 3. Download compressed. Reduce file size by 50% while preserving transparency. Secure & Private."
+      "title": "PNG online komprimieren (Kostenlos, Batch & Keine Werbung) - Toolaze",
+      "description": "Wie komprimiere ich PNG-Bilder? 1. PNG hochladen 2. Zielgröße festlegen 3. Komprimiertes herunterladen. Reduzieren Sie die Dateigröße um 50% bei gleichbleibender Transparenz. Sicher & Privat."
     },
     "sectionsOrder": [
       "howToUse",
@@ -2116,179 +2107,175 @@
       "faq"
     ],
     "hero": {
-      "h1": "PNG Compressor",
-      "desc": "Compress PNG images online for free. Simply drop your PNG images below to compress them in seconds."
+      "h1": "PNG-Kompressor",
+      "desc": "Komprimieren Sie PNG-Bilder online kostenlos. Ziehen Sie Ihre PNG-Bilder einfach unten ab, um sie in Sekunden zu komprimieren."
     },
     "intro": {
-      "title": "Why Compress PNG Images?",
+      "title": "Warum PNG-Bilder komprimieren?",
       "content": [
         {
-          "title": "PNG Compression Benefits",
-          "text": "PNG (Portable Network Graphics) is a lossless format that supports transparency, making it ideal for graphics, logos, and images requiring transparent backgrounds. However, PNG files are often significantly larger than JPG files—typically 2-5 times bigger—which can impact website loading speeds and consume storage space. Compressing PNG images reduces file size by 40-60% while preserving transparency and maintaining visual quality, making them perfect for web use without sacrificing the transparency features that make PNG valuable."
+          "title": "Vorteile der PNG-Komprimierung",
+          "text": "PNG (Portable Network Graphics) ist ein verlustfreies Format, das Transparenz unterstützt und es ideal für Grafiken, Logos und Bilder macht, die transparente Hintergründe erfordern. PNG-Dateien sind jedoch oft deutlich größer als JPG-Dateien—typischerweise 2-5 mal größer—was die Ladegeschwindigkeit von Websites beeinträchtigen und Speicherplatz verbrauchen kann. Die Komprimierung von PNG-Bildern reduziert die Dateigröße um 40-60%, während die Transparenz erhalten bleibt und die visuelle Qualität erhalten bleibt, was sie perfekt für die Webnutzung macht, ohne die Transparenzfunktionen zu opfern, die PNG wertvoll machen."
         },
         {
-          "title": "When to Compress PNG",
-          "text": "Compress PNG images when you need to optimize graphics and logos for faster website loading, reduce file sizes while maintaining transparency for web design projects, meet upload size limits for online forms or platforms, or save storage space without losing the transparency feature. Our tool uses Canvas API to compress PNG files locally in your browser, ensuring complete privacy while preserving the alpha channel transparency that makes PNG format unique."
+          "title": "Wann PNG komprimieren",
+          "text": "Komprimieren Sie PNG-Bilder, wenn Sie Grafiken und Logos für schnellere Website-Ladezeiten optimieren müssen, Dateigrößen bei gleichzeitiger Beibehaltung der Transparenz für Webdesign-Projekte reduzieren müssen, Upload-Größenlimits für Online-Formulare oder Plattformen erfüllen müssen oder Speicherplatz sparen möchten, ohne die Transparenzfunktion zu verlieren. Unser Tool verwendet Canvas API, um PNG-Dateien lokal in Ihrem Browser zu komprimieren und gewährleistet vollständige Privatsphäre bei gleichzeitiger Beibehaltung der Alpha-Kanal-Transparenz, die das PNG-Format einzigartig macht."
         }
       ]
     },
     "features": {
-      "title": "PNG Compression Features",
+      "title": "PNG-Komprimierungsfunktionen",
       "items": [
         {
           "icon": "🎨",
           "iconType": "transparency",
-          "title": "Transparency Preserved",
-          "desc": "Maintains full alpha channel transparency during compression. Your transparent backgrounds remain perfectly clear."
+          "title": "Transparenz erhalten",
+          "desc": "Erhält die vollständige Alpha-Kanal-Transparenz während der Komprimierung. Ihre transparenten Hintergründe bleiben perfekt klar."
         },
         {
           "icon": "📊",
           "iconType": "compression",
-          "title": "Precise Size Control",
-          "desc": "Set exact target sizes in KB or MB. Compress PNG images to meet specific requirements while preserving transparency."
+          "title": "Präzise Größensteuerung",
+          "desc": "Legen Sie genaue Zielgrößen in KB oder MB fest. Komprimieren Sie PNG-Bilder, um spezifische Anforderungen zu erfüllen, während die Transparenz erhalten bleibt."
         },
         {
           "icon": "🔒",
           "iconType": "privacy",
-          "title": "100% Private Processing",
-          "desc": "All compression happens locally in your browser. Your PNG files never leave your device, ensuring complete privacy."
+          "title": "100% Private Verarbeitung",
+          "desc": "Alle Komprimierung erfolgt lokal in Ihrem Browser. Ihre PNG-Dateien verlassen niemals Ihr Gerät und gewährleisten vollständige Privatsphäre."
         },
         {
           "icon": "📦",
           "iconType": "batch",
-          "title": "Batch Processing",
-          "desc": "Compress up to 100 PNG images simultaneously. Process entire graphic collections in one operation."
+          "title": "Stapelverarbeitung",
+          "desc": "Komprimieren Sie bis zu 100 PNG-Bilder gleichzeitig. Verarbeiten Sie gesamte Grafiksammlungen in einem Vorgang."
         },
         {
           "icon": "⚡",
           "iconType": "speed",
-          "title": "Fast Compression",
-          "desc": "Browser-native Canvas API processing ensures instant compression without server uploads or delays."
+          "title": "Schnelle Komprimierung",
+          "desc": "Die browser-native Canvas API-Verarbeitung gewährleistet sofortige Komprimierung ohne Server-Uploads oder Verzögerungen."
         },
         {
           "icon": "💎",
           "iconType": "free",
-          "title": "Free Forever",
-          "desc": "Unlimited PNG compression completely free—no premium tiers, no subscription fees, no advertisements."
+          "title": "Für Immer Kostenlos",
+          "desc": "Unbegrenzte PNG-Komprimierung völlig kostenlos—keine Premium-Stufen, keine Abonnementgebühren, keine Werbung."
         }
       ]
     },
     "specs": {
-      "engine": "Canvas API - Browser-Native Processing",
-      "limit": "Batch 100+ Images - Unlimited File Sizes",
-      "logic": "Transparency-Preserving Compression",
-      "privacy": "100% Client-Side (Local Browser Processing)"
+      "engine": "Canvas API - Browser-native Verarbeitung",
+      "limit": "Stapel 100+ Bilder - Unbegrenzte Dateigrößen",
+      "logic": "Transparenz-erhaltende Komprimierung",
+      "privacy": "100% Client-seitig (Lokale Browser-Verarbeitung)"
     },
     "performanceMetrics": {
-      "title": "Technical Specifications",
+      "title": "Technische Spezifikationen",
       "metrics": [
         {
-          "label": "Input Format",
+          "label": "Eingabeformat",
           "value": "PNG (Portable Network Graphics)"
         },
         {
-          "label": "Output Format",
-          "value": "PNG (Original format preserved)"
+          "label": "Ausgabeformat",
+          "value": "PNG (Originalformat erhalten)"
         },
         {
-          "label": "Max Batch Size",
-          "value": "100 Images per session"
+          "label": "Maximale Stapelgröße",
+          "value": "100 Bilder pro Sitzung"
         },
         {
-          "label": "File Size Limit",
-          "value": "Unlimited (Limited by browser memory)"
+          "label": "Dateigrößenlimit",
+          "value": "Unbegrenzt (Begrenzt durch Browserspeicher)"
         },
         {
-          "label": "Transparency Support",
-          "value": "Full alpha channel transparency preserved"
+          "label": "Transparenz-Unterstützung",
+          "value": "Vollständige Alpha-Kanal-Transparenz erhalten"
         },
         {
-          "label": "Compression Ratio",
-          "value": "40-60% size reduction typical"
+          "label": "Komprimierungsverhältnis",
+          "value": "Typische Größenreduzierung von 40-60%"
         },
         {
-          "label": "Processing Location",
-          "value": "100% Client-Side (Browser Canvas API)"
+          "label": "Verarbeitungsort",
+          "value": "100% Clientseitig (Browser Canvas API)"
         }
       ]
     },
     "howToUse": {
-      "title": "How to Compress PNG Images",
+      "title": "So komprimieren Sie PNG-Bilder",
       "steps": [
         {
-          "title": "Upload Your PNG Files",
-          "desc": "Drag and drop your PNG images into the compressor area or click to browse and select PNG files from your device."
+          "title": "PNG-Dateien hochladen",
+          "desc": "Ziehen Sie Ihre PNG-Bilder in den Komprimierungsbereich oder klicken Sie, um PNG-Dateien von Ihrem Gerät auszuwählen."
         },
         {
-          "title": "Set Target Size",
-          "desc": "Choose your desired file size in KB or MB. Our compressor will optimize your PNG images while preserving transparency."
+          "title": "Zielgröße festlegen",
+          "desc": "Wählen Sie Ihre gewünschte Dateigröße in KB oder MB. Unser Kompressor optimiert Ihre PNG-Bilder, um das Ziel zu erreichen und gleichzeitig die Qualität zu erhalten."
         },
         {
-          "title": "Download Compressed Files",
-          "desc": "Download your compressed PNG files instantly. Each file maintains transparency and quality while being smaller than the original."
+          "title": "Komprimierte Dateien herunterladen",
+          "desc": "Laden Sie Ihre komprimierten PNG-Dateien sofort herunter. Jede Datei behält die visuelle Qualität bei und ist deutlich kleiner als das Original."
         }
       ]
     },
     "comparison": {
-      "toolaze": "Unlimited file sizes, Batch 100+ images, Transparency preserved, Precise size control, 100% local processing, Free forever",
-      "others": "20MB file limits, Transparency lost, Single file processing, Cloud uploads required, Server queues, Paid upgrades"
+      "toolaze": "Unbegrenzte Dateigrößen, Stapel 100+ Bilder, Transparenz erhalten, Präzise Größensteuerung, 100% lokale Verarbeitung, Für immer kostenlos",
+      "others": "20MB-Dateigrößenbeschränkungen, Transparenz verloren, Einzeldateiverarbeitung, Cloud-Uploads erforderlich, Server-Warteschlangen, Bezahlte Upgrades"
     },
     "scenes": [
       {
-        "title": "Web Developers",
+        "title": "Web-Entwickler",
         "icon": "💻",
-        "desc": "Optimize PNG graphics and logos for websites. Reduce file sizes while maintaining transparency for better performance."
+        "desc": "Reduzieren Sie Dateigrößen erheblich bei gleichzeitiger Beibehaltung der Qualität."
       },
       {
-        "title": "Graphic Designers",
+        "title": "Grafikdesigner",
         "icon": "🎨",
-        "desc": "Compress PNG graphics for design projects. Maintain transparency while reducing file sizes for faster workflows."
+        "desc": "Reduzieren Sie Dateigrößen erheblich bei gleichzeitiger Beibehaltung der Qualität."
       },
       {
-        "title": "Content Creators",
+        "title": "Content-Ersteller",
         "icon": "📱",
-        "desc": "Optimize PNG images for social media and blogs. Batch process graphics quickly while preserving transparency."
+        "desc": "Verarbeiten Sie mehrere Bilder schnell ohne Qualitätsverlust."
       }
     ],
     "rating": {
-      "text": "\"Perfect for compressing logos while keeping transparency intact!\" - Join thousands of designers who trust Toolaze for PNG compression."
+      "text": "\"Perfect for compressing logos while keeping transparency intact!\" - Schließen Sie sich Tausenden von Benutzern an, die Toolaze vertrauen."
     },
     "faq": [
       {
-        "q": "Will transparency be preserved when compressing PNG?",
-        "a": "Yes, our PNG compressor is specifically designed to preserve the alpha channel transparency during compression. All transparent areas in your PNG images will remain transparent."
+        "q": "Wird die Transparenz beim Komprimieren von PNG erhalten bleiben?",
+        "a": "Ja, unser PNG-Komprimierer ist speziell darauf ausgelegt, die Alpha-Kanal-Transparenz während der Komprimierung zu erhalten. Alle transparenten Bereiche in Ihren PNG-Bildern bleiben transparent."
       },
       {
-        "q": "How much can I compress a PNG file?",
-        "a": "Typically, PNG files can be compressed by 40-60% while maintaining visual quality and transparency. The exact reduction depends on the image content and original file size."
+        "q": "Wie viel kann ich eine PNG-Datei komprimieren?",
+        "a": "Typischerweise können Dateien um 40-60% komprimiert werden, während eine akzeptable visuelle Qualität erhalten bleibt. Die genaue Reduzierung hängt von der ursprünglichen Dateigröße und den Qualitätseinstellungen ab."
       },
       {
-        "q": "Can I compress multiple PNG files at once?",
-        "a": "Yes, Toolaze supports batch compression of up to 100 PNG files per session. You can process entire graphic collections in one operation."
+        "q": "Kann ich mehrere PNG-Dateien gleichzeitig komprimieren?",
+        "a": "Ja! Toolaze unterstützt die Stapelverarbeitung von bis zu 100 Dateien gleichzeitig. Sie können gesamte Sammlungen in einem Vorgang verarbeiten."
       },
       {
-        "q": "Is PNG compression free and secure?",
-        "a": "Yes, Toolaze is completely free forever with no hidden costs. All compression happens locally in your browser. Your PNG files never leave your device—ensuring 100% privacy and security."
+        "q": "Ist die PNG-Komprimierung kostenlos und sicher?",
+        "a": "Ja! Die gesamte Komprimierung erfolgt lokal in Ihrem Browser mit JavaScript und Canvas-API. Ihre Bilder verlassen Ihr Gerät niemals und gewährleisten vollständige Privatsphäre und Sicherheit."
       },
       {
-        "q": "What file sizes can I compress?",
-        "a": "There are no individual file size limits. If your computer can open the file, Toolaze can compress it. You can process files of any size."
+        "q": "Welche Dateigrößen kann ich komprimieren?",
+        "a": "Es gibt keine individuellen Dateigrößenbeschränkungen. Wenn Ihr Computer die Datei öffnen kann, kann Toolaze sie komprimieren. Sie können Dateien jeder Größe verarbeiten."
       },
       {
-        "q": "Does the compressed PNG maintain transparency?",
-        "a": "Yes, compressed PNG files maintain full alpha channel transparency. The tool optimizes file size while preserving all transparency features."
+        "q": "Behält das komprimierte PNG die Transparenz bei?",
+        "a": "Ja, komprimierte PNG-Dateien behalten die vollständige Alpha-Kanal-Transparenz bei. Das Tool optimiert die Dateigröße, während alle Transparenzfunktionen erhalten bleiben."
       }
-    ],
-    "compare": {
-      "toolaze": "Unlimited PNG compression, Transparency preserved, Batch processing, Local-first architecture, No file size limits, Complete privacy",
-      "others": "20MB file limits, Transparency lost, Cloud uploads required, Single file processing, Server queues, Privacy concerns"
-    }
+    ]
   },
   "compress-webp": {
     "in_menu": true,
     "metadata": {
-      "title": "Compress WebP Online (Free, Batch & No Ads) - Toolaze",
-      "description": "How to compress WebP images? 1. Upload WebP 2. Set target size 3. Download compressed. Reduce file size by 30% while maintaining quality. Secure & Private."
+      "title": "WebP online komprimieren (Kostenlos, Batch & Keine Werbung) - Toolaze",
+      "description": "Wie komprimiere ich WebP-Bilder? 1. WebP hochladen 2. Zielgröße festlegen 3. Komprimiert herunterladen. Dateigröße um 30% reduzieren bei gleichbleibender Qualität. Sicher & Privat."
     },
     "sectionsOrder": [
       "howToUse",
@@ -2308,12 +2295,12 @@
       "title": "Why Compress WebP Images?",
       "content": [
         {
-          "title": "WebP Compression Benefits",
-          "text": "WebP is Google's modern image format that provides superior compression compared to JPG and PNG—typically 25-35% better compression than PNG and similar quality to JPG. However, even WebP files can be further optimized for better performance. Compressing WebP images reduces file size by 20-40% while maintaining visual quality and transparency support, making them perfect for modern web applications, mobile apps, and digital platforms where performance optimization is crucial."
+          "title": "Vorteile der WebP-Komprimierung",
+          "text": "WebP ist Googles modernes Bildformat, das eine überlegene Komprimierung im Vergleich zu JPG und PNG bietet—typischerweise 25-35% bessere Komprimierung als PNG und ähnliche Qualität wie JPG. Jedoch können auch WebP-Dateien für bessere Leistung weiter optimiert werden. Die Komprimierung von WebP-Bildern reduziert die Dateigröße um 20-40%, während die visuelle Qualität und Transparenzunterstützung erhalten bleiben, was sie perfekt für moderne Webanwendungen, mobile Apps und digitale Plattformen macht, bei denen Leistungsoptimierung entscheidend ist."
         },
         {
-          "title": "When to Compress WebP",
-          "text": "Compress WebP images when you need to further optimize already-compressed WebP files for even smaller sizes, meet specific file size requirements for web applications or mobile apps, reduce bandwidth costs for web hosting or cloud storage, or optimize images for faster loading on mobile devices. Our tool uses Canvas API to compress WebP files locally in your browser, ensuring complete privacy while maintaining the format's superior compression characteristics."
+          "title": "Wann WebP komprimieren",
+          "text": "Komprimieren Sie WebP-Bilder, wenn Sie bereits komprimierte WebP-Dateien für noch kleinere Größen weiter optimieren müssen, spezifische Dateigrößenanforderungen für Webanwendungen oder mobile Apps erfüllen müssen, Bandbreitenkosten für Webhosting oder Cloud-Speicher reduzieren möchten oder Bilder für schnelleres Laden auf mobilen Geräten optimieren möchten. Unser Tool verwendet Canvas API, um WebP-Dateien lokal in Ihrem Browser zu komprimieren und gewährleistet vollständige Privatsphäre bei gleichzeitiger Beibehaltung der überlegenen Komprimierungseigenschaften des Formats."
         }
       ]
     },
@@ -2323,20 +2310,20 @@
         {
           "icon": "📊",
           "iconType": "compression",
-          "title": "Superior Compression",
-          "desc": "Further optimize WebP files for even smaller sizes. Achieve maximum compression while maintaining quality."
+          "title": "Überlegene Komprimierung",
+          "desc": "Optimieren Sie WebP-Dateien für noch kleinere Größen weiter. Erreichen Sie maximale Komprimierung bei gleichzeitiger Beibehaltung der Qualität."
         },
         {
           "icon": "🎨",
           "iconType": "transparency",
-          "title": "Transparency Support",
-          "desc": "Preserves transparency when compressing WebP files with alpha channels. Maintains transparent backgrounds."
+          "title": "Transparenz-Unterstützung",
+          "desc": "Erhält die Transparenz beim Komprimieren von WebP-Dateien mit Alpha-Kanälen. Behält transparente Hintergründe bei."
         },
         {
           "icon": "🔒",
           "iconType": "privacy",
           "title": "100% Private Processing",
-          "desc": "All compression happens locally in your browser. Your WebP files never leave your device, ensuring complete privacy."
+          "desc": "Alle Komprimierung erfolgt lokal in Ihrem Browser. Ihre WebP-Dateien verlassen niemals Ihr Gerät und gewährleisten vollständige Privatsphäre."
         },
         {
           "icon": "📦",
@@ -2348,20 +2335,20 @@
           "icon": "⚡",
           "iconType": "speed",
           "title": "Fast Compression",
-          "desc": "Browser-native Canvas API processing ensures instant compression without server uploads or delays."
+          "desc": "Die browser-native Canvas API-Verarbeitung gewährleistet sofortige Komprimierung ohne Server-Uploads oder Verzögerungen."
         },
         {
           "icon": "💎",
           "iconType": "free",
-          "title": "Free Forever",
-          "desc": "Unlimited WebP compression completely free—no premium tiers, no subscription fees, no advertisements."
+          "title": "Für Immer Kostenlos",
+          "desc": "Unbegrenzte WebP-Komprimierung völlig kostenlos—keine Premium-Stufen, keine Abonnementgebühren, keine Werbung."
         }
       ]
     },
     "specs": {
       "engine": "Canvas API - Browser-Native Processing",
-      "limit": "Batch 100+ Images - Unlimited File Sizes",
-      "logic": "Quality-Preserving Compression",
+      "limit": "Stapel 100+ Bilder - Unbegrenzte Dateigrößen",
+      "logic": "Qualitätserhaltende Komprimierung",
       "privacy": "100% Client-Side (Local Browser Processing)"
     },
     "performanceMetrics": {
@@ -2376,20 +2363,20 @@
           "value": "WebP (Original format preserved)"
         },
         {
-          "label": "Max Batch Size",
+          "label": "Maximale Stapelgröße",
           "value": "100 Images per session"
         },
         {
-          "label": "File Size Limit",
+          "label": "Dateigrößenlimit",
           "value": "Unlimited (Limited by browser memory)"
         },
         {
-          "label": "Compression Ratio",
-          "value": "20-40% additional size reduction"
+          "label": "Komprimierungsverhältnis",
+          "value": "20-40% zusätzliche Größenreduzierung"
         },
         {
-          "label": "Transparency Support",
-          "value": "Full alpha channel transparency preserved"
+          "label": "Transparenz-Unterstützung",
+          "value": "Vollständige Alpha-Kanal-Transparenz erhalten"
         },
         {
           "label": "Processing Location",
@@ -2402,78 +2389,74 @@
       "steps": [
         {
           "title": "Upload Your WebP Files",
-          "desc": "Drag and drop your WebP images into the compressor area or click to browse and select WebP files from your device."
+          "desc": "Ziehen Sie Ihre WebP-Bilder in den Komprimierungsbereich oder klicken Sie, um WebP-Dateien von Ihrem Gerät auszuwählen."
         },
         {
-          "title": "Set Target Size",
-          "desc": "Choose your desired file size in KB or MB. Our compressor will optimize your WebP images to meet the target while maintaining quality."
+          "title": "Zielgröße festlegen",
+          "desc": "Wählen Sie Ihre gewünschte Dateigröße in KB oder MB. Unser Kompressor optimiert Ihre WebP-Bilder, um das Ziel zu erreichen und gleichzeitig die Qualität zu erhalten."
         },
         {
           "title": "Download Compressed Files",
-          "desc": "Download your compressed WebP files instantly. Each file maintains quality and transparency while being smaller than the original."
+          "desc": "Laden Sie Ihre komprimierten WebP-Dateien sofort herunter. Jede Datei behält die visuelle Qualität bei und ist deutlich kleiner als das Original."
         }
       ]
     },
     "comparison": {
-      "toolaze": "Unlimited file sizes, Batch 100+ images, Quality preserved, Precise size control, 100% local processing, Free forever",
-      "others": "20MB file limits, Quality loss, Single file processing, Cloud uploads required, Server queues, Paid upgrades"
+      "toolaze": "Unbegrenzte Dateigrößen, Stapel 100+ Bilder, Qualität erhalten, Präzise Größensteuerung, 100% lokale Verarbeitung, Für immer kostenlos",
+      "others": "20MB-Dateigrößenbeschränkungen, Qualitätsverlust, Einzeldateiverarbeitung, Cloud-Uploads erforderlich, Server-Warteschlangen, Bezahlte Upgrades"
     },
     "scenes": [
       {
         "title": "Web Developers",
         "icon": "💻",
-        "desc": "Further optimize WebP images for websites and apps. Achieve maximum compression for faster page loads."
+        "desc": "Optimieren Sie WebP-Bilder für Websites und Apps weiter. Erreichen Sie maximale Komprimierung für schnellere Seitenladezeiten."
       },
       {
         "title": "Mobile App Developers",
         "icon": "📱",
-        "desc": "Reduce app size by optimizing WebP assets. Maintain quality while minimizing file sizes for mobile apps."
+        "desc": "Reduzieren Sie die App-Größe durch Optimierung von WebP-Assets. Behalten Sie die Qualität bei und minimieren Sie gleichzeitig die Dateigrößen für mobile Apps."
       },
       {
         "title": "E-commerce Managers",
         "icon": "🛒",
-        "desc": "Optimize WebP product images for online stores. Improve page load times while maintaining product image quality."
+        "desc": "Optimieren Sie WebP-Produktbilder für Online-Shops. Verbessern Sie die Seitenladezeiten bei gleichzeitiger Beibehaltung der Produktbildqualität."
       }
     ],
     "rating": {
-      "text": "\"Perfect for optimizing my WebP images further! Fast and efficient!\" - Join thousands of developers who trust Toolaze for WebP compression."
+      "text": "\"Perfekt zum weiteren Optimieren meiner WebP-Bilder! Schnell und effizient!\" - Schließen Sie sich Tausenden von Entwicklern an, die Toolaze für WebP-Komprimierung vertrauen."
     },
     "faq": [
       {
         "q": "How much can I compress a WebP file?",
-        "a": "Typically, WebP files can be further compressed by 20-40% while maintaining visual quality. The exact reduction depends on the original file size and compression settings."
+        "a": "Typischerweise können WebP-Dateien um weitere 20-40% komprimiert werden, während die visuelle Qualität erhalten bleibt. Die genaue Reduzierung hängt von der ursprünglichen Dateigröße und den Komprimierungseinstellungen ab."
       },
       {
-        "q": "Will compressing WebP reduce image quality?",
-        "a": "Some quality reduction is expected with compression, but our tool optimizes the compression to maintain visual quality while meeting your target file size."
+        "q": "Wird die Komprimierung von WebP die Bildqualität reduzieren?",
+        "a": "Bei der Komprimierung ist eine gewisse Qualitätsreduzierung zu erwarten, aber unser Tool optimiert die Komprimierung, um die visuelle Qualität zu erhalten und gleichzeitig Ihre Ziel-Dateigröße zu erreichen."
       },
       {
         "q": "Can I compress multiple WebP files at once?",
-        "a": "Yes, Toolaze supports batch compression of up to 100 WebP files per session. You can process entire image collections in one operation."
+        "a": "Ja! Toolaze unterstützt die Stapelverarbeitung von bis zu 100 Dateien gleichzeitig. Sie können gesamte Sammlungen in einem Vorgang verarbeiten."
       },
       {
         "q": "Is WebP compression free and secure?",
-        "a": "Yes, Toolaze is completely free forever with no hidden costs. All compression happens locally in your browser. Your WebP files never leave your device—ensuring 100% privacy and security."
+        "a": "Ja! Die gesamte Komprimierung erfolgt lokal in Ihrem Browser mit JavaScript und Canvas-API. Ihre Bilder verlassen Ihr Gerät niemals und gewährleisten vollständige Privatsphäre und Sicherheit."
       },
       {
         "q": "Will transparency be preserved?",
-        "a": "Yes, if your WebP file has transparency (alpha channel), it will be preserved during compression. The tool maintains transparency while optimizing file size."
+        "a": "Ja, wenn Ihre WebP-Datei Transparenz (Alpha-Kanal) hat, wird diese bei der Komprimierung erhalten bleiben. Das Tool behält die Transparenz bei, während es die Dateigröße optimiert."
       },
       {
-        "q": "What file sizes can I compress?",
-        "a": "There are no individual file size limits. If your computer can open the file, Toolaze can compress it. You can process files of any size."
+        "q": "Welche Dateigrößen kann ich komprimieren?",
+        "a": "Es gibt keine individuellen Dateigrößenbeschränkungen. Wenn Ihr Computer die Datei öffnen kann, kann Toolaze sie komprimieren. Sie können Dateien jeder Größe verarbeiten."
       }
-    ],
-    "compare": {
-      "toolaze": "Unlimited WebP compression, Quality preserved, Batch processing, Local-first architecture, No file size limits, Complete privacy",
-      "others": "20MB file limits, Quality loss, Cloud uploads required, Single file processing, Server queues, Privacy concerns"
-    }
+    ]
   },
   "compress-image": {
-    "in_menu": true,
+    "in_menu": false,
     "metadata": {
-      "title": "Compress Image Online (Free, Batch & No Ads) - Toolaze",
-      "description": "How to compress images? 1. Upload image 2. Set target size 3. Download compressed. Reduce file size by 60% while maintaining quality. Secure & Private."
+      "title": "Bilder online komprimieren (Kostenlos, Batch & Keine Werbung) - Toolaze",
+      "description": "Wie komprimiere ich Bilder? 1. Bild hochladen 2. Zielgröße festlegen 3. Komprimiertes herunterladen. Dateigröße um 60% reduzieren bei gleichbleibender Qualität. Sicher & Privat."
     },
     "sectionsOrder": [
       "howToUse",
@@ -2486,179 +2469,175 @@
       "faq"
     ],
     "hero": {
-      "h1": "Image Compressor",
-      "desc": "Compress images online for free. Simply drop your images below to compress them in seconds."
+      "h1": "Bildkompressor",
+      "desc": "Komprimieren Sie Bilder online kostenlos. Ziehen Sie Ihre Bilder einfach unten ab, um sie in Sekunden zu komprimieren."
     },
     "intro": {
-      "title": "Why Compress Images?",
+      "title": "Warum Bilder komprimieren?",
       "content": [
         {
-          "title": "Image Compression Benefits",
-          "text": "Large image files can slow down websites, consume storage space, cause upload failures, and increase bandwidth costs. Compressing images reduces file size by 50-70% while maintaining acceptable visual quality, making them perfect for web use, email attachments, online forms, and storage optimization. Our universal image compressor supports JPG, PNG, WebP, and BMP formats, processing all images locally in your browser using Canvas API, ensuring complete privacy and fast compression without uploading your images to any server."
+          "title": "Vorteile der Bildkomprimierung",
+          "text": "Große Bilddateien können Websites verlangsamen, Speicherplatz verbrauchen, Upload-Fehler verursachen und Bandbreitenkosten erhöhen. Die Komprimierung von Bildern reduziert die Dateigröße um 50-70%, während die akzeptable visuelle Qualität erhalten bleibt, was sie perfekt für die Webnutzung, E-Mail-Anhänge, Online-Formulare und Speicheroptimierung macht. Unser universeller Bildkompressor unterstützt JPG-, PNG-, WebP- und BMP-Formate und verarbeitet alle Bilder lokal in Ihrem Browser mit Canvas API, was vollständige Privatsphäre und schnelle Komprimierung ohne Upload Ihrer Bilder auf einen Server gewährleistet."
         },
         {
-          "title": "When to Compress Images",
-          "text": "Compress images when you need to optimize photos and graphics for faster website loading, meet upload size limits for online forms, email attachments, or social media platforms, save storage space on your device or cloud storage, or reduce bandwidth costs for web hosting. Our tool supports precise size control, allowing you to set exact target sizes in KB or MB for any supported format, making it perfect for meeting specific requirements while maintaining image quality."
+          "title": "Wann Bilder komprimieren",
+          "text": "Komprimieren Sie Bilder, wenn Sie Fotos und Grafiken für schnellere Website-Ladezeiten optimieren müssen, Upload-Größenlimits für Online-Formulare, E-Mail-Anhänge oder Social-Media-Plattformen erfüllen müssen, Speicherplatz auf Ihrem Gerät oder Cloud-Speicher sparen oder Bandbreitenkosten für Web-Hosting reduzieren möchten. Unser Tool unterstützt präzise Größensteuerung, sodass Sie exakte Zielgrößen in KB oder MB für jedes unterstützte Format festlegen können, was es perfekt macht, um spezifische Anforderungen zu erfüllen und gleichzeitig die Bildqualität zu erhalten."
         }
       ]
     },
     "features": {
-      "title": "Universal Image Compression Features",
+      "title": "Universelle Bildkomprimierungs-Funktionen",
       "items": [
         {
           "icon": "🖼️",
           "iconType": "format",
-          "title": "Multiple Format Support",
-          "desc": "Supports JPG, PNG, WebP, and BMP formats. Compress any image type with one tool."
+          "title": "Mehrfachformat-Unterstützung",
+          "desc": "Unterstützt JPG-, PNG-, WebP- und BMP-Formate. Komprimieren Sie jeden Bildtyp mit einem Tool."
         },
         {
           "icon": "📊",
           "iconType": "compression",
-          "title": "Precise Size Control",
-          "desc": "Set exact target sizes in KB or MB. Compress images to meet specific requirements while maintaining quality."
+          "title": "Präzise Größensteuerung",
+          "desc": "Legen Sie genaue Zielgrößen in KB oder MB fest. Komprimieren Sie Bilder, um spezifische Anforderungen zu erfüllen und dabei die Qualität zu erhalten."
         },
         {
           "icon": "🔒",
           "iconType": "privacy",
-          "title": "100% Private Processing",
-          "desc": "All compression happens locally in your browser. Your images never leave your device, ensuring complete privacy."
+          "title": "100% Private Verarbeitung",
+          "desc": "Alle Komprimierung erfolgt lokal in Ihrem Browser. Ihre Bilder verlassen niemals Ihr Gerät und gewährleisten vollständige Privatsphäre."
         },
         {
           "icon": "📦",
           "iconType": "batch",
-          "title": "Batch Processing",
-          "desc": "Compress up to 100 images simultaneously. Process entire photo collections in one operation."
+          "title": "Stapelverarbeitung",
+          "desc": "Komprimieren Sie bis zu 100 Bilder gleichzeitig. Verarbeiten Sie gesamte Fotosammlungen in einem Vorgang."
         },
         {
           "icon": "⚡",
           "iconType": "speed",
-          "title": "Fast Compression",
-          "desc": "Browser-native Canvas API processing ensures instant compression without server uploads or delays."
+          "title": "Schnelle Komprimierung",
+          "desc": "Die browser-native Canvas API-Verarbeitung gewährleistet sofortige Komprimierung ohne Server-Uploads oder Verzögerungen."
         },
         {
           "icon": "💎",
           "iconType": "free",
-          "title": "Free Forever",
-          "desc": "Unlimited image compression completely free—no premium tiers, no subscription fees, no advertisements."
+          "title": "Für Immer Kostenlos",
+          "desc": "Unbegrenzte Bildkomprimierung völlig kostenlos—keine Premium-Stufen, keine Abonnementgebühren, keine Werbung."
         }
       ]
     },
     "specs": {
-      "engine": "Canvas API - Browser-Native Processing",
-      "limit": "Batch 100+ Images - Unlimited File Sizes",
-      "logic": "Precise KB/MB Size Control",
-      "privacy": "100% Client-Side (Local Browser Processing)"
+      "engine": "Canvas API - Browser-Native Verarbeitung",
+      "limit": "Batch 100+ Bilder - Unbegrenzte Dateigrößen",
+      "logic": "Präzise KB/MB Größensteuerung",
+      "privacy": "100% Clientseitig (Lokale Browser-Verarbeitung)"
     },
     "performanceMetrics": {
-      "title": "Technical Specifications",
+      "title": "Technische Spezifikationen",
       "metrics": [
         {
-          "label": "Supported Formats",
+          "label": "Unterstützte Formate",
           "value": "JPG, PNG, WebP, BMP"
         },
         {
-          "label": "Output Format",
-          "value": "Original format preserved"
+          "label": "Ausgabeformat",
+          "value": "Ursprüngliches Format beibehalten"
         },
         {
-          "label": "Max Batch Size",
-          "value": "100 Images per session"
+          "label": "Maximale Stapelgröße",
+          "value": "100 Bilder pro Sitzung"
         },
         {
-          "label": "File Size Limit",
-          "value": "Unlimited (Limited by browser memory)"
+          "label": "Dateigrößenlimit",
+          "value": "Unbegrenzt (Begrenzt durch Browserspeicher)"
         },
         {
-          "label": "Compression Ratio",
-          "value": "50-70% size reduction typical"
+          "label": "Komprimierungsverhältnis",
+          "value": "Typisch 50-70% Größenreduzierung"
         },
         {
-          "label": "Processing Location",
-          "value": "100% Client-Side (Browser Canvas API)"
+          "label": "Verarbeitungsort",
+          "value": "100% Clientseitig (Browser Canvas API)"
         },
         {
-          "label": "Quality Control",
-          "value": "Precise size targeting with quality preservation"
+          "label": "Qualitätskontrolle",
+          "value": "Präzise Größensteuerung mit Qualitätserhaltung"
         }
       ]
     },
     "howToUse": {
-      "title": "How to Compress Images",
+      "title": "Wie man Bilder komprimiert",
       "steps": [
         {
-          "title": "Upload Your Images",
-          "desc": "Drag and drop your images (JPG, PNG, WebP, or BMP) into the compressor area or click to browse and select files from your device."
+          "title": "Ihre Bilder hochladen",
+          "desc": "Ziehen Sie Ihre Bilder (JPG, PNG, WebP oder BMP) in den Komprimierungsbereich oder klicken Sie, um Dateien von Ihrem Gerät auszuwählen."
         },
         {
-          "title": "Set Target Size",
-          "desc": "Choose your desired file size in KB or MB. Our compressor will optimize your images to meet the target while maintaining quality."
+          "title": "Zielgröße festlegen",
+          "desc": "Wählen Sie Ihre gewünschte Dateigröße in KB oder MB. Unser Kompressor optimiert Ihre Bilder, um das Ziel zu erreichen und gleichzeitig die Qualität zu erhalten."
         },
         {
-          "title": "Download Compressed Files",
-          "desc": "Download your compressed images instantly. Each file maintains visual quality while being significantly smaller than the original."
+          "title": "Komprimierte Dateien herunterladen",
+          "desc": "Laden Sie Ihre komprimierten Bilder sofort herunter. Jede Datei behält die visuelle Qualität bei und ist deutlich kleiner als das Original."
         }
       ]
     },
     "comparison": {
-      "toolaze": "Unlimited file sizes, Batch 100+ images, Multiple formats, Precise size control, 100% local processing, Free forever",
-      "others": "20MB file limits, Format restrictions, Single file processing, Cloud uploads required, Server queues, Paid upgrades"
+      "toolaze": "Unbegrenzte Dateigrößen, Stapel 100+ Bilder, Mehrere Formate, Präzise Größensteuerung, 100% lokale Verarbeitung, Für immer kostenlos",
+      "others": "20MB-Dateigrößenbeschränkungen, Formatbeschränkungen, Einzeldateiverarbeitung, Cloud-Uploads erforderlich, Server-Warteschlangen, Bezahlte Upgrades"
     },
     "scenes": [
       {
-        "title": "Web Developers",
+        "title": "Web-Entwickler",
         "icon": "💻",
-        "desc": "Optimize images for websites and apps. Reduce load times while maintaining quality for better SEO and user experience."
+        "desc": "Optimieren Sie Bilder für Websites und Apps. Reduzieren Sie Ladezeiten bei gleichzeitiger Beibehaltung der Qualität für besseres SEO und Benutzererfahrung."
       },
       {
-        "title": "Photographers",
+        "title": "Fotografen",
         "icon": "📸",
-        "desc": "Compress large photo collections for sharing and storage. Maintain quality while reducing file sizes significantly."
+        "desc": "Komprimieren Sie große Fotosammlungen zum Teilen und Speichern. Behalten Sie die Qualität bei und reduzieren Sie die Dateigrößen erheblich."
       },
       {
-        "title": "Content Creators",
+        "title": "Content-Ersteller",
         "icon": "📱",
-        "desc": "Prepare images for social media and blogs. Batch process multiple images quickly without quality loss."
+        "desc": "Bereiten Sie Bilder für soziale Medien und Blogs vor. Verarbeiten Sie mehrere Bilder schnell ohne Qualitätsverlust."
       }
     ],
     "rating": {
-      "text": "\"Perfect tool for compressing all my images! Fast, free, and private!\" - Join thousands of users who trust Toolaze for image compression."
+      "text": "\"Perfektes Tool zum Komprimieren aller meiner Bilder! Schnell, kostenlos und privat!\" - Schließen Sie sich Tausenden von Benutzern an, die Toolaze für die Bildkomprimierung vertrauen."
     },
     "faq": [
       {
-        "q": "Which image formats are supported?",
-        "a": "Toolaze supports JPG, PNG, WebP, and BMP formats. Your compressed files will be downloaded in their original format."
+        "q": "Welche Bildformate werden unterstützt?",
+        "a": "Toolaze unterstützt JPG, PNG, WebP und BMP Formate. Ihre komprimierten Dateien werden in ihrem ursprünglichen Format heruntergeladen."
       },
       {
-        "q": "How much can I compress an image?",
-        "a": "Typically, images can be compressed by 50-70% while maintaining acceptable visual quality. The exact reduction depends on the original file size and format."
+        "q": "Wie viel kann ich ein Bild komprimieren?",
+        "a": "Typischerweise können Bilder um 50-70% komprimiert werden, während eine akzeptable visuelle Qualität erhalten bleibt. Die genaue Reduzierung hängt von der ursprünglichen Dateigröße und dem Format ab."
       },
       {
-        "q": "Can I compress multiple images at once?",
-        "a": "Yes, Toolaze supports batch compression of up to 100 images per session. You can process entire photo collections in one operation."
+        "q": "Kann ich mehrere Bilder gleichzeitig komprimieren?",
+        "a": "Ja, Toolaze unterstützt die Stapelverarbeitung von bis zu 100 Bildern pro Sitzung. Sie können gesamte Fotosammlungen in einem Vorgang verarbeiten."
       },
       {
-        "q": "Is image compression free and secure?",
-        "a": "Yes, Toolaze is completely free forever with no hidden costs. All compression happens locally in your browser. Your images never leave your device—ensuring 100% privacy and security."
+        "q": "Ist die Bildkomprimierung kostenlos und sicher?",
+        "a": "Ja, Toolaze ist für immer völlig kostenlos ohne versteckte Kosten. Alle Komprimierung erfolgt lokal in Ihrem Browser. Ihre Bilder verlassen niemals Ihr Gerät—was 100% Privatsphäre und Sicherheit gewährleistet."
       },
       {
-        "q": "What file sizes can I compress?",
-        "a": "There are no individual file size limits. If your computer can open the file, Toolaze can compress it. You can process files of any size."
+        "q": "Welche Dateigrößen kann ich komprimieren?",
+        "a": "Es gibt keine individuellen Dateigrößenbeschränkungen. Wenn Ihr Computer die Datei öffnen kann, kann Toolaze sie komprimieren. Sie können Dateien jeder Größe verarbeiten."
       },
       {
-        "q": "Will transparency be preserved for PNG files?",
-        "a": "Yes, when compressing PNG files, transparency is preserved. The tool maintains the alpha channel during compression."
+        "q": "Wird die Transparenz bei PNG-Dateien erhalten bleiben?",
+        "a": "Ja, beim Komprimieren von PNG-Dateien wird die Transparenz erhalten. Das Tool behält den Alpha-Kanal während der Komprimierung bei."
       }
-    ],
-    "compare": {
-      "toolaze": "Unlimited image compression, Multiple formats, Batch processing, Local-first architecture, No file size limits, Complete privacy",
-      "others": "20MB file limits, Format restrictions, Cloud uploads required, Single file processing, Server queues, Privacy concerns"
-    }
+    ]
   },
   "batch-compress": {
     "in_menu": true,
     "metadata": {
-      "title": "Batch Compress Images Online (Free, No Ads & Fast) - Toolaze",
-      "description": "How to batch compress images? 1. Upload multiple images 2. Set target size 3. Download all. Compress up to 100 images at once. Secure & Private."
+      "title": "Bilder stapelweise online komprimieren (Kostenlos, Keine Werbung & Schnell) - Toolaze",
+      "description": "Wie komprimiere ich mehrere Bilder? 1. Mehrere Bilder hochladen 2. Zielgröße festlegen 3. Alle herunterladen. Komprimieren Sie bis zu 100 Bilder gleichzeitig. Sicher & Privat."
     },
     "sectionsOrder": [
       "howToUse",
@@ -2671,172 +2650,153 @@
       "faq"
     ],
     "hero": {
-      "h1": "Batch Image Compressor",
-      "desc": "Compress multiple images at once online for free. Simply drop your images below to compress them in seconds."
+      "h1": "Stapelbildkompressor",
+      "desc": "Komprimieren Sie mehrere Bilder gleichzeitig online kostenlos. Ziehen Sie Ihre Bilder einfach unten ab, um sie in Sekunden zu komprimieren."
     },
     "intro": {
-      "title": "Why Use Batch Compression?",
+      "title": "Warum mehrere Bilder stapelweise komprimieren?",
       "content": [
         {
-          "title": "Batch Compression Benefits",
-          "text": "Processing images one by one is time-consuming and inefficient. Batch compression allows you to compress up to 100 images simultaneously, saving hours of work and ensuring consistent results across your entire image collection. Whether you're optimizing a photo gallery, preparing images for a website, or compressing files for storage, batch processing handles everything in one operation. Our browser-based batch compressor processes all images locally using Canvas API, ensuring complete privacy while providing fast, efficient compression without uploading your images to any server."
+          "title": "Vorteile der Stapelkomprimierung",
+          "text": "Das Verarbeiten von Bildern einzeln ist zeitaufwändig und ineffizient. Die Stapelkomprimierung ermöglicht es Ihnen, bis zu 100 Bilder gleichzeitig zu komprimieren, spart Stunden Arbeit und gewährleistet konsistente Ergebnisse für Ihre gesamte Bildsammlung. Ob Sie eine Fotogalerie optimieren, Bilder für eine Website vorbereiten oder Dateien für die Speicherung komprimieren, die Stapelverarbeitung erledigt alles in einem Vorgang. Unser browserbasierter Stapelkompressor verarbeitet alle Bilder lokal mit Canvas API, gewährleistet vollständige Privatsphäre und bietet schnelle, effiziente Komprimierung ohne Upload Ihrer Bilder auf einen Server."
         },
         {
-          "title": "When to Use Batch Compression",
-          "text": "Use batch compression when you need to optimize entire photo galleries or image collections, prepare multiple images for website uploads or social media, compress files for storage or backup purposes, or process images with consistent compression settings. Our tool supports JPG, PNG, WebP, and BMP formats, allowing you to mix different formats in a single batch operation, making it perfect for handling diverse image collections efficiently."
+          "title": "Wann Stapelkomprimierung verwenden",
+          "text": "Verwenden Sie Stapelkomprimierung, wenn Sie gesamte Fotogalerien oder Bildsammlungen optimieren müssen, mehrere Bilder für Website-Uploads oder Social Media vorbereiten, Dateien für Speicher- oder Backup-Zwecke komprimieren oder Bilder mit konsistenten Komprimierungseinstellungen verarbeiten müssen. Unser Tool unterstützt JPG-, PNG-, WebP- und BMP-Formate und ermöglicht es Ihnen, verschiedene Formate in einem einzigen Stapelvorgang zu mischen, was es perfekt macht, um vielfältige Bildsammlungen effizient zu verarbeiten."
         }
       ]
     },
     "features": {
-      "title": "Batch Compression Features",
+      "title": "Stapelbildkomprimierungsfunktionen",
       "items": [
         {
-          "icon": "📦",
-          "iconType": "batch",
-          "title": "Process 100 Images",
-          "desc": "Compress up to 100 images simultaneously in one batch operation. Save time and effort."
+          "title": "100 Bilder verarbeiten",
+          "desc": "Komprimieren Sie bis zu 100 Bilder gleichzeitig in einem Stapelvorgang. Sparen Sie Zeit und Aufwand."
         },
         {
-          "icon": "🖼️",
-          "iconType": "format",
-          "title": "Multiple Format Support",
-          "desc": "Supports JPG, PNG, WebP, and BMP formats. Mix different formats in one batch."
+          "title": "Mehrfachformat-Unterstützung",
+          "desc": "Unterstützt JPG-, PNG-, WebP- und BMP-Formate. Mischen Sie verschiedene Formate in einem Stapel."
         },
         {
-          "icon": "📊",
-          "iconType": "compression",
-          "title": "Precise Size Control",
-          "desc": "Set exact target sizes in KB or MB. All images compressed to meet the same target size."
+          "title": "Präzise Größensteuerung",
+          "desc": "Legen Sie genaue Zielgrößen in KB oder MB fest. Alle Bilder werden komprimiert, um dieselbe Zielgröße zu erreichen."
         },
         {
-          "icon": "🔒",
-          "iconType": "privacy",
-          "title": "100% Private Processing",
-          "desc": "All compression happens locally in your browser. Your images never leave your device, ensuring complete privacy."
+          "title": "100% Private Verarbeitung",
+          "desc": "Alle Komprimierung erfolgt lokal in Ihrem Browser. Ihre Bilder verlassen niemals Ihr Gerät und gewährleisten vollständige Privatsphäre."
         },
         {
-          "icon": "⚡",
-          "iconType": "speed",
-          "title": "Fast Batch Processing",
-          "desc": "Browser-native Canvas API processing ensures fast batch compression without server uploads or delays."
+          "title": "Schnelle Stapelverarbeitung",
+          "desc": "Die browser-native Canvas API-Verarbeitung gewährleistet schnelle Stapelkomprimierung ohne Server-Uploads oder Verzögerungen."
         },
         {
-          "icon": "💎",
-          "iconType": "free",
-          "title": "Free Forever",
-          "desc": "Unlimited batch compression completely free—no premium tiers, no subscription fees, no advertisements."
+          "title": "Für Immer Kostenlos",
+          "desc": "Unbegrenzte Stapelkomprimierung völlig kostenlos—keine Premium-Stufen, keine Abonnementgebühren, keine Werbung."
         }
       ]
     },
     "specs": {
-      "engine": "Canvas API - Browser-Native Processing",
-      "limit": "Batch 100+ Images - Unlimited File Sizes",
-      "logic": "Consistent Batch Compression",
-      "privacy": "100% Client-Side (Local Browser Processing)"
+      "engine": "Canvas API - Browser-Native Verarbeitung",
+      "limit": "Stapel 100+ Bilder - Unbegrenzte Dateigrößen",
+      "logic": "Konsistente Stapelkomprimierung",
+      "privacy": "100% Clientseitig (Lokale Browser-Verarbeitung)"
     },
     "performanceMetrics": {
-      "title": "Technical Specifications",
+      "title": "Technische Spezifikationen",
       "metrics": [
         {
-          "label": "Batch Size",
-          "value": "Up to 100 images per batch"
+          "label": "Stapelgröße",
+          "value": "Bis zu 100 Bilder pro Stapel"
         },
         {
-          "label": "Supported Formats",
+          "label": "Unterstützte Formate",
           "value": "JPG, PNG, WebP, BMP"
         },
         {
-          "label": "Output Format",
-          "value": "Original format preserved"
+          "label": "Ausgabeformat",
+          "value": "Ursprüngliches Format beibehalten"
         },
         {
-          "label": "File Size Limit",
-          "value": "Unlimited (Limited by browser memory)"
+          "label": "Dateigrößenlimit",
+          "value": "Unbegrenzt (Begrenzt durch Browserspeicher)"
         },
         {
-          "label": "Compression Ratio",
-          "value": "50-70% size reduction typical"
+          "label": "Komprimierungsverhältnis",
+          "value": "Typisch 50-70% Größenreduzierung"
         },
         {
-          "label": "Processing Location",
-          "value": "100% Client-Side (Browser Canvas API)"
+          "label": "Verarbeitungsort",
+          "value": "100% Clientseitig (Browser Canvas API)"
         },
         {
-          "label": "Batch Consistency",
-          "value": "All images compressed with same target size"
+          "label": "Stapelkonsistenz",
+          "value": "Alle Bilder mit derselben Zielgröße komprimiert"
         }
       ]
     },
     "howToUse": {
-      "title": "How to Batch Compress Images",
+      "title": "Wie man mehrere Bilder stapelweise komprimiert",
       "steps": [
         {
-          "title": "Upload Multiple Images",
-          "desc": "Drag and drop up to 100 images (JPG, PNG, WebP, or BMP) into the compressor area or click to browse and select multiple files."
+          "title": "Mehrere Bilder hochladen",
+          "desc": "Ziehen Sie bis zu 100 Bilder (JPG, PNG, WebP oder BMP) in den Komprimierungsbereich oder klicken Sie, um mehrere Dateien auszuwählen."
         },
         {
-          "title": "Set Target Size",
-          "desc": "Choose your desired file size in KB or MB. All images in the batch will be compressed to meet this target size."
+          "title": "Zielgröße festlegen",
+          "desc": "Wählen Sie die gewünschte Dateigröße in KB oder MB. Alle Bilder im Stapel werden komprimiert, um diese Zielgröße zu erreichen."
         },
         {
-          "title": "Download All Compressed Files",
-          "desc": "Download all compressed images at once as a ZIP file or individually. Each file maintains quality while being smaller than the original."
+          "title": "Alle komprimierten Dateien herunterladen",
+          "desc": "Laden Sie alle komprimierten Bilder auf einmal als ZIP-Datei oder einzeln herunter. Jedes Bild behält die Qualität bei und ist deutlich kleiner als das Original."
         }
       ]
     },
     "comparison": {
-      "toolaze": "Batch 100+ images, Multiple formats, Consistent compression, Precise size control, 100% local processing, Free forever",
-      "others": "Limited batch size, Format restrictions, Inconsistent results, Cloud uploads required, Server queues, Paid upgrades"
+      "toolaze": "Stapel 100+ Bilder, Mehrere Formate, Konsistente Komprimierung, Präzise Größensteuerung, 100% lokale Verarbeitung, Für immer kostenlos",
+      "others": "Begrenzte Stapelgröße, Formatbeschränkungen, Inkonsistente Ergebnisse, Cloud-Uploads erforderlich, Server-Warteschlangen, Bezahlte Upgrades"
     },
     "scenes": [
       {
-        "title": "Photographers",
-        "icon": "📸",
-        "desc": "Compress entire photo galleries at once. Process hundreds of photos efficiently while maintaining quality."
+        "title": "Fotografen",
+        "desc": "Komprimieren Sie gesamte Fotogalerien auf einmal. Verarbeiten Sie Hunderte von Fotos effizient bei gleichbleibender Qualität."
       },
       {
-        "title": "Web Developers",
-        "icon": "💻",
-        "desc": "Optimize multiple images for websites. Batch process product images, galleries, and assets efficiently."
+        "title": "Web-Entwickler",
+        "desc": "Optimieren Sie mehrere Bilder für Websites. Verarbeiten Sie Produktbilder, Galerien und Assets effizient im Stapel."
       },
       {
-        "title": "E-commerce Managers",
-        "icon": "🛒",
-        "desc": "Compress product image collections for online stores. Process entire catalogs quickly and consistently."
+        "title": "E-Commerce-Manager",
+        "desc": "Komprimieren Sie Produktbildsammlungen für Online-Shops. Verarbeiten Sie gesamte Kataloge schnell und konsistent."
       }
     ],
     "rating": {
-      "text": "\"Saves me hours of work! Perfect for batch processing my photo collections!\" - Join thousands of users who trust Toolaze for batch compression."
+      "text": "\"Spart mir Stunden Arbeit! Perfekt für die Stapelverarbeitung meiner Fotosammlungen!\" - Schließen Sie sich Tausenden von Benutzern an, die Toolaze für die Stapelkomprimierung vertrauen."
     },
     "faq": [
       {
-        "q": "How many images can I compress at once?",
-        "a": "Toolaze supports batch compression of up to 100 images per session. You can process entire photo collections in one operation."
+        "q": "Wie viele Bilder kann ich gleichzeitig komprimieren?",
+        "a": "Toolaze unterstützt die Stapelkomprimierung von bis zu 100 Bildern pro Sitzung. Sie können gesamte Fotosammlungen in einem Vorgang verarbeiten."
       },
       {
-        "q": "Can I mix different image formats in one batch?",
-        "a": "Yes, you can mix JPG, PNG, WebP, and BMP formats in a single batch. Each image will be compressed while maintaining its original format."
+        "q": "Kann ich verschiedene Bildformate in einem Stapel mischen?",
+        "a": "Ja, Sie können JPG-, PNG-, WebP- und BMP-Formate in einem einzigen Stapel mischen. Jedes Bild wird komprimiert, während sein ursprüngliches Format beibehalten wird."
       },
       {
-        "q": "Will all images be compressed to the same size?",
-        "a": "All images will be compressed to meet the same target size you specify (in KB or MB), ensuring consistent results across your batch."
+        "q": "Werden alle Bilder auf dieselbe Größe komprimiert?",
+        "a": "Alle Bilder werden komprimiert, um die von Ihnen angegebene Zielgröße (in KB oder MB) zu erreichen, was konsistente Ergebnisse für Ihren Stapel gewährleistet."
       },
       {
-        "q": "Is batch compression free and secure?",
-        "a": "Yes, Toolaze is completely free forever with no hidden costs. All compression happens locally in your browser. Your images never leave your device—ensuring 100% privacy and security."
+        "q": "Ist die Stapelkomprimierung kostenlos und sicher?",
+        "a": "Ja, Toolaze ist für immer völlig kostenlos ohne versteckte Kosten. Alle Komprimierung erfolgt lokal in Ihrem Browser. Ihre Bilder verlassen niemals Ihr Gerät—was 100% Privatsphäre und Sicherheit gewährleistet."
       },
       {
-        "q": "Can I download all compressed images at once?",
-        "a": "Yes, you can download all compressed images as a ZIP file or download them individually, whichever is more convenient for you."
+        "q": "Kann ich alle komprimierten Bilder auf einmal herunterladen?",
+        "a": "Ja, Sie können alle komprimierten Bilder als ZIP-Datei oder einzeln herunterladen, je nachdem, was für Sie bequemer ist."
       },
       {
-        "q": "What file sizes can I compress?",
-        "a": "There are no individual file size limits. If your computer can open the file, Toolaze can compress it. You can process files of any size in your batch."
+        "q": "Welche Dateigrößen kann ich komprimieren?",
+        "a": "Es gibt keine individuellen Dateigrößenbeschränkungen. Wenn Ihr Computer die Datei öffnen kann, kann Toolaze sie komprimieren. Sie können Dateien jeder Größe in Ihrem Stapel verarbeiten."
       }
-    ],
-    "compare": {
-      "toolaze": "Batch 100+ images, Multiple formats, Consistent compression, Local-first architecture, No file size limits, Complete privacy",
-      "others": "Limited batch size, Format restrictions, Inconsistent results, Cloud uploads required, Server queues, Privacy concerns"
-    }
+    ]
   }
 }

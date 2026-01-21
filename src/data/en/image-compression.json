@@ -1558,10 +1558,6 @@
         "desc": "Compress tutorial thumbnails with text overlays and graphics. Preserve text sharpness and visual hierarchy for maximum click-through rates."
       }
     ],
-    "compare": {
-      "toolaze": "Guaranteed under 2MB output, Preserves 1920x1080 resolution, 100% browser-side processing, No watermarks or quality loss, Batch process up to 100 thumbnails, Free forever",
-      "others": "Random file sizes may exceed 2MB, Reduces resolution unnecessarily, Server uploads required, Watermarks or quality degradation, Limited batch processing, Subscription fees or ads"
-    },
     "faq": [
       {
         "q": "Can I keep 1920x1080 resolution when compressing?",
@@ -2125,11 +2121,7 @@
         "q": "Does the compressed JPG maintain the original format?",
         "a": "Yes, compressed files remain in JPG format. The tool optimizes the file size while preserving the JPG format for maximum compatibility."
       }
-    ],
-    "compare": {
-      "toolaze": "Unlimited JPG compression, Precise size control, Batch processing, Local-first architecture, No file size limits, Complete privacy",
-      "others": "20MB file limits, Cloud uploads required, Single file processing, Server queues, EXIF data stripped, Privacy concerns"
-    }
+    ]
   },
   "compress-png": {
     "in_menu": true,
@@ -2310,11 +2302,7 @@
         "q": "Does the compressed PNG maintain transparency?",
         "a": "Yes, compressed PNG files maintain full alpha channel transparency. The tool optimizes file size while preserving all transparency features."
       }
-    ],
-    "compare": {
-      "toolaze": "Unlimited PNG compression, Transparency preserved, Batch processing, Local-first architecture, No file size limits, Complete privacy",
-      "others": "20MB file limits, Transparency lost, Cloud uploads required, Single file processing, Server queues, Privacy concerns"
-    }
+    ]
   },
   "compress-webp": {
     "in_menu": true,
@@ -2495,14 +2483,10 @@
         "q": "What file sizes can I compress?",
         "a": "There are no individual file size limits. If your computer can open the file, Toolaze can compress it. You can process files of any size."
       }
-    ],
-    "compare": {
-      "toolaze": "Unlimited WebP compression, Quality preserved, Batch processing, Local-first architecture, No file size limits, Complete privacy",
-      "others": "20MB file limits, Quality loss, Cloud uploads required, Single file processing, Server queues, Privacy concerns"
-    }
+    ]
   },
   "compress-image": {
-    "in_menu": true,
+    "in_menu": false,
     "metadata": {
       "title": "Compress Image Online (Free, Batch & No Ads) - Toolaze",
       "description": "How to compress images? 1. Upload image 2. Set target size 3. Download compressed. Reduce file size by 60% while maintaining quality. Secure & Private."
@@ -2680,11 +2664,7 @@
         "q": "Will transparency be preserved for PNG files?",
         "a": "Yes, when compressing PNG files, transparency is preserved. The tool maintains the alpha channel during compression."
       }
-    ],
-    "compare": {
-      "toolaze": "Unlimited image compression, Multiple formats, Batch processing, Local-first architecture, No file size limits, Complete privacy",
-      "others": "20MB file limits, Format restrictions, Cloud uploads required, Single file processing, Server queues, Privacy concerns"
-    }
+    ]
   },
   "batch-compress": {
     "in_menu": true,
@@ -2865,10 +2845,6 @@
         "q": "What file sizes can I compress?",
         "a": "There are no individual file size limits. If your computer can open the file, Toolaze can compress it. You can process files of any size in your batch."
       }
-    ],
-    "compare": {
-      "toolaze": "Batch 100+ images, Multiple formats, Consistent compression, Local-first architecture, No file size limits, Complete privacy",
-      "others": "Limited batch size, Format restrictions, Inconsistent results, Cloud uploads required, Server queues, Privacy concerns"
-    }
+    ]
   }
 }

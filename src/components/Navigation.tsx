@@ -60,6 +60,7 @@ export default function Navigation() {
   const [expandedSubmenus, setExpandedSubmenus] = useState<Set<string>>(new Set())
   const [navTranslations, setNavTranslations] = useState(defaultNavTranslations)
   const [thirdLevelMenuData, setThirdLevelMenuData] = useState<Record<string, Array<{slug: string, title: string, href: string}>>>({})
+  const [isMounted, setIsMounted] = useState(false)
   const pathname = usePathname()
   
   // 检测当前语言
@@ -72,8 +73,9 @@ export default function Navigation() {
   
   const currentLocale = getCurrentLocale()
   
-  // 加载翻译
+  // 加载翻译 - 只在客户端加载以避免 hydration mismatch
   useEffect(() => {
+    setIsMounted(true)
     loadNavTranslations(currentLocale).then(setNavTranslations)
   }, [currentLocale])
   

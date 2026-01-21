@@ -78,7 +78,7 @@
     }
   },
   "footer": {
-    "home": "Home",
+    "home": "Casa",
     "allTools": "Tutti gli Strumenti",
     "aboutUs": "Chi Siamo",
     "privacyPolicy": "Informativa sulla Privacy",
@@ -89,7 +89,7 @@
     "tagline": "Strumenti Online Gratuiti • Nessuna Registrazione Richiesta • 100% Privato"
   },
   "breadcrumb": {
-    "home": "Home",
+    "home": "Casa",
     "quickTools": "Strumenti Rapidi",
     "imageCompression": "Compressione Immagini",
     "imageConverter": "Convertitore Immagini",
@@ -137,7 +137,8 @@
     "tryNow": "Prova Ora →",
     "rating": {
       "rating": "4.9/5 DA 10K+ CREATORI",
-      "description": "Unisciti a migliaia di utenti soddisfatti che si fidano di Toolaze per compressione immagini veloce, sicura e gratuita. Nessuna registrazione richiesta, elaborazione 100% privata."
+      "description": "Unisciti a migliaia di utenti soddisfatti che si fidano di Toolaze per compressione immagini veloce, sicura e gratuita. Nessuna registrazione richiesta, elaborazione 100% privata.",
+      "title": "Fidato da Migliaia di Creatori"
     },
     "tool": {
       "dropZone": {
@@ -185,6 +186,25 @@
         "localBrowser": "API Browser Locale",
         "noServerLogs": "Nessun Log Server"
       }
+    },
+    "allTools": "Tutti gli Strumenti",
+    "primaryTools": "Strumenti Principali",
+    "specializedTools": "Strumenti Specializzati",
+    "allImageCompressionTools": "Tutti gli Strumenti di Compressione Immagini",
+    "allImageConverterTools": "Tutti gli Strumenti Convertitore Immagini",
+    "allImageCompressionToolsDesc": "Sfoglia tutti gli strumenti di compressione immagini disponibili. Trova lo strumento perfetto per le tue esigenze specifiche.",
+    "allImageConverterToolsDesc": "Sfoglia tutti gli strumenti convertitore immagini disponibili. Converti tra formati JPG, PNG, WebP e HEIC.",
+    "primaryToolsDesc": "Strumenti di compressione essenziali per casi d'uso generali.",
+    "primaryConverterToolsDesc": "Strumenti di conversione essenziali per casi d'uso generali.",
+    "specializedToolsDesc": "Strumenti di compressione specializzati per piattaforme e casi d'uso specifici.",
+    "specializedConverterToolsDesc": "Strumenti di conversione specializzati per piattaforme e casi d'uso specifici.",
+    "performanceMetrics": {
+      "metricColumn": "Metrica di Prestazione",
+      "specificationColumn": "Specifica Toolaze"
+    },
+    "viewAllTools": {
+      "related": "Visualizza Tutti gli Strumenti Correlati",
+      "all": "Visualizza Tutti gli Strumenti"
     }
   },
   "imageCompressor": {
@@ -245,7 +265,8 @@
         "formatRestrictions": "Restrizioni formato",
         "privacyConcerns": "Preoccupazioni privacy",
         "registrationRequired": "Registrazione richiesta"
-      }
+      },
+      "title": "Perché scegliere Toolaze?"
     },
     "scenarios": {
       "title": "Casi d'Uso",
@@ -344,7 +365,8 @@
         "qualityLoss": "Perdita di qualità",
         "privacyConcerns": "Preoccupazioni privacy",
         "registrationRequired": "Registrazione richiesta"
-      }
+      },
+      "title": "Perché scegliere Toolaze?"
     },
     "scenarios": {
       "title": "Casi d'Uso",

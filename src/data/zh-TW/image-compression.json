@@ -199,14 +199,23 @@
     },
     "intro": {
       "title": "專業網站優化",
-      "content": "過大的 PNG 會拖慢您的網站。Toolaze 透過重新映射像素在本地優化您的 PNG 檔案，達到 100KB 目標。我們保持 Alpha 通道，確保您的透明背景在 UI/UX 需求下保持完美清晰。"
+      "content": [
+        {
+          "title": "網頁效能和 Lighthouse 分數",
+          "text": "大型 PNG 檔案會顯著減慢網站載入時間，損害使用者體驗和搜尋引擎排名。Google 的 Lighthouse 效能審核會對圖片超過 100KB 的網站進行處罰，影響您的 Core Web Vitals 分數和 SEO 效能。當您從 Photoshop、Figma 或 Canva 等設計工具匯出 PNG 圖片時，它們通常會超過 500KB 甚至數 MB，特別是對於具有透明度或高解析度圖形的圖片。Toolaze 使用智能瀏覽器端壓縮將 PNG 檔案大小精確減少到 100KB，同時保留使 PNG 格式成為現代網頁設計必不可少的 Alpha 通道透明度。"
+        },
+        {
+          "title": "為專業 UI/UX 保留透明度",
+          "text": "PNG 格式對網頁設計至關重要，因為它支援透明度，允許標誌、圖標和圖形與任何背景完美融合。將 PNG 轉換為 JPG 以減少檔案大小會破壞這種透明度，迫使您使用純色背景或限制您的設計靈活性。我們的壓縮演算法在整個過程中保持 Alpha 通道，確保您的透明背景保持完全清晰，您的 UI/UX 設計保持專業。所有處理都在您的瀏覽器中本地進行，因此您的設計資源永遠不會離開您的設備，並保持完全私密和安全。"
+        }
+      ]
     },
     "specs": {
       "engine": "本地 Canvas 映射",
       "limit": "無輸入檔案大小限制",
       "logic": "特定 KB/MB 目標定位",
       "output": "保持原始 PNG 格式",
-      "privacy": "100% Client-Side (Local Browser Processing)"
+      "privacy": "100% 客戶端 (Local Browser Processing)"
     },
     "scenes": [
       {
@@ -222,7 +231,7 @@
       {
         "icon": "📄",
         "title": "Documentation Teams",
-        "desc": "Optimize embedded PNG screenshots in PDF and Word documents. Reduce file sizes while maintaining image clarity and transparency."
+        "desc": "在保持品質的同時大幅減少檔案大小。"
       }
     ],
     "faq": [
@@ -235,119 +244,115 @@
         "a": "您可以在單次作業中批次處理最多 100 個 PNG 檔案。"
       },
       {
-        "q": "Will my PNG images look pixelated after compression?",
-        "a": "No. Toolaze uses intelligent compression algorithms that preserve visual quality while reducing file size. The compression focuses on removing invisible data and optimizing the image structure rather than reducing resolution unnecessarily."
+        "q": "壓縮後我的圖片會看起來有像素化嗎？",
+        "a": "不會。Toolaze 使用智能壓縮演算法，在減少檔案大小的同時保持視覺品質。壓縮專注於移除不可見數據並優化圖像結構，而不是不必要地降低解析度。"
       },
       {
-        "q": "Are my design assets uploaded to a server?",
-        "a": "No! All compression happens locally in your browser using JavaScript and Canvas API. Your PNG images never leave your device, ensuring complete privacy and security for your design work."
+        "q": "我的檔案會上傳到伺服器嗎？",
+        "a": "是的！所有壓縮都在您的瀏覽器中使用 JavaScript 和 Canvas API 本地進行。您的圖片永遠不會離開您的設備，確保完全的隱私和安全。"
       },
       {
-        "q": "What's the difference between PNG and JPG compression?",
-        "a": "PNG compression preserves transparency (Alpha channel) and is lossless, making it ideal for graphics with transparent backgrounds. JPG compression removes transparency and uses lossy compression, which is better for photographs but unsuitable for graphics requiring transparency."
+        "q": "不同壓縮格式之間的差異是什麼？",
+        "a": "PNG 壓縮保留透明度（Alpha 通道）且無損，使其非常適合具有透明背景的圖形。JPG 壓縮會移除透明度並使用有損壓縮，這對照片更好，但不適合需要透明度的圖形。"
       },
       {
-        "q": "Can I use this for icons and logos?",
-        "a": "Absolutely! PNG compression to 100KB is perfect for icons, logos, and graphics that require transparency. The compression maintains sharp edges and transparent backgrounds, ensuring your branding assets look professional on any background."
+        "q": "我可以將其用於不同目的嗎？",
+        "a": "當然！PNG 壓縮到 100KB 非常適合需要透明度的圖標、標誌和圖形。壓縮保持銳利的邊緣和透明背景，確保您的品牌資源在任何背景上看起來都很專業。"
       }
     ],
-    "compare": {
-      "toolaze": "保留透明度，本地處理，無廣告",
-      "others": "轉換為 JPG，浮水印，需要訂閱"
-    },
     "features": {
-      "title": "PNG to 100KB Compression Features",
+      "title": "PNG 壓縮到 100KB 功能",
       "items": [
         {
           "icon": "🎯",
           "iconType": "compression",
-          "title": "Precise 100KB Target",
-          "desc": "Compress PNG images to exactly 100KB. Meet Lighthouse performance thresholds while maintaining visual quality and transparency for web optimization."
+          "title": "精確 100KB 目標",
+          "desc": "將 PNG 圖片精確壓縮到 100KB。在保持視覺品質和透明度以進行網頁優化的同時，達到 Lighthouse 效能閾值。"
         },
         {
           "icon": "🔒",
           "iconType": "privacy",
-          "title": "100% Private Processing",
-          "desc": "All compression happens locally in your browser. Your design assets never leave your device, ensuring complete privacy and security."
+          "title": "100% 私密處理",
+          "desc": "所有壓縮都在您的瀏覽器中本地進行。您的設計資產永遠不會離開您的裝置，確保完全隱私和安全。"
         },
         {
           "icon": "📦",
           "iconType": "batch",
-          "title": "Batch Processing",
-          "desc": "Process up to 100 PNG images simultaneously. Optimize entire design asset libraries in one operation for efficient workflow."
+          "title": "批次處理",
+          "desc": "同時處理最多 100 張 PNG 圖片。在一次操作中優化整個設計資產庫，實現高效工作流程。"
         },
         {
           "icon": "⚡",
           "iconType": "speed",
-          "title": "Instant Compression",
-          "desc": "Browser-native Canvas API processing ensures instant compression without server uploads or waiting queues. Get your assets optimized immediately."
+          "title": "即時壓縮",
+          "desc": "瀏覽器原生 Canvas API 處理確保即時壓縮，無需伺服器上傳或等待佇列。立即優化您的資產。"
         },
         {
           "icon": "💎",
           "iconType": "free",
-          "title": "Free Forever",
-          "desc": "Unlimited PNG compression completely free—no premium tiers, no subscription fees, no advertisements. Perfect for developers and designers."
+          "title": "永久免費",
+          "desc": "無限制的 PNG 壓縮完全免費—無高級層級、無訂閱費用、無廣告。非常適合開發者和設計師。"
         },
         {
           "icon": "🎨",
           "iconType": "quality",
-          "title": "Transparency Preserved",
-          "desc": "Maintain Alpha channel transparency throughout compression. Keep your transparent backgrounds perfectly clear for professional UI/UX designs."
+          "title": "透明度保留",
+          "desc": "在整個壓縮過程中保持 Alpha 通道透明度。為專業的 UI/UX 設計保持透明背景完美清晰。"
         }
       ]
     },
     "performanceMetrics": {
-      "title": "Technical Specifications",
+      "title": "技術規格",
       "metrics": [
         {
-          "label": "Input Format",
+          "label": "輸入格式",
           "value": "PNG (With or without transparency)"
         },
         {
-          "label": "Output Format",
+          "label": "輸出格式",
           "value": "PNG (Transparency preserved)"
         },
         {
-          "label": "File Size Target",
+          "label": "檔案大小目標",
           "value": "100KB (Lighthouse performance threshold)"
         },
         {
           "label": "Transparency Support",
-          "value": "Alpha channel fully preserved"
+          "value": "Alpha 通道 fully preserved"
         },
         {
-          "label": "Batch Processing",
+          "label": "批次處理",
           "value": "Up to 100 PNG files per session"
         },
         {
-          "label": "Processing Speed",
+          "label": "處理速度",
           "value": "Instant browser-side compression"
         }
       ]
     },
     "howToUse": {
-      "title": "How to Compress PNG to 100KB",
+      "title": "如何將 PNG 壓縮到 100KB",
       "steps": [
         {
-          "title": "Upload PNG Image",
-          "desc": "Drag and drop your PNG image or click to browse. Supports PNG files with or without transparency from design tools or screenshots."
+          "title": "上傳 PNG 圖片",
+          "desc": "拖放您的圖片或點擊瀏覽。"
         },
         {
-          "title": "Set 100KB Target",
+          "title": "設定 100KB 目標",
           "desc": "The tool automatically sets the target to 100KB. Our algorithm compresses your PNG while preserving transparency and visual quality."
         },
         {
           "title": "Download Optimized",
-          "desc": "Download your compressed PNG instantly. The file maintains transparency and is optimized for web performance under 100KB."
+          "desc": "立即下載您的壓縮圖片。檔案已準備好使用。"
         }
       ]
     },
     "comparison": {
-      "toolaze": "Preserves transparency, Precise 100KB output, 100% browser-side processing, No watermarks or quality loss, Batch process up to 100 images, Free forever",
-      "others": "Converts to JPG (loses transparency), Random file sizes, Server uploads required, Watermarks or quality degradation, Limited batch processing, Subscription fees or ads"
+      "toolaze": "精確輸出、100% 瀏覽器端處理、無浮水印或品質損失、批次處理最多 100 張圖片、永久免費、完全隱私",
+      "others": "隨機檔案大小可能超過、需要伺服器上傳、浮水印或品質下降、有限的批次處理、訂閱費用或廣告、隱私擔憂"
     },
     "rating": {
-      "text": "\"Perfect balance of file size and transparency. My website passes Lighthouse audits now!\" - Join thousands of developers who trust Toolaze for web performance optimization."
+      "text": "\"檔案大小和透明度的完美平衡。我的網站現在通過了 Lighthouse 審核！\" - 加入數千名信賴 Toolaze 進行網頁效能優化的開發者。"
     }
   },
   "uscis-photo-240kb": {
@@ -373,7 +378,16 @@
     },
     "intro": {
       "title": "安全文件處理",
-      "content": "簽證申請需要高度隱私。Toolaze 完全在您的瀏覽器內處理您的生物識別照片。透過使用本地數學壓縮，我們確保您的照片保持在 240KB 官方限制以下，而不會將您的身份資料傳送到雲端。"
+      "content": [
+        {
+          "title": "DS-160 簽證申請要求",
+          "text": "我們的瀏覽器壓縮工具使用 Canvas API 在本地處理您的檔案，確保完全的隱私和快速壓縮，無需將您的圖片上傳到任何伺服器。"
+        },
+        {
+          "title": "生物識別數據的完全隱私",
+          "text": "簽證申請照片包含敏感的生物識別資訊，必須極其謹慎地處理。將這些照片上傳到基於雲端的壓縮服務會帶來嚴重的隱私和安全風險，因為您的生物識別數據可能會被第三方存儲、分析或濫用。Toolaze 在您的瀏覽器中本地處理所有照片，確保您的生物識別資訊永遠不會離開您的設備。所有壓縮都使用 JavaScript 和 Canvas API 進行，無需服務器上傳、面部識別或數據存儲。我們專注於技術清晰度和文件大小優化，不進行任何人工更改、美化或 AI 增強，確保您的照片保持真實並符合政府標準。"
+        }
+      ]
     },
     "specs": {
       "engine": "數學驅動瀏覽器處理",
@@ -401,66 +415,62 @@
     ],
     "faq": [
       {
-        "q": "如果無法達到 240KB 怎麼辦？",
-        "a": "對於非常高解析度的原始檔，工具會調整尺寸以確保達到 240KB 目標。"
+        "q": "如果我的照片無法在不損失品質的情況下達到240KB怎麼辦？",
+        "a": "對於非常高解析度的原始照片，工具會自動調整品質設定和尺寸，以確保達到240KB目標。演算法優先考慮面部清晰度，在滿足嚴格檔案大小要求的同時，保持足夠的解析度以供移民驗證。"
       },
       {
-        "q": "會修改我的臉部嗎？",
-        "a": "不會。我們提供純技術壓縮，確保您的臉部特徵保持 100% 真實，符合移民標準。"
+        "q": "工具會編輯或美化我的臉部嗎？",
+        "a": "不會！Toolaze提供純技術壓縮，不進行任何面部更改、美化或AI增強。您的面部特徵保持100%真實，這對於移民標準至關重要。我們只壓縮檔案大小，不改變外觀。"
       },
       {
-        "q": "Are my biometric photos secure and private?",
-        "a": "Yes! All compression happens locally in your browser using JavaScript and Canvas API. Your passport photos never leave your device, ensuring complete privacy and security. No data is ever sent to our servers or stored anywhere."
+        "q": "我的生物識別照片安全且私密嗎？",
+        "a": "是的！所有壓縮都在您的瀏覽器中使用JavaScript和Canvas API本地進行。您的護照照片永遠不會離開您的設備，確保完全的隱私和安全。數據永遠不會發送到我們的伺服器或存儲在任何地方。"
       },
       {
-        "q": "Can I compress multiple family member photos at once?",
-        "a": "Yes! Toolaze supports batch processing of up to 100 passport photos simultaneously. Perfect for processing photos for entire family visa applications or multiple immigration submissions."
+        "q": "我可以一次壓縮多個家庭成員的照片嗎？",
+        "a": "是的！Toolaze支援同時批次處理最多100張護照照片。非常適合為整個家庭簽證申請或多個移民提交處理照片。"
       },
       {
-        "q": "Will my compressed photo be accepted by USCIS?",
-        "a": "Yes. Toolaze maintains the visual quality and authenticity required for immigration purposes while meeting the strict 240KB file size requirement. The compressed photos maintain facial clarity and meet USCIS photo specifications."
+        "q": "我的壓縮照片會被USCIS接受嗎？",
+        "a": "是的。Toolaze在滿足嚴格的240KB檔案大小要求的同時，保持移民目的所需的視覺品質和真實性。壓縮的照片保持面部清晰度並符合USCIS照片規格。"
       },
       {
-        "q": "What photo specifications does USCIS require?",
-        "a": "USCIS requires passport-style photos that are 2x2 inches, taken within the last 6 months, with a plain white or off-white background, and showing your full face. The file size must be under 240KB for DS-160 applications. Toolaze compresses your photo to meet the file size requirement while maintaining these visual specifications."
+        "q": "USCIS要求什麼照片規格？",
+        "a": "USCIS要求2x2英寸、過去6個月內拍攝、純白或米白色背景、顯示完整臉部的護照風格照片。DS-160申請的檔案大小必須低於240KB。Toolaze壓縮您的照片以滿足檔案大小要求，同時保持這些視覺規格。"
       }
     ],
-    "compare": {
-      "toolaze": "完全隱私，真實結果，免費",
-      "others": "隱私風險，自動美化風險，隱藏費用"
-    },
     "features": {
-      "title": "USCIS Photo 240KB Compression Features",
+      "title": "USCIS 照片 240KB 壓縮功能",
       "items": [
         {
           "icon": "🎯",
           "iconType": "compression",
-          "title": "Precise 240KB Target",
+          "title": "精確 240KB 目標",
           "desc": "Compress passport photos to exactly 240KB. Meet DS-160 visa application requirements with precision while maintaining photo authenticity."
         },
         {
           "icon": "🔒",
           "iconType": "privacy",
-          "title": "100% Private Processing",
-          "desc": "All compression happens locally in your browser. Your biometric photos never leave your device, ensuring complete privacy and security."
+          "title": "100% 私密處理",
+          "desc": "所有壓縮都在您的瀏覽器中本地進行。您的生物識別照片永遠不會離開您的裝置，確保完全隱私和安全。"
         },
         {
           "icon": "📦",
           "iconType": "batch",
-          "title": "Batch Processing",
-          "desc": "Process up to 100 passport photos simultaneously. Perfect for family visa applications or multiple immigration submissions."
+          "title": "批次處理",
+          "desc": "同時處理最多 100 張護照照片。非常適合家庭簽證申請或多個移民提交。"
         },
         {
           "icon": "⚡",
           "iconType": "speed",
-          "title": "Instant Compression",
-          "desc": "Browser-native Canvas API processing ensures instant compression without server uploads or waiting queues. Get your visa photos ready immediately."
+          "title": "即時壓縮",
+          "desc": "瀏覽器原生 Canvas API 處理確保即時壓縮，無需伺服器上傳或等待佇列。立即準備好您的簽證照片。"
         },
         {
           "icon": "💎",
           "iconType": "free",
-          "title": "Free Forever",
-          "desc": "Unlimited photo compression completely free—no premium tiers, no subscription fees, no advertisements. Perfect for all applicants."
+          "title": "永久免費",
+          "desc": "無限制的照片壓縮完全免費—無高級層級、無訂閱費用、無廣告。非常適合所有申請者。"
         },
         {
           "icon": "✅",
@@ -471,18 +481,18 @@
       ]
     },
     "performanceMetrics": {
-      "title": "Technical Specifications",
+      "title": "技術規格",
       "metrics": [
         {
-          "label": "Input Format",
+          "label": "輸入格式",
           "value": "JPG, PNG (Passport photos)"
         },
         {
-          "label": "Output Format",
+          "label": "輸出格式",
           "value": "JPG (Optimized for DS-160)"
         },
         {
-          "label": "File Size Limit",
+          "label": "檔案大小限制",
           "value": "Under 240KB (DS-160 requirement)"
         },
         {
@@ -490,38 +500,38 @@
           "value": "Meets USCIS photo specifications"
         },
         {
-          "label": "Batch Processing",
+          "label": "批次處理",
           "value": "Up to 100 photos per session"
         },
         {
-          "label": "Processing Speed",
+          "label": "處理速度",
           "value": "Instant browser-side compression"
         }
       ]
     },
     "howToUse": {
-      "title": "How to Compress USCIS Photo to 240KB",
+      "title": "如何將 USCIS 照片壓縮到 240KB",
       "steps": [
         {
           "title": "Upload Passport Photo",
-          "desc": "Drag and drop your passport photo or click to browse. Supports JPG and PNG formats from smartphones, cameras, or photo studios."
+          "desc": "拖放您的圖片或點擊瀏覽。"
         },
         {
-          "title": "Set 240KB Target",
+          "title": "設定 240KB 目標",
           "desc": "The tool automatically sets the target to under 240KB. Our algorithm compresses your photo precisely to meet DS-160 requirements while maintaining authenticity."
         },
         {
           "title": "Download Optimized",
-          "desc": "Download your compressed photo instantly. The file is guaranteed to be under 240KB and ready to upload to DS-160 without errors."
+          "desc": "立即下載您的壓縮圖片。檔案已準備好使用。"
         }
       ]
     },
     "comparison": {
-      "toolaze": "Precise 240KB output, 100% browser-side processing, No facial alterations, Complete privacy, Batch process up to 100 photos, Free forever",
-      "others": "Random file sizes may exceed 240KB, Server uploads required, Auto-beautification risks, Privacy concerns, Limited batch processing, Hidden fees"
+      "toolaze": "精確輸出、100% 瀏覽器端處理、無浮水印或品質損失、批次處理最多 100 張圖片、永久免費、完全隱私",
+      "others": "隨機檔案大小可能超過、需要伺服器上傳、浮水印或品質下降、有限的批次處理、訂閱費用或廣告、隱私擔憂"
     },
     "rating": {
-      "text": "\"My DS-160 visa photo uploaded successfully on the first try! No facial alterations, just perfect compression.\" - Join thousands of visa applicants who trust Toolaze for secure document processing."
+      "text": "\"My DS-160 visa photo uploaded successfully on the first try! No facial alterations, just perfect compression.\" - 加入數千名信賴 Toolaze 的使用者。"
     }
   },
   "image-to-50kb": {
@@ -543,11 +553,20 @@
     "hero": {
       "h1": "通用 50KB 壓縮工具",
       "sub": "一個尺寸，所有平台",
-      "desc": "50KB 是線上表單最常見的要求。無論您從 5MB 還是 50MB 的檔案開始，Toolaze 都能在幾秒內幫助您達到 50KB，而不改變您的檔案格式。"
+      "desc": "將圖片壓縮至 50KB，適用於線上表單和應用程式。只需將您的圖片拖放到下方即可在幾秒內完成壓縮。"
     },
     "intro": {
-      "title": "線上表單的標準",
-      "content": "從學校入學到履歷平台，50KB 是通用門檻。Toolaze 透過讓您指定「50KB」作為目標來消除猜測。我們的瀏覽器端引擎處理繁重工作，保持您的原始格式完整以獲得最大相容性。"
+      "title": "為什麼要將圖片壓縮至 50KB？",
+      "content": [
+        {
+          "title": "線上表單的通用標準",
+          "text": "50KB 是全球線上表單、應用程式和入口網站最常見的檔案大小要求。從學校入學和大學申請到履歷入口網站、求職申請和政府表單，50KB 已成為文件上傳的通用入口。當您使用智能手機拍照或掃描文件時，生成的圖片檔案通常為 2-10MB，遠遠超過這些限制。由於檔案大小限制導致的上傳失敗可能會延遲您的申請、浪費您的時間並造成挫折。我們的瀏覽器壓縮工具使用智能 Canvas API 處理來將您的圖片減少至 50KB，同時保持官方驗證和專業呈現所需的視覺品質。"
+        },
+        {
+          "title": "保持原始格式以實現最大相容性",
+          "text": "不同的線上表單接受不同的圖片格式—有些要求 JPG，有些接受 PNG，有些偏好 WebP。在格式之間轉換可能會導致相容性問題或品質損失。Toolaze 在保持原始格式不變的情況下壓縮您的圖片，確保與任何系統的最大相容性。無論您從 5MB 的 JPG 還是 50MB 的 PNG 開始，我們的演算法都會在不更改檔案格式的情況下處理壓縮，因此您的壓縮圖片可以與任何入口網站或應用程式系統無縫配合。所有處理都在您的瀏覽器中本地進行，確保您的個人文件和照片保持完全私密和安全。"
+        }
+      ]
     },
     "specs": {
       "engine": "原生 Canvas API",
@@ -555,148 +574,129 @@
       "logic": "KB/MB 目標選擇",
       "batch": "同時支援 100 個檔案",
       "limit": "Strict 50KB Limit - Universal Form Compliant",
-      "privacy": "100% Client-Side (Local Browser Processing)"
+      "privacy": "100% 客戶端 (Local Browser Processing)"
     },
     "scenes": [
       {
-        "title": "履歷平台",
-        "desc": "確保您的證件照足夠小，適用於任何 ATS 或招聘系統。",
-        "icon": "📚"
+        "title": "履歷入口網站",
+        "desc": "壓縮 ATS 和招聘系統的個人照片和文件掃描。確保您的履歷附件滿足檔案大小要求以實現即時處理。"
       },
       {
-        "title": "入學表單",
-        "desc": "符合大學和競爭性考試報名的嚴格 50KB 要求。",
-        "icon": "🎓"
+        "title": "大學入學",
+        "desc": "優化入學入口網站的身份照片和文件掃描。滿足申請提交的嚴格 50KB 要求。"
       },
       {
-        "icon": "💼",
-        "title": "Job Applications",
-        "desc": "Compress photos and documents for online job applications. Ensure your attachments meet file size limits for successful submissions."
+        "title": "求職申請",
+        "desc": "壓縮線上求職申請的照片和文件。確保您的附件滿足檔案大小限制以實現成功提交。"
       }
     ],
     "faq": [
       {
-        "q": "支援哪些格式？",
-        "a": "我們支援 JPG、JPEG、PNG、WebP 和 BMP。您的檔案將以其原始格式下載。"
+        "q": "支援哪些圖片格式？",
+        "a": "Toolaze 支援 JPG、JPEG、PNG、WebP 和 BMP 格式。您的壓縮檔案將以其原始格式下載，確保與任何線上表單或應用程式系統的最大相容性。"
       },
       {
-        "q": "真的免費嗎？",
-        "a": "是的，Toolaze 100% 免費，無廣告，使用次數無限制。"
+        "q": "壓縮真的免費嗎？",
+        "a": "是的！Toolaze 100% 免費，無廣告、無高級層級，且使用次數無限制。所有壓縮都在您的瀏覽器中本地進行，因此沒有伺服器成本或訂閱費用。"
       },
       {
-        "q": "Can I compress multiple images at once?",
-        "a": "Yes! Toolaze supports batch processing of up to 100 images simultaneously. Perfect for processing multiple documents or photos for bulk application submissions."
+        "q": "我可以一次壓縮多張圖片嗎？",
+        "a": "是的！Toolaze 支援同時批次處理最多 100 張圖片。非常適合處理多個文件或照片以進行批量申請提交。"
       },
       {
-        "q": "Will my compressed image still be accepted by online forms?",
-        "a": "Yes. Toolaze maintains the visual quality needed for official verification while meeting the strict 50KB file size requirement. The compressed images maintain clarity and readability required by online forms and portals."
+        "q": "我的壓縮圖片仍會被線上表單接受嗎？",
+        "a": "是的。Toolaze 在滿足嚴格的 50KB 檔案大小要求的同時，保持官方驗證所需的視覺品質。壓縮後的圖片保持線上表單和入口網站所需的清晰度和可讀性。"
       },
       {
-        "q": "What if my original image is already under 50KB?",
-        "a": "If your image is already under 50KB, the tool will optimize it further to ensure it meets the exact requirement while preserving quality. The compression algorithm focuses on removing invisible data rather than reducing visual quality."
+        "q": "如果我的原始圖片已經低於 50KB 怎麼辦？",
+        "a": "如果您的圖片已經低於 50KB，工具將進一步優化它以確保滿足確切要求，同時保持品質。壓縮演算法專注於移除不可見的數據而不是降低視覺品質。"
       },
       {
-        "q": "Does it work for passport photos and ID documents?",
-        "a": "Yes, Toolaze can compress passport photos and ID document scans to 50KB. However, note that some applications may have different size requirements (e.g., USCIS requires 240KB). Always check your specific application requirements before compressing."
+        "q": "它適用於護照照片和身份證件嗎？",
+        "a": "是的，Toolaze 可以將護照照片和身份證件掃描壓縮至 50KB。但是，請注意某些應用程式可能有不同的大小要求（例如，USCIS 要求 240KB）。在壓縮之前，請務必檢查您的特定應用程式要求。"
       }
     ],
-    "compare": {
-      "toolaze": "無大小限制，批次處理 100 個檔案，本地",
-      "others": "檔案大小上限，單檔限制，訂閱彈窗"
-    },
     "features": {
-      "title": "50KB Image Compression Features",
+      "title": "50KB 圖片壓縮功能",
       "items": [
         {
-          "icon": "🎯",
-          "iconType": "compression",
-          "title": "Precise 50KB Target",
-          "desc": "Compress images to exactly 50KB. Meet universal online form requirements with precision while maintaining visual quality for official verification."
+          "title": "精確的 50KB 目標",
+          "desc": "將圖片壓縮至 50KB。在保持官方驗證所需視覺品質的同時，精確滿足線上表單的通用要求。"
         },
         {
-          "icon": "🔒",
-          "iconType": "privacy",
-          "title": "100% Private Processing",
-          "desc": "All compression happens locally in your browser. Your personal documents and photos never leave your device, ensuring complete privacy and security."
+          "title": "100% 私密處理",
+          "desc": "所有壓縮都在您的瀏覽器中本地進行。您的個人文件和照片永遠不會離開您的設備，確保完全的隱私和安全。"
         },
         {
-          "icon": "📦",
-          "iconType": "batch",
-          "title": "Batch Processing",
-          "desc": "Process up to 100 images simultaneously. Perfect for bulk document processing and multiple application submissions."
+          "title": "批次處理",
+          "desc": "同時處理最多 100 張圖片。非常適合批量文件處理和多個申請提交。"
         },
         {
-          "icon": "⚡",
-          "iconType": "speed",
-          "title": "Instant Compression",
-          "desc": "Browser-native Canvas API processing ensures instant compression without server uploads or waiting queues. Get your documents ready immediately."
+          "title": "即時壓縮",
+          "desc": "瀏覽器原生 Canvas API 處理確保即時壓縮，無需伺服器上傳或等待隊列。立即準備您的文件。"
         },
         {
-          "icon": "💎",
-          "iconType": "free",
-          "title": "Free Forever",
-          "desc": "Unlimited image compression completely free—no premium tiers, no subscription fees, no advertisements. Perfect for all users."
+          "title": "永久免費",
+          "desc": "無限圖片壓縮完全免費—無高級層級、無訂閱費用、無廣告。非常適合所有用戶。"
         },
         {
-          "icon": "📄",
-          "iconType": "quality",
-          "title": "Format Preserved",
-          "desc": "Maintain original image format (JPG, PNG, WebP, BMP). Keep compatibility with any online form or application system."
+          "title": "保留格式",
+          "desc": "保持原始圖片格式（JPG、PNG、WebP、BMP）。保持與任何線上表單或應用程式系統的相容性。"
         }
       ]
     },
     "performanceMetrics": {
-      "title": "Technical Specifications",
+      "title": "技術規格",
       "metrics": [
         {
-          "label": "Input Format",
-          "value": "JPG, PNG, WebP, BMP (All image formats)"
+          "label": "輸入格式",
+          "value": "JPG、PNG、WebP、BMP（所有圖片格式）"
         },
         {
-          "label": "Output Format",
-          "value": "Original format preserved"
+          "label": "輸出格式",
+          "value": "保留原始格式"
         },
         {
-          "label": "File Size Limit",
-          "value": "Exactly 50KB (Universal form requirement)"
+          "label": "檔案大小限制",
+          "value": "精確 50KB（通用表單要求）"
         },
         {
-          "label": "Resolution Support",
-          "value": "Up to 4K (3840x2160) - Auto-adjusted for size"
+          "label": "解析度支援",
+          "value": "最高 4K (3840x2160) - 自動調整大小"
         },
         {
-          "label": "Batch Processing",
-          "value": "Up to 100 images per session"
+          "label": "批次處理",
+          "value": "每個會話最多 100 張圖片"
         },
         {
-          "label": "Processing Speed",
-          "value": "Instant browser-side compression"
+          "label": "處理速度",
+          "value": "即時瀏覽器端壓縮"
         }
       ]
     },
     "howToUse": {
-      "title": "How to Compress Image to 50KB",
+      "title": "如何將圖片壓縮至 50KB",
       "steps": [
         {
-          "title": "Upload Image",
-          "desc": "Drag and drop your image or click to browse. Supports JPG, PNG, WebP, and BMP formats from any source."
+          "title": "上傳圖片",
+          "desc": "拖放您的圖片或點擊瀏覽。支援來自任何來源的 JPG、PNG、WebP 和 BMP 格式。"
         },
         {
-          "title": "Set 50KB Target",
-          "desc": "The tool automatically sets the target to exactly 50KB. Our algorithm compresses your image precisely to meet online form requirements."
+          "title": "設定 50KB 目標",
+          "desc": "工具會自動將目標設定為 50KB。我們的演算法精確壓縮您的圖片以滿足線上表單要求。"
         },
         {
-          "title": "Download Compressed",
-          "desc": "Download your compressed image instantly. The file is guaranteed to be under 50KB and ready to upload to any online form."
+          "title": "下載壓縮後的圖片",
+          "desc": "立即下載您的壓縮圖片。檔案保證低於 50KB，並準備好上傳到任何線上表單。"
         }
       ]
     },
     "comparison": {
-      "toolaze": "Precise 50KB output, Original format preserved, 100% browser-side processing, No watermarks or quality loss, Batch process up to 100 images, Free forever",
-      "others": "Random file sizes may exceed 50KB, Format conversion required, Server uploads required, Watermarks or quality degradation, Limited batch processing, Subscription fees or ads"
+      "toolaze": "精確的 50KB 輸出、保留原始格式、100% 瀏覽器端處理、無水印或品質損失、批次處理最多 100 張圖片、永久免費",
+      "others": "隨機檔案大小可能超過 50KB、需要格式轉換、需要伺服器上傳、水印或品質下降、有限的批次處理、訂閱費用或廣告"
     },
     "rating": {
-      "text": "\"Hit the 50KB mark perfectly for my university application. No more guessing!\" - Join thousands of students and professionals who trust Toolaze for online form compliance."
+      "text": "\"為我的大學申請完美達到了 50KB 標記。不再需要猜測！\" - 加入數千名信賴 Toolaze 進行線上表單合規的學生和專業人士。"
     }
   },
   "passport-photo-200kb": {
@@ -722,7 +722,16 @@
     },
     "intro": {
       "title": "最敏感資料的隱私保護",
-      "content": "您的護照照片是您最敏感的數位資產。Toolaze 在本地處理您的資料，這意味著您的生物識別資訊永遠不會離開您的瀏覽器。我們專注於技術清晰度，確保您的照片符合檔案大小要求，而不進行人工修改。"
+      "content": [
+        {
+          "title": "全球護照更新要求",
+          "text": "我們的瀏覽器壓縮工具使用 Canvas API 在本地處理您的檔案，確保完全的隱私和快速壓縮，無需將您的圖片上傳到任何伺服器。"
+        },
+        {
+          "title": "生物識別數據的完全隱私",
+          "text": "護照照片包含敏感的生物識別資訊，必須極其謹慎地處理。將這些照片上傳到基於雲端的壓縮服務會帶來嚴重的隱私和安全風險，因為您的生物識別數據可能會被第三方存儲、分析或濫用。Toolaze 在您的瀏覽器中本地處理所有照片，確保您的生物識別資訊永遠不會離開您的設備。所有壓縮都使用 JavaScript 和 Canvas API 進行，無需服務器上傳、面部識別或數據存儲。我們專注於技術清晰度和文件大小優化，不進行任何人工更改、美化或 AI 增強，確保您的照片保持真實並符合政府標準。"
+        }
+      ]
     },
     "specs": {
       "engine": "安全客戶端演算法",
@@ -730,7 +739,7 @@
       "logic": "精確 200KB 定位",
       "output": "保留原始格式",
       "limit": "200KB Target - Global Renewal Compliant",
-      "privacy": "100% Client-Side (Local Browser Processing)"
+      "privacy": "100% 客戶端 (Local Browser Processing)"
     },
     "scenes": [
       {
@@ -751,88 +760,84 @@
     ],
     "faq": [
       {
-        "q": "我的照片會模糊嗎？",
-        "a": "200KB 為清晰的證件照提供了充足的空間。Toolaze 在達到大小目標的同時優先保留細節。"
+        "q": "壓縮後我的護照照片會模糊嗎？",
+        "a": "不會。200KB 為清晰的頭像提供了充足的空間。Toolaze 在達到大小目標的同時優先保留細節和面部清晰度。壓縮演算法專注於移除不可見的數據，而不是降低視覺品質。"
       },
       {
-        "q": "可以為多個家庭成員使用嗎？",
-        "a": "是的，您可以一次批次處理最多 100 張照片，非常適合家庭旅遊申請。"
+        "q": "我可以為多個家庭成員使用這個嗎？",
+        "a": "是的！Toolaze 支援同時批次處理最多 100 張護照照片。非常適合為整個家庭旅行申請或多個更新提交高效處理照片。"
       },
       {
-        "q": "Are my biometric photos secure and private?",
-        "a": "Yes! All compression happens locally in your browser using JavaScript and Canvas API. Your passport photos never leave your device, ensuring complete privacy and security. No data is ever sent to our servers or stored anywhere."
+        "q": "我的生物識別照片安全且私密嗎？",
+        "a": "是的！所有壓縮都在您的瀏覽器中使用 JavaScript 和 Canvas API 本地進行。您的護照照片永遠不會離開您的設備，確保完全的隱私和安全。數據永遠不會發送到我們的伺服器或存儲在任何地方。"
       },
       {
-        "q": "Will my compressed photo be accepted by passport renewal portals?",
-        "a": "Yes. Toolaze maintains the visual quality and clarity required for official identification while meeting the strict 200KB file size requirement. The compressed photos maintain facial clarity and meet government passport photo specifications."
+        "q": "我的壓縮照片會被護照更新入口網站接受嗎？",
+        "a": "是的。Toolaze 在滿足嚴格的 200KB 檔案大小要求的同時，保持官方識別所需的視覺品質和清晰度。壓縮的照片保持面部清晰度並符合政府護照照片規格。"
       },
       {
-        "q": "What countries accept 200KB passport photos?",
-        "a": "Many countries accept passport photos between 200KB and 500KB, including the UK, Australia, Canada, New Zealand, and others. Always check your specific country's requirements before compressing, as some may have different size limits."
+        "q": "哪些國家接受 200KB 護照照片？",
+        "a": "許多國家接受 200KB 到 500KB 之間的護照照片，包括英國、澳洲、加拿大、紐西蘭等。在壓縮之前，請務必檢查您特定國家的要求，因為某些國家可能有不同的大小限制。"
       },
       {
-        "q": "Does the tool alter my facial features?",
-        "a": "No! Toolaze provides pure technical compression without any facial alterations, beautification, or AI enhancements. Your facial features remain 100% authentic, which is essential for passport and identification purposes."
+        "q": "工具會改變我的面部特徵嗎？",
+        "a": "不會！Toolaze 提供純技術壓縮，不進行任何面部更改、美化或 AI 增強。您的面部特徵保持 100% 真實，這對於護照和識別目的至關重要。"
       }
     ],
-    "compare": {
-      "toolaze": "原始格式，本地安全，批次就緒",
-      "others": "強制格式變更，雲端安全風險，無批次處理"
-    },
     "features": {
-      "title": "200KB Passport Photo Compression Features",
+      "title": "護照照片 200KB 壓縮功能",
       "items": [
         {
           "icon": "🎯",
           "iconType": "compression",
-          "title": "Precise 200KB Target",
+          "title": "精確 200KB 目標",
           "desc": "Compress passport photos to exactly 200KB. Meet UK, Australia, and global renewal requirements with precision while maintaining photo clarity."
         },
         {
           "icon": "🔒",
           "iconType": "privacy",
-          "title": "100% Private Processing",
-          "desc": "All compression happens locally in your browser. Your biometric photos never leave your device, ensuring complete privacy and security."
+          "title": "100% 私密處理",
+          "desc": "所有壓縮都在您的瀏覽器中本地進行。您的生物識別照片永遠不會離開您的裝置，確保完全隱私和安全。"
         },
         {
           "icon": "📦",
           "iconType": "batch",
-          "title": "Batch Processing",
-          "desc": "Process up to 100 passport photos simultaneously. Perfect for family travel applications or multiple renewal submissions."
+          "title": "批次處理",
+          "desc": "同時處理最多 100 張護照照片。非常適合家庭旅行申請或多個換發提交。"
         },
         {
           "icon": "⚡",
           "iconType": "speed",
-          "title": "Instant Compression",
-          "desc": "Browser-native Canvas API processing ensures instant compression without server uploads or waiting queues. Get your passport photos ready immediately."
+          "title": "即時壓縮",
+          "desc": "瀏覽器原生 Canvas API 處理確保即時壓縮，無需伺服器上傳或等待佇列。立即準備好您的護照照片。"
         },
         {
           "icon": "💎",
           "iconType": "free",
-          "title": "Free Forever",
-          "desc": "Unlimited photo compression completely free—no premium tiers, no subscription fees, no advertisements. Perfect for all applicants."
+          "title": "永久免費",
+          "desc": "無限制的照片壓縮完全免費—無高級層級、無訂閱費用、無廣告。非常適合所有申請者。"
         },
         {
           "icon": "📄",
           "iconType": "quality",
-          "title": "Format Preserved",
-          "desc": "Maintain original image format and facial clarity. Keep your photos sharp enough for official identification while meeting the 200KB limit."
+          "title": "保留格式",
+          "desc": "保持原始圖片格式和面部清晰度。在符合 200KB 限制的同時，保持照片足夠清晰以供官方識別。"
         }
       ]
     },
     "performanceMetrics": {
-      "title": "Technical Specifications",
+      "title": "技術規格",
       "metrics": [
         {
-          "label": "Input Format",
+          "label": "輸入格式",
           "value": "JPG, PNG (Passport photos)"
         },
         {
-          "label": "Output Format",
+          "label": "輸出格式",
           "value": "Original format preserved"
         },
         {
-          "label": "File Size Limit",
+          "label": "檔案大小限制",
           "value": "200KB (UK, Australia renewal requirement)"
         },
         {
@@ -840,38 +845,38 @@
           "value": "Meets government passport photo specifications"
         },
         {
-          "label": "Batch Processing",
+          "label": "批次處理",
           "value": "Up to 100 photos per session"
         },
         {
-          "label": "Processing Speed",
+          "label": "處理速度",
           "value": "Instant browser-side compression"
         }
       ]
     },
     "howToUse": {
-      "title": "How to Compress Passport Photo to 200KB",
+      "title": "如何將護照照片壓縮到 200KB",
       "steps": [
         {
           "title": "Upload Passport Photo",
-          "desc": "Drag and drop your passport photo or click to browse. Supports JPG and PNG formats from smartphones, cameras, or photo studios."
+          "desc": "拖放您的圖片或點擊瀏覽。"
         },
         {
-          "title": "Set 200KB Target",
+          "title": "設定 200KB 目標",
           "desc": "The tool automatically sets the target to 200KB. Our algorithm compresses your photo precisely to meet renewal requirements while maintaining clarity."
         },
         {
           "title": "Download Optimized",
-          "desc": "Download your compressed photo instantly. The file is guaranteed to be under 200KB and ready to upload to passport renewal portals."
+          "desc": "立即下載您的壓縮圖片。檔案已準備好使用。"
         }
       ]
     },
     "comparison": {
-      "toolaze": "Precise 200KB output, Original format preserved, 100% browser-side processing, No watermarks or quality loss, Batch process up to 100 photos, Free forever",
-      "others": "Random file sizes may exceed limits, Format conversion required, Server uploads required, Watermarks or quality degradation, Limited batch processing, Subscription fees or ads"
+      "toolaze": "精確輸出、100% 瀏覽器端處理、無浮水印或品質損失、批次處理最多 100 張圖片、永久免費、完全隱私",
+      "others": "隨機檔案大小可能超過、需要伺服器上傳、浮水印或品質下降、有限的批次處理、訂閱費用或廣告、隱私擔憂"
     },
     "rating": {
-      "text": "\"My UK passport renewal went smoothly! Photo uploaded instantly without any issues.\" - Join thousands of travelers who trust Toolaze for global passport renewal compliance."
+      "text": "\"My UK passport renewal went smoothly! Photo uploaded instantly without any issues.\" - 加入數千名信賴 Toolaze 的使用者。"
     }
   },
   "amazon-product-10mb": {
@@ -897,7 +902,16 @@
     },
     "intro": {
       "title": "加快您的商品上架",
-      "content": "雖然 Amazon 允許最多 10MB，但巨大的檔案會拖慢您的商品頁面載入速度，影響轉換率。Toolaze 將您的商品圖片優化到最佳點（建議低於 2MB），以便在行動應用程式上即時載入。"
+      "content": [
+        {
+          "title": "Amazon Seller Central 上傳要求",
+          "text": "我們的瀏覽器壓縮工具使用 Canvas API 在本地處理您的檔案，確保完全的隱私和快速壓縮，無需將您的圖片上傳到任何伺服器。"
+        },
+        {
+          "title": "保護您的產品 IP 和商業機密",
+          "text": "作為 Amazon 賣家，您的產品照片是必須保護的寶貴知識產權。將未發布的產品或專有設計上傳到基於雲端的壓縮服務會帶來嚴重的安全風險，因為您的圖像可能會被競爭對手存儲、分析或濫用。Toolaze 在您的瀏覽器中本地處理所有圖像，確保您的產品照片永遠不會離開您的設備。所有壓縮都使用 JavaScript 和 Canvas API 進行，無需服務器上傳、水印或數據存儲。您的商業機密和產品設計在整個壓縮過程中保持完全私密和安全，對未發布的產品和專有資訊是安全的。"
+        }
+      ]
     },
     "specs": {
       "engine": "電商清晰度調校",
@@ -918,8 +932,8 @@
       },
       {
         "icon": "🎨",
-        "title": "A+ Content Creators",
-        "desc": "Optimize heavy lifestyle images for your brand story section. Reduce file sizes while maintaining visual appeal for enhanced brand storytelling."
+        "title": "A+ 內容創作者",
+        "desc": "在保持品質的同時大幅減少檔案大小。"
       }
     ],
     "faq": [
@@ -932,28 +946,24 @@
         "a": "是的。處理在您的瀏覽器中進行。您的商品照片永遠不會傳送到我們的伺服器。"
       },
       {
-        "q": "Can I process multiple product images at once?",
-        "a": "Yes! Toolaze supports batch processing of up to 100 product images simultaneously. Perfect for power sellers who need to optimize entire product catalogs or bulk listings efficiently."
+        "q": "我可以一次壓縮多個 product 檔案嗎？",
+        "a": "是的！Toolaze 支援同時批次處理最多 100 張圖片。非常適合一次操作處理多個檔案。"
       },
       {
         "q": "What's the optimal file size for Amazon product images?",
         "a": "While Amazon allows up to 10MB, we recommend compressing to under 2MB for optimal loading speed. Smaller files load faster on mobile devices, improving user experience and potentially boosting your search rankings."
       },
       {
-        "q": "Are my product photos uploaded to a server?",
-        "a": "No! All compression happens locally in your browser. Your product photos never leave your device, ensuring complete privacy and security for your intellectual property."
+        "q": "我的檔案會上傳到伺服器嗎？",
+        "a": "是的！所有壓縮都在您的瀏覽器中使用 JavaScript 和 Canvas API 本地進行。您的圖片永遠不會離開您的設備，確保完全的隱私和安全。"
       },
       {
         "q": "Will optimized images improve my Amazon search rankings?",
         "a": "Yes. Amazon's algorithm considers page load speed as a ranking factor. Faster-loading images can improve your listing's performance metrics and increase visibility in search results, potentially leading to more sales."
       }
     ],
-    "compare": {
-      "toolaze": "賣家導向，大量模式，免費",
-      "others": "通用壓縮，單檔限制"
-    },
     "features": {
-      "title": "Amazon Product Image Optimization Features",
+      "title": "Amazon 產品圖片優化功能",
       "items": [
         {
           "icon": "🎯",
@@ -964,70 +974,70 @@
         {
           "icon": "🔒",
           "iconType": "privacy",
-          "title": "100% Private Processing",
-          "desc": "All compression happens locally in your browser. Your product photos never leave your device, ensuring complete privacy and IP protection."
+          "title": "100% 私密處理",
+          "desc": "所有壓縮都在您的瀏覽器中本地進行。您的產品照片永遠不會離開您的裝置，確保完全隱私和智慧財產權保護。"
         },
         {
           "icon": "📦",
           "iconType": "batch",
-          "title": "Batch Processing",
-          "desc": "Process up to 100 product images simultaneously. Optimize entire product catalogs in one operation, perfect for power sellers and bulk listings."
+          "title": "批次處理",
+          "desc": "同時處理最多 100 張產品圖片。在一次操作中優化整個產品目錄，非常適合大賣家和批量上架。"
         },
         {
           "icon": "⚡",
           "iconType": "speed",
           "title": "Instant Optimization",
-          "desc": "Browser-native Canvas API processing ensures instant compression without server uploads or waiting queues. Get your listings live faster."
+          "desc": "瀏覽器原生 Canvas API 處理確保即時壓縮，無需伺服器上傳或等待佇列。更快地讓您的上架生效。"
         },
         {
           "icon": "💎",
           "iconType": "free",
-          "title": "Free Forever",
-          "desc": "Unlimited image optimization completely free—no premium tiers, no subscription fees, no advertisements. Perfect for sellers of all sizes."
+          "title": "永久免費",
+          "desc": "無限制的圖片優化完全免費—無高級層級、無訂閱費用、無廣告。非常適合各種規模的賣家。"
         },
         {
           "icon": "🔍",
           "iconType": "quality",
           "title": "Zoom Preserved",
-          "desc": "Maintain resolution and detail for Amazon's zoom feature. Keep your product images sharp enough for customers to see fine details."
+          "desc": "為 Amazon 的縮放功能保持解析度和細節。保持您的產品圖片足夠清晰，讓客戶可以看到精細細節。"
         }
       ]
     },
     "performanceMetrics": {
-      "title": "Technical Specifications",
+      "title": "技術規格",
       "metrics": [
         {
-          "label": "Input Format",
+          "label": "輸入格式",
           "value": "JPG, PNG, WebP (Product listing images)"
         },
         {
-          "label": "Output Format",
+          "label": "輸出格式",
           "value": "JPG (Optimized for Amazon)"
         },
         {
-          "label": "File Size Limit",
+          "label": "檔案大小限制",
           "value": "Under 10MB (Amazon requirement, 2MB recommended)"
         },
         {
-          "label": "Resolution Support",
+          "label": "解析度支援",
           "value": "Up to 4K (3840x2160) - Zoom capability preserved"
         },
         {
-          "label": "Batch Processing",
+          "label": "批次處理",
           "value": "Up to 100 images per session"
         },
         {
-          "label": "Processing Speed",
+          "label": "處理速度",
           "value": "Instant browser-side compression"
         }
       ]
     },
     "howToUse": {
-      "title": "How to Optimize Amazon Product Images",
+      "title": "如何優化 Amazon 產品圖片",
       "steps": [
         {
           "title": "Upload Product Photos",
-          "desc": "Drag and drop your Amazon product images or click to browse. Supports JPG, PNG, and WebP formats from cameras or design tools."
+          "desc": "拖放您的圖片或點擊瀏覽。"
         },
         {
           "title": "Set Under 10MB Target",
@@ -1040,11 +1050,11 @@
       ]
     },
     "comparison": {
-      "toolaze": "Under 10MB guarantee, Zoom capability preserved, 100% browser-side processing, No watermarks or quality loss, Batch process up to 100 images, Free forever, IP protection",
-      "others": "Random file sizes may exceed 10MB, Reduces resolution unnecessarily, Server uploads required, Watermarks or quality degradation, Limited batch processing, Subscription fees or ads, Privacy concerns"
+      "toolaze": "10MB 以下保證、縮放功能保留、100% 瀏覽器端處理、無水印或品質損失、批次處理最多 100 張圖片、永久免費、IP 保護",
+      "others": "隨機檔案大小可能超過、需要伺服器上傳、浮水印或品質下降、有限的批次處理、訂閱費用或廣告、隱私擔憂"
     },
     "rating": {
-      "text": "\"Fixed my Seller Central upload errors instantly! Product images load faster and my listings rank higher.\" - Join thousands of Amazon sellers who trust Toolaze for e-commerce optimization."
+      "text": "\"Fixed my Seller Central upload errors instantly! Product images load faster and my listings rank higher.\" - 加入數千名信賴 Toolaze 的使用者。"
     }
   },
   "etsy-listing-1mb": {
@@ -1066,11 +1076,20 @@
     "hero": {
       "h1": "Etsy 商品照片工具",
       "sub": "完美適合手工賣家",
-      "desc": "Etsy 建議圖片低於 1MB 以獲得最佳瀏覽體驗。如果您的原始相機照片太大，我們會在不淡化您色彩的情況下縮小它們。"
+      "desc": "將 Etsy 列表圖片壓縮至 1MB 以下，以加快商店載入速度。只需將您的產品照片拖放到下方即可優化，同時保留顏色和質感。"
     },
     "intro": {
-      "title": "展示細節，而非像素",
-      "content": "Etsy 購物者喜歡細節。我們的本地壓縮演算法經過調校，可保留紋理和色彩（對銷售實體商品至關重要），同時大幅減少檔案大小以符合平台建議。"
+      "title": "為什麼要優化 Etsy 列表圖片？",
+      "content": [
+        {
+          "title": "Etsy 的 1MB 建議以獲得更好的性能",
+          "text": "Etsy 建議列表圖片低於 1MB 以獲得最佳瀏覽體驗。當您使用專業相機或智能手機拍攝產品照片時，生成的圖片通常為 3-10MB，遠遠超過此建議。大型圖片檔案不僅會導致「檔案太大」上傳錯誤，還會減慢商店的載入速度，特別是在大多數 Etsy 購物者瀏覽的行動裝置上。載入緩慢的商店會損害您的搜尋排名，減少買家參與度，並可能導致銷售損失。Etsy 警告，超過 1MB 的檔案可能無法正確上傳或對買家載入非常緩慢，造成糟糕的購物體驗。我們的瀏覽器壓縮工具使用智能 Canvas API 處理來減少列表圖片檔案大小，同時保留對銷售手工和實體產品至關重要的質感、顏色和細節。"
+        },
+        {
+          "title": "保留手工產品細節和顏色",
+          "text": "Etsy 購物者喜歡看到細節—手工珠寶的質感、藝術印刷品的鮮豔顏色、復古物品的精細工藝。壓縮圖片不應該意味著犧牲這些關鍵的銷售點。Toolaze 的壓縮演算法專門調整以保留質感和顏色，同時大幅減少檔案重量。我們保持顏色準確性和細節清晰度，確保您的手工產品在搜尋結果和產品頁面中看起來最佳。所有處理都在您的瀏覽器中本地進行，因此您獨特的產品設計和攝影永遠不會離開您的設備，確保您的創意作品完全私密和安全。"
+        }
+      ]
     },
     "specs": {
       "engine": "紋理保留演算法",
@@ -1080,144 +1099,125 @@
     },
     "scenes": [
       {
-        "title": "商品縮圖",
-        "desc": "確保您的商店在 Etsy 行動應用程式上快速載入。",
-        "icon": "🛍️"
+        "title": "手工賣家",
+        "desc": "優化手工物品的產品照片。保留展示您工藝並吸引買家的質感、顏色和精細細節。"
       },
       {
-        "title": "數位下載",
-        "desc": "減少您的數位藝術檔案大小，方便客戶交付。",
-        "icon": "📱"
+        "title": "行動商店優化",
+        "desc": "確保您的商店在 Etsy 行動應用程式上快速載入。使用載入更快的列表圖片改善買家體驗和搜尋排名。"
       },
       {
-        "icon": "🎨",
-        "title": "Digital Art Sellers",
-        "desc": "Reduce the size of digital art files for easier customer delivery. Optimize preview images while maintaining color accuracy for your artwork."
+        "title": "數位藝術賣家",
+        "desc": "減少數位藝術檔案的大小，以便更容易交付給客戶。在保持藝術作品顏色準確性的同時優化預覽圖片。"
       }
     ],
     "faq": [
       {
-        "q": "支援 JPG 嗎？",
-        "a": "是的，Etsy 偏好 JPG 作為商品照片。我們完美優化它們。"
+        "q": "它支援 Etsy 列表的 JPG 格式嗎？",
+        "a": "是的！Etsy 偏好列表照片使用 JPG 格式，Toolaze 會完美優化它們。JPG 格式為 Etsy 平台提供了檔案大小和圖像品質之間的最佳平衡。"
       },
       {
-        "q": "為什麼是 1MB？",
-        "a": "Etsy 警告，超過 1MB 的檔案可能無法上傳或對買家載入非常緩慢。"
+        "q": "為什麼 Etsy 推薦 1MB 的大小？",
+        "a": "Etsy 建議圖片低於 1MB，因為較大的檔案會減慢商店載入速度，尤其是在行動裝置上。超過 1MB 的檔案可能無法正確上傳或對買家載入非常緩慢，造成糟糕的購物體驗，並可能損害您的搜尋排名。"
       },
       {
-        "q": "Will my product colors look washed out after compression?",
-        "a": "No! Toolaze's compression algorithm is specifically tuned to preserve vibrant colors and textures. The compression focuses on optimizing the image structure rather than reducing color quality, ensuring your handmade products look their best."
+        "q": "壓縮後我的產品顏色會看起來褪色嗎？",
+        "a": "不會！Toolaze 的壓縮演算法專門調整以保留鮮豔的顏色和質感。壓縮專注於優化圖像結構而不是降低顏色品質，確保您的手工產品看起來最佳。"
       },
       {
-        "q": "Can I process multiple listing images at once?",
-        "a": "Yes! Toolaze supports batch processing of up to 100 listing images simultaneously. Perfect for optimizing entire product catalogs or bulk shop updates efficiently."
+        "q": "我可以一次處理多張列表圖片嗎？",
+        "a": "是的！Toolaze 支援同時批次處理最多 100 張列表圖片。非常適合高效優化整個產品目錄或批量商店更新。"
       },
       {
-        "q": "Are my product photos uploaded to a server?",
-        "a": "No! All compression happens locally in your browser using JavaScript and Canvas API. Your product photos and designs never leave your device, ensuring complete privacy and security for your creative work."
+        "q": "我的產品照片會上傳到伺服器嗎？",
+        "a": "不會！所有壓縮都在您的瀏覽器中使用 JavaScript 和 Canvas API 本地進行。您的產品照片和設計永遠不會離開您的設備，確保您的創意作品完全私密和安全。"
       },
       {
-        "q": "Will optimized images improve my Etsy search rankings?",
-        "a": "Yes. Faster-loading shops perform better in Etsy's search algorithm. Optimized images improve your shop's loading speed, which can boost your search rankings and increase buyer engagement, potentially leading to more sales."
+        "q": "優化後的圖片會改善我的 Etsy 搜尋排名嗎？",
+        "a": "是的。載入更快的商店在 Etsy 的搜尋演算法中表現更好。優化後的圖片改善了您商店的載入速度，這可以提高您的搜尋排名並增加買家參與度，可能帶來更多銷售。"
       }
     ],
-    "compare": {
-      "toolaze": "保留紋理，色彩準確，快速",
-      "others": "色彩淡化，上傳緩慢"
-    },
     "features": {
-      "title": "Etsy Listing Image Optimization Features",
+      "title": "Etsy 列表優化功能",
       "items": [
         {
-          "icon": "🎯",
-          "iconType": "compression",
-          "title": "Under 1MB Target",
-          "desc": "Compress listing images to under 1MB. Meet Etsy's recommendations for faster shop loading and better search rankings."
+          "title": "1MB 以下目標",
+          "desc": "將列表圖片壓縮至 1MB 以下。滿足 Etsy 的建議，以加快商店載入速度和改善搜尋排名。"
         },
         {
-          "icon": "🔒",
-          "iconType": "privacy",
-          "title": "100% Private Processing",
-          "desc": "All compression happens locally in your browser. Your product photos and designs never leave your device, ensuring complete privacy."
+          "title": "100% 私密處理",
+          "desc": "所有壓縮都在您的瀏覽器中本地進行。您的產品照片和設計永遠不會離開您的設備，確保完全的隱私。"
         },
         {
-          "icon": "📦",
-          "iconType": "batch",
-          "title": "Batch Processing",
-          "desc": "Process up to 100 listing images simultaneously. Optimize entire product catalogs in one operation for efficient shop management."
+          "title": "批次處理",
+          "desc": "同時處理最多 100 張列表圖片。在一次操作中優化整個產品目錄，實現高效的商店管理。"
         },
         {
-          "icon": "⚡",
-          "iconType": "speed",
-          "title": "Instant Optimization",
-          "desc": "Browser-native Canvas API processing ensures instant compression without server uploads or waiting queues. Get your listings live faster."
+          "title": "即時優化",
+          "desc": "瀏覽器原生 Canvas API 處理確保即時壓縮，無需伺服器上傳或等待隊列。讓您的列表更快上線。"
         },
         {
-          "icon": "💎",
-          "iconType": "free",
-          "title": "Free Forever",
-          "desc": "Unlimited image optimization completely free—no premium tiers, no subscription fees, no advertisements. Perfect for sellers of all sizes."
+          "title": "永久免費",
+          "desc": "無限圖片優化完全免費—無高級層級、無訂閱費用、無廣告。非常適合各種規模的賣家。"
         },
         {
-          "icon": "🎨",
-          "iconType": "quality",
-          "title": "Colors & Textures Preserved",
-          "desc": "Maintain vibrant colors and fine textures. Keep your handmade products looking their best while reducing file size for faster loading."
+          "title": "保留顏色和質感",
+          "desc": "保持鮮豔的顏色和細緻的質感。在減少檔案大小以加快載入速度的同時，讓您的手工產品看起來最佳。"
         }
       ]
     },
     "performanceMetrics": {
-      "title": "Technical Specifications",
+      "title": "技術規格",
       "metrics": [
         {
-          "label": "Input Format",
-          "value": "JPG, PNG, WebP (Product listing images)"
+          "label": "輸入格式",
+          "value": "JPG、PNG、WebP（產品列表圖片）"
         },
         {
-          "label": "Output Format",
-          "value": "JPG (Optimized for Etsy, preferred format)"
+          "label": "輸出格式",
+          "value": "JPG（針對 Etsy 優化，首選格式）"
         },
         {
-          "label": "File Size Limit",
-          "value": "Under 1MB (Etsy recommendation)"
+          "label": "檔案大小限制",
+          "value": "1MB 以下（Etsy 建議）"
         },
         {
-          "label": "Color Preservation",
-          "value": "Vibrant colors and textures maintained"
+          "label": "顏色保留",
+          "value": "保持鮮豔的顏色和質感"
         },
         {
-          "label": "Batch Processing",
-          "value": "Up to 100 images per session"
+          "label": "批次處理",
+          "value": "每個會話最多 100 張圖片"
         },
         {
-          "label": "Processing Speed",
-          "value": "Instant browser-side compression"
+          "label": "處理速度",
+          "value": "即時瀏覽器端壓縮"
         }
       ]
     },
     "howToUse": {
-      "title": "How to Optimize Etsy Listing Images",
+      "title": "如何優化 Etsy 列表圖片",
       "steps": [
         {
-          "title": "Upload Product Photos",
-          "desc": "Drag and drop your Etsy listing images or click to browse. Supports JPG, PNG, and WebP formats from cameras or design tools."
+          "title": "上傳產品照片",
+          "desc": "拖放您的 Etsy 列表圖片或點擊瀏覽。支援來自相機或設計工具的 JPG、PNG 和 WebP 格式。"
         },
         {
-          "title": "Set Under 1MB Target",
-          "desc": "The tool automatically sets the target to under 1MB. Our algorithm compresses your images while preserving colors and textures."
+          "title": "設定 1MB 以下目標",
+          "desc": "工具會自動將目標設定為 1MB 以下。我們的演算法在保留顏色和質感的同時壓縮您的圖片。"
         },
         {
-          "title": "Download Optimized",
-          "desc": "Download your optimized images instantly. Files are ready to upload to Etsy, improving your shop's loading speed and search rankings."
+          "title": "下載優化後的圖片",
+          "desc": "立即下載您的優化圖片。檔案已準備好上傳到 Etsy，改善您商店的載入速度和搜尋排名。"
         }
       ]
     },
     "comparison": {
-      "toolaze": "Under 1MB guarantee, Colors and textures preserved, 100% browser-side processing, No watermarks or quality loss, Batch process up to 100 images, Free forever",
-      "others": "Random file sizes may exceed 1MB, Washed out colors or lost textures, Server uploads required, Watermarks or quality degradation, Limited batch processing, Subscription fees or ads"
+      "toolaze": "1MB 以下保證、保留顏色和質感、100% 瀏覽器端處理、無水印或品質損失、批次處理最多 100 張圖片、永久免費",
+      "others": "隨機檔案大小可能超過 1MB、顏色褪色或質感丟失、需要伺服器上傳、水印或品質下降、有限的批次處理、訂閱費用或廣告"
     },
     "rating": {
-      "text": "\"My Etsy shop loads so much faster now! Colors stayed vibrant and textures are perfect.\" - Join thousands of handmade sellers who trust Toolaze for preserving product details."
+      "text": "\"我的 Etsy 商店現在載入速度快多了！顏色保持鮮豔，質感完美。\" - 加入數千名信賴 Toolaze 保留產品細節的手工賣家。"
     }
   },
   "ebay-picture-fast": {
@@ -1239,11 +1239,20 @@
     "hero": {
       "h1": "eBay 快速載入優化工具",
       "sub": "提升您的行動銷售",
-      "desc": "超過 60% 的 eBay 交易發生在行動裝置上。過大的圖片意味著失去客戶。將您的庫存照片優化，以便在 4G 網路上即時載入。"
+      "desc": "優化 eBay 列表圖片以實現快速行動載入。只需將您的產品照片拖放到下方即可壓縮，以獲得更好的搜尋排名和更快的銷售。"
     },
     "intro": {
-      "title": "行動優先銷售",
-      "content": "eBay 的搜尋演算法偏愛載入快速的商品。透過將您的圖片壓縮到行動友善的大小（500KB-1.5MB），您可以提高排名更高和銷售更快的機會。"
+      "title": "為什麼要優化 eBay 圖片以適應行動裝置？",
+      "content": [
+        {
+          "title": "行動優先的購物體驗",
+          "text": "超過 60% 的 eBay 交易發生在行動裝置上。當您的列表圖片太大時，它們在 4G 網路上載入緩慢，導致潛在買家在看到您的產品之前就放棄您的列表。eBay 的搜尋演算法積極偏愛快速載入的列表，這意味著載入更快的圖片可以改善您的搜尋排名並增加您完成銷售的機會。大型圖片檔案不僅讓行動購物者感到沮喪，還會浪費他們的數據計劃，導致參與度降低和轉換率下降。"
+        },
+        {
+          "title": "提升搜尋排名和銷售",
+          "text": "eBay 的 Best Match 演算法將頁面載入速度視為排名因素。通過將您的列表圖片壓縮到行動友好的大小（通常為 500KB-1.5MB），您可以改善列表的性能指標並提高在搜尋結果中的可見性。我們的瀏覽器壓縮工具使用智能 Canvas API 處理來減少檔案大小，同時保留產品細節、顏色準確性和視覺吸引力。所有處理都在您的瀏覽器中本地進行，確保您的產品照片保持私密和安全，不會有任何可能損害您專業賣家聲譽的水印或品質下降。"
+        }
+      ]
     },
     "specs": {
       "engine": "行動優先壓縮",
@@ -1253,144 +1262,125 @@
     },
     "scenes": [
       {
-        "title": "大量上傳",
-        "desc": "一次處理 100 個商品的照片，節省上架時間。",
-        "icon": "🛒"
+        "title": "專業賣家",
+        "desc": "優化數百張產品圖片以進行批量列表。快速且一致地處理整個目錄，以在所有列表中保持專業品質。"
       },
       {
-        "title": "Gallery Plus",
-        "desc": "確保您的放大圖片足夠輕量，可以即時開啟。",
-        "icon": "📱"
+        "title": "行動優先賣家",
+        "desc": "確保您的列表在行動裝置上即時載入。改善買家體驗並減少在慢速 4G 連接上的跳出率。"
       },
       {
-        "icon": "📸",
-        "title": "Gallery Plus Users",
-        "desc": "Optimize high-resolution zoom images for eBay Gallery Plus. Keep images light enough to open instantly while maintaining detail for close-up views."
+        "title": "Gallery Plus 用戶",
+        "desc": "優化 eBay Gallery Plus 的高解析度縮放圖片。保持圖片足夠輕以便即時打開，同時保留特寫視圖的細節。"
       }
     ],
     "faq": [
       {
-        "q": "可以處理多少張照片？",
-        "a": "您可以一次處理最多 100 張圖片，非常適合大量上架。"
+        "q": "我應該為 eBay 列表使用什麼檔案大小？",
+        "a": "為了實現最佳行動載入和搜尋排名，請將您的 eBay 列表圖片壓縮至 500KB-1.5MB。這確保在 4G 網路上快速載入，同時保持足夠的品質讓買家清楚地看到產品細節。"
       },
       {
-        "q": "我的照片會看起來像素化嗎？",
-        "a": "不會，我們優化圖片的資料結構，保持高視覺品質。"
+        "q": "壓縮圖片會損害我的產品照片品質嗎？",
+        "a": "不會。Toolaze 使用智能壓縮演算法，保留產品細節、顏色準確性和視覺吸引力。壓縮專注於移除不可見的數據而不是降低視覺品質，確保您的列表看起來專業。"
       },
       {
-        "q": "Can I process multiple product images at once?",
-        "a": "Yes! Toolaze supports batch processing of up to 100 images simultaneously. Perfect for power sellers who need to optimize entire product catalogs or bulk listings efficiently."
+        "q": "我可以一次處理多張產品圖片嗎？",
+        "a": "是的！Toolaze 支援同時批次處理最多 100 張圖片。非常適合需要高效優化整個產品目錄或批量列表的專業賣家。"
       },
       {
-        "q": "Are my product photos uploaded to a server?",
-        "a": "No! All compression happens locally in your browser using JavaScript and Canvas API. Your product photos never leave your device, ensuring complete privacy and security for your inventory."
+        "q": "我的產品照片會上傳到伺服器嗎？",
+        "a": "不會！所有壓縮都在您的瀏覽器中使用 JavaScript 和 Canvas API 本地進行。您的產品照片永遠不會離開您的設備，確保您的庫存完全私密和安全。"
       },
       {
-        "q": "Will optimized images improve my eBay search rankings?",
-        "a": "Yes. eBay's Best Match algorithm considers page load speed as a ranking factor. Faster-loading images can improve your listing's performance metrics and increase visibility in search results, potentially leading to more sales."
+        "q": "優化後的圖片會改善我的 eBay 搜尋排名嗎？",
+        "a": "是的。eBay 的 Best Match 演算法將頁面載入速度視為排名因素。載入更快的圖片可以改善您列表的性能指標並提高在搜尋結果中的可見性，可能帶來更多銷售。"
       },
       {
-        "q": "What image formats does eBay support?",
-        "a": "eBay supports JPG, PNG, and GIF formats. Toolaze can compress JPG, PNG, WebP, and BMP images, with JPG being the recommended format for eBay listings due to its smaller file size and wide compatibility."
+        "q": "eBay 支援哪些圖片格式？",
+        "a": "eBay 支援 JPG、PNG 和 GIF 格式。Toolaze 可以壓縮 JPG、PNG、WebP 和 BMP 圖片，由於檔案大小較小和廣泛的相容性，JPG 是 eBay 列表的推薦格式。"
       }
     ],
-    "compare": {
-      "toolaze": "大量工具，行動優化，無需註冊",
-      "others": "一次一個，需要註冊"
-    },
     "features": {
-      "title": "eBay Image Optimization Features",
+      "title": "eBay 圖片優化功能",
       "items": [
         {
-          "icon": "📱",
-          "iconType": "mobile",
-          "title": "Mobile-Optimized Sizes",
-          "desc": "Compress images to 500KB-1.5MB for instant mobile loading. Improve your eBay search rankings and reduce buyer bounce rates on slow connections."
+          "title": "行動優化大小",
+          "desc": "將圖片壓縮至 500KB-1.5MB 以實現即時行動載入。改善您的 eBay 搜尋排名並減少在慢速連接上的買家跳出率。"
         },
         {
-          "icon": "🔒",
-          "iconType": "privacy",
-          "title": "100% Private Processing",
-          "desc": "All compression happens locally in your browser. Your product photos never leave your device, ensuring complete privacy and security for your inventory."
+          "title": "100% 私密處理",
+          "desc": "所有壓縮都在您的瀏覽器中本地進行。您的產品照片永遠不會離開您的設備，確保您的庫存完全私密和安全。"
         },
         {
-          "icon": "📦",
-          "iconType": "batch",
-          "title": "Batch Processing",
-          "desc": "Process up to 100 listing images simultaneously. Optimize entire product catalogs in one operation, perfect for power sellers and bulk listings."
+          "title": "批次處理",
+          "desc": "同時處理最多 100 張列表圖片。在一次操作中優化整個產品目錄，非常適合專業賣家和大批量列表。"
         },
         {
-          "icon": "⚡",
-          "iconType": "speed",
-          "title": "Instant Optimization",
-          "desc": "Browser-native Canvas API processing ensures instant compression without server uploads or waiting queues. Get your listings live faster."
+          "title": "即時優化",
+          "desc": "瀏覽器原生 Canvas API 處理確保即時壓縮，無需伺服器上傳或等待隊列。讓您的列表更快上線。"
         },
         {
-          "icon": "💎",
-          "iconType": "free",
-          "title": "Free Forever",
-          "desc": "Unlimited image optimization completely free—no premium tiers, no subscription fees, no advertisements. Perfect for sellers of all sizes."
+          "title": "永久免費",
+          "desc": "無限圖片優化完全免費—無高級層級、無訂閱費用、無廣告。非常適合各種規模的賣家。"
         },
         {
-          "icon": "🎨",
-          "iconType": "quality",
-          "title": "Quality Preserved",
-          "desc": "Maintain product detail and color accuracy. Keep your images crisp and professional while reducing file size for faster mobile loading."
+          "title": "保留品質",
+          "desc": "保持產品細節和顏色準確性。在減少檔案大小以加快行動載入速度的同時，保持您的圖片清晰和專業。"
         }
       ]
     },
     "performanceMetrics": {
-      "title": "Technical Specifications",
+      "title": "技術規格",
       "metrics": [
         {
-          "label": "Input Format",
-          "value": "JPG, PNG, WebP, BMP (Product listing images)"
+          "label": "輸入格式",
+          "value": "JPG、PNG、WebP、BMP（產品列表圖片）"
         },
         {
-          "label": "Output Format",
-          "value": "JPG (Optimized for eBay listings)"
+          "label": "輸出格式",
+          "value": "JPG（針對 eBay 列表優化）"
         },
         {
-          "label": "Recommended Size",
-          "value": "500KB - 1.5MB (Mobile-optimized)"
+          "label": "推薦大小",
+          "value": "500KB - 1.5MB（行動優化）"
         },
         {
-          "label": "Resolution Support",
-          "value": "Up to 4K (3840x2160) - Dimensions preserved"
+          "label": "解析度支援",
+          "value": "最高 4K (3840x2160) - 保留尺寸"
         },
         {
-          "label": "Batch Processing",
-          "value": "Up to 100 images per session"
+          "label": "批次處理",
+          "value": "每個會話最多 100 張圖片"
         },
         {
-          "label": "Processing Speed",
-          "value": "Instant browser-side compression"
+          "label": "處理速度",
+          "value": "即時瀏覽器端壓縮"
         }
       ]
     },
     "howToUse": {
-      "title": "How to Optimize eBay Images",
+      "title": "如何優化 eBay 圖片",
       "steps": [
         {
-          "title": "Upload Listing Photos",
-          "desc": "Drag and drop your eBay product images or click to browse. Supports JPG, PNG, WebP, and BMP formats up to 4K resolution."
+          "title": "上傳列表照片",
+          "desc": "拖放您的 eBay 產品圖片或點擊瀏覽。支援最高 4K 解析度的 JPG、PNG、WebP 和 BMP 格式。"
         },
         {
-          "title": "Set Mobile-Friendly Size",
-          "desc": "Set your target size to 500KB-1.5MB for optimal mobile loading. Our algorithm compresses your images while preserving product detail and color accuracy."
+          "title": "設定行動友好大小",
+          "desc": "將您的目標大小設定為 500KB-1.5MB 以實現最佳行動載入。我們的演算法在保留產品細節和顏色準確性的同時壓縮您的圖片。"
         },
         {
-          "title": "Download Optimized",
-          "desc": "Download your optimized images instantly. Files are ready to upload to eBay, improving your listing load speed and search rankings."
+          "title": "下載優化後的圖片",
+          "desc": "立即下載您的優化圖片。檔案已準備好上傳到 eBay，改善您列表的載入速度和搜尋排名。"
         }
       ]
     },
     "comparison": {
-      "toolaze": "Mobile-optimized sizes (500KB-1.5MB), Batch process up to 100 images, 100% browser-side processing, No watermarks or quality loss, Preserves product detail and colors, Free forever",
-      "others": "Random file sizes may be too large, Limited batch processing, Server uploads required, Watermarks or quality degradation, May reduce image quality unnecessarily, Subscription fees or ads"
+      "toolaze": "行動優化大小 (500KB-1.5MB)、批次處理最多 100 張圖片、100% 瀏覽器端處理、無水印或品質損失、保留產品細節和顏色、永久免費",
+      "others": "隨機檔案大小可能太大、有限的批次處理、需要伺服器上傳、水印或品質下降、可能不必要地降低圖片品質、訂閱費用或廣告"
     },
     "rating": {
-      "text": "\"My eBay listings load instantly on mobile now! Search rankings improved and sales increased.\" - Join thousands of eBay sellers who trust Toolaze for mobile-first optimization."
+      "text": "\"我的 eBay 列表現在在行動裝置上即時載入！搜尋排名改善，銷售增加。\" - 加入數千名信賴 Toolaze 進行行動優先優化的 eBay 賣家。"
     }
   },
   "youtube-thumbnail-2mb": {
@@ -1416,7 +1406,16 @@
     },
     "intro": {
       "title": "不要犧牲點擊率",
-      "content": "您不需要將解析度降低到 720p。Toolaze 使用智能壓縮來保持您的文字清晰和臉部銳利，僅減少不可見的資料以讓您低於 2MB 限制。"
+      "content": [
+        {
+          "title": "YouTube 的 2MB 限制挑戰",
+          "text": "我們的瀏覽器壓縮工具使用 Canvas API 在本地處理您的檔案，確保完全的隱私和快速壓縮，無需將您的圖片上傳到任何伺服器。"
+        },
+        {
+          "title": "維持點擊率",
+          "text": "出色的縮圖對 YouTube 成功至關重要—這是觀眾首先看到的內容，並直接影響您的點擊率 (CTR)。壓縮縮圖不應該意味著犧牲品質或降低解析度。Toolaze 保持文字清晰度、面部細節和鮮豔色彩，同時智能地移除不可見的數據以保持在 2MB 限制以下。所有處理都在您的瀏覽器中本地進行，確保您的縮圖設計保持私密和安全，無水印或品質下降。"
+        }
+      ]
     },
     "specs": {
       "engine": "視覺優先引擎",
@@ -1452,23 +1451,19 @@
       },
       {
         "q": "Will my thumbnail look blurry after compression?",
-        "a": "No. Toolaze uses intelligent compression algorithms that preserve text clarity, facial details, and vibrant colors. The compression focuses on removing invisible data rather than reducing visual quality."
+        "a": "不會。Toolaze 使用智能壓縮演算法，在減少檔案大小的同時保持視覺品質。壓縮專注於移除不可見數據並優化圖像結構，而不是不必要地降低解析度。"
       },
       {
-        "q": "Are my thumbnail designs uploaded to a server?",
-        "a": "No! All compression happens locally in your browser using JavaScript and Canvas API. Your thumbnail designs never leave your device, ensuring complete privacy and security."
+        "q": "我的檔案會上傳到伺服器嗎？",
+        "a": "是的！所有壓縮都在您的瀏覽器中使用 JavaScript 和 Canvas API 本地進行。您的圖片永遠不會離開您的設備，確保完全的隱私和安全。"
       },
       {
-        "q": "Can I compress multiple thumbnails at once?",
-        "a": "Yes! Toolaze supports batch processing of up to 100 thumbnails simultaneously. Perfect for compressing thumbnails for an entire video series or channel rebrand."
+        "q": "我可以一次壓縮多個 thumbnails 檔案嗎？",
+        "a": "是的！Toolaze 支援同時批次處理最多 100 張圖片。非常適合一次操作處理多個檔案。"
       }
     ],
-    "compare": {
-      "toolaze": "高點擊率專注，2MB 保證",
-      "others": "模糊結果，隨機尺寸"
-    },
     "features": {
-      "title": "YouTube Thumbnail Compression Features",
+      "title": "YouTube 縮圖優化功能",
       "items": [
         {
           "icon": "🎯",
@@ -1479,70 +1474,70 @@
         {
           "icon": "🔒",
           "iconType": "privacy",
-          "title": "100% Private Processing",
-          "desc": "All compression happens locally in your browser. Your thumbnail designs never leave your device, ensuring complete privacy and security."
+          "title": "100% 私密處理",
+          "desc": "所有壓縮都在您的瀏覽器中本地進行。您的縮圖設計永遠不會離開您的裝置，確保完全隱私和安全。"
         },
         {
           "icon": "📦",
           "iconType": "batch",
-          "title": "Batch Processing",
+          "title": "批次處理",
           "desc": "Compress up to 100 thumbnails simultaneously. Process entire video series thumbnails in one operation."
         },
         {
           "icon": "⚡",
           "iconType": "speed",
-          "title": "Instant Compression",
-          "desc": "Browser-native Canvas API processing ensures instant compression without server uploads or waiting queues."
+          "title": "即時壓縮",
+          "desc": "瀏覽器原生 Canvas API 處理確保即時壓縮，無需服務器上傳或等待隊列。"
         },
         {
           "icon": "💎",
           "iconType": "free",
-          "title": "Free Forever",
-          "desc": "Unlimited thumbnail compression completely free—no premium tiers, no subscription fees, no advertisements."
+          "title": "永久免費",
+          "desc": "無限制的縮圖壓縮完全免費—無高級層級、無訂閱費用、無廣告。"
         },
         {
           "icon": "🎨",
           "iconType": "quality",
-          "title": "Quality Preserved",
-          "desc": "Maintain text sharpness and image clarity. Keep your 1920x1080 or 4K dimensions while reducing file size."
+          "title": "保持品質",
+          "desc": "保持文字清晰度和圖片清晰度。在減少檔案大小的同時，保持您的 1920x1080 或 4K 尺寸。"
         }
       ]
     },
     "performanceMetrics": {
-      "title": "Technical Specifications",
+      "title": "技術規格",
       "metrics": [
         {
-          "label": "Input Format",
+          "label": "輸入格式",
           "value": "JPG, PNG, WebP (Thumbnail images)"
         },
         {
-          "label": "Output Format",
+          "label": "輸出格式",
           "value": "JPG (Optimized for YouTube)"
         },
         {
-          "label": "File Size Limit",
+          "label": "檔案大小限制",
           "value": "Under 2MB (YouTube requirement)"
         },
         {
-          "label": "Resolution Support",
+          "label": "解析度支援",
           "value": "Up to 4K (3840x2160) - Dimensions preserved"
         },
         {
-          "label": "Batch Processing",
+          "label": "批次處理",
           "value": "Up to 100 thumbnails per session"
         },
         {
-          "label": "Processing Speed",
+          "label": "處理速度",
           "value": "Instant browser-side compression"
         }
       ]
     },
     "howToUse": {
-      "title": "How to Compress YouTube Thumbnails",
+      "title": "如何優化 YouTube 縮圖",
       "steps": [
         {
           "title": "Upload Thumbnail",
-          "desc": "Drag and drop your YouTube thumbnail image or click to browse. Supports JPG, PNG, and WebP formats up to 4K resolution."
+          "desc": "拖放您的圖片或點擊瀏覽。"
         },
         {
           "title": "Set 2MB Target",
@@ -1550,12 +1545,12 @@
         },
         {
           "title": "Download Optimized",
-          "desc": "Download your compressed thumbnail instantly. The file is guaranteed to be under 2MB and ready to upload to YouTube without errors."
+          "desc": "立即下載您的壓縮圖片。檔案已準備好使用。"
         }
       ]
     },
     "rating": {
-      "text": "\"Fixed my YouTube upload errors instantly! Thumbnails stay under 2MB with perfect quality.\" - Join thousands of creators who trust Toolaze for YouTube thumbnail optimization."
+      "text": "\"Fixed my YouTube upload errors instantly! Thumbnails stay under 2MB with perfect quality.\" - 加入數千名信賴 Toolaze 的使用者。"
     },
     "comparison": {
       "toolaze": "高點擊率專注，2MB 保證",
@@ -1585,7 +1580,16 @@
     },
     "intro": {
       "title": "完美適合 Nitro 和伺服器",
-      "content": "無論您是為您的公會上傳自訂表情符號還是貼紙，256KB 限制都很嚴格。我們使用積極優化來保持您的透明背景清晰和檔案小。"
+      "content": [
+        {
+          "title": "Discord 的嚴格 256KB 檔案大小限制",
+          "text": "我們的瀏覽器壓縮工具使用 Canvas API 在本地處理您的檔案，確保完全的隱私和快速壓縮，無需將您的圖片上傳到任何伺服器。"
+        },
+        {
+          "title": "保留自訂伺服器表情符號的透明度",
+          "text": "自訂 Discord 表情符號通常需要透明背景才能與 Discord 介面無縫融合，並在聊天中看起來專業。將 PNG 表情符號轉換為 JPG 以減小檔案大小會破壞這種透明度，迫使您使用看起來不專業的實心背景。我們的壓縮演算法在整個過程中保持 Alpha 通道，確保您的透明背景保持完全清晰，您的自訂表情符號保持清晰。所有處理都在您的瀏覽器中本地進行，因此您的表情符號設計永遠不會離開您的設備，並保持完全私密和安全。"
+        }
+      ]
     },
     "specs": {
       "engine": "硬限制執行器",
@@ -1607,7 +1611,7 @@
       {
         "icon": "🖼️",
         "title": "Profile Banners",
-        "desc": "Help Nitro users optimize their profile banners. Reduce file sizes while avoiding compression artifacts for crisp, professional-looking banners."
+        "desc": "在保持品質的同時大幅減少檔案大小。"
       }
     ],
     "faq": [
@@ -1620,28 +1624,24 @@
         "a": "目前最適合靜態圖片（JPG/PNG/WebP）。"
       },
       {
-        "q": "Can I compress multiple emojis at once?",
-        "a": "Yes! Toolaze supports batch processing of up to 100 emoji images simultaneously. Perfect for optimizing entire emoji sets for server customization efficiently."
+        "q": "我可以一次壓縮多個 emojis 檔案嗎？",
+        "a": "是的！Toolaze 支援同時批次處理最多 100 張圖片。非常適合一次操作處理多個檔案。"
       },
       {
-        "q": "Are my emoji designs uploaded to a server?",
-        "a": "No! All compression happens locally in your browser using JavaScript and Canvas API. Your emoji designs never leave your device, ensuring complete privacy and security."
+        "q": "我的檔案會上傳到伺服器嗎？",
+        "a": "是的！所有壓縮都在您的瀏覽器中使用 JavaScript 和 Canvas API 本地進行。您的圖片永遠不會離開您的設備，確保完全的隱私和安全。"
       },
       {
-        "q": "What's the difference between emoji and sticker compression?",
+        "q": "不同壓縮格式之間的差異是什麼？",
         "a": "Both emojis and stickers have the same 256KB limit on Discord. Emojis are typically smaller (128x128px) and used in chat, while stickers can be larger (up to 320x320px) and are available to Nitro users. Toolaze handles both formats with the same precision."
       },
       {
-        "q": "Will my compressed emoji look pixelated?",
-        "a": "No. Toolaze uses intelligent compression algorithms that preserve visual quality while reducing file size. The compression focuses on optimizing the image structure rather than reducing resolution unnecessarily, ensuring your emojis look crisp and professional."
+        "q": "壓縮後我的圖片會看起來有像素化嗎？",
+        "a": "不會。Toolaze 使用智能壓縮演算法，在減少檔案大小的同時保持視覺品質。壓縮專注於移除不可見數據並優化圖像結構，而不是不必要地降低解析度。"
       }
     ],
-    "compare": {
-      "toolaze": "嚴格 256KB 上限，透明度安全",
-      "others": "錯過檔案限制，失去透明度"
-    },
     "features": {
-      "title": "Discord Emoji Compression Features",
+      "title": "Discord 表情符號優化功能",
       "items": [
         {
           "icon": "🎯",
@@ -1652,87 +1652,87 @@
         {
           "icon": "🔒",
           "iconType": "privacy",
-          "title": "100% Private Processing",
-          "desc": "All compression happens locally in your browser. Your emoji designs never leave your device, ensuring complete privacy and security."
+          "title": "100% 私密處理",
+          "desc": "所有壓縮都在您的瀏覽器中本地進行。您的表情符號設計永遠不會離開您的裝置，確保完全隱私和安全。"
         },
         {
           "icon": "📦",
           "iconType": "batch",
-          "title": "Batch Processing",
-          "desc": "Process up to 100 emoji images simultaneously. Optimize entire emoji sets for server customization in one operation."
+          "title": "批次處理",
+          "desc": "同時處理最多 100 張表情符號圖片。在一次操作中優化整個表情符號集以進行伺服器自訂。"
         },
         {
           "icon": "⚡",
           "iconType": "speed",
-          "title": "Instant Compression",
-          "desc": "Browser-native Canvas API processing ensures instant compression without server uploads or waiting queues. Get your emotes ready immediately."
+          "title": "即時壓縮",
+          "desc": "瀏覽器原生 Canvas API 處理確保即時壓縮，無需伺服器上傳或等待佇列。立即準備好您的表情符號。"
         },
         {
           "icon": "💎",
           "iconType": "free",
-          "title": "Free Forever",
-          "desc": "Unlimited emoji compression completely free—no premium tiers, no subscription fees, no advertisements. Perfect for server admins."
+          "title": "永久免費",
+          "desc": "無限制的表情符號壓縮完全免費—無高級層級、無訂閱費用、無廣告。非常適合伺服器管理員。"
         },
         {
           "icon": "🎨",
           "iconType": "quality",
-          "title": "Transparency Preserved",
-          "desc": "Maintain Alpha channel transparency for PNG emojis. Keep your custom emotes crisp with transparent backgrounds for professional server branding."
+          "title": "透明度保留",
+          "desc": "為 PNG 表情符號保持 Alpha 通道透明度。為專業的伺服器品牌保持您的自訂表情符號清晰，帶有透明背景。"
         }
       ]
     },
     "performanceMetrics": {
-      "title": "Technical Specifications",
+      "title": "技術規格",
       "metrics": [
         {
-          "label": "Input Format",
+          "label": "輸入格式",
           "value": "PNG, JPG, WebP (Emoji and sticker images)"
         },
         {
-          "label": "Output Format",
+          "label": "輸出格式",
           "value": "PNG (Transparency preserved) or JPG"
         },
         {
-          "label": "File Size Limit",
+          "label": "檔案大小限制",
           "value": "Exactly 256KB (Discord requirement)"
         },
         {
           "label": "Transparency Support",
-          "value": "Alpha channel preserved for PNG emojis"
+          "value": "Alpha 通道 preserved for PNG emojis"
         },
         {
-          "label": "Batch Processing",
+          "label": "批次處理",
           "value": "Up to 100 emoji images per session"
         },
         {
-          "label": "Processing Speed",
+          "label": "處理速度",
           "value": "Instant browser-side compression"
         }
       ]
     },
     "howToUse": {
-      "title": "How to Compress Discord Emoji to 256KB",
+      "title": "如何優化 Discord 表情符號",
       "steps": [
         {
-          "title": "Upload Emoji Image",
-          "desc": "Drag and drop your emoji image or click to browse. Supports PNG, JPG, and WebP formats. PNG is recommended for transparent backgrounds."
+          "title": "上傳 Emoji 圖片",
+          "desc": "拖放您的圖片或點擊瀏覽。"
         },
         {
-          "title": "Set 256KB Target",
-          "desc": "The tool automatically sets the target to exactly 256KB. Our algorithm compresses your emoji while preserving transparency and visual quality."
+          "title": "設定 256KB 目標",
+          "desc": "工具會自動將目標設定為精確的 256KB。我們的演算法會精確壓縮您的圖片，在保持品質的同時滿足要求。"
         },
         {
           "title": "Download Optimized",
-          "desc": "Download your compressed emoji instantly. The file is guaranteed to be under 256KB and ready to upload to Discord without errors."
+          "desc": "立即下載您的壓縮圖片。檔案已準備好使用。"
         }
       ]
     },
     "comparison": {
-      "toolaze": "Strict 256KB cap, Transparency preserved, 100% browser-side processing, No watermarks or quality loss, Batch process up to 100 emojis, Free forever",
-      "others": "May exceed 256KB limit, Loses transparency, Server uploads required, Watermarks or quality degradation, Limited batch processing, Subscription fees or ads"
+      "toolaze": "嚴格 256KB 上限、透明度保留、100% 瀏覽器端處理、無水印或品質損失、批次處理最多 100 個表情符號、永久免費",
+      "others": "可能超過 256KB 限制、失去透明度、需要伺服器上傳、水印或品質下降、有限的批次處理、訂閱費用或廣告"
     },
     "rating": {
-      "text": "\"My custom Discord emojis uploaded perfectly! Transparency stayed intact and the 256KB limit was no problem.\" - Join thousands of server admins who trust Toolaze for Discord customization."
+      "text": "\"My custom Discord emojis uploaded perfectly! Transparency stayed intact and the 256KB limit was no problem.\" - 加入數千名信賴 Toolaze 的使用者。"
     }
   },
   "email-signature-20kb": {
@@ -1758,7 +1758,16 @@
     },
     "intro": {
       "title": "專業且輕量",
-      "content": "過重的電子郵件簽名不專業且消耗行動數據。Toolaze 縮小您的公司標誌和證件照，使它們即使在慢速連線上也能即時載入，保持您的電子郵件看起來清晰。"
+      "content": [
+        {
+          "title": "防止垃圾郵件過濾器並提高送達率",
+          "text": "我們的瀏覽器壓縮工具使用 Canvas API 在本地處理您的檔案，確保完全的隱私和快速壓縮，無需將您的圖片上傳到任何伺服器。"
+        },
+        {
+          "title": "在所有設備上的專業外觀",
+          "text": "沉重的電子郵件簽名不專業，並且會消耗收件人的行動數據。當您的簽名圖像太大時，它們在慢速連接上加載緩慢，造成不良印象，並可能導致收件人在閱讀之前刪除您的電子郵件。Toolaze 縮小您的公司標誌和個人資料照片，使它們即使在 3G 網絡上也能立即加載，保持您的電子郵件清晰專業。我們專門針對 Retina 顯示器和高解析度螢幕進行優化，確保您的標誌和個人資料照片即使在小的檔案大小下也保持清晰。所有處理都在您的瀏覽器中本地進行，因此您的企業品牌資產永遠不會離開您的設備，並保持完全私密和安全。"
+        }
+      ]
     },
     "specs": {
       "engine": "標誌清晰演算法",
@@ -1780,7 +1789,7 @@
       {
         "icon": "📧",
         "title": "Team Signatures",
-        "desc": "Batch process entire team's signature images. Optimize logos and headshots for consistent professional branding across all team members."
+        "desc": "快速處理多張圖片而不損失品質。"
       }
     ],
     "faq": [
@@ -1793,12 +1802,12 @@
         "a": "是的，小的 JPG 或 PNG 檔案是 Outlook 簽名最相容的格式。"
       },
       {
-        "q": "Can I compress multiple signature images at once?",
-        "a": "Yes! Toolaze supports batch processing of up to 100 signature images simultaneously. Perfect for optimizing entire team's logos and headshots for consistent professional branding."
+        "q": "我可以一次壓縮多個 signature 檔案嗎？",
+        "a": "是的！Toolaze 支援同時批次處理最多 100 張圖片。非常適合一次操作處理多個檔案。"
       },
       {
-        "q": "Are my corporate logos uploaded to a server?",
-        "a": "No! All compression happens locally in your browser using JavaScript and Canvas API. Your company logos and headshots never leave your device, ensuring complete privacy and security for your corporate branding assets."
+        "q": "我的檔案會上傳到伺服器嗎？",
+        "a": "是的！所有壓縮都在您的瀏覽器中使用 JavaScript 和 Canvas API 本地進行。您的圖片永遠不會離開您的設備，確保完全的隱私和安全。"
       },
       {
         "q": "What file size should I use for email signatures?",
@@ -1806,13 +1815,9 @@
       },
       {
         "q": "Does it preserve PNG transparency for logos?",
-        "a": "Yes! If you upload a PNG logo with transparency, Toolaze preserves the Alpha channel throughout compression. Your transparent backgrounds remain perfectly clear, making your logo look professional in email signatures."
+        "a": "Yes! If you upload a PNG logo with transparency, Toolaze preserves the Alpha 通道 throughout compression. Your transparent backgrounds remain perfectly clear, making your logo look professional in email signatures."
       }
     ],
-    "compare": {
-      "toolaze": "垃圾郵件過濾器安全，Retina 就緒",
-      "others": "太重，像素化邊緣"
-    },
     "features": {
       "title": "Email Signature Image Optimization Features",
       "items": [
@@ -1825,32 +1830,32 @@
         {
           "icon": "🔒",
           "iconType": "privacy",
-          "title": "100% Private Processing",
-          "desc": "All compression happens locally in your browser. Your corporate logos and headshots never leave your device, ensuring complete privacy."
+          "title": "100% 私密處理",
+          "desc": "所有壓縮都在您的瀏覽器中本地進行。您的企業標誌和頭像永遠不會離開您的裝置，確保完全隱私。"
         },
         {
           "icon": "📦",
           "iconType": "batch",
-          "title": "Batch Processing",
-          "desc": "Process up to 100 signature images simultaneously. Optimize entire team's logos and headshots in one operation."
+          "title": "批次處理",
+          "desc": "同時處理最多 100 張簽名圖片。在一次操作中優化整個團隊的標誌和頭像。"
         },
         {
           "icon": "⚡",
           "iconType": "speed",
           "title": "Instant Optimization",
-          "desc": "Browser-native Canvas API processing ensures instant compression without server uploads or waiting queues. Get your signatures ready immediately."
+          "desc": "瀏覽器原生 Canvas API 處理確保即時壓縮，無需伺服器上傳或等待佇列。立即準備好您的簽名。"
         },
         {
           "icon": "💎",
           "iconType": "free",
-          "title": "Free Forever",
-          "desc": "Unlimited image optimization completely free—no premium tiers, no subscription fees, no advertisements. Perfect for businesses of all sizes."
+          "title": "永久免費",
+          "desc": "無限制的圖片優化完全免費—無高級層級、無訂閱費用、無廣告。非常適合各種規模的企業。"
         },
         {
           "icon": "📱",
           "iconType": "quality",
           "title": "Retina-Ready Quality",
-          "desc": "Maintain crisp quality for Retina displays. Keep your logos and headshots sharp even at small file sizes for professional branding."
+          "desc": "為 Retina 顯示器保持清晰品質。即使在小檔案大小下也保持您的標誌和頭像清晰，以實現專業品牌。"
         }
       ]
     },
@@ -1858,15 +1863,15 @@
       "title": "Technical Specifications",
       "metrics": [
         {
-          "label": "Input Format",
+          "label": "輸入格式",
           "value": "JPG, PNG (Logos and headshots)"
         },
         {
-          "label": "Output Format",
+          "label": "輸出格式",
           "value": "JPG or PNG (Optimized for email)"
         },
         {
-          "label": "File Size Target",
+          "label": "檔案大小目標",
           "value": "20KB-50KB (Spam-filter safe)"
         },
         {
@@ -1874,11 +1879,11 @@
           "value": "PNG transparency preserved"
         },
         {
-          "label": "Batch Processing",
+          "label": "批次處理",
           "value": "Up to 100 images per session"
         },
         {
-          "label": "Processing Speed",
+          "label": "處理速度",
           "value": "Instant browser-side compression"
         }
       ]
@@ -1888,10 +1893,10 @@
       "steps": [
         {
           "title": "Upload Logo or Headshot",
-          "desc": "Drag and drop your company logo or professional headshot or click to browse. Supports JPG and PNG formats with transparency."
+          "desc": "拖放您的圖片或點擊瀏覽。"
         },
         {
-          "title": "Set 20KB Target",
+          "title": "設定 20KB 目標",
           "desc": "The tool automatically sets the target to 20KB-50KB. Our algorithm compresses your image while maintaining crisp quality for Retina displays."
         },
         {
@@ -1901,18 +1906,18 @@
       ]
     },
     "comparison": {
-      "toolaze": "Spam-filter safe (20KB-50KB), Retina-ready quality, 100% browser-side processing, No watermarks or quality loss, Batch process up to 100 images, Free forever",
-      "others": "Too heavy (triggers spam filters), Pixelated edges on Retina screens, Server uploads required, Watermarks or quality degradation, Limited batch processing, Subscription fees or ads"
+      "toolaze": "垃圾郵件過濾器安全（20KB-50KB）、Retina 品質就緒、100% 瀏覽器端處理、無水印或品質損失、批次處理最多 100 張圖片、永久免費",
+      "others": "太重（觸發垃圾郵件過濾器）、Retina 螢幕上的像素化邊緣、需要伺服器上傳、水印或品質下降、有限的批次處理、訂閱費用或廣告"
     },
     "rating": {
-      "text": "\"No more spam filters! My email signatures load instantly and look crisp on Retina displays.\" - Join thousands of professionals who trust Toolaze for email signature optimization."
+      "text": "\"No more spam filters! My email signatures load instantly and look crisp on Retina displays.\" - 加入數千名信賴 Toolaze 的使用者。"
     }
   },
   "compress-jpg": {
     "in_menu": true,
     "metadata": {
-      "title": "Compress JPG Online (Free, Batch & No Ads) - Toolaze",
-      "description": "How to compress JPG images? 1. Upload JPG 2. Set target size 3. Download compressed. Reduce file size by 60% while maintaining quality. Secure & Private."
+      "title": "在線壓縮 JPG（免費、批次處理、無廣告） - Toolaze",
+      "description": "如何壓縮 JPG 圖片？1. 上傳 JPG 2. 設定目標大小 3. 下載壓縮後的檔案。在保持品質的同時將檔案大小減少 60%。安全且私密。"
     },
     "sectionsOrder": [
       "howToUse",
@@ -1925,179 +1930,175 @@
       "faq"
     ],
     "hero": {
-      "h1": "JPG Compressor",
-      "desc": "Compress JPG images online for free. Simply drop your JPG images below to compress them in seconds."
+      "h1": "JPG 壓縮工具",
+      "desc": "在線免費壓縮 JPG 圖片。只需將您的 JPG 圖片拖放到下方，即可在幾秒鐘內完成壓縮。"
     },
     "intro": {
-      "title": "Why Compress JPG Images?",
+      "title": "為什麼要壓縮 JPG 圖片？",
       "content": [
         {
-          "title": "JPG Compression Benefits",
-          "text": "JPG (JPEG) is the most widely used image format for photos and web images. However, large JPG files can slow down websites, consume storage space, and cause upload failures. Compressing JPG images reduces file size by 50-70% while maintaining acceptable visual quality, making them perfect for web use, email attachments, and online forms. Our browser-based compressor processes your JPG files locally using Canvas API, ensuring complete privacy and fast compression without uploading your images to any server."
+          "title": "JPG 壓縮的優點",
+          "text": "JPG（JPEG）是用於照片和網頁圖片最廣泛使用的圖片格式。然而，大型 JPG 檔案可能會減慢網站速度、消耗儲存空間並導致上傳失敗。壓縮 JPG 圖片可在保持可接受的視覺品質的同時將檔案大小減少 50-70%，使其非常適合網頁使用、電子郵件附件和線上表單。我們的瀏覽器壓縮工具使用 Canvas API 在本地處理您的 JPG 檔案，確保完全的隱私和快速壓縮，無需將您的圖片上傳到任何伺服器。"
         },
         {
-          "title": "When to Compress JPG",
-          "text": "Compress JPG images when you need to reduce file size for faster website loading, meet upload size limits for online forms or email attachments, save storage space on your device or cloud storage, or optimize images for social media platforms. Our tool supports precise size control, allowing you to set exact target sizes in KB or MB, making it perfect for meeting specific requirements while maintaining image quality."
+          "title": "何時壓縮 JPG",
+          "text": "當您需要減少檔案大小以加快網站載入時間、滿足線上表單或電子郵件附件的上傳大小限制、節省設備或雲端儲存空間，或優化社交媒體平台的圖片時，請壓縮 JPG 圖片。我們的工具支援精確的大小控制，允許您以 KB 或 MB 設定確切的目標大小，使其非常適合在保持圖片品質的同時滿足特定要求。"
         }
       ]
     },
     "features": {
-      "title": "JPG Compression Features",
+      "title": "JPG 壓縮功能",
       "items": [
         {
           "icon": "📊",
           "iconType": "compression",
-          "title": "Precise Size Control",
-          "desc": "Set exact target sizes in KB or MB. Compress JPG images to meet specific requirements while maintaining visual quality."
+          "title": "精確大小控制",
+          "desc": "設定精確的目標大小（KB 或 MB）。在保持視覺品質的同時壓縮 JPG 圖片以滿足特定要求。"
         },
         {
           "icon": "🔒",
           "iconType": "privacy",
-          "title": "100% Private Processing",
-          "desc": "All compression happens locally in your browser. Your JPG files never leave your device, ensuring complete privacy and security."
+          "title": "100% 私密處理",
+          "desc": "所有壓縮都在您的瀏覽器中本地進行。您的 JPG 檔案永遠不會離開您的設備，確保完全的隱私和安全。"
         },
         {
           "icon": "📦",
           "iconType": "batch",
-          "title": "Batch Processing",
-          "desc": "Compress up to 100 JPG images simultaneously. Process entire photo collections in one operation."
+          "title": "批次處理",
+          "desc": "同時壓縮最多 100 張 JPG 圖片。一次操作處理整個照片集合。"
         },
         {
           "icon": "⚡",
           "iconType": "speed",
-          "title": "Fast Compression",
-          "desc": "Browser-native Canvas API processing ensures instant compression without server uploads or waiting queues."
+          "title": "快速壓縮",
+          "desc": "瀏覽器原生 Canvas API 處理確保即時壓縮，無需服務器上傳或等待隊列。"
         },
         {
           "icon": "💎",
           "iconType": "free",
-          "title": "Free Forever",
-          "desc": "Unlimited JPG compression completely free—no premium tiers, no subscription fees, no advertisements."
+          "title": "永久免費",
+          "desc": "無限 JPG 壓縮完全免費—無高級層級、無訂閱費用、無廣告。"
         },
         {
           "icon": "🌐",
           "iconType": "browser",
-          "title": "No Installation",
-          "desc": "Works directly in your web browser. No software downloads or plugin installations required."
+          "title": "無需安裝",
+          "desc": "直接在您的網頁瀏覽器中運行。無需下載軟體或安裝插件。"
         }
       ]
     },
     "specs": {
-      "engine": "Canvas API - Browser-Native Processing",
-      "limit": "Batch 100+ Images - Unlimited File Sizes",
+      "engine": "Canvas API - 瀏覽器原生處理",
+      "limit": "批次 100+ 圖片 - 無限制檔案大小",
       "logic": "Precise KB/MB Size Control",
-      "privacy": "100% Client-Side (Local Browser Processing)"
+      "privacy": "100% 客戶端 (Local Browser Processing)"
     },
     "performanceMetrics": {
-      "title": "Technical Specifications",
+      "title": "技術規格",
       "metrics": [
         {
-          "label": "Input Format",
-          "value": "JPG/JPEG (Joint Photographic Experts Group)"
+          "label": "輸入格式",
+          "value": "JPG/JPEG (聯合圖像專家小組)"
         },
         {
-          "label": "Output Format",
-          "value": "JPG (Original format preserved)"
+          "label": "輸出格式",
+          "value": "JPG (保留原始格式)"
         },
         {
-          "label": "Max Batch Size",
-          "value": "100 Images per session"
+          "label": "最大批次大小",
+          "value": "每個會話 100 張圖片"
         },
         {
-          "label": "File Size Limit",
-          "value": "Unlimited (Limited by browser memory)"
+          "label": "檔案大小限制",
+          "value": "無限制（受瀏覽器記憶體限制）"
         },
         {
-          "label": "Compression Ratio",
-          "value": "50-70% size reduction typical"
+          "label": "壓縮比率",
+          "value": "通常減少 50-70% 大小"
         },
         {
-          "label": "Processing Location",
-          "value": "100% Client-Side (Browser Canvas API)"
+          "label": "處理位置",
+          "value": "100% 客戶端（瀏覽器 Canvas API）"
         },
         {
-          "label": "Quality Control",
-          "value": "Precise size targeting with quality preservation"
+          "label": "品質控制",
+          "value": "精確大小目標設定，保持品質"
         }
       ]
     },
     "howToUse": {
-      "title": "How to Compress JPG Images",
+      "title": "如何壓縮 JPG 圖片",
       "steps": [
         {
-          "title": "Upload Your JPG Files",
-          "desc": "Drag and drop your JPG images into the compressor area or click to browse and select JPG files from your device."
+          "title": "上傳您的 JPG 檔案",
+          "desc": "將您的 JPG 圖片拖放到壓縮區域，或點擊瀏覽並從您的裝置中選擇 JPG 檔案。"
         },
         {
-          "title": "Set Target Size",
-          "desc": "Choose your desired file size in KB or MB. Our compressor will optimize your JPG images to meet the target while maintaining quality."
+          "title": "設定目標大小",
+          "desc": "選擇您想要的檔案大小（KB 或 MB）。我們的壓縮工具將優化您的 JPG 圖片以達到目標，同時保持品質。"
         },
         {
-          "title": "Download Compressed Files",
-          "desc": "Download your compressed JPG files instantly. Each file maintains visual quality while being significantly smaller than the original."
+          "title": "下載壓縮檔案",
+          "desc": "立即下載您的壓縮 JPG 檔案。每個檔案保持視覺品質，同時比原始檔案小得多。"
         }
       ]
     },
     "comparison": {
-      "toolaze": "Unlimited file sizes, Batch 100+ images, Precise size control, 100% local processing, No uploads, Free forever",
-      "others": "20MB file limits, Single file processing, No size control, Cloud uploads required, Server queues, Paid upgrades"
+      "toolaze": "無限制檔案大小、批次處理 100+ 圖片、精確大小控制、100% 本地處理、無需上傳、永久免費",
+      "others": "20MB 檔案限制、單一檔案處理、無大小控制、需要雲端上傳、伺服器佇列、付費升級"
     },
     "scenes": [
       {
-        "title": "Web Developers",
+        "title": "網頁開發者",
         "icon": "💻",
-        "desc": "Optimize JPG images for websites and apps. Reduce load times while maintaining quality for better SEO and user experience."
+        "desc": "優化網站和應用程式的圖片。在保持品質的同時減少載入時間，以改善 SEO 和使用者體驗。"
       },
       {
-        "title": "Photographers",
+        "title": "攝影師",
         "icon": "📸",
-        "desc": "Compress large photo collections for sharing and storage. Maintain quality while reducing file sizes significantly."
+        "desc": "壓縮大型照片集合以供分享和儲存。在保持品質的同時大幅減少檔案大小。"
       },
       {
-        "title": "Content Creators",
+        "title": "內容創作者",
         "icon": "📱",
-        "desc": "Prepare JPG images for social media and blogs. Batch process multiple images quickly without quality loss."
+        "desc": "為社交媒體和部落格準備圖片。快速批次處理多張圖片而不損失品質。"
       }
     ],
     "rating": {
-      "text": "\"Perfect tool for optimizing my website images. Fast and private!\" - Join thousands of users who trust Toolaze for JPG compression."
+      "text": "\"優化網站圖片的完美工具。快速且私密！\" - 加入數千名信賴 Toolaze 進行 JPG 壓縮的使用者。"
     },
     "faq": [
       {
-        "q": "How much can I compress a JPG file?",
-        "a": "Typically, JPG files can be compressed by 50-70% while maintaining acceptable visual quality. The exact reduction depends on the original file size and quality settings."
+        "q": "我可以將 JPG 檔案壓縮多少？",
+        "a": "通常，JPG 檔案可以在保持可接受的視覺品質的同時壓縮 50-70%。確切的減少取決於原始檔案大小和品質設定。"
       },
       {
-        "q": "Will compressing JPG reduce image quality?",
-        "a": "Some quality reduction is expected with compression, but our tool optimizes the compression to maintain visual quality while meeting your target file size."
+        "q": "壓縮 JPG 會降低圖片品質嗎？",
+        "a": "壓縮時會有一些品質下降，但我們的工具會優化壓縮以在達到目標檔案大小的同時保持視覺品質。"
       },
       {
-        "q": "Can I compress multiple JPG files at once?",
-        "a": "Yes, Toolaze supports batch compression of up to 100 JPG files per session. You can process entire photo collections in one operation."
+        "q": "我可以一次壓縮多個 JPG 檔案嗎？",
+        "a": "是的，Toolaze 支援每個會話批次壓縮最多 100 個 JPG 檔案。您可以一次操作處理整個照片集合。"
       },
       {
-        "q": "Is JPG compression free and secure?",
-        "a": "Yes, Toolaze is completely free forever with no hidden costs. Most importantly, all compression happens locally in your browser. Your JPG files never leave your device—ensuring 100% privacy and security."
+        "q": "JPG 壓縮是免費且安全的嗎？",
+        "a": "是的，Toolaze 永遠完全免費，沒有隱藏費用。最重要的是，所有壓縮都在您的瀏覽器中本地進行。您的 JPG 檔案永遠不會離開您的設備，確保 100% 的隱私和安全。"
       },
       {
-        "q": "What file sizes can I compress?",
-        "a": "There are no individual file size limits. If your computer can open the file, Toolaze can compress it. You can process files of any size."
+        "q": "我可以壓縮哪些檔案大小？",
+        "a": "沒有個別檔案大小限制。如果您的電腦可以打開檔案，Toolaze 就可以壓縮它。您可以處理任何大小的檔案。"
       },
       {
-        "q": "Does the compressed JPG maintain the original format?",
-        "a": "Yes, compressed files remain in JPG format. The tool optimizes the file size while preserving the JPG format for maximum compatibility."
+        "q": "壓縮後的 JPG 會保持原始格式嗎？",
+        "a": "是的，壓縮後的檔案保持 JPG 格式。工具在保持 JPG 格式以實現最大兼容性的同時優化檔案大小。"
       }
-    ],
-    "compare": {
-      "toolaze": "Unlimited JPG compression, Precise size control, Batch processing, Local-first architecture, No file size limits, Complete privacy",
-      "others": "20MB file limits, Cloud uploads required, Single file processing, Server queues, EXIF data stripped, Privacy concerns"
-    }
+    ]
   },
   "compress-png": {
     "in_menu": true,
     "metadata": {
-      "title": "Compress PNG Online (Free, Batch & No Ads) - Toolaze",
-      "description": "How to compress PNG images? 1. Upload PNG 2. Set target size 3. Download compressed. Reduce file size by 50% while preserving transparency. Secure & Private."
+      "title": "線上壓縮 PNG（免費、批次處理、無廣告）- Toolaze",
+      "description": "如何壓縮 PNG 圖片？1. 上傳 PNG 2. 設定目標大小 3. 下載壓縮檔。在保持透明度的同時將檔案大小減少 50%。安全且私密。"
     },
     "sectionsOrder": [
       "howToUse",
@@ -2110,179 +2111,175 @@
       "faq"
     ],
     "hero": {
-      "h1": "PNG Compressor",
-      "desc": "Compress PNG images online for free. Simply drop your PNG images below to compress them in seconds."
+      "h1": "PNG 壓縮工具",
+      "desc": "在線免費壓縮 PNG 圖片。只需將您的 PNG 圖片拖放到下方，即可在幾秒鐘內完成壓縮。"
     },
     "intro": {
-      "title": "Why Compress PNG Images?",
+      "title": "為什麼要壓縮 PNG 圖片？",
       "content": [
         {
-          "title": "PNG Compression Benefits",
-          "text": "PNG (Portable Network Graphics) is a lossless format that supports transparency, making it ideal for graphics, logos, and images requiring transparent backgrounds. However, PNG files are often significantly larger than JPG files—typically 2-5 times bigger—which can impact website loading speeds and consume storage space. Compressing PNG images reduces file size by 40-60% while preserving transparency and maintaining visual quality, making them perfect for web use without sacrificing the transparency features that make PNG valuable."
+          "title": "PNG 壓縮的優勢",
+          "text": "PNG（Portable Network Graphics）是一種支援透明度的無損格式，非常適合需要透明背景的圖形、標誌和圖片。然而，PNG 檔案通常比 JPG 檔案大得多—通常是 2-5 倍—這可能會影響網站載入速度並消耗儲存空間。壓縮 PNG 圖片可在保持透明度和視覺品質的同時將檔案大小減少 40-60%，使其非常適合網頁使用，而不會犧牲使 PNG 有價值的透明度功能。"
         },
         {
-          "title": "When to Compress PNG",
-          "text": "Compress PNG images when you need to optimize graphics and logos for faster website loading, reduce file sizes while maintaining transparency for web design projects, meet upload size limits for online forms or platforms, or save storage space without losing the transparency feature. Our tool uses Canvas API to compress PNG files locally in your browser, ensuring complete privacy while preserving the alpha channel transparency that makes PNG format unique."
+          "title": "何時壓縮 PNG",
+          "text": "當您需要優化圖形和標誌以加快網站載入速度、在網頁設計專案中保持透明度的同時減少檔案大小、滿足線上表單或平台的上傳大小限制，或在不失去透明度功能的情況下節省儲存空間時，請壓縮 PNG 圖片。我們的工具使用 Canvas API 在您的瀏覽器中本地壓縮 PNG 檔案，確保完全隱私，同時保持使 PNG 格式獨特的 Alpha 通道透明度。"
         }
       ]
     },
     "features": {
-      "title": "PNG Compression Features",
+      "title": "PNG 壓縮功能",
       "items": [
         {
           "icon": "🎨",
           "iconType": "transparency",
-          "title": "Transparency Preserved",
-          "desc": "Maintains full alpha channel transparency during compression. Your transparent backgrounds remain perfectly clear."
+          "title": "透明度保留",
+          "desc": "在壓縮過程中保持完整的 Alpha 通道透明度。您的透明背景保持完美清晰。"
         },
         {
           "icon": "📊",
           "iconType": "compression",
-          "title": "Precise Size Control",
-          "desc": "Set exact target sizes in KB or MB. Compress PNG images to meet specific requirements while preserving transparency."
+          "title": "精確大小控制",
+          "desc": "以 KB 或 MB 設定精確的目標大小。在保持透明度的同時壓縮 PNG 圖片以滿足特定要求。"
         },
         {
           "icon": "🔒",
           "iconType": "privacy",
-          "title": "100% Private Processing",
-          "desc": "All compression happens locally in your browser. Your PNG files never leave your device, ensuring complete privacy."
+          "title": "100% 私密處理",
+          "desc": "所有壓縮都在您的瀏覽器中本地進行。您的 PNG 檔案永遠不會離開您的裝置，確保完全隱私。"
         },
         {
           "icon": "📦",
           "iconType": "batch",
-          "title": "Batch Processing",
-          "desc": "Compress up to 100 PNG images simultaneously. Process entire graphic collections in one operation."
+          "title": "批次處理",
+          "desc": "同時壓縮最多 100 張 PNG 圖片。在一次操作中處理整個圖形集合。"
         },
         {
           "icon": "⚡",
           "iconType": "speed",
-          "title": "Fast Compression",
-          "desc": "Browser-native Canvas API processing ensures instant compression without server uploads or delays."
+          "title": "快速壓縮",
+          "desc": "瀏覽器原生 Canvas API 處理確保即時壓縮，無需服務器上傳或延遲。"
         },
         {
           "icon": "💎",
           "iconType": "free",
-          "title": "Free Forever",
-          "desc": "Unlimited PNG compression completely free—no premium tiers, no subscription fees, no advertisements."
+          "title": "永久免費",
+          "desc": "無限制的 PNG 壓縮完全免費—無高級層級、無訂閱費用、無廣告。"
         }
       ]
     },
     "specs": {
-      "engine": "Canvas API - Browser-Native Processing",
-      "limit": "Batch 100+ Images - Unlimited File Sizes",
-      "logic": "Transparency-Preserving Compression",
-      "privacy": "100% Client-Side (Local Browser Processing)"
+      "engine": "Canvas API - 瀏覽器原生處理",
+      "limit": "批次 100+ 圖片 - 無限制檔案大小",
+      "logic": "透明度保留壓縮",
+      "privacy": "100% 客戶端 (Local Browser Processing)"
     },
     "performanceMetrics": {
-      "title": "Technical Specifications",
+      "title": "技術規格",
       "metrics": [
         {
-          "label": "Input Format",
-          "value": "PNG (Portable Network Graphics)"
+          "label": "輸入格式",
+          "value": "PNG (可攜式網路圖形)"
         },
         {
-          "label": "Output Format",
-          "value": "PNG (Original format preserved)"
+          "label": "輸出格式",
+          "value": "PNG (保留原始格式)"
         },
         {
-          "label": "Max Batch Size",
-          "value": "100 Images per session"
+          "label": "最大批次大小",
+          "value": "每個會話 100 張圖片"
         },
         {
-          "label": "File Size Limit",
-          "value": "Unlimited (Limited by browser memory)"
+          "label": "檔案大小限制",
+          "value": "無限制（受瀏覽器記憶體限制）"
         },
         {
-          "label": "Transparency Support",
-          "value": "Full alpha channel transparency preserved"
+          "label": "透明度支援",
+          "value": "保留完整的 Alpha 通道透明度"
         },
         {
-          "label": "Compression Ratio",
-          "value": "40-60% size reduction typical"
+          "label": "壓縮比率",
+          "value": "典型的 40-60% 大小減少"
         },
         {
-          "label": "Processing Location",
-          "value": "100% Client-Side (Browser Canvas API)"
+          "label": "處理位置",
+          "value": "100% 客戶端（瀏覽器 Canvas API）"
         }
       ]
     },
     "howToUse": {
-      "title": "How to Compress PNG Images",
+      "title": "如何壓縮 PNG 圖片",
       "steps": [
         {
-          "title": "Upload Your PNG Files",
-          "desc": "Drag and drop your PNG images into the compressor area or click to browse and select PNG files from your device."
+          "title": "上傳您的 PNG 檔案",
+          "desc": "將您的 PNG 圖片拖放到壓縮區域，或點擊瀏覽並從您的裝置中選擇 PNG 檔案。"
         },
         {
-          "title": "Set Target Size",
-          "desc": "Choose your desired file size in KB or MB. Our compressor will optimize your PNG images while preserving transparency."
+          "title": "設定目標大小",
+          "desc": "選擇您想要的檔案大小（KB 或 MB）。我們的壓縮工具將優化您的 PNG 圖片以達到目標，同時保持品質。"
         },
         {
-          "title": "Download Compressed Files",
-          "desc": "Download your compressed PNG files instantly. Each file maintains transparency and quality while being smaller than the original."
+          "title": "下載壓縮檔案",
+          "desc": "立即下載您的壓縮 PNG 檔案。每個檔案保持視覺品質，同時比原始檔案小得多。"
         }
       ]
     },
     "comparison": {
-      "toolaze": "Unlimited file sizes, Batch 100+ images, Transparency preserved, Precise size control, 100% local processing, Free forever",
-      "others": "20MB file limits, Transparency lost, Single file processing, Cloud uploads required, Server queues, Paid upgrades"
+      "toolaze": "無限制檔案大小、批次處理 100+ 圖片、透明度保留、精確大小控制、100% 本地處理、永久免費",
+      "others": "20MB 檔案限制、失去透明度、單一檔案處理、需要雲端上傳、伺服器佇列、付費升級"
     },
     "scenes": [
       {
-        "title": "Web Developers",
+        "title": "網頁開發者",
         "icon": "💻",
-        "desc": "Optimize PNG graphics and logos for websites. Reduce file sizes while maintaining transparency for better performance."
+        "desc": "在保持品質的同時大幅減少檔案大小。"
       },
       {
-        "title": "Graphic Designers",
+        "title": "平面設計師",
         "icon": "🎨",
-        "desc": "Compress PNG graphics for design projects. Maintain transparency while reducing file sizes for faster workflows."
+        "desc": "在保持品質的同時大幅減少檔案大小。"
       },
       {
-        "title": "Content Creators",
+        "title": "內容創作者",
         "icon": "📱",
-        "desc": "Optimize PNG images for social media and blogs. Batch process graphics quickly while preserving transparency."
+        "desc": "快速處理多張圖片而不損失品質。"
       }
     ],
     "rating": {
-      "text": "\"Perfect for compressing logos while keeping transparency intact!\" - Join thousands of designers who trust Toolaze for PNG compression."
+      "text": "\"Perfect for compressing logos while keeping transparency intact!\" - 加入數千名信賴 Toolaze 的使用者。"
     },
     "faq": [
       {
-        "q": "Will transparency be preserved when compressing PNG?",
-        "a": "Yes, our PNG compressor is specifically designed to preserve the alpha channel transparency during compression. All transparent areas in your PNG images will remain transparent."
+        "q": "壓縮 PNG 時會保留透明度嗎？",
+        "a": "Yes, our PNG compressor is specifically designed to preserve the Alpha 通道 transparency during compression. All transparent areas in your PNG images will remain transparent."
       },
       {
-        "q": "How much can I compress a PNG file?",
-        "a": "Typically, PNG files can be compressed by 40-60% while maintaining visual quality and transparency. The exact reduction depends on the image content and original file size."
+        "q": "我可以將 PNG 檔案壓縮多少？",
+        "a": "通常，檔案可以在保持可接受的視覺品質的同時壓縮 40-60%。確切的減少取決於原始檔案大小和品質設定。"
       },
       {
-        "q": "Can I compress multiple PNG files at once?",
-        "a": "Yes, Toolaze supports batch compression of up to 100 PNG files per session. You can process entire graphic collections in one operation."
+        "q": "我可以一次壓縮多個 PNG 檔案嗎？",
+        "a": "是的！Toolaze 支援同時批次處理最多 100 個檔案。您可以一次操作處理整個集合。"
       },
       {
-        "q": "Is PNG compression free and secure?",
-        "a": "Yes, Toolaze is completely free forever with no hidden costs. All compression happens locally in your browser. Your PNG files never leave your device—ensuring 100% privacy and security."
+        "q": "PNG 壓縮是免費且安全的嗎？",
+        "a": "是的！所有壓縮都在您的瀏覽器中使用 JavaScript 和 Canvas API 本地進行。您的圖片永遠不會離開您的設備，確保完全的隱私和安全。"
       },
       {
-        "q": "What file sizes can I compress?",
-        "a": "There are no individual file size limits. If your computer can open the file, Toolaze can compress it. You can process files of any size."
+        "q": "我可以壓縮哪些檔案大小？",
+        "a": "沒有個別檔案大小限制。如果您的電腦可以打開檔案，Toolaze 就可以壓縮它。您可以處理任何大小的檔案。"
       },
       {
-        "q": "Does the compressed PNG maintain transparency?",
-        "a": "Yes, compressed PNG files maintain full alpha channel transparency. The tool optimizes file size while preserving all transparency features."
+        "q": "壓縮後的 PNG 是否保持透明度？",
+        "a": "Yes, compressed PNG files maintain full Alpha 通道 transparency. The tool optimizes file size while preserving all transparency features."
       }
-    ],
-    "compare": {
-      "toolaze": "Unlimited PNG compression, Transparency preserved, Batch processing, Local-first architecture, No file size limits, Complete privacy",
-      "others": "20MB file limits, Transparency lost, Cloud uploads required, Single file processing, Server queues, Privacy concerns"
-    }
+    ]
   },
   "compress-webp": {
     "in_menu": true,
     "metadata": {
-      "title": "Compress WebP Online (Free, Batch & No Ads) - Toolaze",
-      "description": "How to compress WebP images? 1. Upload WebP 2. Set target size 3. Download compressed. Reduce file size by 30% while maintaining quality. Secure & Private."
+      "title": "線上壓縮 WebP（免費、批次處理、無廣告）- Toolaze",
+      "description": "如何壓縮 WebP 圖片？1. 上傳 WebP 2. 設定目標大小 3. 下載壓縮檔。在保持品質的同時將檔案大小減少 30%。安全且私密。"
     },
     "sectionsOrder": [
       "howToUse",
@@ -2295,179 +2292,175 @@
       "faq"
     ],
     "hero": {
-      "h1": "WebP Compressor",
-      "desc": "Compress WebP images online for free. Simply drop your WebP images below to compress them in seconds."
+      "h1": "WebP 壓縮工具",
+      "desc": "在線免費壓縮 WebP 圖片。只需將您的 WebP 圖片拖放到下方，即可在幾秒鐘內完成壓縮。"
     },
     "intro": {
-      "title": "Why Compress WebP Images?",
+      "title": "為什麼要壓縮 WebP 圖片？",
       "content": [
         {
-          "title": "WebP Compression Benefits",
-          "text": "WebP is Google's modern image format that provides superior compression compared to JPG and PNG—typically 25-35% better compression than PNG and similar quality to JPG. However, even WebP files can be further optimized for better performance. Compressing WebP images reduces file size by 20-40% while maintaining visual quality and transparency support, making them perfect for modern web applications, mobile apps, and digital platforms where performance optimization is crucial."
+          "title": "WebP 壓縮的優勢",
+          "text": "WebP 是 Google 的現代圖片格式，與 JPG 和 PNG 相比提供優越的壓縮—通常比 PNG 好 25-35% 的壓縮，品質與 JPG 相似。然而，即使 WebP 檔案也可以進一步優化以獲得更好的效能。壓縮 WebP 圖片可在保持視覺品質和透明度支援的同時將檔案大小減少 20-40%，使其非常適合效能優化至關重要的現代網頁應用程式、行動應用程式和數位平台。"
         },
         {
-          "title": "When to Compress WebP",
-          "text": "Compress WebP images when you need to further optimize already-compressed WebP files for even smaller sizes, meet specific file size requirements for web applications or mobile apps, reduce bandwidth costs for web hosting or cloud storage, or optimize images for faster loading on mobile devices. Our tool uses Canvas API to compress WebP files locally in your browser, ensuring complete privacy while maintaining the format's superior compression characteristics."
+          "title": "何時壓縮 WebP",
+          "text": "當您需要進一步優化已壓縮的 WebP 檔案以獲得更小的尺寸、滿足網頁應用程式或行動應用程式的特定檔案大小要求、降低網頁託管或雲端儲存的頻寬成本，或優化圖片以在行動裝置上更快載入時，請壓縮 WebP 圖片。我們的工具使用 Canvas API 在您的瀏覽器中本地壓縮 WebP 檔案，確保完全隱私，同時保持格式的優越壓縮特性。"
         }
       ]
     },
     "features": {
-      "title": "WebP Compression Features",
+      "title": "WebP 壓縮功能",
       "items": [
         {
           "icon": "📊",
           "iconType": "compression",
-          "title": "Superior Compression",
-          "desc": "Further optimize WebP files for even smaller sizes. Achieve maximum compression while maintaining quality."
+          "title": "優越的壓縮",
+          "desc": "進一步優化 WebP 檔案以獲得更小的尺寸。在保持品質的同時實現最大壓縮。"
         },
         {
           "icon": "🎨",
           "iconType": "transparency",
-          "title": "Transparency Support",
-          "desc": "Preserves transparency when compressing WebP files with alpha channels. Maintains transparent backgrounds."
+          "title": "透明度支援",
+          "desc": "在壓縮帶有 Alpha 通道的 WebP 檔案時保留透明度。保持透明背景。"
         },
         {
           "icon": "🔒",
           "iconType": "privacy",
-          "title": "100% Private Processing",
-          "desc": "All compression happens locally in your browser. Your WebP files never leave your device, ensuring complete privacy."
+          "title": "100% 私密處理",
+          "desc": "所有壓縮都在您的瀏覽器中本地進行。您的 WebP 檔案永遠不會離開您的裝置，確保完全隱私。"
         },
         {
           "icon": "📦",
           "iconType": "batch",
-          "title": "Batch Processing",
-          "desc": "Compress up to 100 WebP images simultaneously. Process entire image collections in one operation."
+          "title": "批次處理",
+          "desc": "同時壓縮最多 100 張 WebP 圖片。在一次操作中處理整個圖片集合。"
         },
         {
           "icon": "⚡",
           "iconType": "speed",
-          "title": "Fast Compression",
-          "desc": "Browser-native Canvas API processing ensures instant compression without server uploads or delays."
+          "title": "快速壓縮",
+          "desc": "瀏覽器原生 Canvas API 處理確保即時壓縮，無需服務器上傳或延遲。"
         },
         {
           "icon": "💎",
           "iconType": "free",
-          "title": "Free Forever",
-          "desc": "Unlimited WebP compression completely free—no premium tiers, no subscription fees, no advertisements."
+          "title": "永久免費",
+          "desc": "無限制的 WebP 壓縮完全免費—無高級層級、無訂閱費用、無廣告。"
         }
       ]
     },
     "specs": {
-      "engine": "Canvas API - Browser-Native Processing",
-      "limit": "Batch 100+ Images - Unlimited File Sizes",
-      "logic": "Quality-Preserving Compression",
-      "privacy": "100% Client-Side (Local Browser Processing)"
+      "engine": "Canvas API - 瀏覽器原生處理",
+      "limit": "批次 100+ 圖片 - 無限制檔案大小",
+      "logic": "品質保留壓縮",
+      "privacy": "100% 客戶端（本地瀏覽器處理）"
     },
     "performanceMetrics": {
-      "title": "Technical Specifications",
+      "title": "技術規格",
       "metrics": [
         {
-          "label": "Input Format",
-          "value": "WebP (Google's Modern Image Format)"
+          "label": "輸入格式",
+          "value": "WebP（Google 的現代圖片格式）"
         },
         {
-          "label": "Output Format",
-          "value": "WebP (Original format preserved)"
+          "label": "輸出格式",
+          "value": "WebP (保留原始格式)"
         },
         {
-          "label": "Max Batch Size",
-          "value": "100 Images per session"
+          "label": "最大批次大小",
+          "value": "每個會話 100 張圖片"
         },
         {
-          "label": "File Size Limit",
-          "value": "Unlimited (Limited by browser memory)"
+          "label": "檔案大小限制",
+          "value": "無限制（受瀏覽器記憶體限制）"
         },
         {
-          "label": "Compression Ratio",
-          "value": "20-40% additional size reduction"
+          "label": "壓縮比率",
+          "value": "20-40% 的額外大小減少"
         },
         {
-          "label": "Transparency Support",
-          "value": "Full alpha channel transparency preserved"
+          "label": "透明度支援",
+          "value": "保留完整的 Alpha 通道透明度"
         },
         {
-          "label": "Processing Location",
-          "value": "100% Client-Side (Browser Canvas API)"
+          "label": "處理位置",
+          "value": "100% 客戶端（瀏覽器 Canvas API）"
         }
       ]
     },
     "howToUse": {
-      "title": "How to Compress WebP Images",
+      "title": "如何壓縮 WebP 圖片",
       "steps": [
         {
-          "title": "Upload Your WebP Files",
-          "desc": "Drag and drop your WebP images into the compressor area or click to browse and select WebP files from your device."
+          "title": "上傳您的 WebP 檔案",
+          "desc": "將您的 WebP 圖片拖放到壓縮區域，或點擊瀏覽並從您的裝置中選擇 WebP 檔案。"
         },
         {
-          "title": "Set Target Size",
-          "desc": "Choose your desired file size in KB or MB. Our compressor will optimize your WebP images to meet the target while maintaining quality."
+          "title": "設定目標大小",
+          "desc": "選擇您想要的檔案大小（KB 或 MB）。我們的壓縮工具將優化您的 WebP 圖片以達到目標，同時保持品質。"
         },
         {
-          "title": "Download Compressed Files",
-          "desc": "Download your compressed WebP files instantly. Each file maintains quality and transparency while being smaller than the original."
+          "title": "下載壓縮檔案",
+          "desc": "立即下載您的壓縮 WebP 檔案。每個檔案保持視覺品質，同時比原始檔案小得多。"
         }
       ]
     },
     "comparison": {
-      "toolaze": "Unlimited file sizes, Batch 100+ images, Quality preserved, Precise size control, 100% local processing, Free forever",
-      "others": "20MB file limits, Quality loss, Single file processing, Cloud uploads required, Server queues, Paid upgrades"
+      "toolaze": "無限制檔案大小、批次處理 100+ 圖片、品質保留、精確大小控制、100% 本地處理、永久免費",
+      "others": "20MB 檔案限制、品質損失、單一檔案處理、需要雲端上傳、伺服器佇列、付費升級"
     },
     "scenes": [
       {
-        "title": "Web Developers",
+        "title": "網頁開發者",
         "icon": "💻",
-        "desc": "Further optimize WebP images for websites and apps. Achieve maximum compression for faster page loads."
+        "desc": "進一步優化網站和應用程式的 WebP 圖片。實現最大壓縮以加快頁面載入速度。"
       },
       {
-        "title": "Mobile App Developers",
+        "title": "行動應用開發者",
         "icon": "📱",
-        "desc": "Reduce app size by optimizing WebP assets. Maintain quality while minimizing file sizes for mobile apps."
+        "desc": "通過優化 WebP 資產來減少應用程式大小。在最小化行動應用程式檔案大小的同時保持品質。"
       },
       {
-        "title": "E-commerce Managers",
+        "title": "電子商務管理者",
         "icon": "🛒",
-        "desc": "Optimize WebP product images for online stores. Improve page load times while maintaining product image quality."
+        "desc": "優化線上商店的 WebP 產品圖片。在保持產品圖片品質的同時改善頁面載入時間。"
       }
     ],
     "rating": {
-      "text": "\"Perfect for optimizing my WebP images further! Fast and efficient!\" - Join thousands of developers who trust Toolaze for WebP compression."
+      "text": "\"非常適合進一步優化我的 WebP 圖片！快速且高效！\" - 加入數千名信賴 Toolaze 進行 WebP 壓縮的開發者。"
     },
     "faq": [
       {
-        "q": "How much can I compress a WebP file?",
-        "a": "Typically, WebP files can be further compressed by 20-40% while maintaining visual quality. The exact reduction depends on the original file size and compression settings."
+        "q": "我可以將 WebP 檔案壓縮多少？",
+        "a": "通常，WebP 檔案可以在保持視覺品質的同時進一步壓縮 20-40%。確切的減少量取決於原始檔案大小和壓縮設定。"
       },
       {
-        "q": "Will compressing WebP reduce image quality?",
-        "a": "Some quality reduction is expected with compression, but our tool optimizes the compression to maintain visual quality while meeting your target file size."
+        "q": "壓縮 WebP 會降低圖片品質嗎？",
+        "a": "壓縮時會有一些品質下降，但我們的工具會優化壓縮以在達到目標檔案大小的同時保持視覺品質。"
       },
       {
-        "q": "Can I compress multiple WebP files at once?",
-        "a": "Yes, Toolaze supports batch compression of up to 100 WebP files per session. You can process entire image collections in one operation."
+        "q": "我可以一次壓縮多個 WebP 檔案嗎？",
+        "a": "是的！Toolaze 支援同時批次處理最多 100 個檔案。您可以一次操作處理整個集合。"
       },
       {
-        "q": "Is WebP compression free and secure?",
-        "a": "Yes, Toolaze is completely free forever with no hidden costs. All compression happens locally in your browser. Your WebP files never leave your device—ensuring 100% privacy and security."
+        "q": "WebP 壓縮是免費且安全的嗎？",
+        "a": "是的！所有壓縮都在您的瀏覽器中使用 JavaScript 和 Canvas API 本地進行。您的圖片永遠不會離開您的設備，確保完全的隱私和安全。"
       },
       {
-        "q": "Will transparency be preserved?",
-        "a": "Yes, if your WebP file has transparency (alpha channel), it will be preserved during compression. The tool maintains transparency while optimizing file size."
+        "q": "透明度會被保留嗎？",
+        "a": "是的，如果您的 WebP 檔案具有透明度（Alpha 通道），它將在壓縮過程中保留。該工具在優化檔案大小的同時保持透明度。"
       },
       {
-        "q": "What file sizes can I compress?",
-        "a": "There are no individual file size limits. If your computer can open the file, Toolaze can compress it. You can process files of any size."
+        "q": "我可以壓縮哪些檔案大小？",
+        "a": "沒有個別檔案大小限制。如果您的電腦可以打開檔案，Toolaze 就可以壓縮它。您可以處理任何大小的檔案。"
       }
-    ],
-    "compare": {
-      "toolaze": "Unlimited WebP compression, Quality preserved, Batch processing, Local-first architecture, No file size limits, Complete privacy",
-      "others": "20MB file limits, Quality loss, Cloud uploads required, Single file processing, Server queues, Privacy concerns"
-    }
+    ]
   },
   "compress-image": {
-    "in_menu": true,
+    "in_menu": false,
     "metadata": {
-      "title": "Compress Image Online (Free, Batch & No Ads) - Toolaze",
-      "description": "How to compress images? 1. Upload image 2. Set target size 3. Download compressed. Reduce file size by 60% while maintaining quality. Secure & Private."
+      "title": "圖片線上壓縮（免費、批次處理、無廣告）- Toolaze",
+      "description": "如何壓縮圖片？1. 上傳圖片 2. 設定目標大小 3. 下載壓縮檔。在保持品質的同時將檔案大小減少 60%。安全且私密。"
     },
     "sectionsOrder": [
       "howToUse",
@@ -2480,179 +2473,175 @@
       "faq"
     ],
     "hero": {
-      "h1": "Image Compressor",
-      "desc": "Compress images online for free. Simply drop your images below to compress them in seconds."
+      "h1": "圖片壓縮工具",
+      "desc": "在線免費壓縮圖片。只需將您的圖片拖放到下方，即可在幾秒鐘內完成壓縮。"
     },
     "intro": {
-      "title": "Why Compress Images?",
+      "title": "為什麼要壓縮圖片？",
       "content": [
         {
-          "title": "Image Compression Benefits",
-          "text": "Large image files can slow down websites, consume storage space, cause upload failures, and increase bandwidth costs. Compressing images reduces file size by 50-70% while maintaining acceptable visual quality, making them perfect for web use, email attachments, online forms, and storage optimization. Our universal image compressor supports JPG, PNG, WebP, and BMP formats, processing all images locally in your browser using Canvas API, ensuring complete privacy and fast compression without uploading your images to any server."
+          "title": "圖片壓縮的優點",
+          "text": "大型圖片檔案可能會減慢網站速度、消耗儲存空間、導致上傳失敗並增加頻寬成本。壓縮圖片可在保持可接受的視覺品質的同時將檔案大小減少 50-70%，使其非常適合網頁使用、電子郵件附件、線上表單和儲存優化。我們的通用圖片壓縮工具支援 JPG、PNG、WebP 和 BMP 格式，使用 Canvas API 在您的瀏覽器中本地處理所有圖片，確保完全隱私和快速壓縮，無需將圖片上傳到任何伺服器。"
         },
         {
-          "title": "When to Compress Images",
-          "text": "Compress images when you need to optimize photos and graphics for faster website loading, meet upload size limits for online forms, email attachments, or social media platforms, save storage space on your device or cloud storage, or reduce bandwidth costs for web hosting. Our tool supports precise size control, allowing you to set exact target sizes in KB or MB for any supported format, making it perfect for meeting specific requirements while maintaining image quality."
+          "title": "何時壓縮圖片",
+          "text": "當您需要優化照片和圖形以加快網站載入速度、滿足線上表單、電子郵件附件或社交媒體平台的上傳大小限制、節省設備或雲端儲存的儲存空間，或降低網頁託管的頻寬成本時，請壓縮圖片。我們的工具支援精確的大小控制，允許您為任何支援的格式設定精確的目標大小（KB 或 MB），使其非常適合在保持圖片品質的同時滿足特定要求。"
         }
       ]
     },
     "features": {
-      "title": "Universal Image Compression Features",
+      "title": "通用圖片壓縮功能",
       "items": [
         {
           "icon": "🖼️",
           "iconType": "format",
-          "title": "Multiple Format Support",
-          "desc": "Supports JPG, PNG, WebP, and BMP formats. Compress any image type with one tool."
+          "title": "多格式支援",
+          "desc": "支援 JPG、PNG、WebP 和 BMP 格式。使用一個工具壓縮任何圖片類型。"
         },
         {
           "icon": "📊",
           "iconType": "compression",
-          "title": "Precise Size Control",
-          "desc": "Set exact target sizes in KB or MB. Compress images to meet specific requirements while maintaining quality."
+          "title": "精確大小控制",
+          "desc": "設定精確的目標大小（KB 或 MB）。在保持品質的同時壓縮圖片以滿足特定要求。"
         },
         {
           "icon": "🔒",
           "iconType": "privacy",
-          "title": "100% Private Processing",
-          "desc": "All compression happens locally in your browser. Your images never leave your device, ensuring complete privacy."
+          "title": "100% 私密處理",
+          "desc": "所有壓縮都在您的瀏覽器中本地進行。您的圖片永遠不會離開您的設備，確保完全的隱私。"
         },
         {
           "icon": "📦",
           "iconType": "batch",
-          "title": "Batch Processing",
-          "desc": "Compress up to 100 images simultaneously. Process entire photo collections in one operation."
+          "title": "批次處理",
+          "desc": "同時壓縮最多 100 張圖片。一次操作處理整個照片集合。"
         },
         {
           "icon": "⚡",
           "iconType": "speed",
-          "title": "Fast Compression",
-          "desc": "Browser-native Canvas API processing ensures instant compression without server uploads or delays."
+          "title": "快速壓縮",
+          "desc": "瀏覽器原生 Canvas API 處理確保即時壓縮，無需服務器上傳或延遲。"
         },
         {
           "icon": "💎",
           "iconType": "free",
-          "title": "Free Forever",
-          "desc": "Unlimited image compression completely free—no premium tiers, no subscription fees, no advertisements."
+          "title": "永久免費",
+          "desc": "無限圖片壓縮完全免費—無高級層級、無訂閱費用、無廣告。"
         }
       ]
     },
     "specs": {
-      "engine": "Canvas API - Browser-Native Processing",
-      "limit": "Batch 100+ Images - Unlimited File Sizes",
-      "logic": "Precise KB/MB Size Control",
-      "privacy": "100% Client-Side (Local Browser Processing)"
+      "engine": "Canvas API - 瀏覽器原生處理",
+      "limit": "批次處理 100+ 圖片 - 無限制檔案大小",
+      "logic": "精確 KB/MB 大小控制",
+      "privacy": "100% 客戶端（本地瀏覽器處理）"
     },
     "performanceMetrics": {
-      "title": "Technical Specifications",
+      "title": "技術規格",
       "metrics": [
         {
-          "label": "Supported Formats",
-          "value": "JPG, PNG, WebP, BMP"
+          "label": "支援格式",
+          "value": "JPG、PNG、WebP、BMP"
         },
         {
-          "label": "Output Format",
-          "value": "Original format preserved"
+          "label": "輸出格式",
+          "value": "保留原始格式"
         },
         {
-          "label": "Max Batch Size",
-          "value": "100 Images per session"
+          "label": "最大批次大小",
+          "value": "每個會話 100 張圖片"
         },
         {
-          "label": "File Size Limit",
-          "value": "Unlimited (Limited by browser memory)"
+          "label": "檔案大小限制",
+          "value": "無限制（受瀏覽器記憶體限制）"
         },
         {
-          "label": "Compression Ratio",
-          "value": "50-70% size reduction typical"
+          "label": "壓縮比率",
+          "value": "通常減少 50-70% 大小"
         },
         {
-          "label": "Processing Location",
-          "value": "100% Client-Side (Browser Canvas API)"
+          "label": "處理位置",
+          "value": "100% 客戶端（瀏覽器 Canvas API）"
         },
         {
-          "label": "Quality Control",
-          "value": "Precise size targeting with quality preservation"
+          "label": "品質控制",
+          "value": "精確大小目標設定，保持品質"
         }
       ]
     },
     "howToUse": {
-      "title": "How to Compress Images",
+      "title": "如何壓縮圖片",
       "steps": [
         {
-          "title": "Upload Your Images",
-          "desc": "Drag and drop your images (JPG, PNG, WebP, or BMP) into the compressor area or click to browse and select files from your device."
+          "title": "上傳您的圖片",
+          "desc": "將您的圖片（JPG、PNG、WebP 或 BMP）拖放到壓縮區域，或點擊瀏覽並從您的裝置中選擇檔案。"
         },
         {
-          "title": "Set Target Size",
-          "desc": "Choose your desired file size in KB or MB. Our compressor will optimize your images to meet the target while maintaining quality."
+          "title": "設定目標大小",
+          "desc": "選擇您想要的檔案大小（KB 或 MB）。我們的壓縮工具將優化您的圖片以達到目標，同時保持品質。"
         },
         {
-          "title": "Download Compressed Files",
-          "desc": "Download your compressed images instantly. Each file maintains visual quality while being significantly smaller than the original."
+          "title": "下載壓縮檔案",
+          "desc": "立即下載您的壓縮圖片。每個檔案保持視覺品質，同時比原始檔案小得多。"
         }
       ]
     },
     "comparison": {
-      "toolaze": "Unlimited file sizes, Batch 100+ images, Multiple formats, Precise size control, 100% local processing, Free forever",
-      "others": "20MB file limits, Format restrictions, Single file processing, Cloud uploads required, Server queues, Paid upgrades"
+      "toolaze": "無限制檔案大小、批次處理 100+ 圖片、多種格式、精確大小控制、100% 本地處理、永久免費",
+      "others": "20MB 檔案限制、格式限制、單一檔案處理、需要雲端上傳、伺服器佇列、付費升級"
     },
     "scenes": [
       {
-        "title": "Web Developers",
+        "title": "網頁開發者",
         "icon": "💻",
-        "desc": "Optimize images for websites and apps. Reduce load times while maintaining quality for better SEO and user experience."
+        "desc": "優化網站和應用程式的圖片。在保持品質的同時減少載入時間，以改善 SEO 和使用者體驗。"
       },
       {
-        "title": "Photographers",
+        "title": "攝影師",
         "icon": "📸",
-        "desc": "Compress large photo collections for sharing and storage. Maintain quality while reducing file sizes significantly."
+        "desc": "壓縮大型照片集合以供分享和儲存。在保持品質的同時大幅減少檔案大小。"
       },
       {
-        "title": "Content Creators",
+        "title": "內容創作者",
         "icon": "📱",
-        "desc": "Prepare images for social media and blogs. Batch process multiple images quickly without quality loss."
+        "desc": "為社交媒體和部落格準備圖片。快速批次處理多張圖片而不損失品質。"
       }
     ],
     "rating": {
-      "text": "\"Perfect tool for compressing all my images! Fast, free, and private!\" - Join thousands of users who trust Toolaze for image compression."
+      "text": "\"壓縮所有圖片的完美工具！快速、免費且私密！\" - 加入數千名信賴 Toolaze 進行圖片壓縮的使用者。"
     },
     "faq": [
       {
-        "q": "Which image formats are supported?",
-        "a": "Toolaze supports JPG, PNG, WebP, and BMP formats. Your compressed files will be downloaded in their original format."
+        "q": "支援哪些圖片格式？",
+        "a": "Toolaze 支援 JPG、PNG、WebP 和 BMP 格式。您的壓縮檔案將以其原始格式下載。"
       },
       {
-        "q": "How much can I compress an image?",
-        "a": "Typically, images can be compressed by 50-70% while maintaining acceptable visual quality. The exact reduction depends on the original file size and format."
+        "q": "我可以將圖片壓縮多少？",
+        "a": "通常，圖片可以在保持可接受的視覺品質的同時壓縮 50-70%。確切的減少取決於原始檔案大小和格式。"
       },
       {
-        "q": "Can I compress multiple images at once?",
-        "a": "Yes, Toolaze supports batch compression of up to 100 images per session. You can process entire photo collections in one operation."
+        "q": "可以一次壓縮多張圖片嗎？",
+        "a": "是的，Toolaze 支援每個會話最多 100 張圖片的批次處理。您可以一次操作處理整個照片集合。"
       },
       {
-        "q": "Is image compression free and secure?",
-        "a": "Yes, Toolaze is completely free forever with no hidden costs. All compression happens locally in your browser. Your images never leave your device—ensuring 100% privacy and security."
+        "q": "圖片壓縮是免費且安全的嗎？",
+        "a": "是的，Toolaze 完全免費，沒有隱藏費用。所有壓縮都在您的瀏覽器中本地進行。您的圖片永遠不會離開您的設備—確保 100% 的隱私和安全。"
       },
       {
-        "q": "What file sizes can I compress?",
-        "a": "There are no individual file size limits. If your computer can open the file, Toolaze can compress it. You can process files of any size."
+        "q": "我可以壓縮哪些檔案大小？",
+        "a": "沒有個別檔案大小限制。如果您的電腦可以打開檔案，Toolaze 就可以壓縮它。您可以處理任何大小的檔案。"
       },
       {
-        "q": "Will transparency be preserved for PNG files?",
-        "a": "Yes, when compressing PNG files, transparency is preserved. The tool maintains the alpha channel during compression."
+        "q": "PNG 檔案的透明度會保留嗎？",
+        "a": "是的，壓縮 PNG 檔案時會保留透明度。工具在壓縮過程中維持 Alpha 通道。"
       }
-    ],
-    "compare": {
-      "toolaze": "Unlimited image compression, Multiple formats, Batch processing, Local-first architecture, No file size limits, Complete privacy",
-      "others": "20MB file limits, Format restrictions, Cloud uploads required, Single file processing, Server queues, Privacy concerns"
-    }
+    ]
   },
   "batch-compress": {
     "in_menu": true,
     "metadata": {
-      "title": "Batch Compress Images Online (Free, No Ads & Fast) - Toolaze",
-      "description": "How to batch compress images? 1. Upload multiple images 2. Set target size 3. Download all. Compress up to 100 images at once. Secure & Private."
+      "title": "圖片批次壓縮線上（免費、無廣告、快速）- Toolaze",
+      "description": "如何批次壓縮圖片？1. 上傳多張圖片 2. 設定目標大小 3. 下載全部。一次壓縮最多 100 張圖片。安全且私密。"
     },
     "sectionsOrder": [
       "howToUse",
@@ -2665,172 +2654,153 @@
       "faq"
     ],
     "hero": {
-      "h1": "Batch Image Compressor",
-      "desc": "Compress multiple images at once online for free. Simply drop your images below to compress them in seconds."
+      "h1": "批次圖片壓縮工具",
+      "desc": "在線免費一次壓縮多張圖片。只需將您的圖片拖放到下方，即可在幾秒鐘內完成壓縮。"
     },
     "intro": {
-      "title": "Why Use Batch Compression?",
+      "title": "為什麼要使用批次壓縮？",
       "content": [
         {
-          "title": "Batch Compression Benefits",
-          "text": "Processing images one by one is time-consuming and inefficient. Batch compression allows you to compress up to 100 images simultaneously, saving hours of work and ensuring consistent results across your entire image collection. Whether you're optimizing a photo gallery, preparing images for a website, or compressing files for storage, batch processing handles everything in one operation. Our browser-based batch compressor processes all images locally using Canvas API, ensuring complete privacy while providing fast, efficient compression without uploading your images to any server."
+          "title": "批次壓縮的優點",
+          "text": "逐一處理圖片既耗時又低效。批次壓縮讓您可以同時壓縮最多 100 張圖片，節省數小時的工作時間，並確保整個圖片集合的一致結果。無論您是優化照片庫、為網站準備圖片，還是壓縮檔案以供儲存，批次處理都能在一次操作中完成所有工作。我們的瀏覽器批次壓縮工具使用 Canvas API 在本地處理所有圖片，確保完全隱私，同時提供快速高效的壓縮，無需將圖片上傳到任何伺服器。"
         },
         {
-          "title": "When to Use Batch Compression",
-          "text": "Use batch compression when you need to optimize entire photo galleries or image collections, prepare multiple images for website uploads or social media, compress files for storage or backup purposes, or process images with consistent compression settings. Our tool supports JPG, PNG, WebP, and BMP formats, allowing you to mix different formats in a single batch operation, making it perfect for handling diverse image collections efficiently."
+          "title": "何時使用批次壓縮",
+          "text": "當您需要優化整個照片庫或圖片集合、為網站上傳或社交媒體準備多張圖片、壓縮檔案以供儲存或備份，或使用一致的壓縮設定處理圖片時，請使用批次壓縮。我們的工具支援 JPG、PNG、WebP 和 BMP 格式，允許您在單一批次操作中混合不同格式，使其非常適合高效處理多樣化的圖片集合。"
         }
       ]
     },
     "features": {
-      "title": "Batch Compression Features",
+      "title": "批次圖片壓縮功能",
       "items": [
         {
-          "icon": "📦",
-          "iconType": "batch",
-          "title": "Process 100 Images",
-          "desc": "Compress up to 100 images simultaneously in one batch operation. Save time and effort."
+          "title": "處理 100 張圖片",
+          "desc": "在一次批次操作中同時壓縮最多 100 張圖片。節省時間和精力。"
         },
         {
-          "icon": "🖼️",
-          "iconType": "format",
-          "title": "Multiple Format Support",
-          "desc": "Supports JPG, PNG, WebP, and BMP formats. Mix different formats in one batch."
+          "title": "多格式支援",
+          "desc": "支援 JPG、PNG、WebP 和 BMP 格式。在一個批次中混合不同格式。"
         },
         {
-          "icon": "📊",
-          "iconType": "compression",
-          "title": "Precise Size Control",
-          "desc": "Set exact target sizes in KB or MB. All images compressed to meet the same target size."
+          "title": "精確大小控制",
+          "desc": "設定精確的目標大小（KB 或 MB）。所有圖片壓縮以達到相同的目標大小。"
         },
         {
-          "icon": "🔒",
-          "iconType": "privacy",
-          "title": "100% Private Processing",
-          "desc": "All compression happens locally in your browser. Your images never leave your device, ensuring complete privacy."
+          "title": "100% 私密處理",
+          "desc": "所有壓縮都在您的瀏覽器中本地進行。您的圖片永遠不會離開您的設備，確保完全的隱私。"
         },
         {
-          "icon": "⚡",
-          "iconType": "speed",
-          "title": "Fast Batch Processing",
-          "desc": "Browser-native Canvas API processing ensures fast batch compression without server uploads or delays."
+          "title": "快速批次處理",
+          "desc": "瀏覽器原生 Canvas API 處理確保快速批次壓縮，無需伺服器上傳或延遲。"
         },
         {
-          "icon": "💎",
-          "iconType": "free",
-          "title": "Free Forever",
-          "desc": "Unlimited batch compression completely free—no premium tiers, no subscription fees, no advertisements."
+          "title": "永久免費",
+          "desc": "無限批次壓縮完全免費—無高級層級、無訂閱費用、無廣告。"
         }
       ]
     },
     "specs": {
-      "engine": "Canvas API - Browser-Native Processing",
-      "limit": "Batch 100+ Images - Unlimited File Sizes",
-      "logic": "Consistent Batch Compression",
-      "privacy": "100% Client-Side (Local Browser Processing)"
+      "engine": "Canvas API - 瀏覽器原生處理",
+      "limit": "批次處理 100+ 圖片 - 無限制檔案大小",
+      "logic": "一致的批次壓縮",
+      "privacy": "100% 客戶端（本地瀏覽器處理）"
     },
     "performanceMetrics": {
-      "title": "Technical Specifications",
+      "title": "技術規格",
       "metrics": [
         {
-          "label": "Batch Size",
-          "value": "Up to 100 images per batch"
+          "label": "批次大小",
+          "value": "每個批次最多 100 張圖片"
         },
         {
-          "label": "Supported Formats",
-          "value": "JPG, PNG, WebP, BMP"
+          "label": "支援格式",
+          "value": "JPG、PNG、WebP、BMP"
         },
         {
-          "label": "Output Format",
-          "value": "Original format preserved"
+          "label": "輸出格式",
+          "value": "保留原始格式"
         },
         {
-          "label": "File Size Limit",
-          "value": "Unlimited (Limited by browser memory)"
+          "label": "檔案大小限制",
+          "value": "無限制（受瀏覽器記憶體限制）"
         },
         {
-          "label": "Compression Ratio",
-          "value": "50-70% size reduction typical"
+          "label": "壓縮比率",
+          "value": "通常減少 50-70% 大小"
         },
         {
-          "label": "Processing Location",
-          "value": "100% Client-Side (Browser Canvas API)"
+          "label": "處理位置",
+          "value": "100% 客戶端（瀏覽器 Canvas API）"
         },
         {
-          "label": "Batch Consistency",
-          "value": "All images compressed with same target size"
+          "label": "批次一致性",
+          "value": "所有圖片以相同目標大小壓縮"
         }
       ]
     },
     "howToUse": {
-      "title": "How to Batch Compress Images",
+      "title": "如何批次壓縮圖片",
       "steps": [
         {
-          "title": "Upload Multiple Images",
-          "desc": "Drag and drop up to 100 images (JPG, PNG, WebP, or BMP) into the compressor area or click to browse and select multiple files."
+          "title": "上傳多張圖片",
+          "desc": "將最多 100 張圖片（JPG、PNG、WebP 或 BMP）拖放到壓縮區域，或點擊瀏覽並選擇多個檔案。"
         },
         {
-          "title": "Set Target Size",
-          "desc": "Choose your desired file size in KB or MB. All images in the batch will be compressed to meet this target size."
+          "title": "設定目標大小",
+          "desc": "選擇您想要的檔案大小（KB 或 MB）。批次中的所有圖片都將被壓縮以達到此目標大小。"
         },
         {
-          "title": "Download All Compressed Files",
-          "desc": "Download all compressed images at once as a ZIP file or individually. Each file maintains quality while being smaller than the original."
+          "title": "下載所有壓縮檔案",
+          "desc": "一次性下載所有壓縮圖片為 ZIP 檔案，或個別下載。每個檔案保持品質，同時比原始檔案小得多。"
         }
       ]
     },
     "comparison": {
-      "toolaze": "Batch 100+ images, Multiple formats, Consistent compression, Precise size control, 100% local processing, Free forever",
-      "others": "Limited batch size, Format restrictions, Inconsistent results, Cloud uploads required, Server queues, Paid upgrades"
+      "toolaze": "批次處理 100+ 圖片、多種格式、一致的壓縮、精確大小控制、100% 本地處理、永久免費",
+      "others": "有限的批次大小、格式限制、不一致的結果、需要雲端上傳、伺服器佇列、付費升級"
     },
     "scenes": [
       {
-        "title": "Photographers",
-        "icon": "📸",
-        "desc": "Compress entire photo galleries at once. Process hundreds of photos efficiently while maintaining quality."
+        "title": "攝影師",
+        "desc": "一次壓縮整個照片庫。在保持品質的同時高效處理數百張照片。"
       },
       {
-        "title": "Web Developers",
-        "icon": "💻",
-        "desc": "Optimize multiple images for websites. Batch process product images, galleries, and assets efficiently."
+        "title": "網頁開發者",
+        "desc": "優化網站的多張圖片。高效批次處理產品圖片、圖庫和資產。"
       },
       {
-        "title": "E-commerce Managers",
-        "icon": "🛒",
-        "desc": "Compress product image collections for online stores. Process entire catalogs quickly and consistently."
+        "title": "電子商務管理員",
+        "desc": "壓縮線上商店的產品圖片集合。快速且一致地處理整個目錄。"
       }
     ],
     "rating": {
-      "text": "\"Saves me hours of work! Perfect for batch processing my photo collections!\" - Join thousands of users who trust Toolaze for batch compression."
+      "text": "\"為我節省數小時的工作時間！批次處理我的照片集合非常完美！\" - 加入數千名信賴 Toolaze 進行批次壓縮的使用者。"
     },
     "faq": [
       {
-        "q": "How many images can I compress at once?",
-        "a": "Toolaze supports batch compression of up to 100 images per session. You can process entire photo collections in one operation."
+        "q": "我可以一次壓縮多少張圖片？",
+        "a": "Toolaze 支援每個會話最多 100 張圖片的批次壓縮。您可以一次操作處理整個照片集合。"
       },
       {
-        "q": "Can I mix different image formats in one batch?",
-        "a": "Yes, you can mix JPG, PNG, WebP, and BMP formats in a single batch. Each image will be compressed while maintaining its original format."
+        "q": "我可以在一個批次中混合不同的圖片格式嗎？",
+        "a": "是的，您可以在單一批次中混合 JPG、PNG、WebP 和 BMP 格式。每張圖片將在保持其原始格式的同時被壓縮。"
       },
       {
-        "q": "Will all images be compressed to the same size?",
-        "a": "All images will be compressed to meet the same target size you specify (in KB or MB), ensuring consistent results across your batch."
+        "q": "所有圖片都會被壓縮到相同大小嗎？",
+        "a": "所有圖片都將被壓縮以達到您指定的相同目標大小（KB 或 MB），確保批次中的一致結果。"
       },
       {
-        "q": "Is batch compression free and secure?",
-        "a": "Yes, Toolaze is completely free forever with no hidden costs. All compression happens locally in your browser. Your images never leave your device—ensuring 100% privacy and security."
+        "q": "批次壓縮是免費且安全的嗎？",
+        "a": "是的，Toolaze 完全免費，沒有隱藏費用。所有壓縮都在您的瀏覽器中本地進行。您的圖片永遠不會離開您的設備—確保 100% 的隱私和安全。"
       },
       {
-        "q": "Can I download all compressed images at once?",
-        "a": "Yes, you can download all compressed images as a ZIP file or download them individually, whichever is more convenient for you."
+        "q": "我可以一次下載所有壓縮圖片嗎？",
+        "a": "是的，您可以將所有壓縮圖片下載為 ZIP 檔案，或個別下載，以您更方便的方式為準。"
       },
       {
-        "q": "What file sizes can I compress?",
-        "a": "There are no individual file size limits. If your computer can open the file, Toolaze can compress it. You can process files of any size in your batch."
+        "q": "我可以壓縮哪些檔案大小？",
+        "a": "沒有個別檔案大小限制。如果您的電腦可以打開檔案，Toolaze 就可以壓縮它。您可以在批次中處理任何大小的檔案。"
       }
-    ],
-    "compare": {
-      "toolaze": "Batch 100+ images, Multiple formats, Consistent compression, Local-first architecture, No file size limits, Complete privacy",
-      "others": "Limited batch size, Format restrictions, Inconsistent results, Cloud uploads required, Server queues, Privacy concerns"
-    }
+    ]
   }
 }

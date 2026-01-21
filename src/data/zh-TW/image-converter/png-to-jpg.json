@@ -83,11 +83,11 @@
     "metrics": [
       {
         "label": "輸入格式",
-        "value": "PNG (Portable Network Graphics)"
+        "value": "PNG (可攜式網路圖形)"
       },
       {
         "label": "輸出格式",
-        "value": "JPG/JPEG (Joint Photographic Experts Group)"
+        "value": "JPG/JPEG (聯合圖像專家組)"
       },
       {
         "label": "最大批次大小",

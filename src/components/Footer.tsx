@@ -60,9 +60,11 @@ export default function Footer() {
   const [currentLocale, setCurrentLocale] = useState<string>('en')
   const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false)
   const [translations, setTranslations] = useState(defaultTranslations)
+  const [isMounted, setIsMounted] = useState(false)
   const pathname = usePathname()
 
   useEffect(() => {
+    setIsMounted(true)
     // Update year after hydration to ensure it's current
     setCurrentYear(new Date().getFullYear())
     
@@ -173,7 +175,7 @@ export default function Footer() {
         </nav>
 
         <div className="text-center pt-6 border-t border-slate-700">
-          <p className="text-xs text-slate-400 mb-2">
+          <p className="text-xs text-slate-400 mb-2" suppressHydrationWarning>
             {translations.copyright.replace('{year}', currentYear.toString())}
           </p>
           <p className="text-[10px] text-slate-500 font-bold uppercase tracking-[0.3em]">

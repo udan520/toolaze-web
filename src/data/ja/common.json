@@ -137,7 +137,8 @@
     "tryNow": "今すぐ試す →",
     "rating": {
       "rating": "4.9/5 10,000人以上のクリエイターから",
-      "description": "高速で安全、無料の画像圧縮を信頼する何千人もの満足したユーザーに参加してください。登録不要、100%プライベート処理。"
+      "description": "高速で安全、無料の画像圧縮を信頼する何千人もの満足したユーザーに参加してください。登録不要、100%プライベート処理。",
+      "title": "数千人のクリエイターに信頼されています"
     },
     "tool": {
       "dropZone": {
@@ -185,6 +186,25 @@
         "localBrowser": "ローカルブラウザ API",
         "noServerLogs": "サーバーログなし"
       }
+    },
+    "allTools": "すべてのツール",
+    "primaryTools": "主要ツール",
+    "specializedTools": "専門ツール",
+    "allImageCompressionTools": "すべての画像圧縮ツール",
+    "allImageConverterTools": "すべての画像変換ツール",
+    "allImageCompressionToolsDesc": "利用可能なすべての画像圧縮ツールを閲覧します。特定のニーズに最適なツールを見つけます。",
+    "allImageConverterToolsDesc": "利用可能なすべての画像変換ツールを閲覧します。JPG、PNG、WebP、HEIC形式間で変換します。",
+    "primaryToolsDesc": "一般的な使用例のための基本的な圧縮ツール。",
+    "primaryConverterToolsDesc": "一般的な使用例のための基本的な変換ツール。",
+    "specializedToolsDesc": "特定のプラットフォームと使用例のための専門的な圧縮ツール。",
+    "specializedConverterToolsDesc": "特定のプラットフォームと使用例のための専門的な変換ツール。",
+    "performanceMetrics": {
+      "metricColumn": "パフォーマンス指標",
+      "specificationColumn": "Toolaze仕様"
+    },
+    "viewAllTools": {
+      "related": "関連するすべてのツールを表示",
+      "all": "すべてのツールを表示"
     }
   },
   "imageCompressor": {
@@ -245,7 +265,8 @@
         "formatRestrictions": "形式制限",
         "privacyConcerns": "プライバシーの懸念",
         "registrationRequired": "登録が必要"
-      }
+      },
+      "title": "なぜToolazeを選ぶのか？"
     },
     "scenarios": {
       "title": "使用例",
@@ -344,7 +365,8 @@
         "qualityLoss": "品質損失",
         "privacyConcerns": "プライバシーの懸念",
         "registrationRequired": "登録が必要"
-      }
+      },
+      "title": "なぜToolazeを選ぶのか？"
     },
     "scenarios": {
       "title": "使用例",

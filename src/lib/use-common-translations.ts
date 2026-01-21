@@ -62,10 +62,12 @@ async function loadClientTranslations(locale: string) {
 }
 
 export function useCommonTranslations() {
-  const [translations, setTranslations] = useState<any>(null)
+  const [translations, setTranslations] = useState<any>(defaultTranslations)
+  const [isMounted, setIsMounted] = useState(false)
   const pathname = usePathname()
   
   useEffect(() => {
+    setIsMounted(true)
     const getCurrentLocale = (): string => {
       if (!pathname) return 'en'
       const pathParts = pathname.split('/').filter(Boolean)
@@ -75,9 +77,16 @@ export function useCommonTranslations() {
     
     const locale = getCurrentLocale()
     loadClientTranslations(locale).then(data => {
-      setTranslations(data)
+      if (data) {
+        setTranslations(data)
+      }
     })
   }, [pathname])
+  
+  // 在服务器端和首次渲染时返回默认翻译，避免 hydration mismatch
+  if (!isMounted) {
+    return defaultTranslations
+  }
   
   return translations || defaultTranslations
 }

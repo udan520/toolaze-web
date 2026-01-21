@@ -15,6 +15,46 @@ interface ComparisonProps {
 
 export default function Comparison({ compare, title, labels, bgClass = 'bg-white' }: ComparisonProps) {
   if (!compare) return null
+  
+  // 确保 toolaze 和 others 是字符串
+  const toolazeText = typeof compare.toolaze === 'string' ? compare.toolaze : String(compare.toolaze || '')
+  const othersText = typeof compare.others === 'string' ? compare.others : String(compare.others || '')
+  
+  if (!toolazeText && !othersText) return null
+
+  // 智能分割函数：支持多种分隔符
+  // 支持：`, ` (英语), `、` (日语), 空格分隔 (繁体中文等)
+  const splitComparisonText = (text: string): string[] => {
+    if (!text) return []
+    
+    // 首先尝试按 `, ` (半角逗号+空格) 分割（英语格式）
+    if (text.includes(', ')) {
+      return text.split(', ').filter(Boolean).map(item => item.trim())
+    }
+    
+    // 然后尝试按 `、` (全角逗号) 分割（日语格式）
+    if (text.includes('、')) {
+      return text.split('、').filter(Boolean).map(item => item.trim())
+    }
+    
+    // 最后尝试按多个连续空格分割（繁体中文等格式）
+    // 但要注意：如果文本中有自然空格（如 "100% ローカル処理"），不应该分割
+    // 所以我们只在明显是列表项的情况下分割（例如：每个项目都是独立的短语）
+    // 为了安全起见，我们检查是否有明显的分隔模式
+    // 如果包含常见的中文分隔词，则按这些词分割
+    const chineseSeparators = ['，', '。', '；']
+    for (const sep of chineseSeparators) {
+      if (text.includes(sep)) {
+        return text.split(sep).filter(Boolean).map(item => item.trim())
+      }
+    }
+    
+    // 如果都没有，返回原文本作为单个项目
+    return [text.trim()]
+  }
+
+  const toolazeItems = splitComparisonText(toolazeText)
+  const othersItems = splitComparisonText(othersText)
 
   const smartChoice = labels?.smartChoice || 'Smart Choice'
   const toolazeLabel = labels?.toolaze || 'Toolaze'
@@ -47,10 +87,10 @@ export default function Comparison({ compare, title, labels, bgClass = 'bg-white
                   <span className="text-2xl">💎</span>
                 </h3>
                 <ul className="space-y-4 text-sm text-slate-800">
-                  {compare.toolaze.split(', ').map((item: string, idx: number) => (
+                  {toolazeItems.map((item: string, idx: number) => (
                     <li key={idx} className="flex items-center gap-3 group">
                       <span className="text-green-600 font-bold text-lg flex-shrink-0 group-hover:scale-110 transition-transform">✅</span>
-                      <span className="font-medium leading-relaxed">{item.trim()}</span>
+                      <span className="font-medium leading-relaxed">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -73,10 +113,10 @@ export default function Comparison({ compare, title, labels, bgClass = 'bg-white
             <div className="relative z-10">
               <h3 className="font-bold text-slate-500 text-lg mb-8 border-b border-slate-300/60 pb-4">{otherToolsLabel}</h3>
               <ul className="space-y-3 text-sm text-slate-500">
-                {compare.others.split(', ').map((item: string, idx: number) => (
+                {othersItems.map((item: string, idx: number) => (
                   <li key={idx} className="flex items-center gap-3">
                     <span className="text-red-500 font-bold text-lg flex-shrink-0">❌</span>
-                    <span className="leading-relaxed">{item.trim()}</span>
+                    <span className="leading-relaxed">{item}</span>
                   </li>
                 ))}
               </ul>

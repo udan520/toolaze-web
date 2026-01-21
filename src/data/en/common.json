@@ -135,9 +135,29 @@
   },
   "common": {
     "tryNow": "Try Now →",
+    "allTools": "All Tools",
+    "primaryTools": "Primary Tools",
+    "specializedTools": "Specialized Tools",
+    "allImageCompressionTools": "All Image Compression Tools",
+    "allImageConverterTools": "All Image Converter Tools",
+    "allImageCompressionToolsDesc": "Browse all available image compression tools. Find the perfect tool for your specific needs.",
+    "allImageConverterToolsDesc": "Browse all available image converter tools. Convert between JPG, PNG, WebP, and HEIC formats.",
+    "primaryToolsDesc": "Essential compression tools for general use cases.",
+    "primaryConverterToolsDesc": "Essential converter tools for general use cases.",
+    "specializedToolsDesc": "Specialized compression tools for specific platforms and use cases.",
+    "specializedConverterToolsDesc": "Specialized converter tools for specific platforms and use cases.",
+    "performanceMetrics": {
+      "metricColumn": "Performance Metric",
+      "specificationColumn": "Toolaze Specification"
+    },
     "rating": {
+      "title": "Trusted by Thousands of Creators",
       "rating": "4.9/5 FROM 10K+ CREATORS",
       "description": "Join thousands of satisfied users who trust Toolaze for fast, secure, and free image compression. No registration required, 100% private processing."
+    },
+    "viewAllTools": {
+      "related": "View All Related Tools",
+      "all": "View All Tools"
     },
     "tool": {
       "dropZone": {
@@ -230,6 +250,7 @@
       }
     },
     "comparison": {
+      "title": "Why Choose Toolaze?",
       "toolaze": "Toolaze 💎",
       "otherTools": "Other Tools",
       "vs": "VS",
@@ -329,6 +350,7 @@
       }
     },
     "comparison": {
+      "title": "Why Choose Toolaze?",
       "toolaze": "Toolaze 💎",
       "otherTools": "Other Tools",
       "vs": "VS",

@@ -137,7 +137,8 @@
     "tryNow": "지금 사용하기 →",
     "rating": {
       "rating": "10K+ 크리에이터로부터 4.9/5",
-      "description": "빠르고 안전하며 무료인 이미지 압축을 위해 Toolaze를 신뢰하는 수천 명의 만족한 사용자에 합류하세요. 등록 불필요, 100% 비공개 처리."
+      "description": "빠르고 안전하며 무료인 이미지 압축을 위해 Toolaze를 신뢰하는 수천 명의 만족한 사용자에 합류하세요. 등록 불필요, 100% 비공개 처리.",
+      "title": "수천 명의 크리에이터가 신뢰합니다"
     },
     "tool": {
       "dropZone": {
@@ -185,6 +186,25 @@
         "localBrowser": "로컬 브라우저 API",
         "noServerLogs": "서버 로그 없음"
       }
+    },
+    "allTools": "모든 도구",
+    "primaryTools": "주요 도구",
+    "specializedTools": "전문 도구",
+    "allImageCompressionTools": "모든 이미지 압축 도구",
+    "allImageConverterTools": "모든 이미지 변환 도구",
+    "allImageCompressionToolsDesc": "사용 가능한 모든 이미지 압축 도구를 찾아보세요. 특정 요구사항에 맞는 완벽한 도구를 찾으세요.",
+    "allImageConverterToolsDesc": "사용 가능한 모든 이미지 변환 도구를 찾아보세요. JPG, PNG, WebP 및 HEIC 형식 간 변환합니다.",
+    "primaryToolsDesc": "일반적인 사용 사례를 위한 필수 압축 도구.",
+    "primaryConverterToolsDesc": "일반적인 사용 사례를 위한 필수 변환 도구.",
+    "specializedToolsDesc": "특정 플랫폼 및 사용 사례를 위한 전문 압축 도구.",
+    "specializedConverterToolsDesc": "특정 플랫폼 및 사용 사례를 위한 전문 변환 도구.",
+    "performanceMetrics": {
+      "metricColumn": "성능 지표",
+      "specificationColumn": "Toolaze 사양"
+    },
+    "viewAllTools": {
+      "related": "관련된 모든 도구 보기",
+      "all": "모든 도구 보기"
     }
   },
   "imageCompressor": {
@@ -245,7 +265,8 @@
         "formatRestrictions": "형식 제한",
         "privacyConcerns": "프라이버시 우려",
         "registrationRequired": "등록 필요"
-      }
+      },
+      "title": "왜 Toolaze를 선택해야 할까요?"
     },
     "scenarios": {
       "title": "사용 사례",
@@ -344,7 +365,8 @@
         "qualityLoss": "품질 손실",
         "privacyConcerns": "프라이버시 우려",
         "registrationRequired": "등록 필요"
-      }
+      },
+      "title": "왜 Toolaze를 선택해야 할까요?"
     },
     "scenarios": {
       "title": "사용 사례",

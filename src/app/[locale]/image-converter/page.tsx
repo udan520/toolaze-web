@@ -11,6 +11,10 @@ import Comparison from '@/components/blocks/Comparison'
 import HowToUse from '@/components/blocks/HowToUse'
 import WhyToolaze from '@/components/blocks/WhyToolaze'
 import Rating from '@/components/blocks/Rating'
+import ViewAllToolsButton from '@/components/ViewAllToolsButton'
+import ToolCard from '@/components/ToolCard'
+import FeatureCard from '@/components/FeatureCard'
+import MoreToolsSection from '@/components/MoreToolsSection'
 import { generateHreflangAlternates } from '@/lib/hreflang'
 import { loadCommonTranslations, getAllSlugs, getSeoContent } from '@/lib/seo-loader'
 import Link from 'next/link'
@@ -174,27 +178,24 @@ export default async function ImageConverterPage({ params }: PageProps) {
               <p className="desc-text text-lg">{translations.whyToolaze.desc}</p>
             </div>
             <div className="grid gap-4">
-              <div className="bg-[#F8FAFF] p-6 rounded-3xl border border-indigo-50 flex items-center gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-indigo-100 flex items-center justify-center text-2xl">📂</div>
-                <div>
-                  <h4 className="font-bold text-slate-800">{translations.features.batch.title}</h4>
-                  <p className="text-xs text-slate-500">{translations.features.batch.desc}</p>
-                </div>
-              </div>
-              <div className="bg-[#F8FAFF] p-6 rounded-3xl border border-indigo-50 flex items-center gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-purple-100 flex items-center justify-center text-2xl">🎯</div>
-                <div>
-                  <h4 className="font-bold text-slate-800">{translations.features.formats.title}</h4>
-                  <p className="text-xs text-slate-500">{translations.features.formats.desc}</p>
-                </div>
-              </div>
-              <div className="bg-[#F8FAFF] p-6 rounded-3xl border border-indigo-50 flex items-center gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-blue-100 flex items-center justify-center text-2xl">💎</div>
-                <div>
-                  <h4 className="font-bold text-slate-800">{translations.features.free.title}</h4>
-                  <p className="text-xs text-slate-500">{translations.features.free.desc}</p>
-                </div>
-              </div>
+              <FeatureCard
+                icon="📂"
+                title={translations.features.batch.title}
+                description={translations.features.batch.desc}
+                iconBgColor="indigo"
+              />
+              <FeatureCard
+                icon="🎯"
+                title={translations.features.formats.title}
+                description={translations.features.formats.desc}
+                iconBgColor="purple"
+              />
+              <FeatureCard
+                icon="💎"
+                title={translations.features.free.title}
+                description={translations.features.free.desc}
+                iconBgColor="blue"
+              />
             </div>
           </div>
         </section>
@@ -338,52 +339,15 @@ export default async function ImageConverterPage({ params }: PageProps) {
         />
 
         {/* 9. More Tools 板块 - 显示3个最相关的长尾页面 + 所有工具入口 */}
-        <section className="py-24 px-6 bg-white border-t border-indigo-50/50">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-4xl font-extrabold text-center text-slate-900 mb-4">
-              More Image Converter Tools
-            </h2>
-            <p className="text-center text-slate-600 mb-12 max-w-2xl mx-auto">
-              Discover specialized converter tools for specific platforms and use cases.
-            </p>
-            
-            {/* 显示3个最相关的工具 */}
-            {featuredTools.length > 0 && (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-                {featuredTools.map((tool) => (
-                  <Link
-                    key={tool.slug}
-                    href={tool.href}
-                    className="bg-[#F8FAFF] p-6 rounded-3xl border border-indigo-50 shadow-sm hover:shadow-md hover:border-indigo-200 transition-all group"
-                  >
-                    <h3 className="text-xl font-bold text-slate-800 mb-2 group-hover:text-indigo-600 transition-colors">
-                      {tool.title}
-                    </h3>
-                    <p className="text-sm text-slate-600 line-clamp-2">
-                      {tool.description}
-                    </p>
-                    <div className="mt-4 text-sm font-bold text-indigo-600 group-hover:text-purple-600 transition-colors">
-                      Try Now →
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            )}
-            
-            {/* 所有工具入口 - 始终显示 */}
-            <div className="text-center mt-8">
-              <Link
-                href={locale === 'en' ? '/image-converter/all-tools' : `/${locale}/image-converter/all-tools`}
-                className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold rounded-full hover:shadow-lg hover:shadow-indigo-500/50 transition-all text-base"
-              >
-                View All Tools
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
-                </svg>
-              </Link>
-            </div>
-          </div>
-        </section>
+        <MoreToolsSection
+          title={t?.imageConverter?.moreTools || 'More Image Converter Tools'}
+          subtitle="Discover specialized converter tools for specific platforms and use cases."
+          tools={featuredTools}
+          viewAllHref={locale === 'en' ? '/image-converter/all-tools' : `/${locale}/image-converter/all-tools`}
+          viewAllText={t?.common?.viewAllTools?.all || 'View All Tools'}
+          tryNowText={t?.common?.tryNow || 'Try Now →'}
+          bgClass="bg-white border-t border-indigo-50/50"
+        />
       </main>
 
       <Footer />

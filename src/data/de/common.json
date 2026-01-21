@@ -137,7 +137,8 @@
     "tryNow": "Jetzt ausprobieren →",
     "rating": {
       "rating": "4.9/5 VON 10K+ KREATIVEN",
-      "description": "Schließen Sie sich Tausenden zufriedener Benutzer an, die Toolaze für schnelle, sichere und kostenlose Bildkomprimierung vertrauen. Keine Registrierung erforderlich, 100% private Verarbeitung."
+      "description": "Schließen Sie sich Tausenden zufriedener Benutzer an, die Toolaze für schnelle, sichere und kostenlose Bildkomprimierung vertrauen. Keine Registrierung erforderlich, 100% private Verarbeitung.",
+      "title": "Vertraut von Tausenden von Creators"
     },
     "tool": {
       "dropZone": {
@@ -185,6 +186,25 @@
         "localBrowser": "Lokale Browser-API",
         "noServerLogs": "Keine Server-Logs"
       }
+    },
+    "allTools": "Alle Tools",
+    "primaryTools": "Haupttools",
+    "specializedTools": "Spezialisierte Tools",
+    "allImageCompressionTools": "Alle Bildkomprimierungstools",
+    "allImageConverterTools": "Alle Bildkonverter-Tools",
+    "allImageCompressionToolsDesc": "Durchsuchen Sie alle verfügbaren Bildkomprimierungstools. Finden Sie das perfekte Tool für Ihre spezifischen Bedürfnisse.",
+    "allImageConverterToolsDesc": "Durchsuchen Sie alle verfügbaren Bildkonverter-Tools. Konvertieren Sie zwischen JPG-, PNG-, WebP- und HEIC-Formaten.",
+    "primaryToolsDesc": "Wesentliche Komprimierungstools für allgemeine Anwendungsfälle.",
+    "primaryConverterToolsDesc": "Wesentliche Konverter-Tools für allgemeine Anwendungsfälle.",
+    "specializedToolsDesc": "Spezialisierte Komprimierungstools für spezifische Plattformen und Anwendungsfälle.",
+    "specializedConverterToolsDesc": "Spezialisierte Konverter-Tools für spezifische Plattformen und Anwendungsfälle.",
+    "performanceMetrics": {
+      "metricColumn": "Leistungsmetrik",
+      "specificationColumn": "Toolaze-Spezifikation"
+    },
+    "viewAllTools": {
+      "related": "Alle Verwandten Tools Anzeigen",
+      "all": "Alle Tools Anzeigen"
     }
   },
   "imageCompressor": {
@@ -245,7 +265,8 @@
         "formatRestrictions": "Formatbeschränkungen",
         "privacyConcerns": "Datenschutzbedenken",
         "registrationRequired": "Registrierung erforderlich"
-      }
+      },
+      "title": "Warum Toolaze wählen?"
     },
     "scenarios": {
       "title": "Anwendungsfälle",
@@ -344,7 +365,8 @@
         "qualityLoss": "Qualitätsverlust",
         "privacyConcerns": "Datenschutzbedenken",
         "registrationRequired": "Registrierung erforderlich"
-      }
+      },
+      "title": "Warum Toolaze wählen?"
     },
     "scenarios": {
       "title": "Anwendungsfälle",

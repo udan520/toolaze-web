@@ -76,7 +76,7 @@
     "engine": "HEVC 解碼器啟用 - 本地 GPU 加速",
     "limit": "批次 100+ 就緒 - 無限制檔案大小",
     "logic": "完整 EXIF 保留（GPS、日期、裝置標籤）",
-    "privacy": "100% 客戶端（Web-Assembly 驅動）"
+    "privacy": "100% 客戶端（WebAssembly 驅動）"
   },
   "performanceMetrics": {
     "title": "為大規模專業需求而打造",
@@ -99,7 +99,7 @@
       },
       {
         "label": "資料邏輯",
-        "value": "100% 客戶端（Web-Assembly 驅動）"
+        "value": "100% 客戶端（WebAssembly 驅動）"
       },
       {
         "label": "EXIF 支援",

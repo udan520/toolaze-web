@@ -3,6 +3,7 @@ import Footer from '@/components/Footer'
 import Breadcrumb from '@/components/Breadcrumb'
 import { generateHreflangAlternates } from '@/lib/hreflang'
 import { loadCommonTranslations, getAllSlugs, getSeoContent } from '@/lib/seo-loader'
+import ToolCard from '@/components/ToolCard'
 import Link from 'next/link'
 import type { Metadata } from 'next'
 
@@ -44,6 +45,7 @@ export default async function AllToolsPage({ params }: PageProps) {
   
   const t = await loadCommonTranslations(locale)
   const breadcrumbT = t?.breadcrumb || { home: 'Home', imageCompression: 'Image Compression' }
+  const commonT = t?.common || {}
   
   // 加载所有工具
   const allSlugs = await getAllSlugs('image-compressor', locale)
@@ -84,7 +86,7 @@ export default async function AllToolsPage({ params }: PageProps) {
       <Breadcrumb items={[
         { label: breadcrumbT.home, href: homeHref },
         { label: breadcrumbT.imageCompression, href: locale === 'en' ? '/image-compressor' : `/${locale}/image-compressor` },
-        { label: 'All Tools' },
+        { label: commonT.allTools || 'All Tools' },
       ]} />
 
       <main className="min-h-screen bg-[#F8FAFF]">
@@ -92,10 +94,16 @@ export default async function AllToolsPage({ params }: PageProps) {
         <header className="bg-[#F8FAFF] pb-12 px-6">
           <div className="max-w-4xl mx-auto text-center pt-8 mb-12">
             <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 leading-tight text-slate-900">
-              All <span className="text-gradient">Image Compression Tools</span>
+              {commonT.allImageCompressionTools ? (
+                <>
+                  {commonT.allImageCompressionTools.split(' ')[0]} <span className="text-gradient">{commonT.allImageCompressionTools.split(' ').slice(1).join(' ')}</span>
+                </>
+              ) : (
+                <>All <span className="text-gradient">Image Compression Tools</span></>
+              )}
             </h1>
             <p className="desc-text text-lg md:text-xl max-w-2xl mx-auto">
-              Browse all available image compression tools. Find the perfect tool for your specific needs.
+              {commonT.allImageCompressionToolsDesc || 'Browse all available image compression tools. Find the perfect tool for your specific needs.'}
             </p>
           </div>
         </header>
@@ -105,29 +113,28 @@ export default async function AllToolsPage({ params }: PageProps) {
           <section className="py-24 px-6 bg-white">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-4xl font-extrabold text-center text-slate-900 mb-4">
-                Primary Tools
+                {commonT.primaryTools || 'Primary Tools'}
               </h2>
               <p className="text-center text-slate-600 mb-12 max-w-2xl mx-auto">
-                Essential compression tools for general use cases.
+                {commonT.primaryToolsDesc || 'Essential compression tools for general use cases.'}
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {menuTools.map((tool) => (
-                  <Link
-                    key={tool.slug}
-                    href={tool.href}
-                    className="bg-[#F8FAFF] p-6 rounded-3xl border border-indigo-50 shadow-sm hover:shadow-md hover:border-indigo-200 transition-all group"
-                  >
-                    <h3 className="text-xl font-bold text-slate-800 mb-2 group-hover:text-indigo-600 transition-colors">
-                      {tool.title}
-                    </h3>
-                    <p className="text-sm text-slate-600 line-clamp-2">
-                      {tool.description}
-                    </p>
-                    <div className="mt-4 text-sm font-bold text-indigo-600 group-hover:text-purple-600 transition-colors">
-                      Try Now →
-                    </div>
-                  </Link>
-                ))}
+                {menuTools.map((tool, idx) => {
+                  const iconBgColors: Array<'indigo' | 'purple' | 'blue'> = ['indigo', 'purple', 'blue']
+                  const iconBgColor = iconBgColors[idx % 3] as 'indigo' | 'purple' | 'blue'
+                  
+                  return (
+                    <ToolCard
+                      key={tool.slug}
+                      title={tool.title}
+                      description={tool.description}
+                      href={tool.href}
+                      iconBgColor={iconBgColor}
+                      tryNowText={commonT.tryNow || 'Try Now →'}
+                      className="bg-[#F8FAFF]"
+                    />
+                  )
+                })}
               </div>
             </div>
           </section>
@@ -138,29 +145,27 @@ export default async function AllToolsPage({ params }: PageProps) {
           <section className="py-24 px-6 bg-[#F8FAFF]">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-4xl font-extrabold text-center text-slate-900 mb-4">
-                Specialized Tools
+                {commonT.specializedTools || 'Specialized Tools'}
               </h2>
               <p className="text-center text-slate-600 mb-12 max-w-2xl mx-auto">
-                Specialized compression tools for specific platforms and use cases.
+                {commonT.specializedToolsDesc || 'Specialized compression tools for specific platforms and use cases.'}
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {longTailTools.map((tool) => (
-                  <Link
-                    key={tool.slug}
-                    href={tool.href}
-                    className="bg-white p-6 rounded-3xl border border-indigo-50 shadow-sm hover:shadow-md hover:border-indigo-200 transition-all group"
-                  >
-                    <h3 className="text-xl font-bold text-slate-800 mb-2 group-hover:text-indigo-600 transition-colors">
-                      {tool.title}
-                    </h3>
-                    <p className="text-sm text-slate-600 line-clamp-2">
-                      {tool.description}
-                    </p>
-                    <div className="mt-4 text-sm font-bold text-indigo-600 group-hover:text-purple-600 transition-colors">
-                      Try Now →
-                    </div>
-                  </Link>
-                ))}
+                {longTailTools.map((tool, idx) => {
+                  const iconBgColors: Array<'indigo' | 'purple' | 'blue'> = ['indigo', 'purple', 'blue']
+                  const iconBgColor = iconBgColors[idx % 3] as 'indigo' | 'purple' | 'blue'
+                  
+                  return (
+                    <ToolCard
+                      key={tool.slug}
+                      title={tool.title}
+                      description={tool.description}
+                      href={tool.href}
+                      iconBgColor={iconBgColor}
+                      tryNowText={commonT.tryNow || 'Try Now →'}
+                    />
+                  )
+                })}
               </div>
             </div>
           </section>

@@ -137,7 +137,8 @@
     "tryNow": "Experimente Agora →",
     "rating": {
       "rating": "4.9/5 DE 10K+ CRIADORES",
-      "description": "Junte-se a milhares de usuários satisfeitos que confiam no Toolaze para compressão de imagens rápida, segura e gratuita. Nenhum registro necessário, processamento 100% privado."
+      "description": "Junte-se a milhares de usuários satisfeitos que confiam no Toolaze para compressão de imagens rápida, segura e gratuita. Nenhum registro necessário, processamento 100% privado.",
+      "title": "Confiado por Milhares de Criadores"
     },
     "tool": {
       "dropZone": {
@@ -185,6 +186,25 @@
         "localBrowser": "API do Navegador Local",
         "noServerLogs": "Sem Logs do Servidor"
       }
+    },
+    "allTools": "Todas as Ferramentas",
+    "primaryTools": "Ferramentas Principais",
+    "specializedTools": "Ferramentas Especializadas",
+    "allImageCompressionTools": "Todas as Ferramentas de Compressão de Imagens",
+    "allImageConverterTools": "Todas as Ferramentas de Conversor de Imagens",
+    "allImageCompressionToolsDesc": "Navegue por todas as ferramentas de compressão de imagens disponíveis. Encontre a ferramenta perfeita para suas necessidades específicas.",
+    "allImageConverterToolsDesc": "Navegue por todas as ferramentas de conversor de imagens disponíveis. Converta entre formatos JPG, PNG, WebP e HEIC.",
+    "primaryToolsDesc": "Ferramentas de compressão essenciais para casos de uso gerais.",
+    "primaryConverterToolsDesc": "Ferramentas de conversão essenciais para casos de uso gerais.",
+    "specializedToolsDesc": "Ferramentas de compressão especializadas para plataformas e casos de uso específicos.",
+    "specializedConverterToolsDesc": "Ferramentas de conversão especializadas para plataformas e casos de uso específicos.",
+    "performanceMetrics": {
+      "metricColumn": "Métrica de Desempenho",
+      "specificationColumn": "Especificação Toolaze"
+    },
+    "viewAllTools": {
+      "related": "Ver Todas as Ferramentas Relacionadas",
+      "all": "Ver Todas as Ferramentas"
     }
   },
   "imageCompressor": {
@@ -245,7 +265,8 @@
         "formatRestrictions": "Restrições de formato",
         "privacyConcerns": "Preocupações de privacidade",
         "registrationRequired": "Registro necessário"
-      }
+      },
+      "title": "Por que escolher Toolaze?"
     },
     "scenarios": {
       "title": "Casos de Uso",
@@ -344,7 +365,8 @@
         "qualityLoss": "Perda de qualidade",
         "privacyConcerns": "Preocupações de privacidade",
         "registrationRequired": "Registro necessário"
-      }
+      },
+      "title": "Por que escolher Toolaze?"
     },
     "scenarios": {
       "title": "Casos de Uso",

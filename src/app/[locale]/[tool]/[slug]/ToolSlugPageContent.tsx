@@ -14,6 +14,8 @@ import Comparison from '@/components/blocks/Comparison'
 import Scenarios from '@/components/blocks/Scenarios'
 import Rating from '@/components/blocks/Rating'
 import FAQ from '@/components/blocks/FAQ'
+import ViewAllToolsButton from '@/components/ViewAllToolsButton'
+import ToolCard from '@/components/ToolCard'
 import React from 'react'
 
 interface ToolSlugPageContentProps {
@@ -139,15 +141,15 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
 
     // 默认内容（如果没有提供，使用翻译内容）
     // 优先使用 JSON 中的 intro.title 和 intro.content
-    const whyToolazeTitle = content.intro?.title || content.sections?.whyToolaze?.title || toolTranslations?.whyToolaze?.title || (isConverter 
+    const whyToolazeTitle = content.intro?.title || toolTranslations?.whyToolaze?.title || (isConverter 
       ? "Convert Images Without Quality Loss"
       : "Stop Losing Time on Slow Image Compression Tools")
-    const whyToolazeDesc = content.intro?.content || content.sections?.whyToolaze?.description || toolTranslations?.whyToolaze?.desc || (isConverter
+    const whyToolazeDesc = content.intro?.content || toolTranslations?.whyToolaze?.desc || (isConverter
       ? "Convert images between JPG, PNG, and WebP formats instantly. Our browser-based converter processes images locally, ensuring complete privacy and fast conversion. Perfect for web developers, designers, and content creators."
       : "Traditional image compressors are slow, limit file counts, and often compromise quality. Toolaze compresses images with precise size control, maintaining visual quality while dramatically reducing file sizes.")
     // 优先使用 JSON 中的 specs 字段，转换为特性卡片格式（支持 6 个特性点）
-    // 如果 intro.features 存在，优先使用；否则从 specs 转换；最后使用默认特性
-    const whyToolazeFeatures = content.intro?.features || content.sections?.whyToolaze?.features || (content.specs ? [
+    // 从 specs 转换；最后使用默认特性
+    const whyToolazeFeatures = (content.specs ? [
       { icon: '⚡', title: 'Fast Conversion', desc: content.specs.engine },
       { icon: '📦', title: 'Batch Processing', desc: content.specs.limit },
       { icon: '🔒', title: 'Private & Secure', desc: content.specs.privacy },
@@ -178,13 +180,13 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
       ? (toolTranslations?.howToUse?.step3?.desc || 'Download individual converted images or all at once as a ZIP file. Fast and efficient.')
       : (toolTranslations?.howToUse?.step3?.desc || 'Download individual compressed images or all at once as a ZIP file. Fast and efficient.')
     
-    const howToUseSteps = content.howToUse?.steps || content.sections?.howToUse?.steps || [
+    const howToUseSteps = content.howToUse?.steps || [
       { title: toolTranslations?.howToUse?.step1?.title || 'Upload Images', desc: defaultUploadDesc },
       defaultSecondStep,
       { title: toolTranslations?.howToUse?.step3?.title || 'Download Results', desc: defaultDownloadDesc }
     ]
 
-    const scenariosData = content.scenes || content.sections?.scenarios || (isConverter
+    const scenariosData = content.scenes || (isConverter
       ? [
           { icon: '💻', title: toolTranslations?.scenarios?.developers?.title || 'For Web Developers', description: toolTranslations?.scenarios?.developers?.desc || 'Convert images to WebP for better performance. Optimize formats for faster page loads and improved SEO.' },
           { icon: '🎨', title: toolTranslations?.scenarios?.designers?.title || 'For Designers', description: toolTranslations?.scenarios?.designers?.desc || 'Convert between formats for different design needs. Preserve transparency with PNG or optimize with JPG.' },
@@ -196,29 +198,33 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
           { icon: '📱', title: toolTranslations?.scenarios?.creators?.title || 'For Content Creators', description: toolTranslations?.scenarios?.creators?.desc || 'Prepare images for social media and blogs. Batch process multiple images quickly without quality loss.' }
         ])
 
-    const comparisonData = content.comparison || content.sections?.comparison || content.compare ? {
-      toolaze: content.compare?.toolaze || content.comparison?.toolaze || content.sections?.comparison?.toolaze || (isConverter
-        ? [
-            toolTranslations?.comparison?.features?.batch100 || 'Batch up to 100 images',
-            toolTranslations?.comparison?.features?.multipleFormat || 'Multiple format support',
-            toolTranslations?.comparison?.features?.qualityPreserved || 'Quality preserved',
-            toolTranslations?.comparison?.features?.privateFree || '100% private & free',
-            toolTranslations?.comparison?.features?.noSignup || 'No sign-up required'
-          ].filter(Boolean).join(', ')
+    const comparisonData = content.comparison ? {
+      toolaze: typeof content.comparison?.toolaze === 'string' 
+        ? content.comparison.toolaze 
+        : (isConverter
+          ? [
+              toolTranslations?.comparison?.features?.batch100 || 'Batch up to 100 images',
+              toolTranslations?.comparison?.features?.multipleFormat || 'Multiple format support',
+              toolTranslations?.comparison?.features?.qualityPreserved || 'Quality preserved',
+              toolTranslations?.comparison?.features?.privateFree || '100% private & free',
+              toolTranslations?.comparison?.features?.noSignup || 'No sign-up required'
+            ].filter(Boolean).join(', ')
+          : [
+              toolTranslations?.comparison?.features?.batch100 || 'Batch up to 100 images',
+              toolTranslations?.comparison?.features?.preciseControl || 'Precise size control',
+              toolTranslations?.comparison?.features?.multipleFormat || 'Multiple format support',
+              toolTranslations?.comparison?.features?.privateFree || '100% private & free',
+              toolTranslations?.comparison?.features?.noSignup || 'No sign-up required'
+            ].filter(Boolean).join(', ')),
+      others: typeof content.comparison?.others === 'string'
+        ? content.comparison.others
         : [
-            toolTranslations?.comparison?.features?.batch100 || 'Batch up to 100 images',
-            toolTranslations?.comparison?.features?.preciseControl || 'Precise size control',
-            toolTranslations?.comparison?.features?.multipleFormat || 'Multiple format support',
-            toolTranslations?.comparison?.features?.privateFree || '100% private & free',
-            toolTranslations?.comparison?.features?.noSignup || 'No sign-up required'
-          ].filter(Boolean).join(', ')),
-      others: content.compare?.others || content.comparison?.others || content.sections?.comparison?.others || [
-        toolTranslations?.comparison?.features?.limitedBatch || 'Limited batch size',
-        toolTranslations?.comparison?.features?.noPreciseControl || 'No precise control',
-        toolTranslations?.comparison?.features?.formatRestrictions || 'Format restrictions',
-        toolTranslations?.comparison?.features?.privacyConcerns || 'Privacy concerns',
-        toolTranslations?.comparison?.features?.registrationRequired || 'Registration required'
-      ].filter(Boolean).join(', ')
+            toolTranslations?.comparison?.features?.limitedBatch || 'Limited batch size',
+            toolTranslations?.comparison?.features?.noPreciseControl || 'No precise control',
+            toolTranslations?.comparison?.features?.formatRestrictions || 'Format restrictions',
+            toolTranslations?.comparison?.features?.privacyConcerns || 'Privacy concerns',
+            toolTranslations?.comparison?.features?.registrationRequired || 'Registration required'
+          ].filter(Boolean).join(', ')
     } : null
 
     // 构建面包屑导航
@@ -281,7 +287,7 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
                 {content.hero?.h1 ? (
                   renderH1WithGradient(content.hero.h1)
                 ) : (
-                  <>Free <span className="text-gradient">{isConverter ? 'Image Converter' : 'Image Compressor'}</span></>
+                  <>{toolTranslations?.title || (isConverter ? 'Image Converter' : 'Image Compressor')}</>
                 )}
               </h1>
               {content.hero?.desc && (
@@ -337,8 +343,8 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
                 />
               ),
               features: (bgClass: string) => {
-                // 优先使用独立的 features 字段，向后兼容 intro.features
-                const featuresData = content.features?.items || content.intro?.features || whyToolazeFeatures
+                // 优先使用独立的 features 字段
+                const featuresData = content.features?.items || whyToolazeFeatures
                 return (
                   <Features
                     key="features"
@@ -348,18 +354,25 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
                   />
                 )
               },
-              performanceMetrics: (bgClass: string) => (
-                <PerformanceMetrics
-                  key="performanceMetrics"
-                  title={content.performanceMetrics?.title || content.sections?.performanceMetrics?.title}
-                  metrics={content.performanceMetrics?.metrics || content.sections?.performanceMetrics?.metrics}
-                  bgClass={bgClass}
-                />
-              ),
+              performanceMetrics: (bgClass: string) => {
+                const performanceMetricsT = t?.common?.performanceMetrics || {}
+                return (
+                  <PerformanceMetrics
+                    key="performanceMetrics"
+                    title={content.performanceMetrics?.title}
+                    metrics={content.performanceMetrics?.metrics}
+                    columnHeaders={{
+                      metric: performanceMetricsT.metricColumn || 'Performance Metric',
+                      specification: performanceMetricsT.specificationColumn || 'Toolaze Specification'
+                    }}
+                    bgClass={bgClass}
+                  />
+                )
+              },
               howToUse: (bgClass: string) => (
                 <HowToUse
                   key="howToUse"
-                  title={content.howToUse?.title || content.sections?.howToUse?.title || toolTranslations?.howToUse?.title}
+                  title={content.howToUse?.title || toolTranslations?.howToUse?.title}
                   steps={howToUseSteps}
                   bgClass={bgClass}
                 />
@@ -391,7 +404,7 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
                   key="rating"
                   title={content.rating?.title || t?.common?.rating?.title}
                   rating={t?.common?.rating?.rating}
-                  description={content.rating?.text || t?.common?.rating?.description}
+                  description={content.rating?.text || t?.common?.rating?.description || ''}
                   bgClass={bgClass}
                 />
               ),
@@ -429,44 +442,31 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
                     }
                   </h2>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-                    {filteredRecommendedTools.map((tool, idx) => (
-                      <Link
-                        key={tool.slug}
-                        href={tool.href}
-                        className="bg-white p-6 rounded-3xl border border-indigo-50 shadow-sm hover:shadow-md hover:border-indigo-200 transition-all group"
-                      >
-                        <div className={`w-12 h-12 rounded-2xl flex items-center justify-center text-2xl mb-4 ${
-                          idx === 0 ? 'bg-indigo-100' : idx === 1 ? 'bg-purple-100' : 'bg-blue-100'
-                        }`}>
-                          🖼️
-                        </div>
-                        <h3 className="text-xl font-bold text-slate-800 mb-2 group-hover:text-indigo-600 transition-colors">
-                          {tool.title}
-                        </h3>
-                        <p className="desc-text text-sm line-clamp-2">
-                          {tool.description}
-                        </p>
-                        <div className="mt-4 text-sm font-bold text-indigo-600 group-hover:text-purple-600 transition-colors">
-                          {t?.common?.tryNow || 'Try Now →'}
-                        </div>
-                      </Link>
-                    ))}
+                    {filteredRecommendedTools.map((tool, idx) => {
+                      const iconBgColors: Array<'indigo' | 'purple' | 'blue'> = ['indigo', 'purple', 'blue']
+                      const iconBgColor = iconBgColors[idx % 3] as 'indigo' | 'purple' | 'blue'
+                      
+                      return (
+                        <ToolCard
+                          key={tool.slug}
+                          title={tool.title}
+                          description={tool.description}
+                          href={tool.href}
+                          iconBgColor={iconBgColor}
+                          tryNowText={t?.common?.tryNow || 'Try Now →'}
+                        />
+                      )
+                    })}
                   </div>
                 </>
               )}
               
               {/* View All Related Tools 入口 - 始终显示 */}
-              <div className="text-center">
-                <Link
-                  href={`/${locale}/${tool}/all-tools`}
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold rounded-full hover:shadow-lg hover:shadow-indigo-500/50 transition-all text-base"
-                >
-                  View All Related Tools
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
-                  </svg>
-                </Link>
-              </div>
+              <ViewAllToolsButton
+                href={`/${locale}/${tool}/all-tools`}
+                text={t?.common?.viewAllTools?.related || 'View All Related Tools'}
+                variant="related"
+              />
             </div>
           </section>
         </main>
@@ -475,8 +475,15 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
       </>
     )
   } catch (error) {
-    if (process.env.NODE_ENV === 'development') {
-      console.error('Error rendering page:', error)
+    console.error(`Error rendering page for ${tool}/${slug} (${locale}):`, error)
+    if (error instanceof Error) {
+      console.error('Error details:', {
+        message: error.message,
+        stack: error.stack,
+        tool,
+        slug,
+        locale
+      })
     }
     notFound()
     return null

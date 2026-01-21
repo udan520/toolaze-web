@@ -11,6 +11,10 @@ import Comparison from '@/components/blocks/Comparison'
 import HowToUse from '@/components/blocks/HowToUse'
 import WhyToolaze from '@/components/blocks/WhyToolaze'
 import Rating from '@/components/blocks/Rating'
+import ViewAllToolsButton from '@/components/ViewAllToolsButton'
+import ToolCard from '@/components/ToolCard'
+import FeatureCard from '@/components/FeatureCard'
+import MoreToolsSection from '@/components/MoreToolsSection'
 import { generateHreflangAlternates } from '@/lib/hreflang'
 import { loadCommonTranslations, getAllSlugs, getSeoContent } from '@/lib/seo-loader'
 import Link from 'next/link'
@@ -356,52 +360,15 @@ export default async function ImageCompressorPage({ params }: PageProps) {
         />
 
         {/* 9. More Tools 板块 - 显示3个最相关的长尾页面 + 所有工具入口 - 始终显示 */}
-        <section className="py-24 px-6 bg-white border-t border-indigo-50/50" id="more-tools-section" data-testid="more-tools-section">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-4xl font-extrabold text-center text-slate-900 mb-4">
-              More Image Compression Tools
-            </h2>
-            <p className="text-center text-slate-600 mb-12 max-w-2xl mx-auto">
-              Discover specialized compression tools for specific platforms and use cases.
-            </p>
-            
-            {/* 显示3个最相关的工具 */}
-            {Array.isArray(featuredTools) && featuredTools.length > 0 && (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-                {featuredTools.map((tool) => (
-                  <Link
-                    key={tool.slug}
-                    href={tool.href}
-                    className="bg-[#F8FAFF] p-6 rounded-3xl border border-indigo-50 shadow-sm hover:shadow-md hover:border-indigo-200 transition-all group"
-                  >
-                    <h3 className="text-xl font-bold text-slate-800 mb-2 group-hover:text-indigo-600 transition-colors">
-                      {tool.title}
-                    </h3>
-                    <p className="text-sm text-slate-600 line-clamp-2">
-                      {tool.description}
-                    </p>
-                    <div className="mt-4 text-sm font-bold text-indigo-600 group-hover:text-purple-600 transition-colors">
-                      Try Now →
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            )}
-            
-            {/* 所有工具入口 - 始终显示 */}
-            <div className="text-center mt-8">
-              <Link
-                href={locale === 'en' ? '/image-compressor/all-tools' : `/${locale}/image-compressor/all-tools`}
-                className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold rounded-full hover:shadow-lg hover:shadow-indigo-500/50 transition-all text-base"
-              >
-                View All Tools
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
-                </svg>
-              </Link>
-            </div>
-          </div>
-        </section>
+        <MoreToolsSection
+          title={t?.imageCompressor?.moreTools || 'More Image Compression Tools'}
+          subtitle="Discover specialized compression tools for specific platforms and use cases."
+          tools={Array.isArray(featuredTools) ? featuredTools : []}
+          viewAllHref={locale === 'en' ? '/image-compressor/all-tools' : `/${locale}/image-compressor/all-tools`}
+          viewAllText={t?.common?.viewAllTools?.all || 'View All Tools'}
+          tryNowText={t?.common?.tryNow || 'Try Now →'}
+          bgClass="bg-white border-t border-indigo-50/50"
+        />
       </main>
 
       <Footer />
