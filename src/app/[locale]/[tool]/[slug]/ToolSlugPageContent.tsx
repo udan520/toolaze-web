@@ -93,6 +93,25 @@ function renderH1WithGradient(h1: string): React.ReactElement {
   return <>{result}</>
 }
 
+// 生成 JSON-LD HowTo Schema
+function generateHowToSchema(
+  howToTitle: string,
+  steps: Array<{ title?: string; desc?: string; description?: string }>
+): object {
+  const howToSteps = steps.map((step, index) => ({
+    '@type': 'HowToStep',
+    position: index + 1,
+    text: step.desc || step.description || step.title || `Step ${index + 1}`,
+  }))
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: howToTitle,
+    step: howToSteps,
+  }
+}
+
 export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSlugPageContentProps) {
   try {
     if (!tool || !slug) {
@@ -237,8 +256,19 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
     ]
     const sectionsOrder = content.sectionsOrder || defaultSectionsOrder
 
+    // 生成 JSON-LD HowTo Schema
+    const howToTitle = content.howToUse?.title || `How to ${content.hero?.h1 ? extractSimpleTitle(content.hero.h1) : 'Use Tool'}`
+    const howToSteps = content.howToUse?.steps || howToUseSteps
+    const jsonLdSchema = generateHowToSchema(howToTitle, howToSteps)
+
     return (
       <>
+        {/* JSON-LD Schema for SEO */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdSchema) }}
+        />
+        
         <Navigation />
         
         <Breadcrumb items={breadcrumbItems} />
@@ -388,42 +418,57 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
           })()}
 
           {/* 9. Recommended Tools 板块 */}
-          {filteredRecommendedTools.length > 0 && (
-            <section className="py-24 px-6 bg-[#F8FAFF]">
-              <div className="max-w-6xl mx-auto">
-                <h2 className="text-3xl font-extrabold text-center text-slate-900 mb-12">
-                  {isConverter 
-                    ? (t?.imageConverter?.moreTools || `More Image Converter Tools`)
-                    : (t?.imageCompressor?.moreTools || `More Image Compression Tools`)
-                  }
-                </h2>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  {filteredRecommendedTools.map((tool, idx) => (
-                    <Link
-                      key={tool.slug}
-                      href={tool.href}
-                      className="bg-white p-6 rounded-3xl border border-indigo-50 shadow-sm hover:shadow-md hover:border-indigo-200 transition-all group"
-                    >
-                      <div className={`w-12 h-12 rounded-2xl flex items-center justify-center text-2xl mb-4 ${
-                        idx === 0 ? 'bg-indigo-100' : idx === 1 ? 'bg-purple-100' : 'bg-blue-100'
-                      }`}>
-                        🖼️
-                      </div>
-                      <h3 className="text-xl font-bold text-slate-800 mb-2 group-hover:text-indigo-600 transition-colors">
-                        {tool.title}
-                      </h3>
-                      <p className="desc-text text-sm line-clamp-2">
-                        {tool.description}
-                      </p>
-                      <div className="mt-4 text-sm font-bold text-indigo-600 group-hover:text-purple-600 transition-colors">
-                        {t?.common?.tryNow || 'Try Now →'}
-                      </div>
-                    </Link>
-                  ))}
-                </div>
+          <section className="py-24 px-6 bg-[#F8FAFF]">
+            <div className="max-w-6xl mx-auto">
+              {filteredRecommendedTools.length > 0 && (
+                <>
+                  <h2 className="text-3xl font-extrabold text-center text-slate-900 mb-12">
+                    {isConverter 
+                      ? (t?.imageConverter?.moreTools || `More Image Converter Tools`)
+                      : (t?.imageCompressor?.moreTools || `More Image Compression Tools`)
+                    }
+                  </h2>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                    {filteredRecommendedTools.map((tool, idx) => (
+                      <Link
+                        key={tool.slug}
+                        href={tool.href}
+                        className="bg-white p-6 rounded-3xl border border-indigo-50 shadow-sm hover:shadow-md hover:border-indigo-200 transition-all group"
+                      >
+                        <div className={`w-12 h-12 rounded-2xl flex items-center justify-center text-2xl mb-4 ${
+                          idx === 0 ? 'bg-indigo-100' : idx === 1 ? 'bg-purple-100' : 'bg-blue-100'
+                        }`}>
+                          🖼️
+                        </div>
+                        <h3 className="text-xl font-bold text-slate-800 mb-2 group-hover:text-indigo-600 transition-colors">
+                          {tool.title}
+                        </h3>
+                        <p className="desc-text text-sm line-clamp-2">
+                          {tool.description}
+                        </p>
+                        <div className="mt-4 text-sm font-bold text-indigo-600 group-hover:text-purple-600 transition-colors">
+                          {t?.common?.tryNow || 'Try Now →'}
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                </>
+              )}
+              
+              {/* View All Related Tools 入口 - 始终显示 */}
+              <div className="text-center">
+                <Link
+                  href={`/${locale}/${tool}/all-tools`}
+                  className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold rounded-full hover:shadow-lg hover:shadow-indigo-500/50 transition-all text-base"
+                >
+                  View All Related Tools
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </Link>
               </div>
-            </section>
-          )}
+            </div>
+          </section>
         </main>
 
         <Footer />

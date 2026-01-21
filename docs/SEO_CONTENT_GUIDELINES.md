@@ -187,6 +187,109 @@
 
 ---
 
+## SEO 内容生成规则
+
+> **核心原则**：作为 SEO 专家，在生成 `toolaze.com` 的内容时，必须严格遵循以下分层内容规则。
+
+### 1. 目录结构定义
+
+- **L2（二级页面）**：分类页面（如 `/image-converter`）。重点聚焦"通用工具集能力"。
+- **L3（三级页面）**：具体工具页面（如 `/heic-to-jpg`）。重点聚焦"特定关键词解决方案"。
+
+### 2. 内容差异化逻辑（关键）
+
+对于每个 L3 页面，确保相对于 L2 和其他 L3 页面具有以下唯一性级别：
+
+#### [类别 A：100% 唯一 - 动态生成]
+
+- **Meta Title（钩子公式）**：
+  - **公式**：`[Action] [Input] to [Output] [Category] ([Benefit 1], [Benefit 2] & [Benefit 3]) - Toolaze`
+  - **示例**：`Convert PNG to WebP Online (Free, Batch & No Ads) - Toolaze`
+  - **规则**：
+    - Action：动作词（Convert, Transform, Change等）
+    - Input：输入格式（PNG, JPG, HEIC等）
+    - Output：输出格式（WebP, PNG, JPG等）
+    - Category：类别词（Online, Tool, Converter等）
+    - Benefits：三个核心优势（Free, Batch, No Ads等），用逗号和&连接
+    - 最后必须加上 ` - Toolaze` 品牌标识
+
+- **Meta Description（步骤 + 数据组合）**：
+  - **格式要求**：
+    - **前100字符**：操作引导（How to + 3个步骤）
+    - **后50字符**：技术优势（数据 + 安全/隐私）
+  - **示例**：`How to convert PNG to WebP? 1. Upload PNG 2. Auto-convert 3. Download WebP. Shrink file size by 35% with zero quality loss. Secure & Private.`
+  - **规则**：
+    - 必须以 "How to [动作]?" 开头
+    - 步骤格式：`1. [动作1] 2. [动作2] 3. [动作3]`
+    - 数据优势：包含具体数字（如 "35%", "100 images"）
+    - 结尾强调安全和隐私
+
+- **H1（极简原则）**：
+  - **格式**：`[Input] to [Output] Converter`
+  - **示例**：`PNG to WebP Converter`
+  - **规则**：
+    - 只告诉用户他在哪，不添加修饰词
+    - 不使用 "Unlimited", "Free", "Online" 等修饰词
+    - 保持简洁，核心格式转换信息即可
+
+- **JSON-LD Schema（HowTo类型）**：
+  - **要求**：必须在HTML的`<head>`中注入JSON-LD结构化数据
+  - **格式**：
+    ```json
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Convert [Input] to [Output]",
+      "step": [
+        {"@type": "HowToStep", "text": "[步骤1描述]"},
+        {"@type": "HowToStep", "text": "[步骤2描述]"},
+        {"@type": "HowToStep", "text": "[步骤3描述]"}
+      ]
+    }
+    ```
+  - **规则**：
+    - name字段：使用 "How to Convert [Input] to [Output]" 格式
+    - step数组：基于`howToUse.steps`字段生成，每个步骤对应一个HowToStep
+    - 步骤描述要简洁明了，与页面内容一致
+- **Intro（介绍）**：
+  - 分析 [输入格式] 的特定痛点（兼容性/文件大小）与 [输出格式] 的优势
+  - **必须** 200+ 单词
+- **Scenes（使用场景）**：
+  - 基于该工具创建 3 个特定用户画像
+  - 示例（HEIC 转换工具）：iPhone 摄影师、打印服务、Windows 用户
+
+#### [类别 B：50%-80% 唯一 - 混合生成]
+
+- **FAQ（常见问题）**：
+  - 5+ 个问题
+  - **前 3 个问题必须**针对 [输入格式/输出格式] 特定问题（如："我的 EXIF 数据会保留吗？"）
+  - 最后 2 个可以是通用的安全/隐私 FAQ
+- **Comparison（对比）**：
+  - 必须从源文档中提取技术规格（质量、压缩、支持）
+  - 以叙述或列表格式进行比较
+- **HowToUse（使用说明）**：
+  - 基础逻辑共享，但所有动词和名词必须具体化
+  - 示例：使用 "Upload your HEIC" 而不是 "Upload file"
+
+#### [类别 C：10%-30% 唯一 - 核心品牌]
+
+- **Features & Performance（功能与性能）**：
+  - 保留核心卖点（速度、隐私、批量处理）
+  - 但必须改变措辞、句子结构和 H3 标题，避免"重复内容"惩罚
+
+### 3. 参考源
+
+- **优先使用**：始终优先使用上下文中提供的"功能介绍页面"
+- **禁止虚构**：**不要**虚构功能或文件限制
+- **缺失数据**：如果缺少特定数据，使用占位符如 `[Insert Limit Here]` 或询问
+
+### 4. 输出格式
+
+- 当被要求生成 SEO 内容时，以指定的 JSON 或 Markdown 格式输出
+- 确保所有变量（如 `{{source_format}}` 和 `{{target_format}}`）都被正确替换
+
+---
+
 ## 内容编写流程
 
 ### 1. 查看功能介绍
@@ -329,9 +432,128 @@
 
 ---
 
+---
+
+## 菜单与路由分发逻辑 (Navigation Logic)
+
+### 核心原则
+
+所有三级页面（L3）必须明确标记是否显示在主导航菜单中，以保持菜单简洁并优化用户体验。
+
+### 分类标准
+
+#### 1. Primary Tool (核心功能) - `in_menu: true`
+
+**定义**：基础格式处理工具，提供通用的、广泛适用的功能。
+
+**特征**：
+- 工具名称简洁明确（如：Compress JPG, PNG to JPG, JPG Compressor）
+- 功能通用，适用于大多数用户场景
+- 不包含特定场景或平台限制
+
+**示例**：
+- ✅ `compress-jpg` - JPG Compressor
+- ✅ `compress-png` - PNG Compressor
+- ✅ `compress-webp` - WebP Compressor
+- ✅ `compress-image` - Image Compressor
+- ✅ `batch-compress` - Batch Image Compressor
+- ✅ `jpg-to-png` - JPG to PNG Converter
+- ✅ `png-to-jpg` - PNG to JPG Converter
+- ✅ `webp-to-jpg` - WebP to JPG Converter
+
+**菜单显示**：✅ 显示在主导航栏的三级菜单中
+
+#### 2. Long-tail Landing Page (长尾页面) - `in_menu: false`
+
+**定义**：针对特定场景、平台或需求的专用工具页面。
+
+**特征**：
+- 工具名称包含特定场景关键词（如：USCIS Photo, Discord Emoji, YouTube Thumbnail）
+- 针对特定平台或用途（如：Amazon Product, Etsy Listing, eBay Picture）
+- 包含特定大小限制（如：20KB, 100KB, 240KB, 2MB）
+
+**示例**：
+- ❌ `jpg-to-20kb` - Compress JPG to 20KB
+- ❌ `png-to-100kb` - PNG to 100KB Compression
+- ❌ `uscis-photo-240kb` - USCIS Photo 240KB Tool
+- ❌ `discord-emoji-256kb` - Discord Emoji & Sticker Sizer
+- ❌ `youtube-thumbnail-2mb` - YouTube Thumbnail Fixer (Under 2MB)
+- ❌ `amazon-product-10mb` - Amazon Product Image Optimizer
+- ❌ `etsy-listing-1mb` - Etsy Listing Photo Tool
+- ❌ `ebay-picture-fast` - eBay Fast-Load Optimizer
+
+**菜单显示**：❌ 不显示在主导航栏中
+
+### 实现要求
+
+#### 1. JSON 数据结构
+
+每个三级页面的 JSON 文件必须在根级别添加 `in_menu` 字段：
+
+```json
+{
+  "in_menu": true,  // 或 false
+  "metadata": {
+    "title": "...",
+    "description": "..."
+  },
+  "hero": {
+    "h1": "...",
+    "desc": "..."
+  },
+  // ... 其他字段
+}
+```
+
+#### 2. Navigation 组件逻辑
+
+Navigation 组件必须根据 `in_menu` 字段过滤菜单项：
+
+```typescript
+// 只显示 in_menu: true 的工具
+const menuItems = allItems.filter(item => item.in_menu !== false)
+```
+
+**默认行为**：
+- 如果 `in_menu` 字段不存在，默认值为 `true`（向后兼容）
+- 只有明确设置为 `false` 的页面才会被排除
+
+#### 3. L2 页面索引要求
+
+所有 `in_menu: false` 的页面必须自动汇总到其所属二级目录（L2）的 "More Tools" 或 "Related Tools" 列表区域。
+
+**实现位置**：
+- `/image-compressor` 页面：显示所有 `in_menu: false` 的压缩工具
+- `/image-converter` 页面：显示所有 `in_menu: false` 的转换工具
+
+**显示要求**：
+- 必须显示在页面底部或专门的工具列表区域
+- 使用卡片式布局，每个工具显示标题、简短描述和链接
+- 标题使用工具的 `hero.h1` 字段
+- 描述使用 `hero.desc` 或 `metadata.description` 的前100字符
+- 链接指向对应的三级页面
+
+**严禁事项**：
+- ❌ 不能将 `in_menu: false` 的工具显示在顶部主导航栏
+- ❌ 不能在主导航栏堆砌过多工具
+- ❌ 不能忽略 `in_menu` 字段的设置
+
+### 更新清单
+
+当创建或更新三级页面时：
+
+- [ ] 确定页面类型（Primary Tool 或 Long-tail Landing Page）
+- [ ] 在 JSON 根级别添加 `in_menu` 字段（true 或 false）
+- [ ] 如果是 `in_menu: false`，确保在对应的 L2 页面有索引链接
+- [ ] 验证 Navigation 组件正确过滤菜单项
+- [ ] 验证 L2 页面正确显示所有工具
+
+---
+
 ## 更新说明
 
 当功能介绍更新时：
 1. 更新 `FEATURE_SPECIFICATIONS.md`
 2. 检查所有现有 SEO 内容是否符合新规范
 3. 更新不符合规范的 SEO 内容
+4. 检查所有页面的 `in_menu` 字段设置是否正确

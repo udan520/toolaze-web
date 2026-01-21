@@ -1,44 +1,193 @@
 {
+  "in_menu": true,
   "metadata": {
-    "title": "Convert HEIC to WebP - Free Online Image Converter | Toolaze",
-    "description": "Convert HEIC/HEIF images to WebP format instantly. Batch convert up to 100 images. Modern format with superior compression. 100% free."
+    "title": "Convert HEIC to WebP Online (Free, Batch & No Ads) - Toolaze",
+    "description": "How to convert HEIC to WebP? 1. Upload HEIC 2. Auto-convert 3. Download WebP. Reduce file size while maintaining quality. Secure & Private."
   },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
   "hero": {
     "h1": "HEIC to WebP Converter",
     "desc": "Convert HEIC to WebP online for free. Simply drop your HEIC images below to convert them to WebP in seconds."
   },
   "intro": {
-    "title": "Modern Web Format",
-    "content": "WebP is a modern image format that provides excellent compression and quality. Convert your HEIC images to WebP for better web performance and smaller file sizes."
+    "title": "Why Convert HEIC to WebP? Modern Compression with Wide Compatibility",
+    "content": [
+      {
+        "title": "HEIC vs WebP: Format Comparison and Use Cases",
+        "text": "HEIC (High Efficiency Image Container) is Apple's modern image format that uses advanced HEVC encoding to achieve 50% smaller file sizes compared to JPG while maintaining superior image quality. HEIC supports transparency, high dynamic range (HDR), and advanced features, making it ideal for Apple devices. However, HEIC has significant compatibility limitations: it's primarily supported on Apple devices and newer systems, causing issues when sharing with Windows users, uploading to websites, or using in applications that don't support HEIC. WebP is Google's modern image format that provides excellent compression—typically 25-35% better than JPG—supports both lossy and lossless compression, preserves transparency with alpha channels, and is supported by all modern browsers and mobile devices. WebP offers the perfect balance between HEIC's compression efficiency and universal compatibility."
+      },
+      {
+        "title": "Why Convert HEIC to WebP?",
+        "text": "Converting HEIC to WebP becomes beneficial when you need to optimize website performance and reduce loading times, want to maintain transparency while achieving smaller file sizes, need compatibility with modern web browsers and applications, or are building web applications that support WebP format. WebP format preserves HEIC's transparency and quality advantages while delivering universal browser support, making it ideal for modern web development, mobile apps, and digital platforms where performance optimization and compatibility are priorities. WebP is supported by all modern browsers, ensuring your iPhone photos work perfectly on the web."
+      }
+    ]
+  },
+  "features": {
+    "title": "Advanced Conversion Features",
+    "items": [
+      {
+        "icon": "📊",
+        "iconType": "compression",
+        "title": "Efficient Compression Technology",
+        "desc": "Transform your HEIC images to WebP format and achieve optimal file sizes while maintaining excellent visual quality and transparency support."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Absolute Privacy Protection",
+        "desc": "Every conversion occurs entirely within your browser—your HEIC files never leave your device, guaranteeing complete data security and privacy."
+      },
+      {
+        "icon": "📦",
+        "iconType": "batch",
+        "title": "Mass Conversion Support",
+        "desc": "Process entire iPhone photo libraries of up to 100 HEIC files at once, converting them all to optimized WebP format efficiently."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Instant Processing",
+        "desc": "Our WebAssembly-powered HEVC decoder processes HEIC to WebP conversions immediately without server uploads or processing delays."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Completely Free Always",
+        "desc": "Access unlimited HEIC to WebP conversions at no cost—no premium subscriptions, no hidden fees, no advertising interruptions."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "Zero Installation Required",
+        "desc": "Run everything directly in your web browser using WebAssembly technology—no software downloads or browser extensions needed."
+      }
+    ]
   },
   "specs": {
-    "engine": "HEIC to WebP Converter",
-    "limit": "Batch up to 100 images",
-    "logic": "Quality-Preserving Conversion",
-    "privacy": "100% Client-Side"
+    "engine": "HEVC Decoder Active - WebAssembly-Powered Processing",
+    "limit": "Batch 100+ Images - Unlimited File Sizes",
+    "logic": "Quality & Transparency Preserving Conversion",
+    "privacy": "100% Client-Side (Local Browser Processing)"
+  },
+  "performanceMetrics": {
+    "title": "Technical Specifications",
+    "metrics": [
+      {
+        "label": "Input Format",
+        "value": "HEIC/HEIF (Apple High Efficiency Image Format)"
+      },
+      {
+        "label": "Output Format",
+        "value": "WebP (Google's Modern Image Format)"
+      },
+      {
+        "label": "Max Batch Size",
+        "value": "100 Images per session"
+      },
+      {
+        "label": "File Size Limit",
+        "value": "Unlimited (Limited by browser memory)"
+      },
+      {
+        "label": "Compression Type",
+        "value": "Lossy/Lossless (Optimized compression)"
+      },
+      {
+        "label": "Transparency Support",
+        "value": "Full alpha channel transparency preserved"
+      },
+      {
+        "label": "Processing Location",
+        "value": "100% Client-Side (WebAssembly HEVC Decoder)"
+      },
+      {
+        "label": "EXIF Data",
+        "value": "Preserved during conversion"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "How to Convert HEIC to WebP",
+    "steps": [
+      {
+        "title": "Upload Your HEIC Files",
+        "desc": "Drag and drop your HEIC images into the converter interface or click to select HEIC files from your iPhone or device."
+      },
+      {
+        "title": "Automatic WebP Conversion",
+        "desc": "Our converter automatically processes your HEIC files using WebAssembly-powered HEVC decoder and transforms them into WebP format with optimized compression."
+      },
+      {
+        "title": "Download Optimized WebP Files",
+        "desc": "Download your converted WebP files instantly. Each WebP maintains quality and transparency while being optimized for web use."
+      }
+    ]
+  },
+  "comparison": {
+    "toolaze": "Unlimited file sizes, Batch 100+ HEIC images, Optimized WebP compression, Transparency preserved, WebAssembly-powered, 100% local processing, No uploads, Free forever",
+    "others": "20MB file limits, Single file conversion only, Poor compression quality, Transparency lost, Cloud uploads required, Server queues, Paid upgrades"
   },
   "scenes": [
     {
-      "title": "Web Optimization",
-      "desc": "Convert HEIC to WebP for faster website loading."
+      "title": "Web Developers",
+      "icon": "💻",
+      "desc": "Convert HEIC iPhone photos to WebP format for modern websites, achieving faster page loads and better performance while maintaining transparency and quality."
     },
     {
-      "title": "Mobile Apps",
-      "desc": "Reduce app size with WebP format conversion."
+      "title": "Mobile App Developers",
+      "icon": "📱",
+      "desc": "Transform HEIC images to WebP format for mobile applications, reducing app size and improving download speeds without sacrificing image quality."
+    },
+    {
+      "title": "Content Creators",
+      "icon": "📸",
+      "desc": "Optimize HEIC photo collections to WebP format for online portfolios and social media, ensuring faster uploads and better web compatibility."
     }
   ],
+  "rating": {
+    "text": "\"Perfect solution for converting my iPhone photos to WebP for my website. Great compression and quality!\" - Join thousands of developers and creators who trust Toolaze for efficient HEIC conversion."
+  },
   "faq": [
     {
-      "q": "Why convert HEIC to WebP?",
-      "a": "WebP offers better compression than HEIC while maintaining quality, and has wider browser support."
+      "q": "Why convert HEIC to WebP instead of JPG?",
+      "a": "WebP offers better compression than JPG (25-35% smaller files) while maintaining similar quality, and WebP supports transparency which JPG doesn't. WebP is also supported by all modern browsers, making it ideal for web use. While HEIC offers even better compression, it has limited compatibility. WebP provides the perfect balance between compression efficiency and universal browser support, making it ideal for modern web applications and mobile apps."
     },
     {
-      "q": "Is WebP widely supported?",
-      "a": "WebP is supported by all modern browsers and mobile devices."
+      "q": "Will transparency be preserved when converting HEIC to WebP?",
+      "a": "Yes, WebP format fully supports transparency with alpha channels, so if your HEIC image has transparency, it will be perfectly preserved when converting to WebP. HEIC format supports transparency, and WebP preserves this feature, making WebP ideal for graphics, logos, and images that need transparent backgrounds from iPhone photos."
+    },
+    {
+      "q": "Will converting HEIC to WebP reduce image quality?",
+      "a": "WebP supports both lossy and lossless compression. When converting HEIC to WebP, you can achieve smaller file sizes with minimal quality loss that's usually visually imperceptible at normal viewing sizes. WebP's advanced compression algorithms typically produce excellent quality at smaller file sizes. For images where quality is critical, WebP's lossless mode preserves perfect quality while still achieving some compression benefits."
+    },
+    {
+      "q": "Is HEIC to WebP conversion free and secure?",
+      "a": "Yes, Toolaze is completely free forever with no hidden costs, subscriptions, or advertisements. Most importantly, all conversion happens locally in your browser using WebAssembly-powered HEVC decoder technology. Your HEIC files never leave your device—they're never uploaded to any server, ensuring 100% privacy and security for your iPhone photos."
+    },
+    {
+      "q": "Can I convert multiple HEIC files to WebP at once?",
+      "a": "Yes, Toolaze supports batch conversion of up to 100 HEIC files per session. You can drag and drop multiple HEIC files at once, and they'll all be converted to WebP format simultaneously with transparency preservation. There are no individual file size limits, so you can convert large HEIC files without restrictions."
+    },
+    {
+      "q": "Will my EXIF data be preserved when converting HEIC to WebP?",
+      "a": "Yes, Toolaze preserves all EXIF metadata during conversion, including GPS coordinates, shooting date, camera settings, and other metadata tags. Your converted WebP files will retain all the original metadata from your HEIC files."
+    },
+    {
+      "q": "What's the difference between HEIC and WebP format?",
+      "a": "HEIC is Apple's modern format using HEVC encoding, offering 50% smaller files than JPG with superior quality, and supports transparency and HDR. However, HEIC has limited compatibility—primarily supported on Apple devices. WebP is Google's modern format offering 25-35% better compression than JPG, supports both lossy and lossless compression, preserves transparency, and is supported by all modern browsers. WebP provides better compatibility than HEIC while maintaining excellent compression and quality."
     }
   ],
   "compare": {
-    "toolaze": "Batch processing, Better compression, Free",
-    "others": "Single file, Same size, Paid"
+    "toolaze": "Unlimited HEIC to WebP conversion, Optimized compression, Full transparency preservation, WebAssembly-powered, Universal browser support, No file size limits, Complete EXIF preservation, 100% private processing",
+    "others": "20MB file limits, Cloud uploads required, Poor compression quality, Transparency lost, Limited browser support, Server queues, EXIF data stripped, Privacy concerns"
   }
 }

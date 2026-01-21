@@ -6,7 +6,10 @@
 src/data/
 ├── en/                    # 英语源文件（主要内容）
 │   ├── image-compression.json
-│   └── image-converter.json
+│   └── image-converter/
+│       ├── jpg-to-png.json
+│       ├── png-to-jpg.json
+│       └── ...
 ├── de/                    # 德语
 ├── ja/                    # 日语
 ├── es/                    # 西班牙语
@@ -20,7 +23,7 @@ src/data/
 ## 工作流程
 
 ### 1. 修改英语内容
-编辑 `src/data/en/image-compression.json` 或 `src/data/en/image-converter.json`
+编辑 `src/data/en/image-compression.json` 或 `src/data/en/image-converter/[tool-name].json`
 
 ### 2. 同步到其他语言
 运行同步脚本：

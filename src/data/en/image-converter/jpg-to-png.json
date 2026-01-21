@@ -1,44 +1,193 @@
 {
+  "in_menu": true,
   "metadata": {
-    "title": "Convert JPG to PNG - Free Online Image Converter | Toolaze",
-    "description": "Convert JPG/JPEG images to PNG format instantly. Batch convert up to 100 images. 100% free, private, no uploads required."
+    "title": "Convert JPG to PNG Online (Free, Batch & No Ads) - Toolaze",
+    "description": "How to convert JPG to PNG? 1. Upload JPG 2. Auto-convert 3. Download PNG. Add transparency support with lossless quality. Secure & Private."
   },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
   "hero": {
     "h1": "JPG to PNG Converter",
     "desc": "Convert JPG to PNG online for free. Simply drop your JPG images below to convert them to PNG in seconds."
   },
   "intro": {
-    "title": "Why Convert JPG to PNG?",
-    "content": "PNG format supports transparency and lossless compression, making it ideal for logos, graphics, and images that require high quality. Our converter processes images locally in your browser, ensuring complete privacy."
+    "title": "Why Convert JPG to PNG? Understanding Format Differences",
+    "content": [
+      {
+        "title": "JPG vs PNG: What's the Difference?",
+        "text": "JPG (JPEG) is a lossy compression format that's perfect for photographs and images with many colors, offering smaller file sizes at the cost of some quality loss. However, JPG has significant limitations: it doesn't support transparency, making it unsuitable for logos, graphics with transparent backgrounds, or images that need to overlay on different backgrounds. PNG (Portable Network Graphics) is a lossless format that preserves every pixel perfectly, supports full alpha channel transparency, and is ideal for graphics, logos, icons, and images where quality and transparency are essential."
+      },
+      {
+        "title": "Why Convert JPG to PNG?",
+        "text": "Converting JPG to PNG becomes necessary when you need transparency support for logos or graphics, require lossless quality preservation for design work, need images that can overlay seamlessly on different backgrounds, or want to avoid compression artifacts that JPG introduces. PNG ensures your images maintain pixel-perfect quality and can be used in professional design workflows, web development projects, and branding materials where transparency and quality are non-negotiable."
+      }
+    ]
+  },
+  "features": {
+    "title": "Powerful Conversion Features",
+    "items": [
+      {
+        "icon": "🎨",
+        "iconType": "quality",
+        "title": "Lossless Quality Conversion",
+        "desc": "Transform your JPG images to PNG format while maintaining perfect pixel-level quality with zero compression artifacts."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Complete Privacy Protection",
+        "desc": "All conversion happens locally in your browser—your JPG files never leave your device, ensuring absolute data security."
+      },
+      {
+        "icon": "📦",
+        "iconType": "batch",
+        "title": "Bulk Processing Capability",
+        "desc": "Process entire collections of up to 100 JPG images simultaneously, converting them all to PNG format in one session."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Lightning-Fast Performance",
+        "desc": "Our browser-native engine processes JPG to PNG conversions instantly without waiting for server uploads or downloads."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Zero Cost Forever",
+        "desc": "Enjoy unlimited JPG to PNG conversions completely free—no subscriptions, no hidden fees, no advertisements ever."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "No Installation Needed",
+        "desc": "Everything runs directly in your web browser using client-side technology—no software downloads or plugin installations required."
+      }
+    ]
   },
   "specs": {
-    "engine": "Browser-Native Conversion",
-    "limit": "Batch up to 100 images",
-    "logic": "Lossless Quality Preservation",
-    "privacy": "100% Client-Side Processing"
+    "engine": "Canvas API Powered - Browser-Native Processing",
+    "limit": "Batch 100+ Images - Unlimited File Sizes",
+    "logic": "Full Quality Preservation (Lossless Conversion)",
+    "privacy": "100% Client-Side (Local Browser Processing)"
+  },
+  "performanceMetrics": {
+    "title": "Technical Specifications",
+    "metrics": [
+      {
+        "label": "Input Format",
+        "value": "JPG/JPEG (Joint Photographic Experts Group)"
+      },
+      {
+        "label": "Output Format",
+        "value": "PNG (Portable Network Graphics)"
+      },
+      {
+        "label": "Max Batch Size",
+        "value": "100 Images per session"
+      },
+      {
+        "label": "File Size Limit",
+        "value": "Unlimited (Limited by browser memory)"
+      },
+      {
+        "label": "Compression Type",
+        "value": "Lossless (No quality degradation)"
+      },
+      {
+        "label": "Transparency Support",
+        "value": "Full alpha channel transparency enabled"
+      },
+      {
+        "label": "Processing Location",
+        "value": "100% Client-Side (Browser Canvas API)"
+      },
+      {
+        "label": "EXIF Data",
+        "value": "Preserved during conversion"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "How to Convert JPG to PNG",
+    "steps": [
+      {
+        "title": "Upload Your JPG Files",
+        "desc": "Drag and drop your JPG images into the converter area or click to browse and select files from your device."
+      },
+      {
+        "title": "Automatic Conversion",
+        "desc": "Our converter automatically processes your JPG files and transforms them into PNG format with lossless quality."
+      },
+      {
+        "title": "Download PNG Results",
+        "desc": "Download your converted PNG files instantly. Each PNG maintains perfect quality and supports transparency."
+      }
+    ]
+  },
+  "comparison": {
+    "toolaze": "Unlimited file sizes, Batch 100+ JPG images, Lossless PNG conversion, Full transparency support, 100% local processing, No uploads, Free forever",
+    "others": "20MB file limits, Single file conversion only, Quality loss during conversion, No transparency support, Cloud uploads required, Server queues, Paid upgrades"
   },
   "scenes": [
     {
-      "title": "Logo Conversion",
-      "desc": "Convert logos from JPG to PNG to add transparency support."
+      "title": "Graphic Designers",
+      "icon": "🎨",
+      "desc": "Transform JPG graphics into PNG format to add transparency support for logos, icons, and design elements that need to overlay seamlessly on various backgrounds."
     },
     {
-      "title": "Graphic Design",
-      "desc": "Switch to PNG for lossless quality in design projects."
+      "title": "Web Developers",
+      "icon": "💻",
+      "desc": "Convert JPG images to PNG for web projects requiring transparent backgrounds, ensuring your graphics blend perfectly with any website design or color scheme."
+    },
+    {
+      "title": "Brand Designers",
+      "icon": "🏢",
+      "desc": "Switch from JPG to PNG format to maintain pixel-perfect quality for brand assets, ensuring your logos and graphics look flawless across all media and applications."
     }
   ],
+  "rating": {
+    "text": "\"Finally, a converter that gives me true transparency support without quality loss. Perfect for my design workflow.\" - Join thousands of designers and developers who trust Toolaze for professional-grade image conversion."
+  },
   "faq": [
     {
-      "q": "Will the quality be preserved?",
-      "a": "Yes, PNG is a lossless format, so quality is fully preserved during conversion."
+      "q": "Can I add transparency to JPG images by converting to PNG?",
+      "a": "Converting JPG to PNG will create a PNG file, but JPG format doesn't support transparency, so the transparent areas will be filled with a solid color (usually white). If you need true transparency, you'll need to edit the image in a graphics editor after conversion to remove the background. However, PNG format supports transparency, so once converted, you can work with the image in design software to add or modify transparency."
     },
     {
-      "q": "Can I convert multiple files?",
-      "a": "Yes, you can batch convert up to 100 images at once."
+      "q": "Will converting JPG to PNG improve image quality?",
+      "a": "PNG is a lossless format, so converting JPG to PNG will prevent any further quality loss. However, it won't restore quality that was already lost during the original JPG compression. The converted PNG will maintain the current quality level of your JPG file, and future edits won't introduce additional compression artifacts since PNG uses lossless compression."
+    },
+    {
+      "q": "How much larger will PNG files be compared to JPG?",
+      "a": "PNG files are typically 2-5 times larger than JPG files because PNG uses lossless compression while JPG uses lossy compression. For example, a 500KB JPG might become a 1.5-2.5MB PNG file. This is the trade-off for lossless quality and transparency support. However, PNG files compress better for images with fewer colors (like logos and graphics) compared to photographs."
+    },
+    {
+      "q": "Is JPG to PNG conversion free and secure?",
+      "a": "Yes, Toolaze is completely free forever with no hidden costs or advertisements. More importantly, all conversion happens locally in your browser using client-side technology. Your JPG files never leave your device—they're never uploaded to any server, ensuring 100% privacy and security for your images."
+    },
+    {
+      "q": "Can I convert multiple JPG files to PNG at once?",
+      "a": "Yes, Toolaze supports batch conversion of up to 100 JPG files per session. You can drag and drop multiple files at once, and they'll all be converted to PNG format simultaneously. There are no individual file size limits, so you can convert large JPG files without restrictions."
+    },
+    {
+      "q": "Will my EXIF data be preserved when converting JPG to PNG?",
+      "a": "Yes, Toolaze preserves all EXIF metadata during conversion, including GPS coordinates, shooting date, camera settings, and other metadata tags. Your converted PNG files will retain all the original metadata from your JPG files."
+    },
+    {
+      "q": "What's the difference between JPG and PNG format?",
+      "a": "JPG uses lossy compression optimized for photographs, resulting in smaller file sizes but some quality loss. JPG doesn't support transparency. PNG uses lossless compression, preserving perfect quality but creating larger files. PNG fully supports transparency with alpha channels, making it ideal for graphics, logos, and images that need transparent backgrounds or pixel-perfect quality."
     }
   ],
   "compare": {
-    "toolaze": "Batch conversion, Lossless quality, Free",
-    "others": "Single file limits, Quality loss, Paid"
+    "toolaze": "Unlimited JPG to PNG conversion, Lossless quality preservation, Full transparency support, Local-first architecture, No file size limits, Complete EXIF preservation, 100% private processing",
+    "others": "20MB file limits, Cloud uploads required, Quality loss during conversion, No transparency features, Server queues, EXIF data stripped, Privacy concerns"
   }
 }

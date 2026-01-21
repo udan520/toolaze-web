@@ -12,7 +12,8 @@ import HowToUse from '@/components/blocks/HowToUse'
 import WhyToolaze from '@/components/blocks/WhyToolaze'
 import Rating from '@/components/blocks/Rating'
 import { generateHreflangAlternates } from '@/lib/hreflang'
-import { loadCommonTranslations } from '@/lib/seo-loader'
+import { loadCommonTranslations, getAllSlugs, getSeoContent } from '@/lib/seo-loader'
+import Link from 'next/link'
 import type { Metadata } from 'next'
 
 interface PageProps {
@@ -109,6 +110,37 @@ export default async function ImageConverterPage({ params }: PageProps) {
     }
   }
   const breadcrumbT = t?.breadcrumb || { home: 'Home', imageConverter: 'Image Converter' }
+  
+  // 加载所有 in_menu: false 的工具（长尾页面），并选择3个最相关的显示
+  const allSlugs = await getAllSlugs('image-converter', locale)
+  const allLongTailTools = await Promise.all(
+    allSlugs.map(async (slug) => {
+      try {
+        const toolData = await getSeoContent('image-converter', slug, locale)
+        // 只包含 in_menu: false 的工具
+        if (toolData?.in_menu === false) {
+          const title = toolData?.hero?.h1 ? toolData.hero.h1.replace(/<[^>]*>/g, '').trim() : slug
+          const description = toolData?.hero?.desc || toolData?.metadata?.description || ''
+          const shortDesc = description.length > 100 ? description.substring(0, 100) + '...' : description
+          return {
+            slug,
+            title,
+            description: shortDesc,
+            href: locale === 'en' ? `/image-converter/${slug}` : `/${locale}/image-converter/${slug}`,
+          }
+        }
+        return null
+      } catch {
+        return null
+      }
+    })
+  )
+  const filteredLongTailTools = allLongTailTools.filter((tool): tool is { slug: string; title: string; description: string; href: string } => 
+    tool !== null && tool.title !== undefined && tool.href !== undefined
+  )
+  // 选择前3个最相关的工具显示
+  const featuredTools = filteredLongTailTools.slice(0, 3)
+  const totalToolsCount = allSlugs.length
   
   return (
     <>
@@ -302,7 +334,56 @@ export default async function ImageConverterPage({ params }: PageProps) {
         <Rating 
           rating={t?.common?.rating?.rating}
           description={t?.common?.rating?.description}
+          bgClass="bg-[#F8FAFF]"
         />
+
+        {/* 9. More Tools 板块 - 显示3个最相关的长尾页面 + 所有工具入口 */}
+        <section className="py-24 px-6 bg-white border-t border-indigo-50/50">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-4xl font-extrabold text-center text-slate-900 mb-4">
+              More Image Converter Tools
+            </h2>
+            <p className="text-center text-slate-600 mb-12 max-w-2xl mx-auto">
+              Discover specialized converter tools for specific platforms and use cases.
+            </p>
+            
+            {/* 显示3个最相关的工具 */}
+            {featuredTools.length > 0 && (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                {featuredTools.map((tool) => (
+                  <Link
+                    key={tool.slug}
+                    href={tool.href}
+                    className="bg-[#F8FAFF] p-6 rounded-3xl border border-indigo-50 shadow-sm hover:shadow-md hover:border-indigo-200 transition-all group"
+                  >
+                    <h3 className="text-xl font-bold text-slate-800 mb-2 group-hover:text-indigo-600 transition-colors">
+                      {tool.title}
+                    </h3>
+                    <p className="text-sm text-slate-600 line-clamp-2">
+                      {tool.description}
+                    </p>
+                    <div className="mt-4 text-sm font-bold text-indigo-600 group-hover:text-purple-600 transition-colors">
+                      Try Now →
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            )}
+            
+            {/* 所有工具入口 - 始终显示 */}
+            <div className="text-center mt-8">
+              <Link
+                href={locale === 'en' ? '/image-converter/all-tools' : `/${locale}/image-converter/all-tools`}
+                className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold rounded-full hover:shadow-lg hover:shadow-indigo-500/50 transition-all text-base"
+              >
+                View All Tools
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+            </div>
+          </div>
+        </section>
       </main>
 
       <Footer />

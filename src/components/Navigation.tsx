@@ -91,7 +91,7 @@ export default function Navigation() {
         return `/${locale}${href}`
       }
       
-      // 加载 Image Compressor 的三级菜单（显示所有压缩工具）
+      // 加载 Image Compressor 的三级菜单（只显示 in_menu: true 的工具）
       try {
         const compressorSlugs = await getAllSlugs('image-compressor', locale)
         if (compressorSlugs && compressorSlugs.length > 0) {
@@ -99,6 +99,10 @@ export default function Navigation() {
             compressorSlugs.map(async (slug) => {
               try {
                 const toolData = await getSeoContent('image-compressor', slug, locale)
+                // 检查 in_menu 字段：如果不存在或为 true，则显示；如果为 false，则不显示
+                if (toolData?.in_menu === false) {
+                  return null
+                }
                 let title = slug
                 if (toolData?.hero?.h1) {
                   title = toolData.hero.h1.replace(/<[^>]*>/g, '').trim()
@@ -126,13 +130,17 @@ export default function Navigation() {
         data['image-compressor'] = []
       }
       
-      // 加载 Image Converter 的三级菜单
+      // 加载 Image Converter 的三级菜单（只显示 in_menu: true 的工具）
       try {
         const converterSlugs = await getAllSlugs('image-converter', locale)
         const converterItems = await Promise.all(
           converterSlugs.map(async (slug) => {
             try {
               const toolData = await getSeoContent('image-converter', slug, locale)
+              // 检查 in_menu 字段：如果不存在或为 true，则显示；如果为 false，则不显示
+              if (toolData?.in_menu === false) {
+                return null
+              }
               let title = slug
               if (toolData?.hero?.h1) {
                 title = toolData.hero.h1.replace(/<[^>]*>/g, '').trim()

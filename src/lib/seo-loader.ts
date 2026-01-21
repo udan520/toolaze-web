@@ -34,10 +34,6 @@ async function loadJsonData(locale: string, filename: string) {
         const data = await import('@/data/en/image-compression.json');
         return data.default || data;
       }
-      if (filename === 'image-converter.json') {
-        const data = await import('@/data/en/image-converter.json');
-        return data.default || data;
-      }
       if (filename === 'common.json') {
         const data = await import('@/data/en/common.json');
         return data.default || data;
@@ -47,10 +43,6 @@ async function loadJsonData(locale: string, filename: string) {
       try {
         if (filename === 'image-compression.json') {
           const data = await import(`@/data/${normalizedLocale}/image-compression.json`);
-          return data.default || data;
-        }
-        if (filename === 'image-converter.json') {
-          const data = await import(`@/data/${normalizedLocale}/image-converter.json`);
           return data.default || data;
         }
         if (filename === 'common.json') {
@@ -73,10 +65,6 @@ async function loadJsonData(locale: string, filename: string) {
       const data = await import('@/data/image-compression.json');
       return data.default || data;
     }
-    if (filename === 'image-converter.json') {
-      const data = await import('@/data/image-converter.json');
-      return data.default || data;
-    }
     if (filename === 'common.json') {
       // common.json 只从语言目录加载，不回退到根目录
       return null;
@@ -93,10 +81,6 @@ async function loadJsonData(locale: string, filename: string) {
         try {
           if (filename === 'image-compression.json') {
             const data = await import('@/data/image-compression.json');
-            return data.default || data;
-          }
-          if (filename === 'image-converter.json') {
-            const data = await import('@/data/image-converter.json');
             return data.default || data;
           }
           if (filename === 'common.json') {
@@ -320,15 +304,10 @@ export async function getSeoContent(tool: string, slug: string, locale: string =
       return null;
     }
     if (tool === 'image-converter' || tool === 'image-conversion') {
-      // 优先尝试加载独立的 JSON 文件
+      // 加载独立的 JSON 文件
       const independentData = await loadToolJsonFile(locale, 'image-converter', slug);
       if (independentData) {
         return independentData;
-      }
-      // 如果独立文件不存在，回退到旧的加载方式（向后兼容）
-      const data = await loadJsonData(locale, 'image-converter.json');
-      if (data && data[slug]) {
-        return data[slug];
       }
       return null;
     }
@@ -340,19 +319,24 @@ export async function getSeoContent(tool: string, slug: string, locale: string =
 }
 
 // 供生成静态页面使用
-export async function getAllSlugs(tool: string, locale: string = 'en') {
+export async function getAllSlugs(tool: string, locale: string = 'en'): Promise<string[]> {
   try {
     if (tool === 'image-compressor' || tool === 'image-compression') {
       const data = await loadJsonData(locale, 'image-compression.json');
-      return data ? Object.keys(data) : [];
+      if (data && typeof data === 'object') {
+        const keys = Object.keys(data);
+        return Array.isArray(keys) ? keys : [];
+      }
+      return [];
     }
     if (tool === 'image-converter' || tool === 'image-conversion') {
       // 对于 image-converter，使用预定义的 slug 列表
       // 这样可以避免加载整个 JSON 文件，只返回可用的工具列表
-      return IMAGE_CONVERTER_SLUGS;
+      return Array.isArray(IMAGE_CONVERTER_SLUGS) ? [...IMAGE_CONVERTER_SLUGS] : [];
     }
     return [];
   } catch (error) {
+    console.error(`Error in getAllSlugs for ${tool}:`, error);
     return [];
   }
 }

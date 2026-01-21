@@ -52,28 +52,44 @@ export async function generateStaticParams() {
   const locales = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
   const params = []
   
-  for (const locale of locales) {
+  try {
     // 使用英语版本获取所有 slug（因为所有语言版本应该有相同的 slug）
-    const compressorSlugs = await getAllSlugs('image-compressor', 'en')
-    const converterSlugs = await getAllSlugs('image-converter', 'en')
+    const compressorSlugs = await getAllSlugs('image-compressor', 'en') || []
+    const converterSlugs = await getAllSlugs('image-converter', 'en') || []
     
-    // 添加图片压缩工具的页面
-    for (const slug of compressorSlugs) {
-      params.push({
-        locale: locale,
-        tool: 'image-compressor',
-        slug: slug,
-      })
+    for (const locale of locales) {
+      // 添加图片压缩工具的页面
+      for (const slug of compressorSlugs) {
+        if (slug && typeof slug === 'string') {
+          params.push({
+            locale: locale,
+            tool: 'image-compressor',
+            slug: slug,
+          })
+        }
+      }
+      
+      // 添加图片转换工具的页面
+      for (const slug of converterSlugs) {
+        if (slug && typeof slug === 'string') {
+          params.push({
+            locale: locale,
+            tool: 'image-converter',
+            slug: slug,
+          })
+        }
+      }
     }
-    
-    // 添加图片转换工具的页面
-    for (const slug of converterSlugs) {
-      params.push({
-        locale: locale,
-        tool: 'image-converter',
-        slug: slug,
-      })
-    }
+  } catch (error) {
+    console.error('Error in generateStaticParams:', error)
+    // 如果出错，至少返回一个默认页面，避免构建失败
+    return [{ locale: 'en', tool: 'image-compressor', slug: 'compress-jpg' }]
+  }
+  
+  // 确保至少返回一个参数，避免构建失败
+  if (params.length === 0) {
+    console.warn('generateStaticParams returned empty array, using fallback')
+    return [{ locale: 'en', tool: 'image-compressor', slug: 'compress-jpg' }]
   }
   
   return params
