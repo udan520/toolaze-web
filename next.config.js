@@ -6,6 +6,12 @@ const nextConfig = {
   images: {
     unoptimized: true, // 静态导出必须禁用 Next.js 的默认图片优化
   },
+  // 注意：静态导出模式下无法使用 rewrites，所以无法代理 Hugging Face 请求
+  // Transformers.js 需要直接从 Hugging Face 加载模型文件
+  // 如果遇到 CORS 问题，用户需要：
+  // 1. 检查网络连接和防火墙设置
+  // 2. 使用支持 CORS 的浏览器
+  // 3. 或者使用 VPN/代理来访问 Hugging Face
   webpack: (config, { isServer }) => {
     if (!isServer) {
       // 确保 vendor chunks 在客户端正确打包

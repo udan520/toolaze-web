@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Script from 'next/script'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { getAllTools, loadToolData } from '@/lib/seo-loader'
@@ -224,8 +225,10 @@ export default async function HomePage() {
   return (
     <>
       {/* Organization Schema for Google Search Logo */}
-      <script
+      <Script
+        id="organization-schema-homepage"
         type="application/ld+json"
+        strategy="beforeInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
       />
       <Navigation />

@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Script from 'next/script'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { getAllTools, loadToolData, loadCommonTranslations } from '@/lib/seo-loader'
@@ -129,13 +130,8 @@ interface PageProps {
 
 // 为静态导出生成所有语言版本的参数
 export async function generateStaticParams() {
-  // 返回所有支持的语言（除了英语，因为英语在根路径）
-  // 但为了静态导出，我们需要生成所有语言版本
   const locales = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
-  
-  return locales.map((locale) => ({
-    locale: locale,
-  }))
+  return locales.map((locale) => ({ locale }))
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -327,8 +323,29 @@ export default async function HomePage({ params }: PageProps) {
     toolList = []
   }
 
+  // Organization Schema for Google Search Logo
+  // Google requires logo to be at least 112x112px, square, and accessible
+  // Using 512x512px for better quality
+  const organizationSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Toolaze',
+    url: 'https://toolaze.com',
+    logo: 'https://toolaze.com/web-app-manifest-512x512.png',
+    image: 'https://toolaze.com/web-app-manifest-512x512.png',
+    sameAs: [],
+    description: 'Free AI Image Compressor & Local Tools - Professional image processing tools that run entirely in your browser.',
+  }
+
   return (
     <>
+      {/* Organization Schema for Google Search Logo */}
+      <Script
+        id="organization-schema-homepage-locale"
+        type="application/ld+json"
+        strategy="beforeInteractive"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
       <Navigation />
 
       <header className="pt-10 pb-20 px-6">

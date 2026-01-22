@@ -9,6 +9,12 @@ interface LayoutProps {
   }>
 }
 
+// 为静态导出生成所有语言版本的参数
+export async function generateStaticParams() {
+  const locales = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
+  return locales.map((locale) => ({ locale }))
+}
+
 export async function generateMetadata({ params }: LayoutProps): Promise<Metadata> {
   const resolvedParams = await params
   const locale = resolvedParams.locale || 'en'
