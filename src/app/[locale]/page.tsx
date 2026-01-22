@@ -5,6 +5,122 @@ import { getAllTools, loadToolData, loadCommonTranslations } from '@/lib/seo-loa
 import { generateHreflangAlternates } from '@/lib/hreflang'
 import type { Metadata } from 'next'
 
+// 根据功能语义生成不同的图标
+function getToolIcon(tool: string, slug: string) {
+  // Image Converter 图标（格式转换）
+  if (tool === 'image-converter' || tool === 'image-conversion') {
+    // 根据转换类型生成不同图标
+    if (slug.includes('heic')) {
+      // HEIC 转换图标（iPhone 照片格式）
+      return (
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white">
+          <rect x="2" y="2" width="20" height="20" rx="2.5" fill="white" opacity="0.3"/>
+          <circle cx="12" cy="9" r="3" fill="currentColor"/>
+          <path d="M7 19L9 15L11 18L15 12L17 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+          <path d="M5 5L19 19M19 5L5 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" opacity="0.6"/>
+        </svg>
+      )
+    } else if (slug.includes('webp')) {
+      // WebP 转换图标（现代格式）
+      return (
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white">
+          <rect x="2" y="2" width="20" height="20" rx="2.5" fill="white" opacity="0.3"/>
+          <rect x="7" y="9" width="10" height="7" rx="1.5" fill="currentColor"/>
+          <circle cx="9.5" cy="11.5" r="0.8" fill="white"/>
+          <path d="M11.5 13.5L13.5 11.5L15.5 13.5" stroke="white" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+          <path d="M5 5L19 19M19 5L5 19" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
+        </svg>
+      )
+    } else {
+      // 通用格式转换图标
+      return (
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white">
+          <rect x="2" y="2" width="20" height="20" rx="2.5" fill="white" opacity="0.3"/>
+          <path d="M5 5L19 19M19 5L5 19" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
+          <rect x="7" y="9" width="10" height="7" rx="1.5" fill="currentColor"/>
+          <circle cx="9.5" cy="11.5" r="0.8" fill="white"/>
+          <path d="M11.5 13.5L13.5 11.5L15.5 13.5" stroke="white" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+        </svg>
+      )
+    }
+  }
+  
+  // Image Compressor 图标（压缩功能）
+  if (tool === 'image-compressor' || tool === 'image-compression') {
+    if (slug === 'compress-jpg' || slug.includes('jpg')) {
+      // JPG 压缩图标
+      return (
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white">
+          <rect x="3" y="3" width="18" height="18" rx="2" fill="currentColor"/>
+          <rect x="6" y="6" width="12" height="9" rx="1" fill="white" opacity="0.9"/>
+          <circle cx="9" cy="9" r="1.5" fill="currentColor"/>
+          <path d="M12 12L14 10L16 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+          <path d="M6 6L18 18M18 6L6 18" stroke="white" strokeWidth="1.5" strokeLinecap="round" opacity="0.7"/>
+        </svg>
+      )
+    } else if (slug === 'compress-png' || slug.includes('png')) {
+      // PNG 压缩图标（带透明度）
+      return (
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white">
+          <rect x="3" y="3" width="18" height="18" rx="2" fill="currentColor"/>
+          <rect x="6" y="6" width="12" height="9" rx="1" fill="white" opacity="0.9"/>
+          <path d="M6 6L18 18M18 6L6 18" stroke="white" strokeWidth="1.5" strokeLinecap="round" opacity="0.5"/>
+          <rect x="8" y="8" width="8" height="5" rx="0.5" fill="currentColor" opacity="0.3"/>
+          <circle cx="10" cy="10" r="1" fill="currentColor"/>
+        </svg>
+      )
+    } else if (slug === 'compress-webp') {
+      // WebP 压缩图标
+      return (
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white">
+          <rect x="3" y="3" width="18" height="18" rx="2" fill="currentColor"/>
+          <rect x="6" y="6" width="12" height="9" rx="1" fill="white" opacity="0.9"/>
+          <circle cx="9" cy="9" r="1.5" fill="currentColor"/>
+          <path d="M12 12L14 10L16 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+          <path d="M7 7L17 17" stroke="white" strokeWidth="1.2" strokeLinecap="round"/>
+        </svg>
+      )
+    } else if (slug === 'batch-compress') {
+      // 批量压缩图标（多个文件）
+      return (
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white">
+          <rect x="3" y="3" width="7" height="7" rx="1.5" fill="currentColor"/>
+          <rect x="14" y="3" width="7" height="7" rx="1.5" fill="currentColor"/>
+          <rect x="3" y="14" width="7" height="7" rx="1.5" fill="currentColor"/>
+          <rect x="14" y="14" width="7" height="7" rx="1.5" fill="currentColor"/>
+          <path d="M6.5 6.5L9 9M9 6.5L6.5 9" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M17.5 17.5L15 15M15 17.5L17.5 15" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M17.5 6.5L15 9M15 6.5L17.5 9" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M6.5 17.5L9 15M9 17.5L6.5 15" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      )
+    } else {
+      // 通用压缩图标
+      return (
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white">
+          <rect x="3" y="3" width="7" height="7" rx="1.5" fill="currentColor"/>
+          <rect x="14" y="3" width="7" height="7" rx="1.5" fill="currentColor"/>
+          <rect x="3" y="14" width="7" height="7" rx="1.5" fill="currentColor"/>
+          <rect x="14" y="14" width="7" height="7" rx="1.5" fill="currentColor"/>
+          <path d="M6.5 6.5L9 9M9 6.5L6.5 9" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M17.5 17.5L15 15M15 17.5L17.5 15" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M17.5 6.5L15 9M15 6.5L17.5 9" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M6.5 17.5L9 15M9 17.5L6.5 15" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      )
+    }
+  }
+  
+  // 默认图标
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white">
+      <rect x="3" y="3" width="18" height="18" rx="2" fill="currentColor"/>
+      <rect x="6" y="6" width="12" height="9" rx="1" fill="white" opacity="0.9"/>
+      <circle cx="9" cy="9" r="1.5" fill="currentColor"/>
+    </svg>
+  )
+}
+
 interface PageProps {
   params: Promise<{
     locale: string
@@ -131,23 +247,34 @@ export default async function HomePage({ params }: PageProps) {
   
   let toolList: Array<{ tool: string; slug: string; title: string; description: string; component?: string }> = []
   
+  // 场景工具 slug 列表（在首页隐藏）
+  const scenarioToolSlugs = [
+    'universal-50kb',
+    'passport-photo-200kb',
+    'amazon-product-10mb',
+    'etsy-listing-1mb',
+    'ebay-picture-fast',
+    'youtube-thumbnail-2mb',
+  ]
+  
   try {
     const tools = await getAllTools(locale)
     
+    // 过滤掉场景工具
+    const filteredTools = tools.filter(({ slug }) => !scenarioToolSlugs.includes(slug))
+    
     // Load basic info for each tool to display
-    if (tools && tools.length > 0) {
-      toolList = await Promise.all(
-        tools.map(async ({ tool, slug }) => {
+    if (filteredTools && filteredTools.length > 0) {
+      const loadedTools = await Promise.all(
+        filteredTools.map(async ({ tool, slug }) => {
           try {
             const data = await loadToolData(tool, slug, locale)
             if (!data) {
-              return {
-                tool,
-                slug,
-                title: `${tool}/${slug}`,
-                description: '',
-                component: undefined,
-              }
+              return null
+            }
+            // 只显示 in_menu 为 true 的工具（二级和三级功能）
+            if (data.in_menu !== true) {
+              return null
             }
             // 提取标题（移除 HTML 标签）
             const title = data?.hero?.h1 ? data.hero.h1.replace(/<[^>]*>/g, '').trim() : `${tool}/${slug}`
@@ -163,16 +290,12 @@ export default async function HomePage({ params }: PageProps) {
             }
           } catch (error) {
             // Silently handle individual tool loading errors
-            return {
-              tool,
-              slug,
-              title: `${tool}/${slug}`,
-              description: '',
-              component: undefined,
-            }
+            return null
           }
         })
       )
+      // 过滤掉 null 值
+      toolList = loadedTools.filter((tool): tool is NonNullable<typeof tool> => tool !== null)
     }
   } catch (error) {
     // Silently handle errors and use fallback
@@ -223,34 +346,7 @@ export default async function HomePage({ params }: PageProps) {
                 >
                   <div className="absolute top-4 right-4 bg-green-100 text-green-700 text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-wide">{translations.home.badgeLive}</div>
                   <div className="w-12 h-12 bg-gradient-brand rounded-xl flex items-center justify-center mb-4 shadow-lg shadow-indigo-200 group-hover:scale-110 transition-transform">
-                    {item.tool === 'image-converter' || item.tool === 'image-conversion' ? (
-                      // 图片格式转换图标
-                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white">
-                        {/* 浅蓝色背景矩形 */}
-                        <rect x="2" y="2" width="20" height="20" rx="2.5" fill="white" opacity="0.3"/>
-                        {/* 深蓝色转换箭头（对角线） */}
-                        <path d="M5 5L19 19M19 5L5 19" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
-                        {/* 图片图标（前景） */}
-                        <rect x="7" y="9" width="10" height="7" rx="1.5" fill="currentColor"/>
-                        <circle cx="9.5" cy="11.5" r="0.8" fill="white"/>
-                        <path d="M11.5 13.5L13.5 11.5L15.5 13.5" stroke="white" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-                      </svg>
-                    ) : (
-                      // 图片压缩图标
-                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white">
-                        {/* 四个方块，表示压缩 */}
-                        <rect x="3" y="3" width="7" height="7" rx="1.5" fill="currentColor"/>
-                        <rect x="14" y="3" width="7" height="7" rx="1.5" fill="currentColor"/>
-                        <rect x="3" y="14" width="7" height="7" rx="1.5" fill="currentColor"/>
-                        <rect x="14" y="14" width="7" height="7" rx="1.5" fill="currentColor"/>
-                        {/* 向内箭头（左上和右下） */}
-                        <path d="M6.5 6.5L9 9M9 6.5L6.5 9" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                        <path d="M17.5 17.5L15 15M15 17.5L17.5 15" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                        {/* 向外箭头（右上和左下） */}
-                        <path d="M17.5 6.5L15 9M15 6.5L17.5 9" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                        <path d="M6.5 17.5L9 15M9 17.5L6.5 15" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    )}
+                    {getToolIcon(item.tool, item.slug)}
                   </div>
                   <h3 className="font-bold text-slate-900 mb-2">
                     {(item.title || '').replace(/<[^>]*>/g, '').substring(0, 50)}

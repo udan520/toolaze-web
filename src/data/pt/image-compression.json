@@ -1988,10 +1988,10 @@
       ]
     },
     "specs": {
-      "engine": "Canvas API - Browser-Native Processing",
-      "limit": "Batch 100+ Images - Unlimited File Sizes",
-      "logic": "Precise KB/MB Size Control",
-      "privacy": "100% Client-Side (Local Browser Processing)"
+      "engine": "Canvas API - Processamento Nativo do Navegador",
+      "limit": "Lote 100+ Imagens - Tamanhos de Arquivo Ilimitados",
+      "logic": "Controle Preciso de Tamanho KB/MB",
+      "privacy": "100% do Lado do Cliente (Processamento Local do Navegador)"
     },
     "performanceMetrics": {
       "title": "Especificações Técnicas",
@@ -2122,8 +2122,8 @@
           "text": "PNG (Portable Network Graphics) é um formato sem perda que suporta transparência, tornando-o ideal para gráficos, logotipos e imagens que requerem fundos transparentes. No entanto, arquivos PNG são frequentemente significativamente maiores que arquivos JPG—tipicamente 2-5 vezes maiores—o que pode impactar velocidades de carregamento do site e consumir espaço de armazenamento. Comprimir imagens PNG reduz o tamanho do arquivo em 40-60% mantendo transparência e qualidade visual, tornando-as perfeitas para uso web sem sacrificar as características de transparência que tornam PNG valioso."
         },
         {
-          "title": "Quando comprimir PNG",
-          "text": "Comprima imagens PNG quando precisar otimizar gráficos e logotipos para carregamento mais rápido do site, reduzir tamanhos de arquivo mantendo transparência para projetos de web design, atender limites de tamanho de upload para formulários online ou plataformas, ou economizar espaço de armazenamento sem perder a característica de transparência. Nossa ferramenta usa Canvas API para comprimir arquivos PNG localmente no seu navegador, garantindo privacidade completa enquanto preserva a transparência do canal alfa que torna o formato PNG único."
+          "title": "Quando Comprimir PNG",
+          "text": "Comprima imagens PNG quando precisar otimizar gráficos e logotipos para carregamento mais rápido do site, reduzir tamanhos de arquivo mantendo a transparência para projetos de design web, atender limites de tamanho de upload para formulários online ou plataformas, ou economizar espaço de armazenamento sem perder a função de transparência. Nossa ferramenta usa Canvas API para comprimir arquivos PNG localmente no seu navegador, garantindo privacidade completa enquanto preserva a transparência do canal alfa que torna o formato PNG único."
         }
       ]
     },
@@ -2169,7 +2169,7 @@
       ]
     },
     "specs": {
-      "engine": "Canvas API - Processamento nativo do navegador",
+      "engine": "Canvas API - Processamento Browser-Native",
       "limit": "Lote 100+ imagens - Tamanhos de arquivo ilimitados",
       "logic": "Compressão que preserva transparência",
       "privacy": "100% do lado do cliente (Processamento local do navegador)"
@@ -2263,7 +2263,7 @@
       },
       {
         "q": "A compressão PNG é gratuita e segura?",
-        "a": "Sim! Toda a compressão acontece localmente no seu navegador usando JavaScript e Canvas API. Suas imagens nunca deixam seu dispositivo, garantindo privacidade e segurança completas."
+        "a": "Sim! Toolaze é completamente gratuito para sempre sem custos ocultos. Toda a compressão acontece localmente no seu navegador. Seus arquivos PNG nunca deixam seu dispositivo, garantindo 100% de privacidade e segurança."
       },
       {
         "q": "Quais tamanhos de arquivo posso comprimir?",
@@ -2292,11 +2292,11 @@
       "faq"
     ],
     "hero": {
-      "h1": "WebP Compressor",
-      "desc": "Compress WebP images online for free. Simply drop your WebP images below to compress them in seconds."
+      "h1": "Compressor WebP",
+      "desc": "Comprima imagens WebP online gratuitamente. Simplesmente solte suas imagens WebP abaixo para comprimi-las em segundos."
     },
     "intro": {
-      "title": "Why Compress WebP Images?",
+      "title": "Por que comprimir imagens WebP?",
       "content": [
         {
           "title": "Benefícios da Compressão WebP",
@@ -2326,13 +2326,13 @@
         {
           "icon": "🔒",
           "iconType": "privacy",
-          "title": "100% Private Processing",
+          "title": "Processamento 100% Privado",
           "desc": "Toda a compressão acontece localmente no seu navegador. Seus arquivos WebP nunca deixam seu dispositivo, garantindo privacidade completa."
         },
         {
           "icon": "📦",
           "iconType": "batch",
-          "title": "Batch Processing",
+          "title": "Processamento em Lote",
           "desc": "Comprima até 100 imagens WebP simultaneamente. Processe coleções inteiras de imagens em uma única operação."
         },
         {
@@ -2344,23 +2344,23 @@
         {
           "icon": "💎",
           "iconType": "free",
-          "title": "Free Forever",
+          "title": "Gratuito para Sempre",
           "desc": "Compressão WebP ilimitada completamente gratuita—sem níveis premium, sem taxas de assinatura, sem anúncios."
         }
       ]
     },
     "specs": {
-      "engine": "Canvas API - Browser-Native Processing",
+      "engine": "Canvas API - Processamento Browser-Native",
       "limit": "Batch 100+ Images - Unlimited File Sizes",
       "logic": "Compressão que preserva a qualidade",
-      "privacy": "100% Client-Side (Local Browser Processing)"
+      "privacy": "100% Client-Side (Processamento Browser Local)"
     },
     "performanceMetrics": {
       "title": "Especificações Técnicas",
       "metrics": [
         {
-          "label": "Input Format",
-          "value": "WebP (Google's Modern Image Format)"
+          "label": "Formato de Entrada",
+          "value": "WebP (Formato de Imagem Moderno do Google)"
         },
         {
           "label": "Formato de Saída",
@@ -2384,15 +2384,15 @@
         },
         {
           "label": "Localização do Processamento",
-          "value": "100% Client-Side (Browser Canvas API)"
+          "value": "100% Client-Side (API Canvas Browser)"
         }
       ]
     },
     "howToUse": {
-      "title": "How to Compress WebP Images",
+      "title": "Como comprimir imagens WebP",
       "steps": [
         {
-          "title": "Upload Your WebP Files",
+          "title": "Carregue seus arquivos WebP",
           "desc": "Arraste e solte suas imagens WebP na área do compressor ou clique para navegar e selecionar arquivos WebP do seu dispositivo."
         },
         {
@@ -2400,7 +2400,7 @@
           "desc": "Escolha o tamanho de arquivo desejado em KB ou MB. Nosso compressor otimizará suas imagens WebP para atingir o alvo mantendo a qualidade."
         },
         {
-          "title": "Download Compressed Files",
+          "title": "Baixar arquivos comprimidos",
           "desc": "Baixe seus arquivos WebP comprimidos instantaneamente. Cada arquivo mantém a qualidade visual enquanto é significativamente menor que o original."
         }
       ]
@@ -2431,7 +2431,7 @@
     },
     "faq": [
       {
-        "q": "How much can I compress a WebP file?",
+        "q": "Quanto posso comprimir um arquivo WebP?",
         "a": "Tipicamente, arquivos WebP podem ser comprimidos adicionalmente em 20-40% mantendo a qualidade visual. A redução exata depende do tamanho do arquivo original e das configurações de compressão."
       },
       {
@@ -2451,7 +2451,7 @@
         "a": "Sim, se seu arquivo WebP tiver transparência (canal alfa), ela será preservada durante a compressão. A ferramenta mantém a transparência enquanto otimiza o tamanho do arquivo."
       },
       {
-        "q": "What file sizes can I compress?",
+        "q": "Quais tamanhos de arquivo posso comprimir?",
         "a": "Não há limites de tamanho de arquivo individual. Se seu computador pode abrir o arquivo, Toolaze pode comprimi-lo. Você pode processar arquivos de qualquer tamanho."
       }
     ]
@@ -2674,26 +2674,38 @@
       "title": "Recursos de Compressão em Lote",
       "items": [
         {
+          "icon": "📦",
+          "iconType": "batch",
           "title": "Processar 100 Imagens",
           "desc": "Comprima até 100 imagens simultaneamente em uma operação em lote. Economize tempo e esforço."
         },
         {
+          "icon": "🖼️",
+          "iconType": "format",
           "title": "Suporte a Múltiplos Formatos",
           "desc": "Suporta formatos JPG, PNG, WebP e BMP. Misture diferentes formatos em um lote."
         },
         {
+          "icon": "📊",
+          "iconType": "compression",
           "title": "Controle Preciso de Tamanho",
           "desc": "Defina tamanhos alvo exatos em KB ou MB. Todas as imagens comprimidas para atender ao mesmo tamanho alvo."
         },
         {
+          "icon": "🔒",
+          "iconType": "privacy",
           "title": "Processamento 100% Privado",
           "desc": "Toda a compressão acontece localmente no seu navegador. Suas imagens nunca deixam seu dispositivo, garantindo privacidade completa."
         },
         {
+          "icon": "⚡",
+          "iconType": "speed",
           "title": "Processamento em Lote Rápido",
           "desc": "O processamento da API Canvas nativa do navegador garante compressão em lote rápida sem uploads de servidor ou atrasos."
         },
         {
+          "icon": "💎",
+          "iconType": "free",
           "title": "Gratuito Para Sempre",
           "desc": "Compressão em lote ilimitada completamente gratuita—sem níveis premium, sem taxas de assinatura, sem anúncios."
         }
@@ -2762,14 +2774,17 @@
     "scenes": [
       {
         "title": "Fotógrafos",
+        "icon": "📸",
         "desc": "Comprima galerias de fotos completas de uma vez. Processe centenas de fotos eficientemente enquanto mantém a qualidade."
       },
       {
         "title": "Desenvolvedores Web",
+        "icon": "💻",
         "desc": "Otimize múltiplas imagens para sites. Processe imagens de produtos, galerias e assets em lote de forma eficiente."
       },
       {
         "title": "Gerentes de E-commerce",
+        "icon": "🛒",
         "desc": "Comprima coleções de imagens de produtos para lojas online. Processe catálogos completos rápida e consistentemente."
       }
     ],

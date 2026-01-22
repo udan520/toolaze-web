@@ -1987,10 +1987,10 @@
       ]
     },
     "specs": {
-      "engine": "Canvas API - Browser-Native Processing",
-      "limit": "Batch 100+ Images - Unlimited File Sizes",
-      "logic": "Precise KB/MB Size Control",
-      "privacy": "100% Client-Side (Local Browser Processing)"
+      "engine": "Canvas API - Traitement Natif du Navigateur",
+      "limit": "Lot 100+ Images - Tailles de Fichier Illimitées",
+      "logic": "Contrôle Précis de Taille Ko/Mo",
+      "privacy": "100% Côté Client (Traitement Local du Navigateur)"
     },
     "performanceMetrics": {
       "title": "Spécifications Techniques",
@@ -2121,8 +2121,8 @@
           "text": "PNG (Portable Network Graphics) est un format sans perte qui supporte la transparence, le rendant idéal pour les graphiques, logos et images nécessitant des arrière-plans transparents. Cependant, les fichiers PNG sont souvent significativement plus grands que les fichiers JPG—typiquement 2-5 fois plus grands—ce qui peut affecter la vitesse de chargement du site web et consommer de l'espace de stockage. La compression des images PNG réduit la taille du fichier de 40-60% tout en préservant la transparence et en maintenant la qualité visuelle, les rendant parfaites pour une utilisation web sans sacrifier les caractéristiques de transparence qui rendent PNG précieux."
         },
         {
-          "title": "Quand compresser PNG",
-          "text": "Compressez les images PNG lorsque vous devez optimiser les graphiques et logos pour un chargement plus rapide du site web, réduire les tailles de fichier tout en maintenant la transparence pour les projets de conception web, répondre aux limites de taille de téléchargement pour les formulaires en ligne ou les plateformes, ou économiser de l'espace de stockage sans perdre la caractéristique de transparence. Notre outil utilise Canvas API pour compresser les fichiers PNG localement dans votre navigateur, garantissant une confidentialité complète tout en préservant la transparence du canal alpha qui rend le format PNG unique."
+          "title": "Quand Compresser PNG",
+          "text": "Compressez les images PNG lorsque vous devez optimiser les graphiques et les logos pour un chargement plus rapide du site web, réduire les tailles de fichier tout en maintenant la transparence pour les projets de conception web, respecter les limites de taille de téléchargement pour les formulaires en ligne ou les plateformes, ou économiser de l'espace de stockage sans perdre la fonction de transparence. Notre outil utilise Canvas API pour compresser les fichiers PNG localement dans votre navigateur, garantissant une confidentialité complète tout en préservant la transparence du canal alpha qui rend le format PNG unique."
         }
       ]
     },
@@ -2168,7 +2168,7 @@
       ]
     },
     "specs": {
-      "engine": "Canvas API - Traitement natif du navigateur",
+      "engine": "Canvas API - Traitement Browser-Native",
       "limit": "Lot 100+ images - Tailles de fichier illimitées",
       "logic": "Compression préservant la transparence",
       "privacy": "100% côté client (Traitement local du navigateur)"
@@ -2262,7 +2262,7 @@
       },
       {
         "q": "La compression PNG est-elle gratuite et sécurisée?",
-        "a": "Oui! Toute la compression se fait localement dans votre navigateur en utilisant JavaScript et Canvas API. Vos images ne quittent jamais votre appareil, garantissant une confidentialité et une sécurité complètes."
+        "a": "Oui! Toolaze est complètement gratuit pour toujours sans coûts cachés. Toute la compression se fait localement dans votre navigateur. Vos fichiers PNG ne quittent jamais votre appareil, garantissant 100% de confidentialité et de sécurité."
       },
       {
         "q": "Quelles tailles de fichier puis-je compresser?",
@@ -2291,11 +2291,11 @@
       "faq"
     ],
     "hero": {
-      "h1": "WebP Compressor",
+      "h1": "Compresseur WebP",
       "desc": "Compressez des images WebP en ligne gratuitement. Déposez simplement vos images WebP ci-dessous pour les compresser en quelques secondes."
     },
     "intro": {
-      "title": "Why Compress WebP Images?",
+      "title": "Pourquoi compresser les images WebP?",
       "content": [
         {
           "title": "Avantages de la Compression WebP",
@@ -2319,7 +2319,7 @@
         {
           "icon": "🎨",
           "iconType": "transparency",
-          "title": "Transparency Support",
+          "title": "Support de la transparence",
           "desc": "Préserve la transparence lors de la compression des fichiers WebP avec canaux alpha. Maintient les arrière-plans transparents."
         },
         {
@@ -2331,25 +2331,25 @@
         {
           "icon": "📦",
           "iconType": "batch",
-          "title": "Batch Processing",
+          "title": "Traitement par lots",
           "desc": "Compressez jusqu'à 100 images WebP simultanément. Traitez des collections d'images entières en une seule opération."
         },
         {
           "icon": "⚡",
           "iconType": "speed",
-          "title": "Fast Compression",
+          "title": "Compression rapide",
           "desc": "Le traitement de l'API Canvas native du navigateur garantit une compression instantanée sans téléchargements serveur ni délais."
         },
         {
           "icon": "💎",
           "iconType": "free",
-          "title": "Free Forever",
+          "title": "Gratuit pour toujours",
           "desc": "Compression WebP illimitée entièrement gratuite—pas de niveaux premium, pas de frais d'abonnement, pas de publicités."
         }
       ]
     },
     "specs": {
-      "engine": "Canvas API - Browser-Native Processing",
+      "engine": "Canvas API - Traitement Browser-Native",
       "limit": "Lot 100+ images - Tailles de fichier illimitées",
       "logic": "Compression préservant la qualité",
       "privacy": "100% côté client (Traitement local du navigateur)"
@@ -2362,7 +2362,7 @@
           "value": "WebP (Google's Modern Image Format)"
         },
         {
-          "label": "Output Format",
+          "label": "Format de sortie",
           "value": "WebP (Format original préservé)"
         },
         {
@@ -2378,17 +2378,17 @@
           "value": "20-40% de réduction de taille supplémentaire"
         },
         {
-          "label": "Transparency Support",
+          "label": "Support de la transparence",
           "value": "Transparence complète du canal alpha préservée"
         },
         {
-          "label": "Processing Location",
+          "label": "Emplacement du traitement",
           "value": "100% Côté Client (API Canvas du Navigateur)"
         }
       ]
     },
     "howToUse": {
-      "title": "How to Compress WebP Images",
+      "title": "Comment compresser les images WebP",
       "steps": [
         {
           "title": "Télécharger Vos Fichiers WebP",
@@ -2430,7 +2430,7 @@
     },
     "faq": [
       {
-        "q": "How much can I compress a WebP file?",
+        "q": "Combien puis-je compresser un fichier WebP?",
         "a": "Typiquement, les fichiers WebP peuvent être compressés davantage de 20-40% tout en maintenant la qualité visuelle. La réduction exacte dépend de la taille du fichier original et des paramètres de compression."
       },
       {
@@ -2450,8 +2450,8 @@
         "a": "Oui, si votre fichier WebP a de la transparence (canal alpha), elle sera préservée pendant la compression. L'outil maintient la transparence tout en optimisant la taille du fichier."
       },
       {
-        "q": "What file sizes can I compress?",
-        "a": "There are no individual file size limits. If your computer can open the file, Toolaze can compress it. You can process files of any size."
+        "q": "Quelles tailles de fichier puis-je compresser?",
+        "a": "Il n'y a pas de limites de taille de fichier individuelles. Si votre ordinateur peut ouvrir le fichier, Toolaze peut le compresser. Vous pouvez traiter des fichiers de toute taille."
       }
     ]
   },

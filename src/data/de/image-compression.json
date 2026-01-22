@@ -1984,10 +1984,10 @@
       ]
     },
     "specs": {
-      "engine": "Canvas API - Browser-Native Processing",
-      "limit": "Batch 100+ Images - Unlimited File Sizes",
-      "logic": "Precise KB/MB Size Control",
-      "privacy": "100% Client-Side (Local Browser Processing)"
+      "engine": "Canvas API - Browser-native Verarbeitung",
+      "limit": "Stapel 100+ Bilder - Unbegrenzte Dateigrößen",
+      "logic": "Präzise KB/MB Größensteuerung",
+      "privacy": "100% Client-seitig (Lokale Browser-Verarbeitung)"
     },
     "performanceMetrics": {
       "title": "Technische Spezifikationen",
@@ -2119,7 +2119,7 @@
         },
         {
           "title": "Wann PNG komprimieren",
-          "text": "Komprimieren Sie PNG-Bilder, wenn Sie Grafiken und Logos für schnellere Website-Ladezeiten optimieren müssen, Dateigrößen bei gleichzeitiger Beibehaltung der Transparenz für Webdesign-Projekte reduzieren müssen, Upload-Größenlimits für Online-Formulare oder Plattformen erfüllen müssen oder Speicherplatz sparen möchten, ohne die Transparenzfunktion zu verlieren. Unser Tool verwendet Canvas API, um PNG-Dateien lokal in Ihrem Browser zu komprimieren und gewährleistet vollständige Privatsphäre bei gleichzeitiger Beibehaltung der Alpha-Kanal-Transparenz, die das PNG-Format einzigartig macht."
+          "text": "Komprimieren Sie PNG-Bilder, wenn Sie Grafiken und Logos für schnellere Website-Ladezeiten optimieren müssen, Dateigrößen reduzieren müssen, während Sie Transparenz für Webdesign-Projekte beibehalten, Upload-Größenlimits für Online-Formulare oder Plattformen erfüllen müssen oder Speicherplatz sparen möchten, ohne die Transparenzfunktion zu verlieren. Unser Tool verwendet Canvas API, um PNG-Dateien lokal in Ihrem Browser zu komprimieren und gewährleistet vollständige Privatsphäre bei gleichzeitiger Beibehaltung der Alpha-Kanal-Transparenz, die das PNG-Format einzigartig macht."
         }
       ]
     },
@@ -2165,7 +2165,7 @@
       ]
     },
     "specs": {
-      "engine": "Canvas API - Browser-native Verarbeitung",
+      "engine": "Canvas API - Browser-Native Verarbeitung",
       "limit": "Stapel 100+ Bilder - Unbegrenzte Dateigrößen",
       "logic": "Transparenz-erhaltende Komprimierung",
       "privacy": "100% Client-seitig (Lokale Browser-Verarbeitung)"
@@ -2199,7 +2199,7 @@
         },
         {
           "label": "Verarbeitungsort",
-          "value": "100% Clientseitig (Browser Canvas API)"
+          "value": "100% Client-Side (Browser Canvas API)"
         }
       ]
     },
@@ -2288,11 +2288,11 @@
       "faq"
     ],
     "hero": {
-      "h1": "WebP Compressor",
-      "desc": "Compress WebP images online for free. Simply drop your WebP images below to compress them in seconds."
+      "h1": "WebP-Kompressor",
+      "desc": "Komprimieren Sie WebP-Bilder online kostenlos. Ziehen Sie Ihre WebP-Bilder einfach unten ab, um sie in Sekunden zu komprimieren."
     },
     "intro": {
-      "title": "Why Compress WebP Images?",
+      "title": "Warum WebP-Bilder komprimieren?",
       "content": [
         {
           "title": "Vorteile der WebP-Komprimierung",
@@ -2322,19 +2322,19 @@
         {
           "icon": "🔒",
           "iconType": "privacy",
-          "title": "100% Private Processing",
+          "title": "100% private Verarbeitung",
           "desc": "Alle Komprimierung erfolgt lokal in Ihrem Browser. Ihre WebP-Dateien verlassen niemals Ihr Gerät und gewährleisten vollständige Privatsphäre."
         },
         {
           "icon": "📦",
           "iconType": "batch",
-          "title": "Batch Processing",
-          "desc": "Compress up to 100 WebP images simultaneously. Process entire image collections in one operation."
+          "title": "Stapelverarbeitung",
+          "desc": "Komprimieren Sie bis zu 100 WebP-Bilder gleichzeitig. Verarbeiten Sie gesamte Bildersammlungen in einem Vorgang."
         },
         {
           "icon": "⚡",
           "iconType": "speed",
-          "title": "Fast Compression",
+          "title": "Schnelle Komprimierung",
           "desc": "Die browser-native Canvas API-Verarbeitung gewährleistet sofortige Komprimierung ohne Server-Uploads oder Verzögerungen."
         },
         {
@@ -2346,21 +2346,21 @@
       ]
     },
     "specs": {
-      "engine": "Canvas API - Browser-Native Processing",
+      "engine": "Canvas API - Browser-Native Verarbeitung",
       "limit": "Stapel 100+ Bilder - Unbegrenzte Dateigrößen",
       "logic": "Qualitätserhaltende Komprimierung",
-      "privacy": "100% Client-Side (Local Browser Processing)"
+      "privacy": "100% Client-Side (Lokale Browser-Verarbeitung)"
     },
     "performanceMetrics": {
-      "title": "Technical Specifications",
+      "title": "Technische Spezifikationen",
       "metrics": [
         {
-          "label": "Input Format",
-          "value": "WebP (Google's Modern Image Format)"
+          "label": "Eingabeformat",
+          "value": "WebP (Googles modernes Bildformat)"
         },
         {
-          "label": "Output Format",
-          "value": "WebP (Original format preserved)"
+          "label": "Ausgabeformat",
+          "value": "WebP (Originalformat erhalten)"
         },
         {
           "label": "Maximale Stapelgröße",
@@ -2379,16 +2379,16 @@
           "value": "Vollständige Alpha-Kanal-Transparenz erhalten"
         },
         {
-          "label": "Processing Location",
+          "label": "Verarbeitungsort",
           "value": "100% Client-Side (Browser Canvas API)"
         }
       ]
     },
     "howToUse": {
-      "title": "How to Compress WebP Images",
+      "title": "So komprimieren Sie WebP-Bilder",
       "steps": [
         {
-          "title": "Upload Your WebP Files",
+          "title": "Laden Sie Ihre WebP-Dateien hoch",
           "desc": "Ziehen Sie Ihre WebP-Bilder in den Komprimierungsbereich oder klicken Sie, um WebP-Dateien von Ihrem Gerät auszuwählen."
         },
         {
@@ -2396,7 +2396,7 @@
           "desc": "Wählen Sie Ihre gewünschte Dateigröße in KB oder MB. Unser Kompressor optimiert Ihre WebP-Bilder, um das Ziel zu erreichen und gleichzeitig die Qualität zu erhalten."
         },
         {
-          "title": "Download Compressed Files",
+          "title": "Komprimierte Dateien herunterladen",
           "desc": "Laden Sie Ihre komprimierten WebP-Dateien sofort herunter. Jede Datei behält die visuelle Qualität bei und ist deutlich kleiner als das Original."
         }
       ]
@@ -2427,7 +2427,7 @@
     },
     "faq": [
       {
-        "q": "How much can I compress a WebP file?",
+        "q": "Wie viel kann ich eine WebP-Datei komprimieren?",
         "a": "Typischerweise können WebP-Dateien um weitere 20-40% komprimiert werden, während die visuelle Qualität erhalten bleibt. Die genaue Reduzierung hängt von der ursprünglichen Dateigröße und den Komprimierungseinstellungen ab."
       },
       {
@@ -2435,15 +2435,15 @@
         "a": "Bei der Komprimierung ist eine gewisse Qualitätsreduzierung zu erwarten, aber unser Tool optimiert die Komprimierung, um die visuelle Qualität zu erhalten und gleichzeitig Ihre Ziel-Dateigröße zu erreichen."
       },
       {
-        "q": "Can I compress multiple WebP files at once?",
+        "q": "Kann ich mehrere WebP-Dateien gleichzeitig komprimieren?",
         "a": "Ja! Toolaze unterstützt die Stapelverarbeitung von bis zu 100 Dateien gleichzeitig. Sie können gesamte Sammlungen in einem Vorgang verarbeiten."
       },
       {
-        "q": "Is WebP compression free and secure?",
+        "q": "Ist WebP-Komprimierung kostenlos und sicher?",
         "a": "Ja! Die gesamte Komprimierung erfolgt lokal in Ihrem Browser mit JavaScript und Canvas-API. Ihre Bilder verlassen Ihr Gerät niemals und gewährleisten vollständige Privatsphäre und Sicherheit."
       },
       {
-        "q": "Will transparency be preserved?",
+        "q": "Wird die Transparenz erhalten bleiben?",
         "a": "Ja, wenn Ihre WebP-Datei Transparenz (Alpha-Kanal) hat, wird diese bei der Komprimierung erhalten bleiben. Das Tool behält die Transparenz bei, während es die Dateigröße optimiert."
       },
       {

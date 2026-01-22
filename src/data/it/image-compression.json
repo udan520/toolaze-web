@@ -2121,8 +2121,8 @@
           "text": "PNG (Portable Network Graphics) è un formato senza perdita che supporta la trasparenza, rendendolo ideale per grafiche, loghi e immagini che richiedono sfondi trasparenti. Tuttavia, i file PNG sono spesso significativamente più grandi dei file JPG—tipicamente 2-5 volte più grandi—il che può influenzare la velocità di caricamento del sito web e consumare spazio di archiviazione. La compressione delle immagini PNG riduce la dimensione del file del 40-60% preservando la trasparenza e mantenendo la qualità visiva, rendendoli perfetti per l'uso web senza sacrificare le caratteristiche di trasparenza che rendono PNG prezioso."
         },
         {
-          "title": "Quando comprimere PNG",
-          "text": "Comprimi immagini PNG quando devi ottimizzare grafiche e loghi per un caricamento più rapido del sito web, ridurre le dimensioni dei file mantenendo la trasparenza per progetti di web design, soddisfare limiti di dimensione di caricamento per moduli online o piattaforme, o risparmiare spazio di archiviazione senza perdere la caratteristica di trasparenza. Il nostro strumento utilizza Canvas API per comprimere i file PNG localmente nel tuo browser, garantendo la privacy completa preservando la trasparenza del canale alfa che rende unico il formato PNG."
+          "title": "Quando Comprimere PNG",
+          "text": "Comprimi le immagini PNG quando devi ottimizzare grafici e loghi per un caricamento più rapido del sito web, ridurre le dimensioni dei file mantenendo la trasparenza per progetti di design web, soddisfare i limiti di dimensione di caricamento per moduli online o piattaforme, o risparmiare spazio di archiviazione senza perdere la funzione di trasparenza. Il nostro strumento utilizza Canvas API per comprimere i file PNG localmente nel tuo browser, garantendo la privacy completa preservando la trasparenza del canale alfa che rende unico il formato PNG."
         }
       ]
     },
@@ -2168,7 +2168,7 @@
       ]
     },
     "specs": {
-      "engine": "Canvas API - Elaborazione nativa del browser",
+      "engine": "Canvas API - Elaborazione Browser-Native",
       "limit": "Batch 100+ immagini - Dimensioni file illimitate",
       "logic": "Compressione che preserva la trasparenza",
       "privacy": "100% lato client (Elaborazione locale del browser)"
@@ -2262,15 +2262,15 @@
       },
       {
         "q": "La compressione PNG è gratuita e sicura?",
-        "a": "Sì! Tutta la compressione avviene localmente nel tuo browser utilizzando JavaScript e Canvas API. Le tue immagini non lasciano mai il tuo dispositivo, garantendo privacy e sicurezza complete."
+        "a": "Sì! Toolaze è completamente gratuito per sempre senza costi nascosti. Tutta la compressione avviene localmente nel tuo browser. I tuoi file PNG non lasciano mai il tuo dispositivo, garantendo privacy e sicurezza al 100%."
       },
       {
         "q": "Quali dimensioni di file posso comprimere?",
         "a": "Non ci sono limiti di dimensione del file individuali. Se il tuo computer può aprire il file, Toolaze può comprimerlo. Puoi elaborare file di qualsiasi dimensione."
       },
       {
-        "q": "Does the compressed PNG maintain transparency?",
-        "a": "Yes, compressed PNG files maintain full alpha channel transparency. The tool optimizes file size while preserving all transparency features."
+        "q": "Il PNG compresso mantiene la trasparenza?",
+        "a": "Sì, i file PNG compressi mantengono la piena trasparenza del canale alfa. Lo strumento ottimizza la dimensione del file preservando tutte le funzionalità di trasparenza."
       }
     ]
   },
@@ -2291,8 +2291,8 @@
       "faq"
     ],
     "hero": {
-      "h1": "WebP Compressor",
-      "desc": "Compress WebP images online for free. Simply drop your WebP images below to compress them in seconds."
+      "h1": "Compressore WebP",
+      "desc": "Comprimi immagini WebP online gratuitamente. Trascina semplicemente le tue immagini WebP qui sotto per comprimerle in pochi secondi."
     },
     "intro": {
       "title": "Perché comprimere le immagini WebP?",
@@ -2313,57 +2313,57 @@
         {
           "icon": "📊",
           "iconType": "compression",
-          "title": "Superior Compression",
+          "title": "Compressione superiore",
           "desc": "Ottimizza ulteriormente i file WebP per dimensioni ancora più piccole. Ottieni la compressione massima mantenendo la qualità."
         },
         {
           "icon": "🎨",
           "iconType": "transparency",
-          "title": "Transparency Support",
-          "desc": "Preserves transparency when compressing WebP files with alpha channels. Maintains transparent backgrounds."
+          "title": "Supporto trasparenza",
+          "desc": "Preserva la trasparenza quando si comprimono file WebP con canali alfa. Mantiene gli sfondi trasparenti."
         },
         {
           "icon": "🔒",
           "iconType": "privacy",
-          "title": "100% Private Processing",
-          "desc": "All compression happens locally in your browser. Your WebP files never leave your device, ensuring complete privacy."
+          "title": "Elaborazione 100% privata",
+          "desc": "Tutta la compressione avviene localmente nel tuo browser. I tuoi file WebP non lasciano mai il tuo dispositivo, garantendo privacy completa."
         },
         {
           "icon": "📦",
           "iconType": "batch",
-          "title": "Batch Processing",
-          "desc": "Compress up to 100 WebP images simultaneously. Process entire image collections in one operation."
+          "title": "Elaborazione batch",
+          "desc": "Comprimi fino a 100 immagini WebP contemporaneamente. Elabora intere collezioni di immagini in un'operazione."
         },
         {
           "icon": "⚡",
           "iconType": "speed",
-          "title": "Fast Compression",
-          "desc": "Browser-native Canvas API processing ensures instant compression without server uploads or delays."
+          "title": "Compressione veloce",
+          "desc": "L'elaborazione dell'API Canvas nativa del browser garantisce compressione istantanea senza caricamenti sul server o ritardi."
         },
         {
           "icon": "💎",
           "iconType": "free",
-          "title": "Free Forever",
+          "title": "Gratuito per sempre",
           "desc": "Compressione WebP illimitata completamente gratuita—nessun livello premium, nessuna tariffa di abbonamento, nessuna pubblicità."
         }
       ]
     },
     "specs": {
-      "engine": "Canvas API - Browser-Native Processing",
+      "engine": "Canvas API - Elaborazione Browser-Native",
       "limit": "Batch 100+ Images - Unlimited File Sizes",
       "logic": "Compressione che preserva la qualità",
-      "privacy": "100% Client-Side (Local Browser Processing)"
+      "privacy": "100% Client-Side (Elaborazione Browser Locale)"
     },
     "performanceMetrics": {
-      "title": "Technical Specifications",
+      "title": "Specifiche tecniche",
       "metrics": [
         {
-          "label": "Input Format",
-          "value": "WebP (Google's Modern Image Format)"
+          "label": "Formato di input",
+          "value": "WebP (Formato immagine moderno di Google)"
         },
         {
-          "label": "Output Format",
-          "value": "WebP (Original format preserved)"
+          "label": "Formato di output",
+          "value": "WebP (Formato originale preservato)"
         },
         {
           "label": "Max Batch Size",
@@ -2374,32 +2374,32 @@
           "value": "Unlimited (Limited by browser memory)"
         },
         {
-          "label": "Compression Ratio",
-          "value": "20-40% additional size reduction"
+          "label": "Supporto trasparenza",
+          "value": "Trasparenza completa del canale alfa preservata"
         },
         {
           "label": "Transparency Support",
           "value": "Full alpha channel transparency preserved"
         },
         {
-          "label": "Processing Location",
-          "value": "100% Client-Side (Browser Canvas API)"
+          "label": "Posizione elaborazione",
+          "value": "100% Client-Side (API Canvas Browser)"
         }
       ]
     },
     "howToUse": {
-      "title": "How to Compress WebP Images",
+      "title": "Come comprimere immagini WebP",
       "steps": [
         {
-          "title": "Upload Your WebP Files",
-          "desc": "Drag and drop your WebP images into the compressor area or click to browse and select WebP files from your device."
+          "title": "Carica i tuoi file WebP",
+          "desc": "Trascina e rilascia le tue immagini WebP nell'area del compressore o fai clic per sfogliare e selezionare file WebP dal tuo dispositivo."
         },
         {
           "title": "Set Target Size",
           "desc": "Scegli la dimensione del file desiderata in KB o MB. Il nostro compressore ottimizzerà le tue immagini WebP per raggiungere l'obiettivo mantenendo la qualità."
         },
         {
-          "title": "Download Compressed Files",
+          "title": "Scarica file compressi",
           "desc": "Scarica i tuoi file WebP comprimiti all'istante. Ogni file mantiene la qualità visiva pur essendo significativamente più piccolo dell'originale."
         }
       ]
@@ -2430,7 +2430,7 @@
     },
     "faq": [
       {
-        "q": "How much can I compress a WebP file?",
+        "q": "Quanto posso comprimere un file WebP?",
         "a": "Tipicamente, i file WebP possono essere compressi ulteriormente del 20-40% mantenendo la qualità visiva. La riduzione esatta dipende dalla dimensione del file originale e dalle impostazioni di compressione."
       },
       {
@@ -2450,7 +2450,7 @@
         "a": "Sì, se il tuo file WebP ha trasparenza (canale alfa), sarà preservata durante la compressione. Lo strumento mantiene la trasparenza mentre ottimizza la dimensione del file."
       },
       {
-        "q": "What file sizes can I compress?",
+        "q": "Quali dimensioni di file posso comprimere?",
         "a": "Non ci sono limiti di dimensione del file individuali. Se il tuo computer può aprire il file, Toolaze può comprimerlo. Puoi elaborare file di qualsiasi dimensione."
       }
     ]

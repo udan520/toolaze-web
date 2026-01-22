@@ -1,0 +1,28 @@
+{
+  "description": "技术字段列表 - 这些字段不需要翻译，但必须在所有语言版本中存在以保持数据结构一致性",
+  "technicalFields": [
+    "in_menu",
+    "sectionsOrder",
+    "icon",
+    "iconType"
+  ],
+  "technicalObjects": {
+    "metadata": {
+      "description": "metadata 对象本身是技术性的，但其内部的 title 和 description 需要翻译",
+      "fieldsToTranslate": ["title", "description"]
+    },
+    "specs": {
+      "description": "specs 对象包含技术规格，这些字段通常包含技术术语，可能需要部分翻译",
+      "fields": ["engine", "limit", "logic", "privacy"],
+      "note": "这些字段可能包含技术术语（如 'Canvas API', 'Client-Side'），这些术语应保持英文"
+    }
+  },
+  "notes": [
+    "icon: emoji 图标，不需要翻译",
+    "iconType: 图标类型标识符（如 'compression', 'privacy', 'batch'），不需要翻译",
+    "in_menu: 布尔值，控制菜单显示，不需要翻译",
+    "sectionsOrder: 数组，定义页面部分顺序，不需要翻译",
+    "metadata: 对象，包含 SEO 元数据，内部的 title 和 description 需要翻译",
+    "specs: 对象，包含技术规格，可能包含技术术语，需要根据具体情况判断"
+  ]
+}
