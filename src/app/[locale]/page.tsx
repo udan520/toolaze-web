@@ -158,6 +158,28 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       canonical: hreflang.canonical,
       languages: hreflang.languages,
     },
+    openGraph: {
+      type: 'website',
+      locale: locale === 'en' ? 'en_US' : locale.replace('-', '_'),
+      url: hreflang.canonical,
+      siteName: 'Toolaze',
+      title: metadata.title,
+      description: metadata.description,
+      images: [
+        {
+          url: 'https://toolaze.com/web-app-manifest-512x512.png',
+          width: 512,
+          height: 512,
+          alt: 'Toolaze Logo',
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: metadata.title,
+      description: metadata.description,
+      images: ['https://toolaze.com/web-app-manifest-512x512.png'],
+    },
   }
 }
 

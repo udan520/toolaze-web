@@ -127,6 +127,28 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://toolaze.com',
   },
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://toolaze.com',
+    siteName: 'Toolaze',
+    title: 'Toolaze - Free AI Image Compressor & Local Tools',
+    description: 'Compress images locally in your browser. No server uploads, 100% private, free AI tools for creators.',
+    images: [
+      {
+        url: 'https://toolaze.com/web-app-manifest-512x512.png',
+        width: 512,
+        height: 512,
+        alt: 'Toolaze Logo',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Toolaze - Free AI Image Compressor & Local Tools',
+    description: 'Compress images locally in your browser. No server uploads, 100% private, free AI tools for creators.',
+    images: ['https://toolaze.com/web-app-manifest-512x512.png'],
+  },
 }
 
 export default async function HomePage() {
@@ -186,13 +208,15 @@ export default async function HomePage() {
   }
 
   // Organization Schema for Google Search Logo
-  // Google requires logo to be at least 112x112px, using 192x192px logo
+  // Google requires logo to be at least 112x112px, square, and accessible
+  // Using 512x512px for better quality
   const organizationSchema = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'Toolaze',
     url: 'https://toolaze.com',
-    logo: 'https://toolaze.com/web-app-manifest-192x192.png',
+    logo: 'https://toolaze.com/web-app-manifest-512x512.png',
+    image: 'https://toolaze.com/web-app-manifest-512x512.png',
     sameAs: [],
     description: 'Free AI Image Compressor & Local Tools - Professional image processing tools that run entirely in your browser.',
   }
