@@ -10,6 +10,7 @@
 docs/specs/
 ├── image-converter.md      # Image Converter 功能介绍
 ├── image-compressor.md     # Image Compressor 功能介绍
+├── font-generator.md       # Font Generator 功能介绍
 ├── common.md               # 通用功能特性（所有工具共用）
 └── ...                     # 未来新增的工具介绍文件
 ```
@@ -26,6 +27,11 @@ docs/specs/
 
 **查看方式**：编写 Image Compressor 相关 SEO 内容时，必须参考此文件。
 
+### Font Generator（字体生成工具）
+📄 **文件位置**：`docs/specs/font-generator.md`
+
+**查看方式**：编写 Font Generator 相关 SEO 内容时，必须参考此文件。
+
 ### 通用功能特性
 📄 **文件位置**：`docs/specs/common.md`
 
@@ -40,6 +46,7 @@ docs/specs/
 1. **确定工具类型**
    - 如果是 Image Converter → 查看 `docs/specs/image-converter.md`
    - 如果是 Image Compressor → 查看 `docs/specs/image-compressor.md`
+   - 如果是 Font Generator → 查看 `docs/specs/font-generator.md`
 
 2. **查看通用特性**
    - 同时参考 `docs/specs/common.md`，确保通用特性描述一致

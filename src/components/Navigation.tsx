@@ -12,6 +12,7 @@ const defaultNavTranslations = {
   quickTools: 'Quick Tools',
   imageCompression: 'Image Compression',
   imageConverter: 'Image Converter',
+  fontGenerator: 'Font Generator',
   aboutUs: 'About Us'
 }
 
@@ -166,6 +167,56 @@ export default function Navigation() {
         data['image-converter'] = []
       }
       
+      // 加载 Font Generator 的三级菜单（只显示搜索量最大的5个）
+      // 根据关键词数据，搜索量最大的5个L3页面：
+      // 1. cursive - 33100
+      // 2. fancy - 27100
+      // 3. bold - 18100
+      // 4. tattoo - 18100
+      // 5. cool - 14800
+      const topFontGeneratorSlugs = ['cursive', 'fancy', 'bold', 'tattoo', 'cool']
+      try {
+        const fontGeneratorSlugs = await getAllSlugs('font-generator', locale)
+        // 只处理搜索量最大的5个slug
+        const topSlugs = fontGeneratorSlugs.filter(slug => topFontGeneratorSlugs.includes(slug))
+        // 按照搜索量排序
+        const sortedSlugs = topSlugs.sort((a, b) => {
+          const indexA = topFontGeneratorSlugs.indexOf(a)
+          const indexB = topFontGeneratorSlugs.indexOf(b)
+          return indexA - indexB
+        })
+        
+        const fontGeneratorItems = await Promise.all(
+          sortedSlugs.map(async (slug) => {
+            try {
+              const toolData = await getSeoContent('font-generator', slug, locale)
+              // 检查 in_menu 字段：如果不存在或为 true，则显示；如果为 false，则不显示
+              if (toolData?.in_menu === false) {
+                return null
+              }
+              let title = slug
+              if (toolData?.hero?.h1) {
+                title = toolData.hero.h1.replace(/<[^>]*>/g, '').trim()
+                if (!title) title = slug
+              }
+              return {
+                slug,
+                title,
+                href: getHref(`/font-generator/${slug}`),
+              }
+            } catch (err) {
+              // 如果单个项加载失败，返回 null，后续会被过滤掉
+              return null
+            }
+          })
+        )
+        data['font-generator'] = fontGeneratorItems.filter((item): item is { slug: string; title: string; href: string } => 
+          item !== null && item.title !== undefined && item.href !== undefined
+        )
+      } catch (error) {
+        data['font-generator'] = []
+      }
+      
       setThirdLevelMenuData(data)
     }
     
@@ -256,6 +307,25 @@ export default function Navigation() {
           {/* 向外箭头（右上和左下） */}
           <path d="M17.5 6.5L15 9M15 6.5L17.5 9" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
           <path d="M6.5 17.5L9 15M9 17.5L6.5 15" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      ),
+    },
+    {
+      title: navTranslations.fontGenerator,
+      href: getLocalizedHref('/font-generator'),
+      hasThirdLevel: true,
+      tool: 'font-generator',
+      icon: (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-2 flex-shrink-0">
+          {/* 字体图标 - 使用紫色渐变 */}
+          <rect x="3" y="4" width="18" height="16" rx="2" fill="url(#fontGradient)" opacity="0.2"/>
+          <path d="M7 8H17M7 12H15M7 16H13" stroke="url(#fontGradient)" strokeWidth="2" strokeLinecap="round"/>
+          <defs>
+            <linearGradient id="fontGradient" x1="3" y1="4" x2="21" y2="20" gradientUnits="userSpaceOnUse">
+              <stop stopColor="#9333EA"/>
+              <stop offset="1" stopColor="#4F46E5"/>
+            </linearGradient>
+          </defs>
         </svg>
       ),
     },

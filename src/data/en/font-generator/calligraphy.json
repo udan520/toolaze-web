@@ -1,0 +1,189 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Calligraphy Font Generator (Free, Copy Paste & No Ads) - Toolaze",
+    "description": "How to generate calligraphy fonts? 1. Type your text 2. Select calligraphy style 3. Copy and paste. Create beautiful calligraphy text for Instagram, Facebook, and social media. Free & Private."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Calligraphy Font Generator",
+    "desc": "Generate beautiful calligraphy fonts online for free. Simply type your text below to create elegant calligraphy text that you can copy and paste anywhere."
+  },
+  "intro": {
+    "title": "Why Use a Calligraphy Font Generator?",
+    "content": [
+      {
+        "title": "What is Calligraphy Font?",
+        "text": "Calligraphy fonts are distinctive typefaces that create unique visual styles. They feature calligraphy-specific characteristics that make your text stand out. Calligraphy fonts are perfect for adding a special touch to social media posts, invitations, logos, and design projects where you want to convey a specific aesthetic or personality."
+      },
+      {
+        "title": "Why Generate Calligraphy Text Online?",
+        "text": "Creating calligraphy text manually requires design software and font installation, which can be time-consuming and complex. Our calligraphy font generator lets you instantly transform any text into beautiful calligraphy style without downloading software or installing fonts. Perfect for social media users who want distinctive text for Instagram bios, Facebook posts, or TikTok captions, as well as designers who need quick calligraphy text for mockups and presentations."
+      }
+    ]
+  },
+  "features": {
+    "title": "Powerful Calligraphy Font Features",
+    "items": [
+      {
+        "icon": "✍️",
+        "iconType": "quality",
+        "title": "Elegant Calligraphy Styles",
+        "desc": "Generate beautiful calligraphy text with multiple elegant styles that create distinctive visual effects."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Complete Privacy Protection",
+        "desc": "All font generation happens locally in your browser—your text never leaves your device, ensuring absolute data security."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Instant Generation",
+        "desc": "Transform your text into ${category.name.toLowerCase()} style instantly with real-time preview—no waiting, no delays."
+      },
+      {
+        "icon": "📋",
+        "iconType": "batch",
+        "title": "Easy Copy & Paste",
+        "desc": "Copy your ${category.name.toLowerCase()} text with one click and paste it directly into Instagram, Facebook, Twitter, or any platform."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Zero Cost Forever",
+        "desc": "Enjoy unlimited ${category.name.toLowerCase()} font generation completely free—no subscriptions, no hidden fees, no advertisements ever."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "No Installation Needed",
+        "desc": "Everything runs directly in your web browser using client-side technology—no software downloads or font installations required."
+      }
+    ]
+  },
+  "specs": {
+    "engine": "Browser-Native Font Rendering - Client-Side Processing",
+    "limit": "Unlimited Text Length - No Character Limits",
+    "logic": "Real-Time Preview (Instant Style Application)",
+    "privacy": "100% Client-Side (Local Browser Processing)"
+  },
+  "performanceMetrics": {
+    "title": "Technical Specifications",
+    "metrics": [
+      {
+        "label": "Font Style",
+        "value": "Calligraphy (Distinctive Style)"
+      },
+      {
+        "label": "Text Length",
+        "value": "Unlimited characters"
+      },
+      {
+        "label": "Processing Speed",
+        "value": "Instant (Real-time preview)"
+      },
+      {
+        "label": "Output Format",
+        "value": "Unicode text (Copy & paste ready)"
+      },
+      {
+        "label": "Platform Support",
+        "value": "Instagram, Facebook, Twitter, TikTok, Discord, and more"
+      },
+      {
+        "label": "Processing Location",
+        "value": "100% Client-Side (Browser JavaScript)"
+      },
+      {
+        "label": "Privacy",
+        "value": "No server uploads, complete local processing"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "How to Generate Calligraphy Fonts",
+    "steps": [
+      {
+        "title": "Type Your Text",
+        "desc": "Enter the text you want to convert into calligraphy style in the input field above."
+      },
+      {
+        "title": "Select Calligraphy Style",
+        "desc": "Choose from multiple elegant calligraphy font styles. Preview your text in real-time to see how it looks."
+      },
+      {
+        "title": "Copy & Paste",
+        "desc": "Click the copy button to copy your ${category.name.toLowerCase()} text, then paste it anywhere—social media, documents, or design tools."
+      }
+    ]
+  },
+  "comparison": {
+    "toolaze": "Unlimited text length, Multiple ${category.name.toLowerCase()} styles, Instant preview, Real-time generation, 100% local processing, No uploads, Free forever",
+    "others": "Character limits, Limited styles, Slow processing, Server uploads required, Cloud queues, Privacy concerns, Paid upgrades"
+  },
+  "scenes": [
+    {
+      "title": "Social Media Users",
+      "icon": "📱",
+      "desc": "Create elegant calligraphy text for Instagram bios, Facebook posts, Twitter tweets, and TikTok captions. Stand out with beautiful calligraphy-style text that matches your personal brand."
+    },
+    {
+      "title": "Content Creators",
+      "icon": "🎨",
+      "desc": "Generate calligraphy fonts for YouTube thumbnails, blog post titles, and marketing materials. Add a distinctive touch to your content with elegant calligraphy text."
+    },
+    {
+      "title": "Designers",
+      "icon": "💼",
+      "desc": "Quickly generate calligraphy text for design mockups, presentations, and branding projects. Preview different calligraphy styles instantly before finalizing your design."
+    }
+  ],
+  "rating": {
+    "text": "\"The best calligraphy font generator I've found. Instant results and works perfectly on Instagram!\" - Join thousands of users who trust Toolaze for beautiful calligraphy text generation."
+  },
+  "faq": [
+    {
+      "q": "Can I use calligraphy fonts on Instagram?",
+      "a": "Yes! The calligraphy text generated by Toolaze uses Unicode characters that are fully supported on Instagram, Facebook, Twitter, TikTok, and most social media platforms. Simply copy and paste your calligraphy text directly into your posts, bios, or captions."
+    },
+    {
+      "q": "Is the calligraphy font generator really free?",
+      "a": "Yes, Toolaze is completely free forever with no hidden costs or advertisements. More importantly, all font generation happens locally in your browser using client-side technology. Your text never leaves your device—it's never uploaded to any server, ensuring 100% privacy and security."
+    },
+    {
+      "q": "How many calligraphy font styles are available?",
+      "a": "Toolaze offers multiple elegant calligraphy font styles, each with its own unique appearance. You can preview all available styles in real-time and choose the one that best matches your needs."
+    },
+    {
+      "q": "Can I generate calligraphy text for long paragraphs?",
+      "a": "Yes, there are no character limits. You can generate ${category.name.toLowerCase()} text for sentences, paragraphs, or even entire documents. The generator processes your text instantly regardless of length."
+    },
+    {
+      "q": "Will my calligraphy text work on all platforms?",
+      "a": "The calligraphy text generated by Toolaze uses Unicode characters that are widely supported across platforms including Instagram, Facebook, Twitter, TikTok, Discord, WhatsApp, and most modern applications. However, some older platforms or applications may not display all Unicode characters correctly."
+    },
+    {
+      "q": "Can I download calligraphy font files?",
+      "a": "Toolaze generates styled text that you can copy and paste. We don't provide downloadable font files (.ttf, .otf), but you can use the generated ${category.name.toLowerCase()} text anywhere that supports Unicode characters."
+    },
+    {
+      "q": "Is my text stored or logged anywhere?",
+      "a": "No! All ${category.name.toLowerCase()} font generation happens locally in your browser. Your text is never uploaded to any server, never stored in any database, and never logged. Complete privacy is guaranteed."
+    }
+  ],
+  "compare": {
+    "toolaze": "Unlimited calligraphy text generation, Multiple elegant styles, Instant real-time preview, Local-first architecture, No character limits, Complete privacy protection, 100% free forever",
+    "others": "Character limits, Limited style options, Slow server processing, Cloud uploads required, Privacy concerns, Watermarks or ads, Paid premium features"
+  }
+}

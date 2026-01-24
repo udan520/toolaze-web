@@ -6,6 +6,7 @@ import Footer from '@/components/Footer'
 import Breadcrumb from '@/components/Breadcrumb'
 import ImageCompressor from '@/components/ImageCompressor'
 import ImageConverter from '@/components/ImageConverter'
+import FontGeneratorHero from '@/components/blocks/FontGeneratorHero'
 import Intro from '@/components/blocks/Intro'
 import Features from '@/components/blocks/Features'
 import PerformanceMetrics from '@/components/blocks/PerformanceMetrics'
@@ -239,13 +240,20 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
     // 获取推荐的其他功能（排除当前页面）
     const allSlugs = await getAllSlugs(tool, locale)
     const otherSlugs = allSlugs.filter(s => s !== slug).slice(0, 3)
+    // 生成链接的辅助函数（英语不使用 /en 前缀）
+    const getToolHref = (toolSlug: string, slug: string): string => {
+      if (locale === 'en') {
+        return `/${toolSlug}/${slug}`
+      }
+      return `/${locale}/${toolSlug}/${slug}`
+    }
     const recommendedTools = await Promise.all(otherSlugs.map(async (s) => {
       const toolData = await getSeoContent(tool, s, locale)
       return {
         slug: s,
         title: toolData?.hero?.h1 ? extractSimpleTitle(toolData.hero.h1) : s,
         description: toolData?.hero?.desc || toolData?.metadata?.description || '',
-        href: `/${locale}/${tool}/${s}`,
+        href: getToolHref(tool, s),
       }
     }))
     const filteredRecommendedTools = recommendedTools.filter(t => t.title && t.href)
@@ -281,54 +289,61 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
 
         <main className="min-h-screen bg-[#F8FAFF]">
           {/* 1. Hero 板块 - 固定在最前面，不参与动态顺序 */}
-          <header className="bg-[#F8FAFF] pb-8 md:pb-12 px-6">
-            <div className="max-w-4xl mx-auto text-center pt-6 md:pt-8 mb-6 md:mb-12">
-              <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-3 md:mb-4 leading-tight text-slate-900">
-                {content.hero?.h1 ? (
-                  renderH1WithGradient(content.hero.h1)
-                ) : (
-                  <>{toolTranslations?.title || (isConverter ? 'Image Converter' : 'Image Compressor')}</>
+          {tool === 'font-generator' ? (
+            <FontGeneratorHero 
+              h1={content.hero?.h1 || 'Font Generator'}
+              desc={content.hero?.desc || 'Generate custom fonts online for free. Create beautiful text styles instantly.'}
+            />
+          ) : (
+            <header className="bg-[#F8FAFF] pb-8 md:pb-12 px-6">
+              <div className="max-w-4xl mx-auto text-center pt-6 md:pt-8 mb-6 md:mb-12">
+                <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-3 md:mb-4 leading-tight text-slate-900">
+                  {content.hero?.h1 ? (
+                    renderH1WithGradient(content.hero.h1)
+                  ) : (
+                    <>{toolTranslations?.title || (isConverter ? 'Image Converter' : 'Image Compressor')}</>
+                  )}
+                </h1>
+                {content.hero?.desc && (
+                  <p className="text-base md:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+                    {content.hero.desc}
+                  </p>
                 )}
-              </h1>
-              {content.hero?.desc && (
-                <p className="text-base md:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
-                  {content.hero.desc}
-                </p>
+                {!content.hero?.desc && (
+                  <p className="text-base md:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+                    {isConverter
+                      ? (() => {
+                          // 根据 slug 生成默认描述
+                          if (slug.includes('heic-to-jpg')) {
+                            return 'Convert HEIC to JPG online for free. Simply drop your HEIC images below to convert them to JPG in seconds.'
+                          } else if (slug.includes('heic-to-png')) {
+                            return 'Convert HEIC to PNG online for free. Simply drop your HEIC images below to convert them to PNG in seconds.'
+                          } else if (slug.includes('png-to-jpg')) {
+                            return 'Convert PNG to JPG online for free. Simply drop your PNG images below to convert them to JPG in seconds.'
+                          } else if (slug.includes('jpg-to-png')) {
+                            return 'Convert JPG to PNG online for free. Simply drop your JPG images below to convert them to PNG in seconds.'
+                          } else if (slug.includes('webp-to-jpg')) {
+                            return 'Convert WebP to JPG online for free. Simply drop your WebP images below to convert them to JPG in seconds.'
+                          } else if (slug.includes('webp-to-png')) {
+                            return 'Convert WebP to PNG online for free. Simply drop your WebP images below to convert them to PNG in seconds.'
+                          } else if (slug.includes('png-to-webp')) {
+                            return 'Convert PNG to WebP online for free. Simply drop your PNG images below to convert them to WebP in seconds.'
+                          } else if (slug.includes('jpg-to-webp')) {
+                            return 'Convert JPG to WebP online for free. Simply drop your JPG images below to convert them to WebP in seconds.'
+                          }
+                          return 'Convert images online for free. Simply drop your images below to convert them in seconds.'
+                        })()
+                      : 'Compress images online for free. Simply drop your images below to compress them in seconds.'}
+                  </p>
+                )}
+              </div>
+              {tool === 'image-converter' || tool === 'image-conversion' ? (
+                <ImageConverter initialFormat={slug} />
+              ) : (
+                <ImageCompressor initialTarget={slug} />
               )}
-              {!content.hero?.desc && (
-                <p className="text-base md:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
-                  {isConverter
-                    ? (() => {
-                        // 根据 slug 生成默认描述
-                        if (slug.includes('heic-to-jpg')) {
-                          return 'Convert HEIC to JPG online for free. Simply drop your HEIC images below to convert them to JPG in seconds.'
-                        } else if (slug.includes('heic-to-png')) {
-                          return 'Convert HEIC to PNG online for free. Simply drop your HEIC images below to convert them to PNG in seconds.'
-                        } else if (slug.includes('png-to-jpg')) {
-                          return 'Convert PNG to JPG online for free. Simply drop your PNG images below to convert them to JPG in seconds.'
-                        } else if (slug.includes('jpg-to-png')) {
-                          return 'Convert JPG to PNG online for free. Simply drop your JPG images below to convert them to PNG in seconds.'
-                        } else if (slug.includes('webp-to-jpg')) {
-                          return 'Convert WebP to JPG online for free. Simply drop your WebP images below to convert them to JPG in seconds.'
-                        } else if (slug.includes('webp-to-png')) {
-                          return 'Convert WebP to PNG online for free. Simply drop your WebP images below to convert them to PNG in seconds.'
-                        } else if (slug.includes('png-to-webp')) {
-                          return 'Convert PNG to WebP online for free. Simply drop your PNG images below to convert them to WebP in seconds.'
-                        } else if (slug.includes('jpg-to-webp')) {
-                          return 'Convert JPG to WebP online for free. Simply drop your JPG images below to convert them to WebP in seconds.'
-                        }
-                        return 'Convert images online for free. Simply drop your images below to convert them in seconds.'
-                      })()
-                    : 'Compress images online for free. Simply drop your images below to compress them in seconds.'}
-                </p>
-              )}
-            </div>
-            {tool === 'image-converter' || tool === 'image-conversion' ? (
-              <ImageConverter initialFormat={slug} />
-            ) : (
-              <ImageCompressor initialTarget={slug} />
-            )}
-          </header>
+            </header>
+          )}
 
           {/* 动态渲染板块 - 根据 sectionsOrder 配置 */}
           {(() => {
@@ -463,7 +478,7 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
               
               {/* View All Related Tools 入口 - 始终显示 */}
               <ViewAllToolsButton
-                href={`/${locale}/${tool}/all-tools`}
+                href={locale === 'en' ? `/${tool}/all-tools` : `/${locale}/${tool}/all-tools`}
                 text={t?.common?.viewAllTools?.related || 'View All Related Tools'}
                 variant="related"
               />

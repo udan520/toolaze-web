@@ -1,8 +1,11 @@
 import { getSeoContent, getAllSlugs } from '@/lib/seo-loader'
 import { generateHreflangAlternates } from '@/lib/hreflang'
-import { notFound } from 'next/navigation'
+import { notFound, redirect } from 'next/navigation'
 import ToolSlugPageContent from './ToolSlugPageContent'
 import type { Metadata } from 'next'
+
+// 不支持多语言的工具列表
+const NON_MULTILINGUAL_TOOLS = ['font-generator']
 
 interface PageProps {
   params: Promise<{
@@ -17,6 +20,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   try {
     const resolvedParams = await params
     const locale = resolvedParams.locale || 'en'
+    
+    // 如果工具不支持多语言且不是英语，返回重定向元数据
+    if (NON_MULTILINGUAL_TOOLS.includes(resolvedParams.tool) && locale !== 'en') {
+      return {
+        title: 'Redirecting... | Toolaze',
+        robots: 'noindex, nofollow',
+      }
+    }
+    
     const content = await getSeoContent(resolvedParams.tool, resolvedParams.slug, locale)
     
     if (!content) {
@@ -100,7 +112,23 @@ export default async function LandingPage({ params }: PageProps) {
   const resolvedParams = await params
   const locale = resolvedParams.locale || 'en'
   
-  if (!resolvedParams.tool || !resolvedParams.slug) {
+  if (!resolvedParams.tool) {
+    notFound()
+    return null
+  }
+  
+  // 如果工具不支持多语言，且当前不是英语，重定向到英语版本
+  if (NON_MULTILINGUAL_TOOLS.includes(resolvedParams.tool) && locale !== 'en') {
+    if (resolvedParams.slug) {
+      // L3 页面：重定向到 /tool/slug
+      redirect(`/${resolvedParams.tool}/${resolvedParams.slug}`)
+    } else {
+      // L2 页面：重定向到 /tool
+      redirect(`/${resolvedParams.tool}`)
+    }
+  }
+  
+  if (!resolvedParams.slug) {
     notFound()
     return null
   }

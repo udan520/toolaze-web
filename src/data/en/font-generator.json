@@ -1,0 +1,181 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Free Font Generator - Create Custom Fonts Online | Toolaze",
+    "description": "Generate custom fonts online for free. Create cursive, fancy, bold, italic, gothic, and tattoo fonts. Copy and paste instantly. No sign-up required."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Free <span class=\"text-gradient\">Font Generator</span>",
+    "desc": "Generate custom fonts online for free. Create cursive, fancy, bold, italic, gothic, and tattoo fonts. Copy and paste instantly. No sign-up required."
+  },
+  "intro": {
+    "title": "Why Use Toolaze Font Generator?",
+    "content": [
+      {
+        "title": "What is a Font Generator?",
+        "text": "A font generator is an online tool that transforms plain text into styled text using Unicode characters. It allows you to create beautiful, distinctive text styles without installing fonts or using design software. Font generators are perfect for social media posts, design projects, and anywhere you want to add visual flair to your text."
+      },
+      {
+        "title": "Why Generate Fonts Online?",
+        "text": "Creating styled text manually requires design software, font installation, and technical knowledge. Our font generator lets you instantly transform any text into multiple beautiful styles—cursive, fancy, bold, italic, gothic, tattoo, and more—without downloading software or installing fonts. Perfect for social media users who want distinctive text for Instagram bios, Facebook posts, or TikTok captions, as well as designers who need quick styled text for mockups and presentations."
+      }
+    ]
+  },
+  "features": {
+    "title": "Powerful Font Generator Features",
+    "items": [
+      {
+        "icon": "🎨",
+        "iconType": "quality",
+        "title": "Multiple Font Styles",
+        "desc": "Generate beautiful text with multiple font styles including cursive, fancy, bold, italic, gothic, tattoo, calligraphy, old english, 3D, and more."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Complete Privacy Protection",
+        "desc": "All font generation happens locally in your browser—your text never leaves your device, ensuring absolute data security."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Instant Generation",
+        "desc": "Transform your text into styled fonts instantly with real-time preview—no waiting, no delays."
+      },
+      {
+        "icon": "📋",
+        "iconType": "batch",
+        "title": "Easy Copy & Paste",
+        "desc": "Copy your styled text with one click and paste it directly into Instagram, Facebook, Twitter, TikTok, Discord, or any platform."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Zero Cost Forever",
+        "desc": "Enjoy unlimited font generation completely free—no subscriptions, no hidden fees, no advertisements ever."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "No Installation Needed",
+        "desc": "Everything runs directly in your web browser using client-side technology—no software downloads or font installations required."
+      }
+    ]
+  },
+  "specs": {
+    "engine": "Browser-Native Font Rendering - Client-Side Processing",
+    "limit": "Unlimited Text Length - No Character Limits",
+    "logic": "Real-Time Preview (Instant Style Application)",
+    "privacy": "100% Client-Side (Local Browser Processing)"
+  },
+  "performanceMetrics": {
+    "title": "Technical Specifications",
+    "metrics": [
+      {
+        "label": "Font Styles",
+        "value": "Cursive, Fancy, Bold, Italic, Gothic, Tattoo, Calligraphy, Old English, 3D, and more"
+      },
+      {
+        "label": "Text Length",
+        "value": "Unlimited characters"
+      },
+      {
+        "label": "Processing Speed",
+        "value": "Instant (Real-time preview)"
+      },
+      {
+        "label": "Output Format",
+        "value": "Unicode text (Copy & paste ready)"
+      },
+      {
+        "label": "Platform Support",
+        "value": "Instagram, Facebook, Twitter, TikTok, Discord, WhatsApp, and more"
+      },
+      {
+        "label": "Processing Location",
+        "value": "100% Client-Side (Browser JavaScript)"
+      },
+      {
+        "label": "Privacy",
+        "value": "No server uploads, complete local processing"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "How to Use Toolaze Font Generator",
+    "steps": [
+      {
+        "title": "Type Your Text",
+        "desc": "Enter the text you want to convert into a custom font style in the input field above."
+      },
+      {
+        "title": "Choose Font Style",
+        "desc": "Select from multiple font styles including cursive, fancy, bold, italic, gothic, tattoo, and more. Preview your text in real-time to see how it looks."
+      },
+      {
+        "title": "Copy & Paste",
+        "desc": "Click the copy button to copy your styled text, then paste it anywhere—social media, documents, or design tools."
+      }
+    ]
+  },
+  "comparison": {
+    "toolaze": "Unlimited text length, Multiple font styles, Instant preview, Real-time generation, 100% local processing, No uploads, Free forever",
+    "others": "Character limits, Limited styles, Slow processing, Server uploads required, Cloud queues, Privacy concerns, Paid upgrades"
+  },
+  "scenes": [
+    {
+      "title": "For Social Media Users",
+      "icon": "📱",
+      "desc": "Create eye-catching fonts for Instagram, Facebook, Twitter, and TikTok posts. Stand out with custom styled text that matches your brand."
+    },
+    {
+      "title": "For Designers",
+      "icon": "🎨",
+      "desc": "Generate fonts for design projects, logos, and branding materials. Preview different styles instantly before finalizing your design."
+    },
+    {
+      "title": "For Content Creators",
+      "icon": "💼",
+      "desc": "Enhance your content with custom fonts for YouTube thumbnails, blog posts, and marketing materials. Copy and paste anywhere."
+    }
+  ],
+  "rating": {
+    "text": "\"The best font generator I've found. Instant results and works perfectly on Instagram!\" - Join thousands of users who trust Toolaze for beautiful font generation."
+  },
+  "faq": [
+    {
+      "q": "What font styles are available?",
+      "a": "Toolaze supports multiple font styles including cursive, fancy, bold, italic, gothic, tattoo, calligraphy, old english, 3D, script, and many more. You can preview all available styles in real-time."
+    },
+    {
+      "q": "Is this font generator really free?",
+      "a": "Yes! Toolaze is 100% free with no ads, no registration, and no hidden fees. All font generation happens in your browser."
+    },
+    {
+      "q": "Can I use these fonts on social media?",
+      "a": "Yes, you can copy and paste the generated fonts to Instagram, Facebook, Twitter, TikTok, Discord, and other platforms that support Unicode characters."
+    },
+    {
+      "q": "Are my texts uploaded to a server?",
+      "a": "No! All font generation happens locally in your browser using JavaScript. Your text never leaves your device, ensuring complete privacy."
+    },
+    {
+      "q": "Can I download font files?",
+      "a": "Toolaze generates styled text that you can copy and paste. We don't provide downloadable font files (.ttf, .otf), but you can use the generated text anywhere."
+    },
+    {
+      "q": "Is there a character limit?",
+      "a": "No, there are no character limits. You can generate styled text for sentences, paragraphs, or even entire documents. The generator processes your text instantly regardless of length."
+    }
+  ]
+}

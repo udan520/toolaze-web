@@ -1,0 +1,40 @@
+{
+  "tool": "image-converter",
+  "lastUpdated": "2024-01-01",
+  "primaryKeywords": [
+    {
+      "keyword": "image converter",
+      "searchVolume": 0,
+      "difficulty": 0,
+      "type": "primary",
+      "notes": "主关键词，用于 H1 和 Title - 待更新"
+    }
+  ],
+  "longTailKeywords": [
+    {
+      "keyword": "convert jpg to png online free",
+      "searchVolume": 0,
+      "difficulty": 0,
+      "type": "long-tail",
+      "targetPage": "jpg-to-png",
+      "notes": "长尾关键词，用于特定三级页面 - 待更新"
+    }
+  ],
+  "relatedKeywords": [
+    {
+      "keyword": "image format converter",
+      "searchVolume": 0,
+      "difficulty": 0,
+      "type": "related",
+      "notes": "相关关键词，用于内容自然嵌入 - 待更新"
+    }
+  ],
+  "internalLinking": [
+    {
+      "keyword": "compress image",
+      "targetPage": "image-compressor",
+      "anchorText": "compress images",
+      "notes": "内链关键词，链接到压缩工具页面"
+    }
+  ]
+}

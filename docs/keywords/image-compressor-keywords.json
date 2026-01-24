@@ -1,0 +1,40 @@
+{
+  "tool": "image-compressor",
+  "lastUpdated": "2024-01-01",
+  "primaryKeywords": [
+    {
+      "keyword": "image compressor",
+      "searchVolume": 0,
+      "difficulty": 0,
+      "type": "primary",
+      "notes": "主关键词，用于 H1 和 Title - 待更新"
+    }
+  ],
+  "longTailKeywords": [
+    {
+      "keyword": "compress jpg to 20kb",
+      "searchVolume": 0,
+      "difficulty": 0,
+      "type": "long-tail",
+      "targetPage": "jpg-to-20kb",
+      "notes": "长尾关键词，用于特定三级页面 - 待更新"
+    }
+  ],
+  "relatedKeywords": [
+    {
+      "keyword": "image size reducer",
+      "searchVolume": 0,
+      "difficulty": 0,
+      "type": "related",
+      "notes": "相关关键词，用于内容自然嵌入 - 待更新"
+    }
+  ],
+  "internalLinking": [
+    {
+      "keyword": "convert image",
+      "targetPage": "image-converter",
+      "anchorText": "convert images",
+      "notes": "内链关键词，链接到转换工具页面"
+    }
+  ]
+}

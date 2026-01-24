@@ -3,12 +3,23 @@ When I ask you to create a new landing page or SEO page for Toolaze, ALWAYS refe
 **FEATURE SPECIFICATIONS**: When writing SEO content, you MUST strictly follow the feature specifications in 'docs/specs/' directory. Each tool has its own specification file:
 - Image Converter: 'docs/specs/image-converter.md'
 - Image Compressor: 'docs/specs/image-compressor.md'
+- Font Generator: 'docs/specs/font-generator.md'
 - Common features: 'docs/specs/common.md'
 - See 'docs/FEATURE_SPECIFICATIONS.md' for the index of all specification files.
 
 Only write about features that are explicitly listed as supported in the relevant specification file. Do NOT write about unsupported features (e.g., if video format is not supported, do not mention video conversion). Do NOT mention technologies that are not used (e.g., if AI is not used, do not mention AI technology). Always verify feature support before writing SEO content.
 
 **SEO CONTENT GUIDELINES**: Follow 'docs/SEO_CONTENT_GUIDELINES.md' for content writing principles. Ensure all SEO content is accurate, consistent, and based on actual feature specifications.
+
+**KEYWORD RESEARCH**: When writing SEO content, ALWAYS reference the keyword documents in 'docs/keywords/' directory to determine primary keywords, long-tail keywords, sub-page structure, and internal linking strategy:
+- Image Converter: 'docs/keywords/image-converter-keywords.json'
+- Image Compressor: 'docs/keywords/image-compressor-keywords.json'
+- Font Generator: 'docs/keywords/font-generator-keywords.json'
+- See 'docs/keywords/README.md' for keyword usage guidelines
+- Use primary keywords for H1, Title, and Meta Description
+- Use long-tail keywords for specific L3 pages
+- Use related keywords naturally throughout content
+- Use internal linking keywords to connect related pages
 
 **GLOBAL NAVIGATION BAR**: All pages MUST use the exact same navigation bar structure with sticky functionality. The navigation includes:
 - **Container**: `id="mainNav"` and `class="sticky-nav py-6 px-6 flex justify-between items-center max-w-6xl mx-auto w-full relative"`

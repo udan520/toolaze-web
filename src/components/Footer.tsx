@@ -82,6 +82,18 @@ export default function Footer() {
     loadTranslations(detectedLocale).then(setTranslations)
   }, [pathname])
 
+  // 检查页面是否支持多语言
+  // 如果路径的第一部分是 locale 代码，则支持多语言
+  const hasMultilingualSupport = (): boolean => {
+    if (!pathname) return false
+    const pathParts = pathname.split('/').filter(Boolean)
+    if (pathParts.length === 0) return false
+    const firstPart = pathParts[0]
+    return locales.some(loc => loc.code === firstPart)
+  }
+
+  const showLanguageSwitcher = hasMultilingualSupport()
+
   // Generate alternate language URLs
   const getAlternateLanguageUrl = (targetLocale: string): string => {
     if (!pathname) {
@@ -125,7 +137,8 @@ export default function Footer() {
             <li><Link href={currentLocale === 'en' ? '/terms' : `/${currentLocale}/terms`} className="text-slate-300 hover:text-indigo-400 transition-colors font-medium">{translations.termsOfService}</Link></li>
             <li><a href="mailto:support@toolaze.com" className="text-slate-300 hover:text-indigo-400 transition-colors font-medium">{translations.contact}</a></li>
             
-            {/* Language Switcher */}
+            {/* Language Switcher - 只在支持多语言的页面显示 */}
+            {showLanguageSwitcher && (
             <li className="relative">
               <button
                 onClick={() => setIsLanguageMenuOpen(!isLanguageMenuOpen)}
@@ -171,6 +184,7 @@ export default function Footer() {
                 </>
               )}
             </li>
+            )}
           </ul>
         </nav>
 
