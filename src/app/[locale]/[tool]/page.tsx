@@ -7,11 +7,31 @@ const NON_MULTILINGUAL_TOOLS = ['font-generator']
 // 支持多语言的工具列表（在 [locale] 目录下有对应的页面）
 const MULTILINGUAL_TOOLS = ['image-compressor', 'image-converter']
 
+// 支持的所有语言列表
+const SUPPORTED_LOCALES = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
+
+// 所有工具列表
+const ALL_TOOLS = [...NON_MULTILINGUAL_TOOLS, ...MULTILINGUAL_TOOLS]
+
 interface PageProps {
   params: Promise<{
     locale: string
     tool: string
   }>
+}
+
+// 生成所有静态参数（静态导出必需）
+export async function generateStaticParams() {
+  const params: Array<{ locale: string; tool: string }> = []
+  
+  // 为所有语言和工具组合生成参数
+  for (const locale of SUPPORTED_LOCALES) {
+    for (const tool of ALL_TOOLS) {
+      params.push({ locale, tool })
+    }
+  }
+  
+  return params
 }
 
 export default async function ToolPage({ params }: PageProps) {
