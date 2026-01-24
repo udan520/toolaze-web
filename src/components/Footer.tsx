@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
+import { getAllSlugs, getSeoContent } from '@/lib/seo-loader'
 
 // 翻译数据(默认英语)
 const defaultTranslations = {
@@ -14,7 +15,11 @@ const defaultTranslations = {
   contact: 'Contact',
   language: 'Language',
   copyright: '© {year} Toolaze Lab. All rights reserved.',
-  tagline: 'Free Online Tools • No Registration Required • 100% Private'
+  tagline: 'Free Online Tools • No Registration Required • 100% Private',
+  quickTools: 'Quick Tools',
+  imageCompression: 'Image Compression',
+  imageConverter: 'Image Converter',
+  fontGenerator: 'Font Generator'
 }
 
 // 加载翻译的函数
@@ -27,12 +32,30 @@ async function loadTranslations(locale: string) {
     
     if (normalizedLocale === 'en') {
       const data = await import('@/data/en/common.json')
-      return data.default?.footer || defaultTranslations
+      const footerData = data.default?.footer || {}
+      const navData = data.default?.nav || {}
+      return {
+        ...defaultTranslations,
+        ...footerData,
+        // 从nav中获取二级菜单的翻译
+        imageCompression: navData.imageCompression || footerData.imageCompression || defaultTranslations.imageCompression,
+        imageConverter: navData.imageConverter || footerData.imageConverter || defaultTranslations.imageConverter,
+        fontGenerator: navData.fontGenerator || footerData.fontGenerator || defaultTranslations.fontGenerator,
+      }
     }
     
     try {
       const data = await import(`@/data/${normalizedLocale}/common.json`)
-      return data.default?.footer || defaultTranslations
+      const footerData = data.default?.footer || {}
+      const navData = data.default?.nav || {}
+      return {
+        ...defaultTranslations,
+        ...footerData,
+        // 从nav中获取二级菜单的翻译
+        imageCompression: navData.imageCompression || footerData.imageCompression || defaultTranslations.imageCompression,
+        imageConverter: navData.imageConverter || footerData.imageConverter || defaultTranslations.imageConverter,
+        fontGenerator: navData.fontGenerator || footerData.fontGenerator || defaultTranslations.fontGenerator,
+      }
     } catch {
       return defaultTranslations
     }
@@ -53,6 +76,17 @@ const locales = [
   { code: 'it', name: 'Italiano', countryCode: 'IT', flag: '🇮🇹' },
 ]
 
+// 格式化工具标题
+function extractPageTitle(h1: string): string {
+  if (!h1) return ''
+  let cleanH1 = h1.replace(/<[^>]*>/g, '')
+  if (/^[a-zA-Z]/.test(cleanH1)) {
+    cleanH1 = cleanH1.replace(/^(Compress|Free|Convert|Optimize|Reduce|Generate|Create)\s+/i, '')
+    cleanH1 = cleanH1.replace(/\s+(Compression|Tool|Compressor|Converter|Optimizer|Generator)$/i, '')
+  }
+  return cleanH1.trim() || h1.replace(/<[^>]*>/g, '')
+}
+
 export default function Footer() {
   // Use a static year initially to avoid hydration mismatch
   // The year will be updated on client side after hydration
@@ -61,6 +95,15 @@ export default function Footer() {
   const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false)
   const [translations, setTranslations] = useState(defaultTranslations)
   const [isMounted, setIsMounted] = useState(false)
+  const [footerMenuData, setFooterMenuData] = useState<{
+    'image-compressor': Array<{slug: string, title: string, href: string}>
+    'image-converter': Array<{slug: string, title: string, href: string}>
+    'font-generator': Array<{slug: string, title: string, href: string}>
+  }>({
+    'image-compressor': [],
+    'image-converter': [],
+    'font-generator': []
+  })
   const pathname = usePathname()
 
   useEffect(() => {
@@ -82,14 +125,170 @@ export default function Footer() {
     loadTranslations(detectedLocale).then(setTranslations)
   }, [pathname])
 
+  // 加载页脚菜单数据
+  useEffect(() => {
+    const loadFooterMenuData = async () => {
+      const locale = currentLocale
+      
+      // 生成带语言前缀的链接的辅助函数
+      const getHref = (href: string): string => {
+        if (href.startsWith('http')) return href
+        if (locale === 'en') return href
+        if (href.startsWith(`/${locale}`)) return href
+        return `/${locale}${href}`
+      }
+      
+      const data: {
+        'image-compressor': Array<{slug: string, title: string, href: string}>
+        'image-converter': Array<{slug: string, title: string, href: string}>
+        'font-generator': Array<{slug: string, title: string, href: string}>
+      } = {
+        'image-compressor': [],
+        'image-converter': [],
+        'font-generator': []
+      }
+      
+      // 加载 Image Compressor 的三级菜单（只显示 in_menu: true 的工具，最多显示8个）
+      try {
+        const compressorSlugs = await getAllSlugs('image-compressor', locale)
+        if (compressorSlugs && compressorSlugs.length > 0) {
+          const compressorItems = await Promise.all(
+            compressorSlugs.map(async (slug) => {
+              try {
+                const toolData = await getSeoContent('image-compressor', slug, locale)
+                // 只显示 in_menu: true 的工具
+                if (toolData?.in_menu !== true) {
+                  return null
+                }
+                let title = slug
+                if (toolData?.hero?.h1) {
+                  // 直接使用原始h1标题，移除HTML标签即可
+                  title = toolData.hero.h1.replace(/<[^>]*>/g, '').trim()
+                  if (!title) title = slug
+                }
+                return {
+                  slug,
+                  title,
+                  href: getHref(`/image-compressor/${slug}`),
+                }
+              } catch (err) {
+                return null
+              }
+            })
+          )
+          // 过滤并限制最多8个
+          const filteredItems = compressorItems.filter((item): item is { slug: string; title: string; href: string } => 
+            item !== null && item.title !== undefined && item.href !== undefined
+          )
+          data['image-compressor'] = filteredItems.slice(0, 8)
+        }
+      } catch (error) {
+        console.error('Failed to load image-compressor menu items:', error)
+      }
+      
+      // 加载 Image Converter 的三级菜单（只显示 in_menu: true 的工具，最多显示8个）
+      try {
+        const converterSlugs = await getAllSlugs('image-converter', locale)
+        if (converterSlugs && converterSlugs.length > 0) {
+          const converterItems = await Promise.all(
+            converterSlugs.slice(0, 8).map(async (slug) => {
+              try {
+                const toolData = await getSeoContent('image-converter', slug, locale)
+                if (toolData?.in_menu === false) {
+                  return null
+                }
+                let title = slug
+                if (toolData?.hero?.h1) {
+                  // 直接使用原始h1标题，移除HTML标签即可
+                  title = toolData.hero.h1.replace(/<[^>]*>/g, '').trim()
+                  if (!title) title = slug
+                }
+                return {
+                  slug,
+                  title,
+                  href: getHref(`/image-converter/${slug}`),
+                }
+              } catch (err) {
+                return null
+              }
+            })
+          )
+          data['image-converter'] = converterItems.filter((item): item is { slug: string; title: string; href: string } => 
+            item !== null && item.title !== undefined && item.href !== undefined
+          )
+        }
+      } catch (error) {
+        console.error('Failed to load image-converter menu items:', error)
+      }
+      
+      // 加载 Font Generator 的三级菜单（显示搜索量最大的8个）
+      const topFontGeneratorSlugs = ['cursive', 'fancy', 'bold', 'tattoo', 'cool', 'instagram', 'italic', 'gothic']
+      try {
+        const fontGeneratorSlugs = await getAllSlugs('font-generator', locale)
+        const topSlugs = fontGeneratorSlugs.filter(slug => topFontGeneratorSlugs.includes(slug))
+        const sortedSlugs = topSlugs.sort((a, b) => {
+          const indexA = topFontGeneratorSlugs.indexOf(a)
+          const indexB = topFontGeneratorSlugs.indexOf(b)
+          return indexA - indexB
+        })
+        
+        const fontGeneratorItems = await Promise.all(
+          sortedSlugs.map(async (slug) => {
+            try {
+              const toolData = await getSeoContent('font-generator', slug, locale)
+              if (toolData?.in_menu === false) {
+                return null
+              }
+              let title = slug
+              if (toolData?.hero?.h1) {
+                title = extractPageTitle(toolData.hero.h1)
+                if (!title) title = slug
+              }
+              return {
+                slug,
+                title,
+                href: getHref(`/font-generator/${slug}`),
+              }
+            } catch (err) {
+              return null
+            }
+          })
+        )
+        data['font-generator'] = fontGeneratorItems.filter((item): item is { slug: string; title: string; href: string } => 
+          item !== null && item.title !== undefined && item.href !== undefined
+        )
+      } catch (error) {
+        console.error('Failed to load font-generator menu items:', error)
+      }
+      
+      setFooterMenuData(data)
+    }
+    
+    if (isMounted) {
+      loadFooterMenuData()
+    }
+  }, [currentLocale, pathname, isMounted])
+
   // 检查页面是否支持多语言
-  // 如果路径的第一部分是 locale 代码，则支持多语言
+  // 如果路径的第一部分是 locale 代码，或者路径包含支持多语言的工具，则支持多语言
   const hasMultilingualSupport = (): boolean => {
     if (!pathname) return false
     const pathParts = pathname.split('/').filter(Boolean)
     if (pathParts.length === 0) return false
     const firstPart = pathParts[0]
-    return locales.some(loc => loc.code === firstPart)
+    
+    // 如果路径的第一部分是 locale 代码，则支持多语言
+    if (locales.some(loc => loc.code === firstPart)) {
+      return true
+    }
+    
+    // 检查是否是支持多语言的工具页面（即使没有locale前缀）
+    const multilingualTools = ['image-compressor', 'image-converter', 'font-generator']
+    if (multilingualTools.some(tool => pathname.includes(`/${tool}`))) {
+      return true
+    }
+    
+    return false
   }
 
   const showLanguageSwitcher = hasMultilingualSupport()
@@ -118,27 +317,197 @@ export default function Footer() {
         return pathname // Stay on same path for English
       }
       // Add locale prefix for other languages
-      return `/${targetLocale}${pathname}`
+      // 确保路径以 / 开头
+      const pathWithSlash = pathname.startsWith('/') ? pathname : `/${pathname}`
+      return `/${targetLocale}${pathWithSlash}`
     }
   }
 
+  // 检查当前页面支持哪些语言
+  const [supportedLocales, setSupportedLocales] = useState<typeof locales>([])
+  
+  useEffect(() => {
+    const checkSupportedLocales = async () => {
+      if (!pathname) {
+        setSupportedLocales(locales)
+        return
+      }
+      
+      const pathParts = pathname.split('/').filter(Boolean)
+      if (pathParts.length === 0) {
+        setSupportedLocales(locales)
+        return
+      }
+      
+      // 检查第一个部分是否是locale代码
+      const firstPart = pathParts[0]
+      const isLocaleInPath = locales.some(loc => loc.code === firstPart)
+      
+      let tool: string | null = null
+      let slug: string | null = null
+      
+      if (isLocaleInPath) {
+        // 路径格式：/locale/tool 或 /locale/tool/slug
+        if (pathParts.length >= 2) {
+          tool = pathParts[1]
+          if (pathParts.length >= 3) {
+            slug = pathParts[2]
+          }
+        }
+      } else {
+        // 路径格式：/tool 或 /tool/slug（英语，无locale前缀）
+        tool = pathParts[0]
+        if (pathParts.length >= 2) {
+          slug = pathParts[1]
+        }
+      }
+      
+      // 如果不是工具页面，支持所有语言
+      const multilingualTools = ['image-compressor', 'image-converter', 'font-generator']
+      if (!tool || !multilingualTools.includes(tool)) {
+        setSupportedLocales(locales)
+        return
+      }
+      
+      // 检查哪些语言有内容
+      const availableLocales: typeof locales = []
+      
+      // 定义已知支持的语言（基于实际存在的文件）
+      const knownSupportedLocales: Record<string, string[]> = {
+        'font-generator': ['en', 'de'], // font-generator 目前只有英语和德语
+        'image-compressor': locales.map(l => l.code), // 支持所有语言
+        'image-converter': locales.map(l => l.code), // 支持所有语言
+      }
+      
+      if (tool && knownSupportedLocales[tool]) {
+        // 使用已知的支持语言列表
+        const supportedCodes = knownSupportedLocales[tool]
+        for (const locale of locales) {
+          if (supportedCodes.includes(locale.code)) {
+            availableLocales.push(locale)
+          }
+        }
+      } else {
+        // 默认支持所有语言
+        availableLocales.push(...locales)
+      }
+      
+      setSupportedLocales(availableLocales)
+    }
+    
+    if (isMounted) {
+      checkSupportedLocales()
+    } else {
+      setSupportedLocales(locales)
+    }
+  }, [pathname, isMounted])
+  
   const currentLocaleInfo = locales.find(loc => loc.code === currentLocale) || locales[0]
-  const otherLocales = locales.filter(loc => loc.code !== currentLocale)
+  const otherLocales = supportedLocales.filter(loc => loc.code !== currentLocale)
+
+  // 生成带语言前缀的链接
+  const getLocalizedHref = (href: string): string => {
+    if (href.startsWith('http')) return href
+    if (currentLocale === 'en') return href
+    if (href.startsWith(`/${currentLocale}`)) return href
+    return `/${currentLocale}${href}`
+  }
 
   return (
     <footer className="bg-slate-900 pt-16 pb-8 px-6 mt-auto">
       <div className="max-w-6xl mx-auto">
+        {/* 二级和三级菜单 */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+          {/* Image Compression */}
+          <div>
+            <Link 
+              href={getLocalizedHref('/image-compressor')} 
+              className="text-white font-bold text-sm mb-4 uppercase tracking-wider block hover:text-indigo-400 transition-colors"
+            >
+              {translations.imageCompression || 'Image Compression'}
+            </Link>
+            <ul className="space-y-2 mt-4">
+              {footerMenuData['image-compressor'].length > 0 ? (
+                footerMenuData['image-compressor'].map((item) => (
+                  <li key={item.slug}>
+                    <Link 
+                      href={item.href} 
+                      className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
+                    >
+                      {item.title}
+                    </Link>
+                  </li>
+                ))
+              ) : (
+                <li className="text-slate-500 text-xs pl-4">No tools available</li>
+              )}
+            </ul>
+          </div>
+
+          {/* Image Converter */}
+          <div>
+            <Link 
+              href={getLocalizedHref('/image-converter')} 
+              className="text-white font-bold text-sm mb-4 uppercase tracking-wider block hover:text-indigo-400 transition-colors"
+            >
+              {translations.imageConverter || 'Image Converter'}
+            </Link>
+            <ul className="space-y-2 mt-4">
+              {footerMenuData['image-converter'].length > 0 ? (
+                footerMenuData['image-converter'].map((item) => (
+                  <li key={item.slug}>
+                    <Link 
+                      href={item.href} 
+                      className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
+                    >
+                      {item.title}
+                    </Link>
+                  </li>
+                ))
+              ) : (
+                <li className="text-slate-500 text-xs pl-4">No tools available</li>
+              )}
+            </ul>
+          </div>
+
+          {/* Font Generator */}
+          <div>
+            <Link 
+              href={getLocalizedHref('/font-generator')} 
+              className="text-white font-bold text-sm mb-4 uppercase tracking-wider block hover:text-indigo-400 transition-colors"
+            >
+              {translations.fontGenerator || 'Font Generator'}
+            </Link>
+            <ul className="space-y-2 mt-4">
+              {footerMenuData['font-generator'].length > 0 ? (
+                footerMenuData['font-generator'].map((item) => (
+                  <li key={item.slug}>
+                    <Link 
+                      href={item.href} 
+                      className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
+                    >
+                      {item.title}
+                    </Link>
+                  </li>
+                ))
+              ) : (
+                <li className="text-slate-500 text-xs pl-4">No tools available</li>
+              )}
+            </ul>
+          </div>
+        </div>
+
+        {/* 基础导航链接 */}
         <nav className="mb-8" aria-label="Footer navigation">
-          <ul className="flex flex-wrap justify-center items-center gap-6 md:gap-8 text-sm">
+          <ul className="flex flex-wrap justify-center items-center gap-3 md:gap-4 text-sm">
             <li><Link href={currentLocale === 'en' ? '/' : `/${currentLocale}`} className="text-slate-300 hover:text-indigo-400 transition-colors font-medium">{translations.home}</Link></li>
-            <li><Link href={currentLocale === 'en' ? '/#tools' : `/${currentLocale}#tools`} className="text-slate-300 hover:text-indigo-400 transition-colors font-medium">{translations.allTools}</Link></li>
             <li><Link href={currentLocale === 'en' ? '/about' : `/${currentLocale}/about`} className="text-slate-300 hover:text-indigo-400 transition-colors font-medium">{translations.aboutUs}</Link></li>
             <li><Link href={currentLocale === 'en' ? '/privacy' : `/${currentLocale}/privacy`} className="text-slate-300 hover:text-indigo-400 transition-colors font-medium">{translations.privacyPolicy}</Link></li>
             <li><Link href={currentLocale === 'en' ? '/terms' : `/${currentLocale}/terms`} className="text-slate-300 hover:text-indigo-400 transition-colors font-medium">{translations.termsOfService}</Link></li>
             <li><a href="mailto:support@toolaze.com" className="text-slate-300 hover:text-indigo-400 transition-colors font-medium">{translations.contact}</a></li>
             
-            {/* Language Switcher - 只在支持多语言的页面显示 */}
-            {showLanguageSwitcher && (
+            {/* Language Switcher - 只在支持多语言的页面显示，且只显示该页面实际支持的语言 */}
+            {showLanguageSwitcher && supportedLocales.length > 1 && (
             <li className="relative">
               <button
                 onClick={() => setIsLanguageMenuOpen(!isLanguageMenuOpen)}

@@ -116,11 +116,12 @@ export default function Features({ title, features, bgClass = 'bg-white' }: Feat
                     {featureObj.title}
                   </h4>
                   
-                  {/* 描述 - 浅灰色段落，居中 */}
+                  {/* 描述 - 浅灰色段落，居中，支持HTML链接 */}
                   {(featureObj.desc || featureObj.description) && (
-                    <p className="text-sm text-slate-600 leading-relaxed text-center">
-                      {featureObj.desc || featureObj.description}
-                    </p>
+                    <p 
+                      className="text-sm text-slate-600 leading-relaxed text-center"
+                      dangerouslySetInnerHTML={{ __html: featureObj.desc || featureObj.description || '' }}
+                    />
                   )}
                 </div>
               </div>

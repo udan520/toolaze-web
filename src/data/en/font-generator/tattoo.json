@@ -23,11 +23,11 @@
     "content": [
       {
         "title": "What is Tattoo Font?",
-        "text": "Tattoo fonts are distinctive typefaces that create unique visual styles. They feature tattoo-specific characteristics that make your text stand out. Tattoo fonts are perfect for adding a special touch to social media posts, invitations, logos, and design projects where you want to convey a specific aesthetic or personality."
+        "text": "Tattoo fonts combine bold, gothic, and decorative elements specifically designed for body art aesthetics. These distinctive typefaces feature strong lines, unique character shapes, and edgy styling that captures the rebellious spirit of tattoo culture. Tattoo fonts are characterized by their bold presence, making text stand out whether used in actual tattoo designs, streetwear clothing, or alternative fashion branding. For similar bold styles, check out our <a href=\"/font-generator/gothic\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">gothic font generator</a> or <a href=\"/font-generator/bold\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">bold font generator</a>."
       },
       {
         "title": "Why Generate Tattoo Text Online?",
-        "text": "Creating tattoo text manually requires design software and font installation, which can be time-consuming and complex. Our tattoo font generator lets you instantly transform any text into beautiful tattoo style without downloading software or installing fonts. Perfect for social media users who want distinctive text for Instagram bios, Facebook posts, or TikTok captions, as well as designers who need quick tattoo text for mockups and presentations."
+        "text": "Designing tattoo-style text traditionally requires specialized design software and extensive typography knowledge. Tattoo artists and enthusiasts often spend hours searching for the perfect font style that matches their vision. Perfect for tattoo designers, body art enthusiasts, and alternative fashion brands who need distinctive, eye-catching typography. Explore more styles with our <a href=\"/font-generator\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">font generator</a> collection."
       }
     ]
   },
@@ -35,40 +35,40 @@
     "title": "Powerful Tattoo Font Features",
     "items": [
       {
-        "icon": "✍️",
+        "icon": "🖋️",
         "iconType": "quality",
-        "title": "Elegant Tattoo Styles",
-        "desc": "Generate beautiful tattoo text with multiple elegant styles that create distinctive visual effects."
+        "title": "Bold Tattoo Styles",
+        "desc": "Choose from multiple edgy tattoo font styles including gothic, bold, and decorative variations."
       },
       {
         "icon": "🔒",
         "iconType": "privacy",
-        "title": "Complete Privacy Protection",
-        "desc": "All font generation happens locally in your browser—your text never leaves your device, ensuring absolute data security."
+        "title": "Local Processing Only",
+        "desc": "All font generation happens on your device—your text never leaves your computer, ensuring complete security."
       },
       {
         "icon": "⚡",
         "iconType": "speed",
-        "title": "Instant Generation",
-        "desc": "Transform your text into ${category.name.toLowerCase()} style instantly with real-time preview—no waiting, no delays."
+        "title": "Instant Transformation",
+        "desc": "Watch your text convert to tattoo style immediately with live preview as you type."
       },
       {
         "icon": "📋",
         "iconType": "batch",
-        "title": "Easy Copy & Paste",
-        "desc": "Copy your ${category.name.toLowerCase()} text with one click and paste it directly into Instagram, Facebook, Twitter, or any platform."
+        "title": "Quick Copy & Paste",
+        "desc": "Copy your tattoo text with a single click and use it anywhere—social media, designs, or documents."
       },
       {
         "icon": "💎",
         "iconType": "free",
-        "title": "Zero Cost Forever",
-        "desc": "Enjoy unlimited ${category.name.toLowerCase()} font generation completely free—no subscriptions, no hidden fees, no advertisements ever."
+        "title": "Free Forever",
+        "desc": "Generate unlimited tattoo fonts completely free—no payments, no premium features, no ads."
       },
       {
         "icon": "🌐",
         "iconType": "browser",
-        "title": "No Installation Needed",
-        "desc": "Everything runs directly in your web browser using client-side technology—no software downloads or font installations required."
+        "title": "No Downloads",
+        "desc": "Everything runs in your browser using client-side technology—no software or fonts to install."
       }
     ]
   },
@@ -116,37 +116,37 @@
     "steps": [
       {
         "title": "Type Your Text",
-        "desc": "Enter the text you want to convert into tattoo style in the input field above."
+        "desc": "Enter the name, quote, or phrase you want to transform into bold tattoo style in the input field above."
       },
       {
         "title": "Select Tattoo Style",
-        "desc": "Choose from multiple elegant tattoo font styles. Preview your text in real-time to see how it looks."
+        "desc": "Explore different tattoo font styles including gothic, bold, and decorative options. Preview each style to find the perfect match for your design."
       },
       {
-        "title": "Copy & Paste",
-        "desc": "Click the copy button to copy your ${category.name.toLowerCase()} text, then paste it anywhere—social media, documents, or design tools."
+        "title": "Copy Tattoo Text",
+        "desc": "Click copy to get your tattoo-style text, then paste it into design software, social media, or share with your tattoo artist."
       }
     ]
   },
   "comparison": {
-    "toolaze": "Unlimited text length, Multiple ${category.name.toLowerCase()} styles, Instant preview, Real-time generation, 100% local processing, No uploads, Free forever",
-    "others": "Character limits, Limited styles, Slow processing, Server uploads required, Cloud queues, Privacy concerns, Paid upgrades"
+    "toolaze": "Unlimited tattoo text generation, Multiple bold gothic styles, Instant preview, Local browser processing, No text length limits, Complete privacy, 100% free forever",
+    "others": "Text length restrictions, Few style choices, Server-side delays, Required cloud uploads, Data privacy risks, Advertisements, Premium subscriptions"
   },
   "scenes": [
     {
-      "title": "Social Media Users",
-      "icon": "📱",
-      "desc": "Create elegant tattoo text for Instagram bios, Facebook posts, Twitter tweets, and TikTok captions. Stand out with beautiful tattoo-style text that matches your personal brand."
+      "title": "Tattoo Designers",
+      "icon": "🖋️",
+      "desc": "Create unique tattoo font designs for clients. Preview different tattoo-style fonts to find the perfect match for names, quotes, or meaningful text before inking."
     },
     {
-      "title": "Content Creators",
-      "icon": "🎨",
-      "desc": "Generate tattoo fonts for YouTube thumbnails, blog post titles, and marketing materials. Add a distinctive touch to your content with elegant tattoo text."
+      "title": "Body Art Enthusiasts",
+      "icon": "💪",
+      "desc": "Experiment with tattoo fonts for your next ink design. Test how your name, quote, or phrase looks in various bold, gothic, and decorative tattoo styles."
     },
     {
-      "title": "Designers",
-      "icon": "💼",
-      "desc": "Quickly generate tattoo text for design mockups, presentations, and branding projects. Preview different tattoo styles instantly before finalizing your design."
+      "title": "Alternative Fashion Brands",
+      "icon": "👕",
+      "desc": "Use tattoo fonts for clothing designs, merchandise, and brand logos. Create edgy, bold text that captures the rebellious spirit of tattoo culture."
     }
   ],
   "rating": {
@@ -154,32 +154,24 @@
   },
   "faq": [
     {
-      "q": "Can I use tattoo fonts on Instagram?",
-      "a": "Yes! The tattoo text generated by Toolaze uses Unicode characters that are fully supported on Instagram, Facebook, Twitter, TikTok, and most social media platforms. Simply copy and paste your tattoo text directly into your posts, bios, or captions."
+      "q": "Can I use these tattoo fonts for actual tattoo designs?",
+      "a": "Yes! Many tattoo artists and clients use our generator to preview text styles before getting inked. However, always consult with your tattoo artist, as they may need to adapt the font for your specific design and body placement."
     },
     {
-      "q": "Is the tattoo font generator really free?",
-      "a": "Yes, Toolaze is completely free forever with no hidden costs or advertisements. More importantly, all font generation happens locally in your browser using client-side technology. Your text never leaves your device—it's never uploaded to any server, ensuring 100% privacy and security."
+      "q": "Are tattoo fonts suitable for permanent tattoos?",
+      "a": "Our tattoo fonts are great for design inspiration and previews. For actual tattoos, work with your artist to ensure the style is appropriate for the size and location of your tattoo, as some fonts may need adjustment for readability when inked."
     },
     {
-      "q": "How many tattoo font styles are available?",
-      "a": "Toolaze offers multiple elegant tattoo font styles, each with its own unique appearance. You can preview all available styles in real-time and choose the one that best matches your needs."
+      "q": "Can I use tattoo fonts for clothing designs?",
+      "a": "Absolutely! Tattoo fonts are perfect for streetwear, band merchandise, and alternative fashion. The bold, edgy styles work great on t-shirts, hoodies, and accessories."
     },
     {
-      "q": "Can I generate tattoo text for long paragraphs?",
-      "a": "Yes, there are no character limits. You can generate ${category.name.toLowerCase()} text for sentences, paragraphs, or even entire documents. The generator processes your text instantly regardless of length."
+      "q": "Do tattoo fonts work on social media?",
+      "a": "Yes! Tattoo fonts use Unicode characters that display well on Instagram, Facebook, Twitter, and TikTok. They're perfect for creating bold, eye-catching social media content."
     },
     {
-      "q": "Will my tattoo text work on all platforms?",
-      "a": "The tattoo text generated by Toolaze uses Unicode characters that are widely supported across platforms including Instagram, Facebook, Twitter, TikTok, Discord, WhatsApp, and most modern applications. However, some older platforms or applications may not display all Unicode characters correctly."
-    },
-    {
-      "q": "Can I download tattoo font files?",
-      "a": "Toolaze generates styled text that you can copy and paste. We don't provide downloadable font files (.ttf, .otf), but you can use the generated ${category.name.toLowerCase()} text anywhere that supports Unicode characters."
-    },
-    {
-      "q": "Is my text stored or logged anywhere?",
-      "a": "No! All ${category.name.toLowerCase()} font generation happens locally in your browser. Your text is never uploaded to any server, never stored in any database, and never logged. Complete privacy is guaranteed."
+      "q": "What's the difference between tattoo fonts and gothic fonts?",
+      "a": "Tattoo fonts often combine bold, gothic, and decorative elements specifically chosen for tattoo aesthetics. Gothic fonts are more traditional and formal, while tattoo fonts are designed to be more versatile for body art. Explore our <a href=\"/font-generator/gothic\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">gothic font generator</a> for more traditional styles, or browse all our <a href=\"/font-generator\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">font generator</a> tools."
     }
   ],
   "compare": {

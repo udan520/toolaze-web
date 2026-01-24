@@ -5,7 +5,7 @@ import ToolSlugPageContent from './ToolSlugPageContent'
 import type { Metadata } from 'next'
 
 // 不支持多语言的工具列表
-const NON_MULTILINGUAL_TOOLS = ['font-generator']
+const NON_MULTILINGUAL_TOOLS: string[] = []
 
 interface PageProps {
   params: Promise<{
@@ -21,13 +21,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     const resolvedParams = await params
     const locale = resolvedParams.locale || 'en'
     
-    // 如果工具不支持多语言且不是英语，返回重定向元数据
-    if (NON_MULTILINGUAL_TOOLS.includes(resolvedParams.tool) && locale !== 'en') {
-      return {
-        title: 'Redirecting... | Toolaze',
-        robots: 'noindex, nofollow',
-      }
-    }
+    // 如果工具不支持多语言且不是英语，返回重定向元数据（目前没有不支持多语言的工具）
+    // if (NON_MULTILINGUAL_TOOLS.includes(resolvedParams.tool) && locale !== 'en') {
+    //   return {
+    //     title: 'Redirecting... | Toolaze',
+    //     robots: 'noindex, nofollow',
+    //   }
+    // }
     
     const content = await getSeoContent(resolvedParams.tool, resolvedParams.slug, locale)
     
@@ -40,19 +40,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     
     const pathWithoutLocale = `/${resolvedParams.tool}/${resolvedParams.slug}`
     const baseUrl = 'https://toolaze.com'
-    
-    // 如果工具不支持多语言，只设置 canonical URL，不设置 hreflang languages
-    if (NON_MULTILINGUAL_TOOLS.includes(resolvedParams.tool)) {
-      const canonical = `${baseUrl}${pathWithoutLocale}`
-      return {
-        title: content.metadata.title,
-        description: content.metadata.description,
-        robots: 'index, follow',
-        alternates: {
-          canonical: canonical,
-        },
-      }
-    }
     
     // 支持多语言的工具，设置 hreflang
     const hreflang = generateHreflangAlternates(locale, pathWithoutLocale)
@@ -84,6 +71,7 @@ export async function generateStaticParams() {
     // 使用英语版本获取所有 slug（因为所有语言版本应该有相同的 slug）
     const compressorSlugs = await getAllSlugs('image-compressor', 'en') || []
     const converterSlugs = await getAllSlugs('image-converter', 'en') || []
+    const fontGeneratorSlugs = await getAllSlugs('font-generator', 'en') || []
     
     for (const locale of locales) {
       // 添加图片压缩工具的页面
@@ -105,6 +93,19 @@ export async function generateStaticParams() {
             tool: 'image-converter',
             slug: slug,
           })
+        }
+      }
+      
+      // 添加字体生成工具的页面（仅支持 en 和 de）
+      if (locale === 'en' || locale === 'de') {
+        for (const slug of fontGeneratorSlugs) {
+          if (slug && typeof slug === 'string') {
+            params.push({
+              locale: locale,
+              tool: 'font-generator',
+              slug: slug,
+            })
+          }
         }
       }
     }
@@ -133,16 +134,16 @@ export default async function LandingPage({ params }: PageProps) {
     return null
   }
   
-  // 如果工具不支持多语言，且当前不是英语，重定向到英语版本
-  if (NON_MULTILINGUAL_TOOLS.includes(resolvedParams.tool) && locale !== 'en') {
-    if (resolvedParams.slug) {
-      // L3 页面：重定向到 /tool/slug
-      redirect(`/${resolvedParams.tool}/${resolvedParams.slug}`)
-    } else {
-      // L2 页面：重定向到 /tool
-      redirect(`/${resolvedParams.tool}`)
-    }
-  }
+  // 如果工具不支持多语言，且当前不是英语，重定向到英语版本（目前没有不支持多语言的工具）
+  // if (NON_MULTILINGUAL_TOOLS.includes(resolvedParams.tool) && locale !== 'en') {
+  //   if (resolvedParams.slug) {
+  //     // L3 页面：重定向到 /tool/slug
+  //     redirect(`/${resolvedParams.tool}/${resolvedParams.slug}`)
+  //   } else {
+  //     // L2 页面：重定向到 /tool
+  //     redirect(`/${resolvedParams.tool}`)
+  //   }
+  // }
   
   if (!resolvedParams.slug) {
     notFound()

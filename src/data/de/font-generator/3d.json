@@ -1,0 +1,181 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "3D Schriftgenerator (Kostenlos, Kopieren Einfügen & No Ads) - Toolaze",
+    "description": "Wie generiere ich 3D Schriften? 1. Geben Sie Ihren Text ein 2. Wählen 3D stil 3. Kopieren und einfügen. schöne zu erstellen 3D Text für Instagram, Facebook, and social media. Kostenlos & Privat."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "3D Schriftgenerator",
+    "desc": "Generieren schön 3D Schriften online für kostenlos. Einfach Geben Sie Ihren Text ein below to erstellen elegante 3D text that Sie können kopieren und einfügen anywhere."
+  },
+  "intro": {
+    "title": "Warum einen 3D-Schriftgenerator verwenden?",
+    "content": [
+      {
+        "title": "Was ist eine 3D-Schrift?",
+        "text": "3D-Schriften verwenden Unicode-Zeichen mit fetter, dimensionaler Formatierung, die ein dreidimensionales Erscheinungsbild erzeugt. Diese Schriftarten zeichnen sich durch dicke Striche und visuelle Tiefe aus und lassen Text von der Seite oder dem Bildschirm hervoderstechen. 3D-Schriften zeichnen sich durch ihr modernes, dimensionales Aussehen aus und sind daher perfekt für Videospiel-Titel, architektonische Visualisierungen, 3D-Design-Projekte und jeden Content, der diese zeitgenössische, tiefenreiche Ästhetik benötigt. Für mehr fette Stilen probieren Sie unseren <a href=\"/font-generator/bold\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">fetten Schriftgenerator</a> oder coolen Schriftgenerator."
+      },
+      {
+        "title": "Warum 3D-Text online generieren?",
+        "text": "Die Erstellung von echtem 3D-Text erfordert teure 3D-Modellierungssoftware und spezialisierte Fähigkeiten. unseren 3D-Text-Generator bietet sofortigen Zugang zu dimensionalen Unicode-Stilen, die dieses 3D-ähnliche Erscheinungsbild erzeugen. Ob Sie Spiel-Titel gestalten, architektonische Präsentationen erstellen oder modernes Branding entwickeln, unser Tool verwandelt jeden Text sofort in fette 3D-Stil-Schriften—und verleiht Ihren Projekten diese Tiefe und Dimension ohne die Komplexität von 3D-Software. Entdecken Sie mehr mit unserem <a href=\"/font-generator\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">Schriftgenerator</a>."
+      }
+    ]
+  },
+  "features": {
+    "title": "Leistungsstarke 3D-Schrift-Funktionen",
+    "items": [
+      {
+        "icon": "🎨",
+        "iconType": "quality",
+        "title": "Dimensional Schriftstilen",
+        "desc": "Generieren 3D-stil Schriften with fett, dimensional Unicode zeichen that erstellen depth."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Lokal Browser Verarbeitung",
+        "desc": "Font generation occurs entirely in Ihrem Browser—Ihr Text bleibt privat auf Ihrem Gerät."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Sofort 3D Conversion",
+        "desc": "Transformieren Sie Ihren Text to 3D stil sofort with Echtzeit-Vorschau showing dimensional effects."
+      },
+      {
+        "icon": "📋",
+        "iconType": "batch",
+        "title": "Kopieren 3D Text",
+        "desc": "Kopieren Sie Ihren 3D-stil text sofort and fügen Sie es in Spiel-Titel, presentations, oder 3D projects."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Kostenlos 3D Schriften",
+        "desc": "UnBegrenzte 3D font generation Völlig kostenlos—no cost, no premium tiers, no advertisements."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "No 3D Software",
+        "desc": "Woderks entirely in Ihrem Browser—no 3D modeling software oder complex installations needed."
+      }
+    ]
+  },
+  "specs": {
+    "engine": "Browser-Native Font Rendering - Client-Side Verarbeitung",
+    "limit": "UnBegrenzte Textlänge - Keine Zeichenlimits",
+    "logic": "Echtzeit-Vorschau (Sofort Stil Application)",
+    "privacy": "100% Client-Side (Lokal Browser Verarbeitung)"
+  },
+  "performanceMetrics": {
+    "title": "Technische Spezifikationen",
+    "metrics": [
+      {
+        "label": "Font Stil",
+        "value": "3D (Distinctive Stil)"
+      },
+      {
+        "label": "Textlänge",
+        "value": "Unbegrenzte Zeichen"
+      },
+      {
+        "label": "Verarbeitungsgeschwindigkeit",
+        "value": "Sofortige (Echtzeit-Vorschau)"
+      },
+      {
+        "label": "Ausgabeformat",
+        "value": "Unicode-Text (kopieren & einfügen bereit)"
+      },
+      {
+        "label": "Plattformunterstützung",
+        "value": "Instagram, Facebook, Twitter, TikTok, Discord, und moderne"
+      },
+      {
+        "label": "Verarbeitungsodert",
+        "value": "100% Client-Side (Browser JavaScript)"
+      },
+      {
+        "label": "Datenschutz",
+        "value": "Keine Server-Uploads, vollständige lokale Verarbeitung"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Wie generiere ich 3D Schriften",
+    "steps": [
+      {
+        "title": "Geben Sie Ihren Text ein",
+        "desc": "Enter the text you want to transform into 3D-stil in the input field above."
+      },
+      {
+        "title": "Wählen 3D Stil",
+        "desc": "Wählen from dimensional 3D Schriftstilen and vorschau how Ihr Text looks with that fett, depth-filled appearance."
+      },
+      {
+        "title": "Kopieren 3D Text",
+        "desc": "Click the kopieren button to Kopieren Sie Ihren 3D text, then fügen Sie es in Spiel-Titel, presentations, oder 3D projects."
+      }
+    ]
+  },
+  "comparison": {
+    "toolaze": "UnBegrenzte 3D Textgenerierung vertrauen, Dimensional Schriftstilen, Echtzeit-Vorschau, Browser Verarbeitung, No limits, Total Datenschutz, 100% kostenlos",
+    "others": "Text restrictions, Begrenzte 3D stile, Langsame Servers, Cloud uploads, Datenschutz Bedenken, Watermarks, Paid tiers"
+  },
+  "scenes": [
+    {
+      "title": "3D Artists & Designers",
+      "icon": "🎨",
+      "desc": "Erstellen 3D Schriften für 3D modeling projects, game assets, and digital art. Generieren text that looks three-dimensional für Verwenden Sie in 3D environments."
+    },
+    {
+      "title": "Video Game Developers",
+      "icon": "🎮",
+      "desc": "Generieren 3D Text für Spiel-Titel, UI-Elemente, and in-game signage. Add depth and dimension to ihr game's typography with 3D Schriftstilen."
+    },
+    {
+      "title": "Architectural Visualization",
+      "icon": "🏗️",
+      "desc": "Verwenden Sie 3D Schriften für architectural renderings, building signage, and presentation Materialien. Erstellen realistic, dimensional Text für professional visualizations."
+    }
+  ],
+  "rating": {
+    "text": "\"Der beste 3D Schriftgenerator den ich gefunden habe. Sofort Ergebnisse und funktioniert perfekt auf Instagram!\" - Schließen Sie sich TaVerwenden Sienden von Benutzern an, die Toolaze für schön 3D Textgenerierung vertrauen."
+  },
+  "faq": [
+    {
+      "q": "Do 3D Schriften actually look three-dimensional?",
+      "a": "unser 3D Verwenden Sies Unicode zeichen with fett, dimensional Formatierung that creates a 3D-like appearance. während not true 3D graphics, they provide that depth and dimension effect using Unicode typography."
+    },
+    {
+      "q": "Kann ich 3D Schriften in 3D modeling software?",
+      "a": "The generated text Verwenden Sies Unicode zeichen, which can be impoderted into 3D software as text objects. However, für true 3D text, you'd typically Verwenden Sie the 3D software's text tools to erstellen actual 3D geome."
+    },
+    {
+      "q": "Are 3D Schriften good für Spiel-Titel?",
+      "a": "Ja! 3D Schriften sind perfekt für video Spiel-Titel, logos, and UI-Elemente. They add that modern, dimensional look that many games Verwenden Sie für their branding."
+    },
+    {
+      "q": "Will 3D Schriften work on social media?",
+      "a": "Ja! 3D Schriften verwenden Unicode zeichen die funktionieren on Instagram, Facebook, Twitter, and TikTok. Sie sind great zum Erstellen auffälligen Social-Media-Content with depth."
+    },
+    {
+      "q": "Kann ich 3D Schriften für architectural visualization?",
+      "a": "Ja, 3D Schriften funktionieren gut in architectural renderings and presentation Materialien. They erstellen realistic, dimensional Text für professional visualizations. Foder moderne fett stile, Probieren Sie unseren <a href=\"/font-generator/bold\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">fetten Schriftgenerator</a> oder erkunden unser Schriftgenerator Sammlung."
+    }
+  ],
+  "compare": {
+    "toolaze": "UnBegrenzte 3D Textgenerierung vertrauen, Mehrere elegante stile, Sofort Echtzeit-Vorschau, Lokal-first architecture, Keine Zeichenlimits, Vollständiger Datenschutz, 100% kostenlos fürever",
+    "others": "Character limits, Begrenzte stil Optionen, Langsame Server Verarbeitung, Cloud-Uploads erforderlich, Datenschutz Bedenken, WasserZeichen oder Werbung, Bezahlte Premium Funktionen"
+  }
+}

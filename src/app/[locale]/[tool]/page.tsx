@@ -2,10 +2,10 @@ import { redirect, notFound } from 'next/navigation'
 
 // 不支持多语言的工具列表
 // 这些工具只有英语版本，访问其他语言版本时应该重定向到英语版本
-const NON_MULTILINGUAL_TOOLS = ['font-generator']
+const NON_MULTILINGUAL_TOOLS: string[] = []
 
 // 支持多语言的工具列表（在 [locale] 目录下有对应的页面）
-const MULTILINGUAL_TOOLS = ['image-compressor', 'image-converter']
+const MULTILINGUAL_TOOLS = ['image-compressor', 'image-converter', 'font-generator']
 
 // 支持的所有语言列表
 const SUPPORTED_LOCALES = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
@@ -55,14 +55,15 @@ export default async function ToolPage({ params }: PageProps) {
   }
 
   // 如果工具支持多语言，但当前路径没有对应的页面，返回 404
-  // 支持多语言的工具应该有自己专门的页面处理逻辑（如 image-compressor/page.tsx）
+  // 支持多语言的工具应该有自己专门的页面处理逻辑（如 image-compressor/page.tsx, font-generator/page.tsx）
   if (!MULTILINGUAL_TOOLS.includes(tool)) {
     notFound()
     return null
   }
 
   // 如果工具支持多语言，应该由具体的工具页面处理
-  // 这里不应该到达，因为支持多语言的工具应该有专门的页面
+  // font-generator 现在有专门的页面，所以这里不应该到达
+  // 如果到达这里，说明路由配置有问题
   notFound()
   return null
 }

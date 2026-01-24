@@ -351,7 +351,7 @@ export default function Navigation() {
 
   return (
     <nav id="mainNav" ref={navRef} className="sticky-nav w-full">
-      <div className="py-6 px-6 flex justify-center items-center max-w-6xl mx-auto w-full relative">
+      <div className="py-4 px-6 flex justify-center items-center max-w-6xl mx-auto w-full relative">
         <Link href={getLocalizedHref('/')} className="absolute left-6 text-3xl font-extrabold text-indigo-600 tracking-tighter flex items-center gap-3 hover:opacity-80 transition-opacity">
           <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="shadow-md shadow-indigo-100 rounded-lg">
             <rect width="40" height="40" rx="12" fill="white"/>
@@ -398,10 +398,10 @@ export default function Navigation() {
             {/* 二级菜单下拉 */}
             <div className="absolute top-full left-0 mt-2 w-auto min-w-[200px] max-w-[320px] bg-white rounded-xl shadow-lg border border-indigo-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 overflow-visible">
               <div className="py-2">
-                {secondLevelItems.map((item) => {
+                {secondLevelItems.map((item, index) => {
                   const thirdLevelItems = item.hasThirdLevel && item.tool ? getThirdLevelItems(item.tool) : []
                   return (
-                    <div key={item.title} className="relative group/secondary">
+                    <div key={item.tool || `item-${index}`} className="relative group/secondary">
                       <Link
                         href={item.href}
                         className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center justify-between whitespace-nowrap"
@@ -420,9 +420,9 @@ export default function Navigation() {
                       {item.hasThirdLevel && thirdLevelItems.length > 0 && (
                         <div className="absolute left-full top-0 ml-1 w-auto min-w-[240px] max-w-[400px] bg-white rounded-xl shadow-lg border border-indigo-50 opacity-0 invisible group-hover/secondary:opacity-100 group-hover/secondary:visible transition-all duration-200 z-[60]">
                           <div className="py-2">
-                            {thirdLevelItems.map((thirdItem) => (
+                            {thirdLevelItems.map((thirdItem, idx) => (
                               <Link
-                                key={thirdItem.slug}
+                                key={`${item.tool}-${thirdItem.slug}-${idx}`}
                                 href={thirdItem.href}
                                 className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors"
                               >
@@ -449,12 +449,12 @@ export default function Navigation() {
               <div className="border-b border-indigo-50 pb-4">
                 <div className="text-sm font-bold text-slate-700 mb-3">{navTranslations.quickTools}</div>
                 <div className="space-y-2">
-                  {secondLevelItems.map((item) => {
+                  {secondLevelItems.map((item, index) => {
                     const isExpanded = expandedSubmenus.has(item.title)
                     const thirdLevelItems = item.hasThirdLevel && item.tool ? getThirdLevelItems(item.tool) : []
                     
                     return (
-                      <div key={item.title}>
+                      <div key={item.tool || `item-${index}`}>
                         <div className="flex items-center">
                           <Link
                             href={item.href}
@@ -498,9 +498,9 @@ export default function Navigation() {
                         {/* 移动端三级菜单 - 默认折叠 */}
                         {isExpanded && thirdLevelItems.length > 0 && (
                           <div className="ml-5 mt-2 space-y-1">
-                            {thirdLevelItems.map((thirdItem) => (
+                            {thirdLevelItems.map((thirdItem, idx) => (
                               <Link
-                                key={thirdItem.slug}
+                                key={`${item.tool}-${thirdItem.slug}-${idx}`}
                                 href={thirdItem.href}
                                 onClick={() => {
                                   setMobileMenuOpen(false)

@@ -14,7 +14,8 @@
     "sync-individual": "tsx scripts/sync-individual-locales.ts",
     "sync-exact": "tsx scripts/sync-exact-copy.ts",
     "pre-deploy": "node scripts/pre-deploy-check.js",
-    "prebuild": "node scripts/prebuild-check.js"
+    "prebuild": "node scripts/prebuild-check.js",
+    "check-404": "node scripts/check-404-errors.js"
   },
   "dependencies": {
     "@next/third-parties": "^16.1.2",

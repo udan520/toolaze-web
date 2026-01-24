@@ -1,4 +1,5 @@
 import { getL2SeoContent, getAllSlugs, loadCommonTranslations } from '@/lib/seo-loader'
+import { localizeLinksInObject } from '@/lib/localize-links'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import Navigation from '@/components/Navigation'
@@ -117,7 +118,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
       return null
     }
     
-    const content = await getL2SeoContent(tool, locale)
+    let content = await getL2SeoContent(tool, locale)
 
     if (!content) {
       notFound()
@@ -127,6 +128,11 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
     if (!content.metadata || !content.hero) {
       notFound()
       return null
+    }
+
+    // 为内容中的内部链接添加语言前缀（非英语）
+    if (locale !== 'en') {
+      content = localizeLinksInObject(content, locale) as typeof content
     }
 
     // Load translations

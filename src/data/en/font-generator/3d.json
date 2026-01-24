@@ -23,11 +23,11 @@
     "content": [
       {
         "title": "What is 3D Font?",
-        "text": "3D fonts are distinctive typefaces that create unique visual styles. They feature 3d-specific characteristics that make your text stand out. 3D fonts are perfect for adding a special touch to social media posts, invitations, logos, and design projects where you want to convey a specific aesthetic or personality."
+        "text": "3D fonts use Unicode characters with bold, dimensional styling that creates a three-dimensional appearance. These typefaces feature thick strokes and visual depth, making text appear to pop off the page or screen. 3D fonts are characterized by their modern, dimensional look, making them perfect for video game titles, architectural visualizations, 3D design projects, and any content that needs that contemporary, depth-filled aesthetic. For more bold styles, try our <a href=\"/font-generator/bold\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">bold font generator</a> or cool font generator."
       },
       {
         "title": "Why Generate 3D Text Online?",
-        "text": "Creating 3d text manually requires design software and font installation, which can be time-consuming and complex. Our 3d font generator lets you instantly transform any text into beautiful 3d style without downloading software or installing fonts. Perfect for social media users who want distinctive text for Instagram bios, Facebook posts, or TikTok captions, as well as designers who need quick 3d text for mockups and presentations."
+        "text": "Creating true 3D text requires expensive 3D modeling software and specialized skills. Our 3D text tiny 3d provides instant access to dimensional Unicode styles that create that 3D-like appearance. Whether you're designing game titles, creating architectural presentations, or developing modern branding, our tool transforms any text into bold 3D-style fonts instantly—adding that depth and dimension to your projects without the complexity of 3D software. Discover more with our <a href=\"/font-generator\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">font generator</a>."
       }
     ]
   },
@@ -35,40 +35,40 @@
     "title": "Powerful 3D Font Features",
     "items": [
       {
-        "icon": "✍️",
+        "icon": "🎨",
         "iconType": "quality",
-        "title": "Elegant 3D Styles",
-        "desc": "Generate beautiful 3d text with multiple elegant styles that create distinctive visual effects."
+        "title": "Dimensional Font Styles",
+        "desc": "Generate 3D-style fonts with bold, dimensional Unicode characters that create depth."
       },
       {
         "icon": "🔒",
         "iconType": "privacy",
-        "title": "Complete Privacy Protection",
-        "desc": "All font generation happens locally in your browser—your text never leaves your device, ensuring absolute data security."
+        "title": "Local Browser Processing",
+        "desc": "Font generation occurs entirely in your browser—your text stays private on your device."
       },
       {
         "icon": "⚡",
         "iconType": "speed",
-        "title": "Instant Generation",
-        "desc": "Transform your text into ${category.name.toLowerCase()} style instantly with real-time preview—no waiting, no delays."
+        "title": "Instant 3D Conversion",
+        "desc": "Transform your text to 3D style instantly with real-time preview showing dimensional effects."
       },
       {
         "icon": "📋",
         "iconType": "batch",
-        "title": "Easy Copy & Paste",
-        "desc": "Copy your ${category.name.toLowerCase()} text with one click and paste it directly into Instagram, Facebook, Twitter, or any platform."
+        "title": "Copy 3D Text",
+        "desc": "Copy your 3D-style text instantly and paste it into game titles, presentations, or 3D projects."
       },
       {
         "icon": "💎",
         "iconType": "free",
-        "title": "Zero Cost Forever",
-        "desc": "Enjoy unlimited ${category.name.toLowerCase()} font generation completely free—no subscriptions, no hidden fees, no advertisements ever."
+        "title": "Free 3D Fonts",
+        "desc": "Unlimited 3D font generation completely free—no cost, no premium tiers, no advertisements."
       },
       {
         "icon": "🌐",
         "iconType": "browser",
-        "title": "No Installation Needed",
-        "desc": "Everything runs directly in your web browser using client-side technology—no software downloads or font installations required."
+        "title": "No 3D Software",
+        "desc": "Works entirely in your browser—no 3D modeling software or complex installations needed."
       }
     ]
   },
@@ -116,37 +116,37 @@
     "steps": [
       {
         "title": "Type Your Text",
-        "desc": "Enter the text you want to convert into 3d style in the input field above."
+        "desc": "Enter the text you want to transform into 3D-style in the input field above."
       },
       {
-        "title": "Select 3D Style",
-        "desc": "Choose from multiple elegant 3d font styles. Preview your text in real-time to see how it looks."
+        "title": "Choose 3D Style",
+        "desc": "Select from dimensional 3D font styles and preview how your text looks with that bold, depth-filled appearance."
       },
       {
-        "title": "Copy & Paste",
-        "desc": "Click the copy button to copy your ${category.name.toLowerCase()} text, then paste it anywhere—social media, documents, or design tools."
+        "title": "Copy 3D Text",
+        "desc": "Click the copy button to copy your 3D text, then paste it into game titles, presentations, or 3D projects."
       }
     ]
   },
   "comparison": {
-    "toolaze": "Unlimited text length, Multiple ${category.name.toLowerCase()} styles, Instant preview, Real-time generation, 100% local processing, No uploads, Free forever",
-    "others": "Character limits, Limited styles, Slow processing, Server uploads required, Cloud queues, Privacy concerns, Paid upgrades"
+    "toolaze": "Unlimited 3D text generation, Dimensional font styles, Real-time preview, Browser processing, No limits, Total privacy, 100% free",
+    "others": "Text restrictions, Limited 3D styles, Slow servers, Cloud uploads, Privacy concerns, Watermarks, Paid tiers"
   },
   "scenes": [
     {
-      "title": "Social Media Users",
-      "icon": "📱",
-      "desc": "Create elegant 3d text for Instagram bios, Facebook posts, Twitter tweets, and TikTok captions. Stand out with beautiful 3d-style text that matches your personal brand."
-    },
-    {
-      "title": "Content Creators",
+      "title": "3D Artists & Designers",
       "icon": "🎨",
-      "desc": "Generate 3d fonts for YouTube thumbnails, blog post titles, and marketing materials. Add a distinctive touch to your content with elegant 3d text."
+      "desc": "Create 3D fonts for 3D modeling projects, game assets, and digital art. Generate text that looks three-dimensional for use in 3D environments."
     },
     {
-      "title": "Designers",
-      "icon": "💼",
-      "desc": "Quickly generate 3d text for design mockups, presentations, and branding projects. Preview different 3d styles instantly before finalizing your design."
+      "title": "Video Game Developers",
+      "icon": "🎮",
+      "desc": "Generate 3D text for game titles, UI elements, and in-game signage. Add depth and dimension to your game's typography with 3D font styles."
+    },
+    {
+      "title": "Architectural Visualization",
+      "icon": "🏗️",
+      "desc": "Use 3D fonts for architectural renderings, building signage, and presentation materials. Create realistic, dimensional text for professional visualizations."
     }
   ],
   "rating": {
@@ -154,32 +154,24 @@
   },
   "faq": [
     {
-      "q": "Can I use 3d fonts on Instagram?",
-      "a": "Yes! The 3d text generated by Toolaze uses Unicode characters that are fully supported on Instagram, Facebook, Twitter, TikTok, and most social media platforms. Simply copy and paste your 3d text directly into your posts, bios, or captions."
+      "q": "Do 3D fonts actually look three-dimensional?",
+      "a": "Our 3D uses Unicode characters with bold, dimensional styling that creates a 3D-like appearance. While not true 3D graphics, they provide that depth and dimension effect using Unicode typography."
     },
     {
-      "q": "Is the 3d font generator really free?",
-      "a": "Yes, Toolaze is completely free forever with no hidden costs or advertisements. More importantly, all font generation happens locally in your browser using client-side technology. Your text never leaves your device—it's never uploaded to any server, ensuring 100% privacy and security."
+      "q": "Can I use 3D fonts in 3D modeling software?",
+      "a": "The generated text uses Unicode characters, which can be imported into 3D software as text objects. However, for true 3D text, you'd typically use the 3D software's text tools to create actual 3D geome."
     },
     {
-      "q": "How many 3d font styles are available?",
-      "a": "Toolaze offers multiple elegant 3d font styles, each with its own unique appearance. You can preview all available styles in real-time and choose the one that best matches your needs."
+      "q": "Are 3D fonts good for game titles?",
+      "a": "Yes! 3D fonts are perfect for video game titles, logos, and UI elements. They add that modern, dimensional look that many games use for their branding."
     },
     {
-      "q": "Can I generate 3d text for long paragraphs?",
-      "a": "Yes, there are no character limits. You can generate ${category.name.toLowerCase()} text for sentences, paragraphs, or even entire documents. The generator processes your text instantly regardless of length."
+      "q": "Will 3D fonts work on social media?",
+      "a": "Yes! 3D fonts use Unicode characters that work on Instagram, Facebook, Twitter, and TikTok. They're great for creating eye-catching social media content with depth."
     },
     {
-      "q": "Will my 3d text work on all platforms?",
-      "a": "The 3d text generated by Toolaze uses Unicode characters that are widely supported across platforms including Instagram, Facebook, Twitter, TikTok, Discord, WhatsApp, and most modern applications. However, some older platforms or applications may not display all Unicode characters correctly."
-    },
-    {
-      "q": "Can I download 3d font files?",
-      "a": "Toolaze generates styled text that you can copy and paste. We don't provide downloadable font files (.ttf, .otf), but you can use the generated ${category.name.toLowerCase()} text anywhere that supports Unicode characters."
-    },
-    {
-      "q": "Is my text stored or logged anywhere?",
-      "a": "No! All ${category.name.toLowerCase()} font generation happens locally in your browser. Your text is never uploaded to any server, never stored in any database, and never logged. Complete privacy is guaranteed."
+      "q": "Can I use 3D fonts for architectural visualization?",
+      "a": "Yes, 3D fonts work well in architectural renderings and presentation materials. They create realistic, dimensional text for professional visualizations. For more bold styles, try our <a href=\"/font-generator/bold\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">bold font generator</a> or explore our font generator collection."
     }
   ],
   "compare": {

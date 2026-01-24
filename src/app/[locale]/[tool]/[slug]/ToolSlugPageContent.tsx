@@ -1,4 +1,5 @@
 import { getSeoContent, getAllSlugs, loadCommonTranslations } from '@/lib/seo-loader'
+import { localizeLinksInObject } from '@/lib/localize-links'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import Navigation from '@/components/Navigation'
@@ -122,7 +123,7 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
       return null
     }
     
-    const content = await getSeoContent(tool, slug, locale)
+    let content = await getSeoContent(tool, slug, locale)
 
     if (!content) {
       notFound()
@@ -134,11 +135,22 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
       return null
     }
 
+    // 为内容中的内部链接添加语言前缀（非英语）
+    if (locale !== 'en') {
+      content = localizeLinksInObject(content, locale) as typeof content
+    }
+
     // Load translations
     const t = await loadCommonTranslations(locale)
     const isConverter = tool === 'image-converter' || tool === 'image-conversion'
-    const toolTranslations = isConverter ? t?.imageConverter : t?.imageCompressor
-    const breadcrumbT = t?.breadcrumb || { home: 'Home', imageCompression: 'Image Compression', imageConverter: 'Image Converter' }
+    const isFontGenerator = tool === 'font-generator'
+    const toolTranslations = isConverter ? t?.imageConverter : (isFontGenerator ? null : t?.imageCompressor)
+    const breadcrumbT = t?.breadcrumb || { 
+      home: 'Home', 
+      imageCompression: 'Image Compression', 
+      imageConverter: 'Image Converter',
+      fontGenerator: 'Font Generator'
+    }
 
     // 默认内容（如果没有提供，使用翻译内容）
     // 优先使用 JSON 中的 intro.title 和 intro.content
@@ -229,7 +241,14 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
     } : null
 
     // 构建面包屑导航
-    const toolLabel = isConverter ? breadcrumbT.imageConverter : breadcrumbT.imageCompression
+    let toolLabel: string
+    if (isConverter) {
+      toolLabel = breadcrumbT.imageConverter
+    } else if (isFontGenerator) {
+      toolLabel = breadcrumbT.fontGenerator
+    } else {
+      toolLabel = breadcrumbT.imageCompression
+    }
     const pageTitle = content.hero?.h1 ? extractSimpleTitle(content.hero.h1) : (toolTranslations?.title || 'Page')
     const breadcrumbItems = [
       { label: breadcrumbT.home, href: locale === 'en' ? '/' : `/${locale}` },

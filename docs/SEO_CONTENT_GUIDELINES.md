@@ -57,7 +57,14 @@
    - **步骤配置**：
      - 每个步骤包含 `title` 和 `desc` 字段
      - 步骤数量：通常 3 个步骤
-     - 步骤描述要简洁明了，突出核心操作
+     - **步骤描述要求**：
+       - **简洁原则**：无需大量文字，简单表明步骤即可
+       - **字数要求**：每个步骤的 `desc` 建议 10-20 个单词，不超过 30 个单词
+       - **内容要求**：直接说明操作动作，避免冗长解释
+       - **示例**：
+         - ✅ `"Upload your HEIC images or drag and drop them into the converter."`（简洁明了）
+         - ✅ `"Select JPG as the output format and click Convert."`（直接说明操作）
+         - ❌ `"First, you need to upload your HEIC images. You can do this by clicking the upload button or simply dragging and dropping your files into the designated area. Our converter supports multiple file formats and can process up to 100 images at once..."`（过于冗长）
 
 6. **Intro 板块规范**
    - Intro 板块用于详细说明工具的价值和优势
@@ -250,7 +257,10 @@
   - **规则**：
     - name字段：使用 "How to Convert [Input] to [Output]" 格式
     - step数组：基于`howToUse.steps`字段生成，每个步骤对应一个HowToStep
-    - 步骤描述要简洁明了，与页面内容一致
+    - **步骤描述要求**：
+      - 简洁明了，与页面内容一致
+      - 无需大量文字，简单表明步骤即可
+      - 每个步骤描述建议 10-20 个单词，不超过 30 个单词
 - **Intro（介绍）**：
   - 分析 [输入格式] 的特定痛点（兼容性/文件大小）与 [输出格式] 的优势
   - **必须** 200+ 单词
@@ -268,8 +278,13 @@
   - 必须从源文档中提取技术规格（质量、压缩、支持）
   - 以叙述或列表格式进行比较
 - **HowToUse（使用说明）**：
-  - 基础逻辑共享，但所有动词和名词必须具体化
-  - 示例：使用 "Upload your HEIC" 而不是 "Upload file"
+  - **简洁原则**：无需大量文字，简单表明步骤即可
+  - **字数要求**：每个步骤描述建议 10-20 个单词，不超过 30 个单词
+  - **内容要求**：
+    - 基础逻辑共享，但所有动词和名词必须具体化
+    - 直接说明操作动作，避免冗长解释
+    - 示例：使用 "Upload your HEIC" 而不是 "Upload file"
+    - 示例：使用 "Select JPG format and click Convert" 而不是长篇大论
 
 #### [类别 C：10%-30% 唯一 - 核心品牌]
 

@@ -199,16 +199,37 @@ async function loadToolJsonFile(locale: string, tool: string, slug: string) {
           }
           break
         case 'de':
-          switch (slug) {
-            case 'jpg-to-png': data = await import('@/data/de/image-converter/jpg-to-png.json'); break
-            case 'png-to-jpg': data = await import('@/data/de/image-converter/png-to-jpg.json'); break
-            case 'webp-to-jpg': data = await import('@/data/de/image-converter/webp-to-jpg.json'); break
-            case 'webp-to-png': data = await import('@/data/de/image-converter/webp-to-png.json'); break
-            case 'png-to-webp': data = await import('@/data/de/image-converter/png-to-webp.json'); break
-            case 'jpg-to-webp': data = await import('@/data/de/image-converter/jpg-to-webp.json'); break
-            case 'heic-to-jpg': data = await import('@/data/de/image-converter/heic-to-jpg.json'); break
-            case 'heic-to-png': data = await import('@/data/de/image-converter/heic-to-png.json'); break
-            case 'heic-to-webp': data = await import('@/data/de/image-converter/heic-to-webp.json'); break
+          if (tool === 'image-converter') {
+            switch (slug) {
+              case 'jpg-to-png': data = await import('@/data/de/image-converter/jpg-to-png.json'); break
+              case 'png-to-jpg': data = await import('@/data/de/image-converter/png-to-jpg.json'); break
+              case 'webp-to-jpg': data = await import('@/data/de/image-converter/webp-to-jpg.json'); break
+              case 'webp-to-png': data = await import('@/data/de/image-converter/webp-to-png.json'); break
+              case 'png-to-webp': data = await import('@/data/de/image-converter/png-to-webp.json'); break
+              case 'jpg-to-webp': data = await import('@/data/de/image-converter/jpg-to-webp.json'); break
+              case 'heic-to-jpg': data = await import('@/data/de/image-converter/heic-to-jpg.json'); break
+              case 'heic-to-png': data = await import('@/data/de/image-converter/heic-to-png.json'); break
+              case 'heic-to-webp': data = await import('@/data/de/image-converter/heic-to-webp.json'); break
+            }
+          } else if (tool === 'font-generator') {
+            switch (slug) {
+              case 'cursive': data = await import('@/data/de/font-generator/cursive.json'); break
+              case 'fancy': data = await import('@/data/de/font-generator/fancy.json'); break
+              case 'bold': data = await import('@/data/de/font-generator/bold.json'); break
+              case 'tattoo': data = await import('@/data/de/font-generator/tattoo.json'); break
+              case 'cool': data = await import('@/data/de/font-generator/cool.json'); break
+              case 'instagram': data = await import('@/data/de/font-generator/instagram.json'); break
+              case 'italic': data = await import('@/data/de/font-generator/italic.json'); break
+              case 'gothic': data = await import('@/data/de/font-generator/gothic.json'); break
+              case 'calligraphy': data = await import('@/data/de/font-generator/calligraphy.json'); break
+              case 'discord': data = await import('@/data/de/font-generator/discord.json'); break
+              case 'old-english': data = await import('@/data/de/font-generator/old-english.json'); break
+              case '3d': data = await import('@/data/de/font-generator/3d.json'); break
+              case 'minecraft': data = await import('@/data/de/font-generator/minecraft.json'); break
+              case 'disney': data = await import('@/data/de/font-generator/disney.json'); break
+              case 'bubble': data = await import('@/data/de/font-generator/bubble.json'); break
+              case 'star-wars': data = await import('@/data/de/font-generator/star-wars.json'); break
+            }
           }
           break
         case 'ja':
@@ -414,6 +435,33 @@ export async function getL2SeoContent(tool: string, locale: string = 'en') {
   }
 }
 
+// 从 slug 提取类别名称（用于替换占位符）
+function getCategoryNameFromSlug(slug: string): string {
+  // 将 slug 转换为类别名称：将连字符替换为空格，并保持小写
+  return slug.replace(/-/g, ' ').toLowerCase();
+}
+
+// 递归替换对象中所有字符串的占位符
+function replacePlaceholders(obj: any, categoryName: string): any {
+  if (typeof obj === 'string') {
+    // 替换字符串中的占位符
+    return obj.replace(/\$\{category\.name\.toLowerCase\(\)\}/g, categoryName);
+  } else if (Array.isArray(obj)) {
+    // 递归处理数组
+    return obj.map(item => replacePlaceholders(item, categoryName));
+  } else if (obj !== null && typeof obj === 'object') {
+    // 递归处理对象
+    const result: any = {};
+    for (const key in obj) {
+      if (Object.prototype.hasOwnProperty.call(obj, key)) {
+        result[key] = replacePlaceholders(obj[key], categoryName);
+      }
+    }
+    return result;
+  }
+  return obj;
+}
+
 export async function getSeoContent(tool: string, slug: string, locale: string = 'en') {
   try {
     if (tool === 'image-compressor' || tool === 'image-compression') {
@@ -435,7 +483,10 @@ export async function getSeoContent(tool: string, slug: string, locale: string =
       // 加载独立的 JSON 文件
       const independentData = await loadToolJsonFile(locale, 'font-generator', slug);
       if (independentData) {
-        return independentData;
+        // 提取类别名称并替换占位符
+        const categoryName = getCategoryNameFromSlug(slug);
+        const processedData = replacePlaceholders(independentData, categoryName);
+        return processedData;
       }
       return null;
     }

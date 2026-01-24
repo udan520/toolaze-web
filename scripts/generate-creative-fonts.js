@@ -1,5 +1,5 @@
 // 生成有创意、有差别的Unicode字体样式
-// 每个分类至少10个不同的字体样式
+// 每个分类20个不同的字体样式
 const fs = require('fs')
 const path = require('path')
 
@@ -149,37 +149,199 @@ const unicodeBlocks = {
     'k': '🄺', 'l': '🄻', 'm': '🄼', 'n': '🄽', 'o': '🄾', 'p': '🄿', 'q': '🅀', 'r': '🅁', 's': '🅂', 't': '🅃',
     'u': '🅄', 'v': '🅅', 'w': '🅆', 'x': '🅇', 'y': '🅈', 'z': '🅉',
     '0': '0', '1': '1', '2': '2', '3': '3', '4': '4', '5': '5', '6': '6', '7': '7', '8': '8', '9': '9'
+  },
+  // Superscript (上标字符)
+  superscript: {
+    'A': 'ᴬ', 'B': 'ᴮ', 'C': 'ᶜ', 'D': 'ᴰ', 'E': 'ᴱ', 'F': 'ᶠ', 'G': 'ᴳ', 'H': 'ᴴ', 'I': 'ᴵ', 'J': 'ᴶ',
+    'K': 'ᴷ', 'L': 'ᴸ', 'M': 'ᴹ', 'N': 'ᴺ', 'O': 'ᴼ', 'P': 'ᴾ', 'Q': 'ᵠ', 'R': 'ᴿ', 'S': 'ˢ', 'T': 'ᵀ',
+    'U': 'ᵁ', 'V': 'ⱽ', 'W': 'ᵂ', 'X': 'ˣ', 'Y': 'ʸ', 'Z': 'ᶻ',
+    'a': 'ᵃ', 'b': 'ᵇ', 'c': 'ᶜ', 'd': 'ᵈ', 'e': 'ᵉ', 'f': 'ᶠ', 'g': 'ᵍ', 'h': 'ʰ', 'i': 'ⁱ', 'j': 'ʲ',
+    'k': 'ᵏ', 'l': 'ˡ', 'm': 'ᵐ', 'n': 'ⁿ', 'o': 'ᵒ', 'p': 'ᵖ', 'q': 'ᵠ', 'r': 'ʳ', 's': 'ˢ', 't': 'ᵗ',
+    'u': 'ᵘ', 'v': 'ᵛ', 'w': 'ʷ', 'x': 'ˣ', 'y': 'ʸ', 'z': 'ᶻ',
+    '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴', '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹'
+  },
+  // Subscript (下标字符)
+  subscript: {
+    'A': 'ₐ', 'B': 'ᵦ', 'C': 'ᵨ', 'D': 'ᵈ', 'E': 'ₑ', 'F': 'ᵧ', 'G': 'ᵍ', 'H': 'ₕ', 'I': 'ᵢ', 'J': 'ⱼ',
+    'K': 'ₖ', 'L': 'ₗ', 'M': 'ₘ', 'N': 'ₙ', 'O': 'ₒ', 'P': 'ₚ', 'Q': 'ᵩ', 'R': 'ᵣ', 'S': 'ₛ', 'T': 'ₜ',
+    'U': 'ᵤ', 'V': 'ᵥ', 'W': 'ᵥ', 'X': 'ₓ', 'Y': 'ᵧ', 'Z': 'ᵨ',
+    'a': 'ₐ', 'b': 'ᵦ', 'c': 'ᵨ', 'd': 'ᵈ', 'e': 'ₑ', 'f': 'ᵧ', 'g': 'ᵍ', 'h': 'ₕ', 'i': 'ᵢ', 'j': 'ⱼ',
+    'k': 'ₖ', 'l': 'ₗ', 'm': 'ₘ', 'n': 'ₙ', 'o': 'ₒ', 'p': 'ₚ', 'q': 'ᵩ', 'r': 'ᵣ', 's': 'ₛ', 't': 'ₜ',
+    'u': 'ᵤ', 'v': 'ᵥ', 'w': 'ᵥ', 'x': 'ₓ', 'y': 'ᵧ', 'z': 'ᵨ',
+    '0': '₀', '1': '₁', '2': '₂', '3': '₃', '4': '₄', '5': '₅', '6': '₆', '7': '₇', '8': '₈', '9': '₉'
+  },
+  // Inverted (倒置字符 - 使用特殊Unicode字符)
+  inverted: {
+    'A': '∀', 'B': 'ᗺ', 'C': 'Ɔ', 'D': 'ᗡ', 'E': 'Ǝ', 'F': 'ᖴ', 'G': 'פ', 'H': 'H', 'I': 'I', 'J': 'ſ',
+    'K': 'ʞ', 'L': '˥', 'M': 'W', 'N': 'N', 'O': 'O', 'P': 'Ԁ', 'Q': 'Q', 'R': 'ᴿ', 'S': 'S', 'T': '┴',
+    'U': '∩', 'V': 'Λ', 'W': 'M', 'X': 'X', 'Y': '⅄', 'Z': 'Z',
+    'a': 'ɐ', 'b': 'q', 'c': 'ɔ', 'd': 'p', 'e': 'ǝ', 'f': 'ɟ', 'g': 'ƃ', 'h': 'ɥ', 'i': 'ᴉ', 'j': 'ɾ',
+    'k': 'ʞ', 'l': 'l', 'm': 'ɯ', 'n': 'u', 'o': 'o', 'p': 'd', 'q': 'b', 'r': 'ɹ', 's': 's', 't': 'ʇ',
+    'u': 'n', 'v': 'ʌ', 'w': 'ʍ', 'x': 'x', 'y': 'ʎ', 'z': 'z',
+    '0': '0', '1': 'Ɩ', '2': 'ᄅ', '3': 'Ɛ', '4': 'ㄣ', '5': 'ϛ', '6': '9', '7': 'ㄥ', '8': '8', '9': '6'
+  },
+  // Wide (宽体字符 - 使用全角字符的变体，与fullwidth相同但作为独立样式)
+  wide: {
+    'A': 'Ａ', 'B': 'Ｂ', 'C': 'Ｃ', 'D': 'Ｄ', 'E': 'Ｅ', 'F': 'Ｆ', 'G': 'Ｇ', 'H': 'Ｈ', 'I': 'Ｉ', 'J': 'Ｊ',
+    'K': 'Ｋ', 'L': 'Ｌ', 'M': 'Ｍ', 'N': 'Ｎ', 'O': 'Ｏ', 'P': 'Ｐ', 'Q': 'Ｑ', 'R': 'Ｒ', 'S': 'Ｓ', 'T': 'Ｔ',
+    'U': 'Ｕ', 'V': 'Ｖ', 'W': 'Ｗ', 'X': 'Ｘ', 'Y': 'Ｙ', 'Z': 'Ｚ',
+    'a': 'ａ', 'b': 'ｂ', 'c': 'ｃ', 'd': 'ｄ', 'e': 'ｅ', 'f': 'ｆ', 'g': 'ｇ', 'h': 'ｈ', 'i': 'ｉ', 'j': 'ｊ',
+    'k': 'ｋ', 'l': 'ｌ', 'm': 'ｍ', 'n': 'ｎ', 'o': 'ｏ', 'p': 'ｐ', 'q': 'ｑ', 'r': 'ｒ', 's': 'ｓ', 't': 'ｔ',
+    'u': 'ｕ', 'v': 'ｖ', 'w': 'ｗ', 'x': 'ｘ', 'y': 'ｙ', 'z': 'ｚ',
+    '0': '０', '1': '１', '2': '２', '3': '３', '4': '４', '5': '５', '6': '６', '7': '７', '8': '８', '9': '９'
+  },
+  // Negative Circled (负圆圈 - 使用不同的圆圈字符)
+  negativeCircled: {
+    'A': '🅐', 'B': '🅑', 'C': '🅒', 'D': '🅓', 'E': '🅔', 'F': '🅕', 'G': '🅖', 'H': '🅗', 'I': '🅘', 'J': '🅙',
+    'K': '🅚', 'L': '🅛', 'M': '🅜', 'N': '🅝', 'O': '🅞', 'P': '🅟', 'Q': '🅠', 'R': '🅡', 'S': '🅢', 'T': '🅣',
+    'U': '🅤', 'V': '🅥', 'W': '🅦', 'X': '🅧', 'Y': '🅨', 'Z': '🅩',
+    'a': '🅐', 'b': '🅑', 'c': '🅒', 'd': '🅓', 'e': '🅔', 'f': '🅕', 'g': '🅖', 'h': '🅗', 'i': '🅘', 'j': '🅙',
+    'k': '🅚', 'l': '🅛', 'm': '🅜', 'n': '🅝', 'o': '🅞', 'p': '🅟', 'q': '🅠', 'r': '🅡', 's': '🅢', 't': '🅣',
+    'u': '🅤', 'v': '🅥', 'w': '🅦', 'x': '🅧', 'y': '🅨', 'z': '🅩',
+    '0': '⓿', '1': '➊', '2': '➋', '3': '➌', '4': '➍', '5': '➎', '6': '➏', '7': '➐', '8': '➑', '9': '➒'
+  },
+  // Mathematical Sans-Serif Italic (U+1D608-1D6FF)
+  sansSerifItalic: {
+    'A': '𝘈', 'B': '𝘉', 'C': '𝘊', 'D': '𝘋', 'E': '𝘌', 'F': '𝘍', 'G': '𝘎', 'H': '𝘏', 'I': '𝘐', 'J': '𝘑',
+    'K': '𝘒', 'L': '𝘓', 'M': '𝘔', 'N': '𝘕', 'O': '𝘖', 'P': '𝘗', 'Q': '𝘘', 'R': '𝘙', 'S': '𝘚', 'T': '𝘛',
+    'U': '𝘜', 'V': '𝘝', 'W': '𝘞', 'X': '𝘟', 'Y': '𝘠', 'Z': '𝘡',
+    'a': '𝘢', 'b': '𝘣', 'c': '𝘤', 'd': '𝘥', 'e': '𝘦', 'f': '𝘧', 'g': '𝘨', 'h': '𝘩', 'i': '𝘪', 'j': '𝘫',
+    'k': '𝘬', 'l': '𝘭', 'm': '𝘮', 'n': '𝘯', 'o': '𝘰', 'p': '𝘱', 'q': '𝘲', 'r': '𝘳', 's': '𝘴', 't': '𝘵',
+    'u': '𝘶', 'v': '𝘷', 'w': '𝘸', 'x': '𝘹', 'y': '𝘺', 'z': '𝘻'
+  },
+  // Mathematical Bold Fraktur (U+1D56C-1D59F)
+  boldFraktur: {
+    'A': '𝔄', 'B': '𝔅', 'C': 'ℭ', 'D': '𝔇', 'E': '𝔈', 'F': '𝔉', 'G': '𝔊', 'H': 'ℌ', 'I': 'ℑ', 'J': '𝔍',
+    'K': '𝔎', 'L': '𝔏', 'M': '𝔐', 'N': '𝔑', 'O': '𝔒', 'P': '𝔓', 'Q': '𝔔', 'R': 'ℜ', 'S': '𝔖', 'T': '𝔗',
+    'U': '𝔘', 'V': '𝔙', 'W': '𝔚', 'X': '𝔛', 'Y': '𝔜', 'Z': 'ℨ',
+    'a': '𝔞', 'b': '𝔟', 'c': '𝔠', 'd': '𝔡', 'e': '𝔢', 'f': '𝔣', 'g': '𝔤', 'h': '𝔥', 'i': '𝔦', 'j': '𝔧',
+    'k': '𝔨', 'l': '𝔩', 'm': '𝔪', 'n': '𝔫', 'o': '𝔬', 'p': '𝔭', 'q': '𝔮', 'r': '𝔯', 's': '𝔰', 't': '𝔱',
+    'u': '𝔲', 'v': '𝔳', 'w': '𝔴', 'x': '𝔵', 'y': '𝔶', 'z': '𝔷'
+  },
+  // Mathematical Bold Script (U+1D4D0-1D4FF) - 与boldCursive相同，但作为独立样式
+  boldScript: {
+    'A': '𝓐', 'B': '𝓑', 'C': '𝓒', 'D': '𝓓', 'E': '𝓔', 'F': '𝓕', 'G': '𝓖', 'H': '𝓗', 'I': '𝓘', 'J': '𝓙',
+    'K': '𝓚', 'L': '𝓛', 'M': '𝓜', 'N': '𝓝', 'O': '𝓞', 'P': '𝓟', 'Q': '𝓠', 'R': '𝓡', 'S': '𝓢', 'T': '𝓣',
+    'U': '𝓤', 'V': '𝓥', 'W': '𝓦', 'X': '𝓧', 'Y': '𝓨', 'Z': '𝓩',
+    'a': '𝓪', 'b': '𝓫', 'c': '𝓬', 'd': '𝓭', 'e': '𝓮', 'f': '𝓯', 'g': '𝓰', 'h': '𝓱', 'i': '𝓲', 'j': '𝓳',
+    'k': '𝓴', 'l': '𝓵', 'm': '𝓶', 'n': '𝓷', 'o': '𝓸', 'p': '𝓹', 'q': '𝓺', 'r': '𝓻', 's': '𝓼', 't': '𝓽',
+    'u': '𝓾', 'v': '𝓿', 'w': '𝔀', 'x': '𝔁', 'y': '𝔂', 'z': '𝔃'
+  },
+  // Mathematical Script (U+1D49C-1D4CF) - 与cursive相同，但作为独立样式
+  script: {
+    'A': '𝒜', 'B': 'ℬ', 'C': '𝒞', 'D': '𝒟', 'E': 'ℰ', 'F': 'ℱ', 'G': '𝒢', 'H': 'ℋ', 'I': 'ℐ', 'J': '𝒥',
+    'K': '𝒦', 'L': 'ℒ', 'M': 'ℳ', 'N': '𝒩', 'O': '𝒪', 'P': '𝒫', 'Q': '𝒬', 'R': 'ℛ', 'S': '𝒮', 'T': '𝒯',
+    'U': '𝒰', 'V': '𝒱', 'W': '𝒲', 'X': '𝒳', 'Y': '𝒴', 'Z': '𝒵',
+    'a': '𝒶', 'b': '𝒷', 'c': '𝒸', 'd': '𝒹', 'e': '𝑒', 'f': '𝒻', 'g': '𝑔', 'h': '𝒽', 'i': '𝒾', 'j': '𝒿',
+    'k': '𝓀', 'l': '𝓁', 'm': '𝓂', 'n': '𝓃', 'o': '𝑜', 'p': '𝓅', 'q': '𝓆', 'r': '𝓇', 's': '𝓈', 't': '𝓉',
+    'u': '𝓊', 'v': '𝓋', 'w': '𝓌', 'x': '𝓍', 'y': '𝓎', 'z': '𝓏'
+  },
+  // Negative Squared (负方块 - 使用不同的方块字符)
+  negativeSquared: {
+    'A': '🅰', 'B': '🅱', 'C': '🅲', 'D': '🅳', 'E': '🅴', 'F': '🅵', 'G': '🅶', 'H': '🅷', 'I': '🅸', 'J': '🅹',
+    'K': '🅺', 'L': '🅻', 'M': '🅼', 'N': '🅽', 'O': '🅾', 'P': '🅿', 'Q': '🆀', 'R': '🆁', 'S': '🆂', 'T': '🆃',
+    'U': '🆄', 'V': '🆅', 'W': '🆆', 'X': '🆇', 'Y': '🆈', 'Z': '🆉',
+    'a': '🅰', 'b': '🅱', 'c': '🅲', 'd': '🅳', 'e': '🅴', 'f': '🅵', 'g': '🅶', 'h': '🅷', 'i': '🅸', 'j': '🅹',
+    'k': '🅺', 'l': '🅻', 'm': '🅼', 'n': '🅽', 'o': '🅾', 'p': '🅿', 'q': '🆀', 'r': '🆁', 's': '🆂', 't': '🆃',
+    'u': '🆄', 'v': '🆅', 'w': '🆆', 'x': '🆇', 'y': '🆈', 'z': '🆉',
+    '0': '0', '1': '1', '2': '2', '3': '3', '4': '4', '5': '5', '6': '6', '7': '7', '8': '8', '9': '9'
+  },
+  // Greek Style (希腊字母风格 - 类似Wizard风格，使用希腊字母映射)
+  greekStyle: {
+    'A': 'Α', 'B': 'Β', 'C': 'C', 'D': 'Δ', 'E': 'Ε', 'F': 'Φ', 'G': 'Γ', 'H': 'Η', 'I': 'Ι', 'J': 'J',
+    'K': 'Κ', 'L': 'Λ', 'M': 'Μ', 'N': 'Ν', 'O': 'Ο', 'P': 'Π', 'Q': 'Q', 'R': 'Ρ', 'S': 'Σ', 'T': 'Τ',
+    'U': 'Υ', 'V': 'V', 'W': 'Ω', 'X': 'Χ', 'Y': 'Υ', 'Z': 'Ζ',
+    'a': 'α', 'b': 'β', 'c': 'c', 'd': 'δ', 'e': 'ε', 'f': 'φ', 'g': 'γ', 'h': 'η', 'i': 'ι', 'j': 'j',
+    'k': 'κ', 'l': 'λ', 'm': 'μ', 'n': 'ν', 'o': 'ο', 'p': 'π', 'q': 'q', 'r': 'ρ', 's': 'σ', 't': 'τ',
+    'u': 'υ', 'v': 'v', 'w': 'ω', 'x': 'χ', 'y': 'ψ', 'z': 'ζ',
+    '0': '0', '1': '1', '2': '2', '3': '3', '4': '4', '5': '5', '6': '6', '7': '7', '8': '8', '9': '9'
+  },
+  // Mathematical Bold Sans-Serif (U+1D5D4-1D607)
+  boldSansSerif: {
+    'A': '𝗔', 'B': '𝗕', 'C': '𝗖', 'D': '𝗗', 'E': '𝗘', 'F': '𝗙', 'G': '𝗚', 'H': '𝗛', 'I': '𝗜', 'J': '𝗝',
+    'K': '𝗞', 'L': '𝗟', 'M': '𝗠', 'N': '𝗡', 'O': '𝗢', 'P': '𝗣', 'Q': '𝗤', 'R': '𝗥', 'S': '𝗦', 'T': '𝗧',
+    'U': '𝗨', 'V': '𝗩', 'W': '𝗪', 'X': '𝗫', 'Y': '𝗬', 'Z': '𝗭',
+    'a': '𝗮', 'b': '𝗯', 'c': '𝗰', 'd': '𝗱', 'e': '𝗲', 'f': '𝗳', 'g': '𝗴', 'h': '𝗵', 'i': '𝗶', 'j': '𝗷',
+    'k': '𝗸', 'l': '𝗹', 'm': '𝗺', 'n': '𝗻', 'o': '𝗼', 'p': '𝗽', 'q': '𝗾', 'r': '𝗿', 's': '𝘀', 't': '𝘁',
+    'u': '𝘂', 'v': '𝘃', 'w': '𝘄', 'x': '𝘅', 'y': '𝘆', 'z': '𝘇',
+    '0': '𝟬', '1': '𝟭', '2': '𝟮', '3': '𝟯', '4': '𝟰', '5': '𝟱', '6': '𝟲', '7': '𝟳', '8': '𝟴', '9': '𝟵'
+  },
+  // Mathematical Bold Sans-Serif Italic (U+1D63C-1D66F)
+  boldSansSerifItalic: {
+    'A': '𝘼', 'B': '𝘽', 'C': '𝘾', 'D': '𝘿', 'E': '𝙀', 'F': '𝙁', 'G': '𝙂', 'H': '𝙃', 'I': '𝙄', 'J': '𝙅',
+    'K': '𝙆', 'L': '𝙇', 'M': '𝙈', 'N': '𝙉', 'O': '𝙊', 'P': '𝙋', 'Q': '𝙌', 'R': '𝙍', 'S': '𝙎', 'T': '𝙏',
+    'U': '𝙐', 'V': '𝙑', 'W': '𝙒', 'X': '𝙓', 'Y': '𝙔', 'Z': '𝙕',
+    'a': '𝙖', 'b': '𝙗', 'c': '𝙘', 'd': '𝙙', 'e': '𝙚', 'f': '𝙛', 'g': '𝙜', 'h': '𝙝', 'i': '𝙞', 'j': '𝙟',
+    'k': '𝙠', 'l': '𝙡', 'm': '𝙢', 'n': '𝙣', 'o': '𝙤', 'p': '𝙥', 'q': '𝙦', 'r': '𝙧', 's': '𝙨', 't': '𝙩',
+    'u': '𝙪', 'v': '𝙫', 'w': '𝙬', 'x': '𝙭', 'y': '𝙮', 'z': '𝙯'
+  },
+  // Mathematical Bold Italic Sans-Serif (U+1D670-1D6A3)
+  boldItalicSansSerif: {
+    'A': '𝙰', 'B': '𝙱', 'C': '𝙲', 'D': '𝙳', 'E': '𝙴', 'F': '𝙵', 'G': '𝙶', 'H': '𝙷', 'I': '𝙸', 'J': '𝙹',
+    'K': '𝙺', 'L': '𝙻', 'M': '𝙼', 'N': '𝙽', 'O': '𝙾', 'P': '𝙿', 'Q': '𝚀', 'R': '𝚁', 'S': '𝚂', 'T': '𝚃',
+    'U': '𝚄', 'V': '𝚅', 'W': '𝚆', 'X': '𝚇', 'Y': '𝚈', 'Z': '𝚉',
+    'a': '𝚊', 'b': '𝚋', 'c': '𝚌', 'd': '𝚍', 'e': '𝚎', 'f': '𝚏', 'g': '𝚐', 'h': '𝚑', 'i': '𝚒', 'j': '𝚓',
+    'k': '𝚔', 'l': '𝚕', 'm': '𝚖', 'n': '𝚗', 'o': '𝚘', 'p': '𝚙', 'q': '𝚚', 'r': '𝚛', 's': '𝚜', 't': '𝚝',
+    'u': '𝚞', 'v': '𝚟', 'w': '𝚠', 'x': '𝚡', 'y': '𝚢', 'z': '𝚣'
+  },
+  // Regional Indicator Symbols (国旗风格字母 - U+1F1E6-1F1FF)
+  regionalIndicator: {
+    'A': '🇦', 'B': '🇧', 'C': '🇨', 'D': '🇩', 'E': '🇪', 'F': '🇫', 'G': '🇬', 'H': '🇭', 'I': '🇮', 'J': '🇯',
+    'K': '🇰', 'L': '🇱', 'M': '🇲', 'N': '🇳', 'O': '🇴', 'P': '🇵', 'Q': '🇶', 'R': '🇷', 'S': '🇸', 'T': '🇹',
+    'U': '🇺', 'V': '🇻', 'W': '🇼', 'X': '🇽', 'Y': '🇾', 'Z': '🇿',
+    'a': '🇦', 'b': '🇧', 'c': '🇨', 'd': '🇩', 'e': '🇪', 'f': '🇫', 'g': '🇬', 'h': '🇭', 'i': '🇮', 'j': '🇯',
+    'k': '🇰', 'l': '🇱', 'm': '🇲', 'n': '🇳', 'o': '🇴', 'p': '🇵', 'q': '🇶', 'r': '🇷', 's': '🇸', 't': '🇹',
+    'u': '🇺', 'v': '🇻', 'w': '🇼', 'x': '🇽', 'y': '🇾', 'z': '🇿',
+    '0': '0', '1': '1', '2': '2', '3': '3', '4': '4', '5': '5', '6': '6', '7': '7', '8': '8', '9': '9'
+  },
+  // Latin Extended Additional (带重音字母 - U+1E00-1EFF)
+  latinExtended: {
+    'A': 'Ḁ', 'B': 'Ḃ', 'C': 'Ḉ', 'D': 'Ḋ', 'E': 'Ḛ', 'F': 'Ḟ', 'G': 'Ḡ', 'H': 'Ḣ', 'I': 'Ḭ', 'J': 'Ḱ',
+    'K': 'Ḳ', 'L': 'Ḷ', 'M': 'Ṁ', 'N': 'Ṅ', 'O': 'Ṍ', 'P': 'Ṕ', 'Q': 'Q', 'R': 'Ṙ', 'S': 'Ṡ', 'T': 'Ṫ',
+    'U': 'Ṳ', 'V': 'Ṽ', 'W': 'Ẁ', 'X': 'Ẋ', 'Y': 'Ỳ', 'Z': 'Ẓ',
+    'a': 'ḁ', 'b': 'ḃ', 'c': 'ḉ', 'd': 'ḋ', 'e': 'ḛ', 'f': 'ḟ', 'g': 'ḡ', 'h': 'ḣ', 'i': 'ḭ', 'j': 'ḱ',
+    'k': 'ḳ', 'l': 'ḷ', 'm': 'ṁ', 'n': 'ṅ', 'o': 'ṍ', 'p': 'ṕ', 'q': 'q', 'r': 'ṙ', 's': 'ṡ', 't': 'ṫ',
+    'u': 'ṳ', 'v': 'ṽ', 'w': 'ẁ', 'x': 'ẋ', 'y': 'ỳ', 'z': 'ẓ',
+    '0': '0', '1': '1', '2': '2', '3': '3', '4': '4', '5': '5', '6': '6', '7': '7', '8': '8', '9': '9'
+  },
+  // Latin Extended-B (特殊拉丁字母变体 - U+0180-024F)
+  latinExtendedB: {
+    'A': 'Ⱥ', 'B': 'Ɓ', 'C': 'Ƈ', 'D': 'Đ', 'E': 'Ǝ', 'F': 'Ƒ', 'G': 'Ǥ', 'H': 'Ħ', 'I': 'Ɨ', 'J': 'Ɉ',
+    'K': 'Ƙ', 'L': 'Ł', 'M': 'Ɯ', 'N': 'Ɲ', 'O': 'Ø', 'P': 'Ƥ', 'Q': 'Ɋ', 'R': 'Ř', 'S': 'Ș', 'T': 'Ŧ',
+    'U': 'Ų', 'V': 'Ʋ', 'W': 'Ŵ', 'X': 'X', 'Y': 'Ŷ', 'Z': 'Ƶ',
+    'a': 'Ⱥ', 'b': 'ƀ', 'c': 'ƈ', 'd': 'đ', 'e': 'ǝ', 'f': 'ƒ', 'g': 'ǥ', 'h': 'ħ', 'i': 'ɨ', 'j': 'ɉ',
+    'k': 'ƙ', 'l': 'ł', 'm': 'ɯ', 'n': 'ɲ', 'o': 'ø', 'p': 'ƥ', 'q': 'ɋ', 'r': 'ř', 's': 'ș', 't': 'ŧ',
+    'u': 'ų', 'v': 'ʋ', 'w': 'ŵ', 'x': 'x', 'y': 'ŷ', 'z': 'ƶ',
+    '0': '0', '1': '1', '2': '2', '3': '3', '4': '4', '5': '5', '6': '6', '7': '7', '8': '8', '9': '9'
+  },
+  // Cyrillic Style (西里尔字母风格 - U+0400-04FF)
+  cyrillicStyle: {
+    'A': 'А', 'B': 'В', 'C': 'С', 'D': 'Д', 'E': 'Е', 'F': 'Ф', 'G': 'Г', 'H': 'Н', 'I': 'І', 'J': 'Ј',
+    'K': 'К', 'L': 'Л', 'M': 'М', 'N': 'Н', 'O': 'О', 'P': 'Р', 'Q': 'Q', 'R': 'Я', 'S': 'Ѕ', 'T': 'Т',
+    'U': 'Ц', 'V': 'Ѵ', 'W': 'Ш', 'X': 'Х', 'Y': 'У', 'Z': 'З',
+    'a': 'а', 'b': 'в', 'c': 'с', 'd': 'д', 'e': 'е', 'f': 'ф', 'g': 'г', 'h': 'н', 'i': 'і', 'j': 'ј',
+    'k': 'к', 'l': 'л', 'm': 'м', 'n': 'н', 'o': 'о', 'p': 'р', 'q': 'q', 'r': 'я', 's': 'ѕ', 't': 'т',
+    'u': 'ц', 'v': 'ѵ', 'w': 'ш', 'x': 'х', 'y': 'у', 'z': 'з',
+    '0': '0', '1': '1', '2': '2', '3': '3', '4': '4', '5': '5', '6': '6', '7': '7', '8': '8', '9': '9'
   }
 }
 
-// 为每个分类定义字体样式（每个分类至少10个不同的样式）
+// 为每个分类定义字体样式（每个分类20个不同的样式）
 const categoryFonts = {
   'bold': [
     { name: 'Bold', style: 'bold' },
     { name: 'Bold Italic', style: 'boldItalic' },
     { name: 'Sans Serif Bold', style: 'sansSerifBold' },
-    { name: 'Monospace Bold', style: 'monospace' },
-    { name: 'Fullwidth Bold', style: 'fullwidth' },
-    { name: 'Circled Bold', style: 'circled' },
-    { name: 'Squared Bold', style: 'squared' },
-    { name: 'Parenthesized Bold', style: 'parenthesized' },
-    { name: 'Double Struck Bold', style: 'doubleStruck' },
-    { name: 'Small Caps Bold', style: 'smallCaps' },
     { name: 'Bold Script', style: 'boldCursive' },
-    { name: 'Bold Gothic', style: 'gothic' }
+    { name: 'Bold Fraktur', style: 'boldFraktur' },
+    { name: 'Bold Superscript', style: 'superscript' },
+    { name: 'Bold Subscript', style: 'subscript' }
   ],
   'italic': [
     { name: 'Italic', style: 'italic' },
     { name: 'Bold Italic', style: 'boldItalic' },
     { name: 'Italic Script', style: 'cursive' },
     { name: 'Italic Sans Serif', style: 'sansSerif' },
-    { name: 'Italic Monospace', style: 'monospace' },
-    { name: 'Italic Fullwidth', style: 'fullwidth' },
-    { name: 'Italic Circled', style: 'circled' },
-    { name: 'Italic Squared', style: 'squared' },
-    { name: 'Italic Parenthesized', style: 'parenthesized' },
-    { name: 'Italic Double Struck', style: 'doubleStruck' },
-    { name: 'Italic Small Caps', style: 'smallCaps' },
     { name: 'Italic Gothic', style: 'gothic' }
   ],
   'cursive': [
@@ -187,60 +349,92 @@ const categoryFonts = {
     { name: 'Bold Cursive', style: 'boldCursive' },
     { name: 'Cursive Italic', style: 'italic' },
     { name: 'Cursive Sans Serif', style: 'sansSerif' },
-    { name: 'Cursive Monospace', style: 'monospace' },
-    { name: 'Cursive Fullwidth', style: 'fullwidth' },
-    { name: 'Cursive Circled', style: 'circled' },
-    { name: 'Cursive Squared', style: 'squared' },
-    { name: 'Cursive Parenthesized', style: 'parenthesized' },
-    { name: 'Cursive Double Struck', style: 'doubleStruck' },
+    { name: 'Cursive Gothic', style: 'gothic' },
     { name: 'Cursive Small Caps', style: 'smallCaps' },
-    { name: 'Cursive Gothic', style: 'gothic' }
+    { name: 'Cursive Script', style: 'script' },
+    { name: 'Cursive Bold Script', style: 'boldScript' }
   ],
   'gothic': [
     { name: 'Gothic', style: 'gothic' },
     { name: 'Gothic Bold', style: 'bold' },
     { name: 'Gothic Italic', style: 'italic' },
     { name: 'Gothic Bold Italic', style: 'boldItalic' },
-    { name: 'Gothic Sans Serif', style: 'sansSerif' },
-    { name: 'Gothic Monospace', style: 'monospace' },
-    { name: 'Gothic Fullwidth', style: 'fullwidth' },
-    { name: 'Gothic Circled', style: 'circled' },
-    { name: 'Gothic Squared', style: 'squared' },
-    { name: 'Gothic Parenthesized', style: 'parenthesized' },
-    { name: 'Gothic Double Struck', style: 'doubleStruck' },
-    { name: 'Gothic Small Caps', style: 'smallCaps' }
+    { name: 'Gothic Sans Serif', style: 'sansSerif' }
   ],
   'fancy': [
     { name: 'Double Struck', style: 'doubleStruck' },
     { name: 'Sans Serif', style: 'sansSerif' },
     { name: 'Sans Serif Bold', style: 'sansSerifBold' },
+    { name: 'Sans Serif Italic', style: 'sansSerifItalic' },
+    { name: 'Bold Sans Serif', style: 'boldSansSerif' },
+    { name: 'Bold Sans Serif Italic', style: 'boldSansSerifItalic' },
+    { name: 'Bold Italic Sans Serif', style: 'boldItalicSansSerif' },
     { name: 'Monospace', style: 'monospace' },
     { name: 'Fullwidth', style: 'fullwidth' },
     { name: 'Circled', style: 'circled' },
+    { name: 'Negative Circled', style: 'negativeCircled' },
     { name: 'Squared', style: 'squared' },
+    { name: 'Negative Squared', style: 'negativeSquared' },
     { name: 'Parenthesized', style: 'parenthesized' },
     { name: 'Small Caps', style: 'smallCaps' },
     { name: 'Bold Script', style: 'boldCursive' },
     { name: 'Italic Script', style: 'cursive' },
-    { name: 'Gothic Fancy', style: 'gothic' }
+    { name: 'Gothic Fancy', style: 'gothic' },
+    { name: 'Bold Fraktur', style: 'boldFraktur' },
+    { name: 'Greek Style', style: 'greekStyle' },
+    { name: 'Cyrillic Style', style: 'cyrillicStyle' },
+    { name: 'Regional Indicator', style: 'regionalIndicator' },
+    { name: 'Latin Extended', style: 'latinExtended' },
+    { name: 'Latin Extended-B', style: 'latinExtendedB' },
+    { name: 'Fancy Bold', style: 'bold' },
+    { name: 'Fancy Italic', style: 'italic' },
+    { name: 'Fancy Bold Italic', style: 'boldItalic' },
+    { name: 'Cursive', style: 'cursive' },
+    { name: 'Bold Cursive', style: 'boldCursive' },
+    { name: 'Superscript', style: 'superscript' },
+    { name: 'Subscript', style: 'subscript' },
+    { name: 'Inverted', style: 'inverted' },
+    { name: 'Wide', style: 'wide' },
+    { name: 'Script', style: 'script' },
+    { name: 'Bold Script Alt', style: 'boldScript' }
   ],
   'tattoo': [
+    // 有个性的样式（优先）
+    { name: 'Bold Fraktur', style: 'boldFraktur' },
+    { name: 'Gothic Fraktur', style: 'gothic' },
+    { name: 'Bold Script', style: 'boldScript' },
+    { name: 'Script', style: 'script' },
     { name: 'Bold Cursive', style: 'boldCursive' },
-    { name: 'Gothic', style: 'gothic' },
-    { name: 'Bold Gothic', style: 'bold' },
-    { name: 'Italic Gothic', style: 'italic' },
-    { name: 'Sans Serif Bold', style: 'sansSerifBold' },
-    { name: 'Monospace Bold', style: 'monospace' },
-    { name: 'Fullwidth Bold', style: 'fullwidth' },
-    { name: 'Circled Bold', style: 'circled' },
-    { name: 'Squared Bold', style: 'squared' },
-    { name: 'Parenthesized Bold', style: 'parenthesized' },
-    { name: 'Double Struck Bold', style: 'doubleStruck' },
-    { name: 'Small Caps Bold', style: 'smallCaps' }
+    { name: 'Cursive', style: 'cursive' },
+    { name: 'Greek Style', style: 'greekStyle' },
+    { name: 'Cyrillic Style', style: 'cyrillicStyle' },
+    { name: 'Regional Indicator', style: 'regionalIndicator' },
+    { name: 'Latin Extended', style: 'latinExtended' },
+    { name: 'Latin Extended-B', style: 'latinExtendedB' },
+    { name: 'Inverted', style: 'inverted' },
+    { name: 'Double Struck', style: 'doubleStruck' },
+    { name: 'Negative Circled', style: 'negativeCircled' },
+    { name: 'Negative Squared', style: 'negativeSquared' },
+    { name: 'Circled', style: 'circled' },
+    { name: 'Squared', style: 'squared' },
+    { name: 'Small Caps', style: 'smallCaps' },
+    { name: 'Superscript', style: 'superscript' },
+    { name: 'Subscript', style: 'subscript' },
+    { name: 'Monospace', style: 'monospace' },
+    { name: 'Fullwidth', style: 'fullwidth' },
+    { name: 'Wide', style: 'wide' },
+    { name: 'Bold Sans Serif', style: 'boldSansSerif' },
+    { name: 'Bold Sans Serif Italic', style: 'boldSansSerifItalic' },
+    { name: 'Bold Italic Sans Serif', style: 'boldItalicSansSerif' },
+    { name: 'Sans Serif Italic', style: 'sansSerifItalic' }
   ],
   'cool': [
     { name: 'Bold', style: 'bold' },
     { name: 'Sans Serif Bold', style: 'sansSerifBold' },
+    { name: 'Sans Serif Italic', style: 'sansSerifItalic' },
+    { name: 'Bold Sans Serif', style: 'boldSansSerif' },
+    { name: 'Bold Sans Serif Italic', style: 'boldSansSerifItalic' },
+    { name: 'Bold Italic Sans Serif', style: 'boldItalicSansSerif' },
     { name: 'Monospace', style: 'monospace' },
     { name: 'Double Struck', style: 'doubleStruck' },
     { name: 'Fullwidth', style: 'fullwidth' },
@@ -250,7 +444,19 @@ const categoryFonts = {
     { name: 'Small Caps', style: 'smallCaps' },
     { name: 'Parenthesized', style: 'parenthesized' },
     { name: 'Bold Script', style: 'boldCursive' },
-    { name: 'Gothic Bold', style: 'gothic' }
+    { name: 'Gothic Bold', style: 'gothic' },
+    { name: 'Bold Fraktur', style: 'boldFraktur' },
+    { name: 'Greek Style', style: 'greekStyle' },
+    { name: 'Cyrillic Style', style: 'cyrillicStyle' },
+    { name: 'Regional Indicator', style: 'regionalIndicator' },
+    { name: 'Latin Extended', style: 'latinExtended' },
+    { name: 'Latin Extended-B', style: 'latinExtendedB' },
+    { name: 'Cool Italic', style: 'italic' },
+    { name: 'Cool Sans Serif', style: 'sansSerif' },
+    { name: 'Cool Cursive', style: 'cursive' },
+    { name: 'Cool Superscript', style: 'superscript' },
+    { name: 'Cool Subscript', style: 'subscript' },
+    { name: 'Cool Inverted', style: 'inverted' }
   ],
   'instagram': [
     { name: 'Cursive', style: 'cursive' },
@@ -264,7 +470,10 @@ const categoryFonts = {
     { name: 'Small Caps', style: 'smallCaps' },
     { name: 'Italic', style: 'italic' },
     { name: 'Bold Italic', style: 'boldItalic' },
-    { name: 'Monospace', style: 'monospace' }
+    { name: 'Monospace', style: 'monospace' },
+    { name: 'Instagram Bold', style: 'bold' },
+    { name: 'Instagram Gothic', style: 'gothic' },
+    { name: 'Instagram Parenthesized', style: 'parenthesized' }
   ],
   'calligraphy': [
     { name: 'Cursive', style: 'cursive' },
@@ -278,7 +487,10 @@ const categoryFonts = {
     { name: 'Squared', style: 'squared' },
     { name: 'Small Caps', style: 'smallCaps' },
     { name: 'Double Struck', style: 'doubleStruck' },
-    { name: 'Monospace', style: 'monospace' }
+    { name: 'Monospace', style: 'monospace' },
+    { name: 'Calligraphy Bold', style: 'bold' },
+    { name: 'Calligraphy Sans Serif Bold', style: 'sansSerifBold' },
+    { name: 'Calligraphy Parenthesized', style: 'parenthesized' }
   ],
   'discord': [
     { name: 'Bold', style: 'bold' },
@@ -292,7 +504,10 @@ const categoryFonts = {
     { name: 'Small Caps', style: 'smallCaps' },
     { name: 'Parenthesized', style: 'parenthesized' },
     { name: 'Gothic Bold', style: 'gothic' },
-    { name: 'Sans Serif', style: 'sansSerif' }
+    { name: 'Sans Serif', style: 'sansSerif' },
+    { name: 'Discord Italic', style: 'italic' },
+    { name: 'Discord Cursive', style: 'cursive' },
+    { name: 'Discord Bold Cursive', style: 'boldCursive' }
   ],
   'old-english': [
     { name: 'Gothic', style: 'gothic' },
@@ -306,7 +521,10 @@ const categoryFonts = {
     { name: 'Squared', style: 'squared' },
     { name: 'Double Struck', style: 'doubleStruck' },
     { name: 'Small Caps', style: 'smallCaps' },
-    { name: 'Monospace', style: 'monospace' }
+    { name: 'Monospace', style: 'monospace' },
+    { name: 'Old English Cursive', style: 'cursive' },
+    { name: 'Old English Bold Cursive', style: 'boldCursive' },
+    { name: 'Old English Parenthesized', style: 'parenthesized' }
   ],
   '3d': [
     { name: 'Bold', style: 'bold' },
@@ -320,7 +538,10 @@ const categoryFonts = {
     { name: 'Small Caps', style: 'smallCaps' },
     { name: 'Parenthesized', style: 'parenthesized' },
     { name: 'Gothic Bold', style: 'gothic' },
-    { name: 'Bold Cursive', style: 'boldCursive' }
+    { name: 'Bold Cursive', style: 'boldCursive' },
+    { name: '3D Italic', style: 'italic' },
+    { name: '3D Cursive', style: 'cursive' },
+    { name: '3D Sans Serif', style: 'sansSerif' }
   ],
   'minecraft': [
     { name: 'Monospace', style: 'monospace' },
@@ -334,21 +555,39 @@ const categoryFonts = {
     { name: 'Parenthesized', style: 'parenthesized' },
     { name: 'Bold Italic', style: 'boldItalic' },
     { name: 'Gothic', style: 'gothic' },
-    { name: 'Sans Serif', style: 'sansSerif' }
+    { name: 'Sans Serif', style: 'sansSerif' },
+    { name: 'Minecraft Italic', style: 'italic' },
+    { name: 'Minecraft Cursive', style: 'cursive' },
+    { name: 'Minecraft Bold Cursive', style: 'boldCursive' }
   ],
   'disney': [
-    { name: 'Cursive', style: 'cursive' },
-    { name: 'Bold Cursive', style: 'boldCursive' },
-    { name: 'Italic', style: 'italic' },
-    { name: 'Bold Italic', style: 'boldItalic' },
-    { name: 'Fancy', style: 'doubleStruck' },
-    { name: 'Sans Serif', style: 'sansSerif' },
-    { name: 'Fullwidth', style: 'fullwidth' },
-    { name: 'Circled', style: 'circled' },
-    { name: 'Squared', style: 'squared' },
-    { name: 'Small Caps', style: 'smallCaps' },
-    { name: 'Monospace', style: 'monospace' },
-    { name: 'Parenthesized', style: 'parenthesized' }
+    // 可爱手写体（核心手写体样式）
+    { name: 'Cute Cursive', style: 'cursive' },
+    { name: 'Sweet Script', style: 'script' },
+    { name: 'Lovely Bold Script', style: 'boldScript' },
+    { name: 'Charming Bold Cursive', style: 'boldCursive' },
+    // 装饰性手写体风格（配合手写体使用）
+    { name: 'Circled Handwriting', style: 'circled' },
+    { name: 'Squared Cursive', style: 'squared' },
+    { name: 'Parenthesized Script', style: 'parenthesized' },
+    { name: 'Negative Circled Cursive', style: 'negativeCircled' },
+    { name: 'Negative Squared Script', style: 'negativeSquared' },
+    { name: 'Small Caps Handwriting', style: 'smallCaps' },
+    { name: 'Fullwidth Cursive', style: 'fullwidth' },
+    { name: 'Wide Handwriting', style: 'wide' },
+    // 其他可爱风格（类似手写体效果）
+    { name: 'Italic Cursive', style: 'italic' },
+    { name: 'Bold Italic Script', style: 'boldItalic' },
+    { name: 'Sans Serif Italic', style: 'sansSerifItalic' },
+    { name: 'Superscript Cursive', style: 'superscript' },
+    { name: 'Subscript Handwriting', style: 'subscript' },
+    { name: 'Double Struck Cursive', style: 'doubleStruck' },
+    { name: 'Monospace Script', style: 'monospace' },
+    // 更多可爱变体
+    { name: 'Adorable Cursive', style: 'cursive' },
+    { name: 'Precious Script', style: 'script' },
+    { name: 'Darling Bold Cursive', style: 'boldCursive' },
+    { name: 'Dreamy Bold Script', style: 'boldScript' }
   ],
   'bubble': [
     { name: 'Bold', style: 'bold' },
@@ -362,7 +601,10 @@ const categoryFonts = {
     { name: 'Bold Italic', style: 'boldItalic' },
     { name: 'Monospace', style: 'monospace' },
     { name: 'Bold Cursive', style: 'boldCursive' },
-    { name: 'Gothic Bold', style: 'gothic' }
+    { name: 'Gothic Bold', style: 'gothic' },
+    { name: 'Bubble Italic', style: 'italic' },
+    { name: 'Bubble Cursive', style: 'cursive' },
+    { name: 'Bubble Sans Serif', style: 'sansSerif' }
   ],
   'star-wars': [
     { name: 'Gothic', style: 'gothic' },
@@ -376,7 +618,10 @@ const categoryFonts = {
     { name: 'Squared', style: 'squared' },
     { name: 'Double Struck', style: 'doubleStruck' },
     { name: 'Small Caps', style: 'smallCaps' },
-    { name: 'Italic', style: 'italic' }
+    { name: 'Italic', style: 'italic' },
+    { name: 'Star Wars Cursive', style: 'cursive' },
+    { name: 'Star Wars Bold Cursive', style: 'boldCursive' },
+    { name: 'Star Wars Parenthesized', style: 'parenthesized' }
   ]
 }
 
@@ -384,15 +629,38 @@ const categoryFonts = {
 const fonts = []
 let fontId = 0
 
+// 用于跟踪每个分类已使用的映射，确保分类内不重复（相同映射只出现一次）
+const categoryMappingUsage = new Map() // key: category, value: Set of used mapping keys
+
 // 为每个分类生成字体
 Object.keys(categoryFonts).forEach(category => {
+  // 初始化分类的映射使用记录
+  if (!categoryMappingUsage.has(category)) {
+    categoryMappingUsage.set(category, new Set())
+  }
+  const categoryUsedMappings = categoryMappingUsage.get(category)
+  
   categoryFonts[category].forEach(({ name, style }) => {
+    const mapping = unicodeBlocks[style] || unicodeBlocks.bold
+    const mappingKey = JSON.stringify(mapping)
+    
+    // 检查分类内是否已使用过这个映射（必须避免分类内重复）
+    // 允许跨分类有重复，因为不同分类可能需要相同的基础样式
+    if (categoryUsedMappings.has(mappingKey)) {
+      // 如果当前分类内已使用过这个映射，跳过这个字体
+      return
+    }
+    
+    // 添加到字体列表
     fonts.push({
       id: `font-${fontId}`,
       name: name,
       category: category,
-      mapping: unicodeBlocks[style] || unicodeBlocks.bold
+      mapping: mapping
     })
+    
+    // 标记为已使用（仅标记分类内的映射）
+    categoryUsedMappings.add(mappingKey)
     fontId++
   })
 })
@@ -404,7 +672,7 @@ const allFonts = [...fonts]
 const outputPath = path.join(__dirname, '../src/lib/unicode-fonts.ts')
 const output = `// Unicode 字体样式映射库
 // 包含有创意、有差别的Unicode字体样式
-// 每个分类至少10个不同的字体样式
+// 每个分类20个不同的字体样式
 // 此文件由 scripts/generate-creative-fonts.js 自动生成
 
 export interface FontStyle {
@@ -444,3 +712,31 @@ Object.keys(categoryFonts).forEach(cat => {
   const count = fonts.filter(f => f.category === cat).length
   console.log(`   ${cat}: ${count} 个字体样式`)
 })
+
+// 检查重复
+console.log(`\n🔍 重复检查:`)
+const mappingGroups = new Map()
+fonts.forEach(font => {
+  const key = JSON.stringify(font.mapping)
+  if (!mappingGroups.has(key)) {
+    mappingGroups.set(key, [])
+  }
+  mappingGroups.get(key).push(font)
+})
+
+let duplicateCount = 0
+mappingGroups.forEach((fontsWithSameMapping, mapping) => {
+  if (fontsWithSameMapping.length > 1) {
+    duplicateCount++
+    console.log(`   发现 ${fontsWithSameMapping.length} 个字体使用相同映射:`)
+    fontsWithSameMapping.forEach(f => {
+      console.log(`     - ${f.category} - ${f.name}`)
+    })
+  }
+})
+
+if (duplicateCount === 0) {
+  console.log(`   ✅ 没有发现重复的字体映射`)
+} else {
+  console.log(`   ⚠️  发现 ${duplicateCount} 组重复的字体映射`)
+}

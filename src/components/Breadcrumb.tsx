@@ -21,6 +21,7 @@ const defaultBreadcrumbTranslations = {
   quickTools: 'Quick Tools',
   imageCompression: 'Image Compression',
   imageConverter: 'Image Converter',
+  fontGenerator: 'Font Generator',
   aboutUs: 'About Us',
   privacyPolicy: 'Privacy Policy',
   termsOfService: 'Terms of Service'
@@ -75,6 +76,7 @@ export default function Breadcrumb({ items }: BreadcrumbProps) {
     if (label === 'Quick Tools') return translations.quickTools
     if (label === 'Image Compression') return translations.imageCompression
     if (label === 'Image Converter') return translations.imageConverter
+    if (label === 'Font Generator') return translations.fontGenerator
     if (label === 'About Us') return translations.aboutUs
     if (label === 'Privacy Policy') return translations.privacyPolicy
     if (label === 'Terms of Service') return translations.termsOfService

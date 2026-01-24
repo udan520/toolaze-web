@@ -3,6 +3,7 @@
     "quickTools": "Schnelle Tools",
     "imageCompression": "Bildkomprimierung",
     "imageConverter": "Bildkonverter",
+    "fontGenerator": "Schriftgenerator",
     "aboutUs": "Über uns"
   },
   "home": {
@@ -78,6 +79,9 @@
     }
   },
   "footer": {
+    "imageCompression": "Bildkomprimierung",
+    "imageConverter": "Bildkonverter",
+    "fontGenerator": "Schriftgenerator",
     "home": "Startseite",
     "allTools": "Alle Tools",
     "aboutUs": "Über uns",
@@ -93,6 +97,7 @@
     "quickTools": "Schnelle Tools",
     "imageCompression": "Bildkomprimierung",
     "imageConverter": "Bildkonverter",
+    "fontGenerator": "Schriftgenerator",
     "aboutUs": "Über uns",
     "privacyPolicy": "Datenschutzrichtlinie",
     "termsOfService": "Nutzungsbedingungen"
@@ -139,6 +144,30 @@
       "rating": "4.9/5 VON 10K+ KREATIVEN",
       "description": "Schließen Sie sich Tausenden zufriedener Benutzer an, die Toolaze für schnelle, sichere und kostenlose Bildkomprimierung vertrauen. Keine Registrierung erforderlich, 100% private Verarbeitung.",
       "title": "Vertraut von Tausenden von Creators"
+    },
+    "fontGenerator": {
+      "selectFontStyle": "Wählen Sie einen Schriftstil",
+      "font": "Schrift",
+      "fonts": "Schriften",
+      "categories": {
+        "all": "Alle",
+        "cursive": "Kursiv",
+        "fancy": "Verschönert",
+        "bold": "Fett",
+        "tattoo": "Tattoo",
+        "cool": "Cool",
+        "instagram": "Instagram",
+        "italic": "Kursiv",
+        "gothic": "Gotisch",
+        "calligraphy": "Kalligrafie",
+        "discord": "Discord",
+        "oldEnglish": "Altenglisch",
+        "3d": "3D",
+        "minecraft": "Minecraft",
+        "disney": "Disney",
+        "bubble": "Blase",
+        "starWars": "Star Wars"
+      }
     },
     "tool": {
       "dropZone": {

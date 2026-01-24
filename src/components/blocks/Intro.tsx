@@ -73,10 +73,11 @@ export default function Intro({ title, description, bgClass = 'bg-[#F8FAFF]' }: 
                         </h3>
                       )}
                       
-                      {/* 文字内容 - 居中 */}
-                      <p className="text-base leading-relaxed text-slate-700">
-                        {item.text}
-                      </p>
+                      {/* 文字内容 - 居中，支持HTML链接 */}
+                      <p 
+                        className="text-base leading-relaxed text-slate-700"
+                        dangerouslySetInnerHTML={{ __html: item.text }}
+                      />
                     </div>
                   </div>
                 ))}
@@ -96,9 +97,10 @@ export default function Intro({ title, description, bgClass = 'bg-[#F8FAFF]' }: 
                       {contentItems[0].title}
                     </h3>
                   )}
-                  <p className="text-base leading-relaxed text-slate-700">
-                    {contentItems[0].text}
-                  </p>
+                  <p 
+                    className="text-base leading-relaxed text-slate-700"
+                    dangerouslySetInnerHTML={{ __html: contentItems[0].text }}
+                  />
                 </div>
               </div>
             ) : null}

@@ -26,7 +26,10 @@ export default function FAQ({ title, items, bgClass = 'bg-white' }: FAQProps) {
               {item.q || item.question}
               <span className="text-indigo-600 text-xl">+</span>
             </summary>
-            <p className="desc-text mt-4">{item.a || item.answer}</p>
+            <p 
+              className="desc-text mt-4"
+              dangerouslySetInnerHTML={{ __html: item.a || item.answer || '' }}
+            />
           </details>
         ))}
       </div>

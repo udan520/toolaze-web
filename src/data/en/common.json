@@ -79,6 +79,9 @@
     }
   },
   "footer": {
+    "imageCompression": "Image Compression",
+    "imageConverter": "Image Converter",
+    "fontGenerator": "Font Generator",
     "home": "Home",
     "allTools": "All Tools",
     "aboutUs": "About Us",
@@ -94,6 +97,7 @@
     "quickTools": "Quick Tools",
     "imageCompression": "Image Compression",
     "imageConverter": "Image Converter",
+    "fontGenerator": "Font Generator",
     "aboutUs": "About Us",
     "privacyPolicy": "Privacy Policy",
     "termsOfService": "Terms of Service"
@@ -141,8 +145,12 @@
     "specializedTools": "Specialized Tools",
     "allImageCompressionTools": "All Image Compression Tools",
     "allImageConverterTools": "All Image Converter Tools",
+    "allFontGeneratorTools": "All Font Generator Tools",
     "allImageCompressionToolsDesc": "Browse all available image compression tools. Find the perfect tool for your specific needs.",
     "allImageConverterToolsDesc": "Browse all available image converter tools. Convert between JPG, PNG, WebP, and HEIC formats.",
+    "allFontGeneratorToolsDesc": "Browse all available font generator tools. Create cursive, fancy, bold, italic, gothic, tattoo, and more font styles.",
+    "primaryFontGeneratorToolsDesc": "Essential font generator tools for general use cases.",
+    "specializedFontGeneratorToolsDesc": "Specialized font generator tools for specific platforms and use cases.",
     "primaryToolsDesc": "Essential compression tools for general use cases.",
     "primaryConverterToolsDesc": "Essential converter tools for general use cases.",
     "specializedToolsDesc": "Specialized compression tools for specific platforms and use cases.",
@@ -155,6 +163,30 @@
       "title": "Trusted by Thousands of Creators",
       "rating": "4.9/5 FROM 10K+ CREATORS",
       "description": "Join thousands of satisfied users who trust Toolaze for fast, secure, and free image compression. No registration required, 100% private processing."
+    },
+    "fontGenerator": {
+      "selectFontStyle": "Select a font style",
+      "font": "font",
+      "fonts": "fonts",
+      "categories": {
+        "all": "All",
+        "cursive": "Cursive",
+        "fancy": "Fancy",
+        "bold": "Bold",
+        "tattoo": "Tattoo",
+        "cool": "Cool",
+        "instagram": "Instagram",
+        "italic": "Italic",
+        "gothic": "Gothic",
+        "calligraphy": "Calligraphy",
+        "discord": "Discord",
+        "oldEnglish": "Old English",
+        "3d": "3D",
+        "minecraft": "Minecraft",
+        "disney": "Disney",
+        "bubble": "Bubble",
+        "starWars": "Star Wars"
+      }
     },
     "viewAllTools": {
       "related": "View All Related Tools",
