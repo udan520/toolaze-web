@@ -39,6 +39,22 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     }
     
     const pathWithoutLocale = `/${resolvedParams.tool}/${resolvedParams.slug}`
+    const baseUrl = 'https://toolaze.com'
+    
+    // 如果工具不支持多语言，只设置 canonical URL，不设置 hreflang languages
+    if (NON_MULTILINGUAL_TOOLS.includes(resolvedParams.tool)) {
+      const canonical = `${baseUrl}${pathWithoutLocale}`
+      return {
+        title: content.metadata.title,
+        description: content.metadata.description,
+        robots: 'index, follow',
+        alternates: {
+          canonical: canonical,
+        },
+      }
+    }
+    
+    // 支持多语言的工具，设置 hreflang
     const hreflang = generateHreflangAlternates(locale, pathWithoutLocale)
     
     return {

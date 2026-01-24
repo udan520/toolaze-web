@@ -1,6 +1,5 @@
 import ToolSlugPageContent from '@/app/[locale]/[tool]/[slug]/ToolSlugPageContent'
 import { getAllSlugs, getSeoContent } from '@/lib/seo-loader'
-import { generateHreflangAlternates } from '@/lib/hreflang'
 import type { Metadata } from 'next'
 
 interface PageProps {
@@ -25,16 +24,16 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     }
   }
   
-  const pathWithoutLocale = `/font-generator/${resolvedParams.slug}`
-  const hreflang = generateHreflangAlternates('en', pathWithoutLocale)
+  // Font Generator 不支持多语言，只设置 canonical URL，不设置 hreflang languages
+  const baseUrl = 'https://toolaze.com'
+  const canonical = `${baseUrl}/font-generator/${resolvedParams.slug}`
   
   return {
     title: content.metadata.title,
     description: content.metadata.description,
     robots: 'index, follow',
     alternates: {
-      canonical: hreflang.canonical,
-      languages: hreflang.languages,
+      canonical: canonical,
     },
   }
 }
