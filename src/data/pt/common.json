@@ -3,6 +3,7 @@
     "quickTools": "Ferramentas Rápidas",
     "imageCompression": "Compressão de Imagens",
     "imageConverter": "Conversor de Imagens",
+    "fontGenerator": "Gerador de Fontes",
     "aboutUs": "Sobre Nós"
   },
   "home": {
@@ -78,6 +79,9 @@
     }
   },
   "footer": {
+    "imageCompression": "Compressão de Imagens",
+    "imageConverter": "Conversor de Imagens",
+    "fontGenerator": "Gerador de Fontes",
     "home": "Início",
     "allTools": "Todas as Ferramentas",
     "aboutUs": "Sobre Nós",
@@ -93,6 +97,7 @@
     "quickTools": "Ferramentas Rápidas",
     "imageCompression": "Compressão de Imagens",
     "imageConverter": "Conversor de Imagens",
+    "fontGenerator": "Gerador de Fontes",
     "aboutUs": "Sobre Nós",
     "privacyPolicy": "Política de Privacidade",
     "termsOfService": "Termos de Serviço"
@@ -205,6 +210,67 @@
     "viewAllTools": {
       "related": "Ver Todas as Ferramentas Relacionadas",
       "all": "Ver Todas as Ferramentas"
+    },
+    "fontGenerator": {
+      "selectFontStyle": "Selecione um estilo de fonte",
+      "font": "fonte",
+      "fonts": "fontes",
+      "allFonts": "Todas as Fontes",
+      "copy": "Copiar",
+      "copied": "Copiado!",
+      "placeholder": "Adicione texto aqui para começar....",
+      "defaultText": "Toolaze Font Generator 123",
+      "trustBar": {
+        "private": "100% Privado",
+        "instantPreview": "Pré-visualização Instantânea",
+        "noServerLogs": "Sem Registros do Servidor"
+      },
+      "fontTerms": {
+        "Bold": "Negrito",
+        "Italic": "Itálico",
+        "Sans Serif": "Sans Serif",
+        "Serif": "Serif",
+        "Cursive": "Cursivo",
+        "Script": "Script",
+        "Gothic": "Gótico",
+        "Fancy": "Decorativo",
+        "Fraktur": "Fraktur",
+        "Monospace": "Monospace",
+        "Fullwidth": "Largura Completa",
+        "Circled": "Circulado",
+        "Negative Circled": "Circulado Negativo",
+        "Squared": "Ao Quadrado",
+        "Negative Squared": "Ao Quadrado Negativo",
+        "Parenthesized": "Entre Parênteses",
+        "Small Caps": "Pequenas Maiúsculas",
+        "Superscript": "Sobrescrito",
+        "Subscript": "Subscrito",
+        "Greek Style": "Estilo Grego",
+        "Cyrillic Style": "Estilo Cirílico",
+        "Regional Indicator": "Indicador Regional",
+        "Latin Extended": "Latino Estendido",
+        "Latin Extended-B": "Latino Estendido-B"
+      },
+      "moreTools": "Mais Ferramentas de Gerador de Fontes",
+      "categories": {
+        "all": "Todas",
+        "cursive": "Cursivo",
+        "fancy": "Decorativo",
+        "bold": "Negrito",
+        "tattoo": "Tatuagem",
+        "cool": "Legal",
+        "instagram": "Instagram",
+        "italic": "Itálico",
+        "gothic": "Gótico",
+        "calligraphy": "Caligrafia",
+        "discord": "Discord",
+        "oldEnglish": "Old English",
+        "3d": "3D",
+        "minecraft": "Minecraft",
+        "disney": "Disney",
+        "bubble": "Bolha",
+        "starWars": "Star Wars"
+      }
     }
   },
   "imageCompressor": {

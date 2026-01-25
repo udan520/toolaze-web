@@ -233,29 +233,71 @@ async function loadToolJsonFile(locale: string, tool: string, slug: string) {
           }
           break
         case 'ja':
-          switch (slug) {
-            case 'jpg-to-png': data = await import('@/data/ja/image-converter/jpg-to-png.json'); break
-            case 'png-to-jpg': data = await import('@/data/ja/image-converter/png-to-jpg.json'); break
-            case 'webp-to-jpg': data = await import('@/data/ja/image-converter/webp-to-jpg.json'); break
-            case 'webp-to-png': data = await import('@/data/ja/image-converter/webp-to-png.json'); break
-            case 'png-to-webp': data = await import('@/data/ja/image-converter/png-to-webp.json'); break
-            case 'jpg-to-webp': data = await import('@/data/ja/image-converter/jpg-to-webp.json'); break
-            case 'heic-to-jpg': data = await import('@/data/ja/image-converter/heic-to-jpg.json'); break
-            case 'heic-to-png': data = await import('@/data/ja/image-converter/heic-to-png.json'); break
-            case 'heic-to-webp': data = await import('@/data/ja/image-converter/heic-to-webp.json'); break
+          if (tool === 'image-converter') {
+            switch (slug) {
+              case 'jpg-to-png': data = await import('@/data/ja/image-converter/jpg-to-png.json'); break
+              case 'png-to-jpg': data = await import('@/data/ja/image-converter/png-to-jpg.json'); break
+              case 'webp-to-jpg': data = await import('@/data/ja/image-converter/webp-to-jpg.json'); break
+              case 'webp-to-png': data = await import('@/data/ja/image-converter/webp-to-png.json'); break
+              case 'png-to-webp': data = await import('@/data/ja/image-converter/png-to-webp.json'); break
+              case 'jpg-to-webp': data = await import('@/data/ja/image-converter/jpg-to-webp.json'); break
+              case 'heic-to-jpg': data = await import('@/data/ja/image-converter/heic-to-jpg.json'); break
+              case 'heic-to-png': data = await import('@/data/ja/image-converter/heic-to-png.json'); break
+              case 'heic-to-webp': data = await import('@/data/ja/image-converter/heic-to-webp.json'); break
+            }
+          } else if (tool === 'font-generator') {
+            switch (slug) {
+              case 'cursive': data = await import('@/data/ja/font-generator/cursive.json'); break
+              case 'fancy': data = await import('@/data/ja/font-generator/fancy.json'); break
+              case 'bold': data = await import('@/data/ja/font-generator/bold.json'); break
+              case 'tattoo': data = await import('@/data/ja/font-generator/tattoo.json'); break
+              case 'cool': data = await import('@/data/ja/font-generator/cool.json'); break
+              case 'instagram': data = await import('@/data/ja/font-generator/instagram.json'); break
+              case 'italic': data = await import('@/data/ja/font-generator/italic.json'); break
+              case 'gothic': data = await import('@/data/ja/font-generator/gothic.json'); break
+              case 'calligraphy': data = await import('@/data/ja/font-generator/calligraphy.json'); break
+              case 'discord': data = await import('@/data/ja/font-generator/discord.json'); break
+              case 'old-english': data = await import('@/data/ja/font-generator/old-english.json'); break
+              case '3d': data = await import('@/data/ja/font-generator/3d.json'); break
+              case 'minecraft': data = await import('@/data/ja/font-generator/minecraft.json'); break
+              case 'disney': data = await import('@/data/ja/font-generator/disney.json'); break
+              case 'bubble': data = await import('@/data/ja/font-generator/bubble.json'); break
+              case 'star-wars': data = await import('@/data/ja/font-generator/star-wars.json'); break
+            }
           }
           break
         case 'es':
-          switch (slug) {
-            case 'jpg-to-png': data = await import('@/data/es/image-converter/jpg-to-png.json'); break
-            case 'png-to-jpg': data = await import('@/data/es/image-converter/png-to-jpg.json'); break
-            case 'webp-to-jpg': data = await import('@/data/es/image-converter/webp-to-jpg.json'); break
-            case 'webp-to-png': data = await import('@/data/es/image-converter/webp-to-png.json'); break
-            case 'png-to-webp': data = await import('@/data/es/image-converter/png-to-webp.json'); break
-            case 'jpg-to-webp': data = await import('@/data/es/image-converter/jpg-to-webp.json'); break
-            case 'heic-to-jpg': data = await import('@/data/es/image-converter/heic-to-jpg.json'); break
-            case 'heic-to-png': data = await import('@/data/es/image-converter/heic-to-png.json'); break
-            case 'heic-to-webp': data = await import('@/data/es/image-converter/heic-to-webp.json'); break
+          if (tool === 'image-converter') {
+            switch (slug) {
+              case 'jpg-to-png': data = await import('@/data/es/image-converter/jpg-to-png.json'); break
+              case 'png-to-jpg': data = await import('@/data/es/image-converter/png-to-jpg.json'); break
+              case 'webp-to-jpg': data = await import('@/data/es/image-converter/webp-to-jpg.json'); break
+              case 'webp-to-png': data = await import('@/data/es/image-converter/webp-to-png.json'); break
+              case 'png-to-webp': data = await import('@/data/es/image-converter/png-to-webp.json'); break
+              case 'jpg-to-webp': data = await import('@/data/es/image-converter/jpg-to-webp.json'); break
+              case 'heic-to-jpg': data = await import('@/data/es/image-converter/heic-to-jpg.json'); break
+              case 'heic-to-png': data = await import('@/data/es/image-converter/heic-to-png.json'); break
+              case 'heic-to-webp': data = await import('@/data/es/image-converter/heic-to-webp.json'); break
+            }
+          } else if (tool === 'font-generator') {
+            switch (slug) {
+              case 'cursive': data = await import('@/data/es/font-generator/cursive.json'); break
+              case 'fancy': data = await import('@/data/es/font-generator/fancy.json'); break
+              case 'bold': data = await import('@/data/es/font-generator/bold.json'); break
+              case 'tattoo': data = await import('@/data/es/font-generator/tattoo.json'); break
+              case 'cool': data = await import('@/data/es/font-generator/cool.json'); break
+              case 'instagram': data = await import('@/data/es/font-generator/instagram.json'); break
+              case 'italic': data = await import('@/data/es/font-generator/italic.json'); break
+              case 'gothic': data = await import('@/data/es/font-generator/gothic.json'); break
+              case 'calligraphy': data = await import('@/data/es/font-generator/calligraphy.json'); break
+              case 'discord': data = await import('@/data/es/font-generator/discord.json'); break
+              case 'old-english': data = await import('@/data/es/font-generator/old-english.json'); break
+              case '3d': data = await import('@/data/es/font-generator/3d.json'); break
+              case 'minecraft': data = await import('@/data/es/font-generator/minecraft.json'); break
+              case 'disney': data = await import('@/data/es/font-generator/disney.json'); break
+              case 'bubble': data = await import('@/data/es/font-generator/bubble.json'); break
+              case 'star-wars': data = await import('@/data/es/font-generator/star-wars.json'); break
+            }
           }
           break
         case 'zh-TW':
@@ -285,16 +327,37 @@ async function loadToolJsonFile(locale: string, tool: string, slug: string) {
           }
           break
         case 'fr':
-          switch (slug) {
-            case 'jpg-to-png': data = await import('@/data/fr/image-converter/jpg-to-png.json'); break
-            case 'png-to-jpg': data = await import('@/data/fr/image-converter/png-to-jpg.json'); break
-            case 'webp-to-jpg': data = await import('@/data/fr/image-converter/webp-to-jpg.json'); break
-            case 'webp-to-png': data = await import('@/data/fr/image-converter/webp-to-png.json'); break
-            case 'png-to-webp': data = await import('@/data/fr/image-converter/png-to-webp.json'); break
-            case 'jpg-to-webp': data = await import('@/data/fr/image-converter/jpg-to-webp.json'); break
-            case 'heic-to-jpg': data = await import('@/data/fr/image-converter/heic-to-jpg.json'); break
-            case 'heic-to-png': data = await import('@/data/fr/image-converter/heic-to-png.json'); break
-            case 'heic-to-webp': data = await import('@/data/fr/image-converter/heic-to-webp.json'); break
+          if (tool === 'image-converter') {
+            switch (slug) {
+              case 'jpg-to-png': data = await import('@/data/fr/image-converter/jpg-to-png.json'); break
+              case 'png-to-jpg': data = await import('@/data/fr/image-converter/png-to-jpg.json'); break
+              case 'webp-to-jpg': data = await import('@/data/fr/image-converter/webp-to-jpg.json'); break
+              case 'webp-to-png': data = await import('@/data/fr/image-converter/webp-to-png.json'); break
+              case 'png-to-webp': data = await import('@/data/fr/image-converter/png-to-webp.json'); break
+              case 'jpg-to-webp': data = await import('@/data/fr/image-converter/jpg-to-webp.json'); break
+              case 'heic-to-jpg': data = await import('@/data/fr/image-converter/heic-to-jpg.json'); break
+              case 'heic-to-png': data = await import('@/data/fr/image-converter/heic-to-png.json'); break
+              case 'heic-to-webp': data = await import('@/data/fr/image-converter/heic-to-webp.json'); break
+            }
+          } else if (tool === 'font-generator') {
+            switch (slug) {
+              case 'cursive': data = await import('@/data/fr/font-generator/cursive.json'); break
+              case 'fancy': data = await import('@/data/fr/font-generator/fancy.json'); break
+              case 'bold': data = await import('@/data/fr/font-generator/bold.json'); break
+              case 'tattoo': data = await import('@/data/fr/font-generator/tattoo.json'); break
+              case 'cool': data = await import('@/data/fr/font-generator/cool.json'); break
+              case 'instagram': data = await import('@/data/fr/font-generator/instagram.json'); break
+              case 'italic': data = await import('@/data/fr/font-generator/italic.json'); break
+              case 'gothic': data = await import('@/data/fr/font-generator/gothic.json'); break
+              case 'calligraphy': data = await import('@/data/fr/font-generator/calligraphy.json'); break
+              case 'discord': data = await import('@/data/fr/font-generator/discord.json'); break
+              case 'old-english': data = await import('@/data/fr/font-generator/old-english.json'); break
+              case '3d': data = await import('@/data/fr/font-generator/3d.json'); break
+              case 'minecraft': data = await import('@/data/fr/font-generator/minecraft.json'); break
+              case 'disney': data = await import('@/data/fr/font-generator/disney.json'); break
+              case 'bubble': data = await import('@/data/fr/font-generator/bubble.json'); break
+              case 'star-wars': data = await import('@/data/fr/font-generator/star-wars.json'); break
+            }
           }
           break
         case 'ko':
@@ -325,12 +388,27 @@ async function loadToolJsonFile(locale: string, tool: string, slug: string) {
           break
       }
       
+      // 对于 font-generator，如果语言不在支持列表中，不自动回退到英语
+      // 这样 page.tsx 可以检测到 content 为 null 并执行重定向
+      // 支持的语言列表：en, de, ja, es, fr
+      // 注意：这里不进行自动回退，让上层处理重定向逻辑
+      
       if (data) {
         return data.default || data
       }
     } catch (importError) {
       // 如果指定语言文件不存在，回退到英语
+      // 但对于 font-generator，如果语言不在支持列表中，不自动回退，让上层处理重定向
       if (normalizedLocale !== 'en') {
+        // font-generator 只支持 en, de, ja, es, fr
+        // 如果语言不在支持列表中，不自动回退，返回 null 让上层处理重定向
+        if (tool === 'font-generator') {
+          const supportedFontGeneratorLocales = ['en', 'de', 'ja', 'es', 'fr']
+          if (!supportedFontGeneratorLocales.includes(normalizedLocale)) {
+            return null
+          }
+        }
+        
         try {
           if (tool === 'image-converter') {
             switch (slug) {
@@ -345,6 +423,7 @@ async function loadToolJsonFile(locale: string, tool: string, slug: string) {
               case 'heic-to-webp': data = await import('@/data/en/image-converter/heic-to-webp.json'); break
             }
           } else if (tool === 'font-generator') {
+            // 只有在支持的语言列表中才会执行到这里（因为上面已经检查过了）
             switch (slug) {
               case 'cursive': data = await import('@/data/en/font-generator/cursive.json'); break
               case 'fancy': data = await import('@/data/en/font-generator/fancy.json'); break
@@ -408,17 +487,44 @@ export async function getL2SeoContent(tool: string, locale: string = 'en') {
             data = await import('@/data/en/font-generator.json')
           }
         }
+      } else if (tool === 'image-compressor' || tool === 'image-compression') {
+        if (normalizedLocale === 'en') {
+          data = await import('@/data/en/image-compressor.json')
+        } else {
+          // 对于其他语言，尝试加载，如果不存在则回退到英语
+          try {
+            data = await import(`@/data/${normalizedLocale}/image-compressor.json`)
+          } catch (e) {
+            data = await import('@/data/en/image-compressor.json')
+          }
+        }
+      } else if (tool === 'image-converter' || tool === 'image-conversion') {
+        if (normalizedLocale === 'en') {
+          data = await import('@/data/en/image-converter.json')
+        } else {
+          // 对于其他语言，尝试加载，如果不存在则回退到英语
+          try {
+            data = await import(`@/data/${normalizedLocale}/image-converter.json`)
+          } catch (e) {
+            data = await import('@/data/en/image-converter.json')
+          }
+        }
       }
-      // 可以在这里添加其他工具的 L2 页面支持
       
       if (data) {
         return data.default || data
       }
     } catch (importError) {
       // 如果指定语言文件不存在，回退到英语
-      if (normalizedLocale !== 'en' && tool === 'font-generator') {
+      if (normalizedLocale !== 'en') {
         try {
-          data = await import('@/data/en/font-generator.json')
+          if (tool === 'font-generator') {
+            data = await import('@/data/en/font-generator.json')
+          } else if (tool === 'image-compressor' || tool === 'image-compression') {
+            data = await import('@/data/en/image-compressor.json')
+          } else if (tool === 'image-converter' || tool === 'image-conversion') {
+            data = await import('@/data/en/image-converter.json')
+          }
           if (data) {
             return data.default || data
           }
@@ -524,7 +630,7 @@ export async function getAllSlugs(tool: string, locale: string = 'en'): Promise<
   }
 }
 
-// 获取所有工具列表（用于主页）
+// 获取所有工具列表（用于主页和 sitemap）
 export async function getAllTools(locale: string = 'en'): Promise<Array<{ tool: string; slug: string }>> {
   const tools: Array<{ tool: string; slug: string }> = []
   
@@ -538,6 +644,14 @@ export async function getAllTools(locale: string = 'en'): Promise<Array<{ tool: 
   const converterSlugs = await getAllSlugs('image-converter', locale)
   for (const slug of converterSlugs) {
     tools.push({ tool: 'image-converter', slug })
+  }
+  
+  // 添加字体生成工具（支持 en、de、ja、es 和 fr）
+  if (locale === 'en' || locale === 'de' || locale === 'ja' || locale === 'es' || locale === 'fr') {
+    const fontGeneratorSlugs = await getAllSlugs('font-generator', locale)
+    for (const slug of fontGeneratorSlugs) {
+      tools.push({ tool: 'font-generator', slug })
+    }
   }
   
   return tools

@@ -1,0 +1,192 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Générateur de Polices Gratuit - Créez des Polices Personnalisées en Ligne | Toolaze",
+    "description": "Générez des polices personnalisées en ligne gratuitement. Créez des polices cursives, fantaisie, en gras, italiques, gothiques et tatouage. Copiez et collez instantanément. Aucune inscription requise."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Générateur de Polices <span class=\"text-gradient\">Gratuit</span>",
+    "desc": "Générez des polices personnalisées en ligne gratuitement. Créez des polices cursives, fantaisie, en gras, italiques, gothiques et tatouage. Copiez et collez instantanément. Aucune inscription requise."
+  },
+  "intro": {
+    "title": "Pourquoi utiliser le Générateur de Polices Toolaze ?",
+    "content": [
+      {
+        "title": "Qu'est-ce qu'un Générateur de Polices ?",
+        "text": "Un générateur de polices est un outil en ligne qui transforme le texte brut en texte stylisé en utilisant des caractères Unicode. Il vous permet de créer de beaux styles de texte distinctifs sans installer de polices ou utiliser de logiciel de conception. Les générateurs de polices sont parfaits pour les publications sur les réseaux sociaux, les projets de design et partout où vous souhaitez ajouter une touche visuelle à votre texte. Essayez notre populaire <a href=\"/font-generator/cursive\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">générateur de polices cursives</a>, <a href=\"/font-generator/fancy\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">générateur de polices fantaisie</a>, ou générateur de polices en gras pour commencer."
+      },
+      {
+        "title": "Pourquoi générer des polices en ligne ?",
+        "text": "Créer du texte stylisé manuellement nécessite un logiciel de conception, l'installation de polices et des connaissances techniques. Notre générateur de polices vous permet de transformer instantanément n'importe quel texte en plusieurs beaux styles—cursif, fantaisie, gras, italique, gothique, tatouage et plus encore—sans télécharger de logiciel ou installer de polices. Parfait pour les utilisateurs de réseaux sociaux qui souhaitent un texte distinctif pour les biographies Instagram, les publications Facebook ou les légendes TikTok, ainsi que pour les designers qui ont besoin de texte stylisé rapide pour les maquettes et présentations. Explorez notre <a href=\"/font-generator/tattoo\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">générateur de polices tatouage</a>, générateur de polices Instagram, ou générateur de polices gothiques pour des styles spécifiques."
+      }
+    ]
+  },
+  "features": {
+    "title": "Fonctionnalités Puissantes du Générateur de Polices",
+    "items": [
+      {
+        "icon": "🎨",
+        "iconType": "quality",
+        "title": "Multiples Styles de Polices",
+        "desc": "Générez du texte magnifique avec plusieurs styles de polices incluant cursif, fantaisie, gras, italique, gothique, tatouage, calligraphie, old english, 3D et plus encore."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Protection Complète de la Confidentialité",
+        "desc": "Toute la génération de polices se fait localement dans votre navigateur—votre texte ne quitte jamais votre appareil, garantissant une sécurité absolue des données."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Génération Instantanée",
+        "desc": "Transformez votre texte en polices stylisées instantanément avec un aperçu en temps réel—aucune attente, aucun délai."
+      },
+      {
+        "icon": "📋",
+        "iconType": "batch",
+        "title": "Copier-Coller Facile",
+        "desc": "Copiez votre texte stylisé en un clic et collez-le directement dans Instagram, Facebook, Twitter, TikTok, Discord ou toute autre plateforme."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Gratuit à Jamais",
+        "desc": "Profitez d'une génération illimitée de polices entièrement gratuite—aucun abonnement, aucun frais caché, aucune publicité jamais."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "Aucune Installation Nécessaire",
+        "desc": "Tout fonctionne directement dans votre navigateur web en utilisant la technologie côté client—aucun téléchargement de logiciel ou installation de polices requise."
+      }
+    ]
+  },
+  "specs": {
+    "engine": "Rendu de Polices Natif du Navigateur - Traitement Côté Client",
+    "limit": "Longueur de Texte Illimitée - Aucune Limite de Caractères",
+    "logic": "Aperçu en Temps Réel (Application Instantanée de Style)",
+    "privacy": "100% Côté Client (Traitement Local du Navigateur)"
+  },
+  "performanceMetrics": {
+    "title": "Spécifications Techniques",
+    "metrics": [
+      {
+        "label": "Styles de Polices",
+        "value": "Cursif, Fantaisie, Gras, Italique, Gothique, Tatouage, Calligraphie, Old English, 3D et plus encore"
+      },
+      {
+        "label": "Longueur du Texte",
+        "value": "Caractères illimités"
+      },
+      {
+        "label": "Vitesse de Traitement",
+        "value": "Instantané (Aperçu en temps réel)"
+      },
+      {
+        "label": "Format de Sortie",
+        "value": "Texte Unicode (Prêt à copier-coller)"
+      },
+      {
+        "label": "Support de Plateformes",
+        "value": "Instagram, Facebook, Twitter, TikTok, Discord, WhatsApp et plus encore"
+      },
+      {
+        "label": "Emplacement de Traitement",
+        "value": "100% Côté Client (JavaScript du Navigateur)"
+      },
+      {
+        "label": "Confidentialité",
+        "value": "Aucun téléchargement serveur, traitement local complet"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Comment Utiliser le Générateur de Polices Toolaze",
+    "steps": [
+      {
+        "title": "Tapez Votre Texte",
+        "desc": "Entrez le texte que vous souhaitez convertir en style de police personnalisé dans le champ de saisie ci-dessus."
+      },
+      {
+        "title": "Choisissez le Style de Police",
+        "desc": "Sélectionnez parmi plusieurs styles de polices incluant cursif, fantaisie, gras, italique, gothique, tatouage et plus encore. Prévisualisez votre texte en temps réel pour voir à quoi il ressemble."
+      },
+      {
+        "title": "Copier-Coller",
+        "desc": "Cliquez sur le bouton copier pour copier votre texte stylisé, puis collez-le n'importe où—réseaux sociaux, documents ou outils de design."
+      }
+    ]
+  },
+  "comparison": {
+    "title": "Pourquoi Choisir Toolaze ?",
+    "toolaze": "Toolaze 💎",
+    "others": "Autres Outils",
+    "vs": "VS",
+    "smartChoice": "Choix Intelligent",
+    "otherTools": "Autres Outils",
+    "toolazeFeatures": "Longueur de texte illimitée, Multiples styles de polices, Aperçu instantané, Génération en temps réel, Traitement 100% local, Aucun téléchargement, Gratuit pour toujours",
+    "othersFeatures": "Limites de caractères, Styles limités, Traitement lent, Téléchargements serveur requis, Files d'attente cloud, Préoccupations de confidentialité, Mises à niveau payantes"
+  },
+  "scenesTitle": "Cas d'Utilisation",
+  "scenes": [
+    {
+      "title": "Pour les Utilisateurs de Réseaux Sociaux",
+      "icon": "📱",
+      "desc": "Créez des polices accrocheuses pour les publications Instagram, Facebook, Twitter et TikTok. Distinguez-vous avec du texte stylisé personnalisé qui correspond à votre marque."
+    },
+    {
+      "title": "Pour les Designers",
+      "icon": "🎨",
+      "desc": "Générez des polices pour les projets de design, logos et matériaux de branding. Prévisualisez différents styles instantanément avant de finaliser votre design."
+    },
+    {
+      "title": "Pour les Créateurs de Contenu",
+      "icon": "💼",
+      "desc": "Améliorez votre contenu avec des polices personnalisées pour les miniatures YouTube, articles de blog et matériaux marketing. Copiez et collez n'importe où."
+    }
+  ],
+  "rating": {
+    "title": "Approuvé par des Milliers de Créateurs",
+    "rating": "4.9/5 DE PLUS DE 10K CRÉATEURS",
+    "text": "\"Le meilleur générateur de polices que j'ai trouvé. Résultats instantanés et fonctionne parfaitement sur Instagram !\" - Rejoignez des milliers d'utilisateurs qui font confiance à Toolaze pour la génération de belles polices."
+  },
+  "faqTitle": "Questions Fréquemment Posées",
+  "faq": [
+    {
+      "q": "Quels styles de polices sont disponibles ?",
+      "a": "Toolaze prend en charge plusieurs styles de polices incluant <a href=\"/font-generator/cursive\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">générateur de polices cursives</a>, <a href=\"/font-generator/fancy\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">générateur de polices fantaisie</a>, gras, italique, gothique, tatouage, calligraphie, old english, 3D et bien plus encore. Vous pouvez prévisualiser tous les styles disponibles en temps réel."
+    },
+    {
+      "q": "Ce générateur de polices est-il vraiment gratuit ?",
+      "a": "Oui ! Toolaze est 100% gratuit sans publicité, sans inscription et sans frais cachés. Toute la génération de polices se fait dans votre navigateur."
+    },
+    {
+      "q": "Puis-je utiliser ces polices sur les réseaux sociaux ?",
+      "a": "Oui, vous pouvez copier et coller les polices générées sur Instagram, Facebook, Twitter, TikTok, Discord et d'autres plateformes qui prennent en charge les caractères Unicode. Pour les polices spécifiques à une plateforme, essayez notre <a href=\"/font-generator/instagram\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">générateur de polices Instagram</a> ou <a href=\"/font-generator/discord\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">générateur de polices Discord</a>."
+    },
+    {
+      "q": "Mes textes sont-ils téléchargés sur un serveur ?",
+      "a": "Non ! Toute la génération de polices se fait localement dans votre navigateur en utilisant JavaScript. Votre texte ne quitte jamais votre appareil, garantissant une confidentialité complète."
+    },
+    {
+      "q": "Puis-je télécharger des fichiers de polices ?",
+      "a": "Toolaze génère du texte stylisé que vous pouvez copier et coller. Nous ne fournissons pas de fichiers de polices téléchargeables (.ttf, .otf), mais vous pouvez utiliser le texte généré n'importe où."
+    },
+    {
+      "q": "Y a-t-il une limite de caractères ?",
+      "a": "Non, il n'y a aucune limite de caractères. Vous pouvez générer du texte stylisé pour des phrases, des paragraphes ou même des documents entiers. Le générateur traite votre texte instantanément quelle que soit sa longueur."
+    }
+  ],
+  "moreTools": "Plus d'Outils de Générateur de Polices"
+}

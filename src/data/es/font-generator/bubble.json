@@ -1,0 +1,191 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Generador de Fuentes Burbuja (Gratis, Copiar y Pegar, Sin Anuncios) - Toolaze",
+    "description": "¿Cómo generar fuentes burbuja? 1. Escribe tu texto 2. Selecciona estilo burbuja 3. Copia y pega. Crea hermoso texto burbuja para Instagram, Facebook y redes sociales. Gratis y Privado."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Generador de Fuentes Burbuja",
+    "desc": "Genera hermosas fuentes burbuja en línea de forma gratuita. Simplemente escribe tu texto a continuación para crear texto burbuja elegante que puedas copiar y pegar en cualquier lugar."
+  },
+  "intro": {
+    "title": "¿Por qué usar un generador de fuentes burbuja?",
+    "content": [
+      {
+        "title": "¿Qué es una fuente burbuja?",
+        "text": "Las fuentes burbuja presentan formas de letras redondeadas y juguetonas que crean una apariencia suave y amigable. Estas tipografías alegres usan estilos Unicode redondeados y en negrita que parecen burbujas o globos. Las fuentes burbuja se caracterizan por su estética divertida y accesible, haciéndolas perfectas para contenido infantil, marcas casuales, decoraciones de fiestas y proyectos que necesitan una sensación alegre y amigable. Para estilos juguetonos similares, prueba nuestro <a href=\"/font-generator/disney\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">generador de fuentes Disney</a> o generador de fuentes cursivas."
+      },
+      {
+        "title": "¿Por qué generar texto burbuja en línea?",
+        "text": "Crear texto burbuja juguetón para libros infantiles, materiales de fiestas o contenido casual típicamente requiere software de diseño y selección de fuentes. Nuestro generador de texto burbuja proporciona acceso instantáneo a estilos de texto redondeados y amigables que capturan esa estética burbuja divertida. Ya sea que estés diseñando materiales infantiles, creando decoraciones de fiestas o desarrollando contenido de marca casual, nuestra herramienta transforma cualquier texto en estilo burbuja alegre instantáneamente—añadiendo ese toque juguetón y accesible a tus proyectos. Explora más estilos con nuestro <a href=\"/font-generator\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">generador de fuentes</a>."
+      }
+    ]
+  },
+  "features": {
+    "title": "Características Potentes de Fuentes Burbuja",
+    "items": [
+      {
+        "icon": "🎈",
+        "iconType": "quality",
+        "title": "Estilos Redondeados Juguetonos",
+        "desc": "Genera fuentes burbuja divertidas con formas de letras redondeadas y amigables que crean una apariencia alegre."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Procesamiento Local Seguro",
+        "desc": "La generación de fuentes ocurre completamente en tu navegador—tu texto permanece privado y seguro."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Texto Burbuja Instantáneo",
+        "desc": "Observa tu texto transformarse a estilo burbuja inmediatamente con vista previa en vivo mientras escribes."
+      },
+      {
+        "icon": "📋",
+        "iconType": "batch",
+        "title": "Copia Texto Burbuja",
+        "desc": "Copia tu texto burbuja instantáneamente y pégalo en contenido infantil, decoraciones de fiestas o marca casual."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Fuentes Burbuja Gratis",
+        "desc": "Generación ilimitada de fuentes burbuja completamente gratis—sin tarifas, sin suscripciones, sin anuncios."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "Solo Navegador",
+        "desc": "Funciona completamente en tu navegador—no se requieren descargas de software ni instalaciones de fuentes burbuja."
+      }
+    ]
+  },
+  "specs": {
+    "engine": "Renderizado de Fuentes Nativo del Navegador - Procesamiento del Lado del Cliente",
+    "limit": "Longitud de Texto Ilimitada - Sin Límites de Caracteres",
+    "logic": "Vista Previa en Tiempo Real (Aplicación Instantánea de Estilo)",
+    "privacy": "100% del Lado del Cliente (Procesamiento Local del Navegador)"
+  },
+  "performanceMetrics": {
+    "title": "Especificaciones Técnicas",
+    "metrics": [
+      {
+        "label": "Estilo de Fuente",
+        "value": "Burbuja (Estilo Distintivo)"
+      },
+      {
+        "label": "Longitud del Texto",
+        "value": "Caracteres ilimitados"
+      },
+      {
+        "label": "Velocidad de Procesamiento",
+        "value": "Instantáneo (Vista previa en tiempo real)"
+      },
+      {
+        "label": "Formato de Salida",
+        "value": "Texto Unicode (Listo para copiar y pegar)"
+      },
+      {
+        "label": "Soporte de Plataformas",
+        "value": "Instagram, Facebook, Twitter, TikTok, Discord y más"
+      },
+      {
+        "label": "Ubicación de Procesamiento",
+        "value": "100% del Lado del Cliente (JavaScript del Navegador)"
+      },
+      {
+        "label": "Privacidad",
+        "value": "Sin subidas al servidor, procesamiento local completo"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Cómo Generar Fuentes Burbuja",
+    "steps": [
+      {
+        "title": "Escribe Tu Texto",
+        "desc": "Ingresa el texto que deseas transformar en estilo burbuja juguetón en el campo de entrada arriba."
+      },
+      {
+        "title": "Elige Estilo Burbuja",
+        "desc": "Selecciona entre estilos de fuentes burbuja redondeados y amigables y previsualiza cómo se ve tu texto con esa apariencia alegre."
+      },
+      {
+        "title": "Copia Texto Burbuja",
+        "desc": "Haz clic en el botón de copiar para copiar tu texto burbuja, luego pégalo en contenido infantil, decoraciones de fiestas o marca casual."
+      }
+    ]
+  },
+  "comparison": {
+    "title": "¿Por qué elegir Toolaze?",
+    "toolaze": "Toolaze 💎",
+    "others": "Otras Herramientas",
+    "vs": "VS",
+    "smartChoice": "Elección Inteligente",
+    "otherTools": "Otras Herramientas",
+    "toolazeFeatures": "Generación ilimitada de texto burbuja, Estilos redondeados juguetonos, Vista previa en tiempo real, Procesamiento del lado del cliente, Sin límites, Privacidad total, Gratis para siempre",
+    "othersFeatures": "Restricciones de texto, Fuentes burbuja limitadas, Procesamiento lento, Subidas a la nube, Problemas de privacidad, Marcas de agua, Suscripciones de pago"
+  },
+  "scenesTitle": "Casos de Uso",
+  "scenes": [
+    {
+      "title": "Contenido Infantil",
+      "icon": "🎈",
+      "desc": "Crea fuentes burbuja divertidas para libros infantiles, materiales educativos y decoraciones de fiestas infantiles. Genera texto juguetón y amigable que atraiga a audiencias jóvenes."
+    },
+    {
+      "title": "Marcas Casuales",
+      "icon": "😊",
+      "desc": "Genera texto burbuja para marcas de ropa casual, productos de estilo de vida y materiales de marketing amigables. Añade una sensación alegre y accesible a tu marca."
+    },
+    {
+      "title": "Publicaciones de Redes Sociales",
+      "icon": "💬",
+      "desc": "Usa fuentes burbuja para publicaciones divertidas de redes sociales, memes y contenido casual. Crea texto llamativo y amigable que se destaque en los feeds sociales."
+    }
+  ],
+  "rating": {
+    "title": "Confiado por Miles de Creadores",
+    "rating": "4.9/5 DE MÁS DE 10K CREADORES",
+    "text": "\"El mejor generador de fuentes burbuja que he encontrado. ¡Resultados instantáneos y funciona perfectamente en Instagram!\" - Únete a miles de usuarios que confían en Toolaze para la generación de hermoso texto burbuja."
+  },
+  "faqTitle": "Preguntas Frecuentes",
+  "faq": [
+    {
+      "q": "¿Qué hace que una fuente sea estilo 'burbuja'?",
+      "a": "Las fuentes burbuja tienen una apariencia redondeada y juguetona que se ve suave y amigable. Nuestro generador burbuja usa estilos Unicode redondeados y en negrita que crean esa estética burbuja divertida y accesible."
+    },
+    {
+      "q": "¿Son buenas las fuentes burbuja para contenido infantil?",
+      "a": "¡Sí! Las fuentes burbuja son perfectas para libros infantiles, materiales educativos y decoraciones de fiestas infantiles. Son juguetonas, amigables y atraen a audiencias jóvenes."
+    },
+    {
+      "q": "¿Puedo usar fuentes burbuja para marcas casuales?",
+      "a": "¡Absolutamente! Las fuentes burbuja funcionan muy bien para marcas de ropa casual, productos de estilo de vida y materiales de marketing amigables. Añaden una sensación alegre y accesible a tu marca."
+    },
+    {
+      "q": "¿Funcionarán las fuentes burbuja en redes sociales?",
+      "a": "¡Sí! Las fuentes burbuja son perfectas para publicaciones divertidas de redes sociales, memes y contenido casual. Crean texto llamativo y amigable que se destaca en los feeds sociales."
+    },
+    {
+      "q": "¿Son legibles las fuentes burbuja?",
+      "a": "Sí, las fuentes burbuja generalmente son muy legibles. Su estilo redondeado y en negrita las hace fáciles de leer, incluso en tamaños más pequeños, por eso son populares para contenido infantil. Para estilos juguetonos similares, consulta nuestro <a href=\"/font-generator/disney\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">generador de fuentes Disney</a> o explora nuestra colección de generador de fuentes."
+    }
+  ],
+  "compare": {
+    "toolaze": "Generación ilimitada de texto burbuja, Múltiples estilos elegantes, Vista previa instantánea en tiempo real, Arquitectura local primero, Sin límites de caracteres, Protección completa de privacidad, 100% gratis para siempre",
+    "others": "Límites de caracteres, Opciones de estilo limitadas, Procesamiento lento del servidor, Subidas a la nube requeridas, Preocupaciones de privacidad, Marcas de agua o anuncios, Funciones premium de pago"
+  }
+}

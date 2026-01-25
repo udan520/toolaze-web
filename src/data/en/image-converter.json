@@ -1,0 +1,126 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Free Image Converter - Batch Convert Images Online | Toolaze",
+    "description": "Convert images between JPG, PNG, and WebP formats. Batch convert up to 100 images. Fast, private, 100% free. No sign-up required."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Free <span class=\"text-gradient\">Image Converter</span>",
+    "desc": "Convert images between JPG, PNG, and WebP formats. Batch convert up to 100 images. Fast, private, 100% free. No sign-up required."
+  },
+  "intro": {
+    "title": "Why Use Toolaze Image Converter?",
+    "content": [
+      {
+        "title": "Convert Images Without Quality Loss",
+        "text": "Convert images between JPG, PNG, and WebP formats instantly. Our browser-based converter processes images locally, ensuring complete privacy and fast conversion. Perfect for web developers, designers, and content creators."
+      }
+    ]
+  },
+  "features": {
+    "title": "Powerful Image Conversion Features",
+    "items": [
+      {
+        "icon": "📂",
+        "iconType": "batch",
+        "title": "Batch Processing",
+        "desc": "Convert up to 100 images at once"
+      },
+      {
+        "icon": "🔄",
+        "iconType": "formats",
+        "title": "Multiple Formats",
+        "desc": "JPG, PNG, WebP, and HEIC support"
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "100% Free",
+        "desc": "No ads forever."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "How to Use Toolaze?",
+    "steps": [
+      {
+        "title": "Upload Images",
+        "desc": "Drag and drop up to 100 images or folders. Supports JPG, PNG, WebP, BMP, and HEIC formats."
+      },
+      {
+        "title": "Choose Format",
+        "desc": "Select your target format: JPG, PNG, or WebP. Our converter maintains quality during conversion."
+      },
+      {
+        "title": "Download Results",
+        "desc": "Download individual converted images or all at once as a ZIP file. Fast and efficient."
+      }
+    ]
+  },
+  "comparison": {
+    "title": "Why Choose Toolaze?",
+    "toolaze": "Toolaze 💎",
+    "others": "Other Tools",
+    "vs": "VS",
+    "smartChoice": "Smart Choice",
+    "otherTools": "Other Tools",
+    "toolazeFeatures": "Batch up to 100 images, Multiple format support, Quality preserved, 100% private & free, No sign-up required",
+    "othersFeatures": "Limited batch size, Format restrictions, Quality loss, Privacy concerns, Registration required"
+  },
+  "scenesTitle": "Use Cases",
+  "scenes": [
+    {
+      "title": "For Web Developers",
+      "icon": "💻",
+      "desc": "Convert images to WebP for better performance. Optimize formats for faster page loads and improved SEO."
+    },
+    {
+      "title": "For Designers",
+      "icon": "🎨",
+      "desc": "Convert between formats for different design needs. Preserve transparency with PNG or optimize with JPG."
+    },
+    {
+      "title": "For Content Creators",
+      "icon": "📱",
+      "desc": "Batch convert images for social media and blogs. Ensure compatibility across all platforms."
+    }
+  ],
+  "rating": {
+    "title": "Trusted by Thousands of Creators",
+    "rating": "4.9/5 FROM 10K+ CREATORS",
+    "text": "Join thousands of satisfied users who trust Toolaze for fast, secure, and free image conversion. No registration required, 100% private processing."
+  },
+  "faqTitle": "Frequently Asked Questions",
+  "faq": [
+    {
+      "q": "Which image formats are supported?",
+      "a": "Toolaze supports converting between JPG, PNG, and WebP formats. You can upload images in JPG, PNG, WebP, BMP, or HEIC format."
+    },
+    {
+      "q": "Is this tool really free?",
+      "a": "Yes! Toolaze is 100% free with no ads, no registration, and no hidden fees. All processing happens in your browser."
+    },
+    {
+      "q": "Can I convert more than 100 images?",
+      "a": "The maximum batch size is 100 files per session. For larger batches, simply process them in multiple sessions."
+    },
+    {
+      "q": "Are my images uploaded to a server?",
+      "a": "No! All image conversion happens locally in your browser using JavaScript. Your images never leave your device, ensuring complete privacy."
+    },
+    {
+      "q": "Will quality be preserved during conversion?",
+      "a": "Quality preservation depends on the target format. PNG is lossless, while JPG and WebP use lossy compression but maintain high visual quality."
+    }
+  ],
+  "moreTools": "More Image Converter Tools"
+}

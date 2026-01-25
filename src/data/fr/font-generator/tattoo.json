@@ -1,0 +1,191 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Générateur de Polices Tatouage (Gratuit, Copier-Coller et Sans Publicité) - Toolaze",
+    "description": "Comment générer des polices tatouage ? 1. Tapez votre texte 2. Sélectionnez le style tatouage 3. Copiez et collez. Créez de beaux textes tatouage pour Instagram, Facebook et les réseaux sociaux. Gratuit et Privé."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Générateur de Polices Tatouage",
+    "desc": "Générez de belles polices tatouage en ligne gratuitement. Tapez simplement votre texte ci-dessous pour créer un texte tatouage élégant que vous pouvez copier et coller n'importe où."
+  },
+  "intro": {
+    "title": "Pourquoi utiliser un Générateur de Polices Tatouage ?",
+    "content": [
+      {
+        "title": "Qu'est-ce qu'une Police Tatouage ?",
+        "text": "Les polices tatouage combinent des éléments en gras, gothiques et décoratifs spécifiquement conçus pour l'esthétique de l'art corporel. Ces typographies distinctives présentent des lignes fortes, des formes de caractères uniques et des styles audacieux qui capturent l'esprit rebelle de la culture du tatouage. Les polices tatouage se caractérisent par leur présence audacieuse, faisant que le texte se démarque qu'il soit utilisé dans des designs de tatouages réels, des vêtements streetwear ou le branding de mode alternative. Pour des styles similaires en gras, consultez notre <a href=\"/font-generator/gothic\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">générateur de polices gothiques</a> ou <a href=\"/font-generator/bold\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">générateur de polices en gras</a>."
+      },
+      {
+        "title": "Pourquoi générer du texte tatouage en ligne ?",
+        "text": "Créer du texte style tatouage nécessite traditionnellement un logiciel de conception spécialisé et une vaste connaissance de la typographie. Les tatoueurs et les passionnés passent souvent des heures à chercher le style de police parfait qui correspond à leur vision. Parfait pour les designers de tatouages, les passionnés d'art corporel et les marques de mode alternative qui ont besoin d'une typographie distinctive et accrocheuse. Explorez plus de styles avec notre collection de <a href=\"/font-generator\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">générateur de polices</a>."
+      }
+    ]
+  },
+  "features": {
+    "title": "Fonctionnalités Puissantes des Polices Tatouage",
+    "items": [
+      {
+        "icon": "🖋️",
+        "iconType": "quality",
+        "title": "Styles Tatouage en Gras",
+        "desc": "Choisissez parmi plusieurs styles de polices tatouage audacieux incluant des variations gothiques, en gras et décoratives."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Traitement Local Uniquement",
+        "desc": "Toute la génération de polices se fait sur votre appareil—votre texte ne quitte jamais votre ordinateur, garantissant une sécurité complète."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Transformation Instantanée",
+        "desc": "Observez votre texte se convertir en style tatouage immédiatement avec un aperçu en direct pendant que vous tapez."
+      },
+      {
+        "icon": "📋",
+        "iconType": "batch",
+        "title": "Copie-Coller Rapide",
+        "desc": "Copiez votre texte tatouage en un seul clic et utilisez-le n'importe où—réseaux sociaux, designs ou documents."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Gratuit pour Toujours",
+        "desc": "Générez des polices tatouage illimitées complètement gratuitement—aucun paiement, aucune fonctionnalité premium, aucune publicité."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "Aucun Téléchargement",
+        "desc": "Tout fonctionne dans votre navigateur en utilisant la technologie côté client—aucun logiciel ni polices à installer."
+      }
+    ]
+  },
+  "specs": {
+    "engine": "Rendu de Polices Natif du Navigateur - Traitement Côté Client",
+    "limit": "Longueur de Texte Illimitée - Aucune Limite de Caractères",
+    "logic": "Aperçu en Temps Réel (Application Instantanée de Style)",
+    "privacy": "100% Côté Client (Traitement Local du Navigateur)"
+  },
+  "performanceMetrics": {
+    "title": "Spécifications Techniques",
+    "metrics": [
+      {
+        "label": "Style de Police",
+        "value": "Tatouage (Style Distinctif)"
+      },
+      {
+        "label": "Longueur du Texte",
+        "value": "Caractères illimités"
+      },
+      {
+        "label": "Vitesse de Traitement",
+        "value": "Instantané (Aperçu en temps réel)"
+      },
+      {
+        "label": "Format de Sortie",
+        "value": "Texte Unicode (Prêt à copier-coller)"
+      },
+      {
+        "label": "Support de Plateformes",
+        "value": "Instagram, Facebook, Twitter, TikTok, Discord et plus encore"
+      },
+      {
+        "label": "Emplacement de Traitement",
+        "value": "100% Côté Client (JavaScript du Navigateur)"
+      },
+      {
+        "label": "Confidentialité",
+        "value": "Aucun téléchargement serveur, traitement local complet"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Comment Générer des Polices Tatouage",
+    "steps": [
+      {
+        "title": "Tapez Votre Texte",
+        "desc": "Entrez le nom, la citation ou la phrase que vous souhaitez transformer en style tatouage en gras dans le champ de saisie ci-dessus."
+      },
+      {
+        "title": "Sélectionnez le Style Tatouage",
+        "desc": "Explorez différents styles de polices tatouage incluant des options gothiques, en gras et décoratives. Prévisualisez chaque style pour trouver la correspondance parfaite pour votre design."
+      },
+      {
+        "title": "Copiez le Texte Tatouage",
+        "desc": "Cliquez sur copier pour obtenir votre texte style tatouage, puis collez-le dans un logiciel de conception, des réseaux sociaux ou partagez-le avec votre tatoueur."
+      }
+    ]
+  },
+  "comparison": {
+    "title": "Pourquoi Choisir Toolaze ?",
+    "toolaze": "Toolaze 💎",
+    "others": "Autres Outils",
+    "vs": "VS",
+    "smartChoice": "Choix Intelligent",
+    "otherTools": "Autres Outils",
+    "toolazeFeatures": "Génération illimitée de texte tatouage, Multiples styles gothiques en gras, Aperçu instantané, Traitement local du navigateur, Aucune limite de longueur de texte, Confidentialité complète, 100% gratuit pour toujours",
+    "othersFeatures": "Restrictions de longueur de texte, Peu d'options de style, Retards côté serveur, Téléchargements cloud requis, Risques de confidentialité des données, Publicités, Fonctionnalités premium"
+  },
+  "scenesTitle": "Cas d'Utilisation",
+  "scenes": [
+    {
+      "title": "Designers de Tatouages",
+      "icon": "🖋️",
+      "desc": "Créez des designs de polices tatouage uniques pour les clients. Prévisualisez différentes polices style tatouage pour trouver la correspondance parfaite pour les noms, citations ou texte significatif avant de tatouer."
+    },
+    {
+      "title": "Passionnés d'Art Corporel",
+      "icon": "💪",
+      "desc": "Expérimentez avec des polices tatouage pour votre prochain design d'encre. Testez l'apparence de votre nom, citation ou phrase dans divers styles de tatouage en gras, gothiques et décoratifs."
+    },
+    {
+      "title": "Marques de Mode Alternative",
+      "icon": "👕",
+      "desc": "Utilisez des polices tatouage pour les designs de vêtements, les marchandises et les logos de marque. Créez du texte audacieux et en gras qui capture l'esprit rebelle de la culture du tatouage."
+    }
+  ],
+  "rating": {
+    "title": "Approuvé par des Milliers de Créateurs",
+    "rating": "4.9/5 DE PLUS DE 10K CRÉATEURS",
+    "text": "\"Le meilleur générateur de polices tatouage que j'ai trouvé. Résultats instantanés et fonctionne parfaitement sur Instagram !\" - Rejoignez des milliers d'utilisateurs qui font confiance à Toolaze pour la génération de beaux textes tatouage."
+  },
+  "faqTitle": "Questions Fréquemment Posées",
+  "faq": [
+    {
+      "q": "Puis-je utiliser ces polices tatouage pour des designs de tatouages réels ?",
+      "a": "Oui ! De nombreux tatoueurs et clients utilisent notre générateur pour prévisualiser les styles de texte avant de se faire tatouer. Cependant, consultez toujours votre tatoueur, car il peut avoir besoin d'adapter la police pour votre design spécifique et l'emplacement corporel."
+    },
+    {
+      "q": "Les polices tatouage sont-elles adaptées aux tatouages permanents ?",
+      "a": "Nos polices tatouage sont excellentes pour l'inspiration de design et les prévisualisations. Pour les tatouages réels, travaillez avec votre artiste pour vous assurer que le style est approprié pour la taille et l'emplacement de votre tatouage, car certaines polices peuvent nécessiter un ajustement pour la lisibilité lorsqu'elles sont tatouées."
+    },
+    {
+      "q": "Puis-je utiliser des polices tatouage pour les designs de vêtements ?",
+      "a": "Absolument ! Les polices tatouage sont parfaites pour le streetwear, les marchandises de groupes et la mode alternative. Les styles audacieux et en gras fonctionnent très bien sur les t-shirts, les sweats à capuche et les accessoires."
+    },
+    {
+      "q": "Les polices tatouage fonctionnent-elles sur les réseaux sociaux ?",
+      "a": "Oui ! Les polices tatouage utilisent des caractères Unicode qui s'affichent bien sur Instagram, Facebook, Twitter et TikTok. Elles sont parfaites pour créer du contenu de réseaux sociaux audacieux et accrocheur."
+    },
+    {
+      "q": "Quelle est la différence entre les polices tatouage et les polices gothiques ?",
+      "a": "Les polices tatouage combinent souvent des éléments en gras, gothiques et décoratifs spécifiquement choisis pour l'esthétique du tatouage. Les polices gothiques sont plus traditionnelles et formelles, tandis que les polices tatouage sont conçues pour être plus polyvalentes pour l'art corporel. Explorez notre <a href=\"/font-generator/gothic\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">générateur de polices gothiques</a> pour des styles plus traditionnels, ou explorez tous nos outils de <a href=\"/font-generator\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">générateur de polices</a>."
+    }
+  ],
+  "compare": {
+    "toolaze": "Génération illimitée de texte tatouage, Multiples styles élégants, Aperçu instantané en temps réel, Architecture local-first, Aucune limite de caractères, Protection complète de la confidentialité, 100% gratuit pour toujours",
+    "others": "Limites de caractères, Options de style limitées, Traitement lent du serveur, Téléchargements cloud requis, Préoccupations de confidentialité, Filigranes ou publicités, Fonctionnalités premium payantes"
+  }
+}

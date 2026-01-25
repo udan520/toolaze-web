@@ -150,7 +150,9 @@
     }
   ],
   "rating": {
-    "text": "\"Der beste Schriftgenerator, den ich gefunden habe. Sofortige Ergebnisse und funktioniert perfekt auf Instagram!\" - Schließen Sie sich TaVerwenden Sienden von Benutzern an, die Toolaze für schöne Schriftgenerierung vertrauen."
+    "title": "Von Tausenden von Kreativen vertraut",
+    "rating": "4.9/5 VON 10K+ KREATIVEN",
+    "text": "\"Der beste Schriftgenerator, den ich gefunden habe. Sofortige Ergebnisse und funktioniert perfekt auf Instagram!\" - Schließen Sie sich Tausenden von Benutzern an, die Toolaze für schöne Schriftgenerierung vertrauen."
   },
   "faq": [
     {
@@ -177,5 +179,6 @@
       "q": "Gibt es ein Zeichenlimit?",
       "a": "Nein, es gibt keine Zeichenlimits. Sie können formatierte Texte für Sätze, Absätze oder sogar ganze Dokumente generieren. Der Generator verarbeitet Ihren Text sofort, unabhängig von der Länge."
     }
-  ]
+  ],
+  "moreTools": "Weitere Schriftgenerator-Tools"
 }

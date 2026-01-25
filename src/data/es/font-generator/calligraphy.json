@@ -1,0 +1,191 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Generador de Fuentes Caligráficas (Gratis, Copiar y Pegar, Sin Anuncios) - Toolaze",
+    "description": "¿Cómo generar fuentes caligráficas? 1. Escribe tu texto 2. Selecciona estilo caligráfico 3. Copia y pega. Crea hermoso texto caligráfico para Instagram, Facebook y redes sociales. Gratis y Privado."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Generador de Fuentes Caligráficas",
+    "desc": "Genera hermosas fuentes caligráficas en línea de forma gratuita. Simplemente escribe tu texto a continuación para crear texto caligráfico elegante que puedas copiar y pegar en cualquier lugar."
+  },
+  "intro": {
+    "title": "¿Por qué usar un generador de fuentes caligráficas?",
+    "content": [
+      {
+        "title": "¿Qué es una fuente caligráfica?",
+        "text": "Las fuentes caligráficas presentan formas de letras elegantes y escritas a mano con adornos decorativos y elementos ornamentales. Estas tipografías sofisticadas imitan la escritura tradicional, creando una sensación de elegancia atemporal y artesanía. Las fuentes caligráficas se caracterizan por sus curvas elegantes, detalles decorativos y apariencia formal, haciéndolas perfectas para invitaciones de boda, certificados, premios y proyectos que requieren una estética prestigiosa y hecha a mano. Para estilos elegantes similares, explora nuestro <a href=\"/font-generator/cursive\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">generador de fuentes cursivas</a> o generador de fuentes decorativas."
+      },
+      {
+        "title": "¿Por qué generar texto caligráfico en línea?",
+        "text": "La caligrafía tradicional requiere años de práctica y herramientas costosas. Los servicios profesionales de caligrafía pueden costar cientos de dólares por un solo proyecto. Nuestro generador de texto caligráfico proporciona acceso instantáneo a fuentes elegantes estilo escrito a mano que capturan esa estética caligráfica clásica. Ya sea que estés diseñando papelería de boda, creando certificados o desarrollando materiales de marca artesanales, nuestra herramienta transforma cualquier texto en estilo caligráfico hermoso instantáneamente—llevando esa elegancia atemporal a tus proyectos sin el costo o la complejidad. Encuentra más fuentes elegantes con nuestro <a href=\"/font-generator\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">generador de fuentes</a>."
+      }
+    ]
+  },
+  "features": {
+    "title": "Características Potentes de Fuentes Caligráficas",
+    "items": [
+      {
+        "icon": "🖋️",
+        "iconType": "quality",
+        "title": "Estilos Escritos a Mano Elegantes",
+        "desc": "Accede a hermosas fuentes caligráficas con adornos decorativos y elementos ornamentales."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Generación de Fuentes Privada",
+        "desc": "Toda la generación de fuentes caligráficas ocurre localmente—tu texto nunca sale de tu dispositivo."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Texto Caligráfico Inmediato",
+        "desc": "Transforma tu texto a estilo caligráfico instantáneamente con vista previa en tiempo real mientras escribes."
+      },
+      {
+        "icon": "📋",
+        "iconType": "batch",
+        "title": "Copia Texto Caligráfico",
+        "desc": "Copia tu texto caligráfico instantáneamente y pégalo en invitaciones, certificados o documentos formales."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Fuentes Caligráficas Gratis",
+        "desc": "Generación ilimitada de fuentes caligráficas completamente gratis—sin tarifas, sin suscripciones, sin anuncios."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "Basado en Navegador",
+        "desc": "Funciona completamente en tu navegador—no se requiere software ni descargas de fuentes caligráficas."
+      }
+    ]
+  },
+  "specs": {
+    "engine": "Renderizado de Fuentes Nativo del Navegador - Procesamiento del Lado del Cliente",
+    "limit": "Longitud de Texto Ilimitada - Sin Límites de Caracteres",
+    "logic": "Vista Previa en Tiempo Real (Aplicación Instantánea de Estilo)",
+    "privacy": "100% del Lado del Cliente (Procesamiento Local del Navegador)"
+  },
+  "performanceMetrics": {
+    "title": "Especificaciones Técnicas",
+    "metrics": [
+      {
+        "label": "Estilo de Fuente",
+        "value": "Caligráfica (Estilo Distintivo)"
+      },
+      {
+        "label": "Longitud del Texto",
+        "value": "Caracteres ilimitados"
+      },
+      {
+        "label": "Velocidad de Procesamiento",
+        "value": "Instantáneo (Vista previa en tiempo real)"
+      },
+      {
+        "label": "Formato de Salida",
+        "value": "Texto Unicode (Listo para copiar y pegar)"
+      },
+      {
+        "label": "Soporte de Plataformas",
+        "value": "Instagram, Facebook, Twitter, TikTok, Discord y más"
+      },
+      {
+        "label": "Ubicación de Procesamiento",
+        "value": "100% del Lado del Cliente (JavaScript del Navegador)"
+      },
+      {
+        "label": "Privacidad",
+        "value": "Sin subidas al servidor, procesamiento local completo"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Cómo Generar Fuentes Caligráficas",
+    "steps": [
+      {
+        "title": "Escribe Tu Texto",
+        "desc": "Ingresa el texto que deseas transformar en estilo caligráfico elegante en el campo de entrada arriba."
+      },
+      {
+        "title": "Selecciona Estilo Caligráfico",
+        "desc": "Elige entre hermosos estilos de fuentes caligráficas con adornos decorativos y previsualiza cómo se ve tu texto."
+      },
+      {
+        "title": "Copia Texto Caligráfico",
+        "desc": "Haz clic en el botón de copiar para copiar tu texto caligráfico, luego pégalo en invitaciones de boda, certificados o documentos formales."
+      }
+    ]
+  },
+  "comparison": {
+    "title": "¿Por qué elegir Toolaze?",
+    "toolaze": "Toolaze 💎",
+    "others": "Otras Herramientas",
+    "vs": "VS",
+    "smartChoice": "Elección Inteligente",
+    "otherTools": "Otras Herramientas",
+    "toolazeFeatures": "Generación ilimitada de texto caligráfico, Estilos escritos a mano elegantes, Vista previa instantánea, Procesamiento local, Sin límites, Privacidad completa, Gratis para siempre",
+    "othersFeatures": "Límites de caracteres, Pocas opciones caligráficas, Retrasos del servidor, Subidas requeridas, Preocupaciones de privacidad, Anuncios, Niveles premium"
+  },
+  "scenesTitle": "Casos de Uso",
+  "scenes": [
+    {
+      "title": "Diseñadores de Papelería de Boda",
+      "icon": "💌",
+      "desc": "Crea fuentes caligráficas elegantes para invitaciones de boda, tarjetas de lugar y programas de ceremonia. Añade un toque atemporal y sofisticado a eventos especiales."
+    },
+    {
+      "title": "Diseñadores de Certificados",
+      "icon": "🏆",
+      "desc": "Genera texto caligráfico para certificados, premios y diplomas. Crea documentos formales y prestigiosos con hermosas fuentes caligráficas estilo escrito a mano."
+    },
+    {
+      "title": "Marcas Artesanales",
+      "icon": "🖼️",
+      "desc": "Usa fuentes caligráficas para etiquetas de productos artesanales, señalización de ferias artesanales y productos hechos a mano. Añade una sensación personal y hecha a mano a tu marca."
+    }
+  ],
+  "rating": {
+    "title": "Confiado por Miles de Creadores",
+    "rating": "4.9/5 DE MÁS DE 10K CREADORES",
+    "text": "\"El mejor generador de fuentes caligráficas que he encontrado. ¡Resultados instantáneos y funciona perfectamente en Instagram!\" - Únete a miles de usuarios que confían en Toolaze para la generación de hermoso texto caligráfico."
+  },
+  "faqTitle": "Preguntas Frecuentes",
+  "faq": [
+    {
+      "q": "¿Las fuentes caligráficas son lo mismo que las fuentes cursivas?",
+      "a": "Aunque similares, las fuentes caligráficas típicamente tienen más adornos decorativos y elementos ornamentales que las cursivas simples. Nuestro generador caligráfico se enfoca en fuentes elegantes estilo escrito a mano con esa estética caligráfica clásica."
+    },
+    {
+      "q": "¿Puedo usar fuentes caligráficas para invitaciones de boda?",
+      "a": "¡Sí! Las fuentes caligráficas son perfectas para invitaciones de boda, tarjetas de lugar y programas de ceremonia. Añaden ese toque atemporal y sofisticado a eventos especiales."
+    },
+    {
+      "q": "¿Son legibles las fuentes caligráficas?",
+      "a": "Las fuentes caligráficas priorizan la elegancia sobre la legibilidad rápida. Funcionan mejor para texto corto como nombres, títulos e invitaciones donde el estilo decorativo es más importante que la lectura rápida."
+    },
+    {
+      "q": "¿Funcionarán las fuentes caligráficas en impresión?",
+      "a": "¡Sí! Las fuentes caligráficas funcionan hermosamente en materiales impresos. Son ideales para invitaciones formales, certificados y documentos impresos de alta calidad."
+    },
+    {
+      "q": "¿Puedo usar fuentes caligráficas para certificados?",
+      "a": "¡Absolutamente! Las fuentes caligráficas son perfectas para certificados, premios y diplomas. Crean esa apariencia formal y prestigiosa que los documentos oficiales necesitan. Para estilos elegantes similares, consulta nuestro <a href=\"/font-generator/cursive\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">generador de fuentes cursivas</a> o generador de fuentes decorativas, o explora nuestras herramientas de generador de fuentes."
+    }
+  ],
+  "compare": {
+    "toolaze": "Generación ilimitada de texto caligráfico, Múltiples estilos elegantes, Vista previa instantánea en tiempo real, Arquitectura local primero, Sin límites de caracteres, Protección completa de privacidad, 100% gratis para siempre",
+    "others": "Límites de caracteres, Opciones de estilo limitadas, Procesamiento lento del servidor, Subidas a la nube requeridas, Preocupaciones de privacidad, Marcas de agua o anuncios, Funciones premium de pago"
+  }
+}

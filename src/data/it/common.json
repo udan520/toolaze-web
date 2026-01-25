@@ -3,6 +3,7 @@
     "quickTools": "Strumenti Rapidi",
     "imageCompression": "Compressione Immagini",
     "imageConverter": "Convertitore Immagini",
+    "fontGenerator": "Generatore di Font",
     "aboutUs": "Chi Siamo"
   },
   "home": {
@@ -78,6 +79,9 @@
     }
   },
   "footer": {
+    "imageCompression": "Compressione Immagini",
+    "imageConverter": "Convertitore Immagini",
+    "fontGenerator": "Generatore di Font",
     "home": "Casa",
     "allTools": "Tutti gli Strumenti",
     "aboutUs": "Chi Siamo",
@@ -93,6 +97,7 @@
     "quickTools": "Strumenti Rapidi",
     "imageCompression": "Compressione Immagini",
     "imageConverter": "Convertitore Immagini",
+    "fontGenerator": "Generatore di Font",
     "aboutUs": "Chi Siamo",
     "privacyPolicy": "Informativa sulla Privacy",
     "termsOfService": "Termini di Servizio"
@@ -205,6 +210,67 @@
     "viewAllTools": {
       "related": "Visualizza Tutti gli Strumenti Correlati",
       "all": "Visualizza Tutti gli Strumenti"
+    },
+    "fontGenerator": {
+      "selectFontStyle": "Seleziona uno stile di carattere",
+      "font": "carattere",
+      "fonts": "caratteri",
+      "allFonts": "Tutti i Caratteri",
+      "copy": "Copia",
+      "copied": "Copiato!",
+      "placeholder": "Aggiungi testo qui per iniziare....",
+      "defaultText": "Toolaze Font Generator 123",
+      "trustBar": {
+        "private": "100% Privato",
+        "instantPreview": "Anteprima Istantanea",
+        "noServerLogs": "Nessun Log del Server"
+      },
+      "fontTerms": {
+        "Bold": "Grassetto",
+        "Italic": "Corsivo",
+        "Sans Serif": "Sans Serif",
+        "Serif": "Serif",
+        "Cursive": "Corsivo",
+        "Script": "Script",
+        "Gothic": "Gotico",
+        "Fancy": "Decorativo",
+        "Fraktur": "Fraktur",
+        "Monospace": "Monospace",
+        "Fullwidth": "Larghezza Completa",
+        "Circled": "Cerchiato",
+        "Negative Circled": "Cerchiato Negativo",
+        "Squared": "Al Quadrato",
+        "Negative Squared": "Al Quadrato Negativo",
+        "Parenthesized": "Tra Parentesi",
+        "Small Caps": "Piccole Maiuscole",
+        "Superscript": "Apice",
+        "Subscript": "Pedice",
+        "Greek Style": "Stile Greco",
+        "Cyrillic Style": "Stile Cirillico",
+        "Regional Indicator": "Indicatore Regionale",
+        "Latin Extended": "Latino Esteso",
+        "Latin Extended-B": "Latino Esteso-B"
+      },
+      "moreTools": "Altri Strumenti Generatore di Font",
+      "categories": {
+        "all": "Tutti",
+        "cursive": "Corsivo",
+        "fancy": "Decorativo",
+        "bold": "Grassetto",
+        "tattoo": "Tatuaggio",
+        "cool": "Cool",
+        "instagram": "Instagram",
+        "italic": "Corsivo",
+        "gothic": "Gotico",
+        "calligraphy": "Calligrafia",
+        "discord": "Discord",
+        "oldEnglish": "Old English",
+        "3d": "3D",
+        "minecraft": "Minecraft",
+        "disney": "Disney",
+        "bubble": "Bolla",
+        "starWars": "Star Wars"
+      }
     }
   },
   "imageCompressor": {

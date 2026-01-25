@@ -13,6 +13,42 @@ const defaultTranslations = {
   selectFontStyle: 'Select a font style',
   font: 'font',
   fonts: 'fonts',
+  allFonts: 'All Fonts',
+  copy: 'Copy',
+  copied: 'Copied!',
+  placeholder: 'Add text here to get started....',
+  defaultText: 'Toolaze Font Generator 123',
+  trustBar: {
+    private: '100% Private',
+    instantPreview: 'Instant Preview',
+    noServerLogs: 'No Server Logs'
+  },
+  fontTerms: {
+    Bold: 'Bold',
+    Italic: 'Italic',
+    'Sans Serif': 'Sans Serif',
+    Serif: 'Serif',
+    Cursive: 'Cursive',
+    Script: 'Script',
+    Gothic: 'Gothic',
+    Fancy: 'Fancy',
+    Fraktur: 'Fraktur',
+    Monospace: 'Monospace',
+    Fullwidth: 'Fullwidth',
+    Circled: 'Circled',
+    'Negative Circled': 'Negative Circled',
+    Squared: 'Squared',
+    'Negative Squared': 'Negative Squared',
+    Parenthesized: 'Parenthesized',
+    'Small Caps': 'Small Caps',
+    Superscript: 'Superscript',
+    Subscript: 'Subscript',
+    'Greek Style': 'Greek Style',
+    'Cyrillic Style': 'Cyrillic Style',
+    'Regional Indicator': 'Regional Indicator',
+    'Latin Extended': 'Latin Extended',
+    'Latin Extended-B': 'Latin Extended-B'
+  },
   categories: {
     all: 'All',
     cursive: 'Cursive',
@@ -207,6 +243,7 @@ export default function FontGenerator() {
   // 多语言支持
   const [translations, setTranslations] = useState(defaultTranslations)
   const [currentLocale, setCurrentLocale] = useState('en')
+  const [mounted, setMounted] = useState(false)
   
   // 从路径中检测 locale
   useEffect(() => {
@@ -221,14 +258,30 @@ export default function FontGenerator() {
     loadTranslations(detectedLocale).then(setTranslations)
   }, [pathname])
   
+  // 标记组件已挂载（客户端）
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+  
   // 从 localStorage 恢复输入框状态，如果没有则使用默认值
+  // 服务器和客户端使用相同的初始值，避免水合错误
   const [inputText, setInputText] = useState(() => {
-    if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('font-generator-input')
-      return saved || 'Toolaze Font Generator 123'
-    }
-    return 'Toolaze Font Generator 123'
+    // 服务器和客户端都使用相同的默认值
+    return defaultTranslations.defaultText || 'Toolaze Font Generator 123'
   })
+  
+  // 客户端挂载后，从 localStorage 读取保存的值
+  useEffect(() => {
+    if (!mounted) return
+    
+    const saved = localStorage.getItem('font-generator-input')
+    if (saved) {
+      setInputText(saved)
+    } else if (translations?.defaultText && translations.defaultText !== defaultTranslations.defaultText) {
+      // 如果没有保存的值，使用翻译后的默认文本
+      setInputText(translations.defaultText)
+    }
+  }, [mounted, translations?.defaultText])
   
   // 跟踪哪个字体样式被复制了（用于显示 "Copied" 反馈）
   const [copiedFontId, setCopiedFontId] = useState<string | null>(null)
@@ -430,10 +483,51 @@ export default function FontGenerator() {
   // 过滤分类：只显示已存在的 L3 页面
   // 获取翻译后的分类名称
   const getCategoryName = (categoryId: string): string => {
+    if (!categoryId) return categoryId
+    
+    // 安全地访问 categories
+    const categories = translations?.categories
+    if (!categories || typeof categories !== 'object') {
+      return categoryId
+    }
+    
     const categoryKey = categoryId === 'old-english' ? 'oldEnglish' : 
                        categoryId === 'star-wars' ? 'starWars' : 
                        categoryId === '3d' ? '3d' : categoryId
-    return translations.categories[categoryKey as keyof typeof translations.categories] || categoryId
+    return (categories as Record<string, string>)[categoryKey] || categoryId
+  }
+  
+  // 获取翻译后的字体名称
+  // 字体名称可能是组合式的，如 "Bold Sans Serif Italic"
+  // 需要智能解析并翻译每个术语
+  const getFontName = (fontName: string): string => {
+    if (!fontName) return fontName
+    
+    // 安全地访问 fontTerms
+    const fontTerms = translations?.fontTerms as Record<string, string> | undefined
+    if (!fontTerms || typeof fontTerms !== 'object') {
+      return fontName
+    }
+    
+    // 按空格分割字体名称
+    const parts = fontName.split(/\s+/)
+    const translatedParts = parts.map(part => {
+      if (!part) return part
+      
+      // 尝试直接匹配
+      if (fontTerms[part]) {
+        return fontTerms[part]
+      }
+      // 尝试匹配首字母大写的变体
+      const capitalized = part.charAt(0).toUpperCase() + part.slice(1).toLowerCase()
+      if (fontTerms[capitalized]) {
+        return fontTerms[capitalized]
+      }
+      // 如果找不到翻译，返回原文本
+      return part
+    })
+    
+    return translatedParts.join(' ')
   }
   
   const availableCategories = useMemo(() => {
@@ -550,7 +644,7 @@ export default function FontGenerator() {
             type="text"
             value={inputText}
             onChange={(e) => setInputText(e.target.value)}
-            placeholder="Add text here to get started...."
+            placeholder={translations?.placeholder || 'Add text here to get started....'}
             className="w-full px-4 md:px-6 py-3 md:py-4 text-base md:text-lg border-2 border-indigo-100 rounded-full focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-200 transition-all text-slate-800 placeholder:text-slate-400"
           />
         </div>
@@ -587,7 +681,7 @@ export default function FontGenerator() {
         {/* 左侧分类栏 - 桌面端显示 */}
         <div className="hidden lg:block lg:col-span-1">
           <div className="bg-white rounded-2xl p-4 shadow-lg shadow-indigo-500/10 border border-indigo-50 sticky top-[calc(5rem+132px)] z-30">
-            <h3 className="text-sm font-bold text-slate-700 mb-4 uppercase tracking-wider">{translations.selectFontStyle}</h3>
+            <h3 className="text-sm font-bold text-slate-700 mb-4 uppercase tracking-wider">{translations?.selectFontStyle || 'Select a font style'}</h3>
             <div ref={categoryListRef} className="space-y-2 max-h-[400px] overflow-y-auto">
               {availableCategories.map((category) => {
                 const isActive = selectedCategory === category.id
@@ -610,7 +704,7 @@ export default function FontGenerator() {
                       <span className={`text-xs ${
                         isActive ? 'text-white/80' : 'text-slate-400'
                       }`}>
-                        {categoryFontCounts[category.id]} {categoryFontCounts[category.id] === 1 ? translations.font : translations.fonts}
+                        {categoryFontCounts[category.id]} {categoryFontCounts[category.id] === 1 ? (translations?.font || 'font') : (translations?.fonts || 'fonts')}
                       </span>
                     )}
                   </button>
@@ -625,16 +719,19 @@ export default function FontGenerator() {
           <div className="bg-white rounded-2xl p-4 md:p-6 shadow-lg shadow-indigo-500/10 border border-indigo-50">
             <div className="flex items-center justify-between mb-4 md:mb-6">
               <h3 className="text-lg md:text-xl font-bold text-slate-900">
-                {selectedCategory === 'all' ? 'All Fonts' : `${fontCategories.find(c => c.id === selectedCategory)?.name} Fonts`}
+                {selectedCategory === 'all' 
+                  ? (translations?.allFonts || 'All Fonts')
+                  : `${getCategoryName(selectedCategory)} ${translations?.fonts || 'fonts'}`}
               </h3>
               <span className="text-xs md:text-sm text-slate-500 font-medium">
-                {filteredFonts.length} {filteredFonts.length === 1 ? 'font' : 'fonts'}
+                {filteredFonts.length} {filteredFonts.length === 1 ? (translations?.font || 'font') : (translations?.fonts || 'fonts')}
               </span>
             </div>
             
             <div className="space-y-2 md:space-y-3 max-h-[calc(100vh-500px)] md:max-h-[800px] overflow-y-auto">
               {filteredFonts.map((font) => {
-                const displayText = inputText || 'Toolaze Font Generator 123'
+                // 确保使用固定的默认值，避免服务器和客户端不一致导致水合错误
+                const displayText = inputText || defaultTranslations.defaultText || 'Toolaze Font Generator 123'
                 const convertedText = convertText(displayText, font.id)
                 const isCopied = copiedFontId === font.id
                 
@@ -645,16 +742,16 @@ export default function FontGenerator() {
                   >
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 md:gap-4">
                       <div className="flex-1 min-w-0">
-                        <p className="text-base md:text-lg text-slate-800 break-all">
+                        <p className="text-base md:text-lg text-slate-800 break-all" suppressHydrationWarning>
                           {convertedText}
                         </p>
                         <div className="flex items-center gap-2 mt-1 flex-wrap">
                           {font.category && font.category !== 'all' && (
                             <span className="text-xs text-indigo-600 font-medium px-2 py-0.5 bg-indigo-50 rounded">
-                              {fontCategories.find(c => c.id === font.category)?.name || font.category}
+                              {getCategoryName(font.category)}
                             </span>
                           )}
-                          <span className="text-xs text-slate-500">{font.name}</span>
+                          <span className="text-xs text-slate-500">{getFontName(font.name)}</span>
                         </div>
                       </div>
                       <button 
@@ -677,7 +774,7 @@ export default function FontGenerator() {
                             : 'bg-indigo-50 text-indigo-600 hover:bg-indigo-100 hover:text-indigo-700'
                         }`}
                       >
-                        {isCopied ? 'Copied!' : 'Copy'}
+                        {isCopied ? (translations?.copied || 'Copied!') : (translations?.copy || 'Copy')}
                       </button>
                     </div>
                   </div>

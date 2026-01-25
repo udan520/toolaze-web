@@ -3,6 +3,7 @@
     "quickTools": "Outils Rapides",
     "imageCompression": "Compression d'Images",
     "imageConverter": "Convertisseur d'Images",
+    "fontGenerator": "Générateur de Polices",
     "aboutUs": "À Propos"
   },
   "home": {
@@ -78,6 +79,9 @@
     }
   },
   "footer": {
+    "imageCompression": "Compression d'Images",
+    "imageConverter": "Convertisseur d'Images",
+    "fontGenerator": "Générateur de Polices",
     "home": "Accueil",
     "allTools": "Tous les Outils",
     "aboutUs": "À Propos",
@@ -93,6 +97,7 @@
     "quickTools": "Outils Rapides",
     "imageCompression": "Compression d'Images",
     "imageConverter": "Convertisseur d'Images",
+    "fontGenerator": "Générateur de Polices",
     "aboutUs": "À Propos",
     "privacyPolicy": "Politique de Confidentialité",
     "termsOfService": "Conditions d'Utilisation"
@@ -192,12 +197,16 @@
     "specializedTools": "Outils Spécialisés",
     "allImageCompressionTools": "Tous les Outils de Compression d'Images",
     "allImageConverterTools": "Tous les Outils de Convertisseur d'Images",
+    "allFontGeneratorTools": "Tous les Outils de Générateur de Polices",
     "allImageCompressionToolsDesc": "Parcourez tous les outils de compression d'images disponibles. Trouvez l'outil parfait pour vos besoins spécifiques.",
     "allImageConverterToolsDesc": "Parcourez tous les outils de convertisseur d'images disponibles. Convertissez entre les formats JPG, PNG, WebP et HEIC.",
+    "allFontGeneratorToolsDesc": "Parcourez tous les outils de générateur de polices disponibles. Créez des styles de polices cursives, fantaisie, en gras, italiques, gothiques, tatouage et plus encore.",
     "primaryToolsDesc": "Outils de compression essentiels pour les cas d'usage généraux.",
     "primaryConverterToolsDesc": "Outils de conversion essentiels pour les cas d'usage généraux.",
+    "primaryFontGeneratorToolsDesc": "Outils essentiels de générateur de polices pour les cas d'usage généraux.",
     "specializedToolsDesc": "Outils de compression spécialisés pour des plateformes et cas d'usage spécifiques.",
     "specializedConverterToolsDesc": "Outils de conversion spécialisés pour des plateformes et cas d'usage spécifiques.",
+    "specializedFontGeneratorToolsDesc": "Outils spécialisés de générateur de polices pour des plateformes et cas d'usage spécifiques.",
     "performanceMetrics": {
       "metricColumn": "Métrique de Performance",
       "specificationColumn": "Spécification Toolaze"
@@ -205,6 +214,67 @@
     "viewAllTools": {
       "related": "Voir Tous les Outils Associés",
       "all": "Voir Tous les Outils"
+    },
+    "fontGenerator": {
+      "selectFontStyle": "Sélectionnez un style de police",
+      "font": "police",
+      "fonts": "polices",
+      "allFonts": "Toutes les Polices",
+      "copy": "Copier",
+      "copied": "Copié !",
+      "placeholder": "Ajoutez du texte ici pour commencer....",
+      "defaultText": "Toolaze Font Generator 123",
+      "trustBar": {
+        "private": "100% Privé",
+        "instantPreview": "Aperçu Instantané",
+        "noServerLogs": "Aucun Journal Serveur"
+      },
+      "fontTerms": {
+        "Bold": "Gras",
+        "Italic": "Italique",
+        "Sans Serif": "Sans Serif",
+        "Serif": "Serif",
+        "Cursive": "Cursive",
+        "Script": "Script",
+        "Gothic": "Gothique",
+        "Fancy": "Fantaisie",
+        "Fraktur": "Fraktur",
+        "Monospace": "Monospace",
+        "Fullwidth": "Pleine Largeur",
+        "Circled": "Cerclé",
+        "Negative Circled": "Cerclé Négatif",
+        "Squared": "Au Carré",
+        "Negative Squared": "Au Carré Négatif",
+        "Parenthesized": "Entre Parenthèses",
+        "Small Caps": "Petites Capitales",
+        "Superscript": "Exposant",
+        "Subscript": "Indice",
+        "Greek Style": "Style Grec",
+        "Cyrillic Style": "Style Cyrillique",
+        "Regional Indicator": "Indicateur Régional",
+        "Latin Extended": "Latin Étendu",
+        "Latin Extended-B": "Latin Étendu-B"
+      },
+      "moreTools": "Plus d'Outils de Générateur de Polices",
+      "categories": {
+        "all": "Toutes",
+        "cursive": "Cursive",
+        "fancy": "Fantaisie",
+        "bold": "Gras",
+        "tattoo": "Tatouage",
+        "cool": "Cool",
+        "instagram": "Instagram",
+        "italic": "Italique",
+        "gothic": "Gothique",
+        "calligraphy": "Calligraphie",
+        "discord": "Discord",
+        "oldEnglish": "Old English",
+        "3d": "3D",
+        "minecraft": "Minecraft",
+        "disney": "Disney",
+        "bubble": "Bulle",
+        "starWars": "Star Wars"
+      }
     }
   },
   "imageCompressor": {

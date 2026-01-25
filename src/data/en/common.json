@@ -159,15 +159,47 @@
       "metricColumn": "Performance Metric",
       "specificationColumn": "Toolaze Specification"
     },
-    "rating": {
-      "title": "Trusted by Thousands of Creators",
-      "rating": "4.9/5 FROM 10K+ CREATORS",
-      "description": "Join thousands of satisfied users who trust Toolaze for fast, secure, and free image compression. No registration required, 100% private processing."
-    },
     "fontGenerator": {
       "selectFontStyle": "Select a font style",
       "font": "font",
       "fonts": "fonts",
+      "allFonts": "All Fonts",
+      "copy": "Copy",
+      "copied": "Copied!",
+      "placeholder": "Add text here to get started....",
+      "defaultText": "Toolaze Font Generator 123",
+      "trustBar": {
+        "private": "100% Private",
+        "instantPreview": "Instant Preview",
+        "noServerLogs": "No Server Logs"
+      },
+      "fontTerms": {
+        "Bold": "Bold",
+        "Italic": "Italic",
+        "Sans Serif": "Sans Serif",
+        "Serif": "Serif",
+        "Cursive": "Cursive",
+        "Script": "Script",
+        "Gothic": "Gothic",
+        "Fancy": "Fancy",
+        "Fraktur": "Fraktur",
+        "Monospace": "Monospace",
+        "Fullwidth": "Fullwidth",
+        "Circled": "Circled",
+        "Negative Circled": "Negative Circled",
+        "Squared": "Squared",
+        "Negative Squared": "Negative Squared",
+        "Parenthesized": "Parenthesized",
+        "Small Caps": "Small Caps",
+        "Superscript": "Superscript",
+        "Subscript": "Subscript",
+        "Greek Style": "Greek Style",
+        "Cyrillic Style": "Cyrillic Style",
+        "Regional Indicator": "Regional Indicator",
+        "Latin Extended": "Latin Extended",
+        "Latin Extended-B": "Latin Extended-B"
+      },
+      "moreTools": "More Font Generator Tools",
       "categories": {
         "all": "All",
         "cursive": "Cursive",
@@ -237,206 +269,6 @@
         "private": "100% Private",
         "localBrowser": "Local Browser API",
         "noServerLogs": "No Server Logs"
-      }
-    }
-  },
-  "imageCompressor": {
-    "metadata": {
-      "title": "Free Image Compressor - Batch Compress Images Online | Toolaze",
-      "description": "Batch compress up to 100 images at once. Set exact target size. Fast, private, 100% free. No sign-up required."
-    },
-    "moreTools": "More Image Compression Tools",
-    "title": "Free Image Compressor",
-    "subtitle": "Batch compress up to 100 images at once. Set exact target size. Fast, private, 100% free. No sign-up required.",
-    "whyToolaze": {
-      "badge": "Why Toolaze?",
-      "title": "Stop Losing Time on Slow Image Compression Tools",
-      "desc": "Traditional image compressors are slow, limit file counts, and often compromise quality. Toolaze compresses up to 100 images simultaneously with precise size control, maintaining visual quality while dramatically reducing file sizes. Perfect for web developers, photographers, and content creators."
-    },
-    "features": {
-      "batch": {
-        "title": "Batch Processing",
-        "desc": "Compress up to 100 images at once"
-      },
-      "precise": {
-        "title": "Precise Size Control",
-        "desc": "Set exact target size in KB or MB"
-      },
-      "free": {
-        "title": "100% Free",
-        "desc": "No ads forever."
-      }
-    },
-    "howToUse": {
-      "title": "How to Use Toolaze?",
-      "step1": {
-        "title": "Upload Images",
-        "desc": "Drag and drop up to 100 images or folders. Supports JPG, PNG, WebP, and BMP formats."
-      },
-      "step2": {
-        "title": "Set Target Size",
-        "desc": "Choose your desired file size in KB or MB. Our algorithm compresses images precisely to your target."
-      },
-      "step3": {
-        "title": "Download Results",
-        "desc": "Download individual compressed images or all at once as a ZIP file. Fast and efficient."
-      }
-    },
-    "comparison": {
-      "title": "Why Choose Toolaze?",
-      "toolaze": "Toolaze 💎",
-      "otherTools": "Other Tools",
-      "vs": "VS",
-      "smartChoice": "Smart Choice",
-      "features": {
-        "batch100": "Batch up to 100 images",
-        "preciseControl": "Precise size control",
-        "multipleFormat": "Multiple format support",
-        "privateFree": "100% private & free",
-        "noSignup": "No sign-up required",
-        "limitedBatch": "Limited batch size",
-        "noPreciseControl": "No precise control",
-        "formatRestrictions": "Format restrictions",
-        "privacyConcerns": "Privacy concerns",
-        "registrationRequired": "Registration required"
-      }
-    },
-    "scenarios": {
-      "title": "Use Cases",
-      "developers": {
-        "title": "For Web Developers",
-        "desc": "Optimize images for websites and apps. Reduce load times while maintaining quality for better SEO and user experience."
-      },
-      "ecommerce": {
-        "title": "For E-commerce",
-        "desc": "Compress product images in bulk. Faster page loads mean better conversion rates and improved search rankings."
-      },
-      "creators": {
-        "title": "For Content Creators",
-        "desc": "Prepare images for social media and blogs. Batch process multiple images quickly without quality loss."
-      }
-    },
-    "faq": {
-      "title": "Frequently Asked Questions",
-      "formats": {
-        "q": "Which image formats are supported?",
-        "a": "Toolaze supports JPG, JPEG, PNG, WebP, and BMP formats. All compressed images are output as optimized JPEG files."
-      },
-      "free": {
-        "q": "Is this tool really free?",
-        "a": "Yes! Toolaze is 100% free with no ads, no registration, and no hidden fees. All processing happens in your browser."
-      },
-      "batchLimit": {
-        "q": "Can I compress more than 100 images?",
-        "a": "The maximum batch size is 100 files per session. For larger batches, simply process them in multiple sessions."
-      },
-      "privacy": {
-        "q": "Are my images uploaded to a server?",
-        "a": "No! All image processing happens locally in your browser using JavaScript. Your images never leave your device, ensuring complete privacy."
-      },
-      "maxSize": {
-        "q": "What is the maximum file size I can compress?",
-        "a": "There's no theoretical file size limit. However, very large images may cause browser slowdown depending on your device's performance and available memory. We recommend processing large files in smaller batches for the best experience."
-      }
-    }
-  },
-  "imageConverter": {
-    "metadata": {
-      "title": "Free Image Converter - Batch Convert Images Online | Toolaze",
-      "description": "Convert images between JPG, PNG, and WebP formats. Batch convert up to 100 images. Fast, private, 100% free. No sign-up required."
-    },
-    "moreTools": "More Image Converter Tools",
-    "title": "Free Image Converter",
-    "subtitle": "Convert images between JPG, PNG, and WebP formats. Batch convert up to 100 images. Fast, private, 100% free. No sign-up required.",
-    "whyToolaze": {
-      "badge": "Why Toolaze?",
-      "title": "Convert Images Without Quality Loss",
-      "desc": "Convert images between JPG, PNG, and WebP formats instantly. Our browser-based converter processes images locally, ensuring complete privacy and fast conversion. Perfect for web developers, designers, and content creators."
-    },
-    "features": {
-      "batch": {
-        "title": "Batch Processing",
-        "desc": "Convert up to 100 images at once"
-      },
-      "formats": {
-        "title": "Multiple Formats",
-        "desc": "JPG, PNG, WebP, and HEIC support"
-      },
-      "free": {
-        "title": "100% Free",
-        "desc": "No ads forever."
-      }
-    },
-    "howToUse": {
-      "title": "How to Use Toolaze?",
-      "step1": {
-        "title": "Upload Images",
-        "desc": "Drag and drop up to 100 images or folders. Supports JPG, PNG, WebP, BMP, and HEIC formats."
-      },
-      "step2": {
-        "title": "Choose Format",
-        "desc": "Select your target format: JPG, PNG, or WebP. Our converter maintains quality during conversion."
-      },
-      "step3": {
-        "title": "Download Results",
-        "desc": "Download individual converted images or all at once as a ZIP file. Fast and efficient."
-      }
-    },
-    "comparison": {
-      "title": "Why Choose Toolaze?",
-      "toolaze": "Toolaze 💎",
-      "otherTools": "Other Tools",
-      "vs": "VS",
-      "smartChoice": "Smart Choice",
-      "features": {
-        "batch100": "Batch up to 100 images",
-        "multipleFormat": "Multiple format support",
-        "qualityPreserved": "Quality preserved",
-        "privateFree": "100% private & free",
-        "noSignup": "No sign-up required",
-        "limitedBatch": "Limited batch size",
-        "formatRestrictions": "Format restrictions",
-        "qualityLoss": "Quality loss",
-        "privacyConcerns": "Privacy concerns",
-        "registrationRequired": "Registration required"
-      }
-    },
-    "scenarios": {
-      "title": "Use Cases",
-      "developers": {
-        "title": "For Web Developers",
-        "desc": "Convert images to WebP for better performance. Optimize formats for faster page loads and improved SEO."
-      },
-      "designers": {
-        "title": "For Designers",
-        "desc": "Convert between formats for different design needs. Preserve transparency with PNG or optimize with JPG."
-      },
-      "creators": {
-        "title": "For Content Creators",
-        "desc": "Batch convert images for social media and blogs. Ensure compatibility across all platforms."
-      }
-    },
-    "faq": {
-      "title": "Frequently Asked Questions",
-      "formats": {
-        "q": "Which image formats are supported?",
-        "a": "Toolaze supports converting between JPG, PNG, and WebP formats. You can upload images in JPG, PNG, WebP, BMP, or HEIC format."
-      },
-      "free": {
-        "q": "Is this tool really free?",
-        "a": "Yes! Toolaze is 100% free with no ads, no registration, and no hidden fees. All processing happens in your browser."
-      },
-      "batchLimit": {
-        "q": "Can I convert more than 100 images?",
-        "a": "The maximum batch size is 100 files per session. For larger batches, simply process them in multiple sessions."
-      },
-      "privacy": {
-        "q": "Are my images uploaded to a server?",
-        "a": "No! All image conversion happens locally in your browser using JavaScript. Your images never leave your device, ensuring complete privacy."
-      },
-      "quality": {
-        "q": "Will quality be preserved during conversion?",
-        "a": "Quality preservation depends on the target format. PNG is lossless, while JPG and WebP use lossy compression but maintain high visual quality."
       }
     }
   },

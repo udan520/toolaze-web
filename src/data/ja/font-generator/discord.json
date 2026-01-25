@@ -1,0 +1,191 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Discordフォントジェネレーター（無料、コピー＆ペースト、広告なし）- Toolaze",
+    "description": "Discordフォントの生成方法：1. テキストを入力 2. Discordスタイルを選択 3. コピー＆ペースト。Instagram、Facebook、ソーシャルメディア用の美しいDiscordテキストを作成。無料＆プライベート。"
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Discordフォントジェネレーター",
+    "desc": "オンラインで無料で美しいDiscordフォントを生成。下にテキストを入力するだけで、どこにでもコピー＆ペーストできるエレガントなDiscordテキストを作成できます。"
+  },
+  "intro": {
+    "title": "なぜDiscordフォントジェネレーターを使用するのか？",
+    "content": [
+      {
+        "title": "Discordフォントとは？",
+        "text": "Discordフォントは、Discordのチャットインターフェースに特化して最適化されたUnicodeベースのテキストスタイルです。これらのフォントは、Discordサーバー名、チャンネルタイトル、ロール名、チャットメッセージで正しく表示されるUnicode文字を使用します。Discordフォントは、サーバーを目立たせ、コミュニティをより魅力的にし、ブランディングをより記憶に残るものにします。独自で目を引くDiscordコンテンツを作成したいゲーミングコミュニティ、ストリーマー、オンラインコミュニティに最適です。他のプラットフォームフォントについては、<a href=\"/font-generator/instagram\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">Instagramフォントジェネレーター</a>をお試しください。"
+      },
+      {
+        "title": "なぜオンラインでDiscordテキストを生成するのか？",
+        "text": "Discordのネイティブテキストフォーマットは基本的なマークダウンに限定されており、Discordで動作するフォントを見つけるのは困難な場合があります。当社のDiscordテキストジェネレーターは、Discordのプラットフォームと完全に互換性のある複数のUnicodeフォントスタイルへの即座のアクセスを提供します。Discordサーバーに名前を付けたり、チャンネルタイトルを作成したり、ロール名をデザインしたりする場合でも、当社のツールは任意のテキストをDiscord互換フォントに即座に変換します。すべてのDiscord機能でコミュニティが目立ち、テキストが正しく表示されるようにします。包括的な<a href=\"/font-generator\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">フォントジェネレーター</a>で、より多くの情報を探索してください。"
+      }
+    ]
+  },
+  "features": {
+    "title": "強力なDiscordフォント機能",
+    "items": [
+      {
+        "icon": "💬",
+        "iconType": "quality",
+        "title": "Discord互換スタイル",
+        "desc": "Discordサーバー名、チャンネル、チャットメッセージで正しく表示されるフォントを生成します。"
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "ローカル処理",
+        "desc": "フォント生成は完全にブラウザ内で実行されます。テキストはデバイス上に保持されます。"
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "即座のDiscordテキスト",
+        "desc": "ライブプレビューでテキストをDiscord互換フォントに即座に変換します。"
+      },
+      {
+        "icon": "📋",
+        "iconType": "batch",
+        "title": "Discord用のコピー",
+        "desc": "Discordテキストを即座にコピーし、サーバー名、チャンネル、またはチャットに貼り付けます。"
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "無料のDiscordフォント",
+        "desc": "コスト、プレミアム機能、広告なしで完全に無料で無制限のDiscordフォント生成をお楽しみください。"
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "Discord修正不要",
+        "desc": "完全にブラウザで動作します。Discordの変更やボットのインストールは不要です。"
+      }
+    ]
+  },
+  "specs": {
+    "engine": "ブラウザネイティブフォントレンダリング - クライアントサイド処理",
+    "limit": "無制限のテキスト長 - 文字数制限なし",
+    "logic": "リアルタイムプレビュー（即座のスタイル適用）",
+    "privacy": "100%クライアントサイド（ローカルブラウザ処理）"
+  },
+  "performanceMetrics": {
+    "title": "技術仕様",
+    "metrics": [
+      {
+        "label": "フォントスタイル",
+        "value": "Discord（独特なスタイル）"
+      },
+      {
+        "label": "テキスト長",
+        "value": "無制限の文字数"
+      },
+      {
+        "label": "処理速度",
+        "value": "即座（リアルタイムプレビュー）"
+      },
+      {
+        "label": "出力形式",
+        "value": "Unicodeテキスト（コピー＆ペースト準備完了）"
+      },
+      {
+        "label": "プラットフォームサポート",
+        "value": "Instagram、Facebook、Twitter、TikTok、Discordなど"
+      },
+      {
+        "label": "処理場所",
+        "value": "100%クライアントサイド（ブラウザJavaScript）"
+      },
+      {
+        "label": "プライバシー",
+        "value": "サーバーアップロードなし、完全なローカル処理"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Discordフォントの生成方法",
+    "steps": [
+      {
+        "title": "テキストを入力",
+        "desc": "上記の入力フィールドに、Discord互換スタイルに変換したいテキストを入力します。"
+      },
+      {
+        "title": "Discordスタイルを選択",
+        "desc": "Discord互換フォントスタイルから選択し、Discordでテキストがどのように表示されるかをプレビューします。"
+      },
+      {
+        "title": "Discordテキストをコピー",
+        "desc": "コピーをクリックしてDiscordテキストを取得し、サーバー名、チャンネルタイトル、またはDiscordチャットに貼り付けます。"
+      }
+    ]
+  },
+  "comparison": {
+    "title": "なぜToolazeを選ぶのか？",
+    "toolaze": "Toolaze 💎",
+    "others": "Other Tools",
+    "vs": "VS",
+    "smartChoice": "スマートな選択",
+    "otherTools": "他のツール",
+    "toolazeFeatures": "無制限のDiscordテキスト生成、Discord互換スタイル、リアルタイムプレビュー、クライアントサイド処理、制限なし、完全なプライバシー、永遠に無料",
+    "othersFeatures": "テキスト制限、限られたDiscordフォント、遅い処理、クラウドアップロード、プライバシーリスク、透かし、有料機能"
+  },
+  "scenesTitle": "使用例",
+  "scenes": [
+    {
+      "title": "ゲーミングコミュニティ",
+      "icon": "🎮",
+      "desc": "サーバー名、チャンネルタイトル、ロール名用のDiscordフォントを作成します。独自で読み取り可能なDiscord互換フォントでゲーミングコミュニティを目立たせます。"
+    },
+    {
+      "title": "ストリーマー＆コンテンツクリエイター",
+      "icon": "📺",
+      "desc": "ストリームオーバーレイ、チャットコマンド、コミュニティブランディング用のDiscordテキストを生成します。Discordのチャットインターフェースでテキストが正しく表示されるようにします。"
+    },
+    {
+      "title": "オンラインコミュニティ",
+      "icon": "💬",
+      "desc": "コミュニティの告知、イベントプロモーション、メンバーコミュニケーションにDiscordフォントを使用します。Discordサーバー用の魅力的で目を引くテキストを作成します。"
+    }
+  ],
+  "rating": {
+    "title": "何千人ものクリエイターに信頼されています",
+    "rating": "4.9/5 10,000人以上のクリエイターから",
+    "text": "\"見つけた中で最高のDiscordフォントジェネレーターです。即座に結果が得られ、Instagramで完璧に動作します！\" - 美しいDiscordテキスト生成のためにToolazeを信頼する何千人ものユーザーに参加してください。"
+  },
+  "faqTitle": "よくある質問",
+  "faq": [
+    {
+      "q": "Discordフォントは実際にDiscordで動作しますか？",
+      "a": "はい！当社のDiscordは、Discordのチャットインターフェースで正しく表示されるUnicode文字を使用してテキストを作成します。任意のDiscordチャンネル、サーバー名、またはユーザー名フィールドに直接コピー＆ペーストするだけです。"
+    },
+    {
+      "q": "サーバー名にDiscordフォントを使用できますか？",
+      "a": "はい！Discordフォントはサーバー名、チャンネル名、ロール名で動作します。独自で目を引くテキストでDiscordサーバーを目立たせるのに役立ちます。"
+    },
+    {
+      "q": "DiscordフォントはDiscordボットで動作しますか？",
+      "a": "はい、DiscordボットはDiscordフォントでメッセージを送信できます。Unicode文字は、ボットメッセージ、埋め込み、告知で正しく表示されます。"
+    },
+    {
+      "q": "DiscordフォントはDiscordのダークモードで読み取り可能ですか？",
+      "a": "はい！Discordフォントはライトモードとダークモードの両方で動作します。Unicode文字は、Discordのテーマ設定に自動的に適応します。"
+    },
+    {
+      "q": "Discord NitroにDiscordフォントを使用できますか？",
+      "a": "はい、Discordフォントは、Nitroを持っているかどうかに関係なく動作します。すべてのDiscordユーザーで動作する標準のUnicode文字を使用します。他のプラットフォームフォントについては、<a href=\"/font-generator/Instagram\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">Instagramフォントジェネレーター</a>をお試しください。または、フォントジェネレーターコレクションを探索してください。"
+    }
+  ],
+  "compare": {
+    "toolaze": "無制限のDiscordテキスト生成、複数のエレガントなスタイル、即座のリアルタイムプレビュー、ローカルファーストアーキテクチャ、文字数制限なし、完全なプライバシー保護、100%永遠に無料",
+    "others": "文字数制限、限られたスタイルオプション、遅いサーバー処理、クラウドアップロードが必要、プライバシーの懸念、透かしや広告、有料プレミアム機能"
+  }
+}

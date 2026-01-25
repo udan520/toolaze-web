@@ -3,6 +3,7 @@
     "quickTools": "빠른 도구",
     "imageCompression": "이미지 압축",
     "imageConverter": "이미지 변환",
+    "fontGenerator": "폰트 생성기",
     "aboutUs": "회사 소개"
   },
   "home": {
@@ -78,6 +79,9 @@
     }
   },
   "footer": {
+    "imageCompression": "이미지 압축",
+    "imageConverter": "이미지 변환",
+    "fontGenerator": "폰트 생성기",
     "home": "홈",
     "allTools": "모든 도구",
     "aboutUs": "회사 소개",
@@ -93,6 +97,7 @@
     "quickTools": "빠른 도구",
     "imageCompression": "이미지 압축",
     "imageConverter": "이미지 변환",
+    "fontGenerator": "폰트 생성기",
     "aboutUs": "회사 소개",
     "privacyPolicy": "개인정보 보호정책",
     "termsOfService": "서비스 약관"
@@ -205,6 +210,67 @@
     "viewAllTools": {
       "related": "관련된 모든 도구 보기",
       "all": "모든 도구 보기"
+    },
+    "fontGenerator": {
+      "selectFontStyle": "폰트 스타일 선택",
+      "font": "폰트",
+      "fonts": "폰트",
+      "allFonts": "모든 폰트",
+      "copy": "복사",
+      "copied": "복사됨!",
+      "placeholder": "여기에 텍스트를 입력하여 시작하세요....",
+      "defaultText": "Toolaze Font Generator 123",
+      "trustBar": {
+        "private": "100% 비공개",
+        "instantPreview": "즉시 미리보기",
+        "noServerLogs": "서버 로그 없음"
+      },
+      "fontTerms": {
+        "Bold": "굵게",
+        "Italic": "기울임",
+        "Sans Serif": "Sans Serif",
+        "Serif": "Serif",
+        "Cursive": "필기체",
+        "Script": "스크립트",
+        "Gothic": "고딕",
+        "Fancy": "장식",
+        "Fraktur": "Fraktur",
+        "Monospace": "Monospace",
+        "Fullwidth": "전각",
+        "Circled": "원형",
+        "Negative Circled": "음수 원형",
+        "Squared": "사각형",
+        "Negative Squared": "음수 사각형",
+        "Parenthesized": "괄호",
+        "Small Caps": "작은 대문자",
+        "Superscript": "위첨자",
+        "Subscript": "아래첨자",
+        "Greek Style": "그리스 스타일",
+        "Cyrillic Style": "키릴 스타일",
+        "Regional Indicator": "지역 표시",
+        "Latin Extended": "라틴 확장",
+        "Latin Extended-B": "라틴 확장-B"
+      },
+      "moreTools": "더 많은 폰트 생성기 도구",
+      "categories": {
+        "all": "모두",
+        "cursive": "필기체",
+        "fancy": "장식",
+        "bold": "굵게",
+        "tattoo": "타투",
+        "cool": "쿨",
+        "instagram": "인스타그램",
+        "italic": "기울임",
+        "gothic": "고딕",
+        "calligraphy": "캘리그래피",
+        "discord": "디스코드",
+        "oldEnglish": "올드 잉글리시",
+        "3d": "3D",
+        "minecraft": "마인크래프트",
+        "disney": "디즈니",
+        "bubble": "버블",
+        "starWars": "스타워즈"
+      }
     }
   },
   "imageCompressor": {

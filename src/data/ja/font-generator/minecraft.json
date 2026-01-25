@@ -1,0 +1,191 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Minecraftフォントジェネレーター（無料、コピー＆ペースト、広告なし）- Toolaze",
+    "description": "Minecraftフォントの生成方法：1. テキストを入力 2. Minecraftスタイルを選択 3. コピー＆ペースト。Instagram、Facebook、ソーシャルメディア用の美しいMinecraftテキストを作成。無料＆プライベート。"
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Minecraftフォントジェネレーター",
+    "desc": "オンラインで無料で美しいMinecraftフォントを生成。下にテキストを入力するだけで、どこにでもコピー＆ペーストできるエレガントなMinecraftテキストを作成できます。"
+  },
+  "intro": {
+    "title": "なぜMinecraftフォントジェネレーターを使用するのか？",
+    "content": [
+      {
+        "title": "Minecraftフォントとは？",
+        "text": "Minecraftフォントは、Minecraftの象徴的な視覚スタイルに関連付けられた独特なピクセル化されたブロック状の美的感覚を特徴とします。これらの書体は、四角いピクセル化された文字形状で認識可能なMinecraftの外観を作成するUnicode文字を使用します。Minecraftフォントは、遊び心のあるブロック状の外観が特徴で、Minecraftコンテンツクリエイター、ゲーミングストリーマー、サーバーオーナー、独特なMinecraftの美的感覚を必要とするプロジェクトに最適です。同様のゲーミングスタイルについては、<a href=\"/font-generator/3d\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">3Dフォントジェネレーター</a>またはクールフォントジェネレーターをご覧ください。"
+      },
+      {
+        "title": "なぜオンラインでMinecraftテキストを生成するのか？",
+        "text": "YouTubeのサムネイル、サーバーブランディング、またはゲーミングコンテンツ用のMinecraftスタイルのテキストを作成するには、通常、デザインソフトウェアとフォントのインストールが必要です。当社のMinecraftテキストジェネレーターは、象徴的なMinecraftの雰囲気を捉えるピクセル化されたブロック状のテキストスタイルへの即座のアクセスを提供します。YouTubeコンテンツを作成したり、サーバーウェブサイトをデザインしたり、Minecraftテーマの資料を開発したりする場合でも、当社のツールは任意のテキストを本物に見えるMinecraftスタイルに即座に変換します。プロジェクトにブロック状でピクセル化された美的感覚をもたらします。包括的な<a href=\"/font-generator\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">フォントジェネレーター</a>で、より多くの情報を探索してください。"
+      }
+    ]
+  },
+  "features": {
+    "title": "強力なMinecraftフォント機能",
+    "items": [
+      {
+        "icon": "⛏️",
+        "iconType": "quality",
+        "title": "ピクセル化ブロック状スタイル",
+        "desc": "独特なピクセル化されたブロック状の美的感覚でMinecraftスタイルのフォントを生成します。"
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "プライベート生成",
+        "desc": "すべてのMinecraftフォント生成はローカルで実行されます。テキストがデバイスを離れることはありません。"
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "即座のMinecraftテキスト",
+        "desc": "ブロック状の効果を示すリアルタイムプレビューでテキストをMinecraftスタイルに即座に変換します。"
+      },
+      {
+        "icon": "📋",
+        "iconType": "batch",
+        "title": "Minecraftテキストをコピー",
+        "desc": "Minecraftスタイルのテキストを即座にコピーし、YouTubeのサムネイル、サーバーブランディング、またはゲーミングコンテンツに貼り付けます。"
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "無料のMinecraftフォント",
+        "desc": "支払い、サブスクリプション、広告なしで完全に無料で無制限のMinecraftフォント生成をお楽しみください。"
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "MOD不要",
+        "desc": "完全にブラウザで実行されます。MinecraftのMODやフォントのインストールは不要です。"
+      }
+    ]
+  },
+  "specs": {
+    "engine": "ブラウザネイティブフォントレンダリング - クライアントサイド処理",
+    "limit": "無制限のテキスト長 - 文字数制限なし",
+    "logic": "リアルタイムプレビュー（即座のスタイル適用）",
+    "privacy": "100%クライアントサイド（ローカルブラウザ処理）"
+  },
+  "performanceMetrics": {
+    "title": "技術仕様",
+    "metrics": [
+      {
+        "label": "フォントスタイル",
+        "value": "Minecraft（独特なスタイル）"
+      },
+      {
+        "label": "テキスト長",
+        "value": "無制限の文字数"
+      },
+      {
+        "label": "処理速度",
+        "value": "即座（リアルタイムプレビュー）"
+      },
+      {
+        "label": "出力形式",
+        "value": "Unicodeテキスト（コピー＆ペースト準備完了）"
+      },
+      {
+        "label": "プラットフォームサポート",
+        "value": "Instagram、Facebook、Twitter、TikTok、Discordなど"
+      },
+      {
+        "label": "処理場所",
+        "value": "100%クライアントサイド（ブラウザJavaScript）"
+      },
+      {
+        "label": "プライバシー",
+        "value": "サーバーアップロードなし、完全なローカル処理"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Minecraftフォントの生成方法",
+    "steps": [
+      {
+        "title": "テキストを入力",
+        "desc": "上記の入力フィールドに、Minecraftスタイルに変換したいテキストを入力します。"
+      },
+      {
+        "title": "Minecraftスタイルを選択",
+        "desc": "ピクセル化されたブロック状のMinecraftフォントスタイルから選択し、独特なMinecraftの美的感覚でテキストがどのように見えるかをプレビューします。"
+      },
+      {
+        "title": "Minecraftテキストをコピー",
+        "desc": "コピーをクリックしてMinecraftテキストを取得し、YouTubeのサムネイル、サーバーブランディング、またはゲーミングコンテンツに貼り付けます。"
+      }
+    ]
+  },
+  "comparison": {
+    "title": "なぜToolazeを選ぶのか？",
+    "toolaze": "Toolaze 💎",
+    "others": "Other Tools",
+    "vs": "VS",
+    "smartChoice": "スマートな選択",
+    "otherTools": "他のツール",
+    "toolazeFeatures": "無制限のMinecraftテキスト生成、ピクセル化ブロック状スタイル、即座のプレビュー、ローカル処理、制限なし、完全なプライバシー、永遠に無料",
+    "othersFeatures": "文字数制限、少数のMinecraftオプション、サーバーの遅延、必要なアップロード、プライバシーリスク、広告、プレミアム機能"
+  },
+  "scenesTitle": "使用例",
+  "scenes": [
+    {
+      "title": "Minecraftコンテンツクリエイター",
+      "icon": "⛏️",
+      "desc": "YouTubeのサムネイル、ビデオタイトル、チャンネルブランディング用のMinecraftスタイルのフォントを作成します。Minecraftの美的感覚に合うピクセル化されたブロック状のテキストを生成します。"
+    },
+    {
+      "title": "ゲーミングストリーマー",
+      "icon": "🎮",
+      "desc": "ストリームオーバーレイ、チャットコマンド、ゲーミングコンテンツ用のMinecraftフォントを生成します。ストリーミンググラフィックに独特なMinecraftの外観を加えます。"
+    },
+    {
+      "title": "Minecraftサーバーオーナー",
+      "icon": "🌐",
+      "desc": "サーバー名、ウェブサイトヘッダー、コミュニティブランディングにMinecraftフォントを使用します。すべてのサーバー資料で一貫したMinecraftテーマのテキストを作成します。"
+    }
+  ],
+  "rating": {
+    "title": "何千人ものクリエイターに信頼されています",
+    "rating": "4.9/5 10,000人以上のクリエイターから",
+    "text": "\"見つけた中で最高のMinecraftフォントジェネレーターです。即座に結果が得られ、Instagramで完璧に動作します！\" - 美しいMinecraftテキスト生成のためにToolazeを信頼する何千人ものユーザーに参加してください。"
+  },
+  "faqTitle": "よくある質問",
+  "faq": [
+    {
+      "q": "これらは公式のMinecraftフォントですか？",
+      "a": "いいえ、当社のMinecraftは、Unicode文字を使用してMinecraftにインスピレーションを得たピクセル化されたブロック状の美的感覚でテキストを作成します。これらは公式のMinecraftフォントではありませんが、独特なMinecraftスタイルを捉えます。"
+    },
+    {
+      "q": "Minecraft自体でMinecraftフォントを使用できますか？",
+      "a": "生成されたテキストは、Minecraftのチャット、看板、本で使用できるUnicode文字を使用します。ただし、Minecraftには独自の組み込みフォントシステムがあるため、外観は当社のジェネレーターのプレビューとは異なる場合があります。"
+    },
+    {
+      "q": "Minecraftフォントはゲーミングコンテンツに適していますか？",
+      "a": "はい！Minecraftフォントは、YouTubeのサムネイル、ビデオタイトル、ゲーミングチャンネルブランディングに最適です。コンテンツに認識可能なMinecraftの美的感覚を作成します。"
+    },
+    {
+      "q": "Minecraftフォントはストリーミングプラットフォームで動作しますか？",
+      "a": "はい！Minecraftフォントは、Twitch、YouTube、その他のストリーミングプラットフォームのストリームオーバーレイ、チャットコマンド、ゲーミングコンテンツで素晴らしく機能します。"
+    },
+    {
+      "q": "サーバーブランディングにMinecraftフォントを使用できますか？",
+      "a": "もちろんです！Minecraftフォントは、サーバー名、ウェブサイトヘッダー、コミュニティブランディングに最適です。すべてのサーバー資料で一貫したMinecraftテーマのテキストを作成します。同様のゲーミングスタイルについては、<a href=\"/font-generator/3D\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">3Dフォントジェネレーター</a>をお試しください。または、フォントジェネレーターツールを閲覧してください。"
+    }
+  ],
+  "compare": {
+    "toolaze": "無制限のMinecraftテキスト生成、複数のエレガントなスタイル、即座のリアルタイムプレビュー、ローカルファーストアーキテクチャ、文字数制限なし、完全なプライバシー保護、100%永遠に無料",
+    "others": "文字数制限、限られたスタイルオプション、遅いサーバー処理、クラウドアップロードが必要、プライバシーの懸念、透かしや広告、有料プレミアム機能"
+  }
+}

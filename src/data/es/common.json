@@ -3,6 +3,7 @@
     "quickTools": "Herramientas Rápidas",
     "imageCompression": "Compresión de Imágenes",
     "imageConverter": "Convertidor de Imágenes",
+    "fontGenerator": "Generador de Fuentes",
     "aboutUs": "Acerca de Nosotros"
   },
   "home": {
@@ -78,6 +79,9 @@
     }
   },
   "footer": {
+    "imageCompression": "Compresión de Imágenes",
+    "imageConverter": "Convertidor de Imágenes",
+    "fontGenerator": "Generador de Fuentes",
     "home": "Inicio",
     "allTools": "Todas las Herramientas",
     "aboutUs": "Acerca de Nosotros",
@@ -93,6 +97,7 @@
     "quickTools": "Herramientas Rápidas",
     "imageCompression": "Compresión de Imágenes",
     "imageConverter": "Convertidor de Imágenes",
+    "fontGenerator": "Generador de Fuentes",
     "aboutUs": "Acerca de Nosotros",
     "privacyPolicy": "Política de Privacidad",
     "termsOfService": "Términos de Servicio"
@@ -192,12 +197,16 @@
     "specializedTools": "Herramientas Especializadas",
     "allImageCompressionTools": "Todas las Herramientas de Compresión de Imágenes",
     "allImageConverterTools": "Todas las Herramientas de Convertidor de Imágenes",
+    "allFontGeneratorTools": "Todas las Herramientas de Generador de Fuentes",
     "allImageCompressionToolsDesc": "Explora todas las herramientas de compresión de imágenes disponibles. Encuentra la herramienta perfecta para tus necesidades específicas.",
     "allImageConverterToolsDesc": "Explora todas las herramientas de convertidor de imágenes disponibles. Convierte entre formatos JPG, PNG, WebP y HEIC.",
+    "allFontGeneratorToolsDesc": "Explora todas las herramientas de generador de fuentes disponibles. Crea estilos de fuentes cursivas, decorativas, en negrita, itálicas, góticas, de tatuaje y más.",
     "primaryToolsDesc": "Herramientas de compresión esenciales para casos de uso generales.",
     "primaryConverterToolsDesc": "Herramientas de conversión esenciales para casos de uso generales.",
+    "primaryFontGeneratorToolsDesc": "Herramientas esenciales de generador de fuentes para casos de uso generales.",
     "specializedToolsDesc": "Herramientas de compresión especializadas para plataformas y casos de uso específicos.",
     "specializedConverterToolsDesc": "Herramientas de conversión especializadas para plataformas y casos de uso específicos.",
+    "specializedFontGeneratorToolsDesc": "Herramientas especializadas de generador de fuentes para plataformas y casos de uso específicos.",
     "performanceMetrics": {
       "metricColumn": "Métrica de Rendimiento",
       "specificationColumn": "Especificación Toolaze"
@@ -205,6 +214,67 @@
     "viewAllTools": {
       "related": "Ver Todas las Herramientas Relacionadas",
       "all": "Ver Todas las Herramientas"
+    },
+    "fontGenerator": {
+      "selectFontStyle": "Selecciona un estilo de fuente",
+      "font": "fuente",
+      "fonts": "fuentes",
+      "allFonts": "Todas las Fuentes",
+      "copy": "Copiar",
+      "copied": "¡Copiado!",
+      "placeholder": "Añade texto aquí para comenzar....",
+      "defaultText": "Toolaze Font Generator 123",
+      "trustBar": {
+        "private": "100% Privado",
+        "instantPreview": "Vista Previa Instantánea",
+        "noServerLogs": "Sin Registros del Servidor"
+      },
+      "fontTerms": {
+        "Bold": "Negrita",
+        "Italic": "Cursiva",
+        "Sans Serif": "Sans Serif",
+        "Serif": "Serif",
+        "Cursive": "Cursiva",
+        "Script": "Script",
+        "Gothic": "Gótica",
+        "Fancy": "Decorativa",
+        "Fraktur": "Fraktur",
+        "Monospace": "Monospace",
+        "Fullwidth": "Ancho Completo",
+        "Circled": "Circulado",
+        "Negative Circled": "Circulado Negativo",
+        "Squared": "Al Cuadrado",
+        "Negative Squared": "Al Cuadrado Negativo",
+        "Parenthesized": "Entre Paréntesis",
+        "Small Caps": "Versalitas",
+        "Superscript": "Superíndice",
+        "Subscript": "Subíndice",
+        "Greek Style": "Estilo Griego",
+        "Cyrillic Style": "Estilo Cirílico",
+        "Regional Indicator": "Indicador Regional",
+        "Latin Extended": "Latino Extendido",
+        "Latin Extended-B": "Latino Extendido-B"
+      },
+      "moreTools": "Más Herramientas de Generador de Fuentes",
+      "categories": {
+        "all": "Todas",
+        "cursive": "Cursiva",
+        "fancy": "Decorativa",
+        "bold": "Negrita",
+        "tattoo": "Tatuaje",
+        "cool": "Genial",
+        "instagram": "Instagram",
+        "italic": "Itálica",
+        "gothic": "Gótica",
+        "calligraphy": "Caligrafía",
+        "discord": "Discord",
+        "oldEnglish": "Old English",
+        "3d": "3D",
+        "minecraft": "Minecraft",
+        "disney": "Disney",
+        "bubble": "Burbuja",
+        "starWars": "Star Wars"
+      }
     }
   },
   "imageCompressor": {

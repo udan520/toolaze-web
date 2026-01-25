@@ -212,32 +212,30 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
         ])
 
     const comparisonData = content.comparison ? {
-      toolaze: typeof content.comparison?.toolaze === 'string' 
-        ? content.comparison.toolaze 
-        : (isConverter
-          ? [
-              toolTranslations?.comparison?.features?.batch100 || 'Batch up to 100 images',
-              toolTranslations?.comparison?.features?.multipleFormat || 'Multiple format support',
-              toolTranslations?.comparison?.features?.qualityPreserved || 'Quality preserved',
-              toolTranslations?.comparison?.features?.privateFree || '100% private & free',
-              toolTranslations?.comparison?.features?.noSignup || 'No sign-up required'
-            ].filter(Boolean).join(', ')
-          : [
-              toolTranslations?.comparison?.features?.batch100 || 'Batch up to 100 images',
-              toolTranslations?.comparison?.features?.preciseControl || 'Precise size control',
-              toolTranslations?.comparison?.features?.multipleFormat || 'Multiple format support',
-              toolTranslations?.comparison?.features?.privateFree || '100% private & free',
-              toolTranslations?.comparison?.features?.noSignup || 'No sign-up required'
-            ].filter(Boolean).join(', ')),
-      others: typeof content.comparison?.others === 'string'
-        ? content.comparison.others
-        : [
-            toolTranslations?.comparison?.features?.limitedBatch || 'Limited batch size',
-            toolTranslations?.comparison?.features?.noPreciseControl || 'No precise control',
-            toolTranslations?.comparison?.features?.formatRestrictions || 'Format restrictions',
-            toolTranslations?.comparison?.features?.privacyConcerns || 'Privacy concerns',
-            toolTranslations?.comparison?.features?.registrationRequired || 'Registration required'
+      // 优先使用 toolazeFeatures 和 othersFeatures（新格式）
+      // 如果没有，则使用 toolaze 和 others（旧格式）
+      toolaze: content.comparison.toolazeFeatures || content.comparison.toolaze || (isConverter
+        ? [
+            toolTranslations?.comparison?.features?.batch100 || 'Batch up to 100 images',
+            toolTranslations?.comparison?.features?.multipleFormat || 'Multiple format support',
+            toolTranslations?.comparison?.features?.qualityPreserved || 'Quality preserved',
+            toolTranslations?.comparison?.features?.privateFree || '100% private & free',
+            toolTranslations?.comparison?.features?.noSignup || 'No sign-up required'
           ].filter(Boolean).join(', ')
+        : [
+            toolTranslations?.comparison?.features?.batch100 || 'Batch up to 100 images',
+            toolTranslations?.comparison?.features?.preciseControl || 'Precise size control',
+            toolTranslations?.comparison?.features?.multipleFormat || 'Multiple format support',
+            toolTranslations?.comparison?.features?.privateFree || '100% private & free',
+            toolTranslations?.comparison?.features?.noSignup || 'No sign-up required'
+          ].filter(Boolean).join(', ')),
+      others: content.comparison.othersFeatures || content.comparison.others || [
+          toolTranslations?.comparison?.features?.limitedBatch || 'Limited batch size',
+          toolTranslations?.comparison?.features?.noPreciseControl || 'No precise control',
+          toolTranslations?.comparison?.features?.formatRestrictions || 'Format restrictions',
+          toolTranslations?.comparison?.features?.privacyConcerns || 'Privacy concerns',
+          toolTranslations?.comparison?.features?.registrationRequired || 'Registration required'
+        ].filter(Boolean).join(', ')
     } : null
 
     // 构建面包屑导航
@@ -411,45 +409,57 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
                   bgClass={bgClass}
                 />
               ),
-              comparison: (bgClass: string) => (
-                <Comparison
-                  key="comparison"
-                  compare={comparisonData ?? undefined}
-                  title={content.comparison?.title || toolTranslations?.comparison?.title}
-                  labels={{
-                    smartChoice: toolTranslations?.comparison?.smartChoice,
-                    toolaze: toolTranslations?.comparison?.toolaze,
-                    vs: toolTranslations?.comparison?.vs,
-                    otherTools: toolTranslations?.comparison?.otherTools,
-                  }}
-                  bgClass={bgClass}
-                />
-              ),
-              scenes: (bgClass: string) => (
-                <Scenarios
-                  key="scenes"
-                  title={toolTranslations?.scenarios?.title}
-                  scenarios={scenariosData}
-                  bgClass={bgClass}
-                />
-              ),
+              comparison: (bgClass: string) => {
+                // 对于 font-generator，从 content.comparison 中读取标题和标签
+                const comparisonTitle = content.comparison?.title || toolTranslations?.comparison?.title
+                return (
+                  <Comparison
+                    key="comparison"
+                    compare={comparisonData ?? undefined}
+                    title={comparisonTitle}
+                    labels={{
+                      smartChoice: content.comparison?.smartChoice || toolTranslations?.comparison?.smartChoice,
+                      toolaze: content.comparison?.toolaze || toolTranslations?.comparison?.toolaze,
+                      vs: content.comparison?.vs || toolTranslations?.comparison?.vs,
+                      otherTools: content.comparison?.otherTools || content.comparison?.others || toolTranslations?.comparison?.otherTools,
+                    }}
+                    bgClass={bgClass}
+                  />
+                )
+              },
+              scenes: (bgClass: string) => {
+                // 对于 font-generator，从 content.scenesTitle 中读取标题
+                const scenesTitle = content.scenesTitle || toolTranslations?.scenarios?.title
+                return (
+                  <Scenarios
+                    key="scenes"
+                    title={scenesTitle}
+                    scenarios={scenariosData}
+                    bgClass={bgClass}
+                  />
+                )
+              },
               rating: (bgClass: string) => (
                 <Rating
                   key="rating"
                   title={content.rating?.title || t?.common?.rating?.title}
-                  rating={t?.common?.rating?.rating}
-                  description={content.rating?.text || t?.common?.rating?.description || ''}
+                  rating={content.rating?.rating || t?.common?.rating?.rating}
+                  description={content.rating?.text || content.rating?.description || t?.common?.rating?.description || ''}
                   bgClass={bgClass}
                 />
               ),
-              faq: (bgClass: string) => (
-                <FAQ
-                  key="faq"
-                  title={toolTranslations?.faq?.title}
-                  items={content.faq}
-                  bgClass={bgClass}
-                />
-              ),
+              faq: (bgClass: string) => {
+                // 对于 font-generator，从 content.faqTitle 中读取标题
+                const faqTitle = content.faqTitle || toolTranslations?.faq?.title
+                return (
+                  <FAQ
+                    key="faq"
+                    title={faqTitle}
+                    items={content.faq}
+                    bgClass={bgClass}
+                  />
+                )
+              },
             }
 
             // 根据 sectionsOrder 动态渲染板块，并处理背景色交替

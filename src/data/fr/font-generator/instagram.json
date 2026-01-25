@@ -1,0 +1,191 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Générateur de Polices Instagram (Gratuit, Copier-Coller et Sans Publicité) - Toolaze",
+    "description": "Comment générer des polices Instagram ? 1. Tapez votre texte 2. Sélectionnez le style Instagram 3. Copiez et collez. Créez de beaux textes Instagram pour Instagram, Facebook et les réseaux sociaux. Gratuit et Privé."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Générateur de Polices Instagram",
+    "desc": "Générez de belles polices Instagram en ligne gratuitement. Tapez simplement votre texte ci-dessous pour créer un texte Instagram élégant que vous pouvez copier et coller n'importe où."
+  },
+  "intro": {
+    "title": "Pourquoi utiliser un Générateur de Polices Instagram ?",
+    "content": [
+      {
+        "title": "Qu'est-ce qu'une Police Instagram ?",
+        "text": "Les polices Instagram sont des styles de texte basés sur Unicode spécifiquement optimisés pour la plateforme Instagram. Ces polices utilisent des caractères Unicode qui s'affichent correctement dans les biographies Instagram, publications, stories, légendes et highlights. Les polices Instagram aident votre profil à se démarquer dans le feed, rendant votre biographie plus accrocheuse, vos légendes plus attrayantes et votre marque plus mémorable. Elles sont parfaites pour les influenceurs, les gestionnaires de réseaux sociaux et les créateurs de contenu qui souhaitent créer du contenu Instagram unique et de marque. Pour d'autres polices de plateformes, consultez notre <a href=\"/font-generator/discord\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">générateur de polices Discord</a>."
+      },
+      {
+        "title": "Pourquoi générer du texte Instagram en ligne ?",
+        "text": "Le style de texte natif d'Instagram est limité, et trouver des polices qui fonctionnent sur Instagram peut être difficile. Que vous mettiez à jour votre biographie Instagram, créiez du texte de stories attrayant ou conceviez des légendes de publications de marque, notre outil transforme n'importe quel texte en polices compatibles Instagram instantanément—assurant que votre contenu se démarque et s'affiche correctement dans toutes les fonctionnalités Instagram. Découvrez plus avec notre <a href=\"/font-generator\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">générateur de polices</a>."
+      }
+    ]
+  },
+  "features": {
+    "title": "Fonctionnalités Puissantes des Polices Instagram",
+    "items": [
+      {
+        "icon": "📱",
+        "iconType": "quality",
+        "title": "Styles Compatibles avec Instagram",
+        "desc": "Générez des polices qui fonctionnent parfaitement dans les biographies Instagram, publications, stories et légendes."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Génération Privée",
+        "desc": "Toute la génération de polices se fait localement dans votre navigateur—votre texte ne quitte jamais votre appareil."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Texte Instagram Instantané",
+        "desc": "Transformez votre texte en polices compatibles Instagram instantanément avec un aperçu en temps réel."
+      },
+      {
+        "icon": "📋",
+        "iconType": "batch",
+        "title": "Copie Rapide pour Instagram",
+        "desc": "Copiez votre texte Instagram immédiatement et collez-le directement dans votre profil ou publications Instagram."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Polices Instagram Gratuites",
+        "desc": "Génération illimitée de polices Instagram complètement gratuite—aucun coût, aucun abonnement, aucune publicité."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "Aucune Application Nécessaire",
+        "desc": "Fonctionne complètement dans votre navigateur—aucune modification de l'application Instagram ni téléchargements requis."
+      }
+    ]
+  },
+  "specs": {
+    "engine": "Rendu de Polices Natif du Navigateur - Traitement Côté Client",
+    "limit": "Longueur de Texte Illimitée - Aucune Limite de Caractères",
+    "logic": "Aperçu en Temps Réel (Application Instantanée de Style)",
+    "privacy": "100% Côté Client (Traitement Local du Navigateur)"
+  },
+  "performanceMetrics": {
+    "title": "Spécifications Techniques",
+    "metrics": [
+      {
+        "label": "Style de Police",
+        "value": "Instagram (Style Distinctif)"
+      },
+      {
+        "label": "Longueur du Texte",
+        "value": "Caractères illimités"
+      },
+      {
+        "label": "Vitesse de Traitement",
+        "value": "Instantané (Aperçu en temps réel)"
+      },
+      {
+        "label": "Format de Sortie",
+        "value": "Texte Unicode (Prêt à copier-coller)"
+      },
+      {
+        "label": "Support de Plateformes",
+        "value": "Instagram, Facebook, Twitter, TikTok, Discord et plus encore"
+      },
+      {
+        "label": "Emplacement de Traitement",
+        "value": "100% Côté Client (JavaScript du Navigateur)"
+      },
+      {
+        "label": "Confidentialité",
+        "value": "Aucun téléchargement serveur, traitement local complet"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Comment Générer des Polices Instagram",
+    "steps": [
+      {
+        "title": "Tapez Votre Texte",
+        "desc": "Entrez le texte que vous souhaitez convertir en style compatible Instagram dans le champ de saisie ci-dessus."
+      },
+      {
+        "title": "Sélectionnez le Style Instagram",
+        "desc": "Choisissez parmi les styles de polices compatibles Instagram et prévisualisez l'apparence de votre texte sur Instagram."
+      },
+      {
+        "title": "Copiez le Texte Instagram",
+        "desc": "Cliquez sur copier pour obtenir votre texte Instagram, puis collez-le directement dans votre biographie, publications, stories ou légendes Instagram."
+      }
+    ]
+  },
+  "comparison": {
+    "title": "Pourquoi Choisir Toolaze ?",
+    "toolaze": "Toolaze 💎",
+    "others": "Autres Outils",
+    "vs": "VS",
+    "smartChoice": "Choix Intelligent",
+    "otherTools": "Autres Outils",
+    "toolazeFeatures": "Génération illimitée de texte Instagram, Styles compatibles Instagram, Aperçu instantané, Traitement local, Aucune limite, Confidentialité complète, Gratuit pour toujours",
+    "othersFeatures": "Limites de caractères, Polices Instagram limitées, Traitement serveur, Téléchargements requis, Risques de confidentialité, Publicités, Fonctionnalités premium"
+  },
+  "scenesTitle": "Cas d'Utilisation",
+  "scenes": [
+    {
+      "title": "Influenceurs Instagram",
+      "icon": "📸",
+      "desc": "Créez des polices Instagram accrocheuses pour votre biographie, highlights de stories et légendes de publications. Distinguez-vous dans le feed avec du texte unique et élégant qui correspond à votre marque personnelle."
+    },
+    {
+      "title": "Gestionnaires de Réseaux Sociaux",
+      "icon": "📱",
+      "desc": "Générez des polices compatibles Instagram pour les comptes clients, publications de marque et campagnes marketing. Assurez-vous que votre texte fonctionne parfaitement sur la plateforme Instagram."
+    },
+    {
+      "title": "Créateurs de Contenu",
+      "icon": "🎬",
+      "desc": "Utilisez des polices Instagram pour les miniatures de vidéos, titres IGTV et graphiques Reels. Créez du texte cohérent et de marque dans tout votre contenu Instagram."
+    }
+  ],
+  "rating": {
+    "title": "Approuvé par des Milliers de Créateurs",
+    "rating": "4.9/5 DE PLUS DE 10K CRÉATEURS",
+    "text": "\"Le meilleur générateur de polices Instagram que j'ai trouvé. Résultats instantanés et fonctionne parfaitement sur Instagram !\" - Rejoignez des milliers d'utilisateurs qui font confiance à Toolaze pour la génération de beaux textes Instagram."
+  },
+  "faqTitle": "Questions Fréquemment Posées",
+  "faq": [
+    {
+      "q": "Les polices Instagram fonctionnent-elles vraiment sur Instagram ?",
+      "a": "Oui ! Nos polices Instagram utilisent des caractères Unicode qui sont entièrement compatibles sur Instagram. Copiez et collez simplement le texte généré directement dans votre biographie, publications, stories ou légendes Instagram."
+    },
+    {
+      "q": "Puis-je utiliser des polices Instagram dans les Stories Instagram ?",
+      "a": "Oui ! Les polices Instagram fonctionnent dans les Stories, publications, biographies et légendes. Cependant, notez que les Stories Instagram ont également des options de style de texte intégrées, vous pouvez donc combiner les deux pour un effet maximum."
+    },
+    {
+      "q": "Les polices Instagram fonctionneront-elles dans les Reels Instagram ?",
+      "a": "Oui, les polices Instagram s'affichent correctement dans les légendes de Reels et le texte à l'écran. Elles sont parfaites pour créer du contenu Reels accrocheur qui se démarque."
+    },
+    {
+      "q": "Les polices Instagram sont-elles compatibles avec les Highlights Instagram ?",
+      "a": "Oui ! Vous pouvez utiliser des polices Instagram dans les noms de couverture de vos Highlights et descriptions. Elles ajoutent un aspect unique et de marque à votre profil Instagram."
+    },
+    {
+      "q": "Puis-je utiliser des polices Instagram pour les publicités Instagram ?",
+      "a": "Oui, les polices Instagram fonctionnent dans le texte des publicités et descriptions. Elles peuvent aider vos publicités à se démarquer et correspondre à l'esthétique Instagram de votre marque. Pour d'autres polices de plateformes, consultez notre <a href=\"/font-generator/discord\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">générateur de polices Discord</a> ou explorez nos outils de générateur de polices."
+    }
+  ],
+  "compare": {
+    "toolaze": "Génération illimitée de texte Instagram, Multiples styles élégants, Aperçu instantané en temps réel, Architecture local-first, Aucune limite de caractères, Protection complète de la confidentialité, 100% gratuit pour toujours",
+    "others": "Limites de caractères, Options de style limitées, Traitement lent du serveur, Téléchargements cloud requis, Préoccupations de confidentialité, Filigranes ou publicités, Fonctionnalités premium payantes"
+  }
+}

@@ -6,6 +6,10 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import Breadcrumb from '@/components/Breadcrumb'
 import FontGeneratorHero from '@/components/blocks/FontGeneratorHero'
+import FontGenerator from '@/components/FontGenerator'
+import ImageCompressor from '@/components/ImageCompressor'
+import ImageConverter from '@/components/ImageConverter'
+import TrustBar from '@/components/blocks/TrustBar'
 import Intro from '@/components/blocks/Intro'
 import Features from '@/components/blocks/Features'
 import PerformanceMetrics from '@/components/blocks/PerformanceMetrics'
@@ -140,8 +144,33 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
     const breadcrumbT = t?.breadcrumb || { home: 'Home', fontGenerator: 'Font Generator' }
 
     // 默认内容（如果没有提供，使用翻译内容）
-    const whyToolazeTitle = content.intro?.title || "Why Use Toolaze Font Generator?"
-    const whyToolazeDesc = content.intro?.content?.[0]?.text || "A font generator is an online tool that transforms plain text into styled text using Unicode characters. It allows you to create beautiful, distinctive text styles without installing fonts or using design software."
+    const getDefaultIntro = () => {
+      if (tool === 'font-generator') {
+        return {
+          title: "Why Use Toolaze Font Generator?",
+          desc: "A font generator is an online tool that transforms plain text into styled text using Unicode characters. It allows you to create beautiful, distinctive text styles without installing fonts or using design software."
+        }
+      }
+      if (tool === 'image-compressor' || tool === 'image-compression') {
+        return {
+          title: "Why Use Toolaze Image Compressor?",
+          desc: "Traditional image compressors are slow, limit file counts, and often compromise quality. Toolaze compresses up to 100 images simultaneously with precise size control, maintaining visual quality while dramatically reducing file sizes."
+        }
+      }
+      if (tool === 'image-converter' || tool === 'image-conversion') {
+        return {
+          title: "Why Use Toolaze Image Converter?",
+          desc: "Convert images between JPG, PNG, and WebP formats instantly. Our browser-based converter processes images locally, ensuring complete privacy and fast conversion."
+        }
+      }
+      return {
+        title: `Why Use Toolaze ${tool}?`,
+        desc: ""
+      }
+    }
+    const defaultIntro = getDefaultIntro()
+    const whyToolazeTitle = content.intro?.title || defaultIntro.title
+    const whyToolazeDesc = content.intro?.content?.[0]?.text || defaultIntro.desc
     
     // 优先使用 JSON 中的 features 字段
     const whyToolazeFeatures = content.features?.items || []
@@ -151,12 +180,8 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
     const scenariosData = content.scenes || []
 
     const comparisonData = content.comparison ? {
-      toolaze: typeof content.comparison?.toolaze === 'string' 
-        ? content.comparison.toolaze 
-        : "Unlimited text length, Multiple font styles, Instant preview, Real-time generation, 100% local processing, No uploads, Free forever",
-      others: typeof content.comparison?.others === 'string'
-        ? content.comparison.others
-        : "Character limits, Limited styles, Slow processing, Server uploads required, Cloud queues, Privacy concerns, Paid upgrades"
+      toolaze: content.comparison.toolazeFeatures || content.comparison.toolaze || "Unlimited text length, Multiple font styles, Instant preview, Real-time generation, 100% local processing, No uploads, Free forever",
+      others: content.comparison.othersFeatures || content.comparison.others || "Character limits, Limited styles, Slow processing, Server uploads required, Cloud queues, Privacy concerns, Paid upgrades"
     } : null
 
     // 构建面包屑导航
@@ -224,6 +249,44 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
               h1={content.hero?.h1 || 'Font Generator'}
               desc={content.hero?.desc || 'Generate custom fonts online for free. Create beautiful text styles instantly.'}
             />
+          ) : tool === 'image-compressor' || tool === 'image-compression' ? (
+            <header className="bg-[#F8FAFF] pb-12 px-6">
+              <div className="max-w-4xl mx-auto text-center pt-8 mb-12">
+                <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 leading-tight text-slate-900">
+                  {content.hero?.h1 ? (
+                    renderH1WithGradient(content.hero.h1)
+                  ) : (
+                    <>Image Compressor</>
+                  )}
+                </h1>
+                {content.hero?.desc && (
+                  <p className="desc-text text-lg md:text-xl max-w-2xl mx-auto">
+                    {content.hero.desc}
+                  </p>
+                )}
+              </div>
+              <ImageCompressor />
+              <TrustBar />
+            </header>
+          ) : tool === 'image-converter' || tool === 'image-conversion' ? (
+            <header className="bg-[#F8FAFF] pb-12 px-6">
+              <div className="max-w-4xl mx-auto text-center pt-8 mb-12">
+                <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 leading-tight text-slate-900">
+                  {content.hero?.h1 ? (
+                    renderH1WithGradient(content.hero.h1)
+                  ) : (
+                    <>Image Converter</>
+                  )}
+                </h1>
+                {content.hero?.desc && (
+                  <p className="desc-text text-lg md:text-xl max-w-2xl mx-auto">
+                    {content.hero.desc}
+                  </p>
+                )}
+              </div>
+              <ImageConverter />
+              <TrustBar />
+            </header>
           ) : (
             <header className="bg-[#F8FAFF] pb-8 md:pb-12 px-6">
               <div className="max-w-4xl mx-auto text-center pt-6 md:pt-8 mb-6 md:mb-12">
@@ -289,45 +352,62 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                   bgClass={bgClass}
                 />
               ),
-              comparison: (bgClass: string) => (
-                <Comparison
-                  key="comparison"
-                  compare={comparisonData ?? undefined}
-                  title={content.comparison?.title}
-                  labels={{
-                    smartChoice: t?.common?.comparison?.smartChoice,
-                    toolaze: t?.common?.comparison?.toolaze,
-                    vs: t?.common?.comparison?.vs,
-                    otherTools: t?.common?.comparison?.otherTools,
-                  }}
-                  bgClass={bgClass}
-                />
-              ),
-              scenes: (bgClass: string) => (
-                <Scenarios
-                  key="scenes"
-                  title={t?.common?.scenarios?.title}
-                  scenarios={scenariosData}
-                  bgClass={bgClass}
-                />
-              ),
-              rating: (bgClass: string) => (
-                <Rating
-                  key="rating"
-                  title={content.rating?.title || t?.common?.rating?.title}
-                  rating={t?.common?.rating?.rating}
-                  description={content.rating?.text || t?.common?.rating?.description || ''}
-                  bgClass={bgClass}
-                />
-              ),
-              faq: (bgClass: string) => (
-                <FAQ
-                  key="faq"
-                  title={t?.common?.faq?.title}
-                  items={content.faq}
-                  bgClass={bgClass}
-                />
-              ),
+              comparison: (bgClass: string) => {
+                // 确保使用 JSON 中的翻译标题
+                const comparisonTitle = content.comparison?.title
+                return (
+                  <Comparison
+                    key="comparison"
+                    compare={comparisonData ?? undefined}
+                    title={comparisonTitle}
+                    labels={{
+                      smartChoice: content.comparison?.smartChoice,
+                      toolaze: content.comparison?.toolaze,
+                      vs: content.comparison?.vs,
+                      otherTools: content.comparison?.otherTools || content.comparison?.others,
+                    }}
+                    bgClass={bgClass}
+                  />
+                )
+              },
+              scenes: (bgClass: string) => {
+                // 确保使用 JSON 中的翻译标题
+                const scenesTitle = content.scenesTitle
+                return (
+                  <Scenarios
+                    key="scenes"
+                    title={scenesTitle}
+                    scenarios={scenariosData}
+                    bgClass={bgClass}
+                  />
+                )
+              },
+              rating: (bgClass: string) => {
+                // 确保使用 JSON 中的翻译标题
+                const ratingTitle = content.rating?.title
+                const ratingValue = content.rating?.rating
+                return (
+                  <Rating
+                    key="rating"
+                    title={ratingTitle}
+                    rating={ratingValue}
+                    description={content.rating?.text || content.rating?.description || ''}
+                    bgClass={bgClass}
+                  />
+                )
+              },
+              faq: (bgClass: string) => {
+                // 确保使用 JSON 中的翻译标题
+                const faqTitle = content.faqTitle
+                return (
+                  <FAQ
+                    key="faq"
+                    title={faqTitle}
+                    items={content.faq}
+                    bgClass={bgClass}
+                  />
+                )
+              },
             }
 
             // 根据 sectionsOrder 动态渲染板块，并处理背景色交替
@@ -348,7 +428,14 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
               {filteredRecommendedTools.length > 0 && (
                 <>
                   <h2 className="text-3xl font-extrabold text-center text-slate-900 mb-12">
-                    {t?.common?.moreTools || `More Font Generator Tools`}
+                    {content.moreTools || 
+                      (tool === 'font-generator' 
+                        ? (t?.common?.fontGenerator?.moreTools || `More Font Generator Tools`)
+                        : tool === 'image-compressor' || tool === 'image-compression'
+                        ? 'More Image Compression Tools'
+                        : tool === 'image-converter' || tool === 'image-conversion'
+                        ? 'More Image Converter Tools'
+                        : `More ${tool} Tools`)}
                   </h2>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
                     {filteredRecommendedTools.map((tool, idx) => {

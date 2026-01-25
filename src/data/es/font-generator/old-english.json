@@ -1,0 +1,191 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Generador de Fuentes Old English (Gratis, Copiar y Pegar, Sin Anuncios) - Toolaze",
+    "description": "¿Cómo generar fuentes Old English? 1. Escribe tu texto 2. Selecciona estilo Old English 3. Copia y pega. Crea hermoso texto Old English para Instagram, Facebook y redes sociales. Gratis y Privado."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Generador de Fuentes Old English",
+    "desc": "Genera hermosas fuentes Old English en línea de forma gratuita. Simplemente escribe tu texto a continuación para crear texto Old English elegante que puedas copiar y pegar en cualquier lugar."
+  },
+  "intro": {
+    "title": "¿Por qué usar un generador de fuentes Old English?",
+    "content": [
+      {
+        "title": "¿Qué es una fuente Old English?",
+        "text": "Las fuentes Old English, también conocidas como blackletter o escritura gótica, presentan formas de letras ornamentales y medievales que se originaron en la Europa medieval. Estas tipografías históricas se caracterizan por sus trazos densos y angulares, detalles intrincados y apariencia tradicional. Las fuentes Old English crean una estética medieval auténtica, haciéndolas perfectas para recreaciones históricas, pubs tradicionales, publicaciones literarias y proyectos que necesitan esa sensación británica clásica y atemporal. Para estilos tradicionales similares, consulta nuestro <a href=\"/font-generator/gothic\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">generador de fuentes góticas</a> o generador de fuentes de tatuaje."
+      },
+      {
+        "title": "¿Por qué generar texto Old English en línea?",
+        "text": "Crear tipografía Old English auténtica requiere conocimiento especializado de formas de letras históricas y software de diseño costoso. Nuestro generador de texto Old English proporciona acceso instantáneo a estilos blackletter clásicos usando caracteres Unicode Mathematical Fraktur. Ya sea que estés diseñando letreros de pubs, creando materiales de eventos históricos o desarrollando marca tradicional, nuestra herramienta transforma cualquier texto en estilo Old English auténtico en segundos—perfecto para proyectos que necesitan esa estética medieval clásica. Explora más estilos con nuestro <a href=\"/font-generator\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">generador de fuentes</a>."
+      }
+    ]
+  },
+  "features": {
+    "title": "Características Potentes de Fuentes Old English",
+    "items": [
+      {
+        "icon": "📜",
+        "iconType": "quality",
+        "title": "Estilos Blackletter Clásicos",
+        "desc": "Genera texto Old English auténtico con estilos blackletter y medievales tradicionales."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Generación Solo en Dispositivo",
+        "desc": "Toda la generación de fuentes Old English ocurre localmente—tu texto nunca sale de tu computadora."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Texto Old English Instantáneo",
+        "desc": "Observa tu texto transformarse a estilo Old English inmediatamente con vista previa en tiempo real."
+      },
+      {
+        "icon": "📋",
+        "iconType": "batch",
+        "title": "Copia Texto Old English",
+        "desc": "Copia tu texto Old English instantáneamente y pégalo en letreros de pubs, materiales históricos o marca tradicional."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Gratis para Siempre",
+        "desc": "Generación ilimitada de fuentes Old English completamente gratis—sin cargos, sin suscripciones, sin anuncios."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "Sin Instalación",
+        "desc": "Funciona completamente en tu navegador—no se requiere software ni descargas de fuentes Old English."
+      }
+    ]
+  },
+  "specs": {
+    "engine": "Renderizado de Fuentes Nativo del Navegador - Procesamiento del Lado del Cliente",
+    "limit": "Longitud de Texto Ilimitada - Sin Límites de Caracteres",
+    "logic": "Vista Previa en Tiempo Real (Aplicación Instantánea de Estilo)",
+    "privacy": "100% del Lado del Cliente (Procesamiento Local del Navegador)"
+  },
+  "performanceMetrics": {
+    "title": "Especificaciones Técnicas",
+    "metrics": [
+      {
+        "label": "Estilo de Fuente",
+        "value": "Old English (Estilo Distintivo)"
+      },
+      {
+        "label": "Longitud del Texto",
+        "value": "Caracteres ilimitados"
+      },
+      {
+        "label": "Velocidad de Procesamiento",
+        "value": "Instantáneo (Vista previa en tiempo real)"
+      },
+      {
+        "label": "Formato de Salida",
+        "value": "Texto Unicode (Listo para copiar y pegar)"
+      },
+      {
+        "label": "Soporte de Plataformas",
+        "value": "Instagram, Facebook, Twitter, TikTok, Discord y más"
+      },
+      {
+        "label": "Ubicación de Procesamiento",
+        "value": "100% del Lado del Cliente (JavaScript del Navegador)"
+      },
+      {
+        "label": "Privacidad",
+        "value": "Sin subidas al servidor, procesamiento local completo"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Cómo Generar Fuentes Old English",
+    "steps": [
+      {
+        "title": "Escribe Tu Texto",
+        "desc": "Ingresa el texto que deseas convertir en estilo Old English clásico en el campo de entrada arriba."
+      },
+      {
+        "title": "Selecciona Estilo Old English",
+        "desc": "Elige entre estilos de fuentes Old English blackletter tradicionales y previsualiza cómo se ve tu texto en cada variación medieval."
+      },
+      {
+        "title": "Copia Texto Old English",
+        "desc": "Haz clic en copiar para obtener tu texto Old English, luego pégalo en letreros de pubs, materiales históricos o marca tradicional."
+      }
+    ]
+  },
+  "comparison": {
+    "title": "¿Por qué elegir Toolaze?",
+    "toolaze": "Toolaze 💎",
+    "others": "Otras Herramientas",
+    "vs": "VS",
+    "smartChoice": "Elección Inteligente",
+    "otherTools": "Otras Herramientas",
+    "toolazeFeatures": "Generación ilimitada de texto Old English, Estilos blackletter clásicos, Vista previa instantánea, Procesamiento del navegador local, Sin límites, Privacidad completa, Gratis para siempre",
+    "othersFeatures": "Límites de caracteres, Pocas opciones Old English, Procesamiento del servidor, Subidas requeridas, Problemas de privacidad, Anuncios, Suscripciones premium"
+  },
+  "scenesTitle": "Casos de Uso",
+  "scenes": [
+    {
+      "title": "Recreaciones Históricas",
+      "icon": "⚔️",
+      "desc": "Crea fuentes Old English para eventos medievales, ferias del Renacimiento y recreaciones históricas. Añade autenticidad a señalización y materiales apropiados para la época."
+    },
+    {
+      "title": "Pubs y Restaurantes Tradicionales",
+      "icon": "🍺",
+      "desc": "Genera texto Old English para letreros de pubs, tableros de menú y marca de establecimientos tradicionales. Crea una estética de pub británico clásica y atemporal."
+    },
+    {
+      "title": "Publicaciones Literarias",
+      "icon": "📜",
+      "desc": "Usa fuentes Old English para portadas de literatura clásica, colecciones de poesía y diseños de libros tradicionales. Añade una sensación de historia y tradición a tus publicaciones."
+    }
+  ],
+  "rating": {
+    "title": "Confiado por Miles de Creadores",
+    "rating": "4.9/5 DE MÁS DE 10K CREADORES",
+    "text": "\"El mejor generador de fuentes Old English que he encontrado. ¡Resultados instantáneos y funciona perfectamente en Instagram!\" - Únete a miles de usuarios que confían en Toolaze para la generación de hermoso texto Old English."
+  },
+  "faqTitle": "Preguntas Frecuentes",
+  "faq": [
+    {
+      "q": "¿Las fuentes Old English son históricamente precisas?",
+      "a": "Nuestras fuentes Old English usan caracteres Unicode Mathematical Fraktur que capturan la estética de la tipografía Old English/blackletter tradicional. Aunque no son réplicas históricas exactas, proporcionan esa apariencia medieval clásica."
+    },
+    {
+      "q": "¿Puedo usar fuentes Old English para letreros de pubs?",
+      "a": "¡Sí! Las fuentes Old English son perfectas para letreros de pubs tradicionales, tableros de menú y marca de establecimientos estilo británico. Crean esa estética de pub clásica y atemporal."
+    },
+    {
+      "q": "¿Son legibles las fuentes Old English?",
+      "a": "Las fuentes Old English pueden ser menos legibles que las fuentes modernas, especialmente en tamaños pequeños. Funcionan mejor para titulares, letreros y texto corto donde el estilo tradicional es más importante que la legibilidad rápida."
+    },
+    {
+      "q": "¿Funcionarán las fuentes Old English en juegos?",
+      "a": "¡Sí! Las fuentes Old English son populares en juegos medievales y de fantasía. Son perfectas para títulos de juegos, nombres de personajes y elementos de UI que necesitan esa sensación histórica y épica."
+    },
+    {
+      "q": "¿Puedo usar fuentes Old English para recreaciones históricas?",
+      "a": "¡Absolutamente! Las fuentes Old English son ideales para eventos medievales, ferias del Renacimiento y recreaciones históricas. Añaden autenticidad a señalización y materiales apropiados para la época. Para estilos tradicionales similares, consulta nuestro <a href=\"/font-generator/gothic\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">generador de fuentes góticas</a> o explora nuestras herramientas de generador de fuentes."
+    }
+  ],
+  "compare": {
+    "toolaze": "Generación ilimitada de texto Old English, Múltiples estilos elegantes, Vista previa instantánea en tiempo real, Arquitectura local primero, Sin límites de caracteres, Protección completa de privacidad, 100% gratis para siempre",
+    "others": "Límites de caracteres, Opciones de estilo limitadas, Procesamiento lento del servidor, Subidas a la nube requeridas, Preocupaciones de privacidad, Marcas de agua o anuncios, Funciones premium de pago"
+  }
+}

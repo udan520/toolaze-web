@@ -1,0 +1,191 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Generador de Fuentes Discord (Gratis, Copiar y Pegar, Sin Anuncios) - Toolaze",
+    "description": "¿Cómo generar fuentes Discord? 1. Escribe tu texto 2. Selecciona estilo Discord 3. Copia y pega. Crea hermoso texto Discord para Instagram, Facebook y redes sociales. Gratis y Privado."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Generador de Fuentes Discord",
+    "desc": "Genera hermosas fuentes Discord en línea de forma gratuita. Simplemente escribe tu texto a continuación para crear texto Discord elegante que puedas copiar y pegar en cualquier lugar."
+  },
+  "intro": {
+    "title": "¿Por qué usar un generador de fuentes Discord?",
+    "content": [
+      {
+        "title": "¿Qué es una fuente Discord?",
+        "text": "Las fuentes Discord son estilos de texto basados en Unicode específicamente optimizados para la interfaz de chat de Discord. Estas fuentes usan caracteres Unicode que se muestran correctamente en nombres de servidores de Discord, títulos de canales, nombres de roles y mensajes de chat. Las fuentes Discord ayudan a que tu servidor se destaque, haciendo que tu comunidad sea más atractiva y tu marca más memorable. Son perfectas para comunidades de juegos, streamers y comunidades en línea que quieren crear contenido Discord único y llamativo. Para otras fuentes de plataforma, prueba nuestro <a href=\"/font-generator/instagram\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">generador de fuentes Instagram</a>."
+      },
+      {
+        "title": "¿Por qué generar texto Discord en línea?",
+        "text": "El formato de texto nativo de Discord está limitado a markdown básico, y encontrar fuentes que funcionen en Discord puede ser desafiante. Nuestro generador de texto Discord proporciona acceso instantáneo a múltiples estilos de fuentes Unicode que son totalmente compatibles con la plataforma Discord. Ya sea que estés nombrando tu servidor de Discord, creando títulos de canales o diseñando nombres de roles, nuestra herramienta transforma cualquier texto en fuentes compatibles con Discord instantáneamente—asegurando que tu comunidad se destaque y tu texto se muestre correctamente en todas las funciones de Discord. Explora más con nuestro <a href=\"/font-generator\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">generador de fuentes</a>."
+      }
+    ]
+  },
+  "features": {
+    "title": "Características Potentes de Fuentes Discord",
+    "items": [
+      {
+        "icon": "💬",
+        "iconType": "quality",
+        "title": "Estilos Compatibles con Discord",
+        "desc": "Genera fuentes que se muestran correctamente en nombres de servidores de Discord, canales y mensajes de chat."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Procesamiento Local",
+        "desc": "La generación de fuentes ocurre completamente en tu navegador—tu texto permanece en tu dispositivo."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Texto Discord Instantáneo",
+        "desc": "Transforma tu texto a fuentes compatibles con Discord instantáneamente con vista previa en vivo."
+      },
+      {
+        "icon": "📋",
+        "iconType": "batch",
+        "title": "Copia para Discord",
+        "desc": "Copia tu texto Discord inmediatamente y pégalo en nombres de servidores, canales o chat."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Fuentes Discord Gratis",
+        "desc": "Generación ilimitada de fuentes Discord completamente gratis—sin costo, sin funciones premium, sin anuncios."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "No Se Necesitan Mods de Discord",
+        "desc": "Funciona completamente en tu navegador—no se requieren modificaciones de Discord ni instalaciones de bots."
+      }
+    ]
+  },
+  "specs": {
+    "engine": "Renderizado de Fuentes Nativo del Navegador - Procesamiento del Lado del Cliente",
+    "limit": "Longitud de Texto Ilimitada - Sin Límites de Caracteres",
+    "logic": "Vista Previa en Tiempo Real (Aplicación Instantánea de Estilo)",
+    "privacy": "100% del Lado del Cliente (Procesamiento Local del Navegador)"
+  },
+  "performanceMetrics": {
+    "title": "Especificaciones Técnicas",
+    "metrics": [
+      {
+        "label": "Estilo de Fuente",
+        "value": "Discord (Estilo Distintivo)"
+      },
+      {
+        "label": "Longitud del Texto",
+        "value": "Caracteres ilimitados"
+      },
+      {
+        "label": "Velocidad de Procesamiento",
+        "value": "Instantáneo (Vista previa en tiempo real)"
+      },
+      {
+        "label": "Formato de Salida",
+        "value": "Texto Unicode (Listo para copiar y pegar)"
+      },
+      {
+        "label": "Soporte de Plataformas",
+        "value": "Instagram, Facebook, Twitter, TikTok, Discord y más"
+      },
+      {
+        "label": "Ubicación de Procesamiento",
+        "value": "100% del Lado del Cliente (JavaScript del Navegador)"
+      },
+      {
+        "label": "Privacidad",
+        "value": "Sin subidas al servidor, procesamiento local completo"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Cómo Generar Fuentes Discord",
+    "steps": [
+      {
+        "title": "Escribe Tu Texto",
+        "desc": "Ingresa el texto que deseas convertir en estilo compatible con Discord en el campo de entrada arriba."
+      },
+      {
+        "title": "Elige Estilo Discord",
+        "desc": "Selecciona entre estilos de fuentes compatibles con Discord y previsualiza cómo se mostrará tu texto en Discord."
+      },
+      {
+        "title": "Copia Texto Discord",
+        "desc": "Haz clic en copiar para obtener tu texto Discord, luego pégalo en nombres de servidores, títulos de canales o chat de Discord."
+      }
+    ]
+  },
+  "comparison": {
+    "title": "¿Por qué elegir Toolaze?",
+    "toolaze": "Toolaze 💎",
+    "others": "Otras Herramientas",
+    "vs": "VS",
+    "smartChoice": "Elección Inteligente",
+    "otherTools": "Otras Herramientas",
+    "toolazeFeatures": "Generación ilimitada de texto Discord, Estilos compatibles con Discord, Vista previa en tiempo real, Procesamiento del lado del cliente, Sin límites, Privacidad total, Gratis para siempre",
+    "othersFeatures": "Restricciones de texto, Fuentes Discord limitadas, Procesamiento lento, Subidas a la nube, Riesgos de privacidad, Marcas de agua, Funciones de pago"
+  },
+  "scenesTitle": "Casos de Uso",
+  "scenes": [
+    {
+      "title": "Comunidades de Juegos",
+      "icon": "🎮",
+      "desc": "Crea fuentes Discord para nombres de servidores, títulos de canales y nombres de roles. Haz que tu comunidad de juegos se destaque con fuentes compatibles con Discord únicas y legibles."
+    },
+    {
+      "title": "Streamers y Creadores de Contenido",
+      "icon": "📺",
+      "desc": "Genera texto Discord para superposiciones de transmisión, comandos de chat y marca de comunidad. Asegura que tu texto se muestre correctamente en la interfaz de chat de Discord."
+    },
+    {
+      "title": "Comunidades en Línea",
+      "icon": "💬",
+      "desc": "Usa fuentes Discord para anuncios de comunidad, promociones de eventos y comunicaciones de miembros. Crea texto atractivo y llamativo para tu servidor de Discord."
+    }
+  ],
+  "rating": {
+    "title": "Confiado por Miles de Creadores",
+    "rating": "4.9/5 DE MÁS DE 10K CREADORES",
+    "text": "\"El mejor generador de fuentes Discord que he encontrado. ¡Resultados instantáneos y funciona perfectamente en Instagram!\" - Únete a miles de usuarios que confían en Toolaze para la generación de hermoso texto Discord."
+  },
+  "faqTitle": "Preguntas Frecuentes",
+  "faq": [
+    {
+      "q": "¿Las fuentes Discord realmente funcionan en Discord?",
+      "a": "¡Sí! Nuestro generador Discord crea texto usando caracteres Unicode que se muestran correctamente en la interfaz de chat de Discord. Simplemente copia y pega en cualquier canal de Discord, nombre de servidor o campo de nombre de usuario."
+    },
+    {
+      "q": "¿Puedo usar fuentes Discord en nombres de servidores?",
+      "a": "¡Sí! Las fuentes Discord funcionan en nombres de servidores, nombres de canales y nombres de roles. Ayudan a que tu servidor de Discord se destaque con texto único y llamativo."
+    },
+    {
+      "q": "¿Funcionarán las fuentes Discord en bots de Discord?",
+      "a": "Sí, los bots de Discord pueden enviar mensajes con fuentes Discord. Los caracteres Unicode se muestran correctamente en mensajes de bots, embeds y anuncios."
+    },
+    {
+      "q": "¿Son legibles las fuentes Discord en el modo oscuro de Discord?",
+      "a": "¡Sí! Las fuentes Discord funcionan tanto en modo claro como oscuro. Los caracteres Unicode se adaptan automáticamente a la configuración de tema de Discord."
+    },
+    {
+      "q": "¿Puedo usar fuentes Discord para Discord Nitro?",
+      "a": "Sí, las fuentes Discord funcionan independientemente de si tienes Nitro o no. Usan caracteres Unicode estándar que funcionan para todos los usuarios de Discord. Para otras fuentes de plataforma, prueba nuestro <a href=\"/font-generator/instagram\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">generador de fuentes Instagram</a> o explora nuestra colección de generador de fuentes."
+    }
+  ],
+  "compare": {
+    "toolaze": "Generación ilimitada de texto Discord, Múltiples estilos elegantes, Vista previa instantánea en tiempo real, Arquitectura local primero, Sin límites de caracteres, Protección completa de privacidad, 100% gratis para siempre",
+    "others": "Límites de caracteres, Opciones de estilo limitadas, Procesamiento lento del servidor, Subidas a la nube requeridas, Preocupaciones de privacidad, Marcas de agua o anuncios, Funciones premium de pago"
+  }
+}

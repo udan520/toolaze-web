@@ -1,0 +1,191 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Générateur de Polices Fantaisie (Gratuit, Copier-Coller et Sans Publicité) - Toolaze",
+    "description": "Comment générer des polices fantaisie ? 1. Tapez votre texte 2. Sélectionnez le style fantaisie 3. Copiez et collez. Créez de beaux textes fantaisie pour Instagram, Facebook et les réseaux sociaux. Gratuit et Privé."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Générateur de Polices Fantaisie",
+    "desc": "Générez de belles polices fantaisie en ligne gratuitement. Tapez simplement votre texte ci-dessous pour créer un texte fantaisie élégant que vous pouvez copier et coller n'importe où."
+  },
+  "intro": {
+    "title": "Pourquoi utiliser un Générateur de Polices Fantaisie ?",
+    "content": [
+      {
+        "title": "Qu'est-ce qu'une Police Fantaisie ?",
+        "text": "Les polices fantaisie englobent une large gamme de typographies décoratives et élégantes qui ajoutent de la sophistication et de l'intérêt visuel au texte. Ces styles raffinés incluent des caractères à double trait, des lettres cerclées, du texte au carré et d'autres variations ornementales Unicode. Les polices fantaisie se caractérisent par leur apparence haut de gamme, les rendant parfaites pour les marques de luxe, les invitations formelles, les emballages de produits haut de gamme et les projets qui nécessitent une esthétique premium et exclusive. Pour des styles de script plus élégants, essayez notre <a href=\"/font-generator/cursive\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">générateur de polices cursives</a> ou générateur de polices calligraphiques."
+      },
+      {
+        "title": "Pourquoi générer du texte fantaisie en ligne ?",
+        "text": "Créer du texte décoratif fantaisie nécessite traditionnellement des compétences avancées en typographie et un logiciel de conception coûteux. Notre générateur de texte fantaisie fournit un accès instantané à plusieurs styles Unicode élégants incluant des variations à double trait, cerclées, au carré et entre parenthèses. Que vous conceviez des logos de marques de luxe, créiez des invitations formelles pour des événements ou développiez des matériaux marketing premium, notre outil transforme n'importe quel texte en style fantaisie sophistiqué instantanément—ajoutant cette touche spéciale d'élégance et d'exclusivité à vos projets. Explorez tous nos outils de polices avec notre <a href=\"/font-generator\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">générateur de polices</a>."
+      }
+    ]
+  },
+  "features": {
+    "title": "Fonctionnalités Puissantes des Polices Fantaisie",
+    "items": [
+      {
+        "icon": "💎",
+        "iconType": "quality",
+        "title": "Styles Unicode Décoratifs",
+        "desc": "Accédez à des polices fantaisie élégantes incluant des variations à double trait, cerclées, au carré et entre parenthèses."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Confidentialité Complète des Données",
+        "desc": "La génération de polices se fait complètement dans votre navigateur—votre texte ne quitte jamais votre appareil, garantissant une confidentialité totale."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Application Instantanée de Style",
+        "desc": "Voyez votre texte se transformer en style fantaisie immédiatement avec un aperçu en direct qui se met à jour pendant que vous tapez."
+      },
+      {
+        "icon": "📋",
+        "iconType": "batch",
+        "title": "Copie Sans Effort",
+        "desc": "Copiez votre texte fantaisie en un clic et collez-le dans le branding de luxe, les invitations ou les matériaux premium."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Utilisation Illimitée Gratuite",
+        "desc": "Générez des polices fantaisie illimitées sans aucun coût—aucun abonnement, aucun niveau premium, aucune publicité."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "Aucune Configuration Requise",
+        "desc": "Fonctionne entièrement dans votre navigateur—aucune installation de logiciel ni téléchargement de fichiers de polices requis."
+      }
+    ]
+  },
+  "specs": {
+    "engine": "Rendu de Polices Natif du Navigateur - Traitement Côté Client",
+    "limit": "Longueur de Texte Illimitée - Aucune Limite de Caractères",
+    "logic": "Aperçu en Temps Réel (Application Instantanée de Style)",
+    "privacy": "100% Côté Client (Traitement Local du Navigateur)"
+  },
+  "performanceMetrics": {
+    "title": "Spécifications Techniques",
+    "metrics": [
+      {
+        "label": "Style de Police",
+        "value": "Fantaisie (Style Distinctif)"
+      },
+      {
+        "label": "Longueur du Texte",
+        "value": "Caractères illimités"
+      },
+      {
+        "label": "Vitesse de Traitement",
+        "value": "Instantané (Aperçu en temps réel)"
+      },
+      {
+        "label": "Format de Sortie",
+        "value": "Texte Unicode (Prêt à copier-coller)"
+      },
+      {
+        "label": "Support de Plateformes",
+        "value": "Instagram, Facebook, Twitter, TikTok, Discord et plus encore"
+      },
+      {
+        "label": "Emplacement de Traitement",
+        "value": "100% Côté Client (JavaScript du Navigateur)"
+      },
+      {
+        "label": "Confidentialité",
+        "value": "Aucun téléchargement serveur, traitement local complet"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Comment Générer des Polices Fantaisie",
+    "steps": [
+      {
+        "title": "Tapez Votre Texte",
+        "desc": "Entrez le texte que vous souhaitez transformer en style fantaisie élégant dans le champ de saisie ci-dessus."
+      },
+      {
+        "title": "Sélectionnez le Style Fantaisie",
+        "desc": "Choisissez parmi les styles de polices fantaisie décoratifs incluant des variations à double trait, cerclées et au carré. Prévisualisez chaque style pour voir l'effet élégant."
+      },
+      {
+        "title": "Copiez le Texte Fantaisie",
+        "desc": "Cliquez sur le bouton copier pour copier votre texte fantaisie, puis collez-le dans le branding de luxe, les invitations formelles ou les matériaux premium."
+      }
+    ]
+  },
+  "comparison": {
+    "title": "Pourquoi Choisir Toolaze ?",
+    "toolaze": "Toolaze 💎",
+    "others": "Autres Outils",
+    "vs": "VS",
+    "smartChoice": "Choix Intelligent",
+    "otherTools": "Autres Outils",
+    "toolazeFeatures": "Génération illimitée de texte fantaisie, Multiples styles décoratifs, Aperçu en temps réel, Traitement du navigateur, Aucune limite, Confidentialité totale, 100% gratuit",
+    "othersFeatures": "Restrictions de texte, Options fantaisie limitées, Serveurs lents, Téléchargements requis, Risques de confidentialité, Filigranes, Fonctionnalités payantes"
+  },
+  "scenesTitle": "Cas d'Utilisation",
+  "scenes": [
+    {
+      "title": "Marques de Luxe",
+      "icon": "💎",
+      "desc": "Créez des polices fantaisie élégantes pour les emballages de produits haut de gamme, les logos de marques de luxe et les matériaux marketing premium. Ajoutez de la sophistication et de l'exclusivité à votre identité de marque."
+    },
+    {
+      "title": "Organisateurs d'Événements",
+      "icon": "🎊",
+      "desc": "Générez du texte fantaisie pour les invitations formelles, les programmes de mariage et la signalisation d'événements haut de gamme. Parfait pour les galas, événements d'entreprise et célébrations élégantes."
+    },
+    {
+      "title": "Designers de Mode",
+      "icon": "👗",
+      "desc": "Utilisez des polices fantaisie pour les noms de marques de mode, les graphiques de défilés et le contenu éditorial. Créez une esthétique raffinée et élégante qui correspond aux sensibilités de la haute couture."
+    }
+  ],
+  "rating": {
+    "title": "Approuvé par des Milliers de Créateurs",
+    "rating": "4.9/5 DE PLUS DE 10K CRÉATEURS",
+    "text": "\"Le meilleur générateur de polices fantaisie que j'ai trouvé. Résultats instantanés et fonctionne parfaitement sur Instagram !\" - Rejoignez des milliers d'utilisateurs qui font confiance à Toolaze pour la génération de beaux textes fantaisie."
+  },
+  "faqTitle": "Questions Fréquemment Posées",
+  "faq": [
+    {
+      "q": "Qu'est-ce qui rend une police 'fantaisie' ?",
+      "a": "Les polices fantaisie ont généralement des éléments décoratifs, des courbes élégantes et un style sophistiqué. Notre fantaisie inclut des styles Unicode décoratifs à double trait, cerclés et autres qui créent une apparence raffinée et haut de gamme."
+    },
+    {
+      "q": "Les polices fantaisie sont-elles adaptées aux marques de luxe ?",
+      "a": "Oui ! Les polices fantaisie sont parfaites pour les emballages de produits haut de gamme, les logos de marques de luxe et les matériaux marketing premium. Elles transmettent sophistication et exclusivité."
+    },
+    {
+      "q": "Puis-je utiliser des polices fantaisie dans les invitations formelles ?",
+      "a": "Absolument ! Les polices fantaisie sont idéales pour les invitations de mariage, les programmes d'événements formels et la papeterie élégante. Elles ajoutent cette touche spéciale de sophistication aux occasions importantes."
+    },
+    {
+      "q": "Les polices fantaisie fonctionneront-elles dans les matériaux imprimés ?",
+      "a": "Oui, les polices Unicode fantaisie fonctionnent bien dans les matériaux numériques et imprimés. Elles sont parfaites pour les cartes de visite, en-têtes de lettres et matériaux imprimés de haute qualité."
+    },
+    {
+      "q": "Les polices fantaisie sont-elles lisibles sur les appareils mobiles ?",
+      "a": "La plupart des polices fantaisie s'affichent bien sur les appareils mobiles modernes. Cependant, certains styles très décoratifs peuvent être moins lisibles en petites tailles, alors prévisualisez toujours sur votre appareil cible. Pour des styles élégants plus lisibles, essayez notre <a href=\"/font-generator/cursive\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">générateur de polices cursives</a> ou explorez notre collection de générateur de polices."
+    }
+  ],
+  "compare": {
+    "toolaze": "Génération illimitée de texte fantaisie, Multiples styles élégants, Aperçu instantané en temps réel, Architecture local-first, Aucune limite de caractères, Protection complète de la confidentialité, 100% gratuit pour toujours",
+    "others": "Limites de caractères, Options de style limitées, Traitement lent du serveur, Téléchargements cloud requis, Préoccupations de confidentialité, Filigranes ou publicités, Fonctionnalités premium payantes"
+  }
+}

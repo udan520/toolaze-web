@@ -1,0 +1,191 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Générateur de Polices en Gras (Gratuit, Copier-Coller et Sans Publicité) - Toolaze",
+    "description": "Comment générer des polices en gras ? 1. Tapez votre texte 2. Sélectionnez le style gras 3. Copiez et collez. Créez de beaux textes en gras pour Instagram, Facebook et les réseaux sociaux. Gratuit et Privé."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Générateur de Polices en Gras",
+    "desc": "Générez de belles polices en gras en ligne gratuitement. Tapez simplement votre texte ci-dessous pour créer un texte en gras élégant que vous pouvez copier et coller n'importe où."
+  },
+  "intro": {
+    "title": "Pourquoi utiliser un Générateur de Polices en Gras ?",
+    "content": [
+      {
+        "title": "Qu'est-ce qu'une Police en Gras ?",
+        "text": "Les polices en gras utilisent des caractères Unicode Mathematical Bold—des symboles Unicode distincts qui créent des formes de lettres plus épaisses et proéminentes. Contrairement au texte en gras stylisé CSS, ces caractères Unicode fonctionnent de manière cohérente sur toutes les plateformes, même là où le style n'est pas disponible. Les polices en gras se caractérisent par leur apparence forte et percutante, les rendant parfaites pour les titres, les matériaux marketing, les noms de marque et tout texte qui doit attirer l'attention et transmettre la confiance. Pour plus de styles en gras, consultez notre <a href=\"/font-generator/tattoo\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">générateur de polices tatouage</a> ou générateur de polices gothiques."
+      },
+      {
+        "title": "Pourquoi générer du texte en gras en ligne ?",
+        "text": "Le style de texte en gras standard ne fonctionne que là où CSS est pris en charge, limitant son utilisation dans les biographies de réseaux sociaux, les lignes d'objet d'email et les environnements de texte brut. Notre gras utilise des caractères Unicode Mathematical Bold qui fonctionnent partout—Instagram, Twitter, email, documents et plus encore. Que vous créiez des titres accrocheurs, conceviez des campagnes marketing ou construisiez une identité de marque, notre outil transforme n'importe quel texte en style gras puissant instantanément, assurant que votre message se démarque sur toutes les plateformes. Découvrez plus de styles avec notre <a href=\"/font-generator\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">générateur de polices</a>."
+      }
+    ]
+  },
+  "features": {
+    "title": "Fonctionnalités Puissantes des Polices en Gras",
+    "items": [
+      {
+        "icon": "🔲",
+        "iconType": "quality",
+        "title": "Caractères Unicode en Gras",
+        "desc": "Générez du texte en gras en utilisant des symboles Unicode Mathematical Bold qui fonctionnent partout, même sans CSS."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Traitement Uniquement dans le Navigateur",
+        "desc": "Toute la génération de polices en gras se fait dans votre navigateur—votre texte reste local, jamais téléchargé sur des serveurs."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Conversion Instantanée en Gras",
+        "desc": "Transformez votre texte en style gras instantanément avec un aperçu en temps réel montrant les changements immédiatement."
+      },
+      {
+        "icon": "📋",
+        "iconType": "batch",
+        "title": "Copie-Coller Rapide",
+        "desc": "Copiez votre texte en gras instantanément et collez-le dans des titres, des réseaux sociaux ou des matériaux marketing."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Gratuit pour Toujours",
+        "desc": "Génération illimitée de polices en gras complètement gratuite—aucun frais, aucun abonnement, aucune publicité."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "Aucune Installation",
+        "desc": "Fonctionne complètement dans votre navigateur—aucun téléchargement de logiciel ni installation de polices requis."
+      }
+    ]
+  },
+  "specs": {
+    "engine": "Rendu de Polices Natif du Navigateur - Traitement Côté Client",
+    "limit": "Longueur de Texte Illimitée - Aucune Limite de Caractères",
+    "logic": "Aperçu en Temps Réel (Application Instantanée de Style)",
+    "privacy": "100% Côté Client (Traitement Local du Navigateur)"
+  },
+  "performanceMetrics": {
+    "title": "Spécifications Techniques",
+    "metrics": [
+      {
+        "label": "Style de Police",
+        "value": "Gras (Style Distinctif)"
+      },
+      {
+        "label": "Longueur du Texte",
+        "value": "Caractères illimités"
+      },
+      {
+        "label": "Vitesse de Traitement",
+        "value": "Instantané (Aperçu en temps réel)"
+      },
+      {
+        "label": "Format de Sortie",
+        "value": "Texte Unicode (Prêt à copier-coller)"
+      },
+      {
+        "label": "Support de Plateformes",
+        "value": "Instagram, Facebook, Twitter, TikTok, Discord et plus encore"
+      },
+      {
+        "label": "Emplacement de Traitement",
+        "value": "100% Côté Client (JavaScript du Navigateur)"
+      },
+      {
+        "label": "Confidentialité",
+        "value": "Aucun téléchargement serveur, traitement local complet"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Comment Générer des Polices en Gras",
+    "steps": [
+      {
+        "title": "Entrez Votre Texte",
+        "desc": "Tapez le texte que vous souhaitez convertir en style gras dans le champ de saisie ci-dessus."
+      },
+      {
+        "title": "Choisissez le Style Gras",
+        "desc": "Sélectionnez parmi les styles de polices Unicode en gras et prévisualisez l'apparence de votre texte avec cette apparence forte et percutante."
+      },
+      {
+        "title": "Copiez le Texte en Gras",
+        "desc": "Cliquez sur copier pour obtenir votre texte en gras, puis collez-le dans des titres, des biographies de réseaux sociaux ou des matériaux marketing."
+      }
+    ]
+  },
+  "comparison": {
+    "title": "Pourquoi Choisir Toolaze ?",
+    "toolaze": "Toolaze 💎",
+    "others": "Autres Outils",
+    "vs": "VS",
+    "smartChoice": "Choix Intelligent",
+    "otherTools": "Autres Outils",
+    "toolazeFeatures": "Génération illimitée de texte en gras, Caractères Unicode en gras, Aperçu instantané, Traitement local du navigateur, Aucune limite, Confidentialité complète, Gratuit pour toujours",
+    "othersFeatures": "Limites de caractères, Styles en gras limités, Retards du serveur, Téléchargements cloud, Problèmes de confidentialité, Publicités, Abonnements premium"
+  },
+  "scenesTitle": "Cas d'Utilisation",
+  "scenes": [
+    {
+      "title": "Professionnels du Marketing",
+      "icon": "📢",
+      "desc": "Créez des polices en gras accrocheuses pour les publicités, les panneaux d'affichage et les campagnes marketing. Faites ressortir votre message avec une typographie puissante et percutante."
+    },
+    {
+      "title": "Designers de Titres",
+      "icon": "📰",
+      "desc": "Générez du texte en gras pour les titres d'articles de blog, les en-têtes d'articles et les titres de nouvelles. Assurez-vous que votre contenu attire l'attention des lecteurs avec des polices en gras fortes et lisibles."
+    },
+    {
+      "title": "Designers d'Identité de Marque",
+      "icon": "🏢",
+      "desc": "Utilisez des polices en gras pour les logos d'entreprises, les noms de marque et les systèmes d'identité d'entreprise. Créez une présence de marque forte et confiante avec une typographie en gras."
+    }
+  ],
+  "rating": {
+    "title": "Approuvé par des Milliers de Créateurs",
+    "rating": "4.9/5 DE PLUS DE 10K CRÉATEURS",
+    "text": "\"Le meilleur générateur de polices en gras que j'ai trouvé. Résultats instantanés et fonctionne parfaitement sur Instagram !\" - Rejoignez des milliers d'utilisateurs qui font confiance à Toolaze pour la génération de beaux textes en gras."
+  },
+  "faqTitle": "Questions Fréquemment Posées",
+  "faq": [
+    {
+      "q": "Quelle est la différence entre les polices en gras et le texte en gras régulier ?",
+      "a": "Notre gras utilise des caractères Unicode Mathematical Bold, qui sont des symboles Unicode distincts, pas seulement du texte stylisé. Cela signifie qu'ils fonctionnent de manière cohérente sur toutes les plateformes, même là où le style CSS n'est pas disponible."
+    },
+    {
+      "q": "Puis-je utiliser des polices en gras dans les biographies de réseaux sociaux ?",
+      "a": "Oui ! Les polices en gras sont parfaites pour les biographies de réseaux sociaux, les légendes de publications et partout où vous avez besoin que le texte se démarque. Elles fonctionnent très bien sur Instagram, Twitter, Facebook et TikTok."
+    },
+    {
+      "q": "Les polices en gras sont-elles bonnes pour les titres ?",
+      "a": "Absolument ! Les polices en gras sont idéales pour les titres d'articles de blog, les en-têtes d'articles et les titres de nouvelles. Elles assurent que votre contenu attire l'attention des lecteurs immédiatement."
+    },
+    {
+      "q": "Les polices en gras fonctionneront-elles dans les lignes d'objet d'email ?",
+      "a": "Oui, les caractères Unicode en gras fonctionnent dans les lignes d'objet de la plupart des clients de messagerie. Ils peuvent aider vos emails à se démarquer dans les boîtes de réception encombrées."
+    },
+    {
+      "q": "Puis-je combiner des polices en gras avec d'autres styles ?",
+      "a": "Vous pouvez utiliser des polices en gras avec d'autres textes, mais chaque style de police est indépendant. Pour des styles mixtes, vous devriez générer des sections séparées dans différents styles. Consultez notre <a href=\"/font-generator/tattoo\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">générateur de polices tatouage</a> ou générateur de polices gothiques pour plus d'options en gras, ou explorez nos outils de générateur de polices."
+    }
+  ],
+  "compare": {
+    "toolaze": "Génération illimitée de texte en gras, Multiples styles élégants, Aperçu instantané en temps réel, Architecture local-first, Aucune limite de caractères, Protection complète de la confidentialité, 100% gratuit pour toujours",
+    "others": "Limites de caractères, Options de style limitées, Traitement lent du serveur, Téléchargements cloud requis, Préoccupations de confidentialité, Filigranes ou publicités, Fonctionnalités premium payantes"
+  }
+}

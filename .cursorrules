@@ -112,33 +112,28 @@ See 'docs/SEO_MASTER_LAYOUT.md' section 3 for the exact breadcrumb structure.
   }
   ```
 
-**COMPONENT-BASED DEVELOPMENT**: ALWAYS prioritize component-based development to reduce code duplication, improve maintainability, and save translation costs.
-- **Reusable UI Elements**: When creating buttons, cards, sections, or other UI elements that appear in multiple places, create them as reusable components in `src/components/` or `src/components/blocks/`.
-- **Translation Management**: For UI elements with text that needs translation:
-  - Store translations in `src/data/{locale}/common.json` for common/shared elements
-  - Pass translated text as props to components from server-side pages
-  - Avoid hardcoding text in components; always accept text as props
-- **Component Examples**: 
-  - Buttons: `ViewAllToolsButton`, `TryNowButton` (if created)
-  - Sections: `Comparison`, `Rating`, `FAQ`, `Scenarios`, `Features`
-  - Navigation: `Navigation`, `Breadcrumb`, `Footer`
-- **Benefits**:
-  - Single source of truth for translations (no duplicate translations)
-  - Consistent styling and behavior across pages
-  - Easier maintenance and updates
-  - Reduced translation costs (translate once, use everywhere)
-- **When to Componentize**:
-  - UI elements used in 2+ places → Create component
-  - Repeated patterns (buttons, cards, sections) → Create component
-  - Elements with translations → Create component with text props
-  - Complex UI blocks → Create component in `src/components/blocks/`
-- **Component Structure**: 
-  ```typescript
-  interface ComponentProps {
-    text?: string  // Translated text passed from parent
-    // ... other props
-  }
-  export default function Component({ text, ...props }: ComponentProps) {
-    // Use text prop, not hardcoded strings
-  }
-  ```
+**LOCALIZATION AGENT RULE**: When translating JSON files, you MUST follow these strict rules:
+- **JSON Structure Consistency**: Translation MUST maintain the exact same JSON hierarchy as `en.json`. The structure, nesting levels, and key names must be identical.
+- **No Omissions**: NEVER omit any entries, even if the content appears repetitive. Every key in `en.json` must exist in all translation files.
+- **Terminology Consistency**: Always reference existing translations' terminology glossary to maintain style consistency (e.g., professional, technology-oriented). Use the same terms for the same concepts across all translations.
+- **Structure Reference**: Before translating, ALWAYS reference `docs/TRANSLATION_STRUCTURE_GUIDE.md` to understand the standard structure for tool-specific JSON files.
+- **Automatic Key Check**: After modifying any JSON translation file, automatically run a key missing check:
+  - **Single file**: `node scripts/check-translation-keys.js [file-path]`
+  - **All tools for a locale**: `node scripts/check-all-tool-translations.js [locale]`
+  - The check MUST pass before considering the translation complete.
+- **Tool-Specific Files**: For tool-specific JSON files (font-generator.json, image-compressor.json, image-converter.json), ensure:
+  - All required fields are present (see `docs/TRANSLATION_STRUCTURE_GUIDE.md`)
+  - `comparison` structure uses `toolazeFeatures` and `othersFeatures` (strings, comma-separated)
+  - Array structures match the first item template
+  - HTML tags and links are preserved correctly
+- **Common.json Structure**: Only translate truly common content in `common.json`:
+  - `nav`, `breadcrumb`, `footer` - Navigation elements
+  - `home`, `about`, `privacy`, `terms` - Standalone pages
+  - `common.*` - Shared UI component translations (fontGenerator, tool, viewAllTools, performanceMetrics)
+  - DO NOT include tool-specific SEO content in `common.json`
+
+**MISSING TRANSLATION REDIRECT RULE**: CRITICAL - When a page content is not found for a specific locale, ALWAYS redirect to the English version instead of showing a 404 error. This applies especially to:
+- **Font Generator L3 pages**: If a locale (e.g., `ko`, `zh-TW`, `pt`, `it`) doesn't have translation files for font-generator L3 pages, redirect to `/font-generator/{slug}` (English version) instead of calling `notFound()`
+- **Implementation**: In `src/app/[locale]/[tool]/[slug]/page.tsx`, check if `content` is null after calling `getSeoContent()`. If null and the tool is `font-generator` and locale is not `en`, redirect to the English version using `redirect('/font-generator/{slug}')`
+- **Why**: This ensures users always see content (even if in English) rather than a 404 error, improving user experience and SEO
+- **Example**: `/ko/font-generator/cursive` → redirects to `/font-generator/cursive` (English version)

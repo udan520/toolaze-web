@@ -96,16 +96,14 @@ export async function generateStaticParams() {
         }
       }
       
-      // 添加字体生成工具的页面（仅支持 en 和 de）
-      if (locale === 'en' || locale === 'de') {
-        for (const slug of fontGeneratorSlugs) {
-          if (slug && typeof slug === 'string') {
-            params.push({
-              locale: locale,
-              tool: 'font-generator',
-              slug: slug,
-            })
-          }
+      // 添加字体生成工具的页面（为所有语言生成参数，未支持的语言会在运行时重定向到英语版本）
+      for (const slug of fontGeneratorSlugs) {
+        if (slug && typeof slug === 'string') {
+          params.push({
+            locale: locale,
+            tool: 'font-generator',
+            slug: slug,
+          })
         }
       }
     }
@@ -148,6 +146,13 @@ export default async function LandingPage({ params }: PageProps) {
   if (!resolvedParams.slug) {
     notFound()
     return null
+  }
+  
+  // 检查内容是否存在，如果不存在且是 font-generator，重定向到英语版本
+  const content = await getSeoContent(resolvedParams.tool, resolvedParams.slug, locale)
+  if (!content && resolvedParams.tool === 'font-generator' && locale !== 'en') {
+    // 重定向到英语版本的 font-generator L3 页面
+    redirect(`/font-generator/${resolvedParams.slug}`)
   }
   
   return (

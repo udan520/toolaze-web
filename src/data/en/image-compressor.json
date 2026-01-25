@@ -1,0 +1,126 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Free Image Compressor - Batch Compress Images Online | Toolaze",
+    "description": "Batch compress up to 100 images at once. Set exact target size. Fast, private, 100% free. No sign-up required."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Free <span class=\"text-gradient\">Image Compressor</span>",
+    "desc": "Batch compress up to 100 images at once. Set exact target size. Fast, private, 100% free. No sign-up required."
+  },
+  "intro": {
+    "title": "Why Use Toolaze Image Compressor?",
+    "content": [
+      {
+        "title": "Stop Losing Time on Slow Image Compression Tools",
+        "text": "Traditional image compressors are slow, limit file counts, and often compromise quality. Toolaze compresses up to 100 images simultaneously with precise size control, maintaining visual quality while dramatically reducing file sizes. Perfect for web developers, photographers, and content creators."
+      }
+    ]
+  },
+  "features": {
+    "title": "Powerful Image Compression Features",
+    "items": [
+      {
+        "icon": "📂",
+        "iconType": "batch",
+        "title": "Batch Processing",
+        "desc": "Compress up to 100 images at once"
+      },
+      {
+        "icon": "🎯",
+        "iconType": "precise",
+        "title": "Precise Size Control",
+        "desc": "Set exact target size in KB or MB"
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "100% Free",
+        "desc": "No ads forever."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "How to Use Toolaze?",
+    "steps": [
+      {
+        "title": "Upload Images",
+        "desc": "Drag and drop up to 100 images or folders. Supports JPG, PNG, WebP, and BMP formats."
+      },
+      {
+        "title": "Set Target Size",
+        "desc": "Choose your desired file size in KB or MB. Our algorithm compresses images precisely to your target."
+      },
+      {
+        "title": "Download Results",
+        "desc": "Download individual compressed images or all at once as a ZIP file. Fast and efficient."
+      }
+    ]
+  },
+  "comparison": {
+    "title": "Why Choose Toolaze?",
+    "toolaze": "Toolaze 💎",
+    "others": "Other Tools",
+    "vs": "VS",
+    "smartChoice": "Smart Choice",
+    "otherTools": "Other Tools",
+    "toolazeFeatures": "Batch up to 100 images, Precise size control, Multiple format support, 100% private & free, No sign-up required",
+    "othersFeatures": "Limited batch size, No precise control, Format restrictions, Privacy concerns, Registration required"
+  },
+  "scenesTitle": "Use Cases",
+  "scenes": [
+    {
+      "title": "For Web Developers",
+      "icon": "💻",
+      "desc": "Optimize images for websites and apps. Reduce load times while maintaining quality for better SEO and user experience."
+    },
+    {
+      "title": "For E-commerce",
+      "icon": "🛒",
+      "desc": "Compress product images in bulk. Faster page loads mean better conversion rates and improved search rankings."
+    },
+    {
+      "title": "For Content Creators",
+      "icon": "📱",
+      "desc": "Prepare images for social media and blogs. Batch process multiple images quickly without quality loss."
+    }
+  ],
+  "rating": {
+    "title": "Trusted by Thousands of Creators",
+    "rating": "4.9/5 FROM 10K+ CREATORS",
+    "text": "Join thousands of satisfied users who trust Toolaze for fast, secure, and free image compression. No registration required, 100% private processing."
+  },
+  "faqTitle": "Frequently Asked Questions",
+  "faq": [
+    {
+      "q": "Which image formats are supported?",
+      "a": "Toolaze supports JPG, JPEG, PNG, WebP, and BMP formats. All compressed images are output as optimized JPEG files."
+    },
+    {
+      "q": "Is this tool really free?",
+      "a": "Yes! Toolaze is 100% free with no ads, no registration, and no hidden fees. All processing happens in your browser."
+    },
+    {
+      "q": "Can I compress more than 100 images?",
+      "a": "The maximum batch size is 100 files per session. For larger batches, simply process them in multiple sessions."
+    },
+    {
+      "q": "Are my images uploaded to a server?",
+      "a": "No! All image processing happens locally in your browser using JavaScript. Your images never leave your device, ensuring complete privacy."
+    },
+    {
+      "q": "What is the maximum file size I can compress?",
+      "a": "There's no theoretical file size limit. However, very large images may cause browser slowdown depending on your device's performance and available memory. We recommend processing large files in smaller batches for the best experience."
+    }
+  ],
+  "moreTools": "More Image Compression Tools"
+}

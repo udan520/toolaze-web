@@ -7,7 +7,7 @@ export const dynamic = 'force-static'
 const baseUrl = 'https://toolaze.com'
 const SUPPORTED_LOCALES = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
 const STATIC_PAGES = ['about', 'privacy', 'terms']
-const TOOL_PAGES = ['image-compressor', 'image-converter']
+const TOOL_PAGES = ['image-compressor', 'image-converter', 'font-generator']
 
 interface SitemapEntry {
   url: string
@@ -47,6 +47,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // 3. 功能页面（所有语言版本）
   TOOL_PAGES.forEach((tool) => {
     SUPPORTED_LOCALES.forEach((locale) => {
+      // font-generator 支持 en、de、ja、es 和 fr
+      if (tool === 'font-generator' && locale !== 'en' && locale !== 'de' && locale !== 'ja' && locale !== 'es' && locale !== 'fr') {
+        return
+      }
       const path = locale === 'en' ? `/${tool}` : `/${locale}/${tool}`
       entries.push({
         url: `${baseUrl}${path}`,

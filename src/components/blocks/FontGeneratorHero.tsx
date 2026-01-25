@@ -1,4 +1,5 @@
 import FontGenerator from '@/components/FontGenerator'
+import TrustBar from '@/components/blocks/TrustBar'
 import React from 'react'
 
 interface FontGeneratorHeroProps {
@@ -69,11 +70,7 @@ export default function FontGeneratorHero({ h1, desc }: FontGeneratorHeroProps) 
         </p>
       </div>
       <FontGenerator />
-      <div className="mt-8 flex flex-wrap justify-center gap-4 text-[11px] font-bold text-indigo-900/60 uppercase tracking-widest">
-        <span>🔒 100% Private</span> <span className="hidden md:block">|</span>
-        <span>⚡ Instant Preview</span> <span className="hidden md:block">|</span>
-        <span>🚫 No Server Logs</span>
-      </div>
+      <TrustBar />
     </header>
   )
 }

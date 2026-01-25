@@ -3,6 +3,7 @@
     "quickTools": "クイックツール",
     "imageCompression": "画像圧縮",
     "imageConverter": "画像変換",
+    "fontGenerator": "フォントジェネレーター",
     "aboutUs": "私たちについて"
   },
   "home": {
@@ -205,6 +206,79 @@
     "viewAllTools": {
       "related": "関連するすべてのツールを表示",
       "all": "すべてのツールを表示"
+    },
+    "scenarios": {
+      "title": "使用例"
+    },
+    "faq": {
+      "title": "よくある質問"
+    },
+    "comparison": {
+      "smartChoice": "スマートな選択",
+      "toolaze": "Toolaze",
+      "vs": "VS",
+      "otherTools": "他のツール"
+    },
+    "fontGenerator": {
+      "selectFontStyle": "フォントスタイルを選択",
+      "font": "フォント",
+      "fonts": "フォント",
+      "allFonts": "すべてのフォント",
+      "copy": "コピー",
+      "copied": "コピーしました！",
+      "placeholder": "ここにテキストを入力して開始してください....",
+      "defaultText": "Toolaze Font Generator 123",
+      "trustBar": {
+        "private": "100% プライベート",
+        "instantPreview": "即座のプレビュー",
+        "noServerLogs": "サーバーログなし"
+      },
+      "fontTerms": {
+        "Bold": "太字",
+        "Italic": "イタリック",
+        "Sans Serif": "サンセリフ",
+        "Serif": "セリフ",
+        "Cursive": "筆記体",
+        "Script": "スクリプト",
+        "Gothic": "ゴシック",
+        "Fancy": "装飾",
+        "Fraktur": "フラクトゥール",
+        "Monospace": "等幅",
+        "Fullwidth": "全角",
+        "Circled": "丸囲み",
+        "Negative Circled": "反転丸囲み",
+        "Squared": "四角囲み",
+        "Negative Squared": "反転四角囲み",
+        "Parenthesized": "括弧付き",
+        "Small Caps": "スモールキャップス",
+        "Superscript": "上付き",
+        "Subscript": "下付き",
+        "Greek Style": "ギリシャスタイル",
+        "Cyrillic Style": "キリルスタイル",
+        "Regional Indicator": "地域インジケーター",
+        "Latin Extended": "ラテン拡張",
+        "Latin Extended-B": "ラテン拡張-B"
+      },
+      "moreTools": "その他のフォントジェネレーターツール",
+      "categories": {
+        "all": "すべて",
+        "cursive": "筆記体",
+        "fancy": "装飾",
+        "bold": "太字",
+        "tattoo": "タトゥー",
+        "cool": "クール",
+        "instagram": "Instagram",
+        "italic": "イタリック",
+        "gothic": "ゴシック",
+        "calligraphy": "カリグラフィー",
+        "discord": "Discord",
+        "oldEnglish": "オールドイングリッシュ",
+        "3d": "3D",
+        "minecraft": "Minecraft",
+        "disney": "Disney",
+        "bubble": "バブル",
+        "starWars": "スター・ウォーズ"
+      }
     }
   },
   "imageCompressor": {

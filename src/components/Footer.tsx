@@ -374,7 +374,7 @@ export default function Footer() {
       
       // 定义已知支持的语言（基于实际存在的文件）
       const knownSupportedLocales: Record<string, string[]> = {
-        'font-generator': ['en', 'de'], // font-generator 目前只有英语和德语
+        'font-generator': ['en', 'de', 'ja', 'es', 'fr'], // font-generator 支持英语、德语、日语、西班牙语和法语
         'image-compressor': locales.map(l => l.code), // 支持所有语言
         'image-converter': locales.map(l => l.code), // 支持所有语言
       }

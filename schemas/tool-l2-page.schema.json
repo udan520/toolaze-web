@@ -1,0 +1,302 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Tool L2 Page JSON Schema",
+  "description": "Schema for tool-specific L2 page JSON files (font-generator.json, image-compressor.json, image-converter.json)",
+  "type": "object",
+  "required": [
+    "in_menu",
+    "metadata",
+    "sectionsOrder",
+    "hero",
+    "intro",
+    "features",
+    "howToUse",
+    "comparison",
+    "scenesTitle",
+    "scenes",
+    "rating",
+    "faqTitle",
+    "faq",
+    "moreTools"
+  ],
+  "properties": {
+    "in_menu": {
+      "type": "boolean",
+      "description": "Whether this tool appears in the main navigation menu"
+    },
+    "metadata": {
+      "type": "object",
+      "required": ["title", "description"],
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "Page title for SEO"
+        },
+        "description": {
+          "type": "string",
+          "description": "Meta description for SEO"
+        }
+      }
+    },
+    "sectionsOrder": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["howToUse", "features", "intro", "performanceMetrics", "comparison", "scenes", "rating", "faq"]
+      },
+      "description": "Order of sections to display on the page"
+    },
+    "hero": {
+      "type": "object",
+      "required": ["h1", "desc"],
+      "properties": {
+        "h1": {
+          "type": "string",
+          "description": "Main heading (may contain HTML)"
+        },
+        "desc": {
+          "type": "string",
+          "description": "Hero description text"
+        }
+      }
+    },
+    "intro": {
+      "type": "object",
+      "required": ["title", "content"],
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "content": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["title", "text"],
+            "properties": {
+              "title": {
+                "type": "string"
+              },
+              "text": {
+                "type": "string",
+                "description": "May contain HTML links"
+              }
+            }
+          }
+        }
+      }
+    },
+    "features": {
+      "type": "object",
+      "required": ["title", "items"],
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "items": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["icon", "iconType", "title", "desc"],
+            "properties": {
+              "icon": {
+                "type": "string",
+                "description": "Emoji or icon identifier"
+              },
+              "iconType": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "desc": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "specs": {
+      "type": "object",
+      "description": "Optional technical specifications",
+      "properties": {
+        "engine": {
+          "type": "string"
+        },
+        "limit": {
+          "type": "string"
+        },
+        "logic": {
+          "type": "string"
+        },
+        "privacy": {
+          "type": "string"
+        }
+      }
+    },
+    "performanceMetrics": {
+      "type": "object",
+      "description": "Optional performance metrics",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "metrics": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["label", "value"],
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "value": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "howToUse": {
+      "type": "object",
+      "required": ["title", "steps"],
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "steps": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["title", "desc"],
+            "properties": {
+              "title": {
+                "type": "string"
+              },
+              "desc": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "comparison": {
+      "type": "object",
+      "required": [
+        "title",
+        "toolaze",
+        "others",
+        "vs",
+        "smartChoice",
+        "otherTools",
+        "toolazeFeatures",
+        "othersFeatures"
+      ],
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "toolaze": {
+          "type": "string",
+          "description": "Toolaze label (usually 'Toolaze 💎')"
+        },
+        "others": {
+          "type": "string",
+          "description": "Other tools label"
+        },
+        "vs": {
+          "type": "string",
+          "description": "VS label"
+        },
+        "smartChoice": {
+          "type": "string",
+          "description": "Smart Choice badge text"
+        },
+        "otherTools": {
+          "type": "string",
+          "description": "Other Tools label"
+        },
+        "toolazeFeatures": {
+          "type": "string",
+          "description": "Comma-separated list of Toolaze advantages"
+        },
+        "othersFeatures": {
+          "type": "string",
+          "description": "Comma-separated list of other tools' disadvantages"
+        }
+      }
+    },
+    "scenesTitle": {
+      "type": "string",
+      "description": "Title for the use cases section"
+    },
+    "scenes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["title", "icon", "desc"],
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "icon": {
+            "type": "string",
+            "description": "Emoji icon"
+          },
+          "desc": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "rating": {
+      "type": "object",
+      "required": ["title", "rating", "text"],
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "rating": {
+          "type": "string",
+          "description": "Rating text (e.g., '4.9/5 FROM 10K+ CREATORS')"
+        },
+        "text": {
+          "type": "string",
+          "description": "Tool-specific rating description"
+        }
+      }
+    },
+    "faqTitle": {
+      "type": "string",
+      "description": "Title for the FAQ section"
+    },
+    "faq": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["q", "a"],
+        "properties": {
+          "q": {
+            "type": "string",
+            "description": "Question (may contain HTML links)"
+          },
+          "a": {
+            "type": "string",
+            "description": "Answer (may contain HTML links)"
+          }
+        }
+      }
+    },
+    "moreTools": {
+      "type": "string",
+      "description": "Text for 'More Tools' section heading"
+    }
+  }
+}

@@ -1,0 +1,191 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Générateur de Polices Minecraft (Gratuit, Copier-Coller et Sans Publicité) - Toolaze",
+    "description": "Comment générer des polices Minecraft ? 1. Tapez votre texte 2. Sélectionnez le style Minecraft 3. Copiez et collez. Créez de beaux textes Minecraft pour Instagram, Facebook et les réseaux sociaux. Gratuit et Privé."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Générateur de Polices Minecraft",
+    "desc": "Générez de belles polices Minecraft en ligne gratuitement. Tapez simplement votre texte ci-dessous pour créer un texte Minecraft élégant que vous pouvez copier et coller n'importe où."
+  },
+  "intro": {
+    "title": "Pourquoi utiliser un Générateur de Polices Minecraft ?",
+    "content": [
+      {
+        "title": "Qu'est-ce qu'une Police Minecraft ?",
+        "text": "Les polices Minecraft présentent cette esthétique distinctive pixellisée et carrée associée au style visuel iconique de Minecraft. Ces typographies utilisent des caractères Unicode qui créent cette apparence reconnaissable de Minecraft avec des formes de lettres carrées et pixellisées. Les polices Minecraft se caractérisent par leur apparence ludique et carrée, les rendant parfaites pour les créateurs de contenu Minecraft, streamers de jeux, propriétaires de serveurs et projets qui nécessitent cette esthétique distinctive Minecraft. Pour des styles de jeux similaires, consultez notre <a href=\"/font-generator/3d\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">générateur de polices 3D</a> ou générateur de polices cool."
+      },
+      {
+        "title": "Pourquoi générer du texte Minecraft en ligne ?",
+        "text": "Créer du texte style Minecraft pour les miniatures YouTube, branding de serveurs ou contenu de jeux nécessite généralement un logiciel de conception et l'installation de polices. Notre générateur de texte Minecraft fournit un accès instantané à des styles de texte pixellisés et carrés qui capturent cette sensation iconique de Minecraft. Que vous créiez du contenu YouTube, conceviez des sites web de serveurs ou développiez des matériaux thématiques Minecraft, notre outil transforme n'importe quel texte en style Minecraft authentique instantanément—apportant cette esthétique carrée et pixellisée à vos projets. Explorez plus avec notre <a href=\"/font-generator\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">générateur de polices</a>."
+      }
+    ]
+  },
+  "features": {
+    "title": "Fonctionnalités Puissantes des Polices Minecraft",
+    "items": [
+      {
+        "icon": "⛏️",
+        "iconType": "quality",
+        "title": "Styles Carrés Pixellisés",
+        "desc": "Générez des polices style Minecraft avec cette esthétique distinctive pixellisée et carrée."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Génération Privée",
+        "desc": "Toute la génération de polices Minecraft se fait localement—votre texte ne quitte jamais votre appareil."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Texte Minecraft Instantané",
+        "desc": "Transformez votre texte en style Minecraft instantanément avec un aperçu en temps réel montrant des effets carrés."
+      },
+      {
+        "icon": "📋",
+        "iconType": "batch",
+        "title": "Copie Texte Minecraft",
+        "desc": "Copiez votre texte style Minecraft instantanément et collez-le dans des miniatures YouTube, branding de serveurs ou contenu de jeux."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Polices Minecraft Gratuites",
+        "desc": "Génération illimitée de polices Minecraft complètement gratuite—aucun paiement, aucun abonnement, aucune publicité."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "Aucun Mod Nécessaire",
+        "desc": "Fonctionne complètement dans votre navigateur—aucun mod Minecraft ni installation de polices requis."
+      }
+    ]
+  },
+  "specs": {
+    "engine": "Rendu de Polices Natif du Navigateur - Traitement Côté Client",
+    "limit": "Longueur de Texte Illimitée - Aucune Limite de Caractères",
+    "logic": "Aperçu en Temps Réel (Application Instantanée de Style)",
+    "privacy": "100% Côté Client (Traitement Local du Navigateur)"
+  },
+  "performanceMetrics": {
+    "title": "Spécifications Techniques",
+    "metrics": [
+      {
+        "label": "Style de Police",
+        "value": "Minecraft (Style Distinctif)"
+      },
+      {
+        "label": "Longueur du Texte",
+        "value": "Caractères illimités"
+      },
+      {
+        "label": "Vitesse de Traitement",
+        "value": "Instantané (Aperçu en temps réel)"
+      },
+      {
+        "label": "Format de Sortie",
+        "value": "Texte Unicode (Prêt à copier-coller)"
+      },
+      {
+        "label": "Support de Plateformes",
+        "value": "Instagram, Facebook, Twitter, TikTok, Discord et plus encore"
+      },
+      {
+        "label": "Emplacement de Traitement",
+        "value": "100% Côté Client (JavaScript du Navigateur)"
+      },
+      {
+        "label": "Confidentialité",
+        "value": "Aucun téléchargement serveur, traitement local complet"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Comment Générer des Polices Minecraft",
+    "steps": [
+      {
+        "title": "Tapez Votre Texte",
+        "desc": "Entrez le texte que vous souhaitez convertir en style Minecraft dans le champ de saisie ci-dessus."
+      },
+      {
+        "title": "Sélectionnez le Style Minecraft",
+        "desc": "Choisissez parmi les styles de polices Minecraft pixellisés et carrés et prévisualisez l'apparence de votre texte avec cette esthétique distinctive Minecraft."
+      },
+      {
+        "title": "Copiez le Texte Minecraft",
+        "desc": "Cliquez sur copier pour obtenir votre texte Minecraft, puis collez-le dans des miniatures YouTube, branding de serveurs ou contenu de jeux."
+      }
+    ]
+  },
+  "comparison": {
+    "title": "Pourquoi Choisir Toolaze ?",
+    "toolaze": "Toolaze 💎",
+    "others": "Autres Outils",
+    "vs": "VS",
+    "smartChoice": "Choix Intelligent",
+    "otherTools": "Autres Outils",
+    "toolazeFeatures": "Génération illimitée de texte Minecraft, Styles carrés pixellisés, Aperçu instantané, Traitement local, Aucune limite, Confidentialité complète, Gratuit pour toujours",
+    "othersFeatures": "Limites de caractères, Peu d'options Minecraft, Retards du serveur, Téléchargements requis, Risques de confidentialité, Publicités, Fonctionnalités premium"
+  },
+  "scenesTitle": "Cas d'Utilisation",
+  "scenes": [
+    {
+      "title": "Créateurs de Contenu Minecraft",
+      "icon": "⛏️",
+      "desc": "Créez des polices style Minecraft pour les miniatures YouTube, titres de vidéos et branding de chaîne. Générez du texte pixellisé et carré qui correspond à l'esthétique Minecraft."
+    },
+    {
+      "title": "Streamers de Jeux",
+      "icon": "🎮",
+      "desc": "Générez des polices Minecraft pour les superpositions de streaming, commandes de chat et contenu de jeux. Ajoutez cette apparence distinctive Minecraft à vos graphiques de streaming."
+    },
+    {
+      "title": "Propriétaires de Serveurs Minecraft",
+      "icon": "🌐",
+      "desc": "Utilisez des polices Minecraft pour les noms de serveurs, en-têtes de sites web et branding de communauté. Créez du texte thématique Minecraft cohérent dans tous vos matériaux de serveur."
+    }
+  ],
+  "rating": {
+    "title": "Approuvé par des Milliers de Créateurs",
+    "rating": "4.9/5 DE PLUS DE 10K CRÉATEURS",
+    "text": "\"Le meilleur générateur de polices Minecraft que j'ai trouvé. Résultats instantanés et fonctionne parfaitement sur Instagram !\" - Rejoignez des milliers d'utilisateurs qui font confiance à Toolaze pour la génération de beaux textes Minecraft."
+  },
+  "faqTitle": "Questions Fréquemment Posées",
+  "faq": [
+    {
+      "q": "Ce sont des polices officielles Minecraft ?",
+      "a": "Non, notre générateur Minecraft crée du texte avec une esthétique pixellisée et carrée inspirée de Minecraft en utilisant des caractères Unicode. Ce ne sont pas des polices officielles Minecraft, mais elles capturent ce style distinctive Minecraft."
+    },
+    {
+      "q": "Puis-je utiliser des polices Minecraft dans Minecraft lui-même ?",
+      "a": "Notre texte généré utilise des caractères Unicode qui peuvent être utilisés dans le chat Minecraft, panneaux et livres. Cependant, Minecraft a son propre système de polices intégré, donc l'apparence peut différer de l'aperçu de notre générateur."
+    },
+    {
+      "q": "Les polices Minecraft sont-elles bonnes pour le contenu de jeux ?",
+      "a": "Oui ! Les polices Minecraft sont parfaites pour les miniatures YouTube, titres de vidéos et branding de chaînes de jeux. Elles créent cette esthétique reconnaissable Minecraft pour votre contenu."
+    },
+    {
+      "q": "Les polices Minecraft fonctionneront-elles sur les plateformes de streaming ?",
+      "a": "Oui ! Les polices Minecraft fonctionnent très bien dans les superpositions de streaming, commandes de chat et contenu de jeux sur Twitch, YouTube et autres plateformes de streaming."
+    },
+    {
+      "q": "Puis-je utiliser des polices Minecraft pour le branding de serveurs ?",
+      "a": "Absolument ! Les polices Minecraft sont idéales pour les noms de serveurs, en-têtes de sites web et branding de communauté. Elles créent du texte thématique Minecraft cohérent dans tous vos matériaux de serveur. Pour des styles de jeux similaires, essayez notre <a href=\"/font-generator/3d\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">générateur de polices 3D</a> ou explorez nos outils de générateur de polices."
+    }
+  ],
+  "compare": {
+    "toolaze": "Génération illimitée de texte Minecraft, Multiples styles élégants, Aperçu instantané en temps réel, Architecture local-first, Aucune limite de caractères, Protection complète de la confidentialité, 100% gratuit pour toujours",
+    "others": "Limites de caractères, Options de style limitées, Traitement lent du serveur, Téléchargements cloud requis, Préoccupations de confidentialité, Filigranes ou publicités, Fonctionnalités premium payantes"
+  }
+}

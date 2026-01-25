@@ -1,0 +1,191 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Générateur de Polices Cool (Gratuit, Copier-Coller et Sans Publicité) - Toolaze",
+    "description": "Comment générer des polices cool ? 1. Tapez votre texte 2. Sélectionnez le style cool 3. Copiez et collez. Créez de beaux textes cool pour Instagram, Facebook et les réseaux sociaux. Gratuit et Privé."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Générateur de Polices Cool",
+    "desc": "Générez de belles polices cool en ligne gratuitement. Tapez simplement votre texte ci-dessous pour créer un texte cool élégant que vous pouvez copier et coller n'importe où."
+  },
+  "intro": {
+    "title": "Pourquoi utiliser un Générateur de Polices Cool ?",
+    "content": [
+      {
+        "title": "Qu'est-ce qu'une Police Cool ?",
+        "text": "Les polices cool présentent des esthétiques modernes et tendance qui attirent les audiences contemporaines. Ces typographies élégantes combinent des styles en gras, sans-serif et monospace pour créer cet aspect moderne et urbain populaire dans la culture streetwear, les startups technologiques et les communautés de gaming. Les polices cool se caractérisent par leur sensation contemporaine, les rendant parfaites pour les marques streetwear, les producteurs musicaux, les entreprises technologiques et les projets qui nécessitent une esthétique moderne et innovante. Pour plus de styles en gras, essayez notre <a href=\"/font-generator/bold\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">générateur de polices en gras</a> ou générateur de polices tatouage."
+      },
+      {
+        "title": "Pourquoi générer du texte cool en ligne ?",
+        "text": "Créer du texte cool et tendance nécessite de rester à jour avec les tendances de design et d'avoir accès à des outils de typographie modernes. Notre générateur de texte cool fournit un accès instantané à des styles de polices contemporains qui capturent cette vibe élégante et moderne. Que vous conceviez des vêtements streetwear, créiez un branding de startup technologique ou développiez du contenu gaming, notre outil transforme n'importe quel texte en style cool moderne instantanément—parfait pour les projets qui nécessitent cette esthétique contemporaine et audacieuse. Explorez plus de styles avec notre <a href=\"/font-generator\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">générateur de polices</a>."
+      }
+    ]
+  },
+  "features": {
+    "title": "Fonctionnalités Puissantes des Polices Cool",
+    "items": [
+      {
+        "icon": "⭐",
+        "iconType": "quality",
+        "title": "Styles de Polices Modernes",
+        "desc": "Accédez à des polices cool tendance incluant des styles en gras, sans-serif et monospace pour des esthétiques contemporaines."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Traitement Local du Navigateur",
+        "desc": "La génération de polices se fait complètement sur votre appareil—votre texte n'est jamais envoyé à aucun serveur."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Mises à Jour de Style en Temps Réel",
+        "desc": "Observez votre texte changer en style cool instantanément avec un aperçu en direct pendant que vous tapez."
+      },
+      {
+        "icon": "📋",
+        "iconType": "batch",
+        "title": "Copie Facile",
+        "desc": "Copiez votre texte cool rapidement et collez-le dans des designs streetwear, un branding technologique ou du contenu gaming."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Totalement Gratuit",
+        "desc": "Générez des polices cool illimitées gratuitement—aucun paiement, aucune fonctionnalité premium, aucune publicité jamais."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "Navigateur Uniquement",
+        "desc": "Fonctionne complètement dans votre navigateur web—aucun logiciel ni fichiers de polices à télécharger ou installer."
+      }
+    ]
+  },
+  "specs": {
+    "engine": "Rendu de Polices Natif du Navigateur - Traitement Côté Client",
+    "limit": "Longueur de Texte Illimitée - Aucune Limite de Caractères",
+    "logic": "Aperçu en Temps Réel (Application Instantanée de Style)",
+    "privacy": "100% Côté Client (Traitement Local du Navigateur)"
+  },
+  "performanceMetrics": {
+    "title": "Spécifications Techniques",
+    "metrics": [
+      {
+        "label": "Style de Police",
+        "value": "Cool (Style Distinctif)"
+      },
+      {
+        "label": "Longueur du Texte",
+        "value": "Caractères illimités"
+      },
+      {
+        "label": "Vitesse de Traitement",
+        "value": "Instantané (Aperçu en temps réel)"
+      },
+      {
+        "label": "Format de Sortie",
+        "value": "Texte Unicode (Prêt à copier-coller)"
+      },
+      {
+        "label": "Support de Plateformes",
+        "value": "Instagram, Facebook, Twitter, TikTok, Discord et plus encore"
+      },
+      {
+        "label": "Emplacement de Traitement",
+        "value": "100% Côté Client (JavaScript du Navigateur)"
+      },
+      {
+        "label": "Confidentialité",
+        "value": "Aucun téléchargement serveur, traitement local complet"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Comment Générer des Polices Cool",
+    "steps": [
+      {
+        "title": "Tapez Votre Texte",
+        "desc": "Entrez le texte que vous souhaitez transformer en style cool moderne dans le champ de saisie ci-dessus."
+      },
+      {
+        "title": "Choisissez le Style Cool",
+        "desc": "Explorez les styles de polices cool tendance et prévisualisez l'apparence de votre texte dans chaque variation contemporaine."
+      },
+      {
+        "title": "Copiez le Texte Cool",
+        "desc": "Cliquez sur le bouton copier pour copier votre texte cool, puis collez-le dans des designs streetwear, un branding technologique ou du contenu gaming."
+      }
+    ]
+  },
+  "comparison": {
+    "title": "Pourquoi Choisir Toolaze ?",
+    "toolaze": "Toolaze 💎",
+    "others": "Autres Outils",
+    "vs": "VS",
+    "smartChoice": "Choix Intelligent",
+    "otherTools": "Autres Outils",
+    "toolazeFeatures": "Génération illimitée de texte cool, Styles modernes tendance, Aperçu en temps réel, Traitement côté client, Aucune limite, Confidentialité totale, Gratuit pour toujours",
+    "othersFeatures": "Restrictions de texte, Peu d'options cool, Traitement lent, Téléchargements cloud, Préoccupations de confidentialité, Filigranes, Niveaux payants"
+  },
+  "scenesTitle": "Cas d'Utilisation",
+  "scenes": [
+    {
+      "title": "Marques Streetwear",
+      "icon": "👟",
+      "desc": "Créez des polices cool pour les vêtements streetwear, les designs de baskets et les marques de mode urbaine. Générez du texte moderne et tendance qui capture l'esthétique de la culture de rue."
+    },
+    {
+      "title": "Producteurs Musicaux",
+      "icon": "🎵",
+      "desc": "Utilisez des polices cool pour les pochettes d'albums, les titres de pistes et les graphiques de vidéos musicales. Ajoutez une vibe contemporaine et moderne à votre branding musical avec des polices cool élégantes."
+    },
+    {
+      "title": "Startups Technologiques",
+      "icon": "💻",
+      "desc": "Générez du texte cool pour les noms d'applications, les lancements de produits technologiques et le branding de startups. Créez une sensation moderne et innovante avec des styles de polices élégants et contemporains."
+    }
+  ],
+  "rating": {
+    "title": "Approuvé par des Milliers de Créateurs",
+    "rating": "4.9/5 DE PLUS DE 10K CRÉATEURS",
+    "text": "\"Le meilleur générateur de polices cool que j'ai trouvé. Résultats instantanés et fonctionne parfaitement sur Instagram !\" - Rejoignez des milliers d'utilisateurs qui font confiance à Toolaze pour la génération de beaux textes cool."
+  },
+  "faqTitle": "Questions Fréquemment Posées",
+  "faq": [
+    {
+      "q": "Qu'est-ce qui rend une police 'cool' ?",
+      "a": "Les polices cool ont une esthétique moderne et tendance qui attire les audiences contemporaines. Nos polices cool incluent des styles en gras, sans-serif et monospace qui créent cet aspect élégant et moderne populaire dans la culture streetwear et technologique."
+    },
+    {
+      "q": "Les polices cool sont-elles bonnes pour les marques streetwear ?",
+      "a": "Oui ! Les polices cool sont parfaites pour les vêtements streetwear, les designs de baskets et les marques de mode urbaine. Elles capturent cette esthétique contemporaine et audacieuse de la culture de rue."
+    },
+    {
+      "q": "Puis-je utiliser des polices cool pour les startups technologiques ?",
+      "a": "Absolument ! Les polices cool fonctionnent très bien pour les noms d'applications, les lancements de produits technologiques et le branding de startups. Elles créent une sensation moderne et innovante que les entreprises technologiques adorent."
+    },
+    {
+      "q": "Les polices cool fonctionneront-elles dans le contenu gaming ?",
+      "a": "Oui ! Les polices cool sont populaires dans les communautés gaming pour les noms de clans, le branding de serveurs et le contenu gaming. Elles ajoutent cette vibe contemporaine et compétitive du gaming."
+    },
+    {
+      "q": "Les polices cool sont-elles lisibles sur toutes les plateformes ?",
+      "a": "Oui, les polices cool utilisent des caractères Unicode qui sont largement compatibles. Elles s'affichent bien sur les réseaux sociaux, les plateformes gaming et la plupart des applications modernes. Pour plus de styles modernes, essayez notre <a href=\"/font-generator/bold\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">générateur de polices en gras</a> ou explorez notre collection de générateur de polices."
+    }
+  ],
+  "compare": {
+    "toolaze": "Génération illimitée de texte cool, Multiples styles élégants, Aperçu instantané en temps réel, Architecture local-first, Aucune limite de caractères, Protection complète de la confidentialité, 100% gratuit pour toujours",
+    "others": "Limites de caractères, Options de style limitées, Traitement lent du serveur, Téléchargements cloud requis, Préoccupations de confidentialité, Filigranes ou publicités, Fonctionnalités premium payantes"
+  }
+}

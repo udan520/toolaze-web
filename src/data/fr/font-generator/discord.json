@@ -1,0 +1,191 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Générateur de Polices Discord (Gratuit, Copier-Coller et Sans Publicité) - Toolaze",
+    "description": "Comment générer des polices Discord ? 1. Tapez votre texte 2. Sélectionnez le style Discord 3. Copiez et collez. Créez de beaux textes Discord pour Instagram, Facebook et les réseaux sociaux. Gratuit et Privé."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Générateur de Polices Discord",
+    "desc": "Générez de belles polices Discord en ligne gratuitement. Tapez simplement votre texte ci-dessous pour créer un texte Discord élégant que vous pouvez copier et coller n'importe où."
+  },
+  "intro": {
+    "title": "Pourquoi utiliser un Générateur de Polices Discord ?",
+    "content": [
+      {
+        "title": "Qu'est-ce qu'une Police Discord ?",
+        "text": "Les polices Discord sont des styles de texte basés sur Unicode spécifiquement optimisés pour l'interface de chat Discord. Ces polices utilisent des caractères Unicode qui s'affichent correctement dans les noms de serveurs Discord, titres de canaux, noms de rôles et messages de chat. Les polices Discord aident votre serveur à se démarquer, rendant votre communauté plus attrayante et votre marque plus mémorable. Elles sont parfaites pour les communautés de jeux, streamers et communautés en ligne qui souhaitent créer du contenu Discord unique et accrocheur. Pour d'autres polices de plateformes, essayez notre <a href=\"/font-generator/instagram\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">générateur de polices Instagram</a>."
+      },
+      {
+        "title": "Pourquoi générer du texte Discord en ligne ?",
+        "text": "Le format de texte natif de Discord est limité au markdown de base, et trouver des polices qui fonctionnent sur Discord peut être difficile. Notre générateur de texte Discord fournit un accès instantané à plusieurs styles de polices Unicode qui sont entièrement compatibles avec la plateforme Discord. Que vous nommiez votre serveur Discord, créiez des titres de canaux ou conceviez des noms de rôles, notre outil transforme n'importe quel texte en polices compatibles Discord instantanément—assurant que votre communauté se démarque et que votre texte s'affiche correctement dans toutes les fonctionnalités Discord. Explorez plus avec notre <a href=\"/font-generator\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">générateur de polices</a>."
+      }
+    ]
+  },
+  "features": {
+    "title": "Fonctionnalités Puissantes des Polices Discord",
+    "items": [
+      {
+        "icon": "💬",
+        "iconType": "quality",
+        "title": "Styles Compatibles avec Discord",
+        "desc": "Générez des polices qui s'affichent correctement dans les noms de serveurs Discord, canaux et messages de chat."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Traitement Local",
+        "desc": "La génération de polices se fait complètement dans votre navigateur—votre texte reste sur votre appareil."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Texte Discord Instantané",
+        "desc": "Transformez votre texte en polices compatibles Discord instantanément avec un aperçu en direct."
+      },
+      {
+        "icon": "📋",
+        "iconType": "batch",
+        "title": "Copie pour Discord",
+        "desc": "Copiez votre texte Discord immédiatement et collez-le dans les noms de serveurs, canaux ou chat."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Polices Discord Gratuites",
+        "desc": "Génération illimitée de polices Discord complètement gratuite—aucun coût, aucune fonctionnalité premium, aucune publicité."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "Aucun Mod Discord Nécessaire",
+        "desc": "Fonctionne complètement dans votre navigateur—aucune modification Discord ni installation de bots requise."
+      }
+    ]
+  },
+  "specs": {
+    "engine": "Rendu de Polices Natif du Navigateur - Traitement Côté Client",
+    "limit": "Longueur de Texte Illimitée - Aucune Limite de Caractères",
+    "logic": "Aperçu en Temps Réel (Application Instantanée de Style)",
+    "privacy": "100% Côté Client (Traitement Local du Navigateur)"
+  },
+  "performanceMetrics": {
+    "title": "Spécifications Techniques",
+    "metrics": [
+      {
+        "label": "Style de Police",
+        "value": "Discord (Style Distinctif)"
+      },
+      {
+        "label": "Longueur du Texte",
+        "value": "Caractères illimités"
+      },
+      {
+        "label": "Vitesse de Traitement",
+        "value": "Instantané (Aperçu en temps réel)"
+      },
+      {
+        "label": "Format de Sortie",
+        "value": "Texte Unicode (Prêt à copier-coller)"
+      },
+      {
+        "label": "Support de Plateformes",
+        "value": "Instagram, Facebook, Twitter, TikTok, Discord et plus encore"
+      },
+      {
+        "label": "Emplacement de Traitement",
+        "value": "100% Côté Client (JavaScript du Navigateur)"
+      },
+      {
+        "label": "Confidentialité",
+        "value": "Aucun téléchargement serveur, traitement local complet"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Comment Générer des Polices Discord",
+    "steps": [
+      {
+        "title": "Tapez Votre Texte",
+        "desc": "Entrez le texte que vous souhaitez convertir en style compatible Discord dans le champ de saisie ci-dessus."
+      },
+      {
+        "title": "Choisissez le Style Discord",
+        "desc": "Sélectionnez parmi les styles de polices compatibles Discord et prévisualisez l'affichage de votre texte sur Discord."
+      },
+      {
+        "title": "Copiez le Texte Discord",
+        "desc": "Cliquez sur copier pour obtenir votre texte Discord, puis collez-le dans les noms de serveurs, titres de canaux ou chat Discord."
+      }
+    ]
+  },
+  "comparison": {
+    "title": "Pourquoi Choisir Toolaze ?",
+    "toolaze": "Toolaze 💎",
+    "others": "Autres Outils",
+    "vs": "VS",
+    "smartChoice": "Choix Intelligent",
+    "otherTools": "Autres Outils",
+    "toolazeFeatures": "Génération illimitée de texte Discord, Styles compatibles Discord, Aperçu en temps réel, Traitement côté client, Aucune limite, Confidentialité totale, Gratuit pour toujours",
+    "othersFeatures": "Restrictions de texte, Polices Discord limitées, Traitement lent, Téléchargements cloud, Risques de confidentialité, Filigranes, Fonctionnalités payantes"
+  },
+  "scenesTitle": "Cas d'Utilisation",
+  "scenes": [
+    {
+      "title": "Communautés de Jeux",
+      "icon": "🎮",
+      "desc": "Créez des polices Discord pour les noms de serveurs, titres de canaux et noms de rôles. Faites que votre communauté de jeux se démarque avec des polices compatibles Discord uniques et lisibles."
+    },
+    {
+      "title": "Streamers et Créateurs de Contenu",
+      "icon": "📺",
+      "desc": "Générez du texte Discord pour les superpositions de streaming, commandes de chat et branding de communauté. Assurez-vous que votre texte s'affiche correctement dans l'interface de chat Discord."
+    },
+    {
+      "title": "Communautés en Ligne",
+      "icon": "💬",
+      "desc": "Utilisez des polices Discord pour les annonces de communauté, promotions d'événements et communications de membres. Créez du texte attrayant et accrocheur pour votre serveur Discord."
+    }
+  ],
+  "rating": {
+    "title": "Approuvé par des Milliers de Créateurs",
+    "rating": "4.9/5 DE PLUS DE 10K CRÉATEURS",
+    "text": "\"Le meilleur générateur de polices Discord que j'ai trouvé. Résultats instantanés et fonctionne parfaitement sur Instagram !\" - Rejoignez des milliers d'utilisateurs qui font confiance à Toolaze pour la génération de beaux textes Discord."
+  },
+  "faqTitle": "Questions Fréquemment Posées",
+  "faq": [
+    {
+      "q": "Les polices Discord fonctionnent-elles vraiment sur Discord ?",
+      "a": "Oui ! Notre générateur Discord crée du texte en utilisant des caractères Unicode qui s'affichent correctement dans l'interface de chat Discord. Copiez et collez simplement dans n'importe quel canal Discord, nom de serveur ou champ de nom d'utilisateur."
+    },
+    {
+      "q": "Puis-je utiliser des polices Discord dans les noms de serveurs ?",
+      "a": "Oui ! Les polices Discord fonctionnent dans les noms de serveurs, noms de canaux et noms de rôles. Elles aident votre serveur Discord à se démarquer avec du texte unique et accrocheur."
+    },
+    {
+      "q": "Les polices Discord fonctionneront-elles dans les bots Discord ?",
+      "a": "Oui, les bots Discord peuvent envoyer des messages avec des polices Discord. Les caractères Unicode s'affichent correctement dans les messages de bots, embeds et annonces."
+    },
+    {
+      "q": "Les polices Discord sont-elles lisibles en mode sombre Discord ?",
+      "a": "Oui ! Les polices Discord fonctionnent à la fois en mode clair et sombre. Les caractères Unicode s'adaptent automatiquement aux paramètres de thème Discord."
+    },
+    {
+      "q": "Puis-je utiliser des polices Discord pour Discord Nitro ?",
+      "a": "Oui, les polices Discord fonctionnent indépendamment de si vous avez Nitro ou non. Elles utilisent des caractères Unicode standard qui fonctionnent pour tous les utilisateurs Discord. Pour d'autres polices de plateformes, essayez notre <a href=\"/font-generator/instagram\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">générateur de polices Instagram</a> ou explorez notre collection de générateur de polices."
+    }
+  ],
+  "compare": {
+    "toolaze": "Génération illimitée de texte Discord, Multiples styles élégants, Aperçu instantané en temps réel, Architecture local-first, Aucune limite de caractères, Protection complète de la confidentialité, 100% gratuit pour toujours",
+    "others": "Limites de caractères, Options de style limitées, Traitement lent du serveur, Téléchargements cloud requis, Préoccupations de confidentialité, Filigranes ou publicités, Fonctionnalités premium payantes"
+  }
+}

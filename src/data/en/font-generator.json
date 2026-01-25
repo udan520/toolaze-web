@@ -129,9 +129,16 @@
     ]
   },
   "comparison": {
-    "toolaze": "Unlimited text length, Multiple font styles, Instant preview, Real-time generation, 100% local processing, No uploads, Free forever",
-    "others": "Character limits, Limited styles, Slow processing, Server uploads required, Cloud queues, Privacy concerns, Paid upgrades"
+    "title": "Why Choose Toolaze?",
+    "toolaze": "Toolaze 💎",
+    "others": "Other Tools",
+    "vs": "VS",
+    "smartChoice": "Smart Choice",
+    "otherTools": "Other Tools",
+    "toolazeFeatures": "Unlimited text length, Multiple font styles, Instant preview, Real-time generation, 100% local processing, No uploads, Free forever",
+    "othersFeatures": "Character limits, Limited styles, Slow processing, Server uploads required, Cloud queues, Privacy concerns, Paid upgrades"
   },
+  "scenesTitle": "Use Cases",
   "scenes": [
     {
       "title": "For Social Media Users",
@@ -150,8 +157,11 @@
     }
   ],
   "rating": {
+    "title": "Trusted by Thousands of Creators",
+    "rating": "4.9/5 FROM 10K+ CREATORS",
     "text": "\"The best font generator I've found. Instant results and works perfectly on Instagram!\" - Join thousands of users who trust Toolaze for beautiful font generation."
   },
+  "faqTitle": "Frequently Asked Questions",
   "faq": [
     {
       "q": "What font styles are available?",
@@ -177,5 +187,6 @@
       "q": "Is there a character limit?",
       "a": "No, there are no character limits. You can generate styled text for sentences, paragraphs, or even entire documents. The generator processes your text instantly regardless of length."
     }
-  ]
+  ],
+  "moreTools": "More Font Generator Tools"
 }

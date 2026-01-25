@@ -1,0 +1,191 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Instagramフォントジェネレーター（無料、コピー＆ペースト、広告なし）- Toolaze",
+    "description": "Instagramフォントの生成方法：1. テキストを入力 2. Instagramスタイルを選択 3. コピー＆ペースト。Instagram、Facebook、ソーシャルメディア用の美しいInstagramテキストを作成。無料＆プライベート。"
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Instagramフォントジェネレーター",
+    "desc": "オンラインで無料で美しいInstagramフォントを生成。下にテキストを入力するだけで、どこにでもコピー＆ペーストできるエレガントなInstagramテキストを作成できます。"
+  },
+  "intro": {
+    "title": "なぜInstagramフォントジェネレーターを使用するのか？",
+    "content": [
+      {
+        "title": "Instagramフォントとは？",
+        "text": "Instagramフォントは、Instagramのプラットフォームに特化して最適化されたUnicodeベースのテキストスタイルです。これらのフォントは、Instagramのバイオ、投稿、ストーリー、キャプション、ハイライトで正しく表示されるUnicode文字を使用します。Instagramフォントは、フィードでプロフィールを目立たせ、バイオをより目を引き、キャプションをより魅力的にし、ブランドをより記憶に残るものにします。独自のブランディングされたInstagramコンテンツを作成したいインフルエンサー、ソーシャルメディアマネージャー、コンテンツクリエイターに最適です。他のプラットフォームフォントについては、<a href=\"/font-generator/discord\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">Discordフォントジェネレーター</a>をご覧ください。"
+      },
+      {
+        "title": "なぜオンラインでInstagramテキストを生成するのか？",
+        "text": "Instagramのネイティブテキストスタイリングは限られており、Instagramで動作するフォントを見つけるのは困難な場合があります。Instagramのバイオを更新したり、魅力的なストーリーテキストを作成したり、ブランディングされた投稿キャプションをデザインしたりする場合でも、当社のツールは任意のテキストをInstagram互換フォントに即座に変換します。すべてのInstagram機能でコンテンツが目立ち、正しく表示されるようにします。包括的な<a href=\"/font-generator\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">フォントジェネレーター</a>で、より多くの情報を探索してください。"
+      }
+    ]
+  },
+  "features": {
+    "title": "強力なInstagramフォント機能",
+    "items": [
+      {
+        "icon": "📱",
+        "iconType": "quality",
+        "title": "Instagram互換スタイル",
+        "desc": "Instagramのバイオ、投稿、ストーリー、キャプションで完璧に動作するフォントを生成します。"
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "プライベート生成",
+        "desc": "すべてのフォント生成はブラウザ内でローカルに実行されます。テキストがデバイスを離れることはありません。"
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "即座のInstagramテキスト",
+        "desc": "リアルタイムプレビューでテキストをInstagram互換フォントに即座に変換します。"
+      },
+      {
+        "icon": "📋",
+        "iconType": "batch",
+        "title": "Instagram用の簡単なコピー",
+        "desc": "Instagramテキストを即座にコピーし、Instagramプロフィールまたは投稿に直接貼り付けます。"
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "無料のInstagramフォント",
+        "desc": "コスト、サブスクリプション、広告なしで完全に無料で無制限のInstagramフォント生成をお楽しみください。"
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "アプリ不要",
+        "desc": "完全にブラウザで動作します。Instagramアプリの変更やダウンロードは不要です。"
+      }
+    ]
+  },
+  "specs": {
+    "engine": "ブラウザネイティブフォントレンダリング - クライアントサイド処理",
+    "limit": "無制限のテキスト長 - 文字数制限なし",
+    "logic": "リアルタイムプレビュー（即座のスタイル適用）",
+    "privacy": "100%クライアントサイド（ローカルブラウザ処理）"
+  },
+  "performanceMetrics": {
+    "title": "技術仕様",
+    "metrics": [
+      {
+        "label": "フォントスタイル",
+        "value": "Instagram（独特なスタイル）"
+      },
+      {
+        "label": "テキスト長",
+        "value": "無制限の文字数"
+      },
+      {
+        "label": "処理速度",
+        "value": "即座（リアルタイムプレビュー）"
+      },
+      {
+        "label": "出力形式",
+        "value": "Unicodeテキスト（コピー＆ペースト準備完了）"
+      },
+      {
+        "label": "プラットフォームサポート",
+        "value": "Instagram、Facebook、Twitter、TikTok、Discordなど"
+      },
+      {
+        "label": "処理場所",
+        "value": "100%クライアントサイド（ブラウザJavaScript）"
+      },
+      {
+        "label": "プライバシー",
+        "value": "サーバーアップロードなし、完全なローカル処理"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Instagramフォントの生成方法",
+    "steps": [
+      {
+        "title": "テキストを入力",
+        "desc": "上記の入力フィールドに、Instagram互換スタイルに変換したいテキストを入力します。"
+      },
+      {
+        "title": "Instagramスタイルを選択",
+        "desc": "Instagram互換フォントスタイルから選択し、Instagramでテキストがどのように見えるかをプレビューします。"
+      },
+      {
+        "title": "Instagramテキストをコピー",
+        "desc": "コピーをクリックしてInstagramテキストを取得し、Instagramのバイオ、投稿、ストーリー、またはキャプションに直接貼り付けます。"
+      }
+    ]
+  },
+  "comparison": {
+    "title": "なぜToolazeを選ぶのか？",
+    "toolaze": "Toolaze 💎",
+    "others": "Other Tools",
+    "vs": "VS",
+    "smartChoice": "スマートな選択",
+    "otherTools": "他のツール",
+    "toolazeFeatures": "無制限のInstagramテキスト生成、Instagram互換スタイル、即座のプレビュー、ローカル処理、制限なし、完全なプライバシー、永遠に無料",
+    "othersFeatures": "文字数制限、限られたInstagramフォント、サーバー処理、必要なアップロード、プライバシーリスク、広告、プレミアム機能"
+  },
+  "scenesTitle": "使用例",
+  "scenes": [
+    {
+      "title": "Instagramインフルエンサー",
+      "icon": "📸",
+      "desc": "バイオ、ストーリーハイライト、投稿キャプション用の目を引くInstagramフォントを作成します。個人ブランドに合った独自でスタイリッシュなテキストでフィードで目立ちます。"
+    },
+    {
+      "title": "ソーシャルメディアマネージャー",
+      "icon": "📱",
+      "desc": "クライアントアカウント、ブランド投稿、マーケティングキャンペーン用のInstagram互換フォントを生成します。Instagramのプラットフォームでテキストが完璧に動作するようにします。"
+    },
+    {
+      "title": "コンテンツクリエイター",
+      "icon": "🎬",
+      "desc": "ビデオのサムネイル、IGTVタイトル、ReelsグラフィックにInstagramフォントを使用します。すべてのInstagramコンテンツで一貫したブランディングされたテキストを作成します。"
+    }
+  ],
+  "rating": {
+    "title": "何千人ものクリエイターに信頼されています",
+    "rating": "4.9/5 10,000人以上のクリエイターから",
+    "text": "\"見つけた中で最高のInstagramフォントジェネレーターです。即座に結果が得られ、Instagramで完璧に動作します！\" - 美しいInstagramテキスト生成のためにToolazeを信頼する何千人ものユーザーに参加してください。"
+  },
+  "faqTitle": "よくある質問",
+  "faq": [
+    {
+      "q": "Instagramフォントは実際にInstagramで動作しますか？",
+      "a": "はい！当社のInstagramは、Instagramで完全にサポートされているUnicode文字を使用します。生成されたテキストをInstagramのバイオ、投稿、ストーリー、またはキャプションに直接コピー＆ペーストするだけです。"
+    },
+    {
+      "q": "InstagramストーリーにInstagramフォントを使用できますか？",
+      "a": "はい！Instagramフォントはストーリー、投稿、バイオ、キャプションで動作します。ただし、Instagramストーリーには組み込みのテキストスタイリングオプションもあるため、最大限の効果を得るために両方を組み合わせることができます。"
+    },
+    {
+      "q": "InstagramフォントはInstagram Reelsで動作しますか？",
+      "a": "はい、InstagramフォントはReelsのキャプションと画面上のテキストで正しく表示されます。目を引くReelsコンテンツを作成するのに最適です。"
+    },
+    {
+      "q": "InstagramフォントはInstagramハイライトと互換性がありますか？",
+      "a": "はい！ハイライトカバー名と説明にInstagramフォントを使用できます。Instagramプロフィールに独自でブランディングされた外観を加えます。"
+    },
+    {
+      "q": "Instagram広告にInstagramフォントを使用できますか？",
+      "a": "はい、Instagramフォントは広告コピーと説明で動作します。広告を目立たせ、ブランドのInstagramの美的感覚に合わせるのに役立ちます。他のプラットフォームフォントについては、<a href=\"/font-generator/Discord\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">Discordフォントジェネレーター</a>をご覧ください。または、フォントジェネレーターツールを閲覧してください。"
+    }
+  ],
+  "compare": {
+    "toolaze": "無制限のInstagramテキスト生成、複数のエレガントなスタイル、即座のリアルタイムプレビュー、ローカルファーストアーキテクチャ、文字数制限なし、完全なプライバシー保護、100%永遠に無料",
+    "others": "文字数制限、限られたスタイルオプション、遅いサーバー処理、クラウドアップロードが必要、プライバシーの懸念、透かしや広告、有料プレミアム機能"
+  }
+}

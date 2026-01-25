@@ -20,6 +20,10 @@ if command -v convert &> /dev/null; then
         convert -background none -resize 32x32 public/favicon.svg public/favicon-32x32.png
         echo "✅ 生成 favicon-32x32.png"
         
+        # 生成 48x48
+        convert -background none -resize 48x48 public/favicon.svg public/favicon-48x48.png
+        echo "✅ 生成 favicon-48x48.png"
+        
         # 生成 180x180 (Apple touch icon)
         convert -background white -resize 180x180 public/favicon.svg public/apple-touch-icon.png
         echo "✅ 生成 apple-touch-icon.png"
@@ -43,10 +47,14 @@ else
     echo "   - 上传 public/favicon.svg"
     echo "   - 下载并解压到 public/ 目录"
     echo ""
-    echo "3. 手动创建："
+    echo "3. 使用 macOS sips 命令（如果已安装）："
+    echo "   sips -z 48 48 public/favicon-32x32.png --out public/favicon-48x48.png"
+    echo ""
+    echo "4. 手动创建："
     echo "   - 在图像编辑器中打开 favicon.svg"
     echo "   - 导出为以下尺寸的 PNG："
     echo "     - favicon-16x16.png (16x16)"
     echo "     - favicon-32x32.png (32x32)"
+    echo "     - favicon-48x48.png (48x48)"
     echo "     - apple-touch-icon.png (180x180，带白色背景)"
 fi

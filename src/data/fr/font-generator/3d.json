@@ -1,0 +1,191 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Générateur de Polices 3D (Gratuit, Copier-Coller et Sans Publicité) - Toolaze",
+    "description": "Comment générer des polices 3D ? 1. Tapez votre texte 2. Sélectionnez le style 3D 3. Copiez et collez. Créez de beaux textes 3D pour Instagram, Facebook et les réseaux sociaux. Gratuit et Privé."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Générateur de Polices 3D",
+    "desc": "Générez de belles polices 3D en ligne gratuitement. Tapez simplement votre texte ci-dessous pour créer un texte 3D élégant que vous pouvez copier et coller n'importe où."
+  },
+  "intro": {
+    "title": "Pourquoi utiliser un Générateur de Polices 3D ?",
+    "content": [
+      {
+        "title": "Qu'est-ce qu'une Police 3D ?",
+        "text": "Les polices 3D utilisent des caractères Unicode avec style dimensionnel et en gras qui crée une apparence tridimensionnelle. Ces typographies présentent des traits épais et une profondeur visuelle, faisant que le texte semble sortir de la page ou de l'écran. Les polices 3D se caractérisent par leur aspect moderne et dimensionnel, les rendant parfaites pour les titres de jeux vidéo, visualisations architecturales, projets de design 3D et tout contenu qui nécessite cette esthétique contemporaine pleine de profondeur. Pour plus de styles en gras, essayez notre <a href=\"/font-generator/bold\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">générateur de polices en gras</a> ou générateur de polices cool."
+      },
+      {
+        "title": "Pourquoi générer du texte 3D en ligne ?",
+        "text": "Créer du vrai texte 3D nécessite un logiciel de modélisation 3D coûteux et des compétences spécialisées. Notre générateur de texte 3D fournit un accès instantané à des styles Unicode dimensionnels qui créent cette apparence similaire à 3D. Que vous conceviez des titres de jeux, créiez des présentations architecturales ou développiez un branding moderne, notre outil transforme n'importe quel texte en polices style 3D en gras instantanément—ajoutant cette profondeur et dimension à vos projets sans la complexité du logiciel 3D. Découvrez plus avec notre <a href=\"/font-generator\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">générateur de polices</a>."
+      }
+    ]
+  },
+  "features": {
+    "title": "Fonctionnalités Puissantes des Polices 3D",
+    "items": [
+      {
+        "icon": "🎨",
+        "iconType": "quality",
+        "title": "Styles de Polices Dimensionnels",
+        "desc": "Générez des polices style 3D avec des caractères Unicode dimensionnels et en gras qui créent de la profondeur."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Traitement Local du Navigateur",
+        "desc": "La génération de polices se fait complètement dans votre navigateur—votre texte reste privé sur votre appareil."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Conversion 3D Instantanée",
+        "desc": "Transformez votre texte en style 3D instantanément avec un aperçu en temps réel montrant des effets dimensionnels."
+      },
+      {
+        "icon": "📋",
+        "iconType": "batch",
+        "title": "Copie Texte 3D",
+        "desc": "Copiez votre texte style 3D instantanément et collez-le dans des titres de jeux, présentations ou projets 3D."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Polices 3D Gratuites",
+        "desc": "Génération illimitée de polices 3D complètement gratuite—aucun coût, aucun niveau premium, aucune publicité."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "Aucun Logiciel 3D",
+        "desc": "Fonctionne complètement dans votre navigateur—aucun logiciel de modélisation 3D ni installations complexes requis."
+      }
+    ]
+  },
+  "specs": {
+    "engine": "Rendu de Polices Natif du Navigateur - Traitement Côté Client",
+    "limit": "Longueur de Texte Illimitée - Aucune Limite de Caractères",
+    "logic": "Aperçu en Temps Réel (Application Instantanée de Style)",
+    "privacy": "100% Côté Client (Traitement Local du Navigateur)"
+  },
+  "performanceMetrics": {
+    "title": "Spécifications Techniques",
+    "metrics": [
+      {
+        "label": "Style de Police",
+        "value": "3D (Style Distinctif)"
+      },
+      {
+        "label": "Longueur du Texte",
+        "value": "Caractères illimités"
+      },
+      {
+        "label": "Vitesse de Traitement",
+        "value": "Instantané (Aperçu en temps réel)"
+      },
+      {
+        "label": "Format de Sortie",
+        "value": "Texte Unicode (Prêt à copier-coller)"
+      },
+      {
+        "label": "Support de Plateformes",
+        "value": "Instagram, Facebook, Twitter, TikTok, Discord et plus encore"
+      },
+      {
+        "label": "Emplacement de Traitement",
+        "value": "100% Côté Client (JavaScript du Navigateur)"
+      },
+      {
+        "label": "Confidentialité",
+        "value": "Aucun téléchargement serveur, traitement local complet"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Comment Générer des Polices 3D",
+    "steps": [
+      {
+        "title": "Tapez Votre Texte",
+        "desc": "Entrez le texte que vous souhaitez transformer en style 3D dans le champ de saisie ci-dessus."
+      },
+      {
+        "title": "Choisissez le Style 3D",
+        "desc": "Sélectionnez parmi les styles de polices 3D dimensionnels et prévisualisez l'apparence de votre texte avec cette apparence en gras et pleine de profondeur."
+      },
+      {
+        "title": "Copiez le Texte 3D",
+        "desc": "Cliquez sur le bouton copier pour copier votre texte 3D, puis collez-le dans des titres de jeux, présentations ou projets 3D."
+      }
+    ]
+  },
+  "comparison": {
+    "title": "Pourquoi Choisir Toolaze ?",
+    "toolaze": "Toolaze 💎",
+    "others": "Autres Outils",
+    "vs": "VS",
+    "smartChoice": "Choix Intelligent",
+    "otherTools": "Autres Outils",
+    "toolazeFeatures": "Génération illimitée de texte 3D, Styles de polices dimensionnels, Aperçu en temps réel, Traitement du navigateur, Aucune limite, Confidentialité totale, 100% gratuit",
+    "othersFeatures": "Restrictions de texte, Styles 3D limités, Serveurs lents, Téléchargements cloud, Préoccupations de confidentialité, Filigranes, Niveaux payants"
+  },
+  "scenesTitle": "Cas d'Utilisation",
+  "scenes": [
+    {
+      "title": "Artistes et Designers 3D",
+      "icon": "🎨",
+      "desc": "Créez des polices 3D pour les projets de modélisation 3D, ressources de jeux et art numérique. Générez du texte qui semble tridimensionnel pour utiliser dans des environnements 3D."
+    },
+    {
+      "title": "Développeurs de Jeux Vidéo",
+      "icon": "🎮",
+      "desc": "Générez du texte 3D pour les titres de jeux, éléments d'interface utilisateur et signalisation dans le jeu. Ajoutez de la profondeur et de la dimension à la typographie de votre jeu avec des styles de polices 3D."
+    },
+    {
+      "title": "Visualisation Architecturale",
+      "icon": "🏗️",
+      "desc": "Utilisez des polices 3D pour les rendus architecturaux, signalisation de bâtiments et matériaux de présentation. Créez du texte réaliste et dimensionnel pour les visualisations professionnelles."
+    }
+  ],
+  "rating": {
+    "title": "Approuvé par des Milliers de Créateurs",
+    "rating": "4.9/5 DE PLUS DE 10K CRÉATEURS",
+    "text": "\"Le meilleur générateur de polices 3D que j'ai trouvé. Résultats instantanés et fonctionne parfaitement sur Instagram !\" - Rejoignez des milliers d'utilisateurs qui font confiance à Toolaze pour la génération de beaux textes 3D."
+  },
+  "faqTitle": "Questions Fréquemment Posées",
+  "faq": [
+    {
+      "q": "Les polices 3D semblent-elles vraiment tridimensionnelles ?",
+      "a": "Notre générateur 3D utilise des caractères Unicode avec style dimensionnel et en gras qui crée une apparence similaire à 3D. Bien qu'elles ne soient pas de vrais graphiques 3D, elles fournissent cet effet de profondeur et de dimension en utilisant la typographie Unicode."
+    },
+    {
+      "q": "Puis-je utiliser des polices 3D dans un logiciel de modélisation 3D ?",
+      "a": "Le texte généré utilise des caractères Unicode, qui peuvent être importés dans un logiciel 3D comme objets de texte. Cependant, pour du vrai texte 3D, vous utiliseriez généralement les outils de texte du logiciel 3D pour créer une vraie géométrie 3D."
+    },
+    {
+      "q": "Les polices 3D sont-elles bonnes pour les titres de jeux ?",
+      "a": "Oui ! Les polices 3D sont parfaites pour les titres de jeux vidéo, logos et éléments d'interface utilisateur. Elles ajoutent cet aspect moderne et dimensionnel que de nombreux jeux utilisent pour leur marque."
+    },
+    {
+      "q": "Les polices 3D fonctionneront-elles sur les réseaux sociaux ?",
+      "a": "Oui ! Les polices 3D utilisent des caractères Unicode qui fonctionnent sur Instagram, Facebook, Twitter et TikTok. Elles sont excellentes pour créer du contenu de réseaux sociaux accrocheur avec de la profondeur."
+    },
+    {
+      "q": "Puis-je utiliser des polices 3D pour la visualisation architecturale ?",
+      "a": "Oui, les polices 3D fonctionnent bien dans les rendus architecturaux et matériaux de présentation. Elles créent du texte réaliste et dimensionnel pour les visualisations professionnelles. Pour plus de styles en gras, essayez notre <a href=\"/font-generator/bold\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">générateur de polices en gras</a> ou explorez notre collection de générateur de polices."
+    }
+  ],
+  "compare": {
+    "toolaze": "Génération illimitée de texte 3D, Multiples styles élégants, Aperçu instantané en temps réel, Architecture local-first, Aucune limite de caractères, Protection complète de la confidentialité, 100% gratuit pour toujours",
+    "others": "Limites de caractères, Options de style limitées, Traitement lent du serveur, Téléchargements cloud requis, Préoccupations de confidentialité, Filigranes ou publicités, Fonctionnalités premium payantes"
+  }
+}

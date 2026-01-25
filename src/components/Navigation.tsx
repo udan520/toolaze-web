@@ -175,6 +175,23 @@ export default function Navigation() {
       // 4. tattoo - 18100
       // 5. cool - 14800
       const topFontGeneratorSlugs = ['cursive', 'fancy', 'bold', 'tattoo', 'cool']
+      
+      // 加载 common.json 中的 categories 翻译作为回退
+      let categoryTranslations: Record<string, string> = {}
+      try {
+        let normalizedLocale = locale
+        if (locale === 'zh' || locale === 'zh-CN' || locale === 'zh-HK') {
+          normalizedLocale = 'zh-TW'
+        }
+        const commonData = normalizedLocale === 'en' 
+          ? await import('@/data/en/common.json')
+          : await import(`@/data/${normalizedLocale}/common.json`)
+        categoryTranslations = commonData.default?.common?.fontGenerator?.categories || {}
+      } catch (err) {
+        // 如果加载失败，使用空对象
+        categoryTranslations = {}
+      }
+      
       try {
         const fontGeneratorSlugs = await getAllSlugs('font-generator', locale)
         // 只处理搜索量最大的5个slug
@@ -199,14 +216,23 @@ export default function Navigation() {
                 title = toolData.hero.h1.replace(/<[^>]*>/g, '').trim()
                 if (!title) title = slug
               }
+              // 如果 title 仍然是 slug（说明没有加载到翻译），尝试使用 categories 翻译
+              if (title === slug && categoryTranslations[slug]) {
+                title = categoryTranslations[slug]
+              }
               return {
                 slug,
                 title,
                 href: getHref(`/font-generator/${slug}`),
               }
             } catch (err) {
-              // 如果单个项加载失败，返回 null，后续会被过滤掉
-              return null
+              // 如果单个项加载失败，尝试使用 categories 翻译作为回退
+              const fallbackTitle = categoryTranslations[slug] || slug
+              return {
+                slug,
+                title: fallbackTitle,
+                href: getHref(`/font-generator/${slug}`),
+              }
             }
           })
         )
@@ -311,7 +337,7 @@ export default function Navigation() {
       ),
     },
     {
-      title: navTranslations.fontGenerator,
+      title: navTranslations.fontGenerator || defaultNavTranslations.fontGenerator,
       href: getLocalizedHref('/font-generator'),
       hasThirdLevel: true,
       tool: 'font-generator',
@@ -408,7 +434,7 @@ export default function Navigation() {
                       >
                         <div className="flex items-center gap-2">
                           {item.icon && item.icon}
-                          <span>{item.title}</span>
+                          <span>{item.title || defaultNavTranslations[item.tool as keyof typeof defaultNavTranslations] || item.tool}</span>
                         </div>
                         {item.hasThirdLevel && (
                           <svg className="w-3 h-3 ml-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -465,7 +491,7 @@ export default function Navigation() {
                             className="flex-1 flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
                           >
                             {item.icon && item.icon}
-                            <span>{item.title}</span>
+                            <span>{item.title || defaultNavTranslations[item.tool as keyof typeof defaultNavTranslations] || item.tool}</span>
                           </Link>
                           {thirdLevelItems.length > 0 && (
                             <button

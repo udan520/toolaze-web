@@ -2,124 +2,9 @@ import Link from 'next/link'
 import Script from 'next/script'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
-import { getAllTools, loadToolData } from '@/lib/seo-loader'
+import { loadCommonTranslations } from '@/lib/seo-loader'
 import type { Metadata } from 'next'
 
-// 根据功能语义生成不同的图标
-function getToolIcon(tool: string, slug: string) {
-  // Image Converter 图标（格式转换）
-  if (tool === 'image-converter' || tool === 'image-conversion') {
-    // 根据转换类型生成不同图标
-    if (slug.includes('heic')) {
-      // HEIC 转换图标（iPhone 照片格式）
-      return (
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white">
-          <rect x="2" y="2" width="20" height="20" rx="2.5" fill="white" opacity="0.3"/>
-          <circle cx="12" cy="9" r="3" fill="currentColor"/>
-          <path d="M7 19L9 15L11 18L15 12L17 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-          <path d="M5 5L19 19M19 5L5 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" opacity="0.6"/>
-        </svg>
-      )
-    } else if (slug.includes('webp')) {
-      // WebP 转换图标（现代格式）
-      return (
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white">
-          <rect x="2" y="2" width="20" height="20" rx="2.5" fill="white" opacity="0.3"/>
-          <rect x="7" y="9" width="10" height="7" rx="1.5" fill="currentColor"/>
-          <circle cx="9.5" cy="11.5" r="0.8" fill="white"/>
-          <path d="M11.5 13.5L13.5 11.5L15.5 13.5" stroke="white" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-          <path d="M5 5L19 19M19 5L5 19" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
-        </svg>
-      )
-    } else {
-      // 通用格式转换图标
-      return (
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white">
-          <rect x="2" y="2" width="20" height="20" rx="2.5" fill="white" opacity="0.3"/>
-          <path d="M5 5L19 19M19 5L5 19" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
-          <rect x="7" y="9" width="10" height="7" rx="1.5" fill="currentColor"/>
-          <circle cx="9.5" cy="11.5" r="0.8" fill="white"/>
-          <path d="M11.5 13.5L13.5 11.5L15.5 13.5" stroke="white" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-        </svg>
-      )
-    }
-  }
-  
-  // Image Compressor 图标（压缩功能）
-  if (tool === 'image-compressor' || tool === 'image-compression') {
-    if (slug === 'compress-jpg' || slug.includes('jpg')) {
-      // JPG 压缩图标
-      return (
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white">
-          <rect x="3" y="3" width="18" height="18" rx="2" fill="currentColor"/>
-          <rect x="6" y="6" width="12" height="9" rx="1" fill="white" opacity="0.9"/>
-          <circle cx="9" cy="9" r="1.5" fill="currentColor"/>
-          <path d="M12 12L14 10L16 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-          <path d="M6 6L18 18M18 6L6 18" stroke="white" strokeWidth="1.5" strokeLinecap="round" opacity="0.7"/>
-        </svg>
-      )
-    } else if (slug === 'compress-png' || slug.includes('png')) {
-      // PNG 压缩图标（带透明度）
-      return (
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white">
-          <rect x="3" y="3" width="18" height="18" rx="2" fill="currentColor"/>
-          <rect x="6" y="6" width="12" height="9" rx="1" fill="white" opacity="0.9"/>
-          <path d="M6 6L18 18M18 6L6 18" stroke="white" strokeWidth="1.5" strokeLinecap="round" opacity="0.5"/>
-          <rect x="8" y="8" width="8" height="5" rx="0.5" fill="currentColor" opacity="0.3"/>
-          <circle cx="10" cy="10" r="1" fill="currentColor"/>
-        </svg>
-      )
-    } else if (slug === 'compress-webp') {
-      // WebP 压缩图标
-      return (
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white">
-          <rect x="3" y="3" width="18" height="18" rx="2" fill="currentColor"/>
-          <rect x="6" y="6" width="12" height="9" rx="1" fill="white" opacity="0.9"/>
-          <circle cx="9" cy="9" r="1.5" fill="currentColor"/>
-          <path d="M12 12L14 10L16 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-          <path d="M7 7L17 17" stroke="white" strokeWidth="1.2" strokeLinecap="round"/>
-        </svg>
-      )
-    } else if (slug === 'batch-compress') {
-      // 批量压缩图标（多个文件）
-      return (
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white">
-          <rect x="3" y="3" width="7" height="7" rx="1.5" fill="currentColor"/>
-          <rect x="14" y="3" width="7" height="7" rx="1.5" fill="currentColor"/>
-          <rect x="3" y="14" width="7" height="7" rx="1.5" fill="currentColor"/>
-          <rect x="14" y="14" width="7" height="7" rx="1.5" fill="currentColor"/>
-          <path d="M6.5 6.5L9 9M9 6.5L6.5 9" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M17.5 17.5L15 15M15 17.5L17.5 15" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M17.5 6.5L15 9M15 6.5L17.5 9" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M6.5 17.5L9 15M9 17.5L6.5 15" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-      )
-    } else {
-      // 通用压缩图标
-      return (
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white">
-          <rect x="3" y="3" width="7" height="7" rx="1.5" fill="currentColor"/>
-          <rect x="14" y="3" width="7" height="7" rx="1.5" fill="currentColor"/>
-          <rect x="3" y="14" width="7" height="7" rx="1.5" fill="currentColor"/>
-          <rect x="14" y="14" width="7" height="7" rx="1.5" fill="currentColor"/>
-          <path d="M6.5 6.5L9 9M9 6.5L6.5 9" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M17.5 17.5L15 15M15 17.5L17.5 15" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M17.5 6.5L15 9M15 6.5L17.5 9" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M6.5 17.5L9 15M9 17.5L6.5 15" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-      )
-    }
-  }
-  
-  // 默认图标
-  return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white">
-      <rect x="3" y="3" width="18" height="18" rx="2" fill="currentColor"/>
-      <rect x="6" y="6" width="12" height="9" rx="1" fill="white" opacity="0.9"/>
-      <circle cx="9" cy="9" r="1.5" fill="currentColor"/>
-    </svg>
-  )
-}
 
 export const metadata: Metadata = {
   title: 'Toolaze - Free AI Image Compressor & Local Tools',
@@ -153,59 +38,50 @@ export const metadata: Metadata = {
 }
 
 export default async function HomePage() {
-  let toolList: Array<{ tool: string; slug: string; title: string; description: string; component?: string }> = []
-  
-  // 场景工具 slug 列表（在首页隐藏）
-  const scenarioToolSlugs = [
-    'universal-50kb',
-    'passport-photo-200kb',
-    'amazon-product-10mb',
-    'etsy-listing-1mb',
-    'ebay-picture-fast',
-    'youtube-thumbnail-2mb',
-  ]
+  // 只显示L2工具（不显示L3页面）
+  const l2Tools: Array<{ tool: string; title: string; description: string; href: string }> = []
   
   try {
-    const tools = await getAllTools()
+    // 定义L2工具列表
+    const l2ToolList = [
+      { tool: 'image-compressor', name: 'Image Compressor' },
+      { tool: 'image-converter', name: 'Image Converter' },
+      { tool: 'font-generator', name: 'Font Generator' },
+    ]
     
-    // 过滤掉场景工具
-    const filteredTools = tools.filter(({ slug }) => !scenarioToolSlugs.includes(slug))
-    
-    // Load basic info for each tool to display
-    if (filteredTools && filteredTools.length > 0) {
-      const loadedTools = await Promise.all(
-        filteredTools.map(async ({ tool, slug }) => {
-          try {
-            const data = await loadToolData(tool, slug)
-            if (!data) {
-              return null
-            }
-            // 只显示 in_menu 为 true 的工具（二级和三级功能）
-            if (data.in_menu !== true) {
-              return null
-            }
-            return {
-              tool,
-              slug,
-              title: data?.hero?.h1 || `${tool}/${slug}`,
-              description: data?.hero?.sub || '',
-              component: data?.component,
-            }
-          } catch (error) {
-            // Silently handle individual tool loading errors
+    // 加载每个L2工具的数据
+    const loadedL2Tools = await Promise.all(
+      l2ToolList.map(async ({ tool, name }) => {
+        try {
+          const { getL2SeoContent } = await import('@/lib/seo-loader')
+          const data = await getL2SeoContent(tool, 'en')
+          if (!data) {
             return null
           }
-        })
-      )
-      // 过滤掉 null 值
-      toolList = loadedTools.filter((tool): tool is NonNullable<typeof tool> => tool !== null)
-    }
+          // 提取标题（移除 HTML 标签）
+          const title = data?.hero?.h1 ? data.hero.h1.replace(/<[^>]*>/g, '').trim() : name
+          // 使用 desc 或 metadata.description 作为描述
+          const description = data?.hero?.desc || data?.metadata?.description || ''
+          
+          return {
+            tool,
+            title: title,
+            description: description,
+            href: `/${tool}`,
+          }
+        } catch (error) {
+          // Silently handle individual tool loading errors
+          return null
+        }
+      })
+    )
+    // 过滤掉 null 值
+    l2Tools.push(...loadedL2Tools.filter((tool): tool is NonNullable<typeof tool> => tool !== null))
   } catch (error) {
     // Silently handle errors and use fallback
     if (process.env.NODE_ENV === 'development') {
       console.error('Error in HomePage:', error)
     }
-    toolList = []
   }
 
   // Organization Schema for Google Search Logo
@@ -261,70 +137,90 @@ export default async function HomePage() {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {toolList.length > 0 ? (
-              toolList.map((item, index) => (
-                <Link 
-                  key={`${item.tool}-${item.slug}`}
-                  href={`/${item.tool}/${item.slug}`}
-                  className="p-6 rounded-3xl bg-[#F8FAFF] border-2 border-indigo-100 hover:border-indigo-300 transition-all group relative overflow-hidden"
-                >
+            {l2Tools.length > 0 ? (
+              l2Tools.map((item, index) => {
+                // 根据工具类型生成图标
+                let icon = null
+                if (item.tool === 'image-compressor') {
+                  icon = (
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white">
+                      <rect x="3" y="3" width="7" height="7" rx="1.5" fill="currentColor"/>
+                      <rect x="14" y="3" width="7" height="7" rx="1.5" fill="currentColor"/>
+                      <rect x="3" y="14" width="7" height="7" rx="1.5" fill="currentColor"/>
+                      <rect x="14" y="14" width="7" height="7" rx="1.5" fill="currentColor"/>
+                      <path d="M6.5 6.5L9 9M9 6.5L6.5 9" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M17.5 17.5L15 15M15 17.5L17.5 15" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M17.5 6.5L15 9M15 6.5L17.5 9" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M6.5 17.5L9 15M9 17.5L6.5 15" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  )
+                } else if (item.tool === 'image-converter') {
+                  icon = (
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white">
+                      <rect x="2" y="2" width="20" height="20" rx="2.5" fill="#93C5FD" opacity="0.4"/>
+                      <path d="M5 5L19 19M19 5L5 19" stroke="#3B82F6" strokeWidth="2.5" strokeLinecap="round"/>
+                      <rect x="7" y="9" width="10" height="7" rx="1.5" fill="#3B82F6"/>
+                      <circle cx="9.5" cy="11.5" r="0.8" fill="white"/>
+                      <path d="M11.5 13.5L13.5 11.5L15.5 13.5" stroke="white" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+                    </svg>
+                  )
+                } else if (item.tool === 'font-generator') {
+                  icon = (
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white">
+                      <rect x="3" y="4" width="18" height="16" rx="2" fill="url(#fontGradient)" opacity="0.2"/>
+                      <path d="M7 8H17M7 12H15M7 16H13" stroke="url(#fontGradient)" strokeWidth="2" strokeLinecap="round"/>
+                      <defs>
+                        <linearGradient id="fontGradient" x1="3" y1="4" x2="21" y2="20" gradientUnits="userSpaceOnUse">
+                          <stop stopColor="#9333EA"/>
+                          <stop offset="1" stopColor="#4F46E5"/>
+                        </linearGradient>
+                      </defs>
+                    </svg>
+                  )
+                }
+                
+                return (
+                  <Link 
+                    key={item.tool}
+                    href={item.href}
+                    className="p-6 rounded-3xl bg-[#F8FAFF] border-2 border-indigo-100 hover:border-indigo-300 transition-all group relative overflow-hidden"
+                  >
+                    <div className="absolute top-4 right-4 bg-green-100 text-green-700 text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-wide">Live</div>
+                    <div className="w-12 h-12 bg-gradient-brand rounded-xl flex items-center justify-center mb-4 shadow-lg shadow-indigo-200 group-hover:scale-110 transition-transform">
+                      {icon}
+                    </div>
+                    <h3 className="font-bold text-slate-900 mb-2">
+                      {(item.title || '').replace(/<[^>]*>/g, '').substring(0, 50)}
+                    </h3>
+                    <p className="text-xs text-slate-500 mt-2 line-clamp-2">
+                      {(item.description || '').substring(0, 100)}
+                      {(item.description || '').length > 100 ? '...' : ''}
+                    </p>
+                  </Link>
+                )
+              })
+            ) : (
+              // Fallback: 如果加载失败，显示默认工具
+              <>
+                <Link href="/image-compressor" className="p-6 rounded-3xl bg-[#F8FAFF] border-2 border-indigo-100 hover:border-indigo-300 transition-all group relative overflow-hidden">
                   <div className="absolute top-4 right-4 bg-green-100 text-green-700 text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-wide">Live</div>
                   <div className="w-12 h-12 bg-gradient-brand rounded-xl flex items-center justify-center mb-4 shadow-lg shadow-indigo-200 group-hover:scale-110 transition-transform">
-                    {getToolIcon(item.tool, item.slug)}
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white">
+                      <rect x="3" y="3" width="7" height="7" rx="1.5" fill="currentColor"/>
+                      <rect x="14" y="3" width="7" height="7" rx="1.5" fill="currentColor"/>
+                      <rect x="3" y="14" width="7" height="7" rx="1.5" fill="currentColor"/>
+                      <rect x="14" y="14" width="7" height="7" rx="1.5" fill="currentColor"/>
+                      <path d="M6.5 6.5L9 9M9 6.5L6.5 9" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M17.5 17.5L15 15M15 17.5L17.5 15" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M17.5 6.5L15 9M15 6.5L17.5 9" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M6.5 17.5L9 15M9 17.5L6.5 15" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
                   </div>
-                  <h3 className="font-bold text-slate-900 mb-2">
-                    {(item.title || '').replace(/<[^>]*>/g, '').substring(0, 50)}
-                  </h3>
-                  <p className="text-xs text-slate-500 mt-2 line-clamp-2">
-                    {(item.description || '').substring(0, 100)}
-                    {(item.description || '').length > 100 ? '...' : ''}
-                  </p>
+                  <h3 className="font-bold text-slate-900">Image Compressor</h3>
+                  <p className="text-xs text-slate-500 mt-2">Smart lossy compression for JPG/PNG.</p>
                 </Link>
-              ))
-            ) : (
-              <Link href="/image-compressor/png-to-100kb" className="p-6 rounded-3xl bg-[#F8FAFF] border-2 border-indigo-100 hover:border-indigo-300 transition-all group relative overflow-hidden">
-                <div className="absolute top-4 right-4 bg-green-100 text-green-700 text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-wide">Live</div>
-                <div className="w-12 h-12 bg-gradient-brand rounded-xl flex items-center justify-center mb-4 shadow-lg shadow-indigo-200 group-hover:scale-110 transition-transform">
-                  {/* 图片压缩图标 */}
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white">
-                    {/* 四个方块，表示压缩 */}
-                    <rect x="3" y="3" width="7" height="7" rx="1.5" fill="currentColor"/>
-                    <rect x="14" y="3" width="7" height="7" rx="1.5" fill="currentColor"/>
-                    <rect x="3" y="14" width="7" height="7" rx="1.5" fill="currentColor"/>
-                    <rect x="14" y="14" width="7" height="7" rx="1.5" fill="currentColor"/>
-                    {/* 向内箭头（左上和右下） */}
-                    <path d="M6.5 6.5L9 9M9 6.5L6.5 9" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M17.5 17.5L15 15M15 17.5L17.5 15" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                    {/* 向外箭头（右上和左下） */}
-                    <path d="M17.5 6.5L15 9M15 6.5L17.5 9" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M6.5 17.5L9 15M9 17.5L6.5 15" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </div>
-                <h3 className="font-bold text-slate-900">Image Compressor</h3>
-                <p className="text-xs text-slate-500 mt-2">Smart lossy compression for JPG/PNG.</p>
-              </Link>
+              </>
             )}
-
-            <div className="p-6 rounded-3xl bg-slate-50 border border-slate-100 opacity-60 grayscale cursor-not-allowed relative">
-              <div className="absolute top-4 right-4 bg-slate-200 text-slate-500 text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-wide">Coming Soon</div>
-              <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-2xl mb-4 text-slate-300">🔄</div>
-              <h3 className="font-bold text-slate-400">Format Converter</h3>
-              <p className="text-xs text-slate-400 mt-2">HEIC to JPG, PNG to WEBP.</p>
-            </div>
-
-            <div className="p-6 rounded-3xl bg-slate-50 border border-slate-100 opacity-60 grayscale cursor-not-allowed relative">
-              <div className="absolute top-4 right-4 bg-slate-200 text-slate-500 text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-wide">Coming Soon</div>
-              <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-2xl mb-4 text-slate-300">📐</div>
-              <h3 className="font-bold text-slate-400">Image Resize</h3>
-              <p className="text-xs text-slate-400 mt-2">Resize images to exact dimensions.</p>
-            </div>
-            
-            <div className="p-6 rounded-3xl bg-slate-50 border border-slate-100 opacity-60 grayscale cursor-not-allowed relative">
-              <div className="absolute top-4 right-4 bg-slate-200 text-slate-500 text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-wide">Coming Soon</div>
-              <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-2xl mb-4 text-slate-300">🎬</div>
-              <h3 className="font-bold text-slate-400">Video Compressor</h3>
-              <p className="text-xs text-slate-400 mt-2">Compress videos without quality loss.</p>
-            </div>
           </div>
         </div>
       </section>

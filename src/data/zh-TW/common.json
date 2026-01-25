@@ -3,6 +3,7 @@
     "quickTools": "快速工具",
     "imageCompression": "圖片壓縮",
     "imageConverter": "圖片轉換",
+    "fontGenerator": "字體生成器",
     "aboutUs": "關於我們"
   },
   "home": {
@@ -78,6 +79,9 @@
     }
   },
   "footer": {
+    "imageCompression": "圖片壓縮",
+    "imageConverter": "圖片轉換",
+    "fontGenerator": "字體生成器",
     "home": "首頁",
     "allTools": "所有工具",
     "aboutUs": "關於我們",
@@ -93,6 +97,7 @@
     "quickTools": "快速工具",
     "imageCompression": "圖片壓縮",
     "imageConverter": "圖片轉換",
+    "fontGenerator": "字體生成器",
     "aboutUs": "關於我們",
     "privacyPolicy": "隱私政策",
     "termsOfService": "服務條款"
@@ -205,6 +210,67 @@
     "viewAllTools": {
       "related": "查看所有相關工具",
       "all": "查看所有工具"
+    },
+    "fontGenerator": {
+      "selectFontStyle": "選擇字體樣式",
+      "font": "字體",
+      "fonts": "字體",
+      "allFonts": "所有字體",
+      "copy": "複製",
+      "copied": "已複製！",
+      "placeholder": "在此輸入文字以開始....",
+      "defaultText": "Toolaze Font Generator 123",
+      "trustBar": {
+        "private": "100% 隱私",
+        "instantPreview": "即時預覽",
+        "noServerLogs": "無伺服器日誌"
+      },
+      "fontTerms": {
+        "Bold": "粗體",
+        "Italic": "斜體",
+        "Sans Serif": "Sans Serif",
+        "Serif": "Serif",
+        "Cursive": "草書",
+        "Script": "手寫",
+        "Gothic": "哥德式",
+        "Fancy": "裝飾",
+        "Fraktur": "Fraktur",
+        "Monospace": "等寬",
+        "Fullwidth": "全形",
+        "Circled": "圓圈",
+        "Negative Circled": "負圓圈",
+        "Squared": "方塊",
+        "Negative Squared": "負方塊",
+        "Parenthesized": "括號",
+        "Small Caps": "小型大寫",
+        "Superscript": "上標",
+        "Subscript": "下標",
+        "Greek Style": "希臘風格",
+        "Cyrillic Style": "西里爾風格",
+        "Regional Indicator": "區域指示器",
+        "Latin Extended": "拉丁擴展",
+        "Latin Extended-B": "拉丁擴展-B"
+      },
+      "moreTools": "更多字體生成器工具",
+      "categories": {
+        "all": "全部",
+        "cursive": "草書",
+        "fancy": "裝飾",
+        "bold": "粗體",
+        "tattoo": "刺青",
+        "cool": "酷",
+        "instagram": "Instagram",
+        "italic": "斜體",
+        "gothic": "哥德式",
+        "calligraphy": "書法",
+        "discord": "Discord",
+        "oldEnglish": "古英語",
+        "3d": "3D",
+        "minecraft": "Minecraft",
+        "disney": "迪士尼",
+        "bubble": "泡泡",
+        "starWars": "星際大戰"
+      }
     }
   },
   "imageCompressor": {

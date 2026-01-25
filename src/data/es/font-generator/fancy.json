@@ -1,0 +1,191 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Generador de Fuentes Decorativas (Gratis, Copiar y Pegar, Sin Anuncios) - Toolaze",
+    "description": "¿Cómo generar fuentes decorativas? 1. Escribe tu texto 2. Selecciona estilo decorativo 3. Copia y pega. Crea hermoso texto decorativo para Instagram, Facebook y redes sociales. Gratis y Privado."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Generador de Fuentes Decorativas",
+    "desc": "Genera hermosas fuentes decorativas en línea de forma gratuita. Simplemente escribe tu texto a continuación para crear texto decorativo elegante que puedas copiar y pegar en cualquier lugar."
+  },
+  "intro": {
+    "title": "¿Por qué usar un generador de fuentes decorativas?",
+    "content": [
+      {
+        "title": "¿Qué es una fuente decorativa?",
+        "text": "Las fuentes decorativas abarcan una amplia gama de tipografías decorativas y elegantes que añaden sofisticación e interés visual al texto. Estos estilos refinados incluyen caracteres de doble trazo, letras circuladas, texto al cuadrado y otras variaciones ornamentales Unicode. Las fuentes decorativas se caracterizan por su apariencia de alta gama, haciéndolas perfectas para marcas de lujo, invitaciones formales, empaques de productos de alta gama y proyectos que requieren una estética premium y exclusiva. Para estilos de script más elegantes, prueba nuestro <a href=\"/font-generator/cursive\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">generador de fuentes cursivas</a> o generador de fuentes caligráficas."
+      },
+      {
+        "title": "¿Por qué generar texto decorativo en línea?",
+        "text": "Crear texto decorativo tradicionalmente requiere habilidades avanzadas de tipografía y software de diseño costoso. Nuestro generador de texto decorativo proporciona acceso instantáneo a múltiples estilos Unicode elegantes incluyendo variaciones de doble trazo, circuladas, al cuadrado y entre paréntesis. Ya sea que estés diseñando logotipos de marcas de lujo, creando invitaciones formales para eventos o desarrollando materiales de marketing premium, nuestra herramienta transforma cualquier texto en estilo decorativo sofisticado instantáneamente—añadiendo ese toque especial de elegancia y exclusividad a tus proyectos. Explora todas nuestras herramientas de fuentes con nuestro <a href=\"/font-generator\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">generador de fuentes</a>."
+      }
+    ]
+  },
+  "features": {
+    "title": "Características Potentes de Fuentes Decorativas",
+    "items": [
+      {
+        "icon": "💎",
+        "iconType": "quality",
+        "title": "Estilos Unicode Decorativos",
+        "desc": "Accede a fuentes decorativas elegantes incluyendo variaciones de doble trazo, circuladas, al cuadrado y entre paréntesis."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Privacidad Completa de Datos",
+        "desc": "La generación de fuentes ocurre completamente en tu navegador—tu texto nunca sale de tu dispositivo, garantizando privacidad total."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Aplicación Instantánea de Estilo",
+        "desc": "Ve tu texto transformarse a estilo decorativo inmediatamente con vista previa en vivo actualizándose mientras escribes."
+      },
+      {
+        "icon": "📋",
+        "iconType": "batch",
+        "title": "Copia Sin Esfuerzo",
+        "desc": "Copia tu texto decorativo con un clic y pégalo en marca de lujo, invitaciones o materiales premium."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Uso Ilimitado Gratis",
+        "desc": "Genera fuentes decorativas ilimitadas sin ningún costo—sin suscripciones, sin niveles premium, sin anuncios."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "No Se Requiere Configuración",
+        "desc": "Opera completamente dentro de tu navegador—no se requiere instalación de software ni descarga de archivos de fuentes."
+      }
+    ]
+  },
+  "specs": {
+    "engine": "Renderizado de Fuentes Nativo del Navegador - Procesamiento del Lado del Cliente",
+    "limit": "Longitud de Texto Ilimitada - Sin Límites de Caracteres",
+    "logic": "Vista Previa en Tiempo Real (Aplicación Instantánea de Estilo)",
+    "privacy": "100% del Lado del Cliente (Procesamiento Local del Navegador)"
+  },
+  "performanceMetrics": {
+    "title": "Especificaciones Técnicas",
+    "metrics": [
+      {
+        "label": "Estilo de Fuente",
+        "value": "Decorativa (Estilo Distintivo)"
+      },
+      {
+        "label": "Longitud del Texto",
+        "value": "Caracteres ilimitados"
+      },
+      {
+        "label": "Velocidad de Procesamiento",
+        "value": "Instantáneo (Vista previa en tiempo real)"
+      },
+      {
+        "label": "Formato de Salida",
+        "value": "Texto Unicode (Listo para copiar y pegar)"
+      },
+      {
+        "label": "Soporte de Plataformas",
+        "value": "Instagram, Facebook, Twitter, TikTok, Discord y más"
+      },
+      {
+        "label": "Ubicación de Procesamiento",
+        "value": "100% del Lado del Cliente (JavaScript del Navegador)"
+      },
+      {
+        "label": "Privacidad",
+        "value": "Sin subidas al servidor, procesamiento local completo"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Cómo Generar Fuentes Decorativas",
+    "steps": [
+      {
+        "title": "Escribe Tu Texto",
+        "desc": "Ingresa el texto que deseas transformar en estilo decorativo elegante en el campo de entrada arriba."
+      },
+      {
+        "title": "Selecciona Estilo Decorativo",
+        "desc": "Elige entre estilos de fuentes decorativas incluyendo variaciones de doble trazo, circuladas y al cuadrado. Previsualiza cada estilo para ver el efecto elegante."
+      },
+      {
+        "title": "Copia Texto Decorativo",
+        "desc": "Haz clic en el botón de copiar para copiar tu texto decorativo, luego pégalo en marca de lujo, invitaciones formales o materiales premium."
+      }
+    ]
+  },
+  "comparison": {
+    "title": "¿Por qué elegir Toolaze?",
+    "toolaze": "Toolaze 💎",
+    "others": "Otras Herramientas",
+    "vs": "VS",
+    "smartChoice": "Elección Inteligente",
+    "otherTools": "Otras Herramientas",
+    "toolazeFeatures": "Generación ilimitada de texto decorativo, Múltiples estilos decorativos, Vista previa en tiempo real, Procesamiento del navegador, Sin límites, Privacidad total, 100% gratis",
+    "othersFeatures": "Restricciones de texto, Opciones decorativas limitadas, Servidores lentos, Subidas requeridas, Riesgos de privacidad, Marcas de agua, Funciones de pago"
+  },
+  "scenesTitle": "Casos de Uso",
+  "scenes": [
+    {
+      "title": "Marcas de Lujo",
+      "icon": "💎",
+      "desc": "Crea fuentes decorativas elegantes para empaques de productos de alta gama, logotipos de marcas de lujo y materiales de marketing premium. Añade sofisticación y exclusividad a tu identidad de marca."
+    },
+    {
+      "title": "Planificadores de Eventos",
+      "icon": "🎊",
+      "desc": "Genera texto decorativo para invitaciones formales, programas de boda y señalización de eventos de alta gama. Perfecto para galas, eventos corporativos y celebraciones elegantes."
+    },
+    {
+      "title": "Diseñadores de Moda",
+      "icon": "👗",
+      "desc": "Usa fuentes decorativas para nombres de marcas de moda, gráficos de desfiles y contenido editorial. Crea una estética refinada y elegante que coincida con las sensibilidades de alta moda."
+    }
+  ],
+  "rating": {
+    "title": "Confiado por Miles de Creadores",
+    "rating": "4.9/5 DE MÁS DE 10K CREADORES",
+    "text": "\"El mejor generador de fuentes decorativas que he encontrado. ¡Resultados instantáneos y funciona perfectamente en Instagram!\" - Únete a miles de usuarios que confían en Toolaze para la generación de hermoso texto decorativo."
+  },
+  "faqTitle": "Preguntas Frecuentes",
+  "faq": [
+    {
+      "q": "¿Qué hace que una fuente sea 'decorativa'?",
+      "a": "Las fuentes decorativas típicamente tienen elementos decorativos, curvas elegantes y estilos sofisticados. Nuestras decorativas incluyen doble trazo, circuladas y otros estilos Unicode decorativos que crean una apariencia refinada y de alta gama."
+    },
+    {
+      "q": "¿Son adecuadas las fuentes decorativas para marcas de lujo?",
+      "a": "¡Sí! Las fuentes decorativas son perfectas para empaques de productos de alta gama, logotipos de marcas de lujo y materiales de marketing premium. Transmiten sofisticación y exclusividad."
+    },
+    {
+      "q": "¿Puedo usar fuentes decorativas en invitaciones formales?",
+      "a": "¡Absolutamente! Las fuentes decorativas son ideales para invitaciones de boda, programas de eventos formales y papelería elegante. Añaden ese toque especial de sofisticación a ocasiones importantes."
+    },
+    {
+      "q": "¿Funcionarán las fuentes decorativas en materiales impresos?",
+      "a": "Sí, las fuentes Unicode decorativas funcionan bien tanto en materiales digitales como impresos. Son perfectas para tarjetas de presentación, membrete y materiales impresos de alta calidad."
+    },
+    {
+      "q": "¿Son legibles las fuentes decorativas en dispositivos móviles?",
+      "a": "La mayoría de las fuentes decorativas se muestran bien en dispositivos móviles modernos. Sin embargo, algunos estilos muy decorativos pueden ser menos legibles en tamaños pequeños, así que siempre previsualiza en tu dispositivo objetivo. Para estilos elegantes más legibles, prueba nuestro <a href=\"/font-generator/cursive\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">generador de fuentes cursivas</a> o explora nuestra colección de generador de fuentes."
+    }
+  ],
+  "compare": {
+    "toolaze": "Generación ilimitada de texto decorativo, Múltiples estilos elegantes, Vista previa instantánea en tiempo real, Arquitectura local primero, Sin límites de caracteres, Protección completa de privacidad, 100% gratis para siempre",
+    "others": "Límites de caracteres, Opciones de estilo limitadas, Procesamiento lento del servidor, Subidas a la nube requeridas, Preocupaciones de privacidad, Marcas de agua o anuncios, Funciones premium de pago"
+  }
+}

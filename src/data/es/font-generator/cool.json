@@ -1,0 +1,191 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Generador de Fuentes Geniales (Gratis, Copiar y Pegar, Sin Anuncios) - Toolaze",
+    "description": "¿Cómo generar fuentes geniales? 1. Escribe tu texto 2. Selecciona estilo genial 3. Copia y pega. Crea hermoso texto genial para Instagram, Facebook y redes sociales. Gratis y Privado."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Generador de Fuentes Geniales",
+    "desc": "Genera hermosas fuentes geniales en línea de forma gratuita. Simplemente escribe tu texto a continuación para crear texto genial elegante que puedas copiar y pegar en cualquier lugar."
+  },
+  "intro": {
+    "title": "¿Por qué usar un generador de fuentes geniales?",
+    "content": [
+      {
+        "title": "¿Qué es una fuente genial?",
+        "text": "Las fuentes geniales presentan estéticas modernas y de moda que atraen a audiencias contemporáneas. Estas tipografías elegantes combinan estilos en negrita, sans-serif y monoespaciados para crear ese aspecto moderno y urbano popular en la cultura streetwear, startups tecnológicas y comunidades de gaming. Las fuentes geniales se caracterizan por su sensación contemporánea, haciéndolas perfectas para marcas streetwear, productores musicales, empresas tecnológicas y proyectos que necesitan una estética moderna e innovadora. Para más estilos en negrita, prueba nuestro <a href=\"/font-generator/bold\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">generador de fuentes en negrita</a> o generador de fuentes de tatuaje."
+      },
+      {
+        "title": "¿Por qué generar texto genial en línea?",
+        "text": "Crear texto genial y de moda requiere mantenerse actualizado con las tendencias de diseño y tener acceso a herramientas de tipografía modernas. Nuestro generador de texto genial proporciona acceso instantáneo a estilos de fuentes contemporáneos que capturan esa vibra elegante y moderna. Ya sea que estés diseñando ropa streetwear, creando marca de startup tecnológica o desarrollando contenido de gaming, nuestra herramienta transforma cualquier texto en estilo genial moderno instantáneamente—perfecto para proyectos que necesitan esa estética contemporánea y atrevida. Explora más estilos con nuestro <a href=\"/font-generator\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">generador de fuentes</a>."
+      }
+    ]
+  },
+  "features": {
+    "title": "Características Potentes de Fuentes Geniales",
+    "items": [
+      {
+        "icon": "⭐",
+        "iconType": "quality",
+        "title": "Estilos de Fuentes Modernos",
+        "desc": "Accede a fuentes geniales de moda incluyendo estilos en negrita, sans-serif y monoespaciados para estéticas contemporáneas."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Procesamiento Local del Navegador",
+        "desc": "La generación de fuentes ocurre completamente en tu dispositivo—tu texto nunca se envía a ningún servidor."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Actualizaciones de Estilo en Tiempo Real",
+        "desc": "Observa tu texto cambiar a estilo genial instantáneamente con vista previa en vivo mientras escribes."
+      },
+      {
+        "icon": "📋",
+        "iconType": "batch",
+        "title": "Copia Fácil",
+        "desc": "Copia tu texto genial rápidamente y pégalo en diseños streetwear, marca tecnológica o contenido de gaming."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Totalmente Gratis",
+        "desc": "Genera fuentes geniales ilimitadas de forma gratuita—sin pagos, sin funciones premium, sin anuncios nunca."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "Solo Navegador",
+        "desc": "Funciona completamente en tu navegador web—no se requiere software ni archivos de fuentes para descargar o instalar."
+      }
+    ]
+  },
+  "specs": {
+    "engine": "Renderizado de Fuentes Nativo del Navegador - Procesamiento del Lado del Cliente",
+    "limit": "Longitud de Texto Ilimitada - Sin Límites de Caracteres",
+    "logic": "Vista Previa en Tiempo Real (Aplicación Instantánea de Estilo)",
+    "privacy": "100% del Lado del Cliente (Procesamiento Local del Navegador)"
+  },
+  "performanceMetrics": {
+    "title": "Especificaciones Técnicas",
+    "metrics": [
+      {
+        "label": "Estilo de Fuente",
+        "value": "Genial (Estilo Distintivo)"
+      },
+      {
+        "label": "Longitud del Texto",
+        "value": "Caracteres ilimitados"
+      },
+      {
+        "label": "Velocidad de Procesamiento",
+        "value": "Instantáneo (Vista previa en tiempo real)"
+      },
+      {
+        "label": "Formato de Salida",
+        "value": "Texto Unicode (Listo para copiar y pegar)"
+      },
+      {
+        "label": "Soporte de Plataformas",
+        "value": "Instagram, Facebook, Twitter, TikTok, Discord y más"
+      },
+      {
+        "label": "Ubicación de Procesamiento",
+        "value": "100% del Lado del Cliente (JavaScript del Navegador)"
+      },
+      {
+        "label": "Privacidad",
+        "value": "Sin subidas al servidor, procesamiento local completo"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Cómo Generar Fuentes Geniales",
+    "steps": [
+      {
+        "title": "Escribe Tu Texto",
+        "desc": "Ingresa el texto que deseas transformar en estilo genial moderno en el campo de entrada arriba."
+      },
+      {
+        "title": "Elige Estilo Genial",
+        "desc": "Explora estilos de fuentes geniales de moda y previsualiza cómo se ve tu texto en cada variación contemporánea."
+      },
+      {
+        "title": "Copia Texto Genial",
+        "desc": "Haz clic en el botón de copiar para copiar tu texto genial, luego pégalo en diseños streetwear, marca tecnológica o contenido de gaming."
+      }
+    ]
+  },
+  "comparison": {
+    "title": "¿Por qué elegir Toolaze?",
+    "toolaze": "Toolaze 💎",
+    "others": "Otras Herramientas",
+    "vs": "VS",
+    "smartChoice": "Elección Inteligente",
+    "otherTools": "Otras Herramientas",
+    "toolazeFeatures": "Generación ilimitada de texto genial, Estilos modernos de moda, Vista previa en tiempo real, Procesamiento del lado del cliente, Sin límites, Privacidad total, Gratis para siempre",
+    "othersFeatures": "Restricciones de texto, Pocas opciones geniales, Procesamiento lento, Subidas a la nube, Preocupaciones de privacidad, Marcas de agua, Niveles de pago"
+  },
+  "scenesTitle": "Casos de Uso",
+  "scenes": [
+    {
+      "title": "Marcas Streetwear",
+      "icon": "👟",
+      "desc": "Crea fuentes geniales para ropa streetwear, diseños de zapatillas y marcas de moda urbana. Genera texto moderno y de moda que capture la estética de la cultura callejera."
+    },
+    {
+      "title": "Productores Musicales",
+      "icon": "🎵",
+      "desc": "Usa fuentes geniales para arte de álbumes, títulos de pistas y gráficos de videos musicales. Añade una vibra contemporánea y moderna a tu marca musical con fuentes geniales elegantes."
+    },
+    {
+      "title": "Startups Tecnológicas",
+      "icon": "💻",
+      "desc": "Genera texto genial para nombres de aplicaciones, lanzamientos de productos tecnológicos y marca de startups. Crea una sensación moderna e innovadora con estilos de fuentes elegantes y contemporáneos."
+    }
+  ],
+  "rating": {
+    "title": "Confiado por Miles de Creadores",
+    "rating": "4.9/5 DE MÁS DE 10K CREADORES",
+    "text": "\"El mejor generador de fuentes geniales que he encontrado. ¡Resultados instantáneos y funciona perfectamente en Instagram!\" - Únete a miles de usuarios que confían en Toolaze para la generación de hermoso texto genial."
+  },
+  "faqTitle": "Preguntas Frecuentes",
+  "faq": [
+    {
+      "q": "¿Qué hace que una fuente sea 'genial'?",
+      "a": "Las fuentes geniales tienen una estética moderna y de moda que atrae a audiencias contemporáneas. Nuestras geniales incluyen estilos en negrita, sans-serif y monoespaciados que crean ese aspecto elegante y moderno popular en la cultura streetwear y tecnológica."
+    },
+    {
+      "q": "¿Son buenas las fuentes geniales para marcas streetwear?",
+      "a": "¡Sí! Las fuentes geniales son perfectas para ropa streetwear, diseños de zapatillas y marcas de moda urbana. Capturan esa estética contemporánea y atrevida de la cultura callejera."
+    },
+    {
+      "q": "¿Puedo usar fuentes geniales para startups tecnológicas?",
+      "a": "¡Absolutamente! Las fuentes geniales funcionan muy bien para nombres de aplicaciones, lanzamientos de productos tecnológicos y marca de startups. Crean una sensación moderna e innovadora que las empresas tecnológicas adoran."
+    },
+    {
+      "q": "¿Funcionarán las fuentes geniales en contenido de gaming?",
+      "a": "¡Sí! Las fuentes geniales son populares en comunidades de gaming para nombres de clanes, marca de servidores y contenido de gaming. Añaden esa vibra contemporánea y competitiva de gaming."
+    },
+    {
+      "q": "¿Son legibles las fuentes geniales en todas las plataformas?",
+      "a": "Sí, las fuentes geniales usan caracteres Unicode que son ampliamente compatibles. Se muestran bien en redes sociales, plataformas de gaming y la mayoría de las aplicaciones modernas. Para más estilos modernos, prueba nuestro <a href=\"/font-generator/bold\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">generador de fuentes en negrita</a> o explora nuestra colección de generador de fuentes."
+    }
+  ],
+  "compare": {
+    "toolaze": "Generación ilimitada de texto genial, Múltiples estilos elegantes, Vista previa instantánea en tiempo real, Arquitectura local primero, Sin límites de caracteres, Protección completa de privacidad, 100% gratis para siempre",
+    "others": "Límites de caracteres, Opciones de estilo limitadas, Procesamiento lento del servidor, Subidas a la nube requeridas, Preocupaciones de privacidad, Marcas de agua o anuncios, Funciones premium de pago"
+  }
+}

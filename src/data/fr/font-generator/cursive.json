@@ -1,0 +1,191 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Générateur de Polices Cursives (Gratuit, Copier-Coller et Sans Publicité) - Toolaze",
+    "description": "Comment générer des polices cursives ? 1. Tapez votre texte 2. Sélectionnez le style cursif 3. Copiez et collez. Créez de beaux textes cursifs pour Instagram, Facebook et les réseaux sociaux. Gratuit et Privé."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Générateur de Polices Cursives",
+    "desc": "Générez de belles polices cursives en ligne gratuitement. Tapez simplement votre texte ci-dessous pour créer un texte cursif élégant que vous pouvez copier et coller n'importe où."
+  },
+  "intro": {
+    "title": "Pourquoi utiliser un Générateur de Polices Cursives ?",
+    "content": [
+      {
+        "title": "Qu'est-ce qu'une Police Cursive ?",
+        "text": "Les polices cursives, également connues sous le nom de polices script, présentent des formes de lettres fluides et connectées qui imitent le texte écrit à la main. Ces typographies élégantes créent une sensation de sophistication et de touche personnelle, les rendant parfaites pour les invitations formelles, le branding personnel et les projets artistiques. Contrairement aux polices standard, les styles cursifs ajoutent de la chaleur et de la personnalité à votre texte, transmettant l'émotion et le style à travers leurs courbes et connexions gracieuses. Si vous cherchez des options plus décoratives, essayez notre <a href=\"/font-generator/fancy\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">générateur de polices fantaisie</a> ou <a href=\"/font-generator/calligraphy\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">générateur de polices calligraphiques</a> pour des styles élégants supplémentaires."
+      },
+      {
+        "title": "Pourquoi générer du texte cursif en ligne ?",
+        "text": "Les méthodes traditionnelles de création de texte cursif nécessitent un logiciel de conception coûteux, l'installation de polices et des connaissances en typographie. Que vous conceviez des invitations de mariage, créiez des biographies Instagram personnelles ou ajoutiez des touches élégantes aux cartes de visite, notre outil transforme n'importe quel texte en style cursif professionnel en quelques secondes—sans téléchargements, sans installations, sans expérience en design nécessaire. Explorez plus de styles de polices avec notre collection complète de <a href=\"/font-generator\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">générateur de polices</a>."
+      }
+    ]
+  },
+  "features": {
+    "title": "Fonctionnalités Puissantes des Polices Cursives",
+    "items": [
+      {
+        "icon": "✍️",
+        "iconType": "quality",
+        "title": "Styles Script Élégants",
+        "desc": "Accédez à plusieurs styles cursifs fluides qui créent de beaux effets de texte écrit à la main pour votre texte."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Traitement 100% Privé",
+        "desc": "Votre texte est traité entièrement dans votre navigateur—jamais téléchargé, jamais stocké, confidentialité complète garantie."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Aperçu en Temps Réel",
+        "desc": "Voyez votre texte cursif se transformer instantanément pendant que vous tapez, avec un retour visuel immédiat."
+      },
+      {
+        "icon": "📋",
+        "iconType": "batch",
+        "title": "Copie en Un Clic",
+        "desc": "Copiez votre texte cursif stylisé instantanément et collez-le dans n'importe quelle application ou plateforme."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Complètement Gratuit",
+        "desc": "Génération illimitée de polices cursives sans coûts, abonnements ou publicités—jamais."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "Basé sur Navigateur",
+        "desc": "Fonctionne entièrement dans votre navigateur web—aucune installation de logiciel ou téléchargement de polices requis."
+      }
+    ]
+  },
+  "specs": {
+    "engine": "Rendu de Polices Natif du Navigateur - Traitement Côté Client",
+    "limit": "Longueur de Texte Illimitée - Aucune Limite de Caractères",
+    "logic": "Aperçu en Temps Réel (Application Instantanée de Style)",
+    "privacy": "100% Côté Client (Traitement Local du Navigateur)"
+  },
+  "performanceMetrics": {
+    "title": "Spécifications Techniques",
+    "metrics": [
+      {
+        "label": "Style de Police",
+        "value": "Cursive (Style Distinctif)"
+      },
+      {
+        "label": "Longueur du Texte",
+        "value": "Caractères illimités"
+      },
+      {
+        "label": "Vitesse de Traitement",
+        "value": "Instantané (Aperçu en temps réel)"
+      },
+      {
+        "label": "Format de Sortie",
+        "value": "Texte Unicode (Prêt à copier-coller)"
+      },
+      {
+        "label": "Support de Plateformes",
+        "value": "Instagram, Facebook, Twitter, TikTok, Discord et plus encore"
+      },
+      {
+        "label": "Emplacement de Traitement",
+        "value": "100% Côté Client (JavaScript du Navigateur)"
+      },
+      {
+        "label": "Confidentialité",
+        "value": "Aucun téléchargement serveur, traitement local complet"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Comment Générer des Polices Cursives",
+    "steps": [
+      {
+        "title": "Entrez Votre Texte",
+        "desc": "Tapez le texte que vous souhaitez convertir en style cursif élégant dans le champ de saisie ci-dessus."
+      },
+      {
+        "title": "Choisissez le Style Cursif",
+        "desc": "Parcourez les styles de polices cursives disponibles et prévisualisez l'apparence de votre texte dans chaque variation de script élégant."
+      },
+      {
+        "title": "Copiez Votre Texte Cursif",
+        "desc": "Cliquez sur le bouton copier pour copier votre texte cursif stylisé, puis collez-le dans des invitations de mariage, des biographies Instagram ou tout document."
+      }
+    ]
+  },
+  "comparison": {
+    "title": "Pourquoi Choisir Toolaze ?",
+    "toolaze": "Toolaze 💎",
+    "others": "Autres Outils",
+    "vs": "VS",
+    "smartChoice": "Choix Intelligent",
+    "otherTools": "Autres Outils",
+    "toolazeFeatures": "Génération illimitée de texte cursif, Multiples styles de script élégants, Aperçu instantané en temps réel, Traitement basé sur navigateur, Aucune limite de caractères, Protection complète de la confidentialité, 100% gratuit pour toujours",
+    "othersFeatures": "Limites de caractères, Options de script limitées, Traitement lent du serveur, Téléchargements cloud requis, Préoccupations de confidentialité, Filigranes ou publicités, Fonctionnalités premium payantes"
+  },
+  "scenesTitle": "Cas d'Utilisation",
+  "scenes": [
+    {
+      "title": "Invitaciones de Mariage",
+      "icon": "💍",
+      "desc": "Créez du texte cursif élégant pour les invitations de mariage, les dates à retenir et les programmes de cérémonie. Ajoutez une touche romantique et sophistiquée à votre jour spécial avec de belles polices style écrit à la main."
+    },
+    {
+      "title": "Branding Personnel",
+      "icon": "✍️",
+      "desc": "Utilisez des polices cursives pour les biographies Instagram personnelles, les en-têtes LinkedIn et les signatures d'email. Distinguez-vous avec des polices script élégantes qui transmettent professionnalisme et personnalité."
+    },
+    {
+      "title": "Projets d'Art et Design",
+      "icon": "🎨",
+      "desc": "Générez du texte cursif pour les impressions d'art, les cartes de vœux et les maquettes de design. Parfait pour ajouter une sensation artistique faite à la main à vos projets créatifs."
+    }
+  ],
+  "rating": {
+    "title": "Approuvé par des Milliers de Créateurs",
+    "rating": "4.9/5 DE PLUS DE 10K CRÉATEURS",
+    "text": "\"Le meilleur générateur de polices cursives que j'ai trouvé. Résultats instantanés et fonctionne parfaitement sur Instagram !\" - Rejoignez des milliers d'utilisateurs qui font confiance à Toolaze pour la génération de beaux textes cursifs."
+  },
+  "faqTitle": "Questions Fréquemment Posées",
+  "faq": [
+    {
+      "q": "Puis-je utiliser des polices cursives pour des documents formels ?",
+      "a": "Oui ! Les polices cursives générées par Toolaze utilisent des caractères Unicode qui fonctionnent dans la plupart des applications. Cependant, pour des documents très formels comme les documents juridiques, vous pouvez vérifier la compatibilité avec votre logiciel de documents spécifique en premier."
+    },
+    {
+      "q": "Les polices cursives sont-elles lisibles sur tous les appareils ?",
+      "a": "Le texte cursif utilise des caractères Unicode Mathematical Script qui sont largement pris en charge. Ils s'affichent bien sur les appareils modernes, bien que certains téléphones ou applications plus anciens puissent les rendre différemment. Prévisualisez toujours sur votre plateforme cible."
+    },
+    {
+      "q": "Puis-je utiliser des polices cursives dans ma signature d'email ?",
+      "a": "Oui ! Les polices cursives fonctionnent très bien dans les signatures d'email. Copiez simplement le texte cursif généré et collez-le dans les paramètres de votre signature d'email. La plupart des clients de messagerie prennent en charge les caractères Unicode."
+    },
+    {
+      "q": "Comment les polices cursives diffèrent-elles des polices calligraphiques ?",
+      "a": "Les polices cursives ont un style de script fluide et connecté, tandis que les polices calligraphiques ont souvent plus d'ornements décoratifs. Notre générateur cursif se concentre sur des styles de script élégants et lisibles parfaits pour un usage quotidien. Pour plus d'options décoratives, essayez notre <a href=\"/font-generator/calligraphy\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">générateur de polices calligraphiques</a> ou générateur de polices fantaisie."
+    },
+    {
+      "q": "Les polices cursives fonctionneront-elles dans Microsoft Word ?",
+      "a": "Oui, les caractères Unicode cursifs fonctionnent dans Microsoft Word et la plupart des traitements de texte. Copiez et collez simplement le texte généré directement dans votre document."
+    }
+  ],
+  "compare": {
+    "toolaze": "Génération illimitée de texte cursif, Multiples styles élégants, Aperçu instantané en temps réel, Architecture local-first, Aucune limite de caractères, Protection complète de la confidentialité, 100% gratuit pour toujours",
+    "others": "Limites de caractères, Options de style limitées, Traitement lent du serveur, Téléchargements cloud requis, Préoccupations de confidentialité, Filigranes ou publicités, Fonctionnalités premium payantes"
+  }
+}

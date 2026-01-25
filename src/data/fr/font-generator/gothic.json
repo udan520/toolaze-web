@@ -1,0 +1,191 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Générateur de Polices Gothiques (Gratuit, Copier-Coller et Sans Publicité) - Toolaze",
+    "description": "Comment générer des polices gothiques ? 1. Tapez votre texte 2. Sélectionnez le style gothique 3. Copiez et collez. Créez de beaux textes gothiques pour Instagram, Facebook et les réseaux sociaux. Gratuit et Privé."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Générateur de Polices Gothiques",
+    "desc": "Générez de belles polices gothiques en ligne gratuitement. Tapez simplement votre texte ci-dessous pour créer un texte gothique élégant que vous pouvez copier et coller n'importe où."
+  },
+  "intro": {
+    "title": "Pourquoi utiliser un Générateur de Polices Gothiques ?",
+    "content": [
+      {
+        "title": "Qu'est-ce qu'une Police Gothique ?",
+        "text": "Les polices gothiques, également connues sous le nom de blackletter, présentent des formes de lettres ornementales et médiévales avec des traits dramatiques et angulaires. Ces typographies historiques sont originaires de l'Europe médiévale et se caractérisent par leur apparence dense et décorative avec des détails complexes. Les polices gothiques créent une présence puissante et autoritaire, les rendant idéales pour les logos de groupes de metal, contenu d'horreur, titres de jeux et projets qui nécessitent une esthétique audacieuse et dramatique. Pour des styles traditionnels similaires, explorez notre <a href=\"/font-generator/old-english\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">générateur de polices Old English</a> ou générateur de polices tatouage."
+      },
+      {
+        "title": "Pourquoi générer du texte gothique en ligne ?",
+        "text": "La typographie gothique traditionnelle nécessite une connaissance spécialisée des formes de lettres historiques et un logiciel de conception coûteux. Notre générateur de texte gothique fournit un accès instantané à des styles blackletter classiques en utilisant des caractères Unicode Mathematical Fraktur. Que vous conceviez des logos de groupes de metal, créiez des affiches de films d'horreur ou développiez des jeux de fantasy médiévale, notre outil transforme n'importe quel texte en style gothique d'apparence authentique en quelques secondes—parfait pour les projets qui nécessitent cette esthétique sombre, puissante et historique. Explorez plus de styles de polices avec notre collection de <a href=\"/font-generator\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">générateur de polices</a>."
+      }
+    ]
+  },
+  "features": {
+    "title": "Fonctionnalités Puissantes des Polices Gothiques",
+    "items": [
+      {
+        "icon": "🖤",
+        "iconType": "quality",
+        "title": "Styles Blackletter Classiques",
+        "desc": "Générez du texte gothique authentique avec des styles blackletter médiévaux qui créent des effets dramatiques et puissants."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Traitement Uniquement sur l'Appareil",
+        "desc": "Toute la génération de polices gothiques se fait localement—votre texte reste sur votre appareil, jamais transmis nulle part."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Aperçu de Style en Direct",
+        "desc": "Observez votre texte se transformer en style gothique en temps réel pendant que vous tapez, avec des mises à jour visuelles instantanées."
+      },
+      {
+        "icon": "📋",
+        "iconType": "batch",
+        "title": "Copie Instantanée",
+        "desc": "Copiez votre texte gothique immédiatement et collez-le dans des logos de groupes, titres de jeux ou contenu d'horreur."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Aucun Coût Jamais",
+        "desc": "Génération illimitée de polices gothiques sans frais—complètement gratuit sans frais cachés ni publicités."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "Installation Zéro",
+        "desc": "Fonctionne complètement dans votre navigateur web—aucun logiciel, polices ni téléchargements requis."
+      }
+    ]
+  },
+  "specs": {
+    "engine": "Rendu de Polices Natif du Navigateur - Traitement Côté Client",
+    "limit": "Longueur de Texte Illimitée - Aucune Limite de Caractères",
+    "logic": "Aperçu en Temps Réel (Application Instantanée de Style)",
+    "privacy": "100% Côté Client (Traitement Local du Navigateur)"
+  },
+  "performanceMetrics": {
+    "title": "Spécifications Techniques",
+    "metrics": [
+      {
+        "label": "Style de Police",
+        "value": "Gothique (Style Distinctif)"
+      },
+      {
+        "label": "Longueur du Texte",
+        "value": "Caractères illimités"
+      },
+      {
+        "label": "Vitesse de Traitement",
+        "value": "Instantané (Aperçu en temps réel)"
+      },
+      {
+        "label": "Format de Sortie",
+        "value": "Texte Unicode (Prêt à copier-coller)"
+      },
+      {
+        "label": "Support de Plateformes",
+        "value": "Instagram, Facebook, Twitter, TikTok, Discord et plus encore"
+      },
+      {
+        "label": "Emplacement de Traitement",
+        "value": "100% Côté Client (JavaScript du Navigateur)"
+      },
+      {
+        "label": "Confidentialité",
+        "value": "Aucun téléchargement serveur, traitement local complet"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Comment Générer des Polices Gothiques",
+    "steps": [
+      {
+        "title": "Entrez Votre Texte",
+        "desc": "Tapez le texte que vous souhaitez convertir en style gothique dramatique dans le champ de saisie ci-dessus."
+      },
+      {
+        "title": "Choisissez le Style Gothique",
+        "desc": "Sélectionnez parmi les styles de polices gothiques blackletter classiques et prévisualisez l'apparence de votre texte dans chaque variation médiévale."
+      },
+      {
+        "title": "Copiez le Texte Gothique",
+        "desc": "Cliquez sur copier pour obtenir votre texte style gothique, puis collez-le dans des logos de groupes, titres de jeux ou contenu d'horreur."
+      }
+    ]
+  },
+  "comparison": {
+    "title": "Pourquoi Choisir Toolaze ?",
+    "toolaze": "Toolaze 💎",
+    "others": "Autres Outils",
+    "vs": "VS",
+    "smartChoice": "Choix Intelligent",
+    "otherTools": "Autres Outils",
+    "toolazeFeatures": "Génération illimitée de texte gothique, Styles blackletter classiques, Aperçu instantané, Traitement local, Aucune limite, Confidentialité complète, Gratuit pour toujours",
+    "othersFeatures": "Limites de caractères, Peu d'options gothiques, Traitement serveur, Téléchargements cloud, Préoccupations de confidentialité, Publicités, Niveaux premium"
+  },
+  "scenesTitle": "Cas d'Utilisation",
+  "scenes": [
+    {
+      "title": "Groupes de Metal et Rock",
+      "icon": "🎸",
+      "desc": "Créez des polices gothiques audacieuses pour les logos de groupes, pochettes d'albums et marchandises. Parfait pour les genres de musique metal, rock et alternative qui nécessitent une typographie puissante et dramatique."
+    },
+    {
+      "title": "Créateurs de Contenu d'Horreur",
+      "icon": "👻",
+      "desc": "Générez du texte gothique pour les affiches de films d'horreur, couvertures de livres et contenu effrayant de réseaux sociaux. Ajoutez une atmosphère sombre et mystérieuse avec une typographie gothique classique."
+    },
+    {
+      "title": "Communautés de Gaming",
+      "icon": "🎮",
+      "desc": "Utilisez des polices gothiques pour les titres de jeux, noms de personnages et logos de clans de gaming. Créez une sensation épique et de fantasy médiévale pour les RPGs et jeux d'aventure."
+    }
+  ],
+  "rating": {
+    "title": "Approuvé par des Milliers de Créateurs",
+    "rating": "4.9/5 DE PLUS DE 10K CRÉATEURS",
+    "text": "\"Le meilleur générateur de polices gothiques que j'ai trouvé. Résultats instantanés et fonctionne parfaitement sur Instagram !\" - Rejoignez des milliers d'utilisateurs qui font confiance à Toolaze pour la génération de beaux textes gothiques."
+  },
+  "faqTitle": "Questions Fréquemment Posées",
+  "faq": [
+    {
+      "q": "Les polices gothiques sont-elles les mêmes que les polices blackletter ?",
+      "a": "Oui, les polices gothiques (également appelées blackletter) se caractérisent par leur apparence ornementale et médiévale. Notre générateur crée du texte avec cette esthétique gothique classique en utilisant des caractères Unicode Mathematical Fraktur."
+    },
+    {
+      "q": "Puis-je utiliser des polices gothiques pour les logos de groupes de metal ?",
+      "a": "Absolument ! Les polices gothiques sont extrêmement populaires dans la musique metal et rock. Elles sont parfaites pour les logos de groupes, pochettes d'albums et marchandises qui nécessitent un aspect audacieux et dramatique."
+    },
+    {
+      "q": "Les polices gothiques sont-elles lisibles ?",
+      "a": "Les polices gothiques peuvent être moins lisibles que les polices modernes, surtout en petites tailles ou paragraphes longs. Elles fonctionnent mieux pour les titres, logos et texte court où le style dramatique est plus important que la lisibilité rapide."
+    },
+    {
+      "q": "Les polices gothiques fonctionneront-elles dans les applications de gaming ?",
+      "a": "Oui ! Les polices gothiques sont populaires dans les jeux de fantasy et médiévaux. Elles fonctionnent bien dans les titres de jeux, éléments d'interface utilisateur et noms de personnages, ajoutant une sensation épique et historique à votre jeu."
+    },
+    {
+      "q": "Puis-je utiliser des polices gothiques pour le contenu d'horreur ?",
+      "a": "Parfait ! Les polices gothiques sont idéales pour les affiches de films d'horreur, couvertures de livres et contenu effrayant de réseaux sociaux. Elles créent cette atmosphère sombre et mystérieuse dont le contenu d'horreur a besoin. Pour des styles traditionnels similaires, consultez notre <a href=\"/font-generator/old-english\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">générateur de polices Old English</a> ou explorez nos outils de générateur de polices."
+    }
+  ],
+  "compare": {
+    "toolaze": "Génération illimitée de texte gothique, Multiples styles élégants, Aperçu instantané en temps réel, Architecture local-first, Aucune limite de caractères, Protection complète de la confidentialité, 100% gratuit pour toujours",
+    "others": "Limites de caractères, Options de style limitées, Traitement lent du serveur, Téléchargements cloud requis, Préoccupations de confidentialité, Filigranes ou publicités, Fonctionnalités premium payantes"
+  }
+}

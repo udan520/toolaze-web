@@ -1,0 +1,191 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Generador de Fuentes en Cursiva (Gratis, Copiar y Pegar, Sin Anuncios) - Toolaze",
+    "description": "¿Cómo generar fuentes en cursiva? 1. Escribe tu texto 2. Selecciona estilo en cursiva 3. Copia y pega. Crea hermoso texto en cursiva para Instagram, Facebook y redes sociales. Gratis y Privado."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Generador de Fuentes en Cursiva",
+    "desc": "Genera hermosas fuentes en cursiva en línea de forma gratuita. Simplemente escribe tu texto a continuación para crear texto en cursiva elegante que puedas copiar y pegar en cualquier lugar."
+  },
+  "intro": {
+    "title": "¿Por qué usar un generador de fuentes en cursiva?",
+    "content": [
+      {
+        "title": "¿Qué es una fuente en cursiva?",
+        "text": "Las fuentes en cursiva usan caracteres Unicode Mathematical Italic—símbolos Unicode distintos que crean formas de letras inclinadas y enfatizadas. A diferencia del texto en cursiva con estilo CSS, estos caracteres Unicode funcionan consistentemente en todas las plataformas, incluyendo correo electrónico, documentos y entornos de texto plano. Las fuentes en cursiva se caracterizan por su efecto de énfasis, haciéndolas perfectas para citas académicas, títulos de libros, énfasis en documentos y cualquier texto que necesite destacar mientras mantiene la legibilidad. Para más estilos de script, prueba nuestro <a href=\"/font-generator/cursive\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">generador de fuentes cursivas</a> o generador de fuentes caligráficas."
+      },
+      {
+        "title": "¿Por qué generar texto en cursiva en línea?",
+        "text": "El estilo en cursiva estándar solo funciona donde se admite CSS, limitando su uso en correo electrónico, documentos de texto plano y muchas aplicaciones. Nuestro texto en cursiva usa caracteres Unicode Mathematical Italic que funcionan en todas partes—clientes de correo electrónico, procesadores de texto, artículos académicos y más. Ya sea que estés escribiendo artículos de investigación, creando títulos de libros o añadiendo énfasis a documentos, nuestra herramienta transforma cualquier texto en estilo en cursiva apropiado instantáneamente, asegurando que tu énfasis se muestre correctamente en todas las plataformas. Explora más estilos con nuestro <a href=\"/font-generator\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">generador de fuentes</a>."
+      }
+    ]
+  },
+  "features": {
+    "title": "Características Potentes de Fuentes en Cursiva",
+    "items": [
+      {
+        "icon": "ℹ️",
+        "iconType": "quality",
+        "title": "Caracteres Unicode en Cursiva",
+        "desc": "Genera texto en cursiva usando símbolos Unicode Mathematical Italic que funcionan en todas las plataformas."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Procesamiento Local Seguro",
+        "desc": "La generación de fuentes ocurre completamente en tu navegador—tu texto permanece privado y seguro."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Conversión Instantánea a Cursiva",
+        "desc": "Ve tu texto transformarse a estilo en cursiva inmediatamente con vista previa en vivo actualizándose en tiempo real."
+      },
+      {
+        "icon": "📋",
+        "iconType": "batch",
+        "title": "Copia Simple",
+        "desc": "Copia tu texto en cursiva instantáneamente y pégalo en documentos, correos electrónicos o artículos académicos."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Completamente Gratis",
+        "desc": "Generación ilimitada de fuentes en cursiva sin costo—gratis para siempre sin cargos ocultos."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "Sin Descargas",
+        "desc": "Opera completamente en tu navegador—no se requiere instalación de software ni descarga de fuentes."
+      }
+    ]
+  },
+  "specs": {
+    "engine": "Renderizado de Fuentes Nativo del Navegador - Procesamiento del Lado del Cliente",
+    "limit": "Longitud de Texto Ilimitada - Sin Límites de Caracteres",
+    "logic": "Vista Previa en Tiempo Real (Aplicación Instantánea de Estilo)",
+    "privacy": "100% del Lado del Cliente (Procesamiento Local del Navegador)"
+  },
+  "performanceMetrics": {
+    "title": "Especificaciones Técnicas",
+    "metrics": [
+      {
+        "label": "Estilo de Fuente",
+        "value": "Cursiva (Estilo Distintivo)"
+      },
+      {
+        "label": "Longitud del Texto",
+        "value": "Caracteres ilimitados"
+      },
+      {
+        "label": "Velocidad de Procesamiento",
+        "value": "Instantáneo (Vista previa en tiempo real)"
+      },
+      {
+        "label": "Formato de Salida",
+        "value": "Texto Unicode (Listo para copiar y pegar)"
+      },
+      {
+        "label": "Soporte de Plataformas",
+        "value": "Instagram, Facebook, Twitter, TikTok, Discord y más"
+      },
+      {
+        "label": "Ubicación de Procesamiento",
+        "value": "100% del Lado del Cliente (JavaScript del Navegador)"
+      },
+      {
+        "label": "Privacidad",
+        "value": "Sin subidas al servidor, procesamiento local completo"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Cómo Generar Fuentes en Cursiva",
+    "steps": [
+      {
+        "title": "Ingresa Tu Texto",
+        "desc": "Escribe el texto que deseas convertir en estilo en cursiva en el campo de entrada arriba."
+      },
+      {
+        "title": "Elige Estilo en Cursiva",
+        "desc": "Selecciona entre estilos de fuentes Unicode en cursiva y previsualiza cómo se ve tu texto con esa apariencia inclinada y enfatizada."
+      },
+      {
+        "title": "Copia Texto en Cursiva",
+        "desc": "Haz clic en copiar para obtener tu texto en cursiva, luego pégalo en documentos, correos electrónicos o artículos académicos para énfasis."
+      }
+    ]
+  },
+  "comparison": {
+    "title": "¿Por qué elegir Toolaze?",
+    "toolaze": "Toolaze 💎",
+    "others": "Otras Herramientas",
+    "vs": "VS",
+    "smartChoice": "Elección Inteligente",
+    "otherTools": "Otras Herramientas",
+    "toolazeFeatures": "Generación ilimitada de texto en cursiva, Caracteres Unicode en cursiva, Vista previa en tiempo real, Procesamiento del navegador, Sin límites, Privacidad total, 100% gratis",
+    "othersFeatures": "Restricciones de texto, Estilos en cursiva limitados, Servidores lentos, Subidas a la nube, Problemas de privacidad, Marcas de agua, Suscripciones de pago"
+  },
+  "scenesTitle": "Casos de Uso",
+  "scenes": [
+    {
+      "title": "Escritores Académicos",
+      "icon": "📚",
+      "desc": "Crea fuentes en cursiva para citas, énfasis en artículos académicos y publicaciones académicas. Sigue convenciones tipográficas apropiadas con texto en cursiva elegante."
+    },
+    {
+      "title": "Editores de Libros",
+      "icon": "📖",
+      "desc": "Genera texto en cursiva para títulos de libros, encabezados de capítulos y contenido literario. Añade énfasis e interés visual a tus publicaciones con tipografía en cursiva."
+    },
+    {
+      "title": "Diseñadores Web",
+      "icon": "🌐",
+      "desc": "Usa fuentes en cursiva para énfasis en sitios web, citas y texto de llamada a la acción. Crea jerarquía visual y llama la atención a elementos de contenido importantes."
+    }
+  ],
+  "rating": {
+    "title": "Confiado por Miles de Creadores",
+    "rating": "4.9/5 DE MÁS DE 10K CREADORES",
+    "text": "\"El mejor generador de fuentes en cursiva que he encontrado. ¡Resultados instantáneos y funciona perfectamente en Instagram!\" - Únete a miles de usuarios que confían en Toolaze para la generación de hermoso texto en cursiva."
+  },
+  "faqTitle": "Preguntas Frecuentes",
+  "faq": [
+    {
+      "q": "¿Cuál es la diferencia entre fuentes en cursiva y texto inclinado?",
+      "a": "Nuestro cursiva usa caracteres Unicode Mathematical Italic, que son símbolos distintos, no solo texto con estilo. Esto asegura una apariencia en cursiva consistente en todas las plataformas, incluso donde CSS no está disponible."
+    },
+    {
+      "q": "¿Puedo usar fuentes en cursiva para énfasis en documentos?",
+      "a": "¡Sí! Las fuentes en cursiva son perfectas para enfatizar texto importante en documentos, artículos y publicaciones. Funcionan muy bien en procesadores de texto, PDFs y contenido web."
+    },
+    {
+      "q": "¿Son buenas las fuentes en cursiva para títulos de libros?",
+      "a": "¡Absolutamente! Las fuentes en cursiva se usan comúnmente para títulos de libros, especialmente en contextos académicos y literarios. Añaden énfasis e interés visual a los títulos."
+    },
+    {
+      "q": "¿Funcionarán las fuentes en cursiva en correo electrónico?",
+      "a": "Sí, los caracteres Unicode en cursiva funcionan en la mayoría de los clientes de correo electrónico. Son perfectas para añadir énfasis a información importante en tus correos electrónicos."
+    },
+    {
+      "q": "¿Puedo usar fuentes en cursiva para citas?",
+      "a": "¡Sí! Las fuentes en cursiva son estándar para citas en escritura académica. Funcionan bien en artículos de investigación, artículos y publicaciones académicas. Para más estilos de script, prueba nuestro <a href=\"/font-generator/cursive\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">generador de fuentes cursivas</a> o explora nuestra colección de generador de fuentes."
+    }
+  ],
+  "compare": {
+    "toolaze": "Generación ilimitada de texto en cursiva, Múltiples estilos elegantes, Vista previa instantánea en tiempo real, Arquitectura local primero, Sin límites de caracteres, Protección completa de privacidad, 100% gratis para siempre",
+    "others": "Límites de caracteres, Opciones de estilo limitadas, Procesamiento lento del servidor, Subidas a la nube requeridas, Preocupaciones de privacidad, Marcas de agua o anuncios, Funciones premium de pago"
+  }
+}

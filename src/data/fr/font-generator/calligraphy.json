@@ -1,0 +1,191 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Générateur de Polices Calligraphiques (Gratuit, Copier-Coller et Sans Publicité) - Toolaze",
+    "description": "Comment générer des polices calligraphiques ? 1. Tapez votre texte 2. Sélectionnez le style calligraphique 3. Copiez et collez. Créez de beaux textes calligraphiques pour Instagram, Facebook et les réseaux sociaux. Gratuit et Privé."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Générateur de Polices Calligraphiques",
+    "desc": "Générez de belles polices calligraphiques en ligne gratuitement. Tapez simplement votre texte ci-dessous pour créer un texte calligraphique élégant que vous pouvez copier et coller n'importe où."
+  },
+  "intro": {
+    "title": "Pourquoi utiliser un Générateur de Polices Calligraphiques ?",
+    "content": [
+      {
+        "title": "Qu'est-ce qu'une Police Calligraphique ?",
+        "text": "Les polices calligraphiques présentent des formes de lettres élégantes et écrites à la main avec des ornements décoratifs et des éléments ornementaux. Ces typographies sophistiquées imitent l'écriture traditionnelle, créant une sensation d'élégance intemporelle et d'artisanat. Les polices calligraphiques se caractérisent par leurs courbes élégantes, détails décoratifs et apparence formelle, les rendant parfaites pour les invitations de mariage, certificats, prix et projets qui nécessitent une esthétique prestigieuse et faite à la main. Pour des styles élégants similaires, explorez notre <a href=\"/font-generator/cursive\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">générateur de polices cursives</a> ou générateur de polices fantaisie."
+      },
+      {
+        "title": "Pourquoi générer du texte calligraphique en ligne ?",
+        "text": "La calligraphie traditionnelle nécessite des années de pratique et des outils coûteux. Les services professionnels de calligraphie peuvent coûter des centaines de dollars pour un seul projet. Notre générateur de texte calligraphique fournit un accès instantané à des polices élégantes style écrit à la main qui capturent cette esthétique calligraphique classique. Que vous conceviez de la papeterie de mariage, créiez des certificats ou développiez des matériaux de marque artisanaux, notre outil transforme n'importe quel texte en style calligraphique magnifique instantanément—apportant cette élégance intemporelle à vos projets sans le coût ou la complexité. Trouvez plus de polices élégantes avec notre <a href=\"/font-generator\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">générateur de polices</a>."
+      }
+    ]
+  },
+  "features": {
+    "title": "Fonctionnalités Puissantes des Polices Calligraphiques",
+    "items": [
+      {
+        "icon": "🖋️",
+        "iconType": "quality",
+        "title": "Styles Écrits à la Main Élégants",
+        "desc": "Accédez à de belles polices calligraphiques avec des ornements décoratifs et des éléments ornementaux."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Génération de Polices Privée",
+        "desc": "Toute la génération de polices calligraphiques se fait localement—votre texte ne quitte jamais votre appareil."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Texte Calligraphique Immédiat",
+        "desc": "Transformez votre texte en style calligraphique instantanément avec un aperçu en temps réel pendant que vous tapez."
+      },
+      {
+        "icon": "📋",
+        "iconType": "batch",
+        "title": "Copie Texte Calligraphique",
+        "desc": "Copiez votre texte calligraphique instantanément et collez-le dans des invitations, certificats ou documents formels."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Polices Calligraphiques Gratuites",
+        "desc": "Génération illimitée de polices calligraphiques complètement gratuite—aucun frais, aucun abonnement, aucune publicité."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "Basé sur Navigateur",
+        "desc": "Fonctionne complètement dans votre navigateur—aucun logiciel ni téléchargement de polices calligraphiques requis."
+      }
+    ]
+  },
+  "specs": {
+    "engine": "Rendu de Polices Natif du Navigateur - Traitement Côté Client",
+    "limit": "Longueur de Texte Illimitée - Aucune Limite de Caractères",
+    "logic": "Aperçu en Temps Réel (Application Instantanée de Style)",
+    "privacy": "100% Côté Client (Traitement Local du Navigateur)"
+  },
+  "performanceMetrics": {
+    "title": "Spécifications Techniques",
+    "metrics": [
+      {
+        "label": "Style de Police",
+        "value": "Calligraphique (Style Distinctif)"
+      },
+      {
+        "label": "Longueur du Texte",
+        "value": "Caractères illimités"
+      },
+      {
+        "label": "Vitesse de Traitement",
+        "value": "Instantané (Aperçu en temps réel)"
+      },
+      {
+        "label": "Format de Sortie",
+        "value": "Texte Unicode (Prêt à copier-coller)"
+      },
+      {
+        "label": "Support de Plateformes",
+        "value": "Instagram, Facebook, Twitter, TikTok, Discord et plus encore"
+      },
+      {
+        "label": "Emplacement de Traitement",
+        "value": "100% Côté Client (JavaScript du Navigateur)"
+      },
+      {
+        "label": "Confidentialité",
+        "value": "Aucun téléchargement serveur, traitement local complet"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Comment Générer des Polices Calligraphiques",
+    "steps": [
+      {
+        "title": "Tapez Votre Texte",
+        "desc": "Entrez le texte que vous souhaitez transformer en style calligraphique élégant dans le champ de saisie ci-dessus."
+      },
+      {
+        "title": "Sélectionnez le Style Calligraphique",
+        "desc": "Choisissez parmi de beaux styles de polices calligraphiques avec des ornements décoratifs et prévisualisez l'apparence de votre texte."
+      },
+      {
+        "title": "Copiez le Texte Calligraphique",
+        "desc": "Cliquez sur le bouton copier pour copier votre texte calligraphique, puis collez-le dans des invitations de mariage, certificats ou documents formels."
+      }
+    ]
+  },
+  "comparison": {
+    "title": "Pourquoi Choisir Toolaze ?",
+    "toolaze": "Toolaze 💎",
+    "others": "Autres Outils",
+    "vs": "VS",
+    "smartChoice": "Choix Intelligent",
+    "otherTools": "Autres Outils",
+    "toolazeFeatures": "Génération illimitée de texte calligraphique, Styles écrits à la main élégants, Aperçu instantané, Traitement local, Aucune limite, Confidentialité complète, Gratuit pour toujours",
+    "othersFeatures": "Limites de caractères, Peu d'options calligraphiques, Retards du serveur, Téléchargements requis, Préoccupations de confidentialité, Publicités, Niveaux premium"
+  },
+  "scenesTitle": "Cas d'Utilisation",
+  "scenes": [
+    {
+      "title": "Designers de Papeterie de Mariage",
+      "icon": "💌",
+      "desc": "Créez des polices calligraphiques élégantes pour les invitations de mariage, cartes de place et programmes de cérémonie. Ajoutez une touche intemporelle et sophistiquée aux événements spéciaux."
+    },
+    {
+      "title": "Designers de Certificats",
+      "icon": "🏆",
+      "desc": "Générez du texte calligraphique pour les certificats, prix et diplômes. Créez des documents formels et prestigieux avec de belles polices calligraphiques style écrit à la main."
+    },
+    {
+      "title": "Marques Artisanales",
+      "icon": "🖼️",
+      "desc": "Utilisez des polices calligraphiques pour les étiquettes de produits artisanaux, signalisation de foires artisanales et produits faits à la main. Ajoutez une sensation personnelle et faite à la main à votre marque."
+    }
+  ],
+  "rating": {
+    "title": "Approuvé par des Milliers de Créateurs",
+    "rating": "4.9/5 DE PLUS DE 10K CRÉATEURS",
+    "text": "\"Le meilleur générateur de polices calligraphiques que j'ai trouvé. Résultats instantanés et fonctionne parfaitement sur Instagram !\" - Rejoignez des milliers d'utilisateurs qui font confiance à Toolaze pour la génération de beaux textes calligraphiques."
+  },
+  "faqTitle": "Questions Fréquemment Posées",
+  "faq": [
+    {
+      "q": "Les polices calligraphiques sont-elles les mêmes que les polices cursives ?",
+      "a": "Bien que similaires, les polices calligraphiques ont généralement plus d'ornements décoratifs et d'éléments ornementaux que les cursives simples. Notre générateur calligraphique se concentre sur des polices élégantes style écrit à la main avec cette esthétique calligraphique classique."
+    },
+    {
+      "q": "Puis-je utiliser des polices calligraphiques pour les invitations de mariage ?",
+      "a": "Oui ! Les polices calligraphiques sont parfaites pour les invitations de mariage, cartes de place et programmes de cérémonie. Elles ajoutent cette touche intemporelle et sophistiquée aux événements spéciaux."
+    },
+    {
+      "q": "Les polices calligraphiques sont-elles lisibles ?",
+      "a": "Les polices calligraphiques privilégient l'élégance sur la lisibilité rapide. Elles fonctionnent mieux pour le texte court comme les noms, titres et invitations où le style décoratif est plus important que la lecture rapide."
+    },
+    {
+      "q": "Les polices calligraphiques fonctionneront-elles en impression ?",
+      "a": "Oui ! Les polices calligraphiques fonctionnent magnifiquement dans les matériaux imprimés. Elles sont idéales pour les invitations formelles, certificats et documents imprimés de haute qualité."
+    },
+    {
+      "q": "Puis-je utiliser des polices calligraphiques pour les certificats ?",
+      "a": "Absolument ! Les polices calligraphiques sont parfaites pour les certificats, prix et diplômes. Elles créent cette apparence formelle et prestigieuse dont les documents officiels ont besoin. Pour des styles élégants similaires, consultez notre <a href=\"/font-generator/cursive\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">générateur de polices cursives</a> ou générateur de polices fantaisie, ou explorez nos outils de générateur de polices."
+    }
+  ],
+  "compare": {
+    "toolaze": "Génération illimitée de texte calligraphique, Multiples styles élégants, Aperçu instantané en temps réel, Architecture local-first, Aucune limite de caractères, Protection complète de la confidentialité, 100% gratuit pour toujours",
+    "others": "Limites de caractères, Options de style limitées, Traitement lent du serveur, Téléchargements cloud requis, Préoccupations de confidentialité, Filigranes ou publicités, Fonctionnalités premium payantes"
+  }
+}

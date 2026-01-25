@@ -1,0 +1,191 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Generador de Fuentes Góticas (Gratis, Copiar y Pegar, Sin Anuncios) - Toolaze",
+    "description": "¿Cómo generar fuentes góticas? 1. Escribe tu texto 2. Selecciona estilo gótico 3. Copia y pega. Crea hermoso texto gótico para Instagram, Facebook y redes sociales. Gratis y Privado."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Generador de Fuentes Góticas",
+    "desc": "Genera hermosas fuentes góticas en línea de forma gratuita. Simplemente escribe tu texto a continuación para crear texto gótico elegante que puedas copiar y pegar en cualquier lugar."
+  },
+  "intro": {
+    "title": "¿Por qué usar un generador de fuentes góticas?",
+    "content": [
+      {
+        "title": "¿Qué es una fuente gótica?",
+        "text": "Las fuentes góticas, también conocidas como blackletter, presentan formas de letras ornamentales y medievales con trazos dramáticos y angulares. Estas tipografías históricas se originaron en la Europa medieval y se caracterizan por su apariencia densa y decorativa con detalles intrincados. Las fuentes góticas crean una presencia poderosa y autoritaria, haciéndolas ideales para logotipos de bandas de metal, contenido de terror, títulos de juegos y proyectos que necesitan una estética audaz y dramática. Para estilos tradicionales similares, explora nuestro <a href=\"/font-generator/old-english\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">generador de fuentes Old English</a> o generador de fuentes de tatuaje."
+      },
+      {
+        "title": "¿Por qué generar texto gótico en línea?",
+        "text": "La tipografía gótica tradicional requiere conocimiento especializado de formas de letras históricas y software de diseño costoso. Nuestro generador de texto gótico proporciona acceso instantáneo a estilos blackletter clásicos usando caracteres Unicode Mathematical Fraktur. Ya sea que estés diseñando logotipos de bandas de metal, creando carteles de películas de terror o desarrollando juegos de fantasía medieval, nuestra herramienta transforma cualquier texto en estilo gótico de apariencia auténtica en segundos—perfecto para proyectos que necesitan esa estética oscura, poderosa e histórica. Explora más estilos de fuentes con nuestra colección de <a href=\"/font-generator\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">generador de fuentes</a>."
+      }
+    ]
+  },
+  "features": {
+    "title": "Características Potentes de Fuentes Góticas",
+    "items": [
+      {
+        "icon": "🖤",
+        "iconType": "quality",
+        "title": "Estilos Blackletter Clásicos",
+        "desc": "Genera texto gótico auténtico con estilos blackletter medievales que crean efectos dramáticos y poderosos."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Solo Procesamiento del Dispositivo",
+        "desc": "Toda la generación de fuentes góticas ocurre localmente—tu texto permanece en tu dispositivo, nunca se transmite a ningún lugar."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Vista Previa de Estilo en Vivo",
+        "desc": "Observa tu texto transformarse en estilo gótico en tiempo real mientras escribes, con actualizaciones visuales instantáneas."
+      },
+      {
+        "icon": "📋",
+        "iconType": "batch",
+        "title": "Copia Instantánea",
+        "desc": "Copia tu texto gótico inmediatamente y pégalo en logotipos de bandas, títulos de juegos o contenido de terror."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Sin Costo Nunca",
+        "desc": "Generación ilimitada de fuentes góticas sin cargo—completamente gratis sin tarifas ocultas ni anuncios."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "Instalación Cero",
+        "desc": "Funciona completamente en tu navegador web—no se requiere software, fuentes ni descargas."
+      }
+    ]
+  },
+  "specs": {
+    "engine": "Renderizado de Fuentes Nativo del Navegador - Procesamiento del Lado del Cliente",
+    "limit": "Longitud de Texto Ilimitada - Sin Límites de Caracteres",
+    "logic": "Vista Previa en Tiempo Real (Aplicación Instantánea de Estilo)",
+    "privacy": "100% del Lado del Cliente (Procesamiento Local del Navegador)"
+  },
+  "performanceMetrics": {
+    "title": "Especificaciones Técnicas",
+    "metrics": [
+      {
+        "label": "Estilo de Fuente",
+        "value": "Gótica (Estilo Distintivo)"
+      },
+      {
+        "label": "Longitud del Texto",
+        "value": "Caracteres ilimitados"
+      },
+      {
+        "label": "Velocidad de Procesamiento",
+        "value": "Instantáneo (Vista previa en tiempo real)"
+      },
+      {
+        "label": "Formato de Salida",
+        "value": "Texto Unicode (Listo para copiar y pegar)"
+      },
+      {
+        "label": "Soporte de Plataformas",
+        "value": "Instagram, Facebook, Twitter, TikTok, Discord y más"
+      },
+      {
+        "label": "Ubicación de Procesamiento",
+        "value": "100% del Lado del Cliente (JavaScript del Navegador)"
+      },
+      {
+        "label": "Privacidad",
+        "value": "Sin subidas al servidor, procesamiento local completo"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Cómo Generar Fuentes Góticas",
+    "steps": [
+      {
+        "title": "Ingresa Tu Texto",
+        "desc": "Escribe el texto que deseas convertir en estilo gótico dramático en el campo de entrada arriba."
+      },
+      {
+        "title": "Elige Estilo Gótico",
+        "desc": "Selecciona entre estilos de fuentes góticas blackletter clásicas y previsualiza cómo se ve tu texto en cada variación medieval."
+      },
+      {
+        "title": "Copia Texto Gótico",
+        "desc": "Haz clic en copiar para obtener tu texto estilo gótico, luego pégalo en logotipos de bandas, títulos de juegos o contenido de terror."
+      }
+    ]
+  },
+  "comparison": {
+    "title": "¿Por qué elegir Toolaze?",
+    "toolaze": "Toolaze 💎",
+    "others": "Otras Herramientas",
+    "vs": "VS",
+    "smartChoice": "Elección Inteligente",
+    "otherTools": "Otras Herramientas",
+    "toolazeFeatures": "Generación ilimitada de texto gótico, Estilos blackletter clásicos, Vista previa instantánea, Procesamiento local, Sin límites, Privacidad completa, Gratis para siempre",
+    "othersFeatures": "Límites de caracteres, Pocas opciones góticas, Procesamiento del servidor, Subidas a la nube, Preocupaciones de privacidad, Anuncios, Niveles premium"
+  },
+  "scenesTitle": "Casos de Uso",
+  "scenes": [
+    {
+      "title": "Bandas de Metal y Rock",
+      "icon": "🎸",
+      "desc": "Crea fuentes góticas audaces para logotipos de bandas, portadas de álbumes y mercancía. Perfecto para géneros de música metal, rock y alternativa que necesitan tipografía poderosa y dramática."
+    },
+    {
+      "title": "Creadores de Contenido de Terror",
+      "icon": "👻",
+      "desc": "Genera texto gótico para carteles de películas de terror, portadas de libros y contenido espeluznante de redes sociales. Añade una atmósfera oscura y misteriosa con tipografía gótica clásica."
+    },
+    {
+      "title": "Comunidades de Gaming",
+      "icon": "🎮",
+      "desc": "Usa fuentes góticas para títulos de juegos, nombres de personajes y logotipos de clanes de gaming. Crea una sensación épica y de fantasía medieval para RPGs y juegos de aventura."
+    }
+  ],
+  "rating": {
+    "title": "Confiado por Miles de Creadores",
+    "rating": "4.9/5 DE MÁS DE 10K CREADORES",
+    "text": "\"El mejor generador de fuentes góticas que he encontrado. ¡Resultados instantáneos y funciona perfectamente en Instagram!\" - Únete a miles de usuarios que confían en Toolaze para la generación de hermoso texto gótico."
+  },
+  "faqTitle": "Preguntas Frecuentes",
+  "faq": [
+    {
+      "q": "¿Las fuentes góticas son lo mismo que las fuentes blackletter?",
+      "a": "Sí, las fuentes góticas (también llamadas blackletter) se caracterizan por su apariencia ornamentada y medieval. Nuestro generador crea texto con esa estética gótica clásica usando caracteres Unicode Mathematical Fraktur."
+    },
+    {
+      "q": "¿Puedo usar fuentes góticas para logotipos de bandas de metal?",
+      "a": "¡Absolutamente! Las fuentes góticas son extremadamente populares en música metal y rock. Son perfectas para logotipos de bandas, portadas de álbumes y mercancía que necesita un aspecto audaz y dramático."
+    },
+    {
+      "q": "¿Son legibles las fuentes góticas?",
+      "a": "Las fuentes góticas pueden ser menos legibles que las fuentes modernas, especialmente en tamaños pequeños o párrafos largos. Funcionan mejor para titulares, logotipos y texto corto donde el estilo dramático es más importante que la legibilidad rápida."
+    },
+    {
+      "q": "¿Funcionarán las fuentes góticas en aplicaciones de gaming?",
+      "a": "¡Sí! Las fuentes góticas son populares en juegos de fantasía y medievales. Funcionan bien en títulos de juegos, elementos de UI y nombres de personajes, añadiendo una sensación épica e histórica a tu juego."
+    },
+    {
+      "q": "¿Puedo usar fuentes góticas para contenido de terror?",
+      "a": "¡Perfecto! Las fuentes góticas son ideales para carteles de películas de terror, portadas de libros y contenido espeluznante de redes sociales. Crean esa atmósfera oscura y misteriosa que el contenido de terror necesita. Para estilos tradicionales similares, consulta nuestro <a href=\"/font-generator/old-english\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">generador de fuentes Old English</a> o explora nuestras herramientas de generador de fuentes."
+    }
+  ],
+  "compare": {
+    "toolaze": "Generación ilimitada de texto gótico, Múltiples estilos elegantes, Vista previa instantánea en tiempo real, Arquitectura local primero, Sin límites de caracteres, Protección completa de privacidad, 100% gratis para siempre",
+    "others": "Límites de caracteres, Opciones de estilo limitadas, Procesamiento lento del servidor, Subidas a la nube requeridas, Preocupaciones de privacidad, Marcas de agua o anuncios, Funciones premium de pago"
+  }
+}

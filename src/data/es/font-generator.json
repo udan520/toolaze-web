@@ -1,0 +1,192 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Generador de Fuentes Gratis - Crea Fuentes Personalizadas en Línea | Toolaze",
+    "description": "Genera fuentes personalizadas en línea de forma gratuita. Crea fuentes cursivas, decorativas, en negrita, itálicas, góticas y de tatuaje. Copia y pega instantáneamente. No se requiere registro."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Generador de Fuentes <span class=\"text-gradient\">Gratis</span>",
+    "desc": "Genera fuentes personalizadas en línea de forma gratuita. Crea fuentes cursivas, decorativas, en negrita, itálicas, góticas y de tatuaje. Copia y pega instantáneamente. No se requiere registro."
+  },
+  "intro": {
+    "title": "¿Por qué usar el Generador de Fuentes de Toolaze?",
+    "content": [
+      {
+        "title": "¿Qué es un Generador de Fuentes?",
+        "text": "Un generador de fuentes es una herramienta en línea que transforma texto plano en texto con estilo usando caracteres Unicode. Te permite crear estilos de texto hermosos y distintivos sin instalar fuentes o usar software de diseño. Los generadores de fuentes son perfectos para publicaciones en redes sociales, proyectos de diseño y cualquier lugar donde quieras añadir estilo visual a tu texto. Prueba nuestro popular <a href=\"/font-generator/cursive\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">generador de fuentes cursivas</a>, <a href=\"/font-generator/fancy\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">generador de fuentes decorativas</a>, o generador de fuentes en negrita para comenzar."
+      },
+      {
+        "title": "¿Por qué generar fuentes en línea?",
+        "text": "Crear texto con estilo manualmente requiere software de diseño, instalación de fuentes y conocimiento técnico. Nuestro generador de fuentes te permite transformar instantáneamente cualquier texto en múltiples estilos hermosos—cursivas, decorativas, en negrita, itálicas, góticas, de tatuaje y más—sin descargar software o instalar fuentes. Perfecto para usuarios de redes sociales que quieren texto distintivo para biografías de Instagram, publicaciones de Facebook o subtítulos de TikTok, así como para diseñadores que necesitan texto con estilo rápido para maquetas y presentaciones. Explora nuestro <a href=\"/font-generator/tattoo\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">generador de fuentes de tatuaje</a>, generador de fuentes de Instagram, o generador de fuentes góticas para estilos específicos."
+      }
+    ]
+  },
+  "features": {
+    "title": "Características Potentes del Generador de Fuentes",
+    "items": [
+      {
+        "icon": "🎨",
+        "iconType": "quality",
+        "title": "Múltiples Estilos de Fuentes",
+        "desc": "Genera texto hermoso con múltiples estilos de fuentes incluyendo cursivas, decorativas, en negrita, itálicas, góticas, de tatuaje, caligráficas, old english, 3D y más."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Protección Completa de Privacidad",
+        "desc": "Toda la generación de fuentes ocurre localmente en tu navegador—tu texto nunca sale de tu dispositivo, garantizando seguridad absoluta de datos."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Generación Instantánea",
+        "desc": "Transforma tu texto en fuentes con estilo instantáneamente con vista previa en tiempo real—sin esperas, sin retrasos."
+      },
+      {
+        "icon": "📋",
+        "iconType": "batch",
+        "title": "Copia y Pega Fácil",
+        "desc": "Copia tu texto con estilo con un clic y pégalo directamente en Instagram, Facebook, Twitter, TikTok, Discord o cualquier plataforma."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Cero Costo Para Siempre",
+        "desc": "Disfruta de generación ilimitada de fuentes completamente gratis—sin suscripciones, sin tarifas ocultas, sin anuncios nunca."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "No Se Necesita Instalación",
+        "desc": "Todo funciona directamente en tu navegador web usando tecnología del lado del cliente—no se requieren descargas de software o instalaciones de fuentes."
+      }
+    ]
+  },
+  "specs": {
+    "engine": "Renderizado de Fuentes Nativo del Navegador - Procesamiento del Lado del Cliente",
+    "limit": "Longitud de Texto Ilimitada - Sin Límites de Caracteres",
+    "logic": "Vista Previa en Tiempo Real (Aplicación Instantánea de Estilo)",
+    "privacy": "100% del Lado del Cliente (Procesamiento Local del Navegador)"
+  },
+  "performanceMetrics": {
+    "title": "Especificaciones Técnicas",
+    "metrics": [
+      {
+        "label": "Estilos de Fuentes",
+        "value": "Cursivas, Decorativas, En Negrita, Itálicas, Góticas, De Tatuaje, Caligráficas, Old English, 3D y más"
+      },
+      {
+        "label": "Longitud del Texto",
+        "value": "Caracteres ilimitados"
+      },
+      {
+        "label": "Velocidad de Procesamiento",
+        "value": "Instantáneo (Vista previa en tiempo real)"
+      },
+      {
+        "label": "Formato de Salida",
+        "value": "Texto Unicode (Listo para copiar y pegar)"
+      },
+      {
+        "label": "Soporte de Plataformas",
+        "value": "Instagram, Facebook, Twitter, TikTok, Discord, WhatsApp y más"
+      },
+      {
+        "label": "Ubicación de Procesamiento",
+        "value": "100% del Lado del Cliente (JavaScript del Navegador)"
+      },
+      {
+        "label": "Privacidad",
+        "value": "Sin subidas al servidor, procesamiento local completo"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Cómo Usar el Generador de Fuentes de Toolaze",
+    "steps": [
+      {
+        "title": "Escribe Tu Texto",
+        "desc": "Ingresa el texto que deseas convertir en un estilo de fuente personalizado en el campo de entrada arriba."
+      },
+      {
+        "title": "Elige Estilo de Fuente",
+        "desc": "Selecciona entre múltiples estilos de fuentes incluyendo cursivas, decorativas, en negrita, itálicas, góticas, de tatuaje y más. Previsualiza tu texto en tiempo real para ver cómo se ve."
+      },
+      {
+        "title": "Copia y Pega",
+        "desc": "Haz clic en el botón de copiar para copiar tu texto con estilo, luego pégalo en cualquier lugar—redes sociales, documentos o herramientas de diseño."
+      }
+    ]
+  },
+  "comparison": {
+    "title": "¿Por qué elegir Toolaze?",
+    "toolaze": "Toolaze 💎",
+    "others": "Otras Herramientas",
+    "vs": "VS",
+    "smartChoice": "Elección Inteligente",
+    "otherTools": "Otras Herramientas",
+    "toolazeFeatures": "Longitud de texto ilimitada, Múltiples estilos de fuentes, Vista previa instantánea, Generación en tiempo real, 100% procesamiento local, Sin subidas, Gratis para siempre",
+    "othersFeatures": "Límites de caracteres, Estilos limitados, Procesamiento lento, Subidas al servidor requeridas, Colas en la nube, Preocupaciones de privacidad, Actualizaciones de pago"
+  },
+  "scenesTitle": "Casos de Uso",
+  "scenes": [
+    {
+      "title": "Para Usuarios de Redes Sociales",
+      "icon": "📱",
+      "desc": "Crea fuentes llamativas para publicaciones de Instagram, Facebook, Twitter y TikTok. Destaca con texto con estilo personalizado que coincida con tu marca."
+    },
+    {
+      "title": "Para Diseñadores",
+      "icon": "🎨",
+      "desc": "Genera fuentes para proyectos de diseño, logotipos y materiales de marca. Previsualiza diferentes estilos instantáneamente antes de finalizar tu diseño."
+    },
+    {
+      "title": "Para Creadores de Contenido",
+      "icon": "💼",
+      "desc": "Mejora tu contenido con fuentes personalizadas para miniaturas de YouTube, publicaciones de blog y materiales de marketing. Copia y pega en cualquier lugar."
+    }
+  ],
+  "rating": {
+    "title": "Confiado por Miles de Creadores",
+    "rating": "4.9/5 DE MÁS DE 10K CREADORES",
+    "text": "\"El mejor generador de fuentes que he encontrado. ¡Resultados instantáneos y funciona perfectamente en Instagram!\" - Únete a miles de usuarios que confían en Toolaze para la generación de hermosas fuentes."
+  },
+  "faqTitle": "Preguntas Frecuentes",
+  "faq": [
+    {
+      "q": "¿Qué estilos de fuentes están disponibles?",
+      "a": "Toolaze admite múltiples estilos de fuentes incluyendo <a href=\"/font-generator/cursive\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">generador de fuentes cursivas</a>, <a href=\"/font-generator/fancy\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">generador de fuentes decorativas</a>, en negrita, itálicas, góticas, de tatuaje, caligráficas, old english, 3D y muchos más. Puedes previsualizar todos los estilos disponibles en tiempo real."
+    },
+    {
+      "q": "¿Este generador de fuentes es realmente gratis?",
+      "a": "¡Sí! Toolaze es 100% gratis sin anuncios, sin registro y sin tarifas ocultas. Toda la generación de fuentes ocurre en tu navegador."
+    },
+    {
+      "q": "¿Puedo usar estas fuentes en redes sociales?",
+      "a": "Sí, puedes copiar y pegar las fuentes generadas en Instagram, Facebook, Twitter, TikTok, Discord y otras plataformas que admiten caracteres Unicode. Para fuentes específicas de plataforma, prueba nuestro <a href=\"/font-generator/instagram\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">generador de fuentes de Instagram</a> o <a href=\"/font-generator/discord\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">generador de fuentes de Discord</a>."
+    },
+    {
+      "q": "¿Se suben mis textos a un servidor?",
+      "a": "¡No! Toda la generación de fuentes ocurre localmente en tu navegador usando JavaScript. Tu texto nunca sale de tu dispositivo, garantizando privacidad completa."
+    },
+    {
+      "q": "¿Puedo descargar archivos de fuentes?",
+      "a": "Toolaze genera texto con estilo que puedes copiar y pegar. No proporcionamos archivos de fuentes descargables (.ttf, .otf), pero puedes usar el texto generado en cualquier lugar."
+    },
+    {
+      "q": "¿Hay un límite de caracteres?",
+      "a": "No, no hay límites de caracteres. Puedes generar texto con estilo para oraciones, párrafos o incluso documentos completos. El generador procesa tu texto instantáneamente independientemente de la longitud."
+    }
+  ],
+  "moreTools": "Más Herramientas de Generador de Fuentes"
+}
