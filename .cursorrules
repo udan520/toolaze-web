@@ -137,3 +137,11 @@ See 'docs/SEO_MASTER_LAYOUT.md' section 3 for the exact breadcrumb structure.
 - **Implementation**: In `src/app/[locale]/[tool]/[slug]/page.tsx`, check if `content` is null after calling `getSeoContent()`. If null and the tool is `font-generator` and locale is not `en`, redirect to the English version using `redirect('/font-generator/{slug}')`
 - **Why**: This ensures users always see content (even if in English) rather than a 404 error, improving user experience and SEO
 - **Example**: `/ko/font-generator/cursive` → redirects to `/font-generator/cursive` (English version)
+
+**SITEMAP UPDATE RULE**: MANDATORY - Before committing to git, ALWAYS verify and update the sitemap if needed:
+- **Check sitemap.ts**: Ensure `src/app/sitemap.ts` correctly reflects all supported languages and tools
+- **Font Generator support**: Currently supports `en`, `de`, `ja`, `es`, `fr` for font-generator (both L2 and L3 pages)
+- **Verify getAllTools**: Ensure `src/lib/seo-loader.ts` `getAllTools()` function correctly filters font-generator by supported locales
+- **Test sitemap**: After changes, verify sitemap includes all expected URLs by checking `https://toolaze.com/sitemap.xml` or running `node scripts/verify-sitemap.js`
+- **When to update**: Update sitemap when adding new tools, new languages, or changing language support for existing tools
+- **Before git commit**: Always review sitemap logic matches current tool and language support before committing

@@ -61,7 +61,24 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })
   })
 
-  // 4. 所有工具页面（所有语言版本和所有 slug）
+  // 4. All Tools 页面（所有语言版本）
+  TOOL_PAGES.forEach((tool) => {
+    SUPPORTED_LOCALES.forEach((locale) => {
+      // font-generator 支持 en、de、ja、es 和 fr
+      if (tool === 'font-generator' && locale !== 'en' && locale !== 'de' && locale !== 'ja' && locale !== 'es' && locale !== 'fr') {
+        return
+      }
+      const path = locale === 'en' ? `/${tool}/all-tools` : `/${locale}/${tool}/all-tools`
+      entries.push({
+        url: `${baseUrl}${path}`,
+        lastModified: today,
+        changeFrequency: 'weekly',
+        priority: 0.8,
+      })
+    })
+  })
+
+  // 5. 所有工具页面（所有语言版本和所有 slug）
   for (const locale of SUPPORTED_LOCALES) {
     try {
       const tools = await getAllTools(locale)

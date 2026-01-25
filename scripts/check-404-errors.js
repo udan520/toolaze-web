@@ -47,8 +47,8 @@ function getAllToolUrls() {
   // 3. 工具L2页面（所有语言版本）
   TOOL_PAGES.forEach((tool) => {
     SUPPORTED_LOCALES.forEach((locale) => {
-      // font-generator 只支持 en 和 de
-      if (tool === 'font-generator' && locale !== 'en' && locale !== 'de') {
+      // font-generator 支持 en、de、ja、es 和 fr
+      if (tool === 'font-generator' && locale !== 'en' && locale !== 'de' && locale !== 'ja' && locale !== 'es' && locale !== 'fr') {
         return
       }
       const urlPath = locale === 'en' ? `/${tool}` : `/${locale}/${tool}`
@@ -90,8 +90,9 @@ function getAllToolUrls() {
     })
   })
 
-  // Font Generator L3（只支持 en 和 de）
-  const fontGeneratorLocales = ['en', 'de']
+  // Font Generator L3（支持 en、de、ja、es 和 fr）
+  // 注意：其他语言（ko, zh-TW, pt, it）的L3页面会被重定向到英语版本，所以不在这里检查
+  const fontGeneratorLocales = ['en', 'de', 'ja', 'es', 'fr']
   fontGeneratorLocales.forEach((locale) => {
     FONT_GENERATOR_SLUGS.forEach((slug) => {
       const urlPath = locale === 'en' 
