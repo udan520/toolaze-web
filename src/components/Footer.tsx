@@ -270,11 +270,17 @@ export default function Footer() {
   }, [currentLocale, pathname, isMounted])
 
   // 检查页面是否支持多语言
-  // 如果路径的第一部分是 locale 代码，或者路径包含支持多语言的工具，则支持多语言
+  // 如果路径的第一部分是 locale 代码，或者路径包含支持多语言的工具，或者路径是首页，则支持多语言
   const hasMultilingualSupport = (): boolean => {
-    if (!pathname) return false
+    if (!pathname) return true // 首页支持多语言
+    
     const pathParts = pathname.split('/').filter(Boolean)
-    if (pathParts.length === 0) return false
+    
+    // 首页（/ 或 /locale）总是支持多语言
+    if (pathParts.length === 0 || (pathParts.length === 1 && locales.some(loc => loc.code === pathParts[0]))) {
+      return true
+    }
+    
     const firstPart = pathParts[0]
     
     // 如果路径的第一部分是 locale 代码，则支持多语言
@@ -388,7 +394,7 @@ export default function Footer() {
           }
         }
       } else {
-        // 默认支持所有语言
+        // 默认支持所有语言（首页、静态页面等）
         availableLocales.push(...locales)
       }
       

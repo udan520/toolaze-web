@@ -2,6 +2,7 @@ import ToolL2PageContent from '@/components/blocks/ToolL2PageContent'
 import type { Metadata } from 'next'
 import { getL2SeoContent } from '@/lib/seo-loader'
 import { generateHreflangAlternates } from '@/lib/hreflang'
+import { redirect } from 'next/navigation'
 
 interface PageProps {
   params: Promise<{
@@ -37,5 +38,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function FontGeneratorPage({ params }: PageProps) {
   const resolvedParams = await params
   const locale = resolvedParams.locale || 'en'
+  
+  // 检查内容是否存在，如果不存在且不是英语，重定向到英语版本
+  const content = await getL2SeoContent('font-generator', locale)
+  if (!content && locale !== 'en') {
+    // 重定向到英语版本的 font-generator L2 页面
+    redirect('/font-generator')
+  }
+  
   return <ToolL2PageContent locale={locale} tool="font-generator" />
 }

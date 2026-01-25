@@ -148,11 +148,17 @@ export default async function LandingPage({ params }: PageProps) {
     return null
   }
   
-  // 检查内容是否存在，如果不存在且是 font-generator，重定向到英语版本
+  // 检查内容是否存在，如果不存在且不是英语，重定向到英语版本
   const content = await getSeoContent(resolvedParams.tool, resolvedParams.slug, locale)
-  if (!content && resolvedParams.tool === 'font-generator' && locale !== 'en') {
-    // 重定向到英语版本的 font-generator L3 页面
-    redirect(`/font-generator/${resolvedParams.slug}`)
+  if (!content && locale !== 'en') {
+    // 对于所有工具，如果内容不存在，重定向到英语版本
+    if (resolvedParams.tool === 'font-generator') {
+      redirect(`/font-generator/${resolvedParams.slug}`)
+    } else if (resolvedParams.tool === 'image-compressor' || resolvedParams.tool === 'image-compression') {
+      redirect(`/image-compressor/${resolvedParams.slug}`)
+    } else if (resolvedParams.tool === 'image-converter' || resolvedParams.tool === 'image-conversion') {
+      redirect(`/image-converter/${resolvedParams.slug}`)
+    }
   }
   
   return (
