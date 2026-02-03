@@ -1,0 +1,188 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Emoji Copy & Paste - Copy Emojis Online Free | Toolaze",
+    "description": "Copy and paste emojis online for free. Browse by category, search, pick skin tone, and copy instantly. No sign-up. Copy and paste emojis to any app or social media."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Emoji <span class=\"text-gradient\">Copy & Paste</span>",
+    "desc": "Copy and paste emojis online for free. Browse by category, search, pick skin tone, and copy with one click. No sign-up required."
+  },
+  "intro": {
+    "title": "Why Use Toolaze Emoji Copy & Paste?",
+    "content": [
+      {
+        "title": "What is Emoji Copy and Paste?",
+        "text": "Emoji copy and paste is a free online tool that lets you browse thousands of emojis by category, search by keyword, and copy any emoji with one click. You can copy and paste emojis into messages, social media, documents, or anywhere else. No app install or sign-up is needed—everything runs in your browser. Toolaze supports frequently used, smileys & people, animals & nature, food & drink, travel & places, activities, objects, symbols, and flags, so you can find the right emoji fast."
+      },
+      {
+        "title": "Why Copy and Paste Emojis Online?",
+        "text": "Finding and copying emojis on a phone or PC can be slow or limited. With Toolaze you get emojis copy and paste in one place: search or browse by category, choose skin tone when needed, and copy instantly. Your recently used emojis are saved locally so you can copy and paste emojis you use often without searching again. Perfect for texting, Discord, Instagram, TikTok, or any app that supports Unicode emojis."
+      }
+    ]
+  },
+  "features": {
+    "title": "Emoji Copy & Paste Features",
+    "items": [
+      {
+        "icon": "📂",
+        "iconType": "quality",
+        "title": "Browse by Category",
+        "desc": "Browse emojis by category: Smileys & People, Animals & Nature, Food & Drink, Travel & Places, Activities, Objects, Symbols, and Flags. Jump to any category from the sidebar."
+      },
+      {
+        "icon": "🔍",
+        "iconType": "speed",
+        "title": "Search Emojis",
+        "desc": "Search by keyword to find the right emoji fast. Type a word and get matching emojis so you can copy and paste the one you need in seconds."
+      },
+      {
+        "icon": "👋",
+        "iconType": "quality",
+        "title": "Skin Tone Picker",
+        "desc": "Choose skin tone for people and hand emojis. Pick the variation you want, then copy and paste—no extra steps."
+      },
+      {
+        "icon": "📋",
+        "iconType": "batch",
+        "title": "One-Click Copy",
+        "desc": "Click any emoji to copy it to your clipboard. Paste into WhatsApp, iMessage, Discord, Instagram, TikTok, or any app. No download, no account."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Privacy First",
+        "desc": "All emoji browsing and copy and paste happen in your browser. Your recently used list is stored locally—nothing is sent to our servers."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Free Forever",
+        "desc": "Unlimited emoji copy and paste with no sign-up, no ads, and no paywall. Use as much as you want on any device."
+      }
+    ]
+  },
+  "specs": {
+    "engine": "Browser-Based Emoji Picker - Client-Side",
+    "limit": "Unlimited Emojis - All Standard Unicode Categories",
+    "logic": "Search + Category Browse + Recently Used",
+    "privacy": "100% Client-Side (Local Storage for Recent Only)"
+  },
+  "performanceMetrics": {
+    "title": "Technical Specifications",
+    "metrics": [
+      {
+        "label": "Categories",
+        "value": "Smileys & People, Animals & Nature, Food & Drink, Travel, Activities, Objects, Symbols, Flags"
+      },
+      {
+        "label": "Search",
+        "value": "Keyword search across all emojis"
+      },
+      {
+        "label": "Skin Tones",
+        "value": "Supported for people and hand emojis"
+      },
+      {
+        "label": "Copy",
+        "value": "One-click copy to clipboard"
+      },
+      {
+        "label": "Platform Support",
+        "value": "Any app that supports Unicode emojis (WhatsApp, Discord, Instagram, TikTok, iMessage, etc.)"
+      },
+      {
+        "label": "Privacy",
+        "value": "No server uploads; recent list stored locally only"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "How to Copy and Paste Emojis",
+    "steps": [
+      {
+        "title": "Browse or Search",
+        "desc": "Use the category list on the left to jump to a section, or type in the search box to find emojis by keyword."
+      },
+      {
+        "title": "Pick Your Emoji",
+        "desc": "Click the emoji you want. Use the skin tone picker next to the search bar if you need a different skin tone for people or hands."
+      },
+      {
+        "title": "Copy & Paste",
+        "desc": "The emoji is copied to your clipboard. Paste it into your message, post, or document with Ctrl+V (or Cmd+V on Mac)."
+      }
+    ]
+  },
+  "comparison": {
+    "title": "Why Choose Toolaze?",
+    "toolaze": "Toolaze 💎",
+    "others": "Other Tools",
+    "vs": "VS",
+    "smartChoice": "Smart Choice",
+    "otherTools": "Other Tools",
+    "toolazeFeatures": "Free, No sign-up, Category browse, Search, Skin tone, One-click copy, Recently used, Works in browser",
+    "othersFeatures": "Sign-up required, Limited categories, No search, Ads or paywall, App download, Slower, Fewer emojis"
+  },
+  "scenesTitle": "Use Cases",
+  "scenes": [
+    {
+      "title": "Texting & Messaging",
+      "icon": "💬",
+      "desc": "Copy and paste emojis into iMessage, WhatsApp, or any chat. Find the right emoji quickly with search or categories and send with one click."
+    },
+    {
+      "title": "Social Media",
+      "icon": "📱",
+      "desc": "Use emojis in Instagram captions, TikTok bios, Discord messages, or Twitter posts. Copy and paste emojis that work on every platform."
+    },
+    {
+      "title": "Content & Documents",
+      "icon": "📝",
+      "desc": "Add emojis to presentations, emails, or documents. Search by keyword or browse by category to copy and paste the perfect emoji."
+    }
+  ],
+  "rating": {
+    "title": "Trusted for Emoji Copy & Paste",
+    "rating": "4.9/5 FROM 10K+ USERS",
+    "text": "\"Fast and simple—I use it every day for Discord and Instagram.\" Copy and paste emojis online with Toolaze, no sign-up, no hassle."
+  },
+  "faqTitle": "Frequently Asked Questions",
+  "faq": [
+    {
+      "q": "Is emoji copy and paste really free?",
+      "a": "Yes. Toolaze emoji copy and paste is 100% free. You can copy and paste emojis as much as you want with no sign-up, no ads, and no paywall."
+    },
+    {
+      "q": "Can I copy and paste emojis on iPhone or Android?",
+      "a": "Yes. Open the Toolaze emoji copy and paste page in your phone browser, tap an emoji to copy it, then paste it into any app (iMessage, WhatsApp, Instagram, etc.) that supports emojis."
+    },
+    {
+      "q": "Do these emojis work in Discord, Instagram, and TikTok?",
+      "a": "Yes. The emojis are standard Unicode characters, so they work everywhere: Discord, Instagram, TikTok, WhatsApp, iMessage, Twitter, and more. Just copy and paste emojis where you need them."
+    },
+    {
+      "q": "How do I get skin tone variations?",
+      "a": "Use the skin tone picker next to the search bar. It appears for people and hand emojis. Choose a tone, then click the emoji to copy and paste it with that skin tone."
+    },
+    {
+      "q": "Where is my \"recently used\" list stored?",
+      "a": "Recently used emojis are stored only in your browser (local storage). Nothing is sent to our servers, so your usage stays private."
+    },
+    {
+      "q": "Can I search for specific emojis?",
+      "a": "Yes. Type a keyword in the search box (e.g. \"heart\", \"fire\", \"birthday\") to see matching emojis. Then click to copy and paste the one you want."
+    }
+  ],
+  "moreTools": "More Quick Tools"
+}

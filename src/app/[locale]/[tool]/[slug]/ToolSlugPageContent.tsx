@@ -18,6 +18,7 @@ import Rating from '@/components/blocks/Rating'
 import FAQ from '@/components/blocks/FAQ'
 import ViewAllToolsButton from '@/components/ViewAllToolsButton'
 import ToolCard from '@/components/ToolCard'
+import EmojiCategoryPage from '@/components/EmojiCategoryPage'
 import React from 'react'
 
 interface ToolSlugPageContentProps {
@@ -144,12 +145,14 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
     const t = await loadCommonTranslations(locale)
     const isConverter = tool === 'image-converter' || tool === 'image-conversion'
     const isFontGenerator = tool === 'font-generator'
-    const toolTranslations = isConverter ? t?.imageConverter : (isFontGenerator ? null : t?.imageCompressor)
+    const isEmoji = tool === 'emoji-copy-and-paste'
+    const toolTranslations = isConverter ? t?.imageConverter : (isFontGenerator ? null : isEmoji ? null : t?.imageCompressor)
     const breadcrumbT = t?.breadcrumb || { 
       home: 'Home', 
       imageCompression: 'Image Compression', 
       imageConverter: 'Image Converter',
-      fontGenerator: 'Font Generator'
+      fontGenerator: 'Font Generator',
+      emojiCopyAndPaste: 'Emoji Copy & Paste'
     }
 
     // 默认内容（如果没有提供，使用翻译内容）
@@ -244,6 +247,8 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
       toolLabel = breadcrumbT.imageConverter
     } else if (isFontGenerator) {
       toolLabel = breadcrumbT.fontGenerator
+    } else if (isEmoji) {
+      toolLabel = breadcrumbT.emojiCopyAndPaste
     } else {
       toolLabel = breadcrumbT.imageCompression
     }
@@ -311,6 +316,26 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
               h1={content.hero?.h1 || 'Font Generator'}
               desc={content.hero?.desc || 'Generate custom fonts online for free. Create beautiful text styles instantly.'}
             />
+          ) : isEmoji ? (
+            <header className="bg-[#F8FAFF] pb-8 md:pb-12 px-6">
+              <div className="max-w-4xl mx-auto text-center pt-6 md:pt-8 mb-6 md:mb-12">
+                <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-3 md:mb-4 leading-tight text-slate-900">
+                  {content.hero?.h1 ? (
+                    renderH1WithGradient(content.hero.h1)
+                  ) : (
+                    <>Emoji Copy & Paste</>
+                  )}
+                </h1>
+                {content.hero?.desc && (
+                  <p className="text-base md:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+                    {content.hero.desc}
+                  </p>
+                )}
+              </div>
+              <div className="max-w-6xl mx-auto">
+                <EmojiCategoryPage />
+              </div>
+            </header>
           ) : (
             <header className="bg-[#F8FAFF] pb-8 md:pb-12 px-6">
               <div className="max-w-4xl mx-auto text-center pt-6 md:pt-8 mb-6 md:mb-12">
@@ -482,7 +507,9 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
                   <h2 className="text-3xl font-extrabold text-center text-slate-900 mb-12">
                     {isConverter 
                       ? (t?.imageConverter?.moreTools || `More Image Converter Tools`)
-                      : (t?.imageCompressor?.moreTools || `More Image Compression Tools`)
+                      : isEmoji
+                        ? (t?.common?.emojiCopyAndPaste?.moreTools || `More Emoji Copy & Paste`)
+                        : (t?.imageCompressor?.moreTools || `More Image Compression Tools`)
                     }
                   </h2>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">

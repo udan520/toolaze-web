@@ -9,6 +9,7 @@ import FontGeneratorHero from '@/components/blocks/FontGeneratorHero'
 import FontGenerator from '@/components/FontGenerator'
 import ImageCompressor from '@/components/ImageCompressor'
 import ImageConverter from '@/components/ImageConverter'
+import EmojiCategoryPage from '@/components/EmojiCategoryPage'
 import TrustBar from '@/components/blocks/TrustBar'
 import Intro from '@/components/blocks/Intro'
 import Features from '@/components/blocks/Features'
@@ -163,6 +164,12 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
           desc: "Convert images between JPG, PNG, and WebP formats instantly. Our browser-based converter processes images locally, ensuring complete privacy and fast conversion."
         }
       }
+      if (tool === 'emoji-copy-and-paste') {
+        return {
+          title: "Why Use Toolaze Emoji Copy & Paste?",
+          desc: "Copy and paste emojis online for free. Browse by category, search by keyword, pick skin tone, and copy with one click. No sign-up required."
+        }
+      }
       return {
         title: `Why Use Toolaze ${tool}?`,
         desc: ""
@@ -285,6 +292,27 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                 )}
               </div>
               <ImageConverter />
+              <TrustBar />
+            </header>
+          ) : tool === 'emoji-copy-and-paste' ? (
+            <header className="bg-[#F8FAFF] pb-12 px-6">
+              <div className="max-w-4xl mx-auto text-center pt-8 mb-8">
+                <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 leading-tight text-slate-900">
+                  {content.hero?.h1 ? (
+                    renderH1WithGradient(content.hero.h1)
+                  ) : (
+                    <>Emoji Copy & Paste</>
+                  )}
+                </h1>
+                {content.hero?.desc && (
+                  <p className="desc-text text-lg md:text-xl max-w-2xl mx-auto">
+                    {content.hero.desc}
+                  </p>
+                )}
+              </div>
+              <div className="max-w-6xl mx-auto">
+                <EmojiCategoryPage />
+              </div>
               <TrustBar />
             </header>
           ) : (

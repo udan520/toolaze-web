@@ -2,23 +2,13 @@
 
 import { useState, useEffect, useRef } from 'react'
 import dynamic from 'next/dynamic'
-import { SkinTones } from 'emoji-picker-react'
+import { SkinTones, SkinTonePickerLocation } from 'emoji-picker-react'
 
 // 动态导入 emoji-picker-react（避免 SSR 问题）
 const EmojiPicker = dynamic(
   () => import('emoji-picker-react'),
   { ssr: false }
 )
-
-// 肤色选项
-const SKIN_TONES = [
-  { value: SkinTones.NEUTRAL, label: 'Default', emoji: '👤' },
-  { value: SkinTones.LIGHT, label: 'Light', emoji: '👶' },
-  { value: SkinTones.MEDIUM_LIGHT, label: 'Medium Light', emoji: '👦' },
-  { value: SkinTones.MEDIUM, label: 'Medium', emoji: '👧' },
-  { value: SkinTones.MEDIUM_DARK, label: 'Medium Dark', emoji: '👨' },
-  { value: SkinTones.DARK, label: 'Dark', emoji: '👩' },
-]
 
 // Emoji 分类
 const EMOJI_CATEGORIES = [
@@ -39,7 +29,6 @@ interface EmojiCategoryPageProps {
 }
 
 export default function EmojiCategoryPage({ category, className = '' }: EmojiCategoryPageProps) {
-  const [skinTone, setSkinTone] = useState(SkinTones.NEUTRAL)
   const [selectedCategory, setSelectedCategory] = useState(category || 'suggested')
   const [recentEmojis, setRecentEmojis] = useState<string[]>([])
   const [copiedEmoji, setCopiedEmoji] = useState<string | null>(null)
@@ -77,59 +66,67 @@ export default function EmojiCategoryPage({ category, className = '' }: EmojiCat
     setTimeout(() => setCopiedEmoji(null), 2000)
   }
 
-  // 处理分类点击
+  // 处理分类点击：滚动右侧 emoji 区域到该分类
   const handleCategoryClick = (categoryId: string) => {
     setSelectedCategory(categoryId)
     isScrollingRef.current = true
-    
-    // 等待 emoji picker 渲染后滚动到对应分类
-    setTimeout(() => {
-      const scrollContainer = emojiPickerRef.current?.querySelector('.epr-emoji-category') as HTMLElement
-      if (scrollContainer) {
-        scrollContainer.scrollIntoView({ behavior: 'smooth', block: 'start' })
+
+    const runScroll = () => {
+      const root = emojiPickerRef.current
+      if (!root) return
+      const scrollBody = root.querySelector('.epr-body') as HTMLElement | null
+      const categoryEl = root.querySelector(`[data-name="${categoryId}"]`) as HTMLElement | null
+      if (scrollBody && categoryEl) {
+        const targetTop = categoryEl.offsetTop
+        scrollBody.scrollTo({ top: targetTop, behavior: 'smooth' })
       }
       setTimeout(() => {
         isScrollingRef.current = false
-      }, 500)
-    }, 100)
+      }, 400)
+    }
+
+    requestAnimationFrame(() => {
+      runScroll()
+      // 若初次未找到（虚拟列表未渲染），稍后再试
+      setTimeout(runScroll, 150)
+    })
   }
 
-  // 检测可见的分类（用于双向联动）
+  // 检测可见的分类（右侧滚动时同步左侧高亮）
   useEffect(() => {
     if (!isMounted || isScrollingRef.current) return
 
-    const scrollContainer = emojiPickerRef.current?.querySelector('.epr-emoji-category') as HTMLElement
-    if (!scrollContainer) return
+    const root = emojiPickerRef.current
+    if (!root) return
+    const scrollBody = root.querySelector('.epr-body') as HTMLElement | null
+    if (!scrollBody) return
 
     const handleScroll = () => {
       if (isScrollingRef.current) return
+      const categories = root.querySelectorAll('li[data-name]')
+      const scrollTop = scrollBody.scrollTop
+      const viewportMid = scrollTop + scrollBody.clientHeight / 3
 
-      const categoryLabels = scrollContainer.querySelectorAll('[data-id]')
-      const viewportTop = scrollContainer.scrollTop + 100 // 考虑 sticky nav 高度
-
-      for (const label of Array.from(categoryLabels)) {
-        const element = label as HTMLElement
-        const rect = element.getBoundingClientRect()
-        const containerRect = scrollContainer.getBoundingClientRect()
-        const relativeTop = rect.top - containerRect.top + scrollContainer.scrollTop
-
-        if (relativeTop <= viewportTop && relativeTop + rect.height > viewportTop) {
-          const categoryId = element.getAttribute('data-id')
-          if (categoryId && categoryId !== selectedCategory) {
-            setSelectedCategory(categoryId)
-          }
+      for (const el of Array.from(categories)) {
+        const li = el as HTMLElement
+        const name = li.getAttribute('data-name')
+        if (!name) continue
+        const top = li.offsetTop
+        const height = li.offsetHeight
+        if (top <= viewportMid && top + height > viewportMid) {
+          if (name !== selectedCategory) setSelectedCategory(name)
           break
         }
       }
     }
 
-    scrollContainer.addEventListener('scroll', handleScroll)
-    return () => scrollContainer.removeEventListener('scroll', handleScroll)
+    scrollBody.addEventListener('scroll', handleScroll)
+    return () => scrollBody.removeEventListener('scroll', handleScroll)
   }, [isMounted, selectedCategory])
 
   if (!isMounted) {
     return (
-      <div className={`flex gap-6 ${className}`}>
+      <div className={['flex gap-6', className].filter(Boolean).join(' ')}>
         <div className="w-64 bg-white rounded-xl p-4 border border-slate-200">
           <div className="animate-pulse space-y-4">
             <div className="h-8 bg-slate-200 rounded"></div>
@@ -145,16 +142,16 @@ export default function EmojiCategoryPage({ category, className = '' }: EmojiCat
   }
 
   return (
-    <div className={`flex flex-col lg:flex-row gap-6 ${className}`}>
-      {/* 左侧分类导航 */}
+    <div className={['flex flex-col lg:flex-row gap-6', className].filter(Boolean).join(' ')}>
+      {/* 左侧分类导航：桌面端纵向，H5 端横向滑动 */}
       <div className="w-full lg:w-64 bg-white rounded-xl p-4 border border-slate-200 shadow-sm">
-        <div className="space-y-2">
-          <h3 className="text-sm font-semibold text-slate-700 mb-3">Categories</h3>
+        <h3 className="text-sm font-semibold text-slate-700 mb-3">Categories</h3>
+        <div className="flex flex-row lg:flex-col gap-2 overflow-x-auto lg:overflow-visible pb-2 lg:pb-0 scrollbar-hide">
           {EMOJI_CATEGORIES.map((cat) => (
             <button
               key={cat.id}
               onClick={() => handleCategoryClick(cat.id)}
-              className={`w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+              className={`flex-shrink-0 lg:w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors whitespace-nowrap ${
                 selectedCategory === cat.id
                   ? 'bg-indigo-100 text-indigo-700'
                   : 'text-slate-600 hover:bg-slate-50'
@@ -169,37 +166,17 @@ export default function EmojiCategoryPage({ category, className = '' }: EmojiCat
 
       {/* 右侧 Emoji 选择器 */}
       <div className="flex-1 relative">
-        {/* 顶部肤色选择器 */}
-        <div className="mb-4 bg-white rounded-xl p-4 border border-slate-200 shadow-sm">
-          <label className="block text-sm font-semibold text-slate-700 mb-2">
-            Skin Tone
-          </label>
-          <div className="flex gap-2 flex-wrap">
-            {SKIN_TONES.map((tone) => (
-              <button
-                key={tone.value}
-                onClick={() => setSkinTone(tone.value)}
-                className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors border ${
-                  skinTone === tone.value
-                    ? 'bg-indigo-100 text-indigo-700 border-indigo-300'
-                    : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-50'
-                }`}
-              >
-                <span className="mr-1">{tone.emoji}</span>
-                {tone.label}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Emoji Picker */}
-        <div ref={emojiPickerRef} className="relative">
+        {/* Emoji Picker - 增大显示区域 */}
+        <div ref={emojiPickerRef} className="relative min-h-[520px]">
           <EmojiPicker
             onEmojiClick={handleEmojiClick}
-            defaultSkinTone={skinTone}
+            defaultSkinTone={SkinTones.NEUTRAL}
+            width="100%"
+            height={520}
             previewConfig={{
-              showPreview: false
+              showPreview: true
             }}
+            skinTonePickerLocation={SkinTonePickerLocation.PREVIEW}
             searchDisabled={false}
           />
           

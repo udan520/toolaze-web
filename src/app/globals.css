@@ -24,6 +24,35 @@
   vertical-align: baseline;
 }
 
+/* 隐藏 emoji-picker-react 内置分类栏，仅保留左侧自定义分类，避免重复的 Frequently Used 按钮 */
+.epr-category-nav,
+#epr-category-nav-id {
+  display: none !important;
+}
+
+/* 避免皮肤选择器与搜索框重叠：固定间距，搜索框右侧留白 */
+.EmojiPickerReact .epr-header > div:first-child {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 20px !important;
+}
+.EmojiPickerReact .epr-search-container {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  margin-right: 20px !important;
+}
+.EmojiPickerReact .epr-search-container input {
+  padding-right: 40px !important;
+  box-sizing: border-box !important;
+}
+.EmojiPickerReact .epr-skin-tones {
+  flex: 0 0 auto !important;
+  width: auto !important;
+  min-width: 44px !important;
+  margin-left: 0 !important;
+}
+
 /* Body styles are now in @layer base */
 
 .desc-text {

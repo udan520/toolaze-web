@@ -4,6 +4,7 @@
     "imageCompression": "Image Compression",
     "imageConverter": "Image Converter",
     "fontGenerator": "Font Generator",
+    "emojiCopyAndPaste": "Emoji Copy & Paste",
     "aboutUs": "About Us"
   },
   "home": {
@@ -82,6 +83,7 @@
     "imageCompression": "Image Compression",
     "imageConverter": "Image Converter",
     "fontGenerator": "Font Generator",
+    "emojiCopyAndPaste": "Emoji Copy & Paste",
     "home": "Home",
     "allTools": "All Tools",
     "aboutUs": "About Us",
@@ -98,6 +100,7 @@
     "imageCompression": "Image Compression",
     "imageConverter": "Image Converter",
     "fontGenerator": "Font Generator",
+    "emojiCopyAndPaste": "Emoji Copy & Paste",
     "aboutUs": "About Us",
     "privacyPolicy": "Privacy Policy",
     "termsOfService": "Terms of Service"
@@ -219,6 +222,9 @@
         "bubble": "Bubble",
         "starWars": "Star Wars"
       }
+    },
+    "emojiCopyAndPaste": {
+      "moreTools": "More Emoji Copy & Paste"
     },
     "viewAllTools": {
       "related": "View All Related Tools",

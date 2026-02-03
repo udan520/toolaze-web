@@ -13,6 +13,7 @@ const defaultNavTranslations = {
   imageCompression: 'Image Compression',
   imageConverter: 'Image Converter',
   fontGenerator: 'Font Generator',
+  emojiCopyAndPaste: 'Emoji Copy & Paste',
   aboutUs: 'About Us'
 }
 
@@ -60,7 +61,12 @@ export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [expandedSubmenus, setExpandedSubmenus] = useState<Set<string>>(new Set())
   const [navTranslations, setNavTranslations] = useState(defaultNavTranslations)
-  const [thirdLevelMenuData, setThirdLevelMenuData] = useState<Record<string, Array<{slug: string, title: string, href: string}>>>({})
+  const [thirdLevelMenuData, setThirdLevelMenuData] = useState<Record<string, Array<{slug: string, title: string, href: string}>>>({
+    'image-compressor': [],
+    'image-converter': [],
+    'font-generator': [],
+    'emoji-copy-and-paste': []
+  })
   const [isMounted, setIsMounted] = useState(false)
   const pathname = usePathname()
   
@@ -243,6 +249,41 @@ export default function Navigation() {
         data['font-generator'] = []
       }
       
+      // 加载 Emoji Copy & Paste 的三级菜单（全部 6 个 L3 页面）
+      try {
+        const emojiSlugs = await getAllSlugs('emoji-copy-and-paste', locale)
+        if (emojiSlugs && emojiSlugs.length > 0) {
+          const emojiItems = await Promise.all(
+            emojiSlugs.map(async (slug) => {
+              try {
+                const toolData = await getSeoContent('emoji-copy-and-paste', slug, locale)
+                if (toolData?.in_menu === false) return null
+                let title = slug
+                if (toolData?.hero?.h1) {
+                  title = toolData.hero.h1.replace(/<[^>]*>/g, '').trim()
+                  if (!title) title = slug
+                }
+                return {
+                  slug,
+                  title,
+                  href: getHref(`/emoji-copy-and-paste/${slug}`),
+                }
+              } catch (err) {
+                return null
+              }
+            })
+          )
+          data['emoji-copy-and-paste'] = emojiItems.filter((item): item is { slug: string; title: string; href: string } =>
+            item !== null && item.title !== undefined && item.href !== undefined
+          )
+        } else {
+          data['emoji-copy-and-paste'] = []
+        }
+      } catch (error) {
+        console.error('Failed to load emoji-copy-and-paste menu items:', error)
+        data['emoji-copy-and-paste'] = []
+      }
+      
       setThirdLevelMenuData(data)
     }
     
@@ -370,6 +411,20 @@ export default function Navigation() {
           <rect x="7" y="9" width="10" height="7" rx="1.5" fill="#3B82F6"/>
           <circle cx="9.5" cy="11.5" r="0.8" fill="white"/>
           <path d="M11.5 13.5L13.5 11.5L15.5 13.5" stroke="white" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+        </svg>
+      ),
+    },
+    {
+      title: navTranslations.emojiCopyAndPaste || defaultNavTranslations.emojiCopyAndPaste,
+      href: getLocalizedHref('/emoji-copy-and-paste'),
+      hasThirdLevel: true,
+      tool: 'emoji-copy-and-paste',
+      icon: (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-2 flex-shrink-0">
+          <circle cx="12" cy="12" r="10" fill="#FCD34D" opacity="0.9"/>
+          <circle cx="9" cy="10" r="1.25" fill="#78350F"/>
+          <circle cx="15" cy="10" r="1.25" fill="#78350F"/>
+          <path d="M8 14c0 0 1.5 2 4 2s4-2 4-2" stroke="#78350F" strokeWidth="1.5" strokeLinecap="round"/>
         </svg>
       ),
     },

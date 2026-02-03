@@ -1,6 +1,5 @@
 import ToolSlugPageContent from '@/app/[locale]/[tool]/[slug]/ToolSlugPageContent'
 import { getAllSlugs, getSeoContent } from '@/lib/seo-loader'
-import { generateHreflangAlternates } from '@/lib/hreflang'
 import type { Metadata } from 'next'
 
 interface PageProps {
@@ -9,36 +8,34 @@ interface PageProps {
   }>
 }
 
-// 确保静态生成
 export const dynamic = 'force-static'
 export const dynamicParams = false
 
 export async function generateStaticParams() {
-  const slugs = await getAllSlugs('image-compressor', 'en')
+  const slugs = await getAllSlugs('emoji-copy-and-paste', 'en')
   return slugs.map((slug) => ({ slug }))
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const resolvedParams = await params
-  const content = await getSeoContent('image-compressor', resolvedParams.slug, 'en')
-  
+  const content = await getSeoContent('emoji-copy-and-paste', resolvedParams.slug, 'en')
+
   if (!content) {
     return {
-      title: 'Tool Not Found | Toolaze',
+      title: 'Emoji Copy & Paste | Toolaze',
       robots: 'index, follow',
     }
   }
-  
-  const pathWithoutLocale = `/image-compressor/${resolvedParams.slug}`
-  const hreflang = generateHreflangAlternates('en', pathWithoutLocale)
-  
+
+  const baseUrl = 'https://toolaze.com'
+  const canonical = `${baseUrl}/emoji-copy-and-paste/${resolvedParams.slug}`
+
   return {
     title: content.metadata.title,
     description: content.metadata.description,
     robots: 'index, follow',
     alternates: {
-      canonical: hreflang.canonical,
-      languages: hreflang.languages,
+      canonical,
     },
   }
 }
@@ -46,9 +43,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function Page({ params }: PageProps) {
   const resolvedParams = await params
   return (
-    <ToolSlugPageContent 
+    <ToolSlugPageContent
       locale="en"
-      tool="image-compressor"
+      tool="emoji-copy-and-paste"
       slug={resolvedParams.slug}
     />
   )

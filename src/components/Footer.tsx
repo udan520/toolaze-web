@@ -19,7 +19,8 @@ const defaultTranslations = {
   quickTools: 'Quick Tools',
   imageCompression: 'Image Compression',
   imageConverter: 'Image Converter',
-  fontGenerator: 'Font Generator'
+  fontGenerator: 'Font Generator',
+  emojiCopyAndPaste: 'Emoji Copy & Paste'
 }
 
 // 加载翻译的函数
@@ -41,6 +42,7 @@ async function loadTranslations(locale: string) {
         imageCompression: navData.imageCompression || footerData.imageCompression || defaultTranslations.imageCompression,
         imageConverter: navData.imageConverter || footerData.imageConverter || defaultTranslations.imageConverter,
         fontGenerator: navData.fontGenerator || footerData.fontGenerator || defaultTranslations.fontGenerator,
+        emojiCopyAndPaste: navData.emojiCopyAndPaste || footerData.emojiCopyAndPaste || defaultTranslations.emojiCopyAndPaste,
       }
     }
     
@@ -55,6 +57,7 @@ async function loadTranslations(locale: string) {
         imageCompression: navData.imageCompression || footerData.imageCompression || defaultTranslations.imageCompression,
         imageConverter: navData.imageConverter || footerData.imageConverter || defaultTranslations.imageConverter,
         fontGenerator: navData.fontGenerator || footerData.fontGenerator || defaultTranslations.fontGenerator,
+        emojiCopyAndPaste: navData.emojiCopyAndPaste || footerData.emojiCopyAndPaste || defaultTranslations.emojiCopyAndPaste,
       }
     } catch {
       return defaultTranslations
@@ -99,10 +102,12 @@ export default function Footer() {
     'image-compressor': Array<{slug: string, title: string, href: string}>
     'image-converter': Array<{slug: string, title: string, href: string}>
     'font-generator': Array<{slug: string, title: string, href: string}>
+    'emoji-copy-and-paste': Array<{slug: string, title: string, href: string}>
   }>({
     'image-compressor': [],
     'image-converter': [],
-    'font-generator': []
+    'font-generator': [],
+    'emoji-copy-and-paste': []
   })
   const pathname = usePathname()
 
@@ -142,10 +147,12 @@ export default function Footer() {
         'image-compressor': Array<{slug: string, title: string, href: string}>
         'image-converter': Array<{slug: string, title: string, href: string}>
         'font-generator': Array<{slug: string, title: string, href: string}>
+        'emoji-copy-and-paste': Array<{slug: string, title: string, href: string}>
       } = {
         'image-compressor': [],
         'image-converter': [],
-        'font-generator': []
+        'font-generator': [],
+        'emoji-copy-and-paste': []
       }
       
       // 加载 Image Compressor 的三级菜单（只显示 in_menu: true 的工具，最多显示8个）
@@ -261,6 +268,38 @@ export default function Footer() {
         console.error('Failed to load font-generator menu items:', error)
       }
       
+      // 加载 Emoji Copy & Paste 的三级菜单（全部 6 个 L3 页面）
+      try {
+        const emojiSlugs = await getAllSlugs('emoji-copy-and-paste', locale)
+        if (emojiSlugs && emojiSlugs.length > 0) {
+          const emojiItems = await Promise.all(
+            emojiSlugs.map(async (slug) => {
+              try {
+                const toolData = await getSeoContent('emoji-copy-and-paste', slug, locale)
+                if (toolData?.in_menu === false) return null
+                let title = slug
+                if (toolData?.hero?.h1) {
+                  title = toolData.hero.h1.replace(/<[^>]*>/g, '').trim()
+                  if (!title) title = slug
+                }
+                return {
+                  slug,
+                  title,
+                  href: getHref(`/emoji-copy-and-paste/${slug}`),
+                }
+              } catch (err) {
+                return null
+              }
+            })
+          )
+          data['emoji-copy-and-paste'] = emojiItems.filter((item): item is { slug: string; title: string; href: string } =>
+            item !== null && item.title !== undefined && item.href !== undefined
+          )
+        }
+      } catch (error) {
+        console.error('Failed to load emoji-copy-and-paste menu items:', error)
+      }
+      
       setFooterMenuData(data)
     }
     
@@ -270,17 +309,11 @@ export default function Footer() {
   }, [currentLocale, pathname, isMounted])
 
   // 检查页面是否支持多语言
-  // 如果路径的第一部分是 locale 代码，或者路径包含支持多语言的工具，或者路径是首页，则支持多语言
+  // 如果路径的第一部分是 locale 代码，或者路径包含支持多语言的工具，则支持多语言
   const hasMultilingualSupport = (): boolean => {
-    if (!pathname) return true // 首页支持多语言
-    
+    if (!pathname) return false
     const pathParts = pathname.split('/').filter(Boolean)
-    
-    // 首页（/ 或 /locale）总是支持多语言
-    if (pathParts.length === 0 || (pathParts.length === 1 && locales.some(loc => loc.code === pathParts[0]))) {
-      return true
-    }
-    
+    if (pathParts.length === 0) return false
     const firstPart = pathParts[0]
     
     // 如果路径的第一部分是 locale 代码，则支持多语言
@@ -288,7 +321,7 @@ export default function Footer() {
       return true
     }
     
-    // 检查是否是支持多语言的工具页面（即使没有locale前缀）
+    // 仅当工具实际有多语言版本时才显示语言切换（emoji 仅英文，不显示）
     const multilingualTools = ['image-compressor', 'image-converter', 'font-generator']
     if (multilingualTools.some(tool => pathname.includes(`/${tool}`))) {
       return true
@@ -369,20 +402,21 @@ export default function Footer() {
       }
       
       // 如果不是工具页面，支持所有语言
-      const multilingualTools = ['image-compressor', 'image-converter', 'font-generator']
-      if (!tool || !multilingualTools.includes(tool)) {
+      const toolListForLocales = ['image-compressor', 'image-converter', 'font-generator', 'emoji-copy-and-paste']
+      if (!tool || !toolListForLocales.includes(tool)) {
         setSupportedLocales(locales)
         return
       }
       
-      // 检查哪些语言有内容
+      // 检查哪些语言有内容（仅当前页面实际支持的语言才出现在切换列表中）
       const availableLocales: typeof locales = []
       
-      // 定义已知支持的语言（基于实际存在的文件）
+      // 定义已知支持的语言（基于实际存在的翻译/内容）
       const knownSupportedLocales: Record<string, string[]> = {
-        'font-generator': ['en', 'de', 'ja', 'es', 'fr'], // font-generator 支持英语、德语、日语、西班牙语和法语
-        'image-compressor': locales.map(l => l.code), // 支持所有语言
-        'image-converter': locales.map(l => l.code), // 支持所有语言
+        'font-generator': ['en', 'de', 'ja', 'es', 'fr'],
+        'image-compressor': locales.map(l => l.code),
+        'image-converter': locales.map(l => l.code),
+        'emoji-copy-and-paste': ['en'], // 仅英文有内容，其他 locale 会重定向到英文，故只算一种语言
       }
       
       if (tool && knownSupportedLocales[tool]) {
@@ -394,7 +428,7 @@ export default function Footer() {
           }
         }
       } else {
-        // 默认支持所有语言（首页、静态页面等）
+        // 默认支持所有语言
         availableLocales.push(...locales)
       }
       
@@ -423,7 +457,7 @@ export default function Footer() {
     <footer className="bg-slate-900 pt-16 pb-8 px-6 mt-auto">
       <div className="max-w-6xl mx-auto">
         {/* 二级和三级菜单 */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mb-12">
           {/* Image Compression */}
           <div>
             <Link 
@@ -487,6 +521,32 @@ export default function Footer() {
             <ul className="space-y-2 mt-4">
               {footerMenuData['font-generator'].length > 0 ? (
                 footerMenuData['font-generator'].map((item) => (
+                  <li key={item.slug}>
+                    <Link 
+                      href={item.href} 
+                      className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
+                    >
+                      {item.title}
+                    </Link>
+                  </li>
+                ))
+              ) : (
+                <li className="text-slate-500 text-xs pl-4">No tools available</li>
+              )}
+            </ul>
+          </div>
+
+          {/* Emoji Copy & Paste */}
+          <div>
+            <Link 
+              href={getLocalizedHref('/emoji-copy-and-paste')} 
+              className="text-white font-bold text-sm mb-4 uppercase tracking-wider block hover:text-indigo-400 transition-colors"
+            >
+              {translations.emojiCopyAndPaste || 'Emoji Copy & Paste'}
+            </Link>
+            <ul className="space-y-2 mt-4">
+              {footerMenuData['emoji-copy-and-paste'].length > 0 ? (
+                footerMenuData['emoji-copy-and-paste'].map((item) => (
                   <li key={item.slug}>
                     <Link 
                       href={item.href} 

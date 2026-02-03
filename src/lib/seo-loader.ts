@@ -34,6 +34,16 @@ export const FONT_GENERATOR_SLUGS = [
   'star-wars',
 ]
 
+// Emoji Copy & Paste L3 页面 slug 列表（按搜索量/优先级）
+const EMOJI_COPY_PASTE_SLUGS = [
+  'crying-copy-and-paste',
+  'cross-copy-and-paste',
+  'adults-only-copy-and-paste',
+  'fire-copy-and-paste',
+  'birthday-copy-and-paste',
+  'cat-copy-and-paste',
+]
+
 // 动态导入 JSON 数据（支持多语言）
 async function loadJsonData(locale: string, filename: string) {
   try {
@@ -156,6 +166,9 @@ async function loadToolJsonFile(locale: string, tool: string, slug: string) {
     if (tool === 'font-generator' && !FONT_GENERATOR_SLUGS.includes(slug)) {
       return null
     }
+    if (tool === 'emoji-copy-and-paste' && !EMOJI_COPY_PASTE_SLUGS.includes(slug)) {
+      return null
+    }
 
     // 使用显式的导入路径以确保 webpack 能够静态分析
     let data: any = null
@@ -195,6 +208,15 @@ async function loadToolJsonFile(locale: string, tool: string, slug: string) {
               case 'disney': data = await import('@/data/en/font-generator/disney.json'); break
               case 'bubble': data = await import('@/data/en/font-generator/bubble.json'); break
               case 'star-wars': data = await import('@/data/en/font-generator/star-wars.json'); break
+            }
+          } else if (tool === 'emoji-copy-and-paste') {
+            switch (slug) {
+              case 'crying-copy-and-paste': data = await import('@/data/en/emoji-copy-and-paste/crying-copy-and-paste.json'); break
+              case 'cross-copy-and-paste': data = await import('@/data/en/emoji-copy-and-paste/cross-copy-and-paste.json'); break
+              case 'adults-only-copy-and-paste': data = await import('@/data/en/emoji-copy-and-paste/adults-only-copy-and-paste.json'); break
+              case 'fire-copy-and-paste': data = await import('@/data/en/emoji-copy-and-paste/fire-copy-and-paste.json'); break
+              case 'birthday-copy-and-paste': data = await import('@/data/en/emoji-copy-and-paste/birthday-copy-and-paste.json'); break
+              case 'cat-copy-and-paste': data = await import('@/data/en/emoji-copy-and-paste/cat-copy-and-paste.json'); break
             }
           }
           break
@@ -397,8 +419,8 @@ async function loadToolJsonFile(locale: string, tool: string, slug: string) {
         return data.default || data
       }
     } catch (importError) {
-      // 如果指定语言文件不存在，对于 font-generator、image-converter 和 image-compressor，不自动回退到英语
-      // 返回 null 让上层处理重定向逻辑
+      // 如果指定语言文件不存在，回退到英语
+      // 但对于 font-generator，如果语言不在支持列表中，不自动回退，让上层处理重定向
       if (normalizedLocale !== 'en') {
         // font-generator 只支持 en, de, ja, es, fr
         // 如果语言不在支持列表中，不自动回退，返回 null 让上层处理重定向
@@ -409,9 +431,53 @@ async function loadToolJsonFile(locale: string, tool: string, slug: string) {
           }
         }
         
-        // image-converter 和 image-compressor：如果文件不存在，返回 null（不回退到英语）
-        // 这样 page.tsx 可以检测到 content 为 null 并执行重定向
-        if (tool === 'image-converter' || tool === 'image-compressor' || tool === 'image-compression') {
+        try {
+          if (tool === 'image-converter') {
+            switch (slug) {
+              case 'jpg-to-png': data = await import('@/data/en/image-converter/jpg-to-png.json'); break
+              case 'png-to-jpg': data = await import('@/data/en/image-converter/png-to-jpg.json'); break
+              case 'webp-to-jpg': data = await import('@/data/en/image-converter/webp-to-jpg.json'); break
+              case 'webp-to-png': data = await import('@/data/en/image-converter/webp-to-png.json'); break
+              case 'png-to-webp': data = await import('@/data/en/image-converter/png-to-webp.json'); break
+              case 'jpg-to-webp': data = await import('@/data/en/image-converter/jpg-to-webp.json'); break
+              case 'heic-to-jpg': data = await import('@/data/en/image-converter/heic-to-jpg.json'); break
+              case 'heic-to-png': data = await import('@/data/en/image-converter/heic-to-png.json'); break
+              case 'heic-to-webp': data = await import('@/data/en/image-converter/heic-to-webp.json'); break
+            }
+          } else if (tool === 'font-generator') {
+            // 只有在支持的语言列表中才会执行到这里（因为上面已经检查过了）
+            switch (slug) {
+              case 'cursive': data = await import('@/data/en/font-generator/cursive.json'); break
+              case 'fancy': data = await import('@/data/en/font-generator/fancy.json'); break
+              case 'bold': data = await import('@/data/en/font-generator/bold.json'); break
+              case 'tattoo': data = await import('@/data/en/font-generator/tattoo.json'); break
+              case 'cool': data = await import('@/data/en/font-generator/cool.json'); break
+              case 'instagram': data = await import('@/data/en/font-generator/instagram.json'); break
+              case 'italic': data = await import('@/data/en/font-generator/italic.json'); break
+              case 'gothic': data = await import('@/data/en/font-generator/gothic.json'); break
+              case 'calligraphy': data = await import('@/data/en/font-generator/calligraphy.json'); break
+              case 'discord': data = await import('@/data/en/font-generator/discord.json'); break
+              case 'old-english': data = await import('@/data/en/font-generator/old-english.json'); break
+              case '3d': data = await import('@/data/en/font-generator/3d.json'); break
+              case 'minecraft': data = await import('@/data/en/font-generator/minecraft.json'); break
+              case 'disney': data = await import('@/data/en/font-generator/disney.json'); break
+              case 'bubble': data = await import('@/data/en/font-generator/bubble.json'); break
+              case 'star-wars': data = await import('@/data/en/font-generator/star-wars.json'); break
+            }
+          } else if (tool === 'emoji-copy-and-paste') {
+            switch (slug) {
+              case 'crying-copy-and-paste': data = await import('@/data/en/emoji-copy-and-paste/crying-copy-and-paste.json'); break
+              case 'cross-copy-and-paste': data = await import('@/data/en/emoji-copy-and-paste/cross-copy-and-paste.json'); break
+              case 'adults-only-copy-and-paste': data = await import('@/data/en/emoji-copy-and-paste/adults-only-copy-and-paste.json'); break
+              case 'fire-copy-and-paste': data = await import('@/data/en/emoji-copy-and-paste/fire-copy-and-paste.json'); break
+              case 'birthday-copy-and-paste': data = await import('@/data/en/emoji-copy-and-paste/birthday-copy-and-paste.json'); break
+              case 'cat-copy-and-paste': data = await import('@/data/en/emoji-copy-and-paste/cat-copy-and-paste.json'); break
+            }
+          }
+          if (data) {
+            return data.default || data
+          }
+        } catch (fallbackError) {
           return null
         }
       }
@@ -433,13 +499,6 @@ export async function getL2SeoContent(tool: string, locale: string = 'en') {
       normalizedLocale = 'zh-TW'
     }
     
-    // font-generator 只支持 en, de, ja, es, fr
-    const fontGeneratorSupportedLocales = ['en', 'de', 'ja', 'es', 'fr']
-    if (tool === 'font-generator' && !fontGeneratorSupportedLocales.includes(normalizedLocale)) {
-      // 对于不支持的语言，返回null，让页面重定向到英语版本
-      return null
-    }
-    
     // 如果语言不在支持列表中，回退到英语
     if (!SUPPORTED_LOCALES.includes(normalizedLocale)) {
       normalizedLocale = 'en'
@@ -451,52 +510,60 @@ export async function getL2SeoContent(tool: string, locale: string = 'en') {
       if (tool === 'font-generator') {
         if (normalizedLocale === 'en') {
           data = await import('@/data/en/font-generator.json')
-        } else if (fontGeneratorSupportedLocales.includes(normalizedLocale)) {
-          // 只尝试加载支持的语言，如果不存在则返回null（不回退到英语）
+        } else {
+          // 对于其他语言，尝试加载，如果不存在则回退到英语
           try {
             data = await import(`@/data/${normalizedLocale}/font-generator.json`)
           } catch (e) {
-            // 对于font-generator，如果支持的语言文件不存在，返回null而不是回退到英语
-            return null
+            data = await import('@/data/en/font-generator.json')
           }
-        } else {
-          // 不支持的语言，返回null
-          return null
         }
       } else if (tool === 'image-compressor' || tool === 'image-compression') {
         if (normalizedLocale === 'en') {
           data = await import('@/data/en/image-compressor.json')
         } else {
-          // 对于其他语言，尝试加载，如果不存在则返回null（不回退到英语，让页面重定向）
+          // 对于其他语言，尝试加载，如果不存在则回退到英语
           try {
             data = await import(`@/data/${normalizedLocale}/image-compressor.json`)
           } catch (e) {
-            // 对于image-compressor，如果支持的语言文件不存在，返回null而不是回退到英语
-            return null
+            data = await import('@/data/en/image-compressor.json')
           }
         }
       } else if (tool === 'image-converter' || tool === 'image-conversion') {
         if (normalizedLocale === 'en') {
           data = await import('@/data/en/image-converter.json')
         } else {
-          // 对于其他语言，尝试加载，如果不存在则返回null（不回退到英语，让页面重定向）
+          // 对于其他语言，尝试加载，如果不存在则回退到英语
           try {
             data = await import(`@/data/${normalizedLocale}/image-converter.json`)
           } catch (e) {
-            // 对于image-converter，如果支持的语言文件不存在，返回null而不是回退到英语
-            return null
+            data = await import('@/data/en/image-converter.json')
           }
         }
+      } else if (tool === 'emoji-copy-and-paste') {
+        data = await import('@/data/en/emoji-copy-and-paste.json')
       }
       
       if (data) {
         return data.default || data
       }
     } catch (importError) {
-      // 如果指定语言文件不存在，对于font-generator、image-compressor和image-converter返回null（不回退到英语），让页面重定向
+      // 如果指定语言文件不存在，回退到英语
       if (normalizedLocale !== 'en') {
-        // font-generator、image-compressor和image-converter不支持的语言或文件不存在时，返回null
-        if (tool === 'font-generator' || tool === 'image-compressor' || tool === 'image-compression' || tool === 'image-converter' || tool === 'image-conversion') {
+        try {
+          if (tool === 'font-generator') {
+            data = await import('@/data/en/font-generator.json')
+          } else if (tool === 'image-compressor' || tool === 'image-compression') {
+            data = await import('@/data/en/image-compressor.json')
+          } else if (tool === 'image-converter' || tool === 'image-conversion') {
+            data = await import('@/data/en/image-converter.json')
+          } else if (tool === 'emoji-copy-and-paste') {
+            data = await import('@/data/en/emoji-copy-and-paste.json')
+          }
+          if (data) {
+            return data.default || data
+          }
+        } catch (fallbackError) {
           return null
         }
       }
@@ -539,44 +606,11 @@ function replacePlaceholders(obj: any, categoryName: string): any {
 export async function getSeoContent(tool: string, slug: string, locale: string = 'en') {
   try {
     if (tool === 'image-compressor' || tool === 'image-compression') {
-      // 规范化的 locale（处理 zh -> zh-TW 等映射）
-      let normalizedLocale = locale
-      if (locale === 'zh' || locale === 'zh-CN' || locale === 'zh-HK') {
-        normalizedLocale = 'zh-TW'
-      }
-      
-      // 如果语言不在支持列表中，返回null（不回退到英语）
-      if (!SUPPORTED_LOCALES.includes(normalizedLocale)) {
-        return null
-      }
-      
-      let data: any = null
-      
-      // 尝试加载指定语言的文件
-      if (normalizedLocale === 'en') {
-        try {
-          data = await import('@/data/en/image-compression.json')
-          data = data.default || data
-        } catch (e) {
-          return null
-        }
-      } else {
-        // 对于其他语言，尝试加载，如果不存在则返回null（不回退到英语）
-        try {
-          data = await import(`@/data/${normalizedLocale}/image-compression.json`)
-          data = data.default || data
-        } catch (e) {
-          // 如果语言文件不存在，返回null（不回退到英语）
-          return null
-        }
-      }
-      
-      // 检查slug是否存在
+      const data = await loadJsonData(locale, 'image-compression.json');
       if (data && data[slug]) {
-        return data[slug]
+        return data[slug];
       }
-      // 如果slug不存在，返回null（不回退到英语）
-      return null
+      return null;
     }
     if (tool === 'image-converter' || tool === 'image-conversion') {
       // 加载独立的 JSON 文件
@@ -596,6 +630,10 @@ export async function getSeoContent(tool: string, slug: string, locale: string =
         return processedData;
       }
       return null;
+    }
+    if (tool === 'emoji-copy-and-paste') {
+      const independentData = await loadToolJsonFile(locale, 'emoji-copy-and-paste', slug);
+      return independentData || null;
     }
     return null;
   } catch (error) {
@@ -623,6 +661,9 @@ export async function getAllSlugs(tool: string, locale: string = 'en'): Promise<
     if (tool === 'font-generator') {
       // 对于 font-generator，使用预定义的 slug 列表
       return Array.isArray(FONT_GENERATOR_SLUGS) ? [...FONT_GENERATOR_SLUGS] : [];
+    }
+    if (tool === 'emoji-copy-and-paste') {
+      return Array.isArray(EMOJI_COPY_PASTE_SLUGS) ? [...EMOJI_COPY_PASTE_SLUGS] : [];
     }
     return [];
   } catch (error) {
@@ -653,6 +694,12 @@ export async function getAllTools(locale: string = 'en'): Promise<Array<{ tool: 
     for (const slug of fontGeneratorSlugs) {
       tools.push({ tool: 'font-generator', slug })
     }
+  }
+  
+  // 添加 Emoji Copy & Paste L3 页面（目前仅英文有内容，其他 locale 回退到英文）
+  const emojiSlugs = await getAllSlugs('emoji-copy-and-paste', locale)
+  for (const slug of emojiSlugs) {
+    tools.push({ tool: 'emoji-copy-and-paste', slug })
   }
   
   return tools

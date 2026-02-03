@@ -9,6 +9,10 @@ interface PageProps {
   }>
 }
 
+// 确保静态生成
+export const dynamic = 'force-static'
+export const dynamicParams = false
+
 export async function generateStaticParams() {
   const slugs = await getAllSlugs('image-converter', 'en')
   return slugs.map((slug) => ({ slug }))
