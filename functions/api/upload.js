@@ -2,6 +2,7 @@
  * Cloudflare Pages Function: 接收图片上传，写入 R2，返回公网 URL。
  * 部署后地址：https://toolaze-web.pages.dev/api/upload
  * 需在 Pages 项目 Settings → Functions → Bindings 中绑定 R2（MY_BUCKET）并设置 R2_PUBLIC_BASE_URL。
+ * 使用单一 onRequest 确保该路径由本 Function 处理，避免被静态或其它逻辑返回 405。
  */
 const CORS = {
   'Access-Control-Allow-Origin': '*',
@@ -9,8 +10,20 @@ const CORS = {
   'Access-Control-Allow-Headers': 'Content-Type',
 };
 
-export async function onRequestPost(context) {
+export async function onRequest(context) {
   const { request, env } = context;
+  const method = request.method;
+
+  if (method === 'OPTIONS') {
+    return new Response(null, { status: 204, headers: CORS });
+  }
+  if (method !== 'POST') {
+    return new Response(JSON.stringify({ error: 'Method not allowed', allow: 'POST, OPTIONS' }), {
+      status: 405,
+      headers: { 'Content-Type': 'application/json', Allow: 'POST, OPTIONS', ...CORS },
+    });
+  }
+
   try {
     const contentType = request.headers.get('Content-Type') || '';
     let blob;
@@ -54,8 +67,4 @@ export async function onRequestPost(context) {
       headers: { 'Content-Type': 'application/json', ...CORS },
     });
   }
-}
-
-export async function onRequestOptions() {
-  return new Response(null, { status: 204, headers: CORS });
 }
