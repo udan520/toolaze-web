@@ -42,6 +42,7 @@ export async function POST(request: NextRequest) {
     const formData = await request.formData()
     const imageFile = formData.get('image') as File | null
     const imageUrl = (formData.get('imageUrl') as string)?.trim() || ''
+    const imageUrlsJson = formData.get('imageUrls') as string | null
     const prompt = (formData.get('prompt') as string)?.trim() || ''
     const aspectRatio = (formData.get('aspectRatio') as string) || '1:1'
     const outputFormat = (formData.get('outputFormat') as string) || 'Auto'
@@ -51,8 +52,31 @@ export async function POST(request: NextRequest) {
     if (!prompt) {
       return NextResponse.json({ error: 'Prompt is required' }, { status: 400 })
     }
-    if (isImageToImage && !imageFile && !imageUrl) {
-      return NextResponse.json({ error: 'Image file or imageUrl is required for image-to-image' }, { status: 400 })
+    
+    // 解析多个图片 URL
+    let imageUrls: string[] = []
+    if (imageUrlsJson) {
+      try {
+        imageUrls = JSON.parse(imageUrlsJson)
+        if (!Array.isArray(imageUrls)) {
+          imageUrls = []
+        }
+      } catch {
+        imageUrls = []
+      }
+    }
+    
+    // 兼容旧版本的单图片 URL
+    if (imageUrl && imageUrls.length === 0) {
+      imageUrls = [imageUrl]
+    }
+    
+    if (isImageToImage && !imageFile && imageUrls.length === 0) {
+      return NextResponse.json({ error: 'At least one image URL is required for image-to-image' }, { status: 400 })
+    }
+    
+    if (isImageToImage && imageUrls.length > 8) {
+      return NextResponse.json({ error: 'Maximum 8 images allowed' }, { status: 400 })
     }
 
     const apiKey = getApiKey()
@@ -62,7 +86,7 @@ export async function POST(request: NextRequest) {
 
     if (!checkAndIncrementDaily()) {
       return NextResponse.json(
-        { error: '今日全站生图次数已达上限，请明天再试。' },
+        { error: 'Daily generation limit reached. Please try again tomorrow.' },
         { status: 429 }
       )
     }
@@ -87,8 +111,8 @@ export async function POST(request: NextRequest) {
 
     // Kie AI 的 image_input 只接受公网 URL，不支持 base64 data URL
     if (isImageToImage) {
-      if (imageUrl) {
-        input.image_input = [imageUrl]
+      if (imageUrls.length > 0) {
+        input.image_input = imageUrls.slice(0, 8) // 最多 8 张图片
       } else if (imageFile && imageFile.size > 0) {
         return NextResponse.json(
           {

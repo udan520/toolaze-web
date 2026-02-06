@@ -10,6 +10,7 @@ import FontGenerator from '@/components/FontGenerator'
 import ImageCompressor from '@/components/ImageCompressor'
 import ImageConverter from '@/components/ImageConverter'
 import EmojiCategoryPage from '@/components/EmojiCategoryPage'
+import NanoBananaTool from '@/components/NanoBananaTool'
 import TrustBar from '@/components/blocks/TrustBar'
 import Intro from '@/components/blocks/Intro'
 import Features from '@/components/blocks/Features'
@@ -193,10 +194,16 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
 
     // 构建面包屑导航
     const pageTitle = content.hero?.h1 ? extractSimpleTitle(content.hero.h1) : 'Font Generator'
-    const breadcrumbItems = [
-      { label: breadcrumbT.home, href: locale === 'en' ? '/' : `/${locale}` },
-      { label: pageTitle },
-    ]
+    const breadcrumbItems = tool === 'nano-banana-pro'
+      ? [
+          { label: breadcrumbT.home, href: '/' },
+          { label: 'Model', href: '/model' },
+          { label: 'Nano Banana Pro' },
+        ]
+      : [
+          { label: breadcrumbT.home, href: locale === 'en' ? '/' : `/${locale}` },
+          { label: pageTitle },
+        ]
 
     // 获取推荐的其他功能（排除当前页面）
     const { getSeoContent } = await import('@/lib/seo-loader')
@@ -249,7 +256,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
         
         <Breadcrumb items={breadcrumbItems} />
 
-        <main className="min-h-screen bg-[#F8FAFF]">
+        <main className="min-h-screen bg-[#F8FAFF] overflow-x-hidden">
           {/* 1. Hero 板块 - 固定在最前面，不参与动态顺序 */}
           {tool === 'font-generator' ? (
             <FontGeneratorHero 
@@ -267,7 +274,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                   )}
                 </h1>
                 {content.hero?.desc && (
-                  <p className="desc-text text-lg md:text-xl max-w-2xl mx-auto">
+                  <p className="desc-text text-lg md:text-xl max-w-4xl mx-auto">
                     {content.hero.desc}
                   </p>
                 )}
@@ -286,7 +293,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                   )}
                 </h1>
                 {content.hero?.desc && (
-                  <p className="desc-text text-lg md:text-xl max-w-2xl mx-auto">
+                  <p className="desc-text text-lg md:text-xl max-w-4xl mx-auto">
                     {content.hero.desc}
                   </p>
                 )}
@@ -305,13 +312,36 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                   )}
                 </h1>
                 {content.hero?.desc && (
-                  <p className="desc-text text-lg md:text-xl max-w-2xl mx-auto">
+                  <p className="desc-text text-lg md:text-xl max-w-4xl mx-auto">
                     {content.hero.desc}
                   </p>
                 )}
               </div>
               <div className="max-w-6xl mx-auto">
                 <EmojiCategoryPage />
+              </div>
+              <TrustBar />
+            </header>
+          ) : tool === 'nano-banana-pro' ? (
+            <header className="bg-[#F8FAFF] pb-12 w-full" style={{ paddingLeft: '24px', paddingRight: '24px' }}>
+              <div className="w-full max-w-full text-center pt-8 mb-12">
+                <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 leading-tight text-slate-900">
+                  {content.hero?.h1 ? (
+                    renderH1WithGradient(content.hero.h1)
+                  ) : (
+                    <>Nano Banana Pro</>
+                  )}
+                </h1>
+                {content.hero?.desc && (
+                  <p className="desc-text text-lg md:text-xl max-w-4xl mx-auto">
+                    {content.hero.desc}
+                  </p>
+                )}
+              </div>
+              <div className="w-full max-w-full">
+                <div className="h-screen flex flex-col overflow-hidden">
+                  <NanoBananaTool />
+                </div>
               </div>
               <TrustBar />
             </header>
@@ -326,7 +356,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                   )}
                 </h1>
                 {content.hero?.desc && (
-                  <p className="text-base md:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+                  <p className="text-base md:text-lg text-slate-600 max-w-4xl mx-auto leading-relaxed">
                     {content.hero.desc}
                   </p>
                 )}

@@ -1,0 +1,120 @@
+{
+  "tool": "nano-banana-pro",
+  "lastUpdated": "2026-02-06",
+  "primaryKeywords": [
+    {
+      "keyword": "nano banana pro",
+      "searchVolume": 0,
+      "difficulty": 0,
+      "type": "primary",
+      "notes": "主关键词，用于 H1 和 Title - 待更新"
+    },
+    {
+      "keyword": "image to image generator",
+      "searchVolume": 0,
+      "difficulty": 0,
+      "type": "primary",
+      "notes": "主关键词，用于 H1 和 Title - 待更新"
+    },
+    {
+      "keyword": "text to image generator",
+      "searchVolume": 0,
+      "difficulty": 0,
+      "type": "primary",
+      "notes": "主关键词，用于 H1 和 Title - 待更新"
+    },
+    {
+      "keyword": "ai image generator",
+      "searchVolume": 0,
+      "difficulty": 0,
+      "type": "primary",
+      "notes": "主关键词，用于 H1 和 Title - 待更新"
+    }
+  ],
+  "longTailKeywords": [
+    {
+      "keyword": "nano banana pro image generator",
+      "searchVolume": 0,
+      "difficulty": 0,
+      "type": "long-tail",
+      "targetPage": "nano-banana-pro",
+      "notes": "长尾关键词，用于特定三级页面 - 待更新"
+    },
+    {
+      "keyword": "image to image ai generator",
+      "searchVolume": 0,
+      "difficulty": 0,
+      "type": "long-tail",
+      "targetPage": "nano-banana-pro",
+      "notes": "长尾关键词，用于特定三级页面 - 待更新"
+    },
+    {
+      "keyword": "text to image ai free",
+      "searchVolume": 0,
+      "difficulty": 0,
+      "type": "long-tail",
+      "targetPage": "nano-banana-pro",
+      "notes": "长尾关键词，用于特定三级页面 - 待更新"
+    },
+    {
+      "keyword": "ai image generator online",
+      "searchVolume": 0,
+      "difficulty": 0,
+      "type": "long-tail",
+      "targetPage": "nano-banana-pro",
+      "notes": "长尾关键词，用于特定三级页面 - 待更新"
+    },
+    {
+      "keyword": "free ai image generator",
+      "searchVolume": 0,
+      "difficulty": 0,
+      "type": "long-tail",
+      "targetPage": "nano-banana-pro",
+      "notes": "长尾关键词，用于特定三级页面 - 待更新"
+    }
+  ],
+  "relatedKeywords": [
+    {
+      "keyword": "image generation",
+      "searchVolume": 0,
+      "difficulty": 0,
+      "type": "related",
+      "notes": "相关关键词，用于内容自然嵌入 - 待更新"
+    },
+    {
+      "keyword": "ai art generator",
+      "searchVolume": 0,
+      "difficulty": 0,
+      "type": "related",
+      "notes": "相关关键词，用于内容自然嵌入 - 待更新"
+    },
+    {
+      "keyword": "image transformation",
+      "searchVolume": 0,
+      "difficulty": 0,
+      "type": "related",
+      "notes": "相关关键词，用于内容自然嵌入 - 待更新"
+    },
+    {
+      "keyword": "photo to art",
+      "searchVolume": 0,
+      "difficulty": 0,
+      "type": "related",
+      "notes": "相关关键词，用于内容自然嵌入 - 待更新"
+    }
+  ],
+  "internalLinking": [
+    {
+      "keyword": "compress image",
+      "targetPage": "image-compressor",
+      "anchorText": "compress images",
+      "notes": "内链关键词，链接到压缩工具页面"
+    },
+    {
+      "keyword": "convert image",
+      "targetPage": "image-converter",
+      "anchorText": "convert images",
+      "notes": "内链关键词，链接到转换工具页面"
+    }
+  ]
+}

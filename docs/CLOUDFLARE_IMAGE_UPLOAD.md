@@ -149,8 +149,11 @@ export default {
    NEXT_PUBLIC_IMAGE_UPLOAD_URL=https://toolaze-web.pages.dev/api/upload
    # 若用单独 Worker：
    # NEXT_PUBLIC_IMAGE_UPLOAD_URL=https://toolaze-image-upload.xxx.workers.dev/upload
+   # 点击下载时走本站 /api/download-image 代理，仅允许该域名下的 R2 链接（与 Pages Function 的 R2_PUBLIC_BASE_URL 一致）：
+   R2_PUBLIC_BASE_URL=https://pub-xxxxx.r2.dev
    ```
    把上面的地址换成你实际使用的上传接口（Pages 用 `https://toolaze-web.pages.dev/api/upload`，单独 Worker 用其完整 URL）。  
+   `R2_PUBLIC_BASE_URL` 填你的 R2 公网域名（与 Workers/Pages 里配置的保持一致），这样「下载」会通过本站代理返回附件，实现直接下载而非新开标签；不填则下载回退为用 `a[download]` 或新开标签。  
    配置后，图生图会先上传图片到 Cloudflare，再用返回的公网 URL 调用 Kie AI；不配置则沿用当前逻辑（后端把图片转成 base64 发给 Kie AI，部分 API 可能不支持）。
 
 **若出现 “Failed to fetch” 或 “图片上传请求失败”**：  

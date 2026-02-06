@@ -542,6 +542,17 @@ export async function getL2SeoContent(tool: string, locale: string = 'en') {
         }
       } else if (tool === 'emoji-copy-and-paste') {
         data = await import('@/data/en/emoji-copy-and-paste.json')
+      } else if (tool === 'nano-banana-pro') {
+        if (normalizedLocale === 'en') {
+          data = await import('@/data/en/nano-banana-pro.json')
+        } else {
+          // 对于其他语言，尝试加载，如果不存在则回退到英语
+          try {
+            data = await import(`@/data/${normalizedLocale}/nano-banana-pro.json`)
+          } catch (e) {
+            data = await import('@/data/en/nano-banana-pro.json')
+          }
+        }
       }
       
       if (data) {
@@ -559,6 +570,8 @@ export async function getL2SeoContent(tool: string, locale: string = 'en') {
             data = await import('@/data/en/image-converter.json')
           } else if (tool === 'emoji-copy-and-paste') {
             data = await import('@/data/en/emoji-copy-and-paste.json')
+          } else if (tool === 'nano-banana-pro') {
+            data = await import('@/data/en/nano-banana-pro.json')
           }
           if (data) {
             return data.default || data
@@ -664,6 +677,10 @@ export async function getAllSlugs(tool: string, locale: string = 'en'): Promise<
     }
     if (tool === 'emoji-copy-and-paste') {
       return Array.isArray(EMOJI_COPY_PASTE_SLUGS) ? [...EMOJI_COPY_PASTE_SLUGS] : [];
+    }
+    if (tool === 'nano-banana-pro') {
+      // Nano Banana Pro currently only has L2 page, no L3 pages
+      return [];
     }
     return [];
   } catch (error) {

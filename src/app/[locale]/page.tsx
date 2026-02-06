@@ -13,23 +13,10 @@ interface PageProps {
   }>
 }
 
-// 确保静态生成
-export const dynamic = 'force-static'
-export const dynamicParams = false
-
 // 为静态导出生成所有语言版本的参数
-export async function generateStaticParams(): Promise<Array<{ locale: string }>> {
-  // 严格定义有效的 locale 列表
-  const validLocales = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
-  
-  // 确保返回的数组不为空
-  if (validLocales.length === 0) {
-    console.warn('No valid locales found, using default "en"')
-    return [{ locale: 'en' }]
-  }
-  
-  // 返回所有有效的 locale 参数
-  return validLocales.map((locale) => ({ locale }))
+export async function generateStaticParams() {
+  const locales = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
+  return locales.map((locale) => ({ locale }))
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {

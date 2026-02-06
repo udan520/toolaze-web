@@ -14,6 +14,8 @@ const defaultNavTranslations = {
   imageConverter: 'Image Converter',
   fontGenerator: 'Font Generator',
   emojiCopyAndPaste: 'Emoji Copy & Paste',
+  aiImage: 'AI Image',
+  nanoBananaPro: 'Nano Banana Pro',
   aboutUs: 'About Us'
 }
 
@@ -432,7 +434,7 @@ export default function Navigation() {
 
   return (
     <nav id="mainNav" ref={navRef} className="sticky-nav w-full">
-      <div className="py-4 px-6 flex justify-center items-center max-w-6xl mx-auto w-full relative">
+      <div className="h-[70px] px-6 flex justify-center items-center max-w-6xl mx-auto w-full relative">
         <Link href={getLocalizedHref('/')} className="absolute left-6 text-3xl font-extrabold text-indigo-600 tracking-tighter flex items-center gap-3 hover:opacity-80 transition-opacity">
           <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="shadow-md shadow-indigo-100 rounded-lg">
             <rect width="40" height="40" rx="12" fill="white"/>
@@ -519,6 +521,38 @@ export default function Navigation() {
               </div>
             </div>
           </div>
+          {/* 一级菜单：AI Image */}
+          <div className="relative group">
+            <button className="hover:text-indigo-600 transition-colors flex items-center gap-1">
+              {navTranslations.aiImage || defaultNavTranslations.aiImage}
+              <svg className="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            {/* 二级菜单下拉 - 使用 pt-1 填充间隙，避免鼠标移动时菜单消失 */}
+            <div className="absolute top-full left-0 pt-1 w-auto min-w-[200px] bg-transparent opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+              <div className="bg-white rounded-xl shadow-lg border border-indigo-50 py-2">
+                <Link
+                  href="/model/nano-banana-pro"
+                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
+                    {/* AI Image 图标 - 使用紫色渐变 */}
+                    <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#aiImageGradient)" opacity="0.2"/>
+                    <path d="M8 8H16M8 12H14M8 16H12" stroke="url(#aiImageGradient)" strokeWidth="2" strokeLinecap="round"/>
+                    <circle cx="18" cy="6" r="2" fill="url(#aiImageGradient)"/>
+                    <defs>
+                      <linearGradient id="aiImageGradient" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+                        <stop stopColor="#9333EA"/>
+                        <stop offset="1" stopColor="#4F46E5"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                  <span>{navTranslations.nanoBananaPro || defaultNavTranslations.nanoBananaPro}</span>
+                </Link>
+              </div>
+            </div>
+          </div>
           <Link href={getLocalizedHref('/about')} className="hover:text-indigo-600 transition-colors">{navTranslations.aboutUs}</Link>
         </div>
 
@@ -597,6 +631,33 @@ export default function Navigation() {
                       </div>
                     )
                   })}
+                </div>
+              </div>
+              {/* AI Image 部分 */}
+              <div className="border-b border-indigo-50 pb-4">
+                <div className="text-sm font-bold text-slate-700 mb-3">{navTranslations.aiImage || defaultNavTranslations.aiImage}</div>
+                <div className="space-y-2">
+                  <Link
+                    href="/model/nano-banana-pro"
+                    onClick={() => {
+                      setMobileMenuOpen(false)
+                      setExpandedSubmenus(new Set())
+                    }}
+                    className="flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
+                  >
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
+                      <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#aiImageGradientMobile)" opacity="0.2"/>
+                      <path d="M8 8H16M8 12H14M8 16H12" stroke="url(#aiImageGradientMobile)" strokeWidth="2" strokeLinecap="round"/>
+                      <circle cx="18" cy="6" r="2" fill="url(#aiImageGradientMobile)"/>
+                      <defs>
+                        <linearGradient id="aiImageGradientMobile" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+                          <stop stopColor="#9333EA"/>
+                          <stop offset="1" stopColor="#4F46E5"/>
+                        </linearGradient>
+                      </defs>
+                    </svg>
+                    <span>{navTranslations.nanoBananaPro || defaultNavTranslations.nanoBananaPro}</span>
+                  </Link>
                 </div>
               </div>
               {/* About Us */}

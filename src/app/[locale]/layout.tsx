@@ -14,18 +14,26 @@ export const dynamic = 'force-static'
 export const dynamicParams = false
 
 // 为静态导出生成所有语言版本的参数
-export async function generateStaticParams(): Promise<Array<{ locale: string }>> {
+// 注意：在 output: 'export' 模式下，必须为所有动态路由生成静态参数
+export async function generateStaticParams() {
   // 严格定义有效的 locale 列表
   const validLocales = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
   
   // 确保返回的数组不为空
-  if (validLocales.length === 0) {
+  if (!validLocales || validLocales.length === 0) {
     console.warn('No valid locales found, using default "en"')
     return [{ locale: 'en' }]
   }
   
   // 返回所有有效的 locale 参数
-  return validLocales.map((locale) => ({ locale }))
+  const params = validLocales.map((locale) => ({ locale }))
+  
+  // 确保至少返回一个参数
+  if (params.length === 0) {
+    return [{ locale: 'en' }]
+  }
+  
+  return params
 }
 
 export async function generateMetadata({ params }: LayoutProps): Promise<Metadata> {

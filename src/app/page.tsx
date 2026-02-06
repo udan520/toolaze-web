@@ -6,6 +6,10 @@ import { loadCommonTranslations } from '@/lib/seo-loader'
 import type { Metadata } from 'next'
 
 
+// 确保静态生成
+export const dynamic = 'force-static'
+export const dynamicParams = false
+
 export const metadata: Metadata = {
   title: 'Toolaze - Free AI Image Compressor & Local Tools',
   description: 'Compress images locally in your browser. No server uploads, 100% private, free AI tools for creators.',

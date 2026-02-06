@@ -28,6 +28,7 @@ export default function NanoBananaPage() {
           <div className="max-w-4xl mx-auto">
             <Breadcrumb items={[
               { label: 'Home', href: '/' },
+              { label: 'Model', href: '/model' },
               { label: 'Nano Banana' },
             ]} />
             <h2 className="text-3xl font-extrabold text-slate-900 mt-8 mb-4">

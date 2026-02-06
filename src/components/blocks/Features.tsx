@@ -69,15 +69,28 @@ export default function Features({ title, features, bgClass = 'bg-white' }: Feat
   const sectionTitle = title || 'Key Features'
 
   return (
-    <section className={`${bgClass} py-24 px-6`}>
-      <div className="max-w-6xl mx-auto">
+    <section 
+      className={`${bgClass} py-24 relative`} 
+      style={{ 
+        width: '100vw', 
+        position: 'relative',
+        left: '50%',
+        right: '50%',
+        marginLeft: '-50vw',
+        marginRight: '-50vw',
+        paddingLeft: '24px',
+        paddingRight: '24px',
+        boxSizing: 'border-box'
+      }}
+    >
+      <div className="w-full max-w-full">
         {/* H2 标题 */}
         <h2 className="text-4xl font-extrabold text-center text-slate-900 mb-12">
           {sectionTitle}
         </h2>
 
         {/* 特性卡片网格 - 2x3 布局（6个特性点） */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
           {features.slice(0, 6).map((feature, idx) => {
             const featureObj = typeof feature === 'object' ? feature : { icon: '📂', title: feature, desc: '' }
             // 优先使用 iconType 字段，如果没有则根据标题匹配
