@@ -13,10 +13,45 @@ Generation failed: Image-to-image requires uploading the image to R2 first to ge
 
 ### 方法 1：在 Cloudflare Pages Dashboard 中设置环境变量（推荐）
 
-1. 登录 [Cloudflare Dashboard](https://dash.cloudflare.com/)
-2. 进入 **Workers & Pages** → 选择你的项目（如 `toolaze-web`）
-3. 点击 **Settings** → **Environment variables**
-4. 添加以下环境变量：
+**详细步骤**：
+
+1. **登录 Cloudflare Dashboard**
+   - 访问：https://dash.cloudflare.com/
+   - 使用你的账号登录
+
+2. **进入 Pages 项目**
+   - 在左侧菜单栏，点击 **"Workers & Pages"**
+   - 在页面中找到并点击你的项目名称（如 `toolaze-web`）
+
+3. **找到 Settings（设置）**
+   - 进入项目后，你会看到顶部有几个标签页：**Overview**、**Deployments**、**Settings** 等
+   - 点击 **"Settings"** 标签页
+
+4. **找到 Environment variables（环境变量）**
+   - 在 Settings 页面中，向下滚动
+   - 找到 **"Builds & deployments"** 部分
+   - 在这个部分中，你会看到 **"Environment variables"** 选项
+   - 点击 **"Environment variables"** 旁边的 **"Add variable"** 或直接点击该部分展开
+
+   **如果找不到，尝试以下位置**：
+   - Settings 页面 → **"Builds & deployments"** → **"Environment variables"**
+   - 或者 Settings 页面 → 直接查找 **"Environment variables"** 部分
+   - 有些界面版本可能在 Settings 页面的顶部或底部
+
+5. **添加环境变量**
+   - 点击 **"Add variable"** 按钮
+   - 选择环境：**Production**（生产环境）
+   - 输入变量名：`NEXT_PUBLIC_IMAGE_UPLOAD_URL`
+   - 输入变量值：`https://toolaze-web.pages.dev/api/upload`
+     - ⚠️ **重要**：将 `toolaze-web.pages.dev` 替换为你实际的 Pages 域名
+     - 如果使用自定义域名，使用自定义域名（如 `https://toolaze.com/api/upload`）
+   - 点击 **"Save"** 保存
+
+6. **（可选）为 Preview 环境也添加**
+   - 再次点击 **"Add variable"**
+   - 选择环境：**Preview**（预览环境）
+   - 输入相同的变量名和值
+   - 点击 **"Save"** 保存
 
 #### Production 环境变量
 
