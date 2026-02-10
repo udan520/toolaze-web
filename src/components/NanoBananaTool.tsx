@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef, useCallback } from 'react'
+import { useState, useRef, useCallback, useEffect } from 'react'
 import SiteImage from './SiteImage'
 import DeleteIcon from './icons/DeleteIcon'
 import CloseIcon from './icons/CloseIcon'
@@ -53,6 +53,23 @@ export default function NanoBananaTool() {
   const [downloadingUrl, setDownloadingUrl] = useState<string | null>(null)
   const [toasts, setToasts] = useState<Array<{ id: string; msg: string; type: string }>>([])
   const fileInputRef = useRef<HTMLInputElement>(null)
+
+  // 全屏预览时禁止底层页面滚动
+  useEffect(() => {
+    if (previewImage) {
+      const prevOverflow = document.body.style.overflow
+      const prevPosition = document.body.style.position
+      const prevWidth = document.body.style.width
+      document.body.style.overflow = 'hidden'
+      document.body.style.position = 'fixed'
+      document.body.style.width = '100%'
+      return () => {
+        document.body.style.overflow = prevOverflow
+        document.body.style.position = prevPosition
+        document.body.style.width = prevWidth
+      }
+    }
+  }, [previewImage])
 
   const showToast = (msg: string, type: 'success' | 'error' | 'warning' | 'info' = 'info') => {
     const id = Math.random().toString(36).substr(2, 9)
@@ -386,63 +403,29 @@ export default function NanoBananaTool() {
     setDownloadingUrl(imageUrl)
     
     try {
-      // 优先使用下载代理（R2 等跨域图，服务端拉取后带 Content-Disposition 返回，实现直接下载）
+      // 优先使用下载代理（R2 白名单内的 URL 才通过，实现直接下载）
       const proxyUrl = `/api/download-image?url=${encodeURIComponent(imageUrl)}&filename=${encodeURIComponent(filename)}`
       
-      // 方法1: 尝试通过 fetch 获取 blob（如果成功，可以更好地控制下载）
-      try {
-        const proxyRes = await fetch(proxyUrl)
-        if (proxyRes.ok) {
-          const blob = await proxyRes.blob()
-          triggerBlobDownload(blob, filename)
-          return
-        }
-        // 如果代理返回403（URL不在白名单），尝试直接下载
-        if (proxyRes.status === 403) {
-          console.warn('Download proxy rejected URL (not in whitelist), trying direct download')
-        }
-        // 如果返回其他错误（如500），继续尝试其他方法，不显示错误（因为浏览器可能已经触发了下载）
-      } catch (error) {
-        // 静默处理错误，继续尝试其他方法
-      }
-
-      // 方法2: 直接使用代理URL作为下载链接（让浏览器自动处理，避免错误提示）
-      // 这样可以确保R2图片通过同域代理下载，即使代理返回错误，浏览器也会尝试下载
-      try {
-        const link = document.createElement('a')
-        link.href = proxyUrl
-        link.download = filename
-        link.style.display = 'none'
-        document.body.appendChild(link)
-        link.click()
-        setTimeout(() => document.body.removeChild(link), 100)
-        // 等待一小段时间确保下载开始
-        await new Promise(resolve => setTimeout(resolve, 500))
+      // 方法1: fetch 代理（R2 等白名单 URL）
+      const proxyRes = await fetch(proxyUrl).catch(() => null)
+      if (proxyRes?.ok) {
+        const blob = await proxyRes.blob()
+        triggerBlobDownload(blob, filename)
         return
-      } catch (error) {
-        // 静默处理错误
+      }
+      // 代理 403/500 时不要再走代理链接，否则会下载错误页面
+
+      // 方法2: 直接 fetch 原始 URL（Kie AI CDN 等，CORS 允许时）
+      const directRes = await fetch(imageUrl, { mode: 'cors', credentials: 'omit' }).catch(() => null)
+      if (directRes?.ok) {
+        const blob = await directRes.blob()
+        triggerBlobDownload(blob, filename)
+        return
       }
 
-      // 方法3: 直接 fetch 原始URL（同域或 CORS 允许时）
-      try {
-        const response = await fetch(imageUrl, {
-          mode: 'cors',
-          credentials: 'omit',
-        }).catch(() => null)
-
-        if (response && response.ok) {
-          const blob = await response.blob()
-          triggerBlobDownload(blob, filename)
-          return
-        }
-      } catch (error) {
-        // 静默处理错误
-      }
-
-      // 方法4: 最后回退到原始URL（可能新开标签）
+      // 方法3: 新开标签打开图片（用户可右键另存为）
       window.open(imageUrl, '_blank', 'noopener,noreferrer')
     } finally {
-      // 延迟清除 loading 状态，确保下载已经开始
       setTimeout(() => setDownloadingUrl(null), 1000)
     }
   }
@@ -454,11 +437,11 @@ export default function NanoBananaTool() {
   }
 
   return (
-    <section className="flex flex-col p-6 md:flex-1 md:min-h-0 md:overflow-hidden">
-      <div className="flex flex-col md:flex-row gap-6 min-w-0 md:flex-1 md:min-h-0">
+    <section className="flex flex-col p-2 md:p-6 md:flex-1 md:min-h-0 md:overflow-hidden">
+      <div className="flex flex-col md:flex-row gap-4 md:gap-6 min-w-0 md:flex-1 md:min-h-0">
         {/* Left: 生图参数区 — 桌面可滚动+固定按钮；h5 上下流式布局，自然高度 */}
         <div className="w-full md:w-[380px] flex-shrink-0 flex flex-col rounded-2xl border border-[#E0E7FF] bg-white shadow-lg shadow-[#4F46E5]/8 overflow-hidden">
-          <div className="p-6 space-y-5 md:flex-1 md:min-h-0 md:overflow-y-auto">
+          <div className="p-2 md:p-6 space-y-4 md:space-y-5 md:flex-1 md:min-h-0 md:overflow-y-auto">
             {/* Tabs */}
             <div className="flex rounded-xl bg-[#EEF2FF] p-1">
               <button
@@ -685,7 +668,7 @@ export default function NanoBananaTool() {
           </div>
 
           {/* Generate 固定底部，始终在第一屏 */}
-          <div className="flex-shrink-0 p-6 pt-4 border-t border-[#E0E7FF] bg-white">
+          <div className="flex-shrink-0 p-2 md:p-6 pt-4 border-t border-[#E0E7FF] bg-white">
             <div className="flex gap-3">
               <button
                 type="button"
@@ -706,7 +689,7 @@ export default function NanoBananaTool() {
 
         {/* Middle: Generated Image (shown when result exists) or Generating Animation */}
         {isGenerating ? (
-          <div className="flex-1 min-w-0 bg-white rounded-2xl border border-[#E0E7FF] shadow-lg shadow-[#4F46E5]/8 flex items-center justify-center p-8">
+          <div className="flex-1 min-w-0 bg-white rounded-2xl border border-[#E0E7FF] shadow-lg shadow-[#4F46E5]/8 flex items-center justify-center p-2 md:p-8">
             <div className="flex flex-col items-center gap-4">
               <div className="flex gap-2">
                 <div className="w-3 h-3 rounded-full bg-[#4F46E5] animate-pulse" style={{ animationDelay: '0s' }} />
@@ -718,7 +701,7 @@ export default function NanoBananaTool() {
             </div>
           </div>
         ) : currentResult && rightMode === 'result' ? (
-          <div className="flex-1 min-w-0 min-h-[400px] md:min-h-0 bg-white rounded-2xl border border-[#E0E7FF] shadow-lg shadow-[#4F46E5]/8 flex flex-col items-center justify-center p-8 relative z-10">
+          <div className="flex-1 min-w-0 min-h-[400px] md:min-h-0 bg-white rounded-2xl border border-[#E0E7FF] shadow-lg shadow-[#4F46E5]/8 flex flex-col items-center justify-center p-2 md:p-8 relative z-10">
             <img 
               src={currentResult.outputPreview} 
               alt="Generated" 
@@ -758,7 +741,7 @@ export default function NanoBananaTool() {
             </div>
           )}
 
-          <div className={`flex-1 overflow-auto p-8 flex flex-col ${rightMode === 'result' || rightMode === 'history' ? 'justify-start' : 'items-center justify-center'}`}>
+          <div className={`flex-1 overflow-auto p-2 md:p-8 flex flex-col ${rightMode === 'result' || rightMode === 'history' ? 'justify-start' : 'items-center justify-center'}`}>
             {rightMode === 'sample' && (
               <>
                 <h3 className="text-slate-700 font-semibold text-base uppercase tracking-wider mb-8">Sample image</h3>
@@ -810,12 +793,7 @@ export default function NanoBananaTool() {
                         
                         try {
                           await navigator.clipboard.writeText(currentResult.prompt)
-                          // 临时显示成功反馈
-                          const originalTitle = btn.getAttribute('title') || 'Copy prompt'
-                          btn.setAttribute('title', 'Copied!')
-                          setTimeout(() => {
-                            btn.setAttribute('title', originalTitle)
-                          }, 2000)
+                          showToast('Prompt copied to clipboard', 'success')
                         } catch (err) {
                           console.error('Failed to copy:', err)
                           // 降级方案：使用传统方法
@@ -827,13 +805,10 @@ export default function NanoBananaTool() {
                           textArea.select()
                           try {
                             document.execCommand('copy')
-                            const originalTitle = btn.getAttribute('title') || 'Copy prompt'
-                            btn.setAttribute('title', 'Copied!')
-                            setTimeout(() => {
-                              btn.setAttribute('title', originalTitle)
-                            }, 2000)
+                            showToast('Prompt copied to clipboard', 'success')
                           } catch (fallbackErr) {
                             console.error('Fallback copy failed:', fallbackErr)
+                            showToast('Failed to copy prompt', 'error')
                           }
                           document.body.removeChild(textArea)
                         }
@@ -1110,17 +1085,17 @@ export default function NanoBananaTool() {
         )}
       </div>
 
-      {/* Image Preview Modal */}
+      {/* Image Preview Modal - 点击非图片区域（背景）可退出 */}
       {previewImage && (
         <div 
-          className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4 cursor-pointer"
+          className="fixed inset-0 bg-black/80 z-[10050] flex items-center justify-center p-2 md:p-6 cursor-pointer overflow-hidden"
           onClick={() => setPreviewImage(null)}
         >
-          <div className="relative max-w-7xl max-h-full" onClick={(e) => e.stopPropagation()}>
+          <div className="relative" onClick={(e) => e.stopPropagation()}>
             <img 
               src={previewImage} 
               alt="Preview" 
-              className="max-w-full max-h-[90vh] object-contain rounded-lg cursor-default"
+              className="max-w-[calc(100vw-16px)] max-h-[calc(100vh-16px)] md:max-w-[calc(100vw-48px)] md:max-h-[calc(100vh-48px)] w-auto h-auto object-contain rounded-lg cursor-default"
             />
             <button
               type="button"
@@ -1128,7 +1103,7 @@ export default function NanoBananaTool() {
                 e.stopPropagation()
                 setPreviewImage(null)
               }}
-              className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white hover:bg-white flex items-center justify-center shadow-lg transition-colors z-10 cursor-pointer text-slate-600"
+              className="absolute top-2 right-2 md:top-6 md:right-6 w-10 h-10 rounded-full bg-white hover:bg-white flex items-center justify-center shadow-lg transition-colors z-10 cursor-pointer text-slate-600 [&_svg]:flex-shrink-0"
               aria-label="Close"
             >
               <CloseIcon size={20} />

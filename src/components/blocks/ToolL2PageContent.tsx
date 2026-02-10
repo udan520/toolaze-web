@@ -323,8 +323,8 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
               <TrustBar />
             </header>
           ) : tool === 'nano-banana-pro' ? (
-            <header className="bg-[#F8FAFF] pb-12 w-full" style={{ paddingLeft: '24px', paddingRight: '24px' }}>
-              <div className="w-full max-w-full text-center pt-8 mb-12">
+            <header className="bg-[#F8FAFF] pb-6 md:pb-12 w-full px-2 md:px-6">
+              <div className="w-full max-w-full text-center pt-6 md:pt-8 mb-6 md:mb-12">
                 <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 leading-tight text-slate-900">
                   {content.hero?.h1 ? (
                     renderH1WithGradient(content.hero.h1)

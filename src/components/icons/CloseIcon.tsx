@@ -14,6 +14,7 @@ export default function CloseIcon({ size = 20, className }: CloseIconProps) {
       width={size}
       height={size}
       fill="currentColor"
+      style={{ display: 'block', flexShrink: 0 }}
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden
     >
