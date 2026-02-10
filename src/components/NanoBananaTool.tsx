@@ -154,53 +154,49 @@ export default function NanoBananaTool() {
       formData.append('outputFormat', outputFormat)
       formData.append('isImageToImage', String(activeTab === 'image-to-image'))
 
+      // 获取上传 URL，优先使用环境变量，否则使用本地 API 路由作为回退
       const uploadUrl = typeof process.env.NEXT_PUBLIC_IMAGE_UPLOAD_URL === 'string'
         ? process.env.NEXT_PUBLIC_IMAGE_UPLOAD_URL.trim()
-        : ''
+        : '/api/upload' // 回退到本地 API 路由
+      
       if (activeTab === 'image-to-image' && imageFiles.length > 0) {
-        if (uploadUrl) {
-          // 批量上传所有图片
-          const imageUrls: string[] = []
-          for (const imageItem of imageFiles) {
-            const uploadForm = new FormData()
-            uploadForm.append('image', imageItem.file)
-            let uploadRes: Response
-            try {
-              uploadRes = await fetch(uploadUrl, { method: 'POST', body: uploadForm })
-            } catch (e: any) {
-              const msg = e?.message || ''
-              if (msg.includes('fetch') || msg.includes('NetworkError') || msg.includes('Failed to fetch')) {
-                throw new Error(
-                  'Image upload request failed. Please check: 1) NEXT_PUBLIC_IMAGE_UPLOAD_URL is a valid Worker URL (e.g., https://xxx.workers.dev); 2) Worker is deployed; 3) Check browser console for CORS or network errors.'
-                )
-              }
-              throw e
+        // 批量上传所有图片
+        const imageUrls: string[] = []
+        for (const imageItem of imageFiles) {
+          const uploadForm = new FormData()
+          uploadForm.append('image', imageItem.file)
+          let uploadRes: Response
+          try {
+            uploadRes = await fetch(uploadUrl, { method: 'POST', body: uploadForm })
+          } catch (e: any) {
+            const msg = e?.message || ''
+            if (msg.includes('fetch') || msg.includes('NetworkError') || msg.includes('Failed to fetch')) {
+              throw new Error(
+                'Image upload request failed. Please check: 1) NEXT_PUBLIC_IMAGE_UPLOAD_URL is a valid Worker URL (e.g., https://xxx.workers.dev); 2) Worker is deployed; 3) Check browser console for CORS or network errors.'
+              )
             }
-            if (!uploadRes.ok) {
-              const err = await uploadRes.json().catch(() => ({}))
-              const msg = err?.error || `Upload failed: ${uploadRes.status}`
-              if (uploadRes.status === 405) {
-                throw new Error(
-                  msg +
-                    ' Please ensure NEXT_PUBLIC_IMAGE_UPLOAD_URL is the complete upload URL (e.g., https://toolaze-web.pages.dev/api/upload) and do not omit the trailing /api/upload.'
-                )
-              }
-              throw new Error(msg)
-            }
-            const { url } = await uploadRes.json()
-            if (url) {
-              imageUrls.push(url)
-            } else {
-              throw new Error('Upload did not return url')
-            }
+            throw e
           }
-          // 将所有 URL 作为 JSON 字符串传递
-          formData.append('imageUrls', JSON.stringify(imageUrls))
-        } else {
-          throw new Error(
-            'Image-to-image requires uploading the image to R2 first to get a public URL. Please set NEXT_PUBLIC_IMAGE_UPLOAD_URL in .env.local to your Cloudflare Worker upload URL.'
-          )
+          if (!uploadRes.ok) {
+            const err = await uploadRes.json().catch(() => ({}))
+            const msg = err?.error || `Upload failed: ${uploadRes.status}`
+            if (uploadRes.status === 405) {
+              throw new Error(
+                msg +
+                  ' Please ensure NEXT_PUBLIC_IMAGE_UPLOAD_URL is the complete upload URL (e.g., https://toolaze-web.pages.dev/api/upload) and do not omit the trailing /api/upload. If using Pages Functions, ensure functions/api/upload.js is deployed.'
+              )
+            }
+            throw new Error(msg)
+          }
+          const { url } = await uploadRes.json()
+          if (url) {
+            imageUrls.push(url)
+          } else {
+            throw new Error('Upload did not return url')
+          }
         }
+        // 将所有 URL 作为 JSON 字符串传递
+        formData.append('imageUrls', JSON.stringify(imageUrls))
       }
 
       const generateResponse = await fetch('/api/image-to-image', {
