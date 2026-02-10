@@ -4,6 +4,9 @@ import { NextRequest, NextResponse } from 'next/server'
 // 注意：静态导出构建时会报错，但开发模式可以运行
 // 生产环境使用 Cloudflare Pages Functions (functions/api/save-image-to-r2.js)
 
+// 静态导出模式配置
+export const dynamic = 'force-static'
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json().catch(() => ({}))

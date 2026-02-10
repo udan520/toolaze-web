@@ -6,6 +6,9 @@ const KIE_AI_BASE = 'https://api.kie.ai/api/v1/jobs'
 // 注意：静态导出构建时会报错，但开发模式可以运行
 // 生产环境使用 Cloudflare Pages Functions (functions/api/image-to-image.js)
 
+// 静态导出模式配置
+export const dynamic = 'force-static'
+
 function getDailyCap(): number | undefined {
   const cap = process.env.NANO_BANANA_DAILY_CAP
   if (cap === undefined || cap === '') return undefined

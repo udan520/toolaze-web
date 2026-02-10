@@ -5,6 +5,9 @@ import { NextRequest, NextResponse } from 'next/server'
  * 注意：静态导出构建时会报错，但开发模式可以运行
  * 生产环境使用 Cloudflare Pages Functions (functions/api/upload.js)
  */
+
+// 静态导出模式配置
+export const dynamic = 'force-static'
 export async function POST(request: NextRequest) {
   try {
     // 获取上传 URL（优先使用环境变量，否则使用默认的 Pages Function URL）

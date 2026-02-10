@@ -4,6 +4,9 @@ import { NextRequest, NextResponse } from 'next/server'
  * 生成图片 alt 文本的 API 路由
  * 使用 OpenAI Vision API 或其他图像识别服务
  */
+
+// 静态导出模式配置
+export const dynamic = 'force-static'
 export async function POST(request: NextRequest) {
   try {
     const { imageUrl } = await request.json()
