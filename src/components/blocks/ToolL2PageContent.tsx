@@ -339,7 +339,8 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                 )}
               </div>
               <div className="w-full max-w-full">
-                <div className="h-screen flex flex-col overflow-hidden">
+                {/* H5: 移除固定高度，让内容自然流式布局；桌面端保持固定高度 */}
+                <div className="flex flex-col md:h-screen md:overflow-hidden">
                   <NanoBananaTool />
                 </div>
               </div>
@@ -517,7 +518,13 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
               
               {/* View All Related Tools 入口 - 始终显示 */}
               <ViewAllToolsButton
-                href={locale === 'en' ? `/${tool}/all-tools` : `/${locale}/${tool}/all-tools`}
+                href={
+                  tool === 'nano-banana-pro' 
+                    ? '/model' 
+                    : locale === 'en' 
+                      ? `/${tool}/all-tools` 
+                      : `/${locale}/${tool}/all-tools`
+                }
                 text={t?.common?.viewAllTools?.related || 'View All Related Tools'}
                 variant="related"
               />

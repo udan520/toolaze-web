@@ -2,7 +2,10 @@ import { NextRequest, NextResponse } from 'next/server'
 
 const KIE_AI_BASE = 'https://api.kie.ai/api/v1/jobs'
 
-// 每日全站生图次数上限（按自然日，进程内计数；多实例/持久化请用 KV 或 Redis，见 docs/DAILY_LIMIT.md）
+// 本地开发用：与 functions/api/image-to-image.js 逻辑一致
+// 注意：静态导出构建时会报错，但开发模式可以运行
+// 生产环境使用 Cloudflare Pages Functions (functions/api/image-to-image.js)
+
 function getDailyCap(): number | undefined {
   const cap = process.env.NANO_BANANA_DAILY_CAP
   if (cap === undefined || cap === '') return undefined
@@ -31,10 +34,10 @@ function getApiKey(): string | undefined {
 
 function mapOutputFormat(format: string): string | undefined {
   const f = format?.toLowerCase()
-  if (f === 'auto') return undefined // Auto: 不传 output_format，让 API 使用默认值
+  if (f === 'auto') return undefined
   if (f === 'jpg' || f === 'jpeg') return 'jpg'
   if (f === 'png') return 'png'
-  return 'png' // 默认值
+  return 'png'
 }
 
 export async function POST(request: NextRequest) {
@@ -53,7 +56,6 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Prompt is required' }, { status: 400 })
     }
     
-    // 解析多个图片 URL
     let imageUrls: string[] = []
     if (imageUrlsJson) {
       try {
@@ -65,8 +67,6 @@ export async function POST(request: NextRequest) {
         imageUrls = []
       }
     }
-    
-    // 兼容旧版本的单图片 URL
     if (imageUrl && imageUrls.length === 0) {
       imageUrls = [imageUrl]
     }
@@ -103,16 +103,14 @@ export async function POST(request: NextRequest) {
       resolution: resolution === '2K' || resolution === '4K' ? resolution : '1K',
     }
     
-    // output_format 是 Optional，只有非 "Auto" 时才传
     const mappedFormat = mapOutputFormat(outputFormat)
     if (mappedFormat) {
       input.output_format = mappedFormat
     }
 
-    // Kie AI 的 image_input 只接受公网 URL，不支持 base64 data URL
     if (isImageToImage) {
       if (imageUrls.length > 0) {
-        input.image_input = imageUrls.slice(0, 8) // 最多 8 张图片
+        input.image_input = imageUrls.slice(0, 8)
       } else if (imageFile && imageFile.size > 0) {
         return NextResponse.json(
           {

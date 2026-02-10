@@ -1,43 +1,24 @@
 import { NextRequest, NextResponse } from 'next/server'
 
-// 本地开发用：代理到 Cloudflare Pages Function
-// 注意：静态导出构建时会报错，但开发模式可以运行
-// 生产环境使用 Cloudflare Pages Functions (functions/api/save-image-to-r2.js)
-
+/**
+ * 本地开发用：代理到 Cloudflare Pages Function
+ * 注意：静态导出构建时会报错，但开发模式可以运行
+ * 生产环境使用 Cloudflare Pages Functions (functions/api/upload.js)
+ */
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json().catch(() => ({}))
-    const imageUrl = (body.imageUrl ?? body.url ?? '').trim()
-    if (!imageUrl || !imageUrl.startsWith('http')) {
-      return NextResponse.json({ error: 'Missing or invalid imageUrl' }, { status: 400 })
-    }
-
+    // 获取上传 URL（优先使用环境变量，否则使用默认的 Pages Function URL）
     const uploadUrl =
       typeof process.env.IMAGE_UPLOAD_URL === 'string'
         ? process.env.IMAGE_UPLOAD_URL.trim()
         : typeof process.env.NEXT_PUBLIC_IMAGE_UPLOAD_URL === 'string'
           ? process.env.NEXT_PUBLIC_IMAGE_UPLOAD_URL.trim()
-          : ''
+          : 'https://toolaze-web.pages.dev/api/upload'
 
-    if (!uploadUrl) {
-      return NextResponse.json(
-        { error: 'IMAGE_UPLOAD_URL or NEXT_PUBLIC_IMAGE_UPLOAD_URL not set' },
-        { status: 500 }
-      )
-    }
+    // 获取原始请求的 FormData
+    const formData = await request.formData()
 
-    const resp = await fetch(imageUrl, { redirect: 'follow' })
-    if (!resp.ok) {
-      return NextResponse.json(
-        { error: `Failed to fetch image: ${resp.status}` },
-        { status: 502 }
-      )
-    }
-
-    const blob = await resp.blob()
-    const formData = new FormData()
-    formData.append('image', blob)
-
+    // 转发到 Cloudflare Pages Function
     const uploadRes = await fetch(uploadUrl, {
       method: 'POST',
       body: formData,
@@ -57,9 +38,9 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Upload did not return url' }, { status: 502 })
     }
 
-    return NextResponse.json({ url })
+    return NextResponse.json({ url, key: (data as { key?: string }).key })
   } catch (error: unknown) {
-    console.error('save-image-to-r2 error:', error)
+    console.error('upload error:', error)
     return NextResponse.json(
       { error: error instanceof Error ? error.message : 'Internal server error' },
       { status: 500 }

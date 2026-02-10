@@ -153,7 +153,40 @@
      - 开发者场景 → 💻（电脑）
      - 电商场景 → 🛒（购物车）
 
-5. **FAQ 板块规范**
+5. **Rating 板块规范**
+   - **结构要求**：Rating 板块包含 `title`、`rating` 和 `text` 三个字段
+   - **title 字段**：
+     - 通用标题：`"Trusted by Thousands of Creators"`（用于 L2 页面）
+     - 或工具特定标题：`"Trusted for [Tool Name]"`（用于 L3 页面）
+   - **rating 字段**：
+     - 统一格式：`"4.9/5 FROM 10K+ CREATORS"`（L2 页面）
+     - 或：`"4.9/5 FROM 10K+ USERS"`（L3 页面）
+   - **text 字段（核心要求）**：
+     - **必须根据每个落地页的具体内容编写**，不能使用通用模板
+     - **格式要求**：
+       - 开头：用户评价引语（可选，用引号包裹）
+       - 主体：`"Join thousands of satisfied users who trust Toolaze for [工具核心功能], [核心优势1], and [核心优势2]. [额外说明]."`
+     - **内容要求**：
+       - 必须提及工具的核心功能（如：image compression, image conversion, font generation, AI image generation）
+       - 必须包含 2-3 个核心优势（如：fast, secure, free, private processing, no registration）
+       - 必须根据工具的实际特性调整描述：
+         - **本地处理工具**（如 image-compressor, image-converter）：强调 "100% private processing"、"local processing"、"no uploads"
+         - **API 调用工具**（如 nano-banana-pro）：强调 "no sign up required"、"fast generation"、"free forever"，**不能**说 "100% private processing"
+       - 可以添加工具特定的额外说明（如分辨率、格式支持等）
+     - **示例（本地处理工具）**：
+       - Image Compressor: `"Join thousands of satisfied users who trust Toolaze for fast, secure, and free image compression. No registration required, 100% private processing."`
+       - Image Converter: `"Join thousands of satisfied users who trust Toolaze for fast, secure, and free image conversion. No registration required, 100% private processing."`
+     - **示例（API 调用工具）**：
+       - Nano Banana Pro: `"Join thousands of satisfied users who trust Toolaze for fast, secure, and free AI image generation. No registration required, no sign up needed. Generate high-quality 4K images with Nano Banana Pro."`
+     - **示例（L3 页面特定）**：
+       - HEIC to JPG: `"\"Finally met the 20KB limit for my government exam registration! No more upload errors.\" - Join thousands of applicants who trust Toolaze for official portal compliance."`
+       - Font Generator Cursive: `"\"The best cursive font generator I've found. Instant results and works perfectly on Instagram!\" - Join thousands of users who trust Toolaze for beautiful cursive text generation."`
+   - **最佳实践**：
+     - L2 页面：使用通用格式，强调工具类别和核心优势
+     - L3 页面：可以添加用户评价引语，更具体地描述该页面的特定用途
+     - 确保描述与工具的实际处理方式一致（本地处理 vs API 调用）
+
+6. **FAQ 板块规范**
    - **数量要求**：每个三级页面的 FAQ 板块**至少**要有 5 个问题
    - **内容定制**：FAQ 必须根据不同的三级页面来定制，不能使用通用的 FAQ
    - **长尾关键词覆盖**：尽可能覆盖一些长尾关键词，提高 SEO 效果
@@ -439,11 +472,37 @@
 
 ---
 
+## 关键词密度和布局规范
+
+### 主关键词密度要求
+- **推荐密度**：1-2%
+- **最低要求**：0.5%
+- **最高限制**：3%（避免关键词堆砌）
+
+### 关键词分布优先级
+1. **Title**（最重要）：主关键词 + 品牌名
+2. **H1**（最重要）：主关键词（精确匹配或变体）
+3. **Meta Description**（重要）：主关键词 + 1-2 个长尾关键词
+4. **前 100 字**（重要）：主关键词出现 1-2 次
+5. **内容段落**：自然嵌入相关关键词
+6. **FAQ**：长尾关键词自然嵌入
+
+### Rating 板块关键词要求
+- **必须根据每个落地页的具体内容编写**，不能使用通用模板
+- **格式**：`"Join thousands of satisfied users who trust Toolaze for [工具核心功能], [核心优势1], and [核心优势2]. [额外说明]."`
+- **必须包含**：工具的核心功能关键词 + 2-3 个核心优势关键词
+- **根据工具特性调整**：
+  - **本地处理工具**：强调 "100% private processing"、"local processing"
+  - **API 调用工具**：强调 "no sign up required"、"fast generation"，**不能**说 "100% private processing"
+
+详细规范见：`docs/keywords/KEYWORD_DENSITY_GUIDELINES.md`
+
 ## 文件位置
 
 - **功能介绍**：`docs/FEATURE_SPECIFICATIONS.md`
 - **SEO 规范**：`docs/SEO_CONTENT_GUIDELINES.md`（本文件）
 - **页面布局**：`docs/SEO_MASTER_LAYOUT.md`
+- **关键词密度指南**：`docs/keywords/KEYWORD_DENSITY_GUIDELINES.md`
 
 ---
 

@@ -5,6 +5,17 @@ const nextConfig = {
   output: 'export',
   images: {
     unoptimized: true, // 静态导出必须禁用 Next.js 的默认图片优化
+    // 允许从 Cloudflare R2 加载远程图片
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**.r2.dev', // 匹配所有 R2 子域名（如 pub-xxxxx.r2.dev）
+      },
+      {
+        protocol: 'https',
+        hostname: '**.r2.cloudflarestorage.com', // R2 自定义域名（如果使用）
+      },
+    ],
   },
   // 注意：静态导出模式下无法使用 rewrites，所以无法代理 Hugging Face 请求
   // Transformers.js 需要直接从 Hugging Face 加载模型文件

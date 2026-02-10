@@ -22,6 +22,8 @@ interface PageProps {
 
 // 确保静态生成
 export const dynamic = 'force-static'
+// 禁用动态参数：只生成 generateStaticParams 中定义的路径
+// 无效路径（如 /nano-banana-pro/all-tools）会在运行时返回 404
 export const dynamicParams = false
 
 // 生成所有静态参数（静态导出必需：output: export 下必须预生成所有 [locale]/[tool] 组合）
@@ -42,6 +44,18 @@ export default async function ToolPage({ params }: PageProps) {
 
   if (!tool) {
     redirect('/')
+    return null
+  }
+
+  // 检查 locale 是否有效（防止 nano-banana-pro 等被误识别为 locale）
+  if (!SUPPORTED_LOCALES.includes(locale as any)) {
+    notFound()
+    return null
+  }
+
+  // 检查 tool 是否在支持列表中
+  if (!ALL_TOOLS.includes(tool as any)) {
+    notFound()
     return null
   }
 

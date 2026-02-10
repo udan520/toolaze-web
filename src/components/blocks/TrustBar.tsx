@@ -11,13 +11,34 @@ const defaultTrustBar = {
   noServerLogs: 'No Server Logs'
 }
 
-async function loadTrustBarTranslations(locale: string) {
+async function loadTrustBarTranslations(locale: string, tool?: string) {
   try {
     let normalizedLocale = locale
     if (locale === 'zh' || locale === 'zh-CN' || locale === 'zh-HK') {
       normalizedLocale = 'zh-TW'
     }
     
+    // 如果是 nano-banana-pro，从工具特定的 JSON 文件加载
+    if (tool === 'nano-banana-pro') {
+      try {
+        if (normalizedLocale === 'en') {
+          const data = await import('@/data/en/nano-banana-pro.json')
+          return data.default?.trustBar || defaultTrustBar
+        }
+        try {
+          const data = await import(`@/data/${normalizedLocale}/nano-banana-pro.json`)
+          return data.default?.trustBar || defaultTrustBar
+        } catch {
+          // 回退到英语
+          const data = await import('@/data/en/nano-banana-pro.json')
+          return data.default?.trustBar || defaultTrustBar
+        }
+      } catch {
+        return defaultTrustBar
+      }
+    }
+    
+    // 其他工具从 common.json 加载
     if (normalizedLocale === 'en') {
       const data = await import('@/data/en/common.json')
       return data.default?.common?.fontGenerator?.trustBar || defaultTrustBar
@@ -45,7 +66,15 @@ export default function TrustBar() {
     const firstPart = pathParts[0] || ''
     const detectedLocale = locales.includes(firstPart) ? firstPart : 'en'
     
-    loadTrustBarTranslations(detectedLocale).then(setTrustBar)
+    // 检测当前工具
+    let tool: string | undefined
+    if (pathname.includes('/model/nano-banana-pro')) {
+      tool = 'nano-banana-pro'
+    } else if (pathname.includes('/font-generator')) {
+      tool = 'font-generator'
+    }
+    
+    loadTrustBarTranslations(detectedLocale, tool).then(setTrustBar)
   }, [pathname])
   
   return (

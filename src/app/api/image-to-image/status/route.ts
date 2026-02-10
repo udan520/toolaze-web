@@ -2,6 +2,10 @@ import { NextRequest, NextResponse } from 'next/server'
 
 const KIE_AI_BASE = 'https://api.kie.ai/api/v1/jobs'
 
+// 本地开发用：与 functions/api/image-to-image/status.js 逻辑一致
+// 注意：静态导出构建时会报错，但开发模式可以运行
+// 生产环境使用 Cloudflare Pages Functions (functions/api/image-to-image/status.js)
+
 function getApiKey(): string | undefined {
   return process.env.KIE_AI_API_KEY ?? process.env.DASHSCOPE_API_KEY
 }

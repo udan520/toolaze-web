@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useRef, useCallback } from 'react'
+import SiteImage from './SiteImage'
 
 type RightPanelMode = 'sample' | 'generating' | 'history' | 'result'
 
@@ -45,7 +46,6 @@ export default function NanoBananaTool() {
   const [rightMode, setRightMode] = useState<RightPanelMode>('sample')
   const [history, setHistory] = useState<HistoryItem[]>([])
   const [currentResult, setCurrentResult] = useState<HistoryItem | null>(null)
-  const [sampleIndex, setSampleIndex] = useState(0)
   const [previewImage, setPreviewImage] = useState<string | null>(null)
   const [downloadingUrl, setDownloadingUrl] = useState<string | null>(null)
   const [toasts, setToasts] = useState<Array<{ id: string; msg: string; type: string }>>([])
@@ -448,11 +448,11 @@ export default function NanoBananaTool() {
     }
   }
 
-  // Placeholder sample images (can replace with real URLs)
-  const sampleImages = [
-    { caption: 'Sample output 1', color: 'bg-slate-200' },
-    { caption: 'Sample output 2', color: 'bg-slate-300' },
-  ]
+  // 示例图片配置（单张图片，无轮播）
+  const sampleImage = {
+    url: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/e0f5e8adf47a44afb6a4ab9fb5a27b3f.webp',
+    caption: 'Sample output'
+  }
 
   return (
     <section className="flex flex-col p-6 md:flex-1 md:min-h-0 md:overflow-hidden">
@@ -726,12 +726,12 @@ export default function NanoBananaTool() {
             </div>
           </div>
         ) : currentResult && rightMode === 'result' ? (
-          <div className="flex-1 min-w-0 bg-white rounded-2xl border border-[#E0E7FF] shadow-lg shadow-[#4F46E5]/8 flex flex-col items-center justify-center p-8">
+          <div className="flex-1 min-w-0 min-h-[400px] md:min-h-0 bg-white rounded-2xl border border-[#E0E7FF] shadow-lg shadow-[#4F46E5]/8 flex flex-col items-center justify-center p-8 relative z-10">
             <img 
               src={currentResult.outputPreview} 
               alt="Generated" 
               onClick={() => setPreviewImage(currentResult.outputPreview)}
-              className="max-w-full max-h-full object-contain rounded-xl cursor-pointer hover:opacity-90 transition-opacity" 
+              className="max-w-full max-h-[60vh] md:max-h-full object-contain rounded-xl cursor-pointer hover:opacity-90 transition-opacity" 
             />
             <p className="mt-4 text-xs text-slate-500 text-center">
               The image will disappear after you refresh the page. Please download it as soon as possible.
@@ -770,26 +770,21 @@ export default function NanoBananaTool() {
             {rightMode === 'sample' && (
               <>
                 <h3 className="text-slate-700 font-semibold text-base uppercase tracking-wider mb-8">Sample image</h3>
-                <div className="relative w-full max-w-4xl flex justify-center items-center gap-6 md:gap-10">
-                  <button
-                    type="button"
-                    onClick={() => setSampleIndex((i) => (i <= 0 ? sampleImages.length - 1 : i - 1))}
-                    className="w-12 h-12 rounded-full bg-[#EEF2FF] text-[#4F46E5] flex items-center justify-center hover:bg-[#C7D2FE] transition-colors flex-shrink-0 shadow-sm"
-                    aria-label="Previous"
-                  >
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-                  </button>
-                  <div className={`w-72 aspect-[4/3] md:w-96 rounded-2xl ${sampleImages[sampleIndex % sampleImages.length].color} flex items-center justify-center text-slate-500 text-sm ring-1 ring-slate-200/50 shadow-inner flex-shrink-0`}>
-                    Sample {sampleIndex % sampleImages.length + 1}
+                <div className="w-full flex-1 flex justify-center items-center min-h-0">
+                  <div className="w-full h-full rounded-2xl overflow-hidden ring-1 ring-slate-200/50 shadow-inner flex items-center justify-center p-2">
+                    <SiteImage
+                      src={sampleImage.url}
+                      autoAlt={true}
+                      width={800}
+                      height={600}
+                      className="w-full h-full"
+                      style={{
+                        objectFit: 'contain',
+                        width: '100%',
+                        height: '100%'
+                      }}
+                    />
                   </div>
-                  <button
-                    type="button"
-                    onClick={() => setSampleIndex((i) => (i + 1) % sampleImages.length)}
-                    className="w-12 h-12 rounded-full bg-[#EEF2FF] text-[#4F46E5] flex items-center justify-center hover:bg-[#C7D2FE] transition-colors flex-shrink-0 shadow-sm"
-                    aria-label="Next"
-                  >
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6"/></svg>
-                  </button>
                 </div>
               </>
             )}

@@ -2,32 +2,32 @@
   "in_menu": true,
   "metadata": {
     "title": "Nano Banana Pro - Free AI Image Generator (Image to Image & Text to Image) | Toolaze",
-    "description": "Generate stunning images with Nano Banana Pro AI. Free AI image generator with no sign up required. Transform photos with image-to-image or create art from text prompts. No registration, no credit card needed. Fast and high-quality image generation online."
+    "description": "Nano Banana Pro - Free AI image generator online. Generate 4K images with no sign up. Text-to-image and image-to-image AI generator featuring fast generation, no registration, and free art creation."
   },
   "sectionsOrder": [
     "howToUse",
+    "examples",
     "features",
     "intro",
-    "performanceMetrics",
     "comparison",
     "scenes",
     "rating",
     "faq"
   ],
   "hero": {
-    "h1": "Nano Banana <span class=\"text-gradient\">Pro</span> AI Image Generator",
-    "desc": "Transform your images with AI-powered generation. Upload a photo for image-to-image transformation or create stunning art from text prompts. Free, no sign up required, no registration needed. Fast and high-quality results."
+    "h1": "Nano Banana <span class=\"text-gradient\">Pro</span>: The Ultimate Free AI Art Generator",
+    "desc": "Experience 4K Text-to-Image and Image-to-Image generation with this free AI image generator online. Powered by advanced AI models, no sign up, no cost, fast and high-quality results."
   },
   "intro": {
-    "title": "Why Use Nano Banana Pro?",
+    "title": "What is Nano Banana Pro?",
     "content": [
       {
-        "title": "What is Nano Banana Pro?",
-        "text": "Nano Banana Pro is an advanced AI image generator that transforms your creative ideas into stunning visuals. Whether you want to transform existing photos with image-to-image generation or create entirely new artwork from text descriptions, Nano Banana Pro delivers professional-quality results. Unlike basic image generators, Pro version supports higher resolutions (up to 4K), faster generation speeds, and superior image quality. Best of all, it's completely free with no sign up required—no registration, no credit card, no account needed. Perfect for designers, content creators, and anyone who needs high-quality AI-generated images without the complexity of traditional design software."
+        "title": "The Next Generation of Generative AI",
+        "text": "Nano Banana Pro is a high-performance AI image generator designed for creators who need professional results. It specializes in ultra-realistic 4K image synthesis with both text-to-image and image-to-image generation modes. This free AI image generator online offers higher resolution support (up to 4K), faster generation speeds, and superior image quality compared to standard models, all completely free with no sign up required."
       },
       {
-        "title": "Why Choose Nano Banana Pro for Image Generation?",
-        "text": "Traditional image editing requires expensive software, technical skills, and hours of work. Nano Banana Pro lets you generate professional-quality images in seconds—simply upload a photo and describe your vision, or type a text prompt and watch AI create stunning visuals. With support for multiple aspect ratios (1:1, 16:9, 9:16, and more), high-resolution outputs (1K, 2K, 4K), and flexible output formats (PNG, JPEG, WebP), Nano Banana Pro adapts to any project. Start generating immediately—no sign up, no registration, no account creation required. All processing happens securely through our API, ensuring your images are handled professionally while maintaining your privacy."
+        "title": "Fast and High-Quality Generation",
+        "text": "Nano Banana Pro delivers faster generation speeds than standard AI image generators while maintaining premium quality. Whether you're creating professional artwork, social media content, or creative projects, this free AI image generator provides reliable results with no sign up required, completely free of charge."
       }
     ]
   },
@@ -35,75 +35,40 @@
     "title": "Powerful Nano Banana Pro Features",
     "items": [
       {
-        "icon": "🎨",
-        "iconType": "quality",
-        "title": "Image to Image & Text to Image",
-        "desc": "Transform existing photos or create new images from text prompts. Two powerful modes for unlimited creative possibilities."
-      },
-      {
-        "icon": "📐",
-        "iconType": "format",
-        "title": "Multiple Aspect Ratios",
-        "desc": "Choose from 1:1, 2:3, 3:2, 16:9, 9:16, 21:9, and more. Perfect for social media, prints, or custom projects."
-      },
-      {
-        "icon": "⚡",
+        "icon": "🚀",
         "iconType": "speed",
-        "title": "High-Resolution Output",
-        "desc": "Generate images in 1K, 2K, or 4K resolution. Pro version delivers crisp, detailed images for any use case."
+        "title": "High-Resolution 4K Output",
+        "desc": "Generate stunning 4K images with professional quality. Pro version supports up to 4K resolution for crisp, detailed results perfect for any project."
       },
       {
         "icon": "🖼️",
         "iconType": "format",
-        "title": "Flexible Output Formats",
-        "desc": "Export as PNG, JPEG, WebP, or let AI choose the best format automatically for optimal quality."
+        "title": "Multiple Image Inputs",
+        "desc": "Upload up to 8 reference images for image-to-image generation. Perfect for batch processing and creative transformations."
       },
       {
-        "icon": "📚",
-        "iconType": "batch",
-        "title": "Generation History",
-        "desc": "View and manage all your generated images in one place. Easy access to past creations."
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Fast Generation Speed",
+        "desc": "Optimized for quick results. Generate high-quality images in seconds, perfect for rapid iteration and creative workflows."
       },
       {
-        "icon": "💎",
+        "icon": "🎨",
+        "iconType": "quality",
+        "title": "Professional Quality",
+        "desc": "Pro version delivers superior image quality with optimized generation algorithms. Perfect for professional projects and creative work."
+      },
+      {
+        "icon": "🌍",
         "iconType": "free",
-        "title": "Free to Use",
-        "desc": "Generate unlimited images completely free. No sign up required, no registration needed, no credit card. No subscriptions, no hidden fees, no watermarks."
-      }
-    ]
-  },
-  "specs": {
-    "engine": "Nano Banana Pro AI Model - Advanced Image Generation",
-    "limit": "Unlimited Generations - High-Resolution Support (Up to 4K)",
-    "logic": "Image-to-Image & Text-to-Image Generation",
-    "privacy": "Secure API Processing - Professional Image Handling"
-  },
-  "performanceMetrics": {
-    "title": "Technical Specifications",
-    "metrics": [
-      {
-        "label": "Generation Modes",
-        "value": "Image-to-Image, Text-to-Image"
+        "title": "100% Free - No Hidden Cost",
+        "desc": "Nano Banana Pro is completely free to use. No credit card required, no subscription fees, and no hidden costs. Generate high-quality images at zero cost."
       },
       {
-        "label": "Supported Input Formats",
-        "value": "JPG, JPEG, PNG, WebP"
-      },
-      {
-        "label": "Output Formats",
-        "value": "PNG, JPEG, WebP, Auto"
-      },
-      {
-        "label": "Aspect Ratios",
-        "value": "1:1, 2:3, 3:2, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, 21:9, Auto"
-      },
-      {
-        "label": "Resolutions",
-        "value": "1K, 2K, 4K (Pro version)"
-      },
-      {
-        "label": "Processing",
-        "value": "Secure API-based generation"
+        "icon": "✨",
+        "iconType": "quality",
+        "title": "Top-Tier Prompt Accuracy",
+        "desc": "Optimized for complex prompts. Get exactly what you describe, from realistic portraits to futuristic concept art."
       }
     ]
   },
@@ -112,89 +77,98 @@
     "steps": [
       {
         "title": "Choose Generation Mode",
-        "desc": "Select Image-to-Image to transform an existing photo, or Text-to-Image to create from a text prompt."
+        "desc": "Select Image-to-Image mode to transform existing photos with this free AI image generator, or choose Text-to-Image to create art from text prompts using the AI image generator online."
       },
       {
-        "title": "Upload Image or Enter Prompt",
-        "desc": "For image-to-image, upload your photo (JPG, PNG, or WebP). For text-to-image, type your creative prompt."
+        "title": "Upload Images or Enter Prompt",
+        "desc": "For image-to-image generation, upload up to 8 reference images (JPG, PNG, or WebP). For text-to-image mode, enter your creative prompt describing the image you want to generate."
       },
       {
         "title": "Configure Settings & Generate",
-        "desc": "Select aspect ratio, resolution (1K/2K/4K), and output format. Click Generate to create your image."
+        "desc": "Select aspect ratio, resolution (1K/2K/4K), and output format. Click Generate to create your image with this free AI image generator. No sign up required."
+      }
+    ]
+  },
+  "examples": {
+    "title": "Nano Banana Pro Examples & Prompts",
+    "items": [
+      {
+        "prompt": "Hyper-realistic cyberpunk street photography, 4k, highly detailed",
+        "tag": "Trending"
+      },
+      {
+        "prompt": "Studio portrait of a Greek god, cinematic lighting, 4k resolution, highly detailed",
+        "tag": "Portrait"
+      },
+      {
+        "prompt": "Futuristic banana-themed spaceship landing on Mars, 3D render, Unreal Engine 5 style",
+        "tag": "Creative"
       }
     ]
   },
   "comparison": {
-    "title": "Why Choose Nano Banana Pro?",
-    "toolaze": "Nano Banana Pro 💎",
-    "others": "Other Tools",
+    "title": "Nano Banana vs Nano Banana Pro",
+    "toolaze": "Pro Version 💎",
+    "others": "Standard Version",
     "vs": "VS",
-    "smartChoice": "Smart Choice",
-    "otherTools": "Other Tools",
-    "toolazeFeatures": "High-resolution support (up to 4K), Fast generation speed, Multiple aspect ratios, Flexible output formats, Free unlimited use with no sign up, No registration required, Generation history, Image-to-image and text-to-image modes",
-    "othersFeatures": "Low resolution limits, Slow processing, Limited aspect ratios, Watermarked outputs, Paid subscriptions required, No history tracking, Single mode only"
+    "smartChoice": "Why Upgrade?",
+    "otherTools": "Standard AI",
+    "toolazeFeatures": "4K Output, Image-to-Image & Text-to-Image, Multiple Image Inputs, Fast Generation, No Sign Up, High Quality Results",
+    "othersFeatures": "1080p Limit, Single Mode Only, Mandatory Login, Strict usage caps"
   },
   "scenesTitle": "Use Cases",
   "scenes": [
     {
       "title": "For Content Creators",
       "icon": "📱",
-      "desc": "Create stunning thumbnails, social media graphics, and visual content for YouTube, Instagram, and TikTok. Generate unique images that stand out from the crowd."
+      "desc": "Use this free AI image generator online to create stunning thumbnails, social media graphics, and visual content. The text-to-image AI generator helps you produce unique images that stand out from the crowd without any design skills."
     },
     {
       "title": "For Designers",
       "icon": "🎨",
-      "desc": "Transform design concepts into reality. Use image-to-image to refine mockups or text-to-image to explore creative directions quickly."
+      "desc": "Transform design concepts into reality with Nano Banana Pro. Use image-to-image generation to refine mockups or text-to-image mode to explore creative directions quickly. This AI image generator online accelerates your workflow."
     },
     {
       "title": "For Marketers",
       "icon": "💼",
-      "desc": "Generate marketing visuals, ad creatives, and promotional images. Multiple aspect ratios perfect for different platforms and campaigns."
+      "desc": "Generate marketing visuals, ad creatives, and promotional images with this free AI image generator. Multiple aspect ratios perfect for different platforms and campaigns. Create professional-quality visuals in seconds."
+    }
+  ],
+  "faq": [
+    {
+      "q": "How to use Nano Banana Pro for free?",
+      "a": "Simply visit Toolaze, enter your prompt in the Text-to-Image box, and hit Generate. There is no sign up, no cost, and no registration required. You can use all Pro features immediately."
+    },
+    {
+      "q": "What makes Nano Banana Pro different from other AI image generators?",
+      "a": "Nano Banana Pro is a free AI image generator online that offers higher resolution support (up to 4K), faster generation speeds, and superior image quality compared to standard models. It supports both text-to-image and image-to-image modes, with the ability to upload multiple reference images, all completely free with no sign up required."
+    },
+    {
+      "q": "What is the price of Nano Banana Pro?",
+      "a": "The price is $0. Nano Banana Pro is a 100% free tool. No credit card or subscription is ever needed."
+    },
+    {
+      "q": "How fast is Nano Banana Pro?",
+      "a": "Nano Banana Pro is optimized for speed, typically generating high-quality images in just a few seconds. The exact time depends on resolution and complexity, but Pro version is significantly faster than standard models."
+    },
+    {
+      "q": "Can I upload multiple images for image-to-image generation?",
+      "a": "Yes! Nano Banana Pro supports uploading up to 8 reference images for image-to-image generation. This allows for more complex transformations and creative combinations."
+    },
+    {
+      "q": "What resolutions does Nano Banana Pro support?",
+      "a": "Nano Banana Pro supports 1K, 2K, and 4K resolutions. The Pro version offers higher resolution options compared to standard models, allowing you to generate crisp, detailed images suitable for professional use."
     }
   ],
   "rating": {
     "title": "Trusted by Thousands of Creators",
     "rating": "4.9/5 FROM 10K+ CREATORS",
-    "text": "\"Nano Banana Pro generates amazing images in seconds. The 4K resolution is perfect for my design work!\" - Join thousands of users who trust Nano Banana Pro for professional image generation."
+    "text": "Join thousands of satisfied users who trust Toolaze for fast, secure, and free AI image generation. No registration required, no sign up needed. Generate high-quality 4K images with Nano Banana Pro."
   },
-  "faqTitle": "Frequently Asked Questions",
-  "faq": [
-    {
-      "q": "What is the difference between Image-to-Image and Text-to-Image?",
-      "a": "Image-to-Image transforms an existing photo based on your text prompt, preserving elements of the original while applying your creative vision. Text-to-Image generates entirely new images from text descriptions, creating artwork from scratch."
-    },
-    {
-      "q": "What file formats are supported for input images?",
-      "a": "Nano Banana Pro supports JPG, JPEG, PNG, and WebP formats for input images. Maximum file size is 10 MB for optimal processing."
-    },
-    {
-      "q": "Can I generate images in 4K resolution?",
-      "a": "Yes! Nano Banana Pro supports 1K, 2K, and 4K resolutions. The Pro version delivers crisp, high-quality images suitable for professional use."
-    },
-    {
-      "q": "What aspect ratios are available?",
-      "a": "You can choose from 1:1 (square), 2:3, 3:2, 3:4, 4:3, 4:5, 5:4, 9:16 (vertical), 16:9 (horizontal), 21:9 (ultrawide), or Auto (maintains original ratio)."
-    },
-    {
-      "q": "Is Nano Banana Pro really free?",
-      "a": "Yes! Nano Banana Pro is completely free to use with no sign up required, no registration needed, and no credit card. No subscriptions, watermarks, or hidden fees. Generate unlimited images at no cost."
-    },
-    {
-      "q": "How long does image generation take?",
-      "a": "Generation time varies based on resolution and complexity, typically ranging from a few seconds to under a minute. Pro version is optimized for faster processing."
-    },
-    {
-      "q": "Can I save my generation history?",
-      "a": "Yes, Nano Banana Pro automatically saves your generation history in your browser. You can view, download, or regenerate images from your history at any time."
-    },
-    {
-      "q": "Do I need to sign up or create an account?",
-      "a": "No! Nano Banana Pro requires no sign up, no registration, and no account creation. Simply visit the page and start generating images immediately—completely free and anonymous."
-    },
-    {
-      "q": "Is a credit card required?",
-      "a": "Absolutely not. Nano Banana Pro is 100% free with no credit card required, no payment information needed, and no trial periods. Use it as much as you want without any financial commitment."
-    }
-  ],
-  "moreTools": "More AI Image Generation Tools"
+  "moreTools": "Explore More Free AI Tools",
+  "trustBar": {
+    "private": "Free Forever",
+    "instantPreview": "Fast Generation",
+    "noServerLogs": "No Sign Up Required"
+  }
 }
