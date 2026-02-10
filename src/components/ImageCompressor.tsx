@@ -2,6 +2,8 @@
 
 import { useState, useRef, useEffect } from 'react'
 import { useCommonTranslations } from '@/lib/use-common-translations'
+import DeleteIcon from './icons/DeleteIcon'
+import CloseIcon from './icons/CloseIcon'
 
 interface FileItem {
   id: string
@@ -729,6 +731,14 @@ export default function ImageCompressor({ initialTarget }: ImageCompressorProps)
           style={{ display: modalImage ? 'flex' : 'none' }}
         >
           <img src={modalImage} alt="Preview" onClick={(e) => e.stopPropagation()} />
+          <button
+            type="button"
+            onClick={(e) => { e.stopPropagation(); closeModal() }}
+            className="fixed top-4 right-4 w-10 h-10 rounded-full bg-white hover:bg-white flex items-center justify-center shadow-lg transition-colors z-[20001] cursor-pointer text-slate-600"
+            aria-label="Close"
+          >
+            <CloseIcon size={20} />
+          </button>
         </div>
       )}
 
@@ -845,7 +855,7 @@ export default function ImageCompressor({ initialTarget }: ImageCompressorProps)
                         onClick={(e) => deleteImage(item.id, e)} 
                         title="Delete"
                       >
-                        ×
+                        <DeleteIcon size={12} />
                       </button>
                       <div className="img-wrapper">
                         {!item.thumbReady && !state.thumbUrl && (

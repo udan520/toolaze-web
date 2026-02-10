@@ -2,6 +2,9 @@
 
 import { useState, useRef, useCallback } from 'react'
 import SiteImage from './SiteImage'
+import DeleteIcon from './icons/DeleteIcon'
+import CloseIcon from './icons/CloseIcon'
+import ReplaceIcon from './icons/ReplaceIcon'
 
 type RightPanelMode = 'sample' | 'generating' | 'history' | 'result'
 
@@ -574,32 +577,25 @@ export default function NanoBananaTool() {
                         className="w-full h-full object-cover"
                       />
                       {/* 序号：右下角 - 深灰色圆角方形，白色数字 */}
-                      <span className="absolute bottom-1 right-1 w-5 h-5 rounded-md bg-slate-700 text-white text-xs font-bold flex items-center justify-center shadow-sm z-10">
+                      <span className="absolute bottom-1 right-1 w-5 h-5 rounded-md bg-white/80 text-black text-xs font-bold flex items-center justify-center shadow-sm z-10">
                         {index + 1}
                       </span>
-                      {/* 删除按钮：右上角 - 白色背景，深蓝色 X，正方形 */}
+                      {/* 删除按钮：右上角 - 与右下角序号同款底色和形状，Web hover 显示，H5 常显 */}
                       <button
                         type="button"
                         onClick={(e) => {
                           e.stopPropagation()
                           removeImage(index)
                         }}
-                        className="absolute top-1 right-1 w-6 h-6 bg-white rounded-sm flex items-center justify-center shadow-sm hover:shadow-md transition-shadow z-10"
+                        className="absolute top-1 right-1 w-6 h-6 rounded-md bg-white/80 flex items-center justify-center shadow-sm z-10 text-black [&_svg]:flex-shrink-0 md:opacity-0 md:invisible md:group-hover:opacity-100 md:group-hover:visible md:transition-opacity"
                         title="Delete"
                       >
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1E40AF" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                          <line x1="18" y1="6" x2="6" y2="18" />
-                          <line x1="6" y1="6" x2="18" y2="18" />
-                        </svg>
+                        <DeleteIcon size={16} />
                       </button>
                       {/* Hover overlay：替换提示 */}
                       <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                         <span className="px-3 py-1.5 bg-white text-[#4F46E5] rounded-lg font-semibold text-xs flex items-center gap-1.5">
-                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                            <polyline points="17 8 12 3 7 8" />
-                            <line x1="12" y1="3" x2="12" y2="15" />
-                          </svg>
+                          <ReplaceIcon size={14} />
                           Replace
                         </span>
                       </div>
@@ -919,10 +915,7 @@ export default function NanoBananaTool() {
                     className="px-4 py-3 rounded-xl border border-[#C7D2FE] text-[#4F46E5] hover:bg-[#EEF2FF] transition-colors"
                     title="Delete"
                   >
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <polyline points="3 6 5 6 21 6" />
-                      <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
-                    </svg>
+                    <DeleteIcon size={20} />
                   </button>
                 </div>
               </div>
@@ -1085,10 +1078,7 @@ export default function NanoBananaTool() {
                         className="px-4 py-3 rounded-xl border border-[#C7D2FE] text-[#4F46E5] hover:bg-[#EEF2FF] transition-colors"
                         title="Delete"
                       >
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                          <polyline points="3 6 5 6 21 6" />
-                          <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
-                        </svg>
+                        <DeleteIcon size={20} />
                       </button>
                     </div>
                   </div>
@@ -1138,13 +1128,10 @@ export default function NanoBananaTool() {
                 e.stopPropagation()
                 setPreviewImage(null)
               }}
-              className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white hover:bg-white flex items-center justify-center shadow-lg transition-colors z-10 cursor-pointer"
+              className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white hover:bg-white flex items-center justify-center shadow-lg transition-colors z-10 cursor-pointer text-slate-600"
               aria-label="Close"
             >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#475569" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="18" y1="6" x2="6" y2="18" />
-                <line x1="6" y1="6" x2="18" y2="18" />
-              </svg>
+              <CloseIcon size={20} />
             </button>
           </div>
         </div>
