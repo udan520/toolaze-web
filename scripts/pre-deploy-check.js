@@ -49,8 +49,22 @@ if (fs.existsSync(middlewarePath)) {
   console.log('   ✅ 未检测到 middleware.ts（静态导出兼容）');
 }
 
-// 3. 检查 package.json 中的构建脚本
-console.log('\n3. 检查 package.json 配置...');
+// 3. 检查 API 路由静态导出配置
+console.log('\n3. 检查 API 路由配置...');
+const { execSync } = require('child_process');
+try {
+  execSync('node scripts/check-api-routes.js', {
+    stdio: 'inherit',
+    cwd: process.cwd(),
+  });
+  console.log('   ✅ API 路由配置检查通过');
+} catch (error) {
+  errors.push('❌ API 路由静态导出配置检查失败，请修复后再试');
+  hasError = true;
+}
+
+// 4. 检查 package.json 中的构建脚本
+console.log('\n4. 检查 package.json 配置...');
 const packageJsonPath = path.join(process.cwd(), 'package.json');
 if (fs.existsSync(packageJsonPath)) {
   const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
@@ -73,9 +87,9 @@ if (fs.existsSync(packageJsonPath)) {
   hasError = true;
 }
 
-// 4. 检查是否有 TypeScript 错误（可选）
+// 5. 检查是否有 TypeScript 错误（可选）
 // 注意：在 CI/CD 环境中跳过构建测试，避免递归构建
-console.log('\n4. 运行构建测试...');
+console.log('\n5. 运行构建测试...');
 const isCI = process.env.CI === 'true' || process.env.CF_PAGES === '1' || process.env.VERCEL === '1';
 if (isCI) {
   console.log('   ⏭️  在 CI/CD 环境中跳过构建测试（避免递归）');
@@ -97,8 +111,8 @@ if (isCI) {
   }
 }
 
-// 5. 检查输出目录
-console.log('\n5. 检查构建输出...');
+// 6. 检查输出目录
+console.log('\n6. 检查构建输出...');
 const outDir = path.join(process.cwd(), 'out');
 if (fs.existsSync(outDir)) {
   const files = fs.readdirSync(outDir);

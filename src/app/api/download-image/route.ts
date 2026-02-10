@@ -20,9 +20,10 @@ function isAllowedUrl(url: string): boolean {
 }
 
 export async function GET(request: NextRequest) {
-  const { searchParams } = new URL(request.url)
-  const url = searchParams.get('url')
-  const filename = searchParams.get('filename') || 'image.png'
+  // 使用 request.nextUrl.searchParams 代替 new URL(request.url)
+  // 避免在静态导出模式下使用 request.url（会导致构建失败）
+  const url = request.nextUrl.searchParams.get('url')
+  const filename = request.nextUrl.searchParams.get('filename') || 'image.png'
 
   if (!url || !url.startsWith('http')) {
     return NextResponse.json({ error: 'Missing or invalid url' }, { status: 400 })
