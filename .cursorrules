@@ -21,6 +21,14 @@ Only write about features that are explicitly listed as supported in the relevan
 - Use related keywords naturally throughout content
 - Use internal linking keywords to connect related pages
 
+**KEYWORD LAYOUT STRATEGY**: When writing SEO content, MUST follow the keyword priority matrix and layout strategy defined in 'docs/SEO_CONTENT_GUIDELINES.md' section "关键词布局策略（高级策略）":
+- **P0 (主关键词)**: Use in H1, Title, Meta Description (1-2% density)
+- **P1 (核心功能词)**: Use in H2, Hero, Features (0.5-1% density)
+- **P2 (长尾关键词)**: Classify into 4 categories (功能类, 对比类, 使用场景类, 操作类) and distribute across appropriate sections
+- **P3 (对比关键词)**: Use in FAQ and Comparison sections
+- **P4 (品牌词)**: Use 3-5 times per page, naturally distributed
+- Follow the keyword layout checklist to ensure comprehensive coverage
+
 **GLOBAL NAVIGATION BAR**: All pages MUST use the exact same navigation bar structure with sticky functionality. The navigation includes:
 - **Container**: `id="mainNav"` and `class="sticky-nav py-6 px-6 flex justify-between items-center max-w-6xl mx-auto w-full relative"`
 - **Logo** (left-aligned): Links to homepage with SVG logo (32x32px) and text "Toolaze" (NO period/dot after Toolaze)

@@ -497,6 +497,260 @@
 
 详细规范见：`docs/keywords/KEYWORD_DENSITY_GUIDELINES.md`
 
+## 关键词布局策略（高级策略）
+
+> **核心原则**：基于行业最佳实践，采用分层关键词布局策略，确保关键词覆盖全面且自然分布。
+
+### 1. 关键词优先级矩阵
+
+所有关键词必须按照以下优先级进行分类和布局：
+
+| 优先级 | 关键词类型 | 示例 | 布局位置 | 密度要求 |
+|--------|-----------|------|---------|---------|
+| **P0** | 主关键词 | Seedance 2.0, Image Converter, Font Generator | H1, Title, Meta Description | 1-2% |
+| **P1** | 核心功能词 | AI Video Generator, Video Generation, Image Compression | H2, Hero, Features | 0.5-1% |
+| **P2** | 长尾关键词 | How to generate videos, Free video generator, Convert HEIC to JPG | How To, FAQ, Intro | 每个1-2次 |
+| **P3** | 对比关键词 | Seedance 2.0 vs Sora 2, Toolaze vs Competitor | FAQ, Comparison | 自然嵌入 |
+| **P4** | 品牌词 | Toolaze, EaseMate AI | Footer, 多处提及 | 自然分布 |
+
+### 2. 标题层级关键词布局策略
+
+#### H1 标签策略
+- **格式原则**：极简原则，只包含核心关键词
+- **推荐格式**：
+  - 工具类：`[Tool Name]` 或 `[Input] to [Output] Converter`
+  - AI 工具：`[Tool Name] AI [Category]`（如：`Seedance 2.0 AI Video Generator`）
+- **避免**：不使用 "Free", "Online", "Unlimited" 等修饰词（除非是核心卖点）
+- **示例**：
+  - ✅ `PNG to WebP Converter`
+  - ✅ `Seedance 2.0 AI Video Generator`
+  - ❌ `Free Unlimited PNG to WebP Online Converter`
+
+#### H2 标签策略
+- **格式要求**：必须包含核心功能关键词
+- **推荐格式**：
+  - `How to [Action] with [Tool Name]?`（操作类）
+  - `Why Choose [Tool Name] [Category]?`（优势类）
+  - `FAQs of [Tool Name] [Category]`（FAQ 类）
+- **关键词要求**：
+  - 必须包含 P0 或 P1 关键词
+  - 自然嵌入，不堆砌
+- **示例**：
+  - ✅ `How to Generate Videos with Seedance 2.0?`
+  - ✅ `Why Choose Seedance 2.0 AI Video Generator?`
+  - ✅ `FAQs of Seedance 2.0 AI Video Generator`
+
+#### H3 标签策略
+- **格式要求**：包含功能特性或使用场景关键词
+- **推荐格式**：
+  - `[Feature Name] - [Benefit]`（功能类）
+  - `[User Type] - [Use Case]`（场景类）
+- **关键词要求**：使用 P1 或 P2 关键词
+- **示例**：
+  - ✅ `Faster and Smarter Hollywood-Quality 1080p AI Video Creation`
+  - ✅ `Multimodal Capability that Understands Text, Image, Video, and Audio`
+
+### 3. 长尾关键词分类策略
+
+长尾关键词必须按照以下类别进行分类和布局：
+
+#### 类别 A：功能类长尾关键词
+- **特点**：描述工具的具体功能
+- **布局位置**：Hero, Features, Intro
+- **示例**：
+  - `Image to video`
+  - `Text to video`
+  - `1080p video generation`
+  - `Hollywood-quality videos`
+  - `Multimodal video generation`
+- **使用要求**：
+  - 在 Hero 板块自然提及
+  - 在 Features 板块详细说明
+  - 在 Intro 板块深入阐述
+
+#### 类别 B：对比类长尾关键词
+- **特点**：包含竞品对比或版本对比
+- **布局位置**：FAQ, Comparison
+- **示例**：
+  - `Seedance 1.0 vs Seedance 2.0`
+  - `Seedance 2.0 vs Sora 2`
+  - `Toolaze vs [Competitor]`
+- **使用要求**：
+  - 在 FAQ 板块创建专门的问题
+  - 在 Comparison 板块进行详细对比
+  - 自然嵌入，不刻意堆砌
+
+#### 类别 C：使用场景类长尾关键词
+- **特点**：描述具体的使用场景
+- **布局位置**：Scenarios, Intro, How To Use
+- **示例**：
+  - `Create videos with Seedance 2.0 for free`
+  - `Generate video and sound together`
+  - `Convert HEIC photos for iPhone users`
+- **使用要求**：
+  - 在 Scenarios 板块创建具体场景
+  - 在 Intro 板块提及使用场景
+  - 在 How To Use 板块说明适用场景
+
+#### 类别 D：操作类长尾关键词
+- **特点**：以 "How to" 开头的问题
+- **布局位置**：How To Use, FAQ
+- **示例**：
+  - `How to generate videos with Seedance 2.0?`
+  - `How to convert PNG to WebP?`
+  - `How to compress images to 20KB?`
+- **使用要求**：
+  - 在 How To Use 板块标题中使用
+  - 在 FAQ 板块创建相关问题
+  - 确保步骤清晰，关键词自然嵌入
+
+### 4. 内容板块关键词分布策略
+
+#### Hero 板块
+- **关键词要求**：
+  - H1：必须包含 P0 主关键词
+  - Desc：包含 P0 主关键词 + P1 核心功能词
+- **关键词密度**：主关键词 1-2 次，核心功能词 1-2 次
+- **示例**：
+  - H1: `Seedance 2.0 AI Video Generator`
+  - Desc: `Create Hollywood-quality 1080p videos with Seedance 2.0 for free. Upload any text, images, video, and audio online and let our Seedance 2.0 AI video generator handle the rest.`
+
+#### How To Use 板块
+- **关键词要求**：
+  - 标题：使用类别 D（操作类）长尾关键词
+  - 步骤描述：自然嵌入 P1 和 P2 关键词
+- **格式要求**：
+  - 标题：`How to [Action] with [Tool Name]?`
+  - 步骤：每个步骤包含相关关键词，但不堆砌
+- **示例**：
+  - 标题：`How to Generate Videos with Seedance 2.0?`
+  - 步骤1：`Upload your images or text prompts to the Seedance 2.0 interface.`
+  - 步骤2：`Configure output settings (aspect ratio, quality, duration).`
+  - 步骤3：`Click Generate and download your 1080p video.`
+
+#### Features 板块
+- **关键词要求**：
+  - 标题：包含 P0 或 P1 关键词
+  - 功能项：每个功能包含 P1 或 P2 关键词
+- **策略**：
+  - 使用技术关键词（如：1080p, 4K, Multimodal）
+  - 使用优势关键词（如：Fast, Free, Secure）
+  - 自然组合，避免堆砌
+- **示例**：
+  - `Faster and Smarter Hollywood-Quality 1080p AI Video Creation`
+  - `Multimodal Capability that Understands Text, Image, Video, and Audio References`
+  - `Generate Video and Sound Together with ByteDance's Next-Generation AI Video Model`
+
+#### FAQ 板块
+- **关键词要求**：
+  - 前 3 个问题：必须针对工具特定功能（使用类别 B 对比类或类别 D 操作类）
+  - 后 2 个问题：可以是通用的安全/隐私 FAQ（使用 P1 关键词）
+- **策略**：
+  - 覆盖对比类长尾关键词（类别 B）
+  - 覆盖操作类长尾关键词（类别 D）
+  - 自然嵌入，不刻意堆砌
+- **示例**：
+  - `What is Seedance 2.0?`（工具介绍，包含 P0 关键词）
+  - `Is this Seedance 2.0 AI video creator free to use?`（功能确认，包含 P0 + P1）
+  - `How does Seedance 1.0 differ from Seedance 2.0?`（对比类，类别 B）
+  - `Is Seedance 2.0 better than Sora 2?`（对比类，类别 B）
+  - `What type of reference input does Seedance 2.0 support?`（功能类，类别 A）
+
+#### Intro 板块
+- **关键词要求**：
+  - 必须 200+ 单词
+  - 包含 P0 主关键词 2-3 次
+  - 包含 P1 核心功能词 3-5 次
+  - 自然嵌入 P2 长尾关键词
+- **策略**：
+  - 第一段：强调核心价值（包含 P0 关键词）
+  - 第二段：详细说明技术优势（包含 P1 关键词）
+  - 第三段（可选）：补充说明或使用场景（包含 P2 关键词）
+- **示例结构**：
+  - 段落1（60-80 单词）：`[Tool Name] is a [P1 keyword] that [core value]. [P0 keyword] enables users to [benefit].`
+  - 段落2（60-100 单词）：`With [P1 keyword], [Tool Name] supports [features]. [Technical details with P1 keywords].`
+  - 段落3（40-60 单词）：`Whether you're [use case 1] or [use case 2], [Tool Name] provides [benefit].`
+
+### 5. 品牌词强化策略
+
+#### 品牌词使用原则
+- **频率要求**：每个页面至少提及 3-5 次
+- **布局位置**：
+  - Footer（必须）
+  - Hero 板块（可选，如果品牌是核心卖点）
+  - Rating 板块（必须）
+  - 多处自然提及
+- **使用方式**：
+  - 自然嵌入，不刻意堆砌
+  - 与工具名称组合使用（如：`Toolaze Image Converter`）
+  - 在对比板块强调品牌优势
+
+#### 品牌词组合策略
+- **格式**：`[Tool Name] by Toolaze` 或 `Toolaze [Tool Name]`
+- **使用场景**：
+  - Title：`[Tool Name] - Toolaze`
+  - Meta Description：`...with Toolaze [Tool Name]...`
+  - Rating 板块：`...trust Toolaze for...`
+  - Footer：`Toolaze - Your AI Partner...`
+
+### 6. 关键词布局检查清单
+
+编写 SEO 内容后，必须检查以下项目：
+
+#### P0 主关键词检查
+- [ ] H1 包含主关键词（精确匹配或变体）
+- [ ] Title 包含主关键词 + 品牌名
+- [ ] Meta Description 包含主关键词
+- [ ] 前 100 字包含主关键词 1-2 次
+- [ ] 主关键词密度在 1-2% 之间
+
+#### P1 核心功能词检查
+- [ ] H2 标题包含核心功能词
+- [ ] Hero 板块包含核心功能词
+- [ ] Features 板块包含核心功能词
+- [ ] 核心功能词自然分布在内容中
+
+#### P2 长尾关键词检查
+- [ ] 功能类长尾词在 Hero/Features/Intro 中使用
+- [ ] 对比类长尾词在 FAQ/Comparison 中使用
+- [ ] 使用场景类长尾词在 Scenarios/Intro 中使用
+- [ ] 操作类长尾词在 How To Use/FAQ 中使用
+- [ ] 每个长尾关键词出现 1-2 次即可
+
+#### P3 对比关键词检查
+- [ ] FAQ 板块包含至少 1-2 个对比类问题
+- [ ] Comparison 板块进行详细对比
+- [ ] 对比关键词自然嵌入，不堆砌
+
+#### P4 品牌词检查
+- [ ] Footer 包含品牌词
+- [ ] Rating 板块包含品牌词
+- [ ] 页面中品牌词出现 3-5 次
+- [ ] 品牌词使用自然，不刻意堆砌
+
+#### 整体检查
+- [ ] 关键词使用自然，符合用户阅读习惯
+- [ ] 没有关键词堆砌（总密度不超过 3%）
+- [ ] 关键词覆盖全面（P0-P4 都有覆盖）
+- [ ] 标题层级关键词布局合理（H1-H3）
+
+### 7. 关键词布局最佳实践
+
+#### ✅ 推荐做法
+1. **自然优先**：关键词使用要自然，符合用户阅读习惯
+2. **位置优先**：优先在 Title、H1、前 100 字使用主关键词
+3. **变体使用**：可以使用关键词的变体（如：AI image generator, image generator AI）
+4. **语义相关**：使用相关关键词提升语义相关性
+5. **分层布局**：按照 P0-P4 优先级分层布局关键词
+6. **长尾覆盖**：确保各类长尾关键词都有覆盖
+
+#### ❌ 禁止做法
+1. **关键词堆砌**：避免过度重复同一关键词
+2. **不自然使用**：避免不自然的句子结构
+3. **位置不当**：避免主关键词只出现在页面底部
+4. **缺失覆盖**：避免某些优先级的关键词完全没有使用
+5. **忽略长尾**：避免只关注主关键词，忽略长尾关键词
+
 ## 文件位置
 
 - **功能介绍**：`docs/FEATURE_SPECIFICATIONS.md`
