@@ -2,13 +2,17 @@
 
 import { useState, useEffect, useRef } from 'react'
 import dynamic from 'next/dynamic'
-import { SkinTones, SkinTonePickerLocation } from 'emoji-picker-react'
 
 // 动态导入 emoji-picker-react（避免 SSR 问题）
+// 在静态导出模式下，直接导入枚举值会导致模块解析错误
 const EmojiPicker = dynamic(
   () => import('emoji-picker-react'),
   { ssr: false }
 )
+
+// 使用字符串字面量代替枚举值（避免静态导出模式下的模块解析问题）
+const SKIN_TONE_NEUTRAL = 'neutral' as const
+const SKIN_TONE_PICKER_LOCATION_PREVIEW = 'PREVIEW' as const
 
 // Emoji 分类
 const EMOJI_CATEGORIES = [
@@ -170,13 +174,13 @@ export default function EmojiCategoryPage({ category, className = '' }: EmojiCat
         <div ref={emojiPickerRef} className="relative min-h-[520px]">
           <EmojiPicker
             onEmojiClick={handleEmojiClick}
-            defaultSkinTone={SkinTones.NEUTRAL}
+            defaultSkinTone={SKIN_TONE_NEUTRAL as any}
             width="100%"
             height={520}
             previewConfig={{
               showPreview: true
             }}
-            skinTonePickerLocation={SkinTonePickerLocation.PREVIEW}
+            skinTonePickerLocation={SKIN_TONE_PICKER_LOCATION_PREVIEW as any}
             searchDisabled={false}
           />
           
