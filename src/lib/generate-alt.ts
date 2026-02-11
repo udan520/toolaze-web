@@ -10,8 +10,24 @@
  */
 export async function generateAltFromImage(imageUrl: string): Promise<string> {
   try {
+    // 在静态导出模式下，需要根据当前域名动态构建 API URL
+    // 如果是在客户端，使用当前域名；否则使用默认域名
+    let apiUrl = '/api/generate-alt'
+    
+    if (typeof window !== 'undefined') {
+      // 客户端：使用当前域名构建完整 URL
+      const isDevelopment = window.location.hostname === 'localhost' || 
+                           window.location.hostname === '127.0.0.1'
+      
+      if (!isDevelopment) {
+        // 生产环境：使用当前域名（支持自定义域名）
+        apiUrl = `${window.location.origin}/api/generate-alt`
+      }
+      // 开发环境：使用相对路径（Next.js dev server 会处理）
+    }
+
     // 调用 API 生成 alt 文本
-    const response = await fetch('/api/generate-alt', {
+    const response = await fetch(apiUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -20,11 +36,12 @@ export async function generateAltFromImage(imageUrl: string): Promise<string> {
     })
 
     if (!response.ok) {
-      throw new Error('Failed to generate alt text')
+      // 如果 API 调用失败，返回基于 URL 的默认 alt 文本
+      return getDefaultAltFromUrl(imageUrl)
     }
 
     const data = await response.json()
-    return data.alt || 'Image'
+    return data.alt || getDefaultAltFromUrl(imageUrl)
   } catch (error) {
     console.error('Error generating alt text:', error)
     // 如果生成失败，返回基于 URL 的默认 alt 文本
