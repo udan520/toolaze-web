@@ -24,7 +24,7 @@ export default function Error({
       <Navigation />
       <main className="min-h-screen flex items-center justify-center px-6 bg-[#F8FAFF]">
         <div className="text-center max-w-2xl mx-auto">
-          <h1 className="text-6xl font-extrabold text-slate-900 mb-4">Something went wrong!</h1>
+          <h1 className="text-2xl font-extrabold text-slate-900 mb-4">Something went wrong!</h1>
           <p className="text-lg text-slate-600 mb-8">
             We encountered an unexpected error. Please try again.
           </p>

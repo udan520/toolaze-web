@@ -266,7 +266,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
           ) : tool === 'image-compressor' || tool === 'image-compression' ? (
             <header className="bg-[#F8FAFF] pb-12 px-6">
               <div className="max-w-4xl mx-auto text-center pt-8 mb-12">
-                <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 leading-tight text-slate-900">
+                <h1 className="text-2xl font-extrabold tracking-tight mb-6 leading-tight text-slate-900">
                   {content.hero?.h1 ? (
                     renderH1WithGradient(content.hero.h1)
                   ) : (
@@ -285,7 +285,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
           ) : tool === 'image-converter' || tool === 'image-conversion' ? (
             <header className="bg-[#F8FAFF] pb-12 px-6">
               <div className="max-w-4xl mx-auto text-center pt-8 mb-12">
-                <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 leading-tight text-slate-900">
+                <h1 className="text-2xl font-extrabold tracking-tight mb-6 leading-tight text-slate-900">
                   {content.hero?.h1 ? (
                     renderH1WithGradient(content.hero.h1)
                   ) : (
@@ -304,7 +304,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
           ) : tool === 'emoji-copy-and-paste' ? (
             <header className="bg-[#F8FAFF] pb-12 px-6">
               <div className="max-w-4xl mx-auto text-center pt-8 mb-8">
-                <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 leading-tight text-slate-900">
+                <h1 className="text-2xl font-extrabold tracking-tight mb-6 leading-tight text-slate-900">
                   {content.hero?.h1 ? (
                     renderH1WithGradient(content.hero.h1)
                   ) : (
@@ -325,7 +325,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
           ) : tool === 'nano-banana-pro' ? (
             <header className="bg-[#F8FAFF] pb-6 md:pb-12 w-full px-2 md:px-6">
               <div className="w-full max-w-full text-center pt-6 md:pt-8 mb-6 md:mb-12">
-                <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 leading-tight text-slate-900">
+                <h1 className="text-2xl font-extrabold tracking-tight mb-6 leading-tight text-slate-900">
                   {content.hero?.h1 ? (
                     renderH1WithGradient(content.hero.h1)
                   ) : (
@@ -349,7 +349,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
           ) : (
             <header className="bg-[#F8FAFF] pb-8 md:pb-12 px-6">
               <div className="max-w-4xl mx-auto text-center pt-6 md:pt-8 mb-6 md:mb-12">
-                <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-3 md:mb-4 leading-tight text-slate-900">
+                <h1 className="text-2xl font-extrabold tracking-tight mb-3 md:mb-4 leading-tight text-slate-900">
                   {content.hero?.h1 ? (
                     renderH1WithGradient(content.hero.h1)
                   ) : (

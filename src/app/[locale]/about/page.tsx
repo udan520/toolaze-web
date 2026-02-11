@@ -85,7 +85,7 @@ export default async function AboutPage({ params }: PageProps) {
 
       <main className="max-w-4xl mx-auto py-20 px-6">
         <div className="text-center mb-20">
-          <h1 className="text-4xl md:text-6xl font-extrabold text-slate-900 mb-6 leading-tight">
+          <h1 className="text-2xl font-extrabold text-slate-900 mb-6 leading-tight">
             {translations.title.includes('We Handle') ? (
               <>
                 We Handle the <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">{translations.titleTool}</span>.<br />

@@ -25,7 +25,7 @@ export default function TermsPage() {
 
       <main className="bg-white py-24 px-6 border-t border-indigo-50/50">
         <div className="max-w-3xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4">Terms of Service</h1>
+          <h1 className="text-2xl font-extrabold text-slate-900 mb-4">Terms of Service</h1>
           
           <p className="text-slate-500 mb-12 text-base leading-relaxed">
             <strong className="text-slate-900">Last Updated:</strong> January 14, 2026

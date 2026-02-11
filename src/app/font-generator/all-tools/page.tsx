@@ -73,7 +73,7 @@ export default async function AllToolsPage() {
         {/* Hero 板块 */}
         <header className="bg-[#F8FAFF] pb-12 px-6">
           <div className="max-w-4xl mx-auto text-center pt-8 mb-12">
-            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 leading-tight text-slate-900">
+            <h1 className="text-2xl font-extrabold tracking-tight mb-6 leading-tight text-slate-900">
               {commonT.allFontGeneratorTools ? (
                 <>
                   {commonT.allFontGeneratorTools.split(' ')[0]} <span className="text-gradient">{commonT.allFontGeneratorTools.split(' ').slice(1).join(' ')}</span>

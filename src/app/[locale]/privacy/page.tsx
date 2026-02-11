@@ -101,7 +101,7 @@ export default async function PrivacyPage({ params }: PageProps) {
 
       <main className="bg-white py-24 px-6 border-t border-indigo-50/50">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4">{translations.title}</h1>
+          <h1 className="text-2xl font-extrabold text-slate-900 mb-4">{translations.title}</h1>
           
           <p className="text-slate-500 mb-12 text-base leading-relaxed">
             <strong className="text-slate-900">{translations.lastUpdated}</strong> {translations.date}

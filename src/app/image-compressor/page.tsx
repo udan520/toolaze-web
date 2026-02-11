@@ -89,7 +89,7 @@ export default async function ImageCompressorPage() {
         {/* 1. Hero 板块 - 包含标题、描述、工具卡片和信任条 */}
         <header className="bg-[#F8FAFF] pb-12 px-6">
           <div className="max-w-4xl mx-auto text-center pt-8 mb-12">
-            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 leading-tight text-slate-900">
+            <h1 className="text-2xl font-extrabold tracking-tight mb-6 leading-tight text-slate-900">
               Free <span className="text-gradient">Image Compressor</span>
             </h1>
             <p className="desc-text text-lg md:text-xl max-w-2xl mx-auto">

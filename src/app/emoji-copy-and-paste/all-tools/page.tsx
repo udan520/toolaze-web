@@ -68,7 +68,7 @@ export default async function AllToolsPage() {
       <main className="min-h-screen bg-[#F8FAFF]">
         <header className="bg-[#F8FAFF] pb-12 px-6">
           <div className="max-w-4xl mx-auto text-center pt-8 mb-12">
-            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 leading-tight text-slate-900">
+            <h1 className="text-2xl font-extrabold tracking-tight mb-6 leading-tight text-slate-900">
               All <span className="text-gradient">Emoji Copy & Paste</span> Tools
             </h1>
             <p className="desc-text text-lg md:text-xl max-w-2xl mx-auto">

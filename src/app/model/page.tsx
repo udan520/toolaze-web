@@ -24,7 +24,7 @@ export default function ModelPage() {
               { label: 'Home', href: '/' },
               { label: 'Model' },
             ]} />
-            <h1 className="text-4xl font-extrabold text-slate-900 mt-8 mb-4">
+            <h1 className="text-2xl font-extrabold text-slate-900 mt-8 mb-4">
               AI Models
             </h1>
             <p className="text-slate-600 text-lg leading-relaxed max-w-3xl">
