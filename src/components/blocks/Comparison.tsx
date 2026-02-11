@@ -75,10 +75,6 @@ export default function Comparison({ compare, title, labels, bgClass = 'bg-white
           <div className="md:col-span-5 relative order-1">
             {/* Toolaze 卡片 - 增强视觉效果 */}
             <div className="relative bg-gradient-to-br from-white to-indigo-50/30 rounded-[2rem] p-10 shadow-2xl shadow-indigo-500/30 border-2 border-indigo-200/50 transform hover:scale-[1.02] transition-transform duration-300">
-              {/* 顶部徽章 - 增强 */}
-              <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-xs font-black uppercase px-6 py-2 rounded-full shadow-xl shadow-indigo-500/50 z-20">
-                {smartChoice}
-              </div>
               {/* 装饰性边框高光 */}
               <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-br from-indigo-100/50 via-transparent to-purple-100/30 pointer-events-none"></div>
               <div className="relative z-10">

@@ -261,7 +261,6 @@ Use this code structure as the absolute source of truth. Replace text content on
         <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
             <div class="md:col-span-5 relative order-1">
                 <div class="relative bg-white rounded-[2rem] p-10 shadow-2xl shadow-indigo-500/20 border border-white">
-                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-brand text-white text-[10px] font-black uppercase px-4 py-1.5 rounded-full shadow-lg">Smart Choice</div>
                     <h3 class="font-bold text-slate-900 text-xl mb-8 border-b border-indigo-50 pb-4">Toolaze 💎</h3>
                 </div>
             </div>
