@@ -264,13 +264,23 @@
     - 数据优势：包含具体数字（如 "35%", "100 images"）
     - 结尾强调安全和隐私
 
-- **H1（极简原则）**：
-  - **格式**：`[Input] to [Output] Converter`
-  - **示例**：`PNG to WebP Converter`
+- **H1（核心关键词 + 修饰词策略）**：
+  - **基础格式**：`[Input] to [Output] Converter` 或 `[Tool Name]`
+  - **增强格式**（推荐）：`Free [Tool Name]` 或 `[Tool Name] Online` 或 `Free [Tool Name] Online`
   - **规则**：
-    - 只告诉用户他在哪，不添加修饰词
-    - 不使用 "Unlimited", "Free", "Online" 等修饰词
-    - 保持简洁，核心格式转换信息即可
+    - **必须包含**：核心工具名称或格式转换信息
+    - **强烈推荐包含**：至少一个修饰词关键词（Free, Online, Unlimited 等）
+    - **修饰词选择**：根据工具特性选择最相关的修饰词
+      - 免费工具：必须包含 "Free"
+      - 在线工具：必须包含 "Online"
+      - 无限制工具：可以包含 "Unlimited"
+    - **组合原则**：最多使用 2 个修饰词，避免堆砌
+  - **示例**：
+    - ✅ `Free PNG to WebP Converter`（推荐：包含 Free）
+    - ✅ `PNG to WebP Converter Online`（推荐：包含 Online）
+    - ✅ `Free Seedance 2.0 Online`（推荐：包含 Free + Online）
+    - ✅ `PNG to WebP Converter`（基础格式，可接受但不推荐）
+    - ❌ `Free Unlimited PNG to WebP Online Converter`（修饰词过多，堆砌）
 
 - **JSON-LD Schema（HowTo类型）**：
   - **要求**：必须在HTML的`<head>`中注入JSON-LD结构化数据
@@ -516,15 +526,26 @@
 ### 2. 标题层级关键词布局策略
 
 #### H1 标签策略
-- **格式原则**：极简原则，只包含核心关键词
-- **推荐格式**：
-  - 工具类：`[Tool Name]` 或 `[Input] to [Output] Converter`
-  - AI 工具：`[Tool Name] AI [Category]`（如：`Seedance 2.0 AI Video Generator`）
-- **避免**：不使用 "Free", "Online", "Unlimited" 等修饰词（除非是核心卖点）
+- **格式原则**：核心关键词 + 修饰词关键词（强烈推荐）
+- **基础格式**：
+  - 工具类：`[Input] to [Output] Converter` 或 `[Tool Name]`
+  - AI 工具：`[Tool Name] AI [Category]`
+- **增强格式（强烈推荐）**：
+  - `Free [Tool Name]` 或 `[Tool Name] Online` 或 `Free [Tool Name] Online`
+  - `Unlimited [Tool Name]`（如果工具确实无限制）
+  - `Free [Tool Name] AI [Category]`（AI 工具）
+- **修饰词使用规则**：
+  - **Free**：所有免费工具必须包含（高搜索量关键词）
+  - **Online**：所有在线工具必须包含（高搜索量关键词）
+  - **Unlimited**：如果工具确实无限制，可以包含
+  - **组合原则**：最多使用 2 个修饰词，避免堆砌
 - **示例**：
-  - ✅ `PNG to WebP Converter`
-  - ✅ `Seedance 2.0 AI Video Generator`
-  - ❌ `Free Unlimited PNG to WebP Online Converter`
+  - ✅ `Free PNG to WebP Converter`（推荐：包含 Free）
+  - ✅ `PNG to WebP Converter Online`（推荐：包含 Online）
+  - ✅ `Free Seedance 2.0 Online`（推荐：包含 Free + Online）
+  - ✅ `Free Seedance 2.0 AI Video Generator`（推荐：AI 工具 + Free）
+  - ✅ `PNG to WebP Converter`（基础格式，可接受但不推荐）
+  - ❌ `Free Unlimited PNG to WebP Online Converter`（修饰词过多，堆砌）
 
 #### H2 标签策略
 - **格式要求**：必须包含核心功能关键词
@@ -550,7 +571,110 @@
   - ✅ `Faster and Smarter Hollywood-Quality 1080p AI Video Creation`
   - ✅ `Multimodal Capability that Understands Text, Image, Video, and Audio`
 
-### 3. 长尾关键词分类策略
+### 3. 修饰词关键词使用策略（Free, Online, Unlimited 等）
+
+> **核心原则**：修饰词关键词（Free, Online, Unlimited 等）是重要的 SEO 关键词，必须合理使用以提升搜索排名和点击率。
+
+#### 修饰词关键词分类
+
+| 修饰词 | 搜索意图 | 使用场景 | 布局位置 | 优先级 |
+|--------|---------|---------|---------|--------|
+| **Free** | 商业型（寻找免费工具） | 所有免费工具 | H1, Title, Meta Description, Hero, Features | ⭐⭐⭐⭐⭐ |
+| **Online** | 信息型（寻找在线工具） | 所有在线工具 | H1, Title, Meta Description, Hero | ⭐⭐⭐⭐⭐ |
+| **Unlimited** | 商业型（寻找无限制工具） | 无限制工具 | H1, Title, Features | ⭐⭐⭐⭐ |
+| **No Sign Up** | 商业型（寻找无需注册工具） | 无需注册工具 | Hero, Features, FAQ | ⭐⭐⭐⭐ |
+| **Batch** | 信息型（寻找批量处理） | 支持批量处理工具 | Title, Features, How To Use | ⭐⭐⭐ |
+
+#### 修饰词关键词布局规则
+
+##### H1 标签中的修饰词
+- **强烈推荐**：H1 必须包含至少一个修饰词（Free 或 Online）
+- **格式**：
+  - `Free [Tool Name]`（推荐）
+  - `[Tool Name] Online`（推荐）
+  - `Free [Tool Name] Online`（推荐，如果工具既是免费又是在线）
+  - `Unlimited [Tool Name]`（如果工具确实无限制）
+- **组合原则**：
+  - 最多使用 2 个修饰词
+  - 优先使用 Free 和 Online（搜索量最高）
+  - 避免堆砌（如：`Free Unlimited Online [Tool]`）
+- **示例**：
+  - ✅ `Free PNG to WebP Converter`
+  - ✅ `Free Seedance 2.0 Online`
+  - ✅ `Image Compressor Online`
+  - ❌ `Free Unlimited PNG to WebP Online Converter`（修饰词过多）
+
+##### Title 标签中的修饰词
+- **必须包含**：Title 必须包含修饰词关键词
+- **格式**：`[Action] [Input] to [Output] [Category] ([Free], [Online] & [Benefit]) - Toolaze`
+- **示例**：
+  - ✅ `Convert PNG to WebP Online (Free, Batch & No Ads) - Toolaze`
+  - ✅ `Free Seedance 2.0 AI Video Generator (Online, No Sign Up) - Toolaze`
+  - ✅ `Compress Images Online (Free, Unlimited & Secure) - Toolaze`
+
+##### Meta Description 中的修饰词
+- **必须包含**：Meta Description 必须包含修饰词关键词
+- **格式**：`How to [action]? [Steps]. [Free/Online] [tool] with [benefits]. [Security/Privacy].`
+- **示例**：
+  - ✅ `How to convert PNG to WebP? 1. Upload PNG 2. Auto-convert 3. Download WebP. Free online converter. Shrink file size by 35% with zero quality loss. Secure & Private.`
+  - ✅ `Create Hollywood-quality 1080p videos with Seedance 2.0 for free. Upload any text, images, video, and audio online and let our free AI video generator handle the rest.`
+
+##### Hero 板块中的修饰词
+- **必须包含**：Hero desc 必须包含修饰词关键词
+- **格式**：`[Action] [tool] [free/online]. [Value proposition]. [Benefits].`
+- **示例**：
+  - ✅ `Convert HEIC to JPG online for free. Simply drop your HEIC images below to convert them to JPG in seconds.`
+  - ✅ `Create Hollywood-quality 1080p videos with Seedance 2.0 for free. Upload any text, images, video, and audio online.`
+
+##### Features 板块中的修饰词
+- **推荐包含**：在功能描述中自然嵌入修饰词
+- **格式**：`[Feature] - [Free/Online/Unlimited] [benefit]`
+- **示例**：
+  - ✅ `Free Image Conversion - Convert unlimited images online without registration`
+  - ✅ `Online Processing - All conversions happen in your browser, no uploads required`
+
+##### FAQ 板块中的修饰词
+- **必须包含**：至少 1-2 个 FAQ 问题包含修饰词关键词
+- **格式**：
+  - `Is this [tool] free to use?`
+  - `Can I use [tool] online?`
+  - `Is [tool] really free?`
+- **示例**：
+  - ✅ `Is this Seedance 2.0 AI video creator free to use?`
+  - ✅ `Can I convert images online without signing up?`
+  - ✅ `Is Toolaze image converter really free forever?`
+
+#### 修饰词关键词密度要求
+
+- **Free**：
+  - 必须出现在：H1, Title, Meta Description, Hero desc
+  - 推荐出现在：Features, FAQ
+  - 密度：每个页面至少 3-5 次
+- **Online**：
+  - 必须出现在：H1 或 Title 或 Meta Description
+  - 推荐出现在：Hero desc, Features
+  - 密度：每个页面至少 2-3 次
+- **Unlimited**：
+  - 如果工具确实无限制，必须出现在：H1 或 Title
+  - 推荐出现在：Features, FAQ
+  - 密度：每个页面至少 1-2 次
+
+#### 修饰词关键词检查清单
+
+编写 SEO 内容后，必须检查以下项目：
+
+- [ ] H1 包含至少一个修饰词（Free 或 Online）
+- [ ] Title 包含修饰词关键词
+- [ ] Meta Description 包含修饰词关键词
+- [ ] Hero desc 包含修饰词关键词
+- [ ] Features 板块自然嵌入修饰词
+- [ ] FAQ 板块至少 1-2 个问题包含修饰词
+- [ ] Free 关键词出现至少 3-5 次
+- [ ] Online 关键词出现至少 2-3 次
+- [ ] 修饰词使用自然，不堆砌
+- [ ] 修饰词与工具特性匹配（免费工具必须说 Free，在线工具必须说 Online）
+
+### 4. 长尾关键词分类策略
 
 长尾关键词必须按照以下类别进行分类和布局：
 
@@ -593,40 +717,41 @@
   - 在 How To Use 板块说明适用场景
 
 #### 类别 D：操作类长尾关键词
-- **特点**：以 "How to" 开头的问题
+- **特点**：以 "How to" 开头的问题，通常包含修饰词
 - **布局位置**：How To Use, FAQ
 - **示例**：
-  - `How to generate videos with Seedance 2.0?`
-  - `How to convert PNG to WebP?`
-  - `How to compress images to 20KB?`
+  - `How to generate videos with Seedance 2.0 for free?`
+  - `How to convert PNG to WebP online?`
+  - `How to compress images to 20KB for free?`
 - **使用要求**：
-  - 在 How To Use 板块标题中使用
-  - 在 FAQ 板块创建相关问题
+  - 在 How To Use 板块标题中使用（必须包含修饰词）
+  - 在 FAQ 板块创建相关问题（必须包含修饰词）
   - 确保步骤清晰，关键词自然嵌入
+  - **强烈推荐**：操作类长尾关键词必须包含 "free" 或 "online"
 
 ### 4. 内容板块关键词分布策略
 
 #### Hero 板块
 - **关键词要求**：
-  - H1：必须包含 P0 主关键词
-  - Desc：包含 P0 主关键词 + P1 核心功能词
-- **关键词密度**：主关键词 1-2 次，核心功能词 1-2 次
+  - H1：必须包含 P0 主关键词 + 修饰词（Free 或 Online）
+  - Desc：包含 P0 主关键词 + P1 核心功能词 + 修饰词（Free 或 Online）
+- **关键词密度**：主关键词 1-2 次，核心功能词 1-2 次，修饰词 1-2 次
 - **示例**：
-  - H1: `Seedance 2.0 AI Video Generator`
-  - Desc: `Create Hollywood-quality 1080p videos with Seedance 2.0 for free. Upload any text, images, video, and audio online and let our Seedance 2.0 AI video generator handle the rest.`
+  - H1: `Free Seedance 2.0 Online` 或 `Free Seedance 2.0 AI Video Generator`
+  - Desc: `Create Hollywood-quality 1080p videos with Seedance 2.0 for free. Upload any text, images, video, and audio online and let our free AI video generator handle the rest.`
 
 #### How To Use 板块
 - **关键词要求**：
-  - 标题：使用类别 D（操作类）长尾关键词
-  - 步骤描述：自然嵌入 P1 和 P2 关键词
+  - 标题：使用类别 D（操作类）长尾关键词，必须包含修饰词（free 或 online）
+  - 步骤描述：自然嵌入 P1 和 P2 关键词 + 修饰词
 - **格式要求**：
-  - 标题：`How to [Action] with [Tool Name]?`
-  - 步骤：每个步骤包含相关关键词，但不堆砌
+  - 标题：`How to [Action] with [Tool Name] [Free/Online]?` 或 `How to [Action] [Free/Online]?`
+  - 步骤：每个步骤包含相关关键词，自然嵌入修饰词
 - **示例**：
-  - 标题：`How to Generate Videos with Seedance 2.0?`
-  - 步骤1：`Upload your images or text prompts to the Seedance 2.0 interface.`
-  - 步骤2：`Configure output settings (aspect ratio, quality, duration).`
-  - 步骤3：`Click Generate and download your 1080p video.`
+  - 标题：`How to Generate Videos with Seedance 2.0 for Free?` 或 `How to Generate Videos Online?`
+  - 步骤1：`Upload your images or text prompts to the free Seedance 2.0 interface.`
+  - 步骤2：`Configure output settings (aspect ratio, quality, duration) online.`
+  - 步骤3：`Click Generate and download your 1080p video for free.`
 
 #### Features 板块
 - **关键词要求**：
@@ -704,6 +829,18 @@
 - [ ] 前 100 字包含主关键词 1-2 次
 - [ ] 主关键词密度在 1-2% 之间
 
+#### 修饰词关键词检查（Free, Online, Unlimited 等）
+- [ ] H1 包含至少一个修饰词（Free 或 Online）
+- [ ] Title 包含修饰词关键词
+- [ ] Meta Description 包含修饰词关键词
+- [ ] Hero desc 包含修饰词关键词
+- [ ] Features 板块自然嵌入修饰词
+- [ ] FAQ 板块至少 1-2 个问题包含修饰词
+- [ ] Free 关键词出现至少 3-5 次
+- [ ] Online 关键词出现至少 2-3 次（如果是在线工具）
+- [ ] 修饰词使用自然，不堆砌（最多 2 个修饰词）
+- [ ] 修饰词与工具特性匹配（免费工具必须说 Free，在线工具必须说 Online）
+
 #### P1 核心功能词检查
 - [ ] H2 标题包含核心功能词
 - [ ] Hero 板块包含核心功能词
@@ -750,6 +887,9 @@
 3. **位置不当**：避免主关键词只出现在页面底部
 4. **缺失覆盖**：避免某些优先级的关键词完全没有使用
 5. **忽略长尾**：避免只关注主关键词，忽略长尾关键词
+6. **忽略修饰词**：禁止 H1 中不使用修饰词（Free 或 Online）
+7. **修饰词堆砌**：禁止使用超过 2 个修饰词（如：Free Unlimited Online）
+8. **修饰词不匹配**：禁止说工具是 Free 但实际收费，或说 Online 但实际是桌面应用
 
 ## 文件位置
 
