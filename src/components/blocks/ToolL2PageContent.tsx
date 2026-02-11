@@ -1,4 +1,4 @@
-import { getL2SeoContent, getAllSlugs, loadCommonTranslations } from '@/lib/seo-loader'
+import { getL2SeoContent, getAllSlugs, loadCommonTranslations, getSeoContent } from '@/lib/seo-loader'
 import { localizeLinksInObject } from '@/lib/localize-links'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
@@ -206,7 +206,6 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
         ]
 
     // 获取推荐的其他功能（排除当前页面）
-    const { getSeoContent } = await import('@/lib/seo-loader')
     const allSlugs = await getAllSlugs(tool, locale)
     // 生成链接的辅助函数（英语不使用 /en 前缀）
     const getToolHref = (toolSlug: string, slug: string): string => {
