@@ -2,121 +2,233 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>Toolaze Logic Tester</title>
+    <title>英语全能解析阅读器 - 多义词版</title>
     <style>
-        body { font-family: system-ui, -apple-system, sans-serif; max-width: 600px; margin: 40px auto; padding: 20px; background: #f0f4f8; }
-        .card { background: white; padding: 30px; border-radius: 16px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-align: center; }
-        .upload-box { border: 2px dashed #cbd5e1; padding: 40px; border-radius: 12px; cursor: pointer; transition: 0.2s; }
-        .upload-box:hover { border-color: #6366f1; background: #eef2ff; }
-        select, button { padding: 10px 20px; font-size: 16px; border-radius: 8px; margin-top: 20px; }
-        button { background: #6366f1; color: white; border: none; cursor: pointer; font-weight: bold; }
-        button:hover { background: #4f46e5; }
-        #results { margin-top: 30px; text-align: left; }
-        .item { background: #f8fafc; padding: 15px; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; }
-        .tag { background: #dcfce7; color: #166534; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; }
-        a { color: #6366f1; text-decoration: none; font-weight: bold; }
+        :root {
+            --primary-color: #2563eb;
+            --highlight-color: #fbbf24;
+            --bg-body: #f1f5f9;
+            --border-color: #e2e8f0;
+            --accent-red: #ef4444;
+        }
+
+        body, html { margin: 0; padding: 0; height: 100%; font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg-body); overflow: hidden; }
+
+        .app-container { display: flex; height: 100vh; width: 100vw; }
+
+        /* 左侧文档区 */
+        .left-panel { flex: 5; height: 100%; background: white; border-right: 2px solid var(--border-color); display: flex; flex-direction: column; overflow: hidden; }
+
+        /* 右侧侧边栏 */
+        .right-panel { flex: 3; height: 100%; padding: 25px; overflow-y: auto; background: #fafafa; box-sizing: border-box; }
+
+        /* 输入视图 */
+        #input-view { padding: 40px; display: flex; flex-direction: column; gap: 20px; }
+        #input-view textarea { width: 100%; height: 450px; padding: 20px; border: 2px solid var(--border-color); border-radius: 12px; font-size: 16px; outline: none; box-sizing: border-box; }
+        .btn-start { background: var(--primary-color); color: white; padding: 15px 40px; border: none; border-radius: 8px; font-size: 18px; cursor: pointer; align-self: center; }
+
+        /* 阅读视图 */
+        #doc-view { display: none; padding: 50px 70px; overflow-y: auto; flex: 1; }
+        .doc-para { margin-bottom: 40px; line-height: 2; font-size: 20px; color: #1e293b; }
+
+        .word { display: inline-block; cursor: pointer; position: relative; padding: 0 4px; transition: all 0.2s; border-radius: 4px; }
+        .is-highlighted { background-color: var(--highlight-color) !important; box-shadow: 0 2px 4px rgba(251, 191, 36, 0.3); }
+
+        /* 数字小红圈 */
+        .is-highlighted::before {
+            content: attr(data-index);
+            position: absolute; top: -10px; left: -8px;
+            background: var(--accent-red); color: white; font-size: 10px;
+            width: 18px; height: 18px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: bold; z-index: 10; border: 1px solid white;
+        }
+
+        .trans-btn { display: inline-block; font-size: 14px; color: var(--primary-color); margin-top: 10px; cursor: pointer; font-weight: 600; padding: 5px 12px; background: #f0f7ff; border-radius: 6px; }
+        .trans-content { background: #f1f5f9; padding: 18px; margin-top: 12px; border-left: 4px solid var(--primary-color); font-size: 17px; color: #334155; border-radius: 4px; }
+
+        /* 右侧多义词卡片 */
+        .dict-card { background: white; padding: 20px; border-radius: 12px; margin-bottom: 15px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); border: 1px solid var(--border-color); display: flex; gap: 15px; }
+        .card-num { background: var(--accent-red); color: white; min-width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px; flex-shrink: 0; }
+        
+        .card-body { flex: 1; }
+        .card-body h3 { margin: 0 0 10px 0; color: var(--primary-color); font-size: 22px; }
+        .card-body .phonetic { font-size: 15px; color: #64748b; margin-left: 10px; font-weight: normal; }
+        
+        /* 词性分组样式 */
+        .pos-group { margin-top: 12px; border-top: 1px solid #f1f5f9; padding-top: 10px; }
+        .pos-badge { font-size: 12px; background: #e2e8f0; color: #475569; padding: 2px 6px; border-radius: 4px; text-transform: uppercase; font-weight: bold; }
+        .meaning-item { margin: 8px 0; font-size: 14px; line-height: 1.5; }
+        .eng-text { color: #475569; font-style: italic; display: block; margin-bottom: 2px; }
+        .chi-text { color: #1e293b; font-weight: 500; display: block; }
+
+        .loading-text { font-size: 14px; color: #94a3b8; font-style: italic; }
+        .hidden { display: none; }
     </style>
 </head>
 <body>
 
-<div class="card">
-    <h2>🧩 Toolaze 逻辑验证器</h2>
-    <p style="color: #64748b; font-size: 14px;">不依赖 React，直接测试 Canvas 转换核心算法</p>
-    
-    <div class="upload-box" onclick="document.getElementById('fileInput').click()">
-        <p>点击选择图片 (支持多选)</p>
-        <input type="file" id="fileInput" multiple accept="image/*" style="display:none">
+<div class="app-container">
+    <div class="left-panel">
+        <div id="input-view">
+            <h1 style="text-align: center;">英语互动解析阅读</h1>
+            <textarea id="raw-text" placeholder="在此粘贴您的英文内容..."></textarea>
+            <button class="btn-start" onclick="processDoc()">生成深度解析文档</button>
+        </div>
+
+        <div id="doc-view">
+            <button onclick="location.reload()" style="margin-bottom: 30px; border:none; color:#64748b; background:none; cursor:pointer; font-weight:600;">← 返回重新粘贴</button>
+            <div id="doc-content"></div>
+        </div>
     </div>
 
-    <div id="controls" style="display:none;">
-        <select id="formatSelect">
-            <option value="image/jpeg">转为 JPG (测试白底填充)</option>
-            <option value="image/png">转为 PNG</option>
-            <option value="image/webp">转为 WEBP</option>
-            <option value="image/bmp">转为 BMP</option>
-        </select>
-        <button onclick="processFiles()">开始转换测试</button>
+    <div class="right-panel">
+        <h2 style="border-bottom: 2px solid #e2e8f0; padding-bottom: 15px; margin-top: 0;">多义词释义记录</h2>
+        <div id="word-log">
+            <p id="empty-hint" style="color: #94a3b8; text-align: center; margin-top: 50px;">双击单词以开启多义词对照查询</p>
+        </div>
     </div>
-
-    <div id="results"></div>
 </div>
 
 <script>
-    let selectedFiles = [];
-    const fileInput = document.getElementById('fileInput');
-    const controls = document.getElementById('controls');
-    const resultsDiv = document.getElementById('results');
+    const dictCache = {};
 
-    // 监听文件选择
-    fileInput.addEventListener('change', (e) => {
-        selectedFiles = Array.from(e.target.files);
-        if (selectedFiles.length > 0) {
-            controls.style.display = 'block';
-            resultsDiv.innerHTML = `<p style="color:#64748b">已选择 ${selectedFiles.length} 张图片，请点击转换...</p>`;
-        }
-    });
+    function processDoc() {
+        const text = document.getElementById('raw-text').value.trim();
+        if (!text) return;
+        const container = document.getElementById('doc-content');
+        container.innerHTML = '';
+        const paragraphs = text.split(/\n+/);
+        paragraphs.forEach((para) => {
+            const pDiv = document.createElement('div');
+            pDiv.className = 'doc-para';
+            const wordsHtml = para.split(/([a-zA-Z']+)/).map(part => {
+                if (/[a-zA-Z]/.test(part)) {
+                    return `<span class="word" ondblclick="toggleWord(this)">${part}</span>`;
+                }
+                return part;
+            }).join('');
+            pDiv.innerHTML = `<div class="para-text">${wordsHtml}</div><div class="trans-btn" onclick="toggleParaTrans(this, \`${para.replace(/'/g, "\\'")}\`)">翻译段落</div>`;
+            container.appendChild(pDiv);
+        });
+        document.getElementById('input-view').style.display = 'none';
+        document.getElementById('doc-view').style.display = 'block';
+    }
 
-    // --- 核心逻辑 (与 React 版完全一致) ---
-    async function processFiles() {
-        const targetMime = document.getElementById('formatSelect').value;
-        const targetExt = targetMime.split('/')[1].replace('jpeg', 'jpg');
-        
-        resultsDiv.innerHTML = ''; // 清空结果
+    async function translateText(text) {
+        try {
+            const res = await fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=zh-CN&dt=t&q=${encodeURIComponent(text)}`);
+            const data = await res.json();
+            return data[0].map(item => item[0]).join('');
+        } catch (e) { return "翻译暂不可用"; }
+    }
 
-        for (const file of selectedFiles) {
-            try {
-                // 1. 读取并转换
-                const dataUrl = await convertToFormat(file, targetMime);
-                
-                // 2. 估算大小
-                const sizeKB = Math.round((dataUrl.length * 3 / 4) / 1024);
-                
-                // 3. 显示结果
-                const div = document.createElement('div');
-                div.className = 'item';
-                div.innerHTML = `
-                    <div>
-                        <strong>${file.name}</strong> <br>
-                        <span style="font-size:12px; color:#94a3b8">-> ${sizeKB} KB (${targetExt.toUpperCase()})</span>
-                    </div>
-                    <a href="${dataUrl}" download="test-${file.name.split('.')[0]}.${targetExt}">下载验证</a>
-                `;
-                resultsDiv.appendChild(div);
+    async function toggleWord(el) {
+        if (window.getSelection) window.getSelection().removeAllRanges();
+        el.classList.toggle('is-highlighted');
+        refreshHighlights();
+    }
 
-            } catch (err) {
-                console.error(err);
-                alert('转换失败: ' + file.name);
-            }
+    async function refreshHighlights() {
+        const allHighlighted = document.querySelectorAll('.word.is-highlighted');
+        const logContainer = document.getElementById('word-log');
+        const hint = document.getElementById('empty-hint');
+        logContainer.innerHTML = '';
+        if (allHighlighted.length === 0) { logContainer.appendChild(hint); return; }
+
+        for (let i = 0; i < allHighlighted.length; i++) {
+            const wordEl = allHighlighted[i];
+            const index = i + 1;
+            const wordText = wordEl.innerText.replace(/[^a-zA-Z]/g, '').toLowerCase();
+            wordEl.setAttribute('data-index', index);
+            const card = createEmptyCard(index, wordText);
+            logContainer.appendChild(card);
+            fetchFullMeanings(wordText, card);
         }
     }
 
-    // --- Canvas 引擎 (核心算法) ---
-    function convertToFormat(file, targetMime) {
-        return new Promise((resolve, reject) => {
-            const img = new Image();
-            const reader = new FileReader();
+    function createEmptyCard(index, word) {
+        const div = document.createElement('div');
+        div.className = 'dict-card';
+        div.innerHTML = `<div class="card-num">${index}</div><div class="card-body"><h3>${word}<span class="phonetic"></span></h3><div class="meanings-area"><p class="loading-text">正在检索所有含义...</p></div></div>`;
+        return div;
+    }
 
-            reader.onload = (e) => { img.src = e.target.result; };
+    async function fetchFullMeanings(word, cardEl) {
+        const area = cardEl.querySelector('.meanings-area');
+        const phoneticEl = cardEl.querySelector('.phonetic');
+
+        if (dictCache[word]) {
+            renderCardData(cardEl, dictCache[word]);
+            return;
+        }
+
+        try {
+            const res = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
+            const data = await res.json();
             
-            img.onload = () => {
-                const canvas = document.createElement('canvas');
-                canvas.width = img.width;
-                canvas.height = img.height;
-                const ctx = canvas.getContext('2d');
+            if (!data[0]) {
+                area.innerHTML = "<p>未找到该词的详细词典解释。</p>";
+                return;
+            }
 
-                // 🔥 关键验证点：透明度处理 🔥
-                // 如果目标是 JPG 或 BMP，填充白色背景
-                if (targetMime === 'image/jpeg' || targetMime === 'image/bmp') {
-                    ctx.fillStyle = '#FFFFFF'; // 白色
-                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+            const rawMeanings = data[0].meanings;
+            const phonetic = data[0].phonetic || "";
+            
+            // 构建结构化数据
+            const structuredData = { phonetic, groups: [] };
+
+            for (let m of rawMeanings) {
+                const group = { pos: m.partOfSpeech, items: [] };
+                // 限制每个词性下最多展示3个核心定义，防止卡片过长
+                for (let d of m.definitions.slice(0, 3)) {
+                    const chi = await translateText(d.definition);
+                    group.items.push({ eng: d.definition, chi: chi });
                 }
+                structuredData.groups.push(group);
+            }
 
-                ctx.drawImage(img, 0, 0);
-                resolve(canvas.toDataURL(targetMime, 0.9));
-            };
+            dictCache[word] = structuredData;
+            renderCardData(cardEl, structuredData);
+        } catch (e) {
+            area.innerHTML = "<p>查询失败，请检查网络。</p>";
+        }
+    }
+
+    function renderCardData(cardEl, data) {
+        const area = cardEl.querySelector('.meanings-area');
+        const phoneticEl = cardEl.querySelector('.phonetic');
+        phoneticEl.innerText = data.phonetic;
+        area.innerHTML = '';
+
+        data.groups.forEach(group => {
+            const gDiv = document.createElement('div');
+            gDiv.className = 'pos-group';
+            let itemsHtml = group.items.map(it => `
+                <div class="meaning-item">
+                    <span class="eng-text">${it.eng}</span>
+                    <span class="chi-text">${it.chi}</span>
+                </div>
+            `).join('');
             
-            reader.readAsDataURL(file);
+            gDiv.innerHTML = `<span class="pos-badge">${group.pos}</span>${itemsHtml}`;
+            area.appendChild(gDiv);
         });
+    }
+
+    async function toggleParaTrans(btn, text) {
+        const parent = btn.parentElement;
+        const existing = parent.querySelector('.trans-content');
+        if (existing) { existing.remove(); btn.innerText = "翻译段落"; } 
+        else {
+            btn.innerText = "正在翻译...";
+            const chiPara = await translateText(text);
+            const div = document.createElement('div');
+            div.className = 'trans-content';
+            div.innerText = chiPara;
+            parent.appendChild(div);
+            btn.innerText = "收起翻译";
+        }
     }
 </script>
 

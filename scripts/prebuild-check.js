@@ -34,12 +34,32 @@ if (fs.existsSync(apiDir)) {
   
   // 如果备份目录已存在，先删除
   if (fs.existsSync(backupDir)) {
-    fs.rmSync(backupDir, { recursive: true, force: true });
+    try {
+      fs.rmSync(backupDir, { recursive: true, force: true, maxRetries: 3, retryDelay: 100 });
+    } catch (e) {
+      console.warn('⚠️  无法删除旧的备份目录，继续尝试...');
+    }
   }
   
-  // 将 API 目录移动到备份目录
-  fs.renameSync(apiDir, backupDir);
-  console.log('✅ API 路由已临时移除');
+  // 将 API 目录移动到备份目录（使用重试机制）
+  try {
+    // 尝试直接重命名
+    fs.renameSync(apiDir, backupDir);
+    console.log('✅ API 路由已临时移除');
+  } catch (e) {
+    // 如果重命名失败（可能是文件被锁定），尝试复制后删除
+    console.warn('⚠️  重命名失败，尝试复制后删除...');
+    try {
+      fs.cpSync(apiDir, backupDir, { recursive: true, force: true });
+      fs.rmSync(apiDir, { recursive: true, force: true, maxRetries: 3, retryDelay: 100 });
+      console.log('✅ API 路由已临时移除（使用复制方式）');
+    } catch (e2) {
+      console.error('❌ 无法移除 API 路由目录，可能被其他进程占用');
+      console.error('   请确保没有开发服务器或其他进程正在使用该目录');
+      console.error('   错误信息:', e2.message);
+      // 不退出，让构建继续，但会警告
+    }
+  }
 } else {
   console.log('ℹ️  API 路由目录不存在，跳过移除');
 }
