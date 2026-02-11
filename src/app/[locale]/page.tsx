@@ -237,7 +237,7 @@ export default async function HomePage({ params }: PageProps) {
       <header className="pt-10 pb-20 px-6">
         <div className="max-w-4xl mx-auto text-center mb-10">
           <span className="inline-block py-1 px-3 rounded-full bg-indigo-50 text-indigo-600 text-xs font-bold tracking-widest uppercase mb-4 border border-indigo-100">{translations.home.badge}</span>
-          <h1 className="text-2xl font-extrabold text-slate-900 mb-6" style={{ lineHeight: '1.3' }}>
+          <h1 className="text-[40px] font-extrabold text-slate-900 mb-6" style={{ lineHeight: '1.3' }}>
             {translations.home.titleLine1} <br /> <span className="text-gradient">{translations.home.titleLine2}</span>
           </h1>
           <p className="text-lg text-slate-500 max-w-xl mx-auto">

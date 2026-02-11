@@ -319,7 +319,7 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
           ) : isEmoji ? (
             <header className="bg-[#F8FAFF] pb-8 md:pb-12 px-6">
               <div className="max-w-4xl mx-auto text-center pt-6 md:pt-8 mb-6 md:mb-12">
-                <h1 className="text-2xl font-extrabold tracking-tight mb-3 md:mb-4 leading-tight text-slate-900">
+                <h1 className="text-[40px] font-extrabold tracking-tight mb-3 md:mb-4 leading-tight text-slate-900">
                   {content.hero?.h1 ? (
                     renderH1WithGradient(content.hero.h1)
                   ) : (
@@ -339,7 +339,7 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
           ) : (
             <header className="bg-[#F8FAFF] pb-8 md:pb-12 px-6">
               <div className="max-w-4xl mx-auto text-center pt-6 md:pt-8 mb-6 md:mb-12">
-                <h1 className="text-2xl font-extrabold tracking-tight mb-3 md:mb-4 leading-tight text-slate-900">
+                <h1 className="text-[40px] font-extrabold tracking-tight mb-3 md:mb-4 leading-tight text-slate-900">
                   {content.hero?.h1 ? (
                     renderH1WithGradient(content.hero.h1)
                   ) : (

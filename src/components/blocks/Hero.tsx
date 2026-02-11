@@ -22,7 +22,7 @@ export default function Hero({ title, subtitle, description, data }: HeroProps) 
     <header className="bg-[#F8FAFF] pb-12 px-6 border-b border-indigo-50/50">
       <div className="max-w-4xl mx-auto text-center pt-8 mb-12">
         <h1 
-          className="text-2xl font-extrabold tracking-tight mb-6 leading-tight text-slate-900"
+          className="text-[40px] font-extrabold tracking-tight mb-6 leading-tight text-slate-900"
           dangerouslySetInnerHTML={hasHtmlTags ? { __html: h1 } : undefined}
         >
           {!hasHtmlTags && h1}

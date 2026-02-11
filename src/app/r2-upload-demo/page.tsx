@@ -150,7 +150,7 @@ export default function R2UploadDemo() {
     >
       <div className="max-w-4xl mx-auto">
         <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12">
-          <h1 className="text-2xl font-extrabold text-slate-900 mb-2">
+          <h1 className="text-[40px] font-extrabold text-slate-900 mb-2">
             R2 图片上传 Demo
           </h1>
           <p className="text-slate-600 mb-2">

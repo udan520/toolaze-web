@@ -62,7 +62,7 @@ export default function FontGeneratorHero({ h1, desc }: FontGeneratorHeroProps) 
   return (
     <header className="bg-[#F8FAFF] pb-12 px-6">
       <div className="max-w-4xl mx-auto text-center pt-8 mb-12">
-        <h1 className="text-2xl font-extrabold tracking-tight mb-6 leading-tight text-slate-900">
+        <h1 className="text-[40px] font-extrabold tracking-tight mb-6 leading-tight text-slate-900">
           {renderH1WithGradient(h1)}
         </h1>
         <p className="desc-text text-lg md:text-xl max-w-2xl mx-auto">

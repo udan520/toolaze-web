@@ -3,7 +3,7 @@
 ## 1. Design System (Style 1: Soft Smart Tech)
 - **Font**: Poppins (`font-sans`).
 - **Typography**:
-  - **H1 (Heading 1)**: `text-2xl` (24px) - **MANDATORY**: All H1 tags MUST use `text-2xl` class (24px font size). No responsive variants allowed.
+  - **H1 (Heading 1)**: `text-[40px]` (40px) - **MANDATORY**: All H1 tags MUST use `text-[40px]` class (40px font size). No responsive variants allowed.
   - **H2 (Heading 2)**: `text-4xl` (36px) for section headings.
   - **H3 (Heading 3)**: `text-xl` (20px) for subsection headings.
   - **Body Text**: Slate-500.
@@ -199,7 +199,7 @@ Use this code structure as the absolute source of truth. Replace text content on
 
     <header class="bg-[#F8FAFF] pb-12 px-6">
         <div class="max-w-4xl mx-auto text-center pt-8 mb-12">
-            <h1 class="text-2xl font-extrabold tracking-tight mb-6 leading-tight text-slate-900">
+            <h1 class="text-[40px] font-extrabold tracking-tight mb-6 leading-tight text-slate-900">
                 [Action Verb] <span class="text-gradient">[Target Keyword]</span>
             </h1>
             <p class="desc-text text-lg md:text-xl max-w-2xl mx-auto">[Value Proposition]</p>
