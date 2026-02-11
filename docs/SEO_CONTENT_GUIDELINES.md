@@ -249,18 +249,20 @@
     - Action：动作词（Convert, Transform, Change等）
     - Input：输入格式（PNG, JPG, HEIC等）
     - Output：输出格式（WebP, PNG, JPG等）
-    - Category：类别词（Online, Tool, Converter等）
-    - Benefits：三个核心优势（Free, Batch, No Ads等），用逗号和&连接
+    - Category：类别词（**必须包含 Online**，如：Online, Online Tool, Online Converter等）
+    - Benefits：三个核心优势（**第一个必须是 Free**，其他如：Batch, No Ads等），用逗号和&连接
+    - **修饰词要求**：Category 中必须包含 "Online"，Benefits 中第一个必须是 "Free"
     - 最后必须加上 ` - Toolaze` 品牌标识
 
-- **Meta Description（步骤 + 数据组合）**：
+- **Meta Description（步骤 + 数据组合 + 修饰词）**：
   - **格式要求**：
-    - **前100字符**：操作引导（How to + 3个步骤）
-    - **后50字符**：技术优势（数据 + 安全/隐私）
-  - **示例**：`How to convert PNG to WebP? 1. Upload PNG 2. Auto-convert 3. Download WebP. Shrink file size by 35% with zero quality loss. Secure & Private.`
+    - **前100字符**：操作引导（How to + 3个步骤）+ **必须包含 Free 或 Online**
+    - **后50字符**：技术优势（数据 + 安全/隐私）+ **必须包含 Free**
+  - **示例**：`How to convert PNG to WebP online? 1. Upload PNG 2. Auto-convert 3. Download WebP. Free online converter. Shrink file size by 35% with zero quality loss. Secure & Private.`
   - **规则**：
-    - 必须以 "How to [动作]?" 开头
+    - 必须以 "How to [动作] [online]?" 或 "How to [动作] for free?" 开头（必须包含修饰词）
     - 步骤格式：`1. [动作1] 2. [动作2] 3. [动作3]`
+    - **修饰词要求**：必须在描述中明确提及 "free" 和 "online"（如："Free online converter"）
     - 数据优势：包含具体数字（如 "35%", "100 images"）
     - 结尾强调安全和隐私
 
