@@ -19,6 +19,7 @@ const defaultNavTranslations = {
   aiVideo: 'AI Video',
   nanoBananaPro: 'Nano Banana Pro',
   seedance2: 'Seedance 2.0',
+  kling3: 'Kling 3.0',
   aboutUs: 'About Us'
 }
 
@@ -578,6 +579,22 @@ export default function Navigation() {
                   </svg>
                   <span>{navTranslations.seedance2 || defaultNavTranslations.seedance2}</span>
                 </Link>
+                <Link
+                  href={getLocalizedHref('/kling-3')}
+                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
+                    <rect x="2" y="4" width="20" height="14" rx="2" fill="url(#aiVideoGradient2)" opacity="0.2"/>
+                    <path d="M10 8L16 12L10 16V8Z" fill="url(#aiVideoGradient2)"/>
+                    <defs>
+                      <linearGradient id="aiVideoGradient2" x1="2" y1="4" x2="22" y2="18" gradientUnits="userSpaceOnUse">
+                        <stop stopColor="#9333EA"/>
+                        <stop offset="1" stopColor="#4F46E5"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                  <span>{navTranslations.kling3 || defaultNavTranslations.kling3}</span>
+                </Link>
               </div>
             </div>
           </div>
@@ -711,6 +728,26 @@ export default function Navigation() {
                       </defs>
                     </svg>
                     <span>{navTranslations.seedance2 || defaultNavTranslations.seedance2}</span>
+                  </Link>
+                  <Link
+                    href={getLocalizedHref('/kling-3')}
+                    onClick={() => {
+                      setMobileMenuOpen(false)
+                      setExpandedSubmenus(new Set())
+                    }}
+                    className="flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
+                  >
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
+                      <rect x="2" y="4" width="20" height="14" rx="2" fill="url(#aiVideoGradientMobile2)" opacity="0.2"/>
+                      <path d="M10 8L16 12L10 16V8Z" fill="url(#aiVideoGradientMobile2)"/>
+                      <defs>
+                        <linearGradient id="aiVideoGradientMobile2" x1="2" y1="4" x2="22" y2="18" gradientUnits="userSpaceOnUse">
+                          <stop stopColor="#9333EA"/>
+                          <stop offset="1" stopColor="#4F46E5"/>
+                        </linearGradient>
+                      </defs>
+                    </svg>
+                    <span>{navTranslations.kling3 || defaultNavTranslations.kling3}</span>
                   </Link>
                 </div>
               </div>

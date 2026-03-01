@@ -12,6 +12,7 @@ import ImageConverter from '@/components/ImageConverter'
 import EmojiCategoryPage from '@/components/EmojiCategoryPage'
 import NanoBananaTool from '@/components/NanoBananaTool'
 import SeedanceHeroPlaceholder from '@/components/blocks/SeedanceHeroPlaceholder'
+import KlingHeroPlaceholder from '@/components/blocks/KlingHeroPlaceholder'
 import TrustBar from '@/components/blocks/TrustBar'
 import Intro from '@/components/blocks/Intro'
 import Features from '@/components/blocks/Features'
@@ -22,7 +23,6 @@ import ModelIntroBlock from '@/components/blocks/ModelIntroBlock'
 import Scenarios from '@/components/blocks/Scenarios'
 import Rating from '@/components/blocks/Rating'
 import FAQ from '@/components/blocks/FAQ'
-import ViewAllToolsButton from '@/components/ViewAllToolsButton'
 import ToolCard from '@/components/ToolCard'
 import React from 'react'
 
@@ -228,7 +228,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
       return locale === 'en' ? `/${modelTool}` : `/${locale}/${modelTool}`
     }
     let filteredRecommendedTools: Array<{ slug: string; title: string; description: string; href: string }> = []
-    if (tool === 'seedance-2') {
+    if (VIDEO_MODEL_L2S.includes(tool)) {
       const otherVideoModels = VIDEO_MODEL_L2S.filter((t) => t !== tool)
       filteredRecommendedTools = await Promise.all(
         otherVideoModels.slice(0, 3).map(async (modelTool) => {
@@ -285,7 +285,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
       'faq'
     ]
     let sectionsOrder = content.sectionsOrder || defaultSectionsOrder
-    if (tool === 'nano-banana-pro' || tool === 'seedance-2') {
+    if (tool === 'nano-banana-pro' || VIDEO_MODEL_L2S.includes(tool)) {
       sectionsOrder = sectionsOrder.filter((s: string) => s !== 'comparison')
     }
 
@@ -412,6 +412,24 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                 )}
               </div>
               <SeedanceHeroPlaceholder />
+            </header>
+          ) : tool === 'kling-3' ? (
+            <header className="bg-[#F8FAFF] pb-12 px-6">
+              <div className="max-w-4xl mx-auto text-center pt-8 mb-12">
+                <h1 className="text-[40px] font-extrabold tracking-tight mb-6 leading-tight text-slate-900">
+                  {content.hero?.h1 ? (
+                    renderH1WithGradient(content.hero.h1)
+                  ) : (
+                    <>Kling 3.0</>
+                  )}
+                </h1>
+                {content.hero?.desc && (
+                  <p className="desc-text text-lg md:text-xl max-w-4xl mx-auto">
+                    {content.hero.desc}
+                  </p>
+                )}
+              </div>
+              <KlingHeroPlaceholder />
             </header>
           ) : (
             <header className="bg-[#F8FAFF] pb-8 md:pb-12 px-6">
@@ -568,16 +586,16 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
             <section className="py-24 px-6 bg-[#F8FAFF]">
               <div className="max-w-6xl mx-auto">
                 <h2 className="text-3xl font-extrabold text-center text-slate-900 mb-12">
-                  {content.moreTools ||
+                  {(VIDEO_MODEL_L2S.includes(tool)
+                    ? (t?.common?.aiVideoModels?.moreTools || 'More AI Video Models')
+                    : content.moreTools) ||
                     (tool === 'font-generator'
                       ? (t?.common?.fontGenerator?.moreTools || 'More Font Generator Tools')
                       : tool === 'image-compressor' || tool === 'image-compression'
                         ? (t?.imageCompressor?.moreTools || t?.common?.imageCompressor?.moreTools || 'More Image Compression Tools')
                         : tool === 'image-converter' || tool === 'image-conversion'
                           ? (t?.imageConverter?.moreTools || t?.common?.imageConverter?.moreTools || 'More Image Converter Tools')
-                          : tool === 'seedance-2'
-                            ? (t?.common?.seedance2?.moreTools || 'More Seedance 2.0 Tools')
-                            : tool === 'nano-banana-pro'
+                          : tool === 'nano-banana-pro'
                               ? (t?.common?.nanoBananaPro?.moreTools || 'Explore More Free AI Tools')
                               : `More ${tool} Tools`)}
                 </h2>
@@ -597,17 +615,6 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                     )
                   })}
                 </div>
-                <ViewAllToolsButton
-                  href={
-                    tool === 'nano-banana-pro'
-                      ? locale === 'en' ? '/model' : `/${locale}/model`
-                      : locale === 'en'
-                        ? `/${tool}/all-tools`
-                        : `/${locale}/${tool}/all-tools`
-                  }
-                  text={t?.common?.viewAllTools?.related || 'View All Related Tools'}
-                  variant="related"
-                />
               </div>
             </section>
           )}

@@ -35,7 +35,7 @@ export const FONT_GENERATOR_SLUGS = [
 ]
 
 // 视频模型 L2 列表（用于「更多工具」推荐，仅推荐同类型 L2）
-export const VIDEO_MODEL_L2S = ['seedance-2']
+export const VIDEO_MODEL_L2S = ['seedance-2', 'kling-3']
 
 // 图片模型 L2 列表（用于「更多工具」推荐，仅推荐同类型 L2）
 export const IMAGE_MODEL_L2S = ['nano-banana-pro']
@@ -583,6 +583,8 @@ export async function getL2SeoContent(tool: string, locale: string = 'en') {
         }
       } else if (tool === 'seedance-2') {
         data = await import('@/data/en/seedance-2.json')
+      } else if (tool === 'kling-3') {
+        data = await import('@/data/en/kling-3.json')
       }
       
       if (data) {
@@ -604,6 +606,8 @@ export async function getL2SeoContent(tool: string, locale: string = 'en') {
             data = await import('@/data/en/nano-banana-pro.json')
           } else if (tool === 'seedance-2') {
             data = await import('@/data/en/seedance-2.json')
+          } else if (tool === 'kling-3') {
+            data = await import('@/data/en/kling-3.json')
           }
           if (data) {
             return data.default || data

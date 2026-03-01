@@ -25,8 +25,6 @@
     {"keyword": "ByteDance AI", "searchVolume": 30000, "difficulty": 40, "type": "related", "notes": "品牌相关"}
   ],
   "internalLinking": [
-    {"keyword": "compress image", "targetPage": "image-compressor", "anchorText": "compress images", "notes": "内链到压缩工具"},
-    {"keyword": "convert image", "targetPage": "image-converter", "anchorText": "convert images", "notes": "内链到转换工具"},
-    {"keyword": "AI image generator", "targetPage": "nano-banana-pro", "anchorText": "AI image generation", "notes": "内链到 AI 图像工具"}
+    {"keyword": "Kling 3.0", "targetPage": "kling-3", "anchorText": "Kling 3.0", "notes": "内链到视频模型"}
   ]
 }

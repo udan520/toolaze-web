@@ -7,7 +7,7 @@ export const dynamic = 'force-static'
 const baseUrl = 'https://toolaze.com'
 const SUPPORTED_LOCALES = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
 const STATIC_PAGES = ['about', 'privacy', 'terms']
-const TOOL_PAGES = ['image-compressor', 'image-converter', 'font-generator', 'emoji-copy-and-paste', 'seedance-2']
+const TOOL_PAGES = ['image-compressor', 'image-converter', 'font-generator', 'emoji-copy-and-paste', 'seedance-2', 'kling-3']
 
 interface SitemapEntry {
   url: string
@@ -56,6 +56,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       if (tool === 'seedance-2' && locale !== 'en') {
         return
       }
+      // kling-3 仅英文，其他 locale 不加入 sitemap（会重定向到 /kling-3）
+      if (tool === 'kling-3' && locale !== 'en') {
+        return
+      }
       const path = locale === 'en' ? `/${tool}` : `/${locale}/${tool}`
       entries.push({
         url: `${baseUrl}${path}`,
@@ -75,6 +79,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       }
       // seedance-2 仅英文，其他 locale 不加入 sitemap
       if (tool === 'seedance-2' && locale !== 'en') {
+        return
+      }
+      // kling-3 仅英文，其他 locale 不加入 sitemap
+      if (tool === 'kling-3' && locale !== 'en') {
         return
       }
       const path = locale === 'en' ? `/${tool}/all-tools` : `/${locale}/${tool}/all-tools`

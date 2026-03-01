@@ -9,6 +9,7 @@
     "aiVideo": "AI Video",
     "nanoBananaPro": "Nano Banana Pro",
     "seedance2": "Seedance 2.0",
+    "kling3": "Kling 3.0",
     "aboutUs": "About Us"
   },
   "home": {
@@ -238,6 +239,9 @@
     },
     "seedance2": {
       "moreTools": "More Seedance 2.0 Tools"
+    },
+    "aiVideoModels": {
+      "moreTools": "More AI Video Models"
     },
     "nanoBananaPro": {
       "moreTools": "Explore More Free AI Tools"

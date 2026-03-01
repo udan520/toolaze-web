@@ -1,0 +1,25 @@
+{
+  "tool": "kling-3",
+  "lastUpdated": "2026-02-15",
+  "primaryKeywords": [
+    {"keyword": "Kling 3.0", "searchVolume": 40000, "difficulty": 32, "type": "primary", "notes": "主关键词，用于 H1 和 Title"},
+    {"keyword": "AI video generator", "searchVolume": 120000, "difficulty": 55, "type": "primary", "notes": "核心功能词"},
+    {"keyword": "AI video 4K", "searchVolume": 25000, "difficulty": 45, "type": "primary", "notes": "4K 画质词"},
+    {"keyword": "text to video AI", "searchVolume": 90000, "difficulty": 50, "type": "primary", "notes": "核心功能词"}
+  ],
+  "longTailKeywords": [
+    {"keyword": "Kling 3.0 free", "searchVolume": 12000, "difficulty": 28, "type": "long-tail", "targetPage": "kling-3", "notes": "L2 主页面"},
+    {"keyword": "Kling 3.0 online", "searchVolume": 10000, "difficulty": 30, "type": "long-tail", "targetPage": "kling-3", "notes": "L2 主页面"},
+    {"keyword": "Kling 3.0 vs Sora 2", "searchVolume": 6000, "difficulty": 28, "type": "long-tail", "targetPage": "kling-3", "notes": "对比类 FAQ"},
+    {"keyword": "4K AI video generator", "searchVolume": 15000, "difficulty": 42, "type": "long-tail", "targetPage": "kling-3", "notes": "画质类"},
+    {"keyword": "multilingual AI video", "searchVolume": 4000, "difficulty": 35, "type": "long-tail", "targetPage": "kling-3", "notes": "多语言音频"}
+  ],
+  "relatedKeywords": [
+    {"keyword": "Kuaishou AI", "searchVolume": 20000, "difficulty": 38, "type": "related", "notes": "品牌相关"},
+    {"keyword": "video generation", "searchVolume": 80000, "difficulty": 50, "type": "related", "notes": "相关关键词"},
+    {"keyword": "AI video creation", "searchVolume": 45000, "difficulty": 48, "type": "related", "notes": "相关关键词"}
+  ],
+  "internalLinking": [
+    {"keyword": "Seedance 2.0", "targetPage": "seedance-2", "anchorText": "Seedance 2.0", "notes": "内链到视频模型"}
+  ]
+}
