@@ -175,7 +175,7 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
       ...(content.specs.logic ? [{ icon: '🎯', title: 'Quality Preservation', desc: content.specs.logic }] : []),
       // 添加更多通用特性点，确保有 6 个特性
       { icon: '🌐', title: 'Browser-Based', desc: 'No software installation required. Works directly in your browser.' },
-      { icon: '💎', title: '100% Free', desc: 'Completely free forever. No ads, no hidden costs.' }
+      { icon: '💎', title: '100% Free', desc: 'Completely free. No ads, no hidden costs.' }
     ].slice(0, 6) : (isConverter
       ? [
           { icon: '📂', title: toolTranslations?.features?.batch?.title || 'Batch Processing', desc: toolTranslations?.features?.batch?.desc || 'Convert up to 100 images at once' },

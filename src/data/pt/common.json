@@ -68,10 +68,6 @@
           "a": "Não há um limite teórico de tamanho de arquivo. No entanto, imagens muito grandes podem causar lentidão do navegador dependendo do desempenho do seu dispositivo e memória disponível. Recomendamos processar arquivos grandes em lotes menores para a melhor experiência."
         },
         {
-          "q": "O Toolaze sempre será gratuito?",
-          "a": "Sim! Toolaze está comprometido em fornecer ferramentas gratuitas para sempre. Acreditamos em tornar ferramentas poderosas de processamento de imagens acessíveis a todos sem barreiras de custo ou assinaturas premium."
-        },
-        {
           "q": "Quanto posso comprimir minhas imagens?",
           "a": "Os resultados de compressão variam dependendo da qualidade e formato da imagem original. Tipicamente, você pode alcançar uma redução de tamanho de 50-90% mantendo qualidade visual aceitável. Você pode ajustar as configurações de compressão para encontrar o equilíbrio perfeito para suas necessidades."
         }

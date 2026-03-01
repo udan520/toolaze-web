@@ -21,6 +21,8 @@ Only write about features that are explicitly listed as supported in the relevan
 - Use related keywords naturally throughout content
 - Use internal linking keywords to connect related pages
 
+**INTERNAL LINK DENSITY**: Follow 'docs/SEO_CONTENT_GUIDELINES.md' section "7. 内链密度规范". Typical ratio: ~3-5 internal links per 1000 words (1 link per 200-300 words). For FAQ blocks: ≤2 links per ~400 words. Avoid linking the same anchor in every FAQ answer. Homepage FAQ must be especially conservative.
+
 **KEYWORD LAYOUT STRATEGY**: When writing SEO content, MUST follow the keyword priority matrix and layout strategy defined in 'docs/SEO_CONTENT_GUIDELINES.md' section "关键词布局策略（高级策略）":
 - **P0 (主关键词)**: Use in H1, Title, Meta Description (1-2% density)
 - **P1 (核心功能词)**: Use in H2, Hero, Features (0.5-1% density)

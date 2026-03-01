@@ -1,0 +1,179 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Free Nano Banana 2 AI Image Generator (4K, Fast, Online) - Toolaze",
+    "description": "Create 4K AI images with Nano Banana 2 for free. Pro quality at Flash speed. Text-to-image and image-to-image. Subject consistency for characters and objects. Precision text rendering. Free online—coming soon."
+  },
+  "sectionsOrder": ["howToUse", "modelIntro", "features", "intro", "performanceMetrics", "scenes", "rating", "faq"],
+  "modelIntro": {
+    "title": "Why Nano Banana 2 Stands Out for AI Image Creation",
+    "modelName": "Nano Banana 2",
+    "modelType": "AI Image Model",
+    "description": [
+      "Google's Nano Banana 2 (Gemini 3.1 Flash Image) combines the advanced capabilities of Nano Banana Pro with the speed of Gemini Flash. Get Pro-level quality—vibrant lighting, richer textures, sharper details—at lightning-fast speed. The model supports text-to-image and image-to-image, with resolutions from 512px to 4K and expanded aspect ratios.",
+      "Nano Banana 2 delivers precision text rendering for marketing mockups and greeting cards, plus advanced world knowledge from Gemini for accurate subject rendering. Subject consistency lets you keep characters and objects coherent across a workflow. Enhanced instruction following captures the nuances of your ideas.",
+      "Toolaze offers free access online. No sign-up required—start creating from your browser."
+    ],
+    "featureCards": [
+      {
+        "title": "Pro Quality at Flash Speed",
+        "content": "Nano Banana 2 brings Pro-level visual fidelity—vibrant lighting, richer textures, sharper details—at the speed of Gemini Flash. Rapid edits and iteration without sacrificing quality. Production-ready specs from 512px to 4K."
+      },
+      {
+        "title": "5 Characters, 14 Objects—Subject Consistency",
+        "content": "Maintain character resemblance of up to 5 characters and the fidelity of up to 14 objects in a single workflow. Storyboard and build narratives without altering the appearance of your inputs. Enhanced creative control for complex scenes."
+      },
+      {
+        "title": "Precision Text and Advanced World Knowledge",
+        "content": "Generate accurate, legible text in images—for marketing mockups, greeting cards, or infographics. Translate and localize text within images. The model pulls from Gemini's real-world knowledge for more accurate subject rendering."
+      }
+    ]
+  },
+  "hero": {
+    "h1": "Free <span class=\"text-gradient\">Nano Banana 2</span> AI Image Generator",
+    "desc": "Create 4K AI images with Pro quality at Flash speed. Text-to-image and image-to-image. Subject consistency for characters and objects—coming soon."
+  },
+  "intro": {
+    "title": "Why Choose Nano Banana 2 AI Image Generator?",
+    "content": [
+      {
+        "title": "Pro Capabilities at Flash Speed",
+        "text": "Nano Banana 2 is Google's latest AI image model, combining the advanced features of Nano Banana Pro with the speed of Gemini Flash. Get high-quality, photorealistic imagery with rapid generation—no more waiting. The model supports text-to-image and image-to-image, with resolutions from 512px to 4K and expanded aspect ratios. Whether you need a vertical social post or a widescreen backdrop, Nano Banana 2 delivers production-ready specs."
+      },
+      {
+        "title": "Subject Consistency and Precision Instruction Following",
+        "text": "Nano Banana 2 excels at subject consistency—keeping characters and objects coherent across a single workflow for storyboards and narratives. Enhanced instruction following captures the specific nuances of your ideas—the image you get is the image you asked for. Precision text rendering enables accurate, legible text in images for marketing mockups, greeting cards, and infographics."
+      },
+      {
+        "title": "Free Online Access with No Registration Required",
+        "text": "Toolaze provides free access to Nano Banana 2 AI image generation online. No sign-up, no credit card, and no hidden fees. Whether you're a content creator, designer, or marketer, you can start creating 4K images immediately. The free AI image generator supports text-to-image and image-to-image—all from your browser with no software installation required."
+      }
+    ]
+  },
+  "features": {
+    "title": "Key Features of Nano Banana 2",
+    "items": [
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Pro Quality at Flash Speed",
+        "desc": "Combine Nano Banana Pro capabilities with Gemini Flash speed. Rapid edits and iteration without sacrificing quality."
+      },
+      {
+        "icon": "🎨",
+        "iconType": "quality",
+        "title": "4K and Expanded Aspect Ratios",
+        "desc": "Resolutions from 512px to 4K widescreen. Full control of aspect ratios for social, print, or web."
+      },
+      {
+        "icon": "👥",
+        "iconType": "multimodal",
+        "title": "Subject Consistency",
+        "desc": "Keep characters and objects coherent in a single workflow. Ideal for storyboards and narratives."
+      },
+      {
+        "icon": "📝",
+        "iconType": "quality",
+        "title": "Precision Text Rendering",
+        "desc": "Generate accurate, legible text in images. Translate and localize text for global sharing."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Free to Use",
+        "desc": "No sign-up required. Start creating AI images online at zero cost with no subscription or hidden fees."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "Browser-Based",
+        "desc": "Works entirely in your web browser. No software installation, no downloads—create images directly online."
+      }
+    ]
+  },
+  "specs": {
+    "engine": "Google Nano Banana 2 (Gemini 3.1 Flash Image)",
+    "limit": "Text and image inputs, subject consistency across workflow",
+    "logic": "512px to 4K, expanded aspect ratios, text-to-image and image-to-image",
+    "privacy": "Online processing - No local installation required"
+  },
+  "performanceMetrics": {
+    "title": "Nano Banana 2 Technical Specifications",
+    "metrics": [
+      { "label": "Input Types", "value": "Text, Image" },
+      { "label": "Output Resolution", "value": "512px to 4K widescreen" },
+      { "label": "Subject Consistency", "value": "Up to 5 characters, 14 objects" },
+      { "label": "Text Rendering", "value": "Precision text, translation, localization" },
+      { "label": "Speed", "value": "Gemini Flash speed with Pro quality" },
+      { "label": "Use Cases", "value": "Marketing, infographics, storyboards, social content" }
+    ]
+  },
+  "howToUse": {
+    "title": "How to Generate Images with Nano Banana 2?",
+    "steps": [
+      {
+        "title": "Choose Mode and Add Input",
+        "desc": "Select text-to-image or image-to-image mode. Enter your prompt or upload reference images."
+      },
+      {
+        "title": "Configure Settings",
+        "desc": "Select aspect ratio and resolution (512px to 4K). Add any specific instructions for consistency or text."
+      },
+      {
+        "title": "Generate & Download",
+        "desc": "Click generate and download your 4K image in seconds. No registration required."
+      }
+    ]
+  },
+  "scenesTitle": "Use Cases",
+  "scenes": [
+    {
+      "title": "Content Creators & Social Media",
+      "icon": "📱",
+      "desc": "Create stunning thumbnails, social graphics, and visual content. Nano Banana 2's speed lets you iterate quickly. Multiple aspect ratios for different platforms."
+    },
+    {
+      "title": "Marketing & Advertising",
+      "icon": "🛒",
+      "desc": "Generate marketing mockups, ad creatives, and promotional images. Precision text rendering for headlines and captions. Pro quality at Flash speed."
+    },
+    {
+      "title": "Infographics & Data Visualization",
+      "icon": "📊",
+      "desc": "Create infographics, turn notes into diagrams, and generate data visualizations. Advanced world knowledge for accurate subject rendering."
+    }
+  ],
+  "rating": {
+    "title": "Trusted by Thousands of Creators",
+    "rating": "4.9/5 FROM 10K+ CREATORS",
+    "text": "Join thousands of satisfied users who trust Toolaze for fast, secure, and free AI image generation. No registration required. Create 4K images with Nano Banana 2—Pro quality at Flash speed."
+  },
+  "faqTitle": "Frequently Asked Questions",
+  "faq": [
+    {
+      "q": "What is Nano Banana 2?",
+      "a": "Nano Banana 2 (Gemini 3.1 Flash Image) is Google's latest AI image model, launched February 2026. It combines the advanced capabilities of Nano Banana Pro with the speed of Gemini Flash. You get Pro-level quality—vibrant lighting, richer textures, sharper details—at lightning-fast speed. It supports text-to-image and image-to-image, resolutions from 512px to 4K, strong subject consistency, and precision text rendering. Nano Banana 2 is the default image model in the Google Gemini app."
+    },
+    {
+      "q": "Is Nano Banana 2 free to use?",
+      "a": "Yes! Toolaze offers free access to Nano Banana 2 AI image generation online. No sign-up or registration required to get started. You can create 4K images with text-to-image and image-to-image at no cost. There are no hidden fees, subscriptions, or credit card requirements. Start generating Pro-quality images at Flash speed immediately."
+    },
+    {
+      "q": "How does Nano Banana 2 compare to Nano Banana Pro?",
+      "a": "Nano Banana Pro offers maximum fidelity and factual accuracy for specialized tasks. Nano Banana 2 combines Pro capabilities with Gemini Flash speed—ideal for rapid generation, precise instruction following, and integrated workflows. Both support text-to-image and image-to-image with 4K output. Choose Pro for high-fidelity tasks; choose Nano Banana 2 for speed and iteration."
+    },
+    {
+      "q": "What is subject consistency in Nano Banana 2?",
+      "a": "Nano Banana 2 can maintain character resemblance of up to 5 characters and the fidelity of up to 14 objects in a single workflow. This lets you storyboard and build narratives without altering the appearance of your inputs—perfect for multi-panel stories, character series, or product consistency."
+    },
+    {
+      "q": "Can Nano Banana 2 generate text in images?",
+      "a": "Yes. Nano Banana 2 delivers Pro-level precision text rendering. You can generate accurate, legible text for marketing mockups, greeting cards, or infographics. It also supports translating and localizing text within images for global sharing."
+    },
+    {
+      "q": "Do I need to install software to use Nano Banana 2?",
+      "a": "No. Toolaze runs Nano Banana 2 entirely in your web browser. No software installation, no downloads, and no plugins required. Simply visit the website, enter your prompt or upload images, and generate directly online. Works on Windows, Mac, and most modern browsers."
+    }
+  ],
+  "moreTools": "More AI Image Models"
+}

@@ -61,7 +61,7 @@
       {
         "icon": "💎",
         "iconType": "free",
-        "title": "Completely Free Always",
+        "title": "Completely Free",
         "desc": "Access unlimited PNG to JPG conversions at no cost—no premium tiers, no subscription fees, no advertising interruptions ever."
       },
       {
@@ -133,7 +133,7 @@
     ]
   },
   "comparison": {
-    "toolaze": "Unlimited file sizes, Batch 100+ PNG images, Smart JPG compression, 50-80% size reduction, 100% local processing, No uploads, Free forever",
+    "toolaze": "Unlimited file sizes, Batch 100+ PNG images, Smart JPG compression, 50-80% size reduction, 100% local processing, No uploads, Free",
     "others": "20MB file limits, Single file conversion only, Poor compression quality, Minimal size reduction, Cloud uploads required, Server queues, Paid upgrades"
   },
   "scenes": [
@@ -171,7 +171,7 @@
     },
     {
       "q": "Is PNG to JPG conversion free and secure?",
-      "a": "Yes, Toolaze is completely free forever with no hidden costs, subscriptions, or advertisements. Most importantly, all conversion happens locally in your browser using client-side technology. Your PNG files never leave your device—they're never uploaded to any server, ensuring 100% privacy and security for your images."
+      "a": "Yes, Toolaze is completely free with no hidden costs, subscriptions, or advertisements. Most importantly, all conversion happens locally in your browser using client-side technology. Your PNG files never leave your device—they're never uploaded to any server, ensuring 100% privacy and security for your images."
     },
     {
       "q": "Can I convert multiple PNG files to JPG at once?",

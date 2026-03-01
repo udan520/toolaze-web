@@ -17,10 +17,16 @@ const defaultTranslations = {
   copyright: '© {year} Toolaze Lab. All rights reserved.',
   tagline: 'Free Online Tools • No Registration Required • 100% Private',
   quickTools: 'Quick Tools',
+  aiVideo: 'AI Video',
+  aiImage: 'AI Image',
   imageCompression: 'Image Compression',
   imageConverter: 'Image Converter',
   fontGenerator: 'Font Generator',
-  emojiCopyAndPaste: 'Emoji Copy & Paste'
+  emojiCopyAndPaste: 'Emoji Copy & Paste',
+  seedance2: 'Seedance 2.0',
+  kling3: 'Kling 3.0',
+  nanoBananaPro: 'Nano Banana Pro',
+  nanoBanana2: 'Nano Banana 2'
 }
 
 // 加载翻译的函数
@@ -39,10 +45,16 @@ async function loadTranslations(locale: string) {
         ...defaultTranslations,
         ...footerData,
         // 从nav中获取二级菜单的翻译
+        aiVideo: navData.aiVideo || footerData.aiVideo || defaultTranslations.aiVideo,
+        aiImage: navData.aiImage || footerData.aiImage || defaultTranslations.aiImage,
         imageCompression: navData.imageCompression || footerData.imageCompression || defaultTranslations.imageCompression,
         imageConverter: navData.imageConverter || footerData.imageConverter || defaultTranslations.imageConverter,
         fontGenerator: navData.fontGenerator || footerData.fontGenerator || defaultTranslations.fontGenerator,
         emojiCopyAndPaste: navData.emojiCopyAndPaste || footerData.emojiCopyAndPaste || defaultTranslations.emojiCopyAndPaste,
+        seedance2: navData.seedance2 || footerData.seedance2 || defaultTranslations.seedance2,
+        kling3: navData.kling3 || footerData.kling3 || defaultTranslations.kling3,
+        nanoBananaPro: navData.nanoBananaPro || footerData.nanoBananaPro || defaultTranslations.nanoBananaPro,
+        nanoBanana2: navData.nanoBanana2 || footerData.nanoBanana2 || defaultTranslations.nanoBanana2,
       }
     }
     
@@ -54,10 +66,16 @@ async function loadTranslations(locale: string) {
         ...defaultTranslations,
         ...footerData,
         // 从nav中获取二级菜单的翻译
+        aiVideo: navData.aiVideo || footerData.aiVideo || defaultTranslations.aiVideo,
+        aiImage: navData.aiImage || footerData.aiImage || defaultTranslations.aiImage,
         imageCompression: navData.imageCompression || footerData.imageCompression || defaultTranslations.imageCompression,
         imageConverter: navData.imageConverter || footerData.imageConverter || defaultTranslations.imageConverter,
         fontGenerator: navData.fontGenerator || footerData.fontGenerator || defaultTranslations.fontGenerator,
         emojiCopyAndPaste: navData.emojiCopyAndPaste || footerData.emojiCopyAndPaste || defaultTranslations.emojiCopyAndPaste,
+        seedance2: navData.seedance2 || footerData.seedance2 || defaultTranslations.seedance2,
+        kling3: navData.kling3 || footerData.kling3 || defaultTranslations.kling3,
+        nanoBananaPro: navData.nanoBananaPro || footerData.nanoBananaPro || defaultTranslations.nanoBananaPro,
+        nanoBanana2: navData.nanoBanana2 || footerData.nanoBanana2 || defaultTranslations.nanoBanana2,
       }
     } catch {
       return defaultTranslations
@@ -458,6 +476,62 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto">
         {/* 二级和三级菜单 */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mb-12">
+          {/* AI Video */}
+          <div>
+            <Link 
+              href={getLocalizedHref('/seedance-2')} 
+              className="text-white font-bold text-sm mb-4 uppercase tracking-wider block hover:text-indigo-400 transition-colors"
+            >
+              {translations.aiVideo || 'AI Video'}
+            </Link>
+            <ul className="space-y-2 mt-4">
+              <li>
+                <Link 
+                  href={getLocalizedHref('/seedance-2')} 
+                  className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
+                >
+                  {translations.seedance2 || 'Seedance 2.0'}
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href={getLocalizedHref('/kling-3')} 
+                  className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
+                >
+                  {translations.kling3 || 'Kling 3.0'}
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* AI Image */}
+          <div>
+            <Link 
+              href={getLocalizedHref('/model/nano-banana-pro')} 
+              className="text-white font-bold text-sm mb-4 uppercase tracking-wider block hover:text-indigo-400 transition-colors"
+            >
+              {translations.aiImage || 'AI Image'}
+            </Link>
+            <ul className="space-y-2 mt-4">
+              <li>
+                <Link 
+                  href={getLocalizedHref('/model/nano-banana-pro')} 
+                  className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
+                >
+                  {translations.nanoBananaPro || 'Nano Banana Pro'}
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href={getLocalizedHref('/model/nano-banana-2')} 
+                  className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
+                >
+                  {translations.nanoBanana2 || 'Nano Banana 2'}
+                </Link>
+              </li>
+            </ul>
+          </div>
+
           {/* Image Compression */}
           <div>
             <Link 

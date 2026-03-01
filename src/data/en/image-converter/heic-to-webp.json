@@ -61,7 +61,7 @@
       {
         "icon": "💎",
         "iconType": "free",
-        "title": "Completely Free Always",
+        "title": "Completely Free",
         "desc": "Access unlimited HEIC to WebP conversions at no cost—no premium subscriptions, no hidden fees, no advertising interruptions."
       },
       {
@@ -133,7 +133,7 @@
     ]
   },
   "comparison": {
-    "toolaze": "Unlimited file sizes, Batch 100+ HEIC images, Optimized WebP compression, Transparency preserved, WebAssembly-powered, 100% local processing, No uploads, Free forever",
+    "toolaze": "Unlimited file sizes, Batch 100+ HEIC images, Optimized WebP compression, Transparency preserved, WebAssembly-powered, 100% local processing, No uploads, Free",
     "others": "20MB file limits, Single file conversion only, Poor compression quality, Transparency lost, Cloud uploads required, Server queues, Paid upgrades"
   },
   "scenes": [
@@ -171,7 +171,7 @@
     },
     {
       "q": "Is HEIC to WebP conversion free and secure?",
-      "a": "Yes, Toolaze is completely free forever with no hidden costs, subscriptions, or advertisements. Most importantly, all conversion happens locally in your browser using WebAssembly-powered HEVC decoder technology. Your HEIC files never leave your device—they're never uploaded to any server, ensuring 100% privacy and security for your iPhone photos."
+      "a": "Yes, Toolaze is completely free with no hidden costs, subscriptions, or advertisements. Most importantly, all conversion happens locally in your browser using WebAssembly-powered HEVC decoder technology. Your HEIC files never leave your device—they're never uploaded to any server, ensuring 100% privacy and security for your iPhone photos."
     },
     {
       "q": "Can I convert multiple HEIC files to WebP at once?",

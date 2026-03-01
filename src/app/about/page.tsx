@@ -6,7 +6,7 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'About Us - Toolaze',
-  description: 'Learn about Toolaze - Free AI image tools that run locally in your browser. Privacy-first, unlimited, forever free.',
+  description: 'Learn about Toolaze - Free AI image tools that run locally in your browser. Privacy-first, unlimited.',
   robots: 'index, follow',
   alternates: {
     canonical: 'https://toolaze.com/about',

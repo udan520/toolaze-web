@@ -70,7 +70,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })
   })
 
-  // 4. All Tools 页面（所有语言版本）
+  // 4. Model 页面（AI 图像模型，仅英文）
+  const MODEL_PAGES = ['nano-banana-pro', 'nano-banana-2']
+  MODEL_PAGES.forEach((model) => {
+    entries.push({
+      url: `${baseUrl}/model/${model}`,
+      lastModified: today,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    })
+  })
+
+  // 5. All Tools 页面（所有语言版本）
   TOOL_PAGES.forEach((tool) => {
     SUPPORTED_LOCALES.forEach((locale) => {
       // font-generator 支持 en、de、ja、es 和 fr
@@ -95,7 +106,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })
   })
 
-  // 5. 所有工具页面（所有语言版本和所有 slug）
+  // 6. 所有工具页面（所有语言版本和所有 slug）
   for (const locale of SUPPORTED_LOCALES) {
     try {
       const tools = await getAllTools(locale)

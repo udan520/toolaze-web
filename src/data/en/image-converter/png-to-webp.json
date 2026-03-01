@@ -61,7 +61,7 @@
       {
         "icon": "💎",
         "iconType": "free",
-        "title": "Free Forever",
+        "title": "Free",
         "desc": "Access unlimited PNG to WebP conversions completely free—no premium tiers, no subscription fees, no advertising interruptions."
       },
       {
@@ -133,7 +133,7 @@
     ]
   },
   "comparison": {
-    "toolaze": "Unlimited file sizes, Batch 100+ PNG images, 25-35% size reduction, Transparency preserved, 100% local processing, No uploads, Free forever",
+    "toolaze": "Unlimited file sizes, Batch 100+ PNG images, 25-35% size reduction, Transparency preserved, 100% local processing, No uploads, Free",
     "others": "20MB file limits, Single file conversion only, Poor compression, Transparency lost, Cloud uploads required, Server queues, Paid upgrades"
   },
   "scenes": [
@@ -171,7 +171,7 @@
     },
     {
       "q": "Is PNG to WebP conversion free and secure?",
-      "a": "Yes, Toolaze is completely free forever with no hidden costs, subscriptions, or advertisements. Most importantly, all conversion happens locally in your browser using client-side technology. Your PNG files never leave your device—they're never uploaded to any server, ensuring 100% privacy and security for your images."
+      "a": "Yes, Toolaze is completely free with no hidden costs, subscriptions, or advertisements. Most importantly, all conversion happens locally in your browser using client-side technology. Your PNG files never leave your device—they're never uploaded to any server, ensuring 100% privacy and security for your images."
     },
     {
       "q": "Can I convert multiple PNG files to WebP at once?",

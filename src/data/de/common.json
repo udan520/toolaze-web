@@ -15,7 +15,7 @@
     "title": "Kostenlose Leichtgewichtige Bildtools-Plattform.",
     "titleLine1": "Kostenlos Leichtgewichtig",
     "titleLine2": "Bildtools-Plattform.",
-    "subtitle": "Professionelle Bildverarbeitungstools, die vollständig in Ihrem Browser laufen. Keine Uploads, keine Limits, für immer kostenlos.",
+    "subtitle": "Professionelle Bildverarbeitungstools, die vollständig in Ihrem Browser laufen. Keine Uploads, keine Limits.",
     "cta": "Jetzt Bildkompressor ausprobieren →",
     "sectionToolsTitle": "Alle verfügbaren Tools",
     "sectionToolsSubtitle": "Ein Suite. Unendliche Möglichkeiten.",
@@ -41,7 +41,7 @@
       },
       "unlimited": {
         "title": "Unbegrenzt & Kostenlos",
-        "desc": "Komprimieren Sie so viele Bilder, wie Sie möchten. Keine täglichen Limits, keine Paywalls, keine Wasserzeichen. Alle Tools sind für immer völlig kostenlos ohne versteckte Kosten oder Premium-Stufen."
+        "desc": "Komprimieren Sie so viele Bilder, wie Sie möchten. Keine täglichen Limits, keine Paywalls, keine Wasserzeichen. Alle Tools sind völlig kostenlos ohne versteckte Kosten oder Premium-Stufen."
       },
       "quality": {
         "title": "Verlustfreie Qualitätskontrolle",
@@ -66,10 +66,6 @@
         {
           "q": "Gibt es ein Limit für die Dateigröße?",
           "a": "Es gibt kein theoretisches Limit für die Dateigröße. Sehr große Bilder können jedoch je nach Leistung Ihres Geräts und verfügbarem Speicher zu einer Verlangsamung des Browsers führen. Wir empfehlen, große Dateien in kleineren Chargen zu verarbeiten, um die beste Erfahrung zu erzielen."
-        },
-        {
-          "q": "Wird Toolaze immer kostenlos sein?",
-          "a": "Ja! Toolaze ist verpflichtet, für immer kostenlose Tools bereitzustellen. Wir glauben daran, leistungsstarke Bildverarbeitungstools für alle ohne Kostenbarrieren oder Premium-Abonnements zugänglich zu machen."
         },
         {
           "q": "Wie viel kann ich meine Bilder komprimieren?",
@@ -105,7 +101,7 @@
   "about": {
     "metadata": {
       "title": "Über uns - Toolaze",
-      "description": "Erfahren Sie mehr über Toolaze - Kostenlose KI-Bildtools, die lokal in Ihrem Browser laufen. Datenschutz zuerst, unbegrenzt, für immer kostenlos."
+      "description": "Erfahren Sie mehr über Toolaze - Kostenlose KI-Bildtools, die lokal in Ihrem Browser laufen. Datenschutz zuerst, unbegrenzt."
     },
     "title": "Wir kümmern uns um das Tool. Sie kümmern sich um die Laze.",
     "titleTool": "Tool",
@@ -261,7 +257,7 @@
       },
       "free": {
         "title": "100% Kostenlos",
-        "desc": "Für immer keine Werbung."
+        "desc": "Keine Werbung."
       }
     },
     "howToUse": {
@@ -361,7 +357,7 @@
       },
       "free": {
         "title": "100% Kostenlos",
-        "desc": "Für immer keine Werbung."
+        "desc": "Keine Werbung."
       }
     },
     "howToUse": {

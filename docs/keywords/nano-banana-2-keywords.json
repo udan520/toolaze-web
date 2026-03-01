@@ -1,0 +1,26 @@
+{
+  "tool": "nano-banana-2",
+  "lastUpdated": "2026-02-15",
+  "primaryKeywords": [
+    {"keyword": "Nano Banana 2", "searchVolume": 60000, "difficulty": 30, "type": "primary", "notes": "主关键词，用于 H1 和 Title"},
+    {"keyword": "AI image generator", "searchVolume": 120000, "difficulty": 55, "type": "primary", "notes": "核心功能词"},
+    {"keyword": "text to image AI", "searchVolume": 90000, "difficulty": 50, "type": "primary", "notes": "核心功能词"},
+    {"keyword": "image to image AI", "searchVolume": 50000, "difficulty": 45, "type": "primary", "notes": "核心功能词"}
+  ],
+  "longTailKeywords": [
+    {"keyword": "Nano Banana 2 free", "searchVolume": 18000, "difficulty": 25, "type": "long-tail", "targetPage": "nano-banana-2", "notes": "L2 主页面"},
+    {"keyword": "Nano Banana 2 online", "searchVolume": 15000, "difficulty": 28, "type": "long-tail", "targetPage": "nano-banana-2", "notes": "L2 主页面"},
+    {"keyword": "Nano Banana 2 vs Pro", "searchVolume": 10000, "difficulty": 28, "type": "long-tail", "targetPage": "nano-banana-2", "notes": "对比类 FAQ"},
+    {"keyword": "fast AI image generator", "searchVolume": 20000, "difficulty": 42, "type": "long-tail", "targetPage": "nano-banana-2", "notes": "速度类"},
+    {"keyword": "4K AI image generator free", "searchVolume": 12000, "difficulty": 38, "type": "long-tail", "targetPage": "nano-banana-2", "notes": "画质类"}
+  ],
+  "relatedKeywords": [
+    {"keyword": "Google Gemini image", "searchVolume": 80000, "difficulty": 45, "type": "related", "notes": "品牌相关"},
+    {"keyword": "AI image creation", "searchVolume": 45000, "difficulty": 48, "type": "related", "notes": "相关关键词"},
+    {"keyword": "image generation", "searchVolume": 90000, "difficulty": 50, "type": "related", "notes": "相关关键词"}
+  ],
+  "internalLinking": [
+    {"keyword": "Nano Banana Pro", "targetPage": "nano-banana-pro", "anchorText": "Nano Banana Pro", "notes": "内链到 Pro 模型"},
+    {"keyword": "Seedance 2.0", "targetPage": "seedance-2", "anchorText": "Seedance 2.0", "notes": "内链到视频模型"}
+  ]
+}

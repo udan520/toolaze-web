@@ -125,7 +125,7 @@
     ]
   },
   "comparison": {
-    "toolaze": "Unlimited file sizes, Batch 100+ images, 100% local processing, Full EXIF preservation, No uploads, Free forever",
+    "toolaze": "Unlimited file sizes, Batch 100+ images, 100% local processing, Full EXIF preservation, No uploads, Free",
     "others": "20MB file limits, 10 conversions per day, Cloud uploads required, EXIF data stripped, Server queues, Paid upgrades"
   },
   "scenes": [
@@ -175,7 +175,7 @@
     },
     {
       "q": "Is HEIC to JPG conversion free and secure?",
-      "a": "Yes, Toolaze is completely free forever with no hidden costs or ads. More importantly, all conversion happens locally in your browser using client-side technology. Your HEIC files never leave your device—they're never uploaded to any server, ensuring 100% privacy and security for your photos."
+      "a": "Yes, Toolaze is completely free with no hidden costs or ads. More importantly, all conversion happens locally in your browser using client-side technology. Your HEIC files never leave your device—they're never uploaded to any server, ensuring 100% privacy and security for your photos."
     }
   ],
   "compare": {

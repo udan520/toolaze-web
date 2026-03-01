@@ -61,7 +61,7 @@
       {
         "icon": "💎",
         "iconType": "free",
-        "title": "Free Forever",
+        "title": "Free",
         "desc": "Generate unlimited tattoo fonts completely free—no payments, no premium features, no ads."
       },
       {
@@ -129,7 +129,7 @@
     ]
   },
   "comparison": {
-    "toolaze": "Unlimited tattoo text generation, Multiple bold gothic styles, Instant preview, Local browser processing, No text length limits, Complete privacy, 100% free forever",
+    "toolaze": "Unlimited tattoo text generation, Multiple bold gothic styles, Instant preview, Local browser processing, No text length limits, Complete privacy, 100% free",
     "others": "Text length restrictions, Few style choices, Server-side delays, Required cloud uploads, Data privacy risks, Advertisements, Premium subscriptions"
   },
   "scenes": [
@@ -175,7 +175,7 @@
     }
   ],
   "compare": {
-    "toolaze": "Unlimited tattoo text generation, Multiple elegant styles, Instant real-time preview, Local-first architecture, No character limits, Complete privacy protection, 100% free forever",
+    "toolaze": "Unlimited tattoo text generation, Multiple elegant styles, Instant real-time preview, Local-first architecture, No character limits, Complete privacy protection, 100% free",
     "others": "Character limits, Limited style options, Slow server processing, Cloud uploads required, Privacy concerns, Watermarks or ads, Paid premium features"
   }
 }

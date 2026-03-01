@@ -38,7 +38,7 @@ export const FONT_GENERATOR_SLUGS = [
 export const VIDEO_MODEL_L2S = ['seedance-2', 'kling-3']
 
 // 图片模型 L2 列表（用于「更多工具」推荐，仅推荐同类型 L2）
-export const IMAGE_MODEL_L2S = ['nano-banana-pro']
+export const IMAGE_MODEL_L2S = ['nano-banana-pro', 'nano-banana-2']
 
 // Seedance 2.0 L3 页面 slug 列表（按搜索量/优先级）
 const SEEDANCE_2_SLUGS = [
@@ -581,6 +581,8 @@ export async function getL2SeoContent(tool: string, locale: string = 'en') {
             data = await import('@/data/en/nano-banana-pro.json')
           }
         }
+      } else if (tool === 'nano-banana-2') {
+        data = await import('@/data/en/nano-banana-2.json')
       } else if (tool === 'seedance-2') {
         data = await import('@/data/en/seedance-2.json')
       } else if (tool === 'kling-3') {
@@ -604,6 +606,8 @@ export async function getL2SeoContent(tool: string, locale: string = 'en') {
             data = await import('@/data/en/emoji-copy-and-paste.json')
           } else if (tool === 'nano-banana-pro') {
             data = await import('@/data/en/nano-banana-pro.json')
+          } else if (tool === 'nano-banana-2') {
+            data = await import('@/data/en/nano-banana-2.json')
           } else if (tool === 'seedance-2') {
             data = await import('@/data/en/seedance-2.json')
           } else if (tool === 'kling-3') {
@@ -721,8 +725,8 @@ export async function getAllSlugs(tool: string, locale: string = 'en'): Promise<
     if (tool === 'seedance-2') {
       return Array.isArray(SEEDANCE_2_SLUGS) ? [...SEEDANCE_2_SLUGS] : [];
     }
-    if (tool === 'nano-banana-pro') {
-      // Nano Banana Pro currently only has L2 page, no L3 pages
+    if (tool === 'nano-banana-pro' || tool === 'nano-banana-2') {
+      // Image models currently only have L2 page, no L3 pages
       return [];
     }
     return [];

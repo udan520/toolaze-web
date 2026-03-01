@@ -61,7 +61,7 @@
       {
         "icon": "💎",
         "iconType": "free",
-        "title": "Für immer völlig kostenlos",
+        "title": "Kostenlos",
         "desc": "Greifen Sie auf unbegrenzte WebP-zu-PNG-Konvertierungen ohne Kosten zu – keine Premium-Abonnements, keine versteckten Gebühren, keine Werbeunterbrechungen."
       },
       {
@@ -133,7 +133,7 @@
     ]
   },
   "comparison": {
-    "toolaze": "Unbegrenzte Dateigrößen, Batch 100+ WebP-Bilder, Verlustfreie PNG-Konvertierung, Vollständige Transparenz-Erhaltung, Universelle Kompatibilität, 100% lokale Verarbeitung, Keine Uploads, Für immer kostenlos",
+    "toolaze": "Unbegrenzte Dateigrößen, Batch 100+ WebP-Bilder, Verlustfreie PNG-Konvertierung, Vollständige Transparenz-Erhaltung, Universelle Kompatibilität, 100% lokale Verarbeitung, Keine Uploads, Kostenlos",
     "others": "20MB Dateilimits, Nur Einzeldatei-Konvertierung, Qualitätsverlust bei der Konvertierung, Transparenz nicht erhalten, Begrenzte Kompatibilität, Cloud-Uploads erforderlich, Server-Warteschlangen, Bezahlte Upgrades"
   },
   "scenes": [
@@ -171,7 +171,7 @@
     },
     {
       "q": "Ist die WebP-zu-PNG-Konvertierung kostenlos und sicher?",
-      "a": "Ja, Toolaze ist für immer völlig kostenlos ohne versteckte Kosten, Abonnements oder Werbung. Noch wichtiger ist, dass alle Konvertierungen lokal in Ihrem Browser mit clientseitiger Technologie erfolgen. Ihre WebP-Dateien verlassen niemals Ihr Gerät – sie werden niemals auf einen Server hochgeladen, was 100% Privatsphäre und Sicherheit für Ihre Bilder gewährleistet."
+      "a": "Ja, Toolaze ist völlig kostenlos ohne versteckte Kosten, Abonnements oder Werbung. Noch wichtiger ist, dass alle Konvertierungen lokal in Ihrem Browser mit clientseitiger Technologie erfolgen. Ihre WebP-Dateien verlassen niemals Ihr Gerät – sie werden niemals auf einen Server hochgeladen, was 100% Privatsphäre und Sicherheit für Ihre Bilder gewährleistet."
     },
     {
       "q": "Kann ich mehrere WebP-Dateien gleichzeitig zu PNG konvertieren?",

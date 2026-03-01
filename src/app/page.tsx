@@ -2,17 +2,57 @@ import Link from 'next/link'
 import Script from 'next/script'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
-import { loadCommonTranslations } from '@/lib/seo-loader'
+import { loadCommonTranslations, IMAGE_MODEL_L2S, VIDEO_MODEL_L2S } from '@/lib/seo-loader'
 import type { Metadata } from 'next'
 
+/** Renders text with internal links for SEO */
+function TextWithLinks({
+  text,
+  links,
+}: {
+  text: string
+  links: Array<{ term: string; href: string }>
+}) {
+  const sorted = [...links].sort((a, b) => b.term.length - a.term.length)
+  const parts: React.ReactNode[] = []
+  let remaining = text
+  while (true) {
+    let earliest = -1
+    let match: (typeof links)[0] | null = null
+    for (const link of sorted) {
+      const idx = remaining.indexOf(link.term)
+      if (idx >= 0 && (earliest < 0 || idx < earliest)) {
+        earliest = idx
+        match = link
+      }
+    }
+    if (!match || earliest < 0) {
+      parts.push(remaining)
+      break
+    }
+    parts.push(remaining.slice(0, earliest))
+    parts.push(
+      <Link
+        key={`${match.term}-${parts.length}`}
+        href={match.href}
+        className="text-indigo-600 hover:text-indigo-700 underline font-medium"
+      >
+        {match.term}
+      </Link>
+    )
+    remaining = remaining.slice(earliest + match.term.length)
+  }
+  return <>{parts}</>
+}
 
 // 确保静态生成
 export const dynamic = 'force-static'
 export const dynamicParams = false
 
 export const metadata: Metadata = {
-  title: 'Toolaze - Free AI Image Compressor & Local Tools',
-  description: 'Compress images locally in your browser. No server uploads, 100% private, free AI tools for creators.',
+  title: 'Toolaze - Free AI Image Generator & AI Video Generator Online',
+  description:
+    'Free AI image generator and AI video generator online. Create 4K images with Nano Banana 2, generate videos with Seedance 2.0 and Kling 3.0. Text-to-image, text-to-video. No sign up required. Image compression and format conversion tools too.',
   robots: 'index, follow',
   alternates: {
     canonical: 'https://toolaze.com',
@@ -22,8 +62,9 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://toolaze.com',
     siteName: 'Toolaze',
-    title: 'Toolaze - Free AI Image Compressor & Local Tools',
-    description: 'Compress images locally in your browser. No server uploads, 100% private, free AI tools for creators.',
+    title: 'Toolaze - Free AI Image Generator & AI Video Generator Online',
+    description:
+      'Free AI image generator and AI video generator online. Create 4K images with Nano Banana 2, generate videos with Seedance 2.0 and Kling 3.0. Text-to-image, text-to-video. No sign up required.',
     images: [
       {
         url: 'https://toolaze.com/web-app-manifest-512x512.png',
@@ -35,62 +76,123 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Toolaze - Free AI Image Compressor & Local Tools',
-    description: 'Compress images locally in your browser. No server uploads, 100% private, free AI tools for creators.',
+    title: 'Toolaze - Free AI Image Generator & AI Video Generator Online',
+    description:
+      'Free AI image generator and AI video generator online. Create 4K images, generate videos. Text-to-image, text-to-video. No sign up required.',
     images: ['https://toolaze.com/web-app-manifest-512x512.png'],
   },
 }
 
-export default async function HomePage() {
-  // 只显示L2工具（不显示L3页面）
-  const l2Tools: Array<{ tool: string; title: string; description: string; href: string }> = []
-  
+// AI Image model paths (under /model/)
+const AI_IMAGE_PATHS: Record<string, string> = {
+  'nano-banana-pro': '/model/nano-banana-pro',
+  'nano-banana-2': '/model/nano-banana-2',
+}
+
+// AI Video model paths (root level)
+const AI_VIDEO_PATHS: Record<string, string> = {
+  'seedance-2': '/seedance-2',
+  'kling-3': '/kling-3',
+}
+
+// Non-AI L2 tools
+const OTHER_TOOLS = [
+  'image-compressor',
+  'image-converter',
+  'font-generator',
+  'emoji-copy-and-paste',
+] as const
+
+type ToolCard = {
+  tool: string
+  title: string
+  description: string
+  href: string
+  featuredDesc?: string
+  modelName?: string
+  modelType?: string
+}
+
+function getHref(tool: string): string {
+  return AI_IMAGE_PATHS[tool] || AI_VIDEO_PATHS[tool] || `/${tool}`
+}
+
+async function loadToolData(
+  tool: string,
+  getTitle: (data: any) => string,
+  getDesc: (data: any) => string,
+  getFeaturedDesc?: (data: any) => string,
+  getModelMeta?: (data: any) => { modelName?: string; modelType?: string }
+): Promise<ToolCard | null> {
   try {
-    // 定义L2工具列表
-    const l2ToolList = [
-      { tool: 'image-compressor', name: 'Image Compressor' },
-      { tool: 'image-converter', name: 'Image Converter' },
-      { tool: 'font-generator', name: 'Font Generator' },
-    ]
-    
-    // 加载每个L2工具的数据
-    const loadedL2Tools = await Promise.all(
-      l2ToolList.map(async ({ tool, name }) => {
-        try {
-          const { getL2SeoContent } = await import('@/lib/seo-loader')
-          const data = await getL2SeoContent(tool, 'en')
-          if (!data) {
-            return null
-          }
-          // 提取标题（移除 HTML 标签）
-          const title = data?.hero?.h1 ? data.hero.h1.replace(/<[^>]*>/g, '').trim() : name
-          // 使用 desc 或 metadata.description 作为描述
-          const description = data?.hero?.desc || data?.metadata?.description || ''
-          
-          return {
-            tool,
-            title: title,
-            description: description,
-            href: `/${tool}`,
-          }
-        } catch (error) {
-          // Silently handle individual tool loading errors
-          return null
-        }
-      })
-    )
-    // 过滤掉 null 值
-    l2Tools.push(...loadedL2Tools.filter((tool): tool is NonNullable<typeof tool> => tool !== null))
-  } catch (error) {
-    // Silently handle errors and use fallback
-    if (process.env.NODE_ENV === 'development') {
-      console.error('Error in HomePage:', error)
+    const { getL2SeoContent } = await import('@/lib/seo-loader')
+    const data = await getL2SeoContent(tool, 'en')
+    if (!data) return null
+    const title = getTitle(data)
+    const description = getDesc(data)
+    const featuredDesc = getFeaturedDesc?.(data)
+    const modelMeta = getModelMeta?.(data)
+    return {
+      tool,
+      title,
+      description,
+      href: getHref(tool),
+      featuredDesc,
+      modelName: modelMeta?.modelName,
+      modelType: modelMeta?.modelType,
     }
+  } catch {
+    return null
+  }
+}
+
+export default async function HomePage() {
+  const common = await loadCommonTranslations('en')
+  const home = common?.home
+
+  const getModelTitle = (d: any) => (d?.hero?.h1 ? d.hero.h1.replace(/<[^>]*>/g, '').trim() : '')
+  const getModelDesc = (d: any) => d?.hero?.desc || d?.metadata?.description || ''
+  const getFeaturedDesc = (d: any) => {
+    const desc = d?.modelIntro?.description?.[0]
+    const card = d?.modelIntro?.featureCards?.[0]?.content
+    return desc || card || ''
+  }
+  const getModelMeta = (d: any) => ({
+    modelName: d?.modelIntro?.modelName,
+    modelType: d?.modelIntro?.modelType,
+  })
+
+  // Load AI Video models (aiease order: Video first)
+  const aiVideoTools: ToolCard[] = []
+  for (const tool of VIDEO_MODEL_L2S) {
+    const card = await loadToolData(tool, getModelTitle, getModelDesc, getFeaturedDesc, getModelMeta)
+    if (card) aiVideoTools.push(card)
   }
 
+  // Load AI Image models
+  const aiImageTools: ToolCard[] = []
+  for (const tool of IMAGE_MODEL_L2S) {
+    const card = await loadToolData(tool, getModelTitle, getModelDesc, getFeaturedDesc, getModelMeta)
+    if (card) aiImageTools.push(card)
+  }
+
+  // All AI models for Trending section
+  const trendingModels = [...aiVideoTools, ...aiImageTools]
+
+  // Load other tools
+  const otherTools: ToolCard[] = []
+  for (const tool of OTHER_TOOLS) {
+    const card = await loadToolData(
+      tool,
+      (d) => (d?.hero?.h1 ? d.hero.h1.replace(/<[^>]*>/g, '').trim() : tool),
+      (d) => d?.hero?.desc || d?.metadata?.description || ''
+    )
+    if (card) otherTools.push(card)
+  }
+
+  const faqItems = home?.faq?.items ?? []
+
   // Organization Schema for Google Search Logo
-  // Google requires logo to be at least 112x112px, square, and accessible
-  // Using 512x512px for better quality
   const organizationSchema = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
@@ -99,12 +201,12 @@ export default async function HomePage() {
     logo: 'https://toolaze.com/web-app-manifest-512x512.png',
     image: 'https://toolaze.com/web-app-manifest-512x512.png',
     sameAs: [],
-    description: 'Free AI Image Compressor & Local Tools - Professional image processing tools that run entirely in your browser.',
+    description:
+      'Free AI Image Generator & AI Video Generator - Create 4K images and videos with Nano Banana 2, Seedance 2.0, Kling 3.0. Text-to-image, text-to-video. No sign up required.',
   }
 
   return (
     <>
-      {/* Organization Schema for Google Search Logo */}
       <Script
         id="organization-schema-homepage"
         type="application/ld+json"
@@ -113,209 +215,245 @@ export default async function HomePage() {
       />
       <Navigation />
 
-      <header className="pt-10 pb-20 px-6">
-        <div className="max-w-4xl mx-auto text-center mb-10">
-          <span className="inline-block py-1 px-3 rounded-full bg-indigo-50 text-indigo-600 text-xs font-bold tracking-widest uppercase mb-4 border border-indigo-100">v1.0 Now Live</span>
-          <h1 className="text-[40px] font-extrabold text-slate-900 mb-6" style={{ lineHeight: '1.3' }}>
-            Free Lightweight <br /> <span className="text-gradient">Image Tools Platform.</span>
+      {/* Hero - aiease style: All-in-One Platform */}
+      <header className="relative pt-16 pb-24 px-6 bg-[#F8FAFF] home-hero-mesh overflow-hidden">
+        <div className="max-w-4xl mx-auto text-center mb-10 relative z-10">
+          <h1
+            className="home-section-title text-[40px] md:text-[44px] text-slate-900 mb-6 tracking-tight"
+            style={{ lineHeight: '1.25' }}
+          >
+            {home?.heroTitle ?? 'All-in-One AI Image & Video Creation Platform'}
           </h1>
-          <p className="text-lg text-slate-500 max-w-xl mx-auto">
-            Professional image processing tools that run entirely in your browser. No uploads, no limits, forever free.
+          <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
+            {home?.heroTagline ??
+              'Top AI models, pro video & image creation. Image compression, format conversion, font generator — all free, no sign up required.'}
           </p>
         </div>
 
-        <div className="max-w-2xl mx-auto text-center">
-          <Link href="/image-compressor" className="inline-block px-8 py-4 bg-gradient-brand text-white text-lg font-bold rounded-full shadow-lg shadow-indigo-200 hover:shadow-indigo-400 transition-all hover:scale-105">
-            Try Image Compressor Now →
+        <div className="flex flex-wrap justify-center gap-4 relative z-10">
+          <Link
+            href="/model/nano-banana-pro"
+            className="inline-flex items-center gap-2 px-8 py-3.5 bg-gradient-brand text-white font-bold rounded-full home-cta-glow transition-all duration-300 hover:scale-[1.02]"
+          >
+            {home?.ctaImage ?? 'Try AI Image Generator'}
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </Link>
+          <Link
+            href="/seedance-2"
+            className="inline-flex items-center gap-2 px-8 py-3.5 bg-white text-indigo-600 font-bold rounded-full border-2 border-indigo-200 hover:border-indigo-400 hover:bg-indigo-50 transition-all duration-300"
+          >
+            {home?.ctaVideo ?? 'Image to Video'}
           </Link>
         </div>
       </header>
 
-      <section id="tools" className="py-20 px-6 bg-white border-t border-indigo-50/50">
+      {/* AI Video Generator - aiease structure */}
+      <section id="ai-video-generator" className="py-20 px-6 bg-white">
         <div className="max-w-6xl mx-auto">
-          <div className="flex justify-between items-end mb-10">
-            <div>
-              <h2 className="text-3xl font-bold text-slate-900">All Available Tools</h2>
-              <p className="text-slate-500 mt-2">One suite. Infinite lazy possibilities.</p>
-            </div>
+          <div className="mb-12">
+            <h2 className="home-section-title text-4xl text-slate-900 mb-4 tracking-tight">
+              {home?.aiVideoTitle ?? 'AI Video Generator'}
+            </h2>
+            <p className="text-slate-600 max-w-3xl text-base md:text-lg leading-relaxed">
+              <TextWithLinks
+                text={home?.aiVideoIntro ?? "Turn ideas into engaging videos in minutes with AI. Powered by advanced AI models, Toolaze's AI Video Generator helps you create eye-catching videos from text-to-video and image-to-video. No skills required!"}
+                links={[{ term: 'AI Video Generator', href: '/seedance-2' }]}
+              />
+            </p>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {l2Tools.length > 0 ? (
-              l2Tools.map((item, index) => {
-                // 根据工具类型生成图标
-                let icon = null
-                if (item.tool === 'image-compressor') {
-                  icon = (
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white">
-                      <rect x="3" y="3" width="7" height="7" rx="1.5" fill="currentColor"/>
-                      <rect x="14" y="3" width="7" height="7" rx="1.5" fill="currentColor"/>
-                      <rect x="3" y="14" width="7" height="7" rx="1.5" fill="currentColor"/>
-                      <rect x="14" y="14" width="7" height="7" rx="1.5" fill="currentColor"/>
-                      <path d="M6.5 6.5L9 9M9 6.5L6.5 9" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                      <path d="M17.5 17.5L15 15M15 17.5L17.5 15" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                      <path d="M17.5 6.5L15 9M15 6.5L17.5 9" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                      <path d="M6.5 17.5L9 15M9 17.5L6.5 15" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  )
-                } else if (item.tool === 'image-converter') {
-                  icon = (
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white">
-                      <rect x="2" y="2" width="20" height="20" rx="2.5" fill="#93C5FD" opacity="0.4"/>
-                      <path d="M5 5L19 19M19 5L5 19" stroke="#3B82F6" strokeWidth="2.5" strokeLinecap="round"/>
-                      <rect x="7" y="9" width="10" height="7" rx="1.5" fill="#3B82F6"/>
-                      <circle cx="9.5" cy="11.5" r="0.8" fill="white"/>
-                      <path d="M11.5 13.5L13.5 11.5L15.5 13.5" stroke="white" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-                    </svg>
-                  )
-                } else if (item.tool === 'font-generator') {
-                  icon = (
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white">
-                      <rect x="3" y="4" width="18" height="16" rx="2" fill="url(#fontGradient)" opacity="0.2"/>
-                      <path d="M7 8H17M7 12H15M7 16H13" stroke="url(#fontGradient)" strokeWidth="2" strokeLinecap="round"/>
-                      <defs>
-                        <linearGradient id="fontGradient" x1="3" y1="4" x2="21" y2="20" gradientUnits="userSpaceOnUse">
-                          <stop stopColor="#9333EA"/>
-                          <stop offset="1" stopColor="#4F46E5"/>
-                        </linearGradient>
-                      </defs>
-                    </svg>
-                  )
-                }
-                
-                return (
-                  <Link 
-                    key={item.tool}
-                    href={item.href}
-                    className="p-6 rounded-3xl bg-[#F8FAFF] border-2 border-indigo-100 hover:border-indigo-300 transition-all group relative overflow-hidden"
-                  >
-                    <div className="absolute top-4 right-4 bg-green-100 text-green-700 text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-wide">Live</div>
-                    <div className="w-12 h-12 bg-gradient-brand rounded-xl flex items-center justify-center mb-4 shadow-lg shadow-indigo-200 group-hover:scale-110 transition-transform">
-                      {icon}
-                    </div>
-                    <h3 className="font-bold text-slate-900 mb-2">
-                      {(item.title || '').replace(/<[^>]*>/g, '').substring(0, 50)}
-                    </h3>
-                    <p className="text-xs text-slate-500 mt-2 line-clamp-2">
-                      {(item.description || '').substring(0, 100)}
-                      {(item.description || '').length > 100 ? '...' : ''}
-                    </p>
-                  </Link>
-                )
-              })
-            ) : (
-              // Fallback: 如果加载失败，显示默认工具
-              <>
-                <Link href="/image-compressor" className="p-6 rounded-3xl bg-[#F8FAFF] border-2 border-indigo-100 hover:border-indigo-300 transition-all group relative overflow-hidden">
-                  <div className="absolute top-4 right-4 bg-green-100 text-green-700 text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-wide">Live</div>
-                  <div className="w-12 h-12 bg-gradient-brand rounded-xl flex items-center justify-center mb-4 shadow-lg shadow-indigo-200 group-hover:scale-110 transition-transform">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white">
-                      <rect x="3" y="3" width="7" height="7" rx="1.5" fill="currentColor"/>
-                      <rect x="14" y="3" width="7" height="7" rx="1.5" fill="currentColor"/>
-                      <rect x="3" y="14" width="7" height="7" rx="1.5" fill="currentColor"/>
-                      <rect x="14" y="14" width="7" height="7" rx="1.5" fill="currentColor"/>
-                      <path d="M6.5 6.5L9 9M9 6.5L6.5 9" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                      <path d="M17.5 17.5L15 15M15 17.5L17.5 15" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                      <path d="M17.5 6.5L15 9M15 6.5L17.5 9" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                      <path d="M6.5 17.5L9 15M9 17.5L6.5 15" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </div>
-                  <h3 className="font-bold text-slate-900">Image Compressor</h3>
-                  <p className="text-xs text-slate-500 mt-2">Smart lossy compression for JPG/PNG.</p>
-                </Link>
-              </>
-            )}
-          </div>
-        </div>
-      </section>
 
-      <section className="py-24 px-6 bg-white border-t border-indigo-50/50">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <span className="text-sm font-bold text-purple-500 uppercase tracking-widest bg-purple-50 px-4 py-2 rounded-full inline-block mb-6">Why Toolaze?</span>
-            <h2 className="text-5xl md:text-6xl font-extrabold text-slate-900 mb-6">Built for Privacy & Performance</h2>
-            <p className="text-xl text-slate-500 max-w-2xl mx-auto">Everything you need to know about why Toolaze is the smart choice for creators who value privacy and quality.</p>
-          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-[#F8FAFF] p-8 rounded-3xl border border-indigo-50 hover:shadow-lg transition-shadow">
-              <div className="flex items-start gap-6">
-                <div className="flex-shrink-0 w-16 h-16 rounded-2xl bg-indigo-100 flex items-center justify-center text-indigo-600 font-bold text-2xl">1</div>
-                <div>
-                  <h4 className="text-xl font-bold text-slate-900 mb-3">Privacy First Architecture</h4>
-                  <p className="text-base text-slate-600 leading-relaxed">Unlike other tools, we don&apos;t send your images to a remote server. Everything happens right here in your browser using WebAssembly. Your files never leave your device, ensuring complete privacy and security.</p>
+            {aiVideoTools.map((item) => (
+              <Link
+                key={item.tool}
+                href={item.href}
+                className="home-model-card block p-8 rounded-[2rem] border border-indigo-100 transition-all duration-300 hover:border-indigo-200"
+              >
+                <div className="w-14 h-14 home-model-card-icon rounded-2xl flex items-center justify-center mb-4">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-indigo-600">
+                    <rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" strokeWidth="2" fill="none" />
+                    <path d="M10 8L16 12L10 16V8Z" fill="currentColor" />
+                  </svg>
                 </div>
-              </div>
-            </div>
-            <div className="bg-[#F8FAFF] p-8 rounded-3xl border border-indigo-50 hover:shadow-lg transition-shadow">
-              <div className="flex items-start gap-6">
-                <div className="flex-shrink-0 w-16 h-16 rounded-2xl bg-purple-100 flex items-center justify-center text-purple-600 font-bold text-2xl">2</div>
-                <div>
-                  <h4 className="text-xl font-bold text-slate-900 mb-3">Unlimited & Free</h4>
-                  <p className="text-base text-slate-600 leading-relaxed">Compress as many images as you want. No daily limits, no paywalls, no watermarks. All tools are completely free forever with no hidden costs or premium tiers.</p>
-                </div>
-              </div>
-            </div>
-            <div className="bg-[#F8FAFF] p-8 rounded-3xl border border-indigo-50 hover:shadow-lg transition-shadow">
-              <div className="flex items-start gap-6">
-                <div className="flex-shrink-0 w-16 h-16 rounded-2xl bg-indigo-100 flex items-center justify-center text-indigo-600 font-bold text-2xl">3</div>
-                <div>
-                  <h4 className="text-xl font-bold text-slate-900 mb-3">Lossless Quality Control</h4>
-                  <p className="text-base text-slate-600 leading-relaxed">Our advanced compression algorithms reduce file sizes by up to 90% while maintaining visual quality. You control the compression level to balance size and quality perfectly.</p>
-                </div>
-              </div>
-            </div>
-            <div className="bg-[#F8FAFF] p-8 rounded-3xl border border-indigo-50 hover:shadow-lg transition-shadow">
-              <div className="flex items-start gap-6">
-                <div className="flex-shrink-0 w-16 h-16 rounded-2xl bg-purple-100 flex items-center justify-center text-purple-600 font-bold text-2xl">4</div>
-                <div>
-                  <h4 className="text-xl font-bold text-slate-900 mb-3">No Registration Required</h4>
-                  <p className="text-base text-slate-600 leading-relaxed">Start using our tools immediately without creating an account. No email signup, no personal information collection. Just open the tool and get started.</p>
-                </div>
-              </div>
-            </div>
+                <h3 className="text-xl font-bold text-indigo-600 mb-3">
+                  {item.modelName || item.title}
+                </h3>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  {item.featuredDesc || item.description}
+                </p>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="py-24 px-6 bg-[#F8FAFF] border-t border-indigo-50/50">
+      {/* AI Image Generator - aiease structure */}
+      <section id="ai-image-generator" className="py-20 px-6 bg-[#F8FAFF]">
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-12">
+            <h2 className="home-section-title text-4xl text-slate-900 mb-4 tracking-tight">
+              {home?.aiImageTitle ?? 'AI Image Generator'}
+            </h2>
+            <p className="text-slate-600 max-w-3xl text-base md:text-lg leading-relaxed">
+              <TextWithLinks
+                text={home?.aiImageIntro ?? "Generate high-quality images instantly with AI. From artistic illustrations to realistic visuals, Toolaze's AI Image Generator transforms your ideas into stunning images in seconds — fast, flexible, and effortless."}
+                links={[{ term: 'AI Image Generator', href: '/model/nano-banana-pro' }]}
+              />
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {aiImageTools.map((item) => (
+              <Link
+                key={item.tool}
+                href={item.href}
+                className="home-model-card block p-8 rounded-[2rem] border border-indigo-100 transition-all duration-300 hover:border-indigo-200"
+              >
+                <div className="w-14 h-14 home-model-card-icon rounded-2xl flex items-center justify-center mb-4">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-indigo-600">
+                    <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" strokeWidth="2" fill="none" />
+                    <circle cx="8.5" cy="8.5" r="2" fill="currentColor" opacity="0.6" />
+                    <path d="M3 18L7 14L10 17L14 11L21 18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-indigo-600 mb-3">
+                  {item.modelName || item.title}
+                </h3>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  {item.featuredDesc || item.description}
+                </p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Trending AI Models - aiease: Featured highlights with descriptions */}
+      <section id="trending-models" className="py-20 px-6 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-12">
+            <h2 className="home-section-title text-4xl text-slate-900 mb-4 tracking-tight">
+              {home?.trendingTitle ?? 'Trending AI Image & Video Models, All in One Place'}
+            </h2>
+            <p className="text-slate-600 max-w-3xl text-base md:text-lg leading-relaxed">
+              {home?.trendingSubtitle ?? 'Access Seedance 2.0, Kling 3.0, Nano Banana Pro, and Nano Banana 2 without switching platforms.'}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {trendingModels.map((item) => {
+              const isVideo = VIDEO_MODEL_L2S.includes(item.tool)
+              return (
+                <Link
+                  key={item.tool}
+                  href={item.href}
+                  className="home-model-card block p-6 rounded-[2rem] border border-indigo-100 transition-all duration-300 hover:border-indigo-200"
+                >
+                  <div className="w-12 h-12 home-model-card-icon rounded-xl flex items-center justify-center mb-3">
+                    {isVideo ? (
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-indigo-600">
+                        <rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" strokeWidth="2" fill="none" />
+                        <path d="M10 8L16 12L10 16V8Z" fill="currentColor" />
+                      </svg>
+                    ) : (
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-indigo-600">
+                        <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" strokeWidth="2" fill="none" />
+                        <circle cx="8.5" cy="8.5" r="2" fill="currentColor" opacity="0.6" />
+                        <path d="M3 18L7 14L10 17L14 11L21 18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                      </svg>
+                    )}
+                  </div>
+                  <h3 className="text-base font-bold text-indigo-600 mb-2">
+                    {item.modelName || item.title}
+                  </h3>
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    {item.featuredDesc || item.description}
+                  </p>
+                </Link>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Advanced AI Tools - aiease structure */}
+      <section id="advanced-tools" className="py-20 px-6 bg-[#F8FAFF]">
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-12">
+            <h2 className="home-section-title text-4xl text-slate-900 mb-4 tracking-tight">
+              {home?.advancedToolsTitle ?? 'Advanced AI Tools for Smarter Content Creation'}
+            </h2>
+            <p className="text-slate-600 max-w-3xl text-base md:text-lg leading-relaxed">
+              {home?.advancedToolsSubtitle ?? 'Image compression, format conversion, font generator — all free, all in your browser.'}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {otherTools.map((item) => {
+              const toolEmoji: Record<string, string> = {
+                'image-compressor': '🗜️',
+                'image-converter': '🔄',
+                'font-generator': '✏️',
+                'emoji-copy-and-paste': '😀',
+              }
+              const emoji = toolEmoji[item.tool] || '📌'
+
+              return (
+                <Link
+                  key={item.tool}
+                  href={item.href}
+                  className="group block p-6 rounded-[2rem] bg-white border border-indigo-100 hover:border-indigo-200 transition-all duration-300"
+                >
+                  <div className="w-14 h-14 rounded-2xl bg-indigo-50 flex items-center justify-center mb-4 text-2xl group-hover:scale-105 transition-transform duration-300">
+                    {emoji}
+                  </div>
+                  <h3 className="font-bold text-slate-900 mb-2 text-base">
+                    {(item.title || '').replace(/<[^>]*>/g, '').trim()}
+                  </h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    {item.description || ''}
+                  </p>
+                </Link>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ - aiease: Have Questions? We Have Answers! */}
+      <section className="py-24 px-6 bg-white">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 text-center mb-12">Frequently Asked Questions</h2>
+          <h2 className="home-section-title text-4xl text-slate-900 text-center mb-14 tracking-tight">
+            {home?.faq?.title ?? 'Have Questions? We Have Answers!'}
+          </h2>
           <div className="space-y-4">
-            <details className="bg-white p-6 rounded-2xl border border-indigo-50 hover:shadow-md transition-shadow">
-              <summary className="font-bold text-slate-900 cursor-pointer flex items-center justify-between">
-                <span>How does Toolaze compress images without uploading them?</span>
-                <span className="text-indigo-600 text-xl">+</span>
-              </summary>
-              <p className="text-sm text-slate-500 mt-4">Toolaze uses WebAssembly and browser-based image processing APIs to compress images directly in your browser. Your files are processed locally on your device, never sent to any server. This ensures complete privacy and faster processing.</p>
-            </details>
-            <details className="bg-white p-6 rounded-2xl border border-indigo-50 hover:shadow-md transition-shadow">
-              <summary className="font-bold text-slate-900 cursor-pointer flex items-center justify-between">
-                <span>What image formats does Toolaze support?</span>
-                <span className="text-indigo-600 text-xl">+</span>
-              </summary>
-              <p className="text-sm text-slate-500 mt-4">Currently, our Image Compressor supports JPG, PNG, and WEBP formats. We&apos;re working on adding support for more formats including HEIC, BMP, and TIFF in future updates.</p>
-            </details>
-            <details className="bg-white p-6 rounded-2xl border border-indigo-50 hover:shadow-md transition-shadow">
-              <summary className="font-bold text-slate-900 cursor-pointer flex items-center justify-between">
-                <span>Is there a file size limit?</span>
-                <span className="text-indigo-600 text-xl">+</span>
-              </summary>
-              <p className="text-sm text-slate-500 mt-4">There&apos;s no theoretical file size limit. However, very large images may cause browser slowdown depending on your device&apos;s performance and available memory. We recommend processing large files in smaller batches for the best experience.</p>
-            </details>
-            <details className="bg-white p-6 rounded-2xl border border-indigo-50 hover:shadow-md transition-shadow">
-              <summary className="font-bold text-slate-900 cursor-pointer flex items-center justify-between">
-                <span>Will Toolaze always be free?</span>
-                <span className="text-indigo-600 text-xl">+</span>
-              </summary>
-              <p className="text-sm text-slate-500 mt-4">Yes! Toolaze is committed to providing free tools forever. We believe in making powerful image processing tools accessible to everyone without any cost barriers or premium subscriptions.</p>
-            </details>
-            <details className="bg-white p-6 rounded-2xl border border-indigo-50 hover:shadow-md transition-shadow">
-              <summary className="font-bold text-slate-900 cursor-pointer flex items-center justify-between">
-                <span>How much can I compress my images?</span>
-                <span className="text-indigo-600 text-xl">+</span>
-              </summary>
-              <p className="text-sm text-slate-500 mt-4">Compression results vary depending on the original image quality and format. Typically, you can achieve 50-90% size reduction while maintaining acceptable visual quality. You can adjust compression settings to find the perfect balance for your needs.</p>
-            </details>
+            {faqItems.map((item: { q: string; a: string }, idx: number) => {
+              // 内链密度限制：整块 FAQ ~400 词建议 ≤2 个内链。仅在 2 个答案中各放 1 个最相关链接。
+              const faqLinks: Array<{ term: string; href: string }> =
+                idx === 0
+                  ? [{ term: 'Nano Banana Pro', href: '/model/nano-banana-pro' }]
+                  : idx === 1
+                    ? [{ term: 'Seedance 2.0', href: '/seedance-2' }]
+                    : []
+              return (
+                <details
+                  key={idx}
+                  className="group bg-slate-50/80 hover:bg-slate-50 p-6 rounded-2xl border border-slate-100 hover:border-slate-200 transition-all duration-200"
+                >
+                  <summary className="font-semibold text-slate-900 cursor-pointer flex items-center justify-between gap-4 list-none">
+                    <span className="text-base">{item.q}</span>
+                    <span className="flex-shrink-0 w-8 h-8 rounded-full bg-indigo-50 text-indigo-600 flex items-center justify-center text-sm font-bold group-open:rotate-45 transition-transform duration-200">
+                      +
+                    </span>
+                  </summary>
+                  <p className="text-slate-600 mt-4 text-sm leading-relaxed pl-0">
+                    <TextWithLinks text={item.a} links={faqLinks} />
+                  </p>
+                </details>
+              )
+            })}
           </div>
         </div>
       </section>

@@ -1054,7 +1054,7 @@ const uniqueFeatures = {
       {
         "icon": "💎",
         "iconType": "free",
-        "title": "Always Free",
+        "title": "Free",
         "desc": "Unlimited Disney font generation with zero cost—no fees, no subscriptions, no advertisements."
       },
       {
@@ -1887,7 +1887,7 @@ const uniqueComparisons = {
     "others": "Text length restrictions, Few style choices, Server-side delays, Required cloud uploads, Data privacy risks, Advertisements, Premium subscriptions"
   },
   'disney': {
-    "toolaze": "Unlimited Disney text generation, Multiple whimsical styles, Real-time instant preview, Client-side processing, No limits, Total privacy, Forever free",
+    "toolaze": "Unlimited Disney text generation, Multiple whimsical styles, Real-time instant preview, Client-side processing, No limits, Total privacy",
     "others": "Character restrictions, Limited Disney styles, Slow processing, Cloud uploads, Privacy issues, Watermarks, Paid features"
   },
   'gothic': {
@@ -1903,7 +1903,7 @@ const uniqueComparisons = {
     "others": "Character limits, Limited bold styles, Server delays, Cloud uploads, Privacy issues, Ads, Premium subscriptions"
   },
   'cool': {
-    "toolaze": "Unlimited cool text generation, Modern trendy styles, Real-time preview, Client-side processing, No limits, Total privacy, Forever free",
+    "toolaze": "Unlimited cool text generation, Modern trendy styles, Real-time preview, Client-side processing, No limits, Total privacy",
     "others": "Text restrictions, Few cool options, Slow processing, Cloud uploads, Privacy concerns, Watermarks, Paid tiers"
   },
   'instagram': {
@@ -1919,7 +1919,7 @@ const uniqueComparisons = {
     "others": "Character limits, Few calligraphy options, Server delays, Required uploads, Privacy concerns, Ads, Premium tiers"
   },
   'discord': {
-    "toolaze": "Unlimited Discord text generation, Discord-compatible styles, Real-time preview, Client-side processing, No limits, Total privacy, Forever free",
+    "toolaze": "Unlimited Discord text generation, Discord-compatible styles, Real-time preview, Client-side processing, No limits, Total privacy",
     "others": "Text restrictions, Limited Discord fonts, Slow processing, Cloud uploads, Privacy risks, Watermarks, Paid features"
   },
   'old-english': {
@@ -1935,7 +1935,7 @@ const uniqueComparisons = {
     "others": "Character limits, Few Minecraft options, Server delays, Required uploads, Privacy risks, Ads, Premium features"
   },
   'bubble': {
-    "toolaze": "Unlimited bubble text generation, Playful rounded styles, Real-time preview, Client-side processing, No limits, Total privacy, Forever free",
+    "toolaze": "Unlimited bubble text generation, Playful rounded styles, Real-time preview, Client-side processing, No limits, Total privacy",
     "others": "Text restrictions, Limited bubble fonts, Slow processing, Cloud uploads, Privacy issues, Watermarks, Paid subscriptions"
   },
   'star-wars': {

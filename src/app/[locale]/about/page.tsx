@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const t = await loadCommonTranslations(locale)
   const metadata = t?.about?.metadata || {
     title: 'About Us - Toolaze',
-    description: 'Learn about Toolaze - Free AI image tools that run locally in your browser. Privacy-first, unlimited, forever free.'
+    description: 'Learn about Toolaze - Free AI image tools that run locally in your browser. Privacy-first, unlimited.'
   }
   
   return {

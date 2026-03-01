@@ -90,7 +90,7 @@ export default async function HomePage({ params }: PageProps) {
       badge: 'v1.0 Now Live',
       titleLine1: 'Free Lightweight',
       titleLine2: 'Image Tools Platform.',
-      subtitle: 'Professional image processing tools that run entirely in your browser. No uploads, no limits, forever free.',
+      subtitle: 'Professional image processing tools that run entirely in your browser. No uploads, no limits.',
       cta: 'Try Image Compressor Now →',
       sectionToolsTitle: 'All Available Tools',
       sectionToolsSubtitle: 'One suite. Infinite lazy possibilities.',
@@ -116,7 +116,7 @@ export default async function HomePage({ params }: PageProps) {
         },
         unlimited: {
           title: 'Unlimited & Free',
-          desc: 'Compress as many images as you want. No daily limits, no paywalls, no watermarks. All tools are completely free forever with no hidden costs or premium tiers.'
+          desc: 'Compress as many images as you want. No daily limits, no paywalls, no watermarks. All tools are completely free with no hidden costs or premium tiers.'
         },
         quality: {
           title: 'Lossless Quality Control',
@@ -141,10 +141,6 @@ export default async function HomePage({ params }: PageProps) {
           {
             q: 'Is there a file size limit?',
             a: "There's no theoretical file size limit. However, very large images may cause browser slowdown depending on your device's performance and available memory. We recommend processing large files in smaller batches for the best experience."
-          },
-          {
-            q: 'Will Toolaze always be free?',
-            a: 'Yes! Toolaze is committed to providing free tools forever. We believe in making powerful image processing tools accessible to everyone without any cost barriers or premium subscriptions.'
           },
           {
             q: 'How much can I compress my images?',

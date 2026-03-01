@@ -61,7 +61,7 @@
       {
         "icon": "💎",
         "iconType": "free",
-        "title": "Free Forever",
+        "title": "Free",
         "desc": "Unlimited bold font generation completely free—no charges, no subscriptions, no advertisements."
       },
       {
@@ -129,7 +129,7 @@
     ]
   },
   "comparison": {
-    "toolaze": "Unlimited bold text generation, Unicode bold characters, Instant preview, Local browser processing, No limits, Complete privacy, Free forever",
+    "toolaze": "Unlimited bold text generation, Unicode bold characters, Instant preview, Local browser processing, No limits, Complete privacy, Free",
     "others": "Character limits, Limited bold styles, Server delays, Cloud uploads, Privacy issues, Ads, Premium subscriptions"
   },
   "scenes": [
@@ -175,7 +175,7 @@
     }
   ],
   "compare": {
-    "toolaze": "Unlimited bold text generation, Multiple elegant styles, Instant real-time preview, Local-first architecture, No character limits, Complete privacy protection, 100% free forever",
+    "toolaze": "Unlimited bold text generation, Multiple elegant styles, Instant real-time preview, Local-first architecture, No character limits, Complete privacy protection, 100% free",
     "others": "Character limits, Limited style options, Slow server processing, Cloud uploads required, Privacy concerns, Watermarks or ads, Paid premium features"
   }
 }

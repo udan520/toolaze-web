@@ -61,7 +61,7 @@
       {
         "icon": "💎",
         "iconType": "free",
-        "title": "Free Forever",
+        "title": "Free",
         "desc": "Enjoy unlimited WebP to JPG conversions at absolutely no cost—no premium plans, no subscription fees, no advertisements."
       },
       {
@@ -133,7 +133,7 @@
     ]
   },
   "comparison": {
-    "toolaze": "Unlimited file sizes, Batch 100+ WebP images, Universal JPG compatibility, 100% local processing, No uploads, Works on all devices, Free forever",
+    "toolaze": "Unlimited file sizes, Batch 100+ WebP images, Universal JPG compatibility, 100% local processing, No uploads, Works on all devices, Free",
     "others": "20MB file limits, Single file conversion only, Limited browser support, Cloud uploads required, Server queues, Compatibility issues, Paid upgrades"
   },
   "scenes": [
@@ -171,7 +171,7 @@
     },
     {
       "q": "Is WebP to JPG conversion free and secure?",
-      "a": "Yes, Toolaze is completely free forever with no hidden costs, subscriptions, or advertisements. Most importantly, all conversion happens locally in your browser using client-side technology. Your WebP files never leave your device—they're never uploaded to any server, ensuring 100% privacy and security for your images."
+      "a": "Yes, Toolaze is completely free with no hidden costs, subscriptions, or advertisements. Most importantly, all conversion happens locally in your browser using client-side technology. Your WebP files never leave your device—they're never uploaded to any server, ensuring 100% privacy and security for your images."
     },
     {
       "q": "Can I convert multiple WebP files to JPG at once?",

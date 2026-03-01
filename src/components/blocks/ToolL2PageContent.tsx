@@ -13,6 +13,7 @@ import EmojiCategoryPage from '@/components/EmojiCategoryPage'
 import NanoBananaTool from '@/components/NanoBananaTool'
 import SeedanceHeroPlaceholder from '@/components/blocks/SeedanceHeroPlaceholder'
 import KlingHeroPlaceholder from '@/components/blocks/KlingHeroPlaceholder'
+import NanoBanana2HeroPlaceholder from '@/components/blocks/NanoBanana2HeroPlaceholder'
 import TrustBar from '@/components/blocks/TrustBar'
 import Intro from '@/components/blocks/Intro'
 import Features from '@/components/blocks/Features'
@@ -198,7 +199,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
     const scenariosData = content.scenes || []
 
     const comparisonData = content.comparison ? {
-      toolaze: content.comparison.toolazeFeatures || content.comparison.toolaze || "Unlimited text length, Multiple font styles, Instant preview, Real-time generation, 100% local processing, No uploads, Free forever",
+      toolaze: content.comparison.toolazeFeatures || content.comparison.toolaze || "Unlimited text length, Multiple font styles, Instant preview, Real-time generation, 100% local processing, No uploads, Free",
       others: content.comparison.othersFeatures || content.comparison.others || "Character limits, Limited styles, Slow processing, Server uploads required, Cloud queues, Privacy concerns, Paid upgrades"
     } : null
 
@@ -209,6 +210,12 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
           { label: breadcrumbT.home, href: '/' },
           { label: 'Model', href: '/model' },
           { label: 'Nano Banana Pro' },
+        ]
+      : tool === 'nano-banana-2'
+      ? [
+          { label: breadcrumbT.home, href: '/' },
+          { label: 'Model', href: '/model' },
+          { label: 'Nano Banana 2' },
         ]
       : tool === 'seedance-2'
       ? [
@@ -225,6 +232,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
     // 非模型页：推荐同工具下的 L3 子页
     const getModelL2Href = (modelTool: string): string => {
       if (modelTool === 'nano-banana-pro') return locale === 'en' ? '/model/nano-banana-pro' : `/${locale}/model/nano-banana-pro`
+      if (modelTool === 'nano-banana-2') return locale === 'en' ? '/model/nano-banana-2' : `/${locale}/model/nano-banana-2`
       return locale === 'en' ? `/${modelTool}` : `/${locale}/${modelTool}`
     }
     let filteredRecommendedTools: Array<{ slug: string; title: string; description: string; href: string }> = []
@@ -241,7 +249,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
           }
         })
       ).then((arr) => arr.filter((t) => t.title && t.href))
-    } else if (tool === 'nano-banana-pro') {
+    } else if (IMAGE_MODEL_L2S.includes(tool)) {
       const otherImageModels = IMAGE_MODEL_L2S.filter((t) => t !== tool)
       filteredRecommendedTools = await Promise.all(
         otherImageModels.slice(0, 3).map(async (modelTool) => {
@@ -285,7 +293,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
       'faq'
     ]
     let sectionsOrder = content.sectionsOrder || defaultSectionsOrder
-    if (tool === 'nano-banana-pro' || VIDEO_MODEL_L2S.includes(tool)) {
+    if (IMAGE_MODEL_L2S.includes(tool) || VIDEO_MODEL_L2S.includes(tool)) {
       sectionsOrder = sectionsOrder.filter((s: string) => s !== 'comparison')
     }
 
@@ -430,6 +438,24 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                 )}
               </div>
               <KlingHeroPlaceholder />
+            </header>
+          ) : tool === 'nano-banana-2' ? (
+            <header className="bg-[#F8FAFF] pb-12 px-6">
+              <div className="max-w-4xl mx-auto text-center pt-8 mb-12">
+                <h1 className="text-[40px] font-extrabold tracking-tight mb-6 leading-tight text-slate-900">
+                  {content.hero?.h1 ? (
+                    renderH1WithGradient(content.hero.h1)
+                  ) : (
+                    <>Nano Banana 2</>
+                  )}
+                </h1>
+                {content.hero?.desc && (
+                  <p className="desc-text text-lg md:text-xl max-w-4xl mx-auto">
+                    {content.hero.desc}
+                  </p>
+                )}
+              </div>
+              <NanoBanana2HeroPlaceholder />
             </header>
           ) : (
             <header className="bg-[#F8FAFF] pb-8 md:pb-12 px-6">
@@ -595,7 +621,9 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                         ? (t?.imageCompressor?.moreTools || t?.common?.imageCompressor?.moreTools || 'More Image Compression Tools')
                         : tool === 'image-converter' || tool === 'image-conversion'
                           ? (t?.imageConverter?.moreTools || t?.common?.imageConverter?.moreTools || 'More Image Converter Tools')
-                          : tool === 'nano-banana-pro'
+                          : IMAGE_MODEL_L2S.includes(tool)
+                              ? (t?.common?.aiImageModels?.moreTools || 'More AI Image Models')
+                              : tool === 'nano-banana-pro'
                               ? (t?.common?.nanoBananaPro?.moreTools || 'Explore More Free AI Tools')
                               : `More ${tool} Tools`)}
                 </h2>

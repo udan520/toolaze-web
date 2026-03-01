@@ -18,6 +18,7 @@ const defaultNavTranslations = {
   aiImage: 'AI Image',
   aiVideo: 'AI Video',
   nanoBananaPro: 'Nano Banana Pro',
+  nanoBanana2: 'Nano Banana 2',
   seedance2: 'Seedance 2.0',
   kling3: 'Kling 3.0',
   aboutUs: 'About Us'
@@ -550,6 +551,23 @@ export default function Navigation() {
                   </svg>
                   <span>{navTranslations.nanoBananaPro || defaultNavTranslations.nanoBananaPro}</span>
                 </Link>
+                <Link
+                  href={getLocalizedHref('/model/nano-banana-2')}
+                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
+                    <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#aiImageGradient2)" opacity="0.2"/>
+                    <path d="M8 8H16M8 12H14M8 16H12" stroke="url(#aiImageGradient2)" strokeWidth="2" strokeLinecap="round"/>
+                    <circle cx="18" cy="6" r="2" fill="url(#aiImageGradient2)"/>
+                    <defs>
+                      <linearGradient id="aiImageGradient2" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+                        <stop stopColor="#9333EA"/>
+                        <stop offset="1" stopColor="#4F46E5"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                  <span>{navTranslations.nanoBanana2 || defaultNavTranslations.nanoBanana2}</span>
+                </Link>
               </div>
             </div>
           </div>
@@ -702,6 +720,27 @@ export default function Navigation() {
                       </defs>
                     </svg>
                     <span>{navTranslations.nanoBananaPro || defaultNavTranslations.nanoBananaPro}</span>
+                  </Link>
+                  <Link
+                    href={getLocalizedHref('/model/nano-banana-2')}
+                    onClick={() => {
+                      setMobileMenuOpen(false)
+                      setExpandedSubmenus(new Set())
+                    }}
+                    className="flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
+                  >
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
+                      <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#aiImageGradientMobile2)" opacity="0.2"/>
+                      <path d="M8 8H16M8 12H14M8 16H12" stroke="url(#aiImageGradientMobile2)" strokeWidth="2" strokeLinecap="round"/>
+                      <circle cx="18" cy="6" r="2" fill="url(#aiImageGradientMobile2)"/>
+                      <defs>
+                        <linearGradient id="aiImageGradientMobile2" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+                          <stop stopColor="#9333EA"/>
+                          <stop offset="1" stopColor="#4F46E5"/>
+                        </linearGradient>
+                      </defs>
+                    </svg>
+                    <span>{navTranslations.nanoBanana2 || defaultNavTranslations.nanoBanana2}</span>
                   </Link>
                 </div>
               </div>

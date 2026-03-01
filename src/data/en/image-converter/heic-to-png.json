@@ -61,7 +61,7 @@
       {
         "icon": "💎",
         "iconType": "free",
-        "title": "Free Forever",
+        "title": "Free",
         "desc": "Access unlimited HEIC to PNG conversions at no cost—no premium plans, no subscription fees, no advertising interruptions."
       },
       {
@@ -133,7 +133,7 @@
     ]
   },
   "comparison": {
-    "toolaze": "Unlimited file sizes, Batch 100+ HEIC images, Lossless PNG conversion, Full transparency preservation, WebAssembly-powered, 100% local processing, No uploads, Free forever",
+    "toolaze": "Unlimited file sizes, Batch 100+ HEIC images, Lossless PNG conversion, Full transparency preservation, WebAssembly-powered, 100% local processing, No uploads, Free",
     "others": "20MB file limits, Single file conversion only, Quality loss during conversion, Transparency not preserved, Cloud uploads required, Server queues, Paid upgrades"
   },
   "scenes": [
@@ -171,7 +171,7 @@
     },
     {
       "q": "Is HEIC to PNG conversion free and secure?",
-      "a": "Yes, Toolaze is completely free forever with no hidden costs, subscriptions, or advertisements. Most importantly, all conversion happens locally in your browser using WebAssembly-powered HEVC decoder technology. Your HEIC files never leave your device—they're never uploaded to any server, ensuring 100% privacy and security for your iPhone photos."
+      "a": "Yes, Toolaze is completely free with no hidden costs, subscriptions, or advertisements. Most importantly, all conversion happens locally in your browser using WebAssembly-powered HEVC decoder technology. Your HEIC files never leave your device—they're never uploaded to any server, ensuring 100% privacy and security for your iPhone photos."
     },
     {
       "q": "Can I convert multiple HEIC files to PNG at once?",

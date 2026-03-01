@@ -61,7 +61,7 @@
       {
         "icon": "💎",
         "iconType": "free",
-        "title": "Für immer völlig kostenlos",
+        "title": "Kostenlos",
         "desc": "Greifen Sie auf unbegrenzte HEIC-zu-WebP-Konvertierungen ohne Kosten zu – keine Premium-Abonnements, keine versteckten Gebühren, keine Werbeunterbrechungen."
       },
       {
@@ -133,7 +133,7 @@
     ]
   },
   "comparison": {
-    "toolaze": "Unbegrenzte Dateigrößen, Batch 100+ HEIC-Bilder, Optimierte WebP-Komprimierung, Transparenz erhalten, WebAssembly-betrieben, 100% lokale Verarbeitung, Keine Uploads, Für immer kostenlos",
+    "toolaze": "Unbegrenzte Dateigrößen, Batch 100+ HEIC-Bilder, Optimierte WebP-Komprimierung, Transparenz erhalten, WebAssembly-betrieben, 100% lokale Verarbeitung, Keine Uploads, Kostenlos",
     "others": "20MB Dateilimits, Nur Einzeldatei-Konvertierung, Schlechte Komprimierungsqualität, Transparenz verloren, Cloud-Uploads erforderlich, Server-Warteschlangen, Bezahlte Upgrades"
   },
   "scenes": [
@@ -171,7 +171,7 @@
     },
     {
       "q": "Ist die HEIC-zu-WebP-Konvertierung kostenlos und sicher?",
-      "a": "Ja, Toolaze ist für immer völlig kostenlos ohne versteckte Kosten, Abonnements oder Werbung. Noch wichtiger ist, dass alle Konvertierungen lokal in Ihrem Browser mit WebAssembly-betriebener HEVC-Decoder-Technologie erfolgen. Ihre HEIC-Dateien verlassen niemals Ihr Gerät – sie werden niemals auf einen Server hochgeladen, was 100% Privatsphäre und Sicherheit für Ihre iPhone-Fotos gewährleistet."
+      "a": "Ja, Toolaze ist völlig kostenlos ohne versteckte Kosten, Abonnements oder Werbung. Noch wichtiger ist, dass alle Konvertierungen lokal in Ihrem Browser mit WebAssembly-betriebener HEVC-Decoder-Technologie erfolgen. Ihre HEIC-Dateien verlassen niemals Ihr Gerät – sie werden niemals auf einen Server hochgeladen, was 100% Privatsphäre und Sicherheit für Ihre iPhone-Fotos gewährleistet."
     },
     {
       "q": "Kann ich mehrere HEIC-Dateien gleichzeitig zu WebP konvertieren?",

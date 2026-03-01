@@ -61,7 +61,7 @@
       {
         "icon": "💎",
         "iconType": "free",
-        "title": "Für immer kostenlos",
+        "title": "Kostenlos",
         "desc": "Genießen Sie unbegrenzte JPG-zu-PNG-Konvertierungen völlig kostenlos – keine Abonnements, keine versteckten Gebühren, keine Werbung."
       },
       {
@@ -133,7 +133,7 @@
     ]
   },
   "comparison": {
-    "toolaze": "Unbegrenzte Dateigrößen, Batch 100+ JPG-Bilder, Verlustfreie PNG-Konvertierung, Vollständige Transparenz-Unterstützung, 100% lokale Verarbeitung, Keine Uploads, Für immer kostenlos",
+    "toolaze": "Unbegrenzte Dateigrößen, Batch 100+ JPG-Bilder, Verlustfreie PNG-Konvertierung, Vollständige Transparenz-Unterstützung, 100% lokale Verarbeitung, Keine Uploads, Kostenlos",
     "others": "20MB Dateilimits, Nur Einzeldatei-Konvertierung, Qualitätsverlust bei der Konvertierung, Keine Transparenz-Unterstützung, Cloud-Uploads erforderlich, Server-Warteschlangen, Bezahlte Upgrades"
   },
   "scenes": [
@@ -171,7 +171,7 @@
     },
     {
       "q": "Ist die JPG-zu-PNG-Konvertierung kostenlos und sicher?",
-      "a": "Ja, Toolaze ist für immer völlig kostenlos ohne versteckte Kosten oder Werbung. Noch wichtiger ist, dass alle Konvertierungen lokal in Ihrem Browser mit clientseitiger Technologie erfolgen. Ihre JPG-Dateien verlassen niemals Ihr Gerät – sie werden niemals auf einen Server hochgeladen, was 100% Privatsphäre und Sicherheit für Ihre Bilder gewährleistet."
+      "a": "Ja, Toolaze ist völlig kostenlos ohne versteckte Kosten oder Werbung. Noch wichtiger ist, dass alle Konvertierungen lokal in Ihrem Browser mit clientseitiger Technologie erfolgen. Ihre JPG-Dateien verlassen niemals Ihr Gerät – sie werden niemals auf einen Server hochgeladen, was 100% Privatsphäre und Sicherheit für Ihre Bilder gewährleistet."
     },
     {
       "q": "Kann ich mehrere JPG-Dateien gleichzeitig zu PNG konvertieren?",
