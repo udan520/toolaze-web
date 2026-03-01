@@ -77,6 +77,7 @@ export async function generateStaticParams() {
     const converterSlugs = await getAllSlugs('image-converter', 'en') || []
     const fontGeneratorSlugs = await getAllSlugs('font-generator', 'en') || []
     const emojiCopyPasteSlugs = await getAllSlugs('emoji-copy-and-paste', 'en') || []
+    const seedance2Slugs = await getAllSlugs('seedance-2', 'en') || []
     
     for (const locale of locales) {
       // 添加图片压缩工具的页面
@@ -107,6 +108,17 @@ export async function generateStaticParams() {
           params.push({
             locale: locale,
             tool: 'font-generator',
+            slug: slug,
+          })
+        }
+      }
+      
+      // 添加 Seedance 2.0 L3 页面（/en/seedance-2/* 会重定向到 /seedance-2/*）
+      for (const slug of seedance2Slugs) {
+        if (slug && typeof slug === 'string') {
+          params.push({
+            locale: locale,
+            tool: 'seedance-2',
             slug: slug,
           })
         }
@@ -153,6 +165,11 @@ export default async function LandingPage({ params }: PageProps) {
     return null
   }
   
+  // seedance-2 英语无 /en 前缀，重定向到 /seedance-2/[slug]
+  if (resolvedParams.tool === 'seedance-2' && locale === 'en') {
+    redirect(`/seedance-2/${resolvedParams.slug}`)
+  }
+  
   // 检查内容是否存在，如果不存在且是 font-generator 或 emoji-copy-and-paste，重定向到英语版本
   const content = await getSeoContent(resolvedParams.tool, resolvedParams.slug, locale)
   if (!content) {
@@ -162,6 +179,9 @@ export default async function LandingPage({ params }: PageProps) {
       }
       if (resolvedParams.tool === 'emoji-copy-and-paste') {
         redirect(`/emoji-copy-and-paste/${resolvedParams.slug}`)
+      }
+      if (resolvedParams.tool === 'seedance-2') {
+        redirect(`/seedance-2/${resolvedParams.slug}`)
       }
     }
     notFound()

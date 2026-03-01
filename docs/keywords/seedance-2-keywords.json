@@ -1,0 +1,32 @@
+{
+  "tool": "seedance-2",
+  "lastUpdated": "2026-02-15",
+  "primaryKeywords": [
+    {"keyword": "Seedance 2.0", "searchVolume": 50000, "difficulty": 35, "type": "primary", "notes": "主关键词，用于 H1 和 Title"},
+    {"keyword": "AI video generator", "searchVolume": 120000, "difficulty": 55, "type": "primary", "notes": "核心功能词"},
+    {"keyword": "text to video AI", "searchVolume": 90000, "difficulty": 50, "type": "primary", "notes": "核心功能词"},
+    {"keyword": "image to video AI", "searchVolume": 60000, "difficulty": 45, "type": "primary", "notes": "核心功能词"}
+  ],
+  "longTailKeywords": [
+    {"keyword": "Seedance 2.0 free", "searchVolume": 15000, "difficulty": 25, "type": "long-tail", "targetPage": "seedance-2", "notes": "L2 主页面"},
+    {"keyword": "Seedance 2.0 online", "searchVolume": 12000, "difficulty": 28, "type": "long-tail", "targetPage": "seedance-2", "notes": "L2 主页面"},
+    {"keyword": "text to video generator free", "searchVolume": 22000, "difficulty": 40, "type": "long-tail", "targetPage": "text-to-video", "notes": "L3 长尾页面"},
+    {"keyword": "image to video AI free", "searchVolume": 18000, "difficulty": 38, "type": "long-tail", "targetPage": "image-to-video", "notes": "L3 长尾页面"},
+    {"keyword": "AI video generator free online", "searchVolume": 25000, "difficulty": 42, "type": "long-tail", "targetPage": "ai-video-generator", "notes": "L3 长尾页面"},
+    {"keyword": "Seedance 2.0 vs Sora 2", "searchVolume": 8000, "difficulty": 30, "type": "long-tail", "targetPage": "seedance-2", "notes": "对比类 FAQ"},
+    {"keyword": "multimodal video generation", "searchVolume": 5000, "difficulty": 35, "type": "long-tail", "targetPage": "seedance-2", "notes": "技术类"},
+    {"keyword": "1080p AI video", "searchVolume": 6000, "difficulty": 32, "type": "long-tail", "targetPage": "seedance-2", "notes": "画质类"}
+  ],
+  "relatedKeywords": [
+    {"keyword": "video generation", "searchVolume": 80000, "difficulty": 50, "type": "related", "notes": "相关关键词"},
+    {"keyword": "AI video creation", "searchVolume": 45000, "difficulty": 48, "type": "related", "notes": "相关关键词"},
+    {"keyword": "text to video", "searchVolume": 60000, "difficulty": 45, "type": "related", "notes": "相关关键词"},
+    {"keyword": "image to video", "searchVolume": 40000, "difficulty": 42, "type": "related", "notes": "相关关键词"},
+    {"keyword": "ByteDance AI", "searchVolume": 30000, "difficulty": 40, "type": "related", "notes": "品牌相关"}
+  ],
+  "internalLinking": [
+    {"keyword": "compress image", "targetPage": "image-compressor", "anchorText": "compress images", "notes": "内链到压缩工具"},
+    {"keyword": "convert image", "targetPage": "image-converter", "anchorText": "convert images", "notes": "内链到转换工具"},
+    {"keyword": "AI image generator", "targetPage": "nano-banana-pro", "anchorText": "AI image generation", "notes": "内链到 AI 图像工具"}
+  ]
+}

@@ -1,4 +1,4 @@
-import { getSeoContent, getAllSlugs, loadCommonTranslations } from '@/lib/seo-loader'
+import { getSeoContent, getAllSlugs, loadCommonTranslations, getL2SeoContent, VIDEO_MODEL_L2S, IMAGE_MODEL_L2S } from '@/lib/seo-loader'
 import { localizeLinksInObject } from '@/lib/localize-links'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
@@ -13,12 +13,14 @@ import Features from '@/components/blocks/Features'
 import PerformanceMetrics from '@/components/blocks/PerformanceMetrics'
 import HowToUse from '@/components/blocks/HowToUse'
 import Comparison from '@/components/blocks/Comparison'
+import ModelIntroBlock from '@/components/blocks/ModelIntroBlock'
 import Scenarios from '@/components/blocks/Scenarios'
 import Rating from '@/components/blocks/Rating'
 import FAQ from '@/components/blocks/FAQ'
 import ViewAllToolsButton from '@/components/ViewAllToolsButton'
 import ToolCard from '@/components/ToolCard'
 import EmojiCategoryPage from '@/components/EmojiCategoryPage'
+import SeedanceHeroPlaceholder from '@/components/blocks/SeedanceHeroPlaceholder'
 import React from 'react'
 
 interface ToolSlugPageContentProps {
@@ -146,6 +148,7 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
     const isConverter = tool === 'image-converter' || tool === 'image-conversion'
     const isFontGenerator = tool === 'font-generator'
     const isEmoji = tool === 'emoji-copy-and-paste'
+    const isSeedance = tool === 'seedance-2'
     const toolTranslations = isConverter ? t?.imageConverter : (isFontGenerator ? null : isEmoji ? null : t?.imageCompressor)
     const breadcrumbT = t?.breadcrumb || { 
       home: 'Home', 
@@ -249,6 +252,8 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
       toolLabel = breadcrumbT.fontGenerator
     } else if (isEmoji) {
       toolLabel = breadcrumbT.emojiCopyAndPaste
+    } else if (isSeedance) {
+      toolLabel = 'Seedance 2.0'
     } else {
       toolLabel = breadcrumbT.imageCompression
     }
@@ -259,28 +264,61 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
       { label: pageTitle },
     ]
 
-    // 获取推荐的其他功能（排除当前页面）
-    const allSlugs = await getAllSlugs(tool, locale)
-    const otherSlugs = allSlugs.filter(s => s !== slug).slice(0, 3)
-    // 生成链接的辅助函数（英语不使用 /en 前缀）
-    const getToolHref = (toolSlug: string, slug: string): string => {
-      if (locale === 'en') {
-        return `/${toolSlug}/${slug}`
-      }
-      return `/${locale}/${toolSlug}/${slug}`
+    // 获取推荐的其他功能
+    // 视频/图片模型 L3 页：仅推荐同类型其他 L2 模型，无则不显示板块
+    // 其他工具 L3 页：推荐同工具下其他 L3 子页
+    const getModelL2Href = (modelTool: string): string => {
+      if (modelTool === 'nano-banana-pro') return locale === 'en' ? '/model/nano-banana-pro' : `/${locale}/model/nano-banana-pro`
+      return locale === 'en' ? `/${modelTool}` : `/${locale}/${modelTool}`
     }
-    const recommendedTools = await Promise.all(otherSlugs.map(async (s) => {
-      const toolData = await getSeoContent(tool, s, locale)
-      return {
-        slug: s,
-        title: toolData?.hero?.h1 ? extractSimpleTitle(toolData.hero.h1) : s,
-        description: toolData?.hero?.desc || toolData?.metadata?.description || '',
-        href: getToolHref(tool, s),
-      }
-    }))
-    const filteredRecommendedTools = recommendedTools.filter(t => t.title && t.href)
+    let filteredRecommendedTools: Array<{ slug: string; title: string; description: string; href: string }> = []
+    if (isSeedance) {
+      const otherVideoModels = VIDEO_MODEL_L2S.filter((t) => t !== tool)
+      filteredRecommendedTools = await Promise.all(
+        otherVideoModels.slice(0, 3).map(async (modelTool) => {
+          const data = await getL2SeoContent(modelTool, locale)
+          return {
+            slug: modelTool,
+            title: data?.hero?.h1 ? extractSimpleTitle(data.hero.h1) : modelTool,
+            description: data?.hero?.desc || data?.metadata?.description || '',
+            href: getModelL2Href(modelTool),
+          }
+        })
+      ).then((arr) => arr.filter((t) => t.title && t.href))
+    } else if (tool === 'nano-banana-pro') {
+      const otherImageModels = IMAGE_MODEL_L2S.filter((t) => t !== tool)
+      filteredRecommendedTools = await Promise.all(
+        otherImageModels.slice(0, 3).map(async (modelTool) => {
+          const data = await getL2SeoContent(modelTool, locale)
+          return {
+            slug: modelTool,
+            title: data?.hero?.h1 ? extractSimpleTitle(data.hero.h1) : modelTool,
+            description: data?.hero?.desc || data?.metadata?.description || '',
+            href: getModelL2Href(modelTool),
+          }
+        })
+      ).then((arr) => arr.filter((t) => t.title && t.href))
+    } else {
+      const allSlugs = await getAllSlugs(tool, locale)
+      const otherSlugs = allSlugs.filter((s) => s !== slug).slice(0, 3)
+      const getToolHref = (toolSlug: string, s: string): string =>
+        locale === 'en' ? `/${toolSlug}/${s}` : `/${locale}/${toolSlug}/${s}`
+      const recommendedTools = await Promise.all(
+        otherSlugs.map(async (s) => {
+          const toolData = await getSeoContent(tool, s, locale)
+          return {
+            slug: s,
+            title: toolData?.hero?.h1 ? extractSimpleTitle(toolData.hero.h1) : s,
+            description: toolData?.hero?.desc || toolData?.metadata?.description || '',
+            href: getToolHref(tool, s),
+          }
+        })
+      )
+      filteredRecommendedTools = recommendedTools.filter((t) => t.title && t.href)
+    }
 
     // 获取板块顺序配置（优先使用 JSON 中的 sectionsOrder，否则使用默认顺序）
+    // AI Video (seedance-2) 不显示对比板块
     const defaultSectionsOrder = [
       'howToUse',
       'intro',
@@ -290,7 +328,10 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
       'rating',
       'faq'
     ]
-    const sectionsOrder = content.sectionsOrder || defaultSectionsOrder
+    let sectionsOrder = content.sectionsOrder || defaultSectionsOrder
+    if (isSeedance) {
+      sectionsOrder = sectionsOrder.filter((s: string) => s !== 'comparison')
+    }
 
     // 生成 JSON-LD HowTo Schema
     const howToTitle = content.howToUse?.title || `How to ${content.hero?.h1 ? extractSimpleTitle(content.hero.h1) : 'Use Tool'}`
@@ -335,6 +376,24 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
               <div className="max-w-6xl mx-auto">
                 <EmojiCategoryPage />
               </div>
+            </header>
+          ) : isSeedance ? (
+            <header className="bg-[#F8FAFF] pb-12 px-6">
+              <div className="max-w-4xl mx-auto text-center pt-8 mb-12">
+                <h1 className="text-[40px] font-extrabold tracking-tight mb-6 leading-tight text-slate-900">
+                  {content.hero?.h1 ? (
+                    renderH1WithGradient(content.hero.h1)
+                  ) : (
+                    <>Seedance 2.0</>
+                  )}
+                </h1>
+                {content.hero?.desc && (
+                  <p className="desc-text text-lg md:text-xl max-w-4xl mx-auto">
+                    {content.hero.desc}
+                  </p>
+                )}
+              </div>
+              <SeedanceHeroPlaceholder />
             </header>
           ) : (
             <header className="bg-[#F8FAFF] pb-8 md:pb-12 px-6">
@@ -391,6 +450,21 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
           {(() => {
             // 定义各个板块的渲染函数
             const sectionRenderers: Record<string, (bgClass: string, index: number) => React.ReactNode> = {
+              modelIntro: () => {
+                const mi = content.modelIntro as { title?: string; description?: string | string[]; image?: { src: string; alt: string }; modelName?: string; modelType?: string; featureCards?: Array<{ title: string; content: string }> } | undefined
+                if (!mi?.title || !mi?.featureCards || mi.featureCards.length < 3) return null
+                return (
+                  <ModelIntroBlock
+                    key="modelIntro"
+                    title={mi.title}
+                    description={mi.description || []}
+                    image={mi.image}
+                    modelName={mi.modelName}
+                    modelType={mi.modelType}
+                    featureCards={[mi.featureCards[0], mi.featureCards[1], mi.featureCards[2]]}
+                  />
+                )
+              },
               intro: (bgClass: string) => (
                 <Intro
                   key="intro"
@@ -499,47 +573,46 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
             }).filter(Boolean)
           })()}
 
-          {/* 9. Recommended Tools 板块 */}
-          <section className="py-24 px-6 bg-[#F8FAFF]">
-            <div className="max-w-6xl mx-auto">
-              {filteredRecommendedTools.length > 0 && (
-                <>
-                  <h2 className="text-3xl font-extrabold text-center text-slate-900 mb-12">
-                    {isConverter 
-                      ? (t?.imageConverter?.moreTools || `More Image Converter Tools`)
+          {/* 9. Recommended Tools 板块（模型 L3 页无其他 L2 时不显示） */}
+          {filteredRecommendedTools.length > 0 && (
+            <section className="py-24 px-6 bg-[#F8FAFF]">
+              <div className="max-w-6xl mx-auto">
+                <h2 className="text-3xl font-extrabold text-center text-slate-900 mb-12">
+                  {content.moreTools ||
+                    (isConverter
+                      ? (t?.imageConverter?.moreTools || t?.common?.imageConverter?.moreTools || 'More Image Converter Tools')
                       : isEmoji
-                        ? (t?.common?.emojiCopyAndPaste?.moreTools || `More Emoji Copy & Paste`)
-                        : (t?.imageCompressor?.moreTools || `More Image Compression Tools`)
-                    }
-                  </h2>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-                    {filteredRecommendedTools.map((tool, idx) => {
-                      const iconBgColors: Array<'indigo' | 'purple' | 'blue'> = ['indigo', 'purple', 'blue']
-                      const iconBgColor = iconBgColors[idx % 3] as 'indigo' | 'purple' | 'blue'
-                      
-                      return (
-                        <ToolCard
-                          key={tool.slug}
-                          title={tool.title}
-                          description={tool.description}
-                          href={tool.href}
-                          iconBgColor={iconBgColor}
-                          tryNowText={t?.common?.tryNow || 'Try Now →'}
-                        />
-                      )
-                    })}
-                  </div>
-                </>
-              )}
-              
-              {/* View All Related Tools 入口 - 始终显示 */}
-              <ViewAllToolsButton
-                href={locale === 'en' ? `/${tool}/all-tools` : `/${locale}/${tool}/all-tools`}
-                text={t?.common?.viewAllTools?.related || 'View All Related Tools'}
-                variant="related"
-              />
-            </div>
-          </section>
+                        ? (t?.common?.emojiCopyAndPaste?.moreTools || 'More Emoji Copy & Paste')
+                        : isFontGenerator
+                          ? (t?.common?.fontGenerator?.moreTools || 'More Font Generator Tools')
+                          : isSeedance
+                            ? (t?.common?.seedance2?.moreTools || 'More Seedance 2.0 Tools')
+                            : (t?.imageCompressor?.moreTools || t?.common?.imageCompressor?.moreTools || 'More Image Compression Tools'))}
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                  {filteredRecommendedTools.map((recTool, idx) => {
+                    const iconBgColors: Array<'indigo' | 'purple' | 'blue'> = ['indigo', 'purple', 'blue']
+                    const iconBgColor = iconBgColors[idx % 3] as 'indigo' | 'purple' | 'blue'
+                    return (
+                      <ToolCard
+                        key={recTool.slug}
+                        title={recTool.title}
+                        description={recTool.description}
+                        href={recTool.href}
+                        iconBgColor={iconBgColor}
+                        tryNowText={t?.common?.tryNow || 'Try Now →'}
+                      />
+                    )
+                  })}
+                </div>
+                <ViewAllToolsButton
+                  href={locale === 'en' ? `/${tool}/all-tools` : `/${locale}/${tool}/all-tools`}
+                  text={t?.common?.viewAllTools?.related || 'View All Related Tools'}
+                  variant="related"
+                />
+              </div>
+            </section>
+          )}
         </main>
 
         <Footer />

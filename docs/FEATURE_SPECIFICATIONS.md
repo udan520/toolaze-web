@@ -32,6 +32,11 @@ docs/specs/
 
 **查看方式**：编写 Font Generator 相关 SEO 内容时，必须参考此文件。
 
+### Seedance 2.0（AI 视频生成工具）
+📄 **文件位置**：`docs/specs/seedance-2.md`
+
+**查看方式**：编写 Seedance 2.0 相关 SEO 内容时，必须参考此文件。
+
 ### 通用功能特性
 📄 **文件位置**：`docs/specs/common.md`
 

@@ -34,6 +34,19 @@ export const FONT_GENERATOR_SLUGS = [
   'star-wars',
 ]
 
+// 视频模型 L2 列表（用于「更多工具」推荐，仅推荐同类型 L2）
+export const VIDEO_MODEL_L2S = ['seedance-2']
+
+// 图片模型 L2 列表（用于「更多工具」推荐，仅推荐同类型 L2）
+export const IMAGE_MODEL_L2S = ['nano-banana-pro']
+
+// Seedance 2.0 L3 页面 slug 列表（按搜索量/优先级）
+const SEEDANCE_2_SLUGS = [
+  'text-to-video',
+  'image-to-video',
+  'ai-video-generator',
+]
+
 // Emoji Copy & Paste L3 页面 slug 列表（按搜索量/优先级）
 const EMOJI_COPY_PASTE_SLUGS = [
   'crying-copy-and-paste',
@@ -169,6 +182,9 @@ async function loadToolJsonFile(locale: string, tool: string, slug: string) {
     if (tool === 'emoji-copy-and-paste' && !EMOJI_COPY_PASTE_SLUGS.includes(slug)) {
       return null
     }
+    if (tool === 'seedance-2' && !SEEDANCE_2_SLUGS.includes(slug)) {
+      return null
+    }
 
     // 使用显式的导入路径以确保 webpack 能够静态分析
     let data: any = null
@@ -217,6 +233,12 @@ async function loadToolJsonFile(locale: string, tool: string, slug: string) {
               case 'fire-copy-and-paste': data = await import('@/data/en/emoji-copy-and-paste/fire-copy-and-paste.json'); break
               case 'birthday-copy-and-paste': data = await import('@/data/en/emoji-copy-and-paste/birthday-copy-and-paste.json'); break
               case 'cat-copy-and-paste': data = await import('@/data/en/emoji-copy-and-paste/cat-copy-and-paste.json'); break
+            }
+          } else if (tool === 'seedance-2') {
+            switch (slug) {
+              case 'text-to-video': data = await import('@/data/en/seedance-2/text-to-video.json'); break
+              case 'image-to-video': data = await import('@/data/en/seedance-2/image-to-video.json'); break
+              case 'ai-video-generator': data = await import('@/data/en/seedance-2/ai-video-generator.json'); break
             }
           }
           break
@@ -473,6 +495,12 @@ async function loadToolJsonFile(locale: string, tool: string, slug: string) {
               case 'birthday-copy-and-paste': data = await import('@/data/en/emoji-copy-and-paste/birthday-copy-and-paste.json'); break
               case 'cat-copy-and-paste': data = await import('@/data/en/emoji-copy-and-paste/cat-copy-and-paste.json'); break
             }
+          } else if (tool === 'seedance-2') {
+            switch (slug) {
+              case 'text-to-video': data = await import('@/data/en/seedance-2/text-to-video.json'); break
+              case 'image-to-video': data = await import('@/data/en/seedance-2/image-to-video.json'); break
+              case 'ai-video-generator': data = await import('@/data/en/seedance-2/ai-video-generator.json'); break
+            }
           }
           if (data) {
             return data.default || data
@@ -553,6 +581,8 @@ export async function getL2SeoContent(tool: string, locale: string = 'en') {
             data = await import('@/data/en/nano-banana-pro.json')
           }
         }
+      } else if (tool === 'seedance-2') {
+        data = await import('@/data/en/seedance-2.json')
       }
       
       if (data) {
@@ -572,6 +602,8 @@ export async function getL2SeoContent(tool: string, locale: string = 'en') {
             data = await import('@/data/en/emoji-copy-and-paste.json')
           } else if (tool === 'nano-banana-pro') {
             data = await import('@/data/en/nano-banana-pro.json')
+          } else if (tool === 'seedance-2') {
+            data = await import('@/data/en/seedance-2.json')
           }
           if (data) {
             return data.default || data
@@ -648,6 +680,10 @@ export async function getSeoContent(tool: string, slug: string, locale: string =
       const independentData = await loadToolJsonFile(locale, 'emoji-copy-and-paste', slug);
       return independentData || null;
     }
+    if (tool === 'seedance-2') {
+      const independentData = await loadToolJsonFile(locale, 'seedance-2', slug);
+      return independentData || null;
+    }
     return null;
   } catch (error) {
     // Silently return null on error to prevent server-side crashes
@@ -677,6 +713,9 @@ export async function getAllSlugs(tool: string, locale: string = 'en'): Promise<
     }
     if (tool === 'emoji-copy-and-paste') {
       return Array.isArray(EMOJI_COPY_PASTE_SLUGS) ? [...EMOJI_COPY_PASTE_SLUGS] : [];
+    }
+    if (tool === 'seedance-2') {
+      return Array.isArray(SEEDANCE_2_SLUGS) ? [...SEEDANCE_2_SLUGS] : [];
     }
     if (tool === 'nano-banana-pro') {
       // Nano Banana Pro currently only has L2 page, no L3 pages
@@ -717,6 +756,12 @@ export async function getAllTools(locale: string = 'en'): Promise<Array<{ tool: 
   const emojiSlugs = await getAllSlugs('emoji-copy-and-paste', locale)
   for (const slug of emojiSlugs) {
     tools.push({ tool: 'emoji-copy-and-paste', slug })
+  }
+  
+  // 添加 Seedance 2.0 L3 页面（目前仅英文）
+  const seedanceSlugs = await getAllSlugs('seedance-2', locale)
+  for (const slug of seedanceSlugs) {
+    tools.push({ tool: 'seedance-2', slug })
   }
   
   return tools

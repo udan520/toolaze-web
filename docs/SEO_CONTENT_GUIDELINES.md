@@ -123,6 +123,25 @@
      - 使用段落分隔让内容更易读，避免大段文字造成视觉疲劳
      - 确保内容丰富但不冗长，保持用户阅读兴趣
 
+7. **ModelIntro 板块规范**（模型介绍页专用，如 Seedance 2.0、Nano Banana Pro）
+   - **适用页面**：AI 模型介绍页 L2 主页面（`/seedance-2`、`/model/nano-banana-pro`）及 L3 子页面（如 `/seedance-2/text-to-video`、`/seedance-2/image-to-video`）
+   - **位置**：必须放在 How To Use 板块下方，`sectionsOrder` 中为 `["howToUse", "modelIntro", ...]`
+   - **结构**：
+     - **顶部**：H2 标题 + 2-3 段描述（左）+ 右侧配图或模型名占位
+     - **底部**：三个并列功能卡片，背景色为 `bg-indigo-50`、`bg-purple-50`、`bg-slate-50`（禁止使用纯白）
+   - **数据格式**（JSON）：
+     - `title`：板块主标题（H2）
+     - `description`：描述段落数组，2-3 段
+     - `modelName`：模型名称，无图片时右侧占位显示（如 "Seedance 2.0"）
+     - `modelType`：可选，占位副标题，默认 "AI Video Model"，图片模型用 "AI Image Model"
+     - `image`：可选，`{ src, alt }`，有图时优先显示图片
+     - `featureCards`：3 个对象，每项 `{ title, content }`
+   - **内容要求**：
+     - 文案必须原创，禁止抄袭参考图或竞品
+     - 严格遵循 `docs/specs/` 中对应模型的功能规格
+     - 三张卡片分别突出模型的核心优势（如：画质/速度、多模态、音视频联合等）
+   - **设计规范**：遵循 `docs/MODEL_INTRO_BLOCK.md` 和 Style 1 (Soft Smart Tech)
+
 5. **场景图标规范**
    - Use Cases（Scenarios）板块中的每个场景**必须**配置对应的图标
    - **推荐**：每个场景都应该有 `icon` 字段，且不能为空
@@ -202,6 +221,10 @@
      - HEIC to JPG 页面：可以包含关于 HEIC 格式、EXIF 保留、文件大小限制等问题
      - PNG to WebP 页面：可以包含关于 WebP 格式优势、透明度支持、浏览器兼容性等问题
      - 不同页面的 FAQ 应该有不同的侧重点和问题角度
+  - **模型对比类 FAQ**（如 "How does Seedance 2.0 compare to Sora 2?"）：
+     - **必须同时介绍两个模型的核心差异**，不能只介绍一方
+     - 简洁介绍：各自核心优势 + 主要差异点 + 简短选择建议
+     - 避免冗长，突出关键区别即可
 
 ### ❌ 禁止事项
 
@@ -224,6 +247,10 @@
    - ❌ FAQ 数量少于 5 个
    - ❌ FAQ 内容重复度超过 40%
    - ❌ 使用通用的、不针对具体页面的 FAQ
+
+5. **禁止 FAQ 模型对比只介绍一方**
+   - ❌ 对比类 FAQ 只介绍本工具或只介绍竞品
+   - ✅ 同时介绍两个模型的核心差异，简洁客观
 
 ---
 

@@ -11,7 +11,7 @@ import Comparison from '@/components/blocks/Comparison'
 import HowToUse from '@/components/blocks/HowToUse'
 import WhyToolaze from '@/components/blocks/WhyToolaze'
 import Rating from '@/components/blocks/Rating'
-import { getAllSlugs, getSeoContent } from '@/lib/seo-loader'
+import { getAllSlugs, getSeoContent, loadCommonTranslations } from '@/lib/seo-loader'
 import Link from 'next/link'
 import type { Metadata } from 'next'
 
@@ -27,6 +27,9 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function ImageCompressorPage() {
+  const t = await loadCommonTranslations('en')
+  const moreToolsTitle = t?.imageCompressor?.moreTools || t?.common?.imageCompressor?.moreTools || 'More Image Compression Tools'
+
   // 加载所有 in_menu: false 的工具（长尾页面），并选择3个最相关的显示
   let allSlugs: string[] = []
   let featuredTools: Array<{ slug: string; title: string; description: string; href: string }> = []
@@ -269,7 +272,7 @@ export default async function ImageCompressorPage() {
         <section className="py-24 px-6 bg-white border-t border-indigo-50/50" id="more-tools-section" data-testid="more-tools-section">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-4xl font-extrabold text-center text-slate-900 mb-4">
-              More Image Compression Tools
+              {moreToolsTitle}
             </h2>
             <p className="text-center text-slate-600 mb-12 max-w-2xl mx-auto">
               Discover specialized compression tools for specific platforms and use cases.

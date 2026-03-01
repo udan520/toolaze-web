@@ -6,7 +6,9 @@
     "fontGenerator": "Font Generator",
     "emojiCopyAndPaste": "Emoji Copy & Paste",
     "aiImage": "AI Image",
+    "aiVideo": "AI Video",
     "nanoBananaPro": "Nano Banana Pro",
+    "seedance2": "Seedance 2.0",
     "aboutUs": "About Us"
   },
   "home": {
@@ -227,6 +229,18 @@
     },
     "emojiCopyAndPaste": {
       "moreTools": "More Emoji Copy & Paste"
+    },
+    "imageCompressor": {
+      "moreTools": "More Image Compression Tools"
+    },
+    "imageConverter": {
+      "moreTools": "More Image Converter Tools"
+    },
+    "seedance2": {
+      "moreTools": "More Seedance 2.0 Tools"
+    },
+    "nanoBananaPro": {
+      "moreTools": "Explore More Free AI Tools"
     },
     "viewAllTools": {
       "related": "View All Related Tools",

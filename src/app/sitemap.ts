@@ -7,7 +7,7 @@ export const dynamic = 'force-static'
 const baseUrl = 'https://toolaze.com'
 const SUPPORTED_LOCALES = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
 const STATIC_PAGES = ['about', 'privacy', 'terms']
-const TOOL_PAGES = ['image-compressor', 'image-converter', 'font-generator', 'emoji-copy-and-paste']
+const TOOL_PAGES = ['image-compressor', 'image-converter', 'font-generator', 'emoji-copy-and-paste', 'seedance-2']
 
 interface SitemapEntry {
   url: string
@@ -45,10 +45,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   })
 
   // 3. 功能页面（所有语言版本）
+  // seedance-2 英语无 /en 前缀
   TOOL_PAGES.forEach((tool) => {
     SUPPORTED_LOCALES.forEach((locale) => {
       // font-generator 支持 en、de、ja、es 和 fr
       if (tool === 'font-generator' && locale !== 'en' && locale !== 'de' && locale !== 'ja' && locale !== 'es' && locale !== 'fr') {
+        return
+      }
+      // seedance-2 仅英文，其他 locale 不加入 sitemap（会重定向到 /seedance-2）
+      if (tool === 'seedance-2' && locale !== 'en') {
         return
       }
       const path = locale === 'en' ? `/${tool}` : `/${locale}/${tool}`
@@ -68,6 +73,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       if (tool === 'font-generator' && locale !== 'en' && locale !== 'de' && locale !== 'ja' && locale !== 'es' && locale !== 'fr') {
         return
       }
+      // seedance-2 仅英文，其他 locale 不加入 sitemap
+      if (tool === 'seedance-2' && locale !== 'en') {
+        return
+      }
       const path = locale === 'en' ? `/${tool}/all-tools` : `/${locale}/${tool}/all-tools`
       entries.push({
         url: `${baseUrl}${path}`,
@@ -85,6 +94,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       
       if (tools && tools.length > 0) {
         tools.forEach(({ tool, slug }) => {
+          // seedance-2 仅英文，且英语无 /en 前缀
+          if (tool === 'seedance-2' && locale !== 'en') return
           const path = locale === 'en' 
             ? `/${tool}/${slug}`
             : `/${locale}/${tool}/${slug}`

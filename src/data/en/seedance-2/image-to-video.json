@@ -1,0 +1,187 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Free Image to Video AI Generator with Seedance 2.0 (Online, No Sign Up) - Toolaze",
+    "description": "How to turn images into video? 1. Upload up to 9 images 2. Add optional text prompt 3. Generate 1080p video. Free image-to-video AI online. Animate photos and artwork. No registration. Hollywood-quality output."
+  },
+  "sectionsOrder": ["howToUse", "modelIntro", "features", "intro", "performanceMetrics", "scenes", "rating", "faq"],
+  "modelIntro": {
+    "title": "Why Image to Video with Seedance 2.0",
+    "modelName": "Seedance 2.0",
+    "modelType": "AI Video Model",
+    "description": [
+      "Image-to-video animates your photos and artwork. Upload up to 9 reference images; Seedance 2.0 adds motion, lighting, and camera movement while keeping your visual style.",
+      "Pair images with text prompts to direct the animation—describe motion, angle, or mood. One pipeline for product shots, concept art, and real estate visuals.",
+      "Free online. No sign-up—upload and generate."
+    ],
+    "featureCards": [
+      {
+        "title": "Up to 9 Reference Images",
+        "content": "Use multiple images to define style, characters, or composition. The model preserves your look while adding professional motion."
+      },
+      {
+        "title": "Text Guidance for Motion Control",
+        "content": "Add prompts to steer the animation. Describe camera moves, action, or mood. Images set the look; text sets the motion."
+      },
+      {
+        "title": "1080p Output with Audio",
+        "content": "Get 15-second 1080p clips with dual-channel audio. Style-consistent animation in one generation."
+      }
+    ]
+  },
+  "hero": {
+    "h1": "Free <span class=\"text-gradient\">Image to Video</span> AI Generator",
+    "desc": "Transform images into 1080p videos with Seedance 2.0 for free. Upload up to 9 reference images and let AI animate them. Hollywood-quality output online. No sign-up."
+  },
+  "intro": {
+    "title": "Why Use Image to Video with Seedance 2.0?",
+    "content": [
+      {
+        "title": "Bring Static Images to Life with AI Animation",
+        "text": "Image-to-video AI turns your photos and artwork into dynamic videos. Seedance 2.0 accepts up to 9 reference images and generates 15-second videos that preserve your visual style while adding motion, lighting, and camera movement. Ideal for product showcases, character animations, and creative storytelling. Unlike text-only generators, image-to-video gives you precise control over the starting visual—your reference defines the look, and the AI adds the motion. Perfect when you have a specific image, design, or product shot that needs to come alive."
+      },
+      {
+        "title": "Director-Level Control Over Motion and Style",
+        "text": "Seedance 2.0 offers fine control over performance, lighting, shadow, and camera movement. Combine your reference images with text prompts to guide the animation—describe the motion you want, the camera angle, or the mood. The model excels at complex motions and interactions while following physical laws, even handling challenging scenarios like pair figure skating or dynamic product rotations. Whether you're animating a product for e-commerce or bringing concept art to life, the image-to-video generator respects your visual input while adding professional motion."
+      },
+      {
+        "title": "Free Online Image to Video for All Creators",
+        "text": "Toolaze provides free image-to-video generation with Seedance 2.0. Upload up to 9 images and generate 1080p videos online—no sign-up required. Works for e-commerce sellers, digital artists, real estate professionals, and content creators. No software installation, no credit card, no usage caps to get started. Transform your static visuals into engaging video content in seconds. Download and use your AI-animated videos anywhere."
+      }
+    ]
+  },
+  "features": {
+    "title": "Image to Video Features",
+    "items": [
+      {
+        "icon": "🖼️",
+        "iconType": "image",
+        "title": "Up to 9 Images",
+        "desc": "Use multiple reference images to define style, characters, or scene composition. More images mean more control."
+      },
+      {
+        "icon": "🎥",
+        "iconType": "video",
+        "title": "1080p + Audio",
+        "desc": "Generate video and dual-channel audio together. Hollywood-quality multi-shot output with synchronized sound."
+      },
+      {
+        "icon": "✍️",
+        "iconType": "text",
+        "title": "Text Guidance",
+        "desc": "Add natural language prompts to describe desired motion, camera movement, and style alongside your images."
+      },
+      {
+        "icon": "🎬",
+        "iconType": "quality",
+        "title": "Style Preservation",
+        "desc": "The AI respects your reference images—colors, composition, and visual style guide the output while adding motion."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Free Online",
+        "desc": "No sign-up required. Start transforming images into videos at zero cost."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Fast Generation",
+        "desc": "Get your animated video in seconds. No lengthy processing queues—ideal for rapid iteration."
+      }
+    ]
+  },
+  "performanceMetrics": {
+    "title": "Image to Video Specifications",
+    "metrics": [
+      {"label": "Reference Images", "value": "Up to 9 images per generation"},
+      {"label": "Optional Inputs", "value": "Text prompt, up to 3 video clips, 3 audio clips"},
+      {"label": "Output Resolution", "value": "1080p (multi-shot, cinema-grade)"},
+      {"label": "Video Duration", "value": "15 seconds with dual-channel audio"},
+      {"label": "Control Level", "value": "Director-level (motion, lighting, camera)"},
+      {"label": "Best For", "value": "E-commerce, digital art, real estate, product videos"}
+    ]
+  },
+  "howToUse": {
+    "title": "How to Convert Image to Video?",
+    "steps": [
+      {
+        "title": "Upload Your Images",
+        "desc": "Add up to 9 reference images. These define the visual style. Add an optional text prompt to describe the motion you want."
+      },
+      {
+        "title": "Configure Settings",
+        "desc": "Set style, motion direction, and camera preferences in the Seedance 2.0 interface. Describe how you want the image to animate."
+      },
+      {
+        "title": "Generate & Download",
+        "desc": "Get your 1080p video with audio in seconds. No registration required. Use for social media, product pages, or further editing."
+      }
+    ]
+  },
+  "comparison": {
+    "title": "Why Choose Toolaze Image to Video?",
+    "toolaze": "Toolaze 💎",
+    "others": "Other Tools",
+    "vs": "VS",
+    "smartChoice": "Smart Choice",
+    "otherTools": "Other Tools",
+    "toolazeFeatures": "Up to 9 images, 1080p + audio, Seedance 2.0, Free online, No sign-up, Text guidance",
+    "othersFeatures": "1-2 images only, Video only, Lower quality, Paid tiers, Registration, No text support"
+  },
+  "scenesTitle": "Use Cases",
+  "scenes": [
+    {
+      "title": "E-commerce Sellers",
+      "icon": "🛒",
+      "desc": "Turn product photos into dynamic videos for Amazon, Shopify, and social media. Show items in motion for higher conversion. Create 360-degree product views from a single image. Generate multiple video variations for A/B testing. No need for expensive product photography or video shoots."
+    },
+    {
+      "title": "Digital Artists & Illustrators",
+      "icon": "🎨",
+      "desc": "Animate illustrations and concept art. Bring characters and scenes to life with motion. Create animated portfolio pieces. Visualize storyboards with actual movement. The image-to-video AI preserves your art style while adding professional animation. Perfect for indie game devs and comic artists."
+    },
+    {
+      "title": "Real Estate & Property",
+      "icon": "🏠",
+      "desc": "Create virtual tours from still photos. Add subtle motion to property listings—gentle camera pans, ambient movement. Make listings stand out on Zillow, Realtor.com, and social media. Generate walkthrough-style videos from a few key shots. No 3D modeling or expensive equipment required."
+    }
+  ],
+  "rating": {
+    "title": "Trusted by Thousands of Creators",
+    "rating": "4.9/5 FROM 10K+ CREATORS",
+    "text": "Join thousands who trust Toolaze for free image-to-video with Seedance 2.0. No registration. Transform images into 1080p videos online. Up to 9 reference images. Hollywood-quality animation in seconds."
+  },
+  "moreTools": "More Seedance 2.0 Tools",
+  "faqTitle": "Frequently Asked Questions",
+  "faq": [
+    {
+      "q": "Is image to video free?",
+      "a": "Yes! Toolaze offers free image-to-video generation with Seedance 2.0. Upload up to 9 images and generate 1080p videos online. No sign-up required. There are no hidden fees or credit card requirements. Start transforming your images into videos immediately. The free tier is sufficient for most creators getting started."
+    },
+    {
+      "q": "How many images can I use for image to video?",
+      "a": "Seedance 2.0 supports up to 9 reference images per generation. You can also add up to 3 video clips and 3 audio clips for multimodal control. Use multiple images to define different aspects—one for the character, one for the background, one for the style. The more references you provide, the more precise the output."
+    },
+    {
+      "q": "What image formats are supported?",
+      "a": "Seedance 2.0 accepts common image formats including JPG, PNG, and WebP. Upload your reference images directly to the online interface. Ensure images are clear and well-lit for best results. Very low-resolution or heavily compressed images may affect output quality."
+    },
+    {
+      "q": "Can I add text to guide the video?",
+      "a": "Yes. Combine your reference images with natural language prompts. Describe the motion, style, and scene to guide Seedance 2.0's generation. For example: 'The product rotates slowly, cinematic lighting, soft shadows.' The text helps the AI understand how you want your static image to animate."
+    },
+    {
+      "q": "Does image to video preserve my art style?",
+      "a": "Yes. Seedance 2.0 is designed to respect reference images. Your visual style, colors, and composition guide the output while the model adds motion and cinematic elements. For consistent character or brand visuals, use multiple reference images. The image-to-video AI excels at maintaining visual coherence."
+    },
+    {
+      "q": "What's the difference between image to video and text to video?",
+      "a": "Image-to-video uses your images as the primary visual reference—the AI animates what you show. Text-to-video generates from description alone. Seedance 2.0 supports both: use image-to-video when you have a specific visual to animate, or combine both (image + text) for maximum control. Many creators use image-to-video for product shots and text-to-video for conceptual scenes."
+    },
+    {
+      "q": "Can I animate a single product photo for e-commerce?",
+      "a": "Yes. Upload your product photo and add a text prompt like 'product rotates 360 degrees, studio lighting.' Seedance 2.0 will animate your static product shot into a dynamic video. Perfect for Amazon listings, Shopify product pages, and social media ads. One photo can become multiple video variations with different prompts."
+    }
+  ]
+}
