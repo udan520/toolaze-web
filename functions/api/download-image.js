@@ -18,10 +18,12 @@ function getAllowedBaseUrl(env) {
 }
 
 function isAllowedUrl(url, allowedBase) {
-  if (!allowedBase) {
-    return /^https:\/\/[^/]+\.r2\.dev\//.test(url);
-  }
-  return url === allowedBase || url.startsWith(allowedBase + '/');
+  if (!url || !url.startsWith('http')) return false;
+  if (allowedBase && (url === allowedBase || url.startsWith(allowedBase + '/'))) return true;
+  if (/^https:\/\/[^/]+\.r2\.dev\//.test(url)) return true;
+  // AI 图生图 / 去水印等接口返回的 CDN 域名（如 ai.t8star.cn）
+  if (/^https:\/\/[^/]*t8star\.cn\//.test(url)) return true;
+  return false;
 }
 
 export async function onRequest(context) {

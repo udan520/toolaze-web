@@ -164,12 +164,65 @@ export default function WatermarkRemover() {
     if (fileInputRef.current) fileInputRef.current.value = ''
   }
 
-  const handleDownload = () => {
-    if (!resultUrl) return
-    const a = document.createElement('a')
-    a.href = resultUrl
-    a.download = `watermark-removed-${Date.now()}.jpg`
-    a.click()
+  const [downloading, setDownloading] = useState(false)
+
+  const triggerBlobDownload = (blob: Blob, filename: string) => {
+    const blobUrl = URL.createObjectURL(blob)
+    const link = document.createElement('a')
+    link.href = blobUrl
+    link.download = filename
+    link.style.display = 'none'
+    document.body.appendChild(link)
+    link.click()
+    setTimeout(() => {
+      document.body.removeChild(link)
+      URL.revokeObjectURL(blobUrl)
+    }, 100)
+  }
+
+  const handleDownload = async () => {
+    if (!resultUrl || downloading) return
+    setDownloading(true)
+    const filename = `watermark-removed-${Date.now()}.jpg`
+    try {
+      // data URL 直接转为 blob 下载
+      if (resultUrl.startsWith('data:')) {
+        const res = await fetch(resultUrl)
+        const blob = await res.blob()
+        triggerBlobDownload(blob, filename)
+        showToast('Download started', 'success')
+        return
+      }
+      // 方法1: 代理下载（R2 等白名单 URL）
+      const proxyUrl = `/api/download-image?url=${encodeURIComponent(resultUrl)}&filename=${encodeURIComponent(filename)}`
+      const proxyRes = await fetch(proxyUrl).catch(() => null)
+      if (proxyRes?.ok) {
+        const blob = await proxyRes.blob()
+        triggerBlobDownload(blob, filename)
+        showToast('Download started', 'success')
+        return
+      }
+      // 方法2: 直接 fetch（CORS 允许时）
+      const directRes = await fetch(resultUrl, { mode: 'cors', credentials: 'omit' }).catch(() => null)
+      if (directRes?.ok) {
+        const blob = await directRes.blob()
+        triggerBlobDownload(blob, filename)
+        showToast('Download started', 'success')
+        return
+      }
+      // 方法3: 降级为 a 标签（同源时生效；跨域时浏览器可能仍打开预览）
+      const a = document.createElement('a')
+      a.href = resultUrl
+      a.download = filename
+      document.body.appendChild(a)
+      a.click()
+      document.body.removeChild(a)
+      showToast('Download started', 'success')
+    } catch {
+      showToast('Download failed', 'error')
+    } finally {
+      setDownloading(false)
+    }
   }
 
   const handleComparePointerDown = () => setComparePressed(true)
@@ -299,20 +352,30 @@ export default function WatermarkRemover() {
                 disabled={isProcessing}
                 className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold text-sm hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2"
               >
-                Regenerate
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                 </svg>
+                Regenerate
               </button>
               <button
                 onClick={handleDownload}
-                disabled={!resultUrl || isProcessing}
+                disabled={!resultUrl || isProcessing || downloading}
                 className="w-full py-3 px-4 rounded-xl bg-white border border-slate-200 text-slate-700 font-bold text-sm hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2"
+                title={downloading ? 'Downloading...' : 'Download'}
               >
-                Download
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0l4-4m-4 4V4" />
-                </svg>
+                {downloading ? (
+                  <svg className="w-4 h-4 animate-spin" viewBox="0 0 24 24" fill="none">
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" strokeDasharray="32" strokeDashoffset="16" opacity="0.3" />
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" strokeDasharray="32" strokeDashoffset="16" strokeLinecap="round" />
+                  </svg>
+                ) : (
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="7 10 12 15 17 10" />
+                    <line x1="12" y1="15" x2="12" y2="3" />
+                  </svg>
+                )}
+                {downloading ? 'Downloading...' : 'Download'}
               </button>
             </div>
           </div>
