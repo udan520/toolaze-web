@@ -14,6 +14,10 @@ export const dynamicParams = false
 
 export async function generateStaticParams() {
   const slugs = await getAllSlugs('watermark-remover', 'en')
+  // output: 'export' 要求至少返回一个参数，空数组会导致构建失败
+  if (slugs.length === 0) {
+    return [{ slug: 'how-to-remove-watermark' }]
+  }
   return slugs.map((slug) => ({ slug }))
 }
 

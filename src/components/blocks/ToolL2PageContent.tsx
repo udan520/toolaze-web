@@ -283,13 +283,13 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
           }
         })
       )
-      const howToData = await getSeoContent('watermark-remover', 'how-to-remove-watermark-from-photo', locale)
+      const howToData = await getSeoContent('watermark-remover', 'how-to-remove-watermark', locale)
       const howToCard = howToData
         ? {
-            slug: 'how-to-remove-watermark-from-photo',
+            slug: 'how-to-remove-watermark',
             title: howToData.hero?.h1 ? extractSimpleTitle(howToData.hero.h1) : 'How to Remove Watermark from Photo',
             description: howToData.hero?.desc || howToData.metadata?.description || '',
-            href: '/watermark-remover/how-to-remove-watermark-from-photo',
+            href: '/watermark-remover/how-to-remove-watermark',
           }
         : null
       filteredRecommendedTools = [...workflowData, howToCard].filter((t): t is NonNullable<typeof t> => t != null && !!t.title && !!t.href).slice(0, 3)

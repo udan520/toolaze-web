@@ -52,7 +52,7 @@ const SEEDANCE_2_SLUGS = [
 
 // Watermark Remover L3 页面 slug 列表（从文件系统动态读取，此为兜底）
 const WATERMARK_REMOVER_SLUGS_FALLBACK = [
-  'how-to-remove-watermark-from-photo',
+  'how-to-remove-watermark',
 ]
 
 /** 规范化 watermark-remover 内容格式，兼容旧版/不同结构 */
@@ -283,7 +283,7 @@ async function loadToolJsonFile(locale: string, tool: string, slug: string) {
             }
           } else if (tool === 'watermark-remover') {
             switch (slug) {
-              case 'how-to-remove-watermark-from-photo': data = await import('@/data/en/watermark-remover/how-to-remove-watermark-from-photo.json'); break
+              case 'how-to-remove-watermark': data = await import('@/data/en/watermark-remover/how-to-remove-watermark.json'); break
               default:
                 try {
                   const fp = path.join(process.cwd(), 'src', 'data', 'en', 'watermark-remover', `${slug}.json`)
@@ -724,7 +724,8 @@ function replacePlaceholders(obj: any, categoryName: string): any {
 
 /** 检查页面是否上架（metadata.published !== false，默认上架） */
 function isPublished(data: Record<string, unknown> | null): boolean {
-  return data?.metadata?.published !== false
+  const meta = data?.metadata as Record<string, unknown> | undefined
+  return meta?.published !== false
 }
 
 export async function getSeoContent(tool: string, slug: string, locale: string = 'en') {
