@@ -62,6 +62,8 @@ See 'docs/SEO_MASTER_LAYOUT.md' section 3 for the exact breadcrumb structure.
 
 **MODEL INTRO BLOCK**: For AI model intro pages (Seedance 2.0, Nano Banana Pro), MUST include `modelIntro` in `sectionsOrder` after `howToUse` on both L2 and L3 pages.
 
+**USE CASES / SCENES**: The Use Cases (scenes) section MUST contain exactly 3 items—no more, no less. See docs/SEO_CONTENT_GUIDELINES.md.
+
 **FAQ MODEL COMPARISON**: When FAQ compares models (e.g., "Seedance 2.0 vs Sora 2"), introduce both models' core differences concisely—not just our tool. Keep it brief. See docs/SEO_CONTENT_GUIDELINES.md FAQ section. See `docs/SEO_CONTENT_GUIDELINES.md` section 7 and `docs/MODEL_INTRO_BLOCK.md`. Content must be original—do not copy from reference images or competitors.
 
 **SECTION BACKGROUND ALTERNATION**: CRITICAL - Always alternate section backgrounds between `bg-white` and `bg-[#F8FAFF]` to create visual separation. Different content blocks (e.g., "Why Choose Toolaze?" vs "FAQ") MUST have different background colors so users can clearly distinguish between sections. Follow the pattern: alternate white and light indigo backgrounds throughout the page.
@@ -165,3 +167,5 @@ See 'docs/SEO_MASTER_LAYOUT.md' section 3 for the exact breadcrumb structure.
 - **Test sitemap**: After changes, verify sitemap includes all expected URLs by checking `https://toolaze.com/sitemap.xml` or running `node scripts/verify-sitemap.js`
 - **When to update**: Update sitemap when adding new tools, new languages, or changing language support for existing tools
 - **Before git commit**: Always review sitemap logic matches current tool and language support before committing
+
+**API 生图限频规则**: 所有调用 API 进行生图的功能（如 Nano Banana Pro、Watermark Remover、Flux Dev 等），每个用户每天只能使用一次。限频由前端记录（如 localStorage）实现，无需后端校验。

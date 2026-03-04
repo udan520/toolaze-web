@@ -3,6 +3,12 @@ const nextConfig = {
   // 强制启用静态导出（Cloudflare Pages 需要）
   // Cloudflare Pages 使用静态文件托管，必须启用静态导出
   output: 'export',
+  // 提高请求体限制，支持去水印上传大图（默认 1MB 会导致上传失败）
+  experimental: {
+    serverActions: {
+      bodySizeLimit: '32mb',
+    },
+  },
   images: {
     unoptimized: true, // 静态导出必须禁用 Next.js 的默认图片优化
     // 允许从 Cloudflare R2 加载远程图片

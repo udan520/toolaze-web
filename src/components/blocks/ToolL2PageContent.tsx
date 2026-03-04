@@ -11,6 +11,7 @@ import ImageCompressor from '@/components/ImageCompressor'
 import ImageConverter from '@/components/ImageConverter'
 import EmojiCategoryPage from '@/components/EmojiCategoryPage'
 import NanoBananaTool from '@/components/NanoBananaTool'
+import WatermarkRemover from '@/components/WatermarkRemover'
 import SeedanceHeroPlaceholder from '@/components/blocks/SeedanceHeroPlaceholder'
 import KlingHeroPlaceholder from '@/components/blocks/KlingHeroPlaceholder'
 import NanoBanana2HeroPlaceholder from '@/components/blocks/NanoBanana2HeroPlaceholder'
@@ -205,7 +206,13 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
 
     // 构建面包屑导航
     const pageTitle = content.hero?.h1 ? extractSimpleTitle(content.hero.h1) : 'Font Generator'
-    const breadcrumbItems = tool === 'nano-banana-pro'
+    const breadcrumbItems = tool === 'watermark-remover'
+      ? [
+          { label: breadcrumbT.home, href: '/' },
+          { label: 'AI Tools', href: '/watermark-remover' },
+          { label: 'Watermark Remover' },
+        ]
+      : tool === 'nano-banana-pro'
       ? [
           { label: breadcrumbT.home, href: '/' },
           { label: 'Model', href: '/model' },
@@ -262,6 +269,30 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
           }
         })
       ).then((arr) => arr.filter((t) => t.title && t.href))
+    } else if (tool === 'watermark-remover') {
+      // 竞品内链策略：去水印后常需压缩/转换；L3 教程页
+      const workflowTools = ['image-compressor', 'image-converter']
+      const workflowData = await Promise.all(
+        workflowTools.map(async (t) => {
+          const data = await getL2SeoContent(t, locale)
+          return {
+            slug: t,
+            title: data?.hero?.h1 ? extractSimpleTitle(data.hero.h1) : t,
+            description: data?.hero?.desc || data?.metadata?.description || '',
+            href: locale === 'en' ? `/${t}` : `/${locale}/${t}`,
+          }
+        })
+      )
+      const howToData = await getSeoContent('watermark-remover', 'how-to-remove-watermark-from-photo', locale)
+      const howToCard = howToData
+        ? {
+            slug: 'how-to-remove-watermark-from-photo',
+            title: howToData.hero?.h1 ? extractSimpleTitle(howToData.hero.h1) : 'How to Remove Watermark from Photo',
+            description: howToData.hero?.desc || howToData.metadata?.description || '',
+            href: '/watermark-remover/how-to-remove-watermark-from-photo',
+          }
+        : null
+      filteredRecommendedTools = [...workflowData, howToCard].filter((t): t is NonNullable<typeof t> => t != null && !!t.title && !!t.href).slice(0, 3)
     } else {
       const allSlugs = await getAllSlugs(tool, locale)
       const getToolHref = (toolSlug: string, slug: string): string =>
@@ -379,6 +410,24 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                 <EmojiCategoryPage />
               </div>
               <TrustBar />
+            </header>
+          ) : tool === 'watermark-remover' ? (
+            <header className="bg-[#F8FAFF] pb-12 px-6">
+              <div className="max-w-4xl mx-auto text-center pt-8 mb-12">
+                <h1 className="text-[40px] font-extrabold tracking-tight mb-6 leading-tight text-slate-900">
+                  {content.hero?.h1 ? (
+                    renderH1WithGradient(content.hero.h1)
+                  ) : (
+                    <>Free Watermark Remover</>
+                  )}
+                </h1>
+                {content.hero?.desc && (
+                  <p className="desc-text text-lg md:text-xl max-w-4xl mx-auto">
+                    {content.hero.desc}
+                  </p>
+                )}
+              </div>
+              <WatermarkRemover />
             </header>
           ) : tool === 'nano-banana-pro' ? (
             <header className="bg-[#F8FAFF] pb-6 md:pb-12 w-full px-2 md:px-6">

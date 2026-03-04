@@ -62,7 +62,14 @@ export async function onRequest(context) {
       headers: { 'Content-Type': 'application/json', ...CORS },
     });
   } catch (e) {
-    return new Response(JSON.stringify({ error: String(e.message) }), {
+    const msg = e instanceof Error ? e.message : String(e);
+    const hint = msg.includes('MY_BUCKET') || msg.includes('undefined')
+      ? 'Bind R2 bucket (MY_BUCKET) in Cloudflare Pages → Functions → R2 bucket bindings'
+      : undefined;
+    return new Response(JSON.stringify({
+      error: msg,
+      ...(hint && { hint }),
+    }), {
       status: 500,
       headers: { 'Content-Type': 'application/json', ...CORS },
     });

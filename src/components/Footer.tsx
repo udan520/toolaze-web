@@ -17,8 +17,10 @@ const defaultTranslations = {
   copyright: '© {year} Toolaze Lab. All rights reserved.',
   tagline: 'Free Online Tools • No Registration Required • 100% Private',
   quickTools: 'Quick Tools',
+  aiTools: 'AI Tools',
   aiVideo: 'AI Video',
   aiImage: 'AI Image',
+  watermarkRemover: 'Watermark Remover',
   imageCompression: 'Image Compression',
   imageConverter: 'Image Converter',
   fontGenerator: 'Font Generator',
@@ -55,6 +57,8 @@ async function loadTranslations(locale: string) {
         kling3: navData.kling3 || footerData.kling3 || defaultTranslations.kling3,
         nanoBananaPro: navData.nanoBananaPro || footerData.nanoBananaPro || defaultTranslations.nanoBananaPro,
         nanoBanana2: navData.nanoBanana2 || footerData.nanoBanana2 || defaultTranslations.nanoBanana2,
+        aiTools: navData.aiTools || footerData.aiTools || defaultTranslations.aiTools,
+        watermarkRemover: navData.watermarkRemover || footerData.watermarkRemover || defaultTranslations.watermarkRemover,
       }
     }
     
@@ -76,6 +80,8 @@ async function loadTranslations(locale: string) {
         kling3: navData.kling3 || footerData.kling3 || defaultTranslations.kling3,
         nanoBananaPro: navData.nanoBananaPro || footerData.nanoBananaPro || defaultTranslations.nanoBananaPro,
         nanoBanana2: navData.nanoBanana2 || footerData.nanoBanana2 || defaultTranslations.nanoBanana2,
+        aiTools: navData.aiTools || footerData.aiTools || defaultTranslations.aiTools,
+        watermarkRemover: navData.watermarkRemover || footerData.watermarkRemover || defaultTranslations.watermarkRemover,
       }
     } catch {
       return defaultTranslations
@@ -463,9 +469,11 @@ export default function Footer() {
   const currentLocaleInfo = locales.find(loc => loc.code === currentLocale) || locales[0]
   const otherLocales = supportedLocales.filter(loc => loc.code !== currentLocale)
 
-  // 生成带语言前缀的链接
+  // 仅存在于根路径、无 [locale] 版本的工具，始终不添加 locale 前缀
+  const LOCALE_LESS_PATHS = ['/watermark-remover', '/seedance-2', '/kling-3', '/model/nano-banana-pro', '/model/nano-banana-2']
   const getLocalizedHref = (href: string): string => {
     if (href.startsWith('http')) return href
+    if (LOCALE_LESS_PATHS.some(p => href === p || href.startsWith(p + '/'))) return href
     if (currentLocale === 'en') return href
     if (href.startsWith(`/${currentLocale}`)) return href
     return `/${currentLocale}${href}`
@@ -476,6 +484,26 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto">
         {/* 二级和三级菜单 */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mb-12">
+          {/* AI Tools */}
+          <div>
+            <Link 
+              href={getLocalizedHref('/watermark-remover')} 
+              className="text-white font-bold text-sm mb-4 uppercase tracking-wider block hover:text-indigo-400 transition-colors"
+            >
+              {translations.aiTools || 'AI Tools'}
+            </Link>
+            <ul className="space-y-2 mt-4">
+              <li>
+                <Link 
+                  href={getLocalizedHref('/watermark-remover')} 
+                  className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
+                >
+                  {translations.watermarkRemover || 'Watermark Remover'}
+                </Link>
+              </li>
+            </ul>
+          </div>
+
           {/* AI Video */}
           <div>
             <Link 

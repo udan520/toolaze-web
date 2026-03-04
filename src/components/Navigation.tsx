@@ -11,8 +11,10 @@ const locales = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
 // 翻译数据(默认英语)
 const defaultNavTranslations = {
   quickTools: 'Quick Tools',
+  aiTools: 'AI Tools',
   imageCompression: 'Image Compression',
   imageConverter: 'Image Converter',
+  watermarkRemover: 'Watermark Remover',
   fontGenerator: 'Font Generator',
   emojiCopyAndPaste: 'Emoji Copy & Paste',
   aiImage: 'AI Image',
@@ -297,24 +299,13 @@ export default function Navigation() {
     loadThirdLevelItems()
   }, [currentLocale, pathname])
   
-  // 生成带语言前缀的链接（英语不使用 /en 前缀）
+  // 仅存在于根路径、无 [locale] 版本的工具，始终不添加 locale 前缀
+  const LOCALE_LESS_PATHS = ['/watermark-remover', '/seedance-2', '/kling-3', '/model/nano-banana-pro', '/model/nano-banana-2']
   const getLocalizedHref = (href: string): string => {
-    // 如果 href 是绝对路径，直接返回
-    if (href.startsWith('http')) {
-      return href
-    }
-    
-    // 英语版本：直接返回，不添加 /en
-    if (currentLocale === 'en') {
-      return href
-    }
-    
-    // 如果 href 已经包含当前语言前缀，直接返回
-    if (href.startsWith(`/${currentLocale}`)) {
-      return href
-    }
-    
-    // 其他语言：添加语言前缀
+    if (href.startsWith('http')) return href
+    if (LOCALE_LESS_PATHS.some(p => href === p || href.startsWith(p + '/'))) return href
+    if (currentLocale === 'en') return href
+    if (href.startsWith(`/${currentLocale}`)) return href
     return `/${currentLocale}${href}`
   }
   
@@ -524,6 +515,30 @@ export default function Navigation() {
               </div>
             </div>
           </div>
+          {/* 一级菜单：AI Tools */}
+          <div className="relative group">
+            <button className="hover:text-indigo-600 transition-colors flex items-center gap-1">
+              {navTranslations.aiTools || 'AI Tools'}
+              <svg className="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div className="absolute top-full left-0 mt-2 w-auto min-w-[200px] bg-white rounded-xl shadow-lg border border-indigo-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+              <div className="py-2">
+                <Link
+                  href={getLocalizedHref('/watermark-remover')}
+                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2"
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
+                    <rect x="3" y="3" width="18" height="18" rx="2" stroke="#6366F1" strokeWidth="2" fill="none"/>
+                    <path d="M8 12h8M8 16h5" stroke="#6366F1" strokeWidth="2" strokeLinecap="round"/>
+                    <circle cx="17" cy="8" r="1.5" fill="#6366F1"/>
+                  </svg>
+                  <span>{navTranslations.watermarkRemover || 'Watermark Remover'}</span>
+                </Link>
+              </div>
+            </div>
+          </div>
           {/* 一级菜单：AI Image */}
           <div className="relative group">
             <button className="hover:text-indigo-600 transition-colors flex items-center gap-1">
@@ -694,6 +709,27 @@ export default function Navigation() {
                       </div>
                     )
                   })}
+                </div>
+              </div>
+              {/* AI Tools 部分 */}
+              <div className="border-b border-indigo-50 pb-4">
+                <div className="text-sm font-bold text-slate-700 mb-3">{navTranslations.aiTools || 'AI Tools'}</div>
+                <div className="space-y-2">
+                  <Link
+                    href={getLocalizedHref('/watermark-remover')}
+                    onClick={() => {
+                      setMobileMenuOpen(false)
+                      setExpandedSubmenus(new Set())
+                    }}
+                    className="flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
+                  >
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
+                      <rect x="3" y="3" width="18" height="18" rx="2" stroke="#6366F1" strokeWidth="2" fill="none"/>
+                      <path d="M8 12h8M8 16h5" stroke="#6366F1" strokeWidth="2" strokeLinecap="round"/>
+                      <circle cx="17" cy="8" r="1.5" fill="#6366F1"/>
+                    </svg>
+                    <span>{navTranslations.watermarkRemover || 'Watermark Remover'}</span>
+                  </Link>
                 </div>
               </div>
               {/* AI Image 部分 */}

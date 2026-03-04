@@ -27,12 +27,18 @@ export const dynamic = 'force-static'
 export const dynamicParams = false
 
 // 生成所有静态参数（静态导出必需：output: export 下必须预生成所有 [locale]/[tool] 组合）
+// 包含 /api/* 占位，避免 next dev 下 /api/flux-dev 等被误匹配时报 generateStaticParams 错误
+const API_TOOLS = ['flux-dev', 'flux-kontext', 'upload', 'image-to-image', 'generate-alt', 'download-image', 'save-image-to-r2', 'qwen-image-edit'] as const
+
 export async function generateStaticParams(): Promise<Array<{ locale: string; tool: string }>> {
   const params: Array<{ locale: string; tool: string }> = []
   for (const locale of SUPPORTED_LOCALES) {
     for (const tool of ALL_TOOLS) {
       params.push({ locale, tool })
     }
+  }
+  for (const tool of API_TOOLS) {
+    params.push({ locale: 'api', tool })
   }
   return params.length > 0 ? params : [{ locale: 'en', tool: 'image-compressor' }]
 }
@@ -45,6 +51,24 @@ export default async function ToolPage({ params }: PageProps) {
   if (!tool) {
     redirect('/')
     return null
+  }
+
+  // /api/* 占位：next dev 下会渲染此页；部署后由 Cloudflare Functions 接管
+  if (locale === 'api') {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-slate-50 p-8">
+        <div className="max-w-md text-center">
+          <h1 className="text-xl font-bold text-slate-800 mb-2">API</h1>
+          <p className="text-slate-600 mb-4">
+            API 由 Cloudflare Pages Functions 提供，<code className="text-sm bg-slate-200 px-1 rounded">next dev</code> 下不可用。
+          </p>
+          <p className="text-sm text-slate-500">
+            本地测试：<code className="bg-slate-200 px-1 rounded">npm run build</code> 后运行{' '}
+            <code className="bg-slate-200 px-1 rounded">npx wrangler pages dev out</code>
+          </p>
+        </div>
+      </div>
+    )
   }
 
   // 检查 locale 是否有效（防止 nano-banana-pro 等被误识别为 locale）

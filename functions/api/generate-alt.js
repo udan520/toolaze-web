@@ -5,8 +5,23 @@
  * 部署路径: /api/generate-alt
  */
 
-export async function onRequestPost(context) {
+const CORS = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'POST, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type',
+}
+
+const jsonHeaders = { 'Content-Type': 'application/json', ...CORS }
+
+export async function onRequest(context) {
   const { request, env } = context
+
+  if (request.method === 'OPTIONS') {
+    return new Response(null, { status: 204, headers: CORS })
+  }
+  if (request.method !== 'POST') {
+    return new Response(JSON.stringify({ error: 'Method not allowed' }), { status: 405, headers: jsonHeaders })
+  }
 
   try {
     const { imageUrl } = await request.json()
@@ -14,7 +29,7 @@ export async function onRequestPost(context) {
     if (!imageUrl || typeof imageUrl !== 'string') {
       return new Response(
         JSON.stringify({ error: 'imageUrl is required' }),
-        { status: 400, headers: { 'Content-Type': 'application/json' } }
+        { status: 400, headers: jsonHeaders }
       )
     }
 
@@ -26,7 +41,7 @@ export async function onRequestPost(context) {
       const defaultAlt = getDefaultAltFromUrl(imageUrl)
       return new Response(
         JSON.stringify({ alt: defaultAlt }),
-        { headers: { 'Content-Type': 'application/json' } }
+        { headers: jsonHeaders }
       )
     }
 
@@ -73,7 +88,7 @@ export async function onRequestPost(context) {
 
       return new Response(
         JSON.stringify({ alt: finalAlt }),
-        { headers: { 'Content-Type': 'application/json' } }
+        { headers: jsonHeaders }
       )
     } catch (error) {
       console.error('OpenAI API error:', error)
@@ -81,14 +96,15 @@ export async function onRequestPost(context) {
       const defaultAlt = getDefaultAltFromUrl(imageUrl)
       return new Response(
         JSON.stringify({ alt: defaultAlt }),
-        { headers: { 'Content-Type': 'application/json' } }
+        { headers: jsonHeaders }
       )
     }
   } catch (error) {
     console.error('Generate alt error:', error)
+    // 始终返回 200 与默认 alt，避免客户端 500 报错
     return new Response(
-      JSON.stringify({ error: error instanceof Error ? error.message : 'Internal server error' }),
-      { status: 500, headers: { 'Content-Type': 'application/json' } }
+      JSON.stringify({ alt: 'Image' }),
+      { status: 200, headers: jsonHeaders }
     )
   }
 }

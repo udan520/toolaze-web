@@ -477,6 +477,32 @@ button {
   align-items: center;
 }
 
+/* WatermarkRemover 等工具内按钮：恢复组件自有 padding/圆角，避免被全局 button 强制成 pill */
+[data-tool-watermark] button {
+  padding: 0.75rem 1rem !important;
+  border-radius: 0.75rem !important;
+}
+[data-tool-watermark] button.w-9,
+[data-tool-watermark] button.w-10 {
+  padding: 0 !important;
+  min-width: 2.25rem;
+  min-height: 2.25rem;
+  border-radius: 9999px !important;
+}
+[data-tool-watermark] button.w-10 {
+  min-width: 2.5rem;
+  min-height: 2.5rem;
+}
+[data-tool-watermark] button.rounded-xl {
+  border-radius: 0.75rem !important;
+}
+
+/* Footer 语言切换按钮 */
+footer button {
+  padding: 0.25rem 0.75rem !important;
+  border-radius: 0.5rem !important;
+}
+
 .btn-blue {
   background: linear-gradient(135deg, #4f46e5 0%, #9333ea 100%) !important;
   color: white !important;

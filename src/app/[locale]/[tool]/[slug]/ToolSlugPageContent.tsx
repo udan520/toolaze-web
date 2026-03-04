@@ -7,6 +7,7 @@ import Footer from '@/components/Footer'
 import Breadcrumb from '@/components/Breadcrumb'
 import ImageCompressor from '@/components/ImageCompressor'
 import ImageConverter from '@/components/ImageConverter'
+import WatermarkRemover from '@/components/WatermarkRemover'
 import FontGeneratorHero from '@/components/blocks/FontGeneratorHero'
 import Intro from '@/components/blocks/Intro'
 import Features from '@/components/blocks/Features'
@@ -149,6 +150,7 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
     const isFontGenerator = tool === 'font-generator'
     const isEmoji = tool === 'emoji-copy-and-paste'
     const isSeedance = tool === 'seedance-2'
+    const isWatermarkRemover = tool === 'watermark-remover'
     const toolTranslations = isConverter ? t?.imageConverter : (isFontGenerator ? null : isEmoji ? null : t?.imageCompressor)
     const breadcrumbT = t?.breadcrumb || { 
       home: 'Home', 
@@ -254,6 +256,8 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
       toolLabel = breadcrumbT.emojiCopyAndPaste
     } else if (isSeedance) {
       toolLabel = 'Seedance 2.0'
+    } else if (isWatermarkRemover) {
+      toolLabel = breadcrumbT.watermarkRemover || 'Watermark Remover'
     } else {
       toolLabel = breadcrumbT.imageCompression
     }
@@ -402,7 +406,7 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
                   {content.hero?.h1 ? (
                     renderH1WithGradient(content.hero.h1)
                   ) : (
-                    <>{toolTranslations?.title || (isConverter ? 'Image Converter' : 'Image Compressor')}</>
+                    <>{toolTranslations?.title || (isConverter ? 'Image Converter' : isWatermarkRemover ? 'Watermark Remover' : 'Image Compressor')}</>
                   )}
                 </h1>
                 {content.hero?.desc && (
@@ -440,6 +444,8 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
               </div>
               {tool === 'image-converter' || tool === 'image-conversion' ? (
                 <ImageConverter initialFormat={slug} />
+              ) : isWatermarkRemover ? (
+                <WatermarkRemover />
               ) : (
                 <ImageCompressor initialTarget={slug} />
               )}
@@ -606,7 +612,7 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
                   })}
                 </div>
                 <ViewAllToolsButton
-                  href={locale === 'en' ? `/${tool}/all-tools` : `/${locale}/${tool}/all-tools`}
+                  href={isWatermarkRemover ? `/${tool}` : (locale === 'en' ? `/${tool}/all-tools` : `/${locale}/${tool}/all-tools`)}
                   text={t?.common?.viewAllTools?.related || 'View All Related Tools'}
                   variant="related"
                 />

@@ -1,3 +1,6 @@
+import path from 'path'
+import fs from 'fs'
+
 // 支持的所有语言列表
 const SUPPORTED_LOCALES = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
 
@@ -46,6 +49,43 @@ const SEEDANCE_2_SLUGS = [
   'image-to-video',
   'ai-video-generator',
 ]
+
+// Watermark Remover L3 页面 slug 列表（从文件系统动态读取，此为兜底）
+const WATERMARK_REMOVER_SLUGS_FALLBACK = [
+  'how-to-remove-watermark-from-photo',
+]
+
+/** 规范化 watermark-remover 内容格式，兼容旧版/不同结构 */
+function normalizeWatermarkRemoverContent(data: Record<string, unknown>): Record<string, unknown> {
+  const c = { ...data }
+  if (c.scenes && typeof c.scenes === 'object' && !Array.isArray(c.scenes) && 'list' in c.scenes) {
+    const s = c.scenes as { title?: string; list?: Array<{ icon?: string; title?: string; desc?: string }> }
+    if (s.title) c.scenesTitle = s.title
+    c.scenes = Array.isArray(s.list) ? s.list.map((x) => ({ icon: x.icon || '📷', title: x.title || '', desc: x.desc || '' })) : []
+  }
+  if (c.faq && typeof c.faq === 'object' && !Array.isArray(c.faq) && 'list' in c.faq) {
+    const f = c.faq as { title?: string; list?: Array<{ question?: string; answer?: string }> }
+    if (f.title) c.faqTitle = f.title
+    c.faq = Array.isArray(f.list) ? f.list.map((x) => ({ q: x.question || '', a: x.answer || '' })) : []
+  }
+  if (c.features && typeof c.features === 'object' && 'list' in c.features && !('items' in c.features)) {
+    const f = c.features as { title?: string; list?: string[] }
+    const items = Array.isArray(f.list) ? f.list.map((s) => ({ icon: '🤖', iconType: 'ai' as const, title: s, desc: s })) : []
+    c.features = { ...f, items }
+  }
+  return c
+}
+
+function getWatermarkRemoverSlugsFromFs(locale: string): string[] {
+  try {
+    const dir = path.join(process.cwd(), 'src', 'data', locale === 'en' ? 'en' : locale, 'watermark-remover')
+    if (!fs.existsSync(dir)) return WATERMARK_REMOVER_SLUGS_FALLBACK
+    const files = fs.readdirSync(dir)
+    return files.filter((f) => f.endsWith('.json')).map((f) => f.replace('.json', ''))
+  } catch {
+    return WATERMARK_REMOVER_SLUGS_FALLBACK
+  }
+}
 
 // Emoji Copy & Paste L3 页面 slug 列表（按搜索量/优先级）
 const EMOJI_COPY_PASTE_SLUGS = [
@@ -185,6 +225,7 @@ async function loadToolJsonFile(locale: string, tool: string, slug: string) {
     if (tool === 'seedance-2' && !SEEDANCE_2_SLUGS.includes(slug)) {
       return null
     }
+    // watermark-remover: 允许任意 slug，由 fs 动态加载
 
     // 使用显式的导入路径以确保 webpack 能够静态分析
     let data: any = null
@@ -239,6 +280,17 @@ async function loadToolJsonFile(locale: string, tool: string, slug: string) {
               case 'text-to-video': data = await import('@/data/en/seedance-2/text-to-video.json'); break
               case 'image-to-video': data = await import('@/data/en/seedance-2/image-to-video.json'); break
               case 'ai-video-generator': data = await import('@/data/en/seedance-2/ai-video-generator.json'); break
+            }
+          } else if (tool === 'watermark-remover') {
+            switch (slug) {
+              case 'how-to-remove-watermark-from-photo': data = await import('@/data/en/watermark-remover/how-to-remove-watermark-from-photo.json'); break
+              default:
+                try {
+                  const fp = path.join(process.cwd(), 'src', 'data', 'en', 'watermark-remover', `${slug}.json`)
+                  if (fs.existsSync(fp)) {
+                    data = { default: JSON.parse(fs.readFileSync(fp, 'utf-8')) }
+                  }
+                } catch {}
             }
           }
           break
@@ -501,6 +553,13 @@ async function loadToolJsonFile(locale: string, tool: string, slug: string) {
               case 'image-to-video': data = await import('@/data/en/seedance-2/image-to-video.json'); break
               case 'ai-video-generator': data = await import('@/data/en/seedance-2/ai-video-generator.json'); break
             }
+          } else if (tool === 'watermark-remover') {
+            try {
+              const fp = path.join(process.cwd(), 'src', 'data', 'en', 'watermark-remover', `${slug}.json`)
+              if (fs.existsSync(fp)) {
+                data = { default: JSON.parse(fs.readFileSync(fp, 'utf-8')) }
+              }
+            } catch {}
           }
           if (data) {
             return data.default || data
@@ -587,11 +646,15 @@ export async function getL2SeoContent(tool: string, locale: string = 'en') {
         data = await import('@/data/en/seedance-2.json')
       } else if (tool === 'kling-3') {
         data = await import('@/data/en/kling-3.json')
+      } else if (tool === 'watermark-remover') {
+        data = await import('@/data/en/watermark-remover.json')
       }
       
-      if (data) {
-        return data.default || data
+      const resolved = data?.default || data
+      if (resolved && isPublished(resolved)) {
+        return resolved
       }
+      return null
     } catch (importError) {
       // 如果指定语言文件不存在，回退到英语
       if (normalizedLocale !== 'en') {
@@ -612,9 +675,12 @@ export async function getL2SeoContent(tool: string, locale: string = 'en') {
             data = await import('@/data/en/seedance-2.json')
           } else if (tool === 'kling-3') {
             data = await import('@/data/en/kling-3.json')
+          } else if (tool === 'watermark-remover') {
+            data = await import('@/data/en/watermark-remover.json')
           }
-          if (data) {
-            return data.default || data
+          const fallbackResolved = data?.default || data
+          if (fallbackResolved && isPublished(fallbackResolved)) {
+            return fallbackResolved
           }
         } catch (fallbackError) {
           return null
@@ -656,77 +722,112 @@ function replacePlaceholders(obj: any, categoryName: string): any {
   return obj;
 }
 
+/** 检查页面是否上架（metadata.published !== false，默认上架） */
+function isPublished(data: Record<string, unknown> | null): boolean {
+  return data?.metadata?.published !== false
+}
+
 export async function getSeoContent(tool: string, slug: string, locale: string = 'en') {
   try {
     if (tool === 'image-compressor' || tool === 'image-compression') {
       const data = await loadJsonData(locale, 'image-compression.json');
-      if (data && data[slug]) {
-        return data[slug];
+      const pageData = data?.[slug as keyof typeof data];
+      if (pageData && isPublished(pageData as Record<string, unknown>)) {
+        return pageData;
       }
       return null;
     }
     if (tool === 'image-converter' || tool === 'image-conversion') {
-      // 加载独立的 JSON 文件
       const independentData = await loadToolJsonFile(locale, 'image-converter', slug);
-      if (independentData) {
+      if (independentData && isPublished(independentData)) {
         return independentData;
       }
       return null;
     }
     if (tool === 'font-generator') {
-      // 加载独立的 JSON 文件
       const independentData = await loadToolJsonFile(locale, 'font-generator', slug);
-      if (independentData) {
-        // 提取类别名称并替换占位符
+      if (independentData && isPublished(independentData)) {
         const categoryName = getCategoryNameFromSlug(slug);
-        const processedData = replacePlaceholders(independentData, categoryName);
-        return processedData;
+        return replacePlaceholders(independentData, categoryName);
       }
       return null;
     }
     if (tool === 'emoji-copy-and-paste') {
       const independentData = await loadToolJsonFile(locale, 'emoji-copy-and-paste', slug);
-      return independentData || null;
+      return independentData && isPublished(independentData) ? independentData : null;
     }
     if (tool === 'seedance-2') {
       const independentData = await loadToolJsonFile(locale, 'seedance-2', slug);
-      return independentData || null;
+      return independentData && isPublished(independentData) ? independentData : null;
+    }
+    if (tool === 'watermark-remover') {
+      const independentData = await loadToolJsonFile(locale, 'watermark-remover', slug);
+      const normalized = independentData ? normalizeWatermarkRemoverContent(independentData) : null;
+      return normalized && isPublished(normalized) ? normalized : null;
     }
     return null;
   } catch (error) {
-    // Silently return null on error to prevent server-side crashes
     return null;
   }
 }
 
-// 供生成静态页面使用
+// 供生成静态页面使用（仅返回上架页面的 slug，下架页面不会出现在测试服/线上）
 export async function getAllSlugs(tool: string, locale: string = 'en'): Promise<string[]> {
   try {
     if (tool === 'image-compressor' || tool === 'image-compression') {
       const data = await loadJsonData(locale, 'image-compression.json');
       if (data && typeof data === 'object') {
-        const keys = Object.keys(data);
-        return Array.isArray(keys) ? keys : [];
+        return Object.keys(data).filter((k) => isPublished((data as Record<string, unknown>)[k] as Record<string, unknown>));
       }
       return [];
     }
     if (tool === 'image-converter' || tool === 'image-conversion') {
-      // 对于 image-converter，使用预定义的 slug 列表
-      // 这样可以避免加载整个 JSON 文件，只返回可用的工具列表
-      return Array.isArray(IMAGE_CONVERTER_SLUGS) ? [...IMAGE_CONVERTER_SLUGS] : [];
+      const candidates = Array.isArray(IMAGE_CONVERTER_SLUGS) ? [...IMAGE_CONVERTER_SLUGS] : [];
+      const results: string[] = [];
+      for (const slug of candidates) {
+        const d = await loadToolJsonFile(locale, 'image-converter', slug);
+        if (d && isPublished(d)) results.push(slug);
+      }
+      return results;
     }
     if (tool === 'font-generator') {
-      // 对于 font-generator，使用预定义的 slug 列表
-      return Array.isArray(FONT_GENERATOR_SLUGS) ? [...FONT_GENERATOR_SLUGS] : [];
+      const candidates = Array.isArray(FONT_GENERATOR_SLUGS) ? [...FONT_GENERATOR_SLUGS] : [];
+      const results: string[] = [];
+      for (const slug of candidates) {
+        const d = await loadToolJsonFile(locale, 'font-generator', slug);
+        if (d && isPublished(d)) results.push(slug);
+      }
+      return results;
     }
     if (tool === 'emoji-copy-and-paste') {
-      return Array.isArray(EMOJI_COPY_PASTE_SLUGS) ? [...EMOJI_COPY_PASTE_SLUGS] : [];
+      const candidates = Array.isArray(EMOJI_COPY_PASTE_SLUGS) ? [...EMOJI_COPY_PASTE_SLUGS] : [];
+      const results: string[] = [];
+      for (const slug of candidates) {
+        const d = await loadToolJsonFile(locale, 'emoji-copy-and-paste', slug);
+        if (d && isPublished(d)) results.push(slug);
+      }
+      return results;
     }
     if (tool === 'seedance-2') {
-      return Array.isArray(SEEDANCE_2_SLUGS) ? [...SEEDANCE_2_SLUGS] : [];
+      const candidates = Array.isArray(SEEDANCE_2_SLUGS) ? [...SEEDANCE_2_SLUGS] : [];
+      const results: string[] = [];
+      for (const slug of candidates) {
+        const d = await loadToolJsonFile(locale, 'seedance-2', slug);
+        if (d && isPublished(d)) results.push(slug);
+      }
+      return results;
+    }
+    if (tool === 'watermark-remover') {
+      const candidates = getWatermarkRemoverSlugsFromFs(locale);
+      const results: string[] = [];
+      for (const slug of candidates) {
+        const d = await loadToolJsonFile(locale, 'watermark-remover', slug);
+        const normalized = d ? normalizeWatermarkRemoverContent(d) : null;
+        if (normalized && isPublished(normalized)) results.push(slug);
+      }
+      return results;
     }
     if (tool === 'nano-banana-pro' || tool === 'nano-banana-2') {
-      // Image models currently only have L2 page, no L3 pages
       return [];
     }
     return [];
@@ -770,6 +871,14 @@ export async function getAllTools(locale: string = 'en'): Promise<Array<{ tool: 
   const seedanceSlugs = await getAllSlugs('seedance-2', locale)
   for (const slug of seedanceSlugs) {
     tools.push({ tool: 'seedance-2', slug })
+  }
+  
+  // 添加 Watermark Remover L3 页面（目前仅英文，无 locale 前缀）
+  if (locale === 'en') {
+    const watermarkRemoverSlugs = await getAllSlugs('watermark-remover', locale)
+    for (const slug of watermarkRemoverSlugs) {
+      tools.push({ tool: 'watermark-remover', slug })
+    }
   }
   
   return tools

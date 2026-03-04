@@ -124,6 +124,10 @@ export async function generateStaticParams() {
         }
       }
     }
+
+    // /api/* 占位，避免 next dev 下 /api/flux-dev/status 等被误匹配
+    params.push({ locale: 'api', tool: 'flux-dev', slug: 'status' })
+    params.push({ locale: 'api', tool: 'image-to-image', slug: 'status' })
   } catch (error) {
     console.error('Error in generateStaticParams:', error)
     // 如果出错，至少返回一个默认页面，避免构建失败
@@ -147,6 +151,24 @@ export default async function LandingPage({ params }: PageProps) {
   if (!resolvedParams.tool) {
     notFound()
     return null
+  }
+
+  // /api/* 占位：next dev 下会渲染此页；部署后由 Cloudflare Functions 接管
+  if (locale === 'api') {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-slate-50 p-8">
+        <div className="max-w-md text-center">
+          <h1 className="text-xl font-bold text-slate-800 mb-2">API</h1>
+          <p className="text-slate-600 mb-4">
+            API 由 Cloudflare Pages Functions 提供，<code className="text-sm bg-slate-200 px-1 rounded">next dev</code> 下不可用。
+          </p>
+          <p className="text-sm text-slate-500">
+            本地测试：<code className="bg-slate-200 px-1 rounded">npm run build</code> 后运行{' '}
+            <code className="bg-slate-200 px-1 rounded">npx wrangler pages dev out</code>
+          </p>
+        </div>
+      </div>
+    )
   }
   
   // 如果工具不支持多语言，且当前不是英语，重定向到英语版本（目前没有不支持多语言的工具）

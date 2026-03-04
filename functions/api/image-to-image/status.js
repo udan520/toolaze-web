@@ -1,7 +1,7 @@
 /**
  * Cloudflare Pages Function: Nano Banana Pro 生图 - 查询任务状态
  * 部署后地址：https://toolaze-web.pages.dev/api/image-to-image/status
- * 需设置环境变量：KIE_AI_API_KEY 或 DASHSCOPE_API_KEY
+ * 需设置环境变量：KIE_AI_API_KEY
  */
 const KIE_AI_BASE = 'https://api.kie.ai/api/v1/jobs';
 const CORS = {
@@ -11,7 +11,7 @@ const CORS = {
 };
 
 function getApiKey(env) {
-  return env.KIE_AI_API_KEY || env.DASHSCOPE_API_KEY;
+  return env.KIE_AI_API_KEY;
 }
 
 function jsonResponse(body, status = 200) {

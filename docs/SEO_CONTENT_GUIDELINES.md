@@ -13,6 +13,7 @@
      - 不允许使用响应式字体大小（如 `text-3xl md:text-4xl`），统一为固定 36px
      - 适用板块：Intro、Features、How To Use、Performance Metrics、Comparison、Scenarios、Rating、FAQ 等所有 SEO 板块
      - **目的**：保持视觉一致性和品牌统一性
+   - **⚠️ JSON 标题字段禁止 CSS**：`intro.title`、`features.title`、`scenesTitle`、`faqTitle` 等字段必须是**纯文本**（如 "Key Features"、"Use Cases"、"Frequently Asked Questions"），**禁止**写入 CSS 类名（如 text-4xl、font-extrabold）、HTML 或 Tailwind 类名。样式由前端渲染时自动应用。
 
 2. **功能真实性**
    - 只写 `FEATURE_SPECIFICATIONS.md` 中明确支持的功能
@@ -66,7 +67,13 @@
          - ✅ `"Select JPG as the output format and click Convert."`（直接说明操作）
          - ❌ `"First, you need to upload your HEIC images. You can do this by clicking the upload button or simply dragging and dropping your files into the designated area. Our converter supports multiple file formats and can process up to 100 images at once..."`（过于冗长）
 
-6. **Intro 板块规范**
+6. **Key Features 板块规范**
+   - **数量要求**：features.items **必须包含 6 个功能项**，不多不少
+   - 每个功能项包含：icon（emoji）、iconType、title、desc
+   - title 与 desc 必须不同，desc 需展开说明（1-2 句），不能简单重复 title
+   - 仅写工具规格中明确支持的功能
+
+7. **Intro 板块规范**
    - Intro 板块用于详细说明工具的价值和优势
    - **推荐布局**：Picflow 风格混合方案（标题 + 图标行 + 描述段落 + 底部卡片）
      - **标题区域**：居中显示，包含 badge 和 title（H2）
@@ -142,8 +149,9 @@
      - 三张卡片分别突出模型的核心优势（如：画质/速度、多模态、音视频联合等）
    - **设计规范**：遵循 `docs/MODEL_INTRO_BLOCK.md` 和 Style 1 (Soft Smart Tech)
 
-5. **场景图标规范**
-   - Use Cases（Scenarios）板块中的每个场景**必须**配置对应的图标
+5. **Use Cases / Scenarios 板块规范**
+   - **数量要求**：Use Cases（scenes）板块**仅包含 3 个场景**，不多不少
+   - 每个场景**必须**配置对应的图标
    - **推荐**：每个场景都应该有 `icon` 字段，且不能为空
    - **自动生成机制**：
      - 如果场景缺少 `icon` 字段，系统会根据场景标题和描述自动生成合适的图标

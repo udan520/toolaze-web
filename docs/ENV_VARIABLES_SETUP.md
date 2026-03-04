@@ -74,20 +74,44 @@ NEXT_PUBLIC_IMAGE_UPLOAD_URL = https://your-preview-branch.pages.dev/api/upload
 5. 点击 **Save** 保存配置
 6. 重新部署项目（或等待下次自动部署）
 
-### 方法 2：使用 Pages Functions（已配置回退）
+### Flux 生图（可选）
 
-如果未设置 `NEXT_PUBLIC_IMAGE_UPLOAD_URL`，代码会自动回退到使用 `/api/upload`（Pages Function）。
+如需使用 Flux API（去水印等），需配置：
 
-**前提条件**：
-- 确保 `functions/api/upload.js` 已部署
-- 在 Cloudflare Pages 项目设置中配置了 R2 绑定：
-  - **Settings** → **Functions** → **R2 bucket bindings**
-  - Variable name: `MY_BUCKET`
-  - R2 bucket: 选择你的 R2 桶（如 `toolaze`）
-- 配置了环境变量（Functions 用）：
-  - **Settings** → **Functions** → **Environment variables**
-  - name: `R2_PUBLIC_BASE_URL`
-  - value: `https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev`（替换为你的 R2 公网域名）
+| 变量名 | 必填 | 说明 |
+|--------|------|------|
+| `ZHEN_AI_API_KEY` | 是 | Flux 的 API Key（Bearer 认证） |
+| `ZHEN_AI_FLUX_BASE_URL` | 是 | API 基础地址，从平台获取 |
+
+- `/api/flux-dev`：文生图 / 图生图（flux-dev，支持 `input_image` 时走图生图）
+- `/api/flux-dev/status`：查询任务状态（GET /bfl/v1/get_result）
+
+**使用 gpt-best（对齐 Bfl 官方格式）**：在 [gpt-best 文档](https://gpt-best.apifox.cn/) 获取 Base URL 和 API Key：
+```
+ZHEN_AI_API_KEY=sk-xxxx
+ZHEN_AI_FLUX_BASE_URL=https://你的Base_URL
+```
+
+示例（使用 OpenAi-HK）：
+```
+ZHEN_AI_API_KEY=hk-your-key
+ZHEN_AI_FLUX_BASE_URL=https://api.openai-hk.com
+```
+
+---
+
+## 去水印功能：额外配置
+
+去水印使用 **qwen-image-edit** 接口（`POST /v1/images/edits`，OpenAI DALL-E 格式），**无需 R2**，图片直接随请求发送。
+
+**需配置**（Functions → Environment variables）：
+
+| 变量名 | 说明 |
+|--------|------|
+| `ZHEN_AI_API_KEY` | API Key（如 ai.t8star.cn、gpt-best 等平台） |
+| `ZHEN_AI_FLUX_BASE_URL` | Base URL（如 `https://ai.t8star.cn`，默认 `https://ai.t8star.cn`） |
+
+接口文档：[gpt-best qwen-image-edit](https://gpt-best.apifox.cn/api-338005095)
 
 ### 验证配置
 
@@ -106,6 +130,44 @@ NEXT_PUBLIC_IMAGE_UPLOAD_URL = https://your-preview-branch.pages.dev/api/upload
    - 尝试上传图片
    - 查看是否有对 `/api/upload` 或配置的 URL 的请求
    - 检查响应状态码（应该是 200）
+
+## 本地开发：启用真实 API（next dev）
+
+在 `npm run dev` 下，`/api/qwen-image-edit` 会代理到真实 API，可直接使用 `.env.local` 中的 API Key 测试去水印。
+
+### 1. 配置 .env.local
+
+```bash
+# 去水印（qwen-image-edit 接口）
+ZHEN_AI_API_KEY=sk-xxxx
+ZHEN_AI_FLUX_BASE_URL=https://ai.t8star.cn   # 或 gpt-best 等平台 Base URL
+```
+
+去水印**无需 R2**，图片直接随请求发送，本地只需配置上述两项即可测试。
+
+### 2. 启动开发服务器
+
+```bash
+npm run dev
+```
+
+访问 `http://localhost:3006/watermark-remover`，上传图片即可测试。每次调用会消耗 Flux API 额度。
+
+---
+
+## 500 错误排查
+
+去水印流程涉及三个接口，任一失败都可能返回 500：
+
+| 接口 | 常见原因 | 处理方式 |
+|------|----------|----------|
+| `/api/upload` | R2 未绑定、`MY_BUCKET` 缺失 | 在 Functions → R2 bucket bindings 中绑定 `MY_BUCKET` |
+| `/api/flux-dev` | `ZHEN_AI_API_KEY` 未配置 | 在 Functions → Environment variables 中配置 |
+| `/api/flux-dev` | Base URL 错误（404） | 检查 `ZHEN_AI_FLUX_BASE_URL` 是否为 gpt-best 的 Base URL |
+| `/api/flux-dev` | API Key 无效（401） | 检查 `ZHEN_AI_API_KEY` 是否正确 |
+| `/api/flux-dev` | 上游返回异常格式 | 确认 gpt-best 支持 flux-dev 图生图 |
+
+**查看具体错误**：浏览器 Network 面板中点击失败的请求 → Response，查看 `error` 和 `hint` 字段。
 
 ## 常见问题
 

@@ -83,20 +83,14 @@ export default function Breadcrumb({ items }: BreadcrumbProps) {
     return label
   }
   
-  // 确保 href 包含语言前缀（如果需要）
+  // 仅存在于根路径、无 [locale] 版本的工具，始终不添加 locale 前缀
+  const LOCALE_LESS_PATHS = ['/watermark-remover', '/seedance-2', '/kling-3', '/model/nano-banana-pro', '/model/nano-banana-2']
   const getLocalizedHref = (href: string | undefined): string | undefined => {
     if (!href) return href
-    if (currentLocale === 'en') {
-      return href
-    }
-    // 如果 href 已经包含语言前缀，直接返回
-    if (href.startsWith(`/${currentLocale}`)) {
-      return href
-    }
-    // 如果 href 是绝对路径，直接返回
-    if (href.startsWith('http')) {
-      return href
-    }
+    if (href.startsWith('http')) return href
+    if (LOCALE_LESS_PATHS.some(p => href === p || href.startsWith(p + '/'))) return href
+    if (currentLocale === 'en') return href
+    if (href.startsWith(`/${currentLocale}`)) return href
     return `/${currentLocale}${href}`
   }
   

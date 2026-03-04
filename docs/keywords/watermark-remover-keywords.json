@@ -1,0 +1,189 @@
+{
+  "tool": "watermark-remover",
+  "lastUpdated": "2026-03-04",
+  "dataSource": "watermark-remover_broad-match_us_2026-03-04.csv",
+  "primaryKeywords": [
+    {
+      "keyword": "watermark remover",
+      "searchVolume": 110000,
+      "difficulty": 72,
+      "type": "primary",
+      "notes": "L2 H1/Title/Meta。CSV 最高量"
+    },
+    {
+      "keyword": "remove watermark from photo",
+      "searchVolume": 14800,
+      "difficulty": 56,
+      "type": "primary",
+      "notes": "L2 Hero/Intro。图片类第二高"
+    },
+    {
+      "keyword": "ai watermark remover",
+      "searchVolume": 9900,
+      "difficulty": 72,
+      "type": "primary",
+      "notes": "L2 修饰词、Features"
+    },
+    {
+      "keyword": "watermark remover free",
+      "searchVolume": 9900,
+      "difficulty": 63,
+      "type": "primary",
+      "notes": "L2 Meta、TrustBar"
+    },
+    {
+      "keyword": "free watermark remover",
+      "searchVolume": 8100,
+      "difficulty": 65,
+      "type": "primary",
+      "notes": "L2 Title、Hero"
+    }
+  ],
+  "longTailKeywords": [
+    {
+      "keyword": "how to remove watermark from photo",
+      "searchVolume": 6600,
+      "difficulty": 38,
+      "type": "long-tail",
+      "targetPage": "how-to-remove-watermark-from-photo",
+      "notes": "L3 优先。KD 低，操作类"
+    },
+    {
+      "keyword": "remove watermark from image",
+      "searchVolume": 3600,
+      "difficulty": 59,
+      "type": "long-tail",
+      "targetPage": null,
+      "notes": "L2 覆盖"
+    },
+    {
+      "keyword": "remove watermark from photo online free",
+      "searchVolume": 1900,
+      "difficulty": 62,
+      "type": "long-tail",
+      "targetPage": "remove-watermark-from-photo-online-free",
+      "notes": "L3"
+    },
+    {
+      "keyword": "photo watermark remover",
+      "searchVolume": 1900,
+      "difficulty": 49,
+      "type": "long-tail",
+      "targetPage": "photo-watermark-remover",
+      "notes": "L3 高优先级"
+    },
+    {
+      "keyword": "remove watermark from picture",
+      "searchVolume": 1600,
+      "difficulty": 56,
+      "type": "long-tail",
+      "targetPage": "remove-watermark-from-picture",
+      "notes": "L3"
+    },
+    {
+      "keyword": "image watermark remover",
+      "searchVolume": 1600,
+      "difficulty": 68,
+      "type": "long-tail",
+      "targetPage": "image-watermark-remover",
+      "notes": "L3"
+    },
+    {
+      "keyword": "remove watermark from photo free",
+      "searchVolume": 1300,
+      "difficulty": 50,
+      "type": "long-tail",
+      "targetPage": "remove-watermark-from-photo",
+      "notes": "L3 高优先级"
+    },
+    {
+      "keyword": "how to remove watermark from image",
+      "searchVolume": 880,
+      "difficulty": 48,
+      "type": "long-tail",
+      "targetPage": "how-to-remove-watermark-from-image",
+      "notes": "L3 中优先级"
+    },
+    {
+      "keyword": "webp remove watermark",
+      "searchVolume": 260,
+      "difficulty": 58,
+      "type": "long-tail",
+      "targetPage": "remove-watermark-from-webp",
+      "notes": "L3 格式类"
+    },
+    {
+      "keyword": "remove watermark from jpg",
+      "searchVolume": 40,
+      "difficulty": 66,
+      "type": "long-tail",
+      "targetPage": "remove-watermark-from-jpg",
+      "notes": "L3 格式类，低量"
+    },
+    {
+      "keyword": "remove watermark from png",
+      "searchVolume": 40,
+      "difficulty": 64,
+      "type": "long-tail",
+      "targetPage": "remove-watermark-from-png",
+      "notes": "L3 格式类，低量"
+    }
+  ],
+  "relatedKeywords": [
+    {
+      "keyword": "remove image watermark",
+      "searchVolume": 880,
+      "difficulty": 35,
+      "type": "related",
+      "notes": "KD 低，L2 内容嵌入"
+    },
+    {
+      "keyword": "remove watermark from photos",
+      "searchVolume": 590,
+      "difficulty": 64,
+      "type": "related",
+      "notes": "FAQ 覆盖"
+    },
+    {
+      "keyword": "remove logo from image",
+      "searchVolume": 0,
+      "difficulty": 0,
+      "type": "related",
+      "notes": "aiease 场景，Toolaze 支持"
+    },
+    {
+      "keyword": "online watermark remover",
+      "searchVolume": 1900,
+      "difficulty": 64,
+      "type": "related",
+      "notes": "L2 内容"
+    },
+    {
+      "keyword": "watermark remover online",
+      "searchVolume": 1600,
+      "difficulty": 69,
+      "type": "related",
+      "notes": "L2 内容"
+    }
+  ],
+  "internalLinking": [
+    {
+      "keyword": "compress image",
+      "targetPage": "image-compressor",
+      "anchorText": "compress images",
+      "notes": "去水印后常需压缩"
+    },
+    {
+      "keyword": "convert image format",
+      "targetPage": "image-converter",
+      "anchorText": "convert images",
+      "notes": "格式转换关联"
+    },
+    {
+      "keyword": "AI image generator",
+      "targetPage": "model/nano-banana-pro",
+      "anchorText": "AI image generator",
+      "notes": "同属 AI Tools"
+    }
+  ]
+}

@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SEO 管理后台 - Toolaze</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Poppins', sans-serif; }
+    .json-editor { font-family: ui-monospace, monospace; font-size: 13px; }
+    .text-gradient { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #9333ea 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .bg-gradient-brand { background: linear-gradient(135deg, #4f46e5 0%, #9333ea 100%); }
+    .desc-text { font-size: 14px; line-height: 1.6; color: #64748B; }
+  </style>
+</head>
+<body class="bg-slate-50 min-h-screen">
+  <div id="app" class="max-w-6xl mx-auto px-4 py-6">
+    <header class="mb-6 flex justify-between items-center">
+      <h1 class="text-xl font-bold text-indigo-600">SEO 管理后台</h1>
+      <a href="/" class="text-sm text-slate-500 hover:text-slate-700">返回</a>
+    </header>
+
+    <!-- Dashboard -->
+    <div id="dashboard" class="hidden">
+      <p class="text-slate-600 mb-4">选择工具和页面，查看并编辑 SEO 内容。</p>
+      <div id="tools-grid" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"></div>
+    </div>
+
+    <!-- Editor -->
+    <div id="editor" class="hidden">
+      <div class="flex flex-wrap justify-between items-center gap-4 mb-4">
+        <div>
+          <a href="/" id="back-link" class="text-sm text-indigo-600 hover:underline">← 返回</a>
+          <h2 id="editor-title" class="text-lg font-bold text-slate-800 mt-1"></h2>
+        </div>
+        <div class="flex gap-3">
+          <button id="generate-seo-btn" class="rounded-lg border border-purple-300 px-4 py-2 text-sm font-medium text-purple-600 hover:bg-purple-50">生成 SEO</button>
+          <a id="preview-link" href="#" target="_blank" class="rounded-lg border border-slate-200 px-4 py-2 text-sm text-slate-600 hover:bg-slate-50">预览</a>
+          <button id="toggle-view" class="rounded-lg border border-slate-200 px-4 py-2 text-sm text-slate-600 hover:bg-slate-50">切换 JSON</button>
+          <button id="save-btn" class="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700">保存</button>
+          <button id="save-rebuild-btn" class="rounded-lg border border-indigo-300 px-4 py-2 text-sm font-medium text-indigo-600 hover:bg-indigo-50">保存并构建</button>
+          <button id="change-url-btn" class="rounded-lg border border-slate-200 px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 hidden">修改 URL</button>
+          <label id="publish-toggle-wrap" class="hidden flex items-center gap-2 rounded-lg border border-slate-200 px-4 py-2 cursor-pointer hover:bg-slate-50">
+            <input type="checkbox" id="publish-toggle" class="rounded border-slate-300">
+            <span id="publish-toggle-label" class="text-sm font-medium text-slate-600">上架（测试/线上可见）</span>
+          </label>
+          <button id="delete-page-btn" class="rounded-lg border border-red-200 px-4 py-2 text-sm font-medium text-red-600 hover:bg-red-50 hidden">删除页面</button>
+        </div>
+      </div>
+      <div id="message" class="hidden rounded-xl p-3 mb-4"></div>
+
+      <!-- 修改 URL 弹窗 -->
+      <div id="change-url-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/40">
+        <div class="bg-white rounded-2xl shadow-xl max-w-md w-full mx-4 p-6">
+          <h3 class="text-lg font-bold text-slate-800 mb-4">修改 URL</h3>
+          <div class="space-y-3">
+            <div>
+              <label class="block text-sm font-semibold text-slate-600 mb-1">当前 URL</label>
+              <p id="change-url-current" class="text-sm font-mono text-slate-500 bg-slate-50 rounded-lg px-3 py-2"></p>
+            </div>
+            <div>
+              <label class="block text-sm font-semibold text-slate-700 mb-1">新 URL</label>
+              <div class="flex gap-2">
+                <input type="text" id="change-url-input" class="flex-1 rounded-lg border border-slate-200 px-3 py-2 text-sm font-mono" placeholder="">
+                <button type="button" id="change-url-ai-btn" class="rounded-lg border border-purple-300 px-3 py-2 text-sm font-medium text-purple-600 hover:bg-purple-50 whitespace-nowrap">AI 生成</button>
+              </div>
+              <p id="change-url-hint" class="text-xs text-slate-400 mt-1"></p>
+            </div>
+          </div>
+          <div class="flex gap-2 mt-6 justify-end">
+            <button type="button" id="change-url-cancel" class="rounded-lg border border-slate-200 px-4 py-2 text-sm text-slate-600 hover:bg-slate-50">取消</button>
+            <button type="button" id="change-url-confirm" class="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700">确认修改</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Generate SEO Modal -->
+      <div id="generate-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/40">
+        <div class="bg-white rounded-2xl shadow-xl max-w-2xl w-full mx-4 max-h-[90vh] overflow-hidden flex flex-col">
+          <div class="p-6 border-b border-slate-200">
+            <h3 class="text-lg font-bold text-slate-800">AI 生成 SEO 内容</h3>
+            <p class="text-sm text-slate-500 mt-1">调用 Gemini API，根据关键词、SEO 规则和工具规格生成内容</p>
+          </div>
+          <div class="p-6 overflow-y-auto flex-1 space-y-4">
+            <div id="gen-url-row">
+              <label class="block text-sm font-semibold text-slate-700 mb-2">URL / Slug</label>
+              <div class="flex gap-2">
+                <input type="text" id="gen-url-input" class="flex-1 rounded-lg border border-slate-200 px-3 py-2 text-sm font-mono" placeholder="L2 留空；L3 填写如 how-to-remove-watermark">
+                <button type="button" id="gen-ai-url-btn" class="rounded-lg border border-purple-300 px-4 py-2 text-sm font-medium text-purple-600 hover:bg-purple-50 whitespace-nowrap">AI 生成 URL</button>
+              </div>
+              <p id="gen-url-hint" class="text-xs text-slate-400 mt-1">L2 主页面无需填写；新建 L3 页面时填写 URL slug</p>
+            </div>
+            <div>
+              <label class="block text-sm font-semibold text-slate-700 mb-2">关键词参考</label>
+              <div class="flex gap-2 mb-2">
+                <select id="gen-keywords-file" class="rounded-lg border border-slate-200 px-3 py-2 text-sm flex-1">
+                  <option value="">选择已有关键词文件...</option>
+                </select>
+                <label class="rounded-lg border border-slate-200 px-4 py-2 text-sm cursor-pointer hover:bg-slate-50">
+                  <input type="file" id="gen-keywords-upload" accept=".csv,.json" class="hidden"> 上传 CSV/JSON
+                </label>
+              </div>
+              <textarea id="gen-keywords-text" class="w-full h-24 rounded-lg border border-slate-200 p-3 text-sm font-mono" placeholder="或在此粘贴关键词内容（CSV/JSON）..."></textarea>
+            </div>
+            <div>
+              <label class="block text-sm font-semibold text-slate-700 mb-2">生成板块（勾选要生成的）</label>
+              <div class="flex flex-wrap gap-3">
+                <label class="flex items-center gap-2"><input type="checkbox" class="gen-comp" value="metadata" checked> Metadata</label>
+                <label class="flex items-center gap-2"><input type="checkbox" class="gen-comp" value="hero" checked> Hero</label>
+                <label class="flex items-center gap-2"><input type="checkbox" class="gen-comp" value="trustBar"> Trust Bar</label>
+                <label class="flex items-center gap-2"><input type="checkbox" class="gen-comp" value="howToUse" checked> How To Use</label>
+                <label class="flex items-center gap-2"><input type="checkbox" class="gen-comp" value="modelIntro" checked> Model Intro</label>
+                <label class="flex items-center gap-2"><input type="checkbox" class="gen-comp" value="features" checked> Features</label>
+                <label class="flex items-center gap-2"><input type="checkbox" class="gen-comp" value="intro"> Intro</label>
+                <label class="flex items-center gap-2"><input type="checkbox" class="gen-comp" value="comparison"> Comparison</label>
+                <label class="flex items-center gap-2"><input type="checkbox" class="gen-comp" value="scenes" checked> Scenarios</label>
+                <label class="flex items-center gap-2"><input type="checkbox" class="gen-comp" value="rating" checked> Rating</label>
+                <label class="flex items-center gap-2"><input type="checkbox" class="gen-comp" value="faq" checked> FAQ</label>
+              </div>
+            </div>
+            <div class="space-y-2">
+              <label class="block text-sm font-semibold text-slate-700">参考规则（可多选，含 Use Case / FAQ 规范）</label>
+              <div class="flex flex-wrap gap-3 items-center">
+                <span class="flex items-center gap-1">
+                  <input type="checkbox" id="gen-use-seo-content" checked>
+                  <label for="gen-use-seo-content">SEO 内容规范</label>
+                  <button type="button" class="rule-preview-btn text-xs text-purple-600 hover:underline" data-file="SEO_CONTENT_GUIDELINES.md">预览</button>
+                </span>
+                <span class="flex items-center gap-1">
+                  <input type="checkbox" id="gen-use-seo-layout" checked>
+                  <label for="gen-use-seo-layout">SEO 布局规范</label>
+                  <button type="button" class="rule-preview-btn text-xs text-purple-600 hover:underline" data-file="SEO_MASTER_LAYOUT.md">预览</button>
+                </span>
+                <span class="flex items-center gap-1">
+                  <input type="checkbox" id="gen-use-structure" checked>
+                  <label for="gen-use-structure">结构规范</label>
+                  <button type="button" class="rule-preview-btn text-xs text-purple-600 hover:underline" data-file="TRANSLATION_STRUCTURE_GUIDE.md">预览</button>
+                </span>
+                <span class="flex items-center gap-1">
+                  <input type="checkbox" id="gen-use-tool-spec" checked>
+                  <label for="gen-use-tool-spec">工具规格</label>
+                  <button type="button" class="rule-preview-btn text-xs text-purple-600 hover:underline" data-file="tool">预览</button>
+                </span>
+                <a href="/api/test-gemini" target="_blank" class="text-sm text-purple-600 hover:underline ml-2">测试 API</a>
+              </div>
+            </div>
+            <!-- 规则预览弹窗 -->
+            <div id="rule-preview-modal" class="hidden fixed inset-0 z-[60] flex items-center justify-center bg-black/40">
+              <div class="bg-white rounded-2xl shadow-xl max-w-4xl w-full mx-4 max-h-[85vh] overflow-hidden flex flex-col">
+                <div class="p-4 border-b border-slate-200 flex justify-between items-center">
+                  <h4 id="rule-preview-title" class="font-bold text-slate-800"></h4>
+                  <button type="button" id="rule-preview-close" class="text-slate-500 hover:text-slate-700">✕ 关闭</button>
+                </div>
+                <pre id="rule-preview-content" class="flex-1 overflow-auto p-6 text-sm text-slate-700 whitespace-pre-wrap font-sans bg-slate-50"></pre>
+              </div>
+            </div>
+
+            <div id="gen-result" class="hidden">
+              <label class="block text-sm font-semibold text-slate-700 mb-2">生成结果</label>
+              <textarea id="gen-result-text" class="w-full h-48 rounded-lg border border-slate-200 p-3 text-sm font-mono" readonly></textarea>
+              <div id="gen-report-wrap" class="mt-4 rounded-lg border border-indigo-100 bg-indigo-50/30 p-4">
+                <div class="flex items-center justify-between mb-2">
+                  <label class="text-sm font-semibold text-slate-700">SEO 策略报告</label>
+                  <button type="button" id="gen-download-report" class="text-xs text-indigo-600 hover:underline">下载 .md</button>
+                </div>
+                <pre id="gen-report-content" class="w-full max-h-64 overflow-auto rounded-lg border border-slate-200 bg-white p-4 text-xs text-slate-700 whitespace-pre-wrap font-sans"></pre>
+              </div>
+              <div class="mt-4 flex gap-2">
+                <button id="gen-apply-btn" class="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700">应用到当前页面</button>
+                <button id="gen-close-result" class="rounded-lg border border-slate-200 px-4 py-2 text-sm text-slate-600 hover:bg-slate-50">关闭</button>
+              </div>
+            </div>
+          </div>
+          <div class="p-6 border-t border-slate-200 flex justify-between">
+            <button id="gen-close-btn" class="rounded-lg border border-slate-200 px-4 py-2 text-sm text-slate-600 hover:bg-slate-50">取消</button>
+            <button id="gen-submit-btn" class="rounded-lg bg-purple-600 px-6 py-2 text-sm font-medium text-white hover:bg-purple-700">生成</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="sections-view"></div>
+      <div id="json-view" class="hidden">
+        <textarea id="json-textarea" class="json-editor w-full h-[70vh] rounded-xl border border-slate-200 p-4"></textarea>
+      </div>
+    </div>
+
+    <div id="loading" class="flex justify-center py-20">
+      <div class="h-8 w-8 animate-spin rounded-full border-2 border-indigo-500 border-t-transparent"></div>
+    </div>
+  </div>
+
+  <script>
+    const API_BASE = window.location.origin || ''
+    const state = { tool: '', slug: '', data: null, view: 'sections' }
+
+    function show(el) { el.classList.remove('hidden') }
+    function hide(el) { el.classList.add('hidden') }
+
+    async function api(path, opts = {}) {
+      const url = path.startsWith('http') ? path : (API_BASE + (path.startsWith('/') ? '' : '/') + path)
+      const res = await fetch(url, opts)
+      const data = await res.json().catch(() => ({}))
+      if (!res.ok) {
+        const msg = data.error || res.statusText || '请求失败'
+        const hint = data.hint ? '\n\n' + data.hint : ''
+        const statusHint = res.status === 404 && !data.error ? '\n\n提示：若删除/预览失败，请确认管理后台已重启 (npm run admin:seo:restart)' : ''
+        throw new Error(msg + hint + statusHint)
+      }
+      return data
+    }
+
+    function showMsg(msg, type = 'success') {
+      const el = document.getElementById('message')
+      el.textContent = msg
+      el.className = `rounded-xl p-3 mb-4 ${type === 'error' ? 'bg-red-50 text-red-700 border border-red-200' : 'bg-green-50 text-green-700 border border-green-200'}`
+      show(el)
+    }
+
+    async function loadDashboard() {
+      try {
+        const tools = await api('/api/tools')
+      const grid = document.getElementById('tools-grid')
+      grid.innerHTML = tools.map(t => `
+        <div class="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+          <h3 class="font-semibold text-slate-800 mb-3">${t.name}</h3>
+          <ul class="space-y-1">
+            ${t.pages.map(p => `
+              <li><a href="/?tool=${t.id}&slug=${encodeURIComponent(p.slug)}" class="block rounded-lg px-3 py-2 text-sm text-indigo-600 hover:bg-indigo-50">${p.name}</a></li>
+            `).join('')}
+          </ul>
+        </div>
+      `).join('')
+      hide(document.getElementById('loading'))
+      show(document.getElementById('dashboard'))
+      } catch (e) {
+        hide(document.getElementById('loading'))
+        document.getElementById('dashboard').innerHTML = '<div class="rounded-xl border border-red-200 bg-red-50 p-4 text-red-700">加载失败: ' + escapeHtml(e.message) + '</div>'
+        show(document.getElementById('dashboard'))
+      }
+    }
+
+    const SECTION_TEMPLATES = {
+      hero: { h1: 'Free <span class="text-gradient">Tool Name</span> Online', desc: 'Short description.' },
+      metadata: { title: 'Page Title - Toolaze', description: 'Meta description.' },
+      trustBar: { private: 'Free', instantPreview: 'Fast', noServerLogs: 'No Sign-Up' },
+      howToUse: { title: 'How to Use', steps: [{ title: 'Step 1', desc: 'Description' }, { title: 'Step 2', desc: 'Description' }, { title: 'Step 3', desc: 'Description' }] },
+      modelIntro: { title: 'Title', modelName: 'Model', modelType: 'AI Tool', description: ['Paragraph 1', 'Paragraph 2'], featureCards: [{ title: 'Card 1', content: 'Content' }, { title: 'Card 2', content: 'Content' }, { title: 'Card 3', content: 'Content' }] },
+      features: { title: 'Features', items: [{ icon: '🤖', iconType: 'ai', title: 'Feature', desc: 'Description' }] },
+      intro: { title: 'Intro', content: [{ title: 'Section', text: 'Content with <a href="/link">links</a>.' }] },
+      comparison: { title: 'Comparison', toolaze: 'Toolaze 💎', others: 'Others', toolazeFeatures: 'Feature 1, Feature 2', othersFeatures: 'Limitation 1, Limitation 2' },
+      scenes: { scenesTitle: 'Scenarios', scenes: [{ title: 'Scenario', icon: '🏷️', desc: 'Description' }] },
+      rating: { title: 'Trusted by Thousands', rating: '4.9/5 FROM 10K+', text: 'Description.' },
+      faq: { faqTitle: 'FAQ', faq: [{ q: 'Question?', a: 'Answer.' }] }
+    }
+
+    function getSectionData(d, id) {
+      if (id === 'metadata') return d.metadata || {}
+      if (id === 'hero') return d.hero || {}
+      if (id === 'trustBar') return d.trustBar || {}
+      if (id === 'faq') return { faqTitle: d.faqTitle || '', faq: d.faq || [] }
+      if (id === 'scenes') return { scenesTitle: d.scenesTitle || '', scenes: d.scenes || [] }
+      return d[id] || {}
+    }
+
+    function setSectionData(d, id, val) {
+      if (id === 'metadata') d.metadata = val
+      else if (id === 'hero') d.hero = val
+      else if (id === 'trustBar') d.trustBar = val
+      else if (id === 'faq') { d.faqTitle = val.faqTitle; d.faq = val.faq }
+      else if (id === 'scenes') { d.scenesTitle = val.scenesTitle; d.scenes = val.scenes }
+      else d[id] = val
+    }
+
+    function removeSection(d, id) {
+      if (id === 'metadata') delete d.metadata
+      else if (id === 'hero') delete d.hero
+      else if (id === 'trustBar') delete d.trustBar
+      else if (id === 'faq') { delete d.faqTitle; delete d.faq }
+      else if (id === 'scenes') { delete d.scenesTitle; delete d.scenes }
+      else delete d[id]
+      const order = d.sectionsOrder || []
+      d.sectionsOrder = order.filter(x => x !== id)
+    }
+
+    const TOOLS_WITH_TRUST_BAR = ['image-compressor','image-compression','image-converter','image-conversion','emoji-copy-and-paste','font-generator']
+
+    function renderSectionsPreview(data, container) {
+      const tool = state.tool || ''
+      const order = data.sectionsOrder?.length ? data.sectionsOrder : ['howToUse','modelIntro','features','intro','comparison','scenes','rating','faq']
+      const d = data
+      const sections = []
+
+      sections.push({ id: 'metadata', label: 'Metadata', html: `
+        <div class="rounded-xl border border-slate-200 bg-white p-4">
+          <div class="text-sm"><span class="font-semibold text-slate-600">title:</span> ${escapeHtml(d.metadata?.title || '')}</div>
+          <div class="text-sm mt-2"><span class="font-semibold text-slate-600">description:</span> ${escapeHtml((d.metadata?.description || '').slice(0,120))}...</div>
+        </div>
+      `})
+
+      if (d.hero) sections.push({ id: 'hero', label: 'Hero', html: `
+        <section class="bg-[#F8FAFF] py-12 px-6 rounded-[2rem] border border-indigo-50">
+          <div class="max-w-4xl mx-auto text-center">
+            <h1 class="text-[40px] font-extrabold text-slate-900 leading-tight mb-4">${d.hero.h1 || ''}</h1>
+            <p class="text-lg text-slate-600">${escapeHtml(d.hero.desc || '')}</p>
+          </div>
+        </section>
+      `})
+
+      if (d.trustBar && TOOLS_WITH_TRUST_BAR.includes(tool)) sections.push({ id: 'trustBar', label: 'Trust Bar', html: `
+        <div class="flex flex-wrap justify-center gap-4 text-[11px] font-bold text-indigo-900/60 uppercase tracking-widest">
+          <span>🔒 ${escapeHtml(d.trustBar.private || '')}</span>
+          <span>⚡ ${escapeHtml(d.trustBar.instantPreview || '')}</span>
+          <span>🚫 ${escapeHtml(d.trustBar.noServerLogs || '')}</span>
+        </div>
+      `})
+
+      if (d.howToUse?.steps?.length) sections.push({ id: 'howToUse', label: 'How To Use', html: `
+        <section class="bg-[#F8FAFF] py-12 px-6 rounded-[2rem] border border-indigo-50">
+          <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-extrabold text-center text-slate-900 mb-12">${escapeHtml(d.howToUse.title || '')}</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-16 text-center">
+              ${d.howToUse.steps.map((s,i)=>`
+                <div class="group">
+                  <div class="w-20 h-20 mb-8 mx-auto rounded-full bg-gradient-brand flex items-center justify-center text-white shadow-xl shadow-indigo-100 ring-4 ring-white text-2xl font-bold">${i+1}</div>
+                  <h3 class="text-xl font-bold text-slate-800 mb-2">${escapeHtml(typeof s==='object'?s.title:s)}</h3>
+                  ${typeof s==='object'&&s.desc?`<p class="desc-text max-w-[240px] mx-auto">${escapeHtml(s.desc)}</p>`:''}
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        </section>
+      `})
+
+      if (d.modelIntro) sections.push({ id: 'modelIntro', label: 'Model Intro', html: `
+        <section class="bg-[#F8FAFF] py-12 px-6 rounded-[2rem] border border-indigo-50">
+          <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-extrabold text-slate-900 mb-6">${escapeHtml(d.modelIntro.title || '')}</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+              <div class="lg:col-span-7 space-y-4">
+                ${(Array.isArray(d.modelIntro.description)?d.modelIntro.description:[d.modelIntro.description]).filter(Boolean).map(p=>`<p class="text-slate-600">${escapeHtml(p)}</p>`).join('')}
+              </div>
+              <div class="lg:col-span-5 flex items-center justify-center">
+                <div class="rounded-[2.5rem] bg-gradient-to-br from-indigo-50 to-purple-50 border border-indigo-100 p-8 text-center">
+                  <span class="text-2xl font-extrabold text-gradient">${escapeHtml(d.modelIntro.modelName || '')}</span>
+                  <p class="text-xs text-slate-400 font-semibold uppercase mt-2">${escapeHtml(d.modelIntro.modelType || '')}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="bg-white py-12 px-6 rounded-[2rem] border border-indigo-50 mt-4">
+          <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+            ${(d.modelIntro.featureCards||[]).map((c,i)=>`
+              <div class="rounded-[2.5rem] p-8 border border-indigo-100/50 ${['bg-indigo-50/80','bg-purple-50/80','bg-slate-50/80'][i]||'bg-slate-50/80'}">
+                <h3 class="text-xl font-bold text-slate-900 mb-4">${escapeHtml(c.title)}</h3>
+                <p class="text-slate-600">${escapeHtml(c.content)}</p>
+              </div>
+            `).join('')}
+          </div>
+        </section>
+      `})
+
+      if (d.features?.items?.length) sections.push({ id: 'features', label: 'Features', html: `
+        <section class="bg-white py-12 px-6 rounded-[2rem] border border-indigo-50">
+          <h2 class="text-4xl font-extrabold text-center text-slate-900 mb-12">${escapeHtml(d.features.title || '')}</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            ${d.features.items.slice(0,6).map(f=>`
+              <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-100">
+                <div class="flex flex-col items-center mb-4">
+                  <div class="w-16 h-16 flex items-center justify-center mb-4">
+                    <span class="text-2xl">${f.icon||'🤖'}</span>
+                  </div>
+                  <h4 class="font-bold text-slate-900 mb-3 text-lg text-center">${escapeHtml(f.title)}</h4>
+                  ${f.desc?`<p class="text-sm text-slate-600 text-center">${escapeHtml(f.desc)}</p>`:''}
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </section>
+      `})
+
+      if (d.intro?.content?.length) sections.push({ id: 'intro', label: 'Intro', html: `
+        <section class="bg-[#F8FAFF] py-12 px-6 rounded-[2rem] border border-indigo-50">
+          <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-extrabold text-center text-slate-900 mb-8">${escapeHtml(d.intro.title || '')}</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              ${d.intro.content.slice(0,2).map((item,i)=>`
+                <div class="bg-white rounded-2xl p-8 border border-indigo-100/50 shadow-sm">
+                  ${item.title?`<h3 class="text-xl font-bold text-slate-900 mb-3">${escapeHtml(item.title)}</h3>`:''}
+                  <div class="text-slate-700 prose prose-sm max-w-none">${(item.text||'').replace(/<a /g,'<a class="text-indigo-600 hover:text-purple-600 font-semibold underline" ')}</div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        </section>
+      `})
+
+      if (d.comparison) sections.push({ id: 'comparison', label: 'Comparison', html: `
+        <section class="bg-white py-12 px-6 rounded-[2rem] border border-indigo-50">
+          <h2 class="text-4xl font-extrabold text-center text-slate-900 mb-12">${escapeHtml(d.comparison.title || '')}</h2>
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-stretch">
+            <div class="md:col-span-5">
+              <div class="bg-gradient-to-br from-white to-indigo-50/30 rounded-[2rem] p-10 border-2 border-indigo-200/50">
+                <h3 class="font-extrabold text-slate-900 text-2xl mb-8 border-b-2 border-indigo-100 pb-4">${escapeHtml(d.comparison.toolaze || 'Toolaze')} 💎</h3>
+                <ul class="space-y-4 text-sm text-slate-800">
+                  ${(d.comparison.toolazeFeatures||'').split(/,\s*/).filter(Boolean).map(x=>`<li class="flex items-center gap-3"><span class="text-green-600 font-bold">✅</span>${escapeHtml(x.trim())}</li>`).join('')}
+                </ul>
+              </div>
+            </div>
+            <div class="hidden md:flex md:col-span-2 justify-center items-center">
+              <div class="rounded-full w-16 h-16 flex items-center justify-center shadow-lg border-2 border-indigo-200 bg-white">
+                <span class="font-black text-indigo-600 text-xl">VS</span>
+              </div>
+            </div>
+            <div class="md:col-span-5">
+              <div class="bg-white/80 rounded-3xl p-8 border border-slate-300/60">
+                <h3 class="font-bold text-slate-500 text-lg mb-8 border-b border-slate-300/60 pb-4">${escapeHtml(d.comparison.others || 'Other Tools')}</h3>
+                <ul class="space-y-3 text-sm text-slate-500">
+                  ${(d.comparison.othersFeatures||'').split(/,\s*/).filter(Boolean).map(x=>`<li class="flex items-center gap-3"><span class="text-red-500 font-bold">❌</span>${escapeHtml(x.trim())}</li>`).join('')}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+      `})
+
+      if (d.scenes?.length) sections.push({ id: 'scenes', label: 'Scenarios', html: `
+        <section class="bg-[#F8FAFF] py-12 px-6 rounded-[2rem] border border-indigo-50">
+          <h2 class="text-4xl font-extrabold text-center text-slate-900 mb-12">${escapeHtml(d.scenesTitle || '')}</h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            ${d.scenes.map((s,i)=>`
+              <div class="bg-white p-8 rounded-3xl border border-indigo-50 shadow-sm text-center">
+                <div class="w-12 h-12 rounded-2xl flex items-center justify-center mb-4 mx-auto ${['bg-indigo-100','bg-purple-100','bg-blue-100'][i]||'bg-indigo-100'}">
+                  <span class="text-2xl">${s.icon||'🏷️'}</span>
+                </div>
+                <h3 class="text-xl font-bold text-slate-800 mb-3">${escapeHtml(s.title)}</h3>
+                <p class="desc-text">${escapeHtml(s.desc||'')}</p>
+              </div>
+            `).join('')}
+          </div>
+        </section>
+      `})
+
+      if (d.rating) sections.push({ id: 'rating', label: 'Rating', html: `
+        <section class="bg-white py-12 px-6 rounded-[2rem] border border-indigo-50">
+          <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl font-extrabold text-slate-900 mb-12">${escapeHtml(d.rating.title || '')}</h2>
+            <div class="flex flex-col items-center gap-4">
+              <div class="flex gap-1">
+                <span class="text-4xl text-yellow-400">★</span><span class="text-4xl text-yellow-400">★</span><span class="text-4xl text-yellow-400">★</span><span class="text-4xl text-yellow-400">★</span><span class="text-4xl text-yellow-400">★</span>
+              </div>
+              <div class="text-sm font-bold text-slate-600 uppercase tracking-widest">${escapeHtml(d.rating.rating || '')}</div>
+              <p class="text-slate-500 max-w-2xl mx-auto">${escapeHtml(d.rating.text || '')}</p>
+            </div>
+          </div>
+        </section>
+      `})
+
+      if (d.faq?.length) sections.push({ id: 'faq', label: 'FAQ', html: `
+        <section class="bg-white py-12 px-6 rounded-[2rem] border border-indigo-50">
+          <h2 class="text-4xl font-extrabold text-center text-slate-900 mb-12">${escapeHtml(d.faqTitle || '')}</h2>
+          <div class="max-w-3xl mx-auto space-y-4">
+            ${d.faq.map(item=>`
+              <details class="bg-[#F8FAFF] rounded-2xl p-6 border border-indigo-50">
+                <summary class="font-bold text-slate-800 cursor-pointer flex items-center justify-between">${escapeHtml(item.q||'')} <span class="text-indigo-600 text-xl">+</span></summary>
+                <div class="desc-text mt-4 prose prose-sm max-w-none">${(item.a||'').replace(/<a /g,'<a class="text-indigo-600 hover:text-purple-600 font-semibold underline" ')}</div>
+              </details>
+            `).join('')}
+          </div>
+        </section>
+      `})
+
+      const ordered = []
+      const seen = new Set()
+      const front = TOOLS_WITH_TRUST_BAR.includes(tool) ? ['metadata','hero','trustBar'] : ['metadata','hero']
+      for (const id of [...front, ...order]) {
+        const s = sections.find(x=>x.id===id)
+        if (s && !seen.has(s.id)) { ordered.push(s); seen.add(s.id) }
+      }
+      for (const s of sections) if (!seen.has(s.id)) ordered.push(s)
+
+      const sectionLabels = { hero:'Hero', metadata:'Metadata', trustBar:'Trust Bar', howToUse:'How To Use', modelIntro:'Model Intro', features:'Features', intro:'Intro', comparison:'Comparison', scenes:'Scenarios', rating:'Rating', faq:'FAQ' }
+      const addOptions = Object.keys(SECTION_TEMPLATES).filter(k => {
+        if (ordered.some(o=>o.id===k)) return false
+        if (k === 'trustBar' && !TOOLS_WITH_TRUST_BAR.includes(tool)) return false
+        return true
+      })
+      container.innerHTML = `
+        <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+          <p class="text-slate-500">各板块可编辑、删除，支持新增。Metadata、Hero 置顶，其余按页面顺序。仅部分工具显示 Trust Bar。</p>
+          <div class="flex items-center gap-2">
+            <select id="add-section-select" class="rounded-lg border border-slate-200 px-3 py-2 text-sm">
+              <option value="">新增板块...</option>
+              ${addOptions.map(k=>`<option value="${k}">${sectionLabels[k]||k}</option>`).join('')}
+            </select>
+            <button id="add-section-btn" class="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700">添加</button>
+          </div>
+        </div>
+      ` + ordered.map(s=>`
+        <div class="mb-8 section-card" data-section-id="${s.id}">
+          <div class="flex items-center justify-between gap-2 mb-3">
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-bold text-indigo-600 uppercase tracking-wider">${escapeHtml(s.label)}</span>
+              <span class="text-slate-300">|</span>
+              <span class="text-slate-400 text-sm">${s.id}</span>
+            </div>
+            <div class="flex gap-2">
+              <button class="section-edit-btn rounded-lg border border-slate-200 px-3 py-1.5 text-xs text-slate-600 hover:bg-slate-50" data-id="${s.id}">编辑</button>
+              <button class="section-delete-btn rounded-lg border border-red-200 px-3 py-1.5 text-xs text-red-600 hover:bg-red-50" data-id="${s.id}">删除</button>
+            </div>
+          </div>
+          <div class="section-preview rounded-xl border-2 border-slate-200 overflow-hidden bg-white shadow-sm">${s.html}</div>
+          <div class="section-edit-form hidden mt-3 rounded-xl border-2 border-indigo-200 bg-indigo-50/30 p-4">
+            <label class="block text-xs font-semibold text-indigo-700 mb-2">编辑 ${escapeHtml(s.label)} (JSON)</label>
+            <textarea class="section-json-input w-full h-48 font-mono text-sm rounded-lg border border-slate-200 p-3" data-id="${s.id}"></textarea>
+            <div class="mt-2 flex gap-2">
+              <button class="section-apply-btn rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700" data-id="${s.id}">应用</button>
+              <button class="section-cancel-btn rounded-lg border border-slate-200 px-4 py-2 text-sm text-slate-600 hover:bg-slate-50" data-id="${s.id}">取消</button>
+            </div>
+          </div>
+        </div>
+      `).join('')
+
+      ordered.forEach(s => {
+        const card = container.querySelector(`.section-card[data-section-id="${s.id}"]`)
+        if (!card) return
+        const jsonInput = card.querySelector('.section-json-input')
+        const editForm = card.querySelector('.section-edit-form')
+        const preview = card.querySelector('.section-preview')
+        const sectionData = getSectionData(state.data, s.id)
+        jsonInput.value = JSON.stringify(sectionData, null, 2)
+
+        card.querySelector('.section-edit-btn').onclick = () => {
+          editForm.classList.remove('hidden')
+          preview.classList.add('opacity-50')
+          jsonInput.value = JSON.stringify(getSectionData(state.data, s.id), null, 2)
+        }
+        card.querySelector('.section-cancel-btn').onclick = () => {
+          editForm.classList.add('hidden')
+          preview.classList.remove('opacity-50')
+        }
+        card.querySelector('.section-apply-btn').onclick = () => {
+          try {
+            const val = JSON.parse(jsonInput.value)
+            setSectionData(state.data, s.id, val)
+            if (!state.data.sectionsOrder.includes(s.id) && s.id !== 'metadata' && s.id !== 'hero' && s.id !== 'trustBar') {
+              state.data.sectionsOrder = state.data.sectionsOrder || []
+              state.data.sectionsOrder.push(s.id)
+            }
+            renderSectionsPreview(state.data, container)
+            showMsg('已更新')
+          } catch (e) {
+            showMsg('JSON 格式错误', 'error')
+          }
+        }
+        card.querySelector('.section-delete-btn').onclick = () => {
+          if (!confirm(`确定删除板块「${s.label}」？`)) return
+          removeSection(state.data, s.id)
+          renderSectionsPreview(state.data, container)
+          showMsg('已删除')
+        }
+      })
+
+      document.getElementById('add-section-btn').onclick = () => {
+        const sel = document.getElementById('add-section-select')
+        const id = sel.value
+        if (!id) return
+        const tpl = SECTION_TEMPLATES[id]
+        if (!tpl) return
+        setSectionData(state.data, id, JSON.parse(JSON.stringify(tpl)))
+        state.data.sectionsOrder = state.data.sectionsOrder || []
+        if (!state.data.sectionsOrder.includes(id)) state.data.sectionsOrder.push(id)
+        sel.value = ''
+        renderSectionsPreview(state.data, container)
+        showMsg('已添加')
+      }
+    }
+
+    function escapeHtml(s) {
+      return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')
+    }
+
+    function normalizeForAdmin(data) {
+      const d = JSON.parse(JSON.stringify(data))
+      if (d.intro?.content && !Array.isArray(d.intro.content)) {
+        d.intro.content = [{ title: '', text: String(d.intro.content) }]
+      }
+      if (d.features && d.features.list && !d.features.items) {
+        d.features.items = d.features.list.map((s) => typeof s === 'string' ? { icon: '🤖', iconType: 'ai', title: s, desc: s } : { icon: s.icon || '🤖', iconType: 'ai', title: s.title || s, desc: s.desc || s.title || '' })
+      }
+      // scenes: handle { list }, { scenes, scenesTitle }, or ensure array format
+      if (d.scenes && !Array.isArray(d.scenes)) {
+        if (d.scenes.list && Array.isArray(d.scenes.list)) {
+          d.scenesTitle = d.scenes.title || d.scenes.scenesTitle || d.scenesTitle || 'Use Cases'
+          d.scenes = d.scenes.list.map((x) => ({ icon: x.icon || '📷', title: x.title || '', desc: x.desc || '' }))
+        } else if (d.scenes.scenes && Array.isArray(d.scenes.scenes)) {
+          d.scenesTitle = d.scenes.scenesTitle || d.scenes.title || d.scenesTitle || 'Use Cases'
+          d.scenes = d.scenes.scenes.map((x) => ({ icon: x.icon || '📷', title: x.title || '', desc: x.desc || '' }))
+        } else {
+          d.scenes = []
+        }
+      }
+      if (Array.isArray(d.scenes)) {
+        d.scenes = d.scenes.map((x) => ({ icon: x.icon || '📷', title: x.title || '', desc: x.desc || '' }))
+      }
+      // faq: handle { list }, { faq, faqTitle }, or ensure array format with q/a
+      if (d.faq && !Array.isArray(d.faq)) {
+        if (d.faq.list && Array.isArray(d.faq.list)) {
+          d.faqTitle = d.faq.title || d.faq.faqTitle || d.faqTitle || 'FAQ'
+          d.faq = d.faq.list.map((x) => ({ q: x.question || x.q || '', a: x.answer || x.a || '' }))
+        } else if (d.faq.faq && Array.isArray(d.faq.faq)) {
+          d.faqTitle = d.faq.faqTitle || d.faq.title || d.faqTitle || 'FAQ'
+          d.faq = d.faq.faq.map((x) => ({ q: x.question || x.q || '', a: x.answer || x.a || '' }))
+        } else {
+          d.faq = []
+        }
+      }
+      if (Array.isArray(d.faq)) {
+        d.faq = d.faq.map((x) => ({ q: x.question || x.q || '', a: x.answer || x.a || '' }))
+      }
+      return d
+    }
+
+    async function loadEditor() {
+      const params = new URLSearchParams(location.search)
+      state.tool = params.get('tool') || ''
+      state.slug = params.get('slug') || ''
+      if (!state.tool) {
+        loadDashboard()
+        return
+      }
+      try {
+        state.data = await api(`/api/seo?tool=${state.tool}&slug=${encodeURIComponent(state.slug)}&locale=en`)
+        state.data = normalizeForAdmin(state.data)
+        document.getElementById('editor-title').textContent = `${state.tool} / ${state.slug || 'L2'}`
+        const delBtn = document.getElementById('delete-page-btn')
+        const changeUrlBtn = document.getElementById('change-url-btn')
+        if (state.slug) {
+          delBtn.classList.remove('hidden')
+        } else {
+          delBtn.classList.add('hidden')
+        }
+        changeUrlBtn.classList.remove('hidden')
+        const publishWrap = document.getElementById('publish-toggle-wrap')
+        publishWrap.classList.remove('hidden')
+        const publishToggle = document.getElementById('publish-toggle')
+        const publishLabel = document.getElementById('publish-toggle-label')
+        const published = state.data?.metadata?.published !== false
+        publishToggle.checked = published
+        publishLabel.textContent = published ? '上架（测试/线上可见）' : '下架（测试/线上不可见）'
+        publishToggle.onchange = () => {
+          if (!state.data.metadata) state.data.metadata = {}
+          state.data.metadata.published = publishToggle.checked
+          publishLabel.textContent = publishToggle.checked ? '上架（测试/线上可见）' : '下架（测试/线上不可见）'
+        }
+        document.getElementById('back-link').href = '/'
+        document.getElementById('preview-link').href = `https://toolaze.com/${state.tool}${state.slug ? '/' + state.slug : ''}`
+        document.getElementById('json-textarea').value = JSON.stringify(state.data, null, 2)
+        renderSectionsPreview(state.data, document.getElementById('sections-view'))
+      } catch (e) {
+        hide(document.getElementById('loading'))
+        document.getElementById('dashboard').innerHTML = '<div class="rounded-xl border border-red-200 bg-red-50 p-4 text-red-700">加载失败: ' + escapeHtml(e.message) + '</div>'
+        show(document.getElementById('dashboard'))
+        return
+      }
+      hide(document.getElementById('loading'))
+      hide(document.getElementById('dashboard'))
+      show(document.getElementById('editor'))
+      show(document.getElementById('sections-view'))
+      hide(document.getElementById('json-view'))
+      state.view = 'sections'
+    }
+
+    document.getElementById('toggle-view').onclick = () => {
+      if (state.view === 'sections') {
+        document.getElementById('json-textarea').value = JSON.stringify(state.data, null, 2)
+        hide(document.getElementById('sections-view'))
+        show(document.getElementById('json-view'))
+        state.view = 'json'
+        document.getElementById('toggle-view').textContent = '切换板块预览'
+      } else {
+        try {
+          state.data = JSON.parse(document.getElementById('json-textarea').value)
+        } catch (e) {
+          showMsg('JSON 格式错误', 'error')
+          return
+        }
+        renderSectionsPreview(state.data, document.getElementById('sections-view'))
+        hide(document.getElementById('json-view'))
+        show(document.getElementById('sections-view'))
+        state.view = 'sections'
+        document.getElementById('toggle-view').textContent = '切换 JSON'
+      }
+    }
+
+    async function doSave(rebuild) {
+      const payload = state.view === 'json'
+        ? JSON.parse(document.getElementById('json-textarea').value)
+        : state.data
+      const res = await api('/api/seo', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ tool: state.tool, slug: state.slug || null, locale: 'en', data: payload, rebuild: !!rebuild })
+      })
+      state.data = payload
+      document.getElementById('json-textarea').value = JSON.stringify(payload, null, 2)
+      renderSectionsPreview(state.data, document.getElementById('sections-view'))
+      return res
+    }
+
+    document.getElementById('save-btn').onclick = async () => {
+      try {
+        await doSave(false)
+        showMsg('保存成功。开发时运行 npm run dev 并刷新页面可实时查看。')
+      } catch (e) {
+        showMsg(e.message, 'error')
+      }
+    }
+
+    document.getElementById('delete-page-btn').onclick = async () => {
+      if (!state.slug) return
+      if (!confirm(`确定删除 L3 页面「${state.slug}」？此操作不可恢复。`)) return
+      try {
+        await api(`/api/seo?tool=${encodeURIComponent(state.tool)}&slug=${encodeURIComponent(state.slug)}&locale=en`, { method: 'DELETE' })
+        showMsg('已删除，正在跳转...')
+        location.href = '/'
+      } catch (e) {
+        showMsg(e.message, 'error')
+      }
+    }
+
+    const changeUrlModal = document.getElementById('change-url-modal')
+    const changeUrlInput = document.getElementById('change-url-input')
+    const isL2 = () => !state.slug
+    document.getElementById('change-url-btn').onclick = async () => {
+      const current = isL2() ? state.tool : (state.tool + '/' + state.slug)
+      document.getElementById('change-url-current').textContent = current
+      changeUrlInput.value = ''
+      changeUrlInput.placeholder = isL2() ? '如 watermark-remover' : '如 how-to-remove-watermark-from-photo'
+      document.getElementById('change-url-hint').textContent = '小写字母、数字、连字符。AI 生成会结合关键词搜索量推荐'
+      changeUrlModal.classList.remove('hidden')
+      changeUrlInput.focus()
+    }
+    document.getElementById('change-url-cancel').onclick = () => changeUrlModal.classList.add('hidden')
+    document.getElementById('change-url-ai-btn').onclick = async () => {
+      const btn = document.getElementById('change-url-ai-btn')
+      btn.disabled = true
+      btn.textContent = '生成中...'
+      try {
+        const seed = state.data?.metadata?.title || state.data?.intro?.title || (isL2() ? state.tool : state.slug)
+        const res = await api('/api/generate-url', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            tool: state.tool,
+            seed,
+            pageType: isL2() ? 'l2' : 'l3',
+          }),
+        })
+        if (res.ok && res.slug) {
+          changeUrlInput.value = res.slug
+          const checkTool = isL2() ? res.slug : state.tool
+          const checkSlug = isL2() ? '' : res.slug
+          let existsRes = {}
+          try {
+            existsRes = await api(`/api/seo/exists?tool=${encodeURIComponent(checkTool)}&slug=${encodeURIComponent(checkSlug)}`)
+          } catch (_) {}
+          if (existsRes.exists && (isL2() ? res.slug !== state.tool : res.slug !== state.slug)) {
+            document.getElementById('change-url-hint').textContent = '该 URL 已存在，将覆盖或请修改'
+          }
+        }
+      } catch (e) {
+        showMsg(e.message, 'error')
+      }
+      btn.disabled = false
+      btn.textContent = 'AI 生成'
+    }
+    document.getElementById('change-url-confirm').onclick = async () => {
+      const raw = changeUrlInput.value.trim().toLowerCase().replace(/[^a-z0-9-]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '')
+      if (!raw) {
+        showMsg('请输入新 URL', 'error')
+        return
+      }
+      if (isL2()) {
+        if (raw === state.tool) {
+          changeUrlModal.classList.add('hidden')
+          return
+        }
+        let existsRes = {}
+        try {
+          existsRes = await api(`/api/seo/exists?tool=${encodeURIComponent(raw)}`)
+        } catch (_) {}
+        if (existsRes.exists) {
+          if (!confirm(`工具「${raw}」已存在，将覆盖。确定继续？`)) return
+        }
+        try {
+          await api('/api/seo/rename-tool', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ oldTool: state.tool, newTool: raw }),
+          })
+          changeUrlModal.classList.add('hidden')
+          showMsg('URL 已修改，正在跳转...')
+          location.href = '/?tool=' + encodeURIComponent(raw)
+        } catch (e) {
+          showMsg(e.message, 'error')
+        }
+        return
+      }
+      if (raw === state.slug) {
+        changeUrlModal.classList.add('hidden')
+        return
+      }
+      let existsRes = {}
+      try {
+        existsRes = await api(`/api/seo/exists?tool=${encodeURIComponent(state.tool)}&slug=${encodeURIComponent(raw)}`)
+      } catch (_) {}
+      if (existsRes.exists) {
+        if (!confirm(`URL「${raw}」已存在，将覆盖其内容。确定继续？`)) return
+      }
+      try {
+        const payload = state.view === 'json' ? JSON.parse(document.getElementById('json-textarea').value) : state.data
+        await api('/api/seo', {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ tool: state.tool, slug: raw, locale: 'en', data: payload }),
+        })
+        await api(`/api/seo?tool=${encodeURIComponent(state.tool)}&slug=${encodeURIComponent(state.slug)}&locale=en`, { method: 'DELETE' })
+        changeUrlModal.classList.add('hidden')
+        showMsg('URL 已修改，正在跳转...')
+        location.href = '/?tool=' + encodeURIComponent(state.tool) + '&slug=' + encodeURIComponent(raw)
+      } catch (e) {
+        showMsg(e.message, 'error')
+      }
+    }
+
+    document.getElementById('save-rebuild-btn').onclick = async () => {
+      try {
+        const res = await doSave(true)
+        showMsg(res.building ? '保存成功，构建已启动。完成后部署 out/ 目录。' : '保存成功')
+      } catch (e) {
+        showMsg(e.message, 'error')
+      }
+    }
+
+    // Generate SEO
+    const genModal = document.getElementById('generate-modal')
+    function showGenModal() { genModal.classList.remove('hidden') }
+    function hideGenModal() { genModal.classList.add('hidden') }
+
+    async function loadKeywordsOptions() {
+      const sel = document.getElementById('gen-keywords-file')
+      const tool = state.tool
+      try {
+        const list = await api(`/api/keywords${tool ? '?tool=' + encodeURIComponent(tool) : ''}`)
+        sel.innerHTML = '<option value="">选择已有关键词文件...</option>' + list.map(k => `<option value="${k.file}">${k.file}</option>`).join('')
+      } catch (e) {
+        sel.innerHTML = '<option value="">加载失败</option>'
+      }
+    }
+
+    document.getElementById('generate-seo-btn').onclick = () => {
+      loadKeywordsOptions()
+      document.getElementById('gen-keywords-text').value = ''
+      document.getElementById('gen-result').classList.add('hidden')
+      document.getElementById('gen-url-input').value = state.slug || ''
+      document.getElementById('gen-url-input').placeholder = state.slug ? '当前: ' + state.slug : 'L2 留空；L3 填写如 how-to-remove-watermark'
+      showGenModal()
+    }
+
+    const rulePreviewModal = document.getElementById('rule-preview-modal')
+    const rulePreviewTitle = document.getElementById('rule-preview-title')
+    const rulePreviewContent = document.getElementById('rule-preview-content')
+    const ruleTitles = {
+      'SEO_CONTENT_GUIDELINES.md': 'SEO 内容规范（含 Use Case、FAQ 等）',
+      'SEO_MASTER_LAYOUT.md': 'SEO 布局规范',
+      'TRANSLATION_STRUCTURE_GUIDE.md': '结构规范',
+      'tool': '工具规格'
+    }
+    document.querySelectorAll('.rule-preview-btn').forEach(btn => {
+      btn.onclick = async () => {
+        const file = btn.dataset.file
+        if (file === 'tool' && !state.tool) {
+          rulePreviewTitle.textContent = '工具规格'
+          rulePreviewContent.textContent = '请先在左侧选择工具后再预览。'
+          rulePreviewModal.classList.remove('hidden')
+          return
+        }
+        let url = API_BASE + '/api/rule-preview?file=' + encodeURIComponent(file)
+        if (file === 'tool' && state.tool) url += '&tool=' + encodeURIComponent(state.tool)
+        rulePreviewTitle.textContent = (file === 'tool' && state.tool ? ruleTitles[file] + ' - ' + state.tool : ruleTitles[file]) || file
+        rulePreviewContent.textContent = '加载中...'
+        rulePreviewModal.classList.remove('hidden')
+        try {
+          const res = await fetch(url)
+          const text = await res.text()
+          if (res.ok) {
+            rulePreviewContent.textContent = text
+          } else {
+            try {
+              const err = JSON.parse(text)
+              const msg = err.error || text
+              const extra = err.path ? ` (路径: ${err.path})` : ''
+              rulePreviewContent.textContent = '加载失败: ' + msg + extra
+            } catch {
+              rulePreviewContent.textContent = res.status === 404 ? '文件不存在' : '加载失败: ' + text
+            }
+          }
+        } catch (e) {
+          rulePreviewContent.textContent = '加载失败: ' + e.message
+        }
+      }
+    })
+    document.getElementById('rule-preview-close').onclick = () => rulePreviewModal.classList.add('hidden')
+
+    document.getElementById('gen-ai-url-btn').onclick = async () => {
+      const btn = document.getElementById('gen-ai-url-btn')
+      btn.disabled = true
+      btn.textContent = '生成中...'
+      try {
+        const kwText = document.getElementById('gen-keywords-text').value.trim().slice(0, 3000)
+        const res = await api('/api/generate-url', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            tool: state.tool,
+            seed: kwText || undefined,
+            pageType: 'l3',
+            keywordsContent: kwText || undefined,
+          }),
+        })
+        if (res.ok && res.slug) {
+          document.getElementById('gen-url-input').value = res.slug
+          const existsRes = await api(`/api/seo/exists?tool=${encodeURIComponent(state.tool)}&slug=${encodeURIComponent(res.slug)}`)
+          if (existsRes.exists) {
+            showMsg('该 URL 已存在，可选择覆盖或修改后新增', 'error')
+          }
+        } else {
+          showMsg(res.error || '生成失败', 'error')
+        }
+      } catch (e) {
+        showMsg(e.message, 'error')
+      }
+      btn.disabled = false
+      btn.textContent = 'AI 生成 URL'
+    }
+
+    document.getElementById('gen-keywords-upload').onchange = e => {
+      const f = e.target.files?.[0]
+      if (!f) return
+      const r = new FileReader()
+      r.onload = () => {
+        document.getElementById('gen-keywords-text').value = r.result
+      }
+      r.readAsText(f)
+    }
+
+    document.getElementById('gen-close-btn').onclick = hideGenModal
+    document.getElementById('gen-close-result').onclick = () => {
+      document.getElementById('gen-result').classList.add('hidden')
+    }
+    document.getElementById('gen-download-report').onclick = () => {
+      const content = document.getElementById('gen-report-content')?.textContent || ''
+      if (!content || content.includes('（报告生成中') || content.includes('暂无关键词')) return
+      const blob = new Blob([content], { type: 'text/markdown;charset=utf-8' })
+      const a = document.createElement('a')
+      a.href = URL.createObjectURL(blob)
+      a.download = `seo-report-${state.tool}-${window._genTargetSlug || 'l2'}.md`
+      a.click()
+      URL.revokeObjectURL(a.href)
+    }
+
+    document.getElementById('gen-submit-btn').onclick = async () => {
+      const comps = Array.from(document.querySelectorAll('.gen-comp:checked')).map(c => c.value)
+      const keywordsText = document.getElementById('gen-keywords-text').value.trim()
+      const keywordsFile = document.getElementById('gen-keywords-file').value || null
+      const useSeoContentGuidelines = document.getElementById('gen-use-seo-content').checked
+      const useSeoLayout = document.getElementById('gen-use-seo-layout').checked
+      const useStructureGuide = document.getElementById('gen-use-structure').checked
+      const useToolSpec = document.getElementById('gen-use-tool-spec').checked
+      const slugInput = document.getElementById('gen-url-input').value.trim() || null
+      const targetSlug = slugInput || state.slug || null
+
+      if (targetSlug) {
+        let existsRes = {}
+        try {
+          existsRes = await api(`/api/seo/exists?tool=${encodeURIComponent(state.tool)}&slug=${encodeURIComponent(targetSlug)}`)
+        } catch (_) {}
+        if (existsRes.exists && targetSlug !== state.slug) {
+          const overwrite = confirm('该 URL 已存在。\n\n点击「确定」覆盖现有内容；\n点击「取消」修改 URL 后新增。')
+          if (!overwrite) return
+        }
+      }
+
+      const btn = document.getElementById('gen-submit-btn')
+      btn.disabled = true
+      btn.textContent = '生成中...'
+      try {
+        const res = await api('/api/generate', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            tool: state.tool,
+            slug: targetSlug,
+            keywordsText: keywordsText || undefined,
+            keywordsFile: keywordsFile || undefined,
+            useComponents: comps,
+            useSeoContentGuidelines,
+            useSeoLayout,
+            useStructureGuide,
+            useToolSpec,
+          }),
+        })
+        if (res.ok && res.data) {
+          document.getElementById('gen-result-text').value = JSON.stringify(res.data, null, 2)
+          window._genResult = res.data
+          window._genTargetSlug = targetSlug
+          const reportContent = document.getElementById('gen-report-content')
+          reportContent.textContent = res.report?.markdown || '（报告生成中或暂无关键词数据）'
+          window._genReport = res.report || null
+          document.getElementById('gen-result').classList.remove('hidden')
+          btn.textContent = '重新生成'
+        } else {
+          showMsg(res.error || '生成失败', 'error')
+          btn.textContent = '生成'
+        }
+      } catch (e) {
+        showMsg(e.message, 'error')
+        btn.textContent = '生成'
+      }
+      btn.disabled = false
+    }
+
+    document.getElementById('gen-apply-btn').onclick = async () => {
+      let data = window._genResult
+      const targetSlug = window._genTargetSlug
+      if (!data) return
+      data = normalizeForAdmin(data)
+      const isNewPage = targetSlug != null && targetSlug !== state.slug
+      if (isNewPage) {
+        try {
+          await api('/api/seo', {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ tool: state.tool, slug: targetSlug, locale: 'en', data }),
+          })
+          hideGenModal()
+          showMsg('已创建新页面，正在跳转...')
+          location.href = '/?tool=' + encodeURIComponent(state.tool) + '&slug=' + encodeURIComponent(targetSlug)
+          return
+        } catch (e) {
+          showMsg(e.message, 'error')
+          return
+        }
+      }
+      state.data = data
+      document.getElementById('json-textarea').value = JSON.stringify(data, null, 2)
+      renderSectionsPreview(state.data, document.getElementById('sections-view'))
+      hideGenModal()
+      showMsg('已应用生成内容，可编辑后保存或直接保存')
+    }
+
+    if (location.search) {
+      loadEditor()
+    } else {
+      loadDashboard()
+    }
+  </script>
+</body>
+</html>

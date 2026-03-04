@@ -2,6 +2,7 @@
 
 import { useState, useRef, useCallback, useEffect } from 'react'
 import SiteImage from './SiteImage'
+import { getImageUploadUrl } from '@/lib/upload-url'
 import DeleteIcon from './icons/DeleteIcon'
 import CloseIcon from './icons/CloseIcon'
 import ReplaceIcon from './icons/ReplaceIcon'
@@ -174,11 +175,8 @@ export default function NanoBananaTool() {
       formData.append('outputFormat', outputFormat)
       formData.append('isImageToImage', String(activeTab === 'image-to-image'))
 
-      // 获取上传 URL，优先使用环境变量，否则使用本地 API 路由作为回退
-      const uploadUrl = typeof process.env.NEXT_PUBLIC_IMAGE_UPLOAD_URL === 'string'
-        ? process.env.NEXT_PUBLIC_IMAGE_UPLOAD_URL.trim()
-        : '/api/upload' // 回退到本地 API 路由
-      
+      const uploadUrl = getImageUploadUrl()
+
       if (activeTab === 'image-to-image' && imageFiles.length > 0) {
         // 批量上传所有图片
         const imageUrls: string[] = []

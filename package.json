@@ -8,13 +8,16 @@
   "scripts": {
     "dev": "next dev -p 3006",
     "build": "next build",
+    "postbuild": "node scripts/postbuild-restore-api.js",
     "start": "next start -p 3006",
     "lint": "next lint",
     "sync-locales": "tsx scripts/sync-locales.ts",
     "sync-individual": "tsx scripts/sync-individual-locales.ts",
     "sync-exact": "tsx scripts/sync-exact-copy.ts",
     "pre-deploy": "node scripts/pre-deploy-check.js",
-    "prebuild": "node scripts/prebuild-check.js"
+    "prebuild": "node scripts/prebuild-check.js",
+    "admin:seo": "node scripts/admin-seo-server.js",
+    "admin:seo:restart": "pkill -f 'admin-seo-server' 2>/dev/null; sleep 1; node scripts/admin-seo-server.js"
   },
   "dependencies": {
     "@next/third-parties": "^16.1.2",

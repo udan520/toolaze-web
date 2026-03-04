@@ -1,8 +1,10 @@
 {
   "nav": {
     "quickTools": "Quick Tools",
+    "aiTools": "AI Tools",
     "imageCompression": "Image Compression",
     "imageConverter": "Image Converter",
+    "watermarkRemover": "Watermark Remover",
     "fontGenerator": "Font Generator",
     "emojiCopyAndPaste": "Emoji Copy & Paste",
     "aiImage": "AI Image",
@@ -116,6 +118,8 @@
     }
   },
   "footer": {
+    "aiTools": "AI Tools",
+    "watermarkRemover": "Watermark Remover",
     "aiImage": "AI Image",
     "aiVideo": "AI Video",
     "imageCompression": "Image Compression",
@@ -141,6 +145,7 @@
     "quickTools": "Quick Tools",
     "imageCompression": "Image Compression",
     "imageConverter": "Image Converter",
+    "watermarkRemover": "Watermark Remover",
     "fontGenerator": "Font Generator",
     "emojiCopyAndPaste": "Emoji Copy & Paste",
     "aboutUs": "About Us",
