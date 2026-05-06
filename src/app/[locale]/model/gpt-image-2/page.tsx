@@ -8,10 +8,13 @@ interface PageProps {
 
 export function generateStaticParams() {
   return [
+    { locale: 'en' },
     { locale: 'de' },
     { locale: 'ja' },
     { locale: 'es' },
     { locale: 'zh-TW' },
+    { locale: 'zh-tw' },
+    { locale: 'zh' },
     { locale: 'pt' },
     { locale: 'fr' },
     { locale: 'ko' },
