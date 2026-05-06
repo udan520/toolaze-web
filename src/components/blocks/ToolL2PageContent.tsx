@@ -25,6 +25,7 @@ import ModelIntroBlock from '@/components/blocks/ModelIntroBlock'
 import Scenarios from '@/components/blocks/Scenarios'
 import Rating from '@/components/blocks/Rating'
 import FAQ from '@/components/blocks/FAQ'
+import PromptExamples from '@/components/blocks/PromptExamples'
 import ToolCard from '@/components/ToolCard'
 import React from 'react'
 
@@ -145,6 +146,9 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
       content = localizeLinksInObject(content, locale) as typeof content
     }
 
+    // 顶部功能：优先使用 JSON 中的 topComponent，否则用 tool
+    const topComp = (content.topComponent || tool) as string
+
     // Load translations
     const t = await loadCommonTranslations(locale)
     const breadcrumbT = t?.breadcrumb || { home: 'Home', fontGenerator: 'Font Generator' }
@@ -224,10 +228,23 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
           { label: 'Model', href: '/model' },
           { label: 'Nano Banana 2' },
         ]
+      : tool === 'gpt-image-2'
+      ? [
+          { label: breadcrumbT.home, href: '/' },
+          { label: 'Model', href: '/model' },
+          { label: 'GPT Image 2' },
+        ]
       : tool === 'seedance-2'
       ? [
-          { label: breadcrumbT.home, href: locale === 'en' ? '/' : `/${locale}` },
+          { label: breadcrumbT.home, href: '/' },
+          { label: 'Model', href: '/model' },
           { label: 'Seedance 2.0' },
+        ]
+      : tool === 'kling-3'
+      ? [
+          { label: breadcrumbT.home, href: '/' },
+          { label: 'Model', href: '/model' },
+          { label: 'Kling 3.0' },
         ]
       : [
           { label: breadcrumbT.home, href: locale === 'en' ? '/' : `/${locale}` },
@@ -240,10 +257,22 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
     const getModelL2Href = (modelTool: string): string => {
       if (modelTool === 'nano-banana-pro') return locale === 'en' ? '/model/nano-banana-pro' : `/${locale}/model/nano-banana-pro`
       if (modelTool === 'nano-banana-2') return locale === 'en' ? '/model/nano-banana-2' : `/${locale}/model/nano-banana-2`
+      if (modelTool === 'gpt-image-2') return locale === 'en' ? '/model/gpt-image-2' : `/${locale}/model/gpt-image-2`
+      if (modelTool === 'seedance-2') return locale === 'en' ? '/model/seedance-2' : `/${locale}/model/seedance-2`
+      if (modelTool === 'kling-3') return locale === 'en' ? '/model/kling-3' : `/${locale}/model/kling-3`
       return locale === 'en' ? `/${modelTool}` : `/${locale}/${modelTool}`
     }
     let filteredRecommendedTools: Array<{ slug: string; title: string; description: string; href: string }> = []
-    if (VIDEO_MODEL_L2S.includes(tool)) {
+    if (Array.isArray(content.moreToolsLinks) && content.moreToolsLinks.length > 0) {
+      filteredRecommendedTools = content.moreToolsLinks
+        .filter((l: { title?: string; href?: string }) => l?.title && l?.href)
+        .map((l: { slug?: string; title: string; description?: string; href: string }) => ({
+          slug: l.slug || l.href?.split('/').pop() || '',
+          title: l.title,
+          description: l.description || '',
+          href: l.href,
+        }))
+    } else if (VIDEO_MODEL_L2S.includes(tool)) {
       const otherVideoModels = VIDEO_MODEL_L2S.filter((t) => t !== tool)
       filteredRecommendedTools = await Promise.all(
         otherVideoModels.slice(0, 3).map(async (modelTool) => {
@@ -346,13 +375,13 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
         <Breadcrumb items={breadcrumbItems} />
 
         <main className="min-h-screen bg-[#F8FAFF] overflow-x-hidden">
-          {/* 1. Hero 板块 - 固定在最前面，不参与动态顺序 */}
-          {tool === 'font-generator' ? (
+          {/* 1. Hero 板块 - 固定在最前面，不参与动态顺序；支持 topComponent 覆盖 */}
+          {topComp === 'font-generator' ? (
             <FontGeneratorHero 
               h1={content.hero?.h1 || 'Font Generator'}
               desc={content.hero?.desc || 'Generate custom fonts online for free. Create beautiful text styles instantly.'}
             />
-          ) : tool === 'image-compressor' || tool === 'image-compression' ? (
+          ) : topComp === 'image-compressor' || topComp === 'image-compression' ? (
             <header className="bg-[#F8FAFF] pb-12 px-6">
               <div className="max-w-4xl mx-auto text-center pt-8 mb-12">
                 <h1 className="text-[40px] font-extrabold tracking-tight mb-6 leading-tight text-slate-900">
@@ -371,7 +400,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
               <ImageCompressor />
               <TrustBar />
             </header>
-          ) : tool === 'image-converter' || tool === 'image-conversion' ? (
+          ) : topComp === 'image-converter' || topComp === 'image-conversion' ? (
             <header className="bg-[#F8FAFF] pb-12 px-6">
               <div className="max-w-4xl mx-auto text-center pt-8 mb-12">
                 <h1 className="text-[40px] font-extrabold tracking-tight mb-6 leading-tight text-slate-900">
@@ -390,7 +419,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
               <ImageConverter />
               <TrustBar />
             </header>
-          ) : tool === 'emoji-copy-and-paste' ? (
+          ) : topComp === 'emoji-copy-and-paste' ? (
             <header className="bg-[#F8FAFF] pb-12 px-6">
               <div className="max-w-4xl mx-auto text-center pt-8 mb-8">
                 <h1 className="text-[40px] font-extrabold tracking-tight mb-6 leading-tight text-slate-900">
@@ -411,7 +440,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
               </div>
               <TrustBar />
             </header>
-          ) : tool === 'watermark-remover' ? (
+          ) : topComp === 'watermark-remover' ? (
             <header className="bg-[#F8FAFF] pb-12 px-6">
               <div className="max-w-4xl mx-auto text-center pt-8 mb-12">
                 <h1 className="text-[40px] font-extrabold tracking-tight mb-6 leading-tight text-slate-900">
@@ -429,7 +458,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
               </div>
               <WatermarkRemover />
             </header>
-          ) : tool === 'nano-banana-pro' ? (
+          ) : topComp === 'nano-banana-pro' ? (
             <header className="bg-[#F8FAFF] pb-6 md:pb-12 w-full px-2 md:px-6">
               <div className="w-full max-w-full text-center pt-6 md:pt-8 mb-6 md:mb-12">
                 <h1 className="text-[40px] font-extrabold tracking-tight mb-6 leading-tight text-slate-900">
@@ -452,7 +481,33 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                 </div>
               </div>
             </header>
-          ) : tool === 'seedance-2' ? (
+          ) : topComp === 'gpt-image-2' ? (
+            <header className="bg-[#F8FAFF] pb-6 md:pb-12 w-full px-2 md:px-6">
+              <div className="w-full max-w-full text-center pt-6 md:pt-8 mb-6 md:mb-12">
+                <h1 className="text-[40px] font-extrabold tracking-tight mb-6 leading-tight text-slate-900">
+                  {content.hero?.h1 ? (
+                    renderH1WithGradient(content.hero.h1)
+                  ) : (
+                    <>GPT Image 2</>
+                  )}
+                </h1>
+                {content.hero?.desc && (
+                  <p className="desc-text text-lg md:text-xl max-w-4xl mx-auto">
+                    {content.hero.desc}
+                  </p>
+                )}
+              </div>
+              <div className="w-full max-w-full">
+                <div className="flex flex-col md:h-screen md:overflow-hidden">
+                  <NanoBananaTool
+                    modelId="gpt-image-2"
+                    modelName="GPT Image 2"
+                    dailyLimitStorageKey="gpt_image_2_last_used_date"
+                  />
+                </div>
+              </div>
+            </header>
+          ) : topComp === 'seedance-2' ? (
             <header className="bg-[#F8FAFF] pb-12 px-6">
               <div className="max-w-4xl mx-auto text-center pt-8 mb-12">
                 <h1 className="text-[40px] font-extrabold tracking-tight mb-6 leading-tight text-slate-900">
@@ -470,7 +525,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
               </div>
               <SeedanceHeroPlaceholder />
             </header>
-          ) : tool === 'kling-3' ? (
+          ) : topComp === 'kling-3' ? (
             <header className="bg-[#F8FAFF] pb-12 px-6">
               <div className="max-w-4xl mx-auto text-center pt-8 mb-12">
                 <h1 className="text-[40px] font-extrabold tracking-tight mb-6 leading-tight text-slate-900">
@@ -488,7 +543,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
               </div>
               <KlingHeroPlaceholder />
             </header>
-          ) : tool === 'nano-banana-2' ? (
+          ) : topComp === 'nano-banana-2' ? (
             <header className="bg-[#F8FAFF] pb-12 px-6">
               <div className="max-w-4xl mx-auto text-center pt-8 mb-12">
                 <h1 className="text-[40px] font-extrabold tracking-tight mb-6 leading-tight text-slate-900">
@@ -513,7 +568,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                   {content.hero?.h1 ? (
                     renderH1WithGradient(content.hero.h1)
                   ) : (
-                    <>{tool}</>
+                    <>{topComp || tool}</>
                   )}
                 </h1>
                 {content.hero?.desc && (
@@ -612,6 +667,19 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                     key="scenes"
                     title={scenesTitle}
                     scenarios={scenariosData}
+                    bgClass={bgClass}
+                  />
+                )
+              },
+              promptExamples: (bgClass: string) => {
+                const promptExamples = content.promptExamples as { title?: string; subtitle?: string; items?: Array<{ title: string; prompt: string; image: string }> } | undefined
+                if (!promptExamples?.items || promptExamples.items.length === 0) return null
+                return (
+                  <PromptExamples
+                    key="promptExamples"
+                    title={promptExamples.title}
+                    subtitle={promptExamples.subtitle}
+                    items={promptExamples.items}
                     bgClass={bgClass}
                   />
                 )

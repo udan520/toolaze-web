@@ -45,6 +45,23 @@ function mapOutputFormat(format) {
   return 'png';
 }
 
+function resolveModel(model) {
+  const m = String(model || '').trim().toLowerCase();
+  if (m === 'gpt-image-2') return 'gpt-image-2';
+  return 'nano-banana-pro';
+}
+
+function resolveProviderModelId(model, env) {
+  if (model === 'gpt-image-2') {
+    return env.KIE_GPT_IMAGE_2_MODEL || 'gpt-image-2';
+  }
+  return env.KIE_NANO_BANANA_MODEL || 'nano-banana-pro';
+}
+
+function getMaxImagesForModel(model) {
+  return model === 'gpt-image-2' ? 16 : 8;
+}
+
 function jsonResponse(body, status = 200) {
   return new Response(JSON.stringify(body), {
     status,
@@ -72,6 +89,9 @@ export async function onRequest(context) {
     const outputFormat = formData.get('outputFormat') || 'Auto';
     const resolution = formData.get('resolution') || '1K';
     const isImageToImage = formData.get('isImageToImage') === 'true';
+    const model = resolveModel(formData.get('model'));
+    const providerModelId = resolveProviderModelId(model, env);
+    const maxImages = getMaxImagesForModel(model);
 
     if (!prompt) {
       return jsonResponse({ error: 'Prompt is required' }, 400);
@@ -95,8 +115,8 @@ export async function onRequest(context) {
         error: 'Image-to-image requires a public image URL. Please set NEXT_PUBLIC_IMAGE_UPLOAD_URL to your upload endpoint.',
       }, 400);
     }
-    if (isImageToImage && imageUrls.length > 8) {
-      return jsonResponse({ error: 'Maximum 8 images allowed' }, 400);
+    if (isImageToImage && imageUrls.length > maxImages) {
+      return jsonResponse({ error: `Maximum ${maxImages} images allowed` }, 400);
     }
 
     const apiKey = getApiKey(env);
@@ -121,7 +141,11 @@ export async function onRequest(context) {
       input.output_format = mappedFormat;
     }
     if (isImageToImage && imageUrls.length > 0) {
-      input.image_input = imageUrls.slice(0, 8);
+      if (model === 'gpt-image-2') {
+        input.input_urls = imageUrls.slice(0, maxImages);
+      } else {
+        input.image_input = imageUrls.slice(0, maxImages);
+      }
     }
 
     const response = await fetch(`${KIE_AI_BASE}/createTask`, {
@@ -131,14 +155,17 @@ export async function onRequest(context) {
         'Authorization': `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
-        model: 'nano-banana-pro',
+        model: providerModelId,
         input,
       }),
     });
 
     const result = await response.json().catch(() => ({}));
     if (!response.ok) {
-      const msg = result?.message ?? result?.msg ?? await response.text();
+      let msg = result?.message ?? result?.msg ?? await response.text();
+      if (model === 'gpt-image-2' && /model name you specified is not supported/i.test(String(msg))) {
+        msg = 'Current KIE key does not support GPT Image 2. Set KIE_GPT_IMAGE_2_MODEL to your account-enabled model id.';
+      }
       return jsonResponse({ error: msg || 'Failed to create task' }, response.status);
     }
 

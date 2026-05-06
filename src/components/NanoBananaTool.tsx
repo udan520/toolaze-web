@@ -1,6 +1,8 @@
 'use client'
 
 import { useState, useRef, useCallback, useEffect } from 'react'
+import { useMemo } from 'react'
+import { usePathname, useRouter } from 'next/navigation'
 import SiteImage from './SiteImage'
 import { getImageUploadUrl } from '@/lib/upload-url'
 import DeleteIcon from './icons/DeleteIcon'
@@ -20,26 +22,66 @@ interface HistoryItem {
   outputFormat?: string
 }
 
-const ASPECT_RATIOS = [
-  { value: '1:1', label: '1:1' },
-  { value: '2:3', label: '2:3' },
-  { value: '3:2', label: '3:2' },
-  { value: '3:4', label: '3:4' },
-  { value: '4:3', label: '4:3' },
-  { value: '4:5', label: '4:5' },
-  { value: '5:4', label: '5:4' },
-  { value: '9:16', label: '9:16' },
-  { value: '16:9', label: '16:9' },
-  { value: '21:9', label: '21:9' },
-  { value: 'auto', label: 'Auto' },
-] as const
+const MODEL_CONFIG = {
+  'nano-banana-pro': {
+    aspectRatios: [
+      { value: '1:1', label: '1:1' },
+      { value: '2:3', label: '2:3' },
+      { value: '3:2', label: '3:2' },
+      { value: '3:4', label: '3:4' },
+      { value: '4:3', label: '4:3' },
+      { value: '4:5', label: '4:5' },
+      { value: '5:4', label: '5:4' },
+      { value: '9:16', label: '9:16' },
+      { value: '16:9', label: '16:9' },
+      { value: '21:9', label: '21:9' },
+      { value: 'auto', label: 'Auto' },
+    ],
+    maxImages: 8,
+    supportsOutputFormat: true,
+  },
+  'gpt-image-2': {
+    aspectRatios: [
+      { value: 'auto', label: 'Auto' },
+      { value: '1:1', label: '1:1' },
+      { value: '9:16', label: '9:16' },
+      { value: '16:9', label: '16:9' },
+      { value: '4:3', label: '4:3' },
+      { value: '3:4', label: '3:4' },
+    ],
+    maxImages: 16,
+    supportsOutputFormat: false,
+  },
+} as const
 
 interface ImageItem {
   file: File
   preview: string
 }
 
-export default function NanoBananaTool() {
+interface NanoBananaToolProps {
+  modelId?: 'nano-banana-pro' | 'gpt-image-2'
+  modelName?: string
+  dailyLimitStorageKey?: string
+}
+
+interface ModelOption {
+  id: 'nano-banana-pro' | 'gpt-image-2'
+  name: string
+}
+
+export default function NanoBananaTool({
+  modelId = 'nano-banana-pro',
+  modelName = 'Nano Banana Pro',
+  dailyLimitStorageKey = 'nano_banana_last_used_date',
+}: NanoBananaToolProps = {}) {
+  const router = useRouter()
+  const pathname = usePathname()
+  const modelConfig = MODEL_CONFIG[modelId]
+  const modelOptions: ModelOption[] = [
+    { id: 'nano-banana-pro', name: 'Nano Banana Pro' },
+    { id: 'gpt-image-2', name: 'GPT Image 2' },
+  ]
   const [activeTab, setActiveTab] = useState<'image-to-image' | 'text-to-image'>('image-to-image')
   const [imageFiles, setImageFiles] = useState<ImageItem[]>([])
   const [prompt, setPrompt] = useState('')
@@ -54,6 +96,7 @@ export default function NanoBananaTool() {
   const [downloadingUrl, setDownloadingUrl] = useState<string | null>(null)
   const [toasts, setToasts] = useState<Array<{ id: string; msg: string; type: string }>>([])
   const fileInputRef = useRef<HTMLInputElement>(null)
+  const promptTextareaRef = useRef<HTMLTextAreaElement>(null)
 
   // 全屏预览时禁止底层页面滚动
   useEffect(() => {
@@ -72,6 +115,25 @@ export default function NanoBananaTool() {
     }
   }, [previewImage])
 
+  // 从 SEO 提示词案例板块一键带入 Prompt
+  useEffect(() => {
+    const handler = (event: Event) => {
+      const customEvent = event as CustomEvent<{ prompt?: string }>
+      const nextPrompt = customEvent.detail?.prompt?.trim()
+      if (!nextPrompt) return
+      setPrompt(nextPrompt)
+      setActiveTab('text-to-image')
+      setRightMode('sample')
+      showToast('Prompt inserted. You can generate now.', 'success')
+      setTimeout(() => {
+        promptTextareaRef.current?.focus()
+      }, 0)
+    }
+
+    window.addEventListener('toolaze:use-prompt', handler as EventListener)
+    return () => window.removeEventListener('toolaze:use-prompt', handler as EventListener)
+  }, [])
+
   const showToast = (msg: string, type: 'success' | 'error' | 'warning' | 'info' = 'info') => {
     const id = Math.random().toString(36).substr(2, 9)
     const cleanMsg = msg.replace(/✅|❌|⚠️|❗/g, '').trim()
@@ -83,7 +145,7 @@ export default function NanoBananaTool() {
     }, 4000)
   }
 
-  const MAX_IMAGES = 8
+  const MAX_IMAGES = modelConfig.maxImages
   const MAX_FILE_SIZE = 30 * 1024 * 1024 // 30MB
 
   const handleFiles = (files: FileList | File[]) => {
@@ -141,11 +203,9 @@ export default function NanoBananaTool() {
     e.stopPropagation()
   }
 
-  const NANO_BANANA_DAILY_KEY = 'nano_banana_last_used_date'
-
   const checkDailyLimit = (): boolean => {
     const today = new Date().toISOString().split('T')[0]
-    const lastUsed = typeof localStorage !== 'undefined' ? localStorage.getItem(NANO_BANANA_DAILY_KEY) : null
+    const lastUsed = typeof localStorage !== 'undefined' ? localStorage.getItem(dailyLimitStorageKey) : null
     if (lastUsed === today) {
       alert('Daily free limit reached. Please come back tomorrow!')
       return false
@@ -156,7 +216,7 @@ export default function NanoBananaTool() {
   const recordDailyUsage = () => {
     const today = new Date().toISOString().split('T')[0]
     try {
-      localStorage.setItem(NANO_BANANA_DAILY_KEY, today)
+      localStorage.setItem(dailyLimitStorageKey, today)
     } catch (_) {}
   }
 
@@ -172,8 +232,11 @@ export default function NanoBananaTool() {
       formData.append('prompt', prompt.trim())
       formData.append('aspectRatio', aspectRatio)
       formData.append('resolution', resolution)
-      formData.append('outputFormat', outputFormat)
+      if (modelConfig.supportsOutputFormat) {
+        formData.append('outputFormat', outputFormat)
+      }
       formData.append('isImageToImage', String(activeTab === 'image-to-image'))
+      formData.append('model', modelId)
 
       const uploadUrl = getImageUploadUrl()
 
@@ -405,7 +468,12 @@ export default function NanoBananaTool() {
       const proxyUrl = `/api/download-image?url=${encodeURIComponent(imageUrl)}&filename=${encodeURIComponent(filename)}`
       
       // 方法1: fetch 代理（R2 等白名单 URL）
-      const proxyRes = await fetch(proxyUrl).catch(() => null)
+      let proxyRes: Response | null = null
+      try {
+        proxyRes = await fetch(proxyUrl)
+      } catch (_) {
+        proxyRes = null
+      }
       if (proxyRes?.ok) {
         const blob = await proxyRes.blob()
         triggerBlobDownload(blob, filename)
@@ -414,7 +482,12 @@ export default function NanoBananaTool() {
       // 代理 403/500 时不要再走代理链接，否则会下载错误页面
 
       // 方法2: 直接 fetch 原始 URL（Kie AI CDN 等，CORS 允许时）
-      const directRes = await fetch(imageUrl, { mode: 'cors', credentials: 'omit' }).catch(() => null)
+      let directRes: Response | null = null
+      try {
+        directRes = await fetch(imageUrl, { mode: 'cors', credentials: 'omit' })
+      } catch (_) {
+        directRes = null
+      }
       if (directRes?.ok) {
         const blob = await directRes.blob()
         triggerBlobDownload(blob, filename)
@@ -423,15 +496,58 @@ export default function NanoBananaTool() {
 
       // 方法3: 新开标签打开图片（用户可右键另存为）
       window.open(imageUrl, '_blank', 'noopener,noreferrer')
+    } catch (_) {
+      // 最终兜底：即使 fetch 过程中出现运行时错误，也确保用户可打开原图
+      window.open(imageUrl, '_blank', 'noopener,noreferrer')
     } finally {
       setTimeout(() => setDownloadingUrl(null), 1000)
     }
   }
 
-  // 示例图片配置（单张图片，无轮播）
-  const sampleImage = {
-    url: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/e0f5e8adf47a44afb6a4ab9fb5a27b3f.webp',
-    caption: 'Sample output'
+  const handleRecreateFromCurrent = () => {
+    if (!currentResult) return
+    const nextPrompt = currentResult.prompt?.trim() || ''
+    if (!nextPrompt) return
+
+    setPrompt(nextPrompt)
+    if (activeTab === 'image-to-image' && imageFiles.length === 0) {
+      setActiveTab('text-to-image')
+      showToast('No input image found. Switched to Text to Image for recreate.', 'info')
+    }
+
+    setTimeout(() => {
+      handleGenerate()
+    }, 0)
+  }
+
+  const SAMPLE_IMAGES: Record<ModelOption['id'], string[]> = {
+    'nano-banana-pro': [
+      'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/e0f5e8adf47a44afb6a4ab9fb5a27b3f.webp',
+    ],
+    'gpt-image-2': [
+      'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/0b0c01224b03466b913cc7b41683c785.png',
+    ],
+  }
+
+  const sampleImage = useMemo(() => {
+    const images = SAMPLE_IMAGES[modelId] || SAMPLE_IMAGES['nano-banana-pro']
+    const randomIndex = Math.floor(Math.random() * images.length)
+    return {
+      url: images[randomIndex],
+      caption: `${modelName} sample output`,
+    }
+  }, [modelId, modelName])
+
+  const handleModelChange = (nextModelId: ModelOption['id']) => {
+    if (nextModelId === modelId) return
+    const parts = pathname.split('/').filter(Boolean)
+    const modelIndex = parts.indexOf('model')
+    if (modelIndex !== -1 && parts.length > modelIndex + 1) {
+      parts[modelIndex + 1] = nextModelId
+      router.push(`/${parts.join('/')}`)
+      return
+    }
+    router.push(`/model/${nextModelId}`)
   }
 
   return (
@@ -470,8 +586,16 @@ export default function NanoBananaTool() {
             <div>
               <label className="block text-xs font-semibold text-slate-500 tracking-wide mb-2">Models</label>
               <div className="relative">
-                <select className="w-full px-4 py-2.5 pr-10 rounded-xl border border-[#E0E7FF] bg-[#EEF2FF]/30 text-slate-800 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/40 focus:border-[#4F46E5] hover:border-[#C7D2FE] hover:bg-[#EEF2FF]/50 transition-all duration-200 appearance-none cursor-pointer shadow-sm">
-                  <option>Nano Banana Pro</option>
+                <select
+                  value={modelId}
+                  onChange={(e) => handleModelChange(e.target.value as ModelOption['id'])}
+                  className="w-full px-4 py-2.5 pr-10 rounded-xl border border-[#E0E7FF] bg-[#EEF2FF]/30 text-slate-800 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/40 focus:border-[#4F46E5] hover:border-[#C7D2FE] hover:bg-[#EEF2FF]/50 transition-all duration-200 appearance-none cursor-pointer shadow-sm"
+                >
+                  {modelOptions.map((option) => (
+                    <option key={option.id} value={option.id}>
+                      {option.name}
+                    </option>
+                  ))}
                 </select>
                 <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#4F46E5]">
@@ -591,6 +715,7 @@ export default function NanoBananaTool() {
             <div>
               <label className="block text-xs font-semibold text-slate-500 tracking-wide mb-2">Prompt</label>
               <textarea
+                ref={promptTextareaRef}
                 value={prompt}
                 onChange={(e) => setPrompt(e.target.value)}
                 placeholder="Please describe the image content"
@@ -608,7 +733,7 @@ export default function NanoBananaTool() {
                   onChange={(e) => setAspectRatio(e.target.value)}
                   className="w-full px-4 py-2.5 pr-10 rounded-xl border border-[#E0E7FF] bg-[#EEF2FF]/30 text-slate-800 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/40 focus:border-[#4F46E5] hover:border-[#C7D2FE] hover:bg-[#EEF2FF]/50 transition-all duration-200 appearance-none cursor-pointer shadow-sm"
                 >
-                  {ASPECT_RATIOS.map((ar) => (
+                  {modelConfig.aspectRatios.map((ar) => (
                     <option key={ar.value} value={ar.value}>
                       {ar.label}
                     </option>
@@ -632,8 +757,8 @@ export default function NanoBananaTool() {
                   className="w-full px-4 py-2.5 pr-10 rounded-xl border border-[#E0E7FF] bg-[#EEF2FF]/30 text-slate-800 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/40 focus:border-[#4F46E5] hover:border-[#C7D2FE] hover:bg-[#EEF2FF]/50 transition-all duration-200 appearance-none cursor-pointer shadow-sm"
                 >
                   <option value="1K">1K</option>
-                  <option value="2K">2K</option>
-                  <option value="4K">4K</option>
+                  <option value="2K" disabled>2K (Temporarily unavailable)</option>
+                  <option value="4K" disabled>4K (Temporarily unavailable)</option>
                 </select>
                 <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#4F46E5]">
@@ -641,28 +766,30 @@ export default function NanoBananaTool() {
                   </svg>
                 </div>
               </div>
+              <p className="text-xs text-slate-400 mt-1.5">2K and 4K are temporarily unavailable.</p>
             </div>
 
-            {/* Output Format */}
-            <div>
-              <label className="block text-xs font-semibold text-slate-500 tracking-wide mb-2">Output Format</label>
-              <div className="relative">
-                <select
-                  value={outputFormat}
-                  onChange={(e) => setOutputFormat(e.target.value)}
-                  className="w-full px-4 py-2.5 pr-10 rounded-xl border border-[#E0E7FF] bg-[#EEF2FF]/30 text-slate-800 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/40 focus:border-[#4F46E5] hover:border-[#C7D2FE] hover:bg-[#EEF2FF]/50 transition-all duration-200 appearance-none cursor-pointer shadow-sm"
-                >
-                  <option value="Auto">Auto</option>
-                  <option value="PNG">PNG</option>
-                  <option value="JPG">JPG</option>
-                </select>
-                <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#4F46E5]">
-                    <polyline points="6 9 12 15 18 9" />
-                  </svg>
+            {modelConfig.supportsOutputFormat && (
+              <div>
+                <label className="block text-xs font-semibold text-slate-500 tracking-wide mb-2">Output Format</label>
+                <div className="relative">
+                  <select
+                    value={outputFormat}
+                    onChange={(e) => setOutputFormat(e.target.value)}
+                    className="w-full px-4 py-2.5 pr-10 rounded-xl border border-[#E0E7FF] bg-[#EEF2FF]/30 text-slate-800 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/40 focus:border-[#4F46E5] hover:border-[#C7D2FE] hover:bg-[#EEF2FF]/50 transition-all duration-200 appearance-none cursor-pointer shadow-sm"
+                  >
+                    <option value="Auto">Auto</option>
+                    <option value="PNG">PNG</option>
+                    <option value="JPG">JPG</option>
+                  </select>
+                  <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#4F46E5]">
+                      <polyline points="6 9 12 15 18 9" />
+                    </svg>
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
           </div>
 
           {/* Generate 固定底部，始终在第一屏 */}
@@ -840,7 +967,7 @@ export default function NanoBananaTool() {
                 {/* Metadata Tags */}
                 <div className="flex flex-wrap gap-2">
                   <span className="px-3 py-1.5 rounded-lg bg-[#EEF2FF] text-[#4F46E5] text-xs font-semibold">{formatTagValue(aspectRatio)}</span>
-                  <span className="px-3 py-1.5 rounded-lg bg-[#EEF2FF] text-[#4F46E5] text-xs font-semibold">Nano Banana Pro</span>
+                  <span className="px-3 py-1.5 rounded-lg bg-[#EEF2FF] text-[#4F46E5] text-xs font-semibold">{modelName}</span>
                   <span className="px-3 py-1.5 rounded-lg bg-[#EEF2FF] text-[#4F46E5] text-xs font-semibold">{currentResult.time}</span>
                 </div>
 
@@ -848,11 +975,18 @@ export default function NanoBananaTool() {
                 <div className="flex gap-3">
                   <button
                     type="button"
-                    onClick={handleGenerate}
-                    disabled={isGenerating || !prompt.trim() || (activeTab === 'image-to-image' && imageFiles.length === 0)}
+                    onClick={handleRecreateFromCurrent}
+                    disabled={
+                      isGenerating ||
+                      !(currentResult.prompt && currentResult.prompt.trim()) ||
+                      (activeTab === 'image-to-image' && imageFiles.length === 0 && !currentResult.inputPreview)
+                    }
                     className="flex-1 py-3 rounded-xl font-bold text-sm text-center disabled:cursor-not-allowed transition-all duration-200 text-white shadow-md hover:shadow-lg disabled:shadow-none"
                     style={{
-                      background: isGenerating || !prompt.trim() || (activeTab === 'image-to-image' && imageFiles.length === 0)
+                      background:
+                        isGenerating ||
+                        !(currentResult.prompt && currentResult.prompt.trim()) ||
+                        (activeTab === 'image-to-image' && imageFiles.length === 0 && !currentResult.inputPreview)
                         ? 'linear-gradient(135deg, #C7D2FE 0%, #E0E7FF 100%)'
                         : 'linear-gradient(135deg, #4F46E5 0%, #9333EA 100%)',
                     }}
@@ -979,7 +1113,7 @@ export default function NanoBananaTool() {
                       )}
                       <div className="flex flex-wrap gap-2 flex-1">
                         <span className="px-3 py-1.5 rounded-lg bg-[#EEF2FF] text-[#4F46E5] text-xs font-semibold">{formatTagValue(item.aspectRatio)}</span>
-                        <span className="px-3 py-1.5 rounded-lg bg-[#EEF2FF] text-[#4F46E5] text-xs font-semibold">Nano Banana Pro</span>
+                        <span className="px-3 py-1.5 rounded-lg bg-[#EEF2FF] text-[#4F46E5] text-xs font-semibold">{modelName}</span>
                         <span className="px-3 py-1.5 rounded-lg bg-[#EEF2FF] text-[#4F46E5] text-xs font-semibold">{item.time}</span>
                       </div>
                     </div>

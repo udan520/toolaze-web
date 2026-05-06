@@ -1,0 +1,203 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "GPT Image 2 Online - Text to Image & Image to Image Generator | Toolaze",
+    "description": "Use GPT Image 2 online on Toolaze for text-to-image and image-to-image creation. Generate marketing visuals, e-commerce images, and social creatives with flexible aspect ratios and up to 4K output."
+  },
+  "sectionsOrder": ["howToUse", "promptExamples", "modelIntro", "features", "intro", "performanceMetrics", "scenes", "rating", "faq"],
+  "hero": {
+    "h1": "Create with <span class=\"text-gradient\">GPT Image 2</span> on Toolaze",
+    "desc": "Use GPT Image 2 online for text-to-image and image-to-image in one place. Create ad creatives, e-commerce images, and social visuals in minutes."
+  },
+  "howToUse": {
+    "title": "How to Use GPT Image 2",
+    "steps": [
+      {
+        "title": "Choose Text-to-Image or Image-to-Image",
+        "desc": "Start from a prompt, or upload one or more reference images to guide the output."
+      },
+      {
+        "title": "Set Prompt and Output Options",
+        "desc": "Enter your prompt, then choose aspect ratio and resolution (1K, 2K, or 4K where supported)."
+      },
+      {
+        "title": "Generate and Download",
+        "desc": "Click Generate, wait for the task to finish, then preview and download your result."
+      }
+    ]
+  },
+  "modelIntro": {
+    "title": "What GPT Image 2 Helps You Do",
+    "modelName": "GPT Image 2",
+    "modelType": "AI Image Model",
+    "description": [
+      "GPT Image 2 supports both text-to-image and image-to-image workflows. You can describe a concept from scratch or upload reference images to guide style and composition.",
+      "On Toolaze, you can run GPT Image 2 directly in your browser with practical controls for aspect ratio and resolution. This helps creative teams iterate quickly while keeping output settings consistent.",
+      "The same interface supports ideation, visual editing, and final export in one place."
+    ],
+    "featureCards": [
+      {
+        "title": "Text-to-Image and Image-to-Image in One Tool",
+        "content": "Switch between prompt-only generation and reference-based editing without changing pages or tools."
+      },
+      {
+        "title": "Practical Output Controls",
+        "content": "Choose from common aspect ratios and 1K/2K/4K resolution options to match social, web, or production needs."
+      },
+      {
+        "title": "Fast Iteration Workflow",
+        "content": "Generate, review, refine prompts, and regenerate quickly so teams can test multiple visual directions in less time."
+      }
+    ]
+  },
+  "intro": {
+    "title": "Why Use GPT Image 2 on Toolaze?",
+    "content": [
+      {
+        "title": "From First Concept to Final Creative",
+        "text": "Toolaze gives you one GPT Image 2 workspace for both text-to-image and image-to-image. Start with a rough idea, then refine composition, style, and scene direction without changing tools."
+      },
+      {
+        "title": "Built for High-Volume Content Teams",
+        "text": "With clear controls for prompt, aspect ratio, and resolution, teams can keep outputs consistent across ad variants, product pages, social posts, and multilingual marketing materials."
+      }
+    ]
+  },
+  "features": {
+    "title": "Key GPT Image 2 Features",
+    "items": [
+      {
+        "icon": "✍️",
+        "iconType": "ai",
+        "title": "Text-to-Image Generation",
+        "desc": "Generate new visuals from natural-language prompts."
+      },
+      {
+        "icon": "🖼️",
+        "iconType": "format",
+        "title": "Image-to-Image Editing",
+        "desc": "Upload reference images and transform style, layout, or visual details."
+      },
+      {
+        "icon": "📐",
+        "iconType": "quality",
+        "title": "Aspect Ratio Options",
+        "desc": "Use auto, 1:1, 9:16, 16:9, 4:3, and 3:4 for common publishing scenarios."
+      },
+      {
+        "icon": "🧩",
+        "iconType": "quality",
+        "title": "Resolution Controls",
+        "desc": "Select 1K, 2K, or 4K outputs when the chosen ratio supports it."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Fast Generation Loop",
+        "desc": "Generate, review, and recreate quickly to test multiple creative directions in one session."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "Browser-Based Access",
+        "desc": "Use GPT Image 2 directly online without installing software."
+      }
+    ]
+  },
+  "performanceMetrics": {
+    "title": "What You Can Adjust Before Generating",
+    "metrics": [
+      { "label": "Creation Modes", "value": "Text to Image, Image to Image" },
+      { "label": "Reference Images", "value": "Up to 16 images" },
+      { "label": "Upload Formats", "value": "JPEG, JPG, PNG, WEBP (up to 30MB each)" },
+      { "label": "Aspect Ratios", "value": "auto, 1:1, 9:16, 16:9, 4:3, 3:4" },
+      { "label": "Image Quality", "value": "1K, 2K, 4K (depends on selected ratio)" },
+      { "label": "Simple Workflow", "value": "Enter prompt, generate, preview, download" }
+    ]
+  },
+  "scenesTitle": "Use Cases",
+  "scenes": [
+    {
+      "title": "Ad and Campaign Creatives",
+      "icon": "📣",
+      "desc": "Create social ads, launch graphics, and campaign variants faster with a reusable prompt baseline."
+    },
+    {
+      "title": "E-commerce Product Visuals",
+      "icon": "🛍️",
+      "desc": "Use image-to-image to test product backgrounds, style directions, and merchandising visuals for storefront pages."
+    },
+    {
+      "title": "Landing Page and Poster Concepts",
+      "icon": "🎨",
+      "desc": "Draft hero images, posters, and web visual concepts before moving to final design polish."
+    }
+  ],
+  "promptExamples": {
+    "title": "Trending Prompt Examples",
+    "subtitle": "Use these ready-to-run prompts to create viral-style visuals with GPT Image 2. You can copy them as-is or adjust the subject, background, and style.",
+    "items": [
+      {
+        "title": "TikTok Live Book Selling Scene",
+        "prompt": "A TikTok live stream scene, one Western male host selling a book titled Toolaze AI, all on-screen text in English, energetic e-commerce live setup, realistic studio lighting, 4:3 composition.",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/0b0c01224b03466b913cc7b41683c785.png"
+      },
+      {
+        "title": "Action Figure Packaging Shot",
+        "prompt": "A collectible action figure retail box mockup labeled Toolaze AI Creator Kit, premium toy packaging style, product photography on a clean shelf background, all text in English, 4:3 composition.",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3384d195c8a446cc884e27ff90ec8b5e.png"
+      },
+      {
+        "title": "Before-and-After Makeover Poster",
+        "prompt": "A split-screen before-and-after living room makeover poster for Toolaze AI, left side old style and right side modern bright style, clear English labels Before and After, realistic interior photo look, 4:3 composition.",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/7f593beb22a74d98ab0f4ec40da9257d.png"
+      },
+      {
+        "title": "Viral Street Interview Thumbnail",
+        "prompt": "A viral short-video thumbnail scene on a busy city street, host holding a sign saying I made this with Toolaze AI, expressive reactions, bold English headline text, creator economy vibe, 4:3 composition.",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/e771a0f56df34a74a7cb038d06753b02.png"
+      }
+    ]
+  },
+  "rating": {
+    "title": "Trusted by Creators and Teams",
+    "rating": "4.9/5 FROM 10K+ CREATORS",
+    "text": "Toolaze helps teams run GPT Image 2 workflows quickly with practical controls and clean browser-based UX."
+  },
+  "faqTitle": "Frequently Asked Questions",
+  "faq": [
+    {
+      "q": "Does this page support both GPT Image 2 text-to-image and image-to-image?",
+      "a": "Yes. You can switch tabs to run text-to-image from prompts or image-to-image with uploaded references in the same interface."
+    },
+    {
+      "q": "What image formats are supported for GPT Image 2 image-to-image?",
+      "a": "JPEG, JPG, PNG, and WEBP are supported, with up to 30MB per file and up to 16 images per task."
+    },
+    {
+      "q": "What is the difference between GPT Image 2 and Nano Banana Pro?",
+      "a": "GPT Image 2 is often chosen when users want cleaner text in images and more controlled edits. Nano Banana Pro offers a different visual style and creative feel. Most users test both and keep the one that matches their brand look."
+    },
+    {
+      "q": "Can I choose output resolution and aspect ratio?",
+      "a": "Yes. You can set aspect ratio and resolution from the panel before generation. Some high-resolution combinations depend on the selected ratio."
+    },
+    {
+      "q": "Can GPT Image 2 help with multilingual marketing visuals?",
+      "a": "Yes. Many teams use GPT Image 2 for text-rich marketing graphics, posters, and product visuals that need cleaner multilingual text rendering and consistent design output."
+    },
+    {
+      "q": "What can I create with GPT Image 2 on Toolaze?",
+      "a": "You can create ad creatives, social media visuals, e-commerce product images, hero banners, and poster-style concepts using text-to-image and image-to-image workflows in one place."
+    },
+    {
+      "q": "How does GPT Image 2 compare with other AI image generators?",
+      "a": "GPT Image 2 is commonly preferred when users need better text clarity, stronger edit control, and more consistent outputs across multiple versions. If your goal is usable marketing visuals instead of one-off experiments, it is often a good first choice."
+    },
+    {
+      "q": "Do I need to install software to use GPT Image 2 on Toolaze?",
+      "a": "No. Everything runs in the browser, so you can generate and download images directly online."
+    }
+  ],
+  "moreTools": "More AI Image Models"
+}
