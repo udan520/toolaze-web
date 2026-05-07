@@ -41,7 +41,7 @@ export const FONT_GENERATOR_SLUGS = [
 export const VIDEO_MODEL_L2S = ['seedance-2', 'kling-3']
 
 // 图片模型 L2 列表（用于「更多工具」推荐，仅推荐同类型 L2）
-export const IMAGE_MODEL_L2S = ['nano-banana-pro', 'nano-banana-2']
+export const IMAGE_MODEL_L2S = ['nano-banana-pro', 'nano-banana-2', 'gpt-image-2']
 
 // Seedance 2.0 L3 页面 slug 列表（按搜索量/优先级）
 const SEEDANCE_2_SLUGS = [
@@ -642,6 +642,8 @@ export async function getL2SeoContent(tool: string, locale: string = 'en') {
         }
       } else if (tool === 'nano-banana-2') {
         data = await import('@/data/en/nano-banana-2.json')
+      } else if (tool === 'gpt-image-2') {
+        data = await import('@/data/en/gpt-image-2.json')
       } else if (tool === 'seedance-2') {
         data = await import('@/data/en/seedance-2.json')
       } else if (tool === 'kling-3') {
@@ -671,6 +673,8 @@ export async function getL2SeoContent(tool: string, locale: string = 'en') {
             data = await import('@/data/en/nano-banana-pro.json')
           } else if (tool === 'nano-banana-2') {
             data = await import('@/data/en/nano-banana-2.json')
+          } else if (tool === 'gpt-image-2') {
+            data = await import('@/data/en/gpt-image-2.json')
           } else if (tool === 'seedance-2') {
             data = await import('@/data/en/seedance-2.json')
           } else if (tool === 'kling-3') {
@@ -828,7 +832,7 @@ export async function getAllSlugs(tool: string, locale: string = 'en'): Promise<
       }
       return results;
     }
-    if (tool === 'nano-banana-pro' || tool === 'nano-banana-2') {
+    if (tool === 'nano-banana-pro' || tool === 'nano-banana-2' || tool === 'gpt-image-2') {
       return [];
     }
     return [];

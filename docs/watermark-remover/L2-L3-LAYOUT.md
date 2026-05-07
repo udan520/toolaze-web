@@ -5,7 +5,26 @@
 
 ---
 
-## 一、关键词筛选说明
+## 一、L2 主页面 SEO 布局
+
+**URL**：`/watermark-remover`  
+**板块顺序**：howToUse → modelIntro → features → intro → comparison → scenes → rating → faq
+
+| 板块 | 作用 | 关键词布局 |
+|------|------|------------|
+| Hero | 首屏转化 | H1 主词 + desc 长尾 |
+| How To Use | 操作意图 | "How to" 句式 |
+| ModelIntro | 技术差异化 | AI、inpainting、格式 |
+| Features | 功能卖点 | 核心功能词 |
+| Intro | 价值主张 | 场景、痛点 |
+| Comparison | 对比转化 | 差异化卖点 |
+| Scenarios | 使用场景 | 长尾、场景词 |
+| Rating | 信任背书 | 品牌 + 主词 |
+| FAQ | 长尾 + 澄清 | 格式、批量、视频、法律 |
+
+---
+
+## 二、关键词筛选规则
 
 ### 纳入（Toolaze 支持）
 - 图片去水印：photo, image, picture, jpg, png, webp
@@ -18,7 +37,7 @@
 
 ---
 
-## 二、L2 主页面关键词布局
+## 三、L2 主页面关键词布局
 
 **URL**：`/watermark-remover`
 
@@ -58,9 +77,9 @@
 
 ---
 
-## 三、L3 页面规划（按搜索量排序）
+## 四、L3 页面规划（按搜索量排序）
 
-### 3.1 高优先级 L3（Volume ≥ 1000）
+### 4.1 高优先级 L3（Volume ≥ 1000）
 
 | 序号 | Slug | 主关键词 | Volume | KD | 说明 |
 |------|------|----------|--------|-----|------|
@@ -72,7 +91,7 @@
 | 6 | image-watermark-remover | image watermark remover | 1,600 | 68 | 工具类表达 |
 | 7 | remove-watermark-from-photo-online-free | remove watermark from photo online free | 1,900 | 62 | 长尾组合 |
 
-### 3.2 中优先级 L3（Volume 260–880）
+### 4.2 中优先级 L3（Volume 260–880）
 
 | 序号 | Slug | 主关键词 | Volume | KD | 说明 |
 |------|------|----------|--------|-----|------|
@@ -80,7 +99,7 @@
 | 9 | remove-watermark-from-webp | webp remove watermark | 260 | 58 | 格式类，Toolaze 支持 |
 | 10 | remove-watermark-from-image-online-free | remove watermark from image online free | 260 | 65 | 长尾 |
 
-### 3.3 低优先级 L3（Volume 20–50，格式类）
+### 4.3 低优先级 L3（Volume 20–50，格式类）
 
 | 序号 | Slug | 主关键词 | Volume | KD | 说明 |
 |------|------|----------|--------|-----|------|
@@ -90,7 +109,7 @@
 
 ---
 
-## 四、推荐实施顺序
+## 五、推荐实施顺序
 
 ### Phase 1：L3 高优先级（3 个）
 1. **how-to-remove-watermark-from-photo** — 6.6K 搜索，KD 38
@@ -109,7 +128,7 @@
 
 ---
 
-## 五、L2 vs L3 关键词分工
+## 六、L2 vs L3 关键词分工
 
 | 类型 | L2 覆盖 | L3 覆盖 |
 |------|---------|---------|
@@ -121,7 +140,7 @@
 
 ---
 
-## 六、数据汇总
+## 七、数据汇总
 
 | 指标 | 数值 |
 |------|------|
@@ -130,3 +149,18 @@
 | 建议 L3 数量（Phase 1+2） | 5 |
 | 建议 L3 数量（含格式） | 7 |
 | 排除视频/PDF 等不可做词 | 约 80%+ 搜索量 |
+
+---
+
+## 八、内链策略
+
+- **正文内链**：约 1 个/200–300 词。锚文本示例：compress images → /image-compressor；convert images → /image-converter
+- **推荐工具区块**：Image Compressor、Image Converter、How to Remove Watermark from Photo
+
+---
+
+## 九、TrustBar 关键词
+
+- Free：watermark remover free (9,900)
+- Fast Processing：instant 意图
+- No Sign-Up Required：free、no sign-up 意图

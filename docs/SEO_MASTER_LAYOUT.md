@@ -1,5 +1,7 @@
 # Toolaze SEO Landing Page Master Template
 
+> **文档关系**：内容编写规范见 `SEO_CONTENT_GUIDELINES.md`；JSON 结构见 `TRANSLATION_STRUCTURE_GUIDE.md`。总索引见 `docs/README.md`。
+
 ## 1. Design System (Style 1: Soft Smart Tech)
 - **Font**: Poppins (`font-sans`).
 - **Typography**:

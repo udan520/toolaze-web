@@ -48,6 +48,7 @@ function mapOutputFormat(format) {
 function resolveModel(model) {
   const m = String(model || '').trim().toLowerCase();
   if (m === 'gpt-image-2') return 'gpt-image-2';
+  if (m === 'nano-banana-2') return 'nano-banana-2';
   return 'nano-banana-pro';
 }
 
@@ -55,10 +56,14 @@ function resolveProviderModelId(model, env) {
   if (model === 'gpt-image-2') {
     return env.KIE_GPT_IMAGE_2_MODEL || 'gpt-image-2';
   }
+  if (model === 'nano-banana-2') {
+    return env.KIE_NANO_BANANA_2_MODEL || 'nano-banana-2';
+  }
   return env.KIE_NANO_BANANA_MODEL || 'nano-banana-pro';
 }
 
 function getMaxImagesForModel(model) {
+  if (model === 'nano-banana-2') return 14;
   return model === 'gpt-image-2' ? 16 : 8;
 }
 

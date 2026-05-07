@@ -1,0 +1,68 @@
+{
+  "tool": "gpt-image-2",
+  "lastUpdated": "2026-05-06",
+  "primaryKeywords": [
+    {
+      "keyword": "gpt image 2",
+      "searchVolume": 0,
+      "difficulty": 0,
+      "type": "primary",
+      "notes": "主关键词，用于 H1、Title、Meta Description"
+    },
+    {
+      "keyword": "gpt image 2 api",
+      "searchVolume": 0,
+      "difficulty": 0,
+      "type": "primary",
+      "notes": "API 意图词，用于功能说明"
+    }
+  ],
+  "longTailKeywords": [
+    {
+      "keyword": "gpt image 2 text to image",
+      "searchVolume": 0,
+      "difficulty": 0,
+      "type": "long-tail",
+      "targetPage": "model/gpt-image-2",
+      "notes": "文生图相关长尾词"
+    },
+    {
+      "keyword": "gpt image 2 image to image",
+      "searchVolume": 0,
+      "difficulty": 0,
+      "type": "long-tail",
+      "targetPage": "model/gpt-image-2",
+      "notes": "图生图相关长尾词"
+    }
+  ],
+  "relatedKeywords": [
+    {
+      "keyword": "ai image generator",
+      "searchVolume": 0,
+      "difficulty": 0,
+      "type": "related",
+      "notes": "泛图像生成相关词"
+    },
+    {
+      "keyword": "image to image ai",
+      "searchVolume": 0,
+      "difficulty": 0,
+      "type": "related",
+      "notes": "图生图语义覆盖"
+    }
+  ],
+  "internalLinking": [
+    {
+      "keyword": "nano banana pro",
+      "targetPage": "model/nano-banana-pro",
+      "anchorText": "Nano Banana Pro",
+      "notes": "同类模型页内链"
+    },
+    {
+      "keyword": "image converter",
+      "targetPage": "image-converter",
+      "anchorText": "image converter",
+      "notes": "工作流相关内链"
+    }
+  ]
+}

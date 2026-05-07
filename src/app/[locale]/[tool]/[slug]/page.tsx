@@ -187,9 +187,9 @@ export default async function LandingPage({ params }: PageProps) {
     return null
   }
   
-  // seedance-2 英语无 /en 前缀，重定向到 /seedance-2/[slug]
+  // seedance-2 英语无 /en 前缀，重定向到 /model/seedance-2/[slug]
   if (resolvedParams.tool === 'seedance-2' && locale === 'en') {
-    redirect(`/seedance-2/${resolvedParams.slug}`)
+    redirect(`/model/seedance-2/${resolvedParams.slug}`)
   }
   
   // 检查内容是否存在，如果不存在且是 font-generator 或 emoji-copy-and-paste，重定向到英语版本
@@ -203,7 +203,7 @@ export default async function LandingPage({ params }: PageProps) {
         redirect(`/emoji-copy-and-paste/${resolvedParams.slug}`)
       }
       if (resolvedParams.tool === 'seedance-2') {
-        redirect(`/seedance-2/${resolvedParams.slug}`)
+        redirect(`/model/seedance-2/${resolvedParams.slug}`)
       }
     }
     notFound()

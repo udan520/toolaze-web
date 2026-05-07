@@ -219,9 +219,10 @@ function generateSeoReport(parsed, tool, slug, keywordsContent) {
     }
   }
   if (kw) {
-    if (kw.primaryKeywords) keywords = keywords.concat(kw.primaryKeywords.map((k) => ({ ...k, type: 'primary' })))
-    if (kw.longTailKeywords) keywords = keywords.concat(kw.longTailKeywords.map((k) => ({ ...k, type: 'long-tail' })))
-    if (kw.relatedKeywords) keywords = keywords.concat(kw.relatedKeywords.map((k) => ({ ...k, type: 'related' })))
+    const safeMap = (arr, type) => (Array.isArray(arr) ? arr : []).map((k) => ({ ...(typeof k === 'object' && k ? k : { keyword: k }), type }))
+    if (kw.primaryKeywords) keywords = keywords.concat(safeMap(kw.primaryKeywords, 'primary'))
+    if (kw.longTailKeywords) keywords = keywords.concat(safeMap(kw.longTailKeywords, 'long-tail'))
+    if (kw.relatedKeywords) keywords = keywords.concat(safeMap(kw.relatedKeywords, 'related'))
   }
 
   const used = []
@@ -230,12 +231,14 @@ function generateSeoReport(parsed, tool, slug, keywordsContent) {
     if (!k) continue
     const regex = new RegExp(k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi')
     const count = (fullText.match(regex) || []).length
+    const sectionLabels = []
     if (count > 0) {
-      const sectionLabels = []
       for (const [, info] of Object.entries(bySection)) {
         const txt = info?.text || ''
         if (txt && (txt.match(regex) || []).length > 0) sectionLabels.push(info.label || '')
       }
+    }
+    if (count > 0 || kwi.type === 'primary') {
       used.push({
         keyword: kwi.keyword || kwi,
         searchVolume: kwi.searchVolume || 0,
@@ -243,7 +246,7 @@ function generateSeoReport(parsed, tool, slug, keywordsContent) {
         type: kwi.type || 'unknown',
         count,
         density: wordCount ? ((count / wordCount) * 100).toFixed(2) + '%' : '0%',
-        sections: sectionLabels.join(', '),
+        sections: sectionLabels.join(', ') || (count === 0 ? '（未出现，建议在 H1/Title/Hero 布局）' : ''),
       })
     }
   }
@@ -338,11 +341,17 @@ const server = http.createServer(async (req, res) => {
   }
 
   if (pathname === '/api/rule-preview' && req.method === 'GET') {
-    const file = params.file
+    const file = (params.file != null ? String(params.file).trim() : '') || ''
     const tool = params.tool
-    const allowed = ['SEO_CONTENT_GUIDELINES.md', 'SEO_MASTER_LAYOUT.md', 'TRANSLATION_STRUCTURE_GUIDE.md']
+    const allowed = new Set([
+      'README.md', 'SEO_CONTENT_GUIDELINES.md', 'SEO_MASTER_LAYOUT.md', 'TRANSLATION_STRUCTURE_GUIDE.md',
+      'sections/00_global.md', 'sections/metadata.md', 'sections/hero.md', 'sections/how-to-use.md',
+      'sections/features.md', 'sections/intro.md', 'sections/model-intro.md', 'sections/scenarios.md',
+      'sections/rating.md', 'sections/faq.md', 'sections/comparison.md', 'sections/internal-links.md', 'sections/navigation.md', 'sections/more-tools.md',
+      'keywords/KEYWORD_STRATEGY.md', 'keywords/KEYWORD_DENSITY_GUIDELINES.md'
+    ])
     let relPath = ''
-    if (allowed.includes(file)) {
+    if (file && (allowed.has(file) || /^keywords\/[A-Za-z0-9_-]+\.md$/.test(file))) {
       relPath = file
     } else if (file === 'tool' && tool && /^[a-z0-9-]+$/.test(tool)) {
       relPath = `specs/${tool}.md`
@@ -351,7 +360,7 @@ const server = http.createServer(async (req, res) => {
     }
     if (!relPath) {
       res.writeHead(400, { 'Content-Type': 'application/json' })
-      res.end(JSON.stringify({ error: 'Invalid file' }))
+      res.end(JSON.stringify({ error: 'Invalid file', received: file }))
       return
     }
     try {
@@ -607,10 +616,19 @@ Output ONLY the slug, nothing else.`
     let body = ''
     for await (const chunk of req) body += chunk
     try {
-      const payload = JSON.parse(body || '{}')
+      let payload = {}
+      try {
+        payload = JSON.parse(body || '{}')
+      } catch (parseErr) {
+        res.writeHead(400, { 'Content-Type': 'application/json' })
+        res.end(JSON.stringify({ error: '请求体 JSON 解析失败', hint: parseErr.message }))
+        return
+      }
       const {
         tool,
         slug,
+        topComponent,
+        coreKeyword,
         keywordsText,
         keywordsFile,
         useComponents = [],
@@ -647,7 +665,17 @@ Output ONLY the slug, nothing else.`
 
       let seoRulesContent = ''
       const seoRuleFiles = []
-      if (useSeoContentGuidelines) seoRuleFiles.push('SEO_CONTENT_GUIDELINES.md')
+      if (useSeoContentGuidelines) {
+        seoRuleFiles.push('SEO_CONTENT_GUIDELINES.md')
+        // 附带加载 sections/ 板块细致规范（规则拆分后需补充）
+        const sectionFiles = ['00_global.md', 'metadata.md', 'hero.md', 'how-to-use.md', 'features.md', 'intro.md', 'model-intro.md', 'scenarios.md', 'rating.md', 'faq.md', 'comparison.md', 'more-tools.md']
+        for (const sf of sectionFiles) {
+          const sp = path.join(DOCS_ROOT, 'sections', sf)
+          if (fs.existsSync(sp)) {
+            seoRuleFiles.push('sections/' + sf)
+          }
+        }
+      }
       if (useSeoLayout) seoRuleFiles.push('SEO_MASTER_LAYOUT.md')
       if (useStructureGuide) seoRuleFiles.push('TRANSLATION_STRUCTURE_GUIDE.md')
       for (const f of seoRuleFiles) {
@@ -705,8 +733,11 @@ Rules:
         `Generate SEO JSON for: tool="${tool}", page="${pageSlug}" (${pageType}).`,
         `Sections to generate (ONLY these, no others): ${components.join(', ')}.`,
       ]
+      if (coreKeyword) {
+        userParts.push(`\n--- Core Keyword (P0 - HIGHEST PRIORITY) ---\nThe user specified this as the PRIMARY keyword: "${coreKeyword}". It OVERRIDES primaryKeywords from the keywords file. You MUST use it in metadata.title, metadata.description, hero.h1, hero.desc, and naturally throughout the content. The keywords reference below is supplementary for long-tail planning only.`)
+      }
       if (keywordsContent) {
-        userParts.push(`\n--- Keywords Reference ---\n${keywordsContent.slice(0, 8000)}`)
+        userParts.push(`\n--- Keywords Reference (search volume table) ---\n${keywordsContent.slice(0, 8000)}`)
       }
       if (seoRulesContent) {
         userParts.push(`\n--- SEO Rules (follow these) ---\n${seoRulesContent.slice(0, 12000)}`)
@@ -799,10 +830,499 @@ Rules:
         return
       }
       content = content.replace(/^```(?:json)?\s*|\s*```$/g, '').trim()
-      const parsed = JSON.parse(content)
-      const report = generateSeoReport(parsed, tool, slug, keywordsContent)
+      let parsed
+      try {
+        parsed = JSON.parse(content)
+      } catch (parseErr) {
+        console.error('[generate] JSON parse error:', parseErr.message)
+        res.writeHead(500, { 'Content-Type': 'application/json' })
+        res.end(JSON.stringify({
+          error: 'AI 返回内容无法解析为 JSON',
+          hint: parseErr.message + (content ? `\n前 200 字符: ${content.slice(0, 200)}` : ''),
+        }))
+        return
+      }
+      if (topComponent) parsed.topComponent = topComponent
+      let report = { markdown: '（报告生成失败）', used: [], links: [], wordCount: 0 }
+      try {
+        report = generateSeoReport(parsed, tool, slug, keywordsContent)
+      } catch (reportErr) {
+        console.error('[generate] Report error:', reportErr)
+      }
       res.writeHead(200, { 'Content-Type': 'application/json' })
       res.end(JSON.stringify({ ok: true, data: parsed, report }))
+    } catch (e) {
+      console.error('[generate] Error:', e)
+      res.writeHead(500, { 'Content-Type': 'application/json' })
+      res.end(JSON.stringify({ error: e.message, stack: process.env.NODE_ENV === 'development' ? e.stack : undefined }))
+    }
+    return
+  }
+
+  const SECTION_RULE_FILES = {
+    metadata: 'metadata.md', hero: 'hero.md', howToUse: 'how-to-use.md',
+    modelIntro: 'model-intro.md', features: 'features.md', intro: 'intro.md',
+    comparison: 'comparison.md', scenes: 'scenarios.md', rating: 'rating.md',
+    faq: 'faq.md', trustBar: 'hero.md', moreTools: 'more-tools.md',
+  }
+
+  const VIDEO_MODEL_L2S = ['seedance-2', 'kling-3']
+  const IMAGE_MODEL_L2S = ['nano-banana-pro', 'nano-banana-2']
+  const SEEDANCE_2_SLUGS = ['text-to-video', 'image-to-video', 'ai-video-generator']
+
+  function loadJsonSafe(filePath) {
+    try {
+      if (fs.existsSync(filePath)) {
+        return JSON.parse(fs.readFileSync(filePath, 'utf-8'))
+      }
+    } catch {}
+    return null
+  }
+
+  function extractSimpleTitle(h1) {
+    if (!h1) return ''
+    return String(h1).replace(/<[^>]+>/g, '').trim()
+  }
+
+  async function getRecommendedToolsForMoreTools(tool, slug) {
+    const locale = 'en'
+    const links = []
+    if (VIDEO_MODEL_L2S.includes(tool)) {
+      const others = VIDEO_MODEL_L2S.filter((t) => t !== tool)
+      for (const modelTool of others.slice(0, 3)) {
+        const fp = modelTool === 'seedance-2' ? path.join(DATA_ROOT, locale, 'seedance-2.json') : path.join(DATA_ROOT, locale, `${modelTool}.json`)
+        const d = loadJsonSafe(fp)
+        const href = `/model/${modelTool}`
+        links.push({
+          slug: modelTool,
+          title: d?.hero?.h1 ? extractSimpleTitle(d.hero.h1) : modelTool,
+          description: (d?.hero?.desc || d?.metadata?.description || '').slice(0, 120),
+          href,
+        })
+      }
+    } else if (IMAGE_MODEL_L2S.includes(tool)) {
+      const others = IMAGE_MODEL_L2S.filter((t) => t !== tool)
+      for (const modelTool of others.slice(0, 3)) {
+        const fp = path.join(DATA_ROOT, locale, `${modelTool}.json`)
+        const d = loadJsonSafe(fp)
+        const href = `/model/${modelTool}`
+        links.push({
+          slug: modelTool,
+          title: d?.hero?.h1 ? extractSimpleTitle(d.hero.h1) : modelTool,
+          description: (d?.hero?.desc || d?.metadata?.description || '').slice(0, 120),
+          href,
+        })
+      }
+    } else if (tool === 'watermark-remover') {
+      for (const t of ['image-compressor', 'image-converter']) {
+        const fp = path.join(DATA_ROOT, locale, `${t}.json`)
+        const d = loadJsonSafe(fp)
+        links.push({
+          slug: t,
+          title: d?.hero?.h1 ? extractSimpleTitle(d.hero.h1) : t,
+          description: (d?.hero?.desc || d?.metadata?.description || '').slice(0, 120),
+          href: `/${t}`,
+        })
+      }
+      const howToFp = path.join(DATA_ROOT, locale, 'watermark-remover', 'how-to-remove-watermark.json')
+      const howToD = loadJsonSafe(howToFp)
+      if (howToD) {
+        links.push({
+          slug: 'how-to-remove-watermark',
+          title: howToD.hero?.h1 ? extractSimpleTitle(howToD.hero.h1) : 'How to Remove Watermark',
+          description: (howToD.hero?.desc || howToD.metadata?.description || '').slice(0, 120),
+          href: '/watermark-remover/how-to-remove-watermark',
+        })
+      }
+    } else {
+      let slugs = []
+      if (tool === 'seedance-2' && slug) {
+        slugs = SEEDANCE_2_SLUGS.filter((s) => s !== slug).slice(0, 3)
+      } else if (tool === 'image-compressor' || tool === 'image-compression') {
+        const fp = path.join(DATA_ROOT, locale, 'image-compression.json')
+        const d = loadJsonSafe(fp)
+        slugs = d && typeof d === 'object' ? Object.keys(d).filter((k) => d[k] && typeof d[k] === 'object' && d[k].metadata?.published !== false).slice(0, 3) : []
+      } else if (tool === 'image-converter' || tool === 'image-conversion') {
+        const dir = path.join(DATA_ROOT, locale, 'image-converter')
+        if (fs.existsSync(dir)) {
+          slugs = fs.readdirSync(dir).filter((f) => f.endsWith('.json')).map((f) => f.replace('.json', '')).filter((s) => s !== slug).slice(0, 3)
+        }
+      } else if (tool === 'font-generator') {
+        const dir = path.join(DATA_ROOT, locale, 'font-generator')
+        if (fs.existsSync(dir)) {
+          slugs = fs.readdirSync(dir).filter((f) => f.endsWith('.json')).map((f) => f.replace('.json', '')).filter((s) => s !== slug).slice(0, 3)
+        }
+      } else if (tool === 'watermark-remover' && slug) {
+        const dir = path.join(DATA_ROOT, locale, 'watermark-remover')
+        if (fs.existsSync(dir)) {
+          slugs = fs.readdirSync(dir).filter((f) => f.endsWith('.json')).map((f) => f.replace('.json', '')).filter((s) => s !== slug).slice(0, 3)
+        }
+      } else if (tool === 'emoji-copy-and-paste') {
+        const dir = path.join(DATA_ROOT, locale, 'emoji-copy-and-paste')
+        if (fs.existsSync(dir)) {
+          slugs = fs.readdirSync(dir).filter((f) => f.endsWith('.json')).map((f) => f.replace('.json', '')).filter((s) => s !== slug).slice(0, 3)
+        }
+      }
+      const toolBase = ['seedance-2', 'kling-3'].includes(tool) ? `model/${tool}` : (tool === 'image-compression' ? 'image-compressor' : tool)
+      for (const s of slugs) {
+        let d = null
+        if (tool === 'image-compressor' || tool === 'image-compression') {
+          const compData = loadJsonSafe(path.join(DATA_ROOT, locale, 'image-compression.json'))
+          d = compData?.[s]
+        } else {
+          d = loadJsonSafe(path.join(DATA_ROOT, locale, tool, `${s}.json`))
+        }
+        const href = `/${toolBase}/${s}`
+        links.push({
+          slug: s,
+          title: d?.hero?.h1 ? extractSimpleTitle(d.hero.h1) : d?.metadata?.title || s,
+          description: (d?.hero?.desc || d?.metadata?.description || '').slice(0, 120),
+          href,
+        })
+      }
+    }
+    return links.filter((l) => l.title && l.href)
+  }
+
+  if (pathname === '/api/layout-strategy' && req.method === 'POST') {
+    let body = ''
+    for await (const chunk of req) body += chunk
+    try {
+      const payload = JSON.parse(body || '{}')
+      const { keywordsCsv, competitorUrls = [], targetTool } = payload
+      if (!keywordsCsv || typeof keywordsCsv !== 'string') {
+        res.writeHead(400, { 'Content-Type': 'application/json' })
+        res.end(JSON.stringify({ error: 'keywordsCsv is required' }))
+        return
+      }
+      const apiKey = process.env.ZHEN_AI_API_KEY
+      if (!apiKey) {
+        res.writeHead(500, { 'Content-Type': 'application/json' })
+        res.end(JSON.stringify({ error: 'ZHEN_AI_API_KEY not configured' }))
+        return
+      }
+
+      // Parse CSV: support keyword, searchVolume, difficulty, etc.
+      const parseCsv = (text) => {
+        const lines = text.trim().split(/\r?\n/).filter(Boolean)
+        if (lines.length < 2) return []
+        const header = lines[0].toLowerCase().split(/[,\t]/).map((h) => h.trim())
+        const kwIdx = Math.max(0, header.findIndex((h) => /keyword|词|关键词/i.test(h)))
+        const volIdx = header.findIndex((h) => /volume|搜索量|search/i.test(h))
+        const diffIdx = header.findIndex((h) => /difficulty|难度/i.test(h))
+        const rows = []
+        for (let i = 1; i < lines.length; i++) {
+          const cells = lines[i].split(/[,\t]/).map((c) => c.trim())
+          const keyword = cells[kwIdx] || cells[0]
+          if (!keyword) continue
+          rows.push({
+            keyword,
+            searchVolume: volIdx >= 0 && cells[volIdx] ? parseInt(cells[volIdx], 10) || 0 : 0,
+            difficulty: diffIdx >= 0 && cells[diffIdx] ? parseInt(cells[diffIdx], 10) || 0 : 0,
+          })
+        }
+        return rows
+      }
+      const keywords = parseCsv(keywordsCsv)
+      if (keywords.length === 0) {
+        res.writeHead(400, { 'Content-Type': 'application/json' })
+        res.end(JSON.stringify({ error: 'CSV 解析后无有效关键词，请检查格式（需含 keyword 列）' }))
+        return
+      }
+
+      // Optionally fetch competitor pages and extract link structure
+      let competitorData = ''
+      const urls = Array.isArray(competitorUrls) ? competitorUrls.filter((u) => typeof u === 'string' && u.startsWith('http')) : []
+      for (const url of urls.slice(0, 5)) {
+        try {
+          const resp = await fetch(url, {
+            headers: { 'User-Agent': 'Mozilla/5.0 (compatible; ToolazeSEO/1.0)' },
+            signal: AbortSignal.timeout(8000),
+          })
+          const html = await resp.text()
+          const links = []
+          const hrefRe = /<a\s+[^>]*href=["']([^"']+)["'][^>]*>([^<]*)</gi
+          let m
+          while ((m = hrefRe.exec(html)) !== null) {
+            const href = m[1].trim()
+            const text = (m[2] || '').replace(/<[^>]+>/g, '').trim()
+            if (href.startsWith('/') && href.length > 1 && text.length > 0 && text.length < 80) {
+              links.push({ path: href, text })
+            }
+          }
+          const unique = [...new Map(links.map((l) => [l.path, l])).values()].slice(0, 50)
+          competitorData += `\n竞品 ${url} 内链示例:\n${unique.map((l) => `  ${l.path} - ${l.text}`).join('\n')}\n`
+        } catch (fetchErr) {
+          competitorData += `\n竞品 ${url} 抓取失败: ${fetchErr.message}\n`
+        }
+      }
+
+      const targetHint = targetTool ? `\n用户指定目标工具: ${targetTool}。L3 推荐优先考虑该工具下的子页面。` : ''
+      const systemPrompt = `You are an SEO strategist for Toolaze (toolaze.com). Given a keyword list (CSV), recommend L2 and L3 page structure for SEO landing pages.
+
+L2 = tool main page (e.g. /image-converter, /nano-banana-pro). One tool = one L2.
+L3 = tool sub-page (e.g. /image-converter/heic-to-jpg, /nano-banana-pro/image-to-image). Each L3 targets a specific long-tail keyword.
+
+Output valid JSON only. No markdown fences. Structure:
+{
+  "l2Recommendations": [
+    { "tool": "slug-style-id", "reason": "详细理由", "keywordVolume": 0, "keywords": ["keyword1", "keyword2"], "competitorRef": "竞品参考（如有）" }
+  ],
+  "l3Recommendations": [
+    { "tool": "existing-or-new-tool", "slug": "url-slug", "reason": "详细理由", "keywordVolume": 0, "keywords": ["keyword1"], "coreKeyword": "主关键词" }
+  ]
+}
+
+Rules:
+- tool/slug: lowercase, hyphens only. No spaces.
+- Recommend 2-6 L2 and 5-15 L3 based on keyword potential.
+- keywordVolume: sum or estimate from provided data.
+- reason: 1-2 sentences in Chinese, explain why this page is valuable.
+- If competitor data provided, reference it in competitorRef.
+- Prioritize high search volume keywords for L2; long-tail for L3.`
+
+      const userParts = [
+        `关键词列表（${keywords.length} 条）:\n${keywords.slice(0, 100).map((k) => `${k.keyword}\t${k.searchVolume || 0}\t${k.difficulty || 0}`).join('\n')}`,
+        competitorData ? `\n--- 竞品内链结构 ---${competitorData}` : '',
+        targetHint,
+        `\n请输出 JSON，包含 l2Recommendations 和 l3Recommendations。`,
+      ]
+
+      const apiUrl = process.env.ZHEN_AI_FLUX_BASE_URL || 'https://ai.t8star.cn'
+      const model = process.env.GEMINI_MODEL || 'gemini-2.0-flash'
+      const chatUrl = `${apiUrl.replace(/\/$/, '')}/v1/chat/completions`
+      const reqBody = {
+        model,
+        messages: [
+          { role: 'system', content: systemPrompt },
+          { role: 'user', content: userParts.join('\n') },
+        ],
+        temperature: 0.4,
+        max_tokens: 4000,
+        response_format: { type: 'json_object' },
+      }
+      let resBody
+      try {
+        resBody = await fetch(chatUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${apiKey}` },
+          body: JSON.stringify(reqBody),
+        })
+      } catch (fetchErr) {
+        res.writeHead(500, { 'Content-Type': 'application/json' })
+        res.end(JSON.stringify({ error: `AI 请求失败: ${fetchErr.message}` }))
+        return
+      }
+      const rawText = await resBody.text()
+      let resJson
+      try {
+        resJson = JSON.parse(rawText)
+      } catch (_) {
+        res.writeHead(500, { 'Content-Type': 'application/json' })
+        res.end(JSON.stringify({ error: 'API 返回非 JSON', hint: rawText.slice(0, 300) }))
+        return
+      }
+      if (resJson.error) {
+        res.writeHead(500, { 'Content-Type': 'application/json' })
+        res.end(JSON.stringify({ error: resJson.error.message || 'API error' }))
+        return
+      }
+      let content = resJson.choices?.[0]?.message?.content
+      if (!content) {
+        res.writeHead(500, { 'Content-Type': 'application/json' })
+        res.end(JSON.stringify({ error: 'No content in response' }))
+        return
+      }
+      content = content.replace(/^```(?:json)?\s*|\s*```$/g, '').trim()
+      let parsed
+      try {
+        parsed = JSON.parse(content)
+      } catch (parseErr) {
+        res.writeHead(500, { 'Content-Type': 'application/json' })
+        res.end(JSON.stringify({ error: 'AI 返回 JSON 解析失败', hint: parseErr.message }))
+        return
+      }
+      const l2 = Array.isArray(parsed.l2Recommendations) ? parsed.l2Recommendations : []
+      const l3 = Array.isArray(parsed.l3Recommendations) ? parsed.l3Recommendations : []
+      for (const r of l2) {
+        r.type = 'l2'
+        r.tool = (r.tool || '').replace(/[^a-z0-9-]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '') || 'new-tool'
+        r.url = '/' + r.tool
+      }
+      for (const r of l3) {
+        r.type = 'l3'
+        r.tool = (r.tool || '').replace(/[^a-z0-9-]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '') || 'nano-banana-pro'
+        r.slug = (r.slug || '').replace(/[^a-z0-9-]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '') || 'page'
+        r.url = '/' + r.tool + '/' + r.slug
+      }
+      res.writeHead(200, { 'Content-Type': 'application/json' })
+      res.end(JSON.stringify({
+        ok: true,
+        recommendations: [...l2, ...l3],
+        keywordCount: keywords.length,
+      }))
+    } catch (e) {
+      res.writeHead(500, { 'Content-Type': 'application/json' })
+      res.end(JSON.stringify({ error: e.message }))
+    }
+    return
+  }
+
+  if (pathname === '/api/more-tools-preview' && req.method === 'GET') {
+    const { tool, slug } = parseQuery(url)
+    if (!tool) {
+      res.writeHead(400, { 'Content-Type': 'application/json' })
+      res.end(JSON.stringify({ error: 'tool is required' }))
+      return
+    }
+    try {
+      const links = await getRecommendedToolsForMoreTools(tool, slug || '')
+      res.writeHead(200, { 'Content-Type': 'application/json' })
+      res.end(JSON.stringify({ ok: true, links }))
+    } catch (e) {
+      res.writeHead(500, { 'Content-Type': 'application/json' })
+      res.end(JSON.stringify({ error: e.message }))
+    }
+    return
+  }
+
+  if (pathname === '/api/generate-section' && req.method === 'POST') {
+    let body = ''
+    for await (const chunk of req) body += chunk
+    try {
+      const payload = JSON.parse(body || '{}')
+      const { tool, slug, sectionId, extraInstructions, currentSectionData } = payload
+      if (!tool || !sectionId) {
+        res.writeHead(400, { 'Content-Type': 'application/json' })
+        res.end(JSON.stringify({ error: 'tool and sectionId are required' }))
+        return
+      }
+      const apiKey = process.env.ZHEN_AI_API_KEY
+      if (!apiKey) {
+        res.writeHead(500, { 'Content-Type': 'application/json' })
+        res.end(JSON.stringify({ error: 'ZHEN_AI_API_KEY not configured' }))
+        return
+      }
+      const ruleFile = SECTION_RULE_FILES[sectionId] || `${sectionId}.md`
+      const rulePath = path.join(DOCS_ROOT, 'sections', ruleFile)
+      let sectionRules = ''
+      if (fs.existsSync(rulePath)) {
+        sectionRules = fs.readFileSync(rulePath, 'utf-8')
+      }
+      const globalPath = path.join(DOCS_ROOT, 'sections', '00_global.md')
+      if (fs.existsSync(globalPath)) {
+        sectionRules = fs.readFileSync(globalPath, 'utf-8') + '\n\n---\n\n' + sectionRules
+      }
+      let toolSpec = ''
+      const specPath = path.join(DOCS_ROOT, 'specs', `${tool}.md`)
+      if (fs.existsSync(specPath)) {
+        toolSpec = fs.readFileSync(specPath, 'utf-8')
+      }
+      let keywordsHint = ''
+      const kwPath = path.join(DOCS_ROOT, 'keywords', `${tool}-keywords.json`)
+      if (fs.existsSync(kwPath)) {
+        try {
+          const kwData = JSON.parse(fs.readFileSync(kwPath, 'utf-8'))
+          const kwList = []
+          for (const arr of [kwData.primaryKeywords, kwData.longTailKeywords, kwData.relatedKeywords]) {
+            if (Array.isArray(arr)) {
+              for (const k of arr) {
+                const kw = typeof k === 'string' ? k : (k.keyword || '')
+                if (kw) kwList.push(kw)
+              }
+            }
+          }
+          if (kwList.length > 0) {
+            keywordsHint = `\nKeywords to use naturally (prioritize primary/long-tail):\n${[...new Set(kwList)].slice(0, 25).join(', ')}`
+          }
+        } catch {}
+      }
+      const pageType = slug ? 'L3' : 'L2'
+      const outputHints = {
+        metadata: 'Output: { "title": "...", "description": "...", "h1": "..." }',
+        faq: 'Output: { "faqTitle": "...", "faq": [{ "q": "Question?", "a": "Answer." }] }',
+        scenes: 'Output: { "scenesTitle": "...", "scenes": [{ "title": "...", "icon": "📷", "desc": "..." }] } - exactly 3 scenes',
+        moreTools: 'Output: { "moreTools": "More [Tool Name] Tools" } - section title only. Links are auto-filled from recommended tools.',
+      }
+      const structureHint = outputHints[sectionId] ? `\nExpected structure: ${outputHints[sectionId]}` : ''
+      const systemPrompt = `You are an SEO content writer for Toolaze. Generate ONLY the "${sectionId}" section as valid JSON.
+
+Rules (follow strictly):
+${sectionRules}
+
+Tool spec (only write supported features):
+${toolSpec}
+${keywordsHint}
+${structureHint}
+
+Output ONLY valid JSON for this section. No markdown fences, no explanation. Match the exact structure expected for ${sectionId}.`
+
+      const userParts = [
+        `Regenerate the "${sectionId}" section for tool="${tool}", page="${slug || '(main)'}" (${pageType}).`,
+        `Current section data (for reference, improve or replace):\n${JSON.stringify(currentSectionData || {}, null, 2)}`,
+      ]
+      if (extraInstructions) {
+        userParts.push(`\nAdditional instructions (apply to this generation only):\n${extraInstructions}`)
+      }
+
+      const apiUrl = process.env.ZHEN_AI_FLUX_BASE_URL || 'https://ai.t8star.cn'
+      const model = process.env.GEMINI_MODEL || 'gemini-2.0-flash'
+      const chatUrl = `${apiUrl.replace(/\/$/, '')}/v1/chat/completions`
+      const reqBody = {
+        model,
+        messages: [
+          { role: 'system', content: systemPrompt },
+          { role: 'user', content: userParts.join('\n') },
+        ],
+        temperature: 0.5,
+        max_tokens: 4000,
+        response_format: { type: 'json_object' },
+      }
+      let resBody
+      try {
+        resBody = await fetch(chatUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${apiKey}` },
+          body: JSON.stringify(reqBody),
+        })
+      } catch (fetchErr) {
+        const msg = fetchErr?.message || 'fetch failed'
+        const isNetwork = /fetch failed|Failed to fetch|ECONNREFUSED|ENOTFOUND|ETIMEDOUT|network/i.test(msg)
+        const hint = isNetwork
+          ? `请检查：1) 网络连接是否正常 2) ZHEN_AI_FLUX_BASE_URL 是否可访问（当前: ${apiUrl}） 3) 若在国内，可能需要代理`
+          : undefined
+        res.writeHead(500, { 'Content-Type': 'application/json' })
+        res.end(JSON.stringify({ error: `AI API 请求失败: ${msg}`, hint }))
+        return
+      }
+      const rawText = await resBody.text()
+      let resJson
+      try {
+        resJson = JSON.parse(rawText)
+      } catch (_) {
+        res.writeHead(500, { 'Content-Type': 'application/json' })
+        res.end(JSON.stringify({ error: 'API parse error', hint: rawText.slice(0, 200) }))
+        return
+      }
+      if (resJson.error) {
+        res.writeHead(500, { 'Content-Type': 'application/json' })
+        res.end(JSON.stringify({ error: resJson.error.message || 'API error' }))
+        return
+      }
+      let content = resJson.choices?.[0]?.message?.content
+      if (!content) {
+        res.writeHead(500, { 'Content-Type': 'application/json' })
+        res.end(JSON.stringify({ error: 'No content in response' }))
+        return
+      }
+      content = content.replace(/^```(?:json)?\s*|\s*```$/g, '').trim()
+      const parsed = JSON.parse(content)
+      if (sectionId === 'moreTools') {
+        const recommendedLinks = await getRecommendedToolsForMoreTools(tool, slug || '')
+        parsed.moreToolsLinks = recommendedLinks
+      }
+      res.writeHead(200, { 'Content-Type': 'application/json' })
+      res.end(JSON.stringify({ ok: true, data: parsed }))
     } catch (e) {
       res.writeHead(500, { 'Content-Type': 'application/json' })
       res.end(JSON.stringify({ error: e.message }))

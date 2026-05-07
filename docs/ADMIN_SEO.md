@@ -2,6 +2,8 @@
 
 在本地查看、编辑各工具页面的 SEO 内容（JSON 文件）。
 
+> **文档索引**：所有 SEO 规范文档总览见 `docs/README.md`。
+
 ## 启动
 
 ```bash
@@ -15,7 +17,7 @@ npm run dev
 - 管理后台：http://localhost:3007
 - 网站预览：http://localhost:3006
 
-**若修改过 `admin-seo-server.js` 或 `admin-seo.html`，需重启管理后台**（Ctrl+C 后重新运行 `npm run admin:seo`）。验证 API 是否正常：访问 http://localhost:3007/api/health 应返回 `{"ok":true}`。
+**若修改过 `admin-seo-server.js` 或 `admin-seo.html`，需重启管理后台**（Ctrl+C 后重新运行 `npm run admin:seo`）。验证 API 是否正常：访问 http://localhost:3007/api/health 应返回 `{"ok":true}`。More Tools 推荐链接：访问 http://localhost:3007/api/more-tools-preview?tool=watermark-remover 应返回推荐链接列表。
 
 ## 实时更新
 

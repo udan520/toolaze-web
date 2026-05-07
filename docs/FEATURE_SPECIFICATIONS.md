@@ -1,6 +1,8 @@
 # Toolaze 功能介绍规范索引
 
 > **重要提示**：所有二级页面和三级页面的 SEO 内容必须严格按照各工具的功能介绍文件进行扩写。不支持的功能不能写，未提及的技术不能写。
+>
+> **文档关系**：内容规范见 `SEO_CONTENT_GUIDELINES.md`；总索引见 `docs/README.md`。
 
 ## 文件结构
 
@@ -36,6 +38,11 @@ docs/specs/
 📄 **文件位置**：`docs/specs/seedance-2.md`
 
 **查看方式**：编写 Seedance 2.0 相关 SEO 内容时，必须参考此文件。
+
+### GPT Image 2（AI 图像生成工具）
+📄 **文件位置**：`docs/specs/gpt-image-2.md`
+
+**查看方式**：编写 GPT Image 2 相关 SEO 内容时，必须参考此文件。
 
 ### 通用功能特性
 📄 **文件位置**：`docs/specs/common.md`

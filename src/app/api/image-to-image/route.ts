@@ -11,19 +11,24 @@ function mapOutputFormat(format: FormDataEntryValue | null): string | undefined 
   return 'png'
 }
 
-function resolveModel(model: FormDataEntryValue | null): 'nano-banana-pro' | 'gpt-image-2' {
+function resolveModel(model: FormDataEntryValue | null): 'nano-banana-pro' | 'nano-banana-2' | 'gpt-image-2' {
   const m = String(model || '').trim().toLowerCase()
   if (m === 'gpt-image-2') return 'gpt-image-2'
+  if (m === 'nano-banana-2') return 'nano-banana-2'
   return 'nano-banana-pro'
 }
 
-function getMaxImagesForModel(model: 'nano-banana-pro' | 'gpt-image-2'): number {
+function getMaxImagesForModel(model: 'nano-banana-pro' | 'nano-banana-2' | 'gpt-image-2'): number {
+  if (model === 'nano-banana-2') return 14
   return model === 'gpt-image-2' ? 16 : 8
 }
 
-function resolveProviderModelId(model: 'nano-banana-pro' | 'gpt-image-2'): string {
+function resolveProviderModelId(model: 'nano-banana-pro' | 'nano-banana-2' | 'gpt-image-2'): string {
   if (model === 'gpt-image-2') {
     return process.env.KIE_GPT_IMAGE_2_MODEL || 'gpt-image-2'
+  }
+  if (model === 'nano-banana-2') {
+    return process.env.KIE_NANO_BANANA_2_MODEL || 'nano-banana-2'
   }
   return process.env.KIE_NANO_BANANA_MODEL || 'nano-banana-pro'
 }

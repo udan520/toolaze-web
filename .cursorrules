@@ -1,4 +1,4 @@
-When I ask you to create a new landing page or SEO page for Toolaze, ALWAYS reference 'docs/SEO_MASTER_LAYOUT.md'. Use the exact HTML structure, Tailwind classes, and Style 1 (Soft Smart Tech) design system defined in that file. Do not deviate from the Blue/Purple gradient palette. Replace only the text content based on the user's specific tool requirements.
+When I ask you to create a new landing page or SEO page for Toolaze, ALWAYS reference 'docs/SEO_MASTER_LAYOUT.md'. For full doc index see 'docs/README.md'. Use the exact HTML structure, Tailwind classes, and Style 1 (Soft Smart Tech) design system defined in that file. Do not deviate from the Blue/Purple gradient palette. Replace only the text content based on the user's specific tool requirements.
 
 **FEATURE SPECIFICATIONS**: When writing SEO content, you MUST strictly follow the feature specifications in 'docs/specs/' directory. Each tool has its own specification file:
 - Image Converter: 'docs/specs/image-converter.md'
@@ -21,9 +21,9 @@ Only write about features that are explicitly listed as supported in the relevan
 - Use related keywords naturally throughout content
 - Use internal linking keywords to connect related pages
 
-**INTERNAL LINK DENSITY**: Follow 'docs/SEO_CONTENT_GUIDELINES.md' section "7. 内链密度规范". Typical ratio: ~3-5 internal links per 1000 words (1 link per 200-300 words). For FAQ blocks: ≤2 links per ~400 words. Avoid linking the same anchor in every FAQ answer. Homepage FAQ must be especially conservative.
+**INTERNAL LINK DENSITY**: Follow 'docs/sections/internal-links.md'. Typical ratio: ~3-5 internal links per 1000 words (1 link per 200-300 words). For FAQ blocks: ≤2 links per ~400 words. Avoid linking the same anchor in every FAQ answer. Homepage FAQ must be especially conservative.
 
-**KEYWORD LAYOUT STRATEGY**: When writing SEO content, MUST follow the keyword priority matrix and layout strategy defined in 'docs/SEO_CONTENT_GUIDELINES.md' section "关键词布局策略（高级策略）":
+**KEYWORD LAYOUT STRATEGY**: When writing SEO content, MUST follow 'docs/keywords/KEYWORD_STRATEGY.md':
 - **P0 (主关键词)**: Use in H1, Title, Meta Description (1-2% density)
 - **P1 (核心功能词)**: Use in H2, Hero, Features (0.5-1% density)
 - **P2 (长尾关键词)**: Classify into 4 categories (功能类, 对比类, 使用场景类, 操作类) and distribute across appropriate sections
@@ -62,9 +62,9 @@ See 'docs/SEO_MASTER_LAYOUT.md' section 3 for the exact breadcrumb structure.
 
 **MODEL INTRO BLOCK**: For AI model intro pages (Seedance 2.0, Nano Banana Pro), MUST include `modelIntro` in `sectionsOrder` after `howToUse` on both L2 and L3 pages.
 
-**USE CASES / SCENES**: The Use Cases (scenes) section MUST contain exactly 3 items—no more, no less. See docs/SEO_CONTENT_GUIDELINES.md.
+**USE CASES / SCENES**: The Use Cases (scenes) section MUST contain exactly 3 items—no more, no less. See docs/sections/scenarios.md.
 
-**FAQ MODEL COMPARISON**: When FAQ compares models (e.g., "Seedance 2.0 vs Sora 2"), introduce both models' core differences concisely—not just our tool. Keep it brief. See docs/SEO_CONTENT_GUIDELINES.md FAQ section. See `docs/SEO_CONTENT_GUIDELINES.md` section 7 and `docs/MODEL_INTRO_BLOCK.md`. Content must be original—do not copy from reference images or competitors.
+**FAQ MODEL COMPARISON**: When FAQ compares models (e.g., "Seedance 2.0 vs Sora 2"), introduce both models' core differences concisely—not just our tool. Keep it brief. See docs/sections/faq.md and docs/MODEL_INTRO_BLOCK.md. Content must be original—do not copy from reference images or competitors.
 
 **SECTION BACKGROUND ALTERNATION**: CRITICAL - Always alternate section backgrounds between `bg-white` and `bg-[#F8FAFF]` to create visual separation. Different content blocks (e.g., "Why Choose Toolaze?" vs "FAQ") MUST have different background colors so users can clearly distinguish between sections. Follow the pattern: alternate white and light indigo backgrounds throughout the page.
 

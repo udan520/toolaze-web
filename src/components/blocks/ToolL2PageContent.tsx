@@ -544,8 +544,8 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
               <KlingHeroPlaceholder />
             </header>
           ) : topComp === 'nano-banana-2' ? (
-            <header className="bg-[#F8FAFF] pb-12 px-6">
-              <div className="max-w-4xl mx-auto text-center pt-8 mb-12">
+            <header className="bg-[#F8FAFF] pb-6 md:pb-12 w-full px-2 md:px-6">
+              <div className="w-full max-w-full text-center pt-6 md:pt-8 mb-6 md:mb-12">
                 <h1 className="text-[40px] font-extrabold tracking-tight mb-6 leading-tight text-slate-900">
                   {content.hero?.h1 ? (
                     renderH1WithGradient(content.hero.h1)
@@ -559,7 +559,15 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                   </p>
                 )}
               </div>
-              <NanoBanana2HeroPlaceholder />
+              <div className="w-full max-w-full">
+                <div className="flex flex-col md:h-screen md:overflow-hidden">
+                  <NanoBananaTool
+                    modelId="nano-banana-2"
+                    modelName="Nano Banana 2"
+                    dailyLimitStorageKey="nano_banana_2_last_used_date"
+                  />
+                </div>
+              </div>
             </header>
           ) : (
             <header className="bg-[#F8FAFF] pb-8 md:pb-12 px-6">

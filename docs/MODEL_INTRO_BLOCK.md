@@ -23,6 +23,13 @@
    - 每卡：标题 + 详细内容
    - 卡片背景：浅靛 / 浅紫 / 浅灰（非白色）
 
+## 右侧区域：图片 vs 模型名占位（Nano Banana 样式）
+
+- **禁止使用占位图或不存在图片**：若 `image.src` 指向的图片不存在，会导致裂图
+- **推荐：模型名占位（Nano Banana 样式）**：不配置 `image`，仅配置 `modelName` 和 `modelType`，右侧显示渐变卡片 + 模型名 + 类型标签
+- **仅在有真实图片时使用 image**：如 Seedance 2.0 等有官方产品图时，可配置 `image: { src: "/path/to/existing.jpg", alt: "..." }`
+- **Watermark Remover、无产品图的工具**：一律不配置 `image`，使用 `modelName` + `modelType` 占位
+
 ## 数据格式（JSON）
 
 ```json
@@ -41,6 +48,8 @@
   }
 }
 ```
+
+- `image` 可选，**无真实图片时省略**，使用 modelName 占位
 
 ## 使用示例
 
@@ -66,8 +75,8 @@ import ModelIntroBlock from '@/components/blocks/ModelIntroBlock'
 
 ## 何时使用
 
-- 模型介绍页 L2（如 `/seedance-2`、`/model/nano-banana-pro`）
-- 模型介绍页 L3（如 `/seedance-2/text-to-video`、`/seedance-2/image-to-video`）
+- 模型介绍页 L2（如 `/model/seedance-2`、`/model/nano-banana-pro`）
+- 模型介绍页 L3（如 `/model/seedance-2/text-to-video`、`/model/seedance-2/image-to-video`）
 - 需要突出模型核心价值与三大优势的落地页
 - 需要配图 + 长文案的 SEO 内容区块
 

@@ -8,6 +8,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body { font-family: 'Poppins', sans-serif; }
+    body.modal-open { overflow: hidden; }
     .json-editor { font-family: ui-monospace, monospace; font-size: 13px; }
     .text-gradient { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #9333ea 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
     .bg-gradient-brand { background: linear-gradient(135deg, #4f46e5 0%, #9333ea 100%); }
@@ -18,8 +19,75 @@
   <div id="app" class="max-w-6xl mx-auto px-4 py-6">
     <header class="mb-6 flex justify-between items-center">
       <h1 class="text-xl font-bold text-indigo-600">SEO 管理后台</h1>
-      <a href="/" class="text-sm text-slate-500 hover:text-slate-700">返回</a>
+      <div class="flex items-center gap-3">
+        <button id="nav-dashboard" class="rounded-lg border border-slate-200 px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50">页面列表</button>
+        <button id="nav-layout-strategy" class="rounded-lg border border-indigo-200 px-4 py-2 text-sm font-medium text-indigo-600 hover:bg-indigo-50">L2/L3 布局策略</button>
+        <button id="new-seo-page-btn" class="rounded-lg bg-purple-600 px-4 py-2 text-sm font-medium text-white hover:bg-purple-700">新增 SEO 落地页</button>
+        <a href="/" class="text-sm text-slate-500 hover:text-slate-700">返回</a>
+      </div>
     </header>
+
+    <div id="message" class="hidden rounded-xl p-3 mb-4"></div>
+
+    <!-- L2/L3 布局策略 -->
+    <div id="layout-strategy" class="hidden">
+      <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm mb-6">
+        <h2 class="text-lg font-bold text-slate-800 mb-4">L2/L3 布局策略</h2>
+        <p class="text-sm text-slate-500 mb-4">上传关键词 CSV，AI 将推荐 L2（工具主页）和 L3（子页面），并可参考竞品结构。勾选后批量生成落地页。</p>
+        <div class="space-y-4">
+          <div>
+            <label class="block text-sm font-semibold text-slate-700 mb-2">关键词列表（CSV）</label>
+            <div class="flex gap-2">
+              <label class="rounded-lg border border-slate-200 px-4 py-2 text-sm cursor-pointer hover:bg-slate-50">
+                <input type="file" id="layout-csv-upload" accept=".csv,.txt" class="hidden"> 上传 CSV
+              </label>
+              <span id="layout-csv-name" class="text-sm text-slate-400 self-center">未选择文件</span>
+            </div>
+            <textarea id="layout-keywords-csv" class="mt-2 w-full h-32 rounded-lg border border-slate-200 p-3 text-sm font-mono" placeholder="或在此粘贴 CSV 内容（需含 keyword 列，可选 searchVolume、difficulty）&#10;示例：&#10;keyword,searchVolume,difficulty&#10;image to image ai,1000,30&#10;image to image generator,500,25"></textarea>
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-slate-700 mb-2">竞品 URL（可选，用于分析其 L2/L3 结构）</label>
+            <textarea id="layout-competitor-urls" class="w-full h-20 rounded-lg border border-slate-200 p-3 text-sm" placeholder="每行一个 URL，如：&#10;https://example.com/tools&#10;https://competitor.com"></textarea>
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-slate-700 mb-2">目标工具（可选）</label>
+            <input type="text" id="layout-target-tool" class="w-full max-w-xs rounded-lg border border-slate-200 px-3 py-2 text-sm font-mono" placeholder="如 nano-banana-pro，L3 优先推荐该工具下">
+          </div>
+          <button id="layout-analyze-btn" class="rounded-lg bg-purple-600 px-6 py-2 text-sm font-medium text-white hover:bg-purple-700">分析推荐</button>
+        </div>
+      </div>
+      <div id="layout-results-wrap" class="hidden">
+        <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm mb-4">
+          <div class="flex justify-between items-center mb-4">
+            <h3 class="text-lg font-bold text-slate-800">推荐结果</h3>
+            <div class="flex gap-2">
+              <button id="layout-select-all" class="text-sm text-indigo-600 hover:underline">全选</button>
+              <button id="layout-select-none" class="text-sm text-slate-500 hover:underline">取消全选</button>
+            </div>
+          </div>
+          <div class="space-y-4">
+            <div id="layout-l2-list"></div>
+            <div id="layout-l3-list"></div>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-200">
+            <label class="block text-sm font-semibold text-slate-700 mb-2">批量生成顶部功能（应用于所有选中页）</label>
+            <select id="layout-batch-top-component" class="rounded-lg border border-slate-200 px-3 py-2 text-sm">
+              <option value="nano-banana-pro">Nano Banana Pro</option>
+              <option value="nano-banana-2">Nano Banana 2</option>
+              <option value="image-compressor">图片压缩</option>
+              <option value="image-converter">图片转换</option>
+              <option value="watermark-remover">去水印</option>
+              <option value="font-generator">字体生成器</option>
+            </select>
+            <button id="layout-batch-generate-btn" class="ml-4 rounded-lg bg-indigo-600 px-6 py-2 text-sm font-medium text-white hover:bg-indigo-700">基于勾选生成落地页</button>
+          </div>
+        </div>
+      </div>
+      <div id="layout-batch-progress" class="hidden rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+        <h4 class="font-bold text-slate-800 mb-2">生成进度</h4>
+        <pre id="layout-batch-log" class="text-sm text-slate-600 whitespace-pre-wrap max-h-48 overflow-auto"></pre>
+      </div>
+    </div>
 
     <!-- Dashboard -->
     <div id="dashboard" class="hidden">
@@ -48,7 +116,6 @@
           <button id="delete-page-btn" class="rounded-lg border border-red-200 px-4 py-2 text-sm font-medium text-red-600 hover:bg-red-50 hidden">删除页面</button>
         </div>
       </div>
-      <div id="message" class="hidden rounded-xl p-3 mb-4"></div>
 
       <!-- 修改 URL 弹窗 -->
       <div id="change-url-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/40">
@@ -75,6 +142,7 @@
         </div>
       </div>
 
+      <div id="sections-view"></div>
       <!-- Generate SEO Modal -->
       <div id="generate-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/40">
         <div class="bg-white rounded-2xl shadow-xl max-w-2xl w-full mx-4 max-h-[90vh] overflow-hidden flex flex-col">
@@ -83,16 +151,55 @@
             <p class="text-sm text-slate-500 mt-1">调用 Gemini API，根据关键词、SEO 规则和工具规格生成内容</p>
           </div>
           <div class="p-6 overflow-y-auto flex-1 space-y-4">
-            <div id="gen-url-row">
-              <label class="block text-sm font-semibold text-slate-700 mb-2">URL / Slug</label>
-              <div class="flex gap-2">
-                <input type="text" id="gen-url-input" class="flex-1 rounded-lg border border-slate-200 px-3 py-2 text-sm font-mono" placeholder="L2 留空；L3 填写如 how-to-remove-watermark">
-                <button type="button" id="gen-ai-url-btn" class="rounded-lg border border-purple-300 px-4 py-2 text-sm font-medium text-purple-600 hover:bg-purple-50 whitespace-nowrap">AI 生成 URL</button>
+            <div id="gen-page-type-row">
+              <label class="block text-sm font-semibold text-slate-700 mb-2">页面类型</label>
+              <div class="flex gap-4">
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="radio" name="gen-page-type" value="l2" class="rounded border-slate-300 text-indigo-600">
+                  <span>L2 主页面</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="radio" name="gen-page-type" value="l3" class="rounded border-slate-300 text-indigo-600">
+                  <span>L3 子页面</span>
+                </label>
               </div>
-              <p id="gen-url-hint" class="text-xs text-slate-400 mt-1">L2 主页面无需填写；新建 L3 页面时填写 URL slug</p>
+            </div>
+            <div id="gen-l2-tool-row">
+              <label class="block text-sm font-semibold text-slate-700 mb-2">选择工具（L2）</label>
+              <div class="flex gap-2">
+                <select id="gen-tool-select" class="flex-1 rounded-lg border border-slate-200 px-3 py-2 text-sm">
+                  <option value="">加载中...</option>
+                </select>
+                <input type="text" id="gen-tool-custom" class="flex-1 rounded-lg border border-slate-200 px-3 py-2 text-sm font-mono hidden" placeholder="如 my-new-tool">
+              </div>
+              <label class="flex items-center gap-2 mt-1 cursor-pointer">
+                <input type="checkbox" id="gen-tool-custom-check" class="rounded border-slate-300 text-indigo-600">
+                <span class="text-xs text-slate-600">手动输入工具 ID（新建工具时使用）</span>
+              </label>
+            </div>
+            <div id="gen-top-component-row">
+              <label class="block text-sm font-semibold text-slate-700 mb-2">顶部功能</label>
+              <select id="gen-top-component" class="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm">
+                <option value="image-compressor">图片压缩 (Image Compressor)</option>
+                <option value="image-converter">图片转换 (Image Converter)</option>
+                <option value="watermark-remover">去水印 (Watermark Remover)</option>
+                <option value="font-generator">字体生成器 (Font Generator)</option>
+                <option value="emoji-copy-and-paste">Emoji 复制粘贴</option>
+                <option value="seedance-2">Seedance 2.0 视频</option>
+                <option value="kling-3">Kling 3.0 视频</option>
+                <option value="nano-banana-pro">Nano Banana Pro</option>
+                <option value="nano-banana-2">Nano Banana 2</option>
+              </select>
+              <p class="text-xs text-slate-400 mt-1">落地页顶部展示的交互功能，新建工具时可选择复用已有功能</p>
+            </div>
+            <div id="gen-core-keyword-row">
+              <label class="block text-sm font-semibold text-slate-700 mb-2">核心关键词（可选）</label>
+              <input type="text" id="gen-core-keyword" class="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm" placeholder="如：free image compressor、png to webp converter">
+              <p class="text-xs text-slate-400 mt-1">填写后，AI 将以此核心关键词 + 下方关键词搜索量表格为参考生成页面，优先覆盖该词</p>
             </div>
             <div>
               <label class="block text-sm font-semibold text-slate-700 mb-2">关键词参考</label>
+              <p class="text-xs text-slate-500 mb-2">用于 AI 生成 URL（L3）和 SEO 内容。先填关键词，再点「AI 生成 URL」</p>
               <div class="flex gap-2 mb-2">
                 <select id="gen-keywords-file" class="rounded-lg border border-slate-200 px-3 py-2 text-sm flex-1">
                   <option value="">选择已有关键词文件...</option>
@@ -102,6 +209,14 @@
                 </label>
               </div>
               <textarea id="gen-keywords-text" class="w-full h-24 rounded-lg border border-slate-200 p-3 text-sm font-mono" placeholder="或在此粘贴关键词内容（CSV/JSON）..."></textarea>
+            </div>
+            <div id="gen-l3-slug-row" class="hidden">
+              <label class="block text-sm font-semibold text-slate-700 mb-2">URL Slug（L3）</label>
+              <div class="flex gap-2">
+                <input type="text" id="gen-url-input" class="flex-1 rounded-lg border border-slate-200 px-3 py-2 text-sm font-mono" placeholder="根据上方关键词生成，可修改">
+                <button type="button" id="gen-ai-url-btn" class="rounded-lg border border-purple-300 px-4 py-2 text-sm font-medium text-purple-600 hover:bg-purple-50 whitespace-nowrap">AI 生成 URL</button>
+              </div>
+              <p class="text-xs text-slate-400 mt-1">根据关键词生成，可手动修改。如 how-to-remove-watermark-from-photo</p>
             </div>
             <div>
               <label class="block text-sm font-semibold text-slate-700 mb-2">生成板块（勾选要生成的）</label>
@@ -119,35 +234,90 @@
                 <label class="flex items-center gap-2"><input type="checkbox" class="gen-comp" value="faq" checked> FAQ</label>
               </div>
             </div>
-            <div class="space-y-2">
-              <label class="block text-sm font-semibold text-slate-700">参考规则（可多选，含 Use Case / FAQ 规范）</label>
-              <div class="flex flex-wrap gap-3 items-center">
-                <span class="flex items-center gap-1">
-                  <input type="checkbox" id="gen-use-seo-content" checked>
-                  <label for="gen-use-seo-content">SEO 内容规范</label>
-                  <button type="button" class="rule-preview-btn text-xs text-purple-600 hover:underline" data-file="SEO_CONTENT_GUIDELINES.md">预览</button>
-                </span>
-                <span class="flex items-center gap-1">
-                  <input type="checkbox" id="gen-use-seo-layout" checked>
-                  <label for="gen-use-seo-layout">SEO 布局规范</label>
-                  <button type="button" class="rule-preview-btn text-xs text-purple-600 hover:underline" data-file="SEO_MASTER_LAYOUT.md">预览</button>
-                </span>
-                <span class="flex items-center gap-1">
-                  <input type="checkbox" id="gen-use-structure" checked>
-                  <label for="gen-use-structure">结构规范</label>
-                  <button type="button" class="rule-preview-btn text-xs text-purple-600 hover:underline" data-file="TRANSLATION_STRUCTURE_GUIDE.md">预览</button>
-                </span>
-                <span class="flex items-center gap-1">
-                  <input type="checkbox" id="gen-use-tool-spec" checked>
-                  <label for="gen-use-tool-spec">工具规格</label>
-                  <button type="button" class="rule-preview-btn text-xs text-purple-600 hover:underline" data-file="tool">预览</button>
-                </span>
-                <a href="/api/test-gemini" target="_blank" class="text-sm text-purple-600 hover:underline ml-2">测试 API</a>
+
+            <div id="gen-reference-rules" class="mt-10 pt-8 border-t border-slate-200 space-y-6">
+              <div>
+                <h3 class="text-sm font-bold text-slate-800 mb-3">参考规则</h3>
+                <p class="text-xs text-slate-500 mb-4">勾选后 AI 生成时会加载对应规则；点击「预览」可查看文档内容</p>
+
+                <div class="space-y-5">
+                  <div>
+                    <div class="text-xs font-semibold text-slate-600 mb-2">索引</div>
+                    <div class="flex flex-wrap gap-2">
+                      <button type="button" class="rule-preview-btn inline-flex items-center gap-1 rounded-lg border border-slate-200 px-3 py-1.5 text-xs text-slate-700 hover:bg-slate-50" data-file="README.md">文档索引</button>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div class="text-xs font-semibold text-slate-600 mb-2">核心规范（生成时必选）</div>
+                    <div class="flex flex-wrap gap-2">
+                      <label class="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 px-3 py-1.5 text-xs cursor-pointer hover:bg-slate-50">
+                        <input type="checkbox" id="gen-use-seo-content" checked>
+                        <span>SEO 内容规范</span>
+                        <button type="button" class="rule-preview-btn text-indigo-600 hover:underline" data-file="SEO_CONTENT_GUIDELINES.md">预览</button>
+                      </label>
+                      <label class="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 px-3 py-1.5 text-xs cursor-pointer hover:bg-slate-50">
+                        <input type="checkbox" id="gen-use-seo-layout" checked>
+                        <span>SEO 布局规范</span>
+                        <button type="button" class="rule-preview-btn text-indigo-600 hover:underline" data-file="SEO_MASTER_LAYOUT.md">预览</button>
+                      </label>
+                      <label class="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 px-3 py-1.5 text-xs cursor-pointer hover:bg-slate-50">
+                        <input type="checkbox" id="gen-use-structure" checked>
+                        <span>结构规范</span>
+                        <button type="button" class="rule-preview-btn text-indigo-600 hover:underline" data-file="TRANSLATION_STRUCTURE_GUIDE.md">预览</button>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div class="text-xs font-semibold text-slate-600 mb-2">板块细致规范</div>
+                    <div class="flex flex-wrap gap-2">
+                      <button type="button" class="rule-preview-btn rounded-lg border border-slate-200 px-2.5 py-1.5 text-xs text-slate-600 hover:bg-slate-50" data-file="sections/00_global.md">全局</button>
+                      <button type="button" class="rule-preview-btn rounded-lg border border-slate-200 px-2.5 py-1.5 text-xs text-slate-600 hover:bg-slate-50" data-file="sections/metadata.md">Metadata</button>
+                      <button type="button" class="rule-preview-btn rounded-lg border border-slate-200 px-2.5 py-1.5 text-xs text-slate-600 hover:bg-slate-50" data-file="sections/hero.md">Hero</button>
+                      <button type="button" class="rule-preview-btn rounded-lg border border-slate-200 px-2.5 py-1.5 text-xs text-slate-600 hover:bg-slate-50" data-file="sections/how-to-use.md">How To Use</button>
+                      <button type="button" class="rule-preview-btn rounded-lg border border-slate-200 px-2.5 py-1.5 text-xs text-slate-600 hover:bg-slate-50" data-file="sections/features.md">Features</button>
+                      <button type="button" class="rule-preview-btn rounded-lg border border-slate-200 px-2.5 py-1.5 text-xs text-slate-600 hover:bg-slate-50" data-file="sections/intro.md">Intro</button>
+                      <button type="button" class="rule-preview-btn rounded-lg border border-slate-200 px-2.5 py-1.5 text-xs text-slate-600 hover:bg-slate-50" data-file="sections/model-intro.md">Model Intro</button>
+                      <button type="button" class="rule-preview-btn rounded-lg border border-slate-200 px-2.5 py-1.5 text-xs text-slate-600 hover:bg-slate-50" data-file="sections/scenarios.md">Scenarios</button>
+                      <button type="button" class="rule-preview-btn rounded-lg border border-slate-200 px-2.5 py-1.5 text-xs text-slate-600 hover:bg-slate-50" data-file="sections/rating.md">Rating</button>
+                      <button type="button" class="rule-preview-btn rounded-lg border border-slate-200 px-2.5 py-1.5 text-xs text-slate-600 hover:bg-slate-50" data-file="sections/faq.md">FAQ</button>
+                      <button type="button" class="rule-preview-btn rounded-lg border border-slate-200 px-2.5 py-1.5 text-xs text-slate-600 hover:bg-slate-50" data-file="sections/comparison.md">Comparison</button>
+                      <button type="button" class="rule-preview-btn rounded-lg border border-slate-200 px-2.5 py-1.5 text-xs text-slate-600 hover:bg-slate-50" data-file="sections/internal-links.md">内链</button>
+                      <button type="button" class="rule-preview-btn rounded-lg border border-slate-200 px-2.5 py-1.5 text-xs text-slate-600 hover:bg-slate-50" data-file="sections/navigation.md">导航</button>
+                      <button type="button" class="rule-preview-btn rounded-lg border border-slate-200 px-2.5 py-1.5 text-xs text-slate-600 hover:bg-slate-50" data-file="sections/more-tools.md">More Tools</button>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div class="text-xs font-semibold text-slate-600 mb-2">关键词</div>
+                    <div class="flex flex-wrap gap-2">
+                      <button type="button" class="rule-preview-btn rounded-lg border border-slate-200 px-2.5 py-1.5 text-xs text-slate-600 hover:bg-slate-50" data-file="keywords/KEYWORD_STRATEGY.md">关键词策略</button>
+                      <button type="button" class="rule-preview-btn rounded-lg border border-slate-200 px-2.5 py-1.5 text-xs text-slate-600 hover:bg-slate-50" data-file="keywords/KEYWORD_DENSITY_GUIDELINES.md">密度规范</button>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div class="text-xs font-semibold text-slate-600 mb-2">工具规格</div>
+                    <div class="flex flex-wrap gap-2">
+                      <label class="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 px-3 py-1.5 text-xs cursor-pointer hover:bg-slate-50">
+                        <input type="checkbox" id="gen-use-tool-spec" checked>
+                        <span>工具规格</span>
+                        <button type="button" class="rule-preview-btn text-indigo-600 hover:underline" data-file="tool">预览</button>
+                      </label>
+                      <span class="text-xs text-slate-400 self-center">（需先选择工具）</span>
+                    </div>
+                  </div>
+
+                  <div class="flex items-center gap-2 pt-2">
+                    <a href="/api/test-gemini" target="_blank" class="text-xs text-purple-600 hover:underline">测试 API</a>
+                  </div>
+                </div>
               </div>
             </div>
             <!-- 规则预览弹窗 -->
-            <div id="rule-preview-modal" class="hidden fixed inset-0 z-[60] flex items-center justify-center bg-black/40">
-              <div class="bg-white rounded-2xl shadow-xl max-w-4xl w-full mx-4 max-h-[85vh] overflow-hidden flex flex-col">
+            <div id="rule-preview-modal" class="hidden fixed inset-0 z-[60] flex items-center justify-center bg-black/40 overflow-y-auto p-4" style="overscroll-behavior: contain; -webkit-overflow-scrolling: touch;">
+              <div id="rule-preview-content-box" class="bg-white rounded-2xl shadow-xl max-w-4xl w-full mx-4 max-h-[85vh] overflow-hidden flex flex-col my-8">
                 <div class="p-4 border-b border-slate-200 flex justify-between items-center">
                   <h4 id="rule-preview-title" class="font-bold text-slate-800"></h4>
                   <button type="button" id="rule-preview-close" class="text-slate-500 hover:text-slate-700">✕ 关闭</button>
@@ -179,40 +349,117 @@
         </div>
       </div>
 
-      <div id="sections-view"></div>
+      <!-- 板块重新生成弹窗 -->
+      <div id="section-regen-modal" class="hidden fixed inset-0 z-[60] flex items-center justify-center bg-black/40 overflow-y-auto p-4">
+        <div class="bg-white rounded-2xl shadow-xl max-w-2xl w-full mx-4 max-h-[90vh] overflow-hidden flex flex-col my-8">
+          <div class="p-4 border-b border-slate-200 flex justify-between items-center">
+            <h4 id="section-regen-title" class="font-bold text-slate-800">重新生成板块</h4>
+            <button type="button" id="section-regen-close" class="text-slate-500 hover:text-slate-700">✕ 关闭</button>
+          </div>
+          <div class="p-4 overflow-y-auto flex-1 space-y-4">
+            <div>
+              <label class="block text-sm font-semibold text-slate-700 mb-2">额外规则（仅本次生效，可留空）</label>
+              <textarea id="section-regen-extra" class="w-full h-24 rounded-lg border border-slate-200 p-3 text-sm" placeholder="如：强调免费、突出批量处理、使用更正式的语气..."></textarea>
+              <p class="text-xs text-slate-400 mt-1">可预览下方规则后补充，生成时可修改再试</p>
+            </div>
+            <div>
+              <label class="block text-sm font-semibold text-slate-700 mb-2">板块规则预览</label>
+              <pre id="section-regen-rules-preview" class="w-full h-32 overflow-auto rounded-lg border border-slate-200 p-3 text-xs text-slate-600 bg-slate-50"></pre>
+            </div>
+          </div>
+          <div class="p-4 border-t border-slate-200 flex justify-end gap-2">
+            <button type="button" id="section-regen-cancel" class="rounded-lg border border-slate-200 px-4 py-2 text-sm text-slate-600 hover:bg-slate-50">取消</button>
+            <button type="button" id="section-regen-submit" class="rounded-lg bg-purple-600 px-4 py-2 text-sm font-medium text-white hover:bg-purple-700">生成</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 新增板块弹窗 -->
+      <div id="add-section-modal" class="hidden fixed inset-0 z-[60] flex items-center justify-center bg-black/40 overflow-y-auto p-4">
+        <div class="bg-white rounded-2xl shadow-xl max-w-2xl w-full mx-4 max-h-[90vh] overflow-hidden flex flex-col my-8">
+          <div class="p-4 border-b border-slate-200 flex justify-between items-center">
+            <h4 id="add-section-title" class="font-bold text-slate-800">新增板块</h4>
+            <button type="button" id="add-section-close" class="text-slate-500 hover:text-slate-700">✕ 关闭</button>
+          </div>
+          <div class="p-4 overflow-y-auto flex-1 space-y-4">
+            <div>
+              <label class="block text-sm font-semibold text-slate-700 mb-2">额外规则（可选）</label>
+              <textarea id="add-section-extra" class="w-full h-20 rounded-lg border border-slate-200 p-3 text-sm" placeholder="如：强调免费、突出批量处理..."></textarea>
+            </div>
+            <div>
+              <label class="block text-sm font-semibold text-slate-700 mb-2">板块规则预览</label>
+              <pre id="add-section-rules-preview" class="w-full h-24 overflow-auto rounded-lg border border-slate-200 p-3 text-xs text-slate-600 bg-slate-50"></pre>
+            </div>
+            <div id="add-section-result-wrap" class="hidden">
+              <label class="block text-sm font-semibold text-slate-700 mb-2">生成结果（可编辑后确认）</label>
+              <textarea id="add-section-result" class="w-full h-48 rounded-lg border border-slate-200 p-3 text-sm font-mono"></textarea>
+            </div>
+          </div>
+          <div class="p-4 border-t border-slate-200 flex justify-end gap-2">
+            <button type="button" id="add-section-cancel" class="rounded-lg border border-slate-200 px-4 py-2 text-sm text-slate-600 hover:bg-slate-50">取消</button>
+            <button type="button" id="add-section-gen-btn" class="rounded-lg border border-purple-300 px-4 py-2 text-sm font-medium text-purple-600 hover:bg-purple-50">AI 生成</button>
+            <button type="button" id="add-section-confirm-btn" class="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 hidden">确认新增</button>
+          </div>
+        </div>
+      </div>
       <div id="json-view" class="hidden">
         <textarea id="json-textarea" class="json-editor w-full h-[70vh] rounded-xl border border-slate-200 p-4"></textarea>
       </div>
     </div>
 
-    <div id="loading" class="flex justify-center py-20">
+    <div id="loading" class="flex flex-col items-center justify-center py-20 gap-4">
       <div class="h-8 w-8 animate-spin rounded-full border-2 border-indigo-500 border-t-transparent"></div>
+      <p class="text-sm text-slate-500">加载中… 请确保访问 <code class="bg-slate-100 px-2 py-0.5 rounded">http://localhost:3007</code></p>
     </div>
   </div>
 
   <script>
-    const API_BASE = window.location.origin || ''
+    const API_BASE = (window.location.origin && window.location.origin !== 'null' && !window.location.origin.startsWith('file'))
+      ? window.location.origin
+      : 'http://localhost:3007'
     const state = { tool: '', slug: '', data: null, view: 'sections' }
 
-    function show(el) { el.classList.remove('hidden') }
-    function hide(el) { el.classList.add('hidden') }
+    // 将生成弹窗移到 body，确保在 Dashboard 时也能显示
+    ;(function () {
+      const el = document.getElementById('generate-modal')
+      if (el && el.parentElement) document.body.appendChild(el)
+    })()
 
-    async function api(path, opts = {}) {
+    function show(el) { if (el) el.classList.remove('hidden') }
+    function hide(el) { if (el) el.classList.add('hidden') }
+
+    async function api(path, opts = {}, retries = 2) {
       const url = path.startsWith('http') ? path : (API_BASE + (path.startsWith('/') ? '' : '/') + path)
-      const res = await fetch(url, opts)
-      const data = await res.json().catch(() => ({}))
-      if (!res.ok) {
-        const msg = data.error || res.statusText || '请求失败'
-        const hint = data.hint ? '\n\n' + data.hint : ''
-        const statusHint = res.status === 404 && !data.error ? '\n\n提示：若删除/预览失败，请确认管理后台已重启 (npm run admin:seo:restart)' : ''
-        throw new Error(msg + hint + statusHint)
+      for (let i = 0; i <= retries; i++) {
+        try {
+          const controller = new AbortController()
+          const timeout = setTimeout(() => controller.abort(), 15000)
+          const fetchOpts = { ...opts }; if (!fetchOpts.signal) fetchOpts.signal = controller.signal
+          const res = await fetch(url, fetchOpts)
+          clearTimeout(timeout)
+          const data = await res.json().catch(() => ({}))
+          if (!res.ok) {
+            const msg = data.error || res.statusText || '请求失败'
+            const hint = data.hint ? '\n\n' + data.hint : ''
+            const statusHint = res.status === 404 && !data.error ? '\n\n提示：若删除/预览失败，请确认管理后台已重启 (npm run admin:seo:restart)' : ''
+            throw new Error(msg + hint + statusHint)
+          }
+          return data
+        } catch (e) {
+          const isRetryable = e.name === 'AbortError' || e.message?.includes('fetch') || e.message?.includes('network') || e.message?.includes('Failed')
+          if (isRetryable && i < retries) {
+            await new Promise(r => setTimeout(r, 1500 * (i + 1)))
+            continue
+          }
+          throw e
+        }
       }
-      return data
     }
 
     function showMsg(msg, type = 'success') {
       const el = document.getElementById('message')
       el.textContent = msg
+      el.style.whiteSpace = 'pre-wrap'
       el.className = `rounded-xl p-3 mb-4 ${type === 'error' ? 'bg-red-50 text-red-700 border border-red-200' : 'bg-green-50 text-green-700 border border-green-200'}`
       show(el)
     }
@@ -220,24 +467,216 @@
     async function loadDashboard() {
       try {
         const tools = await api('/api/tools')
-      const grid = document.getElementById('tools-grid')
-      grid.innerHTML = tools.map(t => `
-        <div class="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
-          <h3 class="font-semibold text-slate-800 mb-3">${t.name}</h3>
-          <ul class="space-y-1">
-            ${t.pages.map(p => `
-              <li><a href="/?tool=${t.id}&slug=${encodeURIComponent(p.slug)}" class="block rounded-lg px-3 py-2 text-sm text-indigo-600 hover:bg-indigo-50">${p.name}</a></li>
-            `).join('')}
-          </ul>
-        </div>
-      `).join('')
-      hide(document.getElementById('loading'))
-      show(document.getElementById('dashboard'))
+        const grid = document.getElementById('tools-grid')
+        if (!Array.isArray(tools)) throw new Error('API 返回格式异常')
+        grid.innerHTML = tools.map(t => `
+          <div class="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+            <h3 class="font-semibold text-slate-800 mb-3">${escapeHtml(t.name)}</h3>
+            <ul class="space-y-1">
+              ${(t.pages || []).map(p => `
+                <li><a href="/?tool=${encodeURIComponent(t.id)}&slug=${encodeURIComponent(p.slug || '')}" class="block rounded-lg px-3 py-2 text-sm text-indigo-600 hover:bg-indigo-50">${escapeHtml(p.name || p.slug || '')}</a></li>
+              `).join('')}
+            </ul>
+          </div>
+        `).join('')
+        hide(document.getElementById('loading'))
+        hide(document.getElementById('layout-strategy'))
+        show(document.getElementById('dashboard'))
       } catch (e) {
         hide(document.getElementById('loading'))
-        document.getElementById('dashboard').innerHTML = '<div class="rounded-xl border border-red-200 bg-red-50 p-4 text-red-700">加载失败: ' + escapeHtml(e.message) + '</div>'
-        show(document.getElementById('dashboard'))
+        const dash = document.getElementById('dashboard')
+        const msg = e.name === 'AbortError' ? '请求超时，请确认管理后台已运行 (http://localhost:3007)' : escapeHtml(e.message)
+        dash.innerHTML = '<div class="rounded-xl border border-red-200 bg-red-50 p-4 text-red-700"><p class="font-semibold">加载失败</p><p class="mt-2 text-sm">' + msg + '</p><button type="button" onclick="location.reload()" class="mt-4 rounded-lg bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-700">自动重试</button></div>'
+        show(dash)
+        setTimeout(() => location.reload(), 5000)
       }
+    }
+
+    function showLayoutStrategy() {
+      hide(document.getElementById('loading'))
+      hide(document.getElementById('dashboard'))
+      hide(document.getElementById('editor'))
+      show(document.getElementById('layout-strategy'))
+    }
+
+    document.getElementById('nav-dashboard').onclick = () => {
+      if (location.search) {
+        loadEditor()
+      } else {
+        loadDashboard()
+      }
+    }
+    document.getElementById('nav-layout-strategy').onclick = showLayoutStrategy
+
+    const DEFAULT_USE_COMPONENTS = ['metadata', 'hero', 'howToUse', 'modelIntro', 'features', 'scenes', 'rating', 'faq']
+    let layoutRecommendations = []
+
+    document.getElementById('layout-csv-upload').onchange = (e) => {
+      const f = e.target.files?.[0]
+      if (!f) return
+      document.getElementById('layout-csv-name').textContent = f.name
+      const r = new FileReader()
+      r.onload = () => {
+        document.getElementById('layout-keywords-csv').value = r.result
+      }
+      r.readAsText(f)
+    }
+
+    document.getElementById('layout-analyze-btn').onclick = async () => {
+      const csv = document.getElementById('layout-keywords-csv').value.trim()
+      if (!csv) {
+        showMsg('请上传或粘贴关键词 CSV', 'error')
+        return
+      }
+      const competitorText = document.getElementById('layout-competitor-urls').value.trim()
+      const competitorUrls = competitorText ? competitorText.split(/\r?\n/).map(s => s.trim()).filter(Boolean)
+      const targetTool = document.getElementById('layout-target-tool').value.trim() || undefined
+      const btn = document.getElementById('layout-analyze-btn')
+      btn.disabled = true
+      btn.textContent = '分析中...'
+      try {
+        const res = await api('/api/layout-strategy', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ keywordsCsv: csv, competitorUrls, targetTool }),
+        })
+        if (res.ok && res.recommendations) {
+          layoutRecommendations = res.recommendations
+          renderLayoutRecommendations()
+          document.getElementById('layout-results-wrap').classList.remove('hidden')
+          showMsg(`分析完成，共 ${res.recommendations.length} 条推荐（L2: ${res.recommendations.filter(r => r.type === 'l2').length}，L3: ${res.recommendations.filter(r => r.type === 'l3').length}）`)
+        } else {
+          showMsg(res.error || '分析失败', 'error')
+        }
+      } catch (e) {
+        showMsg(e.message, 'error')
+      }
+      btn.disabled = false
+      btn.textContent = '分析推荐'
+    }
+
+    function renderLayoutRecommendations() {
+      const l2List = document.getElementById('layout-l2-list')
+      const l3List = document.getElementById('layout-l3-list')
+      const l2s = layoutRecommendations.filter(r => r.type === 'l2')
+      const l3s = layoutRecommendations.filter(r => r.type === 'l3')
+      l2List.innerHTML = l2s.length ? `
+        <div class="text-sm font-semibold text-slate-600 mb-2">L2 工具主页</div>
+        <div class="space-y-2">
+          ${l2s.map((r, i) => `
+            <label class="flex items-start gap-3 p-3 rounded-lg border border-slate-200 hover:bg-slate-50 cursor-pointer">
+              <input type="checkbox" class="layout-rec-check mt-1 rounded border-slate-300" data-index="${layoutRecommendations.indexOf(r)}">
+              <div class="flex-1 min-w-0">
+                <div class="font-mono text-indigo-600">${escapeHtml(r.url)}</div>
+                <div class="text-xs text-slate-500 mt-1">${escapeHtml(r.reason || '')}</div>
+                <div class="text-xs text-slate-400 mt-1">关键词量: ${r.keywordVolume ?? '-'} | ${escapeHtml((r.keywords || []).slice(0, 3).join(', '))}</div>
+              </div>
+            </label>
+          `).join('')}
+        </div>
+      ` : ''
+      l3List.innerHTML = l3s.length ? `
+        <div class="text-sm font-semibold text-slate-600 mb-2 mt-4">L3 子页面</div>
+        <div class="space-y-2">
+          ${l3s.map((r, i) => `
+            <label class="flex items-start gap-3 p-3 rounded-lg border border-slate-200 hover:bg-slate-50 cursor-pointer">
+              <input type="checkbox" class="layout-rec-check mt-1 rounded border-slate-300" data-index="${layoutRecommendations.indexOf(r)}">
+              <div class="flex-1 min-w-0">
+                <div class="font-mono text-indigo-600">${escapeHtml(r.url)}</div>
+                <div class="text-xs text-slate-500 mt-1">${escapeHtml(r.reason || '')}</div>
+                <div class="text-xs text-slate-400 mt-1">主词: ${escapeHtml(r.coreKeyword || '-')} | 关键词量: ${r.keywordVolume ?? '-'}</div>
+              </div>
+            </label>
+          `).join('')}
+        </div>
+      ` : ''
+    }
+
+    document.getElementById('layout-select-all').onclick = () => {
+      document.querySelectorAll('.layout-rec-check').forEach(c => { c.checked = true })
+    }
+    document.getElementById('layout-select-none').onclick = () => {
+      document.querySelectorAll('.layout-rec-check').forEach(c => { c.checked = false })
+    }
+
+    document.getElementById('layout-batch-generate-btn').onclick = async () => {
+      const selected = Array.from(document.querySelectorAll('.layout-rec-check:checked')).map(c => parseInt(c.dataset.index, 10))
+      if (selected.length === 0) {
+        showMsg('请先勾选要生成的 L2/L3', 'error')
+        return
+      }
+      const items = selected.map(i => layoutRecommendations[i])
+      const topComponent = document.getElementById('layout-batch-top-component').value
+      const csv = document.getElementById('layout-keywords-csv').value.trim()
+      const keywordsJson = csv ? csvToKeywordsJson(csv) : '{}'
+      const progressEl = document.getElementById('layout-batch-progress')
+      const logEl = document.getElementById('layout-batch-log')
+      progressEl.classList.remove('hidden')
+      logEl.textContent = ''
+      const appendLog = (msg) => {
+        logEl.textContent += msg + '\n'
+        logEl.scrollTop = logEl.scrollHeight
+      }
+      for (let i = 0; i < items.length; i++) {
+        const r = items[i]
+        const isL2 = r.type === 'l2'
+        const tool = r.tool
+        const slug = isL2 ? null : r.slug
+        const coreKeyword = r.coreKeyword || (r.keywords && r.keywords[0]) || undefined
+        appendLog(`[${i + 1}/${items.length}] 生成 ${r.url} ...`)
+        try {
+          const res = await api('/api/generate', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              tool,
+              slug: slug || undefined,
+              topComponent: topComponent || undefined,
+              coreKeyword,
+              keywordsText: keywordsJson,
+              useComponents: DEFAULT_USE_COMPONENTS,
+              useSeoContentGuidelines: true,
+              useSeoLayout: true,
+              useStructureGuide: true,
+              useToolSpec: true,
+            }),
+          })
+          if (res.ok && res.data) {
+            await api('/api/seo', {
+              method: 'PUT',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ tool, slug: slug || '', locale: 'en', data: res.data }),
+            })
+            appendLog(`  ✓ 已创建`)
+          } else {
+            appendLog(`  ✗ 失败: ${res.error || '未知'}`)
+          }
+        } catch (e) {
+          appendLog(`  ✗ 失败: ${e.message}`)
+        }
+      }
+      appendLog('批量生成完成。')
+      showMsg(`已生成 ${items.length} 个页面，请查看进度日志`)
+    }
+
+    function csvToKeywordsJson(csv) {
+      const lines = csv.trim().split(/\r?\n/).filter(Boolean)
+      if (lines.length < 2) return '{}'
+      const header = lines[0].toLowerCase().split(/[,\t]/).map(h => h.trim())
+      const kwIdx = Math.max(0, header.findIndex(h => /keyword|词|关键词/i.test(h)))
+      const volIdx = header.findIndex(h => /volume|搜索量|search/i.test(h))
+      const primary = []
+      const longTail = []
+      for (let i = 1; i < lines.length; i++) {
+        const cells = lines[i].split(/[,\t]/).map(c => c.trim())
+        const kw = cells[kwIdx] || cells[0]
+        if (!kw) continue
+        const vol = volIdx >= 0 && cells[volIdx] ? parseInt(cells[volIdx], 10) || 0 : 0
+        const item = { keyword: kw, searchVolume: vol }
+        if (i <= 10 || vol > 50) primary.push(item)
+        else longTail.push(item)
+      }
+      return JSON.stringify({ primaryKeywords: primary, longTailKeywords: longTail })
     }
 
     const SECTION_TEMPLATES = {
@@ -251,7 +690,8 @@
       comparison: { title: 'Comparison', toolaze: 'Toolaze 💎', others: 'Others', toolazeFeatures: 'Feature 1, Feature 2', othersFeatures: 'Limitation 1, Limitation 2' },
       scenes: { scenesTitle: 'Scenarios', scenes: [{ title: 'Scenario', icon: '🏷️', desc: 'Description' }] },
       rating: { title: 'Trusted by Thousands', rating: '4.9/5 FROM 10K+', text: 'Description.' },
-      faq: { faqTitle: 'FAQ', faq: [{ q: 'Question?', a: 'Answer.' }] }
+      faq: { faqTitle: 'FAQ', faq: [{ q: 'Question?', a: 'Answer.' }] },
+      moreTools: { moreTools: 'More [Tool Name] Tools', moreToolsLinks: [] }
     }
 
     function getSectionData(d, id) {
@@ -260,6 +700,7 @@
       if (id === 'trustBar') return d.trustBar || {}
       if (id === 'faq') return { faqTitle: d.faqTitle || '', faq: d.faq || [] }
       if (id === 'scenes') return { scenesTitle: d.scenesTitle || '', scenes: d.scenes || [] }
+      if (id === 'moreTools') return { moreTools: d.moreTools || '', moreToolsLinks: Array.isArray(d.moreToolsLinks) ? d.moreToolsLinks : [] }
       return d[id] || {}
     }
 
@@ -269,6 +710,10 @@
       else if (id === 'trustBar') d.trustBar = val
       else if (id === 'faq') { d.faqTitle = val.faqTitle; d.faq = val.faq }
       else if (id === 'scenes') { d.scenesTitle = val.scenesTitle; d.scenes = val.scenes }
+      else if (id === 'moreTools') {
+        d.moreTools = (typeof val === 'string' ? val : val?.moreTools) || ''
+        d.moreToolsLinks = Array.isArray(val?.moreToolsLinks) ? val.moreToolsLinks : []
+      }
       else d[id] = val
     }
 
@@ -278,6 +723,7 @@
       else if (id === 'trustBar') delete d.trustBar
       else if (id === 'faq') { delete d.faqTitle; delete d.faq }
       else if (id === 'scenes') { delete d.scenesTitle; delete d.scenes }
+      else if (id === 'moreTools') { delete d.moreTools; delete d.moreToolsLinks }
       else delete d[id]
       const order = d.sectionsOrder || []
       d.sectionsOrder = order.filter(x => x !== id)
@@ -291,8 +737,10 @@
       const d = data
       const sections = []
 
+      const topCompLabel = { 'image-compressor':'图片压缩','image-compression':'图片压缩','image-converter':'图片转换','image-conversion':'图片转换','watermark-remover':'去水印','font-generator':'字体生成器','emoji-copy-and-paste':'Emoji','seedance-2':'Seedance 2.0','kling-3':'Kling 3.0','nano-banana-pro':'Nano Banana Pro','nano-banana-2':'Nano Banana 2' }
       sections.push({ id: 'metadata', label: 'Metadata', html: `
         <div class="rounded-xl border border-slate-200 bg-white p-4">
+          ${d.topComponent ? `<div class="text-sm mb-2"><span class="font-semibold text-slate-600">顶部功能:</span> ${escapeHtml(topCompLabel[d.topComponent] || d.topComponent)}</div>` : ''}
           <div class="text-sm"><span class="font-semibold text-slate-600">title:</span> ${escapeHtml(d.metadata?.title || '')}</div>
           <div class="text-sm mt-2"><span class="font-semibold text-slate-600">description:</span> ${escapeHtml((d.metadata?.description || '').slice(0,120))}...</div>
         </div>
@@ -471,6 +919,25 @@
         </section>
       `})
 
+      if (d.moreTools) {
+        const links = Array.isArray(d.moreToolsLinks) ? d.moreToolsLinks : []
+        const linksHtml = links.length > 0
+          ? `<div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">${links.map((l, i) => `
+            <div class="rounded-xl border border-indigo-100 bg-indigo-50/50 p-4">
+              <div class="font-semibold text-slate-800 mb-1">${escapeHtml(l.title || l.slug || '')}</div>
+              <div class="text-xs text-slate-500 mb-2 truncate">${escapeHtml(l.href || '')}</div>
+              ${l.description ? `<div class="text-slate-600 text-sm line-clamp-2">${escapeHtml(l.description)}</div>` : ''}
+            </div>`).join('')}</div>`
+          : '<p class="text-center text-slate-500 text-sm mt-4">无推荐链接（将按页面逻辑动态生成）</p>'
+        sections.push({ id: 'moreTools', label: 'More Tools', html: `
+        <section class="bg-white py-12 px-6 rounded-[2rem] border border-indigo-50">
+          <h2 class="text-4xl font-extrabold text-center text-slate-900 mb-8">${escapeHtml(d.moreTools)}</h2>
+          <p class="text-center text-slate-500 text-sm">推荐链接（可编辑）</p>
+          ${linksHtml}
+        </section>
+      `})
+      }
+
       const ordered = []
       const seen = new Set()
       const front = TOOLS_WITH_TRUST_BAR.includes(tool) ? ['metadata','hero','trustBar'] : ['metadata','hero']
@@ -480,7 +947,7 @@
       }
       for (const s of sections) if (!seen.has(s.id)) ordered.push(s)
 
-      const sectionLabels = { hero:'Hero', metadata:'Metadata', trustBar:'Trust Bar', howToUse:'How To Use', modelIntro:'Model Intro', features:'Features', intro:'Intro', comparison:'Comparison', scenes:'Scenarios', rating:'Rating', faq:'FAQ' }
+      const sectionLabels = { hero:'Hero', metadata:'Metadata', trustBar:'Trust Bar', howToUse:'How To Use', modelIntro:'Model Intro', features:'Features', intro:'Intro', comparison:'Comparison', scenes:'Scenarios', rating:'Rating', faq:'FAQ', moreTools:'More Tools' }
       const addOptions = Object.keys(SECTION_TEMPLATES).filter(k => {
         if (ordered.some(o=>o.id===k)) return false
         if (k === 'trustBar' && !TOOLS_WITH_TRUST_BAR.includes(tool)) return false
@@ -488,7 +955,7 @@
       })
       container.innerHTML = `
         <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
-          <p class="text-slate-500">各板块可编辑、删除，支持新增。Metadata、Hero 置顶，其余按页面顺序。仅部分工具显示 Trust Bar。</p>
+          <p class="text-slate-500">各板块可编辑、删除，支持新增。Metadata、Hero 置顶，其余按页面顺序。拖动 ⋮⋮ 可调整板块顺序。仅部分工具显示 Trust Bar。</p>
           <div class="flex items-center gap-2">
             <select id="add-section-select" class="rounded-lg border border-slate-200 px-3 py-2 text-sm">
               <option value="">新增板块...</option>
@@ -497,15 +964,18 @@
             <button id="add-section-btn" class="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700">添加</button>
           </div>
         </div>
+        <div id="sections-sortable" class="space-y-0">
       ` + ordered.map(s=>`
         <div class="mb-8 section-card" data-section-id="${s.id}">
           <div class="flex items-center justify-between gap-2 mb-3">
             <div class="flex items-center gap-2">
+              ${!['metadata','hero','trustBar'].includes(s.id) ? `<span class="drag-handle cursor-grab active:cursor-grabbing text-slate-400 hover:text-slate-600 select-none text-lg leading-none" draggable="true" title="拖动排序">⋮⋮</span>` : ''}
               <span class="text-xs font-bold text-indigo-600 uppercase tracking-wider">${escapeHtml(s.label)}</span>
               <span class="text-slate-300">|</span>
               <span class="text-slate-400 text-sm">${s.id}</span>
             </div>
             <div class="flex gap-2">
+              <button class="section-regen-btn rounded-lg border border-purple-200 px-3 py-1.5 text-xs text-purple-600 hover:bg-purple-50" data-id="${s.id}" data-label="${escapeHtml(s.label)}">重新生成</button>
               <button class="section-edit-btn rounded-lg border border-slate-200 px-3 py-1.5 text-xs text-slate-600 hover:bg-slate-50" data-id="${s.id}">编辑</button>
               <button class="section-delete-btn rounded-lg border border-red-200 px-3 py-1.5 text-xs text-red-600 hover:bg-red-50" data-id="${s.id}">删除</button>
             </div>
@@ -513,14 +983,62 @@
           <div class="section-preview rounded-xl border-2 border-slate-200 overflow-hidden bg-white shadow-sm">${s.html}</div>
           <div class="section-edit-form hidden mt-3 rounded-xl border-2 border-indigo-200 bg-indigo-50/30 p-4">
             <label class="block text-xs font-semibold text-indigo-700 mb-2">编辑 ${escapeHtml(s.label)} (JSON)</label>
+            ${s.id === 'moreTools' ? '<p class="text-xs text-slate-500 mb-2">moreToolsLinks 为推荐链接，可手动编辑或点击「加载推荐链接」从系统获取</p>' : ''}
             <textarea class="section-json-input w-full h-48 font-mono text-sm rounded-lg border border-slate-200 p-3" data-id="${s.id}"></textarea>
-            <div class="mt-2 flex gap-2">
+            <div class="mt-2 flex gap-2 flex-wrap">
+              ${s.id === 'moreTools' ? '<button type="button" class="section-load-links-btn rounded-lg border border-purple-200 px-4 py-2 text-sm text-purple-600 hover:bg-purple-50" data-id="moreTools">加载推荐链接</button>' : ''}
               <button class="section-apply-btn rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700" data-id="${s.id}">应用</button>
               <button class="section-cancel-btn rounded-lg border border-slate-200 px-4 py-2 text-sm text-slate-600 hover:bg-slate-50" data-id="${s.id}">取消</button>
             </div>
           </div>
         </div>
-      `).join('')
+      `).join('') + `
+        </div>
+      `
+
+      const sortableContainer = container.querySelector('#sections-sortable')
+      if (sortableContainer) {
+        let draggedId = null
+        sortableContainer.addEventListener('dragstart', (e) => {
+          const handle = e.target.closest('.drag-handle')
+          if (!handle) return
+          const card = e.target.closest('.section-card')
+          if (!card) return
+          draggedId = card.dataset.sectionId
+          e.dataTransfer.effectAllowed = 'move'
+          e.dataTransfer.setData('text/plain', draggedId)
+          card.classList.add('opacity-50')
+        })
+        sortableContainer.addEventListener('dragend', (e) => {
+          const card = e.target.closest('.section-card')
+          if (card) card.classList.remove('opacity-50')
+          draggedId = null
+        })
+        sortableContainer.addEventListener('dragover', (e) => {
+          e.preventDefault()
+          e.dataTransfer.dropEffect = 'move'
+        })
+        sortableContainer.addEventListener('drop', (e) => {
+          e.preventDefault()
+          e.stopPropagation()
+          const targetCard = e.target.closest('.section-card')
+          if (!targetCard || !draggedId) return
+          const targetId = targetCard.dataset.sectionId
+          if (targetId === draggedId) return
+          const cards = Array.from(sortableContainer.querySelectorAll('.section-card'))
+          const ids = cards.map(c => c.dataset.sectionId)
+      const front = TOOLS_WITH_TRUST_BAR.includes(tool) ? ['metadata','hero','trustBar'] : ['metadata','hero']
+      const orderIds = ids.filter(id => !front.includes(id))
+          const dragIdx = orderIds.indexOf(draggedId)
+          const targetIdx = orderIds.indexOf(targetId)
+          if (dragIdx < 0 || targetIdx < 0) return
+          orderIds.splice(dragIdx, 1)
+          orderIds.splice(targetIdx, 0, draggedId)
+          state.data.sectionsOrder = orderIds
+          renderSectionsPreview(state.data, container)
+          showMsg('已更新排序')
+        })
+      }
 
       ordered.forEach(s => {
         const card = container.querySelector(`.section-card[data-section-id="${s.id}"]`)
@@ -535,6 +1053,30 @@
           editForm.classList.remove('hidden')
           preview.classList.add('opacity-50')
           jsonInput.value = JSON.stringify(getSectionData(state.data, s.id), null, 2)
+        }
+        const loadLinksBtn = card.querySelector('.section-load-links-btn')
+        if (loadLinksBtn && s.id === 'moreTools') {
+          loadLinksBtn.onclick = async () => {
+            loadLinksBtn.disabled = true
+            loadLinksBtn.textContent = '加载中...'
+            try {
+              const res = await fetch(API_BASE + '/api/more-tools-preview?tool=' + encodeURIComponent(state.tool) + '&slug=' + encodeURIComponent(state.slug || ''))
+              const data = await res.json()
+              if (data.ok && data.links) {
+                let val
+                try { val = JSON.parse(jsonInput.value) } catch { val = {} }
+                val.moreToolsLinks = data.links
+                jsonInput.value = JSON.stringify(val, null, 2)
+                showMsg('已加载 ' + data.links.length + ' 个推荐链接')
+              } else {
+                showMsg('加载失败', 'error')
+              }
+            } catch (e) {
+              showMsg('加载失败: ' + e.message, 'error')
+            }
+            loadLinksBtn.disabled = false
+            loadLinksBtn.textContent = '加载推荐链接'
+          }
         }
         card.querySelector('.section-cancel-btn').onclick = () => {
           editForm.classList.add('hidden')
@@ -560,25 +1102,191 @@
           renderSectionsPreview(state.data, container)
           showMsg('已删除')
         }
+        card.querySelector('.section-regen-btn').onclick = () => {
+          openSectionRegenModal(s.id, s.label, container)
+        }
       })
 
       document.getElementById('add-section-btn').onclick = () => {
         const sel = document.getElementById('add-section-select')
         const id = sel.value
-        if (!id) return
-        const tpl = SECTION_TEMPLATES[id]
-        if (!tpl) return
-        setSectionData(state.data, id, JSON.parse(JSON.stringify(tpl)))
-        state.data.sectionsOrder = state.data.sectionsOrder || []
-        if (!state.data.sectionsOrder.includes(id)) state.data.sectionsOrder.push(id)
+        if (!id) { showMsg('请先选择要新增的板块', 'error'); return }
+        openAddSectionModal(id, sectionLabels[id] || id, container)
         sel.value = ''
-        renderSectionsPreview(state.data, container)
-        showMsg('已添加')
       }
     }
 
     function escapeHtml(s) {
       return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')
+    }
+
+    const SECTION_RULE_FILES = {
+      metadata: 'sections/metadata.md', hero: 'sections/hero.md', howToUse: 'sections/how-to-use.md',
+      modelIntro: 'sections/model-intro.md', features: 'sections/features.md', intro: 'sections/intro.md',
+      comparison: 'sections/comparison.md', scenes: 'sections/scenarios.md', rating: 'sections/rating.md',
+      faq: 'sections/faq.md', trustBar: 'sections/hero.md', moreTools: 'sections/more-tools.md'
+    }
+    let _sectionRegenContainer = null
+    async function openSectionRegenModal(sectionId, label, container) {
+      _sectionRegenContainer = container
+      document.getElementById('section-regen-title').textContent = `重新生成 - ${label}`
+      document.getElementById('section-regen-extra').value = ''
+      document.getElementById('section-regen-rules-preview').textContent = '加载规则中...'
+      document.getElementById('section-regen-modal').classList.remove('hidden')
+      document.getElementById('section-regen-modal').dataset.sectionId = sectionId
+      document.body.classList.add('modal-open')
+      const ruleFile = SECTION_RULE_FILES[sectionId] || `sections/${sectionId}.md`
+      try {
+        const res = await fetch(API_BASE + '/api/rule-preview?file=' + encodeURIComponent(ruleFile))
+        const text = await res.text()
+        let preview = res.ok ? text : '(无独立规则，将使用通用规范)'
+        if (sectionId === 'moreTools') {
+          try {
+            const linksRes = await fetch(API_BASE + '/api/more-tools-preview?tool=' + encodeURIComponent(state.tool) + '&slug=' + encodeURIComponent(state.slug || ''))
+            const linksData = await linksRes.json()
+            if (linksData.ok && linksData.links?.length) {
+              preview += '\n\n---\n推荐链接（生成后将自动填入）:\n' + linksData.links.map((l, i) => `${i + 1}. ${l.title} → ${l.href}`).join('\n')
+            }
+          } catch (_) {}
+        }
+        document.getElementById('section-regen-rules-preview').textContent = preview
+      } catch (e) {
+        document.getElementById('section-regen-rules-preview').textContent = '(加载失败: ' + e.message + ')'
+      }
+    }
+    function closeSectionRegenModal() {
+      document.getElementById('section-regen-modal').classList.add('hidden')
+      document.body.classList.remove('modal-open')
+      _sectionRegenContainer = null
+    }
+    document.getElementById('section-regen-close').onclick = closeSectionRegenModal
+    document.getElementById('section-regen-cancel').onclick = closeSectionRegenModal
+
+    let _addSectionContainer = null
+    let _addSectionId = null
+    async function openAddSectionModal(sectionId, label, container) {
+      _addSectionContainer = container
+      _addSectionId = sectionId
+      document.getElementById('add-section-title').textContent = `新增板块 - ${label}`
+      document.getElementById('add-section-extra').value = ''
+      document.getElementById('add-section-result-wrap').classList.add('hidden')
+      document.getElementById('add-section-confirm-btn').classList.add('hidden')
+      document.getElementById('add-section-rules-preview').textContent = '加载规则中...'
+      document.getElementById('add-section-modal').classList.remove('hidden')
+      document.body.classList.add('modal-open')
+      const ruleFile = SECTION_RULE_FILES[sectionId] || `sections/${sectionId}.md`
+      try {
+        const res = await fetch(API_BASE + '/api/rule-preview?file=' + encodeURIComponent(ruleFile))
+        let preview = res.ok ? await res.text() : '(无独立规则，将使用通用规范)'
+        if (sectionId === 'moreTools') {
+          try {
+            const linksRes = await fetch(API_BASE + '/api/more-tools-preview?tool=' + encodeURIComponent(state.tool) + '&slug=' + encodeURIComponent(state.slug || ''))
+            const linksData = await linksRes.json()
+            if (linksData.ok && linksData.links?.length) {
+              preview += '\n\n---\n推荐链接（生成后将自动填入）:\n' + linksData.links.map((l, i) => `${i + 1}. ${l.title} → ${l.href}`).join('\n')
+            }
+          } catch (_) {}
+        }
+        document.getElementById('add-section-rules-preview').textContent = preview
+      } catch (e) {
+        document.getElementById('add-section-rules-preview').textContent = '(加载失败: ' + e.message + ')'
+      }
+    }
+    function closeAddSectionModal() {
+      document.getElementById('add-section-modal').classList.add('hidden')
+      document.body.classList.remove('modal-open')
+      _addSectionContainer = null
+      _addSectionId = null
+    }
+    document.getElementById('add-section-close').onclick = closeAddSectionModal
+    document.getElementById('add-section-cancel').onclick = closeAddSectionModal
+    document.getElementById('add-section-gen-btn').onclick = async () => {
+      const sectionId = _addSectionId
+      if (!sectionId) return
+      const btn = document.getElementById('add-section-gen-btn')
+      btn.disabled = true
+      btn.textContent = '生成中...'
+      try {
+        const res = await api('/api/generate-section', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            tool: state.tool,
+            slug: state.slug || '',
+            sectionId,
+            extraInstructions: document.getElementById('add-section-extra').value.trim() || undefined,
+            currentSectionData: {},
+          }),
+        })
+        if (res.ok && res.data) {
+          document.getElementById('add-section-result').value = JSON.stringify(res.data, null, 2)
+          document.getElementById('add-section-result-wrap').classList.remove('hidden')
+          document.getElementById('add-section-confirm-btn').classList.remove('hidden')
+        } else {
+          showMsg(res.error || '生成失败', 'error')
+        }
+      } catch (e) {
+        let msg = e.message || String(e)
+        if (/fetch failed|Failed to fetch|NetworkError/i.test(msg)) {
+          msg += '\n\n提示：若为网络错误，请检查 1) 管理后台已启动 (npm run admin:seo) 2) .env.local 中 ZHEN_AI_API_KEY 已配置 3) 访问 http://localhost:3007/api/test-gemini 验证 API'
+        }
+        showMsg(msg, 'error')
+      }
+      btn.disabled = false
+      btn.textContent = 'AI 生成'
+    }
+    document.getElementById('add-section-confirm-btn').onclick = () => {
+      const sectionId = _addSectionId
+      if (!sectionId || !_addSectionContainer) return
+      try {
+        const val = JSON.parse(document.getElementById('add-section-result').value)
+        const temp = { ...state.data }; setSectionData(temp, sectionId, val)
+        const normalized = getSectionData(normalizeForAdmin(temp), sectionId)
+        setSectionData(state.data, sectionId, normalized)
+        state.data.sectionsOrder = state.data.sectionsOrder || []
+        if (!state.data.sectionsOrder.includes(sectionId) && !['metadata','hero','trustBar'].includes(sectionId)) {
+          state.data.sectionsOrder.push(sectionId)
+        }
+        renderSectionsPreview(state.data, _addSectionContainer)
+        closeAddSectionModal()
+        showMsg('已新增板块')
+      } catch (e) {
+        showMsg('JSON 格式错误，请检查后重试', 'error')
+      }
+    }
+
+    document.getElementById('section-regen-submit').onclick = async () => {
+      const sectionId = document.getElementById('section-regen-modal').dataset.sectionId
+      const extraInstructions = document.getElementById('section-regen-extra').value.trim()
+      const btn = document.getElementById('section-regen-submit')
+      btn.disabled = true
+      btn.textContent = '生成中...'
+      try {
+        const currentData = getSectionData(state.data, sectionId)
+        const res = await api('/api/generate-section', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            tool: state.tool,
+            slug: state.slug || '',
+            sectionId,
+            extraInstructions: extraInstructions || undefined,
+            currentSectionData: currentData,
+          }),
+        })
+        if (res.ok && res.data) {
+          setSectionData(state.data, sectionId, res.data)
+          if (_sectionRegenContainer) renderSectionsPreview(state.data, _sectionRegenContainer)
+          closeSectionRegenModal()
+          showMsg('已更新板块')
+        } else {
+          showMsg(res.error || '生成失败', 'error')
+        }
+      } catch (e) {
+        showMsg(e.message, 'error')
+      }
+      btn.disabled = false
+      btn.textContent = '生成'
     }
 
     function normalizeForAdmin(data) {
@@ -655,7 +1363,9 @@
           publishLabel.textContent = publishToggle.checked ? '上架（测试/线上可见）' : '下架（测试/线上不可见）'
         }
         document.getElementById('back-link').href = '/'
-        document.getElementById('preview-link').href = `https://toolaze.com/${state.tool}${state.slug ? '/' + state.slug : ''}`
+        const modelTools = ['seedance-2', 'kling-3', 'nano-banana-pro', 'nano-banana-2']
+        const pathPrefix = modelTools.includes(state.tool) ? 'model/' : ''
+        document.getElementById('preview-link').href = `https://toolaze.com/${pathPrefix}${state.tool}${state.slug ? '/' + state.slug : ''}`
         document.getElementById('json-textarea').value = JSON.stringify(state.data, null, 2)
         renderSectionsPreview(state.data, document.getElementById('sections-view'))
       } catch (e) {
@@ -666,6 +1376,7 @@
       }
       hide(document.getElementById('loading'))
       hide(document.getElementById('dashboard'))
+      hide(document.getElementById('layout-strategy'))
       show(document.getElementById('editor'))
       show(document.getElementById('sections-view'))
       hide(document.getElementById('json-view'))
@@ -849,9 +1560,18 @@
     function showGenModal() { genModal.classList.remove('hidden') }
     function hideGenModal() { genModal.classList.add('hidden') }
 
-    async function loadKeywordsOptions() {
+    let genToolsList = []
+    async function loadGenTools() {
+      try {
+        genToolsList = await api('/api/tools')
+        const sel = document.getElementById('gen-tool-select')
+        sel.innerHTML = '<option value="">请选择工具...</option>' + genToolsList.map(t => `<option value="${t.id}">${t.name} (${t.id})</option>`).join('')
+      } catch (e) {
+        document.getElementById('gen-tool-select').innerHTML = '<option value="">加载失败</option>'
+      }
+    }
+    async function loadKeywordsOptions(tool) {
       const sel = document.getElementById('gen-keywords-file')
-      const tool = state.tool
       try {
         const list = await api(`/api/keywords${tool ? '?tool=' + encodeURIComponent(tool) : ''}`)
         sel.innerHTML = '<option value="">选择已有关键词文件...</option>' + list.map(k => `<option value="${k.file}">${k.file}</option>`).join('')
@@ -859,80 +1579,182 @@
         sel.innerHTML = '<option value="">加载失败</option>'
       }
     }
-
-    document.getElementById('generate-seo-btn').onclick = () => {
-      loadKeywordsOptions()
+    function updateGenPageTypeUI() {
+      const isL3 = document.querySelector('input[name="gen-page-type"]:checked')?.value === 'l3'
+      document.getElementById('gen-l3-slug-row').classList.toggle('hidden', !isL3)
+      document.getElementById('gen-l2-tool-row').querySelector('label').textContent = isL3 ? '所属 L2 工具' : '选择工具（L2）'
+    }
+    document.getElementById('gen-tool-custom-check').onchange = function () {
+      const useCustom = this.checked
+      document.getElementById('gen-tool-select').classList.toggle('hidden', useCustom)
+      document.getElementById('gen-tool-custom').classList.toggle('hidden', !useCustom)
+      if (!useCustom) document.getElementById('gen-tool-custom').value = ''
+    }
+    const TOP_COMPONENT_MAP = {
+      'image-compressor': 'image-compressor', 'image-compression': 'image-compressor',
+      'image-converter': 'image-converter', 'image-conversion': 'image-converter',
+      'watermark-remover': 'watermark-remover', 'font-generator': 'font-generator',
+      'emoji-copy-and-paste': 'emoji-copy-and-paste', 'seedance-2': 'seedance-2',
+      'kling-3': 'kling-3', 'nano-banana-pro': 'nano-banana-pro', 'nano-banana-2': 'nano-banana-2'
+    }
+    async function openGenModalForNewOrEdit() {
+      await loadGenTools()
+      const isL3 = !!state.slug
+      document.querySelector(`input[name="gen-page-type"][value="${isL3 ? 'l3' : 'l2'}"]`).checked = true
+      document.getElementById('gen-tool-custom-check').checked = false
+      document.getElementById('gen-tool-custom').value = ''
+      document.getElementById('gen-tool-custom').classList.add('hidden')
+      document.getElementById('gen-tool-select').classList.remove('hidden')
+      document.getElementById('gen-tool-select').value = state.tool || ''
+      const topComp = TOP_COMPONENT_MAP[state.tool] || state.data?.topComponent || 'image-compressor'
+      document.getElementById('gen-top-component').value = topComp
+      document.getElementById('gen-url-input').value = state.slug || ''
+      updateGenPageTypeUI()
+      loadKeywordsOptions(state.tool)
       document.getElementById('gen-keywords-text').value = ''
       document.getElementById('gen-result').classList.add('hidden')
-      document.getElementById('gen-url-input').value = state.slug || ''
-      document.getElementById('gen-url-input').placeholder = state.slug ? '当前: ' + state.slug : 'L2 留空；L3 填写如 how-to-remove-watermark'
       showGenModal()
+    }
+    document.getElementById('generate-seo-btn').onclick = openGenModalForNewOrEdit
+    document.getElementById('new-seo-page-btn').onclick = openGenModalForNewOrEdit
+    document.querySelectorAll('input[name="gen-page-type"]').forEach(r => {
+      r.onchange = () => { updateGenPageTypeUI(); loadKeywordsOptions(document.getElementById('gen-tool-select').value) }
+    })
+    document.getElementById('gen-tool-select').onchange = () => {
+      const t = document.getElementById('gen-tool-select').value
+      loadKeywordsOptions(t)
+      const topComp = TOP_COMPONENT_MAP[t] || 'image-compressor'
+      document.getElementById('gen-top-component').value = topComp
+    }
+    function getGenTargetTool() {
+      return document.getElementById('gen-tool-custom-check').checked
+        ? document.getElementById('gen-tool-custom').value.trim()
+        : document.getElementById('gen-tool-select').value
     }
 
     const rulePreviewModal = document.getElementById('rule-preview-modal')
     const rulePreviewTitle = document.getElementById('rule-preview-title')
     const rulePreviewContent = document.getElementById('rule-preview-content')
     const ruleTitles = {
-      'SEO_CONTENT_GUIDELINES.md': 'SEO 内容规范（含 Use Case、FAQ 等）',
+      'README.md': '文档索引',
+      'SEO_CONTENT_GUIDELINES.md': 'SEO 内容规范',
       'SEO_MASTER_LAYOUT.md': 'SEO 布局规范',
       'TRANSLATION_STRUCTURE_GUIDE.md': '结构规范',
-      'tool': '工具规格'
+      'tool': '工具规格',
+      'sections/00_global.md': '板块 - 全局',
+      'sections/metadata.md': '板块 - Metadata',
+      'sections/hero.md': '板块 - Hero',
+      'sections/how-to-use.md': '板块 - How To Use',
+      'sections/features.md': '板块 - Features',
+      'sections/intro.md': '板块 - Intro',
+      'sections/model-intro.md': '板块 - Model Intro',
+      'sections/scenarios.md': '板块 - Scenarios',
+      'sections/rating.md': '板块 - Rating',
+      'sections/faq.md': '板块 - FAQ',
+      'sections/comparison.md': '板块 - Comparison',
+      'sections/internal-links.md': '板块 - 内链',
+      'sections/navigation.md': '板块 - 导航',
+      'sections/more-tools.md': '板块 - More Tools',
+      'keywords/KEYWORD_STRATEGY.md': '关键词策略',
+      'keywords/KEYWORD_DENSITY_GUIDELINES.md': '关键词密度规范'
     }
-    document.querySelectorAll('.rule-preview-btn').forEach(btn => {
-      btn.onclick = async () => {
-        const file = btn.dataset.file
-        if (file === 'tool' && !state.tool) {
-          rulePreviewTitle.textContent = '工具规格'
-          rulePreviewContent.textContent = '请先在左侧选择工具后再预览。'
-          rulePreviewModal.classList.remove('hidden')
-          return
-        }
+    async function openRulePreview(file, tool) {
+      const title = (file === 'tool' && tool) ? ruleTitles[file] + ' - ' + tool : (ruleTitles[file] || file)
+      rulePreviewTitle.textContent = title
+      rulePreviewContent.textContent = '加载中...'
+      rulePreviewModal.classList.remove('hidden')
+      document.body.classList.add('modal-open')
+      try {
         let url = API_BASE + '/api/rule-preview?file=' + encodeURIComponent(file)
-        if (file === 'tool' && state.tool) url += '&tool=' + encodeURIComponent(state.tool)
-        rulePreviewTitle.textContent = (file === 'tool' && state.tool ? ruleTitles[file] + ' - ' + state.tool : ruleTitles[file]) || file
-        rulePreviewContent.textContent = '加载中...'
-        rulePreviewModal.classList.remove('hidden')
-        try {
-          const res = await fetch(url)
-          const text = await res.text()
-          if (res.ok) {
-            rulePreviewContent.textContent = text
-          } else {
-            try {
-              const err = JSON.parse(text)
-              const msg = err.error || text
-              const extra = err.path ? ` (路径: ${err.path})` : ''
-              rulePreviewContent.textContent = '加载失败: ' + msg + extra
-            } catch {
-              rulePreviewContent.textContent = res.status === 404 ? '文件不存在' : '加载失败: ' + text
-            }
+        if (file === 'tool' && tool) url += '&tool=' + encodeURIComponent(tool)
+        const res = await fetch(url)
+        const text = await res.text()
+        if (res.ok) {
+          rulePreviewContent.textContent = text
+        } else {
+          try {
+            const err = JSON.parse(text)
+            const msg = err.error || text
+            const hint = err.received ? ` (收到: ${err.received})` : ''
+            rulePreviewContent.textContent = '加载失败: ' + msg + hint
+          } catch {
+            rulePreviewContent.textContent = res.status === 404 ? '文件不存在' : '加载失败: ' + text
           }
-        } catch (e) {
-          rulePreviewContent.textContent = '加载失败: ' + e.message
         }
+      } catch (e) {
+        rulePreviewContent.textContent = '加载失败: ' + e.message
+      }
+    }
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.rule-preview-btn')
+      if (!btn) return
+      e.preventDefault()
+      e.stopPropagation()
+      const file = btn.dataset.file
+      const toolForSpec = file === 'tool' ? (getGenTargetTool() || state.tool) : null
+      if (file === 'tool' && !toolForSpec) {
+        rulePreviewTitle.textContent = '工具规格'
+        rulePreviewContent.textContent = '请先在生成弹窗中选择工具，或先在左侧选择页面。'
+        rulePreviewModal.classList.remove('hidden')
+        document.body.classList.add('modal-open')
+        return
+      }
+      openRulePreview(file, toolForSpec)
+    })
+    function closeRulePreview() {
+      rulePreviewModal.classList.add('hidden')
+      document.body.classList.remove('modal-open')
+    }
+    document.getElementById('rule-preview-close').onclick = closeRulePreview
+    rulePreviewModal.addEventListener('click', (e) => {
+      if (e.target === rulePreviewModal) closeRulePreview()
+    })
+    const sectionRegenModal = document.getElementById('section-regen-modal')
+    sectionRegenModal.addEventListener('click', (e) => {
+      if (e.target === sectionRegenModal) closeSectionRegenModal()
+    })
+    genModal.addEventListener('click', (e) => {
+      if (e.target === genModal) hideGenModal()
+    })
+    const addSectionModal = document.getElementById('add-section-modal')
+    addSectionModal.addEventListener('click', (e) => {
+      if (e.target === addSectionModal) closeAddSectionModal()
+    })
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        if (!rulePreviewModal.classList.contains('hidden')) closeRulePreview()
+        else if (!sectionRegenModal.classList.contains('hidden')) closeSectionRegenModal()
+        else if (!addSectionModal.classList.contains('hidden')) closeAddSectionModal()
+        else if (!genModal.classList.contains('hidden')) hideGenModal()
       }
     })
-    document.getElementById('rule-preview-close').onclick = () => rulePreviewModal.classList.add('hidden')
 
     document.getElementById('gen-ai-url-btn').onclick = async () => {
+      const tool = getGenTargetTool()
+      if (!tool) {
+        showMsg('请先选择 L2 工具', 'error')
+        return
+      }
       const btn = document.getElementById('gen-ai-url-btn')
       btn.disabled = true
       btn.textContent = '生成中...'
       try {
+        const coreKw = document.getElementById('gen-core-keyword').value.trim()
         const kwText = document.getElementById('gen-keywords-text').value.trim().slice(0, 3000)
+        const seed = [coreKw, kwText].filter(Boolean).join('\n') || undefined
         const res = await api('/api/generate-url', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            tool: state.tool,
-            seed: kwText || undefined,
+            tool,
+            seed,
             pageType: 'l3',
             keywordsContent: kwText || undefined,
           }),
         })
         if (res.ok && res.slug) {
           document.getElementById('gen-url-input').value = res.slug
-          const existsRes = await api(`/api/seo/exists?tool=${encodeURIComponent(state.tool)}&slug=${encodeURIComponent(res.slug)}`)
+          const existsRes = await api(`/api/seo/exists?tool=${encodeURIComponent(tool)}&slug=${encodeURIComponent(res.slug)}`)
           if (existsRes.exists) {
             showMsg('该 URL 已存在，可选择覆盖或修改后新增', 'error')
           }
@@ -972,26 +1794,40 @@
     }
 
     document.getElementById('gen-submit-btn').onclick = async () => {
+      const isL3 = document.querySelector('input[name="gen-page-type"]:checked')?.value === 'l3'
+      const targetTool = getGenTargetTool()
+      const slugInput = document.getElementById('gen-url-input').value.trim() || null
+      const targetSlug = isL3 ? slugInput : null
+
+      if (!targetTool) {
+        showMsg('请先选择工具（L2）', 'error')
+        return
+      }
+      if (isL3 && !targetSlug) {
+        showMsg('L3 页面请填写 URL Slug', 'error')
+        return
+      }
+
+      if (targetSlug) {
+        let existsRes = {}
+        try {
+          existsRes = await api(`/api/seo/exists?tool=${encodeURIComponent(targetTool)}&slug=${encodeURIComponent(targetSlug)}`)
+        } catch (_) {}
+        if (existsRes.exists && (targetTool !== state.tool || targetSlug !== state.slug)) {
+          const overwrite = confirm('该 URL 已存在。\n\n点击「确定」覆盖现有内容；\n点击「取消」修改 URL 后新增。')
+          if (!overwrite) return
+        }
+      }
+
       const comps = Array.from(document.querySelectorAll('.gen-comp:checked')).map(c => c.value)
+      const topComponent = document.getElementById('gen-top-component').value || undefined
+      const coreKeyword = document.getElementById('gen-core-keyword').value.trim() || undefined
       const keywordsText = document.getElementById('gen-keywords-text').value.trim()
       const keywordsFile = document.getElementById('gen-keywords-file').value || null
       const useSeoContentGuidelines = document.getElementById('gen-use-seo-content').checked
       const useSeoLayout = document.getElementById('gen-use-seo-layout').checked
       const useStructureGuide = document.getElementById('gen-use-structure').checked
       const useToolSpec = document.getElementById('gen-use-tool-spec').checked
-      const slugInput = document.getElementById('gen-url-input').value.trim() || null
-      const targetSlug = slugInput || state.slug || null
-
-      if (targetSlug) {
-        let existsRes = {}
-        try {
-          existsRes = await api(`/api/seo/exists?tool=${encodeURIComponent(state.tool)}&slug=${encodeURIComponent(targetSlug)}`)
-        } catch (_) {}
-        if (existsRes.exists && targetSlug !== state.slug) {
-          const overwrite = confirm('该 URL 已存在。\n\n点击「确定」覆盖现有内容；\n点击「取消」修改 URL 后新增。')
-          if (!overwrite) return
-        }
-      }
 
       const btn = document.getElementById('gen-submit-btn')
       btn.disabled = true
@@ -1001,8 +1837,10 @@
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            tool: state.tool,
+            tool: targetTool,
             slug: targetSlug,
+            topComponent: topComponent || undefined,
+            coreKeyword: coreKeyword,
             keywordsText: keywordsText || undefined,
             keywordsFile: keywordsFile || undefined,
             useComponents: comps,
@@ -1015,6 +1853,7 @@
         if (res.ok && res.data) {
           document.getElementById('gen-result-text').value = JSON.stringify(res.data, null, 2)
           window._genResult = res.data
+          window._genTargetTool = targetTool
           window._genTargetSlug = targetSlug
           const reportContent = document.getElementById('gen-report-content')
           reportContent.textContent = res.report?.markdown || '（报告生成中或暂无关键词数据）'
@@ -1034,20 +1873,23 @@
 
     document.getElementById('gen-apply-btn').onclick = async () => {
       let data = window._genResult
+      const targetTool = window._genTargetTool || state.tool
       const targetSlug = window._genTargetSlug
       if (!data) return
       data = normalizeForAdmin(data)
-      const isNewPage = targetSlug != null && targetSlug !== state.slug
+      const topComponent = document.getElementById('gen-top-component').value
+      if (topComponent) data.topComponent = topComponent
+      const isNewPage = targetTool !== state.tool || (targetSlug != null && targetSlug !== state.slug)
       if (isNewPage) {
         try {
           await api('/api/seo', {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ tool: state.tool, slug: targetSlug, locale: 'en', data }),
+            body: JSON.stringify({ tool: targetTool, slug: targetSlug || '', locale: 'en', data }),
           })
           hideGenModal()
           showMsg('已创建新页面，正在跳转...')
-          location.href = '/?tool=' + encodeURIComponent(state.tool) + '&slug=' + encodeURIComponent(targetSlug)
+          location.href = '/?tool=' + encodeURIComponent(targetTool) + '&slug=' + encodeURIComponent(targetSlug || '')
           return
         } catch (e) {
           showMsg(e.message, 'error')
@@ -1060,6 +1902,17 @@
       hideGenModal()
       showMsg('已应用生成内容，可编辑后保存或直接保存')
     }
+
+    function ensureLoadingHidden() {
+      const loading = document.getElementById('loading')
+      if (loading && !loading.classList.contains('hidden')) {
+        hide(loading)
+        const dash = document.getElementById('dashboard')
+        dash.innerHTML = '<div class="rounded-xl border border-amber-200 bg-amber-50 p-4 text-amber-800"><p class="font-semibold">加载超时</p><p class="mt-2 text-sm">请确认访问地址为 <strong>http://localhost:3007</strong>，且管理后台已启动。</p><button type="button" onclick="location.reload()" class="mt-4 rounded-lg bg-amber-600 px-4 py-2 text-sm font-medium text-white hover:bg-amber-700">重新加载</button></div>'
+        show(dash)
+      }
+    }
+    setTimeout(ensureLoadingHidden, 8000)
 
     if (location.search) {
       loadEditor()

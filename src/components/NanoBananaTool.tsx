@@ -39,6 +39,29 @@ const MODEL_CONFIG = {
     ],
     maxImages: 8,
     supportsOutputFormat: true,
+    supportsHighResolution: false,
+  },
+  'nano-banana-2': {
+    aspectRatios: [
+      { value: 'auto', label: 'Auto' },
+      { value: '1:1', label: '1:1' },
+      { value: '1:4', label: '1:4' },
+      { value: '1:8', label: '1:8' },
+      { value: '2:3', label: '2:3' },
+      { value: '3:2', label: '3:2' },
+      { value: '3:4', label: '3:4' },
+      { value: '4:1', label: '4:1' },
+      { value: '4:3', label: '4:3' },
+      { value: '4:5', label: '4:5' },
+      { value: '5:4', label: '5:4' },
+      { value: '8:1', label: '8:1' },
+      { value: '9:16', label: '9:16' },
+      { value: '16:9', label: '16:9' },
+      { value: '21:9', label: '21:9' },
+    ],
+    maxImages: 14,
+    supportsOutputFormat: true,
+    supportsHighResolution: true,
   },
   'gpt-image-2': {
     aspectRatios: [
@@ -51,6 +74,7 @@ const MODEL_CONFIG = {
     ],
     maxImages: 16,
     supportsOutputFormat: false,
+    supportsHighResolution: false,
   },
 } as const
 
@@ -60,13 +84,13 @@ interface ImageItem {
 }
 
 interface NanoBananaToolProps {
-  modelId?: 'nano-banana-pro' | 'gpt-image-2'
+  modelId?: 'nano-banana-pro' | 'nano-banana-2' | 'gpt-image-2'
   modelName?: string
   dailyLimitStorageKey?: string
 }
 
 interface ModelOption {
-  id: 'nano-banana-pro' | 'gpt-image-2'
+  id: 'nano-banana-pro' | 'nano-banana-2' | 'gpt-image-2'
   name: string
 }
 
@@ -80,6 +104,7 @@ export default function NanoBananaTool({
   const modelConfig = MODEL_CONFIG[modelId]
   const modelOptions: ModelOption[] = [
     { id: 'nano-banana-pro', name: 'Nano Banana Pro' },
+    { id: 'nano-banana-2', name: 'Nano Banana 2' },
     { id: 'gpt-image-2', name: 'GPT Image 2' },
   ]
   const [activeTab, setActiveTab] = useState<'image-to-image' | 'text-to-image'>('image-to-image')
@@ -524,6 +549,9 @@ export default function NanoBananaTool({
     'nano-banana-pro': [
       'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/e0f5e8adf47a44afb6a4ab9fb5a27b3f.webp',
     ],
+    'nano-banana-2': [
+      'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/8d7b3c552db04e6ca02dff930d32bbdc.png',
+    ],
     'gpt-image-2': [
       'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/0b0c01224b03466b913cc7b41683c785.png',
     ],
@@ -757,8 +785,12 @@ export default function NanoBananaTool({
                   className="w-full px-4 py-2.5 pr-10 rounded-xl border border-[#E0E7FF] bg-[#EEF2FF]/30 text-slate-800 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/40 focus:border-[#4F46E5] hover:border-[#C7D2FE] hover:bg-[#EEF2FF]/50 transition-all duration-200 appearance-none cursor-pointer shadow-sm"
                 >
                   <option value="1K">1K</option>
-                  <option value="2K" disabled>2K (Temporarily unavailable)</option>
-                  <option value="4K" disabled>4K (Temporarily unavailable)</option>
+                  <option value="2K" disabled={!modelConfig.supportsHighResolution}>
+                    {modelConfig.supportsHighResolution ? '2K' : '2K (Temporarily unavailable)'}
+                  </option>
+                  <option value="4K" disabled={!modelConfig.supportsHighResolution}>
+                    {modelConfig.supportsHighResolution ? '4K' : '4K (Temporarily unavailable)'}
+                  </option>
                 </select>
                 <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#4F46E5]">
@@ -766,7 +798,9 @@ export default function NanoBananaTool({
                   </svg>
                 </div>
               </div>
-              <p className="text-xs text-slate-400 mt-1.5">2K and 4K are temporarily unavailable.</p>
+              {!modelConfig.supportsHighResolution && (
+                <p className="text-xs text-slate-400 mt-1.5">2K and 4K are temporarily unavailable.</p>
+              )}
             </div>
 
             {modelConfig.supportsOutputFormat && (

@@ -2,9 +2,9 @@
   "in_menu": true,
   "metadata": {
     "title": "Free Nano Banana 2 AI Image Generator (4K, Fast, Online) - Toolaze",
-    "description": "Create 4K AI images with Nano Banana 2 for free. Pro quality at Flash speed. Text-to-image and image-to-image. Subject consistency for characters and objects. Precision text rendering. Free online—coming soon."
+    "description": "Create 4K AI images with Nano Banana 2 for free. Pro quality at Flash speed. Text-to-image and image-to-image. Subject consistency for characters and objects. Precision text rendering. Free online."
   },
-  "sectionsOrder": ["howToUse", "modelIntro", "features", "intro", "performanceMetrics", "scenes", "rating", "faq"],
+  "sectionsOrder": ["howToUse", "promptExamples", "modelIntro", "features", "intro", "performanceMetrics", "scenes", "rating", "faq"],
   "modelIntro": {
     "title": "Why Nano Banana 2 Stands Out for AI Image Creation",
     "modelName": "Nano Banana 2",
@@ -31,7 +31,7 @@
   },
   "hero": {
     "h1": "Free <span class=\"text-gradient\">Nano Banana 2</span> AI Image Generator",
-    "desc": "Create 4K AI images with Pro quality at Flash speed. Text-to-image and image-to-image. Subject consistency for characters and objects—coming soon."
+    "desc": "Create 4K AI images with Pro quality at Flash speed. Text-to-image and image-to-image. Subject consistency for characters and objects."
   },
   "intro": {
     "title": "Why Choose Nano Banana 2 AI Image Generator?",
@@ -122,6 +122,31 @@
       {
         "title": "Generate & Download",
         "desc": "Click generate and download your 4K image in seconds. No registration required."
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "Prompt Examples",
+    "items": [
+      {
+        "title": "Product Ad Visual",
+        "prompt": "A premium skincare product ad photo on a marble table, soft morning light, water droplets, ultra-detailed texture, clean composition, realistic studio quality",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/c41b0cf235234531a9e9e6f0dd9a3223.png"
+      },
+      {
+        "title": "Infographic With Clear Text",
+        "prompt": "A travel infographic poster with clear English headings: TOP 5 TOKYO NIGHT SPOTS, colorful icons, map snippets, modern editorial layout, crisp readable typography",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/8d987fa6f49d48c8904f96cf3e92946e.png"
+      },
+      {
+        "title": "Consistent Character Storyboard",
+        "prompt": "A comic-style 4-panel scene of the same banana mascot entrepreneur presenting a Toolaze AI book in a livestream studio, consistent character face and outfit across all panels, vibrant lighting",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/fbdf6c2e8ee149e680da8a77469a6bab.png"
+      },
+      {
+        "title": "Social Commerce Live Scene",
+        "prompt": "A cozy cafe social media photo of a Western male creator holding a Toolaze AI book during a TikTok live session, English UI overlays, natural skin texture, cinematic depth of field",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/c883988d2df946a4bcf442a72861c699.png"
       }
     ]
   },

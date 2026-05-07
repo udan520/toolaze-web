@@ -1,5 +1,7 @@
 # 翻译结构指南
 
+> **文档关系**：内容与板块规范见 `SEO_CONTENT_GUIDELINES.md`；布局与设计见 `SEO_MASTER_LAYOUT.md`。总索引见 `docs/README.md`。
+
 ## 📋 工具 JSON 文件标准结构
 
 所有工具的 L2 页面 JSON 文件必须遵循以下标准结构：

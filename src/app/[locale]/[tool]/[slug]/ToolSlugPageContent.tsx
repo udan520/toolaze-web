@@ -146,11 +146,12 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
 
     // Load translations
     const t = await loadCommonTranslations(locale)
-    const isConverter = tool === 'image-converter' || tool === 'image-conversion'
-    const isFontGenerator = tool === 'font-generator'
-    const isEmoji = tool === 'emoji-copy-and-paste'
-    const isSeedance = tool === 'seedance-2'
-    const isWatermarkRemover = tool === 'watermark-remover'
+    const topComp = (content.topComponent || tool) as string
+    const isConverter = topComp === 'image-converter' || topComp === 'image-conversion'
+    const isFontGenerator = topComp === 'font-generator'
+    const isEmoji = topComp === 'emoji-copy-and-paste'
+    const isSeedance = topComp === 'seedance-2'
+    const isWatermarkRemover = topComp === 'watermark-remover'
     const toolTranslations = isConverter ? t?.imageConverter : (isFontGenerator ? null : isEmoji ? null : t?.imageCompressor)
     const breadcrumbT = t?.breadcrumb || { 
       home: 'Home', 
@@ -262,9 +263,12 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
       toolLabel = breadcrumbT.imageCompression
     }
     const pageTitle = content.hero?.h1 ? extractSimpleTitle(content.hero.h1) : (toolTranslations?.title || 'Page')
+    const toolHref = (tool === 'seedance-2' || tool === 'kling-3')
+      ? (locale === 'en' ? `/model/${tool}` : `/${locale}/model/${tool}`)
+      : `/${locale === 'en' ? '' : locale + '/'}${tool}`
     const breadcrumbItems = [
       { label: breadcrumbT.home, href: locale === 'en' ? '/' : `/${locale}` },
-      { label: toolLabel, href: `/${locale === 'en' ? '' : locale + '/'}${tool}` },
+      { label: toolLabel, href: toolHref },
       { label: pageTitle },
     ]
 
@@ -273,10 +277,22 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
     // 其他工具 L3 页：推荐同工具下其他 L3 子页
     const getModelL2Href = (modelTool: string): string => {
       if (modelTool === 'nano-banana-pro') return locale === 'en' ? '/model/nano-banana-pro' : `/${locale}/model/nano-banana-pro`
+      if (modelTool === 'nano-banana-2') return locale === 'en' ? '/model/nano-banana-2' : `/${locale}/model/nano-banana-2`
+      if (modelTool === 'seedance-2') return locale === 'en' ? '/model/seedance-2' : `/${locale}/model/seedance-2`
+      if (modelTool === 'kling-3') return locale === 'en' ? '/model/kling-3' : `/${locale}/model/kling-3`
       return locale === 'en' ? `/${modelTool}` : `/${locale}/${modelTool}`
     }
     let filteredRecommendedTools: Array<{ slug: string; title: string; description: string; href: string }> = []
-    if (isSeedance) {
+    if (Array.isArray(content.moreToolsLinks) && content.moreToolsLinks.length > 0) {
+      filteredRecommendedTools = content.moreToolsLinks
+        .filter((l: { title?: string; href?: string }) => l?.title && l?.href)
+        .map((l: { slug?: string; title: string; description?: string; href: string }) => ({
+          slug: l.slug || l.href?.split('/').pop() || '',
+          title: l.title,
+          description: l.description || '',
+          href: l.href,
+        }))
+    } else if (isSeedance) {
       const otherVideoModels = VIDEO_MODEL_L2S.filter((t) => t !== tool)
       filteredRecommendedTools = await Promise.all(
         otherVideoModels.slice(0, 3).map(async (modelTool) => {
@@ -355,8 +371,8 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
         <Breadcrumb items={breadcrumbItems} />
 
         <main className="min-h-screen bg-[#F8FAFF]">
-          {/* 1. Hero 板块 - 固定在最前面，不参与动态顺序 */}
-          {tool === 'font-generator' ? (
+          {/* 1. Hero 板块 - 固定在最前面，不参与动态顺序；支持 topComponent 覆盖 */}
+          {topComp === 'font-generator' ? (
             <FontGeneratorHero 
               h1={content.hero?.h1 || 'Font Generator'}
               desc={content.hero?.desc || 'Generate custom fonts online for free. Create beautiful text styles instantly.'}
@@ -442,7 +458,7 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
                   </p>
                 )}
               </div>
-              {tool === 'image-converter' || tool === 'image-conversion' ? (
+              {topComp === 'image-converter' || topComp === 'image-conversion' ? (
                 <ImageConverter initialFormat={slug} />
               ) : isWatermarkRemover ? (
                 <WatermarkRemover />
@@ -612,7 +628,7 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
                   })}
                 </div>
                 <ViewAllToolsButton
-                  href={isWatermarkRemover ? `/${tool}` : (locale === 'en' ? `/${tool}/all-tools` : `/${locale}/${tool}/all-tools`)}
+                  href={isWatermarkRemover ? `/${tool}` : (tool === 'seedance-2' || tool === 'kling-3') ? `/model/${tool}/all-tools` : (locale === 'en' ? `/${tool}/all-tools` : `/${locale}/${tool}/all-tools`)}
                   text={t?.common?.viewAllTools?.related || 'View All Related Tools'}
                   variant="related"
                 />

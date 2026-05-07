@@ -3,18 +3,32 @@
   "lastUpdated": "2026-02-06",
   "primaryKeywords": [
     {
+      "keyword": "image to image ai",
+      "searchVolume": 0,
+      "difficulty": 0,
+      "type": "primary",
+      "notes": "主关键词，用于 H1 和 Title，优先布局"
+    },
+    {
+      "keyword": "image-to-image",
+      "searchVolume": 0,
+      "difficulty": 0,
+      "type": "primary",
+      "notes": "与 image to image ai 同义，内容中常用变体"
+    },
+    {
       "keyword": "nano banana pro",
       "searchVolume": 0,
       "difficulty": 0,
       "type": "primary",
-      "notes": "主关键词，用于 H1 和 Title - 待更新"
+      "notes": "品牌词，用于 H1 和 Title"
     },
     {
       "keyword": "image to image generator",
       "searchVolume": 0,
       "difficulty": 0,
       "type": "primary",
-      "notes": "主关键词，用于 H1 和 Title - 待更新"
+      "notes": "核心功能词"
     },
     {
       "keyword": "text to image generator",

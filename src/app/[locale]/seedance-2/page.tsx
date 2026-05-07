@@ -13,6 +13,6 @@ export async function generateStaticParams() {
 
 export default async function Seedance2LocalePage({ params }: PageProps) {
   await params
-  // 英语无 /en 前缀，重定向到 /seedance-2
-  redirect('/seedance-2')
+  // 英语无 /en 前缀，重定向到 /model/seedance-2
+  redirect('/model/seedance-2')
 }

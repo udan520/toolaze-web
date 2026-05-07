@@ -87,12 +87,13 @@ export const metadata: Metadata = {
 const AI_IMAGE_PATHS: Record<string, string> = {
   'nano-banana-pro': '/model/nano-banana-pro',
   'nano-banana-2': '/model/nano-banana-2',
+  'gpt-image-2': '/model/gpt-image-2',
 }
 
-// AI Video model paths (root level)
+// AI Video model paths (under /model/)
 const AI_VIDEO_PATHS: Record<string, string> = {
-  'seedance-2': '/seedance-2',
-  'kling-3': '/kling-3',
+  'seedance-2': '/model/seedance-2',
+  'kling-3': '/model/kling-3',
 }
 
 // Non-AI L2 tools
@@ -241,7 +242,7 @@ export default async function HomePage() {
             </svg>
           </Link>
           <Link
-            href="/seedance-2"
+            href="/model/seedance-2"
             className="inline-flex items-center gap-2 px-8 py-3.5 bg-white text-indigo-600 font-bold rounded-full border-2 border-indigo-200 hover:border-indigo-400 hover:bg-indigo-50 transition-all duration-300"
           >
             {home?.ctaVideo ?? 'Image to Video'}
@@ -259,7 +260,7 @@ export default async function HomePage() {
             <p className="text-slate-600 max-w-3xl text-base md:text-lg leading-relaxed">
               <TextWithLinks
                 text={home?.aiVideoIntro ?? "Turn ideas into engaging videos in minutes with AI. Powered by advanced AI models, Toolaze's AI Video Generator helps you create eye-catching videos from text-to-video and image-to-video. No skills required!"}
-                links={[{ term: 'AI Video Generator', href: '/seedance-2' }]}
+                links={[{ term: 'AI Video Generator', href: '/model/seedance-2' }]}
               />
             </p>
           </div>
@@ -435,7 +436,7 @@ export default async function HomePage() {
                 idx === 0
                   ? [{ term: 'Nano Banana Pro', href: '/model/nano-banana-pro' }]
                   : idx === 1
-                    ? [{ term: 'Seedance 2.0', href: '/seedance-2' }]
+                    ? [{ term: 'Seedance 2.0', href: '/model/seedance-2' }]
                     : []
               return (
                 <details

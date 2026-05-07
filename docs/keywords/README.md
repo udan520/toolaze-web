@@ -1,6 +1,8 @@
 # SEO 关键词库
 
 > **用途**：存储每个功能相关的搜索词及其搜索量、难度等信息，用于指导 SEO 内容编写时的关键词布局。
+>
+> **相关文档**：密度与 Rating 规范见 `KEYWORD_DENSITY_GUIDELINES.md`；关键词布局策略见 `KEYWORD_STRATEGY.md`。总索引见 `../README.md`。
 
 ## 文件结构
 

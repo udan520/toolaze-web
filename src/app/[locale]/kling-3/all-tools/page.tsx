@@ -13,6 +13,6 @@ export async function generateStaticParams() {
 
 export default async function Kling3AllToolsLocalePage({ params }: PageProps) {
   await params
-  // 英语无 /en 前缀，重定向到 /kling-3/all-tools
-  redirect('/kling-3/all-tools')
+  // 英语无 /en 前缀，重定向到 /model/kling-3/all-tools
+  redirect('/model/kling-3/all-tools')
 }

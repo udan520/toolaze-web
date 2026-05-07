@@ -470,7 +470,7 @@ export default function Footer() {
   const otherLocales = supportedLocales.filter(loc => loc.code !== currentLocale)
 
   // 仅存在于根路径、无 [locale] 版本的工具，始终不添加 locale 前缀
-  const LOCALE_LESS_PATHS = ['/watermark-remover', '/seedance-2', '/kling-3', '/model/nano-banana-pro', '/model/nano-banana-2']
+  const LOCALE_LESS_PATHS = ['/watermark-remover', '/model/seedance-2', '/model/kling-3', '/model/nano-banana-pro', '/model/nano-banana-2']
   const getLocalizedHref = (href: string): string => {
     if (href.startsWith('http')) return href
     if (LOCALE_LESS_PATHS.some(p => href === p || href.startsWith(p + '/'))) return href
@@ -507,7 +507,7 @@ export default function Footer() {
           {/* AI Video */}
           <div>
             <Link 
-              href={getLocalizedHref('/seedance-2')} 
+              href={getLocalizedHref('/model/seedance-2')} 
               className="text-white font-bold text-sm mb-4 uppercase tracking-wider block hover:text-indigo-400 transition-colors"
             >
               {translations.aiVideo || 'AI Video'}
@@ -515,7 +515,7 @@ export default function Footer() {
             <ul className="space-y-2 mt-4">
               <li>
                 <Link 
-                  href={getLocalizedHref('/seedance-2')} 
+                  href={getLocalizedHref('/model/seedance-2')} 
                   className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
                 >
                   {translations.seedance2 || 'Seedance 2.0'}
@@ -523,7 +523,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link 
-                  href={getLocalizedHref('/kling-3')} 
+                  href={getLocalizedHref('/model/kling-3')} 
                   className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
                 >
                   {translations.kling3 || 'Kling 3.0'}

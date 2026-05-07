@@ -7,7 +7,7 @@ export const dynamic = 'force-static'
 const baseUrl = 'https://toolaze.com'
 const SUPPORTED_LOCALES = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
 const STATIC_PAGES = ['about', 'privacy', 'terms']
-const TOOL_PAGES = ['image-compressor', 'image-converter', 'font-generator', 'emoji-copy-and-paste', 'seedance-2', 'kling-3']
+const TOOL_PAGES = ['image-compressor', 'image-converter', 'font-generator', 'emoji-copy-and-paste']
 
 interface SitemapEntry {
   url: string
@@ -45,19 +45,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   })
 
   // 3. 功能页面（所有语言版本）
-  // seedance-2 英语无 /en 前缀
   TOOL_PAGES.forEach((tool) => {
     SUPPORTED_LOCALES.forEach((locale) => {
       // font-generator 支持 en、de、ja、es 和 fr
       if (tool === 'font-generator' && locale !== 'en' && locale !== 'de' && locale !== 'ja' && locale !== 'es' && locale !== 'fr') {
-        return
-      }
-      // seedance-2 仅英文，其他 locale 不加入 sitemap（会重定向到 /seedance-2）
-      if (tool === 'seedance-2' && locale !== 'en') {
-        return
-      }
-      // kling-3 仅英文，其他 locale 不加入 sitemap（会重定向到 /kling-3）
-      if (tool === 'kling-3' && locale !== 'en') {
         return
       }
       const path = locale === 'en' ? `/${tool}` : `/${locale}/${tool}`
@@ -70,8 +61,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })
   })
 
-  // 4. Model 页面（AI 图像模型，仅英文）
-  const MODEL_PAGES = ['nano-banana-pro', 'nano-banana-2']
+  // 4. Model 页面（AI 图像/视频模型，仅英文）
+  const MODEL_PAGES = ['nano-banana-pro', 'nano-banana-2', 'gpt-image-2', 'seedance-2', 'kling-3']
   MODEL_PAGES.forEach((model) => {
     entries.push({
       url: `${baseUrl}/model/${model}`,
@@ -88,14 +79,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       if (tool === 'font-generator' && locale !== 'en' && locale !== 'de' && locale !== 'ja' && locale !== 'es' && locale !== 'fr') {
         return
       }
-      // seedance-2 仅英文，其他 locale 不加入 sitemap
-      if (tool === 'seedance-2' && locale !== 'en') {
-        return
-      }
-      // kling-3 仅英文，其他 locale 不加入 sitemap
-      if (tool === 'kling-3' && locale !== 'en') {
-        return
-      }
       const path = locale === 'en' ? `/${tool}/all-tools` : `/${locale}/${tool}/all-tools`
       entries.push({
         url: `${baseUrl}${path}`,
@@ -106,19 +89,39 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })
   })
 
+  // 5b. Model All Tools 页面（seedance-2, kling-3 仅英文）
+  MODEL_PAGES.filter((m) => ['seedance-2', 'kling-3'].includes(m)).forEach((model) => {
+    entries.push({
+      url: `${baseUrl}/model/${model}/all-tools`,
+      lastModified: today,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    })
+  })
+
   // 6. 所有工具页面（所有语言版本和所有 slug）
   for (const locale of SUPPORTED_LOCALES) {
     try {
       const tools = await getAllTools(locale)
-      
+
       if (tools && tools.length > 0) {
         tools.forEach(({ tool, slug }) => {
-          // seedance-2 仅英文，且英语无 /en 前缀
-          if (tool === 'seedance-2' && locale !== 'en') return
-          const path = locale === 'en' 
+          // seedance-2 仅英文，路径为 /model/seedance-2/[slug]
+          if (tool === 'seedance-2') {
+            if (locale !== 'en') return
+            const path = `/model/seedance-2/${slug}`
+            entries.push({
+              url: `${baseUrl}${path}`,
+              lastModified: today,
+              changeFrequency: 'weekly',
+              priority: 0.7,
+            })
+            return
+          }
+          const path = locale === 'en'
             ? `/${tool}/${slug}`
             : `/${locale}/${tool}/${slug}`
-          
+
           entries.push({
             url: `${baseUrl}${path}`,
             lastModified: today,
