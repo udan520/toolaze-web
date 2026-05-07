@@ -54,7 +54,7 @@ function resolveModel(model) {
 
 function resolveProviderModelId(model, env) {
   if (model === 'gpt-image-2') {
-    return env.KIE_GPT_IMAGE_2_MODEL || 'gpt-image-2';
+    return env.KIE_GPT_IMAGE_2_MODEL || 'gpt-image-2-text-to-image';
   }
   if (model === 'nano-banana-2') {
     return env.KIE_NANO_BANANA_2_MODEL || 'nano-banana-2';
@@ -153,19 +153,29 @@ export async function onRequest(context) {
       }
     }
 
-    const response = await fetch(`${KIE_AI_BASE}/createTask`, {
+    const createTask = (modelId) => fetch(`${KIE_AI_BASE}/createTask`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
-        model: providerModelId,
+        model: modelId,
         input,
       }),
     });
 
-    const result = await response.json().catch(() => ({}));
+    let response = await createTask(providerModelId);
+    let result = await response.json().catch(() => ({}));
+    const unsupportedMsg = String(result?.message ?? result?.msg ?? '');
+    if (
+      model === 'gpt-image-2' &&
+      /model name you specified is not supported/i.test(unsupportedMsg) &&
+      providerModelId !== 'gpt-image-2-text-to-image'
+    ) {
+      response = await createTask('gpt-image-2-text-to-image');
+      result = await response.json().catch(() => ({}));
+    }
     if (!response.ok) {
       let msg = result?.message ?? result?.msg ?? await response.text();
       if (model === 'gpt-image-2' && /model name you specified is not supported/i.test(String(msg))) {

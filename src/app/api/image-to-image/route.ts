@@ -25,7 +25,7 @@ function getMaxImagesForModel(model: 'nano-banana-pro' | 'nano-banana-2' | 'gpt-
 
 function resolveProviderModelId(model: 'nano-banana-pro' | 'nano-banana-2' | 'gpt-image-2'): string {
   if (model === 'gpt-image-2') {
-    return process.env.KIE_GPT_IMAGE_2_MODEL || 'gpt-image-2'
+    return process.env.KIE_GPT_IMAGE_2_MODEL || 'gpt-image-2-text-to-image'
   }
   if (model === 'nano-banana-2') {
     return process.env.KIE_NANO_BANANA_2_MODEL || 'nano-banana-2'
@@ -97,18 +97,29 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    const response = await fetch(`${KIE_AI_BASE}/createTask`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${apiKey}`,
-      },
-      body: JSON.stringify({ model: providerModelId, input }),
-      cache: 'no-store',
-    })
+    const createTask = (modelId: string) =>
+      fetch(`${KIE_AI_BASE}/createTask`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${apiKey}`,
+        },
+        body: JSON.stringify({ model: modelId, input }),
+        cache: 'no-store',
+      })
 
-    const result = await response.json().catch(() => ({}))
-    const resultObj = result as { code?: number; message?: string; msg?: string; data?: { taskId?: string } }
+    let response = await createTask(providerModelId)
+    let result = await response.json().catch(() => ({}))
+    let resultObj = result as { code?: number; message?: string; msg?: string; data?: { taskId?: string } }
+    if (
+      model === 'gpt-image-2' &&
+      /model name you specified is not supported/i.test(String(resultObj.message || resultObj.msg || '')) &&
+      providerModelId !== 'gpt-image-2-text-to-image'
+    ) {
+      response = await createTask('gpt-image-2-text-to-image')
+      result = await response.json().catch(() => ({}))
+      resultObj = result as { code?: number; message?: string; msg?: string; data?: { taskId?: string } }
+    }
     if (!response.ok || (typeof resultObj.code === 'number' && resultObj.code !== 200)) {
       let message = resultObj.message || resultObj.msg || 'Failed to create task'
       if (
