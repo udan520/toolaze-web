@@ -23,15 +23,15 @@ async function loadTrustBarTranslations(locale: string, tool?: string) {
       try {
         if (normalizedLocale === 'en') {
           const data = await import('@/data/en/nano-banana-pro.json')
-          return data.default?.trustBar || defaultTrustBar
+          return (data.default as any)?.trustBar || defaultTrustBar
         }
         try {
           const data = await import(`@/data/${normalizedLocale}/nano-banana-pro.json`)
-          return data.default?.trustBar || defaultTrustBar
+          return (data.default as any)?.trustBar || defaultTrustBar
         } catch {
           // 回退到英语
           const data = await import('@/data/en/nano-banana-pro.json')
-          return data.default?.trustBar || defaultTrustBar
+          return (data.default as any)?.trustBar || defaultTrustBar
         }
       } catch {
         return defaultTrustBar
