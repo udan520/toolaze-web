@@ -35,6 +35,12 @@ const defaultTranslations = {
 // 加载翻译的函数
 async function loadTranslations(locale: string) {
   try {
+    const read = (obj: unknown, key: string): string | undefined => {
+      if (!obj || typeof obj !== 'object') return undefined
+      const v = (obj as Record<string, unknown>)[key]
+      return typeof v === 'string' ? v : undefined
+    }
+
     let normalizedLocale = locale
     if (locale === 'zh' || locale === 'zh-CN' || locale === 'zh-HK') {
       normalizedLocale = 'zh-TW'
@@ -48,19 +54,19 @@ async function loadTranslations(locale: string) {
         ...defaultTranslations,
         ...footerData,
         // 从nav中获取二级菜单的翻译
-        aiVideo: navData.aiVideo || footerData.aiVideo || defaultTranslations.aiVideo,
-        aiImage: navData.aiImage || footerData.aiImage || defaultTranslations.aiImage,
-        imageCompression: navData.imageCompression || footerData.imageCompression || defaultTranslations.imageCompression,
-        imageConverter: navData.imageConverter || footerData.imageConverter || defaultTranslations.imageConverter,
-        fontGenerator: navData.fontGenerator || footerData.fontGenerator || defaultTranslations.fontGenerator,
-        emojiCopyAndPaste: navData.emojiCopyAndPaste || footerData.emojiCopyAndPaste || defaultTranslations.emojiCopyAndPaste,
-        seedance2: navData.seedance2 || footerData.seedance2 || defaultTranslations.seedance2,
-        kling3: navData.kling3 || footerData.kling3 || defaultTranslations.kling3,
-        nanoBananaPro: navData.nanoBananaPro || footerData.nanoBananaPro || defaultTranslations.nanoBananaPro,
-        nanoBanana2: navData.nanoBanana2 || footerData.nanoBanana2 || defaultTranslations.nanoBanana2,
-        aiTools: navData.aiTools || footerData.aiTools || defaultTranslations.aiTools,
-        watermarkRemover: navData.watermarkRemover || footerData.watermarkRemover || defaultTranslations.watermarkRemover,
-        photoRestoration: navData.photoRestoration || footerData.photoRestoration || defaultTranslations.photoRestoration,
+        aiVideo: read(navData, 'aiVideo') || read(footerData, 'aiVideo') || defaultTranslations.aiVideo,
+        aiImage: read(navData, 'aiImage') || read(footerData, 'aiImage') || defaultTranslations.aiImage,
+        imageCompression: read(navData, 'imageCompression') || read(footerData, 'imageCompression') || defaultTranslations.imageCompression,
+        imageConverter: read(navData, 'imageConverter') || read(footerData, 'imageConverter') || defaultTranslations.imageConverter,
+        fontGenerator: read(navData, 'fontGenerator') || read(footerData, 'fontGenerator') || defaultTranslations.fontGenerator,
+        emojiCopyAndPaste: read(navData, 'emojiCopyAndPaste') || read(footerData, 'emojiCopyAndPaste') || defaultTranslations.emojiCopyAndPaste,
+        seedance2: read(navData, 'seedance2') || read(footerData, 'seedance2') || defaultTranslations.seedance2,
+        kling3: read(navData, 'kling3') || read(footerData, 'kling3') || defaultTranslations.kling3,
+        nanoBananaPro: read(navData, 'nanoBananaPro') || read(footerData, 'nanoBananaPro') || defaultTranslations.nanoBananaPro,
+        nanoBanana2: read(navData, 'nanoBanana2') || read(footerData, 'nanoBanana2') || defaultTranslations.nanoBanana2,
+        aiTools: read(navData, 'aiTools') || read(footerData, 'aiTools') || defaultTranslations.aiTools,
+        watermarkRemover: read(navData, 'watermarkRemover') || read(footerData, 'watermarkRemover') || defaultTranslations.watermarkRemover,
+        photoRestoration: read(navData, 'photoRestoration') || read(footerData, 'photoRestoration') || defaultTranslations.photoRestoration,
       }
     }
     
@@ -72,19 +78,19 @@ async function loadTranslations(locale: string) {
         ...defaultTranslations,
         ...footerData,
         // 从nav中获取二级菜单的翻译
-        aiVideo: navData.aiVideo || footerData.aiVideo || defaultTranslations.aiVideo,
-        aiImage: navData.aiImage || footerData.aiImage || defaultTranslations.aiImage,
-        imageCompression: navData.imageCompression || footerData.imageCompression || defaultTranslations.imageCompression,
-        imageConverter: navData.imageConverter || footerData.imageConverter || defaultTranslations.imageConverter,
-        fontGenerator: navData.fontGenerator || footerData.fontGenerator || defaultTranslations.fontGenerator,
-        emojiCopyAndPaste: navData.emojiCopyAndPaste || footerData.emojiCopyAndPaste || defaultTranslations.emojiCopyAndPaste,
-        seedance2: navData.seedance2 || footerData.seedance2 || defaultTranslations.seedance2,
-        kling3: navData.kling3 || footerData.kling3 || defaultTranslations.kling3,
-        nanoBananaPro: navData.nanoBananaPro || footerData.nanoBananaPro || defaultTranslations.nanoBananaPro,
-        nanoBanana2: navData.nanoBanana2 || footerData.nanoBanana2 || defaultTranslations.nanoBanana2,
-        aiTools: navData.aiTools || footerData.aiTools || defaultTranslations.aiTools,
-        watermarkRemover: navData.watermarkRemover || footerData.watermarkRemover || defaultTranslations.watermarkRemover,
-        photoRestoration: navData.photoRestoration || footerData.photoRestoration || defaultTranslations.photoRestoration,
+        aiVideo: read(navData, 'aiVideo') || read(footerData, 'aiVideo') || defaultTranslations.aiVideo,
+        aiImage: read(navData, 'aiImage') || read(footerData, 'aiImage') || defaultTranslations.aiImage,
+        imageCompression: read(navData, 'imageCompression') || read(footerData, 'imageCompression') || defaultTranslations.imageCompression,
+        imageConverter: read(navData, 'imageConverter') || read(footerData, 'imageConverter') || defaultTranslations.imageConverter,
+        fontGenerator: read(navData, 'fontGenerator') || read(footerData, 'fontGenerator') || defaultTranslations.fontGenerator,
+        emojiCopyAndPaste: read(navData, 'emojiCopyAndPaste') || read(footerData, 'emojiCopyAndPaste') || defaultTranslations.emojiCopyAndPaste,
+        seedance2: read(navData, 'seedance2') || read(footerData, 'seedance2') || defaultTranslations.seedance2,
+        kling3: read(navData, 'kling3') || read(footerData, 'kling3') || defaultTranslations.kling3,
+        nanoBananaPro: read(navData, 'nanoBananaPro') || read(footerData, 'nanoBananaPro') || defaultTranslations.nanoBananaPro,
+        nanoBanana2: read(navData, 'nanoBanana2') || read(footerData, 'nanoBanana2') || defaultTranslations.nanoBanana2,
+        aiTools: read(navData, 'aiTools') || read(footerData, 'aiTools') || defaultTranslations.aiTools,
+        watermarkRemover: read(navData, 'watermarkRemover') || read(footerData, 'watermarkRemover') || defaultTranslations.watermarkRemover,
+        photoRestoration: read(navData, 'photoRestoration') || read(footerData, 'photoRestoration') || defaultTranslations.photoRestoration,
       }
     } catch {
       return defaultTranslations
