@@ -1,8 +1,11 @@
+const isProdBuild = process.env.NODE_ENV === 'production';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // 强制启用静态导出（Cloudflare Pages 需要）
   // Cloudflare Pages 使用静态文件托管，必须启用静态导出
-  output: 'export',
+  // 仅在生产构建启用，避免本地 dev 模式下样式/静态资源加载异常
+  output: isProdBuild ? 'export' : undefined,
   // 提高请求体限制，支持去水印上传大图（默认 1MB 会导致上传失败）
   experimental: {
     serverActions: {

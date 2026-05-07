@@ -22,6 +22,7 @@ const defaultBreadcrumbTranslations = {
   imageCompression: 'Image Compression',
   imageConverter: 'Image Converter',
   fontGenerator: 'Font Generator',
+  model: 'Model',
   aboutUs: 'About Us',
   privacyPolicy: 'Privacy Policy',
   termsOfService: 'Terms of Service'
@@ -77,6 +78,7 @@ export default function Breadcrumb({ items }: BreadcrumbProps) {
     if (label === 'Image Compression') return translations.imageCompression
     if (label === 'Image Converter') return translations.imageConverter
     if (label === 'Font Generator') return translations.fontGenerator
+    if (label === 'Model') return translations.model || 'Model'
     if (label === 'About Us') return translations.aboutUs
     if (label === 'Privacy Policy') return translations.privacyPolicy
     if (label === 'Terms of Service') return translations.termsOfService
@@ -84,7 +86,7 @@ export default function Breadcrumb({ items }: BreadcrumbProps) {
   }
   
   // 仅存在于根路径、无 [locale] 版本的工具，始终不添加 locale 前缀
-  const LOCALE_LESS_PATHS = ['/watermark-remover', '/seedance-2', '/kling-3', '/model/nano-banana-pro', '/model/nano-banana-2']
+  const LOCALE_LESS_PATHS = ['/watermark-remover', '/model', '/model/seedance-2', '/model/kling-3', '/model/nano-banana-pro', '/model/nano-banana-2', '/model/gpt-image-2']
   const getLocalizedHref = (href: string | undefined): string | undefined => {
     if (!href) return href
     if (href.startsWith('http')) return href

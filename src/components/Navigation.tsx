@@ -21,6 +21,7 @@ const defaultNavTranslations = {
   aiVideo: 'AI Video',
   nanoBananaPro: 'Nano Banana Pro',
   nanoBanana2: 'Nano Banana 2',
+  gptImage2: 'GPT Image 2',
   seedance2: 'Seedance 2.0',
   kling3: 'Kling 3.0',
   aboutUs: 'About Us'
@@ -300,7 +301,7 @@ export default function Navigation() {
   }, [currentLocale, pathname])
   
   // 仅存在于根路径、无 [locale] 版本的工具，始终不添加 locale 前缀
-  const LOCALE_LESS_PATHS = ['/watermark-remover', '/seedance-2', '/kling-3', '/model/nano-banana-pro', '/model/nano-banana-2']
+  const LOCALE_LESS_PATHS = ['/watermark-remover', '/model', '/model/seedance-2', '/model/kling-3', '/model/nano-banana-pro', '/model/nano-banana-2', '/model/gpt-image-2']
   const getLocalizedHref = (href: string): string => {
     if (href.startsWith('http')) return href
     if (LOCALE_LESS_PATHS.some(p => href === p || href.startsWith(p + '/'))) return href
@@ -583,6 +584,22 @@ export default function Navigation() {
                   </svg>
                   <span>{navTranslations.nanoBanana2 || defaultNavTranslations.nanoBanana2}</span>
                 </Link>
+                <Link
+                  href={getLocalizedHref('/model/gpt-image-2')}
+                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
+                    <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#aiImageGradient3)" opacity="0.2"/>
+                    <path d="M7 15l3-3 2 2 5-5" stroke="url(#aiImageGradient3)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <defs>
+                      <linearGradient id="aiImageGradient3" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+                        <stop stopColor="#9333EA"/>
+                        <stop offset="1" stopColor="#4F46E5"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                  <span>{navTranslations.gptImage2 || defaultNavTranslations.gptImage2}</span>
+                </Link>
               </div>
             </div>
           </div>
@@ -597,7 +614,7 @@ export default function Navigation() {
             <div className="absolute top-full left-0 pt-1 w-auto min-w-[200px] bg-transparent opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
               <div className="bg-white rounded-xl shadow-lg border border-indigo-50 py-2">
                 <Link
-                  href={getLocalizedHref('/seedance-2')}
+                  href={getLocalizedHref('/model/seedance-2')}
                   className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
                 >
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
@@ -613,7 +630,7 @@ export default function Navigation() {
                   <span>{navTranslations.seedance2 || defaultNavTranslations.seedance2}</span>
                 </Link>
                 <Link
-                  href={getLocalizedHref('/kling-3')}
+                  href={getLocalizedHref('/model/kling-3')}
                   className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
                 >
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
@@ -778,6 +795,26 @@ export default function Navigation() {
                     </svg>
                     <span>{navTranslations.nanoBanana2 || defaultNavTranslations.nanoBanana2}</span>
                   </Link>
+                  <Link
+                    href={getLocalizedHref('/model/gpt-image-2')}
+                    onClick={() => {
+                      setMobileMenuOpen(false)
+                      setExpandedSubmenus(new Set())
+                    }}
+                    className="flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
+                  >
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
+                      <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#aiImageGradientMobile3)" opacity="0.2"/>
+                      <path d="M7 15l3-3 2 2 5-5" stroke="url(#aiImageGradientMobile3)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      <defs>
+                        <linearGradient id="aiImageGradientMobile3" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+                          <stop stopColor="#9333EA"/>
+                          <stop offset="1" stopColor="#4F46E5"/>
+                        </linearGradient>
+                      </defs>
+                    </svg>
+                    <span>{navTranslations.gptImage2 || defaultNavTranslations.gptImage2}</span>
+                  </Link>
                 </div>
               </div>
               {/* AI Video 部分 */}
@@ -785,7 +822,7 @@ export default function Navigation() {
                 <div className="text-sm font-bold text-slate-700 mb-3">{navTranslations.aiVideo || defaultNavTranslations.aiVideo}</div>
                 <div className="space-y-2">
                   <Link
-                    href={getLocalizedHref('/seedance-2')}
+                    href={getLocalizedHref('/model/seedance-2')}
                     onClick={() => {
                       setMobileMenuOpen(false)
                       setExpandedSubmenus(new Set())
@@ -805,7 +842,7 @@ export default function Navigation() {
                     <span>{navTranslations.seedance2 || defaultNavTranslations.seedance2}</span>
                   </Link>
                   <Link
-                    href={getLocalizedHref('/kling-3')}
+                    href={getLocalizedHref('/model/kling-3')}
                     onClick={() => {
                       setMobileMenuOpen(false)
                       setExpandedSubmenus(new Set())
