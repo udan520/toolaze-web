@@ -6,6 +6,8 @@ interface PageProps {
   }>
 }
 
+export const dynamicParams = false
+
 export function generateStaticParams() {
   return [
     { locale: 'en' },
