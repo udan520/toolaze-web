@@ -15,6 +15,7 @@ const defaultNavTranslations = {
   imageCompression: 'Image Compression',
   imageConverter: 'Image Converter',
   watermarkRemover: 'Watermark Remover',
+  photoRestoration: 'Photo Restoration',
   fontGenerator: 'Font Generator',
   emojiCopyAndPaste: 'Emoji Copy & Paste',
   aiImage: 'AI Image',
@@ -25,6 +26,13 @@ const defaultNavTranslations = {
   seedance2: 'Seedance 2.0',
   kling3: 'Kling 3.0',
   aboutUs: 'About Us'
+}
+
+const AI_TOOLS_DEMO_IMAGES = {
+  watermarkRemover:
+    'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=400&q=80',
+  photoRestoration:
+    'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=400&q=80',
 }
 
 // 加载导航翻译的函数
@@ -78,6 +86,7 @@ export default function Navigation() {
     'emoji-copy-and-paste': []
   })
   const [isMounted, setIsMounted] = useState(false)
+  const [isMobileView, setIsMobileView] = useState(false)
   const pathname = usePathname()
   
   // 检测当前语言
@@ -95,6 +104,17 @@ export default function Navigation() {
     setIsMounted(true)
     loadNavTranslations(currentLocale).then(setNavTranslations)
   }, [currentLocale])
+
+  // 运行时兜底：仅在移动端渲染 H5 菜单按钮，避免桌面端误显示
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    const updateViewport = () => {
+      setIsMobileView(window.innerWidth < 768)
+    }
+    updateViewport()
+    window.addEventListener('resize', updateViewport)
+    return () => window.removeEventListener('resize', updateViewport)
+  }, [])
   
   // 加载三级菜单数据
   useEffect(() => {
@@ -301,7 +321,7 @@ export default function Navigation() {
   }, [currentLocale, pathname])
   
   // 仅存在于根路径、无 [locale] 版本的工具，始终不添加 locale 前缀
-  const LOCALE_LESS_PATHS = ['/watermark-remover', '/model', '/model/seedance-2', '/model/kling-3', '/model/nano-banana-pro', '/model/nano-banana-2', '/model/gpt-image-2', '/model/gpt-image-2-0']
+  const LOCALE_LESS_PATHS = ['/ai-tools', '/watermark-remover', '/photo-restoration', '/model', '/model/seedance-2', '/model/kling-3', '/model/nano-banana-pro', '/model/nano-banana-2', '/model/gpt-image-2', '/model/gpt-image-2-0']
   const getLocalizedHref = (href: string): string => {
     if (href.startsWith('http')) return href
     if (LOCALE_LESS_PATHS.some(p => href === p || href.startsWith(p + '/'))) return href
@@ -443,25 +463,27 @@ export default function Navigation() {
         </Link>
         
         {/* 移动端菜单按钮 - 右上角 */}
-        <button
-          onClick={() => {
-            setMobileMenuOpen(!mobileMenuOpen)
-            // 关闭菜单时重置子菜单展开状态
-            if (mobileMenuOpen) {
-              setExpandedSubmenus(new Set())
-            }
-          }}
-          className="md:hidden absolute right-4 z-50 p-2 text-slate-700 hover:text-indigo-600 transition-colors"
-          aria-label="Toggle menu"
-        >
-          {mobileMenuOpen ? (
-            <CloseIcon size={24} className="w-6 h-6" />
-          ) : (
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          )}
-        </button>
+        {isMobileView && (
+          <button
+            onClick={() => {
+              setMobileMenuOpen(!mobileMenuOpen)
+              // 关闭菜单时重置子菜单展开状态
+              if (mobileMenuOpen) {
+                setExpandedSubmenus(new Set())
+              }
+            }}
+            className="md:hidden absolute right-4 z-50 p-2 text-slate-700 hover:text-indigo-600 transition-colors"
+            aria-label="Toggle menu"
+          >
+            {mobileMenuOpen ? (
+              <CloseIcon size={24} className="w-6 h-6" />
+            ) : (
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            )}
+          </button>
+        )}
 
         {/* 桌面端菜单 */}
         <div className="hidden md:flex gap-8 text-sm font-bold text-slate-700 items-center">
@@ -524,18 +546,40 @@ export default function Navigation() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
               </svg>
             </button>
-            <div className="absolute top-full left-0 mt-2 w-auto min-w-[200px] bg-white rounded-xl shadow-lg border border-indigo-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+            <div className="absolute top-full left-0 mt-2 w-auto min-w-[280px] bg-white rounded-xl shadow-lg border border-indigo-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
               <div className="py-2">
                 <Link
                   href={getLocalizedHref('/watermark-remover')}
-                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2"
+                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-3"
                 >
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
-                    <rect x="3" y="3" width="18" height="18" rx="2" stroke="#6366F1" strokeWidth="2" fill="none"/>
-                    <path d="M8 12h8M8 16h5" stroke="#6366F1" strokeWidth="2" strokeLinecap="round"/>
-                    <circle cx="17" cy="8" r="1.5" fill="#6366F1"/>
-                  </svg>
+                  <img
+                    src={AI_TOOLS_DEMO_IMAGES.watermarkRemover}
+                    alt={navTranslations.watermarkRemover || 'Watermark Remover'}
+                    className="w-10 h-10 rounded-lg object-cover border border-indigo-100 flex-shrink-0"
+                  />
                   <span>{navTranslations.watermarkRemover || 'Watermark Remover'}</span>
+                </Link>
+                <Link
+                  href={getLocalizedHref('/photo-restoration')}
+                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-3"
+                >
+                  <img
+                    src={AI_TOOLS_DEMO_IMAGES.photoRestoration}
+                    alt={navTranslations.photoRestoration || defaultNavTranslations.photoRestoration}
+                    className="w-10 h-10 rounded-lg object-cover border border-indigo-100 flex-shrink-0"
+                  />
+                  <span>{navTranslations.photoRestoration || defaultNavTranslations.photoRestoration}</span>
+                </Link>
+                <Link
+                  href={getLocalizedHref('/ai-tools')}
+                  onClick={() => {
+                    if (typeof window !== 'undefined') {
+                      window.location.href = '/ai-tools'
+                    }
+                  }}
+                  className="block px-4 pt-2 pb-1 text-xs font-medium tracking-normal text-indigo-600 hover:bg-indigo-50 transition-colors"
+                >
+                  View All AI Tools
                 </Link>
               </div>
             </div>
@@ -653,8 +697,11 @@ export default function Navigation() {
 
         {/* 移动端菜单面板 */}
         {mobileMenuOpen && (
-          <div ref={menuRef} className="block md:!hidden absolute top-full left-0 right-0 bg-white shadow-xl border-t border-indigo-50 z-40">
-            <div className="px-6 py-4 space-y-4">
+          <div
+            ref={menuRef}
+            className="block md:!hidden absolute top-full left-0 right-0 bg-white shadow-xl border-t border-indigo-50 z-40 max-h-[calc(100vh-70px)] overflow-y-auto overscroll-contain"
+          >
+            <div className="px-6 py-4 space-y-4 pb-8">
               {/* Quick Tools 部分 */}
               <div className="border-b border-indigo-50 pb-4">
                 <div className="text-sm font-bold text-slate-700 mb-3">{navTranslations.quickTools}</div>
@@ -738,14 +785,42 @@ export default function Navigation() {
                       setMobileMenuOpen(false)
                       setExpandedSubmenus(new Set())
                     }}
-                    className="flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
+                    className="flex items-center gap-3 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
                   >
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
-                      <rect x="3" y="3" width="18" height="18" rx="2" stroke="#6366F1" strokeWidth="2" fill="none"/>
-                      <path d="M8 12h8M8 16h5" stroke="#6366F1" strokeWidth="2" strokeLinecap="round"/>
-                      <circle cx="17" cy="8" r="1.5" fill="#6366F1"/>
-                    </svg>
+                    <img
+                      src={AI_TOOLS_DEMO_IMAGES.watermarkRemover}
+                      alt={navTranslations.watermarkRemover || 'Watermark Remover'}
+                      className="w-10 h-10 rounded-lg object-cover border border-indigo-100 flex-shrink-0"
+                    />
                     <span>{navTranslations.watermarkRemover || 'Watermark Remover'}</span>
+                  </Link>
+                  <Link
+                    href={getLocalizedHref('/photo-restoration')}
+                    onClick={() => {
+                      setMobileMenuOpen(false)
+                      setExpandedSubmenus(new Set())
+                    }}
+                    className="flex items-center gap-3 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
+                  >
+                    <img
+                      src={AI_TOOLS_DEMO_IMAGES.photoRestoration}
+                      alt={navTranslations.photoRestoration || defaultNavTranslations.photoRestoration}
+                      className="w-10 h-10 rounded-lg object-cover border border-indigo-100 flex-shrink-0"
+                    />
+                    <span>{navTranslations.photoRestoration || defaultNavTranslations.photoRestoration}</span>
+                  </Link>
+                  <Link
+                    href={getLocalizedHref('/ai-tools')}
+                    onClick={() => {
+                      setMobileMenuOpen(false)
+                      setExpandedSubmenus(new Set())
+                      if (typeof window !== 'undefined') {
+                        window.location.href = '/ai-tools'
+                      }
+                    }}
+                    className="flex items-center gap-3 px-3 py-2 text-xs font-medium tracking-normal text-indigo-600 hover:bg-indigo-50 rounded-lg transition-colors"
+                  >
+                    View All AI Tools
                   </Link>
                 </div>
               </div>

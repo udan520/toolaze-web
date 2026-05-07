@@ -1,0 +1,76 @@
+{
+  "tool": "photo-restoration",
+  "lastUpdated": "2026-05-07",
+  "primaryKeywords": [
+    {
+      "keyword": "photo restoration",
+      "searchVolume": 0,
+      "difficulty": 0,
+      "type": "primary",
+      "notes": "P0 主关键词，用于 H1 / Title / Meta"
+    },
+    {
+      "keyword": "restore old photos online free",
+      "searchVolume": 0,
+      "difficulty": 0,
+      "type": "primary",
+      "notes": "C 端意图词，覆盖 free + online"
+    }
+  ],
+  "longTailKeywords": [
+    {
+      "keyword": "old photo restoration online",
+      "searchVolume": 0,
+      "difficulty": 0,
+      "type": "long-tail",
+      "targetPage": "photo-restoration",
+      "notes": "功能类长尾词"
+    },
+    {
+      "keyword": "colorize old photos online",
+      "searchVolume": 0,
+      "difficulty": 0,
+      "type": "long-tail",
+      "targetPage": "photo-restoration",
+      "notes": "操作类长尾词（Colorize 开关）"
+    },
+    {
+      "keyword": "remove scratches from old photos",
+      "searchVolume": 0,
+      "difficulty": 0,
+      "type": "long-tail",
+      "targetPage": "photo-restoration",
+      "notes": "修复意图词"
+    }
+  ],
+  "relatedKeywords": [
+    {
+      "keyword": "ai photo restoration",
+      "searchVolume": 0,
+      "difficulty": 0,
+      "type": "related",
+      "notes": "语义相关词"
+    },
+    {
+      "keyword": "photo repair tool",
+      "searchVolume": 0,
+      "difficulty": 0,
+      "type": "related",
+      "notes": "替代表达"
+    }
+  ],
+  "internalLinking": [
+    {
+      "keyword": "compress restored photos",
+      "targetPage": "image-compressor",
+      "anchorText": "compress images",
+      "notes": "修复后压缩工作流"
+    },
+    {
+      "keyword": "convert restored photo format",
+      "targetPage": "image-converter",
+      "anchorText": "image converter",
+      "notes": "修复后格式转换工作流"
+    }
+  ]
+}

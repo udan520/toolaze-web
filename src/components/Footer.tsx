@@ -21,6 +21,7 @@ const defaultTranslations = {
   aiVideo: 'AI Video',
   aiImage: 'AI Image',
   watermarkRemover: 'Watermark Remover',
+  photoRestoration: 'Photo Restoration',
   imageCompression: 'Image Compression',
   imageConverter: 'Image Converter',
   fontGenerator: 'Font Generator',
@@ -59,6 +60,7 @@ async function loadTranslations(locale: string) {
         nanoBanana2: navData.nanoBanana2 || footerData.nanoBanana2 || defaultTranslations.nanoBanana2,
         aiTools: navData.aiTools || footerData.aiTools || defaultTranslations.aiTools,
         watermarkRemover: navData.watermarkRemover || footerData.watermarkRemover || defaultTranslations.watermarkRemover,
+        photoRestoration: navData.photoRestoration || footerData.photoRestoration || defaultTranslations.photoRestoration,
       }
     }
     
@@ -82,6 +84,7 @@ async function loadTranslations(locale: string) {
         nanoBanana2: navData.nanoBanana2 || footerData.nanoBanana2 || defaultTranslations.nanoBanana2,
         aiTools: navData.aiTools || footerData.aiTools || defaultTranslations.aiTools,
         watermarkRemover: navData.watermarkRemover || footerData.watermarkRemover || defaultTranslations.watermarkRemover,
+        photoRestoration: navData.photoRestoration || footerData.photoRestoration || defaultTranslations.photoRestoration,
       }
     } catch {
       return defaultTranslations
@@ -470,7 +473,7 @@ export default function Footer() {
   const otherLocales = supportedLocales.filter(loc => loc.code !== currentLocale)
 
   // 仅存在于根路径、无 [locale] 版本的工具，始终不添加 locale 前缀
-  const LOCALE_LESS_PATHS = ['/watermark-remover', '/model/seedance-2', '/model/kling-3', '/model/nano-banana-pro', '/model/nano-banana-2']
+  const LOCALE_LESS_PATHS = ['/ai-tools', '/watermark-remover', '/photo-restoration', '/model/seedance-2', '/model/kling-3', '/model/nano-banana-pro', '/model/nano-banana-2']
   const getLocalizedHref = (href: string): string => {
     if (href.startsWith('http')) return href
     if (LOCALE_LESS_PATHS.some(p => href === p || href.startsWith(p + '/'))) return href
@@ -487,7 +490,7 @@ export default function Footer() {
           {/* AI Tools */}
           <div>
             <Link 
-              href={getLocalizedHref('/watermark-remover')} 
+              href={getLocalizedHref('/ai-tools')} 
               className="text-white font-bold text-sm mb-4 uppercase tracking-wider block hover:text-indigo-400 transition-colors"
             >
               {translations.aiTools || 'AI Tools'}
@@ -499,6 +502,14 @@ export default function Footer() {
                   className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
                 >
                   {translations.watermarkRemover || 'Watermark Remover'}
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href={getLocalizedHref('/photo-restoration')} 
+                  className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
+                >
+                  {translations.photoRestoration || 'Photo Restoration'}
                 </Link>
               </li>
             </ul>

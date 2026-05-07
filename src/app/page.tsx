@@ -98,6 +98,8 @@ const AI_VIDEO_PATHS: Record<string, string> = {
 
 // Non-AI L2 tools
 const OTHER_TOOLS = [
+  'watermark-remover',
+  'photo-restoration',
   'image-compressor',
   'image-converter',
   'font-generator',
@@ -394,6 +396,8 @@ export default async function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {otherTools.map((item) => {
               const toolEmoji: Record<string, string> = {
+                'watermark-remover': '🧽',
+                'photo-restoration': '🖼️',
                 'image-compressor': '🗜️',
                 'image-converter': '🔄',
                 'font-generator': '✏️',

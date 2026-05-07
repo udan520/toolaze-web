@@ -650,6 +650,8 @@ export async function getL2SeoContent(tool: string, locale: string = 'en') {
         data = await import('@/data/en/kling-3.json')
       } else if (tool === 'watermark-remover') {
         data = await import('@/data/en/watermark-remover.json')
+      } else if (tool === 'photo-restoration') {
+        data = await import('@/data/en/photo-restoration.json')
       }
       
       const resolved = data?.default || data
@@ -681,6 +683,8 @@ export async function getL2SeoContent(tool: string, locale: string = 'en') {
             data = await import('@/data/en/kling-3.json')
           } else if (tool === 'watermark-remover') {
             data = await import('@/data/en/watermark-remover.json')
+          } else if (tool === 'photo-restoration') {
+            data = await import('@/data/en/photo-restoration.json')
           }
           const fallbackResolved = data?.default || data
           if (fallbackResolved && isPublished(fallbackResolved)) {

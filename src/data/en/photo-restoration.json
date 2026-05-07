@@ -1,0 +1,150 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Free Photo Restoration Online - Restore Old Photos with AI | Toolaze",
+    "description": "Restore old photos online free with AI. Remove scratches, dust, and noise, improve clarity, and colorize old photos in one click. No sign-up required."
+  },
+  "topComponent": "photo-restoration",
+  "sectionsOrder": ["howToUse", "features", "intro", "performanceMetrics", "scenes", "rating", "faq"],
+  "hero": {
+    "h1": "Free <span class=\"text-gradient\">Photo Restoration</span> Online",
+    "desc": "Restore old photos in one click with AI. Remove scratches, dust, and noise, improve details, and apply natural color restoration automatically."
+  },
+  "howToUse": {
+    "title": "How to Restore Old Photos Online",
+    "steps": [
+      {
+        "title": "Upload Your Photo",
+        "desc": "Upload one old photo in JPG, JPEG, or PNG format (up to 30MB)."
+      },
+      {
+        "title": "Generate Restored Result",
+        "desc": "Click Generate to run restoration with built-in colorization for a clean and vivid old-photo result."
+      },
+      {
+        "title": "Generate and Download",
+        "desc": "Click Generate to restore your photo, preview the result, and download instantly."
+      }
+    ]
+  },
+  "features": {
+    "title": "Key Photo Restoration Features",
+    "items": [
+      {
+        "icon": "🧼",
+        "iconType": "quality",
+        "title": "Scratch and Dust Cleanup",
+        "desc": "Automatically removes common old-photo damage like scratches, dust spots, and noise."
+      },
+      {
+        "icon": "🔍",
+        "iconType": "quality",
+        "title": "Clarity and Detail Boost",
+        "desc": "Improves sharpness and visual detail so faces, textures, and edges look cleaner."
+      },
+      {
+        "icon": "🎨",
+        "iconType": "ai",
+        "title": "Built-In Color Restoration",
+        "desc": "Restoration and colorization run together with one fixed workflow for consistent output quality."
+      },
+      {
+        "icon": "🖼️",
+        "iconType": "format",
+        "title": "Single-Image Workflow",
+        "desc": "Focused one-photo workflow for fast restoration with simple controls."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Fast Browser Experience",
+        "desc": "Upload, restore, and download in a clean browser-based flow with no sign-up required."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Secure Processing",
+        "desc": "Images are processed securely and not kept as permanent account files."
+      }
+    ]
+  },
+  "intro": {
+    "title": "Why Use Toolaze Photo Restoration",
+    "content": [
+      {
+        "title": "Make Old Photos Usable Again",
+        "text": "Old family photos often have scratches, dust, fading, and blur that make them hard to share or print. Toolaze Photo Restoration helps you recover visual quality quickly so memories look cleaner and easier to preserve."
+      },
+      {
+        "title": "One-Click Workflow for Faster Results",
+        "text": "The page uses a fixed restoration plus colorization workflow, so you do not need to decide settings. Upload one image, click Generate, and get a clean enhanced result quickly."
+      },
+      {
+        "title": "Built for Everyday Users, Not Editors",
+        "text": "You do not need manual masking, brush tools, or advanced editing skills. Upload one image, choose your mode, click generate, and download. It is designed for fast personal use, family archives, and social sharing."
+      }
+    ]
+  },
+  "performanceMetrics": {
+    "title": "Photo Restoration Settings",
+    "metrics": [
+      { "label": "Model", "value": "GPT Image 2" },
+      { "label": "Input Type", "value": "Single image" },
+      { "label": "Aspect Ratio", "value": "Auto" },
+      { "label": "Resolution", "value": "1K" },
+      { "label": "Output Per Task", "value": "1 image" },
+      { "label": "Colorization", "value": "Built in (always on)" }
+    ]
+  },
+  "scenesTitle": "Use Cases",
+  "scenes": [
+    {
+      "icon": "👪",
+      "title": "Family Memory Recovery",
+      "desc": "Clean old family photos before printing, framing, or sharing in family groups."
+    },
+    {
+      "icon": "📚",
+      "title": "Historical and Archive Cleanup",
+      "desc": "Improve readability of old scanned photos for archive projects or school presentations."
+    },
+    {
+      "icon": "📱",
+      "title": "Social Media Throwback Posts",
+      "desc": "Restore old portraits and moments so they look better in modern social feeds."
+    }
+  ],
+  "rating": {
+    "title": "Trusted by Creators and Families",
+    "rating": "4.9/5 FROM 10K+ CREATORS",
+    "text": "Toolaze helps users restore old photos quickly with simple controls and clean results. No registration required."
+  },
+  "faqTitle": "Frequently Asked Questions",
+  "faq": [
+    {
+      "q": "Is this photo restoration tool free to use?",
+      "a": "Yes. You can restore photos online for free on Toolaze with no sign-up required."
+    },
+    {
+      "q": "What file formats are supported?",
+      "a": "You can upload JPG, JPEG, and PNG images up to 30MB."
+    },
+    {
+      "q": "Can I choose whether to colorize old photos?",
+      "a": "No. This page uses a fixed restoration plus colorization workflow by default to keep results consistent."
+    },
+    {
+      "q": "Does this support batch photo restoration?",
+      "a": "No. This page supports single-image restoration per run."
+    },
+    {
+      "q": "Can I edit prompts manually?",
+      "a": "No. Prompt text is built in to keep the workflow simple and consistent."
+    },
+    {
+      "q": "Do I need to install software?",
+      "a": "No. Everything runs in your browser, so you can upload, restore, and download online."
+    }
+  ],
+  "moreTools": "Related Free Tools"
+}

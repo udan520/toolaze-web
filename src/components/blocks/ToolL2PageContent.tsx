@@ -12,6 +12,7 @@ import ImageConverter from '@/components/ImageConverter'
 import EmojiCategoryPage from '@/components/EmojiCategoryPage'
 import NanoBananaTool from '@/components/NanoBananaTool'
 import WatermarkRemover from '@/components/WatermarkRemover'
+import PhotoRestoration from '@/components/PhotoRestoration'
 import SeedanceHeroPlaceholder from '@/components/blocks/SeedanceHeroPlaceholder'
 import KlingHeroPlaceholder from '@/components/blocks/KlingHeroPlaceholder'
 import NanoBanana2HeroPlaceholder from '@/components/blocks/NanoBanana2HeroPlaceholder'
@@ -213,8 +214,14 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
     const breadcrumbItems = tool === 'watermark-remover'
       ? [
           { label: breadcrumbT.home, href: '/' },
-          { label: 'AI Tools', href: '/watermark-remover' },
+          { label: 'AI Tools', href: '/ai-tools' },
           { label: 'Watermark Remover' },
+        ]
+      : tool === 'photo-restoration'
+      ? [
+          { label: breadcrumbT.home, href: '/' },
+          { label: 'AI Tools', href: '/ai-tools' },
+          { label: 'Photo Restoration' },
         ]
       : tool === 'nano-banana-pro'
       ? [
@@ -457,6 +464,24 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                 )}
               </div>
               <WatermarkRemover />
+            </header>
+          ) : topComp === 'photo-restoration' ? (
+            <header className="bg-[#F8FAFF] pb-12 px-6">
+              <div className="max-w-4xl mx-auto text-center pt-8 mb-12">
+                <h1 className="text-[40px] font-extrabold tracking-tight mb-6 leading-tight text-slate-900">
+                  {content.hero?.h1 ? (
+                    renderH1WithGradient(content.hero.h1)
+                  ) : (
+                    <>Free Photo Restoration Online</>
+                  )}
+                </h1>
+                {content.hero?.desc && (
+                  <p className="desc-text text-lg md:text-xl max-w-4xl mx-auto">
+                    {content.hero.desc}
+                  </p>
+                )}
+              </div>
+              <PhotoRestoration />
             </header>
           ) : topComp === 'nano-banana-pro' ? (
             <header className="bg-[#F8FAFF] pb-6 md:pb-12 w-full px-2 md:px-6">

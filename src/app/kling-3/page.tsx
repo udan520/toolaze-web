@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation'
 export default function Kling3Redirect() {
   const router = useRouter()
   useEffect(() => {
-    router.replace('/model/kling-3')
+    router.push('/model/kling-3')
   }, [router])
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#F8FAFF]">

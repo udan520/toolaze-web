@@ -44,6 +44,11 @@ docs/specs/
 
 **查看方式**：编写 GPT Image 2 相关 SEO 内容时，必须参考此文件。
 
+### Photo Restoration（老照片修复工具）
+📄 **文件位置**：`docs/specs/photo-restoration.md`
+
+**查看方式**：编写 Photo Restoration 相关 SEO 内容时，必须参考此文件。
+
 ### 通用功能特性
 📄 **文件位置**：`docs/specs/common.md`
 

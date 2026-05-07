@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation'
 export default function Seedance2Redirect() {
   const router = useRouter()
   useEffect(() => {
-    router.replace('/model/seedance-2')
+    router.push('/model/seedance-2')
   }, [router])
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#F8FAFF]">

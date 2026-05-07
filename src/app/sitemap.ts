@@ -61,6 +61,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })
   })
 
+  // 3b. 单语言功能页面（仅英文）
+  entries.push({
+    url: `${baseUrl}/photo-restoration`,
+    lastModified: today,
+    changeFrequency: 'weekly',
+    priority: 0.9,
+  })
+  entries.push({
+    url: `${baseUrl}/ai-tools`,
+    lastModified: today,
+    changeFrequency: 'weekly',
+    priority: 0.9,
+  })
+
   // 4. Model 页面（AI 图像模型，仅英文）
   const MODEL_PAGES = ['nano-banana-pro', 'nano-banana-2', 'gpt-image-2-0']
   MODEL_PAGES.forEach((model) => {

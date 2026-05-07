@@ -11,6 +11,13 @@ function mapOutputFormat(format: FormDataEntryValue | null): string | undefined 
   return 'png'
 }
 
+function mapAspectRatio(aspectRatio: FormDataEntryValue | null): string | undefined {
+  if (!aspectRatio) return undefined
+  const v = String(aspectRatio).trim().toLowerCase()
+  if (!v || v === 'auto') return undefined
+  return String(aspectRatio).trim()
+}
+
 function resolveModel(model: FormDataEntryValue | null): 'nano-banana-pro' | 'nano-banana-2' | 'gpt-image-2' {
   const m = String(model || '').trim().toLowerCase()
   if (m === 'gpt-image-2') return 'gpt-image-2'
@@ -37,7 +44,7 @@ export async function POST(request: NextRequest) {
   try {
     const formData = await request.formData()
     const prompt = String(formData.get('prompt') || '').trim()
-    const aspectRatio = String(formData.get('aspectRatio') || '1:1')
+    const aspectRatio = mapAspectRatio(formData.get('aspectRatio'))
     const resolution = String(formData.get('resolution') || '1K')
     const outputFormat = formData.get('outputFormat')
     const isImageToImage = String(formData.get('isImageToImage')) === 'true'
@@ -82,9 +89,9 @@ export async function POST(request: NextRequest) {
 
     const input: Record<string, unknown> = {
       prompt,
-      aspect_ratio: aspectRatio,
       resolution: resolution === '2K' || resolution === '4K' ? resolution : '1K',
     }
+    if (aspectRatio) input.aspect_ratio = aspectRatio
 
     const mappedFormat = mapOutputFormat(outputFormat)
     if (mappedFormat) input.output_format = mappedFormat

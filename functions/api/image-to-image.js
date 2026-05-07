@@ -45,6 +45,13 @@ function mapOutputFormat(format) {
   return 'png';
 }
 
+function mapAspectRatio(aspectRatio) {
+  if (!aspectRatio) return undefined;
+  const v = String(aspectRatio).trim().toLowerCase();
+  if (!v || v === 'auto') return undefined;
+  return String(aspectRatio).trim();
+}
+
 function resolveModel(model) {
   const m = String(model || '').trim().toLowerCase();
   if (m === 'gpt-image-2') return 'gpt-image-2';
@@ -90,7 +97,7 @@ export async function onRequest(context) {
     const imageUrl = (formData.get('imageUrl') || '').trim();
     const imageUrlsJson = formData.get('imageUrls');
     const prompt = (formData.get('prompt') || '').trim();
-    const aspectRatio = formData.get('aspectRatio') || '1:1';
+    const aspectRatio = mapAspectRatio(formData.get('aspectRatio'));
     const outputFormat = formData.get('outputFormat') || 'Auto';
     const resolution = formData.get('resolution') || '1K';
     const isImageToImage = formData.get('isImageToImage') === 'true';
@@ -138,9 +145,9 @@ export async function onRequest(context) {
 
     const input = {
       prompt,
-      aspect_ratio: aspectRatio,
       resolution: resolution === '2K' || resolution === '4K' ? resolution : '1K',
     };
+    if (aspectRatio) input.aspect_ratio = aspectRatio;
     const mappedFormat = mapOutputFormat(outputFormat);
     if (mappedFormat) {
       input.output_format = mappedFormat;
