@@ -257,7 +257,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
     const getModelL2Href = (modelTool: string): string => {
       if (modelTool === 'nano-banana-pro') return locale === 'en' ? '/model/nano-banana-pro' : `/${locale}/model/nano-banana-pro`
       if (modelTool === 'nano-banana-2') return locale === 'en' ? '/model/nano-banana-2' : `/${locale}/model/nano-banana-2`
-      if (modelTool === 'gpt-image-2') return locale === 'en' ? '/model/gpt-image-2-online' : `/${locale}/model/gpt-image-2-online`
+      if (modelTool === 'gpt-image-2') return locale === 'en' ? '/model/gpt-image-2-0' : `/${locale}/model/gpt-image-2-0`
       if (modelTool === 'seedance-2') return locale === 'en' ? '/model/seedance-2' : `/${locale}/model/seedance-2`
       if (modelTool === 'kling-3') return locale === 'en' ? '/model/kling-3' : `/${locale}/model/kling-3`
       return locale === 'en' ? `/${modelTool}` : `/${locale}/${modelTool}`

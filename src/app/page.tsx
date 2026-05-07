@@ -87,7 +87,7 @@ export const metadata: Metadata = {
 const AI_IMAGE_PATHS: Record<string, string> = {
   'nano-banana-pro': '/model/nano-banana-pro',
   'nano-banana-2': '/model/nano-banana-2',
-  'gpt-image-2': '/model/gpt-image-2-online',
+  'gpt-image-2': '/model/gpt-image-2-0',
 }
 
 // AI Video model paths (under /model/)

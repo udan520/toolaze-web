@@ -12,12 +12,12 @@ export async function generateMetadata(): Promise<Metadata> {
     description: content?.metadata?.description || 'Use GPT Image 2 online for free on Toolaze. Generate images from text or transform existing images with fast, high-quality output.',
     robots: 'index, follow',
     alternates: {
-      canonical: 'https://toolaze.com/model/gpt-image-2-online',
+      canonical: 'https://toolaze.com/model/gpt-image-2-0',
     },
   }
 }
 
-export default async function GptImage2OnlinePage() {
+export default async function GptImage20Page() {
   const locale = 'en'
   return <ToolL2PageContent locale={locale} tool="gpt-image-2" />
 }

@@ -301,7 +301,7 @@ export default function Navigation() {
   }, [currentLocale, pathname])
   
   // 仅存在于根路径、无 [locale] 版本的工具，始终不添加 locale 前缀
-  const LOCALE_LESS_PATHS = ['/watermark-remover', '/model', '/model/seedance-2', '/model/kling-3', '/model/nano-banana-pro', '/model/nano-banana-2', '/model/gpt-image-2', '/model/gpt-image-2-online']
+  const LOCALE_LESS_PATHS = ['/watermark-remover', '/model', '/model/seedance-2', '/model/kling-3', '/model/nano-banana-pro', '/model/nano-banana-2', '/model/gpt-image-2', '/model/gpt-image-2-0']
   const getLocalizedHref = (href: string): string => {
     if (href.startsWith('http')) return href
     if (LOCALE_LESS_PATHS.some(p => href === p || href.startsWith(p + '/'))) return href
@@ -585,7 +585,7 @@ export default function Navigation() {
                   <span>{navTranslations.nanoBanana2 || defaultNavTranslations.nanoBanana2}</span>
                 </Link>
                 <Link
-                  href={getLocalizedHref('/model/gpt-image-2-online')}
+                  href={getLocalizedHref('/model/gpt-image-2-0')}
                   className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
                 >
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
@@ -796,7 +796,7 @@ export default function Navigation() {
                     <span>{navTranslations.nanoBanana2 || defaultNavTranslations.nanoBanana2}</span>
                   </Link>
                   <Link
-                    href={getLocalizedHref('/model/gpt-image-2-online')}
+                    href={getLocalizedHref('/model/gpt-image-2-0')}
                     onClick={() => {
                       setMobileMenuOpen(false)
                       setExpandedSubmenus(new Set())

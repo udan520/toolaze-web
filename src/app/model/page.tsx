@@ -106,7 +106,7 @@ export default function ModelPage() {
               </Link>
 
               <Link
-                href="/model/gpt-image-2-online"
+                href="/model/gpt-image-2-0"
                 className="group bg-white rounded-2xl border border-[#E0E7FF] shadow-lg shadow-[#4F46E5]/8 p-8 hover:shadow-xl hover:shadow-[#4F46E5]/12 transition-all duration-200 hover:-translate-y-1"
               >
                 <div className="flex items-start gap-4 mb-4">
