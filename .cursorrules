@@ -167,5 +167,6 @@ See 'docs/SEO_MASTER_LAYOUT.md' section 3 for the exact breadcrumb structure.
 - **Test sitemap**: After changes, verify sitemap includes all expected URLs by checking `https://toolaze.com/sitemap.xml` or running `node scripts/verify-sitemap.js`
 - **When to update**: Update sitemap when adding new tools, new languages, or changing language support for existing tools
 - **Before git commit**: Always review sitemap logic matches current tool and language support before committing
+- **New-page-only policy**: For each newly added page, update sitemap with only the new page URLs required for that change. Do not broaden sitemap scope or modify unrelated existing sitemap entries in the same commit.
 
 **API 生图限频规则**: 所有调用 API 进行生图的功能（如 Nano Banana Pro、Watermark Remover、Flux Dev 等），每个用户每天只能使用一次。限频由前端记录（如 localStorage）实现，无需后端校验。
