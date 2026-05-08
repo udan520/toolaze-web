@@ -22,6 +22,7 @@ const defaultTranslations = {
   aiImage: 'AI Image',
   watermarkRemover: 'Watermark Remover',
   photoRestoration: 'Photo Restoration',
+  aiCouplePhotoMaker: 'AI Couple Photo Maker',
   imageCompression: 'Image Compression',
   imageConverter: 'Image Converter',
   fontGenerator: 'Font Generator',
@@ -67,6 +68,7 @@ async function loadTranslations(locale: string) {
         aiTools: read(navData, 'aiTools') || read(footerData, 'aiTools') || defaultTranslations.aiTools,
         watermarkRemover: read(navData, 'watermarkRemover') || read(footerData, 'watermarkRemover') || defaultTranslations.watermarkRemover,
         photoRestoration: read(navData, 'photoRestoration') || read(footerData, 'photoRestoration') || defaultTranslations.photoRestoration,
+        aiCouplePhotoMaker: read(navData, 'aiCouplePhotoMaker') || read(footerData, 'aiCouplePhotoMaker') || defaultTranslations.aiCouplePhotoMaker,
       }
     }
     
@@ -91,6 +93,7 @@ async function loadTranslations(locale: string) {
         aiTools: read(navData, 'aiTools') || read(footerData, 'aiTools') || defaultTranslations.aiTools,
         watermarkRemover: read(navData, 'watermarkRemover') || read(footerData, 'watermarkRemover') || defaultTranslations.watermarkRemover,
         photoRestoration: read(navData, 'photoRestoration') || read(footerData, 'photoRestoration') || defaultTranslations.photoRestoration,
+        aiCouplePhotoMaker: read(navData, 'aiCouplePhotoMaker') || read(footerData, 'aiCouplePhotoMaker') || defaultTranslations.aiCouplePhotoMaker,
       }
     } catch {
       return defaultTranslations
@@ -479,7 +482,7 @@ export default function Footer() {
   const otherLocales = supportedLocales.filter(loc => loc.code !== currentLocale)
 
   // 仅存在于根路径、无 [locale] 版本的工具，始终不添加 locale 前缀
-  const LOCALE_LESS_PATHS = ['/ai-tools', '/watermark-remover', '/photo-restoration', '/model/seedance-2', '/model/kling-3', '/model/nano-banana-pro', '/model/nano-banana-2']
+  const LOCALE_LESS_PATHS = ['/ai-tools', '/watermark-remover', '/photo-restoration', '/ai-couple-photo-maker', '/model/seedance-2', '/model/kling-3', '/model/nano-banana-pro', '/model/nano-banana-2']
   const getLocalizedHref = (href: string): string => {
     if (href.startsWith('http')) return href
     if (LOCALE_LESS_PATHS.some(p => href === p || href.startsWith(p + '/'))) return href
@@ -516,6 +519,14 @@ export default function Footer() {
                   className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
                 >
                   {translations.photoRestoration || 'Photo Restoration'}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={getLocalizedHref('/ai-couple-photo-maker')}
+                  className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
+                >
+                  {translations.aiCouplePhotoMaker || 'AI Couple Photo Maker'}
                 </Link>
               </li>
             </ul>

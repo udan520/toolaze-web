@@ -98,6 +98,7 @@ const AI_VIDEO_PATHS: Record<string, string> = {
 
 // Non-AI L2 tools
 const OTHER_TOOLS = [
+  'ai-couple-photo-maker',
   'watermark-remover',
   'photo-restoration',
   'image-compressor',
@@ -185,6 +186,15 @@ export default async function HomePage() {
   // Load other tools
   const otherTools: ToolCard[] = []
   for (const tool of OTHER_TOOLS) {
+    if (tool === 'ai-couple-photo-maker') {
+      otherTools.push({
+        tool,
+        title: 'AI Couple Photo Maker',
+        description: 'Upload one or two photos and generate cinematic couple portraits with curated scene templates.',
+        href: '/ai-couple-photo-maker',
+      })
+      continue
+    }
     const card = await loadToolData(
       tool,
       (d) => (d?.hero?.h1 ? d.hero.h1.replace(/<[^>]*>/g, '').trim() : tool),
@@ -396,6 +406,7 @@ export default async function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {otherTools.map((item) => {
               const toolEmoji: Record<string, string> = {
+                'ai-couple-photo-maker': '💑',
                 'watermark-remover': '🧽',
                 'photo-restoration': '🖼️',
                 'image-compressor': '🗜️',

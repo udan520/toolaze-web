@@ -16,6 +16,7 @@ const defaultNavTranslations = {
   imageConverter: 'Image Converter',
   watermarkRemover: 'Watermark Remover',
   photoRestoration: 'Photo Restoration',
+  aiCouplePhotoMaker: 'AI Couple Photo Maker',
   fontGenerator: 'Font Generator',
   emojiCopyAndPaste: 'Emoji Copy & Paste',
   aiImage: 'AI Image',
@@ -33,6 +34,7 @@ const AI_TOOLS_DEMO_IMAGES = {
     'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=400&q=80',
   photoRestoration:
     'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=400&q=80',
+  aiCouplePhotoMaker: '/ai-couple-photo-maker/rainy-eiffel-4x3.jpg',
 }
 
 // 加载导航翻译的函数
@@ -321,7 +323,7 @@ export default function Navigation() {
   }, [currentLocale, pathname])
   
   // 仅存在于根路径、无 [locale] 版本的工具，始终不添加 locale 前缀
-  const LOCALE_LESS_PATHS = ['/ai-tools', '/watermark-remover', '/photo-restoration', '/model', '/model/seedance-2', '/model/kling-3', '/model/nano-banana-pro', '/model/nano-banana-2', '/model/gpt-image-2', '/model/gpt-image-2-0']
+  const LOCALE_LESS_PATHS = ['/ai-tools', '/watermark-remover', '/photo-restoration', '/ai-couple-photo-maker', '/model', '/model/seedance-2', '/model/kling-3', '/model/nano-banana-pro', '/model/nano-banana-2', '/model/gpt-image-2', '/model/gpt-image-2-0']
   const getLocalizedHref = (href: string): string => {
     if (href.startsWith('http')) return href
     if (LOCALE_LESS_PATHS.some(p => href === p || href.startsWith(p + '/'))) return href
@@ -571,6 +573,17 @@ export default function Navigation() {
                   <span>{navTranslations.photoRestoration || defaultNavTranslations.photoRestoration}</span>
                 </Link>
                 <Link
+                  href={getLocalizedHref('/ai-couple-photo-maker')}
+                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-3"
+                >
+                  <img
+                    src={AI_TOOLS_DEMO_IMAGES.aiCouplePhotoMaker}
+                    alt={navTranslations.aiCouplePhotoMaker || defaultNavTranslations.aiCouplePhotoMaker}
+                    className="w-10 h-10 rounded-lg object-cover border border-indigo-100 flex-shrink-0"
+                  />
+                  <span>{navTranslations.aiCouplePhotoMaker || defaultNavTranslations.aiCouplePhotoMaker}</span>
+                </Link>
+                <Link
                   href={getLocalizedHref('/ai-tools')}
                   onClick={() => {
                     if (typeof window !== 'undefined') {
@@ -808,6 +821,21 @@ export default function Navigation() {
                       className="w-10 h-10 rounded-lg object-cover border border-indigo-100 flex-shrink-0"
                     />
                     <span>{navTranslations.photoRestoration || defaultNavTranslations.photoRestoration}</span>
+                  </Link>
+                  <Link
+                    href={getLocalizedHref('/ai-couple-photo-maker')}
+                    onClick={() => {
+                      setMobileMenuOpen(false)
+                      setExpandedSubmenus(new Set())
+                    }}
+                    className="flex items-center gap-3 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
+                  >
+                    <img
+                      src={AI_TOOLS_DEMO_IMAGES.aiCouplePhotoMaker}
+                      alt={navTranslations.aiCouplePhotoMaker || defaultNavTranslations.aiCouplePhotoMaker}
+                      className="w-10 h-10 rounded-lg object-cover border border-indigo-100 flex-shrink-0"
+                    />
+                    <span>{navTranslations.aiCouplePhotoMaker || defaultNavTranslations.aiCouplePhotoMaker}</span>
                   </Link>
                   <Link
                     href={getLocalizedHref('/ai-tools')}

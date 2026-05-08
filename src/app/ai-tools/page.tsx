@@ -5,9 +5,9 @@ import Footer from '@/components/Footer'
 import Breadcrumb from '@/components/Breadcrumb'
 
 export const metadata: Metadata = {
-  title: 'AI Tools - Watermark Remover & Photo Restoration | Toolaze',
+  title: 'AI Tools - Watermark Remover, Photo Restoration & AI Couple Photo Maker | Toolaze',
   description:
-    'Explore Toolaze AI tools with visual previews. Use AI Watermark Remover and Photo Restoration online for free.',
+    'Explore Toolaze AI tools with visual previews. Use AI Watermark Remover, Photo Restoration, and AI Couple Photo Maker online for free.',
   robots: 'index, follow',
   alternates: {
     canonical: 'https://toolaze.com/ai-tools',
@@ -28,6 +28,12 @@ const AI_TOOL_CARDS = [
     image:
       'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80',
     description: 'Restore and colorize old photos with AI while improving detail.',
+  },
+  {
+    title: 'AI Couple Photo Maker',
+    href: '/ai-couple-photo-maker',
+    image: '/ai-couple-photo-maker/rainy-eiffel-4x3.jpg',
+    description: 'Upload one or two photos and generate romantic couple portraits with scene templates.',
   },
 ]
 
