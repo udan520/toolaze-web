@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import type { ReactNode } from 'react'
 import Script from 'next/script'
 import './globals.css'
@@ -22,7 +22,6 @@ export const metadata: Metadata = {
     shortcut: '/favicon.ico',
   },
   manifest: '/site.webmanifest',
-  themeColor: '#4F46E5',
   appleWebApp: {
     capable: true,
     statusBarStyle: 'default',
@@ -53,6 +52,10 @@ export const metadata: Metadata = {
     description: 'Compress images locally in your browser. No server uploads, 100% private, free AI tools for creators.',
     images: ['https://toolaze.com/web-app-manifest-512x512.png'],
   },
+}
+
+export const viewport: Viewport = {
+  themeColor: '#4F46E5',
 }
 
 export default function RootLayout({

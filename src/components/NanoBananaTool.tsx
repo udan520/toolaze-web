@@ -87,6 +87,7 @@ interface NanoBananaToolProps {
   modelId?: 'nano-banana-pro' | 'nano-banana-2' | 'gpt-image-2'
   modelName?: string
   dailyLimitStorageKey?: string
+  presetMode?: 'default' | 'ai-couple-photo-maker'
 }
 
 interface ModelOption {
@@ -94,13 +95,147 @@ interface ModelOption {
   name: string
 }
 
+const WRAPPED_IMAGE_PLAY_RATIO_OPTIONS = [
+  { value: 'auto', label: 'Auto' },
+  { value: '16:9', label: '16:9' },
+  { value: '9:16', label: '9:16' },
+  { value: '4:3', label: '4:3' },
+  { value: '3:4', label: '3:4' },
+  { value: '5:4', label: '5:4' },
+  { value: '4:5', label: '4:5' },
+  { value: '1:1', label: '1:1' },
+  { value: '21:9', label: '21:9' },
+] as const
+
+type CoupleTemplateCategory = 'style'
+
+interface CoupleTemplate {
+  id: string
+  title: string
+  prompt: string
+  category: CoupleTemplateCategory
+  image?: string
+}
+
+const NANO_BANANA_2_COUPLE_TEMPLATES: CoupleTemplate[] = [
+  {
+    id: 'rainy-eiffel',
+    title: 'Rainy Paris + Eiffel Tower',
+    category: 'style',
+    image: '/ai-couple-photo-maker/rainy-eiffel-4x3.jpg',
+    prompt:
+      'Medium frontal portrait of a couple standing side-by-side under a large transparent umbrella on a rainy Paris street, both facing the camera. Both subjects MUST match the facial features, identity, and appearance of the uploaded reference images, with no deviation. Both subjects are wearing coordinated elegant evening outfits with refined styling. They stand close together under the umbrella, subtle intimacy, joyful and confident expressions. Background: a rainy Paris street with the Eiffel Tower softly glowing in the misty distance. Wet pavement reflecting warm street lamps and city lights. Cinematic rain atmosphere with visible rain droplets on the transparent umbrella, soft diffusion from moisture in the air. Lighting: moody cinematic lighting with contrast between warm street lights and cool rainy tones. Extremely realistic skin texture, hyper-detailed, sharp focus, premium editorial photography. Lens: 50mm, shallow depth of field, subjects in sharp focus, background softly blurred. Color grading: rich, vibrant, high-end cinematic style.',
+  },
+  {
+    id: 'rooftop',
+    title: 'Rooftop Night',
+    category: 'style',
+    image: '/ai-couple-photo-maker/rooftop-4x3.jpg',
+    prompt:
+      'Medium frontal portrait of a stylish couple standing side-by-side at a rooftop bar at night, both facing the camera. Both subjects MUST match the facial features, identity, and appearance of the uploaded reference images, with no deviation. Both subjects are wearing modern upscale evening outfits suitable for a rooftop setting. They are each holding a champagne glass, standing close together with subtle intimacy, relaxed and confident expressions. Background: a high-end rooftop bar with a stunning city skyline at night, filled with glowing neon lights and soft bokeh. Glass railings and modern architectural elements subtly visible. Lighting: warm ambient lighting from the bar mixed with cool city light reflections, creating cinematic contrast and a modern luxury atmosphere. Extremely realistic skin texture, hyper-detailed, sharp focus, premium editorial lifestyle photography. Lens: 50mm, shallow depth of field, subjects in sharp focus, background smoothly blurred with rich bokeh. Color grading: high contrast, rich tones, modern luxury cinematic style.',
+  },
+  {
+    id: 'red-carpet',
+    title: 'Red Carpet Event',
+    category: 'style',
+    image: '/ai-couple-photo-maker/red-carpet-4x3.jpg',
+    prompt:
+      'Medium frontal portrait of a glamorous couple standing shoulder-to-shoulder on a red carpet, both facing the camera. Both subjects MUST match the facial features, identity, and appearance of the uploaded reference images, with no deviation. Both subjects are wearing premium red-carpet formal outfits with black and gold accents. They stand close together with confident and elegant posture, maintaining refined expressions and strong eye contact with the camera. Composition: centered and symmetrical framing, clean foreground with the couple as the clear focal point. Background: a red carpet event setting with a softly blurred crowd, subtle silhouettes, and controlled camera flash bokeh, ensuring no background figures are sharp or distracting. Lighting: cinematic, high-fashion lighting with soft key light on faces and subtle rim light separation, combined with gentle flash highlights for a premium editorial look. Extremely realistic skin texture, clean and sharp facial details, high resolution, premium fashion photography. Lens: 50mm, shallow depth of field, subjects in crisp focus, background smoothly blurred. Color grading: high contrast with rich blacks and luminous gold tones, modern luxury editorial style.',
+  },
+  {
+    id: 'candlelight-dinner',
+    title: 'Candlelight Dinner',
+    category: 'style',
+    image: '/ai-couple-photo-maker/candlelight-dinner-4x3.jpg',
+    prompt:
+      'Intimate frontal portrait of a couple seated at a candlelit dinner table in a sophisticated restaurant. Both subjects are looking and smiling at the camera, holding up fine red wine glasses for a toast. Their faces are softly illuminated by the warm, flickering orange glow of many candles on the table. Soft bokeh of a luxury dimly lit interior in the background. Dramatic shadows, deeply romantic atmosphere, hyper-realistic skin texture, elegant formal evening outfits.',
+  },
+  {
+    id: 'rose-wall',
+    title: 'Rose Wall',
+    category: 'style',
+    image: '/ai-couple-photo-maker/rose-wall-4x3.jpg',
+    prompt:
+      'Medium frontal portrait of a happily smiling couple standing side-by-side. One subject holds a luxurious bouquet of deep red roses with velvet ribbon, while the other leans naturally on their partner\'s shoulder, both looking confidently at the camera. Background is a lush, textured wall of red rose. Sunlight filtering through leaves (dappled light), extremely realistic skin texture, vibrant and rich colors, romantic high-end lifestyle photography.',
+  },
+  {
+    id: 'opera-formal',
+    title: 'Opera Formal',
+    category: 'style',
+    image: '/ai-couple-photo-maker/opera-formal-4x3.jpg',
+    prompt:
+      'Medium frontal portrait of a couple standing side-by-side on the grand staircase of an opulent opera house, both facing the camera. Both subjects MUST match the facial features, identity, and appearance of the uploaded reference images, with no deviation. Subject A has polished styling and is wearing a premium formal outfit. Subject B is wearing a shimmering formal outfit, with their arm elegantly linked with their partner. They stand centered on a plush red-carpeted staircase, with confident and joyful expressions, maintaining a poised and regal posture. Background: a luxurious opera house interior with gilded arches, a massive crystal chandelier overhead, and rich red velvet curtains. Architectural symmetry emphasized. Lighting: warm, golden cinematic lighting inspired by reference images, casting soft highlights on skin and fabric, with gentle falloff and dramatic shadows for depth. Extremely realistic skin texture, clean and detailed facial features, high sharpness, premium editorial photography. Lens: 50mm, shallow depth of field, subjects in sharp focus, background slightly softened while preserving grandeur. Color grading: rich gold and deep red tones, high contrast, cinematic luxury style.',
+  },
+  {
+    id: 'beach-outdoor',
+    title: 'Beach Outdoor',
+    category: 'style',
+    image: '/ai-couple-photo-maker/beach-outdoor-4x3.jpg',
+    prompt:
+      'Medium close-up frontal portrait of a couple, both facing the camera. Both subjects MUST match the facial features, identity, and appearance of the uploaded reference images, with no deviation. Subject B has neatly styled hair and is wearing an elegant white ceremonial outfit with refined details. Subject B leans gently toward Subject A with a joyful and relaxed expression. Subject A has polished styling and is wearing a tailored navy formal outfit with refined details. Both are smiling radiantly and confidently, maintaining natural intimacy and a relaxed posture. Composition: symmetrical, centered on their faces, filling the center third of the frame. Lighting: soft natural sunlight filtering through unseen palm leaves, creating dappled light patterns across their faces and shoulders, warm and organic highlights with gentle shadow contrast. Background: softly blurred lush palm foliage with subtle hints of ocean waves, creating a tropical, romantic atmosphere. Extremely realistic skin texture, clean and detailed facial features, high sharpness, premium lifestyle wedding photography. Lens: 50mm, shallow depth of field, subjects in crisp focus, background smoothly blurred. Color grading: warm, soft, inviting tones with a high-end editorial finish.',
+  },
+  {
+    id: 'garden-tea',
+    title: 'Garden Tea',
+    category: 'style',
+    image: '/ai-couple-photo-maker/garden-tea-4x3.jpg',
+    prompt:
+      'Medium frontal portrait of a couple sitting close together at an elegant outdoor tea table in a lush, sunlit garden, both facing the camera. Both subjects MUST match the facial features, identity, and appearance of the uploaded reference images, with no deviation. Both subjects are wearing coordinated elegant garden-party outfits. They are seated side-by-side, leaning slightly toward each other with relaxed posture, smiling warmly and confidently at the camera. Composition: centered and symmetrical framing, medium shot, with both faces clearly visible and unobstructed, table elements placed neatly in the foreground. Table details: a refined tea setting with delicate macarons, teacups, and tableware arranged neatly and not blocking the subjects. Lighting: soft natural sunlight filtering through leaves, creating controlled dappled light patterns across their faces, clothing, and table, with balanced highlights and gentle shadows. Background: a lush garden with greenery, flowers, and soft palm elements, smoothly blurred to create depth while maintaining a bright and airy atmosphere. Extremely realistic skin texture, clean facial details, high resolution, sharp focus, premium high-fashion lifestyle photography. Lens: 50mm, shallow depth of field, subjects in crisp focus, foreground and background softly blurred. Color grading: soft pastel tones with warm highlights, refined and elegant editorial finish.',
+  },
+  {
+    id: 'snow-ring',
+    title: 'Snow + Ring',
+    category: 'style',
+    image: '/ai-couple-photo-maker/snow-ring-4x3.jpg',
+    prompt:
+      'Medium frontal portrait of a couple standing close together in a romantic setting surrounded by abundant red rose arrangements, both facing the camera. Both subjects MUST match the facial features, identity, and appearance of the uploaded reference images, with no deviation. Subject A is holding a luxurious bouquet of deep red roses wrapped with a velvet ribbon, positioned slightly to the side and below chest level to keep both faces fully visible. Subject B gently leans toward Subject A, with a warm and elegant smile, showing natural intimacy. Both are looking directly at the camera with confident, joyful expressions. Composition: centered and symmetrical framing, medium close-up, with both subjects clearly visible and unobstructed. Environment: layered rose arrangements including foreground bouquets, mid-ground floral clusters, and soft background rose decor, creating depth instead of a flat wall. Background: softly blurred romantic floral setting with rich red tones, subtle greenery accents, and hints of a styled indoor or garden environment. Lighting: soft natural light combined with gentle warm highlights, creating a romantic glow with controlled dappled light and balanced shadows. Extremely realistic skin texture, clean facial details, high resolution, sharp focus, premium lifestyle photography. Lens: 50mm, shallow depth of field, subjects in crisp focus, foreground and background softly blurred for depth. Color grading: rich, controlled reds with warm cinematic tones, avoiding oversaturation while maintaining vibrancy, high-end editorial finish.',
+  },
+  {
+    id: 'cozy-home',
+    title: 'Cozy Home',
+    category: 'style',
+    image: '/ai-couple-photo-maker/cozy-home-4x3.jpg',
+    prompt:
+      'Medium frontal portrait of a couple in their early 30s seated closely together on a plush cream-colored sofa in a warm and cozy living room, both facing the camera. Both subjects MUST match the facial features, identity, and appearance of the uploaded reference images, with no deviation. Subject A is wearing a cozy knit outfit, with an arm gently around Subject B. Subject B is wearing a soft cream home outfit, snuggled closely with their head resting on Subject A\'s shoulder, holding a warm mug. Both are smiling naturally and warmly, with relaxed expressions and subtle intimacy. Composition: centered and balanced, medium close framing, the couple filling the central area with clean, symmetrical composition. Lighting: soft warm ambient lighting from a nearby fireplace combined with gentle diffused indoor light, creating natural highlights and soft shadow transitions across their faces. Background: a tastefully styled living room with softly blurred bookshelves, potted plants, textured walls, and a glowing fireplace, providing depth while keeping focus on the subjects. Extremely realistic skin texture, clean facial details, high resolution, sharp focus, premium lifestyle photography. Lens: 50mm, shallow depth of field, subjects in crisp focus, background smoothly blurred. Color grading: warm, soft, inviting tones with a refined high-end editorial finish.',
+  },
+  {
+    id: 'sunset-beach',
+    title: 'Sunset Beach',
+    category: 'style',
+    image: '/ai-couple-photo-maker/sunset-beach-4x3.jpg',
+    prompt:
+      'Medium frontal portrait of a couple standing side-by-side on a beach during sunset, both facing the camera. Both subjects MUST match the facial features of the uploaded reference images. Subject A is holding a bouquet of flowers, Subject B gently leaning toward Subject A. Both are smiling softly and confidently. Golden sunset light casting warm glow, soft rim light around their hair. Ocean waves and horizon visible in the background, sky filled with orange, pink, and purple tones. Wind slightly moving hair and clothes, romantic cinematic atmosphere. Extremely realistic skin texture, high detail, premium lifestyle photography, 50mm lens, shallow depth of field.',
+  },
+  {
+    id: 'mountain',
+    title: 'Mountain Peak',
+    category: 'style',
+    image: '/ai-couple-photo-maker/mountain-4x3.jpg',
+    prompt:
+      'Medium frontal portrait of a couple standing together on a mountain peak, both facing the camera. Both subjects MUST match the facial features of the uploaded reference images. They are wearing stylish outdoor clothing, standing close together with subtle physical interaction (hand on shoulder or holding hands). Background shows dramatic mountains, snow-covered peaks, and vast sky. Natural sunlight with cinematic contrast, slightly cool tone. Wind blowing slightly, giving dynamic motion to clothing and hair. Extremely realistic skin texture, sharp focus, cinematic outdoor photography, high-end editorial style.',
+  },
+  {
+    id: 'night-street',
+    title: 'Night Street',
+    category: 'style',
+    image: '/ai-couple-photo-maker/night-street-4x3.jpg',
+    prompt:
+      'Medium frontal portrait of a couple standing side-by-side in a city at night, both facing the camera. Both subjects MUST match the facial features of the uploaded reference images. City lights, neon signs, and blurred traffic lights in the background creating strong bokeh. Cool and cinematic lighting with contrast between warm and cool tones. The couple dressed in stylish urban outfits, confident expression, slight intimacy. Extremely realistic skin texture, sharp focus on subjects, background softly blurred, premium editorial photography.',
+  },
+]
+
+const COUPLE_IDENTITY_LOCK_INSTRUCTION =
+  'Identity lock (strict): Keep exactly the same two people from the uploaded references. Preserve each person\'s facial structure, hairstyle, skin tone, body shape, and gender presentation. Do not swap identities, do not add a third person, and do not introduce male traits (such as beard, mustache, or masculinized facial/jaw features) if they are not present in the references.'
+
 export default function NanoBananaTool({
   modelId = 'nano-banana-pro',
   modelName = 'Nano Banana Pro',
   dailyLimitStorageKey = 'nano_banana_last_used_date',
+  presetMode = 'default',
 }: NanoBananaToolProps = {}) {
   const router = useRouter()
   const pathname = usePathname()
+  const isNanoBanana2CoupleMode = presetMode === 'ai-couple-photo-maker'
   const modelConfig = MODEL_CONFIG[modelId]
   const modelOptions: ModelOption[] = [
     { id: 'nano-banana-pro', name: 'Nano Banana Pro' },
@@ -110,9 +245,13 @@ export default function NanoBananaTool({
   const [activeTab, setActiveTab] = useState<'image-to-image' | 'text-to-image'>('image-to-image')
   const [imageFiles, setImageFiles] = useState<ImageItem[]>([])
   const [prompt, setPrompt] = useState('')
-  const [aspectRatio, setAspectRatio] = useState<string>('auto')
-  const [resolution, setResolution] = useState<string>('1K')
-  const [outputFormat, setOutputFormat] = useState('Auto')
+  const [aspectRatio, setAspectRatio] = useState<string>(isNanoBanana2CoupleMode ? 'auto' : 'auto')
+  const [resolution, setResolution] = useState<string>(isNanoBanana2CoupleMode ? '1K' : '1K')
+  const [outputFormat, setOutputFormat] = useState(isNanoBanana2CoupleMode ? 'PNG' : 'Auto')
+  const [selectedTemplateId, setSelectedTemplateId] = useState<string>(() => {
+    const firstStyle = NANO_BANANA_2_COUPLE_TEMPLATES.find((item) => item.category === 'style')
+    return firstStyle?.id ?? ''
+  })
   const [isGenerating, setIsGenerating] = useState(false)
   const [rightMode, setRightMode] = useState<RightPanelMode>('sample')
   const [history, setHistory] = useState<HistoryItem[]>([])
@@ -120,6 +259,7 @@ export default function NanoBananaTool({
   const [previewImage, setPreviewImage] = useState<string | null>(null)
   const [downloadingUrl, setDownloadingUrl] = useState<string | null>(null)
   const [toasts, setToasts] = useState<Array<{ id: string; msg: string; type: string }>>([])
+  const [generatingSeconds, setGeneratingSeconds] = useState(0)
   const fileInputRef = useRef<HTMLInputElement>(null)
   const promptTextareaRef = useRef<HTMLTextAreaElement>(null)
 
@@ -139,6 +279,19 @@ export default function NanoBananaTool({
       }
     }
   }, [previewImage])
+
+  useEffect(() => {
+    if (!isGenerating) {
+      setGeneratingSeconds(0)
+      return
+    }
+    const startedAt = Date.now()
+    setGeneratingSeconds(0)
+    const timer = setInterval(() => {
+      setGeneratingSeconds(Math.max(0, Math.floor((Date.now() - startedAt) / 1000)))
+    }, 1000)
+    return () => clearInterval(timer)
+  }, [isGenerating])
 
   // 从 SEO 提示词案例板块一键带入 Prompt
   useEffect(() => {
@@ -170,8 +323,41 @@ export default function NanoBananaTool({
     }, 4000)
   }
 
-  const MAX_IMAGES = modelConfig.maxImages
+  const MAX_IMAGES = isNanoBanana2CoupleMode ? 2 : modelConfig.maxImages
   const MAX_FILE_SIZE = 30 * 1024 * 1024 // 30MB
+
+  const visibleTemplates = useMemo(
+    () => NANO_BANANA_2_COUPLE_TEMPLATES.filter((item) => item.category === 'style'),
+    []
+  )
+
+  const selectedTemplate = useMemo(
+    () => NANO_BANANA_2_COUPLE_TEMPLATES.find((item) => item.id === selectedTemplateId),
+    [selectedTemplateId]
+  )
+
+  const fallbackTemplateImage = useMemo(
+    () => NANO_BANANA_2_COUPLE_TEMPLATES.find((item) => item.image)?.image ?? null,
+    []
+  )
+
+  const selectedTemplateImage = selectedTemplate?.image || fallbackTemplateImage
+  const wrappedRatioOptions = useMemo(() => WRAPPED_IMAGE_PLAY_RATIO_OPTIONS, [])
+
+  useEffect(() => {
+    if (!isNanoBanana2CoupleMode) return
+    setActiveTab('image-to-image')
+    setAspectRatio('auto')
+    setResolution('1K')
+    setOutputFormat('PNG')
+  }, [isNanoBanana2CoupleMode])
+
+  useEffect(() => {
+    if (!isNanoBanana2CoupleMode || !selectedTemplateId) return
+    const selected = NANO_BANANA_2_COUPLE_TEMPLATES.find((item) => item.id === selectedTemplateId)
+    if (!selected) return
+    setPrompt(selected.prompt)
+  }, [isNanoBanana2CoupleMode, selectedTemplateId])
 
   const handleFiles = (files: FileList | File[]) => {
     const list = Array.isArray(files) ? files : Array.from(files)
@@ -229,6 +415,7 @@ export default function NanoBananaTool({
   }
 
   const checkDailyLimit = (): boolean => {
+    if (isNanoBanana2CoupleMode) return true
     const today = new Date().toISOString().split('T')[0]
     const lastUsed = typeof localStorage !== 'undefined' ? localStorage.getItem(dailyLimitStorageKey) : null
     if (lastUsed === today) {
@@ -239,6 +426,7 @@ export default function NanoBananaTool({
   }
 
   const recordDailyUsage = () => {
+    if (isNanoBanana2CoupleMode) return
     const today = new Date().toISOString().split('T')[0]
     try {
       localStorage.setItem(dailyLimitStorageKey, today)
@@ -253,8 +441,11 @@ export default function NanoBananaTool({
     setRightMode('generating')
     
     try {
+      const effectivePrompt = isNanoBanana2CoupleMode
+        ? `${prompt.trim()} ${COUPLE_IDENTITY_LOCK_INSTRUCTION}`
+        : prompt.trim()
       const formData = new FormData()
-      formData.append('prompt', prompt.trim())
+      formData.append('prompt', effectivePrompt)
       formData.append('aspectRatio', aspectRatio)
       formData.append('resolution', resolution)
       if (modelConfig.supportsOutputFormat) {
@@ -310,12 +501,23 @@ export default function NanoBananaTool({
         body: formData,
       })
 
+      const parseJsonSafely = async (res: Response): Promise<Record<string, any>> => {
+        const text = await res.text()
+        if (!text) return {}
+        try {
+          return JSON.parse(text) as Record<string, any>
+        } catch {
+          const snippet = text.slice(0, 120)
+          throw new Error(`Server returned non-JSON response: ${snippet}`)
+        }
+      }
+
       if (!generateResponse.ok) {
-        const errorData = await generateResponse.json()
+        const errorData = await parseJsonSafely(generateResponse)
         throw new Error(errorData.error || 'Failed to generate image')
       }
 
-      const generateResult = await generateResponse.json()
+      const generateResult = await parseJsonSafely(generateResponse)
       const taskId = generateResult.taskId
 
       if (!taskId) {
@@ -344,7 +546,7 @@ export default function NanoBananaTool({
             return newHistory
           })
           setCurrentResult(item)
-          setRightMode('result')
+          setRightMode(isNanoBanana2CoupleMode ? 'history' : 'result')
           setIsGenerating(false)
           recordDailyUsage()
           return
@@ -368,18 +570,35 @@ export default function NanoBananaTool({
         } catch (error: any) {
           const msg = error?.message || 'Network error'
           if (msg.includes('fetch') || msg.includes('Failed to fetch') || msg.includes('NetworkError')) {
-            throw new Error('Network connection failed. Please check your network connection and try again.')
+            attempts++
+            if (attempts >= maxAttempts) {
+              throw new Error('Network connection failed. Please check your network connection and try again.')
+            }
+            await new Promise((resolve) => setTimeout(resolve, pollInterval))
+            return pollStatus()
           }
           throw new Error(`Request failed: ${msg}`)
         }
 
         if (!statusResponse.ok) {
-          const errBody = await statusResponse.json().catch(() => ({}))
+          const errBody = await parseJsonSafely(statusResponse).catch(() => ({}))
           const errMsg = (errBody as { error?: string })?.error || `Failed to check status (${statusResponse.status})`
+          const transientError =
+            statusResponse.status >= 500 ||
+            errMsg.includes('fetch failed') ||
+            errMsg.includes('recordInfo is null')
+          if (transientError) {
+            attempts++
+            if (attempts >= maxAttempts) {
+              throw new Error('Generation service is temporarily unstable. Please try again in a moment.')
+            }
+            await new Promise((resolve) => setTimeout(resolve, pollInterval))
+            return pollStatus()
+          }
           throw new Error(errMsg)
         }
 
-        const statusResult = await statusResponse.json()
+        const statusResult = await parseJsonSafely(statusResponse)
 
         if (statusResult.status === 'SUCCEEDED' && statusResult.imageUrl) {
           return statusResult.imageUrl
@@ -411,7 +630,7 @@ export default function NanoBananaTool({
             body: JSON.stringify({ imageUrl: outputUrl }),
           })
           if (saveRes.ok) {
-            const data = await saveRes.json()
+            const data = await parseJsonSafely(saveRes)
             if ((data as { url?: string }).url) {
               finalUrl = (data as { url: string }).url
             }
@@ -443,7 +662,7 @@ export default function NanoBananaTool({
           return newHistory
         })
         setCurrentResult(item)
-        setRightMode('result')
+        setRightMode(isNanoBanana2CoupleMode ? 'history' : 'result')
         recordDailyUsage()
       }
     } catch (error: any) {
@@ -585,60 +804,64 @@ export default function NanoBananaTool({
         <div className="w-full md:w-[380px] flex-shrink-0 flex flex-col rounded-2xl border border-[#E0E7FF] bg-white shadow-lg shadow-[#4F46E5]/8 overflow-hidden">
           <div className="p-2 md:p-6 space-y-4 md:space-y-5 md:flex-1 md:min-h-0 md:overflow-y-auto">
             {/* Tabs */}
-            <div className="flex rounded-xl bg-[#EEF2FF] p-1">
-              <button
-                type="button"
-                onClick={() => setActiveTab('image-to-image')}
-                className={`flex-1 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200 ${
-                  activeTab === 'image-to-image'
-                    ? 'bg-white text-[#4F46E5] shadow-sm'
-                    : 'text-slate-500 hover:text-slate-700'
-                }`}
-              >
-                Image to Image
-              </button>
-              <button
-                type="button"
-                onClick={() => setActiveTab('text-to-image')}
-                className={`flex-1 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200 ${
-                  activeTab === 'text-to-image'
-                    ? 'bg-white text-[#4F46E5] shadow-sm'
-                    : 'text-slate-500 hover:text-slate-700'
-                }`}
-              >
-                Text to Image
-              </button>
-            </div>
+            {!isNanoBanana2CoupleMode && (
+              <div className="flex rounded-xl bg-[#EEF2FF] p-1">
+                <button
+                  type="button"
+                  onClick={() => setActiveTab('image-to-image')}
+                  className={`flex-1 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200 ${
+                    activeTab === 'image-to-image'
+                      ? 'bg-white text-[#4F46E5] shadow-sm'
+                      : 'text-slate-500 hover:text-slate-700'
+                  }`}
+                >
+                  Image to Image
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setActiveTab('text-to-image')}
+                  className={`flex-1 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200 ${
+                    activeTab === 'text-to-image'
+                      ? 'bg-white text-[#4F46E5] shadow-sm'
+                      : 'text-slate-500 hover:text-slate-700'
+                  }`}
+                >
+                  Text to Image
+                </button>
+              </div>
+            )}
 
             {/* Models */}
-            <div>
-              <label className="block text-xs font-semibold text-slate-500 tracking-wide mb-2">Models</label>
-              <div className="relative">
-                <select
-                  value={modelId}
-                  onChange={(e) => handleModelChange(e.target.value as ModelOption['id'])}
-                  className="w-full px-4 py-2.5 pr-10 rounded-xl border border-[#E0E7FF] bg-[#EEF2FF]/30 text-slate-800 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/40 focus:border-[#4F46E5] hover:border-[#C7D2FE] hover:bg-[#EEF2FF]/50 transition-all duration-200 appearance-none cursor-pointer shadow-sm"
-                >
-                  {modelOptions.map((option) => (
-                    <option key={option.id} value={option.id}>
-                      {option.name}
-                    </option>
-                  ))}
-                </select>
-                <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#4F46E5]">
-                    <polyline points="6 9 12 15 18 9" />
-                  </svg>
+            {!isNanoBanana2CoupleMode && (
+              <div>
+                <label className="block text-xs font-semibold text-slate-500 tracking-wide mb-2">Models</label>
+                <div className="relative">
+                  <select
+                    value={modelId}
+                    onChange={(e) => handleModelChange(e.target.value as ModelOption['id'])}
+                    className="w-full px-4 py-2.5 pr-10 rounded-xl border border-[#E0E7FF] bg-[#EEF2FF]/30 text-slate-800 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/40 focus:border-[#4F46E5] hover:border-[#C7D2FE] hover:bg-[#EEF2FF]/50 transition-all duration-200 appearance-none cursor-pointer shadow-sm"
+                  >
+                    {modelOptions.map((option) => (
+                      <option key={option.id} value={option.id}>
+                        {option.name}
+                      </option>
+                    ))}
+                  </select>
+                  <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#4F46E5]">
+                      <polyline points="6 9 12 15 18 9" />
+                    </svg>
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
 
             {/* Image Upload (Image to Image) - 小正方形一排三个 */}
             {activeTab === 'image-to-image' && (
               <div>
                 <div className="flex items-center justify-between mb-2">
                   <label className="text-xs font-semibold text-slate-500 tracking-wide">
-                    Upload Your Image
+                    Upload up to 2 images
                   </label>
                   {imageFiles.length > 0 && (
                     <span className="text-xs font-medium text-slate-400">{imageFiles.length}/{MAX_IMAGES}</span>
@@ -739,71 +962,124 @@ export default function NanoBananaTool({
               </div>
             )}
 
+            {isNanoBanana2CoupleMode && (
+              <div className="flex flex-col flex-1 min-h-0">
+                <label className="block text-xs font-semibold text-slate-500 tracking-wide mb-2">Style Templates</label>
+                <div className="grid grid-cols-3 gap-[8px] flex-1 min-h-0 overflow-y-auto pb-[8px]">
+                  {visibleTemplates.map((tpl) => (
+                    <div
+                      key={tpl.id}
+                      onClick={() => setSelectedTemplateId(tpl.id)}
+                      className={`p-0 bg-transparent cursor-pointer rounded-lg overflow-hidden ${
+                        selectedTemplateId === tpl.id ? 'ring-2 ring-[#6D28D9]' : 'ring-1 ring-slate-200/60'
+                      }`}
+                      title={tpl.title}
+                    >
+                      <div className="w-full aspect-[3/4] bg-[#EEF2FF] flex items-center justify-center text-[11px] font-semibold text-slate-500 overflow-hidden">
+                        {tpl.image ? (
+                          <img src={`${tpl.image}?v=20260508`} alt={tpl.title} className="h-full w-full object-cover" />
+                        ) : (
+                          'Preview Soon'
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-2">
+                  <label className="block text-xs font-semibold text-slate-500 tracking-wide mb-2">Aspect Ratios</label>
+                  <div className="relative">
+                    <select
+                      value={aspectRatio}
+                      onChange={(e) => setAspectRatio(e.target.value)}
+                      className="w-full px-4 py-2.5 pr-10 rounded-xl border border-[#E0E7FF] bg-[#EEF2FF]/30 text-slate-800 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/40 focus:border-[#4F46E5] hover:border-[#C7D2FE] hover:bg-[#EEF2FF]/50 transition-all duration-200 appearance-none cursor-pointer shadow-sm"
+                    >
+                      {wrappedRatioOptions.map((ar) => (
+                        <option key={ar.value} value={ar.value}>
+                          {ar.label}
+                        </option>
+                      ))}
+                    </select>
+                    <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#4F46E5]">
+                        <polyline points="6 9 12 15 18 9" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
             {/* Prompt */}
-            <div>
-              <label className="block text-xs font-semibold text-slate-500 tracking-wide mb-2">Prompt</label>
-              <textarea
-                ref={promptTextareaRef}
-                value={prompt}
-                onChange={(e) => setPrompt(e.target.value)}
-                placeholder="Please describe the image content"
-                className="w-full min-h-[88px] px-4 py-3 rounded-xl border border-slate-200/90 bg-slate-50/50 text-slate-800 placeholder:text-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/40 focus:border-[#4F46E5] resize-none transition-colors"
-                rows={3}
-              />
-            </div>
+            {!isNanoBanana2CoupleMode && (
+              <div>
+                <label className="block text-xs font-semibold text-slate-500 tracking-wide mb-2">Prompt</label>
+                <textarea
+                  ref={promptTextareaRef}
+                  value={prompt}
+                  onChange={(e) => setPrompt(e.target.value)}
+                  placeholder="Please describe the image content"
+                  className="w-full min-h-[88px] px-4 py-3 rounded-xl border border-slate-200/90 bg-slate-50/50 text-slate-800 placeholder:text-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/40 focus:border-[#4F46E5] resize-none transition-colors"
+                  rows={3}
+                />
+              </div>
+            )}
 
             {/* Output Aspect Ratios */}
-            <div>
-              <label className="block text-xs font-semibold text-slate-500 tracking-wide mb-2">Output Aspect Ratios</label>
-              <div className="relative">
-                <select
-                  value={aspectRatio}
-                  onChange={(e) => setAspectRatio(e.target.value)}
-                  className="w-full px-4 py-2.5 pr-10 rounded-xl border border-[#E0E7FF] bg-[#EEF2FF]/30 text-slate-800 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/40 focus:border-[#4F46E5] hover:border-[#C7D2FE] hover:bg-[#EEF2FF]/50 transition-all duration-200 appearance-none cursor-pointer shadow-sm"
-                >
-                  {modelConfig.aspectRatios.map((ar) => (
-                    <option key={ar.value} value={ar.value}>
-                      {ar.label}
-                    </option>
-                  ))}
-                </select>
-                <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#4F46E5]">
-                    <polyline points="6 9 12 15 18 9" />
-                  </svg>
+            {!isNanoBanana2CoupleMode && (
+              <div>
+                <label className="block text-xs font-semibold text-slate-500 tracking-wide mb-2">Output Aspect Ratios</label>
+                <div className="relative">
+                  <select
+                    value={aspectRatio}
+                    onChange={(e) => setAspectRatio(e.target.value)}
+                    className="w-full px-4 py-2.5 pr-10 rounded-xl border border-[#E0E7FF] bg-[#EEF2FF]/30 text-slate-800 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/40 focus:border-[#4F46E5] hover:border-[#C7D2FE] hover:bg-[#EEF2FF]/50 transition-all duration-200 appearance-none cursor-pointer shadow-sm"
+                  >
+                    {modelConfig.aspectRatios.map((ar) => (
+                      <option key={ar.value} value={ar.value}>
+                        {ar.label}
+                      </option>
+                    ))}
+                  </select>
+                  <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#4F46E5]">
+                      <polyline points="6 9 12 15 18 9" />
+                    </svg>
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
 
             {/* Resolution */}
-            <div>
-              <label className="block text-xs font-semibold text-slate-500 tracking-wide mb-2">Resolution</label>
-              <div className="relative">
-                <select
-                  value={resolution}
-                  onChange={(e) => setResolution(e.target.value)}
-                  className="w-full px-4 py-2.5 pr-10 rounded-xl border border-[#E0E7FF] bg-[#EEF2FF]/30 text-slate-800 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/40 focus:border-[#4F46E5] hover:border-[#C7D2FE] hover:bg-[#EEF2FF]/50 transition-all duration-200 appearance-none cursor-pointer shadow-sm"
-                >
-                  <option value="1K">1K</option>
-                  <option value="2K" disabled={!modelConfig.supportsHighResolution}>
-                    {modelConfig.supportsHighResolution ? '2K' : '2K (Temporarily unavailable)'}
-                  </option>
-                  <option value="4K" disabled={!modelConfig.supportsHighResolution}>
-                    {modelConfig.supportsHighResolution ? '4K' : '4K (Temporarily unavailable)'}
-                  </option>
-                </select>
-                <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#4F46E5]">
-                    <polyline points="6 9 12 15 18 9" />
-                  </svg>
+            {!isNanoBanana2CoupleMode && (
+              <div>
+                <label className="block text-xs font-semibold text-slate-500 tracking-wide mb-2">Resolution</label>
+                <div className="relative">
+                  <select
+                    value={resolution}
+                    onChange={(e) => setResolution(e.target.value)}
+                    className="w-full px-4 py-2.5 pr-10 rounded-xl border border-[#E0E7FF] bg-[#EEF2FF]/30 text-slate-800 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/40 focus:border-[#4F46E5] hover:border-[#C7D2FE] hover:bg-[#EEF2FF]/50 transition-all duration-200 appearance-none cursor-pointer shadow-sm"
+                  >
+                    <option value="1K">1K</option>
+                    <option value="2K" disabled={!modelConfig.supportsHighResolution}>
+                      {modelConfig.supportsHighResolution ? '2K' : '2K (Temporarily unavailable)'}
+                    </option>
+                    <option value="4K" disabled={!modelConfig.supportsHighResolution}>
+                      {modelConfig.supportsHighResolution ? '4K' : '4K (Temporarily unavailable)'}
+                    </option>
+                  </select>
+                  <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#4F46E5]">
+                      <polyline points="6 9 12 15 18 9" />
+                    </svg>
+                  </div>
                 </div>
+                {!modelConfig.supportsHighResolution && (
+                  <p className="text-xs text-slate-400 mt-1.5">2K and 4K are temporarily unavailable.</p>
+                )}
               </div>
-              {!modelConfig.supportsHighResolution && (
-                <p className="text-xs text-slate-400 mt-1.5">2K and 4K are temporarily unavailable.</p>
-              )}
-            </div>
+            )}
 
-            {modelConfig.supportsOutputFormat && (
+            {modelConfig.supportsOutputFormat && !isNanoBanana2CoupleMode && (
               <div>
                 <label className="block text-xs font-semibold text-slate-500 tracking-wide mb-2">Output Format</label>
                 <div className="relative">
@@ -824,6 +1100,7 @@ export default function NanoBananaTool({
                 </div>
               </div>
             )}
+
           </div>
 
           {/* Generate 固定底部，始终在第一屏 */}
@@ -840,7 +1117,7 @@ export default function NanoBananaTool({
                     : 'linear-gradient(135deg, #4F46E5 0%, #9333EA 100%)',
                 }}
               >
-                {isGenerating ? 'Generating...' : 'Generate'}
+                {isGenerating ? `Generating... ${generatingSeconds}s` : 'Generate'}
               </button>
             </div>
           </div>
@@ -856,10 +1133,10 @@ export default function NanoBananaTool({
                 <div className="w-3 h-3 rounded-full bg-[#4F46E5] animate-pulse" style={{ animationDelay: '0.4s' }} />
                 <div className="w-3 h-3 rounded-full bg-[#4F46E5] animate-pulse" style={{ animationDelay: '0.6s' }} />
               </div>
-              <p className="text-slate-500 font-medium text-sm">Generating...</p>
+              <p className="text-slate-500 font-medium text-sm">{`Generating... ${generatingSeconds}s`}</p>
             </div>
           </div>
-        ) : currentResult && rightMode === 'result' ? (
+        ) : currentResult && (rightMode === 'result' || isNanoBanana2CoupleMode) ? (
           <div className="flex-1 min-w-0 min-h-[400px] md:min-h-0 bg-white rounded-2xl border border-[#E0E7FF] shadow-lg shadow-[#4F46E5]/8 flex flex-col items-center justify-center p-2 md:p-8 relative z-10">
             <img 
               src={currentResult.outputPreview} 
@@ -870,14 +1147,26 @@ export default function NanoBananaTool({
             <p className="mt-4 text-xs text-slate-500 text-center">
               The image will disappear after you refresh the page. Please download it as soon as possible.
             </p>
+            {isNanoBanana2CoupleMode && (
+              <div className="mt-4">
+                <button
+                  type="button"
+                  onClick={() => handleDownload(currentResult.outputPreview, `generated-${currentResult.id}.png`)}
+                  disabled={downloadingUrl === currentResult.outputPreview}
+                  className="px-6 py-2.5 rounded-xl border border-[#C7D2FE] text-[#4F46E5] hover:bg-[#EEF2FF] transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+                >
+                  {downloadingUrl === currentResult.outputPreview ? 'Downloading...' : 'Download'}
+                </button>
+              </div>
+            )}
           </div>
         ) : null}
 
         {/* Right: 功能示例图 / 生成中 / 历史记录 / 结果详情 */}
-        {!isGenerating && (
-          <div className={`${rightMode === 'result' ? 'w-full md:w-[400px]' : 'flex-1'} min-w-0 bg-white rounded-2xl border border-[#E0E7FF] shadow-lg shadow-[#4F46E5]/8 flex flex-col relative overflow-hidden`}>
+        {!isGenerating && !isNanoBanana2CoupleMode && (
+          <div className={`${rightMode === 'result' ? 'w-full md:w-[400px]' : 'flex-1'} min-w-0 bg-white ${isNanoBanana2CoupleMode ? 'rounded-none' : 'rounded-2xl'} border border-[#E0E7FF] shadow-lg shadow-[#4F46E5]/8 flex flex-col relative overflow-hidden`}>
           {/* Tabs for right panel when history exists */}
-          {(history.length > 0 || isGenerating) && !isGenerating && rightMode !== 'result' && (
+          {(history.length > 0 || isGenerating) && !isGenerating && rightMode !== 'result' && !isNanoBanana2CoupleMode && (
             <div className="flex border-b border-[#E0E7FF] px-5 pt-4 gap-1 flex-shrink-0">
               <button
                 type="button"
@@ -905,20 +1194,34 @@ export default function NanoBananaTool({
               <>
                 <h3 className="text-slate-700 font-semibold text-base uppercase tracking-wider mb-8">Sample image</h3>
                 <div className="w-full flex-1 flex justify-center items-center min-h-0">
-                  <div className="w-full h-full rounded-2xl overflow-hidden ring-1 ring-slate-200/50 shadow-inner flex items-center justify-center p-2">
-                    <SiteImage
-                      src={sampleImage.url}
-                      autoAlt={true}
-                      width={800}
-                      height={600}
-                      className="w-full h-full"
-                      style={{
-                        objectFit: 'contain',
-                        width: '100%',
-                        height: '100%'
-                      }}
-                    />
-                  </div>
+                  {isNanoBanana2CoupleMode ? (
+                    selectedTemplateImage ? (
+                      <img
+                        src={`${selectedTemplateImage}?v=20260508`}
+                        alt={selectedTemplate?.title || 'Sample image'}
+                        className="w-full h-full rounded-xl object-contain ring-1 ring-slate-200/50"
+                      />
+                    ) : (
+                      <div className="w-full h-full rounded-xl ring-1 ring-slate-200/50 bg-white flex items-center justify-center text-sm text-slate-500">
+                        No demo image yet
+                      </div>
+                    )
+                  ) : (
+                    <div className="w-full h-full rounded-2xl overflow-hidden ring-1 ring-slate-200/50 shadow-inner flex items-center justify-center p-2">
+                      <SiteImage
+                        src={sampleImage.url}
+                        autoAlt={true}
+                        width={800}
+                        height={600}
+                        className="w-full h-full"
+                        style={{
+                          objectFit: 'contain',
+                          width: '100%',
+                          height: '100%'
+                        }}
+                      />
+                    </div>
+                  )}
                 </div>
               </>
             )}
@@ -926,11 +1229,11 @@ export default function NanoBananaTool({
             {rightMode === 'generating' && !isGenerating && (
               <div className="flex flex-col items-center justify-center gap-8">
                 <div className="w-16 h-16 rounded-full border-4 border-[#EEF2FF] border-t-[#4F46E5] animate-spin" />
-                <p className="text-slate-500 font-medium text-sm uppercase tracking-wider">Generating...</p>
+                <p className="text-slate-500 font-medium text-sm uppercase tracking-wider">{`Generating... ${generatingSeconds}s`}</p>
               </div>
             )}
 
-            {rightMode === 'result' && currentResult && (
+            {rightMode === 'result' && currentResult && !isNanoBanana2CoupleMode && (
               <div className="w-full space-y-6">
                 {/* Output Prompt */}
                 <div>
@@ -1062,7 +1365,40 @@ export default function NanoBananaTool({
               </div>
             )}
 
-            {rightMode === 'history' && (
+            {rightMode === 'history' && isNanoBanana2CoupleMode && (
+              <div className="w-full max-w-[300px] mx-auto space-y-4">
+                <h3 className="text-slate-700 font-semibold text-base uppercase tracking-wider">History</h3>
+                {history.length > 0 ? (
+                  <div className="grid grid-cols-2 gap-3">
+                    {history.map((item) => (
+                      <button
+                        key={item.id}
+                        type="button"
+                        onClick={() => {
+                          setCurrentResult(item)
+                          setRightMode('history')
+                        }}
+                        className={`relative rounded-xl overflow-hidden border transition-colors ${
+                          currentResult?.id === item.id
+                            ? 'border-[#6D28D9] ring-2 ring-[#DDD6FE]'
+                            : 'border-[#E0E7FF] hover:border-[#C7D2FE]'
+                        }`}
+                      >
+                        <img
+                          src={item.outputPreview}
+                          alt="History result"
+                          className="w-full aspect-[4/3] object-cover"
+                        />
+                      </button>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="text-slate-500 text-sm">No history yet. Generate an image to see it here.</p>
+                )}
+              </div>
+            )}
+
+            {rightMode === 'history' && !isNanoBanana2CoupleMode && (
               <div className="w-full space-y-6">
                 <h3 className="text-slate-700 font-semibold text-base uppercase tracking-wider mb-6">History</h3>
                 {/* Generating Status at Top */}
@@ -1075,7 +1411,7 @@ export default function NanoBananaTool({
                         <div className="w-3 h-3 rounded-full bg-[#4F46E5] animate-pulse" style={{ animationDelay: '0.4s' }} />
                         <div className="w-3 h-3 rounded-full bg-[#4F46E5] animate-pulse" style={{ animationDelay: '0.6s' }} />
                       </div>
-                      <p className="text-slate-500 font-medium text-sm">Generating...</p>
+                      <p className="text-slate-500 font-medium text-sm">{`Generating... ${generatingSeconds}s`}</p>
                     </div>
                   </div>
                 )}
@@ -1241,7 +1577,7 @@ export default function NanoBananaTool({
                       <div className="w-3 h-3 rounded-full bg-[#4F46E5] animate-pulse" style={{ animationDelay: '0.4s' }} />
                       <div className="w-3 h-3 rounded-full bg-[#4F46E5] animate-pulse" style={{ animationDelay: '0.6s' }} />
                     </div>
-                    <p className="text-slate-500 font-medium text-sm">Generating...</p>
+                    <p className="text-slate-500 font-medium text-sm">{`Generating... ${generatingSeconds}s`}</p>
                   </div>
                 </div>
               </div>

@@ -74,6 +74,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     changeFrequency: 'weekly',
     priority: 0.9,
   })
+  entries.push({
+    url: `${baseUrl}/ai-couple-photo-maker`,
+    lastModified: today,
+    changeFrequency: 'weekly',
+    priority: 0.9,
+  })
 
   // 4. Model 页面（AI 图像模型，仅英文）
   const MODEL_PAGES = ['nano-banana-pro', 'nano-banana-2', 'gpt-image-2-0']

@@ -169,4 +169,46 @@ See 'docs/SEO_MASTER_LAYOUT.md' section 3 for the exact breadcrumb structure.
 - **Before git commit**: Always review sitemap logic matches current tool and language support before committing
 - **New-page-only policy**: For each newly added page, update sitemap with only the new page URLs required for that change. Do not broaden sitemap scope or modify unrelated existing sitemap entries in the same commit.
 
+**CLOUDFLARE BUILD-SAFETY RULE**: MANDATORY - Prevent TypeScript build failures in Cloudflare Pages:
+- **Safe translation key access**: In `Navigation` / `Footer` / `Breadcrumb` and other i18n-heavy components, do NOT directly access newly added dynamic keys on loosely typed objects (e.g. `navData.newKey`). Use safe access helpers (`Record<string, unknown>` + type guards) or explicit typing first.
+- **Before push/deploy**: ALWAYS run `npm run build` locally after adding new nav/footer/breadcrumb translation keys or new menu entries.
+- **Deploy gate**: If local `npm run build` fails, DO NOT push deployment commits until fixed.
+- **Goal**: Avoid Cloudflare Pages failures like "Property 'xxx' does not exist on type ...".
+
 **API 生图限频规则**: 所有调用 API 进行生图的功能（如 Nano Banana Pro、Watermark Remover、Flux Dev 等），每个用户每天只能使用一次。限频由前端记录（如 localStorage）实现，无需后端校验。
+
+**落地页生图交互统一规则（强制）**:
+- **A 类：模型生图页（Model Pages）**（如 Nano Banana 系列）：
+  - 首次进入：左侧为功能区，右侧为大示例图。
+  - 点击生成后：右侧大示例图切换为历史记录视图（可包含提示词、模型参数、历史结果等）。
+- **B 类：包装玩法页（Wrapped Gameplay Pages）**（如 Photo Restoration、AI Couple Photo Maker）：
+  - 首次进入：左侧为功能区，右侧为大示例图。
+  - 点击生成后：在右侧大示例图区域内覆盖显示生成中状态（Generating），流程与 Photo Restoration 一致。
+  - 生成完成后：右侧大示例图区直接展示结果图。
+  - 结果图下方仅展示居中下载按钮，不展示提示词、模型参数、分辨率等信息。
+- **模板选择行为**（适用于玩法页）：
+  - 左侧模板应有默认选中态（默认第一个）。
+  - 切换模板时更新当前生图提示词。
+  - 点击 Generate 必须使用当前选中模板对应提示词生成。
+- **Generating 时长显示（全站强制）**：
+  - 所有生图功能在生成中必须展示“生成时长 xxs”。
+  - 时长需动态递增（秒级更新），从发起生成开始计时，到成功/失败结束计时。
+- **测试环境限频例外**：
+  - 测试服/测试落地页不启用“每日一次”限制。
+  - 生产环境仍按限频规则执行。
+
+**比例选择统一规则（强制）**:
+- **包装玩法页（Wrapped Gameplay Pages）**（如 AI Couple Photo Maker、Photo Restoration、后续同类玩法）：
+  - 比例选择仅保留以下固定集合，顺序固定：
+    - `Auto`（默认）
+    - `16:9`
+    - `9:16`
+    - `4:3`
+    - `3:4`
+    - `5:4`
+    - `4:5`
+    - `1:1`
+    - `21:9`
+- **模型落地页（Model Pages）**：
+  - 比例选项必须以 API/模型实际支持能力为准，不强制使用玩法页固定集合。
+  - 若模型支持列表变更，优先同步模型页配置，不影响玩法页固定集合。

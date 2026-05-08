@@ -6,5 +6,14 @@ export function getImageUploadUrl(): string {
   const url = typeof process.env.NEXT_PUBLIC_IMAGE_UPLOAD_URL === 'string'
     ? process.env.NEXT_PUBLIC_IMAGE_UPLOAD_URL.trim()
     : ''
-  return url || '/api/upload'
+  if (url.startsWith('http://') || url.startsWith('https://') || url.startsWith('/')) {
+    return url
+  }
+
+  // Local dev fallback: Pages Function endpoint is verified and CORS-enabled.
+  if (typeof window !== 'undefined' && window.location.hostname === 'localhost') {
+    return 'https://toolaze-web.pages.dev/api/upload'
+  }
+
+  return '/api/upload'
 }
