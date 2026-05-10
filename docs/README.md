@@ -12,6 +12,7 @@ docs/
 ├── FEATURE_SPECIFICATIONS.md    # 功能规格索引（指向 specs/）
 │
 ├── SEO 核心规范（必读）
+│   ├── LANDING_PAGE_SEO_PIPELINE.md # 新落地页接入 SEO 后台流程（与 data/en JSON）
 │   ├── SEO_CONTENT_GUIDELINES.md    # 内容编写规范（索引，指向 sections/ 与 keywords/）
 │   ├── SEO_MASTER_LAYOUT.md         # 布局与设计系统（导航、Footer、样式）
 │   ├── TRANSLATION_STRUCTURE_GUIDE.md  # JSON 结构与翻译规范
@@ -43,6 +44,7 @@ docs/
 │
 └── 其他
     ├── ADMIN_SEO.md            # 管理后台使用说明
+    ├── LANGUAGE_SWITCH_AND_REDIRECT.md  # 导航/页脚语言入口与缺语种→英语重定向
     ├── MODEL_INTRO_BLOCK.md    # Model Intro 板块规范
     └── SITEMAP_UPDATE_GUIDE.md # Sitemap 更新指南
 ```

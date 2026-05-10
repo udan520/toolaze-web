@@ -1,9 +1,16 @@
 'use client'
 
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { getAllSlugs, getSeoContent } from '@/lib/seo-loader'
+import {
+  SITE_LOCALES,
+  getAlternateLanguageUrl,
+  getCurrentLocaleFromPath,
+  getSupportedLocaleCodes,
+  shouldShowLanguageSwitcher,
+} from '@/lib/site-language-switch'
 
 // 翻译数据(默认英语)
 const defaultTranslations = {
@@ -103,18 +110,6 @@ async function loadTranslations(locale: string) {
   }
 }
 
-const locales = [
-  { code: 'en', name: 'English', countryCode: 'US', flag: '🇺🇸' },
-  { code: 'de', name: 'Deutsch', countryCode: 'DE', flag: '🇩🇪' },
-  { code: 'ja', name: '日本語', countryCode: 'JP', flag: '🇯🇵' },
-  { code: 'es', name: 'Español', countryCode: 'ES', flag: '🇪🇸' },
-  { code: 'zh-TW', name: '中文(繁體)', countryCode: 'CN', flag: '🇨🇳' },
-  { code: 'pt', name: 'Português', countryCode: 'PT', flag: '🇵🇹' },
-  { code: 'fr', name: 'Français', countryCode: 'FR', flag: '🇫🇷' },
-  { code: 'ko', name: '한국어', countryCode: 'KR', flag: '🇰🇷' },
-  { code: 'it', name: 'Italiano', countryCode: 'IT', flag: '🇮🇹' },
-]
-
 // 格式化工具标题
 function extractPageTitle(h1: string): string {
   if (!h1) return ''
@@ -152,14 +147,7 @@ export default function Footer() {
     // Update year after hydration to ensure it's current
     setCurrentYear(new Date().getFullYear())
     
-    // Extract locale from pathname
-    // English is default and doesn't show /en in URL
-    const pathParts = pathname?.split('/').filter(Boolean) || []
-    const firstPart = pathParts[0] || ''
-    
-    // Check if first part is a locale code
-    const localeFromPath = locales.find(loc => loc.code === firstPart)
-    const detectedLocale = localeFromPath ? localeFromPath.code : 'en'
+    const detectedLocale = getCurrentLocaleFromPath(pathname ?? '')
     setCurrentLocale(detectedLocale)
     
     // Load translations
@@ -344,142 +332,15 @@ export default function Footer() {
     }
   }, [currentLocale, pathname, isMounted])
 
-  // 检查页面是否支持多语言
-  // 如果路径的第一部分是 locale 代码，或者路径包含支持多语言的工具，则支持多语言
-  const hasMultilingualSupport = (): boolean => {
-    if (!pathname) return false
-    const pathParts = pathname.split('/').filter(Boolean)
-    if (pathParts.length === 0) return false
-    const firstPart = pathParts[0]
-    
-    // 如果路径的第一部分是 locale 代码，则支持多语言
-    if (locales.some(loc => loc.code === firstPart)) {
-      return true
-    }
-    
-    // 仅当工具实际有多语言版本时才显示语言切换（emoji 仅英文，不显示）
-    const multilingualTools = ['image-compressor', 'image-converter', 'font-generator']
-    if (multilingualTools.some(tool => pathname.includes(`/${tool}`))) {
-      return true
-    }
-    
-    return false
-  }
+  const supportedLocales = useMemo(() => {
+    const codes = getSupportedLocaleCodes(pathname ?? null)
+    return SITE_LOCALES.filter((l) => codes.includes(l.code))
+  }, [pathname])
 
-  const showLanguageSwitcher = hasMultilingualSupport()
+  const showLanguageSwitcher = shouldShowLanguageSwitcher(pathname ?? null)
 
-  // Generate alternate language URLs
-  const getAlternateLanguageUrl = (targetLocale: string): string => {
-    if (!pathname) {
-      // Root path
-      return targetLocale === 'en' ? '/' : `/${targetLocale}`
-    }
-    
-    const pathParts = pathname.split('/').filter(Boolean)
-    const firstPart = pathParts[0] || ''
-    
-    // Check if current path has a locale
-    const currentPathLocale = locales.find(loc => loc.code === firstPart)
-    
-    if (currentPathLocale) {
-      // Replace current locale
-      pathParts[0] = targetLocale === 'en' ? '' : targetLocale
-      const newPath = pathParts.filter(Boolean).join('/')
-      return newPath ? `/${newPath}` : '/'
-    } else {
-      // Current path is English (no locale prefix)
-      if (targetLocale === 'en') {
-        return pathname // Stay on same path for English
-      }
-      // Add locale prefix for other languages
-      // 确保路径以 / 开头
-      const pathWithSlash = pathname.startsWith('/') ? pathname : `/${pathname}`
-      return `/${targetLocale}${pathWithSlash}`
-    }
-  }
-
-  // 检查当前页面支持哪些语言
-  const [supportedLocales, setSupportedLocales] = useState<typeof locales>([])
-  
-  useEffect(() => {
-    const checkSupportedLocales = async () => {
-      if (!pathname) {
-        setSupportedLocales(locales)
-        return
-      }
-      
-      const pathParts = pathname.split('/').filter(Boolean)
-      if (pathParts.length === 0) {
-        setSupportedLocales(locales)
-        return
-      }
-      
-      // 检查第一个部分是否是locale代码
-      const firstPart = pathParts[0]
-      const isLocaleInPath = locales.some(loc => loc.code === firstPart)
-      
-      let tool: string | null = null
-      let slug: string | null = null
-      
-      if (isLocaleInPath) {
-        // 路径格式：/locale/tool 或 /locale/tool/slug
-        if (pathParts.length >= 2) {
-          tool = pathParts[1]
-          if (pathParts.length >= 3) {
-            slug = pathParts[2]
-          }
-        }
-      } else {
-        // 路径格式：/tool 或 /tool/slug（英语，无locale前缀）
-        tool = pathParts[0]
-        if (pathParts.length >= 2) {
-          slug = pathParts[1]
-        }
-      }
-      
-      // 如果不是工具页面，支持所有语言
-      const toolListForLocales = ['image-compressor', 'image-converter', 'font-generator', 'emoji-copy-and-paste']
-      if (!tool || !toolListForLocales.includes(tool)) {
-        setSupportedLocales(locales)
-        return
-      }
-      
-      // 检查哪些语言有内容（仅当前页面实际支持的语言才出现在切换列表中）
-      const availableLocales: typeof locales = []
-      
-      // 定义已知支持的语言（基于实际存在的翻译/内容）
-      const knownSupportedLocales: Record<string, string[]> = {
-        'font-generator': ['en', 'de', 'ja', 'es', 'fr'],
-        'image-compressor': locales.map(l => l.code),
-        'image-converter': locales.map(l => l.code),
-        'emoji-copy-and-paste': ['en'], // 仅英文有内容，其他 locale 会重定向到英文，故只算一种语言
-      }
-      
-      if (tool && knownSupportedLocales[tool]) {
-        // 使用已知的支持语言列表
-        const supportedCodes = knownSupportedLocales[tool]
-        for (const locale of locales) {
-          if (supportedCodes.includes(locale.code)) {
-            availableLocales.push(locale)
-          }
-        }
-      } else {
-        // 默认支持所有语言
-        availableLocales.push(...locales)
-      }
-      
-      setSupportedLocales(availableLocales)
-    }
-    
-    if (isMounted) {
-      checkSupportedLocales()
-    } else {
-      setSupportedLocales(locales)
-    }
-  }, [pathname, isMounted])
-  
-  const currentLocaleInfo = locales.find(loc => loc.code === currentLocale) || locales[0]
-  const otherLocales = supportedLocales.filter(loc => loc.code !== currentLocale)
+  const currentLocaleInfo = SITE_LOCALES.find((loc) => loc.code === currentLocale) || SITE_LOCALES[0]
+  const otherLocales = supportedLocales.filter((loc) => loc.code !== currentLocale)
 
   // 仅存在于根路径、无 [locale] 版本的工具，始终不添加 locale 前缀
   const LOCALE_LESS_PATHS = ['/ai-tools', '/watermark-remover', '/photo-restoration', '/ai-couple-photo-maker', '/model/seedance-2', '/model/kling-3', '/model/nano-banana-pro', '/model/nano-banana-2']
@@ -703,7 +564,7 @@ export default function Footer() {
             <li><a href="mailto:support@toolaze.com" className="text-slate-300 hover:text-indigo-400 transition-colors font-medium">{translations.contact}</a></li>
             
             {/* Language Switcher - 只在支持多语言的页面显示，且只显示该页面实际支持的语言 */}
-            {showLanguageSwitcher && supportedLocales.length > 1 && (
+            {showLanguageSwitcher && (
             <li className="relative">
               <button
                 onClick={() => setIsLanguageMenuOpen(!isLanguageMenuOpen)}
@@ -736,7 +597,7 @@ export default function Footer() {
                       {otherLocales.map((locale) => (
                         <Link
                           key={locale.code}
-                          href={getAlternateLanguageUrl(locale.code)}
+                          href={getAlternateLanguageUrl(pathname || '/', locale.code)}
                           onClick={() => setIsLanguageMenuOpen(false)}
                           className="flex items-center gap-3 px-4 py-2 text-sm text-slate-300 hover:bg-indigo-600 hover:text-white transition-all group"
                         >

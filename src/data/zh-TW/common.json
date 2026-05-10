@@ -1,83 +1,206 @@
 {
   "nav": {
     "quickTools": "快速工具",
+    "aiTools": "AI 工具",
     "imageCompression": "圖片壓縮",
     "imageConverter": "圖片轉換",
+    "watermarkRemover": "浮水印移除",
+    "photoRestoration": "照片修復",
+    "aiCouplePhotoMaker": "AI 情侶合照",
     "fontGenerator": "字體生成器",
+    "emojiCopyAndPaste": "Emoji 複製貼上",
+    "aiImage": "AI 圖片",
+    "aiVideo": "AI 影片",
+    "nanoBananaPro": "Nano Banana Pro",
+    "nanoBanana2": "Nano Banana 2",
+    "gptImage2": "GPT Image 2",
+    "seedance2": "Seedance 2.0",
+    "kling3": "Kling 3.0",
     "aboutUs": "關於我們"
   },
   "home": {
     "metadata": {
-      "title": "Toolaze - 免費 AI 圖片壓縮工具和本地工具",
-      "description": "在瀏覽器中本地壓縮圖片。無需上傳到伺服器，100% 隱私，為創作者提供的免費 AI 工具。"
+      "title": "Toolaze - 免費線上AI圖片生成器與AI影片生成器",
+      "description": "免費線上AI圖片生成器和AI影片生成器。使用Nano Banana 2生成4K圖片，使用Seedance 2.0和Kling 3.0生成影片。文字轉圖片、文字轉影片。無需註冊。也提供圖片壓縮和格式轉換工具。"
     },
-    "badge": "v1.0 現已上線",
-    "title": "免費輕量圖片工具平台",
-    "titleLine1": "免費輕量",
-    "titleLine2": "圖片工具平台",
-    "subtitle": "完全在瀏覽器中運行的專業圖片處理工具。無需上傳，無限制。",
-    "cta": "立即試用圖片壓縮工具 →",
-    "sectionToolsTitle": "所有可用工具",
-    "sectionToolsSubtitle": "一套工具，無限可能。",
-    "badgeLive": "已上線",
+    "badge": "免費AI工具",
+    "titleLine1": "一站式AI圖片與影片",
+    "titleLine2": "創作平台",
+    "badgeLive": "上線",
     "badgeComingSoon": "即將推出",
-    "toolImageCompressor": "圖片壓縮工具",
-    "toolImageCompressorDesc": "JPG/PNG 智能有損壓縮",
-    "toolFormatConverter": "格式轉換工具",
-    "toolFormatConverterDesc": "HEIC 轉 JPG，PNG 轉 WEBP",
-    "toolImageResize": "圖片調整大小",
-    "toolImageResizeDesc": "精確調整圖片尺寸",
-    "toolVideoCompressor": "影片壓縮工具",
-    "toolVideoCompressorDesc": "無損壓縮影片",
-    "whyToolaze": {
-      "badge": "為什麼選擇 Toolaze？",
-      "title": "為隱私與效能而生",
-      "subtitle": "了解為什麼 Toolaze 是重視隱私和品質的創作者的明智選擇。"
-    },
-    "features": {
-      "privacy": {
-        "title": "隱私優先架構",
-        "desc": "與其他工具不同，我們不會將您的圖片發送到遠端伺服器。所有處理都在您的瀏覽器中使用 WebAssembly 完成。您的檔案永遠不會離開您的裝置，確保完全隱私和安全。"
+    "heroTitle": "一站式AI圖片與影片創作平台",
+    "heroTagline": "頂尖AI模型，專業影片與圖片創作。圖片壓縮、格式轉換、字體生成器——全部免費，無需註冊。",
+    "ctaImage": "試用AI圖片生成器",
+    "ctaVideo": "圖片轉影片",
+    "title": "免費線上AI圖片生成器與AI影片生成器。",
+    "subtitle": "使用尖端模型創建4K AI圖片和好萊塢品質影片。文字轉圖片、文字轉影片、圖片轉影片——無需註冊，無限制。",
+    "cta": "試用AI圖片生成器 →",
+    "aiVideoTitle": "AI影片生成器",
+    "aiVideoIntro": "利用AI在幾分鐘內將想法轉化為引人入勝的影片。Toolaze的AI影片生成器由先進的AI模型驅動，幫助您從文字轉影片和圖片轉影片創建引人注目的影片。無需任何技能！",
+    "aiImageTitle": "AI圖片生成器",
+    "aiImageIntro": "使用AI即時生成高品質圖片。從藝術插畫到逼真視覺效果，Toolaze的AI圖片生成器透過文字轉圖片和圖片轉圖片，快速、靈活、輕鬆地轉化您的想法。",
+    "trendingTitle": "熱門AI圖片與影片模型，一站式呈現",
+    "trendingSubtitle": "無需切換平台即可使用Seedance 2.0、Kling 3.0、Nano Banana Pro和Nano Banana 2。",
+    "homepageToolCardSummaries": {
+      "seedance-2": {
+        "cardTitle": "Seedance 2.0",
+        "summary": "免費線上AI影片生成器，支援文字轉影片和圖片轉影片。將提示與參考圖片、短片和音訊融合——獲得具有自然動作和立體聲的15秒1080p輸出。無需在Toolaze註冊。"
       },
-      "unlimited": {
-        "title": "無限且免費",
-        "desc": "您可以壓縮任意數量的圖片。沒有每日限制，沒有付費牆，沒有浮水印。所有工具完全免費，沒有任何隱藏費用或高級版本。"
+      "kling-3": {
+        "cardTitle": "Kling 3.0",
+        "summary": "AI影片生成器，支援原生4K和2K輸出，每次運行最多可生成六個電影級剪輯。多模態輸入和多語言音訊，適用於廣告、預告片和社群媒體——免費線上試用Kling 3.0。"
       },
-      "quality": {
-        "title": "無損品質控制",
-        "desc": "我們先進的壓縮算法可在保持視覺品質的同時將檔案大小減少高達 90%。您可以控制壓縮級別，完美平衡大小和品質。"
+      "nano-banana-pro": {
+        "cardTitle": "Nano Banana Pro",
+        "summary": "AI圖片生成器，支援文字轉圖片和詳細編輯——具有強大提示保真度的清晰產品照片、肖像和活動視覺效果。在Toolaze上使用Nano Banana Pro免費線上創建。"
       },
-      "noRegistration": {
-        "title": "無需註冊",
-        "desc": "無需建立帳戶即可立即使用我們的工具。無需電子郵件註冊，不收集個人資訊。只需打開工具即可開始使用。"
+      "nano-banana-2": {
+        "cardTitle": "Nano Banana 2",
+        "summary": "快速AI圖片生成器，適用於日常文字轉圖片和快速變體——非常適合社群貼文、概念和迭代創意測試，無需複雜流程。"
+      },
+      "gpt-image-2": {
+        "cardTitle": "GPT Image 2",
+        "summary": "專為清晰構圖和圖片內清晰文字設計的文字轉圖片AI——從自然語言提示生成簡單圖形、模型和背景。免費線上試用。"
+      },
+      "watermark-remover": {
+        "summary": "免費線上AI浮水印移除工具：擦除標誌、日期戳記和疊加層，同時保持皮膚和紋理的真實感。在您的瀏覽器中運行，實現Toolaze上的私密、無需上傳的工作流程。"
+      },
+      "photo-restoration": {
+        "summary": "AI照片修復，適用於褪色、刮損或模糊的照片——恢復更清晰的面部和更精細的細節，適用於印刷品和檔案。一鍵修復，免費線上。"
+      },
+      "ai-couple-photo-maker": {
+        "summary": "AI情侶照片製作器：將一或兩張肖像轉化為浪漫或電影般的雙人場景，搭配精選模板——無需攝影棚拍攝即可獲得可分享的圖片。"
       }
     },
+    "aiToolsHubTitle": "適用於圖片、影片和日常媒體工作流程的免費AI工具",
+    "aiToolsHubSubtitle": "一個集AI圖片生成、AI影片生成和快速瀏覽器實用工具於一體的中心——無需註冊，無付費牆。",
+    "aiToolsHubIntro": "探索專為創作者和行銷人員設計的免費線上AI工具，他們需要可靠的輸出而無需在多個網站之間切換。將旗艦圖片和影片模型與實用的壓縮、轉換、修復和排版輔助工具結合——所有這些都旨在提供清晰的SEO登陸頁面和快速實驗。",
+    "aiToolsHubItems": [
+      {
+        "title": "AI圖片生成器",
+        "description": "透過文字轉圖片和圖片轉圖片，交付可供活動使用的視覺效果。Nano Banana Pro、Nano Banana 2和GPT Image 2提供清晰的細節、靈活的長寬比和高達4K的解析度，適用於廣告、社群貼文和概念藝術。",
+        "href": "/model/nano-banana-pro"
+      },
+      {
+        "title": "AI影片生成器",
+        "description": "將腳本和參考幀轉化為電影級片段。Seedance 2.0和Kling 3.0支援文字轉影片和圖片轉影片，具有多模態輸入——非常適合促銷、故事板和短片敘事。",
+        "href": "/zh-TW/seedance-2"
+      },
+      {
+        "title": "瀏覽器媒體實用工具",
+        "description": "透過有損圖片壓縮、格式轉換、風格化字體預覽和表情符號複製貼上來完善您的工作流程——輕量級、非生成性的實用工具，在您的瀏覽器中保持免費。",
+        "href": "/zh-TW/image-compressor"
+      }
+    ],
+    "advancedToolsTitle": "更多AI驅動的創意工具",
+    "advancedToolsSubtitle": "肖像生成、AI浮水印移除和AI照片修復——免費線上試用，無需註冊。",
+    "utilityToolsTitle": "免費瀏覽器圖片與文字工具",
+    "utilityToolsSubtitle": "圖片壓縮、格式轉換、風格化字體預覽和表情符號複製貼上——您的瀏覽器中快速實用工具，無需生成式AI。",
+    "faqTitle": "有問題嗎？我們有答案！",
+    "sectionAiImageTitle": "AI圖片模型",
+    "sectionAiImageSubtitle": "免費線上AI圖片生成器。文字轉圖片和圖片轉圖片。4K輸出，快速生成，無需註冊。使用Nano Banana Pro和Nano Banana 2創建AI藝術。",
+    "sectionAiVideoTitle": "AI影片模型",
+    "sectionAiVideoSubtitle": "免費線上AI影片生成器。文字轉影片和圖片轉影片。1080p–4K輸出，多模態影片生成。使用Seedance 2.0和Kling 3.0創建影片——無需註冊。",
+    "sectionToolsTitle": "更多工具",
+    "sectionToolsSubtitle": "圖片壓縮、格式轉換、字體生成器——全部免費，都在您的瀏覽器中。",
+    "seoIntro": {
+      "title": "免費線上AI圖片生成器與AI影片生成器",
+      "paragraph1": "Toolaze是您的免費線上AI圖片生成器和AI影片生成器。使用Nano Banana Pro和Nano Banana 2，透過文字轉圖片和圖片轉圖片，創建令人驚嘆的4K AI圖片。使用Seedance 2.0和Kling 3.0，透過文字轉影片和圖片轉影片，生成好萊塢品質的影片。無需註冊、無需信用卡、無每日限制。",
+      "paragraph2": "無論您需要免費AI圖片生成器用於行銷模型、社群內容或AI藝術——還是免費AI影片生成器用於廣告、故事板或短片——Toolaze都能滿足您的需求。我們的AI圖片模型支援高達4K解析度並快速生成。我們的AI影片模型接受文字、圖片、影片和音訊進行多模態影片生成。兩者都支援圖片轉圖片和圖片轉影片工作流程。",
+      "paragraph3": "使用我們的免費線上文字轉圖片生成器和文字轉影片生成器。壓縮圖片、轉換格式和生成字體——所有功能集中於一處。100%免費，無需註冊。"
+    },
+    "toolImageCompressor": "圖片壓縮器",
+    "toolImageCompressorDesc": "JPG/PNG的智能有損壓縮。",
+    "toolFormatConverter": "格式轉換器",
+    "toolFormatConverterDesc": "HEIC轉JPG，PNG轉WEBP。",
+    "toolFontGenerator": "免費字體生成器",
+    "toolFontGeneratorDesc": "免費線上生成自訂字體。創建草書、花式、粗體、斜體、哥德式和紋身字體。即時複製貼上。無需註冊。",
+    "toolEmojiCopyAndPaste": "表情符號複製貼上",
+    "toolEmojiCopyAndPasteDesc": "免費線上複製貼上表情符號。按類別瀏覽、搜尋、選擇膚色，一鍵複製。無需註冊。",
+    "toolImageResize": "圖片尺寸調整",
+    "toolImageResizeDesc": "將圖片調整為精確尺寸。",
+    "toolVideoCompressor": "影片壓縮器",
+    "toolVideoCompressorDesc": "壓縮影片而不損失品質。",
+    "whyToolaze": {
+      "badge": "為何選擇Toolaze？",
+      "title": "為創作者與效能而生",
+      "subtitle": "您需要了解的一切，關於為何Toolaze是AI圖片生成、AI影片生成和創意工作流程的明智選擇。"
+    },
     "faq": {
-      "title": "常見問題",
+      "title": "有問題嗎？我們有答案！",
       "items": [
         {
-          "q": "Toolaze 如何在不上傳的情況下壓縮圖片？",
-          "a": "Toolaze 使用 WebAssembly 和瀏覽器內建的圖片處理 API 直接在您的瀏覽器中壓縮圖片。您的檔案在裝置上本地處理，永遠不會發送到任何伺服器。這確保了完全的隱私和更快的處理速度。"
+          "q": "什麼是AI圖片生成器？",
+          "a": "AI圖片生成器從文字提示或參考圖片創建圖片。Toolaze提供免費AI圖片生成器，如Nano Banana Pro和Nano Banana 2——支援文字轉圖片和圖片轉圖片，具有4K輸出且無需註冊。"
         },
         {
-          "q": "Toolaze 支援哪些圖片格式？",
-          "a": "目前，我們的圖片壓縮工具支援 JPG、PNG 和 WEBP 格式。我們正在努力在未來的更新中新增對更多格式的支援，包括 HEIC、BMP 和 TIFF。"
+          "q": "什麼是AI影片生成器？",
+          "a": "AI影片生成器從文字、圖片或其他媒體創建影片。Toolaze提供免費AI影片生成器，如Seedance 2.0和Kling 3.0——支援文字轉影片和圖片轉影片，具有1080p–4K輸出和多模態輸入。"
         },
         {
-          "q": "是否有檔案大小限制？",
-          "a": "理論上沒有檔案大小限制。但是，根據您裝置的效能和可用記憶體，非常大的圖片可能會導致瀏覽器變慢。我們建議將大型檔案分批處理以獲得最佳體驗。"
+          "q": "AI圖片生成器是免費的嗎？",
+          "a": "是的！Toolaze的AI圖片生成器（Nano Banana Pro、Nano Banana 2）可免費線上使用。無需註冊、無需信用卡、無每日限制。透過文字轉圖片和圖片轉圖片創建4K圖片——全部在您的瀏覽器中完成。"
         },
         {
-          "q": "我可以將圖片壓縮到多小？",
-          "a": "壓縮結果取決於原始圖片品質和格式。通常，您可以在保持可接受的視覺品質的同時實現 50-90% 的大小減少。您可以調整壓縮設定以找到適合您需求的完美平衡。"
+          "q": "AI影片生成器是免費的嗎？",
+          "a": "是的！Toolaze的AI影片生成器（Seedance 2.0、Kling 3.0）可免費線上使用。無需註冊。透過文字轉影片和圖片轉影片創建1080p–4K影片——多模態輸入，好萊塢品質輸出。"
+        },
+        {
+          "q": "免費AI圖片生成器費用是多少？",
+          "a": "Toolaze的AI圖片生成器100%免費。無需註冊、無需信用卡、無每日限制。使用Nano Banana Pro或Nano Banana 2，透過文字轉圖片和圖片轉圖片創建4K圖片——全部在您的瀏覽器中完成。"
+        },
+        {
+          "q": "有免費的線上文字轉影片生成器嗎？",
+          "a": "是的。Toolaze提供免費線上文字轉影片生成器，支援Seedance 2.0和Kling 3.0。上傳文字、圖片、影片或音訊——透過多模態輸入生成1080p或4K AI影片。無需註冊。"
+        },
+        {
+          "q": "什麼是圖片轉影片AI？",
+          "a": "圖片轉影片AI將您上傳的圖片轉化為動態影片。Toolaze的免費AI影片生成器（Seedance 2.0、Kling 3.0）支援圖片轉影片以及文字轉影片。添加參考圖片或影片以更好地控制輸出。"
+        },
+        {
+          "q": "我可以在沒有註冊的情況下線上使用AI圖片生成器嗎？",
+          "a": "是的。Toolaze的線上AI圖片生成器無需註冊。打開Nano Banana Pro或Nano Banana 2，輸入您的文字提示或上傳參考圖片，即可即時免費生成4K AI圖片。"
         }
       ]
+    },
+    "toolWatermarkRemover": "免費線上AI浮水印移除工具",
+    "toolWatermarkRemoverDesc": "一鍵移除標誌、日期戳記和疊加層。保持紋理自然，即時匯出乾淨圖片。無需註冊。",
+    "toolPhotoRestoration": "免費線上照片修復",
+    "toolPhotoRestorationDesc": "在幾秒鐘內修復舊的、模糊的或刮損的照片。透過一鍵AI修復恢復更清晰的面部和細節。無需註冊。",
+    "features": {
+      "freeGeneration": {
+        "title": "免費AI圖片與影片創作",
+        "desc": "使用Nano Banana 2、Seedance 2.0和Kling 3.0創建4K AI圖片和好萊塢品質影片。文字轉圖片、文字轉影片、圖片轉影片——全部免費線上，無需註冊。"
+      },
+      "noLimits": {
+        "title": "無限制，完全免費",
+        "desc": "根據您的需要生成任意數量的AI圖片和影片。無每日限制、無付費牆、無浮水印。所有AI工具和圖片工具完全免費，無隱藏費用。"
+      },
+      "proOutput": {
+        "title": "4K輸出與多模態輸入",
+        "desc": "AI圖片模型支援高達4K解析度。AI影片模型接受文字、圖片、影片和音訊。專業品質輸出，快速生成——為創作者提供可投入生產的準備。"
+      },
+      "instantUse": {
+        "title": "即時開始",
+        "desc": "無需創建帳戶即可立即開始使用我們的AI圖片生成器和AI影片生成器。無需電子郵件註冊，不收集個人資訊。只需打開即可創建。"
+      }
     }
   },
   "footer": {
+    "aiTools": "AI 工具",
+    "watermarkRemover": "浮水印移除",
+    "photoRestoration": "照片修復",
+    "aiCouplePhotoMaker": "AI 情侶合照",
+    "aiImage": "AI 圖片",
+    "aiVideo": "AI 影片",
     "imageCompression": "圖片壓縮",
     "imageConverter": "圖片轉換",
     "fontGenerator": "字體生成器",
+    "emojiCopyAndPaste": "Emoji 複製貼上",
+    "nanoBananaPro": "Nano Banana Pro",
+    "nanoBanana2": "Nano Banana 2",
+    "seedance2": "Seedance 2.0",
+    "kling3": "Kling 3.0",
     "home": "首頁",
     "allTools": "所有工具",
     "aboutUs": "關於我們",

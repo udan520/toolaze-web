@@ -1,15 +1,21 @@
 'use client'
 
 import Link from 'next/link'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { getAllSlugs, getSeoContent } from '@/lib/seo-loader'
 import CloseIcon from './icons/CloseIcon'
-
-const locales = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
+import {
+  SITE_LOCALES,
+  getAlternateLanguageUrl,
+  getCurrentLocaleFromPath,
+  getSupportedLocaleCodes,
+  shouldShowLanguageSwitcher,
+} from '@/lib/site-language-switch'
 
 // 翻译数据(默认英语)
 const defaultNavTranslations = {
+  language: 'Language',
   quickTools: 'Quick Tools',
   aiTools: 'AI Tools',
   imageCompression: 'Image Compression',
@@ -37,22 +43,28 @@ const AI_TOOLS_DEMO_IMAGES = {
   aiCouplePhotoMaker: '/ai-couple-photo-maker/rainy-eiffel-4x3.jpg',
 }
 
-// 加载导航翻译的函数
+// 加载导航翻译的函数（nav + footer.language 用于「语言」标签，与页脚一致）
 async function loadNavTranslations(locale: string) {
   try {
     let normalizedLocale = locale
     if (locale === 'zh' || locale === 'zh-CN' || locale === 'zh-HK') {
       normalizedLocale = 'zh-TW'
     }
-    
+
+    const mergeNav = (data: { nav?: Record<string, string>; footer?: { language?: string } }) => ({
+      ...defaultNavTranslations,
+      ...(data.nav || {}),
+      language: data.footer?.language || defaultNavTranslations.language,
+    })
+
     if (normalizedLocale === 'en') {
-      const data = await import('@/data/en/common.json')
-      return data.default?.nav || defaultNavTranslations
+      const data = (await import('@/data/en/common.json')).default
+      return mergeNav({ nav: data?.nav as Record<string, string> | undefined, footer: data?.footer })
     }
-    
+
     try {
-      const data = await import(`@/data/${normalizedLocale}/common.json`)
-      return data.default?.nav || defaultNavTranslations
+      const data = (await import(`@/data/${normalizedLocale}/common.json`)).default
+      return mergeNav({ nav: data?.nav as Record<string, string> | undefined, footer: data?.footer })
     } catch {
       return defaultNavTranslations
     }
@@ -90,22 +102,29 @@ export default function Navigation() {
   const [isMounted, setIsMounted] = useState(false)
   const [isMobileView, setIsMobileView] = useState(false)
   const pathname = usePathname()
-  
-  // 检测当前语言
-  const getCurrentLocale = (): string => {
-    if (!pathname) return 'en'
-    const pathParts = pathname.split('/').filter(Boolean)
-    const firstPart = pathParts[0] || ''
-    return locales.includes(firstPart) ? firstPart : 'en'
-  }
-  
-  const currentLocale = getCurrentLocale()
+
+  const currentLocale = getCurrentLocaleFromPath(pathname ?? null)
+
+  const [navLangOpen, setNavLangOpen] = useState(false)
+
+  const navSupportedLocales = useMemo(() => {
+    const codes = getSupportedLocaleCodes(pathname ?? null)
+    return SITE_LOCALES.filter((l) => codes.includes(l.code))
+  }, [pathname])
+
+  const showNavLanguageSwitcher = shouldShowLanguageSwitcher(pathname ?? null)
+  const navCurrentLocaleInfo = SITE_LOCALES.find((l) => l.code === currentLocale) || SITE_LOCALES[0]
+  const navOtherLocales = navSupportedLocales.filter((l) => l.code !== currentLocale)
   
   // 加载翻译 - 只在客户端加载以避免 hydration mismatch
   useEffect(() => {
     setIsMounted(true)
     loadNavTranslations(currentLocale).then(setNavTranslations)
   }, [currentLocale])
+
+  useEffect(() => {
+    setNavLangOpen(false)
+  }, [pathname])
 
   // 运行时兜底：仅在移动端渲染 H5 菜单按钮，避免桌面端误显示
   useEffect(() => {
@@ -121,7 +140,7 @@ export default function Navigation() {
   // 加载三级菜单数据
   useEffect(() => {
     const loadThirdLevelItems = async () => {
-      const locale = getCurrentLocale()
+      const locale = currentLocale
       const data: Record<string, Array<{slug: string, title: string, href: string}>> = {}
       
       // 生成带语言前缀的链接的辅助函数
@@ -217,8 +236,8 @@ export default function Navigation() {
       // 加载 common.json 中的 categories 翻译作为回退
       let categoryTranslations: Record<string, string> = {}
       try {
-        let normalizedLocale = locale
-        if (locale === 'zh' || locale === 'zh-CN' || locale === 'zh-HK') {
+        let normalizedLocale: string = locale
+        if (normalizedLocale === 'zh' || normalizedLocale === 'zh-CN' || normalizedLocale === 'zh-HK') {
           normalizedLocale = 'zh-TW'
         }
         const commonData = normalizedLocale === 'en' 
@@ -706,6 +725,46 @@ export default function Navigation() {
             </div>
           </div>
           <Link href={getLocalizedHref('/about')} className="hover:text-indigo-600 transition-colors">{navTranslations.aboutUs}</Link>
+          {showNavLanguageSwitcher && (
+            <div className="relative">
+              <button
+                type="button"
+                onClick={() => setNavLangOpen(!navLangOpen)}
+                className="flex items-center gap-1.5 text-sm font-bold text-slate-500 hover:text-indigo-600 transition-colors px-2 py-1 rounded-lg hover:bg-indigo-50"
+                aria-label={navTranslations.language}
+                aria-expanded={navLangOpen}
+              >
+                <span className="text-base leading-none">{navCurrentLocaleInfo.flag}</span>
+                <span className="hidden lg:inline">{navCurrentLocaleInfo.name}</span>
+                <svg
+                  className={'w-4 h-4 transition-transform' + (navLangOpen ? ' rotate-180' : '')}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              {navLangOpen && (
+                <>
+                  <div className="fixed inset-0 z-[55]" onClick={() => setNavLangOpen(false)} aria-hidden />
+                  <div className="absolute top-full right-0 mt-2 w-44 bg-white rounded-xl shadow-lg border border-indigo-50 z-[60] overflow-hidden py-2">
+                    {navOtherLocales.map((locale) => (
+                      <Link
+                        key={locale.code}
+                        href={getAlternateLanguageUrl(pathname || '/', locale.code)}
+                        onClick={() => setNavLangOpen(false)}
+                        className="flex items-center gap-3 px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600"
+                      >
+                        <span className="text-base">{locale.flag}</span>
+                        <span>{locale.name}</span>
+                      </Link>
+                    ))}
+                  </div>
+                </>
+              )}
+            </div>
+          )}
         </div>
 
         {/* 移动端菜单面板 */}
@@ -755,7 +814,7 @@ export default function Navigation() {
                               aria-label={isExpanded ? 'Collapse submenu' : 'Expand submenu'}
                             >
                               <svg 
-                                className={`w-4 h-4 transition-transform ${isExpanded ? 'rotate-90' : ''}`} 
+                                className={'w-4 h-4 transition-transform' + (isExpanded ? ' rotate-90' : '')} 
                                 fill="none" 
                                 stroke="currentColor" 
                                 viewBox="0 0 24 24"
@@ -977,6 +1036,27 @@ export default function Navigation() {
               >
                 {navTranslations.aboutUs}
               </Link>
+              {showNavLanguageSwitcher && (
+                <div className="border-t border-indigo-50 pt-4 mt-2">
+                  <div className="text-sm font-bold text-slate-700 mb-3">{navTranslations.language}</div>
+                  <div className="flex flex-wrap gap-2">
+                    {navOtherLocales.map((locale) => (
+                      <Link
+                        key={locale.code}
+                        href={getAlternateLanguageUrl(pathname || '/', locale.code)}
+                        onClick={() => {
+                          setMobileMenuOpen(false)
+                          setExpandedSubmenus(new Set())
+                        }}
+                        className="inline-flex items-center gap-2 px-3 py-2 text-sm rounded-lg border border-slate-200 text-slate-700 hover:bg-indigo-50 hover:border-indigo-200"
+                      >
+                        <span>{locale.flag}</span>
+                        <span>{locale.name}</span>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         )}

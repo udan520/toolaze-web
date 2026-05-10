@@ -1,83 +1,206 @@
 {
   "nav": {
     "quickTools": "Ferramentas Rápidas",
+    "aiTools": "Ferramentas IA",
     "imageCompression": "Compressão de Imagens",
     "imageConverter": "Conversor de Imagens",
+    "watermarkRemover": "Remover marca d'água",
+    "photoRestoration": "Restauração de fotos",
+    "aiCouplePhotoMaker": "Foto de casal IA",
     "fontGenerator": "Gerador de Fontes",
+    "emojiCopyAndPaste": "Emoji copiar e colar",
+    "aiImage": "Imagem IA",
+    "aiVideo": "Vídeo IA",
+    "nanoBananaPro": "Nano Banana Pro",
+    "nanoBanana2": "Nano Banana 2",
+    "gptImage2": "GPT Image 2",
+    "seedance2": "Seedance 2.0",
+    "kling3": "Kling 3.0",
     "aboutUs": "Sobre Nós"
   },
   "home": {
     "metadata": {
-      "title": "Toolaze - Compressor de Imagens IA Gratuito e Ferramentas Locais",
-      "description": "Comprima imagens localmente no seu navegador. Sem uploads de servidor, 100% privado, ferramentas IA gratuitas para criadores."
+      "title": "Toolaze - Gerador de Imagens AI e Gerador de Vídeos AI Online Grátis",
+      "description": "Gerador de imagens AI e gerador de vídeos AI online grátis. Crie imagens 4K com Nano Banana 2, gere vídeos com Seedance 2.0 e Kling 3.0. Texto para imagem, texto para vídeo. Não é necessário registo. Ferramentas de compressão de imagem e conversão de formato também."
     },
-    "badge": "v1.0 Agora ao Vivo",
-    "title": "Plataforma de Ferramentas de Imagem Leves Gratuitas.",
-    "titleLine1": "Gratuito Leve",
-    "titleLine2": "Plataforma de Ferramentas de Imagem.",
-    "subtitle": "Ferramentas profissionais de processamento de imagens que funcionam inteiramente no seu navegador. Sem uploads, sem limites, grátis para sempre.",
-    "cta": "Experimente o Compressor de Imagens Agora →",
-    "sectionToolsTitle": "Todas as Ferramentas Disponíveis",
-    "sectionToolsSubtitle": "Um conjunto. Possibilidades infinitas.",
+    "badge": "Ferramentas AI Grátis",
+    "titleLine1": "Plataforma Tudo-em-Um de Criação",
+    "titleLine2": "de Imagens e Vídeos AI",
     "badgeLive": "Ao Vivo",
     "badgeComingSoon": "Em Breve",
-    "toolImageCompressor": "Compressor de Imagens",
-    "toolImageCompressorDesc": "Compressão com perda inteligente para JPG/PNG.",
-    "toolFormatConverter": "Conversor de Formato",
-    "toolFormatConverterDesc": "HEIC para JPG, PNG para WEBP.",
-    "toolImageResize": "Redimensionar Imagem",
-    "toolImageResizeDesc": "Redimensione imagens para dimensões exatas.",
-    "toolVideoCompressor": "Compressor de Vídeo",
-    "toolVideoCompressorDesc": "Comprima vídeos sem perda de qualidade.",
-    "whyToolaze": {
-      "badge": "Por Que Toolaze?",
-      "title": "Construído para Privacidade e Desempenho",
-      "subtitle": "Tudo o que você precisa saber sobre por que Toolaze é a escolha inteligente para criadores que valorizam privacidade e qualidade."
-    },
-    "features": {
-      "privacy": {
-        "title": "Arquitetura Privacidade Primeiro",
-        "desc": "Diferente de outras ferramentas, não enviamos suas imagens para um servidor remoto. Tudo acontece aqui mesmo no seu navegador usando WebAssembly. Seus arquivos nunca deixam seu dispositivo, garantindo privacidade e segurança completas."
+    "heroTitle": "Plataforma Tudo-em-Um de Criação de Imagens e Vídeos AI",
+    "heroTagline": "Os melhores modelos de IA, criação profissional de vídeos e imagens. Compressão de imagem, conversão de formato, gerador de fontes — tudo grátis, sem necessidade de registo.",
+    "ctaImage": "Experimentar Gerador de Imagens AI",
+    "ctaVideo": "Imagem para Vídeo",
+    "title": "Gerador de Imagens AI e Gerador de Vídeos AI Online Grátis.",
+    "subtitle": "Crie imagens AI 4K e vídeos com qualidade de Hollywood com modelos de ponta. Texto para imagem, texto para vídeo, imagem para vídeo — sem registo, sem limites.",
+    "cta": "Experimentar Gerador de Imagens AI →",
+    "aiVideoTitle": "Gerador de Vídeos AI",
+    "aiVideoIntro": "Transforme ideias em vídeos envolventes em minutos com IA. Alimentado por modelos avançados de IA, o Gerador de Vídeos AI da Toolaze ajuda-o a criar vídeos cativantes de texto para vídeo e de imagem para vídeo. Não são necessárias habilidades!",
+    "aiImageTitle": "Gerador de Imagens AI",
+    "aiImageIntro": "Gere imagens de alta qualidade instantaneamente com IA. De ilustrações artísticas a visuais realistas, o Gerador de Imagens AI da Toolaze transforma as suas ideias com texto para imagem e imagem para imagem — rápido, flexível e sem esforço.",
+    "trendingTitle": "Modelos de Imagem e Vídeo AI em Destaque, Tudo Num Só Lugar",
+    "trendingSubtitle": "Aceda a Seedance 2.0, Kling 3.0, Nano Banana Pro e Nano Banana 2 sem mudar de plataforma.",
+    "homepageToolCardSummaries": {
+      "seedance-2": {
+        "cardTitle": "Seedance 2.0",
+        "summary": "Gerador de vídeo AI online grátis para texto para vídeo e imagem para vídeo. Misture prompts com imagens de referência, clipes curtos e áudio — obtenha saída de 15 segundos em 1080p com movimento natural e som estéreo. Sem registo no Toolaze."
       },
-      "unlimited": {
-        "title": "Ilimitado e Gratuito",
-        "desc": "Comprima quantas imagens quiser. Sem limites diários, sem paywalls, sem marcas d'água. Todas as ferramentas são completamente gratuitas para sempre sem custos ocultos ou níveis premium."
+      "kling-3": {
+        "cardTitle": "Kling 3.0",
+        "summary": "Gerador de vídeo AI com saída nativa 4K e 2K, além de até seis cortes cinematográficos por execução. Entradas multimodais e áudio multilíngue para anúncios, trailers e redes sociais — experimente Kling 3.0 grátis online."
       },
-      "quality": {
-        "title": "Controle de Qualidade Sem Perdas",
-        "desc": "Nossos algoritmos avançados de compressão reduzem o tamanho dos arquivos em até 90% mantendo a qualidade visual. Você controla o nível de compressão para equilibrar perfeitamente tamanho e qualidade."
+      "nano-banana-pro": {
+        "cardTitle": "Nano Banana Pro",
+        "summary": "Gerador de imagens AI para texto para imagem e edições detalhadas — fotos de produtos nítidas, retratos e visuais de campanha com forte fidelidade ao prompt. Crie grátis online com Nano Banana Pro no Toolaze."
       },
-      "noRegistration": {
-        "title": "Nenhum Registro Necessário",
-        "desc": "Comece a usar nossas ferramentas imediatamente sem criar uma conta. Sem cadastro por email, sem coleta de informações pessoais. Basta abrir a ferramenta e começar."
+      "nano-banana-2": {
+        "cardTitle": "Nano Banana 2",
+        "summary": "Gerador de imagens AI rápido para texto para imagem diário e variantes rápidas — ideal para publicações sociais, conceitos e testes criativos iterativos sem um pipeline pesado."
+      },
+      "gpt-image-2": {
+        "cardTitle": "GPT Image 2",
+        "summary": "AI de texto para imagem construída para composições limpas e texto legível na imagem — gráficos simples, maquetes e fundos a partir de prompts em linguagem natural. Grátis para experimentar online."
+      },
+      "watermark-remover": {
+        "summary": "Removedor de marca d'água AI grátis online: apague logotipos, carimbos de data e sobreposições, mantendo a pele e a textura realistas. Funciona no seu navegador para um fluxo de trabalho privado, sem upload no Toolaze."
+      },
+      "photo-restoration": {
+        "summary": "Restauração de fotos AI para imagens desbotadas, arranhadas ou borradas — recupere rostos mais claros e detalhes mais finos para impressões e arquivos. Reparo com um clique, grátis online."
+      },
+      "ai-couple-photo-maker": {
+        "summary": "Criador de fotos de casal AI: transforme um ou dois retratos em cenas de dupla românticas ou cinematográficas com modelos selecionados — imagens prontas para partilhar sem uma sessão de estúdio."
       }
     },
+    "aiToolsHubTitle": "Ferramentas AI Grátis para Imagens, Vídeos e Fluxos de Trabalho de Mídia Diários",
+    "aiToolsHubSubtitle": "Um hub para geração de imagens AI, geração de vídeos AI e utilitários rápidos de navegador — sem registo e sem paywall.",
+    "aiToolsHubIntro": "Descubra ferramentas AI grátis online construídas para criadores e profissionais de marketing que precisam de resultados fiáveis sem ter que alternar entre vários sites. Combine modelos de imagem e vídeo de ponta com ajudas práticas para compressão, conversão, restauração e tipografia — tudo estruturado para páginas de destino SEO claras e experimentação rápida.",
+    "aiToolsHubItems": [
+      {
+        "title": "Geradores de imagens AI",
+        "description": "Produza visuais prontos para campanha com texto para imagem e imagem para imagem. Nano Banana Pro, Nano Banana 2 e GPT Image 2 oferecem detalhes nítidos, proporções flexíveis e resoluções de até 4K para anúncios, publicações sociais e arte conceitual.",
+        "href": "/model/nano-banana-pro"
+      },
+      {
+        "title": "Geradores de vídeos AI",
+        "description": "Transforme scripts e quadros de referência em clipes cinematográficos. Seedance 2.0 e Kling 3.0 suportam texto para vídeo e imagem para vídeo com entradas multimodais — ideal para promoções, storyboards e narrativa de formato curto.",
+        "href": "/pt/seedance-2"
+      },
+      {
+        "title": "Utilitários de mídia do navegador",
+        "description": "Complete o seu fluxo de trabalho com compressão de imagem com perdas, conversão de formato, pré-visualizações de fontes estilizadas e cópia e cola de emojis — utilitários leves e não generativos que permanecem gratuitos no seu navegador.",
+        "href": "/pt/image-compressor"
+      }
+    ],
+    "advancedToolsTitle": "Mais Ferramentas Criativas Alimentadas por AI",
+    "advancedToolsSubtitle": "Geração de retratos, remoção de marca d'água AI e restauração de fotos AI — grátis para experimentar online, sem necessidade de registo.",
+    "utilityToolsTitle": "Ferramentas de Navegador Grátis para Imagens e Texto",
+    "utilityToolsSubtitle": "Compressão de imagem, conversão de formato, pré-visualizações de fontes estilizadas e cópia e cola de emojis — utilitários rápidos no seu navegador sem AI generativa.",
+    "faqTitle": "Tem Perguntas? Temos Respostas!",
+    "sectionAiImageTitle": "Modelos de Imagem AI",
+    "sectionAiImageSubtitle": "Gerador de imagens AI online grátis. Texto para imagem e imagem para imagem. Saída 4K, geração rápida, sem registo. Crie arte AI com Nano Banana Pro e Nano Banana 2.",
+    "sectionAiVideoTitle": "Modelos de Vídeo AI",
+    "sectionAiVideoSubtitle": "Gerador de vídeos AI online grátis. Texto para vídeo e imagem para vídeo. Saída 1080p–4K, geração de vídeo multimodal. Crie vídeos com Seedance 2.0 e Kling 3.0 — sem registo.",
+    "sectionToolsTitle": "Mais Ferramentas",
+    "sectionToolsSubtitle": "Compressão de imagem, conversão de formato, gerador de fontes — tudo grátis, tudo no seu navegador.",
+    "seoIntro": {
+      "title": "Gerador de Imagens AI e Gerador de Vídeos AI Online Grátis",
+      "paragraph1": "Toolaze é o seu gerador de imagens AI e gerador de vídeos AI online grátis. Crie imagens AI 4K deslumbrantes com texto para imagem e imagem para imagem — alimentado por Nano Banana Pro e Nano Banana 2. Gere vídeos com qualidade de Hollywood com texto para vídeo e imagem para vídeo usando Seedance 2.0 e Kling 3.0. Sem registo, sem cartão de crédito, sem limites diários.",
+      "paragraph2": "Quer precise de um gerador de imagens AI grátis para maquetes de marketing, conteúdo social ou arte AI — ou de um gerador de vídeos AI grátis para anúncios, storyboards ou vídeos de formato curto — o Toolaze entrega. Os nossos modelos de imagem AI suportam resolução de até 4K com geração rápida. Os nossos modelos de vídeo AI aceitam texto, imagens, vídeo e áudio para geração de vídeo multimodal. Ambos suportam fluxos de trabalho de imagem para imagem e imagem para vídeo.",
+      "paragraph3": "Use o nosso gerador de texto para imagem e gerador de texto para vídeo online grátis. Comprima imagens, converta formatos e gere fontes — tudo num só lugar. 100% grátis, sem necessidade de registo."
+    },
+    "toolImageCompressor": "Compressor de Imagens",
+    "toolImageCompressorDesc": "Compressão inteligente com perdas para JPG/PNG.",
+    "toolFormatConverter": "Conversor de Formato",
+    "toolFormatConverterDesc": "HEIC para JPG, PNG para WEBP.",
+    "toolFontGenerator": "Gerador de Fontes Grátis",
+    "toolFontGeneratorDesc": "Gere fontes personalizadas online gratuitamente. Crie fontes cursivas, elegantes, em negrito, itálicas, góticas e de tatuagem. Copie e cole instantaneamente. Não é necessário registo.",
+    "toolEmojiCopyAndPaste": "Copiar e Colar Emoji",
+    "toolEmojiCopyAndPasteDesc": "Copie e cole emojis online gratuitamente. Navegue por categoria, pesquise, escolha o tom de pele e copie com um clique. Não é necessário registo.",
+    "toolImageResize": "Redimensionar Imagem",
+    "toolImageResizeDesc": "Redimensione imagens para dimensões exatas.",
+    "toolVideoCompressor": "Compressor de Vídeos",
+    "toolVideoCompressorDesc": "Comprima vídeos sem perda de qualidade.",
+    "whyToolaze": {
+      "badge": "Porquê Toolaze?",
+      "title": "Construído para Criadores e Desempenho",
+      "subtitle": "Tudo o que precisa de saber sobre porque o Toolaze é a escolha inteligente para geração de imagens AI, geração de vídeos AI e fluxos de trabalho criativos."
+    },
     "faq": {
-      "title": "Perguntas Frequentes",
+      "title": "Tem Perguntas? Temos Respostas!",
       "items": [
         {
-          "q": "Como o Toolaze comprime imagens sem fazer upload delas?",
-          "a": "Toolaze usa WebAssembly e APIs de processamento de imagens baseadas no navegador para comprimir imagens diretamente no seu navegador. Seus arquivos são processados localmente no seu dispositivo, nunca enviados para nenhum servidor. Isso garante privacidade completa e processamento mais rápido."
+          "q": "O que é um gerador de imagens AI?",
+          "a": "Um gerador de imagens AI cria imagens a partir de prompts de texto ou imagens de referência. O Toolaze oferece geradores de imagens AI grátis como Nano Banana Pro e Nano Banana 2 — suportando texto para imagem e imagem para imagem, com saída 4K e sem necessidade de registo."
         },
         {
-          "q": "Quais formatos de imagem o Toolaze suporta?",
-          "a": "Atualmente, nosso Compressor de Imagens suporta formatos JPG, PNG e WEBP. Estamos trabalhando para adicionar suporte para mais formatos incluindo HEIC, BMP e TIFF em atualizações futuras."
+          "q": "O que é um gerador de vídeos AI?",
+          "a": "Um gerador de vídeos AI cria vídeos a partir de texto, imagens ou outros meios. O Toolaze oferece geradores de vídeos AI grátis como Seedance 2.0 e Kling 3.0 — suportando texto para vídeo e imagem para vídeo, com saída 1080p–4K e entrada multimodal."
         },
         {
-          "q": "Há um limite de tamanho de arquivo?",
-          "a": "Não há um limite teórico de tamanho de arquivo. No entanto, imagens muito grandes podem causar lentidão do navegador dependendo do desempenho do seu dispositivo e memória disponível. Recomendamos processar arquivos grandes em lotes menores para a melhor experiência."
+          "q": "O gerador de imagens AI é grátis?",
+          "a": "Sim! Os geradores de imagens AI da Toolaze (Nano Banana Pro, Nano Banana 2) são grátis para usar online. Sem registo, sem cartão de crédito, sem limites diários. Crie imagens 4K com texto para imagem e imagem para imagem — tudo a partir do seu navegador."
         },
         {
-          "q": "Quanto posso comprimir minhas imagens?",
-          "a": "Os resultados de compressão variam dependendo da qualidade e formato da imagem original. Tipicamente, você pode alcançar uma redução de tamanho de 50-90% mantendo qualidade visual aceitável. Você pode ajustar as configurações de compressão para encontrar o equilíbrio perfeito para suas necessidades."
+          "q": "O gerador de vídeos AI é grátis?",
+          "a": "Sim! Os geradores de vídeos AI da Toolaze (Seedance 2.0, Kling 3.0) são grátis para usar online. Não é necessário registo. Crie vídeos 1080p–4K com texto para vídeo e imagem para vídeo — entrada multimodal, saída com qualidade de Hollywood."
+        },
+        {
+          "q": "Quanto custa um gerador de imagens AI grátis?",
+          "a": "O gerador de imagens AI da Toolaze é 100% grátis. Sem registo, sem cartão de crédito, sem limites diários. Crie imagens 4K com texto para imagem e imagem para imagem usando Nano Banana Pro ou Nano Banana 2 — tudo a partir do seu navegador."
+        },
+        {
+          "q": "Existe um gerador de texto para vídeo grátis online?",
+          "a": "Sim. O Toolaze oferece um gerador de texto para vídeo grátis online com Seedance 2.0 e Kling 3.0. Carregue texto, imagens, vídeo ou áudio — gere vídeos AI 1080p ou 4K com entrada multimodal. Não é necessário registo."
+        },
+        {
+          "q": "O que é AI de imagem para vídeo?",
+          "a": "AI de imagem para vídeo transforma as suas imagens carregadas em vídeos em movimento. Os geradores de vídeos AI grátis da Toolaze (Seedance 2.0, Kling 3.0) suportam imagem para vídeo juntamente com texto para vídeo. Adicione imagens ou vídeos de referência para mais controlo sobre a saída."
+        },
+        {
+          "q": "Posso usar o gerador de imagens AI online sem me registar?",
+          "a": "Sim. O gerador de imagens AI online da Toolaze não requer registo. Abra Nano Banana Pro ou Nano Banana 2, insira o seu prompt de texto ou carregue imagens de referência e gere imagens AI 4K instantaneamente — grátis."
         }
       ]
+    },
+    "toolWatermarkRemover": "Removedor de Marca d'Água AI Grátis Online",
+    "toolWatermarkRemoverDesc": "Remova logotipos, carimbos de data e sobreposições com um clique. Mantenha a textura natural e exporte imagens limpas instantaneamente. Não é necessário registo.",
+    "toolPhotoRestoration": "Restauração de Fotos Grátis Online",
+    "toolPhotoRestorationDesc": "Restaure fotos antigas, borradas ou arranhadas em segundos. Recupere rostos e detalhes mais claros com reparo AI de um clique. Não é necessário registo.",
+    "features": {
+      "freeGeneration": {
+        "title": "Criação Grátis de Imagens e Vídeos AI",
+        "desc": "Crie imagens AI 4K e vídeos com qualidade de Hollywood com Nano Banana 2, Seedance 2.0 e Kling 3.0. Texto para imagem, texto para vídeo, imagem para vídeo — tudo grátis online sem necessidade de registo."
+      },
+      "noLimits": {
+        "title": "Sem Limites, Totalmente Grátis",
+        "desc": "Gere quantas imagens e vídeos AI precisar. Sem limites diários, sem paywalls, sem marcas d'água. Todas as ferramentas AI e ferramentas de imagem são completamente grátis, sem custos ocultos."
+      },
+      "proOutput": {
+        "title": "Saída 4K e Entradas Multimodais",
+        "desc": "Os modelos de imagem AI suportam resolução de até 4K. Os modelos de vídeo AI aceitam texto, imagens, vídeo e áudio. Saída de qualidade profissional com geração rápida — pronta para produção para criadores."
+      },
+      "instantUse": {
+        "title": "Comece Instantaneamente",
+        "desc": "Comece a usar o nosso gerador de imagens AI e gerador de vídeos AI imediatamente sem criar uma conta. Sem registo por e-mail, sem recolha de informações pessoais. Basta abrir e criar."
+      }
     }
   },
   "footer": {
+    "aiTools": "Ferramentas IA",
+    "watermarkRemover": "Remover marca d'água",
+    "photoRestoration": "Restauração de fotos",
+    "aiCouplePhotoMaker": "Foto de casal IA",
+    "aiImage": "Imagem IA",
+    "aiVideo": "Vídeo IA",
     "imageCompression": "Compressão de Imagens",
     "imageConverter": "Conversor de Imagens",
     "fontGenerator": "Gerador de Fontes",
+    "emojiCopyAndPaste": "Emoji copiar e colar",
+    "nanoBananaPro": "Nano Banana Pro",
+    "nanoBanana2": "Nano Banana 2",
+    "seedance2": "Seedance 2.0",
+    "kling3": "Kling 3.0",
     "home": "Início",
     "allTools": "Todas as Ferramentas",
     "aboutUs": "Sobre Nós",

@@ -1,83 +1,206 @@
 {
   "nav": {
     "quickTools": "Schnelle Tools",
+    "aiTools": "KI-Tools",
     "imageCompression": "Bildkomprimierung",
     "imageConverter": "Bildkonverter",
+    "watermarkRemover": "Wasserzeichen entfernen",
+    "photoRestoration": "Fotorestaurierung",
+    "aiCouplePhotoMaker": "KI-Paarfoto",
     "fontGenerator": "Schriftgenerator",
+    "emojiCopyAndPaste": "Emoji kopieren & einfügen",
+    "aiImage": "KI-Bild",
+    "aiVideo": "KI-Video",
+    "nanoBananaPro": "Nano Banana Pro",
+    "nanoBanana2": "Nano Banana 2",
+    "gptImage2": "GPT Image 2",
+    "seedance2": "Seedance 2.0",
+    "kling3": "Kling 3.0",
     "aboutUs": "Über uns"
   },
   "home": {
     "metadata": {
-      "title": "Toolaze - Kostenloser KI-Bildkompressor & lokale Tools",
-      "description": "Komprimieren Sie Bilder lokal in Ihrem Browser. Keine Server-Uploads, 100% privat, kostenlose KI-Tools für Kreative."
+      "title": "Toolaze - Kostenloser KI Bildgenerator & KI Videogenerator Online",
+      "description": "Kostenloser KI Bildgenerator und KI Videogenerator online. Erstellen Sie 4K-Bilder mit Nano Banana 2, generieren Sie Videos mit Seedance 2.0 und Kling 3.0. Text-zu-Bild, Text-zu-Video. Keine Anmeldung erforderlich. Bildkomprimierung und Formatkonvertierungstools ebenfalls."
     },
-    "badge": "v1.0 Jetzt Live",
-    "title": "Kostenlose Leichtgewichtige Bildtools-Plattform.",
-    "titleLine1": "Kostenlos Leichtgewichtig",
-    "titleLine2": "Bildtools-Plattform.",
-    "subtitle": "Professionelle Bildverarbeitungstools, die vollständig in Ihrem Browser laufen. Keine Uploads, keine Limits.",
-    "cta": "Jetzt Bildkompressor ausprobieren →",
-    "sectionToolsTitle": "Alle verfügbaren Tools",
-    "sectionToolsSubtitle": "Ein Suite. Unendliche Möglichkeiten.",
+    "badge": "Kostenlose KI-Tools",
+    "titleLine1": "All-in-One KI Bild- & Video",
+    "titleLine2": "Erstellungsplattform",
     "badgeLive": "Live",
     "badgeComingSoon": "Demnächst",
+    "heroTitle": "All-in-One KI Bild- & Video-Erstellungsplattform",
+    "heroTagline": "Top KI-Modelle, professionelle Video- & Bilderstellung. Bildkomprimierung, Formatkonvertierung, Schriftgenerator – alles kostenlos, keine Anmeldung erforderlich.",
+    "ctaImage": "KI Bildgenerator testen",
+    "ctaVideo": "Bild zu Video",
+    "title": "Kostenloser KI Bildgenerator & KI Videogenerator Online.",
+    "subtitle": "Erstellen Sie 4K KI-Bilder und Hollywood-Qualitätsvideos mit modernsten Modellen. Text-zu-Bild, Text-zu-Video, Bild-zu-Video – keine Anmeldung, keine Grenzen.",
+    "cta": "KI Bildgenerator testen →",
+    "aiVideoTitle": "KI Videogenerator",
+    "aiVideoIntro": "Verwandeln Sie Ideen in wenigen Minuten mit KI in ansprechende Videos. Angetrieben von fortschrittlichen KI-Modellen hilft Ihnen der KI Videogenerator von Toolaze, beeindruckende Videos von Text-zu-Video und Bild-zu-Video zu erstellen. Keine besonderen Fähigkeiten erforderlich!",
+    "aiImageTitle": "KI Bildgenerator",
+    "aiImageIntro": "Generieren Sie sofort hochwertige Bilder mit KI. Von künstlerischen Illustrationen bis hin zu realistischen Visualisierungen verwandelt der KI Bildgenerator von Toolaze Ihre Ideen mit Text-zu-Bild und Bild-zu-Bild – schnell, flexibel und mühelos.",
+    "trendingTitle": "Trendige KI Bild- & Videomodelle, alles an einem Ort",
+    "trendingSubtitle": "Greifen Sie auf Seedance 2.0, Kling 3.0, Nano Banana Pro und Nano Banana 2 zu, ohne die Plattform wechseln zu müssen.",
+    "homepageToolCardSummaries": {
+      "seedance-2": {
+        "cardTitle": "Seedance 2.0",
+        "summary": "Kostenloser KI Videogenerator online für Text-zu-Video und Bild-zu-Video. Mischen Sie Prompts mit Referenzbildern, kurzen Clips und Audio – erhalten Sie 15-sekündige 1080p-Ausgabe mit natürlicher Bewegung und Stereoklang. Keine Anmeldung bei Toolaze."
+      },
+      "kling-3": {
+        "cardTitle": "Kling 3.0",
+        "summary": "KI Videogenerator mit nativer 4K- und 2K-Ausgabe, plus bis zu sechs filmischen Schnitten pro Durchlauf. Multimodale Eingaben und mehrsprachiges Audio für Anzeigen, Trailer und soziale Medien – probieren Sie Kling 3.0 kostenlos online aus."
+      },
+      "nano-banana-pro": {
+        "cardTitle": "Nano Banana Pro",
+        "summary": "KI Bildgenerator für Text-zu-Bild und detaillierte Bearbeitungen – scharfe Produktfotos, Porträts und Kampagnenbilder mit hoher Prompt-Treue. Erstellen Sie kostenlos online mit Nano Banana Pro auf Toolaze."
+      },
+      "nano-banana-2": {
+        "cardTitle": "Nano Banana 2",
+        "summary": "Schneller KI Bildgenerator für alltägliche Text-zu-Bild-Aufgaben und schnelle Varianten – ideal für Social-Media-Beiträge, Konzepte und iterative kreative Tests ohne aufwendige Pipeline."
+      },
+      "gpt-image-2": {
+        "cardTitle": "GPT Image 2",
+        "summary": "Text-zu-Bild-KI für klare Kompositionen und lesbaren Text im Bild – einfache Grafiken, Mockups und Hintergründe aus natürlichsprachigen Prompts. Kostenlos online ausprobieren."
+      },
+      "watermark-remover": {
+        "summary": "Kostenloser KI Wasserzeichen-Entferner online: Löschen Sie Logos, Datumsstempel und Überlagerungen, während Haut und Textur glaubwürdig bleiben. Läuft in Ihrem Browser für einen privaten, uploadfreien Workflow auf Toolaze."
+      },
+      "photo-restoration": {
+        "summary": "KI Fotorestaurierung für verblasste, zerkratzte oder unscharfe Bilder – stellen Sie klarere Gesichter und feinere Details für Drucke und Archive wieder her. Ein-Klick-Reparatur, kostenlos online."
+      },
+      "ai-couple-photo-maker": {
+        "summary": "KI Paar-Fotogenerator: Verwandeln Sie ein oder zwei Porträts in romantische oder filmische Duo-Szenen mit kuratierten Vorlagen – sofort teilbare Bilder ohne Studio-Shooting."
+      }
+    },
+    "aiToolsHubTitle": "Kostenlose KI-Tools für Bilder, Videos & alltägliche Medien-Workflows",
+    "aiToolsHubSubtitle": "Eine zentrale Anlaufstelle für KI-Bilderzeugung, KI-Videoerzeugung und schnelle Browser-Dienstprogramme – keine Anmeldung und keine Paywall.",
+    "aiToolsHubIntro": "Entdecken Sie kostenlose KI-Tools online, die für Kreative und Vermarkter entwickelt wurden, die zuverlässige Ergebnisse benötigen, ohne mehrere Websites jonglieren zu müssen. Kombinieren Sie führende Bild- und Videomodelle mit praktischen Helfern für Komprimierung, Konvertierung, Restaurierung und Typografie – alles strukturiert für klare SEO-Landingpages und schnelles Experimentieren.",
+    "aiToolsHubItems": [
+      {
+        "title": "KI Bildgeneratoren",
+        "description": "Liefern Sie kampagnenreife Visuals mit Text-zu-Bild und Bild-zu-Bild. Nano Banana Pro, Nano Banana 2 und GPT Image 2 liefern scharfe Details, flexible Seitenverhältnisse und Auflösungen bis zu 4K für Anzeigen, Social-Media-Beiträge und Konzeptkunst.",
+        "href": "/model/nano-banana-pro"
+      },
+      {
+        "title": "KI Videogeneratoren",
+        "description": "Verwandeln Sie Skripte und Referenzbilder in filmische Clips. Seedance 2.0 und Kling 3.0 unterstützen Text-zu-Video und Bild-zu-Video mit multimodalen Eingaben – ideal für Promos, Storyboards und Kurzgeschichten.",
+        "href": "/de/seedance-2"
+      },
+      {
+        "title": "Browser-Medien-Dienstprogramme",
+        "description": "Ergänzen Sie Ihren Workflow mit verlustbehafteter Bildkomprimierung, Formatkonvertierung, stilisierten Schriftvorschauen und Emoji-Kopieren-und-Einfügen – leichte, nicht-generative Dienstprogramme, die kostenlos in Ihrem Browser bleiben.",
+        "href": "/de/image-compressor"
+      }
+    ],
+    "advancedToolsTitle": "Weitere KI-gestützte Kreativ-Tools",
+    "advancedToolsSubtitle": "Porträtgenerierung, KI-Wasserzeichenentfernung und KI-Fotorestaurierung – kostenlos online ausprobieren, keine Anmeldung erforderlich.",
+    "utilityToolsTitle": "Kostenlose Browser-Tools für Bilder & Text",
+    "utilityToolsSubtitle": "Bildkomprimierung, Formatkonvertierung, stilisierte Schriftvorschauen und Emoji-Kopieren-und-Einfügen – schnelle Dienstprogramme in Ihrem Browser ohne generative KI.",
+    "faqTitle": "Haben Sie Fragen? Wir haben Antworten!",
+    "sectionAiImageTitle": "KI Bildmodelle",
+    "sectionAiImageSubtitle": "Kostenloser KI Bildgenerator online. Text-zu-Bild und Bild-zu-Bild. 4K-Ausgabe, schnelle Generierung, keine Registrierung. Erstellen Sie KI-Kunst mit Nano Banana Pro und Nano Banana 2.",
+    "sectionAiVideoTitle": "KI Videomodelle",
+    "sectionAiVideoSubtitle": "Kostenloser KI Videogenerator online. Text-zu-Video und Bild-zu-Video. 1080p–4K-Ausgabe, multimodale Videogenerierung. Erstellen Sie Videos mit Seedance 2.0 und Kling 3.0 – keine Anmeldung.",
+    "sectionToolsTitle": "Weitere Tools",
+    "sectionToolsSubtitle": "Bildkomprimierung, Formatkonvertierung, Schriftgenerator – alles kostenlos, alles in Ihrem Browser.",
+    "seoIntro": {
+      "title": "Kostenloser KI Bildgenerator & KI Videogenerator Online",
+      "paragraph1": "Toolaze ist Ihr kostenloser KI Bildgenerator und KI Videogenerator online. Erstellen Sie beeindruckende 4K KI-Bilder mit Text-zu-Bild und Bild-zu-Bild – angetrieben von Nano Banana Pro und Nano Banana 2. Generieren Sie Hollywood-Qualitätsvideos mit Text-zu-Video und Bild-zu-Video mit Seedance 2.0 und Kling 3.0. Keine Anmeldung, keine Kreditkarte, keine täglichen Limits.",
+      "paragraph2": "Egal, ob Sie einen kostenlosen KI Bildgenerator für Marketing-Mockups, soziale Inhalte oder KI-Kunst benötigen – oder einen kostenlosen KI Videogenerator für Anzeigen, Storyboards oder Kurzvideos – Toolaze liefert. Unsere KI-Bildmodelle unterstützen bis zu 4K-Auflösung mit schneller Generierung. Unsere KI-Videomodelle akzeptieren Text, Bilder, Videos und Audio für multimodale Videogenerierung. Beide unterstützen Bild-zu-Bild- und Bild-zu-Video-Workflows.",
+      "paragraph3": "Nutzen Sie unseren kostenlosen Text-zu-Bild-Generator und Text-zu-Video-Generator online. Komprimieren Sie Bilder, konvertieren Sie Formate und generieren Sie Schriftarten – alles an einem Ort. 100% kostenlos, keine Registrierung erforderlich."
+    },
     "toolImageCompressor": "Bildkompressor",
     "toolImageCompressorDesc": "Intelligente verlustbehaftete Komprimierung für JPG/PNG.",
     "toolFormatConverter": "Formatkonverter",
     "toolFormatConverterDesc": "HEIC zu JPG, PNG zu WEBP.",
-    "toolImageResize": "Bildgrößenänderung",
+    "toolFontGenerator": "Kostenloser Schriftgenerator",
+    "toolFontGeneratorDesc": "Generieren Sie kostenlos benutzerdefinierte Schriftarten online. Erstellen Sie kursive, ausgefallene, fette, kursive, gotische und Tattoo-Schriftarten. Sofort kopieren und einfügen. Keine Anmeldung erforderlich.",
+    "toolEmojiCopyAndPaste": "Emoji Kopieren & Einfügen",
+    "toolEmojiCopyAndPasteDesc": "Kopieren und Einfügen von Emojis online kostenlos. Nach Kategorie durchsuchen, suchen, Hautton auswählen und mit einem Klick kopieren. Keine Anmeldung erforderlich.",
+    "toolImageResize": "Bildgröße ändern",
     "toolImageResizeDesc": "Bilder auf exakte Abmessungen ändern.",
     "toolVideoCompressor": "Videokompressor",
     "toolVideoCompressorDesc": "Videos ohne Qualitätsverlust komprimieren.",
     "whyToolaze": {
       "badge": "Warum Toolaze?",
-      "title": "Gebaut für Datenschutz & Leistung",
-      "subtitle": "Alles, was Sie über Toolaze wissen müssen - die intelligente Wahl für Kreative, die Datenschutz und Qualität schätzen."
-    },
-    "features": {
-      "privacy": {
-        "title": "Datenschutz-First-Architektur",
-        "desc": "Im Gegensatz zu anderen Tools senden wir Ihre Bilder nicht an einen Remote-Server. Alles passiert direkt hier in Ihrem Browser mit WebAssembly. Ihre Dateien verlassen niemals Ihr Gerät und gewährleisten vollständige Privatsphäre und Sicherheit."
-      },
-      "unlimited": {
-        "title": "Unbegrenzt & Kostenlos",
-        "desc": "Komprimieren Sie so viele Bilder, wie Sie möchten. Keine täglichen Limits, keine Paywalls, keine Wasserzeichen. Alle Tools sind völlig kostenlos ohne versteckte Kosten oder Premium-Stufen."
-      },
-      "quality": {
-        "title": "Verlustfreie Qualitätskontrolle",
-        "desc": "Unsere fortschrittlichen Komprimierungsalgorithmen reduzieren die Dateigröße um bis zu 90%, während die visuelle Qualität erhalten bleibt. Sie kontrollieren den Komprimierungsgrad, um Größe und Qualität perfekt auszubalancieren."
-      },
-      "noRegistration": {
-        "title": "Keine Registrierung erforderlich",
-        "desc": "Beginnen Sie sofort mit der Verwendung unserer Tools, ohne ein Konto zu erstellen. Keine E-Mail-Anmeldung, keine Sammlung persönlicher Informationen. Öffnen Sie einfach das Tool und legen Sie los."
-      }
+      "title": "Für Kreative & Leistung entwickelt",
+      "subtitle": "Alles, was Sie wissen müssen, warum Toolaze die kluge Wahl für KI-Bilderzeugung, KI-Videoerzeugung und kreative Workflows ist."
     },
     "faq": {
-      "title": "Häufig gestellte Fragen",
+      "title": "Haben Sie Fragen? Wir haben Antworten!",
       "items": [
         {
-          "q": "Wie komprimiert Toolaze Bilder ohne sie hochzuladen?",
-          "a": "Toolaze verwendet WebAssembly und browserbasierte Bildverarbeitungs-APIs, um Bilder direkt in Ihrem Browser zu komprimieren. Ihre Dateien werden lokal auf Ihrem Gerät verarbeitet und niemals an einen Server gesendet. Dies gewährleistet vollständige Privatsphäre und schnellere Verarbeitung."
+          "q": "Was ist ein KI Bildgenerator?",
+          "a": "Ein KI Bildgenerator erstellt Bilder aus Text-Prompts oder Referenzbildern. Toolaze bietet kostenlose KI Bildgeneratoren wie Nano Banana Pro und Nano Banana 2 – die Text-zu-Bild und Bild-zu-Bild unterstützen, mit 4K-Ausgabe und ohne Anmeldung."
         },
         {
-          "q": "Welche Bildformate unterstützt Toolaze?",
-          "a": "Derzeit unterstützt unser Bildkompressor JPG-, PNG- und WEBP-Formate. Wir arbeiten daran, Unterstützung für weitere Formate einschließlich HEIC, BMP und TIFF in zukünftigen Updates hinzuzufügen."
+          "q": "Was ist ein KI Videogenerator?",
+          "a": "Ein KI Videogenerator erstellt Videos aus Text, Bildern oder anderen Medien. Toolaze bietet kostenlose KI Videogeneratoren wie Seedance 2.0 und Kling 3.0 – die Text-zu-Video und Bild-zu-Video unterstützen, mit 1080p–4K-Ausgabe und multimodaler Eingabe."
         },
         {
-          "q": "Gibt es ein Limit für die Dateigröße?",
-          "a": "Es gibt kein theoretisches Limit für die Dateigröße. Sehr große Bilder können jedoch je nach Leistung Ihres Geräts und verfügbarem Speicher zu einer Verlangsamung des Browsers führen. Wir empfehlen, große Dateien in kleineren Chargen zu verarbeiten, um die beste Erfahrung zu erzielen."
+          "q": "Ist der KI Bildgenerator kostenlos?",
+          "a": "Ja! Die KI Bildgeneratoren von Toolaze (Nano Banana Pro, Nano Banana 2) sind kostenlos online nutzbar. Keine Anmeldung, keine Kreditkarte, keine täglichen Limits. Erstellen Sie 4K-Bilder mit Text-zu-Bild und Bild-zu-Bild – alles direkt in Ihrem Browser."
         },
         {
-          "q": "Wie viel kann ich meine Bilder komprimieren?",
-          "a": "Die Komprimierungsergebnisse variieren je nach ursprünglicher Bildqualität und Format. Typischerweise können Sie eine Größenreduzierung von 50-90% erreichen, während eine akzeptable visuelle Qualität erhalten bleibt. Sie können die Komprimierungseinstellungen anpassen, um das perfekte Gleichgewicht für Ihre Bedürfnisse zu finden."
+          "q": "Ist der KI Videogenerator kostenlos?",
+          "a": "Ja! Die KI Videogeneratoren von Toolaze (Seedance 2.0, Kling 3.0) sind kostenlos online nutzbar. Keine Anmeldung erforderlich. Erstellen Sie 1080p–4K-Videos mit Text-zu-Video und Bild-zu-Video – multimodale Eingabe, Hollywood-Qualität."
+        },
+        {
+          "q": "Wie viel kostet ein kostenloser KI Bildgenerator?",
+          "a": "Der KI Bildgenerator von Toolaze ist 100% kostenlos. Keine Anmeldung, keine Kreditkarte, keine täglichen Limits. Erstellen Sie 4K-Bilder mit Text-zu-Bild und Bild-zu-Bild mit Nano Banana Pro oder Nano Banana 2 – alles direkt in Ihrem Browser."
+        },
+        {
+          "q": "Gibt es einen kostenlosen Text-zu-Video-Generator online?",
+          "a": "Ja. Toolaze bietet einen kostenlosen Text-zu-Video-Generator online mit Seedance 2.0 und Kling 3.0. Laden Sie Text, Bilder, Videos oder Audio hoch – generieren Sie 1080p- oder 4K-KI-Videos mit multimodaler Eingabe. Keine Registrierung erforderlich."
+        },
+        {
+          "q": "Was ist Bild-zu-Video-KI?",
+          "a": "Bild-zu-Video-KI verwandelt Ihre hochgeladenen Bilder in bewegte Videos. Die kostenlosen KI Videogeneratoren von Toolaze (Seedance 2.0, Kling 3.0) unterstützen Bild-zu-Video zusammen mit Text-zu-Video. Fügen Sie Referenzbilder oder -videos hinzu, um mehr Kontrolle über die Ausgabe zu erhalten."
+        },
+        {
+          "q": "Kann ich den KI Bildgenerator online ohne Anmeldung nutzen?",
+          "a": "Ja. Der KI Bildgenerator von Toolaze erfordert keine Anmeldung. Öffnen Sie Nano Banana Pro oder Nano Banana 2, geben Sie Ihren Text-Prompt ein oder laden Sie Referenzbilder hoch und generieren Sie sofort 4K KI-Bilder – kostenlos."
         }
       ]
+    },
+    "toolWatermarkRemover": "Kostenloser KI Wasserzeichen-Entferner Online",
+    "toolWatermarkRemoverDesc": "Entfernen Sie Logos, Datumsstempel und Überlagerungen mit einem Klick. Bewahren Sie die natürliche Textur und exportieren Sie sofort saubere Bilder. Keine Anmeldung erforderlich.",
+    "toolPhotoRestoration": "Kostenlose Fotorestaurierung Online",
+    "toolPhotoRestorationDesc": "Stellen Sie alte, unscharfe oder zerkratzte Fotos in Sekundenschnelle wieder her. Stellen Sie klarere Gesichter und Details mit einer Ein-Klick-KI-Reparatur wieder her. Keine Anmeldung erforderlich.",
+    "features": {
+      "freeGeneration": {
+        "title": "Kostenlose KI Bild- & Videoerstellung",
+        "desc": "Erstellen Sie 4K KI-Bilder und Hollywood-Qualitätsvideos mit Nano Banana 2, Seedance 2.0 und Kling 3.0. Text-zu-Bild, Text-zu-Video, Bild-zu-Video – alles kostenlos online und ohne Anmeldung."
+      },
+      "noLimits": {
+        "title": "Keine Limits, komplett kostenlos",
+        "desc": "Generieren Sie so viele KI-Bilder und -Videos, wie Sie benötigen. Keine täglichen Limits, keine Paywalls, keine Wasserzeichen. Alle KI-Tools und Bild-Tools sind komplett kostenlos und ohne versteckte Kosten."
+      },
+      "proOutput": {
+        "title": "4K-Ausgabe & multimodale Eingaben",
+        "desc": "KI-Bildmodelle unterstützen bis zu 4K-Auflösung. KI-Videomodelle akzeptieren Text, Bilder, Videos und Audio. Professionelle Ausgabe mit schneller Generierung – produktionsbereit für Kreative."
+      },
+      "instantUse": {
+        "title": "Sofort starten",
+        "desc": "Nutzen Sie unseren KI Bildgenerator und KI Videogenerator sofort, ohne ein Konto zu erstellen. Keine E-Mail-Anmeldung, keine Erfassung persönlicher Daten. Einfach öffnen und erstellen."
+      }
     }
   },
   "footer": {
+    "aiTools": "KI-Tools",
+    "watermarkRemover": "Wasserzeichen entfernen",
+    "photoRestoration": "Fotorestaurierung",
+    "aiCouplePhotoMaker": "KI-Paarfoto",
+    "aiImage": "KI-Bild",
+    "aiVideo": "KI-Video",
     "imageCompression": "Bildkomprimierung",
     "imageConverter": "Bildkonverter",
     "fontGenerator": "Schriftgenerator",
+    "emojiCopyAndPaste": "Emoji kopieren & einfügen",
+    "nanoBananaPro": "Nano Banana Pro",
+    "nanoBanana2": "Nano Banana 2",
+    "seedance2": "Seedance 2.0",
+    "kling3": "Kling 3.0",
     "home": "Startseite",
     "allTools": "Alle Tools",
     "aboutUs": "Über uns",

@@ -1,0 +1,152 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Générateur de photos de couple IA gratuit en ligne - Téléchargez une photo, choisissez une scène | Toolaze",
+    "description": "Utilisez le générateur de photos de couple IA gratuit en ligne avec Toolaze. Téléchargez une ou deux photos de couple, choisissez une scène prédéfinie comme un mariage, un voyage ou un studio, et générez des images de couple réalistes en quelques secondes."
+  },
+  "topComponent": "ai-couple-photo-maker",
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "<span class=\"text-gradient\">Générateur de photos de couple IA</span> gratuit en ligne",
+    "desc": "Téléchargez une ou deux photos de couple, choisissez une scène romantique prédéfinie et générez des portraits de couple cinématiques et réalistes en quelques secondes avec Toolaze."
+  },
+  "howToUse": {
+    "title": "Comment créer des photos de couple par IA",
+    "steps": [
+      {
+        "title": "Téléchargez les photos",
+        "desc": "Téléchargez une ou deux photos de couple (JPG, PNG ou WebP)."
+      },
+      {
+        "title": "Sélectionnez un modèle",
+        "desc": "Choisissez des préréglages de style ou personnalisés tels que Paris sous la pluie, Demande en mariage ou Plage."
+      },
+      {
+        "title": "Générez et téléchargez",
+        "desc": "Cliquez sur Générer pour créer votre photo de couple en PNG 1K et téléchargez le meilleur résultat."
+      }
+    ]
+  },
+  "features": {
+    "title": "Fonctionnalités clés",
+    "items": [
+      {
+        "icon": "📷",
+        "iconType": "quality",
+        "title": "Entrée d'une ou deux photos",
+        "desc": "Téléchargez une ou deux photos de référence pour préserver l'identité et l'alchimie du couple dans chaque scène générée."
+      },
+      {
+        "icon": "🎭",
+        "iconType": "multimodal",
+        "title": "Modèles de scènes prédéfinis",
+        "desc": "Choisissez parmi des modèles sélectionnés : Paris sous la pluie, toit terrasse de nuit, tapis rouge, plage au coucher du soleil, et plus encore."
+      },
+      {
+        "icon": "🖼️",
+        "iconType": "quality",
+        "title": "Ratio auto, Sortie PNG 1K",
+        "desc": "Les paramètres de sortie sont optimisés pour ce flux : format d'image automatique, format PNG et résolution 1K."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Génération rapide de photos",
+        "desc": "Générez rapidement des photos de couple réalistes de style éditorial directement depuis votre navigateur."
+      },
+      {
+        "icon": "🧩",
+        "iconType": "quality",
+        "title": "Modèles de style et personnalisés",
+        "desc": "Utilisez des invites de style prêtes à l'emploi ou des préréglages comme Demande en mariage, Plage et Cuisine pour une itération plus rapide."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Règle de crédits simple",
+        "desc": "Chaque génération utilise 40 crédits avec des paramètres fixes, offrant aux utilisateurs un flux de travail prévisible et cohérent."
+      }
+    ]
+  },
+  "intro": {
+    "title": "Pourquoi utiliser le générateur de photos de couple Toolaze ?",
+    "content": [
+      {
+        "title": "Photos de couple axées sur la scène",
+        "text": "La plupart des outils d'image nécessitent des invites complexes pour obtenir des résultats de qualité. Toolaze simplifie ce flux avec des modèles axés sur la scène et un processus visuel conçu pour un succès rapide."
+      },
+      {
+        "title": "Conçu pour des références de couples réels",
+        "text": "Téléchargez une photo de couple combinée ou deux références pour un ancrage d'identité plus précis. Les modèles guident la composition et l'ambiance tout en gardant les visages cohérents."
+      }
+    ]
+  },
+  "comparison": {
+    "title": "Toolaze vs Autres générateurs de photos de couple IA",
+    "smartChoice": "Le choix malin",
+    "toolaze": "Toolaze",
+    "vs": "VS",
+    "otherTools": "Autres outils",
+    "toolazeFeatures": "Téléchargement d'une/deux photos, Préréglages de scènes, Paramètres optimisés fixes, Flux de style romantique cohérent, Utilisation prévisible de 40 crédits, Flux de génération rapide",
+    "othersFeatures": "Configuration lourde en invites, Guidage de scène limité, Paramètres par défaut incohérents, Plus d'essais et d'erreurs, Coût en crédits flou, Itération plus lente"
+  },
+  "scenesTitle": "Cas d'utilisation",
+  "scenes": [
+    {
+      "icon": "💍",
+      "title": "Mariage et Demande en mariage",
+      "desc": "Créez des scènes romantiques pour des demandes, des annonces de fiançailles et des portraits de style mariage."
+    },
+    {
+      "icon": "🌆",
+      "title": "Rendez-vous nocturne en ville",
+      "desc": "Générez des ambiances de toit terrasse, de rues de nuit ou de tapis rouge pour des visuels de couple haut de gamme."
+    },
+    {
+      "icon": "🏖️",
+      "title": "Voyages et Vacances",
+      "desc": "Transformez une photo de couple ordinaire en souvenirs de plage au coucher du soleil, de montagne ou de vacances."
+    }
+  ],
+  "rating": {
+    "title": "Générateur de photos de couple IA",
+    "rating": "4.9/5 PAR PLUS DE 10K CRÉATEURS",
+    "text": "Créez des photos de couple romantiques avec des paramètres de qualité fixes et des modèles de scènes sélectionnés. Toolaze aide les créateurs à générer rapidement des visuels soignés."
+  },
+  "faqTitle": "Foire Aux Questions",
+  "faq": [
+    {
+      "q": "Comment fonctionne le générateur de photos de couple IA ?",
+      "a": "Téléchargez une ou deux photos de couple, sélectionnez un modèle de scène, puis générez. L'invite et les paramètres sont optimisés pour un résultat réaliste de style éditorial."
+    },
+    {
+      "q": "Puis-je télécharger une seule photo ou en faut-il deux ?",
+      "a": "Les deux sont pris en charge. Vous pouvez télécharger une seule photo du couple ou deux photos de référence distinctes selon vos fichiers source."
+    },
+    {
+      "q": "Quels paramètres sont utilisés pour la sortie ?",
+      "a": "Cette page utilise des paramètres fixes : modèle Nano Banana 2, ratio d'aspect automatique, format PNG et résolution 1K."
+    },
+    {
+      "q": "Les utilisateurs peuvent-ils changer de modèle sur cette page ?",
+      "a": "Non. Le changement de modèle est masqué pour maintenir la cohérence du flux de travail dédié aux photos de couple sur cette page de destination."
+    },
+    {
+      "q": "Combien de crédits coûte une génération ?",
+      "a": "Chaque génération coûte 40 crédits. La règle des crédits est affichée directement au-dessus du bouton Générer."
+    },
+    {
+      "q": "Les modèles incluent-ils des options prédéfinies et personnalisées ?",
+      "a": "Oui. La zone des modèles comprend des préréglages de Style et des préréglages Personnalisés tels que Demande en mariage, Plage et Cuisine."
+    }
+  ],
+  "moreTools": "Plus d'outils IA"
+}

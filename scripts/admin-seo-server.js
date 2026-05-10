@@ -11,7 +11,7 @@ const fs = require('fs')
 const path = require('path')
 const { spawn } = require('child_process')
 
-const PORT = 3007
+const PORT = Number.parseInt(process.env.PORT || '3007', 10) || 3007
 const ROOT = path.join(__dirname, '..')
 const DATA_ROOT = path.join(ROOT, 'src', 'data')
 const DOCS_ROOT = path.join(ROOT, 'docs')
@@ -40,8 +40,495 @@ function getFilePath(tool, slug, locale) {
   return path.join(DATA_ROOT, loc, tool, `${slug}.json`)
 }
 
-/** 工具板块显示顺序，靠前的排在顶部；未列出的按原顺序排在后面 */
-const TOOL_DISPLAY_ORDER = ['watermark-remover', 'image-compressor', 'image-compression', 'image-converter', 'font-generator', 'emoji-copy-and-paste', 'seedance-2', 'kling-3', 'nano-banana-pro', 'nano-banana-2']
+/** 虚拟工具：编辑各语言 common.json 中的 home（与 [locale] 首页一致） */
+const HOMEPAGE_TOOL_ID = 'homepage'
+
+function getCommonJsonPath(locale) {
+  return path.join(DATA_ROOT, locale || 'en', 'common.json')
+}
+
+function readCommonJson(locale) {
+  const p = getCommonJsonPath(locale)
+  const raw = fs.readFileSync(p, 'utf-8')
+  return JSON.parse(raw)
+}
+
+function writeCommonJson(locale, obj) {
+  const p = getCommonJsonPath(locale)
+  fs.mkdirSync(path.dirname(p), { recursive: true })
+  fs.writeFileSync(p, JSON.stringify(obj, null, 2), 'utf-8')
+}
+
+function isHomepageSeoTool(tool) {
+  return tool === HOMEPAGE_TOOL_ID
+}
+
+/** 与站点 src/lib/seo-loader 一致的翻译目标语言（不含仅作源的 en） */
+const TRANSLATION_TARGET_LOCALES = ['de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
+
+const LOCALE_LANGUAGE_NAMES = {
+  de: 'German',
+  ja: 'Japanese',
+  es: 'Spanish',
+  'zh-TW': 'Traditional Chinese (Taiwan)',
+  pt: 'Portuguese',
+  fr: 'French',
+  ko: 'Korean',
+  it: 'Italian',
+}
+
+/** 与 generateHreflangAlternates 一致：非英语站内路径带 /{locale} 前缀（英语无前缀） */
+const SITE_LOCALES_FOR_URL = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
+
+/**
+ * 允许加 locale 前缀的路径首段（存在 src/app/[locale]/... 对应路由或与 slug 页一致）
+ * 不在列表内的路径（如 /watermark-remover、/ai-tools）保持英文站根路径不变，避免 404
+ */
+const LOCALIZED_PATH_FIRST_SEGMENTS = new Set([
+  'about',
+  'privacy',
+  'terms',
+  'image-compressor',
+  'image-converter',
+  'font-generator',
+  'emoji-copy-and-paste',
+  'kling-3',
+  'seedance-2',
+])
+
+function splitPathQueryHash(raw) {
+  let path = raw
+  let hash = ''
+  const hi = path.indexOf('#')
+  if (hi >= 0) {
+    hash = path.slice(hi)
+    path = path.slice(0, hi)
+  }
+  let query = ''
+  const qi = path.indexOf('?')
+  if (qi >= 0) {
+    query = path.slice(qi)
+    path = path.slice(0, qi)
+  }
+  return { path, query, hash }
+}
+
+/**
+ * 将站内相对路径规范为当前翻译语言下的 URL（对齐 hreflang：非 en 为 /{locale}/path）
+ */
+function localizeInternalPath(pathOnly, targetLocale) {
+  const { path, query, hash } = splitPathQueryHash(pathOnly)
+  if (!path.startsWith('/') || path.startsWith('//')) return pathOnly
+
+  let segments = path.replace(/^\/+/, '').split('/').filter(Boolean)
+
+  if (segments.length && SITE_LOCALES_FOR_URL.includes(segments[0])) {
+    segments = segments.slice(1)
+  }
+
+  if (segments[0] === 'model' && segments[1] === 'seedance-2') {
+    segments = ['seedance-2', ...segments.slice(2)]
+  }
+
+  if (segments.length === 0) {
+    return `/${targetLocale}${query}${hash}`
+  }
+
+  const first = segments[0]
+  if (!LOCALIZED_PATH_FIRST_SEGMENTS.has(first)) {
+    return pathOnly
+  }
+
+  const tail = segments.join('/')
+  return `/${targetLocale}/${tail}${query}${hash}`
+}
+
+/** 递归处理 SEO JSON 中的相对站内 href（与 generateHreflangAlternates 一致） */
+function rewriteLocaleUrlsInString(str, targetLocale) {
+  if (typeof str !== 'string' || !str.includes('href=')) return str
+
+  return str.replace(/href="([^"]*)"/gi, (_, rawPath) => {
+    const t = rawPath.trim()
+    if (!t.startsWith('/') || t.startsWith('//')) return `href="${rawPath}"`
+    return `href="${localizeInternalPath(t, targetLocale)}"`
+  })
+}
+
+function rewriteLocaleUrlsInJson(obj, targetLocale) {
+  if (obj === null || obj === undefined) return obj
+  if (typeof obj === 'string') return rewriteLocaleUrlsInString(obj, targetLocale)
+  if (Array.isArray(obj)) return obj.map((x) => rewriteLocaleUrlsInJson(x, targetLocale))
+  if (typeof obj === 'object') {
+    const out = {}
+    for (const k of Object.keys(obj)) {
+      let v = rewriteLocaleUrlsInJson(obj[k], targetLocale)
+      if (k === 'href' && typeof v === 'string' && v.startsWith('/') && !v.startsWith('//')) {
+        v = localizeInternalPath(v, targetLocale)
+      }
+      out[k] = v
+    }
+    return out
+  }
+  return obj
+}
+
+function stableJson(value) {
+  if (value === null || value === undefined) return JSON.stringify(value)
+  if (typeof value !== 'object') return JSON.stringify(value)
+  if (Array.isArray(value)) return `[${value.map((v) => stableJson(v)).join(',')}]`
+  const keys = Object.keys(value).sort()
+  return `{${keys.map((k) => `${JSON.stringify(k)}:${stableJson(value[k])}`).join(',')}}`
+}
+
+function isSameContentAndStructure(a, b) {
+  return stableJson(a) === stableJson(b)
+}
+
+/** 将叶子值规范为占位，仅用于对比 JSON 结构（键、数组长度、嵌套）是否一致 */
+function structureOnly(obj) {
+  if (obj === null) return null
+  if (Array.isArray(obj)) return obj.map(structureOnly)
+  if (typeof obj !== 'object') {
+    if (typeof obj === 'string') return ''
+    if (typeof obj === 'number') return 0
+    if (typeof obj === 'boolean') return false
+    return null
+  }
+  const out = {}
+  for (const k of Object.keys(obj).sort()) {
+    out[k] = structureOnly(obj[k])
+  }
+  return out
+}
+
+function sameJsonStructure(a, b) {
+  try {
+    return stableJson(structureOnly(a)) === stableJson(structureOnly(b))
+  } catch {
+    return false
+  }
+}
+
+/** 从模型回复中提取第一个平衡的 {...}（忽略前文说明与 markdown 围栏） */
+function extractBalancedJsonObject(text) {
+  if (!text || typeof text !== 'string') return null
+  const start = text.indexOf('{')
+  if (start < 0) return null
+  let depth = 0
+  let inString = false
+  let escape = false
+  for (let i = start; i < text.length; i++) {
+    const c = text[i]
+    if (escape) {
+      escape = false
+      continue
+    }
+    if (inString) {
+      if (c === '\\') escape = true
+      else if (c === '"') inString = false
+      continue
+    }
+    if (c === '"') {
+      inString = true
+      continue
+    }
+    if (c === '{') depth++
+    else if (c === '}') {
+      depth--
+      if (depth === 0) return text.slice(start, i + 1)
+    }
+  }
+  return null
+}
+
+function extractJsonObjectFromLlmText(raw) {
+  if (raw == null || typeof raw !== 'string') return ''
+  let s = raw.trim()
+  if (s.charCodeAt(0) === 0xfeff) s = s.slice(1)
+  const fence = s.match(/```(?:json)?\s*([\s\S]*?)```/i)
+  if (fence) {
+    const inner = fence[1].trim()
+    const fromFence = extractBalancedJsonObject(inner) || (inner.startsWith('{') ? inner : null)
+    if (fromFence) return fromFence
+  }
+  const balanced = extractBalancedJsonObject(s)
+  if (balanced) return balanced
+  return s.trim()
+}
+
+function getKieApiKey() {
+  return (process.env.KIE_AI_API_KEY || process.env.ZHEN_AI_API_KEY || '').trim()
+}
+
+function getKieApiBase() {
+  return (process.env.KIE_API_BASE_URL || 'https://api.kie.ai').replace(/\/$/, '')
+}
+
+async function fetchKieChatOnce(bodyObj, timeoutMs) {
+  const apiKey = getKieApiKey()
+  if (!apiKey) throw new Error('未配置 KIE_AI_API_KEY 或 ZHEN_AI_API_KEY（kie.ai Bearer Token）')
+  const chatUrl = `${getKieApiBase()}/gemini-2.5-flash/v1/chat/completions`
+
+  const controller = new AbortController()
+  const timer = setTimeout(() => controller.abort(), timeoutMs)
+  try {
+    const res = await fetch(chatUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${apiKey}`,
+      },
+      body: JSON.stringify(bodyObj),
+      signal: controller.signal,
+    })
+    const rawText = await res.text()
+    let resJson
+    try {
+      resJson = JSON.parse(rawText)
+    } catch {
+      throw new Error(`KIE API 返回非 JSON: HTTP ${res.status} ${rawText.slice(0, 240)}`)
+    }
+    return { res, resJson }
+  } finally {
+    clearTimeout(timer)
+  }
+}
+
+async function fetchKieChat(bodyObj, timeoutMs = 240000, retries = 3) {
+  const apiKey = getKieApiKey()
+  if (!apiKey) throw new Error('未配置 KIE_AI_API_KEY 或 ZHEN_AI_API_KEY（kie.ai Bearer Token）')
+
+  let lastErr
+  for (let attempt = 0; attempt < retries; attempt++) {
+    try {
+      async function oneShot(body) {
+        return fetchKieChatOnce(body, timeoutMs)
+      }
+
+      let { res, resJson } = await oneShot(bodyObj)
+      if (resJson.error && /response_format|json_object/i.test(String(resJson.error.message || ''))) {
+        const retryBody = { ...bodyObj }
+        delete retryBody.response_format
+        ;({ res, resJson } = await oneShot(retryBody))
+      }
+      if (!res.ok || resJson.error) {
+        const msg = resJson.error?.message || resJson.error || `HTTP ${res.status}`
+        throw new Error(typeof msg === 'string' ? msg : JSON.stringify(msg))
+      }
+      return resJson
+    } catch (e) {
+      lastErr = e
+      const msg = e.message || String(e)
+      const retryable =
+        /fetch failed|ECONNRESET|ETIMEDOUT|ENOTFOUND|EAI_AGAIN|socket|network|abort|Failed to fetch/i.test(msg)
+      if (!retryable || attempt === retries - 1) throw e
+      const wait = 2000 * (attempt + 1)
+      console.warn(`[fetchKieChat] 第 ${attempt + 1} 次请求失败: ${msg.slice(0, 160)} — ${wait}ms 后重试`)
+      await new Promise((r) => setTimeout(r, wait))
+    }
+  }
+  throw lastErr
+}
+
+function extractChatContentFromResponse(json) {
+  const choice = json?.choices?.[0]
+  const msg = choice?.message
+  const c = msg?.content
+
+  if (typeof c === 'string' && c.trim()) return c
+  if (Array.isArray(c)) {
+    const parts = c
+      .map((p) => {
+        if (typeof p === 'string') return p
+        if (p && typeof p === 'object') return p.text || p.content || ''
+        return ''
+      })
+      .filter(Boolean)
+    if (parts.length) return parts.join('\n')
+  }
+  if (c && typeof c === 'object') {
+    const text = c.text || c.content || ''
+    if (typeof text === 'string' && text.trim()) return text
+  }
+  if (typeof choice?.text === 'string' && choice.text.trim()) return choice.text
+  return ''
+}
+
+/**
+ * 使用 KIE Gemini 2.5 Flash（OpenAI 兼容 Chat）将整页 SEO JSON 译为指定语言
+ * @see https://docs.kie.ai/market/gemini/gemini-2-5-flash
+ */
+function buildTranslateMessages(sourceObj, targetLocale, extraUserHint = '') {
+  const lang = LOCALE_LANGUAGE_NAMES[targetLocale] || targetLocale
+  const model = process.env.KIE_GEMINI_MODEL || 'gemini-2.5-flash'
+  const systemContent =
+    `You translate Toolaze SEO JSON for international pages.\n` +
+    `CRITICAL: Your entire reply must be ONLY a raw JSON object. ` +
+    `Do not write any introduction, explanation, or closing text in any language (e.g. no "Aqui está", no "Here is"). ` +
+    `Do not wrap in markdown. Start the first character with { and end with }.\n` +
+    `The output MUST have the exact same keys, nesting depth, and array lengths as the input. ` +
+    `Translate every human-readable string value into ${lang} (locale: ${targetLocale}). Do not skip or leave long passages in English. ` +
+    `Never rename JSON keys. Keep boolean/number/null unchanged. ` +
+    `Keep sectionsOrder values exactly as in input (identifiers like howToUse, features). ` +
+    `Preserve HTML tags and attributes; translate only visible text. Preserve emoji. ` +
+    `Keep href paths like the English source (e.g. /font-generator/cursive); the server will add /{locale}/ where needed. ` +
+    `Keep machine identifiers unchanged. Do not add or remove fields.`
+
+  const userContent =
+    (extraUserHint ? `${extraUserHint}\n\n` : '') +
+    `Translate the following JSON into ${lang}. Output only the JSON object.\n\n${JSON.stringify(sourceObj)}`
+
+  return { model, messages: [{ role: 'system', content: systemContent }, { role: 'user', content: userContent }] }
+}
+
+function parseTranslatedJsonFromChatContent(content, contextLabel) {
+  if (!content || typeof content !== 'string') {
+    throw new Error(`${contextLabel}: API 返回空内容`)
+  }
+  const extracted = extractJsonObjectFromLlmText(content)
+  if (!extracted || !String(extracted).trim().startsWith('{')) {
+    throw new Error(
+      `${contextLabel}: 无法从模型回复中提取 JSON。前 240 字符: ${String(content).slice(0, 240)}`
+    )
+  }
+  try {
+    return JSON.parse(extracted)
+  } catch (e) {
+    throw new Error(
+      `${contextLabel}: 译文无法解析为 JSON: ${e.message}. 提取片段前 200 字符: ${String(extracted).slice(0, 200)}`
+    )
+  }
+}
+
+async function translateSeoJsonWithKieSingle(sourceObj, targetLocale, options = {}) {
+  const { useResponseFormat = true, temperature = 0.2, extraUserHint = '' } = options
+  const { model, messages } = buildTranslateMessages(sourceObj, targetLocale, extraUserHint)
+  const reqBody = {
+    model,
+    messages,
+    temperature,
+    max_tokens: Number.parseInt(process.env.KIE_TRANSLATE_MAX_TOKENS || '65536', 10) || 65536,
+  }
+  if (useResponseFormat) reqBody.response_format = { type: 'json_object' }
+
+  let json = await fetchKieChat(reqBody)
+  let content = extractChatContentFromResponse(json)
+  let finish = json?.choices?.[0]?.finish_reason || ''
+
+  if (!content) {
+    const retryBody = { ...reqBody, temperature: 0.05 }
+    json = await fetchKieChat(retryBody)
+    content = extractChatContentFromResponse(json)
+    finish = json?.choices?.[0]?.finish_reason || finish
+  }
+
+  if (!content) {
+    const keys = json && typeof json === 'object' ? Object.keys(json).join(', ') : 'n/a'
+    throw new Error(`API 未返回可解析内容（finish_reason=${finish}, response_keys=${keys}）`)
+  }
+
+  const parsed = parseTranslatedJsonFromChatContent(content, targetLocale)
+  return { parsed, finish }
+}
+
+/** 按顶层 key 分片翻译后合并，避免超长 JSON 截断导致漏译 */
+async function translateSeoJsonWithKieChunked(sourceObj, targetLocale) {
+  const keys = Object.keys(sourceObj)
+  if (keys.length === 0) return {}
+  const BATCH = Math.max(1, Number.parseInt(process.env.KIE_TRANSLATE_CHUNK_KEYS || '4', 10) || 4)
+  let merged = {}
+  for (let i = 0; i < keys.length; i += BATCH) {
+    const slice = {}
+    for (const k of keys.slice(i, i + BATCH)) slice[k] = sourceObj[k]
+    const hint = `This is part ${Math.floor(i / BATCH) + 1} of ${Math.ceil(keys.length / BATCH)} of the same document. Translate ALL strings in this part completely into the target language.`
+    const { parsed } = await translateSeoJsonWithKieSingle(slice, targetLocale, {
+      useResponseFormat: true,
+      temperature: 0.15,
+      extraUserHint: hint,
+    })
+    merged = { ...merged, ...parsed }
+  }
+  if (!sameJsonStructure(sourceObj, merged)) {
+    throw new Error(
+      `${targetLocale}: 分片翻译后结构与原文不一致（请减小 KIE_TRANSLATE_CHUNK_KEYS 或重试）`
+    )
+  }
+  return merged
+}
+
+async function translateSeoJsonWithKie(sourceObj, targetLocale) {
+  const strLen = JSON.stringify(sourceObj).length
+  const forceChunk = strLen >= (Number.parseInt(process.env.KIE_TRANSLATE_CHUNK_MIN_CHARS || '14000', 10) || 14000)
+
+  if (forceChunk) {
+    return translateSeoJsonWithKieChunked(sourceObj, targetLocale)
+  }
+
+  let lastErr
+  for (const useFmt of [true, false]) {
+    try {
+      let { parsed, finish } = await translateSeoJsonWithKieSingle(sourceObj, targetLocale, {
+        useResponseFormat: useFmt,
+        temperature: 0.2,
+      })
+      if (finish === 'length' || !sameJsonStructure(sourceObj, parsed)) {
+        console.warn(
+          `[translate-seo] ${targetLocale}: 整包翻译截断或结构不一致 (finish=${finish})，改分片重试`
+        )
+        return translateSeoJsonWithKieChunked(sourceObj, targetLocale)
+      }
+      return parsed
+    } catch (e) {
+      lastErr = e
+      const msg = e.message || String(e)
+      if (useFmt && /无法解析|extract|JSON|未返回可解析|为空/i.test(msg)) {
+        console.warn(`[translate-seo] ${targetLocale}: JSON 解析失败，将关闭 response_format 重试一次`)
+        continue
+      }
+      throw e
+    }
+  }
+  throw lastErr || new Error(`${targetLocale}: 翻译失败`)
+}
+
+/** 工具板块显示顺序（不含虚拟首页）；靠前的排在顶部；未列出的按 id 字母序排在后面 */
+const TOOL_DISPLAY_ORDER = [
+  'watermark-remover',
+  'image-compressor',
+  'image-compression',
+  'image-converter',
+  'font-generator',
+  'emoji-copy-and-paste',
+  'seedance-2',
+  'kling-3',
+  'nano-banana-pro',
+  'nano-banana-2',
+  'photo-restoration',
+  'ai-couple-photo-maker',
+]
+
+/** 用于「最近上线」排序：取 en 下该工具 L2 文件或子目录内 JSON 的最新 mtime */
+function getToolLatestMtimeMs(enDir, toolId) {
+  const flat = path.join(enDir, `${toolId}.json`)
+  try {
+    if (fs.existsSync(flat)) return fs.statSync(flat).mtimeMs
+  } catch {}
+  const dir = path.join(enDir, toolId)
+  try {
+    const st = fs.statSync(dir)
+    if (!st.isDirectory()) return 0
+    let max = st.mtimeMs
+    for (const f of fs.readdirSync(dir)) {
+      if (!f.endsWith('.json')) continue
+      try {
+        const ms = fs.statSync(path.join(dir, f)).mtimeMs
+        if (ms > max) max = ms
+      } catch {}
+    }
+    return max
+  } catch {}
+  return 0
+}
 
 async function listTools() {
   const enDir = path.join(DATA_ROOT, 'en')
@@ -80,8 +567,23 @@ async function listTools() {
     }
   }
 
-  const arr = Array.from(toolMap.entries()).map(([id, v]) => ({ id, ...v }))
-  arr.sort((a, b) => {
+  const arr = Array.from(toolMap.entries())
+    .map(([id, v]) => ({ id, ...v }))
+    .filter((t) => t.id !== HOMEPAGE_TOOL_ID)
+
+  let recentId = ''
+  let recentMtime = -1
+  for (const t of arr) {
+    const m = getToolLatestMtimeMs(enDir, t.id)
+    if (m > recentMtime) {
+      recentMtime = m
+      recentId = t.id
+    }
+  }
+
+  const recentEntry = arr.find((t) => t.id === recentId)
+  const others = arr.filter((t) => t.id !== recentId)
+  others.sort((a, b) => {
     const ia = TOOL_DISPLAY_ORDER.indexOf(a.id)
     const ib = TOOL_DISPLAY_ORDER.indexOf(b.id)
     if (ia >= 0 && ib >= 0) return ia - ib
@@ -89,7 +591,252 @@ async function listTools() {
     if (ib >= 0) return 1
     return a.id.localeCompare(b.id)
   })
-  return arr
+
+  const homepageEntry = {
+    id: HOMEPAGE_TOOL_ID,
+    name: '首页 (多语言 /)',
+    pages: [{ slug: '', name: 'common.home' }],
+  }
+
+  return recentEntry ? [homepageEntry, recentEntry, ...others] : [homepageEntry, ...others]
+}
+
+/** 与 src/app/page.tsx、src/lib/seo-loader.ts 一致（英文首页模型区） */
+const HOME_PREVIEW_VIDEO_MODEL_L2S = ['seedance-2', 'kling-3']
+const HOME_PREVIEW_IMAGE_MODEL_L2S = ['nano-banana-pro', 'nano-banana-2', 'gpt-image-2']
+/** 与 src/lib/homepage-grid-tools.ts 保持一致 */
+const HOME_PREVIEW_ADVANCED_AI_TOOLS = ['ai-couple-photo-maker', 'watermark-remover', 'photo-restoration']
+const HOME_PREVIEW_UTILITY_TOOLS = ['image-compressor', 'image-converter', 'font-generator', 'emoji-copy-and-paste']
+const HOMEPAGE_TOOL_CARD_KEYS = [
+  'toolImageCompressor',
+  'toolImageCompressorDesc',
+  'toolFormatConverter',
+  'toolFormatConverterDesc',
+  'toolFontGenerator',
+  'toolFontGeneratorDesc',
+  'toolEmojiCopyAndPaste',
+  'toolEmojiCopyAndPasteDesc',
+  'toolWatermarkRemover',
+  'toolWatermarkRemoverDesc',
+  'toolPhotoRestoration',
+  'toolPhotoRestorationDesc',
+  'toolImageResize',
+  'toolImageResizeDesc',
+  'toolVideoCompressor',
+  'toolVideoCompressorDesc',
+]
+
+/** 与 src/lib/home-advanced-ai-card-images.ts 路径一致；缩略图长边≤800px、约≤100KB（最终使用 R2 URL） */
+const HOME_ADVANCED_AI_CARD_IMAGES = {
+  'ai-couple-photo-maker': 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-advanced-ai/ai-couple-photo-maker.jpg',
+  'watermark-remover': 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-advanced-ai/watermark-remover.jpg',
+  'photo-restoration': 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-advanced-ai/photo-restoration.jpg',
+}
+/** 与 src/lib/home-model-card-images.ts 一致（首页 AI Video / AI Image / Trending，最终使用 R2 URL） */
+const HOME_MODEL_CARD_IMAGES = {
+  'nano-banana-pro': 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/nano-banana-pro.jpg',
+  'nano-banana-2': 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/nano-banana-2.jpg',
+  'gpt-image-2': 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/gpt-image-2.jpg',
+  'seedance-2': 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/seedance-2.jpg',
+  'kling-3': 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/kling-3.jpg',
+}
+
+const HOME_PREVIEW_AI_IMAGE_PATHS = {
+  'nano-banana-pro': '/model/nano-banana-pro',
+  'nano-banana-2': '/model/nano-banana-2',
+  'gpt-image-2': '/model/gpt-image-2-0',
+}
+const HOME_PREVIEW_AI_VIDEO_PATHS = {
+  'seedance-2': '/model/seedance-2',
+  'kling-3': '/model/kling-3',
+}
+
+function withImageCacheBust(publicPath) {
+  if (!publicPath || typeof publicPath !== 'string' || !publicPath.startsWith('/')) return publicPath
+  try {
+    const diskPath = path.join(ROOT, 'public', publicPath.replace(/^\/+/, ''))
+    if (!fs.existsSync(diskPath)) return publicPath
+    const ms = Math.floor(fs.statSync(diskPath).mtimeMs)
+    return `${publicPath}?v=${ms}`
+  } catch {
+    return publicPath
+  }
+}
+
+function stripHtmlPreview(s) {
+  return String(s || '')
+    .replace(/<[^>]*>/g, '')
+    .trim()
+}
+
+function homePreviewHref(tool, locale) {
+  const base =
+    HOME_PREVIEW_AI_IMAGE_PATHS[tool] ||
+    HOME_PREVIEW_AI_VIDEO_PATHS[tool] ||
+    `/${tool}`
+  if (!locale || locale === 'en') return base
+  return `/${locale}${base}`
+}
+
+function readL2JsonPreview(tool, locale) {
+  const loc = locale || 'en'
+  const tryRead = (lc) => {
+    const p = path.join(DATA_ROOT, lc, `${tool}.json`)
+    if (!fs.existsSync(p)) return null
+    try {
+      return JSON.parse(fs.readFileSync(p, 'utf-8'))
+    } catch {
+      return null
+    }
+  }
+  // seedance-2 / kling-3（等）L2 仅存在于 en；与 getL2SeoContent / 线上首页一致：缺省时回退英文
+  const primary = tryRead(loc)
+  if (primary) return primary
+  if (loc !== 'en') return tryRead('en')
+  return null
+}
+
+function readHomepageToolCardSummariesForPreview(locale) {
+  try {
+    const raw = fs.readFileSync(getCommonJsonPath(locale || 'en'), 'utf-8')
+    const common = JSON.parse(raw)
+    const m = common?.home?.homepageToolCardSummaries
+    return m && typeof m === 'object' && !Array.isArray(m) ? m : {}
+  } catch {
+    return {}
+  }
+}
+
+function applyHomepageSummaryToPreviewCard(card, summaries) {
+  if (!card || !summaries) return card
+  const s = summaries[card.tool]
+  if (!s || typeof s !== 'object') return card
+  const summary = typeof s.summary === 'string' && s.summary.trim() ? s.summary.trim() : null
+  const cardTitle = typeof s.cardTitle === 'string' && s.cardTitle.trim() ? s.cardTitle.trim() : null
+  if (!summary && !cardTitle) return card
+  return {
+    ...card,
+    ...(cardTitle ? { modelName: cardTitle, title: cardTitle } : {}),
+    ...(summary ? { featuredDesc: summary, description: summary } : {}),
+  }
+}
+
+function buildHomepagePreviewModels(locale) {
+  const loc = locale || 'en'
+  const homepageSummaries = readHomepageToolCardSummariesForPreview(loc)
+  const homepageCommon = (() => {
+    try {
+      return readCommonJson(loc)?.home || {}
+    } catch {
+      return {}
+    }
+  })()
+
+  function cardFromData(tool, data, kind) {
+    if (!data) return null
+    const getFeaturedDesc = (d) => {
+      const desc = d?.modelIntro?.description?.[0]
+      const card = d?.modelIntro?.featureCards?.[0]?.content
+      return stripHtmlPreview(desc || card || '')
+    }
+    const meta = {
+      modelName: data?.modelIntro?.modelName,
+      modelType: data?.modelIntro?.modelType,
+    }
+    const title = stripHtmlPreview(data?.hero?.h1 || '')
+    const description = stripHtmlPreview(data?.hero?.desc || data?.metadata?.description || '')
+    const featuredDesc = getFeaturedDesc(data)
+    return {
+      tool,
+      kind,
+      title,
+      description,
+      featuredDesc,
+      modelName: meta.modelName,
+      modelType: meta.modelType,
+      href: homePreviewHref(tool, loc),
+      previewImage: withImageCacheBust(HOME_MODEL_CARD_IMAGES[tool]),
+    }
+  }
+
+  const aiVideoTools = []
+  for (const tool of HOME_PREVIEW_VIDEO_MODEL_L2S) {
+    const data = readL2JsonPreview(tool, loc)
+    const c = cardFromData(tool, data, 'video')
+    if (c) aiVideoTools.push(applyHomepageSummaryToPreviewCard(c, homepageSummaries))
+  }
+
+  const aiImageTools = []
+  for (const tool of HOME_PREVIEW_IMAGE_MODEL_L2S) {
+    const data = readL2JsonPreview(tool, loc)
+    const c = cardFromData(tool, data, 'image')
+    if (c) aiImageTools.push(applyHomepageSummaryToPreviewCard(c, homepageSummaries))
+  }
+
+  const trendingModels = [...aiVideoTools, ...aiImageTools]
+
+  function pushGridTool(arr, tool, usesAi) {
+    const previewImage = usesAi ? withImageCacheBust(HOME_ADVANCED_AI_CARD_IMAGES[tool]) : undefined
+    const data = readL2JsonPreview(tool, loc)
+    if (!data) return
+    const localizedUtilityOverrides = {
+      'image-compressor': {
+        title: stripHtmlPreview(homepageCommon?.toolImageCompressor || ''),
+        description: stripHtmlPreview(homepageCommon?.toolImageCompressorDesc || ''),
+      },
+      'image-converter': {
+        title: stripHtmlPreview(homepageCommon?.toolFormatConverter || ''),
+        description: stripHtmlPreview(homepageCommon?.toolFormatConverterDesc || ''),
+      },
+      'font-generator': {
+        title: stripHtmlPreview(homepageCommon?.toolFontGenerator || ''),
+        description: stripHtmlPreview(homepageCommon?.toolFontGeneratorDesc || ''),
+      },
+      'emoji-copy-and-paste': {
+        title: stripHtmlPreview(homepageCommon?.toolEmojiCopyAndPaste || ''),
+        description: stripHtmlPreview(homepageCommon?.toolEmojiCopyAndPasteDesc || ''),
+      },
+      'watermark-remover': {
+        title: stripHtmlPreview(homepageCommon?.toolWatermarkRemover || ''),
+        description: stripHtmlPreview(homepageCommon?.toolWatermarkRemoverDesc || ''),
+      },
+      'photo-restoration': {
+        title: stripHtmlPreview(homepageCommon?.toolPhotoRestoration || ''),
+        description: stripHtmlPreview(homepageCommon?.toolPhotoRestorationDesc || ''),
+      },
+    }
+    const utilityOverride = localizedUtilityOverrides[tool] || {}
+
+    const row = {
+      tool,
+      kind: 'other',
+      usesAi,
+      title: utilityOverride.title || stripHtmlPreview(data?.hero?.h1 || '') || tool,
+      description: utilityOverride.description || stripHtmlPreview(data?.hero?.desc || data?.metadata?.description || ''),
+      href: homePreviewHref(tool, loc),
+      previewImage,
+    }
+    arr.push(applyHomepageSummaryToPreviewCard(row, homepageSummaries))
+  }
+
+  const advancedAiTools = []
+  for (const tool of HOME_PREVIEW_ADVANCED_AI_TOOLS) {
+    pushGridTool(advancedAiTools, tool, true)
+  }
+
+  const utilityTools = []
+  for (const tool of HOME_PREVIEW_UTILITY_TOOLS) {
+    pushGridTool(utilityTools, tool, false)
+  }
+
+  return {
+    locale: loc,
+    aiVideoTools,
+    aiImageTools,
+    trendingModels,
+    advancedAiTools,
+    utilityTools,
+  }
 }
 
 function parseQuery(url) {
@@ -169,7 +916,7 @@ function extractTextBySection(parsed) {
   for (const s of scenesList) { add('scenes', s.title); add('scenes', s.desc) }
   if (parsed.rating) { add('rating', parsed.rating.title); add('rating', parsed.rating.text) }
   add('faq', parsed.faqTitle || parsed.faq?.title)
-  const faqList = Array.isArray(parsed.faq) ? parsed.faq : (parsed.faq?.list || [])
+  const faqList = Array.isArray(parsed.faq) ? parsed.faq : (parsed.faq?.list || parsed.faq?.items || [])
   for (const f of faqList) { add('faq', f.q || f.question); add('faq', f.a || f.answer) }
   const labels = { metadata: 'Metadata', hero: 'Hero', howToUse: 'How To Use', modelIntro: 'Model Intro', features: 'Features', intro: 'Intro', comparison: 'Comparison', scenes: 'Scenarios', rating: 'Rating', faq: 'FAQ' }
   return Object.fromEntries(Object.entries(sections).map(([k, v]) => [k, { label: labels[k] || k, text: String(v).trim() }]))
@@ -313,9 +1060,46 @@ function generateSeoReport(parsed, tool, slug, keywordsContent) {
   return { markdown: lines.join('\n'), used, links, wordCount }
 }
 
+function normalizeRequestPathname(url) {
+  let p = (url.split('?')[0] || '/').trim()
+  try {
+    p = decodeURIComponent(p)
+  } catch {
+    /* ignore */
+  }
+  p = p.replace(/\/+/g, '/')
+  if (!p.startsWith('/')) p = '/' + p
+  p = p.replace(/\/$/, '') || '/'
+  return p
+}
+
+/** 与浏览器地址栏一致，保证注入的 API_BASE 与当前页同源 */
+function getAdminOriginFromRequest(req) {
+  const host = (req.headers.host || '').trim()
+  if (!host) return `http://127.0.0.1:${PORT}`
+  const xf = String(req.headers['x-forwarded-proto'] || '')
+    .split(',')[0]
+    .trim()
+  const proto =
+    xf === 'https' || xf === 'http'
+      ? xf
+      : req.socket && req.socket.encrypted
+        ? 'https'
+        : 'http'
+  return `${proto}://${host}`
+}
+
+function injectAdminHtmlOrigin(html, req) {
+  const origin = getAdminOriginFromRequest(req)
+  return html.replace(
+    /window\.__TOOLAZE_SEO_ADMIN_ORIGIN__\s*=\s*null\s*\/\/\s*__ADMIN_ORIGIN_PLACEHOLDER__/,
+    `window.__TOOLAZE_SEO_ADMIN_ORIGIN__ = ${JSON.stringify(origin)} // bound to request Host`
+  )
+}
+
 const server = http.createServer(async (req, res) => {
   const url = req.url || ''
-  let pathname = (url.split('?')[0] || '/').replace(/\/$/, '') || '/'
+  let pathname = normalizeRequestPathname(url)
   const params = parseQuery(url)
 
   res.setHeader('Access-Control-Allow-Origin', '*')
@@ -333,6 +1117,19 @@ const server = http.createServer(async (req, res) => {
       const tools = await listTools()
       res.writeHead(200, { 'Content-Type': 'application/json' })
       res.end(JSON.stringify(tools))
+    } catch (e) {
+      res.writeHead(500, { 'Content-Type': 'application/json' })
+      res.end(JSON.stringify({ error: e.message }))
+    }
+    return
+  }
+
+  if (pathname === '/api/homepage-preview-models' && req.method === 'GET') {
+    try {
+      const locale = params.locale != null ? String(params.locale).trim() || 'en' : 'en'
+      const payload = buildHomepagePreviewModels(locale)
+      res.writeHead(200, { 'Content-Type': 'application/json' })
+      res.end(JSON.stringify(payload))
     } catch (e) {
       res.writeHead(500, { 'Content-Type': 'application/json' })
       res.end(JSON.stringify({ error: e.message }))
@@ -389,7 +1186,27 @@ const server = http.createServer(async (req, res) => {
 
   if (pathname === '/api/health') {
     res.writeHead(200, { 'Content-Type': 'application/json' })
-    res.end(JSON.stringify({ ok: true, version: '1.1' }))
+    res.end(
+      JSON.stringify({
+        ok: true,
+        version: '1.3',
+        translateSeo: true,
+        hint: '若浏览器翻译仍 404，说明进程未重启：Ctrl+C 后重新 npm run admin:seo',
+      })
+    )
+    return
+  }
+
+  /** GET 探测：旧版无此路由会 404；便于在地址栏直接验证是否已加载新脚本 */
+  if (pathname === '/api/translate-seo' && req.method === 'GET') {
+    res.writeHead(200, { 'Content-Type': 'application/json' })
+    res.end(
+      JSON.stringify({
+        ok: true,
+        translateSeo: true,
+        usage: 'POST JSON: { tool, slug?, sourceLocale?, targetLocales[] }',
+      })
+    )
     return
   }
 
@@ -441,10 +1258,46 @@ const server = http.createServer(async (req, res) => {
       return
     }
     try {
-      const filePath = getFilePath(tool, slug || null, 'en')
-      const exists = fs.existsSync(filePath)
+      let exists = false
+      if (isHomepageSeoTool(tool) && !slug) {
+        const p = getCommonJsonPath('en')
+        exists = fs.existsSync(p)
+      } else {
+        const filePath = getFilePath(tool, slug || null, 'en')
+        exists = fs.existsSync(filePath)
+      }
       res.writeHead(200, { 'Content-Type': 'application/json' })
       res.end(JSON.stringify({ exists }))
+    } catch (e) {
+      res.writeHead(500, { 'Content-Type': 'application/json' })
+      res.end(JSON.stringify({ error: e.message }))
+    }
+    return
+  }
+
+  /** 返回当前工具/页面在磁盘上已存在的语言版本（用于后台语言切换入口） */
+  if (pathname === '/api/seo/locales' && req.method === 'GET') {
+    const tool = params.tool
+    const slug = params.slug != null ? String(params.slug) : ''
+    if (!tool) {
+      res.writeHead(400, { 'Content-Type': 'application/json' })
+      res.end(JSON.stringify({ error: 'tool is required' }))
+      return
+    }
+    try {
+      const ALL = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
+      const locales = []
+      for (const loc of ALL) {
+        let fp
+        if (isHomepageSeoTool(tool) && !slug) {
+          fp = getCommonJsonPath(loc)
+        } else {
+          fp = getFilePath(tool, slug || null, loc)
+        }
+        if (fs.existsSync(fp)) locales.push(loc)
+      }
+      res.writeHead(200, { 'Content-Type': 'application/json' })
+      res.end(JSON.stringify({ locales }))
     } catch (e) {
       res.writeHead(500, { 'Content-Type': 'application/json' })
       res.end(JSON.stringify({ error: e.message }))
@@ -1191,7 +2044,8 @@ Rules:
     for await (const chunk of req) body += chunk
     try {
       const payload = JSON.parse(body || '{}')
-      const { tool, slug, sectionId, extraInstructions, currentSectionData } = payload
+      const { tool, slug, sectionId, extraInstructions, currentSectionData, locale: genLocale } = payload
+      const targetLocale = genLocale && typeof genLocale === 'string' ? genLocale : 'en'
       if (!tool || !sectionId) {
         res.writeHead(400, { 'Content-Type': 'application/json' })
         res.end(JSON.stringify({ error: 'tool and sectionId are required' }))
@@ -1259,6 +2113,7 @@ Output ONLY valid JSON for this section. No markdown fences, no explanation. Mat
 
       const userParts = [
         `Regenerate the "${sectionId}" section for tool="${tool}", page="${slug || '(main)'}" (${pageType}).`,
+        `Target locale for all user-visible strings: "${targetLocale}" (when not "en", write fully in that language; keep JSON keys in English).`,
         `Current section data (for reference, improve or replace):\n${JSON.stringify(currentSectionData || {}, null, 2)}`,
       ]
       if (extraInstructions) {
@@ -1338,9 +2193,20 @@ Output ONLY valid JSON for this section. No markdown fences, no explanation. Mat
       return
     }
     try {
-      const filePath = getFilePath(tool, slug || null, locale || 'en')
-      const content = fs.readFileSync(filePath, 'utf-8')
-      const data = JSON.parse(content)
+      let data
+      if (isHomepageSeoTool(tool) && !slug) {
+        const common = readCommonJson(locale || 'en')
+        if (!common.home || typeof common.home !== 'object') {
+          res.writeHead(500, { 'Content-Type': 'application/json' })
+          res.end(JSON.stringify({ error: 'common.json 缺少 home 对象' }))
+          return
+        }
+        data = common.home
+      } else {
+        const filePath = getFilePath(tool, slug || null, locale || 'en')
+        const content = fs.readFileSync(filePath, 'utf-8')
+        data = JSON.parse(content)
+      }
       res.writeHead(200, { 'Content-Type': 'application/json' })
       res.end(JSON.stringify(data))
     } catch (e) {
@@ -1390,9 +2256,18 @@ Output ONLY valid JSON for this section. No markdown fences, no explanation. Mat
         res.end(JSON.stringify({ error: 'tool and data are required' }))
         return
       }
-      const filePath = getFilePath(tool, slug || null, locale || 'en')
-      fs.mkdirSync(path.dirname(filePath), { recursive: true })
-      fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf-8')
+      let filePath
+      if (isHomepageSeoTool(tool) && !slug) {
+        const loc = locale || 'en'
+        const common = readCommonJson(loc)
+        common.home = data
+        writeCommonJson(loc, common)
+        filePath = getCommonJsonPath(loc)
+      } else {
+        filePath = getFilePath(tool, slug || null, locale || 'en')
+        fs.mkdirSync(path.dirname(filePath), { recursive: true })
+        fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf-8')
+      }
       let rebuildStatus = null
       if (rebuild) {
         const proc = spawn('npm', ['run', 'build'], { cwd: ROOT, stdio: 'ignore', shell: true })
@@ -1410,22 +2285,287 @@ Output ONLY valid JSON for this section. No markdown fences, no explanation. Mat
     return
   }
 
+  if (pathname === '/api/translate-seo' && req.method === 'POST') {
+    let body = ''
+    for await (const chunk of req) body += chunk
+    try {
+      const payload = JSON.parse(body)
+      const tool = payload.tool
+      const slug = payload.slug != null ? String(payload.slug) : ''
+      const sourceLocale = payload.sourceLocale || 'en'
+      let targetLocales = Array.isArray(payload.targetLocales) ? payload.targetLocales : []
+      targetLocales = [...new Set(targetLocales)].filter((loc) => TRANSLATION_TARGET_LOCALES.includes(loc))
+
+      if (!tool) {
+        res.writeHead(400, { 'Content-Type': 'application/json' })
+        res.end(JSON.stringify({ error: 'tool is required' }))
+        return
+      }
+      if (targetLocales.length === 0) {
+        res.writeHead(400, { 'Content-Type': 'application/json' })
+        res.end(JSON.stringify({ error: '请至少选择一种目标语言' }))
+        return
+      }
+
+      const homePartial =
+        payload.homePartial != null && typeof payload.homePartial === 'object' && !Array.isArray(payload.homePartial)
+          ? payload.homePartial
+          : null
+      if (homePartial && Object.keys(homePartial).length === 0) {
+        res.writeHead(400, { 'Content-Type': 'application/json' })
+        res.end(JSON.stringify({ error: 'homePartial 为空对象' }))
+        return
+      }
+      if (homePartial && (!isHomepageSeoTool(tool) || slug)) {
+        res.writeHead(400, { 'Content-Type': 'application/json' })
+        res.end(JSON.stringify({ error: 'homePartial 仅支持 tool=homepage 且无 slug' }))
+        return
+      }
+
+      let sourceObj
+      let srcPath
+      if (homePartial) {
+        sourceObj = homePartial
+        srcPath = getCommonJsonPath(sourceLocale)
+
+        // 兜底：如果是首页工具卡片分片翻译（旧前端可能漏字段），自动补齐整组卡片 key，避免同步英文后残留英文值。
+        const partialKeys = Object.keys(homePartial)
+        const hasAnyToolCardKey = partialKeys.some((k) => HOMEPAGE_TOOL_CARD_KEYS.includes(k))
+        if (hasAnyToolCardKey && fs.existsSync(srcPath)) {
+          const common = JSON.parse(fs.readFileSync(srcPath, 'utf-8'))
+          const sourceHome = common?.home && typeof common.home === 'object' ? common.home : {}
+          const expanded = { ...homePartial }
+          for (const k of HOMEPAGE_TOOL_CARD_KEYS) {
+            if (expanded[k] === undefined && sourceHome[k] !== undefined) expanded[k] = sourceHome[k]
+          }
+          sourceObj = expanded
+        }
+      } else if (isHomepageSeoTool(tool) && !slug) {
+        srcPath = getCommonJsonPath(sourceLocale)
+        if (!fs.existsSync(srcPath)) {
+          res.writeHead(404, { 'Content-Type': 'application/json' })
+          res.end(
+            JSON.stringify({
+              error: `源文件不存在: ${path.relative(ROOT, srcPath)}`,
+              hint: '请先确保 src/data/en/common.json 存在且包含 home。',
+            })
+          )
+          return
+        }
+        try {
+          const common = JSON.parse(fs.readFileSync(srcPath, 'utf-8'))
+          if (!common.home || typeof common.home !== 'object') {
+            res.writeHead(400, { 'Content-Type': 'application/json' })
+            res.end(JSON.stringify({ error: '英文 common.json 缺少 home 对象' }))
+            return
+          }
+          sourceObj = common.home
+        } catch (e) {
+          res.writeHead(400, { 'Content-Type': 'application/json' })
+          res.end(JSON.stringify({ error: '源 JSON 解析失败', hint: e.message }))
+          return
+        }
+      } else {
+        srcPath = getFilePath(tool, slug || null, sourceLocale)
+        if (!fs.existsSync(srcPath)) {
+          res.writeHead(404, { 'Content-Type': 'application/json' })
+          res.end(
+            JSON.stringify({
+              error: `源文件不存在: ${path.relative(ROOT, srcPath)}`,
+              hint: '请先在本页保存英文 SEO（src/data/en），或使用已有英文 JSON。',
+            })
+          )
+          return
+        }
+
+        try {
+          sourceObj = JSON.parse(fs.readFileSync(srcPath, 'utf-8'))
+        } catch (e) {
+          res.writeHead(400, { 'Content-Type': 'application/json' })
+          res.end(JSON.stringify({ error: '源 JSON 解析失败', hint: e.message }))
+          return
+        }
+      }
+
+      const written = []
+      const preSynced = []
+      const errors = []
+      for (const loc of targetLocales) {
+        try {
+          // 翻译前一致性检查：目标语言文件必须与英文在“结构+内容”一致；不一致先同步英文。
+          if (isHomepageSeoTool(tool) && !slug) {
+            const srcCommonPath = getCommonJsonPath(sourceLocale)
+            if (!fs.existsSync(srcCommonPath)) {
+              throw new Error(`源 common.json 不存在: ${path.relative(ROOT, srcCommonPath)}`)
+            }
+            const srcCommon = JSON.parse(fs.readFileSync(srcCommonPath, 'utf-8'))
+            const sourceHomeForCheck = srcCommon?.home && typeof srcCommon.home === 'object' ? srcCommon.home : {}
+            const targetCommon = readCommonJson(loc)
+            const targetHomeForCheck =
+              targetCommon && targetCommon.home && typeof targetCommon.home === 'object' ? targetCommon.home : {}
+
+            if (!isSameContentAndStructure(sourceHomeForCheck, targetHomeForCheck)) {
+              targetCommon.home = JSON.parse(JSON.stringify(sourceHomeForCheck))
+              writeCommonJson(loc, targetCommon)
+              preSynced.push({ locale: loc, path: path.relative(ROOT, getCommonJsonPath(loc)), reason: 'home mismatch' })
+            }
+          } else {
+            const srcPathForCheck = getFilePath(tool, slug || null, sourceLocale)
+            const dstPathForCheck = getFilePath(tool, slug || null, loc)
+            if (!fs.existsSync(srcPathForCheck)) {
+              throw new Error(`源文件不存在: ${path.relative(ROOT, srcPathForCheck)}`)
+            }
+            const sourceForCheck = JSON.parse(fs.readFileSync(srcPathForCheck, 'utf-8'))
+            let targetForCheck = null
+            if (fs.existsSync(dstPathForCheck)) {
+              try {
+                targetForCheck = JSON.parse(fs.readFileSync(dstPathForCheck, 'utf-8'))
+              } catch {
+                targetForCheck = null
+              }
+            }
+            if (!targetForCheck || !isSameContentAndStructure(sourceForCheck, targetForCheck)) {
+              fs.mkdirSync(path.dirname(dstPathForCheck), { recursive: true })
+              fs.writeFileSync(dstPathForCheck, JSON.stringify(sourceForCheck, null, 2), 'utf-8')
+              preSynced.push({ locale: loc, path: path.relative(ROOT, dstPathForCheck), reason: 'page mismatch' })
+            }
+          }
+
+          const translated = await translateSeoJsonWithKie(sourceObj, loc)
+          const withLocaleUrls = rewriteLocaleUrlsInJson(translated, loc)
+          let outPath
+          if (isHomepageSeoTool(tool) && !slug) {
+            const targetCommon = readCommonJson(loc)
+            targetCommon.home = targetCommon.home && typeof targetCommon.home === 'object' ? targetCommon.home : {}
+            if (homePartial) {
+              Object.assign(targetCommon.home, withLocaleUrls)
+            } else {
+              targetCommon.home = withLocaleUrls
+            }
+            outPath = getCommonJsonPath(loc)
+            writeCommonJson(loc, targetCommon)
+          } else {
+            outPath = getFilePath(tool, slug || null, loc)
+            fs.mkdirSync(path.dirname(outPath), { recursive: true })
+            fs.writeFileSync(outPath, JSON.stringify(withLocaleUrls, null, 2), 'utf-8')
+          }
+          written.push({ locale: loc, path: path.relative(ROOT, outPath) })
+          console.log('[translate-seo]', loc, outPath)
+        } catch (err) {
+          errors.push({ locale: loc, error: err.message || String(err) })
+        }
+      }
+
+      res.writeHead(200, { 'Content-Type': 'application/json' })
+      res.end(
+        JSON.stringify({
+          ok: errors.length === 0,
+          written,
+          preSynced,
+          errors,
+          api: 'kie.ai gemini-2.5-flash',
+          homePartialMerge: !!homePartial,
+          hint:
+            errors.length === 0
+              ? homePartial
+                ? '已合并写入各语言 common.json 的 home（仅更新本次提交的字段）。请 git 提交并部署。'
+                : '已写入 src/data/<locale>/。请 git 提交并部署后线上才会更新（静态站点）。'
+              : '部分语言失败时请查看 errors；成功项已写入磁盘。',
+        })
+      )
+    } catch (e) {
+      res.writeHead(500, { 'Content-Type': 'application/json' })
+      res.end(JSON.stringify({ error: e.message }))
+    }
+    return
+  }
+
+  if (pathname === '/api/homepage/sync-en' && req.method === 'POST') {
+    let body = ''
+    for await (const chunk of req) body += chunk
+    try {
+      let payload = {}
+      try {
+        payload = JSON.parse(body || '{}')
+      } catch {
+        payload = {}
+      }
+      let targetLocales = Array.isArray(payload.targetLocales) ? payload.targetLocales : TRANSLATION_TARGET_LOCALES
+      targetLocales = [...new Set(targetLocales)].filter((loc) => TRANSLATION_TARGET_LOCALES.includes(loc))
+      if (targetLocales.length === 0) {
+        res.writeHead(400, { 'Content-Type': 'application/json' })
+        res.end(JSON.stringify({ error: '请至少提供一种目标语言' }))
+        return
+      }
+
+      const enPath = getCommonJsonPath('en')
+      if (!fs.existsSync(enPath)) {
+        res.writeHead(404, { 'Content-Type': 'application/json' })
+        res.end(JSON.stringify({ error: `英文首页文件不存在: ${path.relative(ROOT, enPath)}` }))
+        return
+      }
+      const enCommon = readCommonJson('en')
+      if (!enCommon.home || typeof enCommon.home !== 'object') {
+        res.writeHead(400, { 'Content-Type': 'application/json' })
+        res.end(JSON.stringify({ error: 'src/data/en/common.json 缺少 home 对象' }))
+        return
+      }
+
+      const written = []
+      for (const loc of targetLocales) {
+        const target = readCommonJson(loc)
+        target.home = JSON.parse(JSON.stringify(enCommon.home))
+        writeCommonJson(loc, target)
+        written.push({ locale: loc, path: path.relative(ROOT, getCommonJsonPath(loc)) })
+      }
+
+      res.writeHead(200, { 'Content-Type': 'application/json' })
+      res.end(
+        JSON.stringify({
+          ok: true,
+          written,
+          hint: '已将英文首页 common.home 全量同步到所选语言。后续可再按需翻译文本。',
+        })
+      )
+    } catch (e) {
+      res.writeHead(500, { 'Content-Type': 'application/json' })
+      res.end(JSON.stringify({ error: e.message }))
+    }
+    return
+  }
+
   if (pathname === '/' || pathname === '/admin' || pathname.startsWith('/admin')) {
     const htmlPath = path.join(__dirname, 'admin-seo.html')
-    const html = fs.readFileSync(htmlPath, 'utf-8')
+    let html = fs.readFileSync(htmlPath, 'utf-8')
+    html = injectAdminHtmlOrigin(html, req)
+    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate')
     res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' })
     res.end(html)
     return
   }
 
   console.warn('[404]', req.method, pathname, url.slice(0, 80))
-  res.writeHead(404)
-  res.end('Not Found')
+  res.writeHead(404, { 'Content-Type': 'application/json; charset=utf-8' })
+  res.end(
+    JSON.stringify({
+      error: `接口不存在 (${req.method} ${pathname})`,
+      hint:
+        pathname.startsWith('/api/')
+          ? `请确认：① 终端已运行 npm run admin:seo，地址为 http://localhost:${PORT}（勿在 Next 的 :3006 打开本页）；② 修改过 admin-seo-server.js 后已重启。`
+          : undefined,
+      pathname,
+      method: req.method,
+    })
+  )
 })
 
 server.listen(PORT, () => {
   console.log(`\n📋 SEO 管理后台: http://localhost:${PORT}`)
-  console.log(`   测试 API: http://localhost:${PORT}/api/test-gemini\n`)
+  console.log(`   测试 API: http://localhost:${PORT}/api/test-gemini`)
+  console.log(`   翻译 API: POST http://127.0.0.1:${PORT}/api/translate-seo`)
+  console.log(`   浏览器探测: 打开 http://127.0.0.1:${PORT}/api/translate-seo 应显示 JSON（含 translateSeo）；若 404 请重启本进程。`)
+  console.log(`\n   ⚠️  请保持本终端运行，不要按 Ctrl+C；另开终端跑 npm run dev（前端）。`)
+  console.log(`   自检: curl -s http://127.0.0.1:${PORT}/api/health\n`)
 }).on('error', (err) => {
   if (err.code === 'EADDRINUSE') {
     console.error(`\n❌ 端口 ${PORT} 已被占用。请先停止旧进程：`)

@@ -1,83 +1,206 @@
 {
   "nav": {
     "quickTools": "빠른 도구",
+    "aiTools": "AI 도구",
     "imageCompression": "이미지 압축",
     "imageConverter": "이미지 변환",
+    "watermarkRemover": "워터마크 제거",
+    "photoRestoration": "사진 복원",
+    "aiCouplePhotoMaker": "AI 커플 사진",
     "fontGenerator": "폰트 생성기",
+    "emojiCopyAndPaste": "이모지 복사 및 붙여넣기",
+    "aiImage": "AI 이미지",
+    "aiVideo": "AI 동영상",
+    "nanoBananaPro": "Nano Banana Pro",
+    "nanoBanana2": "Nano Banana 2",
+    "gptImage2": "GPT Image 2",
+    "seedance2": "Seedance 2.0",
+    "kling3": "Kling 3.0",
     "aboutUs": "회사 소개"
   },
   "home": {
     "metadata": {
-      "title": "Toolaze - 무료 AI 이미지 압축기 및 로컬 도구",
-      "description": "브라우저에서 로컬로 이미지를 압축하세요. 서버 업로드 없음, 100% 비공개, 크리에이터를 위한 무료 AI 도구."
+      "title": "Toolaze - 무료 AI 이미지 생성기 & AI 비디오 생성기 온라인",
+      "description": "무료 AI 이미지 생성기 및 AI 비디오 생성기 온라인. Nano Banana 2로 4K 이미지를 만들고, Seedance 2.0 및 Kling 3.0으로 비디오를 생성하세요. 텍스트-이미지, 텍스트-비디오. 가입 불필요. 이미지 압축 및 형식 변환 도구도 제공됩니다."
     },
-    "badge": "v1.0 현재 라이브",
-    "title": "무료 경량 이미지 도구 플랫폼.",
-    "titleLine1": "무료 경량",
-    "titleLine2": "이미지 도구 플랫폼.",
-    "subtitle": "브라우저에서 완전히 실행되는 전문 이미지 처리 도구. 업로드 없음, 제한 없음, 영구 무료.",
-    "cta": "지금 이미지 압축기 사용하기 →",
-    "sectionToolsTitle": "사용 가능한 모든 도구",
-    "sectionToolsSubtitle": "하나의 제품군. 무한한 가능성.",
+    "badge": "무료 AI 도구",
+    "titleLine1": "올인원 AI 이미지 & 비디오",
+    "titleLine2": "생성 플랫폼",
     "badgeLive": "라이브",
     "badgeComingSoon": "출시 예정",
-    "toolImageCompressor": "이미지 압축기",
-    "toolImageCompressorDesc": "JPG/PNG용 스마트 손실 압축.",
-    "toolFormatConverter": "형식 변환기",
-    "toolFormatConverterDesc": "HEIC를 JPG로, PNG를 WEBP로.",
-    "toolImageResize": "이미지 크기 조정",
-    "toolImageResizeDesc": "이미지를 정확한 크기로 조정.",
-    "toolVideoCompressor": "비디오 압축기",
-    "toolVideoCompressorDesc": "품질 손실 없이 비디오 압축.",
-    "whyToolaze": {
-      "badge": "왜 Toolaze인가?",
-      "title": "프라이버시 및 성능을 위해 구축됨",
-      "subtitle": "프라이버시와 품질을 중시하는 크리에이터를 위한 Toolaze가 스마트한 선택인 이유에 대해 알아야 할 모든 것."
-    },
-    "features": {
-      "privacy": {
-        "title": "프라이버시 우선 아키텍처",
-        "desc": "다른 도구와 달리 우리는 이미지를 원격 서버로 전송하지 않습니다. 모든 작업은 WebAssembly를 사용하여 브라우저에서 바로 이루어집니다. 파일은 기기를 떠나지 않아 완전한 프라이버시와 보안을 보장합니다."
+    "heroTitle": "올인원 AI 이미지 & 비디오 생성 플랫폼",
+    "heroTagline": "최고의 AI 모델, 전문가 수준의 비디오 및 이미지 생성. 이미지 압축, 형식 변환, 폰트 생성기 — 모두 무료, 가입 불필요.",
+    "ctaImage": "AI 이미지 생성기 사용해보기",
+    "ctaVideo": "이미지를 비디오로",
+    "title": "무료 AI 이미지 생성기 & AI 비디오 생성기 온라인.",
+    "subtitle": "최첨단 모델로 4K AI 이미지와 할리우드급 비디오를 만드세요. 텍스트-이미지, 텍스트-비디오, 이미지-비디오—가입 없이, 제한 없이.",
+    "cta": "AI 이미지 생성기 사용해보기 →",
+    "aiVideoTitle": "AI 비디오 생성기",
+    "aiVideoIntro": "AI로 몇 분 만에 아이디어를 매력적인 비디오로 바꾸세요. Toolaze의 AI 비디오 생성기는 고급 AI 모델을 기반으로 텍스트-비디오 및 이미지-비디오를 통해 시선을 사로잡는 비디오를 만들 수 있도록 돕습니다. 기술이 필요 없습니다!",
+    "aiImageTitle": "AI 이미지 생성기",
+    "aiImageIntro": "AI로 고품질 이미지를 즉시 생성하세요. 예술적인 일러스트레이션부터 사실적인 비주얼까지, Toolaze의 AI 이미지 생성기는 텍스트-이미지 및 이미지-이미지를 통해 아이디어를 빠르고 유연하며 손쉽게 변환합니다.",
+    "trendingTitle": "인기 AI 이미지 & 비디오 모델, 한 곳에서 모두",
+    "trendingSubtitle": "플랫폼을 전환할 필요 없이 Seedance 2.0, Kling 3.0, Nano Banana Pro, Nano Banana 2에 액세스하세요.",
+    "homepageToolCardSummaries": {
+      "seedance-2": {
+        "cardTitle": "Seedance 2.0",
+        "summary": "텍스트-비디오 및 이미지-비디오를 위한 무료 AI 비디오 생성기 온라인. 프롬프트를 참조 이미지, 짧은 클립, 오디오와 혼합하여 자연스러운 움직임과 스테레오 사운드를 가진 15초 1080p 결과물을 얻으세요. Toolaze에서 가입 불필요."
       },
-      "unlimited": {
-        "title": "무제한 및 무료",
-        "desc": "원하는 만큼 이미지를 압축하세요. 일일 제한 없음, 결제 벽 없음, 워터마크 없음. 모든 도구는 숨겨진 비용이나 프리미엄 등급 없이 영구적으로 완전히 무료입니다."
+      "kling-3": {
+        "cardTitle": "Kling 3.0",
+        "summary": "기본 4K 및 2K 출력과 실행당 최대 6개의 영화 같은 컷을 제공하는 AI 비디오 생성기. 광고, 예고편, 소셜 미디어를 위한 다중 모드 입력 및 다국어 오디오—Kling 3.0을 온라인에서 무료로 사용해보세요."
       },
-      "quality": {
-        "title": "무손실 품질 제어",
-        "desc": "고급 압축 알고리즘으로 시각적 품질을 유지하면서 파일 크기를 최대 90%까지 줄입니다. 압축 수준을 제어하여 크기와 품질을 완벽하게 균형을 맞출 수 있습니다."
+      "nano-banana-pro": {
+        "cardTitle": "Nano Banana Pro",
+        "summary": "텍스트-이미지 및 상세 편집을 위한 AI 이미지 생성기—선명한 제품 사진, 인물 사진, 강력한 프롬프트 충실도를 가진 캠페인 비주얼. Toolaze에서 Nano Banana Pro로 온라인에서 무료로 만드세요."
       },
-      "noRegistration": {
-        "title": "등록 불필요",
-        "desc": "계정을 만들지 않고도 즉시 도구를 사용할 수 있습니다. 이메일 가입 없음, 개인 정보 수집 없음. 도구를 열고 바로 시작하세요."
+      "nano-banana-2": {
+        "cardTitle": "Nano Banana 2",
+        "summary": "일상적인 텍스트-이미지 및 빠른 변형을 위한 빠른 AI 이미지 생성기—소셜 게시물, 컨셉, 무거운 파이프라인 없이 반복적인 크리에이티브 테스트에 이상적입니다."
+      },
+      "gpt-image-2": {
+        "cardTitle": "GPT Image 2",
+        "summary": "깔끔한 구성과 읽기 쉬운 이미지 내 텍스트를 위해 구축된 텍스트-이미지 AI—자연어 프롬프트에서 간단한 그래픽, 목업, 배경을 만듭니다. 온라인에서 무료로 사용해보세요."
+      },
+      "watermark-remover": {
+        "summary": "무료 AI 워터마크 제거기 온라인: 로고, 날짜 스탬프, 오버레이를 지우면서 피부와 질감을 사실적으로 유지합니다. Toolaze에서 비공개, 업로드 없는 워크플로우를 위해 브라우저에서 실행됩니다."
+      },
+      "photo-restoration": {
+        "summary": "바래거나 긁히거나 흐릿한 사진을 위한 AI 사진 복원—인쇄물 및 아카이브를 위해 더 선명한 얼굴과 더 섬세한 디테일을 복구합니다. 원클릭 복구, 온라인에서 무료."
+      },
+      "ai-couple-photo-maker": {
+        "summary": "AI 커플 사진 메이커: 하나 또는 두 개의 인물 사진을 큐레이션된 템플릿으로 로맨틱하거나 영화 같은 듀오 장면으로 변환—스튜디오 촬영 없이 공유할 준비가 된 이미지."
       }
     },
+    "aiToolsHubTitle": "이미지, 비디오 및 일상 미디어 워크플로우를 위한 무료 AI 도구",
+    "aiToolsHubSubtitle": "AI 이미지 생성, AI 비디오 생성, 빠른 브라우저 유틸리티를 위한 하나의 허브—가입 및 유료 장벽 없음.",
+    "aiToolsHubIntro": "여러 사이트를 오갈 필요 없이 안정적인 결과물을 필요로 하는 크리에이터와 마케터를 위해 구축된 무료 AI 도구를 온라인에서 만나보세요. 플래그십 이미지 및 비디오 모델을 압축, 변환, 복원, 타이포그래피를 위한 실용적인 도우미와 결합하세요—모두 명확한 SEO 랜딩 페이지와 빠른 실험을 위해 구성되었습니다.",
+    "aiToolsHubItems": [
+      {
+        "title": "AI 이미지 생성기",
+        "description": "텍스트-이미지 및 이미지-이미지로 캠페인 준비가 된 비주얼을 만드세요. Nano Banana Pro, Nano Banana 2, GPT Image 2는 광고, 소셜 게시물, 컨셉 아트를 위해 선명한 디테일, 유연한 종횡비, 최대 4K 해상도를 제공합니다.",
+        "href": "/model/nano-banana-pro"
+      },
+      {
+        "title": "AI 비디오 생성기",
+        "description": "스크립트와 참조 프레임을 영화 같은 클립으로 바꾸세요. Seedance 2.0 및 Kling 3.0은 다중 모드 입력으로 텍스트-비디오 및 이미지-비디오를 지원합니다—프로모션, 스토리보드, 짧은 형식의 스토리텔링에 이상적입니다.",
+        "href": "/ko/seedance-2"
+      },
+      {
+        "title": "브라우저 미디어 유틸리티",
+        "description": "손실 이미지 압축, 형식 변환, 스타일화된 폰트 미리보기, 이모지 복사 및 붙여넣기로 워크플로우를 완성하세요—브라우저에서 무료로 유지되는 가볍고 비생성적인 유틸리티입니다.",
+        "href": "/ko/image-compressor"
+      }
+    ],
+    "advancedToolsTitle": "더 많은 AI 기반 크리에이티브 도구",
+    "advancedToolsSubtitle": "인물 사진 생성, AI 워터마크 제거, AI 사진 복원—온라인에서 무료로 사용 가능, 가입 불필요.",
+    "utilityToolsTitle": "이미지 및 텍스트를 위한 무료 브라우저 도구",
+    "utilityToolsSubtitle": "이미지 압축, 형식 변환, 스타일화된 폰트 미리보기, 이모지 복사 및 붙여넣기—생성형 AI 없이 브라우저에서 빠른 유틸리티.",
+    "faqTitle": "질문이 있으신가요? 저희가 답변해 드립니다!",
+    "sectionAiImageTitle": "AI 이미지 모델",
+    "sectionAiImageSubtitle": "무료 AI 이미지 생성기 온라인. 텍스트-이미지 및 이미지-이미지. 4K 출력, 빠른 생성, 등록 불필요. Nano Banana Pro 및 Nano Banana 2로 AI 아트를 만드세요.",
+    "sectionAiVideoTitle": "AI 비디오 모델",
+    "sectionAiVideoSubtitle": "무료 AI 비디오 생성기 온라인. 텍스트-비디오 및 이미지-비디오. 1080p–4K 출력, 다중 모드 비디오 생성. Seedance 2.0 및 Kling 3.0으로 비디오를 만드세요—가입 불필요.",
+    "sectionToolsTitle": "더 많은 도구",
+    "sectionToolsSubtitle": "이미지 압축, 형식 변환, 폰트 생성기—모두 무료, 모두 브라우저에서.",
+    "seoIntro": {
+      "title": "무료 AI 이미지 생성기 & AI 비디오 생성기 온라인",
+      "paragraph1": "Toolaze는 온라인에서 무료 AI 이미지 생성기 및 AI 비디오 생성기입니다. Nano Banana Pro 및 Nano Banana 2를 기반으로 텍스트-이미지 및 이미지-이미지로 멋진 4K AI 이미지를 만드세요. Seedance 2.0 및 Kling 3.0을 사용하여 텍스트-비디오 및 이미지-비디오로 할리우드급 비디오를 생성하세요. 가입, 신용 카드, 일일 제한이 없습니다.",
+      "paragraph2": "마케팅 목업, 소셜 콘텐츠 또는 AI 아트를 위한 무료 AI 이미지 생성기가 필요하든—광고, 스토리보드 또는 짧은 형식의 비디오를 위한 무료 AI 비디오 생성기가 필요하든—Toolaze가 제공합니다. 당사의 AI 이미지 모델은 빠른 생성으로 최대 4K 해상도를 지원합니다. 당사의 AI 비디오 모델은 다중 모드 비디오 생성을 위해 텍스트, 이미지, 비디오 및 오디오를 허용합니다. 둘 다 이미지-이미지 및 이미지-비디오 워크플로우를 지원합니다.",
+      "paragraph3": "무료 텍스트-이미지 생성기 및 텍스트-비디오 생성기를 온라인에서 사용하세요. 이미지 압축, 형식 변환, 폰트 생성—모두 한 곳에서. 100% 무료, 등록 불필요."
+    },
+    "toolImageCompressor": "이미지 압축기",
+    "toolImageCompressorDesc": "JPG/PNG를 위한 스마트 손실 압축.",
+    "toolFormatConverter": "형식 변환기",
+    "toolFormatConverterDesc": "HEIC를 JPG로, PNG를 WEBP로.",
+    "toolFontGenerator": "무료 폰트 생성기",
+    "toolFontGeneratorDesc": "온라인에서 무료로 맞춤 폰트를 생성하세요. 필기체, 멋진, 굵은, 기울임꼴, 고딕, 타투 폰트를 만드세요. 즉시 복사 및 붙여넣기. 가입 불필요.",
+    "toolEmojiCopyAndPaste": "이모지 복사 & 붙여넣기",
+    "toolEmojiCopyAndPasteDesc": "온라인에서 무료로 이모지를 복사하고 붙여넣으세요. 카테고리별로 찾아보고, 검색하고, 피부 톤을 선택하고, 한 번의 클릭으로 복사하세요. 가입 불필요.",
+    "toolImageResize": "이미지 크기 조정",
+    "toolImageResizeDesc": "이미지 크기를 정확한 치수로 조정합니다.",
+    "toolVideoCompressor": "비디오 압축기",
+    "toolVideoCompressorDesc": "품질 손실 없이 비디오를 압축합니다.",
+    "whyToolaze": {
+      "badge": "Toolaze를 선택해야 하는 이유?",
+      "title": "크리에이터와 성능을 위해 구축됨",
+      "subtitle": "Toolaze가 AI 이미지 생성, AI 비디오 생성 및 크리에이티브 워크플로우를 위한 현명한 선택인 이유에 대해 알아야 할 모든 것."
+    },
     "faq": {
-      "title": "자주 묻는 질문",
+      "title": "질문이 있으신가요? 저희가 답변해 드립니다!",
       "items": [
         {
-          "q": "Toolaze는 업로드 없이 이미지를 어떻게 압축하나요?",
-          "a": "Toolaze는 WebAssembly와 브라우저 기반 이미지 처리 API를 사용하여 브라우저에서 직접 이미지를 압축합니다. 파일은 기기에서 로컬로 처리되며 서버로 전송되지 않습니다. 이를 통해 완전한 프라이버시와 더 빠른 처리를 보장합니다."
+          "q": "AI 이미지 생성기란 무엇인가요?",
+          "a": "AI 이미지 생성기는 텍스트 프롬프트 또는 참조 이미지에서 이미지를 만듭니다. Toolaze는 Nano Banana Pro 및 Nano Banana 2와 같은 무료 AI 이미지 생성기를 제공합니다—텍스트-이미지 및 이미지-이미지를 지원하며, 4K 출력과 가입 불필요."
         },
         {
-          "q": "Toolaze는 어떤 이미지 형식을 지원하나요?",
-          "a": "현재 이미지 압축기는 JPG, PNG 및 WEBP 형식을 지원합니다. 향후 업데이트에서 HEIC, BMP 및 TIFF를 포함한 더 많은 형식 지원을 추가하기 위해 작업 중입니다."
+          "q": "AI 비디오 생성기란 무엇인가요?",
+          "a": "AI 비디오 생성기는 텍스트, 이미지 또는 기타 미디어에서 비디오를 만듭니다. Toolaze는 Seedance 2.0 및 Kling 3.0과 같은 무료 AI 비디오 생성기를 제공합니다—텍스트-비디오 및 이미지-비디오를 지원하며, 1080p–4K 출력과 다중 모드 입력을 제공합니다."
         },
         {
-          "q": "파일 크기 제한이 있나요?",
-          "a": "이론적으로 파일 크기 제한은 없습니다. 그러나 매우 큰 이미지는 기기 성능과 사용 가능한 메모리에 따라 브라우저 속도 저하를 일으킬 수 있습니다. 최상의 경험을 위해 큰 파일을 더 작은 배치로 처리하는 것을 권장합니다."
+          "q": "AI 이미지 생성기는 무료인가요?",
+          "a": "네! Toolaze의 AI 이미지 생성기(Nano Banana Pro, Nano Banana 2)는 온라인에서 무료로 사용할 수 있습니다. 가입, 신용 카드, 일일 제한이 없습니다. 텍스트-이미지 및 이미지-이미지로 4K 이미지를 만드세요—모두 브라우저에서."
         },
         {
-          "q": "이미지를 얼마나 압축할 수 있나요?",
-          "a": "압축 결과는 원본 이미지 품질과 형식에 따라 다릅니다. 일반적으로 허용 가능한 시각적 품질을 유지하면서 50-90%의 크기 감소를 달성할 수 있습니다. 필요한 완벽한 균형을 찾기 위해 압축 설정을 조정할 수 있습니다."
+          "q": "AI 비디오 생성기는 무료인가요?",
+          "a": "네! Toolaze의 AI 비디오 생성기(Seedance 2.0, Kling 3.0)는 온라인에서 무료로 사용할 수 있습니다. 가입 불필요. 텍스트-비디오 및 이미지-비디오로 1080p–4K 비디오를 만드세요—다중 모드 입력, 할리우드급 출력."
+        },
+        {
+          "q": "무료 AI 이미지 생성기는 얼마인가요?",
+          "a": "Toolaze의 AI 이미지 생성기는 100% 무료입니다. 가입, 신용 카드, 일일 제한이 없습니다. Nano Banana Pro 또는 Nano Banana 2를 사용하여 텍스트-이미지 및 이미지-이미지로 4K 이미지를 만드세요—모두 브라우저에서."
+        },
+        {
+          "q": "온라인에서 무료 텍스트-비디오 생성기가 있나요?",
+          "a": "네. Toolaze는 Seedance 2.0 및 Kling 3.0으로 온라인에서 무료 텍스트-비디오 생성기를 제공합니다. 텍스트, 이미지, 비디오 또는 오디오를 업로드하세요—다중 모드 입력으로 1080p 또는 4K AI 비디오를 생성하세요. 등록 불필요."
+        },
+        {
+          "q": "이미지-비디오 AI란 무엇인가요?",
+          "a": "이미지-비디오 AI는 업로드된 이미지를 움직이는 비디오로 변환합니다. Toolaze의 무료 AI 비디오 생성기(Seedance 2.0, Kling 3.0)는 텍스트-비디오와 함께 이미지-비디오를 지원합니다. 결과물에 대한 더 많은 제어를 위해 참조 이미지 또는 비디오를 추가하세요."
+        },
+        {
+          "q": "가입 없이 온라인에서 AI 이미지 생성기를 사용할 수 있나요?",
+          "a": "네. Toolaze의 AI 이미지 생성기는 온라인에서 가입이 필요 없습니다. Nano Banana Pro 또는 Nano Banana 2를 열고, 텍스트 프롬프트를 입력하거나 참조 이미지를 업로드하고, 즉시 4K AI 이미지를 생성하세요—무료."
         }
       ]
+    },
+    "toolWatermarkRemover": "무료 AI 워터마크 제거기 온라인",
+    "toolWatermarkRemoverDesc": "한 번의 클릭으로 로고, 날짜 스탬프, 오버레이를 제거하세요. 질감을 자연스럽게 유지하고 깨끗한 이미지를 즉시 내보내세요. 가입 불필요.",
+    "toolPhotoRestoration": "무료 사진 복원 온라인",
+    "toolPhotoRestorationDesc": "오래되거나 흐릿하거나 긁힌 사진을 몇 초 만에 복원하세요. 원클릭 AI 복구로 더 선명한 얼굴과 디테일을 복구하세요. 가입 불필요.",
+    "features": {
+      "freeGeneration": {
+        "title": "무료 AI 이미지 & 비디오 생성",
+        "desc": "Nano Banana 2, Seedance 2.0, Kling 3.0으로 4K AI 이미지와 할리우드급 비디오를 만드세요. 텍스트-이미지, 텍스트-비디오, 이미지-비디오—모두 온라인에서 무료로, 가입 불필요."
+      },
+      "noLimits": {
+        "title": "제한 없음, 완전 무료",
+        "desc": "필요한 만큼 AI 이미지와 비디오를 생성하세요. 일일 제한, 유료 장벽, 워터마크가 없습니다. 모든 AI 도구와 이미지 도구는 숨겨진 비용 없이 완전히 무료입니다."
+      },
+      "proOutput": {
+        "title": "4K 출력 & 다중 모드 입력",
+        "desc": "AI 이미지 모델은 최대 4K 해상도를 지원합니다. AI 비디오 모델은 텍스트, 이미지, 비디오 및 오디오를 허용합니다. 빠른 생성으로 전문가 수준의 출력—크리에이터를 위한 생산 준비 완료."
+      },
+      "instantUse": {
+        "title": "즉시 시작",
+        "desc": "계정을 만들 필요 없이 AI 이미지 생성기 및 AI 비디오 생성기를 즉시 사용하세요. 이메일 가입, 개인 정보 수집이 없습니다. 그냥 열고 만드세요."
+      }
     }
   },
   "footer": {
+    "aiTools": "AI 도구",
+    "watermarkRemover": "워터마크 제거",
+    "photoRestoration": "사진 복원",
+    "aiCouplePhotoMaker": "AI 커플 사진",
+    "aiImage": "AI 이미지",
+    "aiVideo": "AI 동영상",
     "imageCompression": "이미지 압축",
     "imageConverter": "이미지 변환",
     "fontGenerator": "폰트 생성기",
+    "emojiCopyAndPaste": "이모지 복사 및 붙여넣기",
+    "nanoBananaPro": "Nano Banana Pro",
+    "nanoBanana2": "Nano Banana 2",
+    "seedance2": "Seedance 2.0",
+    "kling3": "Kling 3.0",
     "home": "홈",
     "allTools": "모든 도구",
     "aboutUs": "회사 소개",

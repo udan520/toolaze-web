@@ -1,0 +1,152 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "KI-Paar-Foto-Generator Online Kostenlos - Ein Foto hochladen, Szene auswählen | Toolaze",
+    "description": "Nutzen Sie den KI-Paar-Foto-Generator online kostenlos mit Toolaze. Laden Sie ein oder zwei Paarfotos hoch, wählen Sie eine voreingestellte Szene wie Hochzeit, Reise oder Studio und generieren Sie in Sekundenschnelle realistische Paarfotos."
+  },
+  "topComponent": "ai-couple-photo-maker",
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Kostenloser <span class=\"text-gradient\">KI-Paar-Foto-Generator</span> Online",
+    "desc": "Laden Sie ein oder zwei Paarfotos hoch, wählen Sie eine voreingestellte romantische Szene und generieren Sie in Sekundenschnelle realistische, filmreife Paarporträts mit Toolaze."
+  },
+  "howToUse": {
+    "title": "So erstellen Sie KI-Paarfotos",
+    "steps": [
+      {
+        "title": "Fotos hochladen",
+        "desc": "Laden Sie ein oder zwei Paarfotos hoch (JPG, PNG oder WebP)."
+      },
+      {
+        "title": "Vorlage auswählen",
+        "desc": "Wählen Sie Stil- oder benutzerdefinierte Voreinstellungen wie Verregnetes Paris, Heiratsantrag oder Strand."
+      },
+      {
+        "title": "Generieren & Herunterladen",
+        "desc": "Klicken Sie auf Generieren, um Ihr 1K PNG Paarfoto zu erstellen und das beste Ergebnis herunterzuladen."
+      }
+    ]
+  },
+  "features": {
+    "title": "Hauptmerkmale",
+    "items": [
+      {
+        "icon": "📷",
+        "iconType": "quality",
+        "title": "Ein oder zwei Fotos als Eingabe",
+        "desc": "Laden Sie ein oder zwei Referenzfotos hoch, um Identität und Paardynamik in jeder generierten Szene zu bewahren."
+      },
+      {
+        "icon": "🎭",
+        "iconType": "multimodal",
+        "title": "Voreingestellte Szenenvorlagen",
+        "desc": "Wählen Sie aus kuratierten Vorlagen wie Verregnetes Paris, Dachterrassen-Nacht, Roter Teppich, Sonnenuntergang am Strand und mehr."
+      },
+      {
+        "icon": "🖼️",
+        "iconType": "quality",
+        "title": "Auto-Verhältnis, 1K PNG-Ausgabe",
+        "desc": "Die Ausgabeeinstellungen sind für diesen Workflow optimiert: Automatisches Seitenverhältnis, PNG-Format und 1K-Auflösung."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Schnelle Generierung von Paarfotos",
+        "desc": "Generieren Sie schnell realistische Paarfotos im redaktionellen Stil mit dem browserbasierten Workflow."
+      },
+      {
+        "icon": "🧩",
+        "iconType": "quality",
+        "title": "Stil- und benutzerdefinierte Vorlagen",
+        "desc": "Verwenden Sie vorgefertigte Stil-Prompts oder benutzerdefinierte Voreinstellungen wie Heiratsantrag, Strand und Küche für schnellere Iterationen."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Einfache Kreditregel",
+        "desc": "Jede Generierung verbraucht 40 Credits mit festen Einstellungen, sodass Benutzer einen vorhersehbaren und konsistenten Workflow erhalten."
+      }
+    ]
+  },
+  "intro": {
+    "title": "Warum den Toolaze KI-Paar-Foto-Generator verwenden?",
+    "content": [
+      {
+        "title": "Szenen-zentrierte Paarfotos",
+        "text": "Die meisten Bildtools benötigen komplexe Prompts, um romantische, hochwertige Paarfotos zu erhalten. Toolaze vereinfacht diesen Ablauf mit szenen-zentrierten Vorlagen, festen Generierungseinstellungen und einem visuellen Prozess, der auf schnellen Erfolg ausgelegt ist."
+      },
+      {
+        "title": "Für echte Paarreferenzen entwickelt",
+        "text": "Laden Sie ein kombiniertes Paarfoto oder zwei Referenzen hoch, wenn Sie eine klarere Identitätsverankerung wünschen. Vorlagen steuern Komposition und Stimmung, während die Gesichter konsistent bleiben."
+      }
+    ]
+  },
+  "comparison": {
+    "title": "Toolaze vs. andere KI-Paar-Foto-Generatoren",
+    "smartChoice": "Kluge Wahl",
+    "toolaze": "Toolaze",
+    "vs": "VS",
+    "otherTools": "Andere Tools",
+    "toolazeFeatures": "Ein/zwei Fotos hochladen, Szenen-zentrierte Voreinstellungen, Feste optimierte Einstellungen, Konsistenter Workflow für romantischen Stil, Vorhersehbare 40-Credit-Nutzung, Schneller Generierungsablauf",
+    "othersFeatures": "Prompt-lastige Einrichtung, Begrenzte Szenenführung, Inkonsistente Standardparameter, Mehr Versuch und Irrtum, Unklare Krediterwartungen, Langsamere Iteration"
+  },
+  "scenesTitle": "Anwendungsfälle",
+  "scenes": [
+    {
+      "icon": "💍",
+      "title": "Hochzeit & Heiratsantrag",
+      "desc": "Erstellen Sie romantische Szenen für Heiratsanträge, Verlobungsankündigungen und Porträts im Hochzeitsstil."
+    },
+    {
+      "icon": "🌆",
+      "title": "Städtisches Date am Abend",
+      "desc": "Generieren Sie Dachterrassen-, Nachtstraßen- oder Roter-Teppich-Vibes für hochwertige Lifestyle-Paarbilder."
+    },
+    {
+      "icon": "🏖️",
+      "title": "Reisen & Urlaub",
+      "desc": "Verwandeln Sie ein normales Paarfoto in Erinnerungen an Sonnenuntergang am Strand, Berge oder Urlaub."
+    }
+  ],
+  "rating": {
+    "title": "KI-Paar-Foto-Generator",
+    "rating": "4.9/5 VON 10K+ ERSTELLERN",
+    "text": "Erstellen Sie romantische Paarfotos mit festen Qualitätseinstellungen und kuratierten Szenenvorlagen. Toolaze hilft Kreativen, schnell hochwertige Paarfotos zu generieren."
+  },
+  "faqTitle": "Häufig gestellte Fragen",
+  "faq": [
+    {
+      "q": "Wie funktioniert der KI-Paar-Foto-Generator?",
+      "a": "Laden Sie ein oder zwei Paarfotos hoch, wählen Sie eine Szenenvorlage aus und generieren Sie dann. Der Prompt und die Einstellungen sind für eine realistische Ausgabe im redaktionellen Stil optimiert."
+    },
+    {
+      "q": "Kann ich ein Foto hochladen oder brauche ich zwei?",
+      "a": "Beides wird unterstützt. Sie können ein einzelnes Paarfoto oder zwei Referenzfotos hochladen, je nach Ihrem Ausgangsmaterial."
+    },
+    {
+      "q": "Welche Einstellungen werden für die Ausgabe verwendet?",
+      "a": "Diese Seite verwendet feste Einstellungen: Nano Banana 2 Modell, automatisches Seitenverhältnis, PNG-Format und 1K-Auflösung."
+    },
+    {
+      "q": "Können Benutzer auf dieser Seite Modelle wechseln?",
+      "a": "Nein. Der Modellwechsel ist ausgeblendet, um den Workflow für Paarfotos auf dieser Landingpage konsistent zu halten."
+    },
+    {
+      "q": "Wie viele Credits kostet eine Generierung?",
+      "a": "Jede Generierung kostet 40 Credits. Die Kreditregel wird direkt über dem Generieren-Button angezeigt."
+    },
+    {
+      "q": "Enthalten Vorlagen sowohl voreingestellte als auch benutzerdefinierte Optionen?",
+      "a": "Ja. Der Vorlagenbereich umfasst Stil-Voreinstellungen und benutzerdefinierte Voreinstellungen wie Heiratsantrag, Strand und Küche."
+    }
+  ],
+  "moreTools": "Weitere KI-Tools"
+}

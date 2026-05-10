@@ -186,6 +186,12 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
           desc: "Seedance 2.0 is ByteDance's next-generation AI video model with unified multimodal architecture. Create 1080p videos from text, images, video, and audio inputs."
         }
       }
+      if (tool === 'ai-couple-photo-maker') {
+        return {
+          title: "Why Use Toolaze AI Couple Photo Maker?",
+          desc: "Most image tools need complex prompts to get romantic, high-quality couple results. Toolaze simplifies this flow with scene-first templates and fixed generation settings."
+        }
+      }
       return {
         title: `Why Use Toolaze ${tool}?`,
         desc: ""
@@ -222,6 +228,12 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
           { label: breadcrumbT.home, href: '/' },
           { label: 'AI Tools', href: '/ai-tools' },
           { label: 'Photo Restoration' },
+        ]
+      : tool === 'ai-couple-photo-maker'
+      ? [
+          { label: breadcrumbT.home, href: '/' },
+          { label: 'AI Tools', href: '/ai-tools' },
+          { label: 'AI Couple Photo Maker' },
         ]
       : tool === 'nano-banana-pro'
       ? [
@@ -482,6 +494,33 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                 )}
               </div>
               <PhotoRestoration />
+            </header>
+          ) : topComp === 'ai-couple-photo-maker' ? (
+            <header className="bg-[#F8FAFF] pb-6 md:pb-12 w-full px-2 md:px-6">
+              <div className="w-full max-w-full text-center pt-6 md:pt-8 mb-6 md:mb-12">
+                <h1 className="text-[40px] font-extrabold tracking-tight mb-6 leading-tight text-slate-900">
+                  {content.hero?.h1 ? (
+                    renderH1WithGradient(content.hero.h1)
+                  ) : (
+                    <>AI Couple Photo Maker</>
+                  )}
+                </h1>
+                {content.hero?.desc && (
+                  <p className="desc-text text-lg md:text-xl max-w-4xl mx-auto">
+                    {content.hero.desc}
+                  </p>
+                )}
+              </div>
+              <div className="w-full max-w-full">
+                <div className="flex flex-col md:h-screen md:overflow-hidden">
+                  <NanoBananaTool
+                    modelId="nano-banana-2"
+                    modelName="Nano Banana 2"
+                    dailyLimitStorageKey="ai_couple_photo_maker_last_used_date"
+                    presetMode="ai-couple-photo-maker"
+                  />
+                </div>
+              </div>
             </header>
           ) : topComp === 'nano-banana-pro' ? (
             <header className="bg-[#F8FAFF] pb-6 md:pb-12 w-full px-2 md:px-6">

@@ -192,19 +192,14 @@ export default async function LandingPage({ params }: PageProps) {
     redirect(`/model/seedance-2/${resolvedParams.slug}`)
   }
   
-  // 检查内容是否存在，如果不存在且是 font-generator 或 emoji-copy-and-paste，重定向到英语版本
+  // 无当前语种 SEO JSON：非英语一律跳到英文 canonical（避免 404；与 LANGUAGE_SWITCH_AND_REDIRECT 规则一致）
   const content = await getSeoContent(resolvedParams.tool, resolvedParams.slug, locale)
   if (!content) {
     if (locale !== 'en') {
-      if (resolvedParams.tool === 'font-generator') {
-        redirect(`/font-generator/${resolvedParams.slug}`)
-      }
-      if (resolvedParams.tool === 'emoji-copy-and-paste') {
-        redirect(`/emoji-copy-and-paste/${resolvedParams.slug}`)
-      }
       if (resolvedParams.tool === 'seedance-2') {
         redirect(`/model/seedance-2/${resolvedParams.slug}`)
       }
+      redirect(`/${resolvedParams.tool}/${resolvedParams.slug}`)
     }
     notFound()
     return null

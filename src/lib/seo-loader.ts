@@ -577,6 +577,21 @@ async function loadToolJsonFile(locale: string, tool: string, slug: string) {
   }
 }
 
+/**
+ * 根目录 L2 单文件 JSON（如 seedance-2.json）：优先目标语言，缺失则 en。
+ * 此前部分模型/工具写死仅 import en，导致首页卡片、落地页即使用户已翻译也不会显示译文。
+ */
+async function importL2FlatJson(relativeBaseName: string, normalizedLocale: string) {
+  if (normalizedLocale === 'en') {
+    return import(`@/data/en/${relativeBaseName}.json`)
+  }
+  try {
+    return await import(`@/data/${normalizedLocale}/${relativeBaseName}.json`)
+  } catch {
+    return await import(`@/data/en/${relativeBaseName}.json`)
+  }
+}
+
 // 加载 L2 页面的 SEO 内容（工具主页面，无 slug）
 export async function getL2SeoContent(tool: string, locale: string = 'en') {
   try {
@@ -628,7 +643,7 @@ export async function getL2SeoContent(tool: string, locale: string = 'en') {
           }
         }
       } else if (tool === 'emoji-copy-and-paste') {
-        data = await import('@/data/en/emoji-copy-and-paste.json')
+        data = await importL2FlatJson('emoji-copy-and-paste', normalizedLocale)
       } else if (tool === 'nano-banana-pro') {
         if (normalizedLocale === 'en') {
           data = await import('@/data/en/nano-banana-pro.json')
@@ -641,17 +656,19 @@ export async function getL2SeoContent(tool: string, locale: string = 'en') {
           }
         }
       } else if (tool === 'nano-banana-2') {
-        data = await import('@/data/en/nano-banana-2.json')
+        data = await importL2FlatJson('nano-banana-2', normalizedLocale)
       } else if (tool === 'gpt-image-2') {
-        data = await import('@/data/en/gpt-image-2.json')
+        data = await importL2FlatJson('gpt-image-2', normalizedLocale)
       } else if (tool === 'seedance-2') {
-        data = await import('@/data/en/seedance-2.json')
+        data = await importL2FlatJson('seedance-2', normalizedLocale)
       } else if (tool === 'kling-3') {
-        data = await import('@/data/en/kling-3.json')
+        data = await importL2FlatJson('kling-3', normalizedLocale)
       } else if (tool === 'watermark-remover') {
-        data = await import('@/data/en/watermark-remover.json')
+        data = await importL2FlatJson('watermark-remover', normalizedLocale)
       } else if (tool === 'photo-restoration') {
-        data = await import('@/data/en/photo-restoration.json')
+        data = await importL2FlatJson('photo-restoration', normalizedLocale)
+      } else if (tool === 'ai-couple-photo-maker') {
+        data = await importL2FlatJson('ai-couple-photo-maker', normalizedLocale)
       }
       
       const resolved = data?.default || data
@@ -685,6 +702,8 @@ export async function getL2SeoContent(tool: string, locale: string = 'en') {
             data = await import('@/data/en/watermark-remover.json')
           } else if (tool === 'photo-restoration') {
             data = await import('@/data/en/photo-restoration.json')
+          } else if (tool === 'ai-couple-photo-maker') {
+            data = await import('@/data/en/ai-couple-photo-maker.json')
           }
           const fallbackResolved = data?.default || data
           if (fallbackResolved && isPublished(fallbackResolved)) {

@@ -4,8 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>SEO 管理后台 - Toolaze</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+  <!-- defer：避免 CDN 卡住时整页无法解析、底部脚本永远不执行 -->
+  <script src="https://cdn.tailwindcss.com" defer></script>
   <style>
     body { font-family: 'Poppins', sans-serif; }
     body.modal-open { overflow: hidden; }
@@ -13,6 +15,24 @@
     .text-gradient { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #9333ea 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
     .bg-gradient-brand { background: linear-gradient(135deg, #4f46e5 0%, #9333ea 100%); }
     .desc-text { font-size: 14px; line-height: 1.6; color: #64748B; }
+    /* 对齐 src/app/globals.css 首页工具类，仅供 #sections-view 内预览 */
+    #sections-view .home-preview-shell .home-hero-mesh {
+      background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(99, 102, 241, 0.25), transparent),
+        radial-gradient(ellipse 60% 40% at 80% 50%, rgba(139, 92, 246, 0.15), transparent),
+        radial-gradient(ellipse 50% 30% at 20% 80%, rgba(79, 70, 229, 0.1), transparent);
+    }
+    #sections-view .home-preview-shell .home-section-title { letter-spacing: -0.02em; font-weight: 800; }
+    #sections-view .home-preview-shell .home-model-card {
+      background: #fff;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+    #sections-view .home-preview-shell .home-model-card:hover {
+      box-shadow: 0 4px 12px -2px rgba(79, 70, 229, 0.1);
+    }
+    #sections-view .home-preview-shell .home-model-card-icon { background: #eef2ff; }
+    #sections-view .home-preview-shell .home-cta-glow {
+      box-shadow: 0 4px 20px -4px rgba(79, 70, 229, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+    }
   </style>
 </head>
 <body class="bg-slate-50 min-h-screen">
@@ -101,9 +121,13 @@
         <div>
           <a href="/" id="back-link" class="text-sm text-indigo-600 hover:underline">← 返回</a>
           <h2 id="editor-title" class="text-lg font-bold text-slate-800 mt-1"></h2>
+          <p id="locale-switcher-label" class="text-xs font-semibold text-slate-500 mt-2 mb-1">语言版本（已存在文件的语种可切换编辑，与英文操作相同）</p>
+          <div id="locale-switcher" class="flex flex-wrap gap-2"></div>
         </div>
         <div class="flex gap-3">
           <button id="generate-seo-btn" class="rounded-lg border border-purple-300 px-4 py-2 text-sm font-medium text-purple-600 hover:bg-purple-50">生成 SEO</button>
+          <button type="button" id="translate-seo-btn" class="rounded-lg border border-teal-300 px-4 py-2 text-sm font-medium text-teal-700 hover:bg-teal-50" title="基于英文 JSON 调用 KIE Gemini 2.5 Flash 写入各语言">翻译多语言</button>
+          <button type="button" id="sync-home-en-btn" class="hidden rounded-lg border border-amber-300 px-4 py-2 text-sm font-medium text-amber-700 hover:bg-amber-50" title="将英文首页 common.home 全量同步到所有语言，不做翻译">同步英文首页到全部语言</button>
           <a id="preview-link" href="#" target="_blank" class="rounded-lg border border-slate-200 px-4 py-2 text-sm text-slate-600 hover:bg-slate-50">预览</a>
           <button id="toggle-view" class="rounded-lg border border-slate-200 px-4 py-2 text-sm text-slate-600 hover:bg-slate-50">切换 JSON</button>
           <button id="save-btn" class="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700">保存</button>
@@ -402,6 +426,37 @@
           </div>
         </div>
       </div>
+
+      <!-- 多语言翻译（KIE Gemini 2.5 Flash） -->
+      <div id="translate-modal" class="hidden fixed inset-0 z-[60] flex items-center justify-center bg-black/40 overflow-y-auto p-4">
+        <div class="bg-white rounded-2xl shadow-xl max-w-lg w-full mx-4 max-h-[90vh] overflow-hidden flex flex-col my-8">
+          <div class="p-4 border-b border-slate-200 flex justify-between items-center">
+            <h4 class="font-bold text-slate-800">翻译为多语言</h4>
+            <button type="button" id="translate-modal-close" class="text-slate-500 hover:text-slate-700">✕</button>
+          </div>
+          <div class="p-4 overflow-y-auto flex-1 space-y-3 text-sm text-slate-600">
+            <p id="translate-modal-scope" class="text-sm font-medium text-indigo-900 bg-indigo-50 border border-indigo-100 rounded-lg px-3 py-2 hidden"></p>
+            <p>以 <strong>英文</strong> <code class="bg-slate-100 px-1 rounded text-xs">src/data/en/...</code> 当前文件为源，调用 <a href="https://docs.kie.ai/market/gemini/gemini-2-5-flash" target="_blank" rel="noopener" class="text-indigo-600 hover:underline">KIE Gemini 2.5 Flash</a>，将内容写入对应语言目录。</p>
+            <p class="text-amber-800 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 text-xs">需配置 <code class="bg-amber-100 px-1">KIE_AI_API_KEY</code>（或沿用 <code class="bg-amber-100 px-1">ZHEN_AI_API_KEY</code>）。大页面翻译可能需要数十秒。</p>
+            <div class="flex gap-2">
+              <button type="button" id="translate-select-all" class="text-xs text-indigo-600 hover:underline">全选</button>
+              <button type="button" id="translate-select-none" class="text-xs text-slate-500 hover:underline">取消全选</button>
+            </div>
+            <div id="translate-locale-checks" class="grid grid-cols-2 gap-2"></div>
+            <div id="translate-progress-wrap" class="hidden rounded-lg border border-teal-100 bg-teal-50/60 p-3 text-xs text-slate-700 space-y-2">
+              <div><span class="font-semibold text-teal-700">当前翻译：</span><span id="translate-current-locale">-</span></div>
+              <div><span class="font-semibold text-teal-700">已完成：</span><span id="translate-done-locales">-</span></div>
+              <div><span class="font-semibold text-rose-700">失败：</span><span id="translate-failed-locales">-</span></div>
+            </div>
+            <pre id="translate-result-log" class="hidden text-xs bg-slate-50 border border-slate-200 rounded-lg p-3 max-h-40 overflow-auto whitespace-pre-wrap"></pre>
+          </div>
+          <div class="p-4 border-t border-slate-200 flex justify-end gap-2">
+            <button type="button" id="translate-cancel-btn" class="rounded-lg border border-slate-200 px-4 py-2 text-sm text-slate-600 hover:bg-slate-50">关闭</button>
+            <button type="button" id="translate-run-btn" class="rounded-lg bg-teal-600 px-4 py-2 text-sm font-medium text-white hover:bg-teal-700">开始翻译</button>
+          </div>
+        </div>
+      </div>
+
       <div id="json-view" class="hidden">
         <textarea id="json-textarea" class="json-editor w-full h-[70vh] rounded-xl border border-slate-200 p-4"></textarea>
       </div>
@@ -415,34 +470,156 @@
   </div>
 
   <script>
-    const API_BASE = (window.location.origin && window.location.origin !== 'null' && !window.location.origin.startsWith('file'))
-      ? window.location.origin
-      : 'http://localhost:3007'
-    const state = { tool: '', slug: '', data: null, view: 'sections' }
+    /** 由 admin-seo-server.js 在 HTTP 下发 HTML 时注入为当前访问的 origin（与地址栏一致，避免 localhost / 127.0.0.1 混用导致请求打到错误进程） */
+    window.__TOOLAZE_SEO_ADMIN_ORIGIN__ = null // __ADMIN_ORIGIN_PLACEHOLDER__
+
+    /** 备用：直接打开磁盘上的 admin-seo.html 或未注入时使用 */
+    const ADMIN_SEO_API_PORT = '3007'
+    const NEXT_DEV_DEFAULT_PORT = '3006'
+    const API_BASE = (function resolveAdminApiBase() {
+      if (typeof window.__TOOLAZE_SEO_ADMIN_ORIGIN__ === 'string' && window.__TOOLAZE_SEO_ADMIN_ORIGIN__) {
+        return window.__TOOLAZE_SEO_ADMIN_ORIGIN__
+      }
+      if (!window.location.origin || window.location.origin === 'null' || window.location.origin.startsWith('file')) {
+        return 'http://127.0.0.1:' + ADMIN_SEO_API_PORT
+      }
+      const port = window.location.port
+      const host = window.location.hostname
+      if (port === NEXT_DEV_DEFAULT_PORT) {
+        const proto = window.location.protocol || 'http:'
+        return proto + '//' + host + ':' + ADMIN_SEO_API_PORT
+      }
+      return window.location.origin
+    })()
+    const state = { tool: '', slug: '', locale: 'en', data: null, view: 'sections', homepagePreviewModels: null, translateHomeSectionId: null, translateHomeSectionLabel: '' }
+
+    const SUPPORTED_SEO_LOCALES = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
+    const LOCALE_TAB_LABELS = {
+      en: 'English',
+      de: 'Deutsch',
+      ja: '日本語',
+      es: 'Español',
+      'zh-TW': '繁體中文',
+      pt: 'Português',
+      fr: 'Français',
+      ko: '한국어',
+      it: 'Italiano',
+    }
+
+    function buildEditorUrl(tool, slug, locale) {
+      const p = new URLSearchParams()
+      p.set('tool', tool)
+      if (slug) p.set('slug', slug)
+      if (locale && locale !== 'en') p.set('locale', locale)
+      return '/?' + p.toString()
+    }
+
+    function getLivePreviewUrl(tool, slug, locale) {
+      const base = 'https://toolaze.com'
+      if (tool === 'homepage' && !slug) {
+        if (!locale || locale === 'en') return `${base}/`
+        return `${base}/${locale}/`
+      }
+      const modelTools = ['seedance-2', 'kling-3', 'nano-banana-pro', 'nano-banana-2']
+      const pathPrefix = modelTools.includes(tool) ? 'model/' : ''
+      if (!locale || locale === 'en') {
+        return `${base}/${pathPrefix}${tool}${slug ? '/' + slug : ''}`
+      }
+      return `${base}/${locale}/${tool}${slug ? '/' + slug : ''}`
+    }
+
+    async function renderLocaleSwitcher() {
+      const wrap = document.getElementById('locale-switcher')
+      if (!wrap || !state.tool) return
+      let existing = ['en']
+      try {
+        const res = await api(`/api/seo/locales?tool=${encodeURIComponent(state.tool)}&slug=${encodeURIComponent(state.slug || '')}`)
+        if (res.locales && res.locales.length) existing = res.locales
+      } catch {
+        existing = ['en']
+      }
+      existing.sort((a, b) => SUPPORTED_SEO_LOCALES.indexOf(a) - SUPPORTED_SEO_LOCALES.indexOf(b))
+      wrap.innerHTML = existing
+        .map((loc) => {
+          const active = loc === state.locale
+          const cls = active
+            ? 'border-indigo-600 bg-indigo-50 text-indigo-900 ring-1 ring-indigo-200'
+            : 'border-slate-200 bg-white text-slate-700 hover:bg-slate-50'
+          const label = LOCALE_TAB_LABELS[loc] || loc
+          return `<button type="button" class="locale-tab rounded-lg border px-2.5 py-1.5 text-xs font-medium ${cls}" data-locale="${escapeHtml(loc)}">${escapeHtml(label)} <span class="font-mono text-slate-500">${escapeHtml(loc)}</span></button>`
+        })
+        .join('')
+      wrap.querySelectorAll('.locale-tab').forEach((btn) => {
+        btn.onclick = () => {
+          const loc = btn.getAttribute('data-locale')
+          if (!loc || loc === state.locale) return
+          location.href = buildEditorUrl(state.tool, state.slug, loc)
+        }
+      })
+    }
+
+    function updateEditorChromeForLocale() {
+      const changeBtn = document.getElementById('change-url-btn')
+      if (!changeBtn) return
+      if (state.locale !== 'en') changeBtn.classList.add('hidden')
+    }
 
     // 将生成弹窗移到 body，确保在 Dashboard 时也能显示
     ;(function () {
       const el = document.getElementById('generate-modal')
       if (el && el.parentElement) document.body.appendChild(el)
     })()
+    ;(function () {
+      const el = document.getElementById('translate-modal')
+      if (el && el.parentElement) document.body.appendChild(el)
+    })()
 
-    function show(el) { if (el) el.classList.remove('hidden') }
-    function hide(el) { if (el) el.classList.add('hidden') }
+    /** 必须不依赖 Tailwind：CDN 用 defer 时 .hidden 样式可能尚未注入，仅用 class 会关不掉遮罩 */
+    function show(el) {
+      if (!el) return
+      el.classList.remove('hidden')
+      el.style.display = ''
+    }
+    function hide(el) {
+      if (!el) return
+      el.classList.add('hidden')
+      el.style.display = 'none'
+    }
+
+    function escapeHtml(s) {
+      return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')
+    }
 
     async function api(path, opts = {}, retries = 2) {
       const url = path.startsWith('http') ? path : (API_BASE + (path.startsWith('/') ? '' : '/') + path)
+      const timeoutMs = typeof opts.timeoutMs === 'number' ? opts.timeoutMs : 15000
+      const fetchOpts = { ...opts }
+      delete fetchOpts.timeoutMs
       for (let i = 0; i <= retries; i++) {
         try {
           const controller = new AbortController()
-          const timeout = setTimeout(() => controller.abort(), 15000)
-          const fetchOpts = { ...opts }; if (!fetchOpts.signal) fetchOpts.signal = controller.signal
-          const res = await fetch(url, fetchOpts)
+          const timeout = setTimeout(() => controller.abort(), timeoutMs)
+          const res = await fetch(url, { ...fetchOpts, signal: controller.signal })
           clearTimeout(timeout)
-          const data = await res.json().catch(() => ({}))
+          const rawText = await res.text()
+          let data = {}
+          try {
+            data = rawText ? JSON.parse(rawText) : {}
+          } catch {
+            data = {}
+          }
           if (!res.ok) {
-            const msg = data.error || res.statusText || '请求失败'
+            const fallback =
+              rawText && rawText.length && rawText[0] !== '{'
+                ? rawText.replace(/\s+/g, ' ').slice(0, 160)
+                : ''
+            const msg = data.error || fallback || res.statusText || '请求失败'
             const hint = data.hint ? '\n\n' + data.hint : ''
-            const statusHint = res.status === 404 && !data.error ? '\n\n提示：若删除/预览失败，请确认管理后台已重启 (npm run admin:seo:restart)' : ''
+            const statusHint =
+              res.status === 404 && !data.error
+                ? '\n\n提示：① 地址栏须为 SEO 后台（默认 :3007），保存本文件后请重启 npm run admin:seo，并强制刷新本页 (Ctrl+Shift+R)；② 请求 URL: ' +
+                  url
+                : ''
             throw new Error(msg + hint + statusHint)
           }
           return data
@@ -515,6 +692,11 @@
       }
     }
 
+    /** 首页无 query 时尽早拉列表：避免后面数千行绑定任一报错导致永远不加载 */
+    if (!location.search) {
+      loadDashboard()
+    }
+
     function showLayoutStrategy() {
       hide(document.getElementById('loading'))
       hide(document.getElementById('dashboard'))
@@ -534,6 +716,229 @@
     const DEFAULT_USE_COMPONENTS = ['metadata', 'hero', 'howToUse', 'modelIntro', 'features', 'scenes', 'rating', 'faq']
     let layoutRecommendations = []
 
+    const TRANSLATE_LOCALES = [
+      { id: 'de', label: '德语 (de)' },
+      { id: 'ja', label: '日语 (ja)' },
+      { id: 'es', label: '西班牙语 (es)' },
+      { id: 'zh-TW', label: '繁体中文 (zh-TW)' },
+      { id: 'pt', label: '葡萄牙语 (pt)' },
+      { id: 'fr', label: '法语 (fr)' },
+      { id: 'ko', label: '韩语 (ko)' },
+      { id: 'it', label: '意大利语 (it)' },
+    ]
+    ;(function initTranslateLocaleChecks() {
+      const wrap = document.getElementById('translate-locale-checks')
+      if (!wrap) return
+      wrap.innerHTML = TRANSLATE_LOCALES.map((l) => `
+        <label class="flex items-center gap-2 cursor-pointer rounded-lg border border-slate-200 px-3 py-2 hover:bg-slate-50">
+          <input type="checkbox" class="translate-loc-cb rounded border-slate-300 text-teal-600" value="${l.id}">
+          <span>${l.label}</span>
+        </label>
+      `).join('')
+    })()
+
+    function translateLocaleLabel(id) {
+      const row = TRANSLATE_LOCALES.find((l) => l.id === id)
+      return row ? row.label : id
+    }
+
+    function renderTranslateProgress(current, done, failed) {
+      const wrap = document.getElementById('translate-progress-wrap')
+      const curEl = document.getElementById('translate-current-locale')
+      const doneEl = document.getElementById('translate-done-locales')
+      const failEl = document.getElementById('translate-failed-locales')
+      if (!wrap || !curEl || !doneEl || !failEl) return
+      wrap.classList.remove('hidden')
+      curEl.textContent = current ? translateLocaleLabel(current) : '等待中'
+      doneEl.textContent = done.length ? done.map(translateLocaleLabel).join('、') : '-'
+      failEl.textContent = failed.length ? failed.map((x) => `${translateLocaleLabel(x.locale)} (${x.error})`).join('；') : '-'
+    }
+
+    function openTranslateModal() {
+      if (!state.tool) {
+        showMsg('请先进入某个工具的编辑页', 'error')
+        return
+      }
+      const log = document.getElementById('translate-result-log')
+      if (log) {
+        log.classList.add('hidden')
+        log.textContent = ''
+      }
+      const progressWrap = document.getElementById('translate-progress-wrap')
+      if (progressWrap) progressWrap.classList.add('hidden')
+      renderTranslateProgress('', [], [])
+      const scope = document.getElementById('translate-modal-scope')
+      if (scope) {
+        if (state.tool === 'homepage' && state.translateHomeSectionId) {
+          scope.classList.remove('hidden')
+          const lab = state.translateHomeSectionLabel || state.translateHomeSectionId
+          scope.textContent = `仅翻译板块「${lab}」：译文将合并写入各语言 common.json 的 home（只更新该板块对应字段，不覆盖整个 home）。`
+        } else {
+          scope.classList.remove('hidden')
+          scope.textContent =
+            state.tool === 'homepage'
+              ? '整页翻译：将用英文 home 全文覆盖各语言 common.json 中的 home 对象。'
+              : '将翻译当前页面完整 JSON 到所选语言文件。'
+        }
+      }
+      show(document.getElementById('translate-modal'))
+      document.body.classList.add('modal-open')
+    }
+    function closeTranslateModal() {
+      state.translateHomeSectionId = null
+      state.translateHomeSectionLabel = ''
+      const scope = document.getElementById('translate-modal-scope')
+      if (scope) {
+        scope.classList.add('hidden')
+        scope.textContent = ''
+      }
+      hide(document.getElementById('translate-modal'))
+      document.body.classList.remove('modal-open')
+    }
+
+    const translateModalEl = document.getElementById('translate-modal')
+    document.getElementById('translate-seo-btn').onclick = () => {
+      state.translateHomeSectionId = null
+      state.translateHomeSectionLabel = ''
+      openTranslateModal()
+    }
+    document.getElementById('sync-home-en-btn').onclick = async () => {
+      if (state.tool !== 'homepage') {
+        showMsg('仅在首页编辑页可用', 'error')
+        return
+      }
+      const ok = confirm('将把英文首页 common.home 全量覆盖到全部语言（de/ja/es/zh-TW/pt/fr/ko/it）。是否继续？')
+      if (!ok) return
+      const btn = document.getElementById('sync-home-en-btn')
+      const oldText = btn.textContent
+      btn.disabled = true
+      btn.textContent = '同步中...'
+      try {
+        const res = await api('/api/homepage/sync-en', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({}),
+          timeoutMs: 120000,
+        })
+        if (res.ok) {
+          const locales = Array.isArray(res.written) ? res.written.map((w) => w.locale).join(', ') : ''
+          showMsg(`同步完成：${locales || '全部语言'}`)
+        } else {
+          showMsg(res.error || '同步失败', 'error')
+        }
+      } catch (e) {
+        showMsg(e.message || '同步失败', 'error')
+      } finally {
+        btn.disabled = false
+        btn.textContent = oldText
+      }
+    }
+    document.getElementById('translate-modal-close').onclick = closeTranslateModal
+    document.getElementById('translate-cancel-btn').onclick = closeTranslateModal
+    document.getElementById('translate-select-all').onclick = () => {
+      document.querySelectorAll('.translate-loc-cb').forEach((c) => { c.checked = true })
+    }
+    document.getElementById('translate-select-none').onclick = () => {
+      document.querySelectorAll('.translate-loc-cb').forEach((c) => { c.checked = false })
+    }
+    document.getElementById('translate-run-btn').onclick = async () => {
+      const targets = Array.from(document.querySelectorAll('.translate-loc-cb:checked')).map((c) => c.value)
+      if (targets.length === 0) {
+        showMsg('请至少选择一种语言', 'error')
+        return
+      }
+      const btn = document.getElementById('translate-run-btn')
+      btn.disabled = true
+      const log = document.getElementById('translate-result-log')
+      if (log) {
+        log.classList.remove('hidden')
+        log.textContent = '准备翻译…'
+      }
+      const doneLocales = []
+      const failedLocales = []
+      renderTranslateProgress('', doneLocales, failedLocales)
+      try {
+        const baseBody = {
+          tool: state.tool,
+          slug: state.slug || '',
+          sourceLocale: 'en',
+          targetLocales: [],
+        }
+        if (state.tool === 'homepage' && state.translateHomeSectionId) {
+          try {
+            const patch = {}
+            const sectionVal = getSectionData(state.data, state.translateHomeSectionId)
+            setSectionData(patch, state.translateHomeSectionId, JSON.parse(JSON.stringify(sectionVal)))
+            baseBody.homePartial = patch
+          } catch (e) {
+            showMsg('无法构建板块 JSON: ' + e.message, 'error')
+            btn.disabled = false
+            return
+          }
+        }
+
+        const lines = []
+        for (const loc of targets) {
+          renderTranslateProgress(loc, doneLocales, failedLocales)
+          if (log) {
+            log.textContent = [
+              ...lines,
+              `正在翻译 ${translateLocaleLabel(loc)}，请稍候…`,
+            ].join('\n')
+          }
+
+          try {
+            const res = await api('/api/translate-seo', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ ...baseBody, targetLocales: [loc] }),
+              timeoutMs: 240000,
+            }, 0)
+
+            if (res.written && res.written.length) {
+              doneLocales.push(loc)
+              res.written.forEach((w) => lines.push(`✅ ${w.locale} → ${w.path}`))
+            }
+            if (res.errors && res.errors.length) {
+              res.errors.forEach((err) => {
+                failedLocales.push({ locale: err.locale || loc, error: err.error || 'unknown error' })
+                lines.push(`❌ ${err.locale || loc}: ${err.error || 'unknown error'}`)
+              })
+            }
+            if ((!res.written || !res.written.length) && (!res.errors || !res.errors.length)) {
+              doneLocales.push(loc)
+              lines.push(`✅ ${loc} → 已完成`)
+            }
+          } catch (err) {
+            failedLocales.push({ locale: loc, error: err.message || 'request failed' })
+            lines.push(`❌ ${loc}: ${err.message || 'request failed'}`)
+          }
+
+          renderTranslateProgress('', doneLocales, failedLocales)
+          if (log) log.textContent = lines.join('\n')
+        }
+
+        const allOk = failedLocales.length === 0 && doneLocales.length === targets.length
+        if (allOk) {
+          state.translateHomeSectionId = null
+          state.translateHomeSectionLabel = ''
+          await renderLocaleSwitcher()
+          showMsg('翻译完成，文件已保存到 src/data。提交 git 后构建部署即可上线。')
+        } else {
+          showMsg(failedLocales[0]?.error || '部分失败', 'error')
+        }
+      } catch (e) {
+        if (log) log.textContent = '错误: ' + e.message
+        showMsg(e.message, 'error')
+      }
+      btn.disabled = false
+    }
+    if (translateModalEl) {
+      translateModalEl.addEventListener('click', (e) => {
+        if (e.target === translateModalEl) closeTranslateModal()
+      })
+    }
+
     document.getElementById('layout-csv-upload').onchange = (e) => {
       const f = e.target.files?.[0]
       if (!f) return
@@ -552,7 +957,7 @@
         return
       }
       const competitorText = document.getElementById('layout-competitor-urls').value.trim()
-      const competitorUrls = competitorText ? competitorText.split(/\r?\n/).map(s => s.trim()).filter(Boolean)
+      const competitorUrls = competitorText.split(/\r?\n/).map((s) => s.trim()).filter(Boolean)
       const targetTool = document.getElementById('layout-target-tool').value.trim() || undefined
       const btn = document.getElementById('layout-analyze-btn')
       btn.disabled = true
@@ -702,6 +1107,45 @@
       return JSON.stringify({ primaryKeywords: primary, longTailKeywords: longTail })
     }
 
+    /** 首页 common.home 专用：与 src/app/page.tsx 及 common.json 字段一致 */
+    const HOMEPAGE_HERO_KEYS = [
+      'badge', 'titleLine1', 'titleLine2', 'badgeLive', 'badgeComingSoon', 'heroTitle', 'heroTagline',
+      'title', 'subtitle', 'cta', 'ctaImage', 'ctaVideo',
+    ]
+    const HOMEPAGE_TOOL_CARD_KEYS = [
+      'toolImageCompressor', 'toolImageCompressorDesc', 'toolFormatConverter', 'toolFormatConverterDesc',
+      'toolFontGenerator', 'toolFontGeneratorDesc', 'toolEmojiCopyAndPaste', 'toolEmojiCopyAndPasteDesc',
+      'toolWatermarkRemover', 'toolWatermarkRemoverDesc', 'toolPhotoRestoration', 'toolPhotoRestorationDesc',
+      'toolImageResize', 'toolImageResizeDesc', 'toolVideoCompressor', 'toolVideoCompressorDesc',
+    ]
+    const HOMEPAGE_EXTRA_COPY_KEYS = [
+      'sectionAiImageTitle', 'sectionAiImageSubtitle', 'sectionAiVideoTitle', 'sectionAiVideoSubtitle',
+      'sectionToolsTitle', 'sectionToolsSubtitle', 'faqTitle',
+    ]
+    const HOMEPAGE_SECTION_ORDER = [
+      'homeHero', 'homeAiVideo', 'homeAiImage', 'homePageCardSummaries', 'homeTrending', 'homeAiToolsHub', 'homeAdvanced', 'homeUtilityTools',
+      'homeExtraCopy',
+      'homeSeoIntro', 'homeToolCards', 'homeWhy', 'homeFeatures', 'homeFaq',
+    ]
+    /** 首页编辑器顶部快速跳转（锚点）— Trending 等在长列表中易错过 */
+    const HOMEPAGE_TOC = [
+      ['metadata', 'Metadata'],
+      ['homeHero', 'Hero'],
+      ['homeAiVideo', 'AI Video'],
+      ['homeAiImage', 'AI Image'],
+      ['homePageCardSummaries', '卡片摘要'],
+      ['homeTrending', 'Trending'],
+      ['homeAiToolsHub', 'AI Tools'],
+      ['homeAdvanced', 'AI 工具'],
+      ['homeUtilityTools', '浏览器工具'],
+      ['homeExtraCopy', '分区标题'],
+      ['homeSeoIntro', 'SEO Intro'],
+      ['homeToolCards', '工具文案库'],
+      ['homeWhy', 'Why Toolaze'],
+      ['homeFeatures', 'Features'],
+      ['homeFaq', 'FAQ'],
+    ]
+
     const SECTION_TEMPLATES = {
       hero: { h1: 'Free <span class="text-gradient">Tool Name</span> Online', desc: 'Short description.' },
       metadata: { title: 'Page Title - Toolaze', description: 'Meta description.' },
@@ -717,6 +1161,14 @@
       moreTools: { moreTools: 'More [Tool Name] Tools', moreToolsLinks: [] }
     }
 
+    function pickKeys(obj, keys) {
+      const o = {}
+      for (const k of keys) {
+        if (obj[k] !== undefined) o[k] = obj[k]
+      }
+      return o
+    }
+
     function getSectionData(d, id) {
       if (id === 'metadata') return d.metadata || {}
       if (id === 'hero') return d.hero || {}
@@ -724,6 +1176,36 @@
       if (id === 'faq') return { faqTitle: d.faqTitle || '', faq: d.faq || [] }
       if (id === 'scenes') return { scenesTitle: d.scenesTitle || '', scenes: d.scenes || [] }
       if (id === 'moreTools') return { moreTools: d.moreTools || '', moreToolsLinks: Array.isArray(d.moreToolsLinks) ? d.moreToolsLinks : [] }
+      if (id === 'homeHero') return pickKeys(d, HOMEPAGE_HERO_KEYS)
+      if (id === 'homeAiVideo') return pickKeys(d, ['aiVideoTitle', 'aiVideoIntro'])
+      if (id === 'homeAiImage') return pickKeys(d, ['aiImageTitle', 'aiImageIntro'])
+      if (id === 'homePageCardSummaries') {
+        const h = d.homepageToolCardSummaries
+        return h && typeof h === 'object' && !Array.isArray(h) ? JSON.parse(JSON.stringify(h)) : {}
+      }
+      if (id === 'homeTrending') {
+        return {
+          trendingTitle: d.trendingTitle,
+          trendingSubtitle: d.trendingSubtitle,
+          trendingCards: Array.isArray(d.trendingCards) ? d.trendingCards : [],
+        }
+      }
+      if (id === 'homeAiToolsHub') {
+        return {
+          aiToolsHubTitle: d.aiToolsHubTitle,
+          aiToolsHubSubtitle: d.aiToolsHubSubtitle,
+          aiToolsHubIntro: d.aiToolsHubIntro,
+          aiToolsHubItems: Array.isArray(d.aiToolsHubItems) ? d.aiToolsHubItems : [],
+        }
+      }
+      if (id === 'homeAdvanced') return pickKeys(d, ['advancedToolsTitle', 'advancedToolsSubtitle'])
+      if (id === 'homeUtilityTools') return pickKeys(d, ['utilityToolsTitle', 'utilityToolsSubtitle'])
+      if (id === 'homeExtraCopy') return pickKeys(d, HOMEPAGE_EXTRA_COPY_KEYS)
+      if (id === 'homeSeoIntro') return d.seoIntro && typeof d.seoIntro === 'object' ? d.seoIntro : {}
+      if (id === 'homeToolCards') return pickKeys(d, HOMEPAGE_TOOL_CARD_KEYS)
+      if (id === 'homeWhy') return d.whyToolaze && typeof d.whyToolaze === 'object' ? d.whyToolaze : {}
+      if (id === 'homeFeatures') return d.features && typeof d.features === 'object' ? d.features : {}
+      if (id === 'homeFaq') return d.faq && typeof d.faq === 'object' ? d.faq : { title: '', items: [] }
       return d[id] || {}
     }
 
@@ -737,6 +1219,49 @@
         d.moreTools = (typeof val === 'string' ? val : val?.moreTools) || ''
         d.moreToolsLinks = Array.isArray(val?.moreToolsLinks) ? val.moreToolsLinks : []
       }
+      else if (id === 'homeHero') {
+        for (const k of HOMEPAGE_HERO_KEYS) if (val[k] !== undefined) d[k] = val[k]
+      }
+      else if (id === 'homeAiVideo') {
+        if (val.aiVideoTitle !== undefined) d.aiVideoTitle = val.aiVideoTitle
+        if (val.aiVideoIntro !== undefined) d.aiVideoIntro = val.aiVideoIntro
+      }
+      else if (id === 'homeAiImage') {
+        if (val.aiImageTitle !== undefined) d.aiImageTitle = val.aiImageTitle
+        if (val.aiImageIntro !== undefined) d.aiImageIntro = val.aiImageIntro
+      }
+      else if (id === 'homePageCardSummaries') {
+        d.homepageToolCardSummaries = val && typeof val === 'object' && !Array.isArray(val) ? val : {}
+      }
+      else if (id === 'homeTrending') {
+        if (val.trendingTitle !== undefined) d.trendingTitle = val.trendingTitle
+        if (val.trendingSubtitle !== undefined) d.trendingSubtitle = val.trendingSubtitle
+        if (val.trendingCards !== undefined) d.trendingCards = val.trendingCards
+      }
+      else if (id === 'homeAiToolsHub') {
+        if (val.aiToolsHubTitle !== undefined) d.aiToolsHubTitle = val.aiToolsHubTitle
+        if (val.aiToolsHubSubtitle !== undefined) d.aiToolsHubSubtitle = val.aiToolsHubSubtitle
+        if (val.aiToolsHubIntro !== undefined) d.aiToolsHubIntro = val.aiToolsHubIntro
+        if (val.aiToolsHubItems !== undefined) d.aiToolsHubItems = val.aiToolsHubItems
+      }
+      else if (id === 'homeAdvanced') {
+        if (val.advancedToolsTitle !== undefined) d.advancedToolsTitle = val.advancedToolsTitle
+        if (val.advancedToolsSubtitle !== undefined) d.advancedToolsSubtitle = val.advancedToolsSubtitle
+      }
+      else if (id === 'homeUtilityTools') {
+        if (val.utilityToolsTitle !== undefined) d.utilityToolsTitle = val.utilityToolsTitle
+        if (val.utilityToolsSubtitle !== undefined) d.utilityToolsSubtitle = val.utilityToolsSubtitle
+      }
+      else if (id === 'homeExtraCopy') {
+        for (const k of HOMEPAGE_EXTRA_COPY_KEYS) if (val[k] !== undefined) d[k] = val[k]
+      }
+      else if (id === 'homeSeoIntro') d.seoIntro = val
+      else if (id === 'homeToolCards') {
+        for (const k of HOMEPAGE_TOOL_CARD_KEYS) if (val[k] !== undefined) d[k] = val[k]
+      }
+      else if (id === 'homeWhy') d.whyToolaze = val
+      else if (id === 'homeFeatures') d.features = val
+      else if (id === 'homeFaq') d.faq = val
       else d[id] = val
     }
 
@@ -747,6 +1272,29 @@
       else if (id === 'faq') { delete d.faqTitle; delete d.faq }
       else if (id === 'scenes') { delete d.scenesTitle; delete d.scenes }
       else if (id === 'moreTools') { delete d.moreTools; delete d.moreToolsLinks }
+      else if (id === 'homeHero') { for (const k of HOMEPAGE_HERO_KEYS) delete d[k] }
+      else if (id === 'homeAiVideo') { delete d.aiVideoTitle; delete d.aiVideoIntro }
+      else if (id === 'homeAiImage') { delete d.aiImageTitle; delete d.aiImageIntro }
+      else if (id === 'homePageCardSummaries') { delete d.homepageToolCardSummaries }
+      else if (id === 'homeTrending') {
+        delete d.trendingTitle
+        delete d.trendingSubtitle
+        delete d.trendingCards
+      }
+      else if (id === 'homeAiToolsHub') {
+        delete d.aiToolsHubTitle
+        delete d.aiToolsHubSubtitle
+        delete d.aiToolsHubIntro
+        delete d.aiToolsHubItems
+      }
+      else if (id === 'homeAdvanced') { delete d.advancedToolsTitle; delete d.advancedToolsSubtitle }
+      else if (id === 'homeUtilityTools') { delete d.utilityToolsTitle; delete d.utilityToolsSubtitle }
+      else if (id === 'homeExtraCopy') { for (const k of HOMEPAGE_EXTRA_COPY_KEYS) delete d[k] }
+      else if (id === 'homeSeoIntro') delete d.seoIntro
+      else if (id === 'homeToolCards') { for (const k of HOMEPAGE_TOOL_CARD_KEYS) delete d[k] }
+      else if (id === 'homeWhy') delete d.whyToolaze
+      else if (id === 'homeFeatures') delete d.features
+      else if (id === 'homeFaq') delete d.faq
       else delete d[id]
       const order = d.sectionsOrder || []
       d.sectionsOrder = order.filter(x => x !== id)
@@ -754,8 +1302,512 @@
 
     const TOOLS_WITH_TRUST_BAR = ['image-compressor','image-compression','image-converter','image-conversion','emoji-copy-and-paste','font-generator']
 
+    function mergeTrendingModels(baseList, overrides) {
+      if (!baseList || !baseList.length) return []
+      const ov = Array.isArray(overrides) ? overrides : []
+      if (!ov.length) return baseList
+      return baseList.map((item) => {
+        const o = ov.find((x) => x.tool === item.tool)
+        if (!o) return item
+        return {
+          ...item,
+          title: o.title != null ? o.title : item.title,
+          description: o.description != null ? o.description : item.description,
+          featuredDesc: o.featuredDesc != null ? o.featuredDesc : item.featuredDesc,
+          modelName: o.modelName != null ? o.modelName : item.modelName,
+        }
+      })
+    }
+
+    /** 与线上 /api/homepage-preview-models 一致后再叠当前编辑中的 home 数据（未保存也能预览摘要/trending 覆盖） */
+    function effectiveHomepagePreviewModels() {
+      const pm = state.homepagePreviewModels
+      if (!pm || state.tool !== 'homepage') return pm
+      const d = state.data
+      if (!d) return pm
+      const o = JSON.parse(JSON.stringify(pm))
+      const sum = d.homepageToolCardSummaries && typeof d.homepageToolCardSummaries === 'object' ? d.homepageToolCardSummaries : null
+      const patch = (card) => {
+        if (!card || !sum) return card
+        const s = sum[card.tool]
+        if (!s || typeof s !== 'object') return card
+        const summary = typeof s.summary === 'string' && s.summary.trim() ? s.summary.trim() : null
+        const cardTitle = typeof s.cardTitle === 'string' && s.cardTitle.trim() ? s.cardTitle.trim() : null
+        if (!summary && !cardTitle) return card
+        return {
+          ...card,
+          ...(cardTitle ? { modelName: cardTitle, title: cardTitle } : {}),
+          ...(summary ? { featuredDesc: summary, description: summary } : {}),
+        }
+      }
+      o.aiVideoTools = (o.aiVideoTools || []).map(patch)
+      o.aiImageTools = (o.aiImageTools || []).map(patch)
+      o.trendingModels = [...(o.aiVideoTools || []), ...(o.aiImageTools || [])]
+      o.advancedAiTools = (o.advancedAiTools || []).map(patch)
+      return o
+    }
+
+    /** 首页 SEO：common.home + 与英文首页一致的板块布局（模型卡来自 L2 JSON + common.homepageToolCardSummaries） */
+    function renderHomepageSectionsPreview(data, container) {
+      const d = data
+      const pm = effectiveHomepagePreviewModels()
+      const svgVideoLg = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-indigo-600"><rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="2" fill="none"/><path d="M10 8L16 12L10 16V8Z" fill="currentColor"/></svg>'
+      const svgImageLg = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-indigo-600"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2" fill="none"/><circle cx="8.5" cy="8.5" r="2" fill="currentColor" opacity="0.6"/><path d="M3 18L7 14L10 17L14 11L21 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>'
+      const svgVideoSm = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-indigo-600"><rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="2" fill="none"/><path d="M10 8L16 12L10 16V8Z" fill="currentColor"/></svg>'
+      const svgImageSm = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-indigo-600"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2" fill="none"/><circle cx="8.5" cy="8.5" r="2" fill="currentColor" opacity="0.6"/><path d="M3 18L7 14L10 17L14 11L21 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>'
+
+      function modelCardThumb(url, size) {
+        const box = size === 'lg' ? 'mb-4 rounded-2xl' : 'mb-3 rounded-xl'
+        return `<div class="relative ${box} aspect-[4/3] w-full overflow-hidden ring-1 ring-indigo-100 bg-slate-50"><img src="${escapeHtml(url)}" alt="" width="800" height="600" class="h-full w-full object-cover" loading="lazy" decoding="async" /></div>`
+      }
+      function cardLarge(item) {
+        const svg = item.kind === 'video' ? svgVideoLg : svgImageLg
+        const name = escapeHtml(item.modelName || item.title || '')
+        const desc = escapeHtml(item.featuredDesc || item.description || '')
+        const top = item.previewImage ? modelCardThumb(item.previewImage, 'lg') : `<div class="w-14 h-14 home-model-card-icon rounded-2xl flex items-center justify-center mb-4">${svg}</div>`
+        return `<div class="home-model-card block p-8 rounded-[2rem] border border-indigo-100 transition-all duration-300 hover:border-indigo-200">${top}<h3 class="text-xl font-bold text-indigo-600 mb-3">${name}</h3><p class="text-sm text-slate-600 leading-relaxed">${desc}</p></div>`
+      }
+      function cardTrending(item) {
+        const svg = item.kind === 'video' ? svgVideoSm : svgImageSm
+        const name = escapeHtml(item.modelName || item.title || '')
+        const desc = escapeHtml(item.featuredDesc || item.description || '')
+        const top = item.previewImage ? modelCardThumb(item.previewImage, 'sm') : `<div class="w-12 h-12 home-model-card-icon rounded-xl flex items-center justify-center mb-3">${svg}</div>`
+        return `<div class="home-model-card block p-6 rounded-[2rem] border border-indigo-100 transition-all duration-300 hover:border-indigo-200">${top}<h3 class="text-base font-bold text-indigo-600 mb-2">${name}</h3><p class="text-xs text-slate-600 leading-relaxed">${desc}</p></div>`
+      }
+      const otherEmoji = {
+        'ai-couple-photo-maker': '💑',
+        'watermark-remover': '🧽',
+        'photo-restoration': '🖼️',
+        'image-compressor': '🗜️',
+        'image-converter': '🔄',
+        'font-generator': '✏️',
+        'emoji-copy-and-paste': '😀',
+      }
+      function cardOther(item) {
+        const em = otherEmoji[item.tool] || '📌'
+        const title = escapeHtml(String(item.title || '').replace(/<[^>]*>/g, '').trim())
+        const desc = escapeHtml(item.description || '')
+        const thumb = item.previewImage
+          ? `<div class="relative mb-4 aspect-[4/3] w-full overflow-hidden rounded-2xl ring-1 ring-indigo-100 bg-slate-50"><img src="${escapeHtml(item.previewImage)}" alt="" width="800" height="600" class="h-full w-full object-cover" loading="lazy" decoding="async" /></div>`
+          : `<div class="w-14 h-14 rounded-2xl bg-indigo-50 flex items-center justify-center mb-4 text-2xl">${em}</div>`
+        return `<div class="group block p-6 rounded-[2rem] bg-white border border-indigo-100 hover:border-indigo-200 transition-all duration-300">${thumb}<h3 class="font-bold text-slate-900 mb-2 text-base">${title}</h3><p class="text-sm text-slate-600 leading-relaxed">${desc}</p><p class="text-[10px] text-slate-400 mt-2 font-mono truncate">${escapeHtml(item.tool || '')}</p></div>`
+      }
+
+      const kvHtml = (keys) =>
+        `<div class="space-y-2 text-sm">${keys
+          .map((k) =>
+            d[k] != null && String(d[k]).length
+              ? `<div class="border-b border-slate-100 pb-2 last:border-0"><span class="font-semibold text-indigo-700">${escapeHtml(k)}</span><p class="text-slate-700 mt-1 whitespace-pre-wrap">${escapeHtml(String(d[k]))}</p></div>`
+              : ''
+          )
+          .join('')}</div>`
+
+      const previewWarn = !pm
+        ? `<p class="text-amber-800 text-xs bg-amber-50 border border-amber-200 rounded-lg p-2 mb-3">模型卡片无法加载：请重启 <code class="bg-amber-100 px-1 rounded">npm run admin:seo</code> 并确认接口 <code class="bg-amber-100 px-1 rounded">/api/homepage-preview-models</code> 可用。</p>`
+        : ''
+
+      const sections = []
+
+      sections.push({
+        id: 'metadata',
+        label: 'Metadata',
+        html: `
+        <div class="home-preview-shell text-left">
+          <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+            <div class="text-sm"><span class="font-semibold text-slate-600">title</span><p class="text-slate-800 mt-1">${escapeHtml(d.metadata?.title || '')}</p></div>
+            <div class="text-sm mt-4"><span class="font-semibold text-slate-600">description</span><p class="text-slate-700 mt-1 whitespace-pre-wrap">${escapeHtml(d.metadata?.description || '')}</p></div>
+          </div>
+        </div>`,
+      })
+
+      sections.push({
+        id: 'homeHero',
+        label: 'Hero / 顶部文案',
+        html: `
+        <div class="home-preview-shell text-left overflow-hidden rounded-xl border border-indigo-100">
+          <header class="relative pt-16 pb-24 px-6 bg-[#F8FAFF] home-hero-mesh overflow-hidden">
+            <div class="max-w-4xl mx-auto text-center mb-10 relative z-10">
+              <h1 class="home-section-title text-[40px] md:text-[44px] text-slate-900 mb-6 tracking-tight" style="line-height:1.25">${escapeHtml(d.heroTitle || '')}</h1>
+              <p class="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">${escapeHtml(d.heroTagline || '')}</p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-4 relative z-10">
+              <span class="inline-flex items-center gap-2 px-8 py-3.5 bg-gradient-brand text-white font-bold rounded-full home-cta-glow cursor-default">${escapeHtml(d.ctaImage || '')}<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></span>
+              <span class="inline-flex items-center gap-2 px-8 py-3.5 bg-white text-indigo-600 font-bold rounded-full border-2 border-indigo-200 cursor-default">${escapeHtml(d.ctaVideo || '')}</span>
+            </div>
+          </header>
+          <div class="bg-white px-4 py-3 border-t border-indigo-50 text-xs text-slate-500">以下为 common.home 中其余 Hero 相关字段（badge / 备用标题等）。</div>
+          <div class="bg-white px-4 pb-4">${kvHtml(HOMEPAGE_HERO_KEYS.filter((k) => !['heroTitle', 'heroTagline', 'ctaImage', 'ctaVideo'].includes(k)))}</div>
+        </div>`,
+      })
+
+      const aiVideoCards = (pm && pm.aiVideoTools) ? pm.aiVideoTools.map(cardLarge).join('') : ''
+      sections.push({
+        id: 'homeAiVideo',
+        label: 'AI Video 区块（文案 + 模型卡）',
+        html: `
+        <div class="home-preview-shell text-left overflow-hidden rounded-xl border border-indigo-100">
+          ${previewWarn}
+          <p class="text-xs text-slate-500 px-4 pt-3 bg-white border-b border-indigo-50">模型卡优先展示首页 demo 缩略图（R2 公网 URL，映射定义在 <code class="bg-slate-100 px-1 rounded">src/lib/home-model-card-images.ts</code>），与线上首页一致。</p>
+          <section class="py-20 px-6 bg-white">
+            <div class="max-w-6xl mx-auto">
+              <div class="mb-12">
+                <h2 class="home-section-title text-4xl text-slate-900 mb-4 tracking-tight">${escapeHtml(d.aiVideoTitle || '')}</h2>
+                <p class="text-slate-600 max-w-3xl text-base md:text-lg leading-relaxed whitespace-pre-wrap">${escapeHtml(d.aiVideoIntro || '')}</p>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-8">${aiVideoCards || '<p class="text-sm text-slate-500 col-span-full">暂无模型数据（检查当前语言目录下 seedance-2、kling-3 的 L2 JSON）。</p>'}</div>
+            </div>
+          </section>
+        </div>`,
+      })
+
+      const aiImageCards = (pm && pm.aiImageTools) ? pm.aiImageTools.map(cardLarge).join('') : ''
+      sections.push({
+        id: 'homeAiImage',
+        label: 'AI Image 区块（文案 + 模型卡）',
+        html: `
+        <div class="home-preview-shell text-left overflow-hidden rounded-xl border border-indigo-100">
+          ${previewWarn}
+          <p class="text-xs text-slate-500 px-4 pt-3 bg-white border-b border-indigo-50">模型卡优先展示首页 demo 缩略图（R2 公网 URL，映射定义在 <code class="bg-slate-100 px-1 rounded">src/lib/home-model-card-images.ts</code>），与线上首页一致。</p>
+          <section class="py-20 px-6 bg-[#F8FAFF]">
+            <div class="max-w-6xl mx-auto">
+              <div class="mb-12">
+                <h2 class="home-section-title text-4xl text-slate-900 mb-4 tracking-tight">${escapeHtml(d.aiImageTitle || '')}</h2>
+                <p class="text-slate-600 max-w-3xl text-base md:text-lg leading-relaxed whitespace-pre-wrap">${escapeHtml(d.aiImageIntro || '')}</p>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-8">${aiImageCards || '<p class="text-sm text-slate-500 col-span-full">暂无模型数据。</p>'}</div>
+            </div>
+          </section>
+        </div>`,
+      })
+
+      const sumObj = d.homepageToolCardSummaries && typeof d.homepageToolCardSummaries === 'object' ? d.homepageToolCardSummaries : {}
+      const summaryTableRows = Object.keys(sumObj).length
+        ? Object.entries(sumObj)
+            .map(([tid, tv]) => {
+              const ob = tv && typeof tv === 'object' ? tv : {}
+              const ct = ob.cardTitle != null && String(ob.cardTitle).trim() ? String(ob.cardTitle).trim() : '—'
+              const sm = ob.summary != null ? String(ob.summary).trim() : ''
+              const smShort = sm.length > 220 ? `${sm.slice(0, 220)}…` : sm
+              return `<tr class="border-b border-slate-100 align-top"><td class="py-2 pr-3 font-mono text-xs text-indigo-800">${escapeHtml(tid)}</td><td class="py-2 pr-3 text-sm text-slate-700">${escapeHtml(ct)}</td><td class="py-2 text-sm text-slate-600">${escapeHtml(smShort || '—')}</td></tr>`
+            })
+            .join('')
+        : '<tr><td colspan="3" class="py-3 text-slate-500 text-sm">未配置 <code class="bg-slate-100 px-1 rounded text-xs">homepageToolCardSummaries</code>：模型/工具卡将回退 L2 hero 或 meta 短描述。</td></tr>'
+      sections.push({
+        id: 'homePageCardSummaries',
+        label: '首页模型/工具卡片摘要 (homepageToolCardSummaries)',
+        html: `
+        <div class="home-preview-shell text-left overflow-hidden rounded-xl border border-indigo-100">
+          <div class="bg-amber-50/80 border-b border-amber-100 px-4 py-3 text-xs text-amber-900">
+            此处为首页专用短文案（与 L2 SEO 长文分离）。键名对应工具 id：<code class="bg-white px-1 rounded">seedance-2</code>、<code class="bg-white px-1 rounded">kling-3</code>、<code class="bg-white px-1 rounded">nano-banana-pro</code> 等；Advanced 区含 <code class="bg-white px-1 rounded">watermark-remover</code>、<code class="bg-white px-1 rounded">photo-restoration</code>、<code class="bg-white px-1 rounded">ai-couple-photo-maker</code>。字段：<code class="bg-white px-1 rounded">summary</code>（正文）、<code class="bg-white px-1 rounded">cardTitle</code>（可选）。保存后线上与预览均读此对象；下方 AI Video/Image 卡预览已叠加当前 JSON（含未保存的「应用」）。
+          </div>
+          <div class="bg-white p-4 overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+              <thead><tr class="text-xs font-semibold text-slate-500 border-b border-slate-200"><th class="py-2 pr-3">tool id</th><th class="py-2 pr-3">cardTitle</th><th class="py-2">summary</th></tr></thead>
+              <tbody>${summaryTableRows}</tbody>
+            </table>
+          </div>
+        </div>`,
+      })
+
+      const trendingMerged = mergeTrendingModels(pm && pm.trendingModels, d.trendingCards)
+      const trendingCardsHtml = trendingMerged.length ? trendingMerged.map(cardTrending).join('') : ''
+      sections.push({
+        id: 'homeTrending',
+        label: 'Trending 区块（标题/副标题 + 模型卡；homepageToolCardSummaries 优先，可用 trendingCards 再覆盖）',
+        html: `
+        <div class="home-preview-shell text-left overflow-hidden rounded-xl border border-indigo-100">
+          ${previewWarn}
+          <p class="text-xs text-slate-500 px-4 pt-3 bg-white border-b border-indigo-50">模型顺序与线上一致（Video→Image）。卡片描述优先 <code class="bg-slate-100 px-1 rounded">homepageToolCardSummaries</code>；可选 <code class="bg-slate-100 px-1 rounded">trendingCards</code> 按 tool 再覆盖。R2 缩略图与线上一致。</p>
+          <section class="py-20 px-6 bg-white">
+            <div class="max-w-6xl mx-auto">
+              <div class="mb-12">
+                <h2 class="home-section-title text-4xl text-slate-900 mb-4 tracking-tight">${escapeHtml(d.trendingTitle || '')}</h2>
+                <p class="text-slate-600 max-w-3xl text-base md:text-lg leading-relaxed whitespace-pre-wrap">${escapeHtml(d.trendingSubtitle || '')}</p>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">${trendingCardsHtml || '<p class="text-sm text-slate-500 col-span-full">暂无 Trending 模型列表（检查 /api/homepage-preview-models 与当前语言 L2 JSON）。</p>'}</div>
+            </div>
+          </section>
+        </div>`,
+      })
+
+      const hubItems = Array.isArray(d.aiToolsHubItems) ? d.aiToolsHubItems : []
+      const hubCardsHtml = hubItems.length
+        ? hubItems.map((item) => {
+            const tit = escapeHtml(item.title || '')
+            const desc = escapeHtml(item.description || '')
+            const href = escapeHtml(item.href || '#')
+            return `<div class="home-model-card block p-8 rounded-[2rem] border border-indigo-100"><div class="w-12 h-12 home-model-card-icon rounded-xl flex items-center justify-center mb-4 text-indigo-600 font-bold">✦</div><h3 class="text-lg font-bold text-indigo-600 mb-3">${tit}</h3><p class="text-sm text-slate-600 leading-relaxed">${desc}</p><p class="text-xs text-slate-400 mt-2 font-mono truncate">${href}</p></div>`
+          }).join('')
+        : ''
+      sections.push({
+        id: 'homeAiToolsHub',
+        label: 'AI Tools 聚合（Trending 下方 SEO 区块）',
+        html: `
+        <div class="home-preview-shell text-left overflow-hidden rounded-xl border border-indigo-100">
+          <section class="py-20 px-6 bg-[#F8FAFF]">
+            <div class="max-w-6xl mx-auto">
+              <div class="mb-12">
+                <h2 class="home-section-title text-4xl text-slate-900 mb-4 tracking-tight">${escapeHtml(d.aiToolsHubTitle || '')}</h2>
+                <p class="text-slate-600 max-w-3xl text-base md:text-lg leading-relaxed whitespace-pre-wrap">${escapeHtml(d.aiToolsHubSubtitle || '')}</p>
+                ${d.aiToolsHubIntro ? `<p class="text-slate-600 max-w-3xl text-base md:text-lg leading-relaxed mt-4 whitespace-pre-wrap">${escapeHtml(d.aiToolsHubIntro)}</p>` : ''}
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-6">${hubCardsHtml || '<p class="text-sm text-slate-500 col-span-full">请在 JSON 中配置 aiToolsHubItems（title / description / href）。</p>'}</div>
+            </div>
+          </section>
+        </div>`,
+      })
+
+      const advancedCards = (pm && pm.advancedAiTools) ? pm.advancedAiTools.map(cardOther).join('') : ''
+      sections.push({
+        id: 'homeAdvanced',
+        label: 'AI 功能工具（情侣照 / 去水印 / 修复）',
+        html: `
+        <div class="home-preview-shell text-left overflow-hidden rounded-xl border border-indigo-100">
+          ${previewWarn}
+          <p class="text-xs text-slate-500 px-4 pt-3 bg-white border-b border-indigo-50">清单与 <code class="bg-slate-100 px-1 rounded">src/lib/homepage-grid-tools.ts</code> 中 <code class="bg-slate-100 px-1">usesAi: true</code> 一致。缩略图来自各工具落地 demo 的 R2 URL，不用 emoji。</p>
+          <section class="py-20 px-6 bg-white">
+            <div class="max-w-6xl mx-auto">
+              <div class="mb-12">
+                <h2 class="home-section-title text-4xl text-slate-900 mb-4 tracking-tight">${escapeHtml(d.advancedToolsTitle || '')}</h2>
+                <p class="text-slate-600 max-w-3xl text-base md:text-lg leading-relaxed whitespace-pre-wrap">${escapeHtml(d.advancedToolsSubtitle || '')}</p>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-6">${advancedCards || '<p class="text-sm text-slate-500 col-span-full">暂无 AI 工具卡数据。</p>'}</div>
+            </div>
+          </section>
+        </div>`,
+      })
+
+      const utilityCards = (pm && pm.utilityTools) ? pm.utilityTools.map(cardOther).join('') : ''
+      sections.push({
+        id: 'homeUtilityTools',
+        label: '浏览器工具（非生成式 AI：压缩 / 转换 / 字体 / Emoji）',
+        html: `
+        <div class="home-preview-shell text-left overflow-hidden rounded-xl border border-indigo-100">
+          ${previewWarn}
+          <p class="text-xs text-slate-500 px-4 pt-3 bg-white border-b border-indigo-50">对应 <code class="bg-slate-100 px-1">usesAi: false</code> 的浏览器工具清单。</p>
+          <section class="py-20 px-6 bg-[#F8FAFF]">
+            <div class="max-w-6xl mx-auto">
+              <div class="mb-12">
+                <h2 class="home-section-title text-4xl text-slate-900 mb-4 tracking-tight">${escapeHtml(d.utilityToolsTitle || '')}</h2>
+                <p class="text-slate-600 max-w-3xl text-base md:text-lg leading-relaxed whitespace-pre-wrap">${escapeHtml(d.utilityToolsSubtitle || '')}</p>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">${utilityCards || '<p class="text-sm text-slate-500 col-span-full">暂无工具卡数据。</p>'}</div>
+            </div>
+          </section>
+        </div>`,
+      })
+
+      sections.push({
+        id: 'homeExtraCopy',
+        label: '分区标题 / 其它顶栏文案',
+        html: `<div class="home-preview-shell text-left rounded-xl border border-slate-200 bg-white p-6">${kvHtml(HOMEPAGE_EXTRA_COPY_KEYS)}</div>`,
+      })
+
+      const si = d.seoIntro || {}
+      sections.push({
+        id: 'homeSeoIntro',
+        label: 'SEO Intro（长文案）',
+        html: `
+        <div class="home-preview-shell text-left">
+          <section class="py-16 px-6 bg-white border border-indigo-100 rounded-xl">
+            <div class="max-w-4xl mx-auto space-y-4 text-sm">
+              ${si.title ? `<h2 class="home-section-title text-3xl text-slate-900">${escapeHtml(si.title)}</h2>` : ''}
+              ${si.paragraph1 ? `<p class="text-slate-700 whitespace-pre-wrap leading-relaxed">${escapeHtml(si.paragraph1)}</p>` : ''}
+              ${si.paragraph2 ? `<p class="text-slate-700 whitespace-pre-wrap leading-relaxed">${escapeHtml(si.paragraph2)}</p>` : ''}
+              ${si.paragraph3 ? `<p class="text-slate-700 whitespace-pre-wrap leading-relaxed">${escapeHtml(si.paragraph3)}</p>` : ''}
+            </div>
+          </section>
+        </div>`,
+      })
+
+      const HOMEPAGE_TOOL_CARD_PAIRS = [
+        ['toolImageCompressor', 'toolImageCompressorDesc'],
+        ['toolFormatConverter', 'toolFormatConverterDesc'],
+        ['toolImageResize', 'toolImageResizeDesc'],
+        ['toolVideoCompressor', 'toolVideoCompressorDesc'],
+      ]
+      const toolCardsInner = HOMEPAGE_TOOL_CARD_PAIRS.map(([tk, dk]) => {
+        const tit = d[tk]
+        if (tit == null || !String(tit).length) return ''
+        const desc = d[dk] != null ? String(d[dk]) : ''
+        return `<div class="rounded-xl border border-indigo-100 bg-white p-4 shadow-sm"><div class="font-bold text-slate-900">${escapeHtml(String(tit))}</div><p class="text-slate-600 mt-2 text-sm leading-relaxed">${escapeHtml(desc)}</p></div>`
+      }).join('')
+      sections.push({
+        id: 'homeToolCards',
+        label: '工具卡片名称与描述（文案库）',
+        html: `<div class="home-preview-shell text-left rounded-xl border border-slate-200 bg-[#F8FAFF] p-6"><div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">${toolCardsInner}</div></div>`,
+      })
+
+      const wy = d.whyToolaze || {}
+      sections.push({
+        id: 'homeWhy',
+        label: 'Why Toolaze',
+        html: `
+        <div class="home-preview-shell text-left">
+          <section class="py-16 px-6 bg-[#F8FAFF] rounded-xl border border-indigo-100">
+            <div class="max-w-4xl mx-auto text-center space-y-4">
+              ${wy.badge ? `<span class="inline-block rounded-full bg-indigo-50 px-4 py-1.5 text-xs font-bold text-indigo-700">${escapeHtml(wy.badge)}</span>` : ''}
+              ${wy.title ? `<h2 class="home-section-title text-3xl text-slate-900">${escapeHtml(wy.title)}</h2>` : ''}
+              ${wy.subtitle ? `<p class="text-slate-600 text-lg">${escapeHtml(wy.subtitle)}</p>` : ''}
+            </div>
+          </section>
+        </div>`,
+      })
+
+      const feat = d.features || {}
+      const featKeys = Object.keys(feat)
+      sections.push({
+        id: 'homeFeatures',
+        label: 'Features（四点）',
+        html: `
+        <div class="home-preview-shell text-left">
+          <section class="py-16 px-6 bg-white rounded-xl border border-indigo-100">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+              ${featKeys
+                .map((k) => {
+                  const block = feat[k] || {}
+                  return `<div class="rounded-[2rem] p-8 border border-indigo-100 bg-[#F8FAFF]">
+                    <div class="text-xs font-bold text-indigo-600 uppercase mb-2">${escapeHtml(k)}</div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">${escapeHtml(block.title || '')}</h3>
+                    <p class="text-sm text-slate-600 whitespace-pre-wrap leading-relaxed">${escapeHtml(block.desc || '')}</p>
+                  </div>`
+                })
+                .join('')}
+            </div>
+          </section>
+        </div>`,
+      })
+
+      const fq = d.faq || {}
+      const fqItems = Array.isArray(fq.items) ? fq.items : []
+      sections.push({
+        id: 'homeFaq',
+        label: 'FAQ',
+        html: `
+        <div class="home-preview-shell text-left overflow-hidden rounded-xl border border-indigo-100">
+          <section class="py-24 px-6 bg-white">
+            <div class="max-w-3xl mx-auto">
+              <h2 class="home-section-title text-4xl text-slate-900 text-center mb-14 tracking-tight">${escapeHtml(fq.title || '')}</h2>
+              <div class="space-y-4 max-h-[560px] overflow-y-auto pr-1">
+                ${fqItems
+                  .map(
+                    (item) => `
+                  <details class="group bg-slate-50/80 hover:bg-slate-50 p-6 rounded-2xl border border-slate-100">
+                    <summary class="font-semibold text-slate-900 cursor-pointer flex items-center justify-between gap-4 list-none">${escapeHtml(item.q || '')}<span class="flex-shrink-0 w-8 h-8 rounded-full bg-indigo-50 text-indigo-600 flex items-center justify-center text-sm font-bold">+</span></summary>
+                    <p class="text-slate-600 mt-4 text-sm leading-relaxed whitespace-pre-wrap">${escapeHtml(item.a || '')}</p>
+                  </details>`
+                  )
+                  .join('')}
+              </div>
+            </div>
+          </section>
+        </div>`,
+      })
+
+      const ordered = []
+      const seen = new Set()
+      for (const id of ['metadata', ...HOMEPAGE_SECTION_ORDER]) {
+        const s = sections.find((x) => x.id === id)
+        if (s && !seen.has(s.id)) {
+          ordered.push(s)
+          seen.add(s.id)
+        }
+      }
+      for (const s of sections) {
+        if (!seen.has(s.id)) ordered.push(s)
+      }
+
+      const tocHtml = `<div class="flex flex-wrap gap-x-2 gap-y-1 text-xs items-center border border-indigo-100 rounded-lg bg-white px-3 py-2 mb-4 shadow-sm">
+          <span class="font-semibold text-slate-600 shrink-0">跳转板块</span>
+          ${HOMEPAGE_TOC.map(([tid, tlab]) => `<a href="#hp-sec-${tid}" class="text-indigo-600 hover:underline shrink-0">${escapeHtml(tlab)}</a>`).join('<span class="text-slate-300">·</span>')}
+        </div>`
+
+      container.innerHTML = `
+        <div class="rounded-xl border border-indigo-100 bg-indigo-50/40 p-4 mb-6">
+          <p class="text-sm text-slate-700"><span class="font-semibold text-indigo-800">首页（common.home）</span>：预览对齐 <code class="text-xs bg-white px-1 rounded">HomePageMain</code>。模型/工具<strong>卡片描述</strong>以 <code class="text-xs bg-white px-1 rounded">homepageToolCardSummaries</code> 为准（板块「卡片摘要」可编辑）；无条目时再回退 L2 hero/meta 短句。<code class="text-xs bg-white px-1 rounded">trendingCards</code> 可在摘要之上再次覆盖单卡标题/描述。</p>
+          <p class="text-xs text-slate-500 mt-2">不提供新增板块 / 拖拽排序。可直接编辑各板块 JSON。</p>
+          ${tocHtml}
+        </div>
+        <div id="sections-sortable" class="space-y-0">
+      ` + ordered.map(s => `
+        <div class="mb-8 section-card scroll-mt-24" id="hp-sec-${s.id}" data-section-id="${s.id}">
+          <div class="flex items-center justify-between gap-2 mb-3">
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-bold text-indigo-600 uppercase tracking-wider">${escapeHtml(s.label)}</span>
+              <span class="text-slate-300">|</span>
+              <span class="text-slate-400 text-sm">${s.id}</span>
+            </div>
+            <div class="flex gap-2 flex-wrap justify-end">
+              <button type="button" class="home-section-translate-btn rounded-lg border border-teal-200 px-3 py-1.5 text-xs text-teal-700 hover:bg-teal-50" data-id="${s.id}">翻译此板块</button>
+              <button type="button" class="section-edit-btn rounded-lg border border-slate-200 px-3 py-1.5 text-xs text-slate-600 hover:bg-slate-50" data-id="${s.id}">编辑</button>
+              <button type="button" class="section-delete-btn rounded-lg border border-red-200 px-3 py-1.5 text-xs text-red-600 hover:bg-red-50" data-id="${s.id}">删除</button>
+            </div>
+          </div>
+          <div class="section-preview rounded-xl border-2 border-slate-200 overflow-x-auto overflow-y-visible bg-white shadow-sm">${s.html}</div>
+          <div class="section-edit-form hidden mt-3 rounded-xl border-2 border-indigo-200 bg-indigo-50/30 p-4">
+            <label class="block text-xs font-semibold text-indigo-700 mb-2">编辑 ${escapeHtml(s.label)} (JSON)</label>
+            <textarea class="section-json-input w-full min-h-[12rem] h-56 font-mono text-sm rounded-lg border border-slate-200 p-3" data-id="${s.id}"></textarea>
+            <div class="mt-2 flex gap-2 flex-wrap">
+              <button type="button" class="section-apply-btn rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700" data-id="${s.id}">应用</button>
+              <button type="button" class="section-cancel-btn rounded-lg border border-slate-200 px-4 py-2 text-sm text-slate-600 hover:bg-slate-50" data-id="${s.id}">取消</button>
+            </div>
+          </div>
+        </div>
+      `).join('') + `
+        </div>
+      `
+
+      ordered.forEach((s) => {
+        const card = container.querySelector(`.section-card[data-section-id="${s.id}"]`)
+        if (!card) return
+        const jsonInput = card.querySelector('.section-json-input')
+        const editForm = card.querySelector('.section-edit-form')
+        const preview = card.querySelector('.section-preview')
+        const sectionData = getSectionData(state.data, s.id)
+        jsonInput.value = JSON.stringify(sectionData, null, 2)
+
+        card.querySelector('.section-edit-btn').onclick = () => {
+          editForm.classList.remove('hidden')
+          preview.classList.add('opacity-50')
+          jsonInput.value = JSON.stringify(getSectionData(state.data, s.id), null, 2)
+        }
+        card.querySelector('.section-cancel-btn').onclick = () => {
+          editForm.classList.add('hidden')
+          preview.classList.remove('opacity-50')
+        }
+        card.querySelector('.section-apply-btn').onclick = () => {
+          try {
+            const val = JSON.parse(jsonInput.value)
+            setSectionData(state.data, s.id, val)
+            renderHomepageSectionsPreview(state.data, container)
+            showMsg('已更新')
+          } catch (e) {
+            showMsg('JSON 格式错误', 'error')
+          }
+        }
+        card.querySelector('.section-delete-btn').onclick = () => {
+          if (!confirm(`确定删除板块「${s.label}」内的字段？`)) return
+          removeSection(state.data, s.id)
+          renderHomepageSectionsPreview(state.data, container)
+          showMsg('已删除')
+        }
+        const ht = card.querySelector('.home-section-translate-btn')
+        if (ht) {
+          ht.onclick = () => {
+            state.translateHomeSectionId = s.id
+            state.translateHomeSectionLabel = s.label
+            openTranslateModal()
+          }
+        }
+      })
+    }
+
     function renderSectionsPreview(data, container) {
       const tool = state.tool || ''
+      if (tool === 'homepage') {
+        renderHomepageSectionsPreview(data, container)
+        return
+      }
       const order = data.sectionsOrder?.length ? data.sectionsOrder : ['howToUse','modelIntro','features','intro','comparison','scenes','rating','faq']
       const d = data
       const sections = []
@@ -1139,10 +2191,6 @@
       }
     }
 
-    function escapeHtml(s) {
-      return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')
-    }
-
     const SECTION_RULE_FILES = {
       metadata: 'sections/metadata.md', hero: 'sections/hero.md', howToUse: 'sections/how-to-use.md',
       modelIntro: 'sections/model-intro.md', features: 'sections/features.md', intro: 'sections/intro.md',
@@ -1237,6 +2285,7 @@
             tool: state.tool,
             slug: state.slug || '',
             sectionId,
+            locale: state.locale || 'en',
             extraInstructions: document.getElementById('add-section-extra').value.trim() || undefined,
             currentSectionData: {},
           }),
@@ -1293,6 +2342,7 @@
             tool: state.tool,
             slug: state.slug || '',
             sectionId,
+            locale: state.locale || 'en',
             extraInstructions: extraInstructions || undefined,
             currentSectionData: currentData,
           }),
@@ -1337,7 +2387,9 @@
       }
       // faq: handle { list }, { faq, faqTitle }, or ensure array format with q/a
       if (d.faq && !Array.isArray(d.faq)) {
-        if (d.faq.list && Array.isArray(d.faq.list)) {
+        if (d.faq.items && Array.isArray(d.faq.items)) {
+          // 首页 common.home：保留 { title, items }，供前台与后台预览使用（勿清空）
+        } else if (d.faq.list && Array.isArray(d.faq.list)) {
           d.faqTitle = d.faq.title || d.faq.faqTitle || d.faqTitle || 'FAQ'
           d.faq = d.faq.list.map((x) => ({ q: x.question || x.q || '', a: x.answer || x.a || '' }))
         } else if (d.faq.faq && Array.isArray(d.faq.faq)) {
@@ -1350,6 +2402,12 @@
       if (Array.isArray(d.faq)) {
         d.faq = d.faq.map((x) => ({ q: x.question || x.q || '', a: x.answer || x.a || '' }))
       }
+      if (d.trendingCards != null && !Array.isArray(d.trendingCards)) {
+        d.trendingCards = []
+      }
+      if (d.aiToolsHubItems != null && !Array.isArray(d.aiToolsHubItems)) {
+        d.aiToolsHubItems = []
+      }
       return d
     }
 
@@ -1357,22 +2415,49 @@
       const params = new URLSearchParams(location.search)
       state.tool = params.get('tool') || ''
       state.slug = params.get('slug') || ''
+      state.locale = params.get('locale') || 'en'
+      if (!SUPPORTED_SEO_LOCALES.includes(state.locale)) state.locale = 'en'
       if (!state.tool) {
         loadDashboard()
         return
       }
       try {
-        state.data = await api(`/api/seo?tool=${state.tool}&slug=${encodeURIComponent(state.slug)}&locale=en`)
+        let loadLocale = state.locale
+        try {
+          state.data = await api(`/api/seo?tool=${state.tool}&slug=${encodeURIComponent(state.slug)}&locale=${encodeURIComponent(loadLocale)}`)
+        } catch (firstErr) {
+          if (loadLocale !== 'en') {
+            state.locale = 'en'
+            history.replaceState({}, '', buildEditorUrl(state.tool, state.slug, 'en'))
+            state.data = await api(`/api/seo?tool=${state.tool}&slug=${encodeURIComponent(state.slug)}&locale=en`)
+            showMsg(`未找到 ${loadLocale} 语言文件，已切换到 English`)
+          } else {
+            throw firstErr
+          }
+        }
         state.data = normalizeForAdmin(state.data)
-        document.getElementById('editor-title').textContent = `${state.tool} / ${state.slug || 'L2'}`
+        state.homepagePreviewModels = null
+        if (state.tool === 'homepage') {
+          try {
+            state.homepagePreviewModels = await api('/api/homepage-preview-models?locale=' + encodeURIComponent(state.locale || 'en'))
+          } catch (_) {
+            state.homepagePreviewModels = null
+          }
+        }
+        const locLabel = LOCALE_TAB_LABELS[state.locale] || state.locale
+        document.getElementById('editor-title').textContent = `${state.tool} / ${state.slug || 'L2'} · ${locLabel}`
         const delBtn = document.getElementById('delete-page-btn')
         const changeUrlBtn = document.getElementById('change-url-btn')
+        const syncHomeBtn = document.getElementById('sync-home-en-btn')
         if (state.slug) {
           delBtn.classList.remove('hidden')
         } else {
           delBtn.classList.add('hidden')
         }
         changeUrlBtn.classList.remove('hidden')
+        if (state.tool === 'homepage') syncHomeBtn.classList.remove('hidden')
+        else syncHomeBtn.classList.add('hidden')
+        updateEditorChromeForLocale()
         const publishWrap = document.getElementById('publish-toggle-wrap')
         publishWrap.classList.remove('hidden')
         const publishToggle = document.getElementById('publish-toggle')
@@ -1386,11 +2471,10 @@
           publishLabel.textContent = publishToggle.checked ? '上架（测试/线上可见）' : '下架（测试/线上不可见）'
         }
         document.getElementById('back-link').href = '/'
-        const modelTools = ['seedance-2', 'kling-3', 'nano-banana-pro', 'nano-banana-2']
-        const pathPrefix = modelTools.includes(state.tool) ? 'model/' : ''
-        document.getElementById('preview-link').href = `https://toolaze.com/${pathPrefix}${state.tool}${state.slug ? '/' + state.slug : ''}`
+        document.getElementById('preview-link').href = getLivePreviewUrl(state.tool, state.slug, state.locale)
         document.getElementById('json-textarea').value = JSON.stringify(state.data, null, 2)
         renderSectionsPreview(state.data, document.getElementById('sections-view'))
+        await renderLocaleSwitcher()
       } catch (e) {
         hide(document.getElementById('loading'))
         document.getElementById('dashboard').innerHTML = '<div class="rounded-xl border border-red-200 bg-red-50 p-4 text-red-700">加载失败: ' + escapeHtml(e.message) + '</div>'
@@ -1435,7 +2519,7 @@
       const res = await api('/api/seo', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ tool: state.tool, slug: state.slug || null, locale: 'en', data: payload, rebuild: !!rebuild })
+        body: JSON.stringify({ tool: state.tool, slug: state.slug || null, locale: state.locale || 'en', data: payload, rebuild: !!rebuild })
       })
       state.data = payload
       document.getElementById('json-textarea').value = JSON.stringify(payload, null, 2)
@@ -1446,7 +2530,8 @@
     document.getElementById('save-btn').onclick = async () => {
       try {
         await doSave(false)
-        showMsg('保存成功。开发时运行 npm run dev 并刷新页面可实时查看。')
+        const lab = LOCALE_TAB_LABELS[state.locale] || state.locale
+        showMsg(`保存成功（${lab}）。开发时运行 npm run dev 并刷新页面可实时查看。`)
       } catch (e) {
         showMsg(e.message, 'error')
       }
@@ -1454,9 +2539,10 @@
 
     document.getElementById('delete-page-btn').onclick = async () => {
       if (!state.slug) return
-      if (!confirm(`确定删除 L3 页面「${state.slug}」？此操作不可恢复。`)) return
+      const lab = LOCALE_TAB_LABELS[state.locale] || state.locale
+      if (!confirm(`确定删除 L3 页面「${state.slug}」的 ${lab}（${state.locale}）语言文件？此操作不可恢复。`)) return
       try {
-        await api(`/api/seo?tool=${encodeURIComponent(state.tool)}&slug=${encodeURIComponent(state.slug)}&locale=en`, { method: 'DELETE' })
+        await api(`/api/seo?tool=${encodeURIComponent(state.tool)}&slug=${encodeURIComponent(state.slug)}&locale=${encodeURIComponent(state.locale || 'en')}`, { method: 'DELETE' })
         showMsg('已删除，正在跳转...')
         location.href = '/'
       } catch (e) {
@@ -1572,7 +2658,12 @@
     document.getElementById('save-rebuild-btn').onclick = async () => {
       try {
         const res = await doSave(true)
-        showMsg(res.building ? '保存成功，构建已启动。完成后部署 out/ 目录。' : '保存成功')
+        const lab = LOCALE_TAB_LABELS[state.locale] || state.locale
+        showMsg(
+          res.building
+            ? `保存成功（${lab}），构建已启动。完成后部署 out/ 目录。`
+            : `保存成功（${lab}）`
+        )
       } catch (e) {
         showMsg(e.message, 'error')
       }
@@ -1753,9 +2844,11 @@
     }
     document.addEventListener('keydown', (e) => {
       if (e.key !== 'Escape') return
+      const translateModal = document.getElementById('translate-modal')
       if (rulePreviewModal && !rulePreviewModal.classList.contains('hidden')) closeRulePreview()
       else if (sectionRegenModal && !sectionRegenModal.classList.contains('hidden')) closeSectionRegenModal()
       else if (addSectionModal && !addSectionModal.classList.contains('hidden')) closeAddSectionModal()
+      else if (translateModal && !translateModal.classList.contains('hidden')) closeTranslateModal()
       else if (genModal && !genModal.classList.contains('hidden')) hideGenModal()
     })
 
@@ -1936,8 +3029,6 @@
     try {
       if (location.search) {
         loadEditor()
-      } else {
-        loadDashboard()
       }
     } catch (e) {
       console.error('[admin-seo] boot error', e)

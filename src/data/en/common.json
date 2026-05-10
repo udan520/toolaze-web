@@ -5,12 +5,15 @@
     "imageCompression": "Image Compression",
     "imageConverter": "Image Converter",
     "watermarkRemover": "Watermark Remover",
+    "photoRestoration": "Photo Restoration",
+    "aiCouplePhotoMaker": "AI Couple Photo Maker",
     "fontGenerator": "Font Generator",
     "emojiCopyAndPaste": "Emoji Copy & Paste",
     "aiImage": "AI Image",
     "aiVideo": "AI Video",
     "nanoBananaPro": "Nano Banana Pro",
     "nanoBanana2": "Nano Banana 2",
+    "gptImage2": "GPT Image 2",
     "seedance2": "Seedance 2.0",
     "kling3": "Kling 3.0",
     "aboutUs": "About Us"
@@ -20,6 +23,11 @@
       "title": "Toolaze - Free AI Image Generator & AI Video Generator Online",
       "description": "Free AI image generator and AI video generator online. Create 4K images with Nano Banana 2, generate videos with Seedance 2.0 and Kling 3.0. Text-to-image, text-to-video. No sign up required. Image compression and format conversion tools too."
     },
+    "badge": "Free AI Tools",
+    "titleLine1": "All-in-One AI Image & Video",
+    "titleLine2": "Creation Platform",
+    "badgeLive": "Live",
+    "badgeComingSoon": "Coming Soon",
     "heroTitle": "All-in-One AI Image & Video Creation Platform",
     "heroTagline": "Top AI models, pro video & image creation. Image compression, format conversion, font generator — all free, no sign up required.",
     "ctaImage": "Try AI Image Generator",
@@ -33,8 +41,61 @@
     "aiImageIntro": "Generate high-quality images instantly with AI. From artistic illustrations to realistic visuals, Toolaze's AI Image Generator transforms your ideas with text-to-image and image-to-image — fast, flexible, and effortless.",
     "trendingTitle": "Trending AI Image & Video Models, All in One Place",
     "trendingSubtitle": "Access Seedance 2.0, Kling 3.0, Nano Banana Pro, and Nano Banana 2 without switching platforms.",
-    "advancedToolsTitle": "Advanced AI Tools for Smarter Content Creation",
-    "advancedToolsSubtitle": "Image compression, format conversion, font generator — all free, all in your browser.",
+    "homepageToolCardSummaries": {
+      "seedance-2": {
+        "cardTitle": "Seedance 2.0",
+        "summary": "Free AI video generator online for text-to-video and image-to-video. Blend prompts with reference images, short clips, and audio—get 15-second 1080p output with natural motion and stereo sound. No sign-up on Toolaze."
+      },
+      "kling-3": {
+        "cardTitle": "Kling 3.0",
+        "summary": "AI video generator with native 4K and 2K output, plus up to six cinematic cuts per run. Multimodal inputs and multilingual audio for ads, trailers, and social—try Kling 3.0 free online."
+      },
+      "nano-banana-pro": {
+        "cardTitle": "Nano Banana Pro",
+        "summary": "AI image generator for text-to-image and detailed edits—sharp product shots, portraits, and campaign visuals with strong prompt fidelity. Create free online with Nano Banana Pro on Toolaze."
+      },
+      "nano-banana-2": {
+        "cardTitle": "Nano Banana 2",
+        "summary": "Fast AI image generator for everyday text-to-image and quick variants—ideal for social posts, concepts, and iterative creative tests without a heavy pipeline."
+      },
+      "gpt-image-2": {
+        "cardTitle": "GPT Image 2",
+        "summary": "Text-to-image AI built for clean compositions and legible in-image text—simple graphics, mockups, and backgrounds from natural-language prompts. Free to try online."
+      },
+      "watermark-remover": {
+        "summary": "Free AI watermark remover online: erase logos, date stamps, and overlays while keeping skin and texture believable. Runs in your browser for a private, no-upload workflow on Toolaze."
+      },
+      "photo-restoration": {
+        "summary": "AI photo restoration for faded, scratched, or blurry pictures—recover clearer faces and finer detail for prints and archives. One-click repair, free online."
+      },
+      "ai-couple-photo-maker": {
+        "summary": "AI couple photo maker: turn one or two portraits into romantic or cinematic duo scenes with curated templates—share-ready images without a studio shoot."
+      }
+    },
+    "aiToolsHubTitle": "Free AI Tools for Images, Video & Everyday Media Workflows",
+    "aiToolsHubSubtitle": "One hub for AI image generation, AI video generation, and fast browser utilities—no signup and no paywall.",
+    "aiToolsHubIntro": "Discover free AI tools online built for creators and marketers who need reliable output without juggling multiple sites. Combine flagship image and video models with practical helpers for compression, conversion, restoration, and typography—all structured for clear SEO landing pages and fast experimentation.",
+    "aiToolsHubItems": [
+      {
+        "title": "AI image generators",
+        "description": "Ship campaign-ready visuals with text-to-image and image-to-image. Nano Banana Pro, Nano Banana 2, and GPT Image 2 deliver sharp detail, flexible aspect ratios, and resolutions up to 4K for ads, social posts, and concept art.",
+        "href": "/model/nano-banana-pro"
+      },
+      {
+        "title": "AI video generators",
+        "description": "Turn scripts and reference frames into cinematic clips. Seedance 2.0 and Kling 3.0 support text-to-video and image-to-video with multimodal inputs—ideal for promos, storyboards, and short-form storytelling.",
+        "href": "/model/seedance-2"
+      },
+      {
+        "title": "Browser media utilities",
+        "description": "Round out your workflow with lossy image compression, format conversion, stylized font previews, and emoji copy-and-paste—lightweight, non-generative utilities that stay free in your browser.",
+        "href": "/image-compressor"
+      }
+    ],
+    "advancedToolsTitle": "More AI-Powered Creative Tools",
+    "advancedToolsSubtitle": "Portrait generation, AI watermark removal, and AI photo restoration—free to try online, no signup required.",
+    "utilityToolsTitle": "Free Browser Tools for Images & Text",
+    "utilityToolsSubtitle": "Image compression, format conversion, stylized font previews, and emoji copy-and-paste—fast utilities in your browser without generative AI.",
     "faqTitle": "Have Questions? We Have Answers!",
     "sectionAiImageTitle": "AI Image Models",
     "sectionAiImageSubtitle": "Free AI image generator online. Text-to-image and image-to-image. 4K output, fast generation, no registration. Create AI art with Nano Banana Pro and Nano Banana 2.",
@@ -52,6 +113,10 @@
     "toolImageCompressorDesc": "Smart lossy compression for JPG/PNG.",
     "toolFormatConverter": "Format Converter",
     "toolFormatConverterDesc": "HEIC to JPG, PNG to WEBP.",
+    "toolFontGenerator": "Free Font Generator",
+    "toolFontGeneratorDesc": "Generate custom fonts online for free. Create cursive, fancy, bold, italic, gothic, and tattoo fonts. Copy and paste instantly. No sign-up required.",
+    "toolEmojiCopyAndPaste": "Emoji Copy & Paste",
+    "toolEmojiCopyAndPasteDesc": "Copy and paste emojis online for free. Browse by category, search, pick skin tone, and copy with one click. No sign-up required.",
     "toolImageResize": "Image Resize",
     "toolImageResizeDesc": "Resize images to exact dimensions.",
     "toolVideoCompressor": "Video Compressor",
@@ -60,24 +125,6 @@
       "badge": "Why Toolaze?",
       "title": "Built for Creators & Performance",
       "subtitle": "Everything you need to know about why Toolaze is the smart choice for AI image generation, AI video generation, and creative workflows."
-    },
-    "features": {
-      "privacy": {
-        "title": "Free AI Image & Video Generation",
-        "desc": "Create 4K AI images and Hollywood-quality videos with Nano Banana 2, Seedance 2.0, and Kling 3.0. Text-to-image, text-to-video, image-to-video—all free online with no sign-up required."
-      },
-      "unlimited": {
-        "title": "Unlimited & Free",
-        "desc": "Generate as many AI images and videos as you need. No daily limits, no paywalls, no watermarks. All AI tools and image tools are completely free with no hidden costs."
-      },
-      "quality": {
-        "title": "4K Output & Multimodal Input",
-        "desc": "AI image models support up to 4K resolution. AI video models accept text, images, video, and audio. Pro-quality output with fast generation—production-ready for creators."
-      },
-      "noRegistration": {
-        "title": "No Registration Required",
-        "desc": "Start using our AI image generator and AI video generator immediately without creating an account. No email signup, no personal information collection. Just open and create."
-      }
     },
     "faq": {
       "title": "Have Questions? We Have Answers!",
@@ -115,11 +162,35 @@
           "a": "Yes. Toolaze's AI image generator online requires no sign-up. Open Nano Banana Pro or Nano Banana 2, enter your text prompt or upload reference images, and generate 4K AI images instantly—free."
         }
       ]
+    },
+    "toolWatermarkRemover": "Free AI Watermark Remover Online",
+    "toolWatermarkRemoverDesc": "Remove logos, date stamps, and overlays with one click. Keep texture natural and export clean images instantly. No sign-up required.",
+    "toolPhotoRestoration": "Free Photo Restoration Online",
+    "toolPhotoRestorationDesc": "Restore old, blurry, or scratched photos in seconds. Recover clearer faces and details with one-click AI repair. No sign-up required.",
+    "features": {
+      "freeGeneration": {
+        "title": "Free AI Image & Video Creation",
+        "desc": "Create 4K AI images and Hollywood-quality videos with Nano Banana 2, Seedance 2.0, and Kling 3.0. Text-to-image, text-to-video, image-to-video—all free online with no sign-up required."
+      },
+      "noLimits": {
+        "title": "No Limits, Fully Free",
+        "desc": "Generate as many AI images and videos as you need. No daily limits, no paywalls, no watermarks. All AI tools and image tools are completely free with no hidden costs."
+      },
+      "proOutput": {
+        "title": "4K Output & Multimodal Inputs",
+        "desc": "AI image models support up to 4K resolution. AI video models accept text, images, video, and audio. Pro-quality output with fast generation—production-ready for creators."
+      },
+      "instantUse": {
+        "title": "Start Instantly",
+        "desc": "Start using our AI image generator and AI video generator immediately without creating an account. No email signup, no personal information collection. Just open and create."
+      }
     }
   },
   "footer": {
     "aiTools": "AI Tools",
     "watermarkRemover": "Watermark Remover",
+    "photoRestoration": "Photo Restoration",
+    "aiCouplePhotoMaker": "AI Couple Photo Maker",
     "aiImage": "AI Image",
     "aiVideo": "AI Video",
     "imageCompression": "Image Compression",

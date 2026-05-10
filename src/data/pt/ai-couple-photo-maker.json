@@ -1,0 +1,152 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Criador de Fotos de Casal com IA Grátis Online - Envie Uma Foto, Escolha uma Cena | Toolaze",
+    "description": "Use o Criador de Fotos de Casal com IA online grátis com o Toolaze. Envie uma ou duas fotos de casal, escolha uma cena predefinida como casamento, viagem ou estúdio, e gere imagens de casal realistas em segundos."
+  },
+  "topComponent": "ai-couple-photo-maker",
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "<span class=\"text-gradient\">Criador de Fotos de Casal com IA</span> Grátis Online",
+    "desc": "Envie uma ou duas fotos de casal, escolha uma cena romântica predefinida e gere retratos de casal cinematográficos e realistas em segundos com o Toolaze."
+  },
+  "howToUse": {
+    "title": "Como Criar Fotos de Casal com IA",
+    "steps": [
+      {
+        "title": "Envie as Fotos",
+        "desc": "Faça o upload de uma ou duas fotos do casal (JPG, PNG ou WebP)."
+      },
+      {
+        "title": "Selecione um Modelo",
+        "desc": "Escolha Estilos ou predefinições Personalizadas, como Paris Chuvosa, Pedido de Casamento ou Praia."
+      },
+      {
+        "title": "Gerar e Baixar",
+        "desc": "Clique em Gerar para criar sua foto de casal em PNG 1K e baixe o melhor resultado."
+      }
+    ]
+  },
+  "features": {
+    "title": "Recursos Principais",
+    "items": [
+      {
+        "icon": "📷",
+        "iconType": "quality",
+        "title": "Entrada de Uma ou Duas Fotos",
+        "desc": "Envie uma ou duas fotos de referência para manter a identidade e a química do casal em cada cena gerada."
+      },
+      {
+        "icon": "🎭",
+        "iconType": "multimodal",
+        "title": "Modelos de Cenas Predefinidas",
+        "desc": "Escolha entre modelos selecionados como Paris chuvosa, terraço à noite, tapete vermelho, pôr do sol na praia e muito mais."
+      },
+      {
+        "icon": "🖼️",
+        "iconType": "quality",
+        "title": "Proporção Automática, Saída em PNG 1K",
+        "desc": "As configurações de saída são ajustadas para este fluxo: proporção automática, formato PNG e resolução 1K."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Geração Rápida de Fotos de Casal",
+        "desc": "Gere fotos de casal realistas em estilo editorial rapidamente através do fluxo de trabalho baseado no navegador."
+      },
+      {
+        "icon": "🧩",
+        "iconType": "quality",
+        "title": "Modelos de Estilo e Personalizados",
+        "desc": "Use comandos de estilo prontos ou predefinições personalizadas como Pedido de Casamento, Praia e Cozinha para uma iteração mais rápida."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Regra Simples de Créditos",
+        "desc": "Cada geração consome 40 créditos com configurações fixas, para que os usuários tenham um fluxo de trabalho previsível e consistente."
+      }
+    ]
+  },
+  "intro": {
+    "title": "Por que usar o Criador de Fotos de Casal com IA do Toolaze?",
+    "content": [
+      {
+        "title": "Fotos de Casal com Foco na Cena",
+        "text": "A maioria das ferramentas de imagem precisa de comandos complexos para obter resultados de alta qualidade e românticos. O Toolaze simplifica esse fluxo com modelos focados na cena, configurações de geração fixas e um processo visual projetado para o sucesso rápido."
+      },
+      {
+        "title": "Feito para Referências Reais de Casal",
+        "text": "Envie uma foto combinada do casal ou duas referências quando desejar uma fixação de identidade mais clara. Os modelos guiam a composição e o clima, mantendo os rostos consistentes."
+      }
+    ]
+  },
+  "comparison": {
+    "title": "Toolaze vs. Outros Criadores de Fotos de Casal com IA",
+    "smartChoice": "Escolha Inteligente",
+    "toolaze": "Toolaze",
+    "vs": "VS",
+    "otherTools": "Outras Ferramentas",
+    "toolazeFeatures": "Upload de uma/duas fotos, Predefinições focadas na cena, Configurações otimizadas fixas, Fluxo de estilo romântico consistente, Uso previsível de 40 créditos, Fluxo de geração rápido",
+    "othersFeatures": "Configuração pesada em comandos, Orientação de cena limitada, Padrões de parâmetros inconsistentes, Mais tentativa e erro, Expectativas de crédito pouco claras, Iteração mais lenta"
+  },
+  "scenesTitle": "Casos de Uso",
+  "scenes": [
+    {
+      "icon": "💍",
+      "title": "Casamento e Pedido",
+      "desc": "Crie cenas românticas para pedidos de casamento, anúncios de noivado e retratos no estilo matrimônio."
+    },
+    {
+      "icon": "🌆",
+      "title": "Encontro Noturno na Cidade",
+      "desc": "Gere vibrações de terraço, ruas noturnas ou tapete vermelho para visuais de casal premium."
+    },
+    {
+      "icon": "🏖️",
+      "title": "Viagem e Férias",
+      "desc": "Transforme uma foto comum de casal em memórias inspiradas em praias ao pôr do sol, montanhas ou férias."
+    }
+  ],
+  "rating": {
+    "title": "Criador de Fotos de Casal com IA",
+    "rating": "4.9/5 DE MAIS DE 10 MIL CRIADORES",
+    "text": "Crie fotos românticas de casal com configurações de qualidade fixas e modelos de cena selecionados. O Toolaze ajuda criadores a gerar visuais de casal polidos rapidamente."
+  },
+  "faqTitle": "Perguntas Frequentes",
+  "faq": [
+    {
+      "q": "Como funciona o Criador de Fotos de Casal com IA?",
+      "a": "Envie uma ou duas fotos de casal, selecione um modelo de cena e gere. O comando e as configurações são otimizados para uma saída realista em estilo editorial."
+    },
+    {
+      "q": "Posso enviar apenas uma foto ou preciso de duas?",
+      "a": "Ambas as opções são suportadas. Você pode enviar uma única foto do casal ou duas fotos de referência, dependendo do seu material de origem."
+    },
+    {
+      "q": "Quais configurações são usadas para a saída?",
+      "a": "Esta página utiliza configurações fixas: modelo Nano Banana 2, proporção automática, formato PNG e resolução 1K."
+    },
+    {
+      "q": "Os usuários podem trocar de modelo nesta página?",
+      "a": "Não. A troca de modelo está oculta para manter o fluxo de trabalho de fotos de casal consistente para esta página de destino."
+    },
+    {
+      "q": "Quanto custa uma geração em créditos?",
+      "a": "Cada geração custa 40 créditos. A regra de créditos é exibida diretamente acima do botão Gerar."
+    },
+    {
+      "q": "Os modelos incluem opções predefinidas e personalizadas?",
+      "a": "Sim. A área de modelos inclui predefinições de Estilo e predefinições Personalizadas, como Pedido de Casamento, Praia e Cozinha."
+    }
+  ],
+  "moreTools": "Mais Ferramentas de IA"
+}

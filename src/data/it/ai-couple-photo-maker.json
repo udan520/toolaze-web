@@ -1,0 +1,152 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "AI Couple Photo Maker Online Gratis - Carica una foto, scegli una scena | Toolaze",
+    "description": "Usa AI Couple Photo Maker online gratuitamente con Toolaze. Carica una o due foto di coppia, scegli una scena preimpostata come matrimonio, viaggio o studio e genera immagini realistiche di coppia in pochi secondi."
+  },
+  "topComponent": "ai-couple-photo-maker",
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "<span class=\"text-gradient\">AI Couple Photo Maker</span> Online Gratuito",
+    "desc": "Carica una o due foto di coppia, scegli una scena romantica preimpostata e genera ritratti cinematografici realistici in pochi secondi con Toolaze."
+  },
+  "howToUse": {
+    "title": "Come creare foto di coppia con l'IA",
+    "steps": [
+      {
+        "title": "Carica le foto",
+        "desc": "Carica una o due foto di coppia (JPG, PNG o WebP)."
+      },
+      {
+        "title": "Seleziona un modello",
+        "desc": "Scegli tra Style o preset personalizzati come Parigi sotto la pioggia, Proposta di matrimonio o Spiaggia."
+      },
+      {
+        "title": "Genera e Scarica",
+        "desc": "Clicca su Genera per creare la tua foto di coppia in PNG 1K e scarica il risultato migliore."
+      }
+    ]
+  },
+  "features": {
+    "title": "Caratteristiche principali",
+    "items": [
+      {
+        "icon": "📷",
+        "iconType": "quality",
+        "title": "Input di una o due foto",
+        "desc": "Carica una o due foto di riferimento per mantenere l'identità e l'alchimia di coppia in ogni scena generata."
+      },
+      {
+        "icon": "🎭",
+        "iconType": "multimodal",
+        "title": "Modelli di scene preimpostate",
+        "desc": "Scegli tra modelli curati come Parigi sotto la pioggia, rooftop di notte, red carpet, spiaggia al tramonto e altro ancora."
+      },
+      {
+        "icon": "🖼️",
+        "iconType": "quality",
+        "title": "Rapporto automatico, output PNG 1K",
+        "desc": "Le impostazioni di output sono ottimizzate per questo workflow: aspect ratio automatico, formato PNG e risoluzione 1K."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Generazione rapida foto di coppia",
+        "desc": "Genera rapidamente foto di coppia realistiche in stile editoriale direttamente dal browser."
+      },
+      {
+        "icon": "🧩",
+        "iconType": "quality",
+        "title": "Modelli di stile e personalizzati",
+        "desc": "Usa prompt di stile pronti all'uso o preset come Proposta, Spiaggia e Cucina per un'iterazione più veloce."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Regola dei crediti semplice",
+        "desc": "Ogni generazione utilizza 40 crediti con impostazioni fisse, garantendo agli utenti un flusso di lavoro prevedibile e coerente."
+      }
+    ]
+  },
+  "intro": {
+    "title": "Perché usare Toolaze AI Couple Photo Maker?",
+    "content": [
+      {
+        "title": "Foto di coppia basate sulle scene",
+        "text": "La maggior parte degli strumenti di immagine richiede prompt complessi per ottenere risultati di coppia romantici e di alta qualità. Toolaze semplifica questo flusso con modelli basati sulla scena, impostazioni di generazione fisse e un processo visivo progettato per il successo immediato."
+      },
+      {
+        "title": "Creato per riferimenti di coppia reali",
+        "text": "Carica una foto di coppia combinata o due riferimenti quando desideri un ancoraggio dell'identità più chiaro. I modelli guidano la composizione e l'atmosfera mantenendo i volti coerenti."
+      }
+    ]
+  },
+  "comparison": {
+    "title": "Toolaze vs Altri AI Couple Photo Makers",
+    "smartChoice": "Scelta Intelligente",
+    "toolaze": "Toolaze",
+    "vs": "VS",
+    "otherTools": "Altri Strumenti",
+    "toolazeFeatures": "Caricamento di una/due foto, Preset basati sulla scena, Impostazioni fisse ottimizzate, Workflow coerente in stile romantico, Utilizzo prevedibile di 40 crediti, Generazione rapida",
+    "othersFeatures": "Configurazione basata su prompt complessi, Guida limitata sulle scene, Parametri predefiniti incoerenti, Più tentativi ed errori, Aspettative sui crediti poco chiare, Iterazione più lenta"
+  },
+  "scenesTitle": "Casi d'uso",
+  "scenes": [
+    {
+      "icon": "💍",
+      "title": "Matrimonio e Proposta",
+      "desc": "Crea scene romantiche per proposte, annunci di fidanzamento e ritratti in stile matrimonio."
+    },
+    {
+      "icon": "🌆",
+      "title": "Appuntamento in città",
+      "desc": "Genera atmosfere da rooftop, strade notturne o red carpet per immagini di coppia premium lifestyle."
+    },
+    {
+      "icon": "🏖️",
+      "title": "Viaggi e Vacanze",
+      "desc": "Trasforma una normale foto di coppia in ricordi ispirati alla spiaggia al tramonto, alla montagna o alle vacanze."
+    }
+  ],
+  "rating": {
+    "title": "AI Couple Photo Maker",
+    "rating": "4.9/5 DA OLTRE 10K CREATORI",
+    "text": "Crea foto di coppia romantiche con impostazioni di qualità fisse e modelli di scene curati. Toolaze aiuta i creatori a generare rapidamente immagini di coppia rifinite."
+  },
+  "faqTitle": "Domande Frequenti",
+  "faq": [
+    {
+      "q": "Come funziona AI Couple Photo Maker?",
+      "a": "Carica una o due foto di coppia, seleziona un modello di scena, quindi genera. Il prompt e le impostazioni sono ottimizzati per un output realistico in stile editoriale."
+    },
+    {
+      "q": "Posso caricare una sola foto o ne servono due?",
+      "a": "Entrambe le opzioni sono supportate. Puoi caricare una singola foto di coppia o due foto di riferimento a seconda del materiale sorgente."
+    },
+    {
+      "q": "Quali impostazioni vengono usate per l'output?",
+      "a": "Questa pagina utilizza impostazioni fisse: modello Nano Banana 2, aspect ratio automatico, formato PNG e risoluzione 1K."
+    },
+    {
+      "q": "Gli utenti possono cambiare modello su questa pagina?",
+      "a": "No. Il cambio di modello è nascosto per mantenere coerente il workflow delle foto di coppia per questa landing page."
+    },
+    {
+      "q": "Quanti crediti costa una generazione?",
+      "a": "Ogni generazione costa 40 crediti. La regola dei crediti è mostrata direttamente sopra il pulsante Genera."
+    },
+    {
+      "q": "I modelli includono sia opzioni preimpostate che personalizzate?",
+      "a": "Sì. L'area dei modelli include preset di stile e preset personalizzati come Proposta, Spiaggia e Cucina."
+    }
+  ],
+  "moreTools": "Altri strumenti IA"
+}

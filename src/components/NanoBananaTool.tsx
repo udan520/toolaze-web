@@ -764,6 +764,7 @@ export default function NanoBananaTool({
     }, 0)
   }
 
+  /** Homepage `#ai-image-generator` / Trending tiles: re-export to `public/home-model-cards/` when these URLs change — see `src/lib/home-model-card-images.ts`. */
   const SAMPLE_IMAGES: Record<ModelOption['id'], string[]> = {
     'nano-banana-pro': [
       'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/e0f5e8adf47a44afb6a4ab9fb5a27b3f.webp',

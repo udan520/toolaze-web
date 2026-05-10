@@ -1,0 +1,152 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Creador de Fotos de Pareja con IA Online Gratis - Sube una Foto, Elige una Escena | Toolaze",
+    "description": "Usa el Creador de Fotos de Pareja con IA online gratis con Toolaze. Sube una o dos fotos de pareja, elige una escena preestablecida como boda, viaje o estudio, y genera imágenes realistas de pareja en segundos."
+  },
+  "topComponent": "ai-couple-photo-maker",
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "<span class=\"text-gradient\">Creador de Fotos de Pareja con IA</span> Gratis Online",
+    "desc": "Sube una o dos fotos de pareja, elige una escena romántica preestablecida y genera retratos de pareja cinematográficos y realistas en segundos con Toolaze."
+  },
+  "howToUse": {
+    "title": "Cómo Crear Fotos de Pareja con IA",
+    "steps": [
+      {
+        "title": "Sube tus Fotos",
+        "desc": "Sube una o dos fotos de la pareja (JPG, PNG o WebP)."
+      },
+      {
+        "title": "Selecciona una Plantilla",
+        "desc": "Elige estilos o ajustes preestablecidos personalizados como París Lluvioso, Propuesta de Matrimonio o Playa."
+      },
+      {
+        "title": "Genera y Descarga",
+        "desc": "Haz clic en Generar para crear tu foto de pareja en PNG 1K y descarga el mejor resultado."
+      }
+    ]
+  },
+  "features": {
+    "title": "Características Principales",
+    "items": [
+      {
+        "icon": "📷",
+        "iconType": "quality",
+        "title": "Entrada de Una o Dos Fotos",
+        "desc": "Sube una o dos fotos de referencia para mantener la identidad y la química de la pareja en cada escena generada."
+      },
+      {
+        "icon": "🎭",
+        "iconType": "multimodal",
+        "title": "Plantillas de Escenas Preestablecidas",
+        "desc": "Elige entre plantillas seleccionadas como París lluvioso, terraza nocturna, alfombra roja, playa al atardecer y más."
+      },
+      {
+        "icon": "🖼️",
+        "iconType": "quality",
+        "title": "Relación de Aspecto Automática, Salida PNG 1K",
+        "desc": "Los ajustes de salida están optimizados para este flujo: relación de aspecto automática, formato PNG y resolución 1K."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Generación Rápida de Fotos de Pareja",
+        "desc": "Genera fotos de pareja realistas con estilo editorial rápidamente desde el flujo de trabajo basado en el navegador."
+      },
+      {
+        "icon": "🧩",
+        "iconType": "quality",
+        "title": "Plantillas de Estilo y Personalizadas",
+        "desc": "Usa prompts de estilo listos para usar o ajustes personalizados como Propuesta, Playa y Cocina para una iteración más rápida."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Regla de Créditos Simple",
+        "desc": "Cada generación utiliza 40 créditos con ajustes fijos, para que los usuarios obtengan un flujo de trabajo predecible y consistente."
+      }
+    ]
+  },
+  "intro": {
+    "title": "¿Por qué usar el Creador de Fotos de Pareja con IA de Toolaze?",
+    "content": [
+      {
+        "title": "Fotos de Pareja con Enfoque en la Escena",
+        "text": "La mayoría de las herramientas de imagen necesitan prompts complejos para obtener resultados de pareja románticos y de alta calidad. Toolaze simplifica este flujo con plantillas centradas en la escena, ajustes de generación fijos y un proceso visual diseñado para el éxito rápido."
+      },
+      {
+        "title": "Diseñado para Referencias Reales de Pareja",
+        "text": "Sube una foto combinada de la pareja o dos referencias cuando desees un anclaje de identidad más claro. Las plantillas guían la composición y el ambiente manteniendo la consistencia de los rostros."
+      }
+    ]
+  },
+  "comparison": {
+    "title": "Toolaze frente a otros Creadores de Fotos de Pareja con IA",
+    "smartChoice": "Opción Inteligente",
+    "toolaze": "Toolaze",
+    "vs": "VS",
+    "otherTools": "Otras Herramientas",
+    "toolazeFeatures": "Carga de una/dos fotos, Ajustes de escena preestablecidos, Configuraciones fijas optimizadas, Flujo de estilo romántico consistente, Uso predecible de 40 créditos, Flujo de generación rápido",
+    "othersFeatures": "Configuración dependiente de prompts, Guía de escena limitada, Parámetros predeterminados inconsistentes, Más prueba y error, Expectativas de créditos poco claras, Iteración más lenta"
+  },
+  "scenesTitle": "Casos de Uso",
+  "scenes": [
+    {
+      "icon": "💍",
+      "title": "Bodas y Propuestas",
+      "desc": "Crea escenas románticas para propuestas, anuncios de compromiso y retratos de estilo nupcial."
+    },
+    {
+      "icon": "🌆",
+      "title": "Cita Nocturna en la Ciudad",
+      "desc": "Genera vibras de terraza, calles nocturnas o alfombra roja para visuales de pareja de estilo de vida premium."
+    },
+    {
+      "icon": "🏖️",
+      "title": "Viajes y Vacaciones",
+      "desc": "Convierte una foto normal de pareja en recuerdos inspirados en la playa al atardecer, la montaña o las vacaciones."
+    }
+  ],
+  "rating": {
+    "title": "Creador de Fotos de Pareja con IA",
+    "rating": "4.9/5 DE MÁS DE 10K CREADORES",
+    "text": "Crea fotos de pareja románticas con ajustes de calidad fijos y plantillas de escenas seleccionadas. Toolaze ayuda a los creadores a generar visuales de pareja pulidos rápidamente."
+  },
+  "faqTitle": "Preguntas Frecuentes",
+  "faq": [
+    {
+      "q": "¿Cómo funciona el Creador de Fotos de Pareja con IA?",
+      "a": "Sube una o dos fotos de pareja, selecciona una plantilla de escena y luego genera. El prompt y los ajustes están optimizados para una salida realista de estilo editorial."
+    },
+    {
+      "q": "¿Puedo subir una sola foto o necesito dos?",
+      "a": "Ambas opciones son compatibles. Puedes subir una sola foto de la pareja o dos fotos de referencia, dependiendo del material de origen que tengas."
+    },
+    {
+      "q": "¿Qué ajustes se utilizan para la salida?",
+      "a": "Esta página utiliza ajustes fijos: modelo Nano Banana 2, relación de aspecto automática, formato PNG y resolución 1K."
+    },
+    {
+      "q": "¿Pueden los usuarios cambiar de modelo en esta página?",
+      "a": "No. El cambio de modelo está oculto para mantener la consistencia del flujo de trabajo de fotos de pareja en esta página de destino."
+    },
+    {
+      "q": "¿Cuántos créditos cuesta una generación?",
+      "a": "Cada generación cuesta 40 créditos. La regla de créditos se muestra directamente encima del botón Generar."
+    },
+    {
+      "q": "¿Las plantillas incluyen opciones tanto preestablecidas como personalizadas?",
+      "a": "Sí. El área de plantillas incluye ajustes de Estilo y ajustes Personalizados como Propuesta, Playa y Cocina."
+    }
+  ],
+  "moreTools": "Más Herramientas de IA"
+}

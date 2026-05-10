@@ -37,6 +37,7 @@ Only write about features that are explicitly listed as supported in the relevan
 - **Menu Items** (right-aligned): 
   - Quick Tools dropdown (hover to show Image Compression link)
   - About Us link
+  - Language switcher (only when `shouldShowLanguageSwitcher` is true) — **immediately to the right of About Us** (desktop dropdown; mobile: Language block below About in the panel)
 - **Logo SVG**: 32x32px, white background, rounded-lg, shadow-md shadow-indigo-100
 - **Logo Text**: `text-3xl font-extrabold text-indigo-600 tracking-tighter` with `hover:opacity-80 transition-opacity`
 - **Menu Style**: `hidden md:flex gap-8 text-sm font-bold text-slate-500 items-center`
@@ -54,11 +55,12 @@ See 'docs/SEO_MASTER_LAYOUT.md' section 3 for the exact breadcrumb structure.
 
 **FOOTER STANDARD**: All pages MUST use the standard footer defined in 'docs/SEO_MASTER_LAYOUT.md' section 4. The footer uses a dark slate background (bg-slate-900) with navigation links and copyright information. Always use the exact footer structure from the documentation to maintain consistency across all pages.
 
-**FOOTER LANGUAGE SWITCHER**: The footer language switcher MUST only appear when the current page has multiple language versions, and MUST only list languages that the page actually supports.
-- **When to show**: Show the language switcher only if the page has multilingual content (more than one locale with real content). Do not show it on single-language pages (e.g. emoji-copy-and-paste has only EN).
-- **Which languages to list**: Use a per-tool list of supported locales (e.g. in `src/components/Footer.tsx`: `knownSupportedLocales`). Only include locales for which the tool has translations/content. Examples: image-compressor/image-converter = all locales; font-generator = en, de, ja, es, fr; emoji-copy-and-paste = en only.
-- **Implementation**: In Footer, (1) `hasMultilingualSupport()` must return true only for tools that have multiple language versions; (2) `supportedLocales` must be derived from `knownSupportedLocales[tool]` so the dropdown only shows those locales; (3) the switcher is shown only when `supportedLocales.length > 1`.
-- **When adding a new tool**: Update both the "multilingual tools" list (for showing the switcher) and `knownSupportedLocales` (for which locales to list) to match the new tool's actual language support.
+**LANGUAGE SWITCHER (NAV + FOOTER)**: Navigation and Footer MUST share one source of truth: **`src/lib/site-language-switch.ts`**. Full rules: **`docs/LANGUAGE_SWITCH_AND_REDIRECT.md`**.
+- **When to show**: Only when **`shouldShowLanguageSwitcher(pathname)`** is true—i.e. the current route has **more than one** supported locale for that page type (home/about/legal = all locales; per-tool = `TOOL_SUPPORTED_LOCALES`; **`ENGLISH_ONLY_ROOT_TOOLS`** = full list with **`getAlternateLanguageUrl`** to locale homepages; **`/model/*`** = English-only, hide).
+- **Which languages to list**: **`getSupportedLocaleCodes(pathname)`** → map to `SITE_LOCALES`. Do not duplicate ad-hoc lists in Footer only.
+- **Navigation**: Same visibility rules as footer; desktop dropdown + mobile panel links use **`getAlternateLanguageUrl(pathname, targetLocale)`**.
+
+**MISSING LOCALE REDIRECT**: If the user is on a localized URL (e.g. `/ko/...`) but **there is no SEO JSON for that locale** for that tool/slug, **redirect to the English canonical URL** (`/[tool]/[slug]` without locale prefix; seedance-2 L3 uses `/model/seedance-2/[slug]`). Implemented in **`src/app/[locale]/[tool]/[slug]/page.tsx`** (and L2 pages that already redirect when `getL2SeoContent` is missing). See **`docs/LANGUAGE_SWITCH_AND_REDIRECT.md`**.
 
 **MODEL INTRO BLOCK**: For AI model intro pages (Seedance 2.0, Nano Banana Pro), MUST include `modelIntro` in `sectionsOrder` after `howToUse` on both L2 and L3 pages.
 
@@ -67,6 +69,19 @@ See 'docs/SEO_MASTER_LAYOUT.md' section 3 for the exact breadcrumb structure.
 **FAQ MODEL COMPARISON**: When FAQ compares models (e.g., "Seedance 2.0 vs Sora 2"), introduce both models' core differences concisely—not just our tool. Keep it brief. See docs/sections/faq.md and docs/MODEL_INTRO_BLOCK.md. Content must be original—do not copy from reference images or competitors.
 
 **SECTION BACKGROUND ALTERNATION**: CRITICAL - Always alternate section backgrounds between `bg-white` and `bg-[#F8FAFF]` to create visual separation. Different content blocks (e.g., "Why Choose Toolaze?" vs "FAQ") MUST have different background colors so users can clearly distinguish between sections. Follow the pattern: alternate white and light indigo backgrounds throughout the page.
+
+**HOMEPAGE ADVANCED AI TOOL CARDS** (section keyed by `common.home.advancedToolsTitle`, e.g. "More AI-Powered Creative Tools"):
+- **No emoji** on these cards: use a **thumbnail that matches each tool’s landing-page demo** (template / sample / same visual as the tool UI). You may prepare/compress locally, but final `src` must be an **R2 public URL** in `src/lib/home-advanced-ai-card-images.ts`.
+- **Image budget**: target **file size ≈≤100KB** per asset; **neither width nor height greater than 800px** (long edge ≤800). Recompress when replacing assets.
+- **Sync**: When changing paths or adding a tool to this block, update **`src/lib/home-advanced-ai-card-images.ts`**, **`scripts/admin-seo-server.js`** (`HOME_ADVANCED_AI_CARD_IMAGES`), and keep **`src/lib/homepage-grid-tools.ts`** `usesAi` list aligned.
+
+**HOMEPAGE MODEL L2 CARDS** (sections `#ai-video-generator`, `#ai-image-generator`, `#trending-models` on the English homepage):
+- **No SVG/emoji icons** as the primary visual: use **model demo thumbnails** with final `src` as **R2 public URLs** (see `src/lib/home-model-card-images.ts`).
+- **Image models** (`nano-banana-pro`, `nano-banana-2`, `gpt-image-2`): thumbnails MUST stay aligned with **`SAMPLE_IMAGES` in `src/components/NanoBananaTool.tsx`** (same R2 sources, re-exported locally under the size budget).
+- **Video models** (`seedance-2`, `kling-3`): L2 pages may still use placeholder heroes; until a real on-page preview exists, homepage cards may use **curated stills** in `public/home-model-cards/`—replace when true video demos ship.
+- **No-demo fallback (mandatory)**: If a model page has no real demo image, generate one with **GPT Image 2** that matches the model’s use case/style; after compression, upload to R2 and use that **R2 URL** as the model’s homepage demo thumbnail.
+- **Same budget** as advanced AI cards: **≈≤100KB**, **max dimension 800px** on width and height.
+- **Sync**: Update **`scripts/admin-seo-server.js`** (`HOME_MODEL_CARD_IMAGES`) whenever paths or tools in **`IMAGE_MODEL_L2S` / `VIDEO_MODEL_L2S`** (`src/lib/seo-loader.ts`) change.
 
 **CANONICAL URL TAG**: MANDATORY - ALL pages MUST include a canonical URL tag in their metadata. This is critical for SEO to prevent duplicate content issues.
 - **Base URL**: `https://toolaze.com`
