@@ -1160,6 +1160,25 @@ export default function NanoBananaTool({
               </div>
             )}
           </div>
+        ) : isNanoBanana2CoupleMode ? (
+          <div className="flex-1 min-w-0 min-h-[400px] md:min-h-0 bg-white rounded-2xl border border-[#E0E7FF] shadow-lg shadow-[#4F46E5]/8 flex flex-col items-center justify-center p-2 md:p-8 relative z-10">
+            <h3 className="text-slate-700 font-semibold text-base uppercase tracking-wider mb-6 md:mb-8 shrink-0">
+              Sample image
+            </h3>
+            <div className="w-full flex-1 flex justify-center items-center min-h-0">
+              {selectedTemplateImage ? (
+                <img
+                  src={`${selectedTemplateImage}?v=20260508`}
+                  alt={selectedTemplate?.title || 'Sample image'}
+                  className="max-w-full max-h-[60vh] md:max-h-full object-contain rounded-xl ring-1 ring-slate-200/50"
+                />
+              ) : (
+                <div className="w-full min-h-[200px] rounded-xl ring-1 ring-slate-200/50 bg-white flex items-center justify-center text-sm text-slate-500">
+                  No demo image yet
+                </div>
+              )}
+            </div>
+          </div>
         ) : null}
 
         {/* Right: 功能示例图 / 生成中 / 历史记录 / 结果详情 */}

@@ -7,6 +7,7 @@
   },
   "scripts": {
     "dev": "next dev -p 3006",
+    "dev:all": "npx --yes concurrently -n web,seo -c blue,magenta \"npm run dev\" \"npm run admin:seo\"",
     "build": "next build",
     "postbuild": "node scripts/postbuild-restore-api.js",
     "start": "next start -p 3006",

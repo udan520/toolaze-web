@@ -407,9 +407,10 @@
       </div>
     </div>
 
-    <div id="loading" class="flex flex-col items-center justify-center py-20 gap-4">
+    <div id="loading" class="flex flex-col items-center justify-center py-20 gap-4 max-w-lg mx-auto text-center px-4">
       <div class="h-8 w-8 animate-spin rounded-full border-2 border-indigo-500 border-t-transparent"></div>
-      <p class="text-sm text-slate-500">加载中… 请确保访问 <code class="bg-slate-100 px-2 py-0.5 rounded">http://localhost:3007</code></p>
+      <p class="text-sm text-slate-500">加载中… 请确保浏览器地址为 <code class="bg-slate-100 px-2 py-0.5 rounded">http://localhost:3007</code></p>
+      <p class="text-xs text-slate-400 leading-relaxed">SEO 管理与 Next 前端是<strong>两个进程</strong>：终端需运行 <code class="bg-slate-100 px-1 rounded">npm run admin:seo</code>（本页），站点预览用 <code class="bg-slate-100 px-1 rounded">npm run dev</code>（一般为 3006）。仅开 dev 无法打开本后台。</p>
     </div>
   </div>
 
@@ -456,8 +457,23 @@
       }
     }
 
+    /** 若后续脚本初始化抛错，仍能关闭遮罩（避免永久「加载中」） */
+    function ensureLoadingHidden() {
+      const loading = document.getElementById('loading')
+      if (loading && !loading.classList.contains('hidden')) {
+        hide(loading)
+        const dash = document.getElementById('dashboard')
+        if (dash) {
+          dash.innerHTML = '<div class="rounded-xl border border-amber-200 bg-amber-50 p-4 text-amber-800"><p class="font-semibold">加载超时或脚本初始化失败</p><p class="mt-2 text-sm">请确认访问地址为 <strong>http://localhost:3007</strong>，且已运行 <code class="bg-amber-100 px-1 rounded">npm run admin:seo</code>。勿用本地文件打开 HTML；请通过浏览器地址栏访问上述地址。</p><button type="button" onclick="location.reload()" class="mt-4 rounded-lg bg-amber-600 px-4 py-2 text-sm font-medium text-white hover:bg-amber-700">重新加载</button></div>'
+          show(dash)
+        }
+      }
+    }
+    setTimeout(ensureLoadingHidden, 12000)
+
     function showMsg(msg, type = 'success') {
       const el = document.getElementById('message')
+      if (!el) return
       el.textContent = msg
       el.style.whiteSpace = 'pre-wrap'
       el.className = `rounded-xl p-3 mb-4 ${type === 'error' ? 'bg-red-50 text-red-700 border border-red-200' : 'bg-green-50 text-green-700 border border-green-200'}`
@@ -468,6 +484,7 @@
       try {
         const tools = await api('/api/tools')
         const grid = document.getElementById('tools-grid')
+        if (!grid) throw new Error('页面结构异常：找不到 #tools-grid')
         if (!Array.isArray(tools)) throw new Error('API 返回格式异常')
         grid.innerHTML = tools.map(t => `
           <div class="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
@@ -485,10 +502,16 @@
       } catch (e) {
         hide(document.getElementById('loading'))
         const dash = document.getElementById('dashboard')
-        const msg = e.name === 'AbortError' ? '请求超时，请确认管理后台已运行 (http://localhost:3007)' : escapeHtml(e.message)
-        dash.innerHTML = '<div class="rounded-xl border border-red-200 bg-red-50 p-4 text-red-700"><p class="font-semibold">加载失败</p><p class="mt-2 text-sm">' + msg + '</p><button type="button" onclick="location.reload()" class="mt-4 rounded-lg bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-700">自动重试</button></div>'
-        show(dash)
-        setTimeout(() => location.reload(), 5000)
+        const msg = e.name === 'AbortError'
+          ? '请求超时：请在本机终端运行 npm run admin:seo，并用浏览器打开 http://localhost:3007（勿只用 npm run dev）。'
+          : escapeHtml(e.message)
+        const block = '<div class="rounded-xl border border-red-200 bg-red-50 p-4 text-red-700"><p class="font-semibold">加载失败</p><p class="mt-2 text-sm">' + msg + '</p><p class="mt-3 text-xs text-red-600/90">若已运行 admin:seo，请在终端确认无端口占用报错；另开终端执行：<code class="bg-red-100 px-1 rounded">npm run admin:seo</code></p><button type="button" onclick="location.reload()" class="mt-4 rounded-lg bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-700">重新加载</button></div>'
+        if (dash) {
+          dash.innerHTML = block
+          show(dash)
+        } else {
+          document.body.insertAdjacentHTML('beforeend', '<div class="fixed inset-0 z-[10000] flex items-center justify-center bg-white/95 p-6">' + block + '</div>')
+        }
       }
     }
 
@@ -1557,8 +1580,8 @@
 
     // Generate SEO
     const genModal = document.getElementById('generate-modal')
-    function showGenModal() { genModal.classList.remove('hidden') }
-    function hideGenModal() { genModal.classList.add('hidden') }
+    function showGenModal() { genModal?.classList.remove('hidden') }
+    function hideGenModal() { genModal?.classList.add('hidden') }
 
     let genToolsList = []
     async function loadGenTools() {
@@ -1706,27 +1729,34 @@
       document.body.classList.remove('modal-open')
     }
     document.getElementById('rule-preview-close').onclick = closeRulePreview
-    rulePreviewModal.addEventListener('click', (e) => {
-      if (e.target === rulePreviewModal) closeRulePreview()
-    })
+    if (rulePreviewModal) {
+      rulePreviewModal.addEventListener('click', (e) => {
+        if (e.target === rulePreviewModal) closeRulePreview()
+      })
+    }
     const sectionRegenModal = document.getElementById('section-regen-modal')
-    sectionRegenModal.addEventListener('click', (e) => {
-      if (e.target === sectionRegenModal) closeSectionRegenModal()
-    })
-    genModal.addEventListener('click', (e) => {
-      if (e.target === genModal) hideGenModal()
-    })
+    if (sectionRegenModal) {
+      sectionRegenModal.addEventListener('click', (e) => {
+        if (e.target === sectionRegenModal) closeSectionRegenModal()
+      })
+    }
+    if (genModal) {
+      genModal.addEventListener('click', (e) => {
+        if (e.target === genModal) hideGenModal()
+      })
+    }
     const addSectionModal = document.getElementById('add-section-modal')
-    addSectionModal.addEventListener('click', (e) => {
-      if (e.target === addSectionModal) closeAddSectionModal()
-    })
+    if (addSectionModal) {
+      addSectionModal.addEventListener('click', (e) => {
+        if (e.target === addSectionModal) closeAddSectionModal()
+      })
+    }
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        if (!rulePreviewModal.classList.contains('hidden')) closeRulePreview()
-        else if (!sectionRegenModal.classList.contains('hidden')) closeSectionRegenModal()
-        else if (!addSectionModal.classList.contains('hidden')) closeAddSectionModal()
-        else if (!genModal.classList.contains('hidden')) hideGenModal()
-      }
+      if (e.key !== 'Escape') return
+      if (rulePreviewModal && !rulePreviewModal.classList.contains('hidden')) closeRulePreview()
+      else if (sectionRegenModal && !sectionRegenModal.classList.contains('hidden')) closeSectionRegenModal()
+      else if (addSectionModal && !addSectionModal.classList.contains('hidden')) closeAddSectionModal()
+      else if (genModal && !genModal.classList.contains('hidden')) hideGenModal()
     })
 
     document.getElementById('gen-ai-url-btn').onclick = async () => {
@@ -1903,21 +1933,20 @@
       showMsg('已应用生成内容，可编辑后保存或直接保存')
     }
 
-    function ensureLoadingHidden() {
-      const loading = document.getElementById('loading')
-      if (loading && !loading.classList.contains('hidden')) {
-        hide(loading)
-        const dash = document.getElementById('dashboard')
-        dash.innerHTML = '<div class="rounded-xl border border-amber-200 bg-amber-50 p-4 text-amber-800"><p class="font-semibold">加载超时</p><p class="mt-2 text-sm">请确认访问地址为 <strong>http://localhost:3007</strong>，且管理后台已启动。</p><button type="button" onclick="location.reload()" class="mt-4 rounded-lg bg-amber-600 px-4 py-2 text-sm font-medium text-white hover:bg-amber-700">重新加载</button></div>'
+    try {
+      if (location.search) {
+        loadEditor()
+      } else {
+        loadDashboard()
+      }
+    } catch (e) {
+      console.error('[admin-seo] boot error', e)
+      hide(document.getElementById('loading'))
+      const dash = document.getElementById('dashboard')
+      if (dash) {
+        dash.innerHTML = '<div class="rounded-xl border border-red-200 bg-red-50 p-4 text-red-700"><p class="font-semibold">初始化失败</p><p class="mt-2 text-sm font-mono">' + escapeHtml(String(e && e.message ? e.message : e)) + '</p><button type="button" onclick="location.reload()" class="mt-4 rounded-lg bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-700">重新加载</button></div>'
         show(dash)
       }
-    }
-    setTimeout(ensureLoadingHidden, 8000)
-
-    if (location.search) {
-      loadEditor()
-    } else {
-      loadDashboard()
     }
   </script>
 </body>
