@@ -6,10 +6,14 @@ import { usePathname } from 'next/navigation'
 import { getAllSlugs, getSeoContent } from '@/lib/seo-loader'
 import CloseIcon from './icons/CloseIcon'
 import {
+  PREFERRED_LOCALE_STORAGE_KEY,
   SITE_LOCALES,
   getAlternateLanguageUrl,
   getCurrentLocaleFromPath,
+  getPreferredLocalizedUrl,
   getSupportedLocaleCodes,
+  isSiteLocaleCode,
+  resolveLocaleForPath,
   shouldShowLanguageSwitcher,
 } from '@/lib/site-language-switch'
 
@@ -104,6 +108,7 @@ export default function Navigation() {
   const pathname = usePathname()
 
   const currentLocale = getCurrentLocaleFromPath(pathname ?? null)
+  const [preferredLocale, setPreferredLocale] = useState<string>(currentLocale)
 
   const [navLangOpen, setNavLangOpen] = useState(false)
 
@@ -113,14 +118,29 @@ export default function Navigation() {
   }, [pathname])
 
   const showNavLanguageSwitcher = shouldShowLanguageSwitcher(pathname ?? null)
-  const navCurrentLocaleInfo = SITE_LOCALES.find((l) => l.code === currentLocale) || SITE_LOCALES[0]
-  const navOtherLocales = navSupportedLocales.filter((l) => l.code !== currentLocale)
+  const navEffectiveLocale = resolveLocaleForPath(pathname || '/', preferredLocale)
+  const navCurrentLocaleInfo = SITE_LOCALES.find((l) => l.code === navEffectiveLocale) || SITE_LOCALES[0]
+  const navOtherLocales = navSupportedLocales.length === 1
+    ? navSupportedLocales
+    : navSupportedLocales.filter((l) => l.code !== navEffectiveLocale)
   
   // 加载翻译 - 只在客户端加载以避免 hydration mismatch
   useEffect(() => {
     setIsMounted(true)
-    loadNavTranslations(currentLocale).then(setNavTranslations)
-  }, [currentLocale])
+    loadNavTranslations(navEffectiveLocale).then(setNavTranslations)
+  }, [navEffectiveLocale])
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    const firstSegment = (pathname ?? '').split('/').filter(Boolean)[0] ?? ''
+    const hasExplicitLocale = isSiteLocaleCode(firstSegment)
+    const savedLocale = window.localStorage.getItem(PREFERRED_LOCALE_STORAGE_KEY)
+    const nextLocale = hasExplicitLocale ? currentLocale : (savedLocale || currentLocale)
+    setPreferredLocale(nextLocale)
+    if (hasExplicitLocale) {
+      window.localStorage.setItem(PREFERRED_LOCALE_STORAGE_KEY, currentLocale)
+    }
+  }, [pathname, currentLocale])
 
   useEffect(() => {
     setNavLangOpen(false)
@@ -140,7 +160,7 @@ export default function Navigation() {
   // 加载三级菜单数据
   useEffect(() => {
     const loadThirdLevelItems = async () => {
-      const locale = currentLocale
+      const locale = navEffectiveLocale
       const data: Record<string, Array<{slug: string, title: string, href: string}>> = {}
       
       // 生成带语言前缀的链接的辅助函数
@@ -339,16 +359,11 @@ export default function Navigation() {
     }
     
     loadThirdLevelItems()
-  }, [currentLocale, pathname])
-  
-  // 仅存在于根路径、无 [locale] 版本的工具，始终不添加 locale 前缀
-  const LOCALE_LESS_PATHS = ['/ai-tools', '/watermark-remover', '/photo-restoration', '/ai-couple-photo-maker', '/model', '/model/seedance-2', '/model/kling-3', '/model/nano-banana-pro', '/model/nano-banana-2', '/model/gpt-image-2', '/model/gpt-image-2-0']
+  }, [navEffectiveLocale, pathname])
+
   const getLocalizedHref = (href: string): string => {
     if (href.startsWith('http')) return href
-    if (LOCALE_LESS_PATHS.some(p => href === p || href.startsWith(p + '/'))) return href
-    if (currentLocale === 'en') return href
-    if (href.startsWith(`/${currentLocale}`)) return href
-    return `/${currentLocale}${href}`
+    return getPreferredLocalizedUrl(href, preferredLocale)
   }
   
   // 获取三级菜单项的函数（使用已加载的数据）
@@ -753,7 +768,13 @@ export default function Navigation() {
                       <Link
                         key={locale.code}
                         href={getAlternateLanguageUrl(pathname || '/', locale.code)}
-                        onClick={() => setNavLangOpen(false)}
+                        onClick={() => {
+                          if (typeof window !== 'undefined') {
+                            window.localStorage.setItem(PREFERRED_LOCALE_STORAGE_KEY, locale.code)
+                          }
+                          setPreferredLocale(locale.code)
+                          setNavLangOpen(false)
+                        }}
                         className="flex items-center gap-3 px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600"
                       >
                         <span className="text-base">{locale.flag}</span>
@@ -1045,6 +1066,10 @@ export default function Navigation() {
                         key={locale.code}
                         href={getAlternateLanguageUrl(pathname || '/', locale.code)}
                         onClick={() => {
+                          if (typeof window !== 'undefined') {
+                            window.localStorage.setItem(PREFERRED_LOCALE_STORAGE_KEY, locale.code)
+                          }
+                          setPreferredLocale(locale.code)
                           setMobileMenuOpen(false)
                           setExpandedSubmenus(new Set())
                         }}

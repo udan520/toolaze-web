@@ -1,0 +1,176 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Restauração de Fotos Online Grátis - Restaurar Fotos Antigas com IA | Toolaze",
+    "description": "Restaure fotos antigas online gratuitamente com IA. Remova arranhões, poeira e ruído, melhore a clareza e colorize fotos antigas com um clique. Não é necessário registro."
+  },
+  "topComponent": "photo-restoration",
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "<span class=\"text-gradient\">Restauração de Fotos</span> Online Grátis",
+    "desc": "Restaure fotos antigas em um clique com IA. Remova arranhões, poeira e ruído, melhore detalhes e aplique restauração de cores naturais automaticamente."
+  },
+  "howToUse": {
+    "title": "Como Restaurar Fotos Antigas Online",
+    "steps": [
+      {
+        "title": "Faça o Upload da sua Foto",
+        "desc": "Envie uma foto antiga nos formatos JPG, JPEG ou PNG (até 30MB)."
+      },
+      {
+        "title": "Gere o Resultado Restaurado",
+        "desc": "Clique em Gerar para executar a restauração com colorização integrada para um resultado de foto antiga limpo e vívido."
+      },
+      {
+        "title": "Gerar e Baixar",
+        "desc": "Clique em Gerar para restaurar sua foto, visualize o resultado e baixe instantaneamente."
+      }
+    ]
+  },
+  "features": {
+    "title": "Principais Recursos de Restauração de Fotos",
+    "items": [
+      {
+        "icon": "🧼",
+        "iconType": "quality",
+        "title": "Limpeza de Arranhões e Poeira",
+        "desc": "Remove automaticamente danos comuns de fotos antigas, como arranhões, manchas de poeira e ruído."
+      },
+      {
+        "icon": "🔍",
+        "iconType": "quality",
+        "title": "Aumento de Clareza e Detalhes",
+        "desc": "Melhora a nitidez e os detalhes visuais para que rostos, texturas e bordas pareçam mais limpos."
+      },
+      {
+        "icon": "🎨",
+        "iconType": "ai",
+        "title": "Restauração de Cores Integrada",
+        "desc": "A restauração e a colorização funcionam juntas em um fluxo de trabalho fixo para uma qualidade de saída consistente."
+      },
+      {
+        "icon": "🖼️",
+        "iconType": "format",
+        "title": "Fluxo de Trabalho de Imagem Única",
+        "desc": "Fluxo de trabalho focado em uma foto para restauração rápida com controles simples."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Experiência Rápida no Navegador",
+        "desc": "Upload, restauração e download em um fluxo limpo baseado no navegador, sem necessidade de registro."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Processamento Seguro",
+        "desc": "As imagens são processadas de forma segura e não são mantidas como arquivos permanentes de conta."
+      }
+    ]
+  },
+  "intro": {
+    "title": "Por que Usar a Restauração de Fotos Toolaze",
+    "content": [
+      {
+        "title": "Torne Fotos Antigas Úteis Novamente",
+        "text": "Fotos de família antigas costumam ter arranhões, poeira, desbotamento e desfoque que as tornam difíceis de compartilhar ou imprimir. A Restauração de Fotos da Toolaze ajuda você a recuperar a qualidade visual rapidamente para que as memórias pareçam mais limpas e fáceis de preservar."
+      },
+      {
+        "title": "Fluxo de Trabalho em um Clique para Resultados Rápidos",
+        "text": "A página utiliza um fluxo fixo de restauração mais colorização, para que você não precise decidir as configurações. Faça o upload de uma imagem, clique em Gerar e obtenha um resultado limpo e aprimorado rapidamente."
+      },
+      {
+        "title": "Feito para Usuários Comuns, Não Editores",
+        "text": "Você não precisa de máscaras manuais, ferramentas de pincel ou habilidades avançadas de edição. Carregue uma imagem, escolha seu modo, clique em gerar e baixe. Foi projetado para uso pessoal rápido, arquivos familiares e compartilhamento social."
+      }
+    ]
+  },
+  "performanceMetrics": {
+    "title": "Configurações de Restauração de Fotos",
+    "metrics": [
+      {
+        "label": "Modelo",
+        "value": "GPT Image 2"
+      },
+      {
+        "label": "Tipo de Entrada",
+        "value": "Imagem única"
+      },
+      {
+        "label": "Proporção",
+        "value": "Auto"
+      },
+      {
+        "label": "Resolução",
+        "value": "1K"
+      },
+      {
+        "label": "Saída por Tarefa",
+        "value": "1 imagem"
+      },
+      {
+        "label": "Colorização",
+        "value": "Integrada (sempre ativa)"
+      }
+    ]
+  },
+  "scenesTitle": "Casos de Uso",
+  "scenes": [
+    {
+      "icon": "👪",
+      "title": "Recuperação de Memórias de Família",
+      "desc": "Limpe fotos de família antigas antes de imprimir, emoldurar ou compartilhar em grupos familiares."
+    },
+    {
+      "icon": "📚",
+      "title": "Limpeza Histórica e de Arquivo",
+      "desc": "Melhore a legibilidade de fotos digitalizadas antigas para projetos de arquivo ou apresentações escolares."
+    },
+    {
+      "icon": "📱",
+      "title": "Postagens Retrô em Redes Sociais",
+      "desc": "Restaure retratos e momentos antigos para que fiquem melhores nos feeds sociais modernos."
+    }
+  ],
+  "rating": {
+    "title": "Confiado por Criadores e Famílias",
+    "rating": "4.9/5 DE 10K CRIADORES",
+    "text": "Toolaze ajuda os usuários a restaurar fotos antigas rapidamente com controles simples e resultados limpos. Sem necessidade de registro."
+  },
+  "faqTitle": "Perguntas Frequentes",
+  "faq": [
+    {
+      "q": "Esta ferramenta de restauração de fotos é gratuita?",
+      "a": "Sim. Você pode restaurar fotos online gratuitamente no Toolaze, sem necessidade de registro."
+    },
+    {
+      "q": "Quais formatos de arquivo são suportados?",
+      "a": "Você pode enviar imagens JPG, JPEG e PNG de até 30MB."
+    },
+    {
+      "q": "Posso escolher se quero colorir as fotos antigas?",
+      "a": "Não. Esta página usa um fluxo de trabalho fixo de restauração mais colorização por padrão para manter os resultados consistentes."
+    },
+    {
+      "q": "A ferramenta suporta restauração de fotos em lote?",
+      "a": "Não. Esta página suporta a restauração de uma única imagem por execução."
+    },
+    {
+      "q": "Posso editar os comandos (prompts) manualmente?",
+      "a": "Não. O texto do comando é integrado para manter o fluxo de trabalho simples e consistente."
+    },
+    {
+      "q": "Preciso instalar algum software?",
+      "a": "Não. Tudo funciona no seu navegador, então você pode carregar, restaurar e baixar online."
+    }
+  ],
+  "moreTools": "Ferramentas Gratuitas Relacionadas"
+}

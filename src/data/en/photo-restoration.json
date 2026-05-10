@@ -5,7 +5,15 @@
     "description": "Restore old photos online free with AI. Remove scratches, dust, and noise, improve clarity, and colorize old photos in one click. No sign-up required."
   },
   "topComponent": "photo-restoration",
-  "sectionsOrder": ["howToUse", "features", "intro", "performanceMetrics", "scenes", "rating", "faq"],
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "scenes",
+    "rating",
+    "faq"
+  ],
   "hero": {
     "h1": "Free <span class=\"text-gradient\">Photo Restoration</span> Online",
     "desc": "Restore old photos in one click with AI. Remove scratches, dust, and noise, improve details, and apply natural color restoration automatically."
@@ -88,12 +96,30 @@
   "performanceMetrics": {
     "title": "Photo Restoration Settings",
     "metrics": [
-      { "label": "Model", "value": "GPT Image 2" },
-      { "label": "Input Type", "value": "Single image" },
-      { "label": "Aspect Ratio", "value": "Auto" },
-      { "label": "Resolution", "value": "1K" },
-      { "label": "Output Per Task", "value": "1 image" },
-      { "label": "Colorization", "value": "Built in (always on)" }
+      {
+        "label": "Model",
+        "value": "GPT Image 2"
+      },
+      {
+        "label": "Input Type",
+        "value": "Single image"
+      },
+      {
+        "label": "Aspect Ratio",
+        "value": "Auto"
+      },
+      {
+        "label": "Resolution",
+        "value": "1K"
+      },
+      {
+        "label": "Output Per Task",
+        "value": "1 image"
+      },
+      {
+        "label": "Colorization",
+        "value": "Built in (always on)"
+      }
     ]
   },
   "scenesTitle": "Use Cases",

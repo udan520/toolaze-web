@@ -33,6 +33,16 @@ export const TOOL_SUPPORTED_LOCALES: Record<string, readonly string[]> = {
   'seedance-2': ALL_LOCALE_CODES,
 }
 
+/** `/model/*` 下各模型页面的实际语言支持 */
+const MODEL_SUPPORTED_LOCALES: Record<string, readonly string[]> = {
+  'nano-banana-2': ALL_LOCALE_CODES,
+  'gpt-image-2': ALL_LOCALE_CODES,
+  'gpt-image-2-0': ALL_LOCALE_CODES,
+  'nano-banana-pro': ['en'],
+  'seedance-2': ['en'],
+  'kling-3': ['en'],
+}
+
 /** 无 [locale]/... 多语言版本的单一路径工具（仅英文 canonical） */
 const ENGLISH_ONLY_ROOT_TOOLS = new Set([
   'watermark-remover',
@@ -74,12 +84,16 @@ export function getSupportedLocaleCodes(pathname: string | null): string[] {
   }
 
   if (root === 'model') {
-    return ['en']
+    const modelSlug = segments[1]
+    if (!modelSlug) {
+      return [...ALL_LOCALE_CODES]
+    }
+    return [...(MODEL_SUPPORTED_LOCALES[modelSlug] || ['en'])]
   }
 
-  /** 仅有根路径英文版、无 `/[locale]/...` 对应路由的工具：仍展示全站语言入口；切换非英语时跳到该语种首页（见 getAlternateLanguageUrl）。 */
+  /** 仅有根路径英文版、无 `/[locale]/...` 对应路由的工具：只支持英文。 */
   if (ENGLISH_ONLY_ROOT_TOOLS.has(root)) {
-    return [...ALL_LOCALE_CODES]
+    return ['en']
   }
 
   const perTool = TOOL_SUPPORTED_LOCALES[root]
@@ -91,10 +105,27 @@ export function getSupportedLocaleCodes(pathname: string | null): string[] {
 }
 
 /**
- * 是否应在导航/页脚显示语言入口：路径本身允许多语言且存在 2 种及以上可选语言。
+ * 是否应在导航/页脚显示语言入口。
+ * 需求：所有页面都显示语言切换器；具体可选项由 getSupportedLocaleCodes(pathname) 决定。
  */
 export function shouldShowLanguageSwitcher(pathname: string | null): boolean {
-  return getSupportedLocaleCodes(pathname).length > 1
+  void pathname
+  return true
+}
+
+/** 用户手动选择语言的持久化键 */
+export const PREFERRED_LOCALE_STORAGE_KEY = 'toolaze.preferredLocale'
+
+/** 按目标页面支持语言解析「应使用语言」：优先用户语言，不支持则回退英语 */
+export function resolveLocaleForPath(pathname: string, preferredLocale: string): string {
+  const supported = getSupportedLocaleCodes(pathname)
+  return supported.includes(preferredLocale) ? preferredLocale : 'en'
+}
+
+/** 结合目标页面支持语言与用户偏好，生成最终跳转 URL */
+export function getPreferredLocalizedUrl(pathname: string, preferredLocale: string): string {
+  const locale = resolveLocaleForPath(pathname, preferredLocale)
+  return getAlternateLanguageUrl(pathname, locale)
 }
 
 /** 从 pathname 解析当前 locale（第一段是否为语言码） */

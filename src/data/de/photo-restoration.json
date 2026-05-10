@@ -1,0 +1,176 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Kostenlose Online-Fotorestaurierung - Alte Fotos mit KI wiederherstellen | Toolaze",
+    "description": "Alte Fotos online kostenlos mit KI restaurieren. Kratzer, Staub und Rauschen entfernen, Klarheit verbessern und alte Fotos mit einem Klick kolorieren. Keine Anmeldung erforderlich."
+  },
+  "topComponent": "photo-restoration",
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Kostenlose <span class=\"text-gradient\">Fotorestaurierung</span> Online",
+    "desc": "Alte Fotos mit einem Klick per KI wiederherstellen. Entfernen Sie Kratzer, Staub und Rauschen, verbessern Sie Details und wenden Sie automatisch eine natürliche Farbrestaurierung an."
+  },
+  "howToUse": {
+    "title": "So restaurieren Sie alte Fotos online",
+    "steps": [
+      {
+        "title": "Foto hochladen",
+        "desc": "Laden Sie ein altes Foto im Format JPG, JPEG oder PNG hoch (bis zu 30 MB)."
+      },
+      {
+        "title": "Ergebnis generieren",
+        "desc": "Klicken Sie auf Generieren, um die Restaurierung mit integrierter Kolorierung für ein sauberes und lebendiges Ergebnis zu starten."
+      },
+      {
+        "title": "Generieren und Herunterladen",
+        "desc": "Klicken Sie auf Generieren, um Ihr Foto zu restaurieren, das Ergebnis in der Vorschau anzuzeigen und sofort herunterzuladen."
+      }
+    ]
+  },
+  "features": {
+    "title": "Wichtigste Funktionen der Fotorestaurierung",
+    "items": [
+      {
+        "icon": "🧼",
+        "iconType": "quality",
+        "title": "Bereinigung von Kratzern und Staub",
+        "desc": "Entfernt automatisch typische Schäden alter Fotos wie Kratzer, Staubflecken und Rauschen."
+      },
+      {
+        "icon": "🔍",
+        "iconType": "quality",
+        "title": "Klarheits- und Detail-Boost",
+        "desc": "Verbessert die Schärfe und visuelle Details, damit Gesichter, Texturen und Kanten sauberer aussehen."
+      },
+      {
+        "icon": "🎨",
+        "iconType": "ai",
+        "title": "Integrierte Farbrestaurierung",
+        "desc": "Restaurierung und Kolorierung laufen in einem festen Workflow für konsistente Ausgabequalität zusammen."
+      },
+      {
+        "icon": "🖼️",
+        "iconType": "format",
+        "title": "Einzelbild-Workflow",
+        "desc": "Fokussierter Workflow für ein Foto zur schnellen Restaurierung mit einfachen Steuerelementen."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Schnelles Browser-Erlebnis",
+        "desc": "Hochladen, restaurieren und herunterladen in einem sauberen browserbasierten Ablauf ohne Anmeldung."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Sichere Verarbeitung",
+        "desc": "Bilder werden sicher verarbeitet und nicht als dauerhafte Kontodateien gespeichert."
+      }
+    ]
+  },
+  "intro": {
+    "title": "Warum Toolaze Fotorestaurierung nutzen",
+    "content": [
+      {
+        "title": "Alte Fotos wieder nutzbar machen",
+        "text": "Alte Familienfotos weisen oft Kratzer, Staub, Verblassen und Unschärfe auf, was das Teilen oder Drucken erschwert. Die Toolaze Fotorestaurierung hilft Ihnen, die visuelle Qualität schnell wiederherzustellen, damit Erinnerungen sauberer aussehen und leichter zu bewahren sind."
+      },
+      {
+        "title": "Ein-Klick-Workflow für schnellere Ergebnisse",
+        "text": "Die Seite verwendet einen festen Workflow aus Restaurierung plus Kolorierung, sodass Sie keine Einstellungen wählen müssen. Laden Sie ein Bild hoch, klicken Sie auf Generieren und erhalten Sie schnell ein sauberes, verbessertes Ergebnis."
+      },
+      {
+        "title": "Entwickelt für Alltagsnutzer, nicht für Editoren",
+        "text": "Sie benötigen keine manuellen Masken, Pinselwerkzeuge oder fortgeschrittenen Bearbeitungskenntnisse. Laden Sie ein Bild hoch, wählen Sie Ihren Modus, klicken Sie auf Generieren und laden Sie es herunter. Es ist für den schnellen persönlichen Gebrauch, Familienarchive und das Teilen in sozialen Medien konzipiert."
+      }
+    ]
+  },
+  "performanceMetrics": {
+    "title": "Einstellungen der Fotorestaurierung",
+    "metrics": [
+      {
+        "label": "Modell",
+        "value": "GPT Image 2"
+      },
+      {
+        "label": "Eingabetyp",
+        "value": "Einzelbild"
+      },
+      {
+        "label": "Seitenverhältnis",
+        "value": "Auto"
+      },
+      {
+        "label": "Auflösung",
+        "value": "1K"
+      },
+      {
+        "label": "Ausgabe pro Aufgabe",
+        "value": "1 Bild"
+      },
+      {
+        "label": "Kolorierung",
+        "value": "Integriert (immer an)"
+      }
+    ]
+  },
+  "scenesTitle": "Anwendungsfälle",
+  "scenes": [
+    {
+      "icon": "👪",
+      "title": "Wiederherstellung von Familienerinnerungen",
+      "desc": "Bereinigen Sie alte Familienfotos vor dem Drucken, Einrahmen oder Teilen in Familiengruppen."
+    },
+    {
+      "icon": "📚",
+      "title": "Historische und Archiv-Bereinigung",
+      "desc": "Verbessern Sie die Lesbarkeit alter gescannter Fotos für Archivprojekte oder Schulpräsentationen."
+    },
+    {
+      "icon": "📱",
+      "title": "Social Media Throwback-Posts",
+      "desc": "Restaurieren Sie alte Porträts und Momente, damit sie in modernen Social-Feeds besser aussehen."
+    }
+  ],
+  "rating": {
+    "title": "Vertraut von Erstellern und Familien",
+    "rating": "4.9/5 VON 10.000 ERSTELLERN",
+    "text": "Toolaze hilft Nutzern, alte Fotos schnell mit einfachen Steuerelementen und sauberen Ergebnissen zu restaurieren. Keine Registrierung erforderlich."
+  },
+  "faqTitle": "Häufig gestellte Fragen",
+  "faq": [
+    {
+      "q": "Ist dieses Fotorestaurierungs-Tool kostenlos?",
+      "a": "Ja. Sie können Fotos online kostenlos auf Toolaze restaurieren, ohne dass eine Anmeldung erforderlich ist."
+    },
+    {
+      "q": "Welche Dateiformate werden unterstützt?",
+      "a": "Sie können JPG-, JPEG- und PNG-Bilder bis zu 30 MB hochladen."
+    },
+    {
+      "q": "Kann ich wählen, ob ich alte Fotos kolorieren möchte?",
+      "a": "Nein. Diese Seite verwendet standardmäßig einen festen Workflow aus Restaurierung plus Kolorierung, um die Ergebnisse konsistent zu halten."
+    },
+    {
+      "q": "Wird die Stapelverarbeitung (Batch) für Fotos unterstützt?",
+      "a": "Nein. Diese Seite unterstützt die Restaurierung von jeweils einem Einzelbild pro Durchgang."
+    },
+    {
+      "q": "Kann ich Prompts manuell bearbeiten?",
+      "a": "Nein. Der Prompt-Text ist fest integriert, um den Workflow einfach und konsistent zu halten."
+    },
+    {
+      "q": "Muss ich Software installieren?",
+      "a": "Nein. Alles läuft in Ihrem Browser, sodass Sie online hochladen, restaurieren und herunterladen können."
+    }
+  ],
+  "moreTools": "Weitere kostenlose Tools"
+}

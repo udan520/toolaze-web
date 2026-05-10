@@ -1,0 +1,232 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Générateur d'images IA Nano Banana 2 gratuit (4K, Rapide, En ligne) - Toolaze",
+    "description": "Créez gratuitement des images IA en 4K avec Nano Banana 2. Qualité Pro à la vitesse Flash. Texte-en-image et image-en-image. Cohérence des sujets pour les personnages et les objets. Rendu de texte précis. Gratuit en ligne."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "promptExamples",
+    "modelIntro",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "modelIntro": {
+    "title": "Pourquoi Nano Banana 2 se démarque pour la création d'images par IA",
+    "modelName": "Nano Banana 2",
+    "modelType": "Modèle d'image IA",
+    "description": [
+      "Le modèle Nano Banana 2 de Google (Gemini 3.1 Flash Image) combine les capacités avancées de Nano Banana Pro avec la rapidité de Gemini Flash. Obtenez une qualité de niveau Pro — éclairage vibrant, textures plus riches, détails plus nets — à une vitesse fulgurante. Le modèle prend en charge le texte-en-image et l'image-en-image, avec des résolutions allant de 512px à 4K et des formats d'image élargis.",
+      "Nano Banana 2 offre un rendu de texte précis pour les maquettes marketing et les cartes de vœux, ainsi qu'une connaissance approfondie du monde issue de Gemini pour un rendu fidèle des sujets. La cohérence des sujets vous permet de garder des personnages et des objets cohérents tout au long d'un flux de travail. Le suivi amélioré des instructions capture toutes les nuances de vos idées.",
+      "Toolaze propose un accès gratuit en ligne. Aucune inscription n'est requise — commencez à créer directement depuis votre navigateur."
+    ],
+    "featureCards": [
+      {
+        "title": "Qualité Pro à la vitesse Flash",
+        "content": "Nano Banana 2 apporte une fidélité visuelle de niveau Pro — éclairage vibrant, textures plus riches, détails plus nets — à la vitesse de Gemini Flash. Effectuez des modifications et des itérations rapides sans sacrifier la qualité. Spécifications prêtes pour la production de 512px à 4K."
+      },
+      {
+        "title": "5 personnages, 14 objets — Cohérence du sujet",
+        "content": "Maintenez la ressemblance de jusqu'à 5 personnages et la fidélité de jusqu'à 14 objets dans un seul flux de travail. Créez des story-boards et des récits sans modifier l'apparence de vos éléments d'entrée. Contrôle créatif amélioré pour les scènes complexes."
+      },
+      {
+        "title": "Texte de précision et connaissances avancées du monde",
+        "content": "Générez du texte précis et lisible dans les images — pour des maquettes marketing, des cartes de vœux ou des infographies. Traduisez et localisez le texte au sein des images. Le modèle s'appuie sur les connaissances du monde réel de Gemini pour un rendu plus précis des sujets."
+      }
+    ]
+  },
+  "hero": {
+    "h1": "Générateur d'images IA <span class=\"text-gradient\">Nano Banana 2</span> gratuit",
+    "desc": "Créez des images IA 4K avec une qualité Pro à la vitesse Flash. Texte-en-image et image-en-image. Cohérence des sujets pour les personnages et les objets."
+  },
+  "intro": {
+    "title": "Pourquoi choisir le générateur d'images IA Nano Banana 2 ?",
+    "content": [
+      {
+        "title": "Capacités Pro à la vitesse Flash",
+        "text": "Nano Banana 2 est le dernier modèle d'image IA de Google, combinant les fonctionnalités avancées de Nano Banana Pro avec la vitesse de Gemini Flash. Obtenez des images photoréalistes de haute qualité avec une génération rapide — plus d'attente. Le modèle prend en charge le texte-en-image et l'image-en-image, avec des résolutions de 512px à 4K et des formats d'image variés. Que vous ayez besoin d'un post social vertical ou d'un fond d'écran large, Nano Banana 2 répond aux exigences de production."
+      },
+      {
+        "title": "Cohérence du sujet et suivi précis des instructions",
+        "text": "Nano Banana 2 excelle dans la cohérence des sujets — gardant les personnages et les objets cohérents à travers un flux de travail pour les story-boards et les narrations. Le suivi amélioré des instructions capture les nuances spécifiques de vos idées — l'image que vous obtenez est celle que vous avez demandée. Le rendu de texte de précision permet d'afficher un texte précis et lisible dans les images pour le marketing et les infographies."
+      },
+      {
+        "title": "Accès gratuit en ligne sans inscription",
+        "text": "Toolaze offre un accès gratuit à la génération d'images IA Nano Banana 2 en ligne. Pas d'inscription, pas de carte de crédit, et pas de frais cachés. Que vous soyez créateur de contenu, designer ou marketeur, vous pouvez commencer à créer des images 4K immédiatement. Le générateur gratuit fonctionne directement depuis votre navigateur sans installation de logiciel."
+      }
+    ]
+  },
+  "features": {
+    "title": "Fonctionnalités clés de Nano Banana 2",
+    "items": [
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Qualité Pro à la vitesse Flash",
+        "desc": "Combinez les capacités de Nano Banana Pro avec la vitesse de Gemini Flash. Modifications et itérations rapides sans perte de qualité."
+      },
+      {
+        "icon": "🎨",
+        "iconType": "quality",
+        "title": "4K et formats d'image élargis",
+        "desc": "Résolutions de 512px au 4K large. Contrôle total des formats pour les réseaux sociaux, l'impression ou le web."
+      },
+      {
+        "icon": "👥",
+        "iconType": "multimodal",
+        "title": "Cohérence du sujet",
+        "desc": "Gardez les personnages et les objets cohérents dans un seul flux de travail. Idéal pour les story-boards."
+      },
+      {
+        "icon": "📝",
+        "iconType": "quality",
+        "title": "Rendu de texte précis",
+        "desc": "Générez du texte précis et lisible dans les images. Traduisez et localisez le texte pour un partage mondial."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Utilisation gratuite",
+        "desc": "Aucune inscription requise. Commencez à créer des images IA en ligne sans frais, sans abonnement ni frais cachés."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "Basé sur le navigateur",
+        "desc": "Fonctionne entièrement dans votre navigateur web. Aucune installation, aucun téléchargement — créez directement en ligne."
+      }
+    ]
+  },
+  "specs": {
+    "engine": "Google Nano Banana 2 (Gemini 3.1 Flash Image)",
+    "limit": "Entrées texte et image, cohérence du sujet tout au long du flux",
+    "logic": "512px à 4K, formats d'image élargis, texte-en-image et image-en-image",
+    "privacy": "Traitement en ligne - Aucune installation locale requise"
+  },
+  "performanceMetrics": {
+    "title": "Spécifications techniques de Nano Banana 2",
+    "metrics": [
+      {
+        "label": "Types d'entrée",
+        "value": "Texte, Image"
+      },
+      {
+        "label": "Résolution de sortie",
+        "value": "512px à 4K large"
+      },
+      {
+        "label": "Cohérence du sujet",
+        "value": "Jusqu'à 5 personnages, 14 objets"
+      },
+      {
+        "label": "Rendu de texte",
+        "value": "Texte de précision, traduction, localisation"
+      },
+      {
+        "label": "Vitesse",
+        "value": "Vitesse Gemini Flash avec qualité Pro"
+      },
+      {
+        "label": "Cas d'utilisation",
+        "value": "Marketing, infographies, story-boards, contenu social"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Comment générer des images avec Nano Banana 2 ?",
+    "steps": [
+      {
+        "title": "Choisissez le mode et ajoutez l'entrée",
+        "desc": "Sélectionnez le mode texte-en-image ou image-en-image. Entrez votre prompt ou téléchargez des images de référence."
+      },
+      {
+        "title": "Configurez les paramètres",
+        "desc": "Sélectionnez le format d'image et la résolution (512px à 4K). Ajoutez des instructions spécifiques pour la cohérence ou le texte."
+      },
+      {
+        "title": "Générez et téléchargez",
+        "desc": "Cliquez sur générer et téléchargez votre image 4K en quelques secondes. Aucune inscription requise."
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "Exemples de prompts",
+    "items": [
+      {
+        "title": "Visuel publicitaire produit",
+        "prompt": "Une photo publicitaire pour un produit de soin de la peau premium sur une table en marbre, lumière douce du matin, gouttelettes d'eau, texture ultra-détaillée, composition épurée, qualité studio réaliste",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/c41b0cf235234531a9e9e6f0dd9a3223.png"
+      },
+      {
+        "title": "Infographie avec texte clair",
+        "prompt": "Une affiche d'infographie de voyage avec des titres clairs en anglais : TOP 5 TOKYO NIGHT SPOTS, icônes colorées, extraits de carte, mise en page éditoriale moderne, typographie nette et lisible",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/8d987fa6f49d48c8904f96cf3e92946e.png"
+      },
+      {
+        "title": "Story-board avec personnage cohérent",
+        "prompt": "Une scène de 4 cases de style bande dessinée mettant en scène la même mascotte de banane entrepreneur présentant un livre Toolaze AI dans un studio de streaming, visage et tenue du personnage cohérents sur toutes les cases, éclairage vibrant",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/fbdf6c2e8ee149e680da8a77469a6bab.png"
+      },
+      {
+        "title": "Scène de live commerce social",
+        "prompt": "Une photo de type réseaux sociaux dans un café chaleureux montrant un créateur masculin tenant un livre Toolaze AI lors d'une session live TikTok, superpositions d'interface utilisateur en anglais, texture de peau naturelle, profondeur de champ cinématographique",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/c883988d2df946a4bcf442a72861c699.png"
+      }
+    ]
+  },
+  "scenesTitle": "Cas d'utilisation",
+  "scenes": [
+    {
+      "title": "Créateurs de contenu & réseaux sociaux",
+      "icon": "📱",
+      "desc": "Créez des miniatures époustouflantes, des graphiques sociaux et du contenu visuel. La vitesse de Nano Banana 2 vous permet d'itérer rapidement. Plusieurs formats pour différentes plateformes."
+    },
+    {
+      "title": "Marketing & Publicité",
+      "icon": "🛒",
+      "desc": "Générez des maquettes marketing, des créations publicitaires et des images promotionnelles. Rendu de texte précis pour les titres et les légendes. Qualité Pro à la vitesse Flash."
+    },
+    {
+      "title": "Infographies & Visualisation de données",
+      "icon": "📊",
+      "desc": "Créez des infographies, transformez des notes en diagrammes et générez des visualisations de données. Connaissances avancées du monde pour un rendu précis des sujets."
+    }
+  ],
+  "rating": {
+    "title": "Approuvé par des milliers de créateurs",
+    "rating": "4.9/5 PAR PLUS DE 10K CRÉATEURS",
+    "text": "Rejoignez des milliers d'utilisateurs satisfaits qui font confiance à Toolaze pour une génération d'images IA rapide, sécurisée et gratuite. Aucune inscription requise. Créez des images 4K avec Nano Banana 2 — Qualité Pro à la vitesse Flash."
+  },
+  "faqTitle": "Foire Aux Questions",
+  "faq": [
+    {
+      "q": "Qu'est-ce que Nano Banana 2 ?",
+      "a": "Nano Banana 2 (Gemini 3.1 Flash Image) est le dernier modèle d'image IA de Google, lancé en février 2026. Il combine les capacités avancées de Nano Banana Pro avec la rapidité de Gemini Flash. Vous obtenez une qualité de niveau Pro — éclairage vibrant, textures plus riches, détails plus nets — à une vitesse fulgurante. Il prend en charge le texte-en-image et l'image-en-image, les résolutions de 512px à 4K, une forte cohérence des sujets et un rendu de texte précis. Nano Banana 2 est le modèle d'image par défaut dans l'application Google Gemini."
+    },
+    {
+      "q": "L'utilisation de Nano Banana 2 est-elle gratuite ?",
+      "a": "Oui ! Toolaze offre un accès gratuit à la génération d'images IA Nano Banana 2 en ligne. Aucune inscription n'est requise pour commencer. Vous pouvez créer des images 4K avec texte-en-image et image-en-image sans frais. Il n'y a pas de frais cachés, d'abonnements ou d'exigences de carte de crédit. Commencez à générer des images de qualité Pro à la vitesse Flash immédiatement."
+    },
+    {
+      "q": "Comment Nano Banana 2 se compare-t-il à Nano Banana Pro ?",
+      "a": "Nano Banana Pro offre une fidélité maximale et une précision factuelle pour les tâches spécialisées. Nano Banana 2 combine les capacités Pro avec la vitesse de Gemini Flash — idéal pour la génération rapide, le suivi précis des instructions et les flux de travail intégrés. Les deux prennent en charge le texte-en-image et l'image-en-image avec une sortie 4K. Choisissez Pro pour les tâches de haute fidélité ; choisissez Nano Banana 2 pour la vitesse et l'itération."
+    },
+    {
+      "q": "Qu'est-ce que la cohérence du sujet dans Nano Banana 2 ?",
+      "a": "Nano Banana 2 peut maintenir la ressemblance de jusqu'à 5 personnages et la fidélité de jusqu'à 14 objets dans un seul flux de travail. Cela vous permet de créer des story-boards et des récits sans modifier l'apparence de vos entrées — parfait pour les histoires en plusieurs cases, les séries de personnages ou la cohérence des produits."
+    },
+    {
+      "q": "Nano Banana 2 peut-il générer du texte dans les images ?",
+      "a": "Oui. Nano Banana 2 offre un rendu de texte de précision de niveau Pro. Vous pouvez générer du texte précis et lisible pour des maquettes marketing, des cartes de vœux ou des infographies. Il prend également en charge la traduction et la localisation du texte au sein des images pour un partage mondial."
+    },
+    {
+      "q": "Dois-je installer un logiciel pour utiliser Nano Banana 2 ?",
+      "a": "Non. Toolaze exécute Nano Banana 2 entièrement dans votre navigateur web. Aucune installation de logiciel, aucun téléchargement et aucun plugin requis. Visitez simplement le site web, entrez votre prompt ou téléchargez des images, et générez directement en ligne. Fonctionne sur Windows, Mac et la plupart des navigateurs modernes."
+    }
+  ],
+  "moreTools": "Plus de modèles d'images IA"
+}

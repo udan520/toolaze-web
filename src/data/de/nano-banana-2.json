@@ -1,0 +1,232 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Kostenloser Nano Banana 2 KI Bildgenerator (4K, schnell, online) - Toolaze",
+    "description": "Erstellen Sie kostenlos 4K KI-Bilder mit Nano Banana 2. Pro-Qualität mit Flash-Geschwindigkeit. Text-zu-Bild und Bild-zu-Bild. Subjektkonsistenz für Charaktere und Objekte. Präzise Textwiedergabe. Kostenlos online."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "promptExamples",
+    "modelIntro",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "modelIntro": {
+    "title": "Warum Nano Banana 2 bei der KI-Bilderstellung herausragt",
+    "modelName": "Nano Banana 2",
+    "modelType": "KI-Bildmodell",
+    "description": [
+      "Googles Nano Banana 2 (Gemini 3.1 Flash Image) kombiniert die fortschrittlichen Funktionen von Nano Banana Pro mit der Geschwindigkeit von Gemini Flash. Erhalten Sie Qualität auf Profi-Niveau – lebendige Beleuchtung, reichere Texturen, schärfere Details – mit blitzschneller Geschwindigkeit. Das Modell unterstützt Text-zu-Bild und Bild-zu-Bild, mit Auflösungen von 512px bis 4K und erweiterten Seitenverhältnissen.",
+      "Nano Banana 2 bietet präzise Textwiedergabe für Marketing-Mockups und Grußkarten, sowie erweitertes Weltwissen von Gemini für eine genaue Subjektwiedergabe. Subjektkonsistenz ermöglicht es Ihnen, Charaktere und Objekte über einen Workflow hinweg kohärent zu halten. Eine verbesserte Befolgung von Anweisungen erfasst die Nuancen Ihrer Ideen.",
+      "Toolaze bietet kostenlosen Online-Zugang. Keine Anmeldung erforderlich – beginnen Sie direkt in Ihrem Browser mit der Erstellung."
+    ],
+    "featureCards": [
+      {
+        "title": "Pro-Qualität mit Flash-Geschwindigkeit",
+        "content": "Nano Banana 2 bietet visuelle Wiedergabetreue auf Profi-Niveau – lebendige Beleuchtung, reichere Texturen, schärfere Details – mit der Geschwindigkeit von Gemini Flash. Schnelle Bearbeitungen und Iterationen ohne Qualitätseinbußen. Produktionsreife Spezifikationen von 512px bis 4K."
+      },
+      {
+        "title": "5 Charaktere, 14 Objekte – Subjektkonsistenz",
+        "content": "Behalten Sie die Ähnlichkeit von bis zu 5 Charakteren und die Wiedergabetreue von bis zu 14 Objekten in einem einzigen Workflow bei. Erstellen Sie Storyboards und Erzählungen, ohne das Aussehen Ihrer Eingaben zu verändern. Verbesserte kreative Kontrolle für komplexe Szenen."
+      },
+      {
+        "title": "Präziser Text und erweitertes Weltwissen",
+        "content": "Generieren Sie genauen, lesbaren Text in Bildern – für Marketing-Mockups, Grußkarten oder Infografiken. Übersetzen und lokalisieren Sie Text innerhalb von Bildern. Das Modell greift auf Geminis reales Weltwissen zurück, um eine genauere Subjektwiedergabe zu ermöglichen."
+      }
+    ]
+  },
+  "hero": {
+    "h1": "Kostenloser <span class=\"text-gradient\">Nano Banana 2</span> KI Bildgenerator",
+    "desc": "Erstellen Sie 4K KI-Bilder in Profi-Qualität mit Flash-Geschwindigkeit. Text-zu-Bild und Bild-zu-Bild. Subjektkonsistenz für Charaktere und Objekte."
+  },
+  "intro": {
+    "title": "Warum den Nano Banana 2 KI Bildgenerator wählen?",
+    "content": [
+      {
+        "title": "Pro-Funktionen mit Flash-Geschwindigkeit",
+        "text": "Nano Banana 2 ist Googles neuestes KI-Bildmodell, das die fortschrittlichen Funktionen von Nano Banana Pro mit der Geschwindigkeit von Gemini Flash kombiniert. Erhalten Sie hochwertige, fotorealistische Bilder mit schneller Generierung – kein Warten mehr. Das Modell unterstützt Text-zu-Bild und Bild-zu-Bild, mit Auflösungen von 512px bis 4K und erweiterten Seitenverhältnissen. Egal, ob Sie einen vertikalen Social-Media-Beitrag oder einen Breitbildhintergrund benötigen, Nano Banana 2 liefert produktionsreife Spezifikationen."
+      },
+      {
+        "title": "Subjektkonsistenz und präzise Befolgung von Anweisungen",
+        "text": "Nano Banana 2 zeichnet sich durch Subjektkonsistenz aus – es hält Charaktere und Objekte über einen einzigen Workflow hinweg kohärent für Storyboards und Erzählungen. Eine verbesserte Befolgung von Anweisungen erfasst die spezifischen Nuancen Ihrer Ideen – das Bild, das Sie erhalten, ist das Bild, das Sie angefordert haben. Präzise Textwiedergabe ermöglicht genauen, lesbaren Text in Bildern für Marketing-Mockups, Grußkarten und Infografiken."
+      },
+      {
+        "title": "Kostenloser Online-Zugang ohne Registrierung",
+        "text": "Toolaze bietet kostenlosen Online-Zugang zur Nano Banana 2 KI-Bilderzeugung. Keine Anmeldung, keine Kreditkarte und keine versteckten Gebühren. Egal, ob Sie Content Creator, Designer oder Marketer sind, Sie können sofort mit der Erstellung von 4K-Bildern beginnen. Der kostenlose KI-Bildgenerator unterstützt Text-zu-Bild und Bild-zu-Bild – alles direkt in Ihrem Browser, ohne Softwareinstallation."
+      }
+    ]
+  },
+  "features": {
+    "title": "Hauptmerkmale von Nano Banana 2",
+    "items": [
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Pro-Qualität mit Flash-Geschwindigkeit",
+        "desc": "Kombinieren Sie Nano Banana Pro-Funktionen mit Gemini Flash-Geschwindigkeit. Schnelle Bearbeitungen und Iterationen ohne Qualitätseinbußen."
+      },
+      {
+        "icon": "🎨",
+        "iconType": "quality",
+        "title": "4K und erweiterte Seitenverhältnisse",
+        "desc": "Auflösungen von 512px bis 4K Breitbild. Volle Kontrolle über Seitenverhältnisse für soziale Medien, Druck oder Web."
+      },
+      {
+        "icon": "👥",
+        "iconType": "multimodal",
+        "title": "Subjektkonsistenz",
+        "desc": "Halten Sie Charaktere und Objekte in einem einzigen Workflow kohärent. Ideal für Storyboards und Erzählungen."
+      },
+      {
+        "icon": "📝",
+        "iconType": "quality",
+        "title": "Präzise Textwiedergabe",
+        "desc": "Generieren Sie genauen, lesbaren Text in Bildern. Übersetzen und lokalisieren Sie Text für die globale Freigabe."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Kostenlos nutzbar",
+        "desc": "Keine Anmeldung erforderlich. Beginnen Sie kostenlos online mit der Erstellung von KI-Bildern, ohne Abonnement oder versteckte Gebühren."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "Browserbasiert",
+        "desc": "Funktioniert vollständig in Ihrem Webbrowser. Keine Softwareinstallation, keine Downloads – erstellen Sie Bilder direkt online."
+      }
+    ]
+  },
+  "specs": {
+    "engine": "Google Nano Banana 2 (Gemini 3.1 Flash Image)",
+    "limit": "Text- und Bildeingaben, Subjektkonsistenz über den gesamten Workflow",
+    "logic": "512px bis 4K, erweiterte Seitenverhältnisse, Text-zu-Bild und Bild-zu-Bild",
+    "privacy": "Online-Verarbeitung – Keine lokale Installation erforderlich"
+  },
+  "performanceMetrics": {
+    "title": "Nano Banana 2 Technische Spezifikationen",
+    "metrics": [
+      {
+        "label": "Eingabetypen",
+        "value": "Text, Bild"
+      },
+      {
+        "label": "Ausgabeauflösung",
+        "value": "512px bis 4K Breitbild"
+      },
+      {
+        "label": "Subjektkonsistenz",
+        "value": "Bis zu 5 Charaktere, 14 Objekte"
+      },
+      {
+        "label": "Textwiedergabe",
+        "value": "Präziser Text, Übersetzung, Lokalisierung"
+      },
+      {
+        "label": "Geschwindigkeit",
+        "value": "Gemini Flash-Geschwindigkeit mit Pro-Qualität"
+      },
+      {
+        "label": "Anwendungsfälle",
+        "value": "Marketing, Infografiken, Storyboards, soziale Inhalte"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Wie generiert man Bilder mit Nano Banana 2?",
+    "steps": [
+      {
+        "title": "Modus wählen und Eingabe hinzufügen",
+        "desc": "Wählen Sie den Text-zu-Bild- oder Bild-zu-Bild-Modus. Geben Sie Ihren Prompt ein oder laden Sie Referenzbilder hoch."
+      },
+      {
+        "title": "Einstellungen konfigurieren",
+        "desc": "Wählen Sie Seitenverhältnis und Auflösung (512px bis 4K). Fügen Sie spezifische Anweisungen für Konsistenz oder Text hinzu."
+      },
+      {
+        "title": "Generieren & Herunterladen",
+        "desc": "Klicken Sie auf Generieren und laden Sie Ihr 4K-Bild in Sekunden herunter. Keine Registrierung erforderlich."
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "Prompt-Beispiele",
+    "items": [
+      {
+        "title": "Produktanzeigen-Visual",
+        "prompt": "Ein Werbefoto für ein Premium-Hautpflegeprodukt auf einem Marmortisch, sanftes Morgenlicht, Wassertropfen, ultra-detaillierte Textur, saubere Komposition, realistische Studioqualität",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/c41b0cf235234531a9e9e6f0dd9a3223.png"
+      },
+      {
+        "title": "Infografik mit klarem Text",
+        "prompt": "Ein Reise-Infografik-Poster mit klaren englischen Überschriften: TOP 5 TOKYO NIGHT SPOTS, farbenfrohe Icons, Kartenausschnitte, modernes redaktionelles Layout, gestochen scharfe, lesbare Typografie",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/8d987fa6f49d48c8904f96cf3e92946e.png"
+      },
+      {
+        "title": "Konsistentes Charakter-Storyboard",
+        "prompt": "Eine Comic-artige 4-Panel-Szene desselben Bananen-Maskottchen-Unternehmers, der ein Toolaze KI-Buch in einem Livestream-Studio präsentiert, konsistentes Charaktergesicht und Outfit über alle Panels hinweg, lebendige Beleuchtung",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/fbdf6c2e8ee149e680da8a77469a6bab.png"
+      },
+      {
+        "title": "Social Commerce Live-Szene",
+        "prompt": "Ein gemütliches Café-Social-Media-Foto eines westlichen männlichen Creators, der ein Toolaze KI-Buch während einer TikTok-Live-Session hält, englische UI-Overlays, natürliche Hauttextur, filmische Tiefenschärfe",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/c883988d2df946a4bcf442a72861c699.png"
+      }
+    ]
+  },
+  "scenesTitle": "Anwendungsfälle",
+  "scenes": [
+    {
+      "title": "Content Creator & soziale Medien",
+      "icon": "📱",
+      "desc": "Erstellen Sie beeindruckende Thumbnails, Social Graphics und visuelle Inhalte. Die Geschwindigkeit von Nano Banana 2 ermöglicht schnelle Iterationen. Mehrere Seitenverhältnisse für verschiedene Plattformen."
+    },
+    {
+      "title": "Marketing & Werbung",
+      "icon": "🛒",
+      "desc": "Generieren Sie Marketing-Mockups, Anzeigenmotive und Werbebilder. Präzise Textwiedergabe für Überschriften und Bildunterschriften. Pro-Qualität mit Flash-Geschwindigkeit."
+    },
+    {
+      "title": "Infografiken & Datenvisualisierung",
+      "icon": "📊",
+      "desc": "Erstellen Sie Infografiken, wandeln Sie Notizen in Diagramme um und generieren Sie Datenvisualisierungen. Erweitertes Weltwissen für eine genaue Subjektwiedergabe."
+    }
+  ],
+  "rating": {
+    "title": "Vertraut von Tausenden von Kreativen",
+    "rating": "4.9/5 VON 10K+ KREATIVEN",
+    "text": "Schließen Sie sich Tausenden zufriedener Benutzer an, die Toolaze für schnelle, sichere und kostenlose KI-Bilderzeugung vertrauen. Keine Registrierung erforderlich. Erstellen Sie 4K-Bilder mit Nano Banana 2 – Pro-Qualität mit Flash-Geschwindigkeit."
+  },
+  "faqTitle": "Häufig gestellte Fragen",
+  "faq": [
+    {
+      "q": "Was ist Nano Banana 2?",
+      "a": "Nano Banana 2 (Gemini 3.1 Flash Image) ist Googles neuestes KI-Bildmodell, das im Februar 2026 eingeführt wurde. Es kombiniert die fortschrittlichen Funktionen von Nano Banana Pro mit der Geschwindigkeit von Gemini Flash. Sie erhalten Qualität auf Profi-Niveau – lebendige Beleuchtung, reichere Texturen, schärfere Details – mit blitzschneller Geschwindigkeit. Es unterstützt Text-zu-Bild und Bild-zu-Bild, Auflösungen von 512px bis 4K, starke Subjektkonsistenz und präzise Textwiedergabe. Nano Banana 2 ist das Standard-Bildmodell in der Google Gemini App."
+    },
+    {
+      "q": "Ist Nano Banana 2 kostenlos nutzbar?",
+      "a": "Ja! Toolaze bietet kostenlosen Online-Zugang zur Nano Banana 2 KI-Bilderzeugung. Keine Anmeldung oder Registrierung erforderlich, um loszulegen. Sie können 4K-Bilder mit Text-zu-Bild und Bild-zu-Bild kostenlos erstellen. Es gibt keine versteckten Gebühren, Abonnements oder Kreditkartenanforderungen. Beginnen Sie sofort mit der Generierung von Bildern in Profi-Qualität mit Flash-Geschwindigkeit."
+    },
+    {
+      "q": "Wie vergleicht sich Nano Banana 2 mit Nano Banana Pro?",
+      "a": "Nano Banana Pro bietet maximale Wiedergabetreue und faktische Genauigkeit für spezialisierte Aufgaben. Nano Banana 2 kombiniert Pro-Funktionen mit Gemini Flash-Geschwindigkeit – ideal für schnelle Generierung, präzise Befolgung von Anweisungen und integrierte Workflows. Beide unterstützen Text-zu-Bild und Bild-zu-Bild mit 4K-Ausgabe. Wählen Sie Pro für Aufgaben mit hoher Wiedergabetreue; wählen Sie Nano Banana 2 für Geschwindigkeit und Iteration."
+    },
+    {
+      "q": "Was ist Subjektkonsistenz in Nano Banana 2?",
+      "a": "Nano Banana 2 kann die Ähnlichkeit von bis zu 5 Charakteren und die Wiedergabetreue von bis zu 14 Objekten in einem einzigen Workflow beibehalten. Dies ermöglicht es Ihnen, Storyboards zu erstellen und Erzählungen aufzubauen, ohne das Aussehen Ihrer Eingaben zu verändern – perfekt für mehrteilige Geschichten, Charakterserien oder Produktkonsistenz."
+    },
+    {
+      "q": "Kann Nano Banana 2 Text in Bildern generieren?",
+      "a": "Ja. Nano Banana 2 bietet präzise Textwiedergabe auf Profi-Niveau. Sie können genauen, lesbaren Text für Marketing-Mockups, Grußkarten oder Infografiken generieren. Es unterstützt auch das Übersetzen und Lokalisieren von Text innerhalb von Bildern für die globale Freigabe."
+    },
+    {
+      "q": "Muss ich Software installieren, um Nano Banana 2 zu verwenden?",
+      "a": "Nein. Toolaze führt Nano Banana 2 vollständig in Ihrem Webbrowser aus. Keine Softwareinstallation, keine Downloads und keine Plugins erforderlich. Besuchen Sie einfach die Website, geben Sie Ihren Prompt ein oder laden Sie Bilder hoch und generieren Sie direkt online. Funktioniert unter Windows, Mac und den meisten modernen Browsern."
+    }
+  ],
+  "moreTools": "Weitere KI-Bildmodelle"
+}

@@ -1,0 +1,176 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Restauro Foto Vecchie Gratis Online - Ripristina Foto con AI | Toolaze",
+    "description": "Ripristina vecchie foto online gratuitamente con l'IA. Rimuovi graffi, polvere e rumore, migliora la nitidezza e colora le vecchie foto in un clic. Nessuna registrazione richiesta."
+  },
+  "topComponent": "photo-restoration",
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Restauro <span class=\"text-gradient\">Foto Vecchie</span> Gratis Online",
+    "desc": "Ripristina le vecchie foto in un clic con l'IA. Rimuovi graffi, polvere e rumore, migliora i dettagli e applica automaticamente il restauro naturale del colore."
+  },
+  "howToUse": {
+    "title": "Come Ripristinare Vecchie Foto Online",
+    "steps": [
+      {
+        "title": "Carica la tua Foto",
+        "desc": "Carica una vecchia foto in formato JPG, JPEG o PNG (fino a 30MB)."
+      },
+      {
+        "title": "Genera Risultato Ripristinato",
+        "desc": "Fai clic su Genera per avviare il restauro con colorazione integrata per un risultato pulito e vivido."
+      },
+      {
+        "title": "Genera e Scarica",
+        "desc": "Fai clic su Genera per ripristinare la tua foto, visualizzare l'anteprima del risultato e scaricare istantaneamente."
+      }
+    ]
+  },
+  "features": {
+    "title": "Caratteristiche Principali del Restauro Foto",
+    "items": [
+      {
+        "icon": "🧼",
+        "iconType": "quality",
+        "title": "Pulizia Graffi e Polvere",
+        "desc": "Rimuove automaticamente i danni comuni delle vecchie foto come graffi, macchie di polvere e rumore."
+      },
+      {
+        "icon": "🔍",
+        "iconType": "quality",
+        "title": "Aumento Nitidezza e Dettagli",
+        "desc": "Migliora la nitidezza e i dettagli visivi in modo che volti, texture e bordi appaiano più puliti."
+      },
+      {
+        "icon": "🎨",
+        "iconType": "ai",
+        "title": "Restauro Colore Integrato",
+        "desc": "Il restauro e la colorazione vengono eseguiti insieme con un unico flusso di lavoro fisso per una qualità costante."
+      },
+      {
+        "icon": "🖼️",
+        "iconType": "format",
+        "title": "Flusso di Lavoro Immagine Singola",
+        "desc": "Flusso focalizzato su una singola foto per un restauro rapido con controlli semplici."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Esperienza Browser Veloce",
+        "desc": "Carica, ripristina e scarica in un flusso basato su browser pulito, senza registrazione richiesta."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Elaborazione Sicura",
+        "desc": "Le immagini vengono elaborate in modo sicuro e non vengono conservate come file account permanenti."
+      }
+    ]
+  },
+  "intro": {
+    "title": "Perché Usare il Restauro Foto di Toolaze",
+    "content": [
+      {
+        "title": "Rendi Nuovamente Utilizzabili le Vecchie Foto",
+        "text": "Le vecchie foto di famiglia hanno spesso graffi, polvere, sbiadimento e sfocatura che le rendono difficili da condividere o stampare. Toolaze Photo Restoration ti aiuta a recuperare rapidamente la qualità visiva in modo che i ricordi appaiano più puliti e facili da preservare."
+      },
+      {
+        "title": "Flusso di Lavoro in Un Clic per Risultati Più Rapidi",
+        "text": "La pagina utilizza un flusso fisso di restauro più colorazione, quindi non è necessario decidere le impostazioni. Carica un'immagine, fai clic su Genera e ottieni rapidamente un risultato pulito e migliorato."
+      },
+      {
+        "title": "Creato per Utenti Comuni, Non per Editor",
+        "text": "Non sono necessari mascheramenti manuali, strumenti pennello o abilità di editing avanzate. Carica un'immagine, scegli la modalità, fai clic su genera e scarica. È progettato per un uso personale rapido, archivi di famiglia e condivisione sui social."
+      }
+    ]
+  },
+  "performanceMetrics": {
+    "title": "Impostazioni di Restauro Foto",
+    "metrics": [
+      {
+        "label": "Modello",
+        "value": "GPT Image 2"
+      },
+      {
+        "label": "Tipo di Input",
+        "value": "Immagine singola"
+      },
+      {
+        "label": "Rapporto d'Aspetto",
+        "value": "Auto"
+      },
+      {
+        "label": "Risoluzione",
+        "value": "1K"
+      },
+      {
+        "label": "Output per Attività",
+        "value": "1 immagine"
+      },
+      {
+        "label": "Colorazione",
+        "value": "Integrata (sempre attiva)"
+      }
+    ]
+  },
+  "scenesTitle": "Casi d'Uso",
+  "scenes": [
+    {
+      "icon": "👪",
+      "title": "Recupero Ricordi di Famiglia",
+      "desc": "Pulisci le vecchie foto di famiglia prima di stamparle, incorniciarle o condividerle nei gruppi familiari."
+    },
+    {
+      "icon": "📚",
+      "title": "Pulizia Archivi e Documenti Storici",
+      "desc": "Migliora la leggibilità di vecchie foto scansionate per progetti d'archivio o presentazioni scolastiche."
+    },
+    {
+      "icon": "📱",
+      "title": "Post Throwback sui Social Media",
+      "desc": "Ripristina vecchi ritratti e momenti per farli apparire al meglio nei moderni feed social."
+    }
+  ],
+  "rating": {
+    "title": "Scelto da Creator e Famiglie",
+    "rating": "4.9/5 DA 10K CREATOR",
+    "text": "Toolaze aiuta gli utenti a ripristinare rapidamente le vecchie foto con controlli semplici e risultati puliti. Nessuna registrazione richiesta."
+  },
+  "faqTitle": "Domande Frequenti",
+  "faq": [
+    {
+      "q": "Questo strumento di restauro foto è gratuito?",
+      "a": "Sì. Puoi ripristinare le foto online gratuitamente su Toolaze senza necessità di registrazione."
+    },
+    {
+      "q": "Quali formati di file sono supportati?",
+      "a": "Puoi caricare immagini JPG, JPEG e PNG fino a 30MB."
+    },
+    {
+      "q": "Posso scegliere se colorare le vecchie foto?",
+      "a": "No. Questa pagina utilizza per impostazione predefinita un flusso fisso di restauro più colorazione per mantenere i risultati coerenti."
+    },
+    {
+      "q": "Supporta il restauro di foto in blocco?",
+      "a": "No. Questa pagina supporta il restauro di una singola immagine per ogni sessione."
+    },
+    {
+      "q": "Posso modificare i prompt manualmente?",
+      "a": "No. Il testo del prompt è integrato per mantenere il flusso di lavoro semplice e coerente."
+    },
+    {
+      "q": "Devo installare software?",
+      "a": "No. Tutto funziona nel tuo browser, quindi puoi caricare, ripristinare e scaricare online."
+    }
+  ],
+  "moreTools": "Altri Strumenti Gratuiti"
+}

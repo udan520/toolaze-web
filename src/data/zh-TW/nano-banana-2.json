@@ -1,0 +1,232 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "免費 Nano Banana 2 AI 圖像生成器 (4K, 快速, 線上) - Toolaze",
+    "description": "使用 Nano Banana 2 免費創建 4K AI 圖像。專業品質，閃電般的速度。支援文字轉圖像和圖像轉圖像。角色和物體的主題一致性。精準文字渲染。免費線上使用。"
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "promptExamples",
+    "modelIntro",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "modelIntro": {
+    "title": "Nano Banana 2 在 AI 圖像創作中脫穎而出的原因",
+    "modelName": "Nano Banana 2",
+    "modelType": "AI 圖像模型",
+    "description": [
+      "Google 的 Nano Banana 2 (Gemini 3.1 Flash Image) 結合了 Nano Banana Pro 的先進功能與 Gemini Flash 的速度。以閃電般的速度獲得專業級品質——鮮豔的燈光、更豐富的紋理、更銳利的細節。該模型支援文字轉圖像和圖像轉圖像，解析度從 512px 到 4K，並擴展了長寬比。",
+      "Nano Banana 2 為行銷模型和賀卡提供精準的文字渲染，並結合 Gemini 的先進世界知識以實現準確的主題渲染。主題一致性讓您在整個工作流程中保持角色和物體的一致性。增強的指令遵循能力捕捉您想法的細微差別。",
+      "Toolaze 提供免費線上存取。無需註冊——即可從您的瀏覽器開始創作。"
+    ],
+    "featureCards": [
+      {
+        "title": "閃電般速度的專業品質",
+        "content": "Nano Banana 2 以 Gemini Flash 的速度帶來專業級的視覺保真度——鮮豔的燈光、更豐富的紋理、更銳利的細節。快速編輯和迭代，不犧牲品質。從 512px 到 4K 的生產就緒規格。"
+      },
+      {
+        "title": "5 個角色，14 個物體——主題一致性",
+        "content": "在單一工作流程中，可保持多達 5 個角色的相似性和多達 14 個物體的保真度。無需改變輸入的外觀即可繪製故事板和構建敘事。增強複雜場景的創意控制。"
+      },
+      {
+        "title": "精準文字與先進世界知識",
+        "content": "在圖像中生成準確、清晰的文字——適用於行銷模型、賀卡或資訊圖表。翻譯和本地化圖像中的文字。該模型利用 Gemini 的真實世界知識，以實現更準確的主題渲染。"
+      }
+    ]
+  },
+  "hero": {
+    "h1": "免費 <span class=\"text-gradient\">Nano Banana 2</span> AI 圖像生成器",
+    "desc": "以閃電般的速度創建專業品質的 4K AI 圖像。支援文字轉圖像和圖像轉圖像。角色和物體的主題一致性。"
+  },
+  "intro": {
+    "title": "為何選擇 Nano Banana 2 AI 圖像生成器？",
+    "content": [
+      {
+        "title": "閃電般速度的專業功能",
+        "text": "Nano Banana 2 是 Google 最新的 AI 圖像模型，結合了 Nano Banana Pro 的先進功能與 Gemini Flash 的速度。以快速生成獲得高品質、逼真的圖像——無需再等待。該模型支援文字轉圖像和圖像轉圖像，解析度從 512px 到 4K，並擴展了長寬比。無論您需要垂直的社群貼文還是寬螢幕背景，Nano Banana 2 都能提供生產就緒的規格。"
+      },
+      {
+        "title": "主題一致性與精準指令遵循",
+        "text": "Nano Banana 2 在主題一致性方面表現出色——在單一工作流程中保持角色和物體的一致性，適用於故事板和敘事。增強的指令遵循能力捕捉您想法的特定細微差別——您得到的圖像就是您所要求的圖像。精準的文字渲染可以在圖像中實現準確、清晰的文字，適用於行銷模型、賀卡和資訊圖表。"
+      },
+      {
+        "title": "免費線上存取，無需註冊",
+        "text": "Toolaze 提供免費線上存取 Nano Banana 2 AI 圖像生成。無需註冊、無需信用卡，也無隱藏費用。無論您是內容創作者、設計師還是行銷人員，都可以立即開始創建 4K 圖像。這個免費的 AI 圖像生成器支援文字轉圖像和圖像轉圖像——所有操作都可在您的瀏覽器中完成，無需安裝任何軟體。"
+      }
+    ]
+  },
+  "features": {
+    "title": "Nano Banana 2 的主要功能",
+    "items": [
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "閃電般速度的專業品質",
+        "desc": "結合 Nano Banana Pro 的功能與 Gemini Flash 的速度。快速編輯和迭代，不犧牲品質。"
+      },
+      {
+        "icon": "🎨",
+        "iconType": "quality",
+        "title": "4K 與擴展長寬比",
+        "desc": "解析度從 512px 到 4K 寬螢幕。完全控制社群、印刷或網路的長寬比。"
+      },
+      {
+        "icon": "👥",
+        "iconType": "multimodal",
+        "title": "主題一致性",
+        "desc": "在單一工作流程中保持角色和物體的一致性。非常適合故事板和敘事。"
+      },
+      {
+        "icon": "📝",
+        "iconType": "quality",
+        "title": "精準文字渲染",
+        "desc": "在圖像中生成準確、清晰的文字。翻譯和本地化文字以供全球分享。"
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "免費使用",
+        "desc": "無需註冊。免費線上創建 AI 圖像，無訂閱或隱藏費用。"
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "基於瀏覽器",
+        "desc": "完全在您的網路瀏覽器中運行。無需安裝軟體、無需下載——直接線上創建圖像。"
+      }
+    ]
+  },
+  "specs": {
+    "engine": "Google Nano Banana 2 (Gemini 3.1 Flash Image)",
+    "limit": "文字和圖像輸入，工作流程中的主題一致性",
+    "logic": "512px 到 4K，擴展長寬比，文字轉圖像和圖像轉圖像",
+    "privacy": "線上處理 - 無需本地安裝"
+  },
+  "performanceMetrics": {
+    "title": "Nano Banana 2 技術規格",
+    "metrics": [
+      {
+        "label": "輸入類型",
+        "value": "文字、圖像"
+      },
+      {
+        "label": "輸出解析度",
+        "value": "512px 到 4K 寬螢幕"
+      },
+      {
+        "label": "主題一致性",
+        "value": "最多 5 個角色，14 個物體"
+      },
+      {
+        "label": "文字渲染",
+        "value": "精準文字、翻譯、本地化"
+      },
+      {
+        "label": "速度",
+        "value": "Gemini Flash 速度與專業品質"
+      },
+      {
+        "label": "使用案例",
+        "value": "行銷、資訊圖表、故事板、社群內容"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "如何使用 Nano Banana 2 生成圖像？",
+    "steps": [
+      {
+        "title": "選擇模式並新增輸入",
+        "desc": "選擇文字轉圖像或圖像轉圖像模式。輸入您的提示或上傳參考圖像。"
+      },
+      {
+        "title": "配置設定",
+        "desc": "選擇長寬比和解析度 (512px 到 4K)。新增任何關於一致性或文字的特定指令。"
+      },
+      {
+        "title": "生成並下載",
+        "desc": "點擊生成並在幾秒鐘內下載您的 4K 圖像。無需註冊。"
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "提示範例",
+    "items": [
+      {
+        "title": "產品廣告視覺",
+        "prompt": "一張大理石桌上的高級護膚品廣告照片，柔和的晨光，水滴，超細緻紋理，簡潔構圖，逼真的工作室品質",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/c41b0c7b9b53478d960218de80c52e3d.r2.dev/uploads/c41b0cf235234531a9e9e6f0dd9a3223.png"
+      },
+      {
+        "title": "帶有清晰文字的資訊圖表",
+        "prompt": "一張帶有清晰英文標題的旅遊資訊圖表海報：東京夜間熱點前 5 名，彩色圖標，地圖片段，現代編輯佈局，清晰可讀的排版",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/8d987fa6f49d48c8904f96cf3e92946e.png"
+      },
+      {
+        "title": "一致角色故事板",
+        "prompt": "一個漫畫風格的 4 格場景，相同的香蕉吉祥物企業家在直播工作室中展示一本 Toolaze AI 書籍，所有面板中的角色臉部和服裝保持一致，鮮豔的燈光",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/fbdf6c2e8ee149e680da8a77469a6bab.png"
+      },
+      {
+        "title": "社群商務直播場景",
+        "prompt": "一張舒適咖啡館的社群媒體照片，一位西方男性創作者在 TikTok 直播期間手持一本 Toolaze AI 書籍，英文 UI 疊加，自然皮膚紋理，電影景深",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/c883988d2df946a4bcf442a72861c699.png"
+      }
+    ]
+  },
+  "scenesTitle": "使用案例",
+  "scenes": [
+    {
+      "icon": "📱",
+      "title": "內容創作者與社群媒體",
+      "desc": "創建令人驚嘆的縮圖、社群圖形和視覺內容。Nano Banana 2 的速度讓您快速迭代。多種長寬比適用於不同平台。"
+    },
+    {
+      "icon": "🛒",
+      "title": "行銷與廣告",
+      "desc": "生成行銷模型、廣告創意和促銷圖像。精準文字渲染用於標題和說明。閃電般速度的專業品質。"
+    },
+    {
+      "icon": "📊",
+      "title": "資訊圖表與數據視覺化",
+      "desc": "創建資訊圖表、將筆記轉化為圖表，並生成數據視覺化。先進的世界知識用於準確的主題渲染。"
+    }
+  ],
+  "rating": {
+    "title": "受到數千名創作者的信賴",
+    "rating": "4.9/5 來自 1 萬多名創作者",
+    "text": "加入數千名滿意的用戶，他們信賴 Toolaze 提供快速、安全且免費的 AI 圖像生成。無需註冊。使用 Nano Banana 2 創建 4K 圖像——閃電般速度的專業品質。"
+  },
+  "faqTitle": "常見問題",
+  "faq": [
+    {
+      "q": "什麼是 Nano Banana 2？",
+      "a": "Nano Banana 2 (Gemini 3.1 Flash Image) 是 Google 最新的 AI 圖像模型，於 2026 年 2 月推出。它結合了 Nano Banana Pro 的先進功能與 Gemini Flash 的速度。您將以閃電般的速度獲得專業級品質——鮮豔的燈光、更豐富的紋理、更銳利的細節。它支援文字轉圖像和圖像轉圖像，解析度從 512px 到 4K，具有強大的主題一致性和精準的文字渲染。Nano Banana 2 是 Google Gemini 應用程式中的預設圖像模型。"
+    },
+    {
+      "q": "Nano Banana 2 可以免費使用嗎？",
+      "a": "是的！Toolaze 提供免費線上存取 Nano Banana 2 AI 圖像生成。無需註冊即可開始使用。您可以免費創建 4K 圖像，支援文字轉圖像和圖像轉圖像。沒有隱藏費用、訂閱或信用卡要求。立即開始以閃電般的速度生成專業品質的圖像。"
+    },
+    {
+      "q": "Nano Banana 2 與 Nano Banana Pro 相比如何？",
+      "a": "Nano Banana Pro 為專業任務提供最大的保真度和事實準確性。Nano Banana 2 結合了 Pro 的功能與 Gemini Flash 的速度——非常適合快速生成、精準指令遵循和整合工作流程。兩者都支援文字轉圖像和圖像轉圖像，並可輸出 4K。對於高保真任務，請選擇 Pro；對於速度和迭代，請選擇 Nano Banana 2。"
+    },
+    {
+      "q": "Nano Banana 2 中的主題一致性是什麼？",
+      "a": "Nano Banana 2 可以在單一工作流程中保持多達 5 個角色的相似性和多達 14 個物體的保真度。這讓您可以繪製故事板和構建敘事，而無需改變輸入的外觀——非常適合多面板故事、角色系列或產品一致性。"
+    },
+    {
+      "q": "Nano Banana 2 可以在圖像中生成文字嗎？",
+      "a": "是的。Nano Banana 2 提供專業級的精準文字渲染。您可以為行銷模型、賀卡或資訊圖表生成準確、清晰的文字。它還支援翻譯和本地化圖像中的文字以供全球分享。"
+    },
+    {
+      "q": "我需要安裝軟體才能使用 Nano Banana 2 嗎？",
+      "a": "不需要。Toolaze 完全在您的網路瀏覽器中運行 Nano Banana 2。無需安裝軟體、無需下載，也無需外掛程式。只需訪問網站，輸入您的提示或上傳圖像，即可直接線上生成。適用於 Windows、Mac 和大多數現代瀏覽器。"
+    }
+  ],
+  "moreTools": "更多 AI 圖像模型"
+}

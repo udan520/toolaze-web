@@ -4,7 +4,17 @@
     "title": "GPT Image 2 Online - Text to Image & Image to Image Generator | Toolaze",
     "description": "Use GPT Image 2 online on Toolaze for text-to-image and image-to-image creation. Generate marketing visuals, e-commerce images, and social creatives with flexible aspect ratios and up to 4K output."
   },
-  "sectionsOrder": ["howToUse", "promptExamples", "modelIntro", "features", "intro", "performanceMetrics", "scenes", "rating", "faq"],
+  "sectionsOrder": [
+    "howToUse",
+    "promptExamples",
+    "modelIntro",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "scenes",
+    "rating",
+    "faq"
+  ],
   "hero": {
     "h1": "Create with <span class=\"text-gradient\">GPT Image 2</span> on Toolaze",
     "desc": "Use GPT Image 2 online for text-to-image and image-to-image in one place. Create ad creatives, e-commerce images, and social visuals in minutes."
@@ -107,12 +117,30 @@
   "performanceMetrics": {
     "title": "What You Can Adjust Before Generating",
     "metrics": [
-      { "label": "Creation Modes", "value": "Text to Image, Image to Image" },
-      { "label": "Reference Images", "value": "Up to 16 images" },
-      { "label": "Upload Formats", "value": "JPEG, JPG, PNG, WEBP (up to 30MB each)" },
-      { "label": "Aspect Ratios", "value": "auto, 1:1, 9:16, 16:9, 4:3, 3:4" },
-      { "label": "Image Quality", "value": "1K, 2K, 4K (depends on selected ratio)" },
-      { "label": "Simple Workflow", "value": "Enter prompt, generate, preview, download" }
+      {
+        "label": "Creation Modes",
+        "value": "Text to Image, Image to Image"
+      },
+      {
+        "label": "Reference Images",
+        "value": "Up to 16 images"
+      },
+      {
+        "label": "Upload Formats",
+        "value": "JPEG, JPG, PNG, WEBP (up to 30MB each)"
+      },
+      {
+        "label": "Aspect Ratios",
+        "value": "auto, 1:1, 9:16, 16:9, 4:3, 3:4"
+      },
+      {
+        "label": "Image Quality",
+        "value": "1K, 2K, 4K (depends on selected ratio)"
+      },
+      {
+        "label": "Simple Workflow",
+        "value": "Enter prompt, generate, preview, download"
+      }
     ]
   },
   "scenesTitle": "Use Cases",

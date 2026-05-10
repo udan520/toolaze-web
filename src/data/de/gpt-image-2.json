@@ -1,0 +1,231 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "GPT Image 2 Online - Text-zu-Bild & Bild-zu-Bild Generator | Toolaze",
+    "description": "Nutzen Sie GPT Image 2 online auf Toolaze für die Text-zu-Bild- und Bild-zu-Bild-Erstellung. Generieren Sie Marketing-Visuals, E-Commerce-Bilder und Social Creatives mit flexiblen Seitenverhältnissen und bis zu 4K-Ausgabe."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "promptExamples",
+    "modelIntro",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Erstellen Sie mit <span class=\"text-gradient\">GPT Image 2</span> auf Toolaze",
+    "desc": "Nutzen Sie GPT Image 2 online für Text-zu-Bild und Bild-zu-Bild an einem Ort. Erstellen Sie Anzeigenmotive, E-Commerce-Bilder und Social Visuals in wenigen Minuten."
+  },
+  "howToUse": {
+    "title": "So verwenden Sie GPT Image 2",
+    "steps": [
+      {
+        "title": "Text-zu-Bild oder Bild-zu-Bild wählen",
+        "desc": "Beginnen Sie mit einem Prompt oder laden Sie ein oder mehrere Referenzbilder hoch, um die Ausgabe zu steuern."
+      },
+      {
+        "title": "Prompt und Ausgabeoptionen festlegen",
+        "desc": "Geben Sie Ihren Prompt ein und wählen Sie dann Seitenverhältnis und Auflösung (1K, 2K oder 4K, wo unterstützt)."
+      },
+      {
+        "title": "Generieren und Herunterladen",
+        "desc": "Klicken Sie auf Generieren, warten Sie, bis die Aufgabe abgeschlossen ist, und sehen Sie sich Ihr Ergebnis an und laden Sie es herunter."
+      }
+    ]
+  },
+  "modelIntro": {
+    "title": "Was GPT Image 2 Ihnen ermöglicht",
+    "modelName": "GPT Image 2",
+    "modelType": "KI-Bildmodell",
+    "description": [
+      "GPT Image 2 unterstützt sowohl Text-zu-Bild- als auch Bild-zu-Bild-Workflows. Sie können ein Konzept von Grund auf neu beschreiben oder Referenzbilder hochladen, um Stil und Komposition zu steuern.",
+      "Auf Toolaze können Sie GPT Image 2 direkt in Ihrem Browser ausführen, mit praktischen Steuerelementen für Seitenverhältnis und Auflösung. Dies hilft Kreativteams, schnell zu iterieren und gleichzeitig die Ausgabeeinstellungen konsistent zu halten.",
+      "Dieselbe Benutzeroberfläche unterstützt Ideenfindung, visuelle Bearbeitung und den finalen Export an einem Ort."
+    ],
+    "featureCards": [
+      {
+        "title": "Text-zu-Bild und Bild-zu-Bild in einem Tool",
+        "content": "Wechseln Sie zwischen der reinen Prompt-Generierung und der referenzbasierten Bearbeitung, ohne Seiten oder Tools zu wechseln."
+      },
+      {
+        "title": "Praktische Ausgabesteuerung",
+        "content": "Wählen Sie aus gängigen Seitenverhältnissen und 1K/2K/4K-Auflösungsoptionen, um den Anforderungen von sozialen Medien, Web oder Produktion gerecht zu werden."
+      },
+      {
+        "title": "Schneller Iterations-Workflow",
+        "content": "Generieren, überprüfen, Prompts verfeinern und schnell neu generieren, damit Teams mehrere visuelle Richtungen in kürzerer Zeit testen können."
+      }
+    ]
+  },
+  "intro": {
+    "title": "Warum GPT Image 2 auf Toolaze verwenden?",
+    "content": [
+      {
+        "title": "Vom ersten Konzept zum finalen Kreativ",
+        "text": "Toolaze bietet Ihnen einen GPT Image 2 Arbeitsbereich für Text-zu-Bild und Bild-zu-Bild. Beginnen Sie mit einer groben Idee und verfeinern Sie dann Komposition, Stil und Szenenrichtung, ohne die Tools zu wechseln."
+      },
+      {
+        "title": "Für Content-Teams mit hohem Volumen entwickelt",
+        "text": "Mit klaren Steuerelementen für Prompt, Seitenverhältnis und Auflösung können Teams die Ausgaben über Anzeigenvarianten, Produktseiten, Social Posts und mehrsprachige Marketingmaterialien hinweg konsistent halten."
+      }
+    ]
+  },
+  "features": {
+    "title": "Wichtige GPT Image 2 Funktionen",
+    "items": [
+      {
+        "icon": "✍️",
+        "iconType": "ai",
+        "title": "Text-zu-Bild-Generierung",
+        "desc": "Generieren Sie neue Visuals aus Prompts in natürlicher Sprache."
+      },
+      {
+        "icon": "🖼️",
+        "iconType": "format",
+        "title": "Bild-zu-Bild-Bearbeitung",
+        "desc": "Laden Sie Referenzbilder hoch und transformieren Sie Stil, Layout oder visuelle Details."
+      },
+      {
+        "icon": "📐",
+        "iconType": "quality",
+        "title": "Optionen für Seitenverhältnis",
+        "desc": "Verwenden Sie Auto, 1:1, 9:16, 16:9, 4:3 und 3:4 für gängige Veröffentlichungsszenarien."
+      },
+      {
+        "icon": "🧩",
+        "iconType": "quality",
+        "title": "Auflösungssteuerung",
+        "desc": "Wählen Sie 1K, 2K oder 4K Ausgaben, wenn das gewählte Verhältnis dies unterstützt."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Schneller Generierungszyklus",
+        "desc": "Generieren, überprüfen und schnell neu erstellen, um mehrere kreative Richtungen in einer Sitzung zu testen."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "Browserbasierter Zugriff",
+        "desc": "Nutzen Sie GPT Image 2 direkt online, ohne Software zu installieren."
+      }
+    ]
+  },
+  "performanceMetrics": {
+    "title": "Was Sie vor der Generierung anpassen können",
+    "metrics": [
+      {
+        "label": "Erstellungsmodi",
+        "value": "Text zu Bild, Bild zu Bild"
+      },
+      {
+        "label": "Referenzbilder",
+        "value": "Bis zu 16 Bilder"
+      },
+      {
+        "label": "Upload-Formate",
+        "value": "JPEG, JPG, PNG, WEBP (jeweils bis zu 30MB)"
+      },
+      {
+        "label": "Seitenverhältnisse",
+        "value": "auto, 1:1, 9:16, 16:9, 4:3, 3:4"
+      },
+      {
+        "label": "Bildqualität",
+        "value": "1K, 2K, 4K (abhängig vom gewählten Verhältnis)"
+      },
+      {
+        "label": "Einfacher Workflow",
+        "value": "Prompt eingeben, generieren, Vorschau anzeigen, herunterladen"
+      }
+    ]
+  },
+  "scenesTitle": "Anwendungsfälle",
+  "scenes": [
+    {
+      "title": "Anzeigen- und Kampagnenmotive",
+      "icon": "📣",
+      "desc": "Erstellen Sie Social Ads, Launch-Grafiken und Kampagnenvarianten schneller mit einer wiederverwendbaren Prompt-Grundlage."
+    },
+    {
+      "title": "E-Commerce-Produktvisuals",
+      "icon": "🛍️",
+      "desc": "Nutzen Sie Bild-zu-Bild, um Produkthintergründe, Stilrichtungen und Merchandising-Visuals für Shop-Seiten zu testen."
+    },
+    {
+      "title": "Landingpage- und Poster-Konzepte",
+      "icon": "🎨",
+      "desc": "Entwerfen Sie Hero-Bilder, Poster und Web-Visual-Konzepte, bevor Sie zur finalen Design-Feinabstimmung übergehen."
+    }
+  ],
+  "promptExamples": {
+    "title": "Trendige Prompt-Beispiele",
+    "subtitle": "Verwenden Sie diese sofort einsatzbereiten Prompts, um Visuals im Viral-Stil mit GPT Image 2 zu erstellen. Sie können sie unverändert kopieren oder Thema, Hintergrund und Stil anpassen.",
+    "items": [
+      {
+        "title": "TikTok Live Buchverkaufsszene",
+        "prompt": "Eine TikTok-Live-Stream-Szene, ein westlicher männlicher Moderator verkauft ein Buch mit dem Titel Toolaze AI, der gesamte Text auf dem Bildschirm ist auf Englisch, energiegeladenes E-Commerce-Live-Setup, realistische Studiobeleuchtung, 4:3 Komposition.",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/0b0c01224b03466b913cc7b41683c785.png"
+      },
+      {
+        "title": "Actionfigur-Verpackungsaufnahme",
+        "prompt": "Ein Mockup einer Einzelhandelsverpackung für eine Sammler-Actionfigur mit der Aufschrift Toolaze AI Creator Kit, Premium-Spielzeugverpackungsstil, Produktfotografie auf einem sauberen Regalhintergrund, der gesamte Text auf Englisch, 4:3 Komposition.",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3384d195c8a446cc884e27ff90ec8b5e.png"
+      },
+      {
+        "title": "Vorher-Nachher-Umstyling-Poster",
+        "prompt": "Ein geteiltes Vorher-Nachher-Wohnzimmer-Umstyling-Poster für Toolaze AI, linke Seite alter Stil und rechte Seite moderner heller Stil, klare englische Beschriftungen Before und After, realistischer Innenraum-Foto-Look, 4:3 Komposition.",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/7f593beb22a74d98ab0f4ec40da9257d.png"
+      },
+      {
+        "title": "Virales Straßeninterview-Thumbnail",
+        "prompt": "Eine virale Kurzvideo-Thumbnail-Szene auf einer belebten Stadtstraße, Moderator hält ein Schild mit der Aufschrift 'I made this with Toolaze AI', ausdrucksstarke Reaktionen, fetter englischer Überschriftentext, Creator Economy Vibe, 4:3 Komposition.",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/e771a0f56df34a74a7cb038d06753b02.png"
+      }
+    ]
+  },
+  "rating": {
+    "title": "Von Kreativen und Teams geschätzt",
+    "rating": "4.9/5 VON 10K+ KREATOREN",
+    "text": "Toolaze hilft Teams, GPT Image 2 Workflows schnell mit praktischen Steuerelementen und einer sauberen browserbasierten UX auszuführen."
+  },
+  "faqTitle": "Häufig gestellte Fragen",
+  "faq": [
+    {
+      "q": "Unterstützt diese Seite sowohl GPT Image 2 Text-zu-Bild als auch Bild-zu-Bild?",
+      "a": "Ja. Sie können zwischen den Tabs wechseln, um Text-zu-Bild aus Prompts oder Bild-zu-Bild mit hochgeladenen Referenzen in derselben Benutzeroberfläche auszuführen."
+    },
+    {
+      "q": "Welche Bildformate werden für GPT Image 2 Bild-zu-Bild unterstützt?",
+      "a": "JPEG, JPG, PNG und WEBP werden unterstützt, mit bis zu 30 MB pro Datei und bis zu 16 Bildern pro Aufgabe."
+    },
+    {
+      "q": "Was ist der Unterschied zwischen GPT Image 2 und Nano Banana Pro?",
+      "a": "GPT Image 2 wird oft gewählt, wenn Benutzer saubereren Text in Bildern und kontrolliertere Bearbeitungen wünschen. Nano Banana Pro bietet einen anderen visuellen Stil und ein anderes kreatives Gefühl. Die meisten Benutzer testen beide und behalten das, was zu ihrem Markenauftritt passt."
+    },
+    {
+      "q": "Kann ich Ausgabeauflösung und Seitenverhältnis wählen?",
+      "a": "Ja. Sie können Seitenverhältnis und Auflösung vor der Generierung im Panel einstellen. Einige hochauflösende Kombinationen hängen vom gewählten Verhältnis ab."
+    },
+    {
+      "q": "Kann GPT Image 2 bei mehrsprachigen Marketing-Visuals helfen?",
+      "a": "Ja. Viele Teams verwenden GPT Image 2 für textreiche Marketinggrafiken, Poster und Produktvisuals, die eine sauberere mehrsprachige Textwiedergabe und eine konsistente Designausgabe erfordern."
+    },
+    {
+      "q": "Was kann ich mit GPT Image 2 auf Toolaze erstellen?",
+      "a": "Sie können Anzeigenmotive, Social-Media-Visuals, E-Commerce-Produktbilder, Hero-Banner und Poster-Konzepte mit Text-zu-Bild- und Bild-zu-Bild-Workflows an einem Ort erstellen."
+    },
+    {
+      "q": "Wie schneidet GPT Image 2 im Vergleich zu anderen KI-Bildgeneratoren ab?",
+      "a": "GPT Image 2 wird häufig bevorzugt, wenn Benutzer eine bessere Textklarheit, stärkere Bearbeitungskontrolle und konsistentere Ausgaben über mehrere Versionen hinweg benötigen. Wenn Ihr Ziel brauchbare Marketing-Visuals anstelle von einmaligen Experimenten sind, ist es oft eine gute erste Wahl."
+    },
+    {
+      "q": "Muss ich Software installieren, um GPT Image 2 auf Toolaze zu verwenden?",
+      "a": "Nein. Alles läuft im Browser, sodass Sie Bilder direkt online generieren und herunterladen können."
+    }
+  ],
+  "moreTools": "Weitere KI-Bildmodelle"
+}

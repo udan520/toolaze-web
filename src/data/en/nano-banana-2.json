@@ -4,7 +4,17 @@
     "title": "Free Nano Banana 2 AI Image Generator (4K, Fast, Online) - Toolaze",
     "description": "Create 4K AI images with Nano Banana 2 for free. Pro quality at Flash speed. Text-to-image and image-to-image. Subject consistency for characters and objects. Precision text rendering. Free online."
   },
-  "sectionsOrder": ["howToUse", "promptExamples", "modelIntro", "features", "intro", "performanceMetrics", "scenes", "rating", "faq"],
+  "sectionsOrder": [
+    "howToUse",
+    "promptExamples",
+    "modelIntro",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "scenes",
+    "rating",
+    "faq"
+  ],
   "modelIntro": {
     "title": "Why Nano Banana 2 Stands Out for AI Image Creation",
     "modelName": "Nano Banana 2",
@@ -100,12 +110,30 @@
   "performanceMetrics": {
     "title": "Nano Banana 2 Technical Specifications",
     "metrics": [
-      { "label": "Input Types", "value": "Text, Image" },
-      { "label": "Output Resolution", "value": "512px to 4K widescreen" },
-      { "label": "Subject Consistency", "value": "Up to 5 characters, 14 objects" },
-      { "label": "Text Rendering", "value": "Precision text, translation, localization" },
-      { "label": "Speed", "value": "Gemini Flash speed with Pro quality" },
-      { "label": "Use Cases", "value": "Marketing, infographics, storyboards, social content" }
+      {
+        "label": "Input Types",
+        "value": "Text, Image"
+      },
+      {
+        "label": "Output Resolution",
+        "value": "512px to 4K widescreen"
+      },
+      {
+        "label": "Subject Consistency",
+        "value": "Up to 5 characters, 14 objects"
+      },
+      {
+        "label": "Text Rendering",
+        "value": "Precision text, translation, localization"
+      },
+      {
+        "label": "Speed",
+        "value": "Gemini Flash speed with Pro quality"
+      },
+      {
+        "label": "Use Cases",
+        "value": "Marketing, infographics, storyboards, social content"
+      }
     ]
   },
   "howToUse": {

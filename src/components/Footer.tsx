@@ -5,10 +5,14 @@ import { useEffect, useMemo, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { getAllSlugs, getSeoContent } from '@/lib/seo-loader'
 import {
+  PREFERRED_LOCALE_STORAGE_KEY,
   SITE_LOCALES,
   getAlternateLanguageUrl,
   getCurrentLocaleFromPath,
+  getPreferredLocalizedUrl,
   getSupportedLocaleCodes,
+  isSiteLocaleCode,
+  resolveLocaleForPath,
   shouldShowLanguageSwitcher,
 } from '@/lib/site-language-switch'
 
@@ -126,6 +130,7 @@ export default function Footer() {
   // The year will be updated on client side after hydration
   const [currentYear, setCurrentYear] = useState(2024)
   const [currentLocale, setCurrentLocale] = useState<string>('en')
+  const [preferredLocale, setPreferredLocale] = useState<string>('en')
   const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false)
   const [translations, setTranslations] = useState(defaultTranslations)
   const [isMounted, setIsMounted] = useState(false)
@@ -149,15 +154,24 @@ export default function Footer() {
     
     const detectedLocale = getCurrentLocaleFromPath(pathname ?? '')
     setCurrentLocale(detectedLocale)
+    const firstSegment = (pathname ?? '').split('/').filter(Boolean)[0] ?? ''
+    const hasExplicitLocale = isSiteLocaleCode(firstSegment)
+    const savedLocale = typeof window !== 'undefined' ? window.localStorage.getItem(PREFERRED_LOCALE_STORAGE_KEY) : null
+    const nextPreferred = hasExplicitLocale ? detectedLocale : (savedLocale || detectedLocale)
+    setPreferredLocale(nextPreferred)
+    if (hasExplicitLocale && typeof window !== 'undefined') {
+      window.localStorage.setItem(PREFERRED_LOCALE_STORAGE_KEY, detectedLocale)
+    }
     
     // Load translations
-    loadTranslations(detectedLocale).then(setTranslations)
+    const effectiveLocale = resolveLocaleForPath(pathname || '/', nextPreferred)
+    loadTranslations(effectiveLocale).then(setTranslations)
   }, [pathname])
 
   // 加载页脚菜单数据
   useEffect(() => {
     const loadFooterMenuData = async () => {
-      const locale = currentLocale
+      const locale = resolveLocaleForPath(pathname || '/', preferredLocale)
       
       // 生成带语言前缀的链接的辅助函数
       const getHref = (href: string): string => {
@@ -330,7 +344,7 @@ export default function Footer() {
     if (isMounted) {
       loadFooterMenuData()
     }
-  }, [currentLocale, pathname, isMounted])
+  }, [currentLocale, pathname, isMounted, preferredLocale])
 
   const supportedLocales = useMemo(() => {
     const codes = getSupportedLocaleCodes(pathname ?? null)
@@ -339,17 +353,15 @@ export default function Footer() {
 
   const showLanguageSwitcher = shouldShowLanguageSwitcher(pathname ?? null)
 
-  const currentLocaleInfo = SITE_LOCALES.find((loc) => loc.code === currentLocale) || SITE_LOCALES[0]
-  const otherLocales = supportedLocales.filter((loc) => loc.code !== currentLocale)
+  const effectiveLocale = resolveLocaleForPath(pathname || '/', preferredLocale)
+  const currentLocaleInfo = SITE_LOCALES.find((loc) => loc.code === effectiveLocale) || SITE_LOCALES[0]
+  const otherLocales = supportedLocales.length === 1
+    ? supportedLocales
+    : supportedLocales.filter((loc) => loc.code !== effectiveLocale)
 
-  // 仅存在于根路径、无 [locale] 版本的工具，始终不添加 locale 前缀
-  const LOCALE_LESS_PATHS = ['/ai-tools', '/watermark-remover', '/photo-restoration', '/ai-couple-photo-maker', '/model/seedance-2', '/model/kling-3', '/model/nano-banana-pro', '/model/nano-banana-2']
   const getLocalizedHref = (href: string): string => {
     if (href.startsWith('http')) return href
-    if (LOCALE_LESS_PATHS.some(p => href === p || href.startsWith(p + '/'))) return href
-    if (currentLocale === 'en') return href
-    if (href.startsWith(`/${currentLocale}`)) return href
-    return `/${currentLocale}${href}`
+    return getPreferredLocalizedUrl(href, preferredLocale)
   }
 
   return (
@@ -557,10 +569,10 @@ export default function Footer() {
         {/* 基础导航链接 */}
         <nav className="mb-8" aria-label="Footer navigation">
           <ul className="flex flex-wrap justify-center items-center gap-3 md:gap-4 text-sm">
-            <li><Link href={currentLocale === 'en' ? '/' : `/${currentLocale}`} className="text-slate-300 hover:text-indigo-400 transition-colors font-medium">{translations.home}</Link></li>
-            <li><Link href={currentLocale === 'en' ? '/about' : `/${currentLocale}/about`} className="text-slate-300 hover:text-indigo-400 transition-colors font-medium">{translations.aboutUs}</Link></li>
-            <li><Link href={currentLocale === 'en' ? '/privacy' : `/${currentLocale}/privacy`} className="text-slate-300 hover:text-indigo-400 transition-colors font-medium">{translations.privacyPolicy}</Link></li>
-            <li><Link href={currentLocale === 'en' ? '/terms' : `/${currentLocale}/terms`} className="text-slate-300 hover:text-indigo-400 transition-colors font-medium">{translations.termsOfService}</Link></li>
+            <li><Link href={getLocalizedHref('/')} className="text-slate-300 hover:text-indigo-400 transition-colors font-medium">{translations.home}</Link></li>
+            <li><Link href={getLocalizedHref('/about')} className="text-slate-300 hover:text-indigo-400 transition-colors font-medium">{translations.aboutUs}</Link></li>
+            <li><Link href={getLocalizedHref('/privacy')} className="text-slate-300 hover:text-indigo-400 transition-colors font-medium">{translations.privacyPolicy}</Link></li>
+            <li><Link href={getLocalizedHref('/terms')} className="text-slate-300 hover:text-indigo-400 transition-colors font-medium">{translations.termsOfService}</Link></li>
             <li><a href="mailto:support@toolaze.com" className="text-slate-300 hover:text-indigo-400 transition-colors font-medium">{translations.contact}</a></li>
             
             {/* Language Switcher - 只在支持多语言的页面显示，且只显示该页面实际支持的语言 */}
@@ -598,7 +610,13 @@ export default function Footer() {
                         <Link
                           key={locale.code}
                           href={getAlternateLanguageUrl(pathname || '/', locale.code)}
-                          onClick={() => setIsLanguageMenuOpen(false)}
+                          onClick={() => {
+                            if (typeof window !== 'undefined') {
+                              window.localStorage.setItem(PREFERRED_LOCALE_STORAGE_KEY, locale.code)
+                            }
+                            setPreferredLocale(locale.code)
+                            setIsLanguageMenuOpen(false)
+                          }}
                           className="flex items-center gap-3 px-4 py-2 text-sm text-slate-300 hover:bg-indigo-600 hover:text-white transition-all group"
                         >
                           <span className="text-base leading-none flag-emoji">{locale.flag}</span>

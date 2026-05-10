@@ -1,0 +1,176 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Restauration de Photos Gratuite en Ligne - Restaurez de Vieilles Photos avec l'IA | Toolaze",
+    "description": "Restaurez de vieilles photos gratuitement en ligne avec l'IA. Supprimez les rayures, la poussière et le bruit, améliorez la clarté et colorisez les vieilles photos en un clic. Aucune inscription requise."
+  },
+  "topComponent": "photo-restoration",
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "<span class=\"text-gradient\">Restauration de Photos</span> Gratuite en Ligne",
+    "desc": "Restaurez de vieilles photos en un clic grâce à l'IA. Supprimez les rayures, la poussière et le bruit, améliorez les détails et appliquez une restauration naturelle des couleurs automatiquement."
+  },
+  "howToUse": {
+    "title": "Comment Restaurer de Vieilles Photos en Ligne",
+    "steps": [
+      {
+        "title": "Téléchargez Votre Photo",
+        "desc": "Téléchargez une ancienne photo au format JPG, JPEG ou PNG (jusqu'à 30 Mo)."
+      },
+      {
+        "title": "Générez le Résultat Restauré",
+        "desc": "Cliquez sur Générer pour lancer la restauration avec colorisation intégrée pour un résultat de photo ancienne propre et vif."
+      },
+      {
+        "title": "Générez et Téléchargez",
+        "desc": "Cliquez sur Générer pour restaurer votre photo, prévisualisez le résultat et téléchargez-la instantanément."
+      }
+    ]
+  },
+  "features": {
+    "title": "Fonctionnalités Clés de Restauration de Photos",
+    "items": [
+      {
+        "icon": "🧼",
+        "iconType": "quality",
+        "title": "Nettoyage des Rayures et de la Poussière",
+        "desc": "Supprime automatiquement les dommages courants des vieilles photos comme les rayures, les taches de poussière et le bruit."
+      },
+      {
+        "icon": "🔍",
+        "iconType": "quality",
+        "title": "Boost de Clarté et de Détails",
+        "desc": "Améliore la netteté et les détails visuels pour que les visages, les textures et les bords paraissent plus nets."
+      },
+      {
+        "icon": "🎨",
+        "iconType": "ai",
+        "title": "Restauration des Couleurs Intégrée",
+        "desc": "La restauration et la colorisation s'exécutent ensemble avec un flux de travail unique pour une qualité de sortie constante."
+      },
+      {
+        "icon": "🖼️",
+        "iconType": "format",
+        "title": "Flux de Travail pour Image Unique",
+        "desc": "Flux de travail axé sur une seule photo pour une restauration rapide avec des commandes simples."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Expérience Navigateur Rapide",
+        "desc": "Téléchargez, restaurez et téléchargez dans un flux fluide via navigateur, sans inscription requise."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Traitement Sécurisé",
+        "desc": "Les images sont traitées de manière sécurisée et ne sont pas conservées comme fichiers de compte permanents."
+      }
+    ]
+  },
+  "intro": {
+    "title": "Pourquoi Utiliser Toolaze Photo Restoration",
+    "content": [
+      {
+        "title": "Rendez vos Vieilles Photos à Nouveau Utilisables",
+        "text": "Les vieilles photos de famille présentent souvent des rayures, de la poussière, une décoloration et du flou qui les rendent difficiles à partager ou à imprimer. Toolaze Photo Restoration vous aide à récupérer rapidement la qualité visuelle pour que vos souvenirs soient plus nets et plus faciles à préserver."
+      },
+      {
+        "title": "Flux de Travail en Un Clic pour des Résultats Plus Rapides",
+        "text": "La page utilise un flux fixe de restauration plus colorisation, vous n'avez donc pas besoin de choisir les paramètres. Téléchargez une image, cliquez sur Générer et obtenez rapidement un résultat net et amélioré."
+      },
+      {
+        "title": "Conçu pour les Utilisateurs Quotidiens, Pas pour les Éditeurs",
+        "text": "Vous n'avez pas besoin de masquage manuel, d'outils pinceau ou de compétences avancées en édition. Téléchargez une image, choisissez votre mode, cliquez sur générer et téléchargez. C'est conçu pour un usage personnel rapide, les archives familiales et le partage social."
+      }
+    ]
+  },
+  "performanceMetrics": {
+    "title": "Paramètres de Restauration de Photos",
+    "metrics": [
+      {
+        "label": "Modèle",
+        "value": "GPT Image 2"
+      },
+      {
+        "label": "Type d'Entrée",
+        "value": "Image unique"
+      },
+      {
+        "label": "Format de l'Image",
+        "value": "Auto"
+      },
+      {
+        "label": "Résolution",
+        "value": "1K"
+      },
+      {
+        "label": "Sortie par Tâche",
+        "value": "1 image"
+      },
+      {
+        "label": "Colorisation",
+        "value": "Intégrée (toujours active)"
+      }
+    ]
+  },
+  "scenesTitle": "Cas d'Utilisation",
+  "scenes": [
+    {
+      "icon": "👪",
+      "title": "Récupération de Souvenirs de Famille",
+      "desc": "Nettoyez les vieilles photos de famille avant de les imprimer, de les encadrer ou de les partager dans des groupes familiaux."
+    },
+    {
+      "icon": "📚",
+      "title": "Nettoyage d'Archives et Historique",
+      "desc": "Améliorez la lisibilité des vieilles photos numérisées pour des projets d'archives ou des présentations scolaires."
+    },
+    {
+      "icon": "📱",
+      "title": "Publications Rétros sur les Réseaux Sociaux",
+      "desc": "Restaurez d'anciens portraits et moments pour qu'ils soient plus beaux sur les flux sociaux modernes."
+    }
+  ],
+  "rating": {
+    "title": "Approuvé par les Créateurs et les Familles",
+    "rating": "4.9/5 PAR 10K CRÉATEURS",
+    "text": "Toolaze aide les utilisateurs à restaurer de vieilles photos rapidement avec des commandes simples et des résultats propres. Aucune inscription requise."
+  },
+  "faqTitle": "Foire Aux Questions",
+  "faq": [
+    {
+      "q": "Cet outil de restauration de photos est-il gratuit ?",
+      "a": "Oui. Vous pouvez restaurer des photos gratuitement en ligne sur Toolaze sans inscription requise."
+    },
+    {
+      "q": "Quels formats de fichiers sont pris en charge ?",
+      "a": "Vous pouvez télécharger des images JPG, JPEG et PNG jusqu'à 30 Mo."
+    },
+    {
+      "q": "Puis-je choisir de coloriser ou non les vieilles photos ?",
+      "a": "Non. Cette page utilise par défaut un flux fixe de restauration plus colorisation pour garantir la cohérence des résultats."
+    },
+    {
+      "q": "Prend-il en charge la restauration de photos par lot ?",
+      "a": "Non. Cette page prend en charge la restauration d'une seule image par exécution."
+    },
+    {
+      "q": "Puis-je modifier les prompts manuellement ?",
+      "a": "Non. Le texte du prompt est intégré pour maintenir un flux de travail simple et cohérent."
+    },
+    {
+      "q": "Dois-je installer un logiciel ?",
+      "a": "Non. Tout fonctionne dans votre navigateur, vous pouvez donc télécharger, restaurer et récupérer vos photos en ligne."
+    }
+  ],
+  "moreTools": "Outils Gratuits Connexes"
+}

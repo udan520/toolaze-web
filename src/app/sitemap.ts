@@ -92,6 +92,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })
   })
 
+  // 4b. 多语言 model L2（与 /[locale]/model/[model] 一致；英语 canonical 仍为 /model/...）
+  const LOCALIZED_MODEL_SLUGS = ['nano-banana-2', 'gpt-image-2', 'gpt-image-2-0']
+  LOCALIZED_MODEL_SLUGS.forEach((model) => {
+    SUPPORTED_LOCALES.forEach((locale) => {
+      if (locale === 'en') return
+      entries.push({
+        url: `${baseUrl}/${locale}/model/${model}`,
+        lastModified: today,
+        changeFrequency: 'weekly',
+        priority: 0.85,
+      })
+    })
+  })
+
   // 5. All Tools 页面（所有语言版本）
   TOOL_PAGES.forEach((tool) => {
     SUPPORTED_LOCALES.forEach((locale) => {

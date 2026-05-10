@@ -128,6 +128,7 @@
           <button id="generate-seo-btn" class="rounded-lg border border-purple-300 px-4 py-2 text-sm font-medium text-purple-600 hover:bg-purple-50">生成 SEO</button>
           <button type="button" id="translate-seo-btn" class="rounded-lg border border-teal-300 px-4 py-2 text-sm font-medium text-teal-700 hover:bg-teal-50" title="基于英文 JSON 调用 KIE Gemini 2.5 Flash 写入各语言">翻译多语言</button>
           <button type="button" id="sync-home-en-btn" class="hidden rounded-lg border border-amber-300 px-4 py-2 text-sm font-medium text-amber-700 hover:bg-amber-50" title="将英文首页 common.home 全量同步到所有语言，不做翻译">同步英文首页到全部语言</button>
+          <button id="save-all-locales-btn" class="rounded-lg border border-indigo-300 px-4 py-2 text-sm font-medium text-indigo-600 hover:bg-indigo-50" title="按各语言当前内容批量保存到文件">一键保存全部语言</button>
           <a id="preview-link" href="#" target="_blank" class="rounded-lg border border-slate-200 px-4 py-2 text-sm text-slate-600 hover:bg-slate-50">预览</a>
           <button id="toggle-view" class="rounded-lg border border-slate-200 px-4 py-2 text-sm text-slate-600 hover:bg-slate-50">切换 JSON</button>
           <button id="save-btn" class="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700">保存</button>
@@ -2512,14 +2513,19 @@
       }
     }
 
-    async function doSave(rebuild) {
+    async function doSave(rebuild, localeOverride = null) {
       const payload = state.view === 'json'
         ? JSON.parse(document.getElementById('json-textarea').value)
         : state.data
+      return doSaveWithPayload(payload, rebuild, localeOverride)
+    }
+
+    async function doSaveWithPayload(payload, rebuild, localeOverride = null) {
+      const targetLocale = localeOverride || state.locale || 'en'
       const res = await api('/api/seo', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ tool: state.tool, slug: state.slug || null, locale: state.locale || 'en', data: payload, rebuild: !!rebuild })
+        body: JSON.stringify({ tool: state.tool, slug: state.slug || null, locale: targetLocale, data: payload, rebuild: !!rebuild })
       })
       state.data = payload
       document.getElementById('json-textarea').value = JSON.stringify(payload, null, 2)
@@ -2527,11 +2533,71 @@
       return res
     }
 
+    async function getEditableLocalesForBulkSave() {
+      if (state.tool === 'homepage' && !state.slug) return [...SUPPORTED_SEO_LOCALES]
+      try {
+        const res = await api(`/api/seo/locales?tool=${encodeURIComponent(state.tool)}&slug=${encodeURIComponent(state.slug || '')}`)
+        const existing = Array.isArray(res?.locales) ? res.locales : []
+        const merged = [...new Set([...(existing || []), state.locale || 'en'])]
+        return merged.filter((loc) => SUPPORTED_SEO_LOCALES.includes(loc))
+      } catch {
+        return [state.locale || 'en']
+      }
+    }
+
     document.getElementById('save-btn').onclick = async () => {
       try {
         await doSave(false)
         const lab = LOCALE_TAB_LABELS[state.locale] || state.locale
         showMsg(`保存成功（${lab}）。开发时运行 npm run dev 并刷新页面可实时查看。`)
+      } catch (e) {
+        showMsg(e.message, 'error')
+      }
+    }
+
+    document.getElementById('save-all-locales-btn').onclick = async () => {
+      try {
+        const locales = await getEditableLocalesForBulkSave()
+        if (locales.length === 0) {
+          showMsg('未检测到可保存语言。', 'error')
+          return
+        }
+        const nonCurrent = locales.filter((loc) => loc !== (state.locale || 'en'))
+        if (nonCurrent.length === 0) {
+          await doSave(false)
+          const lab = LOCALE_TAB_LABELS[state.locale] || state.locale
+          showMsg(`仅检测到 ${lab}，已完成保存。`)
+          return
+        }
+
+        const localeLabels = locales.map((loc) => LOCALE_TAB_LABELS[loc] || loc).join('、')
+        const currentLabel = LOCALE_TAB_LABELS[state.locale] || state.locale
+        const ok = confirm(
+          `将按“各语言当前内容”批量保存这些语言：${localeLabels}。\n\n当前编辑器中的 ${currentLabel} 未保存改动会先保存，然后再保存其他语言。确定继续？`
+        )
+        if (!ok) return
+
+        const btn = document.getElementById('save-all-locales-btn')
+        const oldText = btn.textContent
+        btn.disabled = true
+        btn.textContent = '批量保存中...'
+        try {
+          const currentPayload =
+            state.view === 'json'
+              ? JSON.parse(document.getElementById('json-textarea').value)
+              : state.data
+          await doSaveWithPayload(currentPayload, false, state.locale || 'en')
+          for (const loc of nonCurrent) {
+            const locData = await api(
+              `/api/seo?tool=${encodeURIComponent(state.tool)}&slug=${encodeURIComponent(state.slug || '')}&locale=${encodeURIComponent(loc)}`
+            )
+            await doSaveWithPayload(locData, false, loc)
+          }
+          showMsg(`批量保存完成：共 ${locales.length} 个语言。`)
+        } finally {
+          btn.disabled = false
+          btn.textContent = oldText || '一键保存全部语言'
+        }
       } catch (e) {
         showMsg(e.message, 'error')
       }
