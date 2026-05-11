@@ -30,6 +30,7 @@ export const TOOL_SUPPORTED_LOCALES: Record<string, readonly string[]> = {
   'image-converter': ALL_LOCALE_CODES,
   'font-generator': ['en', 'de', 'ja', 'es', 'fr'],
   'emoji-copy-and-paste': ['en'],
+  'ai-couple-photo-maker': ALL_LOCALE_CODES,
   /** 实际内容在 `/model/seedance-2`（仅英文）；`/seedance-2` 与各 `/[locale]/seedance-2` 为重定向占位 */
   'seedance-2': ['en'],
   /** 实际内容在 `/model/kling-3`（仅英文） */
@@ -47,12 +48,7 @@ const MODEL_SUPPORTED_LOCALES: Record<string, readonly string[]> = {
 }
 
 /** 无 [locale]/... 多语言版本的单一路径工具（仅英文 canonical） */
-const ENGLISH_ONLY_ROOT_TOOLS = new Set([
-  'watermark-remover',
-  'photo-restoration',
-  'ai-couple-photo-maker',
-  'ai-tools',
-])
+const ENGLISH_ONLY_ROOT_TOOLS = new Set(['watermark-remover', 'photo-restoration', 'ai-tools'])
 
 export function parseLocalePath(pathname: string): {
   pathLocale: string
