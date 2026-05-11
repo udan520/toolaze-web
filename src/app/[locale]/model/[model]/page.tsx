@@ -33,14 +33,12 @@ export const dynamicParams = false
 
 export function generateStaticParams(): Array<{ locale: string; model: string }> {
   const params: Array<{ locale: string; model: string }> = []
-
-  for (const model of Object.keys(MODEL_SUPPORTED_LOCALES)) {
-    const locales = MODEL_SUPPORTED_LOCALES[model] || ['en']
-    for (const locale of locales) {
+  /** 全 locale × 全 model：不支持语种的组合在运行时 redirect 到英文 canonical，避免静态导出 404 */
+  for (const model of Object.keys(MODEL_TOOL_MAP)) {
+    for (const locale of SUPPORTED_LOCALES) {
       params.push({ locale, model })
     }
   }
-
   return params
 }
 
@@ -61,11 +59,7 @@ export default async function LocalizedModelPage({ params }: PageProps) {
   }
 
   const supportedLocales = MODEL_SUPPORTED_LOCALES[model] || ['en']
-  if (!supportedLocales.includes(locale)) {
-    redirect(`/model/${model}`)
-  }
-
-  if (locale === 'en') {
+  if (locale === 'en' || !supportedLocales.includes(locale)) {
     redirect(`/model/${model}`)
   }
 
