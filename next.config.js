@@ -1,7 +1,14 @@
 const isProdBuild = process.env.NODE_ENV === 'production';
 
+/** 局域网用手机/另一台电脑访问 `next dev` 时，允许从该 Origin 拉取 `/_next/*`，避免样式/脚本加载失败（可用 NEXT_DEV_ALLOWED_ORIGINS 覆盖，逗号分隔 hostname） */
+const devAllowedOrigins = (process.env.NEXT_DEV_ALLOWED_ORIGINS || '192.168.101.9,192.168.101.3')
+  .split(',')
+  .map((s) => s.trim())
+  .filter(Boolean)
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  ...(!isProdBuild ? { allowedDevOrigins: devAllowedOrigins } : {}),
   // 强制启用静态导出（Cloudflare Pages 需要）
   // Cloudflare Pages 使用静态文件托管，必须启用静态导出
   // 仅在生产构建启用，避免本地 dev 模式下样式/静态资源加载异常
