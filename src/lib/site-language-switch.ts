@@ -68,9 +68,9 @@ export function parseLocalePath(pathname: string): {
 }
 
 /**
- * 当前落地页实际支持的语种（语言下拉里只应出现这些；与 SEO 路由一致）。
+ * 当前落地页**内容/路由**实际支持的语种（用于判断是否可切到该语言、以及无译文时回退英语）。
  */
-export function getSupportedLocaleCodes(pathname: string | null): string[] {
+export function getContentSupportedLocaleCodes(pathname: string | null): string[] {
   if (!pathname || pathname === '/') {
     return [...ALL_LOCALE_CODES]
   }
@@ -94,7 +94,6 @@ export function getSupportedLocaleCodes(pathname: string | null): string[] {
     return [...(MODEL_SUPPORTED_LOCALES[modelSlug] || ['en'])]
   }
 
-  /** 仅有根路径英文版、无 `/[locale]/...` 对应路由的工具：只支持英文。 */
   if (ENGLISH_ONLY_ROOT_TOOLS.has(root)) {
     return ['en']
   }
@@ -108,8 +107,15 @@ export function getSupportedLocaleCodes(pathname: string | null): string[] {
 }
 
 /**
+ * 语言下拉里展示的语种：与首页一致，**始终为全站支持语言**；是否真有译文由 `getAlternateLanguageUrl` 在点击时回退到英文 canonical。
+ */
+export function getSupportedLocaleCodes(pathname: string | null): string[] {
+  void pathname
+  return [...ALL_LOCALE_CODES]
+}
+
+/**
  * 是否应在导航/页脚显示语言入口。
- * 需求：所有页面都显示语言切换器；具体可选项由 getSupportedLocaleCodes(pathname) 决定。
  */
 export function shouldShowLanguageSwitcher(pathname: string | null): boolean {
   void pathname
@@ -121,8 +127,16 @@ export const PREFERRED_LOCALE_STORAGE_KEY = 'toolaze.preferredLocale'
 
 /** 按目标页面支持语言解析「应使用语言」：优先用户语言，不支持则回退英语 */
 export function resolveLocaleForPath(pathname: string, preferredLocale: string): string {
-  const supported = getSupportedLocaleCodes(pathname)
+  const supported = getContentSupportedLocaleCodes(pathname)
   return supported.includes(preferredLocale) ? preferredLocale : 'en'
+}
+
+/** 去掉 URL 中的语言前缀，得到无前缀的英文 canonical 路径（`/` 表示首页） */
+export function toEnglishCanonicalPath(pathname: string): string {
+  const normalized = pathname.startsWith('/') ? pathname : `/${pathname}`
+  const { segments } = parseLocalePath(normalized)
+  if (segments.length === 0) return '/'
+  return `/${segments.join('/')}`
 }
 
 /** 结合目标页面支持语言与用户偏好，生成最终跳转 URL */
@@ -139,7 +153,8 @@ export function getCurrentLocaleFromPath(pathname: string | null): SiteLocaleCod
 }
 
 /**
- * 切换语言后的路径（与 Footer 历史逻辑对齐）。
+ * 切换语言后的路径。
+ * 若当前落地页**没有** `targetLocale` 版本，则返回该页的**英文 canonical**（无前缀 `/[path]`）。
  */
 export function getAlternateLanguageUrl(pathname: string, targetLocale: string): string {
   if (!pathname || pathname === '/') {
@@ -147,13 +162,9 @@ export function getAlternateLanguageUrl(pathname: string, targetLocale: string):
   }
 
   const normalizedPath = pathname.startsWith('/') ? pathname : `/${pathname}`
-  const { segments } = parseLocalePath(normalizedPath)
-  const englishOnlyRoot = segments[0]
-  if (englishOnlyRoot && ENGLISH_ONLY_ROOT_TOOLS.has(englishOnlyRoot)) {
-    if (targetLocale === 'en') {
-      return segments.length ? `/${segments.join('/')}` : '/'
-    }
-    return `/${targetLocale}`
+
+  if (!getContentSupportedLocaleCodes(normalizedPath).includes(targetLocale)) {
+    return toEnglishCanonicalPath(normalizedPath)
   }
 
   const pathParts = pathname.split('/').filter(Boolean)

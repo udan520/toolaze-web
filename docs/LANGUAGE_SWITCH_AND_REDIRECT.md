@@ -4,29 +4,23 @@
 
 ## 1. 何时显示语言入口（导航栏 + 页脚）
 
-- **始终显示**语言入口（按钮/下拉）；**下拉里只列出**当前落地页 **`getSupportedLocaleCodes(pathname)`** 返回的语种（即该页实际有路由/有译文的语言）。
-- **仅英文 canonical 的工具页**（`ENGLISH_ONLY_ROOT_TOOLS`：`watermark-remover`、`photo-restoration`、`ai-couple-photo-maker`、`ai-tools`）：下拉中**只有 `en`**；无 `/de/...` 等同路径的其它语言版本。
-- **首页、About、Privacy、Terms**（各 locale 均有对应路由）→ 列出 **全部站点语种**。
-- **`/model/[model]`**：按 **`MODEL_SUPPORTED_LOCALES`**（如 Nano Banana 2 / GPT Image 2 多语；Nano Banana Pro / Seedance / Kling 仅 `en`）。
+- **始终显示**语言入口（按钮/下拉）。
+- **下拉里列出的语种**：与首页一致，**始终为全站支持语言**（`getSupportedLocaleCodes` → 与 `SITE_LOCALES` / `ALL_LOCALE_CODES` 一致）。
+- **点击某一语种后的 URL**：由 **`getAlternateLanguageUrl(pathname, targetLocale)`** 决定。若当前落地页**没有**该语种的译文/路由（见 `getContentSupportedLocaleCodes`），则跳转到该页的**英文 canonical**（无前缀路径，`toEnglishCanonicalPath`），而不是保留错误 locale。
+
+## 2. 内容实际支持哪些语言（用于回退判断）
+
+- **`getContentSupportedLocaleCodes(pathname)`** 与 `TOOL_SUPPORTED_LOCALES`、`MODEL_SUPPORTED_LOCALES`、`ENGLISH_ONLY_ROOT_TOOLS` 及静态页规则一致；**不用于裁剪下拉**，只用于：
+  - `getAlternateLanguageUrl` 是否在目标语种有该页；
+  - `resolveLocaleForPath` / `getPreferredLocalizedUrl`（站内链在偏好语种无该页时仍走英文 canonical）。
 
 新增或调整工具的语种覆盖时：同步更新 **`TOOL_SUPPORTED_LOCALES`**、**`MODEL_SUPPORTED_LOCALES`**、以及必要时 **`ENGLISH_ONLY_ROOT_TOOLS`**。
 
-## 2. 下拉中列出哪些语言
+## 3. 不支持当前语种时的跳转（服务端）
 
-- **必须与** `getSupportedLocaleCodes(pathname)` 一致（由上述表与路径规则推导）。
-- **不得**为尚无该落地页译文的语种生成可点选项；用户通过站内链进入不支持语种的页面时，由 **`resolveLocaleForPath`** 与 **`[locale]/[tool]/[slug]` 等页面的 `redirect`** 兜底到英语 canonical（见下节）。
-
-## 3. 不支持当前语种时的跳转（例如韩语）
-
-用户在落地页 A（支持韩语）切换到韩语后，再进入落地页 B（**该页未提供韩语**）：
-
-- **客户端**：`Navigation` / `Footer` 使用 **`getPreferredLocalizedUrl`**，按目标路径的支持列表将偏好语种**回落到 `en`** 再生成链接。
-- **`[locale]/[tool]/[slug]`**：服务端若 **`getSeoContent(..., locale)` 为空** 且 **`locale !== 'en'`**，则 **`redirect('/${tool}/${slug}')`**（英语 canonical，无前缀）；**seedance-2 L3** 另按 **`/model/seedance-2/[slug]`** 规则。
-- **L2**（如 `[locale]/image-compressor`）：若 **`getL2SeoContent` 为空则 `redirect`** 到无前缀英语页，保持现有行为。
-
-这样避免出现空白或 404，并统一到英文内容。
+用户在带 locale 的 URL 上但 **SEO JSON 缺失** 时，仍由 **`[locale]/[tool]/[slug]`** 等页面的 **`redirect`** 到英文 canonical（现有行为不变）。见各 `page.tsx` 实现。
 
 ## 4. 修改清单（自检）
 
-- [ ] `TOOL_SUPPORTED_LOCALES` / `MODEL_SUPPORTED_LOCALES` / `ENGLISH_ONLY_ROOT_TOOLS` 已与 `src/app` 路由与 `src/data` 实际目录一致  
+- [ ] `TOOL_SUPPORTED_LOCALES` / `MODEL_SUPPORTED_LOCALES` / `ENGLISH_ONLY_ROOT_TOOLS` 已与 `src/app` 路由与 `src/data` 一致  
 - [ ] `npm run build` 通过  

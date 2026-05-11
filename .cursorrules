@@ -37,7 +37,7 @@ Only write about features that are explicitly listed as supported in the relevan
 - **Menu Items** (right-aligned): 
   - Quick Tools dropdown (hover to show Image Compression link)
   - About Us link
-  - Language switcher (always shown; options = **`getSupportedLocaleCodes(pathname)`**) — **immediately to the right of About Us** (desktop dropdown; mobile: Language block below About in the panel)
+  - Language switcher (always shown; dropdown lists **all site locales** like the homepage; **`getAlternateLanguageUrl`** falls back to English canonical when that page has no target locale) — **immediately to the right of About Us** (desktop dropdown; mobile: Language block below About in the panel)
 - **Logo SVG**: 32x32px, white background, rounded-lg, shadow-md shadow-indigo-100
 - **Logo Text**: `text-3xl font-extrabold text-indigo-600 tracking-tighter` with `hover:opacity-80 transition-opacity`
 - **Menu Style**: `hidden md:flex gap-8 text-sm font-bold text-slate-500 items-center`
@@ -57,8 +57,8 @@ See 'docs/SEO_MASTER_LAYOUT.md' section 3 for the exact breadcrumb structure.
 
 **LANGUAGE SWITCHER (NAV + FOOTER)**: Navigation and Footer MUST share one source of truth: **`src/lib/site-language-switch.ts`**. Full rules: **`docs/LANGUAGE_SWITCH_AND_REDIRECT.md`**.
 - **When to show**: **`shouldShowLanguageSwitcher(pathname)`** is always true; the switcher is always visible.
-- **Which languages to list**: **`getSupportedLocaleCodes(pathname)`** only (each landing page lists locales that actually have that page). Map codes to `SITE_LOCALES`. Do not duplicate ad-hoc lists in Footer only. Per-tool = `TOOL_SUPPORTED_LOCALES`; **`/model/[model]`** = `MODEL_SUPPORTED_LOCALES`; **`ENGLISH_ONLY_ROOT_TOOLS`** = `['en']` only (no `/[locale]/...` for that tool).
-- **Navigation**: Same visibility rules as footer; desktop dropdown + mobile panel links use **`getAlternateLanguageUrl(pathname, targetLocale)`** (and **`getPreferredLocalizedUrl`** for same-origin nav links that must respect page support + stored preference).
+- **Which languages to list**: Always **all** `SITE_LOCALES` (via **`getSupportedLocaleCodes`**). **Per-page content support** is **`getContentSupportedLocaleCodes(pathname)`** — used so **`getAlternateLanguageUrl`** redirects to **English canonical** when the target locale has no that page. **`getPreferredLocalizedUrl`** keeps internal nav aligned with preference + content support.
+- **Navigation**: Same visibility rules as footer; desktop dropdown + mobile panel links use **`getAlternateLanguageUrl(pathname, targetLocale)`**.
 
 **MISSING LOCALE REDIRECT**: If the user is on a localized URL (e.g. `/ko/...`) but **there is no SEO JSON for that locale** for that tool/slug, **redirect to the English canonical URL** (`/[tool]/[slug]` without locale prefix; seedance-2 L3 uses `/model/seedance-2/[slug]`). Implemented in **`src/app/[locale]/[tool]/[slug]/page.tsx`** (and L2 pages that already redirect when `getL2SeoContent` is missing). See **`docs/LANGUAGE_SWITCH_AND_REDIRECT.md`**.
 
