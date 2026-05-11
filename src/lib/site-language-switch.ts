@@ -30,7 +30,10 @@ export const TOOL_SUPPORTED_LOCALES: Record<string, readonly string[]> = {
   'image-converter': ALL_LOCALE_CODES,
   'font-generator': ['en', 'de', 'ja', 'es', 'fr'],
   'emoji-copy-and-paste': ['en'],
-  'seedance-2': ALL_LOCALE_CODES,
+  /** 实际内容在 `/model/seedance-2`（仅英文）；`/seedance-2` 与各 `/[locale]/seedance-2` 为重定向占位 */
+  'seedance-2': ['en'],
+  /** 实际内容在 `/model/kling-3`（仅英文） */
+  'kling-3': ['en'],
 }
 
 /** `/model/*` 下各模型页面的实际语言支持 */
@@ -65,7 +68,7 @@ export function parseLocalePath(pathname: string): {
 }
 
 /**
- * 当前 URL 下语言切换器应提供的语种代码（若只有一种语言则不展示切换器）。
+ * 当前落地页实际支持的语种（语言下拉里只应出现这些；与 SEO 路由一致）。
  */
 export function getSupportedLocaleCodes(pathname: string | null): string[] {
   if (!pathname || pathname === '/') {
