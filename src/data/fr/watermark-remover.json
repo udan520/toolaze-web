@@ -1,0 +1,175 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Suppresseur de filigrane gratuit - Supprimer le filigrane des images avec l'IA | Toolaze",
+    "description": "Supprimez gratuitement le filigrane d'une image en ligne. Effacez instantanément les filigranes des photos avec l'IA. Prise en charge JPG, PNG, WebP. Aucune inscription requise."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "modelIntro",
+    "features",
+    "intro",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "modelIntro": {
+    "title": "Comment la suppression de filigrane par IA diffère de l'édition manuelle",
+    "modelName": "Suppresseur de filigrane",
+    "modelType": "Outil d'image IA",
+    "description": [
+      "Les outils traditionnels comme le tampon de clonage ou le remplissage sensible au contenu vous obligent à sélectionner manuellement la zone du filigrane. Si le filigrane chevauche un visage, un produit ou un détail important, vous risquez de laisser des taches ou des bavures visibles. L'incrustation par IA fonctionne différemment : elle analyse les pixels environnants et reconstruit l'apparence de l'image sans la superposition, de sorte que le résultat se fond naturellement au lieu de paraître collé.",
+      "Nous utilisons un modèle d'édition d'images IA entraîné sur des tâches d'incrustation. Il gère les logos semi-transparents, le texte solide, les tampons et les signatures. Les meilleurs résultats proviennent de filigranes clairs et distincts ; les filigranes fortement mélangés ou très grands peuvent nécessiter une deuxième passe. La sortie préserve vos dimensions d'origine — pas de recadrage ni de redimensionnement.",
+      "Le traitement s'exécute sur nos serveurs. Les images ne sont pas stockées de manière permanente. Prend en charge JPG, PNG, WebP jusqu'à 30 Mo. Flux de travail à image unique avec un curseur de comparaison pour que vous puissiez vérifier le résultat avant de télécharger."
+    ],
+    "featureCards": [
+      {
+        "title": "Incrustation vs Tampon de clonage",
+        "content": "Le tampon de clonage copie à partir d'une autre zone, laissant souvent des coutures visibles. L'incrustation par IA prédit l'apparence de la région couverte en fonction du contexte, produisant un mélange plus naturel. Pas de sélection de source, pas de brossage."
+      },
+      {
+        "title": "Vérifier avant de télécharger",
+        "content": "Le curseur de comparaison vous permet de vérifier le résultat avant de télécharger. Si ce n'est pas assez propre, réessayez ou utilisez une source de résolution plus élevée. Pas de surprises — vous voyez exactement ce que vous obtenez."
+      },
+      {
+        "title": "Supprimer le filigrane d'une image en ligne gratuitement",
+        "content": "Photos uniques avec logos, texte, tampons ou signatures. JPG, PNG, WebP jusqu'à 30 Mo. L'incrustation par IA gère le reste — pas de sélection manuelle. Téléchargez, comparez, téléchargez. Suppresseur de filigrane gratuit, aucune inscription requise."
+      }
+    ]
+  },
+  "hero": {
+    "h1": "Suppresseur de <span class=\"text-gradient\">filigrane IA</span> gratuit en ligne",
+    "desc": "Supprimez gratuitement le filigrane d'une image en ligne. Effacez instantanément les filigranes des photos avec l'IA. Pas d'inscription, pas d'options — il suffit de télécharger et de cliquer."
+  },
+  "intro": {
+    "title": "Quand la suppression de filigrane a du sens",
+    "content": [
+      {
+        "title": "Pourquoi les filigranes existent — et quand leur suppression est légitime",
+        "text": "Les filigranes protègent le travail des créateurs et marquent les versions d'essai ou d'échantillon. Les sites de stock les utilisent sur les aperçus ; les photographes les ajoutent aux épreuves. La suppression est légitime lorsque vous possédez l'image, avez une licence ou devez nettoyer une photo personnelle (par exemple, une capture d'écran avec une superposition d'interface utilisateur). Il n'est pas approprié de contourner les droits d'auteur sur des images pour lesquelles vous n'avez pas de droits. Toolaze est un outil — la façon dont vous l'utilisez est votre responsabilité."
+      },
+      {
+        "title": "Le problème pratique de la suppression manuelle",
+        "text": "Le tampon de clonage et le remplissage sensible au contenu fonctionnent, mais ils exigent des compétences et du temps. Un filigrane sur un visage ou un logo de produit laisse souvent des artefacts visibles. Les applications payantes peuvent offrir de meilleurs résultats mais ajoutent des coûts et parfois des limites quotidiennes. Nous avons conçu Toolaze pour se situer au milieu : une suppression par IA suffisamment bonne pour la plupart des cas, gratuite et simple. Téléchargez, cliquez, comparez, téléchargez. Pas de calques, pas de pinceaux. Après la suppression, vous pouvez <a href=\"/fr/image-compressor\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">compresser des images</a> pour réduire la taille du fichier ou <a href=\"/fr/image-converter\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">convertir des images</a> dans un format différent — les deux sont gratuits."
+      }
+    ]
+  },
+  "features": {
+    "title": "Ce qui compte vraiment dans un suppresseur de filigrane",
+    "items": [
+      {
+        "icon": "🤖",
+        "iconType": "ai",
+        "title": "Pas de sélection manuelle",
+        "desc": "Les outils manuels échouent lorsque le filigrane chevauche un contenu important — vous laissez des artefacts ou passez des heures à brosser. L'IA déduit ce qui se trouve en dessous et le remplit. Un clic ; pas de dessin."
+      },
+      {
+        "icon": "🔄",
+        "iconType": "compare",
+        "title": "Comparer avant de valider",
+        "desc": "Les résultats varient selon l'image. Un curseur de comparaison vous permet de voir avant/après avant de télécharger. Si le résultat n'est pas assez propre, vous pouvez réessayer avec un recadrage ou une résolution différente au lieu de découvrir le problème plus tard."
+      },
+      {
+        "icon": "📥",
+        "iconType": "download",
+        "title": "Dimensions originales conservées",
+        "desc": "La sortie correspond à votre taille et rapport d'aspect d'entrée. Pas de recadrage ou de redimensionnement automatique. Ce que vous téléchargez est ce que vous obtenez — moins le filigrane."
+      },
+      {
+        "icon": "🖼️",
+        "iconType": "format",
+        "title": "Limites de format et de taille",
+        "desc": "JPG, PNG, WebP jusqu'à 30 Mo. Les grandes images sont compressées avant le traitement pour maintenir une latence raisonnable ; pour une qualité optimale, utilisez des images de moins de 2 Mo ou 1280px sur le côté le plus long."
+      },
+      {
+        "icon": "📱",
+        "iconType": "device",
+        "title": "Uniquement via navigateur",
+        "desc": "Pas d'installation d'application. Fonctionne sur n'importe quel appareil avec un navigateur moderne. Le traitement s'exécute sur nos serveurs, vous avez donc besoin d'une connexion — mais pas de GPU ou de logiciel local."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Pas de compte, pas de limite",
+        "desc": "Nous n'exigeons ni inscription ni paiement. Pas de limite quotidienne. Utilisez-le aussi souvent que nécessaire. Les images sont traitées via API et ne sont pas stockées de manière permanente."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Comment supprimer un filigrane d'une photo",
+    "steps": [
+      {
+        "title": "Télécharger l'image",
+        "desc": "Glissez-déposez ou cliquez pour télécharger une image avec des filigranes. Prend en charge JPG, PNG, WebP jusqu'à 30 Mo."
+      },
+      {
+        "title": "L'IA détecte et supprime",
+        "desc": "Cliquez sur le bouton. Notre IA détecte et supprime automatiquement les filigranes — logos, texte, tampons — en quelques secondes."
+      },
+      {
+        "title": "Télécharger",
+        "desc": "Téléchargez votre image propre. Appuyez longuement sur comparer pour voir avant et après. Pas de filigranes, pas de tracas."
+      }
+    ]
+  },
+  "scenesTitle": "Scénarios réels où cela aide",
+  "scenes": [
+    {
+      "icon": "🏷️",
+      "title": "Photo de stock avec filigrane d'essai",
+      "desc": "Vous avez obtenu une licence pour une image d'un site de stock, mais l'aperçu a toujours un filigrane d'échantillon. Au lieu de la télécharger à nouveau ou de contacter le support, passez-la par le suppresseur. Fonctionne bien lorsque le filigrane est dans un coin ou sur une zone uniforme ; les résultats peuvent varier sur les visages ou les textures fines."
+    },
+    {
+      "icon": "✍️",
+      "title": "Document scanné avec tampon d'approbation",
+      "desc": "Un contrat ou un formulaire scanné a un tampon, une signature ou une superposition de date que vous devez supprimer pour obtenir une copie propre. L'incrustation par IA peut reconstruire la texture du document sous-jacent. Idéal lorsque le tampon est distinct de l'arrière-plan."
+    },
+    {
+      "icon": "🖥️",
+      "title": "Capture d'écran avec interface utilisateur ou logo d'application",
+      "desc": "Vous documentez un flux de travail ou créez un tutoriel. La capture d'écran a un logo, un filigrane ou un élément d'interface utilisateur que vous voulez supprimer. Recadrez d'abord la zone pertinente — les images plus petites se traitent plus rapidement et produisent souvent des résultats plus propres."
+    }
+  ],
+  "rating": {
+    "title": "Approuvé par des milliers de créateurs",
+    "rating": "4.9/5 PAR PLUS DE 10K CRÉATEURS",
+    "text": "Rejoignez des milliers d'utilisateurs qui font confiance à Toolaze pour une suppression de filigrane rapide et gratuite. Supprimez gratuitement le filigrane d'une image en ligne — alimenté par l'IA, aucune inscription requise."
+  },
+  "faqTitle": "Foire aux questions",
+  "faq": [
+    {
+      "q": "Quels formats et tailles d'image sont pris en charge ?",
+      "a": "JPG, JPEG, PNG et WebP. Max 30 Mo par fichier. Pour un traitement plus rapide et souvent de meilleurs résultats, utilisez des images de moins de 2 Mo ou 1280px sur le côté le plus long. Les fichiers plus volumineux sont compressés avant d'être envoyés à l'IA. Pour <a href=\"/fr/image-converter\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">convertir entre les formats</a> avant ou après la suppression, utilisez notre convertisseur d'images gratuit."
+    },
+    {
+      "q": "Pourquoi le résultat semble-t-il parfois imparfait ?",
+      "a": "L'incrustation par IA fonctionne en prédisant ce qui se trouve sous le filigrane. Elle excelle sur les superpositions claires sur des zones uniformes ou texturées. Les filigranes sur les visages, les cheveux ou les détails fins peuvent laisser de légers artefacts car le modèle a moins de contexte. Utilisez la vue de comparaison pour vérifier — si ce n'est pas assez bon, essayez de recadrer la zone du filigrane ou d'utiliser une source de résolution plus élevée."
+    },
+    {
+      "q": "Stockez-vous ou conservez-vous mes images ?",
+      "a": "Les images sont envoyées à notre API pour traitement. Nous ne les stockons pas de manière permanente. Nous vous recommandons de ne pas télécharger de contenu très sensible ; pour une confidentialité maximale, envisagez des outils qui fonctionnent entièrement sur l'appareil (bien que ceux-ci n'offrent généralement pas de suppression par IA)."
+    },
+    {
+      "q": "Puis-je traiter plusieurs images à la fois ?",
+      "a": "Non. Nous prenons en charge le traitement d'une seule image. Téléchargez une image, obtenez le résultat, puis passez à la suivante. Le support par lots pourra être ajouté ultérieurement."
+    },
+    {
+      "q": "Est-il légal de supprimer les filigranes ?",
+      "a": "Cela dépend de vos droits sur l'image. Supprimer un filigrane d'une image protégée par le droit d'auteur que vous ne possédez pas ou n'avez pas sous licence peut enfreindre les droits du créateur. C'est généralement acceptable lorsque vous possédez l'image, avez une licence ou nettoyez une photo personnelle (par exemple, supprimer un horodatage d'appareil photo). Nous fournissons l'outil ; vous êtes responsable de son utilisation légale."
+    },
+    {
+      "q": "Fonctionne-t-il sur les vidéos ou les PDF ?",
+      "a": "Non. Nous ne prenons en charge que les images fixes uniques aux formats JPG, PNG ou WebP. Pour la suppression de filigranes de vidéos ou de PDF, vous auriez besoin d'un outil différent."
+    },
+    {
+      "q": "Puis-je l'utiliser sur mon téléphone ?",
+      "a": "Oui. Il fonctionne dans le navigateur. Aucune application requise. Téléchargez depuis votre galerie, traitez et téléchargez. Les réseaux mobiles peuvent être plus lents pour les fichiers volumineux."
+    }
+  ],
+  "moreTools": "Outils gratuits associés",
+  "trustBar": {
+    "private": "Gratuit",
+    "instantPreview": "Traitement rapide",
+    "noServerLogs": "Aucune inscription requise"
+  }
+}

@@ -5,11 +5,10 @@ import { generateHreflangAlternates } from '@/lib/hreflang'
 import { redirect } from 'next/navigation'
 
 interface PageProps {
-  params: Promise<{ locale: string }>
+  params: Promise<{
+    locale: string
+  }>
 }
-
-export const dynamic = 'force-static'
-export const dynamicParams = false
 
 export async function generateStaticParams() {
   const locales = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
@@ -19,14 +18,16 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const resolvedParams = await params
   const locale = resolvedParams.locale || 'en'
-  const pathWithoutLocale = '/emoji-copy-and-paste'
+  const pathWithoutLocale = '/watermark-remover'
   const hreflang = generateHreflangAlternates(locale, pathWithoutLocale)
 
-  const content = await getL2SeoContent('emoji-copy-and-paste', locale)
+  const content = await getL2SeoContent('watermark-remover', locale)
 
   return {
-    title: content?.metadata?.title || 'Emoji Copy & Paste - Copy Emojis Online Free | Toolaze',
-    description: content?.metadata?.description || 'Copy and paste emojis online for free. Browse by category, search, pick skin tone, and copy instantly. No sign-up required.',
+    title: content?.metadata?.title || 'Free Watermark Remover - Remove Watermark from Images with AI | Toolaze',
+    description:
+      content?.metadata?.description ||
+      'Remove watermark from image online free. Erase watermarks from photos instantly with AI. JPG, PNG, WebP support. No sign-up required.',
     robots: 'index, follow',
     alternates: {
       canonical: hreflang.canonical,
@@ -35,13 +36,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 }
 
-export default async function EmojiCopyAndPasteLocalePage({ params }: PageProps) {
+export default async function WatermarkRemoverLocalePage({ params }: PageProps) {
   const resolvedParams = await params
   const locale = resolvedParams.locale || 'en'
 
-  if (locale !== 'en' && !hasLocaleL2JsonFile('emoji-copy-and-paste', locale)) {
-    redirect('/emoji-copy-and-paste')
+  if (locale !== 'en' && !hasLocaleL2JsonFile('watermark-remover', locale)) {
+    redirect('/watermark-remover')
   }
 
-  return <ToolL2PageContent locale={locale} tool="emoji-copy-and-paste" />
+  return <ToolL2PageContent locale={locale} tool="watermark-remover" />
 }

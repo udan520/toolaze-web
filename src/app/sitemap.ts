@@ -61,13 +61,29 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })
   })
 
-  // 3b. 单语言功能页面（仅英文）
-  entries.push({
-    url: `${baseUrl}/photo-restoration`,
-    lastModified: today,
-    changeFrequency: 'weekly',
-    priority: 0.9,
+  // 3c. Watermark Remover L2（无 all-tools 子页，不放入 TOOL_PAGES）
+  SUPPORTED_LOCALES.forEach((locale) => {
+    const path = locale === 'en' ? '/watermark-remover' : `/${locale}/watermark-remover`
+    entries.push({
+      url: `${baseUrl}${path}`,
+      lastModified: today,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    })
   })
+
+  // 3d. Photo Restoration L2（各语言均有 photo-restoration.json）
+  SUPPORTED_LOCALES.forEach((locale) => {
+    const path = locale === 'en' ? '/photo-restoration' : `/${locale}/photo-restoration`
+    entries.push({
+      url: `${baseUrl}${path}`,
+      lastModified: today,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    })
+  })
+
+  // 3b. 单语言功能页面（仅英文）
   entries.push({
     url: `${baseUrl}/ai-tools`,
     lastModified: today,

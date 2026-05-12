@@ -1,6 +1,6 @@
 import ToolL2PageContent from '@/components/blocks/ToolL2PageContent'
 import type { Metadata } from 'next'
-import { getL2SeoContent } from '@/lib/seo-loader'
+import { getL2SeoContent, hasLocaleL2JsonFile } from '@/lib/seo-loader'
 import { generateHreflangAlternates } from '@/lib/hreflang'
 import { redirect } from 'next/navigation'
 
@@ -39,12 +39,9 @@ export default async function ImageConverterPage({ params }: PageProps) {
   const resolvedParams = await params
   const locale = resolvedParams.locale || 'en'
   
-  // 检查内容是否存在，如果不存在且不是英语，重定向到英语版本
-  const content = await getL2SeoContent('image-converter', locale)
-  if (!content && locale !== 'en') {
-    // 重定向到英语版本的 image-converter L2 页面
+  if (locale !== 'en' && !hasLocaleL2JsonFile('image-converter', locale)) {
     redirect('/image-converter')
   }
-  
+
   return <ToolL2PageContent locale={locale} tool="image-converter" />
 }

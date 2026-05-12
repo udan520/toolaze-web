@@ -1,4 +1,5 @@
 import ToolL2PageContent from '@/components/blocks/ToolL2PageContent'
+import { hasLocaleL2JsonFile } from '@/lib/seo-loader'
 import { notFound, redirect } from 'next/navigation'
 
 const SUPPORTED_LOCALES = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it'] as const
@@ -10,15 +11,6 @@ const MODEL_TOOL_MAP: Record<string, string> = {
   'gpt-image-2-0': 'gpt-image-2',
   'seedance-2': 'seedance-2',
   'kling-3': 'kling-3',
-}
-
-const MODEL_SUPPORTED_LOCALES: Record<string, readonly string[]> = {
-  'nano-banana-2': SUPPORTED_LOCALES,
-  'gpt-image-2': SUPPORTED_LOCALES,
-  'gpt-image-2-0': SUPPORTED_LOCALES,
-  'nano-banana-pro': ['en'],
-  'seedance-2': ['en'],
-  'kling-3': ['en'],
 }
 
 interface PageProps {
@@ -58,8 +50,11 @@ export default async function LocalizedModelPage({ params }: PageProps) {
     return null
   }
 
-  const supportedLocales = MODEL_SUPPORTED_LOCALES[model] || ['en']
-  if (locale === 'en' || !supportedLocales.includes(locale)) {
+  if (locale === 'en') {
+    redirect(`/model/${model}`)
+  }
+
+  if (!hasLocaleL2JsonFile(tool, locale)) {
     redirect(`/model/${model}`)
   }
 

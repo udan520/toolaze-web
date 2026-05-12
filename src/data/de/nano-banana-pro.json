@@ -1,0 +1,143 @@
+{
+  "metadata": {
+    "title": "Bild-zu-Bild-KI online generieren (Kostenlos, hohe Qualität & schnell) - Toolaze",
+    "description": "Wie generiert man Bild-zu-Bild-KI online? 1. Bild hochladen 2. Prompt festlegen 3. Bild generieren. Kostenloses Online-Tool. Erstellen Sie hochwertige KI-Bilder mit schneller Verarbeitung. Sicher & Privat."
+  },
+  "hero": {
+    "h1": "Kostenlose <span class=\"text-gradient\">Bild-zu-Bild-KI</span> online",
+    "desc": "Generieren Sie kostenlos atemberaubende KI-Bilder aus Ihren vorhandenen Bildern. Laden Sie einfach Ihr Bild hoch und geben Sie einen Text-Prompt ein, um in Sekundenschnelle Variationen zu erstellen."
+  },
+  "howToUse": {
+    "title": "So generieren Sie Bild-zu-Bild-KI",
+    "steps": [
+      {
+        "title": "Laden Sie Ihr Bild hoch",
+        "desc": "Laden Sie das Bild hoch, das Sie als Basis für die KI-Generierung verwenden möchten."
+      },
+      {
+        "title": "Geben Sie Ihren Prompt ein",
+        "desc": "Beschreiben Sie die gewünschten Änderungen oder Ergänzungen, die Sie im generierten Bild sehen möchten."
+      },
+      {
+        "title": "Generieren und Herunterladen",
+        "desc": "Klicken Sie auf die Schaltfläche „Generieren“ und laden Sie Ihr neues KI-generiertes Bild herunter."
+      }
+    ]
+  },
+  "modelIntro": {
+    "title": "Entfesseln Sie Ihre Kreativität mit Nano Banana Pro",
+    "description": [
+      "Nano Banana Pro ist ein fortschrittliches KI-Modell, das entwickelt wurde, um Ihre Bilder mit atemberaubenden Details und Präzision zu transformieren. Egal, ob Sie Variationen bestehender Bilder erstellen oder völlig neue Konzepte zum Leben erwecken möchten, Nano Banana Pro bietet die Werkzeuge, die Sie benötigen, um Ihre kreative Vision zu verwirklichen.",
+      "Mit Unterstützung für hohe Auflösungen bis zu 4K und einer Reihe von Seitenverhältnissen stellt Nano Banana Pro sicher, dass Ihre generierten Bilder von höchster Qualität sind. Die intuitive Benutzeroberfläche und die schnellen Verarbeitungsgeschwindigkeiten machen es einfach, mit Ihren Designs zu experimentieren und diese zu iterieren.",
+      "Erleben Sie die Zukunft der Bildgenerierung mit Nano Banana Pro und schalten Sie endlose Möglichkeiten für Ihre kreativen Projekte frei."
+    ],
+    "modelName": "Nano Banana Pro",
+    "modelType": "KI-Bildmodell",
+    "featureCards": [
+      {
+        "title": "Hochauflösende Ausgabe",
+        "content": "Generieren Sie Bilder in atemberaubenden 2K- und 4K-Auflösungen, um sicherzustellen, dass jedes Detail scharf und klar ist."
+      },
+      {
+        "title": "Schnelle Verarbeitung",
+        "content": "Erleben Sie blitzschnelle Bildgenerierungsgeschwindigkeiten, die es Ihnen ermöglichen, schnell zu iterieren und Ihre Ideen in Sekundenschnelle zum Leben zu erwecken."
+      },
+      {
+        "title": "Vielseitige Seitenverhältnisse",
+        "content": "Wählen Sie aus einer Vielzahl von Seitenverhältnissen, um die Anforderungen Ihres Projekts perfekt zu erfüllen, von Social-Media-Posts bis hin zu filmischen Visuals."
+      }
+    ]
+  },
+  "features": {
+    "title": "Hauptmerkmale",
+    "items": [
+      {
+        "icon": "🖼️",
+        "iconType": "ai",
+        "title": "Bild-zu-Bild-Generierung",
+        "desc": "Verwandeln Sie vorhandene Bilder mithilfe von KI in neue Kreationen. Laden Sie einfach Ihr Bild hoch und geben Sie einen Text-Prompt an, um die künstlerische Richtung der KI zu steuern."
+      },
+      {
+        "icon": "🖋️",
+        "iconType": "ai",
+        "title": "Text-zu-Bild-Generierung",
+        "desc": "Erwecken Sie Ihre textlichen Ideen mit KI-generierten Bildern zum Leben. Beschreiben Sie Ihre Vision und lassen Sie die KI eine einzigartige visuelle Darstellung erstellen."
+      },
+      {
+        "icon": "📐",
+        "iconType": "ai",
+        "title": "Mehrere Seitenverhältnisse",
+        "desc": "Generieren Sie Bilder in verschiedenen Seitenverhältnissen für unterschiedliche Plattformen und Zwecke. Wählen Sie aus Optionen wie 1:1, 16:9, 9:16 und mehr."
+      },
+      {
+        "icon": "✨",
+        "iconType": "ai",
+        "title": "Hochauflösende Ausgabe",
+        "desc": "Erstellen Sie hochwertige Bilder mit Unterstützung für Auflösungen bis zu 4K. Stellen Sie sicher, dass Ihre generierten Bilder scharf, klar und detailliert sind."
+      },
+      {
+        "icon": "💾",
+        "iconType": "ai",
+        "title": "Verlaufskontrolle",
+        "desc": "Greifen Sie einfach auf Ihre zuvor generierten Bilder zu und verwalten Sie diese. Die Verlaufsfunktion ermöglicht es Ihnen, Ihre Kreationen erneut aufzurufen, herunterzuladen und wiederzuverwenden."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "ai",
+        "title": "Schnelle Bildgenerierung",
+        "desc": "Erleben Sie eine schnelle Bildgenerierung, unterstützt von Nano Banana Pro. Erhalten Sie Ihre KI-generierten Bilder in Sekundenschnelle, was eine schnelle Iteration und Experimentierfreude ermöglicht."
+      }
+    ]
+  },
+  "scenes": [
+    {
+      "icon": "📱",
+      "title": "Social-Media-Inhalte",
+      "desc": "Erstellen Sie einzigartige und ansprechende Visuals für Ihre Social-Media-Kanäle. Generieren Sie auffällige Inhalte, um Ihre Online-Präsenz zu steigern und neue Follower mit KI-Bild-zu-Bild zu gewinnen."
+    },
+    {
+      "icon": "🎨",
+      "title": "Kreative Kunstprojekte",
+      "desc": "Entdecken Sie neue künstlerische Möglichkeiten mit KI-generierter Kunst. Nutzen Sie Bild-zu-Bild, um mit Leichtigkeit atemberaubende digitale Gemälde, Illustrationen und Mixed-Media-Werke zu erstellen."
+    },
+    {
+      "icon": "💻",
+      "title": "Website-Visuals",
+      "desc": "Verbessern Sie Ihre Website mit individuell generierten Bildern. Erstellen Sie einzigartige Banner, Hintergründe und Produktvisualisierungen, die die Identität Ihrer Marke einfangen und Ihr Publikum ansprechen."
+    }
+  ],
+  "rating": {
+    "title": "Nano Banana Pro",
+    "rating": "4.9/5 VON 10K+ ERSTELLERN",
+    "text": "Schließen Sie sich Tausenden von zufriedenen Nutzern an, die Toolaze für die schnelle, sichere und kostenlose KI-Bild-zu-Bild-Generierung vertrauen. Keine Registrierung erforderlich, keine Anmeldung nötig. Generieren Sie hochwertige 4K-Bilder mit Nano Banana Pro."
+  },
+  "faq": [
+    {
+      "q": "Was ist Bild-zu-Bild-KI-Generierung?",
+      "a": "Die Bild-zu-Bild-KI-Generierung ist ein Prozess, der künstliche Intelligenz nutzt, um neue Bilder basierend auf einem vorhandenen Bild und einem Text-Prompt zu erstellen. Sie ermöglicht es Ihnen, Ihre Fotos mit KI zu transformieren und neu zu gestalten."
+    },
+    {
+      "q": "Ist Nano Banana Pro kostenlos?",
+      "a": "Ja, Nano Banana Pro bietet eine kostenlose Version mit Basisfunktionen an. Die Pro-Version schaltet höhere Auflösungen, schnellere Verarbeitung und zusätzliche Funktionen frei."
+    },
+    {
+      "q": "Welche Bildformate werden von Nano Banana Pro unterstützt?",
+      "a": "Nano Banana Pro unterstützt die Eingabeformate JPG, PNG und WebP. Sie können wählen, ob Ihre generierten Bilder in den Formaten PNG, JPEG oder WebP ausgegeben werden sollen."
+    },
+    {
+      "q": "Welche Auflösungen sind in Nano Banana Pro verfügbar?",
+      "a": "Die kostenlose Version unterstützt eine 1K-Auflösung. Nano Banana Pro schaltet 2K- und 4K-Auflösungen für eine hochwertigere Bildgenerierung frei."
+    },
+    {
+      "q": "Wie gewährleistet Nano Banana Pro den Schutz meiner Bilder?",
+      "a": "Bilder, die auf Nano Banana Pro hochgeladen werden, werden nicht dauerhaft gespeichert und sicher verarbeitet. Es ist keine Anmeldung erforderlich, was Ihre Privatsphäre schützt."
+    },
+    {
+      "q": "Kann ich Nano Banana Pro verwenden, um Bilder für kommerzielle Zwecke zu generieren?",
+      "a": "Ja, Sie können mit Nano Banana Pro generierte Bilder für kommerzielle Zwecke verwenden, vorbehaltlich der Nutzungsbedingungen. Bitte lesen Sie die Lizenzvereinbarung für weitere Details."
+    }
+  ],
+  "topComponent": "nano-banana-pro",
+  "scenesTitle": "Anwendungsfälle",
+  "faqTitle": "Häufig gestellte Fragen"
+}

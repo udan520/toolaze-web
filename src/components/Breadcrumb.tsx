@@ -85,8 +85,8 @@ export default function Breadcrumb({ items }: BreadcrumbProps) {
     return label
   }
   
-  // 仅存在于根路径、无 [locale] 版本的工具，始终不添加 locale 前缀
-  const LOCALE_LESS_PATHS = ['/ai-tools', '/watermark-remover', '/photo-restoration', '/model', '/model/seedance-2', '/model/kling-3', '/model/nano-banana-pro', '/model/nano-banana-2', '/model/gpt-image-2', '/model/gpt-image-2-0']
+  // 仅存在于根路径、无 [locale] 版本的页面，始终不添加 locale 前缀（有 [locale]/... 的勿列入）
+  const LOCALE_LESS_PATHS = ['/ai-tools', '/model', '/model/seedance-2', '/model/kling-3', '/model/nano-banana-pro', '/model/nano-banana-2', '/model/gpt-image-2', '/model/gpt-image-2-0']
   const getLocalizedHref = (href: string | undefined): string | undefined => {
     if (!href) return href
     if (href.startsWith('http')) return href

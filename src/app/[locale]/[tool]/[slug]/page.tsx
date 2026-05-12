@@ -78,7 +78,8 @@ export async function generateStaticParams() {
     const fontGeneratorSlugs = await getAllSlugs('font-generator', 'en') || []
     const emojiCopyPasteSlugs = await getAllSlugs('emoji-copy-and-paste', 'en') || []
     const seedance2Slugs = await getAllSlugs('seedance-2', 'en') || []
-    
+    const watermarkRemoverSlugs = await getAllSlugs('watermark-remover', 'en') || []
+
     for (const locale of locales) {
       // 添加图片压缩工具的页面
       for (const slug of compressorSlugs) {
@@ -119,6 +120,17 @@ export async function generateStaticParams() {
           params.push({
             locale: locale,
             tool: 'seedance-2',
+            slug: slug,
+          })
+        }
+      }
+
+      // Watermark Remover L3（/ja/watermark-remover/...；英语 canonical 仍为 /watermark-remover/...）
+      for (const slug of watermarkRemoverSlugs) {
+        if (slug && typeof slug === 'string') {
+          params.push({
+            locale: locale,
+            tool: 'watermark-remover',
             slug: slug,
           })
         }

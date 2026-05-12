@@ -16,16 +16,19 @@ const ROOT = path.join(__dirname, '..')
 const DATA_ROOT = path.join(ROOT, 'src', 'data')
 const DOCS_ROOT = path.join(ROOT, 'docs')
 
-// 加载 .env.local
+// 加载 .env.local（与 `node --env-file=.env.local` 对齐：文件内定义覆盖当前进程已有同名变量，
+// 避免「终端探测用 --env-file 成功、长期运行的 admin 进程仍用旧/空 shell 里的 KIE_*」）
 function loadEnvLocal() {
   const envPath = path.join(ROOT, '.env.local')
   try {
-    const content = fs.readFileSync(envPath, 'utf-8')
-    for (const line of content.split('\n')) {
+    let content = fs.readFileSync(envPath, 'utf-8')
+    if (content.charCodeAt(0) === 0xfeff) content = content.slice(1)
+    for (let line of content.split('\n')) {
+      line = line.replace(/^\s*export\s+/i, '')
       const m = line.match(/^\s*([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(.*)$/)
       if (m) {
         const val = m[2].replace(/^["']|["']$/g, '').trim()
-        if (!process.env[m[1]]) process.env[m[1]] = val
+        process.env[m[1]] = val
       }
     }
   } catch {}
@@ -82,18 +85,22 @@ const SITE_LOCALES_FOR_URL = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko',
 
 /**
  * 允许加 locale 前缀的路径首段（存在 src/app/[locale]/... 对应路由或与 slug 页一致）
- * 不在列表内的路径（如 /watermark-remover、/ai-tools）保持英文站根路径不变，避免 404
+ * 不在列表内的路径（如 /ai-tools）保持英文站根路径不变，避免 404
  */
 const LOCALIZED_PATH_FIRST_SEGMENTS = new Set([
   'about',
   'privacy',
   'terms',
+  'ai-tools',
   'image-compressor',
   'image-converter',
   'font-generator',
   'emoji-copy-and-paste',
   'kling-3',
   'seedance-2',
+  'watermark-remover',
+  'photo-restoration',
+  'ai-couple-photo-maker',
 ])
 
 function splitPathQueryHash(raw) {
@@ -264,10 +271,44 @@ function getKieApiBase() {
   return (process.env.KIE_API_BASE_URL || 'https://api.kie.ai').replace(/\/$/, '')
 }
 
+/**
+ * KIE 文档：POST `/{slug}/v1/chat/completions`（如 gemini-3-flash、gemini-2.5-flash）
+ * @see https://docs.kie.ai/market/gemini/gemini-3-flash
+ */
+function getKieGeminiChatSlug() {
+  const fromEnv = (process.env.KIE_GEMINI_CHAT_SLUG || '').trim().replace(/^\/+|\/+$/g, '')
+  if (fromEnv) return fromEnv
+  const model = (process.env.KIE_GEMINI_MODEL || 'gemini-3-flash').trim().toLowerCase()
+  if (model.includes('2.5')) return 'gemini-2.5-flash'
+  if (model.includes('3-flash') || model.includes('gemini-3')) return 'gemini-3-flash'
+  return 'gemini-3-flash'
+}
+
+function getKieGeminiChatCompletionsUrl() {
+  return `${getKieApiBase()}/${getKieGeminiChatSlug()}/v1/chat/completions`
+}
+
+/** Gemini 3 Flash 文档默认 stream=true；翻译需 JSON 一次性返回，显式关流式并压低 thoughts 体积 */
+function kieGemini3TranslateBodyExtras() {
+  if (!/\/gemini-3-flash\//i.test(getKieGeminiChatCompletionsUrl())) return {}
+  const out = { stream: false }
+  if (process.env.KIE_GEMINI_INCLUDE_THOUGHTS === '1') out.include_thoughts = true
+  else out.include_thoughts = false
+  const effort = (process.env.KIE_GEMINI_REASONING_EFFORT || 'low').trim().toLowerCase()
+  if (effort === 'high' || effort === 'low') out.reasoning_effort = effort
+  return out
+}
+
+function getKieTranslateApiLabel() {
+  const slug = getKieGeminiChatSlug()
+  const model = (process.env.KIE_GEMINI_MODEL || 'gemini-3-flash').trim()
+  return `kie.ai /${slug}/ (${model})`
+}
+
 async function fetchKieChatOnce(bodyObj, timeoutMs) {
   const apiKey = getKieApiKey()
   if (!apiKey) throw new Error('未配置 KIE_AI_API_KEY 或 ZHEN_AI_API_KEY（kie.ai Bearer Token）')
-  const chatUrl = `${getKieApiBase()}/gemini-2.5-flash/v1/chat/completions`
+  const chatUrl = getKieGeminiChatCompletionsUrl()
 
   const controller = new AbortController()
   const timer = setTimeout(() => controller.abort(), timeoutMs)
@@ -315,14 +356,68 @@ async function fetchKieChat(bodyObj, timeoutMs = 240000, retries = 3) {
         const msg = resJson.error?.message || resJson.error || `HTTP ${res.status}`
         throw new Error(typeof msg === 'string' ? msg : JSON.stringify(msg))
       }
+      // KIE 部分错误以 HTTP 200 + { code, msg } 返回，无 choices（与 OpenAI 兼容体不同）
+      const choices = resJson?.choices
+      const hasChatChoices = Array.isArray(choices) && choices.length > 0
+      // 有 choices 数组但元素为空、或 message 无正文时，仍可能带顶层 code/msg（网关错误）
+      const hasNonEmptyChatContent =
+        hasChatChoices &&
+        (() => {
+          try {
+            return Boolean(extractChatContentFromResponse(resJson)?.trim?.())
+          } catch {
+            return false
+          }
+        })()
+
+      if ((!hasChatChoices || !hasNonEmptyChatContent) && resJson && typeof resJson === 'object') {
+        const bizMsg = resJson.msg ?? resJson.message
+        const bizCode = resJson.code
+        if (bizMsg != null && String(bizMsg).trim() !== '') {
+          throw new Error(`KIE API（code=${bizCode ?? 'n/a'}）: ${String(bizMsg).slice(0, 800)}`)
+        }
+        const codeNum =
+          typeof bizCode === 'number'
+            ? bizCode
+            : typeof bizCode === 'string' && bizCode !== ''
+              ? Number.parseInt(bizCode, 10)
+              : NaN
+        const codeLooksError =
+          bizCode != null &&
+          bizCode !== '' &&
+          !(bizCode === 0 || bizCode === '0' || bizCode === 200 || bizCode === '200') &&
+          !(Number.isFinite(codeNum) && codeNum === 0)
+        if (codeLooksError) {
+          throw new Error(`KIE API 业务错误: code=${bizCode}（无 choices，msg 为空）`)
+        }
+        // 仍无 choices：可能是未知错误体
+        if ('code' in resJson || 'msg' in resJson) {
+          throw new Error(
+            `KIE API 返回非 Chat 结构（无 choices）: ${JSON.stringify(resJson).slice(0, 600)}`
+          )
+        }
+        if (hasChatChoices && !hasNonEmptyChatContent) {
+          throw new Error(
+            `KIE API choices 无有效正文: ${JSON.stringify(resJson).slice(0, 800)}`
+          )
+        }
+      }
       return resJson
     } catch (e) {
       lastErr = e
       const msg = e.message || String(e)
+      const maintenanceOrOverload =
+        /being maintained|try again later|maintenance|temporarily unavailable|overload|capacity|please retry|请稍后|重试/i.test(
+          msg
+        )
       const retryable =
-        /fetch failed|ECONNRESET|ETIMEDOUT|ENOTFOUND|EAI_AGAIN|socket|network|abort|Failed to fetch/i.test(msg)
+        /fetch failed|ECONNRESET|ETIMEDOUT|ENOTFOUND|EAI_AGAIN|socket|network|abort|Failed to fetch/i.test(
+          msg
+        ) ||
+        maintenanceOrOverload ||
+        /rate limit|too many requests|\b429\b/i.test(msg)
       if (!retryable || attempt === retries - 1) throw e
-      const wait = 2000 * (attempt + 1)
+      const wait = maintenanceOrOverload ? 8000 * (attempt + 1) : 2000 * (attempt + 1)
       console.warn(`[fetchKieChat] 第 ${attempt + 1} 次请求失败: ${msg.slice(0, 160)} — ${wait}ms 后重试`)
       await new Promise((r) => setTimeout(r, wait))
     }
@@ -355,12 +450,12 @@ function extractChatContentFromResponse(json) {
 }
 
 /**
- * 使用 KIE Gemini 2.5 Flash（OpenAI 兼容 Chat）将整页 SEO JSON 译为指定语言
- * @see https://docs.kie.ai/market/gemini/gemini-2-5-flash
+ * 使用 KIE Gemini（OpenAI 兼容 Chat）将整页 SEO JSON 译为指定语言
+ * @see https://docs.kie.ai/market/gemini/gemini-3-flash
  */
 function buildTranslateMessages(sourceObj, targetLocale, extraUserHint = '') {
   const lang = LOCALE_LANGUAGE_NAMES[targetLocale] || targetLocale
-  const model = process.env.KIE_GEMINI_MODEL || 'gemini-2.5-flash'
+  const model = (process.env.KIE_GEMINI_MODEL || 'gemini-3-flash').trim()
   const systemContent =
     `You translate Toolaze SEO JSON for international pages.\n` +
     `CRITICAL: Your entire reply must be ONLY a raw JSON object. ` +
@@ -410,6 +505,7 @@ async function translateSeoJsonWithKieSingle(sourceObj, targetLocale, options = 
     max_tokens: Number.parseInt(process.env.KIE_TRANSLATE_MAX_TOKENS || '65536', 10) || 65536,
   }
   if (useResponseFormat) reqBody.response_format = { type: 'json_object' }
+  Object.assign(reqBody, kieGemini3TranslateBodyExtras())
 
   let json = await fetchKieChat(reqBody)
   let content = extractChatContentFromResponse(json)
@@ -424,7 +520,16 @@ async function translateSeoJsonWithKieSingle(sourceObj, targetLocale, options = 
 
   if (!content) {
     const keys = json && typeof json === 'object' ? Object.keys(json).join(', ') : 'n/a'
-    throw new Error(`API 未返回可解析内容（finish_reason=${finish}, response_keys=${keys}）`)
+    let detail = ''
+    if (json && typeof json === 'object') {
+      const m = json.msg ?? json.message
+      if (m != null && String(m).trim() !== '') {
+        detail = ` | KIE msg=${String(m).slice(0, 800)} (code=${json.code ?? 'n/a'})`
+      } else {
+        detail = ` | raw=${JSON.stringify(json).slice(0, 900)}`
+      }
+    }
+    throw new Error(`API 未返回可解析内容（finish_reason=${finish}, response_keys=${keys}）${detail}`)
   }
 
   const parsed = parseTranslatedJsonFromChatContent(content, targetLocale)
@@ -2286,6 +2391,7 @@ Output ONLY valid JSON for this section. No markdown fences, no explanation. Mat
   }
 
   if (pathname === '/api/translate-seo' && req.method === 'POST') {
+    loadEnvLocal()
     let body = ''
     for await (const chunk of req) body += chunk
     try {
@@ -2463,7 +2569,7 @@ Output ONLY valid JSON for this section. No markdown fences, no explanation. Mat
           written,
           preSynced,
           errors,
-          api: 'kie.ai gemini-2.5-flash',
+          api: getKieTranslateApiLabel(),
           homePartialMerge: !!homePartial,
           hint:
             errors.length === 0

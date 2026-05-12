@@ -357,8 +357,16 @@ export default function Navigation() {
       
       setThirdLevelMenuData(data)
     }
-    
-    loadThirdLevelItems()
+
+    void loadThirdLevelItems().catch((err) => {
+      console.error('Navigation: loadThirdLevelItems failed', err)
+      setThirdLevelMenuData({
+        'image-compressor': [],
+        'image-converter': [],
+        'font-generator': [],
+        'emoji-copy-and-paste': [],
+      })
+    })
   }, [navEffectiveLocale, pathname])
 
   const getLocalizedHref = (href: string): string => {

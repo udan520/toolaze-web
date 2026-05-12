@@ -1,0 +1,175 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Eliminador de Marcas de Agua Gratuito - Elimina Marcas de Agua de Imágenes con IA | Toolaze",
+    "description": "Elimina marcas de agua de imágenes online gratis. Borra marcas de agua de fotos al instante con IA. Soporte para JPG, PNG, WebP. No requiere registro."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "modelIntro",
+    "features",
+    "intro",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "modelIntro": {
+    "title": "¿En qué se diferencia la eliminación de marcas de agua con IA de la edición manual?",
+    "modelName": "Eliminador de Marcas de Agua",
+    "modelType": "Herramienta de Imagen con IA",
+    "description": [
+      "Las herramientas tradicionales como el tampón de clonar o el relleno según el contenido requieren que selecciones manualmente el área de la marca de agua. Si la marca de agua se superpone a una cara, un producto o un detalle importante, corres el riesgo de dejar parches o manchas visibles. La inpainting con IA funciona de manera diferente: analiza los píxeles circundantes y reconstruye cómo se vería la imagen sin la superposición, por lo que el resultado se integra de forma natural en lugar de parecer pegado.",
+      "Utilizamos un modelo de edición de imágenes con IA entrenado en tareas de inpainting. Maneja logotipos semitransparentes, texto sólido, sellos y firmas. Los mejores resultados se obtienen con marcas de agua claras y distintas; las marcas de agua muy mezcladas o muy grandes pueden necesitar una segunda pasada. La salida conserva tus dimensiones originales, sin recortes ni redimensionamientos.",
+      "El procesamiento se ejecuta en nuestros servidores. Las imágenes no se almacenan permanentemente. Soporta JPG, PNG, WebP de hasta 30MB. Flujo de trabajo de una sola imagen con un deslizador de comparación para que puedas verificar el resultado antes de descargarlo."
+    ],
+    "featureCards": [
+      {
+        "title": "Inpainting vs Tampón de Clonar",
+        "content": "El tampón de clonar copia de otra área, a menudo dejando costuras visibles. La inpainting con IA predice cómo debería verse la región cubierta basándose en el contexto, produciendo una mezcla más natural. Sin selección de origen, sin pincelado."
+      },
+      {
+        "title": "Verifica Antes de Descargar",
+        "content": "El deslizador de comparación te permite verificar el resultado antes de descargarlo. Si no está lo suficientemente limpio, inténtalo de nuevo o prueba con una fuente de mayor resolución. Sin sorpresas: ves exactamente lo que obtienes."
+      },
+      {
+        "title": "Elimina Marcas de Agua de Imágenes Online Gratis",
+        "content": "Fotos individuales con logotipos, texto, sellos o firmas. JPG, PNG, WebP de hasta 30MB. La inpainting con IA se encarga del resto, sin selección manual. Sube, compara, descarga. Eliminador de marcas de agua gratuito, no requiere registro."
+      }
+    ]
+  },
+  "hero": {
+    "h1": "Eliminador de <span class=\"text-gradient\">Marcas de Agua con IA</span> Gratuito Online",
+    "desc": "Elimina marcas de agua de imágenes online gratis. Borra marcas de agua de fotos al instante con IA. Sin registro, sin opciones, solo sube y haz clic."
+  },
+  "intro": {
+    "title": "Cuándo Tiene Sentido Eliminar Marcas de Agua",
+    "content": [
+      {
+        "title": "Por Qué Existen las Marcas de Agua y Cuándo es Legítima su Eliminación",
+        "text": "Las marcas de agua protegen el trabajo de los creadores y marcan versiones de prueba o de muestra. Los sitios de stock las usan en las vistas previas; los fotógrafos las añaden a las pruebas. La eliminación es legítima cuando posees la imagen, tienes una licencia o necesitas limpiar una foto personal (por ejemplo, una captura de pantalla con una superposición de interfaz de usuario). No es apropiado para eludir los derechos de autor de imágenes sobre las que no tienes derechos. Toolaze es una herramienta; cómo la uses es tu responsabilidad."
+      },
+      {
+        "title": "El Problema Práctico de la Eliminación Manual",
+        "text": "El tampón de clonar y el relleno según el contenido funcionan, pero exigen habilidad y tiempo. Una marca de agua sobre una cara o el logotipo de un producto a menudo deja artefactos visibles. Las aplicaciones de pago pueden ofrecer mejores resultados, pero añaden coste y a veces límites diarios. Creamos Toolaze para que se sitúe en el medio: eliminación con IA que es lo suficientemente buena para la mayoría de los casos, gratuita y sencilla. Sube, haz clic, compara, descarga. Sin capas, sin pinceles. Después de la eliminación, puedes <a href=\"/es/image-compressor\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">comprimir imágenes</a> para reducir el tamaño del archivo o <a href=\"/es/image-converter\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">convertir imágenes</a> a un formato diferente, ambos gratuitos."
+      }
+    ]
+  },
+  "features": {
+    "title": "Lo Que Realmente Importa en un Eliminador de Marcas de Agua",
+    "items": [
+      {
+        "icon": "🤖",
+        "iconType": "ai",
+        "title": "Sin Selección Manual",
+        "desc": "Las herramientas manuales fallan cuando la marca de agua se superpone a contenido importante: o dejas artefactos o pasas horas pincelando. La IA infiere lo que hay debajo y lo rellena. Un clic; sin dibujar."
+      },
+      {
+        "icon": "🔄",
+        "iconType": "compare",
+        "title": "Compara Antes de Confirmar",
+        "desc": "Los resultados varían según la imagen. Un deslizador de comparación te permite ver el antes/después antes de descargar. Si el resultado no es lo suficientemente limpio, puedes reintentar con un recorte o resolución diferente en lugar de descubrir el problema más tarde."
+      },
+      {
+        "icon": "📥",
+        "iconType": "download",
+        "title": "Dimensiones Originales Preservadas",
+        "desc": "La salida coincide con el tamaño y la relación de aspecto de tu entrada. Sin recorte ni redimensionamiento automático. Lo que subes es lo que obtienes, menos la marca de agua."
+      },
+      {
+        "icon": "🖼️",
+        "iconType": "format",
+        "title": "Límites de Formato y Tamaño",
+        "desc": "JPG, PNG, WebP de hasta 30MB. Las imágenes grandes se comprimen antes del procesamiento para mantener una latencia razonable; para la mejor calidad, usa menos de 2MB o 1280px en el lado más largo."
+      },
+      {
+        "icon": "📱",
+        "iconType": "device",
+        "title": "Solo Navegador",
+        "desc": "Sin instalación de aplicación. Funciona en cualquier dispositivo con un navegador moderno. El procesamiento se ejecuta en nuestros servidores, por lo que necesitas una conexión, pero no una GPU o software local."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Sin Cuenta, Sin Límite",
+        "desc": "No requerimos registro ni pago. Sin límite diario. Úsalo tan a menudo como necesites. Las imágenes se procesan a través de API y no se almacenan permanentemente."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Cómo Eliminar Marcas de Agua de una Foto",
+    "steps": [
+      {
+        "title": "Subir Imagen",
+        "desc": "Arrastra y suelta o haz clic para subir una imagen con marcas de agua. Soporta JPG, PNG, WebP de hasta 30MB."
+      },
+      {
+        "title": "La IA Detecta y Elimina",
+        "desc": "Haz clic en el botón. Nuestra IA detecta y elimina automáticamente las marcas de agua (logotipos, texto, sellos) en segundos."
+      },
+      {
+        "title": "Descargar",
+        "desc": "Descarga tu imagen limpia. Mantén pulsado comparar para ver el antes y el después. Sin marcas de agua, sin complicaciones."
+      }
+    ]
+  },
+  "scenesTitle": "Escenarios Reales Donde Esto Ayuda",
+  "scenes": [
+    {
+      "icon": "🏷️",
+      "title": "Foto de Stock con Marca de Agua de Prueba",
+      "desc": "Has licenciado una imagen de un sitio de stock, pero la vista previa aún tiene una marca de agua de muestra. En lugar de volver a descargarla o contactar con soporte, pásala por el eliminador. Funciona bien cuando la marca de agua está en una esquina o sobre un área uniforme; los resultados pueden variar sobre caras o texturas finas."
+    },
+    {
+      "icon": "✍️",
+      "title": "Documento Escaneado con Sello de Aprobación",
+      "desc": "Un contrato o formulario escaneado tiene un sello, firma o superposición de fecha que necesitas eliminar para obtener una copia limpia. La inpainting con IA puede reconstruir la textura subyacente del documento. Mejor cuando el sello es distinto del fondo."
+    },
+    {
+      "icon": "🖥️",
+      "title": "Captura de Pantalla con Interfaz de Usuario o Logotipo de Aplicación",
+      "desc": "Estás documentando un flujo de trabajo o creando un tutorial. La captura de pantalla tiene un logotipo, marca de agua o elemento de interfaz de usuario que quieres eliminar. Recorta primero el área relevante: las imágenes más pequeñas se procesan más rápido y a menudo producen resultados más limpios."
+    }
+  ],
+  "rating": {
+    "title": "Confiado por Miles de Creadores",
+    "rating": "4.9/5 DE MÁS DE 10 MIL CREADORES",
+    "text": "Únete a miles de usuarios que confían en Toolaze para una eliminación de marcas de agua rápida y gratuita. Elimina marcas de agua de imágenes online gratis, con IA, sin necesidad de registro."
+  },
+  "faqTitle": "Preguntas Frecuentes",
+  "faq": [
+    {
+      "q": "¿Qué formatos y tamaños de imagen son compatibles?",
+      "a": "JPG, JPEG, PNG y WebP. Máximo 30MB por archivo. Para un procesamiento más rápido y a menudo mejores resultados, usa imágenes de menos de 2MB o 1280px en el lado más largo. Los archivos más grandes se comprimen antes de enviarlos a la IA. Para <a href=\"/es/image-converter\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">convertir entre formatos</a> antes o después de la eliminación, usa nuestro conversor de imágenes gratuito."
+    },
+    {
+      "q": "¿Por qué el resultado a veces parece imperfecto?",
+      "a": "La inpainting con IA funciona prediciendo lo que hay debajo de la marca de agua. Destaca en superposiciones claras sobre áreas uniformes o texturizadas. Las marcas de agua sobre caras, cabello o detalles finos pueden dejar ligeros artefactos porque el modelo tiene menos contexto. Usa la vista de comparación para verificar; si no es lo suficientemente bueno, intenta recortar el área de la marca de agua o usar una fuente de mayor resolución."
+    },
+    {
+      "q": "¿Almacenan o guardan mis imágenes?",
+      "a": "Las imágenes se envían a nuestra API para su procesamiento. No las almacenamos permanentemente. Recomendamos no subir contenido altamente sensible; para una privacidad máxima, considera herramientas que se ejecuten completamente en el dispositivo (aunque estas normalmente no ofrecen eliminación con IA)."
+    },
+    {
+      "q": "¿Puedo procesar varias imágenes a la vez?",
+      "a": "No. Soportamos el procesamiento de una sola imagen. Sube una imagen, obtén el resultado y luego pasa a la siguiente. El soporte por lotes podría añadirse más adelante."
+    },
+    {
+      "q": "¿Es legal eliminar marcas de agua?",
+      "a": "Depende de tus derechos sobre la imagen. Eliminar una marca de agua de una imagen con derechos de autor que no posees o no tienes licencia puede infringir los derechos del creador. Generalmente está bien cuando posees la imagen, tienes una licencia o estás limpiando una foto personal (por ejemplo, eliminando una marca de tiempo de la cámara). Nosotros proporcionamos la herramienta; tú eres responsable del uso legal."
+    },
+    {
+      "q": "¿Funciona con videos o PDFs?",
+      "a": "No. Solo soportamos imágenes fijas individuales en JPG, PNG o WebP. Para la eliminación de marcas de agua de videos o PDFs, necesitarías una herramienta diferente."
+    },
+    {
+      "q": "¿Puedo usarlo en mi teléfono?",
+      "a": "Sí. Funciona en el navegador. No se requiere aplicación. Sube desde tu galería, procesa y descarga. Las redes móviles pueden ser más lentas para archivos grandes."
+    }
+  ],
+  "moreTools": "Herramientas Gratuitas Relacionadas",
+  "trustBar": {
+    "private": "Gratuito",
+    "instantPreview": "Procesamiento Rápido",
+    "noServerLogs": "No Requiere Registro"
+  }
+}

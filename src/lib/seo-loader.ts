@@ -4,6 +4,25 @@ import fs from 'fs'
 // 支持的所有语言列表
 const SUPPORTED_LOCALES = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
 
+/**
+ * 是否存在该语言的独立 L2 SEO JSON（不含英文回退）。
+ * 用于 `[locale]/...`：非 en 且无该文件时重定向到无前缀英文 canonical（与全站语言切换策略一致）。
+ */
+export function hasLocaleL2JsonFile(tool: string, locale: string): boolean {
+  let normalized = locale
+  if (locale === 'zh' || locale === 'zh-CN' || locale === 'zh-HK') {
+    normalized = 'zh-TW'
+  }
+  if (!SUPPORTED_LOCALES.includes(normalized)) {
+    return false
+  }
+  if (normalized === 'en') {
+    return true
+  }
+  const fp = path.join(process.cwd(), 'src', 'data', normalized, `${tool}.json`)
+  return fs.existsSync(fp)
+}
+
 // Image Converter 工具的所有 slug 列表
 const IMAGE_CONVERTER_SLUGS = [
   'jpg-to-png',
@@ -483,12 +502,35 @@ async function loadToolJsonFile(locale: string, tool: string, slug: string) {
           }
           break
       }
-      
+
+      // watermark-remover L3：JSON 位于 src/data/<locale>/watermark-remover/<slug>.json
+      // switch 里此前只为 en 写了 import/fs；其它语言会漏加载并落到末尾 return null
+      if (!data && tool === 'watermark-remover') {
+        try {
+          const fp = path.join(process.cwd(), 'src', 'data', normalizedLocale, 'watermark-remover', `${slug}.json`)
+          if (fs.existsSync(fp)) {
+            data = { default: JSON.parse(fs.readFileSync(fp, 'utf-8')) }
+          }
+        } catch {
+          data = null
+        }
+        if (!data && normalizedLocale !== 'en') {
+          try {
+            const fpEn = path.join(process.cwd(), 'src', 'data', 'en', 'watermark-remover', `${slug}.json`)
+            if (fs.existsSync(fpEn)) {
+              data = { default: JSON.parse(fs.readFileSync(fpEn, 'utf-8')) }
+            }
+          } catch {
+            data = null
+          }
+        }
+      }
+
       // 对于 font-generator，如果语言不在支持列表中，不自动回退到英语
       // 这样 page.tsx 可以检测到 content 为 null 并执行重定向
       // 支持的语言列表：en, de, ja, es, fr
       // 注意：这里不进行自动回退，让上层处理重定向逻辑
-      
+
       if (data) {
         return data.default || data
       }
@@ -901,14 +943,12 @@ export async function getAllTools(locale: string = 'en'): Promise<Array<{ tool: 
     tools.push({ tool: 'seedance-2', slug })
   }
   
-  // 添加 Watermark Remover L3 页面（目前仅英文，无 locale 前缀）
-  if (locale === 'en') {
-    const watermarkRemoverSlugs = await getAllSlugs('watermark-remover', locale)
-    for (const slug of watermarkRemoverSlugs) {
-      tools.push({ tool: 'watermark-remover', slug })
-    }
+  // 添加 Watermark Remover L3（各语言目录下 JSON；slug 列表按该 locale 的 fs 扫描）
+  const watermarkRemoverSlugs = await getAllSlugs('watermark-remover', locale)
+  for (const slug of watermarkRemoverSlugs) {
+    tools.push({ tool: 'watermark-remover', slug })
   }
-  
+
   return tools
 }
 

@@ -1,6 +1,6 @@
 import ToolL2PageContent from '@/components/blocks/ToolL2PageContent'
 import type { Metadata } from 'next'
-import { getL2SeoContent } from '@/lib/seo-loader'
+import { getL2SeoContent, hasLocaleL2JsonFile } from '@/lib/seo-loader'
 import { generateHreflangAlternates } from '@/lib/hreflang'
 import { redirect } from 'next/navigation'
 
@@ -49,8 +49,7 @@ export default async function AiCouplePhotoMakerLocalePage({ params }: PageProps
     redirect('/ai-couple-photo-maker')
   }
 
-  const content = await getL2SeoContent('ai-couple-photo-maker', locale)
-  if (!content) {
+  if (!hasLocaleL2JsonFile('ai-couple-photo-maker', locale)) {
     redirect('/ai-couple-photo-maker')
   }
 

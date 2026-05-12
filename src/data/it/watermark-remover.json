@@ -1,0 +1,175 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Rimozione Filigrana Gratuita - Rimuovi Filigrana dalle Immagini con l'IA | Toolaze",
+    "description": "Rimuovi filigrana da immagini online gratuitamente. Cancella i watermark dalle foto istantaneamente con l'IA. Supporto JPG, PNG, WebP. Nessuna registrazione richiesta."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "modelIntro",
+    "features",
+    "intro",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "modelIntro": {
+    "title": "Differenze tra la Rimozione Filigrana IA e l'Editing Manuale",
+    "modelName": "Watermark Remover",
+    "modelType": "Strumento Immagine IA",
+    "description": [
+      "Gli strumenti tradizionali come il timbro clone o il riempimento in base al contenuto richiedono la selezione manuale dell'area della filigrana. Se la filigrana si sovrappone a un volto, un prodotto o un dettaglio importante, si rischia di lasciare macchie o sbavature visibili. L'inpainting IA funziona diversamente: analizza i pixel circostanti e ricostruisce come apparirebbe l'immagine senza l'elemento sovrapposto, in modo che il risultato si fonda naturalmente invece di sembrare incollato.",
+      "Utilizziamo un modello di editing delle immagini IA addestrato su compiti di inpainting. Gestisce loghi semitrasparenti, testo solido, timbri e firme. I risultati migliori si ottengono con filigrane chiare e distinte; le filigrane molto sfumate o molto grandi potrebbero richiedere un secondo passaggio. L'output preserva le dimensioni originali: nessun ritaglio o ridimensionamento.",
+      "L'elaborazione avviene sui nostri server. Le immagini non vengono memorizzate in modo permanente. Supporta JPG, PNG, WebP fino a 30MB. Flusso di lavoro a immagine singola con uno slider di confronto per verificare il risultato prima del download."
+    ],
+    "featureCards": [
+      {
+        "title": "Inpainting vs Timbro Clone",
+        "content": "Il timbro clone copia da un'altra area, lasciando spesso cuciture visibili. L'inpainting IA prevede come dovrebbe apparire la regione coperta in base al contesto, producendo una miscela più naturale. Nessuna selezione della sorgente, nessuna pennellata."
+      },
+      {
+        "title": "Verifica Prima del Download",
+        "content": "Lo slider di confronto ti permette di controllare il risultato prima di scaricare. Se non è abbastanza pulito, riprova o usa una sorgente a risoluzione più alta. Nessuna sorpresa: vedi esattamente cosa ottieni."
+      },
+      {
+        "title": "Rimuovi Filigrana da Immagine Online Gratis",
+        "content": "Foto singole con loghi, testo, timbri o firme. JPG, PNG, WebP fino a 30MB. L'inpainting IA gestisce il resto: nessuna selezione manuale. Carica, confronta, scarica. Rimozione filigrana gratuita, nessuna registrazione richiesta."
+      }
+    ]
+  },
+  "hero": {
+    "h1": "<span class=\"text-gradient\">Rimozione Filigrana IA</span> Online Gratuita",
+    "desc": "Rimuovi filigrana da immagini online gratuitamente. Cancella i watermark dalle foto istantaneamente con l'IA. Nessuna registrazione, nessuna opzione: basta caricare e cliccare."
+  },
+  "intro": {
+    "title": "Quando la Rimozione della Filigrana ha Senso",
+    "content": [
+      {
+        "title": "Perché Esistono le Filigrane — e Quando la Rimozione è Legittima",
+        "text": "Le filigrane proteggono il lavoro dei creatori e contrassegnano versioni di prova o campioni. I siti di stock le usano sulle anteprime; i fotografi le aggiungono alle bozze. La rimozione è legittima quando possiedi l'immagine, hai una licenza o devi pulire una foto personale (ad esempio, uno screenshot con un overlay dell'interfaccia utente). Non è appropriato per eludere il copyright su immagini di cui non si hanno i diritti. Toolaze è uno strumento: il modo in cui lo usi è tua responsabilità."
+      },
+      {
+        "title": "Il Problema Pratico della Rimozione Manuale",
+        "text": "Il timbro clone e il riempimento in base al contenuto funzionano, ma richiedono abilità e tempo. Una filigrana su un volto o un logo di un prodotto spesso lascia artefatti visibili. Le app a pagamento possono offrire risultati migliori ma aggiungono costi e talvolta limiti giornalieri. Abbiamo creato Toolaze per posizionarci nel mezzo: una rimozione basata su IA che è sufficientemente buona per la maggior parte dei casi, gratuita e semplice. Carica, clicca, confronta, scarica. Niente livelli, niente pennelli. Dopo la rimozione, puoi <a href=\"/it/image-compressor\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">comprimere le immagini</a> per ridurne le dimensioni o <a href=\"/it/image-converter\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">convertire le immagini</a> in un formato diverso, entrambi gratuitamente."
+      }
+    ]
+  },
+  "features": {
+    "title": "Cosa Conta Davvero in un Software per Rimuovere Filigrane",
+    "items": [
+      {
+        "icon": "🤖",
+        "iconType": "ai",
+        "title": "Nessuna Selezione Manuale",
+        "desc": "Gli strumenti manuali falliscono quando la filigrana si sovrappone a contenuti importanti: o lasci artefatti o passi ore a spennellare. L'IA intuisce cosa c'è sotto e lo riempie. Un clic, nessun disegno."
+      },
+      {
+        "icon": "🔄",
+        "iconType": "compare",
+        "title": "Confronta Prima di Confermare",
+        "desc": "I risultati variano in base all'immagine. Uno slider di confronto ti permette di vedere il prima/dopo prima di scaricare. Se l'output non è abbastanza pulito, puoi riprovare con un ritaglio o una risoluzione diversa invece di scoprire il problema in seguito."
+      },
+      {
+        "icon": "📥",
+        "iconType": "download",
+        "title": "Dimensioni Originali Preservate",
+        "desc": "L'output corrisponde alle dimensioni e alle proporzioni originali. Nessun ritaglio o ridimensionamento automatico. Quello che carichi è ciò che ottieni, meno la filigrana."
+      },
+      {
+        "icon": "🖼️",
+        "iconType": "format",
+        "title": "Limiti di Formato e Dimensioni",
+        "desc": "JPG, PNG, WebP fino a 30MB. Le immagini grandi vengono compresse prima dell'elaborazione per mantenere ragionevole la latenza; per la migliore qualità, usa file sotto i 2MB o 1280px sul lato lungo."
+      },
+      {
+        "icon": "📱",
+        "iconType": "device",
+        "title": "Solo Browser",
+        "desc": "Nessuna installazione di app. Funziona su qualsiasi dispositivo con un browser moderno. L'elaborazione avviene sui nostri server, quindi è necessaria una connessione, ma nessuna GPU locale o software."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Nessun Account, Nessun Limite",
+        "desc": "Non richiediamo registrazione o pagamento. Nessun limite giornaliero. Usalo tutte le volte che ne hai bisogno. Le immagini vengono elaborate tramite API e non memorizzate permanentemente."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Come Rimuovere la Filigrana da una Foto",
+    "steps": [
+      {
+        "title": "Carica Immagine",
+        "desc": "Trascina e rilascia o clicca per caricare un'immagine con filigrane. Supporta JPG, PNG, WebP fino a 30MB."
+      },
+      {
+        "title": "L'IA Rileva e Rimuove",
+        "desc": "Clicca il pulsante. La nostra IA rileva e rimuove automaticamente le filigrane (loghi, testo, timbri) in pochi secondi."
+      },
+      {
+        "title": "Scarica",
+        "desc": "Scarica la tua immagine pulita. Tieni premuto 'confronta' per visualizzare il prima e il dopo. Niente filigrane, nessuna complicazione."
+      }
+    ]
+  },
+  "scenesTitle": "Scenari Reali in cui Questo Aiuta",
+  "scenes": [
+    {
+      "icon": "🏷️",
+      "title": "Foto Stock con Filigrana di Prova",
+      "desc": "Hai acquistato la licenza di un'immagine da un sito stock ma l'anteprima ha ancora la filigrana di esempio. Invece di scaricare nuovamente o contattare il supporto, passala attraverso il rimotore. Funziona bene quando la filigrana è in un angolo o su un'area uniforme; i risultati possono variare su volti o texture fini."
+    },
+    {
+      "icon": "✍️",
+      "title": "Documento Scansionato con Timbro di Approvazione",
+      "desc": "Un contratto o un modulo scansionato ha un timbro, una firma o una data sovrapposta che devi rimuovere per una copia pulita. L'inpainting IA può ricostruire la trama del documento sottostante. Ideale quando il timbro è distinto dallo sfondo."
+    },
+    {
+      "icon": "🖥️",
+      "title": "Screenshot con Interfaccia App o Logo",
+      "desc": "Stai documentando un flusso di lavoro o creando un tutorial. Lo screenshot ha un logo, una filigrana o un elemento dell'interfaccia utente che vuoi eliminare. Ritaglia prima l'area pertinente: le immagini più piccole vengono elaborate più velocemente e spesso producono risultati più puliti."
+    }
+  ],
+  "rating": {
+    "title": "Scelto da Migliaia di Creator",
+    "rating": "4.9/5 DA OLTRE 10.000 CREATOR",
+    "text": "Unisciti a migliaia di utenti che si affidano a Toolaze per una rimozione rapida e gratuita della filigrana. Rimuovi filigrana da immagini online gratis — potenziato dall'IA, nessuna registrazione richiesta."
+  },
+  "faqTitle": "Domande Frequenti",
+  "faq": [
+    {
+      "q": "Quali formati e dimensioni di immagine sono supportati?",
+      "a": "JPG, JPEG, PNG e WebP. Massimo 30MB per file. Per un'elaborazione più rapida e risultati spesso migliori, usa immagini sotto i 2MB o 1280px sul lato lungo. I file più grandi vengono compressi prima dell'invio all'IA. Per <a href=\"/it/image-converter\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">convertire tra formati</a> prima o dopo la rimozione, usa il nostro convertitore di immagini gratuito."
+    },
+    {
+      "q": "Perché il risultato a volte sembra imperfetto?",
+      "a": "L'inpainting IA funziona prevedendo cosa c'è sotto la filigrana. Eccelle su sovrapposizioni chiare in aree uniformi o strutturate. Le filigrane su volti, capelli o dettagli fini possono lasciare lievi artefatti perché il modello ha meno contesto. Usa la vista di confronto per controllare: se non è abbastanza buona, prova a ritagliare l'area della filigrana o a usare una sorgente a risoluzione più alta."
+    },
+    {
+      "q": "Memorizzate o conservate le mie immagini?",
+      "a": "Le immagini vengono inviate alla nostra API per l'elaborazione. Non le memorizziamo in modo permanente. Consigliamo di non caricare contenuti altamente sensibili; per la massima privacy, considera strumenti che girano interamente sul dispositivo (anche se solitamente non offrono la rimozione IA)."
+    },
+    {
+      "q": "Posso elaborare più immagini contemporaneamente?",
+      "a": "No. Supportiamo l'elaborazione di una singola immagine alla volta. Carica un'immagine, ottieni il risultato, quindi passa alla successiva. Il supporto per l'elaborazione in batch potrebbe essere aggiunto in futuro."
+    },
+    {
+      "q": "È legale rimuovere le filigrane?",
+      "a": "Dipende dai tuoi diritti sull'immagine. Rimuovere una filigrana da un'immagine protetta da copyright che non possiedi o di cui non hai licenza può violare i diritti dell'autore. In genere va bene quando possiedi l'immagine, hai una licenza o stai pulendo una foto personale (es. rimuovendo il timestamp della fotocamera). Noi forniamo lo strumento; tu sei responsabile dell'uso lecito."
+    },
+    {
+      "q": "Funziona su video o PDF?",
+      "a": "No. Supportiamo solo singole immagini statiche in formato JPG, PNG o WebP. Per la rimozione di filigrane da video o PDF, avresti bisogno di uno strumento diverso."
+    },
+    {
+      "q": "Posso usarlo sul mio telefono?",
+      "a": "Sì. Funziona nel browser. Nessuna app richiesta. Carica dalla tua galleria, elabora e scarica. Le reti mobili potrebbero essere più lente per i file di grandi dimensioni."
+    }
+  ],
+  "moreTools": "Altri Strumenti Gratuiti",
+  "trustBar": {
+    "private": "Gratis",
+    "instantPreview": "Elaborazione Rapida",
+    "noServerLogs": "Nessuna Registrazione Richiesta"
+  }
+}

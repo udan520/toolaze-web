@@ -1,0 +1,188 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Copier-coller des Emojis - Copier des Emojis en Ligne Gratuitement | Toolaze",
+    "description": "Copiez et collez des emojis en ligne gratuitement. Parcourez par catégorie, recherchez, choisissez la couleur de peau et copiez instantanément. Aucune inscription. Copiez et collez des emojis dans n'importe quelle application ou réseau social."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Emoji <span class=\"text-gradient\">Copier-coller</span>",
+    "desc": "Copiez et collez des emojis en ligne gratuitement. Parcourez par catégorie, recherchez, choisissez la couleur de peau et copiez en un clic. Aucune inscription requise."
+  },
+  "intro": {
+    "title": "Pourquoi utiliser le Copier-coller d'Emojis Toolaze ?",
+    "content": [
+      {
+        "title": "Qu'est-ce que le Copier-coller d'Emojis ?",
+        "text": "Le copier-coller d'emojis est un outil en ligne gratuit qui vous permet de parcourir des milliers d'emojis par catégorie, de rechercher par mot-clé et de copier n'importe quel emoji en un clic. Vous pouvez copier et coller des emojis dans des messages, des réseaux sociaux, des documents ou n'importe où ailleurs. Aucune installation d'application ou inscription n'est nécessaire – tout fonctionne dans votre navigateur. Toolaze prend en charge les emojis fréquemment utilisés, les smileys et personnes, les animaux et la nature, la nourriture et les boissons, les voyages et lieux, les activités, les objets, les symboles et les drapeaux, afin que vous puissiez trouver rapidement le bon emoji."
+      },
+      {
+        "title": "Pourquoi copier et coller des emojis en ligne ?",
+        "text": "Trouver et copier des emojis sur un téléphone ou un PC peut être lent ou limité. Avec Toolaze, vous obtenez le copier-coller d'emojis en un seul endroit : recherchez ou parcourez par catégorie, choisissez la couleur de peau si nécessaire, et copiez instantanément. Vos emojis récemment utilisés sont enregistrés localement afin que vous puissiez copier et coller les emojis que vous utilisez souvent sans avoir à les rechercher à nouveau. Parfait pour les SMS, Discord, Instagram, TikTok ou toute application prenant en charge les emojis Unicode."
+      }
+    ]
+  },
+  "features": {
+    "title": "Fonctionnalités du Copier-coller d'Emojis",
+    "items": [
+      {
+        "icon": "📂",
+        "iconType": "quality",
+        "title": "Parcourir par catégorie",
+        "desc": "Parcourez les emojis par catégorie : Smileys et Personnes, Animaux et Nature, Nourriture et Boissons, Voyages et Lieux, Activités, Objets, Symboles et Drapeaux. Accédez à n'importe quelle catégorie depuis la barre latérale."
+      },
+      {
+        "icon": "🔍",
+        "iconType": "speed",
+        "title": "Rechercher des Emojis",
+        "desc": "Recherchez par mot-clé pour trouver rapidement le bon emoji. Tapez un mot et obtenez les emojis correspondants afin de pouvoir copier et coller celui dont vous avez besoin en quelques secondes."
+      },
+      {
+        "icon": "👋",
+        "iconType": "quality",
+        "title": "Sélecteur de couleur de peau",
+        "desc": "Choisissez la couleur de peau pour les emojis de personnes et de mains. Sélectionnez la variation que vous souhaitez, puis copiez et collez – sans étapes supplémentaires."
+      },
+      {
+        "icon": "📋",
+        "iconType": "batch",
+        "title": "Copie en un clic",
+        "desc": "Cliquez sur n'importe quel emoji pour le copier dans votre presse-papiers. Collez-le dans WhatsApp, iMessage, Discord, Instagram, TikTok ou toute autre application. Pas de téléchargement, pas de compte."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "La confidentialité avant tout",
+        "desc": "Toute la navigation et le copier-coller d'emojis se déroulent dans votre navigateur. Votre liste d'éléments récemment utilisés est stockée localement – rien n'est envoyé à nos serveurs."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Gratuit",
+        "desc": "Copier-coller d'emojis illimité sans inscription, sans publicité et sans barrière de paiement. Utilisez autant que vous le souhaitez sur n'importe quel appareil."
+      }
+    ]
+  },
+  "specs": {
+    "engine": "Sélecteur d'Emojis Basé sur Navigateur - Côté Client",
+    "limit": "Emojis Illimités - Toutes les Catégories Unicode Standard",
+    "logic": "Recherche + Navigation par Catégorie + Récemment Utilisés",
+    "privacy": "100% Côté Client (Stockage Local pour les Récents Uniquement)"
+  },
+  "performanceMetrics": {
+    "title": "Spécifications Techniques",
+    "metrics": [
+      {
+        "label": "Catégories",
+        "value": "Smileys et Personnes, Animaux et Nature, Nourriture et Boissons, Voyages, Activités, Objets, Symboles, Drapeaux"
+      },
+      {
+        "label": "Recherche",
+        "value": "Recherche par mot-clé parmi tous les emojis"
+      },
+      {
+        "label": "Couleurs de peau",
+        "value": "Pris en charge pour les emojis de personnes et de mains"
+      },
+      {
+        "label": "Copie",
+        "value": "Copie en un clic dans le presse-papiers"
+      },
+      {
+        "label": "Prise en charge des plateformes",
+        "value": "Toute application prenant en charge les emojis Unicode (WhatsApp, Discord, Instagram, TikTok, iMessage, etc.)"
+      },
+      {
+        "label": "Confidentialité",
+        "value": "Aucun téléchargement sur serveur ; liste récente stockée localement uniquement"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Comment copier et coller des Emojis",
+    "steps": [
+      {
+        "title": "Parcourir ou Rechercher",
+        "desc": "Utilisez la liste des catégories à gauche pour accéder à une section, ou tapez dans la barre de recherche pour trouver des emojis par mot-clé."
+      },
+      {
+        "title": "Choisissez votre Emoji",
+        "desc": "Cliquez sur l'emoji que vous souhaitez. Utilisez le sélecteur de couleur de peau à côté de la barre de recherche si vous avez besoin d'une couleur de peau différente pour les personnes ou les mains."
+      },
+      {
+        "title": "Copier et Coller",
+        "desc": "L'emoji est copié dans votre presse-papiers. Collez-le dans votre message, publication ou document avec Ctrl+V (ou Cmd+V sur Mac)."
+      }
+    ]
+  },
+  "comparison": {
+    "title": "Pourquoi choisir Toolaze ?",
+    "toolaze": "Toolaze 💎",
+    "others": "Autres Outils",
+    "vs": "VS",
+    "smartChoice": "Choix Intelligent",
+    "otherTools": "Autres Outils",
+    "toolazeFeatures": "Gratuit, Aucune inscription, Navigation par catégorie, Recherche, Couleur de peau, Copie en un clic, Récemment utilisés, Fonctionne dans le navigateur",
+    "othersFeatures": "Inscription requise, Catégories limitées, Pas de recherche, Publicités ou barrière de paiement, Téléchargement d'application, Plus lent, Moins d'emojis"
+  },
+  "scenesTitle": "Cas d'utilisation",
+  "scenes": [
+    {
+      "title": "SMS et Messagerie",
+      "icon": "💬",
+      "desc": "Copiez et collez des emojis dans iMessage, WhatsApp ou n'importe quel chat. Trouvez rapidement le bon emoji avec la recherche ou les catégories et envoyez-le en un clic."
+    },
+    {
+      "title": "Réseaux Sociaux",
+      "icon": "📱",
+      "desc": "Utilisez des emojis dans les légendes Instagram, les bios TikTok, les messages Discord ou les publications Twitter. Copiez et collez des emojis qui fonctionnent sur toutes les plateformes."
+    },
+    {
+      "title": "Contenu et Documents",
+      "icon": "📝",
+      "desc": "Ajoutez des emojis à des présentations, des e-mails ou des documents. Recherchez par mot-clé ou parcourez par catégorie pour copier et coller l'emoji parfait."
+    }
+  ],
+  "rating": {
+    "title": "Approuvé pour le Copier-coller d'Emojis",
+    "rating": "4.9/5 PAR PLUS DE 10K UTILISATEURS",
+    "text": "\"Rapide et simple – je l'utilise tous les jours pour Discord et Instagram.\" Copiez et collez des emojis en ligne avec Toolaze, sans inscription, sans tracas."
+  },
+  "faqTitle": "Foire Aux Questions",
+  "faq": [
+    {
+      "q": "Le copier-coller d'emojis est-il vraiment gratuit ?",
+      "a": "Oui. Le copier-coller d'emojis Toolaze est 100% gratuit. Vous pouvez copier et coller des emojis autant que vous le souhaitez sans inscription, sans publicité et sans barrière de paiement."
+    },
+    {
+      "q": "Puis-je copier et coller des emojis sur iPhone ou Android ?",
+      "a": "Oui. Ouvrez la page de copier-coller d'emojis Toolaze dans le navigateur de votre téléphone, appuyez sur un emoji pour le copier, puis collez-le dans n'importe quelle application (iMessage, WhatsApp, Instagram, etc.) qui prend en charge les emojis."
+    },
+    {
+      "q": "Ces emojis fonctionnent-ils sur Discord, Instagram et TikTok ?",
+      "a": "Oui. Les emojis sont des caractères Unicode standard, ils fonctionnent donc partout : Discord, Instagram, TikTok, WhatsApp, iMessage, Twitter, et plus encore. Il suffit de copier et coller les emojis là où vous en avez besoin."
+    },
+    {
+      "q": "Comment obtenir des variations de couleur de peau ?",
+      "a": "Utilisez le sélecteur de couleur de peau à côté de la barre de recherche. Il apparaît pour les emojis de personnes et de mains. Choisissez une couleur, puis cliquez sur l'emoji pour le copier et le coller avec cette couleur de peau."
+    },
+    {
+      "q": "Où est stockée ma liste \"récemment utilisée\" ?",
+      "a": "Les emojis récemment utilisés sont stockés uniquement dans votre navigateur (stockage local). Rien n'est envoyé à nos serveurs, votre utilisation reste donc privée."
+    },
+    {
+      "q": "Puis-je rechercher des emojis spécifiques ?",
+      "a": "Oui. Tapez un mot-clé dans la barre de recherche (par exemple \"cœur\", \"feu\", \"anniversaire\") pour voir les emojis correspondants. Cliquez ensuite pour copier et coller celui que vous souhaitez."
+    }
+  ],
+  "moreTools": "Plus d'outils rapides"
+}

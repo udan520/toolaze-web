@@ -5,11 +5,10 @@ import { generateHreflangAlternates } from '@/lib/hreflang'
 import { redirect } from 'next/navigation'
 
 interface PageProps {
-  params: Promise<{ locale: string }>
+  params: Promise<{
+    locale: string
+  }>
 }
-
-export const dynamic = 'force-static'
-export const dynamicParams = false
 
 export async function generateStaticParams() {
   const locales = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
@@ -19,14 +18,16 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const resolvedParams = await params
   const locale = resolvedParams.locale || 'en'
-  const pathWithoutLocale = '/emoji-copy-and-paste'
+  const pathWithoutLocale = '/photo-restoration'
   const hreflang = generateHreflangAlternates(locale, pathWithoutLocale)
 
-  const content = await getL2SeoContent('emoji-copy-and-paste', locale)
+  const content = await getL2SeoContent('photo-restoration', locale)
 
   return {
-    title: content?.metadata?.title || 'Emoji Copy & Paste - Copy Emojis Online Free | Toolaze',
-    description: content?.metadata?.description || 'Copy and paste emojis online for free. Browse by category, search, pick skin tone, and copy instantly. No sign-up required.',
+    title: content?.metadata?.title || 'Free Photo Restoration Online - Restore Old Photos with AI | Toolaze',
+    description:
+      content?.metadata?.description ||
+      'Restore old photos online free with AI. Remove scratches, dust, and noise, and improve details in one click.',
     robots: 'index, follow',
     alternates: {
       canonical: hreflang.canonical,
@@ -35,13 +36,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 }
 
-export default async function EmojiCopyAndPasteLocalePage({ params }: PageProps) {
+export default async function PhotoRestorationLocalePage({ params }: PageProps) {
   const resolvedParams = await params
   const locale = resolvedParams.locale || 'en'
 
-  if (locale !== 'en' && !hasLocaleL2JsonFile('emoji-copy-and-paste', locale)) {
-    redirect('/emoji-copy-and-paste')
+  if (locale !== 'en' && !hasLocaleL2JsonFile('photo-restoration', locale)) {
+    redirect('/photo-restoration')
   }
 
-  return <ToolL2PageContent locale={locale} tool="emoji-copy-and-paste" />
+  return <ToolL2PageContent locale={locale} tool="photo-restoration" />
 }

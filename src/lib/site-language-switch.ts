@@ -28,13 +28,16 @@ export function isSiteLocaleCode(segment: string): segment is SiteLocaleCode {
 export const TOOL_SUPPORTED_LOCALES: Record<string, readonly string[]> = {
   'image-compressor': ALL_LOCALE_CODES,
   'image-converter': ALL_LOCALE_CODES,
-  'font-generator': ['en', 'de', 'ja', 'es', 'fr'],
-  'emoji-copy-and-paste': ['en'],
+  'font-generator': ALL_LOCALE_CODES,
+  'emoji-copy-and-paste': ALL_LOCALE_CODES,
+  'watermark-remover': ALL_LOCALE_CODES,
   'ai-couple-photo-maker': ALL_LOCALE_CODES,
-  /** 实际内容在 `/model/seedance-2`（仅英文）；`/seedance-2` 与各 `/[locale]/seedance-2` 为重定向占位 */
-  'seedance-2': ['en'],
-  /** 实际内容在 `/model/kling-3`（仅英文） */
-  'kling-3': ['en'],
+  'photo-restoration': ALL_LOCALE_CODES,
+  /** 无各语言 SEO 数据时由页面重定向到 `/ai-tools` */
+  'ai-tools': ALL_LOCALE_CODES,
+  /** `/[locale]/seedance-2` 占位，多由页面重定向到 `/model/seedance-2` */
+  'seedance-2': ALL_LOCALE_CODES,
+  'kling-3': ALL_LOCALE_CODES,
 }
 
 /** `/model/*` 下各模型页面的实际语言支持 */
@@ -42,13 +45,13 @@ const MODEL_SUPPORTED_LOCALES: Record<string, readonly string[]> = {
   'nano-banana-2': ALL_LOCALE_CODES,
   'gpt-image-2': ALL_LOCALE_CODES,
   'gpt-image-2-0': ALL_LOCALE_CODES,
-  'nano-banana-pro': ['en'],
-  'seedance-2': ['en'],
-  'kling-3': ['en'],
+  'nano-banana-pro': ALL_LOCALE_CODES,
+  'seedance-2': ALL_LOCALE_CODES,
+  'kling-3': ALL_LOCALE_CODES,
 }
 
-/** 无 [locale]/... 多语言版本的单一路径工具（仅英文 canonical） */
-const ENGLISH_ONLY_ROOT_TOOLS = new Set(['watermark-remover', 'photo-restoration', 'ai-tools'])
+/** 无多语言 URL 的根路径（极少）；其余工具一律可切到 `/{locale}/...`，缺 JSON 时由服务端重定向到英文 canonical */
+const ENGLISH_ONLY_ROOT_TOOLS = new Set<string>()
 
 export function parseLocalePath(pathname: string): {
   pathLocale: string
@@ -87,7 +90,7 @@ export function getContentSupportedLocaleCodes(pathname: string | null): string[
     if (!modelSlug) {
       return [...ALL_LOCALE_CODES]
     }
-    return [...(MODEL_SUPPORTED_LOCALES[modelSlug] || ['en'])]
+    return [...(MODEL_SUPPORTED_LOCALES[modelSlug] || ALL_LOCALE_CODES)]
   }
 
   if (ENGLISH_ONLY_ROOT_TOOLS.has(root)) {
@@ -99,11 +102,12 @@ export function getContentSupportedLocaleCodes(pathname: string | null): string[
     return [...perTool]
   }
 
-  return ['en']
+  return [...ALL_LOCALE_CODES]
 }
 
 /**
- * 语言下拉里展示的语种：与首页一致，**始终为全站支持语言**；是否真有译文由 `getAlternateLanguageUrl` 在点击时回退到英文 canonical。
+ * 语言下拉里展示的语种：与首页一致，**始终为全站支持语言**。
+ * 无该语 SEO 文件时由目标页 `redirect` 到英文 canonical，不在此处隐藏选项。
  */
 export function getSupportedLocaleCodes(pathname: string | null): string[] {
   void pathname
@@ -149,8 +153,8 @@ export function getCurrentLocaleFromPath(pathname: string | null): SiteLocaleCod
 }
 
 /**
- * 切换语言后的路径。
- * 若当前落地页**没有** `targetLocale` 版本，则返回该页的**英文 canonical**（无前缀 `/[path]`）。
+ * 切换语言后的路径（优先 `/{locale}/...`）。
+ * 缺省语言 JSON 时由目标页的 `redirect()` 落到英文 canonical，而非在此处拦截。
  */
 export function getAlternateLanguageUrl(pathname: string, targetLocale: string): string {
   if (!pathname || pathname === '/') {

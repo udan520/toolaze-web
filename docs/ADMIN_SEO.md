@@ -52,9 +52,9 @@ npm run dev
 - **编辑 / 删除 / 新增**：各板块可编辑、删除，支持新增
 - **预览**：链接到网站页面
 - **AI 生成 SEO**：调用 Gemini API 生成 SEO 内容
-- **翻译多语言**：以英文 `src/data/en/...` 为源，调用 [KIE Gemini 2.5 Flash](https://docs.kie.ai/market/gemini/gemini-2-5-flash) 写入 `de`、`ja`、`es`、`zh-TW`、`pt`、`fr`、`ko`、`it` 等目录（见下文）
+- **翻译多语言**：以英文 `src/data/en/...` 为源，调用 [KIE Gemini 3 Flash](https://docs.kie.ai/market/gemini/gemini-3-flash)（默认；可改回 2.5）写入 `de`、`ja`、`es`、`zh-TW`、`pt`、`fr`、`ko`、`it` 等目录（见下文）
 
-## 翻译多语言（KIE Gemini 2.5 Flash）
+## 翻译多语言（KIE Gemini 3 Flash）
 
 在编辑页点击「翻译多语言」，勾选目标语言后执行。服务端会读取当前页的英文 JSON，保持键名与结构不变，仅翻译字符串值，并写入 `src/data/<locale>/`。
 
@@ -69,6 +69,12 @@ KIE_AI_API_KEY=xxx                    # 优先使用（kie.ai Bearer Token）
 # 或沿用：
 ZHEN_AI_API_KEY=xxx
 KIE_API_BASE_URL=https://api.kie.ai   # 可选，默认 https://api.kie.ai
+
+# 翻译默认走 Gemini 3 Flash（与 KIE 路径 /gemini-3-flash/v1/chat/completions 一致）
+# KIE_GEMINI_MODEL=gemini-3-flash
+# KIE_GEMINI_CHAT_SLUG=gemini-3-flash   # 可选；不设时按 MODEL 推断 2.5 / 3-flash 路径
+# 改回 2.5：设 KIE_GEMINI_MODEL=gemini-2.5-flash 即可（slug 会跟 MODEL 推断）
+# 3 Flash 翻译请求会带 stream=false、include_thoughts=false、reasoning_effort=low（可用 KIE_GEMINI_INCLUDE_THOUGHTS=1 / KIE_GEMINI_REASONING_EFFORT=high 调整）
 ```
 
 大页面翻译可能耗时数十秒至数分钟；若浏览器报超时，可在 `admin-seo.html` 的 `api(..., { timeoutMs })` 中适当加大翻译请求的等待时间。

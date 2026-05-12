@@ -1,5 +1,10 @@
 import type { Metadata } from 'next'
+import Script from 'next/script'
 import { HomePageMain } from '@/components/home/HomePageMain'
+import { ALL_LOCALE_CODES, PREFERRED_LOCALE_STORAGE_KEY } from '@/lib/site-language-switch'
+
+/** 在 hydration 前按 localStorage 跳转到 /ja 等，避免 Client 边界导致的首页白屏；仅作用于路径 `/`。 */
+const HOME_ROOT_LOCALE_REDIRECT_SCRIPT = `(function(){try{var k=${JSON.stringify(PREFERRED_LOCALE_STORAGE_KEY)};var locs=${JSON.stringify([...ALL_LOCALE_CODES])};var path=typeof location!=='undefined'?location.pathname:'';if(path!=='/'&&path!=='')return;var raw=null;try{raw=localStorage.getItem(k);}catch(e1){}if(!raw||raw==='en'||locs.indexOf(raw)<0)return;location.replace('/'+raw);}catch(e2){}})();`
 
 // 确保静态生成
 export const dynamic = 'force-static'
@@ -40,5 +45,14 @@ export const metadata: Metadata = {
 }
 
 export default async function HomePage() {
-  return <HomePageMain locale="en" />
+  return (
+    <>
+      <Script
+        id="home-root-locale-redirect"
+        strategy="beforeInteractive"
+        dangerouslySetInnerHTML={{ __html: HOME_ROOT_LOCALE_REDIRECT_SCRIPT }}
+      />
+      <HomePageMain locale="en" />
+    </>
+  )
 }
