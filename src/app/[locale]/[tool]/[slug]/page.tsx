@@ -113,6 +113,17 @@ export async function generateStaticParams() {
           })
         }
       }
+
+      // Emoji Copy & Paste L3（/zh-TW/emoji-copy-and-paste/... 等）。此处若漏推参数且 dynamicParams=false，会直接 404。
+      for (const slug of emojiCopyPasteSlugs) {
+        if (slug && typeof slug === 'string') {
+          params.push({
+            locale: locale,
+            tool: 'emoji-copy-and-paste',
+            slug: slug,
+          })
+        }
+      }
       
       // 添加 Seedance 2.0 L3 页面（/en/seedance-2/* 会重定向到 /seedance-2/*）
       for (const slug of seedance2Slugs) {

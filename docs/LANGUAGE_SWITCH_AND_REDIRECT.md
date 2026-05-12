@@ -23,4 +23,5 @@
 ## 4. 修改清单（自检）
 
 - [ ] `TOOL_SUPPORTED_LOCALES` / `MODEL_SUPPORTED_LOCALES` / `ENGLISH_ONLY_ROOT_TOOLS` 已与 `src/app` 路由与 `src/data` 一致  
+- [ ] **`[locale]/[tool]/[slug]`** 的 **`generateStaticParams`**：凡 `dynamicParams = false` 下应可访问的 L3（含 **`emoji-copy-and-paste`**），均已按 `locale × slug` 写入 `params`（勿只 `getAllSlugs` 而不 `push`）  
 - [ ] `npm run build` 通过  

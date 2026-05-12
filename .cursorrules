@@ -62,6 +62,8 @@ See 'docs/SEO_MASTER_LAYOUT.md' section 3 for the exact breadcrumb structure.
 
 **MISSING LOCALE REDIRECT**: If the user is on a localized URL (e.g. `/ko/...`) but **there is no SEO JSON for that locale** for that tool/slug, **`redirect` to the English canonical URL** (`/[tool]/[slug]` without locale prefix; model pages use `/model/...`). L2: use **`hasLocaleL2JsonFile`** in `src/lib/seo-loader.ts` before rendering. L3: **`getSeoContent`** returns null when missing (no silent English-on-wrong-locale for slug tools that already return null). See **`docs/LANGUAGE_SWITCH_AND_REDIRECT.md`**.
 
+**SSG + `[locale]/[tool]/[slug]`（防 404）**: `src/app/[locale]/[tool]/[slug]/page.tsx` 使用 **`dynamicParams = false`** 时，凡应可访问的 **`/{locale}/{tool}/{slug}`** 组合都必须在 **`generateStaticParams`** 里 **`params.push`**；仅 `getAllSlugs(...)` 取值但不写入 `params` 会导致生产/静态导出 **整页 404**（与 `src/data` 是否有译文无关）。新增多语言工具的 L3 时：**同步**在 `generateStaticParams` 的 `for (const locale of locales)` 内为该 `tool` 增加 slug 循环（含 **`emoji-copy-and-paste`**）。`loadToolJsonFile` 的 `switch (locale)` 若缺某语种分支，需 **`emoji-copy-and-paste` 英文回退**或按文件存在情况补 **`zh-TW`** 等显式 `import`，避免菜单有链、页面无数据。
+
 **MODEL INTRO BLOCK**: For AI model intro pages (Seedance 2.0, Nano Banana Pro), MUST include `modelIntro` in `sectionsOrder` after `howToUse` on both L2 and L3 pages.
 
 **USE CASES / SCENES**: The Use Cases (scenes) section MUST contain exactly 3 items—no more, no less. See docs/sections/scenarios.md.

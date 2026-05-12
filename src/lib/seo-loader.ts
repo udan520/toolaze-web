@@ -416,16 +416,22 @@ async function loadToolJsonFile(locale: string, tool: string, slug: string) {
           }
           break
         case 'zh-TW':
-          switch (slug) {
-            case 'jpg-to-png': data = await import('@/data/zh-TW/image-converter/jpg-to-png.json'); break
-            case 'png-to-jpg': data = await import('@/data/zh-TW/image-converter/png-to-jpg.json'); break
-            case 'webp-to-jpg': data = await import('@/data/zh-TW/image-converter/webp-to-jpg.json'); break
-            case 'webp-to-png': data = await import('@/data/zh-TW/image-converter/webp-to-png.json'); break
-            case 'png-to-webp': data = await import('@/data/zh-TW/image-converter/png-to-webp.json'); break
-            case 'jpg-to-webp': data = await import('@/data/zh-TW/image-converter/jpg-to-webp.json'); break
-            case 'heic-to-jpg': data = await import('@/data/zh-TW/image-converter/heic-to-jpg.json'); break
-            case 'heic-to-png': data = await import('@/data/zh-TW/image-converter/heic-to-png.json'); break
-            case 'heic-to-webp': data = await import('@/data/zh-TW/image-converter/heic-to-webp.json'); break
+          if (tool === 'emoji-copy-and-paste') {
+            switch (slug) {
+              case 'adults-only-copy-and-paste': data = await import('@/data/zh-TW/emoji-copy-and-paste/adults-only-copy-and-paste.json'); break
+            }
+          } else {
+            switch (slug) {
+              case 'jpg-to-png': data = await import('@/data/zh-TW/image-converter/jpg-to-png.json'); break
+              case 'png-to-jpg': data = await import('@/data/zh-TW/image-converter/png-to-jpg.json'); break
+              case 'webp-to-jpg': data = await import('@/data/zh-TW/image-converter/webp-to-jpg.json'); break
+              case 'webp-to-png': data = await import('@/data/zh-TW/image-converter/webp-to-png.json'); break
+              case 'png-to-webp': data = await import('@/data/zh-TW/image-converter/png-to-webp.json'); break
+              case 'jpg-to-webp': data = await import('@/data/zh-TW/image-converter/jpg-to-webp.json'); break
+              case 'heic-to-jpg': data = await import('@/data/zh-TW/image-converter/heic-to-jpg.json'); break
+              case 'heic-to-png': data = await import('@/data/zh-TW/image-converter/heic-to-png.json'); break
+              case 'heic-to-webp': data = await import('@/data/zh-TW/image-converter/heic-to-webp.json'); break
+            }
           }
           break
         case 'pt':
@@ -489,16 +495,22 @@ async function loadToolJsonFile(locale: string, tool: string, slug: string) {
           }
           break
         case 'it':
-          switch (slug) {
-            case 'jpg-to-png': data = await import('@/data/it/image-converter/jpg-to-png.json'); break
-            case 'png-to-jpg': data = await import('@/data/it/image-converter/png-to-jpg.json'); break
-            case 'webp-to-jpg': data = await import('@/data/it/image-converter/webp-to-jpg.json'); break
-            case 'webp-to-png': data = await import('@/data/it/image-converter/webp-to-png.json'); break
-            case 'png-to-webp': data = await import('@/data/it/image-converter/png-to-webp.json'); break
-            case 'jpg-to-webp': data = await import('@/data/it/image-converter/jpg-to-webp.json'); break
-            case 'heic-to-jpg': data = await import('@/data/it/image-converter/heic-to-jpg.json'); break
-            case 'heic-to-png': data = await import('@/data/it/image-converter/heic-to-png.json'); break
-            case 'heic-to-webp': data = await import('@/data/it/image-converter/heic-to-webp.json'); break
+          if (tool === 'emoji-copy-and-paste') {
+            switch (slug) {
+              case 'adults-only-copy-and-paste': data = await import('@/data/it/emoji-copy-and-paste/adults-only-copy-and-paste.json'); break
+            }
+          } else {
+            switch (slug) {
+              case 'jpg-to-png': data = await import('@/data/it/image-converter/jpg-to-png.json'); break
+              case 'png-to-jpg': data = await import('@/data/it/image-converter/png-to-jpg.json'); break
+              case 'webp-to-jpg': data = await import('@/data/it/image-converter/webp-to-jpg.json'); break
+              case 'webp-to-png': data = await import('@/data/it/image-converter/webp-to-png.json'); break
+              case 'png-to-webp': data = await import('@/data/it/image-converter/png-to-webp.json'); break
+              case 'jpg-to-webp': data = await import('@/data/it/image-converter/jpg-to-webp.json'); break
+              case 'heic-to-jpg': data = await import('@/data/it/image-converter/heic-to-jpg.json'); break
+              case 'heic-to-png': data = await import('@/data/it/image-converter/heic-to-png.json'); break
+              case 'heic-to-webp': data = await import('@/data/it/image-converter/heic-to-webp.json'); break
+            }
           }
           break
       }
