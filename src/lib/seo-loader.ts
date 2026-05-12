@@ -503,6 +503,20 @@ async function loadToolJsonFile(locale: string, tool: string, slug: string) {
           break
       }
 
+      // Emoji L3：静态 import 仅在 case 'en' 中配置；de/ja/pt 等分支未写 emoji，data 会一直是 null，
+      // 且不会进入下方 catch（未抛错），导致 getAllSlugs 为空 → 导航 Quick Tools hover 无三级链接。
+      // 其它语言用英文 JSON 取标题；href 仍由 Navigation 按 navEffectiveLocale 加前缀。
+      if (!data && tool === 'emoji-copy-and-paste') {
+        switch (slug) {
+          case 'crying-copy-and-paste': data = await import('@/data/en/emoji-copy-and-paste/crying-copy-and-paste.json'); break
+          case 'cross-copy-and-paste': data = await import('@/data/en/emoji-copy-and-paste/cross-copy-and-paste.json'); break
+          case 'adults-only-copy-and-paste': data = await import('@/data/en/emoji-copy-and-paste/adults-only-copy-and-paste.json'); break
+          case 'fire-copy-and-paste': data = await import('@/data/en/emoji-copy-and-paste/fire-copy-and-paste.json'); break
+          case 'birthday-copy-and-paste': data = await import('@/data/en/emoji-copy-and-paste/birthday-copy-and-paste.json'); break
+          case 'cat-copy-and-paste': data = await import('@/data/en/emoji-copy-and-paste/cat-copy-and-paste.json'); break
+        }
+      }
+
       // watermark-remover L3：JSON 位于 src/data/<locale>/watermark-remover/<slug>.json
       // switch 里此前只为 en 写了 import/fs；其它语言会漏加载并落到末尾 return null
       if (!data && tool === 'watermark-remover') {
