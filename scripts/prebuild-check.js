@@ -22,16 +22,6 @@ const isCI = process.env.CI === 'true' ||
              process.env.VERCEL ||  // Vercel 也可能设置此变量
              process.env.SKIP_PREBUILD === 'true';
 
-// Next `output: 'export'` 仅在 NODE_ENV=production 时启用。若在 Pages 环境变量里误设 NODE_ENV=development，不会生成 out/ →「No deployment available」
-if ((process.env.CF_PAGES || process.env.CF_PAGES_BRANCH) && process.env.NODE_ENV === 'development') {
-  console.error('')
-  console.error('❌ Cloudflare Pages: NODE_ENV is "development". Static export is disabled, so no `out/` folder is produced.')
-  console.error('   Fix: Pages → Settings → Environment variables — remove NODE_ENV or set it to "production".')
-  console.error('   Do not set NODE_ENV=development for Next.js static export builds.')
-  console.error('')
-  process.exit(1)
-}
-
 // prebuild 脚本只在构建时运行，所以总是应该移除 API 路由
 // 静态导出不支持动态 API 路由，生产环境使用 Cloudflare Pages Functions
 console.log('📦 构建模式：临时移除 API 路由（静态导出不支持动态 API 路由）');

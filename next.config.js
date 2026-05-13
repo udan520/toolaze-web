@@ -11,7 +11,7 @@ const nextConfig = {
   ...(!isProdBuild ? { allowedDevOrigins: devAllowedOrigins } : {}),
   // 强制启用静态导出（Cloudflare Pages 需要）
   // Cloudflare Pages 使用静态文件托管，必须启用静态导出
-  // 仅在 production 启用 export（勿在 Cloudflare 环境变量里把 NODE_ENV 设为 development，否则无 out/ 且 export 行为异常）
+  // 仅在生产构建启用，避免本地 dev 模式下样式/静态资源加载异常
   output: isProdBuild ? 'export' : undefined,
   // 提高请求体限制，支持去水印上传大图（默认 1MB 会导致上传失败）
   experimental: {

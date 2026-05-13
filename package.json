@@ -9,7 +9,7 @@
     "dev": "next dev -p 3006",
     "dev:clean": "node -e \"const fs=require('fs');fs.rmSync('.next',{recursive:true,force:true,maxRetries:10,retryDelay:200});console.log('✅ .next cleaned')\" && next dev -p 3006",
     "dev:all": "npx --yes concurrently -n web,seo -c blue,magenta \"npm run dev\" \"npm run admin:seo\"",
-    "build": "next build",
+    "build": "node scripts/next-build.js",
     "postbuild": "node scripts/postbuild-restore-api.js",
     "start": "next start -p 3006",
     "lint": "next lint",
