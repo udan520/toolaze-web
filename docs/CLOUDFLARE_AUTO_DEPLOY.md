@@ -159,6 +159,7 @@ Cloudflare Pages 会自动缓存 `node_modules`，加速后续构建。
 
 **最常见原因**：
 - **Build output directory（发布目录）** 填错。本项目为 Next.js **`output: 'export'`**，产物在仓库根目录的 **`out`** 文件夹。**不要**填 `.next`、`dist`、`build` 或留空。
+- **环境变量里设置了 `NODE_ENV=development`**：本仓库的 `next.config.js` 仅在 **`NODE_ENV=production`** 时启用静态导出；若在 Cloudflare Pages 里误加该变量，构建**不会生成 `out/`**，控制台会表现为 **No deployment available**。请**删除**该变量或改为 **`production`**（一般不必在 Pages 里手动设 `NODE_ENV`，`npm run build` 会按 production 构建）。
 - **Framework preset** 若选成默认「Next.js（SSR）」等，可能与静态导出流程不一致；请使用 **Next.js (Static HTML Export)** 或等价选项，并保证构建命令为 **`npm run build`**（会执行 `prebuild` / `postbuild`）。
 - 构建在生成静态页前 **OOM 被杀死**：在 Pages → **Environment variables** 增加 `NODE_OPTIONS` = `--max-old-space-size=4096`（或 6144），并确认使用 **Node 20**（仓库根目录已有 **`.node-version`**，亦可在控制台设置 `NODE_VERSION=20`）。
 

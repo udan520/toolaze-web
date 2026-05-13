@@ -1,0 +1,6 @@
+# Cloudflare Pages：绑定静态导出目录（next build → out/）。
+# 若 Dashboard 曾把输出目录填错，此文件可与「Build output directory: out」对齐。
+# 将 name 改为你在 Cloudflare 上的 Pages 项目名；不确定时可运行：npx wrangler pages download config
+name = "toolaze-web"
+pages_build_output_dir = "out"
+compatibility_date = "2025-05-01"
