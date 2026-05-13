@@ -37,7 +37,8 @@
 
 ### 环境变量（可选）
 如果需要环境变量，点击 **"Environment variables"** 添加：
-- `NODE_VERSION`: `20`（确保使用 Node.js 20+）
+- `NODE_VERSION`: `20`（确保使用 Node.js 20+；与仓库根目录 **`.node-version`** 一致即可）
+- 若构建在「Generating static pages」附近被系统杀进程，可添加：`NODE_OPTIONS` = `--max-old-space-size=4096`
 
 ### 根目录
 - **Root directory**: `/`（默认，项目根目录）
@@ -151,6 +152,19 @@ Cloudflare Pages 会自动缓存 `node_modules`，加速后续构建。
 1. 确认 `next.config.js` 中有 `output: 'export'`
 2. 确认 `images.unoptimized: true` 已设置
 3. 检查构建输出目录是否为 `out`
+
+### 问题 4：控制台提示 **No deployment available**（无可用部署）
+
+**含义**：本次构建没有产出 Cloudflare 能识别的静态资源包，或**发布目录为空/路径错误**。
+
+**最常见原因**：
+- **Build output directory（发布目录）** 填错。本项目为 Next.js **`output: 'export'`**，产物在仓库根目录的 **`out`** 文件夹。**不要**填 `.next`、`dist`、`build` 或留空。
+- **Framework preset** 若选成默认「Next.js（SSR）」等，可能与静态导出流程不一致；请使用 **Next.js (Static HTML Export)** 或等价选项，并保证构建命令为 **`npm run build`**（会执行 `prebuild` / `postbuild`）。
+- 构建在生成静态页前 **OOM 被杀死**：在 Pages → **Environment variables** 增加 `NODE_OPTIONS` = `--max-old-space-size=4096`（或 6144），并确认使用 **Node 20**（仓库根目录已有 **`.node-version`**，亦可在控制台设置 `NODE_VERSION=20`）。
+
+**自检**：
+1. 打开失败的那条 **Deployment** → **Build log**，确认末尾有 `Exporting` / `out` 且无 `Failed`。
+2. 本地执行：`rm -rf node_modules && npm ci && CI=true NODE_ENV=production npm run build`，确认生成 **`out/index.html`** 后再推送到 Git。
 
 ---
 
