@@ -1,7 +1,7 @@
 const isProdBuild = process.env.NODE_ENV === 'production'
 
 /** 局域网用手机/另一台电脑访问 `next dev` 时，允许从该 Origin 拉取 `/_next/*`，避免样式/静态资源加载失败（可用 NEXT_DEV_ALLOWED_ORIGINS 覆盖，逗号分隔 hostname） */
-const devAllowedOrigins = (process.env.NEXT_DEV_ALLOWED_ORIGINS || '192.168.101.9,192.168.101.3')
+const devAllowedOrigins = (process.env.NEXT_DEV_ALLOWED_ORIGINS || '127.0.0.1,localhost,192.168.101.9,192.168.101.3')
   .split(',')
   .map((s) => s.trim())
   .filter(Boolean)

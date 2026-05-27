@@ -373,7 +373,7 @@ export default function Footer() {
           <div>
             <Link 
               href={getLocalizedHref('/ai-tools')} 
-              className="text-white font-bold text-sm mb-4 uppercase tracking-wider block hover:text-indigo-400 transition-colors"
+              className="text-white font-bold text-sm mb-4 tracking-wide block hover:text-indigo-400 transition-colors"
             >
               {translations.aiTools || 'AI Tools'}
             </Link>
@@ -409,7 +409,7 @@ export default function Footer() {
           <div>
             <Link 
               href={getLocalizedHref('/model/seedance-2')} 
-              className="text-white font-bold text-sm mb-4 uppercase tracking-wider block hover:text-indigo-400 transition-colors"
+              className="text-white font-bold text-sm mb-4 tracking-wide block hover:text-indigo-400 transition-colors"
             >
               {translations.aiVideo || 'AI Video'}
             </Link>
@@ -437,7 +437,7 @@ export default function Footer() {
           <div>
             <Link 
               href={getLocalizedHref('/model/nano-banana-pro')} 
-              className="text-white font-bold text-sm mb-4 uppercase tracking-wider block hover:text-indigo-400 transition-colors"
+              className="text-white font-bold text-sm mb-4 tracking-wide block hover:text-indigo-400 transition-colors"
             >
               {translations.aiImage || 'AI Image'}
             </Link>
@@ -465,7 +465,7 @@ export default function Footer() {
           <div>
             <Link 
               href={getLocalizedHref('/image-compressor')} 
-              className="text-white font-bold text-sm mb-4 uppercase tracking-wider block hover:text-indigo-400 transition-colors"
+              className="text-white font-bold text-sm mb-4 tracking-wide block hover:text-indigo-400 transition-colors"
             >
               {translations.imageCompression || 'Image Compression'}
             </Link>
@@ -491,7 +491,7 @@ export default function Footer() {
           <div>
             <Link 
               href={getLocalizedHref('/image-converter')} 
-              className="text-white font-bold text-sm mb-4 uppercase tracking-wider block hover:text-indigo-400 transition-colors"
+              className="text-white font-bold text-sm mb-4 tracking-wide block hover:text-indigo-400 transition-colors"
             >
               {translations.imageConverter || 'Image Converter'}
             </Link>
@@ -517,7 +517,7 @@ export default function Footer() {
           <div>
             <Link 
               href={getLocalizedHref('/font-generator')} 
-              className="text-white font-bold text-sm mb-4 uppercase tracking-wider block hover:text-indigo-400 transition-colors"
+              className="text-white font-bold text-sm mb-4 tracking-wide block hover:text-indigo-400 transition-colors"
             >
               {translations.fontGenerator || 'Font Generator'}
             </Link>
@@ -543,7 +543,7 @@ export default function Footer() {
           <div>
             <Link 
               href={getLocalizedHref('/emoji-copy-and-paste')} 
-              className="text-white font-bold text-sm mb-4 uppercase tracking-wider block hover:text-indigo-400 transition-colors"
+              className="text-white font-bold text-sm mb-4 tracking-wide block hover:text-indigo-400 transition-colors"
             >
               {translations.emojiCopyAndPaste || 'Emoji Copy & Paste'}
             </Link>
@@ -611,10 +611,11 @@ export default function Footer() {
                           key={locale.code}
                           href={getAlternateLanguageUrl(pathname || '/', locale.code)}
                           onClick={() => {
+                            const nextLocale = resolveLocaleForPath(pathname || '/', locale.code)
                             if (typeof window !== 'undefined') {
-                              window.localStorage.setItem(PREFERRED_LOCALE_STORAGE_KEY, locale.code)
+                              window.localStorage.setItem(PREFERRED_LOCALE_STORAGE_KEY, nextLocale)
                             }
-                            setPreferredLocale(locale.code)
+                            setPreferredLocale(nextLocale)
                             setIsLanguageMenuOpen(false)
                           }}
                           className="flex items-center gap-3 px-4 py-2 text-sm text-slate-300 hover:bg-indigo-600 hover:text-white transition-all group"
@@ -636,7 +637,7 @@ export default function Footer() {
           <p className="text-xs text-slate-400 mb-2" suppressHydrationWarning>
             {translations.copyright.replace('{year}', currentYear.toString())}
           </p>
-          <p className="text-[10px] text-slate-500 font-bold uppercase tracking-[0.3em]">
+          <p className="text-[10px] text-slate-500 font-bold tracking-[0.18em]">
             {translations.tagline}
           </p>
         </div>

@@ -50,8 +50,8 @@ const MODEL_SUPPORTED_LOCALES: Record<string, readonly string[]> = {
   'kling-3': ALL_LOCALE_CODES,
 }
 
-/** 无多语言 URL 的根路径（极少）；其余工具一律可切到 `/{locale}/...`，缺 JSON 时由服务端重定向到英文 canonical */
-const ENGLISH_ONLY_ROOT_TOOLS = new Set<string>()
+/** 无多语言 URL 的根路径；切换到其他语言时直接回英文 canonical */
+const ENGLISH_ONLY_ROOT_TOOLS = new Set<string>(['prompts'])
 
 export function parseLocalePath(pathname: string): {
   pathLocale: string

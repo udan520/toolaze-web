@@ -36,6 +36,7 @@ const defaultNavTranslations = {
   gptImage2: 'GPT Image 2',
   seedance2: 'Seedance 2.0',
   kling3: 'Kling 3.0',
+  promptLibrary: 'Prompts',
   aboutUs: 'About Us'
 }
 
@@ -531,6 +532,12 @@ export default function Navigation() {
 
         {/* 桌面端菜单 */}
         <div className="hidden md:flex gap-8 text-sm font-bold text-slate-700 items-center">
+          <Link
+            href={getLocalizedHref('/prompts')}
+            className="hover:text-indigo-600 transition-colors"
+          >
+            {navTranslations.promptLibrary || defaultNavTranslations.promptLibrary}
+          </Link>
           {/* 一级菜单：Quick Tools */}
           <div className="relative group">
             <button className="hover:text-indigo-600 transition-colors flex items-center gap-1">
@@ -747,7 +754,6 @@ export default function Navigation() {
               </div>
             </div>
           </div>
-          <Link href={getLocalizedHref('/about')} className="hover:text-indigo-600 transition-colors">{navTranslations.aboutUs}</Link>
           {showNavLanguageSwitcher && (
             <div className="relative">
               <button
@@ -777,10 +783,11 @@ export default function Navigation() {
                         key={locale.code}
                         href={getAlternateLanguageUrl(pathname || '/', locale.code)}
                         onClick={() => {
+                          const nextLocale = resolveLocaleForPath(pathname || '/', locale.code)
                           if (typeof window !== 'undefined') {
-                            window.localStorage.setItem(PREFERRED_LOCALE_STORAGE_KEY, locale.code)
+                            window.localStorage.setItem(PREFERRED_LOCALE_STORAGE_KEY, nextLocale)
                           }
-                          setPreferredLocale(locale.code)
+                          setPreferredLocale(nextLocale)
                           setNavLangOpen(false)
                         }}
                         className="flex items-center gap-3 px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600"
@@ -803,6 +810,19 @@ export default function Navigation() {
             className="block md:!hidden absolute top-full left-0 right-0 bg-white shadow-xl border-t border-indigo-50 z-40 max-h-[calc(100vh-70px)] overflow-y-auto overscroll-contain"
           >
             <div className="px-6 py-4 space-y-4 pb-8">
+              <Link
+                href={getLocalizedHref('/prompts')}
+                onClick={() => {
+                  setMobileMenuOpen(false)
+                  setExpandedSubmenus(new Set())
+                }}
+                className="flex items-center justify-between rounded-2xl border border-indigo-100 bg-indigo-50/70 px-4 py-3 text-sm font-bold text-indigo-700 transition-colors hover:bg-indigo-100"
+              >
+                <span>{navTranslations.promptLibrary || defaultNavTranslations.promptLibrary}</span>
+                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
               {/* Quick Tools 部分 */}
               <div className="border-b border-indigo-50 pb-4">
                 <div className="text-sm font-bold text-slate-700 mb-3">{navTranslations.quickTools}</div>
@@ -1054,17 +1074,6 @@ export default function Navigation() {
                   </Link>
                 </div>
               </div>
-              {/* About Us */}
-              <Link
-                href={getLocalizedHref('/about')}
-                onClick={() => {
-                  setMobileMenuOpen(false)
-                  setExpandedSubmenus(new Set())
-                }}
-                className="block px-3 py-2 text-sm font-bold text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
-              >
-                {navTranslations.aboutUs}
-              </Link>
               {showNavLanguageSwitcher && (
                 <div className="border-t border-indigo-50 pt-4 mt-2">
                   <div className="text-sm font-bold text-slate-700 mb-3">{navTranslations.language}</div>
@@ -1074,10 +1083,11 @@ export default function Navigation() {
                         key={locale.code}
                         href={getAlternateLanguageUrl(pathname || '/', locale.code)}
                         onClick={() => {
+                          const nextLocale = resolveLocaleForPath(pathname || '/', locale.code)
                           if (typeof window !== 'undefined') {
-                            window.localStorage.setItem(PREFERRED_LOCALE_STORAGE_KEY, locale.code)
+                            window.localStorage.setItem(PREFERRED_LOCALE_STORAGE_KEY, nextLocale)
                           }
-                          setPreferredLocale(locale.code)
+                          setPreferredLocale(nextLocale)
                           setMobileMenuOpen(false)
                           setExpandedSubmenus(new Set())
                         }}
