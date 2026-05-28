@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next'
 import { getAllTools } from '@/lib/seo-loader'
+import { getPromptItems } from '@/lib/prompts'
 
 // 静态导出模式需要此配置
 export const dynamic = 'force-static'
@@ -95,6 +96,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: today,
     changeFrequency: 'weekly',
     priority: 0.9,
+  })
+  entries.push({
+    url: `${baseUrl}/prompts`,
+    lastModified: today,
+    changeFrequency: 'weekly',
+    priority: 0.9,
+  })
+  getPromptItems().forEach((item) => {
+    entries.push({
+      url: `${baseUrl}/prompts/${item.tweetId}`,
+      lastModified: today,
+      changeFrequency: 'monthly',
+      priority: 0.65,
+    })
   })
   SUPPORTED_LOCALES.forEach((locale) => {
     if (locale === 'en') return

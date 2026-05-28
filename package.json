@@ -18,6 +18,7 @@
     "sync-exact": "tsx scripts/sync-exact-copy.ts",
     "pre-deploy": "node scripts/pre-deploy-check.js",
     "prebuild": "node scripts/prebuild-check.js",
+    "audit:prompt-titles": "node scripts/audit-prompt-titles.js",
     "admin:seo": "node scripts/admin-seo-server.js",
     "admin:seo:restart": "pkill -f 'admin-seo-server' 2>/dev/null; sleep 1; node scripts/admin-seo-server.js"
   },

@@ -7,7 +7,7 @@ import { getPromptItems, getPromptStats } from '@/lib/prompts'
 export const metadata: Metadata = {
   title: 'AI Prompt Templates - Toolaze',
   description:
-    'Explore X-sourced AI prompt templates for Seedance 2.0, Kling, GPT Image 2, Happy Horse, product ads, memes, video concepts, and image generation workflows.',
+    'Explore X-sourced AI prompt templates for Seedance 2.0, Kling, GPT Image 2, Nano Banana, Happy Horse, product ads, memes, video concepts, and image generation workflows.',
   alternates: {
     canonical: 'https://toolaze.com/prompts',
   },

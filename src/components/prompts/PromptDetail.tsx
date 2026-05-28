@@ -5,8 +5,9 @@ import type { PromptItem } from '@/lib/prompts'
 
 const fullNumber = new Intl.NumberFormat('en-US')
 
-function formatNumber(value: number | undefined): string {
-  return fullNumber.format(Number(value || 0))
+function formatMetric(value: number | null | undefined): string {
+  if (typeof value !== 'number' || !Number.isFinite(value)) return '-'
+  return fullNumber.format(value)
 }
 
 function MetricIcon({ type }: { type: 'Likes' | 'Views' | 'Reposts' | 'Bookmarks' }) {
@@ -62,6 +63,20 @@ type PreviewImage = {
   label?: string
 }
 
+function MediaPlaceholder({ title }: { title: string }) {
+  return (
+    <div className="flex h-full w-full items-center justify-center bg-[radial-gradient(circle_at_30%_20%,rgba(99,102,241,0.16),transparent_28%),linear-gradient(135deg,#f8faff,#eef2ff)] p-8 text-center shadow-xl shadow-indigo-100">
+      <div>
+        <span className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-white text-xl font-black text-indigo-500 shadow-sm shadow-indigo-100">
+          AI
+        </span>
+        <p className="text-base font-black text-slate-800">{title}</p>
+        <p className="mt-2 text-sm font-semibold text-slate-400">Prompt only</p>
+      </div>
+    </div>
+  )
+}
+
 function DetailMedia({
   item,
   canRenderVideo,
@@ -96,7 +111,8 @@ function DetailMedia({
   }
 
   if (item.videoUrl) {
-    const posterImage = item.poster || item.image || ''
+    const posterImage = item.poster || item.image
+    if (!posterImage) return <MediaPlaceholder title={item.title} />
 
     return (
       <div
@@ -139,7 +155,8 @@ function DetailMedia({
     )
   }
 
-  const image = item.image || item.poster || ''
+  const image = item.image || item.poster
+  if (!image) return <MediaPlaceholder title={item.title} />
 
   return (
     <div
@@ -191,6 +208,13 @@ export default function PromptDetail({ item }: { item: PromptItem }) {
     window.setTimeout(() => setCopied(false), 1400)
   }
 
+  const metrics = [
+    ['Likes', item.likes],
+    ['Views', item.views],
+    ['Reposts', item.retweets],
+    ['Bookmarks', item.bookmarks],
+  ] as const
+
   return (
     <section className="bg-white px-6 py-12">
       <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]">
@@ -212,17 +236,12 @@ export default function PromptDetail({ item }: { item: PromptItem }) {
           </h1>
 
           <div className="mb-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
-            {[
-              ['Likes', item.likes],
-              ['Views', item.views],
-              ['Reposts', item.retweets],
-              ['Bookmarks', item.bookmarks],
-            ].map(([label, value]) => (
+            {metrics.map(([label, value]) => (
               <div key={label} className="rounded-2xl bg-white p-4 shadow-sm shadow-indigo-50">
                 <div className="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-[#F8FAFF] text-indigo-500">
                   <MetricIcon type={label as 'Likes' | 'Views' | 'Reposts' | 'Bookmarks'} />
                 </div>
-                <strong className="block text-center text-lg font-black text-slate-900">{formatNumber(Number(value || 0))}</strong>
+                <strong className="block text-center text-lg font-black text-slate-900">{formatMetric(value)}</strong>
                 <span className="block text-center text-xs font-bold text-slate-400">{label}</span>
               </div>
             ))}

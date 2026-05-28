@@ -17,10 +17,10 @@ export type PromptItem = {
   authorUrl?: string
   sourceUrl: string
   likes?: number
-  views?: number
+  views?: number | null
   retweets?: number
   replies?: number
-  bookmarks?: number
+  bookmarks?: number | null
   quotes?: number
   published?: string
   tweetId: string

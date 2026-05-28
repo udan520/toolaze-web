@@ -46,6 +46,7 @@ docs/
     ├── ADMIN_SEO.md            # 管理后台使用说明
     ├── LANGUAGE_SWITCH_AND_REDIRECT.md  # 导航/页脚语言入口与缺语种→英语重定向
     ├── MODEL_INTRO_BLOCK.md    # Model Intro 板块规范
+    ├── PROMPTS_DATA_RULES.md   # Prompts 模板库数据与标题规则
     └── SITEMAP_UPDATE_GUIDE.md # Sitemap 更新指南
 ```
 
@@ -111,3 +112,4 @@ docs/
 - **ADMIN_SEO.md**：管理后台启动、AI 生成配置
 - **SITEMAP_UPDATE_GUIDE.md**：部署前 Sitemap 检查
 - **MODEL_INTRO_BLOCK.md**：AI 模型页 Model Intro 板块
+- **PROMPTS_DATA_RULES.md**：Prompts 模板库标题、prompt 原文、X source、指标与媒体规则

@@ -4,8 +4,8 @@ import { notFound } from 'next/navigation'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import PromptDetail from '@/components/prompts/PromptDetail'
-import { RelatedPromptGrid } from '@/components/prompts/PromptGallery'
-import { getPromptItem, getPromptItems, getRelatedPromptItems } from '@/lib/prompts'
+import RelatedTemplatesLoader from '@/components/prompts/RelatedTemplatesLoader'
+import { getPromptItem, getPromptItems } from '@/lib/prompts'
 
 type PromptDetailPageProps = {
   params: Promise<{ id: string }>
@@ -34,8 +34,6 @@ export default async function PromptDetailPage({ params }: PromptDetailPageProps
   const item = getPromptItem(id)
   if (!item) notFound()
 
-  const relatedItems = getRelatedPromptItems(item)
-
   return (
     <>
       <Navigation />
@@ -49,14 +47,7 @@ export default async function PromptDetailPage({ params }: PromptDetailPageProps
           </Link>
         </div>
         <PromptDetail item={item} />
-        {relatedItems.length > 0 ? (
-          <section className="bg-[#F8FAFF] px-6 py-16" aria-label="Related templates">
-            <div className="mx-auto max-w-6xl">
-              <h2 className="mb-8 text-3xl font-black tracking-tight text-slate-900">Related templates</h2>
-              <RelatedPromptGrid items={relatedItems} />
-            </div>
-          </section>
-        ) : null}
+        <RelatedTemplatesLoader baseItem={item} />
       </main>
       <Footer />
     </>
