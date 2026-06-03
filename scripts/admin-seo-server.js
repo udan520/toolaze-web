@@ -1316,13 +1316,12 @@ const server = http.createServer(async (req, res) => {
   }
 
   if (pathname === '/api/test-gemini' && req.method === 'GET') {
-    const apiKey = process.env.ZHEN_AI_API_KEY
-    const apiUrl = (process.env.ZHEN_AI_FLUX_BASE_URL || 'https://ai.t8star.cn').replace(/\/$/, '')
-    const model = process.env.GEMINI_MODEL || 'gemini-2.0-flash'
-    const fullUrl = `${apiUrl}/v1/chat/completions`
+    const apiKey = getKieApiKey()
+    const model = process.env.KIE_GEMINI_MODEL || 'gemini-3-flash'
+    const fullUrl = getKieGeminiChatCompletionsUrl()
     if (!apiKey) {
       res.writeHead(200, { 'Content-Type': 'application/json' })
-      res.end(JSON.stringify({ ok: false, error: 'ZHEN_AI_API_KEY 未配置' }))
+      res.end(JSON.stringify({ ok: false, error: 'KIE_AI_API_KEY 或 ZHEN_AI_API_KEY 未配置' }))
       return
     }
     try {
@@ -1330,6 +1329,7 @@ const server = http.createServer(async (req, res) => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${apiKey}` },
         body: JSON.stringify({
+          ...kieGemini3TranslateBodyExtras(),
           model,
           messages: [{ role: 'user', content: 'Say hi' }],
           max_tokens: 10,
@@ -1345,8 +1345,9 @@ const server = http.createServer(async (req, res) => {
         statusText: r.statusText,
         url: fullUrl,
         model,
+        provider: getKieTranslateApiLabel(),
         response: body,
-        hint: !r.ok ? '若 404：该 Base URL 可能不支持 chat，可尝试 gpt-best 等平台的 Base URL。若 401：检查 API Key。' : null,
+        hint: !r.ok ? '若 401：检查 KIE_AI_API_KEY。若 404/503：检查 KIE_GEMINI_CHAT_SLUG 或 kie.ai 模型可用性。' : null,
       }))
     } catch (e) {
       res.writeHead(200, { 'Content-Type': 'application/json' })

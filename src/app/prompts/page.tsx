@@ -2,14 +2,25 @@ import type { Metadata } from 'next'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import PromptGallery from '@/components/prompts/PromptGallery'
-import { getPromptItems, getPromptStats } from '@/lib/prompts'
+import {
+  getPromptItems,
+  getPromptStats,
+} from '@/lib/prompts'
 
 export const metadata: Metadata = {
-  title: 'AI Prompt Templates - Toolaze',
+  title: 'AI Image & Video Prompt Templates | Seedance, Kling, GPT Image 2',
   description:
-    'Explore X-sourced AI prompt templates for Seedance 2.0, Kling, GPT Image 2, Nano Banana, Happy Horse, product ads, memes, video concepts, and image generation workflows.',
+    'Copy source-backed AI prompt templates from X for Seedance 2.0, Kling, GPT Image 2, Nano Banana, Happy Horse and more. Filter by model, use case, likes and views.',
   alternates: {
     canonical: 'https://toolaze.com/prompts',
+  },
+  openGraph: {
+    title: 'AI Image & Video Prompt Templates | Toolaze',
+    description:
+      'Browse source-backed AI image and video prompts from X. Copy templates for Seedance 2.0, Kling, GPT Image 2, Nano Banana, Happy Horse and more.',
+    url: 'https://toolaze.com/prompts',
+    siteName: 'Toolaze',
+    type: 'website',
   },
 }
 
@@ -21,10 +32,33 @@ const compactNumber = new Intl.NumberFormat('en-US', {
 export default function PromptsPage() {
   const items = getPromptItems()
   const stats = getPromptStats(items)
-  const models = Array.from(new Set(items.map((item) => item.model))).slice(0, 5)
+  const itemListJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'AI Image and Video Prompt Templates',
+    description: metadata.description,
+    url: 'https://toolaze.com/prompts',
+    numberOfItems: items.length,
+    itemListElement: items.slice(0, 30).map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      url: `https://toolaze.com/prompts/${item.tweetId}`,
+      name: `${item.title} Prompt for ${item.model}`,
+    })),
+  }
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://toolaze.com' },
+      { '@type': 'ListItem', position: 2, name: 'Prompts', item: 'https://toolaze.com/prompts' },
+    ],
+  }
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <Navigation />
       <main className="min-h-screen bg-[#F8FAFF]">
         <header className="relative overflow-hidden bg-[#F8FAFF] px-6 py-20 md:py-24">
@@ -39,18 +73,11 @@ export default function PromptsPage() {
             <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_390px] lg:items-end">
               <div>
                 <h1 className="home-section-title mb-5 max-w-4xl text-[42px] leading-[1.04] tracking-tight text-slate-950 md:text-[64px]">
-                  Battle-tested prompts for AI image and video creation
+                  AI Image And Video Prompt Templates From X
                 </h1>
                 <p className="max-w-3xl text-lg leading-relaxed text-slate-600 md:text-xl">
-                  Browse source-backed templates from original X posts, compare outcomes, copy prompts, and filter by model, category, or performance.
+                  Copy battle-tested prompts for Seedance 2.0, Kling, GPT Image 2, Nano Banana and more. Browse source-backed examples by model, use case, and performance.
                 </p>
-                <div className="mt-7 flex flex-wrap gap-2">
-                  {models.map((model) => (
-                    <span key={model} className="rounded-full border border-white/80 bg-white/75 px-4 py-2 text-sm font-bold text-slate-700 shadow-sm shadow-indigo-100">
-                      {model}
-                    </span>
-                  ))}
-                </div>
               </div>
               <div className="rounded-[2.25rem] border border-white/80 bg-white/80 p-4 shadow-2xl shadow-indigo-100/80 backdrop-blur">
                 <div className="rounded-[1.75rem] bg-slate-950 p-5 text-white">
@@ -76,7 +103,7 @@ export default function PromptsPage() {
             </div>
           </div>
         </header>
-        <PromptGallery />
+        <PromptGallery items={items} />
       </main>
       <Footer />
     </>

@@ -354,6 +354,16 @@ export default function PromptGallery({ items: initialItems = [], fetchUrl = '/p
   return (
     <section className="bg-white px-6 py-16">
       <div className="mx-auto max-w-6xl">
+        <style jsx>{`
+          .prompt-tab-scroller {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+          }
+
+          .prompt-tab-scroller::-webkit-scrollbar {
+            display: none;
+          }
+        `}</style>
         <div className="sticky top-[70px] z-30 mb-8 rounded-[2rem] border border-indigo-100/80 bg-white/90 p-3 shadow-xl shadow-indigo-100/50 backdrop-blur-xl">
           <div className="grid gap-3 lg:grid-cols-[1fr_190px_auto] lg:items-center">
             <form className="relative block" onSubmit={submitSearch}>
@@ -408,7 +418,7 @@ export default function PromptGallery({ items: initialItems = [], fetchUrl = '/p
           <p className="text-xs font-black tracking-[0.08em] text-slate-400">Models</p>
         </div>
 
-        <div className="mb-7 flex flex-wrap gap-2">
+        <div className="prompt-tab-scroller mb-7 flex gap-2 overflow-x-auto pb-1">
           {models.map((name) => (
             <button
               key={name}
@@ -419,7 +429,7 @@ export default function PromptGallery({ items: initialItems = [], fetchUrl = '/p
                 setCategory('All')
               }}
               className={
-                'inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-black transition duration-200 active:scale-95 ' +
+                'inline-flex shrink-0 items-center gap-2 rounded-full border px-4 py-2 text-sm font-black transition duration-200 active:scale-95 ' +
                 (model === name
                   ? 'border-slate-900 bg-slate-900 text-white shadow-lg shadow-slate-100'
                   : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:bg-slate-50')
@@ -438,7 +448,7 @@ export default function PromptGallery({ items: initialItems = [], fetchUrl = '/p
             {canScrollCategoriesRight ? <span className="pointer-events-none absolute inset-y-0 right-0 z-10 w-10 bg-gradient-to-l from-white to-white/0" /> : null}
             <div
               ref={categoryScrollerRef}
-              className="flex gap-2 overflow-x-auto scroll-smooth pb-2"
+              className="prompt-tab-scroller flex gap-2 overflow-x-auto scroll-smooth pb-1"
             >
               {categories.map((item) => (
                 <button

@@ -1,0 +1,136 @@
+{
+  "metadata": {
+    "title": "Copier-coller l'émoji feu - Gratuit en ligne | Toolaze",
+    "description": "Copiez et collez l'émoji feu gratuitement en ligne. Émoji flamme, symbole de feu. Copier-coller l'émoji feu en un clic sur Discord, Instagram, TikTok. Sans inscription."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Copier-coller l'émoji feu",
+    "desc": "Copiez et collez l'émoji feu gratuitement en ligne. Obtenez l'émoji flamme en un clic. Fonctionne sur Discord, Instagram, TikTok et n'importe quelle application — sans inscription."
+  },
+  "intro": {
+    "title": "Pourquoi copier et coller l'émoji feu en ligne ?",
+    "content": [
+      {
+        "title": "Qu'est-ce que l'émoji feu ?",
+        "text": "L'émoji feu (🔥) est l'un des émojis les plus populaires pour dire que quelque chose est chaud, génial ou incroyable. Les gens cherchent à copier et coller l'émoji feu pour l'utiliser dans les commentaires, les légendes et les messages. Avec Toolaze, vous pouvez copier et coller l'émoji feu en quelques secondes — sans application ni inscription. Recherchez « feu » ou parcourez la catégorie Smileys & Personnes ou Symboles pour trouver l'émoji feu. Copiez et collez l'émoji feu sur Discord, Instagram, TikTok ou toute application prenant en charge Unicode. Copiez et collez l'émoji feu pour des réactions, du buzz ou du design. Besoin de plus ? Utilisez notre outil complet de <a href=\"/fr/emoji-copy-and-paste\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">copier-coller d'émojis</a>."
+      },
+      {
+        "title": "Copier-coller l'émoji feu partout",
+        "text": "Que vous ayez besoin de copier-coller l'émoji feu sur iPhone ou de l'utiliser sur Android, Toolaze fonctionne dans votre navigateur. Cliquez sur l'émoji feu pour le copier, puis collez-le dans Discord, Instagram ou TikTok. Le copier-coller de l'émoji feu est instantané — votre liste d'émojis récents est enregistrée localement afin que vous puissiez le coller à nouveau sans chercher. Tous les émojis feu sont au format Unicode standard et s'affichent correctement sur toutes les plateformes."
+      }
+    ]
+  },
+  "specs": {
+    "engine": "Sélecteur d'émojis basé sur le navigateur - Côté client",
+    "limit": "Émojis illimités - Toutes les catégories Unicode standard",
+    "logic": "Recherche + Navigation par catégorie + Récemment utilisés",
+    "privacy": "100 % côté client (stockage local pour les récents uniquement)"
+  },
+  "performanceMetrics": {
+    "title": "Spécifications techniques",
+    "metrics": [
+      {
+        "label": "Catégories",
+        "value": "Smileys & Personnes, Symboles (feu, flamme)"
+      },
+      {
+        "label": "Recherche",
+        "value": "Recherche par mot-clé, ex: feu, flamme, chaud"
+      },
+      {
+        "label": "Copie",
+        "value": "Copie en un clic dans le presse-papiers"
+      },
+      {
+        "label": "Support plateforme",
+        "value": "Discord, Instagram, TikTok, iPhone, Android, WhatsApp"
+      },
+      {
+        "label": "Confidentialité",
+        "value": "Pas de téléchargement sur le serveur ; liste récente stockée localement uniquement"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Comment copier et coller l'émoji feu",
+    "steps": [
+      {
+        "title": "Ouvrez le sélecteur d'émojis",
+        "desc": "Allez sur le copier-coller d'émojis de Toolaze et recherchez « feu » ou parcourez Smileys & Personnes et Symboles."
+      },
+      {
+        "title": "Choisissez l'émoji feu",
+        "desc": "Cliquez sur l'émoji feu ou l'émoji flamme que vous souhaitez copier et coller."
+      },
+      {
+        "title": "Collez n'importe où",
+        "desc": "Collez avec Ctrl+V (ou Cmd+V sur Mac) dans Discord, Instagram, les commentaires ou les messages."
+      }
+    ]
+  },
+  "comparison": {
+    "title": "Pourquoi choisir Toolaze ?",
+    "toolaze": "Toolaze 💎",
+    "others": "Autres outils",
+    "vs": "VS",
+    "smartChoice": "Le choix intelligent",
+    "otherTools": "Autres outils",
+    "toolazeFeatures": "Gratuit, Sans inscription, Recherche feu/flamme, Copie en un clic, Récemment utilisés, Fonctionne dans le navigateur",
+    "othersFeatures": "Inscription requise, Recherche limitée, Publicités ou payant, Téléchargement d'application, Plus lent"
+  },
+  "scenesTitle": "Cas d'utilisation",
+  "scenes": [
+    {
+      "title": "Réseaux sociaux & Commentaires",
+      "icon": "🔥",
+      "desc": "Copiez et collez l'émoji feu dans les légendes Instagram, les commentaires TikTok ou sur Twitter. Parfait pour le buzz et les réactions."
+    },
+    {
+      "title": "Discord & Gaming",
+      "icon": "💬",
+      "desc": "Utilisez l'émoji feu dans votre statut Discord ou sur le chat. Copiez et collez l'émoji feu pour montrer que quelque chose est génial."
+    },
+    {
+      "title": "Messages & Réactions",
+      "icon": "📱",
+      "desc": "Collez l'émoji feu dans iMessage ou WhatsApp. Le copier-coller de l'émoji feu fonctionne sur iPhone et Android."
+    }
+  ],
+  "rating": {
+    "title": "Approuvé pour le copier-coller d'émoji feu",
+    "rating": "4.9/5 PAR PLUS DE 10K UTILISATEURS",
+    "text": "« Un moyen rapide de copier et coller l'émoji feu pour Discord et Instagram. » Copier-coller l'émoji feu avec Toolaze — gratuit et sans inscription."
+  },
+  "faqTitle": "Foire aux questions",
+  "faq": [
+    {
+      "q": "Le copier-coller de l'émoji feu est-il gratuit ?",
+      "a": "Oui. Toolaze est 100 % gratuit. Vous pouvez copier et coller l'émoji feu autant que vous le souhaitez, sans inscription ni publicité."
+    },
+    {
+      "q": "Puis-je copier et coller l'émoji feu sur Discord ?",
+      "a": "Oui. Copiez l'émoji feu sur Toolaze et collez-le dans le chat ou le statut Discord. L'Unicode standard fonctionne partout."
+    },
+    {
+      "q": "Comment copier et coller l'émoji feu sur iPhone ?",
+      "a": "Ouvrez Toolaze dans le navigateur de votre iPhone, appuyez sur l'émoji feu pour le copier, puis collez-le dans n'importe quelle application. Le copier-coller de l'émoji feu sur iPhone fonctionne dans Safari ou Chrome."
+    },
+    {
+      "q": "Où puis-je obtenir un émoji feu à copier-coller ?",
+      "a": "Sur Toolaze, recherchez « feu » pour trouver l'émoji feu. Cliquez pour copier et coller l'émoji feu dans Instagram, TikTok ou vos messages."
+    },
+    {
+      "q": "Les émojis feu fonctionnent-ils sur Instagram et TikTok ?",
+      "a": "Oui. Ce sont des caractères Unicode standard. Copiez et collez l'émoji feu dans les légendes Instagram, les commentaires TikTok ou toute application prenant en charge les émojis."
+    }
+  ]
+}

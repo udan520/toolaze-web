@@ -38,19 +38,43 @@
   "performanceMetrics": {
     "title": "Technical Specifications",
     "metrics": [
-      { "label": "Categories", "value": "Animals & Nature (cat, cute cat, black cat, cat with star eyes)" },
-      { "label": "Search", "value": "Keyword search e.g. cat, cute, black cat, star eyes" },
-      { "label": "Copy", "value": "One-click copy to clipboard" },
-      { "label": "Platform Support", "value": "iPhone, Android, Discord, Instagram, TikTok, WhatsApp" },
-      { "label": "Privacy", "value": "No server uploads; recent list stored locally only" }
+      {
+        "label": "Categories",
+        "value": "Animals & Nature (cat, cute cat, black cat, cat with star eyes)"
+      },
+      {
+        "label": "Search",
+        "value": "Keyword search e.g. cat, cute, black cat, star eyes"
+      },
+      {
+        "label": "Copy",
+        "value": "One-click copy to clipboard"
+      },
+      {
+        "label": "Platform Support",
+        "value": "iPhone, Android, Discord, Instagram, TikTok, WhatsApp"
+      },
+      {
+        "label": "Privacy",
+        "value": "No server uploads; recent list stored locally only"
+      }
     ]
   },
   "howToUse": {
     "title": "How to Copy and Paste Cat Emoji",
     "steps": [
-      { "title": "Open the Emoji Picker", "desc": "Go to Toolaze emoji copy and paste and search \"cat\" or browse Animals & Nature." },
-      { "title": "Choose Your Cat Emoji", "desc": "Click the cat emoji, cute cat emoji, black cat emoji, or cat with star eyes emoji to copy and paste." },
-      { "title": "Paste Anywhere", "desc": "Paste with Ctrl+V (or Cmd+V on Mac) into messages, bios, or social posts." }
+      {
+        "title": "Open the Emoji Picker",
+        "desc": "Go to Toolaze emoji copy and paste and search \"cat\" or browse Animals & Nature."
+      },
+      {
+        "title": "Choose Your Cat Emoji",
+        "desc": "Click the cat emoji, cute cat emoji, black cat emoji, or cat with star eyes emoji to copy and paste."
+      },
+      {
+        "title": "Paste Anywhere",
+        "desc": "Paste with Ctrl+V (or Cmd+V on Mac) into messages, bios, or social posts."
+      }
     ]
   },
   "comparison": {
@@ -65,9 +89,21 @@
   },
   "scenesTitle": "Use Cases",
   "scenes": [
-    { "title": "Texting & Messaging", "icon": "🐱", "desc": "Copy and paste cat emoji into iMessage or WhatsApp. Cute cat emoji copy and paste in one click for any chat." },
-    { "title": "Social Media & Bios", "icon": "📱", "desc": "Use cat emoji in Instagram bios or TikTok. Black cat emoji copy and paste and cat emojis copy and paste for posts and captions." },
-    { "title": "Discord & Fun", "icon": "😺", "desc": "Get cat with star eyes emoji copy and paste or sad cat emoji for Discord and memes. Copy and paste cat emoji instantly." }
+    {
+      "icon": "🐱",
+      "title": "Texting & Messaging",
+      "desc": "Copy and paste cat emoji into iMessage or WhatsApp. Cute cat emoji copy and paste in one click for any chat."
+    },
+    {
+      "icon": "📱",
+      "title": "Social Media & Bios",
+      "desc": "Use cat emoji in Instagram bios or TikTok. Black cat emoji copy and paste and cat emojis copy and paste for posts and captions."
+    },
+    {
+      "icon": "😺",
+      "title": "Discord & Fun",
+      "desc": "Get cat with star eyes emoji copy and paste or sad cat emoji for Discord and memes. Copy and paste cat emoji instantly."
+    }
   ],
   "rating": {
     "title": "Trusted for Cat Emoji Copy & Paste",
@@ -76,10 +112,25 @@
   },
   "faqTitle": "Frequently Asked Questions",
   "faq": [
-    { "q": "Is cat emoji copy and paste free?", "a": "Yes. Toolaze is 100% free. You can copy and paste cat emoji, cute cat emoji, and black cat emoji as much as you want with no sign-up or ads." },
-    { "q": "Where do I find cute cat emoji copy and paste?", "a": "On Toolaze, search \"cat\" or \"cute\" to find the cute cat emoji. Click to copy and paste cat emoji into messages or social media." },
-    { "q": "Can I copy and paste black cat emoji?", "a": "Yes. Search \"black cat\" or browse Animals & Nature. Black cat emoji copy and paste works on all devices and apps." },
-    { "q": "How do I get cat with star eyes emoji copy and paste?", "a": "On Toolaze, search \"cat\" or \"star eyes\" to find the cat with star eyes emoji. Click to copy and paste." },
-    { "q": "Do cat emojis work in Discord and Instagram?", "a": "Yes. They are standard Unicode. Copy and paste cat emoji into Discord, Instagram, TikTok, WhatsApp, or any app that supports emojis." }
+    {
+      "q": "Is cat emoji copy and paste free?",
+      "a": "Yes. Toolaze is 100% free. You can copy and paste cat emoji, cute cat emoji, and black cat emoji as much as you want with no sign-up or ads."
+    },
+    {
+      "q": "Where do I find cute cat emoji copy and paste?",
+      "a": "On Toolaze, search \"cat\" or \"cute\" to find the cute cat emoji. Click to copy and paste cat emoji into messages or social media."
+    },
+    {
+      "q": "Can I copy and paste black cat emoji?",
+      "a": "Yes. Search \"black cat\" or browse Animals & Nature. Black cat emoji copy and paste works on all devices and apps."
+    },
+    {
+      "q": "How do I get cat with star eyes emoji copy and paste?",
+      "a": "On Toolaze, search \"cat\" or \"star eyes\" to find the cat with star eyes emoji. Click to copy and paste."
+    },
+    {
+      "q": "Do cat emojis work in Discord and Instagram?",
+      "a": "Yes. They are standard Unicode. Copy and paste cat emoji into Discord, Instagram, TikTok, WhatsApp, or any app that supports emojis."
+    }
   ]
 }

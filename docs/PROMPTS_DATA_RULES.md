@@ -60,6 +60,26 @@
 - 页面标题和按钮文案使用首字母大写风格，避免 AI 味过重的泛化词。
 - 详情页已有 `Related Templates` 标题时，不要再给卡片额外加 `Related` 标签。
 
+## SEO 页面规则
+
+- `/prompts` 是总入口，主攻 `AI image prompt templates`、`AI video prompt templates` 和模型集合词。
+- `/prompts` 必须服务端传入模板数据，保证模板卡片链接和核心内容出现在静态 HTML 中，不要只依赖客户端 fetch。
+- 模型和分类只作为页面内筛选 tab，不创建 `/prompts/models/[model]` 或 `/prompts/categories/[category]` SEO 落地页，也不要加入 sitemap。
+- 详情页标题格式优先使用 `{Title} Prompt for {Model} | Toolaze`。
+- 所有 prompts 页面必须设置 canonical，并加入 sitemap。
+- 主页面使用 `ItemList` JSON-LD，详情页使用 `CreativeWork` 和 `BreadcrumbList` JSON-LD。
+- SEO 文案必须突出真实差异点：X source-backed、可复制 prompt、模型、用例、真实媒体预览和 performance metrics。
+- 不要为了 SEO 新增未验证的 prompt、模型、指标或来源；数据真实性优先于关键词覆盖。
+
+## 协作与专业判断规则
+
+- 不要一味认同用户方案；遇到 SEO、数据真实性、架构复杂度、发布风险、性能或长期维护风险时，必须主动提出不同观点。
+- 质疑时必须给出事实依据、潜在后果和更稳妥的替代方案，不能只说“不建议”。
+- 如果用户方案可行但有隐藏成本，要先明确 trade-off，再执行。
+- 如果用户方案会伤害 SEO、数据可信度或线上稳定性，即使用户已经倾向确认，也要先暂停并说明风险。
+- 最终仍以用户确认后的决策为准，但专业判断不能省略。
+- 每次明确任务完成后，用系统提示音提醒用户；只在最终完成时提示，不在中间步骤频繁提示。
+
 ## 导入后检查
 
 导入或批量修复后运行：

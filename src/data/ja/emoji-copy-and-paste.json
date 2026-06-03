@@ -1,8 +1,8 @@
 {
   "in_menu": true,
   "metadata": {
-    "title": "Emoji Copy & Paste - Copy Emojis Online Free | Toolaze",
-    "description": "Copy and paste emojis online for free. Browse by category, search, pick skin tone, and copy instantly. No sign-up. Copy and paste emojis to any app or social media."
+    "title": "絵文字コピー＆ペースト - オンラインで絵文字を無料コピー | Toolaze",
+    "description": "オンラインで絵文字を無料でコピー＆ペースト。カテゴリ別ブラウズ、検索、肌の色の選択、即座にコピー。登録不要。あらゆるアプリやSNSに絵文字をコピー＆ペーストできます。"
   },
   "sectionsOrder": [
     "howToUse",
@@ -15,174 +15,174 @@
     "faq"
   ],
   "hero": {
-    "h1": "Emoji <span class=\"text-gradient\">Copy & Paste</span>",
-    "desc": "Copy and paste emojis online for free. Browse by category, search, pick skin tone, and copy with one click. No sign-up required."
+    "h1": "絵文字 <span class=\"text-gradient\">コピー＆ペースト</span>",
+    "desc": "オンラインで絵文字を無料でコピー＆ペースト。カテゴリ別ブラウズ、検索、肌の色の選択、ワンクリックでコピー。登録は不要です。"
   },
   "intro": {
-    "title": "Why Use Toolaze Emoji Copy & Paste?",
+    "title": "なぜ Toolaze 絵文字コピー＆ペーストを使うのか？",
     "content": [
       {
-        "title": "What is Emoji Copy and Paste?",
-        "text": "Emoji copy and paste is a free online tool that lets you browse thousands of emojis by category, search by keyword, and copy any emoji with one click. You can copy and paste emojis into messages, social media, documents, or anywhere else. No app install or sign-up is needed—everything runs in your browser. Toolaze supports frequently used, smileys & people, animals & nature, food & drink, travel & places, activities, objects, symbols, and flags, so you can find the right emoji fast."
+        "title": "絵文字コピー＆ペーストとは？",
+        "text": "絵文字コピー＆ペーストは、何千もの絵文字をカテゴリ別に閲覧したり、キーワードで検索したり、ワンクリックでコピーしたりできる無料のオンラインツールです。メッセージ、SNS、ドキュメントなど、どこにでも絵文字をコピー＆ペーストできます。アプリのインストールや登録は不要で、すべてブラウザ上で動作します。Toolazeは、よく使う絵文字、スマイリーと人々、動物と自然、食べ物と飲み物、旅行と場所、活動、物、記号、旗をサポートしており、目的の絵文字をすぐに見つけることができます。"
       },
       {
-        "title": "Why Copy and Paste Emojis Online?",
-        "text": "Finding and copying emojis on a phone or PC can be slow or limited. With Toolaze you get emojis copy and paste in one place: search or browse by category, choose skin tone when needed, and copy instantly. Your recently used emojis are saved locally so you can copy and paste emojis you use often without searching again. Perfect for texting, Discord, Instagram, TikTok, or any app that supports Unicode emojis."
+        "title": "なぜオンラインで絵文字をコピー＆ペーストするのか？",
+        "text": "スマホやPCで絵文字を探してコピーするのは、時間がかかったり制限があったりすることがあります。Toolazeを使えば、絵文字のコピー＆ペーストが1か所で完結します。検索やカテゴリ別ブラウズ、必要に応じた肌の色の選択、そして即座にコピーが可能です。最近使った絵文字はローカルに保存されるため、よく使う絵文字を再度検索することなくコピー＆ペーストできます。テキストメッセージ、Discord、Instagram、TikTok、またはUnicode絵文字をサポートするあらゆるアプリに最適です。"
       }
     ]
   },
   "features": {
-    "title": "Emoji Copy & Paste Features",
+    "title": "絵文字コピー＆ペーストの機能",
     "items": [
       {
         "icon": "📂",
         "iconType": "quality",
-        "title": "Browse by Category",
-        "desc": "Browse emojis by category: Smileys & People, Animals & Nature, Food & Drink, Travel & Places, Activities, Objects, Symbols, and Flags. Jump to any category from the sidebar."
+        "title": "カテゴリ別ブラウズ",
+        "desc": "スマイリーと人々、動物と自然、食べ物と飲み物、旅行と場所、活動、物、記号、旗のカテゴリから絵文字を閲覧できます。サイドバーから任意のカテゴリにジャンプできます。"
       },
       {
         "icon": "🔍",
         "iconType": "speed",
-        "title": "Search Emojis",
-        "desc": "Search by keyword to find the right emoji fast. Type a word and get matching emojis so you can copy and paste the one you need in seconds."
+        "title": "絵文字検索",
+        "desc": "キーワードで検索して、目的の絵文字を素早く見つけます。単語を入力すると一致する絵文字が表示され、必要なものを数秒でコピー＆ペーストできます。"
       },
       {
         "icon": "👋",
         "iconType": "quality",
-        "title": "Skin Tone Picker",
-        "desc": "Choose skin tone for people and hand emojis. Pick the variation you want, then copy and paste—no extra steps."
+        "title": "肌の色選択",
+        "desc": "人物や手の絵文字の肌の色を選択できます。希望のバリエーションを選んでコピー＆ペーストするだけ。余計な手順は不要です。"
       },
       {
         "icon": "📋",
         "iconType": "batch",
-        "title": "One-Click Copy",
-        "desc": "Click any emoji to copy it to your clipboard. Paste into WhatsApp, iMessage, Discord, Instagram, TikTok, or any app. No download, no account."
+        "title": "ワンクリックコピー",
+        "desc": "絵文字をクリックするだけでクリップボードにコピーされます。WhatsApp、iMessage、Discord、Instagram、TikTok、またはあらゆるアプリに貼り付けられます。ダウンロードもアカウントも不要です。"
       },
       {
         "icon": "🔒",
         "iconType": "privacy",
-        "title": "Privacy First",
-        "desc": "All emoji browsing and copy and paste happen in your browser. Your recently used list is stored locally—nothing is sent to our servers."
+        "title": "プライバシー優先",
+        "desc": "絵文字の閲覧とコピー＆ペーストはすべてブラウザ内で行われます。最近使ったリストはローカルに保存され、サーバーには何も送信されません。"
       },
       {
         "icon": "💎",
         "iconType": "free",
-        "title": "Free",
-        "desc": "Unlimited emoji copy and paste with no sign-up, no ads, and no paywall. Use as much as you want on any device."
+        "title": "無料",
+        "desc": "登録なし、広告なし、ペイウォールなしで、無制限に絵文字をコピー＆ペーストできます。どのデバイスでも好きなだけお使いいただけます。"
       }
     ]
   },
   "specs": {
-    "engine": "Browser-Based Emoji Picker - Client-Side",
-    "limit": "Unlimited Emojis - All Standard Unicode Categories",
-    "logic": "Search + Category Browse + Recently Used",
-    "privacy": "100% Client-Side (Local Storage for Recent Only)"
+    "engine": "ブラウザベースの絵文字ピッカー - クライアントサイド",
+    "limit": "無制限の絵文字 - すべての標準Unicodeカテゴリ",
+    "logic": "検索 + カテゴリブラウズ + 最近使ったもの",
+    "privacy": "100% クライアントサイド（最近使ったもののみローカルストレージに保存）"
   },
   "performanceMetrics": {
-    "title": "Technical Specifications",
+    "title": "技術仕様",
     "metrics": [
       {
-        "label": "Categories",
-        "value": "Smileys & People, Animals & Nature, Food & Drink, Travel, Activities, Objects, Symbols, Flags"
+        "label": "カテゴリ",
+        "value": "スマイリーと人々、動物と自然、食べ物と飲み物、旅行、活動、物、記号、旗"
       },
       {
-        "label": "Search",
-        "value": "Keyword search across all emojis"
+        "label": "検索",
+        "value": "すべての絵文字を対象としたキーワード検索"
       },
       {
-        "label": "Skin Tones",
-        "value": "Supported for people and hand emojis"
+        "label": "肌の色",
+        "value": "人物と手の絵文字でサポート"
       },
       {
-        "label": "Copy",
-        "value": "One-click copy to clipboard"
+        "label": "コピー",
+        "value": "クリップボードへのワンクリックコピー"
       },
       {
-        "label": "Platform Support",
-        "value": "Any app that supports Unicode emojis (WhatsApp, Discord, Instagram, TikTok, iMessage, etc.)"
+        "label": "プラットフォーム対応",
+        "value": "Unicode絵文字をサポートするあらゆるアプリ（WhatsApp, Discord, Instagram, TikTok, iMessageなど）"
       },
       {
-        "label": "Privacy",
-        "value": "No server uploads; recent list stored locally only"
+        "label": "プライバシー",
+        "value": "サーバーへのアップロードなし。最近のリストはローカルのみに保存"
       }
     ]
   },
   "howToUse": {
-    "title": "How to Copy and Paste Emojis",
+    "title": "絵文字をコピー＆ペーストする方法",
     "steps": [
       {
-        "title": "Browse or Search",
-        "desc": "Use the category list on the left to jump to a section, or type in the search box to find emojis by keyword."
+        "title": "ブラウズまたは検索",
+        "desc": "左側のカテゴリリストを使用してセクションにジャンプするか、検索ボックスにキーワードを入力して絵文字を探します。"
       },
       {
-        "title": "Pick Your Emoji",
-        "desc": "Click the emoji you want. Use the skin tone picker next to the search bar if you need a different skin tone for people or hands."
+        "title": "絵文字を選択",
+        "desc": "目的の絵文字をクリックします。人物や手の肌の色を変更したい場合は、検索バーの隣にある肌の色選択ツールを使用します。"
       },
       {
-        "title": "Copy & Paste",
-        "desc": "The emoji is copied to your clipboard. Paste it into your message, post, or document with Ctrl+V (or Cmd+V on Mac)."
+        "title": "コピー＆ペースト",
+        "desc": "絵文字がクリップボードにコピーされます。Ctrl+V（Macの場合はCmd+V）でメッセージ、投稿、またはドキュメントに貼り付けます。"
       }
     ]
   },
   "comparison": {
-    "title": "Why Choose Toolaze?",
+    "title": "なぜ Toolaze を選ぶのか？",
     "toolaze": "Toolaze 💎",
-    "others": "Other Tools",
+    "others": "他のツール",
     "vs": "VS",
-    "smartChoice": "Smart Choice",
-    "otherTools": "Other Tools",
-    "toolazeFeatures": "Free, No sign-up, Category browse, Search, Skin tone, One-click copy, Recently used, Works in browser",
-    "othersFeatures": "Sign-up required, Limited categories, No search, Ads or paywall, App download, Slower, Fewer emojis"
+    "smartChoice": "賢い選択",
+    "otherTools": "他のツール",
+    "toolazeFeatures": "無料、登録不要、カテゴリブラウズ、検索、肌の色、ワンクリックコピー、最近使ったもの、ブラウザで動作",
+    "othersFeatures": "登録が必要、カテゴリが限定的、検索なし、広告またはペイウォール、アプリのダウンロード、動作が遅い、絵文字が少ない"
   },
-  "scenesTitle": "Use Cases",
+  "scenesTitle": "利用シーン",
   "scenes": [
     {
-      "title": "Texting & Messaging",
+      "title": "テキスト＆メッセージング",
       "icon": "💬",
-      "desc": "Copy and paste emojis into iMessage, WhatsApp, or any chat. Find the right emoji quickly with search or categories and send with one click."
+      "desc": "iMessage、WhatsApp、またはあらゆるチャットに絵文字をコピー＆ペースト。検索やカテゴリで目的の絵文字を素早く見つけ、ワンクリックで送信。"
     },
     {
-      "title": "Social Media",
+      "title": "ソーシャルメディア",
       "icon": "📱",
-      "desc": "Use emojis in Instagram captions, TikTok bios, Discord messages, or Twitter posts. Copy and paste emojis that work on every platform."
+      "desc": "Instagramのキャプション、TikTokのプロフィール、Discordのメッセージ、Twitterの投稿に絵文字を使用。すべてのプラットフォームで動作する絵文字をコピー＆ペースト。"
     },
     {
-      "title": "Content & Documents",
+      "title": "コンテンツ＆ドキュメント",
       "icon": "📝",
-      "desc": "Add emojis to presentations, emails, or documents. Search by keyword or browse by category to copy and paste the perfect emoji."
+      "desc": "プレゼンテーション、メール、ドキュメントに絵文字を追加。キーワード検索やカテゴリブラウズで、最適な絵文字をコピー＆ペースト。"
     }
   ],
   "rating": {
-    "title": "Trusted for Emoji Copy & Paste",
-    "rating": "4.9/5 FROM 10K+ USERS",
-    "text": "\"Fast and simple—I use it every day for Discord and Instagram.\" Copy and paste emojis online with Toolaze, no sign-up, no hassle."
+    "title": "絵文字コピー＆ペーストの信頼実績",
+    "rating": "4.9/5（1万人以上のユーザーより）",
+    "text": "「速くてシンプル。DiscordやInstagramで毎日使っています。」Toolazeでオンライン絵文字コピー＆ペースト。登録不要、手間いらず。"
   },
-  "faqTitle": "Frequently Asked Questions",
+  "faqTitle": "よくある質問",
   "faq": [
     {
-      "q": "Is emoji copy and paste really free?",
-      "a": "Yes. Toolaze emoji copy and paste is 100% free. You can copy and paste emojis as much as you want with no sign-up, no ads, and no paywall."
+      "q": "絵文字のコピー＆ペーストは本当に無料ですか？",
+      "a": "はい。Toolazeの絵文字コピー＆ペーストは100%無料です。登録、広告、ペイウォールなしで、好きなだけコピー＆ペーストできます。"
     },
     {
-      "q": "Can I copy and paste emojis on iPhone or Android?",
-      "a": "Yes. Open the Toolaze emoji copy and paste page in your phone browser, tap an emoji to copy it, then paste it into any app (iMessage, WhatsApp, Instagram, etc.) that supports emojis."
+      "q": "iPhoneやAndroidで絵文字をコピー＆ペーストできますか？",
+      "a": "はい。スマホのブラウザでToolazeの絵文字コピー＆ペーストページを開き、絵文字をタップしてコピーし、絵文字をサポートするアプリ（iMessage、WhatsApp、Instagramなど）に貼り付けてください。"
     },
     {
-      "q": "Do these emojis work in Discord, Instagram, and TikTok?",
-      "a": "Yes. The emojis are standard Unicode characters, so they work everywhere: Discord, Instagram, TikTok, WhatsApp, iMessage, Twitter, and more. Just copy and paste emojis where you need them."
+      "q": "これらの絵文字はDiscord、Instagram、TikTokで使えますか？",
+      "a": "はい。絵文字は標準のUnicode文字であるため、Discord、Instagram、TikTok、WhatsApp、iMessage、Twitterなど、あらゆる場所で動作します。必要な場所に絵文字をコピー＆ペーストするだけです。"
     },
     {
-      "q": "How do I get skin tone variations?",
-      "a": "Use the skin tone picker next to the search bar. It appears for people and hand emojis. Choose a tone, then click the emoji to copy and paste it with that skin tone."
+      "q": "肌の色のバリエーションはどうやって取得しますか？",
+      "a": "検索バーの隣にある肌の色選択ツールを使用してください。人物や手の絵文字に対して表示されます。色を選択してから絵文字をクリックすると、その肌の色でコピー＆ペーストされます。"
     },
     {
-      "q": "Where is my \"recently used\" list stored?",
-      "a": "Recently used emojis are stored only in your browser (local storage). Nothing is sent to our servers, so your usage stays private."
+      "q": "「最近使った」リストはどこに保存されますか？",
+      "a": "最近使った絵文字は、お使いのブラウザ（ローカルストレージ）にのみ保存されます。サーバーには何も送信されないため、利用状況のプライバシーは守られます。"
     },
     {
-      "q": "Can I search for specific emojis?",
-      "a": "Yes. Type a keyword in the search box (e.g. \"heart\", \"fire\", \"birthday\") to see matching emojis. Then click to copy and paste the one you want."
+      "q": "特定の絵文字を検索できますか？",
+      "a": "はい。検索ボックスにキーワード（例：「ハート」、「火」、「誕生日」）を入力すると、一致する絵文字が表示されます。クリックして目的のものをコピー＆ペーストしてください。"
     }
   ],
-  "moreTools": "More Quick Tools"
+  "moreTools": "その他の便利なツール"
 }

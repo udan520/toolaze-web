@@ -38,19 +38,43 @@
   "performanceMetrics": {
     "title": "Technical Specifications",
     "metrics": [
-      { "label": "Categories", "value": "Symbols and Smileys - search adults only, funny, stickers" },
-      { "label": "Search", "value": "Keyword search to find adults only and related symbols" },
-      { "label": "Copy", "value": "One-click copy to clipboard" },
-      { "label": "Platform Support", "value": "iPhone, Android, Instagram, WhatsApp, Discord, TikTok" },
-      { "label": "Privacy", "value": "No server uploads; recent list stored locally only" }
+      {
+        "label": "Categories",
+        "value": "Symbols and Smileys - search adults only, funny, stickers"
+      },
+      {
+        "label": "Search",
+        "value": "Keyword search to find adults only and related symbols"
+      },
+      {
+        "label": "Copy",
+        "value": "One-click copy to clipboard"
+      },
+      {
+        "label": "Platform Support",
+        "value": "iPhone, Android, Instagram, WhatsApp, Discord, TikTok"
+      },
+      {
+        "label": "Privacy",
+        "value": "No server uploads; recent list stored locally only"
+      }
     ]
   },
   "howToUse": {
     "title": "How to Copy and Paste Adults Only Emoji",
     "steps": [
-      { "title": "Open the Emoji Picker", "desc": "Go to Toolaze emoji copy and paste and search \"adults\" or browse Symbols and Smileys." },
-      { "title": "Choose Your Emoji", "desc": "Click the adults only emoji or funny adults only emoji you want to copy and paste." },
-      { "title": "Paste Anywhere", "desc": "Paste with Ctrl+V (or Cmd+V on Mac) into Instagram, WhatsApp, or messages." }
+      {
+        "title": "Open the Emoji Picker",
+        "desc": "Go to Toolaze emoji copy and paste and search \"adults\" or browse Symbols and Smileys."
+      },
+      {
+        "title": "Choose Your Emoji",
+        "desc": "Click the adults only emoji or funny adults only emoji you want to copy and paste."
+      },
+      {
+        "title": "Paste Anywhere",
+        "desc": "Paste with Ctrl+V (or Cmd+V on Mac) into Instagram, WhatsApp, or messages."
+      }
     ]
   },
   "comparison": {
@@ -65,9 +89,21 @@
   },
   "scenesTitle": "Use Cases",
   "scenes": [
-    { "title": "Social Bios & Stories", "icon": "📱", "desc": "Copy and paste adults only emoji for Instagram bios or stories. Funny adults only emoji copy and paste in one click." },
-    { "title": "Messaging", "icon": "💬", "desc": "Use adults only emoji in WhatsApp or iMessage. Adults only emoji copy and paste iphone works in any browser." },
-    { "title": "Labels & Fun", "icon": "😄", "desc": "Get stickers adults only emoji copy and paste or animated adults only emoji for labels and humorous content." }
+    {
+      "icon": "📱",
+      "title": "Social Bios & Stories",
+      "desc": "Copy and paste adults only emoji for Instagram bios or stories. Funny adults only emoji copy and paste in one click."
+    },
+    {
+      "icon": "💬",
+      "title": "Messaging",
+      "desc": "Use adults only emoji in WhatsApp or iMessage. Adults only emoji copy and paste iphone works in any browser."
+    },
+    {
+      "icon": "😄",
+      "title": "Labels & Fun",
+      "desc": "Get stickers adults only emoji copy and paste or animated adults only emoji for labels and humorous content."
+    }
   ],
   "rating": {
     "title": "Trusted for Adults Only Emoji Copy & Paste",
@@ -76,10 +112,25 @@
   },
   "faqTitle": "Frequently Asked Questions",
   "faq": [
-    { "q": "Is adults only emoji copy and paste free?", "a": "Yes. Toolaze is 100% free. You can copy and paste adults only emoji as much as you want with no sign-up or ads." },
-    { "q": "Can I use adults only emoji copy and paste on Instagram?", "a": "Yes. Copy the emoji on Toolaze, then paste into your Instagram bio, story, or caption. Adults only emoji copy and paste Instagram works in the app or browser." },
-    { "q": "Does adults only emoji copy and paste work on iPhone?", "a": "Yes. Open Toolaze in your iPhone browser, tap the adults only emoji to copy, then paste into any app. Adults only emoji copy and paste iphone needs no extra app." },
-    { "q": "Where do I find funny adults only emoji copy and paste?", "a": "On Toolaze, search \"adults\" or \"funny\" to find funny adults only emoji. Click to copy and paste into messages or social media." },
-    { "q": "Can I copy and paste adults only emoji in WhatsApp?", "a": "Yes. The emojis are standard Unicode. Copy on Toolaze and paste into WhatsApp. WhatsApp adults only emoji copy and paste works the same as for other apps." }
+    {
+      "q": "Is adults only emoji copy and paste free?",
+      "a": "Yes. Toolaze is 100% free. You can copy and paste adults only emoji as much as you want with no sign-up or ads."
+    },
+    {
+      "q": "Can I use adults only emoji copy and paste on Instagram?",
+      "a": "Yes. Copy the emoji on Toolaze, then paste into your Instagram bio, story, or caption. Adults only emoji copy and paste Instagram works in the app or browser."
+    },
+    {
+      "q": "Does adults only emoji copy and paste work on iPhone?",
+      "a": "Yes. Open Toolaze in your iPhone browser, tap the adults only emoji to copy, then paste into any app. Adults only emoji copy and paste iphone needs no extra app."
+    },
+    {
+      "q": "Where do I find funny adults only emoji copy and paste?",
+      "a": "On Toolaze, search \"adults\" or \"funny\" to find funny adults only emoji. Click to copy and paste into messages or social media."
+    },
+    {
+      "q": "Can I copy and paste adults only emoji in WhatsApp?",
+      "a": "Yes. The emojis are standard Unicode. Copy on Toolaze and paste into WhatsApp. WhatsApp adults only emoji copy and paste works the same as for other apps."
+    }
   ]
 }

@@ -1,8 +1,8 @@
 {
   "in_menu": true,
   "metadata": {
-    "title": "Emoji Copy & Paste - Copy Emojis Online Free | Toolaze",
-    "description": "Copy and paste emojis online for free. Browse by category, search, pick skin tone, and copy instantly. No sign-up. Copy and paste emojis to any app or social media."
+    "title": "表情符號複製貼上 - 免費線上複製表情符號 | Toolaze",
+    "description": "免費線上複製並貼上表情符號。按類別瀏覽、搜尋、選擇膚色並立即複製。無需註冊。將表情符號複製並貼上到任何應用程式或社群媒體。"
   },
   "sectionsOrder": [
     "howToUse",
@@ -15,174 +15,174 @@
     "faq"
   ],
   "hero": {
-    "h1": "Emoji <span class=\"text-gradient\">Copy & Paste</span>",
-    "desc": "Copy and paste emojis online for free. Browse by category, search, pick skin tone, and copy with one click. No sign-up required."
+    "h1": "表情符號 <span class=\"text-gradient\">複製與貼上</span>",
+    "desc": "免費線上複製並貼上表情符號。按類別瀏覽、搜尋、選擇膚色，一鍵複製。無需註冊。"
   },
   "intro": {
-    "title": "Why Use Toolaze Emoji Copy & Paste?",
+    "title": "為什麼要使用 Toolaze 表情符號複製貼上工具？",
     "content": [
       {
-        "title": "What is Emoji Copy and Paste?",
-        "text": "Emoji copy and paste is a free online tool that lets you browse thousands of emojis by category, search by keyword, and copy any emoji with one click. You can copy and paste emojis into messages, social media, documents, or anywhere else. No app install or sign-up is needed—everything runs in your browser. Toolaze supports frequently used, smileys & people, animals & nature, food & drink, travel & places, activities, objects, symbols, and flags, so you can find the right emoji fast."
+        "title": "什麼是表情符號複製貼上？",
+        "text": "表情符號複製貼上是一個免費的線上工具，讓您可以按類別瀏覽數千個表情符號、按關鍵字搜尋，並一鍵複製任何表情符號。您可以將表情符號複製並貼上到訊息、社群媒體、文件或任何其他地方。無需安裝應用程式或註冊——一切都在您的瀏覽器中運行。Toolaze 支援常用、表情與人物、動物與自然、食物與飲料、旅行與地點、活動、物品、符號和旗幟，讓您可以快速找到正確的表情符號。"
       },
       {
-        "title": "Why Copy and Paste Emojis Online?",
-        "text": "Finding and copying emojis on a phone or PC can be slow or limited. With Toolaze you get emojis copy and paste in one place: search or browse by category, choose skin tone when needed, and copy instantly. Your recently used emojis are saved locally so you can copy and paste emojis you use often without searching again. Perfect for texting, Discord, Instagram, TikTok, or any app that supports Unicode emojis."
+        "title": "為什麼要在線上複製貼上表情符號？",
+        "text": "在手機或電腦上尋找並複製表情符號可能很慢或受到限制。使用 Toolaze，您可以在一個地方完成表情符號的複製貼上：按類別搜尋或瀏覽、在需要時選擇膚色，並立即複製。您最近使用的表情符號會儲存在本地，因此您可以複製並貼上常用的表情符號，而無需再次搜尋。非常適合簡訊、Discord、Instagram、TikTok 或任何支援 Unicode 表情符號的應用程式。"
       }
     ]
   },
   "features": {
-    "title": "Emoji Copy & Paste Features",
+    "title": "表情符號複製貼上功能",
     "items": [
       {
         "icon": "📂",
         "iconType": "quality",
-        "title": "Browse by Category",
-        "desc": "Browse emojis by category: Smileys & People, Animals & Nature, Food & Drink, Travel & Places, Activities, Objects, Symbols, and Flags. Jump to any category from the sidebar."
+        "title": "按類別瀏覽",
+        "desc": "按類別瀏覽表情符號：表情與人物、動物與自然、食物與飲料、旅行與地點、活動、物品、符號和旗幟。從側邊欄快速跳轉到任何類別。"
       },
       {
         "icon": "🔍",
         "iconType": "speed",
-        "title": "Search Emojis",
-        "desc": "Search by keyword to find the right emoji fast. Type a word and get matching emojis so you can copy and paste the one you need in seconds."
+        "title": "搜尋表情符號",
+        "desc": "按關鍵字搜尋以快速找到正確的表情符號。輸入單字即可獲得匹配的表情符號，讓您在幾秒鐘內複製並貼上所需的表情符號。"
       },
       {
         "icon": "👋",
         "iconType": "quality",
-        "title": "Skin Tone Picker",
-        "desc": "Choose skin tone for people and hand emojis. Pick the variation you want, then copy and paste—no extra steps."
+        "title": "膚色選擇器",
+        "desc": "為人物和手部表情符號選擇膚色。挑選您想要的變化，然後複製並貼上——無需額外步驟。"
       },
       {
         "icon": "📋",
         "iconType": "batch",
-        "title": "One-Click Copy",
-        "desc": "Click any emoji to copy it to your clipboard. Paste into WhatsApp, iMessage, Discord, Instagram, TikTok, or any app. No download, no account."
+        "title": "一鍵複製",
+        "desc": "點擊任何表情符號即可將其複製到剪貼簿。貼上到 WhatsApp、iMessage、Discord、Instagram、TikTok 或任何應用程式。無需下載，無需帳號。"
       },
       {
         "icon": "🔒",
         "iconType": "privacy",
-        "title": "Privacy First",
-        "desc": "All emoji browsing and copy and paste happen in your browser. Your recently used list is stored locally—nothing is sent to our servers."
+        "title": "隱私優先",
+        "desc": "所有的表情符號瀏覽和複製貼上都在您的瀏覽器中進行。您的最近使用列表儲存在本地——不會發送到我們的伺服器。"
       },
       {
         "icon": "💎",
         "iconType": "free",
-        "title": "Free",
-        "desc": "Unlimited emoji copy and paste with no sign-up, no ads, and no paywall. Use as much as you want on any device."
+        "title": "免費",
+        "desc": "無限次表情符號複製貼上，無需註冊、無廣告、無付費牆。在任何裝置上隨心所欲地使用。"
       }
     ]
   },
   "specs": {
-    "engine": "Browser-Based Emoji Picker - Client-Side",
-    "limit": "Unlimited Emojis - All Standard Unicode Categories",
-    "logic": "Search + Category Browse + Recently Used",
-    "privacy": "100% Client-Side (Local Storage for Recent Only)"
+    "engine": "基於瀏覽器的表情符號選擇器 - 用戶端",
+    "limit": "無限表情符號 - 所有標準 Unicode 類別",
+    "logic": "搜尋 + 類別瀏覽 + 最近使用",
+    "privacy": "100% 用戶端（僅最近使用記錄儲存於本地）"
   },
   "performanceMetrics": {
-    "title": "Technical Specifications",
+    "title": "技術規格",
     "metrics": [
       {
-        "label": "Categories",
-        "value": "Smileys & People, Animals & Nature, Food & Drink, Travel, Activities, Objects, Symbols, Flags"
+        "label": "類別",
+        "value": "表情與人物、動物與自然、食物與飲料、旅行、活動、物品、符號、旗幟"
       },
       {
-        "label": "Search",
-        "value": "Keyword search across all emojis"
+        "label": "搜尋",
+        "value": "跨所有表情符號的關鍵字搜尋"
       },
       {
-        "label": "Skin Tones",
-        "value": "Supported for people and hand emojis"
+        "label": "膚色",
+        "value": "支援人物和手部表情符號"
       },
       {
-        "label": "Copy",
-        "value": "One-click copy to clipboard"
+        "label": "複製",
+        "value": "一鍵複製到剪貼簿"
       },
       {
-        "label": "Platform Support",
-        "value": "Any app that supports Unicode emojis (WhatsApp, Discord, Instagram, TikTok, iMessage, etc.)"
+        "label": "平台支援",
+        "value": "任何支援 Unicode 表情符號的應用程式 (WhatsApp, Discord, Instagram, TikTok, iMessage 等)"
       },
       {
-        "label": "Privacy",
-        "value": "No server uploads; recent list stored locally only"
+        "label": "隱私",
+        "value": "無伺服器上傳；最近列表僅儲存在本地"
       }
     ]
   },
   "howToUse": {
-    "title": "How to Copy and Paste Emojis",
+    "title": "如何複製並貼上表情符號",
     "steps": [
       {
-        "title": "Browse or Search",
-        "desc": "Use the category list on the left to jump to a section, or type in the search box to find emojis by keyword."
+        "title": "瀏覽或搜尋",
+        "desc": "使用左側的類別列表跳轉到特定區塊，或在搜尋框中輸入關鍵字以尋找表情符號。"
       },
       {
-        "title": "Pick Your Emoji",
-        "desc": "Click the emoji you want. Use the skin tone picker next to the search bar if you need a different skin tone for people or hands."
+        "title": "選擇您的表情符號",
+        "desc": "點擊您想要的表情符號。如果您需要為人物或手部選擇不同的膚色，請使用搜尋欄旁邊的膚色選擇器。"
       },
       {
-        "title": "Copy & Paste",
-        "desc": "The emoji is copied to your clipboard. Paste it into your message, post, or document with Ctrl+V (or Cmd+V on Mac)."
+        "title": "複製與貼上",
+        "desc": "表情符號已複製到您的剪貼簿。使用 Ctrl+V（或 Mac 上的 Cmd+V）將其貼上到您的訊息、貼文或文件中。"
       }
     ]
   },
   "comparison": {
-    "title": "Why Choose Toolaze?",
+    "title": "為什麼選擇 Toolaze？",
     "toolaze": "Toolaze 💎",
-    "others": "Other Tools",
+    "others": "其他工具",
     "vs": "VS",
-    "smartChoice": "Smart Choice",
-    "otherTools": "Other Tools",
-    "toolazeFeatures": "Free, No sign-up, Category browse, Search, Skin tone, One-click copy, Recently used, Works in browser",
-    "othersFeatures": "Sign-up required, Limited categories, No search, Ads or paywall, App download, Slower, Fewer emojis"
+    "smartChoice": "聰明的選擇",
+    "otherTools": "其他工具",
+    "toolazeFeatures": "免費、無需註冊、類別瀏覽、搜尋、膚色選擇、一鍵複製、最近使用、在瀏覽器中運行",
+    "othersFeatures": "需要註冊、類別有限、無搜尋功能、有廣告或付費牆、需下載 App、速度較慢、表情符號較少"
   },
-  "scenesTitle": "Use Cases",
+  "scenesTitle": "使用場景",
   "scenes": [
     {
-      "title": "Texting & Messaging",
+      "title": "簡訊與通訊",
       "icon": "💬",
-      "desc": "Copy and paste emojis into iMessage, WhatsApp, or any chat. Find the right emoji quickly with search or categories and send with one click."
+      "desc": "將表情符號複製並貼上到 iMessage、WhatsApp 或任何聊天工具中。透過搜尋或類別快速找到正確的表情符號，一鍵發送。"
     },
     {
-      "title": "Social Media",
+      "title": "社群媒體",
       "icon": "📱",
-      "desc": "Use emojis in Instagram captions, TikTok bios, Discord messages, or Twitter posts. Copy and paste emojis that work on every platform."
+      "desc": "在 Instagram 說明、TikTok 簡介、Discord 訊息或 Twitter 貼文中使用表情符號。複製並貼上在每個平台上都能正常顯示的表情符號。"
     },
     {
-      "title": "Content & Documents",
+      "title": "內容與文件",
       "icon": "📝",
-      "desc": "Add emojis to presentations, emails, or documents. Search by keyword or browse by category to copy and paste the perfect emoji."
+      "desc": "在簡報、電子郵件或文件中加入表情符號。按關鍵字搜尋或按類別瀏覽，以複製並貼上完美的表情符號。"
     }
   ],
   "rating": {
-    "title": "Trusted for Emoji Copy & Paste",
-    "rating": "4.9/5 FROM 10K+ USERS",
-    "text": "\"Fast and simple—I use it every day for Discord and Instagram.\" Copy and paste emojis online with Toolaze, no sign-up, no hassle."
+    "title": "值得信賴的表情符號複製貼上工具",
+    "rating": "4.9/5 來自 10,000+ 名使用者",
+    "text": "「快速又簡單——我每天都在 Discord 和 Instagram 上使用它。」使用 Toolaze 線上複製貼上表情符號，無需註冊，無煩惱。"
   },
-  "faqTitle": "Frequently Asked Questions",
+  "faqTitle": "常見問題",
   "faq": [
     {
-      "q": "Is emoji copy and paste really free?",
-      "a": "Yes. Toolaze emoji copy and paste is 100% free. You can copy and paste emojis as much as you want with no sign-up, no ads, and no paywall."
+      "q": "表情符號複製貼上真的是免費的嗎？",
+      "a": "是的。Toolaze 表情符號複製貼上是 100% 免費的。您可以無限次複製並貼上表情符號，無需註冊、無廣告、無付費牆。"
     },
     {
-      "q": "Can I copy and paste emojis on iPhone or Android?",
-      "a": "Yes. Open the Toolaze emoji copy and paste page in your phone browser, tap an emoji to copy it, then paste it into any app (iMessage, WhatsApp, Instagram, etc.) that supports emojis."
+      "q": "我可以在 iPhone 或 Android 上複製貼上表情符號嗎？",
+      "a": "是的。在您的手機瀏覽器中打開 Toolaze 表情符號複製貼上頁面，點擊表情符號進行複製，然後將其貼上到任何支援表情符號的應用程式（如 iMessage、WhatsApp、Instagram 等）。"
     },
     {
-      "q": "Do these emojis work in Discord, Instagram, and TikTok?",
-      "a": "Yes. The emojis are standard Unicode characters, so they work everywhere: Discord, Instagram, TikTok, WhatsApp, iMessage, Twitter, and more. Just copy and paste emojis where you need them."
+      "q": "這些表情符號在 Discord、Instagram 和 TikTok 中可以使用嗎？",
+      "a": "是的。這些表情符號是標準的 Unicode 字元，因此在任何地方都可以使用：Discord、Instagram、TikTok、WhatsApp、iMessage、Twitter 等。只需在需要的地方複製並貼上表情符號即可。"
     },
     {
-      "q": "How do I get skin tone variations?",
-      "a": "Use the skin tone picker next to the search bar. It appears for people and hand emojis. Choose a tone, then click the emoji to copy and paste it with that skin tone."
+      "q": "如何獲得膚色變化？",
+      "a": "使用搜尋欄旁邊的膚色選擇器。它會出現在人物和手部表情符號中。選擇一個色調，然後點擊表情符號以該膚色進行複製貼上。"
     },
     {
-      "q": "Where is my \"recently used\" list stored?",
-      "a": "Recently used emojis are stored only in your browser (local storage). Nothing is sent to our servers, so your usage stays private."
+      "q": "我的「最近使用」列表儲存在哪裡？",
+      "a": "最近使用的表情符號僅儲存在您的瀏覽器（本地儲存）中。不會發送到我們的伺服器，因此您的使用情況保持私密。"
     },
     {
-      "q": "Can I search for specific emojis?",
-      "a": "Yes. Type a keyword in the search box (e.g. \"heart\", \"fire\", \"birthday\") to see matching emojis. Then click to copy and paste the one you want."
+      "q": "我可以搜尋特定的表情符號嗎？",
+      "a": "是的。在搜尋框中輸入關鍵字（例如「愛心」、「火」、「生日」）即可查看匹配的表情符號。然後點擊以複製並貼上您想要的那個。"
     }
   ],
-  "moreTools": "More Quick Tools"
+  "moreTools": "更多快速工具"
 }

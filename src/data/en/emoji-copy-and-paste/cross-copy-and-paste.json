@@ -38,19 +38,43 @@
   "performanceMetrics": {
     "title": "Technical Specifications",
     "metrics": [
-      { "label": "Categories", "value": "Symbols (cross, cross mark, check mark)" },
-      { "label": "Search", "value": "Keyword search e.g. cross, christian, mark" },
-      { "label": "Copy", "value": "One-click copy to clipboard" },
-      { "label": "Platform Support", "value": "iPhone, Android, Discord, Instagram, WhatsApp, iMessage" },
-      { "label": "Privacy", "value": "No server uploads; recent list stored locally only" }
+      {
+        "label": "Categories",
+        "value": "Symbols (cross, cross mark, check mark)"
+      },
+      {
+        "label": "Search",
+        "value": "Keyword search e.g. cross, christian, mark"
+      },
+      {
+        "label": "Copy",
+        "value": "One-click copy to clipboard"
+      },
+      {
+        "label": "Platform Support",
+        "value": "iPhone, Android, Discord, Instagram, WhatsApp, iMessage"
+      },
+      {
+        "label": "Privacy",
+        "value": "No server uploads; recent list stored locally only"
+      }
     ]
   },
   "howToUse": {
     "title": "How to Copy and Paste Cross Emoji",
     "steps": [
-      { "title": "Open the Emoji Picker", "desc": "Go to Toolaze emoji copy and paste and search \"cross\" or browse the Symbols category." },
-      { "title": "Choose the Cross Emoji", "desc": "Click the cross emoji, cross mark emoji, or christian cross emoji you want to copy and paste." },
-      { "title": "Paste Anywhere", "desc": "Paste with Ctrl+V (or Cmd+V on Mac) into messages, bios, or posts." }
+      {
+        "title": "Open the Emoji Picker",
+        "desc": "Go to Toolaze emoji copy and paste and search \"cross\" or browse the Symbols category."
+      },
+      {
+        "title": "Choose the Cross Emoji",
+        "desc": "Click the cross emoji, cross mark emoji, or christian cross emoji you want to copy and paste."
+      },
+      {
+        "title": "Paste Anywhere",
+        "desc": "Paste with Ctrl+V (or Cmd+V on Mac) into messages, bios, or posts."
+      }
     ]
   },
   "comparison": {
@@ -65,9 +89,21 @@
   },
   "scenesTitle": "Use Cases",
   "scenes": [
-    { "title": "Messages & Bios", "icon": "✝️", "desc": "Copy and paste cross emoji into Instagram bios, Discord status, or iMessage. Christian cross emoji copy and paste in one click." },
-    { "title": "Social & Content", "icon": "📱", "desc": "Use cross mark emoji or cross emoji in posts and comments. Copy and paste cross emoji to any app that supports Unicode." },
-    { "title": "Symbols & Design", "icon": "❌", "desc": "Get cross emoji symbol copy and paste for design or religious content. Search and copy and paste cross emoji instantly." }
+    {
+      "icon": "✝️",
+      "title": "Messages & Bios",
+      "desc": "Copy and paste cross emoji into Instagram bios, Discord status, or iMessage. Christian cross emoji copy and paste in one click."
+    },
+    {
+      "icon": "📱",
+      "title": "Social & Content",
+      "desc": "Use cross mark emoji or cross emoji in posts and comments. Copy and paste cross emoji to any app that supports Unicode."
+    },
+    {
+      "icon": "❌",
+      "title": "Symbols & Design",
+      "desc": "Get cross emoji symbol copy and paste for design or religious content. Search and copy and paste cross emoji instantly."
+    }
   ],
   "rating": {
     "title": "Trusted for Cross Emoji Copy & Paste",
@@ -76,10 +112,25 @@
   },
   "faqTitle": "Frequently Asked Questions",
   "faq": [
-    { "q": "Is cross emoji copy and paste free?", "a": "Yes. Toolaze is 100% free. You can copy and paste cross emoji and cross mark emoji as much as you want with no sign-up or ads." },
-    { "q": "Can I copy and paste cross emoji on iPhone?", "a": "Yes. Open the Toolaze emoji page in your iPhone browser, tap the cross emoji to copy, then paste into any app. Cross emoji copy and paste iphone works in Safari or Chrome." },
-    { "q": "Where do I find christian cross emoji copy and paste?", "a": "On Toolaze, search \"cross\" or \"christian\" to find the christian cross emoji. Click to copy and paste cross emoji into messages or bios." },
-    { "q": "What is the difference between cross emoji and cross mark emoji?", "a": "Cross emoji often refers to the decorative/religious cross (✝️). Cross mark emoji (❌) is used for wrong/incorrect. Both are available for copy and paste cross emoji on Toolaze." },
-    { "q": "Do cross emoji work in Discord and Instagram?", "a": "Yes. They are standard Unicode. Copy and paste cross emoji into Discord, Instagram, WhatsApp, or any app that supports emojis." }
+    {
+      "q": "Is cross emoji copy and paste free?",
+      "a": "Yes. Toolaze is 100% free. You can copy and paste cross emoji and cross mark emoji as much as you want with no sign-up or ads."
+    },
+    {
+      "q": "Can I copy and paste cross emoji on iPhone?",
+      "a": "Yes. Open the Toolaze emoji page in your iPhone browser, tap the cross emoji to copy, then paste into any app. Cross emoji copy and paste iphone works in Safari or Chrome."
+    },
+    {
+      "q": "Where do I find christian cross emoji copy and paste?",
+      "a": "On Toolaze, search \"cross\" or \"christian\" to find the christian cross emoji. Click to copy and paste cross emoji into messages or bios."
+    },
+    {
+      "q": "What is the difference between cross emoji and cross mark emoji?",
+      "a": "Cross emoji often refers to the decorative/religious cross (✝️). Cross mark emoji (❌) is used for wrong/incorrect. Both are available for copy and paste cross emoji on Toolaze."
+    },
+    {
+      "q": "Do cross emoji work in Discord and Instagram?",
+      "a": "Yes. They are standard Unicode. Copy and paste cross emoji into Discord, Instagram, WhatsApp, or any app that supports emojis."
+    }
   ]
 }

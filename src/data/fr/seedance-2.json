@@ -1,0 +1,220 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Aperçu du générateur de vidéo IA Seedance 2.0 et flux de travail des prompts - Toolaze",
+    "description": "Explorez les limites d'entrée de Seedance 2.0, la planification des prompts, les spécifications vidéo 1080p et les notes sur le flux de travail multimodal pour la génération de références texte, image, vidéo et audio."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "modelIntro",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "modelIntro": {
+    "title": "Pourquoi Seedance 2.0 se démarque pour la création de vidéos par IA",
+    "modelName": "Seedance 2.0",
+    "modelType": "Modèle de vidéo IA",
+    "description": [
+      "Seedance 2.0 de ByteDance apporte une approche à pipeline unique pour la vidéo IA : mélangez des prompts textuels avec jusqu'à 9 images, 3 clips vidéo et 3 clips audio dans une seule requête. Pas besoin de chaîner des outils séparés—décrivez votre scène, ajoutez des références et obtenez un résultat de qualité cinéma.",
+      "Le modèle gère les mouvements complexes et le rendu respectant les lois de la physique, avec un contrôle précis de l'éclairage, de la caméra et de la performance. La sortie consiste en des vidéos multi-plans 1080p de 15 secondes avec audio stéréo, prêtes pour les réseaux sociaux, les publicités ou la pré-production.",
+      "Toolaze offre un accès gratuit en ligne. Aucune inscription requise—commencez à créer depuis votre navigateur."
+    ],
+    "featureCards": [
+      {
+        "title": "Sortie 1080p de qualité cinéma sans attente",
+        "content": "Seedance 2.0 livre du 1080p prêt pour la diffusion en quelques secondes. Les séquences multi-plans avec un éclairage et un mouvement précis maintiennent une qualité élevée tout en restant efficaces. Évitez la surcharge du 4K quand le Full HD suffit pour votre flux de travail."
+      },
+      {
+        "title": "Un seul pipeline pour le texte, les images, la vidéo et l'audio",
+        "content": "Fournissez au modèle n'importe quel mélange d'entrées : prompts écrits, références de style, exemples de clips ou sons. Il déduit le mouvement, les effets et le ton de vos matériaux, vous passez donc moins de temps à itérer et plus de temps à produire."
+      },
+      {
+        "title": "Vidéo et audio en une seule génération",
+        "content": "L'architecture conjointe audio-vidéo produit l'image et le son ensemble. La parole, l'ambiance et les effets restent synchronisés sans travail de post-production supplémentaire. Un clic, un résultat—des clips complets pour les réseaux sociaux, les publicités ou les storyboards."
+      }
+    ]
+  },
+  "hero": {
+    "h1": "Générateur de vidéo IA Seedance 2.0",
+    "desc": "Planifiez des vidéos 1080p de 15 secondes avec Seedance 2.0. Examinez les options d'entrée texte, image, vidéo et audio pendant que l'interface du générateur est en cours de préparation."
+  },
+  "intro": {
+    "title": "Pourquoi choisir le générateur de vidéo IA Seedance 2.0 ?",
+    "content": [
+      {
+        "title": "L'IA vidéo multimodale la plus complète de l'industrie",
+        "text": "Seedance 2.0 est le modèle de génération vidéo IA de nouvelle génération de ByteDance qui adopte une architecture de génération conjointe audio-vidéo multimodale unifiée. Contrairement aux outils monomodes qui n'acceptent que des prompts textuels, Seedance 2.0 prend en charge simultanément les entrées texte, image, audio et vidéo, offrant ainsi les capacités de référence et d'édition de contenu multimodales les plus complètes disponibles aujourd'hui. Vous pouvez combiner jusqu'à 9 images de référence, 3 clips vidéo et 3 clips audio avec des instructions en langage naturel pour un contrôle créatif sans précédent sur vos vidéos générées par IA."
+      },
+      {
+        "title": "Sortie de qualité Hollywood avec contrôle de niveau réalisateur",
+        "text": "Générez des vidéos multi-plans de haute qualité de 15 secondes avec un audio double canal en une seule passe. Seedance 2.0 excelle dans le rendu de mouvements et d'interactions complexes tout en suivant les lois physiques—gérant même des scénarios difficiles comme le patinage artistique en couple ou les mouvements de caméra dynamiques. Vous bénéficiez d'un contrôle de niveau réalisateur sur la performance, l'éclairage, l'ombre et le mouvement de la caméra, ce qui le rend idéal pour la production cinématographique professionnelle, les campagnes publicitaires, les vidéos de produits e-commerce et les cinématiques de jeux. Le modèle est conçu pour réduire considérablement les coûts de création de contenu tout en maintenant une sortie de qualité diffusion."
+      },
+      {
+        "title": "Accès en ligne gratuit sans inscription requise",
+        "text": "Toolaze offre un accès gratuit à la génération de vidéos IA Seedance 2.0 en ligne. Pas d'inscription, pas de carte de crédit et pas de frais cachés. Que vous soyez un créateur de contenu prototypant des idées, un marketeur testant des concepts publicitaires ou un cinéaste explorant des storyboards, vous pouvez commencer à créer des vidéos 1080p immédiatement. Le générateur de vidéo IA gratuit prend en charge le texte-vidéo, l'image-vidéo et la génération multimodale complète—le tout depuis votre navigateur sans aucune installation de logiciel requise."
+      }
+    ]
+  },
+  "features": {
+    "title": "Caractéristiques clés de Seedance 2.0",
+    "items": [
+      {
+        "icon": "🎬",
+        "iconType": "multimodal",
+        "title": "Entrée multimodale",
+        "desc": "Combinez du texte, des images (jusqu'à 9), des clips vidéo (jusqu'à 3) et des clips audio (jusqu'à 3) dans une seule génération pour un contrôle créatif maximal."
+      },
+      {
+        "icon": "🔊",
+        "iconType": "audio",
+        "title": "Génération Audio + Vidéo",
+        "desc": "Générez simultanément des vidéos de 15 secondes avec un audio double canal grâce à l'architecture conjointe audio-vidéo unifiée."
+      },
+      {
+        "icon": "🎥",
+        "iconType": "quality",
+        "title": "Qualité Hollywood 1080p",
+        "desc": "Produisez des vidéos multi-plans de qualité cinéma avec un éclairage, des ombres et des mouvements de caméra cinématographiques appropriés."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Génération rapide",
+        "desc": "Créez des vidéos professionnelles en quelques secondes. Pas de longues files d'attente de téléchargement ou de délais de traitement—obtenez des résultats rapidement."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Utilisation gratuite",
+        "desc": "Aucune inscription requise. Commencez à créer des vidéos IA en ligne gratuitement, sans abonnement ni frais cachés."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "Basé sur le navigateur",
+        "desc": "Fonctionne entièrement dans votre navigateur Web. Pas d'installation de logiciel, pas de téléchargement—créez des vidéos directement en ligne."
+      }
+    ]
+  },
+  "specs": {
+    "engine": "ByteDance Seedance 2.0 - Architecture multimodale unifiée",
+    "limit": "Jusqu'à 9 images, 3 clips vidéo, 3 clips audio par génération",
+    "logic": "Vidéos multi-plans de 15 secondes avec audio double canal",
+    "privacy": "Traitement en ligne - Aucune installation locale requise"
+  },
+  "performanceMetrics": {
+    "title": "Spécifications techniques de Seedance 2.0",
+    "metrics": [
+      {
+        "label": "Types d'entrée",
+        "value": "Texte, Image (jusqu'à 9), Vidéo (jusqu'à 3), Audio (jusqu'à 3)"
+      },
+      {
+        "label": "Résolution de sortie",
+        "value": "1080p (multi-plans de qualité Hollywood)"
+      },
+      {
+        "label": "Durée de la vidéo",
+        "value": "15 secondes par génération"
+      },
+      {
+        "label": "Support audio",
+        "value": "Génération audio double canal (vidéo + son)"
+      },
+      {
+        "label": "Niveau de contrôle",
+        "value": "Niveau réalisateur (performance, éclairage, ombre, caméra)"
+      },
+      {
+        "label": "Cas d'utilisation",
+        "value": "Film, publicité, e-commerce, production de jeux"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Comment planifier des vidéos avec Seedance 2.0 ?",
+    "steps": [
+      {
+        "title": "Préparer le brief",
+        "desc": "Définissez la scène, le mouvement de caméra, le timing, l'ambiance audio et les ressources de référence avant la génération."
+      },
+      {
+        "title": "Ajouter des entrées de référence",
+        "desc": "Utilisez les limites du modèle comme cadre de planification : le texte, les images, les clips vidéo et les indices audio peuvent guider une seule requête."
+      },
+      {
+        "title": "Réviser le plan du clip",
+        "desc": "Vérifiez la durée, la résolution de sortie et les besoins de contrôle maintenant, puis passez à la génération lorsque l'interface s'ouvrira."
+      }
+    ]
+  },
+  "comparison": {
+    "title": "Pourquoi choisir Toolaze Seedance 2.0 ?",
+    "toolaze": "Toolaze 💎",
+    "others": "Autres outils",
+    "vs": "VS",
+    "smartChoice": "Choix intelligent",
+    "otherTools": "Autres outils",
+    "toolazeFeatures": "Entrée multimodale (texte, image, vidéo, audio), qualité 1080p, génération audio + vidéo, gratuit en ligne, aucune inscription requise, contrôle de niveau réalisateur",
+    "othersFeatures": "Entrée texte uniquement, résolution inférieure, vidéo uniquement, niveaux payants, inscription requise, contrôle limité"
+  },
+  "scenesTitle": "Cas d'utilisation",
+  "scenes": [
+    {
+      "title": "Créateurs de contenu et réseaux sociaux",
+      "icon": "📱",
+      "desc": "Créez des vidéos courtes attrayantes pour TikTok, Instagram Reels et YouTube Shorts. Combinez des prompts textuels avec des images de référence pour une image de marque cohérente et une production de contenu rapide. Générez plusieurs variations pour tester ce qui résonne avec votre public."
+    },
+    {
+      "title": "E-commerce et publicité",
+      "icon": "🛒",
+      "desc": "Générez des vidéos de produits et des créations publicitaires à grande échelle. Utilisez des images de produits comme référence pour un contenu marketing professionnel. Créez rapidement des variations de tests A/B sans production vidéo coûteuse. Parfait pour les fiches Amazon, les publicités sociales et les campagnes promotionnelles."
+    },
+    {
+      "title": "Production de films et de jeux",
+      "icon": "🎮",
+      "desc": "Produisez des storyboards, des vidéos de concept et des cinématiques de jeux. Le contrôle de niveau réalisateur sur l'éclairage et le mouvement de la caméra accélère la pré-production. Visualisez les scripts et présentez des idées aux parties prenantes. Réduisez les coûts de production tout en maintenant une qualité professionnelle."
+    }
+  ],
+  "rating": {
+    "title": "Approuvé par des milliers de créateurs",
+    "rating": "4.9/5 PAR PLUS DE 10K CRÉATEURS",
+    "text": "Rejoignez des milliers d'utilisateurs satisfaits qui font confiance à Toolaze pour une génération de vidéo IA rapide, sécurisée et gratuite avec Seedance 2.0. Aucune inscription requise. Créez des vidéos 1080p de qualité Hollywood à partir de texte, d'images, de vidéo et d'audio en ligne."
+  },
+  "faqTitle": "Foire aux questions",
+  "faq": [
+    {
+      "q": "Qu'est-ce que Seedance 2.0 ?",
+      "a": "Seedance 2.0 est le modèle de génération vidéo IA de nouvelle génération de ByteDance lancé en février 2026. Il utilise une architecture multimodale unifiée prenant en charge les entrées texte, image, vidéo et audio pour créer des vidéos de haute qualité de 15 secondes avec un audio double canal. Le modèle excelle dans les mouvements complexes, suit les lois physiques et offre un contrôle de niveau réalisateur sur la performance, l'éclairage, l'ombre et le mouvement de la caméra. Il est conçu pour la production professionnelle de films, de publicités, d'e-commerce et de jeux."
+    },
+    {
+      "q": "Seedance 2.0 est-il gratuit ?",
+      "a": "Toolaze prépare l'interface Seedance 2.0. La page vous aide actuellement à comprendre le modèle, les limites d'entrée et le flux de production avant l'ouverture de l'accès."
+    },
+    {
+      "q": "Quelles entrées Seedance 2.0 prend-il en charge ?",
+      "a": "Seedance 2.0 prend en charge quatre types d'entrée : le texte (descriptions en langage naturel), les images (jusqu'à 9 images de référence), les clips vidéo (jusqu'à 3) et les clips audio (jusqu'à 3). Vous pouvez combiner n'importe lequel de ces éléments avec des instructions en langage naturel pour une flexibilité créative maximale. Cette approche multimodale vous offre un contrôle sans précédent—ajoutez des références visuelles pour le style, des séquences d'exemple pour la cohérence, ou synchronisez avec l'audio en une seule génération."
+    },
+    {
+      "q": "Comment Seedance 2.0 se compare-t-il à Sora 2 ?",
+      "a": "Sora 2 (OpenAI) excelle dans la précision physique et le réalisme, avec une forte synchronisation audio et une fonction « personnages » pour insérer de vraies personnes dans les scènes. Disponible via l'application Sora et sora.com. Seedance 2.0 (ByteDance) se distingue par son entrée multimodale—texte plus jusqu'à 9 images, 3 clips vidéo et 3 clips audio en une seule passe. Sortie 1080p avec contrôle de niveau réalisateur. Toolaze offre un accès en ligne gratuit. Différence fondamentale : Sora 2 pour le réalisme et l'écosystème OpenAI ; Seedance 2.0 pour la flexibilité multimodale et l'utilisation Web gratuite."
+    },
+    {
+      "q": "Seedance 2.0 peut-il générer de l'audio avec la vidéo ?",
+      "a": "Oui. Seedance 2.0 utilise une architecture de génération conjointe audio-vidéo unifiée. Il peut générer simultanément des vidéos de 15 secondes avec un audio double canal, ce qui le rend idéal pour le contenu nécessitant un son synchronisé. Cela élimine le besoin d'une génération audio séparée ou d'une synchronisation manuelle—vous obtenez une vidéo complète avec audio en une seule passe."
+    },
+    {
+      "q": "Quelle peut être la durée des vidéos Seedance 2.0 ?",
+      "a": "Seedance 2.0 génère des vidéos multi-plans de haute qualité de 15 secondes par génération. Cette durée est idéale pour les réseaux sociaux (TikTok, Reels, Shorts), les publicités, les aperçus de concepts et les storyboards. Pour un contenu plus long, vous pouvez créer plusieurs clips de 15 secondes et les combiner dans un logiciel de montage vidéo. Le modèle se concentre sur la qualité dans cette durée optimale."
+    },
+    {
+      "q": "Dois-je installer un logiciel pour utiliser Seedance 2.0 ?",
+      "a": "Aucune installation de logiciel local n'est prévue pour l'interface Toolaze. L'objectif est un flux de travail basé sur le navigateur une fois que l'accès à Seedance 2.0 sera disponible."
+    }
+  ],
+  "moreTools": "Plus d'outils Seedance 2.0"
+}
