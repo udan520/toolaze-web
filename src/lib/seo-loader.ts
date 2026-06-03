@@ -515,6 +515,15 @@ async function loadToolJsonFile(locale: string, tool: string, slug: string) {
           break
       }
 
+      if (!data && tool === 'font-generator') {
+        try {
+          const fp = path.join(process.cwd(), 'src', 'data', normalizedLocale, 'font-generator', `${slug}.json`)
+          if (fs.existsSync(fp)) {
+            data = { default: JSON.parse(fs.readFileSync(fp, 'utf-8')) }
+          }
+        } catch {}
+      }
+
       // Emoji L3：静态 import 仅在 case 'en' 中配置；de/ja/pt 等分支未写 emoji，data 会一直是 null，
       // 且不会进入下方 catch（未抛错），导致 getAllSlugs 为空 → 导航 Quick Tools hover 无三级链接。
       // 其它语言用英文 JSON 取标题；href 仍由 Navigation 按 navEffectiveLocale 加前缀。
@@ -949,12 +958,10 @@ export async function getAllTools(locale: string = 'en'): Promise<Array<{ tool: 
     tools.push({ tool: 'image-converter', slug })
   }
   
-  // 添加字体生成工具（支持 en、de、ja、es 和 fr）
-  if (locale === 'en' || locale === 'de' || locale === 'ja' || locale === 'es' || locale === 'fr') {
-    const fontGeneratorSlugs = await getAllSlugs('font-generator', locale)
-    for (const slug of fontGeneratorSlugs) {
-      tools.push({ tool: 'font-generator', slug })
-    }
+  // 添加字体生成工具（所有站点语言均已提供独立内容）
+  const fontGeneratorSlugs = await getAllSlugs('font-generator', locale)
+  for (const slug of fontGeneratorSlugs) {
+    tools.push({ tool: 'font-generator', slug })
   }
   
   // 添加 Emoji Copy & Paste L3 页面（目前仅英文有内容，其他 locale 回退到英文）

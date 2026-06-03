@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useRef, useCallback, useEffect } from 'react'
+import { useCommonTranslations } from '@/lib/use-common-translations'
 
 const HIDDEN_PROMPT = 'remove all watermarks in the image.'
 const MAX_FILE_SIZE = 30 * 1024 * 1024 // 30MB
@@ -59,6 +60,30 @@ async function compressIfNeeded(file: File): Promise<File> {
 }
 
 export default function WatermarkRemover() {
+  const commonTranslations = useCommonTranslations()
+  const text = commonTranslations?.common?.watermarkRemoverTool || {
+    uploadTitle: 'Click or drag image here',
+    uploadFormats: 'JPG, PNG, WebP (max 30MB). Under 2MB or 1280px recommended for faster processing.',
+    uploadNew: 'Upload New',
+    generating: 'Generating...',
+    regenerate: 'Regenerate',
+    download: 'Download',
+    downloading: 'Downloading...',
+    compareTitle: 'Long-press to compare with original',
+    compareAria: 'Compare with original',
+    back: 'Back',
+    originalAlt: 'Original',
+    resultAlt: 'Result',
+    invalidImage: 'Please select an image file (JPG, PNG, WebP, etc.)',
+    tooLarge: 'Image size must be under 30MB',
+    success: 'Watermark removed successfully',
+    downloadStarted: 'Download started',
+    downloadFailed: 'Download failed',
+    requestFailed: 'Request failed: {status}',
+    noImageUrl: 'No image URL in response',
+  }
+  const formatText = (template: string, values: Record<string, string | number>) =>
+    Object.entries(values).reduce((next, [key, value]) => next.replace(`{${key}}`, String(value)), template)
   const [file, setFile] = useState<File | null>(null)
   const [preview, setPreview] = useState<string | null>(null)
   const [isProcessing, setIsProcessing] = useState(false)
@@ -92,14 +117,14 @@ export default function WatermarkRemover() {
       const res = await fetch('/api/qwen-image-edit', { method: 'POST', body: form })
       const data = await res.json().catch(() => ({}))
       if (!res.ok) {
-        throw new Error(data?.error || `Request failed: ${res.status}`)
+        throw new Error(data?.error || formatText(text.requestFailed, { status: res.status }))
       }
       const resultUrl = data?.url
       if (!resultUrl) {
-        throw new Error('No image URL in response')
+        throw new Error(text.noImageUrl)
       }
       setResultUrl(resultUrl)
-      showToast('Watermark removed successfully', 'success')
+      showToast(text.success, 'success')
     } catch (e) {
       const msg = e instanceof Error ? e.message : 'Unknown error'
       setError(msg)
@@ -107,15 +132,15 @@ export default function WatermarkRemover() {
     } finally {
       setIsProcessing(false)
     }
-  }, [])
+  }, [text.success])
 
   const handleFileSelect = useCallback((f: File) => {
     if (!f.type.startsWith('image/')) {
-      setError('Please select an image file (JPG, PNG, WebP, etc.)')
+      setError(text.invalidImage)
       return
     }
     if (f.size > MAX_FILE_SIZE) {
-      setError('Image size must be under 30MB')
+      setError(text.tooLarge)
       return
     }
     setError(null)
@@ -124,7 +149,7 @@ export default function WatermarkRemover() {
     const url = URL.createObjectURL(f)
     setPreview(url)
     processImage(f)
-  }, [processImage])
+  }, [processImage, text.invalidImage, text.tooLarge])
 
   useEffect(() => {
     return () => {
@@ -190,7 +215,7 @@ export default function WatermarkRemover() {
         const res = await fetch(resultUrl)
         const blob = await res.blob()
         triggerBlobDownload(blob, filename)
-        showToast('Download started', 'success')
+        showToast(text.downloadStarted, 'success')
         return
       }
       // 方法1: 代理下载（R2 等白名单 URL）
@@ -199,7 +224,7 @@ export default function WatermarkRemover() {
       if (proxyRes?.ok) {
         const blob = await proxyRes.blob()
         triggerBlobDownload(blob, filename)
-        showToast('Download started', 'success')
+        showToast(text.downloadStarted, 'success')
         return
       }
       // 方法2: 直接 fetch（CORS 允许时）
@@ -207,7 +232,7 @@ export default function WatermarkRemover() {
       if (directRes?.ok) {
         const blob = await directRes.blob()
         triggerBlobDownload(blob, filename)
-        showToast('Download started', 'success')
+        showToast(text.downloadStarted, 'success')
         return
       }
       // 方法3: 降级为 a 标签（同源时生效；跨域时浏览器可能仍打开预览）
@@ -217,9 +242,9 @@ export default function WatermarkRemover() {
       document.body.appendChild(a)
       a.click()
       document.body.removeChild(a)
-      showToast('Download started', 'success')
+      showToast(text.downloadStarted, 'success')
     } catch {
-      showToast('Download failed', 'error')
+      showToast(text.downloadFailed, 'error')
     } finally {
       setDownloading(false)
     }
@@ -249,8 +274,8 @@ export default function WatermarkRemover() {
           />
           <div className="space-y-2">
             <div className="text-4xl">📤</div>
-            <p className="text-slate-600 font-medium">Click or drag image here</p>
-            <p className="text-sm text-slate-400">JPG, PNG, WebP (max 30MB). Under 2MB or 1280px recommended for faster processing.</p>
+            <p className="text-slate-600 font-medium">{text.uploadTitle}</p>
+            <p className="text-sm text-slate-400">{text.uploadFormats}</p>
           </div>
         </div>
         {error && (
@@ -275,7 +300,7 @@ export default function WatermarkRemover() {
               <button
                 onClick={handleClear}
                 className="w-9 h-9 rounded-full border border-slate-200 flex items-center justify-center text-slate-500 hover:bg-slate-50 transition-colors"
-                aria-label="Back"
+                aria-label={text.back}
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -288,7 +313,7 @@ export default function WatermarkRemover() {
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
                 </svg>
-                Upload New
+                {text.uploadNew}
               </button>
               <input
                 ref={fileInputRef}
@@ -303,7 +328,7 @@ export default function WatermarkRemover() {
             <div className="relative aspect-[4/3] bg-slate-100">
               <img
                 src={displayImage}
-                alt={comparePressed ? 'Original' : 'Result'}
+                alt={comparePressed ? text.originalAlt : text.resultAlt}
                 className="w-full h-full object-contain"
               />
 
@@ -315,7 +340,7 @@ export default function WatermarkRemover() {
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-500 opacity-75" />
                       <span className="relative inline-flex rounded-full h-3 w-3 bg-indigo-600" />
                     </span>
-                    <span className="text-slate-600 font-medium">Generating…</span>
+                    <span className="text-slate-600 font-medium">{text.generating}</span>
                   </div>
                 </div>
               )}
@@ -329,8 +354,8 @@ export default function WatermarkRemover() {
                   onContextMenu={(e) => e.preventDefault()}
                   style={{ touchAction: 'none' }}
                   className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/90 shadow-lg border border-slate-200 flex items-center justify-center text-slate-600 hover:bg-slate-50 active:bg-indigo-50 transition-colors"
-                  title="Long-press to compare with original"
-                  aria-label="Compare with original"
+                  title={text.compareTitle}
+                  aria-label={text.compareAria}
                 >
                   <svg className="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <rect x="3" y="3" width="8" height="18" rx="1" />
@@ -355,13 +380,13 @@ export default function WatermarkRemover() {
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                 </svg>
-                Regenerate
+                {text.regenerate}
               </button>
               <button
                 onClick={handleDownload}
                 disabled={!resultUrl || isProcessing || downloading}
                 className="w-full py-3 px-4 rounded-xl bg-white border border-slate-200 text-slate-700 font-bold text-sm hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2"
-                title={downloading ? 'Downloading...' : 'Download'}
+                title={downloading ? text.downloading : text.download}
               >
                 {downloading ? (
                   <svg className="w-4 h-4 animate-spin" viewBox="0 0 24 24" fill="none">
@@ -375,7 +400,7 @@ export default function WatermarkRemover() {
                     <line x1="12" y1="15" x2="12" y2="3" />
                   </svg>
                 )}
-                {downloading ? 'Downloading...' : 'Download'}
+                {downloading ? text.downloading : text.download}
               </button>
             </div>
           </div>

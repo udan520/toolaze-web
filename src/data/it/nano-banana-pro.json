@@ -1,143 +1,143 @@
 {
   "metadata": {
-    "title": "Generate Image to Image AI Online (Free, High Quality & Fast) - Toolaze",
-    "description": "How to generate image to image AI online? 1. Upload image 2. Set prompt 3. Generate image. Free online tool. Create high-quality AI images with fast processing. Secure & Private."
+    "title": "Genera AI da Immagine a Immagine Online (Gratis, Alta Qualità e Veloce) - Toolaze",
+    "description": "Come generare AI da immagine a immagine online? 1. Carica l'immagine 2. Imposta il prompt 3. Genera l'immagine. Strumento online gratuito. Crea immagini AI di alta qualità con elaborazione rapida. Sicuro e Privato."
   },
   "hero": {
-    "h1": "Free <span class=\"text-gradient\">Image to Image AI</span> Online",
-    "desc": "Generate stunning AI images from your existing images for free. Simply upload your image and provide a text prompt to create variations in seconds."
+    "h1": "Generatore <span class=\"text-gradient\">da Immagine a Immagine AI</span> Gratis Online",
+    "desc": "Genera gratuitamente splendide immagini AI a partire dalle tue immagini esistenti. Ti basta caricare la tua immagine e inserire un prompt testuale per creare variazioni in pochi secondi."
   },
   "howToUse": {
-    "title": "How to Generate Image to Image AI",
+    "title": "Come generare AI da Immagine a Immagine",
     "steps": [
       {
-        "title": "Upload Your Image",
-        "desc": "Upload the image you want to use as a base for the AI generation."
+        "title": "Carica la tua immagine",
+        "desc": "Carica l'immagine che desideri utilizzare come base per la generazione AI."
       },
       {
-        "title": "Enter Your Prompt",
-        "desc": "Describe the desired changes or additions you want to see in the generated image."
+        "title": "Inserisci il tuo prompt",
+        "desc": "Descrivi le modifiche o le aggiunte desiderate che vuoi vedere nell'immagine generata."
       },
       {
-        "title": "Generate and Download",
-        "desc": "Click the generate button and download your new AI-generated image."
+        "title": "Genera e scarica",
+        "desc": "Fai clic sul pulsante di generazione e scarica la tua nuova immagine generata dall'AI."
       }
     ]
   },
   "modelIntro": {
-    "title": "Unleash Your Creativity with Nano Banana Pro",
+    "title": "Scatena la tua creatività con Nano Banana Pro",
     "description": [
-      "Nano Banana Pro is an advanced AI model designed to transform your images with stunning detail and precision. Whether you're looking to create variations of existing images or bring entirely new concepts to life, Nano Banana Pro offers the tools you need to achieve your creative vision.",
-      "With support for high resolutions up to 4K and a range of aspect ratios, Nano Banana Pro ensures your generated images are of the highest quality. The intuitive interface and fast processing speeds make it easy to experiment and iterate on your designs.",
-      "Experience the future of image generation with Nano Banana Pro and unlock endless possibilities for your creative projects."
+      "Nano Banana Pro è un modello AI avanzato progettato per trasformare le tue immagini con dettagli e precisione straordinari. Che tu voglia creare variazioni di immagini esistenti o dare vita a concetti completamente nuovi, Nano Banana Pro offre gli strumenti necessari per realizzare la tua visione creativa.",
+      "Grazie al supporto per alte risoluzioni fino a 4K e a una gamma di proporzioni, Nano Banana Pro garantisce che le immagini generate siano della massima qualità. L'interfaccia intuitiva e le elevate velocità di elaborazione rendono facile sperimentare e perfezionare i tuoi progetti.",
+      "Sperimenta il futuro della generazione di immagini con Nano Banana Pro e sblocca infinite possibilità per i tuoi progetti creativi."
     ],
     "modelName": "Nano Banana Pro",
-    "modelType": "AI Image Model",
+    "modelType": "Modello di Immagine AI",
     "featureCards": [
       {
-        "title": "High-Resolution Output",
-        "content": "Generate images in stunning 2K and 4K resolutions, ensuring every detail is crisp and clear."
+        "title": "Output ad alta risoluzione",
+        "content": "Genera immagini in straordinarie risoluzioni 2K e 4K, assicurando che ogni dettaglio sia nitido e chiaro."
       },
       {
-        "title": "Fast Processing",
-        "content": "Experience lightning-fast image generation speeds, allowing you to iterate quickly and bring your ideas to life in seconds."
+        "title": "Elaborazione rapida",
+        "content": "Sperimenta velocità di generazione delle immagini fulminee, che ti consentono di iterare rapidamente e dare vita alle tue idee in pochi secondi."
       },
       {
-        "title": "Versatile Aspect Ratios",
-        "content": "Choose from a wide range of aspect ratios to perfectly fit your project's needs, from social media posts to cinematic visuals."
+        "title": "Proporzioni versatili",
+        "content": "Scegli tra un'ampia gamma di proporzioni per adattarsi perfettamente alle esigenze del tuo progetto, dai post sui social media alle immagini cinematografiche."
       }
     ]
   },
   "features": {
-    "title": "Key Features",
+    "title": "Caratteristiche principali",
     "items": [
       {
         "icon": "🖼️",
         "iconType": "ai",
-        "title": "Image to Image Generation",
-        "desc": "Transform existing images into new creations using AI. Simply upload your image and provide a text prompt to guide the AI's artistic direction."
+        "title": "Generazione da Immagine a Immagine",
+        "desc": "Trasforma le immagini esistenti in nuove creazioni utilizzando l'AI. Ti basta caricare la tua immagine e fornire un prompt testuale per guidare la direzione artistica dell'AI."
       },
       {
         "icon": "🖋️",
         "iconType": "ai",
-        "title": "Text to Image Generation",
-        "desc": "Bring your textual ideas to life with AI-generated images. Describe your vision, and let the AI create a unique visual representation."
+        "title": "Generazione da Testo a Immagine",
+        "desc": "Dai vita alle tue idee testuali con immagini generate dall'AI. Descrivi la tua visione e lascia che l'AI crei una rappresentazione visiva unica."
       },
       {
         "icon": "📐",
         "iconType": "ai",
-        "title": "Multiple Aspect Ratios",
-        "desc": "Generate images in various aspect ratios to suit different platforms and purposes. Choose from options like 1:1, 16:9, 9:16, and more."
+        "title": "Molteplici proporzioni",
+        "desc": "Genera immagini in varie proporzioni per adattarsi a diverse piattaforme e scopi. Scegli tra opzioni come 1:1, 16:9, 9:16 e altre ancora."
       },
       {
         "icon": "✨",
         "iconType": "ai",
-        "title": "High-Resolution Output",
-        "desc": "Create high-quality images with support for resolutions up to 4K. Ensure your generated images are crisp, clear, and detailed."
+        "title": "Output ad alta risoluzione",
+        "desc": "Crea immagini di alta qualità con supporto per risoluzioni fino a 4K. Assicurati che le immagini generate siano nitide, chiare e dettagliate."
       },
       {
         "icon": "💾",
         "iconType": "ai",
-        "title": "History Tracking",
-        "desc": "Easily access and manage your previously generated images. The history feature allows you to revisit, download, and reuse your creations."
+        "title": "Cronologia delle generazioni",
+        "desc": "Accedi e gestisci facilmente le tue immagini generate in precedenza. La funzione cronologia ti consente di rivedere, scaricare e riutilizzare le tue creazioni."
       },
       {
         "icon": "⚡",
         "iconType": "ai",
-        "title": "Fast Image Generation",
-        "desc": "Experience rapid image generation powered by Nano Banana Pro. Get your AI-generated images in seconds, allowing for quick iteration and experimentation."
+        "title": "Generazione rapida di immagini",
+        "desc": "Sperimenta una generazione rapida di immagini basata su Nano Banana Pro. Ottieni le tue immagini generate dall'AI in pochi secondi, consentendo una rapida iterazione e sperimentazione."
       }
     ]
   },
   "scenes": [
     {
       "icon": "📱",
-      "title": "Social Media Content",
-      "desc": "Create unique and engaging visuals for your social media channels. Generate eye-catching content to boost your online presence and attract new followers with AI image to image."
+      "title": "Contenuti per i social media",
+      "desc": "Crea elementi visivi unici e accattivanti per i tuoi canali social. Genera contenuti accattivanti per aumentare la tua presenza online e attirare nuovi follower con l'AI da immagine a immagine."
     },
     {
       "icon": "🎨",
-      "title": "Creative Art Projects",
-      "desc": "Explore new artistic possibilities with AI-generated art. Use image to image to create stunning digital paintings, illustrations, and mixed media pieces with ease."
+      "title": "Progetti artistici creativi",
+      "desc": "Esplora nuove possibilità artistiche con l'arte generata dall'AI. Usa la funzione da immagine a immagine per creare facilmente splendidi dipinti digitali, illustrazioni e opere in tecnica mista."
     },
     {
       "icon": "💻",
-      "title": "Website Visuals",
-      "desc": "Enhance your website with custom-generated images. Create unique banners, backgrounds, and product visuals that capture your brand's identity and engage your audience."
+      "title": "Elementi visivi per siti web",
+      "desc": "Migliora il tuo sito web con immagini generate su misura. Crea banner, sfondi e immagini di prodotto unici che catturino l'identità del tuo marchio e coinvolgano il tuo pubblico."
     }
   ],
   "rating": {
     "title": "Nano Banana Pro",
-    "rating": "4.9/5 FROM 10K+ CREATORS",
-    "text": "Join thousands of satisfied users who trust Toolaze for fast, secure, and free AI image to image generation. No registration required, no sign up needed. Generate high-quality 4K images with Nano Banana Pro."
+    "rating": "4.9/5 DA OLTRE 10MILA CREATORI",
+    "text": "Unisciti a migliaia di utenti soddisfatti che si affidano a Toolaze per una generazione AI da immagine a immagine veloce, sicura e gratuita. Nessuna registrazione richiesta, nessun login necessario. Genera immagini 4K di alta qualità con Nano Banana Pro."
   },
   "faq": [
     {
-      "q": "What is image to image AI generation?",
-      "a": "Image to image AI generation is a process that uses artificial intelligence to create new images based on an existing image and a text prompt. It allows you to transform and reimagine your photos with AI."
+      "q": "Cos'è la generazione AI da immagine a immagine?",
+      "a": "La generazione AI da immagine a immagine è un processo che utilizza l'intelligenza artificiale per creare nuove immagini basate su un'immagine esistente e un prompt testuale. Ti consente di trasformare e reimmaginare le tue foto con l'AI."
     },
     {
-      "q": "Is Nano Banana Pro free to use?",
-      "a": "Yes, Nano Banana Pro offers a free version with basic features. The Pro version unlocks higher resolutions, faster processing, and additional functionalities."
+      "q": "Nano Banana Pro è gratuito?",
+      "a": "Sì, Nano Banana Pro offre una versione gratuita con funzionalità di base. La versione Pro sblocca risoluzioni più elevate, un'elaborazione più rapida e funzionalità aggiuntive."
     },
     {
-      "q": "What image formats are supported by Nano Banana Pro?",
-      "a": "Nano Banana Pro supports JPG, PNG, and WebP input formats. You can choose to output your generated images in PNG, JPEG, or WebP formats."
+      "q": "Quali formati di immagine sono supportati da Nano Banana Pro?",
+      "a": "Nano Banana Pro supporta i formati di input JPG, PNG e WebP. Puoi scegliere di esportare le immagini generate nei formati PNG, JPEG o WebP."
     },
     {
-      "q": "What resolutions are available in Nano Banana Pro?",
-      "a": "The free version supports 1K resolution. Nano Banana Pro unlocks 2K and 4K resolutions for higher-quality image generation."
+      "q": "Quali risoluzioni sono disponibili in Nano Banana Pro?",
+      "a": "La versione gratuita supporta la risoluzione 1K. Nano Banana Pro sblocca le risoluzioni 2K e 4K per una generazione di immagini di qualità superiore."
     },
     {
-      "q": "How does Nano Banana Pro ensure the privacy of my images?",
-      "a": "Images uploaded to Nano Banana Pro are not stored permanently and are processed securely. No sign-up is required, ensuring your privacy."
+      "q": "In che modo Nano Banana Pro garantisce la privacy delle mie immagini?",
+      "a": "Le immagini caricate su Nano Banana Pro non vengono memorizzate in modo permanente e vengono elaborate in modo sicuro. Non è richiesta alcuna registrazione, garantendo la tua privacy."
     },
     {
-      "q": "Can I use Nano Banana Pro to generate images for commercial purposes?",
-      "a": "Yes, you can use images generated with Nano Banana Pro for commercial purposes, subject to the terms of service. Please review the licensing agreement for more details."
+      "q": "Posso utilizzare Nano Banana Pro per generare immagini a scopo commerciale?",
+      "a": "Sì, puoi utilizzare le immagini generate con Nano Banana Pro per scopi commerciali, nel rispetto dei termini di servizio. Consulta l'accordo di licenza per ulteriori dettagli."
     }
   ],
   "topComponent": "nano-banana-pro",
-  "scenesTitle": "Use Cases",
-  "faqTitle": "Frequently Asked Questions"
+  "scenesTitle": "Casi d'uso",
+  "faqTitle": "Domande frequenti"
 }

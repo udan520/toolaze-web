@@ -4,7 +4,6 @@ import Breadcrumb from '@/components/Breadcrumb'
 import { generateHreflangAlternates } from '@/lib/hreflang'
 import { loadCommonTranslations, getAllSlugs, getSeoContent } from '@/lib/seo-loader'
 import ToolCard from '@/components/ToolCard'
-import Link from 'next/link'
 import type { Metadata } from 'next'
 
 interface PageProps {
@@ -26,10 +25,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   
   const t = await loadCommonTranslations(locale)
   const breadcrumbT = t?.breadcrumb || { home: 'Home', fontGenerator: 'Font Generator' }
+  const commonT = t?.common || {}
   
   return {
-    title: `All Font Generator Tools - ${breadcrumbT.fontGenerator} | Toolaze`,
-    description: 'Browse all font generator tools. Create cursive, fancy, bold, italic, gothic, tattoo, and more font styles.',
+    title: `${commonT.allFontGeneratorTools || 'All Font Generator Tools'} - ${breadcrumbT.fontGenerator} | Toolaze`,
+    description: commonT.allFontGeneratorToolsDesc || 'Browse all available font generator tools. Create cursive, fancy, bold, italic, gothic, tattoo, and more font styles.',
     robots: 'index, follow',
     alternates: {
       canonical: hreflang.canonical,
@@ -47,16 +47,13 @@ export default async function AllToolsPage({ params }: PageProps) {
   const breadcrumbT = t?.breadcrumb || { home: 'Home', fontGenerator: 'Font Generator' }
   const commonT = t?.common || {}
   
-  // 加载所有工具（只加载支持的语言）
-  const supportedLocales = ['en', 'de', 'ja', 'es']
-  const allSlugs = supportedLocales.includes(locale) 
-    ? await getAllSlugs('font-generator', locale)
-    : await getAllSlugs('font-generator', 'en')
+  // 加载当前语言的字体工具内容。
+  const allSlugs = await getAllSlugs('font-generator', locale)
   
   const allTools = await Promise.all(
     allSlugs.map(async (slug) => {
       try {
-        const toolData = await getSeoContent('font-generator', slug, supportedLocales.includes(locale) ? locale : 'en')
+        const toolData = await getSeoContent('font-generator', slug, locale)
         const title = toolData?.hero?.h1 ? toolData.hero.h1.replace(/<[^>]*>/g, '').trim() : slug
         const description = toolData?.hero?.desc || toolData?.metadata?.description || ''
         const shortDesc = description.length > 120 ? description.substring(0, 120) + '...' : description
@@ -98,13 +95,7 @@ export default async function AllToolsPage({ params }: PageProps) {
         <header className="bg-[#F8FAFF] pb-12 px-6">
           <div className="max-w-4xl mx-auto text-center pt-8 mb-12">
             <h1 className="text-[40px] font-extrabold tracking-tight mb-6 leading-tight text-slate-900">
-              {commonT.allFontGeneratorTools ? (
-                <>
-                  {commonT.allFontGeneratorTools.split(' ')[0]} <span className="text-gradient">{commonT.allFontGeneratorTools.split(' ').slice(1).join(' ')}</span>
-                </>
-              ) : (
-                <>All <span className="text-gradient">Font Generator Tools</span></>
-              )}
+              <span className="text-gradient">{commonT.allFontGeneratorTools || 'All Font Generator Tools'}</span>
             </h1>
             <p className="desc-text text-lg md:text-xl max-w-2xl mx-auto">
               {commonT.allFontGeneratorToolsDesc || 'Browse all available font generator tools. Create cursive, fancy, bold, italic, gothic, tattoo, and more font styles.'}

@@ -208,6 +208,8 @@
     "termsOfService": "서비스 약관",
     "contact": "문의하기",
     "language": "언어",
+    "footerNavigation": "푸터 내비게이션",
+    "noToolsAvailable": "사용 가능한 도구가 없습니다",
     "copyright": "© {year} Toolaze Lab. 모든 권리 보유.",
     "tagline": "무료 온라인 도구 • 등록 불필요 • 100% 비공개"
   },
@@ -219,7 +221,9 @@
     "fontGenerator": "폰트 생성기",
     "aboutUs": "회사 소개",
     "privacyPolicy": "개인정보 보호정책",
-    "termsOfService": "서비스 약관"
+    "termsOfService": "서비스 약관",
+    "emojiCopyAndPaste": "이모지 복사 및 붙여넣기",
+    "watermarkRemover": "워터마크 제거기"
   },
   "about": {
     "metadata": {
@@ -291,13 +295,25 @@
         "retrySuccessful": "다시 시도 성공:",
         "retryTimeout": "다시 시도 시간 초과:",
         "retryFailed": "다시 시도 실패:",
-        "listCleared": "목록 지움"
+        "listCleared": "목록 지움",
+        "sharedSuccessfully": "공유되었습니다",
+        "imageRemoved": "이미지가 제거되었습니다",
+        "filesLoadedFromHomepage": "홈페이지에서 파일 {count}개를 불러왔습니다",
+        "heicWebAssemblyRequired": "HEIC 변환에는 WebAssembly 지원이 필요합니다. 브라우저가 지원하지 않을 수 있습니다.",
+        "unsupportedFormat": "지원하지 않는 형식:",
+        "heicBrowserOnly": "HEIC 변환은 브라우저에서만 사용할 수 있습니다",
+        "invalidConversionResult": "잘못된 변환 결과입니다"
       },
       "gallery": {
         "title": "갤러리 미리보기",
         "added": "추가됨:",
         "original": "원본:",
-        "new": "새로운:"
+        "new": "새로운:",
+        "preview": "미리보기"
+      },
+      "actions": {
+        "close": "닫기",
+        "delete": "삭제"
       },
       "status": {
         "waiting": "대기 중",
@@ -329,6 +345,32 @@
     "viewAllTools": {
       "related": "관련된 모든 도구 보기",
       "all": "모든 도구 보기"
+    },
+    "modelPlaceholders": {
+      "comingSoon": "곧 출시",
+      "klingTagline": "4K • 6-Shot • 다국어 오디오",
+      "klingDescription": "Kling 3.0 AI 비디오 생성기가 곧 제공됩니다.",
+      "nanoBanana2Tagline": "프로 품질 • 플래시 속도 • 4K",
+      "nanoBanana2Description": "Nano Banana 2 AI 이미지 생성기가 곧 제공됩니다.",
+      "seedanceDescription": "Seedance 2.0 AI 비디오 생성기가 곧 제공됩니다.",
+      "native4k": "🎥 네이티브 4K",
+      "multilingualAudio": "🔊 다국어 오디오",
+      "flashSpeed": "⚡ 플래시 속도",
+      "quality4k": "🎨 4K 품질",
+      "characterConsistency": "👥 5명 캐릭터 일관성",
+      "fastGeneration": "⚡ 빠른 생성",
+      "quality1080p": "🎬 1080p 품질"
+    },
+    "specs": {
+      "title": "기술 사양",
+      "engine": "엔진",
+      "capacity": "용량",
+      "limit": "제한",
+      "logic": "로직",
+      "privacy": "개인정보",
+      "batch": "배치",
+      "formats": "형식",
+      "output": "출력"
     },
     "fontGenerator": {
       "selectFontStyle": "폰트 스타일 선택",
@@ -390,6 +432,130 @@
         "bubble": "버블",
         "starWars": "스타워즈"
       }
+    },
+    "aiImageModels": {
+      "moreTools": "더 많은 AI 이미지 모델"
+    },
+    "aiVideoModels": {
+      "moreTools": "더 많은 AI 비디오 모델"
+    },
+    "allFontGeneratorTools": "모든 폰트 생성기 도구",
+    "allFontGeneratorToolsDesc": "사용 가능한 모든 폰트 생성기 도구를 살펴보세요. 필기체, 팬시, 굵은 글꼴, 이탤릭, 고딕, 타투 스타일 등 다양한 텍스트 스타일을 만들 수 있습니다.",
+    "emojiCopyAndPaste": {
+      "moreTools": "더 많은 이모지 복사 및 붙여넣기"
+    },
+    "imageCompressor": {
+      "moreTools": "더 많은 이미지 압축 도구"
+    },
+    "imageConverter": {
+      "moreTools": "더 많은 이미지 변환 도구"
+    },
+    "nanoBananaPro": {
+      "moreTools": "더 많은 무료 AI 도구 살펴보기"
+    },
+    "primaryFontGeneratorToolsDesc": "일반적인 용도에 적합한 핵심 폰트 생성기 도구입니다.",
+    "seedance2": {
+      "moreTools": "더 많은 Seedance 2.0 도구"
+    },
+    "specializedFontGeneratorToolsDesc": "특정 플랫폼과 사용 사례를 위한 전문 폰트 생성기 도구입니다.",
+    "watermarkRemoverTool": {
+      "uploadTitle": "이미지를 클릭하거나 끌어다 놓으세요",
+      "uploadFormats": "JPG, PNG, WebP(최대 30MB). 더 빠른 처리를 위해 2MB 이하 또는 1280px 이하를 권장합니다.",
+      "uploadNew": "새로 업로드",
+      "generating": "생성 중...",
+      "regenerate": "다시 생성",
+      "download": "다운로드",
+      "downloading": "다운로드 중...",
+      "compareTitle": "길게 눌러 원본과 비교",
+      "compareAria": "원본과 비교",
+      "back": "뒤로",
+      "originalAlt": "원본",
+      "resultAlt": "결과",
+      "invalidImage": "이미지 파일을 선택하세요(JPG, PNG, WebP 등).",
+      "tooLarge": "이미지 크기는 30MB 미만이어야 합니다",
+      "success": "워터마크가 성공적으로 제거되었습니다",
+      "downloadStarted": "다운로드가 시작되었습니다",
+      "downloadFailed": "다운로드 실패",
+      "requestFailed": "요청 실패: {status}",
+      "noImageUrl": "응답에 이미지 URL이 없습니다"
+    },
+    "photoRestorationTool": {
+      "invalidImage": "올바른 이미지 파일을 업로드하세요.",
+      "tooLarge": "이미지 크기는 30MB 미만이어야 합니다.",
+      "dailyLimit": "일일 무료 한도에 도달했습니다. 내일 다시 이용해 주세요!",
+      "uploadFailed": "이미지 업로드에 실패했습니다.",
+      "createFailed": "복원 작업을 만들지 못했습니다.",
+      "restorationFailed": "복원에 실패했습니다.",
+      "timeout": "복원 시간이 초과되었습니다. 다시 시도해 주세요.",
+      "uploadTitle": "이미지를 여기에 끌어다 놓으세요",
+      "uploadFormats": "JPG, JPEG, PNG • 최대 30MB",
+      "uploadButton": "이미지 업로드",
+      "generating": "생성 중...",
+      "generate": "생성",
+      "regenerate": "다시 생성",
+      "download": "다운로드",
+      "uploadPreviewAlt": "업로드한 이미지 미리보기",
+      "removeUploadedImage": "업로드한 이미지 제거",
+      "resultAlt": "복원된 사진",
+      "oldExampleAlt": "손상된 오래된 흑백 사진",
+      "restoredExampleAlt": "복원된 사진 예시",
+      "previewAlt": "미리보기"
+    },
+    "nanoBananaTool": {
+      "imageToImage": "이미지에서 이미지",
+      "textToImage": "텍스트에서 이미지",
+      "models": "모델",
+      "uploadUpTo": "최대 {count}장 이미지 업로드",
+      "upload": "업로드",
+      "fileLimit": "JPG, PNG, WEBP 각 30MB까지 · 최대 {count}장",
+      "delete": "삭제",
+      "replace": "교체",
+      "previewSoon": "미리보기 준비 중",
+      "styleTemplates": "스타일 템플릿",
+      "aspectRatios": "화면 비율",
+      "prompt": "프롬프트",
+      "promptPlaceholder": "이미지 내용을 설명해 주세요",
+      "outputAspectRatios": "출력 화면 비율",
+      "resolution": "해상도",
+      "highResUnavailable": "2K 및 4K는 일시적으로 사용할 수 없습니다.",
+      "outputFormat": "출력 형식",
+      "sampleImage": "샘플 이미지",
+      "inputImage": "입력 이미지",
+      "history": "기록",
+      "noHistory": "아직 기록이 없습니다. 이미지를 생성하면 여기에 표시됩니다.",
+      "recreate": "다시 만들기",
+      "download": "다운로드",
+      "downloading": "다운로드 중...",
+      "copyPrompt": "프롬프트 복사",
+      "promptCopied": "프롬프트가 클립보드에 복사되었습니다",
+      "promptCopyFailed": "프롬프트 복사 실패",
+      "promptInserted": "프롬프트가 삽입되었습니다. 이제 생성할 수 있습니다.",
+      "generate": "생성",
+      "generating": "생성 중...",
+      "generatingSeconds": "생성 중... {seconds}s",
+      "generatedAlt": "생성됨",
+      "resultExpires": "페이지를 새로고침하면 이미지가 사라집니다. 가능한 한 빨리 다운로드해 주세요.",
+      "historyResultAlt": "기록 결과",
+      "inputAlt": "입력",
+      "fileTooLarge": "파일 {name}이 30MB 제한을 초과합니다",
+      "maxImagesAllowed": "최대 {max}개의 이미지만 허용됩니다. {remaining}개만 추가됩니다.",
+      "uploadMissingUrl": "업로드에서 URL을 반환하지 않았습니다",
+      "uploadRequestFailed": "이미지 업로드 요청에 실패했습니다. 업로드 서비스 설정과 네트워크 연결을 확인해 주세요.",
+      "uploadFailedWithStatus": "업로드 실패: {status}",
+      "uploadUrlHint": "업로드 URL이 완전하고 서비스가 배포되었는지 확인해 주세요.",
+      "serverNonJson": "서버가 JSON이 아닌 응답을 반환했습니다.",
+      "requestFailed": "요청 실패:",
+      "checkStatusFailed": "상태 확인 실패({status})",
+      "generateFailed": "이미지 생성 실패",
+      "noResult": "작업 ID 또는 이미지 URL을 받지 못했습니다",
+      "networkError": "네트워크 오류",
+      "networkFailed": "네트워크 연결에 실패했습니다. 연결을 확인하고 다시 시도해 주세요.",
+      "serviceUnstable": "생성 서비스가 일시적으로 불안정합니다. 잠시 후 다시 시도해 주세요.",
+      "imageGenerationFailed": "이미지 생성 실패",
+      "generationFailedWithMessage": "생성 실패: {message}",
+      "generationTimeout": "생성 시간 초과",
+      "dailyLimitReached": "오늘의 무료 한도에 도달했습니다. 내일 다시 이용해 주세요.",
+      "recreateMissingInput": "입력 이미지를 찾을 수 없습니다. 다시 만들기 위해 텍스트에서 이미지로 전환했습니다."
     }
   },
   "imageCompressor": {

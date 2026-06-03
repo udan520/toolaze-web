@@ -28,8 +28,9 @@ export default function ImageConverter({ initialFormat }: ImageConverterProps) {
   const toolT = t?.common?.tool || {
     dropZone: { title: 'Click or Drag Images/Folders Here', formats: 'JPG, PNG, WebP, BMP, HEIC (Max 100 files)' },
     controls: { targetSize: 'Target Size:', convertTo: 'Convert to:', processing: 'Processing...', startConversion: 'Start Batch Conversion', downloadAll: 'Download All (ZIP)', download: 'Download', clear: 'Clear All', retry: 'Retry' },
-    messages: { processingCompleted: 'Processing completed!', convertedHeic: 'Converted HEIC to JPG:', failedConvertHeic: 'Failed to convert HEIC:', conversionTimeout: 'Conversion timeout:', failedConvert: 'Failed to convert:', retrySuccessful: 'Retry successful:', retryTimeout: 'Retry timeout:', retryFailed: 'Retry failed:', listCleared: 'List cleared' },
-    gallery: { title: 'Gallery Preview', added: 'Added:', original: 'Original:', new: 'New:' },
+    messages: { processingCompleted: 'Processing completed!', convertedHeic: 'Converted HEIC to JPG:', failedConvertHeic: 'Failed to convert HEIC:', conversionTimeout: 'Conversion timeout:', failedConvert: 'Failed to convert:', retrySuccessful: 'Retry successful:', retryTimeout: 'Retry timeout:', retryFailed: 'Retry failed:', listCleared: 'List cleared', sharedSuccessfully: 'Shared successfully', imageRemoved: 'Image removed', filesLoadedFromHomepage: 'Loaded {count} file(s) from homepage', heicWebAssemblyRequired: 'HEIC conversion requires WebAssembly support. Your browser may not support it.', unsupportedFormat: 'Unsupported format:', heicBrowserOnly: 'HEIC conversion is only available in the browser', invalidConversionResult: 'Invalid conversion result' },
+    gallery: { title: 'Gallery Preview', added: 'Added:', original: 'Original:', new: 'New:', preview: 'Preview' },
+    actions: { close: 'Close', delete: 'Delete' },
     status: { waiting: 'Waiting', running: 'Running', done: 'Done', error: 'Error' },
     trustBar: { private: '100% Private', localBrowser: 'Local Browser API', noServerLogs: 'No Server Logs' }
   }
@@ -125,7 +126,7 @@ export default function ImageConverter({ initialFormat }: ImageConverterProps) {
             title: filename,
             text: `Image: ${filename}`,
           })
-          showToast('Shared successfully', 'success')
+          showToast(toolT.messages.sharedSuccessfully, 'success')
           return
         }
       } catch (error: any) {
@@ -282,7 +283,7 @@ export default function ImageConverter({ initialFormat }: ImageConverterProps) {
 
   const convertHeicToJpeg = async (file: File): Promise<File> => {
     if (typeof window === 'undefined') {
-      throw new Error('HEIC conversion is only available in the browser')
+      throw new Error(toolT.messages.heicBrowserOnly)
     }
     
     try {
@@ -308,7 +309,7 @@ export default function ImageConverter({ initialFormat }: ImageConverterProps) {
       
       if (!blob || !(blob instanceof Blob)) {
         console.error('Invalid conversion result:', result)
-        throw new Error('Invalid conversion result: expected Blob')
+        throw new Error(toolT.messages.invalidConversionResult)
       }
       
       const convertedFile = new File([blob], file.name.replace(/\.(heic|heif)$/i, '.jpg'), {
@@ -318,8 +319,7 @@ export default function ImageConverter({ initialFormat }: ImageConverterProps) {
       return convertedFile
     } catch (error: any) {
       console.error('HEIC conversion error:', error)
-      const errorMessage = error?.message || String(error) || 'Unknown error'
-      throw new Error(`Failed to convert HEIC: ${errorMessage}`)
+      throw new Error(toolT.messages.invalidConversionResult)
     }
   }
 
@@ -344,7 +344,7 @@ export default function ImageConverter({ initialFormat }: ImageConverterProps) {
       } else if (heicTypes.includes(file.type) || isHeicByExtension) {
         // 检查浏览器是否支持 WebAssembly（heic2any 需要）
         if (typeof WebAssembly === 'undefined') {
-          showToast(`HEIC conversion requires WebAssembly support. Your browser may not support it.`, 'error')
+          showToast(toolT.messages.heicWebAssemblyRequired, 'error')
           continue
         }
         
@@ -365,7 +365,7 @@ export default function ImageConverter({ initialFormat }: ImageConverterProps) {
           }
         }
       } else if (!supported.includes(file.type)) {
-        showToast(`Unsupported format: ${file.name}`, 'error')
+        showToast(`${toolT.messages.unsupportedFormat} ${file.name}`, 'error')
         continue
       }
 
@@ -553,7 +553,7 @@ export default function ImageConverter({ initialFormat }: ImageConverterProps) {
       }
     }
     
-    showToast('Image removed', 'info')
+    showToast(toolT.messages.imageRemoved, 'info')
   }
 
   const handleClear = () => {
@@ -628,7 +628,7 @@ export default function ImageConverter({ initialFormat }: ImageConverterProps) {
           
           setTimeout(() => {
             handleFiles(files)
-            showToast(`Loaded ${files.length} file(s) from homepage`, 'success')
+            showToast(toolT.messages.filesLoadedFromHomepage.replace('{count}', String(files.length)), 'success')
           }, 100)
         } catch (e) {
           console.error('Error loading files from homepage:', e)
@@ -758,12 +758,12 @@ export default function ImageConverter({ initialFormat }: ImageConverterProps) {
           onClick={closeModal}
           style={{ display: modalImage ? 'flex' : 'none' }}
         >
-          <img src={modalImage} alt="Preview" onClick={(e) => e.stopPropagation()} />
+          <img src={modalImage} alt={toolT.gallery?.preview || 'Preview'} onClick={(e) => e.stopPropagation()} />
           <button
             type="button"
             onClick={(e) => { e.stopPropagation(); closeModal() }}
             className="fixed top-4 right-4 w-10 h-10 rounded-full bg-white hover:bg-white flex items-center justify-center shadow-lg transition-colors z-[20001] cursor-pointer text-slate-600"
-            aria-label="Close"
+            aria-label={toolT.actions?.close || 'Close'}
           >
             <CloseIcon size={20} />
           </button>
@@ -874,7 +874,7 @@ export default function ImageConverter({ initialFormat }: ImageConverterProps) {
                       <button 
                         className="delete-btn" 
                         onClick={(e) => deleteImage(item.id, e)} 
-                        title="Delete"
+                        title={toolT.actions?.delete || 'Delete'}
                       >
                         <DeleteIcon size={12} />
                       </button>

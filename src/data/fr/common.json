@@ -208,6 +208,8 @@
     "termsOfService": "Conditions d'Utilisation",
     "contact": "Contact",
     "language": "Langue",
+    "footerNavigation": "Navigation du pied de page",
+    "noToolsAvailable": "Aucun outil disponible",
     "copyright": "© {year} Toolaze Lab. Tous droits réservés.",
     "tagline": "Outils en Ligne Gratuits • Aucune Inscription Requise • 100% Privé"
   },
@@ -219,7 +221,9 @@
     "fontGenerator": "Générateur de Polices",
     "aboutUs": "À Propos",
     "privacyPolicy": "Politique de Confidentialité",
-    "termsOfService": "Conditions d'Utilisation"
+    "termsOfService": "Conditions d'Utilisation",
+    "emojiCopyAndPaste": "Copier-coller des emojis",
+    "watermarkRemover": "Suppresseur de filigrane"
   },
   "about": {
     "metadata": {
@@ -291,13 +295,25 @@
         "retrySuccessful": "Réessai réussi:",
         "retryTimeout": "Délai d'attente de réessai:",
         "retryFailed": "Réessai échoué:",
-        "listCleared": "Liste effacée"
+        "listCleared": "Liste effacée",
+        "sharedSuccessfully": "Partage réussi",
+        "imageRemoved": "Image supprimée",
+        "filesLoadedFromHomepage": "{count} fichier(s) chargé(s) depuis la page d’accueil",
+        "heicWebAssemblyRequired": "La conversion HEIC nécessite la prise en charge de WebAssembly. Votre navigateur peut ne pas la prendre en charge.",
+        "unsupportedFormat": "Format non pris en charge :",
+        "heicBrowserOnly": "La conversion HEIC est disponible uniquement dans le navigateur",
+        "invalidConversionResult": "Résultat de conversion invalide"
       },
       "gallery": {
         "title": "Aperçu de la Galerie",
         "added": "Ajouté:",
         "original": "Original:",
-        "new": "Nouveau:"
+        "new": "Nouveau:",
+        "preview": "Aperçu"
+      },
+      "actions": {
+        "close": "Fermer",
+        "delete": "Supprimer"
       },
       "status": {
         "waiting": "En Attente",
@@ -333,6 +349,32 @@
     "viewAllTools": {
       "related": "Voir Tous les Outils Associés",
       "all": "Voir Tous les Outils"
+    },
+    "modelPlaceholders": {
+      "comingSoon": "Bientôt disponible",
+      "klingTagline": "4K • 6-Shot • Audio multilingue",
+      "klingDescription": "Le générateur vidéo IA Kling 3.0 sera bientôt disponible ici.",
+      "nanoBanana2Tagline": "Qualité pro • Vitesse flash • 4K",
+      "nanoBanana2Description": "Le générateur d’images IA Nano Banana 2 sera bientôt disponible ici.",
+      "seedanceDescription": "Le générateur vidéo IA Seedance 2.0 sera bientôt disponible ici.",
+      "native4k": "🎥 4K natif",
+      "multilingualAudio": "🔊 Audio multilingue",
+      "flashSpeed": "⚡ Vitesse flash",
+      "quality4k": "🎨 Qualité 4K",
+      "characterConsistency": "👥 Cohérence de 5 personnages",
+      "fastGeneration": "⚡ Génération rapide",
+      "quality1080p": "🎬 Qualité 1080p"
+    },
+    "specs": {
+      "title": "Spécifications Techniques",
+      "engine": "Moteur",
+      "capacity": "Capacité",
+      "limit": "Limite",
+      "logic": "Logique",
+      "privacy": "Confidentialité",
+      "batch": "Lot",
+      "formats": "Formats",
+      "output": "Sortie"
     },
     "fontGenerator": {
       "selectFontStyle": "Sélectionnez un style de police",
@@ -394,6 +436,126 @@
         "bubble": "Bulle",
         "starWars": "Star Wars"
       }
+    },
+    "aiImageModels": {
+      "moreTools": "Plus de modèles d’image IA"
+    },
+    "aiVideoModels": {
+      "moreTools": "Plus de modèles vidéo IA"
+    },
+    "emojiCopyAndPaste": {
+      "moreTools": "Plus d’outils de copier-coller d’emojis"
+    },
+    "imageCompressor": {
+      "moreTools": "Plus d’outils de compression d’images"
+    },
+    "imageConverter": {
+      "moreTools": "Plus d’outils de conversion d’images"
+    },
+    "nanoBananaPro": {
+      "moreTools": "Explorer plus d’outils IA gratuits"
+    },
+    "seedance2": {
+      "moreTools": "Plus d’outils Seedance 2.0"
+    },
+    "watermarkRemoverTool": {
+      "uploadTitle": "Cliquez ou glissez une image ici",
+      "uploadFormats": "JPG, PNG, WebP (30 Mo max). Moins de 2 Mo ou 1280 px recommandé pour un traitement plus rapide.",
+      "uploadNew": "Importer une autre image",
+      "generating": "Génération...",
+      "regenerate": "Régénérer",
+      "download": "Télécharger",
+      "downloading": "Téléchargement...",
+      "compareTitle": "Maintenez appuyé pour comparer avec l’original",
+      "compareAria": "Comparer avec l’original",
+      "back": "Retour",
+      "originalAlt": "Original",
+      "resultAlt": "Résultat",
+      "invalidImage": "Veuillez sélectionner un fichier image (JPG, PNG, WebP, etc.)",
+      "tooLarge": "L’image doit faire moins de 30 Mo",
+      "success": "Filigrane supprimé avec succès",
+      "downloadStarted": "Téléchargement démarré",
+      "downloadFailed": "Échec du téléchargement",
+      "requestFailed": "Requête échouée : {status}",
+      "noImageUrl": "Aucune URL d’image dans la réponse"
+    },
+    "photoRestorationTool": {
+      "invalidImage": "Veuillez importer un fichier image valide.",
+      "tooLarge": "L’image doit faire moins de 30 Mo.",
+      "dailyLimit": "Limite gratuite quotidienne atteinte. Revenez demain !",
+      "uploadFailed": "Échec de l’importation de l’image.",
+      "createFailed": "Impossible de créer la tâche de restauration.",
+      "restorationFailed": "La restauration a échoué.",
+      "timeout": "La restauration a expiré. Veuillez réessayer.",
+      "uploadTitle": "Glissez-déposez une image ici",
+      "uploadFormats": "JPG, JPEG, PNG • 30 Mo max",
+      "uploadButton": "Importer une image",
+      "generating": "Génération...",
+      "generate": "Générer",
+      "regenerate": "Régénérer",
+      "download": "Télécharger",
+      "uploadPreviewAlt": "Aperçu de l’image importée",
+      "removeUploadedImage": "Supprimer l’image importée",
+      "resultAlt": "Photo restaurée",
+      "oldExampleAlt": "Ancienne photo noir et blanc abîmée",
+      "restoredExampleAlt": "Exemple de photo restaurée",
+      "previewAlt": "Aperçu"
+    },
+    "nanoBananaTool": {
+      "imageToImage": "Image vers image",
+      "textToImage": "Texte vers image",
+      "models": "Modèles",
+      "uploadUpTo": "Importez jusqu’à {count} images",
+      "upload": "Importer",
+      "fileLimit": "JPG, PNG, WEBP jusqu’à 30 Mo chacun · max. {count} images",
+      "delete": "Supprimer",
+      "replace": "Remplacer",
+      "previewSoon": "Aperçu bientôt disponible",
+      "styleTemplates": "Modèles de style",
+      "aspectRatios": "Formats d’image",
+      "prompt": "Prompt",
+      "promptPlaceholder": "Décrivez le contenu de l’image",
+      "outputAspectRatios": "Formats de sortie",
+      "resolution": "Résolution",
+      "highResUnavailable": "2K et 4K sont temporairement indisponibles.",
+      "outputFormat": "Format de sortie",
+      "sampleImage": "Image d’exemple",
+      "inputImage": "Image d’entrée",
+      "history": "Historique",
+      "noHistory": "Aucun historique pour le moment. Générez une image pour la voir ici.",
+      "recreate": "Recréer",
+      "download": "Télécharger",
+      "downloading": "Téléchargement...",
+      "copyPrompt": "Copier le prompt",
+      "promptCopied": "Prompt copié dans le presse-papiers",
+      "promptCopyFailed": "Impossible de copier le prompt",
+      "promptInserted": "Prompt inséré. Vous pouvez générer maintenant.",
+      "generate": "Générer",
+      "generating": "Génération...",
+      "generatingSeconds": "Génération... {seconds}s",
+      "generatedAlt": "Générée",
+      "resultExpires": "L’image disparaîtra après l’actualisation de la page. Téléchargez-la dès que possible.",
+      "historyResultAlt": "Résultat de l’historique",
+      "inputAlt": "Entrée",
+      "fileTooLarge": "Le fichier {name} dépasse la limite de 30 Mo",
+      "maxImagesAllowed": "{max} images maximum autorisées. Seules {remaining} seront ajoutées.",
+      "uploadMissingUrl": "L’importation n’a pas renvoyé d’URL",
+      "uploadRequestFailed": "La demande d’importation d’image a échoué. Vérifiez la configuration du service d’importation et la connexion réseau.",
+      "uploadFailedWithStatus": "Importation échouée : {status}",
+      "uploadUrlHint": "Assurez-vous que l’URL d’importation est complète et que le service est déployé.",
+      "serverNonJson": "Le serveur a renvoyé une réponse non JSON.",
+      "requestFailed": "Requête échouée :",
+      "checkStatusFailed": "Échec de la vérification du statut ({status})",
+      "generateFailed": "Échec de la génération de l’image",
+      "noResult": "Aucun ID de tâche ni URL d’image reçu",
+      "networkError": "Erreur réseau",
+      "networkFailed": "Connexion réseau échouée. Vérifiez votre connexion et réessayez.",
+      "serviceUnstable": "Le service de génération est temporairement instable. Réessayez dans un instant.",
+      "imageGenerationFailed": "La génération d’image a échoué",
+      "generationFailedWithMessage": "Échec de la génération : {message}",
+      "generationTimeout": "Délai de génération dépassé",
+      "dailyLimitReached": "La limite gratuite quotidienne est atteinte. Revenez demain.",
+      "recreateMissingInput": "Aucune image d’entrée trouvée. Passage en texte vers image pour recréer."
     }
   },
   "imageCompressor": {

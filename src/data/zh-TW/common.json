@@ -208,6 +208,8 @@
     "termsOfService": "服務條款",
     "contact": "聯絡我們",
     "language": "語言",
+    "footerNavigation": "頁尾導覽",
+    "noToolsAvailable": "沒有可用工具",
     "copyright": "© {year} Toolaze Lab. 版權所有。",
     "tagline": "免費線上工具 • 無需註冊 • 100% 隱私"
   },
@@ -219,7 +221,9 @@
     "fontGenerator": "字體生成器",
     "aboutUs": "關於我們",
     "privacyPolicy": "隱私政策",
-    "termsOfService": "服務條款"
+    "termsOfService": "服務條款",
+    "emojiCopyAndPaste": "表情符號複製貼上",
+    "watermarkRemover": "浮水印移除工具"
   },
   "about": {
     "metadata": {
@@ -291,13 +295,25 @@
         "retrySuccessful": "重試成功：",
         "retryTimeout": "重試超時：",
         "retryFailed": "重試失敗：",
-        "listCleared": "列表已清除"
+        "listCleared": "列表已清除",
+        "sharedSuccessfully": "分享成功",
+        "imageRemoved": "圖片已移除",
+        "filesLoadedFromHomepage": "已從首頁載入 {count} 個檔案",
+        "heicWebAssemblyRequired": "HEIC 轉換需要 WebAssembly 支援。您的瀏覽器可能不支援。",
+        "unsupportedFormat": "不支援的格式：",
+        "heicBrowserOnly": "HEIC 轉換僅可在瀏覽器中使用",
+        "invalidConversionResult": "轉換結果無效"
       },
       "gallery": {
         "title": "圖片預覽",
         "added": "已添加：",
         "original": "原始：",
-        "new": "新："
+        "new": "新：",
+        "preview": "預覽"
+      },
+      "actions": {
+        "close": "關閉",
+        "delete": "刪除"
       },
       "status": {
         "waiting": "等待中",
@@ -329,6 +345,32 @@
     "viewAllTools": {
       "related": "查看所有相關工具",
       "all": "查看所有工具"
+    },
+    "modelPlaceholders": {
+      "comingSoon": "即將推出",
+      "klingTagline": "4K • 6 鏡頭 • 多語音訊",
+      "klingDescription": "Kling 3.0 AI 影片生成器即將在此推出。",
+      "nanoBanana2Tagline": "專業品質 • 閃電速度 • 4K",
+      "nanoBanana2Description": "Nano Banana 2 AI 圖片生成器即將在此推出。",
+      "seedanceDescription": "Seedance 2.0 AI 影片生成器即將在此推出。",
+      "native4k": "🎥 原生 4K",
+      "multilingualAudio": "🔊 多語音訊",
+      "flashSpeed": "⚡ 閃電速度",
+      "quality4k": "🎨 4K 品質",
+      "characterConsistency": "👥 5 角色一致性",
+      "fastGeneration": "⚡ 快速生成",
+      "quality1080p": "🎬 1080p 品質"
+    },
+    "specs": {
+      "title": "技術規格",
+      "engine": "引擎",
+      "capacity": "容量",
+      "limit": "限制",
+      "logic": "邏輯",
+      "privacy": "隱私",
+      "batch": "批次",
+      "formats": "格式",
+      "output": "輸出"
     },
     "fontGenerator": {
       "selectFontStyle": "選擇字體樣式",
@@ -390,6 +432,130 @@
         "bubble": "泡泡",
         "starWars": "星際大戰"
       }
+    },
+    "aiImageModels": {
+      "moreTools": "更多 AI 圖像模型"
+    },
+    "aiVideoModels": {
+      "moreTools": "更多 AI 影片模型"
+    },
+    "allFontGeneratorTools": "所有字體產生器工具",
+    "allFontGeneratorToolsDesc": "瀏覽所有可用的字體產生器工具。建立手寫體、花式、粗體、斜體、哥德式、刺青風格等文字樣式。",
+    "emojiCopyAndPaste": {
+      "moreTools": "更多表情符號複製貼上"
+    },
+    "imageCompressor": {
+      "moreTools": "更多圖片壓縮工具"
+    },
+    "imageConverter": {
+      "moreTools": "更多圖片轉換工具"
+    },
+    "nanoBananaPro": {
+      "moreTools": "探索更多免費 AI 工具"
+    },
+    "primaryFontGeneratorToolsDesc": "適合一般用途的核心字體產生器工具。",
+    "seedance2": {
+      "moreTools": "更多 Seedance 2.0 工具"
+    },
+    "specializedFontGeneratorToolsDesc": "針對特定平台與使用情境的專業字體產生器工具。",
+    "watermarkRemoverTool": {
+      "uploadTitle": "點擊或拖曳圖片到這裡",
+      "uploadFormats": "JPG、PNG、WebP（最大 30MB）。建議低於 2MB 或 1280px 以加快處理。",
+      "uploadNew": "重新上傳",
+      "generating": "生成中...",
+      "regenerate": "重新生成",
+      "download": "下載",
+      "downloading": "下載中...",
+      "compareTitle": "長按可與原圖比較",
+      "compareAria": "與原圖比較",
+      "back": "返回",
+      "originalAlt": "原圖",
+      "resultAlt": "結果",
+      "invalidImage": "請選擇圖片檔案（JPG、PNG、WebP 等）",
+      "tooLarge": "圖片大小必須小於 30MB",
+      "success": "浮水印已成功移除",
+      "downloadStarted": "已開始下載",
+      "downloadFailed": "下載失敗",
+      "requestFailed": "請求失敗：{status}",
+      "noImageUrl": "回應中沒有圖片 URL"
+    },
+    "photoRestorationTool": {
+      "invalidImage": "請上傳有效的圖片檔案。",
+      "tooLarge": "圖片大小必須小於 30MB。",
+      "dailyLimit": "今日免費額度已用完，請明天再試！",
+      "uploadFailed": "圖片上傳失敗。",
+      "createFailed": "無法建立照片修復任務。",
+      "restorationFailed": "照片修復失敗。",
+      "timeout": "照片修復逾時，請再試一次。",
+      "uploadTitle": "拖曳圖片到這裡",
+      "uploadFormats": "JPG、JPEG、PNG • 最大 30MB",
+      "uploadButton": "上傳圖片",
+      "generating": "生成中...",
+      "generate": "生成",
+      "regenerate": "重新生成",
+      "download": "下載",
+      "uploadPreviewAlt": "已上傳圖片預覽",
+      "removeUploadedImage": "移除已上傳圖片",
+      "resultAlt": "修復後的照片",
+      "oldExampleAlt": "受損的舊黑白照片",
+      "restoredExampleAlt": "照片修復結果範例",
+      "previewAlt": "預覽"
+    },
+    "nanoBananaTool": {
+      "imageToImage": "圖片轉圖片",
+      "textToImage": "文字轉圖片",
+      "models": "模型",
+      "uploadUpTo": "最多上傳 {count} 張圖片",
+      "upload": "上傳",
+      "fileLimit": "JPG、PNG、WEBP，每張最高 30MB · 最多 {count} 張圖片",
+      "delete": "刪除",
+      "replace": "替換",
+      "previewSoon": "預覽即將推出",
+      "styleTemplates": "風格模板",
+      "aspectRatios": "長寬比",
+      "prompt": "提示詞",
+      "promptPlaceholder": "請描述圖片內容",
+      "outputAspectRatios": "輸出長寬比",
+      "resolution": "解析度",
+      "highResUnavailable": "2K 和 4K 暫時無法使用。",
+      "outputFormat": "輸出格式",
+      "sampleImage": "範例圖片",
+      "inputImage": "輸入圖片",
+      "history": "歷史記錄",
+      "noHistory": "尚無歷史記錄。生成圖片後會顯示在這裡。",
+      "recreate": "重新建立",
+      "download": "下載",
+      "downloading": "下載中...",
+      "copyPrompt": "複製提示詞",
+      "promptCopied": "提示詞已複製到剪貼簿",
+      "promptCopyFailed": "複製提示詞失敗",
+      "promptInserted": "提示詞已插入，現在可以生成。",
+      "generate": "生成",
+      "generating": "生成中...",
+      "generatingSeconds": "生成中... {seconds}s",
+      "generatedAlt": "生成圖片",
+      "resultExpires": "重新整理頁面後圖片會消失，請盡快下載。",
+      "historyResultAlt": "歷史結果",
+      "inputAlt": "輸入",
+      "fileTooLarge": "檔案 {name} 超過 30MB 限制",
+      "maxImagesAllowed": "最多允許 {max} 張圖片。只會新增 {remaining} 張。",
+      "uploadMissingUrl": "上傳未返回 URL",
+      "uploadRequestFailed": "圖片上傳請求失敗。請檢查上傳服務設定與網路連線。",
+      "uploadFailedWithStatus": "上傳失敗：{status}",
+      "uploadUrlHint": "請確認上傳 URL 完整且服務已部署。",
+      "serverNonJson": "伺服器返回了非 JSON 回應。",
+      "requestFailed": "請求失敗：",
+      "checkStatusFailed": "檢查狀態失敗（{status}）",
+      "generateFailed": "圖片生成失敗",
+      "noResult": "未收到任務 ID 或圖片 URL",
+      "networkError": "網路錯誤",
+      "networkFailed": "網路連線失敗。請檢查連線後再試。",
+      "serviceUnstable": "生成服務暫時不穩定，請稍後再試。",
+      "imageGenerationFailed": "圖片生成失敗",
+      "generationFailedWithMessage": "生成失敗：{message}",
+      "generationTimeout": "生成逾時",
+      "dailyLimitReached": "今日免費額度已用完，請明天再來！",
+      "recreateMissingInput": "找不到輸入圖片，已切換為文字轉圖片以重新建立。"
     }
   },
   "imageCompressor": {

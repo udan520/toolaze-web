@@ -208,6 +208,8 @@
     "termsOfService": "Termini di Servizio",
     "contact": "Contatti",
     "language": "Lingua",
+    "footerNavigation": "Navigazione del footer",
+    "noToolsAvailable": "Nessuno strumento disponibile",
     "copyright": "© {year} Toolaze Lab. Tutti i diritti riservati.",
     "tagline": "Strumenti Online Gratuiti • Nessuna Registrazione Richiesta • 100% Privato"
   },
@@ -219,7 +221,9 @@
     "fontGenerator": "Generatore di Font",
     "aboutUs": "Chi Siamo",
     "privacyPolicy": "Informativa sulla Privacy",
-    "termsOfService": "Termini di Servizio"
+    "termsOfService": "Termini di Servizio",
+    "emojiCopyAndPaste": "Copia e incolla emoji",
+    "watermarkRemover": "Rimozione filigrana"
   },
   "about": {
     "metadata": {
@@ -291,13 +295,25 @@
         "retrySuccessful": "Riprova riuscita:",
         "retryTimeout": "Timeout riprova:",
         "retryFailed": "Riprova fallita:",
-        "listCleared": "Lista cancellata"
+        "listCleared": "Lista cancellata",
+        "sharedSuccessfully": "Condiviso con successo",
+        "imageRemoved": "Immagine rimossa",
+        "filesLoadedFromHomepage": "{count} file caricati dalla home page",
+        "heicWebAssemblyRequired": "La conversione HEIC richiede il supporto WebAssembly. Il browser potrebbe non supportarlo.",
+        "unsupportedFormat": "Formato non supportato:",
+        "heicBrowserOnly": "La conversione HEIC è disponibile solo nel browser",
+        "invalidConversionResult": "Risultato di conversione non valido"
       },
       "gallery": {
         "title": "Anteprima Galleria",
         "added": "Aggiunto:",
         "original": "Originale:",
-        "new": "Nuovo:"
+        "new": "Nuovo:",
+        "preview": "Anteprima"
+      },
+      "actions": {
+        "close": "Chiudi",
+        "delete": "Elimina"
       },
       "status": {
         "waiting": "In Attesa",
@@ -329,6 +345,32 @@
     "viewAllTools": {
       "related": "Visualizza Tutti gli Strumenti Correlati",
       "all": "Visualizza Tutti gli Strumenti"
+    },
+    "modelPlaceholders": {
+      "comingSoon": "In arrivo",
+      "klingTagline": "4K • 6-Shot • Audio multilingue",
+      "klingDescription": "Il generatore video IA Kling 3.0 sarà presto disponibile qui.",
+      "nanoBanana2Tagline": "Qualità pro • Velocità flash • 4K",
+      "nanoBanana2Description": "Il generatore immagini IA Nano Banana 2 sarà presto disponibile qui.",
+      "seedanceDescription": "Il generatore video IA Seedance 2.0 sarà presto disponibile qui.",
+      "native4k": "🎥 4K nativo",
+      "multilingualAudio": "🔊 Audio multilingue",
+      "flashSpeed": "⚡ Velocità flash",
+      "quality4k": "🎨 Qualità 4K",
+      "characterConsistency": "👥 Coerenza di 5 personaggi",
+      "fastGeneration": "⚡ Generazione rapida",
+      "quality1080p": "🎬 Qualità 1080p"
+    },
+    "specs": {
+      "title": "Specifiche Tecniche",
+      "engine": "Motore",
+      "capacity": "Capacità",
+      "limit": "Limite",
+      "logic": "Logica",
+      "privacy": "Privacy",
+      "batch": "Batch",
+      "formats": "Formati",
+      "output": "Output"
     },
     "fontGenerator": {
       "selectFontStyle": "Seleziona uno stile di carattere",
@@ -390,6 +432,130 @@
         "bubble": "Bolla",
         "starWars": "Star Wars"
       }
+    },
+    "aiImageModels": {
+      "moreTools": "Altri modelli di immagini IA"
+    },
+    "aiVideoModels": {
+      "moreTools": "Altri modelli video IA"
+    },
+    "allFontGeneratorTools": "Tutti gli strumenti di generazione font",
+    "allFontGeneratorToolsDesc": "Sfoglia tutti gli strumenti di generazione font disponibili. Crea stili corsivi, decorativi, grassetto, italico, gotici, tattoo e molti altri.",
+    "emojiCopyAndPaste": {
+      "moreTools": "Altri strumenti per copiare e incollare emoji"
+    },
+    "imageCompressor": {
+      "moreTools": "Altri strumenti di compressione immagini"
+    },
+    "imageConverter": {
+      "moreTools": "Altri strumenti di conversione immagini"
+    },
+    "nanoBananaPro": {
+      "moreTools": "Scopri altri strumenti IA gratuiti"
+    },
+    "primaryFontGeneratorToolsDesc": "Strumenti essenziali di generazione font per casi d’uso generali.",
+    "seedance2": {
+      "moreTools": "Altri strumenti Seedance 2.0"
+    },
+    "specializedFontGeneratorToolsDesc": "Strumenti specializzati di generazione font per piattaforme e casi d’uso specifici.",
+    "watermarkRemoverTool": {
+      "uploadTitle": "Fai clic o trascina qui un’immagine",
+      "uploadFormats": "JPG, PNG, WebP (max 30 MB). Meno di 2 MB o 1280 px consigliati per un’elaborazione più rapida.",
+      "uploadNew": "Carica nuova",
+      "generating": "Generazione...",
+      "regenerate": "Rigenera",
+      "download": "Scarica",
+      "downloading": "Download in corso...",
+      "compareTitle": "Tieni premuto per confrontare con l’originale",
+      "compareAria": "Confronta con l’originale",
+      "back": "Indietro",
+      "originalAlt": "Originale",
+      "resultAlt": "Risultato",
+      "invalidImage": "Seleziona un file immagine (JPG, PNG, WebP, ecc.)",
+      "tooLarge": "L’immagine deve essere inferiore a 30 MB",
+      "success": "Filigrana rimossa con successo",
+      "downloadStarted": "Download avviato",
+      "downloadFailed": "Download non riuscito",
+      "requestFailed": "Richiesta non riuscita: {status}",
+      "noImageUrl": "Nessun URL immagine nella risposta"
+    },
+    "photoRestorationTool": {
+      "invalidImage": "Carica un file immagine valido.",
+      "tooLarge": "L’immagine deve essere inferiore a 30 MB.",
+      "dailyLimit": "Limite giornaliero gratuito raggiunto. Torna domani!",
+      "uploadFailed": "Caricamento immagine non riuscito.",
+      "createFailed": "Impossibile creare l’attività di restauro.",
+      "restorationFailed": "Restauro non riuscito.",
+      "timeout": "Timeout del restauro. Riprova.",
+      "uploadTitle": "Trascina e rilascia qui l’immagine",
+      "uploadFormats": "JPG, JPEG, PNG • Max 30 MB",
+      "uploadButton": "Carica immagine",
+      "generating": "Generazione...",
+      "generate": "Genera",
+      "regenerate": "Rigenera",
+      "download": "Scarica",
+      "uploadPreviewAlt": "Anteprima immagine caricata",
+      "removeUploadedImage": "Rimuovi immagine caricata",
+      "resultAlt": "Foto restaurata",
+      "oldExampleAlt": "Vecchia foto in bianco e nero danneggiata",
+      "restoredExampleAlt": "Esempio di foto restaurata",
+      "previewAlt": "Anteprima"
+    },
+    "nanoBananaTool": {
+      "imageToImage": "Da immagine a immagine",
+      "textToImage": "Da testo a immagine",
+      "models": "Modelli",
+      "uploadUpTo": "Carica fino a {count} immagini",
+      "upload": "Carica",
+      "fileLimit": "JPG, PNG, WEBP fino a 30 MB ciascuna · max {count} immagini",
+      "delete": "Elimina",
+      "replace": "Sostituisci",
+      "previewSoon": "Anteprima presto disponibile",
+      "styleTemplates": "Template di stile",
+      "aspectRatios": "Proporzioni",
+      "prompt": "Prompt",
+      "promptPlaceholder": "Descrivi il contenuto dell’immagine",
+      "outputAspectRatios": "Proporzioni di output",
+      "resolution": "Risoluzione",
+      "highResUnavailable": "2K e 4K sono temporaneamente non disponibili.",
+      "outputFormat": "Formato di output",
+      "sampleImage": "Immagine di esempio",
+      "inputImage": "Immagine di input",
+      "history": "Cronologia",
+      "noHistory": "Nessuna cronologia. Genera un’immagine per vederla qui.",
+      "recreate": "Ricrea",
+      "download": "Scarica",
+      "downloading": "Download in corso...",
+      "copyPrompt": "Copia prompt",
+      "promptCopied": "Prompt copiato negli appunti",
+      "promptCopyFailed": "Impossibile copiare il prompt",
+      "promptInserted": "Prompt inserito. Ora puoi generare.",
+      "generate": "Genera",
+      "generating": "Generazione...",
+      "generatingSeconds": "Generazione... {seconds}s",
+      "generatedAlt": "Generata",
+      "resultExpires": "L’immagine scomparirà dopo l’aggiornamento della pagina. Scaricala il prima possibile.",
+      "historyResultAlt": "Risultato cronologia",
+      "inputAlt": "Input",
+      "fileTooLarge": "Il file {name} supera il limite di 30 MB",
+      "maxImagesAllowed": "Sono consentite al massimo {max} immagini. Ne verranno aggiunte solo {remaining}.",
+      "uploadMissingUrl": "Il caricamento non ha restituito un URL",
+      "uploadRequestFailed": "La richiesta di caricamento immagine non è riuscita. Controlla la configurazione del servizio di upload e la connessione di rete.",
+      "uploadFailedWithStatus": "Upload non riuscito: {status}",
+      "uploadUrlHint": "Assicurati che l’URL di upload sia completo e che il servizio sia distribuito.",
+      "serverNonJson": "Il server ha restituito una risposta non JSON.",
+      "requestFailed": "Richiesta non riuscita:",
+      "checkStatusFailed": "Controllo stato non riuscito ({status})",
+      "generateFailed": "Generazione immagine non riuscita",
+      "noResult": "Nessun ID attività o URL immagine ricevuto",
+      "networkError": "Errore di rete",
+      "networkFailed": "Connessione di rete non riuscita. Controlla la connessione e riprova.",
+      "serviceUnstable": "Il servizio di generazione è temporaneamente instabile. Riprova tra poco.",
+      "imageGenerationFailed": "Generazione immagine non riuscita",
+      "generationFailedWithMessage": "Generazione non riuscita: {message}",
+      "generationTimeout": "Timeout della generazione",
+      "dailyLimitReached": "Limite gratuito giornaliero raggiunto. Torna domani.",
+      "recreateMissingInput": "Nessuna immagine di input trovata. Passaggio a testo-immagine per ricreare."
     }
   },
   "imageCompressor": {

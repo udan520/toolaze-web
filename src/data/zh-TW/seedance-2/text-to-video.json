@@ -1,8 +1,8 @@
 {
   "in_menu": true,
   "metadata": {
-    "title": "Free Text to Video AI Generator with Seedance 2.0 (Online, No Sign Up) - Toolaze",
-    "description": "How to create videos from text? 1. Enter your prompt 2. Generate with Seedance 2.0 3. Download 1080p video. Free text-to-video AI online. Create Hollywood-quality videos from text. No registration. Add images for more control."
+    "title": "免費 AI 文字轉影片產生器 - 使用 Seedance 2.0（線上免註冊）- Toolaze",
+    "description": "如何將文字轉為影片？1. 輸入您的提示詞 2. 使用 Seedance 2.0 進行生成 3. 下載 1080p 影片。免費線上 AI 文字轉影片工具。從文字創建好萊塢級品質的影片。免註冊。可添加圖片以獲得更多控制。"
   },
   "sectionsOrder": [
     "howToUse",
@@ -15,200 +15,200 @@
     "faq"
   ],
   "modelIntro": {
-    "title": "Why Text to Video with Seedance 2.0",
+    "title": "為什麼選擇使用 Seedance 2.0 進行文字轉影片",
     "modelName": "Seedance 2.0",
-    "modelType": "AI Video Model",
+    "modelType": "AI 影片模型",
     "description": [
-      "Text-to-video turns written prompts into 1080p clips in one step. Seedance 2.0 reads natural language and outputs 15-second multi-shot videos with motion, lighting, and camera work. No storyboards or editing software needed.",
-      "Add up to 9 reference images for style control, or keep it text-only for fast iteration. Same pipeline for social shorts, ad concepts, and storyboard previews.",
-      "Free online. No sign-up—describe your scene and generate."
+      "文字轉影片能一步將書面提示詞轉化為 1080p 短片。Seedance 2.0 可理解自然語言，並輸出包含動作、光影和鏡頭運作的 15 秒多鏡頭影片。無需分鏡腳本或剪輯軟體。",
+      "最多可添加 9 張參考圖片以控制風格，或保持純文字以進行快速迭代。同樣的流程適用於社群短影音、廣告概念和分鏡腳本預覽。",
+      "線上免費使用。免註冊——描述您的場景即可生成。"
     ],
     "featureCards": [
       {
-        "title": "Natural Language to 1080p Video",
-        "content": "Describe your scene in plain English. The model handles composition, motion, and lighting. Output is cinema-grade 1080p, ready for social or further editing."
+        "title": "自然語言轉 1080p 影片",
+        "content": "用簡單的語言描述您的場景。模型會處理構圖、動作和光影。輸出為電影級 1080p，可用於社群媒體或進一步剪輯。"
       },
       {
-        "title": "Optional Image Reference for Precision",
-        "content": "Layer up to 9 images with your text prompt. Guide character look, set style, or lock composition. Text-only or multimodal—your choice."
+        "title": "可選圖片參考以精準控制",
+        "content": "在文字提示詞中疊加最多 9 張圖片。引導角色外觀、設定風格或鎖定構圖。純文字或多模態——由您選擇。"
       },
       {
-        "title": "Video and Audio in One Pass",
-        "content": "Get 15-second clips with dual-channel audio. No separate sound design step. One generation, complete output."
+        "title": "影片與音訊一次搞定",
+        "content": "獲取帶有雙聲道音訊的 15 秒短片。無需單獨的音效設計步驟。一次生成，完整輸出。"
       }
     ]
   },
   "hero": {
-    "h1": "Free <span class=\"text-gradient\">Text to Video</span> AI Generator",
-    "desc": "Create 1080p videos from text prompts with Seedance 2.0 for free. Enter your idea and let AI generate Hollywood-quality video online. No sign-up required."
+    "h1": "免費 <span class=\"text-gradient\">AI 文字轉影片</span> 產生器",
+    "desc": "使用 Seedance 2.0 免費將文字提示詞轉為 1080p 影片。輸入您的創意，讓 AI 在線上生成好萊塢級品質的影片。免註冊。"
   },
   "intro": {
-    "title": "Why Use Text to Video with Seedance 2.0?",
+    "title": "為什麼要使用 Seedance 2.0 進行文字轉影片？",
     "content": [
       {
-        "title": "From Words to Motion in Seconds",
-        "text": "Text-to-video AI transforms your written ideas into moving visuals instantly. Seedance 2.0 understands natural language and generates 15-second high-quality videos with complex motions, proper lighting, and cinematic camera movements. Perfect for content creators, marketers, and filmmakers who need to prototype ideas quickly without expensive production. Simply describe your scene—the AI handles the rest. No storyboard skills, no video editing software, no production crew required. Turn concepts into reality in minutes."
+        "title": "數秒內化文字為動態畫面",
+        "text": "文字轉影片 AI 能立即將您的書面創意轉化為動態視覺效果。Seedance 2.0 理解自然語言，並生成包含複雜動作、合適光影和電影級鏡頭運動的 15 秒高品質影片。非常適合需要快速製作創意原型而無需高昂製作成本的內容創作者、行銷人員和電影製作人。只需描述您的場景——AI 會處理其餘的一切。無需分鏡技巧、無需影片剪輯軟體，也無需製作團隊。在幾分鐘內將概念變為現實。"
       },
       {
-        "title": "Beyond Text-Only: Multimodal Power for Precision",
-        "text": "While text prompts alone are powerful, Seedance 2.0 lets you combine text with up to 9 reference images, 3 video clips, and 3 audio clips. Add visual references to guide character style, include sample footage for consistency, or sync with audio—all in one generation. This multimodal approach gives you unprecedented control over the final output. Stuck on a specific look? Upload a reference image. Need consistent branding? Add your logo. The text-to-video generator becomes a complete creative studio when you layer inputs."
+        "title": "超越純文字：多模態力量帶來精準控制",
+        "text": "雖然單純的文字提示詞功能強大，但 Seedance 2.0 允許您將文字與最多 9 張參考圖片、3 個影片片段和 3 個音訊片段相結合。添加視覺參考以引導角色風格、加入範例素材以保持一致性，或與音訊同步——這一切都在一次生成中完成。這種多模態方法為您對最終輸出提供了前所未有的控制力。卡在特定的外觀上？上傳一張參考圖片。需要一致的品牌形象？添加您的標誌。當您疊加輸入時，文字轉影片產生器就變成了一個完整的創意工作室。"
       },
       {
-        "title": "Free Online Access for All Creators",
-        "text": "Toolaze provides free text-to-video generation with Seedance 2.0 online. No sign-up, no credit card, no usage caps for getting started. Whether you're testing a social media concept, pitching a film idea, or creating ad variations, the free AI video generator is ready. Works entirely in your browser—no software installation. Generate 1080p Hollywood-quality videos from text in seconds, then download and use anywhere."
+        "title": "所有創作者皆可免費線上使用",
+        "text": "Toolaze 在線上提供使用 Seedance 2.0 的免費文字轉影片生成服務。免註冊、免信用卡，開始使用無使用限制。無論您是在測試社群媒體概念、提案電影創意，還是製作廣告變體，這款免費的 AI 影片產生器都已準備就緒。完全在您的瀏覽器中運行——無需安裝軟體。在數秒內從文字生成 1080p 好萊塢級品質的影片，然後下載並在任何地方使用。"
       }
     ]
   },
   "features": {
-    "title": "Text to Video Features",
+    "title": "文字轉影片功能特點",
     "items": [
       {
         "icon": "✍️",
         "iconType": "text",
-        "title": "Natural Language",
-        "desc": "Describe your video in plain English. The AI understands context, style, and action from your text prompts."
+        "title": "自然語言",
+        "desc": "用簡單的語言描述您的影片。AI 能從您的文字提示詞中理解上下文、風格和動作。"
       },
       {
         "icon": "🎬",
         "iconType": "quality",
-        "title": "1080p Output",
-        "desc": "Hollywood-quality multi-shot videos with proper lighting, shadows, and cinematic camera movements."
+        "title": "1080p 輸出",
+        "desc": "好萊塢級品質的多鏡頭影片，具有合適的光影、陰影和電影級鏡頭運動。"
       },
       {
         "icon": "🖼️",
         "iconType": "multimodal",
-        "title": "Optional Image Reference",
-        "desc": "Add up to 9 reference images to guide style, characters, or scene composition alongside your text."
+        "title": "可選圖片參考",
+        "desc": "在文字旁添加最多 9 張參考圖片，以引導風格、角色或場景構圖。"
       },
       {
         "icon": "⚡",
         "iconType": "speed",
-        "title": "Fast Generation",
-        "desc": "Get your video in seconds. No lengthy queues or processing delays—ideal for rapid iteration."
+        "title": "快速生成",
+        "desc": "在數秒內獲取您的影片。無需漫長的排隊或處理延遲——非常適合快速迭代。"
       },
       {
         "icon": "💎",
         "iconType": "free",
-        "title": "Free Online",
-        "desc": "No sign-up required. Start creating text-to-video content now with zero cost."
+        "title": "免費線上使用",
+        "desc": "免註冊。現在就以零成本開始創作文字轉影片內容。"
       },
       {
         "icon": "🔊",
         "iconType": "audio",
-        "title": "Video + Audio",
-        "desc": "Generate 15-second videos with optional dual-channel audio in a single pass."
+        "title": "影片 + 音訊",
+        "desc": "一次生成包含可選雙聲道音訊的 15 秒影片。"
       }
     ]
   },
   "performanceMetrics": {
-    "title": "Text to Video Specifications",
+    "title": "文字轉影片規格",
     "metrics": [
       {
-        "label": "Primary Input",
-        "value": "Text (natural language prompts)"
+        "label": "主要輸入",
+        "value": "文字（自然語言提示詞）"
       },
       {
-        "label": "Optional Inputs",
-        "value": "Up to 9 images, 3 video clips, 3 audio clips"
+        "label": "可選輸入",
+        "value": "最多 9 張圖片、3 個影片片段、3 個音訊片段"
       },
       {
-        "label": "Output Resolution",
-        "value": "1080p (multi-shot, cinema-grade)"
+        "label": "輸出解析度",
+        "value": "1080p（多鏡頭、電影級）"
       },
       {
-        "label": "Video Duration",
-        "value": "15 seconds per generation"
+        "label": "影片長度",
+        "value": "每次生成 15 秒"
       },
       {
-        "label": "Control Level",
-        "value": "Director-level (lighting, camera, performance)"
+        "label": "控制級別",
+        "value": "導演級（光影、鏡頭、表演）"
       },
       {
-        "label": "Best For",
-        "value": "Social media, ads, storyboards, concept previews"
+        "label": "最適合",
+        "value": "社群媒體、廣告、分鏡腳本、概念預覽"
       }
     ]
   },
   "howToUse": {
-    "title": "How to Generate Text to Video?",
+    "title": "如何將文字生成影片？",
     "steps": [
       {
-        "title": "Write Your Prompt",
-        "desc": "Describe your video in detail—scene, action, style, mood, lighting. Be specific for best results. Add optional reference images if needed."
+        "title": "撰寫您的提示詞",
+        "desc": "詳細描述您的影片——場景、動作、風格、氛圍、光影。越具體效果越好。如果需要，可添加可選的參考圖片。"
       },
       {
-        "title": "Generate with Seedance 2.0",
-        "desc": "Upload to the free online interface and click generate. The AI creates your 1080p video from text in seconds."
+        "title": "使用 Seedance 2.0 生成",
+        "desc": "上傳至免費的線上介面並點擊生成。AI 會在數秒內從文字創建您的 1080p 影片。"
       },
       {
-        "title": "Download Your Video",
-        "desc": "Get your 1080p video with optional audio. No registration required. Use for social media, ads, or further editing."
+        "title": "下載您的影片",
+        "desc": "獲取帶有可選音訊的 1080p 影片。免註冊。可用於社群媒體、廣告或進一步剪輯。"
       }
     ]
   },
   "comparison": {
-    "title": "Why Choose Toolaze Text to Video?",
+    "title": "為什麼選擇 Toolaze 文字轉影片？",
     "toolaze": "Toolaze 💎",
-    "others": "Other Tools",
+    "others": "其他工具",
     "vs": "VS",
-    "smartChoice": "Smart Choice",
-    "otherTools": "Other Tools",
-    "toolazeFeatures": "Seedance 2.0 model, Multimodal input, 1080p quality, Free online, No sign-up, Optional image reference",
-    "othersFeatures": "Text-only, Lower resolution, Paid tiers, Registration required, No image support"
+    "smartChoice": "聰明選擇",
+    "otherTools": "其他工具",
+    "toolazeFeatures": "Seedance 2.0 模型、多模態輸入、1080p 品質、免費線上使用、免註冊、可選圖片參考",
+    "othersFeatures": "僅限文字、較低解析度、付費方案、需要註冊、不支援圖片"
   },
-  "scenesTitle": "Use Cases",
+  "scenesTitle": "應用場景",
   "scenes": [
     {
-      "title": "Social Media Creators",
+      "title": "社群媒體創作者",
       "icon": "📱",
-      "desc": "Turn trending ideas into short-form videos for TikTok, Instagram Reels, and YouTube Shorts. Generate engaging content from text prompts in minutes. Test multiple concepts before investing in full production. Perfect for creators who need to post consistently without a video team."
+      "desc": "將熱門創意轉化為 TikTok、Instagram Reels 和 YouTube Shorts 的短影音。在幾分鐘內從文字提示詞生成引人入勝的內容。在投入完整製作之前測試多個概念。非常適合需要在沒有影片團隊的情況下持續發文的創作者。"
     },
     {
-      "title": "Ad Agencies & Marketers",
+      "title": "廣告代理商與行銷人員",
       "icon": "📢",
-      "desc": "Rapidly prototype ad concepts and test different narratives before full production. Create A/B test variations from text descriptions. Present ideas to clients with actual video instead of storyboards. Reduce production costs while accelerating the creative process."
+      "desc": "在正式製作前快速製作廣告概念原型並測試不同的敘事。從文字描述中創建 A/B 測試變體。用實際影片而非分鏡腳本向客戶展示創意。在加速創作過程的同時降低製作成本。"
     },
     {
-      "title": "Storyboard Artists & Filmmakers",
+      "title": "分鏡藝術家與電影製作人",
       "icon": "🎨",
-      "desc": "Visualize scripts and storyboards for pitch meetings and pre-production. Bring written scenes to life with motion and lighting. Communicate vision to directors and producers. The text-to-video AI acts as a rapid visualization tool for the entire film pipeline."
+      "desc": "為提案會議和前期製作將劇本和分鏡腳本視覺化。用動作和光影將書面場景帶入生活。向導演和製片人傳達視覺概念。文字轉影片 AI 可作為整個電影製作流程的快速視覺化工具。"
     }
   ],
   "rating": {
-    "title": "Trusted by Thousands of Creators",
-    "rating": "4.9/5 FROM 10K+ CREATORS",
-    "text": "Join thousands who trust Toolaze for free text-to-video generation with Seedance 2.0. No registration required. Create 1080p videos from text online. Add reference images for more control. Hollywood-quality output in seconds."
+    "title": "深受數千名創作者信賴",
+    "rating": "4.9/5 來自 10,000+ 名創作者",
+    "text": "加入數千名信賴 Toolaze 使用 Seedance 2.0 進行免費文字轉影片生成的創作者行列。免註冊。在線上從文字創建 1080p 影片。添加參考圖片以獲得更多控制。數秒內輸出好萊塢級品質。"
   },
-  "moreTools": "More Seedance 2.0 Tools",
-  "faqTitle": "Frequently Asked Questions",
+  "moreTools": "更多 Seedance 2.0 工具",
+  "faqTitle": "常見問題",
   "faq": [
     {
-      "q": "Is text to video really free?",
-      "a": "Yes! Toolaze offers free text-to-video generation with Seedance 2.0 online. No sign-up or registration required. You can create videos from text prompts at no cost. There are no hidden fees or credit card requirements. Start generating 1080p videos immediately. For advanced features or higher volume, check our pricing—but the core text-to-video functionality is free to use."
+      "q": "文字轉影片真的是免費的嗎？",
+      "a": "是的！Toolaze 在線上提供使用 Seedance 2.0 的免費文字轉影片生成服務。免註冊。您可以免費從文字提示詞創建影片。沒有隱藏費用或信用卡要求。立即開始生成 1080p 影片。如需進階功能或更大使用量，請查看我們的定價——但核心的文字轉影片功能是免費使用的。"
     },
     {
-      "q": "What is the best text to video AI?",
-      "a": "Seedance 2.0 is among the leading text-to-video AI models in 2026. It supports multimodal inputs (text + image + video + audio), generates 1080p quality, and offers director-level control over lighting and camera. Toolaze provides free access online. Other strong options include Sora 2 and Runway—compare based on your specific needs for resolution, input types, and control level."
+      "q": "最好的 AI 文字轉影片工具是什麼？",
+      "a": "Seedance 2.0 是 2026 年領先的文字轉影片 AI 模型之一。它支援多模態輸入（文字 + 圖片 + 影片 + 音訊），生成 1080p 品質，並提供導演級的光影和鏡頭控制。Toolaze 提供免費的線上存取。其他強大的選擇包括 Sora 2 和 Runway——您可以根據對解析度、輸入類型和控制級別的具體需求進行比較。"
     },
     {
-      "q": "How long can Seedance 2.0 videos be?",
-      "a": "Seedance 2.0 generates 15-second high-quality multi-shot videos per generation. This length is ideal for social media (TikTok, Reels, Shorts), advertisements, and concept previews. For longer content, create multiple 15-second clips and combine them in video editing software. The model optimizes for quality within this duration."
+      "q": "Seedance 2.0 影片可以有多長？",
+      "a": "Seedance 2.0 每次生成 15 秒的高品質多鏡頭影片。這個長度非常適合社群媒體（TikTok、Reels、Shorts）、廣告和概念預覽。對於更長的內容，可以創建多個 15 秒的片段，並在影片剪輯軟體中進行組合。該模型在此時長內優化了品質。"
     },
     {
-      "q": "Can I add reference images to text prompts?",
-      "a": "Yes. Seedance 2.0 supports up to 9 reference images along with your text prompt. Combine text and images for more precise control over style, characters, and scenes. This is especially useful for consistent branding, character design, or when words alone can't capture the visual you want. The multimodal approach sets Seedance 2.0 apart from text-only generators."
+      "q": "我可以在文字提示詞中添加參考圖片嗎？",
+      "a": "可以。Seedance 2.0 支援在文字提示詞中加入最多 9 張參考圖片。結合文字和圖片，可以更精確地控制風格、角色和場景。這對於保持一致的品牌形象、角色設計，或者當文字無法單獨表達您想要的視覺效果時特別有用。多模態方法使 Seedance 2.0 與僅限文字的產生器區分開來。"
     },
     {
-      "q": "Does text to video work in my browser?",
-      "a": "Yes. Toolaze runs Seedance 2.0 online in your browser. No software installation needed. Enter your text prompt and generate videos directly from the web interface. Works on Windows, Mac, and most modern browsers. You'll need an internet connection since the AI model runs on servers."
+      "q": "文字轉影片可以在我的瀏覽器中運行嗎？",
+      "a": "可以。Toolaze 在您的瀏覽器中線上運行 Seedance 2.0。無需安裝軟體。輸入您的文字提示詞，直接從網頁介面生成影片。適用於 Windows、Mac 和大多數現代瀏覽器。由於 AI 模型在伺服器上運行，您需要連接網路。"
     },
     {
-      "q": "What makes a good text prompt for video generation?",
-      "a": "Good prompts include: specific scene description (setting, time of day), action or motion (what happens), style (cinematic, documentary, animated), lighting (dramatic, soft, neon), and mood. The more specific you are, the better the output. Example: 'A woman walks through a rainy Tokyo street at night, neon signs reflecting on wet pavement, cinematic lighting, slow motion.'"
+      "q": "什麼是好的影片生成文字提示詞？",
+      "a": "好的提示詞包括：具體的場景描述（場景、時間）、動作或運動（發生了什麼）、風格（電影感、紀錄片、動畫）、光影（戲劇性、柔和、霓虹燈）和氛圍。描述越具體，輸出效果越好。例如：「一名女子在夜間穿過下雨的東京街頭，霓虹燈招牌反射在潮濕的路面上，電影級光影，慢動作。」"
     },
     {
-      "q": "Can I generate video with sound from text?",
-      "a": "Yes. Seedance 2.0 uses a unified audio-video joint generation architecture. You can generate 15-second videos with dual-channel audio simultaneously. For text-only input, the model may generate appropriate ambient sound or you can add audio clips as reference. The text-to-video generator supports full multimodal input including audio."
+      "q": "我可以從文字生成帶有聲音的影片嗎？",
+      "a": "可以。Seedance 2.0 採用統一的影音聯合生成架構。您可以同時生成帶有雙聲道音訊的 15 秒影片。對於純文字輸入，模型可能會生成合適的環境音，或者您可以添加音訊片段作為參考。文字轉影片產生器支援包括音訊在內的完整多模態輸入。"
     }
   ]
 }

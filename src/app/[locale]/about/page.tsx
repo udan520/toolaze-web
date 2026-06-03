@@ -27,8 +27,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   // Load translations for metadata
   const t = await loadCommonTranslations(locale)
   const metadata = t?.about?.metadata || {
-    title: 'About Us - Toolaze',
-    description: 'Learn about Toolaze - Free AI image tools that run locally in your browser. Privacy-first, unlimited.'
+    title: 'Toolaze',
+    description: 'Toolaze'
   }
   
   return {
@@ -50,26 +50,26 @@ export default async function AboutPage({ params }: PageProps) {
   // Load translations
   const t = await loadCommonTranslations(locale)
   const translations = t?.about || {
-    title: 'We Handle the Tool. You Handle the Laze.',
+    title: 'Toolaze',
     titleTool: 'Tool',
     titleLaze: 'Laze',
-    subtitle: "Productivity isn't about working harder. It's about being smart enough to let AI do the heavy lifting.",
+    subtitle: '',
     whyToolaze: {
-      title: 'Why "Toolaze"?',
-      content1: 'The name comes from a simple philosophy: Tool + Laze.',
-      content2: 'We believe that as a creator, your energy is finite. Every minute you spend resizing images, converting formats, or worrying about server privacy is a minute stolen from your creativity.',
-      content3: 'We built Toolaze to be the ultimate "lazy" solution. We use advanced Local AI to automate the boring technical stuff instantly in your browser. No uploads, no waiting, no friction.',
-      content4: "So go ahead, be a little lazy. We've got the tools covered."
+      title: 'Toolaze',
+      content1: '',
+      content2: '',
+      content3: 'Toolaze',
+      content4: ''
     },
     features: {
-      privacy: { title: 'Laze on Privacy', desc: 'Relax. Your files never leave your device. Zero risk of data leaks means zero anxiety for you.' },
-      waiting: { title: 'Laze on Waiting', desc: 'Why wait for uploads? Our local WebAssembly engine processes files instantly. Done in a blink.' },
-      cost: { title: 'Laze on Cost', desc: "Keep your wallet shut. We don't have expensive server bills, so you don't have to pay subscription fees." }
+      privacy: { title: '', desc: '' },
+      waiting: { title: '', desc: '' },
+      cost: { title: '', desc: '' }
     },
     cta: {
-      title: 'Ready to work less?',
-      subtitle: 'Try our tools and reclaim your creative time.',
-      button: 'Start Being Lazy Now →'
+      title: '',
+      subtitle: '',
+      button: ''
     }
   }
   const breadcrumbT = t?.breadcrumb || { home: 'Home', aboutUs: 'About Us' }

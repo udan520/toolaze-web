@@ -1,8 +1,8 @@
 {
   "in_menu": true,
   "metadata": {
-    "title": "Free Font Generator - Create Custom Fonts Online | Toolaze",
-    "description": "Generate custom fonts online for free. Create cursive, fancy, bold, italic, gothic, and tattoo fonts. Copy and paste instantly. No sign-up required."
+    "title": "免費字體產生器 - 線上建立自訂字體 | Toolaze",
+    "description": "線上免費產生自訂字體。建立草書、花式、粗體、斜體、哥德風和刺青字體。即時複製貼上，無需註冊。"
   },
   "sectionsOrder": [
     "howToUse",
@@ -15,178 +15,178 @@
     "faq"
   ],
   "hero": {
-    "h1": "Free <span class=\"text-gradient\">Font Generator</span>",
-    "desc": "Generate custom fonts online for free. Create cursive, fancy, bold, italic, gothic, and tattoo fonts. Copy and paste instantly. No sign-up required."
+    "h1": "免費 <span class=\"text-gradient\">字體產生器</span>",
+    "desc": "線上免費產生自訂字體。建立草書、花式、粗體、斜體、哥德風和刺青字體。即時複製貼上，無需註冊。"
   },
   "intro": {
-    "title": "Why Use Toolaze Font Generator?",
+    "title": "為什麼要使用 Toolaze 字體產生器？",
     "content": [
       {
-        "title": "What is a Font Generator?",
-        "text": "A font generator is an online tool that transforms plain text into styled text using Unicode characters. It allows you to create beautiful, distinctive text styles without installing fonts or using design software. Font generators are perfect for social media posts, design projects, and anywhere you want to add visual flair to your text. Try our popular <a href=\"/font-generator/cursive\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">cursive font generator</a>, <a href=\"/font-generator/fancy\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">fancy font generator</a>, or bold font generator to get started."
+        "title": "什麼是字體產生器？",
+        "text": "字體產生器是一種線上工具，它使用 Unicode 字元將純文字轉換為有樣式的文字。它讓您無需安裝字體或使用設計軟體，就能建立美觀且獨特的文字樣式。字體產生器非常適合社群媒體貼文、設計專案，以及任何您想為文字增添視覺魅力的地方。立即試用我們熱門的 <a href=\"/zh-TW/font-generator/cursive\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">草書字體產生器</a>、<a href=\"/zh-TW/font-generator/fancy\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">花式字體產生器</a> 或粗體字體產生器來開始使用。"
       },
       {
-        "title": "Why Generate Fonts Online?",
-        "text": "Creating styled text manually requires design software, font installation, and technical knowledge. Our font generator lets you instantly transform any text into multiple beautiful styles—cursive, fancy, bold, italic, gothic, tattoo, and more—without downloading software or installing fonts. Perfect for social media users who want distinctive text for Instagram bios, Facebook posts, or TikTok captions, as well as designers who need quick styled text for mockups and presentations. Explore our <a href=\"/font-generator/tattoo\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">tattoo font generator</a>, Instagram font generator, or gothic font generator for specific styles."
+        "title": "為什麼要在線上產生字體？",
+        "text": "手動建立樣式文字需要設計軟體、安裝字體和專業知識。我們的字體產生器讓您能立即將任何文字轉換為多種美觀的樣式——草書、花式、粗體、斜體、哥德風、刺青等——無需下載軟體或安裝字體。非常適合想要在 Instagram 簡介、Facebook 貼文或 TikTok 說明中加入獨特文字的社群媒體使用者，以及需要在模型和簡報中快速使用樣式文字的設計師。探索我們的 <a href=\"/zh-TW/font-generator/tattoo\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">刺青字體產生器</a>、Instagram 字體產生器或哥德風字體產生器以獲取特定樣式。"
       }
     ]
   },
   "features": {
-    "title": "Powerful Font Generator Features",
+    "title": "強大的字體產生器功能",
     "items": [
       {
         "icon": "🎨",
         "iconType": "quality",
-        "title": "Multiple Font Styles",
-        "desc": "Generate beautiful text with multiple font styles including cursive, fancy, bold, italic, gothic, tattoo, calligraphy, old english, 3D, and more."
+        "title": "多種字體樣式",
+        "desc": "產生包含草書、花式、粗體、斜體、哥德風、刺青、書法、古英語、3D 等多種字體樣式的美麗文字。"
       },
       {
         "icon": "🔒",
         "iconType": "privacy",
-        "title": "Complete Privacy Protection",
-        "desc": "All font generation happens locally in your browser—your text never leaves your device, ensuring absolute data security."
+        "title": "完整的隱私保護",
+        "desc": "所有字體產生過程都在您的瀏覽器本機進行——您的文字絕不會離開您的裝置，確保絕對的資料安全。"
       },
       {
         "icon": "⚡",
         "iconType": "speed",
-        "title": "Instant Generation",
-        "desc": "Transform your text into styled fonts instantly with real-time preview—no waiting, no delays."
+        "title": "即時產生",
+        "desc": "透過即時預覽，立即將您的文字轉換為樣式字體——無需等待，毫無延遲。"
       },
       {
         "icon": "📋",
         "iconType": "batch",
-        "title": "Easy Copy & Paste",
-        "desc": "Copy your styled text with one click and paste it directly into Instagram, Facebook, Twitter, TikTok, Discord, or any platform."
+        "title": "輕鬆複製貼上",
+        "desc": "一鍵複製您的樣式文字，並直接貼上到 Instagram、Facebook、Twitter、TikTok、Discord 或任何平台。"
       },
       {
         "icon": "💎",
         "iconType": "free",
-        "title": "Free",
-        "desc": "Enjoy unlimited font generation completely free—no subscriptions, no hidden fees, no advertisements ever."
+        "title": "免費",
+        "desc": "完全免費享受無限次字體產生——無訂閱、無隱藏費用、絕無廣告。"
       },
       {
         "icon": "🌐",
         "iconType": "browser",
-        "title": "No Installation Needed",
-        "desc": "Everything runs directly in your web browser using client-side technology—no software downloads or font installations required."
+        "title": "無需安裝",
+        "desc": "所有功能都使用用戶端技術直接在您的網頁瀏覽器中執行——無需下載軟體或安裝字體。"
       }
     ]
   },
   "specs": {
-    "engine": "Browser-Native Font Rendering - Client-Side Processing",
-    "limit": "Unlimited Text Length - No Character Limits",
-    "logic": "Real-Time Preview (Instant Style Application)",
-    "privacy": "100% Client-Side (Local Browser Processing)"
+    "engine": "瀏覽器原生字體渲染 - 用戶端處理",
+    "limit": "無限文字長度 - 無字元限制",
+    "logic": "即時預覽（即時套用樣式）",
+    "privacy": "100% 用戶端（本機瀏覽器處理）"
   },
   "performanceMetrics": {
-    "title": "Technical Specifications",
+    "title": "技術規格",
     "metrics": [
       {
-        "label": "Font Styles",
-        "value": "Cursive, Fancy, Bold, Italic, Gothic, Tattoo, Calligraphy, Old English, 3D, and more"
+        "label": "字體樣式",
+        "value": "草書、花式、粗體、斜體、哥德風、刺青、書法、古英語、3D 等"
       },
       {
-        "label": "Text Length",
-        "value": "Unlimited characters"
+        "label": "文字長度",
+        "value": "無限字元"
       },
       {
-        "label": "Processing Speed",
-        "value": "Instant (Real-time preview)"
+        "label": "處理速度",
+        "value": "即時（即時預覽）"
       },
       {
-        "label": "Output Format",
-        "value": "Unicode text (Copy & paste ready)"
+        "label": "輸出格式",
+        "value": "Unicode 文字（可直接複製貼上）"
       },
       {
-        "label": "Platform Support",
-        "value": "Instagram, Facebook, Twitter, TikTok, Discord, WhatsApp, and more"
+        "label": "平台支援",
+        "value": "Instagram、Facebook、Twitter、TikTok、Discord、WhatsApp 等"
       },
       {
-        "label": "Processing Location",
-        "value": "100% Client-Side (Browser JavaScript)"
+        "label": "處理位置",
+        "value": "100% 用戶端（瀏覽器 JavaScript）"
       },
       {
-        "label": "Privacy",
-        "value": "No server uploads, complete local processing"
+        "label": "隱私",
+        "value": "無伺服器上傳，完全本機處理"
       }
     ]
   },
   "howToUse": {
-    "title": "How to Use Toolaze Font Generator",
+    "title": "如何使用 Toolaze 字體產生器",
     "steps": [
       {
-        "title": "Type Your Text",
-        "desc": "Enter the text you want to convert into a custom font style in the input field above."
+        "title": "輸入您的文字",
+        "desc": "在上方輸入欄位中輸入您想要轉換為自訂字體樣式的文字。"
       },
       {
-        "title": "Choose Font Style",
-        "desc": "Select from multiple font styles including cursive, fancy, bold, italic, gothic, tattoo, and more. Preview your text in real-time to see how it looks."
+        "title": "選擇字體樣式",
+        "desc": "從草書、花式、粗體、斜體、哥德風、刺青等多種字體樣式中進行選擇。即時預覽您的文字以查看效果。"
       },
       {
-        "title": "Copy & Paste",
-        "desc": "Click the copy button to copy your styled text, then paste it anywhere—social media, documents, or design tools."
+        "title": "複製與貼上",
+        "desc": "點擊複製按鈕以複製您的樣式文字，然後將其貼上到任何地方——社群媒體、文件或設計工具。"
       }
     ]
   },
   "comparison": {
-    "title": "Why Choose Toolaze?",
+    "title": "為什麼選擇 Toolaze？",
     "toolaze": "Toolaze 💎",
-    "others": "Other Tools",
+    "others": "其他工具",
     "vs": "VS",
-    "smartChoice": "Smart Choice",
-    "otherTools": "Other Tools",
-    "toolazeFeatures": "Unlimited text length, Multiple font styles, Instant preview, Real-time generation, 100% local processing, No uploads, Free",
-    "othersFeatures": "Character limits, Limited styles, Slow processing, Server uploads required, Cloud queues, Privacy concerns, Paid upgrades"
+    "smartChoice": "聰明的選擇",
+    "otherTools": "其他工具",
+    "toolazeFeatures": "無限文字長度、多種字體樣式、即時預覽、即時產生、100% 本機處理、無上傳、免費",
+    "othersFeatures": "字元限制、樣式有限、處理緩慢、需要上傳至伺服器、雲端排隊、隱私疑慮、付費升級"
   },
-  "scenesTitle": "Use Cases",
+  "scenesTitle": "使用場景",
   "scenes": [
     {
-      "title": "For Social Media Users",
+      "title": "適合社群媒體使用者",
       "icon": "📱",
-      "desc": "Create eye-catching fonts for Instagram, Facebook, Twitter, and TikTok posts. Stand out with custom styled text that matches your brand."
+      "desc": "為 Instagram、Facebook、Twitter 和 TikTok 貼文建立吸睛的字體。用符合您品牌的自訂樣式文字脫穎而出。"
     },
     {
-      "title": "For Designers",
+      "title": "適合設計師",
       "icon": "🎨",
-      "desc": "Generate fonts for design projects, logos, and branding materials. Preview different styles instantly before finalizing your design."
+      "desc": "為設計專案、標誌和品牌材料產生字體。在確定設計之前，即時預覽不同的樣式。"
     },
     {
-      "title": "For Content Creators",
+      "title": "適合內容創作者",
       "icon": "💼",
-      "desc": "Enhance your content with custom fonts for YouTube thumbnails, blog posts, and marketing materials. Copy and paste anywhere."
+      "desc": "使用自訂字體來豐富您的 YouTube 縮圖、部落格文章和行銷材料內容。隨處複製貼上。"
     }
   ],
   "rating": {
-    "title": "Trusted by Thousands of Creators",
-    "rating": "4.9/5 FROM 10K+ CREATORS",
-    "text": "\"The best font generator I've found. Instant results and works perfectly on Instagram!\" - Join thousands of users who trust Toolaze for beautiful font generation."
+    "title": "深受數千名創作者信賴",
+    "rating": "4.9/5 來自 10,000+ 名創作者",
+    "text": "\"這是我找到最好的字體產生器。即時呈現結果，而且在 Instagram 上完美運行！\" - 加入數千名信賴 Toolaze 來產生美麗字體的用戶行列。"
   },
-  "faqTitle": "Frequently Asked Questions",
+  "faqTitle": "常見問題",
   "faq": [
     {
-      "q": "What font styles are available?",
-      "a": "Toolaze supports multiple font styles including <a href=\"/font-generator/cursive\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">cursive font generator</a>, <a href=\"/font-generator/fancy\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">fancy font generator</a>, bold, italic, gothic, tattoo, calligraphy, old english, 3D, and many more. You can preview all available styles in real-time."
+      "q": "有哪些字體樣式可用？",
+      "a": "Toolaze 支援多種字體樣式，包括 <a href=\"/zh-TW/font-generator/cursive\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">草書字體產生器</a>、<a href=\"/zh-TW/font-generator/fancy\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">花式字體產生器</a>、粗體、斜體、哥德風、刺青、書法、古英語、3D 等等。您可以即時預覽所有可用的樣式。"
     },
     {
-      "q": "Is this font generator really free?",
-      "a": "Yes! Toolaze is 100% free with no ads, no registration, and no hidden fees. All font generation happens in your browser."
+      "q": "這個字體產生器真的是免費的嗎？",
+      "a": "是的！Toolaze 100% 免費，無廣告、無註冊，且無隱藏費用。所有字體產生過程都在您的瀏覽器中進行。"
     },
     {
-      "q": "Can I use these fonts on social media?",
-      "a": "Yes, you can copy and paste the generated fonts to Instagram, Facebook, Twitter, TikTok, Discord, and other platforms that support Unicode characters. For platform-specific fonts, try our <a href=\"/font-generator/instagram\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">Instagram font generator</a> or <a href=\"/font-generator/discord\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">Discord font generator</a>."
+      "q": "我可以在社群媒體上使用這些字體嗎？",
+      "a": "可以，您可以將產生的字體複製並貼上到 Instagram、Facebook、Twitter、TikTok、Discord 以及其他支援 Unicode 字元的平台。若需要特定平台的字體，請試用我們的 <a href=\"/zh-TW/font-generator/instagram\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">Instagram 字體產生器</a> 或 <a href=\"/zh-TW/font-generator/discord\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">Discord 字體產生器</a>。"
     },
     {
-      "q": "Are my texts uploaded to a server?",
-      "a": "No! All font generation happens locally in your browser using JavaScript. Your text never leaves your device, ensuring complete privacy."
+      "q": "我的文字會被上傳到伺服器嗎？",
+      "a": "不會！所有字體產生過程都使用 JavaScript 在您的瀏覽器本機進行。您的文字絕不會離開您的裝置，確保完整的隱私。"
     },
     {
-      "q": "Can I download font files?",
-      "a": "Toolaze generates styled text that you can copy and paste. We don't provide downloadable font files (.ttf, .otf), but you can use the generated text anywhere."
+      "q": "我可以下載字體檔案嗎？",
+      "a": "Toolaze 產生的是供您複製貼上的樣式文字。我們不提供可下載的字體檔案（.ttf、.otf），但您可以在任何地方使用產生的文字。"
     },
     {
-      "q": "Is there a character limit?",
-      "a": "No, there are no character limits. You can generate styled text for sentences, paragraphs, or even entire documents. The generator processes your text instantly regardless of length."
+      "q": "有字元限制嗎？",
+      "a": "沒有，沒有字元限制。您可以為句子、段落甚至整個文件產生樣式文字。無論長度如何，產生器都會即時處理您的文字。"
     }
   ],
-  "moreTools": "More Font Generator Tools"
+  "moreTools": "更多字體產生器工具"
 }

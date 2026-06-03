@@ -4,7 +4,6 @@ import Breadcrumb from '@/components/Breadcrumb'
 import { generateHreflangAlternates } from '@/lib/hreflang'
 import { loadCommonTranslations, getAllSlugs, getSeoContent } from '@/lib/seo-loader'
 import ToolCard from '@/components/ToolCard'
-import Link from 'next/link'
 import type { Metadata } from 'next'
 
 interface PageProps {
@@ -26,10 +25,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   
   const t = await loadCommonTranslations(locale)
   const breadcrumbT = t?.breadcrumb || { home: 'Home', imageConverter: 'Image Converter' }
+  const commonT = t?.common || {}
   
   return {
-    title: `All Image Converter Tools - ${breadcrumbT.imageConverter} | Toolaze`,
-    description: 'Browse all image converter tools. Convert between JPG, PNG, WebP, and HEIC formats.',
+    title: `${commonT.allImageConverterTools || 'All Image Converter Tools'} - ${breadcrumbT.imageConverter} | Toolaze`,
+    description: commonT.allImageConverterToolsDesc || 'Browse all available image converter tools. Convert between JPG, PNG, WebP, and HEIC formats.',
     robots: 'index, follow',
     alternates: {
       canonical: hreflang.canonical,
@@ -94,13 +94,7 @@ export default async function AllToolsPage({ params }: PageProps) {
         <header className="bg-[#F8FAFF] pb-12 px-6">
           <div className="max-w-4xl mx-auto text-center pt-8 mb-12">
             <h1 className="text-[40px] font-extrabold tracking-tight mb-6 leading-tight text-slate-900">
-              {commonT.allImageConverterTools ? (
-                <>
-                  {commonT.allImageConverterTools.split(' ')[0]} <span className="text-gradient">{commonT.allImageConverterTools.split(' ').slice(1).join(' ')}</span>
-                </>
-              ) : (
-                <>All <span className="text-gradient">Image Converter Tools</span></>
-              )}
+              <span className="text-gradient">{commonT.allImageConverterTools || 'All Image Converter Tools'}</span>
             </h1>
             <p className="desc-text text-lg md:text-xl max-w-2xl mx-auto">
               {commonT.allImageConverterToolsDesc || 'Browse all available image converter tools. Convert between JPG, PNG, WebP, and HEIC formats.'}

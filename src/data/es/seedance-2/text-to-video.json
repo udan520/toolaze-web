@@ -1,8 +1,8 @@
 {
   "in_menu": true,
   "metadata": {
-    "title": "Free Text to Video AI Generator with Seedance 2.0 (Online, No Sign Up) - Toolaze",
-    "description": "How to create videos from text? 1. Enter your prompt 2. Generate with Seedance 2.0 3. Download 1080p video. Free text-to-video AI online. Create Hollywood-quality videos from text. No registration. Add images for more control."
+    "title": "Generador de IA de texto a video gratuito con Seedance 2.0 (en línea, sin registro) - Toolaze",
+    "description": "¿Cómo crear videos a partir de texto? 1. Introduce tu prompt 2. Genera con Seedance 2.0 3. Descarga el video en 1080p. IA de texto a video gratuita en línea. Crea videos con calidad de Hollywood a partir de texto. Sin registro. Añade imágenes para mayor control."
   },
   "sectionsOrder": [
     "howToUse",
@@ -15,200 +15,200 @@
     "faq"
   ],
   "modelIntro": {
-    "title": "Why Text to Video with Seedance 2.0",
+    "title": "¿Por qué usar texto a video con Seedance 2.0?",
     "modelName": "Seedance 2.0",
-    "modelType": "AI Video Model",
+    "modelType": "Modelo de video de IA",
     "description": [
-      "Text-to-video turns written prompts into 1080p clips in one step. Seedance 2.0 reads natural language and outputs 15-second multi-shot videos with motion, lighting, and camera work. No storyboards or editing software needed.",
-      "Add up to 9 reference images for style control, or keep it text-only for fast iteration. Same pipeline for social shorts, ad concepts, and storyboard previews.",
-      "Free online. No sign-up—describe your scene and generate."
+      "El texto a video convierte prompts escritos en clips de 1080p en un solo paso. Seedance 2.0 lee lenguaje natural y genera videos multiescena de 15 segundos con movimiento, iluminación y trabajo de cámara. Sin necesidad de guiones gráficos ni software de edición.",
+      "Añade hasta 9 imágenes de referencia para controlar el estilo, o mantenlo solo en texto para una iteración rápida. El mismo flujo de trabajo para videos cortos de redes sociales, conceptos de anuncios y vistas previas de guiones gráficos.",
+      "Gratuito y en línea. Sin registro: describe tu escena y genera."
     ],
     "featureCards": [
       {
-        "title": "Natural Language to 1080p Video",
-        "content": "Describe your scene in plain English. The model handles composition, motion, and lighting. Output is cinema-grade 1080p, ready for social or further editing."
+        "title": "Lenguaje natural a video de 1080p",
+        "content": "Describe tu escena en lenguaje sencillo. El modelo se encarga de la composición, el movimiento y la iluminación. El resultado es 1080p de calidad cinematográfica, listo para redes sociales o edición posterior."
       },
       {
-        "title": "Optional Image Reference for Precision",
-        "content": "Layer up to 9 images with your text prompt. Guide character look, set style, or lock composition. Text-only or multimodal—your choice."
+        "title": "Referencia de imagen opcional para mayor precisión",
+        "content": "Combina hasta 9 imágenes con tu prompt de texto. Guía el aspecto del personaje, define el estilo o fija la composición. Solo texto o multimodal: tú eliges."
       },
       {
-        "title": "Video and Audio in One Pass",
-        "content": "Get 15-second clips with dual-channel audio. No separate sound design step. One generation, complete output."
+        "title": "Video y audio en una sola pasada",
+        "content": "Obtén clips de 15 segundos con audio de doble canal. Sin pasos adicionales de diseño de sonido. Una sola generación, resultado completo."
       }
     ]
   },
   "hero": {
-    "h1": "Free <span class=\"text-gradient\">Text to Video</span> AI Generator",
-    "desc": "Create 1080p videos from text prompts with Seedance 2.0 for free. Enter your idea and let AI generate Hollywood-quality video online. No sign-up required."
+    "h1": "Generador de IA de <span class=\"text-gradient\">texto a video</span> gratuito",
+    "desc": "Crea videos de 1080p a partir de prompts de texto con Seedance 2.0 de forma gratuita. Introduce tu idea y deja que la IA genere videos con calidad de Hollywood en línea. Sin necesidad de registrarse."
   },
   "intro": {
-    "title": "Why Use Text to Video with Seedance 2.0?",
+    "title": "¿Por qué usar texto a video con Seedance 2.0?",
     "content": [
       {
-        "title": "From Words to Motion in Seconds",
-        "text": "Text-to-video AI transforms your written ideas into moving visuals instantly. Seedance 2.0 understands natural language and generates 15-second high-quality videos with complex motions, proper lighting, and cinematic camera movements. Perfect for content creators, marketers, and filmmakers who need to prototype ideas quickly without expensive production. Simply describe your scene—the AI handles the rest. No storyboard skills, no video editing software, no production crew required. Turn concepts into reality in minutes."
+        "title": "De las palabras al movimiento en segundos",
+        "text": "La IA de texto a video transforma tus ideas escritas en imágenes en movimiento al instante. Seedance 2.0 entiende el lenguaje natural y genera videos de alta calidad de 15 segundos con movimientos complejos, iluminación adecuada y movimientos de cámara cinematográficos. Perfecto para creadores de contenido, especialistas en marketing y cineastas que necesitan crear prototipos de ideas rápidamente sin una producción costosa. Simplemente describe tu escena; la IA se encarga del resto. Sin necesidad de habilidades de guion gráfico, software de edición de video ni equipo de producción. Convierte conceptos en realidad en minutos."
       },
       {
-        "title": "Beyond Text-Only: Multimodal Power for Precision",
-        "text": "While text prompts alone are powerful, Seedance 2.0 lets you combine text with up to 9 reference images, 3 video clips, and 3 audio clips. Add visual references to guide character style, include sample footage for consistency, or sync with audio—all in one generation. This multimodal approach gives you unprecedented control over the final output. Stuck on a specific look? Upload a reference image. Need consistent branding? Add your logo. The text-to-video generator becomes a complete creative studio when you layer inputs."
+        "title": "Más allá de solo texto: poder multimodal para la precisión",
+        "text": "Aunque los prompts de texto por sí solos son potentes, Seedance 2.0 te permite combinar texto con hasta 9 imágenes de referencia, 3 clips de video y 3 clips de audio. Añade referencias visuales para guiar el estilo del personaje, incluye metraje de muestra para mantener la coherencia o sincroniza con audio, todo en una sola generación. Este enfoque multimodal te brinda un control sin precedentes sobre el resultado final. ¿Atascado con un aspecto específico? Sube una imagen de referencia. ¿Necesitas una marca coherente? Añade tu logotipo. El generador de texto a video se convierte en un estudio creativo completo cuando combinas diferentes entradas."
       },
       {
-        "title": "Free Online Access for All Creators",
-        "text": "Toolaze provides free text-to-video generation with Seedance 2.0 online. No sign-up, no credit card, no usage caps for getting started. Whether you're testing a social media concept, pitching a film idea, or creating ad variations, the free AI video generator is ready. Works entirely in your browser—no software installation. Generate 1080p Hollywood-quality videos from text in seconds, then download and use anywhere."
+        "title": "Acceso en línea gratuito para todos los creadores",
+        "text": "Toolaze ofrece generación gratuita de texto a video con Seedance 2.0 en línea. Sin registro, sin tarjeta de crédito y sin límites de uso para comenzar. Ya sea que estés probando un concepto para redes sociales, presentando una idea para una película o creando variaciones de anuncios, el generador de video de IA gratuito está listo. Funciona completamente en tu navegador, sin instalación de software. Genera videos de calidad de Hollywood en 1080p a partir de texto en segundos, luego descárgalos y úsalos en cualquier lugar."
       }
     ]
   },
   "features": {
-    "title": "Text to Video Features",
+    "title": "Características de texto a video",
     "items": [
       {
         "icon": "✍️",
         "iconType": "text",
-        "title": "Natural Language",
-        "desc": "Describe your video in plain English. The AI understands context, style, and action from your text prompts."
+        "title": "Lenguaje natural",
+        "desc": "Describe tu video en lenguaje sencillo. La IA comprende el contexto, el estilo y la acción a partir de tus prompts de texto."
       },
       {
         "icon": "🎬",
         "iconType": "quality",
-        "title": "1080p Output",
-        "desc": "Hollywood-quality multi-shot videos with proper lighting, shadows, and cinematic camera movements."
+        "title": "Resultado en 1080p",
+        "desc": "Videos multiescena con calidad de Hollywood, iluminación y sombras adecuadas, y movimientos de cámara cinematográficos."
       },
       {
         "icon": "🖼️",
         "iconType": "multimodal",
-        "title": "Optional Image Reference",
-        "desc": "Add up to 9 reference images to guide style, characters, or scene composition alongside your text."
+        "title": "Referencia de imagen opcional",
+        "desc": "Añade hasta 9 imágenes de referencia para guiar el estilo, los personajes o la composición de la escena junto con tu texto."
       },
       {
         "icon": "⚡",
         "iconType": "speed",
-        "title": "Fast Generation",
-        "desc": "Get your video in seconds. No lengthy queues or processing delays—ideal for rapid iteration."
+        "title": "Generación rápida",
+        "desc": "Obtén tu video en segundos. Sin largas colas ni retrasos en el procesamiento: ideal para una iteración rápida."
       },
       {
         "icon": "💎",
         "iconType": "free",
-        "title": "Free Online",
-        "desc": "No sign-up required. Start creating text-to-video content now with zero cost."
+        "title": "Gratuito en línea",
+        "desc": "Sin necesidad de registrarse. Comienza a crear contenido de texto a video ahora a costo cero."
       },
       {
         "icon": "🔊",
         "iconType": "audio",
         "title": "Video + Audio",
-        "desc": "Generate 15-second videos with optional dual-channel audio in a single pass."
+        "desc": "Genera videos de 15 segundos con audio opcional de doble canal en una sola pasada."
       }
     ]
   },
   "performanceMetrics": {
-    "title": "Text to Video Specifications",
+    "title": "Especificaciones de texto a video",
     "metrics": [
       {
-        "label": "Primary Input",
-        "value": "Text (natural language prompts)"
+        "label": "Entrada principal",
+        "value": "Texto (prompts en lenguaje natural)"
       },
       {
-        "label": "Optional Inputs",
-        "value": "Up to 9 images, 3 video clips, 3 audio clips"
+        "label": "Entradas opcionales",
+        "value": "Hasta 9 imágenes, 3 clips de video, 3 clips de audio"
       },
       {
-        "label": "Output Resolution",
-        "value": "1080p (multi-shot, cinema-grade)"
+        "label": "Resolución de salida",
+        "value": "1080p (multiescena, calidad cinematográfica)"
       },
       {
-        "label": "Video Duration",
-        "value": "15 seconds per generation"
+        "label": "Duración del video",
+        "value": "15 segundos por generación"
       },
       {
-        "label": "Control Level",
-        "value": "Director-level (lighting, camera, performance)"
+        "label": "Nivel de control",
+        "value": "Nivel de director (iluminación, cámara, actuación)"
       },
       {
-        "label": "Best For",
-        "value": "Social media, ads, storyboards, concept previews"
+        "label": "Ideal para",
+        "value": "Redes sociales, anuncios, guiones gráficos, vistas previas de conceptos"
       }
     ]
   },
   "howToUse": {
-    "title": "How to Generate Text to Video?",
+    "title": "¿Cómo generar texto a video?",
     "steps": [
       {
-        "title": "Write Your Prompt",
-        "desc": "Describe your video in detail—scene, action, style, mood, lighting. Be specific for best results. Add optional reference images if needed."
+        "title": "Escribe tu prompt",
+        "desc": "Describe tu video en detalle: escena, acción, estilo, estado de ánimo, iluminación. Sé específico para obtener los mejores resultados. Añade imágenes de referencia opcionales si es necesario."
       },
       {
-        "title": "Generate with Seedance 2.0",
-        "desc": "Upload to the free online interface and click generate. The AI creates your 1080p video from text in seconds."
+        "title": "Genera con Seedance 2.0",
+        "desc": "Súbelo a la interfaz gratuita en línea y haz clic en generar. La IA crea tu video de 1080p a partir de texto en segundos."
       },
       {
-        "title": "Download Your Video",
-        "desc": "Get your 1080p video with optional audio. No registration required. Use for social media, ads, or further editing."
+        "title": "Descarga tu video",
+        "desc": "Obtén tu video de 1080p con audio opcional. No se requiere registro. Úsalo para redes sociales, anuncios o edición posterior."
       }
     ]
   },
   "comparison": {
-    "title": "Why Choose Toolaze Text to Video?",
+    "title": "¿Por qué elegir el texto a video de Toolaze?",
     "toolaze": "Toolaze 💎",
-    "others": "Other Tools",
+    "others": "Otras herramientas",
     "vs": "VS",
-    "smartChoice": "Smart Choice",
-    "otherTools": "Other Tools",
-    "toolazeFeatures": "Seedance 2.0 model, Multimodal input, 1080p quality, Free online, No sign-up, Optional image reference",
-    "othersFeatures": "Text-only, Lower resolution, Paid tiers, Registration required, No image support"
+    "smartChoice": "Elección inteligente",
+    "otherTools": "Otras herramientas",
+    "toolazeFeatures": "Modelo Seedance 2.0, Entrada multimodal, Calidad 1080p, Gratuito en línea, Sin registro, Referencia de imagen opcional",
+    "othersFeatures": "Solo texto, Menor resolución, Planes de pago, Registro requerido, Sin soporte para imágenes"
   },
-  "scenesTitle": "Use Cases",
+  "scenesTitle": "Casos de uso",
   "scenes": [
     {
-      "title": "Social Media Creators",
+      "title": "Creadores de redes sociales",
       "icon": "📱",
-      "desc": "Turn trending ideas into short-form videos for TikTok, Instagram Reels, and YouTube Shorts. Generate engaging content from text prompts in minutes. Test multiple concepts before investing in full production. Perfect for creators who need to post consistently without a video team."
+      "desc": "Convierte ideas en tendencia en videos de formato corto para TikTok, Instagram Reels y YouTube Shorts. Genera contenido atractivo a partir de prompts de texto en minutos. Prueba múltiples conceptos antes de invertir en una producción completa. Perfecto para creadores que necesitan publicar de manera constante sin un equipo de video."
     },
     {
-      "title": "Ad Agencies & Marketers",
+      "title": "Agencias de publicidad y especialistas en marketing",
       "icon": "📢",
-      "desc": "Rapidly prototype ad concepts and test different narratives before full production. Create A/B test variations from text descriptions. Present ideas to clients with actual video instead of storyboards. Reduce production costs while accelerating the creative process."
+      "desc": "Crea prototipos rápidos de conceptos de anuncios y prueba diferentes narrativas antes de la producción completa. Crea variaciones de pruebas A/B a partir de descripciones de texto. Presenta ideas a los clientes con videos reales en lugar de guiones gráficos. Reduce los costos de producción mientras aceleras el proceso creativo."
     },
     {
-      "title": "Storyboard Artists & Filmmakers",
+      "title": "Artistas de guion gráfico y cineastas",
       "icon": "🎨",
-      "desc": "Visualize scripts and storyboards for pitch meetings and pre-production. Bring written scenes to life with motion and lighting. Communicate vision to directors and producers. The text-to-video AI acts as a rapid visualization tool for the entire film pipeline."
+      "desc": "Visualiza guiones y guiones gráficos para reuniones de presentación y preproducción. Da vida a las escenas escritas con movimiento e iluminación. Comunica tu visión a directores y productores. La IA de texto a video actúa como una herramienta de visualización rápida para todo el flujo de trabajo cinematográfico."
     }
   ],
   "rating": {
-    "title": "Trusted by Thousands of Creators",
-    "rating": "4.9/5 FROM 10K+ CREATORS",
-    "text": "Join thousands who trust Toolaze for free text-to-video generation with Seedance 2.0. No registration required. Create 1080p videos from text online. Add reference images for more control. Hollywood-quality output in seconds."
+    "title": "Con la confianza de miles de creadores",
+    "rating": "4.9/5 DE MÁS DE 10K CREADORES",
+    "text": "Únete a los miles de usuarios que confían en Toolaze para la generación gratuita de texto a video con Seedance 2.0. Sin necesidad de registrarse. Crea videos de 1080p a partir de texto en línea. Añade imágenes de referencia para mayor control. Resultados con calidad de Hollywood en segundos."
   },
-  "moreTools": "More Seedance 2.0 Tools",
-  "faqTitle": "Frequently Asked Questions",
+  "moreTools": "Más herramientas de Seedance 2.0",
+  "faqTitle": "Preguntas frecuentes",
   "faq": [
     {
-      "q": "Is text to video really free?",
-      "a": "Yes! Toolaze offers free text-to-video generation with Seedance 2.0 online. No sign-up or registration required. You can create videos from text prompts at no cost. There are no hidden fees or credit card requirements. Start generating 1080p videos immediately. For advanced features or higher volume, check our pricing—but the core text-to-video functionality is free to use."
+      "q": "¿El texto a video es realmente gratuito?",
+      "a": "¡Sí! Toolaze ofrece generación gratuita de texto a video con Seedance 2.0 en línea. Sin necesidad de registrarse ni iniciar sesión. Puedes crear videos a partir de prompts de texto sin costo alguno. No hay tarifas ocultas ni requisitos de tarjeta de crédito. Comienza a generar videos de 1080p de inmediato. Para funciones avanzadas o un mayor volumen, consulta nuestros precios, pero la funcionalidad principal de texto a video es de uso gratuito."
     },
     {
-      "q": "What is the best text to video AI?",
-      "a": "Seedance 2.0 is among the leading text-to-video AI models in 2026. It supports multimodal inputs (text + image + video + audio), generates 1080p quality, and offers director-level control over lighting and camera. Toolaze provides free access online. Other strong options include Sora 2 and Runway—compare based on your specific needs for resolution, input types, and control level."
+      "q": "¿Cuál es la mejor IA de texto a video?",
+      "a": "Seedance 2.0 se encuentra entre los modelos líderes de IA de texto a video en 2026. Admite entradas multimodales (texto + imagen + video + audio), genera calidad de 1080p y ofrece un control a nivel de director sobre la iluminación y la cámara. Toolaze proporciona acceso gratuito en línea. Otras opciones sólidas incluyen Sora 2 y Runway; compara según tus necesidades específicas de resolución, tipos de entrada y nivel de control."
     },
     {
-      "q": "How long can Seedance 2.0 videos be?",
-      "a": "Seedance 2.0 generates 15-second high-quality multi-shot videos per generation. This length is ideal for social media (TikTok, Reels, Shorts), advertisements, and concept previews. For longer content, create multiple 15-second clips and combine them in video editing software. The model optimizes for quality within this duration."
+      "q": "¿Qué duración pueden tener los videos de Seedance 2.0?",
+      "a": "Seedance 2.0 genera videos multiescena de alta calidad de 15 segundos por generación. Esta duración es ideal para redes sociales (TikTok, Reels, Shorts), anuncios publicitarios y vistas previas de conceptos. Para contenidos más largos, crea múltiples clips de 15 segundos y combínalos en un software de edición de video. El modelo se optimiza para ofrecer la mejor calidad dentro de esta duración."
     },
     {
-      "q": "Can I add reference images to text prompts?",
-      "a": "Yes. Seedance 2.0 supports up to 9 reference images along with your text prompt. Combine text and images for more precise control over style, characters, and scenes. This is especially useful for consistent branding, character design, or when words alone can't capture the visual you want. The multimodal approach sets Seedance 2.0 apart from text-only generators."
+      "q": "¿Puedo añadir imágenes de referencia a los prompts de texto?",
+      "a": "Sí. Seedance 2.0 admite hasta 9 imágenes de referencia junto con tu prompt de texto. Combina texto e imágenes para un control más preciso sobre el estilo, los personajes y las escenas. Esto es especialmente útil para mantener la coherencia de la marca, el diseño de personajes o cuando las palabras por sí solas no pueden capturar la imagen que deseas. El enfoque multimodal diferencia a Seedance 2.0 de los generadores que solo admiten texto."
     },
     {
-      "q": "Does text to video work in my browser?",
-      "a": "Yes. Toolaze runs Seedance 2.0 online in your browser. No software installation needed. Enter your text prompt and generate videos directly from the web interface. Works on Windows, Mac, and most modern browsers. You'll need an internet connection since the AI model runs on servers."
+      "q": "¿El texto a video funciona en mi navegador?",
+      "a": "Sí. Toolaze ejecuta Seedance 2.0 en línea en tu navegador. No se necesita instalación de software. Introduce tu prompt de texto y genera videos directamente desde la interfaz web. Funciona en Windows, Mac y en la mayoría de los navegadores modernos. Necesitarás una conexión a Internet, ya que el modelo de IA se ejecuta en servidores."
     },
     {
-      "q": "What makes a good text prompt for video generation?",
-      "a": "Good prompts include: specific scene description (setting, time of day), action or motion (what happens), style (cinematic, documentary, animated), lighting (dramatic, soft, neon), and mood. The more specific you are, the better the output. Example: 'A woman walks through a rainy Tokyo street at night, neon signs reflecting on wet pavement, cinematic lighting, slow motion.'"
+      "q": "¿Qué hace que un prompt de texto sea bueno para la generación de video?",
+      "a": "Los buenos prompts incluyen: descripción específica de la escena (entorno, hora del día), acción o movimiento (qué sucede), estilo (cinematográfico, documental, animado), iluminación (dramática, suave, de neón) y estado de ánimo. Cuanto más específico seas, mejor será el resultado. Ejemplo: 'Una mujer camina por una calle lluviosa de Tokio de noche, luces de neón reflejándose en el pavimento mojado, iluminación cinematográfica, cámara lenta'."
     },
     {
-      "q": "Can I generate video with sound from text?",
-      "a": "Yes. Seedance 2.0 uses a unified audio-video joint generation architecture. You can generate 15-second videos with dual-channel audio simultaneously. For text-only input, the model may generate appropriate ambient sound or you can add audio clips as reference. The text-to-video generator supports full multimodal input including audio."
+      "q": "¿Puedo generar video con sonido a partir de texto?",
+      "a": "Sí. Seedance 2.0 utiliza una arquitectura unificada de generación conjunta de audio y video. Puedes generar videos de 15 segundos con audio de doble canal simultáneamente. Para la entrada de solo texto, el modelo puede generar un sonido ambiental adecuado o puedes añadir clips de audio como referencia. El generador de texto a video admite una entrada multimodal completa, incluyendo audio."
     }
   ]
 }

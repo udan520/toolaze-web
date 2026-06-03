@@ -5,6 +5,7 @@ import { useMemo } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
 import SiteImage from './SiteImage'
 import { getImageUploadUrl } from '@/lib/upload-url'
+import { useCommonTranslations } from '@/lib/use-common-translations'
 import DeleteIcon from './icons/DeleteIcon'
 import CloseIcon from './icons/CloseIcon'
 import ReplaceIcon from './icons/ReplaceIcon'
@@ -235,6 +236,65 @@ export default function NanoBananaTool({
 }: NanoBananaToolProps = {}) {
   const router = useRouter()
   const pathname = usePathname()
+  const commonTranslations = useCommonTranslations()
+  const commonToolText = commonTranslations?.common?.tool
+  const nanoText = commonTranslations?.common?.nanoBananaTool || {
+    imageToImage: 'Image to Image',
+    textToImage: 'Text to Image',
+    models: 'Models',
+    uploadUpTo: 'Upload up to {count} images',
+    upload: 'Upload',
+    fileLimit: 'JPG, PNG, WEBP up to 30MB each · max {count} images',
+    delete: 'Delete',
+    replace: 'Replace',
+    previewSoon: 'Preview Soon',
+    styleTemplates: 'Style Templates',
+    aspectRatios: 'Aspect Ratios',
+    prompt: 'Prompt',
+    promptPlaceholder: 'Please describe the image content',
+    outputAspectRatios: 'Output Aspect Ratios',
+    resolution: 'Resolution',
+    highResUnavailable: '2K and 4K are temporarily unavailable.',
+    outputFormat: 'Output Format',
+    sampleImage: 'Sample image',
+    inputImage: 'Input image',
+    history: 'History',
+    noHistory: 'No history yet. Generate an image to see it here.',
+    recreate: 'Recreate',
+    download: 'Download',
+    downloading: 'Downloading...',
+    copyPrompt: 'Copy prompt',
+    promptCopied: 'Prompt copied to clipboard',
+    promptCopyFailed: 'Failed to copy prompt',
+    promptInserted: 'Prompt inserted. You can generate now.',
+    generate: 'Generate',
+    generating: 'Generating...',
+    generatingSeconds: 'Generating... {seconds}s',
+    generatedAlt: 'Generated',
+    resultExpires: 'The image will disappear after you refresh the page. Please download it as soon as possible.',
+    historyResultAlt: 'History result',
+    inputAlt: 'Input',
+    fileTooLarge: 'File {name} exceeds 30MB limit',
+    maxImagesAllowed: 'Maximum {max} images allowed. Only {remaining} will be added.',
+    uploadMissingUrl: 'Upload did not return url',
+    uploadRequestFailed: 'Image upload request failed. Please check the upload service configuration and network connection.',
+    uploadFailedWithStatus: 'Upload failed: {status}',
+    uploadUrlHint: 'Please ensure the upload URL is complete and deployed.',
+    serverNonJson: 'Server returned a non-JSON response.',
+    requestFailed: 'Request failed:',
+    checkStatusFailed: 'Failed to check status ({status})',
+    generateFailed: 'Failed to generate image',
+    noResult: 'No task ID or image URL received',
+    networkError: 'Network error',
+    networkFailed: 'Network connection failed. Please check your network connection and try again.',
+    serviceUnstable: 'Generation service is temporarily unstable. Please try again in a moment.',
+    imageGenerationFailed: 'Image generation failed',
+    generationTimeout: 'Generation timeout',
+    dailyLimitReached: 'Daily free limit reached. Please come back tomorrow!',
+    recreateMissingInput: 'No input image found. Switched to Text to Image for recreate.',
+  }
+  const formatNanoText = (template: string, values: Record<string, string | number>) =>
+    Object.entries(values).reduce((next, [key, value]) => next.replace(`{${key}}`, String(value)), template)
   const isNanoBanana2CoupleMode = presetMode === 'ai-couple-photo-maker'
   const modelConfig = MODEL_CONFIG[modelId]
   const modelOptions: ModelOption[] = [
@@ -302,7 +362,7 @@ export default function NanoBananaTool({
       setPrompt(nextPrompt)
       setActiveTab('text-to-image')
       setRightMode('sample')
-      showToast('Prompt inserted. You can generate now.', 'success')
+      showToast(nanoText.promptInserted, 'success')
       setTimeout(() => {
         promptTextareaRef.current?.focus()
       }, 0)
@@ -310,7 +370,7 @@ export default function NanoBananaTool({
 
     window.addEventListener('toolaze:use-prompt', handler as EventListener)
     return () => window.removeEventListener('toolaze:use-prompt', handler as EventListener)
-  }, [])
+  }, [nanoText.promptInserted])
 
   const showToast = (msg: string, type: 'success' | 'error' | 'warning' | 'info' = 'info') => {
     const id = Math.random().toString(36).substr(2, 9)
@@ -364,7 +424,7 @@ export default function NanoBananaTool({
     const validFiles = list.filter((f) => {
       if (!f.type.startsWith('image/')) return false
       if (f.size > MAX_FILE_SIZE) {
-        showToast(`File ${f.name} exceeds 30MB limit`, 'error')
+        showToast(formatNanoText(nanoText.fileTooLarge, { name: f.name }), 'error')
         return false
       }
       return true
@@ -375,7 +435,7 @@ export default function NanoBananaTool({
     const currentCount = imageFiles.length
     const remainingSlots = MAX_IMAGES - currentCount
     if (validFiles.length > remainingSlots) {
-      showToast(`Maximum ${MAX_IMAGES} images allowed. Only ${remainingSlots} will be added.`, 'warning')
+      showToast(formatNanoText(nanoText.maxImagesAllowed, { max: MAX_IMAGES, remaining: remainingSlots }), 'warning')
       validFiles.splice(remainingSlots)
     }
 
@@ -419,7 +479,7 @@ export default function NanoBananaTool({
     const today = new Date().toISOString().split('T')[0]
     const lastUsed = typeof localStorage !== 'undefined' ? localStorage.getItem(dailyLimitStorageKey) : null
     if (lastUsed === today) {
-      alert('Daily free limit reached. Please come back tomorrow!')
+      alert(nanoText.dailyLimitReached)
       return false
     }
     return true
@@ -468,20 +528,15 @@ export default function NanoBananaTool({
           } catch (e: any) {
             const msg = e?.message || ''
             if (msg.includes('fetch') || msg.includes('NetworkError') || msg.includes('Failed to fetch')) {
-              throw new Error(
-                'Image upload request failed. Please check: 1) NEXT_PUBLIC_IMAGE_UPLOAD_URL is a valid Worker URL (e.g., https://xxx.workers.dev); 2) Worker is deployed; 3) Check browser console for CORS or network errors.'
-              )
+              throw new Error(nanoText.uploadRequestFailed)
             }
             throw e
           }
           if (!uploadRes.ok) {
             const err = await uploadRes.json().catch(() => ({}))
-            const msg = err?.error || `Upload failed: ${uploadRes.status}`
+            const msg = err?.error || formatNanoText(nanoText.uploadFailedWithStatus, { status: uploadRes.status })
             if (uploadRes.status === 405) {
-              throw new Error(
-                msg +
-                  ' Please ensure NEXT_PUBLIC_IMAGE_UPLOAD_URL is the complete upload URL (e.g., https://toolaze-web.pages.dev/api/upload) and do not omit the trailing /api/upload. If using Pages Functions, ensure functions/api/upload.js is deployed.'
-              )
+              throw new Error(`${msg} ${nanoText.uploadUrlHint}`)
             }
             throw new Error(msg)
           }
@@ -489,7 +544,7 @@ export default function NanoBananaTool({
           if (url) {
             imageUrls.push(url)
           } else {
-            throw new Error('Upload did not return url')
+            throw new Error(nanoText.uploadMissingUrl)
           }
         }
         // 将所有 URL 作为 JSON 字符串传递
@@ -507,14 +562,13 @@ export default function NanoBananaTool({
         try {
           return JSON.parse(text) as Record<string, any>
         } catch {
-          const snippet = text.slice(0, 120)
-          throw new Error(`Server returned non-JSON response: ${snippet}`)
+          throw new Error(nanoText.serverNonJson)
         }
       }
 
       if (!generateResponse.ok) {
         const errorData = await parseJsonSafely(generateResponse)
-        throw new Error(errorData.error || 'Failed to generate image')
+        throw new Error(errorData.error || nanoText.generateFailed)
       }
 
       const generateResult = await parseJsonSafely(generateResponse)
@@ -551,7 +605,7 @@ export default function NanoBananaTool({
           recordDailyUsage()
           return
         }
-        throw new Error('No task ID or image URL received')
+        throw new Error(nanoText.noResult)
       }
 
       // 轮询任务状态
@@ -568,21 +622,21 @@ export default function NanoBananaTool({
             body: JSON.stringify({ taskId }),
           })
         } catch (error: any) {
-          const msg = error?.message || 'Network error'
+          const msg = error?.message || nanoText.networkError
           if (msg.includes('fetch') || msg.includes('Failed to fetch') || msg.includes('NetworkError')) {
             attempts++
             if (attempts >= maxAttempts) {
-              throw new Error('Network connection failed. Please check your network connection and try again.')
+              throw new Error(nanoText.networkFailed)
             }
             await new Promise((resolve) => setTimeout(resolve, pollInterval))
             return pollStatus()
           }
-          throw new Error(`Request failed: ${msg}`)
+          throw new Error(`${nanoText.requestFailed} ${msg}`)
         }
 
         if (!statusResponse.ok) {
           const errBody = await parseJsonSafely(statusResponse).catch(() => ({}))
-          const errMsg = (errBody as { error?: string })?.error || `Failed to check status (${statusResponse.status})`
+          const errMsg = (errBody as { error?: string })?.error || formatNanoText(nanoText.checkStatusFailed, { status: statusResponse.status })
           const transientError =
             statusResponse.status >= 500 ||
             errMsg.includes('fetch failed') ||
@@ -590,7 +644,7 @@ export default function NanoBananaTool({
           if (transientError) {
             attempts++
             if (attempts >= maxAttempts) {
-              throw new Error('Generation service is temporarily unstable. Please try again in a moment.')
+              throw new Error(nanoText.serviceUnstable)
             }
             await new Promise((resolve) => setTimeout(resolve, pollInterval))
             return pollStatus()
@@ -605,13 +659,13 @@ export default function NanoBananaTool({
         }
 
         if (statusResult.status === 'FAILED') {
-          throw new Error(statusResult.message || 'Image generation failed')
+          throw new Error(statusResult.message || nanoText.imageGenerationFailed)
         }
 
         // 继续轮询
         attempts++
         if (attempts >= maxAttempts) {
-          throw new Error('Generation timeout')
+          throw new Error(nanoText.generationTimeout)
         }
 
         await new Promise((resolve) => setTimeout(resolve, pollInterval))
@@ -667,7 +721,7 @@ export default function NanoBananaTool({
       }
     } catch (error: any) {
       console.error('Generation error:', error)
-      alert(`Generation failed: ${error.message}`)
+      alert(formatNanoText(nanoText.generationFailedWithMessage, { message: error.message }))
       setRightMode('sample')
     } finally {
       setIsGenerating(false)
@@ -756,7 +810,7 @@ export default function NanoBananaTool({
     setPrompt(nextPrompt)
     if (activeTab === 'image-to-image' && imageFiles.length === 0) {
       setActiveTab('text-to-image')
-      showToast('No input image found. Switched to Text to Image for recreate.', 'info')
+      showToast(nanoText.recreateMissingInput, 'info')
     }
 
     setTimeout(() => {
@@ -816,7 +870,7 @@ export default function NanoBananaTool({
                       : 'text-slate-500 hover:text-slate-700'
                   }`}
                 >
-                  Image to Image
+                  {nanoText.imageToImage}
                 </button>
                 <button
                   type="button"
@@ -827,7 +881,7 @@ export default function NanoBananaTool({
                       : 'text-slate-500 hover:text-slate-700'
                   }`}
                 >
-                  Text to Image
+                  {nanoText.textToImage}
                 </button>
               </div>
             )}
@@ -835,7 +889,7 @@ export default function NanoBananaTool({
             {/* Models */}
             {!isNanoBanana2CoupleMode && (
               <div>
-                <label className="block text-xs font-semibold text-slate-500 tracking-wide mb-2">Models</label>
+                <label className="block text-xs font-semibold text-slate-500 tracking-wide mb-2">{nanoText.models}</label>
                 <div className="relative">
                   <select
                     value={modelId}
@@ -862,7 +916,7 @@ export default function NanoBananaTool({
               <div>
                 <div className="flex items-center justify-between mb-2">
                   <label className="text-xs font-semibold text-slate-500 tracking-wide">
-                    Upload up to 2 images
+                    {formatNanoText(nanoText.uploadUpTo, { count: MAX_IMAGES })}
                   </label>
                   {imageFiles.length > 0 && (
                     <span className="text-xs font-medium text-slate-400">{imageFiles.length}/{MAX_IMAGES}</span>
@@ -892,7 +946,7 @@ export default function NanoBananaTool({
                         <line x1="12" y1="5" x2="12" y2="19" />
                         <line x1="5" y1="12" x2="19" y2="12" />
                       </svg>
-                      <span className="text-xs font-medium text-slate-500">Upload</span>
+                      <span className="text-xs font-medium text-slate-500">{nanoText.upload}</span>
                     </div>
                   )}
                   {/* 已上传图片：小正方形 + 序号 */}
@@ -910,7 +964,7 @@ export default function NanoBananaTool({
                           if (files && files.length > 0) {
                             const file = files[0]
                             if (file.size > MAX_FILE_SIZE) {
-                              showToast(`File ${file.name} exceeds 30MB limit`, 'error')
+                              showToast(formatNanoText(nanoText.fileTooLarge, { name: file.name }), 'error')
                               return
                             }
                             // 替换指定位置的图片
@@ -930,7 +984,7 @@ export default function NanoBananaTool({
                     >
                       <img
                         src={item.preview}
-                        alt={`Upload ${index + 1}`}
+                        alt={`${nanoText.upload} ${index + 1}`}
                         className="w-full h-full object-cover"
                       />
                       {/* 序号：右下角 - 深灰色圆角方形，白色数字 */}
@@ -945,7 +999,7 @@ export default function NanoBananaTool({
                           removeImage(index)
                         }}
                         className="absolute top-1 right-1 w-6 h-6 rounded-md bg-white/80 flex items-center justify-center shadow-sm z-10 text-black [&_svg]:flex-shrink-0 md:opacity-0 md:invisible md:group-hover:opacity-100 md:group-hover:visible md:transition-opacity"
-                        title="Delete"
+                        title={nanoText.delete}
                       >
                         <DeleteIcon size={16} />
                       </button>
@@ -953,19 +1007,19 @@ export default function NanoBananaTool({
                       <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                         <span className="px-3 py-1.5 bg-white text-[#4F46E5] rounded-lg font-semibold text-xs flex items-center gap-1.5">
                           <ReplaceIcon size={14} />
-                          Replace
+                          {nanoText.replace}
                         </span>
                       </div>
                     </div>
                   ))}
                 </div>
-                <p className="text-xs text-slate-400 mt-1.5">JPG, PNG, WEBP up to 30MB each · max {MAX_IMAGES} images</p>
+                <p className="text-xs text-slate-400 mt-1.5">{formatNanoText(nanoText.fileLimit, { count: MAX_IMAGES })}</p>
               </div>
             )}
 
             {isNanoBanana2CoupleMode && (
               <div className="flex flex-col flex-1 min-h-0">
-                <label className="block text-xs font-semibold text-slate-500 tracking-wide mb-2">Style Templates</label>
+                <label className="block text-xs font-semibold text-slate-500 tracking-wide mb-2">{nanoText.styleTemplates}</label>
                 <div className="grid grid-cols-3 gap-[8px] flex-1 min-h-0 overflow-y-auto pb-[8px]">
                   {visibleTemplates.map((tpl) => (
                     <div
@@ -980,14 +1034,14 @@ export default function NanoBananaTool({
                         {tpl.image ? (
                           <img src={`${tpl.image}?v=20260508`} alt={tpl.title} className="h-full w-full object-cover" />
                         ) : (
-                          'Preview Soon'
+                          nanoText.previewSoon
                         )}
                       </div>
                     </div>
                   ))}
                 </div>
                 <div className="mt-2">
-                  <label className="block text-xs font-semibold text-slate-500 tracking-wide mb-2">Aspect Ratios</label>
+                  <label className="block text-xs font-semibold text-slate-500 tracking-wide mb-2">{nanoText.aspectRatios}</label>
                   <div className="relative">
                     <select
                       value={aspectRatio}
@@ -1013,12 +1067,12 @@ export default function NanoBananaTool({
             {/* Prompt */}
             {!isNanoBanana2CoupleMode && (
               <div>
-                <label className="block text-xs font-semibold text-slate-500 tracking-wide mb-2">Prompt</label>
+                <label className="block text-xs font-semibold text-slate-500 tracking-wide mb-2">{nanoText.prompt}</label>
                 <textarea
                   ref={promptTextareaRef}
                   value={prompt}
                   onChange={(e) => setPrompt(e.target.value)}
-                  placeholder="Please describe the image content"
+                  placeholder={nanoText.promptPlaceholder}
                   className="w-full min-h-[88px] px-4 py-3 rounded-xl border border-slate-200/90 bg-slate-50/50 text-slate-800 placeholder:text-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/40 focus:border-[#4F46E5] resize-none transition-colors"
                   rows={3}
                 />
@@ -1028,7 +1082,7 @@ export default function NanoBananaTool({
             {/* Output Aspect Ratios */}
             {!isNanoBanana2CoupleMode && (
               <div>
-                <label className="block text-xs font-semibold text-slate-500 tracking-wide mb-2">Output Aspect Ratios</label>
+                <label className="block text-xs font-semibold text-slate-500 tracking-wide mb-2">{nanoText.outputAspectRatios}</label>
                 <div className="relative">
                   <select
                     value={aspectRatio}
@@ -1053,7 +1107,7 @@ export default function NanoBananaTool({
             {/* Resolution */}
             {!isNanoBanana2CoupleMode && (
               <div>
-                <label className="block text-xs font-semibold text-slate-500 tracking-wide mb-2">Resolution</label>
+                <label className="block text-xs font-semibold text-slate-500 tracking-wide mb-2">{nanoText.resolution}</label>
                 <div className="relative">
                   <select
                     value={resolution}
@@ -1075,14 +1129,14 @@ export default function NanoBananaTool({
                   </div>
                 </div>
                 {!modelConfig.supportsHighResolution && (
-                  <p className="text-xs text-slate-400 mt-1.5">2K and 4K are temporarily unavailable.</p>
+                  <p className="text-xs text-slate-400 mt-1.5">{nanoText.highResUnavailable}</p>
                 )}
               </div>
             )}
 
             {modelConfig.supportsOutputFormat && !isNanoBanana2CoupleMode && (
               <div>
-                <label className="block text-xs font-semibold text-slate-500 tracking-wide mb-2">Output Format</label>
+                <label className="block text-xs font-semibold text-slate-500 tracking-wide mb-2">{nanoText.outputFormat}</label>
                 <div className="relative">
                   <select
                     value={outputFormat}
@@ -1118,7 +1172,7 @@ export default function NanoBananaTool({
                     : 'linear-gradient(135deg, #4F46E5 0%, #9333EA 100%)',
                 }}
               >
-                {isGenerating ? `Generating... ${generatingSeconds}s` : 'Generate'}
+                {isGenerating ? formatNanoText(nanoText.generatingSeconds, { seconds: generatingSeconds }) : nanoText.generate}
               </button>
             </div>
           </div>
@@ -1134,19 +1188,19 @@ export default function NanoBananaTool({
                 <div className="w-3 h-3 rounded-full bg-[#4F46E5] animate-pulse" style={{ animationDelay: '0.4s' }} />
                 <div className="w-3 h-3 rounded-full bg-[#4F46E5] animate-pulse" style={{ animationDelay: '0.6s' }} />
               </div>
-              <p className="text-slate-500 font-medium text-sm">{`Generating... ${generatingSeconds}s`}</p>
+              <p className="text-slate-500 font-medium text-sm">{formatNanoText(nanoText.generatingSeconds, { seconds: generatingSeconds })}</p>
             </div>
           </div>
         ) : currentResult && (rightMode === 'result' || isNanoBanana2CoupleMode) ? (
           <div className="flex-1 min-w-0 min-h-[400px] md:min-h-0 bg-white rounded-2xl border border-[#E0E7FF] shadow-lg shadow-[#4F46E5]/8 flex flex-col items-center justify-center p-2 md:p-8 relative z-10">
             <img 
               src={currentResult.outputPreview} 
-              alt="Generated" 
+              alt={nanoText.generatedAlt} 
               onClick={() => setPreviewImage(currentResult.outputPreview)}
               className="max-w-full max-h-[60vh] md:max-h-full object-contain rounded-xl cursor-pointer hover:opacity-90 transition-opacity" 
             />
             <p className="mt-4 text-xs text-slate-500 text-center">
-              The image will disappear after you refresh the page. Please download it as soon as possible.
+              {nanoText.resultExpires}
             </p>
             {isNanoBanana2CoupleMode && (
               <div className="mt-4">
@@ -1156,7 +1210,7 @@ export default function NanoBananaTool({
                   disabled={downloadingUrl === currentResult.outputPreview}
                   className="px-6 py-2.5 rounded-xl border border-[#C7D2FE] text-[#4F46E5] hover:bg-[#EEF2FF] transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
                 >
-                  {downloadingUrl === currentResult.outputPreview ? 'Downloading...' : 'Download'}
+                  {downloadingUrl === currentResult.outputPreview ? nanoText.downloading : nanoText.download}
                 </button>
               </div>
             )}
@@ -1170,7 +1224,7 @@ export default function NanoBananaTool({
               {selectedTemplateImage ? (
                 <img
                   src={`${selectedTemplateImage}?v=20260508`}
-                  alt={selectedTemplate?.title || 'Sample image'}
+                  alt={selectedTemplate?.title || nanoText.sampleImage}
                   className="max-w-full max-h-[60vh] md:max-h-full object-contain rounded-xl ring-1 ring-slate-200/50"
                 />
               ) : (
@@ -1212,13 +1266,13 @@ export default function NanoBananaTool({
           <div className={`flex-1 overflow-auto p-2 md:p-8 flex flex-col ${rightMode === 'result' || rightMode === 'history' ? 'justify-start' : 'items-center justify-center'}`}>
             {rightMode === 'sample' && (
               <>
-                <h3 className="text-slate-700 font-semibold text-base uppercase tracking-wider mb-8">Sample image</h3>
+                <h3 className="text-slate-700 font-semibold text-base uppercase tracking-wider mb-8">{nanoText.sampleImage}</h3>
                 <div className="w-full flex-1 flex justify-center items-center min-h-0">
                   {isNanoBanana2CoupleMode ? (
                     selectedTemplateImage ? (
                       <img
                         src={`${selectedTemplateImage}?v=20260508`}
-                        alt={selectedTemplate?.title || 'Sample image'}
+                        alt={selectedTemplate?.title || nanoText.sampleImage}
                         className="w-full h-full rounded-xl object-contain ring-1 ring-slate-200/50"
                       />
                     ) : (
@@ -1257,7 +1311,7 @@ export default function NanoBananaTool({
               <div className="w-full space-y-6">
                 {/* Output Prompt */}
                 <div>
-                  <label className="block text-xs font-semibold text-slate-500 tracking-wide mb-2">Prompt</label>
+                  <label className="block text-xs font-semibold text-slate-500 tracking-wide mb-2">{nanoText.prompt}</label>
                   <div className="relative">
                     <textarea
                       value={currentResult.prompt}
@@ -1275,7 +1329,7 @@ export default function NanoBananaTool({
                         
                         try {
                           await navigator.clipboard.writeText(currentResult.prompt)
-                          showToast('Prompt copied to clipboard', 'success')
+                          showToast(nanoText.promptCopied, 'success')
                         } catch (err) {
                           console.error('Failed to copy:', err)
                           // 降级方案：使用传统方法
@@ -1287,16 +1341,16 @@ export default function NanoBananaTool({
                           textArea.select()
                           try {
                             document.execCommand('copy')
-                            showToast('Prompt copied to clipboard', 'success')
+                            showToast(nanoText.promptCopied, 'success')
                           } catch (fallbackErr) {
                             console.error('Fallback copy failed:', fallbackErr)
-                            showToast('Failed to copy prompt', 'error')
+                            showToast(nanoText.promptCopyFailed, 'error')
                           }
                           document.body.removeChild(textArea)
                         }
                       }}
                       className="absolute top-3 right-3 p-1.5 rounded-lg hover:bg-white transition-colors cursor-pointer z-10"
-                      title="Copy prompt"
+                      title={nanoText.copyPrompt}
                     >
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                         <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
@@ -1311,12 +1365,12 @@ export default function NanoBananaTool({
                   <div className="flex items-center gap-3">
                     <img 
                       src={currentResult.inputPreview} 
-                      alt="Input" 
+                      alt={nanoText.inputAlt} 
                       onClick={() => setPreviewImage(currentResult.inputPreview!)}
                       className="w-12 h-12 rounded-full object-cover ring-2 ring-[#C7D2FE] cursor-pointer hover:opacity-80 transition-opacity" 
                     />
                     <div className="flex-1">
-                      <p className="text-xs text-slate-500">Input image</p>
+                      <p className="text-xs text-slate-500">{nanoText.inputImage}</p>
                     </div>
                   </div>
                 )}
@@ -1348,14 +1402,14 @@ export default function NanoBananaTool({
                         : 'linear-gradient(135deg, #4F46E5 0%, #9333EA 100%)',
                     }}
                   >
-                    Recreate
+                    {nanoText.recreate}
                   </button>
                   <button
                     type="button"
                     onClick={() => handleDownload(currentResult.outputPreview, `generated-${currentResult.id}.png`)}
                     disabled={downloadingUrl === currentResult.outputPreview}
                     className="px-4 py-3 rounded-xl border border-[#C7D2FE] text-[#4F46E5] hover:bg-[#EEF2FF] transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
-                    title={downloadingUrl === currentResult.outputPreview ? 'Downloading...' : 'Download'}
+                    title={downloadingUrl === currentResult.outputPreview ? nanoText.downloading : nanoText.download}
                   >
                     {downloadingUrl === currentResult.outputPreview ? (
                       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="animate-spin">
@@ -1377,7 +1431,7 @@ export default function NanoBananaTool({
                       setRightMode('sample')
                     }}
                     className="px-4 py-3 rounded-xl border border-[#C7D2FE] text-[#4F46E5] hover:bg-[#EEF2FF] transition-colors"
-                    title="Delete"
+                    title={nanoText.delete}
                   >
                     <DeleteIcon size={20} />
                   </button>
@@ -1387,7 +1441,7 @@ export default function NanoBananaTool({
 
             {rightMode === 'history' && isNanoBanana2CoupleMode && (
               <div className="w-full max-w-[300px] mx-auto space-y-4">
-                <h3 className="text-slate-700 font-semibold text-base uppercase tracking-wider">History</h3>
+                <h3 className="text-slate-700 font-semibold text-base uppercase tracking-wider">{nanoText.history}</h3>
                 {history.length > 0 ? (
                   <div className="grid grid-cols-2 gap-3">
                     {history.map((item) => (
@@ -1406,21 +1460,21 @@ export default function NanoBananaTool({
                       >
                         <img
                           src={item.outputPreview}
-                          alt="History result"
+                          alt={nanoText.historyResultAlt}
                           className="w-full aspect-[4/3] object-cover"
                         />
                       </button>
                     ))}
                   </div>
                 ) : (
-                  <p className="text-slate-500 text-sm">No history yet. Generate an image to see it here.</p>
+                  <p className="text-slate-500 text-sm">{nanoText.noHistory}</p>
                 )}
               </div>
             )}
 
             {rightMode === 'history' && !isNanoBanana2CoupleMode && (
               <div className="w-full space-y-6">
-                <h3 className="text-slate-700 font-semibold text-base uppercase tracking-wider mb-6">History</h3>
+                <h3 className="text-slate-700 font-semibold text-base uppercase tracking-wider mb-6">{nanoText.history}</h3>
                 {/* Generating Status at Top */}
                 {isGenerating && (
                   <div className="p-5 rounded-2xl border border-[#E0E7FF] bg-white shadow-sm">
@@ -1431,7 +1485,7 @@ export default function NanoBananaTool({
                         <div className="w-3 h-3 rounded-full bg-[#4F46E5] animate-pulse" style={{ animationDelay: '0.4s' }} />
                         <div className="w-3 h-3 rounded-full bg-[#4F46E5] animate-pulse" style={{ animationDelay: '0.6s' }} />
                       </div>
-                      <p className="text-slate-500 font-medium text-sm">{`Generating... ${generatingSeconds}s`}</p>
+                      <p className="text-slate-500 font-medium text-sm">{formatNanoText(nanoText.generatingSeconds, { seconds: generatingSeconds })}</p>
                     </div>
                   </div>
                 )}
@@ -1440,7 +1494,7 @@ export default function NanoBananaTool({
                   <div key={item.id} className="space-y-4 p-5 rounded-2xl border border-[#E0E7FF] bg-white shadow-sm">
                     {/* Prompt */}
                     <div>
-                      <label className="block text-xs font-semibold text-slate-500 tracking-wide mb-2">Prompt</label>
+                      <label className="block text-xs font-semibold text-slate-500 tracking-wide mb-2">{nanoText.prompt}</label>
                       <div className="relative">
                         <textarea
                           value={item.prompt}
@@ -1458,7 +1512,7 @@ export default function NanoBananaTool({
                             
                             try {
                               await navigator.clipboard.writeText(item.prompt)
-                              showToast('Prompt copied to clipboard', 'success')
+                              showToast(nanoText.promptCopied, 'success')
                             } catch (err) {
                               console.error('Failed to copy:', err)
                               // 降级方案：使用传统方法
@@ -1470,16 +1524,16 @@ export default function NanoBananaTool({
                               textArea.select()
                               try {
                                 document.execCommand('copy')
-                                showToast('Prompt copied to clipboard', 'success')
+                                showToast(nanoText.promptCopied, 'success')
                               } catch (fallbackErr) {
                                 console.error('Fallback copy failed:', fallbackErr)
-                                showToast('Failed to copy prompt', 'error')
+                                showToast(nanoText.promptCopyFailed, 'error')
                               }
                               document.body.removeChild(textArea)
                             }
                           }}
                           className="absolute top-3 right-3 p-1.5 rounded-lg hover:bg-white transition-colors cursor-pointer z-10"
-                          title="Copy prompt"
+                          title={nanoText.copyPrompt}
                         >
                           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                             <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
@@ -1494,12 +1548,12 @@ export default function NanoBananaTool({
                       {item.inputPreview ? (
                         <img 
                           src={item.inputPreview} 
-                          alt="Input" 
+                          alt={nanoText.inputAlt} 
                           onClick={() => setPreviewImage(item.inputPreview!)}
                           className="w-12 h-12 rounded-full object-cover ring-2 ring-[#C7D2FE] cursor-pointer hover:opacity-80 transition-opacity" 
                         />
                       ) : (
-                        <div className="w-12 h-12 rounded-full bg-[#EEF2FF] flex items-center justify-center text-xs text-[#4F46E5]">Text</div>
+                        <div className="w-12 h-12 rounded-full bg-[#EEF2FF] flex items-center justify-center text-xs text-[#4F46E5]">{nanoText.textToImage}</div>
                       )}
                       <div className="flex flex-wrap gap-2 flex-1">
                         <span className="px-3 py-1.5 rounded-lg bg-[#EEF2FF] text-[#4F46E5] text-xs font-semibold">{formatTagValue(item.aspectRatio)}</span>
@@ -1512,7 +1566,7 @@ export default function NanoBananaTool({
                     <div className="w-full">
                       <img 
                         src={item.outputPreview} 
-                        alt="Generated" 
+                        alt={nanoText.generatedAlt} 
                         onClick={() => setPreviewImage(item.outputPreview)}
                         className="w-full rounded-xl object-cover cursor-pointer hover:opacity-90 transition-opacity border border-[#E0E7FF]" 
                       />
@@ -1541,14 +1595,14 @@ export default function NanoBananaTool({
                           background: 'linear-gradient(135deg, #4F46E5 0%, #9333EA 100%)',
                         }}
                       >
-                        Recreate
+                        {nanoText.recreate}
                       </button>
                       <button
                         type="button"
                         onClick={() => handleDownload(item.outputPreview, `generated-${item.id}.png`)}
                         disabled={downloadingUrl === item.outputPreview}
                         className="px-4 py-3 rounded-xl border border-[#C7D2FE] text-[#4F46E5] hover:bg-[#EEF2FF] transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
-                        title={downloadingUrl === item.outputPreview ? 'Downloading...' : 'Download'}
+                        title={downloadingUrl === item.outputPreview ? nanoText.downloading : nanoText.download}
                       >
                         {downloadingUrl === item.outputPreview ? (
                           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="animate-spin">
@@ -1573,7 +1627,7 @@ export default function NanoBananaTool({
                           }
                         }}
                         className="px-4 py-3 rounded-xl border border-[#C7D2FE] text-[#4F46E5] hover:bg-[#EEF2FF] transition-colors"
-                        title="Delete"
+                        title={nanoText.delete}
                       >
                         <DeleteIcon size={20} />
                       </button>
@@ -1584,7 +1638,7 @@ export default function NanoBananaTool({
             )}
 
             {rightMode === 'history' && history.length === 0 && !isGenerating && (
-              <p className="text-slate-500 text-sm">No history yet. Generate an image to see it here.</p>
+              <p className="text-slate-500 text-sm">{nanoText.noHistory}</p>
             )}
             
             {rightMode === 'history' && history.length === 0 && isGenerating && (
@@ -1597,7 +1651,7 @@ export default function NanoBananaTool({
                       <div className="w-3 h-3 rounded-full bg-[#4F46E5] animate-pulse" style={{ animationDelay: '0.4s' }} />
                       <div className="w-3 h-3 rounded-full bg-[#4F46E5] animate-pulse" style={{ animationDelay: '0.6s' }} />
                     </div>
-                    <p className="text-slate-500 font-medium text-sm">{`Generating... ${generatingSeconds}s`}</p>
+                    <p className="text-slate-500 font-medium text-sm">{formatNanoText(nanoText.generatingSeconds, { seconds: generatingSeconds })}</p>
                   </div>
                 </div>
               </div>
@@ -1616,7 +1670,7 @@ export default function NanoBananaTool({
           <div className="relative" onClick={(e) => e.stopPropagation()}>
             <img 
               src={previewImage} 
-              alt="Preview" 
+              alt={commonToolText?.gallery?.preview || 'Preview'} 
               className="max-w-[calc(100vw-16px)] max-h-[calc(100vh-16px)] md:max-w-[calc(100vw-48px)] md:max-h-[calc(100vh-48px)] w-auto h-auto object-contain rounded-lg cursor-default"
             />
             <button
@@ -1626,7 +1680,7 @@ export default function NanoBananaTool({
                 setPreviewImage(null)
               }}
               className="absolute top-2 right-2 md:top-6 md:right-6 w-10 h-10 rounded-full bg-white hover:bg-white flex items-center justify-center shadow-lg transition-colors z-10 cursor-pointer text-slate-600 [&_svg]:flex-shrink-0"
-              aria-label="Close"
+              aria-label={commonToolText?.actions?.close || 'Close'}
             >
               <CloseIcon size={20} />
             </button>

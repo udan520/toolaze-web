@@ -317,7 +317,7 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
                 text={
                   home?.sectionAiVideoSubtitle ??
                   home?.aiVideoIntro ??
-                  "Turn ideas into engaging videos in minutes with AI. Powered by advanced AI models, Toolaze's AI Video Generator helps you create eye-catching videos from text-to-video and image-to-video. No skills required!"
+                  ''
                 }
                 links={[{ term: 'AI Video Generator', href: '/model/seedance-2' }]}
               />
@@ -370,7 +370,7 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
                 text={
                   home?.sectionAiImageSubtitle ??
                   home?.aiImageIntro ??
-                  "Generate high-quality images instantly with AI. From artistic illustrations to realistic visuals, Toolaze's AI Image Generator transforms your ideas into stunning images in seconds — fast, flexible, and effortless."
+                  ''
                 }
                 links={[{ term: 'AI Image Generator', href: '/model/nano-banana-pro' }]}
               />

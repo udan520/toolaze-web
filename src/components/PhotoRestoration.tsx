@@ -2,6 +2,7 @@
 
 import { useCallback, useRef, useState } from 'react'
 import { getImageUploadUrl } from '@/lib/upload-url'
+import { useCommonTranslations } from '@/lib/use-common-translations'
 
 const MAX_FILE_SIZE = 30 * 1024 * 1024
 const DAILY_LIMIT_KEY = 'photo_restoration_last_used_date'
@@ -14,6 +15,29 @@ function todayKey() {
 }
 
 export default function PhotoRestoration() {
+  const commonTranslations = useCommonTranslations()
+  const text = commonTranslations?.common?.photoRestorationTool || {
+    invalidImage: 'Please upload a valid image file.',
+    tooLarge: 'Image size must be under 30MB.',
+    dailyLimit: 'Daily free limit reached. Please come back tomorrow!',
+    uploadFailed: 'Image upload failed.',
+    createFailed: 'Failed to create restoration task.',
+    restorationFailed: 'Restoration failed.',
+    timeout: 'Restoration timeout. Please try again.',
+    uploadTitle: 'Drag and drop image here',
+    uploadFormats: 'JPG, JPEG, PNG • Max 30MB',
+    uploadButton: 'Upload Image',
+    generating: 'Generating...',
+    generate: 'Generate',
+    regenerate: 'Regenerate',
+    download: 'Download',
+    uploadPreviewAlt: 'Uploaded preview',
+    removeUploadedImage: 'Remove uploaded image',
+    resultAlt: 'Restored photo result',
+    oldExampleAlt: 'Old black and white damaged photo',
+    restoredExampleAlt: 'Restored photo result example',
+    previewAlt: 'Preview',
+  }
   const [file, setFile] = useState<File | null>(null)
   const [previewUrl, setPreviewUrl] = useState<string | null>(null)
   const [resultUrl, setResultUrl] = useState<string | null>(null)
@@ -47,23 +71,23 @@ export default function PhotoRestoration() {
 
   const handlePickFile = useCallback((nextFile: File) => {
     if (!nextFile.type.startsWith('image/')) {
-      setError('Please upload a valid image file.')
+      setError(text.invalidImage)
       return
     }
     if (nextFile.size > MAX_FILE_SIZE) {
-      setError('Image size must be under 30MB.')
+      setError(text.tooLarge)
       return
     }
     setError(null)
     setFile(nextFile)
     if (previewUrl) URL.revokeObjectURL(previewUrl)
     setPreviewUrl(URL.createObjectURL(nextFile))
-  }, [previewUrl])
+  }, [previewUrl, text.invalidImage, text.tooLarge])
 
   const handleGenerate = useCallback(async () => {
     if (!file || isProcessing) return
     if (!checkDailyLimit()) {
-      setError('Daily free limit reached. Please come back tomorrow!')
+      setError(text.dailyLimit)
       return
     }
 
@@ -77,7 +101,7 @@ export default function PhotoRestoration() {
       const uploadRes = await fetch(getImageUploadUrl(), { method: 'POST', body: uploadForm })
       const uploadData = await uploadRes.json().catch(() => ({}))
       if (!uploadRes.ok || !uploadData?.url) {
-        throw new Error(uploadData?.error || 'Image upload failed.')
+        throw new Error(uploadData?.error || text.uploadFailed)
       }
 
       const formData = new FormData()
@@ -91,7 +115,7 @@ export default function PhotoRestoration() {
       const createRes = await fetch('/api/image-to-image', { method: 'POST', body: formData })
       const createData = await createRes.json().catch(() => ({}))
       if (!createRes.ok || !createData?.taskId) {
-        throw new Error(createData?.error || 'Failed to create restoration task.')
+        throw new Error(createData?.error || text.createFailed)
       }
 
       let outputUrl = ''
@@ -107,13 +131,13 @@ export default function PhotoRestoration() {
           break
         }
         if (statusData?.status === 'FAILED') {
-          throw new Error(statusData?.message || 'Restoration failed.')
+          throw new Error(statusData?.message || text.restorationFailed)
         }
         await new Promise((resolve) => setTimeout(resolve, 3000))
       }
 
       if (!outputUrl) {
-        throw new Error('Restoration timeout. Please try again.')
+        throw new Error(text.timeout)
       }
 
       try {
@@ -135,7 +159,7 @@ export default function PhotoRestoration() {
     } finally {
       setIsProcessing(false)
     }
-  }, [file, isProcessing])
+  }, [file, isProcessing, text.createFailed, text.dailyLimit, text.restorationFailed, text.timeout, text.uploadFailed])
 
   const handleDrop = useCallback((e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault()
@@ -188,12 +212,12 @@ export default function PhotoRestoration() {
             >
               {previewUrl ? (
                 <div className="relative">
-                  <img src={previewUrl} alt="Uploaded preview" className="w-full h-44 object-cover rounded-lg border border-slate-200" />
+                  <img src={previewUrl} alt={text.uploadPreviewAlt} className="w-full h-44 object-cover rounded-lg border border-slate-200" />
                   <button
                     type="button"
                     onClick={clearUploadedImage}
                     className="absolute top-2 right-2 h-8 w-8 rounded-full bg-white/95 text-slate-600 border border-slate-200 hover:bg-slate-50"
-                    aria-label="Remove uploaded image"
+                    aria-label={text.removeUploadedImage}
                   >
                     ✕
                   </button>
@@ -207,14 +231,14 @@ export default function PhotoRestoration() {
                       <rect x="4" y="16" width="16" height="4" rx="2" stroke="currentColor" strokeWidth="2" />
                     </svg>
                   </div>
-                  <p className="text-sm text-slate-600 mb-2 leading-relaxed font-medium">Drag and drop Image here</p>
-                  <p className="text-xs text-slate-400 mb-4">JPG, JPEG, PNG • Max 30MB</p>
+                  <p className="text-sm text-slate-600 mb-2 leading-relaxed font-medium">{text.uploadTitle}</p>
+                  <p className="text-xs text-slate-400 mb-4">{text.uploadFormats}</p>
                   <button
                     type="button"
                     onClick={() => fileInputRef.current?.click()}
                     className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white text-sm font-semibold px-6 py-2 transition-colors"
                   >
-                    Upload Image
+                    {text.uploadButton}
                   </button>
                 </>
               )}
@@ -237,7 +261,7 @@ export default function PhotoRestoration() {
               className="w-full mt-5 py-3.5 rounded-xl font-bold text-sm text-white shadow-md disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center text-center"
               style={{ background: 'linear-gradient(135deg, #4F46E5 0%, #9333EA 100%)' }}
             >
-              {isProcessing ? 'Generating...' : 'Generate'}
+              {isProcessing ? text.generating : text.generate}
             </button>
           </div>
 
@@ -250,17 +274,17 @@ export default function PhotoRestoration() {
                   onClick={() => setPreviewImage(resultUrl)}
                   className="absolute inset-0 z-10"
                 >
-                  <img src={resultUrl} alt="Restored photo result" className="w-full h-full object-contain bg-slate-100" />
+                  <img src={resultUrl} alt={text.resultAlt} className="w-full h-full object-contain bg-slate-100" />
                 </button>
               ) : (
                 <>
                   <div className="absolute inset-y-0 left-0 w-1/2">
-                    <img src={DEMO_IMAGE_URL} alt="Old black and white damaged photo" className="w-full h-full object-cover grayscale contrast-125 brightness-90" />
+                    <img src={DEMO_IMAGE_URL} alt={text.oldExampleAlt} className="w-full h-full object-cover grayscale contrast-125 brightness-90" />
                     <div className="absolute inset-0 opacity-35 bg-[repeating-linear-gradient(115deg,transparent,transparent_16px,rgba(255,255,255,0.75)_17px,rgba(255,255,255,0.75)_18px)]" />
                     <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_20%_30%,rgba(0,0,0,0.45)_0,rgba(0,0,0,0)_45%),radial-gradient(circle_at_78%_70%,rgba(0,0,0,0.4)_0,rgba(0,0,0,0)_40%)]" />
                   </div>
                   <div className="absolute inset-y-0 right-0 w-1/2">
-                    <img src={DEMO_IMAGE_URL} alt="Restored photo result example" className="w-full h-full object-cover saturate-110 contrast-110" />
+                    <img src={DEMO_IMAGE_URL} alt={text.restoredExampleAlt} className="w-full h-full object-cover saturate-110 contrast-110" />
                   </div>
                   <div className="absolute inset-y-0 left-1/2 w-[2px] -ml-[1px] bg-white/80" />
                 </>
@@ -269,7 +293,7 @@ export default function PhotoRestoration() {
                 <div className="absolute inset-0 z-20 flex items-center justify-center bg-slate-900/40 backdrop-blur-[1px]">
                   <div className="rounded-xl bg-white/95 border border-indigo-100 px-5 py-3 shadow-md flex items-center gap-2">
                     <span className="h-2.5 w-2.5 rounded-full bg-indigo-600 animate-pulse" />
-                    <span className="text-sm font-semibold text-slate-700">Generating...</span>
+                    <span className="text-sm font-semibold text-slate-700">{text.generating}</span>
                   </div>
                 </div>
               )}
@@ -282,14 +306,14 @@ export default function PhotoRestoration() {
                   disabled={isProcessing || !file}
                   className="px-5 py-2.5 rounded-lg border border-indigo-200 text-indigo-600 font-semibold text-sm hover:bg-indigo-50 disabled:opacity-50"
                 >
-                  Regenerate
+                  {text.regenerate}
                 </button>
                 <button
                   type="button"
                   onClick={handleDownload}
                   className="px-5 py-2.5 rounded-lg bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold text-sm"
                 >
-                  Download
+                  {text.download}
                 </button>
               </div>
             )}
@@ -307,7 +331,7 @@ export default function PhotoRestoration() {
         >
           <img
             src={previewImage}
-            alt="Preview"
+            alt={text.previewAlt}
             className="max-w-[92vw] max-h-[92vh] rounded-xl shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           />

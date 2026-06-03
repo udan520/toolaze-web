@@ -1,140 +1,140 @@
 {
   "metadata": {
-    "title": "How to Remove Watermark from Photo Online (Free & Fast) - Toolaze",
-    "description": "How to remove watermark from photo? 1. Upload photo 2. AI removes watermark 3. Download photo. Free online watermark remover. Remove watermarks with AI, secure & private.",
+    "title": "온라인에서 사진 워터마크 제거하는 방법 (무료 및 신속) - Toolaze",
+    "description": "사진에서 워터마크를 제거하는 방법은 무엇인가요? 1. 사진 업로드 2. AI가 워터마크 제거 3. 사진 다운로드. 무료 온라인 워터마크 제거기. AI로 안전하고 비공개로 워터마크를 제거하세요.",
     "published": true
   },
   "hero": {
-    "h1": "How to Remove <span class=\"text-gradient\">Watermark</span> from Photo",
-    "desc": "Remove watermarks from photos online with Toolaze's AI-powered watermark remover. Simply upload your photo and let our AI do the rest. No sign-up required."
+    "h1": "사진에서 <span class=\"text-gradient\">워터마크</span> 제거하는 방법",
+    "desc": "Toolaze의 AI 기반 워터마크 제거기를 사용하여 온라인에서 사진의 워터마크를 제거하세요. 사진을 업로드하기만 하면 AI가 나머지를 처리합니다. 회원 가입이 필요하지 않습니다."
   },
   "howToUse": {
-    "title": "How to Remove Watermark from Photo",
+    "title": "사진에서 워터마크 제거하는 방법",
     "steps": [
       {
-        "title": "Upload Your Photo",
-        "desc": "Drag and drop your photo into the upload area, or click to select a file from your computer."
+        "title": "사진 업로드",
+        "desc": "사진을 업로드 영역으로 드래그 앤 드롭하거나, 클릭하여 컴퓨터에서 파일을 선택하세요."
       },
       {
-        "title": "AI Removes Watermark",
-        "desc": "Our AI algorithm automatically detects and removes the watermark from your photo."
+        "title": "AI 워터마크 제거",
+        "desc": "AI 알고리즘이 사진에서 워터마크를 자동으로 감지하고 제거합니다."
       },
       {
-        "title": "Download Your Photo",
-        "desc": "Once the watermark is removed, preview the result and download your watermark-free photo."
+        "title": "사진 다운로드",
+        "desc": "워터마크가 제거되면 결과를 미리 보고 워터마크가 없는 사진을 다운로드하세요."
       }
     ]
   },
   "modelIntro": {
-    "title": "AI-Powered Watermark Removal",
+    "title": "AI 기반 워터마크 제거",
     "description": [
-      "Toolaze's Watermark Remover utilizes advanced AI image editing techniques to seamlessly remove watermarks from your photos. Our AI model intelligently reconstructs the underlying image, ensuring minimal quality loss and natural-looking results.",
-      "The AI algorithm is trained to handle various types of watermarks, including text, logos, and patterns. It analyzes the surrounding pixels to fill in the areas where the watermark was located, creating a clean and watermark-free image."
+      "Toolaze의 워터마크 제거기는 고급 AI 이미지 편집 기술을 활용하여 사진에서 워터마크를 원활하게 제거합니다. 저희 AI 모델은 원본 이미지를 지능적으로 재구성하여 화질 손실을 최소화하고 자연스러운 결과를 보장합니다.",
+      "AI 알고리즘은 텍스트, 로고, 패턴을 포함한 다양한 유형의 워터마크를 처리하도록 학습되었습니다. 워터마크가 있던 영역을 채우기 위해 주변 픽셀을 분석하여 깨끗하고 워터마크가 없는 이미지를 만듭니다."
     ],
-    "modelName": "AI Watermark Remover",
-    "modelType": "AI Image Editing",
+    "modelName": "AI 워터마크 제거기",
+    "modelType": "AI 이미지 편집",
     "featureCards": [
       {
-        "title": "Intelligent Removal",
-        "content": "Our AI algorithms intelligently detect and remove watermarks, logos, and unwanted objects from your photos, leaving behind a clean and natural-looking result."
+        "title": "지능형 제거",
+        "content": "저희 AI 알고리즘은 사진에서 워터마크, 로고 및 원치 않는 개체를 지능적으로 감지하고 제거하여 깨끗하고 자연스러운 결과를 남깁니다."
       },
       {
-        "title": "High-Quality Output",
-        "content": "We ensure minimal quality loss during the watermark removal process, preserving the details and clarity of your original image."
+        "title": "고품질 출력",
+        "content": "워터마크 제거 과정에서 화질 손실을 최소화하여 원본 이미지의 디테일과 선명도를 보존합니다."
       },
       {
-        "title": "Fast Processing",
-        "content": "Remove watermarks from your photos quickly and efficiently with our AI-powered tool. Get your results in seconds."
+        "title": "빠른 처리",
+        "content": "AI 기반 도구를 사용하여 사진에서 워터마크를 빠르고 효율적으로 제거하세요. 몇 초 만에 결과를 얻을 수 있습니다."
       }
     ]
   },
   "features": {
-    "title": "Key Features",
+    "title": "주요 기능",
     "items": [
       {
         "icon": "🖼️",
         "iconType": "ai",
-        "title": "AI-Powered Removal",
-        "desc": "Our AI watermark remover intelligently detects and removes watermarks from your photos, providing a seamless and natural-looking result."
+        "title": "AI 기반 제거",
+        "desc": "당사의 AI 워터마크 제거기는 사진에서 워터마크를 지능적으로 감지하고 제거하여 매끄럽고 자연스러운 결과를 제공합니다."
       },
       {
         "icon": "✨",
         "iconType": "ai",
-        "title": "Advanced Image Editing",
-        "desc": "Utilizing advanced AI image editing techniques, Toolaze reconstructs the underlying image, minimizing quality loss and preserving details."
+        "title": "고급 이미지 편집",
+        "desc": "고급 AI 이미지 편집 기술을 활용하여 Toolaze는 기본 이미지를 재구성함으로써 품질 손실을 최소화하고 세부 사항을 보존합니다."
       },
       {
         "icon": "🔒",
         "iconType": "ai",
-        "title": "Secure Processing",
-        "desc": "Your images are processed securely on our servers and are not stored permanently. We prioritize your privacy and data security."
+        "title": "안전한 처리",
+        "desc": "귀하의 이미지는 당사 서버에서 안전하게 처리되며 영구적으로 저장되지 않습니다. 당사는 귀하의 개인정보 보호와 데이터 보안을 최우선으로 생각합니다."
       },
       {
         "icon": "🚀",
         "iconType": "ai",
-        "title": "Fast Watermark Removal",
-        "desc": "Remove watermarks from your photos in seconds with our efficient AI algorithm. Get your watermark-free images quickly."
+        "title": "빠른 워터마크 제거",
+        "desc": "효율적인 AI 알고리즘을 통해 몇 초 만에 사진에서 워터마크를 제거하세요. 워터마크 없는 이미지를 빠르게 얻을 수 있습니다."
       },
       {
         "icon": "✔️",
         "iconType": "ai",
-        "title": "Easy to Use",
-        "desc": "Simply upload your photo and let our AI do the rest. No technical skills or software installations are required to remove watermarks."
+        "title": "사용하기 쉬움",
+        "desc": "사진을 업로드하기만 하면 나머지는 AI가 알아서 처리합니다. 워터마크를 제거하는 데 별도의 기술적 능력이나 소프트웨어 설치가 필요하지 않습니다."
       },
       {
         "icon": "🌐",
         "iconType": "ai",
-        "title": "Online Watermark Remover",
-        "desc": "Access our watermark remover from any device with an internet connection. Remove watermarks from your photos online, anytime, anywhere."
+        "title": "온라인 워터마크 제거기",
+        "desc": "인터넷에 연결된 모든 기기에서 당사의 워터마크 제거기에 액세스하세요. 언제 어디서나 온라인으로 사진에서 워터마크를 제거할 수 있습니다."
       }
     ]
   },
   "scenes": [
     {
       "icon": "🛒",
-      "title": "Remove Watermarks from Product Photos",
-      "desc": "Clean up your product photos for e-commerce listings by removing distracting watermarks. Enhance your product presentation and increase sales with watermark-free images."
+      "title": "제품 사진에서 워터마크 제거",
+      "desc": "방해가 되는 워터마크를 제거하여 전자상거래 목록용 제품 사진을 깔끔하게 정리하세요. 워터마크 없는 이미지로 제품 프레젠테이션을 향상시키고 매출을 높이세요."
     },
     {
       "icon": "📱",
-      "title": "Remove Watermarks from Social Media Images",
-      "desc": "Easily remove watermarks from downloaded social media images for personal use or creative projects. Share watermark-free content with your friends and followers."
+      "title": "소셜 미디어 이미지에서 워터마크 제거",
+      "desc": "개인적인 용도나 창의적인 프로젝트를 위해 다운로드한 소셜 미디어 이미지에서 워터마크를 쉽게 제거하세요. 친구 및 팔로워와 워터마크 없는 콘텐츠를 공유하세요."
     },
     {
       "icon": "📸",
-      "title": "Remove Watermarks from Photography",
-      "desc": "Quickly remove watermarks from your photography to showcase your work without distractions. Present your images in their original, unbranded form."
+      "title": "사진에서 워터마크 제거",
+      "desc": "사진에서 워터마크를 빠르게 제거하여 방해 요소 없이 작품을 선보이세요. 이미지를 브랜드가 없는 원래 형태로 제시하세요."
     }
   ],
   "rating": {
-    "title": "Trusted for Watermark Removal",
-    "rating": "4.9/5 FROM 10K+ USERS",
-    "text": "\"Great tool for removing watermarks quickly and easily!\" - Join thousands of satisfied users who trust Toolaze for fast, secure, and free watermark removal. No sign-up required, images not stored permanently."
+    "title": "신뢰할 수 있는 워터마크 제거",
+    "rating": "1만 명의 사용자가 평가한 4.9/5",
+    "text": "\"워터마크를 빠르고 쉽게 제거할 수 있는 훌륭한 도구!\" - 빠르고 안전하며 무료인 워터마크 제거를 위해 Toolaze를 신뢰하는 수천 명의 만족스러운 사용자와 함께하세요. 가입이 필요 없으며 이미지가 영구적으로 저장되지 않습니다."
   },
   "faq": [
     {
-      "q": "How does the AI watermark remover work?",
-      "a": "Our AI watermark remover uses advanced image editing techniques to intelligently detect and remove watermarks from your photos. It analyzes the surrounding pixels to reconstruct the underlying image, ensuring minimal quality loss."
+      "q": "AI 워터마크 제거기는 어떻게 작동하나요?",
+      "a": "당사의 AI 워터마크 제거기는 고급 이미지 편집 기술을 사용하여 사진에서 워터마크를 지능적으로 감지하고 제거합니다. 주변 픽셀을 분석하여 기본 이미지를 재구성함으로써 최소한의 품질 손실을 보장합니다."
     },
     {
-      "q": "What image formats are supported?",
-      "a": "Our watermark remover supports JPG, PNG, WebP, and other common image formats. The maximum file size is 30MB."
+      "q": "어떤 이미지 형식이 지원되나요?",
+      "a": "당사의 워터마크 제거기는 JPG, PNG, WebP 및 기타 일반적인 이미지 형식을 지원합니다. 최대 파일 크기는 30MB입니다."
     },
     {
-      "q": "Is it really a free watermark remover?",
-      "a": "Yes, Toolaze's watermark remover is completely free to use. There are no hidden fees or subscriptions required."
+      "q": "정말 무료 워터마크 제거기인가요?",
+      "a": "네, Toolaze의 워터마크 제거기는 완전히 무료로 사용할 수 있습니다. 숨겨진 수수료나 구독료가 전혀 없습니다."
     },
     {
-      "q": "Is my data secure?",
-      "a": "Yes, your images are processed securely on our servers and are not stored permanently. We prioritize your privacy and data security."
+      "q": "내 데이터는 안전한가요?",
+      "a": "네, 귀하의 이미지는 당사 서버에서 안전하게 처리되며 영구적으로 저장되지 않습니다. 당사는 귀하의 개인정보 보호와 데이터 보안을 최우선으로 생각합니다."
     },
     {
-      "q": "Can I remove watermarks from photos in bulk?",
-      "a": "Currently, our watermark remover supports single image processing only. Batch processing is not supported at this time."
+      "q": "사진에서 워터마크를 일괄 제거할 수 있나요?",
+      "a": "현재 당사의 워터마크 제거기는 단일 이미지 처리만 지원합니다. 일괄 처리는 현재 지원되지 않습니다."
     },
     {
-      "q": "Can I remove logos from images?",
-      "a": "Yes, our AI watermark remover can remove logos from images. It is designed to handle various types of watermarks, including text, logos, and patterns. For AI image generation, you can also use our <a href=\"/model/nano-banana-pro\">AI image generator</a>."
+      "q": "이미지에서 로고를 제거할 수 있나요?",
+      "a": "네, 당사의 AI 워터마크 제거기는 이미지에서 로고를 제거할 수 있습니다. 텍스트, 로고, 패턴을 포함한 다양한 유형의 워터마크를 처리하도록 설계되었습니다. AI 이미지 생성을 위해 당사의 <a href=\"/model/nano-banana-pro\">AI 이미지 생성기</a>를 사용할 수도 있습니다."
     }
   ],
   "useComponents": [
@@ -156,6 +156,6 @@
     "rating",
     "faq"
   ],
-  "scenesTitle": "Use Cases",
-  "faqTitle": "Frequently Asked Questions"
+  "scenesTitle": "사용 사례",
+  "faqTitle": "자주 묻는 질문"
 }

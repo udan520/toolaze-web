@@ -154,46 +154,12 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
     const t = await loadCommonTranslations(locale)
     const breadcrumbT = t?.breadcrumb || { home: 'Home', fontGenerator: 'Font Generator' }
 
-    // 默认内容（如果没有提供，使用翻译内容）
+    const fallbackPageTitle = content.hero?.h1 ? extractSimpleTitle(content.hero.h1) : tool
+
+    // 默认内容：避免在非英语页面缺字段时暴露英文兜底文案。
     const getDefaultIntro = () => {
-      if (tool === 'font-generator') {
-        return {
-          title: "Why Use Toolaze Font Generator?",
-          desc: "A font generator is an online tool that transforms plain text into styled text using Unicode characters. It allows you to create beautiful, distinctive text styles without installing fonts or using design software."
-        }
-      }
-      if (tool === 'image-compressor' || tool === 'image-compression') {
-        return {
-          title: "Why Use Toolaze Image Compressor?",
-          desc: "Traditional image compressors are slow, limit file counts, and often compromise quality. Toolaze compresses up to 100 images simultaneously with precise size control, maintaining visual quality while dramatically reducing file sizes."
-        }
-      }
-      if (tool === 'image-converter' || tool === 'image-conversion') {
-        return {
-          title: "Why Use Toolaze Image Converter?",
-          desc: "Convert images between JPG, PNG, and WebP formats instantly. Our browser-based converter processes images locally, ensuring complete privacy and fast conversion."
-        }
-      }
-      if (tool === 'emoji-copy-and-paste') {
-        return {
-          title: "Why Use Toolaze Emoji Copy & Paste?",
-          desc: "Copy and paste emojis online for free. Browse by category, search by keyword, pick skin tone, and copy with one click. No sign-up required."
-        }
-      }
-      if (tool === 'seedance-2') {
-        return {
-          title: "Why Choose Seedance 2.0 AI Video Generator?",
-          desc: "Seedance 2.0 is ByteDance's next-generation AI video model with unified multimodal architecture. Create 1080p videos from text, images, video, and audio inputs."
-        }
-      }
-      if (tool === 'ai-couple-photo-maker') {
-        return {
-          title: "Why Use Toolaze AI Couple Photo Maker?",
-          desc: "Most image tools need complex prompts to get romantic, high-quality couple results. Toolaze simplifies this flow with scene-first templates and fixed generation settings."
-        }
-      }
       return {
-        title: `Why Use Toolaze ${tool}?`,
+        title: fallbackPageTitle,
         desc: ""
       }
     }
@@ -210,13 +176,13 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
 
     const scenariosData = content.scenes || []
 
-    const comparisonData = content.comparison ? {
-      toolaze: content.comparison.toolazeFeatures || content.comparison.toolaze || "Unlimited text length, Multiple font styles, Instant preview, Real-time generation, 100% local processing, No uploads, Free",
-      others: content.comparison.othersFeatures || content.comparison.others || "Character limits, Limited styles, Slow processing, Server uploads required, Cloud queues, Privacy concerns, Paid upgrades"
+    const comparisonData = content.comparison && (content.comparison.toolazeFeatures || content.comparison.toolaze || content.comparison.othersFeatures || content.comparison.others) ? {
+      toolaze: content.comparison.toolazeFeatures || content.comparison.toolaze || '',
+      others: content.comparison.othersFeatures || content.comparison.others || ''
     } : null
 
     // 构建面包屑导航
-    const pageTitle = content.hero?.h1 ? extractSimpleTitle(content.hero.h1) : 'Font Generator'
+    const pageTitle = fallbackPageTitle
     const breadcrumbItems = tool === 'watermark-remover'
       ? [
           { label: breadcrumbT.home, href: '/' },
@@ -377,7 +343,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
     }
 
     // 生成 JSON-LD HowTo Schema
-    const howToTitle = content.howToUse?.title || `How to ${content.hero?.h1 ? extractSimpleTitle(content.hero.h1) : 'Use Tool'}`
+    const howToTitle = content.howToUse?.title || fallbackPageTitle
     const howToSteps = content.howToUse?.steps || howToUseSteps
     const jsonLdSchema = generateHowToSchema(howToTitle, howToSteps)
 

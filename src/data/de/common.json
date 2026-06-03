@@ -208,6 +208,8 @@
     "termsOfService": "Nutzungsbedingungen",
     "contact": "Kontakt",
     "language": "Sprache",
+    "footerNavigation": "Footer-Navigation",
+    "noToolsAvailable": "Keine Tools verfügbar",
     "copyright": "© {year} Toolaze Lab. Alle Rechte vorbehalten.",
     "tagline": "Kostenlose Online-Tools • Keine Registrierung erforderlich • 100% Privat"
   },
@@ -219,7 +221,9 @@
     "fontGenerator": "Schriftgenerator",
     "aboutUs": "Über uns",
     "privacyPolicy": "Datenschutzrichtlinie",
-    "termsOfService": "Nutzungsbedingungen"
+    "termsOfService": "Nutzungsbedingungen",
+    "emojiCopyAndPaste": "Emoji kopieren & einfügen",
+    "watermarkRemover": "Wasserzeichen-Entferner"
   },
   "about": {
     "metadata": {
@@ -287,6 +291,42 @@
         "disney": "Disney",
         "bubble": "Blase",
         "starWars": "Star Wars"
+      },
+      "allFonts": "Alle Schriftarten",
+      "copied": "Kopiert!",
+      "copy": "Kopieren",
+      "defaultText": "Toolaze Schriftgenerator 123",
+      "fontTerms": {
+        "Bold": "Fett",
+        "Circled": "Eingekreist",
+        "Cursive": "Kursivschrift",
+        "Cyrillic Style": "Kyrillischer Stil",
+        "Fancy": "Dekorativ",
+        "Fraktur": "Fraktur",
+        "Fullwidth": "Vollbreite",
+        "Gothic": "Gotisch",
+        "Greek Style": "Griechischer Stil",
+        "Italic": "Kursiv",
+        "Latin Extended": "Latein erweitert",
+        "Latin Extended-B": "Latein erweitert-B",
+        "Monospace": "Monospace",
+        "Negative Circled": "Negativ eingekreist",
+        "Negative Squared": "Negativ quadratisch",
+        "Parenthesized": "In Klammern",
+        "Regional Indicator": "Regionale Indikatoren",
+        "Sans Serif": "Sans Serif",
+        "Script": "Schreibschrift",
+        "Serif": "Serif",
+        "Small Caps": "Kapitälchen",
+        "Squared": "Quadratisch",
+        "Subscript": "Tiefgestellt",
+        "Superscript": "Hochgestellt"
+      },
+      "placeholder": "Text eingeben, um loszulegen...",
+      "trustBar": {
+        "instantPreview": "Sofortige Vorschau",
+        "noServerLogs": "Keine Serverprotokolle",
+        "private": "100 % privat"
       }
     },
     "tool": {
@@ -316,13 +356,25 @@
         "retrySuccessful": "Wiederholung erfolgreich:",
         "retryTimeout": "Wiederholungs-Timeout:",
         "retryFailed": "Wiederholung fehlgeschlagen:",
-        "listCleared": "Liste gelöscht"
+        "listCleared": "Liste gelöscht",
+        "sharedSuccessfully": "Erfolgreich geteilt",
+        "imageRemoved": "Bild entfernt",
+        "filesLoadedFromHomepage": "{count} Datei(en) von der Startseite geladen",
+        "heicWebAssemblyRequired": "Die HEIC-Konvertierung benötigt WebAssembly-Unterstützung. Ihr Browser unterstützt dies möglicherweise nicht.",
+        "unsupportedFormat": "Nicht unterstütztes Format:",
+        "heicBrowserOnly": "HEIC-Konvertierung ist nur im Browser verfügbar",
+        "invalidConversionResult": "Ungültiges Konvertierungsergebnis"
       },
       "gallery": {
         "title": "Galerie-Vorschau",
         "added": "Hinzugefügt:",
         "original": "Original:",
-        "new": "Neu:"
+        "new": "Neu:",
+        "preview": "Vorschau"
+      },
+      "actions": {
+        "close": "Schließen",
+        "delete": "Löschen"
       },
       "status": {
         "waiting": "Warten",
@@ -354,6 +406,156 @@
     "viewAllTools": {
       "related": "Alle Verwandten Tools Anzeigen",
       "all": "Alle Tools Anzeigen"
+    },
+    "modelPlaceholders": {
+      "comingSoon": "Demnächst verfügbar",
+      "klingTagline": "4K • 6-Shot • Mehrsprachiges Audio",
+      "klingDescription": "Der Kling 3.0 KI-Videogenerator wird hier bald verfügbar sein.",
+      "nanoBanana2Tagline": "Pro-Qualität • Blitzschnell • 4K",
+      "nanoBanana2Description": "Der Nano Banana 2 KI-Bildgenerator wird hier bald verfügbar sein.",
+      "seedanceDescription": "Der Seedance 2.0 KI-Videogenerator wird hier bald verfügbar sein.",
+      "native4k": "🎥 Natives 4K",
+      "multilingualAudio": "🔊 Mehrsprachiges Audio",
+      "flashSpeed": "⚡ Blitzschnell",
+      "quality4k": "🎨 4K-Qualität",
+      "characterConsistency": "👥 5-Charakter-Konsistenz",
+      "fastGeneration": "⚡ Schnelle Generierung",
+      "quality1080p": "🎬 1080p-Qualität"
+    },
+    "specs": {
+      "title": "Technische Spezifikationen",
+      "engine": "Engine",
+      "capacity": "Kapazität",
+      "limit": "Limit",
+      "logic": "Logik",
+      "privacy": "Datenschutz",
+      "batch": "Batch",
+      "formats": "Formate",
+      "output": "Ausgabe"
+    },
+    "aiImageModels": {
+      "moreTools": "Weitere KI-Bildmodelle"
+    },
+    "aiVideoModels": {
+      "moreTools": "Weitere KI-Videomodelle"
+    },
+    "allFontGeneratorTools": "Alle Schriftgenerator-Tools",
+    "allFontGeneratorToolsDesc": "Durchsuche alle verfügbaren Schriftgenerator-Tools. Erstelle kursive, elegante, fette, kursive, gotische, Tattoo- und weitere Schriftstile.",
+    "emojiCopyAndPaste": {
+      "moreTools": "Mehr Emoji Copy & Paste"
+    },
+    "imageCompressor": {
+      "moreTools": "Weitere Bildkomprimierungs-Tools"
+    },
+    "imageConverter": {
+      "moreTools": "Weitere Bildkonverter-Tools"
+    },
+    "nanoBananaPro": {
+      "moreTools": "Weitere kostenlose KI-Tools entdecken"
+    },
+    "primaryFontGeneratorToolsDesc": "Wichtige Schriftgenerator-Tools für allgemeine Anwendungsfälle.",
+    "seedance2": {
+      "moreTools": "Weitere Seedance 2.0 Tools"
+    },
+    "specializedFontGeneratorToolsDesc": "Spezialisierte Schriftgenerator-Tools für bestimmte Plattformen und Anwendungsfälle.",
+    "watermarkRemoverTool": {
+      "uploadTitle": "Bild hier klicken oder hineinziehen",
+      "uploadFormats": "JPG, PNG, WebP (max. 30 MB). Unter 2 MB oder 1280 px empfohlen für schnellere Verarbeitung.",
+      "uploadNew": "Neu hochladen",
+      "generating": "Wird generiert...",
+      "regenerate": "Erneut generieren",
+      "download": "Herunterladen",
+      "downloading": "Wird heruntergeladen...",
+      "compareTitle": "Gedrückt halten, um mit dem Original zu vergleichen",
+      "compareAria": "Mit Original vergleichen",
+      "back": "Zurück",
+      "originalAlt": "Original",
+      "resultAlt": "Ergebnis",
+      "invalidImage": "Bitte wähle eine Bilddatei aus (JPG, PNG, WebP usw.)",
+      "tooLarge": "Das Bild muss kleiner als 30 MB sein",
+      "success": "Wasserzeichen erfolgreich entfernt",
+      "downloadStarted": "Download gestartet",
+      "downloadFailed": "Download fehlgeschlagen",
+      "requestFailed": "Anfrage fehlgeschlagen: {status}",
+      "noImageUrl": "Keine Bild-URL in der Antwort"
+    },
+    "photoRestorationTool": {
+      "invalidImage": "Bitte lade eine gültige Bilddatei hoch.",
+      "tooLarge": "Das Bild muss kleiner als 30 MB sein.",
+      "dailyLimit": "Das tägliche Gratislimit ist erreicht. Bitte komm morgen wieder!",
+      "uploadFailed": "Bild-Upload fehlgeschlagen.",
+      "createFailed": "Wiederherstellungsaufgabe konnte nicht erstellt werden.",
+      "restorationFailed": "Wiederherstellung fehlgeschlagen.",
+      "timeout": "Zeitüberschreitung bei der Wiederherstellung. Bitte erneut versuchen.",
+      "uploadTitle": "Bild hierher ziehen und ablegen",
+      "uploadFormats": "JPG, JPEG, PNG • Max. 30 MB",
+      "uploadButton": "Bild hochladen",
+      "generating": "Wird generiert...",
+      "generate": "Generieren",
+      "regenerate": "Erneut generieren",
+      "download": "Herunterladen",
+      "uploadPreviewAlt": "Hochgeladene Vorschau",
+      "removeUploadedImage": "Hochgeladenes Bild entfernen",
+      "resultAlt": "Wiederhergestelltes Foto",
+      "oldExampleAlt": "Altes beschädigtes Schwarzweißfoto",
+      "restoredExampleAlt": "Beispiel für wiederhergestelltes Foto",
+      "previewAlt": "Vorschau"
+    },
+    "nanoBananaTool": {
+      "imageToImage": "Bild zu Bild",
+      "textToImage": "Text zu Bild",
+      "models": "Modelle",
+      "uploadUpTo": "Bis zu {count} Bilder hochladen",
+      "upload": "Hochladen",
+      "fileLimit": "JPG, PNG, WEBP bis 30 MB pro Datei · max. {count} Bilder",
+      "delete": "Löschen",
+      "replace": "Ersetzen",
+      "previewSoon": "Vorschau bald verfügbar",
+      "styleTemplates": "Stilvorlagen",
+      "aspectRatios": "Seitenverhältnisse",
+      "prompt": "Prompt",
+      "promptPlaceholder": "Beschreibe den Bildinhalt",
+      "outputAspectRatios": "Ausgabe-Seitenverhältnisse",
+      "resolution": "Auflösung",
+      "highResUnavailable": "2K und 4K sind vorübergehend nicht verfügbar.",
+      "outputFormat": "Ausgabeformat",
+      "sampleImage": "Beispielbild",
+      "inputImage": "Eingabebild",
+      "history": "Verlauf",
+      "noHistory": "Noch kein Verlauf. Generiere ein Bild, um es hier zu sehen.",
+      "recreate": "Neu erstellen",
+      "download": "Herunterladen",
+      "downloading": "Wird heruntergeladen...",
+      "copyPrompt": "Prompt kopieren",
+      "promptCopied": "Prompt in die Zwischenablage kopiert",
+      "promptCopyFailed": "Prompt konnte nicht kopiert werden",
+      "promptInserted": "Prompt eingefügt. Du kannst jetzt generieren.",
+      "generate": "Generieren",
+      "generating": "Wird generiert...",
+      "generatingSeconds": "Wird generiert... {seconds}s",
+      "generatedAlt": "Generiert",
+      "resultExpires": "Das Bild verschwindet nach dem Aktualisieren der Seite. Bitte lade es so bald wie möglich herunter.",
+      "historyResultAlt": "Verlaufsergebnis",
+      "inputAlt": "Eingabe",
+      "fileTooLarge": "Datei {name} überschreitet das 30-MB-Limit",
+      "maxImagesAllowed": "Maximal {max} Bilder erlaubt. Nur {remaining} werden hinzugefügt.",
+      "uploadMissingUrl": "Upload hat keine URL zurückgegeben",
+      "uploadRequestFailed": "Bild-Upload-Anfrage fehlgeschlagen. Bitte prüfe Upload-Service-Konfiguration und Netzwerkverbindung.",
+      "uploadFailedWithStatus": "Upload fehlgeschlagen: {status}",
+      "uploadUrlHint": "Bitte stelle sicher, dass die Upload-URL vollständig und der Dienst bereitgestellt ist.",
+      "serverNonJson": "Der Server hat eine Nicht-JSON-Antwort zurückgegeben.",
+      "requestFailed": "Anfrage fehlgeschlagen:",
+      "checkStatusFailed": "Statusprüfung fehlgeschlagen ({status})",
+      "generateFailed": "Bild konnte nicht generiert werden",
+      "noResult": "Keine Task-ID oder Bild-URL erhalten",
+      "networkError": "Netzwerkfehler",
+      "networkFailed": "Netzwerkverbindung fehlgeschlagen. Bitte überprüfe deine Verbindung und versuche es erneut.",
+      "serviceUnstable": "Der Generierungsdienst ist vorübergehend instabil. Bitte versuche es gleich erneut.",
+      "imageGenerationFailed": "Bildgenerierung fehlgeschlagen",
+      "generationFailedWithMessage": "Generierung fehlgeschlagen: {message}",
+      "generationTimeout": "Zeitüberschreitung bei der Generierung",
+      "dailyLimitReached": "Das tägliche Gratislimit ist erreicht. Bitte komm morgen wieder.",
+      "recreateMissingInput": "Kein Eingabebild gefunden. Für die Neuerstellung wurde zu Text zu Bild gewechselt."
     }
   },
   "imageCompressor": {

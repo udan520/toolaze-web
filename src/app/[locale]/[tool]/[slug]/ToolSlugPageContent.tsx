@@ -163,61 +163,58 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
 
     // 默认内容（如果没有提供，使用翻译内容）
     // 优先使用 JSON 中的 intro.title 和 intro.content
-    const whyToolazeTitle = content.intro?.title || toolTranslations?.whyToolaze?.title || (isConverter 
-      ? "Convert Images Without Quality Loss"
-      : "Stop Losing Time on Slow Image Compression Tools")
-    const whyToolazeDesc = content.intro?.content || toolTranslations?.whyToolaze?.desc || (isConverter
-      ? "Convert images between JPG, PNG, and WebP formats instantly. Our browser-based converter processes images locally, ensuring complete privacy and fast conversion. Perfect for web developers, designers, and content creators."
-      : "Traditional image compressors are slow, limit file counts, and often compromise quality. Toolaze compresses images with precise size control, maintaining visual quality while dramatically reducing file sizes.")
+    const fallbackPageTitle = content.hero?.h1 ? extractSimpleTitle(content.hero.h1) : tool
+    const whyToolazeTitle = content.intro?.title || toolTranslations?.whyToolaze?.title || fallbackPageTitle
+    const whyToolazeDesc = content.intro?.content || toolTranslations?.whyToolaze?.desc || ''
     // 优先使用 JSON 中的 specs 字段，转换为特性卡片格式（支持 6 个特性点）
     // 从 specs 转换；最后使用默认特性
     const whyToolazeFeatures = (content.specs ? [
-      { icon: '⚡', title: 'Fast Conversion', desc: content.specs.engine },
-      { icon: '📦', title: 'Batch Processing', desc: content.specs.limit },
-      { icon: '🔒', title: 'Private & Secure', desc: content.specs.privacy },
-      ...(content.specs.logic ? [{ icon: '🎯', title: 'Quality Preservation', desc: content.specs.logic }] : []),
+      { icon: '⚡', title: toolTranslations?.features?.speed?.title || '', desc: content.specs.engine },
+      { icon: '📦', title: toolTranslations?.features?.batch?.title || '', desc: content.specs.limit },
+      { icon: '🔒', title: toolTranslations?.features?.privacy?.title || '', desc: content.specs.privacy },
+      ...(content.specs.logic ? [{ icon: '🎯', title: toolTranslations?.features?.quality?.title || '', desc: content.specs.logic }] : []),
       // 添加更多通用特性点，确保有 6 个特性
-      { icon: '🌐', title: 'Browser-Based', desc: 'No software installation required. Works directly in your browser.' },
-      { icon: '💎', title: '100% Free', desc: 'Completely free. No ads, no hidden costs.' }
+      { icon: '🌐', title: toolTranslations?.features?.browser?.title || '', desc: toolTranslations?.features?.browser?.desc || '' },
+      { icon: '💎', title: toolTranslations?.features?.free?.title || '', desc: toolTranslations?.features?.free?.desc || '' }
     ].slice(0, 6) : (isConverter
       ? [
-          { icon: '📂', title: toolTranslations?.features?.batch?.title || 'Batch Processing', desc: toolTranslations?.features?.batch?.desc || 'Convert up to 100 images at once' },
-          { icon: '🎯', title: toolTranslations?.features?.formats?.title || 'Multiple Formats', desc: toolTranslations?.features?.formats?.desc || 'JPG, PNG, WebP, and HEIC support' },
-          { icon: '💎', title: toolTranslations?.features?.free?.title || '100% Free', desc: toolTranslations?.features?.free?.desc || 'No ads forever.' }
+          { icon: '📂', title: toolTranslations?.features?.batch?.title || '', desc: toolTranslations?.features?.batch?.desc || '' },
+          { icon: '🎯', title: toolTranslations?.features?.formats?.title || '', desc: toolTranslations?.features?.formats?.desc || '' },
+          { icon: '💎', title: toolTranslations?.features?.free?.title || '', desc: toolTranslations?.features?.free?.desc || '' }
         ]
       : [
-          { icon: '📂', title: toolTranslations?.features?.batch?.title || 'Batch Processing', desc: toolTranslations?.features?.batch?.desc || 'Compress up to 100 images at once' },
-          { icon: '🎯', title: toolTranslations?.features?.precise?.title || 'Precise Size Control', desc: toolTranslations?.features?.precise?.desc || 'Set exact target size in KB or MB' },
-          { icon: '💎', title: toolTranslations?.features?.free?.title || '100% Free', desc: toolTranslations?.features?.free?.desc || 'No ads forever.' }
+          { icon: '📂', title: toolTranslations?.features?.batch?.title || '', desc: toolTranslations?.features?.batch?.desc || '' },
+          { icon: '🎯', title: toolTranslations?.features?.precise?.title || '', desc: toolTranslations?.features?.precise?.desc || '' },
+          { icon: '💎', title: toolTranslations?.features?.free?.title || '', desc: toolTranslations?.features?.free?.desc || '' }
         ]))
 
     // 根据工具类型设置不同的默认步骤（使用翻译）
     const defaultUploadDesc = isConverter 
-      ? (toolTranslations?.howToUse?.step1?.desc || 'Drag and drop up to 100 images or folders. Supports JPG, PNG, WebP, BMP, and HEIC formats.')
-      : (toolTranslations?.howToUse?.step1?.desc || 'Drag and drop up to 100 images or folders. Supports JPG, PNG, WebP, and BMP formats.')
+      ? (toolTranslations?.howToUse?.step1?.desc || '')
+      : (toolTranslations?.howToUse?.step1?.desc || '')
     const defaultSecondStep = isConverter
-      ? { title: toolTranslations?.howToUse?.step2?.title || 'Choose Format', desc: toolTranslations?.howToUse?.step2?.desc || 'Select your target format: JPG, PNG, or WebP. Our converter maintains quality during conversion.' }
-      : { title: toolTranslations?.howToUse?.step2?.title || 'Set Target Size', desc: toolTranslations?.howToUse?.step2?.desc || 'Choose your desired file size in KB or MB. Our algorithm compresses images precisely to your target.' }
+      ? { title: toolTranslations?.howToUse?.step2?.title || '', desc: toolTranslations?.howToUse?.step2?.desc || '' }
+      : { title: toolTranslations?.howToUse?.step2?.title || '', desc: toolTranslations?.howToUse?.step2?.desc || '' }
     const defaultDownloadDesc = isConverter
-      ? (toolTranslations?.howToUse?.step3?.desc || 'Download individual converted images or all at once as a ZIP file. Fast and efficient.')
-      : (toolTranslations?.howToUse?.step3?.desc || 'Download individual compressed images or all at once as a ZIP file. Fast and efficient.')
+      ? (toolTranslations?.howToUse?.step3?.desc || '')
+      : (toolTranslations?.howToUse?.step3?.desc || '')
     
     const howToUseSteps = content.howToUse?.steps || [
-      { title: toolTranslations?.howToUse?.step1?.title || 'Upload Images', desc: defaultUploadDesc },
+      { title: toolTranslations?.howToUse?.step1?.title || '', desc: defaultUploadDesc },
       defaultSecondStep,
-      { title: toolTranslations?.howToUse?.step3?.title || 'Download Results', desc: defaultDownloadDesc }
+      { title: toolTranslations?.howToUse?.step3?.title || '', desc: defaultDownloadDesc }
     ]
 
     const scenariosData = content.scenes || (isConverter
       ? [
-          { icon: '💻', title: toolTranslations?.scenarios?.developers?.title || 'For Web Developers', description: toolTranslations?.scenarios?.developers?.desc || 'Convert images to WebP for better performance. Optimize formats for faster page loads and improved SEO.' },
-          { icon: '🎨', title: toolTranslations?.scenarios?.designers?.title || 'For Designers', description: toolTranslations?.scenarios?.designers?.desc || 'Convert between formats for different design needs. Preserve transparency with PNG or optimize with JPG.' },
-          { icon: '📱', title: toolTranslations?.scenarios?.creators?.title || 'For Content Creators', description: toolTranslations?.scenarios?.creators?.desc || 'Batch convert images for social media and blogs. Ensure compatibility across all platforms.' }
+          { icon: '💻', title: toolTranslations?.scenarios?.developers?.title || '', description: toolTranslations?.scenarios?.developers?.desc || '' },
+          { icon: '🎨', title: toolTranslations?.scenarios?.designers?.title || '', description: toolTranslations?.scenarios?.designers?.desc || '' },
+          { icon: '📱', title: toolTranslations?.scenarios?.creators?.title || '', description: toolTranslations?.scenarios?.creators?.desc || '' }
         ]
       : [
-          { icon: '💻', title: toolTranslations?.scenarios?.developers?.title || 'For Web Developers', description: toolTranslations?.scenarios?.developers?.desc || 'Optimize images for websites and apps. Reduce load times while maintaining quality for better SEO and user experience.' },
-          { icon: '🛒', title: toolTranslations?.scenarios?.ecommerce?.title || 'For E-commerce', description: toolTranslations?.scenarios?.ecommerce?.desc || 'Compress product images in bulk. Faster page loads mean better conversion rates and improved search rankings.' },
-          { icon: '📱', title: toolTranslations?.scenarios?.creators?.title || 'For Content Creators', description: toolTranslations?.scenarios?.creators?.desc || 'Prepare images for social media and blogs. Batch process multiple images quickly without quality loss.' }
+          { icon: '💻', title: toolTranslations?.scenarios?.developers?.title || '', description: toolTranslations?.scenarios?.developers?.desc || '' },
+          { icon: '🛒', title: toolTranslations?.scenarios?.ecommerce?.title || '', description: toolTranslations?.scenarios?.ecommerce?.desc || '' },
+          { icon: '📱', title: toolTranslations?.scenarios?.creators?.title || '', description: toolTranslations?.scenarios?.creators?.desc || '' }
         ])
 
     const comparisonData = content.comparison ? {
@@ -225,25 +222,25 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
       // 如果没有，则使用 toolaze 和 others（旧格式）
       toolaze: content.comparison.toolazeFeatures || content.comparison.toolaze || (isConverter
         ? [
-            toolTranslations?.comparison?.features?.batch100 || 'Batch up to 100 images',
-            toolTranslations?.comparison?.features?.multipleFormat || 'Multiple format support',
-            toolTranslations?.comparison?.features?.qualityPreserved || 'Quality preserved',
-            toolTranslations?.comparison?.features?.privateFree || '100% private & free',
-            toolTranslations?.comparison?.features?.noSignup || 'No sign-up required'
+            toolTranslations?.comparison?.features?.batch100 || '',
+            toolTranslations?.comparison?.features?.multipleFormat || '',
+            toolTranslations?.comparison?.features?.qualityPreserved || '',
+            toolTranslations?.comparison?.features?.privateFree || '',
+            toolTranslations?.comparison?.features?.noSignup || ''
           ].filter(Boolean).join(', ')
         : [
-            toolTranslations?.comparison?.features?.batch100 || 'Batch up to 100 images',
-            toolTranslations?.comparison?.features?.preciseControl || 'Precise size control',
-            toolTranslations?.comparison?.features?.multipleFormat || 'Multiple format support',
-            toolTranslations?.comparison?.features?.privateFree || '100% private & free',
-            toolTranslations?.comparison?.features?.noSignup || 'No sign-up required'
+            toolTranslations?.comparison?.features?.batch100 || '',
+            toolTranslations?.comparison?.features?.preciseControl || '',
+            toolTranslations?.comparison?.features?.multipleFormat || '',
+            toolTranslations?.comparison?.features?.privateFree || '',
+            toolTranslations?.comparison?.features?.noSignup || ''
           ].filter(Boolean).join(', ')),
       others: content.comparison.othersFeatures || content.comparison.others || [
-          toolTranslations?.comparison?.features?.limitedBatch || 'Limited batch size',
-          toolTranslations?.comparison?.features?.noPreciseControl || 'No precise control',
-          toolTranslations?.comparison?.features?.formatRestrictions || 'Format restrictions',
-          toolTranslations?.comparison?.features?.privacyConcerns || 'Privacy concerns',
-          toolTranslations?.comparison?.features?.registrationRequired || 'Registration required'
+          toolTranslations?.comparison?.features?.limitedBatch || '',
+          toolTranslations?.comparison?.features?.noPreciseControl || '',
+          toolTranslations?.comparison?.features?.formatRestrictions || '',
+          toolTranslations?.comparison?.features?.privacyConcerns || '',
+          toolTranslations?.comparison?.features?.registrationRequired || ''
         ].filter(Boolean).join(', ')
     } : null
 
@@ -258,11 +255,11 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
     } else if (isSeedance) {
       toolLabel = 'Seedance 2.0'
     } else if (isWatermarkRemover) {
-      toolLabel = breadcrumbT.watermarkRemover || 'Watermark Remover'
+      toolLabel = breadcrumbT.watermarkRemover || ''
     } else {
       toolLabel = breadcrumbT.imageCompression
     }
-    const pageTitle = content.hero?.h1 ? extractSimpleTitle(content.hero.h1) : (toolTranslations?.title || 'Page')
+    const pageTitle = fallbackPageTitle || toolTranslations?.title || tool
     const toolHref = (tool === 'seedance-2' || tool === 'kling-3')
       ? (locale === 'en' ? `/model/${tool}` : `/${locale}/model/${tool}`)
       : `/${locale === 'en' ? '' : locale + '/'}${tool}`

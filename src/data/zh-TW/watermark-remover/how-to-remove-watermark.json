@@ -1,140 +1,140 @@
 {
   "metadata": {
-    "title": "How to Remove Watermark from Photo Online (Free & Fast) - Toolaze",
-    "description": "How to remove watermark from photo? 1. Upload photo 2. AI removes watermark 3. Download photo. Free online watermark remover. Remove watermarks with AI, secure & private.",
+    "title": "如何線上去除照片浮水印（免費且快速）- Toolaze",
+    "description": "如何去除照片浮水印？1. 上傳照片 2. AI 去除浮水印 3. 下載照片。免費線上浮水印去除工具。使用 AI 去除浮水印，安全且私密。",
     "published": true
   },
   "hero": {
-    "h1": "How to Remove <span class=\"text-gradient\">Watermark</span> from Photo",
-    "desc": "Remove watermarks from photos online with Toolaze's AI-powered watermark remover. Simply upload your photo and let our AI do the rest. No sign-up required."
+    "h1": "如何去除照片<span class=\"text-gradient\">浮水印</span>",
+    "desc": "使用 Toolaze 的 AI 浮水印去除工具，線上輕鬆去除照片浮水印。只需上傳您的照片，讓我們的 AI 處理其餘的工作。無需註冊。"
   },
   "howToUse": {
-    "title": "How to Remove Watermark from Photo",
+    "title": "如何去除照片浮水印",
     "steps": [
       {
-        "title": "Upload Your Photo",
-        "desc": "Drag and drop your photo into the upload area, or click to select a file from your computer."
+        "title": "上傳您的照片",
+        "desc": "將您的照片拖放到上傳區域，或點擊從您的電腦中選擇檔案。"
       },
       {
-        "title": "AI Removes Watermark",
-        "desc": "Our AI algorithm automatically detects and removes the watermark from your photo."
+        "title": "AI 去除浮水印",
+        "desc": "我們的 AI 演算法會自動偵測並去除您照片中的浮水印。"
       },
       {
-        "title": "Download Your Photo",
-        "desc": "Once the watermark is removed, preview the result and download your watermark-free photo."
+        "title": "下載您的照片",
+        "desc": "去除浮水印後，預覽效果並下載您無浮水印的照片。"
       }
     ]
   },
   "modelIntro": {
-    "title": "AI-Powered Watermark Removal",
+    "title": "AI 驅動的浮水印去除",
     "description": [
-      "Toolaze's Watermark Remover utilizes advanced AI image editing techniques to seamlessly remove watermarks from your photos. Our AI model intelligently reconstructs the underlying image, ensuring minimal quality loss and natural-looking results.",
-      "The AI algorithm is trained to handle various types of watermarks, including text, logos, and patterns. It analyzes the surrounding pixels to fill in the areas where the watermark was located, creating a clean and watermark-free image."
+      "Toolaze 的浮水印去除工具利用先進的 AI 影像編輯技術，無縫去除您照片中的浮水印。我們的 AI 模型能智慧重建底層影像，確保極低的畫質損失與自然的效果。",
+      "該 AI 演算法經過訓練，可處理各種類型的浮水印，包括文字、標誌和圖案。它會分析周圍的像素以填補浮水印所在的區域，從而建立乾淨且無浮水印的影像。"
     ],
-    "modelName": "AI Watermark Remover",
-    "modelType": "AI Image Editing",
+    "modelName": "AI 浮水印去除工具",
+    "modelType": "AI 影像編輯",
     "featureCards": [
       {
-        "title": "Intelligent Removal",
-        "content": "Our AI algorithms intelligently detect and remove watermarks, logos, and unwanted objects from your photos, leaving behind a clean and natural-looking result."
+        "title": "智慧去除",
+        "content": "我們的 AI 演算法能智慧偵測並去除您照片中的浮水印、標誌和不需要的物件，留下乾淨且自然的結果。"
       },
       {
-        "title": "High-Quality Output",
-        "content": "We ensure minimal quality loss during the watermark removal process, preserving the details and clarity of your original image."
+        "title": "高品質輸出",
+        "content": "我們確保在浮水印去除過程中將畫質損失降到最低，保留您原始影像的細節與清晰度。"
       },
       {
-        "title": "Fast Processing",
-        "content": "Remove watermarks from your photos quickly and efficiently with our AI-powered tool. Get your results in seconds."
+        "title": "快速處理",
+        "content": "使用我們強大的 AI 工具，快速且高效地去除照片中的浮水印。在數秒內即可獲得結果。"
       }
     ]
   },
   "features": {
-    "title": "Key Features",
+    "title": "核心功能",
     "items": [
       {
         "icon": "🖼️",
         "iconType": "ai",
-        "title": "AI-Powered Removal",
-        "desc": "Our AI watermark remover intelligently detects and removes watermarks from your photos, providing a seamless and natural-looking result."
+        "title": "AI 驅動去除",
+        "desc": "我們的 AI 浮水印去除工具能智慧偵測並去除您照片中的浮水印，提供無縫且自然的結果。"
       },
       {
         "icon": "✨",
         "iconType": "ai",
-        "title": "Advanced Image Editing",
-        "desc": "Utilizing advanced AI image editing techniques, Toolaze reconstructs the underlying image, minimizing quality loss and preserving details."
+        "title": "先進影像編輯",
+        "desc": "利用先進的 AI 影像編輯技術，Toolaze 重建底層影像，將畫質損失降至最低並保留細節。"
       },
       {
         "icon": "🔒",
         "iconType": "ai",
-        "title": "Secure Processing",
-        "desc": "Your images are processed securely on our servers and are not stored permanently. We prioritize your privacy and data security."
+        "title": "安全處理",
+        "desc": "您的影像在我們的伺服器上進行安全處理，且不會永久儲存。我們優先考慮您的隱私與數據安全。"
       },
       {
         "icon": "🚀",
         "iconType": "ai",
-        "title": "Fast Watermark Removal",
-        "desc": "Remove watermarks from your photos in seconds with our efficient AI algorithm. Get your watermark-free images quickly."
+        "title": "快速去除浮水印",
+        "desc": "使用我們高效的 AI 演算法，在數秒內去除照片中的浮水印。快速獲取無浮水印的影像。"
       },
       {
         "icon": "✔️",
         "iconType": "ai",
-        "title": "Easy to Use",
-        "desc": "Simply upload your photo and let our AI do the rest. No technical skills or software installations are required to remove watermarks."
+        "title": "簡單易用",
+        "desc": "只需上傳您的照片，讓我們的 AI 處理其餘的工作。無需任何技術技能或安裝軟體即可去除浮水印。"
       },
       {
         "icon": "🌐",
         "iconType": "ai",
-        "title": "Online Watermark Remover",
-        "desc": "Access our watermark remover from any device with an internet connection. Remove watermarks from your photos online, anytime, anywhere."
+        "title": "線上浮水印去除工具",
+        "desc": "從任何有網路連線的裝置存取我們的浮水印去除工具。隨時隨地線上去除照片中的浮水印。"
       }
     ]
   },
   "scenes": [
     {
       "icon": "🛒",
-      "title": "Remove Watermarks from Product Photos",
-      "desc": "Clean up your product photos for e-commerce listings by removing distracting watermarks. Enhance your product presentation and increase sales with watermark-free images."
+      "title": "去除商品照片的浮水印",
+      "desc": "透過去除令人分心的浮水印，清理您的電子商務商品照片。使用無浮水印的影像提升商品呈現效果並增加銷量。"
     },
     {
       "icon": "📱",
-      "title": "Remove Watermarks from Social Media Images",
-      "desc": "Easily remove watermarks from downloaded social media images for personal use or creative projects. Share watermark-free content with your friends and followers."
+      "title": "去除社群媒體圖片的浮水印",
+      "desc": "輕鬆去除下載的社群媒體圖片中的浮水印，用於個人用途或創意專案。與您的朋友和追隨者分享無浮水印的內容。"
     },
     {
       "icon": "📸",
-      "title": "Remove Watermarks from Photography",
-      "desc": "Quickly remove watermarks from your photography to showcase your work without distractions. Present your images in their original, unbranded form."
+      "title": "去除攝影作品的浮水印",
+      "desc": "快速去除攝影作品中的浮水印，以無干擾的方式展示您的作品。以原始、無品牌標記的形式呈現您的影像。"
     }
   ],
   "rating": {
-    "title": "Trusted for Watermark Removal",
-    "rating": "4.9/5 FROM 10K+ USERS",
-    "text": "\"Great tool for removing watermarks quickly and easily!\" - Join thousands of satisfied users who trust Toolaze for fast, secure, and free watermark removal. No sign-up required, images not stored permanently."
+    "title": "值得信賴的浮水印去除工具",
+    "rating": "4.9/5 來自 10,000+ 名用戶",
+    "text": "「快速且輕鬆去除浮水印的絕佳工具！」- 加入成千上萬信賴 Toolaze 進行快速、安全且免費去除浮水印的滿意用戶。無需註冊，影像不會永久儲存。"
   },
   "faq": [
     {
-      "q": "How does the AI watermark remover work?",
-      "a": "Our AI watermark remover uses advanced image editing techniques to intelligently detect and remove watermarks from your photos. It analyzes the surrounding pixels to reconstruct the underlying image, ensuring minimal quality loss."
+      "q": "AI 浮水印去除工具是如何運作的？",
+      "a": "我們的 AI 浮水印去除工具使用先進的影像編輯技術，智慧偵測並去除照片中的浮水印。它會分析周圍的像素以重建底層影像，確保極低的畫質損失。"
     },
     {
-      "q": "What image formats are supported?",
-      "a": "Our watermark remover supports JPG, PNG, WebP, and other common image formats. The maximum file size is 30MB."
+      "q": "支援哪些影像格式？",
+      "a": "我們的浮水印去除工具支援 JPG、PNG、WebP 和其他常見的影像格式。檔案大小上限為 30MB。"
     },
     {
-      "q": "Is it really a free watermark remover?",
-      "a": "Yes, Toolaze's watermark remover is completely free to use. There are no hidden fees or subscriptions required."
+      "q": "這真的是免費的浮水印去除工具嗎？",
+      "a": "是的，Toolaze 的浮水印去除工具完全免費使用。不需要任何隱藏費用或訂閱。"
     },
     {
-      "q": "Is my data secure?",
-      "a": "Yes, your images are processed securely on our servers and are not stored permanently. We prioritize your privacy and data security."
+      "q": "我的資料安全嗎？",
+      "a": "是的，您的影像在我們的伺服器上進行安全處理，且不會永久儲存。我們優先考慮您的隱私與數據安全。"
     },
     {
-      "q": "Can I remove watermarks from photos in bulk?",
-      "a": "Currently, our watermark remover supports single image processing only. Batch processing is not supported at this time."
+      "q": "我可以批次去除照片中的浮水印嗎？",
+      "a": "目前，我們的浮水印去除工具僅支援單張影像處理。目前不支援批次處理。"
     },
     {
-      "q": "Can I remove logos from images?",
-      "a": "Yes, our AI watermark remover can remove logos from images. It is designed to handle various types of watermarks, including text, logos, and patterns. For AI image generation, you can also use our <a href=\"/model/nano-banana-pro\">AI image generator</a>."
+      "q": "我可以去除影像中的標誌嗎？",
+      "a": "是的，我們的 AI 浮水印去除工具可以去除影像中的標誌。它旨在處理各種類型的浮水印，包括文字、標誌和圖案。對於 AI 影像生成，您也可以使用我們的 <a href=\"/model/nano-banana-pro\">AI 影像產生器</a>。"
     }
   ],
   "useComponents": [
@@ -156,6 +156,6 @@
     "rating",
     "faq"
   ],
-  "scenesTitle": "Use Cases",
-  "faqTitle": "Frequently Asked Questions"
+  "scenesTitle": "使用場景",
+  "faqTitle": "常見問題"
 }

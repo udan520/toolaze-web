@@ -1,143 +1,143 @@
 {
   "metadata": {
-    "title": "Generate Image to Image AI Online (Free, High Quality & Fast) - Toolaze",
-    "description": "How to generate image to image AI online? 1. Upload image 2. Set prompt 3. Generate image. Free online tool. Create high-quality AI images with fast processing. Secure & Private."
+    "title": "線上圖生圖 AI 產生器 (免費、高品質且快速) - Toolaze",
+    "description": "如何線上進行 AI 圖生圖？1. 上傳圖片 2. 設定提示詞 3. 產生圖片。免費線上工具。快速處理，建立高品質 AI 圖片。安全且隱私。"
   },
   "hero": {
-    "h1": "Free <span class=\"text-gradient\">Image to Image AI</span> Online",
-    "desc": "Generate stunning AI images from your existing images for free. Simply upload your image and provide a text prompt to create variations in seconds."
+    "h1": "免費線上 <span class=\"text-gradient\">AI 圖生圖</span>",
+    "desc": "免費從您現有的圖片產生令人驚嘆的 AI 圖片。只需上傳您的圖片並提供文字提示詞，即可在數秒內建立不同的變化版本。"
   },
   "howToUse": {
-    "title": "How to Generate Image to Image AI",
+    "title": "如何進行 AI 圖生圖",
     "steps": [
       {
-        "title": "Upload Your Image",
-        "desc": "Upload the image you want to use as a base for the AI generation."
+        "title": "上傳您的圖片",
+        "desc": "上傳您想作為 AI 產生基礎的圖片。"
       },
       {
-        "title": "Enter Your Prompt",
-        "desc": "Describe the desired changes or additions you want to see in the generated image."
+        "title": "輸入您的提示詞",
+        "desc": "描述您希望在產生的圖片中看到的修改或新增內容。"
       },
       {
-        "title": "Generate and Download",
-        "desc": "Click the generate button and download your new AI-generated image."
+        "title": "產生並下載",
+        "desc": "點擊產生按鈕並下載您全新的 AI 產生圖片。"
       }
     ]
   },
   "modelIntro": {
-    "title": "Unleash Your Creativity with Nano Banana Pro",
+    "title": "使用 Nano Banana Pro 釋放您的創意",
     "description": [
-      "Nano Banana Pro is an advanced AI model designed to transform your images with stunning detail and precision. Whether you're looking to create variations of existing images or bring entirely new concepts to life, Nano Banana Pro offers the tools you need to achieve your creative vision.",
-      "With support for high resolutions up to 4K and a range of aspect ratios, Nano Banana Pro ensures your generated images are of the highest quality. The intuitive interface and fast processing speeds make it easy to experiment and iterate on your designs.",
-      "Experience the future of image generation with Nano Banana Pro and unlock endless possibilities for your creative projects."
+      "Nano Banana Pro 是一款先進的 AI 模型，旨在以驚人的細節和精準度轉換您的圖片。無論您是想為現有圖片建立變化版本，還是想將全新的概念變為現實， Nano Banana Pro 都能提供您實現創意願景所需的工具。",
+      "Nano Banana Pro 支援高達 4K 的高解析度以及多種長寬比，確保您產生的圖片具有最高品質。直覺的介面和快速的處理速度讓您可以輕鬆地進行實驗並反覆修改您的設計。",
+      "與 Nano Banana Pro 一起體驗圖片產生的未來，為您的創意專案解鎖無限可能。"
     ],
     "modelName": "Nano Banana Pro",
-    "modelType": "AI Image Model",
+    "modelType": "AI 圖片模型",
     "featureCards": [
       {
-        "title": "High-Resolution Output",
-        "content": "Generate images in stunning 2K and 4K resolutions, ensuring every detail is crisp and clear."
+        "title": "高解析度輸出",
+        "content": "產生令人驚嘆的 2K 和 4K 解析度圖片，確保每個細節都清晰銳利。"
       },
       {
-        "title": "Fast Processing",
-        "content": "Experience lightning-fast image generation speeds, allowing you to iterate quickly and bring your ideas to life in seconds."
+        "title": "快速處理",
+        "content": "體驗極速的圖片產生速度，讓您能夠快速反覆修改，並在數秒內將您的想法變為現實。"
       },
       {
-        "title": "Versatile Aspect Ratios",
-        "content": "Choose from a wide range of aspect ratios to perfectly fit your project's needs, from social media posts to cinematic visuals."
+        "title": "多樣的長寬比",
+        "content": "從多種長寬比中進行選擇，完美符合您的專案需求，從社群媒體貼文到電影視覺效果皆適用。"
       }
     ]
   },
   "features": {
-    "title": "Key Features",
+    "title": "核心功能",
     "items": [
       {
         "icon": "🖼️",
         "iconType": "ai",
-        "title": "Image to Image Generation",
-        "desc": "Transform existing images into new creations using AI. Simply upload your image and provide a text prompt to guide the AI's artistic direction."
+        "title": "圖生圖產生",
+        "desc": "使用 AI 將現有圖片轉換為新的創作。只需上傳您的圖片並提供文字提示詞，即可引導 AI 的藝術方向。"
       },
       {
         "icon": "🖋️",
         "iconType": "ai",
-        "title": "Text to Image Generation",
-        "desc": "Bring your textual ideas to life with AI-generated images. Describe your vision, and let the AI create a unique visual representation."
+        "title": "文生圖產生",
+        "desc": "透過 AI 產生的圖片將您的文字想法變為現實。描述您的願景，讓 AI 建立獨特的視覺呈現。"
       },
       {
         "icon": "📐",
         "iconType": "ai",
-        "title": "Multiple Aspect Ratios",
-        "desc": "Generate images in various aspect ratios to suit different platforms and purposes. Choose from options like 1:1, 16:9, 9:16, and more."
+        "title": "多種長寬比",
+        "desc": "產生各種長寬比的圖片，以適應不同的平台和用途。可選擇 1:1、16:9、9:16 等選項。"
       },
       {
         "icon": "✨",
         "iconType": "ai",
-        "title": "High-Resolution Output",
-        "desc": "Create high-quality images with support for resolutions up to 4K. Ensure your generated images are crisp, clear, and detailed."
+        "title": "高解析度輸出",
+        "desc": "建立高品質圖片，支援高達 4K 的解析度。確保您產生的圖片清晰、銳利且細節豐富。"
       },
       {
         "icon": "💾",
         "iconType": "ai",
-        "title": "History Tracking",
-        "desc": "Easily access and manage your previously generated images. The history feature allows you to revisit, download, and reuse your creations."
+        "title": "歷史紀錄追蹤",
+        "desc": "輕鬆存取和管理您先前產生的圖片。歷史紀錄功能讓您可以重新查看、下載和重複使用您的創作。"
       },
       {
         "icon": "⚡",
         "iconType": "ai",
-        "title": "Fast Image Generation",
-        "desc": "Experience rapid image generation powered by Nano Banana Pro. Get your AI-generated images in seconds, allowing for quick iteration and experimentation."
+        "title": "快速圖片產生",
+        "desc": "體驗由 Nano Banana Pro 驅動的快速圖片產生。在數秒內取得您的 AI 產生圖片，以便進行快速反覆修改和實驗。"
       }
     ]
   },
   "scenes": [
     {
       "icon": "📱",
-      "title": "Social Media Content",
-      "desc": "Create unique and engaging visuals for your social media channels. Generate eye-catching content to boost your online presence and attract new followers with AI image to image."
+      "title": "社群媒體內容",
+      "desc": "為您的社群媒體管道建立獨特且引人入勝的視覺效果。透過 AI 圖生圖產生吸睛的內容，以提升您的線上曝光率並吸引新粉絲。"
     },
     {
       "icon": "🎨",
-      "title": "Creative Art Projects",
-      "desc": "Explore new artistic possibilities with AI-generated art. Use image to image to create stunning digital paintings, illustrations, and mixed media pieces with ease."
+      "title": "創意藝術專案",
+      "desc": "透過 AI 產生的藝術探索新的藝術可能性。輕鬆使用圖生圖功能建立令人驚嘆的數位繪畫、插圖和混合媒材作品。"
     },
     {
       "icon": "💻",
-      "title": "Website Visuals",
-      "desc": "Enhance your website with custom-generated images. Create unique banners, backgrounds, and product visuals that capture your brand's identity and engage your audience."
+      "title": "網站視覺效果",
+      "desc": "使用自訂產生的圖片增強您的網站。建立獨特的橫幅、背景和產品視覺效果，以展現您的品牌形象並吸引您的受眾。"
     }
   ],
   "rating": {
     "title": "Nano Banana Pro",
-    "rating": "4.9/5 FROM 10K+ CREATORS",
-    "text": "Join thousands of satisfied users who trust Toolaze for fast, secure, and free AI image to image generation. No registration required, no sign up needed. Generate high-quality 4K images with Nano Banana Pro."
+    "rating": "4.9/5 來自 10K+ 創作者",
+    "text": "加入成千上萬信賴 Toolaze 的滿意用戶行列，享受快速、安全且免費的 AI 圖生圖產生服務。無需註冊，無需登入。使用 Nano Banana Pro 產生高品質的 4K 圖片。"
   },
   "faq": [
     {
-      "q": "What is image to image AI generation?",
-      "a": "Image to image AI generation is a process that uses artificial intelligence to create new images based on an existing image and a text prompt. It allows you to transform and reimagine your photos with AI."
+      "q": "什麼是 AI 圖生圖產生？",
+      "a": "AI 圖生圖產生是一個使用人工智慧根據現有圖片和文字提示詞建立新圖片的過程。它讓您能夠使用 AI 轉換並重新想像您的照片。"
     },
     {
-      "q": "Is Nano Banana Pro free to use?",
-      "a": "Yes, Nano Banana Pro offers a free version with basic features. The Pro version unlocks higher resolutions, faster processing, and additional functionalities."
+      "q": "Nano Banana Pro 是免費使用的嗎？",
+      "a": "是的，Nano Banana Pro 提供具有基本功能的免費版本。Pro 版本可解鎖更高的解析度、更快的處理速度和額外的功能。"
     },
     {
-      "q": "What image formats are supported by Nano Banana Pro?",
-      "a": "Nano Banana Pro supports JPG, PNG, and WebP input formats. You can choose to output your generated images in PNG, JPEG, or WebP formats."
+      "q": "Nano Banana Pro 支援哪些圖片格式？",
+      "a": "Nano Banana Pro 支援 JPG、PNG 和 WebP 輸入格式。您可以選擇將產生的圖片輸出為 PNG、JPEG 或 WebP 格式。"
     },
     {
-      "q": "What resolutions are available in Nano Banana Pro?",
-      "a": "The free version supports 1K resolution. Nano Banana Pro unlocks 2K and 4K resolutions for higher-quality image generation."
+      "q": "Nano Banana Pro 提供哪些解析度？",
+      "a": "免費版本支援 1K 解析度。Nano Banana Pro 可解鎖 2K 和 4K 解析度，以進行更高品質的圖片產生。"
     },
     {
-      "q": "How does Nano Banana Pro ensure the privacy of my images?",
-      "a": "Images uploaded to Nano Banana Pro are not stored permanently and are processed securely. No sign-up is required, ensuring your privacy."
+      "q": "Nano Banana Pro 如何確保我圖片的隱私？",
+      "a": "上傳到 Nano Banana Pro 的圖片不會永久儲存，並且會進行安全處理。無需註冊，確保您的隱私。"
     },
     {
-      "q": "Can I use Nano Banana Pro to generate images for commercial purposes?",
-      "a": "Yes, you can use images generated with Nano Banana Pro for commercial purposes, subject to the terms of service. Please review the licensing agreement for more details."
+      "q": "我可以使用 Nano Banana Pro 產生商業用途的圖片嗎？",
+      "a": "是的，在遵守服務條款的前提下，您可以使用 Nano Banana Pro 產生的圖片用於商業用途。請詳閱授權協議以取得更多細節。"
     }
   ],
   "topComponent": "nano-banana-pro",
-  "scenesTitle": "Use Cases",
-  "faqTitle": "Frequently Asked Questions"
+  "scenesTitle": "使用場景",
+  "faqTitle": "常見問題"
 }

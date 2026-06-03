@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next'
-import { getAllTools } from '@/lib/seo-loader'
+import { getAllSlugs, getAllTools, hasLocaleL2JsonFile } from '@/lib/seo-loader'
 import { getPromptItems } from '@/lib/prompts'
 
 // 静态导出模式需要此配置
@@ -48,10 +48,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // 3. 功能页面（所有语言版本）
   TOOL_PAGES.forEach((tool) => {
     SUPPORTED_LOCALES.forEach((locale) => {
-      // font-generator 支持 en、de、ja、es 和 fr
-      if (tool === 'font-generator' && locale !== 'en' && locale !== 'de' && locale !== 'ja' && locale !== 'es' && locale !== 'fr') {
-        return
-      }
       const path = locale === 'en' ? `/${tool}` : `/${locale}/${tool}`
       entries.push({
         url: `${baseUrl}${path}`,
@@ -97,6 +93,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     changeFrequency: 'weekly',
     priority: 0.9,
   })
+
+  entries.push({
+    url: `${baseUrl}/model`,
+    lastModified: today,
+    changeFrequency: 'weekly',
+    priority: 0.85,
+  })
   entries.push({
     url: `${baseUrl}/prompts`,
     lastModified: today,
@@ -122,7 +125,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   })
 
   // 4. Model 页面（AI 图像模型，仅英文）
-  const MODEL_PAGES = ['nano-banana-pro', 'nano-banana-2', 'gpt-image-2-0']
+  const MODEL_PAGES = ['nano-banana', 'nano-banana-pro', 'nano-banana-2', 'gpt-image-2', 'gpt-image-2-0', 'seedance-2', 'kling-3']
   MODEL_PAGES.forEach((model) => {
     entries.push({
       url: `${baseUrl}/model/${model}`,
@@ -132,11 +135,33 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })
   })
 
+  const MODEL_ALL_TOOLS_PAGES = ['seedance-2', 'kling-3']
+  MODEL_ALL_TOOLS_PAGES.forEach((model) => {
+    entries.push({
+      url: `${baseUrl}/model/${model}/all-tools`,
+      lastModified: today,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    })
+  })
+
+  const seedanceSlugs = await getAllSlugs('seedance-2', 'en')
+  seedanceSlugs.forEach((slug) => {
+    entries.push({
+      url: `${baseUrl}/model/seedance-2/${slug}`,
+      lastModified: today,
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    })
+  })
+
   // 4b. 多语言 model L2（与 /[locale]/model/[model] 一致；英语 canonical 仍为 /model/...）
-  const LOCALIZED_MODEL_SLUGS = ['nano-banana-2', 'gpt-image-2', 'gpt-image-2-0']
+  const LOCALIZED_MODEL_SLUGS = ['nano-banana-pro', 'nano-banana-2', 'gpt-image-2', 'gpt-image-2-0', 'seedance-2', 'kling-3']
   LOCALIZED_MODEL_SLUGS.forEach((model) => {
     SUPPORTED_LOCALES.forEach((locale) => {
       if (locale === 'en') return
+      const tool = model === 'gpt-image-2-0' ? 'gpt-image-2' : model
+      if (!hasLocaleL2JsonFile(tool, locale)) return
       entries.push({
         url: `${baseUrl}/${locale}/model/${model}`,
         lastModified: today,
@@ -149,10 +174,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // 5. All Tools 页面（所有语言版本）
   TOOL_PAGES.forEach((tool) => {
     SUPPORTED_LOCALES.forEach((locale) => {
-      // font-generator 支持 en、de、ja、es 和 fr
-      if (tool === 'font-generator' && locale !== 'en' && locale !== 'de' && locale !== 'ja' && locale !== 'es' && locale !== 'fr') {
-        return
-      }
       const path = locale === 'en' ? `/${tool}/all-tools` : `/${locale}/${tool}/all-tools`
       entries.push({
         url: `${baseUrl}${path}`,
@@ -170,8 +191,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
       if (tools && tools.length > 0) {
         tools.forEach(({ tool, slug }) => {
-          // seedance-2 仅英文，且英语无 /en 前缀
-          if (tool === 'seedance-2' && locale !== 'en') return
+          // seedance-2 的 canonical 在 /model/seedance-2/[slug]，避免收录重定向路径
+          if (tool === 'seedance-2') return
           // kling-3 仅英文
           if (tool === 'kling-3' && locale !== 'en') return
           const path = locale === 'en'

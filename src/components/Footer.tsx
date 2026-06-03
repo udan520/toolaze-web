@@ -25,6 +25,8 @@ const defaultTranslations = {
   termsOfService: 'Terms of Service',
   contact: 'Contact',
   language: 'Language',
+  footerNavigation: 'Footer navigation',
+  noToolsAvailable: 'No tools available',
   copyright: '© {year} Toolaze Lab. All rights reserved.',
   tagline: 'Free Online Tools • No Registration Required • 100% Private',
   quickTools: 'Quick Tools',
@@ -482,7 +484,7 @@ export default function Footer() {
                   </li>
                 ))
               ) : (
-                <li className="text-slate-500 text-xs pl-4">No tools available</li>
+                <li className="text-slate-500 text-xs pl-4">{translations.noToolsAvailable}</li>
               )}
             </ul>
           </div>
@@ -508,7 +510,7 @@ export default function Footer() {
                   </li>
                 ))
               ) : (
-                <li className="text-slate-500 text-xs pl-4">No tools available</li>
+                <li className="text-slate-500 text-xs pl-4">{translations.noToolsAvailable}</li>
               )}
             </ul>
           </div>
@@ -534,7 +536,7 @@ export default function Footer() {
                   </li>
                 ))
               ) : (
-                <li className="text-slate-500 text-xs pl-4">No tools available</li>
+                <li className="text-slate-500 text-xs pl-4">{translations.noToolsAvailable}</li>
               )}
             </ul>
           </div>
@@ -560,14 +562,14 @@ export default function Footer() {
                   </li>
                 ))
               ) : (
-                <li className="text-slate-500 text-xs pl-4">No tools available</li>
+                <li className="text-slate-500 text-xs pl-4">{translations.noToolsAvailable}</li>
               )}
             </ul>
           </div>
         </div>
 
         {/* 基础导航链接 */}
-        <nav className="mb-8" aria-label="Footer navigation">
+        <nav className="mb-8" aria-label={translations.footerNavigation}>
           <ul className="flex flex-wrap justify-center items-center gap-3 md:gap-4 text-sm">
             <li><Link href={getLocalizedHref('/')} className="text-slate-300 hover:text-indigo-400 transition-colors font-medium">{translations.home}</Link></li>
             <li><Link href={getLocalizedHref('/about')} className="text-slate-300 hover:text-indigo-400 transition-colors font-medium">{translations.aboutUs}</Link></li>

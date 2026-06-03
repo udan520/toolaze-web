@@ -208,6 +208,8 @@
     "termsOfService": "利用規約",
     "contact": "お問い合わせ",
     "language": "言語",
+    "footerNavigation": "フッターナビゲーション",
+    "noToolsAvailable": "利用可能なツールはありません",
     "copyright": "© {year} Toolaze Lab. 全著作権所有。",
     "tagline": "無料オンラインツール • 登録不要 • 100%プライベート"
   },
@@ -218,7 +220,10 @@
     "imageConverter": "画像変換",
     "aboutUs": "私たちについて",
     "privacyPolicy": "プライバシーポリシー",
-    "termsOfService": "利用規約"
+    "termsOfService": "利用規約",
+    "emojiCopyAndPaste": "絵文字コピー＆ペースト",
+    "fontGenerator": "フォントジェネレーター",
+    "watermarkRemover": "ウォーターマーク削除"
   },
   "about": {
     "metadata": {
@@ -290,13 +295,25 @@
         "retrySuccessful": "再試行成功：",
         "retryTimeout": "再試行タイムアウト：",
         "retryFailed": "再試行失敗：",
-        "listCleared": "リストをクリアしました"
+        "listCleared": "リストをクリアしました",
+        "sharedSuccessfully": "共有しました",
+        "imageRemoved": "画像を削除しました",
+        "filesLoadedFromHomepage": "ホームページから{count}件のファイルを読み込みました",
+        "heicWebAssemblyRequired": "HEIC変換にはWebAssemblyサポートが必要です。お使いのブラウザでは対応していない可能性があります。",
+        "unsupportedFormat": "未対応の形式：",
+        "heicBrowserOnly": "HEIC変換はブラウザ内でのみ利用できます",
+        "invalidConversionResult": "無効な変換結果です"
       },
       "gallery": {
         "title": "ギャラリープレビュー",
         "added": "追加済み：",
         "original": "元のサイズ：",
-        "new": "新しいサイズ："
+        "new": "新しいサイズ：",
+        "preview": "プレビュー"
+      },
+      "actions": {
+        "close": "閉じる",
+        "delete": "削除"
       },
       "status": {
         "waiting": "待機中",
@@ -328,6 +345,32 @@
     "viewAllTools": {
       "related": "関連するすべてのツールを表示",
       "all": "すべてのツールを表示"
+    },
+    "modelPlaceholders": {
+      "comingSoon": "近日公開",
+      "klingTagline": "4K • 6-Shot • 多言語音声",
+      "klingDescription": "Kling 3.0 AI動画生成ツールはまもなく利用できます。",
+      "nanoBanana2Tagline": "プロ品質 • 高速生成 • 4K",
+      "nanoBanana2Description": "Nano Banana 2 AI画像生成ツールはまもなく利用できます。",
+      "seedanceDescription": "Seedance 2.0 AI動画生成ツールはまもなく利用できます。",
+      "native4k": "🎥 ネイティブ4K",
+      "multilingualAudio": "🔊 多言語音声",
+      "flashSpeed": "⚡ 高速生成",
+      "quality4k": "🎨 4K品質",
+      "characterConsistency": "👥 5キャラクター一貫性",
+      "fastGeneration": "⚡ 高速生成",
+      "quality1080p": "🎬 1080p品質"
+    },
+    "specs": {
+      "title": "技術仕様",
+      "engine": "エンジン",
+      "capacity": "容量",
+      "limit": "制限",
+      "logic": "ロジック",
+      "privacy": "プライバシー",
+      "batch": "バッチ",
+      "formats": "形式",
+      "output": "出力"
     },
     "scenarios": {
       "title": "使用例"
@@ -401,6 +444,130 @@
         "bubble": "バブル",
         "starWars": "スター・ウォーズ"
       }
+    },
+    "aiImageModels": {
+      "moreTools": "その他のAI画像モデル"
+    },
+    "aiVideoModels": {
+      "moreTools": "その他のAI動画モデル"
+    },
+    "allFontGeneratorTools": "すべてのフォントジェネレーターツール",
+    "allFontGeneratorToolsDesc": "利用可能なフォントジェネレーターツールを一覧できます。筆記体、装飾、太字、斜体、ゴシック、タトゥー風などの文字スタイルを作成できます。",
+    "emojiCopyAndPaste": {
+      "moreTools": "その他の絵文字コピー＆ペースト"
+    },
+    "imageCompressor": {
+      "moreTools": "その他の画像圧縮ツール"
+    },
+    "imageConverter": {
+      "moreTools": "その他の画像変換ツール"
+    },
+    "nanoBananaPro": {
+      "moreTools": "その他の無料AIツールを見る"
+    },
+    "primaryFontGeneratorToolsDesc": "一般的な用途に使いやすい主要なフォントジェネレーターツールです。",
+    "seedance2": {
+      "moreTools": "その他のSeedance 2.0ツール"
+    },
+    "specializedFontGeneratorToolsDesc": "特定のプラットフォームや用途向けの専門的なフォントジェネレーターツールです。",
+    "watermarkRemoverTool": {
+      "uploadTitle": "画像をクリックまたはドラッグしてください",
+      "uploadFormats": "JPG、PNG、WebP（最大30MB）。高速処理には2MB以下または1280px以下を推奨します。",
+      "uploadNew": "新しくアップロード",
+      "generating": "生成中...",
+      "regenerate": "再生成",
+      "download": "ダウンロード",
+      "downloading": "ダウンロード中...",
+      "compareTitle": "長押しして元画像と比較",
+      "compareAria": "元画像と比較",
+      "back": "戻る",
+      "originalAlt": "元画像",
+      "resultAlt": "結果",
+      "invalidImage": "画像ファイル（JPG、PNG、WebPなど）を選択してください",
+      "tooLarge": "画像サイズは30MB未満にしてください",
+      "success": "ウォーターマークを削除しました",
+      "downloadStarted": "ダウンロードを開始しました",
+      "downloadFailed": "ダウンロードに失敗しました",
+      "requestFailed": "リクエスト失敗：{status}",
+      "noImageUrl": "レスポンスに画像URLがありません"
+    },
+    "photoRestorationTool": {
+      "invalidImage": "有効な画像ファイルをアップロードしてください。",
+      "tooLarge": "画像サイズは30MB未満にしてください。",
+      "dailyLimit": "本日の無料利用上限に達しました。明日またお試しください。",
+      "uploadFailed": "画像のアップロードに失敗しました。",
+      "createFailed": "写真復元タスクの作成に失敗しました。",
+      "restorationFailed": "写真の復元に失敗しました。",
+      "timeout": "復元がタイムアウトしました。もう一度お試しください。",
+      "uploadTitle": "画像をドラッグ＆ドロップ",
+      "uploadFormats": "JPG、JPEG、PNG • 最大30MB",
+      "uploadButton": "画像をアップロード",
+      "generating": "生成中...",
+      "generate": "生成",
+      "regenerate": "再生成",
+      "download": "ダウンロード",
+      "uploadPreviewAlt": "アップロード画像のプレビュー",
+      "removeUploadedImage": "アップロード画像を削除",
+      "resultAlt": "復元された写真",
+      "oldExampleAlt": "古い破損した白黒写真",
+      "restoredExampleAlt": "復元写真の例",
+      "previewAlt": "プレビュー"
+    },
+    "nanoBananaTool": {
+      "imageToImage": "画像から画像",
+      "textToImage": "テキストから画像",
+      "models": "モデル",
+      "uploadUpTo": "最大{count}枚の画像をアップロード",
+      "upload": "アップロード",
+      "fileLimit": "JPG、PNG、WEBP 各30MBまで · 最大{count}枚",
+      "delete": "削除",
+      "replace": "置き換え",
+      "previewSoon": "プレビュー準備中",
+      "styleTemplates": "スタイルテンプレート",
+      "aspectRatios": "アスペクト比",
+      "prompt": "プロンプト",
+      "promptPlaceholder": "画像の内容を説明してください",
+      "outputAspectRatios": "出力アスペクト比",
+      "resolution": "解像度",
+      "highResUnavailable": "2Kと4Kは一時的に利用できません。",
+      "outputFormat": "出力形式",
+      "sampleImage": "サンプル画像",
+      "inputImage": "入力画像",
+      "history": "履歴",
+      "noHistory": "履歴はまだありません。画像を生成するとここに表示されます。",
+      "recreate": "再作成",
+      "download": "ダウンロード",
+      "downloading": "ダウンロード中...",
+      "copyPrompt": "プロンプトをコピー",
+      "promptCopied": "プロンプトをコピーしました",
+      "promptCopyFailed": "プロンプトのコピーに失敗しました",
+      "promptInserted": "プロンプトを挿入しました。生成できます。",
+      "generate": "生成",
+      "generating": "生成中...",
+      "generatingSeconds": "生成中... {seconds}s",
+      "generatedAlt": "生成画像",
+      "resultExpires": "ページを更新すると画像は消えます。できるだけ早くダウンロードしてください。",
+      "historyResultAlt": "履歴結果",
+      "inputAlt": "入力",
+      "fileTooLarge": "ファイル {name} は30MBの制限を超えています",
+      "maxImagesAllowed": "最大{max}枚までアップロードできます。{remaining}枚のみ追加されます。",
+      "uploadMissingUrl": "アップロードURLが返されませんでした",
+      "uploadRequestFailed": "画像アップロードリクエストに失敗しました。アップロードサービス設定とネットワーク接続を確認してください。",
+      "uploadFailedWithStatus": "アップロード失敗：{status}",
+      "uploadUrlHint": "アップロードURLが完全で、サービスがデプロイ済みであることを確認してください。",
+      "serverNonJson": "サーバーがJSON以外のレスポンスを返しました。",
+      "requestFailed": "リクエスト失敗：",
+      "checkStatusFailed": "ステータス確認に失敗しました（{status}）",
+      "generateFailed": "画像生成に失敗しました",
+      "noResult": "タスクIDまたは画像URLを受信できませんでした",
+      "networkError": "ネットワークエラー",
+      "networkFailed": "ネットワーク接続に失敗しました。接続を確認して再試行してください。",
+      "serviceUnstable": "生成サービスが一時的に不安定です。少し待ってから再試行してください。",
+      "imageGenerationFailed": "画像生成に失敗しました",
+      "generationFailedWithMessage": "生成に失敗しました：{message}",
+      "generationTimeout": "生成がタイムアウトしました",
+      "dailyLimitReached": "本日の無料上限に達しました。明日もう一度お試しください。",
+      "recreateMissingInput": "入力画像が見つかりません。再作成のためテキストから画像に切り替えました。"
     }
   },
   "imageCompressor": {

@@ -208,6 +208,8 @@
     "termsOfService": "Termos de Serviço",
     "contact": "Contato",
     "language": "Idioma",
+    "footerNavigation": "Navegação do rodapé",
+    "noToolsAvailable": "Nenhuma ferramenta disponível",
     "copyright": "© {year} Toolaze Lab. Todos os direitos reservados.",
     "tagline": "Ferramentas Online Gratuitas • Nenhum Registro Necessário • 100% Privado"
   },
@@ -219,7 +221,9 @@
     "fontGenerator": "Gerador de Fontes",
     "aboutUs": "Sobre Nós",
     "privacyPolicy": "Política de Privacidade",
-    "termsOfService": "Termos de Serviço"
+    "termsOfService": "Termos de Serviço",
+    "emojiCopyAndPaste": "Copiar e colar emojis",
+    "watermarkRemover": "Removedor de marca d’água"
   },
   "about": {
     "metadata": {
@@ -291,13 +295,25 @@
         "retrySuccessful": "Tentativa bem-sucedida:",
         "retryTimeout": "Timeout de tentativa:",
         "retryFailed": "Tentativa falhou:",
-        "listCleared": "Lista limpa"
+        "listCleared": "Lista limpa",
+        "sharedSuccessfully": "Compartilhado com sucesso",
+        "imageRemoved": "Imagem removida",
+        "filesLoadedFromHomepage": "{count} arquivo(s) carregado(s) da página inicial",
+        "heicWebAssemblyRequired": "A conversão HEIC requer suporte a WebAssembly. Seu navegador pode não oferecer suporte.",
+        "unsupportedFormat": "Formato não compatível:",
+        "heicBrowserOnly": "A conversão HEIC só está disponível no navegador",
+        "invalidConversionResult": "Resultado de conversão inválido"
       },
       "gallery": {
         "title": "Visualização da Galeria",
         "added": "Adicionado:",
         "original": "Original:",
-        "new": "Novo:"
+        "new": "Novo:",
+        "preview": "Prévia"
+      },
+      "actions": {
+        "close": "Fechar",
+        "delete": "Excluir"
       },
       "status": {
         "waiting": "Aguardando",
@@ -329,6 +345,32 @@
     "viewAllTools": {
       "related": "Ver Todas as Ferramentas Relacionadas",
       "all": "Ver Todas as Ferramentas"
+    },
+    "modelPlaceholders": {
+      "comingSoon": "Em breve",
+      "klingTagline": "4K • 6-Shot • Áudio multilíngue",
+      "klingDescription": "O gerador de vídeo IA Kling 3.0 estará disponível aqui em breve.",
+      "nanoBanana2Tagline": "Qualidade pro • Velocidade flash • 4K",
+      "nanoBanana2Description": "O gerador de imagens IA Nano Banana 2 estará disponível aqui em breve.",
+      "seedanceDescription": "O gerador de vídeo IA Seedance 2.0 estará disponível aqui em breve.",
+      "native4k": "🎥 4K nativo",
+      "multilingualAudio": "🔊 Áudio multilíngue",
+      "flashSpeed": "⚡ Velocidade flash",
+      "quality4k": "🎨 Qualidade 4K",
+      "characterConsistency": "👥 Consistência de 5 personagens",
+      "fastGeneration": "⚡ Geração rápida",
+      "quality1080p": "🎬 Qualidade 1080p"
+    },
+    "specs": {
+      "title": "Especificações Técnicas",
+      "engine": "Motor",
+      "capacity": "Capacidade",
+      "limit": "Limite",
+      "logic": "Lógica",
+      "privacy": "Privacidade",
+      "batch": "Lote",
+      "formats": "Formatos",
+      "output": "Saída"
     },
     "fontGenerator": {
       "selectFontStyle": "Selecione um estilo de fonte",
@@ -390,6 +432,130 @@
         "bubble": "Bolha",
         "starWars": "Star Wars"
       }
+    },
+    "aiImageModels": {
+      "moreTools": "Mais modelos de imagem com IA"
+    },
+    "aiVideoModels": {
+      "moreTools": "Mais modelos de vídeo com IA"
+    },
+    "allFontGeneratorTools": "Todas as ferramentas de gerador de fontes",
+    "allFontGeneratorToolsDesc": "Explore todas as ferramentas de gerador de fontes disponíveis. Crie estilos cursivos, decorativos, em negrito, itálico, góticos, de tatuagem e muito mais.",
+    "emojiCopyAndPaste": {
+      "moreTools": "Mais ferramentas de copiar e colar emojis"
+    },
+    "imageCompressor": {
+      "moreTools": "Mais ferramentas de compressão de imagens"
+    },
+    "imageConverter": {
+      "moreTools": "Mais ferramentas de conversão de imagens"
+    },
+    "nanoBananaPro": {
+      "moreTools": "Explore mais ferramentas gratuitas de IA"
+    },
+    "primaryFontGeneratorToolsDesc": "Ferramentas essenciais de gerador de fontes para usos gerais.",
+    "seedance2": {
+      "moreTools": "Mais ferramentas Seedance 2.0"
+    },
+    "specializedFontGeneratorToolsDesc": "Ferramentas especializadas de gerador de fontes para plataformas e casos de uso específicos.",
+    "watermarkRemoverTool": {
+      "uploadTitle": "Clique ou arraste a imagem aqui",
+      "uploadFormats": "JPG, PNG, WebP (máx. 30 MB). Menos de 2 MB ou 1280 px recomendado para processar mais rápido.",
+      "uploadNew": "Enviar nova",
+      "generating": "Gerando...",
+      "regenerate": "Gerar novamente",
+      "download": "Baixar",
+      "downloading": "Baixando...",
+      "compareTitle": "Pressione e segure para comparar com o original",
+      "compareAria": "Comparar com o original",
+      "back": "Voltar",
+      "originalAlt": "Original",
+      "resultAlt": "Resultado",
+      "invalidImage": "Selecione um arquivo de imagem (JPG, PNG, WebP etc.)",
+      "tooLarge": "A imagem deve ter menos de 30 MB",
+      "success": "Marca d’água removida com sucesso",
+      "downloadStarted": "Download iniciado",
+      "downloadFailed": "Falha no download",
+      "requestFailed": "Solicitação falhou: {status}",
+      "noImageUrl": "A resposta não contém URL da imagem"
+    },
+    "photoRestorationTool": {
+      "invalidImage": "Envie um arquivo de imagem válido.",
+      "tooLarge": "A imagem deve ter menos de 30 MB.",
+      "dailyLimit": "Limite diário gratuito atingido. Volte amanhã!",
+      "uploadFailed": "Falha ao enviar a imagem.",
+      "createFailed": "Não foi possível criar a tarefa de restauração.",
+      "restorationFailed": "A restauração falhou.",
+      "timeout": "Tempo limite da restauração. Tente novamente.",
+      "uploadTitle": "Arraste e solte a imagem aqui",
+      "uploadFormats": "JPG, JPEG, PNG • Máx. 30 MB",
+      "uploadButton": "Enviar imagem",
+      "generating": "Gerando...",
+      "generate": "Gerar",
+      "regenerate": "Gerar novamente",
+      "download": "Baixar",
+      "uploadPreviewAlt": "Prévia da imagem enviada",
+      "removeUploadedImage": "Remover imagem enviada",
+      "resultAlt": "Foto restaurada",
+      "oldExampleAlt": "Foto antiga danificada em preto e branco",
+      "restoredExampleAlt": "Exemplo de foto restaurada",
+      "previewAlt": "Prévia"
+    },
+    "nanoBananaTool": {
+      "imageToImage": "Imagem para imagem",
+      "textToImage": "Texto para imagem",
+      "models": "Modelos",
+      "uploadUpTo": "Envie até {count} imagens",
+      "upload": "Enviar",
+      "fileLimit": "JPG, PNG, WEBP até 30 MB cada · máx. {count} imagens",
+      "delete": "Excluir",
+      "replace": "Substituir",
+      "previewSoon": "Prévia em breve",
+      "styleTemplates": "Modelos de estilo",
+      "aspectRatios": "Proporções",
+      "prompt": "Prompt",
+      "promptPlaceholder": "Descreva o conteúdo da imagem",
+      "outputAspectRatios": "Proporções de saída",
+      "resolution": "Resolução",
+      "highResUnavailable": "2K e 4K estão temporariamente indisponíveis.",
+      "outputFormat": "Formato de saída",
+      "sampleImage": "Imagem de exemplo",
+      "inputImage": "Imagem de entrada",
+      "history": "Histórico",
+      "noHistory": "Ainda não há histórico. Gere uma imagem para vê-la aqui.",
+      "recreate": "Recriar",
+      "download": "Baixar",
+      "downloading": "Baixando...",
+      "copyPrompt": "Copiar prompt",
+      "promptCopied": "Prompt copiado para a área de transferência",
+      "promptCopyFailed": "Falha ao copiar o prompt",
+      "promptInserted": "Prompt inserido. Você já pode gerar.",
+      "generate": "Gerar",
+      "generating": "Gerando...",
+      "generatingSeconds": "Gerando... {seconds}s",
+      "generatedAlt": "Gerada",
+      "resultExpires": "A imagem desaparecerá quando você atualizar a página. Baixe-a o quanto antes.",
+      "historyResultAlt": "Resultado do histórico",
+      "inputAlt": "Entrada",
+      "fileTooLarge": "O arquivo {name} excede o limite de 30 MB",
+      "maxImagesAllowed": "Máximo de {max} imagens permitido. Apenas {remaining} serão adicionadas.",
+      "uploadMissingUrl": "O envio não retornou URL",
+      "uploadRequestFailed": "A solicitação de upload de imagem falhou. Verifique a configuração do serviço de upload e a conexão de rede.",
+      "uploadFailedWithStatus": "Upload falhou: {status}",
+      "uploadUrlHint": "Verifique se a URL de upload está completa e se o serviço foi implantado.",
+      "serverNonJson": "O servidor retornou uma resposta que não é JSON.",
+      "requestFailed": "Solicitação falhou:",
+      "checkStatusFailed": "Falha ao verificar status ({status})",
+      "generateFailed": "Falha ao gerar imagem",
+      "noResult": "Nenhum ID de tarefa ou URL de imagem recebido",
+      "networkError": "Erro de rede",
+      "networkFailed": "Falha na conexão de rede. Verifique sua conexão e tente novamente.",
+      "serviceUnstable": "O serviço de geração está temporariamente instável. Tente novamente em instantes.",
+      "imageGenerationFailed": "Falha na geração da imagem",
+      "generationFailedWithMessage": "Geração falhou: {message}",
+      "generationTimeout": "Tempo de geração esgotado",
+      "dailyLimitReached": "O limite diário gratuito foi atingido. Volte amanhã.",
+      "recreateMissingInput": "Nenhuma imagem de entrada encontrada. Alterado para texto para imagem para recriar."
     }
   },
   "imageCompressor": {
