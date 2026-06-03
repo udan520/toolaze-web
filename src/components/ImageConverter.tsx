@@ -21,10 +21,11 @@ type ImageFormat = 'jpg' | 'png' | 'webp'
 
 interface ImageConverterProps {
   initialFormat?: string
+  initialTranslations?: any
 }
 
-export default function ImageConverter({ initialFormat }: ImageConverterProps) {
-  const t = useCommonTranslations()
+export default function ImageConverter({ initialFormat, initialTranslations }: ImageConverterProps) {
+  const t = useCommonTranslations(initialTranslations)
   const toolT = t?.common?.tool || {
     dropZone: { title: 'Click or Drag Images/Folders Here', formats: 'JPG, PNG, WebP, BMP, HEIC (Max 100 files)' },
     controls: { targetSize: 'Target Size:', convertTo: 'Convert to:', processing: 'Processing...', startConversion: 'Start Batch Conversion', downloadAll: 'Download All (ZIP)', download: 'Download', clear: 'Clear All', retry: 'Retry' },

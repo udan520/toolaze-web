@@ -19,10 +19,11 @@ interface FileItem {
 
 interface ImageCompressorProps {
   initialTarget?: string | number
+  initialTranslations?: any
 }
 
-export default function ImageCompressor({ initialTarget }: ImageCompressorProps) {
-  const t = useCommonTranslations()
+export default function ImageCompressor({ initialTarget, initialTranslations }: ImageCompressorProps) {
+  const t = useCommonTranslations(initialTranslations)
   const toolT = t?.common?.tool || {
     dropZone: { title: 'Click or Drag Images/Folders Here', formats: 'JPG, PNG, WebP, BMP, HEIC (Max 100 files)' },
     controls: { targetSize: 'Target Size:', processing: 'Processing...', startCompression: 'Start Batch Compression', downloadAll: 'Download All (ZIP)', download: 'Download', clear: 'Clear All', retry: 'Retry' },

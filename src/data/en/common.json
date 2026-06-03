@@ -16,7 +16,8 @@
     "gptImage2": "GPT Image 2",
     "seedance2": "Seedance 2.0",
     "kling3": "Kling 3.0",
-    "aboutUs": "About Us"
+    "aboutUs": "About Us",
+    "viewAllAiTools": "View All AI Tools"
   },
   "home": {
     "metadata": {
@@ -223,7 +224,11 @@
     "emojiCopyAndPaste": "Emoji Copy & Paste",
     "aboutUs": "About Us",
     "privacyPolicy": "Privacy Policy",
-    "termsOfService": "Terms of Service"
+    "termsOfService": "Terms of Service",
+    "aiTools": "AI Tools",
+    "model": "Model",
+    "photoRestoration": "Photo Restoration",
+    "aiCouplePhotoMaker": "AI Couple Photo Maker"
   },
   "about": {
     "metadata": {
@@ -551,6 +556,21 @@
       "generationTimeout": "Generation timeout",
       "dailyLimitReached": "Daily free limit reached. Please come back tomorrow!",
       "recreateMissingInput": "No input image found. Switched to Text to Image for recreate."
+    },
+    "emojiPicker": {
+      "categoriesTitle": "Categories",
+      "copied": "Copied!",
+      "categories": {
+        "suggested": "Frequently Used",
+        "smileysPeople": "Smileys & People",
+        "animalsNature": "Animals & Nature",
+        "foodDrink": "Food & Drink",
+        "travelPlaces": "Travel & Places",
+        "activities": "Activities",
+        "objects": "Objects",
+        "symbols": "Symbols",
+        "flags": "Flags"
+      }
     }
   },
   "privacy": {

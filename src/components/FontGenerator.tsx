@@ -70,6 +70,10 @@ const defaultTranslations = {
   }
 }
 
+interface FontGeneratorProps {
+  initialTranslations?: any
+}
+
 // 加载翻译
 async function loadTranslations(locale: string) {
   try {
@@ -232,7 +236,7 @@ const fontCategories = [
   }
 ]
 
-export default function FontGenerator() {
+export default function FontGenerator({ initialTranslations }: FontGeneratorProps = {}) {
   const router = useRouter()
   const pathname = usePathname()
   const inputBoxRef = useRef<HTMLDivElement>(null)
@@ -241,7 +245,7 @@ export default function FontGenerator() {
   const categoryButtonRefs = useRef<Record<string, HTMLButtonElement | null>>({})
   
   // 多语言支持
-  const [translations, setTranslations] = useState(defaultTranslations)
+  const [translations, setTranslations] = useState(initialTranslations?.common?.fontGenerator || defaultTranslations)
   const [currentLocale, setCurrentLocale] = useState('en')
   const [mounted, setMounted] = useState(false)
   
@@ -267,7 +271,7 @@ export default function FontGenerator() {
   // 服务器和客户端使用相同的初始值，避免水合错误
   const [inputText, setInputText] = useState(() => {
     // 服务器和客户端都使用相同的默认值
-    return defaultTranslations.defaultText || 'Toolaze Font Generator 123'
+    return initialTranslations?.common?.fontGenerator?.defaultText || defaultTranslations.defaultText || 'Toolaze Font Generator 123'
   })
   
   // 客户端挂载后，从 localStorage 读取保存的值

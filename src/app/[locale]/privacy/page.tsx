@@ -92,7 +92,7 @@ export default async function PrivacyPage({ params }: PageProps) {
   
   return (
     <>
-      <Navigation />
+      <Navigation initialTranslations={t} />
       
       <Breadcrumb items={[
         { label: breadcrumbT.home, href: homeHref },
@@ -187,7 +187,7 @@ export default async function PrivacyPage({ params }: PageProps) {
         </div>
       </main>
 
-      <Footer />
+      <Footer initialTranslations={t} />
     </>
   )
 }

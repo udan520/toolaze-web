@@ -37,7 +37,8 @@ const defaultNavTranslations = {
   seedance2: 'Seedance 2.0',
   kling3: 'Kling 3.0',
   promptLibrary: 'Prompts',
-  aboutUs: 'About Us'
+  aboutUs: 'About Us',
+  viewAllAiTools: 'View All AI Tools'
 }
 
 const AI_TOOLS_DEMO_IMAGES = {
@@ -92,12 +93,25 @@ function extractPageTitle(h1: string): string {
   return cleanH1.trim() || h1.replace(/<[^>]*>/g, '')
 }
 
-export default function Navigation() {
+function getInitialNavTranslations(initialTranslations?: any) {
+  if (!initialTranslations) return defaultNavTranslations
+  return {
+    ...defaultNavTranslations,
+    ...(initialTranslations.nav || {}),
+    language: initialTranslations.footer?.language || defaultNavTranslations.language,
+  }
+}
+
+interface NavigationProps {
+  initialTranslations?: any
+}
+
+export default function Navigation({ initialTranslations }: NavigationProps = {}) {
   const navRef = useRef<HTMLElement>(null)
   const menuRef = useRef<HTMLDivElement>(null)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [expandedSubmenus, setExpandedSubmenus] = useState<Set<string>>(new Set())
-  const [navTranslations, setNavTranslations] = useState(defaultNavTranslations)
+  const [navTranslations, setNavTranslations] = useState(getInitialNavTranslations(initialTranslations))
   const [thirdLevelMenuData, setThirdLevelMenuData] = useState<Record<string, Array<{slug: string, title: string, href: string}>>>({
     'image-compressor': [],
     'image-converter': [],
@@ -641,7 +655,7 @@ export default function Navigation() {
                   }}
                   className="block px-4 pt-2 pb-1 text-xs font-medium tracking-normal text-indigo-600 hover:bg-indigo-50 transition-colors"
                 >
-                  View All AI Tools
+                  {navTranslations.viewAllAiTools || defaultNavTranslations.viewAllAiTools}
                 </Link>
               </div>
             </div>
@@ -956,7 +970,7 @@ export default function Navigation() {
                     }}
                     className="flex items-center gap-3 px-3 py-2 text-xs font-medium tracking-normal text-indigo-600 hover:bg-indigo-50 rounded-lg transition-colors"
                   >
-                    View All AI Tools
+                    {navTranslations.viewAllAiTools || defaultNavTranslations.viewAllAiTools}
                   </Link>
                 </div>
               </div>

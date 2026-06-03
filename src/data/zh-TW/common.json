@@ -16,7 +16,8 @@
     "gptImage2": "GPT Image 2",
     "seedance2": "Seedance 2.0",
     "kling3": "Kling 3.0",
-    "aboutUs": "關於我們"
+    "aboutUs": "關於我們",
+    "viewAllAiTools": "查看所有 AI 工具"
   },
   "home": {
     "metadata": {
@@ -223,7 +224,11 @@
     "privacyPolicy": "隱私政策",
     "termsOfService": "服務條款",
     "emojiCopyAndPaste": "表情符號複製貼上",
-    "watermarkRemover": "浮水印移除工具"
+    "watermarkRemover": "浮水印移除工具",
+    "aiTools": "AI 工具",
+    "model": "模型",
+    "photoRestoration": "照片修復",
+    "aiCouplePhotoMaker": "AI 情侶合照"
   },
   "about": {
     "metadata": {
@@ -556,6 +561,21 @@
       "generationTimeout": "生成逾時",
       "dailyLimitReached": "今日免費額度已用完，請明天再來！",
       "recreateMissingInput": "找不到輸入圖片，已切換為文字轉圖片以重新建立。"
+    },
+    "emojiPicker": {
+      "categoriesTitle": "分類",
+      "copied": "已複製！",
+      "categories": {
+        "suggested": "常用",
+        "smileysPeople": "表情與人物",
+        "animalsNature": "動物與自然",
+        "foodDrink": "食物與飲品",
+        "travelPlaces": "旅行與地點",
+        "activities": "活動",
+        "objects": "物品",
+        "symbols": "符號",
+        "flags": "旗幟"
+      }
     }
   },
   "imageCompressor": {

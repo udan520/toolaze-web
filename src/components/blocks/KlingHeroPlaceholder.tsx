@@ -6,8 +6,12 @@ import { useCommonTranslations } from '@/lib/use-common-translations'
  * Kling 3.0 Hero 占位组件
  * 顶部暂时没有功能，显示占位卡片
  */
-export default function KlingHeroPlaceholder() {
-  const text = useCommonTranslations()?.common?.modelPlaceholders
+interface KlingHeroPlaceholderProps {
+  initialTranslations?: any
+}
+
+export default function KlingHeroPlaceholder({ initialTranslations }: KlingHeroPlaceholderProps) {
+  const text = useCommonTranslations(initialTranslations)?.common?.modelPlaceholders
   return (
     <div className="max-w-xl mx-auto relative z-10">
       <div className="bg-white rounded-super p-2 shadow-soft border border-indigo-50">

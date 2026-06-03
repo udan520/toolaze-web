@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import dynamic from 'next/dynamic'
+import { useCommonTranslations } from '@/lib/use-common-translations'
 
 // 动态导入 emoji-picker-react（避免 SSR 问题）
 // 在静态导出模式下，直接导入枚举值会导致模块解析错误
@@ -16,23 +17,25 @@ const SKIN_TONE_PICKER_LOCATION_PREVIEW = 'PREVIEW' as const
 
 // Emoji 分类
 const EMOJI_CATEGORIES = [
-  { id: 'suggested', label: 'Frequently Used', icon: '⭐' },
-  { id: 'smileys_people', label: 'Smileys & People', icon: '😀' },
-  { id: 'animals_nature', label: 'Animals & Nature', icon: '🐶' },
-  { id: 'food_drink', label: 'Food & Drink', icon: '🍕' },
-  { id: 'travel_places', label: 'Travel & Places', icon: '✈️' },
-  { id: 'activities', label: 'Activities', icon: '⚽' },
-  { id: 'objects', label: 'Objects', icon: '💡' },
-  { id: 'symbols', label: 'Symbols', icon: '❤️' },
-  { id: 'flags', label: 'Flags', icon: '🏳️' },
+  { id: 'suggested', labelKey: 'suggested', fallbackLabel: 'Frequently Used', icon: '⭐' },
+  { id: 'smileys_people', labelKey: 'smileysPeople', fallbackLabel: 'Smileys & People', icon: '😀' },
+  { id: 'animals_nature', labelKey: 'animalsNature', fallbackLabel: 'Animals & Nature', icon: '🐶' },
+  { id: 'food_drink', labelKey: 'foodDrink', fallbackLabel: 'Food & Drink', icon: '🍕' },
+  { id: 'travel_places', labelKey: 'travelPlaces', fallbackLabel: 'Travel & Places', icon: '✈️' },
+  { id: 'activities', labelKey: 'activities', fallbackLabel: 'Activities', icon: '⚽' },
+  { id: 'objects', labelKey: 'objects', fallbackLabel: 'Objects', icon: '💡' },
+  { id: 'symbols', labelKey: 'symbols', fallbackLabel: 'Symbols', icon: '❤️' },
+  { id: 'flags', labelKey: 'flags', fallbackLabel: 'Flags', icon: '🏳️' },
 ]
 
 interface EmojiCategoryPageProps {
   category?: string
   className?: string
+  initialTranslations?: any
 }
 
-export default function EmojiCategoryPage({ category, className = '' }: EmojiCategoryPageProps) {
+export default function EmojiCategoryPage({ category, className = '', initialTranslations }: EmojiCategoryPageProps) {
+  const emojiText = useCommonTranslations(initialTranslations)?.common?.emojiPicker
   const [selectedCategory, setSelectedCategory] = useState(category || 'suggested')
   const [recentEmojis, setRecentEmojis] = useState<string[]>([])
   const [copiedEmoji, setCopiedEmoji] = useState<string | null>(null)
@@ -149,7 +152,7 @@ export default function EmojiCategoryPage({ category, className = '' }: EmojiCat
     <div className={['flex flex-col lg:flex-row gap-6', className].filter(Boolean).join(' ')}>
       {/* 左侧分类导航：桌面端纵向，H5 端横向滑动 */}
       <div className="w-full lg:w-64 bg-white rounded-xl p-4 border border-slate-200 shadow-sm">
-        <h3 className="text-sm font-semibold text-slate-700 mb-3">Categories</h3>
+        <h3 className="text-sm font-semibold text-slate-700 mb-3">{emojiText?.categoriesTitle || 'Categories'}</h3>
         <div className="flex flex-row lg:flex-col gap-2 overflow-x-auto lg:overflow-visible pb-2 lg:pb-0 scrollbar-hide">
           {EMOJI_CATEGORIES.map((cat) => (
             <button
@@ -162,7 +165,7 @@ export default function EmojiCategoryPage({ category, className = '' }: EmojiCat
               }`}
             >
               <span className="mr-2">{cat.icon}</span>
-              {cat.label}
+              {emojiText?.categories?.[cat.labelKey] || cat.fallbackLabel}
             </button>
           ))}
         </div>
@@ -187,7 +190,7 @@ export default function EmojiCategoryPage({ category, className = '' }: EmojiCat
           {/* Copied 通知 */}
           {copiedEmoji && (
             <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-full mb-2 bg-indigo-600 text-white px-4 py-2 rounded-lg shadow-lg text-sm font-medium z-50">
-              Copied! {copiedEmoji}
+              {emojiText?.copied || 'Copied!'} {copiedEmoji}
             </div>
           )}
         </div>

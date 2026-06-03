@@ -81,7 +81,7 @@ export default async function AllToolsPage({ params }: PageProps) {
   
   return (
     <>
-      <Navigation />
+      <Navigation initialTranslations={t} />
       
       <Breadcrumb items={[
         { label: breadcrumbT.home, href: homeHref },
@@ -166,7 +166,7 @@ export default async function AllToolsPage({ params }: PageProps) {
         )}
       </main>
 
-      <Footer />
+      <Footer initialTranslations={t} />
     </>
   )
 }

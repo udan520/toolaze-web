@@ -16,7 +16,8 @@
     "gptImage2": "GPT Image 2",
     "seedance2": "Seedance 2.0",
     "kling3": "Kling 3.0",
-    "aboutUs": "Sobre Nós"
+    "aboutUs": "Sobre Nós",
+    "viewAllAiTools": "Ver todas as ferramentas IA"
   },
   "home": {
     "metadata": {
@@ -223,7 +224,11 @@
     "privacyPolicy": "Política de Privacidade",
     "termsOfService": "Termos de Serviço",
     "emojiCopyAndPaste": "Copiar e colar emojis",
-    "watermarkRemover": "Removedor de marca d’água"
+    "watermarkRemover": "Removedor de marca d’água",
+    "aiTools": "Ferramentas de IA",
+    "model": "Modelo",
+    "photoRestoration": "Restauração de fotos",
+    "aiCouplePhotoMaker": "Foto de casal IA"
   },
   "about": {
     "metadata": {
@@ -556,6 +561,21 @@
       "generationTimeout": "Tempo de geração esgotado",
       "dailyLimitReached": "O limite diário gratuito foi atingido. Volte amanhã.",
       "recreateMissingInput": "Nenhuma imagem de entrada encontrada. Alterado para texto para imagem para recriar."
+    },
+    "emojiPicker": {
+      "categoriesTitle": "Categorias",
+      "copied": "Copiado!",
+      "categories": {
+        "suggested": "Usados com frequência",
+        "smileysPeople": "Carinhas e pessoas",
+        "animalsNature": "Animais e natureza",
+        "foodDrink": "Comida e bebida",
+        "travelPlaces": "Viagens e lugares",
+        "activities": "Atividades",
+        "objects": "Objetos",
+        "symbols": "Símbolos",
+        "flags": "Bandeiras"
+      }
     }
   },
   "imageCompressor": {

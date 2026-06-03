@@ -6,8 +6,12 @@ import { useCommonTranslations } from '@/lib/use-common-translations'
  * Nano Banana 2 Hero 占位组件
  * 顶部暂时没有功能，显示占位卡片
  */
-export default function NanoBanana2HeroPlaceholder() {
-  const text = useCommonTranslations()?.common?.modelPlaceholders
+interface NanoBanana2HeroPlaceholderProps {
+  initialTranslations?: any
+}
+
+export default function NanoBanana2HeroPlaceholder({ initialTranslations }: NanoBanana2HeroPlaceholderProps) {
+  const text = useCommonTranslations(initialTranslations)?.common?.modelPlaceholders
   return (
     <div className="max-w-xl mx-auto relative z-10">
       <div className="bg-white rounded-super p-2 shadow-soft border border-indigo-50">

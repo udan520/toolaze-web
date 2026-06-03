@@ -127,14 +127,27 @@ function extractPageTitle(h1: string): string {
   return cleanH1.trim() || h1.replace(/<[^>]*>/g, '')
 }
 
-export default function Footer() {
+function getInitialFooterTranslations(initialTranslations?: any) {
+  if (!initialTranslations) return defaultTranslations
+  return {
+    ...defaultTranslations,
+    ...(initialTranslations.footer || {}),
+    ...(initialTranslations.nav || {}),
+  }
+}
+
+interface FooterProps {
+  initialTranslations?: any
+}
+
+export default function Footer({ initialTranslations }: FooterProps = {}) {
   // Use a static year initially to avoid hydration mismatch
   // The year will be updated on client side after hydration
   const [currentYear, setCurrentYear] = useState(2024)
   const [currentLocale, setCurrentLocale] = useState<string>('en')
   const [preferredLocale, setPreferredLocale] = useState<string>('en')
   const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false)
-  const [translations, setTranslations] = useState(defaultTranslations)
+  const [translations, setTranslations] = useState(getInitialFooterTranslations(initialTranslations))
   const [isMounted, setIsMounted] = useState(false)
   const [footerMenuData, setFooterMenuData] = useState<{
     'image-compressor': Array<{slug: string, title: string, href: string}>

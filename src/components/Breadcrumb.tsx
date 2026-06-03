@@ -19,9 +19,14 @@ const locales = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
 const defaultBreadcrumbTranslations = {
   home: 'Home',
   quickTools: 'Quick Tools',
+  aiTools: 'AI Tools',
   imageCompression: 'Image Compression',
   imageConverter: 'Image Converter',
+  watermarkRemover: 'Watermark Remover',
+  photoRestoration: 'Photo Restoration',
+  aiCouplePhotoMaker: 'AI Couple Photo Maker',
   fontGenerator: 'Font Generator',
+  emojiCopyAndPaste: 'Emoji Copy & Paste',
   model: 'Model',
   aboutUs: 'About Us',
   privacyPolicy: 'Privacy Policy',
@@ -75,9 +80,14 @@ export default function Breadcrumb({ items }: BreadcrumbProps) {
   const getTranslatedLabel = (label: string): string => {
     if (label === 'Home') return translations.home
     if (label === 'Quick Tools') return translations.quickTools
+    if (label === 'AI Tools') return translations.aiTools || 'AI Tools'
     if (label === 'Image Compression') return translations.imageCompression
     if (label === 'Image Converter') return translations.imageConverter
+    if (label === 'Watermark Remover') return translations.watermarkRemover || 'Watermark Remover'
+    if (label === 'Photo Restoration') return translations.photoRestoration || 'Photo Restoration'
+    if (label === 'AI Couple Photo Maker') return translations.aiCouplePhotoMaker || 'AI Couple Photo Maker'
     if (label === 'Font Generator') return translations.fontGenerator
+    if (label === 'Emoji Copy & Paste') return translations.emojiCopyAndPaste || 'Emoji Copy & Paste'
     if (label === 'Model') return translations.model || 'Model'
     if (label === 'About Us') return translations.aboutUs
     if (label === 'Privacy Policy') return translations.privacyPolicy

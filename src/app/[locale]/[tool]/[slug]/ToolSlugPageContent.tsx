@@ -363,7 +363,7 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdSchema) }}
         />
         
-        <Navigation />
+        <Navigation initialTranslations={t} />
         
         <Breadcrumb items={breadcrumbItems} />
 
@@ -373,6 +373,7 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
             <FontGeneratorHero 
               h1={content.hero?.h1 || 'Font Generator'}
               desc={content.hero?.desc || 'Generate custom fonts online for free. Create beautiful text styles instantly.'}
+              initialTranslations={t}
             />
           ) : isEmoji ? (
             <header className="bg-[#F8FAFF] pb-8 md:pb-12 px-6">
@@ -391,7 +392,7 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
                 )}
               </div>
               <div className="max-w-6xl mx-auto">
-                <EmojiCategoryPage />
+                <EmojiCategoryPage initialTranslations={t} />
               </div>
             </header>
           ) : isSeedance ? (
@@ -410,7 +411,7 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
                   </p>
                 )}
               </div>
-              <SeedanceHeroPlaceholder />
+              <SeedanceHeroPlaceholder initialTranslations={t} />
             </header>
           ) : (
             <header className="bg-[#F8FAFF] pb-8 md:pb-12 px-6">
@@ -456,11 +457,11 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
                 )}
               </div>
               {topComp === 'image-converter' || topComp === 'image-conversion' ? (
-                <ImageConverter initialFormat={slug} />
+                <ImageConverter initialFormat={slug} initialTranslations={t} />
               ) : isWatermarkRemover ? (
-                <WatermarkRemover />
+                <WatermarkRemover initialTranslations={t} />
               ) : (
-                <ImageCompressor initialTarget={slug} />
+                <ImageCompressor initialTarget={slug} initialTranslations={t} />
               )}
             </header>
           )}
@@ -634,7 +635,7 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
           )}
         </main>
 
-        <Footer />
+        <Footer initialTranslations={t} />
       </>
     )
   } catch (error) {

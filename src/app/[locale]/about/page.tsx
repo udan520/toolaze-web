@@ -76,7 +76,7 @@ export default async function AboutPage({ params }: PageProps) {
   
   return (
     <>
-      <Navigation />
+      <Navigation initialTranslations={t} />
       
       <Breadcrumb items={[
         { label: breadcrumbT.home, href: homeHref },
@@ -169,7 +169,7 @@ export default async function AboutPage({ params }: PageProps) {
         </div>
       </main>
 
-      <Footer />
+      <Footer initialTranslations={t} />
     </>
   )
 }

@@ -61,8 +61,8 @@ async function loadClientTranslations(locale: string) {
   }
 }
 
-export function useCommonTranslations() {
-  const [translations, setTranslations] = useState<any>(defaultTranslations)
+export function useCommonTranslations(initialTranslations?: any) {
+  const [translations, setTranslations] = useState<any>(initialTranslations || defaultTranslations)
   const [isMounted, setIsMounted] = useState(false)
   const pathname = usePathname()
   
@@ -85,7 +85,7 @@ export function useCommonTranslations() {
   
   // 在服务器端和首次渲染时返回默认翻译，避免 hydration mismatch
   if (!isMounted) {
-    return defaultTranslations
+    return initialTranslations || defaultTranslations
   }
   
   return translations || defaultTranslations

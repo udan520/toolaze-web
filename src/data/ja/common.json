@@ -16,7 +16,8 @@
     "gptImage2": "GPT Image 2",
     "seedance2": "Seedance 2.0",
     "kling3": "Kling 3.0",
-    "aboutUs": "私たちについて"
+    "aboutUs": "私たちについて",
+    "viewAllAiTools": "すべてのAIツールを表示"
   },
   "home": {
     "metadata": {
@@ -223,7 +224,11 @@
     "termsOfService": "利用規約",
     "emojiCopyAndPaste": "絵文字コピー＆ペースト",
     "fontGenerator": "フォントジェネレーター",
-    "watermarkRemover": "ウォーターマーク削除"
+    "watermarkRemover": "ウォーターマーク削除",
+    "aiTools": "AIツール",
+    "model": "モデル",
+    "photoRestoration": "写真復元",
+    "aiCouplePhotoMaker": "AIカップルフォト"
   },
   "about": {
     "metadata": {
@@ -568,6 +573,21 @@
       "generationTimeout": "生成がタイムアウトしました",
       "dailyLimitReached": "本日の無料上限に達しました。明日もう一度お試しください。",
       "recreateMissingInput": "入力画像が見つかりません。再作成のためテキストから画像に切り替えました。"
+    },
+    "emojiPicker": {
+      "categoriesTitle": "カテゴリー",
+      "copied": "コピーしました！",
+      "categories": {
+        "suggested": "よく使う",
+        "smileysPeople": "スマイルと人物",
+        "animalsNature": "動物と自然",
+        "foodDrink": "食べ物と飲み物",
+        "travelPlaces": "旅行と場所",
+        "activities": "アクティビティ",
+        "objects": "物",
+        "symbols": "記号",
+        "flags": "旗"
+      }
     }
   },
   "imageCompressor": {

@@ -89,6 +89,7 @@ interface NanoBananaToolProps {
   modelName?: string
   dailyLimitStorageKey?: string
   presetMode?: 'default' | 'ai-couple-photo-maker'
+  initialTranslations?: any
 }
 
 interface ModelOption {
@@ -233,10 +234,11 @@ export default function NanoBananaTool({
   modelName = 'Nano Banana Pro',
   dailyLimitStorageKey = 'nano_banana_last_used_date',
   presetMode = 'default',
+  initialTranslations,
 }: NanoBananaToolProps = {}) {
   const router = useRouter()
   const pathname = usePathname()
-  const commonTranslations = useCommonTranslations()
+  const commonTranslations = useCommonTranslations(initialTranslations)
   const commonToolText = commonTranslations?.common?.tool
   const nanoText = commonTranslations?.common?.nanoBananaTool || {
     imageToImage: 'Image to Image',

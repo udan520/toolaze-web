@@ -5,6 +5,7 @@ import React from 'react'
 interface FontGeneratorHeroProps {
   h1: string | React.ReactNode
   desc: string
+  initialTranslations?: any
 }
 
 // 智能识别核心关键词并应用渐变
@@ -58,7 +59,7 @@ function renderH1WithGradient(h1: string | React.ReactNode): React.ReactNode {
   return <>{result}</>
 }
 
-export default function FontGeneratorHero({ h1, desc }: FontGeneratorHeroProps) {
+export default function FontGeneratorHero({ h1, desc, initialTranslations }: FontGeneratorHeroProps) {
   return (
     <header className="bg-[#F8FAFF] pb-12 px-6">
       <div className="max-w-4xl mx-auto text-center pt-8 mb-12">
@@ -69,7 +70,7 @@ export default function FontGeneratorHero({ h1, desc }: FontGeneratorHeroProps) 
           {desc}
         </p>
       </div>
-      <FontGenerator />
+      <FontGenerator initialTranslations={initialTranslations} />
       <TrustBar />
     </header>
   )

@@ -186,49 +186,49 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
     const breadcrumbItems = tool === 'watermark-remover'
       ? [
           { label: breadcrumbT.home, href: '/' },
-          { label: 'AI Tools', href: '/ai-tools' },
-          { label: 'Watermark Remover' },
+          { label: breadcrumbT.aiTools || 'AI Tools', href: '/ai-tools' },
+          { label: breadcrumbT.watermarkRemover || 'Watermark Remover' },
         ]
       : tool === 'photo-restoration'
       ? [
           { label: breadcrumbT.home, href: '/' },
-          { label: 'AI Tools', href: '/ai-tools' },
-          { label: 'Photo Restoration' },
+          { label: breadcrumbT.aiTools || 'AI Tools', href: '/ai-tools' },
+          { label: breadcrumbT.photoRestoration || 'Photo Restoration' },
         ]
       : tool === 'ai-couple-photo-maker'
       ? [
           { label: breadcrumbT.home, href: '/' },
-          { label: 'AI Tools', href: '/ai-tools' },
-          { label: 'AI Couple Photo Maker' },
+          { label: breadcrumbT.aiTools || 'AI Tools', href: '/ai-tools' },
+          { label: breadcrumbT.aiCouplePhotoMaker || 'AI Couple Photo Maker' },
         ]
       : tool === 'nano-banana-pro'
       ? [
           { label: breadcrumbT.home, href: '/' },
-          { label: 'Model', href: '/model' },
+          { label: breadcrumbT.model || 'Model', href: '/model' },
           { label: 'Nano Banana Pro' },
         ]
       : tool === 'nano-banana-2'
       ? [
           { label: breadcrumbT.home, href: '/' },
-          { label: 'Model', href: '/model' },
+          { label: breadcrumbT.model || 'Model', href: '/model' },
           { label: 'Nano Banana 2' },
         ]
       : tool === 'gpt-image-2'
       ? [
           { label: breadcrumbT.home, href: '/' },
-          { label: 'Model', href: '/model' },
+          { label: breadcrumbT.model || 'Model', href: '/model' },
           { label: 'GPT Image 2' },
         ]
       : tool === 'seedance-2'
       ? [
           { label: breadcrumbT.home, href: '/' },
-          { label: 'Model', href: '/model' },
+          { label: breadcrumbT.model || 'Model', href: '/model' },
           { label: 'Seedance 2.0' },
         ]
       : tool === 'kling-3'
       ? [
           { label: breadcrumbT.home, href: '/' },
-          { label: 'Model', href: '/model' },
+          { label: breadcrumbT.model || 'Model', href: '/model' },
           { label: 'Kling 3.0' },
         ]
       : [
@@ -355,7 +355,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdSchema) }}
         />
         
-        <Navigation />
+        <Navigation initialTranslations={t} />
         
         <Breadcrumb items={breadcrumbItems} />
 
@@ -365,6 +365,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
             <FontGeneratorHero 
               h1={content.hero?.h1 || 'Font Generator'}
               desc={content.hero?.desc || 'Generate custom fonts online for free. Create beautiful text styles instantly.'}
+              initialTranslations={t}
             />
           ) : topComp === 'image-compressor' || topComp === 'image-compression' ? (
             <header className="bg-[#F8FAFF] pb-12 px-6">
@@ -382,7 +383,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                   </p>
                 )}
               </div>
-              <ImageCompressor />
+              <ImageCompressor initialTranslations={t} />
               <TrustBar />
             </header>
           ) : topComp === 'image-converter' || topComp === 'image-conversion' ? (
@@ -401,7 +402,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                   </p>
                 )}
               </div>
-              <ImageConverter />
+              <ImageConverter initialTranslations={t} />
               <TrustBar />
             </header>
           ) : topComp === 'emoji-copy-and-paste' ? (
@@ -421,7 +422,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                 )}
               </div>
               <div className="max-w-6xl mx-auto">
-                <EmojiCategoryPage />
+                <EmojiCategoryPage initialTranslations={t} />
               </div>
               <TrustBar />
             </header>
@@ -441,7 +442,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                   </p>
                 )}
               </div>
-              <WatermarkRemover />
+              <WatermarkRemover initialTranslations={t} />
             </header>
           ) : topComp === 'photo-restoration' ? (
             <header className="bg-[#F8FAFF] pb-12 px-6">
@@ -459,7 +460,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                   </p>
                 )}
               </div>
-              <PhotoRestoration />
+              <PhotoRestoration initialTranslations={t} />
             </header>
           ) : topComp === 'ai-couple-photo-maker' ? (
             <header className="bg-[#F8FAFF] pb-6 md:pb-12 w-full px-2 md:px-6">
@@ -484,6 +485,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                     modelName="Nano Banana 2"
                     dailyLimitStorageKey="ai_couple_photo_maker_last_used_date"
                     presetMode="ai-couple-photo-maker"
+                    initialTranslations={t}
                   />
                 </div>
               </div>
@@ -507,7 +509,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
               <div className="w-full max-w-full">
                 {/* H5: 移除固定高度，让内容自然流式布局；桌面端保持固定高度 */}
                 <div className="flex flex-col md:h-screen md:overflow-hidden">
-                  <NanoBananaTool />
+                  <NanoBananaTool initialTranslations={t} />
                 </div>
               </div>
             </header>
@@ -533,6 +535,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                     modelId="gpt-image-2"
                     modelName="GPT Image 2"
                     dailyLimitStorageKey="gpt_image_2_last_used_date"
+                    initialTranslations={t}
                   />
                 </div>
               </div>
@@ -553,7 +556,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                   </p>
                 )}
               </div>
-              <SeedanceHeroPlaceholder />
+              <SeedanceHeroPlaceholder initialTranslations={t} />
             </header>
           ) : topComp === 'kling-3' ? (
             <header className="bg-[#F8FAFF] pb-12 px-6">
@@ -571,7 +574,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                   </p>
                 )}
               </div>
-              <KlingHeroPlaceholder />
+              <KlingHeroPlaceholder initialTranslations={t} />
             </header>
           ) : topComp === 'nano-banana-2' ? (
             <header className="bg-[#F8FAFF] pb-6 md:pb-12 w-full px-2 md:px-6">
@@ -595,6 +598,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                     modelId="nano-banana-2"
                     modelName="Nano Banana 2"
                     dailyLimitStorageKey="nano_banana_2_last_used_date"
+                    initialTranslations={t}
                   />
                 </div>
               </div>
@@ -803,7 +807,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
           )}
         </main>
 
-        <Footer />
+        <Footer initialTranslations={t} />
       </>
     )
   } catch (error) {

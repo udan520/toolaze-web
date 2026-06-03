@@ -8,6 +8,10 @@ const MAX_FILE_SIZE = 30 * 1024 * 1024 // 30MB
 const COMPRESS_THRESHOLD = 512 * 1024 // 超过 512KB 即压缩，降低 API 超时概率
 const MAX_DIM = 1280 // AI 处理大图较慢，限制边长以缩短响应时间
 
+interface WatermarkRemoverProps {
+  initialTranslations?: any
+}
+
 async function compressIfNeeded(file: File): Promise<File> {
   return new Promise((resolve) => {
     const img = new Image()
@@ -59,8 +63,8 @@ async function compressIfNeeded(file: File): Promise<File> {
   })
 }
 
-export default function WatermarkRemover() {
-  const commonTranslations = useCommonTranslations()
+export default function WatermarkRemover({ initialTranslations }: WatermarkRemoverProps) {
+  const commonTranslations = useCommonTranslations(initialTranslations)
   const text = commonTranslations?.common?.watermarkRemoverTool || {
     uploadTitle: 'Click or drag image here',
     uploadFormats: 'JPG, PNG, WebP (max 30MB). Under 2MB or 1280px recommended for faster processing.',

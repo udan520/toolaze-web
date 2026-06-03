@@ -6,8 +6,12 @@ import { useCommonTranslations } from '@/lib/use-common-translations'
  * Seedance 2.0 Hero 占位组件
  * 顶部暂时没有功能，显示占位卡片
  */
-export default function SeedanceHeroPlaceholder() {
-  const text = useCommonTranslations()?.common?.modelPlaceholders
+interface SeedanceHeroPlaceholderProps {
+  initialTranslations?: any
+}
+
+export default function SeedanceHeroPlaceholder({ initialTranslations }: SeedanceHeroPlaceholderProps) {
+  const text = useCommonTranslations(initialTranslations)?.common?.modelPlaceholders
   return (
     <div className="max-w-xl mx-auto relative z-10">
       <div className="bg-white rounded-super p-2 shadow-soft border border-indigo-50">

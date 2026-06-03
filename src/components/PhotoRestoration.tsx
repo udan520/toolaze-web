@@ -10,12 +10,16 @@ const DAILY_LIMIT_KEY = 'photo_restoration_last_used_date'
 const RESTORE_COLORIZE_PROMPT = 'Restore and colorize this old photo by removing scratches, dust, and noise. Enhance clarity, sharpness, and details while preserving the original colors and natural look.'
 const DEMO_IMAGE_URL = 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80'
 
+interface PhotoRestorationProps {
+  initialTranslations?: any
+}
+
 function todayKey() {
   return new Date().toISOString().split('T')[0]
 }
 
-export default function PhotoRestoration() {
-  const commonTranslations = useCommonTranslations()
+export default function PhotoRestoration({ initialTranslations }: PhotoRestorationProps) {
+  const commonTranslations = useCommonTranslations(initialTranslations)
   const text = commonTranslations?.common?.photoRestorationTool || {
     invalidImage: 'Please upload a valid image file.',
     tooLarge: 'Image size must be under 30MB.',

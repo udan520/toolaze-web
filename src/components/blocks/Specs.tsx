@@ -3,6 +3,7 @@
 import { useCommonTranslations } from '@/lib/use-common-translations'
 
 interface SpecsProps {
+  initialTranslations?: any
   data?: {
     engine?: string
     capacity?: string
@@ -15,8 +16,8 @@ interface SpecsProps {
   }
 }
 
-export default function Specs({ data }: SpecsProps) {
-  const text = useCommonTranslations()?.common?.specs
+export default function Specs({ data, initialTranslations }: SpecsProps) {
+  const text = useCommonTranslations(initialTranslations)?.common?.specs
   if (!data) return null
 
   const specs = [
