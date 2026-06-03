@@ -1,0 +1,181 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Generatore di Caratteri Corsivi (Gratis, Copia e Incolla e Senza Pubblicità) - Toolaze",
+    "description": "Come generare font corsivi? 1. Digita il tuo testo 2. Seleziona lo stile corsivo 3. Copia e incolla. Crea bellissimi testi in corsivo per Instagram, Facebook e social media. Gratuito e Privato."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Generatore di Caratteri Corsivi",
+    "desc": "Genera bellissimi font corsivi online gratuitamente. Digita semplicemente il tuo testo qui sotto per creare un elegante testo in corsivo da copiare e incollare ovunque."
+  },
+  "intro": {
+    "title": "Perché usare un generatore di caratteri corsivi?",
+    "content": [
+      {
+        "title": "Che cos'è il font corsivo?",
+        "text": "I font corsivi utilizzano i caratteri Unicode Mathematical Italic—simboli Unicode distinti che creano forme di lettere inclinate ed enfatizzate. A differenza del testo corsivo stilizzato con CSS, questi caratteri Unicode funzionano in modo coerente su tutte le piattaforme, inclusi email, documenti e ambienti di testo semplice. I caratteri corsivi sono caratterizzati dal loro effetto di enfasi, rendendoli perfetti per citazioni accademiche, titoli di libri, enfasi nei documenti e qualsiasi testo che debba risaltare mantenendo la leggibilità. Per altri stili di scrittura, prova il nostro <a href=\"/it/font-generator/cursive\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">generatore di font corsivi</a> o il generatore di font calligrafici. Con il nostro generatore di caratteri corsivi, puoi creare testo stilizzato in pochi secondi."
+      },
+      {
+        "title": "Perché generare testo corsivo online?",
+        "text": "Lo stile corsivo standard funziona solo dove il CSS è supportato, limitandone l'uso in email, documenti di testo semplice e molte applicazioni. Il nostro testo corsivo utilizza caratteri Unicode Mathematical Italic che funzionano ovunque—client di posta elettronica, elaboratori di testi, articoli accademici e altro ancora. Che tu stia scrivendo articoli di ricerca, creando titoli di libri o aggiungendo enfasi ai documenti, il nostro strumento trasforma istantaneamente qualsiasi testo nel corretto stile corsivo, assicurando che la tua enfasi venga visualizzata correttamente su tutte le piattaforme. Sfoglia altri stili con il nostro <a href=\"/it/font-generator\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">generatore di font</a>."
+      }
+    ]
+  },
+  "features": {
+    "title": "Potenti funzionalità per font corsivi",
+    "items": [
+      {
+        "icon": "ℹ️",
+        "iconType": "quality",
+        "title": "Caratteri Corsivi Unicode",
+        "desc": "Genera testo corsivo utilizzando i simboli Unicode Mathematical Italic che funzionano su tutte le piattaforme. Prova il nostro generatore di font corsivi per risultati rapidi."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Elaborazione Locale Sicura",
+        "desc": "La generazione del font avviene interamente nel tuo browser—il tuo testo rimane privato e sicuro. Usa il nostro generatore di font corsivi per generare bellissimi stili di testo."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Conversione Corsiva Istantanea",
+        "desc": "Guarda il tuo testo trasformarsi immediatamente in stile corsivo con l'anteprima dal vivo aggiornata in tempo reale. Questo generatore di font corsivi funziona perfettamente per tutte le piattaforme."
+      },
+      {
+        "icon": "📋",
+        "iconType": "batch",
+        "title": "Copia Semplice",
+        "desc": "Copia istantaneamente il tuo testo corsivo e incollalo in documenti, email o articoli accademici. Prova il nostro generatore di font corsivi per risultati rapidi."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Completamente Gratuito",
+        "desc": "Generazione illimitata di font corsivi senza costi—gratuito senza costi nascosti. Prova il nostro generatore di font corsivi per risultati rapidi."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "Nessun Download",
+        "desc": "Funziona interamente nel tuo browser—nessuna installazione di software o download di font necessari. Il nostro generatore di font corsivi rende facile creare testo stilizzato istantaneamente."
+      }
+    ]
+  },
+  "specs": {
+    "engine": "Rendering dei font nativo del browser - Elaborazione lato client",
+    "limit": "Lunghezza del testo illimitata - Nessun limite di caratteri",
+    "logic": "Anteprima in tempo reale (applicazione istantanea dello stile)",
+    "privacy": "100% lato client (elaborazione locale nel browser)"
+  },
+  "performanceMetrics": {
+    "title": "Specifiche Tecniche",
+    "metrics": [
+      {
+        "label": "Stile del Font",
+        "value": "Corsivo (Stile Distintivo)"
+      },
+      {
+        "label": "Lunghezza del Testo",
+        "value": "Caratteri illimitati"
+      },
+      {
+        "label": "Velocità di Elaborazione",
+        "value": "Istantanea (Anteprima in tempo reale)"
+      },
+      {
+        "label": "Formato di Output",
+        "value": "Testo Unicode (Pronto per copia e incolla)"
+      },
+      {
+        "label": "Supporto Piattaforma",
+        "value": "Instagram, Facebook, Twitter, TikTok, Discord e altro"
+      },
+      {
+        "label": "Posizione di Elaborazione",
+        "value": "100% lato client (JavaScript del browser)"
+      },
+      {
+        "label": "Privacy",
+        "value": "Nessun caricamento sul server, elaborazione locale completa"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Come generare font corsivi",
+    "steps": [
+      {
+        "title": "Inserisci il tuo testo",
+        "desc": "Digita il testo che desideri convertire in stile corsivo nel campo di input sopra."
+      },
+      {
+        "title": "Scegli lo stile corsivo",
+        "desc": "Seleziona tra gli stili di font corsivi Unicode e visualizza in anteprima come appare il tuo testo con quell'aspetto inclinato ed enfatizzato. Questo generatore di font corsivi funziona perfettamente per tutte le piattaforme."
+      },
+      {
+        "title": "Copia il testo corsivo",
+        "desc": "Fai clic su copia per ottenere il tuo testo corsivo, quindi incollalo in documenti, email o articoli accademici per dare enfasi. Con il nostro generatore di caratteri corsivi, puoi creare testo stilizzato in pochi secondi."
+      }
+    ]
+  },
+  "comparison": {
+    "toolaze": "Generazione illimitata di testo corsivo, caratteri corsivi Unicode, anteprima in tempo reale, elaborazione nel browser, nessun limite, privacy totale, 100% gratuito",
+    "others": "Restrizioni di testo, stili corsivi limitati, server lenti, caricamenti su cloud, problemi di privacy, filigrane, abbonamenti a pagamento"
+  },
+  "scenes": [
+    {
+      "title": "Scrittori Accademici",
+      "icon": "📚",
+      "desc": "Crea font corsivi per citazioni, enfasi in articoli accademici e pubblicazioni scientifiche. Segui le corrette convenzioni tipografiche con un elegante testo corsivo."
+    },
+    {
+      "title": "Editori di Libri",
+      "icon": "📖",
+      "desc": "Genera testo corsivo per titoli di libri, intestazioni di capitoli e contenuti letterari. Aggiungi enfasi e interesse visivo alle tue pubblicazioni con la tipografia corsiva."
+    },
+    {
+      "title": "Web Designer",
+      "icon": "🌐",
+      "desc": "Usa i font corsivi per l'enfasi del sito web, citazioni e testi di invito all'azione. Crea una gerarchia visiva e attira l'attenzione su elementi di contenuto importanti."
+    }
+  ],
+  "rating": {
+    "text": "\"Il miglior generatore di font corsivi che abbia mai trovato. Risultati istantanei e funziona perfettamente su Instagram!\" - Unisciti a migliaia di utenti che si affidano a Toolaze per la generazione di bellissimi testi in corsivo."
+  },
+  "faq": [
+    {
+      "q": "Qual è la differenza tra i font corsivi e il testo inclinato?",
+      "a": "Il nostro corsivo utilizza caratteri Unicode Mathematical Italic, che sono simboli distinti, non solo testo stilizzato. Ciò garantisce un aspetto corsivo coerente su tutte le piattaforme, anche dove il CSS non è disponibile."
+    },
+    {
+      "q": "Posso usare i font corsivi per dare enfasi nei documenti?",
+      "a": "Sì! I font corsivi sono perfetti per enfatizzare il testo importante in documenti, articoli e pubblicazioni. Funzionano benissimo negli elaboratori di testi, nei PDF e nei contenuti web. Usa il nostro generatore di font corsivi per generare bellissimi stili di testo."
+    },
+    {
+      "q": "I font corsivi vanno bene per i titoli dei libri?",
+      "a": "Assolutamente! I font corsivi sono comunemente usati per i titoli dei libri, specialmente in contesti accademici e letterari. Aggiungono enfasi e interesse visivo ai titoli. Il nostro generatore di font corsivi rende facile creare testo stilizzato istantaneamente."
+    },
+    {
+      "q": "I font corsivi funzioneranno nelle email?",
+      "a": "Sì, i caratteri Unicode corsivi funzionano nella maggior parte dei client di posta elettronica. Sono perfetti per aggiungere enfasi a informazioni importanti nelle tue email. Usa il nostro generatore di font corsivi per generare bellissimi stili di testo."
+    },
+    {
+      "q": "Posso usare i font corsivi per le citazioni?",
+      "a": "Sì! I font corsivi sono lo standard per le citazioni nella scrittura accademica. Funzionano bene in articoli di ricerca, saggi e pubblicazioni scientifiche. Per altri stili di scrittura, prova il nostro <a href=\"/it/font-generator/cursive\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">generatore di font corsivi</a> o esplora la nostra collezione di generatori di font."
+    }
+  ],
+  "compare": {
+    "toolaze": "Generazione illimitata di testo corsivo, molteplici stili eleganti, anteprima istantanea in tempo reale, architettura locale, nessun limite di caratteri, protezione completa della privacy, 100% gratuito",
+    "others": "Limiti di caratteri, opzioni di stile limitate, elaborazione lenta del server, caricamenti su cloud richiesti, problemi di privacy, filigrane o pubblicità, funzionalità premium a pagamento"
+  }
+}

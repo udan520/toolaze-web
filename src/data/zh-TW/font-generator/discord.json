@@ -1,0 +1,181 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Discord 字體產生器 (免費、複製貼上、無廣告) - Toolaze",
+    "description": "如何產生 Discord 字體？1. 輸入文字 2. 選擇 Discord 風格 3. 複製並貼上。為 Instagram、Facebook 和社交媒體建立美觀的 Discord 文字。免費且私密。"
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Discord 字體產生器",
+    "desc": "免費在線產生美觀的 Discord 字體。只需在下方輸入文字，即可建立優雅的 Discord 文字，並可隨處複製貼上。"
+  },
+  "intro": {
+    "title": "為什麼要使用 Discord 字體產生器？",
+    "content": [
+      {
+        "title": "什麼是 Discord 字體？",
+        "text": "Discord 字體是專為 Discord 聊天介面優化的 Unicode 文字樣式。這些字體使用 Unicode 字元，能在 Discord 伺服器名稱、頻道標題、身分組名稱和聊天訊息中正確顯示。Discord 字體有助於讓您的伺服器脫穎而出，使社群更具吸引力，品牌形象更令人難忘。它們非常適合想要建立獨特、吸睛 Discord 內容的遊戲社群、實況主和線上社群。對於其他平台的字體，請嘗試我們的 <a href=\"/zh-TW/font-generator/instagram\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">Instagram 字體產生器</a>。"
+      },
+      {
+        "title": "為什麼要在線產生 Discord 文字？",
+        "text": "Discord 原生的文字格式僅限於基本的 Markdown，且尋找能在 Discord 中運行的字體可能具有挑戰性。我們的 Discord 文字工具提供即時存取多種與 Discord 平台完全相容的 Unicode 字體樣式。無論您是在命名 Discord 伺服器、建立頻道標題，還是設計身分組名稱，我們的工具都能立即將任何文字轉換為 Discord 相容的字體——確保您的社群脫穎而出，且文字在所有 Discord 功能中都能正確顯示。使用我們的 <a href=\"/zh-TW/font-generator\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">字體產生器</a> 探索更多。"
+      }
+    ]
+  },
+  "features": {
+    "title": "強大的 Discord 字體功能",
+    "items": [
+      {
+        "icon": "💬",
+        "iconType": "quality",
+        "title": "Discord 相容樣式",
+        "desc": "產生能在 Discord 伺服器名稱、頻道和聊天訊息中正確顯示的字體。"
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "本地處理",
+        "desc": "字體產生完全在您的瀏覽器中進行——您的文字保留在您的裝置上。"
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "即時 Discord 文字",
+        "desc": "透過即時預覽，立即將您的文字轉換為 Discord 相容字體。"
+      },
+      {
+        "icon": "📋",
+        "iconType": "batch",
+        "title": "為 Discord 複製",
+        "desc": "立即複製您的 Discord 文字，並將其貼上到伺服器名稱、頻道或聊天中。"
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "免費 Discord 字體",
+        "desc": "無限制的 Discord 字體產生，完全免費——無費用、無高級功能、無廣告。"
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "無需 Discord 模組",
+        "desc": "完全在您的瀏覽器中運行——無需修改 Discord 或安裝機器人。"
+      }
+    ]
+  },
+  "specs": {
+    "engine": "瀏覽器原生字體渲染 - 用戶端處理",
+    "limit": "無限制文字長度 - 無字元限制",
+    "logic": "即時預覽 (立即套用樣式)",
+    "privacy": "100% 用戶端 (本地瀏覽器處理)"
+  },
+  "performanceMetrics": {
+    "title": "技術規格",
+    "metrics": [
+      {
+        "label": "字體樣式",
+        "value": "Discord (獨特風格)"
+      },
+      {
+        "label": "文字長度",
+        "value": "無限制字元"
+      },
+      {
+        "label": "處理速度",
+        "value": "即時 (即時預覽)"
+      },
+      {
+        "label": "輸出格式",
+        "value": "Unicode 文字 (準備好複製貼上)"
+      },
+      {
+        "label": "平台支援",
+        "value": "Instagram, Facebook, Twitter, TikTok, Discord 等"
+      },
+      {
+        "label": "處理位置",
+        "value": "100% 用戶端 (瀏覽器 JavaScript)"
+      },
+      {
+        "label": "隱私",
+        "value": "無伺服器上傳，完全本地處理"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "如何產生 Discord 字體",
+    "steps": [
+      {
+        "title": "輸入文字",
+        "desc": "在上方輸入欄位中輸入您想要轉換為 Discord 相容樣式的文字。"
+      },
+      {
+        "title": "選擇 Discord 風格",
+        "desc": "從 Discord 相容的字體樣式中選擇，並預覽您的文字在 Discord 中的顯示效果。"
+      },
+      {
+        "title": "複製 Discord 文字",
+        "desc": "點擊複製以獲取您的 Discord 文字，然後將其貼上到伺服器名稱、頻道標題或 Discord 聊天中。"
+      }
+    ]
+  },
+  "comparison": {
+    "toolaze": "無限制 Discord 文字產生，Discord 相容樣式，即時預覽，用戶端處理，無限制，完全隱私",
+    "others": "文字限制，有限的 Discord 字體，處理緩慢，雲端上傳，隱私風險，浮水印，付費功能"
+  },
+  "scenes": [
+    {
+      "title": "遊戲社群",
+      "icon": "🎮",
+      "desc": "為伺服器名稱、頻道標題和身分組名稱建立 Discord 字體。使用獨特、易讀的 Discord 相容字體讓您的遊戲社群脫穎而出。"
+    },
+    {
+      "title": "實況主與內容創作者",
+      "icon": "📺",
+      "desc": "為實況疊加層、聊天指令和社群品牌產生 Discord 文字。確保您的文字在 Discord 的聊天介面中正確顯示。"
+    },
+    {
+      "title": "線上社群",
+      "icon": "💬",
+      "desc": "將 Discord 字體用於社群公告、活動推廣和成員溝通。為您的 Discord 伺服器建立吸睛且具吸引力的文字。"
+    }
+  ],
+  "rating": {
+    "text": "\"這是我找到最好的 Discord 字體產生器。結果即時，且在 Instagram 上完美運行！\" - 加入數千名信任 Toolaze 產生美觀 Discord 文字的使用者。"
+  },
+  "faq": [
+    {
+      "q": "Discord 字體真的能在 Discord 中運行嗎？",
+      "a": "是的！我們的 Discord 工具使用 Unicode 字元建立文字，能在 Discord 的聊天介面中正確顯示。只需複製並貼上到任何 Discord 頻道、伺服器名稱或使用者名稱欄位即可。"
+    },
+    {
+      "q": "我可以在伺服器名稱中使用 Discord 字體嗎？",
+      "a": "是的！Discord 字體適用於伺服器名稱、頻道名稱和身分組名稱。它們能以獨特、吸睛的文字幫助您的 Discord 伺服器脫穎而出。"
+    },
+    {
+      "q": "Discord 字體能在 Discord 機器人中運行嗎？",
+      "a": "是的，Discord 機器人可以發送帶有 Discord 字體的訊息。Unicode 字元在機器人訊息、嵌入內容和公告中都能正確顯示。"
+    },
+    {
+      "q": "Discord 字體在 Discord 的深色模式下清晰可讀嗎？",
+      "a": "是的！Discord 字體在淺色和深色模式下都能運行。Unicode 字元會自動適應 Discord 的佈景主題設定。"
+    },
+    {
+      "q": "我可以為 Discord Nitro 使用 Discord 字體嗎？",
+      "a": "是的，無論您是否有 Nitro，Discord 字體都能運行。它們使用標準的 Unicode 字元，適用於所有 Discord 使用者。對於其他平台的字體，請嘗試我們的 <a href=\"/zh-TW/font-generator/Instagram\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">Instagram 字體產生器</a> 或探索我們的字體產生器系列。"
+    }
+  ],
+  "compare": {
+    "toolaze": "無限制 Discord 文字產生，多種優雅樣式，即時預覽，本地優先架構，無字元限制，完整的隱私保護，100% 免費",
+    "others": "字元限制，有限的樣式選擇，伺服器處理緩慢，需要雲端上傳，隱私疑慮，浮水印或廣告，付費高級功能"
+  }
+}

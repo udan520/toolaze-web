@@ -1,0 +1,181 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Generatore di Caratteri Corsivi (Gratis, Copia e Incolla e Senza Pubblicità) - Toolaze",
+    "description": "Come generare font corsivi? 1. Digita il tuo testo 2. Seleziona lo stile corsivo 3. Copia e incolla. Crea bellissimi testi in corsivo per Instagram, Facebook e social media. Gratis e Privato."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Generatore di Font Corsivi",
+    "desc": "Genera bellissimi font corsivi online gratuitamente. Digita semplicemente il tuo testo qui sotto per creare un elegante testo in corsivo da copiare e incollare ovunque."
+  },
+  "intro": {
+    "title": "Perché usare un generatore di font corsivi?",
+    "content": [
+      {
+        "title": "Cos'è il font corsivo?",
+        "text": "I font corsivi, noti anche come font script, presentano forme di lettere fluide e collegate che imitano il testo scritto a mano. Questi eleganti caratteri creano un senso di raffinatezza e tocco personale, rendendoli perfetti per inviti formali, branding personale e progetti artistici. A differenza dei font standard, gli stili corsivi aggiungono calore e personalità al tuo testo, trasmettendo emozione e stile attraverso le loro graziose curve e connessioni. Se cerchi opzioni più decorative, prova il nostro <a href=\"/it/font-generator/fancy\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">generatore di font particolari</a> o il <a href=\"/it/font-generator/calligraphy\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">generatore di font calligrafici</a> per ulteriori stili eleganti."
+      },
+      {
+        "title": "Perché generare testo in corsivo online?",
+        "text": "I metodi tradizionali per creare testo in corsivo richiedono costosi software di progettazione, installazione di font e conoscenze tipografiche. Che tu stia progettando inviti di nozze, creando biografie personali per Instagram o aggiungendo tocchi eleganti ai biglietti da visita, il nostro strumento trasforma qualsiasi testo in uno stile corsivo professionale in pochi secondi: nessun download, nessuna installazione, nessuna esperienza di progettazione necessaria. Esplora altri stili di font con la nostra collezione completa di <a href=\"/it/font-generator\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">generatori di font</a>."
+      }
+    ]
+  },
+  "features": {
+    "title": "Potenti funzionalità per font corsivi",
+    "items": [
+      {
+        "icon": "✍️",
+        "iconType": "quality",
+        "title": "Stili Script Eleganti",
+        "desc": "Accedi a molteplici stili corsivi fluidi che creano bellissimi effetti scritti a mano per il tuo testo."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Elaborazione 100% Privata",
+        "desc": "Il tuo testo viene elaborato interamente nel tuo browser: mai caricato, mai memorizzato, privacy completa garantita."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Anteprima in Tempo Reale",
+        "desc": "Guarda il tuo testo in corsivo trasformarsi istantaneamente mentre digiti, con un feedback visivo immediato."
+      },
+      {
+        "icon": "📋",
+        "iconType": "batch",
+        "title": "Copia con un Clic",
+        "desc": "Copia istantaneamente il tuo testo in corsivo stilizzato e incollalo in qualsiasi applicazione o piattaforma."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Completamente Gratuito",
+        "desc": "Generazione illimitata di font corsivi senza costi, abbonamenti o pubblicità, mai."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "Basato su Browser",
+        "desc": "Funziona interamente nel tuo browser web: non è richiesta l'installazione di software o il download di font."
+      }
+    ]
+  },
+  "specs": {
+    "engine": "Rendering dei font nativo del browser - Elaborazione lato client",
+    "limit": "Lunghezza del testo illimitata - Nessun limite di caratteri",
+    "logic": "Anteprima in tempo reale (applicazione istantanea dello stile)",
+    "privacy": "100% lato client (elaborazione locale nel browser)"
+  },
+  "performanceMetrics": {
+    "title": "Specifiche Tecniche",
+    "metrics": [
+      {
+        "label": "Stile del Font",
+        "value": "Corsivo (Stile Distintivo)"
+      },
+      {
+        "label": "Lunghezza del Testo",
+        "value": "Caratteri illimitati"
+      },
+      {
+        "label": "Velocità di Elaborazione",
+        "value": "Istantanea (Anteprima in tempo reale)"
+      },
+      {
+        "label": "Formato di Output",
+        "value": "Testo Unicode (Pronto per copia e incolla)"
+      },
+      {
+        "label": "Supporto Piattaforma",
+        "value": "Instagram, Facebook, Twitter, TikTok, Discord e altro"
+      },
+      {
+        "label": "Luogo di Elaborazione",
+        "value": "100% lato client (JavaScript del browser)"
+      },
+      {
+        "label": "Privacy",
+        "value": "Nessun caricamento sul server, elaborazione locale completa"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Come generare font corsivi",
+    "steps": [
+      {
+        "title": "Inserisci il tuo testo",
+        "desc": "Digita il testo che desideri convertire in un elegante stile corsivo nel campo di input sopra."
+      },
+      {
+        "title": "Scegli lo stile corsivo",
+        "desc": "Sfoglia gli stili di font corsivi disponibili e visualizza l'anteprima di come appare il tuo testo in ogni elegante variazione script."
+      },
+      {
+        "title": "Copia il tuo testo in corsivo",
+        "desc": "Fai clic sul pulsante copia per copiare il tuo testo in corsivo stilizzato, quindi incollalo in inviti di nozze, biografie di Instagram o qualsiasi documento."
+      }
+    ]
+  },
+  "comparison": {
+    "toolaze": "Generazione illimitata di testo in corsivo, Molteplici stili script eleganti, Anteprima istantanea in tempo reale, Elaborazione basata su browser, Nessun limite di caratteri, Protezione completa della privacy, 100% gratuito",
+    "others": "Limiti di caratteri, Opzioni script limitate, Elaborazione lenta del server, Caricamenti su cloud richiesti, Problemi di privacy, Filigrane o pubblicità, Funzionalità premium a pagamento"
+  },
+  "scenes": [
+    {
+      "title": "Inviti di Nozze",
+      "icon": "💍",
+      "desc": "Crea eleganti testi in corsivo per inviti di nozze, save-the-date e programmi della cerimonia. Aggiungi un tocco romantico e sofisticato al tuo giorno speciale con bellissimi font in stile scritto a mano."
+    },
+    {
+      "title": "Branding Personale",
+      "icon": "✍️",
+      "desc": "Usa i font corsivi per biografie personali su Instagram, intestazioni LinkedIn e firme e-mail. Distinguiti con eleganti font script che trasmettono professionalità e personalità."
+    },
+    {
+      "title": "Progetti di Arte e Design",
+      "icon": "🎨",
+      "desc": "Genera testo in corsivo per stampe d'arte, biglietti d'auguri e mockup di design. Perfetto per aggiungere un tocco artigianale e artistico ai tuoi progetti creativi."
+    }
+  ],
+  "rating": {
+    "text": "\"Il miglior generatore di font corsivi che abbia mai trovato. Risultati istantanei e funziona perfettamente su Instagram!\" - Unisciti a migliaia di utenti che si affidano a Toolaze per la generazione di bellissimi testi in corsivo."
+  },
+  "faq": [
+    {
+      "q": "Posso usare i font corsivi per documenti formali?",
+      "a": "Sì! I font corsivi generati da Toolaze utilizzano caratteri Unicode che funzionano nella maggior parte delle applicazioni. Tuttavia, per documenti molto formali come atti legali, potresti voler verificare prima la compatibilità con il tuo software specifico per documenti."
+    },
+    {
+      "q": "I font corsivi sono leggibili su tutti i dispositivi?",
+      "a": "Il testo in corsivo utilizza caratteri Unicode Mathematical Script ampiamente supportati. Vengono visualizzati bene sui dispositivi moderni, anche se alcuni telefoni o applicazioni più vecchi potrebbero renderli in modo diverso. Visualizza sempre l'anteprima sulla tua piattaforma di destinazione."
+    },
+    {
+      "q": "Posso usare i font corsivi nella mia firma e-mail?",
+      "a": "Sì! I font corsivi funzionano benissimo nelle firme e-mail. Basta copiare il testo in corsivo generato e incollarlo nelle impostazioni della firma e-mail. La maggior parte dei client di posta supporta i caratteri Unicode."
+    },
+    {
+      "q": "In cosa differiscono i font corsivi dai font calligrafici?",
+      "a": "I font corsivi hanno uno stile script fluido e collegato, mentre i font calligrafici hanno spesso più svolazzi decorativi. Il nostro generatore di corsivo si concentra su stili script eleganti e leggibili, perfetti per l'uso quotidiano. Per opzioni più decorative, prova il nostro <a href=\"/it/font-generator/calligraphy\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">generatore di font calligrafici</a> o il generatore di font particolari."
+    },
+    {
+      "q": "I font corsivi funzioneranno in Microsoft Word?",
+      "a": "Sì, i caratteri Unicode corsivi funzionano in Microsoft Word e nella maggior parte dei word processor. Basta copiare e incollare il testo generato direttamente nel documento."
+    }
+  ],
+  "compare": {
+    "toolaze": "Generazione illimitata di testo in corsivo, Molteplici stili eleganti, Anteprima istantanea in tempo reale, Architettura local-first, Nessun limite di caratteri, Protezione completa della privacy, 100% gratuito",
+    "others": "Limiti di caratteri, Opzioni di stile limitate, Elaborazione lenta del server, Caricamenti su cloud richiesti, Problemi di privacy, Filigrane o pubblicità, Funzionalità premium a pagamento"
+  }
+}

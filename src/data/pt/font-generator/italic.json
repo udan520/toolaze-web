@@ -1,0 +1,181 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Gerador de Fonte Itálico (Grátis, Copiar e Colar e Sem Anúncios) - Toolaze",
+    "description": "Como gerar fontes em itálico? 1. Digite seu texto 2. Selecione o estilo itálico 3. Copie e cole. Crie belos textos em itálico para Instagram, Facebook e redes sociais. Grátis e Privado."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Gerador de Fonte Itálico",
+    "desc": "Gere belas fontes em itálico online gratuitamente. Basta digitar seu texto abaixo para criar textos elegantes em itálico que você pode copiar e colar em qualquer lugar."
+  },
+  "intro": {
+    "title": "Por que usar um gerador de fonte itálico?",
+    "content": [
+      {
+        "title": "O que é fonte itálica?",
+        "text": "As fontes em itálico usam caracteres Unicode Mathematical Italic — símbolos Unicode distintos que criam formas de letras inclinadas e enfatizadas. Ao contrário do texto em itálico estilizado por CSS, esses caracteres Unicode funcionam de forma consistente em todas as plataformas, incluindo e-mail, documentos e ambientes de texto simples. As fontes em itálico são caracterizadas pelo seu efeito de ênfase, tornando-as perfeitas para citações acadêmicas, títulos de livros, ênfase em documentos e qualquer texto que precise se destacar mantendo a legibilidade. Para mais estilos de escrita, experimente nosso <a href=\"/pt/font-generator/cursive\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">gerador de fonte cursiva</a> ou gerador de fonte de caligrafia. Com nosso gerador de fonte itálico, você pode criar textos estilizados em segundos."
+      },
+      {
+        "title": "Por que gerar texto em itálico online?",
+        "text": "A estilização em itálico padrão só funciona onde o CSS é suportado, limitando seu uso em e-mails, documentos de texto simples e muitos aplicativos. Nosso itálico usa caracteres Unicode Mathematical Italic que funcionam em qualquer lugar — clientes de e-mail, processadores de texto, artigos acadêmicos e muito mais. Esteja você escrevendo artigos de pesquisa, criando títulos de livros ou adicionando ênfase a documentos, nossa ferramenta transforma qualquer texto em estilo itálico adequado instantaneamente, garantindo que sua ênfase seja exibida corretamente em todas as plataformas. Explore mais estilos com nosso <a href=\"/pt/font-generator\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">gerador de fontes</a>."
+      }
+    ]
+  },
+  "features": {
+    "title": "Poderosos Recursos de Fonte Itálico",
+    "items": [
+      {
+        "icon": "ℹ️",
+        "iconType": "quality",
+        "title": "Caracteres Itálicos Unicode",
+        "desc": "Gere texto em itálico usando símbolos Unicode Mathematical Italic que funcionam em todas as plataformas. Experimente nosso gerador de fonte itálico para resultados rápidos."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Processamento Local Seguro",
+        "desc": "A geração da fonte ocorre inteiramente no seu navegador — seu texto permanece privado e seguro. Use nosso gerador de fonte itálico para gerar belos estilos de texto."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Conversão Instantânea para Itálico",
+        "desc": "Veja seu texto se transformar em estilo itálico imediatamente com a visualização ao vivo atualizando em tempo real. Este gerador de fonte itálico funciona perfeitamente para todas as plataformas."
+      },
+      {
+        "icon": "📋",
+        "iconType": "batch",
+        "title": "Cópia Simples",
+        "desc": "Copie seu texto em itálico instantaneamente e cole-o em documentos, e-mails ou artigos acadêmicos. Experimente nosso gerador de fonte itálico para resultados rápidos."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Completamente Grátis",
+        "desc": "Geração ilimitada de fontes em itálico sem custo — grátis e sem taxas ocultas. Experimente nosso gerador de fonte itálico para resultados rápidos."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "Sem Downloads",
+        "desc": "Opera inteiramente no seu navegador — sem necessidade de instalação de software ou download de fontes. Nosso gerador de fonte itálico facilita a criação de textos estilizados instantaneamente."
+      }
+    ]
+  },
+  "specs": {
+    "engine": "Renderização de Fonte Nativa do Navegador - Processamento no Lado do Cliente",
+    "limit": "Comprimento de Texto Ilimitado - Sem Limites de Caracteres",
+    "logic": "Visualização em Tempo Real (Aplicação de Estilo Instantânea)",
+    "privacy": "100% no Lado do Cliente (Processamento Local no Navegador)"
+  },
+  "performanceMetrics": {
+    "title": "Especificações Técnicas",
+    "metrics": [
+      {
+        "label": "Estilo de Fonte",
+        "value": "Itálico (Estilo Distintivo)"
+      },
+      {
+        "label": "Comprimento do Texto",
+        "value": "Caracteres ilimitados"
+      },
+      {
+        "label": "Velocidade de Processamento",
+        "value": "Instantâneo (Visualização em tempo real)"
+      },
+      {
+        "label": "Formato de Saída",
+        "value": "Texto Unicode (Pronto para copiar e colar)"
+      },
+      {
+        "label": "Suporte de Plataforma",
+        "value": "Instagram, Facebook, Twitter, TikTok, Discord e mais"
+      },
+      {
+        "label": "Local de Processamento",
+        "value": "100% no Lado do Cliente (JavaScript do Navegador)"
+      },
+      {
+        "label": "Privacidade",
+        "value": "Sem uploads para o servidor, processamento local completo"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Como Gerar Fontes em Itálico",
+    "steps": [
+      {
+        "title": "Insira Seu Texto",
+        "desc": "Digite o texto que deseja converter para o estilo itálico no campo de entrada acima."
+      },
+      {
+        "title": "Escolha o Estilo Itálico",
+        "desc": "Selecione entre os estilos de fonte itálica Unicode e visualize como seu texto fica com aquela aparência inclinada e enfatizada. Este gerador de fonte itálico funciona perfeitamente para todas as plataformas."
+      },
+      {
+        "title": "Copiar Texto em Itálico",
+        "desc": "Clique em copiar para obter seu texto em itálico e, em seguida, cole-o em documentos, e-mails ou artigos acadêmicos para dar ênfase. Com nosso gerador de fonte itálico, você pode criar textos estilizados em segundos."
+      }
+    ]
+  },
+  "comparison": {
+    "toolaze": "Geração ilimitada de texto em itálico, caracteres itálicos Unicode, visualização em tempo real, processamento no navegador, sem limites, privacidade total, 100% gratuito",
+    "others": "Restrições de texto, estilos de itálico limitados, servidores lentos, uploads na nuvem, problemas de privacidade, marcas d'água, assinaturas pagas"
+  },
+  "scenes": [
+    {
+      "title": "Escritores Acadêmicos",
+      "icon": "📚",
+      "desc": "Crie fontes em itálico para citações, ênfase em artigos acadêmicos e publicações científicas. Siga as convenções tipográficas adequadas com texto em itálico elegante."
+    },
+    {
+      "title": "Editores de Livros",
+      "icon": "📖",
+      "desc": "Gere texto em itálico para títulos de livros, títulos de capítulos e conteúdo literário. Adicione ênfase e interesse visual às suas publicações com tipografia em itálico."
+    },
+    {
+      "title": "Web Designers",
+      "icon": "🌐",
+      "desc": "Use fontes em itálico para ênfase em sites, citações e textos de chamada para ação. Crie hierarquia visual e chame a atenção para elementos de conteúdo importantes."
+    }
+  ],
+  "rating": {
+    "text": "\"O melhor gerador de fonte itálico que já encontrei. Resultados instantâneos e funciona perfeitamente no Instagram!\" - Junte-se a milhares de usuários que confiam no Toolaze para a geração de belos textos em itálico."
+  },
+  "faq": [
+    {
+      "q": "Qual é a diferença entre fontes em itálico e texto inclinado?",
+      "a": "Nosso itálico usa caracteres Unicode Mathematical Italic, que são símbolos distintos, não apenas texto estilizado. Isso garante uma aparência de itálico consistente em todas as plataformas, mesmo onde o CSS não está disponível."
+    },
+    {
+      "q": "Posso usar fontes em itálico para dar ênfase em documentos?",
+      "a": "Sim! As fontes em itálico são perfeitas para enfatizar textos importantes em documentos, artigos e publicações. Elas funcionam muito bem em processadores de texto, PDFs e conteúdo da web. Use nosso gerador de fonte itálico para gerar belos estilos de texto."
+    },
+    {
+      "q": "As fontes em itálico são boas para títulos de livros?",
+      "a": "Com certeza! As fontes em itálico são comumente usadas para títulos de livros, especialmente em contextos acadêmicos e literários. Elas adicionam ênfase e interesse visual aos títulos. Nosso gerador de fonte itálico facilita a criação de textos estilizados instantaneamente."
+    },
+    {
+      "q": "As fontes em itálico funcionarão no e-mail?",
+      "a": "Sim, os caracteres Unicode em itálico funcionam na maioria dos clientes de e-mail. Eles são perfeitos para adicionar ênfase a informações importantes em seus e-mails. Use nosso gerador de fonte itálico para gerar belos estilos de texto."
+    },
+    {
+      "q": "Posso usar fontes em itálico para citações?",
+      "a": "Sim! As fontes em itálico são padrão para citações em redação acadêmica. Elas funcionam bem em artigos de pesquisa, artigos e publicações científicas. Para mais estilos de escrita, experimente nosso <a href=\"/pt/font-generator/cursive\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">gerador de fonte itálico cursivo</a> ou explore nossa coleção de geradores de fontes."
+    }
+  ],
+  "compare": {
+    "toolaze": "Geração ilimitada de texto em itálico, múltiplos estilos elegantes, visualização instantânea em tempo real, arquitetura local-first, sem limites de caracteres, proteção completa de privacidade, 100% gratuito",
+    "others": "Limites de caracteres, opções de estilo limitadas, processamento lento no servidor, uploads na nuvem necessários, preocupações com a privacidade, marcas d'água ou anúncios, recursos premium pagos"
+  }
+}

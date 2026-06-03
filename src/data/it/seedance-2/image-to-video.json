@@ -1,0 +1,214 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Generatore AI da Immagine a Video gratuito con Seedance 2.0 (Online, Senza Registrazione) - Toolaze",
+    "description": "Come trasformare immagini in video? 1. Carica fino a 9 immagini 2. Aggiungi un prompt di testo opzionale 3. Genera video 1080p. AI da immagine a video gratuita online. Anima foto e opere d'arte. Senza registrazione. Output di qualità Hollywoodiana."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "modelIntro",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "modelIntro": {
+    "title": "Perché scegliere Immagine a Video con Seedance 2.0",
+    "modelName": "Seedance 2.0",
+    "modelType": "Modello Video AI",
+    "description": [
+      "Il passaggio da immagine a video anima le tue foto e opere d'arte. Carica fino a 9 immagini di riferimento; Seedance 2.0 aggiunge movimento, illuminazione e spostamenti di camera mantenendo il tuo stile visivo.",
+      "Abbina le immagini a prompt di testo per dirigere l'animazione: descrivi il movimento, l'angolazione o l'atmosfera. Un unico processo per scatti di prodotti, concept art e visual per il settore immobiliare.",
+      "Gratis online. Senza registrazione: carica e genera."
+    ],
+    "featureCards": [
+      {
+        "title": "Fino a 9 Immagini di Riferimento",
+        "content": "Usa più immagini per definire stile, personaggi o composizione. Il modello preserva il tuo look aggiungendo un movimento professionale."
+      },
+      {
+        "title": "Guida Testuale per il Controllo del Movimento",
+        "content": "Aggiungi prompt per guidare l'animazione. Descrivi i movimenti della camera, l'azione o l'atmosfera. Le immagini impostano il look; il testo imposta il movimento."
+      },
+      {
+        "title": "Output 1080p con Audio",
+        "content": "Ottieni clip da 15 secondi in 1080p con audio a doppio canale. Animazione coerente con lo stile in un'unica generazione."
+      }
+    ]
+  },
+  "hero": {
+    "h1": "Generatore AI <span class=\"text-gradient\">da Immagine a Video</span> Gratuito",
+    "desc": "Trasforma le immagini in video 1080p con Seedance 2.0 gratuitamente. Carica fino a 9 immagini di riferimento e lascia che l'AI le animi. Output di qualità Hollywoodiana online. Senza registrazione."
+  },
+  "intro": {
+    "title": "Perché usare Immagine a Video con Seedance 2.0?",
+    "content": [
+      {
+        "title": "Dai vita alle immagini statiche con l'animazione AI",
+        "text": "L'AI da immagine a video trasforma le tue foto e opere d'arte in video dinamici. Seedance 2.0 accetta fino a 9 immagini di riferimento e genera video di 15 secondi che preservano il tuo stile visivo aggiungendo movimento, illuminazione e spostamenti di camera. Ideale per vetrine di prodotti, animazioni di personaggi e storytelling creativo. A differenza dei generatori solo testo, l'immagine-a-video ti offre un controllo preciso sul visual di partenza: il tuo riferimento definisce il look e l'AI aggiunge il movimento. Perfetto quando hai un'immagine specifica, un design o uno scatto di prodotto che deve prendere vita."
+      },
+      {
+        "title": "Controllo da regista su movimento e stile",
+        "text": "Seedance 2.0 offre un controllo accurato su performance, illuminazione, ombre e movimenti della camera. Combina le tue immagini di riferimento con prompt di testo per guidare l'animazione: descrivi il movimento desiderato, l'angolazione della camera o l'atmosfera. Il modello eccelle in movimenti e interazioni complessi seguendo le leggi fisiche, gestendo anche scenari impegnativi come il pattinaggio di figura in coppia o rotazioni dinamiche di prodotti. Che tu stia animando un prodotto per l'e-commerce o dando vita a una concept art, il generatore da immagine a video rispetta il tuo input visivo aggiungendo un movimento professionale."
+      },
+      {
+        "title": "Immagine a Video Online Gratis per tutti i Creator",
+        "text": "Toolaze offre la generazione gratuita da immagine a video con Seedance 2.0. Carica fino a 9 immagini e genera video 1080p online, senza registrazione. Funziona per venditori e-commerce, artisti digitali, professionisti del settore immobiliare e creatori di contenuti. Nessuna installazione di software, nessuna carta di credito, nessun limite di utilizzo per iniziare. Trasforma i tuoi visual statici in contenuti video coinvolgenti in pochi secondi. Scarica e usa i tuoi video animati dall'AI ovunque."
+      }
+    ]
+  },
+  "features": {
+    "title": "Caratteristiche di Immagine a Video",
+    "items": [
+      {
+        "icon": "🖼️",
+        "iconType": "image",
+        "title": "Fino a 9 Immagini",
+        "desc": "Usa più immagini di riferimento per definire stile, personaggi o composizione della scena. Più immagini significano più controllo."
+      },
+      {
+        "icon": "🎥",
+        "iconType": "video",
+        "title": "1080p + Audio",
+        "desc": "Genera video e audio a doppio canale insieme. Output multi-scatto di qualità Hollywoodiana con suono sincronizzato."
+      },
+      {
+        "icon": "✍️",
+        "iconType": "text",
+        "title": "Guida Testuale",
+        "desc": "Aggiungi prompt in linguaggio naturale per descrivere il movimento desiderato, lo spostamento della camera e lo stile insieme alle tue immagini."
+      },
+      {
+        "icon": "🎬",
+        "iconType": "quality",
+        "title": "Preservazione dello Stile",
+        "desc": "L'AI rispetta le tue immagini di riferimento: colori, composizione e stile visivo guidano l'output aggiungendo movimento."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Gratis Online",
+        "desc": "Nessuna registrazione richiesta. Inizia a trasformare immagini in video a costo zero."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Generazione Rapida",
+        "desc": "Ottieni il tuo video animato in pochi secondi. Nessuna lunga coda di elaborazione: ideale per iterazioni rapide."
+      }
+    ]
+  },
+  "performanceMetrics": {
+    "title": "Specifiche di Immagine a Video",
+    "metrics": [
+      {
+        "label": "Immagini di Riferimento",
+        "value": "Fino a 9 immagini per generazione"
+      },
+      {
+        "label": "Input Opzionali",
+        "value": "Prompt di testo, fino a 3 clip video, 3 clip audio"
+      },
+      {
+        "label": "Risoluzione Output",
+        "value": "1080p (multi-scatto, qualità cinematografica)"
+      },
+      {
+        "label": "Durata Video",
+        "value": "15 secondi con audio a doppio canale"
+      },
+      {
+        "label": "Livello di Controllo",
+        "value": "Livello regista (movimento, illuminazione, camera)"
+      },
+      {
+        "label": "Ideale per",
+        "value": "E-commerce, arte digitale, immobiliare, video di prodotti"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Come convertire un'immagine in video?",
+    "steps": [
+      {
+        "title": "Carica le tue immagini",
+        "desc": "Aggiungi fino a 9 immagini di riferimento. Queste definiscono lo stile visivo. Aggiungi un prompt di testo opzionale per descrivere il movimento desiderato."
+      },
+      {
+        "title": "Configura le impostazioni",
+        "desc": "Imposta lo stile, la direzione del movimento e le preferenze della camera nell'interfaccia di Seedance 2.0. Descrivi come vuoi che l'immagine si animi."
+      },
+      {
+        "title": "Genera e Scarica",
+        "desc": "Ottieni il tuo video 1080p con audio in pochi secondi. Nessuna registrazione richiesta. Usalo per i social media, le pagine prodotto o per ulteriori modifiche."
+      }
+    ]
+  },
+  "comparison": {
+    "title": "Perché scegliere Toolaze Immagine a Video?",
+    "toolaze": "Toolaze 💎",
+    "others": "Altri Strumenti",
+    "vs": "VS",
+    "smartChoice": "Scelta Intelligente",
+    "otherTools": "Altri Strumenti",
+    "toolazeFeatures": "Fino a 9 immagini, 1080p + audio, Seedance 2.0, Gratis online, Senza registrazione, Guida testuale",
+    "othersFeatures": "Solo 1-2 immagini, Solo video, Qualità inferiore, Piani a pagamento, Registrazione, Nessun supporto testuale"
+  },
+  "scenesTitle": "Casi d'uso",
+  "scenes": [
+    {
+      "title": "Venditori E-commerce",
+      "icon": "🛒",
+      "desc": "Trasforma le foto dei prodotti in video dinamici per Amazon, Shopify e i social media. Mostra gli articoli in movimento per conversioni più elevate. Crea viste a 360 gradi del prodotto da una singola immagine. Genera più varianti video per test A/B. Non c'è bisogno di costosi servizi fotografici o riprese video."
+    },
+    {
+      "title": "Artisti Digitali e Illustratori",
+      "icon": "🎨",
+      "desc": "Anima illustrazioni e concept art. Dai vita a personaggi e scene con il movimento. Crea pezzi per il portfolio animati. Visualizza storyboard con movimento reale. L'AI da immagine a video preserva il tuo stile artistico aggiungendo un'animazione professionale. Perfetto per sviluppatori di giochi indie e fumettisti."
+    },
+    {
+      "title": "Settore Immobiliare",
+      "icon": "🏠",
+      "desc": "Crea tour virtuali da foto statiche. Aggiungi un movimento sottile agli annunci immobiliari: panoramiche delicate della camera, movimento ambientale. Fai risaltare gli annunci su Zillow, Realtor.com e sui social media. Genera video in stile walkthrough da pochi scatti chiave. Non sono richiesti modellazione 3D o attrezzature costose."
+    }
+  ],
+  "rating": {
+    "title": "Scelto da migliaia di creatori",
+    "rating": "4.9/5 DA OLTRE 10.000 CREATORI",
+    "text": "Unisciti a migliaia di persone che si fidano di Toolaze per il passaggio gratuito da immagine a video con Seedance 2.0. Nessuna registrazione. Trasforma le immagini in video 1080p online. Fino a 9 immagini di riferimento. Animazione di qualità Hollywoodiana in pochi secondi."
+  },
+  "moreTools": "Altri strumenti Seedance 2.0",
+  "faqTitle": "Domande Frequenti",
+  "faq": [
+    {
+      "q": "Il passaggio da immagine a video è gratuito?",
+      "a": "Sì! Toolaze offre la generazione gratuita da immagine a video con Seedance 2.0. Carica fino a 9 immagini e genera video 1080p online. Nessuna registrazione richiesta. Non ci sono costi nascosti o requisiti di carta di credito. Inizia a trasformare le tue immagini in video immediatamente. Il piano gratuito è sufficiente per la maggior parte dei creatori che iniziano."
+    },
+    {
+      "q": "Quante immagini posso usare per immagine a video?",
+      "a": "Seedance 2.0 supporta fino a 9 immagini di riferimento per generazione. Puoi anche aggiungere fino a 3 clip video e 3 clip audio per un controllo multimodale. Usa più immagini per definire diversi aspetti: una per il personaggio, una per lo sfondo, una per lo stile. Più riferimenti fornisci, più preciso sarà l'output."
+    },
+    {
+      "q": "Quali formati di immagine sono supportati?",
+      "a": "Seedance 2.0 accetta i formati di immagine comuni, inclusi JPG, PNG e WebP. Carica le tue immagini di riferimento direttamente nell'interfaccia online. Assicurati che le immagini siano chiare e ben illuminate per ottenere i migliori risultati. Immagini a bassissima risoluzione o pesantemente compresse potrebbero influire sulla qualità dell'output."
+    },
+    {
+      "q": "Posso aggiungere del testo per guidare il video?",
+      "a": "Sì. Combina le tue immagini di riferimento con prompt in linguaggio naturale. Descrivi il movimento, lo stile e la scena per guidare la generazione di Seedance 2.0. Ad esempio: 'Il prodotto ruota lentamente, illuminazione cinematografica, ombre morbide'. Il testo aiuta l'AI a capire come vuoi che la tua immagine statica si animi."
+    },
+    {
+      "q": "Il passaggio da immagine a video preserva il mio stile artistico?",
+      "a": "Sì. Seedance 2.0 è progettato per rispettare le immagini di riferimento. Il tuo stile visivo, i colori e la composizione guidano l'output mentre il modello aggiunge movimento ed elementi cinematografici. Per visual di personaggi o brand coerenti, usa più immagini di riferimento. L'AI da immagine a video eccelle nel mantenere la coerenza visiva."
+    },
+    {
+      "q": "Qual è la differenza tra immagine a video e testo a video?",
+      "a": "L'immagine-a-video utilizza le tue immagini come riferimento visivo primario: l'AI anima ciò che mostri. Il testo-a-video genera partendo solo dalla descrizione. Seedance 2.0 supporta entrambi: usa l'immagine-a-video quando hai un visual specifico da animare, o combina entrambi (immagine + testo) per il massimo controllo. Molti creatori usano l'immagine-a-video per scatti di prodotti e il testo-a-video per scene concettuali."
+    },
+    {
+      "q": "Posso animare una singola foto di un prodotto per l'e-commerce?",
+      "a": "Sì. Carica la foto del tuo prodotto e aggiungi un prompt di testo come 'il prodotto ruota di 360 gradi, illuminazione da studio'. Seedance 2.0 animerà il tuo scatto statico in un video dinamico. Perfetto per le inserzioni Amazon, le pagine prodotto Shopify e gli annunci sui social media. Una foto può diventare più varianti video con prompt diversi."
+    }
+  ]
+}

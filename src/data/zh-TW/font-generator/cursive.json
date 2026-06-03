@@ -1,0 +1,181 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "草寫字體產生器 (免費、複製貼上且無廣告) - Toolaze",
+    "description": "如何產生草寫字體？1. 輸入文字 2. 選擇草寫風格 3. 複製並貼上。為 Instagram、Facebook 和社群媒體建立漂亮的草寫文字。免費且私密。"
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "草寫字體產生器",
+    "desc": "免費在線產生漂亮的草寫字體。只需在下方輸入文字，即可建立優雅的草寫文字，並可隨處複製貼上。"
+  },
+  "intro": {
+    "title": "為什麼要使用草寫字體產生器？",
+    "content": [
+      {
+        "title": "什麼是草寫字體？",
+        "text": "草寫字體（也稱為手寫體）具有流暢、連接的字母形式，模仿手寫文字。這些優雅的字體營造出精緻感和個人特色，非常適合正式邀請函、個人品牌和藝術項目。與標準字體不同，草寫風格透過其優美的曲線和連接為您的文字增添溫暖和個性，傳達情感和風格。如果您正在尋找更多裝飾選項，請嘗試我們的 <a href=\"/zh-TW/font-generator/fancy\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">花體字產生器</a> 或 <a href=\"/zh-TW/font-generator/calligraphy\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">書法字體產生器</a> 以獲得更多優雅風格。"
+      },
+      {
+        "title": "為什麼要在線產生草寫文字？",
+        "text": "傳統的草寫文字建立方法需要昂貴的設計軟體、字體安裝和排版知識。無論您是在設計婚禮邀請函、建立個人 Instagram 簡介，還是在名片上添加優雅的觸感，我們的工具都能在幾秒鐘內將任何文字轉換為專業的草寫風格——無需下載、無需安裝、無需設計經驗。透過我們全面的 <a href=\"/zh-TW/font-generator\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">字體產生器</a> 系列探索更多字體風格。"
+      }
+    ]
+  },
+  "features": {
+    "title": "強大的草寫字體功能",
+    "items": [
+      {
+        "icon": "✍️",
+        "iconType": "quality",
+        "title": "優雅的手寫風格",
+        "desc": "存取多種流暢的草寫風格，為您的文字營造漂亮的手寫效果。"
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "100% 私密處理",
+        "desc": "您的文字完全在瀏覽器中處理——絕不上傳，絕不存儲，保證完全隱私。"
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "即時預覽",
+        "desc": "在您輸入時立即看到草寫文字的轉變，並獲得即時視覺回饋。"
+      },
+      {
+        "icon": "📋",
+        "iconType": "batch",
+        "title": "一鍵複製",
+        "desc": "立即複製您設計好的草寫文字，並將其貼到任何應用程式或平台中。"
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "完全免費",
+        "desc": "無限次產生草寫字體，無任何費用、訂閱或廣告——永遠如此。"
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "基於瀏覽器",
+        "desc": "完全在您的網頁瀏覽器中運行——無需安裝軟體或下載字體。"
+      }
+    ]
+  },
+  "specs": {
+    "engine": "瀏覽器原生字體渲染 - 用戶端處理",
+    "limit": "無限文字長度 - 無字元限制",
+    "logic": "即時預覽（立即套用風格）",
+    "privacy": "100% 用戶端（本地瀏覽器處理）"
+  },
+  "performanceMetrics": {
+    "title": "技術規格",
+    "metrics": [
+      {
+        "label": "字體風格",
+        "value": "草寫（獨特風格）"
+      },
+      {
+        "label": "文字長度",
+        "value": "無限字元"
+      },
+      {
+        "label": "處理速度",
+        "value": "即時（即時預覽）"
+      },
+      {
+        "label": "輸出格式",
+        "value": "Unicode 文字（可直接複製貼上）"
+      },
+      {
+        "label": "平台支援",
+        "value": "Instagram, Facebook, Twitter, TikTok, Discord 等"
+      },
+      {
+        "label": "處理位置",
+        "value": "100% 用戶端 (瀏覽器 JavaScript)"
+      },
+      {
+        "label": "隱私",
+        "value": "無伺服器上傳，完全本地處理"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "如何產生草寫字體",
+    "steps": [
+      {
+        "title": "輸入您的文字",
+        "desc": "在上方輸入欄位中輸入您想要轉換為優雅草寫風格的文字。"
+      },
+      {
+        "title": "選擇草寫風格",
+        "desc": "瀏覽可用的草寫字體風格，並預覽您的文字在每種優雅手寫變體中的外觀。"
+      },
+      {
+        "title": "複製您的草寫文字",
+        "desc": "點擊複製按鈕以複製您設計好的草寫文字，然後將其貼到婚禮邀請函、Instagram 簡介或任何文件中。"
+      }
+    ]
+  },
+  "comparison": {
+    "toolaze": "無限草寫文字產生、多種優雅手寫風格、即時預覽、基於瀏覽器的處理、無字元限制、完整的隱私保護、100% 免費",
+    "others": "字元限制、有限的手寫選項、伺服器處理緩慢、需要雲端上傳、隱私疑慮、浮水印或廣告、付費進階功能"
+  },
+  "scenes": [
+    {
+      "title": "婚禮邀請函",
+      "icon": "💍",
+      "desc": "為婚禮邀請函、預留日期卡和典禮節目單建立優雅的草寫文字。使用漂亮的手寫風格字體為您的特別日子增添浪漫、精緻的觸感。"
+    },
+    {
+      "title": "個人品牌",
+      "icon": "✍️",
+      "desc": "將草寫字體用於個人 Instagram 簡介、LinkedIn 標題和電子郵件簽名。使用傳達專業精神和個性的優雅手寫字體脫穎而出。"
+    },
+    {
+      "title": "藝術與設計項目",
+      "icon": "🎨",
+      "desc": "為藝術印刷品、賀卡和設計模型產生草寫文字。非常適合為您的創意項目增添手工製作的藝術感。"
+    }
+  ],
+  "rating": {
+    "text": "「這是我找到最好的草寫字體產生器。結果即時且在 Instagram 上運作完美！」- 加入成千上萬信任 Toolaze 產生漂亮草寫文字的使用者行列。"
+  },
+  "faq": [
+    {
+      "q": "我可以在正式文件中使用草寫字體嗎？",
+      "a": "是的！Toolaze 產生的草寫字體使用在大多數應用程式中都能運作的 Unicode 字元。但是，對於法律文件等非常正式的文件，您可能需要先驗證與特定文件軟體的相容性。"
+    },
+    {
+      "q": "草寫字體在所有裝置上都可讀嗎？",
+      "a": "草寫文字使用廣泛支援的 Unicode 數學手寫字元。它們在現代裝置上顯示良好，但某些舊手機或應用程式的渲染方式可能不同。請務必在您的目標平台上進行預覽。"
+    },
+    {
+      "q": "我可以在電子郵件簽名中使用草寫字體嗎？",
+      "a": "是的！草寫字體在電子郵件簽名中效果很好。只需複製產生的草寫文字並將其貼到您的電子郵件簽名設置中即可。大多數電子郵件用戶端都支援 Unicode 字元。"
+    },
+    {
+      "q": "草寫字體與書法字體有何不同？",
+      "a": "草寫字體具有流暢、連接的手寫風格，而書法字體通常具有更多裝飾性的花飾。我們的草寫產生器專注於適合日常使用的優雅、易讀的手寫風格。如需更多裝飾選項，請嘗試我們的 <a href=\"/zh-TW/font-generator/calligraphy\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">書法字體產生器</a> 或花體字產生器。"
+    },
+    {
+      "q": "草寫字體可以在 Microsoft Word 中使用嗎？",
+      "a": "是的，草寫 Unicode 字元可以在 Microsoft Word 和大多數文書處理軟體中運作。只需將產生的文字直接複製並貼到您的文件中即可。"
+    }
+  ],
+  "compare": {
+    "toolaze": "無限草寫文字產生、多種優雅風格、即時預覽、本地優先架構、無字元限制、完整的隱私保護、100% 免費",
+    "others": "字元限制、有限的風格選項、伺服器處理緩慢、需要雲端上傳、隱私疑慮、浮水印或廣告、付費進階功能"
+  }
+}

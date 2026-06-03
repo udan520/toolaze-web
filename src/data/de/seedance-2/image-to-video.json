@@ -1,0 +1,214 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Kostenloser Bild-zu-Video-KI-Generator mit Seedance 2.0 (Online, ohne Anmeldung) - Toolaze",
+    "description": "Wie verwandelt man Bilder in Videos? 1. Bis zu 9 Bilder hochladen 2. Optionalen Text-Prompt hinzufügen 3. 1080p-Video generieren. Kostenlose Bild-zu-Video-KI online. Fotos und Kunstwerke animieren. Keine Registrierung. Hollywood-Qualität."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "modelIntro",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "modelIntro": {
+    "title": "Warum Bild-zu-Video mit Seedance 2.0",
+    "modelName": "Seedance 2.0",
+    "modelType": "KI-Videomodell",
+    "description": [
+      "Bild-zu-Video animiert Ihre Fotos und Kunstwerke. Laden Sie bis zu 9 Referenzbilder hoch; Seedance 2.0 fügt Bewegung, Beleuchtung und Kamerabewegung hinzu, während Ihr visueller Stil erhalten bleibt.",
+      "Kombinieren Sie Bilder mit Text-Prompts, um die Animation zu steuern – beschreiben Sie Bewegung, Winkel oder Stimmung. Eine Pipeline für Produktaufnahmen, Konzeptkunst und Immobilien-Visualisierungen.",
+      "Kostenlos online. Keine Anmeldung – hochladen und generieren."
+    ],
+    "featureCards": [
+      {
+        "title": "Bis zu 9 Referenzbilder",
+        "content": "Verwenden Sie mehrere Bilder, um Stil, Charaktere oder Komposition zu definieren. Das Modell bewahrt Ihren Look und fügt professionelle Bewegung hinzu."
+      },
+      {
+        "title": "Textführung für Bewegungssteuerung",
+        "content": "Fügen Sie Prompts hinzu, um die Animation zu steuern. Beschreiben Sie Kamerabewegungen, Action oder Stimmung. Bilder bestimmen den Look; Text bestimmt die Bewegung."
+      },
+      {
+        "title": "1080p-Ausgabe mit Audio",
+        "content": "Erhalten Sie 15-sekündige 1080p-Clips mit Zweikanal-Audio. Stilgetreue Animation in einer Generation."
+      }
+    ]
+  },
+  "hero": {
+    "h1": "Kostenloser <span class=\"text-gradient\">Bild-zu-Video</span> KI-Generator",
+    "desc": "Verwandeln Sie Bilder mit Seedance 2.0 kostenlos in 1080p-Videos. Laden Sie bis zu 9 Referenzbilder hoch und lassen Sie die KI sie animieren. Hollywood-Qualität online. Keine Anmeldung."
+  },
+  "intro": {
+    "title": "Warum Bild-zu-Video mit Seedance 2.0 verwenden?",
+    "content": [
+      {
+        "title": "Statische Bilder mit KI-Animation zum Leben erwecken",
+        "text": "Bild-zu-Video-KI verwandelt Ihre Fotos und Kunstwerke in dynamische Videos. Seedance 2.0 akzeptiert bis zu 9 Referenzbilder und generiert 15-sekündige Videos, die Ihren visuellen Stil beibehalten und gleichzeitig Bewegung, Beleuchtung und Kamerabewegung hinzufügen. Ideal für Produktpräsentationen, Charakteranimationen und kreatives Storytelling. Im Gegensatz zu reinen Textgeneratoren bietet Bild-zu-Video eine präzise Kontrolle über das visuelle Ausgangsmaterial – Ihre Referenz definiert den Look, und die KI fügt die Bewegung hinzu. Perfekt, wenn Sie ein bestimmtes Bild, Design oder eine Produktaufnahme haben, die lebendig werden soll."
+      },
+      {
+        "title": "Kontrolle auf Regisseur-Niveau über Bewegung und Stil",
+        "text": "Seedance 2.0 bietet feine Kontrolle über Performance, Beleuchtung, Schatten und Kamerabewegung. Kombinieren Sie Ihre Referenzbilder mit Text-Prompts, um die Animation zu leiten – beschreiben Sie die gewünschte Bewegung, den Kamerawinkel oder die Stimmung. Das Modell glänzt bei komplexen Bewegungen und Interaktionen unter Einhaltung physikalischer Gesetze, selbst bei herausfordernden Szenarien wie Paarlauf oder dynamischen Produktrotationen. Egal, ob Sie ein Produkt für den E-Commerce animieren oder Konzeptkunst zum Leben erwecken, der Bild-zu-Video-Generator respektiert Ihre visuelle Eingabe und fügt professionelle Bewegung hinzu."
+      },
+      {
+        "title": "Kostenloses Online-Bild-zu-Video für alle Kreativen",
+        "text": "Toolaze bietet kostenlose Bild-zu-Video-Generierung mit Seedance 2.0. Laden Sie bis zu 9 Bilder hoch und generieren Sie 1080p-Videos online – keine Anmeldung erforderlich. Funktioniert für E-Commerce-Verkäufer, digitale Künstler, Immobilienprofis und Content-Ersteller. Keine Softwareinstallation, keine Kreditkarte, keine Nutzungslimits für den Einstieg. Verwandeln Sie Ihre statischen Visuals in Sekundenschnelle in ansprechende Videoinhalte. Laden Sie Ihre KI-animierten Videos herunter und verwenden Sie sie überall."
+      }
+    ]
+  },
+  "features": {
+    "title": "Bild-zu-Video Funktionen",
+    "items": [
+      {
+        "icon": "🖼️",
+        "iconType": "image",
+        "title": "Bis zu 9 Bilder",
+        "desc": "Verwenden Sie mehrere Referenzbilder, um Stil, Charaktere oder Szenenkomposition zu definieren. Mehr Bilder bedeuten mehr Kontrolle."
+      },
+      {
+        "icon": "🎥",
+        "iconType": "video",
+        "title": "1080p + Audio",
+        "desc": "Generieren Sie Video und Zweikanal-Audio zusammen. Hollywood-Qualität mit mehreren Einstellungen und synchronisiertem Sound."
+      },
+      {
+        "icon": "✍️",
+        "iconType": "text",
+        "title": "Textführung",
+        "desc": "Fügen Sie Prompts in natürlicher Sprache hinzu, um die gewünschte Bewegung, Kamerabewegung und den Stil neben Ihren Bildern zu beschreiben."
+      },
+      {
+        "icon": "🎬",
+        "iconType": "quality",
+        "title": "Stilerhaltung",
+        "desc": "Die KI respektiert Ihre Referenzbilder – Farben, Komposition und visueller Stil leiten die Ausgabe, während Bewegung hinzugefügt wird."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Kostenlos Online",
+        "desc": "Keine Anmeldung erforderlich. Beginnen Sie kostenlos mit der Umwandlung von Bildern in Videos."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Schnelle Generierung",
+        "desc": "Erhalten Sie Ihr animiertes Video in Sekunden. Keine langen Warteschlangen – ideal für schnelle Iterationen."
+      }
+    ]
+  },
+  "performanceMetrics": {
+    "title": "Bild-zu-Video Spezifikationen",
+    "metrics": [
+      {
+        "label": "Referenzbilder",
+        "value": "Bis zu 9 Bilder pro Generation"
+      },
+      {
+        "label": "Optionale Eingaben",
+        "value": "Text-Prompt, bis zu 3 Videoclips, 3 Audioclips"
+      },
+      {
+        "label": "Ausgabeauflösung",
+        "value": "1080p (Multi-Shot, Kinoqualität)"
+      },
+      {
+        "label": "Videodauer",
+        "value": "15 Sekunden mit Zweikanal-Audio"
+      },
+      {
+        "label": "Kontrollniveau",
+        "value": "Regisseur-Niveau (Bewegung, Licht, Kamera)"
+      },
+      {
+        "label": "Bestens geeignet für",
+        "value": "E-Commerce, digitale Kunst, Immobilien, Produktvideos"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Wie konvertiert man Bilder in Videos?",
+    "steps": [
+      {
+        "title": "Laden Sie Ihre Bilder hoch",
+        "desc": "Fügen Sie bis zu 9 Referenzbilder hinzu. Diese definieren den visuellen Stil. Fügen Sie einen optionalen Text-Prompt hinzu, um die gewünschte Bewegung zu beschreiben."
+      },
+      {
+        "title": "Einstellungen konfigurieren",
+        "desc": "Legen Sie Stil, Bewegungsrichtung und Kamerapräferenzen in der Seedance 2.0-Benutzeroberfläche fest. Beschreiben Sie, wie das Bild animiert werden soll."
+      },
+      {
+        "title": "Generieren & Herunterladen",
+        "desc": "Erhalten Sie Ihr 1080p-Video mit Audio in Sekunden. Keine Registrierung erforderlich. Verwenden Sie es für soziale Medien, Produktseiten oder zur weiteren Bearbeitung."
+      }
+    ]
+  },
+  "comparison": {
+    "title": "Warum Toolaze Bild-zu-Video wählen?",
+    "toolaze": "Toolaze 💎",
+    "others": "Andere Tools",
+    "vs": "VS",
+    "smartChoice": "Kluge Wahl",
+    "otherTools": "Andere Tools",
+    "toolazeFeatures": "Bis zu 9 Bilder, 1080p + Audio, Seedance 2.0, Kostenlos online, Keine Anmeldung, Textführung",
+    "othersFeatures": "Nur 1-2 Bilder, Nur Video, Geringere Qualität, Kostenpflichtige Abos, Registrierung, Keine Textunterstützung"
+  },
+  "scenesTitle": "Anwendungsfälle",
+  "scenes": [
+    {
+      "title": "E-Commerce-Verkäufer",
+      "icon": "🛒",
+      "desc": "Verwandeln Sie Produktfotos in dynamische Videos für Amazon, Shopify und soziale Medien. Zeigen Sie Artikel in Bewegung für höhere Konversionsraten. Erstellen Sie 360-Grad-Produktansichten aus einem einzigen Bild. Generieren Sie mehrere Videovarianten für A/B-Tests. Keine teuren Produktfotografien oder Videodrehs nötig."
+    },
+    {
+      "title": "Digitale Künstler & Illustratoren",
+      "icon": "🎨",
+      "desc": "Animieren Sie Illustrationen und Konzeptkunst. Erwecken Sie Charaktere und Szenen mit Bewegung zum Leben. Erstellen Sie animierte Portfolio-Stücke. Visualisieren Sie Storyboards mit tatsächlicher Bewegung. Die Bild-zu-Video-KI bewahrt Ihren Kunststil und fügt professionelle Animation hinzu. Perfekt für Indie-Spieleentwickler und Comic-Künstler."
+    },
+    {
+      "title": "Immobilien & Eigentum",
+      "icon": "🏠",
+      "desc": "Erstellen Sie virtuelle Touren aus Standbildern. Fügen Sie Immobilienanzeigen subtile Bewegungen hinzu – sanfte Kameraschwenks, Umgebungsbewegungen. Lassen Sie Anzeigen auf Portalen und in sozialen Medien hervorstechen. Generieren Sie Walkthrough-Videos aus wenigen Schlüsselaufnahmen. Keine 3D-Modellierung oder teure Ausrüstung erforderlich."
+    }
+  ],
+  "rating": {
+    "title": "Tausenden von Kreativen vertrauen uns",
+    "rating": "4.9/5 VON 10.000+ KREATIVEN",
+    "text": "Schließen Sie sich Tausenden an, die Toolaze für kostenloses Bild-zu-Video mit Seedance 2.0 vertrauen. Keine Registrierung. Verwandeln Sie Bilder online in 1080p-Videos. Bis zu 9 Referenzbilder. Hollywood-Qualität in Sekunden."
+  },
+  "moreTools": "Weitere Seedance 2.0 Tools",
+  "faqTitle": "Häufig gestellte Fragen",
+  "faq": [
+    {
+      "q": "Ist Bild-zu-Video kostenlos?",
+      "a": "Ja! Toolaze bietet kostenlose Bild-zu-Video-Generierung mit Seedance 2.0. Laden Sie bis zu 9 Bilder hoch und generieren Sie 1080p-Videos online. Keine Anmeldung erforderlich. Es gibt keine versteckten Gebühren oder Kreditkartenanforderungen. Beginnen Sie sofort damit, Ihre Bilder in Videos zu verwandeln. Die kostenlose Stufe reicht für die meisten Einsteiger aus."
+    },
+    {
+      "q": "Wie viele Bilder kann ich für Bild-zu-Video verwenden?",
+      "a": "Seedance 2.0 unterstützt bis zu 9 Referenzbilder pro Generation. Sie können auch bis zu 3 Videoclips und 3 Audioclips für multimodale Steuerung hinzufügen. Verwenden Sie mehrere Bilder, um verschiedene Aspekte zu definieren – eines für den Charakter, eines für den Hintergrund, eines für den Stil. Je mehr Referenzen Sie angeben, desto präziser ist das Ergebnis."
+    },
+    {
+      "q": "Welche Bildformate werden unterstützt?",
+      "a": "Seedance 2.0 akzeptiert gängige Bildformate wie JPG, PNG und WebP. Laden Sie Ihre Referenzbilder direkt über die Online-Oberfläche hoch. Stellen Sie sicher, dass die Bilder klar und gut beleuchtet sind, um beste Ergebnisse zu erzielen. Sehr niedrig auflösende oder stark komprimierte Bilder können die Ausgabequalität beeinträchtigen."
+    },
+    {
+      "q": "Kann ich Text hinzufügen, um das Video zu steuern?",
+      "a": "Ja. Kombinieren Sie Ihre Referenzbilder mit Prompts in natürlicher Sprache. Beschreiben Sie Bewegung, Stil und Szene, um die Generierung von Seedance 2.0 zu leiten. Zum Beispiel: 'Das Produkt dreht sich langsam, kinoreife Beleuchtung, weiche Schatten.' Der Text hilft der KI zu verstehen, wie Ihr statisches Bild animiert werden soll."
+    },
+    {
+      "q": "Behält Bild-zu-Video meinen Kunststil bei?",
+      "a": "Ja. Seedance 2.0 ist darauf ausgelegt, Referenzbilder zu respektieren. Ihr visueller Stil, Ihre Farben und Ihre Komposition leiten die Ausgabe, während das Modell Bewegung und kinoreife Elemente hinzufügt. Für konsistente Charakter- oder Markenvisualisierungen verwenden Sie mehrere Referenzbilder. Die Bild-zu-Video-KI ist hervorragend darin, die visuelle Kohärenz zu wahren."
+    },
+    {
+      "q": "Was ist der Unterschied zwischen Bild-zu-Video und Text-zu-Video?",
+      "a": "Bild-zu-Video verwendet Ihre Bilder als primäre visuelle Referenz – die KI animiert das, was Sie zeigen. Text-zu-Video generiert allein aus einer Beschreibung. Seedance 2.0 unterstützt beides: Verwenden Sie Bild-zu-Video, wenn Sie ein bestimmtes Visual animieren möchten, oder kombinieren Sie beides (Bild + Text) für maximale Kontrolle. Viele Ersteller nutzen Bild-zu-Video für Produktaufnahmen und Text-zu-Video für konzeptionelle Szenen."
+    },
+    {
+      "q": "Kann ich ein einzelnes Produkt foto für den E-Commerce animieren?",
+      "a": "Ja. Laden Sie Ihr Produktfoto hoch und fügen Sie einen Text-Prompt hinzu wie 'Produkt dreht sich um 360 Grad, Studiobeleuchtung'. Seedance 2.0 animiert Ihre statische Produktaufnahme in ein dynamisches Video. Perfekt für Amazon-Angebote, Shopify-Produktseiten und Social-Media-Anzeigen. Ein Foto kann mit verschiedenen Prompts zu mehreren Videovarianten werden."
+    }
+  ]
+}

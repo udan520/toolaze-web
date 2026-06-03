@@ -1,0 +1,181 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Gerador de Fontes para Instagram (Grátis, Copiar e Colar e Sem Anúncios) - Toolaze",
+    "description": "Como gerar fontes para o Instagram? 1. Digite seu texto 2. Selecione o estilo para Instagram 3. Copie e cole. Crie textos bonitos para Instagram, Facebook e redes sociais. Grátis e Privado."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Gerador de Fontes para Instagram",
+    "desc": "Gere fontes bonitas para o Instagram online e de graça. Basta digitar seu texto abaixo para criar textos elegantes para o Instagram que você pode copiar e colar em qualquer lugar."
+  },
+  "intro": {
+    "title": "Por que usar um Gerador de Fontes para Instagram?",
+    "content": [
+      {
+        "title": "O que é uma Fonte para Instagram?",
+        "text": "As fontes para Instagram são estilos de texto baseados em Unicode otimizados especificamente para a plataforma do Instagram. Essas fontes usam caracteres Unicode que são exibidos corretamente em biografias, posts, stories, legendas e destaques do Instagram. As fontes para Instagram ajudam seu perfil a se destacar no feed, tornando sua bio mais chamativa, suas legendas mais envolventes e sua marca mais memorável. São perfeitas para influenciadores, gestores de redes sociais e criadores de conteúdo que desejam criar conteúdo exclusivo e com a identidade da marca no Instagram. Para fontes de outras plataformas, confira nosso <a href=\"/pt/font-generator/discord\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">gerador de fontes para Discord</a>."
+      },
+      {
+        "title": "Por que gerar texto para Instagram online?",
+        "text": "A estilização de texto nativa do Instagram é limitada, e encontrar fontes que funcionem no Instagram pode ser um desafio. Esteja você atualizando sua bio do Instagram, criando textos envolventes para stories ou criando legendas de posts com a identidade da marca, nossa ferramenta transforma instantaneamente qualquer texto em fontes compatíveis com o Instagram — garantindo que seu conteúdo se destaque e seja exibido corretamente em todos os recursos do Instagram. Descubra mais com nosso <a href=\"/pt/font-generator\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">gerador de fontes</a>."
+      }
+    ]
+  },
+  "features": {
+    "title": "Recursos Poderosos de Fontes para Instagram",
+    "items": [
+      {
+        "icon": "📱",
+        "iconType": "quality",
+        "title": "Estilos Compatíveis com Instagram",
+        "desc": "Gere fontes que funcionam perfeitamente em biografias, posts, stories e legendas do Instagram."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Geração Privada",
+        "desc": "Toda a geração de fontes acontece localmente no seu navegador — seu texto nunca sai do seu dispositivo."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Texto Instantâneo para Instagram",
+        "desc": "Transforme seu texto em fontes compatíveis com o Instagram instantaneamente com visualização em tempo real."
+      },
+      {
+        "icon": "📋",
+        "iconType": "batch",
+        "title": "Cópia Rápida para Instagram",
+        "desc": "Copie seu texto para Instagram imediatamente e cole-o diretamente no seu perfil ou posts do Instagram."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Fontes Gratuitas para Instagram",
+        "desc": "Geração ilimitada de fontes para Instagram totalmente gratuita — sem custos, sem assinaturas, sem anúncios."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "Nenhum Aplicativo Necessário",
+        "desc": "Funciona inteiramente no seu navegador — sem necessidade de modificações no aplicativo do Instagram ou downloads."
+      }
+    ]
+  },
+  "specs": {
+    "engine": "Motor de Renderização de Fonte Nativo do Navegador - Processamento no Lado do Cliente",
+    "limit": "Comprimento de Texto Ilimitado - Sem Limites de Caracteres",
+    "logic": "Visualização em Tempo Real (Aplicação Instantânea de Estilo)",
+    "privacy": "100% no Lado do Cliente (Processamento Local no Navegador)"
+  },
+  "performanceMetrics": {
+    "title": "Especificações Técnicas",
+    "metrics": [
+      {
+        "label": "Estilo de Fonte",
+        "value": "Instagram (Estilo Distintivo)"
+      },
+      {
+        "label": "Comprimento do Texto",
+        "value": "Caracteres ilimitados"
+      },
+      {
+        "label": "Velocidade de Processamento",
+        "value": "Instantânea (Visualização em tempo real)"
+      },
+      {
+        "label": "Formato de Saída",
+        "value": "Texto Unicode (Pronto para copiar e colar)"
+      },
+      {
+        "label": "Suporte de Plataforma",
+        "value": "Instagram, Facebook, Twitter, TikTok, Discord e mais"
+      },
+      {
+        "label": "Local de Processamento",
+        "value": "100% no Lado do Cliente (JavaScript do Navegador)"
+      },
+      {
+        "label": "Privacidade",
+        "value": "Sem uploads para o servidor, processamento local completo"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Como Gerar Fontes para Instagram",
+    "steps": [
+      {
+        "title": "Digite Seu Texto",
+        "desc": "Insira o texto que deseja converter para o estilo compatível com o Instagram no campo de entrada acima."
+      },
+      {
+        "title": "Selecione o Estilo para Instagram",
+        "desc": "Escolha entre os estilos de fonte compatíveis com o Instagram e visualize como seu texto ficará no Instagram."
+      },
+      {
+        "title": "Copie o Texto para Instagram",
+        "desc": "Clique em copiar para obter seu texto para Instagram e, em seguida, cole-o diretamente em sua bio, posts, stories ou legendas do Instagram."
+      }
+    ]
+  },
+  "comparison": {
+    "toolaze": "Geração ilimitada de texto para Instagram, estilos compatíveis com Instagram, visualização instantânea, processamento local, sem limites, privacidade completa, grátis",
+    "others": "Limites de caracteres, fontes limitadas para Instagram, processamento no servidor, uploads obrigatórios, riscos de privacidade, anúncios, recursos premium"
+  },
+  "scenes": [
+    {
+      "title": "Influenciadores do Instagram",
+      "icon": "📸",
+      "desc": "Crie fontes chamativas para o Instagram para sua bio, destaques de stories e legendas de posts. Destaque-se no feed com um texto exclusivo e estiloso que combine com sua marca pessoal."
+    },
+    {
+      "title": "Gestores de Redes Sociais",
+      "icon": "📱",
+      "desc": "Gere fontes compatíveis com o Instagram para contas de clientes, posts de marcas e campanhas de marketing. Garanta que seu texto funcione perfeitamente na plataforma do Instagram."
+    },
+    {
+      "title": "Criadores de Conteúdo",
+      "icon": "🎬",
+      "desc": "Use fontes para Instagram em miniaturas de vídeo, títulos de IGTV e gráficos de Reels. Crie textos consistentes e com a identidade da marca em todo o seu conteúdo do Instagram."
+    }
+  ],
+  "rating": {
+    "text": "\"O melhor gerador de fontes para Instagram que já encontrei. Resultados instantâneos e funciona perfeitamente no Instagram!\" - Junte-se a milhares de usuários que confiam no Toolaze para a geração de textos bonitos para o Instagram."
+  },
+  "faq": [
+    {
+      "q": "As fontes para Instagram realmente funcionam no Instagram?",
+      "a": "Sim! Nosso Instagram usa caracteres Unicode que são totalmente suportados no Instagram. Basta copiar e colar o texto gerado diretamente em sua bio, posts, stories ou legendas do Instagram."
+    },
+    {
+      "q": "Posso usar fontes para Instagram nos Stories do Instagram?",
+      "a": "Sim! As fontes para Instagram funcionam em Stories, posts, bios e legendas. No entanto, observe que os Stories do Instagram também possuem opções de estilização de texto integradas, para que você possa combinar ambos para obter o máximo efeito."
+    },
+    {
+      "q": "As fontes para Instagram funcionarão nos Reels do Instagram?",
+      "a": "Sim, as fontes para Instagram são exibidas corretamente nas legendas dos Reels e no texto na tela. Elas são perfeitas para criar conteúdo de Reels chamativo que se destaca."
+    },
+    {
+      "q": "As fontes para Instagram são compatíveis com os Destaques do Instagram?",
+      "a": "Sim! Você pode usar fontes para Instagram nos nomes e descrições das capas dos seus Destaques. Elas adicionam um visual exclusivo e com a identidade da marca ao seu perfil do Instagram."
+    },
+    {
+      "q": "Posso usar fontes para Instagram em anúncios do Instagram?",
+      "a": "Sim, as fontes para Instagram funcionam em textos e descrições de anúncios. Elas podem ajudar seus anúncios a se destacarem e combinarem com a estética do seu Instagram. Para fontes de outras plataformas, confira nosso <a href=\"/pt/font-generator/Discord\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">gerador de fontes para Discord</a> ou navegue em nossas ferramentas de gerador de fontes."
+    }
+  ],
+  "compare": {
+    "toolaze": "Geração ilimitada de texto para Instagram, múltiplos estilos elegantes, visualização instantânea em tempo real, arquitetura focada no local, sem limites de caracteres, proteção completa de privacidade, 100% grátis",
+    "others": "Limites de caracteres, opções de estilo limitadas, processamento lento no servidor, uploads na nuvem obrigatórios, preocupações com privacidade, marcas d'água ou anúncios, recursos premium pagos"
+  }
+}

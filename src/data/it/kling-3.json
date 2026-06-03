@@ -1,0 +1,210 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Generatore Video AI Kling 3.0 Gratuito (4K, Online, Senza Registrazione) - Toolaze",
+    "description": "Crea video AI in 4K con Kling 3.0 gratuitamente. Input di testo, immagini, video e audio. Output 4K nativo, multi-scatto a 6 inquadrature, audio multilingue. Generazione video AI online gratuita — prossimamente."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "modelIntro",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "modelIntro": {
+    "title": "Perché Kling 3.0 si distingue per la creazione di video AI",
+    "modelName": "Kling 3.0",
+    "modelType": "Modello Video AI",
+    "description": [
+      "Kling 3.0 di Kuaishou introduce un'architettura multimodale unificata per i video AI: text-to-video, image-to-video, reference-to-video e editing in-video in un'unica pipeline. Inserisci testo, immagini, audio o video e ottieni un output nativo in 4K o 2K con un massimo di 6 tagli di inquadratura per generazione.",
+      "Il modello gestisce output fotorealistici, preservazione del testo per insegne e loghi, e narrazione multi-scatto con audio nativo in inglese, cinese, giapponese, coreano e spagnolo — inclusi dialetti regionali e dialoghi multi-personaggio. L'output consiste in video di 15 secondi con controllo della durata personalizzato.",
+      "Toolaze offre accesso gratuito online. Nessuna registrazione richiesta — inizia a creare direttamente dal tuo browser."
+    ],
+    "featureCards": [
+      {
+        "title": "Output Nativo 4K e 2K Senza Compromessi",
+        "content": "Kling 3.0 offre risoluzioni 4K e 2K pronte per la trasmissione in pochi secondi. L'output fotorealistico con illuminazione e movimento accurati mantiene alta la qualità pur rimanendo efficiente. Ideale per contenuti professionali, pubblicità e marketing."
+      },
+      {
+        "title": "Fino a 6 Tagli di Inquadratura nella Narrazione Multi-Scatto",
+        "content": "Genera sequenze multi-scatto con un massimo di 6 tagli di inquadratura per generazione. Le scene con inquadrature sopra la spalla, montaggio alternato e dialoghi rimangono coerenti. Un clic per clip multi-scatto complete pronte per social, annunci o storyboard."
+      },
+      {
+        "title": "Audio Multilingue con Parlato Nativo e Dialetti",
+        "content": "L'architettura congiunta audio-video produce immagini e suoni insieme. Audio nativo in inglese, cinese, giapponese, coreano e spagnolo — inclusi dialetti regionali e dialoghi multi-personaggio. Parlato, ambiente ed effetti rimangono sincronizzati senza ulteriore post-produzione."
+      }
+    ]
+  },
+  "hero": {
+    "h1": "Generatore Video AI <span class=\"text-gradient\">Kling 3.0</span> Gratuito",
+    "desc": "Crea video AI in 4K con Kling 3.0 gratuitamente. Input di testo, immagini, video e audio. 4K nativo, multi-scatto a 6 inquadrature, audio multilingue — prossimamente."
+  },
+  "intro": {
+    "title": "Perché scegliere il generatore video AI Kling 3.0?",
+    "content": [
+      {
+        "title": "4K Nativo e Output Multimodale Unificato",
+        "text": "Kling 3.0 è il modello di generazione video AI di nuova generazione di Kuaishou che adotta un'architettura multimodale unificata. A differenza degli strumenti che accettano solo prompt testuali, Kling 3.0 supporta input di testo, immagini, audio e video — producendo risoluzioni native 4K e 2K in un unico passaggio. Ottieni generazione basata su riferimenti, supporto per storyboard multi-scatto e editing in-video in un'unica pipeline. L'output fotorealistico con preservazione del testo per insegne e loghi lo rende ideale per il marketing professionale e i contenuti brandizzati."
+      },
+      {
+        "title": "Multi-Scatto a 6 Inquadrature e Audio Multilingue",
+        "text": "Genera video di alta qualità da 15 secondi con un massimo di 6 tagli di inquadratura per generazione. Kling 3.0 eccelle nella narrazione multi-scatto — le scene con inquadrature sopra la spalla, montaggio alternato e dialoghi rimangono coerenti. Audio nativo in inglese, cinese, giapponese, coreano e spagnolo — inclusi dialetti regionali e dialoghi multi-personaggio. Ottieni un controllo di livello registico su performance, illuminazione e movimento della telecamera, rendendolo ideale per pubblicità, e-commerce, contenuti social e video brevi."
+      },
+      {
+        "title": "Accesso Online Gratuito senza Registrazione Richiesta",
+        "text": "Toolaze fornisce accesso gratuito alla generazione video AI di Kling 3.0 online. Nessuna iscrizione, nessuna carta di credito e nessun costo nascosto. Che tu sia un creatore di contenuti che prototipa idee, un esperto di marketing che testa concetti pubblicitari o un regista che esplora storyboard, puoi iniziare a creare video 4K immediatamente. Il generatore video AI gratuito supporta text-to-video, image-to-video e generazione multimodale completa — tutto dal tuo browser senza installazione di software."
+      }
+    ]
+  },
+  "features": {
+    "title": "Caratteristiche principali di Kling 3.0",
+    "items": [
+      {
+        "icon": "🎬",
+        "iconType": "multimodal",
+        "title": "Input Multimodale",
+        "desc": "Combina testo, immagini, video e audio in un'unica generazione. Text-to-video, image-to-video, reference-to-video e editing in-video."
+      },
+      {
+        "icon": "🎥",
+        "iconType": "quality",
+        "title": "4K e 2K Nativi",
+        "desc": "Produci output fotorealistici in risoluzione 4K o 2K con illuminazione adeguata e movimenti di camera cinematografici."
+      },
+      {
+        "icon": "🎞️",
+        "iconType": "multishot",
+        "title": "Multi-Scatto a 6 Inquadrature",
+        "desc": "Fino a 6 tagli di inquadratura per generazione per narrazione multi-scatto, scene di dialogo e montaggio alternato."
+      },
+      {
+        "icon": "🔊",
+        "iconType": "audio",
+        "title": "Audio Multilingue",
+        "desc": "Audio nativo in EN, CN, JP, KR, ES con dialetti regionali e dialoghi multi-personaggio."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Gratuito da Usare",
+        "desc": "Nessuna registrazione richiesta. Inizia a creare video AI online a costo zero, senza abbonamenti o costi nascosti."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "Basato su Browser",
+        "desc": "Funziona interamente nel tuo browser web. Nessuna installazione di software, nessun download — crea video direttamente online."
+      }
+    ]
+  },
+  "specs": {
+    "engine": "Kuaishou Kling 3.0 - Architettura Multimodale Unificata",
+    "limit": "Input di testo, immagini, video, audio per generazione",
+    "logic": "Video di 15 secondi con un massimo di 6 tagli di inquadratura, 4K/2K nativo",
+    "privacy": "Elaborazione online - Nessuna installazione locale richiesta"
+  },
+  "performanceMetrics": {
+    "title": "Specifiche Tecniche di Kling 3.0",
+    "metrics": [
+      {
+        "label": "Tipi di Input",
+        "value": "Testo, Immagine, Video, Audio"
+      },
+      {
+        "label": "Risoluzione Output",
+        "value": "4K e 2K Nativi"
+      },
+      {
+        "label": "Durata Video",
+        "value": "15 secondi (durata personalizzata)"
+      },
+      {
+        "label": "Tagli di Inquadratura",
+        "value": "Fino a 6 scatti per generazione"
+      },
+      {
+        "label": "Supporto Audio",
+        "value": "EN, CN, JP, KR, ES con dialetti, multi-personaggio"
+      },
+      {
+        "label": "Casi d'Uso",
+        "value": "Annunci, e-commerce, social, video brevi"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Come generare video con Kling 3.0?",
+    "steps": [
+      {
+        "title": "Prepara i tuoi Input",
+        "desc": "Raccogli prompt testuali, immagini di riferimento, clip video o file audio. Puoi usare qualsiasi combinazione di questi input multimodali."
+      },
+      {
+        "title": "Carica su Kling 3.0",
+        "desc": "Carica i tuoi input multimodali nell'interfaccia online gratuita. Aggiungi istruzioni in linguaggio naturale per guidare la generazione."
+      },
+      {
+        "title": "Genera e Scarica",
+        "desc": "Clicca su genera e scarica il tuo video 4K con audio multilingue in pochi secondi. Nessuna registrazione richiesta."
+      }
+    ]
+  },
+  "scenesTitle": "Casi d'Uso",
+  "scenes": [
+    {
+      "title": "Creatori di Contenuti e Social Media",
+      "icon": "📱",
+      "desc": "Crea video brevi coinvolgenti per TikTok, Instagram Reels e YouTube Shorts. Combina prompt testuali con immagini di riferimento per un branding coerente. Genera video 4K con audio multilingue per un pubblico globale."
+    },
+    {
+      "title": "E-commerce e Pubblicità",
+      "icon": "🛒",
+      "desc": "Genera video di prodotti e creatività pubblicitarie su scala. Usa le immagini dei prodotti come riferimento per contenuti di marketing professionali. Crea rapidamente variazioni per A/B test. Output 4K e preservazione del testo per insegne e loghi."
+    },
+    {
+      "title": "Marketing Multilingue",
+      "icon": "🌍",
+      "desc": "Produci video con audio nativo in inglese, cinese, giapponese, coreano e spagnolo. Dialetti regionali e dialoghi multi-personaggio per una localizzazione autentica. Perfetto per campagne globali e contenuti regionali."
+    }
+  ],
+  "rating": {
+    "title": "Scelto da migliaia di creatori",
+    "rating": "4.9/5 DA OLTRE 10.000 CREATORI",
+    "text": "Unisciti a migliaia di utenti soddisfatti che si affidano a Toolaze per una generazione video AI veloce, sicura e gratuita con Kling 3.0. Nessuna registrazione richiesta. Crea video 4K da testo, immagini, video e audio online."
+  },
+  "faqTitle": "Domande Frequenti",
+  "faq": [
+    {
+      "q": "Cos'è Kling 3.0?",
+      "a": "Kling 3.0 è il modello di generazione video AI di nuova generazione di Kuaishou lanciato a febbraio 2026. Utilizza un'architettura multimodale unificata che supporta input di testo, immagini, video e audio per creare video di alta qualità da 15 secondi con output nativo in 4K e 2K. Il modello supporta fino a 6 tagli di inquadratura per generazione, audio nativo in inglese, cinese, giapponese, coreano e spagnolo (inclusi dialetti regionali e dialoghi multi-personaggio) e output fotorealistico con preservazione del testo. È progettato per annunci professionali, e-commerce, contenuti social e video brevi."
+    },
+    {
+      "q": "Kling 3.0 è gratuito?",
+      "a": "Sì! Toolaze offre accesso gratuito alla generazione video AI di Kling 3.0 online. Non è richiesta alcuna iscrizione o registrazione per iniziare. Puoi creare video 4K con input di testo, immagini, video e audio senza costi. Non ci sono costi nascosti, abbonamenti o requisiti di carta di credito. Inizia subito a generare video 4K fotorealistici."
+    },
+    {
+      "q": "Quali input supporta Kling 3.0?",
+      "a": "Kling 3.0 supporta quattro tipi di input: testo (descrizioni in linguaggio naturale), immagini (immagini di riferimento), clip video e clip audio. Puoi combinare uno qualsiasi di questi con istruzioni in linguaggio naturale per la massima flessibilità creativa. Questo approccio multimodale ti offre un controllo senza precedenti: aggiungi riferimenti visivi per lo stile, filmati campione per la coerenza o sincronizza con l'audio in un'unica generazione."
+    },
+    {
+      "q": "Come si confronta Kling 3.0 con Sora 2?",
+      "a": "Sora 2 (OpenAI) eccelle nella precisione fisica e nel realismo, con una forte sincronizzazione audio e una funzione \"personaggi\". Disponibile tramite l'app Sora e sora.com. Kling 3.0 (Kuaishou) si distingue per l'output nativo 4K e 2K, fino a 6 tagli di inquadratura per generazione e audio multilingue in EN, CN, JP, KR, ES con dialetti regionali e dialoghi multi-personaggio. Output fotorealistico con preservazione del testo per insegne e loghi. Toolaze offre accesso online gratuito. Differenza principale: Sora 2 per il realismo e l'ecosistema OpenAI; Kling 3.0 per l'output nativo 4K, il multi-scatto e l'audio multilingue."
+    },
+    {
+      "q": "Kling 3.0 può generare audio insieme al video?",
+      "a": "Sì. Kling 3.0 utilizza un'architettura di generazione congiunta audio-video unificata. Può generare video di 15 secondi con audio nativo in inglese, cinese, giapponese, coreano e spagnolo — inclusi dialetti regionali e dialoghi multi-personaggio. Parlato, ambiente ed effetti rimangono sincronizzati senza ulteriore post-produzione."
+    },
+    {
+      "q": "Come si confronta Kling 3.0 con Seedance 2.0?",
+      "a": "Seedance 2.0 (ByteDance) supporta fino a 9 immagini, 3 clip video e 3 clip audio in un unico passaggio. Output 1080p con controllo di livello registico. Kling 3.0 (Kuaishou) offre output nativo 4K e 2K, fino a 6 tagli di inquadratura per generazione e audio multilingue in EN, CN, JP, KR, ES con dialetti. Entrambi supportano l'input multimodale. Toolaze offre accesso online gratuito a entrambi. Scegli Seedance 2.0 per la massima flessibilità multimodale; scegli Kling 3.0 per l'output nativo 4K e l'audio multilingue."
+    },
+    {
+      "q": "Devo installare un software per usare Kling 3.0?",
+      "a": "No. Toolaze esegue Kling 3.0 interamente nel tuo browser web. Nessuna installazione di software, nessun download e nessun plugin richiesto. Basta visitare il sito web, caricare i prompt testuali e i materiali di riferimento e generare video direttamente online. Funziona su Windows, Mac e sulla maggior parte dei browser moderni."
+    }
+  ],
+  "moreTools": "Altri strumenti Kling 3.0"
+}

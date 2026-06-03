@@ -1,0 +1,126 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Compressor de Imagem Grátis - Comprimir Imagens em Lote Online | Toolaze",
+    "description": "Comprima em lote até 100 imagens de uma vez. Defina o tamanho exato. Rápido, privado, 100% grátis. Sem necessidade de registro."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "<span class=\"text-gradient\">Compressor de Imagem</span> Grátis",
+    "desc": "Comprima em lote até 100 imagens de uma vez. Defina o tamanho exato. Rápido, privado, 100% grátis. Sem necessidade de registro."
+  },
+  "intro": {
+    "title": "Por que usar o Compressor de Imagem da Toolaze?",
+    "content": [
+      {
+        "title": "Pare de perder tempo com ferramentas de compressão de imagem lentas",
+        "text": "Os compressores de imagem tradicionais são lentos, limitam a quantidade de arquivos e muitas vezes comprometem a qualidade. O Toolaze comprime até 100 imagens simultaneamente com controle de tamanho preciso, mantendo a qualidade visual enquanto reduz drasticamente o tamanho dos arquivos. Perfeito para desenvolvedores web, fotógrafos e criadores de conteúdo."
+      }
+    ]
+  },
+  "features": {
+    "title": "Recursos Poderosos de Compressão de Imagem",
+    "items": [
+      {
+        "icon": "📂",
+        "iconType": "batch",
+        "title": "Processamento em Lote",
+        "desc": "Comprima até 100 imagens de uma vez"
+      },
+      {
+        "icon": "🎯",
+        "iconType": "precise",
+        "title": "Controle de Tamanho Preciso",
+        "desc": "Defina o tamanho exato em KB ou MB"
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "100% Grátis",
+        "desc": "Sem anúncios."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Como usar o Toolaze?",
+    "steps": [
+      {
+        "title": "Carregar Imagens",
+        "desc": "Arraste e solte até 100 imagens ou pastas. Suporta formatos JPG, PNG, WebP e BMP."
+      },
+      {
+        "title": "Definir Tamanho Alvo",
+        "desc": "Escolha o tamanho de arquivo desejado em KB ou MB. Nosso algoritmo comprime as imagens precisamente para o seu alvo."
+      },
+      {
+        "title": "Baixar Resultados",
+        "desc": "Baixe imagens comprimidas individualmente ou todas de uma vez como um arquivo ZIP. Rápido e eficiente."
+      }
+    ]
+  },
+  "comparison": {
+    "title": "Por que escolher o Toolaze?",
+    "toolaze": "Toolaze 💎",
+    "others": "Outras Ferramentas",
+    "vs": "VS",
+    "smartChoice": "Escolha Inteligente",
+    "otherTools": "Outras Ferramentas",
+    "toolazeFeatures": "Lote de até 100 imagens, Controle de tamanho preciso, Suporte a múltiplos formatos, 100% privado e grátis, Sem necessidade de registro",
+    "othersFeatures": "Tamanho de lote limitado, Sem controle preciso, Restrições de formato, Preocupações com privacidade, Registro obrigatório"
+  },
+  "scenesTitle": "Casos de Uso",
+  "scenes": [
+    {
+      "title": "Para Desenvolvedores Web",
+      "icon": "💻",
+      "desc": "Otimize imagens para sites e aplicativos. Reduza o tempo de carregamento mantendo a qualidade para melhor SEO e experiência do usuário."
+    },
+    {
+      "title": "Para E-commerce",
+      "icon": "🛒",
+      "desc": "Comprima imagens de produtos em massa. Carregamentos de página mais rápidos significam melhores taxas de conversão e melhores rankings de busca."
+    },
+    {
+      "title": "Para Criadores de Conteúdo",
+      "icon": "📱",
+      "desc": "Prepare imagens para redes sociais e blogs. Processe várias imagens em lote rapidamente sem perda de qualidade."
+    }
+  ],
+  "rating": {
+    "title": "Confiado por Milhares de Criadores",
+    "rating": "4.9/5 DE MAIS DE 10 MIL CRIADORES",
+    "text": "Junte-se a milhares de usuários satisfeitos que confiam no Toolaze para compressão de imagem rápida, segura e gratuita. Sem necessidade de registro, processamento 100% privado."
+  },
+  "faqTitle": "Perguntas Frequentes",
+  "faq": [
+    {
+      "q": "Quais formatos de imagem são suportados?",
+      "a": "O Toolaze suporta os formatos JPG, JPEG, PNG, WebP e BMP. Todas as imagens comprimidas são geradas como arquivos JPEG otimizados."
+    },
+    {
+      "q": "Esta ferramenta é realmente gratuita?",
+      "a": "Sim! O Toolaze é 100% gratuito, sem anúncios, sem registro e sem taxas ocultas. Todo o processamento acontece no seu navegador."
+    },
+    {
+      "q": "Posso comprimir mais de 100 imagens?",
+      "a": "O tamanho máximo do lote é de 100 arquivos por sessão. Para lotes maiores, basta processá-los em várias sessões."
+    },
+    {
+      "q": "Minhas imagens são enviadas para um servidor?",
+      "a": "Não! Todo o processamento de imagem acontece localmente no seu navegador usando JavaScript. Suas imagens nunca saem do seu dispositivo, garantindo total privacidade."
+    },
+    {
+      "q": "Qual é o tamanho máximo de arquivo que posso comprimir?",
+      "a": "Não há um limite teórico de tamanho de arquivo. No entanto, imagens muito grandes podem causar lentidão no navegador, dependendo do desempenho do seu dispositivo e da memória disponível. Recomendamos processar arquivos grandes em lotes menores para a melhor experiência."
+    }
+  ],
+  "moreTools": "Mais Ferramentas de Compressão de Imagem"
+}

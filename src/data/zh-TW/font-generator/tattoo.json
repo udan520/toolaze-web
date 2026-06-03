@@ -1,0 +1,181 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "刺青字體產生器 (免費、複製貼上、無廣告) - Toolaze",
+    "description": "如何產生刺青字體？1. 輸入文字 2. 選擇刺青風格 3. 複製並貼上。為 Instagram、Facebook 和社群媒體建立精美的刺青文字。免費且私密。"
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "刺青字體產生器",
+    "desc": "免費在線產生精美的刺青字體。只需在下方輸入文字，即可建立優雅的刺青文字，並可隨處複製貼上。"
+  },
+  "intro": {
+    "title": "為什麼要使用刺青字體產生器？",
+    "content": [
+      {
+        "title": "什麼是刺青字體？",
+        "text": "刺青字體結合了專為人體藝術美學設計的粗體、哥德式和裝飾性元素。這些獨特的字體具有強烈的線條、獨特的字元形狀和前衛的風格，捕捉了刺青文化的叛逆精神。刺青字體的特點是其強烈的存在感，無論是用於實際的刺青設計、街頭服飾還是另類時尚品牌，都能讓文字脫穎而出。如需類似的粗體風格，請查看我們的 <a href=\"/zh-TW/font-generator/gothic\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">哥德字體產生器</a> 或 <a href=\"/zh-TW/font-generator/bold\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">粗體字體產生器</a>。"
+      },
+      {
+        "title": "為什麼要在線產生刺青文字？",
+        "text": "傳統上，設計刺青風格的文字需要專業的設計軟體和廣泛的排版知識。刺青藝術家和愛好者通常會花費數小時尋找符合其願景的完美字體風格。非常適合需要獨特、吸睛排版的刺青設計師、人體藝術愛好者和另類時尚品牌。透過我們的 <a href=\"/zh-TW/font-generator\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">字體產生器</a> 系列探索更多風格。"
+      }
+    ]
+  },
+  "features": {
+    "title": "強大的刺青字體功能",
+    "items": [
+      {
+        "icon": "🖋️",
+        "iconType": "quality",
+        "title": "粗體刺青風格",
+        "desc": "從多種前衛的刺青字體風格中選擇，包括哥德式、粗體和裝飾性變體。"
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "僅限本地處理",
+        "desc": "所有字體產生都在您的裝置上進行——您的文字絕不會離開您的電腦，確保完全的安全性。"
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "即時轉換",
+        "desc": "輸入時即可看到文字立即轉換為刺青風格並進行即時預覽。"
+      },
+      {
+        "icon": "📋",
+        "iconType": "batch",
+        "title": "快速複製貼上",
+        "desc": "一鍵複製您的刺青文字，並在任何地方使用——社群媒體、設計或文件。"
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "免費",
+        "desc": "完全免費產生無限的刺青字體——無須付費、無進階功能、無廣告。"
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "無須下載",
+        "desc": "一切都在您的瀏覽器中使用客戶端技術運行——無須安裝軟體或字體。"
+      }
+    ]
+  },
+  "specs": {
+    "engine": "瀏覽器原生字體渲染 - 客戶端處理",
+    "limit": "無限文字長度 - 無字元限制",
+    "logic": "即時預覽 (立即套用風格)",
+    "privacy": "100% 客戶端 (本地瀏覽器處理)"
+  },
+  "performanceMetrics": {
+    "title": "技術規格",
+    "metrics": [
+      {
+        "label": "字體風格",
+        "value": "刺青 (獨特風格)"
+      },
+      {
+        "label": "文字長度",
+        "value": "無限字元"
+      },
+      {
+        "label": "處理速度",
+        "value": "即時 (即時預覽)"
+      },
+      {
+        "label": "輸出格式",
+        "value": "Unicode 文字 (可直接複製貼上)"
+      },
+      {
+        "label": "平台支援",
+        "value": "Instagram, Facebook, Twitter, TikTok, Discord 等"
+      },
+      {
+        "label": "處理位置",
+        "value": "100% 客戶端 (瀏覽器 JavaScript)"
+      },
+      {
+        "label": "隱私保護",
+        "value": "無伺服器上傳，完全本地處理"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "如何產生刺青字體",
+    "steps": [
+      {
+        "title": "輸入您的文字",
+        "desc": "在上方的輸入欄位中輸入您想要轉換為粗體刺青風格的姓名、格言或短語。"
+      },
+      {
+        "title": "選擇刺青風格",
+        "desc": "探索不同的刺青字體風格，包括哥德式、粗體和裝飾性選項。預覽每種風格，找到最適合您設計的樣式。"
+      },
+      {
+        "title": "複製刺青文字",
+        "desc": "點擊複製以獲取您的刺青風格文字，然後將其貼到設計軟體、社群媒體或與您的刺青師分享。"
+      }
+    ]
+  },
+  "comparison": {
+    "toolaze": "無限刺青文字產生、多種粗體哥德風格、即時預覽、本地瀏覽器處理、無文字長度限制、完全隱私保護、100% 免費",
+    "others": "文字長度限制、風格選擇少、伺服器端延遲、需要雲端上傳、數據隱私風險、廣告、高級訂閱"
+  },
+  "scenes": [
+    {
+      "title": "刺青設計師",
+      "icon": "🖋️",
+      "desc": "為客戶建立獨特的刺青字體設計。在紋身前預覽不同的刺青風格字體，為姓名、格言或有意義的文字找到完美搭配。"
+    },
+    {
+      "title": "人體藝術愛好者",
+      "icon": "💪",
+      "desc": "為您的下一個紋身設計嘗試刺青字體。測試您的姓名、格言或短語在各種粗體、哥德式和裝飾性刺青風格下的外觀。"
+    },
+    {
+      "title": "另類時尚品牌",
+      "icon": "👕",
+      "desc": "將刺青字體用於服裝設計、周邊商品和品牌標誌。建立前衛、大膽的文字，捕捉刺青文化的叛逆精神。"
+    }
+  ],
+  "rating": {
+    "text": "「這是我找到最好的刺青字體產生器。結果即時，且在 Instagram 上完美運行！」- 加入成千上萬信任 Toolaze 產生精美刺青文字的使用者行列。"
+  },
+  "faq": [
+    {
+      "q": "我可以將這些刺青字體用於實際的刺青設計嗎？",
+      "a": "是的！許多刺青藝術家和客戶在紋身前使用我們的產生器來預覽文字風格。但是，請務必諮詢您的刺青師，因為他們可能需要根據您的具體設計和身體部位調整字體。"
+    },
+    {
+      "q": "刺青字體適合永久紋身嗎？",
+      "a": "我們的刺青字體非常適合設計靈感和預覽。對於實際紋身，請與您的藝術家合作，確保風格適合紋身的大小和位置，因為某些字體在紋身時可能需要調整以確保可讀性。"
+    },
+    {
+      "q": "我可以將刺青字體用於服裝設計嗎？",
+      "a": "當然可以！刺青字體非常適合街頭服飾、樂團周邊和另類時尚。粗體、前衛的風格在 T 恤、帽 T 和配件上效果極佳。"
+    },
+    {
+      "q": "刺青字體在社群媒體上有效嗎？",
+      "a": "是的！刺青字體使用 Unicode 字元，在 Instagram、Facebook、Twitter 和 TikTok 上顯示效果良好。它們非常適合建立大膽、吸睛的社群媒體內容。"
+    },
+    {
+      "q": "刺青字體和哥德字體有什麼區別？",
+      "a": "刺青字體通常結合了專為刺青美學選擇的粗體、哥德式和裝飾性元素。哥德字體更傳統、正式，而刺青字體設計得更適合人體藝術。請查看我們的 <a href=\"/zh-TW/font-generator/gothic\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">哥德字體產生器</a> 以獲取更多傳統風格，或瀏覽我們所有的 <a href=\"/zh-TW/font-generator\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">字體產生器</a> 工具。"
+    }
+  ],
+  "compare": {
+    "toolaze": "無限刺青文字產生、多種優雅風格、即時預覽、本地優先架構、無字元限制、完全隱私保護、100% 免費",
+    "others": "字元限制、風格選擇有限、伺服器處理緩慢、需要雲端上傳、隱私疑慮、浮水印或廣告、付費進階功能"
+  }
+}

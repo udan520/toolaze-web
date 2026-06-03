@@ -1,0 +1,181 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Gerador de Fontes 3D (Grátis, Copiar e Colar e Sem Anúncios) - Toolaze",
+    "description": "Como gerar fontes 3D? 1. Digite seu texto 2. Selecione o estilo 3D 3. Copie e cole. Crie textos 3D bonitos para Instagram, Facebook e redes sociais. Grátis e Privado."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Gerador de Fontes 3D",
+    "desc": "Gere fontes 3D bonitas online gratuitamente. Basta digitar seu texto abaixo para criar textos 3D elegantes que você pode copiar e colar em qualquer lugar."
+  },
+  "intro": {
+    "title": "Por que usar um gerador de fontes 3D?",
+    "content": [
+      {
+        "title": "O que é Fonte 3D?",
+        "text": "Fontes 3D usam caracteres Unicode com estilo dimensional em negrito que cria uma aparência tridimensional. Essas tipografias apresentam traços grossos e profundidade visual, fazendo com que o texto pareça saltar da página ou da tela. As fontes 3D são caracterizadas por seu visual moderno e dimensional, tornando-as perfeitas para títulos de videogames, visualizações arquitetônicas, projetos de design 3D e qualquer conteúdo que precise dessa estética contemporânea e cheia de profundidade. Para estilos mais ousados, experimente nosso <a href=\"/pt/font-generator/bold\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">gerador de fontes em negrito</a> ou gerador de fontes legais."
+      },
+      {
+        "title": "Por que gerar texto 3D online?",
+        "text": "Criar texto 3D real requer softwares de modelagem 3D caros e habilidades especializadas. Nosso gerador de texto 3D oferece acesso instantâneo a estilos Unicode dimensionais que criam essa aparência semelhante ao 3D. Esteja você projetando títulos de jogos, criando apresentações arquitetônicas ou desenvolvendo branding moderno, nossa ferramenta transforma qualquer texto em fontes de estilo 3D instantaneamente — adicionando essa profundidade e dimensão aos seus projetos sem a complexidade de um software 3D. Descubra mais com nosso <a href=\"/pt/font-generator\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">gerador de fontes</a>."
+      }
+    ]
+  },
+  "features": {
+    "title": "Recursos Poderosos de Fontes 3D",
+    "items": [
+      {
+        "icon": "🎨",
+        "iconType": "quality",
+        "title": "Estilos de Fontes Dimensionais",
+        "desc": "Gere fontes de estilo 3D com caracteres Unicode dimensionais em negrito que criam profundidade."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Processamento Local no Navegador",
+        "desc": "A geração da fonte ocorre inteiramente no seu navegador — seu texto permanece privado no seu dispositivo."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Conversão 3D Instantânea",
+        "desc": "Transforme seu texto para o estilo 3D instantaneamente com visualização em tempo real mostrando efeitos dimensionais."
+      },
+      {
+        "icon": "📋",
+        "iconType": "batch",
+        "title": "Copiar Texto 3D",
+        "desc": "Copie seu texto em estilo 3D instantaneamente e cole-o em títulos de jogos, apresentações ou projetos 3D."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Fontes 3D Gratuitas",
+        "desc": "Geração ilimitada de fontes 3D completamente grátis — sem custo, sem níveis premium, sem anúncios."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "Sem Software 3D",
+        "desc": "Funciona inteiramente no seu navegador — sem necessidade de software de modelagem 3D ou instalações complexas."
+      }
+    ]
+  },
+  "specs": {
+    "engine": "Renderização de Fonte Nativa do Navegador - Processamento no Lado do Cliente",
+    "limit": "Comprimento de Texto Ilimitado - Sem Limites de Caracteres",
+    "logic": "Visualização em Tempo Real (Aplicação de Estilo Instantânea)",
+    "privacy": "100% no Lado do Cliente (Processamento Local no Navegador)"
+  },
+  "performanceMetrics": {
+    "title": "Especificações Técnicas",
+    "metrics": [
+      {
+        "label": "Estilo de Fonte",
+        "value": "3D (Estilo Distintivo)"
+      },
+      {
+        "label": "Comprimento do Texto",
+        "value": "Caracteres ilimitados"
+      },
+      {
+        "label": "Velocidade de Processamento",
+        "value": "Instantânea (Visualização em tempo real)"
+      },
+      {
+        "label": "Formato de Saída",
+        "value": "Texto Unicode (Pronto para copiar e colar)"
+      },
+      {
+        "label": "Suporte de Plataforma",
+        "value": "Instagram, Facebook, Twitter, TikTok, Discord e mais"
+      },
+      {
+        "label": "Local de Processamento",
+        "value": "100% no Lado do Cliente (JavaScript do Navegador)"
+      },
+      {
+        "label": "Privacidade",
+        "value": "Sem uploads para o servidor, processamento local completo"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Como Gerar Fontes 3D",
+    "steps": [
+      {
+        "title": "Digite Seu Texto",
+        "desc": "Insira o texto que deseja transformar em estilo 3D no campo de entrada acima."
+      },
+      {
+        "title": "Escolha o Estilo 3D",
+        "desc": "Selecione entre os estilos de fonte 3D dimensionais e visualize como seu texto fica com essa aparência ousada e cheia de profundidade."
+      },
+      {
+        "title": "Copiar Texto 3D",
+        "desc": "Clique no botão de copiar para copiar seu texto 3D e, em seguida, cole-o em títulos de jogos, apresentações ou projetos 3D."
+      }
+    ]
+  },
+  "comparison": {
+    "toolaze": "Geração ilimitada de texto 3D, Estilos de fonte dimensionais, Visualização em tempo real, Processamento no navegador, Sem limites, Privacidade total, 100% grátis",
+    "others": "Restrições de texto, Estilos 3D limitados, Servidores lentos, Uploads na nuvem, Preocupações com privacidade, Marcas d'água, Níveis pagos"
+  },
+  "scenes": [
+    {
+      "title": "Artistas e Designers 3D",
+      "icon": "🎨",
+      "desc": "Crie fontes 3D para projetos de modelagem 3D, ativos de jogos e arte digital. Gere texto que pareça tridimensional para uso em ambientes 3D."
+    },
+    {
+      "title": "Desenvolvedores de Videogames",
+      "icon": "🎮",
+      "desc": "Gere texto 3D para títulos de jogos, elementos de interface de usuário e sinalização dentro do jogo. Adicione profundidade e dimensão à tipografia do seu jogo com estilos de fonte 3D."
+    },
+    {
+      "title": "Visualização Arquitetônica",
+      "icon": "🏗️",
+      "desc": "Use fontes 3D para renderizações arquitetônicas, sinalização de edifícios e materiais de apresentação. Crie texto dimensional realista para visualizações profissionais."
+    }
+  ],
+  "rating": {
+    "text": "\"O melhor gerador de fontes 3D que encontrei. Resultados instantâneos e funciona perfeitamente no Instagram!\" - Junte-se a milhares de usuários que confiam no Toolaze para a geração de textos 3D bonitos."
+  },
+  "faq": [
+    {
+      "q": "As fontes 3D realmente parecem tridimensionais?",
+      "a": "Nosso gerador usa caracteres Unicode com estilo dimensional em negrito que cria uma aparência semelhante ao 3D. Embora não sejam gráficos 3D reais, eles proporcionam esse efeito de profundidade e dimensão usando tipografia Unicode."
+    },
+    {
+      "q": "Posso usar fontes 3D em softwares de modelagem 3D?",
+      "a": "O texto gerado usa caracteres Unicode, que podem ser importados para softwares 3D como objetos de texto. No entanto, para um texto 3D real, você normalmente usaria as ferramentas de texto do software 3D para criar a geometria 3D real."
+    },
+    {
+      "q": "As fontes 3D são boas para títulos de jogos?",
+      "a": "Sim! As fontes 3D são perfeitas para títulos de videogames, logotipos e elementos de interface de usuário. Elas adicionam aquele visual moderno e dimensional que muitos jogos usam em seu branding."
+    },
+    {
+      "q": "As fontes 3D funcionarão nas redes sociais?",
+      "a": "Sim! As fontes 3D usam caracteres Unicode que funcionam no Instagram, Facebook, Twitter e TikTok. Elas são ótimas para criar conteúdo atraente nas redes sociais com profundidade."
+    },
+    {
+      "q": "Posso usar fontes 3D para visualização arquitetônica?",
+      "a": "Sim, as fontes 3D funcionam bem em renderizações arquitetônicas e materiais de apresentação. Elas criam texto dimensional realista para visualizações profissionais. Para estilos mais ousados, experimente nosso <a href=\"/pt/font-generator/bold\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">gerador de fontes em negrito</a> ou explore nossa coleção de geradores de fontes."
+    }
+  ],
+  "compare": {
+    "toolaze": "Geração ilimitada de texto 3D, Múltiplos estilos elegantes, Visualização instantânea em tempo real, Arquitetura focada no local, Sem limites de caracteres, Proteção completa de privacidade, 100% grátis",
+    "others": "Limites de caracteres, Opções de estilo limitadas, Processamento lento no servidor, Uploads na nuvem obrigatórios, Preocupações com privacidade, Marcas d'água ou anúncios, Recursos premium pagos"
+  }
+}

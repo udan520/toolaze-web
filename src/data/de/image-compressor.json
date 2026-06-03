@@ -1,0 +1,126 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Kostenloser Bildkomprimierer - Bilder online im Stapel komprimieren | Toolaze",
+    "description": "Komprimieren Sie bis zu 100 Bilder gleichzeitig im Stapel. Legen Sie die exakte Zielgröße fest. Schnell, privat, 100 % kostenlos. Keine Anmeldung erforderlich."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Kostenloser <span class=\"text-gradient\">Bildkomprimierer</span>",
+    "desc": "Komprimieren Sie bis zu 100 Bilder gleichzeitig im Stapel. Legen Sie die exakte Zielgröße fest. Schnell, privat, 100 % kostenlos. Keine Anmeldung erforderlich."
+  },
+  "intro": {
+    "title": "Warum den Toolaze Bildkomprimierer verwenden?",
+    "content": [
+      {
+        "title": "Verschwenden Sie keine Zeit mehr mit langsamen Bildkomprimierungstools",
+        "text": "Herkömmliche Bildkomprimierer sind langsam, begrenzen die Anzahl der Dateien und beeinträchtigen oft die Qualität. Toolaze komprimiert bis zu 100 Bilder gleichzeitig mit präziser Größensteuerung, wobei die visuelle Qualität erhalten bleibt, während die Dateigrößen drastisch reduziert werden. Perfekt für Webentwickler, Fotografen und Content-Ersteller."
+      }
+    ]
+  },
+  "features": {
+    "title": "Leistungsstarke Funktionen zur Bildkomprimierung",
+    "items": [
+      {
+        "icon": "📂",
+        "iconType": "batch",
+        "title": "Stapelverarbeitung",
+        "desc": "Komprimieren Sie bis zu 100 Bilder gleichzeitig"
+      },
+      {
+        "icon": "🎯",
+        "iconType": "precise",
+        "title": "Präzise Größensteuerung",
+        "desc": "Legen Sie die exakte Zielgröße in KB oder MB fest"
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "100 % kostenlos",
+        "desc": "Keine Werbung."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Wie benutzt man Toolaze?",
+    "steps": [
+      {
+        "title": "Bilder hochladen",
+        "desc": "Ziehen Sie bis zu 100 Bilder oder Ordner per Drag & Drop. Unterstützt die Formate JPG, PNG, WebP und BMP."
+      },
+      {
+        "title": "Zielgröße festlegen",
+        "desc": "Wählen Sie Ihre gewünschte Dateigröße in KB oder MB. Unser Algorithmus komprimiert Bilder präzise nach Ihren Vorgaben."
+      },
+      {
+        "title": "Ergebnisse herunterladen",
+        "desc": "Laden Sie einzelne komprimierte Bilder oder alle auf einmal als ZIP-Datei herunter. Schnell und effizient."
+      }
+    ]
+  },
+  "comparison": {
+    "title": "Warum Toolaze wählen?",
+    "toolaze": "Toolaze 💎",
+    "others": "Andere Tools",
+    "vs": "VS",
+    "smartChoice": "Kluge Wahl",
+    "otherTools": "Andere Tools",
+    "toolazeFeatures": "Stapelverarbeitung bis zu 100 Bilder, Präzise Größensteuerung, Unterstützung mehrerer Formate, 100 % privat & kostenlos, Keine Anmeldung erforderlich",
+    "othersFeatures": "Begrenzte Stapelgröße, Keine präzise Steuerung, Formatbeschränkungen, Datenschutzbedenken, Registrierung erforderlich"
+  },
+  "scenesTitle": "Anwendungsfälle",
+  "scenes": [
+    {
+      "title": "Für Webentwickler",
+      "icon": "💻",
+      "desc": "Optimieren Sie Bilder für Websites und Apps. Reduzieren Sie Ladezeiten bei gleichbleibender Qualität für besseres SEO und Nutzererlebnis."
+    },
+    {
+      "title": "Für E-Commerce",
+      "icon": "🛒",
+      "desc": "Komprimieren Sie Produktbilder in großen Mengen. Schnellere Seitenladezeiten bedeuten bessere Konversionsraten und verbesserte Suchrankings."
+    },
+    {
+      "title": "Für Content-Ersteller",
+      "icon": "📱",
+      "desc": "Bereiten Sie Bilder für soziale Medien und Blogs vor. Verarbeiten Sie mehrere Bilder schnell im Stapel ohne Qualitätsverlust."
+    }
+  ],
+  "rating": {
+    "title": "Tausende von Erstellern vertrauen uns",
+    "rating": "4,9/5 VON 10.000+ ERSTELLERN",
+    "text": "Schließen Sie sich Tausenden zufriedener Nutzer an, die Toolaze für eine schnelle, sichere und kostenlose Bildkomprimierung vertrauen. Keine Registrierung erforderlich, 100 % private Verarbeitung."
+  },
+  "faqTitle": "Häufig gestellte Fragen",
+  "faq": [
+    {
+      "q": "Welche Bildformate werden unterstützt?",
+      "a": "Toolaze unterstützt die Formate JPG, JPEG, PNG, WebP und BMP. Alle komprimierten Bilder werden als optimierte JPEG-Dateien ausgegeben."
+    },
+    {
+      "q": "Ist dieses Tool wirklich kostenlos?",
+      "a": "Ja! Toolaze ist zu 100 % kostenlos, ohne Werbung, ohne Registrierung und ohne versteckte Gebühren. Die gesamte Verarbeitung findet in Ihrem Browser statt."
+    },
+    {
+      "q": "Kann ich mehr als 100 Bilder komprimieren?",
+      "a": "Die maximale Stapelgröße beträgt 100 Dateien pro Sitzung. Für größere Mengen verarbeiten Sie diese einfach in mehreren Sitzungen."
+    },
+    {
+      "q": "Werden meine Bilder auf einen Server hochgeladen?",
+      "a": "Nein! Die gesamte Bildverarbeitung erfolgt lokal in Ihrem Browser mittels JavaScript. Ihre Bilder verlassen nie Ihr Gerät, was absolute Privatsphäre garantiert."
+    },
+    {
+      "q": "Was ist die maximale Dateigröße, die ich komprimieren kann?",
+      "a": "Es gibt keine theoretische Dateigrößenbeschränkung. Sehr große Bilder können jedoch je nach Leistung Ihres Geräts und verfügbarem Speicher zu einer Verlangsamung des Browsers führen. Wir empfehlen, große Dateien in kleineren Stapeln zu verarbeiten, um das beste Ergebnis zu erzielen."
+    }
+  ],
+  "moreTools": "Weitere Bildkomprimierungstools"
+}

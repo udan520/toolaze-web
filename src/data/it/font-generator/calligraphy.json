@@ -1,0 +1,181 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Generatore di Caratteri Calligrafici (Gratis, Copia e Incolla e Senza Pubblicità) - Toolaze",
+    "description": "Come generare font calligrafici? 1. Digita il tuo testo 2. Seleziona lo stile calligrafico 3. Copia e incolla. Crea bellissimi testi calligrafici per Instagram, Facebook e social media. Gratis e Privato."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Generatore di Font Calligrafici",
+    "desc": "Genera bellissimi font calligrafici online gratuitamente. Digita semplicemente il tuo testo qui sotto per creare eleganti testi calligrafici che puoi copiare e incollare ovunque."
+  },
+  "intro": {
+    "title": "Perché usare un generatore di font calligrafici?",
+    "content": [
+      {
+        "title": "Cos'è un font calligrafico?",
+        "text": "I font calligrafici presentano forme di lettere eleganti in stile manoscritto con svolazzi decorativi ed elementi ornamentali. Questi sofisticati caratteri imitano la calligrafia tradizionale, creando un senso di eleganza senza tempo e artigianalità. I font calligrafici sono caratterizzati dalle loro curve graziose, dettagli decorativi e aspetto formale, rendendoli perfetti per inviti di nozze, certificati, premi e progetti che richiedono un'estetica prestigiosa e artigianale. Per stili eleganti simili, esplora il nostro <a href=\"/it/font-generator/cursive\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">generatore di font corsivi</a> o il generatore di font particolari."
+      },
+      {
+        "title": "Perché generare testo calligrafico online?",
+        "text": "La calligrafia tradizionale richiede anni di pratica e strumenti costosi. I servizi di calligrafia professionale possono costare centinaia di dollari per un singolo progetto. Il nostro strumento per testi calligrafici offre un accesso istantaneo a font eleganti in stile manoscritto che catturano quella classica estetica calligrafica. Che tu stia progettando cancelleria per matrimoni, creando certificati o sviluppando materiali per marchi artigianali, il nostro strumento trasforma istantaneamente qualsiasi testo in un bellissimo stile calligrafico, portando quell'eleganza senza tempo ai tuoi progetti senza costi o complessità. Trova altri font eleganti con il nostro <a href=\"/it/font-generator\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">generatore di font</a>."
+      }
+    ]
+  },
+  "features": {
+    "title": "Potenti funzionalità dei font calligrafici",
+    "items": [
+      {
+        "icon": "🖋️",
+        "iconType": "quality",
+        "title": "Eleganti stili manoscritti",
+        "desc": "Accedi a bellissimi font calligrafici con svolazzi decorativi ed elementi ornamentali."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Generazione di font privata",
+        "desc": "Tutta la generazione dei font calligrafici avviene localmente: il tuo testo non lascia mai il tuo dispositivo."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Testo calligrafico immediato",
+        "desc": "Trasforma istantaneamente il tuo testo in stile calligrafico con l'anteprima in tempo reale mentre digiti."
+      },
+      {
+        "icon": "📋",
+        "iconType": "batch",
+        "title": "Copia testo calligrafico",
+        "desc": "Copia istantaneamente il tuo testo calligrafico e incollalo in inviti, certificati o documenti formali."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Font calligrafici gratuiti",
+        "desc": "Generazione illimitata di font calligrafici completamente gratuita: niente costi, niente abbonamenti, niente pubblicità."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "Basato su browser",
+        "desc": "Funziona completamente nel tuo browser: non è richiesto alcun software o download di font calligrafici."
+      }
+    ]
+  },
+  "specs": {
+    "engine": "Rendering dei font nativo del browser - Elaborazione lato client",
+    "limit": "Lunghezza del testo illimitata - Nessun limite di caratteri",
+    "logic": "Anteprima in tempo reale (applicazione istantanea dello stile)",
+    "privacy": "100% lato client (elaborazione locale nel browser)"
+  },
+  "performanceMetrics": {
+    "title": "Specifiche tecniche",
+    "metrics": [
+      {
+        "label": "Stile del font",
+        "value": "Calligrafia (Stile distintivo)"
+      },
+      {
+        "label": "Lunghezza del testo",
+        "value": "Caratteri illimitati"
+      },
+      {
+        "label": "Velocità di elaborazione",
+        "value": "Istantanea (Anteprima in tempo reale)"
+      },
+      {
+        "label": "Formato di output",
+        "value": "Testo Unicode (Pronto per copia e incolla)"
+      },
+      {
+        "label": "Supporto piattaforma",
+        "value": "Instagram, Facebook, Twitter, TikTok, Discord e altro"
+      },
+      {
+        "label": "Luogo di elaborazione",
+        "value": "100% lato client (JavaScript del browser)"
+      },
+      {
+        "label": "Privacy",
+        "value": "Nessun caricamento sul server, elaborazione locale completa"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Come generare font calligrafici",
+    "steps": [
+      {
+        "title": "Digita il tuo testo",
+        "desc": "Inserisci il testo che vuoi trasformare in un elegante stile calligrafico nel campo di input qui sopra."
+      },
+      {
+        "title": "Seleziona lo stile calligrafico",
+        "desc": "Scegli tra bellissimi stili di font calligrafici con svolazzi decorativi e visualizza l'anteprima del tuo testo."
+      },
+      {
+        "title": "Copia testo calligrafico",
+        "desc": "Fai clic sul pulsante copia per copiare il tuo testo calligrafico, quindi incollalo in inviti di nozze, certificati o documenti formali."
+      }
+    ]
+  },
+  "comparison": {
+    "toolaze": "Generazione illimitata di testo calligrafico, Eleganti stili manoscritti, Anteprima istantanea, Elaborazione locale, Nessun limite, Privacy completa, Gratis",
+    "others": "Limiti di caratteri, Poche opzioni calligrafiche, Ritardi del server, Caricamenti richiesti, Preoccupazioni per la privacy, Pubblicità, Livelli premium"
+  },
+  "scenes": [
+    {
+      "title": "Designer di cancelleria per matrimoni",
+      "icon": "💌",
+      "desc": "Crea eleganti font calligrafici per inviti di nozze, segnaposti e programmi di cerimonie. Aggiungi un tocco intramontabile e sofisticato agli eventi speciali."
+    },
+    {
+      "title": "Designer di certificati",
+      "icon": "🏆",
+      "desc": "Genera testo calligrafico per certificati, premi e diplomi. Crea documenti formali e prestigiosi con una bellissima calligrafia in stile manoscritto."
+    },
+    {
+      "title": "Marchi artigianali",
+      "icon": "🖼️",
+      "desc": "Usa i font calligrafici per etichette di prodotti artigianali, segnaletica per fiere dell'artigianato e articoli fatti a mano. Aggiungi un tocco personale e artigianale al tuo marchio."
+    }
+  ],
+  "rating": {
+    "text": "\"Il miglior generatore di font calligrafici che abbia mai trovato. Risultati istantanei e funziona perfettamente su Instagram!\" - Unisciti a migliaia di utenti che si affidano a Toolaze per la generazione di bellissimi testi calligrafici."
+  },
+  "faq": [
+    {
+      "q": "I font calligrafici sono uguali ai font corsivi?",
+      "a": "Sebbene simili, i font calligrafici hanno tipicamente più svolazzi decorativi ed elementi ornamentali rispetto al semplice corsivo. Il nostro generatore di calligrafia si concentra su font eleganti in stile manoscritto con quella classica estetica calligrafica."
+    },
+    {
+      "q": "Posso usare i font calligrafici per gli inviti di nozze?",
+      "a": "Sì! I font calligrafici sono perfetti per inviti di nozze, segnaposti e programmi di cerimonie. Aggiungono quel tocco intramontabile e sofisticato agli eventi speciali."
+    },
+    {
+      "q": "I font calligrafici sono leggibili?",
+      "a": "I font calligrafici danno priorità all'eleganza rispetto alla rapidità di lettura. Funzionano meglio per testi brevi come nomi, titoli e inviti dove lo stile decorativo è più importante della velocità di lettura."
+    },
+    {
+      "q": "I font calligrafici funzionano in stampa?",
+      "a": "Sì! I font calligrafici funzionano magnificamente nei materiali stampati. Sono ideali per inviti formali, certificati e documenti stampati di alta qualità."
+    },
+    {
+      "q": "Posso usare i font calligrafici per i certificati?",
+      "a": "Assolutamente! I font calligrafici sono perfetti per certificati, premi e diplomi. Creano quell'aspetto formale e prestigioso di cui i documenti ufficiali hanno bisogno. Per stili eleganti simili, dai un'occhiata al nostro <a href=\"/it/font-generator/cursive\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">generatore di font corsivi</a> o al generatore di font particolari, oppure sfoglia i nostri strumenti di generazione font."
+    }
+  ],
+  "compare": {
+    "toolaze": "Generazione illimitata di testo calligrafico, Molteplici stili eleganti, Anteprima istantanea in tempo reale, Architettura local-first, Nessun limite di caratteri, Protezione completa della privacy, 100% gratis",
+    "others": "Limiti di caratteri, Opzioni di stile limitate, Lenta elaborazione del server, Caricamenti su cloud richiesti, Preoccupazioni per la privacy, Filigrane o pubblicità, Funzionalità premium a pagamento"
+  }
+}

@@ -1,0 +1,181 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Gerador de Fonte Star Wars (Grátis, Copiar e Colar e Sem Anúncios) - Toolaze",
+    "description": "Como gerar fontes de Star Wars? 1. Digite seu texto 2. Selecione o estilo Star Wars 3. Copie e cole. Crie textos bonitos de Star Wars para Instagram, Facebook e redes sociais. Grátis e Privado."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Gerador de Fonte Star Wars",
+    "desc": "Gere fontes bonitas de Star Wars online gratuitamente. Basta digitar seu texto abaixo para criar textos elegantes de Star Wars que você pode copiar e colar em qualquer lugar."
+  },
+  "intro": {
+    "title": "Por que usar um Gerador de Fonte Star Wars?",
+    "content": [
+      {
+        "title": "O que é a Fonte Star Wars?",
+        "text": "As fontes de Star Wars capturam aquela estética icônica e futurista associada ao universo Star Wars. Essas tipografias distintas apresentam formas de letras angulares de ficção científica que criam aquela sensação épica da era espacial. As fontes de Star Wars são caracterizadas por sua aparência ousada e futurista, tornando-as perfeitas para fãs de Star Wars, criadores de conteúdo de ficção científica, comunidades de jogos e projetos que precisam dessa estética lendária com tema espacial. Para estilos futuristas semelhantes, confira nosso <a href=\"/pt/font-generator/3d\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">gerador de fonte 3D</a> ou gerador de fontes legais."
+      },
+      {
+        "title": "Por que gerar texto de Star Wars online?",
+        "text": "Criar textos autênticos no estilo Star Wars para conteúdo de fãs, adereços de cosplay ou eventos temáticos normalmente requer fontes caras e software de design. Nosso gerador de texto Star Wars oferece acesso instantâneo a estilos de texto futuristas e de ficção científica que capturam aquela sensação icônica de Star Wars. Esteja você criando conteúdo de fãs, projetando nomes de clãs de jogos ou desenvolvendo materiais com tema espacial, nossa ferramenta transforma qualquer texto em estilo épico de Star Wars instantaneamente — trazendo essa estética lendária para seus projetos. Explore mais com nosso <a href=\"/pt/font-generator\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">gerador de fontes</a>."
+      }
+    ]
+  },
+  "features": {
+    "title": "Recursos Poderosos da Fonte Star Wars",
+    "items": [
+      {
+        "icon": "⭐",
+        "iconType": "quality",
+        "title": "Estilos de Ficção Científica Futuristas",
+        "desc": "Gere fontes no estilo Star Wars com formas de letras angulares e futuristas que criam aquela estética espacial épica."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Processamento Apenas Local",
+        "desc": "Toda a geração de fontes Star Wars acontece no seu dispositivo — seu texto nunca sai do seu computador."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Texto Star Wars Instantâneo",
+        "desc": "Transforme seu texto para o estilo Star Wars instantaneamente com visualização em tempo real mostrando efeitos futuristas."
+      },
+      {
+        "icon": "📋",
+        "iconType": "batch",
+        "title": "Copiar Texto Star Wars",
+        "desc": "Copie seu texto no estilo Star Wars instantaneamente e cole-o em conteúdo de fãs, clãs de jogos ou projetos de ficção científica."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Fontes Star Wars Gratuitas",
+        "desc": "Geração ilimitada de fontes Star Wars totalmente grátis — sem custo, sem recursos premium, sem anúncios."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "Sem Downloads",
+        "desc": "Funciona inteiramente no seu navegador — não é necessário download de software ou fontes Star Wars."
+      }
+    ]
+  },
+  "specs": {
+    "engine": "Renderização de Fonte Nativa do Navegador - Processamento no Lado do Cliente",
+    "limit": "Comprimento de Texto Ilimitado - Sem Limites de Caracteres",
+    "logic": "Visualização em Tempo Real (Aplicação Instantânea de Estilo)",
+    "privacy": "100% no Lado do Cliente (Processamento Local no Navegador)"
+  },
+  "performanceMetrics": {
+    "title": "Especificações Técnicas",
+    "metrics": [
+      {
+        "label": "Estilo de Fonte",
+        "value": "Star Wars (Estilo Distintivo)"
+      },
+      {
+        "label": "Comprimento do Texto",
+        "value": "Caracteres ilimitados"
+      },
+      {
+        "label": "Velocidade de Processamento",
+        "value": "Instantânea (Visualização em tempo real)"
+      },
+      {
+        "label": "Formato de Saída",
+        "value": "Texto Unicode (Pronto para copiar e colar)"
+      },
+      {
+        "label": "Suporte de Plataforma",
+        "value": "Instagram, Facebook, Twitter, TikTok, Discord e mais"
+      },
+      {
+        "label": "Local de Processamento",
+        "value": "100% no Lado do Cliente (JavaScript do Navegador)"
+      },
+      {
+        "label": "Privacidade",
+        "value": "Sem uploads para o servidor, processamento local completo"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Como Gerar Fontes Star Wars",
+    "steps": [
+      {
+        "title": "Digite Seu Texto",
+        "desc": "Insira o texto que deseja converter para o estilo épico de Star Wars no campo de entrada acima."
+      },
+      {
+        "title": "Selecione o Estilo Star Wars",
+        "desc": "Escolha entre estilos de fonte futuristas de Star Wars e visualize como seu texto fica com aquela estética icônica da era espacial."
+      },
+      {
+        "title": "Copie o Texto Star Wars",
+        "desc": "Clique em copiar para obter seu texto de Star Wars e, em seguida, cole-o em conteúdo de fãs, clãs de jogos ou projetos de ficção científica."
+      }
+    ]
+  },
+  "comparison": {
+    "toolaze": "Geração ilimitada de texto Star Wars, Estilos de ficção científica futuristas, Visualização instantânea, Processamento local no navegador, Sem limites, Privacidade completa, Grátis",
+    "others": "Limites de caracteres, Poucas opções de Star Wars, Processamento no servidor, Uploads obrigatórios, Preocupações com privacidade, Anúncios, Níveis premium"
+  },
+  "scenes": [
+    {
+      "title": "Fãs de Star Wars",
+      "icon": "⭐",
+      "desc": "Crie fontes icônicas de Star Wars para conteúdo de fãs, adereços de cosplay e eventos temáticos. Gere textos de Star Wars com aparência autêntica para seus projetos de fãs."
+    },
+    {
+      "title": "Criadores de Conteúdo de Ficção Científica",
+      "icon": "🚀",
+      "desc": "Gere fontes no estilo Star Wars para canais de ficção científica no YouTube, podcasts e conteúdo. Adicione essa estética épica e futurista de Star Wars à sua marca de ficção científica."
+    },
+    {
+      "title": "Comunidades de Jogos",
+      "icon": "🎮",
+      "desc": "Use fontes de Star Wars para nomes de clãs de jogos, branding de servidores e conteúdo de jogos de Star Wars. Crie tipografia de Star Wars imersiva e autêntica para sua comunidade de jogos."
+    }
+  ],
+  "rating": {
+    "text": "\"O melhor gerador de fonte Star Wars que encontrei. Resultados instantâneos e funciona perfeitamente no Instagram!\" - Junte-se a milhares de usuários que confiam no Toolaze para a geração de textos bonitos de Star Wars."
+  },
+  "faq": [
+    {
+      "q": "Estas são fontes oficiais de Star Wars?",
+      "a": "Não, nosso gerador cria texto com uma estética inspirada em Star Wars usando caracteres Unicode. Estas não são fontes oficiais de Star Wars, mas capturam aquele estilo icônico e futurista de Star Wars."
+    },
+    {
+      "q": "Posso usar fontes Star Wars para conteúdo de fãs?",
+      "a": "Sim! As fontes Star Wars são perfeitas para conteúdo de fãs, adereços de cosplay e eventos temáticos. No entanto, esteja ciente de que 'Star Wars' é uma marca registrada, portanto, para uso comercial, consulte aconselhamento jurídico."
+    },
+    {
+      "q": "As fontes Star Wars são boas para conteúdo de ficção científica?",
+      "a": "Com certeza! As fontes Star Wars funcionam muito bem para canais de ficção científica no YouTube, podcasts e conteúdo. Elas adicionam essa estética épica e futurista à sua marca de ficção científica."
+    },
+    {
+      "q": "As fontes Star Wars funcionarão em jogos?",
+      "a": "Sim! As fontes Star Wars são perfeitas para nomes de clãs de jogos, branding de servidores e conteúdo de jogos de Star Wars. Elas criam uma tipografia de Star Wars imersiva e autêntica para sua comunidade de jogos."
+    },
+    {
+      "q": "Posso usar fontes Star Wars para eventos com tema espacial?",
+      "a": "Sim! As fontes Star Wars são ideais para festas, eventos e decorações com tema espacial. Elas adicionam aquela sensação icônica de Star Wars a qualquer celebração relacionada ao espaço. Para estilos futuristas semelhantes, tente nosso <a href=\"/pt/font-generator/3D\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">gerador de fonte 3D</a> ou navegue em nossas ferramentas de gerador de fontes."
+    }
+  ],
+  "compare": {
+    "toolaze": "Geração ilimitada de texto Star Wars, Múltiplos estilos elegantes, Visualização instantânea em tempo real, Arquitetura focada no local, Sem limites de caracteres, Proteção completa de privacidade, 100% grátis",
+    "others": "Limites de caracteres, Opções de estilo limitadas, Processamento lento no servidor, Uploads na nuvem obrigatórios, Preocupações com privacidade, Marcas d'água ou anúncios, Recursos premium pagos"
+  }
+}

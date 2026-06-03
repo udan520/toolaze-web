@@ -1,0 +1,181 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Instagram 字體產生器 (免費、複製貼上、無廣告) - Toolaze",
+    "description": "如何產生 Instagram 字體？1. 輸入文字 2. 選擇 Instagram 風格 3. 複製並貼上。為 Instagram、Facebook 和社交媒體建立美觀的 Instagram 文字。免費且私密。"
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Instagram 字體產生器",
+    "desc": "線上免費產生美觀的 Instagram 字體。只需在下方輸入文字，即可建立優雅的 Instagram 文字，並可隨處複製貼上。"
+  },
+  "intro": {
+    "title": "為什麼要使用 Instagram 字體產生器？",
+    "content": [
+      {
+        "title": "什麼是 Instagram 字體？",
+        "text": "Instagram 字體是專為 Instagram 平台優化的 Unicode 文字樣式。這些字體使用 Unicode 字元，能在 Instagram 個人簡介、貼文、限時動態、說明和精選動態中正確顯示。Instagram 字體能讓您的個人檔案在動態牆中脫穎而出，使您的簡介更吸睛，說明更具吸引力，品牌更令人難忘。非常適合想要建立獨特品牌 Instagram 內容的網紅、社群媒體經理和內容創作者。對於其他平台的字體，請查看我們的 <a href=\"/zh-TW/font-generator/discord\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">Discord 字體產生器</a>。"
+      },
+      {
+        "title": "為什麼要在線上產生 Instagram 文字？",
+        "text": "Instagram 原生的文字樣式有限，且尋找適用於 Instagram 的字體可能具有挑戰性。無論您是更新 Instagram 個人簡介、建立引人入勝的限時動態文字，還是設計品牌貼文說明，我們的工具都能立即將任何文字轉換為相容於 Instagram 的字體，確保您的內容在所有 Instagram 功能中脫穎而出並正確顯示。透過我們的 <a href=\"/zh-TW/font-generator\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">字體產生器</a> 探索更多。"
+      }
+    ]
+  },
+  "features": {
+    "title": "強大的 Instagram 字體功能",
+    "items": [
+      {
+        "icon": "📱",
+        "iconType": "quality",
+        "title": "相容於 Instagram 的樣式",
+        "desc": "產生的字體可完美適用於 Instagram 個人簡介、貼文、限時動態和說明。"
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "私密產生",
+        "desc": "所有字體產生都在您的瀏覽器本地進行，您的文字永遠不會離開您的裝置。"
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "即時 Instagram 文字",
+        "desc": "透過即時預覽，立即將您的文字轉換為相容於 Instagram 的字體。"
+      },
+      {
+        "icon": "📋",
+        "iconType": "batch",
+        "title": "快速複製到 Instagram",
+        "desc": "立即複製您的 Instagram 文字，並直接貼上到您的 Instagram 個人檔案或貼文中。"
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "免費 Instagram 字體",
+        "desc": "無限次產生 Instagram 字體，完全免費——無費用、無訂閱、無廣告。"
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "無需應用程式",
+        "desc": "完全在您的瀏覽器中運作——無需修改 Instagram 應用程式或下載任何軟體。"
+      }
+    ]
+  },
+  "specs": {
+    "engine": "瀏覽器原生字體渲染 - 用戶端處理",
+    "limit": "無限文字長度 - 無字元限制",
+    "logic": "即時預覽 (立即套用樣式)",
+    "privacy": "100% 用戶端 (本地瀏覽器處理)"
+  },
+  "performanceMetrics": {
+    "title": "技術規格",
+    "metrics": [
+      {
+        "label": "字體樣式",
+        "value": "Instagram (獨特風格)"
+      },
+      {
+        "label": "文字長度",
+        "value": "無限字元"
+      },
+      {
+        "label": "處理速度",
+        "value": "即時 (即時預覽)"
+      },
+      {
+        "label": "輸出格式",
+        "value": "Unicode 文字 (可直接複製貼上)"
+      },
+      {
+        "label": "平台支援",
+        "value": "Instagram, Facebook, Twitter, TikTok, Discord 等"
+      },
+      {
+        "label": "處理位置",
+        "value": "100% 用戶端 (瀏覽器 JavaScript)"
+      },
+      {
+        "label": "隱私",
+        "value": "無需上傳伺服器，完全本地處理"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "如何產生 Instagram 字體",
+    "steps": [
+      {
+        "title": "輸入您的文字",
+        "desc": "在上方輸入框中輸入您想要轉換為 Instagram 相容樣式的文字。"
+      },
+      {
+        "title": "選擇 Instagram 風格",
+        "desc": "從相容於 Instagram 的字體樣式中選擇，並預覽您的文字在 Instagram 上的外觀。"
+      },
+      {
+        "title": "複製 Instagram 文字",
+        "desc": "點擊複製以獲取您的 Instagram 文字，然後直接貼上到您的 Instagram 個人簡介、貼文、限時動態或說明中。"
+      }
+    ]
+  },
+  "comparison": {
+    "toolaze": "無限 Instagram 文字產生、相容於 Instagram 的樣式、即時預覽、本地處理、無限制、完全隱私保護、免費",
+    "others": "字元限制、有限的 Instagram 字體、伺服器處理、需要上傳、隱私風險、廣告、付費功能"
+  },
+  "scenes": [
+    {
+      "title": "Instagram 網紅",
+      "icon": "📸",
+      "desc": "為您的個人簡介、限時動態精選和貼文說明建立吸睛的 Instagram 字體。使用符合您個人品牌的獨特風格文字，在動態牆中脫穎而出。"
+    },
+    {
+      "title": "社群媒體經理",
+      "icon": "📱",
+      "desc": "為客戶帳號、品牌貼文和行銷活動產生相容於 Instagram 的字體。確保您的文字在 Instagram 平台上完美呈現。"
+    },
+    {
+      "title": "內容創作者",
+      "icon": "🎬",
+      "desc": "在影片縮圖、IGTV 標題和 Reels 圖形中使用 Instagram 字體。在所有 Instagram 內容中建立一致的品牌文字。"
+    }
+  ],
+  "rating": {
+    "text": "「這是我發現最好的 Instagram 字體產生器。結果即時且在 Instagram 上運作完美！」 - 加入成千上萬信任 Toolaze 產生美觀 Instagram 文字的使用者。"
+  },
+  "faq": [
+    {
+      "q": "Instagram 字體真的能在 Instagram 上運作嗎？",
+      "a": "是的！我們的 Instagram 字體使用 Instagram 完全支援的 Unicode 字元。只需將產生的文字直接複製並貼上到您的 Instagram 個人簡介、貼文、限時動態或說明中即可。"
+    },
+    {
+      "q": "我可以在 Instagram 限時動態中使用 Instagram 字體嗎？",
+      "a": "是的！Instagram 字體可用於限時動態、貼文、個人簡介和說明。不過請注意，Instagram 限時動態本身也有內建的文字樣式選項，您可以結合兩者以達到最佳效果。"
+    },
+    {
+      "q": "Instagram 字體能在 Instagram Reels 中運作嗎？",
+      "a": "是的，Instagram 字體在 Reels 說明和螢幕文字中都能正確顯示。它們非常適合建立吸睛且脫穎而出的 Reels 內容。"
+    },
+    {
+      "q": "Instagram 字體相容於 Instagram 精選動態嗎？",
+      "a": "是的！您可以在精選動態封面名稱和描述中使用 Instagram 字體。它們能為您的 Instagram 個人檔案增添獨特的品牌感。"
+    },
+    {
+      "q": "我可以在 Instagram 廣告中使用 Instagram 字體嗎？",
+      "a": "是的，Instagram 字體可用於廣告文案和描述。它們可以幫助您的廣告脫穎而出，並符合您品牌的 Instagram 美感。對於其他平台的字體，請查看我們的 <a href=\"/zh-TW/font-generator/Discord\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">Discord 字體產生器</a> 或瀏覽我們的字體產生器工具。"
+    }
+  ],
+  "compare": {
+    "toolaze": "無限 Instagram 文字產生、多種優雅樣式、即時預覽、本地優先架構、無字元限制、完全隱私保護、100% 免費",
+    "others": "字元限制、有限的樣式選擇、伺服器處理緩慢、需要雲端上傳、隱私疑慮、浮水印或廣告、付費進階功能"
+  }
+}

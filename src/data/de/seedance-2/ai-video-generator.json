@@ -1,0 +1,214 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Kostenloser KI-Videogenerator Online - Seedance 2.0 (Ohne Anmeldung) - Toolaze",
+    "description": "Erstellen Sie kostenlos KI-Videos online. Text-, Bild-, Video- und Audio-Eingaben. Seedance 2.0 generiert 1080p-Videos in Hollywood-Qualität. Keine Registrierung. Multimodale KI-Videogenerierung. Kontrolle auf Regisseur-Niveau."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "modelIntro",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "modelIntro": {
+    "title": "Warum Seedance 2.0 für KI-Videos?",
+    "modelName": "Seedance 2.0",
+    "modelType": "KI-Videomodell",
+    "description": [
+      "Seedance 2.0 vereint Text, Bild, Video und Audio in einer Pipeline. Kombinieren Sie Prompts mit bis zu 9 Bildern, 3 Videoclips und 3 Audioclips pro Anfrage. Keine Verkettung von Tools – ein Input, ein Output.",
+      "Kontrolle auf Regisseur-Niveau über Beleuchtung, Kamera und Performance. 15-sekündige 1080p-Multi-Shot-Sequenzen mit Stereo-Audio. Entwickelt für Werbung, Social Media und Vorproduktion.",
+      "Kostenlos online. Keine Anmeldung – starten Sie direkt im Browser."
+    ],
+    "featureCards": [
+      {
+        "title": "Vollständiger multimodaler Input",
+        "content": "Kombinieren Sie Text, Bilder, Video und Audio. Ein Modell, eine Anfrage. Fügen Sie Referenzen für Stil, Konsistenz oder Sound hinzu."
+      },
+      {
+        "title": "1080p Cinema-Grade Output",
+        "content": "Sendereifes 1080p mit Zweikanal-Audio. Multi-Shot-Sequenzen, korrekte Beleuchtung und physikbewusste Bewegungen."
+      },
+      {
+        "title": "Video und Sound in einem Durchgang",
+        "content": "Gemeinsame Audio-Video-Generierung. Bild und Ton synchron. Keine separate Nachbearbeitung für Basis-Clips erforderlich."
+      }
+    ]
+  },
+  "hero": {
+    "h1": "Kostenloser <span class=\"text-gradient\">KI-Videogenerator</span> Online",
+    "desc": "Erstellen Sie mit Seedance 2.0 kostenlos Videos in Hollywood-Qualität (1080p). Text-, Bild-, Video- und Audio-Eingaben. Multimodale KI-Videogenerierung online. Keine Anmeldung erforderlich."
+  },
+  "intro": {
+    "title": "Warum sollten Sie den Seedance 2.0 KI-Videogenerator wählen?",
+    "content": [
+      {
+        "title": "Die umfassendste multimodale Video-KI",
+        "text": "Seedance 2.0 ist das KI-Videomodell der nächsten Generation von ByteDance mit einer einheitlichen multimodalen Architektur. Im Gegensatz zu Tools, die nur Text akzeptieren, unterstützt Seedance 2.0 Text, Bilder (bis zu 9), Videoclips (bis zu 3) und Audioclips (bis zu 3) – alles in einer Generierung. Kombinieren Sie natürliche Sprache mit visuellen und auditiven Referenzen für eine beispiellose kreative Kontrolle. Beschreiben Sie Ihre Szene mit Worten, fügen Sie Referenzbilder für den Stil hinzu, binden Sie Beispielmaterial für die Konsistenz ein oder synchronisieren Sie mit Audio – die KI erledigt alles in einem einzigen Durchgang. Dieser multimodale Ansatz macht Seedance 2.0 zum flexibelsten KI-Videogenerator, der kostenlos online verfügbar ist."
+      },
+      {
+        "title": "Professionelle Ergebnisse für Film und Werbung",
+        "text": "Generieren Sie 15-sekündige, hochwertige Multi-Shot-Videos mit Zweikanal-Audio. Seedance 2.0 glänzt bei komplexen Bewegungen, folgt physikalischen Gesetzen und bietet Kontrolle auf Regisseur-Niveau über Performance, Licht, Schatten und Kamerabewegung. Entwickelt für Film, Werbung, E-Commerce und Spieleproduktion. Das Modell liefert Hollywood-Qualität, die für soziale Medien, Anzeigen, Storyboards und Konzeptvorschauen geeignet ist. Egal, ob Sie eine Produktpräsentation, eine Charakteranimation oder eine filmische Szene benötigen, der KI-Videogenerator liefert professionelle Ergebnisse ohne teure Produktionsausrüstung oder Teams."
+      },
+      {
+        "title": "Kostenloser Online-Zugang für alle Kreativen",
+        "text": "Toolaze bietet kostenlose KI-Videogenerierung mit Seedance 2.0 online an. Keine Anmeldung, keine Kreditkarte, keine Nutzungslimits für den Einstieg. Funktioniert vollständig in Ihrem Browser – keine Softwareinstallation erforderlich. Erstellen Sie in Sekundenschnelle 1080p-Videos aus Text, Bildern, Video und Audio. Laden Sie Ihre KI-generierten Videos herunter und verwenden Sie sie überall. Perfekt für Content Creator, Marketer, Filmemacher und alle, die schnell Prototypen für Videoideen erstellen müssen. Der kostenlose KI-Videogenerator ist bereit, wenn Sie es sind."
+      }
+    ]
+  },
+  "features": {
+    "title": "KI-Videogenerator Funktionen",
+    "items": [
+      {
+        "icon": "🎬",
+        "iconType": "multimodal",
+        "title": "Multimodaler Input",
+        "desc": "Text, Bild (bis zu 9), Video (bis zu 3), Audio (bis zu 3) – kombinieren Sie beliebige Eingaben in einer Generierung."
+      },
+      {
+        "icon": "🔊",
+        "iconType": "audio",
+        "title": "Video + Audio",
+        "desc": "Einheitliche gemeinsame Audio-Video-Generierung. Erhalten Sie 15-sekündige Videos mit Zweikanal-Audio in einem Durchgang."
+      },
+      {
+        "icon": "🎥",
+        "iconType": "quality",
+        "title": "1080p Qualität",
+        "desc": "Multi-Shot-Output in Hollywood-Qualität mit korrekter Beleuchtung, Schatten und filmischen Kamerabewegungen."
+      },
+      {
+        "icon": "🎛️",
+        "iconType": "control",
+        "title": "Kontrolle auf Regisseur-Niveau",
+        "desc": "Feine Kontrolle über Performance, Licht, Schatten und Kamerabewegung für professionelle Workflows."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Kostenlos Online",
+        "desc": "Keine Anmeldung erforderlich. Beginnen Sie sofort mit der Erstellung von KI-Videos zum Nulltarif."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Schnelle Generierung",
+        "desc": "Erhalten Sie Ihr 1080p-Video in Sekundenschnelle. Keine langen Warteschlangen – ideal für schnelle Iterationen und Prototyping."
+      }
+    ]
+  },
+  "performanceMetrics": {
+    "title": "Spezifikationen des KI-Videogenerators",
+    "metrics": [
+      {
+        "label": "Text-Input",
+        "value": "Prompts in natürlicher Sprache"
+      },
+      {
+        "label": "Bild-Input",
+        "value": "Bis zu 9 Referenzbilder"
+      },
+      {
+        "label": "Video-Input",
+        "value": "Bis zu 3 Videoclips"
+      },
+      {
+        "label": "Audio-Input",
+        "value": "Bis zu 3 Audioclips"
+      },
+      {
+        "label": "Output",
+        "value": "15-sekündiges 1080p-Video + Zweikanal-Audio"
+      },
+      {
+        "label": "Bestens geeignet für",
+        "value": "Social Media, Werbung, Film, E-Commerce, Gaming"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Wie benutzt man den KI-Videogenerator?",
+    "steps": [
+      {
+        "title": "Bereiten Sie Ihre Eingaben vor",
+        "desc": "Sammeln Sie Text-Prompts, Bilder, Videoclips oder Audio. Sie können jede Kombination verwenden – nur Text, Bild + Text oder vollständigen multimodalen Input."
+      },
+      {
+        "title": "Upload zu Seedance 2.0",
+        "desc": "Fügen Sie Ihre multimodalen Eingaben in die kostenlose Online-Oberfläche ein. Beschreiben Sie Ihre Szene, fügen Sie Referenzbilder hinzu oder binden Sie Beispielmaterial ein."
+      },
+      {
+        "title": "Generieren & Herunterladen",
+        "desc": "Erhalten Sie Ihr 1080p-Video mit Audio in Sekundenschnelle. Keine Registrierung erforderlich. Verwenden Sie es für Social Media, Werbung oder zur weiteren Bearbeitung."
+      }
+    ]
+  },
+  "comparison": {
+    "title": "Warum den Toolaze KI-Videogenerator wählen?",
+    "toolaze": "Toolaze 💎",
+    "others": "Andere Tools",
+    "vs": "VS",
+    "smartChoice": "Kluge Wahl",
+    "otherTools": "Andere Tools",
+    "toolazeFeatures": "Multimodal (Text, Bild, Video, Audio), 1080p + Audio, Seedance 2.0, Kostenlos online, Keine Anmeldung",
+    "othersFeatures": "Nur Text, niedrigere Auflösung, nur Video, kostenpflichtige Stufen, Registrierung erforderlich"
+  },
+  "scenesTitle": "Anwendungsfälle",
+  "scenes": [
+    {
+      "title": "Content Creators",
+      "icon": "📱",
+      "desc": "Erstellen Sie Kurzvideos für TikTok, Instagram Reels und YouTube Shorts. Kombinieren Sie Text und Bilder für ein konsistentes Branding. Generieren Sie in wenigen Minuten ansprechende Inhalte aus Prompts. Testen Sie mehrere Konzepte, bevor Sie in eine vollständige Produktion investieren. Perfekt für Creator, die regelmäßig posten müssen, ohne ein Videoteam zu haben."
+    },
+    {
+      "title": "Marketing-Teams",
+      "icon": "📢",
+      "desc": "Generieren Sie Werbemittel und Produktvideos. Schnelles Prototyping mit multimodalen Eingaben – fügen Sie Markenbilder, Beispielmaterial oder Voiceover hinzu. Erstellen Sie schnell A/B-Test-Varianten. Präsentieren Sie Kunden Ideen mit echten Videos statt Storyboards. Senken Sie die Produktionskosten und beschleunigen Sie den kreativen Prozess."
+    },
+    {
+      "title": "Film- & Spielestudios",
+      "icon": "🎮",
+      "desc": "Erstellen Sie Storyboards und Konzeptvideos für Pitch-Meetings und die Vorproduktion. Kontrolle auf Regisseur-Niveau für professionelle Workflows. Visualisieren Sie Skripte mit Bewegung und Licht. Kommunizieren Sie Visionen an Regisseure und Produzenten. Der KI-Videogenerator fungiert als schnelles Visualisierungstool für die gesamte Produktionspipeline."
+    }
+  ],
+  "rating": {
+    "title": "Tausende von Creatoren vertrauen uns",
+    "rating": "4.9/5 VON 10K+ CREATOREN",
+    "text": "Schließen Sie sich Tausenden an, die Toolaze für die kostenlose KI-Videogenerierung mit Seedance 2.0 vertrauen. Keine Registrierung. Erstellen Sie online 1080p-Videos aus Text, Bildern, Video und Audio. Hollywood-Qualität in Sekundenschnelle."
+  },
+  "moreTools": "Weitere Seedance 2.0 Tools",
+  "faqTitle": "Häufig gestellte Fragen",
+  "faq": [
+    {
+      "q": "Was ist der beste kostenlose KI-Videogenerator?",
+      "a": "Seedance 2.0 gehört zu den führenden KI-Videomodellen im Jahr 2026. Toolaze bietet kostenlosen Online-Zugang mit Unterstützung für Text-, Bild-, Video- und Audio-Eingaben. Keine Anmeldung erforderlich. Generieren Sie 1080p-Videos in Hollywood-Qualität mit Kontrolle auf Regisseur-Niveau. Andere starke Optionen sind Sora 2 und Runway – vergleichen Sie diese basierend auf Ihren Anforderungen an Auflösung, Eingabetypen und Kontrollniveau. Die multimodalen Fähigkeiten von Seedance 2.0 heben es für Creator ab, die maximale Flexibilität wünschen."
+    },
+    {
+      "q": "Ist Seedance 2.0 besser als Sora 2?",
+      "a": "Unterschiedliche Stärken. Sora 2: physikalische Genauigkeit, Realismus, Audio-Synchronisation, \"Charaktere\" zum Einfügen echter Personen – über die Sora-App. Seedance 2.0: multimodaler Input (Text + 9 Bilder + 3 Video/Audio-Clips), 1080p, Kontrolle auf Regisseur-Niveau – kostenlos auf Toolaze. Wählen Sie Sora 2 für Realismus; Seedance 2.0 für multimodale Flexibilität und kostenlosen Zugang."
+    },
+    {
+      "q": "Kann ich den KI-Videogenerator ohne Anmeldung nutzen?",
+      "a": "Ja! Toolaze bietet kostenlose KI-Videogenerierung mit Seedance 2.0 online an. Keine Registrierung oder Anmeldung erforderlich. Beginnen Sie sofort mit der Erstellung von Videos. Geben Sie Ihre Prompts ein, laden Sie Bilder oder andere Eingaben hoch und generieren Sie in Sekundenschnelle 1080p-Videos. Keine Kreditkarte, keine Nutzungslimits für den Einstieg. Die kostenlose Stufe ist für die meisten Creator ausreichend."
+    },
+    {
+      "q": "Welche Eingaben unterstützt Seedance 2.0?",
+      "a": "Seedance 2.0 unterstützt vier Eingabetypen: Text (Prompts in natürlicher Sprache), Bilder (bis zu 9), Videoclips (bis zu 3) und Audioclips (bis zu 3). Kombinieren Sie diese mit Anweisungen in natürlicher Sprache. Verwenden Sie Text allein für konzeptionelle Szenen, fügen Sie Bilder als Stilreferenz hinzu, binden Sie Videos für die Konsistenz ein oder synchronisieren Sie mit Audio. Die multimodale Architektur verarbeitet alle Kombinationen in einer Generierung."
+    },
+    {
+      "q": "Erstellt der KI-Videogenerator auch Audio?",
+      "a": "Ja. Seedance 2.0 verwendet eine einheitliche Architektur zur gemeinsamen Audio-Video-Generierung. Es generiert gleichzeitig 15-sekündige Videos mit Zweikanal-Audio. Sie benötigen keine separaten Tools für Video und Ton – beides wird in einem Durchgang produziert. Fügen Sie Audioclips als Referenz hinzu, um noch mehr Kontrolle über das Endergebnis zu haben."
+    },
+    {
+      "q": "Wie lange können KI-generierte Videos sein?",
+      "a": "Seedance 2.0 generiert pro Durchgang 15-sekündige, hochwertige Multi-Shot-Videos. Diese Länge ist ideal für soziale Medien (TikTok, Reels, Shorts), Werbung und Konzeptvorschauen. Für längere Inhalte erstellen Sie mehrere 15-sekündige Clips und kombinieren diese in einer Videobearbeitungssoftware. Das Modell ist für Qualität innerhalb dieser Dauer optimiert."
+    },
+    {
+      "q": "Ist der KI-Videogenerator für die kommerzielle Nutzung kostenlos?",
+      "a": "Toolaze bietet kostenlose KI-Videogenerierung mit Seedance 2.0 an. Überprüfen Sie unsere Nutzungsbedingungen für kommerzielle Nutzungsrechte. Die kostenlose Stufe ermöglicht es Ihnen, Videos zu erstellen und herunterzuladen. Für hohe Volumina oder kommerzielle Lizenzen lesen Sie bitte unsere Preise und Bedingungen. Die meisten Creator können kostenlos starten und das Tool testen."
+    }
+  ]
+}

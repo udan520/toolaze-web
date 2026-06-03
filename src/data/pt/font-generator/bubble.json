@@ -1,0 +1,181 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Gerador de Fonte Bolha (Grátis, Copiar e Colar e Sem Anúncios) - Toolaze",
+    "description": "Como gerar fontes bolha? 1. Digite seu texto 2. Selecione o estilo bolha 3. Copie e cole. Crie textos bolha bonitos para Instagram, Facebook e redes sociais. Grátis e Privado."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Gerador de Fonte Bolha",
+    "desc": "Gere fontes bolha bonitas online gratuitamente. Basta digitar seu texto abaixo para criar textos bolha elegantes que você pode copiar e colar em qualquer lugar."
+  },
+  "intro": {
+    "title": "Por que usar um Gerador de Fonte Bolha?",
+    "content": [
+      {
+        "title": "O que é Fonte Bolha?",
+        "text": "As fontes bolha apresentam formas de letras arredondadas e lúdicas que criam uma aparência suave e amigável. Essas tipografias alegres usam estilos Unicode em negrito e arredondados que parecem bolhas ou balões. As fontes bolha são caracterizadas por sua estética divertida e acessível, tornando-as perfeitas para conteúdo infantil, marcas casuais, decorações de festas e projetos que precisam de um toque leve e amigável. Para estilos lúdicos semelhantes, experimente nosso <a href=\"/pt/font-generator/disney\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">gerador de fonte Disney</a> ou gerador de fonte cursiva."
+      },
+      {
+        "title": "Por que gerar texto bolha online?",
+        "text": "Criar textos bolha lúdicos para livros infantis, materiais de festa ou conteúdo casual normalmente requer software de design e seleção de fontes. Nossa ferramenta de texto bolha oferece acesso instantâneo a estilos de texto arredondados e amigáveis que capturam essa estética divertida de bolha. Esteja você projetando materiais infantis, criando decorações de festas ou desenvolvendo conteúdo de marca casual, nossa ferramenta transforma qualquer texto em estilo bolha alegre instantaneamente — adicionando aquele toque lúdico e acessível aos seus projetos. Explore mais estilos com nosso <a href=\"/pt/font-generator\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">gerador de fontes</a>."
+      }
+    ]
+  },
+  "features": {
+    "title": "Recursos Poderosos da Fonte Bolha",
+    "items": [
+      {
+        "icon": "🎈",
+        "iconType": "quality",
+        "title": "Estilos Arredondados Lúdicos",
+        "desc": "Gere fontes bolha divertidas com formas de letras arredondadas e amigáveis que criam uma aparência alegre."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Processamento Local Seguro",
+        "desc": "A geração da fonte acontece inteiramente no seu navegador — seu texto permanece privado e seguro."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Texto Bolha Instantâneo",
+        "desc": "Veja seu texto se transformar no estilo bolha imediatamente com visualização ao vivo enquanto você digita."
+      },
+      {
+        "icon": "📋",
+        "iconType": "batch",
+        "title": "Copiar Texto Bolha",
+        "desc": "Copie seu texto bolha instantaneamente e cole-o em conteúdo infantil, decorações de festas ou branding casual."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Fontes Bolha Gratuitas",
+        "desc": "Geração ilimitada de fontes bolha completamente grátis — sem taxas, sem assinaturas, sem anúncios."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "Apenas no Navegador",
+        "desc": "Funciona inteiramente no seu navegador — sem downloads de software ou instalações de fontes bolha necessárias."
+      }
+    ]
+  },
+  "specs": {
+    "engine": "Renderização de Fonte Nativa do Navegador - Processamento no Lado do Cliente",
+    "limit": "Comprimento de Texto Ilimitado - Sem Limites de Caracteres",
+    "logic": "Visualização em Tempo Real (Aplicação de Estilo Instantânea)",
+    "privacy": "100% Lado do Cliente (Processamento Local no Navegador)"
+  },
+  "performanceMetrics": {
+    "title": "Especificações Técnicas",
+    "metrics": [
+      {
+        "label": "Estilo de Fonte",
+        "value": "Bolha (Estilo Distintivo)"
+      },
+      {
+        "label": "Comprimento do Texto",
+        "value": "Caracteres ilimitados"
+      },
+      {
+        "label": "Velocidade de Processamento",
+        "value": "Instantânea (Visualização em tempo real)"
+      },
+      {
+        "label": "Formato de Saída",
+        "value": "Texto Unicode (Pronto para copiar e colar)"
+      },
+      {
+        "label": "Suporte de Plataforma",
+        "value": "Instagram, Facebook, Twitter, TikTok, Discord e mais"
+      },
+      {
+        "label": "Local de Processamento",
+        "value": "100% Lado do Cliente (JavaScript do Navegador)"
+      },
+      {
+        "label": "Privacidade",
+        "value": "Sem uploads para o servidor, processamento local completo"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Como Gerar Fontes Bolha",
+    "steps": [
+      {
+        "title": "Digite Seu Texto",
+        "desc": "Insira o texto que deseja transformar em um estilo bolha lúdico no campo de entrada acima."
+      },
+      {
+        "title": "Escolha o Estilo Bolha",
+        "desc": "Selecione entre estilos de fonte bolha arredondados e amigáveis e visualize como seu texto fica com essa aparência alegre."
+      },
+      {
+        "title": "Copie o Texto Bolha",
+        "desc": "Clique no botão de copiar para copiar seu texto bolha e, em seguida, cole-o em conteúdo infantil, decorações de festas ou branding casual."
+      }
+    ]
+  },
+  "comparison": {
+    "toolaze": "Geração ilimitada de texto bolha, Estilos arredondados lúdicos, Visualização em tempo real, Processamento no lado do cliente, Sem limites, Privacidade total",
+    "others": "Restrições de texto, Fontes bolha limitadas, Processamento lento, Uploads na nuvem, Problemas de privacidade, Marcas d'água, Assinaturas pagas"
+  },
+  "scenes": [
+    {
+      "title": "Conteúdo Infantil",
+      "icon": "🎈",
+      "desc": "Crie fontes bolha divertidas para livros infantis, materiais educativos e decorações de festas infantis. Gere textos lúdicos e amigáveis que atraem o público jovem."
+    },
+    {
+      "title": "Marcas Casuais",
+      "icon": "😊",
+      "desc": "Gere texto bolha para marcas de roupas casuais, produtos de estilo de vida e materiais de marketing amigáveis. Adicione um toque leve e acessível à sua marca."
+    },
+    {
+      "title": "Postagens em Redes Sociais",
+      "icon": "💬",
+      "desc": "Use fontes bolha para postagens divertidas em redes sociais, memes e conteúdo casual. Crie textos atraentes e amigáveis que se destacam nos feeds sociais."
+    }
+  ],
+  "rating": {
+    "text": "\"O melhor gerador de fonte bolha que já encontrei. Resultados instantâneos e funciona perfeitamente no Instagram!\" - Junte-se a milhares de usuários que confiam no Toolaze para gerar textos bolha bonitos."
+  },
+  "faq": [
+    {
+      "q": "O que torna uma fonte estilo 'bolha'?",
+      "a": "As fontes bolha têm uma aparência arredondada e lúdica que parece suave e amigável. Nossa ferramenta usa estilos Unicode em negrito e arredondados que criam essa estética de bolha divertida e acessível."
+    },
+    {
+      "q": "As fontes bolha são boas para conteúdo infantil?",
+      "a": "Sim! As fontes bolha são perfeitas para livros infantis, materiais educativos e decorações de festas infantis. Elas são lúdicas, amigáveis e atraem o público jovem."
+    },
+    {
+      "q": "Posso usar fontes bolha para marcas casuais?",
+      "a": "Com certeza! As fontes bolha funcionam muito bem para marcas de roupas casuais, produtos de estilo de vida e materiais de marketing amigáveis. Elas adicionam um toque leve e acessível à sua marca."
+    },
+    {
+      "q": "As fontes bolha funcionam nas redes sociais?",
+      "a": "Sim! As fontes bolha são perfeitas para postagens divertidas em redes sociais, memes e conteúdo casual. Elas criam textos atraentes e amigáveis que se destacam nos feeds sociais."
+    },
+    {
+      "q": "As fontes bolha são legíveis?",
+      "a": "Sim, as fontes bolha são geralmente muito legíveis. Seu estilo arredondado e em negrito as torna fáceis de ler, mesmo em tamanhos menores, por isso são populares para conteúdo infantil. Para estilos lúdicos semelhantes, confira nosso <a href=\"/pt/font-generator/Disney\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">gerador de fonte Disney</a> ou explore nossa coleção de geradores de fontes."
+    }
+  ],
+  "compare": {
+    "toolaze": "Geração ilimitada de texto bolha, Múltiplos estilos elegantes, Visualização instantânea em tempo real, Arquitetura local-first, Sem limites de caracteres, Proteção completa de privacidade, 100% grátis",
+    "others": "Limites de caracteres, Opções de estilo limitadas, Processamento lento no servidor, Uploads na nuvem necessários, Preocupações com a privacidade, Marcas d'água ou anúncios, Recursos premium pagos"
+  }
+}

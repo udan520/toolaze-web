@@ -1,0 +1,181 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Gerador de Fontes de Tatuagem (Grátis, Copiar e Colar e Sem Anúncios) - Toolaze",
+    "description": "Como gerar fontes de tatuagem? 1. Digite seu texto 2. Selecione o estilo de tatuagem 3. Copie e cole. Crie belos textos de tatuagem para Instagram, Facebook e redes sociais. Grátis e Privado."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Gerador de Fontes de Tatuagem",
+    "desc": "Gere belas fontes de tatuagem online gratuitamente. Basta digitar seu texto abaixo para criar textos de tatuagem elegantes que você pode copiar e colar em qualquer lugar."
+  },
+  "intro": {
+    "title": "Por que usar um gerador de fontes de tatuagem?",
+    "content": [
+      {
+        "title": "O que é uma fonte de tatuagem?",
+        "text": "As fontes de tatuagem combinam elementos em negrito, góticos e decorativos projetados especificamente para a estética da arte corporal. Essas fontes distintas apresentam linhas fortes, formas de caracteres únicas e um estilo ousado que captura o espírito rebelde da cultura da tatuagem. As fontes de tatuagem são caracterizadas por sua presença marcante, fazendo com que o texto se destaque, seja usado em designs de tatuagem reais, roupas de streetwear ou branding de moda alternativa. Para estilos em negrito semelhantes, confira nosso <a href=\"/pt/font-generator/gothic\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">gerador de fontes góticas</a> ou <a href=\"/pt/font-generator/bold\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">gerador de fontes em negrito</a>."
+      },
+      {
+        "title": "Por que gerar texto de tatuagem online?",
+        "text": "Projetar texto no estilo de tatuagem tradicionalmente requer software de design especializado e amplo conhecimento de tipografia. Tatuadores e entusiastas costumam passar horas procurando o estilo de fonte perfeito que corresponda à sua visão. Perfeito para designers de tatuagem, entusiastas de arte corporal e marcas de moda alternativa que precisam de uma tipografia distinta e atraente. Explore mais estilos com nossa coleção de <a href=\"/pt/font-generator\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">geradores de fontes</a>."
+      }
+    ]
+  },
+  "features": {
+    "title": "Poderosos Recursos de Fontes de Tatuagem",
+    "items": [
+      {
+        "icon": "🖋️",
+        "iconType": "quality",
+        "title": "Estilos de Tatuagem em Negrito",
+        "desc": "Escolha entre vários estilos de fontes de tatuagem ousados, incluindo variações góticas, em negrito e decorativas."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Apenas Processamento Local",
+        "desc": "Toda a geração de fontes acontece no seu dispositivo — seu texto nunca sai do seu computador, garantindo segurança total."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Transformação Instantânea",
+        "desc": "Veja seu texto ser convertido para o estilo de tatuagem imediatamente com visualização ao vivo enquanto você digita."
+      },
+      {
+        "icon": "📋",
+        "iconType": "batch",
+        "title": "Copiar e Colar Rápido",
+        "desc": "Copie seu texto de tatuagem com um único clique e use-o em qualquer lugar — redes sociais, designs ou documentos."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Grátis",
+        "desc": "Gere fontes de tatuagem ilimitadas de forma totalmente gratuita — sem pagamentos, sem recursos premium, sem anúncios."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "Sem Downloads",
+        "desc": "Tudo funciona no seu navegador usando tecnologia client-side — sem software ou fontes para instalar."
+      }
+    ]
+  },
+  "specs": {
+    "engine": "Renderização de Fonte Nativa do Navegador - Processamento no Lado do Cliente",
+    "limit": "Comprimento de Texto Ilimitado - Sem Limites de Caracteres",
+    "logic": "Visualização em Tempo Real (Aplicação Instantânea de Estilo)",
+    "privacy": "100% Lado do Cliente (Processamento Local no Navegador)"
+  },
+  "performanceMetrics": {
+    "title": "Especificações Técnicas",
+    "metrics": [
+      {
+        "label": "Estilo de Fonte",
+        "value": "Tatuagem (Estilo Distintivo)"
+      },
+      {
+        "label": "Comprimento do Texto",
+        "value": "Caracteres ilimitados"
+      },
+      {
+        "label": "Velocidade de Processamento",
+        "value": "Instantânea (Visualização em tempo real)"
+      },
+      {
+        "label": "Formato de Saída",
+        "value": "Texto Unicode (Pronto para copiar e colar)"
+      },
+      {
+        "label": "Suporte de Plataforma",
+        "value": "Instagram, Facebook, Twitter, TikTok, Discord e mais"
+      },
+      {
+        "label": "Local de Processamento",
+        "value": "100% Lado do Cliente (JavaScript do Navegador)"
+      },
+      {
+        "label": "Privacidade",
+        "value": "Sem uploads para o servidor, processamento local completo"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Como Gerar Fontes de Tatuagem",
+    "steps": [
+      {
+        "title": "Digite seu Texto",
+        "desc": "Insira o nome, citação ou frase que deseja transformar em um estilo de tatuagem marcante no campo de entrada acima."
+      },
+      {
+        "title": "Selecione o Estilo de Tatuagem",
+        "desc": "Explore diferentes estilos de fontes de tatuagem, incluindo opções góticas, em negrito e decorativas. Visualize cada estilo para encontrar a combinação perfeita para o seu design."
+      },
+      {
+        "title": "Copie o Texto de Tatuagem",
+        "desc": "Clique em copiar para obter seu texto no estilo de tatuagem e, em seguida, cole-o em softwares de design, redes sociais ou compartilhe com seu tatuador."
+      }
+    ]
+  },
+  "comparison": {
+    "toolaze": "Geração ilimitada de texto de tatuagem, Múltiplos estilos góticos em negrito, Visualização instantânea, Processamento local no navegador, Sem limites de comprimento de texto, Privacidade total, 100% grátis",
+    "others": "Restrições de comprimento de texto, Poucas escolhas de estilo, Atrasos no servidor, Necessidade de uploads na nuvem, Riscos de privacidade de dados, Anúncios, Assinaturas premium"
+  },
+  "scenes": [
+    {
+      "title": "Designers de Tatuagem",
+      "icon": "🖋️",
+      "desc": "Crie designs de fontes de tatuagem exclusivos para clientes. Visualize diferentes fontes de estilo de tatuagem para encontrar a combinação perfeita para nomes, citações ou textos significativos antes de tatuar."
+    },
+    {
+      "title": "Entusiastas de Arte Corporal",
+      "icon": "💪",
+      "desc": "Experimente fontes de tatuagem para o seu próximo design. Teste como seu nome, citação ou frase fica em vários estilos de tatuagem em negrito, góticos e decorativos."
+    },
+    {
+      "title": "Marcas de Moda Alternativa",
+      "icon": "👕",
+      "desc": "Use fontes de tatuagem para designs de roupas, mercadorias e logotipos de marcas. Crie textos ousados e marcantes que capturam o espírito rebelde da cultura da tatuagem."
+    }
+  ],
+  "rating": {
+    "text": "\"O melhor gerador de fontes de tatuagem que já encontrei. Resultados instantâneos e funciona perfeitamente no Instagram!\" - Junte-se a milhares de usuários que confiam no Toolaze para a geração de belos textos de tatuagem."
+  },
+  "faq": [
+    {
+      "q": "Posso usar estas fontes de tatuagem para designs de tatuagem reais?",
+      "a": "Sim! Muitos tatuadores e clientes usam nosso gerador para visualizar estilos de texto antes de fazer a tatuagem. No entanto, sempre consulte seu tatuador, pois ele pode precisar adaptar a fonte para o seu design específico e posicionamento no corpo."
+    },
+    {
+      "q": "As fontes de tatuagem são adequadas para tatuagens permanentes?",
+      "a": "Nossas fontes de tatuagem são ótimas para inspiração de design e visualizações. Para tatuagens reais, trabalhe com seu artista para garantir que o estilo seja apropriado para o tamanho e local da sua tatuagem, pois algumas fontes podem precisar de ajustes para legibilidade quando tatuadas."
+    },
+    {
+      "q": "Posso usar fontes de tatuagem para designs de roupas?",
+      "a": "Com certeza! As fontes de tatuagem são perfeitas para streetwear, mercadorias de bandas e moda alternativa. Os estilos ousados e marcantes funcionam muito bem em camisetas, moletons e acessórios."
+    },
+    {
+      "q": "As fontes de tatuagem funcionam nas redes sociais?",
+      "a": "Sim! As fontes de tatuagem usam caracteres Unicode que são exibidos corretamente no Instagram, Facebook, Twitter e TikTok. Elas são perfeitas para criar conteúdo de mídia social ousado e atraente."
+    },
+    {
+      "q": "Qual é a diferença entre fontes de tatuagem e fontes góticas?",
+      "a": "As fontes de tatuagem geralmente combinam elementos em negrito, góticos e decorativos escolhidos especificamente para a estética da tatuagem. As fontes góticas são mais tradicionais e formais, enquanto as fontes de tatuagem são projetadas para serem mais versáteis para a arte corporal. Explore nosso <a href=\"/pt/font-generator/gothic\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">gerador de fontes góticas</a> para estilos mais tradicionais, ou navegue por todas as nossas ferramentas de <a href=\"/pt/font-generator\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">gerador de fontes</a>."
+    }
+  ],
+  "compare": {
+    "toolaze": "Geração ilimitada de texto de tatuagem, Múltiplos estilos elegantes, Visualização instantânea em tempo real, Arquitetura local-first, Sem limites de caracteres, Proteção total de privacidade, 100% grátis",
+    "others": "Limites de caracteres, Opções de estilo limitadas, Processamento lento no servidor, Uploads na nuvem necessários, Preocupações com privacidade, Marcas d'água ou anúncios, Recursos premium pagos"
+  }
+}

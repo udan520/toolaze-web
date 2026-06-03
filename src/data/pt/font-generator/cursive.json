@@ -1,0 +1,181 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Gerador de Letras Cursivas (Grátis, Copiar e Colar e Sem Anúncios) - Toolaze",
+    "description": "Como gerar letras cursivas? 1. Digite seu texto 2. Selecione o estilo cursivo 3. Copie e cole. Crie textos cursivos bonitos para Instagram, Facebook e redes sociais. Grátis e Privado."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Gerador de Letras Cursivas",
+    "desc": "Gere letras cursivas bonitas online gratuitamente. Basta digitar seu texto abaixo para criar um texto cursivo elegante que você pode copiar e colar em qualquer lugar."
+  },
+  "intro": {
+    "title": "Por que usar um Gerador de Letras Cursivas?",
+    "content": [
+      {
+        "title": "O que é Letra Cursiva?",
+        "text": "Fontes cursivas, também conhecidas como fontes de script, apresentam formas de letras fluidas e conectadas que imitam o texto manuscrito. Essas tipografias elegantes criam uma sensação de sofisticação e toque pessoal, tornando-as perfeitas para convites formais, branding pessoal e projetos artísticos. Ao contrário das fontes padrão, os estilos cursivos adicionam calor e personalidade ao seu texto, transmitindo emoção e estilo através de suas curvas e conexões graciosas. Se você está procurando por mais opções decorativas, experimente nosso <a href=\"/pt/font-generator/fancy\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">gerador de letras bonitas</a> ou <a href=\"/pt/font-generator/calligraphy\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">gerador de caligrafia</a> para estilos elegantes adicionais."
+      },
+      {
+        "title": "Por que gerar texto cursivo online?",
+        "text": "Os métodos tradicionais de criação de texto cursivo exigem softwares de design caros, instalação de fontes e conhecimento de tipografia. Esteja você criando convites de casamento, bios pessoais para o Instagram ou adicionando toques elegantes a cartões de visita, nossa ferramenta transforma qualquer texto em um estilo cursivo profissional em segundos — sem downloads, sem instalações e sem necessidade de experiência em design. Explore mais estilos de fontes com nossa coleção abrangente do <a href=\"/pt/font-generator\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">gerador de fontes</a>."
+      }
+    ]
+  },
+  "features": {
+    "title": "Recursos Poderosos de Letras Cursivas",
+    "items": [
+      {
+        "icon": "✍️",
+        "iconType": "quality",
+        "title": "Estilos de Script Elegantes",
+        "desc": "Acesse vários estilos cursivos fluidos que criam belos efeitos manuscritos para o seu texto."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Processamento 100% Privado",
+        "desc": "Seu texto é processado inteiramente no seu navegador — nunca enviado, nunca armazenado, privacidade total garantida."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Visualização em Tempo Real",
+        "desc": "Veja seu texto cursivo se transformar instantaneamente enquanto você digita, com feedback visual imediato."
+      },
+      {
+        "icon": "📋",
+        "iconType": "batch",
+        "title": "Copiar com um Clique",
+        "desc": "Copie seu texto cursivo estilizado instantaneamente e cole-o em qualquer aplicativo ou plataforma."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Completamente Grátis",
+        "desc": "Geração ilimitada de letras cursivas sem custos, assinaturas ou anúncios — nunca."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "Baseado no Navegador",
+        "desc": "Funciona inteiramente no seu navegador web — sem necessidade de instalação de software ou download de fontes."
+      }
+    ]
+  },
+  "specs": {
+    "engine": "Renderização de Fonte Nativa do Navegador - Processamento no Lado do Cliente",
+    "limit": "Comprimento de Texto Ilimitado - Sem Limites de Caracteres",
+    "logic": "Visualização em Tempo Real (Aplicação de Estilo Instantânea)",
+    "privacy": "100% Lado do Cliente (Processamento Local no Navegador)"
+  },
+  "performanceMetrics": {
+    "title": "Especificações Técnicas",
+    "metrics": [
+      {
+        "label": "Estilo de Fonte",
+        "value": "Cursiva (Estilo Distintivo)"
+      },
+      {
+        "label": "Comprimento do Texto",
+        "value": "Caracteres ilimitados"
+      },
+      {
+        "label": "Velocidade de Processamento",
+        "value": "Instantânea (Visualização em tempo real)"
+      },
+      {
+        "label": "Formato de Saída",
+        "value": "Texto Unicode (Pronto para copiar e colar)"
+      },
+      {
+        "label": "Suporte de Plataforma",
+        "value": "Instagram, Facebook, Twitter, TikTok, Discord e mais"
+      },
+      {
+        "label": "Local de Processamento",
+        "value": "100% Lado do Cliente (JavaScript do Navegador)"
+      },
+      {
+        "label": "Privacidade",
+        "value": "Sem uploads para o servidor, processamento local completo"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Como Gerar Letras Cursivas",
+    "steps": [
+      {
+        "title": "Digite Seu Texto",
+        "desc": "Digite o texto que deseja converter para o estilo cursivo elegante no campo de entrada acima."
+      },
+      {
+        "title": "Escolha o Estilo Cursivo",
+        "desc": "Navegue pelos estilos de fontes cursivas disponíveis e visualize como seu texto fica em cada variação de script elegante."
+      },
+      {
+        "title": "Copie Seu Texto Cursivo",
+        "desc": "Clique no botão de copiar para copiar seu texto cursivo estilizado e, em seguida, cole-o em convites de casamento, bios do Instagram ou qualquer documento."
+      }
+    ]
+  },
+  "comparison": {
+    "toolaze": "Geração ilimitada de texto cursivo, Múltiplos estilos de script elegantes, Visualização instantânea em tempo real, Processamento baseado no navegador, Sem limites de caracteres, Proteção total de privacidade, 100% grátis",
+    "others": "Limites de caracteres, Opções de script limitadas, Processamento lento no servidor, Necessidade de uploads na nuvem, Preocupações com privacidade, Marcas d'água ou anúncios, Recursos premium pagos"
+  },
+  "scenes": [
+    {
+      "title": "Convites de Casamento",
+      "icon": "💍",
+      "desc": "Crie textos cursivos elegantes para convites de casamento, save-the-dates e programas de cerimônia. Adicione um toque romântico e sofisticado ao seu dia especial com belas fontes de estilo manuscrito."
+    },
+    {
+      "title": "Branding Pessoal",
+      "icon": "✍️",
+      "desc": "Use fontes cursivas para bios pessoais do Instagram, cabeçalhos do LinkedIn e assinaturas de e-mail. Destaque-se com fontes de script elegantes que transmitem profissionalismo e personalidade."
+    },
+    {
+      "title": "Projetos de Arte e Design",
+      "icon": "🎨",
+      "desc": "Gere texto cursivo para impressões artísticas, cartões de felicitações e mockups de design. Perfeito para adicionar uma sensação artesanal e artística aos seus projetos criativos."
+    }
+  ],
+  "rating": {
+    "text": "\"O melhor gerador de letras cursivas que já encontrei. Resultados instantâneos e funciona perfeitamente no Instagram!\" - Junte-se a milhares de usuários que confiam na Toolaze para a geração de textos cursivos bonitos."
+  },
+  "faq": [
+    {
+      "q": "Posso usar fontes cursivas para documentos formais?",
+      "a": "Sim! As fontes cursivas geradas pela Toolaze usam caracteres Unicode que funcionam na maioria dos aplicativos. No entanto, para documentos muito formais, como papéis legais, você pode querer verificar a compatibilidade com o software específico do seu documento primeiro."
+    },
+    {
+      "q": "As fontes cursivas são legíveis em todos os dispositivos?",
+      "a": "O texto cursivo usa caracteres Unicode Mathematical Script que são amplamente suportados. Eles são exibidos bem em dispositivos modernos, embora alguns telefones ou aplicativos mais antigos possam renderizá-los de forma diferente. Sempre visualize na sua plataforma de destino."
+    },
+    {
+      "q": "Posso usar fontes cursivas na minha assinatura de e-mail?",
+      "a": "Sim! Fontes cursivas funcionam muito bem em assinaturas de e-mail. Basta copiar o texto cursivo gerado e colá-lo nas configurações de assinatura do seu e-mail. A maioria dos clientes de e-mail suporta caracteres Unicode."
+    },
+    {
+      "q": "Como as fontes cursivas diferem das fontes de caligrafia?",
+      "a": "As fontes cursivas têm um estilo de script fluido e conectado, enquanto as fontes de caligrafia geralmente têm mais ornamentos decorativos. Nosso gerador de cursiva foca em estilos de script elegantes e legíveis, perfeitos para o uso diário. Para mais opções decorativas, experimente nosso <a href=\"/pt/font-generator/calligraphy\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">gerador de caligrafia</a> ou gerador de letras bonitas."
+    },
+    {
+      "q": "As fontes cursivas funcionarão no Microsoft Word?",
+      "a": "Sim, os caracteres Unicode cursivos funcionam no Microsoft Word e na maioria dos processadores de texto. Basta copiar e colar o texto gerado diretamente no seu documento."
+    }
+  ],
+  "compare": {
+    "toolaze": "Geração ilimitada de texto cursivo, Múltiplos estilos elegantes, Visualização instantânea em tempo real, Arquitetura local-first, Sem limites de caracteres, Proteção total de privacidade, 100% grátis",
+    "others": "Limites de caracteres, Opções de estilo limitadas, Processamento lento no servidor, Necessidade de uploads na nuvem, Preocupações com privacidade, Marcas d'água ou anúncios, Recursos premium pagos"
+  }
+}

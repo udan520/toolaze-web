@@ -1,0 +1,181 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Generatore di Font Cool (Gratis, Copia e Incolla e Senza Pubblicità) - Toolaze",
+    "description": "Come generare font cool? 1. Digita il tuo testo 2. Seleziona lo stile cool 3. Copia e incolla. Crea bellissimi testi cool per Instagram, Facebook e social media. Gratuito e Privato."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Generatore di Font Cool",
+    "desc": "Genera bellissimi font cool online gratuitamente. Digita semplicemente il tuo testo qui sotto per creare eleganti testi cool che puoi copiare e incollare ovunque."
+  },
+  "intro": {
+    "title": "Perché usare un generatore di font cool?",
+    "content": [
+      {
+        "title": "Cos'è un Font Cool?",
+        "text": "I font cool presentano un'estetica moderna e di tendenza che attrae il pubblico contemporaneo. Questi caratteri eleganti combinano stili grassetto, sans-serif e monospazio per creare quel look hip e urbano popolare nella cultura streetwear, nelle startup tecnologiche e nelle comunità di gaming. I font cool sono caratterizzati dal loro tocco contemporaneo, che li rende perfetti per i marchi di streetwear, i produttori musicali, le aziende tecnologiche e i progetti che necessitano di un'estetica moderna e innovativa. Per stili più audaci, prova il nostro <a href=\"/it/font-generator/bold\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">generatore di font grassetto</a> o il generatore di font per tatuaggi."
+      },
+      {
+        "title": "Perché generare testo cool online?",
+        "text": "Creare testi cool e di tendenza richiede di rimanere aggiornati con i trend del design e di avere accesso a strumenti di tipografia moderna. Il nostro generatore di testo cool offre un accesso istantaneo a stili di font contemporanei che catturano quell'atmosfera elegante e hip. Che tu stia progettando abbigliamento streetwear, creando il branding di una startup tecnologica o sviluppando contenuti per il gaming, il nostro strumento trasforma istantaneamente qualsiasi testo in uno stile cool moderno, perfetto per progetti che necessitano di quell'estetica contemporanea e audace. Esplora altri stili con il nostro <a href=\"/it/font-generator\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">generatore di font</a>."
+      }
+    ]
+  },
+  "features": {
+    "title": "Potenti funzionalità per font cool",
+    "items": [
+      {
+        "icon": "⭐",
+        "iconType": "quality",
+        "title": "Stili di Font Moderni",
+        "desc": "Accedi a font cool di tendenza, inclusi stili grassetto, sans-serif e monospazio per un'estetica contemporanea."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Elaborazione Locale nel Browser",
+        "desc": "La generazione dei font avviene interamente sul tuo dispositivo: il tuo testo non viene mai inviato a nessun server."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Aggiornamenti di Stile in Tempo Reale",
+        "desc": "Guarda il tuo testo cambiare in stile cool istantaneamente con l'anteprima dal vivo mentre digiti."
+      },
+      {
+        "icon": "📋",
+        "iconType": "batch",
+        "title": "Copia Facile",
+        "desc": "Copia rapidamente il tuo testo cool e incollalo in design streetwear, branding tecnologico o contenuti di gaming."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Totalmente Gratuito",
+        "desc": "Genera font cool illimitati gratuitamente: nessun pagamento, nessuna funzione premium, mai nessuna pubblicità."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "Solo Browser",
+        "desc": "Funziona interamente nel tuo browser web: nessun software o file di font da scaricare o installare."
+      }
+    ]
+  },
+  "specs": {
+    "engine": "Rendering dei font nativo del browser - Elaborazione lato client",
+    "limit": "Lunghezza del testo illimitata - Nessun limite di caratteri",
+    "logic": "Anteprima in tempo reale (applicazione istantanea dello stile)",
+    "privacy": "100% lato client (elaborazione locale nel browser)"
+  },
+  "performanceMetrics": {
+    "title": "Specifiche Tecniche",
+    "metrics": [
+      {
+        "label": "Stile del Font",
+        "value": "Cool (Stile Distintivo)"
+      },
+      {
+        "label": "Lunghezza del Testo",
+        "value": "Caratteri illimitati"
+      },
+      {
+        "label": "Velocità di Elaborazione",
+        "value": "Istantanea (Anteprima in tempo reale)"
+      },
+      {
+        "label": "Formato di Output",
+        "value": "Testo Unicode (Pronto per copia e incolla)"
+      },
+      {
+        "label": "Supporto Piattaforma",
+        "value": "Instagram, Facebook, Twitter, TikTok, Discord e altro"
+      },
+      {
+        "label": "Luogo di Elaborazione",
+        "value": "100% lato client (JavaScript del browser)"
+      },
+      {
+        "label": "Privacy",
+        "value": "Nessun caricamento sul server, elaborazione locale completa"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Come generare font cool",
+    "steps": [
+      {
+        "title": "Digita il Tuo Testo",
+        "desc": "Inserisci il testo che vuoi trasformare in uno stile cool moderno nel campo di input qui sopra."
+      },
+      {
+        "title": "Scegli lo Stile Cool",
+        "desc": "Sfoglia gli stili di font cool di tendenza e visualizza l'anteprima di come appare il tuo testo in ogni variazione contemporanea."
+      },
+      {
+        "title": "Copia il Testo Cool",
+        "desc": "Fai clic sul pulsante copia per copiare il tuo testo cool, quindi incollalo in design streetwear, branding tecnologico o contenuti di gaming."
+      }
+    ]
+  },
+  "comparison": {
+    "toolaze": "Generazione illimitata di testo cool, Stili moderni di tendenza, Anteprima in tempo reale, Elaborazione lato client, Nessun limite, Privacy totale",
+    "others": "Restrizioni sul testo, Poche opzioni cool, Elaborazione lenta, Caricamenti in cloud, Problemi di privacy, Filigrane, Piani a pagamento"
+  },
+  "scenes": [
+    {
+      "title": "Marchi di Streetwear",
+      "icon": "👟",
+      "desc": "Crea font cool per abbigliamento streetwear, design di sneaker e marchi di moda urbana. Genera testi moderni e di tendenza che catturano l'estetica della cultura di strada."
+    },
+    {
+      "title": "Produttori Musicali",
+      "icon": "🎵",
+      "desc": "Usa font cool per le copertine degli album, i titoli delle tracce e la grafica dei video musicali. Aggiungi un'atmosfera contemporanea e hip al tuo branding musicale con font cool eleganti."
+    },
+    {
+      "title": "Startup Tecnologiche",
+      "icon": "💻",
+      "desc": "Genera testi cool per nomi di app, lanci di prodotti tecnologici e branding di startup. Crea un tocco moderno e innovativo con stili di font eleganti e contemporanei."
+    }
+  ],
+  "rating": {
+    "text": "\"Il miglior generatore di font cool che abbia mai trovato. Risultati istantanei e funziona perfettamente su Instagram!\" - Unisciti a migliaia di utenti che si affidano a Toolaze per la generazione di bellissimi testi cool."
+  },
+  "faq": [
+    {
+      "q": "Cosa rende un font 'cool'?",
+      "a": "I font cool hanno un'estetica moderna e di tendenza che attrae il pubblico contemporaneo. Il nostro generatore include stili grassetto, sans-serif e monospazio che creano quel look elegante e hip popolare nello streetwear e nella cultura tech."
+    },
+    {
+      "q": "I font cool vanno bene per i marchi di streetwear?",
+      "a": "Sì! I font cool sono perfetti per l'abbigliamento streetwear, il design di sneaker e i marchi di moda urbana. Catturano quell'estetica contemporanea e audace della cultura di strada."
+    },
+    {
+      "q": "Posso usare i font cool per le startup tecnologiche?",
+      "a": "Assolutamente! I font cool funzionano benissimo per i nomi delle app, i lanci di prodotti tecnologici e il branding delle startup. Creano un tocco moderno e innovativo che le aziende tecnologiche amano."
+    },
+    {
+      "q": "I font cool funzioneranno nei contenuti di gaming?",
+      "a": "Sì! I font cool sono popolari nelle comunità di gaming per i nomi dei clan, il branding dei server e i contenuti di gioco. Aggiungono quell'atmosfera di gioco contemporanea e competitiva."
+    },
+    {
+      "q": "I font cool sono leggibili su tutte le piattaforme?",
+      "a": "Sì, i font cool utilizzano caratteri Unicode ampiamente supportati. Si visualizzano bene sui social media, sulle piattaforme di gaming e sulla maggior parte delle applicazioni moderne. Per stili più moderni, prova il nostro <a href=\"/it/font-generator/bold\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">generatore di font grassetto</a> o esplora la nostra collezione di generatori di font."
+    }
+  ],
+  "compare": {
+    "toolaze": "Generazione illimitata di testo cool, Molteplici stili eleganti, Anteprima istantanea in tempo reale, Architettura locale-first, Nessun limite di caratteri, Protezione completa della privacy, 100% gratuito",
+    "others": "Limiti di caratteri, Opzioni di stile limitate, Lenta elaborazione del server, Caricamenti cloud richiesti, Problemi di privacy, Filigrane o pubblicità, Funzionalità premium a pagamento"
+  }
+}

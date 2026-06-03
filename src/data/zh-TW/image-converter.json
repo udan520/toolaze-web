@@ -1,0 +1,126 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "免費圖片轉換器 - 線上批次轉換圖片 | Toolaze",
+    "description": "在 JPG、PNG 和 WebP 格式之間轉換圖片。支援高達 100 張圖片的批次轉換。快速、私密、100% 免費。無需註冊。"
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "免費 <span class=\"text-gradient\">圖片轉換器</span>",
+    "desc": "在 JPG、PNG 和 WebP 格式之間轉換圖片。支援高達 100 張圖片的批次轉換。快速、私密、100% 免費。無需註冊。"
+  },
+  "intro": {
+    "title": "為什麼選擇 Toolaze 圖片轉換器？",
+    "content": [
+      {
+        "title": "無損品質轉換圖片",
+        "text": "立即在 JPG、PNG 和 WebP 格式之間轉換圖片。我們的瀏覽器端轉換器在本地處理圖片，確保完全的隱私和快速轉換。非常適合網頁開發人員、設計師和內容創作者。"
+      }
+    ]
+  },
+  "features": {
+    "title": "強大的圖片轉換功能",
+    "items": [
+      {
+        "icon": "📂",
+        "iconType": "batch",
+        "title": "批次處理",
+        "desc": "一次轉換多達 100 張圖片"
+      },
+      {
+        "icon": "🔄",
+        "iconType": "formats",
+        "title": "多種格式",
+        "desc": "支援 JPG、PNG、WebP 和 HEIC"
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "100% 免費",
+        "desc": "無廣告。"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "如何使用 Toolaze？",
+    "steps": [
+      {
+        "title": "上傳圖片",
+        "desc": "拖放多達 100 張圖片或資料夾。支援 JPG、PNG、WebP、BMP 和 HEIC 格式。"
+      },
+      {
+        "title": "選擇格式",
+        "desc": "選擇您的目標格式：JPG、PNG 或 WebP。我們的轉換器在轉換過程中保持品質。"
+      },
+      {
+        "title": "下載結果",
+        "desc": "下載個別轉換後的圖片，或一次下載所有圖片的 ZIP 壓縮檔。快速且高效。"
+      }
+    ]
+  },
+  "comparison": {
+    "title": "為什麼選擇 Toolaze？",
+    "toolaze": "Toolaze 💎",
+    "others": "其他工具",
+    "vs": "VS",
+    "smartChoice": "聰明的選擇",
+    "otherTools": "其他工具",
+    "toolazeFeatures": "批次處理多達 100 張圖片, 支援多種格式, 品質保留, 100% 私密且免費, 無需註冊",
+    "othersFeatures": "批次大小受限, 格式限制, 品質損失, 隱私疑慮, 需要註冊"
+  },
+  "scenesTitle": "使用場景",
+  "scenes": [
+    {
+      "title": "適用於網頁開發人員",
+      "icon": "💻",
+      "desc": "將圖片轉換為 WebP 以獲得更好的效能。優化格式以加快頁面載入速度並提升 SEO。"
+    },
+    {
+      "title": "適用於設計師",
+      "icon": "🎨",
+      "desc": "針對不同的設計需求在格式之間轉換。使用 PNG 保留透明度，或使用 JPG 進行優化。"
+    },
+    {
+      "title": "適用於內容創作者",
+      "icon": "📱",
+      "desc": "為社群媒體和部落格批次轉換圖片。確保在所有平台上的相容性。"
+    }
+  ],
+  "rating": {
+    "title": "深受數千名創作者信賴",
+    "rating": "4.9/5 來自 10,000+ 名創作者",
+    "text": "加入數千名滿意用戶的行列，信賴 Toolaze 提供快速、安全且免費的圖片轉換。無需註冊，100% 私密處理。"
+  },
+  "faqTitle": "常見問題",
+  "faq": [
+    {
+      "q": "支援哪些圖片格式？",
+      "a": "Toolaze 支援在 JPG、PNG 和 WebP 格式之間轉換。您可以上傳 JPG、PNG、WebP、BMP 或 HEIC 格式的圖片。"
+    },
+    {
+      "q": "這個工具真的是免費的嗎？",
+      "a": "是的！Toolaze 100% 免費，無廣告、無註冊，也沒有隱藏費用。所有處理都在您的瀏覽器中進行。"
+    },
+    {
+      "q": "我可以轉換超過 100 張圖片嗎？",
+      "a": "每次作業的最大批次大小為 100 個檔案。對於更大的批次，只需分多次作業處理即可。"
+    },
+    {
+      "q": "我的圖片會被上傳到伺服器嗎？",
+      "a": "不會！所有圖片轉換都在您的瀏覽器中使用 JavaScript 本地完成。您的圖片永遠不會離開您的裝置，確保完全的隱私。"
+    },
+    {
+      "q": "轉換過程中會保留品質嗎？",
+      "a": "品質保留取決於目標格式。PNG 是無損的，而 JPG 和 WebP 使用有損壓縮，但仍能保持較高的視覺品質。"
+    }
+  ],
+  "moreTools": "更多圖片轉換工具"
+}

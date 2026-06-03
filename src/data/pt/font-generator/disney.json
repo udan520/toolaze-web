@@ -1,0 +1,181 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Gerador de Fonte Disney (Grátis, Copiar e Colar e Sem Anúncios) - Toolaze",
+    "description": "Como gerar fontes Disney? 1. Digite seu texto 2. Selecione o estilo Disney 3. Copie e cole. Crie textos Disney lindos para Instagram, Facebook e redes sociais. Grátis e Privado."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Gerador de Fonte Disney",
+    "desc": "Gere fontes Disney lindas online e de graça. Basta digitar seu texto abaixo para criar textos Disney elegantes que você pode copiar e colar em qualquer lugar."
+  },
+  "intro": {
+    "title": "Por que usar um Gerador de Fonte Disney?",
+    "content": [
+      {
+        "title": "O que é a Fonte Disney?",
+        "text": "As fontes Disney capturam aquela estética mágica e caprichosa associada ao mundo encantador da Disney. Essas tipografias lúdicas apresentam formas de letras arredondadas e amigáveis com uma sensação de admiração e alegria. As fontes no estilo Disney são caracterizadas por sua aparência fofa e acessível, tornando-as perfeitas para conteúdo infantil, decorações de festas e projetos familiares. Elas transmitem uma sensação de diversão, aventura e imaginação que agrada tanto a crianças quanto a adultos. Para estilos lúdicos semelhantes, experimente nosso <a href=\"/pt/font-generator/bubble\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">gerador de fonte bubble</a> ou gerador de fonte cursiva."
+      },
+      {
+        "title": "Por que gerar texto Disney online?",
+        "text": "Criar texto inspirado na Disney para festas, conteúdo infantil ou projetos de fãs geralmente requer softwares de design caros e licenciamento de fontes. Nosso gerador de texto Disney oferece acesso instantâneo a estilos de texto mágicos e caprichosos que capturam aquela sensação encantadora da Disney. Esteja você planejando uma festa de aniversário com tema Disney, criando capas de livros infantis ou projetando conteúdo divertido para redes sociais, nossa ferramenta transforma qualquer texto em fontes de estilo Disney instantaneamente — trazendo aquele toque mágico aos seus projetos sem complexidade. Descubra mais estilos de fonte com nossas ferramentas de <a href=\"/pt/font-generator\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">gerador de fontes</a>."
+      }
+    ]
+  },
+  "features": {
+    "title": "Poderosos Recursos de Fonte Disney",
+    "items": [
+      {
+        "icon": "🏰",
+        "iconType": "quality",
+        "title": "Estilos de Fontes Mágicas",
+        "desc": "Acesse vários estilos caprichosos inspirados na Disney que criam aquela estética encantadora e lúdica."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Geração Local Segura",
+        "desc": "A geração da fonte ocorre inteiramente no seu navegador — seu texto permanece no seu dispositivo, nunca é enviado para lugar nenhum."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Resultados Imediatos",
+        "desc": "Transforme seu texto para o estilo Disney instantaneamente com visualização em tempo real mostrando as mudanças enquanto você digita."
+      },
+      {
+        "icon": "📋",
+        "iconType": "batch",
+        "title": "Copiar e Colar Simples",
+        "desc": "Copie seu texto Disney instantaneamente e cole-o no Instagram, convites de festa ou qualquer plataforma."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Grátis",
+        "desc": "Geração ilimitada de fontes Disney com custo zero — sem taxas, sem assinaturas, sem anúncios."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "Ferramenta Baseada na Web",
+        "desc": "Funciona completamente no seu navegador — sem downloads, instalações ou arquivos de fonte necessários."
+      }
+    ]
+  },
+  "specs": {
+    "engine": "Renderização de Fonte Nativa do Navegador - Processamento no Lado do Cliente",
+    "limit": "Comprimento de Texto Ilimitado - Sem Limites de Caracteres",
+    "logic": "Visualização em Tempo Real (Aplicação de Estilo Instantânea)",
+    "privacy": "100% Lado do Cliente (Processamento Local no Navegador)"
+  },
+  "performanceMetrics": {
+    "title": "Especificações Técnicas",
+    "metrics": [
+      {
+        "label": "Estilo de Fonte",
+        "value": "Disney (Estilo Distintivo)"
+      },
+      {
+        "label": "Comprimento do Texto",
+        "value": "Caracteres ilimitados"
+      },
+      {
+        "label": "Velocidade de Processamento",
+        "value": "Instantânea (Visualização em tempo real)"
+      },
+      {
+        "label": "Formato de Saída",
+        "value": "Texto Unicode (Pronto para copiar e colar)"
+      },
+      {
+        "label": "Suporte de Plataforma",
+        "value": "Instagram, Facebook, Twitter, TikTok, Discord e mais"
+      },
+      {
+        "label": "Local de Processamento",
+        "value": "100% Lado do Cliente (JavaScript do Navegador)"
+      },
+      {
+        "label": "Privacidade",
+        "value": "Sem uploads para o servidor, processamento local completo"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Como Gerar Fontes Disney",
+    "steps": [
+      {
+        "title": "Digite Seu Texto",
+        "desc": "Insira o texto que deseja transformar no estilo mágico da Disney no campo de entrada acima."
+      },
+      {
+        "title": "Escolha o Estilo Disney",
+        "desc": "Navegue por estilos de fonte fofos e lúdicos inspirados na Disney e veja como seu texto fica em cada variação caprichosa."
+      },
+      {
+        "title": "Copie o Texto Disney",
+        "desc": "Clique no botão de copiar para copiar seu texto no estilo Disney e, em seguida, cole-o em convites de festa, postagens em redes sociais ou conteúdo infantil."
+      }
+    ]
+  },
+  "comparison": {
+    "toolaze": "Geração ilimitada de texto Disney, Múltiplos estilos caprichosos, Visualização instantânea em tempo real, Processamento no lado do cliente, Sem limites, Privacidade total",
+    "others": "Restrições de caracteres, Estilos Disney limitados, Processamento lento, Uploads na nuvem, Problemas de privacidade, Marcas d'água, Recursos pagos"
+  },
+  "scenes": [
+    {
+      "title": "Fãs da Disney e Criadores de Conteúdo",
+      "icon": "🏰",
+      "desc": "Crie textos mágicos no estilo Disney para postagens em redes sociais, miniaturas do YouTube e conteúdo de fãs. Adicione aquele toque caprichoso e encantador da Disney às suas legendas e gráficos."
+    },
+    {
+      "title": "Planejadores de Festas",
+      "icon": "🎉",
+      "desc": "Gere fontes Disney para convites de festas de aniversário, decorações e eventos temáticos. Torne as festas infantis extra especiais com textos fofos e lúdicos no estilo Disney."
+    },
+    {
+      "title": "Criadores de Conteúdo Infantil",
+      "icon": "👶",
+      "desc": "Use fontes Disney para capas de livros infantis, materiais educativos e conteúdo amigável para crianças. Crie textos divertidos e acessíveis que agradam ao público jovem."
+    }
+  ],
+  "rating": {
+    "text": "\"O melhor gerador de fonte Disney que já encontrei. Resultados instantâneos e funciona perfeitamente no Instagram!\" - Junte-se a milhares de usuários que confiam na Toolaze para a geração de textos Disney lindos."
+  },
+  "faq": [
+    {
+      "q": "Estas são fontes oficiais da Disney?",
+      "a": "Não, nosso gerador cria texto com uma estética inspirada na Disney usando caracteres Unicode. Estas não são fontes oficiais da Disney, mas capturam aquele estilo mágico e caprichoso da Disney para seus projetos pessoais."
+    },
+    {
+      "q": "Posso usar fontes Disney para projetos comerciais?",
+      "a": "Nosso texto gerado usa caracteres Unicode, então tecnicamente você pode usá-lo em qualquer lugar. No entanto, esteja ciente de que 'Disney' é uma marca registrada. Para uso comercial, especialmente qualquer coisa que possa ser confundida com conteúdo oficial da Disney, consulte aconselhamento jurídico."
+    },
+    {
+      "q": "As fontes Disney são boas para conteúdo infantil?",
+      "a": "Sim! As fontes no estilo Disney são perfeitas para livros infantis, convites de festas, materiais educativos e conteúdo amigável para crianças. Elas são lúdicas, legíveis e atraem o público jovem."
+    },
+    {
+      "q": "As fontes Disney funcionarão em aplicativos infantis?",
+      "a": "Sim, as fontes Disney usam caracteres Unicode que funcionam na maioria dos aplicativos. No entanto, sempre teste em seu aplicativo específico para garantir que as fontes sejam exibidas corretamente para seu público-alvo."
+    },
+    {
+      "q": "Posso usar fontes Disney para festas de aniversário?",
+      "a": "Com certeza! As fontes Disney são perfeitas para convites de aniversário, decorações, topos de bolo e lembrancinhas. Elas adicionam aquele toque mágico da Disney a qualquer celebração. Para estilos lúdicos semelhantes, experimente nosso <a href=\"/pt/font-generator/bubble\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">gerador de fonte bubble</a> ou explore nossa coleção de geradores de fontes."
+    }
+  ],
+  "compare": {
+    "toolaze": "Geração ilimitada de texto Disney, Múltiplos estilos elegantes, Visualização instantânea em tempo real, Arquitetura local-first, Sem limites de caracteres, Proteção completa de privacidade, 100% grátis",
+    "others": "Limites de caracteres, Opções de estilo limitadas, Processamento lento no servidor, Uploads na nuvem necessários, Preocupações com a privacidade, Marcas d'água ou anúncios, Recursos premium pagos"
+  }
+}

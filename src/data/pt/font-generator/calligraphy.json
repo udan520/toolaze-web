@@ -1,0 +1,181 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Gerador de Fonte de Caligrafia (Grátis, Copiar e Colar e Sem Anúncios) - Toolaze",
+    "description": "Como gerar fontes de caligrafia? 1. Digite seu texto 2. Selecione o estilo de caligrafia 3. Copie e cole. Crie belos textos de caligrafia para Instagram, Facebook e redes sociais. Grátis e Privado."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Gerador de Fonte de Caligrafia",
+    "desc": "Gere belas fontes de caligrafia online gratuitamente. Basta digitar seu texto abaixo para criar textos de caligrafia elegantes que você pode copiar e colar em qualquer lugar."
+  },
+  "intro": {
+    "title": "Por que usar um gerador de fonte de caligrafia?",
+    "content": [
+      {
+        "title": "O que é Fonte de Caligrafia?",
+        "text": "As fontes de caligrafia apresentam formas de letras elegantes, em estilo manuscrito, com floreios decorativos e elementos ornamentais. Essas fontes sofisticadas imitam a caligrafia tradicional, criando uma sensação de elegância e habilidade atemporais. As fontes de caligrafia são caracterizadas por suas curvas graciosas, detalhes decorativos e aparência formal, tornando-as perfeitas para convites de casamento, certificados, prêmios e projetos que exigem uma estética prestigiosa e artesanal. Para estilos elegantes semelhantes, explore nosso <a href=\"/pt/font-generator/cursive\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">gerador de fonte cursiva</a> ou gerador de fontes personalizadas."
+      },
+      {
+        "title": "Por que gerar texto de caligrafia online?",
+        "text": "A caligrafia tradicional exige anos de prática e ferramentas caras. Os serviços profissionais de caligrafia podem custar centenas de dólares para um único projeto. Nossa ferramenta de caligrafia oferece acesso instantâneo a fontes elegantes em estilo manuscrito que capturam essa estética clássica da caligrafia. Esteja você criando papelaria de casamento, certificados ou materiais de marca artesanais, nossa ferramenta transforma qualquer texto em um belo estilo de caligrafia instantaneamente — trazendo essa elegância atemporal para seus projetos sem o custo ou a complexidade. Encontre mais fontes elegantes com nosso <a href=\"/pt/font-generator\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">gerador de fontes</a>."
+      }
+    ]
+  },
+  "features": {
+    "title": "Poderosos Recursos de Fonte de Caligrafia",
+    "items": [
+      {
+        "icon": "🖋️",
+        "iconType": "quality",
+        "title": "Estilos Manuscritos Elegantes",
+        "desc": "Acesse belas fontes de caligrafia com floreios decorativos e elementos ornamentais."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Geração de Fonte Privada",
+        "desc": "Toda a geração de fontes de caligrafia acontece localmente — seu texto nunca sai do seu dispositivo."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Texto de Caligrafia Imediato",
+        "desc": "Transforme seu texto para o estilo de caligrafia instantaneamente com visualização em tempo real enquanto você digita."
+      },
+      {
+        "icon": "📋",
+        "iconType": "batch",
+        "title": "Copiar Texto de Caligrafia",
+        "desc": "Copie seu texto de caligrafia instantaneamente e cole-o em convites, certificados ou documentos formais."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Fontes de Caligrafia Gratuitas",
+        "desc": "Geração ilimitada de fontes de caligrafia totalmente gratuita — sem taxas, sem assinaturas, sem anúncios."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "Baseado no Navegador",
+        "desc": "Funciona completamente no seu navegador — não é necessário baixar software ou fontes de caligrafia."
+      }
+    ]
+  },
+  "specs": {
+    "engine": "Renderização de Fonte Nativa do Navegador - Processamento no Lado do Cliente",
+    "limit": "Comprimento de Texto Ilimitado - Sem Limites de Caracteres",
+    "logic": "Visualização em Tempo Real (Aplicação de Estilo Instantânea)",
+    "privacy": "100% no Lado do Cliente (Processamento Local no Navegador)"
+  },
+  "performanceMetrics": {
+    "title": "Especificações Técnicas",
+    "metrics": [
+      {
+        "label": "Estilo de Fonte",
+        "value": "Caligrafia (Estilo Distintivo)"
+      },
+      {
+        "label": "Comprimento do Texto",
+        "value": "Caracteres ilimitados"
+      },
+      {
+        "label": "Velocidade de Processamento",
+        "value": "Instantâneo (Visualização em tempo real)"
+      },
+      {
+        "label": "Formato de Saída",
+        "value": "Texto Unicode (Pronto para copiar e colar)"
+      },
+      {
+        "label": "Suporte de Plataforma",
+        "value": "Instagram, Facebook, Twitter, TikTok, Discord e mais"
+      },
+      {
+        "label": "Local de Processamento",
+        "value": "100% no Lado do Cliente (JavaScript do Navegador)"
+      },
+      {
+        "label": "Privacidade",
+        "value": "Sem uploads para o servidor, processamento local completo"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Como Gerar Fontes de Caligrafia",
+    "steps": [
+      {
+        "title": "Digite Seu Texto",
+        "desc": "Insira o texto que deseja transformar em um estilo de caligrafia elegante no campo de entrada acima."
+      },
+      {
+        "title": "Selecione o Estilo de Caligrafia",
+        "desc": "Escolha entre belos estilos de fonte de caligrafia com floreios decorativos e veja como seu texto fica."
+      },
+      {
+        "title": "Copiar Texto de Caligrafia",
+        "desc": "Clique no botão copiar para copiar seu texto de caligrafia e, em seguida, cole-o em convites de casamento, certificados ou documentos formais."
+      }
+    ]
+  },
+  "comparison": {
+    "toolaze": "Geração ilimitada de texto de caligrafia, Estilos manuscritos elegantes, Visualização instantânea, Processamento local, Sem limites, Privacidade total, Grátis",
+    "others": "Limites de caracteres, Poucas opções de caligrafia, Atrasos no servidor, Uploads obrigatórios, Preocupações com privacidade, Anúncios, Níveis premium"
+  },
+  "scenes": [
+    {
+      "title": "Designers de Papelaria de Casamento",
+      "icon": "💌",
+      "desc": "Crie fontes de caligrafia elegantes para convites de casamento, cartões de lugar e programas de cerimônia. Adicione um toque atemporal e sofisticado a eventos especiais."
+    },
+    {
+      "title": "Designers de Certificados",
+      "icon": "🏆",
+      "desc": "Gere texto de caligrafia para certificados, prêmios e diplomas. Crie documentos formais e prestigiosos com belas caligrafias em estilo manuscrito."
+    },
+    {
+      "title": "Marcas Artesanais",
+      "icon": "🖼️",
+      "desc": "Use fontes de caligrafia para rótulos de produtos artesanais, sinalização de feiras de artesanato e produtos feitos à mão. Adicione um toque pessoal e artesanal à sua marca."
+    }
+  ],
+  "rating": {
+    "text": "\"O melhor gerador de fonte de caligrafia que encontrei. Resultados instantâneos e funciona perfeitamente no Instagram!\" - Junte-se a milhares de usuários que confiam no Toolaze para a geração de belos textos de caligrafia."
+  },
+  "faq": [
+    {
+      "q": "As fontes de caligrafia são as mesmas que as fontes cursivas?",
+      "a": "Embora semelhantes, as fontes de caligrafia normalmente têm mais floreios decorativos e elementos ornamentais do que a simples cursiva. Nosso gerador de caligrafia foca em fontes elegantes, em estilo manuscrito, com aquela estética clássica da caligrafia."
+    },
+    {
+      "q": "Posso usar fontes de caligrafia para convites de casamento?",
+      "a": "Sim! As fontes de caligrafia são perfeitas para convites de casamento, cartões de lugar e programas de cerimônia. Elas adicionam aquele toque atemporal e sofisticado a eventos especiais."
+    },
+    {
+      "q": "As fontes de caligrafia são legíveis?",
+      "a": "As fontes de caligrafia priorizam a elegância em vez da legibilidade rápida. Elas funcionam melhor para textos curtos, como nomes, títulos e convites, onde o estilo decorativo é mais importante do que a leitura rápida."
+    },
+    {
+      "q": "As fontes de caligrafia funcionam na impressão?",
+      "a": "Sim! As fontes de caligrafia funcionam lindamente em materiais impressos. São ideais para convites formais, certificados e documentos impressos de alta qualidade."
+    },
+    {
+      "q": "Posso usar fontes de caligrafia para certificados?",
+      "a": "Com certeza! As fontes de caligrafia são perfeitas para certificados, prêmios e diplomas. Elas criam aquele visual formal e prestigioso que os documentos oficiais precisam. Para estilos elegantes semelhantes, confira nosso <a href=\"/pt/font-generator/cursive\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">gerador de fonte cursiva</a> ou gerador de fontes personalizadas, ou navegue em nossas ferramentas de gerador de fontes."
+    }
+  ],
+  "compare": {
+    "toolaze": "Geração ilimitada de texto de caligrafia, Múltiplos estilos elegantes, Visualização instantânea em tempo real, Arquitetura focada no local, Sem limites de caracteres, Proteção total de privacidade, 100% grátis",
+    "others": "Limites de caracteres, Opções de estilo limitadas, Processamento lento no servidor, Uploads na nuvem obrigatórios, Preocupações com privacidade, Marcas d'água ou anúncios, Recursos premium pagos"
+  }
+}

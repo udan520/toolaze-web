@@ -1,0 +1,181 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "3D 字體產生器 (免費、複製貼上且無廣告) - Toolaze",
+    "description": "如何產生 3D 字體？1. 輸入文字 2. 選擇 3D 風格 3. 複製並貼上。為 Instagram、Facebook 和社交媒體建立漂亮的 3D 文字。免費且私密。"
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "3D 字體產生器",
+    "desc": "免費在線產生漂亮的 3D 字體。只需在下方輸入文字，即可建立優雅的 3D 文字，並可隨處複製貼上。"
+  },
+  "intro": {
+    "title": "為什麼要使用 3D 字體產生器？",
+    "content": [
+      {
+        "title": "什麼是 3D 字體？",
+        "text": "3D 字體使用具有粗體、立體樣式的 Unicode 字元，營造出三維外觀。這些字體具有厚實的筆畫和視覺深度，使文字看起來像是從頁面或螢幕上彈出來。3D 字體的特點是其現代、立體的感觀，非常適合電子遊戲標題、建築視覺化、3D 設計專案以及任何需要當代、充滿深度美感的內容。如需更多粗體風格，請嘗試我們的 <a href=\"/zh-TW/font-generator/bold\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">粗體字體產生器</a> 或酷炫字體產生器。"
+      },
+      {
+        "title": "為什麼要在線產生 3D 文字？",
+        "text": "建立真正的 3D 文字需要昂貴的 3D 建模軟體和專業技能。我們的 3D 文字工具提供即時存取立體 Unicode 樣式，營造出類似 3D 的外觀。無論您是在設計遊戲標題、製作建築簡報，還是開發現代品牌，我們的工具都能立即將任何文字轉換為粗體 3D 風格字體——為您的專案增添深度和維度，而無需 3D 軟體的複雜性。透過我們的 <a href=\"/zh-TW/font-generator\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">字體產生器</a> 探索更多。"
+      }
+    ]
+  },
+  "features": {
+    "title": "強大的 3D 字體功能",
+    "items": [
+      {
+        "icon": "🎨",
+        "iconType": "quality",
+        "title": "立體字體風格",
+        "desc": "產生具有粗體、立體 Unicode 字元的 3D 風格字體，營造深度感。"
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "本地瀏覽器處理",
+        "desc": "字體產生完全在您的瀏覽器中進行——您的文字保留在您的裝置上。"
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "即時 3D 轉換",
+        "desc": "立即將您的文字轉換為 3D 風格，並帶有顯示立體效果的即時預覽。"
+      },
+      {
+        "icon": "📋",
+        "iconType": "batch",
+        "title": "複製 3D 文字",
+        "desc": "立即複製您的 3D 風格文字，並將其貼上到遊戲標題、簡報或 3D 專案中。"
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "免費 3D 字體",
+        "desc": "無限制的 3D 字體產生，完全免費——無費用、無高級會員層級、無廣告。"
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "無需 3D 軟體",
+        "desc": "完全在您的瀏覽器中運行——無需 3D 建模軟體或複雜的安裝。"
+      }
+    ]
+  },
+  "specs": {
+    "engine": "瀏覽器原生字體渲染 - 用戶端處理",
+    "limit": "無限制文字長度 - 無字元限制",
+    "logic": "即時預覽（立即套用樣式）",
+    "privacy": "100% 用戶端（本地瀏覽器處理）"
+  },
+  "performanceMetrics": {
+    "title": "技術規格",
+    "metrics": [
+      {
+        "label": "字體風格",
+        "value": "3D (獨特風格)"
+      },
+      {
+        "label": "文字長度",
+        "value": "無限制字元"
+      },
+      {
+        "label": "處理速度",
+        "value": "即時 (即時預覽)"
+      },
+      {
+        "label": "輸出格式",
+        "value": "Unicode 文字 (可直接複製貼上)"
+      },
+      {
+        "label": "平台支援",
+        "value": "Instagram, Facebook, Twitter, TikTok, Discord 等"
+      },
+      {
+        "label": "處理位置",
+        "value": "100% 用戶端 (瀏覽器 JavaScript)"
+      },
+      {
+        "label": "隱私",
+        "value": "無伺服器上傳，完全本地處理"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "如何產生 3D 字體",
+    "steps": [
+      {
+        "title": "輸入您的文字",
+        "desc": "在上方的輸入欄位中輸入您想要轉換為 3D 風格的文字。"
+      },
+      {
+        "title": "選擇 3D 風格",
+        "desc": "從立體 3D 字體風格中選擇，並預覽您的文字在這種粗體、充滿深度的外觀下的樣子。"
+      },
+      {
+        "title": "複製 3D 文字",
+        "desc": "點擊複製按鈕複製您的 3D 文字，然後將其貼上到遊戲標題、簡報或 3D 專案中。"
+      }
+    ]
+  },
+  "comparison": {
+    "toolaze": "無限制 3D 文字產生、立體字體風格、即時預覽、瀏覽器處理、無限制、完全隱私保護、100% 免費",
+    "others": "文字限制、有限的 3D 風格、伺服器緩慢、雲端上傳、隱私疑慮、浮水印、付費層級"
+  },
+  "scenes": [
+    {
+      "title": "3D 藝術家與設計師",
+      "icon": "🎨",
+      "desc": "為 3D 建模專案、遊戲資產和數位藝術建立 3D 字體。產生看起來具有三維感的文字，用於 3D 環境。"
+    },
+    {
+      "title": "電子遊戲開發者",
+      "icon": "🎮",
+      "desc": "為遊戲標題、UI 元素和遊戲內標誌產生 3D 文字。使用 3D 字體風格為您的遊戲排版增添深度和維度。"
+    },
+    {
+      "title": "建築視覺化",
+      "icon": "🏗️",
+      "desc": "將 3D 字體用於建築渲染、建築標誌和簡報材料。為專業視覺化建立逼真的立體文字。"
+    }
+  ],
+  "rating": {
+    "text": "\"這是我找到最好的 3D 字體產生器。結果即時，且在 Instagram 上完美運行！\" - 加入成千上萬信任 Toolaze 產生漂亮 3D 文字的使用者。"
+  },
+  "faq": [
+    {
+      "q": "3D 字體看起來真的有三維感嗎？",
+      "a": "我們的 3D 使用具有粗體、立體樣式的 Unicode 字元，營造出類似 3D 的外觀。雖然不是真正的 3D 圖形，但它們利用 Unicode 排版提供了深度和維度效果。"
+    },
+    {
+      "q": "我可以在 3D 建模軟體中使用 3D 字體嗎？",
+      "a": "產生的文字使用 Unicode 字元，可以作為文字物件匯入 3D 軟體。然而，對於真正的 3D 文字，您通常會使用 3D 軟體的文字工具來建立實際的 3D 幾何圖形。"
+    },
+    {
+      "q": "3D 字體適合遊戲標題嗎？",
+      "a": "是的！3D 字體非常適合電子遊戲標題、標誌和 UI 元素。它們增添了許多遊戲在品牌推廣中使用的現代、立體感。"
+    },
+    {
+      "q": "3D 字體在社交媒體上有效嗎？",
+      "a": "是的！3D 字體使用 Unicode 字元，可在 Instagram、Facebook、Twitter 和 TikTok 上運行。它們非常適合建立具有深度且吸睛的社交媒體內容。"
+    },
+    {
+      "q": "我可以將 3D 字體用於建築視覺化嗎？",
+      "a": "是的，3D 字體在建築渲染和簡報材料中表現良好。它們為專業視覺化建立逼真的立體文字。如需更多粗體風格，請嘗試我們的 <a href=\"/zh-TW/font-generator/bold\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">粗體字體產生器</a> 或探索我們的字體產生器系列。"
+    }
+  ],
+  "compare": {
+    "toolaze": "無限制 3D 文字產生、多種優雅風格、即時預覽、本地優先架構、無字元限制、完全隱私保護、100% 免費",
+    "others": "字元限制、有限的風格選擇、伺服器處理緩慢、需要雲端上傳、隱私疑慮、浮水印或廣告、付費高級功能"
+  }
+}

@@ -1,0 +1,181 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Generatore di Font per Tatuaggi (Gratis, Copia e Incolla e Senza Pubblicità) - Toolaze",
+    "description": "Come generare font per tatuaggi? 1. Digita il testo 2. Seleziona lo stile del tatuaggio 3. Copia e incolla. Crea bellissimi testi per tatuaggi per Instagram, Facebook e social media. Gratis e Privato."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Generatore di Font per Tatuaggi",
+    "desc": "Genera bellissimi font per tatuaggi online gratuitamente. Digita semplicemente il tuo testo qui sotto per creare eleganti testi per tatuaggi da copiare e incollare ovunque."
+  },
+  "intro": {
+    "title": "Perché usare un generatore di font per tatuaggi?",
+    "content": [
+      {
+        "title": "Cos'è un font per tatuaggi?",
+        "text": "I font per tatuaggi combinano elementi audaci, gotici e decorativi progettati specificamente per l'estetica della body art. Questi caratteri distintivi presentano linee forti, forme di caratteri uniche e uno stile tagliente che cattura lo spirito ribelle della cultura del tatuaggio. I font per tatuaggi sono caratterizzati dalla loro presenza audace, che fa risaltare il testo sia che venga utilizzato in veri e propri disegni di tatuaggi, abbigliamento streetwear o branding di moda alternativa. Per stili audaci simili, dai un'occhiata al nostro <a href=\"/it/font-generator/gothic\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">generatore di font gotici</a> o al <a href=\"/it/font-generator/bold\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">generatore di font in grassetto</a>."
+      },
+      {
+        "title": "Perché generare testo per tatuaggi online?",
+        "text": "Progettare testi in stile tatuaggio richiede tradizionalmente software di progettazione specializzati e una vasta conoscenza della tipografia. I tatuatori e gli appassionati spesso passano ore a cercare lo stile di font perfetto che corrisponda alla loro visione. Perfetto per designer di tatuaggi, appassionati di body art e marchi di moda alternativa che necessitano di una tipografia distintiva e accattivante. Esplora altri stili con la nostra collezione di <a href=\"/it/font-generator\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">generatori di font</a>."
+      }
+    ]
+  },
+  "features": {
+    "title": "Potenti funzionalità dei font per tatuaggi",
+    "items": [
+      {
+        "icon": "🖋️",
+        "iconType": "quality",
+        "title": "Stili di tatuaggio audaci",
+        "desc": "Scegli tra molteplici stili di font per tatuaggi audaci, incluse varianti gotiche, in grassetto e decorative."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Solo elaborazione locale",
+        "desc": "Tutta la generazione dei font avviene sul tuo dispositivo: il tuo testo non lascia mai il tuo computer, garantendo una sicurezza completa."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Trasformazione istantanea",
+        "desc": "Guarda il tuo testo convertirsi immediatamente in stile tatuaggio con l'anteprima dal vivo mentre digiti."
+      },
+      {
+        "icon": "📋",
+        "iconType": "batch",
+        "title": "Copia e incolla rapido",
+        "desc": "Copia il tuo testo per tatuaggi con un solo clic e usalo ovunque: social media, design o documenti."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Gratis",
+        "desc": "Genera font per tatuaggi illimitati in modo completamente gratuito: nessun pagamento, nessuna funzione premium, nessuna pubblicità."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "Nessun download",
+        "desc": "Tutto viene eseguito nel tuo browser utilizzando la tecnologia client-side: nessun software o font da installare."
+      }
+    ]
+  },
+  "specs": {
+    "engine": "Rendering dei font nativo del browser - Elaborazione lato client",
+    "limit": "Lunghezza del testo illimitata - Nessun limite di caratteri",
+    "logic": "Anteprima in tempo reale (applicazione istantanea dello stile)",
+    "privacy": "100% lato client (elaborazione locale del browser)"
+  },
+  "performanceMetrics": {
+    "title": "Specifiche tecniche",
+    "metrics": [
+      {
+        "label": "Stile del font",
+        "value": "Tatuaggio (Stile distintivo)"
+      },
+      {
+        "label": "Lunghezza del testo",
+        "value": "Caratteri illimitati"
+      },
+      {
+        "label": "Velocità di elaborazione",
+        "value": "Istantanea (Anteprima in tempo reale)"
+      },
+      {
+        "label": "Formato di output",
+        "value": "Testo Unicode (Pronto per copia e incolla)"
+      },
+      {
+        "label": "Supporto piattaforma",
+        "value": "Instagram, Facebook, Twitter, TikTok, Discord e altro"
+      },
+      {
+        "label": "Luogo di elaborazione",
+        "value": "100% lato client (JavaScript del browser)"
+      },
+      {
+        "label": "Privacy",
+        "value": "Nessun caricamento sul server, elaborazione locale completa"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Come generare font per tatuaggi",
+    "steps": [
+      {
+        "title": "Digita il tuo testo",
+        "desc": "Inserisci il nome, la citazione o la frase che desideri trasformare in uno stile di tatuaggio audace nel campo di input sopra."
+      },
+      {
+        "title": "Seleziona lo stile del tatuaggio",
+        "desc": "Esplora diversi stili di font per tatuaggi, incluse opzioni gotiche, in grassetto e decorative. Visualizza l'anteprima di ogni stile per trovare l'abbinamento perfetto per il tuo design."
+      },
+      {
+        "title": "Copia il testo del tatuaggio",
+        "desc": "Fai clic su copia per ottenere il tuo testo in stile tatuaggio, quindi incollalo nel software di progettazione, sui social media o condividilo con il tuo tatuatore."
+      }
+    ]
+  },
+  "comparison": {
+    "toolaze": "Generazione illimitata di testo per tatuaggi, molteplici stili gotici audaci, anteprima istantanea, elaborazione locale del browser, nessun limite di lunghezza del testo, privacy completa, 100% gratuito",
+    "others": "Restrizioni sulla lunghezza del testo, poche scelte di stile, ritardi lato server, caricamenti cloud richiesti, rischi per la privacy dei dati, pubblicità, abbonamenti premium"
+  },
+  "scenes": [
+    {
+      "title": "Designer di tatuaggi",
+      "icon": "🖋️",
+      "desc": "Crea design di font per tatuaggi unici per i clienti. Visualizza l'anteprima di diversi font in stile tatuaggio per trovare l'abbinamento perfetto per nomi, citazioni o testi significativi prima di tatuare."
+    },
+    {
+      "title": "Appassionati di body art",
+      "icon": "💪",
+      "desc": "Sperimenta con i font per tatuaggi per il tuo prossimo disegno. Verifica come appare il tuo nome, citazione o frase in vari stili di tatuaggio audaci, gotici e decorativi."
+    },
+    {
+      "title": "Marchi di moda alternativa",
+      "icon": "👕",
+      "desc": "Usa i font per tatuaggi per design di abbigliamento, merchandising e loghi di marchi. Crea testi audaci e taglienti che catturano lo spirito ribelle della cultura del tatuaggio."
+    }
+  ],
+  "rating": {
+    "text": "\"Il miglior generatore di font per tatuaggi che abbia mai trovato. Risultati istantanei e funziona perfettamente su Instagram!\" - Unisciti a migliaia di utenti che si affidano a Toolaze per la generazione di bellissimi testi per tatuaggi."
+  },
+  "faq": [
+    {
+      "q": "Posso usare questi font per tatuaggi per veri e propri disegni di tatuaggi?",
+      "a": "Sì! Molti tatuatori e clienti utilizzano il nostro generatore per visualizzare in anteprima gli stili di testo prima di tatuarsi. Tuttavia, consulta sempre il tuo tatuatore, poiché potrebbe aver bisogno di adattare il font al tuo design specifico e al posizionamento sul corpo."
+    },
+    {
+      "q": "I font per tatuaggi sono adatti per tatuaggi permanenti?",
+      "a": "I nostri font per tatuaggi sono ottimi per l'ispirazione del design e le anteprime. Per i tatuaggi veri e propri, collabora con il tuo artista per assicurarti che lo stile sia appropriato per le dimensioni e la posizione del tuo tatuaggio, poiché alcuni font potrebbero richiedere modifiche per la leggibilità una volta tatuati."
+    },
+    {
+      "q": "Posso usare i font per tatuaggi per il design di abbigliamento?",
+      "a": "Assolutamente! I font per tatuaggi sono perfetti per lo streetwear, il merchandising delle band e la moda alternativa. Gli stili audaci e taglienti funzionano benissimo su magliette, felpe e accessori."
+    },
+    {
+      "q": "I font per tatuaggi funzionano sui social media?",
+      "a": "Sì! I font per tatuaggi utilizzano caratteri Unicode che vengono visualizzati bene su Instagram, Facebook, Twitter e TikTok. Sono perfetti per creare contenuti per i social media audaci e accattivanti."
+    },
+    {
+      "q": "Qual è la differenza tra i font per tatuaggi e i font gotici?",
+      "a": "I font per tatuaggi spesso combinano elementi audaci, gotici e decorativi scelti specificamente per l'estetica del tatuaggio. I font gotici sono più tradizionali e formali, mentre i font per tatuaggi sono progettati per essere più versatili per la body art. Esplora il nostro <a href=\"/it/font-generator/gothic\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">generatore di font gotici</a> per stili più tradizionali, oppure sfoglia tutti i nostri strumenti <a href=\"/it/font-generator\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">generatore di font</a>."
+    }
+  ],
+  "compare": {
+    "toolaze": "Generazione illimitata di testo per tatuaggi, molteplici stili eleganti, anteprima istantanea in tempo reale, architettura locale-first, nessun limite di caratteri, protezione completa della privacy, 100% gratuito",
+    "others": "Limiti di caratteri, opzioni di stile limitate, elaborazione lenta del server, caricamenti cloud richiesti, problemi di privacy, filigrane o pubblicità, funzioni premium a pagamento"
+  }
+}

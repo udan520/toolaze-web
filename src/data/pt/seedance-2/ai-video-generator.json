@@ -1,0 +1,214 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Gerador de Vídeo de IA Grátis Online - Seedance 2.0 (Sem Cadastro) - Toolaze",
+    "description": "Crie vídeos de IA online gratuitamente. Entradas de texto, imagem, vídeo e áudio. O Seedance 2.0 gera vídeos de qualidade de Hollywood em 1080p. Sem registro. Geração de vídeo de IA multimodal. Controle de nível de diretor."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "modelIntro",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "modelIntro": {
+    "title": "Por que o Seedance 2.0 para Vídeo de IA",
+    "modelName": "Seedance 2.0",
+    "modelType": "Modelo de Vídeo de IA",
+    "description": [
+      "O Seedance 2.0 unifica texto, imagem, vídeo e áudio em um único pipeline. Misture prompts com até 9 imagens, 3 clipes de vídeo e 3 clipes de áudio por solicitação. Sem ferramentas em cadeia — uma entrada, uma saída.",
+      "Controle de nível de diretor sobre iluminação, câmera e performance. Multi-shot de 15 segundos em 1080p com áudio estéreo. Construído para anúncios, redes sociais e pré-produção.",
+      "Grátis online. Sem cadastro — comece pelo seu navegador."
+    ],
+    "featureCards": [
+      {
+        "title": "Entrada Multimodal Completa",
+        "content": "Combine texto, imagens, vídeo e áudio. Um modelo, uma solicitação. Adicione referências para estilo, consistência ou som."
+      },
+      {
+        "title": "Saída de Nível Cinematográfico 1080p",
+        "content": "1080p pronto para transmissão com áudio de canal duplo. Sequências multi-shot, iluminação adequada e movimento consciente da física."
+      },
+      {
+        "title": "Vídeo e Som em Passagem Única",
+        "content": "Geração conjunta de áudio e vídeo. Imagem e som em sincronia. Sem trabalho de pós-produção separado para clipes básicos."
+      }
+    ]
+  },
+  "hero": {
+    "h1": "Gerador de <span class=\"text-gradient\">Vídeo de IA</span> Grátis Online",
+    "desc": "Crie vídeos 1080p com qualidade de Hollywood com o Seedance 2.0 gratuitamente. Entradas de texto, imagem, vídeo e áudio. Geração de vídeo de IA multimodal online. Sem necessidade de cadastro."
+  },
+  "intro": {
+    "title": "Por que escolher o Gerador de Vídeo de IA Seedance 2.0?",
+    "content": [
+      {
+        "title": "A IA de Vídeo Multimodal Mais Abrangente",
+        "text": "O Seedance 2.0 é o modelo de vídeo de IA de próxima geração da ByteDance com uma arquitetura multimodal unificada. Ao contrário de ferramentas que aceitam apenas texto, o Seedance 2.0 suporta texto, imagens (até 9), clipes de vídeo (até 3) e clipes de áudio (até 3) — tudo em uma única geração. Combine linguagem natural com referências visuais e de áudio para um controle criativo sem precedentes. Descreva sua cena em palavras, adicione imagens de referência para estilo, inclua filmagens de amostra para consistência ou sincronize com áudio — a IA cuida de tudo em uma única passagem. Esta abordagem multimodal torna o Seedance 2.0 o gerador de vídeo de IA mais flexível disponível gratuitamente online."
+      },
+      {
+        "title": "Saída de Nível Profissional para Cinema e Publicidade",
+        "text": "Gere vídeos multi-shot de alta qualidade de 15 segundos com áudio de canal duplo. O Seedance 2.0 se destaca em movimentos complexos, segue leis físicas e oferece controle de nível de diretor sobre performance, iluminação, sombra e movimento de câmera. Projetado para produção de cinema, publicidade, e-commerce e jogos. O modelo produz saídas com qualidade de Hollywood adequadas para redes sociais, anúncios, storyboards e prévias de conceito. Se você precisa de uma vitrine de produto, animação de personagem ou cena cinematográfica, o gerador de vídeo de IA entrega resultados profissionais sem equipamentos de produção ou equipes caras."
+      },
+      {
+        "title": "Acesso Online Gratuito para Todos os Criadores",
+        "text": "O Toolaze oferece geração de vídeo de IA gratuita com o Seedance 2.0 online. Sem cadastro, sem cartão de crédito, sem limites de uso para começar. Funciona inteiramente no seu navegador — sem instalação de software. Crie vídeos 1080p a partir de texto, imagens, vídeo e áudio em segundos. Baixe e use seus vídeos gerados por IA em qualquer lugar. Perfeito para criadores de conteúdo, profissionais de marketing, cineastas e qualquer pessoa que precise prototipar ideias de vídeo rapidamente. O gerador de vídeo de IA gratuito está pronto quando você estiver."
+      }
+    ]
+  },
+  "features": {
+    "title": "Recursos do Gerador de Vídeo de IA",
+    "items": [
+      {
+        "icon": "🎬",
+        "iconType": "multimodal",
+        "title": "Entrada Multimodal",
+        "desc": "Texto, imagem (até 9), vídeo (até 3), áudio (até 3) — combine quaisquer entradas em uma geração."
+      },
+      {
+        "icon": "🔊",
+        "iconType": "audio",
+        "title": "Vídeo + Áudio",
+        "desc": "Geração conjunta unificada de áudio e vídeo. Obtenha vídeos de 15 segundos com áudio de canal duplo em uma única passagem."
+      },
+      {
+        "icon": "🎥",
+        "iconType": "quality",
+        "title": "Qualidade 1080p",
+        "desc": "Saída multi-shot com qualidade de Hollywood com iluminação, sombras e movimentos de câmera cinematográficos adequados."
+      },
+      {
+        "icon": "🎛️",
+        "iconType": "control",
+        "title": "Controle de Nível de Diretor",
+        "desc": "Controle refinado sobre performance, iluminação, sombra e movimento de câmera para fluxos de trabalho profissionais."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Grátis Online",
+        "desc": "Sem necessidade de cadastro. Comece a criar vídeos de IA imediatamente com custo zero."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Geração Rápida",
+        "desc": "Obtenha seu vídeo 1080p em segundos. Sem filas longas — ideal para iteração rápida e prototipagem."
+      }
+    ]
+  },
+  "performanceMetrics": {
+    "title": "Especificações do Gerador de Vídeo de IA",
+    "metrics": [
+      {
+        "label": "Entrada de Texto",
+        "value": "Prompts de linguagem natural"
+      },
+      {
+        "label": "Entrada de Imagem",
+        "value": "Até 9 imagens de referência"
+      },
+      {
+        "label": "Entrada de Vídeo",
+        "value": "Até 3 clipes de vídeo"
+      },
+      {
+        "label": "Entrada de Áudio",
+        "value": "Até 3 clipes de áudio"
+      },
+      {
+        "label": "Saída",
+        "value": "Vídeo 1080p de 15 segundos + áudio de canal duplo"
+      },
+      {
+        "label": "Melhor Para",
+        "value": "Redes sociais, anúncios, cinema, e-commerce, jogos"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Como Usar o Gerador de Vídeo de IA?",
+    "steps": [
+      {
+        "title": "Prepare Suas Entradas",
+        "desc": "Reúna prompts de texto, imagens, clipes de vídeo ou áudio. Você pode usar qualquer combinação — apenas texto, imagem + texto ou entrada multimodal completa."
+      },
+      {
+        "title": "Carregue no Seedance 2.0",
+        "desc": "Adicione suas entradas multimodais à interface online gratuita. Descreva sua cena, adicione imagens de referência ou inclua filmagens de amostra."
+      },
+      {
+        "title": "Gerar e Baixar",
+        "desc": "Obtenha seu vídeo 1080p com áudio em segundos. Sem necessidade de registro. Use para redes sociais, anúncios ou edição posterior."
+      }
+    ]
+  },
+  "comparison": {
+    "title": "Por que escolher o Gerador de Vídeo de IA Toolaze?",
+    "toolaze": "Toolaze 💎",
+    "others": "Outras Ferramentas",
+    "vs": "VS",
+    "smartChoice": "Escolha Inteligente",
+    "otherTools": "Outras Ferramentas",
+    "toolazeFeatures": "Multimodal (texto, imagem, vídeo, áudio), 1080p + áudio, Seedance 2.0, Grátis online, Sem cadastro",
+    "othersFeatures": "Apenas texto, Resolução mais baixa, Apenas vídeo, Planos pagos, Registro obrigatório"
+  },
+  "scenesTitle": "Casos de Uso",
+  "scenes": [
+    {
+      "title": "Criadores de Conteúdo",
+      "icon": "📱",
+      "desc": "Crie vídeos curtos para TikTok, Instagram Reels e YouTube Shorts. Combine texto e imagens para uma marca consistente. Gere conteúdo envolvente a partir de prompts em minutos. Teste vários conceitos antes de investir na produção completa. Perfeito para criadores que precisam postar consistentemente sem uma equipe de vídeo."
+    },
+    {
+      "title": "Equipes de Marketing",
+      "icon": "📢",
+      "desc": "Gere criativos de anúncios e vídeos de produtos. Prototipagem rápida com entradas multimodais — adicione imagens da marca, filmagens de amostra ou narração. Crie variações de teste A/B rapidamente. Apresente ideias aos clientes com vídeo real em vez de storyboards. Reduza os custos de produção enquanto acelera o processo criativo."
+    },
+    {
+      "title": "Estúdios de Cinema e Jogos",
+      "icon": "🎮",
+      "desc": "Produza storyboards e vídeos de conceito para reuniões de apresentação e pré-produção. Controle de nível de diretor para fluxos de trabalho profissionais. Visualize roteiros com movimento e iluminação. Comunique a visão a diretores e produtores. O gerador de vídeo de IA atua como uma ferramenta de visualização rápida para todo o pipeline de produção."
+    }
+  ],
+  "rating": {
+    "title": "Confiado por Milhares de Criadores",
+    "rating": "4.9/5 DE MAIS DE 10 MIL CRIADORES",
+    "text": "Junte-se a milhares que confiam no Toolaze para geração de vídeo de IA gratuita com o Seedance 2.0. Sem registro. Crie vídeos 1080p a partir de texto, imagens, vídeo e áudio online. Saída com qualidade de Hollywood em segundos."
+  },
+  "moreTools": "Mais Ferramentas Seedance 2.0",
+  "faqTitle": "Perguntas Frequentes",
+  "faq": [
+    {
+      "q": "Qual é o melhor gerador de vídeo de IA gratuito?",
+      "a": "O Seedance 2.0 está entre os principais modelos de vídeo de IA em 2026. O Toolaze oferece acesso gratuito online com suporte para entradas de texto, imagem, vídeo e áudio. Sem necessidade de cadastro. Gere vídeos de qualidade de Hollywood em 1080p com controle de nível de diretor. Outras opções fortes incluem Sora 2 e Runway — compare com base em suas necessidades de resolução, tipos de entrada e nível de controle. As capacidades multimodais do Seedance 2.0 o destacam para criadores que desejam flexibilidade máxima."
+    },
+    {
+      "q": "O Seedance 2.0 é melhor que o Sora 2?",
+      "a": "Forças diferentes. Sora 2: precisão física, realismo, sincronização de áudio, \"personagens\" para inserir pessoas reais — via app Sora. Seedance 2.0: entrada multimodal (texto + 9 imagens + 3 clipes de vídeo/áudio), 1080p, controle de nível de diretor — grátis no Toolaze. Escolha o Sora 2 para realismo; Seedance 2.0 para flexibilidade multimodal e acesso gratuito."
+    },
+    {
+      "q": "Posso usar o gerador de vídeo de IA sem me cadastrar?",
+      "a": "Sim! O Toolaze oferece geração de vídeo de IA gratuita com o Seedance 2.0 online. Sem necessidade de registro ou cadastro. Comece a criar vídeos imediatamente. Insira seus prompts, carregue imagens ou outras entradas e gere vídeos 1080p em segundos. Sem cartão de crédito, sem limites de uso para começar. O plano gratuito é suficiente para a maioria dos criadores."
+    },
+    {
+      "q": "Quais entradas o Seedance 2.0 suporta?",
+      "a": "O Seedance 2.0 suporta quatro tipos de entrada: texto (prompts de linguagem natural), imagens (até 9), clipes de vídeo (até 3) e clipes de áudio (até 3). Combine qualquer um destes com instruções em linguagem natural. Use apenas texto para cenas conceituais, adicione imagens para referência de estilo, inclua vídeo para consistência ou sincronize com áudio. A arquitetura multimodal lida com todas as combinações em uma única geração."
+    },
+    {
+      "q": "O gerador de vídeo de IA também cria áudio?",
+      "a": "Sim. O Seedance 2.0 usa uma arquitetura de geração conjunta unificada de áudio e vídeo. Ele gera vídeos de 15 segundos com áudio de canal duplo simultaneamente. Você não precisa de ferramentas separadas para vídeo e som — ambos são produzidos em uma única passagem. Adicione clipes de áudio como referência para ter ainda mais controle sobre a saída final."
+    },
+    {
+      "q": "Qual a duração dos vídeos gerados por IA?",
+      "a": "O Seedance 2.0 gera vídeos multi-shot de alta qualidade de 15 segundos por geração. Esta duração é ideal para redes sociais (TikTok, Reels, Shorts), anúncios e prévias de conceito. Para conteúdo mais longo, crie vários clipes de 15 segundos e combine-os em um software de edição de vídeo. O modelo otimiza para qualidade dentro desta duração."
+    },
+    {
+      "q": "O gerador de vídeo de IA é gratuito para uso comercial?",
+      "a": "O Toolaze oferece geração de vídeo de IA gratuita com o Seedance 2.0. Verifique nossos termos de serviço para direitos de uso comercial. O plano gratuito permite que você crie e baixe vídeos. Para licenciamento comercial ou de alto volume, revise nossos preços e termos. A maioria dos criadores pode começar e testar a ferramenta sem custo."
+    }
+  ]
+}

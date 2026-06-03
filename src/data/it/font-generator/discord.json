@@ -1,0 +1,181 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Generatore di Font per Discord (Gratis, Copia e Incolla e Senza Pubblicità) - Toolaze",
+    "description": "Come generare font per Discord? 1. Digita il tuo testo 2. Seleziona lo stile Discord 3. Copia e incolla. Crea bellissimi testi Discord per Instagram, Facebook e social media. Gratis e Privato."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Generatore di Font per Discord",
+    "desc": "Genera bellissimi font per Discord online gratuitamente. Digita semplicemente il tuo testo qui sotto per creare eleganti testi Discord che puoi copiare e incollare ovunque."
+  },
+  "intro": {
+    "title": "Perché usare un generatore di font per Discord?",
+    "content": [
+      {
+        "title": "Cos'è un font per Discord?",
+        "text": "I font per Discord sono stili di testo basati su Unicode specificamente ottimizzati per l'interfaccia di chat di Discord. Questi font utilizzano caratteri Unicode che vengono visualizzati correttamente nei nomi dei server Discord, nei titoli dei canali, nei nomi dei ruoli e nei messaggi di chat. I font per Discord aiutano il tuo server a distinguersi, rendendo la tua community più coinvolgente e il tuo branding più memorabile. Sono perfetti per le community di gaming, gli streamer e le community online che vogliono creare contenuti Discord unici e accattivanti. Per font di altre piattaforme, prova il nostro <a href=\"/it/font-generator/instagram\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">generatore di font per Instagram</a>."
+      },
+      {
+        "title": "Perché generare testo per Discord online?",
+        "text": "La formattazione del testo nativa di Discord è limitata al markdown di base e trovare font che funzionino in Discord può essere impegnativo. Il nostro strumento per testi Discord fornisce accesso istantaneo a molteplici stili di font Unicode che sono pienamente compatibili con la piattaforma di Discord. Che tu stia dando un nome al tuo server Discord, creando titoli di canali o progettando nomi di ruoli, il nostro strumento trasforma istantaneamente qualsiasi testo in font compatibili con Discord, assicurando che la tua community si distingua e che il tuo testo venga visualizzato correttamente in tutte le funzionalità di Discord. Esplora di più con il nostro <a href=\"/it/font-generator\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">generatore di font</a>."
+      }
+    ]
+  },
+  "features": {
+    "title": "Potenti funzionalità per i font di Discord",
+    "items": [
+      {
+        "icon": "💬",
+        "iconType": "quality",
+        "title": "Stili compatibili con Discord",
+        "desc": "Genera font che vengono visualizzati correttamente nei nomi dei server, nei canali e nei messaggi di chat di Discord."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Elaborazione locale",
+        "desc": "La generazione dei font avviene interamente nel tuo browser: il tuo testo rimane sul tuo dispositivo."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Testo Discord istantaneo",
+        "desc": "Trasforma istantaneamente il tuo testo in font compatibili con Discord con l'anteprima dal vivo."
+      },
+      {
+        "icon": "📋",
+        "iconType": "batch",
+        "title": "Copia per Discord",
+        "desc": "Copia immediatamente il tuo testo Discord e incollalo nei nomi dei server, nei canali o nella chat."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Font Discord gratuiti",
+        "desc": "Generazione illimitata di font Discord completamente gratuita: nessun costo, nessuna funzione premium, nessuna pubblicità."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "Nessuna mod di Discord",
+        "desc": "Funziona interamente nel tuo browser: non sono necessarie modifiche a Discord o installazioni di bot."
+      }
+    ]
+  },
+  "specs": {
+    "engine": "Rendering dei font nativo del browser - Elaborazione lato client",
+    "limit": "Lunghezza del testo illimitata - Nessun limite di caratteri",
+    "logic": "Anteprima in tempo reale (applicazione istantanea dello stile)",
+    "privacy": "100% lato client (elaborazione locale nel browser)"
+  },
+  "performanceMetrics": {
+    "title": "Specifiche tecniche",
+    "metrics": [
+      {
+        "label": "Stile del font",
+        "value": "Discord (Stile distintivo)"
+      },
+      {
+        "label": "Lunghezza del testo",
+        "value": "Caratteri illimitati"
+      },
+      {
+        "label": "Velocità di elaborazione",
+        "value": "Istantanea (Anteprima in tempo reale)"
+      },
+      {
+        "label": "Formato di output",
+        "value": "Testo Unicode (Pronto per copia e incolla)"
+      },
+      {
+        "label": "Supporto piattaforma",
+        "value": "Instagram, Facebook, Twitter, TikTok, Discord e altro"
+      },
+      {
+        "label": "Luogo di elaborazione",
+        "value": "100% lato client (JavaScript del browser)"
+      },
+      {
+        "label": "Privacy",
+        "value": "Nessun caricamento sul server, elaborazione locale completa"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Come generare font per Discord",
+    "steps": [
+      {
+        "title": "Digita il tuo testo",
+        "desc": "Inserisci il testo che vuoi convertire nello stile compatibile con Discord nel campo di input qui sopra."
+      },
+      {
+        "title": "Scegli lo stile Discord",
+        "desc": "Seleziona tra gli stili di font compatibili con Discord e visualizza l'anteprima di come apparirà il tuo testo in Discord."
+      },
+      {
+        "title": "Copia il testo Discord",
+        "desc": "Fai clic su copia per ottenere il tuo testo Discord, quindi incollalo nei nomi dei server, nei titoli dei canali o nella chat di Discord."
+      }
+    ]
+  },
+  "comparison": {
+    "toolaze": "Generazione illimitata di testo Discord, stili compatibili con Discord, anteprima in tempo reale, elaborazione lato client, nessun limite, privacy totale",
+    "others": "Restrizioni sul testo, font Discord limitati, elaborazione lenta, caricamenti su cloud, rischi per la privacy, filigrane, funzioni a pagamento"
+  },
+  "scenes": [
+    {
+      "title": "Community di gaming",
+      "icon": "🎮",
+      "desc": "Crea font Discord per nomi di server, titoli di canali e nomi di ruoli. Fai risaltare la tua community di gaming con font compatibili con Discord unici e leggibili."
+    },
+    {
+      "title": "Streamer e creatori di contenuti",
+      "icon": "📺",
+      "desc": "Genera testo Discord per overlay di streaming, comandi di chat e branding della community. Assicurati che il tuo testo venga visualizzato correttamente nell'interfaccia di chat di Discord."
+    },
+    {
+      "title": "Community online",
+      "icon": "💬",
+      "desc": "Usa i font di Discord per gli annunci della community, le promozioni di eventi e le comunicazioni con i membri. Crea testi accattivanti e coinvolgenti per il tuo server Discord."
+    }
+  ],
+  "rating": {
+    "text": "\"Il miglior generatore di font per Discord che abbia mai trovato. Risultati istantanei e funziona perfettamente su Instagram!\" - Unisciti a migliaia di utenti che si affidano a Toolaze per la generazione di bellissimi testi per Discord."
+  },
+  "faq": [
+    {
+      "q": "I font per Discord funzionano davvero su Discord?",
+      "a": "Sì! Il nostro strumento crea testo utilizzando caratteri Unicode che vengono visualizzati correttamente nell'interfaccia di chat di Discord. Basta copiare e incollare in qualsiasi canale Discord, nome del server o campo del nome utente."
+    },
+    {
+      "q": "Posso usare i font di Discord nei nomi dei server?",
+      "a": "Sì! I font di Discord funzionano nei nomi dei server, nei nomi dei canali e nei nomi dei ruoli. Aiutano il tuo server Discord a distinguersi con un testo unico e accattivante."
+    },
+    {
+      "q": "I font di Discord funzioneranno nei bot di Discord?",
+      "a": "Sì, i bot di Discord possono inviare messaggi con i font di Discord. I caratteri Unicode vengono visualizzati correttamente nei messaggi dei bot, negli embed e negli annunci."
+    },
+    {
+      "q": "I font di Discord sono leggibili nella modalità scura di Discord?",
+      "a": "Sì! I font di Discord funzionano sia nella modalità chiara che in quella scura. I caratteri Unicode si adattano automaticamente alle impostazioni del tema di Discord."
+    },
+    {
+      "q": "Posso usare i font di Discord per Discord Nitro?",
+      "a": "Sì, i font di Discord funzionano indipendentemente dal fatto che tu abbia Nitro o meno. Utilizzano caratteri Unicode standard che funzionano per tutti gli utenti di Discord. Per font di altre piattaforme, prova il nostro <a href=\"/it/font-generator/Instagram\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">generatore di font per Instagram</a> o esplora la nostra collezione di generatori di font."
+    }
+  ],
+  "compare": {
+    "toolaze": "Generazione illimitata di testo Discord, molteplici stili eleganti, anteprima istantanea in tempo reale, architettura locale-first, nessun limite di caratteri, protezione completa della privacy, 100% gratis",
+    "others": "Limiti di caratteri, opzioni di stile limitate, elaborazione lenta del server, caricamenti su cloud richiesti, problemi di privacy, filigrane o pubblicità, funzioni premium a pagamento"
+  }
+}

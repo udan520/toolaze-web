@@ -1,0 +1,126 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Convertidor de Imágenes Gratis - Conversión por Lotes en Línea | Toolaze",
+    "description": "Convierte imágenes entre formatos JPG, PNG y WebP. Conversión por lotes de hasta 100 imágenes. Rápido, privado, 100% gratis. Sin registro."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Convertidor de <span class=\"text-gradient\">Imágenes Gratis</span>",
+    "desc": "Convierte imágenes entre formatos JPG, PNG y WebP. Conversión por lotes de hasta 100 imágenes. Rápido, privado, 100% gratis. Sin registro."
+  },
+  "intro": {
+    "title": "¿Por qué usar el Convertidor de Imágenes de Toolaze?",
+    "content": [
+      {
+        "title": "Convierte imágenes sin pérdida de calidad",
+        "text": "Convierte imágenes entre formatos JPG, PNG y WebP al instante. Nuestro convertidor basado en el navegador procesa las imágenes localmente, garantizando total privacidad y una conversión rápida. Perfecto para desarrolladores web, diseñadores y creadores de contenido."
+      }
+    ]
+  },
+  "features": {
+    "title": "Potentes funciones de conversión de imágenes",
+    "items": [
+      {
+        "icon": "📂",
+        "iconType": "batch",
+        "title": "Procesamiento por lotes",
+        "desc": "Convierte hasta 100 imágenes a la vez"
+      },
+      {
+        "icon": "🔄",
+        "iconType": "formats",
+        "title": "Múltiples formatos",
+        "desc": "Soporte para JPG, PNG, WebP y HEIC"
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "100% Gratis",
+        "desc": "Sin anuncios."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "¿Cómo usar Toolaze?",
+    "steps": [
+      {
+        "title": "Sube imágenes",
+        "desc": "Arrastra y suelta hasta 100 imágenes o carpetas. Soporta formatos JPG, PNG, WebP, BMP y HEIC."
+      },
+      {
+        "title": "Elige el formato",
+        "desc": "Selecciona tu formato de destino: JPG, PNG o WebP. Nuestro convertidor mantiene la calidad durante la conversión."
+      },
+      {
+        "title": "Descarga los resultados",
+        "desc": "Descarga imágenes convertidas individualmente o todas a la vez como un archivo ZIP. Rápido y eficiente."
+      }
+    ]
+  },
+  "comparison": {
+    "title": "¿Por qué elegir Toolaze?",
+    "toolaze": "Toolaze 💎",
+    "others": "Otras herramientas",
+    "vs": "VS",
+    "smartChoice": "Elección inteligente",
+    "otherTools": "Otras herramientas",
+    "toolazeFeatures": "Lotes de hasta 100 imágenes, Soporte de múltiples formatos, Calidad preservada, 100% privado y gratis, Sin registro",
+    "othersFeatures": "Tamaño de lote limitado, Restricciones de formato, Pérdida de calidad, Problemas de privacidad, Requiere registro"
+  },
+  "scenesTitle": "Casos de uso",
+  "scenes": [
+    {
+      "title": "Para desarrolladores web",
+      "icon": "💻",
+      "desc": "Convierte imágenes a WebP para un mejor rendimiento. Optimiza formatos para cargas de página más rápidas y un mejor SEO."
+    },
+    {
+      "title": "Para diseñadores",
+      "icon": "🎨",
+      "desc": "Convierte entre formatos para diferentes necesidades de diseño. Preserva la transparencia con PNG o optimiza con JPG."
+    },
+    {
+      "title": "Para creadores de contenido",
+      "icon": "📱",
+      "desc": "Convierte imágenes por lotes para redes sociales y blogs. Asegura la compatibilidad en todas las plataformas."
+    }
+  ],
+  "rating": {
+    "title": "Con la confianza de miles de creadores",
+    "rating": "4.9/5 DE MÁS DE 10K CREADORES",
+    "text": "Únete a miles de usuarios satisfechos que confían en Toolaze para una conversión de imágenes rápida, segura y gratuita. Sin registro, procesamiento 100% privado."
+  },
+  "faqTitle": "Preguntas frecuentes",
+  "faq": [
+    {
+      "q": "¿Qué formatos de imagen son compatibles?",
+      "a": "Toolaze admite la conversión entre formatos JPG, PNG y WebP. Puedes subir imágenes en formato JPG, PNG, WebP, BMP o HEIC."
+    },
+    {
+      "q": "¿Es esta herramienta realmente gratuita?",
+      "a": "¡Sí! Toolaze es 100% gratis, sin anuncios, sin registro y sin cargos ocultos. Todo el procesamiento ocurre en tu navegador."
+    },
+    {
+      "q": "¿Puedo convertir más de 100 imágenes?",
+      "a": "El tamaño máximo del lote es de 100 archivos por sesión. Para lotes más grandes, simplemente procésalos en varias sesiones."
+    },
+    {
+      "q": "¿Se suben mis imágenes a un servidor?",
+      "a": "¡No! Toda la conversión de imágenes ocurre localmente en tu navegador usando JavaScript. Tus imágenes nunca salen de tu dispositivo, garantizando total privacidad."
+    },
+    {
+      "q": "¿Se preservará la calidad durante la conversión?",
+      "a": "La preservación de la calidad depende del formato de destino. PNG es sin pérdida, mientras que JPG y WebP usan compresión con pérdida pero mantienen una alta calidad visual."
+    }
+  ],
+  "moreTools": "Más herramientas de conversión de imágenes"
+}

@@ -1,0 +1,181 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Gerador de Fontes Elegantes (Grátis, Copiar e Colar e Sem Anúncios) - Toolaze",
+    "description": "Como gerar fontes elegantes? 1. Digite seu texto 2. Selecione o estilo elegante 3. Copie e cole. Crie textos bonitos e elegantes para Instagram, Facebook e redes sociais. Grátis e Privado."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Gerador de Fontes Elegantes",
+    "desc": "Gere fontes elegantes e bonitas online gratuitamente. Basta digitar seu texto abaixo para criar textos sofisticados que você pode copiar e colar em qualquer lugar."
+  },
+  "intro": {
+    "title": "Por que usar um gerador de fontes elegantes?",
+    "content": [
+      {
+        "title": "O que é uma Fonte Elegante?",
+        "text": "Fontes elegantes abrangem uma ampla gama de tipos de letra decorativos e sofisticados que adicionam requinte e interesse visual ao texto. Esses estilos refinados incluem caracteres de traço duplo, letras circuladas, texto em quadrados e outras variações ornamentais de Unicode. Fontes elegantes são caracterizadas por sua aparência sofisticada, tornando-as perfeitas para marcas de luxo, convites formais, embalagens de produtos de alto padrão e projetos que exigem uma estética premium e exclusiva. Para estilos de escrita mais elegantes, experimente nosso <a href=\"/pt/font-generator/cursive\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">gerador de fontes cursivas</a> ou gerador de fontes de caligrafia."
+      },
+      {
+        "title": "Por que gerar texto elegante online?",
+        "text": "Criar textos decorativos elegantes tradicionalmente exige habilidades avançadas de tipografia e softwares de design caros. Nosso gerador de fontes elegantes minúsculas para copiar e colar oferece acesso instantâneo a múltiplos estilos Unicode sofisticados, incluindo variações de traço duplo, circuladas, em quadrados e entre parênteses. Esteja você criando logotipos de marcas de luxo, convites para eventos formais ou desenvolvendo materiais de marketing premium, nossa ferramenta transforma qualquer texto em um estilo sofisticado instantaneamente — adicionando aquele toque especial de elegância e exclusividade aos seus projetos. Explore todas as nossas ferramentas de fontes com nosso <a href=\"/pt/font-generator\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">gerador de fontes</a>."
+      }
+    ]
+  },
+  "features": {
+    "title": "Recursos Poderosos de Fontes Elegantes",
+    "items": [
+      {
+        "icon": "💎",
+        "iconType": "quality",
+        "title": "Estilos Unicode Decorativos",
+        "desc": "Acesse fontes elegantes, incluindo variações de traço duplo, circuladas, em quadrados e entre parênteses."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Privacidade Total de Dados",
+        "desc": "A geração da fonte ocorre inteiramente no seu navegador — seu texto nunca sai do seu dispositivo, garantindo privacidade total."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Aplicação Instantânea de Estilo",
+        "desc": "Veja seu texto se transformar em um estilo elegante imediatamente com a visualização ao vivo atualizada enquanto você digita."
+      },
+      {
+        "icon": "📋",
+        "iconType": "batch",
+        "title": "Cópia Sem Esforço",
+        "desc": "Copie seu texto elegante com um clique e cole-o em marcas de luxo, convites ou materiais premium."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Uso Gratuito e Ilimitado",
+        "desc": "Gere fontes elegantes ilimitadas sem qualquer custo — sem assinaturas, sem níveis premium, sem anúncios."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "Nenhuma Configuração Necessária",
+        "desc": "Funciona inteiramente no seu navegador — sem necessidade de instalação de software ou download de arquivos de fonte."
+      }
+    ]
+  },
+  "specs": {
+    "engine": "Renderização de Fonte Nativa do Navegador - Processamento no Lado do Cliente",
+    "limit": "Comprimento de Texto Ilimitado - Sem Limites de Caracteres",
+    "logic": "Visualização em Tempo Real (Aplicação Instantânea de Estilo)",
+    "privacy": "100% no Lado do Cliente (Processamento Local no Navegador)"
+  },
+  "performanceMetrics": {
+    "title": "Especificações Técnicas",
+    "metrics": [
+      {
+        "label": "Estilo de Fonte",
+        "value": "Elegante (Estilo Distintivo)"
+      },
+      {
+        "label": "Comprimento do Texto",
+        "value": "Caracteres ilimitados"
+      },
+      {
+        "label": "Velocidade de Processamento",
+        "value": "Instantânea (Visualização em tempo real)"
+      },
+      {
+        "label": "Formato de Saída",
+        "value": "Texto Unicode (Pronto para copiar e colar)"
+      },
+      {
+        "label": "Suporte de Plataforma",
+        "value": "Instagram, Facebook, Twitter, TikTok, Discord e mais"
+      },
+      {
+        "label": "Local de Processamento",
+        "value": "100% no Lado do Cliente (JavaScript do Navegador)"
+      },
+      {
+        "label": "Privacidade",
+        "value": "Sem uploads para o servidor, processamento local completo"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Como Gerar Fontes Elegantes",
+    "steps": [
+      {
+        "title": "Digite Seu Texto",
+        "desc": "Insira o texto que deseja transformar em um estilo elegante e sofisticado no campo de entrada acima."
+      },
+      {
+        "title": "Selecione o Estilo Elegante",
+        "desc": "Escolha entre estilos de fontes decorativas elegantes, incluindo variações de traço duplo, circuladas e em quadrados. Visualize cada estilo para ver o efeito sofisticado."
+      },
+      {
+        "title": "Copie o Texto Elegante",
+        "desc": "Clique no botão de copiar para copiar seu texto elegante e, em seguida, cole-o em marcas de luxo, convites formais ou materiais premium."
+      }
+    ]
+  },
+  "comparison": {
+    "toolaze": "Geração ilimitada de texto elegante, Múltiplos estilos decorativos, Visualização em tempo real, Processamento no navegador, Sem limites, Privacidade total, 100% grátis",
+    "others": "Restrições de texto, Opções elegantes limitadas, Servidores lentos, Uploads obrigatórios, Riscos de privacidade, Marcas d'água, Recursos pagos"
+  },
+  "scenes": [
+    {
+      "title": "Marcas de Luxo",
+      "icon": "💎",
+      "desc": "Crie fontes elegantes para embalagens de produtos de alto padrão, logotipos de marcas de luxo e materiais de marketing premium. Adicione sofisticação e exclusividade à identidade da sua marca."
+    },
+    {
+      "title": "Planejadores de Eventos",
+      "icon": "🎊",
+      "desc": "Gere textos elegantes para convites formais, programas de casamento e sinalização de eventos sofisticados. Perfeito para galas, eventos corporativos e celebrações elegantes."
+    },
+    {
+      "title": "Designers de Moda",
+      "icon": "👗",
+      "desc": "Use fontes elegantes para nomes de marcas de moda, gráficos de desfiles e conteúdo editorial. Crie uma estética refinada e estilosa que combine com a sensibilidade da alta costura."
+    }
+  ],
+  "rating": {
+    "text": "\"O melhor gerador de fontes elegantes que encontrei. Resultados instantâneos e funciona perfeitamente no Instagram!\" - Junte-se a milhares de usuários que confiam no Toolaze para a geração de textos elegantes e bonitos."
+  },
+  "faq": [
+    {
+      "q": "O que torna uma fonte 'elegante'?",
+      "a": "Fontes elegantes geralmente possuem elementos decorativos, curvas sofisticadas e um estilo refinado. Nossas opções incluem traço duplo, circuladas e outros estilos Unicode decorativos que criam uma aparência sofisticada e refinada."
+    },
+    {
+      "q": "As fontes elegantes são adequadas para marcas de luxo?",
+      "a": "Sim! Fontes elegantes são perfeitas para embalagens de produtos de alto padrão, logotipos de marcas de luxo e materiais de marketing premium. Elas transmitem sofisticação e exclusividade."
+    },
+    {
+      "q": "Posso usar fontes elegantes em convites formais?",
+      "a": "Com certeza! Fontes elegantes são ideais para convites de casamento, programas de eventos formais e papelaria sofisticada. Elas adicionam aquele toque especial de requinte a ocasiões importantes."
+    },
+    {
+      "q": "As fontes elegantes funcionarão em materiais impressos?",
+      "a": "Sim, fontes Unicode elegantes funcionam bem tanto em materiais digitais quanto impressos. São perfeitas para cartões de visita, papéis timbrados e materiais impressos de alta qualidade."
+    },
+    {
+      "q": "As fontes elegantes são legíveis em dispositivos móveis?",
+      "a": "A maioria das fontes elegantes é exibida corretamente em dispositivos móveis modernos. No entanto, alguns estilos muito decorativos podem ser menos legíveis em tamanhos pequenos, por isso sempre visualize no seu dispositivo de destino. Para estilos elegantes mais legíveis, experimente nosso <a href=\"/pt/font-generator/cursive\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">gerador de fontes cursivas</a> ou explore nossa coleção de geradores de fontes."
+    }
+  ],
+  "compare": {
+    "toolaze": "Geração ilimitada de texto elegante, Múltiplos estilos sofisticados, Visualização instantânea em tempo real, Arquitetura focada no local, Sem limites de caracteres, Proteção total de privacidade, 100% grátis",
+    "others": "Limites de caracteres, Opções de estilo limitadas, Processamento lento no servidor, Uploads na nuvem obrigatórios, Preocupações com privacidade, Marcas d'água ou anúncios, Recursos premium pagos"
+  }
+}

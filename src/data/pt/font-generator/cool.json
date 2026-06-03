@@ -1,0 +1,181 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Gerador de Fontes Cool (Grátis, Copiar e Colar e Sem Anúncios) - Toolaze",
+    "description": "Como gerar fontes cool? 1. Digite seu texto 2. Selecione o estilo cool 3. Copie e cole. Crie textos cool bonitos para Instagram, Facebook e redes sociais. Grátis e Privado."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Gerador de Fontes Cool",
+    "desc": "Gere fontes cool bonitas online gratuitamente. Basta digitar seu texto abaixo para criar textos cool elegantes que você pode copiar e colar em qualquer lugar."
+  },
+  "intro": {
+    "title": "Por que usar um Gerador de Fontes Cool?",
+    "content": [
+      {
+        "title": "O que é uma Fonte Cool?",
+        "text": "Fontes cool apresentam uma estética moderna e atual que atrai o público contemporâneo. Essas tipografias elegantes combinam estilos negrito, sem serifa e monoespaçados para criar aquele visual hip e urbano popular na cultura streetwear, startups de tecnologia e comunidades de jogos. Fontes cool são caracterizadas por sua sensação contemporânea, tornando-as perfeitas para marcas de streetwear, produtores musicais, empresas de tecnologia e projetos que precisam de uma estética moderna e inovadora. Para estilos mais ousados, experimente nosso <a href=\"/pt/font-generator/bold\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">gerador de fontes em negrito</a> ou gerador de fontes de tatuagem."
+      },
+      {
+        "title": "Por que gerar texto cool online?",
+        "text": "Criar textos cool e modernos exige estar atualizado com as tendências de design e ter acesso a ferramentas de tipografia moderna. Nosso gerador de texto cool oferece acesso instantâneo a estilos de fonte contemporâneos que capturam aquela vibe elegante e hip. Esteja você projetando roupas de streetwear, criando o branding de uma startup de tecnologia ou desenvolvendo conteúdo de jogos, nossa ferramenta transforma qualquer texto em um estilo cool moderno instantaneamente — perfeito para projetos que precisam dessa estética contemporânea e ousada. Explore mais estilos com nosso <a href=\"/pt/font-generator\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">gerador de fontes</a>."
+      }
+    ]
+  },
+  "features": {
+    "title": "Recursos Poderosos de Fontes Cool",
+    "items": [
+      {
+        "icon": "⭐",
+        "iconType": "quality",
+        "title": "Estilos de Fontes Modernas",
+        "desc": "Acesse fontes cool modernas, incluindo estilos negrito, sem serifa e monoespaçados para estéticas contemporâneas."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Processamento Local no Navegador",
+        "desc": "A geração de fontes acontece inteiramente no seu dispositivo — seu texto nunca é enviado para nenhum servidor."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Atualizações de Estilo em Tempo Real",
+        "desc": "Veja seu texto mudar para o estilo cool instantaneamente com a pré-visualização ao vivo enquanto você digita."
+      },
+      {
+        "icon": "📋",
+        "iconType": "batch",
+        "title": "Cópia Fácil",
+        "desc": "Copie seu texto cool rapidamente e cole-o em designs de streetwear, branding de tecnologia ou conteúdo de jogos."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Totalmente Grátis",
+        "desc": "Gere fontes cool ilimitadas gratuitamente — sem pagamentos, sem recursos premium, sem anúncios."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "Apenas no Navegador",
+        "desc": "Funciona inteiramente no seu navegador da web — sem software ou arquivos de fonte para baixar ou instalar."
+      }
+    ]
+  },
+  "specs": {
+    "engine": "Renderização de Fonte Nativa do Navegador - Processamento no Lado do Cliente",
+    "limit": "Comprimento de Texto Ilimitado - Sem Limites de Caracteres",
+    "logic": "Pré-visualização em Tempo Real (Aplicação Instantânea de Estilo)",
+    "privacy": "100% no Lado do Cliente (Processamento Local no Navegador)"
+  },
+  "performanceMetrics": {
+    "title": "Especificações Técnicas",
+    "metrics": [
+      {
+        "label": "Estilo de Fonte",
+        "value": "Cool (Estilo Distintivo)"
+      },
+      {
+        "label": "Comprimento do Texto",
+        "value": "Caracteres ilimitados"
+      },
+      {
+        "label": "Velocidade de Processamento",
+        "value": "Instantânea (Pré-visualização em tempo real)"
+      },
+      {
+        "label": "Formato de Saída",
+        "value": "Texto Unicode (Pronto para copiar e colar)"
+      },
+      {
+        "label": "Suporte de Plataforma",
+        "value": "Instagram, Facebook, Twitter, TikTok, Discord e mais"
+      },
+      {
+        "label": "Local de Processamento",
+        "value": "100% no Lado do Cliente (JavaScript do Navegador)"
+      },
+      {
+        "label": "Privacidade",
+        "value": "Sem uploads para o servidor, processamento local completo"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Como Gerar Fontes Cool",
+    "steps": [
+      {
+        "title": "Digite Seu Texto",
+        "desc": "Insira o texto que deseja transformar em um estilo cool moderno no campo de entrada acima."
+      },
+      {
+        "title": "Escolha o Estilo Cool",
+        "desc": "Navegue pelos estilos de fontes cool modernos e veja como seu texto fica em cada variação contemporânea."
+      },
+      {
+        "title": "Copie o Texto Cool",
+        "desc": "Clique no botão de copiar para copiar seu texto cool e, em seguida, cole-o em designs de streetwear, branding de tecnologia ou conteúdo de jogos."
+      }
+    ]
+  },
+  "comparison": {
+    "toolaze": "Geração ilimitada de texto cool, Estilos modernos e atuais, Pré-visualização em tempo real, Processamento no lado do cliente, Sem limites, Privacidade total",
+    "others": "Restrições de texto, Poucas opções cool, Processamento lento, Uploads na nuvem, Preocupações com privacidade, Marcas d'água, Planos pagos"
+  },
+  "scenes": [
+    {
+      "title": "Marcas de Streetwear",
+      "icon": "👟",
+      "desc": "Crie fontes cool para roupas de streetwear, designs de tênis e marcas de moda urbana. Gere textos modernos e atuais que capturam a estética da cultura de rua."
+    },
+    {
+      "title": "Produtores Musicais",
+      "icon": "🎵",
+      "desc": "Use fontes cool para capas de álbuns, títulos de faixas e gráficos de videoclipes. Adicione uma vibe contemporânea e hip ao seu branding musical com fontes cool estilosas."
+    },
+    {
+      "title": "Startups de Tecnologia",
+      "icon": "💻",
+      "desc": "Gere textos cool para nomes de aplicativos, lançamentos de produtos tecnológicos e branding de startups. Crie uma sensação moderna e inovadora com estilos de fonte elegantes e contemporâneos."
+    }
+  ],
+  "rating": {
+    "text": "\"O melhor gerador de fontes cool que já encontrei. Resultados instantâneos e funciona perfeitamente no Instagram!\" - Junte-se a milhares de usuários que confiam na Toolaze para a geração de textos cool bonitos."
+  },
+  "faq": [
+    {
+      "q": "O que torna uma fonte 'cool'?",
+      "a": "Fontes cool têm uma estética moderna e atual que atrai o público contemporâneo. Nosso gerador inclui estilos negrito, sem serifa e monoespaçados que criam aquele visual elegante e hip popular na cultura streetwear e tecnológica."
+    },
+    {
+      "q": "Fontes cool são boas para marcas de streetwear?",
+      "a": "Sim! Fontes cool são perfeitas para roupas de streetwear, designs de tênis e marcas de moda urbana. Elas capturam aquela estética contemporânea e ousada da cultura de rua."
+    },
+    {
+      "q": "Posso usar fontes cool para startups de tecnologia?",
+      "a": "Com certeza! Fontes cool funcionam muito bem para nomes de aplicativos, lançamentos de produtos tecnológicos e branding de startups. Elas criam uma sensação moderna e inovadora que as empresas de tecnologia adoram."
+    },
+    {
+      "q": "Fontes cool funcionarão em conteúdo de jogos?",
+      "a": "Sim! Fontes cool são populares em comunidades de jogos para nomes de clãs, branding de servidores e conteúdo de jogos. Elas adicionam aquela vibe contemporânea e competitiva de jogos."
+    },
+    {
+      "q": "Fontes cool são legíveis em todas as plataformas?",
+      "a": "Sim, fontes cool usam caracteres Unicode que são amplamente suportados. Elas são exibidas corretamente em redes sociais, plataformas de jogos e na maioria dos aplicativos modernos. Para estilos mais modernos, experimente nosso <a href=\"/pt/font-generator/bold\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">gerador de fontes em negrito</a> ou explore nossa coleção de geradores de fontes."
+    }
+  ],
+  "compare": {
+    "toolaze": "Geração ilimitada de texto cool, Múltiplos estilos elegantes, Pré-visualização instantânea em tempo real, Arquitetura local-first, Sem limites de caracteres, Proteção completa de privacidade, 100% grátis",
+    "others": "Limites de caracteres, Opções de estilo limitadas, Processamento lento no servidor, Uploads na nuvem necessários, Preocupações com privacidade, Marcas d'água ou anúncios, Recursos premium pagos"
+  }
+}

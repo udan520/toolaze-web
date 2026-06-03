@@ -1,0 +1,181 @@
+{
+  "in_menu": true,
+  "metadata": {
+    "title": "Gerador de Fonte Minecraft (Grátis, Copiar e Colar e Sem Anúncios) - Toolaze",
+    "description": "Como gerar fontes de minecraft? 1. Digite seu texto 2. Selecione o estilo minecraft 3. Copie e cole. Crie textos bonitos de minecraft para Instagram, Facebook e redes sociais. Grátis e Privado."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "comparison",
+    "scenes",
+    "rating",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Gerador de Fonte Minecraft",
+    "desc": "Gere fontes bonitas de minecraft online gratuitamente. Basta digitar seu texto abaixo para criar um texto elegante de minecraft que você pode copiar e colar em qualquer lugar."
+  },
+  "intro": {
+    "title": "Por que usar um Gerador de Fonte Minecraft?",
+    "content": [
+      {
+        "title": "O que é a Fonte Minecraft?",
+        "text": "As fontes de Minecraft apresentam aquela estética distinta, pixelizada e em blocos associada ao estilo visual icônico do Minecraft. Essas tipografias usam caracteres Unicode que criam aquele visual reconhecível do Minecraft com formas de letras quadradas e pixelizadas. As fontes de Minecraft são caracterizadas por sua aparência lúdica e em blocos, tornando-as perfeitas para criadores de conteúdo de Minecraft, streamers de jogos, proprietários de servidores e projetos que precisam dessa estética distinta do Minecraft. Para estilos de jogos semelhantes, confira nosso <a href=\"/pt/font-generator/3d\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">gerador de fonte 3D</a> ou gerador de fontes legais."
+      },
+      {
+        "title": "Por que gerar texto de Minecraft online?",
+        "text": "Criar texto no estilo Minecraft para miniaturas do YouTube, branding de servidores ou conteúdo de jogos normalmente requer software de design e instalação de fontes. Nosso gerador de texto de Minecraft oferece acesso instantâneo a estilos de texto pixelizados e em blocos que capturam aquela sensação icônica do Minecraft. Esteja você criando conteúdo para o YouTube, projetando sites de servidores ou desenvolvendo materiais com o tema Minecraft, nossa ferramenta transforma qualquer texto em um estilo Minecraft de aparência autêntica instantaneamente — trazendo essa estética de blocos e pixelizada para seus projetos. Explore mais com nosso <a href=\"/pt/font-generator\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">gerador de fontes</a>."
+      }
+    ]
+  },
+  "features": {
+    "title": "Recursos Poderosos de Fonte Minecraft",
+    "items": [
+      {
+        "icon": "⛏️",
+        "iconType": "quality",
+        "title": "Estilos Pixelizados em Blocos",
+        "desc": "Gere fontes no estilo Minecraft com aquela estética distinta, pixelizada e em blocos."
+      },
+      {
+        "icon": "🔒",
+        "iconType": "privacy",
+        "title": "Geração Privada",
+        "desc": "Toda a geração de fontes Minecraft acontece localmente — seu texto nunca sai do seu dispositivo."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Texto Minecraft Instantâneo",
+        "desc": "Transforme seu texto para o estilo Minecraft instantaneamente com visualização em tempo real mostrando efeitos de blocos."
+      },
+      {
+        "icon": "📋",
+        "iconType": "batch",
+        "title": "Copiar Texto Minecraft",
+        "desc": "Copie seu texto no estilo Minecraft instantaneamente e cole-o em miniaturas do YouTube, branding de servidores ou conteúdo de jogos."
+      },
+      {
+        "icon": "💎",
+        "iconType": "free",
+        "title": "Fontes Minecraft Grátis",
+        "desc": "Geração ilimitada de fontes Minecraft totalmente grátis — sem pagamentos, sem assinaturas, sem anúncios."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "Sem Mods Necessários",
+        "desc": "Funciona inteiramente no seu navegador — sem necessidade de mods do Minecraft ou instalações de fontes."
+      }
+    ]
+  },
+  "specs": {
+    "engine": "Renderização de Fonte Nativa do Navegador - Processamento no Lado do Cliente",
+    "limit": "Comprimento de Texto Ilimitado - Sem Limites de Caracteres",
+    "logic": "Visualização em Tempo Real (Aplicação de Estilo Instantânea)",
+    "privacy": "100% Lado do Cliente (Processamento Local no Navegador)"
+  },
+  "performanceMetrics": {
+    "title": "Especificações Técnicas",
+    "metrics": [
+      {
+        "label": "Estilo de Fonte",
+        "value": "Minecraft (Estilo Distinto)"
+      },
+      {
+        "label": "Comprimento do Texto",
+        "value": "Caracteres ilimitados"
+      },
+      {
+        "label": "Velocidade de Processamento",
+        "value": "Instantâneo (Visualização em tempo real)"
+      },
+      {
+        "label": "Formato de Saída",
+        "value": "Texto Unicode (Pronto para copiar e colar)"
+      },
+      {
+        "label": "Suporte de Plataforma",
+        "value": "Instagram, Facebook, Twitter, TikTok, Discord e mais"
+      },
+      {
+        "label": "Local de Processamento",
+        "value": "100% Lado do Cliente (JavaScript do Navegador)"
+      },
+      {
+        "label": "Privacidade",
+        "value": "Sem uploads para o servidor, processamento local completo"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Como Gerar Fontes Minecraft",
+    "steps": [
+      {
+        "title": "Digite Seu Texto",
+        "desc": "Insira o texto que deseja converter para o estilo Minecraft no campo de entrada acima."
+      },
+      {
+        "title": "Selecione o Estilo Minecraft",
+        "desc": "Escolha entre estilos de fonte Minecraft pixelizados e em blocos e visualize como seu texto fica com essa estética distinta do Minecraft."
+      },
+      {
+        "title": "Copie o Texto Minecraft",
+        "desc": "Clique em copiar para obter seu texto de Minecraft e, em seguida, cole-o em miniaturas do YouTube, branding de servidores ou conteúdo de jogos."
+      }
+    ]
+  },
+  "comparison": {
+    "toolaze": "Geração ilimitada de texto Minecraft, Estilos pixelizados em blocos, Visualização instantânea, Processamento local, Sem limites, Proteção total de privacidade, Grátis",
+    "others": "Limites de caracteres, Poucas opções de Minecraft, Atrasos no servidor, Uploads obrigatórios, Riscos de privacidade, Anúncios, Recursos premium"
+  },
+  "scenes": [
+    {
+      "title": "Criadores de Conteúdo de Minecraft",
+      "icon": "⛏️",
+      "desc": "Crie fontes no estilo Minecraft para miniaturas do YouTube, títulos de vídeos e branding de canais. Gere texto pixelizado e em blocos que combine com a estética do Minecraft."
+    },
+    {
+      "title": "Streamers de Jogos",
+      "icon": "🎮",
+      "desc": "Gere fontes Minecraft para sobreposições de stream, comandos de chat e conteúdo de jogos. Adicione aquele visual distinto do Minecraft aos seus gráficos de streaming."
+    },
+    {
+      "title": "Proprietários de Servidores Minecraft",
+      "icon": "🌐",
+      "desc": "Use fontes Minecraft para nomes de servidores, cabeçalhos de sites e branding de comunidades. Crie textos consistentes com o tema Minecraft em todos os materiais do seu servidor."
+    }
+  ],
+  "rating": {
+    "text": "\"O melhor gerador de fonte minecraft que encontrei. Resultados instantâneos e funciona perfeitamente no Instagram!\" - Junte-se a milhares de usuários que confiam no Toolaze para a geração de textos bonitos de minecraft."
+  },
+  "faq": [
+    {
+      "q": "Estas são fontes oficiais do Minecraft?",
+      "a": "Não, nosso gerador cria texto com uma estética pixelizada e em blocos inspirada no Minecraft usando caracteres Unicode. Estas não são fontes oficiais do Minecraft, mas capturam esse estilo distinto do Minecraft."
+    },
+    {
+      "q": "Posso usar fontes Minecraft no próprio Minecraft?",
+      "a": "Nosso texto gerado usa caracteres Unicode que podem ser usados no chat, placas e livros do Minecraft. No entanto, o Minecraft tem seu próprio sistema de fontes integrado, portanto, a aparência pode ser diferente da visualização do nosso gerador."
+    },
+    {
+      "q": "As fontes Minecraft são boas para conteúdo de jogos?",
+      "a": "Sim! As fontes Minecraft são perfeitas para miniaturas do YouTube, títulos de vídeos e branding de canais de jogos. Elas criam aquela estética reconhevível do Minecraft para o seu conteúdo."
+    },
+    {
+      "q": "As fontes Minecraft funcionarão em plataformas de streaming?",
+      "a": "Sim! As fontes Minecraft funcionam muito bem em sobreposições de stream, comandos de chat e conteúdo de jogos no Twitch, YouTube e outras plataformas de streaming."
+    },
+    {
+      "q": "Posso usar fontes Minecraft para branding de servidores?",
+      "a": "Com certeza! As fontes Minecraft são ideais para nomes de servidores, cabeçalhos de sites e branding de comunidades. Elas criam textos consistentes com o tema Minecraft em todos os materiais do seu servidor. Para estilos de jogos semelhantes, tente nosso <a href=\"/pt/font-generator/3D\" class=\"text-indigo-600 hover:text-purple-600 font-semibold underline decoration-2 underline-offset-2\">gerador de fonte 3D</a> ou navegue em nossas ferramentas de gerador de fontes."
+    }
+  ],
+  "compare": {
+    "toolaze": "Geração ilimitada de texto minecraft, Múltiplos estilos elegantes, Visualização instantânea em tempo real, Arquitetura focada no local, Sem limites de caracteres, Proteção total de privacidade, 100% grátis",
+    "others": "Limites de caracteres, Opções de estilo limitadas, Processamento lento no servidor, Uploads na nuvem necessários, Preocupações com privacidade, Marcas d'água ou anúncios, Recursos premium pagos"
+  }
+}
