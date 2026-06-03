@@ -17,7 +17,15 @@
     "seedance2": "Seedance 2.0",
     "kling3": "Kling 3.0",
     "aboutUs": "私たちについて",
-    "viewAllAiTools": "すべてのAIツールを表示"
+    "viewAllAiTools": "すべてのAIツールを表示",
+    "emojiMenu": {
+      "crying-copy-and-paste": "泣き顔絵文字のコピー＆ペースト",
+      "cross-copy-and-paste": "十字架の絵文字をコピー＆ペースト",
+      "adults-only-copy-and-paste": "18禁絵文字コピー＆ペースト",
+      "fire-copy-and-paste": "火の絵文字 コピー＆ペースト",
+      "birthday-copy-and-paste": "誕生日絵文字のコピー＆ペースト",
+      "cat-copy-and-paste": "猫の絵文字コピー＆ペースト"
+    }
   },
   "home": {
     "metadata": {

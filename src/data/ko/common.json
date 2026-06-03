@@ -17,7 +17,15 @@
     "seedance2": "Seedance 2.0",
     "kling3": "Kling 3.0",
     "aboutUs": "회사 소개",
-    "viewAllAiTools": "모든 AI 도구 보기"
+    "viewAllAiTools": "모든 AI 도구 보기",
+    "emojiMenu": {
+      "crying-copy-and-paste": "우는 이모지 복사 및 붙여넣기",
+      "cross-copy-and-paste": "십자가 이모지 복사 및 붙여넣기",
+      "adults-only-copy-and-paste": "성인 전용 이모지 복사 및 붙여넣기",
+      "fire-copy-and-paste": "불 이모지 복사 및 붙여넣기",
+      "birthday-copy-and-paste": "생일 이모지 복사 및 붙여넣기",
+      "cat-copy-and-paste": "고양이 이모지 복사 및 붙여넣기"
+    }
   },
   "home": {
     "metadata": {

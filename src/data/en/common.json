@@ -17,7 +17,15 @@
     "seedance2": "Seedance 2.0",
     "kling3": "Kling 3.0",
     "aboutUs": "About Us",
-    "viewAllAiTools": "View All AI Tools"
+    "viewAllAiTools": "View All AI Tools",
+    "emojiMenu": {
+      "crying-copy-and-paste": "Crying Emoji Copy and Paste",
+      "cross-copy-and-paste": "Cross Emoji Copy and Paste",
+      "adults-only-copy-and-paste": "Adults Only Emoji Copy and Paste",
+      "fire-copy-and-paste": "Fire Emoji Copy and Paste",
+      "birthday-copy-and-paste": "Birthday Emoji Copy and Paste",
+      "cat-copy-and-paste": "Cat Emoji Copy and Paste"
+    }
   },
   "home": {
     "metadata": {

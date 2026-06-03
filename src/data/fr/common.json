@@ -17,7 +17,15 @@
     "seedance2": "Seedance 2.0",
     "kling3": "Kling 3.0",
     "aboutUs": "À Propos",
-    "viewAllAiTools": "Voir tous les outils IA"
+    "viewAllAiTools": "Voir tous les outils IA",
+    "emojiMenu": {
+      "crying-copy-and-paste": "Copier et Coller l'Emoji qui Pleure",
+      "cross-copy-and-paste": "Copier et Coller l'Émoji Croix",
+      "adults-only-copy-and-paste": "Copier et Coller l'Emoji Réservé aux Adultes",
+      "fire-copy-and-paste": "Copier-coller l'émoji feu",
+      "birthday-copy-and-paste": "Copier-coller des emojis d'anniversaire",
+      "cat-copy-and-paste": "Copier et Coller Emoji Chat"
+    }
   },
   "home": {
     "metadata": {

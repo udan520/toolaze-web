@@ -152,6 +152,27 @@ node scripts/check-translation-keys.js src/data/[locale]/[tool-name].json
 node scripts/check-all-tool-translations.js [locale]
 ```
 
+## 🌐 共享 UI 翻译位置（必须覆盖）
+
+以下内容属于全站共享 UI，不允许只在组件里写英文 fallback。新增或修改时必须同步 9 个 locale 的 `src/data/{locale}/common.json`：
+
+- `nav`：顶部菜单、一级/二级/三级菜单标题、菜单兜底标题，例如 `nav.emojiMenu`
+- `breadcrumb`：面包屑所有固定节点，如 Home、AI Tools、Model、工具名
+- `footer`：底部菜单、语言入口、版权和 no-tools 文案
+- `common.tool`：图片上传/拖拽框、压缩/转换工具按钮、状态、toast、trust bar
+- `common.watermarkRemoverTool`、`common.photoRestorationTool`、`common.nanoBananaTool`：各生图/修图组件首屏上传区域、按钮、错误和结果文案
+- `common.fontGenerator`：字体生成器输入框、分类、copy 状态和 trust bar
+- `common.emojiPicker`：emoji 分类、Copied 状态和分类标题
+- `common.modelPlaceholders`、`common.specs`：模型占位卡和规格表
+
+### 首屏 SSR 翻译规则
+
+- 任何会出现在首屏 HTML 的 client component，都必须支持从 server page 传入 `initialTranslations`。
+- L2/L3 page 必须把当前 locale 的 `common.json` 结果传给 `Navigation`、`Footer`、上传组件、emoji/font/model placeholder 等首屏组件。
+- 不要依赖 client mount 后再加载翻译来修正首屏英文；这会影响用户体验和 SEO。
+- 顶部菜单的三级菜单也必须翻译。若某个三级菜单有 runtime fallback（例如 emoji L3），fallback 标题必须从 `common.json` 的多语言 key 读取，不允许只写英文 fallback。
+- 验证时必须抽查构建后的非英文 HTML，确认关键英文 fallback 没有出现在首屏。
+
 ## 📝 翻译最佳实践
 
 1. **保持结构一致**：翻译文件必须与英文文件的结构完全一致

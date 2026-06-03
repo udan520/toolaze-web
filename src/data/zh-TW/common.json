@@ -17,7 +17,15 @@
     "seedance2": "Seedance 2.0",
     "kling3": "Kling 3.0",
     "aboutUs": "關於我們",
-    "viewAllAiTools": "查看所有 AI 工具"
+    "viewAllAiTools": "查看所有 AI 工具",
+    "emojiMenu": {
+      "crying-copy-and-paste": "哭泣表情符號複製貼上",
+      "cross-copy-and-paste": "十字架表情符號複製與貼上",
+      "adults-only-copy-and-paste": "限成人表情符號複製貼上",
+      "fire-copy-and-paste": "火表情符號複製與貼上",
+      "birthday-copy-and-paste": "生日表情符號複製與貼上",
+      "cat-copy-and-paste": "貓咪表情符號複製與貼上"
+    }
   },
   "home": {
     "metadata": {

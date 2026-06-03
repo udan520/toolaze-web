@@ -17,7 +17,15 @@
     "seedance2": "Seedance 2.0",
     "kling3": "Kling 3.0",
     "aboutUs": "Sobre Nós",
-    "viewAllAiTools": "Ver todas as ferramentas IA"
+    "viewAllAiTools": "Ver todas as ferramentas IA",
+    "emojiMenu": {
+      "crying-copy-and-paste": "Copiar e Colar Emoji Chorando",
+      "cross-copy-and-paste": "Copiar e Colar Emoji de Cruz",
+      "adults-only-copy-and-paste": "Copiar e Colar Emoji de Apenas Adultos",
+      "fire-copy-and-paste": "Copiar e Colar Emoji de Fogo",
+      "birthday-copy-and-paste": "Copiar e Colar Emoji de Aniversário",
+      "cat-copy-and-paste": "Copiar e Colar Emoji de Gato"
+    }
   },
   "home": {
     "metadata": {

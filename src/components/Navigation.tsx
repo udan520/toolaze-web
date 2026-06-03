@@ -38,7 +38,15 @@ const defaultNavTranslations = {
   kling3: 'Kling 3.0',
   promptLibrary: 'Prompts',
   aboutUs: 'About Us',
-  viewAllAiTools: 'View All AI Tools'
+  viewAllAiTools: 'View All AI Tools',
+  emojiMenu: {
+    'crying-copy-and-paste': 'Crying Emoji Copy and Paste',
+    'cross-copy-and-paste': 'Cross Emoji Copy and Paste',
+    'adults-only-copy-and-paste': 'Adults Only Emoji Copy and Paste',
+    'fire-copy-and-paste': 'Fire Emoji Copy and Paste',
+    'birthday-copy-and-paste': 'Birthday Emoji Copy and Paste',
+    'cat-copy-and-paste': 'Cat Emoji Copy and Paste',
+  },
 }
 
 const AI_TOOLS_DEMO_IMAGES = {
@@ -58,6 +66,12 @@ const emojiMenuFallbackItems = [
   { slug: 'cat-copy-and-paste', title: 'Cat Emoji Copy and Paste' },
 ]
 
+function getEmojiMenuFallbackTitle(navTranslations: typeof defaultNavTranslations, slug: string) {
+  return navTranslations.emojiMenu?.[slug as keyof typeof defaultNavTranslations.emojiMenu]
+    || emojiMenuFallbackItems.find((item) => item.slug === slug)?.title
+    || slug
+}
+
 // 加载导航翻译的函数（nav + footer.language 用于「语言」标签，与页脚一致）
 async function loadNavTranslations(locale: string) {
   try {
@@ -66,7 +80,7 @@ async function loadNavTranslations(locale: string) {
       normalizedLocale = 'zh-TW'
     }
 
-    const mergeNav = (data: { nav?: Record<string, string>; footer?: { language?: string } }) => ({
+    const mergeNav = (data: { nav?: Partial<typeof defaultNavTranslations>; footer?: { language?: string } }) => ({
       ...defaultNavTranslations,
       ...(data.nav || {}),
       language: data.footer?.language || defaultNavTranslations.language,
@@ -74,12 +88,12 @@ async function loadNavTranslations(locale: string) {
 
     if (normalizedLocale === 'en') {
       const data = (await import('@/data/en/common.json')).default
-      return mergeNav({ nav: data?.nav as Record<string, string> | undefined, footer: data?.footer })
+      return mergeNav({ nav: data?.nav as Partial<typeof defaultNavTranslations> | undefined, footer: data?.footer })
     }
 
     try {
       const data = (await import(`@/data/${normalizedLocale}/common.json`)).default
-      return mergeNav({ nav: data?.nav as Record<string, string> | undefined, footer: data?.footer })
+      return mergeNav({ nav: data?.nav as Partial<typeof defaultNavTranslations> | undefined, footer: data?.footer })
     } catch {
       return defaultNavTranslations
     }
@@ -367,14 +381,11 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                   href: getHref(`/emoji-copy-and-paste/${slug}`),
                 }
               } catch (err) {
-                const fallback = emojiMenuFallbackItems.find((item) => item.slug === slug)
-                return fallback
-                  ? {
-                      slug,
-                      title: fallback.title,
-                      href: getHref(`/emoji-copy-and-paste/${slug}`),
-                    }
-                  : null
+                return {
+                  slug,
+                  title: getEmojiMenuFallbackTitle(navTranslations, slug),
+                  href: getHref(`/emoji-copy-and-paste/${slug}`),
+                }
               }
             })
           )
@@ -384,19 +395,22 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
           data['emoji-copy-and-paste'] = filteredEmojiItems.length > 0
             ? filteredEmojiItems
             : emojiMenuFallbackItems.map((item) => ({
-                ...item,
+                slug: item.slug,
+                title: getEmojiMenuFallbackTitle(navTranslations, item.slug),
                 href: getHref(`/emoji-copy-and-paste/${item.slug}`),
               }))
         } else {
           data['emoji-copy-and-paste'] = emojiMenuFallbackItems.map((item) => ({
-            ...item,
+            slug: item.slug,
+            title: getEmojiMenuFallbackTitle(navTranslations, item.slug),
             href: getHref(`/emoji-copy-and-paste/${item.slug}`),
           }))
         }
       } catch (error) {
         console.error('Failed to load emoji-copy-and-paste menu items:', error)
         data['emoji-copy-and-paste'] = emojiMenuFallbackItems.map((item) => ({
-          ...item,
+          slug: item.slug,
+          title: getEmojiMenuFallbackTitle(navTranslations, item.slug),
           href: getHref(`/emoji-copy-and-paste/${item.slug}`),
         }))
       }
