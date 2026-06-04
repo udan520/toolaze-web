@@ -171,6 +171,8 @@ node scripts/check-all-tool-translations.js [locale]
 - L2/L3 page 必须把当前 locale 的 `common.json` 结果传给 `Navigation`、`Footer`、上传组件、emoji/font/model placeholder 等首屏组件。
 - 不要依赖 client mount 后再加载翻译来修正首屏英文；这会影响用户体验和 SEO。
 - 顶部菜单的三级菜单也必须翻译。若某个三级菜单有 runtime fallback（例如 emoji L3），fallback 标题必须从 `common.json` 的多语言 key 读取，不允许只写英文 fallback。
+- 顶部菜单新增任何入口（例如 Prompts / Prompt Library）时，必须同步新增 `nav.{key}` 到 9 个 `src/data/{locale}/common.json`，并把该 key 加入 `scripts/check-menu-translations.js`；不能只在 `Navigation.tsx` 的默认英文对象里新增。
+- 全站任何用户可见的共享 UI 文案都必须进入 `common.json` 或对应页面 JSON。只有品牌名、模型名、文件格式、Schema 固定枚举、内部 section key（如 `sectionsOrder`）允许保持英文。
 - 如果 `src/data/{locale}/...` 已存在对应 L3 JSON，本地化 URL 必须渲染该 locale 内容，不允许静默回退英文内容；只有该 locale 文件不存在时才可重定向或回退英文 canonical。
 - 验证时必须抽查构建后的非英文 HTML，确认关键英文 fallback 没有出现在首屏。
 

@@ -10,7 +10,7 @@ const enData = JSON.parse(fs.readFileSync(enPath, 'utf8'))
 
 // 需要检查的菜单项
 const menuKeys = {
-  nav: ['quickTools', 'imageCompression', 'imageConverter', 'aboutUs'],
+  nav: ['promptLibrary', 'quickTools', 'aiTools', 'aiImage', 'aiVideo', 'imageCompression', 'imageConverter', 'fontGenerator', 'emojiCopyAndPaste', 'aboutUs'],
   breadcrumb: ['home', 'quickTools', 'imageCompression', 'imageConverter', 'aboutUs', 'privacyPolicy', 'termsOfService']
 }
 

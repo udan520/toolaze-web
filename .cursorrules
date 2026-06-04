@@ -62,6 +62,8 @@ See 'docs/SEO_MASTER_LAYOUT.md' section 3 for the exact breadcrumb structure.
 
 **SHARED UI TRANSLATION + SSR RULE**: Navigation, Footer, Breadcrumb, upload/drop zones, tool controls, toast/status text, emoji picker, font generator UI, model placeholders, specs, and ALL menu levels (including third-level submenus) MUST be translated via `src/data/{locale}/common.json`.
 - Top navigation third-level menu fallback titles MUST also be translated. Example: emoji L3 fallback titles live under `nav.emojiMenu` in every locale.
+- Any new global navigation entry (for example Prompts / Prompt Library) MUST add a `nav.{key}` entry to every `src/data/{locale}/common.json` file and add that key to `scripts/check-menu-translations.js`. Never rely only on the English default object in `Navigation.tsx`.
+- All user-visible shared UI text across the site MUST be localized. Brand names, model names, file formats, Schema enum values, and internal structural keys such as `sectionsOrder` may stay in English; visible labels, buttons, breadcrumbs, menus, upload/drop zones, toasts, status text, placeholders, and card labels may not.
 - If `src/data/{locale}/...` has a localized L3 JSON file, localized URLs MUST render that locale's metadata, H1, breadcrumbs, and body content. Do NOT silently render English content on a localized URL.
 - Client components that render above the fold MUST accept server-provided `initialTranslations`; L2/L3 pages must pass the current locale's `common.json` into `Navigation`, `Footer`, upload components, emoji/font components, and model placeholders.
 - Do NOT rely on client-side mount to replace English fallback on localized pages; first-render/SSG HTML must already be localized for UX and SEO.
