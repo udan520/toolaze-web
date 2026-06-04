@@ -422,7 +422,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
         'emoji-copy-and-paste': [],
       })
     })
-  }, [navEffectiveLocale, pathname])
+  }, [navEffectiveLocale, pathname, navTranslations])
 
   const getLocalizedHref = (href: string): string => {
     if (href.startsWith('http')) return href

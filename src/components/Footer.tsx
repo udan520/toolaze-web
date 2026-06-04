@@ -43,7 +43,30 @@ const defaultTranslations = {
   seedance2: 'Seedance 2.0',
   kling3: 'Kling 3.0',
   nanoBananaPro: 'Nano Banana Pro',
-  nanoBanana2: 'Nano Banana 2'
+  nanoBanana2: 'Nano Banana 2',
+  emojiMenu: {
+    'crying-copy-and-paste': 'Crying Emoji Copy and Paste',
+    'cross-copy-and-paste': 'Cross Emoji Copy and Paste',
+    'adults-only-copy-and-paste': 'Adults Only Emoji Copy and Paste',
+    'fire-copy-and-paste': 'Fire Emoji Copy and Paste',
+    'birthday-copy-and-paste': 'Birthday Emoji Copy and Paste',
+    'cat-copy-and-paste': 'Cat Emoji Copy and Paste',
+  },
+}
+
+const emojiMenuFallbackItems = [
+  { slug: 'crying-copy-and-paste', title: 'Crying Emoji Copy and Paste' },
+  { slug: 'cross-copy-and-paste', title: 'Cross Emoji Copy and Paste' },
+  { slug: 'adults-only-copy-and-paste', title: 'Adults Only Emoji Copy and Paste' },
+  { slug: 'fire-copy-and-paste', title: 'Fire Emoji Copy and Paste' },
+  { slug: 'birthday-copy-and-paste', title: 'Birthday Emoji Copy and Paste' },
+  { slug: 'cat-copy-and-paste', title: 'Cat Emoji Copy and Paste' },
+]
+
+function getEmojiMenuFallbackTitle(translations: typeof defaultTranslations, slug: string) {
+  return translations.emojiMenu?.[slug as keyof typeof defaultTranslations.emojiMenu]
+    || emojiMenuFallbackItems.find((item) => item.slug === slug)?.title
+    || slug
 }
 
 // 加载翻译的函数
@@ -82,6 +105,7 @@ async function loadTranslations(locale: string) {
         watermarkRemover: read(navData, 'watermarkRemover') || read(footerData, 'watermarkRemover') || defaultTranslations.watermarkRemover,
         photoRestoration: read(navData, 'photoRestoration') || read(footerData, 'photoRestoration') || defaultTranslations.photoRestoration,
         aiCouplePhotoMaker: read(navData, 'aiCouplePhotoMaker') || read(footerData, 'aiCouplePhotoMaker') || defaultTranslations.aiCouplePhotoMaker,
+        emojiMenu: typeof navData.emojiMenu === 'object' && navData.emojiMenu ? navData.emojiMenu : defaultTranslations.emojiMenu,
       }
     }
     
@@ -107,6 +131,7 @@ async function loadTranslations(locale: string) {
         watermarkRemover: read(navData, 'watermarkRemover') || read(footerData, 'watermarkRemover') || defaultTranslations.watermarkRemover,
         photoRestoration: read(navData, 'photoRestoration') || read(footerData, 'photoRestoration') || defaultTranslations.photoRestoration,
         aiCouplePhotoMaker: read(navData, 'aiCouplePhotoMaker') || read(footerData, 'aiCouplePhotoMaker') || defaultTranslations.aiCouplePhotoMaker,
+        emojiMenu: typeof navData.emojiMenu === 'object' && navData.emojiMenu ? navData.emojiMenu : defaultTranslations.emojiMenu,
       }
     } catch {
       return defaultTranslations
@@ -133,6 +158,7 @@ function getInitialFooterTranslations(initialTranslations?: any) {
     ...defaultTranslations,
     ...(initialTranslations.footer || {}),
     ...(initialTranslations.nav || {}),
+    emojiMenu: initialTranslations.nav?.emojiMenu || defaultTranslations.emojiMenu,
   }
 }
 
@@ -324,33 +350,47 @@ export default function Footer({ initialTranslations }: FooterProps = {}) {
       // 加载 Emoji Copy & Paste 的三级菜单（全部 6 个 L3 页面）
       try {
         const emojiSlugs = await getAllSlugs('emoji-copy-and-paste', locale)
-        if (emojiSlugs && emojiSlugs.length > 0) {
+        const slugs = emojiSlugs && emojiSlugs.length > 0
+          ? emojiSlugs
+          : emojiMenuFallbackItems.map((item) => item.slug)
+        if (slugs.length > 0) {
           const emojiItems = await Promise.all(
-            emojiSlugs.map(async (slug) => {
+            slugs.map(async (slug) => {
               try {
                 const toolData = await getSeoContent('emoji-copy-and-paste', slug, locale)
                 if (toolData?.in_menu === false) return null
-                let title = slug
-                if (toolData?.hero?.h1) {
-                  title = toolData.hero.h1.replace(/<[^>]*>/g, '').trim()
-                  if (!title) title = slug
-                }
                 return {
                   slug,
-                  title,
+                  title: getEmojiMenuFallbackTitle(translations, slug),
                   href: getHref(`/emoji-copy-and-paste/${slug}`),
                 }
               } catch (err) {
-                return null
+                return {
+                  slug,
+                  title: getEmojiMenuFallbackTitle(translations, slug),
+                  href: getHref(`/emoji-copy-and-paste/${slug}`),
+                }
               }
             })
           )
-          data['emoji-copy-and-paste'] = emojiItems.filter((item): item is { slug: string; title: string; href: string } =>
+          const filteredEmojiItems = emojiItems.filter((item): item is { slug: string; title: string; href: string } =>
             item !== null && item.title !== undefined && item.href !== undefined
           )
+          data['emoji-copy-and-paste'] = filteredEmojiItems.length > 0
+            ? filteredEmojiItems
+            : emojiMenuFallbackItems.map((item) => ({
+                slug: item.slug,
+                title: getEmojiMenuFallbackTitle(translations, item.slug),
+                href: getHref(`/emoji-copy-and-paste/${item.slug}`),
+              }))
         }
       } catch (error) {
         console.error('Failed to load emoji-copy-and-paste menu items:', error)
+        data['emoji-copy-and-paste'] = emojiMenuFallbackItems.map((item) => ({
+          slug: item.slug,
+          title: getEmojiMenuFallbackTitle(translations, item.slug),
+          href: getHref(`/emoji-copy-and-paste/${item.slug}`),
+        }))
       }
       
       setFooterMenuData(data)
@@ -359,7 +399,7 @@ export default function Footer({ initialTranslations }: FooterProps = {}) {
     if (isMounted) {
       loadFooterMenuData()
     }
-  }, [currentLocale, pathname, isMounted, preferredLocale])
+  }, [currentLocale, pathname, isMounted, preferredLocale, translations])
 
   const supportedLocales = useMemo(() => {
     const codes = getSupportedLocaleCodes(pathname ?? null)
