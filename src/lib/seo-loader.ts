@@ -244,6 +244,18 @@ async function loadToolJsonFile(locale: string, tool: string, slug: string) {
     if (tool === 'seedance-2' && !SEEDANCE_2_SLUGS.includes(slug)) {
       return null
     }
+
+    if (tool === 'emoji-copy-and-paste') {
+      const localeFile = path.join(process.cwd(), 'src', 'data', normalizedLocale, 'emoji-copy-and-paste', `${slug}.json`)
+      if (fs.existsSync(localeFile)) {
+        return JSON.parse(fs.readFileSync(localeFile, 'utf-8'))
+      }
+      const englishFile = path.join(process.cwd(), 'src', 'data', 'en', 'emoji-copy-and-paste', `${slug}.json`)
+      if (fs.existsSync(englishFile)) {
+        return JSON.parse(fs.readFileSync(englishFile, 'utf-8'))
+      }
+      return null
+    }
     // watermark-remover: 允许任意 slug，由 fs 动态加载
 
     // 使用显式的导入路径以确保 webpack 能够静态分析
@@ -524,9 +536,17 @@ async function loadToolJsonFile(locale: string, tool: string, slug: string) {
         } catch {}
       }
 
-      // Emoji L3：静态 import 仅在 case 'en' 中配置；de/ja/pt 等分支未写 emoji，data 会一直是 null，
-      // 且不会进入下方 catch（未抛错），导致 getAllSlugs 为空 → 导航 Quick Tools hover 无三级链接。
-      // 其它语言用英文 JSON 取标题；href 仍由 Navigation 按 navEffectiveLocale 加前缀。
+      // Emoji L3：优先读取当前 locale 的 JSON；只有缺少该 locale 文件时才回退英文。
+      // 这样页面 metadata/H1/内容和导航三级菜单标题都能保持多语言一致。
+      if (!data && tool === 'emoji-copy-and-paste') {
+        try {
+          const fp = path.join(process.cwd(), 'src', 'data', normalizedLocale, 'emoji-copy-and-paste', `${slug}.json`)
+          if (fs.existsSync(fp)) {
+            data = { default: JSON.parse(fs.readFileSync(fp, 'utf-8')) }
+          }
+        } catch {}
+      }
+
       if (!data && tool === 'emoji-copy-and-paste') {
         switch (slug) {
           case 'crying-copy-and-paste': data = await import('@/data/en/emoji-copy-and-paste/crying-copy-and-paste.json'); break
