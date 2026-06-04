@@ -370,14 +370,9 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
               try {
                 const toolData = await getSeoContent('emoji-copy-and-paste', slug, locale)
                 if (toolData?.in_menu === false) return null
-                let title = slug
-                if (toolData?.hero?.h1) {
-                  title = toolData.hero.h1.replace(/<[^>]*>/g, '').trim()
-                  if (!title) title = slug
-                }
                 return {
                   slug,
-                  title,
+                  title: getEmojiMenuFallbackTitle(navTranslations, slug),
                   href: getHref(`/emoji-copy-and-paste/${slug}`),
                 }
               } catch (err) {
