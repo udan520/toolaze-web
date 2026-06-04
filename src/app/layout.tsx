@@ -4,6 +4,7 @@ import Script from 'next/script'
 import './globals.css'
 import ErrorSuppressor from '@/components/ErrorSuppressor'
 import HtmlLangSetter from '@/components/HtmlLangSetter'
+import { BROWSER_LOCALE_REDIRECT_SCRIPT } from '@/lib/browser-locale-redirect'
 
 export const metadata: Metadata = {
   title: 'Toolaze - Free AI Image Compressor & Local Tools',
@@ -104,6 +105,11 @@ export default function RootLayout({
               })();
             `,
           }}
+        />
+        <Script
+          id="browser-locale-redirect"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: BROWSER_LOCALE_REDIRECT_SCRIPT }}
         />
         <HtmlLangSetter />
         <ErrorSuppressor />

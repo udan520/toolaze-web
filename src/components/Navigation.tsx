@@ -146,7 +146,6 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
   const pathname = usePathname()
 
   const currentLocale = getCurrentLocaleFromPath(pathname ?? null)
-  const [preferredLocale, setPreferredLocale] = useState<string>(currentLocale)
 
   const [navLangOpen, setNavLangOpen] = useState(false)
 
@@ -156,7 +155,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
   }, [pathname])
 
   const showNavLanguageSwitcher = shouldShowLanguageSwitcher(pathname ?? null)
-  const navEffectiveLocale = resolveLocaleForPath(pathname || '/', preferredLocale)
+  const navEffectiveLocale = resolveLocaleForPath(pathname || '/', currentLocale)
   const navCurrentLocaleInfo = SITE_LOCALES.find((l) => l.code === navEffectiveLocale) || SITE_LOCALES[0]
   const navOtherLocales = navSupportedLocales.length === 1
     ? navSupportedLocales
@@ -172,9 +171,6 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
     if (typeof window === 'undefined') return
     const firstSegment = (pathname ?? '').split('/').filter(Boolean)[0] ?? ''
     const hasExplicitLocale = isSiteLocaleCode(firstSegment)
-    const savedLocale = window.localStorage.getItem(PREFERRED_LOCALE_STORAGE_KEY)
-    const nextLocale = hasExplicitLocale ? currentLocale : (savedLocale || currentLocale)
-    setPreferredLocale(nextLocale)
     if (hasExplicitLocale) {
       window.localStorage.setItem(PREFERRED_LOCALE_STORAGE_KEY, currentLocale)
     }
@@ -426,7 +422,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
 
   const getLocalizedHref = (href: string): string => {
     if (href.startsWith('http')) return href
-    return getPreferredLocalizedUrl(href, preferredLocale)
+    return getPreferredLocalizedUrl(href, navEffectiveLocale)
   }
   
   // 获取三级菜单项的函数（使用已加载的数据）
@@ -841,7 +837,6 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                           if (typeof window !== 'undefined') {
                             window.localStorage.setItem(PREFERRED_LOCALE_STORAGE_KEY, nextLocale)
                           }
-                          setPreferredLocale(nextLocale)
                           setNavLangOpen(false)
                         }}
                         className="flex items-center gap-3 px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600"
@@ -1141,7 +1136,6 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                           if (typeof window !== 'undefined') {
                             window.localStorage.setItem(PREFERRED_LOCALE_STORAGE_KEY, nextLocale)
                           }
-                          setPreferredLocale(nextLocale)
                           setMobileMenuOpen(false)
                           setExpandedSubmenus(new Set())
                         }}

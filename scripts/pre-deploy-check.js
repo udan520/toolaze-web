@@ -20,8 +20,12 @@ const nextConfigPath = path.join(process.cwd(), 'next.config.js');
 if (fs.existsSync(nextConfigPath)) {
   const nextConfigContent = fs.readFileSync(nextConfigPath, 'utf8');
   
-  // 检查是否有 output: 'export'
-  if (!nextConfigContent.includes("output: 'export'")) {
+  // 检查是否有静态导出配置；允许生产构建条件启用，避免本地 dev 样式/资源异常
+  const hasStaticExportConfig =
+    nextConfigContent.includes("output: 'export'") ||
+    /output:\s*[^,\n]*\?\s*['"]export['"]\s*:\s*undefined/.test(nextConfigContent);
+
+  if (!hasStaticExportConfig) {
     errors.push('❌ next.config.js 中缺少 output: "export" 配置（静态导出必需）');
     hasError = true;
   } else {

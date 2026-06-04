@@ -259,6 +259,7 @@ export default function NanoBananaTool({
     highResUnavailable: '2K and 4K are temporarily unavailable.',
     outputFormat: 'Output Format',
     sampleImage: 'Sample image',
+    noDemoImageYet: 'No demo image yet',
     inputImage: 'Input image',
     history: 'History',
     noHistory: 'No history yet. Generate an image to see it here.',
@@ -1220,7 +1221,7 @@ export default function NanoBananaTool({
         ) : isNanoBanana2CoupleMode ? (
           <div className="flex-1 min-w-0 min-h-[400px] md:min-h-0 bg-white rounded-2xl border border-[#E0E7FF] shadow-lg shadow-[#4F46E5]/8 flex flex-col items-center justify-center p-2 md:p-8 relative z-10">
             <h3 className="text-slate-700 font-semibold text-base uppercase tracking-wider mb-6 md:mb-8 shrink-0">
-              Sample image
+              {nanoText.sampleImage}
             </h3>
             <div className="w-full flex-1 flex justify-center items-center min-h-0">
               {selectedTemplateImage ? (
@@ -1231,7 +1232,7 @@ export default function NanoBananaTool({
                 />
               ) : (
                 <div className="w-full min-h-[200px] rounded-xl ring-1 ring-slate-200/50 bg-white flex items-center justify-center text-sm text-slate-500">
-                  No demo image yet
+                  {nanoText.noDemoImageYet}
                 </div>
               )}
             </div>
@@ -1251,7 +1252,7 @@ export default function NanoBananaTool({
                   rightMode === 'sample' ? 'bg-[#EEF2FF] text-[#4F46E5] border border-[#C7D2FE] border-b-0 -mb-px' : 'text-slate-500 hover:text-slate-700'
                 }`}
               >
-                Sample image
+                {nanoText.sampleImage}
               </button>
               <button
                 type="button"
@@ -1279,7 +1280,7 @@ export default function NanoBananaTool({
                       />
                     ) : (
                       <div className="w-full h-full rounded-xl ring-1 ring-slate-200/50 bg-white flex items-center justify-center text-sm text-slate-500">
-                        No demo image yet
+                        {nanoText.noDemoImageYet}
                       </div>
                     )
                   ) : (

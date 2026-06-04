@@ -171,7 +171,6 @@ export default function Footer({ initialTranslations }: FooterProps = {}) {
   // The year will be updated on client side after hydration
   const [currentYear, setCurrentYear] = useState(2024)
   const [currentLocale, setCurrentLocale] = useState<string>('en')
-  const [preferredLocale, setPreferredLocale] = useState<string>('en')
   const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false)
   const [translations, setTranslations] = useState(getInitialFooterTranslations(initialTranslations))
   const [isMounted, setIsMounted] = useState(false)
@@ -197,22 +196,19 @@ export default function Footer({ initialTranslations }: FooterProps = {}) {
     setCurrentLocale(detectedLocale)
     const firstSegment = (pathname ?? '').split('/').filter(Boolean)[0] ?? ''
     const hasExplicitLocale = isSiteLocaleCode(firstSegment)
-    const savedLocale = typeof window !== 'undefined' ? window.localStorage.getItem(PREFERRED_LOCALE_STORAGE_KEY) : null
-    const nextPreferred = hasExplicitLocale ? detectedLocale : (savedLocale || detectedLocale)
-    setPreferredLocale(nextPreferred)
     if (hasExplicitLocale && typeof window !== 'undefined') {
       window.localStorage.setItem(PREFERRED_LOCALE_STORAGE_KEY, detectedLocale)
     }
     
     // Load translations
-    const effectiveLocale = resolveLocaleForPath(pathname || '/', nextPreferred)
+    const effectiveLocale = resolveLocaleForPath(pathname || '/', detectedLocale)
     loadTranslations(effectiveLocale).then(setTranslations)
   }, [pathname])
 
   // 加载页脚菜单数据
   useEffect(() => {
     const loadFooterMenuData = async () => {
-      const locale = resolveLocaleForPath(pathname || '/', preferredLocale)
+      const locale = resolveLocaleForPath(pathname || '/', currentLocale)
       
       // 生成带语言前缀的链接的辅助函数
       const getHref = (href: string): string => {
@@ -399,7 +395,7 @@ export default function Footer({ initialTranslations }: FooterProps = {}) {
     if (isMounted) {
       loadFooterMenuData()
     }
-  }, [currentLocale, pathname, isMounted, preferredLocale, translations])
+  }, [currentLocale, pathname, isMounted, translations])
 
   const supportedLocales = useMemo(() => {
     const codes = getSupportedLocaleCodes(pathname ?? null)
@@ -408,7 +404,7 @@ export default function Footer({ initialTranslations }: FooterProps = {}) {
 
   const showLanguageSwitcher = shouldShowLanguageSwitcher(pathname ?? null)
 
-  const effectiveLocale = resolveLocaleForPath(pathname || '/', preferredLocale)
+  const effectiveLocale = resolveLocaleForPath(pathname || '/', currentLocale)
   const currentLocaleInfo = SITE_LOCALES.find((loc) => loc.code === effectiveLocale) || SITE_LOCALES[0]
   const otherLocales = supportedLocales.length === 1
     ? supportedLocales
@@ -416,7 +412,7 @@ export default function Footer({ initialTranslations }: FooterProps = {}) {
 
   const getLocalizedHref = (href: string): string => {
     if (href.startsWith('http')) return href
-    return getPreferredLocalizedUrl(href, preferredLocale)
+    return getPreferredLocalizedUrl(href, effectiveLocale)
   }
 
   return (
@@ -670,7 +666,6 @@ export default function Footer({ initialTranslations }: FooterProps = {}) {
                             if (typeof window !== 'undefined') {
                               window.localStorage.setItem(PREFERRED_LOCALE_STORAGE_KEY, nextLocale)
                             }
-                            setPreferredLocale(nextLocale)
                             setIsLanguageMenuOpen(false)
                           }}
                           className="flex items-center gap-3 px-4 py-2 text-sm text-slate-300 hover:bg-indigo-600 hover:text-white transition-all group"
