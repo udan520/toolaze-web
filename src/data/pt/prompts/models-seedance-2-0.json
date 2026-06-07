@@ -1,0 +1,135 @@
+{
+  "slug": "seedance-2-0",
+  "kind": "model",
+  "filterValue": "Seedance 2.0",
+  "defaultModel": "Seedance 2.0",
+  "title": "Biblioteca de Prompts Seedance 2.0 de Exemplos Virais do X | Toolaze",
+  "description": "Copie e remixe prompts do Seedance 2.0 baseados em fontes de exemplos virais do X para anúncios de produtos, trailers, clipes de moda, movimento de personagens e vídeos para redes sociais.",
+  "heroTitle": "Crie Vídeos Seedance 2.0 a Partir de Prompts que Já Funcionaram no X",
+  "heroDescription": "A maioria dos criadores não quer se tornar engenheiro de prompts antes de fazer seu primeiro vídeo de IA. Esta página reúne prompts do Seedance 2.0 baseados em fontes do X, para que você possa copiar uma estrutura comprovada, substituir o assunto pela sua própria ideia e publicar um vídeo pronto para as redes sociais mais rápido.",
+  "howToTitle": "Como usar os prompts do Seedance 2.0 desta biblioteca",
+  "howToIntro": "Trate cada modelo como um atalho, não como um feitiço mágico. Comece com um prompt público do X, copie a estrutura, substitua as partes que pertencem à sua ideia e compare o resultado com o exemplo de origem antes de publicar.",
+  "steps": [
+    {
+      "title": "Escolha uma ideia comprovada",
+      "text": "Comece com prompts que já apareceram em postagens públicas do X em vez de encarar uma caixa em branco. O link da fonte, a tag do modelo, o texto do prompt e os dados de engajamento ajudam você a ver quais ângulos criativos as pessoas reagiram."
+    },
+    {
+      "title": "Copie a estrutura",
+      "text": "Abra um modelo, copie o prompt e mantenha as partes que o fazem funcionar: configuração do assunto, batidas cronometradas, movimento da câmera, estilo visual e gancho final."
+    },
+    {
+      "title": "Substitua o conteúdo",
+      "text": "Troque pelo seu produto, personagem, cena ou imagem de referência, mantendo o ritmo do original. Isso é mais rápido do que inventar um prompt cinematográfico completo do zero."
+    },
+    {
+      "title": "Gere e compare",
+      "text": "Use a postagem original do X como uma referência criativa e, em seguida, ajuste a velocidade da câmera, as batidas de movimento, a preservação da identidade e a densidade visual até que o resultado pareça publicável."
+    }
+  ],
+  "remixTitle": "Copie o prompt e torne a ideia sua",
+  "remixText": "Um bom modelo não é uma gaiola. É um andaime. Mantenha o mecanismo viral, mude o assunto e reconstrua o prompt em torno do seu próprio produto, personagem, imagem ou história.",
+  "patterns": [
+    {
+      "label": "Para iniciantes",
+      "heading": "Use o prompt primeiro, aprenda o ofício depois.",
+      "body": "Copie um modelo, mude o assunto, gere um resultado e estude quais partes controlaram o movimento, o visual e o quadro final."
+    },
+    {
+      "label": "Para postagens sociais",
+      "heading": "Remixe o gancho, não apenas a imagem.",
+      "body": "Mantenha o gancho visível: transformação surpreendente, revelação satisfatória de produto, cena cinematográfica de criatura, movimento de personagem ou contraste antes e depois."
+    },
+    {
+      "label": "Para anúncios de produtos",
+      "heading": "Transforme um modelo em um formato de anúncio repetível.",
+      "body": "Substitua o objeto original pelo seu produto, mantenha a sequência de revelação e adicione o packshot, textura do material, caso de uso e quadro final de chamada para ação."
+    }
+  ],
+  "chooserTitle": "Escolha o modelo de prompt Seedance 2.0 certo para o vídeo que você deseja postar",
+  "chooserIntro": "O erro mais fácil é copiar um bom prompt para o trabalho errado. Comece com o formato mais próximo do seu objetivo e mude as partes que o tornam seu.",
+  "chooserRows": [
+    {
+      "goal": "Anúncio de produto",
+      "startWith": "Um pequeno problema de produto, uma mudança tátil e um plano principal limpo.",
+      "bestFor": "Anúncios curtos, criativos de e-commerce, postagens de lançamento e demonstrações de produtos.",
+      "replace": "Nome do produto, material, caso de uso, fundo e quadro final seguro para logotipo.",
+      "keep": "Ritmo de revelação, finalização com packshot, movimento de câmera e configuração focada no benefício."
+    },
+    {
+      "goal": "Transformação de moda",
+      "startWith": "Um gatilho de transição, como um giro, movimento de manga, toque no cabelo ou movimento de leque.",
+      "bestFor": "Trocas de roupa, clipes de beleza, movimento de cabelo, postagens de estilo e reels de personagens.",
+      "replace": "Personagem, guarda-roupa, tecido, acessórios, expressão e gatilho de transição.",
+      "keep": "Bloqueios de identidade, comportamento do tecido, trocas de roupa cronometradas e distância da câmera."
+    },
+    {
+      "goal": "Trailer de filme",
+      "startWith": "Uma configuração calma, um movimento perturbador ou conflito e um quadro de gancho final.",
+      "bestFor": "Cenas cinematográficas, cenas de criaturas, momentos de terror, batidas de ação e construção de mundo.",
+      "replace": "Cenário, criatura, conflito, iluminação, sugestão sonora e revelação final.",
+      "keep": "Estrutura de lista de planos, escalada, atmosfera e gancho no último quadro."
+    }
+  ],
+  "answerTitle": "Qual é a maneira mais rápida de usar os prompts do Seedance 2.0?",
+  "answerText": "Comece com um prompt que já teve um bom desempenho no X. Escolha um modelo próximo ao seu objetivo, copie o prompt original, substitua o assunto ou produto, mantenha o tempo e a estrutura da câmera e gere uma nova versão.",
+  "anatomyTitle": "O que um prompt reutilizável do Seedance geralmente contém",
+  "anatomyIntro": "Você não precisa memorizar a teoria dos prompts. Quando um modelo funciona, ele geralmente tem estas peças escondidas à vista de todos.",
+  "anatomy": [
+    {
+      "title": "A coisa que os espectadores notam primeiro",
+      "text": "Nomeie o produto, personagem, criatura ou cena claramente."
+    },
+    {
+      "title": "As partes que devem permanecer estáveis",
+      "text": "Para imagens de referência, proteja o rosto, a roupa, a forma do produto, o posicionamento do logotipo, a paleta de cores, a pose ou a perspectiva do fundo."
+    },
+    {
+      "title": "O movimento batida por batida",
+      "text": "Use intervalos de tempo ou batidas de ação curtas para que o modelo saiba o que muda primeiro, depois e por último."
+    },
+    {
+      "title": "A câmera, não apenas o estilo",
+      "text": "Adicione uma instrução de câmera real, como dolly in, plano médio fixo, macro push, órbita, zoom portátil ou rastreamento lateral."
+    }
+  ],
+  "trustTitle": "Por que estes modelos de prompt do Seedance 2.0 são baseados em fontes",
+  "trustText": "Uma biblioteca de prompts só é útil se os exemplos forem rastreáveis, copiáveis e honestos sobre sua origem.",
+  "trustRules": [
+    "Cada modelo deve apontar de volta para uma fonte pública do X, não para um exemplo de prompt inventado.",
+    "O prompt visível deve corresponder ao idioma da postagem ou comentário original em vez de ser reescrito.",
+    "O modelo deve incluir contexto suficiente para um iniciante copiar, substituir e testar.",
+    "A mídia e as métricas são tratadas como sinais, mas o prompt em si ainda deve ser utilizável."
+  ],
+  "mistakesTitle": "Pequenas mudanças que fazem um prompt copiado parecer original",
+  "mistakesText": "Use the source prompt as scaffolding, then make enough decisions that the result belongs to your idea.",
+  "mistakes": [
+    {
+      "title": "Mudar o assunto, mas deixar a cena antiga",
+      "text": "Mude o ambiente e o quadro final junto com o assunto, ou o resultado parecerá remendado."
+    },
+    {
+      "title": "Excluir o tempo porque parece prolixo",
+      "text": "O tempo muitas vezes faz com que o clipe pareça controlado. Remova-o apenas quando o movimento for genuinamente simples."
+    },
+    {
+      "title": "Manter movimentos de câmera que não se ajustam à sua ideia",
+      "text": "Mantenha a intenção, não cada palavra de câmera da fonte."
+    }
+  ],
+  "faqTitle": "FAQ da biblioteca de prompts Seedance 2.0",
+  "faqs": [
+    {
+      "q": "Para quem é esta biblioteca de prompts Seedance 2.0?",
+      "a": "É para criadores que desejam fazer vídeos de IA sem escrever prompts do zero. Iniciantes podem copiar um prompt baseado em fonte diretamente, enquanto profissionais de marketing e criadores de prompts podem remixar a estrutura."
+    },
+    {
+      "q": "Por que usar exemplos do X em vez de fórmulas de prompt genéricas?",
+      "a": "Exemplos do X oferecem uma referência criativa real, uma fonte pública e uma noção mais clara do que pode funcionar nas redes sociais."
+    },
+    {
+      "q": "Como faço meu próprio prompt Seedance no estilo viral?",
+      "a": "Escolha um modelo comprovado, mantenha seu gancho criativo, substitua o conteúdo pelo seu próprio assunto e torne o primeiro e o último quadro fáceis de entender."
+    }
+  ]
+}

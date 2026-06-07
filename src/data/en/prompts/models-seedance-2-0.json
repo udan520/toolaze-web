@@ -1,0 +1,135 @@
+{
+  "slug": "seedance-2-0",
+  "kind": "model",
+  "filterValue": "Seedance 2.0",
+  "defaultModel": "Seedance 2.0",
+  "title": "Seedance 2.0 Prompt Library From Viral X Examples | Toolaze",
+  "description": "Copy and remix source-backed Seedance 2.0 prompts from viral X examples for product ads, trailers, fashion clips, character motion, and social media videos.",
+  "heroTitle": "Create Seedance 2.0 Videos From Prompts That Already Worked On X",
+  "heroDescription": "Most creators do not want to become prompt engineers before making their first AI video. This page collects source-backed Seedance 2.0 prompts from X, so you can copy a proven structure, replace the subject with your own idea, and publish a social-ready video faster.",
+  "howToTitle": "How to use Seedance 2.0 prompts from this library",
+  "howToIntro": "Treat each template as a shortcut, not a magic spell. Start from a public X prompt, copy the structure, replace the parts that belong to your idea, then compare the result with the source example before publishing.",
+  "steps": [
+    {
+      "title": "Pick a proven idea",
+      "text": "Start from prompts that already appeared in public X posts instead of staring at a blank box. The source link, model tag, prompt text, and engagement data help you see which creative angles people reacted to."
+    },
+    {
+      "title": "Copy the structure",
+      "text": "Open a template, copy the prompt, and keep the parts that make it work: subject setup, timed beats, camera movement, visual style, and final hook."
+    },
+    {
+      "title": "Replace the content",
+      "text": "Swap in your product, character, scene, or reference image while keeping the rhythm of the original. This is faster than inventing a full cinematic prompt from scratch."
+    },
+    {
+      "title": "Generate and compare",
+      "text": "Use the original X post as a creative benchmark, then adjust camera speed, motion beats, identity preservation, and visual density until the result feels publishable."
+    }
+  ],
+  "remixTitle": "Copy the prompt, then make the idea yours",
+  "remixText": "A good template is not a cage. It is a scaffold. Keep the viral mechanism, change the subject, and rebuild the prompt around your own product, character, image, or story.",
+  "patterns": [
+    {
+      "label": "For beginners",
+      "heading": "Use the prompt first, learn the craft second.",
+      "body": "Copy one template, change the subject, generate a result, then study which parts controlled the motion, look, and final frame."
+    },
+    {
+      "label": "For social posts",
+      "heading": "Remix the hook, not just the image.",
+      "body": "Keep the visible hook: surprising transformation, satisfying product reveal, cinematic creature shot, character motion, or before-and-after contrast."
+    },
+    {
+      "label": "For product ads",
+      "heading": "Turn a template into a repeatable ad format.",
+      "body": "Replace the original object with your product, keep the reveal sequence, then add packshot, material texture, use case, and final call-to-action frame."
+    }
+  ],
+  "chooserTitle": "Choose the right Seedance 2.0 prompt template for the video you want to post",
+  "chooserIntro": "The easiest mistake is copying a good prompt for the wrong job. Start with the format closest to your goal, then change the parts that make it yours.",
+  "chooserRows": [
+    {
+      "goal": "Product ad",
+      "startWith": "A small product problem, one tactile change, and a clean hero shot.",
+      "bestFor": "Short ads, ecommerce creative, launch posts, and product demos.",
+      "replace": "Product name, material, use case, background, and logo-safe final frame.",
+      "keep": "Reveal rhythm, packshot ending, camera move, and benefit-first setup."
+    },
+    {
+      "goal": "Fashion transformation",
+      "startWith": "One transition trigger such as a spin, sleeve flick, hair touch, or fan movement.",
+      "bestFor": "Outfit changes, beauty clips, hair motion, styling posts, and character reels.",
+      "replace": "Character, wardrobe, fabric, accessories, expression, and transition trigger.",
+      "keep": "Identity locks, fabric behavior, timed outfit changes, and camera distance."
+    },
+    {
+      "goal": "Film trailer",
+      "startWith": "A calm setup, one unsettling movement or conflict, and a final hook frame.",
+      "bestFor": "Cinematic scenes, creature shots, horror moments, action beats, and worldbuilding.",
+      "replace": "Setting, creature, conflict, lighting, sound cue, and final reveal.",
+      "keep": "Shot-list structure, escalation, atmosphere, and last-frame hook."
+    }
+  ],
+  "answerTitle": "What is the fastest way to use Seedance 2.0 prompts?",
+  "answerText": "Start from a prompt that has already performed well on X. Pick a template close to your goal, copy the original prompt, replace the subject or product, keep the timing and camera structure, then generate a new version.",
+  "anatomyTitle": "What a reusable Seedance prompt usually contains",
+  "anatomyIntro": "You do not have to memorize prompt theory. When a template works, it usually has these pieces hiding in plain sight.",
+  "anatomy": [
+    {
+      "title": "The thing viewers notice first",
+      "text": "Name the product, character, creature, or scene clearly."
+    },
+    {
+      "title": "The parts that must stay stable",
+      "text": "For reference images, protect face, outfit, product shape, logo placement, color palette, pose, or background perspective."
+    },
+    {
+      "title": "The movement beat by beat",
+      "text": "Use time ranges or short action beats so the model knows what changes first, next, and last."
+    },
+    {
+      "title": "The camera, not just the style",
+      "text": "Add a real camera instruction such as dolly in, locked medium shot, macro push, orbit, handheld zoom, or lateral tracking."
+    }
+  ],
+  "trustTitle": "Why these Seedance 2.0 prompt templates are source-backed",
+  "trustText": "A prompt library is only useful if the examples are traceable, copyable, and honest about where they came from.",
+  "trustRules": [
+    "Every template should point back to a public X source, not a made-up prompt example.",
+    "The visible prompt should match the original post or comment language instead of being rewritten.",
+    "The template should include enough context for a beginner to copy, replace, and test it.",
+    "The media and metrics are treated as signals, but the prompt itself must still be usable."
+  ],
+  "mistakesTitle": "Small changes that make a copied prompt feel original",
+  "mistakesText": "Use the source prompt as scaffolding, then make enough decisions that the result belongs to your idea.",
+  "mistakes": [
+    {
+      "title": "Changing the subject but leaving the old scene",
+      "text": "Change the environment and final frame with the subject, or the output feels patched together."
+    },
+    {
+      "title": "Deleting the timing because it looks verbose",
+      "text": "The timing often makes the clip feel controlled. Remove it only when the motion is genuinely simple."
+    },
+    {
+      "title": "Keeping camera moves that do not fit your idea",
+      "text": "Keep the intent, not every camera word from the source."
+    }
+  ],
+  "faqTitle": "Seedance 2.0 prompt library FAQ",
+  "faqs": [
+    {
+      "q": "Who is this Seedance 2.0 prompt library for?",
+      "a": "It is for creators who want to make AI videos without writing prompts from scratch. Beginners can copy a source-backed prompt directly, while marketers and prompt creators can remix the structure."
+    },
+    {
+      "q": "Why use X examples instead of generic prompt formulas?",
+      "a": "X examples give you a real creative reference, a public source, and a clearer sense of what might work on social media."
+    },
+    {
+      "q": "How do I make my own viral-style Seedance prompt?",
+      "a": "Choose a proven template, keep its creative hook, replace the content with your own subject, then make the first frame and final frame easy to understand."
+    }
+  ]
+}

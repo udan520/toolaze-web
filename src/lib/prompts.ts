@@ -29,7 +29,29 @@ export type PromptItem = {
   promptSource?: string
 }
 
+export type PromptCollectionSummary = {
+  name: string
+  slug: string
+  count: number
+}
+
+export type PromptDataManifest = {
+  total: number
+  models: PromptCollectionSummary[]
+  categories: PromptCollectionSummary[]
+  modelCategoryCounts: Record<string, Record<string, number>>
+}
+
 const PROMPTS_DATA_FILE = path.join(process.cwd(), 'public/prompts-data.json')
+
+export function promptCollectionSlug(value: string): string {
+  return value
+    .toLowerCase()
+    .replace(/&/g, 'and')
+    .replace(/\+/g, 'plus')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+}
 
 export function getPromptItems(): PromptItem[] {
   if (!fs.existsSync(PROMPTS_DATA_FILE)) return []
@@ -51,6 +73,33 @@ export function getPromptStats(items: PromptItem[]) {
     total: items.length,
     likes: items.reduce((sum, item) => sum + Number(item.likes || 0), 0),
     views: items.reduce((sum, item) => sum + Number(item.views || 0), 0),
+  }
+}
+
+export function getPromptDataManifest(items = getPromptItems()): PromptDataManifest {
+  const modelCounts = new Map<string, number>()
+  const categoryCounts = new Map<string, number>()
+  const modelCategoryCounts: Record<string, Record<string, number>> = {}
+
+  items.forEach((item) => {
+    modelCounts.set(item.model, (modelCounts.get(item.model) || 0) + 1)
+    categoryCounts.set(item.category, (categoryCounts.get(item.category) || 0) + 1)
+
+    if (!modelCategoryCounts[item.model]) modelCategoryCounts[item.model] = {}
+    modelCategoryCounts[item.model][item.category] = (modelCategoryCounts[item.model][item.category] || 0) + 1
+  })
+
+  const toSummary = ([name, count]: [string, number]) => ({
+    name,
+    slug: promptCollectionSlug(name),
+    count,
+  })
+
+  return {
+    total: items.length,
+    models: Array.from(modelCounts.entries()).map(toSummary),
+    categories: Array.from(categoryCounts.entries()).map(toSummary),
+    modelCategoryCounts,
   }
 }
 

@@ -24,6 +24,15 @@ function scoreRelatedItem(baseItem: PromptItem, item: PromptItem, tokens: Set<st
   return score
 }
 
+function collectionSlug(value: string): string {
+  return value
+    .toLowerCase()
+    .replace(/&/g, 'and')
+    .replace(/\+/g, 'plus')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+}
+
 export default function RelatedTemplatesLoader({ baseItem }: { baseItem: PromptItem }) {
   const [relatedItems, setRelatedItems] = useState<PromptItem[]>([])
   const [isLoading, setIsLoading] = useState(true)
@@ -32,7 +41,7 @@ export default function RelatedTemplatesLoader({ baseItem }: { baseItem: PromptI
     let cancelled = false
 
     const loadRelated = () => {
-      fetch('/prompts-data.json')
+      fetch(`/prompts-data/models/${collectionSlug(baseItem.model)}.json`)
         .then((response) => response.json())
         .then((items: PromptItem[]) => {
           if (cancelled || !Array.isArray(items)) return

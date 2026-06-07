@@ -28,7 +28,7 @@ jobs:
       - name: Check Next.js config
         run: |
           echo "检查 next.config.js..."
-          if ! grep -q "output: 'export'" next.config.js; then
+          if ! grep -Eq "output:\s*'export'|output:\s*[^,\n]*\?\s*'export'\s*:\s*undefined" next.config.js; then
             echo "❌ 错误: next.config.js 中缺少 output: 'export'"
             exit 1
           fi

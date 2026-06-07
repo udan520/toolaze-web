@@ -1,0 +1,135 @@
+{
+  "slug": "fashion-beauty",
+  "kind": "category",
+  "filterValue": "Mode & Schönheit",
+  "defaultCategory": "Mode & Schönheit",
+  "title": "KI-Mode- und Beauty-Prompt-Vorlagen aus viralen X-Beispielen | Toolaze",
+  "description": "Durchsuchen Sie quellenbasierte KI-Mode- und Beauty-Prompt-Vorlagen von X für Outfit-Wechsel, Porträts, Hautpflege-Anzeigen, Haarbewegungen, Styling-Clips und soziale Visuals.",
+  "heroTitle": "Erstellen Sie Mode- und Beauty-Visuals aus auf X geteilten Prompt-Vorlagen",
+  "heroDescription": "Mode- und Beauty-Prompts erfordern Identitätskonsistenz, Stoffverhalten, Styling-Details und eine starke visuelle Stimmung. Diese Seite sammelt echte Beispiele, die Sie kopieren, anpassen und für Outfits, Porträts, Beauty-Anzeigen und Transformations-Clips verwenden können.",
+  "howToTitle": "So verwenden Sie Mode- und Beauty-Prompt-Vorlagen",
+  "howToIntro": "Die besten Mode-Prompts schützen Identität und Styling, während sie eine visuelle Änderung beabsichtigt erscheinen lassen.",
+  "steps": [
+    {
+      "title": "Wählen Sie die visuelle Aufgabe",
+      "text": "Entscheiden Sie, ob Sie einen Outfit-Wechsel, ein Beauty-Porträt, eine Produktanzeige, Haarbewegung oder eine redaktionelle Szene benötigen."
+    },
+    {
+      "title": "Identität stabil halten",
+      "text": "Bewahren Sie Gesicht, Körperproportionen, Haare, Hautton, Outfit-Anker oder Produktverpackung, wenn der Quell-Prompt dies tut."
+    },
+    {
+      "title": "Styling-Details ersetzen",
+      "text": "Ändern Sie Stoff, Farbe, Accessoires, Make-up, Pose, Beleuchtung und Ort, um sie an Ihr Konzept anzupassen."
+    },
+    {
+      "title": "Realismus und Geschmack prüfen",
+      "text": "Überprüfen Sie Hände, Stofffalten, Gesichtskonsistenz und ob das Ergebnis wie eine echte Stilrichtung wirkt."
+    }
+  ],
+  "remixTitle": "Verwenden Sie die Vorlage als Styling-Briefing",
+  "remixText": "Ein Mode-Prompt funktioniert, wenn die Styling-Entscheidungen zusammenhängend wirken. Behalten Sie die Struktur bei und bauen Sie dann ein stimmiges Outfit, eine Stimmung und eine Kamerasprache auf.",
+  "patterns": [
+    {
+      "label": "Für Outfit-Wechsel",
+      "heading": "Verwenden Sie einen wiederholbaren Übergangsauslöser.",
+      "body": "Drehung, Ärmelschlag, Fächerbewegung, Berührung der Haare oder Kamera-Wischen können mehrere Looks organisieren."
+    },
+    {
+      "label": "Für Beauty-Anzeigen",
+      "heading": "Lassen Sie die Textur das Produkt verkaufen.",
+      "body": "Hautglanz, Cremetextur, Wasser, Licht und Nahaufnahmen können mehr bewirken als Slogans."
+    },
+    {
+      "label": "Für Porträts",
+      "heading": "Schützen Sie das Gesicht, bevor Sie den Stil ändern.",
+      "body": "Identitätsdrift schadet Mode-Prompts schnell, bewahren Sie daher zuerst Gesichtszüge und Ausdruck."
+    }
+  ],
+  "chooserTitle": "Wählen Sie eine Mode- und Beauty-Vorlage nach Ausgabetyp",
+  "chooserIntro": "Verwenden Sie das Format, das dem am nächsten kommt, was Sie posten möchten.",
+  "chooserRows": [
+    {
+      "goal": "Outfit-Transformation",
+      "startWith": "Eine klare Übergangsaktion und zeitlich abgestimmte Look-Änderungen.",
+      "bestFor": "TikTok-Reels, historische Kostümwechsel, Styling-Posts und Mode-Edits.",
+      "replace": "Garderobe, Stoff, Accessoires, Übergangsauslöser und Pose.",
+      "keep": "Identitätskonsistenz und Rhythmus."
+    },
+    {
+      "goal": "Beauty-Produkt-Visual",
+      "startWith": "Ein Moment der Produkttextur oder des Hautdetails.",
+      "bestFor": "Hautpflege-, Make-up-, Haarpflege-, Duft- und Wellness-Anzeigen.",
+      "replace": "Produkt, Hautton, Oberfläche, Inhaltsstoff-Hinweis und Beleuchtung.",
+      "keep": "Saubere Nahaufnahmen und Produktlesbarkeit."
+    },
+    {
+      "goal": "Redaktionelles Porträt",
+      "startWith": "Eine Person, Stimmung, Outfit und Kameraperspektive.",
+      "bestFor": "Avatare, Portfolio-Aufnahmen, Kampagnen-Visuals und Creator-Posts.",
+      "replace": "Gesichtsanker, Garderobe, Ort, Objektivgefühl und Farbpalette.",
+      "keep": "Anatomie, Ausdruck und Styling-Kohärenz."
+    }
+  ],
+  "answerTitle": "Was macht einen Mode-Prompt wiederverwendbar?",
+  "answerText": "Ein wiederverwendbarer Mode-Prompt trennt Person, Styling, Bewegung und Kamera. Sie können Kleidung, Produkt oder Umgebung austauschen, während Identität, Stoffverhalten und visueller Rhythmus stabil bleiben. Das macht es einfacher, mehrere Looks aus einem funktionierenden Format zu erstellen.",
+  "anatomyTitle": "Was ein Mode- und Beauty-Prompt normalerweise steuert",
+  "anatomyIntro": "Gute Mode-Prompts sind spezifisch, ohne zu einem Kostüm-Eintopf zu werden.",
+  "anatomy": [
+    {
+      "title": "Identitäts- und Körperkonsistenz",
+      "text": "Halten Sie Gesicht, Körperproportionen, Haare und Pose stabil, es sei denn, die Änderung ist beabsichtigt."
+    },
+    {
+      "title": "Garderobenmaterialien",
+      "text": "Nennen Sie Stoff, Passform, Farbe, Accessoires und wie sich die Kleidung bewegt."
+    },
+    {
+      "title": "Beauty-Details",
+      "text": "Steuern Sie Hauttextur, Make-up, Haare, Produkttextur und Beleuchtung."
+    },
+    {
+      "title": "Kamera und Plattform",
+      "text": "Verwenden Sie je nach Bedarf Halbnahaufnahme, Nahaufnahme, Spiegel-Selfie, redaktionelles Porträt oder vertikales Reel-Framing."
+    }
+  ],
+  "trustTitle": "Warum diese Mode- und Beauty-Vorlagen quellenbasiert sind",
+  "trustText": "Mode-Prompts werden leicht überpoliert. Quellenbasierte Beispiele machen es einfacher, den ursprünglichen Prompt und den sozialen Kontext zu sehen.",
+  "trustRules": [
+    "Jede Vorlage sollte auf eine öffentliche X-Quelle verweisen, nicht auf ein erfundenes Prompt-Beispiel.",
+    "Der sichtbare Prompt sollte der Sprache des ursprünglichen Beitrags oder Kommentars entsprechen, anstatt umgeschrieben zu werden.",
+    "Die Vorlage sollte genügend Kontext enthalten, damit ein Anfänger sie kopieren, ersetzen und testen kann.",
+    "Die Medien und Metriken werden als Signale behandelt, aber der Prompt selbst muss weiterhin nutzbar sein."
+  ],
+  "mistakesTitle": "Häufige Fehler bei Mode-Prompts",
+  "mistakesText": "Der schnellste Weg, einen Mode-Prompt zu schwächen, besteht darin, die Konsistenz zu ignorieren.",
+  "mistakes": [
+    {
+      "title": "Alle Details auf einmal ändern",
+      "text": "Halten Sie Identität und Kamera stabil, wenn Sie ein neues Outfit oder einen neuen Produktstil testen."
+    },
+    {
+      "title": "Stoffverhalten ignorieren",
+      "text": "Kleidung sollte so fallen, flattern, sich dehnen oder falten, dass es zur Bewegung passt."
+    },
+    {
+      "title": "Beauty-Details künstlich wirken lassen",
+      "text": "Natürliche Hauttextur und realistische Beleuchtung sehen normalerweise besser aus als übermäßig geglätteter Glanz."
+    }
+  ],
+  "faqTitle": "FAQ zu Mode- und Beauty-Prompt-Vorlagen",
+  "faqs": [
+    {
+      "q": "Können diese Vorlagen Outfit-Wechsel-Videos erstellen?",
+      "a": "Ja. Wählen Sie eine Transformationsvorlage und ersetzen Sie die Garderobe, die Übergangsaktion und die Styling-Details."
+    },
+    {
+      "q": "Kann ich sie für Beauty-Anzeigen verwenden?",
+      "a": "Ja. Beginnen Sie mit einer Produkt- oder Nahaufnahme-Vorlage und beschreiben Sie dann Textur, Beleuchtung, Hautdetails und den finalen Produktrahmen."
+    },
+    {
+      "q": "Was sollte ich in einem Mode-Prompt schützen?",
+      "a": "Schützen Sie die Identität, die Körperproportionen, die Stofflogik, die Accessoires und den Kameraabstand, der den Look lesbar macht."
+    }
+  ]
+}

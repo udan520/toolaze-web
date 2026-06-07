@@ -1,0 +1,135 @@
+{
+  "slug": "advertising",
+  "kind": "category",
+  "filterValue": "Advertising",
+  "defaultCategory": "Advertising",
+  "title": "AI Advertising Prompt Templates From Viral X Examples | Toolaze",
+  "description": "Copy source-backed AI advertising prompt templates from X for product ads, launch videos, packshots, food commercials, fashion promos, and social campaigns.",
+  "heroTitle": "Create Product Ads From AI Prompt Templates That Already Worked On X",
+  "heroDescription": "Good AI ad prompts do more than make a product look pretty. They show a benefit, create a reveal, and end with a frame people can understand quickly. This page collects advertising templates from real X examples across image and video models.",
+  "howToTitle": "How to use AI advertising prompt templates",
+  "howToIntro": "Start from the business goal, not the model name. A skincare ad, food commercial, app mockup, and fashion campaign need different prompt structure.",
+  "steps": [
+    {
+      "title": "Identify the product moment",
+      "text": "Choose whether the ad should show texture, transformation, use case, appetite appeal, speed, luxury, or a clear packshot."
+    },
+    {
+      "title": "Copy the ad structure",
+      "text": "Keep the source prompt rhythm: setup, reveal, detail shot, benefit, and final hero frame."
+    },
+    {
+      "title": "Replace brand-specific parts",
+      "text": "Swap product, audience, material, setting, color palette, and safe final frame."
+    },
+    {
+      "title": "Test if it works without a caption",
+      "text": "A strong ad result should communicate the product and benefit even before someone reads the post."
+    }
+  ],
+  "remixTitle": "Turn a viral prompt into a usable ad concept",
+  "remixText": "The point is not to copy another brand idea. Use the template to borrow pacing, clarity, and visual hierarchy, then rebuild it around your product.",
+  "patterns": [
+    {
+      "label": "For ecommerce",
+      "heading": "Make the product unmistakable.",
+      "body": "Keep shape, material, color, and final packshot clear enough for a buyer to understand instantly."
+    },
+    {
+      "label": "For social ads",
+      "heading": "Lead with the hook.",
+      "body": "Use a surprising reveal, tactile motion, or before-and-after contrast before the final brand frame."
+    },
+    {
+      "label": "For launches",
+      "heading": "Show why this product exists.",
+      "body": "A launch prompt should imply a problem, transformation, or aspiration rather than only showing a nice object."
+    }
+  ],
+  "chooserTitle": "Choose an advertising template by campaign goal",
+  "chooserIntro": "Use the closest campaign goal before choosing a model.",
+  "chooserRows": [
+    {
+      "goal": "Product reveal",
+      "startWith": "A hidden or quiet product moment that turns into a clean hero shot.",
+      "bestFor": "Beauty, food, tech, fashion, home goods, and accessories.",
+      "replace": "Product, reveal action, texture, lighting, and final packshot.",
+      "keep": "The reveal rhythm and product clarity."
+    },
+    {
+      "goal": "Lifestyle ad",
+      "startWith": "A person using the product in a believable setting.",
+      "bestFor": "Fitness, travel, skincare, apparel, apps, and creator brands.",
+      "replace": "User, location, product role, mood, and camera distance.",
+      "keep": "The benefit-first story and natural context."
+    },
+    {
+      "goal": "Poster or static ad",
+      "startWith": "A strong product image with readable hierarchy.",
+      "bestFor": "Social posts, thumbnails, launch graphics, and campaign visuals.",
+      "replace": "Headline, product, brand mood, background, and composition.",
+      "keep": "Margins, contrast, and first-read focal point."
+    }
+  ],
+  "answerTitle": "What makes an AI advertising prompt useful?",
+  "answerText": "A useful AI advertising prompt gives the product a visible job. It says what the viewer should notice, how the product appears, what benefit or emotion is shown, and what the final frame should communicate. Templates from X are helpful because they show ad formats that creators already tested publicly.",
+  "anatomyTitle": "What an AI ad prompt usually needs",
+  "anatomyIntro": "Ads need clearer hierarchy than generic aesthetic prompts.",
+  "anatomy": [
+    {
+      "title": "Product role",
+      "text": "Say whether the product is solving, revealing, transforming, satisfying, or elevating something."
+    },
+    {
+      "title": "Audience context",
+      "text": "Add who the scene is for, such as buyer, creator, traveler, athlete, gamer, or skincare user."
+    },
+    {
+      "title": "Brand-safe ending",
+      "text": "Describe a clean final frame that could work as a post, ad, or landing page visual."
+    },
+    {
+      "title": "Constraint control",
+      "text": "Protect logos, packaging, readable text, hands, and product proportions when relevant."
+    }
+  ],
+  "trustTitle": "Why these advertising templates are source-backed",
+  "trustText": "Ad prompt examples are only worth studying when the source, prompt, and result context are traceable.",
+  "trustRules": [
+    "Every template should point back to a public X source, not a made-up prompt example.",
+    "The visible prompt should match the original post or comment language instead of being rewritten.",
+    "The template should include enough context for a beginner to copy, replace, and test it.",
+    "The media and metrics are treated as signals, but the prompt itself must still be usable."
+  ],
+  "mistakesTitle": "Common AI ad prompt mistakes",
+  "mistakesText": "Weak ads often look polished but fail to sell the idea.",
+  "mistakes": [
+    {
+      "title": "Only asking for cinematic style",
+      "text": "A pretty shot is not an ad unless the product benefit is visible."
+    },
+    {
+      "title": "Forgetting the final frame",
+      "text": "The ending should be usable as a thumbnail, post, or packshot."
+    },
+    {
+      "title": "Overloading the prompt with brand claims",
+      "text": "Show the benefit visually instead of stuffing the image or video with text."
+    }
+  ],
+  "faqTitle": "AI advertising prompt template FAQ",
+  "faqs": [
+    {
+      "q": "Can I use these for ecommerce products?",
+      "a": "Yes. Start with a product reveal or packshot template, then replace the product, material, setting, and final frame."
+    },
+    {
+      "q": "Do advertising prompts work for both image and video models?",
+      "a": "Yes, but video prompts need motion and timing while image prompts need layout and hierarchy."
+    },
+    {
+      "q": "Why study X ad prompts?",
+      "a": "They show public examples of what creators are testing, liking, saving, and remixing."
+    }
+  ]
+}

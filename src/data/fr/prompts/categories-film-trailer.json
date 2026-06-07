@@ -1,0 +1,135 @@
+{
+  "slug": "film-trailer",
+  "kind": "category",
+  "filterValue": "Film & Bande-annonce",
+  "defaultCategory": "Film & Bande-annonce",
+  "title": "Modèles de prompts IA pour films et bandes-annonces issus d'exemples viraux sur X | Toolaze",
+  "description": "Copiez des modèles de prompts IA pour films et bandes-annonces sourcés sur X pour des plans cinématographiques, des scènes d'horreur, des mondes fantastiques, des séquences d'action et des clips d'histoires courtes.",
+  "heroTitle": "Créez des scènes IA cinématographiques à partir de modèles de prompts pour films et bandes-annonces",
+  "heroDescription": "Les prompts pour films et bandes-annonces nécessitent plus que le mot « cinématographique ». Ils ont besoin d'une mise en place, d'un comportement de caméra, d'une montée en puissance, d'une atmosphère et d'un plan final qui donne envie de voir la scène suivante. Cette page rassemble des exemples sourcés sur X pour ce type de travail.",
+  "howToTitle": "Comment utiliser les modèles de prompts pour films et bandes-annonces",
+  "howToIntro": "Traitez chaque prompt comme une petite liste de plans. Plus le rythme de la scène est clair, mieux le modèle peut la mettre en scène.",
+  "steps": [
+    {
+      "title": "Commencez par le genre et le décor",
+      "text": "Choisissez l'horreur, la fantasy, l'action, la science-fiction, une scène de créature ou un réalisme ancré avant de modifier les détails."
+    },
+    {
+      "title": "Conservez la progression des plans",
+      "text": "Un bon prompt de bande-annonce passe souvent d'une mise en place calme à une menace, une révélation, un impact ou un suspense final."
+    },
+    {
+      "title": "Remplacez les détails de l'univers",
+      "text": "Changez le lieu, le personnage, la créature, l'époque, l'éclairage, le conflit et la révélation finale."
+    },
+    {
+      "title": "Rendez la fin mémorable",
+      "text": "La dernière image doit ressembler à un moment fort de bande-annonce, pas à une pause aléatoire."
+    }
+  ],
+  "remixTitle": "Utilisez le prompt comme un plan de scène compact",
+  "remixText": "La valeur d'un modèle de bande-annonce réside dans l'ordre dramatique. Gardez la courbe de tension, puis écrivez votre propre univers autour.",
+  "patterns": [
+    {
+      "label": "Pour l'horreur",
+      "heading": "Retardez la révélation juste assez.",
+      "body": "Commencez par un détail normal, puis introduisez du mouvement, de l'échelle, de l'ombre ou du son avant que la créature ou la menace n'apparaisse."
+    },
+    {
+      "label": "Pour l'action",
+      "heading": "Organisez la caméra autour de l'impact.",
+      "body": "Les prompts d'action ont besoin d'une logique spatiale claire, pas seulement d'explosions et de mots de mouvement."
+    },
+    {
+      "label": "Pour la fantasy",
+      "heading": "Rendez le monde lisible rapidement.",
+      "body": "Donnez au modèle quelques ancres solides : terrain, costume, créature, comportement magique et lumière."
+    }
+  ],
+  "chooserTitle": "Choisissez un modèle de film et de bande-annonce par moment de l'histoire",
+  "chooserIntro": "Commencez par le type de scène que vous voulez que les spectateurs ressentent.",
+  "chooserRows": [
+    {
+      "goal": "Révélation de créature",
+      "startWith": "Un environnement calme et un mouvement non naturel.",
+      "bestFor": "Clips d'horreur, de monstres, de désert, de forêt, de science-fiction et de survie.",
+      "replace": "Créature, décor, échelle, éclairage et révélation finale.",
+      "keep": "Courbe de suspense et timing de la révélation."
+    },
+    {
+      "goal": "Séquence d'action",
+      "startWith": "Un conflit avec une direction et une position de caméra claires.",
+      "bestFor": "Combats, poursuites, explosions, scènes de bataille et clips de style jeu vidéo.",
+      "replace": "Personnages, armes, lieu, caméra et moment de l'impact.",
+      "keep": "Clarté spatiale et montée en puissance."
+    },
+    {
+      "goal": "Plan de construction d'univers",
+      "startWith": "Un lieu frappant avec un sujet en mouvement.",
+      "bestFor": "Paysages de fantasy, d'anime, historiques, de science-fiction et cinématographiques.",
+      "replace": "Monde, costume, créature, météo et sensation d'objectif.",
+      "keep": "Atmosphère et ancre visuelle de première lecture."
+    }
+  ],
+  "answerTitle": "Qu'est-ce qui fait qu'un prompt de bande-annonce IA fonctionne ?",
+  "answerText": "Un prompt de bande-annonce IA fonctionne lorsqu'il donne au modèle un court chemin dramatique : où la scène commence, ce qui change, comment la caméra la suit et quelle image finale vend l'histoire. Les exemples sourcés vous aident à étudier ces moments sans commencer par des adjectifs cinématographiques vides.",
+  "anatomyTitle": "Ce qu'un prompt de film et de bande-annonce contient généralement",
+  "anatomyIntro": "Les prompts cinématographiques ont besoin de structure, pas seulement de style.",
+  "anatomy": [
+    {
+      "title": "Promesse de genre",
+      "text": "Nommez le genre, le niveau de réalisme, l'époque et l'ambiance pour que la scène ait une direction claire."
+    },
+    {
+      "title": "Ordre des plans",
+      "text": "Décrivez la mise en place, la montée en puissance, la révélation et l'image finale dans une séquence compacte."
+    },
+    {
+      "title": "Comportement de la caméra",
+      "text": "Utilisez l'angle bas, le travelling, la caméra à l'épaule, le dolly, le gros plan, le plan large ou le POV uniquement lorsque cela sert la scène."
+    },
+    {
+      "title": "Contrôle atmosphérique",
+      "text": "L'éclairage, la météo, la poussière, la fumée, les indices sonores et l'échelle aident à vendre l'ambiance de la bande-annonce."
+    }
+  ],
+  "trustTitle": "Pourquoi ces modèles de films et de bandes-annonces sont sourcés",
+  "trustText": "Les exemples de prompts cinématographiques semblent souvent impressionnants mais produisent des scènes faibles. Les exemples sourcés vous permettent d'inspecter les prompts que les gens ont réellement partagés.",
+  "trustRules": [
+    "Chaque modèle doit renvoyer à une source X publique, et non à un exemple de prompt inventé.",
+    "Le prompt visible doit correspondre à la langue de la publication ou du commentaire d'origine au lieu d'être réécrit.",
+    "Le modèle doit inclure suffisamment de contexte pour qu'un débutant puisse le copier, le remplacer et le tester.",
+    "Les médias et les métriques sont traités comme des signaux, mais le prompt lui-même doit rester utilisable."
+  ],
+  "mistakesTitle": "Erreurs courantes dans les prompts de films",
+  "mistakesText": "La plupart des prompts cinématographiques faibles sont trop vagues ou trop chargés.",
+  "mistakes": [
+    {
+      "title": "Utiliser « cinématographique » comme seule direction",
+      "text": "Ajoutez la caméra, le décor, l'action et le plan final au lieu de vous fier à un seul mot de style."
+    },
+    {
+      "title": "Ajouter trop de personnages",
+      "text": "Les scènes IA courtes fonctionnent mieux avec un seul sujet ou conflit clair."
+    },
+    {
+      "title": "Sauter le moment de la révélation",
+      "text": "Un prompt de bande-annonce a besoin d'une raison pour que le spectateur continue de regarder."
+    }
+  ],
+  "faqTitle": "FAQ sur les modèles de prompts pour films et bandes-annonces",
+  "faqs": [
+    {
+      "q": "Ces prompts peuvent-ils créer de courtes bandes-annonces IA ?",
+      "a": "Oui. Ils sont mieux utilisés comme modèles de scènes courtes, puis développés avec votre propre décor, conflit et fin."
+    },
+    {
+      "q": "Ai-je besoin de termes cinématographiques avancés ?",
+      "a": "Non. Commencez par un ordre de plans simple et une instruction de caméra. Ajoutez des termes techniques seulement lorsqu'ils servent la scène."
+    },
+    {
+      "q": "Pourquoi utiliser des prompts de bandes-annonces sourcés ?",
+      "a": "Ils montrent comment les créateurs structurent publiquement les exemples cinématographiques, y compris la langue du prompt et le contexte social."
+    }
+  ]
+}

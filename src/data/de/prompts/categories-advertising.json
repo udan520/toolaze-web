@@ -1,0 +1,135 @@
+{
+  "slug": "advertising",
+  "kind": "category",
+  "filterValue": "Werbung",
+  "defaultCategory": "Werbung",
+  "title": "KI-Werbe-Prompt-Vorlagen aus viralen X-Beispielen | Toolaze",
+  "description": "Kopieren Sie quellenbasierte KI-Werbe-Prompt-Vorlagen von X für Produktanzeigen, Launch-Videos, Packshots, Lebensmittel-Werbespots, Mode-Promos und Social-Media-Kampagnen.",
+  "heroTitle": "Erstellen Sie Produktanzeigen aus KI-Prompt-Vorlagen, die bereits auf X funktionierten",
+  "heroDescription": "Gute KI-Werbe-Prompts machen mehr, als ein Produkt nur hübsch aussehen zu lassen. Sie zeigen einen Nutzen, erzeugen eine Enthüllung und enden mit einem Bild, das die Leute schnell verstehen. Diese Seite sammelt Werbevorlagen aus echten X-Beispielen für Bild- und Videomodelle.",
+  "howToTitle": "So verwenden Sie KI-Werbe-Prompt-Vorlagen",
+  "howToIntro": "Beginnen Sie beim Geschäftsziel, nicht beim Modellnamen. Eine Hautpflege-Anzeige, ein Lebensmittel-Werbespot, ein App-Mockup und eine Modekampagne benötigen unterschiedliche Prompt-Strukturen.",
+  "steps": [
+    {
+      "title": "Identifizieren Sie den Produktmoment",
+      "text": "Wählen Sie aus, ob die Anzeige Textur, Transformation, Anwendungsfall, Appetitanregung, Geschwindigkeit, Luxus oder einen klaren Packshot zeigen soll."
+    },
+    {
+      "title": "Kopieren Sie die Anzeigenstruktur",
+      "text": "Behalten Sie den Rhythmus des Quell-Prompts bei: Setup, Enthüllung, Detailaufnahme, Nutzen und finales Hero-Bild."
+    },
+    {
+      "title": "Markenspezifische Teile ersetzen",
+      "text": "Tauschen Sie Produkt, Zielgruppe, Material, Umgebung, Farbpalette und das sichere finale Bild aus."
+    },
+    {
+      "title": "Testen Sie, ob es ohne Bildunterschrift funktioniert",
+      "text": "Ein starkes Werbeergebnis sollte das Produkt und den Nutzen kommunizieren, noch bevor jemand den Beitrag liest."
+    }
+  ],
+  "remixTitle": "Verwandeln Sie einen viralen Prompt in ein nutzbares Anzeigenkonzept",
+  "remixText": "Es geht nicht darum, die Idee einer anderen Marke zu kopieren. Nutzen Sie die Vorlage, um Tempo, Klarheit und visuelle Hierarchie zu übernehmen, und bauen Sie sie dann um Ihr Produkt herum neu auf.",
+  "patterns": [
+    {
+      "label": "Für E-Commerce",
+      "heading": "Machen Sie das Produkt unverkennbar.",
+      "body": "Halten Sie Form, Material, Farbe und den finalen Packshot so klar, dass ein Käufer sie sofort versteht."
+    },
+    {
+      "label": "Für Social Ads",
+      "heading": "Beginnen Sie mit dem Hook.",
+      "body": "Nutzen Sie eine überraschende Enthüllung, taktile Bewegung oder einen Vorher-Nachher-Kontrast vor dem finalen Markenbild."
+    },
+    {
+      "label": "Für Launches",
+      "heading": "Zeigen Sie, warum dieses Produkt existiert.",
+      "body": "Ein Launch-Prompt sollte ein Problem, eine Transformation oder einen Wunsch implizieren, anstatt nur ein schönes Objekt zu zeigen."
+    }
+  ],
+  "chooserTitle": "Wählen Sie eine Werbevorlage nach Kampagnenziel",
+  "chooserIntro": "Nutzen Sie das am nächsten liegende Kampagnenziel, bevor Sie ein Modell wählen.",
+  "chooserRows": [
+    {
+      "goal": "Produktenthüllung",
+      "startWith": "Ein versteckter oder ruhiger Produktmoment, der in einen sauberen Hero-Shot übergeht.",
+      "bestFor": "Beauty, Lebensmittel, Technik, Mode, Haushaltswaren und Accessoires.",
+      "replace": "Produkt, Enthüllungsaktion, Textur, Beleuchtung und finaler Packshot.",
+      "keep": "Den Enthüllungsrhythmus und die Produktklarheit."
+    },
+    {
+      "goal": "Lifestyle-Anzeige",
+      "startWith": "Eine Person, die das Produkt in einer glaubwürdigen Umgebung verwendet.",
+      "bestFor": "Fitness, Reisen, Hautpflege, Bekleidung, Apps und Creator-Marken.",
+      "replace": "Nutzer, Ort, Produktrolle, Stimmung und Kameraentfernung.",
+      "keep": "Die Nutzen-orientierte Geschichte und den natürlichen Kontext."
+    },
+    {
+      "goal": "Poster oder statische Anzeige",
+      "startWith": "Ein starkes Produktbild mit lesbarer Hierarchie.",
+      "bestFor": "Social-Media-Beiträge, Thumbnails, Launch-Grafiken und Kampagnen-Visuals.",
+      "replace": "Überschrift, Produkt, Markenstimmung, Hintergrund und Komposition.",
+      "keep": "Ränder, Kontrast und den Fokuspunkt beim ersten Blick."
+    }
+  ],
+  "answerTitle": "Was macht einen KI-Werbe-Prompt nützlich?",
+  "answerText": "Ein nützlicher KI-Werbe-Prompt gibt dem Produkt eine sichtbare Aufgabe. Er besagt, was der Betrachter bemerken soll, wie das Produkt erscheint, welcher Nutzen oder welche Emotion gezeigt wird und was das finale Bild kommunizieren soll. Vorlagen von X sind hilfreich, weil sie Anzeigenformate zeigen, die Creator bereits öffentlich getestet haben.",
+  "anatomyTitle": "Was ein KI-Werbe-Prompt normalerweise benötigt",
+  "anatomyIntro": "Anzeigen benötigen eine klarere Hierarchie als generische ästhetische Prompts.",
+  "anatomy": [
+    {
+      "title": "Produktrolle",
+      "text": "Geben Sie an, ob das Produkt etwas löst, enthüllt, transformiert, befriedigt oder aufwertet."
+    },
+    {
+      "title": "Zielgruppenkontext",
+      "text": "Fügen Sie hinzu, für wen die Szene gedacht ist, z. B. Käufer, Creator, Reisende, Sportler, Gamer oder Hautpflege-Nutzer."
+    },
+    {
+      "title": "Markensicheres Ende",
+      "text": "Beschreiben Sie ein sauberes finales Bild, das als Beitrag, Anzeige oder Landingpage-Visual funktionieren könnte."
+    },
+    {
+      "title": "Kontrolle von Einschränkungen",
+      "text": "Schützen Sie Logos, Verpackungen, lesbaren Text, Hände und Produktproportionen, sofern relevant."
+    }
+  ],
+  "trustTitle": "Warum diese Werbevorlagen quellenbasiert sind",
+  "trustText": "Beispiele für Werbe-Prompts sind nur dann untersuchenswert, wenn Quelle, Prompt und Ergebniskontext nachvollziehbar sind.",
+  "trustRules": [
+    "Jede Vorlage sollte auf eine öffentliche X-Quelle verweisen, nicht auf ein erfundenes Prompt-Beispiel.",
+    "Der sichtbare Prompt sollte der Sprache des Originalbeitrags oder -kommentars entsprechen, anstatt umgeschrieben zu werden.",
+    "Die Vorlage sollte genügend Kontext enthalten, damit ein Anfänger sie kopieren, ersetzen und testen kann.",
+    "Die Medien und Metriken werden als Signale behandelt, aber der Prompt selbst muss weiterhin nutzbar sein."
+  ],
+  "mistakesTitle": "Häufige Fehler bei KI-Werbe-Prompts",
+  "mistakesText": "Schwache Anzeigen sehen oft poliert aus, schaffen es aber nicht, die Idee zu verkaufen.",
+  "mistakes": [
+    {
+      "title": "Nur nach filmischem Stil fragen",
+      "text": "Eine schöne Aufnahme ist keine Anzeige, wenn der Produktnutzen nicht sichtbar ist."
+    },
+    {
+      "title": "Das finale Bild vergessen",
+      "text": "Das Ende sollte als Thumbnail, Beitrag oder Packshot verwendbar sein."
+    },
+    {
+      "title": "Den Prompt mit Markenversprechen überladen",
+      "text": "Zeigen Sie den Nutzen visuell, anstatt das Bild oder Video mit Text vollzustopfen."
+    }
+  ],
+  "faqTitle": "FAQ zu KI-Werbe-Prompt-Vorlagen",
+  "faqs": [
+    {
+      "q": "Kann ich diese für E-Commerce-Produkte verwenden?",
+      "a": "Ja. Beginnen Sie mit einer Produktenthüllung oder einer Packshot-Vorlage und ersetzen Sie dann das Produkt, das Material, die Umgebung und das finale Bild."
+    },
+    {
+      "q": "Funktionieren Werbe-Prompts sowohl für Bild- als auch für Videomodelle?",
+      "a": "Ja, aber Video-Prompts benötigen Bewegung und Timing, während Bild-Prompts Layout und Hierarchie benötigen."
+    },
+    {
+      "q": "Warum X-Werbe-Prompts untersuchen?",
+      "a": "Sie zeigen öffentliche Beispiele dafür, was Creator testen, liken, speichern und remixen."
+    }
+  ]
+}

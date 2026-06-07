@@ -1,0 +1,135 @@
+{
+  "slug": "film-trailer",
+  "kind": "category",
+  "filterValue": "Cine y Tráiler",
+  "defaultCategory": "Cine y Tráiler",
+  "title": "Plantillas de Prompts de IA para Cine y Tráiler de Ejemplos Virales de X | Toolaze",
+  "description": "Copia plantillas de prompts de IA para cine y tráiler con fuentes respaldadas de X para tomas cinematográficas, escenas de terror, mundos de fantasía, secuencias de acción y clips de historias cortas.",
+  "heroTitle": "Crea Escenas de IA Cinematográficas a Partir de Plantillas de Prompts para Cine y Tráiler",
+  "heroDescription": "Los prompts para cine y tráiler necesitan más que la palabra cinematográfico. Requieren una configuración, comportamiento de cámara, escalada, atmósfera y una toma final que haga que la gente quiera ver la siguiente escena. Esta página recopila ejemplos con fuentes respaldadas de X para ese tipo de trabajo.",
+  "howToTitle": "Cómo usar las plantillas de prompts para cine y tráiler",
+  "howToIntro": "Trata cada prompt como una pequeña lista de tomas. Cuanto más claro sea el ritmo de la escena, mejor podrá el modelo escenificarla.",
+  "steps": [
+    {
+      "title": "Comienza con el género y la ambientación",
+      "text": "Elige terror, fantasía, acción, ciencia ficción, escena de criaturas o realismo antes de cambiar los detalles."
+    },
+    {
+      "title": "Mantén la progresión de la toma",
+      "text": "Un buen prompt de tráiler suele pasar de una configuración tranquila a una amenaza, revelación, impacto o suspenso."
+    },
+    {
+      "title": "Reemplaza los detalles del mundo",
+      "text": "Cambia la ubicación, el personaje, la criatura, la época, la iluminación, el conflicto y la revelación final."
+    },
+    {
+      "title": "Haz que el final sea memorable",
+      "text": "El último fotograma debe sentirse como un ritmo de tráiler, no como una pausa aleatoria."
+    }
+  ],
+  "remixTitle": "Usa el prompt como un plano de escena compacto",
+  "remixText": "El valor de una plantilla de tráiler es el orden dramático. Mantén la curva de tensión y luego escribe tu propio mundo a su alrededor.",
+  "patterns": [
+    {
+      "label": "Para terror",
+      "heading": "Retrasa la revelación lo justo.",
+      "body": "Comienza con un detalle normal, luego introduce movimiento, escala, sombra o sonido antes de que aparezca la criatura o la amenaza."
+    },
+    {
+      "label": "Para acción",
+      "heading": "Escenifica la cámara en torno al impacto.",
+      "body": "Los prompts de acción necesitan una lógica espacial clara, no solo explosiones y palabras de movimiento."
+    },
+    {
+      "label": "Para fantasía",
+      "heading": "Haz que el mundo sea legible rápidamente.",
+      "body": "Dale al modelo algunos anclajes fuertes: terreno, vestuario, criatura, comportamiento de la magia y luz."
+    }
+  ],
+  "chooserTitle": "Elige una plantilla de cine y tráiler por ritmo de historia",
+  "chooserIntro": "Comienza con el tipo de escena que quieres que sientan los espectadores.",
+  "chooserRows": [
+    {
+      "goal": "Revelación de criatura",
+      "startWith": "Un entorno tranquilo y un movimiento antinatural.",
+      "bestFor": "Clips de terror, monstruos, desierto, bosque, ciencia ficción y supervivencia.",
+      "replace": "Criatura, ambientación, escala, iluminación y revelación final.",
+      "keep": "Curva de suspenso y tiempo de revelación."
+    },
+    {
+      "goal": "Secuencia de acción",
+      "startWith": "Un conflicto con dirección clara y posición de cámara.",
+      "bestFor": "Peleas, persecuciones, explosiones, escenas de batalla y clips de estilo de juego.",
+      "replace": "Personajes, armas, ubicación, cámara y momento de impacto.",
+      "keep": "Claridad espacial y escalada."
+    },
+    {
+      "goal": "Toma de construcción de mundo",
+      "startWith": "Una ubicación impactante con un sujeto en movimiento.",
+      "bestFor": "Paisajes de fantasía, anime, históricos, ciencia ficción y cinematográficos.",
+      "replace": "Mundo, vestuario, criatura, clima y sensación de lente.",
+      "keep": "Atmósfera y anclaje visual de primera lectura."
+    }
+  ],
+  "answerTitle": "¿Qué hace que un prompt de tráiler de IA funcione?",
+  "answerText": "Un prompt de tráiler de IA funciona cuando le da al modelo un camino dramático corto: dónde comienza la escena, qué cambia, cómo la sigue la cámara y qué fotograma final vende la historia. Los ejemplos con fuentes respaldadas te ayudan a estudiar esos ritmos sin empezar desde adjetivos cinematográficos vacíos.",
+  "anatomyTitle": "Lo que suele contener un prompt de cine y tráiler",
+  "anatomyIntro": "Los prompts cinematográficos necesitan estructura, no solo estilo.",
+  "anatomy": [
+    {
+      "title": "Promesa de género",
+      "text": "Nombra el género, el nivel de realismo, la época y el estado de ánimo para que la escena tenga una dirección clara."
+    },
+    {
+      "title": "Orden de las tomas",
+      "text": "Describe la configuración, la escalada, la revelación y la imagen final en una secuencia compacta."
+    },
+    {
+      "title": "Comportamiento de la cámara",
+      "text": "Usa ángulo bajo, seguimiento, cámara en mano, dolly, primer plano, toma amplia o POV solo cuando sirva a la escena."
+    },
+    {
+      "title": "Control atmosférico",
+      "text": "La iluminación, el clima, el polvo, el humo, las señales de sonido y la escala ayudan a vender la sensación de tráiler."
+    }
+  ],
+  "trustTitle": "Por qué estas plantillas de cine y tráiler tienen fuentes respaldadas",
+  "trustText": "Los ejemplos de prompts cinematográficos a menudo suenan impresionantes pero producen escenas débiles. Los ejemplos con fuentes respaldadas te permiten inspeccionar los prompts que la gente realmente compartió.",
+  "trustRules": [
+    "Cada plantilla debe remitir a una fuente pública de X, no a un ejemplo de prompt inventado.",
+    "El prompt visible debe coincidir con el idioma de la publicación o comentario original en lugar de ser reescrito.",
+    "La plantilla debe incluir suficiente contexto para que un principiante pueda copiarla, reemplazarla y probarla.",
+    "Los medios y las métricas se tratan como señales, pero el prompt en sí debe seguir siendo utilizable."
+  ],
+  "mistakesTitle": "Errores comunes en prompts de cine",
+  "mistakesText": "La mayoría de los prompts cinematográficos débiles son demasiado vagos o están demasiado saturados.",
+  "mistakes": [
+    {
+      "title": "Usar 'cinematográfico' como toda la dirección",
+      "text": "Añade cámara, ambientación, acción y fotograma final en lugar de confiar en una sola palabra de estilo."
+    },
+    {
+      "title": "Añadir demasiados personajes",
+      "text": "Las escenas cortas de IA funcionan mejor con un sujeto o conflicto claro."
+    },
+    {
+      "title": "Saltarse el ritmo de revelación",
+      "text": "Un prompt de tráiler necesita una razón para que el espectador siga mirando."
+    }
+  ],
+  "faqTitle": "Preguntas frecuentes sobre plantillas de prompts para cine y tráiler",
+  "faqs": [
+    {
+      "q": "¿Pueden estos prompts crear tráilers cortos de IA?",
+      "a": "Sí. Se utilizan mejor como plantillas de escenas cortas, que luego se expanden con tu propia ambientación, conflicto y final."
+    },
+    {
+      "q": "¿Necesito términos cinematográficos avanzados?",
+      "a": "No. Comienza con un orden de tomas simple y una instrucción de cámara. Añade términos cinematográficos solo cuando ayuden a la escena."
+    },
+    {
+      "q": "¿Por qué usar prompts de tráiler con fuentes respaldadas?",
+      "a": "Muestran cómo los creadores estructuran públicamente ejemplos cinematográficos, incluyendo el lenguaje del prompt y el contexto social."
+    }
+  ]
+}

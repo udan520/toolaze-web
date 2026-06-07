@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { useEffect, useMemo, useState } from 'react'
 import { usePathname } from 'next/navigation'
-import { getAllSlugs, getSeoContent } from '@/lib/seo-loader'
+import { getClientMenuItems, type ClientMenuItem } from '@/lib/client-menu-data'
 import {
   PREFERRED_LOCALE_STORAGE_KEY,
   SITE_LOCALES,
@@ -54,104 +54,6 @@ const defaultTranslations = {
   },
 }
 
-const emojiMenuFallbackItems = [
-  { slug: 'crying-copy-and-paste', title: 'Crying Emoji Copy and Paste' },
-  { slug: 'cross-copy-and-paste', title: 'Cross Emoji Copy and Paste' },
-  { slug: 'adults-only-copy-and-paste', title: 'Adults Only Emoji Copy and Paste' },
-  { slug: 'fire-copy-and-paste', title: 'Fire Emoji Copy and Paste' },
-  { slug: 'birthday-copy-and-paste', title: 'Birthday Emoji Copy and Paste' },
-  { slug: 'cat-copy-and-paste', title: 'Cat Emoji Copy and Paste' },
-]
-
-function getEmojiMenuFallbackTitle(translations: typeof defaultTranslations, slug: string) {
-  return translations.emojiMenu?.[slug as keyof typeof defaultTranslations.emojiMenu]
-    || emojiMenuFallbackItems.find((item) => item.slug === slug)?.title
-    || slug
-}
-
-// 加载翻译的函数
-async function loadTranslations(locale: string) {
-  try {
-    const read = (obj: unknown, key: string): string | undefined => {
-      if (!obj || typeof obj !== 'object') return undefined
-      const v = (obj as Record<string, unknown>)[key]
-      return typeof v === 'string' ? v : undefined
-    }
-
-    let normalizedLocale = locale
-    if (locale === 'zh' || locale === 'zh-CN' || locale === 'zh-HK') {
-      normalizedLocale = 'zh-TW'
-    }
-    
-    if (normalizedLocale === 'en') {
-      const data = await import('@/data/en/common.json')
-      const footerData = data.default?.footer || {}
-      const navData = data.default?.nav || {}
-      return {
-        ...defaultTranslations,
-        ...footerData,
-        // 从nav中获取二级菜单的翻译
-        aiVideo: read(navData, 'aiVideo') || read(footerData, 'aiVideo') || defaultTranslations.aiVideo,
-        aiImage: read(navData, 'aiImage') || read(footerData, 'aiImage') || defaultTranslations.aiImage,
-        imageCompression: read(navData, 'imageCompression') || read(footerData, 'imageCompression') || defaultTranslations.imageCompression,
-        imageConverter: read(navData, 'imageConverter') || read(footerData, 'imageConverter') || defaultTranslations.imageConverter,
-        fontGenerator: read(navData, 'fontGenerator') || read(footerData, 'fontGenerator') || defaultTranslations.fontGenerator,
-        emojiCopyAndPaste: read(navData, 'emojiCopyAndPaste') || read(footerData, 'emojiCopyAndPaste') || defaultTranslations.emojiCopyAndPaste,
-        seedance2: read(navData, 'seedance2') || read(footerData, 'seedance2') || defaultTranslations.seedance2,
-        kling3: read(navData, 'kling3') || read(footerData, 'kling3') || defaultTranslations.kling3,
-        nanoBananaPro: read(navData, 'nanoBananaPro') || read(footerData, 'nanoBananaPro') || defaultTranslations.nanoBananaPro,
-        nanoBanana2: read(navData, 'nanoBanana2') || read(footerData, 'nanoBanana2') || defaultTranslations.nanoBanana2,
-        aiTools: read(navData, 'aiTools') || read(footerData, 'aiTools') || defaultTranslations.aiTools,
-        watermarkRemover: read(navData, 'watermarkRemover') || read(footerData, 'watermarkRemover') || defaultTranslations.watermarkRemover,
-        photoRestoration: read(navData, 'photoRestoration') || read(footerData, 'photoRestoration') || defaultTranslations.photoRestoration,
-        aiCouplePhotoMaker: read(navData, 'aiCouplePhotoMaker') || read(footerData, 'aiCouplePhotoMaker') || defaultTranslations.aiCouplePhotoMaker,
-        emojiMenu: typeof navData.emojiMenu === 'object' && navData.emojiMenu ? navData.emojiMenu : defaultTranslations.emojiMenu,
-      }
-    }
-    
-    try {
-      const data = await import(`@/data/${normalizedLocale}/common.json`)
-      const footerData = data.default?.footer || {}
-      const navData = data.default?.nav || {}
-      return {
-        ...defaultTranslations,
-        ...footerData,
-        // 从nav中获取二级菜单的翻译
-        aiVideo: read(navData, 'aiVideo') || read(footerData, 'aiVideo') || defaultTranslations.aiVideo,
-        aiImage: read(navData, 'aiImage') || read(footerData, 'aiImage') || defaultTranslations.aiImage,
-        imageCompression: read(navData, 'imageCompression') || read(footerData, 'imageCompression') || defaultTranslations.imageCompression,
-        imageConverter: read(navData, 'imageConverter') || read(footerData, 'imageConverter') || defaultTranslations.imageConverter,
-        fontGenerator: read(navData, 'fontGenerator') || read(footerData, 'fontGenerator') || defaultTranslations.fontGenerator,
-        emojiCopyAndPaste: read(navData, 'emojiCopyAndPaste') || read(footerData, 'emojiCopyAndPaste') || defaultTranslations.emojiCopyAndPaste,
-        seedance2: read(navData, 'seedance2') || read(footerData, 'seedance2') || defaultTranslations.seedance2,
-        kling3: read(navData, 'kling3') || read(footerData, 'kling3') || defaultTranslations.kling3,
-        nanoBananaPro: read(navData, 'nanoBananaPro') || read(footerData, 'nanoBananaPro') || defaultTranslations.nanoBananaPro,
-        nanoBanana2: read(navData, 'nanoBanana2') || read(footerData, 'nanoBanana2') || defaultTranslations.nanoBanana2,
-        aiTools: read(navData, 'aiTools') || read(footerData, 'aiTools') || defaultTranslations.aiTools,
-        watermarkRemover: read(navData, 'watermarkRemover') || read(footerData, 'watermarkRemover') || defaultTranslations.watermarkRemover,
-        photoRestoration: read(navData, 'photoRestoration') || read(footerData, 'photoRestoration') || defaultTranslations.photoRestoration,
-        aiCouplePhotoMaker: read(navData, 'aiCouplePhotoMaker') || read(footerData, 'aiCouplePhotoMaker') || defaultTranslations.aiCouplePhotoMaker,
-        emojiMenu: typeof navData.emojiMenu === 'object' && navData.emojiMenu ? navData.emojiMenu : defaultTranslations.emojiMenu,
-      }
-    } catch {
-      return defaultTranslations
-    }
-  } catch {
-    return defaultTranslations
-  }
-}
-
-// 格式化工具标题
-function extractPageTitle(h1: string): string {
-  if (!h1) return ''
-  let cleanH1 = h1.replace(/<[^>]*>/g, '')
-  if (/^[a-zA-Z]/.test(cleanH1)) {
-    cleanH1 = cleanH1.replace(/^(Compress|Free|Convert|Optimize|Reduce|Generate|Create)\s+/i, '')
-    cleanH1 = cleanH1.replace(/\s+(Compression|Tool|Compressor|Converter|Optimizer|Generator)$/i, '')
-  }
-  return cleanH1.trim() || h1.replace(/<[^>]*>/g, '')
-}
-
 function getInitialFooterTranslations(initialTranslations?: any) {
   if (!initialTranslations) return defaultTranslations
   return {
@@ -175,10 +77,10 @@ export default function Footer({ initialTranslations }: FooterProps = {}) {
   const [translations, setTranslations] = useState(getInitialFooterTranslations(initialTranslations))
   const [isMounted, setIsMounted] = useState(false)
   const [footerMenuData, setFooterMenuData] = useState<{
-    'image-compressor': Array<{slug: string, title: string, href: string}>
-    'image-converter': Array<{slug: string, title: string, href: string}>
-    'font-generator': Array<{slug: string, title: string, href: string}>
-    'emoji-copy-and-paste': Array<{slug: string, title: string, href: string}>
+    'image-compressor': ClientMenuItem[]
+    'image-converter': ClientMenuItem[]
+    'font-generator': ClientMenuItem[]
+    'emoji-copy-and-paste': ClientMenuItem[]
   }>({
     'image-compressor': [],
     'image-converter': [],
@@ -200,200 +102,20 @@ export default function Footer({ initialTranslations }: FooterProps = {}) {
       window.localStorage.setItem(PREFERRED_LOCALE_STORAGE_KEY, detectedLocale)
     }
     
-    // Load translations
-    const effectiveLocale = resolveLocaleForPath(pathname || '/', detectedLocale)
-    loadTranslations(effectiveLocale).then(setTranslations)
-  }, [pathname])
+    // 翻译由 server page 作为 initialTranslations 传入，避免客户端重复加载 common.json。
+    setTranslations(getInitialFooterTranslations(initialTranslations))
+  }, [pathname, initialTranslations])
 
-  // 加载页脚菜单数据
+  // 加载页脚菜单数据：客户端只使用轻量菜单元数据，避免把服务端 SEO loader 打进浏览器包。
   useEffect(() => {
-    const loadFooterMenuData = async () => {
-      const locale = resolveLocaleForPath(pathname || '/', currentLocale)
-      
-      // 生成带语言前缀的链接的辅助函数
-      const getHref = (href: string): string => {
-        if (href.startsWith('http')) return href
-        if (locale === 'en') return href
-        if (href.startsWith(`/${locale}`)) return href
-        return `/${locale}${href}`
-      }
-      
-      const data: {
-        'image-compressor': Array<{slug: string, title: string, href: string}>
-        'image-converter': Array<{slug: string, title: string, href: string}>
-        'font-generator': Array<{slug: string, title: string, href: string}>
-        'emoji-copy-and-paste': Array<{slug: string, title: string, href: string}>
-      } = {
-        'image-compressor': [],
-        'image-converter': [],
-        'font-generator': [],
-        'emoji-copy-and-paste': []
-      }
-      
-      // 加载 Image Compressor 的三级菜单（只显示 in_menu: true 的工具，最多显示8个）
-      try {
-        const compressorSlugs = await getAllSlugs('image-compressor', locale)
-        if (compressorSlugs && compressorSlugs.length > 0) {
-          const compressorItems = await Promise.all(
-            compressorSlugs.map(async (slug) => {
-              try {
-                const toolData = await getSeoContent('image-compressor', slug, locale)
-                // 只显示 in_menu: true 的工具
-                if (toolData?.in_menu !== true) {
-                  return null
-                }
-                let title = slug
-                if (toolData?.hero?.h1) {
-                  // 直接使用原始h1标题，移除HTML标签即可
-                  title = toolData.hero.h1.replace(/<[^>]*>/g, '').trim()
-                  if (!title) title = slug
-                }
-                return {
-                  slug,
-                  title,
-                  href: getHref(`/image-compressor/${slug}`),
-                }
-              } catch (err) {
-                return null
-              }
-            })
-          )
-          // 过滤并限制最多8个
-          const filteredItems = compressorItems.filter((item): item is { slug: string; title: string; href: string } => 
-            item !== null && item.title !== undefined && item.href !== undefined
-          )
-          data['image-compressor'] = filteredItems.slice(0, 8)
-        }
-      } catch (error) {
-        console.error('Failed to load image-compressor menu items:', error)
-      }
-      
-      // 加载 Image Converter 的三级菜单（只显示 in_menu: true 的工具，最多显示8个）
-      try {
-        const converterSlugs = await getAllSlugs('image-converter', locale)
-        if (converterSlugs && converterSlugs.length > 0) {
-          const converterItems = await Promise.all(
-            converterSlugs.slice(0, 8).map(async (slug) => {
-              try {
-                const toolData = await getSeoContent('image-converter', slug, locale)
-                if (toolData?.in_menu === false) {
-                  return null
-                }
-                let title = slug
-                if (toolData?.hero?.h1) {
-                  // 直接使用原始h1标题，移除HTML标签即可
-                  title = toolData.hero.h1.replace(/<[^>]*>/g, '').trim()
-                  if (!title) title = slug
-                }
-                return {
-                  slug,
-                  title,
-                  href: getHref(`/image-converter/${slug}`),
-                }
-              } catch (err) {
-                return null
-              }
-            })
-          )
-          data['image-converter'] = converterItems.filter((item): item is { slug: string; title: string; href: string } => 
-            item !== null && item.title !== undefined && item.href !== undefined
-          )
-        }
-      } catch (error) {
-        console.error('Failed to load image-converter menu items:', error)
-      }
-      
-      // 加载 Font Generator 的三级菜单（显示搜索量最大的8个）
-      const topFontGeneratorSlugs = ['cursive', 'fancy', 'bold', 'tattoo', 'cool', 'instagram', 'italic', 'gothic']
-      try {
-        const fontGeneratorSlugs = await getAllSlugs('font-generator', locale)
-        const topSlugs = fontGeneratorSlugs.filter(slug => topFontGeneratorSlugs.includes(slug))
-        const sortedSlugs = topSlugs.sort((a, b) => {
-          const indexA = topFontGeneratorSlugs.indexOf(a)
-          const indexB = topFontGeneratorSlugs.indexOf(b)
-          return indexA - indexB
-        })
-        
-        const fontGeneratorItems = await Promise.all(
-          sortedSlugs.map(async (slug) => {
-            try {
-              const toolData = await getSeoContent('font-generator', slug, locale)
-              if (toolData?.in_menu === false) {
-                return null
-              }
-              let title = slug
-              if (toolData?.hero?.h1) {
-                title = extractPageTitle(toolData.hero.h1)
-                if (!title) title = slug
-              }
-              return {
-                slug,
-                title,
-                href: getHref(`/font-generator/${slug}`),
-              }
-            } catch (err) {
-              return null
-            }
-          })
-        )
-        data['font-generator'] = fontGeneratorItems.filter((item): item is { slug: string; title: string; href: string } => 
-          item !== null && item.title !== undefined && item.href !== undefined
-        )
-      } catch (error) {
-        console.error('Failed to load font-generator menu items:', error)
-      }
-      
-      // 加载 Emoji Copy & Paste 的三级菜单（全部 6 个 L3 页面）
-      try {
-        const emojiSlugs = await getAllSlugs('emoji-copy-and-paste', locale)
-        const slugs = emojiSlugs && emojiSlugs.length > 0
-          ? emojiSlugs
-          : emojiMenuFallbackItems.map((item) => item.slug)
-        if (slugs.length > 0) {
-          const emojiItems = await Promise.all(
-            slugs.map(async (slug) => {
-              try {
-                const toolData = await getSeoContent('emoji-copy-and-paste', slug, locale)
-                if (toolData?.in_menu === false) return null
-                return {
-                  slug,
-                  title: getEmojiMenuFallbackTitle(translations, slug),
-                  href: getHref(`/emoji-copy-and-paste/${slug}`),
-                }
-              } catch (err) {
-                return {
-                  slug,
-                  title: getEmojiMenuFallbackTitle(translations, slug),
-                  href: getHref(`/emoji-copy-and-paste/${slug}`),
-                }
-              }
-            })
-          )
-          const filteredEmojiItems = emojiItems.filter((item): item is { slug: string; title: string; href: string } =>
-            item !== null && item.title !== undefined && item.href !== undefined
-          )
-          data['emoji-copy-and-paste'] = filteredEmojiItems.length > 0
-            ? filteredEmojiItems
-            : emojiMenuFallbackItems.map((item) => ({
-                slug: item.slug,
-                title: getEmojiMenuFallbackTitle(translations, item.slug),
-                href: getHref(`/emoji-copy-and-paste/${item.slug}`),
-              }))
-        }
-      } catch (error) {
-        console.error('Failed to load emoji-copy-and-paste menu items:', error)
-        data['emoji-copy-and-paste'] = emojiMenuFallbackItems.map((item) => ({
-          slug: item.slug,
-          title: getEmojiMenuFallbackTitle(translations, item.slug),
-          href: getHref(`/emoji-copy-and-paste/${item.slug}`),
-        }))
-      }
-      
-      setFooterMenuData(data)
-    }
-    
     if (isMounted) {
-      loadFooterMenuData()
+      const locale = resolveLocaleForPath(pathname || '/', currentLocale)
+      setFooterMenuData({
+        'image-compressor': getClientMenuItems('image-compressor', locale, translations),
+        'image-converter': getClientMenuItems('image-converter', locale, translations),
+        'font-generator': getClientMenuItems('font-generator', locale, translations),
+        'emoji-copy-and-paste': getClientMenuItems('emoji-copy-and-paste', locale, translations),
+      })
     }
   }, [currentLocale, pathname, isMounted, translations])
 

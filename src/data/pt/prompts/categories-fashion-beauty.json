@@ -1,0 +1,135 @@
+{
+  "slug": "fashion-beauty",
+  "kind": "category",
+  "filterValue": "Moda e Beleza",
+  "defaultCategory": "Moda e Beleza",
+  "title": "Modelos de Prompt de IA para Moda e Beleza de Exemplos Virais do X | Toolaze",
+  "description": "Explore modelos de prompt de IA para moda e beleza baseados em fontes do X para trocas de roupa, retratos, anúncios de cuidados com a pele, movimento capilar, clipes de estilo e visuais sociais.",
+  "heroTitle": "Crie Visuais de Moda e Beleza a Partir de Modelos de Prompt Compartilhados no X",
+  "heroDescription": "Prompts de moda e beleza precisam de consistência de identidade, comportamento do tecido, detalhes de estilo e um forte clima visual. Esta página reúne exemplos reais que você pode copiar, adaptar e usar para roupas, retratos, anúncios de beleza e clipes de transformação.",
+  "howToTitle": "Como usar modelos de prompt de moda e beleza",
+  "howToIntro": "Os melhores prompts de moda protegem a identidade e o estilo, fazendo com que uma mudança visual pareça intencional.",
+  "steps": [
+    {
+      "title": "Escolha a tarefa visual",
+      "text": "Decida se você precisa de uma troca de roupa, retrato de beleza, anúncio de produto, movimento capilar ou cena editorial."
+    },
+    {
+      "title": "Mantenha a identidade estável",
+      "text": "Preserve o rosto, proporções corporais, cabelo, tom de pele, âncora da roupa ou embalagem do produto quando o prompt de origem o fizer."
+    },
+    {
+      "title": "Substitua os detalhes de estilo",
+      "text": "Altere o tecido, cor, acessórios, maquiagem, pose, iluminação e localização para se adequar ao seu conceito."
+    },
+    {
+      "title": "Verifique o realismo e o gosto",
+      "text": "Revise mãos, dobras de tecido, consistência facial e se o resultado parece uma direção de estilo real."
+    }
+  ],
+  "remixTitle": "Use o modelo como um briefing de estilo",
+  "remixText": "Um prompt de moda funciona quando as escolhas de estilo parecem conectadas. Mantenha a estrutura e, em seguida, construa uma roupa, clima e linguagem de câmera coerentes.",
+  "patterns": [
+    {
+      "label": "Para trocas de roupa",
+      "heading": "Use um gatilho de transição repetível.",
+      "body": "Giro, movimento da manga, movimento do leque, toque no cabelo ou limpeza de câmera podem organizar vários looks."
+    },
+    {
+      "label": "Para anúncios de beleza",
+      "heading": "Deixe a textura vender o produto.",
+      "body": "Brilho da pele, textura de creme, água, luz e detalhes em close-up podem fazer mais do que slogans."
+    },
+    {
+      "label": "Para retratos",
+      "heading": "Proteja o rosto antes de mudar o estilo.",
+      "body": "A deriva de identidade prejudica os prompts de moda rapidamente, portanto, preserve as características faciais e a expressão primeiro."
+    }
+  ],
+  "chooserTitle": "Escolha um modelo de moda e beleza por tipo de saída",
+  "chooserIntro": "Use o formato mais próximo do que você deseja postar.",
+  "chooserRows": [
+    {
+      "goal": "Transformação de roupa",
+      "startWith": "Uma ação de transição clara e mudanças de look cronometradas.",
+      "bestFor": "Reels estilo TikTok, trocas de trajes antigos, postagens de estilo e edições de moda.",
+      "replace": "Guarda-roupa, tecido, acessórios, gatilho de transição e pose.",
+      "keep": "Consistência de identidade e ritmo."
+    },
+    {
+      "goal": "Visual de produto de beleza",
+      "startWith": "Um momento de textura de produto ou detalhe de pele.",
+      "bestFor": "Anúncios de cuidados com a pele, maquiagem, cuidados com o cabelo, fragrâncias e bem-estar.",
+      "replace": "Produto, tom de pele, superfície, indicação de ingrediente e iluminação.",
+      "keep": "Closes limpos e legibilidade do produto."
+    },
+    {
+      "goal": "Retrato editorial",
+      "startWith": "Uma pessoa, clima, roupa e perspectiva de câmera.",
+      "bestFor": "Avatares, fotos de portfólio, visuais de campanha e postagens de criadores.",
+      "replace": "Âncora facial, guarda-roupa, localização, sensação da lente e paleta de cores.",
+      "keep": "Anatomia, expressão e coerência de estilo."
+    }
+  ],
+  "answerTitle": "O que torna um prompt de moda reutilizável?",
+  "answerText": "Um prompt de moda reutilizável separa a pessoa, o estilo, o movimento e a câmera. Você pode trocar a roupa, o produto ou o cenário enquanto mantém a identidade, o comportamento do tecido e o ritmo visual estáveis. Isso facilita a criação de vários looks a partir de um único formato funcional.",
+  "anatomyTitle": "O que um prompt de moda e beleza geralmente controla",
+  "anatomyIntro": "Bons prompts de moda são específicos sem se tornarem uma mistura confusa de trajes.",
+  "anatomy": [
+    {
+      "title": "Consistência de identidade e corpo",
+      "text": "Mantenha o rosto, proporções corporais, cabelo e pose estáveis, a menos que a mudança seja intencional."
+    },
+    {
+      "title": "Materiais do guarda-roupa",
+      "text": "Nomeie o tecido, ajuste, cor, acessórios e como a roupa se move."
+    },
+    {
+      "title": "Detalhes de beleza",
+      "text": "Controle a textura da pele, maquiagem, cabelo, textura do produto e iluminação."
+    },
+    {
+      "title": "Câmera e plataforma",
+      "text": "Use plano médio, close-up, selfie no espelho, retrato editorial ou enquadramento de reel vertical conforme necessário."
+    }
+  ],
+  "trustTitle": "Por que estes modelos de moda e beleza são baseados em fontes",
+  "trustText": "Prompts de moda são fáceis de polir demais. Exemplos baseados em fontes facilitam a visualização do prompt original e do contexto social.",
+  "trustRules": [
+    "Cada modelo deve apontar para uma fonte pública do X, não para um exemplo de prompt inventado.",
+    "O prompt visível deve corresponder ao idioma original da postagem ou comentário, em vez de ser reescrito.",
+    "O modelo deve incluir contexto suficiente para um iniciante copiar, substituir e testar.",
+    "A mídia e as métricas são tratadas como sinais, mas o prompt em si ainda deve ser utilizável."
+  ],
+  "mistakesTitle": "Erros comuns em prompts de moda",
+  "mistakesText": "A maneira mais rápida de enfraquecer um prompt de moda é ignorar a consistência.",
+  "mistakes": [
+    {
+      "title": "Mudar todos os detalhes de uma vez",
+      "text": "Mantenha a identidade e a câmera estáveis ao testar uma nova roupa ou estilo de produto."
+    },
+    {
+      "title": "Ignorar o comportamento do tecido",
+      "text": "A roupa deve cair, flutuar, esticar ou dobrar de uma forma que combine com o movimento."
+    },
+    {
+      "title": "Deixar os detalhes de beleza ficarem artificiais",
+      "text": "Textura de pele natural e iluminação realista geralmente parecem melhores do que um polimento excessivamente suavizado."
+    }
+  ],
+  "faqTitle": "FAQ de modelos de prompt de moda e beleza",
+  "faqs": [
+    {
+      "q": "Estes modelos podem criar vídeos de troca de roupa?",
+      "a": "Sim. Escolha um modelo de transformação e substitua o guarda-roupa, a ação de transição e os detalhes de estilo."
+    },
+    {
+      "q": "Posso usá-los para anúncios de beleza?",
+      "a": "Sim. Comece com um modelo de produto ou close-up e, em seguida, descreva a textura, iluminação, detalhes da pele e o quadro final do produto."
+    },
+    {
+      "q": "O que devo proteger em um prompt de moda?",
+      "a": "Proteja a identidade, as proporções corporais, a lógica do tecido, os acessórios e a distância da câmera que torna o visual legível."
+    }
+  ]
+}

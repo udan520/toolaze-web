@@ -33,6 +33,7 @@ export const TOOL_SUPPORTED_LOCALES: Record<string, readonly string[]> = {
   'watermark-remover': ALL_LOCALE_CODES,
   'ai-couple-photo-maker': ALL_LOCALE_CODES,
   'photo-restoration': ALL_LOCALE_CODES,
+  'prompts': ALL_LOCALE_CODES,
   /** 无各语言 SEO 数据时由页面重定向到 `/ai-tools` */
   'ai-tools': ALL_LOCALE_CODES,
   /** `/[locale]/seedance-2` 占位，多由页面重定向到 `/model/seedance-2` */
@@ -51,7 +52,7 @@ const MODEL_SUPPORTED_LOCALES: Record<string, readonly string[]> = {
 }
 
 /** 无多语言 URL 的根路径；切换到其他语言时直接回英文 canonical */
-const ENGLISH_ONLY_ROOT_TOOLS = new Set<string>(['prompts'])
+const ENGLISH_ONLY_ROOT_TOOLS = new Set<string>()
 
 export function parseLocalePath(pathname: string): {
   pathLocale: string

@@ -1,0 +1,135 @@
+{
+  "slug": "seedance-2-0",
+  "kind": "model",
+  "filterValue": "Seedance 2.0",
+  "defaultModel": "Seedance 2.0",
+  "title": "Seedance 2.0 Prompt-Bibliothek aus viralen X-Beispielen | Toolaze",
+  "description": "Kopieren und remixen Sie quellengestützte Seedance 2.0 Prompts aus viralen X-Beispielen für Produktanzeigen, Trailer, Modeclips, Charakterbewegungen und Social-Media-Videos.",
+  "heroTitle": "Erstellen Sie Seedance 2.0 Videos aus Prompts, die auf X bereits funktioniert haben",
+  "heroDescription": "Die meisten Ersteller möchten keine Prompt-Ingenieure werden, bevor sie ihr erstes KI-Video erstellen. Diese Seite sammelt quellengestützte Seedance 2.0 Prompts von X, damit Sie eine bewährte Struktur kopieren, das Motiv durch Ihre eigene Idee ersetzen und schneller ein social-ready Video veröffentlichen können.",
+  "howToTitle": "So verwenden Sie Seedance 2.0 Prompts aus dieser Bibliothek",
+  "howToIntro": "Betrachten Sie jede Vorlage als Abkürzung, nicht als Zauberspruch. Beginnen Sie mit einem öffentlichen X-Prompt, kopieren Sie die Struktur, ersetzen Sie die Teile, die zu Ihrer Idee gehören, und vergleichen Sie das Ergebnis vor der Veröffentlichung mit dem Quellbeispiel.",
+  "steps": [
+    {
+      "title": "Wählen Sie eine bewährte Idee",
+      "text": "Beginnen Sie mit Prompts, die bereits in öffentlichen X-Posts erschienen sind, anstatt auf ein leeres Feld zu starren. Der Quellenlink, der Modell-Tag, der Prompt-Text und die Engagement-Daten helfen Ihnen zu sehen, auf welche kreativen Ansätze die Leute reagiert haben."
+    },
+    {
+      "title": "Kopieren Sie die Struktur",
+      "text": "Öffnen Sie eine Vorlage, kopieren Sie den Prompt und behalten Sie die Teile bei, die ihn funktionieren lassen: Motiv-Setup, zeitliche Abläufe, Kamerabewegung, visueller Stil und der finale Hook."
+    },
+    {
+      "title": "Ersetzen Sie den Inhalt",
+      "text": "Tauschen Sie Ihr Produkt, Ihren Charakter, Ihre Szene oder Ihr Referenzbild aus, während Sie den Rhythmus des Originals beibehalten. Das geht schneller, als einen kompletten cineastischen Prompt von Grund auf neu zu erfinden."
+    },
+    {
+      "title": "Generieren und vergleichen",
+      "text": "Nutzen Sie den ursprünglichen X-Post als kreativen Maßstab und passen Sie dann Kamerageschwindigkeit, Bewegungsabläufe, Identitätswahrung und visuelle Dichte an, bis sich das Ergebnis veröffentlichungsreif anfühlt."
+    }
+  ],
+  "remixTitle": "Kopieren Sie den Prompt und machen Sie die Idee zu Ihrer eigenen",
+  "remixText": "Eine gute Vorlage ist kein Käfig. Sie ist ein Gerüst. Behalten Sie den viralen Mechanismus bei, ändern Sie das Motiv und bauen Sie den Prompt um Ihr eigenes Produkt, Ihren Charakter, Ihr Bild oder Ihre Geschichte herum neu auf.",
+  "patterns": [
+    {
+      "label": "Für Anfänger",
+      "heading": "Zuerst den Prompt nutzen, danach das Handwerk lernen.",
+      "body": "Kopieren Sie eine Vorlage, ändern Sie das Motiv, generieren Sie ein Ergebnis und untersuchen Sie dann, welche Teile die Bewegung, das Aussehen und das finale Bild gesteuert haben."
+    },
+    {
+      "label": "Für Social-Media-Posts",
+      "heading": "Remixen Sie den Hook, nicht nur das Bild.",
+      "body": "Behalten Sie den sichtbaren Hook bei: überraschende Transformation, zufriedenstellende Produktenthüllung, cineastische Kreaturenaufnahme, Charakterbewegung oder Vorher-Nachher-Kontrast."
+    },
+    {
+      "label": "Für Produktanzeigen",
+      "heading": "Verwandeln Sie eine Vorlage in ein wiederholbares Anzeigenformat.",
+      "body": "Ersetzen Sie das ursprüngliche Objekt durch Ihr Produkt, behalten Sie die Enthüllungssequenz bei und fügen Sie dann Packshot, Materialtextur, Anwendungsfall und den finalen Call-to-Action-Frame hinzu."
+    }
+  ],
+  "chooserTitle": "Wählen Sie die richtige Seedance 2.0 Prompt-Vorlage für das Video, das Sie posten möchten",
+  "chooserIntro": "Der einfachste Fehler ist es, einen guten Prompt für die falsche Aufgabe zu kopieren. Beginnen Sie mit dem Format, das Ihrem Ziel am nächsten kommt, und ändern Sie dann die Teile, die es zu Ihrem eigenen machen.",
+  "chooserRows": [
+    {
+      "goal": "Produktanzeige",
+      "startWith": "Ein kleines Produktproblem, eine haptische Änderung und ein sauberer Hero-Shot.",
+      "bestFor": "Kurze Anzeigen, E-Commerce-Kreativmaterial, Launch-Posts und Produktdemos.",
+      "replace": "Produktname, Material, Anwendungsfall, Hintergrund und logo-sicherer finaler Frame.",
+      "keep": "Enthüllungsrhythmus, Packshot-Ende, Kamerabewegung und Benefit-First-Setup."
+    },
+    {
+      "goal": "Mode-Transformation",
+      "startWith": "Ein Übergangsauslöser wie eine Drehung, ein Ärmelschnippen, eine Berührung der Haare oder eine Fächerbewegung.",
+      "bestFor": "Outfit-Wechsel, Beauty-Clips, Haarbewegungen, Styling-Posts und Charakter-Reels.",
+      "replace": "Charakter, Garderobe, Stoff, Accessoires, Ausdruck und Übergangsauslöser.",
+      "keep": "Identitätssperren, Stoffverhalten, zeitlich abgestimmte Outfit-Wechsel und Kameraabstand."
+    },
+    {
+      "goal": "Film-Trailer",
+      "startWith": "Ein ruhiges Setup, eine beunruhigende Bewegung oder ein Konflikt und ein finaler Hook-Frame.",
+      "bestFor": "Cineastische Szenen, Kreaturenaufnahmen, Horror-Momente, Action-Beats und Worldbuilding.",
+      "replace": "Setting, Kreatur, Konflikt, Beleuchtung, Sound-Cue und finale Enthüllung.",
+      "keep": "Shot-List-Struktur, Eskalation, Atmosphäre und Last-Frame-Hook."
+    }
+  ],
+  "answerTitle": "Was ist der schnellste Weg, um Seedance 2.0 Prompts zu verwenden?",
+  "answerText": "Beginnen Sie mit einem Prompt, der auf X bereits gut abgeschnitten hat. Wählen Sie eine Vorlage, die Ihrem Ziel nahe kommt, kopieren Sie den Original-Prompt, ersetzen Sie das Motiv oder Produkt, behalten Sie das Timing und die Kamerastruktur bei und generieren Sie dann eine neue Version.",
+  "anatomyTitle": "Was ein wiederverwendbarer Seedance-Prompt normalerweise enthält",
+  "anatomyIntro": "Sie müssen keine Prompt-Theorie auswendig lernen. Wenn eine Vorlage funktioniert, enthält sie normalerweise diese Teile, die direkt vor Ihren Augen liegen.",
+  "anatomy": [
+    {
+      "title": "Das, was den Zuschauern zuerst auffällt",
+      "text": "Benennen Sie das Produkt, den Charakter, die Kreatur oder die Szene deutlich."
+    },
+    {
+      "title": "Die Teile, die stabil bleiben müssen",
+      "text": "Schützen Sie bei Referenzbildern Gesicht, Outfit, Produktform, Logoplatzierung, Farbpalette, Pose oder Hintergrundperspektive."
+    },
+    {
+      "title": "Die Bewegung Schlag für Schlag",
+      "text": "Verwenden Sie Zeitspannen oder kurze Aktionsschritte, damit das Modell weiß, was sich zuerst, als Nächstes und zuletzt ändert."
+    },
+    {
+      "title": "Die Kamera, nicht nur der Stil",
+      "text": "Fügen Sie eine echte Kameraanweisung hinzu, wie z. B. Dolly-In, Locked Medium Shot, Macro Push, Orbit, Handheld-Zoom oder laterales Tracking."
+    }
+  ],
+  "trustTitle": "Warum diese Seedance 2.0 Prompt-Vorlagen quellengestützt sind",
+  "trustText": "Eine Prompt-Bibliothek ist nur nützlich, wenn die Beispiele nachvollziehbar, kopierbar und ehrlich in Bezug auf ihre Herkunft sind.",
+  "trustRules": [
+    "Jede Vorlage sollte auf eine öffentliche X-Quelle verweisen, nicht auf ein erfundenes Prompt-Beispiel.",
+    "Der sichtbare Prompt sollte der Sprache des Original-Posts oder -Kommentars entsprechen, anstatt umgeschrieben zu werden.",
+    "Die Vorlage sollte genügend Kontext enthalten, damit ein Anfänger sie kopieren, ersetzen und testen kann.",
+    "Die Medien und Metriken werden als Signale behandelt, aber der Prompt selbst muss weiterhin nutzbar sein."
+  ],
+  "mistakesTitle": "Kleine Änderungen, die einen kopierten Prompt originell wirken lassen",
+  "mistakesText": "Nutzen Sie den Quell-Prompt als Gerüst und treffen Sie dann genügend Entscheidungen, damit das Ergebnis zu Ihrer Idee gehört.",
+  "mistakes": [
+    {
+      "title": "Das Motiv ändern, aber die alte Szene beibehalten",
+      "text": "Ändern Sie die Umgebung und den finalen Frame zusammen mit dem Motiv, sonst wirkt das Ergebnis zusammengestückelt."
+    },
+    {
+      "title": "Das Timing löschen, weil es wortreich erscheint",
+      "text": "Das Timing sorgt oft dafür, dass sich der Clip kontrolliert anfühlt. Entfernen Sie es nur, wenn die Bewegung wirklich einfach ist."
+    },
+    {
+      "title": "Kamerabewegungen beibehalten, die nicht zu Ihrer Idee passen",
+      "text": "Behalten Sie die Absicht bei, nicht jedes Kamera-Wort aus der Quelle."
+    }
+  ],
+  "faqTitle": "Seedance 2.0 Prompt-Bibliothek FAQ",
+  "faqs": [
+    {
+      "q": "Für wen ist diese Seedance 2.0 Prompt-Bibliothek gedacht?",
+      "a": "Sie ist für Ersteller gedacht, die KI-Videos erstellen möchten, ohne Prompts von Grund auf neu zu schreiben. Anfänger können einen quellengestützten Prompt direkt kopieren, während Marketer und Prompt-Ersteller die Struktur remixen können."
+    },
+    {
+      "q": "Warum X-Beispiele anstelle von generischen Prompt-Formeln verwenden?",
+      "a": "X-Beispiele bieten Ihnen eine echte kreative Referenz, eine öffentliche Quelle und ein klareres Gefühl dafür, was in den sozialen Medien funktionieren könnte."
+    },
+    {
+      "q": "Wie erstelle ich meinen eigenen Seedance-Prompt im viralen Stil?",
+      "a": "Wählen Sie eine bewährte Vorlage, behalten Sie den kreativen Hook bei, ersetzen Sie den Inhalt durch Ihr eigenes Motiv und machen Sie das erste und das letzte Bild leicht verständlich."
+    }
+  ]
+}

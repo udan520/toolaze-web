@@ -1,0 +1,135 @@
+{
+  "slug": "kling",
+  "kind": "model",
+  "filterValue": "Kling",
+  "defaultModel": "Kling",
+  "title": "Modelos de Prompt Kling de Exemplos Virais do X | Toolaze",
+  "description": "Navegue por modelos de prompt Kling baseados em fontes do X para anúncios de produtos, cenas cinematográficas, clipes de moda, vídeos de anime e postagens em redes sociais.",
+  "heroTitle": "Crie Vídeos Kling a Partir de Formatos de Prompt que as Pessoas Já Compartilharam no X",
+  "heroDescription": "Os prompts do Kling funcionam melhor quando o movimento é específico: direção da câmera, movimento do assunto, ritmo da cena e um quadro final que valha a pena postar. Esta biblioteca ajuda você a começar com exemplos reais do X em vez de adivinhar em uma caixa de texto vazia.",
+  "howToTitle": "Como usar modelos de prompt Kling sem exagerar nos comandos",
+  "howToIntro": "O Kling consegue lidar com movimentos cinematográficos, mas prompts vagos geralmente tornam a cena confusa. Use o exemplo de origem como estrutura e mantenha a ação legível.",
+  "steps": [
+    {
+      "title": "Escolha o estilo de movimento mais próximo",
+      "text": "Comece com um modelo que já se mova como a sua ideia: vlog, revelação de produto, cena de trailer, ação de personagem ou transição de moda."
+    },
+    {
+      "title": "Mantenha uma ação principal",
+      "text": "Substitua o assunto, mas evite acumular muitos movimentos. Uma primeira ação clara geralmente supera uma cena lotada."
+    },
+    {
+      "title": "Proteja o quadro final",
+      "text": "Descreva o que a última cena deve mostrar, especialmente para anúncios, trailers e postagens sociais onde o final contém o gancho."
+    },
+    {
+      "title": "Ajuste a linguagem da câmera",
+      "text": "Troque os movimentos de câmera apenas quando eles se ajustarem à sua cena. Um prompt de vlog portátil não deve se tornar um comercial polido, a menos que seja intencional."
+    }
+  ],
+  "remixTitle": "Transforme um exemplo do Kling em seu próprio formato de vídeo",
+  "remixText": "A parte útil de um modelo Kling não é apenas a redação. É o ritmo: o que aparece primeiro, o que muda, o que a câmera segue e por que o quadro final é compartilhável.",
+  "patterns": [
+    {
+      "label": "Para anúncios",
+      "heading": "Torne o benefício visível antes do logotipo.",
+      "body": "Use um prompt de produto para mostrar textura, caso de uso, transformação ou apelo visual antes de pedir uma cena principal limpa."
+    },
+    {
+      "label": "Para trailers",
+      "heading": "Deixe a tensão crescer em uma direção.",
+      "body": "Um prompt de trailer Kling forte geralmente começa calmo, adiciona uma ameaça ou revelação e termina em um quadro que convida a assistir novamente."
+    },
+    {
+      "label": "Para criadores",
+      "heading": "Pegue emprestado o ritmo, não a história exata.",
+      "body": "Mantenha a estrutura de batidas da fonte e substitua o elenco, o cenário, os adereços e o desfecho final por algo que seja seu."
+    }
+  ],
+  "chooserTitle": "Escolha um modelo Kling pelo tipo de movimento que você precisa",
+  "chooserIntro": "Use a tabela como um atalho prático antes de navegar pelos modelos.",
+  "chooserRows": [
+    {
+      "goal": "Movimento de produto",
+      "startWith": "Uma ação tátil como despejar, desembrulhar, fatiar, brilhar, espirrar ou revelar.",
+      "bestFor": "Alimentos, beleza, e-commerce, promos de aplicativos e vídeos de lançamento.",
+      "replace": "Produto, cenário, ação manual, material e packshot final.",
+      "keep": "Tempo macro, revelação de benefício e final limpo."
+    },
+    {
+      "goal": "Cena cinematográfica",
+      "startWith": "Uma pequena lista de cenas com um conflito emocional ou físico.",
+      "bestFor": "Trailers, cenas de fantasia, terror, ação e construção de mundo.",
+      "replace": "Personagem, localização, ameaça, iluminação e movimento de câmera.",
+      "keep": "Escalada, atmosfera e o gancho final."
+    },
+    {
+      "goal": "Clipe de personagem social",
+      "startWith": "Um gesto, uma expressão e uma distância de câmera.",
+      "bestFor": "Animação de retrato, clipes de influenciadores, anime, mascotes e cenas estilo vlog.",
+      "replace": "Âncora de identidade, pose, emoção, fundo e formato da plataforma.",
+      "keep": "Consistência facial e batidas de movimento simples."
+    }
+  ],
+  "answerTitle": "Qual é a maneira mais rápida de escrever um prompt Kling?",
+  "answerText": "Comece com um modelo Kling baseado em fonte que já corresponda ao seu objetivo de movimento. Substitua o assunto e o cenário, mantenha o tempo e a estrutura da câmera e torne o final mais específico. O Kling geralmente melhora quando o prompt tem menos ações conflitantes e um quadro final mais claro.",
+  "anatomyTitle": "O que um prompt Kling reutilizável geralmente controla",
+  "anatomyIntro": "Bons prompts Kling dizem ao modelo o que deve se mover, o que deve permanecer estável e para onde o espectador deve olhar.",
+  "anatomy": [
+    {
+      "title": "Prioridade de movimento",
+      "text": "Nomeie o movimento que mais importa antes de adicionar detalhes secundários."
+    },
+    {
+      "title": "Distância da câmera",
+      "text": "Especifique close-up, plano médio, plano aberto, POV, câmera na mão, órbita ou câmera fixa quando isso mudar o resultado."
+    },
+    {
+      "title": "Continuidade da cena",
+      "text": "Mantenha o mesmo produto, rosto, roupa, iluminação ou localização durante a cena."
+    },
+    {
+      "title": "Desfecho social",
+      "text": "Defina o momento visual que faz o vídeo valer a pena ser postado ou remixado."
+    }
+  ],
+  "trustTitle": "Por que esses prompts Kling são baseados em fontes",
+  "trustText": "Um modelo Kling é mais útil quando você pode ver o contexto original e decidir se a ideia vale a pena ser adaptada.",
+  "trustRules": [
+    "Cada modelo deve apontar para uma fonte pública do X, não para um exemplo de prompt inventado.",
+    "O prompt visível deve corresponder ao idioma original da postagem ou comentário, em vez de ser reescrito.",
+    "O modelo deve incluir contexto suficiente para um iniciante copiar, substituir e testar.",
+    "A mídia e as métricas são tratadas como sinais, mas o prompt em si ainda deve ser utilizável."
+  ],
+  "mistakesTitle": "Erros comuns ao remixar no Kling",
+  "mistakesText": "A maioria dos remixes fracos falha porque o movimento se torna pouco claro.",
+  "mistakes": [
+    {
+      "title": "Adicionar cinco ações a um clipe curto",
+      "text": "Mantenha a ação principal legível. Movimentos extras podem fazer o Kling perder o assunto."
+    },
+    {
+      "title": "Esquecer o último quadro",
+      "text": "Uma postagem social precisa de um final claro, não apenas de um meio cinematográfico."
+    },
+    {
+      "title": "Usar o estilo de câmera errado",
+      "text": "Um prompt comercial e um prompt de vlog precisam de comportamentos de câmera diferentes."
+    }
+  ],
+  "faqTitle": "FAQ de modelos de prompt Kling",
+  "faqs": [
+    {
+      "q": "Iniciantes podem usar esses prompts Kling?",
+      "a": "Sim. Copie um modelo, substitua o assunto e a cena, e mantenha a estrutura de movimento até entender o que cada parte controla."
+    },
+    {
+      "q": "Esses prompts são apenas para anúncios em vídeo?",
+      "a": "Não. A biblioteca Kling inclui anúncios, trailers, movimento de personagens, cenas de fantasia, clipes de moda e formatos sociais."
+    },
+    {
+      "q": "Por que usar exemplos do X?",
+      "a": "Exemplos do X mostram formatos de prompt reais que as pessoas compartilharam publicamente, para que você possa estudar tanto a redação quanto o ângulo social."
+    }
+  ]
+}

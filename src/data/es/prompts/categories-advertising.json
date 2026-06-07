@@ -1,0 +1,135 @@
+{
+  "slug": "advertising",
+  "kind": "category",
+  "filterValue": "Publicidad",
+  "defaultCategory": "Publicidad",
+  "title": "Plantillas de prompts de publicidad con IA de ejemplos virales de X | Toolaze",
+  "description": "Copia plantillas de prompts de publicidad con IA respaldadas por fuentes de X para anuncios de productos, videos de lanzamiento, packshots, comerciales de comida, promociones de moda y campañas sociales.",
+  "heroTitle": "Crea anuncios de productos a partir de plantillas de prompts de IA que ya funcionaron en X",
+  "heroDescription": "Los buenos prompts de publicidad con IA hacen más que hacer que un producto se vea bonito. Muestran un beneficio, crean una revelación y terminan con un encuadre que la gente pueda entender rápidamente. Esta página recopila plantillas publicitarias de ejemplos reales de X en modelos de imagen y video.",
+  "howToTitle": "Cómo usar plantillas de prompts de publicidad con IA",
+  "howToIntro": "Comienza desde el objetivo comercial, no desde el nombre del modelo. Un anuncio de cuidado de la piel, un comercial de comida, una maqueta de aplicación y una campaña de moda necesitan estructuras de prompt diferentes.",
+  "steps": [
+    {
+      "title": "Identifica el momento del producto",
+      "text": "Elige si el anuncio debe mostrar textura, transformación, caso de uso, atractivo visual, velocidad, lujo o un packshot claro."
+    },
+    {
+      "title": "Copia la estructura del anuncio",
+      "text": "Mantén el ritmo del prompt original: configuración, revelación, toma de detalle, beneficio y encuadre hero final."
+    },
+    {
+      "title": "Reemplaza las partes específicas de la marca",
+      "text": "Cambia el producto, la audiencia, el material, el entorno, la paleta de colores y el encuadre final seguro."
+    },
+    {
+      "title": "Prueba si funciona sin subtítulo",
+      "text": "Un resultado publicitario sólido debe comunicar el producto y el beneficio incluso antes de que alguien lea la publicación."
+    }
+  ],
+  "remixTitle": "Convierte un prompt viral en un concepto publicitario utilizable",
+  "remixText": "El punto no es copiar la idea de otra marca. Usa la plantilla para tomar prestado el ritmo, la claridad y la jerarquía visual, luego reconstrúyela en torno a tu producto.",
+  "patterns": [
+    {
+      "label": "Para comercio electrónico",
+      "heading": "Haz que el producto sea inconfundible.",
+      "body": "Mantén la forma, el material, el color y el packshot final lo suficientemente claros para que un comprador los entienda al instante."
+    },
+    {
+      "label": "Para anuncios en redes sociales",
+      "heading": "Comienza con el gancho.",
+      "body": "Usa una revelación sorprendente, movimiento táctil o contraste antes y después antes del encuadre final de la marca."
+    },
+    {
+      "label": "Para lanzamientos",
+      "heading": "Muestra por qué existe este producto.",
+      "body": "Un prompt de lanzamiento debe implicar un problema, transformación o aspiración en lugar de solo mostrar un objeto bonito."
+    }
+  ],
+  "chooserTitle": "Elige una plantilla publicitaria por objetivo de campaña",
+  "chooserIntro": "Usa el objetivo de campaña más cercano antes de elegir un modelo.",
+  "chooserRows": [
+    {
+      "goal": "Revelación de producto",
+      "startWith": "Un momento de producto oculto o tranquilo que se convierte en una toma hero limpia.",
+      "bestFor": "Belleza, comida, tecnología, moda, artículos para el hogar y accesorios.",
+      "replace": "Producto, acción de revelación, textura, iluminación y packshot final.",
+      "keep": "El ritmo de revelación y la claridad del producto."
+    },
+    {
+      "goal": "Anuncio de estilo de vida",
+      "startWith": "Una persona usando el producto en un entorno creíble.",
+      "bestFor": "Fitness, viajes, cuidado de la piel, ropa, aplicaciones y marcas de creadores.",
+      "replace": "Usuario, ubicación, rol del producto, estado de ánimo y distancia de la cámara.",
+      "keep": "La historia centrada en el beneficio y el contexto natural."
+    },
+    {
+      "goal": "Póster o anuncio estático",
+      "startWith": "Una imagen de producto sólida con una jerarquía legible.",
+      "bestFor": "Publicaciones en redes sociales, miniaturas, gráficos de lanzamiento y visuales de campaña.",
+      "replace": "Titular, producto, estado de ánimo de la marca, fondo y composición.",
+      "keep": "Márgenes, contraste y punto focal de primera lectura."
+    }
+  ],
+  "answerTitle": "¿Qué hace que un prompt de publicidad con IA sea útil?",
+  "answerText": "Un prompt de publicidad con IA útil le da al producto un trabajo visible. Indica qué debe notar el espectador, cómo aparece el producto, qué beneficio o emoción se muestra y qué debe comunicar el encuadre final. Las plantillas de X son útiles porque muestran formatos de anuncios que los creadores ya probaron públicamente.",
+  "anatomyTitle": "Lo que suele necesitar un prompt de anuncio con IA",
+  "anatomyIntro": "Los anuncios necesitan una jerarquía más clara que los prompts estéticos genéricos.",
+  "anatomy": [
+    {
+      "title": "Rol del producto",
+      "text": "Indica si el producto está resolviendo, revelando, transformando, satisfaciendo o elevando algo."
+    },
+    {
+      "title": "Contexto de la audiencia",
+      "text": "Añade para quién es la escena, como comprador, creador, viajero, atleta, gamer o usuario de cuidado de la piel."
+    },
+    {
+      "title": "Final seguro para la marca",
+      "text": "Describe un encuadre final limpio que pueda funcionar como una publicación, anuncio o visual de página de destino."
+    },
+    {
+      "title": "Control de restricciones",
+      "text": "Protege logotipos, empaques, texto legible, manos y proporciones del producto cuando sea relevante."
+    }
+  ],
+  "trustTitle": "Por qué estas plantillas publicitarias están respaldadas por fuentes",
+  "trustText": "Los ejemplos de prompts publicitarios solo valen la pena estudiarlos cuando la fuente, el prompt y el contexto del resultado son rastreables.",
+  "trustRules": [
+    "Cada plantilla debe remitir a una fuente pública de X, no a un ejemplo de prompt inventado.",
+    "El prompt visible debe coincidir con el idioma original de la publicación o comentario en lugar de ser reescrito.",
+    "La plantilla debe incluir suficiente contexto para que un principiante pueda copiarla, reemplazarla y probarla.",
+    "Los medios y las métricas se tratan como señales, pero el prompt en sí debe seguir siendo utilizable."
+  ],
+  "mistakesTitle": "Errores comunes en prompts de anuncios con IA",
+  "mistakesText": "Los anuncios débiles a menudo se ven pulidos pero no logran vender la idea.",
+  "mistakes": [
+    {
+      "title": "Solo pedir estilo cinematográfico",
+      "text": "Una toma bonita no es un anuncio a menos que el beneficio del producto sea visible."
+    },
+    {
+      "title": "Olvidar el encuadre final",
+      "text": "El final debe ser utilizable como miniatura, publicación o packshot."
+    },
+    {
+      "title": "Sobrecargar el prompt con afirmaciones de marca",
+      "text": "Muestra el beneficio visualmente en lugar de saturar la imagen o el video con texto."
+    }
+  ],
+  "faqTitle": "Preguntas frecuentes sobre plantillas de prompts de publicidad con IA",
+  "faqs": [
+    {
+      "q": "¿Puedo usar estos para productos de comercio electrónico?",
+      "a": "Sí. Comienza con una plantilla de revelación de producto o packshot, luego reemplaza el producto, el material, el entorno y el encuadre final."
+    },
+    {
+      "q": "¿Funcionan los prompts publicitarios tanto para modelos de imagen como de video?",
+      "a": "Sí, pero los prompts de video necesitan movimiento y sincronización, mientras que los prompts de imagen necesitan diseño y jerarquía."
+    },
+    {
+      "q": "¿Por qué estudiar los prompts de anuncios de X?",
+      "a": "Muestran ejemplos públicos de lo que los creadores están probando, lo que les gusta, lo que guardan y lo que mezclan."
+    }
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "slug": "kling",
+  "kind": "model",
+  "filterValue": "Kling",
+  "defaultModel": "Kling",
+  "title": "Kling Prompt Templates From Viral X Examples | Toolaze",
+  "description": "Browse source-backed Kling prompt templates from X for product ads, cinematic scenes, fashion clips, anime videos, and social media posts.",
+  "heroTitle": "Create Kling Videos From Prompt Formats People Already Shared On X",
+  "heroDescription": "Kling prompts work best when the motion is specific: camera direction, subject movement, scene pacing, and a final frame that feels worth posting. This library helps you start from real X examples instead of guessing from a blank text box.",
+  "howToTitle": "How to use Kling prompt templates without overprompting",
+  "howToIntro": "Kling can handle cinematic movement, but vague prompts often become busy. Use the source example as a frame, then keep the action readable.",
+  "steps": [
+    {
+      "title": "Choose the closest motion style",
+      "text": "Start with a template that already moves like your idea: vlog, product reveal, trailer shot, character action, or fashion transition."
+    },
+    {
+      "title": "Keep one main action",
+      "text": "Replace the subject, but avoid stacking too many movements. A clear first action usually beats a crowded scene."
+    },
+    {
+      "title": "Protect the final frame",
+      "text": "Describe what the last shot should show, especially for ads, trailers, and social posts where the ending carries the hook."
+    },
+    {
+      "title": "Adjust camera language",
+      "text": "Swap camera moves only when they fit your scene. A handheld vlog prompt should not become a polished commercial unless that is intentional."
+    }
+  ],
+  "remixTitle": "Turn a Kling example into your own video format",
+  "remixText": "The useful part of a Kling template is not just the wording. It is the rhythm: what appears first, what changes, what the camera follows, and why the final frame is shareable.",
+  "patterns": [
+    {
+      "label": "For ads",
+      "heading": "Make the benefit visible before the logo.",
+      "body": "Use a product prompt to show texture, use case, transformation, or appetite appeal before asking for a clean hero shot."
+    },
+    {
+      "label": "For trailers",
+      "heading": "Let tension build in one direction.",
+      "body": "A strong Kling trailer prompt usually starts calm, adds one threat or reveal, then ends on a frame that invites a second watch."
+    },
+    {
+      "label": "For creators",
+      "heading": "Borrow the pacing, not the exact story.",
+      "body": "Keep the beat structure from the source and replace the cast, setting, props, and final payoff with something that belongs to you."
+    }
+  ],
+  "chooserTitle": "Pick a Kling template by the kind of motion you need",
+  "chooserIntro": "Use the table as a practical shortcut before browsing the templates.",
+  "chooserRows": [
+    {
+      "goal": "Product motion",
+      "startWith": "A tactile action such as pour, unwrap, slice, sparkle, splash, or reveal.",
+      "bestFor": "Food, beauty, ecommerce, app promos, and launch videos.",
+      "replace": "Product, setting, hand action, material, and final packshot.",
+      "keep": "Macro timing, benefit reveal, and clean ending."
+    },
+    {
+      "goal": "Cinematic scene",
+      "startWith": "A short shot list with one emotional or physical conflict.",
+      "bestFor": "Trailers, fantasy scenes, horror, action, and worldbuilding.",
+      "replace": "Character, location, threat, lighting, and camera move.",
+      "keep": "Escalation, atmosphere, and the final hook."
+    },
+    {
+      "goal": "Social character clip",
+      "startWith": "One gesture, one expression, and one camera distance.",
+      "bestFor": "Portrait animation, influencer clips, anime, mascots, and vlog-style scenes.",
+      "replace": "Identity anchor, pose, emotion, background, and platform format.",
+      "keep": "Face consistency and simple motion beats."
+    }
+  ],
+  "answerTitle": "What is the fastest way to write a Kling prompt?",
+  "answerText": "Start from a source-backed Kling template that already matches your motion goal. Replace the subject and setting, keep the timing and camera structure, then make the ending more specific. Kling usually improves when the prompt has fewer competing actions and a clearer last frame.",
+  "anatomyTitle": "What a reusable Kling prompt usually controls",
+  "anatomyIntro": "Good Kling prompts tell the model what should move, what should stay stable, and where the viewer should look.",
+  "anatomy": [
+    {
+      "title": "Motion priority",
+      "text": "Name the one movement that matters most before adding secondary details."
+    },
+    {
+      "title": "Camera distance",
+      "text": "Specify close-up, medium shot, wide shot, POV, handheld, orbit, or locked camera when it changes the result."
+    },
+    {
+      "title": "Scene continuity",
+      "text": "Keep the same product, face, outfit, lighting, or location across the shot."
+    },
+    {
+      "title": "Social payoff",
+      "text": "Define the visual moment that makes the video worth posting or remixing."
+    }
+  ],
+  "trustTitle": "Why these Kling prompts are source-backed",
+  "trustText": "A Kling template is more useful when you can see the original context and decide whether the idea is worth adapting.",
+  "trustRules": [
+    "Every template should point back to a public X source, not a made-up prompt example.",
+    "The visible prompt should match the original post or comment language instead of being rewritten.",
+    "The template should include enough context for a beginner to copy, replace, and test it.",
+    "The media and metrics are treated as signals, but the prompt itself must still be usable."
+  ],
+  "mistakesTitle": "Common Kling remix mistakes",
+  "mistakesText": "Most weak remixes fail because the motion becomes unclear.",
+  "mistakes": [
+    {
+      "title": "Adding five actions to a short clip",
+      "text": "Keep the main action readable. Extra movement can make Kling lose the subject."
+    },
+    {
+      "title": "Forgetting the last frame",
+      "text": "A social post needs a clear ending, not only a cinematic middle."
+    },
+    {
+      "title": "Using the wrong camera style",
+      "text": "A commercial prompt and a vlog prompt need different camera behavior."
+    }
+  ],
+  "faqTitle": "Kling prompt template FAQ",
+  "faqs": [
+    {
+      "q": "Can beginners use these Kling prompts?",
+      "a": "Yes. Copy a template, replace the subject and scene, and keep the motion structure until you understand what each part controls."
+    },
+    {
+      "q": "Are these prompts only for video ads?",
+      "a": "No. The Kling library includes ads, trailers, character motion, fantasy scenes, fashion clips, and social formats."
+    },
+    {
+      "q": "Why use X examples?",
+      "a": "X examples show real prompt formats people shared publicly, so you can study both the wording and the social angle."
+    }
+  ]
+}

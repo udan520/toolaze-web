@@ -1,0 +1,135 @@
+{
+  "slug": "gpt-image-2",
+  "kind": "model",
+  "filterValue": "GPT Image 2",
+  "defaultModel": "GPT Image 2",
+  "title": "Plantillas de prompts de GPT Image 2 de ejemplos virales de X | Toolaze",
+  "description": "Copia plantillas de prompts de GPT Image 2 con respaldo de fuentes de X para anuncios, pósteres, memes, maquetas de UI, retratos, infografías e imágenes para redes sociales.",
+  "heroTitle": "Crea imágenes de GPT Image 2 a partir de estructuras de prompts que ya funcionaron en X",
+  "heroDescription": "Los prompts de GPT Image 2 suelen ser más efectivos cuando describen la disposición, el sujeto, el estilo y las restricciones en un informe claro. Esta página recopila ejemplos reales de X para que puedas copiar la estructura y crear tu propia imagen más rápido.",
+  "howToTitle": "Cómo usar las plantillas de prompts de GPT Image 2",
+  "howToIntro": "Los prompts de imagen necesitan reglas de composición más precisas que los de video. Comienza con la jerarquía visual, luego añade el estilo y las restricciones.",
+  "steps": [
+    {
+      "title": "Elige el tipo de salida",
+      "text": "Elige una plantilla para un póster, anuncio, meme, retrato, infografía, tablero de UI o imagen de producto antes de cambiar el sujeto."
+    },
+    {
+      "title": "Mantén la lógica de composición",
+      "text": "Conserva la instrucción de diseño que hizo útil la fuente, como el sujeto principal, los márgenes, el encuadre o la ubicación del texto."
+    },
+    {
+      "title": "Reemplaza los detalles de referencia",
+      "text": "Intercambia tu producto, personaje, escena, ambiente de marca o broma visual manteniendo el prompt legible."
+    },
+    {
+      "title": "Revisa el texto y los artefactos",
+      "text": "Si la imagen contiene tipografía, mantenla corta y solicita ortografía limpia, contraste y diseño."
+    }
+  ],
+  "remixTitle": "Usa el prompt como un informe de imagen, no como una pila de palabras clave",
+  "remixText": "Un prompt sólido de GPT Image 2 se lee como un informe creativo. Indica qué debe verse primero, qué estilo debe unificar la imagen y qué no debe fallar.",
+  "patterns": [
+    {
+      "label": "Para anuncios",
+      "heading": "Dale al producto una función en la imagen.",
+      "body": "No pidas solo una foto de producto hermosa. Muestra el beneficio del producto, el entorno, el material o el momento de uso."
+    },
+    {
+      "label": "Para memes",
+      "heading": "Conserva la estructura del chiste.",
+      "body": "La parte viral suele ser el desajuste, el estilo de redibujo o la instrucción absurda. Mantén esa mecánica al cambiar el sujeto."
+    },
+    {
+      "label": "Para diseños",
+      "heading": "Controla la jerarquía antes que la decoración.",
+      "body": "Los pósteres, tableros de UI e infografías necesitan reglas de espaciado y alineación antes que palabras de estilo."
+    }
+  ],
+  "chooserTitle": "Elige una plantilla de GPT Image 2 por formato de imagen",
+  "chooserIntro": "Diferentes formatos de imagen necesitan diferentes estructuras de prompt.",
+  "chooserRows": [
+    {
+      "goal": "Anuncio de producto",
+      "startWith": "Un producto principal claro y un beneficio.",
+      "bestFor": "Comercio electrónico, publicaciones de lanzamiento, cuidado de la piel, comida, moda y promociones de aplicaciones.",
+      "replace": "Producto, superficie, fondo, caso de uso y ambiente de marca.",
+      "keep": "Claridad de la foto del producto, detalles del material y composición final legible."
+    },
+    {
+      "goal": "Póster o visual clave",
+      "startWith": "Un área de título fuerte y un sujeto central.",
+      "bestFor": "Imágenes de campaña, pósteres de personajes, gráficos de eventos y portadas de redes sociales.",
+      "replace": "Sujeto, título, paleta, escena y estilo de tipografía.",
+      "keep": "Cuadrícula, márgenes, contraste y jerarquía visual."
+    },
+    {
+      "goal": "Meme o redibujo",
+      "startWith": "La instrucción divertida o transformación de imagen.",
+      "bestFor": "Publicaciones de X para compartir, imágenes de reacción, bromas visuales y formatos de tendencia.",
+      "replace": "Sujeto, referencia, chiste y estilo de salida.",
+      "keep": "Contraste reconocible y facilidad de remezcla."
+    }
+  ],
+  "answerTitle": "¿Cuál es la forma más rápida de usar los prompts de GPT Image 2?",
+  "answerText": "Elige una plantilla con respaldo de fuente cercana a tu formato de imagen, mantén sus reglas de composición, reemplaza los detalles de sujeto y estilo, luego genera una versión con un punto focal claro a primera vista. Para pósteres o anuncios, revisa el texto, los márgenes y la claridad del producto antes de publicar.",
+  "anatomyTitle": "Lo que suele contener un prompt reutilizable de GPT Image 2",
+  "anatomyIntro": "Los mejores prompts de imagen reutilizables se comportan como una dirección de arte compacta.",
+  "anatomy": [
+    {
+      "title": "Sujeto principal",
+      "text": "Nombra el objeto, personaje, escena o idea que debe notarse primero."
+    },
+    {
+      "title": "Composición",
+      "text": "Describe el encuadre, la jerarquía, los márgenes, el fondo y la ubicación del texto cuando sea necesario."
+    },
+    {
+      "title": "Lenguaje visual",
+      "text": "Mantén la consistencia en el estilo, la iluminación, el material, el color y la perspectiva."
+    },
+    {
+      "title": "Controles de calidad",
+      "text": "Añade restricciones para texto, anatomía, logotipos, manos y artefactos no deseados solo cuando sea relevante."
+    }
+  ],
+  "trustTitle": "Por qué estas plantillas de GPT Image 2 cuentan con respaldo de fuentes",
+  "trustText": "Las bibliotecas de prompts se debilitan cuando inventan plantillas que suenan pulidas. Estos ejemplos siguen siendo útiles porque el contexto de la fuente es visible.",
+  "trustRules": [
+    "Cada plantilla debe remitir a una fuente pública de X, no a un ejemplo de prompt inventado.",
+    "El prompt visible debe coincidir con el idioma de la publicación o comentario original en lugar de ser reescrito.",
+    "La plantilla debe incluir suficiente contexto para que un principiante pueda copiarla, reemplazarla y probarla.",
+    "Los medios y las métricas se tratan como señales, pero el prompt en sí debe seguir siendo utilizable."
+  ],
+  "mistakesTitle": "Errores comunes al remezclar GPT Image 2",
+  "mistakesText": "La mayoría de los fallos provienen de un diseño vago, demasiada acumulación de estilos o restricciones de texto ignoradas.",
+  "mistakes": [
+    {
+      "title": "Cambiar el producto pero no la escena",
+      "text": "Un diseño para un perfume puede no encajar con una zapatilla, una pantalla de SaaS o un producto alimenticio sin cambiar el entorno."
+    },
+    {
+      "title": "Pedir demasiado texto",
+      "text": "Un texto corto y de alto contraste funciona mejor que párrafos dentro de la imagen."
+    },
+    {
+      "title": "Tratar el estilo como todo el prompt",
+      "text": "Las palabras de estilo ayudan, pero la composición y la jerarquía del sujeto hacen más trabajo."
+    }
+  ],
+  "faqTitle": "Preguntas frecuentes sobre plantillas de prompts de GPT Image 2",
+  "faqs": [
+    {
+      "q": "¿Puedo copiar estos prompts directamente?",
+      "a": "Sí, pero el mejor flujo de trabajo es mantener la estructura y reemplazar el sujeto, producto, referencia o el objetivo del diseño."
+    },
+    {
+      "q": "¿Incluyen estas plantillas prompts de memes?",
+      "a": "Sí. Los ejemplos de GPT Image 2 incluyen anuncios, pósteres, retratos, conceptos de UI, infografías y prompts de imágenes estilo meme."
+    },
+    {
+      "q": "¿Debo traducir el prompt original?",
+      "a": "Para mayor precisión de la fuente, mantén el idioma original del prompt al estudiarlo. Puedes escribir tu remezcla en el idioma que mejor maneje tu modelo."
+    }
+  ]
+}

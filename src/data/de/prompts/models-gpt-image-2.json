@@ -1,0 +1,135 @@
+{
+  "slug": "gpt-image-2",
+  "kind": "model",
+  "filterValue": "GPT Image 2",
+  "defaultModel": "GPT Image 2",
+  "title": "GPT Image 2 Prompt-Vorlagen aus viralen X-Beispielen | Toolaze",
+  "description": "Kopieren Sie quellenbasierte GPT Image 2 Prompt-Vorlagen von X für Anzeigen, Poster, Memes, UI-Mockups, Porträts, Infografiken und Social-Media-Bilder.",
+  "heroTitle": "Erstellen Sie GPT Image 2 Bilder aus Prompt-Strukturen, die auf X bereits funktionierten",
+  "heroDescription": "GPT Image 2 Prompts sind oft am stärksten, wenn sie Layout, Motiv, Stil und Einschränkungen in einem klaren Briefing beschreiben. Diese Seite sammelt echte X-Beispiele, damit Sie die Struktur kopieren und Ihr eigenes Bild schneller erstellen können.",
+  "howToTitle": "So verwenden Sie GPT Image 2 Prompt-Vorlagen",
+  "howToIntro": "Bild-Prompts benötigen schärfere Kompositionsregeln als Video-Prompts. Beginnen Sie mit der visuellen Hierarchie und fügen Sie dann Stil und Einschränkungen hinzu.",
+  "steps": [
+    {
+      "title": "Ausgabetyp wählen",
+      "text": "Wählen Sie eine Vorlage für ein Poster, eine Anzeige, ein Meme, ein Porträt, eine Infografik, ein UI-Board oder ein Produktbild, bevor Sie das Motiv ändern."
+    },
+    {
+      "title": "Kompositionslogik beibehalten",
+      "text": "Bewahren Sie die Layout-Anweisung, die die Quelle nützlich gemacht hat, wie z. B. Hauptmotiv, Ränder, Bildausschnitt oder Textplatzierung."
+    },
+    {
+      "title": "Referenzdetails ersetzen",
+      "text": "Tauschen Sie Ihr Produkt, Ihren Charakter, Ihre Szene, Ihre Markenstimmung oder Ihren visuellen Witz aus, während der Prompt lesbar bleibt."
+    },
+    {
+      "title": "Text und Artefakte prüfen",
+      "text": "Wenn das Bild Typografie enthält, halten Sie diese kurz und achten Sie auf saubere Rechtschreibung, Kontrast und Layout."
+    }
+  ],
+  "remixTitle": "Nutzen Sie den Prompt als Bild-Briefing, nicht als Keyword-Sammlung",
+  "remixText": "Ein starker GPT Image 2 Prompt liest sich wie ein kreatives Briefing. Er legt fest, was zuerst gesehen werden soll, welcher Stil das Bild zusammenhält und was nicht fehlen darf.",
+  "patterns": [
+    {
+      "label": "Für Anzeigen",
+      "heading": "Geben Sie dem Produkt eine Aufgabe im Bild.",
+      "body": "Fragen Sie nicht nur nach einem schönen Produktfoto. Zeigen Sie den Produktnutzen, die Umgebung, das Material oder den Moment der Nutzung."
+    },
+    {
+      "label": "Für Memes",
+      "heading": "Witz-Struktur beibehalten.",
+      "body": "Der virale Teil ist oft der Kontrast, der Redraw-Stil oder eine absurde Anweisung. Behalten Sie diese Mechanik bei, wenn Sie das Motiv ändern."
+    },
+    {
+      "label": "Für Layouts",
+      "heading": "Hierarchie vor Dekoration steuern.",
+      "body": "Poster, UI-Boards und Infografiken benötigen Abstands- und Ausrichtungsregeln vor den Stil-Wörtern."
+    }
+  ],
+  "chooserTitle": "Wählen Sie eine GPT Image 2 Vorlage nach Bildformat",
+  "chooserIntro": "Verschiedene Bildformate benötigen unterschiedliche Prompt-Strukturen.",
+  "chooserRows": [
+    {
+      "goal": "Produktanzeige",
+      "startWith": "Ein klares Hauptprodukt und ein Nutzen.",
+      "bestFor": "E-Commerce, Launch-Posts, Hautpflege, Lebensmittel, Mode und App-Promos.",
+      "replace": "Produkt, Oberfläche, Hintergrund, Anwendungsfall und Markenstimmung.",
+      "keep": "Klarheit des Produktfotos, Materialdetails und lesbare finale Komposition."
+    },
+    {
+      "goal": "Poster oder Key Visual",
+      "startWith": "Ein starker Titelbereich und ein zentrales Motiv.",
+      "bestFor": "Kampagnenbilder, Charakterposter, Eventgrafiken und Social-Media-Cover.",
+      "replace": "Motiv, Titel, Palette, Szene und Typografie-Stil.",
+      "keep": "Raster, Ränder, Kontrast und visuelle Hierarchie."
+    },
+    {
+      "goal": "Meme oder Redraw",
+      "startWith": "Die lustige Anweisung oder Bildtransformation.",
+      "bestFor": "Teilbare X-Posts, Reaktionsbilder, visuelle Witze und Trendformate.",
+      "replace": "Motiv, Referenz, Witz und Ausgabestil.",
+      "keep": "Erkennbarer Kontrast und einfache Remix-Möglichkeit."
+    }
+  ],
+  "answerTitle": "Was ist der schnellste Weg, GPT Image 2 Prompts zu nutzen?",
+  "answerText": "Wählen Sie eine quellenbasierte Vorlage, die Ihrem Bildformat nahekommt, behalten Sie deren Kompositionsregeln bei, ersetzen Sie Motiv- und Stildetails und generieren Sie dann eine Version mit einem klaren Fokuspunkt. Prüfen Sie bei Postern oder Anzeigen Text, Ränder und Produktklarheit vor der Veröffentlichung.",
+  "anatomyTitle": "Was ein wiederverwendbarer GPT Image 2 Prompt normalerweise enthält",
+  "anatomyIntro": "Die besten wiederverwendbaren Bild-Prompts verhalten sich wie eine kompakte Art Direction.",
+  "anatomy": [
+    {
+      "title": "Hauptmotiv",
+      "text": "Nennen Sie das Objekt, den Charakter, die Szene oder die Idee, die zuerst wahrgenommen werden soll."
+    },
+    {
+      "title": "Komposition",
+      "text": "Beschreiben Sie Bildausschnitt, Hierarchie, Ränder, Hintergrund und bei Bedarf die Textplatzierung."
+    },
+    {
+      "title": "Visuelle Sprache",
+      "text": "Halten Sie Stil, Beleuchtung, Material, Farbe und Perspektive konsistent."
+    },
+    {
+      "title": "Qualitätskontrollen",
+      "text": "Fügen Sie Einschränkungen für Text, Anatomie, Logos, Hände und unerwünschte Artefakte nur hinzu, wenn sie relevant sind."
+    }
+  ],
+  "trustTitle": "Warum diese GPT Image 2 Vorlagen quellenbasiert sind",
+  "trustText": "Prompt-Bibliotheken werden schwach, wenn sie geschliffen klingende Vorlagen erfinden. Diese Beispiele bleiben nützlich, weil der Quellkontext sichtbar ist.",
+  "trustRules": [
+    "Jede Vorlage sollte auf eine öffentliche X-Quelle verweisen, nicht auf ein erfundenes Prompt-Beispiel.",
+    "Der sichtbare Prompt sollte der Sprache des Original-Posts oder -Kommentars entsprechen, anstatt umgeschrieben zu werden.",
+    "Die Vorlage sollte genügend Kontext enthalten, damit ein Anfänger sie kopieren, ersetzen und testen kann.",
+    "Die Medien und Metriken werden als Signale behandelt, aber der Prompt selbst muss weiterhin nutzbar sein."
+  ],
+  "mistakesTitle": "Häufige Fehler beim Remixen von GPT Image 2",
+  "mistakesText": "Die meisten Fehler entstehen durch vages Layout, zu viele gestapelte Stile oder ignorierte Texteinschränkungen.",
+  "mistakes": [
+    {
+      "title": "Produkt ändern, aber nicht die Szene",
+      "text": "Ein Parfüm-Layout passt möglicherweise nicht zu einem Sneaker, einem SaaS-Bildschirm oder einem Lebensmittelprodukt, ohne die Umgebung zu ändern."
+    },
+    {
+      "title": "Zu viel Text verlangen",
+      "text": "Kurze, kontrastreiche Texte funktionieren besser als ganze Absätze im Bild."
+    },
+    {
+      "title": "Stil als den gesamten Prompt betrachten",
+      "text": "Stil-Wörter helfen, aber Komposition und Motiv-Hierarchie leisten die Hauptarbeit."
+    }
+  ],
+  "faqTitle": "FAQ zu GPT Image 2 Prompt-Vorlagen",
+  "faqs": [
+    {
+      "q": "Kann ich diese Prompts direkt kopieren?",
+      "a": "Ja, aber der bessere Workflow besteht darin, die Struktur beizubehalten und das Motiv, das Produkt, die Referenz oder das Layout-Ziel zu ersetzen."
+    },
+    {
+      "q": "Enthalten diese Vorlagen Meme-Prompts?",
+      "a": "Ja. Die GPT Image 2 Beispiele umfassen Anzeigen, Poster, Porträts, UI-Konzepte, Infografiken und Bild-Prompts im Meme-Stil."
+    },
+    {
+      "q": "Sollte ich den ursprünglichen Prompt übersetzen?",
+      "a": "Um die Genauigkeit der Quelle zu wahren, behalten Sie die ursprüngliche Prompt-Sprache beim Studieren bei. Sie können Ihren Remix in der Sprache schreiben, die Ihr Modell am besten verarbeitet."
+    }
+  ]
+}

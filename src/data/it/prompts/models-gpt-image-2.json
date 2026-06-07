@@ -1,0 +1,135 @@
+{
+  "slug": "gpt-image-2",
+  "kind": "model",
+  "filterValue": "GPT Image 2",
+  "defaultModel": "GPT Image 2",
+  "title": "Modelli di prompt per GPT Image 2 da esempi virali su X | Toolaze",
+  "description": "Copia modelli di prompt per GPT Image 2 basati su fonti reali da X per annunci, poster, meme, mockup UI, ritratti, infografiche e immagini social.",
+  "heroTitle": "Crea immagini con GPT Image 2 partendo da strutture di prompt che hanno già funzionato su X",
+  "heroDescription": "I prompt per GPT Image 2 sono spesso più efficaci quando descrivono layout, soggetto, stile e vincoli in un unico brief chiaro. Questa pagina raccoglie esempi reali da X in modo da poterne copiare la struttura e creare la tua immagine più velocemente.",
+  "howToTitle": "Come utilizzare i modelli di prompt per GPT Image 2",
+  "howToIntro": "I prompt per le immagini richiedono regole di composizione più precise rispetto ai prompt video. Inizia con la gerarchia visiva, poi aggiungi stile e vincoli.",
+  "steps": [
+    {
+      "title": "Scegli il tipo di output",
+      "text": "Scegli un modello per un poster, annuncio, meme, ritratto, infografica, board UI o immagine di prodotto prima di cambiare il soggetto."
+    },
+    {
+      "title": "Mantieni la logica di composizione",
+      "text": "Conserva le istruzioni di layout che hanno reso utile la fonte, come il soggetto principale, i margini, l'inquadratura o il posizionamento del testo."
+    },
+    {
+      "title": "Sostituisci i dettagli di riferimento",
+      "text": "Inserisci il tuo prodotto, personaggio, scena, mood del brand o battuta visiva mantenendo il prompt leggibile."
+    },
+    {
+      "title": "Controlla testo e artefatti",
+      "text": "Se l'immagine contiene tipografia, mantienila breve e richiedi ortografia pulita, contrasto e layout ordinato."
+    }
+  ],
+  "remixTitle": "Usa il prompt come un brief creativo, non come un ammasso di parole chiave",
+  "remixText": "Un prompt efficace per GPT Image 2 si legge come un brief creativo. Indica cosa deve essere visto per primo, quale stile deve unire l'immagine e cosa non deve mancare.",
+  "patterns": [
+    {
+      "label": "Per gli annunci",
+      "heading": "Dai al prodotto un ruolo nell'immagine.",
+      "body": "Non limitarti a chiedere un bel packshot. Mostra il vantaggio del prodotto, l'ambientazione, il materiale o il momento d'uso."
+    },
+    {
+      "label": "Per i meme",
+      "heading": "Preserva la struttura della battuta.",
+      "body": "La parte virale è spesso il contrasto, lo stile di ridisegno o l'istruzione assurda. Mantieni quella meccanica quando cambi il soggetto."
+    },
+    {
+      "label": "Per i layout",
+      "heading": "Controlla la gerarchia prima della decorazione.",
+      "body": "Poster, board UI e infografiche necessitano di regole di spaziatura e allineamento prima delle parole legate allo stile."
+    }
+  ],
+  "chooserTitle": "Scegli un modello GPT Image 2 in base al formato dell'immagine",
+  "chooserIntro": "Formati di immagine diversi richiedono strutture di prompt diverse.",
+  "chooserRows": [
+    {
+      "goal": "Annuncio di prodotto",
+      "startWith": "Un prodotto principale chiaro e un vantaggio.",
+      "bestFor": "E-commerce, post di lancio, skincare, cibo, moda e promozioni di app.",
+      "replace": "Prodotto, superficie, sfondo, caso d'uso e mood del brand.",
+      "keep": "Chiarezza del packshot, dettagli dei materiali e composizione finale leggibile."
+    },
+    {
+      "goal": "Poster o visual principale",
+      "startWith": "Un'area del titolo forte e un soggetto centrale.",
+      "bestFor": "Immagini di campagna, poster di personaggi, grafiche per eventi e copertine social.",
+      "replace": "Soggetto, titolo, tavolozza, scena e stile tipografico.",
+      "keep": "Griglia, margini, contrasto e gerarchia visiva."
+    },
+    {
+      "goal": "Meme o ridisegno",
+      "startWith": "L'istruzione divertente o la trasformazione dell'immagine.",
+      "bestFor": "Post condivisibili su X, immagini di reazione, battute visive e formati di tendenza.",
+      "replace": "Soggetto, riferimento, battuta e stile di output.",
+      "keep": "Contrasto riconoscibile e facilità di remix."
+    }
+  ],
+  "answerTitle": "Qual è il modo più veloce per usare i prompt di GPT Image 2?",
+  "answerText": "Scegli un modello basato su fonti reali vicino al tuo formato d'immagine, mantieni le sue regole di composizione, sostituisci il soggetto e i dettagli di stile, quindi genera una versione con un punto focale chiaro al primo sguardo. Per poster o annunci, controlla il testo, i margini e la chiarezza del prodotto prima di pubblicare.",
+  "anatomyTitle": "Cosa contiene solitamente un prompt riutilizzabile per GPT Image 2",
+  "anatomyIntro": "I migliori prompt riutilizzabili per immagini si comportano come una direzione artistica compatta.",
+  "anatomy": [
+    {
+      "title": "Soggetto principale",
+      "text": "Indica l'oggetto, il personaggio, la scena o l'idea che deve essere notata per prima."
+    },
+    {
+      "title": "Composizione",
+      "text": "Descrivi inquadratura, gerarchia, margini, sfondo e posizionamento del testo quando necessario."
+    },
+    {
+      "title": "Linguaggio visivo",
+      "text": "Mantieni coerenti stile, illuminazione, materiale, colore e prospettiva."
+    },
+    {
+      "title": "Controlli di qualità",
+      "text": "Aggiungi vincoli per testo, anatomia, loghi, mani e artefatti indesiderati solo quando pertinente."
+    }
+  ],
+  "trustTitle": "Perché questi modelli per GPT Image 2 sono basati su fonti reali",
+  "trustText": "Le librerie di prompt perdono valore quando inventano modelli che suonano bene ma sono artificiali. Questi esempi rimangono utili perché il contesto della fonte è visibile.",
+  "trustRules": [
+    "Ogni modello deve rimandare a una fonte pubblica su X, non a un esempio di prompt inventato.",
+    "Il prompt visibile deve corrispondere alla lingua del post o del commento originale invece di essere riscritto.",
+    "Il modello deve includere abbastanza contesto affinché un principiante possa copiarlo, sostituirlo e testarlo.",
+    "I media e le metriche sono trattati come segnali, ma il prompt stesso deve comunque essere utilizzabile."
+  ],
+  "mistakesTitle": "Errori comuni nel remix di GPT Image 2",
+  "mistakesText": "La maggior parte dei fallimenti deriva da un layout vago, un eccessivo accumulo di stili o vincoli di testo ignorati.",
+  "mistakes": [
+    {
+      "title": "Cambiare il prodotto ma non la scena",
+      "text": "Un layout per un profumo potrebbe non adattarsi a una sneaker, a una schermata SaaS o a un prodotto alimentare senza cambiare l'ambientazione."
+    },
+    {
+      "title": "Chiedere troppo testo",
+      "text": "Un testo breve e ad alto contrasto funziona meglio di interi paragrafi all'interno dell'immagine."
+    },
+    {
+      "title": "Trattare lo stile come l'intero prompt",
+      "text": "Le parole legate allo stile aiutano, ma la composizione e la gerarchia del soggetto sono più importanti."
+    }
+  ],
+  "faqTitle": "FAQ sui modelli di prompt per GPT Image 2",
+  "faqs": [
+    {
+      "q": "Posso copiare questi prompt direttamente?",
+      "a": "Sì, ma il flusso di lavoro migliore è mantenere la struttura e sostituire il soggetto, il prodotto, il riferimento o l'obiettivo del layout."
+    },
+    {
+      "q": "Questi modelli includono prompt per i meme?",
+      "a": "Sì. Gli esempi di GPT Image 2 includono annunci, poster, ritratti, concetti UI, infografiche e prompt per immagini in stile meme."
+    },
+    {
+      "q": "Dovrei tradurre il prompt originale?",
+      "a": "Per accuratezza rispetto alla fonte, mantieni la lingua originale del prompt quando lo studi. Puoi scrivere il tuo remix nella lingua che il tuo modello gestisce meglio."
+    }
+  ]
+}

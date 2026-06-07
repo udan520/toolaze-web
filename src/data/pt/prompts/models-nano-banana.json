@@ -1,0 +1,135 @@
+{
+  "slug": "nano-banana",
+  "kind": "model",
+  "filterValue": "Nano Banana",
+  "defaultModel": "Nano Banana",
+  "title": "Modelos de Prompt Nano Banana de Exemplos Virais do X | Toolaze",
+  "description": "Navegue por modelos de prompt Nano Banana baseados em fontes do X para retratos, visuais de produtos, edições de moda, anúncios e imagens sociais.",
+  "heroTitle": "Crie Imagens Nano Banana a Partir de Exemplos Reais de Prompt no X",
+  "heroDescription": "Os prompts Nano Banana são úteis para experimentos rápidos de imagem, edições de personagens, visuais de produtos e composições prontas para redes sociais. Esta biblioteca ajuda você a começar com exemplos reais em vez de fórmulas de prompt genéricas.",
+  "howToTitle": "Como remixar modelos de prompt Nano Banana",
+  "howToIntro": "O Nano Banana funciona melhor quando o prompt é específico sobre identidade, estilo e a parte da imagem que deve mudar.",
+  "steps": [
+    {
+      "title": "Escolha uma tarefa de imagem semelhante",
+      "text": "Comece com um modelo para retratos, visuais de produtos, moda, estilo de vida ou imagens sociais estilizadas."
+    },
+    {
+      "title": "Proteja os detalhes importantes",
+      "text": "Se o prompt de origem preserva um rosto, roupa, formato de objeto ou pose, substitua essa regra pela sua própria âncora."
+    },
+    {
+      "title": "Faça uma mudança visível",
+      "text": "Peça uma transformação clara, cenário, pose, mudança de iluminação ou história do produto em vez de uma melhoria vaga."
+    },
+    {
+      "title": "Compare antes de postar",
+      "text": "Verifique se o resultado ainda é reconhecido como seu assunto e se a imagem final funciona sem explicações extras."
+    }
+  ],
+  "remixTitle": "Torne o exemplo útil sem cloná-lo",
+  "remixText": "Um modelo Nano Banana oferece uma direção de imagem funcional. Seu trabalho é mudar o assunto, o cenário e o propósito final o suficiente para que o resultado pertença ao seu projeto.",
+  "patterns": [
+    {
+      "label": "Para retratos",
+      "heading": "Mantenha a identidade estável primeiro.",
+      "body": "Rosto, idade, expressão, cabelo, vestuário e pose precisam de regras claras antes de adicionar o estilo cinematográfico."
+    },
+    {
+      "label": "Para produtos",
+      "heading": "Mostre o objeto claramente.",
+      "body": "O formato e o material do produto devem permanecer legíveis mesmo quando o fundo ou a iluminação mudam."
+    },
+    {
+      "label": "Para posts sociais",
+      "heading": "Projete para reconhecimento instantâneo.",
+      "body": "Uma boa imagem social deve comunicar a piada, transformação ou estética em um piscar de olhos."
+    }
+  ],
+  "chooserTitle": "Escolha um modelo Nano Banana por tipo de edição",
+  "chooserIntro": "Diferentes prompts Nano Banana são úteis para diferentes trabalhos de imagem.",
+  "chooserRows": [
+    {
+      "goal": "Edição de retrato",
+      "startWith": "Uma identidade de referência e um humor específico.",
+      "bestFor": "Avatares, retratos de moda, fotos de criadores e imagens de personagens.",
+      "replace": "Âncora de rosto, guarda-roupa, pose, iluminação e fundo.",
+      "keep": "Consistência de identidade e anatomia natural."
+    },
+    {
+      "goal": "Visual de produto",
+      "startWith": "Um formato de produto claro e uma ideia de cenário.",
+      "bestFor": "Anúncios, e-commerce, teasers de lançamento e packshots de estilo de vida.",
+      "replace": "Produto, material, cena, superfície e humor da marca.",
+      "keep": "Legibilidade do produto e composição limpa."
+    },
+    {
+      "goal": "Imagem social estilizada",
+      "startWith": "Uma estética forte ou piada visual.",
+      "bestFor": "Posts no X, miniaturas, memes, capas e remixes de tendências.",
+      "replace": "Assunto, estilo, paleta de cores e formato da plataforma.",
+      "keep": "O contraste ou transformação que torna o exemplo interessante."
+    }
+  ],
+  "answerTitle": "Qual é a maneira mais rápida de usar os prompts Nano Banana?",
+  "answerText": "Comece com um modelo que corresponda à sua tarefa de imagem, mantenha as regras de proteção de identidade ou produto e, em seguida, mude a cena e o propósito final. Os prompts Nano Banana funcionam melhor quando a mudança solicitada é visível e o assunto permanece fácil de reconhecer.",
+  "anatomyTitle": "O que um prompt Nano Banana reutilizável geralmente contém",
+  "anatomyIntro": "Um prompt reutilizável torna a direção da edição clara sem enterrar o modelo em ruído.",
+  "anatomy": [
+    {
+      "title": "Âncora de identidade",
+      "text": "Diga o que deve permanecer reconhecível, como rosto, formato do produto, vestuário ou pose."
+    },
+    {
+      "title": "Mudança visível",
+      "text": "Nomeie a transformação que o espectador deve notar imediatamente."
+    },
+    {
+      "title": "Cena e estilo",
+      "text": "Use iluminação, fundo, sensação da lente e cor como suporte, não como poluição visual."
+    },
+    {
+      "title": "Propósito da saída",
+      "text": "Mencione se o resultado é para um anúncio, avatar, post, miniatura ou imagem de referência."
+    }
+  ],
+  "trustTitle": "Por que estes modelos Nano Banana são baseados em fontes",
+  "trustText": "A página é construída em torno de exemplos de prompt públicos para que você possa inspecionar a fonte antes de adaptar o formato.",
+  "trustRules": [
+    "Cada modelo deve apontar de volta para uma fonte pública do X, não para um exemplo de prompt inventado.",
+    "O prompt visível deve corresponder ao idioma original do post ou comentário em vez de ser reescrito.",
+    "O modelo deve incluir contexto suficiente para um iniciante copiar, substituir e testar.",
+    "A mídia e as métricas são tratadas como sinais, mas o prompt em si ainda deve ser utilizável."
+  ],
+  "mistakesTitle": "Erros comuns ao remixar Nano Banana",
+  "mistakesText": "Remixes fracos geralmente mudam o estilo, mas esquecem o assunto.",
+  "mistakes": [
+    {
+      "title": "Não dizer o que deve permanecer igual",
+      "text": "O desvio de identidade e de produto é mais fácil quando o prompt fala apenas sobre estilo."
+    },
+    {
+      "title": "Tornar a mudança sutil demais",
+      "text": "Se a transformação for difícil de ver, o post social perde sua razão de existir."
+    },
+    {
+      "title": "Copiar a fonte muito fielmente",
+      "text": "Mantenha a estrutura, mas mude o propósito, o assunto e o contexto visual."
+    }
+  ],
+  "faqTitle": "FAQ de modelos de prompt Nano Banana",
+  "faqs": [
+    {
+      "q": "Para que servem os prompts Nano Banana?",
+      "a": "Eles são úteis para retratos, visuais de produtos, imagens sociais, edições de moda e experimentos visuais rápidos."
+    },
+    {
+      "q": "Posso usar estes exemplos para anúncios?",
+      "a": "Sim. Escolha um modelo orientado a produtos e substitua o assunto, material, cenário e enquadramento final da marca."
+    },
+    {
+      "q": "Por que manter a fonte do X?",
+      "a": "A fonte ajuda você a verificar o contexto do prompt e evita depender de modelos inventados."
+    }
+  ]
+}

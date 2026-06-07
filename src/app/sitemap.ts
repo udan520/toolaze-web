@@ -100,11 +100,34 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     changeFrequency: 'weekly',
     priority: 0.85,
   })
-  entries.push({
-    url: `${baseUrl}/prompts`,
-    lastModified: today,
-    changeFrequency: 'weekly',
-    priority: 0.9,
+  SUPPORTED_LOCALES.forEach((locale) => {
+    const path = locale === 'en' ? '/prompts' : `/${locale}/prompts`
+    entries.push({
+      url: `${baseUrl}${path}`,
+      lastModified: today,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    })
+  })
+  const PROMPT_SEO_PAGES = [
+    '/prompts/models/seedance-2-0',
+    '/prompts/models/kling',
+    '/prompts/models/gpt-image-2',
+    '/prompts/models/nano-banana',
+    '/prompts/categories/advertising',
+    '/prompts/categories/fashion-beauty',
+    '/prompts/categories/film-trailer',
+  ]
+  PROMPT_SEO_PAGES.forEach((path) => {
+    SUPPORTED_LOCALES.forEach((locale) => {
+      const localizedPath = locale === 'en' ? path : `/${locale}${path}`
+      entries.push({
+        url: `${baseUrl}${localizedPath}`,
+        lastModified: today,
+        changeFrequency: 'weekly',
+        priority: 0.82,
+      })
+    })
   })
   getPromptItems().forEach((item) => {
     entries.push({

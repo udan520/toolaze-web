@@ -1,0 +1,135 @@
+{
+  "slug": "film-trailer",
+  "kind": "category",
+  "filterValue": "Film & Trailer",
+  "defaultCategory": "Film & Trailer",
+  "title": "KI Film- und Trailer-Prompt-Vorlagen aus viralen X-Beispielen | Toolaze",
+  "description": "Kopieren Sie quellenbasierte KI-Film- und Trailer-Prompt-Vorlagen von X für filmische Aufnahmen, Horrorszenen, Fantasywelten, Action-Beats und Kurzgeschichten-Clips.",
+  "heroTitle": "Erstellen Sie filmische KI-Szenen aus Film- und Trailer-Prompt-Vorlagen",
+  "heroDescription": "Film- und Trailer-Prompts brauchen mehr als nur das Wort 'cinematic'. Sie benötigen ein Setup, Kameraverhalten, Eskalation, Atmosphäre und eine finale Aufnahme, die Lust auf die nächste Szene macht. Diese Seite sammelt quellenbasierte Beispiele von X für diese Art von Arbeit.",
+  "howToTitle": "So verwenden Sie Film- und Trailer-Prompt-Vorlagen",
+  "howToIntro": "Behandeln Sie jeden Prompt wie eine kleine Shot-Liste. Je klarer der Szenen-Beat, desto besser kann das Modell ihn inszenieren.",
+  "steps": [
+    {
+      "title": "Beginnen Sie mit Genre und Setting",
+      "text": "Wählen Sie Horror, Fantasy, Action, Sci-Fi, Kreaturenszenen oder bodenständigen Realismus, bevor Sie Details ändern."
+    },
+    {
+      "title": "Behalten Sie den Bildverlauf bei",
+      "text": "Ein guter Trailer-Prompt bewegt sich oft von einem ruhigen Setup hin zu Bedrohung, Enthüllung, Einschlag oder Cliffhanger."
+    },
+    {
+      "title": "Ersetzen Sie die Details der Welt",
+      "text": "Ändern Sie Ort, Charakter, Kreatur, Ära, Beleuchtung, Konflikt und die finale Enthüllung."
+    },
+    {
+      "title": "Machen Sie das Ende unvergesslich",
+      "text": "Das letzte Bild sollte sich wie ein Trailer-Beat anfühlen, nicht wie eine zufällige Pause."
+    }
+  ],
+  "remixTitle": "Nutzen Sie den Prompt als kompakten Szenen-Entwurf",
+  "remixText": "Der Wert einer Trailer-Vorlage liegt in der dramaturgischen Abfolge. Behalten Sie die Spannungskurve bei und schreiben Sie dann Ihre eigene Welt darum herum.",
+  "patterns": [
+    {
+      "label": "Für Horror",
+      "heading": "Zögern Sie die Enthüllung gerade genug hinaus.",
+      "body": "Beginnen Sie mit einem normalen Detail, führen Sie dann Bewegung, Größe, Schatten oder Geräusche ein, bevor die Kreatur oder Bedrohung erscheint."
+    },
+    {
+      "label": "Für Action",
+      "heading": "Inszenieren Sie die Kamera um den Einschlag herum.",
+      "body": "Action-Prompts benötigen eine klare räumliche Logik, nicht nur Explosionen und Bewegungswörter."
+    },
+    {
+      "label": "Für Fantasy",
+      "heading": "Machen Sie die Welt schnell lesbar.",
+      "body": "Geben Sie dem Modell ein paar starke Anker: Gelände, Kostüm, Kreatur, magisches Verhalten und Licht."
+    }
+  ],
+  "chooserTitle": "Wählen Sie eine Film- und Trailer-Vorlage nach Story-Beat",
+  "chooserIntro": "Beginnen Sie mit der Art von Szene, die die Zuschauer fühlen sollen.",
+  "chooserRows": [
+    {
+      "goal": "Kreaturen-Enthüllung",
+      "startWith": "Eine ruhige Umgebung und eine unnatürliche Bewegung.",
+      "bestFor": "Horror-, Monster-, Wüsten-, Wald-, Sci-Fi- und Survival-Clips.",
+      "replace": "Kreatur, Setting, Maßstab, Beleuchtung und finale Enthüllung.",
+      "keep": "Spannungskurve und Timing der Enthüllung."
+    },
+    {
+      "goal": "Action-Sequenz",
+      "startWith": "Ein Konflikt mit klarer Richtung und Kameraposition.",
+      "bestFor": "Kämpfe, Verfolgungsjagden, Explosionen, Schlachtenszenen und Clips im Spielstil.",
+      "replace": "Charaktere, Waffen, Ort, Kamera und Moment des Einschlags.",
+      "keep": "Räumliche Klarheit und Eskalation."
+    },
+    {
+      "goal": "Worldbuilding-Aufnahme",
+      "startWith": "Ein markanter Ort mit einem sich bewegenden Subjekt.",
+      "bestFor": "Fantasy, Anime, Historie, Sci-Fi und filmische Landschaften.",
+      "replace": "Welt, Kostüm, Kreatur, Wetter und Objektiv-Gefühl.",
+      "keep": "Atmosphäre und visueller Anker beim ersten Blick."
+    }
+  ],
+  "answerTitle": "Was macht einen KI-Trailer-Prompt erfolgreich?",
+  "answerText": "Ein KI-Trailer-Prompt funktioniert, wenn er dem Modell einen kurzen dramatischen Pfad vorgibt: wo die Szene beginnt, was sich ändert, wie die Kamera ihr folgt und welches finale Bild die Geschichte verkauft. Quellenbasierte Beispiele helfen Ihnen, diese Beats zu studieren, ohne mit leeren filmischen Adjektiven zu beginnen.",
+  "anatomyTitle": "Was ein Film- und Trailer-Prompt normalerweise enthält",
+  "anatomyIntro": "Filmische Prompts brauchen Struktur, nicht nur Stil.",
+  "anatomy": [
+    {
+      "title": "Genre-Versprechen",
+      "text": "Nennen Sie das Genre, den Realismusgrad, die Ära und die Stimmung, damit die Szene eine klare Richtung hat."
+    },
+    {
+      "title": "Bildreihenfolge",
+      "text": "Beschreiben Sie Setup, Eskalation, Enthüllung und das finale Bild in einer kompakten Sequenz."
+    },
+    {
+      "title": "Kameraverhalten",
+      "text": "Verwenden Sie Untersicht, Tracking, Handkamera, Dolly, Nahaufnahme, Weitwinkel oder POV nur dann, wenn es der Szene dient."
+    },
+    {
+      "title": "Atmosphärische Kontrolle",
+      "text": "Beleuchtung, Wetter, Staub, Rauch, akustische Hinweise und Maßstab helfen dabei, das Trailer-Gefühl zu vermitteln."
+    }
+  ],
+  "trustTitle": "Warum diese Film- und Trailer-Vorlagen quellenbasiert sind",
+  "trustText": "Filmische Prompt-Beispiele klingen oft beeindruckend, erzeugen aber schwache Szenen. Quellenbasierte Beispiele ermöglichen es Ihnen, Prompts zu untersuchen, die tatsächlich von Menschen geteilt wurden.",
+  "trustRules": [
+    "Jede Vorlage sollte auf eine öffentliche X-Quelle verweisen, nicht auf ein erfundenes Prompt-Beispiel.",
+    "Der sichtbare Prompt sollte der Sprache des Original-Posts oder -Kommentars entsprechen, anstatt umgeschrieben zu werden.",
+    "Die Vorlage sollte genügend Kontext enthalten, damit ein Anfänger sie kopieren, anpassen und testen kann.",
+    "Die Medien und Metriken werden als Signale behandelt, aber der Prompt selbst muss weiterhin nutzbar sein."
+  ],
+  "mistakesTitle": "Häufige Fehler bei Film-Prompts",
+  "mistakesText": "Die meisten schwachen filmischen Prompts sind zu vage oder zu überladen.",
+  "mistakes": [
+    {
+      "title": "'Cinematic' als einzige Anweisung verwenden",
+      "text": "Fügen Sie Kamera, Setting, Action und das finale Bild hinzu, anstatt sich auf ein einziges Stilwort zu verlassen."
+    },
+    {
+      "title": "Zu viele Charaktere hinzufügen",
+      "text": "Kurze KI-Szenen funktionieren besser mit einem klaren Subjekt oder Konflikt."
+    },
+    {
+      "title": "Den Enthüllungs-Moment überspringen",
+      "text": "Ein Trailer-Prompt braucht einen Grund für den Zuschauer, weiterzuschauen."
+    }
+  ],
+  "faqTitle": "FAQ zu Film- und Trailer-Prompt-Vorlagen",
+  "faqs": [
+    {
+      "q": "Können diese Prompts kurze KI-Trailer erstellen?",
+      "a": "Ja. Sie werden am besten als Vorlagen für kurze Szenen verwendet und dann mit Ihrem eigenen Setting, Konflikt und Ende erweitert."
+    },
+    {
+      "q": "Benötige ich fortgeschrittene Filmbegriffe?",
+      "a": "Nein. Beginnen Sie mit einer einfachen Bildreihenfolge und einer Kameraanweisung. Fügen Sie Filmbegriffe nur hinzu, wenn sie der Szene helfen."
+    },
+    {
+      "q": "Warum quellenbasierte Trailer-Prompts verwenden?",
+      "a": "Sie zeigen, wie Ersteller filmische Beispiele öffentlich strukturieren, einschließlich der Prompt-Sprache und des sozialen Kontextes."
+    }
+  ]
+}

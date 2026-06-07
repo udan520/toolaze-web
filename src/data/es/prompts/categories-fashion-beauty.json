@@ -1,0 +1,135 @@
+{
+  "slug": "fashion-beauty",
+  "kind": "category",
+  "filterValue": "Fashion & Beauty",
+  "defaultCategory": "Fashion & Beauty",
+  "title": "Plantillas de Prompts de IA para Moda y Belleza de Ejemplos Virales en X | Toolaze",
+  "description": "Explora plantillas de prompts de IA para moda y belleza respaldadas por fuentes de X para cambios de outfit, retratos, anuncios de cuidado de la piel, movimiento del cabello, clips de estilismo y visuales para redes sociales.",
+  "heroTitle": "Crea Visuales de Moda y Belleza a Partir de Plantillas de Prompts Compartidas en X",
+  "heroDescription": "Los prompts de moda y belleza necesitan consistencia de identidad, comportamiento de las telas, detalles de estilismo y un estado de ánimo visual fuerte. Esta página recopila ejemplos reales que puedes copiar, adaptar y usar para outfits, retratos, anuncios de belleza y clips de transformación.",
+  "howToTitle": "Cómo usar las plantillas de prompts de moda y belleza",
+  "howToIntro": "Los mejores prompts de moda protegen la identidad y el estilismo mientras hacen que un cambio visual se sienta intencional.",
+  "steps": [
+    {
+      "title": "Elige la tarea visual",
+      "text": "Decide si necesitas un cambio de outfit, un retrato de belleza, un anuncio de producto, movimiento de cabello o una escena editorial."
+    },
+    {
+      "title": "Mantén la identidad estable",
+      "text": "Preserva el rostro, las proporciones corporales, el cabello, el tono de piel, el anclaje del outfit o el empaque del producto cuando el prompt original lo haga."
+    },
+    {
+      "title": "Reemplaza los detalles de estilismo",
+      "text": "Cambia la tela, el color, los accesorios, el maquillaje, la pose, la iluminación y la ubicación para que se ajusten a tu concepto."
+    },
+    {
+      "title": "Verifica el realismo y el gusto",
+      "text": "Revisa las manos, los pliegues de la tela, la consistencia del rostro y si el resultado se siente como una dirección de estilo real."
+    }
+  ],
+  "remixTitle": "Usa la plantilla como un informe de estilismo",
+  "remixText": "Un prompt de moda funciona cuando las elecciones de estilismo se sienten conectadas. Mantén la estructura, luego construye un outfit, un ambiente y un lenguaje de cámara coherentes.",
+  "patterns": [
+    {
+      "label": "Para cambios de outfit",
+      "heading": "Usa un activador de transición repetible.",
+      "body": "Un giro, un movimiento de manga, el movimiento de un abanico, tocarse el cabello o un barrido de cámara pueden organizar múltiples looks."
+    },
+    {
+      "label": "Para anuncios de belleza",
+      "heading": "Deja que la textura venda el producto.",
+      "body": "El brillo de la piel, la textura de la crema, el agua, la luz y los detalles en primer plano pueden hacer más que los eslóganes."
+    },
+    {
+      "label": "Para retratos",
+      "heading": "Protege el rostro antes de cambiar el estilo.",
+      "body": "La deriva de identidad perjudica rápidamente a los prompts de moda, así que preserva primero los rasgos faciales y la expresión."
+    }
+  ],
+  "chooserTitle": "Elige una plantilla de moda y belleza por tipo de resultado",
+  "chooserIntro": "Usa el formato más cercano a lo que deseas publicar.",
+  "chooserRows": [
+    {
+      "goal": "Transformación de outfit",
+      "startWith": "Una acción de transición clara y cambios de look sincronizados.",
+      "bestFor": "Reels estilo TikTok, cambios de trajes antiguos, publicaciones de estilismo y ediciones de moda.",
+      "replace": "Vestuario, tela, accesorios, activador de transición y pose.",
+      "keep": "Consistencia de identidad y ritmo."
+    },
+    {
+      "goal": "Visual de producto de belleza",
+      "startWith": "Un momento de textura de producto o detalle de piel.",
+      "bestFor": "Anuncios de cuidado de la piel, maquillaje, cuidado del cabello, fragancias y bienestar.",
+      "replace": "Producto, tono de piel, superficie, pista de ingredientes e iluminación.",
+      "keep": "Primeros planos limpios y legibilidad del producto."
+    },
+    {
+      "goal": "Retrato editorial",
+      "startWith": "Una persona, ambiente, outfit y perspectiva de cámara.",
+      "bestFor": "Avatares, tomas de portafolio, visuales de campaña y publicaciones de creadores.",
+      "replace": "Anclaje facial, vestuario, ubicación, sensación de lente y paleta de colores.",
+      "keep": "Anatomía, expresión y coherencia de estilismo."
+    }
+  ],
+  "answerTitle": "¿Qué hace que un prompt de moda sea reutilizable?",
+  "answerText": "Un prompt de moda reutilizable separa a la persona, el estilismo, el movimiento y la cámara. Puedes intercambiar la ropa, el producto o el entorno mientras mantienes estables la identidad, el comportamiento de la tela y el ritmo visual. Eso facilita la creación de múltiples looks a partir de un formato de trabajo.",
+  "anatomyTitle": "Lo que suele controlar un prompt de moda y belleza",
+  "anatomyIntro": "Los buenos prompts de moda son específicos sin convertirse en una mezcla confusa de disfraces.",
+  "anatomy": [
+    {
+      "title": "Consistencia de identidad y cuerpo",
+      "text": "Mantén estables el rostro, las proporciones corporales, el cabello y la pose a menos que el cambio sea intencional."
+    },
+    {
+      "title": "Materiales del vestuario",
+      "text": "Nombra la tela, el ajuste, el color, los accesorios y cómo se mueve la ropa."
+    },
+    {
+      "title": "Detalles de belleza",
+      "text": "Controla la textura de la piel, el maquillaje, el cabello, la textura del producto y la iluminación."
+    },
+    {
+      "title": "Cámara y plataforma",
+      "text": "Usa plano medio, primer plano, selfie en el espejo, retrato editorial o encuadre de reel vertical según sea necesario."
+    }
+  ],
+  "trustTitle": "Por qué estas plantillas de moda y belleza están respaldadas por fuentes",
+  "trustText": "Los prompts de moda son fáciles de pulir en exceso. Los ejemplos respaldados por fuentes facilitan ver el prompt original y el contexto social.",
+  "trustRules": [
+    "Cada plantilla debe remitir a una fuente pública de X, no a un ejemplo de prompt inventado.",
+    "El prompt visible debe coincidir con el idioma de la publicación o comentario original en lugar de ser reescrito.",
+    "La plantilla debe incluir suficiente contexto para que un principiante pueda copiarla, reemplazarla y probarla.",
+    "Los medios y las métricas se tratan como señales, pero el prompt en sí debe seguir siendo utilizable."
+  ],
+  "mistakesTitle": "Errores comunes en los prompts de moda",
+  "mistakesText": "La forma más rápida de debilitar un prompt de moda es ignorar la consistencia.",
+  "mistakes": [
+    {
+      "title": "Cambiar todos los detalles a la vez",
+      "text": "Mantén estables la identidad y la cámara al probar un nuevo outfit o estilo de producto."
+    },
+    {
+      "title": "Ignorar el comportamiento de la tela",
+      "text": "La ropa debe caer, ondear, estirarse o plegarse de una manera que coincida con el movimiento."
+    },
+    {
+      "title": "Dejar que los detalles de belleza se vuelvan plásticos",
+      "text": "La textura natural de la piel y la iluminación realista suelen verse mejor que un pulido excesivamente suavizado."
+    }
+  ],
+  "faqTitle": "Preguntas frecuentes sobre plantillas de prompts de moda y belleza",
+  "faqs": [
+    {
+      "q": "¿Pueden estas plantillas crear videos de cambio de outfit?",
+      "a": "Sí. Elige una plantilla de transformación y reemplaza el vestuario, la acción de transición y los detalles de estilismo."
+    },
+    {
+      "q": "¿Puedo usarlas para anuncios de belleza?",
+      "a": "Sí. Comienza con una plantilla de producto o de primer plano, luego describe la textura, la iluminación, el detalle de la piel y el encuadre final del producto."
+    },
+    {
+      "q": "¿Qué debo proteger en un prompt de moda?",
+      "a": "Protege la identidad, las proporciones corporales, la lógica de la tela, los accesorios y la distancia de la cámara que hace que el look sea legible."
+    }
+  ]
+}

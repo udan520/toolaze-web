@@ -1,0 +1,135 @@
+{
+  "slug": "kling",
+  "kind": "model",
+  "filterValue": "Kling",
+  "defaultModel": "Kling",
+  "title": "Kling Prompt-Vorlagen aus viralen X-Beispielen | Toolaze",
+  "description": "Durchsuchen Sie quellengestützte Kling Prompt-Vorlagen von X für Produktanzeigen, filmische Szenen, Modeclips, Anime-Videos und Social-Media-Posts.",
+  "heroTitle": "Erstellen Sie Kling-Videos aus Prompt-Formaten, die bereits auf X geteilt wurden",
+  "heroDescription": "Kling-Prompts funktionieren am besten, wenn die Bewegung spezifisch ist: Kamerarichtung, Motivbewegung, Szenentempo und ein finales Bild, das es wert ist, gepostet zu werden. Diese Bibliothek hilft Ihnen, mit echten X-Beispielen zu beginnen, anstatt in einem leeren Textfeld zu raten.",
+  "howToTitle": "Wie man Kling Prompt-Vorlagen verwendet, ohne zu viel zu prompten",
+  "howToIntro": "Kling kann filmische Bewegungen verarbeiten, aber vage Prompts wirken oft überladen. Nutzen Sie das Quellbeispiel als Rahmen und halten Sie die Handlung lesbar.",
+  "steps": [
+    {
+      "title": "Wählen Sie den passendsten Bewegungsstil",
+      "text": "Beginnen Sie mit einer Vorlage, die sich bereits so bewegt wie Ihre Idee: Vlog, Produktenthüllung, Trailer-Aufnahme, Charakter-Action oder Mode-Übergang."
+    },
+    {
+      "title": "Behalten Sie eine Hauptaktion bei",
+      "text": "Ersetzen Sie das Motiv, aber vermeiden Sie es, zu viele Bewegungen zu stapeln. Eine klare erste Aktion ist meist besser als eine überfüllte Szene."
+    },
+    {
+      "title": "Schützen Sie das letzte Bild",
+      "text": "Beschreiben Sie, was die letzte Aufnahme zeigen soll, besonders bei Anzeigen, Trailern und Social-Media-Posts, bei denen das Ende den Hook trägt."
+    },
+    {
+      "title": "Passen Sie die Kamerasprache an",
+      "text": "Tauschen Sie Kamerabewegungen nur aus, wenn sie zu Ihrer Szene passen. Ein Handheld-Vlog-Prompt sollte kein polierter Werbespot werden, es sei denn, dies ist beabsichtigt."
+    }
+  ],
+  "remixTitle": "Verwandeln Sie ein Kling-Beispiel in Ihr eigenes Videoformat",
+  "remixText": "Der nützliche Teil einer Kling-Vorlage ist nicht nur der Wortlaut. Es ist der Rhythmus: was zuerst erscheint, was sich ändert, worauf die Kamera folgt und warum das letzte Bild teilenswert ist.",
+  "patterns": [
+    {
+      "label": "Für Anzeigen",
+      "heading": "Machen Sie den Nutzen vor dem Logo sichtbar.",
+      "body": "Nutzen Sie einen Produkt-Prompt, um Textur, Anwendungsfall, Transformation oder Appetitanregung zu zeigen, bevor Sie nach einer sauberen Hero-Aufnahme fragen."
+    },
+    {
+      "label": "Für Trailer",
+      "heading": "Lassen Sie Spannung in eine Richtung aufbauen.",
+      "body": "Ein starker Kling-Trailer-Prompt beginnt meist ruhig, fügt eine Bedrohung oder Enthüllung hinzu und endet mit einem Bild, das zum zweiten Mal Anschauen einlädt."
+    },
+    {
+      "label": "Für Creator",
+      "heading": "Leihen Sie sich das Tempo, nicht die exakte Geschichte.",
+      "body": "Behalten Sie die Beat-Struktur der Quelle bei und ersetzen Sie Besetzung, Setting, Requisiten und das finale Ergebnis durch etwas, das Ihnen gehört."
+    }
+  ],
+  "chooserTitle": "Wählen Sie eine Kling-Vorlage nach der Art der Bewegung, die Sie benötigen",
+  "chooserIntro": "Nutzen Sie die Tabelle als praktische Abkürzung, bevor Sie die Vorlagen durchsuchen.",
+  "chooserRows": [
+    {
+      "goal": "Produktbewegung",
+      "startWith": "Eine haptische Aktion wie Gießen, Auspacken, Schneiden, Funkeln, Spritzen oder Enthüllen.",
+      "bestFor": "Lebensmittel, Beauty, E-Commerce, App-Promos und Launch-Videos.",
+      "replace": "Produkt, Setting, Handbewegung, Material und finaler Packshot.",
+      "keep": "Makro-Timing, Nutzenenthüllung und sauberes Ende."
+    },
+    {
+      "goal": "Filmische Szene",
+      "startWith": "Eine kurze Shot-Liste mit einem emotionalen oder physischen Konflikt.",
+      "bestFor": "Trailer, Fantasy-Szenen, Horror, Action und Worldbuilding.",
+      "replace": "Charakter, Ort, Bedrohung, Beleuchtung und Kamerabewegung.",
+      "keep": "Eskalation, Atmosphäre und der finale Hook."
+    },
+    {
+      "goal": "Social-Media-Charakterclip",
+      "startWith": "Eine Geste, ein Ausdruck und eine Kameraentfernung.",
+      "bestFor": "Porträt-Animation, Influencer-Clips, Anime, Maskottchen und Szenen im Vlog-Stil.",
+      "replace": "Identitätsanker, Pose, Emotion, Hintergrund und Plattformformat.",
+      "keep": "Gesichtskonsistenz und einfache Bewegungsbeats."
+    }
+  ],
+  "answerTitle": "Was ist der schnellste Weg, einen Kling-Prompt zu schreiben?",
+  "answerText": "Beginnen Sie mit einer quellengestützten Kling-Vorlage, die bereits Ihrem Bewegungsziel entspricht. Ersetzen Sie Motiv und Setting, behalten Sie das Timing und die Kamerastruktur bei und machen Sie das Ende spezifischer. Kling verbessert sich meist, wenn der Prompt weniger konkurrierende Aktionen und ein klareres letztes Bild hat.",
+  "anatomyTitle": "Was ein wiederverwendbarer Kling-Prompt normalerweise steuert",
+  "anatomyIntro": "Gute Kling-Prompts sagen dem Modell, was sich bewegen soll, was stabil bleiben soll und wohin der Zuschauer schauen soll.",
+  "anatomy": [
+    {
+      "title": "Bewegungspriorität",
+      "text": "Nennen Sie die eine Bewegung, die am wichtigsten ist, bevor Sie sekundäre Details hinzufügen."
+    },
+    {
+      "title": "Kameraentfernung",
+      "text": "Geben Sie Nahaufnahme, Halbtotale, Totale, POV, Handheld, Orbit oder fixierte Kamera an, wenn dies das Ergebnis verändert."
+    },
+    {
+      "title": "Szenenkontinuität",
+      "text": "Behalten Sie das gleiche Produkt, Gesicht, Outfit, die gleiche Beleuchtung oder den gleichen Ort während der Aufnahme bei."
+    },
+    {
+      "title": "Social-Media-Ergebnis",
+      "text": "Definieren Sie den visuellen Moment, der das Video teilenswert oder remixbar macht."
+    }
+  ],
+  "trustTitle": "Warum diese Kling-Prompts quellengestützt sind",
+  "trustText": "Eine Kling-Vorlage ist nützlicher, wenn Sie den ursprünglichen Kontext sehen und entscheiden können, ob die Idee eine Anpassung wert ist.",
+  "trustRules": [
+    "Jede Vorlage sollte auf eine öffentliche X-Quelle verweisen, nicht auf ein erfundenes Prompt-Beispiel.",
+    "Der sichtbare Prompt sollte der Sprache des Original-Posts oder -Kommentars entsprechen, anstatt umgeschrieben zu werden.",
+    "Die Vorlage sollte genügend Kontext enthalten, damit ein Anfänger sie kopieren, ersetzen und testen kann.",
+    "Die Medien und Metriken werden als Signale behandelt, aber der Prompt selbst muss weiterhin nutzbar sein."
+  ],
+  "mistakesTitle": "Häufige Fehler beim Kling-Remixing",
+  "mistakesText": "Die meisten schwachen Remixes scheitern, weil die Bewegung unklar wird.",
+  "mistakes": [
+    {
+      "title": "Hinzufügen von fünf Aktionen zu einem kurzen Clip",
+      "text": "Halten Sie die Hauptaktion lesbar. Zusätzliche Bewegungen können dazu führen, dass Kling das Motiv verliert."
+    },
+    {
+      "title": "Das letzte Bild vergessen",
+      "text": "Ein Social-Media-Post braucht ein klares Ende, nicht nur einen filmischen Mittelteil."
+    },
+    {
+      "title": "Verwendung des falschen Kamerastils",
+      "text": "Ein Werbe-Prompt und ein Vlog-Prompt benötigen unterschiedliches Kameraverhalten."
+    }
+  ],
+  "faqTitle": "FAQ zu Kling Prompt-Vorlagen",
+  "faqs": [
+    {
+      "q": "Können Anfänger diese Kling-Prompts verwenden?",
+      "a": "Ja. Kopieren Sie eine Vorlage, ersetzen Sie das Motiv und die Szene und behalten Sie die Bewegungsstruktur bei, bis Sie verstehen, was jeder Teil steuert."
+    },
+    {
+      "q": "Sind diese Prompts nur für Videoanzeigen?",
+      "a": "Nein. Die Kling-Bibliothek umfasst Anzeigen, Trailer, Charakterbewegungen, Fantasy-Szenen, Modeclips und Social-Media-Formate."
+    },
+    {
+      "q": "Warum X-Beispiele verwenden?",
+      "a": "X-Beispiele zeigen echte Prompt-Formate, die öffentlich geteilt wurden, sodass Sie sowohl den Wortlaut als auch den sozialen Aspekt studieren können."
+    }
+  ]
+}

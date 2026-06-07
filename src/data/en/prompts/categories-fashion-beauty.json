@@ -1,0 +1,135 @@
+{
+  "slug": "fashion-beauty",
+  "kind": "category",
+  "filterValue": "Fashion & Beauty",
+  "defaultCategory": "Fashion & Beauty",
+  "title": "AI Fashion And Beauty Prompt Templates From Viral X Examples | Toolaze",
+  "description": "Browse source-backed AI fashion and beauty prompt templates from X for outfit changes, portraits, skincare ads, hair motion, styling clips, and social visuals.",
+  "heroTitle": "Create Fashion And Beauty Visuals From Prompt Templates Shared On X",
+  "heroDescription": "Fashion and beauty prompts need identity consistency, fabric behavior, styling details, and a strong visual mood. This page collects real examples you can copy, adapt, and use for outfits, portraits, beauty ads, and transformation clips.",
+  "howToTitle": "How to use fashion and beauty prompt templates",
+  "howToIntro": "The best fashion prompts protect identity and styling while making one visual change feel intentional.",
+  "steps": [
+    {
+      "title": "Pick the visual job",
+      "text": "Decide whether you need an outfit change, beauty portrait, product ad, hair motion, or editorial scene."
+    },
+    {
+      "title": "Keep identity stable",
+      "text": "Preserve face, body proportions, hair, skin tone, outfit anchor, or product packaging when the source prompt does so."
+    },
+    {
+      "title": "Replace styling details",
+      "text": "Change fabric, color, accessories, makeup, pose, lighting, and location to fit your concept."
+    },
+    {
+      "title": "Check realism and taste",
+      "text": "Review hands, fabric folds, face consistency, and whether the result feels like a real style direction."
+    }
+  ],
+  "remixTitle": "Use the template as a styling brief",
+  "remixText": "A fashion prompt works when the styling choices feel connected. Keep the structure, then build a coherent outfit, mood, and camera language.",
+  "patterns": [
+    {
+      "label": "For outfit changes",
+      "heading": "Use a repeatable transition trigger.",
+      "body": "Spin, sleeve flick, fan movement, hair touch, or camera wipe can organize multiple looks."
+    },
+    {
+      "label": "For beauty ads",
+      "heading": "Let texture sell the product.",
+      "body": "Skin glow, cream texture, water, light, and close-up detail can do more than slogans."
+    },
+    {
+      "label": "For portraits",
+      "heading": "Protect the face before changing style.",
+      "body": "Identity drift hurts fashion prompts quickly, so preserve facial features and expression first."
+    }
+  ],
+  "chooserTitle": "Choose a fashion and beauty template by output type",
+  "chooserIntro": "Use the format closest to what you want to post.",
+  "chooserRows": [
+    {
+      "goal": "Outfit transformation",
+      "startWith": "A clear transition action and timed look changes.",
+      "bestFor": "TikTok-style reels, ancient costume changes, styling posts, and fashion edits.",
+      "replace": "Wardrobe, fabric, accessories, transition trigger, and pose.",
+      "keep": "Identity consistency and rhythm."
+    },
+    {
+      "goal": "Beauty product visual",
+      "startWith": "A product texture or skin detail moment.",
+      "bestFor": "Skincare, makeup, haircare, fragrance, and wellness ads.",
+      "replace": "Product, skin tone, surface, ingredient cue, and lighting.",
+      "keep": "Clean close-ups and product readability."
+    },
+    {
+      "goal": "Editorial portrait",
+      "startWith": "A person, mood, outfit, and camera perspective.",
+      "bestFor": "Avatars, portfolio shots, campaign visuals, and creator posts.",
+      "replace": "Face anchor, wardrobe, location, lens feel, and color palette.",
+      "keep": "Anatomy, expression, and styling coherence."
+    }
+  ],
+  "answerTitle": "What makes a fashion prompt reusable?",
+  "answerText": "A reusable fashion prompt separates the person, styling, motion, and camera. You can swap clothing, product, or setting while keeping identity, fabric behavior, and visual rhythm stable. That makes it easier to create multiple looks from one working format.",
+  "anatomyTitle": "What a fashion and beauty prompt usually controls",
+  "anatomyIntro": "Good fashion prompts are specific without becoming costume soup.",
+  "anatomy": [
+    {
+      "title": "Identity and body consistency",
+      "text": "Keep face, body proportions, hair, and pose stable unless the change is intentional."
+    },
+    {
+      "title": "Wardrobe materials",
+      "text": "Name fabric, fit, color, accessories, and how the clothing moves."
+    },
+    {
+      "title": "Beauty details",
+      "text": "Control skin texture, makeup, hair, product texture, and lighting."
+    },
+    {
+      "title": "Camera and platform",
+      "text": "Use medium shot, close-up, mirror selfie, editorial portrait, or vertical reel framing as needed."
+    }
+  ],
+  "trustTitle": "Why these fashion and beauty templates are source-backed",
+  "trustText": "Fashion prompts are easy to over-polish. Source-backed examples make it easier to see the original prompt and social context.",
+  "trustRules": [
+    "Every template should point back to a public X source, not a made-up prompt example.",
+    "The visible prompt should match the original post or comment language instead of being rewritten.",
+    "The template should include enough context for a beginner to copy, replace, and test it.",
+    "The media and metrics are treated as signals, but the prompt itself must still be usable."
+  ],
+  "mistakesTitle": "Common fashion prompt mistakes",
+  "mistakesText": "The fastest way to weaken a fashion prompt is to ignore consistency.",
+  "mistakes": [
+    {
+      "title": "Changing every detail at once",
+      "text": "Keep identity and camera stable when testing a new outfit or product style."
+    },
+    {
+      "title": "Ignoring fabric behavior",
+      "text": "Clothing should drape, flutter, stretch, or fold in a way that matches the movement."
+    },
+    {
+      "title": "Letting beauty details become plastic",
+      "text": "Natural skin texture and realistic lighting usually look better than over-smoothed polish."
+    }
+  ],
+  "faqTitle": "Fashion and beauty prompt template FAQ",
+  "faqs": [
+    {
+      "q": "Can these templates create outfit change videos?",
+      "a": "Yes. Choose a transformation template and replace the wardrobe, transition action, and styling details."
+    },
+    {
+      "q": "Can I use them for beauty ads?",
+      "a": "Yes. Start from a product or close-up template, then describe texture, lighting, skin detail, and final product frame."
+    },
+    {
+      "q": "What should I protect in a fashion prompt?",
+      "a": "Protect identity, body proportions, fabric logic, accessories, and the camera distance that makes the look readable."
+    }
+  ]
+}

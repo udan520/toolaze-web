@@ -3,8 +3,8 @@
 import Link from 'next/link'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { usePathname } from 'next/navigation'
-import { getAllSlugs, getSeoContent } from '@/lib/seo-loader'
 import CloseIcon from './icons/CloseIcon'
+import { getClientMenuItems, type ClientMenuItem } from '@/lib/client-menu-data'
 import {
   PREFERRED_LOCALE_STORAGE_KEY,
   SITE_LOCALES,
@@ -37,6 +37,14 @@ const defaultNavTranslations = {
   seedance2: 'Seedance 2.0',
   kling3: 'Kling 3.0',
   promptLibrary: 'Prompts',
+  allPrompts: 'All Prompts',
+  promptModels: 'Model',
+  promptScenes: 'Scenes',
+  kling: 'Kling',
+  nanoBanana: 'Nano Banana',
+  advertising: 'Advertising',
+  fashionBeauty: 'Fashion & Beauty',
+  filmTrailer: 'Film & Trailer',
   aboutUs: 'About Us',
   viewAllAiTools: 'View All AI Tools',
   emojiMenu: {
@@ -55,65 +63,6 @@ const AI_TOOLS_DEMO_IMAGES = {
   photoRestoration:
     'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=400&q=80',
   aiCouplePhotoMaker: '/ai-couple-photo-maker/rainy-eiffel-4x3.jpg',
-}
-
-const emojiMenuFallbackItems = [
-  { slug: 'crying-copy-and-paste', title: 'Crying Emoji Copy and Paste' },
-  { slug: 'cross-copy-and-paste', title: 'Cross Emoji Copy and Paste' },
-  { slug: 'adults-only-copy-and-paste', title: 'Adults Only Emoji Copy and Paste' },
-  { slug: 'fire-copy-and-paste', title: 'Fire Emoji Copy and Paste' },
-  { slug: 'birthday-copy-and-paste', title: 'Birthday Emoji Copy and Paste' },
-  { slug: 'cat-copy-and-paste', title: 'Cat Emoji Copy and Paste' },
-]
-
-function getEmojiMenuFallbackTitle(navTranslations: typeof defaultNavTranslations, slug: string) {
-  return navTranslations.emojiMenu?.[slug as keyof typeof defaultNavTranslations.emojiMenu]
-    || emojiMenuFallbackItems.find((item) => item.slug === slug)?.title
-    || slug
-}
-
-// 加载导航翻译的函数（nav + footer.language 用于「语言」标签，与页脚一致）
-async function loadNavTranslations(locale: string) {
-  try {
-    let normalizedLocale = locale
-    if (locale === 'zh' || locale === 'zh-CN' || locale === 'zh-HK') {
-      normalizedLocale = 'zh-TW'
-    }
-
-    const mergeNav = (data: { nav?: Partial<typeof defaultNavTranslations>; footer?: { language?: string } }) => ({
-      ...defaultNavTranslations,
-      ...(data.nav || {}),
-      language: data.footer?.language || defaultNavTranslations.language,
-    })
-
-    if (normalizedLocale === 'en') {
-      const data = (await import('@/data/en/common.json')).default
-      return mergeNav({ nav: data?.nav as Partial<typeof defaultNavTranslations> | undefined, footer: data?.footer })
-    }
-
-    try {
-      const data = (await import(`@/data/${normalizedLocale}/common.json`)).default
-      return mergeNav({ nav: data?.nav as Partial<typeof defaultNavTranslations> | undefined, footer: data?.footer })
-    } catch {
-      return defaultNavTranslations
-    }
-  } catch {
-    return defaultNavTranslations
-  }
-}
-
-// 格式化 tool 名称为显示名称（与页面中的函数一致）
-function extractPageTitle(h1: string): string {
-  if (!h1) return ''
-  // 移除HTML标签
-  let cleanH1 = h1.replace(/<[^>]*>/g, '')
-  // 对于英文，移除常见前缀和后缀
-  // 对于其他语言，直接返回清理后的标题
-  if (/^[a-zA-Z]/.test(cleanH1)) {
-    cleanH1 = cleanH1.replace(/^(Compress|Free|Convert|Optimize|Reduce)\s+/i, '')
-    cleanH1 = cleanH1.replace(/\s+(Compression|Tool|Compressor|Converter|Optimizer)$/i, '')
-  }
-  return cleanH1.trim() || h1.replace(/<[^>]*>/g, '')
 }
 
 function getInitialNavTranslations(initialTranslations?: any) {
@@ -135,7 +84,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [expandedSubmenus, setExpandedSubmenus] = useState<Set<string>>(new Set())
   const [navTranslations, setNavTranslations] = useState(getInitialNavTranslations(initialTranslations))
-  const [thirdLevelMenuData, setThirdLevelMenuData] = useState<Record<string, Array<{slug: string, title: string, href: string}>>>({
+  const [thirdLevelMenuData, setThirdLevelMenuData] = useState<Record<string, ClientMenuItem[]>>({
     'image-compressor': [],
     'image-converter': [],
     'font-generator': [],
@@ -161,11 +110,11 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
     ? navSupportedLocales
     : navSupportedLocales.filter((l) => l.code !== navEffectiveLocale)
   
-  // 加载翻译 - 只在客户端加载以避免 hydration mismatch
+  // 翻译由 server page 作为 initialTranslations 传入，避免客户端打包全部 common.json。
   useEffect(() => {
     setIsMounted(true)
-    loadNavTranslations(navEffectiveLocale).then(setNavTranslations)
-  }, [navEffectiveLocale])
+    setNavTranslations(getInitialNavTranslations(initialTranslations))
+  }, [initialTranslations])
 
   useEffect(() => {
     if (typeof window === 'undefined') return
@@ -191,232 +140,13 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
     return () => window.removeEventListener('resize', updateViewport)
   }, [])
   
-  // 加载三级菜单数据
+  // 加载三级菜单数据：客户端菜单只依赖轻量元数据，避免把服务端 SEO loader 打进浏览器包。
   useEffect(() => {
-    const loadThirdLevelItems = async () => {
-      const locale = navEffectiveLocale
-      const data: Record<string, Array<{slug: string, title: string, href: string}>> = {}
-      
-      // 生成带语言前缀的链接的辅助函数
-      const getHref = (href: string): string => {
-        if (href.startsWith('http')) return href
-        if (locale === 'en') return href
-        if (href.startsWith(`/${locale}`)) return href
-        return `/${locale}${href}`
-      }
-      
-      // 加载 Image Compressor 的三级菜单（只显示 in_menu: true 的工具）
-      try {
-        const compressorSlugs = await getAllSlugs('image-compressor', locale)
-        if (compressorSlugs && compressorSlugs.length > 0) {
-          const compressorItems = await Promise.all(
-            compressorSlugs.map(async (slug) => {
-              try {
-                const toolData = await getSeoContent('image-compressor', slug, locale)
-                // 检查 in_menu 字段：如果不存在或为 true，则显示；如果为 false，则不显示
-                if (toolData?.in_menu === false) {
-                  return null
-                }
-                let title = slug
-                if (toolData?.hero?.h1) {
-                  title = toolData.hero.h1.replace(/<[^>]*>/g, '').trim()
-                  if (!title) title = slug
-                }
-                return {
-                  slug,
-                  title,
-                  href: getHref(`/image-compressor/${slug}`),
-                }
-              } catch (err) {
-                // 如果单个项加载失败，返回 null，后续会被过滤掉
-                return null
-              }
-            })
-          )
-          data['image-compressor'] = compressorItems.filter((item): item is { slug: string; title: string; href: string } => 
-            item !== null && item.title !== undefined && item.href !== undefined
-          )
-        } else {
-          data['image-compressor'] = []
-        }
-      } catch (error) {
-        console.error('Failed to load image-compressor menu items:', error)
-        data['image-compressor'] = []
-      }
-      
-      // 加载 Image Converter 的三级菜单（只显示 in_menu: true 的工具）
-      try {
-        const converterSlugs = await getAllSlugs('image-converter', locale)
-        const converterItems = await Promise.all(
-          converterSlugs.map(async (slug) => {
-            try {
-              const toolData = await getSeoContent('image-converter', slug, locale)
-              // 检查 in_menu 字段：如果不存在或为 true，则显示；如果为 false，则不显示
-              if (toolData?.in_menu === false) {
-                return null
-              }
-              let title = slug
-              if (toolData?.hero?.h1) {
-                title = toolData.hero.h1.replace(/<[^>]*>/g, '').trim()
-                if (!title) title = slug
-              }
-              return {
-                slug,
-                title,
-                href: getHref(`/image-converter/${slug}`),
-              }
-            } catch (err) {
-              // 如果单个项加载失败，返回 null，后续会被过滤掉
-              return null
-            }
-          })
-        )
-        data['image-converter'] = converterItems.filter((item): item is { slug: string; title: string; href: string } => 
-          item !== null && item.title !== undefined && item.href !== undefined
-        )
-      } catch (error) {
-        data['image-converter'] = []
-      }
-      
-      // 加载 Font Generator 的三级菜单（只显示搜索量最大的5个）
-      // 根据关键词数据，搜索量最大的5个L3页面：
-      // 1. cursive - 33100
-      // 2. fancy - 27100
-      // 3. bold - 18100
-      // 4. tattoo - 18100
-      // 5. cool - 14800
-      const topFontGeneratorSlugs = ['cursive', 'fancy', 'bold', 'tattoo', 'cool']
-      
-      // 加载 common.json 中的 categories 翻译作为回退
-      let categoryTranslations: Record<string, string> = {}
-      try {
-        let normalizedLocale: string = locale
-        if (normalizedLocale === 'zh' || normalizedLocale === 'zh-CN' || normalizedLocale === 'zh-HK') {
-          normalizedLocale = 'zh-TW'
-        }
-        const commonData = normalizedLocale === 'en' 
-          ? await import('@/data/en/common.json')
-          : await import(`@/data/${normalizedLocale}/common.json`)
-        categoryTranslations = commonData.default?.common?.fontGenerator?.categories || {}
-      } catch (err) {
-        // 如果加载失败，使用空对象
-        categoryTranslations = {}
-      }
-      
-      try {
-        const fontGeneratorSlugs = await getAllSlugs('font-generator', locale)
-        // 只处理搜索量最大的5个slug
-        const topSlugs = fontGeneratorSlugs.filter(slug => topFontGeneratorSlugs.includes(slug))
-        // 按照搜索量排序
-        const sortedSlugs = topSlugs.sort((a, b) => {
-          const indexA = topFontGeneratorSlugs.indexOf(a)
-          const indexB = topFontGeneratorSlugs.indexOf(b)
-          return indexA - indexB
-        })
-        
-        const fontGeneratorItems = await Promise.all(
-          sortedSlugs.map(async (slug) => {
-            try {
-              const toolData = await getSeoContent('font-generator', slug, locale)
-              // 检查 in_menu 字段：如果不存在或为 true，则显示；如果为 false，则不显示
-              if (toolData?.in_menu === false) {
-                return null
-              }
-              let title = slug
-              if (toolData?.hero?.h1) {
-                title = toolData.hero.h1.replace(/<[^>]*>/g, '').trim()
-                if (!title) title = slug
-              }
-              // 如果 title 仍然是 slug（说明没有加载到翻译），尝试使用 categories 翻译
-              if (title === slug && categoryTranslations[slug]) {
-                title = categoryTranslations[slug]
-              }
-              return {
-                slug,
-                title,
-                href: getHref(`/font-generator/${slug}`),
-              }
-            } catch (err) {
-              // 如果单个项加载失败，尝试使用 categories 翻译作为回退
-              const fallbackTitle = categoryTranslations[slug] || slug
-              return {
-                slug,
-                title: fallbackTitle,
-                href: getHref(`/font-generator/${slug}`),
-              }
-            }
-          })
-        )
-        data['font-generator'] = fontGeneratorItems.filter((item): item is { slug: string; title: string; href: string } => 
-          item !== null && item.title !== undefined && item.href !== undefined
-        )
-      } catch (error) {
-        data['font-generator'] = []
-      }
-      
-      // 加载 Emoji Copy & Paste 的三级菜单（全部 6 个 L3 页面）
-      try {
-        const emojiSlugs = await getAllSlugs('emoji-copy-and-paste', locale)
-        const slugs = emojiSlugs && emojiSlugs.length > 0
-          ? emojiSlugs
-          : emojiMenuFallbackItems.map((item) => item.slug)
-        if (slugs.length > 0) {
-          const emojiItems = await Promise.all(
-            slugs.map(async (slug) => {
-              try {
-                const toolData = await getSeoContent('emoji-copy-and-paste', slug, locale)
-                if (toolData?.in_menu === false) return null
-                return {
-                  slug,
-                  title: getEmojiMenuFallbackTitle(navTranslations, slug),
-                  href: getHref(`/emoji-copy-and-paste/${slug}`),
-                }
-              } catch (err) {
-                return {
-                  slug,
-                  title: getEmojiMenuFallbackTitle(navTranslations, slug),
-                  href: getHref(`/emoji-copy-and-paste/${slug}`),
-                }
-              }
-            })
-          )
-          const filteredEmojiItems = emojiItems.filter((item): item is { slug: string; title: string; href: string } =>
-            item !== null && item.title !== undefined && item.href !== undefined
-          )
-          data['emoji-copy-and-paste'] = filteredEmojiItems.length > 0
-            ? filteredEmojiItems
-            : emojiMenuFallbackItems.map((item) => ({
-                slug: item.slug,
-                title: getEmojiMenuFallbackTitle(navTranslations, item.slug),
-                href: getHref(`/emoji-copy-and-paste/${item.slug}`),
-              }))
-        } else {
-          data['emoji-copy-and-paste'] = emojiMenuFallbackItems.map((item) => ({
-            slug: item.slug,
-            title: getEmojiMenuFallbackTitle(navTranslations, item.slug),
-            href: getHref(`/emoji-copy-and-paste/${item.slug}`),
-          }))
-        }
-      } catch (error) {
-        console.error('Failed to load emoji-copy-and-paste menu items:', error)
-        data['emoji-copy-and-paste'] = emojiMenuFallbackItems.map((item) => ({
-          slug: item.slug,
-          title: getEmojiMenuFallbackTitle(navTranslations, item.slug),
-          href: getHref(`/emoji-copy-and-paste/${item.slug}`),
-        }))
-      }
-      
-      setThirdLevelMenuData(data)
-    }
-
-    void loadThirdLevelItems().catch((err) => {
-      console.error('Navigation: loadThirdLevelItems failed', err)
-      setThirdLevelMenuData({
-        'image-compressor': [],
-        'image-converter': [],
-        'font-generator': [],
-        'emoji-copy-and-paste': [],
-      })
+    setThirdLevelMenuData({
+      'image-compressor': getClientMenuItems('image-compressor', navEffectiveLocale, navTranslations),
+      'image-converter': getClientMenuItems('image-converter', navEffectiveLocale, navTranslations),
+      'font-generator': getClientMenuItems('font-generator', navEffectiveLocale, navTranslations),
+      'emoji-copy-and-paste': getClientMenuItems('emoji-copy-and-paste', navEffectiveLocale, navTranslations),
     })
   }, [navEffectiveLocale, pathname, navTranslations])
 
@@ -426,7 +156,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
   }
   
   // 获取三级菜单项的函数（使用已加载的数据）
-  const getThirdLevelItems = (tool: string): Array<{slug: string, title: string, href: string}> => {
+  const getThirdLevelItems = (tool: string): ClientMenuItem[] => {
     return thirdLevelMenuData[tool] || []
   }
 
@@ -544,6 +274,49 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
     },
   ]
 
+  const promptMenuGroups = [
+    {
+      title: navTranslations.promptModels || defaultNavTranslations.promptModels,
+      key: 'prompt-models',
+      items: [
+        {
+          title: navTranslations.seedance2 || defaultNavTranslations.seedance2,
+          href: getLocalizedHref('/prompts/models/seedance-2-0'),
+        },
+        {
+          title: navTranslations.kling || defaultNavTranslations.kling,
+          href: getLocalizedHref('/prompts/models/kling'),
+        },
+        {
+          title: navTranslations.gptImage2 || defaultNavTranslations.gptImage2,
+          href: getLocalizedHref('/prompts/models/gpt-image-2'),
+        },
+        {
+          title: navTranslations.nanoBanana || defaultNavTranslations.nanoBanana,
+          href: getLocalizedHref('/prompts/models/nano-banana'),
+        },
+      ],
+    },
+    {
+      title: navTranslations.promptScenes || defaultNavTranslations.promptScenes,
+      key: 'prompt-scenes',
+      items: [
+        {
+          title: navTranslations.advertising || defaultNavTranslations.advertising,
+          href: getLocalizedHref('/prompts/categories/advertising'),
+        },
+        {
+          title: navTranslations.fashionBeauty || defaultNavTranslations.fashionBeauty,
+          href: getLocalizedHref('/prompts/categories/fashion-beauty'),
+        },
+        {
+          title: navTranslations.filmTrailer || defaultNavTranslations.filmTrailer,
+          href: getLocalizedHref('/prompts/categories/film-trailer'),
+        },
+      ],
+    },
+  ]
+
   return (
     <nav id="mainNav" ref={navRef} className="sticky-nav w-full">
       <div className="h-[70px] px-6 flex justify-center items-center max-w-6xl mx-auto w-full relative">
@@ -582,12 +355,48 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
 
         {/* 桌面端菜单 */}
         <div className="hidden md:flex gap-8 text-sm font-bold text-slate-700 items-center">
-          <Link
-            href={getLocalizedHref('/prompts')}
-            className="hover:text-indigo-600 transition-colors"
-          >
-            {navTranslations.promptLibrary || defaultNavTranslations.promptLibrary}
-          </Link>
+          {/* 一级菜单：Prompts */}
+          <div className="relative group">
+            <button className="hover:text-indigo-600 transition-colors flex items-center gap-1">
+              {navTranslations.promptLibrary || defaultNavTranslations.promptLibrary}
+              <svg className="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div className="absolute top-full left-0 mt-2 w-auto min-w-[220px] max-w-[320px] bg-white rounded-xl shadow-lg border border-indigo-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 overflow-visible">
+              <div className="py-2">
+                <Link
+                  href={getLocalizedHref('/prompts')}
+                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors whitespace-nowrap"
+                >
+                  {navTranslations.allPrompts || defaultNavTranslations.allPrompts}
+                </Link>
+                {promptMenuGroups.map((group) => (
+                  <div key={group.key} className="relative group/secondary">
+                    <div className="flex items-center justify-between px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors whitespace-nowrap">
+                      <span>{group.title}</span>
+                      <svg className="w-3 h-3 ml-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
+                      </svg>
+                    </div>
+                    <div className="absolute left-full top-0 ml-1 w-auto min-w-[220px] max-w-[360px] bg-white rounded-xl shadow-lg border border-indigo-50 opacity-0 invisible group-hover/secondary:opacity-100 group-hover/secondary:visible transition-all duration-200 z-[60]">
+                      <div className="py-2">
+                        {group.items.map((item) => (
+                          <Link
+                            key={item.href}
+                            href={item.href}
+                            className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors whitespace-nowrap"
+                          >
+                            {item.title}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
           {/* 一级菜单：Quick Tools */}
           <div className="relative group">
             <button className="hover:text-indigo-600 transition-colors flex items-center gap-1">
@@ -859,19 +668,69 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
             className="block md:!hidden absolute top-full left-0 right-0 bg-white shadow-xl border-t border-indigo-50 z-40 max-h-[calc(100vh-70px)] overflow-y-auto overscroll-contain"
           >
             <div className="px-6 py-4 space-y-4 pb-8">
-              <Link
-                href={getLocalizedHref('/prompts')}
-                onClick={() => {
-                  setMobileMenuOpen(false)
-                  setExpandedSubmenus(new Set())
-                }}
-                className="flex items-center justify-between rounded-2xl border border-indigo-100 bg-indigo-50/70 px-4 py-3 text-sm font-bold text-indigo-700 transition-colors hover:bg-indigo-100"
-              >
-                <span>{navTranslations.promptLibrary || defaultNavTranslations.promptLibrary}</span>
-                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
-                </svg>
-              </Link>
+              {/* Prompts 部分 */}
+              <div className="border-b border-indigo-50 pb-4">
+                <div className="mb-3 flex items-center justify-between">
+                  <div className="text-sm font-bold text-slate-700">{navTranslations.promptLibrary || defaultNavTranslations.promptLibrary}</div>
+                  <Link
+                    href={getLocalizedHref('/prompts')}
+                    onClick={() => {
+                      setMobileMenuOpen(false)
+                      setExpandedSubmenus(new Set())
+                    }}
+                    className="text-xs font-bold text-indigo-600 hover:text-indigo-700"
+                  >
+                    {navTranslations.allPrompts || defaultNavTranslations.allPrompts}
+                  </Link>
+                </div>
+                <div className="space-y-2">
+                  {promptMenuGroups.map((group) => {
+                    const isExpanded = expandedSubmenus.has(group.key)
+                    return (
+                      <div key={group.key}>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setExpandedSubmenus((prev) => {
+                              const next = new Set(prev)
+                              if (next.has(group.key)) {
+                                next.delete(group.key)
+                              } else {
+                                next.add(group.key)
+                              }
+                              return next
+                            })
+                          }}
+                          className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-sm font-semibold text-slate-700 transition-colors hover:bg-indigo-50 hover:text-indigo-600"
+                          aria-expanded={isExpanded}
+                        >
+                          <span>{group.title}</span>
+                          <svg className={'h-4 w-4 transition-transform' + (isExpanded ? ' rotate-90' : '')} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                          </svg>
+                        </button>
+                        {isExpanded && (
+                          <div className="ml-5 mt-2 space-y-1">
+                            {group.items.map((item) => (
+                              <Link
+                                key={item.href}
+                                href={item.href}
+                                onClick={() => {
+                                  setMobileMenuOpen(false)
+                                  setExpandedSubmenus(new Set())
+                                }}
+                                className="block rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-indigo-50 hover:text-indigo-600"
+                              >
+                                {item.title}
+                              </Link>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    )
+                  })}
+                </div>
+              </div>
               {/* Quick Tools 部分 */}
               <div className="border-b border-indigo-50 pb-4">
                 <div className="text-sm font-bold text-slate-700 mb-3">{navTranslations.quickTools}</div>

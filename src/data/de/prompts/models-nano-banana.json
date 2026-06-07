@@ -1,0 +1,135 @@
+{
+  "slug": "nano-banana",
+  "kind": "model",
+  "filterValue": "Nano Banana",
+  "defaultModel": "Nano Banana",
+  "title": "Nano Banana Prompt-Vorlagen aus viralen X-Beispielen | Toolaze",
+  "description": "Durchsuchen Sie quellengestützte Nano Banana Prompt-Vorlagen von X für Porträts, Produktvisualisierungen, Mode-Edits, Anzeigen und Social-Media-Bilder.",
+  "heroTitle": "Erstellen Sie Nano Banana Bilder aus echten Prompt-Beispielen auf X",
+  "heroDescription": "Nano Banana Prompts sind nützlich für schnelle Bildexperimente, Charakter-Edits, Produktvisualisierungen und Social-Media-fähige Kompositionen. Diese Bibliothek hilft Ihnen, mit echten Beispielen anstatt mit generischen Prompt-Formeln zu beginnen.",
+  "howToTitle": "So remixen Sie Nano Banana Prompt-Vorlagen",
+  "howToIntro": "Nano Banana funktioniert am besten, wenn der Prompt spezifisch in Bezug auf Identität, Stil und den Teil des Bildes ist, der sich ändern muss.",
+  "steps": [
+    {
+      "title": "Wählen Sie eine ähnliche Bildaufgabe",
+      "text": "Beginnen Sie mit einer Vorlage für Porträts, Produktvisualisierungen, Mode, Lifestyle oder stilisierte Social-Media-Bilder."
+    },
+    {
+      "title": "Schützen Sie die wichtigen Details",
+      "text": "Wenn der Quell-Prompt ein Gesicht, ein Outfit, eine Objektform oder eine Pose beibehält, ersetzen Sie diese Regel durch Ihren eigenen Anker."
+    },
+    {
+      "title": "Nehmen Sie eine sichtbare Änderung vor",
+      "text": "Fragen Sie nach einer klaren Transformation, einem Setting, einer Pose, einer Lichtänderung oder einer Produktgeschichte anstelle einer vagen Verbesserung."
+    },
+    {
+      "title": "Vor dem Posten vergleichen",
+      "text": "Prüfen Sie, ob das Ergebnis immer noch als Ihr Motiv erkennbar ist und ob das endgültige Bild ohne zusätzliche Erklärung funktioniert."
+    }
+  ],
+  "remixTitle": "Machen Sie das Beispiel nützlich, ohne es zu klonen",
+  "remixText": "Eine Nano Banana Vorlage gibt Ihnen eine funktionierende Bildrichtung vor. Ihre Aufgabe ist es, das Motiv, das Setting und den endgültigen Zweck so weit zu ändern, dass das Ergebnis zu Ihrem Projekt gehört.",
+  "patterns": [
+    {
+      "label": "Für Porträts",
+      "heading": "Halten Sie zuerst die Identität stabil.",
+      "body": "Gesicht, Alter, Ausdruck, Haare, Kleidung und Pose benötigen klare Regeln, bevor Sie einen filmischen Stil hinzufügen."
+    },
+    {
+      "label": "Für Produkte",
+      "heading": "Zeigen Sie das Objekt deutlich.",
+      "body": "Produktform und Material sollten lesbar bleiben, auch wenn sich der Hintergrund oder die Beleuchtung ändert."
+    },
+    {
+      "label": "Für Social-Media-Posts",
+      "heading": "Design für sofortige Wiedererkennung.",
+      "body": "Ein gutes Social-Media-Bild sollte den Witz, die Transformation oder die Ästhetik auf einen Blick vermitteln."
+    }
+  ],
+  "chooserTitle": "Wählen Sie eine Nano Banana Vorlage nach Bearbeitungstyp",
+  "chooserIntro": "Verschiedene Nano Banana Prompts sind für unterschiedliche Bildaufgaben nützlich.",
+  "chooserRows": [
+    {
+      "goal": "Porträt-Bearbeitung",
+      "startWith": "Eine Referenzidentität und eine spezifische Stimmung.",
+      "bestFor": "Avatare, Modeporträts, Creator-Fotos und Charakterbilder.",
+      "replace": "Gesichtsanker, Garderobe, Pose, Beleuchtung und Hintergrund.",
+      "keep": "Identitätskonsistenz und natürliche Anatomie."
+    },
+    {
+      "goal": "Produktvisualisierung",
+      "startWith": "Eine klare Produktform und eine Setting-Idee.",
+      "bestFor": "Anzeigen, E-Commerce-Bilder, Launch-Teaser und Lifestyle-Packshots.",
+      "replace": "Produkt, Material, Szene, Oberfläche und Markenstimmung.",
+      "keep": "Produktlesbarkeit und saubere Komposition."
+    },
+    {
+      "goal": "Stilisiertes Social-Media-Bild",
+      "startWith": "Eine starke Ästhetik oder ein visueller Witz.",
+      "bestFor": "X-Posts, Thumbnails, Memes, Cover und Trend-Remixe.",
+      "replace": "Motiv, Stil, Farbpalette und Plattformformat.",
+      "keep": "Der Kontrast oder die Transformation, die das Beispiel interessant macht."
+    }
+  ],
+  "answerTitle": "Was ist der schnellste Weg, um Nano Banana Prompts zu verwenden?",
+  "answerText": "Beginnen Sie mit einer Vorlage, die zu Ihrer Bildaufgabe passt, behalten Sie die Identitäts- oder Produktschutzregeln bei und ändern Sie dann die Szene und den endgültigen Zweck. Nano Banana Prompts funktionieren besser, wenn die angeforderte Änderung sichtbar ist und das Motiv leicht erkennbar bleibt.",
+  "anatomyTitle": "Was ein wiederverwendbarer Nano Banana Prompt normalerweise enthält",
+  "anatomyIntro": "Ein wiederverwendbarer Prompt macht die Bearbeitungsrichtung klar, ohne das Modell in Rauschen zu ersticken.",
+  "anatomy": [
+    {
+      "title": "Identitätsanker",
+      "text": "Geben Sie an, was erkennbar bleiben muss, wie Gesicht, Produktform, Kleidung oder Pose."
+    },
+    {
+      "title": "Sichtbare Änderung",
+      "text": "Nennen Sie die Transformation, die der Betrachter sofort bemerken soll."
+    },
+    {
+      "title": "Szene und Stil",
+      "text": "Nutzen Sie Licht, Hintergrund, Objektivgefühl und Farbe als Unterstützung, nicht als Ballast."
+    },
+    {
+      "title": "Ausgabezweck",
+      "text": "Geben Sie an, ob das Ergebnis für eine Anzeige, einen Avatar, einen Post, ein Thumbnail oder ein Referenzbild bestimmt ist."
+    }
+  ],
+  "trustTitle": "Warum diese Nano Banana Vorlagen quellengestützt sind",
+  "trustText": "Die Seite ist um öffentliche Prompt-Beispiele herum aufgebaut, sodass Sie die Quelle prüfen können, bevor Sie das Format anpassen.",
+  "trustRules": [
+    "Jede Vorlage sollte auf eine öffentliche X-Quelle verweisen, nicht auf ein erfundenes Prompt-Beispiel.",
+    "Der sichtbare Prompt sollte der Sprache des Original-Posts oder -Kommentars entsprechen, anstatt umgeschrieben zu werden.",
+    "Die Vorlage sollte genügend Kontext enthalten, damit ein Anfänger sie kopieren, ersetzen und testen kann.",
+    "Die Medien und Metriken werden als Signale behandelt, aber der Prompt selbst muss weiterhin nutzbar sein."
+  ],
+  "mistakesTitle": "Häufige Fehler beim Nano Banana Remix",
+  "mistakesText": "Schwache Remixe ändern meist den Stil, vergessen aber das Motiv.",
+  "mistakes": [
+    {
+      "title": "Nicht angeben, was gleich bleiben muss",
+      "text": "Identitäts- und Produktdrift treten leichter auf, wenn der Prompt nur über den Stil spricht."
+    },
+    {
+      "title": "Die Änderung zu subtil gestalten",
+      "text": "Wenn die Transformation schwer zu erkennen ist, verliert der Social-Media-Post seine Existenzberechtigung."
+    },
+    {
+      "title": "Die Quelle zu genau kopieren",
+      "text": "Behalten Sie die Struktur bei, aber ändern Sie Zweck, Motiv und visuellen Kontext."
+    }
+  ],
+  "faqTitle": "Nano Banana Prompt-Vorlagen FAQ",
+  "faqs": [
+    {
+      "q": "Wofür sind Nano Banana Prompts gut?",
+      "a": "Sie sind nützlich für Porträts, Produktvisualisierungen, Social-Media-Bilder, Mode-Edits und schnelle visuelle Experimente."
+    },
+    {
+      "q": "Kann ich diese Beispiele für Anzeigen verwenden?",
+      "a": "Ja. Wählen Sie eine produktorientierte Vorlage und ersetzen Sie Motiv, Material, Setting und den endgültigen Markenrahmen."
+    },
+    {
+      "q": "Warum die X-Quelle beibehalten?",
+      "a": "Die Quelle hilft Ihnen, den Prompt-Kontext zu überprüfen und zu vermeiden, dass Sie sich auf erfundene Vorlagen verlassen."
+    }
+  ]
+}

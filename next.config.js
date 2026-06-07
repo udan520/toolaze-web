@@ -41,28 +41,6 @@ const nextConfig = {
   // 3. 或者使用 VPN/代理来访问 Hugging Face
   webpack: (config, { isServer }) => {
     if (!isServer) {
-      // 确保 vendor chunks 在客户端正确打包
-      config.optimization = {
-        ...config.optimization,
-        splitChunks: {
-          ...config.optimization.splitChunks,
-          cacheGroups: {
-            ...config.optimization.splitChunks?.cacheGroups,
-            default: {
-              minChunks: 2,
-              priority: -20,
-              reuseExistingChunk: true,
-            },
-            vendor: {
-              test: /[\\/]node_modules[\\/]/,
-              name: 'vendors',
-              priority: -10,
-              chunks: 'all',
-            },
-          },
-        },
-      };
-      
       // 排除 heic2any 从 SSR，因为它只在客户端运行
       config.resolve.fallback = {
         ...config.resolve.fallback,

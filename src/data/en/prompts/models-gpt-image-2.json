@@ -1,0 +1,135 @@
+{
+  "slug": "gpt-image-2",
+  "kind": "model",
+  "filterValue": "GPT Image 2",
+  "defaultModel": "GPT Image 2",
+  "title": "GPT Image 2 Prompt Templates From Viral X Examples | Toolaze",
+  "description": "Copy source-backed GPT Image 2 prompt templates from X for ads, posters, memes, UI mockups, portraits, infographics, and social images.",
+  "heroTitle": "Create GPT Image 2 Images From Prompt Structures That Already Worked On X",
+  "heroDescription": "GPT Image 2 prompts are often strongest when they describe layout, subject, style, and constraints in one clean brief. This page collects real X examples so you can copy the structure and make your own image faster.",
+  "howToTitle": "How to use GPT Image 2 prompt templates",
+  "howToIntro": "Image prompts need sharper composition rules than video prompts. Start with the visual hierarchy, then add style and constraints.",
+  "steps": [
+    {
+      "title": "Pick the output type",
+      "text": "Choose a template for a poster, ad, meme, portrait, infographic, UI board, or product image before changing the subject."
+    },
+    {
+      "title": "Keep the composition logic",
+      "text": "Preserve the layout instruction that made the source useful, such as hero subject, margins, framing, or text placement."
+    },
+    {
+      "title": "Replace the reference details",
+      "text": "Swap in your product, character, scene, brand mood, or visual joke while keeping the prompt readable."
+    },
+    {
+      "title": "Check text and artifacts",
+      "text": "If the image contains typography, keep it short and ask for clean spelling, contrast, and layout."
+    }
+  ],
+  "remixTitle": "Use the prompt as an image brief, not a keyword pile",
+  "remixText": "A strong GPT Image 2 prompt reads like a creative brief. It says what should be seen first, what style should hold the image together, and what must not break.",
+  "patterns": [
+    {
+      "label": "For ads",
+      "heading": "Give the product a job in the image.",
+      "body": "Do not only ask for a beautiful packshot. Show the product benefit, setting, material, or moment of use."
+    },
+    {
+      "label": "For memes",
+      "heading": "Preserve the joke structure.",
+      "body": "The viral part is often the mismatch, redraw style, or absurd instruction. Keep that mechanic when changing the subject."
+    },
+    {
+      "label": "For layouts",
+      "heading": "Control hierarchy before decoration.",
+      "body": "Posters, UI boards, and infographics need spacing and alignment rules before style words."
+    }
+  ],
+  "chooserTitle": "Choose a GPT Image 2 template by image format",
+  "chooserIntro": "Different image formats need different prompt structure.",
+  "chooserRows": [
+    {
+      "goal": "Product ad",
+      "startWith": "A clear hero product and one benefit.",
+      "bestFor": "Ecommerce, launch posts, skincare, food, fashion, and app promos.",
+      "replace": "Product, surface, background, use case, and brand mood.",
+      "keep": "Packshot clarity, material details, and readable final composition."
+    },
+    {
+      "goal": "Poster or key visual",
+      "startWith": "A strong title area and one central subject.",
+      "bestFor": "Campaign images, character posters, event graphics, and social covers.",
+      "replace": "Subject, title, palette, scene, and typography style.",
+      "keep": "Grid, margins, contrast, and visual hierarchy."
+    },
+    {
+      "goal": "Meme or redraw",
+      "startWith": "The funny instruction or image transformation.",
+      "bestFor": "Shareable X posts, reaction images, visual jokes, and trend formats.",
+      "replace": "Subject, reference, joke, and output style.",
+      "keep": "Recognizable contrast and low-friction remixability."
+    }
+  ],
+  "answerTitle": "What is the fastest way to use GPT Image 2 prompts?",
+  "answerText": "Choose a source-backed template close to your image format, keep its composition rules, replace the subject and style details, then generate a version with a clear first-read focal point. For posters or ads, check text, margins, and product clarity before posting.",
+  "anatomyTitle": "What a reusable GPT Image 2 prompt usually contains",
+  "anatomyIntro": "The best reusable image prompts behave like compact art direction.",
+  "anatomy": [
+    {
+      "title": "Main subject",
+      "text": "Name the object, character, scene, or idea that should be noticed first."
+    },
+    {
+      "title": "Composition",
+      "text": "Describe framing, hierarchy, margins, background, and text placement when needed."
+    },
+    {
+      "title": "Visual language",
+      "text": "Keep style, lighting, material, color, and perspective consistent."
+    },
+    {
+      "title": "Quality controls",
+      "text": "Add constraints for text, anatomy, logos, hands, and unwanted artifacts only when relevant."
+    }
+  ],
+  "trustTitle": "Why these GPT Image 2 templates are source-backed",
+  "trustText": "Prompt libraries get weak when they invent polished-sounding templates. These examples stay useful because the source context is visible.",
+  "trustRules": [
+    "Every template should point back to a public X source, not a made-up prompt example.",
+    "The visible prompt should match the original post or comment language instead of being rewritten.",
+    "The template should include enough context for a beginner to copy, replace, and test it.",
+    "The media and metrics are treated as signals, but the prompt itself must still be usable."
+  ],
+  "mistakesTitle": "Common GPT Image 2 remix mistakes",
+  "mistakesText": "Most failures come from vague layout, too much style stacking, or ignored text constraints.",
+  "mistakes": [
+    {
+      "title": "Changing the product but not the scene",
+      "text": "A perfume layout may not fit a sneaker, SaaS screen, or food product without changing the setting."
+    },
+    {
+      "title": "Asking for too much text",
+      "text": "Short, high-contrast copy works better than paragraphs inside the image."
+    },
+    {
+      "title": "Treating style as the whole prompt",
+      "text": "Style words help, but composition and subject hierarchy do more work."
+    }
+  ],
+  "faqTitle": "GPT Image 2 prompt template FAQ",
+  "faqs": [
+    {
+      "q": "Can I copy these prompts directly?",
+      "a": "Yes, but the better workflow is to keep the structure and replace the subject, product, reference, or layout goal."
+    },
+    {
+      "q": "Do these templates include meme prompts?",
+      "a": "Yes. GPT Image 2 examples include ads, posters, portraits, UI concepts, infographics, and meme-style image prompts."
+    },
+    {
+      "q": "Should I translate the original prompt?",
+      "a": "For source accuracy, keep the original prompt language when studying it. You can write your remix in the language your model handles best."
+    }
+  ]
+}

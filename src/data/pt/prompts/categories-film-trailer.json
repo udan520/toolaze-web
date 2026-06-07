@@ -1,0 +1,135 @@
+{
+  "slug": "film-trailer",
+  "kind": "category",
+  "filterValue": "Filme e Trailer",
+  "defaultCategory": "Filme e Trailer",
+  "title": "Modelos de Prompt de IA para Filmes e Trailers de Exemplos Virais do X | Toolaze",
+  "description": "Copie modelos de prompt de IA para filmes e trailers com fontes do X para tomadas cinematográficas, cenas de terror, mundos de fantasia, sequências de ação e clipes de histórias curtas.",
+  "heroTitle": "Crie Cenas de IA Cinematográficas a Partir de Modelos de Prompt para Filmes e Trailers",
+  "heroDescription": "Prompts de filmes e trailers precisam de mais do que a palavra cinematográfico. Eles precisam de uma configuração, comportamento de câmera, escalada, atmosfera e uma tomada final que faça as pessoas quererem a próxima cena. Esta página reúne exemplos com fontes do X para esse tipo de trabalho.",
+  "howToTitle": "Como usar modelos de prompt para filmes e trailers",
+  "howToIntro": "Trate cada prompt como uma pequena lista de tomadas. Quanto mais claro for o ritmo da cena, melhor o modelo poderá encená-la.",
+  "steps": [
+    {
+      "title": "Comece com o gênero e o cenário",
+      "text": "Escolha terror, fantasia, ação, ficção científica, cena de criatura ou realismo fundamentado antes de alterar os detalhes."
+    },
+    {
+      "title": "Mantenha a progressão da tomada",
+      "text": "Um bom prompt de trailer geralmente passa de uma configuração calma para uma ameaça, revelação, impacto ou suspense."
+    },
+    {
+      "title": "Substitua os detalhes do mundo",
+      "text": "Altere a localização, personagem, criatura, era, iluminação, conflito e revelação final."
+    },
+    {
+      "title": "Torne o final memorável",
+      "text": "O último quadro deve parecer um ritmo de trailer, não uma pausa aleatória."
+    }
+  ],
+  "remixTitle": "Use o prompt como um projeto de cena compacto",
+  "remixText": "O valor de um modelo de trailer é a ordem dramática. Mantenha a curva de tensão e, em seguida, escreva seu próprio mundo ao redor dela.",
+  "patterns": [
+    {
+      "label": "Para terror",
+      "heading": "Atrase a revelação apenas o suficiente.",
+      "body": "Comece com um detalhe normal, depois introduza movimento, escala, sombra ou som antes que a criatura ou ameaça apareça."
+    },
+    {
+      "label": "Para ação",
+      "heading": "Posicione a câmera em torno do impacto.",
+      "body": "Prompts de ação precisam de uma lógica espacial clara, não apenas explosões e palavras de movimento."
+    },
+    {
+      "label": "Para fantasia",
+      "heading": "Torne o mundo legível rapidamente.",
+      "body": "Dê ao modelo algumas âncoras fortes: terreno, figurino, criatura, comportamento mágico e luz."
+    }
+  ],
+  "chooserTitle": "Escolha um modelo de filme e trailer por ritmo da história",
+  "chooserIntro": "Comece com o tipo de cena que você deseja que os espectadores sintam.",
+  "chooserRows": [
+    {
+      "goal": "Revelação de criatura",
+      "startWith": "Um ambiente silencioso e um movimento não natural.",
+      "bestFor": "Clipes de terror, monstros, deserto, floresta, ficção científica e sobrevivência.",
+      "replace": "Criatura, cenário, escala, iluminação e revelação final.",
+      "keep": "Curva de suspense e tempo de revelação."
+    },
+    {
+      "goal": "Sequência de ação",
+      "startWith": "Um conflito com direção clara e posição da câmera.",
+      "bestFor": "Lutas, perseguições, explosões, cenas de batalha e clipes estilo jogo.",
+      "replace": "Personagens, armas, localização, câmera e momento de impacto.",
+      "keep": "Clareza espacial e escalada."
+    },
+    {
+      "goal": "Tomada de construção de mundo",
+      "startWith": "Uma localização marcante com um assunto em movimento.",
+      "bestFor": "Paisagens de fantasia, anime, históricas, ficção científica e cinematográficas.",
+      "replace": "Mundo, figurino, criatura, clima e sensação da lente.",
+      "keep": "Atmosfera e âncora visual de primeira leitura."
+    }
+  ],
+  "answerTitle": "O que faz um prompt de trailer de IA funcionar?",
+  "answerText": "Um prompt de trailer de IA funciona quando dá ao modelo um caminho dramático curto: onde a cena começa, o que muda, como a câmera a segue e qual quadro final vende a história. Exemplos com fontes ajudam você a estudar esses ritmos sem começar com adjetivos cinematográficos vazios.",
+  "anatomyTitle": "O que um prompt de filme e trailer geralmente contém",
+  "anatomyIntro": "Prompts cinematográficos precisam de estrutura, não apenas estilo.",
+  "anatomy": [
+    {
+      "title": "Promessa de gênero",
+      "text": "Nomeie o gênero, nível de realismo, era e humor para que a cena tenha uma direção clara."
+    },
+    {
+      "title": "Ordem das tomadas",
+      "text": "Descreva a configuração, escalada, revelação e imagem final em uma sequência compacta."
+    },
+    {
+      "title": "Comportamento da câmera",
+      "text": "Use ângulo baixo, rastreamento, câmera na mão, dolly, close-up, plano aberto ou POV apenas quando servir à cena."
+    },
+    {
+      "title": "Controle atmosférico",
+      "text": "Iluminação, clima, poeira, fumaça, dicas sonoras e escala ajudam a vender a sensação de trailer."
+    }
+  ],
+  "trustTitle": "Por que esses modelos de filme e trailer têm fontes confirmadas",
+  "trustText": "Exemplos de prompts cinematográficos costumam parecer impressionantes, mas produzem cenas fracas. Exemplos com fontes permitem que você inspecione prompts que as pessoas realmente compartilharam.",
+  "trustRules": [
+    "Cada modelo deve apontar para uma fonte pública do X, não para um exemplo de prompt inventado.",
+    "O prompt visível deve corresponder ao idioma original da postagem ou comentário, em vez de ser reescrito.",
+    "O modelo deve incluir contexto suficiente para um iniciante copiar, substituir e testar.",
+    "A mídia e as métricas são tratadas como sinais, mas o prompt em si ainda deve ser utilizável."
+  ],
+  "mistakesTitle": "Erros comuns em prompts de filmes",
+  "mistakesText": "A maioria dos prompts cinematográficos fracos é muito vaga ou muito lotada.",
+  "mistakes": [
+    {
+      "title": "Usar 'cinematográfico' como toda a direção",
+      "text": "Adicione câmera, cenário, ação e quadro final em vez de confiar em uma única palavra de estilo."
+    },
+    {
+      "title": "Adicionar personagens demais",
+      "text": "Cenas curtas de IA funcionam melhor com um assunto ou conflito claro."
+    },
+    {
+      "title": "Pular o ritmo da revelação",
+      "text": "Um prompt de trailer precisa de um motivo para o espectador continuar assistindo."
+    }
+  ],
+  "faqTitle": "Perguntas frequentes sobre modelos de prompt para filmes e trailers",
+  "faqs": [
+    {
+      "q": "Esses prompts podem criar trailers curtos de IA?",
+      "a": "Sim. Eles são melhor usados como modelos de cenas curtas, depois expandidos com seu próprio cenário, conflito e final."
+    },
+    {
+      "q": "Preciso de termos cinematográficos avançados?",
+      "a": "Não. Comece com uma ordem de tomada simples e uma instrução de câmera. Adicione termos cinematográficos apenas quando eles ajudarem a cena."
+    },
+    {
+      "q": "Por que usar prompts de trailer com fontes confirmadas?",
+      "a": "Eles mostram como os criadores estruturam exemplos cinematográficos publicamente, incluindo a linguagem do prompt e o contexto social."
+    }
+  ]
+}

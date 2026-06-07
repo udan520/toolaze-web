@@ -1,0 +1,135 @@
+{
+  "slug": "advertising",
+  "kind": "category",
+  "filterValue": "Publicité",
+  "defaultCategory": "Publicité",
+  "title": "Modèles de prompts publicitaires IA issus d'exemples viraux sur X | Toolaze",
+  "description": "Copiez des modèles de prompts publicitaires IA sourcés sur X pour des publicités produits, vidéos de lancement, packshots, spots alimentaires, promos mode et campagnes sociales.",
+  "heroTitle": "Créez des publicités produits à partir de modèles de prompts IA ayant fait leurs preuves sur X",
+  "heroDescription": "Les bons prompts publicitaires IA font plus que rendre un produit joli. Ils montrent un bénéfice, créent une révélation et se terminent par une image que les gens comprennent rapidement. Cette page rassemble des modèles publicitaires issus d'exemples réels sur X pour les modèles d'image et de vidéo.",
+  "howToTitle": "Comment utiliser les modèles de prompts publicitaires IA",
+  "howToIntro": "Partez de l'objectif commercial, pas du nom du modèle. Une publicité pour soins de la peau, un spot alimentaire, une maquette d'application et une campagne de mode nécessitent des structures de prompt différentes.",
+  "steps": [
+    {
+      "title": "Identifiez le moment clé du produit",
+      "text": "Choisissez si la publicité doit montrer la texture, la transformation, l'utilisation, l'attrait visuel, la rapidité, le luxe ou un packshot clair."
+    },
+    {
+      "title": "Copiez la structure de la publicité",
+      "text": "Conservez le rythme du prompt source : mise en place, révélation, plan de détail, bénéfice et image finale héroïque."
+    },
+    {
+      "title": "Remplacez les éléments spécifiques à la marque",
+      "text": "Changez le produit, l'audience, le matériau, le décor, la palette de couleurs et l'image finale sécurisée."
+    },
+    {
+      "title": "Vérifiez si cela fonctionne sans légende",
+      "text": "Un résultat publicitaire fort doit communiquer le produit et le bénéfice avant même que l'on lise le post."
+    }
+  ],
+  "remixTitle": "Transformez un prompt viral en un concept publicitaire utilisable",
+  "remixText": "Le but n'est pas de copier l'idée d'une autre marque. Utilisez le modèle pour emprunter le rythme, la clarté et la hiérarchie visuelle, puis reconstruisez-le autour de votre produit.",
+  "patterns": [
+    {
+      "label": "Pour l'e-commerce",
+      "heading": "Rendez le produit incontestable.",
+      "body": "Gardez la forme, le matériau, la couleur et le packshot final assez clairs pour qu'un acheteur comprenne instantanément."
+    },
+    {
+      "label": "Pour les publicités sociales",
+      "heading": "Commencez par l'accroche.",
+      "body": "Utilisez une révélation surprenante, un mouvement tactile ou un contraste avant-après avant l'image finale de la marque."
+    },
+    {
+      "label": "Pour les lancements",
+      "heading": "Montrez pourquoi ce produit existe.",
+      "body": "Un prompt de lancement doit suggérer un problème, une transformation ou une aspiration plutôt que de simplement montrer un bel objet."
+    }
+  ],
+  "chooserTitle": "Choisissez un modèle publicitaire par objectif de campagne",
+  "chooserIntro": "Utilisez l'objectif de campagne le plus proche avant de choisir un modèle.",
+  "chooserRows": [
+    {
+      "goal": "Révélation de produit",
+      "startWith": "Un moment de produit caché ou calme qui se transforme en un plan héroïque net.",
+      "bestFor": "Beauté, alimentation, tech, mode, articles de maison et accessoires.",
+      "replace": "Produit, action de révélation, texture, éclairage et packshot final.",
+      "keep": "Le rythme de la révélation et la clarté du produit."
+    },
+    {
+      "goal": "Publicité lifestyle",
+      "startWith": "Une personne utilisant le produit dans un cadre crédible.",
+      "bestFor": "Fitness, voyage, soins de la peau, habillement, applications et marques de créateurs.",
+      "replace": "Utilisateur, lieu, rôle du produit, ambiance et distance de la caméra.",
+      "keep": "L'histoire axée sur le bénéfice et le contexte naturel."
+    },
+    {
+      "goal": "Affiche ou publicité statique",
+      "startWith": "Une image de produit forte avec une hiérarchie lisible.",
+      "bestFor": "Posts sociaux, vignettes, graphismes de lancement et visuels de campagne.",
+      "replace": "Titre, produit, ambiance de marque, arrière-plan et composition.",
+      "keep": "Les marges, le contraste et le point focal de première lecture."
+    }
+  ],
+  "answerTitle": "Qu'est-ce qui rend un prompt publicitaire IA utile ?",
+  "answerText": "Un prompt publicitaire IA utile donne au produit un rôle visible. Il indique ce que le spectateur doit remarquer, comment le produit apparaît, quel bénéfice ou quelle émotion est montré, et ce que l'image finale doit communiquer. Les modèles issus de X sont utiles car ils montrent des formats publicitaires que les créateurs ont déjà testés publiquement.",
+  "anatomyTitle": "Ce dont un prompt publicitaire IA a généralement besoin",
+  "anatomyIntro": "Les publicités nécessitent une hiérarchie plus claire que les prompts esthétiques génériques.",
+  "anatomy": [
+    {
+      "title": "Rôle du produit",
+      "text": "Indiquez si le produit résout, révèle, transforme, satisfait ou sublime quelque chose."
+    },
+    {
+      "title": "Contexte de l'audience",
+      "text": "Ajoutez à qui s'adresse la scène, comme un acheteur, un créateur, un voyageur, un athlète, un joueur ou un utilisateur de soins de la peau."
+    },
+    {
+      "title": "Fin sécurisée pour la marque",
+      "text": "Décrivez une image finale nette qui pourrait fonctionner comme un post, une publicité ou un visuel de page de destination."
+    },
+    {
+      "title": "Contrôle des contraintes",
+      "text": "Protégez les logos, l'emballage, le texte lisible, les mains et les proportions du produit lorsque c'est pertinent."
+    }
+  ],
+  "trustTitle": "Pourquoi ces modèles publicitaires sont basés sur des sources réelles",
+  "trustText": "Les exemples de prompts publicitaires ne valent la peine d'être étudiés que lorsque la source, le prompt et le contexte du résultat sont traçables.",
+  "trustRules": [
+    "Chaque modèle doit renvoyer à une source publique sur X, et non à un exemple de prompt inventé.",
+    "Le prompt visible doit correspondre à la langue originale du post ou du commentaire au lieu d'être réécrit.",
+    "Le modèle doit inclure assez de contexte pour qu'un débutant puisse le copier, le remplacer et le tester.",
+    "Les médias et les métriques sont traités comme des signaux, mais le prompt lui-même doit rester utilisable."
+  ],
+  "mistakesTitle": "Erreurs courantes dans les prompts publicitaires IA",
+  "mistakesText": "Les publicités faibles ont souvent l'air soignées mais ne parviennent pas à vendre l'idée.",
+  "mistakes": [
+    {
+      "title": "Se contenter de demander un style cinématographique",
+      "text": "Un beau plan n'est pas une publicité à moins que le bénéfice du produit ne soit visible."
+    },
+    {
+      "title": "Oublier l'image finale",
+      "text": "La fin doit être utilisable comme vignette, post ou packshot."
+    },
+    {
+      "title": "Surcharger le prompt d'arguments de marque",
+      "text": "Montrez le bénéfice visuellement au lieu de bourrer l'image ou la vidéo de texte."
+    }
+  ],
+  "faqTitle": "FAQ sur les modèles de prompts publicitaires IA",
+  "faqs": [
+    {
+      "q": "Puis-je les utiliser pour des produits e-commerce ?",
+      "a": "Oui. Commencez par un modèle de révélation de produit ou de packshot, puis remplacez le produit, le matériau, le décor et l'image finale."
+    },
+    {
+      "q": "Les prompts publicitaires fonctionnent-ils pour les modèles d'image et de vidéo ?",
+      "a": "Oui, mais les prompts vidéo nécessitent du mouvement et du timing, tandis que les prompts d'image nécessitent une mise en page et une hiérarchie."
+    },
+    {
+      "q": "Pourquoi étudier les prompts publicitaires de X ?",
+      "a": "Ils montrent des exemples publics de ce que les créateurs testent, aiment, enregistrent et remixent."
+    }
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "slug": "film-trailer",
+  "kind": "category",
+  "filterValue": "Film & Trailer",
+  "defaultCategory": "Film & Trailer",
+  "title": "AI Film And Trailer Prompt Templates From Viral X Examples | Toolaze",
+  "description": "Copy source-backed AI film and trailer prompt templates from X for cinematic shots, horror scenes, fantasy worlds, action beats, and short story clips.",
+  "heroTitle": "Create Cinematic AI Scenes From Film And Trailer Prompt Templates",
+  "heroDescription": "Film and trailer prompts need more than the word cinematic. They need a setup, camera behavior, escalation, atmosphere, and a final shot that makes people want the next scene. This page collects source-backed examples from X for that kind of work.",
+  "howToTitle": "How to use film and trailer prompt templates",
+  "howToIntro": "Treat each prompt like a tiny shot list. The clearer the scene beat, the better the model can stage it.",
+  "steps": [
+    {
+      "title": "Start with genre and setting",
+      "text": "Choose horror, fantasy, action, sci-fi, creature scene, or grounded realism before changing details."
+    },
+    {
+      "title": "Keep the shot progression",
+      "text": "A good trailer prompt often moves from calm setup to threat, reveal, impact, or cliffhanger."
+    },
+    {
+      "title": "Replace the world details",
+      "text": "Change location, character, creature, era, lighting, conflict, and final reveal."
+    },
+    {
+      "title": "Make the ending memorable",
+      "text": "The last frame should feel like a trailer beat, not a random pause."
+    }
+  ],
+  "remixTitle": "Use the prompt as a compact scene blueprint",
+  "remixText": "The value of a trailer template is the dramatic order. Keep the tension curve, then write your own world around it.",
+  "patterns": [
+    {
+      "label": "For horror",
+      "heading": "Delay the reveal just enough.",
+      "body": "Start with a normal detail, then introduce movement, scale, shadow, or sound before the creature or threat appears."
+    },
+    {
+      "label": "For action",
+      "heading": "Stage the camera around impact.",
+      "body": "Action prompts need clear spatial logic, not just explosions and motion words."
+    },
+    {
+      "label": "For fantasy",
+      "heading": "Make the world readable fast.",
+      "body": "Give the model a few strong anchors: terrain, costume, creature, magic behavior, and light."
+    }
+  ],
+  "chooserTitle": "Choose a film and trailer template by story beat",
+  "chooserIntro": "Start with the kind of scene you want viewers to feel.",
+  "chooserRows": [
+    {
+      "goal": "Creature reveal",
+      "startWith": "A quiet environment and one unnatural movement.",
+      "bestFor": "Horror, monster, desert, forest, sci-fi, and survival clips.",
+      "replace": "Creature, setting, scale, lighting, and final reveal.",
+      "keep": "Suspense curve and reveal timing."
+    },
+    {
+      "goal": "Action sequence",
+      "startWith": "One conflict with clear direction and camera position.",
+      "bestFor": "Fights, chases, explosions, battle scenes, and game-style clips.",
+      "replace": "Characters, weapons, location, camera, and impact moment.",
+      "keep": "Spatial clarity and escalation."
+    },
+    {
+      "goal": "Worldbuilding shot",
+      "startWith": "A striking location with one moving subject.",
+      "bestFor": "Fantasy, anime, historical, sci-fi, and cinematic landscapes.",
+      "replace": "World, costume, creature, weather, and lens feel.",
+      "keep": "Atmosphere and first-read visual anchor."
+    }
+  ],
+  "answerTitle": "What makes an AI trailer prompt work?",
+  "answerText": "An AI trailer prompt works when it gives the model a short dramatic path: where the scene begins, what changes, how the camera follows it, and what final frame sells the story. Source-backed examples help you study those beats without starting from empty cinematic adjectives.",
+  "anatomyTitle": "What a film and trailer prompt usually contains",
+  "anatomyIntro": "Cinematic prompts need structure, not just style.",
+  "anatomy": [
+    {
+      "title": "Genre promise",
+      "text": "Name the genre, realism level, era, and mood so the scene has a clear direction."
+    },
+    {
+      "title": "Shot order",
+      "text": "Describe the setup, escalation, reveal, and final image in a compact sequence."
+    },
+    {
+      "title": "Camera behavior",
+      "text": "Use low angle, tracking, handheld, dolly, close-up, wide shot, or POV only when it serves the scene."
+    },
+    {
+      "title": "Atmospheric control",
+      "text": "Lighting, weather, dust, smoke, sound cues, and scale help sell the trailer feel."
+    }
+  ],
+  "trustTitle": "Why these film and trailer templates are source-backed",
+  "trustText": "Cinematic prompt examples often sound impressive but produce weak scenes. Source-backed examples let you inspect prompts people actually shared.",
+  "trustRules": [
+    "Every template should point back to a public X source, not a made-up prompt example.",
+    "The visible prompt should match the original post or comment language instead of being rewritten.",
+    "The template should include enough context for a beginner to copy, replace, and test it.",
+    "The media and metrics are treated as signals, but the prompt itself must still be usable."
+  ],
+  "mistakesTitle": "Common film prompt mistakes",
+  "mistakesText": "Most weak cinematic prompts are too vague or too crowded.",
+  "mistakes": [
+    {
+      "title": "Using cinematic as the whole direction",
+      "text": "Add camera, setting, action, and final frame instead of relying on one style word."
+    },
+    {
+      "title": "Adding too many characters",
+      "text": "Short AI scenes work better with one clear subject or conflict."
+    },
+    {
+      "title": "Skipping the reveal beat",
+      "text": "A trailer prompt needs a reason for the viewer to keep watching."
+    }
+  ],
+  "faqTitle": "Film and trailer prompt template FAQ",
+  "faqs": [
+    {
+      "q": "Can these prompts make short AI trailers?",
+      "a": "Yes. They are best used as short scene templates, then expanded with your own setting, conflict, and ending."
+    },
+    {
+      "q": "Do I need advanced film terms?",
+      "a": "No. Start with simple shot order and one camera instruction. Add film terms only when they help the scene."
+    },
+    {
+      "q": "Why use source-backed trailer prompts?",
+      "a": "They show how creators structure cinematic examples publicly, including the prompt language and social context."
+    }
+  ]
+}

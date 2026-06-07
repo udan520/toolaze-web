@@ -1,0 +1,135 @@
+{
+  "slug": "nano-banana",
+  "kind": "model",
+  "filterValue": "Nano Banana",
+  "defaultModel": "Nano Banana",
+  "title": "Nano Banana Prompt Templates From Viral X Examples | Toolaze",
+  "description": "Browse source-backed Nano Banana prompt templates from X for portraits, product visuals, fashion edits, ads, and social images.",
+  "heroTitle": "Create Nano Banana Images From Real Prompt Examples On X",
+  "heroDescription": "Nano Banana prompts are useful for fast image experiments, character edits, product visuals, and social-ready compositions. This library helps you start from real examples instead of generic prompt formulas.",
+  "howToTitle": "How to remix Nano Banana prompt templates",
+  "howToIntro": "Nano Banana works best when the prompt is specific about identity, style, and the part of the image that must change.",
+  "steps": [
+    {
+      "title": "Choose a similar image task",
+      "text": "Start with a template for portraits, product visuals, fashion, lifestyle, or stylized social images."
+    },
+    {
+      "title": "Protect the important details",
+      "text": "If the source prompt preserves a face, outfit, object shape, or pose, replace that rule with your own anchor."
+    },
+    {
+      "title": "Make one visible change",
+      "text": "Ask for a clear transformation, setting, pose, lighting change, or product story instead of a vague enhancement."
+    },
+    {
+      "title": "Compare before posting",
+      "text": "Check whether the result still reads as your subject and whether the final image works without extra explanation."
+    }
+  ],
+  "remixTitle": "Make the example useful without cloning it",
+  "remixText": "A Nano Banana template gives you a working image direction. Your job is to change the subject, the setting, and the final purpose enough that the result belongs to your project.",
+  "patterns": [
+    {
+      "label": "For portraits",
+      "heading": "Keep identity stable first.",
+      "body": "Face, age, expression, hair, clothing, and pose need clear rules before you add cinematic style."
+    },
+    {
+      "label": "For products",
+      "heading": "Show the object clearly.",
+      "body": "Product shape and material should stay readable even when the background or lighting changes."
+    },
+    {
+      "label": "For social posts",
+      "heading": "Design for instant recognition.",
+      "body": "A good social image should communicate the joke, transformation, or aesthetic in one glance."
+    }
+  ],
+  "chooserTitle": "Choose a Nano Banana template by edit type",
+  "chooserIntro": "Different Nano Banana prompts are useful for different image jobs.",
+  "chooserRows": [
+    {
+      "goal": "Portrait edit",
+      "startWith": "A reference identity and a specific mood.",
+      "bestFor": "Avatars, fashion portraits, creator photos, and character images.",
+      "replace": "Face anchor, wardrobe, pose, lighting, and background.",
+      "keep": "Identity consistency and natural anatomy."
+    },
+    {
+      "goal": "Product visual",
+      "startWith": "A clear product shape and one setting idea.",
+      "bestFor": "Ads, ecommerce images, launch teasers, and lifestyle packshots.",
+      "replace": "Product, material, scene, surface, and brand mood.",
+      "keep": "Product readability and clean composition."
+    },
+    {
+      "goal": "Stylized social image",
+      "startWith": "A strong aesthetic or visual joke.",
+      "bestFor": "X posts, thumbnails, memes, covers, and trend remixes.",
+      "replace": "Subject, style, color palette, and platform format.",
+      "keep": "The contrast or transformation that makes the example interesting."
+    }
+  ],
+  "answerTitle": "What is the fastest way to use Nano Banana prompts?",
+  "answerText": "Start with a template that matches your image task, keep the identity or product protection rules, then change the scene and final purpose. Nano Banana prompts work better when the requested change is visible and the subject stays easy to recognize.",
+  "anatomyTitle": "What a reusable Nano Banana prompt usually contains",
+  "anatomyIntro": "A reusable prompt makes the edit direction clear without burying the model in noise.",
+  "anatomy": [
+    {
+      "title": "Identity anchor",
+      "text": "Say what must remain recognizable, such as face, product shape, clothing, or pose."
+    },
+    {
+      "title": "Visible change",
+      "text": "Name the transformation the viewer should notice immediately."
+    },
+    {
+      "title": "Scene and style",
+      "text": "Use lighting, background, lens feel, and color as support, not clutter."
+    },
+    {
+      "title": "Output purpose",
+      "text": "Mention whether the result is for an ad, avatar, post, thumbnail, or reference image."
+    }
+  ],
+  "trustTitle": "Why these Nano Banana templates are source-backed",
+  "trustText": "The page is built around public prompt examples so you can inspect the source before adapting the format.",
+  "trustRules": [
+    "Every template should point back to a public X source, not a made-up prompt example.",
+    "The visible prompt should match the original post or comment language instead of being rewritten.",
+    "The template should include enough context for a beginner to copy, replace, and test it.",
+    "The media and metrics are treated as signals, but the prompt itself must still be usable."
+  ],
+  "mistakesTitle": "Common Nano Banana remix mistakes",
+  "mistakesText": "Weak remixes usually change the style but forget the subject.",
+  "mistakes": [
+    {
+      "title": "Not saying what must stay the same",
+      "text": "Identity and product drift are easier when the prompt only talks about style."
+    },
+    {
+      "title": "Making the change too subtle",
+      "text": "If the transformation is hard to see, the social post loses its reason to exist."
+    },
+    {
+      "title": "Copying the source too closely",
+      "text": "Keep the structure, but change the purpose, subject, and visual context."
+    }
+  ],
+  "faqTitle": "Nano Banana prompt template FAQ",
+  "faqs": [
+    {
+      "q": "What are Nano Banana prompts good for?",
+      "a": "They are useful for portraits, product visuals, social images, fashion edits, and quick visual experiments."
+    },
+    {
+      "q": "Can I use these examples for ads?",
+      "a": "Yes. Choose a product-oriented template and replace the subject, material, setting, and final brand frame."
+    },
+    {
+      "q": "Why keep the X source?",
+      "a": "The source helps you verify the prompt context and avoid relying on invented templates."
+    }
+  ]
+}

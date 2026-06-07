@@ -1,0 +1,135 @@
+{
+  "slug": "kling",
+  "kind": "model",
+  "filterValue": "Kling",
+  "defaultModel": "Kling",
+  "title": "Plantillas de prompts de Kling de ejemplos virales de X | Toolaze",
+  "description": "Explora plantillas de prompts de Kling con fuentes respaldadas de X para anuncios de productos, escenas cinematográficas, clips de moda, videos de anime y publicaciones en redes sociales.",
+  "heroTitle": "Crea videos de Kling a partir de formatos de prompts que la gente ya compartió en X",
+  "heroDescription": "Los prompts de Kling funcionan mejor cuando el movimiento es específico: dirección de la cámara, movimiento del sujeto, ritmo de la escena y un fotograma final que valga la pena publicar. Esta biblioteca te ayuda a comenzar con ejemplos reales de X en lugar de adivinar desde un cuadro de texto vacío.",
+  "howToTitle": "Cómo usar plantillas de prompts de Kling sin sobrecargar el prompt",
+  "howToIntro": "Kling puede manejar movimientos cinematográficos, pero los prompts vagos a menudo se vuelven confusos. Usa el ejemplo de origen como marco y luego mantén la acción legible.",
+  "steps": [
+    {
+      "title": "Elige el estilo de movimiento más cercano",
+      "text": "Comienza con una plantilla que ya se mueva como tu idea: vlog, revelación de producto, toma de tráiler, acción de personaje o transición de moda."
+    },
+    {
+      "title": "Mantén una acción principal",
+      "text": "Reemplaza el sujeto, pero evita acumular demasiados movimientos. Una primera acción clara suele ser mejor que una escena saturada."
+    },
+    {
+      "title": "Protege el fotograma final",
+      "text": "Describe lo que debe mostrar la última toma, especialmente para anuncios, tráilers y publicaciones en redes sociales donde el final contiene el gancho."
+    },
+    {
+      "title": "Ajusta el lenguaje de la cámara",
+      "text": "Cambia los movimientos de cámara solo cuando se ajusten a tu escena. Un prompt de vlog cámara en mano no debería convertirse en un comercial pulido a menos que sea intencional."
+    }
+  ],
+  "remixTitle": "Convierte un ejemplo de Kling en tu propio formato de video",
+  "remixText": "La parte útil de una plantilla de Kling no es solo la redacción. Es el ritmo: qué aparece primero, qué cambia, qué sigue la cámara y por qué el fotograma final es compartible.",
+  "patterns": [
+    {
+      "label": "Para anuncios",
+      "heading": "Haz que el beneficio sea visible antes del logo.",
+      "body": "Usa un prompt de producto para mostrar textura, caso de uso, transformación o atractivo visual antes de pedir una toma principal limpia."
+    },
+    {
+      "label": "Para tráilers",
+      "heading": "Deja que la tensión aumente en una dirección.",
+      "body": "Un prompt de tráiler de Kling sólido suele comenzar con calma, añade una amenaza o revelación y luego termina en un fotograma que invita a verlo de nuevo."
+    },
+    {
+      "label": "Para creadores",
+      "heading": "Toma prestado el ritmo, no la historia exacta.",
+      "body": "Mantén la estructura del ritmo de la fuente y reemplaza el elenco, el escenario, los accesorios y el resultado final con algo que te pertenezca."
+    }
+  ],
+  "chooserTitle": "Elige una plantilla de Kling según el tipo de movimiento que necesites",
+  "chooserIntro": "Usa la tabla como un atajo práctico antes de explorar las plantillas.",
+  "chooserRows": [
+    {
+      "goal": "Movimiento de producto",
+      "startWith": "Una acción táctil como verter, envolver, rebanar, brillar, salpicar o revelar.",
+      "bestFor": "Comida, belleza, comercio electrónico, promociones de aplicaciones y videos de lanzamiento.",
+      "replace": "Producto, entorno, acción de la mano, material y toma final del producto.",
+      "keep": "Sincronización macro, revelación de beneficios y final limpio."
+    },
+    {
+      "goal": "Escena cinematográfica",
+      "startWith": "Una lista corta de tomas con un conflicto emocional o físico.",
+      "bestFor": "Tráilers, escenas de fantasía, terror, acción y creación de mundos.",
+      "replace": "Personaje, ubicación, amenaza, iluminación y movimiento de cámara.",
+      "keep": "Escalada, atmósfera y el gancho final."
+    },
+    {
+      "goal": "Clip de personaje para redes sociales",
+      "startWith": "Un gesto, una expresión y una distancia de cámara.",
+      "bestFor": "Animación de retratos, clips de influencers, anime, mascotas y escenas estilo vlog.",
+      "replace": "Ancla de identidad, pose, emoción, fondo y formato de plataforma.",
+      "keep": "Consistencia facial y ritmos de movimiento simples."
+    }
+  ],
+  "answerTitle": "¿Cuál es la forma más rápida de escribir un prompt de Kling?",
+  "answerText": "Comienza con una plantilla de Kling respaldada por una fuente que ya coincida con tu objetivo de movimiento. Reemplaza el sujeto y el entorno, mantén la sincronización y la estructura de la cámara, y luego haz que el final sea más específico. Kling suele mejorar cuando el prompt tiene menos acciones en competencia y un fotograma final más claro.",
+  "anatomyTitle": "Lo que suele controlar un prompt de Kling reutilizable",
+  "anatomyIntro": "Los buenos prompts de Kling le dicen al modelo qué debe moverse, qué debe permanecer estable y hacia dónde debe mirar el espectador.",
+  "anatomy": [
+    {
+      "title": "Prioridad de movimiento",
+      "text": "Nombra el movimiento que más importa antes de añadir detalles secundarios."
+    },
+    {
+      "title": "Distancia de la cámara",
+      "text": "Especifica primer plano, plano medio, plano general, POV, cámara en mano, órbita o cámara fija cuando cambie el resultado."
+    },
+    {
+      "title": "Continuidad de la escena",
+      "text": "Mantén el mismo producto, rostro, atuendo, iluminación o ubicación a lo largo de la toma."
+    },
+    {
+      "title": "Resultado social",
+      "text": "Define el momento visual que hace que el video valga la pena publicar o remezclar."
+    }
+  ],
+  "trustTitle": "Por qué estos prompts de Kling están respaldados por fuentes",
+  "trustText": "Una plantilla de Kling es más útil cuando puedes ver el contexto original y decidir si vale la pena adaptar la idea.",
+  "trustRules": [
+    "Cada plantilla debe remitir a una fuente pública de X, no a un ejemplo de prompt inventado.",
+    "El prompt visible debe coincidir con el idioma de la publicación o comentario original en lugar de ser reescrito.",
+    "La plantilla debe incluir suficiente contexto para que un principiante pueda copiarla, reemplazarla y probarla.",
+    "Los medios y las métricas se tratan como señales, pero el prompt en sí debe seguir siendo utilizable."
+  ],
+  "mistakesTitle": "Errores comunes al remezclar prompts de Kling",
+  "mistakesText": "La mayoría de las remezclas débiles fallan porque el movimiento se vuelve confuso.",
+  "mistakes": [
+    {
+      "title": "Añadir cinco acciones a un clip corto",
+      "text": "Mantén la acción principal legible. El movimiento adicional puede hacer que Kling pierda el sujeto."
+    },
+    {
+      "title": "Olvidar el último fotograma",
+      "text": "Una publicación en redes sociales necesita un final claro, no solo un intermedio cinematográfico."
+    },
+    {
+      "title": "Usar el estilo de cámara incorrecto",
+      "text": "Un prompt comercial y un prompt de vlog necesitan comportamientos de cámara diferentes."
+    }
+  ],
+  "faqTitle": "Preguntas frecuentes sobre plantillas de prompts de Kling",
+  "faqs": [
+    {
+      "q": "¿Pueden los principiantes usar estos prompts de Kling?",
+      "a": "Sí. Copia una plantilla, reemplaza el sujeto y la escena, y mantén la estructura del movimiento hasta que entiendas qué controla cada parte."
+    },
+    {
+      "q": "¿Son estos prompts solo para anuncios de video?",
+      "a": "No. La biblioteca de Kling incluye anuncios, tráilers, movimiento de personajes, escenas de fantasía, clips de moda y formatos para redes sociales."
+    },
+    {
+      "q": "¿Por qué usar ejemplos de X?",
+      "a": "Los ejemplos de X muestran formatos de prompts reales que la gente compartió públicamente, para que puedas estudiar tanto la redacción como el enfoque social."
+    }
+  ]
+}

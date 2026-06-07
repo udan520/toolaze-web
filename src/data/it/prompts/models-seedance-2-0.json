@@ -1,0 +1,135 @@
+{
+  "slug": "seedance-2-0",
+  "kind": "model",
+  "filterValue": "Seedance 2.0",
+  "defaultModel": "Seedance 2.0",
+  "title": "Libreria di Prompt Seedance 2.0 da Esempi Virali su X | Toolaze",
+  "description": "Copia e rimixa i prompt di Seedance 2.0 basati su fonti reali da esempi virali su X per annunci di prodotti, trailer, clip di moda, movimenti di personaggi e video per i social media.",
+  "heroTitle": "Crea Video Seedance 2.0 da Prompt che Hanno Già Funzionato su X",
+  "heroDescription": "La maggior parte dei creatori non vuole diventare un esperto di prompt prima di realizzare il primo video AI. Questa pagina raccoglie prompt di Seedance 2.0 basati su fonti reali da X, così puoi copiare una struttura collaudata, sostituire il soggetto con la tua idea e pubblicare più velocemente un video pronto per i social.",
+  "howToTitle": "Come utilizzare i prompt di Seedance 2.0 di questa libreria",
+  "howToIntro": "Considera ogni template come una scorciatoia, non come una formula magica. Parti da un prompt pubblico di X, copia la struttura, sostituisci le parti relative alla tua idea, quindi confronta il risultato con l'esempio originale prima di pubblicare.",
+  "steps": [
+    {
+      "title": "Scegli un'idea collaudata",
+      "text": "Parti da prompt che sono già apparsi in post pubblici su X invece di fissare una casella vuota. Il link alla fonte, il tag del modello, il testo del prompt e i dati di engagement ti aiutano a capire a quali angolazioni creative le persone hanno reagito."
+    },
+    {
+      "title": "Copia la struttura",
+      "text": "Apri un template, copia il prompt e mantieni le parti che lo fanno funzionare: impostazione del soggetto, ritmi temporizzati, movimento della telecamera, stile visivo e gancio finale."
+    },
+    {
+      "title": "Sostituisci il contenuto",
+      "text": "Inserisci il tuo prodotto, personaggio, scena o immagine di riferimento mantenendo il ritmo dell'originale. È più veloce che inventare da zero un intero prompt cinematografico."
+    },
+    {
+      "title": "Genera e confronta",
+      "text": "Usa il post originale di X come punto di riferimento creativo, quindi regola la velocità della telecamera, i ritmi di movimento, la conservazione dell'identità e la densità visiva finché il risultato non sembra pronto per la pubblicazione."
+    }
+  ],
+  "remixTitle": "Copia il prompt, poi fai tua l'idea",
+  "remixText": "Un buon template non è una gabbia. È un'impalcatura. Mantieni il meccanismo virale, cambia il soggetto e ricostruisci il prompt attorno al tuo prodotto, personaggio, immagine o storia.",
+  "patterns": [
+    {
+      "label": "Per principianti",
+      "heading": "Usa prima il prompt, impara il mestiere dopo.",
+      "body": "Copia un template, cambia il soggetto, genera un risultato, quindi studia quali parti hanno controllato il movimento, l'aspetto e il fotogramma finale."
+    },
+    {
+      "label": "Per i post sui social",
+      "heading": "Rimixa il gancio, non solo l'immagine.",
+      "body": "Mantieni il gancio visibile: trasformazione a sorpresa, rivelazione soddisfacente del prodotto, inquadratura cinematografica di una creatura, movimento del personaggio o contrasto prima e dopo."
+    },
+    {
+      "label": "Per annunci di prodotti",
+      "heading": "Trasforma un template in un formato pubblicitario ripetibile.",
+      "body": "Sostituisci l'oggetto originale con il tuo prodotto, mantieni la sequenza di rivelazione, quindi aggiungi packshot, texture del materiale, caso d'uso e fotogramma finale con invito all'azione."
+    }
+  ],
+  "chooserTitle": "Scegli il template di prompt Seedance 2.0 giusto per il video che vuoi pubblicare",
+  "chooserIntro": "L'errore più comune è copiare un buon prompt per il lavoro sbagliato. Inizia con il formato più vicino al tuo obiettivo, quindi cambia le parti per renderlo tuo.",
+  "chooserRows": [
+    {
+      "goal": "Annuncio di prodotto",
+      "startWith": "Un piccolo problema del prodotto, un cambiamento tattile e un'inquadratura hero pulita.",
+      "bestFor": "Brevi annunci, creatività per e-commerce, post di lancio e demo di prodotti.",
+      "replace": "Nome del prodotto, materiale, caso d'uso, sfondo e fotogramma finale sicuro per il logo.",
+      "keep": "Ritmo di rivelazione, finale con packshot, movimento della telecamera e impostazione incentrata sui vantaggi."
+    },
+    {
+      "goal": "Trasformazione di moda",
+      "startWith": "Un innesco di transizione come una rotazione, un colpo di manica, un tocco di capelli o il movimento di un ventaglio.",
+      "bestFor": "Cambi di outfit, clip di bellezza, movimento dei capelli, post di styling e reel di personaggi.",
+      "replace": "Personaggio, guardaroba, tessuto, accessori, espressione e innesco di transizione.",
+      "keep": "Blocchi dell'identità, comportamento del tessuto, cambi di outfit temporizzati e distanza della telecamera."
+    },
+    {
+      "goal": "Trailer cinematografico",
+      "startWith": "Un'impostazione calma, un movimento o conflitto inquietante e un fotogramma finale con gancio.",
+      "bestFor": "Scene cinematografiche, inquadrature di creature, momenti horror, ritmi d'azione e worldbuilding.",
+      "replace": "Ambientazione, creatura, conflitto, illuminazione, segnale sonoro e rivelazione finale.",
+      "keep": "Struttura della lista delle inquadrature, escalation, atmosfera e gancio dell'ultimo fotogramma."
+    }
+  ],
+  "answerTitle": "Qual è il modo più veloce per usare i prompt di Seedance 2.0?",
+  "answerText": "Parti da un prompt che ha già funzionato bene su X. Scegli un template vicino al tuo obiettivo, copia il prompt originale, sostituisci il soggetto o il prodotto, mantieni il timing e la struttura della telecamera, quindi genera una nuova versione.",
+  "anatomyTitle": "Cosa contiene solitamente un prompt Seedance riutilizzabile",
+  "anatomyIntro": "Non devi memorizzare la teoria dei prompt. Quando un template funziona, solitamente ha questi elementi nascosti in bella vista.",
+  "anatomy": [
+    {
+      "title": "La cosa che gli spettatori notano per prima",
+      "text": "Nomina chiaramente il prodotto, il personaggio, la creatura o la scena."
+    },
+    {
+      "title": "Le parti che devono rimanere stabili",
+      "text": "Per le immagini di riferimento, proteggi il viso, l'outfit, la forma del prodotto, il posizionamento del logo, la tavolozza dei colori, la posa o la prospettiva dello sfondo."
+    },
+    {
+      "title": "Il movimento ritmo dopo ritmo",
+      "text": "Usa intervalli di tempo o brevi ritmi d'azione in modo che il modello sappia cosa cambia prima, dopo e alla fine."
+    },
+    {
+      "title": "La telecamera, non solo lo stile",
+      "text": "Aggiungi un'istruzione reale per la telecamera come dolly in, inquadratura media fissa, macro push, orbita, zoom a mano o tracking laterale."
+    }
+  ],
+  "trustTitle": "Perché questi template di prompt Seedance 2.0 sono basati su fonti reali",
+  "trustText": "Una libreria di prompt è utile solo se gli esempi sono tracciabili, copiabili e onesti sulla loro provenienza.",
+  "trustRules": [
+    "Ogni template dovrebbe rimandare a una fonte pubblica su X, non a un esempio di prompt inventato.",
+    "Il prompt visibile dovrebbe corrispondere alla lingua del post o del commento originale invece di essere riscritto.",
+    "Il template dovrebbe includere abbastanza contesto affinché un principiante possa copiarlo, sostituirlo e testarlo.",
+    "I media e le metriche sono trattati come segnali, ma il prompt stesso deve comunque essere utilizzabile."
+  ],
+  "mistakesTitle": "Piccoli cambiamenti che rendono originale un prompt copiato",
+  "mistakesText": "Usa il prompt originale come impalcatura, quindi prendi abbastanza decisioni affinché il risultato appartenga alla tua idea.",
+  "mistakes": [
+    {
+      "title": "Cambiare il soggetto ma lasciare la vecchia scena",
+      "text": "Cambia l'ambiente e il fotogramma finale insieme al soggetto, altrimenti l'output sembrerà un assemblaggio casuale."
+    },
+    {
+      "title": "Eliminare il timing perché sembra prolisso",
+      "text": "Il timing spesso rende la clip controllata. Rimuovilo solo quando il movimento è davvero semplice."
+    },
+    {
+      "title": "Mantenere movimenti di telecamera che non si adattano alla tua idea",
+      "text": "Mantieni l'intento, non ogni singola parola relativa alla telecamera della fonte."
+    }
+  ],
+  "faqTitle": "FAQ sulla libreria di prompt Seedance 2.0",
+  "faqs": [
+    {
+      "q": "A chi è rivolta questa libreria di prompt Seedance 2.0?",
+      "a": "È per i creatori che vogliono realizzare video AI senza scrivere prompt da zero. I principianti possono copiare direttamente un prompt basato su una fonte reale, mentre i marketer e i creatori di prompt possono rimixarne la struttura."
+    },
+    {
+      "q": "Perché usare esempi di X invece di formule di prompt generiche?",
+      "a": "Gli esempi di X ti offrono un riferimento creativo reale, una fonte pubblica e un'idea più chiara di ciò che potrebbe funzionare sui social media."
+    },
+    {
+      "q": "Come posso creare il mio prompt Seedance in stile virale?",
+      "a": "Scegli un template collaudato, mantieni il suo gancio creativo, sostituisci il contenuto con il tuo soggetto, quindi rendi il primo e l'ultimo fotogramma facili da capire."
+    }
+  ]
+}
