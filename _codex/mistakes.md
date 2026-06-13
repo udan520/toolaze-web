@@ -176,3 +176,9 @@
 - 错误判断：`Example Gallery for GPT Image 2` 只放了 6 个示例，在桌面 4 列布局下会形成不完整的第二行，视觉密度和完整性不够。
 - 用户纠正：Example Gallery 需要两排 8 个示例。
 - 后续规则：如果 Gallery 使用桌面 4 列布局，应优先提供 8 个示例形成完整两排；示例数量要和最终网格排布匹配，不要只按内容刚够用来决定数量。
+
+### Cloudflare Pages 静态导出页不要手写 `.html` clean URL 重写
+
+- 错误判断：为了让 GPT Image 2 页面在线上可访问，在 `public/_redirects` 中把 `/model/gpt-image-2` 等 clean URL 重写到 `/model/gpt-image-2.html`。
+- 用户纠正：Toolaze web 过去就是直接提交 Git 触发 Cloudflare 上线，发布后需要按线上实际访问结果继续排查，而不是停在“已提交”。
+- 后续规则：Next.js 静态导出部署到 Cloudflare Pages 时，如果 `out/**/page.html` 已存在，优先依赖 Pages 的 clean URL 解析；不要为同一路由额外写到 `.html` 的 200 rewrite，否则可能触发 Cloudflare Pages 把 `.html` 规范化回 clean URL，造成 308 自循环。发布后必须用正式域名验证目标页面返回 200。
