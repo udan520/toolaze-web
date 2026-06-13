@@ -1,6 +1,9 @@
 import ToolL2PageContent from '@/components/blocks/ToolL2PageContent'
-import { hasLocaleL2JsonFile } from '@/lib/seo-loader'
+import type { Metadata } from 'next'
+import { getL2SeoContent, hasLocaleL2JsonFile } from '@/lib/seo-loader'
 import { notFound, redirect } from 'next/navigation'
+import { GptImage2LandingPage } from '@/components/GptImage2LandingPage'
+import { getGptImage2PageMetadata } from '@/lib/gpt-image-2-landing-copy'
 
 const SUPPORTED_LOCALES = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it'] as const
 
@@ -22,6 +25,31 @@ interface PageProps {
 
 export const dynamic = 'force-static'
 export const dynamicParams = false
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { locale, model } = await params
+  const tool = MODEL_TOOL_MAP[model]
+
+  if (!tool || !SUPPORTED_LOCALES.includes(locale as (typeof SUPPORTED_LOCALES)[number])) {
+    return {}
+  }
+
+  if (tool === 'gpt-image-2') {
+    return getGptImage2PageMetadata(locale, `https://toolaze.com/${locale}/model/${model}`)
+  }
+
+  const content = await getL2SeoContent(tool, locale)
+  const metadata = content?.metadata as { title?: string; description?: string } | undefined
+
+  return {
+    title: metadata?.title || `${model} | Toolaze`,
+    description: metadata?.description || `Use ${model} online with Toolaze.`,
+    robots: 'index, follow',
+    alternates: {
+      canonical: `https://toolaze.com/${locale}/model/${model}`,
+    },
+  }
+}
 
 export function generateStaticParams(): Array<{ locale: string; model: string }> {
   const params: Array<{ locale: string; model: string }> = []
@@ -56,6 +84,10 @@ export default async function LocalizedModelPage({ params }: PageProps) {
 
   if (!hasLocaleL2JsonFile(tool, locale)) {
     redirect(`/model/${model}`)
+  }
+
+  if (tool === 'gpt-image-2') {
+    return <GptImage2LandingPage locale={locale} />
   }
 
   return <ToolL2PageContent locale={locale} tool={tool} />

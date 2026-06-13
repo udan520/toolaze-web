@@ -28,6 +28,7 @@ if(!raw){
 if(!raw||raw==='en'||supported.indexOf(raw)<0)return;
 var root=parts[0]||'';
 if(root==='prompts')return;
+if(root==='model'&&(parts[1]==='gpt-image-2'||parts[1]==='gpt-image-2-0'))return;
 sessionStorage.setItem(redirectedKey,path);
 var next='/' + raw + (path==='/'?'':path);
 location.replace(next+location.search+location.hash);
@@ -35,4 +36,3 @@ location.replace(next+location.search+location.hash);
 }
 
 export const BROWSER_LOCALE_REDIRECT_SCRIPT = getBrowserLocaleRedirectScript()
-

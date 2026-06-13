@@ -75,7 +75,7 @@ const MODEL_CONFIG = {
     ],
     maxImages: 16,
     supportsOutputFormat: false,
-    supportsHighResolution: false,
+    supportsHighResolution: true,
   },
 } as const
 
@@ -305,7 +305,9 @@ export default function NanoBananaTool({
     { id: 'nano-banana-2', name: 'Nano Banana 2' },
     { id: 'gpt-image-2', name: 'GPT Image 2' },
   ]
-  const [activeTab, setActiveTab] = useState<'image-to-image' | 'text-to-image'>('image-to-image')
+  const [activeTab, setActiveTab] = useState<'image-to-image' | 'text-to-image'>(
+    modelId === 'gpt-image-2' ? 'text-to-image' : 'image-to-image'
+  )
   const [imageFiles, setImageFiles] = useState<ImageItem[]>([])
   const [prompt, setPrompt] = useState('')
   const [aspectRatio, setAspectRatio] = useState<string>(isNanoBanana2CoupleMode ? 'auto' : 'auto')

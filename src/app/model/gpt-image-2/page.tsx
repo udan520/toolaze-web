@@ -1,23 +1,12 @@
-import ToolL2PageContent from '@/components/blocks/ToolL2PageContent'
-import type { Metadata } from 'next'
-import { getL2SeoContent } from '@/lib/seo-loader'
+import { GptImage2LandingPage } from '@/components/GptImage2LandingPage'
+import { getGptImage2PageMetadata } from '@/lib/gpt-image-2-landing-copy'
 
 export const dynamic = 'force-static'
 
-export async function generateMetadata(): Promise<Metadata> {
-  const content = await getL2SeoContent('gpt-image-2', 'en')
+const pageUrl = 'https://toolaze.com/model/gpt-image-2'
 
-  return {
-    title: content?.metadata?.title || 'GPT Image 2 - Free AI Image Generator (Text to Image & Image to Image) | Toolaze',
-    description: content?.metadata?.description || 'Use GPT Image 2 online for free on Toolaze. Generate images from text or transform existing images with fast, high-quality output.',
-    robots: 'index, follow',
-    alternates: {
-      canonical: 'https://toolaze.com/model/gpt-image-2',
-    },
-  }
-}
+export const metadata = getGptImage2PageMetadata('en', pageUrl)
 
 export default async function GptImage2Page() {
-  const locale = 'en'
-  return <ToolL2PageContent locale={locale} tool="gpt-image-2" />
+  return <GptImage2LandingPage locale="en" />
 }

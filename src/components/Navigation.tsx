@@ -354,7 +354,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
         )}
 
         {/* 桌面端菜单 */}
-        <div className="hidden md:flex gap-8 text-sm font-bold text-slate-700 items-center">
+        <div className="hidden md:flex gap-5 text-sm font-bold text-slate-700 items-center">
           {/* 一级菜单：Prompts */}
           <div className="relative group">
             <button className="hover:text-indigo-600 transition-colors flex items-center gap-1">
