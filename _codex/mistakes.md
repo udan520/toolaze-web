@@ -182,3 +182,9 @@
 - 错误判断：为了让 GPT Image 2 页面在线上可访问，在 `public/_redirects` 中把 `/model/gpt-image-2` 等 clean URL 重写到 `/model/gpt-image-2.html`。
 - 用户纠正：Toolaze web 过去就是直接提交 Git 触发 Cloudflare 上线，发布后需要按线上实际访问结果继续排查，而不是停在“已提交”。
 - 后续规则：Next.js 静态导出部署到 Cloudflare Pages 时，如果 `out/**/page.html` 已存在，优先依赖 Pages 的 clean URL 解析；不要为同一路由额外写到 `.html` 的 200 rewrite，否则可能触发 Cloudflare Pages 把 `.html` 规范化回 clean URL，造成 308 自循环。发布后必须用正式域名验证目标页面返回 200。
+
+### 静态图片资源目录不能和页面路由同名
+
+- 错误判断：把 GPT Image 2 页面图片放在 `public/model/gpt-image-2`，导致静态导出后同时存在页面文件 `out/model/gpt-image-2.html` 和资源目录 `out/model/gpt-image-2/`。
+- 用户纠正：图片要传到服务器上去，但不能因此影响页面路由访问。
+- 后续规则：页面配图要放在会随 Cloudflare Pages 发布的 `public` 目录中，但资源目录不能和页面 clean URL 同名。模型落地页图片优先放在 `public/model-assets/{model}`，页面中引用 `/model-assets/{model}/...`。

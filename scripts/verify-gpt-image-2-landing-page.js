@@ -68,12 +68,12 @@ const requiredSnippets = [
   'Create with GPT Image 2 on Toolaze for Free',
 ]
 
-const localImageAssetMatches = [...component.matchAll(/'([^']+)': '\/model\/gpt-image-2\/([^']+)'/g)]
+const localImageAssetMatches = [...component.matchAll(/'([^']+)': '\/model-assets\/gpt-image-2\/([^']+)'/g)]
 const localImageAssets = new Map(localImageAssetMatches.map(([, slot, file]) => [slot, file]))
 const localImageAssetFilesExist = imageSlots.every((slot) => {
   const file = localImageAssets.get(slot)
 
-  return file && fs.existsSync(path.join(root, 'public/model/gpt-image-2', file))
+  return file && fs.existsSync(path.join(root, 'public/model-assets/gpt-image-2', file))
 })
 
 const xAvatarFiles = [
@@ -85,7 +85,7 @@ const xAvatarFiles = [
   'x-avatar-geekcatx.jpg',
 ]
 
-const xAvatarFilesExist = xAvatarFiles.every((file) => fs.existsSync(path.join(root, 'public/model/gpt-image-2', file)))
+const xAvatarFilesExist = xAvatarFiles.every((file) => fs.existsSync(path.join(root, 'public/model-assets/gpt-image-2', file)))
 const redditHrefs = [...redditSection.matchAll(/href: '([^']+)'/g)].map(([, href]) => href)
 const redditDisplayMedia = [...redditSection.matchAll(/displayImage: redditImage\(/g)]
 const xItems = [...xDataSection.matchAll(/title: '([^']+)'/g)]
@@ -285,7 +285,7 @@ const checks = [
       (redditSection.match(/preview\.redd\.it/g) || []).length > 10 &&
       redditDisplayMedia.length > 10 &&
       component.includes('const redditImage = (id: string, extension =') &&
-      !redditSection.includes('/model/gpt-image-2/') &&
+      !redditSection.includes('/model-assets/gpt-image-2/') &&
       component.includes('function RedditLogo') &&
       component.includes('<RedditLogo />') &&
       component.includes('key={item.id}') &&
@@ -308,7 +308,7 @@ const checks = [
       !xSection.includes('border-y-[9px]') &&
       component.includes('pbs.twimg.com/media/HGRFgOPaYAAkrdn.jpg') &&
       component.includes('pbs.twimg.com/media/HGCnWfOXwAAVCRn.jpg') &&
-      component.includes('/model/gpt-image-2/x-avatar-stark-nico99.jpg') &&
+      component.includes('/model-assets/gpt-image-2/x-avatar-stark-nico99.jpg') &&
       xAvatarFilesExist &&
       !component.includes('profile_images/') &&
       component.includes('alt={`${item.name} ${copy.x.title}`}') &&
