@@ -14,6 +14,7 @@
     "nanoBananaPro": "Nano Banana Pro",
     "nanoBanana2": "Nano Banana 2",
     "gptImage2": "GPT Image 2",
+    "seedream45": "Seedream 4.5",
     "seedance2": "Seedance 2.0",
     "kling3": "Kling 3.0",
     "promptLibrary": "프롬프트 라이브러리",
@@ -96,8 +97,8 @@
     "aiToolsHubItems": [
       {
         "title": "AI 이미지 생성기",
-        "description": "텍스트-이미지 및 이미지-이미지로 캠페인 준비가 된 비주얼을 만드세요. Nano Banana Pro, Nano Banana 2, GPT Image 2는 광고, 소셜 게시물, 컨셉 아트를 위해 선명한 디테일, 유연한 종횡비, 최대 4K 해상도를 제공합니다.",
-        "href": "/model/nano-banana-pro"
+        "description": "텍스트-이미지 및 이미지-이미지로 캠페인 준비가 된 비주얼을 만드세요. GPT Image 2, Nano Banana Pro, Nano Banana 2는 광고, 소셜 게시물, 컨셉 아트를 위해 선명한 디테일, 유연한 종횡비, 최대 4K 해상도를 제공합니다.",
+        "href": "/model/gpt-image-2-0"
       },
       {
         "title": "AI 비디오 생성기",

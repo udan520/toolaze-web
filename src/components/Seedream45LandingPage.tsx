@@ -4,10 +4,282 @@ import Footer from '@/components/Footer'
 import Breadcrumb from '@/components/Breadcrumb'
 import NanoBananaTool from '@/components/NanoBananaTool'
 import PromptCopyButton from '@/components/PromptCopyButton'
+import RedditMediaCarousel from '@/components/RedditMediaCarousel'
 import { loadCommonTranslations } from '@/lib/seo-loader'
 import { getSeedream45LandingCopy } from '@/lib/seedream-4-5-landing-copy'
 
 const pageUrl = 'https://toolaze.com/model/seedream-4-5'
+const fourLineClampStyle = {
+  display: '-webkit-box',
+  WebkitLineClamp: 4,
+  WebkitBoxOrient: 'vertical',
+} as const
+
+const redditDisplayImage = (url: string) => {
+  const match = url.match(/-v0-([^/?]+)\.(png|jpe?g|gif)/i) || url.match(/\/([^/?]+)\.(png|jpe?g|gif)/i)
+  if (!match) return url
+
+  const [, mediaId, extension] = match
+  return `https://images.weserv.nl/?url=i.redd.it/${mediaId}.${extension}&w=640&output=webp`
+}
+
+const redditMedia = (url: string) => ({ image: url, displayImage: redditDisplayImage(url) })
+
+const redditDiscussions = [
+  {
+    id: 'seedream-45-performance-benchmark',
+    href: 'https://www.reddit.com/r/singularity/comments/1pdc25l/performance_benchmark_seedream_45/',
+    source: 'r/singularity',
+    media: [
+      {
+        alt: 'Seedream 4.5 performance benchmark image from Reddit',
+        ...redditMedia('https://preview.redd.it/performance-benchmark-seedream-4-5-v0-r4gu0ckc615g1.jpg?auto=webp&crop=smart&s=7ba5123f15925322c52fe9f6cdccbfb9c685a231&width=640'),
+      },
+      {
+        alt: 'Second Seedream 4.5 performance benchmark image from Reddit',
+        ...redditMedia('https://preview.redd.it/performance-benchmark-seedream-4-5-v0-qdcsbckc615g1.jpg?auto=webp&crop=smart&s=d3c9613d36c322ca7f4f2cb5c2387740b8a65b4f&width=640'),
+      },
+      {
+        alt: 'Additional Seedream 4.5 benchmark image from Reddit',
+        ...redditMedia('https://preview.redd.it/performance-benchmark-seedream-4-5-v0-bmrxhsra715g1.jpg?auto=webp&crop=smart&s=9a77df8c40695bdeae59696e79d45ecc8c4281fa&width=640'),
+      },
+    ],
+  },
+  {
+    id: 'seedream-45-bytedance-dropped',
+    href: 'https://www.reddit.com/r/singularity/comments/1pi94u8/bytedance_dropped_seedream_45_ran_it_against_nano/',
+    source: 'r/singularity',
+    media: [
+      {
+        alt: 'Fantasy castle Seedream 4.5 comparison image from Reddit',
+        ...redditMedia('https://preview.redd.it/bytedance-dropped-seedream-4-5-ran-it-against-nano-banana-v0-3fm5izucx66g1.jpg?auto=webp&format=pjpg&s=bc8c415d8f4083e5ef24ece021f5517f20d4d307&width=3720'),
+      },
+    ],
+  },
+  {
+    id: 'seedream-45-car-capsule-prompt',
+    href: 'https://www.reddit.com/r/GenAIGallery/comments/1pltr8o/prompt_to_generate_car_capsule_style_image_using/',
+    source: 'r/GenAIGallery',
+    media: [
+      {
+        alt: 'Car capsule prompt image using Seedream 4.5 from Reddit',
+        ...redditMedia('https://preview.redd.it/prompt-to-generate-car-capsule-style-image-using-seedream-4-v0-hnni57v1w07g1.png?auto=webp&crop=smart&s=74a6ae42f0f1e70dad770aea6795996e36932929&width=640'),
+      },
+    ],
+  },
+  {
+    id: 'seedream-45-early-visual-tests',
+    href: 'https://www.reddit.com/r/aiArt/comments/1pj5fga/early_seedream_45_tests_for_posters_thumbnails/',
+    source: 'r/aiArt',
+    media: [
+      {
+        alt: 'Seedream 4.5 social visual test from Reddit',
+        ...redditMedia('https://preview.redd.it/early-seedream-4-5-tests-for-posters-thumbnails-and-social-v0-fsdy77maae6g1.png?auto=webp&format=png&s=d67740fb11f755e9bb7fbd8631a982a26609f35a&width=1728'),
+      },
+      {
+        alt: 'Seedream 4.5 poster test from Reddit',
+        ...redditMedia('https://preview.redd.it/early-seedream-4-5-tests-for-posters-thumbnails-and-social-v0-bth9y5l1ae6g1.png?auto=webp&format=png&s=b175f700e063cfa1bacce6a1ef3050ba47cbec72&width=2848'),
+      },
+      {
+        alt: 'Seedream 4.5 thumbnail test from Reddit',
+        ...redditMedia('https://preview.redd.it/early-seedream-4-5-tests-for-posters-thumbnails-and-social-v0-8kg96ep2ae6g1.png?auto=webp&format=png&s=31e0f57841796c98641e8500257429018010228a&width=2848'),
+      },
+      {
+        alt: 'Seedream 4.5 infographic test from Reddit',
+        ...redditMedia('https://preview.redd.it/early-seedream-4-5-tests-for-posters-thumbnails-and-social-v0-84v498a3ae6g1.png?auto=webp&format=png&s=98c31a7cead54c215bde3e7f002c36b59b0efb1c&width=1664'),
+      },
+      {
+        alt: 'Seedream 4.5 design test from Reddit',
+        ...redditMedia('https://preview.redd.it/early-seedream-4-5-tests-for-posters-thumbnails-and-social-v0-qov7y57n9e6g1.png?auto=webp&format=png&s=f094796c152a9d84efc518aa7ed4fe54271564b5&width=2940'),
+      },
+    ],
+  },
+  {
+    id: 'seedream-45-officially-out',
+    href: 'https://www.reddit.com/r/aiArt/comments/1pdntlc/seedream_45_officially_out/',
+    source: 'r/aiArt',
+    media: [
+      {
+        alt: 'Seedream 4.5 portrait example from Reddit',
+        ...redditMedia('https://preview.redd.it/seedream-4-5-officially-out-v0-vn92pbycj35g1.jpg?auto=webp&crop=smart&s=886dd6299486fd915c69b3f9f0cdc955c54b7ef3&width=640'),
+      },
+      {
+        alt: 'Second Seedream 4.5 portrait example from Reddit',
+        ...redditMedia('https://preview.redd.it/seedream-4-5-officially-out-v0-l3mlhmcdj35g1.jpg?auto=webp&crop=smart&s=899ce9646435b2caa9f167c4e7d2355a0aac097d&width=640'),
+      },
+    ],
+  },
+  {
+    id: 'seedream-45-motion-blur-athletic-portrait',
+    href: 'https://www.reddit.com/r/aiArt/comments/1qmj5e2/seedream_45_motion_blur_athletic_portrait_prompt/',
+    source: 'r/aiArt',
+    media: [
+      {
+        alt: 'Seedream 4.5 motion blur athletic portrait from Reddit',
+        ...redditMedia('https://preview.redd.it/seedream-4-5-motion-blur-athletic-portrait-prompt-included-v0-ua1kdjk3zhfg1.jpeg?auto=webp&crop=smart&s=e51ae1c634239b93a2e8712a04eb57c03d2d3fe8&width=640'),
+      },
+    ],
+  },
+  {
+    id: 'seedream-45-black-white-portrait',
+    href: 'https://www.reddit.com/r/aiArt/comments/1qu0tjo/intimate_bw_portrait_seedream_45_prompt/',
+    source: 'r/aiArt',
+    media: [
+      {
+        alt: 'Seedream 4.5 black and white portrait from Reddit',
+        ...redditMedia('https://preview.redd.it/intimate-b-w-portrait-seedream-4-5-prompt-v0-h1anfrct44hg1.jpeg?auto=webp&crop=smart&s=6ef32672d3ff5bd6f9800e45bf6f308d87024cae&width=640'),
+      },
+    ],
+  },
+  {
+    id: 'seedream-45-expression-portrait',
+    href: 'https://www.reddit.com/r/aiArt/comments/1q5fwrk/seedream_is_giving_the_best_expression_for/',
+    source: 'r/aiArt',
+    media: [
+      {
+        alt: 'Seedream 4.5 expression portrait from Reddit',
+        ...redditMedia('https://preview.redd.it/seedream-is-giving-the-best-expression-for-portrait-photo-v0-5jiyqmaoppbg1.jpeg?auto=webp&crop=smart&s=bb1c03ac102d5abb7b43bb976c8740b6682910b0&width=640'),
+      },
+    ],
+  },
+  {
+    id: 'seedream-45-higgsfield-v45-feedback',
+    href: 'https://www.reddit.com/r/aiArt/comments/1pdfzv3/what_do_you_guys_think_of_seedream_v45_better/',
+    source: 'r/aiArt',
+    media: [
+      {
+        alt: 'Seedream 4.5 character image from a Reddit feedback post',
+        ...redditMedia('https://preview.redd.it/what-do-you-guys-think-of-seedream-v4-5-better-than-v4-v0-b6r6be3xw15g1.png?auto=webp&format=png&s=b795184034162a37e4882c00737a1340648d3d0f&width=1664'),
+      },
+    ],
+  },
+  {
+    id: 'seedream-45-higgsfield-four-models',
+    href: 'https://www.reddit.com/r/HiggsfieldAI/comments/1qe14i1/one_portrait_prompt_four_models_on_higgsfield/',
+    source: 'r/HiggsfieldAI',
+    media: [
+      {
+        alt: 'Seedream 4.5 portrait comparison from Reddit',
+        ...redditMedia('https://preview.redd.it/one-portrait-prompt-four-models-on-higgsfield-nano-banana-v0-8tcbm0hwwldg1.jpg?auto=webp&crop=smart&s=aac695eb1f6c08367a1664ac9c05f08a8035e2b3&width=640'),
+      },
+      {
+        alt: 'Second Seedream 4.5 portrait comparison from Reddit',
+        ...redditMedia('https://preview.redd.it/one-portrait-prompt-four-models-on-higgsfield-nano-banana-v0-i0ysu2hwwldg1.jpg?auto=webp&crop=smart&s=1859d99b6ea01bb3938f673ca06c8a4f46754194&width=640'),
+      },
+      {
+        alt: 'Third Seedream 4.5 portrait comparison from Reddit',
+        ...redditMedia('https://preview.redd.it/one-portrait-prompt-four-models-on-higgsfield-nano-banana-v0-3um0t5hwwldg1.jpg?auto=webp&crop=smart&s=729e7bcb8f0b24f49e16eea28e82df25725f93fd&width=640'),
+      },
+      {
+        alt: 'Fourth Seedream 4.5 portrait comparison from Reddit',
+        ...redditMedia('https://preview.redd.it/one-portrait-prompt-four-models-on-higgsfield-nano-banana-v0-4q29z2hwwldg1.jpg?auto=webp&crop=smart&s=45b43bd4f337a1478ee3086c67ee9be99512642a&width=640'),
+      },
+    ],
+  },
+]
+
+const xCommunityExamples = [
+  {
+    name: 'Marky @ Easy-Peasy.AI',
+    handle: '@easy_peasy_ai',
+    avatar: 'https://pbs.twimg.com/profile_images/1588347256499245056/mId9Kaeh_200x200.jpg',
+    href: 'https://x.com/easy_peasy_ai/status/1996233802222539005',
+    image: 'https://pbs.twimg.com/media/G7QMD7TboAAs4UB.jpg?name=orig',
+    time: '11:03 PM',
+    likes: '2',
+    replies: '0',
+  },
+  {
+    name: 'Heisenberg',
+    handle: '@rovvmut_',
+    avatar: 'https://pbs.twimg.com/profile_images/2061782278959935488/zxfVzXuw_200x200.jpg',
+    href: 'https://x.com/rovvmut_/status/1996186327491162275',
+    image: 'https://pbs.twimg.com/media/G7Pg4cWbQAA5hO9.jpg?name=orig',
+    time: '7:54 PM',
+    likes: '341',
+    replies: '87',
+  },
+  {
+    name: 'Brady Long',
+    handle: '@thisguyknowsai',
+    avatar: 'https://pbs.twimg.com/profile_images/1986942448723976192/86_UeEa0_200x200.jpg',
+    href: 'https://x.com/thisguyknowsai/status/1998769783270158497',
+    image: 'https://pbs.twimg.com/media/G70OhDtaMAIxPSI.png?name=orig',
+    time: '11:00 PM',
+    likes: '17',
+    replies: '4',
+  },
+  {
+    name: 'Heisenberg',
+    handle: '@rovvmut_',
+    avatar: 'https://pbs.twimg.com/profile_images/2061782278959935488/zxfVzXuw_200x200.jpg',
+    href: 'https://x.com/rovvmut_/status/1996129741360038063',
+    image: 'https://pbs.twimg.com/media/G7OtaNmbgAACEp7.jpg?name=orig',
+    time: '4:09 PM',
+    likes: '245',
+    replies: '25',
+  },
+  {
+    name: 'Curious Refuge',
+    handle: '@CuriousRefuge',
+    avatar: 'https://pbs.twimg.com/profile_images/1652411518062039040/gXeSS69n_200x200.jpg',
+    href: 'https://x.com/CuriousRefuge/status/1999227782476497280',
+    image: 'https://pbs.twimg.com/media/G76umqKagAIUJty.jpg?name=orig',
+    time: '5:20 AM',
+    likes: '7',
+    replies: '6',
+  },
+  {
+    name: 'Curious Refuge',
+    handle: '@CuriousRefuge',
+    avatar: 'https://pbs.twimg.com/profile_images/1652411518062039040/gXeSS69n_200x200.jpg',
+    href: 'https://x.com/CuriousRefuge/status/2004675948734738438',
+    image: 'https://pbs.twimg.com/media/G9IInEUaQAATm_4.jpg?name=orig',
+    time: '6:09 AM',
+    likes: '9',
+    replies: '2',
+  },
+  {
+    name: 'Replicate',
+    handle: '@replicate',
+    avatar: 'https://pbs.twimg.com/profile_images/1732095881695068160/qAiGXOMH_200x200.jpg',
+    href: 'https://x.com/replicate/status/1996239048017596745',
+    image: 'https://pbs.twimg.com/media/G7QQ1KMa0AAjslQ.jpg?name=orig',
+    time: '11:24 PM',
+    likes: '186',
+    replies: '14',
+  },
+  {
+    name: 'ElevenLabs',
+    handle: '@ElevenLabs',
+    avatar: 'https://pbs.twimg.com/profile_images/2047043946807754752/7xmvtysh_200x200.png',
+    href: 'https://x.com/ElevenLabs/status/1996899490632978939',
+    image: 'https://pbs.twimg.com/media/G7ZpgPNXQAAvvXI.jpg?name=orig',
+    time: '7:08 PM',
+    likes: '102',
+    replies: '4',
+  },
+  {
+    name: 'Oogie',
+    handle: '@oggii_0',
+    avatar: 'https://pbs.twimg.com/profile_images/2008212741434269696/N7S0tqfn_200x200.jpg',
+    href: 'https://x.com/oggii_0/status/1996205261778747444',
+    image: 'https://pbs.twimg.com/media/G7PyFsfaMAE2Afh.jpg?name=orig',
+    time: '9:09 PM',
+    likes: '196',
+    replies: '34',
+  },
+  {
+    name: 'AI/ML API',
+    handle: '@aimlapi',
+    avatar: 'https://pbs.twimg.com/profile_images/2061768103298473984/Zx3T3Ovp_200x200.jpg',
+    href: 'https://x.com/aimlapi/status/1998061523747602499',
+    image: 'https://pbs.twimg.com/media/G7qJuwdXwAAAHZz.jpg?name=orig',
+    time: '12:06 AM',
+    likes: '2',
+    replies: '1',
+  },
+]
 
 const features = [
   {
@@ -252,25 +524,25 @@ const faqs = [
 ]
 
 const imageAssets: Record<string, string> = {
-  'feature-reference-consistency': '/model-assets/seedream-4-5/feature-reference-consistency.png',
-  'feature-4k-output': '/model-assets/seedream-4-5/feature-4k-output.png',
-  'feature-typography': '/model-assets/seedream-4-5/feature-typography.png',
-  'feature-commercial-design': '/model-assets/seedream-4-5/feature-commercial-design.png',
-  'feature-prompt-adherence': '/model-assets/seedream-4-5/feature-prompt-adherence.png',
-  'gallery-ecommerce-product': '/model-assets/seedream-4-5/gallery-ecommerce-product.png',
-  'gallery-poster-layout': '/model-assets/seedream-4-5/gallery-poster-layout.png',
-  'gallery-fragrance-detail': '/model-assets/seedream-4-5/gallery-fragrance-detail.png',
-  'gallery-saas-promo': '/model-assets/seedream-4-5/gallery-saas-promo.png',
-  'gallery-wedding-invitation': '/model-assets/seedream-4-5/gallery-wedding-invitation.png',
-  'gallery-beauty-kv': '/model-assets/seedream-4-5/gallery-beauty-kv.png',
-  'gallery-character-reference': '/model-assets/seedream-4-5/gallery-character-reference.png',
-  'gallery-multilingual-layout': '/model-assets/seedream-4-5/gallery-multilingual-layout.png',
-  'prompt-product-poster': '/model-assets/seedream-4-5/prompt-product-poster.png',
-  'prompt-character-reference-edit': '/model-assets/seedream-4-5/prompt-character-reference-edit.png',
-  'prompt-education-infographic': '/model-assets/seedream-4-5/prompt-education-infographic.png',
-  'prompt-interior-redesign': '/model-assets/seedream-4-5/prompt-interior-redesign.png',
-  'prompt-event-poster': '/model-assets/seedream-4-5/prompt-event-poster.png',
-  'final-cta': '/model-assets/seedream-4-5/final-cta.png',
+  'feature-reference-consistency': '/model-assets/seedream-4-5/feature-reference-consistency.webp',
+  'feature-4k-output': '/model-assets/seedream-4-5/feature-4k-output.webp',
+  'feature-typography': '/model-assets/seedream-4-5/feature-typography.webp',
+  'feature-commercial-design': '/model-assets/seedream-4-5/feature-commercial-design.webp',
+  'feature-prompt-adherence': '/model-assets/seedream-4-5/feature-prompt-adherence.webp',
+  'gallery-ecommerce-product': '/model-assets/seedream-4-5/gallery-ecommerce-product.webp',
+  'gallery-poster-layout': '/model-assets/seedream-4-5/gallery-poster-layout.webp',
+  'gallery-fragrance-detail': '/model-assets/seedream-4-5/gallery-fragrance-detail.webp',
+  'gallery-saas-promo': '/model-assets/seedream-4-5/gallery-saas-promo.webp',
+  'gallery-wedding-invitation': '/model-assets/seedream-4-5/gallery-wedding-invitation.webp',
+  'gallery-beauty-kv': '/model-assets/seedream-4-5/gallery-beauty-kv.webp',
+  'gallery-character-reference': '/model-assets/seedream-4-5/gallery-character-reference.webp',
+  'gallery-multilingual-layout': '/model-assets/seedream-4-5/gallery-multilingual-layout.webp',
+  'prompt-product-poster': '/model-assets/seedream-4-5/prompt-product-poster.webp',
+  'prompt-character-reference-edit': '/model-assets/seedream-4-5/prompt-character-reference-edit.webp',
+  'prompt-education-infographic': '/model-assets/seedream-4-5/prompt-education-infographic.webp',
+  'prompt-interior-redesign': '/model-assets/seedream-4-5/prompt-interior-redesign.webp',
+  'prompt-event-poster': '/model-assets/seedream-4-5/prompt-event-poster.webp',
+  'final-cta': '/model-assets/seedream-4-5/final-cta.webp',
 }
 
 function SectionHeader({ title, text, inverse = false }: { title: string; text?: string; inverse?: boolean }) {
@@ -285,6 +557,27 @@ function SectionHeader({ title, text, inverse = false }: { title: string; text?:
         </p>
       ) : null}
     </div>
+  )
+}
+
+function RedditLogo() {
+  return (
+    <span className="inline-flex items-center gap-1.5 text-[#ff4500]" aria-label="Reddit">
+      <svg viewBox="0 0 36 36" className="h-6 w-6" aria-hidden="true">
+        <circle cx="18" cy="18" r="16" fill="currentColor" />
+        <circle cx="12.5" cy="19" r="2.2" fill="white" />
+        <circle cx="23.5" cy="19" r="2.2" fill="white" />
+        <path
+          d="M12.5 24.2c2.9 2 8.1 2 11 0"
+          fill="none"
+          stroke="white"
+          strokeLinecap="round"
+          strokeWidth="2"
+        />
+        <path d="M18 12.2l2.2-5.1 5.1 1.1" fill="none" stroke="white" strokeLinecap="round" strokeWidth="2" />
+        <circle cx="27.2" cy="8.8" r="2.2" fill="white" />
+      </svg>
+    </span>
   )
 }
 
@@ -310,6 +603,24 @@ export async function Seedream45LandingPage({ locale = 'en' }: { locale?: string
   const comparisonRows = copy.comparison.rows
   const promptExamples = copy.prompts.examples
   const youtubeExamples = copy.youtube.examples
+  const localizedRedditDiscussions = redditDiscussions.map((item, index) => {
+    const localizedItem = {
+      ...item,
+      ...(copy.reddit.items[index] || {}),
+    }
+
+    return {
+      ...localizedItem,
+      media: item.media.map((media) => ({
+        ...media,
+        alt: `${localizedItem.title} ${copy.reddit.communityDiscussion}`,
+      })),
+    }
+  })
+  const localizedXCommunityExamples = xCommunityExamples.map((item, index) => ({
+    ...item,
+    ...(copy.x.items[index] || {}),
+  }))
   const relatedLinks = copy.related.links
   const howToSteps = copy.howTo.steps
   const faqs = copy.faq.items
@@ -560,7 +871,7 @@ export async function Seedream45LandingPage({ locale = 'en' }: { locale?: string
                   href={item.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group overflow-hidden rounded-[1.5rem] border border-indigo-100 bg-[#F8FAFF] shadow-sm shadow-indigo-100 transition hover:-translate-y-1 hover:border-indigo-300"
+                  className="group flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-indigo-100 bg-[#F8FAFF] shadow-sm shadow-indigo-100 transition hover:-translate-y-1 hover:border-indigo-300"
                 >
                   <div className="relative">
                     <iframe
@@ -575,11 +886,127 @@ export async function Seedream45LandingPage({ locale = 'en' }: { locale?: string
                       YouTube
                     </span>
                   </div>
-                  <div className="p-6">
+                  <div className="flex flex-1 flex-col p-6">
                     <p className="text-xs font-extrabold text-indigo-600">{item.creator}</p>
                     <h3 className="mt-3 text-xl font-extrabold tracking-tight text-slate-950">{item.title}</h3>
-                    <p className="mt-3 text-sm leading-7 text-slate-600">{item.text}</p>
-                    <p className="mt-5 text-sm font-extrabold text-indigo-700 group-hover:text-indigo-900">{copy.youtube.watch}</p>
+                    <p className="mt-3 min-h-[96px] overflow-hidden text-sm leading-6 text-slate-600" style={fourLineClampStyle}>{item.text}</p>
+                    <p className="mt-auto pt-5 text-sm font-extrabold text-indigo-700 group-hover:text-indigo-900">{copy.youtube.watch}</p>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-[#F8FAFF] px-4 py-14 md:px-6 md:py-20">
+          <div className="mx-auto max-w-[1500px]">
+            <SectionHeader
+              title={copy.reddit.title}
+              text={copy.reddit.text}
+            />
+            <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+              {localizedRedditDiscussions.map((item) => (
+                <article
+                  key={item.id}
+                  className="group flex h-full flex-col overflow-hidden rounded-[1.25rem] border border-indigo-100 bg-white shadow-sm shadow-indigo-100 transition hover:-translate-y-1 hover:border-indigo-300"
+                >
+                  <div className="flex items-center justify-between gap-3 bg-white px-4 py-4">
+                    <div className="min-w-0">
+                      <p className="text-xs font-extrabold text-indigo-600">{item.source}</p>
+                      <p className="mt-1 truncate text-xs font-semibold text-slate-500">{copy.reddit.communityDiscussion}</p>
+                    </div>
+                    <RedditLogo />
+                  </div>
+                  <RedditMediaCarousel media={item.media} title={item.title} />
+                  <div className="flex flex-1 flex-col p-4">
+                    <h3 className="text-base font-extrabold leading-snug tracking-tight text-slate-950">{item.title}</h3>
+                    <p className="mt-3 min-h-[96px] overflow-hidden text-xs leading-6 text-slate-600" style={fourLineClampStyle}>{item.text}</p>
+                    <a
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-auto pt-4 text-xs font-extrabold text-indigo-700 transition hover:text-indigo-900"
+                    >
+                      {copy.reddit.openDiscussion}
+                    </a>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-[#1f1f25] px-4 py-14 text-white md:px-6 md:py-20">
+          <div className="mx-auto max-w-[1500px]">
+            <SectionHeader
+              title={copy.x.title}
+              text={copy.x.text}
+              inverse
+            />
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+              {localizedXCommunityExamples.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex h-full flex-col rounded-[1.75rem] bg-white p-5 text-slate-950 shadow-2xl shadow-black/25 transition hover:-translate-y-1 hover:shadow-black/40"
+                >
+                  <div className="flex items-start gap-3">
+                    <img
+                      src={item.avatar}
+                      alt={`${item.name} ${copy.x.title}`}
+                      loading="lazy"
+                      decoding="async"
+                      className="h-12 w-12 shrink-0 rounded-full border border-slate-200 object-cover"
+                    />
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-center gap-1.5">
+                        <p className="truncate text-sm font-extrabold">{item.name}</p>
+                        <span className="rounded-full bg-sky-500 px-1.5 py-0.5 text-[10px] font-bold leading-none text-white">
+                          {copy.x.verified}
+                        </span>
+                      </div>
+                      <p className="truncate text-sm text-slate-500">{item.handle}</p>
+                    </div>
+                    <span className="rounded-full border border-slate-200 px-4 py-1.5 text-xs font-extrabold text-slate-950">
+                      {copy.x.follow}
+                    </span>
+                    <span className="text-2xl font-black leading-none text-slate-950">X</span>
+                  </div>
+
+                  <p className="mt-5 min-h-[96px] overflow-hidden text-sm font-semibold leading-6 text-slate-900" style={fourLineClampStyle}>{item.body}</p>
+
+                  <div className="relative mt-5 overflow-hidden rounded-[1.25rem] border border-slate-200 bg-slate-100">
+                    <img
+                      src={item.image}
+                      alt={`${item.title} ${item.handle}`}
+                      loading="lazy"
+                      decoding="async"
+                      referrerPolicy="no-referrer"
+                      className="aspect-[16/10] w-full object-cover transition duration-300 group-hover:scale-[1.02]"
+                    />
+                    <span className="absolute right-3 top-3 rounded-full bg-slate-950/85 px-3 py-1 text-xs font-extrabold text-white">
+                      {copy.x.watch}
+                    </span>
+                  </div>
+
+                  <div className="mt-4 border-b border-slate-200 pb-4 text-sm text-slate-500">
+                    <span>{item.time}</span>
+                    <span className="mx-2">.</span>
+                    <span>{copy.x.monthYear}</span>
+                  </div>
+
+                  <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-3 text-sm font-bold text-slate-600">
+                    <span>{item.likes} {copy.x.likes}</span>
+                    <span>{copy.x.reply}</span>
+                    <span>{copy.x.copyLink}</span>
+                  </div>
+
+                  <div className="mt-auto pt-5">
+                    <span className="inline-flex w-full items-center justify-center rounded-full bg-sky-500 px-4 py-3 text-sm font-extrabold text-white transition group-hover:bg-sky-600">
+                      {copy.x.read} {item.replies} {copy.x.replies}
+                    </span>
                   </div>
                 </a>
               ))}

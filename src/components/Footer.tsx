@@ -42,8 +42,10 @@ const defaultTranslations = {
   emojiCopyAndPaste: 'Emoji Copy & Paste',
   seedance2: 'Seedance 2.0',
   kling3: 'Kling 3.0',
+  gptImage2: 'GPT Image 2',
   nanoBananaPro: 'Nano Banana Pro',
   nanoBanana2: 'Nano Banana 2',
+  seedream45: 'Seedream 4.5',
   emojiMenu: {
     'crying-copy-and-paste': 'Crying Emoji Copy and Paste',
     'cross-copy-and-paste': 'Cross Emoji Copy and Paste',
@@ -209,12 +211,20 @@ export default function Footer({ initialTranslations }: FooterProps = {}) {
           {/* AI Image */}
           <div>
             <Link 
-              href={getLocalizedHref('/model/nano-banana-pro')} 
+              href={getLocalizedHref('/model/gpt-image-2-0')}
               className="text-white font-bold text-sm mb-4 tracking-wide block hover:text-indigo-400 transition-colors"
             >
               {translations.aiImage || 'AI Image'}
             </Link>
             <ul className="space-y-2 mt-4">
+              <li>
+                <Link
+                  href={getLocalizedHref('/model/gpt-image-2-0')}
+                  className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
+                >
+                  {translations.gptImage2 || 'GPT Image 2'}
+                </Link>
+              </li>
               <li>
                 <Link 
                   href={getLocalizedHref('/model/nano-banana-pro')} 
@@ -229,6 +239,14 @@ export default function Footer({ initialTranslations }: FooterProps = {}) {
                   className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
                 >
                   {translations.nanoBanana2 || 'Nano Banana 2'}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={getLocalizedHref('/model/seedream-4-5')}
+                  className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
+                >
+                  {translations.seedream45 || 'Seedream 4.5'}
                 </Link>
               </li>
             </ul>

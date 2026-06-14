@@ -255,6 +255,109 @@
       }
     ]
   },
+  "reddit": {
+    "title": "Seedream 4.5 Discussions on Reddit",
+    "text": "Browse Reddit posts where creators compare Seedream 4.5, share prompts, and discuss real image outputs from different workflows.",
+    "communityDiscussion": "Reddit discussion",
+    "openDiscussion": "Open Reddit thread",
+    "items": [
+      {
+        "title": "Performance Benchmark: Seedream 4.5",
+        "text": "A r/singularity benchmark thread comparing Seedream 4.5 image results, with the original three Reddit preview images kept together in one carousel."
+      },
+      {
+        "title": "ByteDance dropped Seedream 4.5",
+        "text": "A r/singularity post testing Seedream 4.5 against Nano Banana Pro with the same fantasy-scene comparison image shown from the original thread."
+      },
+      {
+        "title": "Car capsule style prompt",
+        "text": "A r/GenAIGallery prompt post for generating a car capsule style image using Seedream 4.5, paired with the original Reddit preview image."
+      },
+      {
+        "title": "Posters, thumbnails, and social visuals",
+        "text": "A r/aiArt gallery thread testing Seedream 4.5 for posters, thumbnails, and social visuals, with the post gallery kept in one carousel."
+      },
+      {
+        "title": "Seedream 4.5 officially out",
+        "text": "A r/aiArt post sharing early Seedream 4.5 launch examples, using the original two portrait images from that thread."
+      },
+      {
+        "title": "Motion blur athletic portrait prompt",
+        "text": "A r/aiArt prompt-included athletic portrait post focused on motion blur, lighting, and image realism."
+      },
+      {
+        "title": "Intimate black-and-white portrait prompt",
+        "text": "A r/aiArt portrait prompt post showing Seedream 4.5 handling monochrome lighting, texture, and close portrait mood."
+      },
+      {
+        "title": "Expression portrait example",
+        "text": "A r/aiArt portrait example focused on expressive face detail, realistic lighting, and close-up image quality."
+      },
+      {
+        "title": "Seedream v4.5 feedback thread",
+        "text": "A r/aiArt feedback post asking creators what they think of Seedream v4.5 compared with the previous version."
+      },
+      {
+        "title": "Four-model portrait comparison",
+        "text": "A HiggsfieldAI comparison post using one portrait prompt across several image models."
+      }
+    ]
+  },
+  "x": {
+    "title": "Seedream 4.5 Examples on X",
+    "text": "See X posts with real Seedream 4.5 examples, comparisons, creator tests, and provider updates.",
+    "verified": "Verified",
+    "follow": "Follow",
+    "watch": "Image",
+    "monthYear": "Dec 2025",
+    "likes": "likes",
+    "reply": "Reply",
+    "copyLink": "Copy link",
+    "read": "Read",
+    "replies": "replies",
+    "items": [
+      {
+        "title": "Seedream 4.5 side-by-side image test",
+        "body": "An X comparison of Seedream 4.5 and Nano Banana Pro, useful for judging subject detail and output style."
+      },
+      {
+        "title": "Photoreal cafe prompt comparison",
+        "body": "A creator compares the same detailed cafe prompt across Nano Banana Pro and Seedream 4.5."
+      },
+      {
+        "title": "Prompt-faithful early test",
+        "body": "A creator thread highlights consistency and prompt-following impressions from early Seedream 4.5 testing."
+      },
+      {
+        "title": "Golden-hour portrait prompt",
+        "body": "A side-by-side portrait prompt test showing lighting, face detail, and scene interpretation."
+      },
+      {
+        "title": "Multi-test model comparison",
+        "body": "A Curious Refuge post compares Seedream 4.5 with another recent image model across several visual criteria."
+      },
+      {
+        "title": "Cinematic realism thread",
+        "body": "A creator post discussing realistic and cinematic Seedream 4.5 output in comparison with Nano Banana Pro."
+      },
+      {
+        "title": "Official provider availability post",
+        "body": "A model availability post that summarizes Seedream 4.5 strengths such as spatial understanding and reference inputs."
+      },
+      {
+        "title": "4K stylized output example",
+        "body": "A product update showing Seedream 4.5 output for detail, subject consistency, and high-quality visuals."
+      },
+      {
+        "title": "Close-up portrait comparison",
+        "body": "A same-prompt portrait test focused on skin detail, facial consistency, color, and close-up realism."
+      },
+      {
+        "title": "API-side comparison example",
+        "body": "An image comparison post showing how Seedream 4.5 appears in a provider workflow."
+      }
+    ]
+  },
   "related": {
     "title": "Explore More AI Models and Tools",
     "tryNow": "Try Now",

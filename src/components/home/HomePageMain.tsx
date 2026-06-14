@@ -7,6 +7,7 @@ import { loadCommonTranslations, IMAGE_MODEL_L2S, VIDEO_MODEL_L2S } from '@/lib/
 import { HOME_ADVANCED_AI_TOOL_IDS, HOME_UTILITY_TOOL_IDS } from '@/lib/homepage-grid-tools'
 import { getHomeAdvancedAiCardImage } from '@/lib/home-advanced-ai-card-images'
 import { getHomeModelCardImage } from '@/lib/home-model-card-images'
+import { getSeedream45LandingCopy } from '@/lib/seedream-4-5-landing-copy'
 import {
   applyHomepageToolCardSummary,
   type HomepageToolCardSummaries,
@@ -54,9 +55,10 @@ function TextWithLinks({
 
 // AI Image model paths (under /model/)
 const AI_IMAGE_PATHS: Record<string, string> = {
+  'gpt-image-2': '/model/gpt-image-2-0',
   'nano-banana-pro': '/model/nano-banana-pro',
   'nano-banana-2': '/model/nano-banana-2',
-  'gpt-image-2': '/model/gpt-image-2-0',
+  'seedream-4-5': '/model/seedream-4-5',
 }
 
 // AI Video model paths (under /model/)
@@ -176,10 +178,26 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
     const card = await loadToolData(tool, locale, getModelTitle, getModelDesc, getFeaturedDesc, getModelMeta)
     if (card) aiImageTools.push(applyHomepageToolCardSummary(card, cardSummaries))
   }
+  const seedream45Copy = getSeedream45LandingCopy(locale)
+  const seedream45Card = applyHomepageToolCardSummary(
+    {
+      tool: 'seedream-4-5',
+      title: seedream45Copy.schema.pageName,
+      description: seedream45Copy.metadata.description,
+      href: getHref('seedream-4-5'),
+      featuredDesc: seedream45Copy.hero.description,
+      modelName: seedream45Copy.hero.modelName,
+      modelType: 'AI Image Generator',
+    },
+    cardSummaries
+  )
+  if (!aiImageTools.some((item) => item.tool === seedream45Card.tool)) {
+    aiImageTools.push(seedream45Card)
+  }
 
   // All AI models for Trending section（可被 common.home.trendingCards 覆盖文案）
   const trendingModels = applyTrendingCardsOverrides(
-    [...aiVideoTools, ...aiImageTools],
+    [...aiImageTools, ...aiVideoTools],
     home?.trendingCards as HomeTrendingCardOverride[] | undefined
   )
 
@@ -481,8 +499,8 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
                   {
                     title: 'AI image generators',
                     description:
-                      'Ship campaign-ready visuals with text-to-image and image-to-image using Nano Banana Pro, Nano Banana 2, and GPT Image 2.',
-                    href: '/model/nano-banana-pro',
+                      'Ship campaign-ready visuals with text-to-image and image-to-image using GPT Image 2, Nano Banana Pro, and Nano Banana 2.',
+                    href: '/model/gpt-image-2-0',
                   },
                   {
                     title: 'AI video generators',

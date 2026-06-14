@@ -255,6 +255,109 @@
       }
     ]
   },
+  "reddit": {
+    "title": "Reddit 上的 Seedream 4.5 討論",
+    "text": "查看創作者在 Reddit 上比較 Seedream 4.5、分享提示詞並討論真實圖片輸出的帖子。",
+    "communityDiscussion": "Reddit 討論",
+    "openDiscussion": "打開 Reddit 帖子",
+    "items": [
+      {
+        "title": "效能基準討論",
+        "text": "一則 Reddit 基準討論，比較 Seedream 4.5 的提示詞遵循、圖片品質與模型表現，並把多張來源圖片放在同一卡片輪播中。"
+      },
+      {
+        "title": "ByteDance Seedream 4.5 比較",
+        "text": "一則 Singularity 討論，用奇幻場景比較 Seedream 4.5 與 Nano Banana Pro。"
+      },
+      {
+        "title": "汽車膠囊風格提示詞",
+        "text": "一則提示詞分享貼文，展示使用 Seedream 4.5 製作的風格化汽車視覺流程。"
+      },
+      {
+        "title": "海報與縮圖測試",
+        "text": "aiArt 圖集貼文，測試 Seedream 4.5 用於海報、縮圖、社群視覺與設計版面。"
+      },
+      {
+        "title": "Seedream 4.5 發布範例",
+        "text": "aiArt 貼文分享 Seedream 4.5 開放後的早期人像範例。"
+      },
+      {
+        "title": "動態模糊人像提示詞",
+        "text": "一則含提示詞的運動人像範例，重點在動作、光線與真實感。"
+      },
+      {
+        "title": "黑白人像提示詞",
+        "text": "一則人像提示詞貼文，展示 Seedream 4.5 對光線、質感與黑白氛圍的處理。"
+      },
+      {
+        "title": "寫實人像範例",
+        "text": "Reddit 圖片範例，聚焦真實臉部細節、膚質與自然光。"
+      },
+      {
+        "title": "Seedream v4.5 回饋討論",
+        "text": "HiggsfieldAI 社群貼文，請創作者比較 Seedream 4.5 與前一版本。"
+      },
+      {
+        "title": "四模型人像比較",
+        "text": "HiggsfieldAI 比較貼文，用同一個人像提示詞測試多個圖片模型。"
+      }
+    ]
+  },
+  "x": {
+    "title": "X 上的 Seedream 4.5 範例",
+    "text": "查看 X 上的 Seedream 4.5 真實範例、模型比較、創作者測試和平台更新。",
+    "verified": "已認證",
+    "follow": "關注",
+    "watch": "圖片",
+    "monthYear": "2025 年 12 月",
+    "likes": "喜歡",
+    "reply": "回覆",
+    "copyLink": "複製連結",
+    "read": "閱讀",
+    "replies": "回覆",
+    "items": [
+      {
+        "title": "Seedream 4.5 並排圖片測試",
+        "body": "X 上的 Seedream 4.5 與 Nano Banana Pro 比較，可觀察主體細節和輸出風格。"
+      },
+      {
+        "title": "寫實咖啡館提示詞比較",
+        "body": "創作者用同一段詳細咖啡館提示詞比較 Nano Banana Pro 與 Seedream 4.5。"
+      },
+      {
+        "title": "早期提示詞遵循測試",
+        "body": "創作者討論 Seedream 4.5 早期測試中的一致性與提示詞遵循。"
+      },
+      {
+        "title": "黃金時刻人像提示詞",
+        "body": "並排人像測試，展示光線、臉部細節與場景理解。"
+      },
+      {
+        "title": "多項測試模型比較",
+        "body": "Curious Refuge 從多個視覺標準比較 Seedream 4.5 與另一個新模型。"
+      },
+      {
+        "title": "電影感寫實討論",
+        "body": "創作者討論 Seedream 4.5 在寫實與電影感輸出上的表現。"
+      },
+      {
+        "title": "模型可用性更新",
+        "body": "模型更新帖，總結空間理解和參考輸入等 Seedream 4.5 特點。"
+      },
+      {
+        "title": "4K 風格化輸出範例",
+        "body": "產品更新展示 Seedream 4.5 在細節、主體一致性和高品質圖片上的輸出。"
+      },
+      {
+        "title": "近景人像比較",
+        "body": "同提示詞人像測試，聚焦膚質、臉部一致性、色彩和近景真實感。"
+      },
+      {
+        "title": "API 流程比較範例",
+        "body": "圖片比較帖，展示 Seedream 4.5 在供應商工作流程中的效果。"
+      }
+    ]
+  },
   "related": {
     "title": "探索更多 AI 模型與工具",
     "tryNow": "立即試用",

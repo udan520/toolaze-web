@@ -48,6 +48,16 @@ type YoutubeExample = {
   text: string
 }
 
+type RedditCopyItem = {
+  title: string
+  text: string
+}
+
+type XCopyItem = {
+  title: string
+  body: string
+}
+
 type RelatedLink = {
   title: string
   href: string
@@ -121,6 +131,27 @@ export type Seedream45LandingCopy = {
     text: string
     watch: string
     examples: YoutubeExample[]
+  }
+  reddit: {
+    title: string
+    text: string
+    communityDiscussion: string
+    openDiscussion: string
+    items: RedditCopyItem[]
+  }
+  x: {
+    title: string
+    text: string
+    verified: string
+    follow: string
+    watch: string
+    monthYear: string
+    likes: string
+    reply: string
+    copyLink: string
+    read: string
+    replies: string
+    items: XCopyItem[]
   }
   related: {
     title: string

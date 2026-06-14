@@ -16,6 +16,12 @@ const files = {
   sitemap: path.join(root, 'src/app/sitemap.ts'),
   browserRedirect: path.join(root, 'src/lib/browser-locale-redirect.ts'),
   breadcrumb: path.join(root, 'src/components/Breadcrumb.tsx'),
+  navigation: path.join(root, 'src/components/Navigation.tsx'),
+  footer: path.join(root, 'src/components/Footer.tsx'),
+  homePage: path.join(root, 'src/components/home/HomePageMain.tsx'),
+  modelHub: path.join(root, 'src/app/model/page.tsx'),
+  homeModelCardImages: path.join(root, 'src/lib/home-model-card-images.ts'),
+  seoLoader: path.join(root, 'src/lib/seo-loader.ts'),
   localizedPage: path.join(root, 'src/app/[locale]/model/[model]/page.tsx'),
   copyModule: path.join(root, 'src/lib/seedream-4-5-landing-copy.ts'),
 }
@@ -32,6 +38,12 @@ const localAltApi = read(files.localAltApi)
 const sitemap = read(files.sitemap)
 const browserRedirect = read(files.browserRedirect)
 const breadcrumb = read(files.breadcrumb)
+const navigation = read(files.navigation)
+const footer = read(files.footer)
+const homePage = read(files.homePage)
+const modelHub = read(files.modelHub)
+const homeModelCardImages = read(files.homeModelCardImages)
+const seoLoader = read(files.seoLoader)
 const localizedPage = read(files.localizedPage)
 const copyModule = read(files.copyModule)
 const allPageSources = `${page}\n${component}`
@@ -40,9 +52,15 @@ const promptExamplesSection = component.slice(
   component.indexOf('copy.related.title'),
 )
 const imageAssetDir = path.join(root, 'public/model-assets/seedream-4-5')
+const maxPageImageBytes = 100 * 1024
 const copyDir = path.join(root, 'src/data/seedream-4-5-landing-copy')
 const locales = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
 const readJson = (file) => JSON.parse(fs.readFileSync(file, 'utf8'))
+const appearsBefore = (source, first, second) => {
+  const firstIndex = source.indexOf(first)
+  const secondIndex = source.indexOf(second)
+  return firstIndex >= 0 && secondIndex >= 0 && firstIndex < secondIndex
+}
 const enCopy = readJson(path.join(copyDir, 'en.json'))
 const localizedCopies = locales.map((locale) => ({ locale, copy: readJson(path.join(copyDir, `${locale}.json`)) }))
 
@@ -56,6 +74,86 @@ function shapeOf(value) {
 
 const englishCopySource = JSON.stringify(enCopy)
 const allLocalizedCopySource = localizedCopies.map(({ copy }) => JSON.stringify(copy)).join('\n')
+const redditSourceBlock = component.slice(
+  component.indexOf('const redditDiscussions = ['),
+  component.indexOf('const xCommunityExamples = ['),
+)
+const redditCardCount = (redditSourceBlock.match(/\n  {\n    id: /g) || []).length
+const redditHrefs = [...redditSourceBlock.matchAll(/href: '([^']*reddit\.com[^']*)'/g)].map((match) => match[1])
+const redditUniqueHrefs = new Set(redditHrefs)
+const redditHasCarouselCard = /media: \[\s*{[\s\S]*?},\s*{[\s\S]*?}\s*[,}]/.test(redditSourceBlock)
+const redditSourceAndCopy = `${redditSourceBlock}\n${JSON.stringify(enCopy.reddit)}`.toLowerCase()
+const politicalPeopleTerms = ['trump', 'biden', 'obama', 'putin', 'zelensky', 'xi jinping']
+const expectedRedditSourceManifest = [
+  {
+    id: 'seedream-45-performance-benchmark',
+    href: 'https://www.reddit.com/r/singularity/comments/1pdc25l/performance_benchmark_seedream_45/',
+    mediaIds: ['r4gu0ckc615g1.jpg', 'qdcsbckc615g1.jpg', 'bmrxhsra715g1.jpg'],
+  },
+  {
+    id: 'seedream-45-bytedance-dropped',
+    href: 'https://www.reddit.com/r/singularity/comments/1pi94u8/bytedance_dropped_seedream_45_ran_it_against_nano/',
+    mediaIds: ['3fm5izucx66g1.jpg'],
+  },
+  {
+    id: 'seedream-45-car-capsule-prompt',
+    href: 'https://www.reddit.com/r/GenAIGallery/comments/1pltr8o/prompt_to_generate_car_capsule_style_image_using/',
+    mediaIds: ['hnni57v1w07g1.png'],
+  },
+  {
+    id: 'seedream-45-early-visual-tests',
+    href: 'https://www.reddit.com/r/aiArt/comments/1pj5fga/early_seedream_45_tests_for_posters_thumbnails/',
+    mediaIds: ['fsdy77maae6g1.png', 'bth9y5l1ae6g1.png', '8kg96ep2ae6g1.png', '84v498a3ae6g1.png', 'qov7y57n9e6g1.png'],
+  },
+  {
+    id: 'seedream-45-officially-out',
+    href: 'https://www.reddit.com/r/aiArt/comments/1pdntlc/seedream_45_officially_out/',
+    mediaIds: ['vn92pbycj35g1.jpg', 'l3mlhmcdj35g1.jpg'],
+  },
+  {
+    id: 'seedream-45-motion-blur-athletic-portrait',
+    href: 'https://www.reddit.com/r/aiArt/comments/1qmj5e2/seedream_45_motion_blur_athletic_portrait_prompt/',
+    mediaIds: ['ua1kdjk3zhfg1.jpeg'],
+  },
+  {
+    id: 'seedream-45-black-white-portrait',
+    href: 'https://www.reddit.com/r/aiArt/comments/1qu0tjo/intimate_bw_portrait_seedream_45_prompt/',
+    mediaIds: ['h1anfrct44hg1.jpeg'],
+  },
+  {
+    id: 'seedream-45-expression-portrait',
+    href: 'https://www.reddit.com/r/aiArt/comments/1q5fwrk/seedream_is_giving_the_best_expression_for/',
+    mediaIds: ['5jiyqmaoppbg1.jpeg'],
+  },
+  {
+    id: 'seedream-45-higgsfield-v45-feedback',
+    href: 'https://www.reddit.com/r/aiArt/comments/1pdfzv3/what_do_you_guys_think_of_seedream_v45_better/',
+    mediaIds: ['b6r6be3xw15g1.png'],
+  },
+  {
+    id: 'seedream-45-higgsfield-four-models',
+    href: 'https://www.reddit.com/r/HiggsfieldAI/comments/1qe14i1/one_portrait_prompt_four_models_on_higgsfield/',
+    mediaIds: ['8tcbm0hwwldg1.jpg', 'i0ysu2hwwldg1.jpg', '3um0t5hwwldg1.jpg', '4q29z2hwwldg1.jpg'],
+  },
+]
+const redditCards = [...redditSourceBlock.matchAll(/id: '([^']+)'[\s\S]*?href: '([^']+)'[\s\S]*?media: \[([\s\S]*?)\n    \]/g)].map((match) => ({
+  id: match[1],
+  href: match[2],
+  mediaIds: [
+    ...match[3].matchAll(/preview\.redd\.it\/[^']*?-v0-([^.'&?]+\.(?:png|jpe?g|gif))|i\.redd\.it\/([^.'&?]+\.(?:png|jpe?g|gif))/gi),
+  ].map((mediaMatch) => mediaMatch[1] || mediaMatch[2]),
+}))
+const redditSourceManifestMatches =
+  redditCards.length === expectedRedditSourceManifest.length &&
+  expectedRedditSourceManifest.every((expected, index) => {
+    const actual = redditCards[index]
+    return (
+      actual &&
+      actual.id === expected.id &&
+      actual.href === expected.href &&
+      JSON.stringify(actual.mediaIds) === JSON.stringify(expected.mediaIds)
+    )
+  })
 
 const expectedSections = [
   enCopy.metadata.title,
@@ -214,21 +312,60 @@ const checks = [
       localizedCopies.every(({ copy }) => Array.isArray(copy.youtube?.examples) && copy.youtube.examples.length === enCopy.youtube.examples.length),
   },
   {
+    name: 'Reddit and X community sections use real source-backed media grids',
+    pass:
+      Array.isArray(enCopy.reddit?.items) &&
+      enCopy.reddit.items.length === redditCardCount &&
+      redditCardCount === 10 &&
+      redditHrefs.length === redditCardCount &&
+      redditUniqueHrefs.size === redditHrefs.length &&
+      redditSourceManifestMatches &&
+      redditHasCarouselCard &&
+      politicalPeopleTerms.every((term) => !redditSourceAndCopy.includes(term)) &&
+      enCopy.reddit.items.every((item) => item.title && item.text) &&
+      Array.isArray(enCopy.x?.items) &&
+      enCopy.x.items.length === 10 &&
+      enCopy.x.items.every((item) => item.title && item.body) &&
+      component.includes("import RedditMediaCarousel from '@/components/RedditMediaCarousel'") &&
+      component.includes('copy.reddit.title') &&
+      component.includes('copy.x.title') &&
+      component.includes('RedditLogo') &&
+      component.includes('fourLineClampStyle') &&
+      component.includes('WebkitLineClamp: 4') &&
+      component.includes('min-h-[96px]') &&
+      component.includes('mt-auto pt-5') &&
+      component.includes('mt-auto pt-4') &&
+      component.includes('https://images.weserv.nl/?url=i.redd.it/${mediaId}.${extension}&w=640&output=webp') &&
+      component.includes('lg:grid-cols-5') &&
+      component.includes('xl:grid-cols-5') &&
+      component.includes('localizedRedditDiscussions') &&
+      component.includes('localizedXCommunityExamples') &&
+      !allLocalizedCopySource.includes('public post') &&
+      !allLocalizedCopySource.includes('PUBLIC POST') &&
+      !allLocalizedCopySource.includes('VERIFIED') &&
+      localizedCopies.every(({ copy }) => Array.isArray(copy.reddit?.items) && copy.reddit.items.length === enCopy.reddit.items.length) &&
+      localizedCopies.every(({ copy }) => Array.isArray(copy.x?.items) && copy.x.items.length === enCopy.x.items.length),
+  },
+  {
     name: 'visual slots are placeholders under model-assets path and not live local file paths',
     pass:
       component.includes('function ImagePlaceholder') &&
       component.includes('<img src={src} alt={label}') &&
       imageSlots.filter((slot) => slot !== 'final-cta').every((slot) => englishCopySource.includes(`"slot":"${slot}"`)) &&
-      component.includes("'final-cta': '/model-assets/seedream-4-5/final-cta.png'") &&
+      component.includes("'final-cta': '/model-assets/seedream-4-5/final-cta.webp'") &&
       component.includes('/model-assets/seedream-4-5/') &&
+      !component.includes('/model-assets/seedream-4-5/feature-reference-consistency.png') &&
       !component.includes('public/model/seedream-4-5') &&
       !component.includes('_codex/'),
   },
   {
-    name: 'all Seedream 4.5 visual assets exist in public model-assets directory',
+    name: 'all Seedream 4.5 visual assets exist as WebP files under 100KB',
     pass:
       fs.existsSync(imageAssetDir) &&
-      imageSlots.every((slot) => fs.existsSync(path.join(imageAssetDir, `${slot}.png`))),
+      imageSlots.every((slot) => {
+        const file = path.join(imageAssetDir, `${slot}.webp`)
+        return fs.existsSync(file) && fs.statSync(file).size <= maxPageImageBytes
+      }),
   },
   {
     name: 'related links use existing Toolaze routes',
@@ -259,6 +396,45 @@ const checks = [
       localizedPage.includes("'seedream-4-5': 'seedream-4-5'") &&
       localizedPage.includes('<Seedream45LandingPage locale={locale} />') &&
       localizedPage.includes('getSeedream45PageMetadata'),
+  },
+  {
+    name: 'AI Image navigation includes Seedream 4.5 on desktop and mobile',
+    pass:
+      navigation.includes("seedream45: 'Seedream 4.5'") &&
+      navigation.includes("href={getLocalizedHref('/model/seedream-4-5')}") &&
+      (navigation.match(/href=\{getLocalizedHref\('\/model\/seedream-4-5'\)\}/g) || []).length >= 2 &&
+      localizedCopies.every(({ copy, locale }) => {
+        const commonPath = path.join(root, 'src/data', locale, 'common.json')
+        const common = readJson(commonPath)
+        return common.nav?.seedream45 === 'Seedream 4.5'
+      }),
+  },
+  {
+    name: 'Seedream 4.5 entry points are present on homepage, model hub, and footer',
+    pass:
+      homePage.includes("import { getSeedream45LandingCopy }") &&
+      homePage.includes("'seedream-4-5': '/model/seedream-4-5'") &&
+      homePage.includes("tool: 'seedream-4-5'") &&
+      homeModelCardImages.includes("'seedream-4-5'") &&
+      homeModelCardImages.includes('/model-assets/seedream-4-5/gallery-ecommerce-product.webp') &&
+      modelHub.includes('href="/model/seedream-4-5"') &&
+      modelHub.includes('Seedream 4.5') &&
+      footer.includes("seedream45: 'Seedream 4.5'") &&
+      footer.includes("href={getLocalizedHref('/model/seedream-4-5')}"),
+  },
+  {
+    name: 'GPT Image 2 is first in AI image menus and model collections',
+    pass:
+      appearsBefore(navigation, "href={getLocalizedHref('/model/gpt-image-2-0')}", "href={getLocalizedHref('/model/nano-banana-pro')}") &&
+      appearsBefore(navigation, "href: getLocalizedHref('/prompts/models/gpt-image-2')", "href: getLocalizedHref('/prompts/models/seedance-2-0')") &&
+      appearsBefore(footer, "href={getLocalizedHref('/model/gpt-image-2-0')}", "href={getLocalizedHref('/model/nano-banana-pro')}") &&
+      appearsBefore(modelHub, 'href="/model/gpt-image-2-0"', 'href="/model/nano-banana-pro"') &&
+      seoLoader.includes("export const IMAGE_MODEL_L2S = ['gpt-image-2', 'nano-banana-pro', 'nano-banana-2']") &&
+      homePage.includes("const trendingModels = applyTrendingCardsOverrides(\n    [...aiImageTools, ...aiVideoTools],") &&
+      localizedCopies.every(({ locale }) => {
+        const common = readJson(path.join(root, 'src/data', locale, 'common.json'))
+        return common.home?.aiToolsHubItems?.[0]?.href === '/model/gpt-image-2-0'
+      }),
   },
 ]
 

@@ -255,6 +255,109 @@
       }
     ]
   },
+  "reddit": {
+    "title": "Discussions Seedream 4.5 sur Reddit",
+    "text": "Parcourez des posts Reddit ou des createurs comparent Seedream 4.5, partagent des prompts et commentent des resultats reels.",
+    "communityDiscussion": "Discussion Reddit",
+    "openDiscussion": "Ouvrir le fil Reddit",
+    "items": [
+      {
+        "title": "Fil de benchmark",
+        "text": "Une discussion Reddit de benchmark sur le respect du prompt, la qualite image et le comportement de Seedream 4.5, avec plusieurs images source dans un carrousel."
+      },
+      {
+        "title": "Comparaison ByteDance Seedream 4.5",
+        "text": "Une discussion Singularity comparant Seedream 4.5 a Nano Banana Pro avec une scene fantastique."
+      },
+      {
+        "title": "Prompt de voiture capsule",
+        "text": "Un post de partage de prompt montrant un workflow automobile stylise cree avec Seedream 4.5."
+      },
+      {
+        "title": "Tests de posters et miniatures",
+        "text": "Un fil galerie aiArt testant Seedream 4.5 pour posters, miniatures, visuels sociaux et mises en page."
+      },
+      {
+        "title": "Exemples de lancement Seedream 4.5",
+        "text": "Un post aiArt partageant les premiers exemples de portraits apres la disponibilite de Seedream 4.5."
+      },
+      {
+        "title": "Prompt de portrait en mouvement",
+        "text": "Un exemple de portrait athletique avec prompt, axe sur le mouvement, la lumiere et le realisme."
+      },
+      {
+        "title": "Prompt de portrait noir et blanc",
+        "text": "Un post de portrait montrant lumiere, texture et ambiance monochrome avec Seedream 4.5."
+      },
+      {
+        "title": "Exemple de portrait realiste",
+        "text": "Un exemple image Reddit centre sur les details du visage, la texture de peau et la lumiere naturelle."
+      },
+      {
+        "title": "Fil de retours Seedream v4.5",
+        "text": "Un post de la communaute HiggsfieldAI demandant aux createurs de comparer Seedream 4.5 a la version precedente."
+      },
+      {
+        "title": "Comparaison portrait quatre modeles",
+        "text": "Une comparaison HiggsfieldAI utilisant un meme prompt de portrait sur plusieurs modeles image."
+      }
+    ]
+  },
+  "x": {
+    "title": "Exemples Seedream 4.5 sur X",
+    "text": "Consultez des posts X avec de vrais exemples Seedream 4.5, des comparaisons, des tests et des mises a jour.",
+    "verified": "Verifie",
+    "follow": "Suivre",
+    "watch": "Image",
+    "monthYear": "Dec. 2025",
+    "likes": "likes",
+    "reply": "Repondre",
+    "copyLink": "Copier le lien",
+    "read": "Lire",
+    "replies": "reponses",
+    "items": [
+      {
+        "title": "Test image cote a cote Seedream 4.5",
+        "body": "Une comparaison X de Seedream 4.5 et Nano Banana Pro pour juger le detail et le style."
+      },
+      {
+        "title": "Comparaison de prompt cafe photorealiste",
+        "body": "Un createur compare le meme prompt cafe detaille avec Nano Banana Pro et Seedream 4.5."
+      },
+      {
+        "title": "Premier test de fidelite au prompt",
+        "body": "Un fil de createur sur la coherence et le suivi du prompt dans Seedream 4.5."
+      },
+      {
+        "title": "Prompt portrait a l heure doree",
+        "body": "Un test portrait cote a cote sur la lumiere, les details du visage et la scene."
+      },
+      {
+        "title": "Comparaison multi-tests",
+        "body": "Curious Refuge compare Seedream 4.5 avec un modele recent selon plusieurs criteres visuels."
+      },
+      {
+        "title": "Fil sur le realisme cinematographique",
+        "body": "Un createur commente les sorties realistes et cinematographiques de Seedream 4.5."
+      },
+      {
+        "title": "Post de disponibilite du modele",
+        "body": "Un post qui resume la comprehension spatiale et les entrees de reference."
+      },
+      {
+        "title": "Exemple stylise en 4K",
+        "body": "Une mise a jour produit montrant detail, coherence du sujet et haute qualite visuelle."
+      },
+      {
+        "title": "Comparaison portrait rapproche",
+        "body": "Un test au meme prompt sur la peau, la coherence du visage, la couleur et le realisme."
+      },
+      {
+        "title": "Exemple de comparaison via API",
+        "body": "Une comparaison image montrant Seedream 4.5 dans un workflow fournisseur."
+      }
+    ]
+  },
   "related": {
     "title": "Explorez plus de modèles et outils IA",
     "tryNow": "Essayer maintenant",

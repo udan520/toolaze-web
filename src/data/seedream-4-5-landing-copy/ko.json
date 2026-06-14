@@ -255,6 +255,109 @@
       }
     ]
   },
+  "reddit": {
+    "title": "Reddit의 Seedream 4.5 토론",
+    "text": "크리에이터가 Seedream 4.5를 비교하고 프롬프트와 실제 이미지 결과를 공유하는 Reddit 게시물을 확인하세요.",
+    "communityDiscussion": "Reddit 토론",
+    "openDiscussion": "Reddit 글 열기",
+    "items": [
+      {
+        "title": "성능 벤치마크 스레드",
+        "text": "Seedream 4.5의 프롬프트 준수, 이미지 품질, 모델 동작을 비교하는 Reddit 벤치마크 토론이며 여러 원본 이미지를 하나의 캐러셀에 담았습니다."
+      },
+      {
+        "title": "ByteDance Seedream 4.5 비교",
+        "text": "판타지 장면으로 Seedream 4.5와 Nano Banana Pro를 비교한 Singularity 토론입니다."
+      },
+      {
+        "title": "자동차 캡슐 프롬프트 예시",
+        "text": "Seedream 4.5로 만든 스타일화된 자동차 이미지 워크플로를 보여 주는 프롬프트 공유 게시물입니다."
+      },
+      {
+        "title": "포스터와 썸네일 테스트",
+        "text": "aiArt 갤러리 스레드에서 Seedream 4.5를 포스터, 썸네일, 소셜 비주얼, 디자인 레이아웃에 테스트합니다."
+      },
+      {
+        "title": "Seedream 4.5 출시 예시",
+        "text": "Seedream 4.5 공개 직후의 초기 인물 예시를 공유한 aiArt 게시물입니다."
+      },
+      {
+        "title": "모션 블러 인물 프롬프트",
+        "text": "움직임, 조명, 사실감에 초점을 둔 프롬프트 포함 운동 인물 예시입니다."
+      },
+      {
+        "title": "흑백 인물 프롬프트",
+        "text": "Seedream 4.5의 빛, 질감, 흑백 분위기를 보여 주는 인물 프롬프트 게시물입니다."
+      },
+      {
+        "title": "사실적 인물 예시",
+        "text": "얼굴 디테일, 피부 질감, 자연광에 초점을 둔 Reddit 이미지 예시입니다."
+      },
+      {
+        "title": "Seedream v4.5 피드백 스레드",
+        "text": "HiggsfieldAI 커뮤니티에서 Seedream 4.5와 이전 버전을 비교하는 게시물입니다."
+      },
+      {
+        "title": "네 모델 인물 비교",
+        "text": "하나의 인물 프롬프트를 여러 이미지 모델에 적용한 HiggsfieldAI 비교 게시물입니다."
+      }
+    ]
+  },
+  "x": {
+    "title": "X의 Seedream 4.5 예시",
+    "text": "X 게시물에서 실제 Seedream 4.5 예시, 비교, 크리에이터 테스트, 모델 업데이트를 확인하세요.",
+    "verified": "인증됨",
+    "follow": "팔로우",
+    "watch": "이미지",
+    "monthYear": "2025년 12월",
+    "likes": "좋아요",
+    "reply": "답글",
+    "copyLink": "링크 복사",
+    "read": "읽기",
+    "replies": "답글",
+    "items": [
+      {
+        "title": "Seedream 4.5 나란히 이미지 테스트",
+        "body": "Seedream 4.5와 Nano Banana Pro를 비교해 피사체 디테일과 출력 스타일을 볼 수 있습니다."
+      },
+      {
+        "title": "사실적인 카페 프롬프트 비교",
+        "body": "동일한 카페 프롬프트를 Nano Banana Pro와 Seedream 4.5에서 비교한 글입니다."
+      },
+      {
+        "title": "프롬프트 준수 초기 테스트",
+        "body": "Seedream 4.5의 일관성과 프롬프트 준수 인상을 다룬 크리에이터 스레드입니다."
+      },
+      {
+        "title": "골든아워 인물 프롬프트",
+        "body": "조명, 얼굴 디테일, 장면 해석을 보여주는 나란히 인물 테스트입니다."
+      },
+      {
+        "title": "여러 테스트 기준의 모델 비교",
+        "body": "Curious Refuge가 여러 시각 기준으로 Seedream 4.5를 비교합니다."
+      },
+      {
+        "title": "시네마틱 리얼리즘 스레드",
+        "body": "Seedream 4.5의 사실적이고 영화적인 출력에 대한 크리에이터 글입니다."
+      },
+      {
+        "title": "모델 제공 업데이트",
+        "body": "공간 이해와 참조 입력 등 Seedream 4.5의 강점을 요약한 글입니다."
+      },
+      {
+        "title": "4K 스타일 출력 예시",
+        "body": "디테일, 피사체 일관성, 고품질 이미지를 보여주는 제품 업데이트입니다."
+      },
+      {
+        "title": "클로즈업 인물 비교",
+        "body": "피부, 얼굴 일관성, 색감, 근접 사실감을 보는 동일 프롬프트 테스트입니다."
+      },
+      {
+        "title": "API 측 비교 예시",
+        "body": "제공자 워크플로에서 Seedream 4.5가 어떻게 보이는지 보여주는 이미지 비교입니다."
+      }
+    ]
+  },
   "related": {
     "title": "더 많은 AI 모델 및 도구 탐색",
     "tryNow": "지금 사용해보기",

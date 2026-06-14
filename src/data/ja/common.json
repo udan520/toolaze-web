@@ -14,6 +14,7 @@
     "nanoBananaPro": "Nano Banana Pro",
     "nanoBanana2": "Nano Banana 2",
     "gptImage2": "GPT Image 2",
+    "seedream45": "Seedream 4.5",
     "seedance2": "Seedance 2.0",
     "kling3": "Kling 3.0",
     "promptLibrary": "プロンプト集",
@@ -96,8 +97,8 @@
     "aiToolsHubItems": [
       {
         "title": "AI画像生成ツール",
-        "description": "テキストから画像、画像から画像でキャンペーン対応のビジュアルを出荷。Nano Banana Pro、Nano Banana 2、GPT Image 2は、広告、ソーシャル投稿、コンセプトアート向けに、鮮明なディテール、柔軟なアスペクト比、最大4Kの解像度を提供します。",
-        "href": "/model/nano-banana-pro"
+        "description": "テキストから画像、画像から画像でキャンペーン対応のビジュアルを出荷。GPT Image 2、Nano Banana Pro、Nano Banana 2は、広告、ソーシャル投稿、コンセプトアート向けに、鮮明なディテール、柔軟なアスペクト比、最大4Kの解像度を提供します。",
+        "href": "/model/gpt-image-2-0"
       },
       {
         "title": "AI動画生成ツール",

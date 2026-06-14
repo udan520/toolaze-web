@@ -30,6 +30,12 @@ export const HOME_MODEL_CARD_IMAGES = {
     height: 600,
     alt: 'GPT Image 2 sample output preview',
   },
+  'seedream-4-5': {
+    src: '/model-assets/seedream-4-5/gallery-ecommerce-product.webp',
+    width: 1280,
+    height: 960,
+    alt: 'Seedream 4.5 commercial image generation preview',
+  },
   'seedance-2': {
     src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/seedance-2.jpg',
     width: 800,

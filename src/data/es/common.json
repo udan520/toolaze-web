@@ -14,6 +14,7 @@
     "nanoBananaPro": "Nano Banana Pro",
     "nanoBanana2": "Nano Banana 2",
     "gptImage2": "GPT Image 2",
+    "seedream45": "Seedream 4.5",
     "seedance2": "Seedance 2.0",
     "kling3": "Kling 3.0",
     "promptLibrary": "Biblioteca de Prompts",
@@ -96,8 +97,8 @@
     "aiToolsHubItems": [
       {
         "title": "Generadores de imágenes con IA",
-        "description": "Envía visuales listos para campañas con texto a imagen e imagen a imagen. Nano Banana Pro, Nano Banana 2 y GPT Image 2 ofrecen detalles nítidos, relaciones de aspecto flexibles y resoluciones de hasta 4K para anuncios, publicaciones sociales y arte conceptual.",
-        "href": "/model/nano-banana-pro"
+        "description": "Envía visuales listos para campañas con texto a imagen e imagen a imagen. GPT Image 2, Nano Banana Pro y Nano Banana 2 ofrecen detalles nítidos, relaciones de aspecto flexibles y resoluciones de hasta 4K para anuncios, publicaciones sociales y arte conceptual.",
+        "href": "/model/gpt-image-2-0"
       },
       {
         "title": "Generadores de videos con IA",

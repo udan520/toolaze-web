@@ -20,6 +20,7 @@ const redditCarousel = fs.readFileSync(redditCarouselPath, 'utf8')
 const redditSection = component.slice(component.indexOf('const redditDiscussions'), component.indexOf('const xCommunityExamples'))
 const xDataSection = component.slice(component.indexOf('const xCommunityExamples'), component.indexOf('const youtubeCommunityExamples'))
 const xSection = component.slice(component.indexOf('copy.x.title'), component.indexOf('copy.related.title'))
+const maxPageImageBytes = 100 * 1024
 
 const imageSlots = [
   'feature-text-rendering',
@@ -73,19 +74,27 @@ const localImageAssets = new Map(localImageAssetMatches.map(([, slot, file]) => 
 const localImageAssetFilesExist = imageSlots.every((slot) => {
   const file = localImageAssets.get(slot)
 
-  return file && fs.existsSync(path.join(root, 'public/model-assets/gpt-image-2', file))
+  if (!file || !file.endsWith('.webp')) return false
+
+  const assetPath = path.join(root, 'public/model-assets/gpt-image-2', file)
+
+  return fs.existsSync(assetPath) && fs.statSync(assetPath).size <= maxPageImageBytes
 })
 
 const xAvatarFiles = [
-  'x-avatar-stark-nico99.jpg',
-  'x-avatar-tamayo888.jpg',
-  'x-avatar-mrlarus.jpg',
-  'x-avatar-dotey.jpeg',
-  'x-avatar-justinmfarrugia.jpg',
-  'x-avatar-geekcatx.jpg',
+  'x-avatar-stark-nico99.webp',
+  'x-avatar-tamayo888.webp',
+  'x-avatar-mrlarus.webp',
+  'x-avatar-dotey.webp',
+  'x-avatar-justinmfarrugia.webp',
+  'x-avatar-geekcatx.webp',
 ]
 
-const xAvatarFilesExist = xAvatarFiles.every((file) => fs.existsSync(path.join(root, 'public/model-assets/gpt-image-2', file)))
+const xAvatarFilesExist = xAvatarFiles.every((file) => {
+  const assetPath = path.join(root, 'public/model-assets/gpt-image-2', file)
+
+  return fs.existsSync(assetPath) && fs.statSync(assetPath).size <= maxPageImageBytes
+})
 const redditHrefs = [...redditSection.matchAll(/href: '([^']+)'/g)].map(([, href]) => href)
 const redditDisplayMedia = [...redditSection.matchAll(/displayImage: redditImage\(/g)]
 const xItems = [...xDataSection.matchAll(/title: '([^']+)'/g)]
@@ -240,10 +249,12 @@ const checks = [
       copyButton.includes('{copied ? copiedLabel : copyLabel}'),
   },
   {
-    name: 'approved semantic images are wired from local server paths',
+    name: 'approved semantic images are wired from local WebP server paths under 100KB',
     pass:
       imageSlots.every((slot) => localImageAssets.has(slot)) &&
       localImageAssetFilesExist &&
+      !component.includes('/model-assets/gpt-image-2/feature-text-rendering-v2.png') &&
+      !component.includes('/model-assets/gpt-image-2/final-cta.png') &&
       !pageSources.includes('https://toolaze-web.pages.dev/api/download-image?url='),
   },
   {
@@ -308,8 +319,9 @@ const checks = [
       !xSection.includes('border-y-[9px]') &&
       component.includes('pbs.twimg.com/media/HGRFgOPaYAAkrdn.jpg') &&
       component.includes('pbs.twimg.com/media/HGCnWfOXwAAVCRn.jpg') &&
-      component.includes('/model-assets/gpt-image-2/x-avatar-stark-nico99.jpg') &&
+      component.includes('/model-assets/gpt-image-2/x-avatar-stark-nico99.webp') &&
       xAvatarFilesExist &&
+      !component.includes('/model-assets/gpt-image-2/x-avatar-stark-nico99.jpg') &&
       !component.includes('profile_images/') &&
       component.includes('alt={`${item.name} ${copy.x.title}`}') &&
       component.includes('https://www.youtube.com/embed/${item.videoId}') &&

@@ -14,6 +14,7 @@
     "nanoBananaPro": "Nano Banana Pro",
     "nanoBanana2": "Nano Banana 2",
     "gptImage2": "GPT Image 2",
+    "seedream45": "Seedream 4.5",
     "seedance2": "Seedance 2.0",
     "kling3": "Kling 3.0",
     "promptLibrary": "提示詞庫",
@@ -96,8 +97,8 @@
     "aiToolsHubItems": [
       {
         "title": "AI圖片生成器",
-        "description": "透過文字轉圖片和圖片轉圖片，交付可供活動使用的視覺效果。Nano Banana Pro、Nano Banana 2和GPT Image 2提供清晰的細節、靈活的長寬比和高達4K的解析度，適用於廣告、社群貼文和概念藝術。",
-        "href": "/model/nano-banana-pro"
+        "description": "透過文字轉圖片和圖片轉圖片，交付可供活動使用的視覺效果。GPT Image 2、Nano Banana Pro和Nano Banana 2提供清晰的細節、靈活的長寬比和高達4K的解析度，適用於廣告、社群貼文和概念藝術。",
+        "href": "/model/gpt-image-2-0"
       },
       {
         "title": "AI影片生成器",

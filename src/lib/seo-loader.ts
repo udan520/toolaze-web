@@ -60,7 +60,7 @@ export const FONT_GENERATOR_SLUGS = [
 export const VIDEO_MODEL_L2S = ['seedance-2', 'kling-3']
 
 // 图片模型 L2 列表（用于「更多工具」推荐，仅推荐同类型 L2）
-export const IMAGE_MODEL_L2S = ['nano-banana-pro', 'nano-banana-2', 'gpt-image-2']
+export const IMAGE_MODEL_L2S = ['gpt-image-2', 'nano-banana-pro', 'nano-banana-2']
 
 // Seedance 2.0 L3 页面 slug 列表（按搜索量/优先级）
 const SEEDANCE_2_SLUGS = [

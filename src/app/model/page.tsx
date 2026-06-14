@@ -6,7 +6,7 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'AI Models - Image Generation Tools | Toolaze',
-  description: 'Explore our collection of AI image generation models. Transform images with advanced models including Nano Banana Pro, Nano Banana 2, and GPT Image 2 for image-to-image and text-to-image generation.',
+  description: 'Explore Toolaze AI image generation models including Nano Banana Pro, Nano Banana 2, GPT Image 2, and Seedream 4.5 for image-to-image, text-to-image, and reference-guided image generation.',
   robots: 'index, follow',
   alternates: {
     canonical: 'https://toolaze.com/model',
@@ -36,6 +36,39 @@ export default function ModelPage() {
         <section className="bg-[#F8FAFF] py-16 px-6">
           <div className="max-w-6xl mx-auto">
             <div className="grid gap-6 md:grid-cols-1 lg:grid-cols-2">
+              <Link
+                href="/model/gpt-image-2-0"
+                className="group bg-white rounded-2xl border border-[#E0E7FF] shadow-lg shadow-[#4F46E5]/8 p-8 hover:shadow-xl hover:shadow-[#4F46E5]/12 transition-all duration-200 hover:-translate-y-1"
+              >
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center flex-shrink-0 shadow-md shadow-indigo-100">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                      <path d="M7 15l3-3 2 2 5-5" />
+                    </svg>
+                  </div>
+                  <div className="flex-1">
+                    <h2 className="text-2xl font-bold text-slate-900 mb-2 group-hover:text-indigo-600 transition-colors">
+                      GPT Image 2
+                    </h2>
+                    <p className="text-slate-600 leading-relaxed mb-4">
+                      Use GPT Image 2 for text-to-image and image-to-image in one interface. Set aspect ratio and resolution, then generate and download online.
+                    </p>
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      <span className="px-3 py-1 rounded-lg bg-[#EEF2FF] text-[#4F46E5] text-xs font-semibold">Image to Image</span>
+                      <span className="px-3 py-1 rounded-lg bg-[#EEF2FF] text-[#4F46E5] text-xs font-semibold">Text to Image</span>
+                      <span className="px-3 py-1 rounded-lg bg-[#EEF2FF] text-[#4F46E5] text-xs font-semibold">4K Ready</span>
+                    </div>
+                    <div className="flex items-center text-indigo-600 font-semibold text-sm group-hover:gap-2 transition-all">
+                      <span>Try GPT Image 2</span>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-1 group-hover:translate-x-1 transition-transform">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+
               {/* Nano Banana Pro Card */}
               <Link 
                 href="/model/nano-banana-pro"
@@ -106,30 +139,30 @@ export default function ModelPage() {
               </Link>
 
               <Link
-                href="/model/gpt-image-2-0"
+                href="/model/seedream-4-5"
                 className="group bg-white rounded-2xl border border-[#E0E7FF] shadow-lg shadow-[#4F46E5]/8 p-8 hover:shadow-xl hover:shadow-[#4F46E5]/12 transition-all duration-200 hover:-translate-y-1"
               >
                 <div className="flex items-start gap-4 mb-4">
                   <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center flex-shrink-0 shadow-md shadow-indigo-100">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-                      <path d="M7 15l3-3 2 2 5-5" />
+                      <path d="M7 8h10M7 12h6M7 16h10" />
                     </svg>
                   </div>
                   <div className="flex-1">
                     <h2 className="text-2xl font-bold text-slate-900 mb-2 group-hover:text-indigo-600 transition-colors">
-                      GPT Image 2
+                      Seedream 4.5
                     </h2>
                     <p className="text-slate-600 leading-relaxed mb-4">
-                      Use GPT Image 2 for text-to-image and image-to-image in one interface. Set aspect ratio and resolution, then generate and download online.
+                      Create 4K product visuals, poster layouts, typography-rich designs, and reference-guided image edits with Seedream 4.5 on Toolaze.
                     </p>
                     <div className="flex flex-wrap gap-2 mb-4">
-                      <span className="px-3 py-1 rounded-lg bg-[#EEF2FF] text-[#4F46E5] text-xs font-semibold">Image to Image</span>
                       <span className="px-3 py-1 rounded-lg bg-[#EEF2FF] text-[#4F46E5] text-xs font-semibold">Text to Image</span>
-                      <span className="px-3 py-1 rounded-lg bg-[#EEF2FF] text-[#4F46E5] text-xs font-semibold">4K Ready</span>
+                      <span className="px-3 py-1 rounded-lg bg-[#EEF2FF] text-[#4F46E5] text-xs font-semibold">Image Editing</span>
+                      <span className="px-3 py-1 rounded-lg bg-[#EEF2FF] text-[#4F46E5] text-xs font-semibold">4K Output</span>
                     </div>
                     <div className="flex items-center text-indigo-600 font-semibold text-sm group-hover:gap-2 transition-all">
-                      <span>Try GPT Image 2</span>
+                      <span>Try Seedream 4.5</span>
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-1 group-hover:translate-x-1 transition-transform">
                         <path d="M5 12h14M12 5l7 7-7 7" />
                       </svg>
