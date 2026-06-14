@@ -56,12 +56,19 @@ function resolveModel(model) {
   const m = String(model || '').trim().toLowerCase();
   if (m === 'gpt-image-2') return 'gpt-image-2';
   if (m === 'nano-banana-2') return 'nano-banana-2';
+  if (m === 'seedream-4-5') return 'seedream-4-5';
   return 'nano-banana-pro';
 }
 
-function resolveProviderModelId(model, env) {
+function resolveProviderModelId(model, env, isImageToImage) {
   if (model === 'gpt-image-2') {
     return env.KIE_GPT_IMAGE_2_MODEL || 'gpt-image-2-text-to-image';
+  }
+  if (model === 'seedream-4-5') {
+    if (isImageToImage) {
+      return env.KIE_SEEDREAM_4_5_EDIT_MODEL || 'seedream/4.5-edit';
+    }
+    return env.KIE_SEEDREAM_4_5_TEXT_MODEL || 'seedream/4.5-text-to-image';
   }
   if (model === 'nano-banana-2') {
     return env.KIE_NANO_BANANA_2_MODEL || 'nano-banana-2';
@@ -71,6 +78,7 @@ function resolveProviderModelId(model, env) {
 
 function getMaxImagesForModel(model) {
   if (model === 'nano-banana-2') return 14;
+  if (model === 'seedream-4-5') return 14;
   return model === 'gpt-image-2' ? 16 : 8;
 }
 
@@ -97,13 +105,15 @@ export async function onRequest(context) {
     const imageUrl = (formData.get('imageUrl') || '').trim();
     const imageUrlsJson = formData.get('imageUrls');
     const prompt = (formData.get('prompt') || '').trim();
-    const aspectRatio = mapAspectRatio(formData.get('aspectRatio'));
+    const requestedAspectRatio = mapAspectRatio(formData.get('aspectRatio'));
     const outputFormat = formData.get('outputFormat') || 'Auto';
     const resolution = formData.get('resolution') || '1K';
     const isImageToImage = formData.get('isImageToImage') === 'true';
     const model = resolveModel(formData.get('model'));
-    const providerModelId = resolveProviderModelId(model, env);
+    const aspectRatio = requestedAspectRatio || (model === 'seedream-4-5' ? '1:1' : undefined);
+    const providerModelId = resolveProviderModelId(model, env, isImageToImage);
     const maxImages = getMaxImagesForModel(model);
+    const quality = String(formData.get('quality') || '').trim().toLowerCase();
 
     if (!prompt) {
       return jsonResponse({ error: 'Prompt is required' }, 400);
@@ -143,17 +153,24 @@ export async function onRequest(context) {
       );
     }
 
-    const input = {
-      prompt,
-      resolution: resolution === '2K' || resolution === '4K' ? resolution : '1K',
-    };
+    const input = model === 'seedream-4-5'
+      ? { prompt }
+      : {
+          prompt,
+          resolution: resolution === '2K' || resolution === '4K' ? resolution : '1K',
+        };
+    if (model === 'seedream-4-5') {
+      input.quality = quality === 'high' ? 'high' : 'basic';
+    }
     if (aspectRatio) input.aspect_ratio = aspectRatio;
     const mappedFormat = mapOutputFormat(outputFormat);
     if (mappedFormat) {
       input.output_format = mappedFormat;
     }
     if (isImageToImage && imageUrls.length > 0) {
-      if (model === 'gpt-image-2') {
+      if (model === 'seedream-4-5') {
+        input.image_urls = imageUrls.slice(0, maxImages);
+      } else if (model === 'gpt-image-2') {
         input.input_urls = imageUrls.slice(0, maxImages);
       } else {
         input.image_input = imageUrls.slice(0, maxImages);

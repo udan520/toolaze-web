@@ -1,0 +1,333 @@
+{
+  "metadata": {
+    "title": "Seedream 4.5 AI 圖像生成器 | 免費、無需註冊",
+    "description": "在 Toolaze 上免費使用 Seedream 4.5，無需註冊。創作 4K 產品視覺圖、海報、富含排版的設計以及參考導向的圖像編輯。",
+    "openGraphDescription": "使用 Toolaze 上的 Seedream 4.5 創作 4K 產品視覺圖、海報、富含排版的設計以及參考導向的圖像編輯。",
+    "twitterDescription": "在 Toolaze 上免費試用 Seedream 4.5，無需註冊。"
+  },
+  "breadcrumbs": {
+    "home": "首頁",
+    "model": "模型",
+    "current": "Seedream 4.5 AI 圖像生成器"
+  },
+  "schema": {
+    "pageName": "Seedream 4.5 AI 圖像生成器",
+    "appName": "Seedream 4.5 AI 圖像生成器",
+    "howToName": "如何在 Toolaze 上免費且無需註冊使用 Seedream 4.5"
+  },
+  "hero": {
+    "modelName": "Seedream 4.5",
+    "suffix": "AI 圖像生成器",
+    "description": "在 Toolaze 上免費使用 Seedream 4.5，無需註冊。透過字節跳動 Seed 的圖像生成與編輯模型，直接在瀏覽器中創作 4K 產品視覺圖、海報排版、富含排版的設計以及參考導向的圖像編輯。"
+  },
+  "whatIs": {
+    "title": "什麼是 Seedream 4.5？",
+    "paragraphs": [
+      "Seedream 4.5 是字節跳動 Seed 的 AI 圖像生成與編輯模型，用於從提示詞和參考圖像中創作與潤飾圖像。它適用於商業視覺圖、電子商務圖像、海報排版、重排版設計以及多圖像編輯工作流程。",
+      "Toolaze 支援 Seedream 4.5 的文字轉圖像、圖像編輯、快速草稿品質以及 4K 高畫質輸出，使其適用於快速概念設計與高解析度最終創意素材。",
+      "在編輯方面，Toolaze 支援 JPEG、PNG 和 WEBP 參考檔案，最多可支援 14 張參考圖像。這使得 Seedream 4.5 在多圖像產品展示板、風格匹配和參考保留編輯方面非常實用。"
+    ]
+  },
+  "features": {
+    "title": "Seedream 4.5 的主要特色",
+    "text": "使用 Seedream 4.5 進行參考一致性、4K 輸出、排版、商業排版設計以及提示詞控制編輯。",
+    "items": [
+      {
+        "slot": "feature-reference-consistency",
+        "title": "多圖像編輯的參考一致性",
+        "label": "參考導向編輯板",
+        "paragraphs": [
+          "當提示詞需要跨多個參考圖像保持視覺識別穩定時，Seedream 4.5 特別有用。將其用於產品變體、角色參考、包裝變更、材質替換以及在編輯後仍需維持主體感場景。",
+          "Toolaze 支援帶有參考輸入的 Seedream 4.5 圖像編輯，包括 JPEG、PNG 和 WEBP 檔案。這使該模型非常適合一致性比單次視覺探索更重要的參考導向編輯。"
+        ]
+      },
+      {
+        "slot": "feature-4k-output",
+        "title": "4K 高畫質輸出",
+        "label": "4K 行銷活動圖像板",
+        "paragraphs": [
+          "Toolaze 為 Seedream 4.5 提供了快速草稿和 4K 輸出模式。這為創作者提供了清晰的路徑：以較輕量模式快速製作草稿，當圖像需要用於海報、產品頁面、縮圖、廣告或展示視覺圖時，再選擇更高品質。",
+          "當排版細節、小型文字排版、產品紋理和大幅面構圖很重要時，請使用 4K。對於快速構思，在完善提示詞之前，輕量級輸出可能就已足夠。"
+        ]
+      },
+      {
+        "slot": "feature-typography",
+        "title": "排版與高密度文字排版",
+        "label": "排版豐富的海報設計",
+        "paragraphs": [
+          "字節跳動 Seed 強調了 Seedream 4.5 在排版、高密度文字渲染、海報排版和設計導向輸出方面的優勢。這使得它適用於菜單板、活動海報、產品標籤、社交卡片、邀請函概念和多語言排版草稿。",
+          "Seedream 4.5 對於文字豐富的設計草稿效果很好，但生成的文字在發布前仍應進行審查。"
+        ]
+      },
+      {
+        "slot": "feature-commercial-design",
+        "title": "商業海報與產品設計",
+        "label": "商業產品設計表",
+        "paragraphs": [
+          "官方 Seedream 4.5 範例包括電子商務產品展示、海報排版、美妝關鍵視覺圖、香水詳情頁面、SaaS 風格促銷圖像和婚禮邀請函設計。這些範例與使用者帶到 Toolaze 的任務非常吻合：銷售、說明、發布和測試創意方向。",
+          "對於行銷人員和店主來說，實際價值在於速度。生成多種排版方向，比較可讀性和產品焦點，然後在投入生產前完善最佳方案。"
+        ]
+      },
+      {
+        "slot": "feature-prompt-adherence",
+        "title": "提示詞遵循與排版控制",
+        "label": "結構化提示詞控制畫布",
+        "paragraphs": [
+          "字節跳動 Seed 表示，與 Seedream 4.0 的 MagicBench 架構相比，Seedream 4.5 改進了提示詞遵循、對齊和美學。實際上，當提示詞包含精確的排版說明、主體位置、背景規則和風格限制時，這一點很重要。",
+          "使用結構化的提示詞來命名素材類型、主體、確切文字、排版、燈光、背景、比例以及必須保持不變的內容。Seedream 4.5 在任務具體而非模糊時效果最強。"
+        ]
+      }
+    ]
+  },
+  "gallery": {
+    "title": "Seedream 4.5 範例庫",
+    "text": "探索常見的 Seedream 4.5 圖像風格，適用於產品頁面、海報、品牌視覺圖、邀請函和文字密集型排版。",
+    "examples": [
+      {
+        "slot": "gallery-ecommerce-product",
+        "title": "電子商務產品圖像",
+        "text": "創作乾淨的市場視覺圖，具備產品焦點、受控背景、清晰可讀的賣點，並為徽章或促銷文字留出空間。"
+      },
+      {
+        "slot": "gallery-poster-layout",
+        "title": "海報排版",
+        "text": "製作活動海報、行銷活動板、發布公告和以標題為主導的視覺圖，其中構圖與排版至關重要。"
+      },
+      {
+        "slot": "gallery-fragrance-detail",
+        "title": "香水詳情頁面",
+        "text": "探索優質產品場景，包括瓶身紋理、成分線索、排版層級和精緻的商業燈光。"
+      },
+      {
+        "slot": "gallery-saas-promo",
+        "title": "SaaS 促銷視覺圖",
+        "text": "生成以產品為主導的軟體廣告、功能說明圖、發布圖形和乾淨的介面風格宣傳圖。"
+      },
+      {
+        "slot": "gallery-wedding-invitation",
+        "title": "婚禮邀請函概念",
+        "text": "創作優雅的邀請函視覺圖、活動卡片、裝飾邊框、可讀的名稱和精緻的排版方向。"
+      },
+      {
+        "slot": "gallery-beauty-kv",
+        "title": "美妝關鍵視覺圖",
+        "text": "製作護膚、化妝品、沙龍或香水視覺圖，運用產品紋理、高級色彩與編輯級構圖。"
+      },
+      {
+        "slot": "gallery-character-reference",
+        "title": "角色參考編輯",
+        "text": "使用參考圖在變更服裝、姿勢、場景或氛圍的同時，保持角色、吉祥物或設定主體的一致性。"
+      },
+      {
+        "slot": "gallery-multilingual-layout",
+        "title": "多語言文字排版",
+        "text": "測試密集型英文、中文、日文或混合語言的海報、標籤、菜單和資訊卡片的視覺排版。"
+      }
+    ]
+  },
+  "audiences": {
+    "title": "誰應該使用 Seedream 4.5？",
+    "items": [
+      "行銷團隊：在生產設計前，製作行銷活動視覺圖、產品發布海報、社群廣告概念和快速創意變體。",
+      "電子商務賣家：生成產品詳情圖、清單視覺圖、組合圖形、季節性促銷和更乾淨的商業背景。",
+      "設計師：探索排版、排版層級、海報方向、品牌關鍵視覺圖和基於參考的視覺系統。",
+      "內容創作者：利用清晰的文字方向製作縮圖、社群圖形、教育卡片、活動圖像和創作者產品視覺圖。",
+      "產品團隊：為產品故事創作 SaaS 功能圖、引導視覺圖、公告板和早期概念圖形。",
+      "教育工作者：製作易讀的說明圖、課堂海報、流程圖和多語言資訊圖表。"
+    ]
+  },
+  "comparison": {
+    "title": "Seedream 4.5 與 Nano Banana、GPT Image 2 及 Midjourney 之比較",
+    "text": "根據任務選擇模型。Seedream 4.5 在參考編輯、排版、產品視覺圖和排版控制方面最強。",
+    "capabilityHeader": "能力",
+    "rows": [
+      {
+        "capability": "最佳用途",
+        "seedream": "參考一致性、排版、產品視覺圖、海報排版和提示詞控制編輯",
+        "nano": "快速圖像生成、參考編輯和靈活的 Gemini 風格工作流程",
+        "gpt": "文字豐富的商業視覺圖、圖像編輯、UI 模型和結構化排版",
+        "midjourney": "風格化藝術指導、電影級視覺效果和美學探索"
+      },
+      {
+        "capability": "文字渲染",
+        "seedream": "官方特別強調排版與高密度文字排版",
+        "nano": "在新一代 Gemini 風格工作流程中擅長文字密集的設計",
+        "gpt": "擅長簡短可讀的文字和結構化的 UI 風格標籤",
+        "midjourney": "有所改進，但發布用的文字仍需仔細審查"
+      },
+      {
+        "capability": "圖像編輯",
+        "seedream": "支援 Seedream 4.5 編輯及參考圖像輸入",
+        "nano": "良好的參考導向編輯和快速迭代",
+        "gpt": "擅長自然語言圖像編輯和排版變更",
+        "midjourney": "比精確編輯更適合變化與風格探索"
+      },
+      {
+        "capability": "高解析度",
+        "seedream": "支援快速草稿品質與 4K 高畫質輸出",
+        "nano": "根據模型與設定，支援高解析度工作流程",
+        "gpt": "在選定設定下支援 4K 輸出",
+        "midjourney": "具備放大/導出工作流程的高品質輸出"
+      },
+      {
+        "capability": "商業視覺圖",
+        "seedream": "非常適合產品展示板、海報、邀請函和關鍵視覺圖",
+        "nano": "擅長產品視覺圖和靈活的圖像生成",
+        "gpt": "擅長具備文字和排版要求的商業草稿",
+        "midjourney": "擅長精緻的氛圍與藝術指導"
+      },
+      {
+        "capability": "限制",
+        "seedream": "確切文字和編輯細節在發布前仍需審查",
+        "nano": "模型表現會因參考品質和提示詞清晰度而異",
+        "gpt": "最佳結果仍需提示詞迭代與細節審查",
+        "midjourney": "較不適合精確的可編輯生產排版"
+      }
+    ]
+  },
+  "howTo": {
+    "title": "如何在 Toolaze 上免費且無需註冊使用 Seedream 4.5",
+    "steps": [
+      "打開 Toolaze 上的 Seedream 4.5 頁面，從功能生成區開始。",
+      "選擇文字轉圖像以創作新圖像，或在需要圖像編輯時上傳參考圖。",
+      "選擇寬高比，並選擇 Basic 以獲取 2K 草稿，或 High 以獲取 4K 輸出。",
+      "生成後，審查文字與細節，然後在發布前完善提示詞或參考圖。"
+    ]
+  },
+  "prompts": {
+    "title": "最佳 Seedream 4.5 提示詞範例",
+    "text": "複製這些提示詞來測試商業海報、角色一致性、教育圖表、室內設計編輯和密集文字排版。",
+    "copyButton": "複製",
+    "copiedButton": "已複製",
+    "examples": [
+      {
+        "slot": "prompt-product-poster",
+        "title": "產品發布海報",
+        "prompt": "建立一張 4K 優質氣泡茶罐的產品發布海報。使用乾淨的垂直構圖，醒目的大標題文字 \"Bright Citrus Tea\"，較小的副標題 \"zero sugar, real fruit aroma\"，新鮮柑橘切片，凝結水珠，柔和的攝影棚燈光，以及具有清晰留白的精緻商業版面。"
+      },
+      {
+        "slot": "prompt-character-reference-edit",
+        "title": "角色參考編輯",
+        "prompt": "使用已上傳的角色參考圖。保留相同的臉型、髮型、眼睛顏色和服裝細節。將角色置於電影感強烈的雨夜街道場景中，呈現反射路面、柔和霓虹燈光、自然姿勢，並確保新圖片中角色的身份特徵與原圖一致。"
+      },
+      {
+        "slot": "prompt-education-infographic",
+        "title": "教育資訊圖表",
+        "prompt": "設計一張標題為 \"How Solar Energy Works\" 的乾淨教育資訊圖表。包含四個清晰分隔的步驟、可讀性高的標籤、簡單的平面圖解、箭頭、簡潔的說明文字、藍色與黃色點綴，以及適合教室使用、無雜亂感的平衡版面。"
+      },
+      {
+        "slot": "prompt-interior-redesign",
+        "title": "基於參考的室內重新設計",
+        "prompt": "使用已上傳的房間照片作為參考。保持攝影角度、窗戶位置和房間佈局不變。以溫暖的日式北歐風格 (Japandi) 重新設計房間，運用橡木家具、亞麻質感、柔和的間接照明、中性色調牆面，並進行適合室內設計提案的整潔風格化處理。"
+      },
+      {
+        "slot": "prompt-event-poster",
+        "title": "具備高密度文字的活動海報",
+        "prompt": "為 \"Future Design Week 2026\" 製作一張現代風格的活動海報。包含三個議程場次的可讀時間表文字、演講者姓名、日期、地點、票務資訊，以及大膽的抽象視覺系統。運用強烈的層次感、充足的留白以及精緻的編輯海報風格。"
+      }
+    ]
+  },
+  "youtube": {
+    "title": "YouTube 上的 Seedream 4.5 影片",
+    "text": "觀看精選 YouTube 影片，了解 Seedream 4.5 的能力、入門流程與一致性圖片創作方式。",
+    "watch": "在 YouTube 觀看",
+    "examples": [
+      {
+        "title": "Seedream 4.5 介紹",
+        "creator": "官方概覽",
+        "href": "https://www.youtube.com/watch?v=EFnvhqR1TQM",
+        "videoId": "EFnvhqR1TQM",
+        "text": "用一段簡短影片了解 Seedream 4.5 如何呈現電影級質感、精準控制與專業影像輸出。"
+      },
+      {
+        "title": "如何使用 Seedream 4.5",
+        "creator": "入門教學",
+        "href": "https://www.youtube.com/watch?v=FJPrVe08nAI",
+        "videoId": "FJPrVe08nAI",
+        "text": "在 Toolaze 建立或編輯圖片前，可先透過這支逐步教學理解基本工作流程。"
+      },
+      {
+        "title": "用 Seedream 4.5 建立一致的批量圖片",
+        "creator": "創作者流程",
+        "href": "https://www.youtube.com/watch?v=9RkdvOqL-OQ",
+        "videoId": "9RkdvOqL-OQ",
+        "text": "這支影片聚焦多圖片一致性、參考輸入與批量式創意生產流程。"
+      }
+    ]
+  },
+  "related": {
+    "title": "探索更多 AI 模型與工具",
+    "tryNow": "立即試用",
+    "links": [
+      {
+        "title": "GPT Image 2 AI 圖像生成器",
+        "href": "/model/gpt-image-2",
+        "text": "比較另一個用於文字豐富視覺圖、編輯、UI 模型和商業草稿的強力圖像模型。"
+      },
+      {
+        "title": "GPT Image 2.0 生成器",
+        "href": "/model/gpt-image-2-0",
+        "text": "嘗試另一條用於文字轉圖像和圖像轉圖像工作流程的 GPT 圖像模型途徑。"
+      },
+      {
+        "title": "Nano Banana Pro 生成器",
+        "href": "/model/nano-banana-pro",
+        "text": "探索用於高解析度設計素材和參考導向編輯的 Gemini 圖像工作流程。"
+      },
+      {
+        "title": "Nano Banana 2 生成器",
+        "href": "/model/nano-banana-2",
+        "text": "使用另一個用於常見創意格式、產品視覺圖和圖像編輯的快速圖像模型。"
+      },
+      {
+        "title": "Nano Banana 圖像轉圖像",
+        "href": "/model/nano-banana",
+        "text": "當上傳的參考圖是您的主要優先事項時，請使用專用的圖像轉圖像工作流程。"
+      },
+      {
+        "title": "AI 模型中心",
+        "href": "/model",
+        "text": "當您想要更廣泛的模型比較時，請瀏覽 Toolaze 圖像與影片模型頁面。"
+      }
+    ]
+  },
+  "faq": {
+    "title": "關於 Seedream 4.5 的常見問題",
+    "items": [
+      {
+        "q": "什麼是 Seedream 4.5？",
+        "a": "Seedream 4.5 是字節跳動 Seed 的 AI 圖像生成與編輯模型，用於從提示詞和參考圖像中創作與潤飾圖像。它適用於產品視覺圖、海報、富含排版的設計、多圖像編輯和商業創意草稿。"
+      },
+      {
+        "q": "Seedream 4.5 在 Toolaze 上是免費的嗎？",
+        "a": "是的。Toolaze 讓您免費在線上試用 Seedream 4.5。免費使用權限可能會因配額、模型可用性或選定的品質設定而有所不同。"
+      },
+      {
+        "q": "我可以在無需註冊的情況下使用 Seedream 4.5 嗎？",
+        "a": "是的。Toolaze AI 圖像模型頁面專為免費、無註冊存取而設計。如果存取政策有所變更，某些進階設定、更高的限制、下載或持續使用可能需要登入。"
+      },
+      {
+        "q": "Seedream 4.5 支援 4K 輸出嗎？",
+        "a": "是的。Toolaze 透過其高畫質模式支援 Seedream 4.5 的 4K 輸出。將 4K 用於需要更多視覺細節空間的產品海報、行銷視覺圖、細節圖像和文字密集型排版。"
+      },
+      {
+        "q": "Seedream 4.5 可以編輯圖像嗎？",
+        "a": "是的。Toolaze 支援 Seedream 4.5 圖像編輯以及包括 JPEG、PNG 和 WEBP 檔案的參考輸入。將其用於產品更新、參考導向編輯、背景變更、排版修訂和多圖像合成。"
+      },
+      {
+        "q": "Seedream 4.5 比 Nano Banana 或 GPT Image 2 更好嗎？",
+        "a": "這取決於任務。Seedream 4.5 在參考一致性、排版、產品視覺圖和海報排版方面極具吸引力。GPT Image 2 擅長結構化文字豐富的圖像和編輯，而 Nano Banana 模型則適用於快速圖像工作流程和基於參考的生成。"
+      },
+      {
+        "q": "什麼提示詞最適合 Seedream 4.5？",
+        "a": "使用描述素材類型、主體、確切可見文字、排版、比例、燈光、背景以及應從參考圖中保持不變內容的提示詞。對於編輯，請在描述要變更的內容之前，先指定要保留的內容。"
+      }
+    ]
+  },
+  "cta": {
+    "title": "在 Toolaze 免費使用 Seedream 4.5 進行創作",
+    "text": "無需註冊即可在線上試用 Seedream 4.5，並直接在 Toolaze 上創作產品視覺圖、富含排版的海報、參考編輯和 4K 行銷活動圖像。",
+    "button": "免費試用 Seedream 4.5",
+    "label": "Seedream 4.5 最終行動呼籲"
+  }
+}

@@ -1,0 +1,15 @@
+import { onRequest } from '../../../../functions/api/generate-alt.js'
+
+export const runtime = 'nodejs'
+
+function run(request) {
+  return onRequest({ request, env: process.env })
+}
+
+export async function OPTIONS(request) {
+  return run(request)
+}
+
+export async function POST(request) {
+  return run(request)
+}

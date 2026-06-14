@@ -148,7 +148,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   })
 
   // 4. Model 页面（AI 图像模型，仅英文）
-  const MODEL_PAGES = ['nano-banana', 'nano-banana-pro', 'nano-banana-2', 'gpt-image-2', 'gpt-image-2-0', 'seedance-2', 'kling-3']
+  const MODEL_PAGES = ['nano-banana', 'nano-banana-pro', 'nano-banana-2', 'gpt-image-2', 'gpt-image-2-0', 'seedream-4-5', 'seedance-2', 'kling-3']
   MODEL_PAGES.forEach((model) => {
     entries.push({
       url: `${baseUrl}/model/${model}`,

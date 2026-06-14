@@ -41,6 +41,7 @@ const MODEL_CONFIG = {
     maxImages: 8,
     supportsOutputFormat: true,
     supportsHighResolution: false,
+    maxFileSizeMb: 30,
   },
   'nano-banana-2': {
     aspectRatios: [
@@ -63,6 +64,7 @@ const MODEL_CONFIG = {
     maxImages: 14,
     supportsOutputFormat: true,
     supportsHighResolution: true,
+    maxFileSizeMb: 30,
   },
   'gpt-image-2': {
     aspectRatios: [
@@ -76,8 +78,27 @@ const MODEL_CONFIG = {
     maxImages: 16,
     supportsOutputFormat: false,
     supportsHighResolution: true,
+    maxFileSizeMb: 30,
+  },
+  'seedream-4-5': {
+    aspectRatios: [
+      { value: '1:1', label: '1:1' },
+      { value: '4:3', label: '4:3' },
+      { value: '3:4', label: '3:4' },
+      { value: '16:9', label: '16:9' },
+      { value: '9:16', label: '9:16' },
+      { value: '2:3', label: '2:3' },
+      { value: '3:2', label: '3:2' },
+      { value: '21:9', label: '21:9' },
+    ],
+    maxImages: 14,
+    supportsOutputFormat: false,
+    supportsHighResolution: true,
+    maxFileSizeMb: 10,
   },
 } as const
+
+type ImageModelId = keyof typeof MODEL_CONFIG
 
 interface ImageItem {
   file: File
@@ -85,7 +106,7 @@ interface ImageItem {
 }
 
 interface NanoBananaToolProps {
-  modelId?: 'nano-banana-pro' | 'nano-banana-2' | 'gpt-image-2'
+  modelId?: ImageModelId
   modelName?: string
   dailyLimitStorageKey?: string
   presetMode?: 'default' | 'ai-couple-photo-maker'
@@ -93,7 +114,7 @@ interface NanoBananaToolProps {
 }
 
 interface ModelOption {
-  id: 'nano-banana-pro' | 'nano-banana-2' | 'gpt-image-2'
+  id: ImageModelId
   name: string
 }
 
@@ -304,13 +325,16 @@ export default function NanoBananaTool({
     { id: 'nano-banana-pro', name: 'Nano Banana Pro' },
     { id: 'nano-banana-2', name: 'Nano Banana 2' },
     { id: 'gpt-image-2', name: 'GPT Image 2' },
+    { id: 'seedream-4-5', name: 'Seedream 4.5' },
   ]
   const [activeTab, setActiveTab] = useState<'image-to-image' | 'text-to-image'>(
-    modelId === 'gpt-image-2' ? 'text-to-image' : 'image-to-image'
+    modelId === 'gpt-image-2' || modelId === 'seedream-4-5' ? 'text-to-image' : 'image-to-image'
   )
   const [imageFiles, setImageFiles] = useState<ImageItem[]>([])
   const [prompt, setPrompt] = useState('')
-  const [aspectRatio, setAspectRatio] = useState<string>(isNanoBanana2CoupleMode ? 'auto' : 'auto')
+  const [aspectRatio, setAspectRatio] = useState<string>(
+    modelId === 'seedream-4-5' ? '1:1' : isNanoBanana2CoupleMode ? 'auto' : 'auto'
+  )
   const [resolution, setResolution] = useState<string>(isNanoBanana2CoupleMode ? '1K' : '1K')
   const [outputFormat, setOutputFormat] = useState(isNanoBanana2CoupleMode ? 'PNG' : 'Auto')
   const [selectedTemplateId, setSelectedTemplateId] = useState<string>(() => {
@@ -389,7 +413,8 @@ export default function NanoBananaTool({
   }
 
   const MAX_IMAGES = isNanoBanana2CoupleMode ? 2 : modelConfig.maxImages
-  const MAX_FILE_SIZE = 30 * 1024 * 1024 // 30MB
+  const MAX_FILE_SIZE_MB = modelConfig.maxFileSizeMb ?? 30
+  const MAX_FILE_SIZE = MAX_FILE_SIZE_MB * 1024 * 1024
 
   const visibleTemplates = useMemo(
     () => NANO_BANANA_2_COUPLE_TEMPLATES.filter((item) => item.category === 'style'),
@@ -513,6 +538,9 @@ export default function NanoBananaTool({
       formData.append('prompt', effectivePrompt)
       formData.append('aspectRatio', aspectRatio)
       formData.append('resolution', resolution)
+      if (modelId === 'seedream-4-5') {
+        formData.append('quality', resolution === '4K' ? 'High' : 'Basic')
+      }
       if (modelConfig.supportsOutputFormat) {
         formData.append('outputFormat', outputFormat)
       }
@@ -834,6 +862,9 @@ export default function NanoBananaTool({
     'gpt-image-2': [
       'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/0b0c01224b03466b913cc7b41683c785.png',
     ],
+    'seedream-4-5': [
+      'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/8d7b3c552db04e6ca02dff930d32bbdc.png',
+    ],
   }
 
   const sampleImage = useMemo(() => {
@@ -1018,7 +1049,9 @@ export default function NanoBananaTool({
                     </div>
                   ))}
                 </div>
-                <p className="text-xs text-slate-400 mt-1.5">{formatNanoText(nanoText.fileLimit, { count: MAX_IMAGES })}</p>
+                <p className="text-xs text-slate-400 mt-1.5">
+                  {formatNanoText(nanoText.fileLimit, { count: MAX_IMAGES }).replace('30MB', `${MAX_FILE_SIZE_MB}MB`)}
+                </p>
               </div>
             )}
 
