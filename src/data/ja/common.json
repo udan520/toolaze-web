@@ -35,7 +35,8 @@
       "fire-copy-and-paste": "火の絵文字 コピー＆ペースト",
       "birthday-copy-and-paste": "誕生日絵文字のコピー＆ペースト",
       "cat-copy-and-paste": "猫の絵文字コピー＆ペースト"
-    }
+    },
+    "wan27Image": "Wan 2.7 Image"
   },
   "home": {
     "metadata": {
@@ -89,6 +90,10 @@
       },
       "ai-couple-photo-maker": {
         "summary": "AIカップル写真メーカー：1枚または2枚のポートレートを、厳選されたテンプレートでロマンチックまたは映画のようなデュオシーンに変換—スタジオ撮影なしで共有可能な画像を。"
+      },
+      "wan-2-7-image": {
+        "cardTitle": "Wan 2.7 Image",
+        "summary": "AI image generator for complex prompts, multi-reference inputs, prompt-based edits, readable text layouts, and 2K to 4K creative workflows on Toolaze."
       }
     },
     "aiToolsHubTitle": "画像、動画、日常のメディアワークフローのための無料AIツール",
@@ -230,7 +235,8 @@
     "footerNavigation": "フッターナビゲーション",
     "noToolsAvailable": "利用可能なツールはありません",
     "copyright": "© {year} Toolaze Lab. 全著作権所有。",
-    "tagline": "無料オンラインツール • 登録不要 • 100%プライベート"
+    "tagline": "無料オンラインツール • 登録不要 • 100%プライベート",
+    "wan27Image": "Wan 2.7 Image"
   },
   "breadcrumb": {
     "home": "ホーム",

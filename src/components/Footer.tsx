@@ -43,6 +43,7 @@ const defaultTranslations = {
   seedance2: 'Seedance 2.0',
   kling3: 'Kling 3.0',
   gptImage2: 'GPT Image 2',
+  wan27Image: 'Wan 2.7 Image',
   nanoBananaPro: 'Nano Banana Pro',
   nanoBanana2: 'Nano Banana 2',
   seedream45: 'Seedream 4.5',
@@ -223,6 +224,14 @@ export default function Footer({ initialTranslations }: FooterProps = {}) {
                   className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
                 >
                   {translations.gptImage2 || 'GPT Image 2'}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={getLocalizedHref('/model/wan-2-7-image')}
+                  className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
+                >
+                  {translations.wan27Image || 'Wan 2.7 Image'}
                 </Link>
               </li>
               <li>

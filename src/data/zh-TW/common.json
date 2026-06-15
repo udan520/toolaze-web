@@ -35,7 +35,8 @@
       "fire-copy-and-paste": "火表情符號複製與貼上",
       "birthday-copy-and-paste": "生日表情符號複製與貼上",
       "cat-copy-and-paste": "貓咪表情符號複製與貼上"
-    }
+    },
+    "wan27Image": "Wan 2.7 Image"
   },
   "home": {
     "metadata": {
@@ -89,6 +90,10 @@
       },
       "ai-couple-photo-maker": {
         "summary": "AI情侶照片製作器：將一或兩張肖像轉化為浪漫或電影般的雙人場景，搭配精選模板——無需攝影棚拍攝即可獲得可分享的圖片。"
+      },
+      "wan-2-7-image": {
+        "cardTitle": "Wan 2.7 Image",
+        "summary": "AI image generator for complex prompts, multi-reference inputs, prompt-based edits, readable text layouts, and 2K to 4K creative workflows on Toolaze."
       }
     },
     "aiToolsHubTitle": "適用於圖片、影片和日常媒體工作流程的免費AI工具",
@@ -230,7 +235,8 @@
     "footerNavigation": "頁尾導覽",
     "noToolsAvailable": "沒有可用工具",
     "copyright": "© {year} Toolaze Lab. 版權所有。",
-    "tagline": "免費線上工具 • 無需註冊 • 100% 隱私"
+    "tagline": "免費線上工具 • 無需註冊 • 100% 隱私",
+    "wan27Image": "Wan 2.7 Image"
   },
   "breadcrumb": {
     "home": "首頁",

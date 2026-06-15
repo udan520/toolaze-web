@@ -30,6 +30,12 @@ export const HOME_MODEL_CARD_IMAGES = {
     height: 600,
     alt: 'GPT Image 2 sample output preview',
   },
+  'wan-2-7-image': {
+    src: '/model-assets/wan-2-7-image/gallery-event-poster.webp',
+    width: 960,
+    height: 720,
+    alt: 'Wan 2.7 Image structured poster and text layout preview',
+  },
   'seedream-4-5': {
     src: '/model-assets/seedream-4-5/gallery-ecommerce-product.webp',
     width: 1280,

@@ -34,6 +34,7 @@ const defaultNavTranslations = {
   nanoBananaPro: 'Nano Banana Pro',
   nanoBanana2: 'Nano Banana 2',
   gptImage2: 'GPT Image 2',
+  wan27Image: 'Wan 2.7 Image',
   seedream45: 'Seedream 4.5',
   seedance2: 'Seedance 2.0',
   kling3: 'Kling 3.0',
@@ -533,6 +534,22 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                   <span>{navTranslations.gptImage2 || defaultNavTranslations.gptImage2}</span>
                 </Link>
                 <Link
+                  href={getLocalizedHref('/model/wan-2-7-image')}
+                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
+                    <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#aiImageGradientWan27)" opacity="0.2"/>
+                    <path d="M7 8h10M7 12h7M7 16h10M17 6l1.5 3L21 10.5l-2.5 1.5L17 15l-1.5-3L13 10.5 15.5 9 17 6Z" stroke="url(#aiImageGradientWan27)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                    <defs>
+                      <linearGradient id="aiImageGradientWan27" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+                        <stop stopColor="#9333EA"/>
+                        <stop offset="1" stopColor="#4F46E5"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                  <span>{navTranslations.wan27Image || defaultNavTranslations.wan27Image}</span>
+                </Link>
+                <Link
                   href={getLocalizedHref('/model/nano-banana-pro')}
                   className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
                 >
@@ -906,11 +923,31 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                           <stop offset="1" stopColor="#4F46E5"/>
                         </linearGradient>
                       </defs>
-                    </svg>
-                    <span>{navTranslations.gptImage2 || defaultNavTranslations.gptImage2}</span>
-                  </Link>
-                  <Link
-                    href={getLocalizedHref('/model/nano-banana-pro')}
+                  </svg>
+                  <span>{navTranslations.gptImage2 || defaultNavTranslations.gptImage2}</span>
+                </Link>
+                <Link
+                  href={getLocalizedHref('/model/wan-2-7-image')}
+                  onClick={() => {
+                    setMobileMenuOpen(false)
+                    setExpandedSubmenus(new Set())
+                  }}
+                  className="flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
+                    <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#aiImageGradientMobileWan27)" opacity="0.2"/>
+                    <path d="M7 8h10M7 12h7M7 16h10M17 6l1.5 3L21 10.5l-2.5 1.5L17 15l-1.5-3L13 10.5 15.5 9 17 6Z" stroke="url(#aiImageGradientMobileWan27)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                    <defs>
+                      <linearGradient id="aiImageGradientMobileWan27" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+                        <stop stopColor="#9333EA"/>
+                        <stop offset="1" stopColor="#4F46E5"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                  <span>{navTranslations.wan27Image || defaultNavTranslations.wan27Image}</span>
+                </Link>
+                <Link
+                  href={getLocalizedHref('/model/nano-banana-pro')}
                     onClick={() => {
                       setMobileMenuOpen(false)
                       setExpandedSubmenus(new Set())

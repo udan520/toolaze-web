@@ -8,6 +8,7 @@ import { HOME_ADVANCED_AI_TOOL_IDS, HOME_UTILITY_TOOL_IDS } from '@/lib/homepage
 import { getHomeAdvancedAiCardImage } from '@/lib/home-advanced-ai-card-images'
 import { getHomeModelCardImage } from '@/lib/home-model-card-images'
 import { getSeedream45LandingCopy } from '@/lib/seedream-4-5-landing-copy'
+import { getWan27ImageLandingCopy } from '@/lib/wan-2-7-image-landing-copy'
 import {
   applyHomepageToolCardSummary,
   type HomepageToolCardSummaries,
@@ -56,6 +57,7 @@ function TextWithLinks({
 // AI Image model paths (under /model/)
 const AI_IMAGE_PATHS: Record<string, string> = {
   'gpt-image-2': '/model/gpt-image-2-0',
+  'wan-2-7-image': '/model/wan-2-7-image',
   'nano-banana-pro': '/model/nano-banana-pro',
   'nano-banana-2': '/model/nano-banana-2',
   'seedream-4-5': '/model/seedream-4-5',
@@ -177,6 +179,23 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
   for (const tool of IMAGE_MODEL_L2S) {
     const card = await loadToolData(tool, locale, getModelTitle, getModelDesc, getFeaturedDesc, getModelMeta)
     if (card) aiImageTools.push(applyHomepageToolCardSummary(card, cardSummaries))
+  }
+  const wan27Copy = getWan27ImageLandingCopy(locale)
+  const wan27Card = applyHomepageToolCardSummary(
+    {
+      tool: 'wan-2-7-image',
+      title: wan27Copy.schema.pageName,
+      description: wan27Copy.metadata.description,
+      href: getHref('wan-2-7-image'),
+      featuredDesc: wan27Copy.hero.description,
+      modelName: wan27Copy.hero.modelName,
+      modelType: 'AI Image Generator',
+    },
+    cardSummaries
+  )
+  if (!aiImageTools.some((item) => item.tool === wan27Card.tool)) {
+    const gptIndex = aiImageTools.findIndex((item) => item.tool === 'gpt-image-2')
+    aiImageTools.splice(gptIndex >= 0 ? gptIndex + 1 : 0, 0, wan27Card)
   }
   const seedream45Copy = getSeedream45LandingCopy(locale)
   const seedream45Card = applyHomepageToolCardSummary(

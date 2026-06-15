@@ -708,7 +708,7 @@ async function listTools() {
 
 /** 与 src/app/page.tsx、src/lib/seo-loader.ts 一致（英文首页模型区） */
 const HOME_PREVIEW_VIDEO_MODEL_L2S = ['seedance-2', 'kling-3']
-const HOME_PREVIEW_IMAGE_MODEL_L2S = ['nano-banana-pro', 'nano-banana-2', 'gpt-image-2']
+const HOME_PREVIEW_IMAGE_MODEL_L2S = ['gpt-image-2', 'wan-2-7-image', 'nano-banana-pro', 'nano-banana-2']
 /** 与 src/lib/homepage-grid-tools.ts 保持一致 */
 const HOME_PREVIEW_ADVANCED_AI_TOOLS = ['ai-couple-photo-maker', 'watermark-remover', 'photo-restoration']
 const HOME_PREVIEW_UTILITY_TOOLS = ['image-compressor', 'image-converter', 'font-generator', 'emoji-copy-and-paste']
@@ -742,6 +742,7 @@ const HOME_MODEL_CARD_IMAGES = {
   'nano-banana-pro': 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/nano-banana-pro.jpg',
   'nano-banana-2': 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/nano-banana-2.jpg',
   'gpt-image-2': 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/gpt-image-2.jpg',
+  'wan-2-7-image': '/model-assets/wan-2-7-image/gallery-event-poster.webp',
   'seedance-2': 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/seedance-2.jpg',
   'kling-3': 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/kling-3.jpg',
 }
@@ -750,6 +751,7 @@ const HOME_PREVIEW_AI_IMAGE_PATHS = {
   'nano-banana-pro': '/model/nano-banana-pro',
   'nano-banana-2': '/model/nano-banana-2',
   'gpt-image-2': '/model/gpt-image-2-0',
+  'wan-2-7-image': '/model/wan-2-7-image',
 }
 const HOME_PREVIEW_AI_VIDEO_PATHS = {
   'seedance-2': '/model/seedance-2',

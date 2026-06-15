@@ -247,14 +247,16 @@ const checks = [
       tool.includes("{ value: '21:9', label: '21:9' }") &&
       tool.includes('maxImages: 14') &&
       tool.includes('supportsHighResolution: true') &&
-      tool.includes("modelId === 'seedream-4-5' ? '1:1'") &&
+      (tool.includes("modelId === 'seedream-4-5' ? '1:1'") ||
+        tool.includes("modelId === 'seedream-4-5' || modelId === 'wan-2-7-image' ? '1:1'")) &&
       tool.includes("modelId === 'seedream-4-5'") &&
       tool.includes('resolution === \'4K\' ? \'High\''),
   },
   {
     name: 'Seedream 4.5 never submits an empty aspect ratio to the provider',
     pass:
-      api.includes("model === 'seedream-4-5' ? '1:1'") &&
+      (api.includes("model === 'seedream-4-5' ? '1:1'") ||
+        api.includes("model === 'seedream-4-5' || model === 'wan-2-7-image' ? '1:1'")) &&
       api.includes('const requestedAspectRatio = mapAspectRatio'),
   },
   {

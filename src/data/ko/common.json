@@ -35,7 +35,8 @@
       "fire-copy-and-paste": "불 이모지 복사 및 붙여넣기",
       "birthday-copy-and-paste": "생일 이모지 복사 및 붙여넣기",
       "cat-copy-and-paste": "고양이 이모지 복사 및 붙여넣기"
-    }
+    },
+    "wan27Image": "Wan 2.7 Image"
   },
   "home": {
     "metadata": {
@@ -89,6 +90,10 @@
       },
       "ai-couple-photo-maker": {
         "summary": "AI 커플 사진 메이커: 하나 또는 두 개의 인물 사진을 큐레이션된 템플릿으로 로맨틱하거나 영화 같은 듀오 장면으로 변환—스튜디오 촬영 없이 공유할 준비가 된 이미지."
+      },
+      "wan-2-7-image": {
+        "cardTitle": "Wan 2.7 Image",
+        "summary": "AI image generator for complex prompts, multi-reference inputs, prompt-based edits, readable text layouts, and 2K to 4K creative workflows on Toolaze."
       }
     },
     "aiToolsHubTitle": "이미지, 비디오 및 일상 미디어 워크플로우를 위한 무료 AI 도구",
@@ -230,7 +235,8 @@
     "footerNavigation": "푸터 내비게이션",
     "noToolsAvailable": "사용 가능한 도구가 없습니다",
     "copyright": "© {year} Toolaze Lab. 모든 권리 보유.",
-    "tagline": "무료 온라인 도구 • 등록 불필요 • 100% 비공개"
+    "tagline": "무료 온라인 도구 • 등록 불필요 • 100% 비공개",
+    "wan27Image": "Wan 2.7 Image"
   },
   "breadcrumb": {
     "home": "홈",

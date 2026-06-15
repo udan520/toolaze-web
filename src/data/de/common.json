@@ -35,7 +35,8 @@
       "fire-copy-and-paste": "Feuer-Emoji Kopieren und Einfügen",
       "birthday-copy-and-paste": "Geburtstags-Emoji Kopieren und Einfügen",
       "cat-copy-and-paste": "Katzen-Emoji Kopieren und Einfügen"
-    }
+    },
+    "wan27Image": "Wan 2.7 Image"
   },
   "home": {
     "metadata": {
@@ -89,6 +90,10 @@
       },
       "ai-couple-photo-maker": {
         "summary": "KI Paar-Fotogenerator: Verwandeln Sie ein oder zwei Porträts in romantische oder filmische Duo-Szenen mit kuratierten Vorlagen – sofort teilbare Bilder ohne Studio-Shooting."
+      },
+      "wan-2-7-image": {
+        "cardTitle": "Wan 2.7 Image",
+        "summary": "AI image generator for complex prompts, multi-reference inputs, prompt-based edits, readable text layouts, and 2K to 4K creative workflows on Toolaze."
       }
     },
     "aiToolsHubTitle": "Kostenlose KI-Tools für Bilder, Videos & alltägliche Medien-Workflows",
@@ -230,7 +235,8 @@
     "footerNavigation": "Footer-Navigation",
     "noToolsAvailable": "Keine Tools verfügbar",
     "copyright": "© {year} Toolaze Lab. Alle Rechte vorbehalten.",
-    "tagline": "Kostenlose Online-Tools • Keine Registrierung erforderlich • 100% Privat"
+    "tagline": "Kostenlose Online-Tools • Keine Registrierung erforderlich • 100% Privat",
+    "wan27Image": "Wan 2.7 Image"
   },
   "breadcrumb": {
     "home": "Startseite",

@@ -1,0 +1,499 @@
+#!/usr/bin/env node
+
+const fs = require('fs')
+const path = require('path')
+
+const root = path.resolve(__dirname, '..')
+const outDir = path.join(root, 'src/data/seedream-4-5-landing-copy')
+const locales = ['de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
+
+function loadEnvFile(file) {
+  if (!fs.existsSync(file)) return
+  for (const rawLine of fs.readFileSync(file, 'utf8').split(/\r?\n/)) {
+    const line = rawLine.trim()
+    if (!line || line.startsWith('#')) continue
+    const normalized = line.startsWith('export ') ? line.slice(7).trim() : line
+    const eq = normalized.indexOf('=')
+    if (eq === -1) continue
+    const key = normalized.slice(0, eq).trim()
+    let value = normalized.slice(eq + 1).trim()
+    if ((value.startsWith('"') && value.endsWith('"')) || (value.startsWith("'") && value.endsWith("'"))) {
+      value = value.slice(1, -1)
+    }
+    if (key && process.env[key] === undefined) process.env[key] = value
+  }
+}
+
+loadEnvFile(path.join(root, '.env.local'))
+
+const englishCopy = {
+  metadata: {
+    title: 'Seedream 4.5 AI Image Generator | Free, No Signup',
+    description:
+      'Use Seedream 4.5 online on Toolaze for free with no signup. Create 4K product visuals, posters, typography-rich designs, and reference-guided image edits.',
+    openGraphDescription:
+      'Create 4K product visuals, posters, typography-rich designs, and reference-guided image edits with Seedream 4.5 on Toolaze.',
+    twitterDescription: 'Try Seedream 4.5 online on Toolaze for free with no signup.',
+  },
+  breadcrumbs: {
+    home: 'Home',
+    model: 'Model',
+    current: 'Seedream 4.5 AI Image Generator',
+  },
+  schema: {
+    pageName: 'Seedream 4.5 AI Image Generator',
+    appName: 'Seedream 4.5 AI Image Generator',
+    howToName: 'How to Use Seedream 4.5 for Free Without Signup on Toolaze',
+  },
+  hero: {
+    modelName: 'Seedream 4.5',
+    suffix: 'AI Image Generator',
+    description:
+      "Use Seedream 4.5 online on Toolaze for free with no signup. Create 4K product visuals, poster layouts, typography-rich designs, and reference-guided image edits directly in your browser with ByteDance Seed's image generation and editing model.",
+  },
+  whatIs: {
+    title: 'What Is Seedream 4.5?',
+    paragraphs: [
+      "Seedream 4.5 is ByteDance Seed's AI image generation and editing model for creating and refining images from prompts and reference images. It is useful for commercial visuals, e-commerce images, poster layouts, typography-heavy designs, and multi-image editing workflows.",
+      'Toolaze supports Seedream 4.5 text-to-image, image editing, fast draft quality, and 4K high quality output, making it useful for quick concept work and higher-resolution final creative assets.',
+      'For editing, Toolaze supports JPEG, PNG, and WEBP reference files and up to 14 reference images. That makes Seedream 4.5 useful for multi-image product boards, style matching, and reference-preserving edits.',
+    ],
+  },
+  features: {
+    title: 'Key Features of Seedream 4.5',
+    text: 'Use Seedream 4.5 for reference consistency, 4K output, typography, commercial layouts, and prompt-controlled edits.',
+    items: [
+      {
+        slot: 'feature-reference-consistency',
+        title: 'Reference Consistency for Multi-Image Editing',
+        label: 'Reference-guided edit board',
+        paragraphs: [
+          'Seedream 4.5 is especially useful when a prompt needs to keep visual identity stable across multiple references. Use it for product variants, character references, packaging changes, material swaps, and scenes where the uploaded image should still feel like the same subject after editing.',
+          'Toolaze supports Seedream 4.5 image editing with reference inputs, including JPEG, PNG, and WEBP files. That makes the model a strong fit for reference-guided edits where consistency matters more than one-off visual exploration.',
+        ],
+      },
+      {
+        slot: 'feature-4k-output',
+        title: '4K High Quality Output',
+        label: '4K campaign image board',
+        paragraphs: [
+          'Toolaze exposes Seedream 4.5 quality modes for fast drafts and 4K output. That gives creators a clear path: draft quickly in a lighter mode, then choose higher quality when the image needs to work for posters, product pages, thumbnails, ads, or presentation visuals.',
+          'Use 4K when layout detail, small typography, product texture, and large-format composition matter. For quick ideation, a lighter output can be enough before you refine the prompt.',
+        ],
+      },
+      {
+        slot: 'feature-typography',
+        title: 'Typography and Dense Text Layouts',
+        label: 'Typography-rich poster layout',
+        paragraphs: [
+          'ByteDance Seed highlights stronger typography, dense text rendering, poster layout, and design-oriented output for Seedream 4.5. This makes it useful for menu boards, event posters, product labels, social cards, invitation concepts, and multilingual layout drafts.',
+          'Seedream 4.5 is strong for text-rich design drafts, but generated text should still be reviewed before publishing.',
+        ],
+      },
+      {
+        slot: 'feature-commercial-design',
+        title: 'Commercial Poster and Product Design',
+        label: 'Commercial product design sheet',
+        paragraphs: [
+          'Official Seedream 4.5 examples include e-commerce product displays, poster layouts, beauty key visuals, fragrance detail pages, SaaS-style promotional images, and wedding invitation designs. Those examples map well to the jobs users bring to Toolaze: selling, explaining, launching, and testing creative directions.',
+          'For marketers and shop owners, the practical value is speed. Generate several layout directions, compare readability and product focus, then refine the best one before moving it into production.',
+        ],
+      },
+      {
+        slot: 'feature-prompt-adherence',
+        title: 'Prompt Adherence and Layout Control',
+        label: 'Structured prompt control canvas',
+        paragraphs: [
+          'ByteDance Seed says Seedream 4.5 improves prompt adherence, alignment, and aesthetics compared with Seedream 4.0 in its MagicBench framing. In practical terms, this matters when the prompt contains exact layout instructions, subject placement, background rules, and style constraints.',
+          'Use structured prompts that name the asset type, subject, exact text, layout, lighting, background, ratio, and what must stay unchanged. Seedream 4.5 is strongest when the task is specific rather than vague.',
+        ],
+      },
+    ],
+  },
+  gallery: {
+    title: 'Example Gallery for Seedream 4.5',
+    text: 'Explore common Seedream 4.5 image styles for product pages, posters, brand visuals, invitations, and text-heavy layouts.',
+    examples: [
+      {
+        slot: 'gallery-ecommerce-product',
+        title: 'E-commerce Product Image',
+        text: 'Create clean marketplace visuals with product focus, controlled background, readable selling points, and room for badges or promotional text.',
+      },
+      {
+        slot: 'gallery-poster-layout',
+        title: 'Poster Layout',
+        text: 'Build event posters, campaign boards, launch announcements, and title-led visuals where composition and typography matter.',
+      },
+      {
+        slot: 'gallery-fragrance-detail',
+        title: 'Fragrance Detail Page',
+        text: 'Explore premium product scenes with bottle texture, ingredient cues, layout hierarchy, and polished commercial lighting.',
+      },
+      {
+        slot: 'gallery-saas-promo',
+        title: 'SaaS Promo Visual',
+        text: 'Generate product-led software ads, feature explainers, launch graphics, and clean interface-inspired campaign images.',
+      },
+      {
+        slot: 'gallery-wedding-invitation',
+        title: 'Wedding Invitation Concept',
+        text: 'Create elegant invitation visuals, event cards, decorative borders, readable names, and refined layout directions.',
+      },
+      {
+        slot: 'gallery-beauty-kv',
+        title: 'Beauty Key Visual',
+        text: 'Make skincare, cosmetics, salon, or fragrance visuals with product texture, premium color, and editorial composition.',
+      },
+      {
+        slot: 'gallery-character-reference',
+        title: 'Character Reference Edit',
+        text: 'Use references to keep a character, mascot, or styled subject consistent while changing clothing, pose, scene, or mood.',
+      },
+      {
+        slot: 'gallery-multilingual-layout',
+        title: 'Multilingual Text Layout',
+        text: 'Test dense English, Chinese, Japanese, or mixed-language visual layouts for posters, labels, menus, and information cards.',
+      },
+    ],
+  },
+  audiences: {
+    title: 'Who Should Use Seedream 4.5?',
+    items: [
+      'Marketing teams: Create campaign visuals, product launch posters, paid social concepts, and fast creative variants before production design.',
+      'E-commerce sellers: Generate product detail images, listing visuals, bundle graphics, seasonal promotions, and cleaner commercial backgrounds.',
+      'Designers: Explore typography, layout hierarchy, poster directions, brand key visuals, and reference-based visual systems.',
+      'Content creators: Make thumbnails, social graphics, educational cards, event images, and creator product visuals with clearer text direction.',
+      'Product teams: Create SaaS feature images, onboarding visuals, announcement boards, and early concept graphics for product storytelling.',
+      'Educators: Build readable explainers, classroom posters, process diagrams, and multilingual information graphics.',
+    ],
+  },
+  comparison: {
+    title: 'Seedream 4.5 vs Nano Banana vs GPT Image 2 vs Midjourney',
+    text: 'Pick the model by task. Seedream 4.5 is strongest when reference editing, typography, product visuals, and layout control matter.',
+    capabilityHeader: 'Capability',
+    rows: [
+      {
+        capability: 'Best for',
+        seedream: 'Reference consistency, typography, product visuals, poster layouts, and prompt-controlled edits',
+        nano: 'Fast image generation, reference edits, and flexible Gemini-style workflows',
+        gpt: 'Text-rich commercial visuals, image editing, UI mockups, and structured layouts',
+        midjourney: 'Stylized art direction, cinematic visuals, and aesthetic exploration',
+      },
+      {
+        capability: 'Text rendering',
+        seedream: 'Strong official focus on typography and dense text layouts',
+        nano: 'Strong for text-heavy design in newer Gemini-style workflows',
+        gpt: 'Strong for short readable text and structured UI-like labels',
+        midjourney: 'Improved, but publishing text still needs careful review',
+      },
+      {
+        capability: 'Image editing',
+        seedream: 'Supports Seedream 4.5 Edit with reference image inputs',
+        nano: 'Good reference-guided editing and fast iteration',
+        gpt: 'Strong for natural-language image edits and layout changes',
+        midjourney: 'Better for variation and style exploration than precise edits',
+      },
+      {
+        capability: 'High resolution',
+        seedream: 'Supports fast draft quality and 4K high quality output',
+        nano: 'Supports high-resolution workflows depending on model and settings',
+        gpt: 'Supports 4K output when selected settings allow it',
+        midjourney: 'High-quality outputs with upscale/export workflows',
+      },
+      {
+        capability: 'Commercial visuals',
+        seedream: 'Strong fit for product boards, posters, invitations, and key visuals',
+        nano: 'Strong for product visuals and flexible image generation',
+        gpt: 'Strong for commercial drafts with text and layout requirements',
+        midjourney: 'Strong for polished mood and art direction',
+      },
+      {
+        capability: 'Limitations',
+        seedream: 'Exact text and edit details still need review before publishing',
+        nano: 'Model behavior varies by reference quality and prompt clarity',
+        gpt: 'Best results still need prompt iteration and detail review',
+        midjourney: 'Less ideal for precise editable production layouts',
+      },
+    ],
+  },
+  howTo: {
+    title: 'How to Use Seedream 4.5 for Free Without Signup on Toolaze',
+    steps: [
+      'Open the Seedream 4.5 page on Toolaze and start from the functional generator area.',
+      'Choose text-to-image for a new image, or upload references when you need image editing.',
+      'Select an aspect ratio and use Basic for 2K drafts or High for 4K output.',
+      'Generate, review text and details, then refine the prompt or references before publishing.',
+    ],
+  },
+  prompts: {
+    title: 'Best Seedream 4.5 Prompt Examples',
+    text: 'Copy these prompts to test commercial posters, character consistency, educational diagrams, interior edits, and dense text layouts.',
+    copyButton: 'Copy',
+    copiedButton: 'Copied',
+    examples: [
+      {
+        slot: 'prompt-product-poster',
+        title: 'Product Launch Poster',
+        prompt:
+          'Create a 4K product launch poster for a premium sparkling tea can. Use a clean vertical composition, large readable headline text "Bright Citrus Tea", smaller subtitle "zero sugar, real fruit aroma", fresh citrus slices, condensation, soft studio lighting, and a polished commercial layout with clear negative space.',
+      },
+      {
+        slot: 'prompt-character-reference-edit',
+        title: 'Character Reference Edit',
+        prompt:
+          'Use the uploaded character reference. Preserve the same face shape, hairstyle, eye color, and outfit details. Place the character in a cinematic rainy street scene at night, with reflective pavement, soft neon light, natural pose, and the same recognizable identity across the new image.',
+      },
+      {
+        slot: 'prompt-education-infographic',
+        title: 'Educational Infographic',
+        prompt:
+          'Design a clean educational infographic titled "How Solar Energy Works". Include four clearly separated steps, readable labels, simple flat diagrams, arrows, concise captions, blue and yellow accents, and a balanced classroom-friendly layout with no clutter.',
+      },
+      {
+        slot: 'prompt-interior-redesign',
+        title: 'Interior Redesign From Reference',
+        prompt:
+          'Use the uploaded room photo as a reference. Keep the camera angle, window placement, and room layout unchanged. Redesign the room in a warm Japandi style with oak furniture, linen textures, soft indirect lighting, neutral walls, and tidy styling suitable for an interior design proposal.',
+      },
+      {
+        slot: 'prompt-event-poster',
+        title: 'Event Poster With Dense Text',
+        prompt:
+          'Create a modern event poster for "Future Design Week 2026". Include readable schedule text for three sessions, speaker names, date, venue, ticket note, and a bold abstract visual system. Use strong hierarchy, generous spacing, and a polished editorial poster style.',
+      },
+    ],
+  },
+  related: {
+    title: 'Explore More AI Models and Tools',
+    tryNow: 'Try Now',
+    links: [
+      {
+        title: 'GPT Image 2 AI Image Generator',
+        href: '/model/gpt-image-2',
+        text: 'Compare another strong image model for text-rich visuals, editing, UI mockups, and commercial drafts.',
+      },
+      {
+        title: 'GPT Image 2.0 Generator',
+        href: '/model/gpt-image-2-0',
+        text: 'Try the alternate GPT image model route for text-to-image and image-to-image workflows.',
+      },
+      {
+        title: 'Nano Banana Pro Generator',
+        href: '/model/nano-banana-pro',
+        text: 'Explore a Gemini image workflow for high-resolution design assets and reference-guided edits.',
+      },
+      {
+        title: 'Nano Banana 2 Generator',
+        href: '/model/nano-banana-2',
+        text: 'Use another fast image model for common creative formats, product visuals, and image editing.',
+      },
+      {
+        title: 'Nano Banana Image to Image',
+        href: '/model/nano-banana',
+        text: 'Use a dedicated image-to-image workflow when uploaded references are your main priority.',
+      },
+      {
+        title: 'AI Models Hub',
+        href: '/model',
+        text: 'Browse Toolaze image and video model pages when you want broader model comparison.',
+      },
+    ],
+  },
+  faq: {
+    title: 'FAQs About Seedream 4.5',
+    items: [
+      {
+        q: 'What is Seedream 4.5?',
+        a: "Seedream 4.5 is ByteDance Seed's AI image generation and editing model for creating and refining images from prompts and reference images. It is useful for product visuals, posters, typography-rich layouts, multi-image editing, and commercial creative drafts.",
+      },
+      {
+        q: 'Is Seedream 4.5 free on Toolaze?',
+        a: 'Yes. Toolaze lets you try Seedream 4.5 online for free. Free usage may vary by quota, model availability, or selected quality settings.',
+      },
+      {
+        q: 'Can I use Seedream 4.5 without signup?',
+        a: 'Yes. Toolaze AI image model pages are designed for free no-signup access. Some advanced settings, higher limits, downloads, or continued usage may require signing in if the access policy changes.',
+      },
+      {
+        q: 'Does Seedream 4.5 support 4K output?',
+        a: 'Yes. Toolaze supports Seedream 4.5 4K output through its high quality mode. Use 4K for product posters, campaign visuals, detail images, and typography-heavy layouts that need more room for visual detail.',
+      },
+      {
+        q: 'Can Seedream 4.5 edit images?',
+        a: 'Yes. Toolaze supports Seedream 4.5 image editing with reference inputs, including JPEG, PNG, and WEBP files. Use it for product updates, reference-guided edits, background changes, layout revisions, and multi-image composition.',
+      },
+      {
+        q: 'Is Seedream 4.5 better than Nano Banana or GPT Image 2?',
+        a: 'It depends on the task. Seedream 4.5 is attractive for reference consistency, typography, product visuals, and poster layouts. GPT Image 2 is strong for structured text-rich images and editing, while Nano Banana models are useful for fast image workflows and reference-based generation.',
+      },
+      {
+        q: 'What prompts work best with Seedream 4.5?',
+        a: 'Use prompts that describe the asset type, subject, exact visible text, layout, ratio, lighting, background, and what should stay unchanged from references. For edits, specify what to preserve before describing what to change.',
+      },
+    ],
+  },
+  cta: {
+    title: 'Create with Seedream 4.5 on Toolaze for Free',
+    text: 'Try Seedream 4.5 online with no signup and create product visuals, typography-rich posters, reference edits, and 4K campaign images directly on Toolaze.',
+    button: 'Try Seedream 4.5 Free',
+    label: 'Seedream 4.5 final call to action',
+  },
+}
+
+function extractJson(text) {
+  const trimmed = text.trim()
+  const fence = trimmed.match(/```(?:json)?\s*([\s\S]*?)```/i)
+  const source = fence ? fence[1].trim() : trimmed
+  const start = source.indexOf('{')
+  if (start >= 0) {
+    let depth = 0
+    let inString = false
+    let escaped = false
+    for (let i = start; i < source.length; i += 1) {
+      const ch = source[i]
+      if (inString) {
+        if (escaped) escaped = false
+        else if (ch === '\\') escaped = true
+        else if (ch === '"') inString = false
+        continue
+      }
+      if (ch === '"') {
+        inString = true
+      } else if (ch === '{') {
+        depth += 1
+      } else if (ch === '}') {
+        depth -= 1
+        if (depth === 0) return source.slice(start, i + 1)
+      }
+    }
+  }
+  const end = source.lastIndexOf('}')
+  if (start >= 0 && end > start) return source.slice(start, end + 1)
+  return trimmed
+}
+
+function shapeOf(value) {
+  if (Array.isArray(value)) return value.map(shapeOf)
+  if (value && typeof value === 'object') {
+    return Object.fromEntries(Object.entries(value).map(([key, item]) => [key, shapeOf(item)]))
+  }
+  return typeof value
+}
+
+function assertSameShape(base, translated, locale) {
+  const a = JSON.stringify(shapeOf(base))
+  const b = JSON.stringify(shapeOf(translated))
+  if (a !== b) {
+    fs.mkdirSync(path.join(root, '_codex'), { recursive: true })
+    fs.writeFileSync(
+      path.join(root, '_codex', `seedream-4-5-${locale}-translate-shape-mismatch.json`),
+      `${JSON.stringify(translated, null, 2)}\n`,
+    )
+    throw new Error(`${locale}: translated JSON shape does not match English copy`)
+  }
+}
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms))
+}
+
+async function fetchWithRetry(url, options, attempts = 3) {
+  let lastError
+  for (let attempt = 1; attempt <= attempts; attempt += 1) {
+    try {
+      const response = await fetch(url, options)
+      if (response.status >= 500 || response.status === 429) {
+        lastError = new Error(`HTTP ${response.status}`)
+        await sleep(3000 * attempt)
+        continue
+      }
+      return response
+    } catch (error) {
+      lastError = error
+      await sleep(3000 * attempt)
+    }
+  }
+  throw lastError
+}
+
+async function translateLocale(locale) {
+  const apiKey = (process.env.KIE_AI_API_KEY || process.env.ZHEN_AI_API_KEY || '').trim()
+  if (!apiKey) throw new Error('KIE_AI_API_KEY or ZHEN_AI_API_KEY is not configured')
+  const baseUrl = (process.env.KIE_API_BASE_URL || 'https://api.kie.ai').replace(/\/$/, '')
+  const slug = (process.env.KIE_GEMINI_CHAT_SLUG || 'gemini-3-flash').trim().replace(/^\/+|\/+$/g, '')
+  const model = process.env.KIE_GEMINI_MODEL || 'gemini-3-flash'
+  const url = `${baseUrl}/${slug}/v1/chat/completions`
+
+  const response = await fetchWithRetry(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${apiKey}`,
+    },
+    body: JSON.stringify({
+      model,
+      stream: false,
+      include_thoughts: false,
+      reasoning_effort: 'low',
+      response_format: { type: 'json_object' },
+      max_tokens: 65536,
+      messages: [
+        {
+          role: 'system',
+          content:
+            'You translate Toolaze SEO landing page JSON. Return only valid JSON with the exact same keys, arrays, and primitive value types. Translate visible user-facing English copy into the target locale. Preserve product/model names, brand names, URL paths, slot ids, numbers, file formats, and quoted required text inside image prompts when it is meant to appear in the generated image.',
+        },
+        {
+          role: 'user',
+          content: `Target locale: ${locale}\n\nJSON:\n${JSON.stringify(englishCopy)}`,
+        },
+      ],
+    }),
+  })
+
+  const raw = await response.text()
+  let json
+  try {
+    json = JSON.parse(raw)
+  } catch {
+    throw new Error(`${locale}: KIE returned non-JSON response: ${raw.slice(0, 240)}`)
+  }
+  if (!response.ok || json.error) {
+    throw new Error(`${locale}: ${json.error?.message || json.msg || json.message || `HTTP ${response.status}`}`)
+  }
+
+  const content = json?.choices?.[0]?.message?.content
+  if (!content) throw new Error(`${locale}: KIE response has no message content`)
+  let parsed
+  try {
+    parsed = JSON.parse(extractJson(content))
+  } catch (error) {
+    fs.mkdirSync(path.join(root, '_codex'), { recursive: true })
+    const debugFile = path.join(root, '_codex', `seedream-4-5-${locale}-translate-raw.txt`)
+    fs.writeFileSync(debugFile, content)
+    throw new Error(`${locale}: failed to parse translated JSON; raw response saved to ${debugFile}: ${error.message}`)
+  }
+  assertSameShape(englishCopy, parsed, locale)
+  return parsed
+}
+
+async function main() {
+  fs.mkdirSync(outDir, { recursive: true })
+  fs.writeFileSync(path.join(outDir, 'en.json'), `${JSON.stringify(englishCopy, null, 2)}\n`)
+  for (const locale of locales) {
+    const file = path.join(outDir, `${locale}.json`)
+    if (fs.existsSync(file) && !process.argv.includes('--force')) {
+      console.log(`[skip] ${locale}`)
+      continue
+    }
+    console.log(`[translate] ${locale}`)
+    const translated = await translateLocale(locale)
+    fs.writeFileSync(file, `${JSON.stringify(translated, null, 2)}\n`)
+    console.log(`[done] ${locale}`)
+  }
+}
+
+main().catch((error) => {
+  console.error(error instanceof Error ? error.message : error)
+  process.exit(1)
+})

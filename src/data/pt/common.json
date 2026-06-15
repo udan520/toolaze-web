@@ -35,7 +35,8 @@
       "fire-copy-and-paste": "Copiar e Colar Emoji de Fogo",
       "birthday-copy-and-paste": "Copiar e Colar Emoji de Aniversário",
       "cat-copy-and-paste": "Copiar e Colar Emoji de Gato"
-    }
+    },
+    "wan27Image": "Wan 2.7 Image"
   },
   "home": {
     "metadata": {
@@ -89,6 +90,10 @@
       },
       "ai-couple-photo-maker": {
         "summary": "Criador de fotos de casal AI: transforme um ou dois retratos em cenas de dupla românticas ou cinematográficas com modelos selecionados — imagens prontas para partilhar sem uma sessão de estúdio."
+      },
+      "wan-2-7-image": {
+        "cardTitle": "Wan 2.7 Image",
+        "summary": "AI image generator for complex prompts, multi-reference inputs, prompt-based edits, readable text layouts, and 2K to 4K creative workflows on Toolaze."
       }
     },
     "aiToolsHubTitle": "Ferramentas AI Grátis para Imagens, Vídeos e Fluxos de Trabalho de Mídia Diários",
@@ -230,7 +235,8 @@
     "footerNavigation": "Navegação do rodapé",
     "noToolsAvailable": "Nenhuma ferramenta disponível",
     "copyright": "© {year} Toolaze Lab. Todos os direitos reservados.",
-    "tagline": "Ferramentas Online Gratuitas • Nenhum Registro Necessário • 100% Privado"
+    "tagline": "Ferramentas Online Gratuitas • Nenhum Registro Necessário • 100% Privado",
+    "wan27Image": "Wan 2.7 Image"
   },
   "breadcrumb": {
     "home": "Início",

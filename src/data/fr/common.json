@@ -35,7 +35,8 @@
       "fire-copy-and-paste": "Copier-coller l'émoji feu",
       "birthday-copy-and-paste": "Copier-coller des emojis d'anniversaire",
       "cat-copy-and-paste": "Copier et Coller Emoji Chat"
-    }
+    },
+    "wan27Image": "Wan 2.7 Image"
   },
   "home": {
     "metadata": {
@@ -89,6 +90,10 @@
       },
       "ai-couple-photo-maker": {
         "summary": "Créateur de photos de couple IA : transformez un ou deux portraits en scènes de duo romantiques ou cinématiques avec des modèles sélectionnés — images prêtes à être partagées sans séance photo en studio."
+      },
+      "wan-2-7-image": {
+        "cardTitle": "Wan 2.7 Image",
+        "summary": "AI image generator for complex prompts, multi-reference inputs, prompt-based edits, readable text layouts, and 2K to 4K creative workflows on Toolaze."
       }
     },
     "aiToolsHubTitle": "Outils IA Gratuits pour les Images, la Vidéo et les Flux de Travail Média Quotidiens",
@@ -230,7 +235,8 @@
     "footerNavigation": "Navigation du pied de page",
     "noToolsAvailable": "Aucun outil disponible",
     "copyright": "© {year} Toolaze Lab. Tous droits réservés.",
-    "tagline": "Outils en Ligne Gratuits • Aucune Inscription Requise • 100% Privé"
+    "tagline": "Outils en Ligne Gratuits • Aucune Inscription Requise • 100% Privé",
+    "wan27Image": "Wan 2.7 Image"
   },
   "breadcrumb": {
     "home": "Accueil",

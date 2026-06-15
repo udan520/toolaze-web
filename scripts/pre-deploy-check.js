@@ -103,7 +103,7 @@ if (isCI) {
     console.log('   正在测试构建...');
     // 使用 SKIP_PREBUILD 环境变量来避免递归
     execSync('SKIP_PREBUILD=true npm run build', { 
-      stdio: 'pipe',
+      stdio: 'inherit',
       cwd: process.cwd(),
       timeout: 300000 // 5 分钟超时
     });

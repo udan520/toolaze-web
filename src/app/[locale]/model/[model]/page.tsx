@@ -6,6 +6,8 @@ import { GptImage2LandingPage } from '@/components/GptImage2LandingPage'
 import { getGptImage2PageMetadata } from '@/lib/gpt-image-2-landing-copy'
 import { Seedream45LandingPage } from '@/components/Seedream45LandingPage'
 import { getSeedream45PageMetadata } from '@/lib/seedream-4-5-landing-copy'
+import { Wan27ImageLandingPage } from '@/components/Wan27ImageLandingPage'
+import { getWan27ImagePageMetadata } from '@/lib/wan-2-7-image-landing-copy'
 
 const SUPPORTED_LOCALES = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it'] as const
 
@@ -15,6 +17,7 @@ const MODEL_TOOL_MAP: Record<string, string> = {
   'gpt-image-2': 'gpt-image-2',
   'gpt-image-2-0': 'gpt-image-2',
   'seedream-4-5': 'seedream-4-5',
+  'wan-2-7-image': 'wan-2-7-image',
   'seedance-2': 'seedance-2',
   'kling-3': 'kling-3',
 }
@@ -43,6 +46,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (tool === 'seedream-4-5') {
     return getSeedream45PageMetadata(locale, `https://toolaze.com/${locale}/model/${model}`)
+  }
+
+  if (tool === 'wan-2-7-image') {
+    return getWan27ImagePageMetadata(locale, `https://toolaze.com/${locale}/model/${model}`)
   }
 
   const content = await getL2SeoContent(tool, locale)
@@ -89,7 +96,7 @@ export default async function LocalizedModelPage({ params }: PageProps) {
     redirect(`/model/${model}`)
   }
 
-  if (tool !== 'gpt-image-2' && tool !== 'seedream-4-5' && !hasLocaleL2JsonFile(tool, locale)) {
+  if (tool !== 'gpt-image-2' && tool !== 'seedream-4-5' && tool !== 'wan-2-7-image' && !hasLocaleL2JsonFile(tool, locale)) {
     redirect(`/model/${model}`)
   }
 
@@ -99,6 +106,10 @@ export default async function LocalizedModelPage({ params }: PageProps) {
 
   if (tool === 'seedream-4-5') {
     return <Seedream45LandingPage locale={locale} />
+  }
+
+  if (tool === 'wan-2-7-image') {
+    return <Wan27ImageLandingPage locale={locale} />
   }
 
   return <ToolL2PageContent locale={locale} tool={tool} />

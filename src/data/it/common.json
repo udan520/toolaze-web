@@ -35,7 +35,8 @@
       "fire-copy-and-paste": "Copia e Incolla Emoji Fuoco",
       "birthday-copy-and-paste": "Copia e Incolla Emoji di Compleanno",
       "cat-copy-and-paste": "Copia e Incolla Emoji Gatto"
-    }
+    },
+    "wan27Image": "Wan 2.7 Image"
   },
   "home": {
     "metadata": {
@@ -89,6 +90,10 @@
       },
       "ai-couple-photo-maker": {
         "summary": "Creatore di foto di coppia AI: trasforma uno o due ritratti in scene di coppia romantiche o cinematografiche con modelli curati — immagini pronte per la condivisione senza un servizio fotografico in studio."
+      },
+      "wan-2-7-image": {
+        "cardTitle": "Wan 2.7 Image",
+        "summary": "AI image generator for complex prompts, multi-reference inputs, prompt-based edits, readable text layouts, and 2K to 4K creative workflows on Toolaze."
       }
     },
     "aiToolsHubTitle": "Strumenti AI Gratuiti per Immagini, Video e Flussi di Lavoro Multimediali Quotidiani",
@@ -230,7 +235,8 @@
     "footerNavigation": "Navigazione del footer",
     "noToolsAvailable": "Nessuno strumento disponibile",
     "copyright": "© {year} Toolaze Lab. Tutti i diritti riservati.",
-    "tagline": "Strumenti Online Gratuiti • Nessuna Registrazione Richiesta • 100% Privato"
+    "tagline": "Strumenti Online Gratuiti • Nessuna Registrazione Richiesta • 100% Privato",
+    "wan27Image": "Wan 2.7 Image"
   },
   "breadcrumb": {
     "home": "Casa",

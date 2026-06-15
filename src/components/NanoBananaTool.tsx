@@ -96,6 +96,19 @@ const MODEL_CONFIG = {
     supportsHighResolution: true,
     maxFileSizeMb: 10,
   },
+  'wan-2-7-image': {
+    aspectRatios: [
+      { value: '1:1', label: '1:1' },
+      { value: '4:3', label: '4:3' },
+      { value: '3:4', label: '3:4' },
+      { value: '16:9', label: '16:9' },
+      { value: '9:16', label: '9:16' },
+    ],
+    maxImages: 9,
+    supportsOutputFormat: false,
+    supportsHighResolution: true,
+    maxFileSizeMb: 10,
+  },
 } as const
 
 type ImageModelId = keyof typeof MODEL_CONFIG
@@ -326,14 +339,15 @@ export default function NanoBananaTool({
     { id: 'nano-banana-2', name: 'Nano Banana 2' },
     { id: 'gpt-image-2', name: 'GPT Image 2' },
     { id: 'seedream-4-5', name: 'Seedream 4.5' },
+    { id: 'wan-2-7-image', name: 'Wan 2.7 Image' },
   ]
   const [activeTab, setActiveTab] = useState<'image-to-image' | 'text-to-image'>(
-    modelId === 'gpt-image-2' || modelId === 'seedream-4-5' ? 'text-to-image' : 'image-to-image'
+    modelId === 'gpt-image-2' || modelId === 'seedream-4-5' || modelId === 'wan-2-7-image' ? 'text-to-image' : 'image-to-image'
   )
   const [imageFiles, setImageFiles] = useState<ImageItem[]>([])
   const [prompt, setPrompt] = useState('')
   const [aspectRatio, setAspectRatio] = useState<string>(
-    modelId === 'seedream-4-5' ? '1:1' : isNanoBanana2CoupleMode ? 'auto' : 'auto'
+    modelId === 'seedream-4-5' || modelId === 'wan-2-7-image' ? '1:1' : isNanoBanana2CoupleMode ? 'auto' : 'auto'
   )
   const [resolution, setResolution] = useState<string>(isNanoBanana2CoupleMode ? '1K' : '1K')
   const [outputFormat, setOutputFormat] = useState(isNanoBanana2CoupleMode ? 'PNG' : 'Auto')
@@ -537,7 +551,7 @@ export default function NanoBananaTool({
       const formData = new FormData()
       formData.append('prompt', effectivePrompt)
       formData.append('aspectRatio', aspectRatio)
-      formData.append('resolution', resolution)
+      formData.append('resolution', modelId === 'wan-2-7-image' && activeTab === 'image-to-image' && resolution === '4K' ? '2K' : resolution)
       if (modelId === 'seedream-4-5') {
         formData.append('quality', resolution === '4K' ? 'High' : 'Basic')
       }
@@ -864,6 +878,9 @@ export default function NanoBananaTool({
     ],
     'seedream-4-5': [
       'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/8d7b3c552db04e6ca02dff930d32bbdc.png',
+    ],
+    'wan-2-7-image': [
+      'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/0b0c01224b03466b913cc7b41683c785.png',
     ],
   }
 
