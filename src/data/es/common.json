@@ -36,7 +36,8 @@
       "birthday-copy-and-paste": "Copiar y Pegar Emojis de Cumpleaños",
       "cat-copy-and-paste": "Copiar y Pegar Emoji de Gato"
     },
-    "wan27Image": "Wan 2.7 Image"
+    "wan27Image": "Wan 2.7 Image",
+    "worldCupAiImageGenerator": "Generador de imágenes IA para el Mundial"
   },
   "home": {
     "metadata": {
@@ -94,6 +95,10 @@
       "wan-2-7-image": {
         "cardTitle": "Wan 2.7 Image",
         "summary": "AI image generator for complex prompts, multi-reference inputs, prompt-based edits, readable text layouts, and 2K to 4K creative workflows on Toolaze."
+      },
+      "world-cup-ai-image-generator": {
+        "cardTitle": "Generador de imágenes IA para el Mundial",
+        "summary": "Crea pósteres de fútbol, retratos de fans, packs de stickers y gráficos para ver partidos con GPT Image 2. Empieza con una plantilla o un selfie y genera imágenes listas para compartir en el navegador."
       }
     },
     "aiToolsHubTitle": "Herramientas de IA Gratis para Imágenes, Video y Flujos de Trabajo Multimedia Diarios",
@@ -236,7 +241,8 @@
     "noToolsAvailable": "No hay herramientas disponibles",
     "copyright": "© {year} Toolaze Lab. Todos los derechos reservados.",
     "tagline": "Herramientas Online Gratis • No Se Requiere Registro • 100% Privado",
-    "wan27Image": "Wan 2.7 Image"
+    "wan27Image": "Wan 2.7 Image",
+    "worldCupAiImageGenerator": "Generador de imágenes IA para el Mundial"
   },
   "breadcrumb": {
     "home": "Inicio",

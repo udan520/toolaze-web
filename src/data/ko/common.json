@@ -36,7 +36,8 @@
       "birthday-copy-and-paste": "생일 이모지 복사 및 붙여넣기",
       "cat-copy-and-paste": "고양이 이모지 복사 및 붙여넣기"
     },
-    "wan27Image": "Wan 2.7 Image"
+    "wan27Image": "Wan 2.7 Image",
+    "worldCupAiImageGenerator": "월드컵 AI 이미지 생성기"
   },
   "home": {
     "metadata": {
@@ -94,6 +95,10 @@
       "wan-2-7-image": {
         "cardTitle": "Wan 2.7 Image",
         "summary": "AI image generator for complex prompts, multi-reference inputs, prompt-based edits, readable text layouts, and 2K to 4K creative workflows on Toolaze."
+      },
+      "world-cup-ai-image-generator": {
+        "cardTitle": "월드컵 AI 이미지 생성기",
+        "summary": "GPT Image 2로 축구 포스터, 팬 초상화, 스티커 팩, 경기 관람 파티 이미지를 만드세요. 템플릿이나 셀피로 시작해 브라우저에서 바로 공유할 수 있는 정지 이미지를 생성합니다."
       }
     },
     "aiToolsHubTitle": "이미지, 비디오 및 일상 미디어 워크플로우를 위한 무료 AI 도구",
@@ -236,7 +241,8 @@
     "noToolsAvailable": "사용 가능한 도구가 없습니다",
     "copyright": "© {year} Toolaze Lab. 모든 권리 보유.",
     "tagline": "무료 온라인 도구 • 등록 불필요 • 100% 비공개",
-    "wan27Image": "Wan 2.7 Image"
+    "wan27Image": "Wan 2.7 Image",
+    "worldCupAiImageGenerator": "월드컵 AI 이미지 생성기"
   },
   "breadcrumb": {
     "home": "홈",

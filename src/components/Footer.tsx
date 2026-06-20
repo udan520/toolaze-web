@@ -36,6 +36,7 @@ const defaultTranslations = {
   watermarkRemover: 'Watermark Remover',
   photoRestoration: 'Photo Restoration',
   aiCouplePhotoMaker: 'AI Couple Photo Maker',
+  worldCupAiImageGenerator: 'World Cup AI Image Generator',
   imageCompression: 'Image Compression',
   imageConverter: 'Image Converter',
   fontGenerator: 'Font Generator',
@@ -154,6 +155,14 @@ export default function Footer({ initialTranslations }: FooterProps = {}) {
               {translations.aiTools || 'AI Tools'}
             </Link>
             <ul className="space-y-2 mt-4">
+              <li>
+                <Link
+                  href={getLocalizedHref('/world-cup-ai-image-generator')}
+                  className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
+                >
+                  {translations.worldCupAiImageGenerator || 'World Cup AI Image Generator'}
+                </Link>
+              </li>
               <li>
                 <Link 
                   href={getLocalizedHref('/watermark-remover')} 

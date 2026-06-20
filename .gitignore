@@ -20,6 +20,18 @@
 *.pem
 .codex-backups/
 
+# Codex local research and generated source assets
+/_codex/landing-pages/prompts/
+/_codex/model-assets-sources/
+/_codex/*.png
+/_codex/*.jpg
+/_codex/*.jpeg
+/_codex/*.log
+/_codex/world-cup-assets/*.png
+
+# Keep large source images local; publish optimized WebP assets instead.
+/public/model-assets/world-cup-2026/*.png
+
 # debug
 npm-debug.log*
 yarn-debug.log*

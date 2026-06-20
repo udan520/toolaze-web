@@ -16,6 +16,13 @@ export const metadata: Metadata = {
 
 const AI_TOOL_CARDS = [
   {
+    title: 'World Cup AI Image Generator',
+    href: '/world-cup-ai-image-generator',
+    image:
+      'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d67aebd7cde5431abd3a7bb74a89bac1.webp',
+    description: 'Create football posters, fan edits, sticker packs, and social images with GPT Image 2.',
+  },
+  {
     title: 'Watermark Remover',
     href: '/watermark-remover',
     image:

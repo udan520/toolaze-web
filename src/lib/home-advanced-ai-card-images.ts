@@ -6,6 +6,12 @@
  * Source files can be prepared locally, but homepage should consume uploaded R2 URLs.
  */
 export const HOME_ADVANCED_AI_CARD_IMAGES = {
+  'world-cup-ai-image-generator': {
+    src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d67aebd7cde5431abd3a7bb74a89bac1.webp',
+    width: 358,
+    height: 357,
+    alt: 'World Cup AI Image Generator — football fan poster template preview',
+  },
   'ai-couple-photo-maker': {
     src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-advanced-ai/ai-couple-photo-maker.jpg',
     width: 800,

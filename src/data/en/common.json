@@ -7,6 +7,7 @@
     "watermarkRemover": "Watermark Remover",
     "photoRestoration": "Photo Restoration",
     "aiCouplePhotoMaker": "AI Couple Photo Maker",
+    "worldCupAiImageGenerator": "World Cup AI Image Generator",
     "fontGenerator": "Font Generator",
     "emojiCopyAndPaste": "Emoji Copy & Paste",
     "aiImage": "AI Image",
@@ -90,6 +91,10 @@
       },
       "ai-couple-photo-maker": {
         "summary": "AI couple photo maker: turn one or two portraits into romantic or cinematic duo scenes with curated templates—share-ready images without a studio shoot."
+      },
+      "world-cup-ai-image-generator": {
+        "cardTitle": "World Cup AI Image Generator",
+        "summary": "Generate football posters, fan edits, sticker packs, and watch-party visuals with GPT Image 2. Start with a reusable template or selfie, then download a share-ready still image."
       },
       "wan-2-7-image": {
         "cardTitle": "Wan 2.7 Image",

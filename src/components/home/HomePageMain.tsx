@@ -230,6 +230,22 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
   }
 
   const advancedAiTools: ToolCard[] = []
+  advancedAiTools.push(
+    applyHomepageToolCardSummary(
+      {
+        tool: 'world-cup-ai-image-generator',
+        title: 'World Cup AI Image Generator',
+        description:
+          'Create football posters, fan portraits, sticker packs, and watch-party visuals with GPT Image 2 directly in your browser.',
+        href: '/world-cup-ai-image-generator',
+        featuredDesc:
+          'Create football posters, fan portraits, sticker packs, and watch-party visuals with GPT Image 2 directly in your browser.',
+        modelName: 'World Cup AI Image Generator',
+        modelType: 'AI Image Generator',
+      },
+      cardSummaries
+    )
+  )
   for (const tool of HOME_ADVANCED_AI_TOOL_IDS) {
     const card = await loadHomeGridToolCard(tool)
     if (!card) continue

@@ -27,6 +27,7 @@ const defaultNavTranslations = {
   watermarkRemover: 'Watermark Remover',
   photoRestoration: 'Photo Restoration',
   aiCouplePhotoMaker: 'AI Couple Photo Maker',
+  worldCupAiImageGenerator: 'World Cup AI Image Generator',
   fontGenerator: 'Font Generator',
   emojiCopyAndPaste: 'Emoji Copy & Paste',
   aiImage: 'AI Image',
@@ -65,6 +66,8 @@ const AI_TOOLS_DEMO_IMAGES = {
   photoRestoration:
     'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=400&q=80',
   aiCouplePhotoMaker: '/ai-couple-photo-maker/rainy-eiffel-4x3.jpg',
+  worldCupAiImageGenerator:
+    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d67aebd7cde5431abd3a7bb74a89bac1.webp',
 }
 
 function getInitialNavTranslations(initialTranslations?: any) {
@@ -461,6 +464,17 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
             <div className="absolute top-full left-0 mt-2 w-auto min-w-[280px] bg-white rounded-xl shadow-lg border border-indigo-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
               <div className="py-2">
                 <Link
+                  href={getLocalizedHref('/world-cup-ai-image-generator')}
+                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-3"
+                >
+                  <img
+                    src={AI_TOOLS_DEMO_IMAGES.worldCupAiImageGenerator}
+                    alt={navTranslations.worldCupAiImageGenerator || defaultNavTranslations.worldCupAiImageGenerator}
+                    className="w-10 h-10 rounded-lg object-cover border border-indigo-100 flex-shrink-0"
+                  />
+                  <span>{navTranslations.worldCupAiImageGenerator || defaultNavTranslations.worldCupAiImageGenerator}</span>
+                </Link>
+                <Link
                   href={getLocalizedHref('/watermark-remover')}
                   className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-3"
                 >
@@ -842,6 +856,21 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
               <div className="border-b border-indigo-50 pb-4">
                 <div className="text-sm font-bold text-slate-700 mb-3">{navTranslations.aiTools || 'AI Tools'}</div>
                 <div className="space-y-2">
+                  <Link
+                    href={getLocalizedHref('/world-cup-ai-image-generator')}
+                    onClick={() => {
+                      setMobileMenuOpen(false)
+                      setExpandedSubmenus(new Set())
+                    }}
+                    className="flex items-center gap-3 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
+                  >
+                    <img
+                      src={AI_TOOLS_DEMO_IMAGES.worldCupAiImageGenerator}
+                      alt={navTranslations.worldCupAiImageGenerator || defaultNavTranslations.worldCupAiImageGenerator}
+                      className="w-10 h-10 rounded-lg object-cover border border-indigo-100 flex-shrink-0"
+                    />
+                    <span>{navTranslations.worldCupAiImageGenerator || defaultNavTranslations.worldCupAiImageGenerator}</span>
+                  </Link>
                   <Link
                     href={getLocalizedHref('/watermark-remover')}
                     onClick={() => {

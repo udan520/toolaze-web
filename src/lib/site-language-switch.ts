@@ -33,6 +33,7 @@ export const TOOL_SUPPORTED_LOCALES: Record<string, readonly string[]> = {
   'watermark-remover': ALL_LOCALE_CODES,
   'ai-couple-photo-maker': ALL_LOCALE_CODES,
   'photo-restoration': ALL_LOCALE_CODES,
+  'world-cup-ai-image-generator': ALL_LOCALE_CODES,
   'prompts': ALL_LOCALE_CODES,
   /** 无各语言 SEO 数据时由页面重定向到 `/ai-tools` */
   'ai-tools': ALL_LOCALE_CODES,

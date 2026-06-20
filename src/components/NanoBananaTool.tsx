@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef, useCallback, useEffect } from 'react'
+import { useState, useRef, useCallback, useEffect, useLayoutEffect } from 'react'
 import { useMemo } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
 import SiteImage from './SiteImage'
@@ -116,6 +116,23 @@ type ImageModelId = keyof typeof MODEL_CONFIG
 interface ImageItem {
   file: File
   preview: string
+}
+
+interface PromptInsertEventDetail {
+  prompt?: string
+  imageUrl?: string
+  imageName?: string
+  demoImageUrl?: string
+  demoImageTitle?: string
+  demoImageWidth?: number
+  demoImageHeight?: number
+}
+
+interface PromptDemoImage {
+  url: string
+  title: string
+  width: number
+  height: number
 }
 
 interface NanoBananaToolProps {
@@ -360,11 +377,13 @@ export default function NanoBananaTool({
   const [history, setHistory] = useState<HistoryItem[]>([])
   const [currentResult, setCurrentResult] = useState<HistoryItem | null>(null)
   const [previewImage, setPreviewImage] = useState<string | null>(null)
+  const [promptDemoImage, setPromptDemoImage] = useState<PromptDemoImage | null>(null)
   const [downloadingUrl, setDownloadingUrl] = useState<string | null>(null)
   const [toasts, setToasts] = useState<Array<{ id: string; msg: string; type: string }>>([])
   const [generatingSeconds, setGeneratingSeconds] = useState(0)
   const fileInputRef = useRef<HTMLInputElement>(null)
   const promptTextareaRef = useRef<HTMLTextAreaElement>(null)
+  const shouldPositionInsertedPromptRef = useRef(false)
 
   // 全屏预览时禁止底层页面滚动
   useEffect(() => {
@@ -396,24 +415,70 @@ export default function NanoBananaTool({
     return () => clearInterval(timer)
   }, [isGenerating])
 
-  // 从 SEO 提示词案例板块一键带入 Prompt
+  useLayoutEffect(() => {
+    if (!shouldPositionInsertedPromptRef.current) return
+    shouldPositionInsertedPromptRef.current = false
+    const textarea = promptTextareaRef.current
+    if (!textarea) return
+
+    const positionPromptAtStart = () => {
+      textarea.focus()
+      textarea.setSelectionRange(0, 0)
+      textarea.scrollTop = 0
+    }
+
+    positionPromptAtStart()
+    const frameId = window.requestAnimationFrame(positionPromptAtStart)
+    return () => window.cancelAnimationFrame(frameId)
+  }, [prompt])
+
+  // 从 SEO 提示词案例板块一键带入 Prompt，可选携带参考图。
   useEffect(() => {
-    const handler = (event: Event) => {
-      const customEvent = event as CustomEvent<{ prompt?: string }>
+    const handler = async (event: Event) => {
+      const customEvent = event as CustomEvent<PromptInsertEventDetail>
       const nextPrompt = customEvent.detail?.prompt?.trim()
       if (!nextPrompt) return
+      const imageUrl = customEvent.detail?.imageUrl?.trim()
+      const demoImageUrl = customEvent.detail?.demoImageUrl?.trim()
+      shouldPositionInsertedPromptRef.current = true
       setPrompt(nextPrompt)
-      setActiveTab('text-to-image')
       setRightMode('sample')
+      setPromptDemoImage(
+        demoImageUrl
+          ? {
+              url: demoImageUrl,
+              title: customEvent.detail?.demoImageTitle || nanoText.sampleImage,
+              width: customEvent.detail?.demoImageWidth || 900,
+              height: customEvent.detail?.demoImageHeight || 1200,
+            }
+          : null
+      )
+
+      if (imageUrl) {
+        try {
+          const response = await fetch(imageUrl)
+          if (!response.ok) throw new Error(`Image fetch failed: ${response.status}`)
+          const blob = await response.blob()
+          const fileName = customEvent.detail?.imageName || imageUrl.split('/').pop() || 'template.webp'
+          const file = new File([blob], fileName, { type: blob.type || 'image/webp' })
+          setActiveTab('image-to-image')
+          setImageFiles((prev) => {
+            prev.forEach((item) => URL.revokeObjectURL(item.preview))
+            return [{ file, preview: URL.createObjectURL(file) }]
+          })
+        } catch {
+          setActiveTab('text-to-image')
+        }
+      } else {
+        setActiveTab('text-to-image')
+      }
+
       showToast(nanoText.promptInserted, 'success')
-      setTimeout(() => {
-        promptTextareaRef.current?.focus()
-      }, 0)
     }
 
     window.addEventListener('toolaze:use-prompt', handler as EventListener)
     return () => window.removeEventListener('toolaze:use-prompt', handler as EventListener)
-  }, [nanoText.promptInserted])
+  }, [nanoText.promptInserted, nanoText.sampleImage])
 
   const showToast = (msg: string, type: 'success' | 'error' | 'warning' | 'info' = 'info') => {
     const id = Math.random().toString(36).substr(2, 9)
@@ -906,8 +971,8 @@ export default function NanoBananaTool({
   }
 
   return (
-    <section className="flex flex-col p-2 md:p-6 md:flex-1 md:min-h-0 md:overflow-hidden">
-      <div className="flex flex-col md:flex-row gap-4 md:gap-6 min-w-0 md:flex-1 md:min-h-0">
+    <section className="flex min-h-0 flex-1 flex-col overflow-hidden p-2 md:p-6">
+      <div className="flex min-h-0 min-w-0 flex-1 flex-col gap-4 md:flex-row md:gap-6">
         {/* Left: 生图参数区 — 桌面可滚动+固定按钮；h5 上下流式布局，自然高度 */}
         <div className="w-full md:w-[380px] flex-shrink-0 flex flex-col rounded-2xl border border-[#E0E7FF] bg-white shadow-lg shadow-[#4F46E5]/8 overflow-hidden">
           <div className="p-2 md:p-6 space-y-4 md:space-y-5 md:flex-1 md:min-h-0 md:overflow-y-auto">
@@ -1128,8 +1193,8 @@ export default function NanoBananaTool({
                   value={prompt}
                   onChange={(e) => setPrompt(e.target.value)}
                   placeholder={nanoText.promptPlaceholder}
-                  className="w-full min-h-[88px] px-4 py-3 rounded-xl border border-slate-200/90 bg-slate-50/50 text-slate-800 placeholder:text-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/40 focus:border-[#4F46E5] resize-none transition-colors"
-                  rows={3}
+                  className="h-[10.5rem] w-full resize-none overflow-y-auto rounded-xl border border-slate-200/90 bg-slate-50/50 px-4 py-3 text-sm leading-6 text-slate-800 placeholder:text-slate-400 transition-colors focus:border-[#4F46E5] focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/40"
+                  rows={6}
                 />
               </div>
             )}
@@ -1293,7 +1358,7 @@ export default function NanoBananaTool({
 
         {/* Right: 功能示例图 / 生成中 / 历史记录 / 结果详情 */}
         {!isGenerating && !isNanoBanana2CoupleMode && (
-          <div className={`${rightMode === 'result' ? 'w-full md:w-[400px]' : 'flex-1'} min-w-0 bg-white ${isNanoBanana2CoupleMode ? 'rounded-none' : 'rounded-2xl'} border border-[#E0E7FF] shadow-lg shadow-[#4F46E5]/8 flex flex-col relative overflow-hidden`}>
+          <div className={`${rightMode === 'result' ? 'w-full md:w-[400px]' : 'flex-1'} min-h-0 min-w-0 bg-white ${isNanoBanana2CoupleMode ? 'rounded-none' : 'rounded-2xl'} border border-[#E0E7FF] shadow-lg shadow-[#4F46E5]/8 flex flex-col relative overflow-hidden`}>
           {/* Tabs for right panel when history exists */}
           {(history.length > 0 || isGenerating) && !isGenerating && rightMode !== 'result' && !isNanoBanana2CoupleMode && (
             <div className="flex border-b border-[#E0E7FF] px-5 pt-4 gap-1 flex-shrink-0">
@@ -1318,11 +1383,11 @@ export default function NanoBananaTool({
             </div>
           )}
 
-          <div className={`flex-1 overflow-auto p-2 md:p-8 flex flex-col ${rightMode === 'result' || rightMode === 'history' ? 'justify-start' : 'items-center justify-center'}`}>
+          <div className={`flex min-h-0 flex-1 p-2 md:p-8 ${rightMode === 'result' || rightMode === 'history' ? 'flex-col justify-start overflow-auto' : 'flex-col items-center justify-center overflow-hidden'}`}>
             {rightMode === 'sample' && (
               <>
-                <h3 className="text-slate-700 font-semibold text-base uppercase tracking-wider mb-8">{nanoText.sampleImage}</h3>
-                <div className="w-full flex-1 flex justify-center items-center min-h-0">
+                <h3 className="mb-6 shrink-0 text-base font-semibold uppercase tracking-wider text-slate-700">{nanoText.sampleImage}</h3>
+                <div className="flex min-h-0 w-full flex-1 items-center justify-center overflow-hidden">
                   {isNanoBanana2CoupleMode ? (
                     selectedTemplateImage ? (
                       <img
@@ -1336,16 +1401,17 @@ export default function NanoBananaTool({
                       </div>
                     )
                   ) : (
-                    <div className="w-full h-full rounded-2xl overflow-hidden ring-1 ring-slate-200/50 shadow-inner flex items-center justify-center p-2">
+                    <div className="flex h-full w-full items-center justify-center overflow-hidden rounded-2xl p-2 ring-1 ring-slate-200/50 shadow-inner">
                       <SiteImage
-                        src={sampleImage.url}
-                        autoAlt={true}
-                        width={800}
-                        height={600}
-                        className="w-full h-full"
+                        src={promptDemoImage?.url || sampleImage.url}
+                        alt={promptDemoImage?.title || sampleImage.caption}
+                        autoAlt={!promptDemoImage}
+                        width={promptDemoImage?.width || 800}
+                        height={promptDemoImage?.height || 600}
+                        className="max-h-full max-w-full"
                         style={{
                           objectFit: 'contain',
-                          width: '100%',
+                          width: 'auto',
                           height: '100%'
                         }}
                       />

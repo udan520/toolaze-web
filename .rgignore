@@ -1,0 +1,19 @@
+# Large generated directories and local build output.
+node_modules/
+.next/
+out/
+_codex/landing-pages/prompts/
+_codex/model-assets-sources/
+
+# Large generated data dumps. Search narrower shards or source files explicitly when needed.
+public/prompts-data/all.json
+public/prompts-data.json
+
+# Binary assets should be inspected by path, size, or preview tools instead of text search.
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.gif
+*.mp4
+*.mov

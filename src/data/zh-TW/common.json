@@ -36,7 +36,8 @@
       "birthday-copy-and-paste": "生日表情符號複製與貼上",
       "cat-copy-and-paste": "貓咪表情符號複製與貼上"
     },
-    "wan27Image": "Wan 2.7 Image"
+    "wan27Image": "Wan 2.7 Image",
+    "worldCupAiImageGenerator": "世界盃 AI 圖像產生器"
   },
   "home": {
     "metadata": {
@@ -94,6 +95,10 @@
       "wan-2-7-image": {
         "cardTitle": "Wan 2.7 Image",
         "summary": "AI image generator for complex prompts, multi-reference inputs, prompt-based edits, readable text layouts, and 2K to 4K creative workflows on Toolaze."
+      },
+      "world-cup-ai-image-generator": {
+        "cardTitle": "世界盃 AI 圖像產生器",
+        "summary": "使用 GPT Image 2 製作足球海報、球迷肖像、貼紙包與觀賽派對視覺。可從範本或自拍開始，直接在瀏覽器產生適合分享的靜態圖片。"
       }
     },
     "aiToolsHubTitle": "適用於圖片、影片和日常媒體工作流程的免費AI工具",
@@ -236,7 +241,8 @@
     "noToolsAvailable": "沒有可用工具",
     "copyright": "© {year} Toolaze Lab. 版權所有。",
     "tagline": "免費線上工具 • 無需註冊 • 100% 隱私",
-    "wan27Image": "Wan 2.7 Image"
+    "wan27Image": "Wan 2.7 Image",
+    "worldCupAiImageGenerator": "世界盃 AI 圖像產生器"
   },
   "breadcrumb": {
     "home": "首頁",
