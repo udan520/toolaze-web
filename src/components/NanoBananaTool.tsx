@@ -140,6 +140,12 @@ interface NanoBananaToolProps {
   modelName?: string
   dailyLimitStorageKey?: string
   presetMode?: 'default' | 'ai-couple-photo-maker'
+  sampleImages?: Array<{
+    url: string
+    title?: string
+    width?: number
+    height?: number
+  }>
   initialTranslations?: any
 }
 
@@ -285,6 +291,7 @@ export default function NanoBananaTool({
   modelName = 'Nano Banana Pro',
   dailyLimitStorageKey = 'nano_banana_last_used_date',
   presetMode = 'default',
+  sampleImages,
   initialTranslations,
 }: NanoBananaToolProps = {}) {
   const router = useRouter()
@@ -950,13 +957,24 @@ export default function NanoBananaTool({
   }
 
   const sampleImage = useMemo(() => {
+    const customImages = sampleImages?.filter((item) => item.url)
+    if (customImages?.length) {
+      const image = customImages[0]
+      return {
+        url: image.url,
+        caption: image.title || `${modelName} sample output`,
+        width: image.width,
+        height: image.height,
+      }
+    }
+
     const images = SAMPLE_IMAGES[modelId] || SAMPLE_IMAGES['nano-banana-pro']
     const randomIndex = Math.floor(Math.random() * images.length)
     return {
       url: images[randomIndex],
       caption: `${modelName} sample output`,
     }
-  }, [modelId, modelName])
+  }, [modelId, modelName, sampleImages])
 
   const handleModelChange = (nextModelId: ModelOption['id']) => {
     if (nextModelId === modelId) return

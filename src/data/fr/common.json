@@ -37,7 +37,8 @@
       "cat-copy-and-paste": "Copier et Coller Emoji Chat"
     },
     "wan27Image": "Wan 2.7 Image",
-    "worldCupAiImageGenerator": "Générateur d’images IA Coupe du monde"
+    "worldCupAiImageGenerator": "Générateur d’images IA Coupe du monde",
+    "aiImageGenerator": "Générateur d’images IA"
   },
   "home": {
     "metadata": {
@@ -108,7 +109,7 @@
       {
         "title": "Générateurs d'images IA",
         "description": "Livrez des visuels prêts pour la campagne avec texte-vers-image et image-vers-image. GPT Image 2, Nano Banana Pro et Nano Banana 2 offrent des détails nets, des rapports d'aspect flexibles et des résolutions jusqu'à 4K pour les publicités, les publications sociales et l'art conceptuel.",
-        "href": "/model/gpt-image-2-0"
+        "href": "/ai-image-generator"
       },
       {
         "title": "Générateurs de vidéos IA",
@@ -242,7 +243,8 @@
     "copyright": "© {year} Toolaze Lab. Tous droits réservés.",
     "tagline": "Outils en Ligne Gratuits • Aucune Inscription Requise • 100% Privé",
     "wan27Image": "Wan 2.7 Image",
-    "worldCupAiImageGenerator": "Générateur d’images IA Coupe du monde"
+    "worldCupAiImageGenerator": "Générateur d’images IA Coupe du monde",
+    "aiImageGenerator": "Générateur d’images IA"
   },
   "breadcrumb": {
     "home": "Accueil",
@@ -258,7 +260,8 @@
     "aiTools": "Outils IA",
     "model": "Modèle",
     "photoRestoration": "Restauration photo",
-    "aiCouplePhotoMaker": "Photo couple IA"
+    "aiCouplePhotoMaker": "Photo couple IA",
+    "aiImageGenerator": "Générateur d’images IA"
   },
   "about": {
     "metadata": {

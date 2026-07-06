@@ -94,6 +94,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.9,
   })
   entries.push({
+    url: `${baseUrl}/ai-image-generator`,
+    lastModified: today,
+    changeFrequency: 'weekly',
+    priority: 0.94,
+  })
+  SUPPORTED_LOCALES.forEach((locale) => {
+    if (locale === 'en') return
+    entries.push({
+      url: `${baseUrl}/${locale}/ai-image-generator`,
+      lastModified: today,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    })
+  })
+  entries.push({
     url: `${baseUrl}/world-cup-ai-image-generator`,
     lastModified: today,
     changeFrequency: 'weekly',

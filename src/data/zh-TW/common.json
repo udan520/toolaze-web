@@ -37,7 +37,8 @@
       "cat-copy-and-paste": "貓咪表情符號複製與貼上"
     },
     "wan27Image": "Wan 2.7 Image",
-    "worldCupAiImageGenerator": "世界盃 AI 圖像產生器"
+    "worldCupAiImageGenerator": "世界盃 AI 圖像產生器",
+    "aiImageGenerator": "AI 圖像產生器"
   },
   "home": {
     "metadata": {
@@ -108,7 +109,7 @@
       {
         "title": "AI圖片生成器",
         "description": "透過文字轉圖片和圖片轉圖片，交付可供活動使用的視覺效果。GPT Image 2、Nano Banana Pro和Nano Banana 2提供清晰的細節、靈活的長寬比和高達4K的解析度，適用於廣告、社群貼文和概念藝術。",
-        "href": "/model/gpt-image-2-0"
+        "href": "/ai-image-generator"
       },
       {
         "title": "AI影片生成器",
@@ -242,7 +243,8 @@
     "copyright": "© {year} Toolaze Lab. 版權所有。",
     "tagline": "免費線上工具 • 無需註冊 • 100% 隱私",
     "wan27Image": "Wan 2.7 Image",
-    "worldCupAiImageGenerator": "世界盃 AI 圖像產生器"
+    "worldCupAiImageGenerator": "世界盃 AI 圖像產生器",
+    "aiImageGenerator": "AI 圖像產生器"
   },
   "breadcrumb": {
     "home": "首頁",
@@ -258,7 +260,8 @@
     "aiTools": "AI 工具",
     "model": "模型",
     "photoRestoration": "照片修復",
-    "aiCouplePhotoMaker": "AI 情侶合照"
+    "aiCouplePhotoMaker": "AI 情侶合照",
+    "aiImageGenerator": "AI 圖像產生器"
   },
   "about": {
     "metadata": {

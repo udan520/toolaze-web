@@ -5,9 +5,9 @@ import Footer from '@/components/Footer'
 import Breadcrumb from '@/components/Breadcrumb'
 
 export const metadata: Metadata = {
-  title: 'AI Tools - Watermark Remover, Photo Restoration & AI Couple Photo Maker | Toolaze',
+  title: 'AI Tools - AI Image Generator, Watermark Remover & Photo Restoration | Toolaze',
   description:
-    'Explore Toolaze AI tools with visual previews. Use AI Watermark Remover, Photo Restoration, and AI Couple Photo Maker online for free.',
+    'Explore Toolaze AI tools with visual previews. Use the free AI Image Generator, Watermark Remover, Photo Restoration, and AI Couple Photo Maker online.',
   robots: 'index, follow',
   alternates: {
     canonical: 'https://toolaze.com/ai-tools',
@@ -15,6 +15,13 @@ export const metadata: Metadata = {
 }
 
 const AI_TOOL_CARDS = [
+  {
+    title: 'AI Image Generator',
+    href: '/ai-image-generator',
+    image:
+      'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/gpt-image-2.jpg',
+    description: 'Create high-quality AI images online from text prompts for ads, posters, concepts, and social visuals.',
+  },
   {
     title: 'World Cup AI Image Generator',
     href: '/world-cup-ai-image-generator',

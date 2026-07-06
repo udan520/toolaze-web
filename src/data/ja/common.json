@@ -37,7 +37,8 @@
       "cat-copy-and-paste": "猫の絵文字コピー＆ペースト"
     },
     "wan27Image": "Wan 2.7 Image",
-    "worldCupAiImageGenerator": "ワールドカップAI画像ジェネレーター"
+    "worldCupAiImageGenerator": "ワールドカップAI画像ジェネレーター",
+    "aiImageGenerator": "AI画像生成ツール"
   },
   "home": {
     "metadata": {
@@ -108,7 +109,7 @@
       {
         "title": "AI画像生成ツール",
         "description": "テキストから画像、画像から画像でキャンペーン対応のビジュアルを出荷。GPT Image 2、Nano Banana Pro、Nano Banana 2は、広告、ソーシャル投稿、コンセプトアート向けに、鮮明なディテール、柔軟なアスペクト比、最大4Kの解像度を提供します。",
-        "href": "/model/gpt-image-2-0"
+        "href": "/ai-image-generator"
       },
       {
         "title": "AI動画生成ツール",
@@ -242,7 +243,8 @@
     "copyright": "© {year} Toolaze Lab. 全著作権所有。",
     "tagline": "無料オンラインツール • 登録不要 • 100%プライベート",
     "wan27Image": "Wan 2.7 Image",
-    "worldCupAiImageGenerator": "ワールドカップAI画像ジェネレーター"
+    "worldCupAiImageGenerator": "ワールドカップAI画像ジェネレーター",
+    "aiImageGenerator": "AI画像生成ツール"
   },
   "breadcrumb": {
     "home": "ホーム",
@@ -258,7 +260,8 @@
     "aiTools": "AIツール",
     "model": "モデル",
     "photoRestoration": "写真復元",
-    "aiCouplePhotoMaker": "AIカップルフォト"
+    "aiCouplePhotoMaker": "AIカップルフォト",
+    "aiImageGenerator": "AI画像生成ツール"
   },
   "about": {
     "metadata": {

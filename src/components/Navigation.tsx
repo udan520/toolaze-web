@@ -31,6 +31,7 @@ const defaultNavTranslations = {
   fontGenerator: 'Font Generator',
   emojiCopyAndPaste: 'Emoji Copy & Paste',
   aiImage: 'AI Image',
+  aiImageGenerator: 'AI Image Generator',
   aiVideo: 'AI Video',
   nanoBananaPro: 'Nano Banana Pro',
   nanoBanana2: 'Nano Banana 2',
@@ -61,6 +62,8 @@ const defaultNavTranslations = {
 }
 
 const AI_TOOLS_DEMO_IMAGES = {
+  aiImageGenerator:
+    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/gpt-image-2.jpg',
   watermarkRemover:
     'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=400&q=80',
   photoRestoration:
@@ -464,6 +467,17 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
             <div className="absolute top-full left-0 mt-2 w-auto min-w-[280px] bg-white rounded-xl shadow-lg border border-indigo-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
               <div className="py-2">
                 <Link
+                  href={getLocalizedHref('/ai-image-generator')}
+                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-3"
+                >
+                  <img
+                    src={AI_TOOLS_DEMO_IMAGES.aiImageGenerator}
+                    alt={navTranslations.aiImageGenerator || defaultNavTranslations.aiImageGenerator}
+                    className="w-10 h-10 rounded-lg object-cover border border-indigo-100 flex-shrink-0"
+                  />
+                  <span>{navTranslations.aiImageGenerator || defaultNavTranslations.aiImageGenerator}</span>
+                </Link>
+                <Link
                   href={getLocalizedHref('/world-cup-ai-image-generator')}
                   className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-3"
                 >
@@ -531,6 +545,23 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
             </button>
             <div className="absolute top-full left-0 pt-1 w-auto min-w-[200px] bg-transparent opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
               <div className="bg-white rounded-xl shadow-lg border border-indigo-50 py-2">
+                <Link
+                  href={getLocalizedHref('/ai-image-generator')}
+                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
+                    <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#aiImageGeneratorGradient)" opacity="0.2"/>
+                    <path d="M6 16l4-4 3 3 5-6" stroke="url(#aiImageGeneratorGradient)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M16 5l1 2 2 1-2 1-1 2-1-2-2-1 2-1 1-2Z" fill="url(#aiImageGeneratorGradient)"/>
+                    <defs>
+                      <linearGradient id="aiImageGeneratorGradient" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+                        <stop stopColor="#9333EA"/>
+                        <stop offset="1" stopColor="#4F46E5"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                  <span>{navTranslations.aiImageGenerator || defaultNavTranslations.aiImageGenerator}</span>
+                </Link>
                 <Link
                   href={getLocalizedHref('/model/gpt-image-2-0')}
                   className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
@@ -857,6 +888,21 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                 <div className="text-sm font-bold text-slate-700 mb-3">{navTranslations.aiTools || 'AI Tools'}</div>
                 <div className="space-y-2">
                   <Link
+                    href={getLocalizedHref('/ai-image-generator')}
+                    onClick={() => {
+                      setMobileMenuOpen(false)
+                      setExpandedSubmenus(new Set())
+                    }}
+                    className="flex items-center gap-3 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
+                  >
+                    <img
+                      src={AI_TOOLS_DEMO_IMAGES.aiImageGenerator}
+                      alt={navTranslations.aiImageGenerator || defaultNavTranslations.aiImageGenerator}
+                      className="w-10 h-10 rounded-lg object-cover border border-indigo-100 flex-shrink-0"
+                    />
+                    <span>{navTranslations.aiImageGenerator || defaultNavTranslations.aiImageGenerator}</span>
+                  </Link>
+                  <Link
                     href={getLocalizedHref('/world-cup-ai-image-generator')}
                     onClick={() => {
                       setMobileMenuOpen(false)
@@ -935,6 +981,27 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
               <div className="border-b border-indigo-50 pb-4">
                 <div className="text-sm font-bold text-slate-700 mb-3">{navTranslations.aiImage || defaultNavTranslations.aiImage}</div>
                 <div className="space-y-2">
+                  <Link
+                    href={getLocalizedHref('/ai-image-generator')}
+                    onClick={() => {
+                      setMobileMenuOpen(false)
+                      setExpandedSubmenus(new Set())
+                    }}
+                    className="flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
+                  >
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
+                      <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#aiImageGeneratorGradientMobile)" opacity="0.2"/>
+                      <path d="M6 16l4-4 3 3 5-6" stroke="url(#aiImageGeneratorGradientMobile)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M16 5l1 2 2 1-2 1-1 2-1-2-2-1 2-1 1-2Z" fill="url(#aiImageGeneratorGradientMobile)"/>
+                      <defs>
+                        <linearGradient id="aiImageGeneratorGradientMobile" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+                          <stop stopColor="#9333EA"/>
+                          <stop offset="1" stopColor="#4F46E5"/>
+                        </linearGradient>
+                      </defs>
+                    </svg>
+                    <span>{navTranslations.aiImageGenerator || defaultNavTranslations.aiImageGenerator}</span>
+                  </Link>
                   <Link
                     href={getLocalizedHref('/model/gpt-image-2-0')}
                     onClick={() => {

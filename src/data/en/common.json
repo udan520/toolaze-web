@@ -37,7 +37,8 @@
       "birthday-copy-and-paste": "Birthday Emoji Copy and Paste",
       "cat-copy-and-paste": "Cat Emoji Copy and Paste"
     },
-    "wan27Image": "Wan 2.7 Image"
+    "wan27Image": "Wan 2.7 Image",
+    "aiImageGenerator": "AI Image Generator"
   },
   "home": {
     "metadata": {
@@ -108,7 +109,7 @@
       {
         "title": "AI image generators",
         "description": "Ship campaign-ready visuals with text-to-image and image-to-image. GPT Image 2, Nano Banana Pro, and Nano Banana 2 deliver sharp detail, flexible aspect ratios, and resolutions up to 4K for ads, social posts, and concept art.",
-        "href": "/model/gpt-image-2-0"
+        "href": "/ai-image-generator"
       },
       {
         "title": "AI video generators",
@@ -241,7 +242,8 @@
     "noToolsAvailable": "No tools available",
     "copyright": "© {year} Toolaze Lab. All rights reserved.",
     "tagline": "Free Online Tools • No Registration Required • 100% Private",
-    "wan27Image": "Wan 2.7 Image"
+    "wan27Image": "Wan 2.7 Image",
+    "aiImageGenerator": "AI Image Generator"
   },
   "breadcrumb": {
     "home": "Home",
@@ -257,7 +259,8 @@
     "aiTools": "AI Tools",
     "model": "Model",
     "photoRestoration": "Photo Restoration",
-    "aiCouplePhotoMaker": "AI Couple Photo Maker"
+    "aiCouplePhotoMaker": "AI Couple Photo Maker",
+    "aiImageGenerator": "AI Image Generator"
   },
   "about": {
     "metadata": {

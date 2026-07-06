@@ -37,7 +37,8 @@
       "cat-copy-and-paste": "고양이 이모지 복사 및 붙여넣기"
     },
     "wan27Image": "Wan 2.7 Image",
-    "worldCupAiImageGenerator": "월드컵 AI 이미지 생성기"
+    "worldCupAiImageGenerator": "월드컵 AI 이미지 생성기",
+    "aiImageGenerator": "AI 이미지 생성기"
   },
   "home": {
     "metadata": {
@@ -108,7 +109,7 @@
       {
         "title": "AI 이미지 생성기",
         "description": "텍스트-이미지 및 이미지-이미지로 캠페인 준비가 된 비주얼을 만드세요. GPT Image 2, Nano Banana Pro, Nano Banana 2는 광고, 소셜 게시물, 컨셉 아트를 위해 선명한 디테일, 유연한 종횡비, 최대 4K 해상도를 제공합니다.",
-        "href": "/model/gpt-image-2-0"
+        "href": "/ai-image-generator"
       },
       {
         "title": "AI 비디오 생성기",
@@ -242,7 +243,8 @@
     "copyright": "© {year} Toolaze Lab. 모든 권리 보유.",
     "tagline": "무료 온라인 도구 • 등록 불필요 • 100% 비공개",
     "wan27Image": "Wan 2.7 Image",
-    "worldCupAiImageGenerator": "월드컵 AI 이미지 생성기"
+    "worldCupAiImageGenerator": "월드컵 AI 이미지 생성기",
+    "aiImageGenerator": "AI 이미지 생성기"
   },
   "breadcrumb": {
     "home": "홈",
@@ -258,7 +260,8 @@
     "aiTools": "AI 도구",
     "model": "모델",
     "photoRestoration": "사진 복원",
-    "aiCouplePhotoMaker": "AI 커플 사진"
+    "aiCouplePhotoMaker": "AI 커플 사진",
+    "aiImageGenerator": "AI 이미지 생성기"
   },
   "about": {
     "metadata": {

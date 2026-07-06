@@ -213,6 +213,20 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
   if (!aiImageTools.some((item) => item.tool === seedream45Card.tool)) {
     aiImageTools.push(seedream45Card)
   }
+  const aiImageGeneratorCard = applyHomepageToolCardSummary(
+    {
+      tool: 'ai-image-generator',
+      title: 'AI Image Generator',
+      description:
+        'Free online AI image generator for text-to-image prompts, unlimited creative drafts, no sign up, and commercial visual ideas.',
+      href: '/ai-image-generator',
+      featuredDesc:
+        'Create unlimited AI images online from text prompts. No sign up required. Commercial use allowed for ads, posters, product concepts, thumbnails, and social visuals.',
+      modelName: 'AI Image Generator',
+      modelType: 'Free Online Tool',
+    },
+    cardSummaries
+  )
 
   // All AI models for Trending section（可被 common.home.trendingCards 覆盖文案）
   const trendingModels = applyTrendingCardsOverrides(
@@ -341,7 +355,7 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
 
         <div className="flex flex-wrap justify-center gap-4 relative z-10">
           <Link
-            href="/model/nano-banana-pro"
+            href="/ai-image-generator"
             className="inline-flex items-center gap-2 px-8 py-3.5 bg-gradient-brand text-white font-bold rounded-full home-cta-glow transition-all duration-300 hover:scale-[1.02]"
           >
             {home?.ctaImage ?? 'Try AI Image Generator'}
@@ -425,13 +439,13 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
                   home?.aiImageIntro ??
                   ''
                 }
-                links={[{ term: 'AI Image Generator', href: '/model/nano-banana-pro' }]}
+                links={[{ term: 'AI Image Generator', href: '/ai-image-generator' }]}
               />
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {aiImageTools.map((item) => {
+            {[aiImageGeneratorCard, ...aiImageTools].map((item) => {
               const thumb = getHomeModelCardImage(item.tool)
               return (
                 <Link

@@ -25,6 +25,7 @@ const defaultBreadcrumbTranslations = {
   watermarkRemover: 'Watermark Remover',
   photoRestoration: 'Photo Restoration',
   aiCouplePhotoMaker: 'AI Couple Photo Maker',
+  aiImageGenerator: 'AI Image Generator',
   fontGenerator: 'Font Generator',
   emojiCopyAndPaste: 'Emoji Copy & Paste',
   model: 'Model',
@@ -86,6 +87,7 @@ export default function Breadcrumb({ items }: BreadcrumbProps) {
     if (label === 'Watermark Remover') return translations.watermarkRemover || 'Watermark Remover'
     if (label === 'Photo Restoration') return translations.photoRestoration || 'Photo Restoration'
     if (label === 'AI Couple Photo Maker') return translations.aiCouplePhotoMaker || 'AI Couple Photo Maker'
+    if (label === 'AI Image Generator') return translations.aiImageGenerator || 'AI Image Generator'
     if (label === 'Font Generator') return translations.fontGenerator
     if (label === 'Emoji Copy & Paste') return translations.emojiCopyAndPaste || 'Emoji Copy & Paste'
     if (label === 'Model') return translations.model || 'Model'

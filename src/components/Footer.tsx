@@ -33,6 +33,7 @@ const defaultTranslations = {
   aiTools: 'AI Tools',
   aiVideo: 'AI Video',
   aiImage: 'AI Image',
+  aiImageGenerator: 'AI Image Generator',
   watermarkRemover: 'Watermark Remover',
   photoRestoration: 'Photo Restoration',
   aiCouplePhotoMaker: 'AI Couple Photo Maker',
@@ -155,6 +156,14 @@ export default function Footer({ initialTranslations }: FooterProps = {}) {
               {translations.aiTools || 'AI Tools'}
             </Link>
             <ul className="space-y-2 mt-4">
+              <li>
+                <Link
+                  href={getLocalizedHref('/ai-image-generator')}
+                  className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
+                >
+                  {translations.aiImageGenerator || 'AI Image Generator'}
+                </Link>
+              </li>
               <li>
                 <Link
                   href={getLocalizedHref('/world-cup-ai-image-generator')}

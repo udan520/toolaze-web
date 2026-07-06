@@ -37,7 +37,8 @@
       "cat-copy-and-paste": "Katzen-Emoji Kopieren und Einfügen"
     },
     "wan27Image": "Wan 2.7 Image",
-    "worldCupAiImageGenerator": "WM-KI-Bildgenerator"
+    "worldCupAiImageGenerator": "WM-KI-Bildgenerator",
+    "aiImageGenerator": "KI-Bildgenerator"
   },
   "home": {
     "metadata": {
@@ -108,7 +109,7 @@
       {
         "title": "KI Bildgeneratoren",
         "description": "Liefern Sie kampagnenreife Visuals mit Text-zu-Bild und Bild-zu-Bild. GPT Image 2, Nano Banana Pro und Nano Banana 2 liefern scharfe Details, flexible Seitenverhältnisse und Auflösungen bis zu 4K für Anzeigen, Social-Media-Beiträge und Konzeptkunst.",
-        "href": "/model/gpt-image-2-0"
+        "href": "/ai-image-generator"
       },
       {
         "title": "KI Videogeneratoren",
@@ -242,7 +243,8 @@
     "copyright": "© {year} Toolaze Lab. Alle Rechte vorbehalten.",
     "tagline": "Kostenlose Online-Tools • Keine Registrierung erforderlich • 100% Privat",
     "wan27Image": "Wan 2.7 Image",
-    "worldCupAiImageGenerator": "WM-KI-Bildgenerator"
+    "worldCupAiImageGenerator": "WM-KI-Bildgenerator",
+    "aiImageGenerator": "KI-Bildgenerator"
   },
   "breadcrumb": {
     "home": "Startseite",
@@ -258,7 +260,8 @@
     "aiTools": "KI-Tools",
     "model": "Modell",
     "photoRestoration": "Fotorestaurierung",
-    "aiCouplePhotoMaker": "KI-Paarfoto"
+    "aiCouplePhotoMaker": "KI-Paarfoto",
+    "aiImageGenerator": "KI-Bildgenerator"
   },
   "about": {
     "metadata": {

@@ -37,7 +37,8 @@
       "cat-copy-and-paste": "Copiar e Colar Emoji de Gato"
     },
     "wan27Image": "Wan 2.7 Image",
-    "worldCupAiImageGenerator": "Gerador de imagens IA da Copa do Mundo"
+    "worldCupAiImageGenerator": "Gerador de imagens IA da Copa do Mundo",
+    "aiImageGenerator": "Gerador de imagens IA"
   },
   "home": {
     "metadata": {
@@ -108,7 +109,7 @@
       {
         "title": "Geradores de imagens AI",
         "description": "Produza visuais prontos para campanha com texto para imagem e imagem para imagem. GPT Image 2, Nano Banana Pro e Nano Banana 2 oferecem detalhes nítidos, proporções flexíveis e resoluções de até 4K para anúncios, publicações sociais e arte conceitual.",
-        "href": "/model/gpt-image-2-0"
+        "href": "/ai-image-generator"
       },
       {
         "title": "Geradores de vídeos AI",
@@ -242,7 +243,8 @@
     "copyright": "© {year} Toolaze Lab. Todos os direitos reservados.",
     "tagline": "Ferramentas Online Gratuitas • Nenhum Registro Necessário • 100% Privado",
     "wan27Image": "Wan 2.7 Image",
-    "worldCupAiImageGenerator": "Gerador de imagens IA da Copa do Mundo"
+    "worldCupAiImageGenerator": "Gerador de imagens IA da Copa do Mundo",
+    "aiImageGenerator": "Gerador de imagens IA"
   },
   "breadcrumb": {
     "home": "Início",
@@ -258,7 +260,8 @@
     "aiTools": "Ferramentas de IA",
     "model": "Modelo",
     "photoRestoration": "Restauração de fotos",
-    "aiCouplePhotoMaker": "Foto de casal IA"
+    "aiCouplePhotoMaker": "Foto de casal IA",
+    "aiImageGenerator": "Gerador de imagens IA"
   },
   "about": {
     "metadata": {
