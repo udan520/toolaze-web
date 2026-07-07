@@ -62,13 +62,27 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 }
 
-// 确保静态生成
 export const dynamic = 'force-static'
-export const dynamicParams = false
+export const dynamicParams = true
+export const revalidate = 86400
+
+const PREGENERATED_LOCALES = ['en'] as const
+const PREGENERATED_TOOL_SLUG_LIMITS: Record<string, number> = {
+  'image-compressor': 6,
+  'image-converter': 6,
+  'font-generator': 8,
+  'emoji-copy-and-paste': 4,
+  'seedance-2': 3,
+  'watermark-remover': 2,
+}
+
+function getPregeneratedSlugs(tool: string, slugs: string[]) {
+  const limit = PREGENERATED_TOOL_SLUG_LIMITS[tool] ?? 0
+  return slugs.slice(0, limit)
+}
 
 // 2. 告诉 Next.js 在打包时生成哪些静态页面 (SSG)
 export async function generateStaticParams() {
-  const locales = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
   const params = []
   
   try {
@@ -80,9 +94,9 @@ export async function generateStaticParams() {
     const seedance2Slugs = await getAllSlugs('seedance-2', 'en') || []
     const watermarkRemoverSlugs = await getAllSlugs('watermark-remover', 'en') || []
 
-    for (const locale of locales) {
+    for (const locale of PREGENERATED_LOCALES) {
       // 添加图片压缩工具的页面
-      for (const slug of compressorSlugs) {
+      for (const slug of getPregeneratedSlugs('image-compressor', compressorSlugs)) {
         if (slug && typeof slug === 'string') {
           params.push({
             locale: locale,
@@ -93,7 +107,7 @@ export async function generateStaticParams() {
       }
       
       // 添加图片转换工具的页面
-      for (const slug of converterSlugs) {
+      for (const slug of getPregeneratedSlugs('image-converter', converterSlugs)) {
         if (slug && typeof slug === 'string') {
           params.push({
             locale: locale,
@@ -104,7 +118,7 @@ export async function generateStaticParams() {
       }
       
       // 添加字体生成工具的页面（为所有语言生成参数，未支持的语言会在运行时重定向到英语版本）
-      for (const slug of fontGeneratorSlugs) {
+      for (const slug of getPregeneratedSlugs('font-generator', fontGeneratorSlugs)) {
         if (slug && typeof slug === 'string') {
           params.push({
             locale: locale,
@@ -114,8 +128,8 @@ export async function generateStaticParams() {
         }
       }
 
-      // Emoji Copy & Paste L3（/zh-TW/emoji-copy-and-paste/... 等）。此处若漏推参数且 dynamicParams=false，会直接 404。
-      for (const slug of emojiCopyPasteSlugs) {
+      // Emoji Copy & Paste L3：只预生成优先页，其他 locale / slug 由 ISR 按需生成。
+      for (const slug of getPregeneratedSlugs('emoji-copy-and-paste', emojiCopyPasteSlugs)) {
         if (slug && typeof slug === 'string') {
           params.push({
             locale: locale,
@@ -126,7 +140,7 @@ export async function generateStaticParams() {
       }
       
       // 添加 Seedance 2.0 L3 页面（/en/seedance-2/* 会重定向到 /seedance-2/*）
-      for (const slug of seedance2Slugs) {
+      for (const slug of getPregeneratedSlugs('seedance-2', seedance2Slugs)) {
         if (slug && typeof slug === 'string') {
           params.push({
             locale: locale,
@@ -137,7 +151,7 @@ export async function generateStaticParams() {
       }
 
       // Watermark Remover L3（/ja/watermark-remover/...；英语 canonical 仍为 /watermark-remover/...）
-      for (const slug of watermarkRemoverSlugs) {
+      for (const slug of getPregeneratedSlugs('watermark-remover', watermarkRemoverSlugs)) {
         if (slug && typeof slug === 'string') {
           params.push({
             locale: locale,

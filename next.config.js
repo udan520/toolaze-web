@@ -1,4 +1,8 @@
 const isProdBuild = process.env.NODE_ENV === 'production'
+const isStaticExport =
+  process.env.NEXT_OUTPUT_EXPORT === 'true' ||
+  process.env.DEPLOY_TARGET === 'cloudflare-pages' ||
+  Boolean(process.env.CF_PAGES)
 
 /** 局域网用手机/另一台电脑访问 `next dev` 时，允许从该 Origin 拉取 `/_next/*`，避免样式/静态资源加载失败（可用 NEXT_DEV_ALLOWED_ORIGINS 覆盖，逗号分隔 hostname） */
 const devAllowedOrigins = (process.env.NEXT_DEV_ALLOWED_ORIGINS || '127.0.0.1,localhost,192.168.101.9,192.168.101.3')
@@ -9,10 +13,9 @@ const devAllowedOrigins = (process.env.NEXT_DEV_ALLOWED_ORIGINS || '127.0.0.1,lo
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   ...(!isProdBuild ? { allowedDevOrigins: devAllowedOrigins } : {}),
-  // 强制启用静态导出（Cloudflare Pages 需要）
-  // Cloudflare Pages 使用静态文件托管，必须启用静态导出
-  // 仅在生产构建启用，避免本地 dev 模式下样式/静态资源加载异常
-  output: isProdBuild ? 'export' : undefined,
+  // 默认使用标准 Next.js runtime，适配 Vercel 的 ISR / API Routes。
+  // 如需继续构建 Cloudflare Pages 静态导出，显式设置 NEXT_OUTPUT_EXPORT=true。
+  ...(isProdBuild && isStaticExport ? { output: 'export' } : {}),
   // 提高请求体限制，支持去水印上传大图（默认 1MB 会导致上传失败）
   experimental: {
     serverActions: {
@@ -20,7 +23,7 @@ const nextConfig = {
     },
   },
   images: {
-    unoptimized: true, // 静态导出必须禁用 Next.js 的默认图片优化
+    unoptimized: isStaticExport,
     // 允许从 Cloudflare R2 加载远程图片
     remotePatterns: [
       {

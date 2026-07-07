@@ -12,9 +12,14 @@ type PromptDetailPageProps = {
 }
 
 const baseUrl = 'https://toolaze.com'
+const PREGENERATED_PROMPT_DETAIL_LIMIT = 50
+
+export const revalidate = 86400
 
 export function generateStaticParams() {
-  return getPromptItems().map((item) => ({ id: item.tweetId }))
+  return getPromptItems()
+    .slice(0, PREGENERATED_PROMPT_DETAIL_LIMIT)
+    .map((item) => ({ id: item.tweetId }))
 }
 
 export async function generateMetadata({ params }: PromptDetailPageProps): Promise<Metadata> {
