@@ -1,7 +1,7 @@
 import { onRequest } from '../../../../../functions/api/image-to-image/status.js'
 
 export const runtime = 'nodejs'
-export const dynamic = 'force-static'
+export const dynamic = 'force-dynamic'
 
 function run(request) {
   return onRequest({ request, env: process.env })

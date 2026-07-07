@@ -11,7 +11,7 @@ interface LayoutProps {
 
 // 确保静态生成
 export const dynamic = 'force-static'
-export const dynamicParams = false
+export const dynamicParams = true
 
 // 为静态导出生成所有语言版本的参数
 // 注意：在 output: 'export' 模式下，必须为所有动态路由生成静态参数
