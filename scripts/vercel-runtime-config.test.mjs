@@ -30,3 +30,10 @@ test('Vercel API route handlers remain runtime dynamic', () => {
     assert.match(source, /export const dynamic = ['"]force-dynamic['"]/)
   }
 })
+
+test('localized tool ISR params do not prebuild api placeholders', () => {
+  const source = readProjectFile('src/app/[locale]/[tool]/[slug]/page.tsx')
+
+  assert.doesNotMatch(source, /locale:\s*['"]api['"]/)
+  assert.doesNotMatch(source, /\/api\/\*\s*占位/)
+})
