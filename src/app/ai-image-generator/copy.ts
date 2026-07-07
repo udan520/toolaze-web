@@ -2,6 +2,10 @@ export const AI_IMAGE_GENERATOR_LOCALES = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt'
 
 export type AiImageGeneratorLocale = (typeof AI_IMAGE_GENERATOR_LOCALES)[number]
 
+const AI_IMAGE_GENERATOR_ASSET_BASE_URL = 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/ai-image-generator'
+
+const aiImageAsset = (fileName: string) => `${AI_IMAGE_GENERATOR_ASSET_BASE_URL}/${fileName}`
+
 type TextCard = {
   title: string
   text: string
@@ -243,7 +247,7 @@ const en: AiImageGeneratorPageCopy = {
       {
         title: 'Text to Image Generator',
         text: 'Turn a written prompt into a new image. Describe the subject, style, layout, background, lighting, aspect ratio, and exact words that should appear in the image.',
-        image: '/ai-image-generator/text-to-image-generator.webp',
+        image: aiImageAsset('text-to-image-generator.webp'),
         alt: 'AI text to image generator creating a product poster from a written prompt',
         width: 1600,
         height: 900,
@@ -251,7 +255,7 @@ const en: AiImageGeneratorPageCopy = {
       {
         title: 'Image to Image AI Generator',
         text: 'Upload a reference image and ask the model to change the background, style, lighting, scene, product setup, composition, or visual direction while keeping important details stable.',
-        image: '/ai-image-generator/image-to-image-generator.webp',
+        image: aiImageAsset('image-to-image-generator.webp'),
         alt: 'AI image to image generator editing a reference product photo',
         width: 1600,
         height: 900,
@@ -261,7 +265,7 @@ const en: AiImageGeneratorPageCopy = {
       {
         title: 'Product Image Generator',
         text: 'Create ecommerce product images, marketplace listing drafts, lifestyle scenes, package mockups, seasonal product visuals, and clean product hero images.',
-        image: '/ai-image-generator/product-image-generator.webp',
+        image: aiImageAsset('product-image-generator.webp'),
         alt: 'AI generated ecommerce product image with clean background and product hero',
         width: 1600,
         height: 900,
@@ -269,7 +273,7 @@ const en: AiImageGeneratorPageCopy = {
       {
         title: 'Poster and Ad Generator',
         text: 'Generate campaign posters, paid social ads, event graphics, launch visuals, promo banners, and short-copy commercial layouts.',
-        image: '/ai-image-generator/poster-ad-generator.webp',
+        image: aiImageAsset('poster-ad-generator.webp'),
         alt: 'AI generated poster and ad design with readable headline',
         width: 1600,
         height: 900,
@@ -279,7 +283,7 @@ const en: AiImageGeneratorPageCopy = {
       {
         title: 'Thumbnail and Social Visuals',
         text: 'Make YouTube thumbnails, blog hero images, social media posts, creator graphics, profile concepts, and scroll-friendly visual hooks.',
-        image: '/ai-image-generator/thumbnail-social-visuals.webp',
+        image: aiImageAsset('thumbnail-social-visuals.webp'),
         alt: 'AI generated social media thumbnail with bold layout',
         width: 1600,
         height: 900,
@@ -287,7 +291,7 @@ const en: AiImageGeneratorPageCopy = {
       {
         title: 'Model Choice for Better Results',
         text: 'Switch between supported image models when your prompt needs stronger text rendering, better reference editing, higher visual polish, faster output, or more creative variation.',
-        image: '/ai-image-generator/model-choice.webp',
+        image: aiImageAsset('model-choice.webp'),
         alt: 'AI image generator model chooser with multiple image models',
         width: 1600,
         height: 900,
@@ -304,7 +308,7 @@ const en: AiImageGeneratorPageCopy = {
       {
         title: 'Product Launch Poster',
         text: 'Create a clean product poster with a readable headline, product hero, offer area, and polished campaign composition.',
-        image: '/ai-image-generator/product-launch-poster.webp',
+        image: aiImageAsset('product-launch-poster.webp'),
         alt: 'AI generated product launch poster example',
         width: 1600,
         height: 900,
@@ -312,7 +316,7 @@ const en: AiImageGeneratorPageCopy = {
       {
         title: 'Social Media Ad',
         text: 'Generate scroll-stopping social ads with short copy, strong contrast, a clear benefit, and a mobile-friendly layout.',
-        image: '/ai-image-generator/social-media-ad.webp',
+        image: aiImageAsset('social-media-ad.webp'),
         alt: 'AI generated social media ad example',
         width: 1600,
         height: 900,
@@ -320,7 +324,7 @@ const en: AiImageGeneratorPageCopy = {
       {
         title: 'UI Mockup Concept',
         text: 'Draft app screens, dashboard panels, onboarding cards, or product feature overviews for early design exploration.',
-        image: '/ai-image-generator/ui-mockup-concept.webp',
+        image: aiImageAsset('ui-mockup-concept.webp'),
         alt: 'AI generated UI mockup concept example',
         width: 1600,
         height: 900,
@@ -328,7 +332,7 @@ const en: AiImageGeneratorPageCopy = {
       {
         title: 'Ecommerce Product Image',
         text: 'Turn a product idea or reference into a cleaner marketplace image, lifestyle shot, bundle visual, or seasonal listing draft.',
-        image: '/ai-image-generator/ecommerce-product-image.webp',
+        image: aiImageAsset('ecommerce-product-image.webp'),
         alt: 'AI generated ecommerce product image example',
         width: 1600,
         height: 900,
@@ -336,7 +340,7 @@ const en: AiImageGeneratorPageCopy = {
       {
         title: 'YouTube Thumbnail',
         text: 'Create bold thumbnail concepts with a clear subject, expressive composition, readable short text, and strong visual contrast.',
-        image: '/ai-image-generator/youtube-thumbnail.webp',
+        image: aiImageAsset('youtube-thumbnail.webp'),
         alt: 'AI generated YouTube thumbnail example',
         width: 1600,
         height: 900,
@@ -344,7 +348,7 @@ const en: AiImageGeneratorPageCopy = {
       {
         title: 'Educational Infographic',
         text: 'Create study visuals, science diagrams, historical explainers, process charts, and classroom graphics with section labels.',
-        image: '/ai-image-generator/educational-infographic.webp',
+        image: aiImageAsset('educational-infographic.webp'),
         alt: 'AI generated educational infographic example',
         width: 1600,
         height: 900,
@@ -352,7 +356,7 @@ const en: AiImageGeneratorPageCopy = {
       {
         title: 'Portrait or Character Concept',
         text: 'Generate portraits, creator avatars, character ideas, profile images, style studies, and visual references for storytelling.',
-        image: '/ai-image-generator/portrait-character-concept.webp',
+        image: aiImageAsset('portrait-character-concept.webp'),
         alt: 'AI generated portrait and character concept example',
         width: 1600,
         height: 900,
@@ -360,7 +364,7 @@ const en: AiImageGeneratorPageCopy = {
       {
         title: 'Reference-Guided Edit',
         text: 'Upload a reference image and change background, lighting, composition, or style while keeping the main subject stable.',
-        image: '/ai-image-generator/reference-guided-edit.webp',
+        image: aiImageAsset('reference-guided-edit.webp'),
         alt: 'AI generated reference-guided edit example',
         width: 1600,
         height: 900,
@@ -529,7 +533,7 @@ const en: AiImageGeneratorPageCopy = {
         title: 'Product Poster Prompt',
         prompt:
           'Create a premium product launch poster for a fictional sparkling water brand called "Luma Fizz". Show one can as the hero product, cold condensation, citrus slices, bright studio lighting, clean white and indigo background, readable headline text "FRESH SPARK", small subtitle "Citrus sparkling water", polished commercial ad layout, 4:5 vertical poster.',
-        image: '/ai-image-generator/prompt-product-poster.webp',
+        image: aiImageAsset('prompt-product-poster.webp'),
         alt: 'Product poster prompt example image',
         width: 1600,
         height: 900,
@@ -538,7 +542,7 @@ const en: AiImageGeneratorPageCopy = {
         title: 'YouTube Thumbnail Prompt',
         prompt:
           'Create a bold YouTube thumbnail for a video titled "5 AI TOOLS I USE DAILY". Use a clean tech background, one expressive creator portrait, five floating app-style cards, large readable text, strong contrast, bright rim lighting, modern creator economy style, 16:9 composition.',
-        image: '/ai-image-generator/prompt-youtube-thumbnail.webp',
+        image: aiImageAsset('prompt-youtube-thumbnail.webp'),
         alt: 'YouTube thumbnail prompt example image',
         width: 1600,
         height: 900,
@@ -547,7 +551,7 @@ const en: AiImageGeneratorPageCopy = {
         title: 'Social Media Ad Prompt',
         prompt:
           'Create a square social media ad for a productivity app. Show a clean phone mockup with a simple task dashboard, a bright desk scene, and the headline "Plan Your Day in Minutes". Use friendly modern typography, high contrast, and a layout that works on mobile feeds.',
-        image: '/ai-image-generator/prompt-social-media-ad.webp',
+        image: aiImageAsset('prompt-social-media-ad.webp'),
         alt: 'Social media ad prompt example image',
         width: 1600,
         height: 900,
@@ -556,7 +560,7 @@ const en: AiImageGeneratorPageCopy = {
         title: 'Reference Edit Prompt',
         prompt:
           'Use the uploaded product photo as the reference. Preserve the product shape, logo placement, and camera angle. Change only the background into a premium marble bathroom scene with soft daylight, clean reflections, luxury skincare styling, and natural shadows.',
-        image: '/ai-image-generator/prompt-reference-edit.webp',
+        image: aiImageAsset('prompt-reference-edit.webp'),
         alt: 'Reference edit prompt example image',
         width: 1600,
         height: 900,
@@ -565,7 +569,7 @@ const en: AiImageGeneratorPageCopy = {
         title: 'Ecommerce Product Prompt',
         prompt:
           'Create a clean ecommerce product image for a reusable water bottle. Show the bottle standing upright on a white background with soft shadows, three small feature callouts, and a premium marketplace-ready look. Keep the image uncluttered and realistic.',
-        image: '/ai-image-generator/prompt-ecommerce-product.webp',
+        image: aiImageAsset('prompt-ecommerce-product.webp'),
         alt: 'Ecommerce product prompt example image',
         width: 1600,
         height: 900,
@@ -574,7 +578,7 @@ const en: AiImageGeneratorPageCopy = {
         title: 'UI Mockup Prompt',
         prompt:
           'Create a modern SaaS analytics dashboard mockup for a fictional product named "PulseDesk". Include readable labels, left sidebar navigation, three metric cards, a line chart, a campaign table, calm white background, indigo accent color, realistic product UI screenshot style.',
-        image: '/ai-image-generator/prompt-ui-mockup.webp',
+        image: aiImageAsset('prompt-ui-mockup.webp'),
         alt: 'UI mockup prompt example image',
         width: 1600,
         height: 900,
@@ -583,7 +587,7 @@ const en: AiImageGeneratorPageCopy = {
         title: 'Character Sheet Prompt',
         prompt:
           'Create a character reference sheet for an original adventure game courier named Mira. Show front view, side view, back view, three facial expressions, one backpack prop, color palette, and clothing details. Keep the same character identity across every panel.',
-        image: '/ai-image-generator/prompt-character-sheet.webp',
+        image: aiImageAsset('prompt-character-sheet.webp'),
         alt: 'Character sheet prompt example image',
         width: 1600,
         height: 900,
@@ -592,7 +596,7 @@ const en: AiImageGeneratorPageCopy = {
         title: 'Educational Infographic Prompt',
         prompt:
           'Create a clear educational infographic explaining how solar panels work. Include labeled sections for sunlight, photovoltaic cells, inverter, battery, and home power. Use simple icons, readable short labels, clean spacing, friendly science classroom style.',
-        image: '/ai-image-generator/prompt-educational-infographic.webp',
+        image: aiImageAsset('prompt-educational-infographic.webp'),
         alt: 'Educational infographic prompt example image',
         width: 1600,
         height: 900,
