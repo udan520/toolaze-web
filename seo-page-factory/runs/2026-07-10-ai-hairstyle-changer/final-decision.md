@@ -6,7 +6,7 @@ Status: production_rolled_back_after_global_regression
 
 The AI Hairstyle Changer production launch remains rolled back and is not approved for a new production promotion yet.
 
-The project owner approved creating an isolated candidate. The isolated candidate now exists and passes local tests/build checks, but the real `toolaze-web` Vercel Preview is still `UNKNOWN`, so it is not ready for human visual approval or production.
+The project owner approved creating an isolated candidate. The isolated candidate now exists, passes local tests, and has a Ready `toolaze-web` Git Preview. It is ready for human visual review, but not for production promotion until the project owner explicitly approves the Preview.
 
 ## Next Required Action
 
@@ -29,3 +29,13 @@ The production launch has been rolled back after global site breakage was report
 - Local test evidence: 8/8 AI Hairstyle Changer landing tests passed.
 - Production aliases remain on rollback target `toolaze-29vmtct8d-dianawu1202-7870s-projects.vercel.app`.
 
+## Ready Preview Evidence
+
+- Blocked Preview root cause: invalid Git author email `neva@nevadeMacBook-Air.local`.
+- Fixed candidate commit: `cfae9946340019847dbe28a33439cdb7df2d7dbd`
+- Commit author and committer: `udan520 <udan981202@gmail.com>`
+- Ready Preview URL: `https://toolaze-web-git-codex-ai-hair-145c11-dianawu1202-7870s-projects.vercel.app/ai-hairstyle-changer`
+- Vercel deployment URL: `https://toolaze-nxq0phhla-dianawu1202-7870s-projects.vercel.app`
+- Vercel status: `READY`
+- English Preview verification: title, H1, prompt module, Use Prompt, Copy Prompt, identity-preserving prompt text, hero asset, women short-bob asset, and men buzz-cut asset are present.
+- Production aliases still remain on rollback target `toolaze-29vmtct8d-dianawu1202-7870s-projects.vercel.app`.

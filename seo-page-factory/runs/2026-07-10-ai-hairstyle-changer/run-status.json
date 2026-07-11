@@ -12,7 +12,7 @@
     "localPreview": "pass_functional_placeholder_assets",
     "visual": "pass_by_human_approval",
     "localization": "pass_for_launch",
-    "publish": "isolated_preview_blocked_vercel_unknown",
+    "publish": "isolated_preview_ready_pending_human_visual_review",
     "learning": "pass_with_proposals"
   },
   "approval": {
@@ -35,11 +35,28 @@
     "branch": "codex/ai-hairstyle-changer-isolated-candidate",
     "localTests": "pass_8_of_8",
     "localPrebuild": "pass_vercel_output_generated",
-    "previewUrl": "https://toolaze-1rvcszbfv-dianawu1202-7870s-projects.vercel.app",
+    "previewUrl": "https://toolaze-web-git-codex-ai-hair-145c11-dianawu1202-7870s-projects.vercel.app/ai-hairstyle-changer",
+    "deploymentUrl": "https://toolaze-nxq0phhla-dianawu1202-7870s-projects.vercel.app",
     "previewProject": "toolaze-web",
     "previewTarget": "preview",
-    "previewStatus": "UNKNOWN",
+    "previewStatus": "READY",
+    "commit": "cfae9946340019847dbe28a33439cdb7df2d7dbd",
+    "commitAuthor": "udan520 <udan981202@gmail.com>",
+    "blockedPreviewRootCause": "Previous preview deployment used invalid Git author email neva@nevadeMacBook-Air.local.",
+    "verification": {
+      "localFocusedTests": "pass_8_of_8",
+      "englishPreviewRoute": "pass",
+      "contentHits": [
+        "Hairstyle Templates and Prompts",
+        "Use Prompt",
+        "Copy Prompt",
+        "Use the uploaded portrait as the identity reference",
+        "/ai-hairstyle-changer/hero-before-after.webp",
+        "/ai-hairstyle-changer/templates/women/short-bob.webp",
+        "/ai-hairstyle-changer/templates/men/buzz-cut.webp"
+      ]
+    },
     "productionAliasTarget": "https://toolaze-29vmtct8d-dianawu1202-7870s-projects.vercel.app",
-    "decision": "do_not_promote_until_ready_preview_and_human_visual_review"
+    "decision": "ready_for_human_visual_review_do_not_promote_until_explicit_approval"
   }
 }

@@ -56,3 +56,15 @@ Production has been rolled back after project owner reported global breakage fro
 - Current release state: blocked before human visual review because there is no Ready Preview URL.
 - Production remains rolled back to `toolaze-29vmtct8d-dianawu1202-7870s-projects.vercel.app`.
 
+## Ready Preview Status
+
+- Ready Preview URL: `https://toolaze-web-git-codex-ai-hair-145c11-dianawu1202-7870s-projects.vercel.app/ai-hairstyle-changer`
+- Vercel deployment URL: `https://toolaze-nxq0phhla-dianawu1202-7870s-projects.vercel.app`
+- Vercel project: `toolaze-web`
+- Vercel target: `preview`
+- Vercel status: `READY`
+- Commit: `cfae9946340019847dbe28a33439cdb7df2d7dbd`
+- Commit author: `udan520 <udan981202@gmail.com>`
+- Verification: English route contains the prompt module, Use Prompt, Copy Prompt, identity-preserving prompt text, hero asset, women short-bob asset, and men buzz-cut asset.
+- Current release state: ready for project owner visual review only.
+- Production remains rolled back to `toolaze-29vmtct8d-dianawu1202-7870s-projects.vercel.app`; no production promotion has been performed.

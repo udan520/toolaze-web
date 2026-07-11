@@ -82,3 +82,29 @@ Status: production_rolled_back_after_global_regression
 - The isolated candidate is locally valid but does not have a Ready Vercel Preview on the real `toolaze-web` project.
 - Do not promote, submit GSC, or announce until a Ready Preview is available and manually reviewed.
 
+## Git Preview Candidate
+
+- Fixed root cause for the blocked Preview: the previous deployment used invalid Git author email `neva@nevadeMacBook-Air.local`.
+- Isolated candidate commit: `cfae9946340019847dbe28a33439cdb7df2d7dbd`
+- Commit author and committer: `udan520 <udan981202@gmail.com>`
+- Candidate branch pushed: `codex/ai-hairstyle-changer-isolated-candidate`
+- Ready Preview URL: `https://toolaze-web-git-codex-ai-hair-145c11-dianawu1202-7870s-projects.vercel.app/ai-hairstyle-changer`
+- Vercel deployment URL: `https://toolaze-nxq0phhla-dianawu1202-7870s-projects.vercel.app`
+- Vercel project: `toolaze-web`
+- Vercel target: `preview`
+- Vercel status: `READY`
+
+## Git Preview Verification
+
+- English Preview route verified in Chrome at `/ai-hairstyle-changer`.
+- Page title: `Free AI Hairstyle Changer Online | No Signup | Toolaze`
+- H1: `Free AI Hairstyle Changer Online`
+- Verified content hits: `Hairstyle Templates and Prompts`, `Use Prompt`, `Copy Prompt`, and `Use the uploaded portrait as the identity reference`.
+- Verified image references: `/ai-hairstyle-changer/hero-before-after.webp`, `/ai-hairstyle-changer/templates/women/short-bob.webp`, and `/ai-hairstyle-changer/templates/men/buzz-cut.webp`.
+- Local focused test still passes 8/8.
+- Production safety check: `toolaze.com`, `www.toolaze.com`, and `toolaze-web.vercel.app` remain aliased to rollback target `toolaze-29vmtct8d-dianawu1202-7870s-projects.vercel.app`.
+
+## Current Gate
+
+- Preview is ready for project owner visual review.
+- Do not promote to production, submit GSC, or announce until the project owner approves this Ready Preview URL.
