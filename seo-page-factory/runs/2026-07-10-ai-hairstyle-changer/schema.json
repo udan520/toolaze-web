@@ -1,0 +1,79 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://toolaze.com/ai-hairstyle-changer#app",
+      "name": "Toolaze AI Hairstyle Changer",
+      "url": "https://toolaze.com/ai-hairstyle-changer",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "Web",
+      "description": "Upload one portrait, choose a visual hairstyle preset, edit the prompt, and preview a new hairstyle concept online.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "HowTo",
+      "@id": "https://toolaze.com/ai-hairstyle-changer#howto",
+      "name": "How to Change Your Hairstyle with AI",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "name": "Upload one clear portrait",
+          "text": "Choose a front-facing or near-front-facing photo where the full hair shape and hairline are visible."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Pick a hairstyle preset",
+          "text": "Select a visual hairstyle such as Layered Bob, Beach Waves, Taper Fade, Curly Crop, or Buzz Cut."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Edit the prompt and generate",
+          "text": "Add details about length, fringe, volume, curls, or what should remain unchanged, then generate and refine the preview."
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://toolaze.com/ai-hairstyle-changer#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How does an AI hairstyle changer work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It uses an uploaded portrait as a reference and follows the selected hairstyle preset plus an editable prompt to change the visible hair."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What photo works best for changing hairstyles?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use a clear front-facing or slight three-quarter portrait with the full head visible, even lighting, and minimal obstruction."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is the AI preview an exact haircut simulation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. It is a visual concept. Real results depend on hair texture, density, growth pattern, current length, maintenance, and professional technique."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Toolaze AI Hairstyle Changer free with no signup?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The standard Toolaze AI Hairstyle Changer page experience is free, with no signup and no watermark."
+          }
+        }
+      ]
+    }
+  ]
+}

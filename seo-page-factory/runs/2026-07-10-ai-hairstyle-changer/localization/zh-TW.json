@@ -1,0 +1,474 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 1,
+    "modelId": "gpt-image-2",
+    "defaultPrompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a polished short bob ending near the jaw, with clean rounded shape, soft natural volume, realistic strands, and a believable hairline. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background.",
+    "defaultImageUrls": [
+      "/ai-hairstyle-changer/default-reference.png"
+    ],
+    "hideModelBranding": true,
+    "displayName": "AI 髮型變換器",
+    "functionalAcceptance": {
+      "recommendedMode": "gender-tab-preset-first-with-custom",
+      "reason": "Ranking hairstyle tools reduce choice friction with separate women and men preset tabs while keeping custom hairstyle input available.",
+      "presetTitle": "選擇髮型",
+      "presets": [
+        {
+          "label": "短鮑伯頭",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a polished short bob ending near the jaw, with clean rounded shape, soft natural volume, realistic strands, and a believable hairline. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/women/short-bob.webp"
+        },
+        {
+          "label": "A 字鮑伯頭",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a sleek A-line bob, shorter at the back and gradually longer toward the front, with a precise salon shape, realistic texture, and natural hairline. Preserve all facial and non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/a-line-bob.webp"
+        },
+        {
+          "label": "長層次",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to long flowing layers with soft face-framing pieces, natural movement, realistic strands, and balanced volume. Preserve the same face, body, clothing, pose, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/women/long-layers.webp"
+        },
+        {
+          "label": "八字瀏海",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to soft curtain bangs parted at the center with face-framing layers, natural volume, realistic strands, and a believable hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/curtain-bangs.webp"
+        },
+        {
+          "label": "大波浪",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to glamorous large soft waves with full-bodied volume, smooth defined curves, realistic strands, and a natural hairline. Preserve the same person and every non-hair detail.",
+          "image": "/ai-hairstyle-changer/templates/women/big-waves.webp"
+        },
+        {
+          "label": "精靈短髮",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a refined pixie cut with short tapered sides, softly textured top, delicate fringe, realistic strands, and a natural hairline. Preserve all facial and non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/pixie-cut.webp"
+        },
+        {
+          "label": "狼尾剪",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a modern wolf cut with choppy crown layers, soft volume, tapered ends, subtle face framing, realistic texture, and a natural hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/wolf-cut.webp"
+        },
+        {
+          "label": "高丸子頭",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a neat high top bun with a smooth gathered base, a softly rounded bun, subtle natural flyaways, realistic strands, and a believable hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/top-bun.webp"
+        },
+        {
+          "label": "雙辮子",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to two balanced braids with a clean center part, realistic woven strands, natural roots, and a believable hairline. Preserve the face, pose, clothing, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/women/two-braids.webp"
+        },
+        {
+          "label": "捲髮鮑伯頭",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a chin-to-shoulder-length curly bob with defined soft curls, balanced volume, realistic strands, and a natural hairline. Preserve all facial and non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/curly-bob.webp"
+        },
+        {
+          "label": "直髮",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to smooth straight hair with a clean center part, polished natural shine, realistic individual strands, and a believable hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/straight-hair.webp"
+        },
+        {
+          "label": "寸頭",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a close even buzz cut with very short uniform length, realistic scalp shading, precise edges, and a natural hairline. Preserve the same face, age, expression, pose, clothing, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/men/buzz-cut.webp"
+        },
+        {
+          "label": "平頭",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a classic crew cut with short tapered sides and slightly longer structured hair on top, realistic texture, clean edges, and a natural hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/crew-cut.webp"
+        },
+        {
+          "label": "光頭",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Remove only the visible hair and create a clean fully shaved bald head with realistic scalp texture, natural skin shading, and anatomically believable head shape. Preserve the same face, eyebrows, facial hair, age, expression, pose, clothing, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/men/bald.webp"
+        },
+        {
+          "label": "紋理短髮",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a short textured crop with neat sides, separated natural texture on top, subtle forward styling, realistic strands, and a clean hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/textured-crop.webp"
+        },
+        {
+          "label": "漸層短髮",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a clean taper fade with gradual blending around the temples and neckline, controlled length on top, realistic texture, and a natural hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/taper-fade.webp"
+        },
+        {
+          "label": "凌亂漸層",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a messy textured top with a modern faded side profile, natural separation, controlled volume, realistic strands, and a believable hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/messy-fade.webp"
+        },
+        {
+          "label": "短捲髮",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to short defined curls with tidy sides, balanced natural volume, realistic curl texture, and a believable hairline. Preserve the face and every non-hair detail.",
+          "image": "/ai-hairstyle-changer/templates/men/short-curly.webp"
+        },
+        {
+          "label": "後梳油頭",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a polished slicked-back style with controlled volume, visible natural strand direction, a clean silhouette, and a realistic hairline. Preserve all facial and non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/slick-back.webp"
+        },
+        {
+          "label": "柔和鍋蓋頭",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a modern soft bowl cut with rounded shape, lightweight fringe, subtle texture, tidy sides, and a natural hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/soft-bowl.webp"
+        },
+        {
+          "label": "紋理流線髮型",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to medium-length textured flow swept naturally back and to the sides, with layered movement, realistic strands, and a believable hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/textured-flow.webp"
+        },
+        {
+          "label": "短箱型辮",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to short box braids with clean geometric parting, realistic braided texture, natural roots, balanced length, and a believable hairline. Preserve all facial and non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/short-box-braids.webp"
+        }
+      ],
+      "presetTabs": [
+        {
+          "id": "women",
+          "label": "女性"
+        },
+        {
+          "id": "men",
+          "label": "男性"
+        },
+        {
+          "id": "custom",
+          "label": "自訂"
+        }
+      ],
+      "hidePresetPromptInput": true,
+      "customPromptTabId": "custom"
+    },
+    "sampleImages": [
+      {
+        "url": "/ai-hairstyle-changer/hero-before-after.webp",
+        "title": "照片與髮型靈感預覽",
+        "width": 1600,
+        "height": 900
+      }
+    ],
+    "textOverrides": {
+      "promptLabel": "描述想要的髮型",
+      "promptPlaceholder": "描述剪裁、長度、瀏海、紋理、蓬鬆度或造型。"
+    }
+  },
+  "metadata": {
+    "title": "免費 AI 髮型變換器 | 免註冊 | Toolaze",
+    "description": "免費使用 Toolaze AI 髮型變換器，免註冊、無浮水印。上傳一張照片，瀏覽女性或男性髮型，或在自訂中描述其他造型。"
+  },
+  "sectionsOrder": [
+    "intro",
+    "howToUse",
+    "photoTips",
+    "workflowComparison",
+    "scenes",
+    "features",
+    "testimonials",
+    "faq"
+  ],
+  "hero": {
+    "h1": "免費 AI <span class=\"text-gradient\">髮型變換器</span>",
+    "desc": "上傳一張清晰人像，瀏覽女性或男性髮型，或在自訂中描述其他造型。免註冊、無浮水印。"
+  },
+  "intro": {
+    "title": "什麼是 AI 髮型變換器？",
+    "content": [
+      {
+        "title": "用一張照片測試剪髮與造型靈感",
+        "text": "AI 髮型變換器會編輯人像中可見的頭髮，讓你比較不同剪裁、長度、質感與造型方向。Toolaze 將熱門造型分成女性與男性兩個分頁，並提供自訂選項描述其他髮型。結果是視覺概念，不保證與實際剪髮完全相同。"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "如何用 AI 更換髮型",
+    "steps": [
+      {
+        "title": "上傳清晰人像",
+        "desc": "使用正面或輕微側面照片，確保完整頭部、髮型輪廓與髮際線清楚可見。"
+      },
+      {
+        "title": "選擇女性或男性",
+        "desc": "瀏覽短鮑伯頭、大波浪、高丸子頭、寸頭、平頭、光頭或漸層短髮等圖片模板。"
+      },
+      {
+        "title": "生成或使用自訂",
+        "desc": "直接生成選定髮型，或開啟自訂描述其他剪裁、長度、瀏海、紋理或蓬鬆度。"
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "熱門髮型靈感",
+    "subtitle": "先選擇圖片式髮型，再於 Prompt 中調整長度、質感、蓬鬆度與完成效果。",
+    "items": [
+      {
+        "title": "層次鮑伯",
+        "prompt": "Change the hairstyle to a polished shoulder-length layered bob with natural volume. Keep the same person, face, skin tone, expression, clothing, pose, and background.",
+        "note": "選擇後仍可在 Prompt 中調整長度、質感與蓬鬆度。",
+        "image": "/ai-hairstyle-changer/presets/layered-bob.webp"
+      },
+      {
+        "title": "海灘波浪捲",
+        "prompt": "Change the hairstyle to loose beach waves with soft volume and realistic strands. Keep the same face, expression, clothing, pose, and background.",
+        "note": "選擇後仍可在 Prompt 中調整長度、質感與蓬鬆度。",
+        "image": "/ai-hairstyle-changer/presets/beach-waves.webp"
+      },
+      {
+        "title": "捲髮鮑伯",
+        "prompt": "Change the hairstyle to a shoulder-length curly bob with defined soft curls and natural volume. Preserve identity, expression, clothing, pose, and background.",
+        "note": "選擇後仍可在 Prompt 中調整長度、質感與蓬鬆度。",
+        "image": "/ai-hairstyle-changer/presets/curly-bob.webp"
+      },
+      {
+        "title": "精靈盤髮",
+        "prompt": "Change the hairstyle to a short pixie-inspired updo with soft side-swept fringe and realistic texture. Keep the same person and photo setting.",
+        "note": "選擇後仍可在 Prompt 中調整長度、質感與蓬鬆度。",
+        "image": "/ai-hairstyle-changer/presets/pixie-updo.webp"
+      },
+      {
+        "title": "紋理短髮",
+        "prompt": "Change the hairstyle to a short textured crop with subtle volume on top and neat sides. Preserve identity, face, clothing, pose, and background.",
+        "note": "選擇後仍可在 Prompt 中調整長度、質感與蓬鬆度。",
+        "image": "/ai-hairstyle-changer/presets/textured-crop.webp"
+      },
+      {
+        "title": "平頭",
+        "prompt": "Change the hairstyle to a close buzz cut with a realistic hairline and natural scalp shading. Preserve identity, facial features, clothing, and background.",
+        "note": "選擇後仍可在 Prompt 中調整長度、質感與蓬鬆度。",
+        "image": "/ai-hairstyle-changer/presets/buzz-cut.webp"
+      }
+    ]
+  },
+  "photoTips": {
+    "title": "提升髮型預覽效果的照片技巧",
+    "subtitle": "清楚呈現臉部、髮際線、頭型、光線與背景的照片，更有利於產生穩定結果。",
+    "items": [
+      {
+        "title": "完整顯示頭部與頭髮",
+        "desc": "避免頭頂被裁切、戴帽子，或雙手遮住大面積頭髮的照片。",
+        "color": "linear-gradient(135deg, #dbeafe, #6366f1)"
+      },
+      {
+        "title": "使用均勻正面光線",
+        "desc": "強烈陰影與逆光會讓髮際線和髮絲質感更難判讀。",
+        "color": "linear-gradient(135deg, #fce7f3, #db2777)"
+      },
+      {
+        "title": "選擇簡單角度",
+        "desc": "正面或輕微三分之二角度，通常比極端側臉更適合。",
+        "color": "linear-gradient(135deg, #fef3c7, #f97316)"
+      },
+      {
+        "title": "保持臉部清楚",
+        "desc": "避免嚴重模糊、深色太陽眼鏡或頭髮遮住大部分臉部。",
+        "color": "linear-gradient(135deg, #dcfce7, #16a34a)"
+      }
+    ]
+  },
+  "workflowComparison": {
+    "title": "AI 髮型預覽與實際剪髮的差異",
+    "subtitle": "AI 結果適合比較視覺方向。髮質、髮量、生長方向、整理需求與實際可行性，仍需由專業設計師評估。",
+    "columns": [
+      "問題",
+      "AI 預覽可協助",
+      "專業設計師判斷"
+    ],
+    "rows": [
+      [
+        "這個長度適合我嗎？",
+        "快速比較短、中、長髮的視覺比例。",
+        "在保留理想輪廓下，實際可剪除的長度。"
+      ],
+      [
+        "瀏海看起來如何？",
+        "嘗試不同臉部修飾與造型方向。",
+        "依髮際線、髮旋、髮量與整理習慣決定剪法。"
+      ],
+      [
+        "可以測試不同質感嗎？",
+        "預覽波浪、捲髮、直順或增加蓬鬆度。",
+        "哪些整理方式適合你的自然髮質。"
+      ],
+      [
+        "預覽結果精準嗎？",
+        "快速建立可比較或討論的視覺概念。",
+        "依諮詢與頭髮狀況設定實際期待。"
+      ]
+    ]
+  },
+  "scenesTitle": "AI 髮型變換器的使用情境",
+  "scenes": [
+    {
+      "title": "沙龍前的髮型規劃",
+      "icon": "✂️",
+      "desc": "與專業設計師討論前，先比較多種剪裁與造型方向。"
+    },
+    {
+      "title": "更新個人檔案照片",
+      "icon": "👤",
+      "desc": "測試適合頭像、創作者頁面、交友或個人品牌的新造型。"
+    },
+    {
+      "title": "比較男性剪髮",
+      "icon": "💈",
+      "desc": "嘗試漸層、紋理短髮、短捲髮、後梳與平頭。"
+    },
+    {
+      "title": "規劃服裝與角色",
+      "icon": "🎭",
+      "desc": "為 Cosplay、主題人像、表演與角色概念測試髮型。"
+    },
+    {
+      "title": "製作社群內容",
+      "icon": "📸",
+      "desc": "為貼文、情緒板、縮圖與改造前靈感建立不同版本。"
+    }
+  ],
+  "features": {
+    "title": "AI 髮型變換器功能",
+    "items": [
+      {
+        "icon": "🖼️",
+        "iconType": "format",
+        "title": "單張照片流程",
+        "desc": "直接編輯上傳的人像，不重新產生另一個人物。"
+      },
+      {
+        "icon": "🎛️",
+        "iconType": "ai",
+        "title": "女性與男性髮型分頁",
+        "desc": "分別瀏覽不同髮型集合，不必在同一個長清單中混合尋找。"
+      },
+      {
+        "icon": "✍️",
+        "iconType": "prompt",
+        "title": "自訂髮型描述",
+        "desc": "想要的髮型不在圖片模板中時，可在自訂分頁直接描述。"
+      },
+      {
+        "icon": "👩",
+        "iconType": "quality",
+        "title": "多種造型方向",
+        "desc": "探索長髮、短髮、捲髮、直順、女性、男性與低維護造型。"
+      },
+      {
+        "icon": "🔁",
+        "iconType": "speed",
+        "title": "生成後繼續調整",
+        "desc": "若第一次結果的輪廓、長度或質感不理想，可切換其他模板或調整自訂描述。"
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "免費線上使用",
+        "desc": "標準流程可免註冊、無浮水印使用。"
+      }
+    ]
+  },
+  "testimonials": {
+    "title": "使用者如何評價 AI 髮型變換器",
+    "subtitle": "Toolaze 適合產生靈感與溝通用視覺參考，不代表沙龍一定能做出完全相同的結果。",
+    "items": [
+      {
+        "name": "Nina C.",
+        "role": "規劃較短髮型",
+        "quote": "我一直很難想像自己剪鮑伯的樣子。圖片選項讓我能比較長度與輪廓。部分髮絲並不完美，但作為和設計師溝通的參考非常實用。"
+      },
+      {
+        "name": "Marcus T.",
+        "role": "比較男性剪髮",
+        "quote": "我用正面照片比較漸層短髮、平頭、寸頭與光頭。男性分頁很容易瀏覽，自訂也能補充其他方向，再拿結果和理髮師討論。"
+      },
+      {
+        "name": "Elena P.",
+        "role": "創作者人像概念",
+        "quote": "更新個人檔案前，我測試了直順造型與捲髮鮑伯。卡片很容易瀏覽，結果也適合作為拍攝前的情緒板。"
+      }
+    ]
+  },
+  "faqTitle": "AI 髮型變換器常見問題",
+  "faq": [
+    {
+      "q": "AI 髮型變換器如何運作？",
+      "a": "工具會以上傳的人像作為人物參考，再套用選定的髮型模板。若清單中沒有想要的造型，也可以在自訂中描述其他剪裁。"
+    },
+    {
+      "q": "哪種照片效果最好？",
+      "a": "建議使用完整頭部可見、光線均勻、遮擋較少的正面或輕微側面人像。"
+    },
+    {
+      "q": "可以測試女性與男性髮型嗎？",
+      "a": "可以。選項包含長層次、波浪捲、鮑伯、短髮、漸層、捲髮與平頭。"
+    },
+    {
+      "q": "可以嘗試模板中沒有的髮型嗎？",
+      "a": "可以。開啟自訂，描述長度、瀏海、分線、捲度、蓬鬆度、紋理或造型方向。"
+    },
+    {
+      "q": "臉部會保持不變嗎？",
+      "a": "髮型模板包含保留人物特徵與非頭髮細節的指示，但生成結果仍可能不同。請檢查預覽，若臉部或背景改變過多可再次生成。"
+    },
+    {
+      "q": "這是精準的剪髮模擬嗎？",
+      "a": "不是。這是視覺概念。實際結果取決於髮質、髮量、生長方向、目前長度與施作技術。"
+    },
+    {
+      "q": "Toolaze 免費且免註冊嗎？",
+      "a": "是。標準流程可免費使用，免註冊且無浮水印。"
+    },
+    {
+      "q": "可以下載結果嗎？",
+      "a": "生成後可使用頁面提供的儲存或下載功能。"
+    },
+    {
+      "q": "可以拿給髮型設計師參考嗎？",
+      "a": "可以。請將它作為大方向，並與專業設計師確認哪些效果適合你的頭髮。"
+    }
+  ],
+  "moreTools": "相關 AI 工具",
+  "moreToolsLinks": [
+    {
+      "title": "AI Hair Color Changer",
+      "description": "用一張人像測試不同髮色。",
+      "href": "/ai-hair-color-changer"
+    },
+    {
+      "title": "AI Image-to-Image Generator",
+      "description": "使用自訂文字指示編輯上傳的圖片。",
+      "href": "/ai-image-to-image-generator"
+    },
+    {
+      "title": "Photo Restoration",
+      "description": "在線改善老舊、褪色或受損的人像照片。",
+      "href": "/photo-restoration"
+    }
+  ]
+}

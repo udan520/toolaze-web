@@ -32,6 +32,7 @@ export const TOOL_SUPPORTED_LOCALES: Record<string, readonly string[]> = {
   'emoji-copy-and-paste': ALL_LOCALE_CODES,
   'watermark-remover': ALL_LOCALE_CODES,
   'ai-couple-photo-maker': ALL_LOCALE_CODES,
+  'ai-hairstyle-changer': ALL_LOCALE_CODES,
   'photo-restoration': ALL_LOCALE_CODES,
   'world-cup-ai-image-generator': ALL_LOCALE_CODES,
   'prompts': ALL_LOCALE_CODES,

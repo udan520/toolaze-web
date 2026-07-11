@@ -1,0 +1,91 @@
+{
+  "slug": "ai-hairstyle-changer",
+  "mode": "image-to-image",
+  "maxUploadImages": 1,
+  "acceptedInputPatterns": [
+    "one front-facing or near-front-facing portrait",
+    "one person only",
+    "face and full hair outline clearly visible",
+    "even lighting with no hat or heavy occlusion"
+  ],
+  "defaultImageRequirements": [
+    "front-facing portrait",
+    "visible face and hairline",
+    "hair not cropped by the frame",
+    "no hat, hands, or heavy shadow covering the hair"
+  ],
+  "presetStrategy": {
+    "type": "gender-tab-preset-first-with-custom",
+    "tabs": [
+      "women",
+      "men",
+      "custom"
+    ],
+    "hidePresetPromptInput": true,
+    "customPromptTabId": "custom",
+    "minimumPresetsPerGender": 10,
+    "requiredPresets": {
+      "women": [
+        "Short Bob",
+        "A-Line Bob",
+        "Long Layers",
+        "Curtain Bangs",
+        "Big Waves",
+        "Pixie Cut",
+        "Wolf Cut",
+        "Top Bun",
+        "Two Braids",
+        "Curly Bob",
+        "Straight Hair"
+      ],
+      "men": [
+        "Buzz Cut",
+        "Crew Cut",
+        "Bald",
+        "Textured Crop",
+        "Taper Fade",
+        "Messy Fade",
+        "Short Curly",
+        "Slick Back",
+        "Soft Bowl",
+        "Textured Flow",
+        "Short Box Braids"
+      ]
+    },
+    "templatePromptVisibility": "internal-only",
+    "templateReferenceStrategy": "optional-hidden-second-reference-when-final-template-assets-are-ready"
+  },
+  "mustNotClaim": [
+    "automatic face shape analysis",
+    "automatic hairline detection",
+    "exact real haircut simulation",
+    "professional salon accuracy",
+    "unlimited use",
+    "guaranteed identity preservation",
+    "absolute privacy or automatic deletion",
+    "visible model or provider names"
+  ],
+  "handoff": {
+    "seoContent": [
+      "Describe a one-image visual hairstyle preview.",
+      "Explain that results vary with angle, hair visibility, occlusion, and prompt."
+    ],
+    "localPreview": [
+      "Verify Women and Men each show at least ten visual templates.",
+      "Verify preset prompts are not visible to users.",
+      "Verify Custom shows one localized hairstyle description input and no template cards.",
+      "Verify Replace works for the default and uploaded single image."
+    ],
+    "designBrief": [
+      "Use one consistent female model for all Women templates and one consistent male model for all Men templates.",
+      "Replace placeholders with real hairstyle template images and use them as optional hidden reference images.",
+      "Use a 16:9 same-person before-after hero.",
+      "Avoid text baked into images."
+    ],
+    "pmReview": [
+      "Block multi-image messaging and visible model branding.",
+      "Block visible preset prompts.",
+      "Block face-shape analysis and exact haircut claims."
+    ]
+  }
+}

@@ -1,0 +1,474 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 1,
+    "modelId": "gpt-image-2",
+    "defaultPrompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a polished short bob ending near the jaw, with clean rounded shape, soft natural volume, realistic strands, and a believable hairline. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background.",
+    "defaultImageUrls": [
+      "/ai-hairstyle-changer/default-reference.png"
+    ],
+    "hideModelBranding": true,
+    "displayName": "Cambiador de peinado con IA",
+    "functionalAcceptance": {
+      "recommendedMode": "gender-tab-preset-first-with-custom",
+      "reason": "Ranking hairstyle tools reduce choice friction with separate women and men preset tabs while keeping custom hairstyle input available.",
+      "presetTitle": "Elige un peinado",
+      "presets": [
+        {
+          "label": "Bob corto",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a polished short bob ending near the jaw, with clean rounded shape, soft natural volume, realistic strands, and a believable hairline. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/women/short-bob.webp"
+        },
+        {
+          "label": "Bob en A",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a sleek A-line bob, shorter at the back and gradually longer toward the front, with a precise salon shape, realistic texture, and natural hairline. Preserve all facial and non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/a-line-bob.webp"
+        },
+        {
+          "label": "Capas largas",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to long flowing layers with soft face-framing pieces, natural movement, realistic strands, and balanced volume. Preserve the same face, body, clothing, pose, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/women/long-layers.webp"
+        },
+        {
+          "label": "Flequillo cortina",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to soft curtain bangs parted at the center with face-framing layers, natural volume, realistic strands, and a believable hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/curtain-bangs.webp"
+        },
+        {
+          "label": "Ondas grandes",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to glamorous large soft waves with full-bodied volume, smooth defined curves, realistic strands, and a natural hairline. Preserve the same person and every non-hair detail.",
+          "image": "/ai-hairstyle-changer/templates/women/big-waves.webp"
+        },
+        {
+          "label": "Corte pixie",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a refined pixie cut with short tapered sides, softly textured top, delicate fringe, realistic strands, and a natural hairline. Preserve all facial and non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/pixie-cut.webp"
+        },
+        {
+          "label": "Corte wolf",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a modern wolf cut with choppy crown layers, soft volume, tapered ends, subtle face framing, realistic texture, and a natural hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/wolf-cut.webp"
+        },
+        {
+          "label": "Moño alto",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a neat high top bun with a smooth gathered base, a softly rounded bun, subtle natural flyaways, realistic strands, and a believable hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/top-bun.webp"
+        },
+        {
+          "label": "Dos trenzas",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to two balanced braids with a clean center part, realistic woven strands, natural roots, and a believable hairline. Preserve the face, pose, clothing, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/women/two-braids.webp"
+        },
+        {
+          "label": "Bob rizado",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a chin-to-shoulder-length curly bob with defined soft curls, balanced volume, realistic strands, and a natural hairline. Preserve all facial and non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/curly-bob.webp"
+        },
+        {
+          "label": "Pelo liso",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to smooth straight hair with a clean center part, polished natural shine, realistic individual strands, and a believable hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/straight-hair.webp"
+        },
+        {
+          "label": "Rapado",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a close even buzz cut with very short uniform length, realistic scalp shading, precise edges, and a natural hairline. Preserve the same face, age, expression, pose, clothing, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/men/buzz-cut.webp"
+        },
+        {
+          "label": "Corte militar",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a classic crew cut with short tapered sides and slightly longer structured hair on top, realistic texture, clean edges, and a natural hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/crew-cut.webp"
+        },
+        {
+          "label": "Calvo",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Remove only the visible hair and create a clean fully shaved bald head with realistic scalp texture, natural skin shading, and anatomically believable head shape. Preserve the same face, eyebrows, facial hair, age, expression, pose, clothing, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/men/bald.webp"
+        },
+        {
+          "label": "Crop texturizado",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a short textured crop with neat sides, separated natural texture on top, subtle forward styling, realistic strands, and a clean hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/textured-crop.webp"
+        },
+        {
+          "label": "Degradado taper",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a clean taper fade with gradual blending around the temples and neckline, controlled length on top, realistic texture, and a natural hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/taper-fade.webp"
+        },
+        {
+          "label": "Degradado desenfadado",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a messy textured top with a modern faded side profile, natural separation, controlled volume, realistic strands, and a believable hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/messy-fade.webp"
+        },
+        {
+          "label": "Rizo corto",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to short defined curls with tidy sides, balanced natural volume, realistic curl texture, and a believable hairline. Preserve the face and every non-hair detail.",
+          "image": "/ai-hairstyle-changer/templates/men/short-curly.webp"
+        },
+        {
+          "label": "Peinado hacia atrás",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a polished slicked-back style with controlled volume, visible natural strand direction, a clean silhouette, and a realistic hairline. Preserve all facial and non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/slick-back.webp"
+        },
+        {
+          "label": "Corte tazón suave",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a modern soft bowl cut with rounded shape, lightweight fringe, subtle texture, tidy sides, and a natural hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/soft-bowl.webp"
+        },
+        {
+          "label": "Flow texturizado",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to medium-length textured flow swept naturally back and to the sides, with layered movement, realistic strands, and a believable hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/textured-flow.webp"
+        },
+        {
+          "label": "Trenzas africanas cortas",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to short box braids with clean geometric parting, realistic braided texture, natural roots, balanced length, and a believable hairline. Preserve all facial and non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/short-box-braids.webp"
+        }
+      ],
+      "presetTabs": [
+        {
+          "id": "women",
+          "label": "Mujer"
+        },
+        {
+          "id": "men",
+          "label": "Hombre"
+        },
+        {
+          "id": "custom",
+          "label": "Personalizado"
+        }
+      ],
+      "hidePresetPromptInput": true,
+      "customPromptTabId": "custom"
+    },
+    "sampleImages": [
+      {
+        "url": "/ai-hairstyle-changer/hero-before-after.webp",
+        "title": "Vista previa de foto e idea de peinado",
+        "width": 1600,
+        "height": 900
+      }
+    ],
+    "textOverrides": {
+      "promptLabel": "Describe tu peinado",
+      "promptPlaceholder": "Describe el corte, largo, flequillo, textura, volumen o acabado que quieres."
+    }
+  },
+  "metadata": {
+    "title": "Cambiador de peinado con IA gratis | Sin registro | Toolaze",
+    "description": "Prueba gratis el cambiador de peinado con IA de Toolaze, sin registro ni marca de agua. Sube una foto, explora estilos para mujer u hombre o describe otro look en Personalizado."
+  },
+  "sectionsOrder": [
+    "intro",
+    "howToUse",
+    "photoTips",
+    "workflowComparison",
+    "scenes",
+    "features",
+    "testimonials",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Cambiador de <span class=\"text-gradient\">peinado con IA</span> gratis",
+    "desc": "Sube un retrato claro, explora estilos para mujer u hombre o describe otro look en Personalizado. Sin registro ni marca de agua."
+  },
+  "intro": {
+    "title": "¿Qué es un cambiador de peinado con IA?",
+    "content": [
+      {
+        "title": "Prueba ideas de corte y peinado con una foto",
+        "text": "Un cambiador de peinado con IA edita el cabello visible de un retrato para explorar otro corte, largo, textura o acabado. Toolaze separa los estilos populares en Mujer y Hombre e incluye Personalizado para otros peinados. El resultado es una idea visual, no una predicción exacta del corte real."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Cómo cambiar tu peinado con IA",
+    "steps": [
+      {
+        "title": "Sube un retrato claro",
+        "desc": "Usa una foto frontal o en tres cuartos donde se vean toda la cabeza, la forma del cabello y la línea de nacimiento."
+      },
+      {
+        "title": "Elige Mujer u Hombre",
+        "desc": "Explora estilos como Bob corto, Ondas grandes, Moño alto, Rapado, Corte militar, Calvo o Degradado taper."
+      },
+      {
+        "title": "Genera o usa Personalizado",
+        "desc": "Genera el peinado elegido o abre Personalizado para describir otro corte, largo, flequillo, textura o volumen."
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "Peinados populares para probar",
+    "subtitle": "Empieza con un preset visual y ajusta en el prompt el largo, la textura, el volumen y el acabado.",
+    "items": [
+      {
+        "title": "Bob en capas",
+        "prompt": "Change the hairstyle to a polished shoulder-length layered bob with natural volume. Keep the same person, face, skin tone, expression, clothing, pose, and background.",
+        "note": "Después de elegirlo, puedes ajustar largo, textura y volumen en el prompt.",
+        "image": "/ai-hairstyle-changer/presets/layered-bob.webp"
+      },
+      {
+        "title": "Ondas playeras",
+        "prompt": "Change the hairstyle to loose beach waves with soft volume and realistic strands. Keep the same face, expression, clothing, pose, and background.",
+        "note": "Después de elegirlo, puedes ajustar largo, textura y volumen en el prompt.",
+        "image": "/ai-hairstyle-changer/presets/beach-waves.webp"
+      },
+      {
+        "title": "Bob rizado",
+        "prompt": "Change the hairstyle to a shoulder-length curly bob with defined soft curls and natural volume. Preserve identity, expression, clothing, pose, and background.",
+        "note": "Después de elegirlo, puedes ajustar largo, textura y volumen en el prompt.",
+        "image": "/ai-hairstyle-changer/presets/curly-bob.webp"
+      },
+      {
+        "title": "Recogido pixie",
+        "prompt": "Change the hairstyle to a short pixie-inspired updo with soft side-swept fringe and realistic texture. Keep the same person and photo setting.",
+        "note": "Después de elegirlo, puedes ajustar largo, textura y volumen en el prompt.",
+        "image": "/ai-hairstyle-changer/presets/pixie-updo.webp"
+      },
+      {
+        "title": "Corte texturizado",
+        "prompt": "Change the hairstyle to a short textured crop with subtle volume on top and neat sides. Preserve identity, face, clothing, pose, and background.",
+        "note": "Después de elegirlo, puedes ajustar largo, textura y volumen en el prompt.",
+        "image": "/ai-hairstyle-changer/presets/textured-crop.webp"
+      },
+      {
+        "title": "Rapado",
+        "prompt": "Change the hairstyle to a close buzz cut with a realistic hairline and natural scalp shading. Preserve identity, facial features, clothing, and background.",
+        "note": "Después de elegirlo, puedes ajustar largo, textura y volumen en el prompt.",
+        "image": "/ai-hairstyle-changer/presets/buzz-cut.webp"
+      }
+    ]
+  },
+  "photoTips": {
+    "title": "Consejos de foto para mejores resultados",
+    "subtitle": "Una buena referencia muestra con claridad el rostro, la línea del cabello, la forma de la cabeza, la luz y el fondo.",
+    "items": [
+      {
+        "title": "Muestra toda la cabeza y el cabello",
+        "desc": "Evita fotos con la parte superior cortada, sombreros o manos que oculten gran parte del cabello.",
+        "color": "linear-gradient(135deg, #dbeafe, #6366f1)"
+      },
+      {
+        "title": "Usa luz frontal uniforme",
+        "desc": "Las sombras fuertes y el contraluz dificultan leer la línea del cabello y la textura.",
+        "color": "linear-gradient(135deg, #fce7f3, #db2777)"
+      },
+      {
+        "title": "Elige un ángulo sencillo",
+        "desc": "Los retratos frontales o en tres cuartos funcionan mejor que los perfiles extremos.",
+        "color": "linear-gradient(135deg, #fef3c7, #f97316)"
+      },
+      {
+        "title": "Mantén el rostro despejado",
+        "desc": "Evita desenfoque fuerte, gafas oscuras y mechones que cubran la mayor parte del rostro.",
+        "color": "linear-gradient(135deg, #dcfce7, #16a34a)"
+      }
+    ]
+  },
+  "workflowComparison": {
+    "title": "Vista previa con IA frente a un corte real",
+    "subtitle": "Usa el resultado como orientación visual. Un profesional debe valorar textura, densidad, crecimiento, mantenimiento y viabilidad técnica.",
+    "columns": [
+      "Pregunta",
+      "La vista con IA ayuda a",
+      "Un profesional decide"
+    ],
+    "rows": [
+      [
+        "¿Me favorece este largo?",
+        "Comparar proporciones cortas, medias y largas.",
+        "Cuánto largo puede retirarse manteniendo la forma deseada."
+      ],
+      [
+        "¿Cómo se vería un flequillo?",
+        "Explorar opciones que enmarcan el rostro.",
+        "Cómo cortar según nacimiento, remolinos, densidad y mantenimiento."
+      ],
+      [
+        "¿Puedo probar otra textura?",
+        "Visualizar ondas, rizos, acabado liso o más volumen.",
+        "Qué métodos son realistas para el cabello natural."
+      ],
+      [
+        "¿La vista es exacta?",
+        "Crear un concepto rápido para comparar o comentar.",
+        "Definir expectativas reales tras una consulta y revisión del cabello."
+      ]
+    ]
+  },
+  "scenesTitle": "Formas de usar el cambiador de peinado con IA",
+  "scenes": [
+    {
+      "title": "Ideas antes de ir al salón",
+      "icon": "✂️",
+      "desc": "Compara varias direcciones antes de hablar con un profesional sobre corte o peinado."
+    },
+    {
+      "title": "Renovar la foto de perfil",
+      "icon": "👤",
+      "desc": "Prueba nuevos looks para avatares, perfiles de creador, citas o marca personal."
+    },
+    {
+      "title": "Probar cortes masculinos",
+      "icon": "💈",
+      "desc": "Compara degradados, cortes texturizados, rizos, peinados hacia atrás y rapados."
+    },
+    {
+      "title": "Planificar vestuario y personajes",
+      "icon": "🎭",
+      "desc": "Prueba estilos para cosplay, retratos temáticos, actuaciones y personajes."
+    },
+    {
+      "title": "Crear contenido social",
+      "icon": "📸",
+      "desc": "Genera variantes para publicaciones, moodboards, miniaturas e ideas previas al cambio."
+    }
+  ],
+  "features": {
+    "title": "Funciones del cambiador de peinado con IA",
+    "items": [
+      {
+        "icon": "🖼️",
+        "iconType": "format",
+        "title": "Flujo con una sola foto",
+        "desc": "Edita un retrato subido en lugar de generar una identidad nueva."
+      },
+      {
+        "icon": "🎛️",
+        "iconType": "ai",
+        "title": "Pestañas para mujer y hombre",
+        "desc": "Explora colecciones separadas en lugar de mezclar todos los estilos en una sola lista."
+      },
+      {
+        "icon": "✍️",
+        "iconType": "prompt",
+        "title": "Descripción de peinado personalizada",
+        "desc": "Abre Personalizado cuando el peinado que buscas no aparezca entre las plantillas visuales."
+      },
+      {
+        "icon": "👩",
+        "iconType": "quality",
+        "title": "Estilos para distintos looks",
+        "desc": "Explora opciones largas, cortas, rizadas, lisas, femeninas, masculinas y fáciles de mantener."
+      },
+      {
+        "icon": "🔁",
+        "iconType": "speed",
+        "title": "Genera y perfecciona",
+        "desc": "Cambia de plantilla o ajusta la descripción personalizada si necesitas otra forma, longitud o textura."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "Uso online gratis",
+        "desc": "Prueba el flujo estándar sin registro y sin marca de agua."
+      }
+    ]
+  },
+  "testimonials": {
+    "title": "Opiniones sobre el cambiador de peinado con IA",
+    "subtitle": "Toolaze se usa como generador de ideas y referencia visual, no como promesa de un resultado exacto.",
+    "items": [
+      {
+        "name": "Nina C.",
+        "role": "Planificación de un corte corto",
+        "quote": "Me costaba imaginarme con un bob. Los presets me ayudaron a comparar el largo y la forma. Algunos mechones no quedaron perfectos, pero la imagen fue una referencia clara para hablar con mi estilista."
+      },
+      {
+        "name": "Marcus T.",
+        "role": "Comparación de cortes masculinos",
+        "quote": "Usé una foto frontal para comparar degradado taper, corte militar, rapado y calvo. La pestaña Hombre hizo las opciones fáciles de revisar y Personalizado me dio otra alternativa antes de hablar con mi barbero."
+      },
+      {
+        "name": "Elena P.",
+        "role": "Conceptos para retratos de creador",
+        "quote": "Para renovar mi perfil probé un acabado liso y un bob rizado. Las tarjetas eran rápidas de revisar y los resultados funcionaron bien como moodboard para organizar la sesión."
+      }
+    ]
+  },
+  "faqTitle": "Preguntas frecuentes sobre el cambiador de peinado con IA",
+  "faq": [
+    {
+      "q": "¿Cómo funciona un cambiador de peinado con IA?",
+      "a": "Usa el retrato subido como referencia de identidad y aplica la plantilla de peinado seleccionada. Personalizado permite describir otro corte si no aparece en la lista."
+    },
+    {
+      "q": "¿Qué foto funciona mejor?",
+      "a": "Elige un retrato frontal o en tres cuartos, con la cabeza completa, luz uniforme y poca obstrucción."
+    },
+    {
+      "q": "¿Puedo probar peinados de mujer y de hombre?",
+      "a": "Sí. Hay capas largas, ondas, bobs, cortes cortos, degradados, rizos y rapados."
+    },
+    {
+      "q": "¿Puedo probar un peinado que no aparece en las plantillas?",
+      "a": "Sí. Abre Personalizado y describe el largo, flequillo, raya, rizos, volumen, textura o acabado."
+    },
+    {
+      "q": "¿Se mantendrá mi rostro?",
+      "a": "La plantilla incluye instrucciones para conservar la identidad y los detalles ajenos al cabello, pero el resultado puede variar. Revisa la imagen y vuelve a generar si cambia demasiado."
+    },
+    {
+      "q": "¿Es una simulación exacta del corte?",
+      "a": "No. Es un concepto visual. El resultado real depende de textura, densidad, crecimiento, largo actual y técnica."
+    },
+    {
+      "q": "¿Toolaze es gratis y sin registro?",
+      "a": "Sí. El flujo estándar está disponible gratis, sin registro y sin marca de agua."
+    },
+    {
+      "q": "¿Puedo descargar el resultado?",
+      "a": "Después de generar la imagen, usa los controles disponibles para guardarla o descargarla."
+    },
+    {
+      "q": "¿Puedo mostrarla en el salón?",
+      "a": "Sí. Úsala como orientación general y confirma con un profesional qué es realista para tu cabello."
+    }
+  ],
+  "moreTools": "Herramientas de IA relacionadas",
+  "moreToolsLinks": [
+    {
+      "title": "AI Hair Color Changer",
+      "description": "Prueba otro color de cabello a partir de un retrato.",
+      "href": "/ai-hair-color-changer"
+    },
+    {
+      "title": "AI Image-to-Image Generator",
+      "description": "Edita una imagen subida con una instrucción de texto personalizada.",
+      "href": "/ai-image-to-image-generator"
+    },
+    {
+      "title": "Photo Restoration",
+      "description": "Mejora retratos antiguos, descoloridos o dañados online.",
+      "href": "/photo-restoration"
+    }
+  ]
+}

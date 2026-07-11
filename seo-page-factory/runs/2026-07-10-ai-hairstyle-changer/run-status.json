@@ -1,0 +1,45 @@
+{
+  "slug": "ai-hairstyle-changer",
+  "updatedAt": "2026-07-11",
+  "currentAgent": "Publish Gate",
+  "gates": {
+    "manager": "pass",
+    "keyword": "pass_with_unverified_metrics",
+    "competitor": "pass",
+    "capability": "pass_with_limits",
+    "functionalAcceptance": "pass",
+    "content": "pass",
+    "localPreview": "pass_functional_placeholder_assets",
+    "visual": "pass_by_human_approval",
+    "localization": "pass_for_launch",
+    "publish": "isolated_preview_blocked_vercel_unknown",
+    "learning": "pass_with_proposals"
+  },
+  "approval": {
+    "approvedBy": "project_owner",
+    "approvedAt": "2026-07-11 10:45:20 CST",
+    "scope": "Final assets, PM Visual Review, and production publish approval",
+    "note": "Project owner confirmed the page meets launch standard and approved publishing despite the earlier visual gate blockers."
+  },
+  "productionVerification": {
+    "checkedAt": "2026-07-11 14:09:57 CST",
+    "productionUrl": "https://toolaze.com/ai-hairstyle-changer",
+    "localeUrls": "sitemap_sample_verified_after_rollback",
+    "vercelStatus": "READY",
+    "rolledBackFrom": "https://toolaze-1lrb6i3af-dianawu1202-7870s-projects.vercel.app",
+    "rollbackTarget": "https://toolaze-29vmtct8d-dianawu1202-7870s-projects.vercel.app",
+    "note": "Project owner reported the production release caused global site breakage. Production was rolled back to the 2026-07-11 01:30:57 CST Ready deployment. Core routes and sitemap sample returned 200 after rollback. The AI Hairstyle Changer launch remains blocked and must not be resubmitted to GSC or announced until a clean isolated publish is rebuilt and reviewed."
+  },
+  "isolatedCandidate": {
+    "worktree": "/Users/neva/Desktop/workspace/toolaze-web/.worktrees/ai-hairstyle-changer-isolated-candidate",
+    "branch": "codex/ai-hairstyle-changer-isolated-candidate",
+    "localTests": "pass_8_of_8",
+    "localPrebuild": "pass_vercel_output_generated",
+    "previewUrl": "https://toolaze-1rvcszbfv-dianawu1202-7870s-projects.vercel.app",
+    "previewProject": "toolaze-web",
+    "previewTarget": "preview",
+    "previewStatus": "UNKNOWN",
+    "productionAliasTarget": "https://toolaze-29vmtct8d-dianawu1202-7870s-projects.vercel.app",
+    "decision": "do_not_promote_until_ready_preview_and_human_visual_review"
+  }
+}

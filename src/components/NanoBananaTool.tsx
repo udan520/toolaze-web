@@ -140,12 +140,39 @@ interface NanoBananaToolProps {
   modelName?: string
   dailyLimitStorageKey?: string
   presetMode?: 'default' | 'ai-couple-photo-maker'
+  defaultMode?: 'image-to-image' | 'text-to-image'
+  defaultPrompt?: string
+  defaultImageUrls?: string[]
+  maxUploadImages?: number
+  hideModelBranding?: boolean
   sampleImages?: Array<{
     url: string
     title?: string
     width?: number
     height?: number
   }>
+  promptPresets?: Array<{
+    label: string
+    prompt?: string
+    image?: string
+    group?: string
+  }>
+  promptPresetTitle?: string
+  promptPresetTabs?: Array<{
+    id: string
+    label: string
+  }>
+  hidePresetPromptInput?: boolean
+  customPromptTabId?: string
+  compactResultPanel?: boolean
+  sceneText?: {
+    uploadTitle?: string
+    uploadHelper?: string
+    promptLabel?: string
+    promptPlaceholder?: string
+    generateLabel?: string
+    safetyHelper?: string
+  }
   initialTranslations?: any
 }
 
@@ -291,7 +318,19 @@ export default function NanoBananaTool({
   modelName = 'Nano Banana Pro',
   dailyLimitStorageKey = 'nano_banana_last_used_date',
   presetMode = 'default',
+  defaultMode,
+  defaultPrompt = '',
+  defaultImageUrls = [],
+  maxUploadImages,
+  hideModelBranding = false,
   sampleImages,
+  promptPresets = [],
+  promptPresetTitle = 'Style Presets',
+  promptPresetTabs = [],
+  hidePresetPromptInput = false,
+  customPromptTabId = 'custom',
+  compactResultPanel = false,
+  sceneText,
   initialTranslations,
 }: NanoBananaToolProps = {}) {
   const router = useRouter()
@@ -358,6 +397,9 @@ export default function NanoBananaTool({
     Object.entries(values).reduce((next, [key, value]) => next.replace(`{${key}}`, String(value)), template)
   const isNanoBanana2CoupleMode = presetMode === 'ai-couple-photo-maker'
   const modelConfig = MODEL_CONFIG[modelId]
+  const configuredMaxImages = typeof maxUploadImages === 'number' && Number.isFinite(maxUploadImages)
+    ? Math.max(0, Math.min(Math.floor(maxUploadImages), modelConfig.maxImages))
+    : undefined
   const modelOptions: ModelOption[] = [
     { id: 'nano-banana-pro', name: 'Nano Banana Pro' },
     { id: 'nano-banana-2', name: 'Nano Banana 2' },
@@ -366,10 +408,10 @@ export default function NanoBananaTool({
     { id: 'wan-2-7-image', name: 'Wan 2.7 Image' },
   ]
   const [activeTab, setActiveTab] = useState<'image-to-image' | 'text-to-image'>(
-    modelId === 'gpt-image-2' || modelId === 'seedream-4-5' || modelId === 'wan-2-7-image' ? 'text-to-image' : 'image-to-image'
+    defaultMode || (modelId === 'gpt-image-2' || modelId === 'seedream-4-5' || modelId === 'wan-2-7-image' ? 'text-to-image' : 'image-to-image')
   )
   const [imageFiles, setImageFiles] = useState<ImageItem[]>([])
-  const [prompt, setPrompt] = useState('')
+  const [prompt, setPrompt] = useState(defaultPrompt)
   const [aspectRatio, setAspectRatio] = useState<string>(
     modelId === 'seedream-4-5' || modelId === 'wan-2-7-image' ? '1:1' : isNanoBanana2CoupleMode ? 'auto' : 'auto'
   )
@@ -383,6 +425,8 @@ export default function NanoBananaTool({
   const [rightMode, setRightMode] = useState<RightPanelMode>('sample')
   const [history, setHistory] = useState<HistoryItem[]>([])
   const [currentResult, setCurrentResult] = useState<HistoryItem | null>(null)
+  const [remoteImageUrls, setRemoteImageUrls] = useState<string[]>(defaultImageUrls.slice(0, configuredMaxImages ?? modelConfig.maxImages))
+  const [activePromptPresetTab, setActivePromptPresetTab] = useState(promptPresetTabs[0]?.id || '')
   const [previewImage, setPreviewImage] = useState<string | null>(null)
   const [promptDemoImage, setPromptDemoImage] = useState<PromptDemoImage | null>(null)
   const [downloadingUrl, setDownloadingUrl] = useState<string | null>(null)
@@ -498,7 +542,7 @@ export default function NanoBananaTool({
     }, 4000)
   }
 
-  const MAX_IMAGES = isNanoBanana2CoupleMode ? 2 : modelConfig.maxImages
+  const MAX_IMAGES = configuredMaxImages ?? (isNanoBanana2CoupleMode ? 2 : modelConfig.maxImages)
   const MAX_FILE_SIZE_MB = modelConfig.maxFileSizeMb ?? 30
   const MAX_FILE_SIZE = MAX_FILE_SIZE_MB * 1024 * 1024
 

@@ -1,0 +1,178 @@
+{
+  "status": "local_preview_only",
+  "notes": [
+    "Women templates use one consistent female placeholder model.",
+    "Men templates use one consistent male placeholder model.",
+    "Template images are not approved as final hairstyle proof or production assets."
+  ],
+  "assets": [
+    {
+      "id": "default-reference",
+      "section": "functional_tool",
+      "purpose": "Default portrait used by the single-image workflow",
+      "path": "/ai-hairstyle-changer/default-reference.png",
+      "alt": "Clear portrait used as the default hairstyle reference"
+    },
+    {
+      "id": "hero-preview",
+      "section": "functional_tool",
+      "purpose": "Local 16:9 photo and hairstyle inspiration preview",
+      "path": "/ai-hairstyle-changer/hero-before-after.webp",
+      "alt": "Portrait and hairstyle inspiration shown side by side"
+    },
+    {
+      "id": "women-short-bob",
+      "section": "preset_selector",
+      "purpose": "Women template placeholder for a short bob",
+      "path": "/ai-hairstyle-changer/templates/women/short-bob.webp",
+      "alt": "Female model placeholder for a short bob hairstyle"
+    },
+    {
+      "id": "women-a-line-bob",
+      "section": "preset_selector",
+      "purpose": "Women template placeholder for an A-line bob",
+      "path": "/ai-hairstyle-changer/templates/women/a-line-bob.webp",
+      "alt": "Female model placeholder for an A-line bob hairstyle"
+    },
+    {
+      "id": "women-long-layers",
+      "section": "preset_selector",
+      "purpose": "Women template placeholder for long layers",
+      "path": "/ai-hairstyle-changer/templates/women/long-layers.webp",
+      "alt": "Female model placeholder for a long layered hairstyle"
+    },
+    {
+      "id": "women-curtain-bangs",
+      "section": "preset_selector",
+      "purpose": "Women template placeholder for curtain bangs",
+      "path": "/ai-hairstyle-changer/templates/women/curtain-bangs.webp",
+      "alt": "Female model placeholder for curtain bangs"
+    },
+    {
+      "id": "women-big-waves",
+      "section": "preset_selector",
+      "purpose": "Women template placeholder for large waves",
+      "path": "/ai-hairstyle-changer/templates/women/big-waves.webp",
+      "alt": "Female model placeholder for a large wave hairstyle"
+    },
+    {
+      "id": "women-pixie-cut",
+      "section": "preset_selector",
+      "purpose": "Women template placeholder for a pixie cut",
+      "path": "/ai-hairstyle-changer/templates/women/pixie-cut.webp",
+      "alt": "Female model placeholder for a pixie cut hairstyle"
+    },
+    {
+      "id": "women-wolf-cut",
+      "section": "preset_selector",
+      "purpose": "Women template placeholder for a wolf cut",
+      "path": "/ai-hairstyle-changer/templates/women/wolf-cut.webp",
+      "alt": "Female model placeholder for a wolf cut hairstyle"
+    },
+    {
+      "id": "women-top-bun",
+      "section": "preset_selector",
+      "purpose": "Women template placeholder for a top bun",
+      "path": "/ai-hairstyle-changer/templates/women/top-bun.webp",
+      "alt": "Female model placeholder for a high top bun hairstyle"
+    },
+    {
+      "id": "women-two-braids",
+      "section": "preset_selector",
+      "purpose": "Women template placeholder for two braids",
+      "path": "/ai-hairstyle-changer/templates/women/two-braids.webp",
+      "alt": "Female model placeholder for a two braid hairstyle"
+    },
+    {
+      "id": "women-curly-bob",
+      "section": "preset_selector",
+      "purpose": "Women template placeholder for a curly bob",
+      "path": "/ai-hairstyle-changer/templates/women/curly-bob.webp",
+      "alt": "Female model placeholder for a curly bob hairstyle"
+    },
+    {
+      "id": "women-straight-hair",
+      "section": "preset_selector",
+      "purpose": "Women template placeholder for straight hair",
+      "path": "/ai-hairstyle-changer/templates/women/straight-hair.webp",
+      "alt": "Female model placeholder for a straight hairstyle"
+    },
+    {
+      "id": "men-buzz-cut",
+      "section": "preset_selector",
+      "purpose": "Men template placeholder for a buzz cut",
+      "path": "/ai-hairstyle-changer/templates/men/buzz-cut.webp",
+      "alt": "Male model placeholder for a close buzz cut hairstyle"
+    },
+    {
+      "id": "men-crew-cut",
+      "section": "preset_selector",
+      "purpose": "Men template placeholder for a crew cut",
+      "path": "/ai-hairstyle-changer/templates/men/crew-cut.webp",
+      "alt": "Male model placeholder for a classic crew cut hairstyle"
+    },
+    {
+      "id": "men-bald",
+      "section": "preset_selector",
+      "purpose": "Men template placeholder for a bald look",
+      "path": "/ai-hairstyle-changer/templates/men/bald.webp",
+      "alt": "Male model placeholder for a fully shaved bald look"
+    },
+    {
+      "id": "men-textured-crop",
+      "section": "preset_selector",
+      "purpose": "Men template placeholder for a textured crop",
+      "path": "/ai-hairstyle-changer/templates/men/textured-crop.webp",
+      "alt": "Male model placeholder for a textured crop hairstyle"
+    },
+    {
+      "id": "men-taper-fade",
+      "section": "preset_selector",
+      "purpose": "Men template placeholder for a taper fade",
+      "path": "/ai-hairstyle-changer/templates/men/taper-fade.webp",
+      "alt": "Male model placeholder for a taper fade hairstyle"
+    },
+    {
+      "id": "men-messy-fade",
+      "section": "preset_selector",
+      "purpose": "Men template placeholder for a messy fade",
+      "path": "/ai-hairstyle-changer/templates/men/messy-fade.webp",
+      "alt": "Male model placeholder for a messy fade hairstyle"
+    },
+    {
+      "id": "men-short-curly",
+      "section": "preset_selector",
+      "purpose": "Men template placeholder for short curls",
+      "path": "/ai-hairstyle-changer/templates/men/short-curly.webp",
+      "alt": "Male model placeholder for a short curly hairstyle"
+    },
+    {
+      "id": "men-slick-back",
+      "section": "preset_selector",
+      "purpose": "Men template placeholder for slicked-back hair",
+      "path": "/ai-hairstyle-changer/templates/men/slick-back.webp",
+      "alt": "Male model placeholder for a slicked-back hairstyle"
+    },
+    {
+      "id": "men-soft-bowl",
+      "section": "preset_selector",
+      "purpose": "Men template placeholder for a soft bowl cut",
+      "path": "/ai-hairstyle-changer/templates/men/soft-bowl.webp",
+      "alt": "Male model placeholder for a soft bowl cut hairstyle"
+    },
+    {
+      "id": "men-textured-flow",
+      "section": "preset_selector",
+      "purpose": "Men template placeholder for textured flow",
+      "path": "/ai-hairstyle-changer/templates/men/textured-flow.webp",
+      "alt": "Male model placeholder for a textured flow hairstyle"
+    },
+    {
+      "id": "men-short-box-braids",
+      "section": "preset_selector",
+      "purpose": "Men template placeholder for short box braids",
+      "path": "/ai-hairstyle-changer/templates/men/short-box-braids.webp",
+      "alt": "Male model placeholder for short box braids"
+    }
+  ]
+}

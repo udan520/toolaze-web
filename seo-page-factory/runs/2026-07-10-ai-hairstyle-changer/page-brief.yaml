@@ -1,0 +1,71 @@
+task_id: "2026-07-10-ai-hairstyle-changer"
+slug: "ai-hairstyle-changer"
+page_title: "AI Hairstyle Changer"
+page_type: image
+primary_keyword: "ai hairstyle changer"
+visible_model_branding_allowed: false
+required_modules:
+  - functional_tool
+  - how_to
+  - examples
+  - use_cases
+  - photo_tips
+  - capability_limits
+  - faq
+human_review_required: true
+status: "ready_for_human_review"
+
+page:
+  title: "AI Hairstyle Changer"
+  slug: "ai-hairstyle-changer"
+  url: "/ai-hairstyle-changer"
+  page_type: "图片场景类 AI Tools"
+  page_group: "ai-tools"
+  target_market: "United States"
+  language_for_internal_docs: "zh-CN"
+
+workflow:
+  manager_status: "completed"
+  keyword_status: "completed_with_unverified_metrics"
+  competitor_status: "completed"
+  capability_status: "completed_with_limits"
+  functional_acceptance_status: "completed"
+  page_planning_status: "completed"
+  seo_content_status: "completed"
+  local_preview_status: "completed"
+  visual_status: "blocked_pending_final_transformation_asset"
+  localization_status: "completed_for_local_preview"
+  publish_status: "blocked_pending_human_approval"
+  learning_status: "completed_with_proposals"
+  current_agent: "PM Review Agent"
+
+functional:
+  mode: "image-to-image"
+  max_upload_images: 1
+  hidden_model: true
+  preset_strategy: "visual-preset-first-with-editable-prompt"
+  preset_count: 11
+  default_preset: "Layered Bob"
+  result_demo: "16:9 before-after"
+
+requirements:
+  - "Use the real shared generator"
+  - "Do not show a model selector"
+  - "Use a single clear portrait"
+  - "Show visual hairstyle cards"
+  - "Keep the prompt editable"
+  - "Include women and men hairstyle examples"
+  - "Use local optimized WebP assets"
+  - "Translate every visible string"
+  - "Add homepage, navigation, footer, AI Tools hub, and sitemap entries"
+  - "Do not publish before human approval"
+
+must_not_claim:
+  - "automatic face shape analysis"
+  - "automatic hairline detection"
+  - "exact real haircut simulation"
+  - "professional salon accuracy"
+  - "unlimited use"
+  - "guaranteed identity preservation"
+  - "absolute privacy or automatic deletion"
+  - "underlying model or provider names"

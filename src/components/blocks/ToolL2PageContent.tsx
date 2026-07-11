@@ -346,6 +346,29 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
     const howToTitle = content.howToUse?.title || fallbackPageTitle
     const howToSteps = content.howToUse?.steps || howToUseSteps
     const jsonLdSchema = generateHowToSchema(howToTitle, howToSteps)
+    const promptPresetItems = (content.promptExamples?.items || []) as Array<{
+      title?: string
+      prompt?: string
+      image?: string
+      group?: string
+    }>
+    const promptPresetMap = new Map(
+      promptPresetItems
+        .filter((item) => item.title && item.prompt)
+        .map((item) => [item.title, item])
+    )
+    const promptPresets = Array.isArray(content.topTool?.functionalAcceptance?.presets)
+      ? content.topTool.functionalAcceptance.presets.map((preset: string | { label?: string; prompt?: string; image?: string; group?: string }) => {
+          const label = typeof preset === 'string' ? preset : preset.label || ''
+          const matched = promptPresetMap.get(label)
+          return {
+            label,
+            prompt: typeof preset === 'string' ? matched?.prompt : preset.prompt || matched?.prompt,
+            image: typeof preset === 'string' ? matched?.image : preset.image || matched?.image,
+            group: typeof preset === 'string' ? matched?.group : preset.group || matched?.group,
+          }
+        })
+      : []
 
     return (
       <>
@@ -533,8 +556,21 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                 <div className="flex flex-col md:h-screen md:overflow-hidden">
                   <NanoBananaTool
                     modelId="gpt-image-2"
-                    modelName="GPT Image 2"
+                    modelName={content.topTool?.displayName || 'GPT Image 2'}
                     dailyLimitStorageKey="gpt_image_2_last_used_date"
+                    defaultMode={content.topTool?.mode === 'image-to-image' ? 'image-to-image' : undefined}
+                    defaultPrompt={content.topTool?.defaultPrompt || ''}
+                    defaultImageUrls={Array.isArray(content.topTool?.defaultImageUrls) ? content.topTool.defaultImageUrls : []}
+                    maxUploadImages={typeof content.topTool?.maxUploadImages === 'number' ? content.topTool.maxUploadImages : undefined}
+                    hideModelBranding={content.topTool?.hideModelBranding === true}
+                    sampleImages={Array.isArray(content.topTool?.sampleImages) ? content.topTool.sampleImages : undefined}
+                    promptPresets={promptPresets}
+                    promptPresetTitle={content.topTool?.functionalAcceptance?.presetTitle || 'Style Presets'}
+                    promptPresetTabs={Array.isArray(content.topTool?.functionalAcceptance?.presetTabs) ? content.topTool.functionalAcceptance.presetTabs : undefined}
+                    hidePresetPromptInput={content.topTool?.functionalAcceptance?.hidePresetPromptInput === true}
+                    customPromptTabId={content.topTool?.functionalAcceptance?.customPromptTabId || 'custom'}
+                    compactResultPanel={content.topTool?.compactResultPanel === true}
+                    sceneText={content.topTool?.textOverrides}
                     initialTranslations={t}
                   />
                 </div>
