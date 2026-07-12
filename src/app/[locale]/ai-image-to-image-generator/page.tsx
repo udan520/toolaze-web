@@ -10,5 +10,5 @@ export function generateStaticParams(): Array<{ locale: string }> {
 }
 
 export default function LocalizedImageToImagePage() {
-  redirect('/model/gpt-image-2-0')
+  redirect('/ai-image-to-image-generator')
 }
