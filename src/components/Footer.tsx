@@ -230,7 +230,7 @@ export default function Footer({ initialTranslations }: FooterProps = {}) {
           {/* AI Image */}
           <div>
             <Link 
-              href={getLocalizedHref('/model/gpt-image-2-0')}
+              href={getLocalizedHref('/model/gpt-image-2')}
               className="text-white font-bold text-sm mb-4 tracking-wide block hover:text-indigo-400 transition-colors"
             >
               {translations.aiImage || 'AI Image'}
@@ -238,7 +238,7 @@ export default function Footer({ initialTranslations }: FooterProps = {}) {
             <ul className="space-y-2 mt-4">
               <li>
                 <Link
-                  href={getLocalizedHref('/model/gpt-image-2-0')}
+                  href={getLocalizedHref('/model/gpt-image-2')}
                   className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
                 >
                   {translations.gptImage2 || 'GPT Image 2'}

@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
-import Breadcrumb from '@/components/Breadcrumb'
 import NanoBananaTool from '@/components/NanoBananaTool'
 import PromptCopyButton from '@/components/PromptCopyButton'
 import RedditMediaCarousel from '@/components/RedditMediaCarousel'
@@ -587,11 +586,6 @@ const relatedLinks = [
     text: 'Study source-backed prompt structures, then return to GPT Image 2 to create your own image.',
   },
   {
-    title: 'GPT Image 2.0 Generator',
-    href: '/model/gpt-image-2-0',
-    text: 'Try the closest GPT image model route for text-to-image and image-to-image workflows.',
-  },
-  {
     title: 'Nano Banana Pro Generator',
     href: '/model/nano-banana-pro',
     text: 'Compare a Gemini image workflow for high-resolution design assets and text-heavy layouts.',
@@ -867,31 +861,27 @@ export async function GptImage2LandingPage({ locale = 'en' }: { locale?: string 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaGraph) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <Navigation initialTranslations={t} />
-      <Breadcrumb
-        items={[
-          { label: copy.breadcrumbs.home, href: '/' },
-          { label: copy.breadcrumbs.model, href: '/model' },
-          { label: copy.breadcrumbs.current },
-        ]}
-      />
       <main className="min-h-screen overflow-x-hidden bg-[#F8FAFF] text-slate-950">
-        <section id="gpt-image-2-generator" className="bg-[#F8FAFF] px-6 pb-12">
-          <div className="mx-auto max-w-6xl">
-            <div className="mx-auto mb-12 max-w-4xl pt-8 text-center">
-              <h1 className="text-[40px] font-extrabold leading-tight tracking-tight text-slate-950">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">
-                  {copy.hero.modelName}
-                </span>{' '}
-                {copy.hero.suffix}
-              </h1>
-              <p className="mx-auto mt-6 max-w-3xl text-base leading-8 text-slate-700 md:text-lg">
-                {copy.hero.description}
-              </p>
-            </div>
+        <section id="gpt-image-2-generator" className="bg-[#F8FAFF] pb-12 pl-0 pr-2 md:pl-0 md:pr-4 xl:pl-0 xl:pr-6 2xl:pl-0 2xl:pr-8">
+          <div className="w-full max-w-full">
             <NanoBananaTool
               modelId="gpt-image-2"
               modelName="GPT Image 2"
               dailyLimitStorageKey="gpt_image_2_last_used_date"
+              heroBreadcrumbItems={[
+                { label: copy.breadcrumbs.home, href: '/' },
+                { label: copy.breadcrumbs.model, href: '/model' },
+                { label: copy.breadcrumbs.current },
+              ]}
+              heroTitle={
+                <>
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">
+                    {copy.hero.modelName}
+                  </span>{' '}
+                  {copy.hero.suffix}
+                </>
+              }
+              heroDescription={copy.hero.description}
               initialTranslations={t}
             />
           </div>

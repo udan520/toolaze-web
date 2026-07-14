@@ -50,7 +50,6 @@ export const TOOL_SUPPORTED_LOCALES: Record<string, readonly string[]> = {
 const MODEL_SUPPORTED_LOCALES: Record<string, readonly string[]> = {
   'nano-banana-2': ALL_LOCALE_CODES,
   'gpt-image-2': ALL_LOCALE_CODES,
-  'gpt-image-2-0': ALL_LOCALE_CODES,
   'nano-banana-pro': ALL_LOCALE_CODES,
   'seedream-4-5': ALL_LOCALE_CODES,
   'seedream-5-0-lite': ALL_LOCALE_CODES,

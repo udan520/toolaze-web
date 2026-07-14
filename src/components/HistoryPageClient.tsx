@@ -1,8 +1,18 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import DeleteIcon from './icons/DeleteIcon'
-import { buildHistoryRepromptPayload, getDisplayImagePreviewUrl } from '@/lib/history-reprompt'
+import { buildHistoryRepromptPayload } from '@/lib/history-reprompt'
+import {
+  GENERATION_HISTORY_DELETE_CONFIRM_MESSAGE,
+  shouldDeleteGenerationHistoryItem,
+} from '@/lib/generation-history-delete-confirm'
+import {
+  getHistoryFullScreenPreviewUrl,
+  getHistoryLibraryThumbnailUrl,
+  getHistoryPreviewMediaUrl,
+  getHistoryReferenceThumbnailUrl,
+} from '@/lib/history-preview-media'
 
 type GenerationHistoryItem = {
   id: string
@@ -29,6 +39,7 @@ const defaultHistoryPageCopy = {
   emptyDescription: 'Generated images will appear here after they complete.',
   previewLabel: 'Generation preview',
   previewImageLabel: 'Preview generated image',
+  previewReferenceMedia: 'Preview reference media',
   closePreview: 'Close preview',
   referenceMedia: 'Reference Media',
   prompt: 'Prompt',
@@ -37,6 +48,7 @@ const defaultHistoryPageCopy = {
   download: 'Download',
   delete: 'Delete',
   deleting: 'Deleting',
+  deleteHistoryConfirm: GENERATION_HISTORY_DELETE_CONFIRM_MESSAGE,
   deleteError: 'Could not delete history item.',
   modeVideo: 'Video',
   modeTextToImage: 'Text to Image',
@@ -82,21 +94,37 @@ export default function HistoryPageClient({ initialTranslations, locale = 'en' }
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
   const [previewItem, setPreviewItem] = useState<GenerationHistoryItem | null>(null)
+  const [fullScreenPreviewUrl, setFullScreenPreviewUrl] = useState('')
   const [deletingId, setDeletingId] = useState('')
+
+  const closePreview = useCallback(() => {
+    setPreviewItem(null)
+    setFullScreenPreviewUrl('')
+  }, [])
+
+  const openPreview = useCallback((item: GenerationHistoryItem) => {
+    setPreviewItem(item)
+    setFullScreenPreviewUrl('')
+  }, [])
 
   useEffect(() => {
     if (!previewItem) return
     const previousOverflow = document.body.style.overflow
     document.body.style.overflow = 'hidden'
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setPreviewItem(null)
+      if (event.key !== 'Escape') return
+      if (fullScreenPreviewUrl) {
+        setFullScreenPreviewUrl('')
+        return
+      }
+      closePreview()
     }
     window.addEventListener('keydown', handleKeyDown)
     return () => {
       document.body.style.overflow = previousOverflow
       window.removeEventListener('keydown', handleKeyDown)
     }
-  }, [previewItem])
+  }, [closePreview, fullScreenPreviewUrl, previewItem])
 
   useEffect(() => {
     let cancelled = false
@@ -138,6 +166,15 @@ export default function HistoryPageClient({ initialTranslations, locale = 'en' }
 
   const handleDelete = async (item: GenerationHistoryItem) => {
     if (deletingId) return
+    if (
+      !shouldDeleteGenerationHistoryItem(
+        (message) => window.confirm(message),
+        copy.deleteHistoryConfirm,
+      )
+    ) {
+      return
+    }
+
     setDeletingId(item.id)
     setError('')
     try {
@@ -149,7 +186,7 @@ export default function HistoryPageClient({ initialTranslations, locale = 'en' }
         throw new Error(body.error || copy.deleteError)
       }
       setItems((currentItems) => currentItems.filter((currentItem) => currentItem.id !== item.id))
-      setPreviewItem(null)
+      closePreview()
     } catch (err) {
       setError(err instanceof Error ? err.message : copy.deleteError)
     } finally {
@@ -161,6 +198,12 @@ export default function HistoryPageClient({ initialTranslations, locale = 'en' }
     window.sessionStorage.setItem(PENDING_REPROMPT_STORAGE_KEY, JSON.stringify(buildHistoryRepromptPayload(item)))
     window.location.href = getModelHref(item.model)
   }
+
+  const activePreviewMediaUrl = previewItem
+    ? getHistoryPreviewMediaUrl({
+        outputUrl: previewItem.outputUrl,
+      })
+    : ''
 
   return (
     <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-10 md:px-6 md:py-14">
@@ -197,14 +240,14 @@ export default function HistoryPageClient({ initialTranslations, locale = 'en' }
           {items.filter((item) => item.mediaType === 'image').map((item) => (
             <article key={item.id} className="overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-sm">
               <img
-                src={getDisplayImagePreviewUrl(item.outputUrl, 384)}
+                src={getHistoryLibraryThumbnailUrl(item.outputUrl)}
                 alt=""
                 className="aspect-[3/4] h-auto w-full cursor-zoom-in object-cover object-center"
                 loading="lazy"
                 decoding="async"
-                onClick={() => setPreviewItem(item)}
+                onClick={() => openPreview(item)}
                 onKeyDown={(event) => {
-                  if (event.key === 'Enter' || event.key === ' ') setPreviewItem(item)
+                  if (event.key === 'Enter' || event.key === ' ') openPreview(item)
                 }}
                 tabIndex={0}
                 role="button"
@@ -221,7 +264,7 @@ export default function HistoryPageClient({ initialTranslations, locale = 'en' }
           role="dialog"
           aria-modal="true"
           aria-label={copy.previewLabel}
-          onClick={() => setPreviewItem(null)}
+          onClick={closePreview}
         >
           <div
             className="relative grid max-h-[92vh] w-full max-w-6xl grid-cols-1 overflow-hidden rounded-[28px] bg-slate-50 shadow-2xl md:grid-cols-[minmax(0,1.15fr)_minmax(360px,0.85fr)]"
@@ -229,7 +272,7 @@ export default function HistoryPageClient({ initialTranslations, locale = 'en' }
           >
             <button
               type="button"
-              onClick={() => setPreviewItem(null)}
+              onClick={closePreview}
               className="absolute right-5 top-5 z-10 flex h-9 w-9 items-center justify-center rounded-full text-slate-500 hover:bg-slate-100 hover:text-slate-900"
               aria-label={copy.closePreview}
             >
@@ -238,16 +281,16 @@ export default function HistoryPageClient({ initialTranslations, locale = 'en' }
 
             <div className="min-h-0 bg-slate-100 p-4 md:p-5">
               <div className="flex h-full min-h-[320px] items-center justify-center overflow-hidden rounded-2xl bg-slate-200">
-                {previewItem.mediaType === 'video' ? (
+                {previewItem.mediaType === 'video' && activePreviewMediaUrl === previewItem.outputUrl ? (
                   <video
-                    src={previewItem.outputUrl}
+                    src={activePreviewMediaUrl}
                     className="max-h-[82vh] w-full object-contain"
                     controls
                     playsInline
                   />
                 ) : (
                   <img
-                    src={previewItem.outputUrl}
+                    src={activePreviewMediaUrl}
                     alt=""
                     className="max-h-[82vh] w-full object-contain"
                   />
@@ -275,16 +318,29 @@ export default function HistoryPageClient({ initialTranslations, locale = 'en' }
                   <section>
                     <h2 className="mb-3 text-sm font-extrabold text-slate-900">{copy.referenceMedia}</h2>
                     <div className="flex flex-wrap gap-3">
-                      {previewItem.inputUrls.map((url) => (
-                        <img
-                          key={url}
-                          src={getDisplayImagePreviewUrl(url, 128)}
-                          alt=""
-                          className="h-20 w-20 rounded-xl border border-slate-200 object-cover"
-                          loading="lazy"
-                          decoding="async"
-                        />
-                      ))}
+                      {previewItem.inputUrls.map((url, index) => {
+                        return (
+                          <button
+                            key={`${url}-${index}`}
+                            type="button"
+                            onClick={(event) => {
+                              event.preventDefault()
+                              event.stopPropagation()
+                              setFullScreenPreviewUrl(getHistoryFullScreenPreviewUrl(url))
+                            }}
+                            className="h-20 w-20 cursor-zoom-in overflow-hidden rounded-xl border border-slate-200 bg-slate-100 p-0 transition hover:border-indigo-300"
+                            aria-label={`${copy.previewReferenceMedia} ${index + 1}`}
+                          >
+                            <img
+                              src={getHistoryReferenceThumbnailUrl(url)}
+                              alt=""
+                              className="h-full w-full object-cover"
+                              loading="lazy"
+                              decoding="async"
+                            />
+                          </button>
+                        )
+                      })}
                     </div>
                   </section>
                 )}
@@ -337,6 +393,31 @@ export default function HistoryPageClient({ initialTranslations, locale = 'en' }
               </div>
             </div>
           </div>
+        </div>
+      )}
+
+      {fullScreenPreviewUrl && (
+        <div
+          className="fixed inset-0 z-[10010] flex items-center justify-center bg-slate-950/95 px-4 py-6"
+          role="dialog"
+          aria-modal="true"
+          aria-label={copy.previewReferenceMedia}
+          onClick={() => setFullScreenPreviewUrl('')}
+        >
+          <button
+            type="button"
+            onClick={() => setFullScreenPreviewUrl('')}
+            className="absolute right-5 top-5 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/20"
+            aria-label={copy.closePreview}
+          >
+            <span className="text-2xl leading-none">×</span>
+          </button>
+          <img
+            src={fullScreenPreviewUrl}
+            alt=""
+            className="max-h-[96vh] max-w-[96vw] object-contain"
+            onClick={(event) => event.stopPropagation()}
+          />
         </div>
       )}
     </main>

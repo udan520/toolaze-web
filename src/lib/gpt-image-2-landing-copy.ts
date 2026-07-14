@@ -590,11 +590,6 @@ const englishCopy: GptImage2LandingCopy = {
         text: 'Study source-backed prompt structures, then return to GPT Image 2 to create your own image.',
       },
       {
-        title: 'GPT Image 2.0 Generator',
-        href: '/model/gpt-image-2-0',
-        text: 'Try the closest GPT image model route for text-to-image and image-to-image workflows.',
-      },
-      {
         title: 'Nano Banana Pro Generator',
         href: '/model/nano-banana-pro',
         text: 'Compare a Gemini image workflow for high-resolution design assets and text-heavy layouts.',
@@ -1057,7 +1052,6 @@ const localizedArrayOverrides: Record<Exclude<GptImage2Locale, 'en'>, DeepPartia
     related: {
       links: [
         { title: 'GPT Image 2 Prompt-Vorlagen', href: '/prompts/models/gpt-image-2', text: 'Studieren Sie quellenbasierte Prompt-Strukturen und kehren Sie dann zu GPT Image 2 zurueck, um eigene Bilder zu erstellen.' },
-        { title: 'GPT Image 2.0 Generator', href: '/model/gpt-image-2-0', text: 'Testen Sie die naechste GPT-Bildmodellroute fuer Text-to-Image- und Image-to-Image-Workflows.' },
         { title: 'Nano Banana Pro Generator', href: '/model/nano-banana-pro', text: 'Vergleichen Sie einen Gemini-Bildworkflow fuer hochaufloesende Designassets und textlastige Layouts.' },
         { title: 'Nano Banana 2 Generator', href: '/model/nano-banana-2', text: 'Erkunden Sie ein weiteres schnelles Modell fuer Bildgenerierung und Bearbeitung in gaengigen Publishing-Formaten.' },
         { title: 'Nano Banana Image to Image', href: '/model/nano-banana', text: 'Nutzen Sie einen anderen Image-to-Image-Workflow, wenn referenzgefuehrte Bearbeitung Prioritaet hat.' },
@@ -1157,7 +1151,6 @@ const localizedArrayOverrides: Record<Exclude<GptImage2Locale, 'en'>, DeepPartia
     related: {
       links: [
         { title: 'GPT Image 2 프롬프트 템플릿', href: '/prompts/models/gpt-image-2', text: '출처 기반 프롬프트 구조를 살펴본 뒤 GPT Image 2로 돌아와 직접 이미지를 만듭니다.' },
-        { title: 'GPT Image 2.0 생성기', href: '/model/gpt-image-2-0', text: 'text-to-image와 image-to-image에 가까운 GPT 이미지 모델 경로를 사용해 봅니다.' },
         { title: 'Nano Banana Pro 생성기', href: '/model/nano-banana-pro', text: '고해상도 디자인 asset과 텍스트 많은 레이아웃용 Gemini 이미지 워크플로를 비교합니다.' },
         { title: 'Nano Banana 2 생성기', href: '/model/nano-banana-2', text: '일반 게시 형식에 맞는 빠른 이미지 생성 및 편집 모델을 탐색합니다.' },
         { title: 'Nano Banana Image to Image', href: '/model/nano-banana', text: '참조 기반 편집이 우선일 때 다른 image-to-image 워크플로를 사용합니다.' },
@@ -1257,7 +1250,6 @@ const localizedArrayOverrides: Record<Exclude<GptImage2Locale, 'en'>, DeepPartia
     related: {
       links: [
         { title: 'Templates de prompts GPT Image 2', href: '/prompts/models/gpt-image-2', text: 'Étudiez des structures de prompt sourcées, puis revenez à GPT Image 2 pour créer votre image.' },
-        { title: 'Générateur GPT Image 2.0', href: '/model/gpt-image-2-0', text: 'Essayez la route de modèle GPT image la plus proche pour text-to-image et image-to-image.' },
         { title: 'Générateur Nano Banana Pro', href: '/model/nano-banana-pro', text: 'Comparez un workflow Gemini pour assets haute résolution et layouts riches en texte.' },
         { title: 'Générateur Nano Banana 2', href: '/model/nano-banana-2', text: 'Explorez un autre modèle rapide de génération et retouche d’image.' },
         { title: 'Nano Banana Image to Image', href: '/model/nano-banana', text: 'Utilisez un autre workflow image-to-image quand la retouche avec référence est prioritaire.' },
@@ -1357,7 +1349,6 @@ const localizedArrayOverrides: Record<Exclude<GptImage2Locale, 'en'>, DeepPartia
     related: {
       links: [
         { title: 'Templates de prompt para GPT Image 2', href: '/prompts/models/gpt-image-2', text: 'Estude estruturas de prompt com fontes e volte ao GPT Image 2 para criar sua imagem.' },
-        { title: 'Gerador GPT Image 2.0', href: '/model/gpt-image-2-0', text: 'Teste a rota GPT de imagem mais próxima para text-to-image e image-to-image.' },
         { title: 'Gerador Nano Banana Pro', href: '/model/nano-banana-pro', text: 'Compare um workflow Gemini para assets em alta resolução e layouts com muito texto.' },
         { title: 'Gerador Nano Banana 2', href: '/model/nano-banana-2', text: 'Explore outro modelo rápido para geração e edição de imagens.' },
         { title: 'Nano Banana Image to Image', href: '/model/nano-banana', text: 'Use outro fluxo image-to-image quando edição com referência for prioridade.' },
@@ -1457,7 +1448,6 @@ const localizedArrayOverrides: Record<Exclude<GptImage2Locale, 'en'>, DeepPartia
     related: {
       links: [
         { title: 'GPT Image 2 提示詞模板', href: '/prompts/models/gpt-image-2', text: '先研究有來源支撐的提示詞結構，再回到 GPT Image 2 建立自己的圖像。' },
-        { title: 'GPT Image 2.0 生成器', href: '/model/gpt-image-2-0', text: '嘗試最接近的 GPT 圖像模型路徑，用於文字生成圖片與圖生圖流程。' },
         { title: 'Nano Banana Pro 生成器', href: '/model/nano-banana-pro', text: '比較 Gemini 圖像工作流程，適用於高解析設計素材與文字密集版面。' },
         { title: 'Nano Banana 2 生成器', href: '/model/nano-banana-2', text: '探索另一個快速圖像生成與編輯模型，用於常見發布格式。' },
         { title: 'Nano Banana 圖生圖', href: '/model/nano-banana', text: '當參考圖引導編輯是主要需求時，可使用另一個圖生圖工作流程。' },
@@ -1557,7 +1547,6 @@ const localizedArrayOverrides: Record<Exclude<GptImage2Locale, 'en'>, DeepPartia
     related: {
       links: [
         { title: 'Plantillas de prompts para GPT Image 2', href: '/prompts/models/gpt-image-2', text: 'Estudia estructuras de prompt respaldadas por fuentes y vuelve a GPT Image 2 para crear tu imagen.' },
-        { title: 'Generador GPT Image 2.0', href: '/model/gpt-image-2-0', text: 'Prueba la ruta de modelo GPT de imagen más cercana para text-to-image e image-to-image.' },
         { title: 'Generador Nano Banana Pro', href: '/model/nano-banana-pro', text: 'Compara un flujo Gemini para assets de alta resolución y layouts con mucho texto.' },
         { title: 'Generador Nano Banana 2', href: '/model/nano-banana-2', text: 'Explora otro modelo rápido de generación y edición para formatos de publicación comunes.' },
         { title: 'Nano Banana Image to Image', href: '/model/nano-banana', text: 'Usa otro flujo image-to-image cuando la edición con referencia sea la prioridad.' },
@@ -1657,7 +1646,6 @@ const localizedArrayOverrides: Record<Exclude<GptImage2Locale, 'en'>, DeepPartia
     related: {
       links: [
         { title: 'GPT Image 2プロンプトテンプレート', href: '/prompts/models/gpt-image-2', text: '根拠のあるプロンプト構造を学び、GPT Image 2に戻って自分の画像を作成します。' },
-        { title: 'GPT Image 2.0ジェネレーター', href: '/model/gpt-image-2-0', text: 'テキストto画像と画像to画像ワークフローに近いGPT画像モデルルートを試します。' },
         { title: 'Nano Banana Proジェネレーター', href: '/model/nano-banana-pro', text: '高解像度デザイン素材や文字量の多いレイアウト向けにGemini画像ワークフローを比較します。' },
         { title: 'Nano Banana 2ジェネレーター', href: '/model/nano-banana-2', text: '一般的な公開フォーマット向けの別の高速画像生成・編集モデルを試します。' },
         { title: 'Nano Banana画像to画像', href: '/model/nano-banana', text: '参照ベース編集が主目的のときに、別の画像to画像ワークフローを使います。' },
@@ -1757,7 +1745,6 @@ const localizedArrayOverrides: Record<Exclude<GptImage2Locale, 'en'>, DeepPartia
     related: {
       links: [
         { title: 'Template prompt GPT Image 2', href: '/prompts/models/gpt-image-2', text: 'Studia strutture di prompt con fonti, poi torna a GPT Image 2 per creare la tua immagine.' },
-        { title: 'Generatore GPT Image 2.0', href: '/model/gpt-image-2-0', text: 'Prova la route GPT image più vicina per text-to-image e image-to-image.' },
         { title: 'Generatore Nano Banana Pro', href: '/model/nano-banana-pro', text: 'Confronta un workflow Gemini per asset high-resolution e layout ricchi di testo.' },
         { title: 'Generatore Nano Banana 2', href: '/model/nano-banana-2', text: 'Esplora un altro modello rapido per generazione e editing immagini.' },
         { title: 'Nano Banana Image to Image', href: '/model/nano-banana', text: 'Usa un altro workflow image-to-image quando l’editing con reference è prioritario.' },

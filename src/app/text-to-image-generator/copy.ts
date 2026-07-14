@@ -122,7 +122,7 @@ export const textToImageGeneratorPageCopy: AiImageGeneratorPageCopy = {
         alt: 'AI infographic output generated for a clear landscape format',
         width: 1600,
         height: 900,
-        href: '/model/gpt-image-2-0',
+        href: '/model/gpt-image-2',
         label: 'Try GPT Image 2',
       },
       {
@@ -404,7 +404,7 @@ export const textToImageGeneratorPageCopy: AiImageGeneratorPageCopy = {
       },
       {
         title: 'GPT Image 2',
-        href: '/model/gpt-image-2-0',
+        href: '/model/gpt-image-2',
         label: 'Try GPT Image 2',
         text: 'Use GPT Image 2 for instruction following, structured layouts, short visible text, and first-pass drafts from words.',
       },

@@ -379,7 +379,7 @@ const en: AiImageGeneratorPageCopy = {
       {
         title: 'GPT Image 2',
         text: 'Best for clean text-to-image prompts, readable short text, posters, product ads, UI mockups, and commercial graphics.',
-        href: '/model/gpt-image-2-0',
+        href: '/model/gpt-image-2',
         label: 'Try GPT Image 2',
         imageId: 'gpt-image-2',
       },
@@ -697,7 +697,7 @@ const en: AiImageGeneratorPageCopy = {
       {
         title: 'GPT Image 2',
         text: 'Use GPT Image 2 for posters, product ads, readable text, UI mockups, and structured image generation.',
-        href: '/model/gpt-image-2-0',
+        href: '/model/gpt-image-2',
         label: 'Try GPT Image 2',
       },
       {

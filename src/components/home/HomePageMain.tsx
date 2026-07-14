@@ -56,7 +56,7 @@ function TextWithLinks({
 
 // AI Image model paths (under /model/)
 const AI_IMAGE_PATHS: Record<string, string> = {
-  'gpt-image-2': '/model/gpt-image-2-0',
+  'gpt-image-2': '/model/gpt-image-2',
   'wan-2-7-image': '/model/wan-2-7-image',
   'nano-banana-pro': '/model/nano-banana-pro',
   'nano-banana-2': '/model/nano-banana-2',
@@ -443,7 +443,7 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
                   'Compare Toolaze image models by quality, resolution, reference support, edit strength, and best creative use case before choosing a model.'
                 }
                 links={[
-                  { term: 'GPT Image 2', href: '/model/gpt-image-2-0' },
+                  { term: 'GPT Image 2', href: '/model/gpt-image-2' },
                   { term: 'Seedream 5.0 Pro', href: '/model/seedream-5-0-pro' },
                   { term: 'Nano Banana Pro', href: '/model/nano-banana-pro' },
                 ]}

@@ -213,7 +213,7 @@ const en: AiImageGeneratorPageCopy = {
       {
         title: 'GPT Image 2',
         text: 'Best for structured image-to-image edits, product visuals, readable layouts, poster concepts, and commercial creative drafts.',
-        href: '/model/gpt-image-2-0',
+        href: '/model/gpt-image-2',
         label: 'Try GPT Image 2',
         imageId: 'gpt-image-2',
       },
@@ -417,7 +417,7 @@ const en: AiImageGeneratorPageCopy = {
       },
       {
         title: 'GPT Image 2 Generator',
-        href: '/model/gpt-image-2-0',
+        href: '/model/gpt-image-2',
         label: 'Try GPT Image 2',
         text: 'Create high-quality image generations and reference-guided edits with Toolaze’s GPT image workflow.',
       },

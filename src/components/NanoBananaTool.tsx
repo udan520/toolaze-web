@@ -14,7 +14,12 @@ import Breadcrumb from './Breadcrumb'
 import type { BreadcrumbItem } from './Breadcrumb'
 import { calculateImageGenerationCredits } from '@/lib/generation-credits'
 import { isCreditExhaustedGenerationError } from '@/lib/generation-error-classifier'
-import { getDisplayImagePreviewUrl, normalizeReusableReferenceImageUrl } from '@/lib/history-reprompt'
+import { downloadImageInCurrentPage } from '@/lib/browser-image-download'
+import {
+  getDisplayImagePreviewUrl,
+  getReferencePreviewUrl,
+  normalizeReusableReferenceImageUrl,
+} from '@/lib/history-reprompt'
 import { getModelDemoImage, shouldUseDirectImageForDemo } from '@/lib/model-demo-images'
 import { createOptimisticCreditDeduction } from '@/lib/optimistic-credits'
 import type { OptimisticCreditSummary } from '@/lib/optimistic-credits'
@@ -24,6 +29,15 @@ import {
 } from '@/lib/generation-auth-state'
 import type { GenerationAuthState } from '@/lib/generation-auth-state'
 import { getNanoBananaToolText } from '@/lib/nano-banana-tool-text'
+import {
+  resolvePromptInsertMode,
+  resolvePromptInsertRemoteImageUrls,
+  type PromptInsertMode,
+} from '@/lib/prompt-insert-mode'
+import {
+  GENERATION_HISTORY_DELETE_CONFIRM_MESSAGE,
+  shouldDeleteGenerationHistoryItem,
+} from '@/lib/generation-history-delete-confirm'
 
 type RightPanelMode = 'sample' | 'generating' | 'history' | 'result'
 
@@ -180,6 +194,7 @@ interface PromptInsertEventDetail {
   aspectRatio?: string
   resolution?: string
   outputFormat?: string
+  mode?: PromptInsertMode
   presetLabel?: string
   presetGroup?: string
 }
@@ -526,17 +541,6 @@ function shouldUploadReferenceUrlForGeneration(url: string): boolean {
   }
 }
 
-function getReferencePreviewUrl(url: string): string {
-  const hairColorReferencePath = '/ai-hair-color-changer/default-reference.png'
-  const hairColorReferencePreviewPath = '/ai-hair-color-changer/default-reference-preview.webp'
-
-  if (url === hairColorReferencePath || url.endsWith(hairColorReferencePath)) {
-    return getDisplayImagePreviewUrl(hairColorReferencePreviewPath, 128)
-  }
-
-  return getDisplayImagePreviewUrl(url, 128)
-}
-
 function getReferenceImageFileName(url: string, index: number): string {
   const cleanPath = url.split('?')[0]?.split('#')[0] || ''
   const name = cleanPath.split('/').filter(Boolean).pop()
@@ -801,6 +805,8 @@ export default function NanoBananaTool({
     upload: 'Upload',
     fileLimit: 'JPG, PNG, WEBP up to 30MB each · max {count} images',
     delete: 'Delete',
+    deleteHistoryConfirm: GENERATION_HISTORY_DELETE_CONFIRM_MESSAGE,
+    deleteHistoryFailed: 'Could not delete history item.',
     replace: 'Replace',
     previewSoon: 'Preview Soon',
     styleTemplates: 'Style Templates',
@@ -1118,17 +1124,21 @@ export default function NanoBananaTool({
     )
 
     const urls = imageUrls.length > 0 ? imageUrls : imageUrl ? [imageUrl] : []
-    if (urls.length > 0) {
-      setRemoteImageUrls(urls.slice(0, MAX_IMAGES))
-      setActiveTab('image-to-image')
-    } else {
-      setActiveTab('text-to-image')
-      setRemoteImageUrls([])
-    }
+    const nextMode = resolvePromptInsertMode({
+      requestedMode: detail.mode,
+      hasReferenceImages: urls.length > 0,
+    })
+    setRemoteImageUrls(resolvePromptInsertRemoteImageUrls({
+      nextMode,
+      currentRemoteImageUrls: remoteImageUrls,
+      referenceUrls: urls,
+      maxImages: MAX_IMAGES,
+    }))
+    setActiveTab(nextMode)
 
     showToast(nanoText.promptInserted, 'success')
     return true
-  }, [MAX_IMAGES, nanoText.promptInserted, nanoText.sampleImage])
+  }, [MAX_IMAGES, nanoText.promptInserted, nanoText.sampleImage, remoteImageUrls])
 
   // 从提示词案例板块一键带入 Prompt，可选携带参考图。
   useEffect(() => {
@@ -1678,48 +1688,72 @@ export default function NanoBananaTool({
     }, 100)
   }
 
+  const triggerUrlDownload = (url: string, filename: string) => {
+    const link = document.createElement('a')
+    link.href = url
+    link.download = filename
+    link.rel = 'noopener noreferrer'
+    link.style.display = 'none'
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+  }
+
   const handleDownload = async (imageUrl: string, filename: string) => {
     setDownloadingUrl(imageUrl)
 
     try {
-      // 优先使用下载代理（R2 白名单内的 URL 才通过，实现直接下载）
-      const proxyUrl = `/api/download-image?url=${encodeURIComponent(imageUrl)}&filename=${encodeURIComponent(filename)}`
-
-      // 方法1: fetch 代理（R2 等白名单 URL）
-      let proxyRes: Response | null = null
-      try {
-        proxyRes = await fetch(proxyUrl)
-      } catch (_) {
-        proxyRes = null
-      }
-      if (proxyRes?.ok) {
-        const blob = await proxyRes.blob()
-        triggerBlobDownload(blob, filename)
-        return
-      }
-      // 代理 403/500 时不要再走代理链接，否则会下载错误页面
-
-      // 方法2: 直接 fetch 原始 URL（CORS 允许时）
-      let directRes: Response | null = null
-      try {
-        directRes = await fetch(imageUrl, { mode: 'cors', credentials: 'omit' })
-      } catch (_) {
-        directRes = null
-      }
-      if (directRes?.ok) {
-        const blob = await directRes.blob()
-        triggerBlobDownload(blob, filename)
-        return
-      }
-
-      // 方法3: 新开标签打开图片（用户可右键另存为）
-      window.open(imageUrl, '_blank', 'noopener,noreferrer')
-    } catch (_) {
-      // 最终兜底：即使 fetch 过程中出现运行时错误，也确保用户可打开原图
-      window.open(imageUrl, '_blank', 'noopener,noreferrer')
+      await downloadImageInCurrentPage({
+        imageUrl,
+        filename,
+        triggerBlobDownload,
+        triggerUrlDownload,
+      })
     } finally {
       setTimeout(() => setDownloadingUrl(null), 1000)
     }
+  }
+
+  const confirmDeleteHistoryItem = () =>
+    shouldDeleteGenerationHistoryItem(
+      (message) => window.confirm(message),
+      nanoText.deleteHistoryConfirm,
+    )
+
+  const deletePersistedHistoryItem = async (itemId: string) => {
+    if (itemId.startsWith('sync-') || itemId.startsWith('async-')) return true
+
+    try {
+      const response = await fetch(`/api/history?id=${encodeURIComponent(itemId)}`, {
+        method: 'DELETE',
+      })
+      if (response.ok || response.status === 404) return true
+    } catch (error) {
+      console.warn('Failed to delete history item:', error)
+    }
+
+    showToast(nanoText.deleteHistoryFailed, 'error')
+    return false
+  }
+
+  const removeHistoryItemFromState = (itemId: string) => {
+    const nextHistory = history.filter((item) => item.id !== itemId)
+    setHistory(nextHistory)
+    if (currentResult?.id === itemId) {
+      setCurrentResult(null)
+    }
+    setRightMode(nextHistory.length > 0 ? 'history' : 'sample')
+  }
+
+  const handleDeleteHistoryItem = async (item: HistoryItem) => {
+    if (!confirmDeleteHistoryItem()) return
+    if (!(await deletePersistedHistoryItem(item.id))) return
+    removeHistoryItemFromState(item.id)
+  }
+
+  const handleDeleteCurrentResult = async () => {
+    if (!currentResult) return
+    await handleDeleteHistoryItem(currentResult)
   }
 
   const handleRecreateFromCurrent = () => {
@@ -1986,7 +2020,7 @@ export default function NanoBananaTool({
                     <span className="text-xs font-medium text-slate-400">{imageFiles.length + remoteImageUrls.length}/{MAX_IMAGES}</span>
                   )}
                 </div>
-                <div className={`grid gap-2 ${MAX_IMAGES === 1 ? 'grid-cols-1 max-w-32' : 'grid-cols-3'}`}>
+                <div className={`grid gap-2 ${MAX_IMAGES === 1 ? 'grid-cols-1 max-w-40' : 'grid-cols-3'}`}>
                   {/* 上传占位：第一格 */}
                   {imageFiles.length + remoteImageUrls.length < MAX_IMAGES && (
                     <div
@@ -2484,10 +2518,7 @@ export default function NanoBananaTool({
                 </button>
                 <button
                   type="button"
-                  onClick={() => {
-                    setCurrentResult(null)
-                    setRightMode('sample')
-                  }}
+                  onClick={() => void handleDeleteCurrentResult()}
                   className="flex h-9 w-9 items-center justify-center rounded-lg border border-[#C7D2FE] text-[#4F46E5] transition-colors hover:bg-[#EEF2FF]"
                   title={nanoText.delete}
                 >
@@ -2726,10 +2757,7 @@ export default function NanoBananaTool({
                   </button>
                   <button
                     type="button"
-                    onClick={() => {
-                      setCurrentResult(null)
-                      setRightMode('sample')
-                    }}
+                    onClick={() => void handleDeleteCurrentResult()}
                     className="px-4 py-3 rounded-xl border border-[#C7D2FE] text-[#4F46E5] hover:bg-[#EEF2FF] transition-colors"
                     title={nanoText.delete}
                   >
@@ -2927,13 +2955,7 @@ export default function NanoBananaTool({
                       </button>
                       <button
                         type="button"
-                        onClick={() => {
-                          setHistory((prev) => prev.filter((h) => h.id !== item.id))
-                          if (currentResult?.id === item.id) {
-                            setCurrentResult(null)
-                            setRightMode(history.length > 1 ? 'history' : 'sample')
-                          }
-                        }}
+                        onClick={() => void handleDeleteHistoryItem(item)}
                         className="px-4 py-3 rounded-xl border border-[#C7D2FE] text-[#4F46E5] hover:bg-[#EEF2FF] transition-colors"
                         title={nanoText.delete}
                       >

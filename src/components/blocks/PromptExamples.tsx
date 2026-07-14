@@ -1,6 +1,8 @@
 'use client'
 
 import { useMemo, useState } from 'react'
+import { buildPromptExampleUseDetail } from '@/lib/prompt-example-use-detail'
+import type { PromptInsertMode } from '@/lib/prompt-insert-mode'
 
 interface PromptExampleItem {
   title: string
@@ -16,6 +18,7 @@ interface PromptExamplesProps {
   subtitle?: string
   items?: PromptExampleItem[]
   bgClass?: string
+  targetMode?: PromptInsertMode
 }
 
 export default function PromptExamples({
@@ -23,6 +26,7 @@ export default function PromptExamples({
   subtitle,
   items = [],
   bgClass = 'bg-white',
+  targetMode,
 }: PromptExamplesProps) {
   const hasGenderGroups = items.some((item) => item.group === 'women') && items.some((item) => item.group === 'men')
   const [activeGroup, setActiveGroup] = useState('women')
@@ -36,13 +40,7 @@ export default function PromptExamples({
 
   const handleUsePrompt = (item: PromptExampleItem) => {
     window.dispatchEvent(new CustomEvent('toolaze:use-prompt', {
-      detail: {
-        prompt: item.prompt,
-        demoImageUrl: item.image,
-        demoImageTitle: item.title,
-        presetLabel: item.title,
-        presetGroup: item.group,
-      },
+      detail: buildPromptExampleUseDetail(item, targetMode),
     }))
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }

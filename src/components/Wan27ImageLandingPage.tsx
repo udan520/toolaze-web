@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
-import Breadcrumb from '@/components/Breadcrumb'
 import NanoBananaTool from '@/components/NanoBananaTool'
 import PromptCopyButton from '@/components/PromptCopyButton'
 import RedditMediaCarousel from '@/components/RedditMediaCarousel'
@@ -395,31 +394,27 @@ export async function Wan27ImageLandingPage({ locale = 'en' }: { locale?: string
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaGraph) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <Navigation initialTranslations={t} />
-      <Breadcrumb
-        items={[
-          { label: copy.breadcrumbs.home, href: '/' },
-          { label: copy.breadcrumbs.model, href: '/model' },
-          { label: copy.breadcrumbs.current },
-        ]}
-      />
       <main className="min-h-screen overflow-x-hidden bg-[#F8FAFF] text-slate-950">
-        <section id="wan-2-7-image-generator" className="bg-[#F8FAFF] px-6 pb-12">
-          <div className="mx-auto max-w-6xl">
-            <div className="mx-auto mb-12 max-w-4xl pt-8 text-center">
-              <h1 className="text-[40px] font-extrabold leading-tight tracking-tight text-slate-950">
-                <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-                  {copy.hero.modelName}
-                </span>{' '}
-                {copy.hero.suffix}
-              </h1>
-              <p className="mx-auto mt-6 max-w-3xl text-base leading-8 text-slate-700 md:text-lg">
-                {copy.hero.description}
-              </p>
-            </div>
+        <section id="wan-2-7-image-generator" className="bg-[#F8FAFF] pb-12 pl-0 pr-2 md:pl-0 md:pr-4 xl:pl-0 xl:pr-6 2xl:pl-0 2xl:pr-8">
+          <div className="w-full max-w-full">
             <NanoBananaTool
               modelId="wan-2-7-image"
               modelName="Wan 2.7 Image"
               dailyLimitStorageKey="wan_2_7_image_last_used_date"
+              heroBreadcrumbItems={[
+                { label: copy.breadcrumbs.home, href: '/' },
+                { label: copy.breadcrumbs.model, href: '/model' },
+                { label: copy.breadcrumbs.current },
+              ]}
+              heroTitle={
+                <>
+                  <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                    {copy.hero.modelName}
+                  </span>{' '}
+                  {copy.hero.suffix}
+                </>
+              }
+              heroDescription={copy.hero.description}
               initialTranslations={t}
             />
           </div>

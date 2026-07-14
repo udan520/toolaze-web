@@ -29,6 +29,7 @@ import Scenarios from '@/components/blocks/Scenarios'
 import Rating from '@/components/blocks/Rating'
 import FAQ from '@/components/blocks/FAQ'
 import PromptExamples from '@/components/blocks/PromptExamples'
+import type { PromptInsertMode } from '@/lib/prompt-insert-mode'
 import ToolCard from '@/components/ToolCard'
 import React from 'react'
 
@@ -374,6 +375,10 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
     const topComp = (content.topComponent || tool) as string
     const isScenePage = content.visiblePageType === 'scene'
     const isAiImageToolPage = content.pageGroup === 'ai-tools' || AI_IMAGE_TOOL_TOP_COMPONENTS.has(topComp)
+    const promptExampleTargetMode: PromptInsertMode | undefined =
+      content.topTool?.mode === 'image-to-image' || content.topTool?.mode === 'text-to-image'
+        ? content.topTool.mode
+        : undefined
 
     // Load translations
     const t = await loadCommonTranslations(locale)
@@ -579,7 +584,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
     const getModelL2Href = (modelTool: string): string => {
       if (modelTool === 'nano-banana-pro') return locale === 'en' ? '/model/nano-banana-pro' : `/${locale}/model/nano-banana-pro`
       if (modelTool === 'nano-banana-2') return locale === 'en' ? '/model/nano-banana-2' : `/${locale}/model/nano-banana-2`
-      if (modelTool === 'gpt-image-2') return locale === 'en' ? '/model/gpt-image-2-0' : `/${locale}/model/gpt-image-2-0`
+      if (modelTool === 'gpt-image-2') return locale === 'en' ? '/model/gpt-image-2' : `/${locale}/model/gpt-image-2`
       if (modelTool === 'seedance-2-5') return locale === 'en' ? '/model/seedance-2-5' : `/${locale}/model/seedance-2-5`
       if (modelTool === 'seedance-2') return locale === 'en' ? '/model/seedance-2' : `/${locale}/model/seedance-2`
       if (modelTool === 'kling-3') return locale === 'en' ? '/model/kling-3' : `/${locale}/model/kling-3`
@@ -1156,6 +1161,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                     subtitle={promptExamples.subtitle}
                     items={promptExamples.items}
                     bgClass={bgClass}
+                    targetMode={promptExampleTargetMode}
                   />
                 )
               },

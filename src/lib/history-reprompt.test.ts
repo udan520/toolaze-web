@@ -4,6 +4,7 @@ import {
   buildHistoryRepromptPayload,
   getDisplayImagePreviewUrl,
   getHistoryReferenceImageUrls,
+  getReferencePreviewUrl,
 } from './history-reprompt'
 
 const baseHistoryItem = {
@@ -91,4 +92,18 @@ test('creates a small display URL without changing the original image URL', () =
 test('keeps blob and data URLs unchanged for local browser previews', () => {
   assert.equal(getDisplayImagePreviewUrl('blob:http://localhost/image-id', 128), 'blob:http://localhost/image-id')
   assert.equal(getDisplayImagePreviewUrl('data:image/png;base64,abc', 128), 'data:image/png;base64,abc')
+})
+
+test('uses retina-friendly reference thumbnails for upload previews', () => {
+  const previewUrl = getReferencePreviewUrl('/ai-hairstyle-changer/default-reference.png')
+
+  assert.match(previewUrl, /^\/_next\/image\?/)
+  assert.match(previewUrl, /w=384/)
+})
+
+test('uses the optimized hair color thumbnail asset at retina-friendly size', () => {
+  const previewUrl = getReferencePreviewUrl('/ai-hair-color-changer/default-reference.png')
+
+  assert.match(previewUrl, /default-reference-preview\.webp/)
+  assert.match(previewUrl, /w=384/)
 })

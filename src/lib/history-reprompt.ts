@@ -9,6 +9,7 @@ type HistoryRepromptSource = {
 }
 
 const NEXT_IMAGE_WIDTHS = [64, 96, 128, 256, 384, 640, 750, 828, 1080, 1200] as const
+const REFERENCE_PREVIEW_WIDTH = 384
 
 function normalizeImageUrl(url: unknown): string {
   return typeof url === 'string' ? url.trim() : ''
@@ -87,4 +88,16 @@ export function getDisplayImagePreviewUrl(url: string, width = 384, quality = 75
   const previewQuality = Math.min(100, Math.max(1, Math.round(Number.isFinite(quality) ? quality : 75)))
 
   return `/_next/image?url=${encodeURIComponent(imageUrl)}&w=${previewWidth}&q=${previewQuality}`
+}
+
+export function getReferencePreviewUrl(url: string): string {
+  const hairColorReferencePath = '/ai-hair-color-changer/default-reference.png'
+  const hairColorReferencePreviewPath = '/ai-hair-color-changer/default-reference-preview.webp'
+  const imageUrl = normalizeImageUrl(url)
+
+  if (imageUrl === hairColorReferencePath || imageUrl.endsWith(hairColorReferencePath)) {
+    return getDisplayImagePreviewUrl(hairColorReferencePreviewPath, REFERENCE_PREVIEW_WIDTH)
+  }
+
+  return getDisplayImagePreviewUrl(imageUrl, REFERENCE_PREVIEW_WIDTH)
 }

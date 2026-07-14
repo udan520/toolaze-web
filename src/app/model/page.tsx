@@ -37,7 +37,7 @@ export default function ModelPage() {
           <div className="max-w-6xl mx-auto">
             <div className="grid gap-6 md:grid-cols-1 lg:grid-cols-2">
               <Link
-                href="/model/gpt-image-2-0"
+                href="/model/gpt-image-2"
                 className="group bg-white rounded-2xl border border-[#E0E7FF] shadow-lg shadow-[#4F46E5]/8 p-8 hover:shadow-xl hover:shadow-[#4F46E5]/12 transition-all duration-200 hover:-translate-y-1"
               >
                 <div className="flex items-start gap-4 mb-4">

@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import CloseIcon from './icons/CloseIcon'
+import { formatCreditTransactionTimestamp } from '@/lib/credit-history-time'
 import { getClientMenuItems, type ClientMenuItem } from '@/lib/client-menu-data'
 import {
   PREFERRED_LOCALE_STORAGE_KEY,
@@ -776,12 +777,6 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
     />
   )
 
-  function formatCreditDate(value: string): string {
-    const date = new Date(value)
-    if (!Number.isFinite(date.getTime())) return ''
-    return date.toLocaleDateString(navEffectiveLocale, { month: 'short', day: 'numeric' })
-  }
-
   const renderCreditTransactions = () => {
     const recentTransactions = creditSummary.transactions.slice(0, 3)
     if (recentTransactions.length === 0) {
@@ -804,7 +799,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                     {transaction.description}
                   </p>
                   <p className="mt-0.5 text-[11px] text-slate-500">
-                    {formatCreditDate(transaction.createdAt)} · {accountTranslations.balance} {transaction.balanceAfter}
+                    {formatCreditTransactionTimestamp(transaction.createdAt)} · {accountTranslations.balance} {transaction.balanceAfter}
                   </p>
                 </div>
                 <span className={`shrink-0 text-sm font-extrabold ${isPositive ? 'text-emerald-600' : 'text-rose-600'}`}>
@@ -1312,7 +1307,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                   <span>{navTranslations.aiImageToImageGenerator || defaultNavTranslations.aiImageToImageGenerator}</span>
                 </Link>
                 <Link
-                  href={getLocalizedHref('/model/gpt-image-2-0')}
+                  href={getLocalizedHref('/model/gpt-image-2')}
                   onClick={() => setOpenDesktopMenu(null)}
                   className="order-5 block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
                 >
@@ -1844,7 +1839,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                     <span>{navTranslations.aiImageToImageGenerator || defaultNavTranslations.aiImageToImageGenerator}</span>
                   </Link>
                   <Link
-                    href={getLocalizedHref('/model/gpt-image-2-0')}
+                    href={getLocalizedHref('/model/gpt-image-2')}
                     onClick={() => {
                       setMobileMenuOpen(false)
                       setExpandedSubmenus(new Set())

@@ -1,7 +1,7 @@
 import ToolL2PageContent from '@/components/blocks/ToolL2PageContent'
 import type { Metadata } from 'next'
 import { getL2SeoContent, hasLocaleL2JsonFile } from '@/lib/seo-loader'
-import { notFound, redirect } from 'next/navigation'
+import { notFound, permanentRedirect, redirect } from 'next/navigation'
 import { GptImage2LandingPage } from '@/components/GptImage2LandingPage'
 import { getGptImage2PageMetadata } from '@/lib/gpt-image-2-landing-copy'
 import { Seedream45LandingPage } from '@/components/Seedream45LandingPage'
@@ -35,13 +35,15 @@ export const dynamicParams = false
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale, model } = await params
   const tool = MODEL_TOOL_MAP[model]
+  const canonicalModel = model === 'gpt-image-2-0' ? 'gpt-image-2' : model
 
   if (!tool || !SUPPORTED_LOCALES.includes(locale as (typeof SUPPORTED_LOCALES)[number])) {
     return {}
   }
 
   if (tool === 'gpt-image-2') {
-    return getGptImage2PageMetadata(locale, `https://toolaze.com/${locale}/model/${model}`)
+    const canonicalPath = locale === 'en' ? `/model/${canonicalModel}` : `/${locale}/model/${canonicalModel}`
+    return getGptImage2PageMetadata(locale, `https://toolaze.com${canonicalPath}`)
   }
 
   if (tool === 'seedream-4-5') {
@@ -90,6 +92,10 @@ export default async function LocalizedModelPage({ params }: PageProps) {
   if (!tool) {
     notFound()
     return null
+  }
+
+  if (model === 'gpt-image-2-0') {
+    permanentRedirect(locale === 'en' ? '/model/gpt-image-2' : `/${locale}/model/gpt-image-2`)
   }
 
   if (locale === 'en') {
