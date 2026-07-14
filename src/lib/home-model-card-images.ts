@@ -30,6 +30,12 @@ export const HOME_MODEL_CARD_IMAGES = {
     height: 600,
     alt: 'GPT Image 2 sample output preview',
   },
+  'seedream-5-0-pro': {
+    src: '/model-assets/seedream-5-0-pro/gallery-ad-campaign.webp',
+    width: 1200,
+    height: 900,
+    alt: 'Seedream 5.0 Pro cinematic campaign image preview',
+  },
   'wan-2-7-image': {
     src: '/model-assets/wan-2-7-image/gallery-event-poster.webp',
     width: 960,
@@ -47,6 +53,12 @@ export const HOME_MODEL_CARD_IMAGES = {
     width: 800,
     height: 540,
     alt: 'AI video — cinematic scene preview for Seedance 2.0',
+  },
+  'seedance-2-5': {
+    src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/seedance-2-5.jpg',
+    width: 800,
+    height: 450,
+    alt: 'Seedance 2.5 cinematic AI video generation preview',
   },
   'kling-3': {
     src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/kling-3.jpg',

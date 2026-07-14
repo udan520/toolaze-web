@@ -1,0 +1,322 @@
+{
+  "in_menu": true,
+  "topComponent": "seedance-2-5",
+  "metadata": {
+    "title": "Gerador de video IA Seedance 2.5 | Videos cinematograficos mais longos com mais controle",
+    "description": "Explore o Seedance 2.5, o proximo modelo de video IA da ByteDance para clipes cinematograficos mais longos, controle de referencias mais rico, maior consistencia de cena e fluxos criativos prontos para producao."
+  },
+  "sectionsOrder": [
+    "modelIntro",
+    "features",
+    "performanceMetrics",
+    "modelComparison",
+    "howToUse",
+    "intro",
+    "scenes",
+    "competitorComparison",
+    "rating",
+    "faq"
+  ],
+  "modelIntro": {
+    "title": "Por que o Seedance 2.5 importa para criacao de video com IA",
+    "modelName": "Seedance 2.5",
+    "modelType": "Modelo de video IA",
+    "description": [
+      "Seedance 2.5 e o proximo passo na familia de modelos de video IA da ByteDance, com geracao nativa de 30 segundos, ate 50 entradas de referencia multimodal e fluxos criativos mais praticos.",
+      "Enquanto ferramentas anteriores de video IA costumam parar em clipes curtos isolados, Seedance 2.5 foi pensado para cenas mais longas, maior continuidade e mais controle sobre produtos, personagens, movimento e direcao de camera.",
+      "Use esta pagina para acompanhar novidades do Seedance 2.5 e preparar prompts antes de uma disponibilidade mais ampla."
+    ],
+    "featureCards": [
+      {
+        "title": "Cenas nativas de 30 segundos",
+        "content": "Crie clipes de 30 segundos com mais espaco para ritmo, movimento de camera e progressao narrativa."
+      },
+      {
+        "title": "Controle com 50 referencias",
+        "content": "Guie o modelo com ate 50 referencias multimodais, incluindo imagens, video, audio e texto."
+      },
+      {
+        "title": "Iteracao pronta para producao",
+        "content": "Va alem de testes pontuais para assets de campanha, clipes de pitch e cenas que podem ser refinadas."
+      }
+    ]
+  },
+  "hero": {
+    "h1": "<span class=\"text-gradient\">Seedance 2.5</span> Gerador de video IA",
+    "desc": "Crie videos IA mais longos e coerentes com controle de referencias mais rico, maior consistencia de cena e um fluxo criado para producao criativa real."
+  },
+  "launchUpdates": {
+    "eyebrow": "Novidades de lancamento",
+    "title": "Receba novidades do Seedance 2.5",
+    "description": "Insira seu email para receber uma novidade quando a disponibilidade do Seedance 2.5 mudar.",
+    "emailLabel": "Endereco de email",
+    "emailPlaceholder": "voce@empresa.com",
+    "button": "Avisar-me",
+    "idleText": "Sem spam. Enviaremos emails apenas sobre disponibilidade do Seedance 2.5 e atualizacoes do produto.",
+    "successText": "Voce entrou na lista de atualizacoes do Seedance 2.5.",
+    "errorText": "Insira um email valido.",
+    "badges": [
+      "Cenas mais longas",
+      "Controle de referencias",
+      "Novidades"
+    ]
+  },
+  "intro": {
+    "title": "De clipes IA a assets de video utilizaveis",
+    "content": [
+      {
+        "title": "Por que o Seedance 2.5 e diferente",
+        "text": "A maioria dos geradores de video IA serve para experimentos visuais rapidos. O problema mais dificil e manter personagens, produtos, movimento, luz e direcao de camera consistentes por tempo suficiente para que o clipe seja util."
+      },
+      {
+        "title": "Criado para equipes criativas",
+        "text": "Seedance 2.5 foca nessa lacuna. Ele da mais espaco para construir uma cena, orientar o resultado com referencias e iterar ate um video que apoie campanhas ou producao real."
+      },
+      {
+        "title": "Pensado para fluxos criativos",
+        "text": "Use esta pagina para comparar o Seedance 2.5 com o Seedance 2.0 e preparar prompts para videos de campanha, storytelling de produto, clipes sociais e prototipos de cena."
+      }
+    ]
+  },
+  "features": {
+    "title": "Principais recursos do Seedance 2.5",
+    "items": [
+      {
+        "icon": "🎬",
+        "iconType": "quality",
+        "title": "Geracao nativa de 30 segundos",
+        "desc": "Crie clipes nativos de 30 segundos com mais espaco para movimento de camera, ritmo de cena e progressao narrativa."
+      },
+      {
+        "icon": "🖼️",
+        "iconType": "multimodal",
+        "title": "Ate 50 entradas de referencia",
+        "desc": "Guie o modelo com ate 50 referencias multimodais, incluindo fichas de personagem, fotos de produto, video, audio e direcao de estilo."
+      },
+      {
+        "icon": "🎥",
+        "iconType": "quality",
+        "title": "Melhor consistencia de cena",
+        "desc": "Mantenha aparencia mais estavel em sujeitos, cenarios, movimento de camera e detalhes visuais."
+      },
+      {
+        "icon": "✂️",
+        "iconType": "speed",
+        "title": "Fluxo de edicao criativa",
+        "desc": "Refine resultados sem reiniciar cada cena a partir de um prompt vazio."
+      },
+      {
+        "icon": "📱",
+        "iconType": "browser",
+        "title": "Planejamento de assets de campanha",
+        "desc": "Planeje videos sociais, conceitos de anuncio, historias de produto e assets de pitch em um fluxo."
+      },
+      {
+        "icon": "🔔",
+        "iconType": "free",
+        "title": "Novidades do Seedance 2.5",
+        "desc": "Receba um email quando a disponibilidade do Seedance 2.5 mudar."
+      }
+    ]
+  },
+  "performanceMetrics": {
+    "title": "Previa de capacidades do Seedance 2.5",
+    "metrics": [
+      {
+        "label": "Tipo de video",
+        "value": "Clipes cinematograficos mais longos com mais espaco para ritmo, movimento e progressao narrativa"
+      },
+      {
+        "label": "Foco do modelo",
+        "value": "Geracao criativa de video mais longa e controlavel"
+      },
+      {
+        "label": "Duracao do video",
+        "value": "Geracao single-shot nativa de ate 30 segundos para cenas mais longas"
+      },
+      {
+        "label": "Fluxo de referencias",
+        "value": "Imagens, produtos, personagens, ambientes, estilos visuais e direcao de campanha"
+      },
+      {
+        "label": "Usuarios principais",
+        "value": "Criadores, profissionais de marketing, agencias, cineastas e equipes de produto"
+      },
+      {
+        "label": "Melhor uso",
+        "value": "Videos de campanha, storytelling de produto, cenas narrativas e fluxos de producao"
+      },
+      {
+        "label": "Disponibilidade",
+        "value": "As novidades de disponibilidade estao abertas no Toolaze; os detalhes serao atualizados aqui"
+      }
+    ]
+  },
+  "modelComparison": {
+    "title": "Seedance 2.5 vs Seedance 2.0",
+    "columnHeaders": {
+      "metric": "Ponto de comparacao",
+      "baseline": "Seedance 2.0",
+      "target": "Seedance 2.5"
+    },
+    "rows": [
+      {
+        "label": "Foco do modelo",
+        "baseline": "Geracao de video cinematografico multimodal para clipes curtos e polidos.",
+        "target": "Geracao nativa de video de 30 segundos para cenas mais longas e prontas para producao."
+      },
+      {
+        "label": "Duracao do video",
+        "baseline": "Ate 15 segundos por clipe.",
+        "target": "Ate 30 segundos por clipe."
+      },
+      {
+        "label": "Controle de referencias",
+        "baseline": "Suporta ate 12 arquivos de referencia multimodal entre texto, imagem, video e audio.",
+        "target": "Suporta ate 50 materiais de referencia multimodal entre imagens, video, audio e texto."
+      },
+      {
+        "label": "Consistencia de cena",
+        "baseline": "Forte para testes cinematograficos e clipes curtos controlados.",
+        "target": "Projetado para maior continuidade em sujeitos, movimento, luz e direcao de camera."
+      },
+      {
+        "label": "Melhor fluxo",
+        "baseline": "Testes criativos, clipes sociais curtos e experimentos multimodais de video IA.",
+        "target": "Videos de campanha mais longos, storytelling de produto, cenas narrativas, clipes de pitch e iteracao controlada."
+      },
+      {
+        "label": "Status",
+        "baseline": "Disponivel por plataformas compatíveis.",
+        "target": "As novidades de disponibilidade estao abertas no Toolaze; os detalhes serao atualizados aqui."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Como usar o Seedance 2.5",
+    "steps": [
+      {
+        "title": "Descreva a cena",
+        "desc": "Escreva sujeito, acao, ambiente, movimento de camera, clima e estilo visual."
+      },
+      {
+        "title": "Adicione referencias",
+        "desc": "Use imagens, referencias de video, fichas de personagem, fotos de produto ou style boards para guiar a saida."
+      },
+      {
+        "title": "Escolha as configuracoes",
+        "desc": "Defina proporcao, duracao, qualidade e estilo conforme onde o video sera usado."
+      },
+      {
+        "title": "Gere e refine",
+        "desc": "Crie um video IA coerente e ajuste a direcao criativa antes de exportar."
+      }
+    ]
+  },
+  "comparison": {
+    "title": "Seedance 2.5 vs outros geradores de video IA",
+    "toolaze": "Seedance 2.5",
+    "others": "Outros geradores de video IA",
+    "vs": "VS",
+    "smartChoice": "Por que escolher o Seedance 2.5",
+    "otherTools": "Veo, Runway, Kling, Hailuo",
+    "toolazeFeatures": "Clipes nativos de 30 segundos, ate 50 materiais de referencia, continuidade para cenas mais longas, fluxos de video de marca e produto, iteracao pronta para campanha",
+    "othersFeatures": "Veo enfatiza geracao de alta fidelidade, Runway ferramentas criativas, Kling e Hailuo saida de video acessivel; muitos fluxos ainda se concentram em clipes curtos independentes"
+  },
+  "competitorComparison": {
+    "title": "Seedance 2.5 vs outros geradores de video IA",
+    "columnHeaders": {
+      "metric": "Modelo de video IA",
+      "baseline": "Forca conhecida",
+      "target": "Por que Seedance 2.5"
+    },
+    "rows": [
+      {
+        "label": "Veo",
+        "baseline": "Geracao de alta fidelidade, amplo entendimento do modelo e realismo forte para videos IA polidos.",
+        "target": "Seedance 2.5 mira cenas criativas mais longas, direcao com muitas referencias e fluxos de producao para campanhas e conceitos narrativos."
+      },
+      {
+        "label": "Runway Gen-4",
+        "baseline": "Ferramentas criativas, fluxos com referencias e edicao voltada a producao para equipes visuais.",
+        "target": "Seedance 2.5 compete com geracao de cena controlavel, referencias mais ricas e iteracao pratica do conceito ao asset utilizavel."
+      },
+      {
+        "label": "Kling e Hailuo",
+        "baseline": "Geracao de video IA acessivel para clipes sociais, conceitos rapidos e experimentacao visual.",
+        "target": "Seedance 2.5 pode se destacar quando criadores precisam de continuidade, mais controle de cena e direcao de video pronta para marca."
+      },
+      {
+        "label": "Seedance 2.5",
+        "baseline": "Modelo de video IA da ByteDance anunciado com clipes nativos de 30 segundos e ate 50 entradas de referencia multimodais.",
+        "target": "Clipes nativos de 30 segundos, ate 50 materiais de referencia, continuidade para cenas mais longas, storytelling de produto, variantes de anuncios, clipes de pitch e fluxos de producao."
+      }
+    ]
+  },
+  "scenesTitle": "Crie mais do que testes curtos de IA",
+  "scenes": [
+    {
+      "title": "Videos de campanha de marca",
+      "icon": "📣",
+      "desc": "Crie clipes conceituais polidos para lancamentos de produto, campanhas sazonais e testes de paid social."
+    },
+    {
+      "title": "Storytelling de produto",
+      "icon": "🛍️",
+      "desc": "Mostre produtos em movimento com luz, enquadramento, materiais e fundos consistentes."
+    },
+    {
+      "title": "Shorts para redes sociais",
+      "icon": "📱",
+      "desc": "Gere clipes cinematograficos para TikTok, Instagram Reels, YouTube Shorts e campanhas com criadores."
+    },
+    {
+      "title": "Previsualizacao de filme e historia",
+      "icon": "🎞️",
+      "desc": "Prototipe cenas, movimento de camera, blocking de personagens e tom visual antes da producao."
+    },
+    {
+      "title": "Pitch decks e moodboards",
+      "icon": "🧭",
+      "desc": "Transforme referencias estaticas em direcoes criativas em movimento para clientes, equipes e stakeholders."
+    },
+    {
+      "title": "Teste de variantes de anuncio",
+      "icon": "🧪",
+      "desc": "Produza varias direcoes criativas mais rapido e teste hooks, cenas, estilos e formatos antes do investimento em producao."
+    }
+  ],
+  "rating": {
+    "title": "Acompanhe novidades do Seedance 2.5",
+    "rating": "Upcoming AI video model",
+    "text": "Entre na lista de novidades do Seedance 2.5 para receber uma atualizacao quando a disponibilidade mudar."
+  },
+  "faqTitle": "FAQ do Seedance 2.5",
+  "faq": [
+    {
+      "q": "O que e Seedance 2.5?",
+      "a": "Seedance 2.5 e o proximo modelo de video IA da ByteDance, anunciado com geracao nativa de 30 segundos e ate 50 entradas de referencia multimodal."
+    },
+    {
+      "q": "Seedance 2.5 ja esta disponivel?",
+      "a": "O Toolaze acompanha a disponibilidade do Seedance 2.5. Insira seu email para receber uma novidade quando o acesso mudar."
+    },
+    {
+      "q": "Como Seedance 2.5 difere do Seedance 2.0?",
+      "a": "Seedance 2.5 sai do formato do Seedance 2.0 com 15 segundos e 12 referencias para clipes de 30 segundos e ate 50 referencias."
+    },
+    {
+      "q": "Seedance 2.5 pode criar videos mais longos?",
+      "a": "Sim. Relatos publicos e a cobertura do lancamento apontam clipes nativos de 30 segundos como uma das principais melhorias."
+    },
+    {
+      "q": "Quem deve usar Seedance 2.5?",
+      "a": "Seedance 2.5 e util para criadores, marketers, agencias, cineastas, equipes de produto e qualquer pessoa criando videos IA cinematograficos para campanhas, redes sociais ou prototipos visuais."
+    },
+    {
+      "q": "Como recebo novidades do Seedance 2.5?",
+      "a": "Insira seu email no formulario de novidades para receber uma atualizacao quando a disponibilidade do Seedance 2.5 mudar."
+    }
+  ],
+  "moreTools": "Mais modelos de video IA"
+}

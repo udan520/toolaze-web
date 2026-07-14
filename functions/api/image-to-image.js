@@ -1,3 +1,7 @@
+import { getCurrentUser } from '../_shared/auth.mjs';
+import { consumeCredits, refundCredits } from '../_shared/credits.mjs';
+import { calculateImageGenerationCredits } from '../_shared/generation-credits.mjs';
+
 /**
  * Cloudflare Pages Function: Nano Banana Pro 生图 - 创建任务
  * 部署后地址：https://toolaze-web.pages.dev/api/image-to-image
@@ -63,7 +67,10 @@ function resolveModel(model) {
 
 function resolveProviderModelId(model, env, isImageToImage, resolution) {
   if (model === 'gpt-image-2') {
-    return env.KIE_GPT_IMAGE_2_MODEL || 'gpt-image-2-text-to-image';
+    if (isImageToImage) {
+      return env.KIE_GPT_IMAGE_2_IMAGE_MODEL || env.KIE_GPT_IMAGE_2_EDIT_MODEL || env.KIE_GPT_IMAGE_2_IMAGE_TO_IMAGE_MODEL || env.KIE_GPT_IMAGE_2_MODEL || 'gpt-image-2-image-to-image';
+    }
+    return env.KIE_GPT_IMAGE_2_TEXT_MODEL || env.KIE_GPT_IMAGE_2_MODEL || 'gpt-image-2-text-to-image';
   }
   if (model === 'seedream-4-5') {
     if (isImageToImage) {
@@ -97,9 +104,81 @@ function jsonResponse(body, status = 200) {
   });
 }
 
+function shouldUseCreditLedger(env) {
+  return Boolean(env?.DB);
+}
+
+async function consumeGenerationCredits(env, request, model, resolution, metadata) {
+  const requiredCredits = calculateImageGenerationCredits(model, resolution);
+
+  if (!shouldUseCreditLedger(env)) {
+    return {
+      requiredCredits,
+      credits: null,
+      user: null,
+      consumption: null,
+      response: null,
+    };
+  }
+
+  const user = await getCurrentUser(env, request);
+  if (!user) {
+    return {
+      requiredCredits,
+      credits: null,
+      user: null,
+      consumption: null,
+      response: jsonResponse({
+        error: 'Please sign in with Google to generate images.',
+        requiredCredits,
+      }, 401),
+    };
+  }
+
+  const consumption = await consumeCredits(env, user.id, requiredCredits, {
+    reason: 'image_generation',
+    description: 'Image generation',
+    metadata,
+  });
+
+  if (!consumption.ok) {
+    return {
+      requiredCredits,
+      credits: { balance: consumption.balance, transactions: [] },
+      user,
+      consumption: null,
+      response: jsonResponse({
+        error: 'Insufficient credits to generate this image.',
+        credits: { balance: consumption.balance, transactions: [] },
+        requiredCredits,
+      }, 402),
+    };
+  }
+
+  return {
+    requiredCredits,
+    credits: { balance: consumption.balance, transactions: [] },
+    user,
+    consumption,
+    response: null,
+  };
+}
+
+async function refundGenerationCredits(env, creditContext, metadata) {
+  if (!creditContext?.user || !creditContext?.consumption?.consumptionId) return;
+
+  await refundCredits(env, creditContext.user.id, creditContext.requiredCredits, {
+    reason: 'image_generation_refund',
+    description: 'Image generation refund',
+    consumptionId: creditContext.consumption.consumptionId,
+    metadata,
+  }).catch(() => null);
+}
+
 export async function onRequest(context) {
   const { request, env } = context;
   const method = request.method;
+  let creditContext = null;
 
   if (method === 'OPTIONS') {
     return new Response(null, { status: 204, headers: CORS });
@@ -165,6 +244,14 @@ export async function onRequest(context) {
       );
     }
 
+    creditContext = await consumeGenerationCredits(env, request, model, normalizedResolution, {
+      model,
+      providerModelId,
+      resolution: normalizedResolution,
+      isImageToImage,
+    });
+    if (creditContext.response) return creditContext.response;
+
     const input = model === 'seedream-4-5'
       ? { prompt }
       : {
@@ -208,30 +295,58 @@ export async function onRequest(context) {
     let response = await createTask(providerModelId);
     let result = await response.json().catch(() => ({}));
     const unsupportedMsg = String(result?.message ?? result?.msg ?? '');
+    const defaultGptImage2ModelId = isImageToImage ? 'gpt-image-2-image-to-image' : 'gpt-image-2-text-to-image';
     if (
       model === 'gpt-image-2' &&
       /model name you specified is not supported/i.test(unsupportedMsg) &&
-      providerModelId !== 'gpt-image-2-text-to-image'
+      providerModelId !== defaultGptImage2ModelId
     ) {
-      response = await createTask('gpt-image-2-text-to-image');
+      response = await createTask(defaultGptImage2ModelId);
       result = await response.json().catch(() => ({}));
     }
     if (!response.ok) {
       let msg = result?.message ?? result?.msg ?? await response.text();
       if (model === 'gpt-image-2' && /model name you specified is not supported/i.test(String(msg))) {
-        msg = 'Current KIE key does not support GPT Image 2. Set KIE_GPT_IMAGE_2_MODEL to your account-enabled model id.';
+        msg = 'Current KIE key does not support GPT Image 2. Set KIE_GPT_IMAGE_2_TEXT_MODEL or KIE_GPT_IMAGE_2_IMAGE_MODEL to your account-enabled model id.';
       }
+      await refundGenerationCredits(env, creditContext, {
+        model,
+        providerModelId,
+        resolution: normalizedResolution,
+        error: String(msg || 'Failed to create task'),
+      });
       return jsonResponse({ error: msg || 'Failed to create task' }, response.status);
     }
 
     if (result?.code === 200 && result?.data?.taskId) {
-      return jsonResponse({ taskId: result.data.taskId });
+      return jsonResponse({
+        taskId: result.data.taskId,
+        credits: creditContext.credits,
+        requiredCredits: creditContext.requiredCredits,
+        creditHold: creditContext.consumption?.consumptionId
+          ? {
+              provider: 'credit-ledger',
+              taskId: result.data.taskId,
+              consumptionId: creditContext.consumption.consumptionId,
+              requiredCredits: creditContext.requiredCredits,
+            }
+          : null,
+      });
     }
 
+    await refundGenerationCredits(env, creditContext, {
+      model,
+      providerModelId,
+      resolution: normalizedResolution,
+      error: result?.message ?? result?.msg ?? 'Unexpected response format',
+    });
     return jsonResponse({
       error: result?.message ?? result?.msg ?? 'Unexpected response format',
     }, 500);
   } catch (e) {
+    await refundGenerationCredits(env, creditContext, {
+      error: e instanceof Error ? e.message : 'Internal server error',
+    });
     return jsonResponse({
       error: e instanceof Error ? e.message : 'Internal server error',
     }, 500);

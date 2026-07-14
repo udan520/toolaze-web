@@ -1,0 +1,404 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 1,
+    "modelId": "gpt-image-2",
+    "defaultPrompt": "Change the hair color to rose pink while keeping the face, hairstyle, skin tone, and background natural.",
+    "defaultImageUrls": [
+      "/ai-hair-color-changer/default-reference.png"
+    ],
+    "hideModelBranding": true,
+    "displayName": "AI 髮色變換器",
+    "functionalAcceptance": {
+      "recommendedMode": "preset-first-with-custom-prompt",
+      "reason": "VisualGPT uses visible hair color choices to make the task easier than a prompt-only flow.",
+      "presetTitle": "選擇髮色",
+      "presets": [
+        {
+          "label": "玫瑰粉",
+          "prompt": "Change the hair color to soft rose pink while keeping the face, hairstyle, skin tone, and background natural.",
+          "swatch": "linear-gradient(135deg, #f9a8d4, #db2777)"
+        },
+        {
+          "label": "蜂蜜金",
+          "prompt": "Change the hair color to warm honey blonde with natural highlights and realistic lighting.",
+          "swatch": "linear-gradient(135deg, #fde68a, #d97706)"
+        },
+        {
+          "label": "白金金",
+          "prompt": "Change the hair color to platinum blonde with soft natural shadows and realistic hair texture.",
+          "swatch": "linear-gradient(135deg, #fff7ed, #d6d3d1)"
+        },
+        {
+          "label": "銅棕色",
+          "prompt": "Change the hair color to copper brown while preserving the original hairstyle, face, and background.",
+          "swatch": "linear-gradient(135deg, #fb923c, #92400e)"
+        },
+        {
+          "label": "酒紅色",
+          "prompt": "Change the hair color to deep burgundy red with a natural glossy finish.",
+          "swatch": "linear-gradient(135deg, #fda4af, #991b1b)"
+        },
+        {
+          "label": "櫻桃紅",
+          "prompt": "Change the hair color to cherry red with realistic shine, natural roots, and preserved facial features.",
+          "swatch": "linear-gradient(135deg, #ef4444, #7f1d1d)"
+        },
+        {
+          "label": "銀灰色",
+          "prompt": "Change the hair color to silver gray while keeping the hair texture and facial features unchanged.",
+          "swatch": "linear-gradient(135deg, #f8fafc, #64748b)"
+        },
+        {
+          "label": "亞麻棕",
+          "prompt": "Change the hair color to ash brown with soft cool highlights and realistic shadows.",
+          "swatch": "linear-gradient(135deg, #a8a29e, #57534e)"
+        },
+        {
+          "label": "亮黑色",
+          "prompt": "Change the hair color to jet black with natural shine while preserving the face, hairstyle, and background.",
+          "swatch": "linear-gradient(135deg, #27272a, #020617)"
+        },
+        {
+          "label": "藍黑色",
+          "prompt": "Change the hair color to blue black with subtle cool highlights and realistic shadows.",
+          "swatch": "linear-gradient(135deg, #0f172a, #1d4ed8)"
+        },
+        {
+          "label": "薰衣草紫",
+          "prompt": "Change the hair color to soft lavender purple while keeping the portrait natural and realistic.",
+          "swatch": "linear-gradient(135deg, #ddd6fe, #7c3aed)"
+        },
+        {
+          "label": "自訂"
+        }
+      ]
+    },
+    "sampleImages": [
+      {
+        "url": "/ai-hair-color-changer/rose-pink-before-after.webp",
+        "title": "Rose Pink before and after",
+        "width": 1200,
+        "height": 450
+      },
+      {
+        "url": "/ai-hair-color-changer/honey-blonde-before-after.webp",
+        "title": "Honey Blonde before and after",
+        "width": 1200,
+        "height": 450
+      },
+      {
+        "url": "/ai-hair-color-changer/copper-brown-before-after.webp",
+        "title": "Copper Brown before and after",
+        "width": 1200,
+        "height": 450
+      }
+    ]
+  },
+  "metadata": {
+    "title": "免費 AI 髮色變換器線上使用 | 免註冊 | Toolaze",
+    "description": "使用 Toolaze 免費 AI 髮色變換器，線上免註冊、無浮水印。上傳人像，描述新的髮色，預覽粉色、金色、銅色、銀色或藍黑色造型。"
+  },
+  "sectionsOrder": [
+    "intro",
+    "howToUse",
+    "photoTips",
+    "promptExamples",
+    "scenes",
+    "workflowComparison",
+    "features",
+    "testimonials",
+    "faq"
+  ],
+  "hero": {
+    "h1": "免費線上 AI <span class=\"text-gradient\">髮色變換器</span>",
+    "desc": "上傳清晰人像，選擇或輸入想要的髮色，即可線上立即預覽 AI 編輯效果，免註冊且無浮水印。"
+  },
+  "howToUse": {
+    "title": "如何用 AI 更換髮色",
+    "steps": [
+      {
+        "title": "上傳清晰人像",
+        "desc": "選擇正面或接近正面的照片，讓頭髮從髮根到髮尾都清楚可見。"
+      },
+      {
+        "title": "描述想要的顏色",
+        "desc": "輸入直接的提示，例如將髮色改成蜂蜜金、銅棕色、銀灰色或玫瑰粉。"
+      },
+      {
+        "title": "生成並微調",
+        "desc": "立即查看編輯預覽，如果顏色太重、太平或不夠接近目標色，再調整提示詞。"
+      }
+    ]
+  },
+  "photoTips": {
+    "title": "讓染髮預覽更好的拍照技巧",
+    "subtitle": "參考照片很重要。更好的輸入圖片能讓 AI 更了解髮型輪廓、髮絲質感、光線，以及顏色應該出現的位置。",
+    "items": [
+      {
+        "title": "使用正面人像",
+        "desc": "正面或接近正面的照片更容易保留臉部，同時乾淨地編輯可見的頭髮區域。",
+        "color": "linear-gradient(135deg, #dbeafe, #6366f1)"
+      },
+      {
+        "title": "顯示完整髮型輪廓",
+        "desc": "請使用頭髮沒有被裁切、帽子遮住、手擋住，或被強陰影吞掉的照片。",
+        "color": "linear-gradient(135deg, #fce7f3, #db2777)"
+      },
+      {
+        "title": "保留髮絲質感",
+        "desc": "清楚的捲度、層次、瀏海、辮子與挑染，能讓編輯有更明確的結構可依循。",
+        "color": "linear-gradient(135deg, #fef3c7, #f97316)"
+      },
+      {
+        "title": "避免極端角度",
+        "desc": "背面照、嚴重動態模糊、側臉與頭髮範圍太小的照片，都較難在預覽中判斷效果。",
+        "color": "linear-gradient(135deg, #ede9fe, #7c3aed)"
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "熱門髮色提示詞靈感",
+    "subtitle": "把提示詞複製到工具中，再調整色調、濃淡或質感。",
+    "items": [
+      {
+        "title": "玫瑰粉",
+        "prompt": "Change the hair color to soft rose pink while keeping the face, hairstyle, skin tone, and background natural.",
+        "note": "適合活潑但仍精緻的髮色預覽。",
+        "color": "linear-gradient(135deg, #fbcfe8, #db2777)",
+        "image": "/ai-hair-color-changer/rose-pink-before-after.webp"
+      },
+      {
+        "title": "蜂蜜金",
+        "prompt": "Change the hair color to warm honey blonde with natural highlights and realistic lighting.",
+        "note": "適合偏柔和的沙龍風格方向。",
+        "color": "linear-gradient(135deg, #fde68a, #d97706)",
+        "image": "/ai-hair-color-changer/honey-blonde-before-after.webp"
+      },
+      {
+        "title": "白金金",
+        "prompt": "Change the hair color to copper brown while preserving the original hairstyle, face, and background.",
+        "note": "適合真實人像預覽的實用暖色系。",
+        "color": "linear-gradient(135deg, #fb923c, #92400e)",
+        "image": "/ai-hair-color-changer/copper-brown-before-after.webp"
+      },
+      {
+        "title": "銅棕色",
+        "prompt": "Change the hair color to deep burgundy red with a natural glossy finish.",
+        "note": "來源照片有足夠髮量與光線時效果最好。",
+        "color": "linear-gradient(135deg, #fda4af, #991b1b)",
+        "image": "/ai-hair-color-changer/burgundy-red-before-after.webp"
+      },
+      {
+        "title": "酒紅色",
+        "prompt": "Change the hair color to silver gray while keeping the hair texture and facial features unchanged.",
+        "note": "適合乾淨的銀色、灰色或冷色調造型。",
+        "color": "linear-gradient(135deg, #f8fafc, #64748b)",
+        "image": "/ai-hair-color-changer/silver-gray-before-after.webp"
+      },
+      {
+        "title": "櫻桃紅",
+        "prompt": "Change the hair color to blue black with subtle cool highlights and realistic shadows.",
+        "note": "較深的創意髮色方向，對比更自然。",
+        "color": "linear-gradient(135deg, #0f172a, #1d4ed8)",
+        "image": "/ai-hair-color-changer/blue-black-before-after.webp"
+      }
+    ]
+  },
+  "scenesTitle": "AI 髮色變換器可以怎麼用",
+  "scenes": [
+    {
+      "title": "染髮前預覽顏色",
+      "icon": "🎨",
+      "desc": "在真正預約染髮前，先試試粉色、金色、銅色、銀色、棕色或更深的色調。"
+    },
+    {
+      "title": "更新個人頭像",
+      "icon": "👤",
+      "desc": "為頭像、創作者個人頁、交友檔案或個人品牌草稿建立新造型。"
+    },
+    {
+      "title": "Cosplay 與角色造型",
+      "icon": "🎭",
+      "desc": "為 Cosplay、奇幻人像、主題修圖或角色風格造型測試大膽髮色。"
+    },
+    {
+      "title": "製作社群內容",
+      "icon": "✨",
+      "desc": "快速產生貼文、縮圖、限時動態與風格實驗所需的視覺變化。"
+    },
+    {
+      "title": "給造型師的參考圖",
+      "icon": "💬",
+      "desc": "建立視覺參考，用來和造型師討論髮色方向，但不要把預覽視為保證的沙龍結果。"
+    }
+  ],
+  "workflowComparison": {
+    "title": "什麼時候該用 AI 髮色變換器，而不是一般濾鏡",
+    "subtitle": "簡單濾鏡適合快速玩色。當你想用提示詞描述色調、質感、真實感，以及哪些部分要保持不變時，Toolaze 更適合。",
+    "columns": [
+      "目標",
+      "一般濾鏡適合的情況",
+      "適合使用 Toolaze 的情況"
+    ],
+    "rows": [
+      [
+        "快速試一種顏色",
+        "你只需要快速套上粉色、金色或黑色覆蓋效果來玩玩看。",
+        "你希望結果考慮原始人像、光線、髮型與膚色。"
+      ],
+      [
+        "描述特定色調",
+        "預設清單裡剛好有你要的精確顏色。",
+        "你想使用柔和玫瑰粉、暖蜂蜜金、銅棕色，或帶細微挑染的藍黑色等描述。"
+      ],
+      [
+        "保持人像自然",
+        "平面的粗略預覽已經足夠。",
+        "你希望編輯保持臉部、髮型、膚色、背景與真實陰影自然。"
+      ],
+      [
+        "微調第一次結果",
+        "第一次預覽後不需要再改。",
+        "如果顏色太重、太平、太暖，或不夠接近想像中的色調，你想再調整提示詞。"
+      ],
+      [
+        "規劃真實造型變化",
+        "你只是想要有趣的社群濾鏡。",
+        "你想在和造型師討論前，先有一張風格方向的視覺參考。"
+      ]
+    ]
+  },
+  "features": {
+    "title": "AI 髮色變換器功能",
+    "items": [
+      {
+        "icon": "🖼️",
+        "iconType": "format",
+        "title": "參考圖工作流程",
+        "desc": "從上傳的人像開始，而不是從零生成一張新的臉。"
+      },
+      {
+        "icon": "✍️",
+        "iconType": "prompt",
+        "title": "可編輯提示詞控制",
+        "desc": "描述玫瑰粉、蜂蜜金、銅棕色、酒紅色、銀灰色、藍黑色，或你自己的髮色方向。"
+      },
+      {
+        "icon": "🎨",
+        "iconType": "ai",
+        "title": "自然與創意髮色靈感",
+        "desc": "可用柔和真實色，也可用更大膽的創意色，製作人像、頭像與視覺概念。"
+      },
+      {
+        "icon": "🔁",
+        "iconType": "speed",
+        "title": "微調結果",
+        "desc": "當第一次預覽還需要改善時，可調整顏色、質感、光線或真實感描述。"
+      },
+      {
+        "icon": "📸",
+        "iconType": "quality",
+        "title": "照片品質指引",
+        "desc": "頁面會幫助使用者選擇更清晰、頭髮可見的正面人像。"
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "免費線上流程",
+        "desc": "直接在瀏覽器中使用，免註冊且無浮水印，快速探索髮色效果，不需要手動修圖軟體。"
+      }
+    ]
+  },
+  "testimonials": {
+    "title": "使用者怎麼看 AI 髮色變換器",
+    "subtitle": "以下是人們在儲存、分享或討論造型前，使用 Toolaze 預覽髮色靈感的三種常見方式。",
+    "items": [
+      {
+        "name": "Mia R.",
+        "role": "沙龍染髮預覽",
+        "quote": "預約染髮前，我想先看看銅棕色是否適合我的膚色。提示詞控制比基本濾鏡更有用，因為我可以要求更暖的挑染，同時保持人像其他部分自然。"
+      },
+      {
+        "name": "Jordan L.",
+        "role": "創作者頭像更新",
+        "quote": "我用它做新的頭像概念，幾分鐘內試了粉色、銀色和藍黑色。免註冊讓測試很快，最好的結果精緻到可以拿來當參考。"
+      },
+      {
+        "name": "Priya S.",
+        "role": "Cosplay 規劃",
+        "quote": "做 Cosplay 時，我需要先有一張大概的視覺效果，再決定假髮顏色。上傳正面人像並只改頭髮，讓我不用重做整張圖也能比較色調。"
+      }
+    ]
+  },
+  "intro": {
+    "title": "什麼是 AI 髮色變換器？",
+    "content": [
+      {
+        "title": "用你的照片預覽新髮色",
+        "text": "AI 髮色變換器可讓你上傳人像，在染髮、更新頭像、規劃 Cosplay 或製作社群視覺前，線上預覽新的髮色。它不是只套用平面顏色濾鏡，而是讓 Toolaze 根據參考圖與你選擇的髮色方向編輯頭髮區域，同時保持人像其他部分視覺一致。可免費使用，免註冊且無浮水印。"
+      }
+    ]
+  },
+  "faqTitle": "AI 髮色變換器常見問題",
+  "faq": [
+    {
+      "q": "AI 髮色變換器如何運作？",
+      "a": "它會使用你上傳的照片作為參考圖，並依照文字提示編輯髮色。目標是在保持臉部、髮型、膚色與背景視覺一致的同時，預覽新的髮色。"
+    },
+    {
+      "q": "哪種照片效果最好？",
+      "a": "正面或接近正面的人像通常效果最好。請選擇頭髮清楚可見、沒有被帽子遮住、沒有被裁掉，也沒有藏在強陰影中的照片。"
+    },
+    {
+      "q": "AI 會改變我的臉或背景嗎？",
+      "a": "提示詞應要求工具保持臉部、髮型、膚色與背景自然。結果仍可能有所變化，所以請檢查預覽，若變化超出預期再調整提示詞。"
+    },
+    {
+      "q": "我可以嘗試哪些髮色？",
+      "a": "你可以描述常見色調，例如玫瑰粉、蜂蜜金、銅棕色、酒紅色、銀灰色、棕色、藍黑色，或用自己的話描述自訂髮色。"
+    },
+    {
+      "q": "可以把深色頭髮變成金色或粉色嗎？",
+      "a": "可以，你可以指定更淺或更亮的顏色，例如金色、粉色或銀色。若變化較大，請使用清晰照片，並加入自然挑染、柔和光線或真實髮絲質感等細節。"
+    },
+    {
+      "q": "如果結果太平或不自然怎麼辦？",
+      "a": "試著使用更具體的提示詞。說明你想要的色調、質感與真實感，例如帶自然挑染的暖銅棕色，或有真實陰影的柔和玫瑰粉。"
+    },
+    {
+      "q": "Toolaze AI 髮色變換器免費且免註冊嗎？",
+      "a": "是。你可以在標準 AI 工具體驗中，免費線上使用 Toolaze AI 髮色變換器，免註冊且無浮水印。"
+    },
+    {
+      "q": "可以下載編輯後的髮色照片嗎？",
+      "a": "生成結果後，可使用頁面控制項儲存或下載預覽圖。"
+    },
+    {
+      "q": "這能取代專業造型師嗎？",
+      "a": "不能。請把它作為視覺預覽或創意參考。真實染髮結果會受到髮況、底色、光線、產品與專業技術影響。"
+    }
+  ],
+  "moreTools": "相關 AI 工具",
+  "moreToolsLinks": [
+    {
+      "title": "AI 圖生圖生成器",
+      "description": "用文字提示編輯已上傳的圖片。",
+      "href": "/ai-image-to-image-generator"
+    },
+    {
+      "title": "AI 換衣工具",
+      "description": "根據參考照片預覽服裝變化。",
+      "href": "/ai-tools"
+    },
+    {
+      "title": "照片修復",
+      "description": "改善老照片或受損人像。",
+      "href": "/photo-restoration"
+    }
+  ],
+  "visiblePageType": "scene"
+}

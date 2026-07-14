@@ -1,0 +1,404 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 1,
+    "modelId": "gpt-image-2",
+    "defaultPrompt": "Change the hair color to rose pink while keeping the face, hairstyle, skin tone, and background natural.",
+    "defaultImageUrls": [
+      "/ai-hair-color-changer/default-reference.png"
+    ],
+    "hideModelBranding": true,
+    "displayName": "AI 헤어 컬러 체인저",
+    "functionalAcceptance": {
+      "recommendedMode": "preset-first-with-custom-prompt",
+      "reason": "VisualGPT uses visible hair color choices to make the task easier than a prompt-only flow.",
+      "presetTitle": "헤어 컬러 선택",
+      "presets": [
+        {
+          "label": "로즈 핑크",
+          "prompt": "Change the hair color to soft rose pink while keeping the face, hairstyle, skin tone, and background natural.",
+          "swatch": "linear-gradient(135deg, #f9a8d4, #db2777)"
+        },
+        {
+          "label": "허니 블론드",
+          "prompt": "Change the hair color to warm honey blonde with natural highlights and realistic lighting.",
+          "swatch": "linear-gradient(135deg, #fde68a, #d97706)"
+        },
+        {
+          "label": "플래티넘 블론드",
+          "prompt": "Change the hair color to platinum blonde with soft natural shadows and realistic hair texture.",
+          "swatch": "linear-gradient(135deg, #fff7ed, #d6d3d1)"
+        },
+        {
+          "label": "코퍼 브라운",
+          "prompt": "Change the hair color to copper brown while preserving the original hairstyle, face, and background.",
+          "swatch": "linear-gradient(135deg, #fb923c, #92400e)"
+        },
+        {
+          "label": "버건디 레드",
+          "prompt": "Change the hair color to deep burgundy red with a natural glossy finish.",
+          "swatch": "linear-gradient(135deg, #fda4af, #991b1b)"
+        },
+        {
+          "label": "체리 레드",
+          "prompt": "Change the hair color to cherry red with realistic shine, natural roots, and preserved facial features.",
+          "swatch": "linear-gradient(135deg, #ef4444, #7f1d1d)"
+        },
+        {
+          "label": "실버 그레이",
+          "prompt": "Change the hair color to silver gray while keeping the hair texture and facial features unchanged.",
+          "swatch": "linear-gradient(135deg, #f8fafc, #64748b)"
+        },
+        {
+          "label": "애시 브라운",
+          "prompt": "Change the hair color to ash brown with soft cool highlights and realistic shadows.",
+          "swatch": "linear-gradient(135deg, #a8a29e, #57534e)"
+        },
+        {
+          "label": "제트 블랙",
+          "prompt": "Change the hair color to jet black with natural shine while preserving the face, hairstyle, and background.",
+          "swatch": "linear-gradient(135deg, #27272a, #020617)"
+        },
+        {
+          "label": "블루 블랙",
+          "prompt": "Change the hair color to blue black with subtle cool highlights and realistic shadows.",
+          "swatch": "linear-gradient(135deg, #0f172a, #1d4ed8)"
+        },
+        {
+          "label": "라벤더 퍼플",
+          "prompt": "Change the hair color to soft lavender purple while keeping the portrait natural and realistic.",
+          "swatch": "linear-gradient(135deg, #ddd6fe, #7c3aed)"
+        },
+        {
+          "label": "직접 입력"
+        }
+      ]
+    },
+    "sampleImages": [
+      {
+        "url": "/ai-hair-color-changer/rose-pink-before-after.webp",
+        "title": "Rose Pink before and after",
+        "width": 1200,
+        "height": 450
+      },
+      {
+        "url": "/ai-hair-color-changer/honey-blonde-before-after.webp",
+        "title": "Honey Blonde before and after",
+        "width": 1200,
+        "height": 450
+      },
+      {
+        "url": "/ai-hair-color-changer/copper-brown-before-after.webp",
+        "title": "Copper Brown before and after",
+        "width": 1200,
+        "height": 450
+      }
+    ]
+  },
+  "metadata": {
+    "title": "무료 AI 헤어 컬러 체인저 온라인 | 가입 없음 | Toolaze",
+    "description": "Toolaze 무료 AI 헤어 컬러 체인저를 온라인에서 가입 없이 워터마크 없이 사용하세요. 인물 사진을 업로드하고 새 헤어 컬러를 설명해 핑크, 블론드, 코퍼, 실버, 블루 블랙 스타일을 미리 보세요."
+  },
+  "sectionsOrder": [
+    "intro",
+    "howToUse",
+    "photoTips",
+    "promptExamples",
+    "scenes",
+    "workflowComparison",
+    "features",
+    "testimonials",
+    "faq"
+  ],
+  "hero": {
+    "h1": "무료 온라인 <span class=\"text-gradient\">AI 헤어 컬러 체인저</span>",
+    "desc": "선명한 인물 사진을 업로드하고 원하는 헤어 컬러를 선택하거나 입력하면, 가입 없이 워터마크 없이 AI 편집 결과를 즉시 미리 볼 수 있습니다."
+  },
+  "howToUse": {
+    "title": "AI로 머리 색을 바꾸는 방법",
+    "steps": [
+      {
+        "title": "선명한 인물 사진 업로드",
+        "desc": "머리카락이 뿌리부터 끝까지 보이는 정면 또는 거의 정면 사진을 선택하세요."
+      },
+      {
+        "title": "원하는 색상 설명",
+        "desc": "허니 블론드, 코퍼 브라운, 실버 그레이, 로즈 핑크로 머리 색을 바꿔줘처럼 직접적인 지시를 입력하세요."
+      },
+      {
+        "title": "생성 후 다듬기",
+        "desc": "편집 결과를 바로 확인하고 색이 너무 강하거나 평면적이거나 목표 색상과 다르면 프롬프트를 조정하세요."
+      }
+    ]
+  },
+  "photoTips": {
+    "title": "더 좋은 헤어 컬러 결과를 위한 사진 팁",
+    "subtitle": "참조 사진이 중요합니다. 더 좋은 입력 이미지는 AI가 머리 모양, 질감, 조명, 색상이 적용될 영역을 이해하는 데 도움이 됩니다.",
+    "items": [
+      {
+        "title": "정면 인물 사진 사용",
+        "desc": "정면 또는 거의 정면 사진은 얼굴을 유지하고 보이는 머리 영역을 편집하기 쉽게 합니다.",
+        "color": "linear-gradient(135deg, #dbeafe, #6366f1)"
+      },
+      {
+        "title": "전체 머리 형태 보여주기",
+        "desc": "머리카락이 잘리거나 모자로 가려지거나 손에 막히거나 강한 그림자에 묻힌 사진은 피하세요.",
+        "color": "linear-gradient(135deg, #fce7f3, #db2777)"
+      },
+      {
+        "title": "머리 질감 보이게 하기",
+        "desc": "컬, 레이어, 앞머리, 땋은 머리, 하이라이트가 선명하면 편집이 따라갈 구조가 더 분명해집니다.",
+        "color": "linear-gradient(135deg, #fef3c7, #f97316)"
+      },
+      {
+        "title": "극단적인 각도 피하기",
+        "desc": "뒷모습, 심한 모션 블러, 측면 얼굴, 머리 영역이 작은 사진은 미리보기에서 판단하기 어렵습니다.",
+        "color": "linear-gradient(135deg, #ede9fe, #7c3aed)"
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "인기 헤어 컬러 프롬프트 아이디어",
+    "subtitle": "프롬프트를 도구에 복사한 뒤 색조, 강도, 마감을 조정하세요.",
+    "items": [
+      {
+        "title": "로즈 핑크",
+        "prompt": "Change the hair color to soft rose pink while keeping the face, hairstyle, skin tone, and background natural.",
+        "note": "장난스럽지만 깔끔한 컬러 미리보기에 좋습니다.",
+        "color": "linear-gradient(135deg, #fbcfe8, #db2777)",
+        "image": "/ai-hair-color-changer/rose-pink-before-after.webp"
+      },
+      {
+        "title": "허니 블론드",
+        "prompt": "Change the hair color to warm honey blonde with natural highlights and realistic lighting.",
+        "note": "부드러운 살롱 스타일 방향에 적합합니다.",
+        "color": "linear-gradient(135deg, #fde68a, #d97706)",
+        "image": "/ai-hair-color-changer/honey-blonde-before-after.webp"
+      },
+      {
+        "title": "플래티넘 블론드",
+        "prompt": "Change the hair color to copper brown while preserving the original hairstyle, face, and background.",
+        "note": "사실적인 인물 미리보기에 실용적인 따뜻한 색상입니다.",
+        "color": "linear-gradient(135deg, #fb923c, #92400e)",
+        "image": "/ai-hair-color-changer/copper-brown-before-after.webp"
+      },
+      {
+        "title": "코퍼 브라운",
+        "prompt": "Change the hair color to deep burgundy red with a natural glossy finish.",
+        "note": "원본 사진에 머리 볼륨과 빛이 충분할 때 가장 좋습니다.",
+        "color": "linear-gradient(135deg, #fda4af, #991b1b)",
+        "image": "/ai-hair-color-changer/burgundy-red-before-after.webp"
+      },
+      {
+        "title": "버건디 레드",
+        "prompt": "Change the hair color to silver gray while keeping the hair texture and facial features unchanged.",
+        "note": "깨끗한 실버, 그레이 또는 쿨톤 룩에 사용하세요.",
+        "color": "linear-gradient(135deg, #f8fafc, #64748b)",
+        "image": "/ai-hair-color-changer/silver-gray-before-after.webp"
+      },
+      {
+        "title": "체리 레드",
+        "prompt": "Change the hair color to blue black with subtle cool highlights and realistic shadows.",
+        "note": "더 자연스러운 대비가 있는 어두운 창의적 색상입니다.",
+        "color": "linear-gradient(135deg, #0f172a, #1d4ed8)",
+        "image": "/ai-hair-color-changer/blue-black-before-after.webp"
+      }
+    ]
+  },
+  "scenesTitle": "AI 헤어 컬러 체인저 활용 방법",
+  "scenes": [
+    {
+      "title": "염색 전 컬러 미리보기",
+      "icon": "🎨",
+      "desc": "실제 염색 예약 전에 핑크, 블론드, 코퍼, 실버, 브라운 또는 더 어두운 톤을 시험해 보세요."
+    },
+    {
+      "title": "프로필 사진 새로 만들기",
+      "icon": "👤",
+      "desc": "아바타, 크리에이터 프로필, 데이팅 프로필, 개인 브랜딩 초안용 새 룩을 만들어 보세요."
+    },
+    {
+      "title": "코스프레와 캐릭터 스타일링",
+      "icon": "🎭",
+      "desc": "코스프레, 판타지 인물 사진, 테마 편집, 캐릭터에서 영감을 받은 룩에 과감한 색을 테스트하세요."
+    },
+    {
+      "title": "소셜 콘텐츠 제작",
+      "icon": "✨",
+      "desc": "게시물, 썸네일, 스토리, 스타일 실험용 시각 변형을 빠르게 만드세요."
+    },
+    {
+      "title": "스타일리스트 참고 이미지",
+      "icon": "💬",
+      "desc": "미리보기를 보장된 살롱 결과로 여기기보다, 컬러 방향을 스타일리스트와 논의할 시각 자료로 활용하세요."
+    }
+  ],
+  "workflowComparison": {
+    "title": "필터 대신 AI 헤어 컬러 체인저를 쓰면 좋은 경우",
+    "subtitle": "간단한 컬러 놀이에는 단순 필터를 사용하세요. 색조, 마감, 사실감, 유지할 부분까지 설명하는 프롬프트 기반 미리보기가 필요하면 Toolaze를 사용하세요.",
+    "columns": [
+      "목표",
+      "단순 필터가 적합한 경우",
+      "Toolaze가 적합한 경우"
+    ],
+    "rows": [
+      [
+        "빠르게 한 가지 색 시험",
+        "재미로 핑크, 블론드, 블랙 오버레이만 빠르게 필요할 때.",
+        "결과가 원본 인물 사진, 조명, 헤어스타일, 피부 톤을 고려하길 원할 때."
+      ],
+      [
+        "구체적인 색조 설명",
+        "프리셋 목록에 원하는 색이 정확히 있을 때.",
+        "부드러운 로즈 핑크, 따뜻한 허니 블론드, 코퍼 브라운, 은은한 하이라이트가 있는 블루 블랙처럼 문장으로 지정하고 싶을 때."
+      ],
+      [
+        "자연스러운 인물 유지",
+        "대략적인 아이디어를 위한 평면 미리보기면 충분할 때.",
+        "얼굴, 헤어스타일, 피부 톤, 배경, 사실적인 그림자를 자연스럽게 유지하도록 요청하고 싶을 때."
+      ],
+      [
+        "첫 결과 다듬기",
+        "첫 미리보기 이후 아무것도 바꿀 필요가 없을 때.",
+        "색이 너무 강하거나 평면적이거나 따뜻하거나 상상한 색과 다를 때 프롬프트를 조정하고 싶을 때."
+      ],
+      [
+        "실제 변화 계획",
+        "재미있는 소셜 필터만 원할 때.",
+        "스타일리스트와 이야기하기 전에 스타일 방향의 시각 참고가 필요할 때."
+      ]
+    ]
+  },
+  "features": {
+    "title": "AI 헤어 컬러 체인저 기능",
+    "items": [
+      {
+        "icon": "🖼️",
+        "iconType": "format",
+        "title": "참조 이미지 워크플로",
+        "desc": "새 얼굴을 처음부터 생성하지 않고 업로드한 인물 사진에서 시작합니다."
+      },
+      {
+        "icon": "✍️",
+        "iconType": "prompt",
+        "title": "수정 가능한 프롬프트 제어",
+        "desc": "로즈 핑크, 허니 블론드, 코퍼 브라운, 버건디 레드, 실버 그레이, 블루 블랙 또는 원하는 색상을 설명하세요."
+      },
+      {
+        "icon": "🎨",
+        "iconType": "ai",
+        "title": "자연스럽고 창의적인 색상 아이디어",
+        "desc": "인물 사진, 프로필, 시각 콘셉트에 부드러운 현실적 색상부터 과감한 창의적 색상까지 사용할 수 있습니다."
+      },
+      {
+        "icon": "🔁",
+        "iconType": "speed",
+        "title": "결과 다듬기",
+        "desc": "첫 미리보기를 개선해야 할 때 색상, 마감, 조명, 사실감 표현을 조정하세요."
+      },
+      {
+        "icon": "📸",
+        "iconType": "quality",
+        "title": "사진 품질 안내",
+        "desc": "머리카락이 잘 보이는 더 선명한 정면 인물 사진을 선택하도록 도와줍니다."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "무료 온라인 워크플로",
+        "desc": "수동 사진 편집 소프트웨어 없이 브라우저에서 가입 없이 워터마크 없이 빠르게 시각 실험을 할 수 있습니다."
+      }
+    ]
+  },
+  "testimonials": {
+    "title": "AI 헤어 컬러 체인저 사용자 후기",
+    "subtitle": "Toolaze로 헤어 컬러 아이디어를 저장, 공유, 상담 전에 미리 보는 세 가지 일반적인 방식입니다.",
+    "items": [
+      {
+        "name": "Mia R.",
+        "role": "살롱 컬러 미리보기",
+        "quote": "염색 예약 전에 코퍼 브라운이 제 피부 톤에 어울리는지 보고 싶었어요. 기본 필터보다 프롬프트 제어가 더 유용했고, 더 따뜻한 하이라이트를 요청하면서 나머지 인물 사진은 자연스럽게 유지할 수 있었습니다."
+      },
+      {
+        "name": "Jordan L.",
+        "role": "크리에이터 프로필 새로고침",
+        "quote": "새 프로필 사진 콘셉트에 사용했고 몇 분 만에 핑크, 실버, 블루 블랙을 시도했습니다. 가입이 없어 빠르게 테스트하기 쉬웠고, 가장 좋은 결과는 참고용으로 충분히 깔끔했습니다."
+      },
+      {
+        "name": "Priya S.",
+        "role": "코스프레 계획",
+        "quote": "코스프레용 가발 색을 고르기 전에 대략적인 시각 자료가 필요했어요. 정면 인물 사진을 업로드하고 머리만 바꾸니 전체 이미지를 다시 만들지 않고도 색상을 비교할 수 있었습니다."
+      }
+    ]
+  },
+  "intro": {
+    "title": "AI 헤어 컬러 체인저란?",
+    "content": [
+      {
+        "title": "사진으로 새 머리 색 미리보기",
+        "text": "AI 헤어 컬러 체인저는 염색, 프로필 사진 업데이트, 코스프레 계획, 소셜 비주얼 제작 전에 인물 사진을 업로드해 새 머리 색을 온라인으로 미리 볼 수 있게 해줍니다. 단순한 색상 필터를 적용하는 대신 Toolaze는 참조 이미지와 선택한 색상 방향을 사용해 머리 영역을 편집하면서 나머지 인물 사진의 시각적 일관성을 유지합니다. 무료, 가입 없음, 워터마크 없이 사용할 수 있습니다."
+      }
+    ]
+  },
+  "faqTitle": "AI 헤어 컬러 체인저 FAQ",
+  "faq": [
+    {
+      "q": "AI 헤어 컬러 체인저는 어떻게 작동하나요?",
+      "a": "업로드한 사진을 참조 이미지로 사용하고 텍스트 프롬프트를 따라 머리 색을 편집합니다. 목표는 얼굴, 헤어스타일, 피부 톤, 배경을 시각적으로 일관되게 유지하면서 새 머리 색을 미리 보는 것입니다."
+    },
+    {
+      "q": "어떤 사진이 가장 좋나요?",
+      "a": "정면 또는 거의 정면 인물 사진이 보통 가장 좋습니다. 머리카락이 명확히 보이고, 모자로 가려지지 않았으며, 잘리지 않고, 강한 그림자에 숨지 않은 사진을 선택하세요."
+    },
+    {
+      "q": "AI가 얼굴이나 배경을 바꾸나요?",
+      "a": "프롬프트는 얼굴, 헤어스타일, 피부 톤, 배경을 자연스럽게 유지하도록 요청해야 합니다. 결과는 달라질 수 있으므로 미리보기를 확인하고 예상보다 많이 바뀌면 프롬프트를 다듬으세요."
+    },
+    {
+      "q": "어떤 머리 색을 시도할 수 있나요?",
+      "a": "로즈 핑크, 허니 블론드, 코퍼 브라운, 버건디 레드, 실버 그레이, 브라운, 블루 블랙 또는 직접 원하는 색상 방향을 설명할 수 있습니다."
+    },
+    {
+      "q": "어두운 머리를 블론드나 핑크로 바꿀 수 있나요?",
+      "a": "네. 블론드, 핑크, 실버처럼 더 밝거나 선명한 색을 요청할 수 있습니다. 강한 변화에는 선명한 사진을 사용하고 자연스러운 하이라이트, 부드러운 조명, 사실적인 머리 질감 같은 세부사항을 추가하세요."
+    },
+    {
+      "q": "결과가 너무 평면적이거나 부자연스러우면 어떻게 하나요?",
+      "a": "더 구체적인 프롬프트를 사용해 보세요. 자연스러운 하이라이트가 있는 따뜻한 코퍼 브라운, 사실적인 그림자가 있는 부드러운 로즈 핑크처럼 색조, 마감, 사실감을 언급하세요."
+    },
+    {
+      "q": "Toolaze AI 헤어 컬러 체인저는 무료이고 가입이 없나요?",
+      "a": "네. 표준 AI 도구 환경에서 Toolaze AI 헤어 컬러 체인저를 온라인 무료, 가입 없음, 워터마크 없이 사용할 수 있습니다."
+    },
+    {
+      "q": "편집한 헤어 컬러 사진을 다운로드할 수 있나요?",
+      "a": "결과를 생성한 뒤 페이지 컨트롤을 사용해 미리보기를 저장하거나 다운로드할 수 있습니다."
+    },
+    {
+      "q": "전문 스타일리스트를 대체하나요?",
+      "a": "아니요. 시각적 미리보기나 창의적 참고로 사용하세요. 실제 염색 결과는 모발 상태, 기본 색상, 조명, 제품, 전문 기술에 따라 달라집니다."
+    }
+  ],
+  "moreTools": "관련 AI 도구",
+  "moreToolsLinks": [
+    {
+      "title": "AI 이미지 투 이미지 생성기",
+      "description": "업로드한 이미지를 텍스트 프롬프트로 편집합니다.",
+      "href": "/ai-image-to-image-generator"
+    },
+    {
+      "title": "AI 옷 바꾸기",
+      "description": "참조 사진에서 의상 변경을 미리 봅니다.",
+      "href": "/ai-tools"
+    },
+    {
+      "title": "사진 복원",
+      "description": "오래되거나 손상된 인물 사진을 개선합니다.",
+      "href": "/photo-restoration"
+    }
+  ],
+  "visiblePageType": "scene"
+}

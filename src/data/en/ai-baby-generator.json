@@ -1,0 +1,412 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "ai-baby-generator",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 2,
+    "modelId": "gpt-image-2",
+    "defaultPrompt": "Create a warm, natural baby portrait inspired by the uploaded reference photos, with a gentle smile, soft studio lighting, clear facial details, and a simple neutral background. Keep the result playful and fictional, not a prediction of a real child.",
+    "defaultImageUrls": [
+      "/ai-baby-generator/reference-parent-1.webp",
+      "/ai-baby-generator/reference-parent-2.webp"
+    ],
+    "hideModelBranding": true,
+    "hidePresetPromptInput": true,
+    "compactResultPanel": true,
+    "promptModifier": {
+      "title": "Baby Gender",
+      "defaultValue": "surprise",
+      "options": [
+        {
+          "label": "Surprise Me",
+          "value": "surprise",
+          "prompt": "Choose a natural baby gender presentation that fits the portrait while keeping the result fictional and playful."
+        },
+        {
+          "label": "Baby Girl",
+          "value": "girl",
+          "prompt": "Create the portrait with a clearly feminine baby presentation while keeping the result natural, age-appropriate, fictional, and playful."
+        },
+        {
+          "label": "Baby Boy",
+          "value": "boy",
+          "prompt": "Create the portrait with a clearly masculine baby presentation while keeping the result natural, age-appropriate, fictional, and playful."
+        }
+      ]
+    },
+    "displayName": "AI Baby Generator",
+    "textOverrides": {
+      "uploadTitle": "Upload parent or couple photos",
+      "uploadHelper": "Add two clear portraits, one couple photo, or one single portrait.",
+      "promptLabel": "Describe the portrait",
+      "generateLabel": "Create Baby Portrait",
+      "safetyHelper": "For creative fun only. This is not a genetics or future appearance prediction."
+    },
+    "functionalAcceptance": {
+      "recommendedMode": "preset-first-with-custom-prompt",
+      "reason": "Portrait presets make the creative workflow clearer than a prompt-only form.",
+      "presetTitle": "Baby Portrait Styles",
+      "presets": [
+        {
+          "label": "Soft Studio",
+          "prompt": "Create a warm, natural baby portrait inspired by the uploaded reference photos, with a gentle smile, soft studio lighting, clear facial details, and a simple neutral background. Keep the result playful and fictional, not a prediction of a real child.",
+          "swatch": "linear-gradient(135deg, #F5E9E2, #DDE8F5)",
+          "image": "/ai-baby-generator/style-soft-studio.webp"
+        },
+        {
+          "label": "Cozy Blanket",
+          "prompt": "Create a cozy baby portrait inspired by the uploaded reference photos, wrapped in a soft knit blanket, with warm window light, a calm expression, and a clean home studio background. Keep it fictional and made for fun.",
+          "swatch": "linear-gradient(135deg, #E8D6C8, #F4EFE8)",
+          "image": "/ai-baby-generator/style-cozy-blanket.webp"
+        },
+        {
+          "label": "Sunny Outdoor",
+          "prompt": "Create a cheerful outdoor baby portrait inspired by the uploaded reference photos, with soft morning sunlight, a natural smile, green garden bokeh, and realistic photography. Keep it fictional and made for fun.",
+          "swatch": "linear-gradient(135deg, #F8D77A, #B7D6A3)",
+          "image": "/ai-baby-generator/style-sunny-outdoor.webp"
+        },
+        {
+          "label": "Playful Smile",
+          "prompt": "Create a playful baby portrait inspired by the uploaded reference photos, with a bright natural smile, soft colorful clothing, clean daylight, and a simple portrait background. Keep it fictional and made for fun.",
+          "swatch": "linear-gradient(135deg, #F5B8C7, #AFCBEA)",
+          "image": "/ai-baby-generator/style-playful-smile.webp"
+        },
+        {
+          "label": "Storybook Portrait",
+          "prompt": "Create a gentle storybook style baby portrait inspired by the uploaded reference photos, with soft painted textures, warm light, subtle whimsical details, and a clear friendly face. Keep it fictional and made for fun.",
+          "swatch": "linear-gradient(135deg, #CDBCE8, #F2D4A6)",
+          "image": "/ai-baby-generator/style-storybook-portrait.webp"
+        },
+        {
+          "label": "Family Card",
+          "prompt": "Create a polished baby portrait inspired by the uploaded reference photos for a family greeting card, with a warm neutral backdrop, soft festive details, balanced studio light, and generous framing. Keep it fictional and made for fun.",
+          "swatch": "linear-gradient(135deg, #C7D8D0, #E8C7C7)",
+          "image": "/ai-baby-generator/style-family-card.webp"
+        }
+      ]
+    },
+    "sampleImages": [
+      {
+        "url": "/ai-baby-generator/hero-baby-portrait.webp",
+        "title": "Soft studio baby portrait created from photo references",
+        "width": 1600,
+        "height": 900
+      }
+    ]
+  },
+  "metadata": {
+    "title": "Free AI Baby Generator Online | Create Baby Portraits",
+    "description": "Upload one or two photos and create a baby portrait online for free. Choose a style, edit the prompt, and download a playful result. Not a real prediction."
+  },
+  "sectionsOrder": [
+    "intro",
+    "promptExamples",
+    "howToUse",
+    "photoTips",
+    "scenes",
+    "workflowComparison",
+    "features",
+    "testimonials",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Free <span class=\"text-gradient\">AI Baby Generator</span> Online",
+    "desc": "Upload one or two photos, choose a portrait style, and create a playful baby image for fun."
+  },
+  "intro": {
+    "title": "What Is an AI Baby Generator?",
+    "content": [
+      {
+        "title": "Create a fictional portrait from photo references",
+        "text": "An AI baby generator creates a fictional baby portrait from one or two reference photos. Start with two separate portraits, one clear couple photo, or one single portrait, then choose a style and edit the prompt. The result is a creative image for entertainment and sharing. It does not predict genetics, parentage, health, or what a real child will look like."
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "Baby Portrait Style Examples",
+    "subtitle": "Choose a visual direction first, then edit the prompt to adjust the expression, clothing, light, or background.",
+    "items": [
+      {
+        "title": "Soft Studio",
+        "prompt": "Create a warm, natural baby portrait inspired by the uploaded reference photos, with a gentle smile, soft studio lighting, clear facial details, and a simple neutral background. Keep the result playful and fictional, not a prediction of a real child.",
+        "note": "Clean studio light, a gentle expression, and a simple neutral background.",
+        "color": "linear-gradient(135deg, #F5E9E2, #DDE8F5)",
+        "image": "/ai-baby-generator/style-soft-studio.webp"
+      },
+      {
+        "title": "Cozy Blanket",
+        "prompt": "Create a cozy baby portrait inspired by the uploaded reference photos, wrapped in a soft knit blanket, with warm window light, a calm expression, and a clean home studio background. Keep it fictional and made for fun.",
+        "note": "Warm window light, a knitted blanket, and a calm home studio mood.",
+        "color": "linear-gradient(135deg, #E8D6C8, #F4EFE8)",
+        "image": "/ai-baby-generator/style-cozy-blanket.webp"
+      },
+      {
+        "title": "Sunny Outdoor",
+        "prompt": "Create a cheerful outdoor baby portrait inspired by the uploaded reference photos, with soft morning sunlight, a natural smile, green garden bokeh, and realistic photography. Keep it fictional and made for fun.",
+        "note": "Soft morning light, a natural smile, and a bright garden background.",
+        "color": "linear-gradient(135deg, #F8D77A, #B7D6A3)",
+        "image": "/ai-baby-generator/style-sunny-outdoor.webp"
+      },
+      {
+        "title": "Playful Smile",
+        "prompt": "Create a playful baby portrait inspired by the uploaded reference photos, with a bright natural smile, soft colorful clothing, clean daylight, and a simple portrait background. Keep it fictional and made for fun.",
+        "note": "Clear daylight, a bright smile, and simple colorful clothing.",
+        "color": "linear-gradient(135deg, #F5B8C7, #AFCBEA)",
+        "image": "/ai-baby-generator/style-playful-smile.webp"
+      },
+      {
+        "title": "Storybook Portrait",
+        "prompt": "Create a gentle storybook style baby portrait inspired by the uploaded reference photos, with soft painted textures, warm light, subtle whimsical details, and a clear friendly face. Keep it fictional and made for fun.",
+        "note": "Gentle painted textures and small whimsical details with a clear face.",
+        "color": "linear-gradient(135deg, #CDBCE8, #F2D4A6)",
+        "image": "/ai-baby-generator/style-storybook-portrait.webp"
+      },
+      {
+        "title": "Family Card",
+        "prompt": "Create a polished baby portrait inspired by the uploaded reference photos for a family greeting card, with a warm neutral backdrop, soft festive details, balanced studio light, and generous framing. Keep it fictional and made for fun.",
+        "note": "Polished lighting and generous framing for a private card concept.",
+        "color": "linear-gradient(135deg, #C7D8D0, #E8C7C7)",
+        "image": "/ai-baby-generator/style-family-card.webp"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "How to Create an AI Baby Portrait",
+    "steps": [
+      {
+        "title": "Upload one or two clear photos",
+        "desc": "Add two separate portraits for a clear two-person reference, one couple photo where both faces are easy to see, or one portrait for a single-reference result."
+      },
+      {
+        "title": "Choose a portrait style",
+        "desc": "Pick Soft Studio, Cozy Blanket, Sunny Outdoor, or another preset. Each style fills in a useful prompt that remains editable."
+      },
+      {
+        "title": "Generate, review, and download",
+        "desc": "Create the portrait, review it in the result panel, and adjust the style or prompt if you want a different mood before downloading."
+      }
+    ]
+  },
+  "photoTips": {
+    "title": "Photo Tips for Better Baby Portraits",
+    "subtitle": "Clear references help the generator read faces, lighting, and framing before it creates a fictional portrait.",
+    "items": [
+      {
+        "title": "Keep faces easy to see",
+        "desc": "Use front-facing or near-front-facing photos with visible eyes, nose, and mouth. Avoid sunglasses, masks, and tiny faces.",
+        "color": "linear-gradient(135deg, #DBEAFE, #818CF8)"
+      },
+      {
+        "title": "Use balanced light",
+        "desc": "Natural window light or soft indoor light usually preserves more useful facial detail than strong shadows or colored lighting.",
+        "color": "linear-gradient(135deg, #FEF3C7, #F59E0B)"
+      },
+      {
+        "title": "Match the framing",
+        "desc": "For two separate photos, similar head-and-shoulders crops are easier to read than one close selfie and one distant full-body image.",
+        "color": "linear-gradient(135deg, #FCE7F3, #EC4899)"
+      },
+      {
+        "title": "Check a couple photo",
+        "desc": "Make sure both faces are large, unobstructed, and sharp. Avoid crowded group photos where the intended references are unclear.",
+        "color": "linear-gradient(135deg, #DCFCE7, #22C55E)"
+      }
+    ]
+  },
+  "scenesTitle": "Creative Ways to Use Your Baby Portrait",
+  "scenes": [
+    {
+      "icon": "💌",
+      "title": "Private couple keepsake",
+      "desc": "Make a playful portrait to share privately with your partner and compare several visual styles."
+    },
+    {
+      "icon": "🖼️",
+      "title": "Family card concept",
+      "desc": "Use generous framing as a starting point for a private greeting card, announcement mockup, or scrapbook page."
+    },
+    {
+      "icon": "💬",
+      "title": "Long-distance surprise",
+      "desc": "Send a lighthearted image in a message when you and your partner are apart."
+    },
+    {
+      "icon": "📱",
+      "title": "Social post idea",
+      "desc": "Try a cheerful portrait for a private story, couple post, or creative profile update."
+    },
+    {
+      "icon": "🎨",
+      "title": "Style experiment",
+      "desc": "Compare studio, outdoor, cozy, playful, and storybook directions from the same references."
+    }
+  ],
+  "workflowComparison": {
+    "title": "What the AI Baby Generator Can and Cannot Do",
+    "subtitle": "Use the result as a creative portrait. It is not identity, parentage, medical, or future appearance information.",
+    "columns": [
+      "Question",
+      "What Toolaze Supports",
+      "Important Limit"
+    ],
+    "rows": [
+      [
+        "Can I use two photos?",
+        "Yes. Upload up to two reference images. Two separate portraits are the clearest default.",
+        "Results vary with photo quality, lighting, and framing."
+      ],
+      [
+        "Can I use one photo?",
+        "Yes. Use one clear couple photo or one single portrait.",
+        "One image gives the generator less visual reference context."
+      ],
+      [
+        "Can I choose a style?",
+        "Yes. Start with a portrait preset and edit the prompt.",
+        "A preset guides the look but does not guarantee exact details."
+      ],
+      [
+        "Can I download the result?",
+        "Yes. Review the generated portrait and use the download action.",
+        "Save the image you want to keep after generation."
+      ],
+      [
+        "Does it predict genetics?",
+        "No. It creates a fictional image from visual references and a prompt.",
+        "It cannot forecast a real child's appearance."
+      ],
+      [
+        "Does it verify parentage or health?",
+        "No. It is a creative image tool.",
+        "It does not provide identity, parentage, medical, or health information."
+      ]
+    ]
+  },
+  "features": {
+    "title": "AI Baby Generator Features",
+    "items": [
+      {
+        "icon": "🖼️",
+        "iconType": "format",
+        "title": "One or two photo references",
+        "desc": "Start with two separate portraits, one couple photo, or one clear single-person portrait."
+      },
+      {
+        "icon": "🎨",
+        "iconType": "quality",
+        "title": "Six portrait styles",
+        "desc": "Choose a visual direction before editing the prompt for a more specific mood."
+      },
+      {
+        "icon": "✍️",
+        "iconType": "prompt",
+        "title": "Editable prompt",
+        "desc": "Adjust the expression, clothing, lighting, framing, and background in your own words."
+      },
+      {
+        "icon": "🔁",
+        "iconType": "speed",
+        "title": "Easy refinement",
+        "desc": "Switch styles or revise the prompt when the first result needs a different direction."
+      },
+      {
+        "icon": "⬇️",
+        "iconType": "quality",
+        "title": "Preview and download",
+        "desc": "Review the generated portrait in the result panel and save the image you prefer."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "Free online workflow",
+        "desc": "Create a playful portrait online with no signup and no watermark on the standard AI Tools experience."
+      }
+    ]
+  },
+  "testimonials": {
+    "title": "How People Use the AI Baby Generator",
+    "subtitle": "Three practical workflows for creating and refining a fictional baby portrait.",
+    "items": [
+      {
+        "name": "Maya R.",
+        "role": "Long-distance partner",
+        "quote": "We used two simple phone portraits and tried the studio and outdoor styles. The second result worked better after I removed the busy background instructions. We treated it as a fun image to send each other, not something that was supposed to be accurate."
+      },
+      {
+        "name": "Jordan L.",
+        "role": "Family card designer",
+        "quote": "I wanted a gentle placeholder image for a private card concept before the family chose real photography. The Family Card preset gave me useful framing, and I could change the clothing and background without rebuilding the prompt."
+      },
+      {
+        "name": "Lena S.",
+        "role": "Couple content creator",
+        "quote": "The clearest result came from two photos with similar lighting. I switched from a realistic studio look to a softer storybook style. Some details changed between generations, so I chose the portrait with the cleanest expression."
+      }
+    ]
+  },
+  "faqTitle": "AI Baby Generator FAQ",
+  "faq": [
+    {
+      "q": "How does the AI baby generator work?",
+      "a": "Upload one or two reference photos, choose a Baby Portrait Style, and edit the prompt if needed. Toolaze uses the photos and prompt to create a fictional baby portrait that you can review and download."
+    },
+    {
+      "q": "Can I use one photo?",
+      "a": "Yes. You can use one clear single-person portrait or one couple photo. Two separate portraits usually give the workflow clearer references, but they are not required."
+    },
+    {
+      "q": "Can I upload two separate parent photos or one couple photo?",
+      "a": "Yes. The tool accepts up to two images. You can upload two individual portraits, one couple photo with both faces visible, or one single portrait."
+    },
+    {
+      "q": "What photos work best?",
+      "a": "Use clear, front-facing or near-front-facing photos with balanced light and visible facial features. Avoid sunglasses, heavy filters, strong shadows, tiny faces, and crowded group photos."
+    },
+    {
+      "q": "Is the AI baby generator free and online?",
+      "a": "Yes. You can open the tool online, create a baby portrait without signing up, and download the result without a watermark. Usage limits may vary."
+    },
+    {
+      "q": "Does it predict what a real baby will look like?",
+      "a": "No. The result is a fictional image made for fun and creative use. It does not predict genetics, parentage, health, or a real child's future appearance."
+    },
+    {
+      "q": "Can I choose a baby portrait style?",
+      "a": "Yes. Start with Soft Studio, Cozy Blanket, Sunny Outdoor, Playful Smile, Storybook Portrait, or Family Card. You can edit the prompt to change the expression, clothing, light, or background."
+    },
+    {
+      "q": "Can I download the generated image?",
+      "a": "Yes. After the portrait appears in the result panel, review it and use the download action to save the image you prefer."
+    }
+  ],
+  "moreTools": "Related AI Tools",
+  "moreToolsLinks": [
+    {
+      "title": "AI Couple Photo Maker",
+      "description": "Create romantic couple portraits from one or two reference photos.",
+      "href": "/ai-couple-photo-maker"
+    },
+    {
+      "title": "AI Image-to-Image Generator",
+      "description": "Use a reference image and a prompt to create other visual variations.",
+      "href": "/ai-image-to-image-generator"
+    },
+    {
+      "title": "AI Image Generator",
+      "description": "Create new images from a text prompt.",
+      "href": "/ai-image-generator"
+    },
+    {
+      "title": "Photo Restoration",
+      "description": "Repair faded, scratched, or low-quality family photos.",
+      "href": "/photo-restoration"
+    }
+  ],
+  "moreToolsCta": {
+    "title": "Create a Baby Portrait from Your Photos",
+    "description": "Upload one or two clear references, choose a style, and make a playful image for private sharing or a creative keepsake.",
+    "button": "Create Baby Portrait"
+  }
+}

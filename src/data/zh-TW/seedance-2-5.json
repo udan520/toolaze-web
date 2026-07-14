@@ -1,0 +1,322 @@
+{
+  "in_menu": true,
+  "topComponent": "seedance-2-5",
+  "metadata": {
+    "title": "Seedance 2.5 AI 影片生成器 | 更長的電影感影片與更多控制",
+    "description": "探索 Seedance 2.5，ByteDance 下一代 AI 影片模型，適合更長的電影感片段、更豐富的參考控制、更強的場景一致性，以及可用於製作的創意工作流。"
+  },
+  "sectionsOrder": [
+    "modelIntro",
+    "features",
+    "performanceMetrics",
+    "modelComparison",
+    "howToUse",
+    "intro",
+    "scenes",
+    "competitorComparison",
+    "rating",
+    "faq"
+  ],
+  "modelIntro": {
+    "title": "為什麼 Seedance 2.5 對 AI 影片創作重要",
+    "modelName": "Seedance 2.5",
+    "modelType": "AI 影片模型",
+  "description": [
+    "Seedance 2.5 是 ByteDance AI 影片模型系列的下一步，具備原生 30 秒生成、最多 50 個多模態參考輸入，以及更實用的創意工作流。",
+    "早期 AI 影片工具通常只停留在短片段，Seedance 2.5 則更適合更長的場景、更強的連貫性，以及對產品、角色、動作與鏡頭方向的更豐富控制。",
+    "使用此頁追蹤 Seedance 2.5 發布更新，並在更大範圍開放前準備提示詞與創意工作流。"
+  ],
+  "featureCards": [
+    {
+      "title": "原生 30 秒場景",
+      "content": "建立 30 秒片段，讓節奏、鏡頭運動與敘事推進有更多空間。"
+    },
+    {
+      "title": "50 輸入參考控制",
+      "content": "最多可用 50 個多模態參考素材，包括圖片、影片、音訊與文字。"
+    },
+    {
+      "title": "可用於製作的迭代",
+      "content": "從一次性測試進一步變成可調整的行銷素材、提案片段與故事場景。"
+      }
+    ]
+  },
+  "hero": {
+    "h1": "<span class=\"text-gradient\">Seedance 2.5</span> AI 影片生成器",
+    "desc": "用更豐富的參考控制、更強的場景一致性，以及面向真實創意製作的工作流，建立更長、更連貫的 AI 影片。"
+  },
+  "launchUpdates": {
+    "eyebrow": "上線更新",
+    "title": "接收 Seedance 2.5 更新通知",
+    "description": "輸入你的電子郵件，當 Seedance 2.5 可用狀態變更時接收通知。",
+    "emailLabel": "電子郵件地址",
+    "emailPlaceholder": "you@company.com",
+    "button": "通知我",
+    "idleText": "沒有垃圾信。我們只會寄送 Seedance 2.5 可用狀態與產品更新。",
+    "successText": "你已加入 Seedance 2.5 更新名單。",
+    "errorText": "請輸入有效的電子郵件地址。",
+    "badges": [
+      "更長場景",
+      "參考控制",
+      "上線通知"
+    ]
+  },
+  "intro": {
+    "title": "從 AI 短片到可用影片素材",
+    "content": [
+      {
+        "title": "Seedance 2.5 的不同之處",
+        "text": "多數 AI 影片生成器適合快速視覺實驗。真正困難的是讓角色、產品、動作、光線與鏡頭方向保持足夠久的一致性，讓片段變得可用。"
+      },
+      {
+        "title": "為創意團隊打造",
+        "text": "Seedance 2.5 聚焦這個缺口。它讓創作者有更多空間建立場景、用參考引導輸出，並逐步迭代成能支援行銷或製作工作的影片。"
+      },
+      {
+        "title": "為上線工作流設計",
+        "text": "使用此頁比較 Seedance 2.5 與 Seedance 2.0，並準備行銷影片、產品敘事、社群短片與場景原型的提示詞。"
+      }
+    ]
+  },
+  "features": {
+    "title": "Seedance 2.5 主要功能",
+    "items": [
+    {
+      "icon": "🎬",
+      "iconType": "quality",
+      "title": "原生 30 秒生成",
+      "desc": "建立原生 30 秒影片片段，讓鏡頭運動、場景節奏與故事推進有更多空間。"
+    },
+    {
+      "icon": "🖼️",
+      "iconType": "multimodal",
+      "title": "最多 50 個參考輸入",
+      "desc": "最多可用 50 個多模態參考素材引導模型，包括角色設定表、產品照片、影片、音訊與風格方向。"
+    },
+      {
+        "icon": "🎥",
+        "iconType": "quality",
+        "title": "更好的場景一致性",
+        "desc": "在主體、場景、鏡頭運動與視覺細節上維持更穩定的效果。"
+      },
+      {
+        "icon": "✂️",
+        "iconType": "speed",
+        "title": "創意編輯工作流",
+        "desc": "調整生成結果，而不必每個場景都從空白提示重新開始。"
+      },
+      {
+        "icon": "📱",
+        "iconType": "browser",
+        "title": "行銷素材規劃",
+        "desc": "在同一工作流中規劃社群影片、廣告概念、產品故事與提案素材。"
+      },
+      {
+        "icon": "🔔",
+        "iconType": "free",
+        "title": "Seedance 2.5 更新通知",
+        "desc": "當 Seedance 2.5 可用狀態變更時接收電子郵件。"
+      }
+    ]
+  },
+  "performanceMetrics": {
+    "title": "Seedance 2.5 能力預覽",
+    "metrics": [
+      {
+        "label": "影片類型",
+        "value": "更長的電影感片段，提供更多節奏、動作與敘事推進空間"
+      },
+      {
+        "label": "模型重點",
+        "value": "更長、更可控的創意影片生成"
+      },
+      {
+        "label": "影片長度",
+        "value": "原生最高 30 秒單鏡頭生成，適合更長場景"
+      },
+      {
+        "label": "參考工作流",
+        "value": "圖片、產品、角色、環境、視覺風格與行銷方向"
+      },
+      {
+        "label": "主要使用者",
+        "value": "創作者、行銷人員、代理商、影像工作者與產品團隊"
+      },
+      {
+        "label": "最佳用途",
+        "value": "行銷影片、產品敘事、故事場景與製作型工作流"
+      },
+      {
+        "label": "可用狀態",
+        "value": "Toolaze 已開放更新通知；可用細節會在此頁同步更新"
+      }
+    ]
+  },
+  "modelComparison": {
+    "title": "Seedance 2.5 vs Seedance 2.0",
+    "columnHeaders": {
+      "metric": "比較項目",
+      "baseline": "Seedance 2.0",
+      "target": "Seedance 2.5"
+    },
+    "rows": [
+    {
+      "label": "模型重點",
+      "baseline": "針對短而精緻片段的多模態電影感影片生成。",
+      "target": "原生 30 秒影片生成，適合更長且可製作的場景。"
+    },
+    {
+      "label": "影片長度",
+      "baseline": "每段最高 15 秒。",
+      "target": "每段最高 30 秒。"
+    },
+    {
+      "label": "參考控制",
+      "baseline": "支援最多 12 個多模態參考檔案，涵蓋文字、圖片、影片與音訊。",
+      "target": "支援最多 50 個多模態參考素材，涵蓋圖片、影片、音訊與文字。"
+    },
+    {
+      "label": "場景一致性",
+      "baseline": "適合電影感測試與可控短片。",
+      "target": "更著重主體、動作、光線與鏡頭方向的連續性。"
+    },
+    {
+      "label": "最佳工作流",
+      "baseline": "創意測試、短社群片段與多模態 AI 影片實驗。",
+      "target": "更長的行銷影片、產品敘事、故事場景、提案片段與可控迭代。"
+    },
+      {
+        "label": "狀態",
+        "baseline": "可透過支援的平台使用。",
+        "target": "Toolaze 已開放更新通知；可用細節會在此頁同步更新。"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "如何使用 Seedance 2.5",
+    "steps": [
+      {
+        "title": "描述場景",
+        "desc": "寫下主體、動作、環境、鏡頭運動、氛圍與視覺風格。"
+      },
+      {
+        "title": "加入參考",
+        "desc": "使用圖片、影片參考、角色設定表、產品照片或風格板來引導輸出。"
+      },
+      {
+        "title": "選擇輸出設定",
+        "desc": "依照影片用途設定長寬比、時長、品質與風格。"
+      },
+      {
+        "title": "生成並調整",
+        "desc": "建立連貫的 AI 影片，並在匯出前調整創意方向。"
+      }
+    ]
+  },
+  "comparison": {
+    "title": "Seedance 2.5 與其他 AI 影片生成器比較",
+    "toolaze": "Seedance 2.5",
+    "others": "其他 AI 影片生成器",
+    "vs": "VS",
+    "smartChoice": "為什麼選擇 Seedance 2.5",
+    "otherTools": "Veo, Runway, Kling, Hailuo",
+  "toolazeFeatures": "原生 30 秒片段、最多 50 個參考素材、更長場景的連續性、品牌與產品影片工作流、適合行銷活動的迭代",
+  "othersFeatures": "Veo 強調高擬真生成，Runway 強調創作工具，Kling 與 Hailuo 強調易用影片輸出；許多流程仍以短篇獨立片段為核心"
+  },
+  "competitorComparison": {
+    "title": "Seedance 2.5 vs 其他 AI 影片生成器",
+    "columnHeaders": {
+      "metric": "AI 影片模型",
+      "baseline": "已知強項",
+      "target": "為什麼是 Seedance 2.5"
+    },
+    "rows": [
+      {
+        "label": "Veo",
+        "baseline": "高保真生成、廣泛模型理解，以及適合精緻 AI 影片輸出的強真實感。",
+        "target": "Seedance 2.5 聚焦更長的創意場景、重參考方向，以及適合行銷活動與故事概念的製作工作流。"
+      },
+      {
+        "label": "Runway Gen-4",
+        "baseline": "創意工具、參考工作流，以及面向視覺團隊的製作型編輯。",
+        "target": "Seedance 2.5 以可控場景生成、更豐富參考，以及從概念片段到可用素材的實用迭代競爭。"
+      },
+      {
+        "label": "Kling 與 Hailuo",
+        "baseline": "適合社群短片、快速概念與視覺實驗的易用 AI 影片生成。",
+        "target": "當創作者需要連續性、更強場景控制與品牌可用的影片方向時，Seedance 2.5 更容易突顯價值。"
+      },
+      {
+        "label": "Seedance 2.5",
+        "baseline": "ByteDance AI 影片模型，已公開原生 30 秒片段與最多 50 個多模態參考輸入。",
+        "target": "原生 30 秒片段、最多 50 個參考素材、更長場景連續性、產品敘事、廣告版本、提案片段與製作工作流。"
+      }
+    ]
+  },
+  "scenesTitle": "建立不只是 AI 短測試",
+  "scenes": [
+    {
+      "title": "品牌行銷影片",
+      "icon": "📣",
+      "desc": "為產品上市、季節活動與付費社群測試建立精緻概念片段。"
+    },
+    {
+      "title": "產品敘事",
+      "icon": "🛍️",
+      "desc": "用一致的光線、構圖、材質與背景環境展示產品動態。"
+    },
+    {
+      "title": "社群短影片",
+      "icon": "📱",
+      "desc": "為 TikTok、Instagram Reels、YouTube Shorts 與創作者活動生成電影感短片。"
+    },
+    {
+      "title": "電影與故事預演",
+      "icon": "🎞️",
+      "desc": "在製作前快速原型化場景、鏡頭運動、角色走位與視覺調性。"
+    },
+    {
+      "title": "提案簡報與情緒板",
+      "icon": "🧭",
+      "desc": "把靜態參考轉成給客戶、團隊與利害關係人的動態創意方向。"
+    },
+    {
+      "title": "廣告版本測試",
+      "icon": "🧪",
+      "desc": "更快產出多個創意方向，並在投入製作預算前測試開場、場景、風格與格式。"
+    }
+  ],
+  "rating": {
+    "title": "追蹤 Seedance 2.5 上線更新",
+    "rating": "Upcoming AI video model",
+    "text": "加入 Seedance 2.5 更新名單，在可用狀態變更時收到通知。"
+  },
+  "faqTitle": "Seedance 2.5 常見問題",
+  "faq": [
+  {
+    "q": "什麼是 Seedance 2.5？",
+    "a": "Seedance 2.5 是 ByteDance 的下一代 AI 影片模型，公開資訊指出它具備原生 30 秒生成與最多 50 個多模態參考輸入。"
+  },
+    {
+      "q": "Seedance 2.5 現在可以使用嗎？",
+      "a": "Toolaze 會追蹤 Seedance 2.5 可用狀態。輸入電子郵件，即可在狀態變更時接收更新。"
+    },
+  {
+    "q": "Seedance 2.5 和 Seedance 2.0 有什麼不同？",
+    "a": "Seedance 2.5 從 Seedance 2.0 的 15 秒、12 參考設定，升級到 30 秒片段與最多 50 個參考。"
+  },
+  {
+    "q": "Seedance 2.5 可以生成更長影片嗎？",
+    "a": "可以。公開報導與發布會資訊都指出，原生 30 秒片段是 Seedance 2.5 的主要升級之一。"
+  },
+    {
+      "q": "誰適合使用 Seedance 2.5？",
+      "a": "Seedance 2.5 適合創作者、行銷人員、代理商、影像工作者、產品團隊，以及需要為行銷、社群或視覺原型建立電影感 AI 影片的人。"
+    },
+    {
+      "q": "如何接收 Seedance 2.5 更新？",
+      "a": "在更新表單輸入電子郵件，即可在 Seedance 2.5 可用狀態變更時收到通知。"
+    }
+  ],
+  "moreTools": "更多 AI 影片模型"
+}

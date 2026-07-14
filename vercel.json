@@ -1,5 +1,52 @@
 {
   "framework": "nextjs",
   "installCommand": "npm ci",
-  "buildCommand": "npm run build"
+  "buildCommand": "npm run build",
+  "rewrites": [
+    {
+      "source": "/api/auth/:path*",
+      "destination": "https://toolaze-web.pages.dev/api/auth/:path*"
+    },
+    {
+      "source": "/api/credits",
+      "destination": "https://toolaze-web.pages.dev/api/credits"
+    },
+    {
+      "source": "/api/history",
+      "destination": "https://toolaze-web.pages.dev/api/history"
+    },
+    {
+      "source": "/api/image-to-image",
+      "destination": "https://toolaze-web.pages.dev/api/image-to-image"
+    },
+    {
+      "source": "/api/image-to-image/status",
+      "destination": "https://toolaze-web.pages.dev/api/image-to-image/status"
+    },
+    {
+      "source": "/api/save-image-to-r2",
+      "destination": "https://toolaze-web.pages.dev/api/save-image-to-r2"
+    },
+    {
+      "source": "/api/upload",
+      "destination": "https://toolaze-web.pages.dev/api/upload"
+    },
+    {
+      "source": "/api/download-image",
+      "destination": "https://toolaze-web.pages.dev/api/download-image"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.toolaze.com"
+        }
+      ],
+      "destination": "https://toolaze.com/$1",
+      "permanent": true
+    }
+  ]
 }

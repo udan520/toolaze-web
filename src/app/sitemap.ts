@@ -88,12 +88,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.9,
   })
   entries.push({
-    url: `${baseUrl}/ai-couple-photo-maker`,
-    lastModified: today,
-    changeFrequency: 'weekly',
-    priority: 0.9,
-  })
-  entries.push({
     url: `${baseUrl}/ai-image-generator`,
     lastModified: today,
     changeFrequency: 'weekly',
@@ -106,6 +100,57 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: today,
       changeFrequency: 'weekly',
       priority: 0.9,
+    })
+  })
+  entries.push({
+    url: `${baseUrl}/text-to-image-generator`,
+    lastModified: today,
+    changeFrequency: 'weekly',
+    priority: 0.94,
+  })
+  SUPPORTED_LOCALES.forEach((locale) => {
+    if (locale === 'en') return
+    entries.push({
+      url: `${baseUrl}/${locale}/text-to-image-generator`,
+      lastModified: today,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    })
+  })
+  entries.push({
+    url: `${baseUrl}/ai-image-to-image-generator`,
+    lastModified: today,
+    changeFrequency: 'weekly',
+    priority: 0.94,
+  })
+  SUPPORTED_LOCALES.forEach((locale) => {
+    if (locale === 'en') return
+    entries.push({
+      url: `${baseUrl}/${locale}/ai-image-to-image-generator`,
+      lastModified: today,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    })
+  })
+  entries.push({
+    url: `${baseUrl}/ai-couple-photo-maker`,
+    lastModified: today,
+    changeFrequency: 'weekly',
+    priority: 0.9,
+  })
+  entries.push({
+    url: `${baseUrl}/ai-baby-generator`,
+    lastModified: today,
+    changeFrequency: 'weekly',
+    priority: 0.9,
+  })
+  SUPPORTED_LOCALES.forEach((locale) => {
+    const path = locale === 'en' ? '/ai-hair-color-changer' : `/${locale}/ai-hair-color-changer`
+    entries.push({
+      url: `${baseUrl}${path}`,
+      lastModified: today,
+      changeFrequency: 'weekly',
+      priority: locale === 'en' ? 0.92 : 0.87,
     })
   })
   entries.push({
@@ -178,7 +223,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   })
 
   // 4. Model 页面（AI 图像模型，仅英文）
-  const MODEL_PAGES = ['nano-banana', 'nano-banana-pro', 'nano-banana-2', 'gpt-image-2', 'gpt-image-2-0', 'wan-2-7-image', 'seedream-4-5', 'seedance-2', 'kling-3']
+  const MODEL_PAGES = ['nano-banana', 'nano-banana-pro', 'nano-banana-2', 'gpt-image-2', 'gpt-image-2-0', 'wan-2-7-image', 'seedream-4-5', 'seedream-5-0-lite', 'seedream-5-0-pro', 'seedance-2-5', 'seedance-2', 'kling-3']
   MODEL_PAGES.forEach((model) => {
     entries.push({
       url: `${baseUrl}/model/${model}`,
@@ -209,12 +254,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   })
 
   // 4b. 多语言 model L2（与 /[locale]/model/[model] 一致；英语 canonical 仍为 /model/...）
-  const LOCALIZED_MODEL_SLUGS = ['nano-banana-pro', 'nano-banana-2', 'gpt-image-2', 'gpt-image-2-0', 'wan-2-7-image', 'seedance-2', 'kling-3']
+  const LOCALIZED_MODEL_SLUGS = ['nano-banana-pro', 'nano-banana-2', 'gpt-image-2', 'gpt-image-2-0', 'wan-2-7-image', 'seedream-4-5', 'seedream-5-0-lite', 'seedream-5-0-pro', 'seedance-2-5', 'seedance-2', 'kling-3']
   LOCALIZED_MODEL_SLUGS.forEach((model) => {
     SUPPORTED_LOCALES.forEach((locale) => {
       if (locale === 'en') return
       const tool = model === 'gpt-image-2-0' ? 'gpt-image-2' : model
-      if (tool !== 'wan-2-7-image' && !hasLocaleL2JsonFile(tool, locale)) return
+      if (tool !== 'wan-2-7-image' && tool !== 'seedream-4-5' && tool !== 'seedream-5-0-lite' && tool !== 'seedream-5-0-pro' && !hasLocaleL2JsonFile(tool, locale)) return
       entries.push({
         url: `${baseUrl}/${locale}/model/${model}`,
         lastModified: today,

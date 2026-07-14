@@ -1,0 +1,24 @@
+name = "toolaze-web"
+account_id = "029d8067127879c2c53fd7cf119bc9ca"
+compatibility_date = "2026-01-14"
+pages_build_output_dir = "out"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "toolaze-web-auth"
+database_id = "89c5e6bf-4949-4d12-9b18-f612c543617a"
+migrations_dir = "migrations"
+
+[env.production.vars]
+NEXT_PUBLIC_IMAGE_UPLOAD_UR = "https://toolaze-web.pages.dev/api/upload"
+NODE_VERSION = "20"
+
+[[env.production.r2_buckets]]
+binding = "MY_BUCKET"
+bucket_name = "toolaze"
+
+[[env.production.d1_databases]]
+binding = "DB"
+database_name = "toolaze-web-auth"
+database_id = "89c5e6bf-4949-4d12-9b18-f612c543617a"
+migrations_dir = "migrations"

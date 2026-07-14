@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">Diamond 3D Indigo</title>
+  <defs>
+    <linearGradient id="d3iTop" x1="17" y1="10" x2="48" y2="30" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F8FAFF"/>
+      <stop offset="0.5" stop-color="#A5B4FC"/>
+      <stop offset="1" stop-color="#4F46E5"/>
+    </linearGradient>
+    <linearGradient id="d3iLeft" x1="15" y1="25" x2="34" y2="58" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#818CF8"/>
+      <stop offset="1" stop-color="#312E81"/>
+    </linearGradient>
+    <linearGradient id="d3iRight" x1="31" y1="22" x2="52" y2="58" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#C4B5FD"/>
+      <stop offset="1" stop-color="#5B21B6"/>
+    </linearGradient>
+    <filter id="d3iShadow" x="-20%" y="-20%" width="140%" height="150%" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="7" stdDeviation="5" flood-color="#4F46E5" flood-opacity=".22"/>
+    </filter>
+  </defs>
+  <g filter="url(#d3iShadow)">
+    <path d="M32 7 55 24 32 59 9 24 32 7Z" fill="#4F46E5"/>
+    <path d="M32 7 55 24H9L32 7Z" fill="url(#d3iTop)"/>
+    <path d="M9 24h23v35L9 24Z" fill="url(#d3iLeft)"/>
+    <path d="M32 24h23L32 59V24Z" fill="url(#d3iRight)"/>
+    <path d="M19 24 32 7l13 17M19 24l13 35 13-35M9 24h46" fill="none" stroke="#FFFFFF" stroke-opacity=".55" stroke-width="1.6" stroke-linejoin="round"/>
+  </g>
+</svg>

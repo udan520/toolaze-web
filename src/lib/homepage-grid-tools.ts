@@ -6,6 +6,8 @@
  * Advanced AI 区块缩略图：`src/lib/home-advanced-ai-card-images.ts` 与 `HOME_ADVANCED_AI_CARD_IMAGES`（admin-seo-server.js）。
  */
 export const HOME_GRID_TOOLS = [
+  { id: 'ai-hair-color-changer', usesAi: true },
+  { id: 'ai-baby-generator', usesAi: true },
   { id: 'ai-couple-photo-maker', usesAi: true },
   { id: 'watermark-remover', usesAi: true },
   { id: 'photo-restoration', usesAi: true },

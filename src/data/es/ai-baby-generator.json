@@ -1,0 +1,412 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "ai-baby-generator",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 2,
+    "modelId": "gpt-image-2",
+    "defaultPrompt": "Create a warm, natural baby portrait inspired by the uploaded reference photos, with a gentle smile, soft studio lighting, clear facial details, and a simple neutral background. Keep the result playful and fictional, not a prediction of a real child.",
+    "defaultImageUrls": [
+      "/ai-baby-generator/reference-parent-1.webp",
+      "/ai-baby-generator/reference-parent-2.webp"
+    ],
+    "hideModelBranding": true,
+    "hidePresetPromptInput": true,
+    "compactResultPanel": true,
+    "promptModifier": {
+      "title": "Género del bebé",
+      "defaultValue": "surprise",
+      "options": [
+        {
+          "label": "Sorpréndeme",
+          "value": "surprise",
+          "prompt": "Choose a natural baby gender presentation that fits the portrait while keeping the result fictional and playful."
+        },
+        {
+          "label": "Niña",
+          "value": "girl",
+          "prompt": "Create the portrait with a clearly feminine baby presentation while keeping the result natural, age-appropriate, fictional, and playful."
+        },
+        {
+          "label": "Niño",
+          "value": "boy",
+          "prompt": "Create the portrait with a clearly masculine baby presentation while keeping the result natural, age-appropriate, fictional, and playful."
+        }
+      ]
+    },
+    "displayName": "Generador de retratos de bebé con AI",
+    "textOverrides": {
+      "uploadTitle": "Sube fotos de los padres o de la pareja",
+      "uploadHelper": "Añade dos retratos nítidos, una foto de pareja o un retrato individual.",
+      "promptLabel": "Describe el retrato",
+      "generateLabel": "Crear retrato de bebé",
+      "safetyHelper": "Solo para diversión creativa. No es una predicción genética ni de apariencia futura."
+    },
+    "functionalAcceptance": {
+      "recommendedMode": "preset-first-with-custom-prompt",
+      "reason": "Los estilos preestablecidos de retrato hacen que el flujo de trabajo creativo sea más claro que un formulario basado únicamente en texto (instrucción).",
+      "presetTitle": "Estilos de retrato de bebé",
+      "presets": [
+        {
+          "label": "Estudio suave",
+          "prompt": "Create a warm, natural baby portrait inspired by the uploaded reference photos, with a gentle smile, soft studio lighting, clear facial details, and a simple neutral background. Keep the result playful and fictional, not a prediction of a real child.",
+          "swatch": "linear-gradient(135deg, #F5E9E2, #DDE8F5)",
+          "image": "/ai-baby-generator/style-soft-studio.webp"
+        },
+        {
+          "label": "Manta acogedora",
+          "prompt": "Create a cozy baby portrait inspired by the uploaded reference photos, wrapped in a soft knit blanket, with warm window light, a calm expression, and a clean home studio background. Keep it fictional and made for fun.",
+          "swatch": "linear-gradient(135deg, #E8D6C8, #F4EFE8)",
+          "image": "/ai-baby-generator/style-cozy-blanket.webp"
+        },
+        {
+          "label": "Exterior soleado",
+          "prompt": "Create a cheerful outdoor baby portrait inspired by the uploaded reference photos, with soft morning sunlight, a natural smile, green garden bokeh, and realistic photography. Keep it fictional and made for fun.",
+          "swatch": "linear-gradient(135deg, #F8D77A, #B7D6A3)",
+          "image": "/ai-baby-generator/style-sunny-outdoor.webp"
+        },
+        {
+          "label": "Sonrisa juguetona",
+          "prompt": "Create a playful baby portrait inspired by the uploaded reference photos, with a bright natural smile, soft colorful clothing, clean daylight, and a simple portrait background. Keep it fictional and made for fun.",
+          "swatch": "linear-gradient(135deg, #F5B8C7, #AFCBEA)",
+          "image": "/ai-baby-generator/style-playful-smile.webp"
+        },
+        {
+          "label": "Retrato de cuento",
+          "prompt": "Create a gentle storybook style baby portrait inspired by the uploaded reference photos, with soft painted textures, warm light, subtle whimsical details, and a clear friendly face. Keep it fictional and made for fun.",
+          "swatch": "linear-gradient(135deg, #CDBCE8, #F2D4A6)",
+          "image": "/ai-baby-generator/style-storybook-portrait.webp"
+        },
+        {
+          "label": "Tarjeta familiar",
+          "prompt": "Create a polished baby portrait inspired by the uploaded reference photos for a family greeting card, with a warm neutral backdrop, soft festive details, balanced studio light, and generous framing. Keep it fictional and made for fun.",
+          "swatch": "linear-gradient(135deg, #C7D8D0, #E8C7C7)",
+          "image": "/ai-baby-generator/style-family-card.webp"
+        }
+      ]
+    },
+    "sampleImages": [
+      {
+        "url": "/ai-baby-generator/hero-baby-portrait.webp",
+        "title": "Retrato de bebé en estudio suave creado a partir de fotos de referencia",
+        "width": 1600,
+        "height": 900
+      }
+    ]
+  },
+  "metadata": {
+    "title": "Generador gratuito de retratos de bebé con AI | Crea retratos",
+    "description": "Sube una o dos fotos y crea un retrato de bebé en línea gratis. Elige un estilo, edita la descripción (instrucción) y descarga un resultado divertido. No es una predicción real."
+  },
+  "sectionsOrder": [
+    "intro",
+    "promptExamples",
+    "howToUse",
+    "photoTips",
+    "scenes",
+    "workflowComparison",
+    "features",
+    "testimonials",
+    "faq"
+  ],
+  "hero": {
+    "h1": "<span class=\"text-gradient\">Generador de retratos de bebé con AI</span> gratis en línea",
+    "desc": "Sube una o dos fotos, elige un estilo de retrato y crea una imagen divertida de un bebé para pasar un buen rato."
+  },
+  "intro": {
+    "title": "¿Qué es un generador de retratos de bebé con AI?",
+    "content": [
+      {
+        "title": "Crea un retrato ficticio a partir de fotos de referencia",
+        "text": "Un generador de bebés AI crea un retrato ficticio de un bebé a partir de una o dos fotos de referencia. Empieza con dos retratos separados, una foto de pareja nítida o un retrato individual; luego, elige un estilo y edita la descripción. El resultado es una imagen creativa para entretenerse y compartir. No predice la genética, la filiación, la salud ni el aspecto que tendrá un niño real."
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "Ejemplos de estilos de retrato de bebé",
+    "subtitle": "Primero elige un estilo visual y luego edita la descripción para ajustar la expresión, la ropa, la iluminación o el fondo.",
+    "items": [
+      {
+        "title": "Estudio suave",
+        "prompt": "Create a warm, natural baby portrait inspired by the uploaded reference photos, with a gentle smile, soft studio lighting, clear facial details, and a simple neutral background. Keep the result playful and fictional, not a prediction of a real child.",
+        "note": "Iluminación de estudio limpia, expresión suave y un fondo neutro y sencillo.",
+        "color": "linear-gradient(135deg, #F5E9E2, #DDE8F5)",
+        "image": "/ai-baby-generator/style-soft-studio.webp"
+      },
+      {
+        "title": "Manta acogedora",
+        "prompt": "Create a cozy baby portrait inspired by the uploaded reference photos, wrapped in a soft knit blanket, with warm window light, a calm expression, and a clean home studio background. Keep it fictional and made for fun.",
+        "note": "Cálida luz de ventana, una manta de punto y el ambiente tranquilo de un estudio en casa.",
+        "color": "linear-gradient(135deg, #E8D6C8, #F4EFE8)",
+        "image": "/ai-baby-generator/style-cozy-blanket.webp"
+      },
+      {
+        "title": "Exterior soleado",
+        "prompt": "Create a cheerful outdoor baby portrait inspired by the uploaded reference photos, with soft morning sunlight, a natural smile, green garden bokeh, and realistic photography. Keep it fictional and made for fun.",
+        "note": "Suave luz matutina, una sonrisa natural y un jardín luminoso de fondo.",
+        "color": "linear-gradient(135deg, #F8D77A, #B7D6A3)",
+        "image": "/ai-baby-generator/style-sunny-outdoor.webp"
+      },
+      {
+        "title": "Sonrisa juguetona",
+        "prompt": "Create a playful baby portrait inspired by the uploaded reference photos, with a bright natural smile, soft colorful clothing, clean daylight, and a simple portrait background. Keep it fictional and made for fun.",
+        "note": "Luz diurna clara, una sonrisa radiante y ropa sencilla y colorida.",
+        "color": "linear-gradient(135deg, #F5B8C7, #AFCBEA)",
+        "image": "/ai-baby-generator/style-playful-smile.webp"
+      },
+      {
+        "title": "Retrato de cuento",
+        "prompt": "Create a gentle storybook style baby portrait inspired by the uploaded reference photos, with soft painted textures, warm light, subtle whimsical details, and a clear friendly face. Keep it fictional and made for fun.",
+        "note": "Suaves texturas pictóricas y pequeños detalles fantásticos, con el rostro bien definido.",
+        "color": "linear-gradient(135deg, #CDBCE8, #F2D4A6)",
+        "image": "/ai-baby-generator/style-storybook-portrait.webp"
+      },
+      {
+        "title": "Tarjeta familiar",
+        "prompt": "Create a polished baby portrait inspired by the uploaded reference photos for a family greeting card, with a warm neutral backdrop, soft festive details, balanced studio light, and generous framing. Keep it fictional and made for fun.",
+        "note": "Iluminación cuidada y encuadre amplio para un diseño de tarjeta personal.",
+        "color": "linear-gradient(135deg, #C7D8D0, #E8C7C7)",
+        "image": "/ai-baby-generator/style-family-card.webp"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Cómo crear un retrato de bebé con AI",
+    "steps": [
+      {
+        "title": "Sube una o dos fotos nítidas",
+        "desc": "Añade dos retratos separados para tener una referencia clara de dos personas, una foto de pareja donde se vean bien ambos rostros, o un solo retrato para obtener un resultado basado en una única referencia."
+      },
+      {
+        "title": "Elige un estilo de retrato",
+        "desc": "Selecciona \"Estudio suave\", \"Manta acogedora\", \"Exterior soleado\" u otro ajuste preestablecido. Cada estilo aplica una instrucción útil que puedes editar."
+      },
+      {
+        "title": "Genera, revisa y descarga",
+        "desc": "Crea el retrato, revísalo en el panel de resultados y ajusta el estilo o la instrucción si deseas cambiar el ambiente antes de descargarlo."
+      }
+    ]
+  },
+  "photoTips": {
+    "title": "Consejos fotográficos para mejores retratos de bebés",
+    "subtitle": "Las referencias nítidas ayudan al generador a interpretar los rostros, la iluminación y el encuadre antes de crear el retrato ficticio.",
+    "items": [
+      {
+        "title": "Asegúrate de que los rostros se vean bien",
+        "desc": "Usa fotos frontales o casi frontales donde se aprecien claramente los ojos, la nariz y la boca. Evita gafas de sol, mascarillas y rostros demasiado pequeños o lejanos.",
+        "color": "linear-gradient(135deg, #DBEAFE, #818CF8)"
+      },
+      {
+        "title": "Usa una iluminación equilibrada",
+        "desc": "La luz natural de una ventana o una luz interior suave suelen preservar mejor los detalles faciales útiles que las sombras intensas o la iluminación de colores.",
+        "color": "linear-gradient(135deg, #FEF3C7, #F59E0B)"
+      },
+      {
+        "title": "Igualar el encuadre",
+        "desc": "Al usar dos fotos distintas, resulta más fácil apreciar los detalles si ambas muestran un encuadre similar de cabeza y hombros, en lugar de combinar un primer plano tipo selfi con una imagen de cuerpo entero tomada desde lejos.",
+        "color": "linear-gradient(135deg, #FCE7F3, #EC4899)"
+      },
+      {
+        "title": "Revisar una foto en pareja",
+        "desc": "Asegúrate de que ambos rostros se vean grandes, nítidos y sin obstrucciones. Evita las fotos de grupos numerosos donde no quede claro quiénes son las personas de interés.",
+        "color": "linear-gradient(135deg, #DCFCE7, #22C55E)"
+      }
+    ]
+  },
+  "scenesTitle": "Formas creativas de usar tu retrato",
+  "scenes": [
+    {
+      "icon": "💌",
+      "title": "Recuerdo íntimo en pareja",
+      "desc": "Crea un retrato divertido para compartir en privado con tu pareja y compara distintos estilos visuales."
+    },
+    {
+      "icon": "🖼️",
+      "title": "Idea para una tarjeta familiar",
+      "desc": "Utiliza un encuadre amplio como base para una tarjeta de felicitación privada, un borrador de anuncio o una página de álbum de recortes."
+    },
+    {
+      "icon": "💬",
+      "title": "Sorpresa a distancia",
+      "desc": "Envía una imagen desenfadada por mensaje cuando estés lejos de tu pareja."
+    },
+    {
+      "icon": "📱",
+      "title": "Idea para una publicación en redes sociales",
+      "desc": "Prueba un retrato alegre para una historia privada, una publicación en pareja o una actualización creativa de tu perfil."
+    },
+    {
+      "icon": "🎨",
+      "title": "Experimenta con estilos",
+      "desc": "Compara enfoques de estudio, exteriores, acogedores, lúdicos y de cuento de hadas a partir de las mismas referencias."
+    }
+  ],
+  "workflowComparison": {
+    "title": "Lo que el generador de bebés AI puede y no puede hacer",
+    "subtitle": "Utiliza el resultado como un retrato creativo. No proporciona información sobre identidad, filiación, aspectos médicos o apariencia futura.",
+    "columns": [
+      "Pregunta",
+      "Compatibilidad de Toolaze",
+      "Limitación importante"
+    ],
+    "rows": [
+      [
+        "¿Puedo usar dos fotos?",
+        "Sí. Sube hasta dos imágenes de referencia. La opción predeterminada más clara consiste en dos retratos separados.",
+        "Los resultados varían según la calidad de la foto, la iluminación y el encuadre."
+      ],
+      [
+        "¿Puedo usar una sola foto?",
+        "Sí. Utiliza una foto clara de la pareja o un retrato individual.",
+        "Una sola imagen ofrece al generador menos contexto de referencia visual."
+      ],
+      [
+        "¿Puedo elegir un estilo?",
+        "Sí. Empieza con un ajuste preestablecido de retrato y edita la instrucción.",
+        "Un ajuste preestablecido orienta el estilo visual, pero no garantiza detalles exactos."
+      ],
+      [
+        "¿Puedo descargar el resultado?",
+        "Sí. Revisa el retrato generado y utiliza la opción de descarga.",
+        "Guarda la imagen que quieras conservar tras la generación."
+      ],
+      [
+        "¿Predice la genética?",
+        "No. Crea una imagen ficticia a partir de referencias visuales y una instrucción.",
+        "No puede predecir la apariencia de un niño real."
+      ],
+      [
+        "¿Verifica la filiación o el estado de salud?",
+        "No. Es una herramienta para crear imágenes creativas.",
+        "No proporciona información sobre identidad, filiación, aspectos médicos o salud."
+      ]
+    ]
+  },
+  "features": {
+    "title": "Funciones del generador de retratos de bebé con AI",
+    "items": [
+      {
+        "icon": "🖼️",
+        "iconType": "format",
+        "title": "Una o dos fotos de referencia",
+        "desc": "Comienza con dos retratos separados, una foto de pareja o un retrato claro de una sola persona."
+      },
+      {
+        "icon": "🎨",
+        "iconType": "quality",
+        "title": "Seis estilos de retrato",
+        "desc": "Elige un estilo visual antes de editar la descripción (instrucción) para lograr una atmósfera más específica."
+      },
+      {
+        "icon": "✍️",
+        "iconType": "prompt",
+        "title": "Descripción editable",
+        "desc": "Ajusta la expresión, la ropa, la iluminación, el encuadre y el fondo con tus propias palabras."
+      },
+      {
+        "icon": "🔁",
+        "iconType": "speed",
+        "title": "Refinamiento sencillo",
+        "desc": "Cambia de estilo o modifica la descripción si el primer resultado requiere un enfoque diferente."
+      },
+      {
+        "icon": "⬇️",
+        "iconType": "quality",
+        "title": "Vista previa y descarga",
+        "desc": "Revisa el retrato generado en el panel de resultados y guarda la imagen que prefieras."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "Flujo de trabajo gratuito en línea",
+        "desc": "Crea un retrato divertido en línea sin necesidad de registrarte y sin marcas de agua en la experiencia estándar de las herramientas AI."
+      }
+    ]
+  },
+  "testimonials": {
+    "title": "Cómo se usa el generador de retratos de bebé con AI",
+    "subtitle": "Tres flujos de trabajo prácticos para crear y perfeccionar el retrato de un bebé imaginario.",
+    "items": [
+      {
+        "name": "Maya R.",
+        "role": "Pareja a distancia",
+        "quote": "Utilizamos dos fotos sencillas tomadas con el móvil y probamos los estilos de estudio y de exteriores. El segundo resultado funcionó mejor después de eliminar las instrucciones sobre fondos complejos. Lo tomamos como una imagen divertida para enviarnos mutuamente, no como algo que debiera ser realista."
+      },
+      {
+        "name": "Jordan L.",
+        "role": "Diseño de tarjetas familiares",
+        "quote": "Quería una imagen provisional y suave para el concepto de una tarjeta privada, antes de que la familia eligiera una fotografía real. El ajuste preestablecido \"Tarjeta familiar\" (Tarjeta familiar) me ofreció un encuadre útil, y pude cambiar la ropa y el fondo sin tener que volver a redactar la descripción."
+      },
+      {
+        "name": "Lena S.",
+        "role": "Creador de contenido en pareja",
+        "quote": "El resultado más nítido se obtuvo a partir de dos fotos con iluminación similar. Cambié de un aspecto realista de estudio a un estilo más suave, propio de un libro de cuentos. Algunos detalles variaban entre las distintas generaciones, así que elegí el retrato con la expresión más clara y limpia."
+      }
+    ]
+  },
+  "faqTitle": "Preguntas frecuentes sobre el generador de retratos de bebé con AI",
+  "faq": [
+    {
+      "q": "¿Cómo funciona el generador de bebés AI?",
+      "a": "Sube una o dos fotos de referencia, elige un estilo de retrato de bebé y modifica la instrucción si es necesario. Toolaze utiliza las fotos y la instrucción para crear un retrato ficticio de un bebé que podrás revisar y descargar."
+    },
+    {
+      "q": "¿Puedo usar una sola foto?",
+      "a": "Sí. Puedes usar un retrato nítido de una sola persona o una foto de pareja. Dos retratos separados suelen proporcionar referencias más claras al sistema, pero no son obligatorios."
+    },
+    {
+      "q": "¿Puedo subir dos fotos separadas de los padres o una foto de pareja?",
+      "a": "Sí. La herramienta admite hasta dos imágenes. Puedes subir dos retratos individuales, una foto de pareja en la que se vean ambos rostros o un único retrato."
+    },
+    {
+      "q": "¿Qué fotos funcionan mejor?",
+      "a": "Utiliza fotos nítidas, de frente o casi de frente, con iluminación equilibrada y rasgos faciales visibles. Evita las gafas de sol, los filtros excesivos, las sombras marcadas, los rostros demasiado pequeños y las fotos de grupos numerosos."
+    },
+    {
+      "q": "¿El generador de bebés de AI es gratuito y funciona en línea?",
+      "a": "Sí. Puedes abrir la herramienta en línea, crear un retrato de bebé sin registrarte y descargar el resultado sin marca de agua. Los límites de uso pueden variar."
+    },
+    {
+      "q": "¿Predice cómo será un bebé real?",
+      "a": "No. El resultado es una imagen ficticia creada con fines lúdicos y creativos. No predice la genética, la filiación, la salud ni la apariencia futura de un niño real."
+    },
+    {
+      "q": "¿Puedo elegir un estilo para el retrato del bebé?",
+      "a": "Sí. Elige entre opciones como Estudio suave, Manta acogedora, Exterior soleado, Sonrisa alegre, Retrato de cuento o Tarjeta familiar. Puedes editar la instrucción para cambiar la expresión, la ropa, la iluminación o el fondo."
+    },
+    {
+      "q": "¿Puedo descargar la imagen generada?",
+      "a": "Sí. Una vez que el retrato aparezca en el panel de resultados, revísalo y utiliza la opción de descarga para guardar la imagen que prefieras."
+    }
+  ],
+  "moreTools": "Herramientas relacionadas de AI",
+  "moreToolsLinks": [
+    {
+      "title": "Creador de fotos de parejas de AI",
+      "description": "Crea retratos románticos de parejas a partir de una o dos fotos de referencia.",
+      "href": "/ai-couple-photo-maker"
+    },
+    {
+      "title": "Generador de imagen a imagen con AI",
+      "description": "Utiliza una imagen de referencia y una instrucción para crear otras variaciones visuales.",
+      "href": "/ai-image-to-image-generator"
+    },
+    {
+      "title": "Generador de imágenes de AI",
+      "description": "Crea nuevas imágenes a partir de una instrucción de texto.",
+      "href": "/ai-image-generator"
+    },
+    {
+      "title": "Restauración de fotos",
+      "description": "Repara fotos familiares desgastadas, rayadas o de baja calidad.",
+      "href": "/photo-restoration"
+    }
+  ],
+  "moreToolsCta": {
+    "title": "Crea un retrato de bebé a partir de tus fotos",
+    "description": "Sube una o dos imágenes de referencia nítidas, elige un estilo y crea una imagen divertida para compartir en privado o conservar como recuerdo creativo.",
+    "button": "Crear retrato de bebé"
+  }
+}

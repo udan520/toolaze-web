@@ -588,7 +588,10 @@
       "generationFailedWithMessage": "Generation failed: {message}",
       "generationTimeout": "Generation timeout",
       "dailyLimitReached": "Daily free limit reached. Please come back tomorrow!",
-      "recreateMissingInput": "No input image found. Switched to Text to Image for recreate."
+      "recreateMissingInput": "No input image found. Switched to Text to Image for recreate.",
+      "creditsUsedUpTitle": "Credits Used Up",
+      "creditsUsedUpMessage": "Your credits have been used up. More ways to earn credits are coming soon, including bonus events and activity rewards.",
+      "creditsUsedUpAction": "Got it"
     },
     "emojiPicker": {
       "categoriesTitle": "Categories",

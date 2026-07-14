@@ -1,0 +1,51 @@
+{
+  "referenceUrl": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/ai-hair-color-changer/default-reference.png",
+  "results": [
+    {
+      "slug": "rose-pink",
+      "title": "Rose Pink",
+      "prompt": "Change the hair color to soft rose pink while keeping the face, hairstyle, skin tone, and background natural.",
+      "rawPath": "/Users/neva/Desktop/workspace/toolaze-web/public/ai-hair-color-changer/rose-pink-after.png"
+    },
+    {
+      "slug": "honey-blonde",
+      "title": "Honey Blonde",
+      "prompt": "Change the hair color to warm honey blonde with natural highlights and realistic lighting.",
+      "taskId": "47b7731f87904cb5ea23d77a3bc3d2b5",
+      "imageUrl": "https://tempfile.aiquickdraw.com/images/chatgpt/file_0000000074b4720ea370659b82a83d28.png",
+      "rawPath": "/Users/neva/Desktop/workspace/toolaze-web/public/ai-hair-color-changer/honey-blonde-after.png"
+    },
+    {
+      "slug": "copper-brown",
+      "title": "Copper Brown",
+      "prompt": "Change the hair color to copper brown while preserving the original hairstyle, face, and background.",
+      "taskId": "4a60157e5eb24673b547c01c416b1151",
+      "imageUrl": "https://tempfile.aiquickdraw.com/images/chatgpt/file_000000009c3871f5948269f32a752fcb.png",
+      "rawPath": "/Users/neva/Desktop/workspace/toolaze-web/public/ai-hair-color-changer/copper-brown-after.png"
+    },
+    {
+      "slug": "burgundy-red",
+      "title": "Burgundy Red",
+      "prompt": "Change the hair color to deep burgundy red with a natural glossy finish.",
+      "taskId": "f08c5a5eff74c7487aaf2858156c3f76",
+      "imageUrl": "https://tempfile.aiquickdraw.com/images/chatgpt/file_00000000cd9c7208af4860baf9b5b889.png",
+      "rawPath": "/Users/neva/Desktop/workspace/toolaze-web/public/ai-hair-color-changer/burgundy-red-after.png"
+    },
+    {
+      "slug": "silver-gray",
+      "title": "Silver Gray",
+      "prompt": "Change the hair color to silver gray while keeping the hair texture and facial features unchanged.",
+      "taskId": "b0bcf106b17c0f58e6a7beb0bc98dfc4",
+      "imageUrl": "https://tempfile.aiquickdraw.com/images/chatgpt/file_00000000cefc71fda96211e12837857d.png",
+      "rawPath": "/Users/neva/Desktop/workspace/toolaze-web/public/ai-hair-color-changer/silver-gray-after.png"
+    },
+    {
+      "slug": "blue-black",
+      "title": "Blue Black",
+      "prompt": "Change the hair color to blue black with subtle cool highlights and realistic shadows.",
+      "taskId": "d4a069415c2233107257b417da00978c",
+      "imageUrl": "https://tempfile.aiquickdraw.com/images/chatgpt/file_000000005b9071f88c7ca25b8c726a75.png",
+      "rawPath": "/Users/neva/Desktop/workspace/toolaze-web/public/ai-hair-color-changer/blue-black-after.png"
+    }
+  ]
+}

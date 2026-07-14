@@ -1,0 +1,412 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "ai-baby-generator",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 2,
+    "modelId": "gpt-image-2",
+    "defaultPrompt": "Create a warm, natural baby portrait inspired by the uploaded reference photos, with a gentle smile, soft studio lighting, clear facial details, and a simple neutral background. Keep the result playful and fictional, not a prediction of a real child.",
+    "defaultImageUrls": [
+      "/ai-baby-generator/reference-parent-1.webp",
+      "/ai-baby-generator/reference-parent-2.webp"
+    ],
+    "hideModelBranding": true,
+    "hidePresetPromptInput": true,
+    "compactResultPanel": true,
+    "promptModifier": {
+      "title": "寶寶性別",
+      "defaultValue": "surprise",
+      "options": [
+        {
+          "label": "隨機",
+          "value": "surprise",
+          "prompt": "Choose a natural baby gender presentation that fits the portrait while keeping the result fictional and playful."
+        },
+        {
+          "label": "女寶寶",
+          "value": "girl",
+          "prompt": "Create the portrait with a clearly feminine baby presentation while keeping the result natural, age-appropriate, fictional, and playful."
+        },
+        {
+          "label": "男寶寶",
+          "value": "boy",
+          "prompt": "Create the portrait with a clearly masculine baby presentation while keeping the result natural, age-appropriate, fictional, and playful."
+        }
+      ]
+    },
+    "displayName": "AI 寶寶肖像生成器",
+    "textOverrides": {
+      "uploadTitle": "shàngchuán fùmǔ huò qínglǚ zhàopiàn",
+      "uploadHelper": "zēngjiā liǎng zhāng qīngxī de xiàoxiàng zhào, yī zhāng qínglǚ zhào huò yī zhāng dān rén zhào.",
+      "promptLabel": "miáoshù xiàoxiàng",
+      "generateLabel": "chuàngzuò bǎobǎo xiàoxiàng",
+      "safetyHelper": "jǐn gōng chuàngyì yúlè. Běn chǎnpǐn bùyòng yú jīyīn huò wèilái wàiguān yùcè."
+    },
+    "functionalAcceptance": {
+      "recommendedMode": "preset-first-with-custom-prompt",
+      "reason": "xiàoxiàng yù shè gōngnéng bǐ jǐn tígōng tíshì de biǎodān gèng qīngchǔ dì chéngxiàn chuàngyì liúchéng.",
+      "presetTitle": "yīng'ér xiàoxiàng fēnggé",
+      "presets": [
+        {
+          "label": "柔和棚拍",
+          "prompt": "Create a warm, natural baby portrait inspired by the uploaded reference photos, with a gentle smile, soft studio lighting, clear facial details, and a simple neutral background. Keep the result playful and fictional, not a prediction of a real child.",
+          "swatch": "linear-gradient(135deg, #F5E9E2, #DDE8F5)",
+          "image": "/ai-baby-generator/style-soft-studio.webp"
+        },
+        {
+          "label": "溫暖毛毯",
+          "prompt": "Create a cozy baby portrait inspired by the uploaded reference photos, wrapped in a soft knit blanket, with warm window light, a calm expression, and a clean home studio background. Keep it fictional and made for fun.",
+          "swatch": "linear-gradient(135deg, #E8D6C8, #F4EFE8)",
+          "image": "/ai-baby-generator/style-cozy-blanket.webp"
+        },
+        {
+          "label": "陽光戶外",
+          "prompt": "Create a cheerful outdoor baby portrait inspired by the uploaded reference photos, with soft morning sunlight, a natural smile, green garden bokeh, and realistic photography. Keep it fictional and made for fun.",
+          "swatch": "linear-gradient(135deg, #F8D77A, #B7D6A3)",
+          "image": "/ai-baby-generator/style-sunny-outdoor.webp"
+        },
+        {
+          "label": "俏皮微笑",
+          "prompt": "Create a playful baby portrait inspired by the uploaded reference photos, with a bright natural smile, soft colorful clothing, clean daylight, and a simple portrait background. Keep it fictional and made for fun.",
+          "swatch": "linear-gradient(135deg, #F5B8C7, #AFCBEA)",
+          "image": "/ai-baby-generator/style-playful-smile.webp"
+        },
+        {
+          "label": "童話肖像",
+          "prompt": "Create a gentle storybook style baby portrait inspired by the uploaded reference photos, with soft painted textures, warm light, subtle whimsical details, and a clear friendly face. Keep it fictional and made for fun.",
+          "swatch": "linear-gradient(135deg, #CDBCE8, #F2D4A6)",
+          "image": "/ai-baby-generator/style-storybook-portrait.webp"
+        },
+        {
+          "label": "家庭卡片",
+          "prompt": "Create a polished baby portrait inspired by the uploaded reference photos for a family greeting card, with a warm neutral backdrop, soft festive details, balanced studio light, and generous framing. Keep it fictional and made for fun.",
+          "swatch": "linear-gradient(135deg, #C7D8D0, #E8C7C7)",
+          "image": "/ai-baby-generator/style-family-card.webp"
+        }
+      ]
+    },
+    "sampleImages": [
+      {
+        "url": "/ai-baby-generator/hero-baby-portrait.webp",
+        "title": "gēnjù zhàopiàn cānkǎo chuàngjiàn de róuhé yǐngpéng fēnggé yīng'ér xiàoxiàng",
+        "width": 1600,
+        "height": 900
+      }
+    ]
+  },
+  "metadata": {
+    "title": "免費 AI 寶寶肖像生成器｜建立寶寶肖像",
+    "description": "shàngchuán yī liǎng zhāng zhàopiàn, jí kě zài xiànshàng miǎnfèi jiànlì yīng'ér xiàoxiàng. Xuǎnzé fēnggé, biānjí tíshì xùnxí, jí kě xiàzài qùwèi shízú de shēngchéng jiéguǒ. Bìngfēi zhēnshí yùcè."
+  },
+  "sectionsOrder": [
+    "intro",
+    "promptExamples",
+    "howToUse",
+    "photoTips",
+    "scenes",
+    "workflowComparison",
+    "features",
+    "testimonials",
+    "faq"
+  ],
+  "hero": {
+    "h1": "免費<span class=\"text-gradient\">AI 寶寶肖像生成器</span>",
+    "desc": "shàngchuán yī liǎng zhāng zhàopiàn, xuǎnzé xiàoxiàng fēnggé, jí kě qīngsōng chuàngjiàn qùwèi shízú de yīng'ér zhàopiàn."
+  },
+  "intro": {
+    "title": "什麼是 AI 寶寶肖像生成器？",
+    "content": [
+      {
+        "title": "gēnjù zhàopiàn cānkǎo chuàngjiàn xūgòu xiàoxiàng",
+        "text": "AI yīng'ér shēngchéng qì kě gēnjù yī zhāng huò liǎng zhāng cānkǎo zhàopiàn jiànlì xūgòu de yīng'ér xiàoxiàng. Nín kěyǐ xiān shàngchuán liǎng zhāng dāndú de xiàoxiàng zhào, yī zhāng qīngxī de qínglǚ zhào huò yī zhāng dān rén zhào, ránhòu xuǎnzé yīzhǒng fēnggé bìng biānjí tíshì xùnxí. Zuìzhōng shēngchéng de tú xiàng kěyòng yú yúlè he fēnxiǎng. Tā bù huì yùcè yíchuán, fùmǔ, jiànkāng zhuàngkuàng huò zhēnshí yīng'ér de wàibiǎo."
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "yīng'ér xiàoxiàng fēnggé fànlì",
+    "subtitle": "shǒuxiān xuǎnzé yīgè shìjué fāngxiàng, ránhòu biānjí tíshì xùnxí yǐ tiáozhěng biǎoqíng, fúzhuāng, guāngxiàn huò bèijǐng.",
+    "items": [
+      {
+        "title": "柔和棚拍",
+        "prompt": "Create a warm, natural baby portrait inspired by the uploaded reference photos, with a gentle smile, soft studio lighting, clear facial details, and a simple neutral background. Keep the result playful and fictional, not a prediction of a real child.",
+        "note": "qiánjìng de yǐngpéng dēngguāng, róuhé de biǎoqíng hé jiǎnjié de zhōng xìng bèijǐng.",
+        "color": "linear-gradient(135deg, #F5E9E2, #DDE8F5)",
+        "image": "/ai-baby-generator/style-soft-studio.webp"
+      },
+      {
+        "title": "溫暖毛毯",
+        "prompt": "Create a cozy baby portrait inspired by the uploaded reference photos, wrapped in a soft knit blanket, with warm window light, a calm expression, and a clean home studio background. Keep it fictional and made for fun.",
+        "note": "wēnnuǎn de chuāng guāng, zhēnzhī tǎn, yíngzào chū níngjìng de jiātíng gōngzuò shì fēnwéi.",
+        "color": "linear-gradient(135deg, #E8D6C8, #F4EFE8)",
+        "image": "/ai-baby-generator/style-cozy-blanket.webp"
+      },
+      {
+        "title": "陽光戶外",
+        "prompt": "Create a cheerful outdoor baby portrait inspired by the uploaded reference photos, with soft morning sunlight, a natural smile, green garden bokeh, and realistic photography. Keep it fictional and made for fun.",
+        "note": "róuhé de chénguāng, zìrán de xiàoróng, yǐjí míngliàng de huāyuán bèijǐng.",
+        "color": "linear-gradient(135deg, #F8D77A, #B7D6A3)",
+        "image": "/ai-baby-generator/style-sunny-outdoor.webp"
+      },
+      {
+        "title": "俏皮微笑",
+        "prompt": "Create a playful baby portrait inspired by the uploaded reference photos, with a bright natural smile, soft colorful clothing, clean daylight, and a simple portrait background. Keep it fictional and made for fun.",
+        "note": "míngmèi de rìguāng, cànlàn de xiàoróng, yǐjí jiǎnjié duōcǎi de fúzhuāng.",
+        "color": "linear-gradient(135deg, #F5B8C7, #AFCBEA)",
+        "image": "/ai-baby-generator/style-playful-smile.webp"
+      },
+      {
+        "title": "童話肖像",
+        "prompt": "Create a gentle storybook style baby portrait inspired by the uploaded reference photos, with soft painted textures, warm light, subtle whimsical details, and a clear friendly face. Keep it fictional and made for fun.",
+        "note": "róuhé de bǐchù wénlǐ hé chōngmǎn qí sī miào xiǎng de xiǎo xìjié, yǐjí qīngxī de miànróng.",
+        "color": "linear-gradient(135deg, #CDBCE8, #F2D4A6)",
+        "image": "/ai-baby-generator/style-storybook-portrait.webp"
+      },
+      {
+        "title": "家庭卡片",
+        "prompt": "Create a polished baby portrait inspired by the uploaded reference photos for a family greeting card, with a warm neutral backdrop, soft festive details, balanced studio light, and generous framing. Keep it fictional and made for fun.",
+        "note": "jīngzhì de dēngguāng hé kuāndà de gòutú, dǎzào chū sīmì hèkǎ de fēnwéi.",
+        "color": "linear-gradient(135deg, #C7D8D0, #E8C7C7)",
+        "image": "/ai-baby-generator/style-family-card.webp"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "rúhé chuàngzào AI bǎobǎo xiàoxiàng",
+    "steps": [
+      {
+        "title": "shàngchuán yī zhāng huò liǎng zhāng qīngxī de zhàopiàn",
+        "desc": "zēngjiā liǎng zhāng dāndú de xiàoxiàng zhào, yǐbiàn qīngchǔ dì cānkǎo liǎng rén; shàngchuán yī zhāng qínglǚ zhào, quèbǎo liǎng rén de liǎn dōu qīngxī kějiàn; huò shàngchuán yī zhāng dān rén xiàoxiàng zhào, yǐbiàn chǎnshēng dān rén shēn kǎo tú xiàng."
+      },
+      {
+        "title": "xuǎnzé xiàoxiàng fēnggé",
+        "desc": "xuǎnzé `róuhé yǐngpéng',`shūshì tǎn',`yángguāng hùwài'huò qítā yù shè fēnggé. Měi zhǒng fēnggé dūhuì tígōng kě biānjí de shíyòng tíshì."
+      },
+      {
+        "title": "chǎnshēng, jiǎnshì yǔ xiàzài",
+        "desc": "jiànlì xiàoxiàng hòu, zài jiéguǒ miànbǎn zhōng chákàn, rúguǒ xūyào bùtóng de fēnwéi, kěyǐ zài xiàzài qián tiáozhěng fēnggé huò tíshì."
+      }
+    ]
+  },
+  "photoTips": {
+    "title": "pāishè gèng jiā bǎobǎo xiàoxiàng de jìqiǎo",
+    "subtitle": "qīngxī de cānkǎo yǐngxiàng yǒu zhù yú shēngchéng qì zài chuàngjiàn xūnǐ xiàoxiàng zhīqián shìbié liǎn bù, guāngxiàn hé gòutú.",
+    "items": [
+      {
+        "title": "quèbǎo liǎn bù qīngxī kějiàn",
+        "desc": "shǐyòng zhèngmiàn huò jìn zhèngmiàn pāishè de zhàopiàn, quèbǎo yǎnjīng, bízǐ hé zuǐbā qīngxī kějiàn. Bìmiǎn pèi dài tàiyáng yǎnjìng, kǒuzhào hé pāishè guòxiǎo de liǎn.",
+        "color": "linear-gradient(135deg, #DBEAFE, #818CF8)"
+      },
+      {
+        "title": "shǐyòng jūnhéng de guāngxiàn",
+        "desc": "zìrán de chuāng guāng huò róuhé de shìnèi guāngxiàn tōngcháng bǐ qiángliè de yīnyǐng huò cǎisè dēngguāng gèng néng bǎoliú liǎn bù xìjié.",
+        "color": "linear-gradient(135deg, #FEF3C7, #F59E0B)"
+      },
+      {
+        "title": "gòutú yīzhì",
+        "desc": "duìyú liǎng zhāng bùtóng de zhàopiàn, xiāngsì de tóu bù hé jiān bù cáijiǎn bǐ yī zhāng jìn jùlí zìpāi hé yī zhāng yuǎn jùlí quánshēn zhào gèng róngyì biànrèn.",
+        "color": "linear-gradient(135deg, #FCE7F3, #EC4899)"
+      },
+      {
+        "title": "jiǎnchá liǎng zhāng zhàopiàn",
+        "desc": "quèbǎo liǎng zhāng liǎn dōu gòu dà, qīngxī wú zhēdǎng. Bìmiǎn pāishè yǒngjǐ de hézhào, yǐmiǎn nányǐ biànrèn pāishè duìxiàng.",
+        "color": "linear-gradient(135deg, #DCFCE7, #22C55E)"
+      }
+    ]
+  },
+  "scenesTitle": "chuàngyì shǐyòng bǎobǎo zhàopiàn",
+  "scenes": [
+    {
+      "icon": "💌",
+      "title": "qínglǚ zhuānshǔ jìniànpǐn",
+      "desc": "pāishè yī zhāng chōngmǎn qùwèi de zhàopiàn, yǔ bànlǚ sīxià fēnxiǎng, bìng bǐjiào bùtóng de shìjué fēnggé."
+    },
+    {
+      "icon": "🖼️",
+      "title": "jiātíng hèkǎ chuàngyì",
+      "desc": "yǐ kuāndà de gòutú wèi qǐdiǎn, zhìzuò yī zhāng sīmì de hèkǎ, gōnggào yàngpiàn huò jiǎntiē bù yèmiàn."
+    },
+    {
+      "icon": "💬",
+      "title": "yìdì jīngxǐ",
+      "desc": "dāng nǐ hé bànlǚ fēngé liǎng dì shí, fāsòng yī zhāng qīngsōng yúkuài de zhàopiàn."
+    },
+    {
+      "icon": "📱",
+      "title": "shè qún méitǐ fēnxiǎng chuàngyì",
+      "desc": "chángshì pāishè yī zhāng chōngmǎn huólì de zhàopiàn, yòng yú sīrén gùshì, qínglǚ hézhào huò chuàngyì gèrén zīliào gēngxīn."
+    },
+    {
+      "icon": "🎨",
+      "title": "fēnggé shíyàn",
+      "desc": "bǐjiào shǐyòng xiāngtóng cānkǎo zīliào pāishè de yǐngpéng, hùwài, wēnxīn, huópō hé tónghuà fēnggé de zhàopiàn."
+    }
+  ],
+  "workflowComparison": {
+    "title": "AI yīng'ér shēngchéng qì de gōngnéng yǔ júxiàn xìng",
+    "subtitle": "jiāng jiéguǒ yòng zuò chuàngyì xiàoxiàng. Tā bù bāohán shēnfèn, qīnzǐ guānxì, yīliáo zīxùn huò wèilái wàimào zīxùn.",
+    "columns": [
+      "wèntí",
+      "Toolaze zhīyuán de gōngnéng",
+      "zhòngyào xiànzhì"
+    ],
+    "rows": [
+      [
+        "wǒ kěyǐ shǐyòng liǎng zhāng zhàopiàn ma?",
+        "kěyǐ. Zuìduō kě shàngchuán liǎng zhāng cānkǎo túpiàn. Yù shè qíngkuàng xià, liǎng zhāng dúlì de xiàoxiàng zuìwéi qīngxī.",
+        "jiéguǒ huì yīn zhàopiàn pǐnzhí, guāngxiàn hé gòutú ér yì."
+      ],
+      [
+        "wǒ kěyǐ shǐyòng yī zhāng zhàopiàn ma?",
+        "kěyǐ. Shǐyòng yī zhāng qīngxī de qínglǚ zhào huò yī zhāng dān rén zhào.",
+        "yī zhāng zhàopiàn néng wéi shēngchéng qì tígōng de shìjué cānkǎo zīxùn jiào shǎo."
+      ],
+      [
+        "wǒ kěyǐ xuǎnzé fēnggé ma?",
+        "kěyǐ. Cóng yù shè de xiàoxiàng zhào kāishǐ, ránhòu biānjí tíshì xùnxí.",
+        "yù shè kěyǐ yǐndǎo zuìzhōng xiàoguǒ, dàn bùnéng bǎozhèng xìjié wánquán yīzhì."
+      ],
+      [
+        "wǒ kěyǐ xiàzài chǎnshēng de jiéguǒ ma?",
+        "kěyǐ. Chákàn chǎnshēng de xiàoxiàng zhào, ránhòu shǐyòng xiàzài gōngnéng.",
+        "chǎnshēng hòu chúcún nín xiǎng yào bǎoliú de yǐngxiàng."
+      ],
+      [
+        "tā néng yùcè jīyīn ma?",
+        "bùnéng. Tā huì gēnjù shìjué cānkǎo hé tíshì chǎnshēng yī zhāng xūnǐ yǐngxiàng.",
+        "tā wúfǎ yùcè zhēnshí háizǐ de wàibiǎo."
+      ],
+      [
+        "tā néng yànzhèng qīnzǐ guānxì huò jiànkāng zhuàngkuàng ma?",
+        "bùnéng. Tā shì yī kuǎn chuàngyì tú xiàng gōngjù.",
+        "tā bù tígōng shēnfèn, qīnzǐ guānxì, yīliáo huò jiànkāng zīxùn."
+      ]
+    ]
+  },
+  "features": {
+    "title": "AI 寶寶肖像生成器功能",
+    "items": [
+      {
+        "icon": "🖼️",
+        "iconType": "format",
+        "title": "yī dào liǎng zhāng zhàopiàn cānkǎo",
+        "desc": "nín kěyǐ cóng liǎng zhāng dāndú de xiàoxiàng zhào, yī zhāng qínglǚ zhào huò yī zhāng qīngxī de dān rén zhào kāishǐ."
+      },
+      {
+        "icon": "🎨",
+        "iconType": "quality",
+        "title": "liù zhǒng xiàoxiàng fēnggé",
+        "desc": "zài biānjí tíshì xùnxí zhīqián, xiān xuǎnzé yīgè shìjué fāngxiàng, yǐ yíngzào gèng jùtǐ de fēnwéi."
+      },
+      {
+        "icon": "✍️",
+        "iconType": "prompt",
+        "title": "kě biānjí tíshì xùnxí",
+        "desc": "yòng zìjǐ de yǔyán tiáozhěng biǎoqíng, fúzhuāng, guāngxiàn, gòutú hé bèijǐng."
+      },
+      {
+        "icon": "🔁",
+        "iconType": "speed",
+        "title": "qīngsōng yōuhuà",
+        "desc": "rúguǒ dì yī cì chǎnshēng de jiéguǒ xūyào bùtóng de fāngxiàng, kěyǐ qiēhuàn fēnggé huò xiūgǎi tíshì xùnxí."
+      },
+      {
+        "icon": "⬇️",
+        "iconType": "quality",
+        "title": "yùlǎn yǔ xiàzài",
+        "desc": "zài jiéguǒ miànbǎn zhōng chákàn shēngchéng de xiàoxiàng, bìng chúcún nín xǐhuān de tú xiàng."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "免費線上流程",
+        "desc": "在標準 AI 工具體驗中，無需註冊且不含浮水印，即可在線上建立有趣的肖像。"
+      }
+    ]
+  },
+  "testimonials": {
+    "title": "大家如何使用 AI 寶寶肖像生成器",
+    "subtitle": "chuàngjiàn hé wánshàn xūnǐ yīng'ér xiàoxiàng de sān gè shíyòng gōngzuò liúchéng",
+    "items": [
+      {
+        "name": "Maya R.",
+        "role": "yìdì liàn",
+        "quote": "wǒmen yòng liǎng zhāng jiǎndān de shǒujī zhàopiàn, chángshìle yǐngpéng hé hùwài liǎng zhǒng fēnggé. Yí chú záluàn de bèijǐng shuōmíng hòu, dì èr zhāng zhàopiàn xiàoguǒ gèng hǎo. Wǒmen bǎ tā dàng zuò yī zhāng hùxiāng chuánsòng de qùwèi túpiàn, ér bùshì yī zhāng xūyào fēicháng jīngquè de túpiàn."
+      },
+      {
+        "name": "Jordan L.",
+        "role": "jiātíng hèkǎ shèjì",
+        "quote": "zài jiārén xuǎnzé zhèngshì pāishè zhàopiàn zhīqián, wǒ xiǎng yào yī zhāng róuhé de zhàn wèi tú, yòng yú sīrén hèkǎ de gàiniàn shèjì. `Jiātíng hèkǎ'yù shè tígōngle shíyòng de gòutú, érqiě wǒ kěyǐ gēnghuàn fúzhuāng hé bèijǐng ér wúxū chóngxīn jiànlì tíshì."
+      },
+      {
+        "name": "Lena S.",
+        "role": "qínglǚ nèiróng chuàngzuò zhě",
+        "quote": "liǎng zhāng guāngxiàn xiāngsì de zhàopiàn zuìzhōng chéngxiàn zuì qīngxī de xiàoguǒ. Wǒ cóng xiěshí de yǐngpéng fēnggé qiēhuàn dàole gèng róuhé de tónghuà fēnggé. Yóuyú bùtóng shìdài zhī jiān yīxiē xìjié yǒu suǒ biànhuà, suǒyǐ wǒ xuǎnzéle biǎoqíng zuì qīngxī de xiàoxiàng."
+      }
+    ]
+  },
+  "faqTitle": "AI 寶寶肖像生成器常見問題",
+  "faq": [
+    {
+      "q": "AI yīng'ér shēngchéng qì rúhé yùnzuò?",
+      "a": "shàngchuán yī zhāng huò liǎng zhāng cānkǎo zhàopiàn, xuǎnzé yīng'ér xiàoxiàng fēnggé, bìng gēnjù xūyào biānjí tíshì. Toolaze huì shǐyòng zhàopiàn hé tíshì chǎnshēng yī zhāng xūnǐ de yīng'ér xiàoxiàng, nín kěyǐ chákàn bìng xiàzài."
+    },
+    {
+      "q": "wǒ kěyǐ shǐyòng yī zhāng zhàopiàn ma?",
+      "a": "shì de. Nín kěyǐ shǐyòng yī zhāng qīngxī de dān rén zhào huò yī zhāng qínglǚ zhào. Liǎng zhāng dāndú de zhàopiàn tōngcháng néng wéi gōngzuò liúchéng tígōng gèng qīngxī de cānkǎo, dàn bìngfēi bìxū."
+    },
+    {
+      "q": "wǒ kěyǐ shàngchuán liǎng zhāng dāndú de fùmǔ zhàopiàn huò yī zhāng qínglǚ zhào ma?",
+      "a": "kěyǐ. Gāi gōngjù zuìduō jiēshòu liǎng zhāng túpiàn. Nín kěyǐ shàngchuán liǎng zhāng dān rén zhào, yī zhāng shuāngfāng dōu qīngxī kějiàn de qínglǚ zhào, huò yī zhāng dān rén zhào."
+    },
+    {
+      "q": "shénme yàng de zhàopiàn xiàoguǒ zuì hǎo?",
+      "a": "shǐyòng qīngxī de zhèngmiàn zhào huò jìn zhèngmiàn zhào, guāngxiàn pínghéng, liǎn bù tèzhǐ qīngxī kějiàn. Bìmiǎn shǐyòng tàiyáng yǎnjìng,guò qiáng de lǜ jìng, qiángliè de yīnyǐng, guòxiǎo de liǎn yǐjí yǒngjǐ de héyǐng."
+    },
+    {
+      "q": "AI yīng'ér shēngchéng qì shì miǎnfèi de xiànshàng gōngjù ma?",
+      "a": "shì de. Nín kěyǐ zài xiànshàng kāiqǐ gāi gōngjù, wúxū zhùcè jí kě jiànlì yīng'ér zhàopiàn, bìng xiàzài wú fú shuǐyìn de jiéguǒ. Shǐyòng xiànzhì kěnéng yǒu suǒ bùtóng."
+    },
+    {
+      "q": "tā néng yùcè zhēnshí yīng'ér de wàibiǎo ma?",
+      "a": "bù. Shēngchéng de tú xiàng shì xūgòu de, jǐn gōng yúlè he chuàngyì yòngtú. Tā bù yùcè yíchuán, qīnzǐ guānxì, jiànkāng zhuàngkuàng huò zhēnshí háizǐ de wèilái wàiguān."
+    },
+    {
+      "q": "wǒ kěyǐ xuǎnzé yīng'ér xiàoxiàng fēnggé ma?",
+      "a": "kěyǐ. Nín kěyǐ cóng róuhé yǐngpéng, shūshì tǎn, yángguāng hùwài, qiàopí wéixiào, gùshì shū xiàoxiàng huò jiātíng kǎpiàn fēnggé kāishǐ. Nín kěyǐ biānjí tíshì xùnxí, gēnggǎi biǎoqíng, fúzhuāng, guāngxiàn huò bèijǐng."
+    },
+    {
+      "q": "wǒ kěyǐ xiàzài chǎnshēng de yìngxiàng ma?",
+      "a": "kěyǐ. Xiàoxiàng chū xiànzài jiéguǒ miànbǎn hòu, nín kěyǐ chákàn bìng shǐyòng xiàzài gōngnéng chúcún nín xǐhuān de tú xiàng."
+    }
+  ],
+  "moreTools": "xiāngguān AI gōngjù",
+  "moreToolsLinks": [
+    {
+      "title": "AI qínglǚ zhàopiàn zhìzuò qì",
+      "description": "shǐyòng yī zhāng huò liǎng zhāng cānkǎo zhàopiàn chuàngzuò làngmàn qínglǚ xiàoxiàng.",
+      "href": "/ai-couple-photo-maker"
+    },
+    {
+      "title": "AI 圖生圖生成器",
+      "description": "shǐyòng cānkǎo yǐngxiàng hé tíshì jiànlì qítā shìjué biàn tǐ.",
+      "href": "/ai-image-to-image-generator"
+    },
+    {
+      "title": "AI yǐngxiàng chǎnshēng qì",
+      "description": "gēnjù wénzì tíshì jiànlì xīn tú xiàng.",
+      "href": "/ai-image-generator"
+    },
+    {
+      "title": "zhàopiàn xiūfù",
+      "description": "xiūfù tuìshǎi, guā chú huò dī pǐnzhí de jiātíng zhàopiàn.",
+      "href": "/photo-restoration"
+    }
+  ],
+  "moreToolsCta": {
+    "title": "yòng nín de zhàopiàn chuàngzuò bǎobǎo xiàoxiàng",
+    "description": "shàngchuán yī dào liǎng zhāng qīngxī de cānkǎo zhàopiàn, xuǎnzé yīzhǒng fēnggé, zhìzuò yī zhāng qùwèi shízú de tú xiàng, yòng yú sīrén fēnxiǎng huò zuòwéi chuàngyì jìniànpǐn.",
+    "button": "chuàngzuò bǎobǎo xiàoxiàng"
+  }
+}

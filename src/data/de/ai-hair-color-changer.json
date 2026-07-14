@@ -1,0 +1,404 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 1,
+    "modelId": "gpt-image-2",
+    "defaultPrompt": "Change the hair color to rose pink while keeping the face, hairstyle, skin tone, and background natural.",
+    "defaultImageUrls": [
+      "/ai-hair-color-changer/default-reference.png"
+    ],
+    "hideModelBranding": true,
+    "displayName": "KI-Haarfarbenwechsler",
+    "functionalAcceptance": {
+      "recommendedMode": "preset-first-with-custom-prompt",
+      "reason": "VisualGPT uses visible hair color choices to make the task easier than a prompt-only flow.",
+      "presetTitle": "Haarfarbe wählen",
+      "presets": [
+        {
+          "label": "Rosenpink",
+          "prompt": "Change the hair color to soft rose pink while keeping the face, hairstyle, skin tone, and background natural.",
+          "swatch": "linear-gradient(135deg, #f9a8d4, #db2777)"
+        },
+        {
+          "label": "Honigblond",
+          "prompt": "Change the hair color to warm honey blonde with natural highlights and realistic lighting.",
+          "swatch": "linear-gradient(135deg, #fde68a, #d97706)"
+        },
+        {
+          "label": "Platinblond",
+          "prompt": "Change the hair color to platinum blonde with soft natural shadows and realistic hair texture.",
+          "swatch": "linear-gradient(135deg, #fff7ed, #d6d3d1)"
+        },
+        {
+          "label": "Kupferbraun",
+          "prompt": "Change the hair color to copper brown while preserving the original hairstyle, face, and background.",
+          "swatch": "linear-gradient(135deg, #fb923c, #92400e)"
+        },
+        {
+          "label": "Bordeauxrot",
+          "prompt": "Change the hair color to deep burgundy red with a natural glossy finish.",
+          "swatch": "linear-gradient(135deg, #fda4af, #991b1b)"
+        },
+        {
+          "label": "Kirschrot",
+          "prompt": "Change the hair color to cherry red with realistic shine, natural roots, and preserved facial features.",
+          "swatch": "linear-gradient(135deg, #ef4444, #7f1d1d)"
+        },
+        {
+          "label": "Silbergrau",
+          "prompt": "Change the hair color to silver gray while keeping the hair texture and facial features unchanged.",
+          "swatch": "linear-gradient(135deg, #f8fafc, #64748b)"
+        },
+        {
+          "label": "Aschbraun",
+          "prompt": "Change the hair color to ash brown with soft cool highlights and realistic shadows.",
+          "swatch": "linear-gradient(135deg, #a8a29e, #57534e)"
+        },
+        {
+          "label": "Tiefschwarz",
+          "prompt": "Change the hair color to jet black with natural shine while preserving the face, hairstyle, and background.",
+          "swatch": "linear-gradient(135deg, #27272a, #020617)"
+        },
+        {
+          "label": "Blauschwarz",
+          "prompt": "Change the hair color to blue black with subtle cool highlights and realistic shadows.",
+          "swatch": "linear-gradient(135deg, #0f172a, #1d4ed8)"
+        },
+        {
+          "label": "Lavendelviolett",
+          "prompt": "Change the hair color to soft lavender purple while keeping the portrait natural and realistic.",
+          "swatch": "linear-gradient(135deg, #ddd6fe, #7c3aed)"
+        },
+        {
+          "label": "Benutzerdefiniert"
+        }
+      ]
+    },
+    "sampleImages": [
+      {
+        "url": "/ai-hair-color-changer/rose-pink-before-after.webp",
+        "title": "Rose Pink before and after",
+        "width": 1200,
+        "height": 450
+      },
+      {
+        "url": "/ai-hair-color-changer/honey-blonde-before-after.webp",
+        "title": "Honey Blonde before and after",
+        "width": 1200,
+        "height": 450
+      },
+      {
+        "url": "/ai-hair-color-changer/copper-brown-before-after.webp",
+        "title": "Copper Brown before and after",
+        "width": 1200,
+        "height": 450
+      }
+    ]
+  },
+  "metadata": {
+    "title": "Kostenloser KI-Haarfarbenwechsler online | Ohne Anmeldung | Toolaze",
+    "description": "Nutze den kostenlosen Toolaze KI-Haarfarbenwechsler online ohne Anmeldung und ohne Wasserzeichen. Lade ein Porträt hoch, beschreibe eine neue Haarfarbe und teste Pink, Blond, Kupfer, Silber oder Blauschwarz."
+  },
+  "sectionsOrder": [
+    "intro",
+    "howToUse",
+    "photoTips",
+    "promptExamples",
+    "scenes",
+    "workflowComparison",
+    "features",
+    "testimonials",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Kostenloser KI-<span class=\"text-gradient\">Haarfarbenwechsler</span> online",
+    "desc": "Lade ein klares Porträt hoch, wähle oder beschreibe die gewünschte Haarfarbe und sieh sofort eine KI-bearbeitete Vorschau online, ohne Anmeldung und ohne Wasserzeichen."
+  },
+  "howToUse": {
+    "title": "So änderst du Haarfarbe mit KI",
+    "steps": [
+      {
+        "title": "Ein klares Porträt hochladen",
+        "desc": "Wähle ein frontales oder fast frontales Foto, auf dem dein Haar von Ansatz bis Spitzen gut sichtbar ist."
+      },
+      {
+        "title": "Die gewünschte Farbe beschreiben",
+        "desc": "Schreibe eine direkte Vorgabe wie Haarfarbe zu Honigblond, Kupferbraun, Silbergrau oder Rosenpink ändern."
+      },
+      {
+        "title": "Generieren und verfeinern",
+        "desc": "Prüfe die Vorschau sofort und passe die Vorgabe an, wenn die Farbe zu kräftig, zu flach oder nicht nah genug an deinem Zielton ist."
+      }
+    ]
+  },
+  "photoTips": {
+    "title": "Die besten Fototipps für bessere Haarfarben-Ergebnisse",
+    "subtitle": "Das Referenzfoto ist entscheidend. Ein besseres Eingabebild gibt der KI mehr Informationen zu Haarform, Struktur, Licht und dem Bereich, der gefärbt werden soll.",
+    "items": [
+      {
+        "title": "Ein frontales Porträt verwenden",
+        "desc": "Frontale oder fast frontale Fotos helfen dabei, das Gesicht zu erhalten und den sichtbaren Haarbereich sauber zu bearbeiten.",
+        "color": "linear-gradient(135deg, #dbeafe, #6366f1)"
+      },
+      {
+        "title": "Die gesamte Haarform zeigen",
+        "desc": "Nutze ein Foto, auf dem das Haar nicht abgeschnitten, von einer Mütze verdeckt, durch Hände blockiert oder in starken Schatten verloren ist.",
+        "color": "linear-gradient(135deg, #fce7f3, #db2777)"
+      },
+      {
+        "title": "Haarstruktur sichtbar lassen",
+        "desc": "Klare Locken, Stufen, Pony, Zöpfe und Highlights geben der Bearbeitung mehr Struktur als Orientierung.",
+        "color": "linear-gradient(135deg, #fef3c7, #f97316)"
+      },
+      {
+        "title": "Extreme Winkel vermeiden",
+        "desc": "Rückenansichten, starke Bewegungsunschärfe, Seitenprofile und sehr kleine Haarbereiche sind in einer Vorschau schwerer zu beurteilen.",
+        "color": "linear-gradient(135deg, #ede9fe, #7c3aed)"
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "Beliebte Prompt-Ideen für Haarfarben",
+    "subtitle": "Kopiere einen Prompt in das Tool und passe anschließend Farbton, Intensität oder Finish an.",
+    "items": [
+      {
+        "title": "Rosenpink",
+        "prompt": "Change the hair color to soft rose pink while keeping the face, hairstyle, skin tone, and background natural.",
+        "note": "Gut für eine verspielte, aber trotzdem gepflegte Farbvorschau.",
+        "color": "linear-gradient(135deg, #fbcfe8, #db2777)",
+        "image": "/ai-hair-color-changer/rose-pink-before-after.webp"
+      },
+      {
+        "title": "Honigblond",
+        "prompt": "Change the hair color to warm honey blonde with natural highlights and realistic lighting.",
+        "note": "Für eine weichere Salon-Optik geeignet.",
+        "color": "linear-gradient(135deg, #fde68a, #d97706)",
+        "image": "/ai-hair-color-changer/honey-blonde-before-after.webp"
+      },
+      {
+        "title": "Platinblond",
+        "prompt": "Change the hair color to copper brown while preserving the original hairstyle, face, and background.",
+        "note": "Ein praktischer warmer Farbton für realistische Porträtvorschauen.",
+        "color": "linear-gradient(135deg, #fb923c, #92400e)",
+        "image": "/ai-hair-color-changer/copper-brown-before-after.webp"
+      },
+      {
+        "title": "Kupferbraun",
+        "prompt": "Change the hair color to deep burgundy red with a natural glossy finish.",
+        "note": "Am besten, wenn das Ausgangsfoto genug Haarvolumen und Licht zeigt.",
+        "color": "linear-gradient(135deg, #fda4af, #991b1b)",
+        "image": "/ai-hair-color-changer/burgundy-red-before-after.webp"
+      },
+      {
+        "title": "Bordeauxrot",
+        "prompt": "Change the hair color to silver gray while keeping the hair texture and facial features unchanged.",
+        "note": "Für klare Silber-, Grau- oder kühl getönte Looks.",
+        "color": "linear-gradient(135deg, #f8fafc, #64748b)",
+        "image": "/ai-hair-color-changer/silver-gray-before-after.webp"
+      },
+      {
+        "title": "Kirschrot",
+        "prompt": "Change the hair color to blue black with subtle cool highlights and realistic shadows.",
+        "note": "Eine dunklere kreative Farbrichtung mit natürlicherem Kontrast.",
+        "color": "linear-gradient(135deg, #0f172a, #1d4ed8)",
+        "image": "/ai-hair-color-changer/blue-black-before-after.webp"
+      }
+    ]
+  },
+  "scenesTitle": "So kannst du den KI-Haarfarbenwechsler nutzen",
+  "scenes": [
+    {
+      "title": "Farbvorschau vor dem Färben",
+      "icon": "🎨",
+      "desc": "Teste Pink, Blond, Kupfer, Silber, Braun oder dunklere Töne, bevor du einen echten Färbetermin buchst."
+    },
+    {
+      "title": "Profilfoto auffrischen",
+      "icon": "👤",
+      "desc": "Erstelle einen neuen Look für Avatare, Creator-Profile, Dating-Profile oder Entwürfe für Personal Branding."
+    },
+    {
+      "title": "Cosplay und Charakter-Styling",
+      "icon": "🎭",
+      "desc": "Teste kräftige Farben für Cosplay, Fantasy-Porträts, Themen-Edits oder charakterinspirierte Looks."
+    },
+    {
+      "title": "Social-Content erstellen",
+      "icon": "✨",
+      "desc": "Erzeuge schnelle visuelle Varianten für Posts, Thumbnails, Stories und Stil-Experimente."
+    },
+    {
+      "title": "Referenz für Stylisten",
+      "icon": "💬",
+      "desc": "Erstelle eine visuelle Referenz, um die Farbrichtung mit einem Stylisten zu besprechen, ohne die Vorschau als garantiertes Salon-Ergebnis zu verstehen."
+    }
+  ],
+  "workflowComparison": {
+    "title": "Wann du den KI-Haarfarbenwechsler statt eines Filters nutzen solltest",
+    "subtitle": "Nutze einen einfachen Filter für schnelles Farbspiel. Nutze Toolaze, wenn du eine promptgesteuerte Vorschau möchtest, die Farbton, Finish, Realismus und unveränderte Bereiche beschreibt.",
+    "columns": [
+      "Ziel",
+      "Ein einfacher Filter reicht, wenn",
+      "Toolaze passt besser, wenn"
+    ],
+    "rows": [
+      [
+        "Eine schnelle Farbe testen",
+        "Du brauchst nur eine schnelle pinke, blonde oder schwarze Überlagerung zum Ausprobieren.",
+        "Das Ergebnis soll Porträt, Licht, Frisur und Hautton berücksichtigen."
+      ],
+      [
+        "Einen bestimmten Farbton beschreiben",
+        "Die Preset-Liste enthält bereits genau die gewünschte Farbe.",
+        "Du möchtest Formulierungen wie sanftes Rosenpink, warmes Honigblond, Kupferbraun oder Blauschwarz mit feinen Highlights."
+      ],
+      [
+        "Das Porträt natürlich halten",
+        "Eine flache Vorschau reicht für eine grobe Idee.",
+        "Die Bearbeitung soll Gesicht, Frisur, Hautton, Hintergrund und realistische Schatten natürlich erhalten."
+      ],
+      [
+        "Das erste Ergebnis verfeinern",
+        "Nach der ersten Vorschau muss nichts geändert werden.",
+        "Du möchtest den Prompt anpassen, wenn die Farbe zu stark, zu flach, zu warm oder nicht nah genug am Wunschton ist."
+      ],
+      [
+        "Eine echte Veränderung planen",
+        "Du willst nur einen spielerischen Social-Filter.",
+        "Du brauchst eine visuelle Referenz für eine Stilrichtung, bevor du sie mit einem Stylisten besprichst."
+      ]
+    ]
+  },
+  "features": {
+    "title": "Funktionen des KI-Haarfarbenwechslers",
+    "items": [
+      {
+        "icon": "🖼️",
+        "iconType": "format",
+        "title": "Referenzbild-Workflow",
+        "desc": "Beginne mit einem hochgeladenen Porträt, statt ein neues Gesicht von Grund auf zu erzeugen."
+      },
+      {
+        "icon": "✍️",
+        "iconType": "prompt",
+        "title": "Bearbeitbare Prompt-Steuerung",
+        "desc": "Beschreibe Rosenpink, Honigblond, Kupferbraun, Bordeauxrot, Silbergrau, Blauschwarz oder deinen eigenen Farbton."
+      },
+      {
+        "icon": "🎨",
+        "iconType": "ai",
+        "title": "Natürliche und kreative Farbideen",
+        "desc": "Nutze weichere realistische Farbtöne oder kräftigere kreative Farben für Porträts, Profile und visuelle Konzepte."
+      },
+      {
+        "icon": "🔁",
+        "iconType": "speed",
+        "title": "Ergebnis verfeinern",
+        "desc": "Passe Farbe, Finish, Licht oder Realismus an, wenn die erste Vorschau verbessert werden soll."
+      },
+      {
+        "icon": "📸",
+        "iconType": "quality",
+        "title": "Hinweise zur Fotoqualität",
+        "desc": "Die Seite hilft dabei, klarere frontale Porträts auszuwählen, auf denen das Haar sichtbar ist."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "Kostenloser Online-Workflow",
+        "desc": "Nutze die Seite im Browser ohne Anmeldung und ohne Wasserzeichen für schnelle visuelle Tests ohne manuelle Bildbearbeitungssoftware."
+      }
+    ]
+  },
+  "testimonials": {
+    "title": "Was Nutzer über den KI-Haarfarbenwechsler sagen",
+    "subtitle": "Drei typische Wege, wie Menschen mit Toolaze Haarfarbenideen ansehen, bevor sie einen Look speichern, teilen oder besprechen.",
+    "items": [
+      {
+        "name": "Mia R.",
+        "role": "Salon-Farbvorschau",
+        "quote": "Ich wollte sehen, ob Kupferbraun zu meinem Hautton passt, bevor ich einen Termin buche. Die Prompt-Steuerung war hilfreicher als ein einfacher Filter, weil ich wärmere Highlights anfordern und den Rest des Porträts natürlich halten konnte."
+      },
+      {
+        "name": "Jordan L.",
+        "role": "Creator-Profil auffrischen",
+        "quote": "Ich habe es für ein neues Profilfoto-Konzept genutzt und in wenigen Minuten Pink, Silber und Blauschwarz ausprobiert. Ohne Anmeldung konnte ich schnell testen, und das beste Ergebnis sah gut genug aus, um es als Referenz zu verwenden."
+      },
+      {
+        "name": "Priya S.",
+        "role": "Cosplay-Planung",
+        "quote": "Für Cosplay brauchte ich eine grobe Vorschau, bevor ich eine Perückenfarbe auswähle. Ein frontales Porträt hochzuladen und nur das Haar zu ändern, half mir beim Vergleichen, ohne das ganze Bild neu aufzubauen."
+      }
+    ]
+  },
+  "intro": {
+    "title": "Was ist ein KI-Haarfarbenwechsler?",
+    "content": [
+      {
+        "title": "Eine neue Haarfarbe anhand deines Fotos ansehen",
+        "text": "Mit einem KI-Haarfarbenwechsler lädst du ein Porträt hoch und siehst online eine neue Haarfarbe, bevor du färbst, ein Profilfoto auffrischst, Cosplay planst oder Social-Visuals erstellst. Statt nur einen flachen Farbfilter aufzulegen, nutzt Toolaze das Referenzbild und deine Farbrichtung, um den Haarbereich zu bearbeiten und den Rest des Porträts stimmig zu halten. Kostenlos nutzbar, ohne Anmeldung und ohne Wasserzeichen."
+      }
+    ]
+  },
+  "faqTitle": "FAQ zum KI-Haarfarbenwechsler",
+  "faq": [
+    {
+      "q": "Wie funktioniert ein KI-Haarfarbenwechsler?",
+      "a": "Er nutzt dein hochgeladenes Foto als Referenzbild und folgt einem Text-Prompt, um die Haarfarbe zu bearbeiten. Ziel ist eine Vorschau einer neuen Haarfarbe, während Gesicht, Frisur, Hautton und Hintergrund visuell stimmig bleiben."
+    },
+    {
+      "q": "Welches Foto funktioniert am besten?",
+      "a": "Ein frontales oder fast frontales Porträt funktioniert meist am besten. Wähle ein Foto, auf dem das Haar klar sichtbar, nicht von einer Mütze bedeckt, nicht abgeschnitten und nicht in starken Schatten versteckt ist."
+    },
+    {
+      "q": "Verändert die KI mein Gesicht oder den Hintergrund?",
+      "a": "Der Prompt sollte das Tool anweisen, Gesicht, Frisur, Hautton und Hintergrund natürlich zu halten. Ergebnisse können trotzdem variieren; prüfe die Vorschau und verfeinere den Prompt, wenn sich etwas stärker ändert als erwartet."
+    },
+    {
+      "q": "Welche Haarfarben kann ich ausprobieren?",
+      "a": "Du kannst gängige Töne wie Rosenpink, Honigblond, Kupferbraun, Bordeauxrot, Silbergrau, Braun, Blauschwarz oder eine eigene Farbrichtung beschreiben."
+    },
+    {
+      "q": "Kann ich dunkles Haar blond oder pink machen?",
+      "a": "Ja, du kannst hellere oder kräftigere Farben wie Blond, Pink oder Silber vorgeben. Für stärkere Änderungen nutze ein klares Foto und ergänze Details wie natürliche Highlights, weiches Licht oder realistische Haarstruktur."
+    },
+    {
+      "q": "Was, wenn das Ergebnis zu flach oder unnatürlich aussieht?",
+      "a": "Versuche einen genaueren Prompt. Nenne Farbton, Finish und Realismus, etwa warmes Kupferbraun mit natürlichen Highlights oder sanftes Rosenpink mit realistischen Schatten."
+    },
+    {
+      "q": "Ist der Toolaze KI-Haarfarbenwechsler kostenlos und ohne Anmeldung?",
+      "a": "Ja. Du kannst den Toolaze KI-Haarfarbenwechsler online kostenlos, ohne Anmeldung und ohne Wasserzeichen im Standarderlebnis der KI-Tools nutzen."
+    },
+    {
+      "q": "Kann ich das bearbeitete Haarfarbenfoto herunterladen?",
+      "a": "Nach der Generierung kannst du die Seitensteuerung nutzen, um die Vorschau zu speichern oder herunterzuladen."
+    },
+    {
+      "q": "Ersetzt das einen professionellen Stylisten?",
+      "a": "Nein. Nutze es als visuelle Vorschau oder kreative Referenz. Echte Färbeergebnisse hängen von Haarzustand, Ausgangsfarbe, Licht, Produkten und professioneller Technik ab."
+    }
+  ],
+  "moreTools": "Verwandte KI-Tools",
+  "moreToolsLinks": [
+    {
+      "title": "KI-Bild-zu-Bild-Generator",
+      "description": "Bearbeite ein hochgeladenes Bild mit einem Text-Prompt.",
+      "href": "/ai-image-to-image-generator"
+    },
+    {
+      "title": "KI-Kleidungswechsler",
+      "description": "Sieh Outfit-Änderungen anhand eines Referenzfotos vorab an.",
+      "href": "/ai-tools"
+    },
+    {
+      "title": "Fotorestaurierung",
+      "description": "Verbessere alte oder beschädigte Porträts.",
+      "href": "/photo-restoration"
+    }
+  ],
+  "visiblePageType": "scene"
+}

@@ -1,16 +1,16 @@
-import { onRequest } from '../../../../functions/api/save-image-to-r2.js'
-
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
 
-function run(request) {
-  return onRequest({ request, env: process.env })
+import { proxyToPagesFunctions } from '../_shared/backend-proxy.js'
+
+function proxy(request) {
+  return proxyToPagesFunctions(request, '/api/save-image-to-r2')
 }
 
 export async function OPTIONS(request) {
-  return run(request)
+  return proxy(request)
 }
 
 export async function POST(request) {
-  return run(request)
+  return proxy(request)
 }
