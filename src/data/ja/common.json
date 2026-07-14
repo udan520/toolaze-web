@@ -36,9 +36,17 @@
       "birthday-copy-and-paste": "誕生日絵文字のコピー＆ペースト",
       "cat-copy-and-paste": "猫の絵文字コピー＆ペースト"
     },
-    "wan27Image": "Wan 2.7 Image",
+    "wan27Image": "Wan 2.7 画像",
     "worldCupAiImageGenerator": "ワールドカップAI画像ジェネレーター",
-    "aiImageGenerator": "AI画像生成ツール"
+    "aiImageGenerator": "AI画像生成ツール",
+    "aiBabyGenerator": "AIベビージェネレーター",
+    "aiHairstyleChanger": "AIヘアスタイルチェンジャー",
+    "aiHairColorChanger": "AIヘアカラー変更",
+    "textToImageGenerator": "テキストから画像生成",
+    "aiImageToImageGenerator": "AI画像から画像生成",
+    "seedream50Lite": "Seedream 5.0 Lite",
+    "seedream50Pro": "Seedream 5.0 Pro",
+    "seedance25": "Seedance 2.5"
   },
   "home": {
     "metadata": {
@@ -214,7 +222,8 @@
         "title": "すぐに開始",
         "desc": "アカウントを作成することなく、AI画像生成ツールとAI動画生成ツールをすぐに使い始められます。メール登録、個人情報収集は一切なし。開いて作成するだけです。"
       }
-    }
+    },
+    "ctaImageEdit": "AI画像から画像生成"
   },
   "footer": {
     "aiTools": "AIツール",
@@ -261,7 +270,11 @@
     "model": "モデル",
     "photoRestoration": "写真復元",
     "aiCouplePhotoMaker": "AIカップルフォト",
-    "aiImageGenerator": "AI画像生成ツール"
+    "aiImageGenerator": "AI画像生成ツール",
+    "aiBabyGenerator": "AIベビージェネレーター",
+    "textToImageGenerator": "テキストから画像生成",
+    "aiImageToImageGenerator": "AI画像から画像生成",
+    "worldCupAiImageGenerator": "ワールドカップAI画像ジェネレーター"
   },
   "about": {
     "metadata": {
@@ -606,7 +619,10 @@
       "generationFailedWithMessage": "生成に失敗しました：{message}",
       "generationTimeout": "生成がタイムアウトしました",
       "dailyLimitReached": "本日の無料上限に達しました。明日もう一度お試しください。",
-      "recreateMissingInput": "入力画像が見つかりません。再作成のためテキストから画像に切り替えました。"
+      "recreateMissingInput": "入力画像が見つかりません。再作成のためテキストから画像に切り替えました。",
+      "creditsUsedUpTitle": "クレジットを使い切りました",
+      "creditsUsedUpMessage": "クレジットを使い切りました。ボーナスイベントや利用特典など、クレジットを獲得する方法は近日追加予定です。",
+      "creditsUsedUpAction": "了解"
     },
     "emojiPicker": {
       "categoriesTitle": "カテゴリー",

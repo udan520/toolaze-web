@@ -1226,9 +1226,6 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                   href={getLocalizedHref('/ai-tools')}
                   onClick={() => {
                     setOpenDesktopMenu(null)
-                    if (typeof window !== 'undefined') {
-                      window.location.href = '/ai-tools'
-                    }
                   }}
                   className="block px-4 pt-2 pb-1 text-xs font-medium tracking-normal text-indigo-600 hover:bg-indigo-50 transition-colors"
                 >
@@ -1761,9 +1758,6 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                     onClick={() => {
                       setMobileMenuOpen(false)
                       setExpandedSubmenus(new Set())
-                      if (typeof window !== 'undefined') {
-                        window.location.href = '/ai-tools'
-                      }
                     }}
                     className="flex items-center gap-3 px-3 py-2 text-xs font-medium tracking-normal text-indigo-600 hover:bg-indigo-50 rounded-lg transition-colors"
                   >

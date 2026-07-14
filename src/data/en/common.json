@@ -38,7 +38,15 @@
       "cat-copy-and-paste": "Cat Emoji Copy and Paste"
     },
     "wan27Image": "Wan 2.7 Image",
-    "aiImageGenerator": "AI Image Generator"
+    "aiImageGenerator": "AI Image Generator",
+    "aiBabyGenerator": "AI Baby Generator",
+    "aiHairstyleChanger": "AI Hairstyle Changer",
+    "aiHairColorChanger": "AI Hair Color Changer",
+    "textToImageGenerator": "Text to Image Generator",
+    "aiImageToImageGenerator": "AI Image to Image Generator",
+    "seedream50Lite": "Seedream 5.0 Lite",
+    "seedream50Pro": "Seedream 5.0 Pro",
+    "seedance25": "Seedance 2.5"
   },
   "home": {
     "metadata": {
@@ -214,7 +222,8 @@
         "title": "Start Instantly",
         "desc": "Start using our AI image generator and AI video generator immediately without creating an account. No email signup, no personal information collection. Just open and create."
       }
-    }
+    },
+    "ctaImageEdit": "AI Image to Image Generator"
   },
   "footer": {
     "aiTools": "AI Tools",
@@ -260,7 +269,11 @@
     "model": "Model",
     "photoRestoration": "Photo Restoration",
     "aiCouplePhotoMaker": "AI Couple Photo Maker",
-    "aiImageGenerator": "AI Image Generator"
+    "aiImageGenerator": "AI Image Generator",
+    "aiBabyGenerator": "AI Baby Generator",
+    "textToImageGenerator": "Text to Image Generator",
+    "aiImageToImageGenerator": "AI Image to Image Generator",
+    "worldCupAiImageGenerator": "World Cup AI Image Generator"
   },
   "about": {
     "metadata": {

@@ -234,154 +234,154 @@
       {
         "title": "Bob corto",
         "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a polished short bob ending near the jaw, with clean rounded shape, soft natural volume, realistic strands, and a believable hairline. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background.",
-        "note": "Women hairstyle template",
+        "note": "Plantilla de peinado para mujer",
         "group": "women",
         "image": "/ai-hairstyle-changer/templates/women/short-bob.webp"
       },
       {
         "title": "Bob en A",
         "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a sleek A-line bob, shorter at the back and gradually longer toward the front, with a precise salon shape, realistic texture, and natural hairline. Preserve all facial and non-hair details.",
-        "note": "Women hairstyle template",
+        "note": "Plantilla de peinado para mujer",
         "group": "women",
         "image": "/ai-hairstyle-changer/templates/women/a-line-bob.webp"
       },
       {
         "title": "Capas largas",
         "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to long flowing layers with soft face-framing pieces, natural movement, realistic strands, and balanced volume. Preserve the same face, body, clothing, pose, lighting, and background.",
-        "note": "Women hairstyle template",
+        "note": "Plantilla de peinado para mujer",
         "group": "women",
         "image": "/ai-hairstyle-changer/templates/women/long-layers.webp"
       },
       {
         "title": "Flequillo cortina",
         "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to soft curtain bangs parted at the center with face-framing layers, natural volume, realistic strands, and a believable hairline. Preserve all non-hair details.",
-        "note": "Women hairstyle template",
+        "note": "Plantilla de peinado para mujer",
         "group": "women",
         "image": "/ai-hairstyle-changer/templates/women/curtain-bangs.webp"
       },
       {
         "title": "Ondas grandes",
         "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to glamorous large soft waves with full-bodied volume, smooth defined curves, realistic strands, and a natural hairline. Preserve the same person and every non-hair detail.",
-        "note": "Women hairstyle template",
+        "note": "Plantilla de peinado para mujer",
         "group": "women",
         "image": "/ai-hairstyle-changer/templates/women/big-waves.webp"
       },
       {
         "title": "Corte pixie",
         "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a refined pixie cut with short tapered sides, softly textured top, delicate fringe, realistic strands, and a natural hairline. Preserve all facial and non-hair details.",
-        "note": "Women hairstyle template",
+        "note": "Plantilla de peinado para mujer",
         "group": "women",
         "image": "/ai-hairstyle-changer/templates/women/pixie-cut.webp"
       },
       {
         "title": "Corte wolf",
         "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a modern wolf cut with choppy crown layers, soft volume, tapered ends, subtle face framing, realistic texture, and a natural hairline. Preserve all non-hair details.",
-        "note": "Women hairstyle template",
+        "note": "Plantilla de peinado para mujer",
         "group": "women",
         "image": "/ai-hairstyle-changer/templates/women/wolf-cut.webp"
       },
       {
         "title": "Moño alto",
         "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a neat high top bun with a smooth gathered base, a softly rounded bun, subtle natural flyaways, realistic strands, and a believable hairline. Preserve all non-hair details.",
-        "note": "Women hairstyle template",
+        "note": "Plantilla de peinado para mujer",
         "group": "women",
         "image": "/ai-hairstyle-changer/templates/women/top-bun.webp"
       },
       {
         "title": "Dos trenzas",
         "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to two balanced braids with a clean center part, realistic woven strands, natural roots, and a believable hairline. Preserve the face, pose, clothing, lighting, and background.",
-        "note": "Women hairstyle template",
+        "note": "Plantilla de peinado para mujer",
         "group": "women",
         "image": "/ai-hairstyle-changer/templates/women/two-braids.webp"
       },
       {
         "title": "Bob rizado",
         "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a chin-to-shoulder-length curly bob with defined soft curls, balanced volume, realistic strands, and a natural hairline. Preserve all facial and non-hair details.",
-        "note": "Women hairstyle template",
+        "note": "Plantilla de peinado para mujer",
         "group": "women",
         "image": "/ai-hairstyle-changer/templates/women/curly-bob.webp"
       },
       {
         "title": "Pelo liso",
         "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to smooth straight hair with a clean center part, polished natural shine, realistic individual strands, and a believable hairline. Preserve all non-hair details.",
-        "note": "Women hairstyle template",
+        "note": "Plantilla de peinado para mujer",
         "group": "women",
         "image": "/ai-hairstyle-changer/templates/women/straight-hair.webp"
       },
       {
         "title": "Rapado",
         "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a close even buzz cut with very short uniform length, realistic scalp shading, precise edges, and a natural hairline. Preserve the same face, age, expression, pose, clothing, lighting, and background.",
-        "note": "Men hairstyle template",
+        "note": "Plantilla de peinado para hombre",
         "group": "men",
         "image": "/ai-hairstyle-changer/templates/men/buzz-cut.webp"
       },
       {
         "title": "Corte militar",
         "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a classic crew cut with short tapered sides and slightly longer structured hair on top, realistic texture, clean edges, and a natural hairline. Preserve all non-hair details.",
-        "note": "Men hairstyle template",
+        "note": "Plantilla de peinado para hombre",
         "group": "men",
         "image": "/ai-hairstyle-changer/templates/men/crew-cut.webp"
       },
       {
         "title": "Calvo",
         "prompt": "Use the uploaded portrait as the identity reference. Remove only the visible hair and create a clean fully shaved bald head with realistic scalp texture, natural skin shading, and anatomically believable head shape. Preserve the same face, eyebrows, facial hair, age, expression, pose, clothing, lighting, and background.",
-        "note": "Men hairstyle template",
+        "note": "Plantilla de peinado para hombre",
         "group": "men",
         "image": "/ai-hairstyle-changer/templates/men/bald.webp"
       },
       {
         "title": "Crop texturizado",
         "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a short textured crop with neat sides, separated natural texture on top, subtle forward styling, realistic strands, and a clean hairline. Preserve all non-hair details.",
-        "note": "Men hairstyle template",
+        "note": "Plantilla de peinado para hombre",
         "group": "men",
         "image": "/ai-hairstyle-changer/templates/men/textured-crop.webp"
       },
       {
         "title": "Degradado taper",
         "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a clean taper fade with gradual blending around the temples and neckline, controlled length on top, realistic texture, and a natural hairline. Preserve all non-hair details.",
-        "note": "Men hairstyle template",
+        "note": "Plantilla de peinado para hombre",
         "group": "men",
         "image": "/ai-hairstyle-changer/templates/men/taper-fade.webp"
       },
       {
         "title": "Degradado desenfadado",
         "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a messy textured top with a modern faded side profile, natural separation, controlled volume, realistic strands, and a believable hairline. Preserve all non-hair details.",
-        "note": "Men hairstyle template",
+        "note": "Plantilla de peinado para hombre",
         "group": "men",
         "image": "/ai-hairstyle-changer/templates/men/messy-fade.webp"
       },
       {
         "title": "Rizo corto",
         "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to short defined curls with tidy sides, balanced natural volume, realistic curl texture, and a believable hairline. Preserve the face and every non-hair detail.",
-        "note": "Men hairstyle template",
+        "note": "Plantilla de peinado para hombre",
         "group": "men",
         "image": "/ai-hairstyle-changer/templates/men/short-curly.webp"
       },
       {
         "title": "Peinado hacia atrás",
         "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a polished slicked-back style with controlled volume, visible natural strand direction, a clean silhouette, and a realistic hairline. Preserve all facial and non-hair details.",
-        "note": "Men hairstyle template",
+        "note": "Plantilla de peinado para hombre",
         "group": "men",
         "image": "/ai-hairstyle-changer/templates/men/slick-back.webp"
       },
       {
         "title": "Corte tazón suave",
         "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a modern soft bowl cut with rounded shape, lightweight fringe, subtle texture, tidy sides, and a natural hairline. Preserve all non-hair details.",
-        "note": "Men hairstyle template",
+        "note": "Plantilla de peinado para hombre",
         "group": "men",
         "image": "/ai-hairstyle-changer/templates/men/soft-bowl.webp"
       },
       {
         "title": "Flow texturizado",
         "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to medium-length textured flow swept naturally back and to the sides, with layered movement, realistic strands, and a believable hairline. Preserve all non-hair details.",
-        "note": "Men hairstyle template",
+        "note": "Plantilla de peinado para hombre",
         "group": "men",
         "image": "/ai-hairstyle-changer/templates/men/textured-flow.webp"
       },
       {
         "title": "Trenzas africanas cortas",
         "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to short box braids with clean geometric parting, realistic braided texture, natural roots, balanced length, and a believable hairline. Preserve all facial and non-hair details.",
-        "note": "Men hairstyle template",
+        "note": "Plantilla de peinado para hombre",
         "group": "men",
         "image": "/ai-hairstyle-changer/templates/men/short-box-braids.webp"
       }
@@ -576,17 +576,17 @@
   "moreTools": "Herramientas de IA relacionadas",
   "moreToolsLinks": [
     {
-      "title": "AI Hair Color Changer",
+      "title": "Cambiador de color de pelo AI",
       "description": "Prueba otro color de cabello a partir de un retrato.",
       "href": "/ai-hair-color-changer"
     },
     {
-      "title": "AI Image-to-Image Generator",
+      "title": "Generador AI de imagen a imagen",
       "description": "Edita una imagen subida con una instrucción de texto personalizada.",
       "href": "/ai-image-to-image-generator"
     },
     {
-      "title": "Photo Restoration",
+      "title": "Restauración de fotos",
       "description": "Mejora retratos antiguos, descoloridos o dañados online.",
       "href": "/photo-restoration"
     }

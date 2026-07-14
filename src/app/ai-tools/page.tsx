@@ -3,72 +3,50 @@ import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import Breadcrumb from '@/components/Breadcrumb'
+import { getAiToolsPageCopy, getAiToolsPageMetadata } from './copy'
 
-export const metadata: Metadata = {
-  title: 'AI Tools - AI Image Generator, Watermark Remover & Photo Restoration | Toolaze',
-  description:
-    'Explore Toolaze AI tools with visual previews. Use the free AI Image Generator, Watermark Remover, Photo Restoration, and AI Couple Photo Maker online.',
-  robots: 'index, follow',
-  alternates: {
-    canonical: 'https://toolaze.com/ai-tools',
-  },
+export const metadata: Metadata = getAiToolsPageMetadata('en')
+
+function localizeHref(href: string, locale: string) {
+  return locale === 'en' ? href : `/${locale}${href}`
 }
 
-const AI_TOOL_CARDS = [
-  {
-    title: 'AI Image Generator',
-    href: '/ai-image-generator',
-    image:
-      'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/gpt-image-2.jpg',
-    description: 'Create high-quality AI images online from text prompts for ads, posters, concepts, and social visuals.',
-  },
-  {
-    title: 'World Cup AI Image Generator',
-    href: '/world-cup-ai-image-generator',
-    image:
-      'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d67aebd7cde5431abd3a7bb74a89bac1.webp',
-    description: 'Create football posters, fan edits, sticker packs, and social images with GPT Image 2.',
-  },
-  {
-    title: 'Watermark Remover',
-    href: '/watermark-remover',
-    image:
-      'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=80',
-    description: 'Remove watermarks from photos online with AI in one click.',
-  },
-  {
-    title: 'Photo Restoration',
-    href: '/photo-restoration',
-    image:
-      'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80',
-    description: 'Restore and colorize old photos with AI while improving detail.',
-  },
-  {
-    title: 'AI Couple Photo Maker',
-    href: '/ai-couple-photo-maker',
-    image: '/ai-couple-photo-maker/rainy-eiffel-4x3.jpg',
-    description: 'Upload one or two photos and generate romantic couple portraits with scene templates.',
-  },
-]
+export function AiToolsPageContent({
+  locale = 'en',
+  initialTranslations,
+  pageCopy,
+}: {
+  locale?: string
+  initialTranslations?: any
+  pageCopy?: ReturnType<typeof getAiToolsPageCopy>
+}) {
+  const copy = pageCopy || getAiToolsPageCopy(locale)
 
-export default function AIToolsPage() {
   return (
     <>
-      <Navigation />
-      <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'AI Tools' }]} />
+      <Navigation initialTranslations={initialTranslations} />
+      <Breadcrumb
+        items={[
+          { label: copy.breadcrumbs.home, href: locale === 'en' ? '/' : `/${locale}` },
+          { label: copy.breadcrumbs.current },
+        ]}
+      />
       <main className="min-h-screen bg-[#F8FAFF] px-6 py-10">
         <div className="max-w-6xl mx-auto">
           <h1 className="text-[40px] font-extrabold tracking-tight text-slate-900 mb-4">
-            AI <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">Tools</span>
+            {copy.hero.prefix}{' '}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">
+              {copy.hero.highlight}
+            </span>
           </h1>
           <p className="text-slate-600 text-lg mb-10 max-w-3xl">
-            Use AI-powered image tools with clear visual previews. Choose a feature and start in seconds.
+            {copy.hero.description}
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {AI_TOOL_CARDS.map((card) => (
+            {copy.cards.map((card) => (
               <Link
                 key={card.href}
-                href={card.href}
+                href={localizeHref(card.href, locale)}
                 className="group bg-white rounded-3xl border border-indigo-100 shadow-sm overflow-hidden hover:border-indigo-200 transition-colors"
               >
                 <div className="w-full aspect-[4/3] overflow-hidden">
@@ -85,7 +63,12 @@ export default function AIToolsPage() {
           </div>
         </div>
       </main>
-      <Footer />
+      <Footer initialTranslations={initialTranslations} />
     </>
   )
+}
+
+export default function AIToolsPage() {
+  const copy = getAiToolsPageCopy('en')
+  return <AiToolsPageContent locale="en" pageCopy={copy} />
 }

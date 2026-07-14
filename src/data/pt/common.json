@@ -36,9 +36,17 @@
       "birthday-copy-and-paste": "Copiar e Colar Emoji de Aniversário",
       "cat-copy-and-paste": "Copiar e Colar Emoji de Gato"
     },
-    "wan27Image": "Wan 2.7 Image",
+    "wan27Image": "Wan 2.7 Imagem",
     "worldCupAiImageGenerator": "Gerador de imagens IA da Copa do Mundo",
-    "aiImageGenerator": "Gerador de imagens IA"
+    "aiImageGenerator": "Gerador de imagens IA",
+    "aiBabyGenerator": "Gerador de bebê IA",
+    "aiHairstyleChanger": "Alterador de penteado IA",
+    "aiHairColorChanger": "Alterador de cor de cabelo IA",
+    "textToImageGenerator": "Gerador de texto para imagem",
+    "aiImageToImageGenerator": "Gerador IA de imagem para imagem",
+    "seedream50Lite": "Seedream 5.0 Lite",
+    "seedream50Pro": "Seedream 5.0 Pro",
+    "seedance25": "Seedance 2.5"
   },
   "home": {
     "metadata": {
@@ -214,7 +222,8 @@
         "title": "Comece Instantaneamente",
         "desc": "Comece a usar o nosso gerador de imagens AI e gerador de vídeos AI imediatamente sem criar uma conta. Sem registo por e-mail, sem recolha de informações pessoais. Basta abrir e criar."
       }
-    }
+    },
+    "ctaImageEdit": "Gerador IA de imagem para imagem"
   },
   "footer": {
     "aiTools": "Ferramentas IA",
@@ -261,7 +270,11 @@
     "model": "Modelo",
     "photoRestoration": "Restauração de fotos",
     "aiCouplePhotoMaker": "Foto de casal IA",
-    "aiImageGenerator": "Gerador de imagens IA"
+    "aiImageGenerator": "Gerador de imagens IA",
+    "aiBabyGenerator": "Gerador de bebê IA",
+    "textToImageGenerator": "Gerador de texto para imagem",
+    "aiImageToImageGenerator": "Gerador IA de imagem para imagem",
+    "worldCupAiImageGenerator": "Gerador de imagens IA da Copa do Mundo"
   },
   "about": {
     "metadata": {
@@ -594,7 +607,10 @@
       "generationFailedWithMessage": "Geração falhou: {message}",
       "generationTimeout": "Tempo de geração esgotado",
       "dailyLimitReached": "O limite diário gratuito foi atingido. Volte amanhã.",
-      "recreateMissingInput": "Nenhuma imagem de entrada encontrada. Alterado para texto para imagem para recriar."
+      "recreateMissingInput": "Nenhuma imagem de entrada encontrada. Alterado para texto para imagem para recriar.",
+      "creditsUsedUpTitle": "Créditos esgotados",
+      "creditsUsedUpMessage": "Seus créditos acabaram. Novas formas de ganhar créditos chegarão em breve, incluindo eventos de bônus e recompensas por atividade.",
+      "creditsUsedUpAction": "Entendi"
     },
     "emojiPicker": {
       "categoriesTitle": "Categorias",

@@ -30,6 +30,7 @@ const defaultBreadcrumbTranslations = {
   aiImageGenerator: 'AI Image Generator',
   textToImageGenerator: 'Text to Image Generator',
   aiImageToImageGenerator: 'AI Image to Image Generator',
+  worldCupAiImageGenerator: 'World Cup AI Image Generator',
   fontGenerator: 'Font Generator',
   emojiCopyAndPaste: 'Emoji Copy & Paste',
   model: 'Model',
@@ -95,6 +96,7 @@ export default function Breadcrumb({ items, variant = 'page' }: BreadcrumbProps)
     if (label === 'AI Image Generator') return translations.aiImageGenerator || 'AI Image Generator'
     if (label === 'Text to Image Generator') return translations.textToImageGenerator || 'Text to Image Generator'
     if (label === 'AI Image to Image Generator') return translations.aiImageToImageGenerator || 'AI Image to Image Generator'
+    if (label === 'World Cup AI Image Generator') return translations.worldCupAiImageGenerator || 'World Cup AI Image Generator'
     if (label === 'Font Generator') return translations.fontGenerator
     if (label === 'Emoji Copy & Paste') return translations.emojiCopyAndPaste || 'Emoji Copy & Paste'
     if (label === 'Model') return translations.model || 'Model'
@@ -105,7 +107,7 @@ export default function Breadcrumb({ items, variant = 'page' }: BreadcrumbProps)
   }
   
   // 仅存在于根路径、无 [locale] 版本的页面，始终不添加 locale 前缀（有 [locale]/... 的勿列入）
-  const LOCALE_LESS_PATHS = ['/ai-tools', '/model', '/model/seedance-2-5', '/model/seedance-2', '/model/kling-3', '/model/nano-banana-pro', '/model/nano-banana-2', '/model/gpt-image-2', '/model/seedream-4-5', '/model/seedream-5-0-lite', '/model/seedream-5-0-pro', '/model/wan-2-7-image']
+  const LOCALE_LESS_PATHS = ['/model', '/model/seedance-2-5', '/model/seedance-2', '/model/kling-3', '/model/nano-banana-pro', '/model/nano-banana-2', '/model/gpt-image-2', '/model/seedream-4-5', '/model/seedream-5-0-lite', '/model/seedream-5-0-pro', '/model/wan-2-7-image']
   const getLocalizedHref = (href: string | undefined): string | undefined => {
     if (!href) return href
     if (href.startsWith('http')) return href

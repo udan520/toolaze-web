@@ -8,6 +8,10 @@ import { Seedream45LandingPage } from '@/components/Seedream45LandingPage'
 import { getSeedream45PageMetadata } from '@/lib/seedream-4-5-landing-copy'
 import { Wan27ImageLandingPage } from '@/components/Wan27ImageLandingPage'
 import { getWan27ImagePageMetadata } from '@/lib/wan-2-7-image-landing-copy'
+import { Seedream50LiteLandingPage } from '@/components/Seedream50LiteLandingPage'
+import { getSeedream50LitePageMetadata } from '@/lib/seedream-5-0-lite-landing-copy'
+import { Seedream50ProLandingPage } from '@/components/Seedream50ProLandingPage'
+import { getSeedream50ProPageMetadata } from '@/lib/seedream-5-0-pro-landing-copy'
 
 const SUPPORTED_LOCALES = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it'] as const
 
@@ -17,7 +21,10 @@ const MODEL_TOOL_MAP: Record<string, string> = {
   'gpt-image-2': 'gpt-image-2',
   'gpt-image-2-0': 'gpt-image-2',
   'seedream-4-5': 'seedream-4-5',
+  'seedream-5-0-lite': 'seedream-5-0-lite',
+  'seedream-5-0-pro': 'seedream-5-0-pro',
   'wan-2-7-image': 'wan-2-7-image',
+  'seedance-2-5': 'seedance-2-5',
   'seedance-2': 'seedance-2',
   'kling-3': 'kling-3',
 }
@@ -52,6 +59,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (tool === 'wan-2-7-image') {
     return getWan27ImagePageMetadata(locale, `https://toolaze.com/${locale}/model/${model}`)
+  }
+
+  if (tool === 'seedream-5-0-lite') {
+    return getSeedream50LitePageMetadata(locale, `https://toolaze.com/${locale}/model/${model}`)
+  }
+
+  if (tool === 'seedream-5-0-pro') {
+    return getSeedream50ProPageMetadata(locale, `https://toolaze.com/${locale}/model/${model}`)
   }
 
   const content = await getL2SeoContent(tool, locale)
@@ -102,7 +117,14 @@ export default async function LocalizedModelPage({ params }: PageProps) {
     redirect(`/model/${model}`)
   }
 
-  if (tool !== 'gpt-image-2' && tool !== 'seedream-4-5' && tool !== 'wan-2-7-image' && !hasLocaleL2JsonFile(tool, locale)) {
+  if (
+    tool !== 'gpt-image-2' &&
+    tool !== 'seedream-4-5' &&
+    tool !== 'wan-2-7-image' &&
+    tool !== 'seedream-5-0-lite' &&
+    tool !== 'seedream-5-0-pro' &&
+    !hasLocaleL2JsonFile(tool, locale)
+  ) {
     redirect(`/model/${model}`)
   }
 
@@ -116,6 +138,14 @@ export default async function LocalizedModelPage({ params }: PageProps) {
 
   if (tool === 'wan-2-7-image') {
     return <Wan27ImageLandingPage locale={locale} />
+  }
+
+  if (tool === 'seedream-5-0-lite') {
+    return <Seedream50LiteLandingPage locale={locale} />
+  }
+
+  if (tool === 'seedream-5-0-pro') {
+    return <Seedream50ProLandingPage locale={locale} />
   }
 
   return <ToolL2PageContent locale={locale} tool={tool} />

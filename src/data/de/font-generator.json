@@ -129,8 +129,14 @@
     ]
   },
   "comparison": {
+    "title": "Warum Toolaze wählen?",
     "toolaze": "Unbegrenzte Textlänge, Mehrere Schriftstile, Sofortige Vorschau, Echtzeit-Generierung, 100% lokale Verarbeitung, Keine Uploads, Kostenlos",
-    "others": "Zeichenlimits, Begrenzte Stilen, Langsame Verarbeitung, Server-Uploads erforderlich, Cloud-Warteschlangen, Datenschutzbedenken, Bezahlte Upgrades"
+    "others": "Zeichenlimits, Begrenzte Stilen, Langsame Verarbeitung, Server-Uploads erforderlich, Cloud-Warteschlangen, Datenschutzbedenken, Bezahlte Upgrades",
+    "vs": "VS",
+    "smartChoice": "Kluge Wahl",
+    "otherTools": "Andere Tools",
+    "toolazeFeatures": "Unbegrenzte Textlänge, Mehrere Schriftstile, Sofortige Vorschau, Echtzeit-Generierung, 100% lokale Verarbeitung, Keine Uploads, Kostenlos",
+    "othersFeatures": "Zeichenlimits, Begrenzte Stilen, Langsame Verarbeitung, Server-Uploads erforderlich, Cloud-Warteschlangen, Datenschutzbedenken, Bezahlte Upgrades"
   },
   "scenes": [
     {
@@ -180,5 +186,7 @@
       "a": "Nein, es gibt keine Zeichenlimits. Sie können formatierte Texte für Sätze, Absätze oder sogar ganze Dokumente generieren. Der Generator verarbeitet Ihren Text sofort, unabhängig von der Länge."
     }
   ],
-  "moreTools": "Weitere Schriftgenerator-Tools"
+  "moreTools": "Weitere Schriftgenerator-Tools",
+  "scenesTitle": "Anwendungsfälle",
+  "faqTitle": "Häufig gestellte Fragen"
 }

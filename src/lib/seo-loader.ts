@@ -249,20 +249,23 @@ async function loadJsonData(locale: string, filename: string) {
 
 // 加载公共翻译数据
 export async function loadCommonTranslations(locale: string = 'en') {
-  try {
-    const data = await loadJsonData(locale, 'common.json');
-    return data;
-  } catch (error) {
-    // 如果加载失败，回退到英语
-    if (locale !== 'en') {
-      try {
-        return await loadJsonData('en', 'common.json');
-      } catch (fallbackError) {
-        return null;
-      }
-    }
-    return null;
+  let normalizedLocale = locale
+  if (locale === 'zh' || locale === 'zh-CN' || locale === 'zh-HK') {
+    normalizedLocale = 'zh-TW'
   }
+  if (!SUPPORTED_LOCALES.includes(normalizedLocale)) {
+    normalizedLocale = 'en'
+  }
+
+  const localizedPath = path.join(process.cwd(), 'src', 'data', normalizedLocale, 'common.json')
+  const localizedData = readJsonFileSync(localizedPath)
+  if (localizedData) return localizedData
+
+  if (normalizedLocale !== 'en') {
+    return readJsonFileSync(path.join(process.cwd(), 'src', 'data', 'en', 'common.json'))
+  }
+
+  return null
 }
 
 // 动态加载独立的工具 JSON 文件（用于 image-converter 和 font-generator）

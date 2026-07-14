@@ -153,7 +153,7 @@
     ]
   },
   "modelComparison": {
-    "title": "Seedance 2.5 vs Seedance 2.0",
+    "title": "Seedance 2.5 と Seedance 2.0 の比較",
     "columnHeaders": {
       "metric": "比較項目",
       "baseline": "Seedance 2.0",
@@ -288,10 +288,10 @@
   ],
   "rating": {
     "title": "Seedance 2.5リリース更新をフォロー",
-    "rating": "Upcoming AI video model",
+    "rating": "近日公開予定のAI動画モデル",
     "text": "Seedance 2.5更新リストに参加すると、提供状況が変わったときに通知を受け取れます。"
   },
-  "faqTitle": "Seedance 2.5 FAQ",
+  "faqTitle": "Seedance 2.5 よくある質問",
   "faq": [
     {
       "q": "Seedance 2.5とは何ですか?",

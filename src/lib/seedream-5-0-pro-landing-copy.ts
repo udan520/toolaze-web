@@ -1326,6 +1326,133 @@ const liveAvailabilityOverrides: Record<Seedream50ProLocale, DeepPartial<Seedrea
   },
 }
 
+const localizedVisibleComplements: Partial<Record<Seedream50ProLocale, DeepPartial<Seedream50ProLandingCopy>>> = {
+  de: {
+    comparison: { title: 'Seedream 5.0 Pro im Vergleich zu Seedream 5.0 Lite' },
+    gallery: { title: 'Seedream 5.0 Pro Bildideen' },
+    useCases: {
+      text: 'Seedream 5.0 Pro eignet sich für Teams, die eine präzisere visuelle Richtung statt einzelner Deko-Bilder brauchen.',
+    },
+    faq: { title: 'Häufige Fragen zu Seedream 5.0 Pro' },
+  },
+  ja: {
+    comparison: { title: 'Seedream 5.0 Pro と Seedream 5.0 Lite の比較' },
+    gallery: { title: 'Seedream 5.0 Pro の画像アイデア' },
+    useCases: {
+      text: 'Seedream 5.0 Proは、単発の装飾画像ではなく、より豊かなビジュアル設計が必要なチームに向いています。',
+    },
+    faq: { title: 'Seedream 5.0 Pro よくある質問' },
+  },
+  es: {
+    schema: {
+      pageName: 'Generador de imágenes AI Seedream 5.0 Pro',
+      appName: 'Seedream 5.0 Pro en Toolaze',
+    },
+    whatIs: {
+      paragraphs: [
+        'Seedream 5.0 Pro es un modelo de generación y edición de imágenes AI con enfoque cinematográfico para visuales comerciales, ediciones de escena estructuradas, imágenes de marca, recursos de comercio electrónico y creación de fotogramas de video.',
+        'Su propuesta va más allá de una página simple de texto a imagen: prioriza ediciones precisas, control visual por capas, salidas con contexto de investigación y mejor razonamiento para composiciones complejas.',
+      ],
+    },
+    comparison: { title: 'Seedream 5.0 Pro frente a Seedream 5.0 Lite' },
+    gallery: { title: 'Ideas de imágenes con Seedream 5.0 Pro' },
+    useCases: {
+      text: 'Seedream 5.0 Pro encaja con equipos que necesitan una dirección visual más rica en lugar de imágenes decorativas aisladas.',
+    },
+    faq: { title: 'Preguntas frecuentes sobre Seedream 5.0 Pro' },
+  },
+  'zh-TW': {
+    schema: {
+      pageName: 'Seedream 5.0 Pro AI 圖像生成器',
+      appName: 'Toolaze 上的 Seedream 5.0 Pro',
+    },
+    whatIs: {
+      paragraphs: [
+        'Seedream 5.0 Pro 是一款具備電影感定位的 AI 圖像生成與編輯模型，適合商業視覺、結構化場景編輯、品牌圖片、電商素材與影片影格創作。',
+        '它不同於單純的文字生成圖片頁面，更強調精準編輯、多層視覺控制、具備研究脈絡的輸出，以及面向複雜圖像構圖的推理能力。',
+      ],
+    },
+    comparison: { title: 'Seedream 5.0 Pro 與 Seedream 5.0 Lite 比較' },
+    gallery: { title: 'Seedream 5.0 Pro 圖像構想' },
+    useCases: {
+      text: 'Seedream 5.0 Pro 適合需要更完整視覺方向的團隊，而不只是產生單張裝飾圖片。',
+    },
+    faq: { title: 'Seedream 5.0 Pro 常見問題' },
+  },
+  pt: {
+    schema: {
+      pageName: 'Gerador de imagens AI Seedream 5.0 Pro',
+      appName: 'Seedream 5.0 Pro no Toolaze',
+    },
+    whatIs: {
+      paragraphs: [
+        'Seedream 5.0 Pro é um modelo de geração e edição de imagens AI com foco cinematográfico para visuais comerciais, edições de cena estruturadas, imagens de marca, recursos de comércio eletrônico e criação de frames de vídeo.',
+        'A proposta Pro vai além de uma página simples de texto para imagem: enfatiza edições precisas, controle visual em camadas, saídas com contexto de pesquisa e raciocínio mais forte para composições complexas.',
+      ],
+    },
+    comparison: { title: 'Seedream 5.0 Pro em comparação com Seedream 5.0 Lite' },
+    gallery: { title: 'Ideias de imagem com Seedream 5.0 Pro' },
+    useCases: {
+      text: 'Seedream 5.0 Pro combina com equipes que precisam de direção visual mais rica em vez de imagens decorativas isoladas.',
+    },
+    faq: { title: 'Perguntas frequentes sobre Seedream 5.0 Pro' },
+  },
+  fr: {
+    schema: {
+      pageName: 'Générateur d’images AI Seedream 5.0 Pro',
+      appName: 'Seedream 5.0 Pro sur Toolaze',
+    },
+    whatIs: {
+      paragraphs: [
+        'Seedream 5.0 Pro est un modèle de génération et d’édition d’images AI à orientation cinématographique pour visuels commerciaux, éditions de scènes structurées, images de marque, assets ecommerce et création de photogrammes vidéo.',
+        'Le positionnement Pro va au-delà d’une simple page texte vers image : il met l’accent sur les éditions précises, le contrôle visuel multicouche, les sorties enrichies par recherche et un raisonnement plus fort pour les compositions complexes.',
+      ],
+    },
+    comparison: { title: 'Seedream 5.0 Pro comparé à Seedream 5.0 Lite' },
+    gallery: { title: 'Idées d’images Seedream 5.0 Pro' },
+    useCases: {
+      text: 'Seedream 5.0 Pro convient aux équipes qui ont besoin d’une direction visuelle plus riche plutôt que d’images décoratives isolées.',
+    },
+    faq: { title: 'Questions fréquentes sur Seedream 5.0 Pro' },
+  },
+  ko: {
+    schema: {
+      pageName: 'Seedream 5.0 Pro AI 이미지 생성기',
+      appName: 'Toolaze의 Seedream 5.0 Pro',
+    },
+    whatIs: {
+      paragraphs: [
+        'Seedream 5.0 Pro는 상업용 비주얼, 구조화된 장면 편집, 브랜드 이미지, 전자상거래 에셋, 영상 프레임 제작을 위한 시네마틱 AI 이미지 생성 및 편집 모델입니다.',
+        'Pro의 포지셔닝은 단순한 텍스트-이미지 페이지와 다릅니다. 정밀 편집, 다층 시각 제어, 조사 맥락을 반영한 출력, 복잡한 이미지 구성을 위한 더 강한 추론을 강조합니다.',
+      ],
+    },
+    comparison: { title: 'Seedream 5.0 Pro와 Seedream 5.0 Lite 비교' },
+    gallery: { title: 'Seedream 5.0 Pro 이미지 아이디어' },
+    useCases: {
+      text: 'Seedream 5.0 Pro는 단발성 장식 이미지보다 더 풍부한 시각 방향이 필요한 팀에 적합합니다.',
+    },
+    faq: { title: 'Seedream 5.0 Pro 자주 묻는 질문' },
+  },
+  it: {
+    schema: {
+      pageName: 'Generatore immagini AI Seedream 5.0 Pro',
+      appName: 'Seedream 5.0 Pro su Toolaze',
+    },
+    whatIs: {
+      paragraphs: [
+        'Seedream 5.0 Pro è un modello AI per generazione ed editing di immagini con taglio cinematografico, pensato per visual commerciali, modifiche di scene strutturate, immagini brand, asset ecommerce e creazione di frame video.',
+        'Il posizionamento Pro va oltre una semplice pagina testo-immagine: enfatizza editing precisi, controllo visuale multilivello, output con contesto di ricerca e ragionamento più forte per composizioni complesse.',
+      ],
+    },
+    comparison: { title: 'Seedream 5.0 Pro rispetto a Seedream 5.0 Lite' },
+    gallery: { title: 'Idee immagine con Seedream 5.0 Pro' },
+    useCases: {
+      text: 'Seedream 5.0 Pro è adatto a team che hanno bisogno di una direzione visuale più ricca invece di immagini decorative isolate.',
+    },
+    faq: { title: 'Domande frequenti su Seedream 5.0 Pro' },
+  },
+}
+
 function normalizeLocale(locale: string): Seedream50ProLocale {
   if (locale === 'zh' || locale === 'zh-CN' || locale === 'zh-HK') return 'zh-TW'
   return SEEDREAM_5_0_PRO_LOCALES.includes(locale as Seedream50ProLocale)
@@ -1357,7 +1484,10 @@ export function getSeedream50ProLandingCopy(locale: string): Seedream50ProLandin
   const baseCopy = normalized === 'en'
     ? en
     : deepMerge(deepMerge(en, simpleOverrides[normalized]), fullSectionOverrides[normalized])
-  return deepMerge(baseCopy, liveAvailabilityOverrides[normalized])
+  return deepMerge(
+    deepMerge(baseCopy, liveAvailabilityOverrides[normalized]),
+    localizedVisibleComplements[normalized],
+  )
 }
 
 export function getSeedream50ProPageMetadata(

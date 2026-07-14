@@ -347,7 +347,7 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
         strategy="beforeInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
       />
-      <Navigation />
+      <Navigation initialTranslations={common} />
 
       {/* Hero - aiease style: All-in-One Platform */}
       <header className="relative pt-16 pb-24 px-6 bg-[#F8FAFF] home-hero-mesh overflow-hidden">
@@ -767,7 +767,7 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
         </div>
       </section>
 
-      <Footer />
+      <Footer initialTranslations={common} />
     </>
   )
 }

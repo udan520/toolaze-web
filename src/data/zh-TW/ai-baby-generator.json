@@ -38,16 +38,16 @@
     },
     "displayName": "AI 寶寶肖像生成器",
     "textOverrides": {
-      "uploadTitle": "shàngchuán fùmǔ huò qínglǚ zhàopiàn",
-      "uploadHelper": "zēngjiā liǎng zhāng qīngxī de xiàoxiàng zhào, yī zhāng qínglǚ zhào huò yī zhāng dān rén zhào.",
-      "promptLabel": "miáoshù xiàoxiàng",
-      "generateLabel": "chuàngzuò bǎobǎo xiàoxiàng",
-      "safetyHelper": "jǐn gōng chuàngyì yúlè. Běn chǎnpǐn bùyòng yú jīyīn huò wèilái wàiguān yùcè."
+      "uploadTitle": "上傳父母或情侶照片",
+      "uploadHelper": "新增兩張清晰肖像照、一張情侶照或一張單人肖像。",
+      "promptLabel": "描述肖像",
+      "generateLabel": "建立寶寶肖像",
+      "safetyHelper": "僅供創意娛樂。本產品不作為基因或未來外貌預測。"
     },
     "functionalAcceptance": {
       "recommendedMode": "preset-first-with-custom-prompt",
-      "reason": "xiàoxiàng yù shè gōngnéng bǐ jǐn tígōng tíshì de biǎodān gèng qīngchǔ dì chéngxiàn chuàngyì liúchéng.",
-      "presetTitle": "yīng'ér xiàoxiàng fēnggé",
+      "reason": "肖像預設比純提示詞表單更清楚呈現創作流程。",
+      "presetTitle": "寶寶肖像風格",
       "presets": [
         {
           "label": "柔和棚拍",
@@ -90,7 +90,7 @@
     "sampleImages": [
       {
         "url": "/ai-baby-generator/hero-baby-portrait.webp",
-        "title": "gēnjù zhàopiàn cānkǎo chuàngjiàn de róuhé yǐngpéng fēnggé yīng'ér xiàoxiàng",
+        "title": "根據照片參考建立的柔和棚拍風格寶寶肖像",
         "width": 1600,
         "height": 900
       }
@@ -98,7 +98,7 @@
   },
   "metadata": {
     "title": "免費 AI 寶寶肖像生成器｜建立寶寶肖像",
-    "description": "shàngchuán yī liǎng zhāng zhàopiàn, jí kě zài xiànshàng miǎnfèi jiànlì yīng'ér xiàoxiàng. Xuǎnzé fēnggé, biānjí tíshì xùnxí, jí kě xiàzài qùwèi shízú de shēngchéng jiéguǒ. Bìngfēi zhēnshí yùcè."
+    "description": "上傳一到兩張照片，即可在線上免費建立寶寶肖像。選擇風格、編輯提示詞，並下載趣味生成結果。這不是真實預測。"
   },
   "sectionsOrder": [
     "intro",
@@ -113,174 +113,174 @@
   ],
   "hero": {
     "h1": "免費<span class=\"text-gradient\">AI 寶寶肖像生成器</span>",
-    "desc": "shàngchuán yī liǎng zhāng zhàopiàn, xuǎnzé xiàoxiàng fēnggé, jí kě qīngsōng chuàngjiàn qùwèi shízú de yīng'ér zhàopiàn."
+    "desc": "上傳一到兩張照片，選擇肖像風格，即可輕鬆建立趣味十足的寶寶圖像。"
   },
   "intro": {
     "title": "什麼是 AI 寶寶肖像生成器？",
     "content": [
       {
-        "title": "gēnjù zhàopiàn cānkǎo chuàngjiàn xūgòu xiàoxiàng",
-        "text": "AI yīng'ér shēngchéng qì kě gēnjù yī zhāng huò liǎng zhāng cānkǎo zhàopiàn jiànlì xūgòu de yīng'ér xiàoxiàng. Nín kěyǐ xiān shàngchuán liǎng zhāng dāndú de xiàoxiàng zhào, yī zhāng qīngxī de qínglǚ zhào huò yī zhāng dān rén zhào, ránhòu xuǎnzé yīzhǒng fēnggé bìng biānjí tíshì xùnxí. Zuìzhōng shēngchéng de tú xiàng kěyòng yú yúlè he fēnxiǎng. Tā bù huì yùcè yíchuán, fùmǔ, jiànkāng zhuàngkuàng huò zhēnshí yīng'ér de wàibiǎo."
+        "title": "根據照片參考建立虛構肖像",
+        "text": "AI 寶寶生成器可根據一張或兩張參考照片建立虛構的寶寶肖像。你可以先上傳兩張單獨肖像照、一張清晰的情侶照或一張單人肖像，再選擇一種風格並編輯提示詞。最終生成的圖像可用於娛樂和分享。它不會預測基因、親子關係、健康狀況或真實寶寶的外貌。"
       }
     ]
   },
   "promptExamples": {
-    "title": "yīng'ér xiàoxiàng fēnggé fànlì",
-    "subtitle": "shǒuxiān xuǎnzé yīgè shìjué fāngxiàng, ránhòu biānjí tíshì xùnxí yǐ tiáozhěng biǎoqíng, fúzhuāng, guāngxiàn huò bèijǐng.",
+    "title": "寶寶肖像風格範例",
+    "subtitle": "先選擇一個視覺方向，再編輯提示詞以調整表情、服裝、光線或背景。",
     "items": [
       {
         "title": "柔和棚拍",
         "prompt": "Create a warm, natural baby portrait inspired by the uploaded reference photos, with a gentle smile, soft studio lighting, clear facial details, and a simple neutral background. Keep the result playful and fictional, not a prediction of a real child.",
-        "note": "qiánjìng de yǐngpéng dēngguāng, róuhé de biǎoqíng hé jiǎnjié de zhōng xìng bèijǐng.",
+        "note": "乾淨的棚拍燈光、柔和表情和簡潔的中性背景。",
         "color": "linear-gradient(135deg, #F5E9E2, #DDE8F5)",
         "image": "/ai-baby-generator/style-soft-studio.webp"
       },
       {
         "title": "溫暖毛毯",
         "prompt": "Create a cozy baby portrait inspired by the uploaded reference photos, wrapped in a soft knit blanket, with warm window light, a calm expression, and a clean home studio background. Keep it fictional and made for fun.",
-        "note": "wēnnuǎn de chuāng guāng, zhēnzhī tǎn, yíngzào chū níngjìng de jiātíng gōngzuò shì fēnwéi.",
+        "note": "溫暖窗光、針織毯與寧靜的家庭棚拍氛圍。",
         "color": "linear-gradient(135deg, #E8D6C8, #F4EFE8)",
         "image": "/ai-baby-generator/style-cozy-blanket.webp"
       },
       {
         "title": "陽光戶外",
         "prompt": "Create a cheerful outdoor baby portrait inspired by the uploaded reference photos, with soft morning sunlight, a natural smile, green garden bokeh, and realistic photography. Keep it fictional and made for fun.",
-        "note": "róuhé de chénguāng, zìrán de xiàoróng, yǐjí míngliàng de huāyuán bèijǐng.",
+        "note": "柔和晨光、自然笑容和明亮花園背景。",
         "color": "linear-gradient(135deg, #F8D77A, #B7D6A3)",
         "image": "/ai-baby-generator/style-sunny-outdoor.webp"
       },
       {
         "title": "俏皮微笑",
         "prompt": "Create a playful baby portrait inspired by the uploaded reference photos, with a bright natural smile, soft colorful clothing, clean daylight, and a simple portrait background. Keep it fictional and made for fun.",
-        "note": "míngmèi de rìguāng, cànlàn de xiàoróng, yǐjí jiǎnjié duōcǎi de fúzhuāng.",
+        "note": "明亮日光、燦爛笑容和簡潔多彩服裝。",
         "color": "linear-gradient(135deg, #F5B8C7, #AFCBEA)",
         "image": "/ai-baby-generator/style-playful-smile.webp"
       },
       {
         "title": "童話肖像",
         "prompt": "Create a gentle storybook style baby portrait inspired by the uploaded reference photos, with soft painted textures, warm light, subtle whimsical details, and a clear friendly face. Keep it fictional and made for fun.",
-        "note": "róuhé de bǐchù wénlǐ hé chōngmǎn qí sī miào xiǎng de xiǎo xìjié, yǐjí qīngxī de miànróng.",
+        "note": "柔和筆觸紋理、充滿奇思妙想的小細節，以及清晰面容。",
         "color": "linear-gradient(135deg, #CDBCE8, #F2D4A6)",
         "image": "/ai-baby-generator/style-storybook-portrait.webp"
       },
       {
         "title": "家庭卡片",
         "prompt": "Create a polished baby portrait inspired by the uploaded reference photos for a family greeting card, with a warm neutral backdrop, soft festive details, balanced studio light, and generous framing. Keep it fictional and made for fun.",
-        "note": "jīngzhì de dēngguāng hé kuāndà de gòutú, dǎzào chū sīmì hèkǎ de fēnwéi.",
+        "note": "精緻燈光與寬鬆構圖，營造私密賀卡氛圍。",
         "color": "linear-gradient(135deg, #C7D8D0, #E8C7C7)",
         "image": "/ai-baby-generator/style-family-card.webp"
       }
     ]
   },
   "howToUse": {
-    "title": "rúhé chuàngzào AI bǎobǎo xiàoxiàng",
+    "title": "如何建立 AI 寶寶肖像",
     "steps": [
       {
-        "title": "shàngchuán yī zhāng huò liǎng zhāng qīngxī de zhàopiàn",
-        "desc": "zēngjiā liǎng zhāng dāndú de xiàoxiàng zhào, yǐbiàn qīngchǔ dì cānkǎo liǎng rén; shàngchuán yī zhāng qínglǚ zhào, quèbǎo liǎng rén de liǎn dōu qīngxī kějiàn; huò shàngchuán yī zhāng dān rén xiàoxiàng zhào, yǐbiàn chǎnshēng dān rén shēn kǎo tú xiàng."
+        "title": "上傳一張或兩張清晰照片",
+        "desc": "新增兩張單獨肖像照以清楚參考兩人；上傳一張雙方臉部都清晰可見的情侶照；或上傳一張單人肖像照，建立單一參考結果。"
       },
       {
-        "title": "xuǎnzé xiàoxiàng fēnggé",
-        "desc": "xuǎnzé `róuhé yǐngpéng',`shūshì tǎn',`yángguāng hùwài'huò qítā yù shè fēnggé. Měi zhǒng fēnggé dūhuì tígōng kě biānjí de shíyòng tíshì."
+        "title": "選擇肖像風格",
+        "desc": "選擇「柔和棚拍」、「溫暖毛毯」、「陽光戶外」或其他預設風格。每種風格都會提供可編輯的實用提示詞。"
       },
       {
-        "title": "chǎnshēng, jiǎnshì yǔ xiàzài",
-        "desc": "jiànlì xiàoxiàng hòu, zài jiéguǒ miànbǎn zhōng chákàn, rúguǒ xūyào bùtóng de fēnwéi, kěyǐ zài xiàzài qián tiáozhěng fēnggé huò tíshì."
+        "title": "生成、檢視與下載",
+        "desc": "建立肖像後，在結果面板中查看；如果想要不同氛圍，可在下載前調整風格或提示詞。"
       }
     ]
   },
   "photoTips": {
-    "title": "pāishè gèng jiā bǎobǎo xiàoxiàng de jìqiǎo",
-    "subtitle": "qīngxī de cānkǎo yǐngxiàng yǒu zhù yú shēngchéng qì zài chuàngjiàn xūnǐ xiàoxiàng zhīqián shìbié liǎn bù, guāngxiàn hé gòutú.",
+    "title": "拍出更好寶寶肖像的照片技巧",
+    "subtitle": "清晰的參考影像有助於生成器在建立虛構肖像前辨識臉部、光線和構圖。",
     "items": [
       {
-        "title": "quèbǎo liǎn bù qīngxī kějiàn",
-        "desc": "shǐyòng zhèngmiàn huò jìn zhèngmiàn pāishè de zhàopiàn, quèbǎo yǎnjīng, bízǐ hé zuǐbā qīngxī kějiàn. Bìmiǎn pèi dài tàiyáng yǎnjìng, kǒuzhào hé pāishè guòxiǎo de liǎn.",
+        "title": "確保臉部清晰可見",
+        "desc": "使用正面或近正面照片，確保眼睛、鼻子和嘴巴清晰可見。避免太陽眼鏡、口罩和過小的臉部。",
         "color": "linear-gradient(135deg, #DBEAFE, #818CF8)"
       },
       {
-        "title": "shǐyòng jūnhéng de guāngxiàn",
-        "desc": "zìrán de chuāng guāng huò róuhé de shìnèi guāngxiàn tōngcháng bǐ qiángliè de yīnyǐng huò cǎisè dēngguāng gèng néng bǎoliú liǎn bù xìjié.",
+        "title": "使用均衡光線",
+        "desc": "自然窗光或柔和室內光通常比強烈陰影或彩色燈光更能保留臉部細節。",
         "color": "linear-gradient(135deg, #FEF3C7, #F59E0B)"
       },
       {
-        "title": "gòutú yīzhì",
-        "desc": "duìyú liǎng zhāng bùtóng de zhàopiàn, xiāngsì de tóu bù hé jiān bù cáijiǎn bǐ yī zhāng jìn jùlí zìpāi hé yī zhāng yuǎn jùlí quánshēn zhào gèng róngyì biànrèn.",
+        "title": "構圖一致",
+        "desc": "對於兩張不同照片，相似的頭肩裁切會比一張近距離自拍和一張遠距離全身照更容易辨識。",
         "color": "linear-gradient(135deg, #FCE7F3, #EC4899)"
       },
       {
-        "title": "jiǎnchá liǎng zhāng zhàopiàn",
-        "desc": "quèbǎo liǎng zhāng liǎn dōu gòu dà, qīngxī wú zhēdǎng. Bìmiǎn pāishè yǒngjǐ de hézhào, yǐmiǎn nányǐ biànrèn pāishè duìxiàng.",
+        "title": "檢查雙人照片",
+        "desc": "確保兩張臉都夠大、清晰且無遮擋。避免擁擠合照，以免難以辨認參考對象。",
         "color": "linear-gradient(135deg, #DCFCE7, #22C55E)"
       }
     ]
   },
-  "scenesTitle": "chuàngyì shǐyòng bǎobǎo zhàopiàn",
+  "scenesTitle": "寶寶照片的創意用法",
   "scenes": [
     {
       "icon": "💌",
-      "title": "qínglǚ zhuānshǔ jìniànpǐn",
-      "desc": "pāishè yī zhāng chōngmǎn qùwèi de zhàopiàn, yǔ bànlǚ sīxià fēnxiǎng, bìng bǐjiào bùtóng de shìjué fēnggé."
+      "title": "情侶專屬紀念品",
+      "desc": "建立一張充滿趣味的照片，與伴侶私下分享，並比較不同視覺風格。"
     },
     {
       "icon": "🖼️",
-      "title": "jiātíng hèkǎ chuàngyì",
-      "desc": "yǐ kuāndà de gòutú wèi qǐdiǎn, zhìzuò yī zhāng sīmì de hèkǎ, gōnggào yàngpiàn huò jiǎntiē bù yèmiàn."
+      "title": "家庭賀卡創意",
+      "desc": "以寬鬆構圖作為起點，製作私密賀卡、公告樣張或剪貼簿頁面。"
     },
     {
       "icon": "💬",
-      "title": "yìdì jīngxǐ",
-      "desc": "dāng nǐ hé bànlǚ fēngé liǎng dì shí, fāsòng yī zhāng qīngsōng yúkuài de zhàopiàn."
+      "title": "遠距驚喜",
+      "desc": "當你和伴侶相隔兩地時，傳送一張輕鬆愉快的照片。"
     },
     {
       "icon": "📱",
-      "title": "shè qún méitǐ fēnxiǎng chuàngyì",
-      "desc": "chángshì pāishè yī zhāng chōngmǎn huólì de zhàopiàn, yòng yú sīrén gùshì, qínglǚ hézhào huò chuàngyì gèrén zīliào gēngxīn."
+      "title": "社群媒體分享創意",
+      "desc": "嘗試建立一張充滿活力的照片，用於私人限時動態、情侶合照或創意個人資料更新。"
     },
     {
       "icon": "🎨",
-      "title": "fēnggé shíyàn",
-      "desc": "bǐjiào shǐyòng xiāngtóng cānkǎo zīliào pāishè de yǐngpéng, hùwài, wēnxīn, huópō hé tónghuà fēnggé de zhàopiàn."
+      "title": "風格實驗",
+      "desc": "比較使用相同參考資料建立的棚拍、戶外、溫馨、活潑和童話風格照片。"
     }
   ],
   "workflowComparison": {
-    "title": "AI yīng'ér shēngchéng qì de gōngnéng yǔ júxiàn xìng",
-    "subtitle": "jiāng jiéguǒ yòng zuò chuàngyì xiàoxiàng. Tā bù bāohán shēnfèn, qīnzǐ guānxì, yīliáo zīxùn huò wèilái wàimào zīxùn.",
+    "title": "AI 寶寶生成器的功能與限制",
+    "subtitle": "將結果作為創意肖像使用。它不包含身份、親子關係、醫療資訊或未來外貌資訊。",
     "columns": [
-      "wèntí",
-      "Toolaze zhīyuán de gōngnéng",
-      "zhòngyào xiànzhì"
+      "問題",
+      "Toolaze 支援的功能",
+      "重要限制"
     ],
     "rows": [
       [
-        "wǒ kěyǐ shǐyòng liǎng zhāng zhàopiàn ma?",
-        "kěyǐ. Zuìduō kě shàngchuán liǎng zhāng cānkǎo túpiàn. Yù shè qíngkuàng xià, liǎng zhāng dúlì de xiàoxiàng zuìwéi qīngxī.",
-        "jiéguǒ huì yīn zhàopiàn pǐnzhí, guāngxiàn hé gòutú ér yì."
+        "我可以使用兩張照片嗎？",
+        "可以。最多可上傳兩張參考圖片。預設情況下，兩張獨立肖像最清晰。",
+        "結果會因照片品質、光線和構圖而異。"
       ],
       [
-        "wǒ kěyǐ shǐyòng yī zhāng zhàopiàn ma?",
-        "kěyǐ. Shǐyòng yī zhāng qīngxī de qínglǚ zhào huò yī zhāng dān rén zhào.",
-        "yī zhāng zhàopiàn néng wéi shēngchéng qì tígōng de shìjué cānkǎo zīxùn jiào shǎo."
+        "我可以使用一張照片嗎？",
+        "可以。使用一張清晰的情侶照或一張單人照。",
+        "一張照片能提供給生成器的視覺參考資訊較少。"
       ],
       [
-        "wǒ kěyǐ xuǎnzé fēnggé ma?",
-        "kěyǐ. Cóng yù shè de xiàoxiàng zhào kāishǐ, ránhòu biānjí tíshì xùnxí.",
-        "yù shè kěyǐ yǐndǎo zuìzhōng xiàoguǒ, dàn bùnéng bǎozhèng xìjié wánquán yīzhì."
+        "我可以選擇風格嗎？",
+        "可以。從預設肖像照開始，然後編輯提示詞。",
+        "預設可引導最終效果，但不能保證細節完全一致。"
       ],
       [
-        "wǒ kěyǐ xiàzài chǎnshēng de jiéguǒ ma?",
-        "kěyǐ. Chákàn chǎnshēng de xiàoxiàng zhào, ránhòu shǐyòng xiàzài gōngnéng.",
-        "chǎnshēng hòu chúcún nín xiǎng yào bǎoliú de yǐngxiàng."
+        "我可以下載生成結果嗎？",
+        "可以。查看生成的肖像照，然後使用下載功能。",
+        "生成後請儲存你想保留的影像。"
       ],
       [
-        "tā néng yùcè jīyīn ma?",
-        "bùnéng. Tā huì gēnjù shìjué cānkǎo hé tíshì chǎnshēng yī zhāng xūnǐ yǐngxiàng.",
-        "tā wúfǎ yùcè zhēnshí háizǐ de wàibiǎo."
+        "它能預測基因嗎？",
+        "不能。它會根據視覺參考和提示詞生成一張虛構影像。",
+        "它無法預測真實孩子的外貌。"
       ],
       [
-        "tā néng yànzhèng qīnzǐ guānxì huò jiànkāng zhuàngkuàng ma?",
-        "bùnéng. Tā shì yī kuǎn chuàngyì tú xiàng gōngjù.",
-        "tā bù tígōng shēnfèn, qīnzǐ guānxì, yīliáo huò jiànkāng zīxùn."
+        "它能驗證親子關係或健康狀況嗎？",
+        "不能。它是一款創意圖像工具。",
+        "它不提供身份、親子關係、醫療或健康資訊。"
       ]
     ]
   },
@@ -290,32 +290,32 @@
       {
         "icon": "🖼️",
         "iconType": "format",
-        "title": "yī dào liǎng zhāng zhàopiàn cānkǎo",
-        "desc": "nín kěyǐ cóng liǎng zhāng dāndú de xiàoxiàng zhào, yī zhāng qínglǚ zhào huò yī zhāng qīngxī de dān rén zhào kāishǐ."
+        "title": "一到兩張照片參考",
+        "desc": "你可以從兩張單獨肖像照、一張情侶照或一張清晰的單人照開始。"
       },
       {
         "icon": "🎨",
         "iconType": "quality",
-        "title": "liù zhǒng xiàoxiàng fēnggé",
-        "desc": "zài biānjí tíshì xùnxí zhīqián, xiān xuǎnzé yīgè shìjué fāngxiàng, yǐ yíngzào gèng jùtǐ de fēnwéi."
+        "title": "六種肖像風格",
+        "desc": "在編輯提示詞前，先選擇一個視覺方向，以營造更具體的氛圍。"
       },
       {
         "icon": "✍️",
         "iconType": "prompt",
-        "title": "kě biānjí tíshì xùnxí",
-        "desc": "yòng zìjǐ de yǔyán tiáozhěng biǎoqíng, fúzhuāng, guāngxiàn, gòutú hé bèijǐng."
+        "title": "可編輯提示詞",
+        "desc": "用自己的語言調整表情、服裝、光線、構圖和背景。"
       },
       {
         "icon": "🔁",
         "iconType": "speed",
-        "title": "qīngsōng yōuhuà",
-        "desc": "rúguǒ dì yī cì chǎnshēng de jiéguǒ xūyào bùtóng de fāngxiàng, kěyǐ qiēhuàn fēnggé huò xiūgǎi tíshì xùnxí."
+        "title": "輕鬆優化",
+        "desc": "如果第一次生成結果需要不同方向，可以切換風格或修改提示詞。"
       },
       {
         "icon": "⬇️",
         "iconType": "quality",
-        "title": "yùlǎn yǔ xiàzài",
-        "desc": "zài jiéguǒ miànbǎn zhōng chákàn shēngchéng de xiàoxiàng, bìng chúcún nín xǐhuān de tú xiàng."
+        "title": "預覽與下載",
+        "desc": "在結果面板中查看生成的肖像，並儲存你喜歡的圖像。"
       },
       {
         "icon": "🌐",
@@ -327,86 +327,86 @@
   },
   "testimonials": {
     "title": "大家如何使用 AI 寶寶肖像生成器",
-    "subtitle": "chuàngjiàn hé wánshàn xūnǐ yīng'ér xiàoxiàng de sān gè shíyòng gōngzuò liúchéng",
+    "subtitle": "建立與完善虛構寶寶肖像的三種實用工作流程",
     "items": [
       {
         "name": "Maya R.",
-        "role": "yìdì liàn",
-        "quote": "wǒmen yòng liǎng zhāng jiǎndān de shǒujī zhàopiàn, chángshìle yǐngpéng hé hùwài liǎng zhǒng fēnggé. Yí chú záluàn de bèijǐng shuōmíng hòu, dì èr zhāng zhàopiàn xiàoguǒ gèng hǎo. Wǒmen bǎ tā dàng zuò yī zhāng hùxiāng chuánsòng de qùwèi túpiàn, ér bùshì yī zhāng xūyào fēicháng jīngquè de túpiàn."
+        "role": "遠距戀愛",
+        "quote": "我們用兩張簡單的手機照片，嘗試棚拍和戶外兩種風格。移除雜亂背景的說明後，第二張照片效果更好。我們把它當作彼此傳送的趣味圖片，而不是需要非常精確的圖片。"
       },
       {
         "name": "Jordan L.",
-        "role": "jiātíng hèkǎ shèjì",
-        "quote": "zài jiārén xuǎnzé zhèngshì pāishè zhàopiàn zhīqián, wǒ xiǎng yào yī zhāng róuhé de zhàn wèi tú, yòng yú sīrén hèkǎ de gàiniàn shèjì. `Jiātíng hèkǎ'yù shè tígōngle shíyòng de gòutú, érqiě wǒ kěyǐ gēnghuàn fúzhuāng hé bèijǐng ér wúxū chóngxīn jiànlì tíshì."
+        "role": "家庭賀卡設計",
+        "quote": "在家人選擇正式拍攝照片前，我想要一張柔和的佔位圖，用於私密賀卡的概念設計。「家庭卡片」預設提供了實用構圖，而且我可以更換服裝和背景，無需重新建立提示詞。"
       },
       {
         "name": "Lena S.",
-        "role": "qínglǚ nèiróng chuàngzuò zhě",
-        "quote": "liǎng zhāng guāngxiàn xiāngsì de zhàopiàn zuìzhōng chéngxiàn zuì qīngxī de xiàoguǒ. Wǒ cóng xiěshí de yǐngpéng fēnggé qiēhuàn dàole gèng róuhé de tónghuà fēnggé. Yóuyú bùtóng shìdài zhī jiān yīxiē xìjié yǒu suǒ biànhuà, suǒyǐ wǒ xuǎnzéle biǎoqíng zuì qīngxī de xiàoxiàng."
+        "role": "情侶內容創作者",
+        "quote": "兩張光線相似的照片最終呈現最清晰的效果。我從寫實棚拍風格切換到更柔和的童話風格。由於不同生成版本之間一些細節會變化，所以我選擇了表情最清晰的肖像。"
       }
     ]
   },
   "faqTitle": "AI 寶寶肖像生成器常見問題",
   "faq": [
     {
-      "q": "AI yīng'ér shēngchéng qì rúhé yùnzuò?",
-      "a": "shàngchuán yī zhāng huò liǎng zhāng cānkǎo zhàopiàn, xuǎnzé yīng'ér xiàoxiàng fēnggé, bìng gēnjù xūyào biānjí tíshì. Toolaze huì shǐyòng zhàopiàn hé tíshì chǎnshēng yī zhāng xūnǐ de yīng'ér xiàoxiàng, nín kěyǐ chákàn bìng xiàzài."
+      "q": "AI 寶寶生成器如何運作？",
+      "a": "上傳一張或兩張參考照片，選擇寶寶肖像風格，並視需要編輯提示詞。Toolaze 會使用照片和提示詞生成一張虛構的寶寶肖像，你可以查看並下載。"
     },
     {
-      "q": "wǒ kěyǐ shǐyòng yī zhāng zhàopiàn ma?",
-      "a": "shì de. Nín kěyǐ shǐyòng yī zhāng qīngxī de dān rén zhào huò yī zhāng qínglǚ zhào. Liǎng zhāng dāndú de zhàopiàn tōngcháng néng wéi gōngzuò liúchéng tígōng gèng qīngxī de cānkǎo, dàn bìngfēi bìxū."
+      "q": "我可以使用一張照片嗎？",
+      "a": "是的。你可以使用一張清晰的單人照或一張情侶照。兩張單獨照片通常能為工作流程提供更清晰的參考，但並非必要。"
     },
     {
-      "q": "wǒ kěyǐ shàngchuán liǎng zhāng dāndú de fùmǔ zhàopiàn huò yī zhāng qínglǚ zhào ma?",
-      "a": "kěyǐ. Gāi gōngjù zuìduō jiēshòu liǎng zhāng túpiàn. Nín kěyǐ shàngchuán liǎng zhāng dān rén zhào, yī zhāng shuāngfāng dōu qīngxī kějiàn de qínglǚ zhào, huò yī zhāng dān rén zhào."
+      "q": "我可以上傳兩張單獨的父母照片或一張情侶照嗎？",
+      "a": "可以。此工具最多接受兩張圖片。你可以上傳兩張單人照、一張雙方都清晰可見的情侶照，或一張單人照。"
     },
     {
-      "q": "shénme yàng de zhàopiàn xiàoguǒ zuì hǎo?",
-      "a": "shǐyòng qīngxī de zhèngmiàn zhào huò jìn zhèngmiàn zhào, guāngxiàn pínghéng, liǎn bù tèzhǐ qīngxī kějiàn. Bìmiǎn shǐyòng tàiyáng yǎnjìng,guò qiáng de lǜ jìng, qiángliè de yīnyǐng, guòxiǎo de liǎn yǐjí yǒngjǐ de héyǐng."
+      "q": "什麼樣的照片效果最好？",
+      "a": "使用清晰的正面照或近正面照，光線均衡，臉部特徵清晰可見。避免太陽眼鏡、過強濾鏡、強烈陰影、過小臉部以及擁擠合影。"
     },
     {
-      "q": "AI yīng'ér shēngchéng qì shì miǎnfèi de xiànshàng gōngjù ma?",
-      "a": "shì de. Nín kěyǐ zài xiànshàng kāiqǐ gāi gōngjù, wúxū zhùcè jí kě jiànlì yīng'ér zhàopiàn, bìng xiàzài wú fú shuǐyìn de jiéguǒ. Shǐyòng xiànzhì kěnéng yǒu suǒ bùtóng."
+      "q": "AI 寶寶生成器是免費的線上工具嗎？",
+      "a": "是的。你可以在線上開啟此工具，無需註冊即可建立寶寶照片，並下載無浮水印的結果。使用限制可能有所不同。"
     },
     {
-      "q": "tā néng yùcè zhēnshí yīng'ér de wàibiǎo ma?",
-      "a": "bù. Shēngchéng de tú xiàng shì xūgòu de, jǐn gōng yúlè he chuàngyì yòngtú. Tā bù yùcè yíchuán, qīnzǐ guānxì, jiànkāng zhuàngkuàng huò zhēnshí háizǐ de wèilái wàiguān."
+      "q": "它能預測真實寶寶的外貌嗎？",
+      "a": "不能。生成圖像是虛構的，僅供娛樂和創意用途。它不預測遺傳、親子關係、健康狀況或真實孩子的未來外觀。"
     },
     {
-      "q": "wǒ kěyǐ xuǎnzé yīng'ér xiàoxiàng fēnggé ma?",
-      "a": "kěyǐ. Nín kěyǐ cóng róuhé yǐngpéng, shūshì tǎn, yángguāng hùwài, qiàopí wéixiào, gùshì shū xiàoxiàng huò jiātíng kǎpiàn fēnggé kāishǐ. Nín kěyǐ biānjí tíshì xùnxí, gēnggǎi biǎoqíng, fúzhuāng, guāngxiàn huò bèijǐng."
+      "q": "我可以選擇寶寶肖像風格嗎？",
+      "a": "可以。你可以從柔和棚拍、溫暖毛毯、陽光戶外、俏皮微笑、童話肖像或家庭卡片風格開始。你可以編輯提示詞，更改表情、服裝、光線或背景。"
     },
     {
-      "q": "wǒ kěyǐ xiàzài chǎnshēng de yìngxiàng ma?",
-      "a": "kěyǐ. Xiàoxiàng chū xiànzài jiéguǒ miànbǎn hòu, nín kěyǐ chákàn bìng shǐyòng xiàzài gōngnéng chúcún nín xǐhuān de tú xiàng."
+      "q": "我可以下載生成的影像嗎？",
+      "a": "可以。肖像出現在結果面板後，你可以查看並使用下載功能儲存喜歡的圖像。"
     }
   ],
-  "moreTools": "xiāngguān AI gōngjù",
+  "moreTools": "相關 AI 工具",
   "moreToolsLinks": [
     {
-      "title": "AI qínglǚ zhàopiàn zhìzuò qì",
-      "description": "shǐyòng yī zhāng huò liǎng zhāng cānkǎo zhàopiàn chuàngzuò làngmàn qínglǚ xiàoxiàng.",
+      "title": "AI 情侶照片製作器",
+      "description": "使用一張或兩張參考照片創作浪漫情侶肖像。",
       "href": "/ai-couple-photo-maker"
     },
     {
       "title": "AI 圖生圖生成器",
-      "description": "shǐyòng cānkǎo yǐngxiàng hé tíshì jiànlì qítā shìjué biàn tǐ.",
+      "description": "使用參考影像和提示詞建立其他視覺變體。",
       "href": "/ai-image-to-image-generator"
     },
     {
-      "title": "AI yǐngxiàng chǎnshēng qì",
-      "description": "gēnjù wénzì tíshì jiànlì xīn tú xiàng.",
+      "title": "AI 圖像生成器",
+      "description": "根據文字提示建立新圖像。",
       "href": "/ai-image-generator"
     },
     {
-      "title": "zhàopiàn xiūfù",
-      "description": "xiūfù tuìshǎi, guā chú huò dī pǐnzhí de jiātíng zhàopiàn.",
+      "title": "照片修復",
+      "description": "修復褪色、刮痕或低品質的家庭照片。",
       "href": "/photo-restoration"
     }
   ],
   "moreToolsCta": {
-    "title": "yòng nín de zhàopiàn chuàngzuò bǎobǎo xiàoxiàng",
-    "description": "shàngchuán yī dào liǎng zhāng qīngxī de cānkǎo zhàopiàn, xuǎnzé yīzhǒng fēnggé, zhìzuò yī zhāng qùwèi shízú de tú xiàng, yòng yú sīrén fēnxiǎng huò zuòwéi chuàngyì jìniànpǐn.",
-    "button": "chuàngzuò bǎobǎo xiàoxiàng"
+    "title": "用你的照片建立寶寶肖像",
+    "description": "上傳一到兩張清晰參考照片，選擇一種風格，製作一張趣味十足的圖像，用於私人分享或作為創意紀念品。",
+    "button": "建立寶寶肖像"
   }
 }

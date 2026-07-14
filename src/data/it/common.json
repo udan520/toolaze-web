@@ -36,9 +36,17 @@
       "birthday-copy-and-paste": "Copia e Incolla Emoji di Compleanno",
       "cat-copy-and-paste": "Copia e Incolla Emoji Gatto"
     },
-    "wan27Image": "Wan 2.7 Image",
+    "wan27Image": "Wan 2.7 Immagine",
     "worldCupAiImageGenerator": "Generatore di immagini IA per i Mondiali",
-    "aiImageGenerator": "Generatore di immagini IA"
+    "aiImageGenerator": "Generatore di immagini IA",
+    "aiBabyGenerator": "Generatore di bebè IA",
+    "aiHairstyleChanger": "Cambia acconciatura IA",
+    "aiHairColorChanger": "Cambia colore capelli IA",
+    "textToImageGenerator": "Generatore da testo a immagine",
+    "aiImageToImageGenerator": "Generatore IA da immagine a immagine",
+    "seedream50Lite": "Seedream 5.0 Lite",
+    "seedream50Pro": "Seedream 5.0 Pro",
+    "seedance25": "Seedance 2.5"
   },
   "home": {
     "metadata": {
@@ -214,7 +222,8 @@
         "title": "Inizia Istantaneamente",
         "desc": "Inizia a usare il nostro generatore AI di immagini e generatore AI di video immediatamente senza creare un account. Nessuna registrazione via email, nessuna raccolta di informazioni personali. Basta aprire e creare."
       }
-    }
+    },
+    "ctaImageEdit": "Generatore IA da immagine a immagine"
   },
   "footer": {
     "aiTools": "Strumenti IA",
@@ -261,7 +270,11 @@
     "model": "Modello",
     "photoRestoration": "Restauro foto",
     "aiCouplePhotoMaker": "Foto di coppia IA",
-    "aiImageGenerator": "Generatore di immagini IA"
+    "aiImageGenerator": "Generatore di immagini IA",
+    "aiBabyGenerator": "Generatore di bebè IA",
+    "textToImageGenerator": "Generatore da testo a immagine",
+    "aiImageToImageGenerator": "Generatore IA da immagine a immagine",
+    "worldCupAiImageGenerator": "Generatore di immagini IA per i Mondiali"
   },
   "about": {
     "metadata": {
@@ -594,7 +607,10 @@
       "generationFailedWithMessage": "Generazione non riuscita: {message}",
       "generationTimeout": "Timeout della generazione",
       "dailyLimitReached": "Limite gratuito giornaliero raggiunto. Torna domani.",
-      "recreateMissingInput": "Nessuna immagine di input trovata. Passaggio a testo-immagine per ricreare."
+      "recreateMissingInput": "Nessuna immagine di input trovata. Passaggio a testo-immagine per ricreare.",
+      "creditsUsedUpTitle": "Crediti esauriti",
+      "creditsUsedUpMessage": "Hai esaurito i crediti. Presto arriveranno altri modi per ottenere crediti, inclusi eventi bonus e ricompense per le attività.",
+      "creditsUsedUpAction": "Ho capito"
     },
     "emojiPicker": {
       "categoriesTitle": "Categorie",

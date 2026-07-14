@@ -966,7 +966,7 @@ const localizedCopyOverrides: Partial<Record<Exclude<AiImageGeneratorLocale, 'en
         { title: 'KI-Modelle', text: 'Vergleichen Sie Toolaze Bild- und Videomodelle nach Aufgabe, Ausgabestil, Modellfamilie und Kreativworkflow.', label: 'Modelle ansehen' },
         { title: 'KI-Bild-zu-Bild-Generator', text: 'Laden Sie ein Referenzbild hoch, beschreiben Sie die Bearbeitung und erstellen Sie kontrollierte Varianten, Produktshots, Hintergrundwechsel oder Restyles.', label: 'Aus Bild bearbeiten' },
         { text: 'Nutzen Sie GPT Image 2 für Poster, Produktanzeigen, lesbaren Text, UI-Mockups und strukturierte Bilderstellung.', label: 'GPT Image 2 testen' },
-        { title: 'GPT Image 2 Prompts', text: 'Entdecken Sie Promptstrukturen für textlastige Bilder, Produktvisuals, UI-Mockups und kampagnenreife Layouts.', label: 'Prompts öffnen' },
+        { title: 'GPT Image 2 Prompt-Beispiele', text: 'Entdecken Sie Promptstrukturen für textlastige Bilder, Produktvisuals, UI-Mockups und kampagnenreife Layouts.', label: 'Prompts öffnen' },
         { title: 'Werbe-Prompts', text: 'Nutzen Sie werbefokussierte Promptvorlagen für Produktlaunches, Social Campaigns, Paid Creative und Thumbnail-Konzepte.', label: 'Werbung ansehen' },
         { title: 'Bildkonverter', text: 'Konvertieren Sie heruntergeladene KI-Bilder zwischen JPG, PNG, WebP und HEIC für Publishing-Workflows.', label: 'Bilder konvertieren' },
         { title: 'Bildkompressor', text: 'Komprimieren Sie generierte Bilder für Webpublishing, Ecommerce-Listings, Social Uploads und schnellere Seitenladezeit.', label: 'Bilder komprimieren' },

@@ -5,11 +5,42 @@ export const TEXT_TO_IMAGE_GENERATOR_LOCALES = ['en', 'de', 'ja', 'es', 'zh-TW',
 
 export type TextToImageGeneratorLocale = (typeof TEXT_TO_IMAGE_GENERATOR_LOCALES)[number]
 
+type DeepPartial<T> = {
+  [P in keyof T]?: T[P] extends Array<unknown>
+    ? T[P]
+    : T[P] extends object
+      ? DeepPartial<T[P]>
+      : T[P]
+}
+
 const base = getAiImageGeneratorPageCopy('en')
 const aiImageAsset = (fileName: string) =>
   `/ai-image-generator/${fileName}`
 const textToImageAsset = (fileName: string) =>
   `/ai-image-generator/text-to-image-generator/${fileName}`
+
+function mergeCopy<T>(baseCopy: T, override?: DeepPartial<T>): T {
+  if (!override) return baseCopy
+  const result: any = Array.isArray(baseCopy) ? [...baseCopy] : { ...(baseCopy as any) }
+
+  Object.entries(override as Record<string, unknown>).forEach(([key, value]) => {
+    if (
+      value &&
+      typeof value === 'object' &&
+      !Array.isArray(value) &&
+      result[key] &&
+      typeof result[key] === 'object' &&
+      !Array.isArray(result[key])
+    ) {
+      result[key] = mergeCopy(result[key], value as any)
+      return
+    }
+
+    result[key] = value
+  })
+
+  return result
+}
 
 export const textToImageGeneratorPageCopy: AiImageGeneratorPageCopy = {
   ...base,
@@ -499,17 +530,111 @@ export const textToImageGeneratorPageCopy: AiImageGeneratorPageCopy = {
   },
 }
 
-export const textToImageGeneratorPageCopies: Record<TextToImageGeneratorLocale, AiImageGeneratorPageCopy> = {
-  en: textToImageGeneratorPageCopy,
-  de: textToImageGeneratorPageCopy,
-  ja: textToImageGeneratorPageCopy,
-  es: textToImageGeneratorPageCopy,
-  'zh-TW': textToImageGeneratorPageCopy,
-  pt: textToImageGeneratorPageCopy,
-  fr: textToImageGeneratorPageCopy,
-  ko: textToImageGeneratorPageCopy,
-  it: textToImageGeneratorPageCopy,
+const localizedTextToImageOverrides: Record<Exclude<TextToImageGeneratorLocale, 'en'>, DeepPartial<AiImageGeneratorPageCopy>> = {
+  de: {
+    metadata: { title: 'Text-zu-Bild-Generator kostenlos online - ohne Anmeldung | Toolaze', description: 'Erstellen Sie KI-Bilder kostenlos online aus Text. Toolaze hilft beim Formulieren klarerer Prompts, beim Verbessern schwacher Ergebnisse und beim Erkennen, wann ein Referenzbild besser ist.' },
+    breadcrumbs: { home: 'Startseite', aiTools: 'KI-Tools', current: 'Text-zu-Bild-Generator' },
+    hero: { highlight: 'Text-zu-Bild-Generator', description: 'Erstellen Sie Bilder aus Worten und verbessern Sie sie mit klarerem Motiv, Aufbau, Licht, Textregel und Prüfziel. Ideal, wenn Sie noch kein Referenzbild haben.', badges: ['Worte zu Bild', 'Kein Referenz-Upload', 'Kostenlos online', 'Ohne Anmeldung', 'Prompt-Hilfe'] },
+    whatIs: { title: 'Was ist ein Text-zu-Bild-Generator?' },
+    promise: { title: 'Weniger Rätselraten im Prompt' },
+    features: { title: 'Was in den Prompt gehört' },
+    gallery: { title: 'Schlechter Prompt vs. besserer Prompt' },
+    howTo: { title: 'So erzielen Sie bessere Ergebnisse aus Text' },
+    faq: { title: 'Text-zu-Bild-Generator FAQ' },
+    cta: { title: 'Briefing schreiben und von Grund auf generieren', button: 'Text-zu-Bild starten' },
+  },
+  ja: {
+    metadata: { title: 'テキストから画像生成 無料オンライン - 登録不要 | Toolaze', description: 'テキストからAI画像を無料でオンライン作成。より明確なプロンプト作成、弱い結果の改善、参照画像を使うべき場面の判断に役立ちます。' },
+    breadcrumbs: { home: 'ホーム', aiTools: 'AIツール', current: 'テキストから画像生成' },
+    hero: { highlight: 'テキストから画像生成', description: '言葉から画像を作り、主題、構図、照明、文字ルール、確認目標を明確にして改善できます。参照画像がまだないときに向いています。', badges: ['言葉から画像', '参照画像なし', '無料オンライン', '登録不要', 'プロンプト改善'] },
+    whatIs: { title: 'テキストから画像生成とは？' },
+    promise: { title: 'プロンプトの曖昧さを減らす' },
+    features: { title: 'プロンプトに入れるべき内容' },
+    gallery: { title: '弱いプロンプトと改善例' },
+    howTo: { title: 'テキストからより良い結果を得る方法' },
+    faq: { title: 'テキストから画像生成 FAQ' },
+    cta: { title: '説明文を書いて一から生成', button: 'テキストから画像を開始' },
+  },
+  es: {
+    metadata: { title: 'Generador de texto a imagen gratis online - sin registro | Toolaze', description: 'Crea imágenes IA desde texto online gratis, con guía práctica para escribir prompts más claros, corregir resultados débiles y saber cuándo usar una imagen de referencia.' },
+    breadcrumbs: { home: 'Inicio', aiTools: 'Herramientas IA', current: 'Generador de texto a imagen' },
+    hero: { highlight: 'Generador de texto a imagen', description: 'Crea una imagen desde palabras y mejórala con un sujeto, composición, iluminación, regla de texto y objetivo de revisión más claros. Úsalo cuando aún no tengas una referencia.', badges: ['Texto a imagen', 'Sin referencia', 'Gratis online', 'Sin registro', 'Mejoras de prompt'] },
+    whatIs: { title: '¿Qué es un generador de texto a imagen?' },
+    promise: { title: 'Reduce las conjeturas en el prompt' },
+    features: { title: 'Qué incluir en tu prompt' },
+    gallery: { title: 'Prompt débil vs. prompt mejorado' },
+    howTo: { title: 'Cómo obtener mejores resultados desde texto' },
+    faq: { title: 'FAQ del generador de texto a imagen' },
+    cta: { title: 'Escribe un brief y genera desde cero', button: 'Empezar texto a imagen' },
+  },
+  'zh-TW': {
+    metadata: { title: '文字轉圖像生成器免費線上使用 - 免註冊 | Toolaze', description: '免費線上從文字建立 AI 圖像，並獲得實用指引來撰寫更清楚的提示詞、修正不理想結果，以及判斷何時該使用參考圖片。' },
+    breadcrumbs: { home: '首頁', aiTools: 'AI 工具', current: '文字轉圖像生成器' },
+    hero: { highlight: '文字轉圖像生成器', description: '從文字建立圖像，再用更清楚的主體、構圖、光線、文字規則與檢查目標來改善結果。適合尚未有參考圖片時使用。', badges: ['文字轉圖像', '無需參考圖', '免費線上', '免註冊', '提示詞修正'] },
+    whatIs: { title: '什麼是文字轉圖像生成器？' },
+    promise: { title: '減少提示詞中的猜測空間' },
+    features: { title: '提示詞應包含哪些內容' },
+    gallery: { title: '不佳提示詞 vs 更佳提示詞範例' },
+    howTo: { title: '如何從文字獲得更好的結果' },
+    faq: { title: '文字轉圖像生成器常見問題' },
+    cta: { title: '撰寫簡報並從零開始生成', button: '開始文字轉圖像' },
+  },
+  pt: {
+    metadata: { title: 'Gerador de texto para imagem grátis online - sem cadastro | Toolaze', description: 'Crie imagens de IA a partir de texto gratuitamente online, com orientação prática para escrever prompts mais claros, corrigir resultados fracos e saber quando usar uma imagem de referência.' },
+    breadcrumbs: { home: 'Início', aiTools: 'Ferramentas de IA', current: 'Gerador de texto para imagem' },
+    hero: { highlight: 'Gerador de texto para imagem', description: 'Crie uma imagem a partir de palavras e melhore o resultado com assunto, composição, iluminação, regra de texto e objetivo de revisão mais claros. Use quando ainda não tiver uma referência.', badges: ['Texto para imagem', 'Sem referência', 'Grátis online', 'Sem cadastro', 'Correções de prompt'] },
+    whatIs: { title: 'O que é um gerador de texto para imagem?' },
+    promise: { title: 'Reduza a adivinhação no prompt' },
+    features: { title: 'O que incluir no prompt' },
+    gallery: { title: 'Prompt fraco vs. prompt melhor' },
+    howTo: { title: 'Como obter melhores resultados a partir de texto' },
+    faq: { title: 'FAQ do gerador de texto para imagem' },
+    cta: { title: 'Escreva um briefing e gere do zero', button: 'Iniciar texto para imagem' },
+  },
+  fr: {
+    metadata: { title: 'Générateur texte vers image gratuit en ligne - sans inscription | Toolaze', description: 'Créez gratuitement des images IA depuis du texte, avec des conseils pratiques pour écrire des prompts plus clairs, corriger les résultats faibles et savoir quand utiliser une image de référence.' },
+    breadcrumbs: { home: 'Accueil', aiTools: 'Outils IA', current: 'Générateur texte vers image' },
+    hero: { highlight: 'Générateur texte vers image', description: 'Créez une image à partir de mots, puis améliorez-la avec un sujet, une composition, une lumière, une règle de texte et un objectif de vérification plus clairs. À utiliser quand vous n’avez pas encore d’image de référence.', badges: ['Texte vers image', 'Sans référence', 'Gratuit en ligne', 'Sans inscription', 'Correction de prompt'] },
+    whatIs: { title: 'Qu’est-ce qu’un générateur texte vers image ?' },
+    promise: { title: 'Réduire les suppositions dans le prompt' },
+    features: { title: 'Que mettre dans votre prompt' },
+    gallery: { title: 'Prompt faible vs. meilleur prompt' },
+    howTo: { title: 'Comment obtenir de meilleurs résultats depuis le texte' },
+    faq: { title: 'FAQ du générateur texte vers image' },
+    cta: { title: 'Rédiger un brief et générer de zéro', button: 'Démarrer texte vers image' },
+  },
+  ko: {
+    metadata: { title: '텍스트 이미지 생성기 무료 온라인 - 가입 없음 | Toolaze', description: '텍스트에서 AI 이미지를 무료로 온라인 생성하세요. 더 명확한 프롬프트 작성, 약한 결과 개선, 참조 이미지를 써야 할 시점 판단에 도움이 됩니다.' },
+    breadcrumbs: { home: '홈', aiTools: 'AI 도구', current: '텍스트 이미지 생성기' },
+    hero: { highlight: '텍스트 이미지 생성기', description: '글에서 이미지를 만들고 주제, 구도, 조명, 텍스트 규칙, 검토 목표를 더 명확히 하여 결과를 개선하세요. 아직 참조 이미지가 없을 때 적합합니다.', badges: ['텍스트에서 이미지', '참조 업로드 없음', '무료 온라인', '가입 없음', '프롬프트 개선'] },
+    whatIs: { title: '텍스트 이미지 생성기란?' },
+    promise: { title: '프롬프트의 추측 줄이기' },
+    features: { title: '프롬프트에 포함할 내용' },
+    gallery: { title: '약한 프롬프트 vs 개선된 프롬프트' },
+    howTo: { title: '텍스트에서 더 좋은 결과를 얻는 방법' },
+    faq: { title: '텍스트 이미지 생성기 FAQ' },
+    cta: { title: '브리프를 작성하고 처음부터 생성', button: '텍스트 이미지 시작' },
+  },
+  it: {
+    metadata: { title: 'Generatore da testo a immagine gratis online - senza registrazione | Toolaze', description: 'Crea immagini IA da testo online gratis, con guida pratica per scrivere prompt più chiari, correggere risultati deboli e capire quando usare un’immagine di riferimento.' },
+    breadcrumbs: { home: 'Home', aiTools: 'Strumenti IA', current: 'Generatore da testo a immagine' },
+    hero: { highlight: 'Generatore da testo a immagine', description: 'Crea un’immagine dalle parole e migliorala con soggetto, composizione, luce, regole di testo e obiettivo di revisione più chiari. Usalo quando non hai ancora un’immagine di riferimento.', badges: ['Testo in immagine', 'Senza riferimento', 'Gratis online', 'Senza registrazione', 'Correzioni prompt'] },
+    whatIs: { title: 'Che cos’è un generatore da testo a immagine?' },
+    promise: { title: 'Riduci le supposizioni nel prompt' },
+    features: { title: 'Cosa includere nel prompt' },
+    gallery: { title: 'Prompt debole vs. prompt migliore' },
+    howTo: { title: 'Come ottenere risultati migliori dal testo' },
+    faq: { title: 'FAQ generatore da testo a immagine' },
+    cta: { title: 'Scrivi un brief e genera da zero', button: 'Avvia testo in immagine' },
+  },
 }
+
+export const textToImageGeneratorPageCopies: Record<TextToImageGeneratorLocale, AiImageGeneratorPageCopy> = TEXT_TO_IMAGE_GENERATOR_LOCALES.reduce((acc, locale) => {
+  acc[locale] = locale === 'en'
+    ? textToImageGeneratorPageCopy
+    : mergeCopy(getAiImageGeneratorPageCopy(locale), localizedTextToImageOverrides[locale])
+  return acc
+}, {} as Record<TextToImageGeneratorLocale, AiImageGeneratorPageCopy>)
 
 export function isTextToImageGeneratorLocale(
   locale: string,

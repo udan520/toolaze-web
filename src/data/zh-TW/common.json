@@ -36,9 +36,17 @@
       "birthday-copy-and-paste": "生日表情符號複製與貼上",
       "cat-copy-and-paste": "貓咪表情符號複製與貼上"
     },
-    "wan27Image": "Wan 2.7 Image",
+    "wan27Image": "Wan 2.7 圖像",
     "worldCupAiImageGenerator": "世界盃 AI 圖像產生器",
-    "aiImageGenerator": "AI 圖像產生器"
+    "aiImageGenerator": "AI 圖像產生器",
+    "aiBabyGenerator": "AI 寶寶生成器",
+    "aiHairstyleChanger": "AI 髮型變換器",
+    "aiHairColorChanger": "AI 髮色變換器",
+    "textToImageGenerator": "文字轉圖像生成器",
+    "aiImageToImageGenerator": "AI 圖像轉圖像生成器",
+    "seedream50Lite": "Seedream 5.0 Lite",
+    "seedream50Pro": "Seedream 5.0 Pro",
+    "seedance25": "Seedance 2.5"
   },
   "home": {
     "metadata": {
@@ -214,7 +222,8 @@
         "title": "即時開始",
         "desc": "無需創建帳戶即可立即開始使用我們的AI圖片生成器和AI影片生成器。無需電子郵件註冊，不收集個人資訊。只需打開即可創建。"
       }
-    }
+    },
+    "ctaImageEdit": "AI 圖生圖生成器"
   },
   "footer": {
     "aiTools": "AI 工具",
@@ -261,7 +270,11 @@
     "model": "模型",
     "photoRestoration": "照片修復",
     "aiCouplePhotoMaker": "AI 情侶合照",
-    "aiImageGenerator": "AI 圖像產生器"
+    "aiImageGenerator": "AI 圖像產生器",
+    "aiBabyGenerator": "AI 寶寶生成器",
+    "textToImageGenerator": "文字轉圖像生成器",
+    "aiImageToImageGenerator": "AI 圖像轉圖像生成器",
+    "worldCupAiImageGenerator": "世界盃 AI 圖像產生器"
   },
   "about": {
     "metadata": {

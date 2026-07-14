@@ -4,22 +4,98 @@ import { usePathname } from 'next/navigation'
 import type { ReactNode } from 'react'
 
 type WorkspaceMenuIcon = 'home' | 'create' | 'edit' | 'tools' | 'models' | 'library'
+type WorkspaceMenuLabelKey = 'home' | 'createImage' | 'editImage' | 'imageTools' | 'models' | 'library'
 
 interface WorkspaceMenuItem {
-  label: string
+  labelKey: WorkspaceMenuLabelKey
   href: string
   icon: WorkspaceMenuIcon
 }
 
 const SITE_LOCALE_PREFIXES = new Set(['de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it'])
 
+const WORKSPACE_MENU_TRANSLATIONS: Record<string, Record<WorkspaceMenuLabelKey, string>> = {
+  en: {
+    home: 'Home',
+    createImage: 'Create Image',
+    editImage: 'Edit Image',
+    imageTools: 'Image Tools',
+    models: 'Models',
+    library: 'Library',
+  },
+  de: {
+    home: 'Startseite',
+    createImage: 'Bild erstellen',
+    editImage: 'Bild bearbeiten',
+    imageTools: 'Bildtools',
+    models: 'Modelle',
+    library: 'Bibliothek',
+  },
+  ja: {
+    home: 'ホーム',
+    createImage: '画像作成',
+    editImage: '画像編集',
+    imageTools: '画像ツール',
+    models: 'モデル',
+    library: 'ライブラリ',
+  },
+  es: {
+    home: 'Inicio',
+    createImage: 'Crear imagen',
+    editImage: 'Editar imagen',
+    imageTools: 'Herramientas de imagen',
+    models: 'Modelos',
+    library: 'Biblioteca',
+  },
+  'zh-TW': {
+    home: '首頁',
+    createImage: '建立圖像',
+    editImage: '編輯圖像',
+    imageTools: '圖像工具',
+    models: '模型',
+    library: '作品庫',
+  },
+  pt: {
+    home: 'Início',
+    createImage: 'Criar imagem',
+    editImage: 'Editar imagem',
+    imageTools: 'Ferramentas de imagem',
+    models: 'Modelos',
+    library: 'Biblioteca',
+  },
+  fr: {
+    home: 'Accueil',
+    createImage: 'Créer une image',
+    editImage: 'Modifier une image',
+    imageTools: 'Outils image',
+    models: 'Modèles',
+    library: 'Bibliothèque',
+  },
+  ko: {
+    home: '홈',
+    createImage: '이미지 만들기',
+    editImage: '이미지 편집',
+    imageTools: '이미지 도구',
+    models: '모델',
+    library: '라이브러리',
+  },
+  it: {
+    home: 'Pagina iniziale',
+    createImage: 'Crea immagine',
+    editImage: 'Modifica immagine',
+    imageTools: 'Strumenti immagine',
+    models: 'Modelli',
+    library: 'Libreria',
+  },
+}
+
 const WORKSPACE_MENU_ITEMS: WorkspaceMenuItem[] = [
-  { label: 'Home', href: '/', icon: 'home' },
-  { label: 'Create Image', href: '/ai-image-generator', icon: 'create' },
-  { label: 'Edit Image', href: '/ai-image-to-image-generator', icon: 'edit' },
-  { label: 'Image Tools', href: '/ai-tools', icon: 'tools' },
-  { label: 'Models', href: '/model', icon: 'models' },
-  { label: 'Library', href: '/history', icon: 'library' },
+  { labelKey: 'home', href: '/', icon: 'home' },
+  { labelKey: 'createImage', href: '/ai-image-generator', icon: 'create' },
+  { labelKey: 'editImage', href: '/ai-image-to-image-generator', icon: 'edit' },
+  { labelKey: 'imageTools', href: '/ai-tools', icon: 'tools' },
+  { labelKey: 'models', href: '/model', icon: 'models' },
+  { labelKey: 'library', href: '/history', icon: 'library' },
 ]
 
 function getSegments(pathname: string | null): string[] {
@@ -34,11 +110,20 @@ function getPathWithoutLocale(pathname: string | null): string {
   return `/${segments.join('/')}` || '/'
 }
 
-function getLocalizedWorkspaceHref(href: string, pathname: string | null): string {
-  if (href === '/') return '/'
+function getWorkspaceLocale(pathname: string | null): string {
+  const [locale] = getSegments(pathname)
+  return locale && SITE_LOCALE_PREFIXES.has(locale) ? locale : 'en'
+}
 
+function getWorkspaceMenuLabel(labelKey: WorkspaceMenuLabelKey, pathname: string | null): string {
+  const locale = getWorkspaceLocale(pathname)
+  return WORKSPACE_MENU_TRANSLATIONS[locale]?.[labelKey] || WORKSPACE_MENU_TRANSLATIONS.en[labelKey]
+}
+
+function getLocalizedWorkspaceHref(href: string, pathname: string | null): string {
   const segments = getSegments(pathname)
   const localePrefix = segments.length > 0 && SITE_LOCALE_PREFIXES.has(segments[0]) ? segments[0] : ''
+  if (href === '/') return localePrefix ? `/${localePrefix}` : '/'
   return localePrefix ? `/${localePrefix}${href}` : href
 }
 
@@ -129,6 +214,7 @@ function WorkspaceSidebar({ pathname }: { pathname: string | null }) {
     >
       {WORKSPACE_MENU_ITEMS.map((item) => {
         const isActive = isWorkspaceMenuItemActive(item.href, pathname)
+        const label = getWorkspaceMenuLabel(item.labelKey, pathname)
         return (
           <a
             key={item.href}
@@ -141,7 +227,7 @@ function WorkspaceSidebar({ pathname }: { pathname: string | null }) {
             }`}
           >
             <WorkspaceMenuIconSvg icon={item.icon} />
-            <span>{item.label}</span>
+            <span>{label}</span>
           </a>
         )
       })}

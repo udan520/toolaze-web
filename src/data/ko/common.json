@@ -36,9 +36,17 @@
       "birthday-copy-and-paste": "생일 이모지 복사 및 붙여넣기",
       "cat-copy-and-paste": "고양이 이모지 복사 및 붙여넣기"
     },
-    "wan27Image": "Wan 2.7 Image",
+    "wan27Image": "Wan 2.7 이미지",
     "worldCupAiImageGenerator": "월드컵 AI 이미지 생성기",
-    "aiImageGenerator": "AI 이미지 생성기"
+    "aiImageGenerator": "AI 이미지 생성기",
+    "aiBabyGenerator": "AI 아기 생성기",
+    "aiHairstyleChanger": "AI 헤어스타일 변경기",
+    "aiHairColorChanger": "AI 헤어 컬러 변경기",
+    "textToImageGenerator": "텍스트-이미지 생성기",
+    "aiImageToImageGenerator": "AI 이미지-이미지 생성기",
+    "seedream50Lite": "Seedream 5.0 Lite",
+    "seedream50Pro": "Seedream 5.0 Pro",
+    "seedance25": "Seedance 2.5"
   },
   "home": {
     "metadata": {
@@ -214,7 +222,8 @@
         "title": "즉시 시작",
         "desc": "계정을 만들 필요 없이 AI 이미지 생성기 및 AI 비디오 생성기를 즉시 사용하세요. 이메일 가입, 개인 정보 수집이 없습니다. 그냥 열고 만드세요."
       }
-    }
+    },
+    "ctaImageEdit": "AI 이미지-이미지 생성기"
   },
   "footer": {
     "aiTools": "AI 도구",
@@ -261,7 +270,11 @@
     "model": "모델",
     "photoRestoration": "사진 복원",
     "aiCouplePhotoMaker": "AI 커플 사진",
-    "aiImageGenerator": "AI 이미지 생성기"
+    "aiImageGenerator": "AI 이미지 생성기",
+    "aiBabyGenerator": "AI 아기 생성기",
+    "textToImageGenerator": "텍스트-이미지 생성기",
+    "aiImageToImageGenerator": "AI 이미지-이미지 생성기",
+    "worldCupAiImageGenerator": "월드컵 AI 이미지 생성기"
   },
   "about": {
     "metadata": {
@@ -594,7 +607,10 @@
       "generationFailedWithMessage": "생성 실패: {message}",
       "generationTimeout": "생성 시간 초과",
       "dailyLimitReached": "오늘의 무료 한도에 도달했습니다. 내일 다시 이용해 주세요.",
-      "recreateMissingInput": "입력 이미지를 찾을 수 없습니다. 다시 만들기 위해 텍스트에서 이미지로 전환했습니다."
+      "recreateMissingInput": "입력 이미지를 찾을 수 없습니다. 다시 만들기 위해 텍스트에서 이미지로 전환했습니다.",
+      "creditsUsedUpTitle": "크레딧을 모두 사용했습니다",
+      "creditsUsedUpMessage": "크레딧을 모두 사용했습니다. 보너스 이벤트와 활동 보상 등 크레딧을 얻는 더 많은 방법이 곧 제공됩니다.",
+      "creditsUsedUpAction": "확인"
     },
     "emojiPicker": {
       "categoriesTitle": "카테고리",

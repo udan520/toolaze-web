@@ -38,7 +38,15 @@
     },
     "wan27Image": "Wan 2.7 Image",
     "worldCupAiImageGenerator": "Générateur d’images IA Coupe du monde",
-    "aiImageGenerator": "Générateur d’images IA"
+    "aiImageGenerator": "Générateur d’images IA",
+    "aiBabyGenerator": "Générateur de bébé IA",
+    "aiHairstyleChanger": "Changeur de coiffure IA",
+    "aiHairColorChanger": "Changeur de couleur de cheveux IA",
+    "textToImageGenerator": "Générateur texte-image",
+    "aiImageToImageGenerator": "Générateur image-à-image IA",
+    "seedream50Lite": "Seedream 5.0 Lite",
+    "seedream50Pro": "Seedream 5.0 Pro",
+    "seedance25": "Seedance 2.5"
   },
   "home": {
     "metadata": {
@@ -214,7 +222,8 @@
         "title": "Commencez Instantanément",
         "desc": "Commencez à utiliser notre générateur d'images IA et notre générateur de vidéos IA immédiatement sans créer de compte. Aucune inscription par e-mail, aucune collecte d'informations personnelles. Il suffit d'ouvrir et de créer."
       }
-    }
+    },
+    "ctaImageEdit": "Générateur image-à-image IA"
   },
   "footer": {
     "aiTools": "Outils IA",
@@ -261,7 +270,11 @@
     "model": "Modèle",
     "photoRestoration": "Restauration photo",
     "aiCouplePhotoMaker": "Photo couple IA",
-    "aiImageGenerator": "Générateur d’images IA"
+    "aiImageGenerator": "Générateur d’images IA",
+    "aiBabyGenerator": "Générateur de bébé IA",
+    "textToImageGenerator": "Générateur texte-image",
+    "aiImageToImageGenerator": "Générateur image-à-image IA",
+    "worldCupAiImageGenerator": "Générateur d’images IA Coupe du monde"
   },
   "about": {
     "metadata": {
@@ -594,7 +607,10 @@
       "generationFailedWithMessage": "Échec de la génération : {message}",
       "generationTimeout": "Délai de génération dépassé",
       "dailyLimitReached": "La limite gratuite quotidienne est atteinte. Revenez demain.",
-      "recreateMissingInput": "Aucune image d’entrée trouvée. Passage en texte vers image pour recréer."
+      "recreateMissingInput": "Aucune image d’entrée trouvée. Passage en texte vers image pour recréer.",
+      "creditsUsedUpTitle": "Crédits épuisés",
+      "creditsUsedUpMessage": "Vos crédits sont épuisés. D’autres façons d’obtenir des crédits arrivent bientôt, notamment des événements bonus et des récompenses d’activité.",
+      "creditsUsedUpAction": "Compris"
     },
     "emojiPicker": {
       "categoriesTitle": "Catégories",

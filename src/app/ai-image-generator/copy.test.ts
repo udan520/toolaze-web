@@ -173,6 +173,14 @@ test('AI Image Generator localized copy keeps structural asset slots', () => {
   }
 })
 
+test('German AI Image Generator localizes the GPT Image 2 prompts related card title', () => {
+  const en = getAiImageGeneratorPageCopy('en')
+  const de = getAiImageGeneratorPageCopy('de')
+
+  assert.notEqual(de.related.cards[4].title, en.related.cards[4].title)
+  assert.equal(de.related.cards[4].title, 'GPT Image 2 Prompt-Beispiele')
+})
+
 test('AI Image Generator does not reuse another locale as fallback copy', () => {
   const de = getAiImageGeneratorPageCopy('de')
   const ja = getAiImageGeneratorPageCopy('ja')

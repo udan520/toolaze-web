@@ -1357,6 +1357,238 @@ const localizedSectionComplements: Partial<Record<Seedream50LiteLocale, DeepPart
   },
 }
 
+const localizedVisibleComplements: Partial<Record<Seedream50LiteLocale, DeepPartial<Seedream50LiteLandingCopy>>> = {
+  de: {
+    metadata: {
+      openGraphDescription:
+        'Erfahren Sie, wie Seedream 5.0 Lite KI-Bilder mit Schlussfolgern, Online-Kontext, referenzbewusster Bearbeitung und professionellen Layouts verbessert.',
+      twitterDescription:
+        'Entdecken Sie Seedream 5.0 Lite für KI-Bilder mit Schlussfolgern, Online-Kontext und professionellen Design-Abläufen.',
+    },
+    related: {
+      text:
+        'Vergleichen Sie Seedream 5.0 Lite mit weiteren Toolaze Bildmodellen, wenn Sie einen anderen Schwerpunkt bei Generierung, Bearbeitung, Referenzen oder hoher Auflösung brauchen.',
+    },
+    youtube: {
+      examples: [
+        { text: 'Ein praxisnaher Creator-Test zu Ausgabequalität und Bildgenerierung mit Seedream 5.0 Lite.' },
+        { text: 'Ein öffentliches Überblicksvideo dazu, wie Seedream 5.0 Lite KI-Bildabläufe verändert.' },
+        { text: 'Ein kurzes Launch-Video zu Seedream 5.0 Lite im ModelArk API-Ablauf.' },
+      ],
+    },
+    x: {
+      items: [
+        { body: 'BytePlus stellt Seedream 5.0 Lite als nächste Generation der KI-Bilderstellung vor.' },
+        { body: 'BytePlus beschreibt Seedream 5.0 Lite als kompaktes Modell für stärkere visuelle Erstellung.' },
+        { body: 'Poe meldet Seedream 5.0 Lite als hochpräzises Bildmodell mit mehrstufigem visuellen Schlussfolgern und genauer Steuerung.' },
+        { body: 'Seedream 5.0 Lite erreicht einen geteilten Top-5-Platz in der Multi-Image Edit Arena.' },
+        { body: 'fal hebt zum Day-Zero-Start Deep Thinking und integrierte Online-Suche für Seedream 5.0 Lite hervor.' },
+      ],
+    },
+    faq: { title: 'Häufige Fragen zu Seedream 5.0 Lite' },
+  },
+  ja: {
+    metadata: {
+      openGraphDescription:
+        'Seedream 5.0 Liteが推論、オンライン検索文脈、参照を使う編集、プロ向けレイアウトでAI画像生成をどう強化するかを確認できます。',
+      twitterDescription:
+        '推論重視のAI画像生成、オンライン検索文脈、プロ向けデザインワークフローにSeedream 5.0 Liteを活用できます。',
+    },
+    related: {
+      text:
+        '生成、編集、参照制御、高解像度出力のバランスを変えたい場合は、Seedream 5.0 Liteを他のToolaze画像モデルページと比較してください。',
+    },
+    youtube: {
+      examples: [
+        { text: 'Seedream 5.0 Liteの出力品質と実用的な画像生成挙動を扱うクリエイターの実機レビューです。' },
+        { text: 'Seedream 5.0 LiteがAI画像生成ワークフローをどう変えるかを説明する公開概要動画です。' },
+        { text: 'ModelArk APIワークフローを通じてSeedream 5.0 Liteを紹介する短いローンチ動画です。' },
+      ],
+    },
+    x: {
+      items: [
+        { body: 'BytePlusはSeedream 5.0 LiteをAI画像制作の次世代モデルとして紹介しています。' },
+        { body: 'BytePlusはSeedream 5.0 Liteを、より強いビジュアル制作向けのコンパクトなモデルとして説明しています。' },
+        { body: 'Poeでは、Seedream 5.0 Liteが多段階の視覚推論と精密制御に対応する高忠実度画像生成モデルとして紹介されています。' },
+        { body: 'Seedream 5.0 LiteはMulti-Image Edit Arenaで同率トップ5に入っています。' },
+        { body: 'falの公開投稿では、Seedream 5.0 LiteのDeep Thinkingと組み込みオンライン検索が強調されています。' },
+      ],
+    },
+    faq: { title: 'Seedream 5.0 Lite よくある質問' },
+  },
+  es: {
+    metadata: {
+      openGraphDescription:
+        'Descubre cómo Seedream 5.0 Lite mejora la generación de imágenes AI con razonamiento, contexto online, edición con referencias y layouts profesionales.',
+      twitterDescription:
+        'Explora Seedream 5.0 Lite para imágenes AI con razonamiento, contexto online y flujos de diseño profesional.',
+    },
+    related: {
+      text:
+        'Compara Seedream 5.0 Lite con otros modelos de imagen de Toolaze cuando necesites otro equilibrio entre generación, edición, referencias o salida de alta resolución.',
+    },
+    youtube: {
+      examples: [
+        { text: 'Una reseña práctica de creador centrada en la calidad de salida y el comportamiento real de Seedream 5.0 Lite.' },
+        { text: 'Un video público que explica cómo Seedream 5.0 Lite cambia los flujos de generación de imágenes AI.' },
+        { text: 'Un video breve de lanzamiento que presenta Seedream 5.0 Lite mediante el flujo de ModelArk API.' },
+      ],
+    },
+    x: {
+      items: [
+        { body: 'BytePlus presenta Seedream 5.0 Lite como la nueva generación de creación de imágenes AI.' },
+        { body: 'BytePlus describe Seedream 5.0 Lite como un modelo compacto para una creación visual más potente.' },
+        { body: 'Poe anuncia Seedream 5.0 Lite como modelo de alta fidelidad con razonamiento visual por pasos y control preciso.' },
+        { body: 'Seedream 5.0 Lite empata en el top 5 de Multi-Image Edit Arena.' },
+        { body: 'fal destaca el lanzamiento inmediato de Seedream 5.0 Lite con Deep Thinking y búsqueda online integrada.' },
+      ],
+    },
+  },
+  'zh-TW': {
+    metadata: {
+      openGraphDescription:
+        '了解 Seedream 5.0 Lite 如何透過推理、線上搜尋脈絡、參考導向編輯與專業視覺排版，提升 AI 圖像生成。',
+      twitterDescription:
+        '探索 Seedream 5.0 Lite 在推理型 AI 圖像生成、線上搜尋脈絡與專業圖像設計流程中的用途。',
+    },
+    related: {
+      text:
+        '當你需要不同的生成、編輯、參考控制或高解析度輸出平衡時，可將 Seedream 5.0 Lite 與 Toolaze 其他圖像模型頁比較。',
+    },
+    youtube: {
+      examples: [
+        { text: '創作者實測 Seedream 5.0 Lite 的輸出品質與實際圖像生成表現。' },
+        { text: '公開概覽影片，說明 Seedream 5.0 Lite 如何改變 AI 圖像生成流程。' },
+        { text: '透過 ModelArk API 流程介紹 Seedream 5.0 Lite 的短版發布影片。' },
+      ],
+    },
+    x: {
+      items: [
+        { body: 'BytePlus 將 Seedream 5.0 Lite 介紹為新一代 AI 圖像創作模型。' },
+        { body: 'BytePlus 說明 Seedream 5.0 Lite 是面向更強視覺創作的精簡模型。' },
+        { body: 'Poe 宣布 Seedream 5.0 Lite 可用，並描述其具備高保真圖像生成、多步驟視覺推理與精準控制能力。' },
+        { body: 'Seedream 5.0 Lite 在 Multi-Image Edit Arena 並列前五名。' },
+        { body: 'fal 在首日發布中強調 Seedream 5.0 Lite 的 Deep Thinking 與內建線上搜尋。' },
+      ],
+    },
+  },
+  pt: {
+    metadata: {
+      openGraphDescription:
+        'Veja como o Seedream 5.0 Lite melhora a geração de imagens AI com raciocínio, contexto de busca online, edição por referência e layouts profissionais.',
+      twitterDescription:
+        'Explore Seedream 5.0 Lite para imagens AI com raciocínio, contexto online e fluxos de design profissional.',
+    },
+    related: {
+      text:
+        'Compare o Seedream 5.0 Lite com outros modelos de imagem do Toolaze quando precisar de outro equilíbrio entre geração, edição, referências ou saída em alta resolução.',
+    },
+    youtube: {
+      examples: [
+        { text: 'Uma análise prática de criador sobre qualidade de saída e comportamento real do Seedream 5.0 Lite.' },
+        { text: 'Um vídeo público que explica como o Seedream 5.0 Lite muda os fluxos de geração de imagens AI.' },
+        { text: 'Um vídeo curto de lançamento apresentando o Seedream 5.0 Lite pelo fluxo ModelArk API.' },
+      ],
+    },
+    x: {
+      items: [
+        { body: 'A BytePlus apresenta o Seedream 5.0 Lite como a próxima geração de criação de imagens AI.' },
+        { body: 'A BytePlus descreve o Seedream 5.0 Lite como um modelo compacto para criação visual mais forte.' },
+        { body: 'A Poe anuncia o Seedream 5.0 Lite como modelo de alta fidelidade com raciocínio visual em etapas e controle preciso.' },
+        { body: 'O Seedream 5.0 Lite empata no top 5 da Multi-Image Edit Arena.' },
+        { body: 'A fal destaca o lançamento imediato do Seedream 5.0 Lite com Deep Thinking e busca online integrada.' },
+      ],
+    },
+  },
+  fr: {
+    metadata: {
+      openGraphDescription:
+        'Découvrez comment Seedream 5.0 Lite améliore la génération d’images AI avec raisonnement, contexte en ligne, édition par référence et layouts professionnels.',
+      twitterDescription:
+        'Explorez Seedream 5.0 Lite pour des images AI avec raisonnement, contexte en ligne et workflows de design professionnel.',
+    },
+    related: {
+      text:
+        'Comparez Seedream 5.0 Lite aux autres modèles d’image Toolaze lorsque vous cherchez un autre équilibre entre génération, édition, références ou sortie haute résolution.',
+    },
+    youtube: {
+      examples: [
+        { text: 'Un test pratique de créateur centré sur la qualité de sortie et le comportement de génération de Seedream 5.0 Lite.' },
+        { text: 'Une vidéo publique expliquant comment Seedream 5.0 Lite modifie les workflows de génération d’images AI.' },
+        { text: 'Une courte vidéo de lancement présentant Seedream 5.0 Lite via le flux ModelArk API.' },
+      ],
+    },
+    x: {
+      items: [
+        { body: 'BytePlus présente Seedream 5.0 Lite comme la nouvelle génération de création d’images AI.' },
+        { body: 'BytePlus décrit Seedream 5.0 Lite comme un modèle compact pour une création visuelle plus puissante.' },
+        { body: 'Poe annonce Seedream 5.0 Lite comme modèle haute fidélité avec raisonnement visuel par étapes et contrôle précis.' },
+        { body: 'Seedream 5.0 Lite se classe ex aequo dans le top 5 de Multi-Image Edit Arena.' },
+        { body: 'fal met en avant le lancement immédiat de Seedream 5.0 Lite avec Deep Thinking et recherche en ligne intégrée.' },
+      ],
+    },
+    faq: { title: 'Questions fréquentes sur Seedream 5.0 Lite' },
+  },
+  ko: {
+    metadata: {
+      openGraphDescription:
+        'Seedream 5.0 Lite가 추론, 온라인 검색 맥락, 참조 기반 편집, 전문 레이아웃으로 AI 이미지 생성을 어떻게 개선하는지 확인하세요.',
+      twitterDescription:
+        '추론 중심 AI 이미지 생성, 온라인 검색 맥락, 전문 디자인 워크플로에 Seedream 5.0 Lite를 활용하세요.',
+    },
+    related: {
+      text:
+        '생성, 편집, 참조 제어, 고해상도 출력의 균형이 다르게 필요할 때 Seedream 5.0 Lite를 다른 Toolaze 이미지 모델 페이지와 비교하세요.',
+    },
+    youtube: {
+      examples: [
+        { text: 'Seedream 5.0 Lite의 출력 품질과 실제 이미지 생성 동작을 다룬 크리에이터 실사용 리뷰입니다.' },
+        { text: 'Seedream 5.0 Lite가 AI 이미지 생성 워크플로를 어떻게 바꾸는지 설명하는 공개 개요 영상입니다.' },
+        { text: 'ModelArk API 흐름을 통해 Seedream 5.0 Lite를 소개하는 짧은 출시 영상입니다.' },
+      ],
+    },
+    x: {
+      items: [
+        { body: 'BytePlus는 Seedream 5.0 Lite를 차세대 AI 이미지 제작 모델로 소개합니다.' },
+        { body: 'BytePlus는 Seedream 5.0 Lite를 더 강한 시각 제작을 위한 컴팩트 모델로 설명합니다.' },
+        { body: 'Poe는 Seedream 5.0 Lite를 다단계 시각 추론과 정밀 제어를 갖춘 고충실도 이미지 생성 모델로 소개합니다.' },
+        { body: 'Seedream 5.0 Lite는 Multi-Image Edit Arena에서 공동 5위권에 올랐습니다.' },
+        { body: 'fal은 Seedream 5.0 Lite의 즉시 출시와 함께 Deep Thinking 및 내장 온라인 검색을 강조합니다.' },
+      ],
+    },
+    faq: { title: 'Seedream 5.0 Lite 자주 묻는 질문' },
+  },
+  it: {
+    metadata: {
+      openGraphDescription:
+        'Scopri come Seedream 5.0 Lite migliora la generazione di immagini AI con ragionamento, contesto online, editing con riferimenti e layout professionali.',
+      twitterDescription:
+        'Esplora Seedream 5.0 Lite per immagini AI con ragionamento, contesto online e workflow di design professionale.',
+    },
+    related: {
+      text:
+        'Confronta Seedream 5.0 Lite con altri modelli immagine Toolaze quando ti serve un diverso equilibrio tra generazione, editing, riferimenti o output ad alta risoluzione.',
+    },
+    youtube: {
+      examples: [
+        { text: 'Una recensione pratica di creator sulla qualità di output e sul comportamento reale di Seedream 5.0 Lite.' },
+        { text: 'Un video pubblico che spiega come Seedream 5.0 Lite cambia i workflow di generazione immagini AI.' },
+        { text: 'Un breve video di lancio che presenta Seedream 5.0 Lite tramite il workflow ModelArk API.' },
+      ],
+    },
+    x: {
+      items: [
+        { body: 'BytePlus presenta Seedream 5.0 Lite come la nuova generazione della creazione di immagini AI.' },
+        { body: 'BytePlus descrive Seedream 5.0 Lite come modello compatto per una creazione visuale più forte.' },
+        { body: 'Poe annuncia Seedream 5.0 Lite come modello ad alta fedeltà con ragionamento visuale a più passaggi e controllo preciso.' },
+        { body: 'Seedream 5.0 Lite entra a pari merito nella top 5 della Multi-Image Edit Arena.' },
+        { body: 'fal evidenzia il lancio immediato di Seedream 5.0 Lite con Deep Thinking e ricerca online integrata.' },
+      ],
+    },
+    faq: { title: 'Domande frequenti su Seedream 5.0 Lite' },
+  },
+}
+
 function normalizeLocale(locale: string): Seedream50LiteLocale {
   if (locale === 'zh' || locale === 'zh-CN' || locale === 'zh-HK') return 'zh-TW'
   return SEEDREAM_5_0_LITE_LOCALES.includes(locale as Seedream50LiteLocale)
@@ -1403,10 +1635,13 @@ export function getSeedream50LiteLandingCopy(locale: string): Seedream50LiteLand
   const normalized = normalizeLocale(locale)
   const copy = mergeCopy(
     mergeCopy(
-      mergeCopy(en, localeOverrides[normalized]),
-      localizedContentOverrides[normalized],
+      mergeCopy(
+        mergeCopy(en, localeOverrides[normalized]),
+        localizedContentOverrides[normalized],
+      ),
+      localizedSectionComplements[normalized],
     ),
-    localizedSectionComplements[normalized],
+    localizedVisibleComplements[normalized],
   )
 
   return {

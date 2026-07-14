@@ -36,9 +36,17 @@
       "birthday-copy-and-paste": "Copiar y Pegar Emojis de Cumpleaños",
       "cat-copy-and-paste": "Copiar y Pegar Emoji de Gato"
     },
-    "wan27Image": "Wan 2.7 Image",
+    "wan27Image": "Wan 2.7 Imagen",
     "worldCupAiImageGenerator": "Generador de imágenes IA para el Mundial",
-    "aiImageGenerator": "Generador de imágenes IA"
+    "aiImageGenerator": "Generador de imágenes IA",
+    "aiBabyGenerator": "Generador de bebés IA",
+    "aiHairstyleChanger": "Cambiador de peinados IA",
+    "aiHairColorChanger": "Cambiador de color de pelo IA",
+    "textToImageGenerator": "Generador de texto a imagen",
+    "aiImageToImageGenerator": "Generador IA de imagen a imagen",
+    "seedream50Lite": "Seedream 5.0 Lite",
+    "seedream50Pro": "Seedream 5.0 Pro",
+    "seedance25": "Seedance 2.5"
   },
   "home": {
     "metadata": {
@@ -214,7 +222,8 @@
         "title": "Empieza al Instante",
         "desc": "Empieza a usar nuestro generador de imágenes con IA y generador de videos con IA inmediatamente sin crear una cuenta. Sin registro por correo electrónico, sin recopilación de información personal. Simplemente abre y crea."
       }
-    }
+    },
+    "ctaImageEdit": "Generador IA de imagen a imagen"
   },
   "footer": {
     "aiTools": "Herramientas IA",
@@ -261,7 +270,11 @@
     "model": "Modelo",
     "photoRestoration": "Restauración de fotos",
     "aiCouplePhotoMaker": "Foto de pareja IA",
-    "aiImageGenerator": "Generador de imágenes IA"
+    "aiImageGenerator": "Generador de imágenes IA",
+    "aiBabyGenerator": "Generador de bebés IA",
+    "textToImageGenerator": "Generador de texto a imagen",
+    "aiImageToImageGenerator": "Generador IA de imagen a imagen",
+    "worldCupAiImageGenerator": "Generador de imágenes IA para el Mundial"
   },
   "about": {
     "metadata": {
@@ -594,7 +607,10 @@
       "generationFailedWithMessage": "Generación fallida: {message}",
       "generationTimeout": "Tiempo de generación agotado",
       "dailyLimitReached": "Has alcanzado el límite diario gratuito. Vuelve mañana.",
-      "recreateMissingInput": "No se encontró imagen de entrada. Se cambió a texto a imagen para recrear."
+      "recreateMissingInput": "No se encontró imagen de entrada. Se cambió a texto a imagen para recrear.",
+      "creditsUsedUpTitle": "Créditos agotados",
+      "creditsUsedUpMessage": "Has agotado tus créditos. Pronto habrá más formas de conseguir créditos, incluidos eventos de bonificación y recompensas por actividad.",
+      "creditsUsedUpAction": "Entendido"
     },
     "emojiPicker": {
       "categoriesTitle": "Categorías",

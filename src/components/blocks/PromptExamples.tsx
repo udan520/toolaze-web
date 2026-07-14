@@ -1,6 +1,7 @@
 'use client'
 
 import { useMemo, useState } from 'react'
+import { usePathname } from 'next/navigation'
 import { buildPromptExampleUseDetail } from '@/lib/prompt-example-use-detail'
 import type { PromptInsertMode } from '@/lib/prompt-insert-mode'
 
@@ -21,6 +22,86 @@ interface PromptExamplesProps {
   targetMode?: PromptInsertMode
 }
 
+const PROMPT_EXAMPLE_LABELS = {
+  en: {
+    groupAria: 'Hairstyle example groups',
+    women: 'Women',
+    men: 'Men',
+    usePrompt: 'Use prompt',
+    copyPrompt: 'Copy prompt',
+    copiedPrompt: 'Copied prompt',
+  },
+  de: {
+    groupAria: 'Frisur-Beispielgruppen',
+    women: 'Frauen',
+    men: 'Männer',
+    usePrompt: 'Prompt verwenden',
+    copyPrompt: 'Prompt kopieren',
+    copiedPrompt: 'Prompt kopiert',
+  },
+  ja: {
+    groupAria: 'ヘアスタイル例グループ',
+    women: '女性',
+    men: '男性',
+    usePrompt: 'プロンプトを使う',
+    copyPrompt: 'プロンプトをコピー',
+    copiedPrompt: 'プロンプトをコピー済み',
+  },
+  es: {
+    groupAria: 'Grupos de ejemplos de peinados',
+    women: 'Mujeres',
+    men: 'Hombres',
+    usePrompt: 'Usar prompt',
+    copyPrompt: 'Copiar prompt',
+    copiedPrompt: 'Prompt copiado',
+  },
+  'zh-TW': {
+    groupAria: '髮型範例分組',
+    women: '女性',
+    men: '男性',
+    usePrompt: '使用提示詞',
+    copyPrompt: '複製提示詞',
+    copiedPrompt: '已複製提示詞',
+  },
+  pt: {
+    groupAria: 'Grupos de exemplos de penteados',
+    women: 'Mulheres',
+    men: 'Homens',
+    usePrompt: 'Usar prompt',
+    copyPrompt: 'Copiar prompt',
+    copiedPrompt: 'Prompt copiado',
+  },
+  fr: {
+    groupAria: 'Groupes d’exemples de coiffures',
+    women: 'Femmes',
+    men: 'Hommes',
+    usePrompt: 'Utiliser le prompt',
+    copyPrompt: 'Copier le prompt',
+    copiedPrompt: 'Prompt copié',
+  },
+  ko: {
+    groupAria: '헤어스타일 예시 그룹',
+    women: '여성',
+    men: '남성',
+    usePrompt: '프롬프트 사용',
+    copyPrompt: '프롬프트 복사',
+    copiedPrompt: '프롬프트 복사됨',
+  },
+  it: {
+    groupAria: 'Gruppi di esempi di acconciature',
+    women: 'Donna',
+    men: 'Uomo',
+    usePrompt: 'Usa prompt',
+    copyPrompt: 'Copia prompt',
+    copiedPrompt: 'Prompt copiato',
+  },
+} as const
+
+function getPromptExampleLabels(pathname: string | null) {
+  const firstPart = pathname?.split('/').filter(Boolean)[0] || 'en'
+  return PROMPT_EXAMPLE_LABELS[firstPart as keyof typeof PROMPT_EXAMPLE_LABELS] || PROMPT_EXAMPLE_LABELS.en
+}
+
 export default function PromptExamples({
   title = 'Prompt Examples',
   subtitle,
@@ -28,6 +109,7 @@ export default function PromptExamples({
   bgClass = 'bg-white',
   targetMode,
 }: PromptExamplesProps) {
+  const labels = getPromptExampleLabels(usePathname())
   const hasGenderGroups = items.some((item) => item.group === 'women') && items.some((item) => item.group === 'men')
   const [activeGroup, setActiveGroup] = useState('women')
   const [copiedTitle, setCopiedTitle] = useState<string | null>(null)
@@ -82,12 +164,12 @@ export default function PromptExamples({
           <div className="mb-10 flex justify-center">
             <div
               role="tablist"
-              aria-label="Hairstyle example groups"
+              aria-label={labels.groupAria}
               className="inline-flex rounded-2xl border border-slate-200 bg-white p-1 shadow-sm"
             >
               {[
-                { id: 'women', label: 'Women' },
-                { id: 'men', label: 'Men' },
+                { id: 'women', text: labels.women },
+                { id: 'men', text: labels.men },
               ].map((tab) => {
                 const isActive = activeGroup === tab.id
                 return (
@@ -103,7 +185,7 @@ export default function PromptExamples({
                         : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
                     }`}
                   >
-                    {tab.label}
+                    {tab.text}
                   </button>
                 )
               })}
@@ -144,14 +226,14 @@ export default function PromptExamples({
                     className="px-4 py-2 rounded-xl text-sm font-semibold text-white shadow-md hover:shadow-lg transition-all duration-200"
                     style={{ background: 'linear-gradient(135deg, #4F46E5 0%, #9333EA 100%)' }}
                   >
-                    Use Prompt
+                    {labels.usePrompt}
                   </button>
                   <button
                     type="button"
                     onClick={() => handleCopyPrompt(item)}
                     className="px-4 py-2 rounded-xl border border-slate-200 bg-white text-sm font-semibold text-slate-700 transition-colors hover:border-[#C7D2FE] hover:bg-indigo-50 hover:text-[#4F46E5]"
                   >
-                    {copiedTitle === item.title ? 'Copied' : 'Copy Prompt'}
+                    {copiedTitle === item.title ? labels.copiedPrompt : labels.copyPrompt}
                   </button>
                 </div>
               </div>
