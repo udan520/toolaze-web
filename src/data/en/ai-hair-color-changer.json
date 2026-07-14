@@ -1,0 +1,404 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 1,
+    "modelId": "gpt-image-2",
+    "defaultPrompt": "Change the hair color to rose pink while keeping the face, hairstyle, skin tone, and background natural.",
+    "defaultImageUrls": [
+      "/ai-hair-color-changer/default-reference.png"
+    ],
+    "hideModelBranding": true,
+    "displayName": "AI Hair Color Changer",
+    "functionalAcceptance": {
+      "recommendedMode": "preset-first-with-custom-prompt",
+      "reason": "VisualGPT uses visible hair color choices to make the task easier than a prompt-only flow.",
+      "presetTitle": "Choose Hair Color",
+      "presets": [
+        {
+          "label": "Rose Pink",
+          "prompt": "Change the hair color to soft rose pink while keeping the face, hairstyle, skin tone, and background natural.",
+          "swatch": "linear-gradient(135deg, #f9a8d4, #db2777)"
+        },
+        {
+          "label": "Honey Blonde",
+          "prompt": "Change the hair color to warm honey blonde with natural highlights and realistic lighting.",
+          "swatch": "linear-gradient(135deg, #fde68a, #d97706)"
+        },
+        {
+          "label": "Platinum Blonde",
+          "prompt": "Change the hair color to platinum blonde with soft natural shadows and realistic hair texture.",
+          "swatch": "linear-gradient(135deg, #fff7ed, #d6d3d1)"
+        },
+        {
+          "label": "Copper Brown",
+          "prompt": "Change the hair color to copper brown while preserving the original hairstyle, face, and background.",
+          "swatch": "linear-gradient(135deg, #fb923c, #92400e)"
+        },
+        {
+          "label": "Burgundy Red",
+          "prompt": "Change the hair color to deep burgundy red with a natural glossy finish.",
+          "swatch": "linear-gradient(135deg, #fda4af, #991b1b)"
+        },
+        {
+          "label": "Cherry Red",
+          "prompt": "Change the hair color to cherry red with realistic shine, natural roots, and preserved facial features.",
+          "swatch": "linear-gradient(135deg, #ef4444, #7f1d1d)"
+        },
+        {
+          "label": "Silver Gray",
+          "prompt": "Change the hair color to silver gray while keeping the hair texture and facial features unchanged.",
+          "swatch": "linear-gradient(135deg, #f8fafc, #64748b)"
+        },
+        {
+          "label": "Ash Brown",
+          "prompt": "Change the hair color to ash brown with soft cool highlights and realistic shadows.",
+          "swatch": "linear-gradient(135deg, #a8a29e, #57534e)"
+        },
+        {
+          "label": "Jet Black",
+          "prompt": "Change the hair color to jet black with natural shine while preserving the face, hairstyle, and background.",
+          "swatch": "linear-gradient(135deg, #27272a, #020617)"
+        },
+        {
+          "label": "Blue Black",
+          "prompt": "Change the hair color to blue black with subtle cool highlights and realistic shadows.",
+          "swatch": "linear-gradient(135deg, #0f172a, #1d4ed8)"
+        },
+        {
+          "label": "Lavender Purple",
+          "prompt": "Change the hair color to soft lavender purple while keeping the portrait natural and realistic.",
+          "swatch": "linear-gradient(135deg, #ddd6fe, #7c3aed)"
+        },
+        {
+          "label": "Custom"
+        }
+      ]
+    },
+    "sampleImages": [
+      {
+        "url": "/ai-hair-color-changer/rose-pink-before-after.webp",
+        "title": "Rose Pink before and after",
+        "width": 1200,
+        "height": 450
+      },
+      {
+        "url": "/ai-hair-color-changer/honey-blonde-before-after.webp",
+        "title": "Honey Blonde before and after",
+        "width": 1200,
+        "height": 450
+      },
+      {
+        "url": "/ai-hair-color-changer/copper-brown-before-after.webp",
+        "title": "Copper Brown before and after",
+        "width": 1200,
+        "height": 450
+      }
+    ]
+  },
+  "metadata": {
+    "title": "Free AI Hair Color Changer Online | No Signup | Toolaze",
+    "description": "Use Toolaze free AI Hair Color Changer online with no signup and no watermark. Upload a portrait, describe a new hair color, and preview pink, blonde, copper, silver, or blue black looks."
+  },
+  "sectionsOrder": [
+    "intro",
+    "howToUse",
+    "photoTips",
+    "promptExamples",
+    "scenes",
+    "workflowComparison",
+    "features",
+    "testimonials",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Free AI <span class=\"text-gradient\">Hair Color Changer</span> Online",
+    "desc": "Upload a clear portrait, enter the hair color you want, and instantly preview an AI-edited look online with no signup and no watermark."
+  },
+  "howToUse": {
+    "title": "How to Change Hair Color with AI",
+    "steps": [
+      {
+        "title": "Upload a clear portrait",
+        "desc": "Choose a front-facing or near-front-facing photo where your hair is visible from root to end."
+      },
+      {
+        "title": "Describe the color you want",
+        "desc": "Write a direct prompt such as change the hair color to honey blonde, copper brown, silver gray, or rose pink."
+      },
+      {
+        "title": "Generate and refine",
+        "desc": "Preview the edited result instantly, then adjust the prompt if the color looks too strong, too flat, or not close enough to your target shade."
+      }
+    ]
+  },
+  "photoTips": {
+    "title": "Best Photo Tips for Better Hair Color Results",
+    "subtitle": "The reference photo matters. A better input image gives the AI more information about hair shape, texture, lighting, and where the color should appear.",
+    "items": [
+      {
+        "title": "Use a front-facing portrait",
+        "desc": "Front-facing or near-front-facing photos make it easier to preserve the face and edit the visible hair area.",
+        "color": "linear-gradient(135deg, #dbeafe, #6366f1)"
+      },
+      {
+        "title": "Show the full hair shape",
+        "desc": "Use a photo where the hair is not cropped, hidden by a hat, blocked by hands, or lost in strong shadows.",
+        "color": "linear-gradient(135deg, #fce7f3, #db2777)"
+      },
+      {
+        "title": "Keep hair texture visible",
+        "desc": "Clear curls, layers, bangs, braids, and highlights give the edit more structure to follow.",
+        "color": "linear-gradient(135deg, #fef3c7, #f97316)"
+      },
+      {
+        "title": "Avoid extreme angles",
+        "desc": "Back-view photos, heavy motion blur, side profiles, and tiny hair areas are harder to judge in a preview.",
+        "color": "linear-gradient(135deg, #ede9fe, #7c3aed)"
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "Popular Hair Color Prompt Ideas",
+    "subtitle": "Copy a prompt into the tool, then adjust the shade, intensity, or finish.",
+    "items": [
+      {
+        "title": "Rose Pink",
+        "prompt": "Change the hair color to soft rose pink while keeping the face, hairstyle, skin tone, and background natural.",
+        "note": "Good for a playful but still polished color preview.",
+        "color": "linear-gradient(135deg, #fbcfe8, #db2777)",
+        "image": "/ai-hair-color-changer/rose-pink-before-after.webp"
+      },
+      {
+        "title": "Honey Blonde",
+        "prompt": "Change the hair color to warm honey blonde with natural highlights and realistic lighting.",
+        "note": "Use this for a softer salon-style direction.",
+        "color": "linear-gradient(135deg, #fde68a, #d97706)",
+        "image": "/ai-hair-color-changer/honey-blonde-before-after.webp"
+      },
+      {
+        "title": "Copper Brown",
+        "prompt": "Change the hair color to copper brown while preserving the original hairstyle, face, and background.",
+        "note": "A practical warm shade for realistic portrait previews.",
+        "color": "linear-gradient(135deg, #fb923c, #92400e)",
+        "image": "/ai-hair-color-changer/copper-brown-before-after.webp"
+      },
+      {
+        "title": "Burgundy Red",
+        "prompt": "Change the hair color to deep burgundy red with a natural glossy finish.",
+        "note": "Best when the source photo has enough hair volume and light.",
+        "color": "linear-gradient(135deg, #fda4af, #991b1b)",
+        "image": "/ai-hair-color-changer/burgundy-red-before-after.webp"
+      },
+      {
+        "title": "Silver Gray",
+        "prompt": "Change the hair color to silver gray while keeping the hair texture and facial features unchanged.",
+        "note": "Use this for clean silver, gray, or cool-toned looks.",
+        "color": "linear-gradient(135deg, #f8fafc, #64748b)",
+        "image": "/ai-hair-color-changer/silver-gray-before-after.webp"
+      },
+      {
+        "title": "Blue Black",
+        "prompt": "Change the hair color to blue black with subtle cool highlights and realistic shadows.",
+        "note": "A darker creative color direction with more natural contrast.",
+        "color": "linear-gradient(135deg, #0f172a, #1d4ed8)",
+        "image": "/ai-hair-color-changer/blue-black-before-after.webp"
+      }
+    ]
+  },
+  "scenesTitle": "Ways to Use AI Hair Color Changer",
+  "scenes": [
+    {
+      "title": "Pre-dye color preview",
+      "icon": "🎨",
+      "desc": "Try pink, blonde, copper, silver, brunette, or darker tones before committing to a real dye appointment."
+    },
+    {
+      "title": "Profile photo refresh",
+      "icon": "👤",
+      "desc": "Create a new look for avatars, creator profiles, dating profiles, or personal branding drafts."
+    },
+    {
+      "title": "Cosplay and character styling",
+      "icon": "🎭",
+      "desc": "Test bold colors for cosplay, fantasy portraits, themed edits, or character-inspired looks."
+    },
+    {
+      "title": "Social content creation",
+      "icon": "✨",
+      "desc": "Make quick visual variations for posts, thumbnails, stories, and style experiments."
+    },
+    {
+      "title": "Stylist reference",
+      "icon": "💬",
+      "desc": "Create a visual reference to discuss color direction with a stylist without treating the preview as a guaranteed salon result."
+    }
+  ],
+  "workflowComparison": {
+    "title": "When to Use AI Hair Color Changer Instead of a Filter",
+    "subtitle": "Use a simple filter for quick color play. Use Toolaze when you want a prompt-guided preview that can describe shade, finish, realism, and what should stay unchanged.",
+    "columns": [
+      "Goal",
+      "Simple Filter Works When",
+      "Use Toolaze When"
+    ],
+    "rows": [
+      [
+        "Trying one quick color",
+        "You only need a fast pink, blonde, or black overlay for fun.",
+        "You want the result to consider the original portrait, lighting, hairstyle, and skin tone."
+      ],
+      [
+        "Describing a specific shade",
+        "The preset list already has the exact color you want.",
+        "You want wording like soft rose pink, warm honey blonde, copper brown, or blue black with subtle highlights."
+      ],
+      [
+        "Keeping the portrait natural",
+        "A flat preview is enough for a rough idea.",
+        "You want to ask the edit to keep the face, hairstyle, skin tone, background, and realistic shadows natural."
+      ],
+      [
+        "Refining the first result",
+        "You do not need to change anything after the first preview.",
+        "You want to adjust the prompt if the color is too strong, too flat, too warm, or not close enough to the shade you imagined."
+      ],
+      [
+        "Planning a real-life change",
+        "You just want a playful social filter.",
+        "You want a visual reference for a style direction before discussing the idea with a stylist."
+      ]
+    ]
+  },
+  "features": {
+    "title": "AI Hair Color Changer Features",
+    "items": [
+      {
+        "icon": "🖼️",
+        "iconType": "format",
+        "title": "Reference image workflow",
+        "desc": "Start from an uploaded portrait instead of generating a new face from scratch."
+      },
+      {
+        "icon": "✍️",
+        "iconType": "prompt",
+        "title": "Editable prompt control",
+        "desc": "Describe rose pink, honey blonde, copper brown, burgundy red, silver gray, blue black, or your own shade."
+      },
+      {
+        "icon": "🎨",
+        "iconType": "ai",
+        "title": "Natural and creative color ideas",
+        "desc": "Use softer realistic shades or bolder creative colors for portraits, profiles, and visual concepts."
+      },
+      {
+        "icon": "🔁",
+        "iconType": "speed",
+        "title": "Refine the result",
+        "desc": "Adjust the color, finish, lighting, or realism wording when the first preview needs improvement."
+      },
+      {
+        "icon": "📸",
+        "iconType": "quality",
+        "title": "Photo quality guidance",
+        "desc": "The page helps users choose clearer front-facing portraits where the hair is visible."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "Free online workflow",
+        "desc": "Use the page in a browser with no signup and no watermark for fast visual exploration without manual photo editing software."
+      }
+    ]
+  },
+  "testimonials": {
+    "title": "What Users Say About AI Hair Color Changer",
+    "subtitle": "Three common ways people use Toolaze to preview hair color ideas before saving, sharing, or discussing a look.",
+    "items": [
+      {
+        "name": "Mia R.",
+        "role": "Salon color preview",
+        "quote": "I wanted to see whether copper brown would suit my skin tone before booking a color appointment. The prompt controls were more useful than a basic filter because I could ask for warmer highlights and keep the rest of the portrait natural."
+      },
+      {
+        "name": "Jordan L.",
+        "role": "Creator profile refresh",
+        "quote": "I used it for a new profile photo concept and tried pink, silver, and blue black in a few minutes. No signup made it easy to test quickly, and the best result looked polished enough to use as a reference."
+      },
+      {
+        "name": "Priya S.",
+        "role": "Cosplay planning",
+        "quote": "For cosplay, I needed a rough visual before choosing a wig color. Uploading a front-facing portrait and changing only the hair helped me compare shades without rebuilding the whole image from scratch."
+      }
+    ]
+  },
+  "intro": {
+    "title": "What Is an AI Hair Color Changer?",
+    "content": [
+      {
+        "title": "Preview a new hair color from your photo",
+        "text": "An AI hair color changer lets you upload a portrait and preview a new hair color online before dyeing your hair, refreshing a profile photo, planning cosplay, or creating social visuals. Instead of applying a flat color filter, Toolaze uses the reference image and your chosen color direction to edit the hair area while keeping the rest of the portrait visually consistent. Use it free with no signup and no watermark."
+      }
+    ]
+  },
+  "faqTitle": "AI Hair Color Changer FAQ",
+  "faq": [
+    {
+      "q": "How does an AI hair color changer work?",
+      "a": "It uses your uploaded photo as a reference image and follows a text prompt to edit the hair color. The goal is to preview a new hair color while keeping the face, hairstyle, skin tone, and background visually consistent."
+    },
+    {
+      "q": "What kind of photo works best?",
+      "a": "A front-facing or near-front-facing portrait usually works best. Choose a photo where the hair is clearly visible, not covered by a hat, not cropped out, and not hidden in strong shadows."
+    },
+    {
+      "q": "Will the AI change my face or background?",
+      "a": "The prompt should ask the tool to keep the face, hairstyle, skin tone, and background natural. Results can still vary, so review the preview and refine the prompt if something changes more than expected."
+    },
+    {
+      "q": "What hair colors can I try?",
+      "a": "You can describe common shades like rose pink, honey blonde, copper brown, burgundy red, silver gray, brunette, blue black, or a custom color direction in your own words."
+    },
+    {
+      "q": "Can I change dark hair to blonde or pink?",
+      "a": "Yes, you can prompt lighter or brighter colors such as blonde, pink, or silver. For stronger changes, use a clear photo and add details like natural highlights, soft lighting, or keep hair texture realistic."
+    },
+    {
+      "q": "What if the result looks too flat or unnatural?",
+      "a": "Try a more specific prompt. Mention the shade, finish, and realism you want, such as warm copper brown with natural highlights or soft rose pink with realistic shadows."
+    },
+    {
+      "q": "Is Toolaze AI Hair Color Changer free with no signup?",
+      "a": "Yes. You can use the Toolaze AI Hair Color Changer online for free with no signup and no watermark on the standard AI Tools page experience."
+    },
+    {
+      "q": "Can I download the edited hair color photo?",
+      "a": "After generating a result, use the page controls to save or download the preview."
+    },
+    {
+      "q": "Is this a replacement for a professional stylist?",
+      "a": "No. Use it as a visual preview or creative reference. Real dye results depend on hair condition, base color, lighting, products, and professional technique."
+    }
+  ],
+  "moreTools": "Related AI Tools",
+  "moreToolsLinks": [
+    {
+      "title": "AI Image-to-Image Generator",
+      "description": "Edit an uploaded image with a text prompt.",
+      "href": "/ai-image-to-image-generator"
+    },
+    {
+      "title": "AI Tools",
+      "description": "Explore more AI image tools and scene workflows.",
+      "href": "/ai-tools"
+    },
+    {
+      "title": "Photo Restoration",
+      "description": "Improve old or damaged portraits.",
+      "href": "/photo-restoration"
+    }
+  ],
+  "visiblePageType": "scene"
+}

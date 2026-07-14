@@ -2,7 +2,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
-import Breadcrumb from '@/components/Breadcrumb'
 import NanoBananaTool from '@/components/NanoBananaTool'
 import PromptCopyButton from '@/components/PromptCopyButton'
 import { getHomeModelCardImage } from '@/lib/home-model-card-images'
@@ -281,15 +280,24 @@ export async function AiImageGeneratorPageContent({
   toolId = 'ai-image-generator-tool',
   heroPrefix = 'Free ',
   dailyLimitStorageKey = 'ai_image_generator_last_used_date',
+  pageUrl = 'https://toolaze.com/ai-image-generator',
+  contentOrder = 'default',
 }: {
   locale?: string
   pageCopy?: AiImageGeneratorPageCopy
   toolId?: string
   heroPrefix?: string
   dailyLimitStorageKey?: string
+  pageUrl?: string
+  contentOrder?: 'default' | 'text-to-image'
 }) {
   const t = await loadCommonTranslations(locale)
   const copy = pageCopy || getAiImageGeneratorPageCopy(locale)
+  const defaultToolMode = contentOrder === 'text-to-image'
+    ? 'text-to-image'
+    : toolId === 'ai-image-to-image-generator-tool'
+      ? 'image-to-image'
+      : undefined
 
   const faqSchema = {
     '@context': 'https://schema.org',
@@ -322,7 +330,7 @@ export async function AiImageGeneratorPageContent({
     name: copy.hero.highlight,
     applicationCategory: 'MultimediaApplication',
     operatingSystem: 'Web',
-    url: 'https://toolaze.com/ai-image-generator',
+    url: pageUrl,
     description: copy.metadata.description,
   }
 
@@ -342,46 +350,32 @@ export async function AiImageGeneratorPageContent({
       />
       <Navigation initialTranslations={t} />
       <main className="min-h-screen bg-[#F8FAFF] text-slate-950">
-        <section className="px-4 pb-12 pt-5 md:px-6 md:pb-16">
-          <div className="mx-auto max-w-7xl">
-            <Breadcrumb
-              items={[
-                { label: copy.breadcrumbs.home, href: '/' },
-                { label: copy.breadcrumbs.aiTools, href: '/ai-tools' },
-                { label: copy.breadcrumbs.current },
-              ]}
-            />
-
+        <section className="w-full pb-6 pl-0 pr-2 md:pb-12 md:pl-0 md:pr-6">
+          <div className="w-full max-w-full">
             <div
               id={toolId}
-              className="mt-8 flex min-h-[100svh] flex-col overflow-hidden rounded-[2rem] border border-indigo-100 bg-white p-3 shadow-xl shadow-indigo-100/60 md:p-5"
+              className="flex flex-col"
             >
-              <div className="mx-auto mb-5 max-w-4xl shrink-0 text-center">
-                <h1 className="text-[40px] font-extrabold leading-tight tracking-tight text-slate-950 md:text-[44px]">
-                  {heroPrefix}
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">
-                    {copy.hero.highlight}
-                  </span>
-                </h1>
-                <p className="mx-auto mt-4 max-w-3xl text-base leading-7 text-slate-700 md:text-lg">
-                  {copy.hero.description}
-                </p>
-                <div className="mt-5 flex flex-wrap justify-center gap-2">
-                  {copy.hero.badges.map((badge) => (
-                    <span
-                      key={badge}
-                      className="rounded-full border border-indigo-100 bg-[#F8FAFF] px-4 py-2 text-xs font-bold text-indigo-700"
-                    >
-                      {badge}
-                    </span>
-                  ))}
-                </div>
-              </div>
               <NanoBananaTool
                 modelId="gpt-image-2"
                 modelName="GPT Image 2"
                 dailyLimitStorageKey={dailyLimitStorageKey}
+                defaultMode={defaultToolMode}
                 sampleImages={copy.samples}
+                heroBreadcrumbItems={[
+                  { label: copy.breadcrumbs.home, href: '/' },
+                  { label: copy.breadcrumbs.aiTools, href: '/ai-tools' },
+                  { label: copy.breadcrumbs.current },
+                ]}
+                heroTitle={
+                  <>
+                    {heroPrefix}
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">
+                      {copy.hero.highlight}
+                    </span>
+                  </>
+                }
+                heroDescription={copy.hero.description}
                 initialTranslations={t}
               />
             </div>
@@ -401,40 +395,159 @@ export async function AiImageGeneratorPageContent({
           </div>
         </section>
 
-        <section className="px-6 py-16 md:py-20">
+        {contentOrder === 'text-to-image' ? (
+          <>
+            <section id="examples" className="bg-[#F8FAFF] px-4 py-14 md:px-6 md:py-20">
+              <div className="mx-auto max-w-6xl">
+                <PromptSectionHeader title={copy.gallery.title} text={copy.gallery.text} />
+                <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+                  {copy.gallery.examples.map((item) => (
+                    <ImageExampleCard key={item.title} {...item} />
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            <section className="bg-white px-6 py-16 md:py-20">
+              <div className="mx-auto max-w-7xl">
+                <SectionHeading title={copy.howTo.title} description={copy.howTo.description} />
+                <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-5">
+                  {copy.howTo.steps.map((step, index) => (
+                    <article
+                      key={step.title}
+                      className="flex min-h-[260px] flex-col rounded-3xl border border-indigo-100 bg-[#F8FAFF] p-6"
+                    >
+                      <p className="text-sm font-bold text-indigo-600">
+                        {copy.howTo.stepLabel} {index + 1}
+                      </p>
+                      <h3 className="mt-4 text-xl font-extrabold text-slate-950">{step.title}</h3>
+                      <p className="mt-4 line-clamp-5 min-h-[8.75rem] text-sm leading-7 text-slate-600">
+                        {step.text}
+                      </p>
+                    </article>
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            <section className="px-6 py-16 md:py-20">
+              <div className="mx-auto max-w-7xl">
+                <SectionHeading title={copy.useCases.title} description={copy.useCases.description} />
+                <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+                  {copy.useCases.cards.map((item) => (
+                    <TextCard key={item.title} title={item.title} text={item.text} />
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            <section id="prompts" className="bg-[#F8FAFF] px-4 py-14 md:px-6 md:py-20">
+              <div className="mx-auto max-w-6xl">
+                <PromptSectionHeader title={copy.prompts.title} text={copy.prompts.text} />
+                <div className="space-y-6">
+                  {copy.prompts.examples.map((item) => (
+                    <PromptExampleCard
+                      key={item.title}
+                      {...item}
+                      copyLabel={copy.prompts.copyButton}
+                      copiedLabel={copy.prompts.copiedButton}
+                    />
+                  ))}
+                </div>
+              </div>
+            </section>
+          </>
+        ) : (
+          <>
+            <section className="px-6 py-16 md:py-20">
+              <div className="mx-auto max-w-7xl">
+                <SectionHeading title={copy.promise.title} description={copy.promise.text} />
+                <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+                  {copy.promise.cards.map((item) => (
+                    <TextCard key={item.title} title={item.title} text={item.text} />
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            <section id="features" className="bg-white px-4 py-14 md:px-6 md:py-20">
+              <div className="mx-auto max-w-6xl">
+                <PromptSectionHeader title={copy.features.title} text={copy.features.text} />
+                <div className="grid gap-6">
+                  {copy.features.items.map((item, index) => (
+                    <FeatureCard key={item.title} {...item} reversed={index % 2 === 1} />
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            <section id="examples" className="bg-[#F8FAFF] px-4 py-14 md:px-6 md:py-20">
+              <div className="mx-auto max-w-6xl">
+                <PromptSectionHeader title={copy.gallery.title} text={copy.gallery.text} />
+                <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+                  {copy.gallery.examples.map((item) => (
+                    <ImageExampleCard key={item.title} {...item} />
+                  ))}
+                </div>
+              </div>
+            </section>
+          </>
+        )}
+
+        <section className={contentOrder === 'text-to-image' ? 'bg-white px-6 py-16 md:py-20' : 'px-6 py-16 md:py-20'}>
           <div className="mx-auto max-w-7xl">
-            <SectionHeading title={copy.promise.title} description={copy.promise.text} />
-            <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-              {copy.promise.cards.map((item) => (
-                <TextCard key={item.title} title={item.title} text={item.text} />
-              ))}
+            <SectionHeading title={copy.modes.title} description={copy.modes.description} />
+            <div className="mt-10 overflow-x-auto rounded-3xl border border-indigo-100 bg-white">
+              <div className="min-w-[860px]">
+                <div className="grid grid-cols-[0.8fr_1fr_1fr_1fr] bg-[#EEF2FF] text-sm font-extrabold text-slate-950">
+                  <div className="p-4">{copy.modes.headers.label}</div>
+                  <div className="p-4">{copy.modes.headers.aiImageGenerator}</div>
+                  <div className="p-4">{copy.modes.headers.textToImage}</div>
+                  <div className="p-4">{copy.modes.headers.imageToImage}</div>
+                </div>
+                {copy.modes.rows.map((row) => (
+                  <div key={row.label} className="grid grid-cols-[0.8fr_1fr_1fr_1fr] border-t border-indigo-100 text-sm">
+                    <div className="p-4 font-extrabold text-slate-950">{row.label}</div>
+                    <div className="p-4 leading-7 text-slate-600">{row.aiImageGenerator}</div>
+                    <div className="p-4 leading-7 text-slate-600">{row.textToImage}</div>
+                    <div className="p-4 leading-7 text-slate-600">{row.imageToImage}</div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
 
-        <section id="features" className="bg-white px-4 py-14 md:px-6 md:py-20">
-          <div className="mx-auto max-w-6xl">
-            <PromptSectionHeader title={copy.features.title} text={copy.features.text} />
-            <div className="grid gap-6">
-              {copy.features.items.map((item, index) => (
-                <FeatureCard key={item.title} {...item} reversed={index % 2 === 1} />
-              ))}
+        {contentOrder === 'text-to-image' ? (
+          <section id="features" className="bg-white px-4 py-14 md:px-6 md:py-20">
+            <div className="mx-auto max-w-6xl">
+              <PromptSectionHeader title={copy.features.title} text={copy.features.text} />
+              <div className="grid gap-6">
+                {copy.features.items.map((item, index) => (
+                  <FeatureCard key={item.title} {...item} reversed={index % 2 === 1} />
+                ))}
+              </div>
             </div>
-          </div>
-        </section>
-
-        <section id="examples" className="bg-[#F8FAFF] px-4 py-14 md:px-6 md:py-20">
-          <div className="mx-auto max-w-6xl">
-            <PromptSectionHeader title={copy.gallery.title} text={copy.gallery.text} />
-            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-              {copy.gallery.examples.map((item) => (
-                <ImageExampleCard key={item.title} {...item} />
-              ))}
+          </section>
+        ) : (
+          <section id="prompts" className="bg-[#F8FAFF] px-4 py-14 md:px-6 md:py-20">
+            <div className="mx-auto max-w-6xl">
+              <PromptSectionHeader title={copy.prompts.title} text={copy.prompts.text} />
+              <div className="space-y-6">
+                {copy.prompts.examples.map((item) => (
+                  <PromptExampleCard
+                    key={item.title}
+                    {...item}
+                    copyLabel={copy.prompts.copyButton}
+                    copiedLabel={copy.prompts.copiedButton}
+                  />
+                ))}
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        )}
 
-        <section className="px-6 py-16 md:py-20">
+        <section className={contentOrder === 'text-to-image' ? 'px-6 py-16 md:py-20' : 'bg-white px-6 py-16 md:py-20'}>
           <div className="mx-auto max-w-7xl">
             <SectionHeading title={copy.models.title} description={copy.models.description} />
             <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
@@ -478,78 +591,42 @@ export async function AiImageGeneratorPageContent({
           </div>
         </section>
 
-        <section className="bg-white px-6 py-16 md:py-20">
-          <div className="mx-auto max-w-7xl">
-            <SectionHeading title={copy.modes.title} description={copy.modes.description} />
-            <div className="mt-10 overflow-x-auto rounded-3xl border border-indigo-100 bg-white">
-              <div className="min-w-[860px]">
-                <div className="grid grid-cols-[0.8fr_1fr_1fr_1fr] bg-[#EEF2FF] text-sm font-extrabold text-slate-950">
-                  <div className="p-4">{copy.modes.headers.label}</div>
-                  <div className="p-4">{copy.modes.headers.aiImageGenerator}</div>
-                  <div className="p-4">{copy.modes.headers.textToImage}</div>
-                  <div className="p-4">{copy.modes.headers.imageToImage}</div>
+        {contentOrder === 'default' ? (
+          <>
+            <section className="px-6 py-16 md:py-20">
+              <div className="mx-auto max-w-7xl">
+                <SectionHeading title={copy.howTo.title} description={copy.howTo.description} />
+                <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-5">
+                  {copy.howTo.steps.map((step, index) => (
+                    <article
+                      key={step.title}
+                      className="flex min-h-[260px] flex-col rounded-3xl border border-indigo-100 bg-[#F8FAFF] p-6"
+                    >
+                      <p className="text-sm font-bold text-indigo-600">
+                        {copy.howTo.stepLabel} {index + 1}
+                      </p>
+                      <h3 className="mt-4 text-xl font-extrabold text-slate-950">{step.title}</h3>
+                      <p className="mt-4 line-clamp-5 min-h-[8.75rem] text-sm leading-7 text-slate-600">
+                        {step.text}
+                      </p>
+                    </article>
+                  ))}
                 </div>
-                {copy.modes.rows.map((row) => (
-                  <div key={row.label} className="grid grid-cols-[0.8fr_1fr_1fr_1fr] border-t border-indigo-100 text-sm">
-                    <div className="p-4 font-extrabold text-slate-950">{row.label}</div>
-                    <div className="p-4 leading-7 text-slate-600">{row.aiImageGenerator}</div>
-                    <div className="p-4 leading-7 text-slate-600">{row.textToImage}</div>
-                    <div className="p-4 leading-7 text-slate-600">{row.imageToImage}</div>
-                  </div>
-                ))}
               </div>
-            </div>
-          </div>
-        </section>
+            </section>
 
-        <section id="prompts" className="bg-[#F8FAFF] px-4 py-14 md:px-6 md:py-20">
-          <div className="mx-auto max-w-6xl">
-            <PromptSectionHeader title={copy.prompts.title} text={copy.prompts.text} />
-            <div className="space-y-6">
-              {copy.prompts.examples.map((item) => (
-                <PromptExampleCard
-                  key={item.title}
-                  {...item}
-                  copyLabel={copy.prompts.copyButton}
-                  copiedLabel={copy.prompts.copiedButton}
-                />
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="bg-white px-6 py-16 md:py-20">
-          <div className="mx-auto max-w-7xl">
-            <SectionHeading title={copy.howTo.title} description={copy.howTo.description} />
-            <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-5">
-              {copy.howTo.steps.map((step, index) => (
-                <article
-                  key={step.title}
-                  className="flex min-h-[260px] flex-col rounded-3xl border border-indigo-100 bg-[#F8FAFF] p-6"
-                >
-                  <p className="text-sm font-bold text-indigo-600">
-                    {copy.howTo.stepLabel} {index + 1}
-                  </p>
-                  <h3 className="mt-4 text-xl font-extrabold text-slate-950">{step.title}</h3>
-                  <p className="mt-4 line-clamp-5 min-h-[8.75rem] text-sm leading-7 text-slate-600">
-                    {step.text}
-                  </p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="px-6 py-16 md:py-20">
-          <div className="mx-auto max-w-7xl">
-            <SectionHeading title={copy.useCases.title} description={copy.useCases.description} />
-            <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-              {copy.useCases.cards.map((item) => (
-                <TextCard key={item.title} title={item.title} text={item.text} />
-              ))}
-            </div>
-          </div>
-        </section>
+            <section className="px-6 py-16 md:py-20">
+              <div className="mx-auto max-w-7xl">
+                <SectionHeading title={copy.useCases.title} description={copy.useCases.description} />
+                <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+                  {copy.useCases.cards.map((item) => (
+                    <TextCard key={item.title} title={item.title} text={item.text} />
+                  ))}
+                </div>
+              </div>
+            </section>
+          </>
+        ) : null}
 
         <section className="bg-white px-6 py-16 md:py-20">
           <div className="mx-auto max-w-7xl">

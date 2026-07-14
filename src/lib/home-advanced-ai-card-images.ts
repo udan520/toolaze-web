@@ -12,6 +12,18 @@ export const HOME_ADVANCED_AI_CARD_IMAGES = {
     height: 357,
     alt: 'World Cup AI Image Generator — football fan poster template preview',
   },
+  'ai-hair-color-changer': {
+    src: '/ai-hair-color-changer/rose-pink-before-after.webp',
+    width: 1200,
+    height: 450,
+    alt: 'AI Hair Color Changer rose pink before and after preview',
+  },
+  'ai-baby-generator': {
+    src: '/ai-baby-generator/hero-baby-portrait.webp',
+    width: 1200,
+    height: 1600,
+    alt: 'AI Baby Generator cute baby portrait preview',
+  },
   'ai-couple-photo-maker': {
     src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-advanced-ai/ai-couple-photo-maker.jpg',
     width: 800,

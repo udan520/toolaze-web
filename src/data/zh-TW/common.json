@@ -594,7 +594,10 @@
       "generationFailedWithMessage": "生成失敗：{message}",
       "generationTimeout": "生成逾時",
       "dailyLimitReached": "今日免費額度已用完，請明天再來！",
-      "recreateMissingInput": "找不到輸入圖片，已切換為文字轉圖片以重新建立。"
+      "recreateMissingInput": "找不到輸入圖片，已切換為文字轉圖片以重新建立。",
+      "creditsUsedUpTitle": "點數已用完",
+      "creditsUsedUpMessage": "你的點數已用完。更多獲得點數的方式即將推出，包括獎勵活動和任務獎勵。",
+      "creditsUsedUpAction": "知道了"
     },
     "emojiPicker": {
       "categoriesTitle": "分類",

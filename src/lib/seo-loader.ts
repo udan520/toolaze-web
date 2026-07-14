@@ -57,10 +57,10 @@ export const FONT_GENERATOR_SLUGS = [
 ]
 
 // 视频模型 L2 列表（用于「更多工具」推荐，仅推荐同类型 L2）
-export const VIDEO_MODEL_L2S = ['seedance-2', 'kling-3']
+export const VIDEO_MODEL_L2S = ['seedance-2-5', 'seedance-2', 'kling-3']
 
 // 图片模型 L2 列表（用于「更多工具」推荐，仅推荐同类型 L2）
-export const IMAGE_MODEL_L2S = ['gpt-image-2', 'nano-banana-pro', 'nano-banana-2']
+export const IMAGE_MODEL_L2S = ['gpt-image-2', 'nano-banana-pro', 'nano-banana-2', 'seedream-5-0-pro']
 
 // Seedance 2.0 L3 页面 slug 列表（按搜索量/优先级）
 const SEEDANCE_2_SLUGS = [
@@ -73,6 +73,55 @@ const SEEDANCE_2_SLUGS = [
 const WATERMARK_REMOVER_SLUGS_FALLBACK = [
   'how-to-remove-watermark',
 ]
+
+interface QueuedSeoTask {
+  taskId?: string
+  status?: string
+  slug?: string
+  pageType?: string
+}
+
+function readJsonFileSync(filePath: string): any | null {
+  try {
+    if (!fs.existsSync(filePath)) return null
+    return JSON.parse(fs.readFileSync(filePath, 'utf8'))
+  } catch {
+    return null
+  }
+}
+
+function isDevQueuedSeoPreviewEnabled(): boolean {
+  return process.env.NODE_ENV !== 'production'
+}
+
+function getQueuedSeoTasks(pageType?: 'l2' | 'l3_or_topic'): QueuedSeoTask[] {
+  if (!isDevQueuedSeoPreviewEnabled()) return []
+
+  const queuePath = path.join(process.cwd(), '_codex', 'seo-pipeline', 'queue', 'ready.json')
+  const queue = readJsonFileSync(queuePath)
+  const tasks = Array.isArray(queue?.tasks) ? queue.tasks as QueuedSeoTask[] : []
+
+  return tasks.filter((task) => {
+    if (task.status !== 'ready_for_publish' || !task.taskId || !task.slug) return false
+    return pageType ? task.pageType === pageType : true
+  })
+}
+
+function getQueuedSeoContentBySlug(
+  slug: string,
+  locale: string,
+  pageType?: 'l2' | 'l3_or_topic'
+): Record<string, unknown> | null {
+  const task = getQueuedSeoTasks(pageType).find((item) => item.slug === slug)
+  if (!task?.taskId) return null
+
+  const normalizedLocale = SUPPORTED_LOCALES.includes(locale) ? locale : 'en'
+  const taskDir = path.join(process.cwd(), '_codex', 'seo-pipeline', 'tasks', task.taskId, 'content')
+  const data = readJsonFileSync(path.join(taskDir, `${normalizedLocale}.json`)) ||
+    readJsonFileSync(path.join(taskDir, 'en.json'))
+
+  return data && isPublished(data) ? data : null
+}
 
 /** 规范化 watermark-remover 内容格式，兼容旧版/不同结构 */
 function normalizeWatermarkRemoverContent(data: Record<string, unknown>): Record<string, unknown> {
@@ -703,6 +752,11 @@ export async function getL2SeoContent(tool: string, locale: string = 'en') {
       normalizedLocale = 'en'
     }
 
+    const queuedContent = getQueuedSeoContentBySlug(tool, normalizedLocale, 'l2')
+    if (queuedContent) {
+      return queuedContent
+    }
+
     let data: any = null
 
     try {
@@ -756,6 +810,8 @@ export async function getL2SeoContent(tool: string, locale: string = 'en') {
         data = await importL2FlatJson('nano-banana-2', normalizedLocale)
       } else if (tool === 'gpt-image-2') {
         data = await importL2FlatJson('gpt-image-2', normalizedLocale)
+      } else if (tool === 'seedance-2-5') {
+        data = await importL2FlatJson('seedance-2-5', normalizedLocale)
       } else if (tool === 'seedance-2') {
         data = await importL2FlatJson('seedance-2', normalizedLocale)
       } else if (tool === 'kling-3') {
@@ -766,6 +822,12 @@ export async function getL2SeoContent(tool: string, locale: string = 'en') {
         data = await importL2FlatJson('photo-restoration', normalizedLocale)
       } else if (tool === 'ai-couple-photo-maker') {
         data = await importL2FlatJson('ai-couple-photo-maker', normalizedLocale)
+      } else if (tool === 'ai-baby-generator') {
+        data = await importL2FlatJson('ai-baby-generator', normalizedLocale)
+      } else if (tool === 'ai-hairstyle-changer') {
+        data = await importL2FlatJson('ai-hairstyle-changer', normalizedLocale)
+      } else if (tool === 'ai-hair-color-changer') {
+        data = await importL2FlatJson('ai-hair-color-changer', normalizedLocale)
       }
       
       const resolved = data?.default || data
@@ -791,6 +853,8 @@ export async function getL2SeoContent(tool: string, locale: string = 'en') {
             data = await import('@/data/en/nano-banana-2.json')
           } else if (tool === 'gpt-image-2') {
             data = await import('@/data/en/gpt-image-2.json')
+          } else if (tool === 'seedance-2-5') {
+            data = await import('@/data/en/seedance-2-5.json')
           } else if (tool === 'seedance-2') {
             data = await import('@/data/en/seedance-2.json')
           } else if (tool === 'kling-3') {
@@ -801,6 +865,12 @@ export async function getL2SeoContent(tool: string, locale: string = 'en') {
             data = await import('@/data/en/photo-restoration.json')
           } else if (tool === 'ai-couple-photo-maker') {
             data = await import('@/data/en/ai-couple-photo-maker.json')
+          } else if (tool === 'ai-baby-generator') {
+            data = await import('@/data/en/ai-baby-generator.json')
+          } else if (tool === 'ai-hairstyle-changer') {
+            data = await import('@/data/en/ai-hairstyle-changer.json')
+          } else if (tool === 'ai-hair-color-changer') {
+            data = await import('@/data/en/ai-hair-color-changer.json')
           }
           const fallbackResolved = data?.default || data
           if (fallbackResolved && isPublished(fallbackResolved)) {
@@ -887,6 +957,10 @@ export async function getSeoContent(tool: string, slug: string, locale: string =
     }
     if (tool === 'watermark-remover') {
       const independentData = await loadToolJsonFile(locale, 'watermark-remover', slug);
+      if (!independentData) {
+        const queuedContent = getQueuedSeoContentBySlug(slug, locale, 'l3_or_topic')
+        return queuedContent && isPublished(queuedContent) ? normalizeWatermarkRemoverContent(queuedContent) : null;
+      }
       const normalized = independentData ? normalizeWatermarkRemoverContent(independentData) : null;
       return normalized && isPublished(normalized) ? normalized : null;
     }
@@ -943,11 +1017,15 @@ export async function getAllSlugs(tool: string, locale: string = 'en'): Promise<
       return results;
     }
     if (tool === 'watermark-remover') {
-      const candidates = getWatermarkRemoverSlugsFromFs(locale);
+      const queuedSlugs = getQueuedSeoTasks('l3_or_topic')
+        .map((task) => task.slug)
+        .filter((slug): slug is string => Boolean(slug))
+      const candidates = Array.from(new Set([...getWatermarkRemoverSlugsFromFs(locale), ...queuedSlugs]));
       const results: string[] = [];
       for (const slug of candidates) {
         const d = await loadToolJsonFile(locale, 'watermark-remover', slug);
-        const normalized = d ? normalizeWatermarkRemoverContent(d) : null;
+        const queuedContent = d ? null : getQueuedSeoContentBySlug(slug, locale, 'l3_or_topic');
+        const normalized = d ? normalizeWatermarkRemoverContent(d) : queuedContent;
         if (normalized && isPublished(normalized)) results.push(slug);
       }
       return results;

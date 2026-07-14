@@ -1,0 +1,404 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 1,
+    "modelId": "gpt-image-2",
+    "defaultPrompt": "Change the hair color to rose pink while keeping the face, hairstyle, skin tone, and background natural.",
+    "defaultImageUrls": [
+      "/ai-hair-color-changer/default-reference.png"
+    ],
+    "hideModelBranding": true,
+    "displayName": "AIヘアカラー変更ツール",
+    "functionalAcceptance": {
+      "recommendedMode": "preset-first-with-custom-prompt",
+      "reason": "VisualGPT uses visible hair color choices to make the task easier than a prompt-only flow.",
+      "presetTitle": "髪色を選択",
+      "presets": [
+        {
+          "label": "ローズピンク",
+          "prompt": "Change the hair color to soft rose pink while keeping the face, hairstyle, skin tone, and background natural.",
+          "swatch": "linear-gradient(135deg, #f9a8d4, #db2777)"
+        },
+        {
+          "label": "ハニーブロンド",
+          "prompt": "Change the hair color to warm honey blonde with natural highlights and realistic lighting.",
+          "swatch": "linear-gradient(135deg, #fde68a, #d97706)"
+        },
+        {
+          "label": "プラチナブロンド",
+          "prompt": "Change the hair color to platinum blonde with soft natural shadows and realistic hair texture.",
+          "swatch": "linear-gradient(135deg, #fff7ed, #d6d3d1)"
+        },
+        {
+          "label": "コッパーブラウン",
+          "prompt": "Change the hair color to copper brown while preserving the original hairstyle, face, and background.",
+          "swatch": "linear-gradient(135deg, #fb923c, #92400e)"
+        },
+        {
+          "label": "バーガンディレッド",
+          "prompt": "Change the hair color to deep burgundy red with a natural glossy finish.",
+          "swatch": "linear-gradient(135deg, #fda4af, #991b1b)"
+        },
+        {
+          "label": "チェリーレッド",
+          "prompt": "Change the hair color to cherry red with realistic shine, natural roots, and preserved facial features.",
+          "swatch": "linear-gradient(135deg, #ef4444, #7f1d1d)"
+        },
+        {
+          "label": "シルバーグレー",
+          "prompt": "Change the hair color to silver gray while keeping the hair texture and facial features unchanged.",
+          "swatch": "linear-gradient(135deg, #f8fafc, #64748b)"
+        },
+        {
+          "label": "アッシュブラウン",
+          "prompt": "Change the hair color to ash brown with soft cool highlights and realistic shadows.",
+          "swatch": "linear-gradient(135deg, #a8a29e, #57534e)"
+        },
+        {
+          "label": "ジェットブラック",
+          "prompt": "Change the hair color to jet black with natural shine while preserving the face, hairstyle, and background.",
+          "swatch": "linear-gradient(135deg, #27272a, #020617)"
+        },
+        {
+          "label": "ブルーブラック",
+          "prompt": "Change the hair color to blue black with subtle cool highlights and realistic shadows.",
+          "swatch": "linear-gradient(135deg, #0f172a, #1d4ed8)"
+        },
+        {
+          "label": "ラベンダーパープル",
+          "prompt": "Change the hair color to soft lavender purple while keeping the portrait natural and realistic.",
+          "swatch": "linear-gradient(135deg, #ddd6fe, #7c3aed)"
+        },
+        {
+          "label": "カスタム"
+        }
+      ]
+    },
+    "sampleImages": [
+      {
+        "url": "/ai-hair-color-changer/rose-pink-before-after.webp",
+        "title": "Rose Pink before and after",
+        "width": 1200,
+        "height": 450
+      },
+      {
+        "url": "/ai-hair-color-changer/honey-blonde-before-after.webp",
+        "title": "Honey Blonde before and after",
+        "width": 1200,
+        "height": 450
+      },
+      {
+        "url": "/ai-hair-color-changer/copper-brown-before-after.webp",
+        "title": "Copper Brown before and after",
+        "width": 1200,
+        "height": 450
+      }
+    ]
+  },
+  "metadata": {
+    "title": "無料AIヘアカラー変更ツール | 登録不要 | Toolaze",
+    "description": "Toolazeの無料AIヘアカラー変更ツールをオンラインで利用できます。登録不要、ウォーターマークなし。ポートレートをアップロードし、新しい髪色を指定して、ピンク、ブロンド、コッパー、シルバー、ブルーブラックを試せます。"
+  },
+  "sectionsOrder": [
+    "intro",
+    "howToUse",
+    "photoTips",
+    "promptExamples",
+    "scenes",
+    "workflowComparison",
+    "features",
+    "testimonials",
+    "faq"
+  ],
+  "hero": {
+    "h1": "無料オンライン <span class=\"text-gradient\">AIヘアカラー変更ツール</span>",
+    "desc": "鮮明なポートレートをアップロードし、希望の髪色を選択または入力すると、登録不要・ウォーターマークなしでAI編集後の見た目をすぐにプレビューできます。"
+  },
+  "howToUse": {
+    "title": "AIで髪色を変える方法",
+    "steps": [
+      {
+        "title": "鮮明なポートレートをアップロード",
+        "desc": "髪が根元から毛先まで見える、正面または正面に近い写真を選びます。"
+      },
+      {
+        "title": "希望の色を説明",
+        "desc": "ハニーブロンド、コッパーブラウン、シルバーグレー、ローズピンクに変える、など直接的な指示を書きます。"
+      },
+      {
+        "title": "生成して調整",
+        "desc": "編集結果をすぐに確認し、色が強すぎる、平坦すぎる、または目標の色に近くない場合は指示を調整します。"
+      }
+    ]
+  },
+  "photoTips": {
+    "title": "髪色の仕上がりを良くする写真のコツ",
+    "subtitle": "参照写真は重要です。より良い入力画像ほど、髪の形、質感、光、色を適用すべき範囲をAIが理解しやすくなります。",
+    "items": [
+      {
+        "title": "正面のポートレートを使う",
+        "desc": "正面または正面に近い写真は、顔を保ちながら見えている髪の範囲を編集しやすくします。",
+        "color": "linear-gradient(135deg, #dbeafe, #6366f1)"
+      },
+      {
+        "title": "髪全体の形を見せる",
+        "desc": "髪が切れている、帽子で隠れている、手で遮られている、強い影に沈んでいる写真は避けます。",
+        "color": "linear-gradient(135deg, #fce7f3, #db2777)"
+      },
+      {
+        "title": "髪の質感を見せる",
+        "desc": "カール、レイヤー、前髪、三つ編み、ハイライトが明確だと、編集が追いやすい構造になります。",
+        "color": "linear-gradient(135deg, #fef3c7, #f97316)"
+      },
+      {
+        "title": "極端な角度を避ける",
+        "desc": "後ろ姿、強いブレ、横顔、髪の範囲が小さい写真は、プレビューで判断しにくくなります。",
+        "color": "linear-gradient(135deg, #ede9fe, #7c3aed)"
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "人気の髪色プロンプト例",
+    "subtitle": "プロンプトをツールにコピーし、色味、強さ、仕上がりを調整してください。",
+    "items": [
+      {
+        "title": "ローズピンク",
+        "prompt": "Change the hair color to soft rose pink while keeping the face, hairstyle, skin tone, and background natural.",
+        "note": "遊び心がありつつ整った色味のプレビューに向いています。",
+        "color": "linear-gradient(135deg, #fbcfe8, #db2777)",
+        "image": "/ai-hair-color-changer/rose-pink-before-after.webp"
+      },
+      {
+        "title": "ハニーブロンド",
+        "prompt": "Change the hair color to warm honey blonde with natural highlights and realistic lighting.",
+        "note": "柔らかいサロン風の方向性に使えます。",
+        "color": "linear-gradient(135deg, #fde68a, #d97706)",
+        "image": "/ai-hair-color-changer/honey-blonde-before-after.webp"
+      },
+      {
+        "title": "プラチナブロンド",
+        "prompt": "Change the hair color to copper brown while preserving the original hairstyle, face, and background.",
+        "note": "リアルなポートレートプレビューに使いやすい暖色系です。",
+        "color": "linear-gradient(135deg, #fb923c, #92400e)",
+        "image": "/ai-hair-color-changer/copper-brown-before-after.webp"
+      },
+      {
+        "title": "コッパーブラウン",
+        "prompt": "Change the hair color to deep burgundy red with a natural glossy finish.",
+        "note": "元写真に十分な髪の量と光がある場合に最適です。",
+        "color": "linear-gradient(135deg, #fda4af, #991b1b)",
+        "image": "/ai-hair-color-changer/burgundy-red-before-after.webp"
+      },
+      {
+        "title": "バーガンディレッド",
+        "prompt": "Change the hair color to silver gray while keeping the hair texture and facial features unchanged.",
+        "note": "クリーンなシルバー、グレー、寒色系の見た目に使えます。",
+        "color": "linear-gradient(135deg, #f8fafc, #64748b)",
+        "image": "/ai-hair-color-changer/silver-gray-before-after.webp"
+      },
+      {
+        "title": "チェリーレッド",
+        "prompt": "Change the hair color to blue black with subtle cool highlights and realistic shadows.",
+        "note": "自然なコントラストを持つ暗めのクリエイティブカラーです。",
+        "color": "linear-gradient(135deg, #0f172a, #1d4ed8)",
+        "image": "/ai-hair-color-changer/blue-black-before-after.webp"
+      }
+    ]
+  },
+  "scenesTitle": "AIヘアカラー変更ツールの使い方",
+  "scenes": [
+    {
+      "title": "染める前の色プレビュー",
+      "icon": "🎨",
+      "desc": "実際にカラー予約をする前に、ピンク、ブロンド、コッパー、シルバー、ブラウン、暗めの色を試せます。"
+    },
+    {
+      "title": "プロフィール写真の更新",
+      "icon": "👤",
+      "desc": "アバター、クリエイタープロフィール、デート用プロフィール、個人ブランディング案の新しい見た目を作れます。"
+    },
+    {
+      "title": "コスプレとキャラクター風スタイル",
+      "icon": "🎭",
+      "desc": "コスプレ、ファンタジーポートレート、テーマ編集、キャラクター風の見た目に大胆な色を試せます。"
+    },
+    {
+      "title": "SNSコンテンツ制作",
+      "icon": "✨",
+      "desc": "投稿、サムネイル、ストーリー、スタイル実験用のビジュアル違いをすばやく作成できます。"
+    },
+    {
+      "title": "スタイリスト向け参考画像",
+      "icon": "💬",
+      "desc": "プレビューを確実なサロン結果として扱うのではなく、色の方向性を相談するための視覚的な参考にできます。"
+    }
+  ],
+  "workflowComparison": {
+    "title": "フィルターではなくAIヘアカラー変更ツールを使う場面",
+    "subtitle": "簡単な色遊びにはシンプルなフィルターが向いています。色味、仕上がり、リアルさ、変えたくない部分まで指定したい場合はToolazeが便利です。",
+    "columns": [
+      "目的",
+      "シンプルなフィルターで十分な場合",
+      "Toolazeが向いている場合"
+    ],
+    "rows": [
+      [
+        "すばやく1色を試す",
+        "楽しく試すためにピンク、ブロンド、黒の簡単な重ね塗りだけが必要な場合。",
+        "元のポートレート、光、髪型、肌色を考慮した結果にしたい場合。"
+      ],
+      [
+        "特定の色味を指定する",
+        "プリセット一覧に欲しい色がそのままある場合。",
+        "柔らかいローズピンク、暖かいハニーブロンド、コッパーブラウン、控えめなハイライト付きブルーブラックなどを文章で指定したい場合。"
+      ],
+      [
+        "自然なポートレートを保つ",
+        "大まかなイメージとして平坦なプレビューで十分な場合。",
+        "顔、髪型、肌色、背景、自然な影を保つように編集へ指示したい場合。"
+      ],
+      [
+        "最初の結果を調整する",
+        "最初のプレビュー後に何も変える必要がない場合。",
+        "色が強すぎる、平坦すぎる、暖かすぎる、または想像した色に近くないときにプロンプトを調整したい場合。"
+      ],
+      [
+        "実際の変化を計画する",
+        "遊び用のSNSフィルターだけが欲しい場合。",
+        "スタイリストと相談する前に、スタイル方向の視覚的な参考が欲しい場合。"
+      ]
+    ]
+  },
+  "features": {
+    "title": "AIヘアカラー変更ツールの機能",
+    "items": [
+      {
+        "icon": "🖼️",
+        "iconType": "format",
+        "title": "参照画像ワークフロー",
+        "desc": "新しい顔を一から生成するのではなく、アップロードしたポートレートから始めます。"
+      },
+      {
+        "icon": "✍️",
+        "iconType": "prompt",
+        "title": "編集可能なプロンプト操作",
+        "desc": "ローズピンク、ハニーブロンド、コッパーブラウン、バーガンディレッド、シルバーグレー、ブルーブラック、または独自の色を説明できます。"
+      },
+      {
+        "icon": "🎨",
+        "iconType": "ai",
+        "title": "自然でクリエイティブな色案",
+        "desc": "ポートレート、プロフィール、ビジュアルコンセプトに、柔らかいリアル系の色から大胆なクリエイティブカラーまで使えます。"
+      },
+      {
+        "icon": "🔁",
+        "iconType": "speed",
+        "title": "結果を調整",
+        "desc": "最初のプレビューを改善したいときに、色、仕上がり、光、リアルさの表現を調整できます。"
+      },
+      {
+        "icon": "📸",
+        "iconType": "quality",
+        "title": "写真品質のガイド",
+        "desc": "髪が見える、より鮮明な正面ポートレートを選びやすくします。"
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "無料オンラインワークフロー",
+        "desc": "手動の写真編集ソフトを使わず、ブラウザ上で登録不要・ウォーターマークなしの高速なビジュアル探索ができます。"
+      }
+    ]
+  },
+  "testimonials": {
+    "title": "AIヘアカラー変更ツールのユーザーの声",
+    "subtitle": "保存、共有、相談の前に、Toolazeで髪色アイデアをプレビューする代表的な3つの使い方です。",
+    "items": [
+      {
+        "name": "Mia R.",
+        "role": "サロンカラーのプレビュー",
+        "quote": "カラー予約をする前に、コッパーブラウンが自分の肌色に合うか見たかったです。基本的なフィルターよりプロンプト操作が便利で、暖かめのハイライトを頼みながら残りのポートレートを自然に保てました。"
+      },
+      {
+        "name": "Jordan L.",
+        "role": "クリエイタープロフィール更新",
+        "quote": "新しいプロフィール写真の案として使い、数分でピンク、シルバー、ブルーブラックを試しました。登録不要で素早く試せて、一番良い結果は参考画像として十分きれいでした。"
+      },
+      {
+        "name": "Priya S.",
+        "role": "コスプレ計画",
+        "quote": "コスプレ用にウィッグの色を選ぶ前、ざっくりした見た目が必要でした。正面ポートレートをアップロードして髪だけを変えることで、画像全体を作り直さず色を比較できました。"
+      }
+    ]
+  },
+  "intro": {
+    "title": "AIヘアカラー変更ツールとは？",
+    "content": [
+      {
+        "title": "写真から新しい髪色をプレビュー",
+        "text": "AIヘアカラー変更ツールでは、ポートレートをアップロードして、髪を染める前、プロフィール写真を更新する前、コスプレを計画する前、SNS用ビジュアルを作る前に、新しい髪色をオンラインでプレビューできます。平坦な色フィルターをかけるだけでなく、Toolazeは参照画像と希望の色方向を使って髪の範囲を編集し、ポートレート全体の見た目を自然に保ちます。無料、登録不要、ウォーターマークなしで使えます。"
+      }
+    ]
+  },
+  "faqTitle": "AIヘアカラー変更ツール FAQ",
+  "faq": [
+    {
+      "q": "AIヘアカラー変更ツールはどのように動作しますか？",
+      "a": "アップロードした写真を参照画像として使い、テキストプロンプトに従って髪色を編集します。顔、髪型、肌色、背景の一貫性を保ちながら、新しい髪色をプレビューすることが目的です。"
+    },
+    {
+      "q": "どのような写真が最適ですか？",
+      "a": "通常は正面または正面に近いポートレートが最適です。髪がはっきり見え、帽子で隠れておらず、切れておらず、強い影に隠れていない写真を選んでください。"
+    },
+    {
+      "q": "AIは顔や背景を変えますか？",
+      "a": "プロンプトでは、顔、髪型、肌色、背景を自然に保つようツールに指示してください。結果は変わることがあるため、プレビューを確認し、予想以上に変化した場合はプロンプトを調整してください。"
+    },
+    {
+      "q": "どんな髪色を試せますか？",
+      "a": "ローズピンク、ハニーブロンド、コッパーブラウン、バーガンディレッド、シルバーグレー、ブラウン、ブルーブラック、または自分の言葉でカスタムカラーを指定できます。"
+    },
+    {
+      "q": "暗い髪をブロンドやピンクにできますか？",
+      "a": "はい。ブロンド、ピンク、シルバーなど明るい色を指定できます。大きく変える場合は鮮明な写真を使い、自然なハイライト、柔らかい光、リアルな髪質などの詳細を追加してください。"
+    },
+    {
+      "q": "結果が平坦または不自然に見える場合は？",
+      "a": "より具体的なプロンプトを試してください。自然なハイライト付きの暖かいコッパーブラウン、リアルな影のある柔らかいローズピンクなど、色味、仕上がり、リアルさを指定します。"
+    },
+    {
+      "q": "ToolazeのAIヘアカラー変更ツールは無料で登録不要ですか？",
+      "a": "はい。ToolazeのAIヘアカラー変更ツールは、標準のAIツール体験でオンライン無料、登録不要、ウォーターマークなしで利用できます。"
+    },
+    {
+      "q": "編集した髪色写真をダウンロードできますか？",
+      "a": "結果を生成した後、ページの操作からプレビューを保存またはダウンロードできます。"
+    },
+    {
+      "q": "プロのスタイリストの代わりになりますか？",
+      "a": "いいえ。視覚的なプレビューまたはクリエイティブな参考として使ってください。実際の染色結果は髪の状態、ベースカラー、光、製品、専門技術によって変わります。"
+    }
+  ],
+  "moreTools": "関連AIツール",
+  "moreToolsLinks": [
+    {
+      "title": "AI画像から画像ジェネレーター",
+      "description": "アップロードした画像をテキストプロンプトで編集します。",
+      "href": "/ai-image-to-image-generator"
+    },
+    {
+      "title": "AI服装変更ツール",
+      "description": "参照写真から服装変更をプレビューします。",
+      "href": "/ai-tools"
+    },
+    {
+      "title": "写真修復",
+      "description": "古い写真や傷んだポートレートを改善します。",
+      "href": "/photo-restoration"
+    }
+  ],
+  "visiblePageType": "scene"
+}

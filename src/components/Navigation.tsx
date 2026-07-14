@@ -27,17 +27,25 @@ const defaultNavTranslations = {
   watermarkRemover: 'Watermark Remover',
   photoRestoration: 'Photo Restoration',
   aiCouplePhotoMaker: 'AI Couple Photo Maker',
+  aiBabyGenerator: 'AI Baby Generator',
+  aiHairstyleChanger: 'AI Hairstyle Changer',
+  aiHairColorChanger: 'AI Hair Color Changer',
   worldCupAiImageGenerator: 'World Cup AI Image Generator',
   fontGenerator: 'Font Generator',
   emojiCopyAndPaste: 'Emoji Copy & Paste',
   aiImage: 'AI Image',
   aiImageGenerator: 'AI Image Generator',
+  textToImageGenerator: 'Text to Image Generator',
+  aiImageToImageGenerator: 'AI Image to Image Generator',
   aiVideo: 'AI Video',
   nanoBananaPro: 'Nano Banana Pro',
   nanoBanana2: 'Nano Banana 2',
   gptImage2: 'GPT Image 2',
   wan27Image: 'Wan 2.7 Image',
   seedream45: 'Seedream 4.5',
+  seedream50Lite: 'Seedream 5.0 Lite',
+  seedream50Pro: 'Seedream 5.0 Pro',
+  seedance25: 'Seedance 2.5',
   seedance2: 'Seedance 2.0',
   kling3: 'Kling 3.0',
   promptLibrary: 'Prompts',
@@ -61,14 +69,54 @@ const defaultNavTranslations = {
   },
 }
 
+const defaultAuthTranslations = {
+  signIn: 'Sign in',
+  openAccountMenu: 'Open account menu',
+  closeNotification: 'Close notification',
+  modalTitle: 'Sign in to Toolaze',
+  modalEyebrow: 'Toolaze account',
+  modalDescription: 'Continue with Google to save your generation access and use Toolaze AI tools.',
+  newUserBonus: 'New users receive 10 credits after signing up.',
+  modalGoogleButton: 'Continue with Google',
+  modalGoogleLoading: 'Connecting...',
+  modalTerms: 'By continuing, you agree to use Toolaze with your Google account.',
+  closeDialog: 'Close sign in dialog',
+  noticeSignInFailedTitle: 'Sign-in failed',
+  noticeSignInFailedMessage: 'Google sign-in could not be completed. Please try again.',
+  noticeSignedInTitle: 'Signed in successfully',
+  noticeSignedInMessage: 'You can now use Toolaze AI tools with your account.',
+  noticeNewUserCreditsTitle: 'Welcome to Toolaze',
+  noticeNewUserCreditsMessage: 'Your 10 signup credits are ready.',
+  signOut: 'Sign out',
+}
+
+const defaultAccountTranslations = {
+  availableCredits: 'Available credits',
+  creditHistory: 'Credit history',
+  noCreditActivity: 'No credit activity yet.',
+  balance: 'Balance',
+  credits: 'credits',
+  seeAll: 'See all',
+  history: 'History',
+  viewAll: 'View all',
+  signOut: 'Sign out',
+}
+
 const AI_TOOLS_DEMO_IMAGES = {
+  aiBabyGenerator: '/ai-baby-generator/hero-baby-portrait.webp',
+  aiHairstyleChanger: '/ai-hairstyle-changer/hero-before-after.webp',
+  aiHairColorChanger: '/ai-hair-color-changer/rose-pink-before-after.webp',
   aiImageGenerator:
     'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/gpt-image-2.jpg',
+  textToImageGenerator:
+    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/ai-image-generator/text-to-image-generator.webp',
   watermarkRemover:
     'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=400&q=80',
   photoRestoration:
     'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=400&q=80',
   aiCouplePhotoMaker: '/ai-couple-photo-maker/rainy-eiffel-4x3.jpg',
+  aiImageToImageGenerator:
+    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/gpt-image-2/feature-image-editing.webp',
   worldCupAiImageGenerator:
     'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d67aebd7cde5431abd3a7bb74a89bac1.webp',
 }
@@ -82,16 +130,134 @@ function getInitialNavTranslations(initialTranslations?: any) {
   }
 }
 
+function getInitialAuthTranslations(initialTranslations?: any) {
+  return {
+    ...defaultAuthTranslations,
+    ...(initialTranslations?.auth || {}),
+  }
+}
+
+function getInitialAccountTranslations(initialTranslations?: any) {
+  return {
+    ...defaultAccountTranslations,
+    ...(initialTranslations?.account || {}),
+  }
+}
+
+type AuthUser = {
+  id?: string
+  email?: string
+  name?: string | null
+  avatarUrl?: string | null
+}
+
+type CreditTransaction = {
+  id: string
+  amount: number
+  balanceAfter: number
+  description: string
+  createdAt: string
+}
+
+type CreditSummary = {
+  balance: number
+  transactions: CreditTransaction[]
+}
+
+type TopNotice = {
+  type: 'success' | 'error'
+  title: string
+  message: string
+}
+
+const emptyCreditSummary: CreditSummary = {
+  balance: 0,
+  transactions: [],
+}
+
+const TOP_NOTICE_DURATION_MS = 3000
+const AUTH_POPUP_NAME = 'toolaze-google-auth'
+const AUTH_POPUP_MESSAGE_TYPE = 'toolaze:auth-result'
+const AUTH_CACHE_STORAGE_KEY = 'toolaze.authSnapshot'
+const LOCAL_AUTH_PROVIDER_ORIGIN = 'https://toolaze.com'
+const AUTH_POPUP_FEATURES = [
+  'popup=yes',
+  'width=520',
+  'height=720',
+  'left=120',
+  'top=80',
+  'resizable=yes',
+  'scrollbars=yes',
+  'toolbar=no',
+  'menubar=no',
+  'location=yes',
+  'status=no',
+].join(',')
+const DEV_LOGIN_PASSWORD_PLACEHOLDER = 'test123456'
+
+type AuthPopupMessage = {
+  type: typeof AUTH_POPUP_MESSAGE_TYPE
+  status: 'success' | 'error'
+  error?: string
+  localSessionToken?: string
+  user?: AuthUser | null
+  credits?: CreditSummary | null
+  newUserCredits?: number
+}
+
 interface NavigationProps {
   initialTranslations?: any
+}
+
+type AuthSnapshot = {
+  user: AuthUser
+  credits: CreditSummary
+}
+
+function readCachedAuthSnapshot(): AuthSnapshot | null {
+  if (typeof window === 'undefined') return null
+
+  try {
+    const raw = window.sessionStorage.getItem(AUTH_CACHE_STORAGE_KEY)
+    if (!raw) return null
+
+    const data = JSON.parse(raw)
+    if (!data?.user || typeof data.user !== 'object') return null
+
+    return {
+      user: data.user,
+      credits: data.credits || emptyCreditSummary,
+    }
+  } catch {
+    return null
+  }
+}
+
+function writeCachedAuthSnapshot(user: AuthUser | null, credits: CreditSummary = emptyCreditSummary) {
+  if (typeof window === 'undefined') return
+
+  if (!user) {
+    window.sessionStorage.removeItem(AUTH_CACHE_STORAGE_KEY)
+    delete (window as any).__TOOLAZE_AUTH_USER__
+    return
+  }
+
+  ;(window as any).__TOOLAZE_AUTH_USER__ = user
+  window.sessionStorage.setItem(AUTH_CACHE_STORAGE_KEY, JSON.stringify({ user, credits }))
 }
 
 export default function Navigation({ initialTranslations }: NavigationProps = {}) {
   const navRef = useRef<HTMLElement>(null)
   const menuRef = useRef<HTMLDivElement>(null)
+  const accountMenuRef = useRef<HTMLDivElement>(null)
+  const authPopupRef = useRef<Window | null>(null)
+  const topNoticeTimerRef = useRef<number | null>(null)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [openDesktopMenu, setOpenDesktopMenu] = useState<string | null>(null)
   const [expandedSubmenus, setExpandedSubmenus] = useState<Set<string>>(new Set())
   const [navTranslations, setNavTranslations] = useState(getInitialNavTranslations(initialTranslations))
+  const [authTranslations, setAuthTranslations] = useState(getInitialAuthTranslations(initialTranslations))
+  const [accountTranslations, setAccountTranslations] = useState(getInitialAccountTranslations(initialTranslations))
   const [thirdLevelMenuData, setThirdLevelMenuData] = useState<Record<string, ClientMenuItem[]>>({
     'image-compressor': [],
     'image-converter': [],
@@ -100,11 +266,28 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
   })
   const [isMounted, setIsMounted] = useState(false)
   const [isMobileView, setIsMobileView] = useState(false)
+  const [authUser, setAuthUser] = useState<AuthUser | null>(null)
+  const [creditSummary, setCreditSummary] = useState<CreditSummary>(emptyCreditSummary)
+  const [authLoaded, setAuthLoaded] = useState(false)
+  const [authModalOpen, setAuthModalOpen] = useState(false)
+  const [authRedirecting, setAuthRedirecting] = useState(false)
+  const [devLoginEmail, setDevLoginEmail] = useState('dianawu1202@gmail.com')
+  const [devLoginPassword, setDevLoginPassword] = useState(DEV_LOGIN_PASSWORD_PLACEHOLDER)
+  const [devLoginLoading, setDevLoginLoading] = useState(false)
+  const [devLoginError, setDevLoginError] = useState('')
+  const [accountMenuOpen, setAccountMenuOpen] = useState(false)
+  const [topNotice, setTopNotice] = useState<TopNotice | null>(null)
   const pathname = usePathname()
 
   const currentLocale = getCurrentLocaleFromPath(pathname ?? null)
 
   const [navLangOpen, setNavLangOpen] = useState(false)
+
+  const toggleDesktopMenu = (menuKey: string) => {
+    setOpenDesktopMenu((currentMenu) => currentMenu === menuKey ? null : menuKey)
+    setNavLangOpen(false)
+    setAccountMenuOpen(false)
+  }
 
   const navSupportedLocales = useMemo(() => {
     const codes = getSupportedLocaleCodes(pathname ?? null)
@@ -113,6 +296,12 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
 
   const showNavLanguageSwitcher = shouldShowLanguageSwitcher(pathname ?? null)
   const navEffectiveLocale = resolveLocaleForPath(pathname || '/', currentLocale)
+  const isLocalAuthPage = isMounted && typeof window !== 'undefined' && [
+    'localhost',
+    '127.0.0.1',
+    '::1',
+    '[::1]',
+  ].includes(window.location.hostname)
   const navCurrentLocaleInfo = SITE_LOCALES.find((l) => l.code === navEffectiveLocale) || SITE_LOCALES[0]
   const navOtherLocales = navSupportedLocales.length === 1
     ? navSupportedLocales
@@ -122,7 +311,27 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
   useEffect(() => {
     setIsMounted(true)
     setNavTranslations(getInitialNavTranslations(initialTranslations))
+    setAuthTranslations(getInitialAuthTranslations(initialTranslations))
+    setAccountTranslations(getInitialAccountTranslations(initialTranslations))
   }, [initialTranslations])
+
+  useEffect(() => {
+    const cachedAuth = readCachedAuthSnapshot()
+    if (!cachedAuth) return
+
+    writeCachedAuthSnapshot(cachedAuth.user, cachedAuth.credits)
+    setAuthUser(cachedAuth.user)
+    setCreditSummary(cachedAuth.credits)
+    setAuthLoaded(true)
+  }, [])
+
+  useEffect(() => {
+    return () => {
+      if (typeof window !== 'undefined' && topNoticeTimerRef.current) {
+        window.clearTimeout(topNoticeTimerRef.current)
+      }
+    }
+  }, [])
 
   useEffect(() => {
     if (typeof window === 'undefined') return
@@ -135,7 +344,93 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
 
   useEffect(() => {
     setNavLangOpen(false)
+    setOpenDesktopMenu(null)
+    setAccountMenuOpen(false)
   }, [pathname])
+
+  useEffect(() => {
+    let cancelled = false
+
+    void loadAuthState(() => cancelled)
+
+    return () => {
+      cancelled = true
+    }
+  }, [pathname])
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+
+    const handleAuthPopupMessage = (event: MessageEvent<AuthPopupMessage>) => {
+      if (!isTrustedAuthMessageOrigin(event.origin)) return
+      if (!event.data || event.data.type !== AUTH_POPUP_MESSAGE_TYPE) return
+
+      void (async () => {
+        authPopupRef.current = null
+        setAuthRedirecting(false)
+        setAuthModalOpen(false)
+
+        await persistLocalSession(event.data.localSessionToken)
+        showTimedTopNotice(buildAuthNotice(event.data.status, event.data.newUserCredits))
+
+        if (event.data.status === 'error') {
+          setAuthLoaded(true)
+          return
+        }
+
+        if (event.data.localSessionToken) {
+          const refreshed = await loadAuthState()
+          if (refreshed) return
+        }
+
+        if (event.data.user) {
+          const nextCredits = event.data.credits || creditSummary
+          setAuthUser(event.data.user)
+          setCreditSummary(nextCredits)
+          writeCachedAuthSnapshot(event.data.user, nextCredits)
+          setAuthLoaded(true)
+          return
+        }
+
+        await loadAuthState()
+      })()
+    }
+
+    window.addEventListener('message', handleAuthPopupMessage)
+    return () => window.removeEventListener('message', handleAuthPopupMessage)
+  }, [authTranslations])
+
+  useEffect(() => {
+    if (!authRedirecting || typeof window === 'undefined') return
+
+    const timer = window.setInterval(() => {
+      if (!authPopupRef.current || !authPopupRef.current.closed) return
+
+      authPopupRef.current = null
+      setAuthRedirecting(false)
+      void loadAuthState()
+      window.clearInterval(timer)
+    }, 500)
+
+    return () => window.clearInterval(timer)
+  }, [authRedirecting])
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+
+    const handleOpenAuthModal = () => openAuthModal()
+    const handleCreditsUpdated = () => {
+      void loadAuthState()
+    }
+
+    window.addEventListener('toolaze:open-auth-modal', handleOpenAuthModal)
+    window.addEventListener('toolaze:credits-updated', handleCreditsUpdated)
+
+    return () => {
+      window.removeEventListener('toolaze:open-auth-modal', handleOpenAuthModal)
+      window.removeEventListener('toolaze:credits-updated', handleCreditsUpdated)
+    }
+  }, [])
 
   // 运行时兜底：仅在移动端渲染 H5 菜单按钮，避免桌面端误显示
   useEffect(() => {
@@ -190,20 +485,375 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
     }
   }, [])
 
-  // 点击外部关闭移动端菜单
+  // 点击外部关闭移动端、桌面端和账号菜单
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (mobileMenuOpen && menuRef.current && !menuRef.current.contains(event.target as Node) && navRef.current && !navRef.current.contains(event.target as Node)) {
         setMobileMenuOpen(false)
         setExpandedSubmenus(new Set())
       }
+
+      if (openDesktopMenu && navRef.current && !navRef.current.contains(event.target as Node)) {
+        setOpenDesktopMenu(null)
+      }
+
+      if (accountMenuOpen && accountMenuRef.current && !accountMenuRef.current.contains(event.target as Node)) {
+        setAccountMenuOpen(false)
+      }
     }
 
-    if (mobileMenuOpen) {
+    if (mobileMenuOpen || openDesktopMenu || accountMenuOpen) {
       document.addEventListener('mousedown', handleClickOutside)
       return () => document.removeEventListener('mousedown', handleClickOutside)
     }
-  }, [mobileMenuOpen])
+  }, [mobileMenuOpen, openDesktopMenu, accountMenuOpen])
+
+  async function loadAuthState(cancelled?: () => boolean): Promise<boolean> {
+    try {
+      const response = await fetch('/api/auth/me', { cache: 'no-store', credentials: 'include' })
+      if (cancelled?.()) return false
+      if (!response.ok) {
+        const cachedAuth = readCachedAuthSnapshot()
+        if (response.status >= 500 && cachedAuth) {
+          setAuthUser(cachedAuth.user)
+          setCreditSummary(cachedAuth.credits)
+          writeCachedAuthSnapshot(cachedAuth.user, cachedAuth.credits)
+          return true
+        }
+
+        setAuthUser(null)
+        setCreditSummary(emptyCreditSummary)
+        writeCachedAuthSnapshot(null)
+        return false
+      }
+
+      const data = await response.json().catch(() => ({}))
+      if (cancelled?.()) return false
+      const nextUser = data?.user || null
+      const nextCredits = data?.credits || emptyCreditSummary
+      setAuthUser(nextUser)
+      setCreditSummary(nextCredits)
+      writeCachedAuthSnapshot(nextUser, nextCredits)
+      return Boolean(nextUser)
+    } catch {
+      if (cancelled?.()) return false
+      const cachedAuth = readCachedAuthSnapshot()
+      if (cachedAuth) {
+        setAuthUser(cachedAuth.user)
+        setCreditSummary(cachedAuth.credits)
+        return true
+      } else {
+        setAuthUser(null)
+        setCreditSummary(emptyCreditSummary)
+        return false
+      }
+    } finally {
+      if (cancelled?.()) return false
+      setAuthLoaded(true)
+    }
+  }
+
+  function buildAuthNotice(status: 'success' | 'error', newUserCredits?: number): TopNotice {
+    if (status === 'success') {
+      if (newUserCredits) {
+        return {
+          type: 'success',
+          title: authTranslations.noticeNewUserCreditsTitle,
+          message: authTranslations.noticeNewUserCreditsMessage,
+        }
+      }
+
+      return {
+        type: 'success',
+        title: authTranslations.noticeSignedInTitle,
+        message: authTranslations.noticeSignedInMessage,
+      }
+    }
+
+    return {
+      type: 'error',
+      title: authTranslations.noticeSignInFailedTitle,
+      message: authTranslations.noticeSignInFailedMessage,
+    }
+  }
+
+  function showTimedTopNotice(notice: TopNotice) {
+    if (typeof window !== 'undefined' && topNoticeTimerRef.current) {
+      window.clearTimeout(topNoticeTimerRef.current)
+    }
+
+    setTopNotice(notice)
+
+    if (typeof window !== 'undefined') {
+      topNoticeTimerRef.current = window.setTimeout(() => {
+        setTopNotice(null)
+        topNoticeTimerRef.current = null
+      }, TOP_NOTICE_DURATION_MS)
+    }
+  }
+
+  function isTrustedAuthMessageOrigin(origin: string): boolean {
+    if (typeof window === 'undefined') return false
+    if (origin === window.location.origin) return true
+
+    return [
+      'https://toolaze.com',
+      'https://www.toolaze.com',
+      'https://toolaze-web.pages.dev',
+    ].includes(origin)
+  }
+
+  async function persistLocalSession(token?: string) {
+    if (!token || typeof window === 'undefined') return
+
+    const { hostname } = window.location
+    const isLocalhost = ['localhost', '127.0.0.1', '::1', '[::1]'].includes(hostname)
+    if (!isLocalhost) return
+
+    await fetch('/api/auth/local-session', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ token }),
+    }).catch(() => null)
+  }
+
+  function getAuthProviderOriginForCurrentPage(): string {
+    if (typeof window === 'undefined') return ''
+
+    const { hostname } = window.location
+    const isLocalhost = ['localhost', '127.0.0.1', '[::1]'].includes(hostname)
+
+    return isLocalhost ? LOCAL_AUTH_PROVIDER_ORIGIN : ''
+  }
+
+  function getSignInHref(): string {
+    const currentPath = pathname || '/'
+    const callbackParams = new URLSearchParams({ returnTo: currentPath })
+
+    if (typeof window !== 'undefined') {
+      callbackParams.set('openerOrigin', window.location.origin)
+    }
+
+    const popupReturnTo = `/auth/popup-callback?${callbackParams.toString()}`
+    const authProviderOrigin = getAuthProviderOriginForCurrentPage()
+
+    return `${authProviderOrigin}/api/auth/google/start?returnTo=${encodeURIComponent(popupReturnTo)}`
+  }
+
+  function openAuthModal() {
+    setAuthModalOpen(true)
+    setMobileMenuOpen(false)
+    setOpenDesktopMenu(null)
+    setAccountMenuOpen(false)
+    setExpandedSubmenus(new Set())
+  }
+
+  function closeAuthModal() {
+    setAuthModalOpen(false)
+    setAuthRedirecting(false)
+    setDevLoginError('')
+  }
+
+  function startGoogleSignIn() {
+    if (typeof window === 'undefined' || authRedirecting) return
+
+    setAuthRedirecting(true)
+    const popup = window.open(getSignInHref(), AUTH_POPUP_NAME, AUTH_POPUP_FEATURES)
+
+    if (!popup) {
+      setAuthRedirecting(false)
+      showTimedTopNotice(buildAuthNotice('error'))
+      return
+    }
+
+    authPopupRef.current = popup
+    popup.focus()
+    setAuthModalOpen(false)
+  }
+
+  async function startDevLogin() {
+    if (devLoginLoading) return
+    setDevLoginLoading(true)
+    setDevLoginError('')
+
+    try {
+      const response = await fetch('/api/auth/dev-login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify({
+          email: devLoginEmail,
+          password: devLoginPassword,
+          preferLocal: true,
+        }),
+      })
+      const data = await response.json().catch(() => ({}))
+      if (!response.ok) {
+        throw new Error(data.error || 'Local test login failed.')
+      }
+
+      setAuthModalOpen(false)
+      setDevLoginPassword('')
+      showTimedTopNotice(buildAuthNotice('success'))
+      if (data.user) {
+        const nextCredits = data.credits || emptyCreditSummary
+        setAuthUser(data.user)
+        setCreditSummary(nextCredits)
+        writeCachedAuthSnapshot(data.user, nextCredits)
+        setAuthLoaded(true)
+        return
+      }
+
+      await loadAuthState()
+    } catch (error) {
+      setDevLoginError(error instanceof Error ? error.message : 'Local test login failed.')
+    } finally {
+      setDevLoginLoading(false)
+    }
+  }
+
+  async function handleSignOut() {
+    try {
+      await fetch('/api/auth/logout', { method: 'POST', credentials: 'include' })
+    } finally {
+      setAuthUser(null)
+      setCreditSummary(emptyCreditSummary)
+      writeCachedAuthSnapshot(null)
+      setAccountMenuOpen(false)
+      setTopNotice(null)
+      setMobileMenuOpen(false)
+      setExpandedSubmenus(new Set())
+    }
+  }
+
+  function toggleAccountMenu() {
+    setAccountMenuOpen((open) => !open)
+    setNavLangOpen(false)
+    setOpenDesktopMenu(null)
+    setMobileMenuOpen(false)
+    setExpandedSubmenus(new Set())
+  }
+
+  const renderAvatar = (sizeClass = 'h-8 w-8') => (
+    authUser?.avatarUrl ? (
+      <img
+        src={authUser.avatarUrl}
+        alt={authUser.name || authUser.email || 'Account'}
+        className={`${sizeClass} rounded-full object-cover`}
+      />
+    ) : (
+      <span className={`${sizeClass} inline-flex items-center justify-center rounded-full bg-indigo-600 text-sm font-extrabold text-white`}>
+        {(authUser?.name || authUser?.email || 'U').slice(0, 1).toUpperCase()}
+      </span>
+    )
+  )
+
+  const renderAuthLoadingPlaceholder = (mobile = false) => (
+    <span
+      className={`${mobile ? 'h-10 w-[92px]' : 'h-9 w-24'} inline-flex animate-pulse rounded-full bg-slate-100`}
+      aria-label="Loading account"
+    />
+  )
+
+  function formatCreditDate(value: string): string {
+    const date = new Date(value)
+    if (!Number.isFinite(date.getTime())) return ''
+    return date.toLocaleDateString(navEffectiveLocale, { month: 'short', day: 'numeric' })
+  }
+
+  const renderCreditTransactions = () => {
+    const recentTransactions = creditSummary.transactions.slice(0, 3)
+    if (recentTransactions.length === 0) {
+      return (
+        <div className="rounded-xl border border-dashed border-slate-200 px-3 py-4 text-center text-xs text-slate-500">
+          {accountTranslations.noCreditActivity}
+        </div>
+      )
+    }
+
+    return (
+      <div className="space-y-2">
+        {recentTransactions.map((transaction) => {
+          const isPositive = transaction.amount > 0
+          return (
+            <div key={transaction.id} className="rounded-xl border border-slate-100 bg-slate-50/70 px-3 py-2">
+              <div className="flex items-start justify-between gap-3">
+                <div className="min-w-0">
+                  <p className="truncate text-xs font-semibold text-slate-800">
+                    {transaction.description}
+                  </p>
+                  <p className="mt-0.5 text-[11px] text-slate-500">
+                    {formatCreditDate(transaction.createdAt)} · {accountTranslations.balance} {transaction.balanceAfter}
+                  </p>
+                </div>
+                <span className={`shrink-0 text-sm font-extrabold ${isPositive ? 'text-emerald-600' : 'text-rose-600'}`}>
+                  {isPositive ? '+' : ''}{transaction.amount}
+                </span>
+              </div>
+            </div>
+          )
+        })}
+      </div>
+    )
+  }
+
+  const renderAccountMenu = () => {
+    if (!authUser) return null
+
+    return (
+      <div className="absolute right-0 top-full z-[80] mt-3 w-[320px] overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl shadow-slate-200/60">
+        <div className="border-b border-slate-100 px-4 py-4">
+          <div className="flex items-center gap-3">
+            {renderAvatar('h-10 w-10')}
+            <div className="min-w-0">
+              <p className="truncate text-sm font-bold text-slate-900">{authUser.name || authUser.email}</p>
+              {authUser.email && (
+                <p className="truncate text-xs text-slate-500">{authUser.email}</p>
+              )}
+            </div>
+          </div>
+          <div className="mt-4 rounded-xl bg-indigo-50 px-4 py-3">
+            <p className="text-xs font-semibold uppercase tracking-[0.12em] text-indigo-600">
+              {accountTranslations.availableCredits}
+            </p>
+            <p className="mt-1 text-3xl font-extrabold text-slate-950">
+              {creditSummary.balance}
+            </p>
+          </div>
+        </div>
+        <div className="px-4 py-4">
+          <div className="mb-3 flex items-center justify-between">
+            <p className="text-sm font-bold text-slate-900">{accountTranslations.creditHistory}</p>
+            <Link
+              href={getLocalizedHref('/credits')}
+              onClick={() => setAccountMenuOpen(false)}
+              className="text-xs font-bold text-indigo-600 hover:text-indigo-700"
+            >
+              {accountTranslations.seeAll}
+            </Link>
+          </div>
+          {renderCreditTransactions()}
+          <Link
+            href={getLocalizedHref('/history')}
+            onClick={() => setAccountMenuOpen(false)}
+            className="mt-4 flex w-full items-center justify-between rounded-xl border-t border-slate-100 px-4 py-3 text-left text-sm font-bold text-slate-700 transition-colors hover:bg-indigo-50 hover:text-indigo-600"
+          >
+            <span>{accountTranslations.history}</span>
+            <span className="text-xs text-slate-400">{accountTranslations.viewAll}</span>
+          </Link>
+          <div className="mt-4 border-t border-slate-100 pt-3">
+            <button
+              type="button"
+              onClick={handleSignOut}
+              className="w-full rounded-xl px-4 py-2.5 text-left text-sm font-bold text-slate-700 transition-colors hover:bg-indigo-50 hover:text-indigo-600"
+            >
+              {accountTranslations.signOut}
+            </button>
+          </div>
+        </div>
+      </div>
+    )
+  }
 
 
   // 二级菜单项（动态生成以包含语言前缀）
@@ -288,6 +938,10 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
       key: 'prompt-models',
       items: [
         {
+          title: navTranslations.seedance25 || defaultNavTranslations.seedance25,
+          href: getLocalizedHref('/model/seedance-2-5'),
+        },
+        {
           title: navTranslations.gptImage2 || defaultNavTranslations.gptImage2,
           href: getLocalizedHref('/prompts/models/gpt-image-2'),
         },
@@ -326,6 +980,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
   ]
 
   return (
+    <>
     <nav id="mainNav" ref={navRef} className="sticky-nav w-full">
       <div className="h-[70px] px-6 flex justify-center items-center max-w-6xl mx-auto w-full relative">
         <Link href={getLocalizedHref('/')} className="absolute left-6 text-3xl font-extrabold text-indigo-600 tracking-tighter flex items-center gap-3 hover:opacity-80 transition-opacity">
@@ -338,46 +993,104 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
           Toolaze
         </Link>
         
-        {/* 移动端菜单按钮 - 右上角 */}
+        {/* 移动端账号入口 + 菜单按钮 */}
         {isMobileView && (
-          <button
-            onClick={() => {
-              setMobileMenuOpen(!mobileMenuOpen)
-              // 关闭菜单时重置子菜单展开状态
-              if (mobileMenuOpen) {
-                setExpandedSubmenus(new Set())
-              }
-            }}
-            className="md:hidden absolute right-4 z-50 p-2 text-slate-700 hover:text-indigo-600 transition-colors"
-            aria-label="Toggle menu"
-          >
-            {mobileMenuOpen ? (
-              <CloseIcon size={24} className="w-6 h-6" />
+          <div className="absolute right-4 z-50 flex items-center gap-2 md:hidden">
+            {authUser ? (
+              <div ref={accountMenuRef} className="relative flex items-center gap-2">
+                <span
+                  className="inline-flex items-center gap-1 text-sm font-extrabold text-[#4F46E5]"
+                  aria-label={`${creditSummary.balance} ${accountTranslations.credits}`}
+                >
+                  <span className="tabular-nums">{creditSummary.balance}</span>
+                  <img
+                    src="/credits-icons/diamond-3d-indigo.svg"
+                    alt=""
+                    aria-hidden="true"
+                    className="h-5 w-5"
+                  />
+                </span>
+                <button
+                  type="button"
+                  onClick={toggleAccountMenu}
+                  data-account-avatar-trigger
+                  className="flex h-10 w-10 appearance-none items-center justify-center overflow-hidden rounded-full border-0 bg-transparent p-0 shadow-none transition-colors hover:bg-transparent"
+                  aria-label={authTranslations.openAccountMenu}
+                  aria-expanded={accountMenuOpen}
+                >
+                  {renderAvatar('h-10 w-10')}
+                </button>
+                {accountMenuOpen && renderAccountMenu()}
+              </div>
+            ) : authLoaded ? (
+              <button
+                type="button"
+                onClick={openAuthModal}
+                className="rounded-full border border-slate-200 bg-white px-3 py-2 text-xs font-bold text-slate-700 shadow-sm transition-colors hover:border-indigo-200 hover:text-indigo-600"
+              >
+                {authTranslations.signIn}
+              </button>
             ) : (
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
+              renderAuthLoadingPlaceholder(true)
             )}
-          </button>
+            <button
+              onClick={() => {
+                setMobileMenuOpen(!mobileMenuOpen)
+                setAccountMenuOpen(false)
+                // 关闭菜单时重置子菜单展开状态
+                if (mobileMenuOpen) {
+                  setExpandedSubmenus(new Set())
+                }
+              }}
+              className="p-2 text-slate-700 transition-colors hover:text-indigo-600"
+              aria-label="Toggle menu"
+            >
+              {mobileMenuOpen ? (
+                <CloseIcon size={24} className="w-6 h-6" />
+              ) : (
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              )}
+            </button>
+          </div>
         )}
 
         {/* 桌面端菜单 */}
         <div className="hidden md:flex gap-5 text-sm font-bold text-slate-700 items-center">
           {/* 一级菜单：Prompts */}
-          <div className="relative group">
-            <button className="hover:text-indigo-600 transition-colors flex items-center gap-1">
+          <div className="relative group order-4">
+            <button
+              type="button"
+              onClick={() => toggleDesktopMenu('prompts')}
+              aria-expanded={openDesktopMenu === 'prompts'}
+              className="hover:text-indigo-600 transition-colors flex items-center gap-1"
+            >
               {navTranslations.promptLibrary || defaultNavTranslations.promptLibrary}
-              <svg className="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className={'w-4 h-4 transition-transform group-hover:rotate-180' + (openDesktopMenu === 'prompts' ? ' rotate-180' : '')} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
               </svg>
             </button>
-            <div className="absolute top-full left-0 mt-2 w-auto min-w-[220px] max-w-[320px] bg-white rounded-xl shadow-lg border border-indigo-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 overflow-visible">
+            <div className={'absolute top-full left-0 mt-2 w-auto min-w-[220px] max-w-[320px] bg-white rounded-xl shadow-lg border border-indigo-50 transition-all duration-200 z-50 overflow-visible ' + (openDesktopMenu === 'prompts' ? 'opacity-100 visible' : 'opacity-0 invisible group-hover:opacity-100 group-hover:visible')}>
               <div className="py-2">
                 <Link
                   href={getLocalizedHref('/prompts')}
+                  onClick={() => setOpenDesktopMenu(null)}
                   className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors whitespace-nowrap"
                 >
                   {navTranslations.allPrompts || defaultNavTranslations.allPrompts}
+                </Link>
+                <Link
+                  href={getLocalizedHref('/world-cup-ai-image-generator')}
+                  onClick={() => setOpenDesktopMenu(null)}
+                  className="flex items-center gap-3 px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors whitespace-nowrap"
+                >
+                  <img
+                    src={AI_TOOLS_DEMO_IMAGES.worldCupAiImageGenerator}
+                    alt={navTranslations.worldCupAiImageGenerator || defaultNavTranslations.worldCupAiImageGenerator}
+                    className="w-8 h-8 rounded-lg object-cover border border-indigo-100 flex-shrink-0"
+                  />
+                  <span>{navTranslations.worldCupAiImageGenerator || defaultNavTranslations.worldCupAiImageGenerator}</span>
                 </Link>
                 {promptMenuGroups.map((group) => (
                   <div key={group.key} className="relative group/secondary">
@@ -393,6 +1106,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                           <Link
                             key={item.href}
                             href={item.href}
+                            onClick={() => setOpenDesktopMenu(null)}
                             className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors whitespace-nowrap"
                           >
                             {item.title}
@@ -405,91 +1119,60 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
               </div>
             </div>
           </div>
-          {/* 一级菜单：Quick Tools */}
-          <div className="relative group">
-            <button className="hover:text-indigo-600 transition-colors flex items-center gap-1">
-              {navTranslations.quickTools}
-              <svg className="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
-              </svg>
-            </button>
-            {/* 二级菜单下拉 */}
-            <div className="absolute top-full left-0 mt-2 w-auto min-w-[200px] max-w-[320px] bg-white rounded-xl shadow-lg border border-indigo-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 overflow-visible">
-              <div className="py-2">
-                {secondLevelItems.map((item, index) => {
-                  const thirdLevelItems = item.hasThirdLevel && item.tool ? getThirdLevelItems(item.tool) : []
-                  return (
-                    <div key={item.tool || `item-${index}`} className="relative group/secondary">
-                      <Link
-                        href={item.href}
-                        className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center justify-between whitespace-nowrap"
-                      >
-                        <div className="flex items-center gap-2">
-                          {item.icon && item.icon}
-                          <span>{item.title || defaultNavTranslations[item.tool as keyof typeof defaultNavTranslations] || item.tool}</span>
-                        </div>
-                        {item.hasThirdLevel && (
-                          <svg className="w-3 h-3 ml-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
-                          </svg>
-                        )}
-                      </Link>
-                      {/* 三级菜单（hover到二级菜单项时才显示） */}
-                      {item.hasThirdLevel && thirdLevelItems.length > 0 && (
-                        <div className="absolute left-full top-0 ml-1 w-auto min-w-[240px] max-w-[400px] bg-white rounded-xl shadow-lg border border-indigo-50 opacity-0 invisible group-hover/secondary:opacity-100 group-hover/secondary:visible transition-all duration-200 z-[60]">
-                          <div className="py-2">
-                            {thirdLevelItems.map((thirdItem, idx) => (
-                              <Link
-                                key={`${item.tool}-${thirdItem.slug}-${idx}`}
-                                href={thirdItem.href}
-                                className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors"
-                              >
-                                {thirdItem.title}
-                              </Link>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  )
-                })}
-              </div>
-            </div>
-          </div>
           {/* 一级菜单：AI Tools */}
-          <div className="relative group">
-            <button className="hover:text-indigo-600 transition-colors flex items-center gap-1">
+          <div className="relative group order-2">
+            <button
+              type="button"
+              onClick={() => toggleDesktopMenu('ai-tools')}
+              aria-expanded={openDesktopMenu === 'ai-tools'}
+              className="hover:text-indigo-600 transition-colors flex items-center gap-1"
+            >
               {navTranslations.aiTools || 'AI Tools'}
-              <svg className="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className={'w-4 h-4 transition-transform group-hover:rotate-180' + (openDesktopMenu === 'ai-tools' ? ' rotate-180' : '')} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
               </svg>
             </button>
-            <div className="absolute top-full left-0 mt-2 w-auto min-w-[280px] bg-white rounded-xl shadow-lg border border-indigo-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+            <div className={'absolute top-full left-0 mt-2 w-auto min-w-[280px] bg-white rounded-xl shadow-lg border border-indigo-50 transition-all duration-200 z-50 ' + (openDesktopMenu === 'ai-tools' ? 'opacity-100 visible' : 'opacity-0 invisible group-hover:opacity-100 group-hover:visible')}>
               <div className="py-2">
                 <Link
-                  href={getLocalizedHref('/ai-image-generator')}
+                  href={getLocalizedHref('/ai-baby-generator')}
+                  onClick={() => setOpenDesktopMenu(null)}
                   className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-3"
                 >
                   <img
-                    src={AI_TOOLS_DEMO_IMAGES.aiImageGenerator}
-                    alt={navTranslations.aiImageGenerator || defaultNavTranslations.aiImageGenerator}
+                    src={AI_TOOLS_DEMO_IMAGES.aiBabyGenerator}
+                    alt={navTranslations.aiBabyGenerator || defaultNavTranslations.aiBabyGenerator}
                     className="w-10 h-10 rounded-lg object-cover border border-indigo-100 flex-shrink-0"
                   />
-                  <span>{navTranslations.aiImageGenerator || defaultNavTranslations.aiImageGenerator}</span>
+                  <span>{navTranslations.aiBabyGenerator || defaultNavTranslations.aiBabyGenerator}</span>
                 </Link>
                 <Link
-                  href={getLocalizedHref('/world-cup-ai-image-generator')}
+                  href={getLocalizedHref('/ai-hairstyle-changer')}
+                  onClick={() => setOpenDesktopMenu(null)}
                   className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-3"
                 >
                   <img
-                    src={AI_TOOLS_DEMO_IMAGES.worldCupAiImageGenerator}
-                    alt={navTranslations.worldCupAiImageGenerator || defaultNavTranslations.worldCupAiImageGenerator}
+                    src={AI_TOOLS_DEMO_IMAGES.aiHairstyleChanger}
+                    alt={navTranslations.aiHairstyleChanger || defaultNavTranslations.aiHairstyleChanger}
                     className="w-10 h-10 rounded-lg object-cover border border-indigo-100 flex-shrink-0"
                   />
-                  <span>{navTranslations.worldCupAiImageGenerator || defaultNavTranslations.worldCupAiImageGenerator}</span>
+                  <span>{navTranslations.aiHairstyleChanger || defaultNavTranslations.aiHairstyleChanger}</span>
+                </Link>
+                <Link
+                  href={getLocalizedHref('/ai-hair-color-changer')}
+                  onClick={() => setOpenDesktopMenu(null)}
+                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-3"
+                >
+                  <img
+                    src={AI_TOOLS_DEMO_IMAGES.aiHairColorChanger}
+                    alt={navTranslations.aiHairColorChanger || defaultNavTranslations.aiHairColorChanger}
+                    className="w-10 h-10 rounded-lg object-cover border border-indigo-100 flex-shrink-0"
+                  />
+                  <span>{navTranslations.aiHairColorChanger || defaultNavTranslations.aiHairColorChanger}</span>
                 </Link>
                 <Link
                   href={getLocalizedHref('/watermark-remover')}
+                  onClick={() => setOpenDesktopMenu(null)}
                   className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-3"
                 >
                   <img
@@ -501,6 +1184,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                 </Link>
                 <Link
                   href={getLocalizedHref('/photo-restoration')}
+                  onClick={() => setOpenDesktopMenu(null)}
                   className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-3"
                 >
                   <img
@@ -512,6 +1196,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                 </Link>
                 <Link
                   href={getLocalizedHref('/ai-couple-photo-maker')}
+                  onClick={() => setOpenDesktopMenu(null)}
                   className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-3"
                 >
                   <img
@@ -524,6 +1209,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                 <Link
                   href={getLocalizedHref('/ai-tools')}
                   onClick={() => {
+                    setOpenDesktopMenu(null)
                     if (typeof window !== 'undefined') {
                       window.location.href = '/ai-tools'
                     }
@@ -536,18 +1222,24 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
             </div>
           </div>
           {/* 一级菜单：AI Image */}
-          <div className="relative group">
-            <button className="hover:text-indigo-600 transition-colors flex items-center gap-1">
+          <div className="relative group order-1">
+            <button
+              type="button"
+              onClick={() => toggleDesktopMenu('ai-image')}
+              aria-expanded={openDesktopMenu === 'ai-image'}
+              className="hover:text-indigo-600 transition-colors flex items-center gap-1"
+            >
               {navTranslations.aiImage || defaultNavTranslations.aiImage}
-              <svg className="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className={'w-4 h-4 transition-transform group-hover:rotate-180' + (openDesktopMenu === 'ai-image' ? ' rotate-180' : '')} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
               </svg>
             </button>
-            <div className="absolute top-full left-0 pt-1 w-auto min-w-[200px] bg-transparent opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-              <div className="bg-white rounded-xl shadow-lg border border-indigo-50 py-2">
+            <div className={'absolute top-full left-0 pt-1 w-auto min-w-[200px] bg-transparent transition-all duration-200 z-50 ' + (openDesktopMenu === 'ai-image' ? 'opacity-100 visible' : 'opacity-0 invisible group-hover:opacity-100 group-hover:visible')}>
+              <div className="flex flex-col bg-white rounded-xl shadow-lg border border-indigo-50 py-2">
                 <Link
                   href={getLocalizedHref('/ai-image-generator')}
-                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
+                  onClick={() => setOpenDesktopMenu(null)}
+                  className="order-1 block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
                 >
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
                     <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#aiImageGeneratorGradient)" opacity="0.2"/>
@@ -563,8 +1255,45 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                   <span>{navTranslations.aiImageGenerator || defaultNavTranslations.aiImageGenerator}</span>
                 </Link>
                 <Link
+                  href={getLocalizedHref('/text-to-image-generator')}
+                  onClick={() => setOpenDesktopMenu(null)}
+                  className="order-2 block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
+                    <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#textToImageGeneratorGradient)" opacity="0.2"/>
+                    <path d="M7 8h4M7 12h7M7 16h5" stroke="url(#textToImageGeneratorGradient)" strokeWidth="2" strokeLinecap="round"/>
+                    <path d="M16 7l1 2 2 1-2 1-1 2-1-2-2-1 2-1 1-2Z" fill="url(#textToImageGeneratorGradient)"/>
+                    <defs>
+                      <linearGradient id="textToImageGeneratorGradient" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+                        <stop stopColor="#9333EA"/>
+                        <stop offset="1" stopColor="#4F46E5"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                  <span>{navTranslations.textToImageGenerator || defaultNavTranslations.textToImageGenerator}</span>
+                </Link>
+                <Link
+                  href={getLocalizedHref('/ai-image-to-image-generator')}
+                  onClick={() => setOpenDesktopMenu(null)}
+                  className="order-3 block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
+                    <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#aiImageToImageGradient)" opacity="0.2"/>
+                    <path d="M6 8h7M6 12h5M6 16h7" stroke="url(#aiImageToImageGradient)" strokeWidth="2" strokeLinecap="round"/>
+                    <path d="M15 7l3 3-3 3M18 10H12" stroke="url(#aiImageToImageGradient)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <defs>
+                      <linearGradient id="aiImageToImageGradient" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+                        <stop stopColor="#9333EA"/>
+                        <stop offset="1" stopColor="#4F46E5"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                  <span>{navTranslations.aiImageToImageGenerator || defaultNavTranslations.aiImageToImageGenerator}</span>
+                </Link>
+                <Link
                   href={getLocalizedHref('/model/gpt-image-2-0')}
-                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
+                  onClick={() => setOpenDesktopMenu(null)}
+                  className="order-5 block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
                 >
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
                     <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#aiImageGradient3)" opacity="0.2"/>
@@ -576,11 +1305,35 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                       </linearGradient>
                     </defs>
                   </svg>
-                  <span>{navTranslations.gptImage2 || defaultNavTranslations.gptImage2}</span>
+                  <span className="inline-flex items-center gap-2">
+                    <span>{navTranslations.gptImage2 || defaultNavTranslations.gptImage2}</span>
+                    <span className="rounded-full bg-red-500 px-1.5 py-0.5 text-[10px] font-extrabold leading-none text-white">Hot</span>
+                  </span>
+                </Link>
+                <Link
+                  href={getLocalizedHref('/model/seedream-5-0-pro')}
+                  onClick={() => setOpenDesktopMenu(null)}
+                  className="order-4 block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
+                    <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#aiImageGradient50Pro)" opacity="0.2"/>
+                    <path d="M7 8h10M7 12h7M7 16h5M17 5l1.8 3.4L22 10l-3.2 1.6L17 15l-1.8-3.4L12 10l3.2-1.6L17 5Z" stroke="url(#aiImageGradient50Pro)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                    <defs>
+                      <linearGradient id="aiImageGradient50Pro" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+                        <stop stopColor="#9333EA"/>
+                        <stop offset="1" stopColor="#4F46E5"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                  <span className="inline-flex items-center gap-2">
+                    <span>{navTranslations.seedream50Pro || defaultNavTranslations.seedream50Pro}</span>
+                    <span className="rounded-full bg-emerald-500 px-1.5 py-0.5 text-[10px] font-extrabold leading-none text-white">New</span>
+                  </span>
                 </Link>
                 <Link
                   href={getLocalizedHref('/model/wan-2-7-image')}
-                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
+                  onClick={() => setOpenDesktopMenu(null)}
+                  className="order-6 block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
                 >
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
                     <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#aiImageGradientWan27)" opacity="0.2"/>
@@ -596,7 +1349,8 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                 </Link>
                 <Link
                   href={getLocalizedHref('/model/nano-banana-pro')}
-                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
+                  onClick={() => setOpenDesktopMenu(null)}
+                  className="order-7 block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
                 >
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
                     <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#aiImageGradient)" opacity="0.2"/>
@@ -613,7 +1367,8 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                 </Link>
                 <Link
                   href={getLocalizedHref('/model/nano-banana-2')}
-                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
+                  onClick={() => setOpenDesktopMenu(null)}
+                  className="order-8 block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
                 >
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
                     <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#aiImageGradient2)" opacity="0.2"/>
@@ -630,7 +1385,8 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                 </Link>
                 <Link
                   href={getLocalizedHref('/model/seedream-4-5')}
-                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
+                  onClick={() => setOpenDesktopMenu(null)}
+                  className="order-10 block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
                 >
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
                     <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#aiImageGradient4)" opacity="0.2"/>
@@ -644,21 +1400,61 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                   </svg>
                   <span>{navTranslations.seedream45 || defaultNavTranslations.seedream45}</span>
                 </Link>
+                <Link
+                  href={getLocalizedHref('/model/seedream-5-0-lite')}
+                  onClick={() => setOpenDesktopMenu(null)}
+                  className="order-9 block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
+                    <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#aiImageGradient50Lite)" opacity="0.2"/>
+                    <path d="M7 8h7M7 12h10M7 16h6M17 6l1.5 3L21 10.5l-2.5 1.5L17 15l-1.5-3L13 10.5 15.5 9 17 6Z" stroke="url(#aiImageGradient50Lite)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                    <defs>
+                      <linearGradient id="aiImageGradient50Lite" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+                        <stop stopColor="#9333EA"/>
+                        <stop offset="1" stopColor="#4F46E5"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                  <span>{navTranslations.seedream50Lite || defaultNavTranslations.seedream50Lite}</span>
+                </Link>
               </div>
             </div>
           </div>
           {/* 一级菜单：AI Video */}
-          <div className="relative group">
-            <button className="hover:text-indigo-600 transition-colors flex items-center gap-1">
+          <div className="relative group order-3">
+            <button
+              type="button"
+              onClick={() => toggleDesktopMenu('ai-video')}
+              aria-expanded={openDesktopMenu === 'ai-video'}
+              className="hover:text-indigo-600 transition-colors flex items-center gap-1"
+            >
               {navTranslations.aiVideo || defaultNavTranslations.aiVideo}
-              <svg className="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className={'w-4 h-4 transition-transform group-hover:rotate-180' + (openDesktopMenu === 'ai-video' ? ' rotate-180' : '')} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
               </svg>
             </button>
-            <div className="absolute top-full left-0 pt-1 w-auto min-w-[200px] bg-transparent opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+            <div className={'absolute top-full left-0 pt-1 w-auto min-w-[200px] bg-transparent transition-all duration-200 z-50 ' + (openDesktopMenu === 'ai-video' ? 'opacity-100 visible' : 'opacity-0 invisible group-hover:opacity-100 group-hover:visible')}>
               <div className="bg-white rounded-xl shadow-lg border border-indigo-50 py-2">
                 <Link
+                  href={getLocalizedHref('/model/seedance-2-5')}
+                  onClick={() => setOpenDesktopMenu(null)}
+                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
+                    <rect x="2" y="4" width="20" height="14" rx="2" fill="url(#aiVideoGradient25)" opacity="0.2"/>
+                    <path d="M10 8L16 12L10 16V8Z" fill="url(#aiVideoGradient25)"/>
+                    <defs>
+                      <linearGradient id="aiVideoGradient25" x1="2" y1="4" x2="22" y2="18" gradientUnits="userSpaceOnUse">
+                        <stop stopColor="#9333EA"/>
+                        <stop offset="1" stopColor="#4F46E5"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                  <span>{navTranslations.seedance25 || defaultNavTranslations.seedance25}</span>
+                </Link>
+                <Link
                   href={getLocalizedHref('/model/seedance-2')}
+                  onClick={() => setOpenDesktopMenu(null)}
                   className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
                 >
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
@@ -675,6 +1471,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                 </Link>
                 <Link
                   href={getLocalizedHref('/model/kling-3')}
+                  onClick={() => setOpenDesktopMenu(null)}
                   className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
                 >
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
@@ -693,7 +1490,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
             </div>
           </div>
           {showNavLanguageSwitcher && (
-            <div className="relative">
+            <div className="relative order-5">
               <button
                 type="button"
                 onClick={() => setNavLangOpen(!navLangOpen)}
@@ -740,15 +1537,54 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
           )}
         </div>
 
+        <div className="absolute right-6 hidden md:flex items-center gap-3">
+          {authUser ? (
+            <div ref={accountMenuRef} className="relative">
+              <button
+                type="button"
+                onClick={toggleAccountMenu}
+                className="flex items-center gap-2 rounded-full bg-white p-1 pl-3 text-sm font-bold text-slate-700 shadow-sm transition-colors hover:bg-slate-50 hover:text-indigo-600"
+                aria-label={authTranslations.openAccountMenu}
+                aria-expanded={accountMenuOpen}
+              >
+                <span
+                  className="inline-flex items-center gap-1.5 text-[#4F46E5]"
+                  aria-label={`${creditSummary.balance} ${accountTranslations.credits}`}
+                >
+                  <span className="tabular-nums">{creditSummary.balance}</span>
+                  <img
+                    src="/credits-icons/diamond-3d-indigo.svg"
+                    alt=""
+                    aria-hidden="true"
+                    className="h-5 w-5"
+                  />
+                </span>
+                {renderAvatar()}
+              </button>
+              {accountMenuOpen && renderAccountMenu()}
+            </div>
+          ) : authLoaded ? (
+            <button
+              type="button"
+              onClick={openAuthModal}
+              className="text-sm font-semibold text-slate-700 transition-colors hover:text-indigo-600"
+            >
+              {authTranslations.signIn}
+            </button>
+          ) : (
+            renderAuthLoadingPlaceholder()
+          )}
+        </div>
+
         {/* 移动端菜单面板 */}
         {mobileMenuOpen && (
           <div
             ref={menuRef}
             className="block md:!hidden absolute top-full left-0 right-0 bg-white shadow-xl border-t border-indigo-50 z-40 max-h-[calc(100vh-70px)] overflow-y-auto overscroll-contain"
           >
-            <div className="px-6 py-4 space-y-4 pb-8">
+            <div className="flex flex-col gap-4 px-6 py-4 pb-8">
               {/* Prompts 部分 */}
-              <div className="border-b border-indigo-50 pb-4">
+              <div className="order-4 border-b border-indigo-50 pb-4">
                 <div className="mb-3 flex items-center justify-between">
                   <div className="text-sm font-bold text-slate-700">{navTranslations.promptLibrary || defaultNavTranslations.promptLibrary}</div>
                   <Link
@@ -810,85 +1646,12 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                   })}
                 </div>
               </div>
-              {/* Quick Tools 部分 */}
-              <div className="border-b border-indigo-50 pb-4">
-                <div className="text-sm font-bold text-slate-700 mb-3">{navTranslations.quickTools}</div>
-                <div className="space-y-2">
-                  {secondLevelItems.map((item, index) => {
-                    const isExpanded = expandedSubmenus.has(item.title)
-                    const thirdLevelItems = item.hasThirdLevel && item.tool ? getThirdLevelItems(item.tool) : []
-                    
-                    return (
-                      <div key={item.tool || `item-${index}`}>
-                        <div className="flex items-center">
-                          <Link
-                            href={item.href}
-                            onClick={() => {
-                              setMobileMenuOpen(false)
-                              setExpandedSubmenus(new Set())
-                            }}
-                            className="flex-1 flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
-                          >
-                            {item.icon && item.icon}
-                            <span>{item.title || defaultNavTranslations[item.tool as keyof typeof defaultNavTranslations] || item.tool}</span>
-                          </Link>
-                          {thirdLevelItems.length > 0 && (
-                            <button
-                              onClick={(e) => {
-                                e.preventDefault()
-                                setExpandedSubmenus(prev => {
-                                  const newSet = new Set(prev)
-                                  if (newSet.has(item.title)) {
-                                    newSet.delete(item.title)
-                                  } else {
-                                    newSet.add(item.title)
-                                  }
-                                  return newSet
-                                })
-                              }}
-                              className="p-2 text-slate-500 hover:text-indigo-600 transition-colors"
-                              aria-label={isExpanded ? 'Collapse submenu' : 'Expand submenu'}
-                            >
-                              <svg 
-                                className={'w-4 h-4 transition-transform' + (isExpanded ? ' rotate-90' : '')} 
-                                fill="none" 
-                                stroke="currentColor" 
-                                viewBox="0 0 24 24"
-                              >
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
-                              </svg>
-                            </button>
-                          )}
-                        </div>
-                        {/* 移动端三级菜单 - 默认折叠 */}
-                        {isExpanded && thirdLevelItems.length > 0 && (
-                          <div className="ml-5 mt-2 space-y-1">
-                            {thirdLevelItems.map((thirdItem, idx) => (
-                              <Link
-                                key={`${item.tool}-${thirdItem.slug}-${idx}`}
-                                href={thirdItem.href}
-                                onClick={() => {
-                                  setMobileMenuOpen(false)
-                                  setExpandedSubmenus(new Set())
-                                }}
-                                className="block px-3 py-2 text-sm text-slate-500 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
-                              >
-                                {thirdItem.title}
-                              </Link>
-                            ))}
-                          </div>
-                        )}
-                      </div>
-                    )
-                  })}
-                </div>
-              </div>
               {/* AI Tools 部分 */}
-              <div className="border-b border-indigo-50 pb-4">
+              <div className="order-2 border-b border-indigo-50 pb-4">
                 <div className="text-sm font-bold text-slate-700 mb-3">{navTranslations.aiTools || 'AI Tools'}</div>
                 <div className="space-y-2">
                   <Link
-                    href={getLocalizedHref('/ai-image-generator')}
+                    href={getLocalizedHref('/ai-baby-generator')}
                     onClick={() => {
                       setMobileMenuOpen(false)
                       setExpandedSubmenus(new Set())
@@ -896,14 +1659,14 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                     className="flex items-center gap-3 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
                   >
                     <img
-                      src={AI_TOOLS_DEMO_IMAGES.aiImageGenerator}
-                      alt={navTranslations.aiImageGenerator || defaultNavTranslations.aiImageGenerator}
+                      src={AI_TOOLS_DEMO_IMAGES.aiBabyGenerator}
+                      alt={navTranslations.aiBabyGenerator || defaultNavTranslations.aiBabyGenerator}
                       className="w-10 h-10 rounded-lg object-cover border border-indigo-100 flex-shrink-0"
                     />
-                    <span>{navTranslations.aiImageGenerator || defaultNavTranslations.aiImageGenerator}</span>
+                    <span>{navTranslations.aiBabyGenerator || defaultNavTranslations.aiBabyGenerator}</span>
                   </Link>
                   <Link
-                    href={getLocalizedHref('/world-cup-ai-image-generator')}
+                    href={getLocalizedHref('/ai-hairstyle-changer')}
                     onClick={() => {
                       setMobileMenuOpen(false)
                       setExpandedSubmenus(new Set())
@@ -911,11 +1674,26 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                     className="flex items-center gap-3 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
                   >
                     <img
-                      src={AI_TOOLS_DEMO_IMAGES.worldCupAiImageGenerator}
-                      alt={navTranslations.worldCupAiImageGenerator || defaultNavTranslations.worldCupAiImageGenerator}
+                      src={AI_TOOLS_DEMO_IMAGES.aiHairstyleChanger}
+                      alt={navTranslations.aiHairstyleChanger || defaultNavTranslations.aiHairstyleChanger}
                       className="w-10 h-10 rounded-lg object-cover border border-indigo-100 flex-shrink-0"
                     />
-                    <span>{navTranslations.worldCupAiImageGenerator || defaultNavTranslations.worldCupAiImageGenerator}</span>
+                    <span>{navTranslations.aiHairstyleChanger || defaultNavTranslations.aiHairstyleChanger}</span>
+                  </Link>
+                  <Link
+                    href={getLocalizedHref('/ai-hair-color-changer')}
+                    onClick={() => {
+                      setMobileMenuOpen(false)
+                      setExpandedSubmenus(new Set())
+                    }}
+                    className="flex items-center gap-3 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
+                  >
+                    <img
+                      src={AI_TOOLS_DEMO_IMAGES.aiHairColorChanger}
+                      alt={navTranslations.aiHairColorChanger || defaultNavTranslations.aiHairColorChanger}
+                      className="w-10 h-10 rounded-lg object-cover border border-indigo-100 flex-shrink-0"
+                    />
+                    <span>{navTranslations.aiHairColorChanger || defaultNavTranslations.aiHairColorChanger}</span>
                   </Link>
                   <Link
                     href={getLocalizedHref('/watermark-remover')}
@@ -978,16 +1756,16 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                 </div>
               </div>
               {/* AI Image 部分 */}
-              <div className="border-b border-indigo-50 pb-4">
+              <div className="order-1 border-b border-indigo-50 pb-4">
                 <div className="text-sm font-bold text-slate-700 mb-3">{navTranslations.aiImage || defaultNavTranslations.aiImage}</div>
-                <div className="space-y-2">
+                <div className="flex flex-col gap-2">
                   <Link
                     href={getLocalizedHref('/ai-image-generator')}
                     onClick={() => {
                       setMobileMenuOpen(false)
                       setExpandedSubmenus(new Set())
                     }}
-                    className="flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
+                    className="order-1 flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
                   >
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
                       <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#aiImageGeneratorGradientMobile)" opacity="0.2"/>
@@ -1003,12 +1781,54 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                     <span>{navTranslations.aiImageGenerator || defaultNavTranslations.aiImageGenerator}</span>
                   </Link>
                   <Link
+                    href={getLocalizedHref('/text-to-image-generator')}
+                    onClick={() => {
+                      setMobileMenuOpen(false)
+                      setExpandedSubmenus(new Set())
+                    }}
+                    className="order-2 flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
+                  >
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
+                      <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#textToImageGeneratorGradientMobile)" opacity="0.2"/>
+                      <path d="M7 8h4M7 12h7M7 16h5" stroke="url(#textToImageGeneratorGradientMobile)" strokeWidth="2" strokeLinecap="round"/>
+                      <path d="M16 7l1 2 2 1-2 1-1 2-1-2-2-1 2-1 1-2Z" fill="url(#textToImageGeneratorGradientMobile)"/>
+                      <defs>
+                        <linearGradient id="textToImageGeneratorGradientMobile" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+                          <stop stopColor="#9333EA"/>
+                          <stop offset="1" stopColor="#4F46E5"/>
+                        </linearGradient>
+                      </defs>
+                    </svg>
+                    <span>{navTranslations.textToImageGenerator || defaultNavTranslations.textToImageGenerator}</span>
+                  </Link>
+                  <Link
+                    href={getLocalizedHref('/ai-image-to-image-generator')}
+                    onClick={() => {
+                      setMobileMenuOpen(false)
+                      setExpandedSubmenus(new Set())
+                    }}
+                    className="order-3 flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
+                  >
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
+                      <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#aiImageToImageGradientMobile)" opacity="0.2"/>
+                      <path d="M6 8h7M6 12h5M6 16h7" stroke="url(#aiImageToImageGradientMobile)" strokeWidth="2" strokeLinecap="round"/>
+                      <path d="M15 7l3 3-3 3M18 10H12" stroke="url(#aiImageToImageGradientMobile)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      <defs>
+                        <linearGradient id="aiImageToImageGradientMobile" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+                          <stop stopColor="#9333EA"/>
+                          <stop offset="1" stopColor="#4F46E5"/>
+                        </linearGradient>
+                      </defs>
+                    </svg>
+                    <span>{navTranslations.aiImageToImageGenerator || defaultNavTranslations.aiImageToImageGenerator}</span>
+                  </Link>
+                  <Link
                     href={getLocalizedHref('/model/gpt-image-2-0')}
                     onClick={() => {
                       setMobileMenuOpen(false)
                       setExpandedSubmenus(new Set())
                     }}
-                    className="flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
+                    className="order-5 flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
                   >
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
                       <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#aiImageGradientMobile3)" opacity="0.2"/>
@@ -1020,7 +1840,33 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                         </linearGradient>
                       </defs>
                   </svg>
-                  <span>{navTranslations.gptImage2 || defaultNavTranslations.gptImage2}</span>
+                  <span className="inline-flex items-center gap-2">
+                    <span>{navTranslations.gptImage2 || defaultNavTranslations.gptImage2}</span>
+                    <span className="rounded-full bg-red-500 px-1.5 py-0.5 text-[10px] font-extrabold leading-none text-white">Hot</span>
+                  </span>
+                </Link>
+                <Link
+                  href={getLocalizedHref('/model/seedream-5-0-pro')}
+                  onClick={() => {
+                    setMobileMenuOpen(false)
+                    setExpandedSubmenus(new Set())
+                  }}
+                  className="order-4 flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
+                    <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#aiImageGradientMobile50Pro)" opacity="0.2"/>
+                    <path d="M7 8h10M7 12h7M7 16h5M17 5l1.8 3.4L22 10l-3.2 1.6L17 15l-1.8-3.4L12 10l3.2-1.6L17 5Z" stroke="url(#aiImageGradientMobile50Pro)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                    <defs>
+                      <linearGradient id="aiImageGradientMobile50Pro" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+                        <stop stopColor="#9333EA"/>
+                        <stop offset="1" stopColor="#4F46E5"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                  <span className="inline-flex items-center gap-2">
+                    <span>{navTranslations.seedream50Pro || defaultNavTranslations.seedream50Pro}</span>
+                    <span className="rounded-full bg-emerald-500 px-1.5 py-0.5 text-[10px] font-extrabold leading-none text-white">New</span>
+                  </span>
                 </Link>
                 <Link
                   href={getLocalizedHref('/model/wan-2-7-image')}
@@ -1028,7 +1874,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                     setMobileMenuOpen(false)
                     setExpandedSubmenus(new Set())
                   }}
-                  className="flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
+                  className="order-6 flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
                 >
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
                     <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#aiImageGradientMobileWan27)" opacity="0.2"/>
@@ -1048,7 +1894,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                       setMobileMenuOpen(false)
                       setExpandedSubmenus(new Set())
                     }}
-                    className="flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
+                    className="order-7 flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
                   >
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
                       <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#aiImageGradientMobile)" opacity="0.2"/>
@@ -1069,7 +1915,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                       setMobileMenuOpen(false)
                       setExpandedSubmenus(new Set())
                     }}
-                    className="flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
+                    className="order-8 flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
                   >
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
                       <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#aiImageGradientMobile2)" opacity="0.2"/>
@@ -1090,7 +1936,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                       setMobileMenuOpen(false)
                       setExpandedSubmenus(new Set())
                     }}
-                    className="flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
+                    className="order-10 flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
                   >
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
                       <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#aiImageGradientMobile4)" opacity="0.2"/>
@@ -1104,12 +1950,52 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                     </svg>
                     <span>{navTranslations.seedream45 || defaultNavTranslations.seedream45}</span>
                   </Link>
+                  <Link
+                    href={getLocalizedHref('/model/seedream-5-0-lite')}
+                    onClick={() => {
+                      setMobileMenuOpen(false)
+                      setExpandedSubmenus(new Set())
+                    }}
+                    className="order-9 flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
+                  >
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
+                      <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#aiImageGradientMobile50Lite)" opacity="0.2"/>
+                      <path d="M7 8h7M7 12h10M7 16h6M17 6l1.5 3L21 10.5l-2.5 1.5L17 15l-1.5-3L13 10.5 15.5 9 17 6Z" stroke="url(#aiImageGradientMobile50Lite)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                      <defs>
+                        <linearGradient id="aiImageGradientMobile50Lite" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+                          <stop stopColor="#9333EA"/>
+                          <stop offset="1" stopColor="#4F46E5"/>
+                        </linearGradient>
+                      </defs>
+                    </svg>
+                    <span>{navTranslations.seedream50Lite || defaultNavTranslations.seedream50Lite}</span>
+                  </Link>
                 </div>
               </div>
               {/* AI Video 部分 */}
-              <div className="border-b border-indigo-50 pb-4">
+              <div className="order-3 border-b border-indigo-50 pb-4">
                 <div className="text-sm font-bold text-slate-700 mb-3">{navTranslations.aiVideo || defaultNavTranslations.aiVideo}</div>
                 <div className="space-y-2">
+                  <Link
+                    href={getLocalizedHref('/model/seedance-2-5')}
+                    onClick={() => {
+                      setMobileMenuOpen(false)
+                      setExpandedSubmenus(new Set())
+                    }}
+                    className="flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
+                  >
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
+                      <rect x="2" y="4" width="20" height="14" rx="2" fill="url(#aiVideoGradientMobile25)" opacity="0.2"/>
+                      <path d="M10 8L16 12L10 16V8Z" fill="url(#aiVideoGradientMobile25)"/>
+                      <defs>
+                        <linearGradient id="aiVideoGradientMobile25" x1="2" y1="4" x2="22" y2="18" gradientUnits="userSpaceOnUse">
+                          <stop stopColor="#9333EA"/>
+                          <stop offset="1" stopColor="#4F46E5"/>
+                        </linearGradient>
+                      </defs>
+                    </svg>
+                    <span>{navTranslations.seedance25 || defaultNavTranslations.seedance25}</span>
+                  </Link>
                   <Link
                     href={getLocalizedHref('/model/seedance-2')}
                     onClick={() => {
@@ -1153,7 +2039,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                 </div>
               </div>
               {showNavLanguageSwitcher && (
-                <div className="border-t border-indigo-50 pt-4 mt-2">
+                <div className="order-5 border-t border-indigo-50 pt-4 mt-2">
                   <div className="text-sm font-bold text-slate-700 mb-3">{navTranslations.language}</div>
                   <div className="flex flex-wrap gap-2">
                     {navOtherLocales.map((locale) => (
@@ -1182,5 +2068,140 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
         )}
       </div>
     </nav>
+    {topNotice && (
+      <div className="fixed right-4 top-20 z-[10000] max-w-sm rounded-2xl border border-slate-200 bg-white p-4 shadow-xl shadow-slate-200/70">
+        <div className="flex items-start gap-3">
+          <div className={`mt-1 h-2.5 w-2.5 rounded-full ${topNotice.type === 'success' ? 'bg-emerald-500' : 'bg-rose-500'}`} />
+          <div className="min-w-0 flex-1">
+            <p className="text-sm font-extrabold text-slate-950">{topNotice.title}</p>
+            <p className="mt-0.5 text-xs leading-5 text-slate-600">{topNotice.message}</p>
+          </div>
+          <button
+            type="button"
+            onClick={() => setTopNotice(null)}
+            className="rounded-full p-1 text-slate-500 hover:bg-slate-100 hover:text-slate-900"
+            aria-label={authTranslations.closeNotification}
+          >
+            <CloseIcon size={16} />
+          </button>
+        </div>
+      </div>
+    )}
+    {authModalOpen && (
+      <div
+        className="fixed inset-0 z-[10000] flex items-center justify-center bg-slate-950/45 px-4 py-6 backdrop-blur-sm"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="auth-modal-title"
+      >
+        <button
+          type="button"
+          className="absolute inset-0 h-full w-full cursor-default rounded-none border-0 bg-transparent p-0"
+          aria-label={authTranslations.closeDialog}
+          onClick={closeAuthModal}
+        />
+        <div className="relative w-full max-w-[420px] overflow-hidden rounded-2xl bg-white shadow-2xl ring-1 ring-slate-200">
+          <button
+            type="button"
+            onClick={closeAuthModal}
+            className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-500 hover:border-slate-300 hover:text-slate-900"
+            aria-label={authTranslations.closeDialog}
+          >
+            <CloseIcon size={18} />
+          </button>
+          <div className="px-6 pb-6 pt-7 sm:px-8 sm:pb-8">
+            <div className="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-indigo-600 text-white shadow-lg shadow-indigo-100">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 3L14.3 8.1L20 8.7L15.7 12.4L17 18L12 15.1L7 18L8.3 12.4L4 8.7L9.7 8.1L12 3Z" fill="currentColor" />
+              </svg>
+            </div>
+            <p className="mb-2 text-xs font-bold uppercase tracking-[0.18em] text-indigo-600">
+              {authTranslations.modalEyebrow}
+            </p>
+            <h2 id="auth-modal-title" className="text-2xl font-extrabold leading-tight text-slate-950">
+              {authTranslations.modalTitle}
+            </h2>
+            <p className="mt-3 text-sm leading-6 text-slate-600">
+              {authTranslations.modalDescription}
+            </p>
+            <div className="mt-4 flex items-center gap-2 rounded-xl border border-indigo-100 bg-indigo-50 px-3 py-2 text-xs font-bold text-indigo-700">
+              <img
+                src="/credits-icons/diamond-3d-indigo.svg"
+                alt=""
+                aria-hidden="true"
+                className="h-4 w-4 flex-none"
+              />
+              <span>{authTranslations.newUserBonus}</span>
+            </div>
+            <button
+              type="button"
+              onClick={startGoogleSignIn}
+              disabled={authRedirecting}
+              className={`mt-6 flex w-full items-center justify-center gap-3 rounded-xl border px-4 py-3 text-sm font-bold shadow-sm transition ${
+                authRedirecting
+                  ? 'pointer-events-none border-indigo-100 bg-indigo-50 text-indigo-700'
+                  : 'border-slate-200 bg-white text-slate-900 hover:border-indigo-200 hover:bg-slate-50'
+              }`}
+            >
+              {authRedirecting ? (
+                <span className="h-5 w-5 animate-spin rounded-full border-2 border-indigo-200 border-t-indigo-600" aria-hidden="true" />
+              ) : (
+                <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+                  <path fill="#4285F4" d="M21.6 12.2c0-.7-.1-1.3-.2-1.9H12v3.6h5.4c-.2 1.2-.9 2.2-2 2.9v2.4h3.2c1.8-1.7 3-4.2 3-7Z" />
+                  <path fill="#34A853" d="M12 22c2.7 0 5-.9 6.6-2.5l-3.2-2.4c-.9.6-2 .9-3.4.9-2.6 0-4.8-1.8-5.6-4.1H3.1v2.5C4.8 19.7 8.2 22 12 22Z" />
+                  <path fill="#FBBC05" d="M6.4 13.9c-.2-.6-.3-1.2-.3-1.9s.1-1.3.3-1.9V7.6H3.1C2.4 8.9 2 10.4 2 12s.4 3.1 1.1 4.4l3.3-2.5Z" />
+                  <path fill="#EA4335" d="M12 6c1.5 0 2.8.5 3.8 1.5l2.8-2.8C17 3 14.7 2 12 2 8.2 2 4.8 4.3 3.1 7.6l3.3 2.5C7.2 7.8 9.4 6 12 6Z" />
+                </svg>
+              )}
+              {authRedirecting ? authTranslations.modalGoogleLoading : authTranslations.modalGoogleButton}
+            </button>
+            {isLocalAuthPage && (
+              <div className="mt-5 border-t border-slate-100 pt-5">
+                <p className="text-sm font-bold text-slate-700">
+                  Local test login
+                </p>
+                <div className="mt-3 space-y-3">
+                  <input
+                    type="email"
+                    value={devLoginEmail}
+                    onChange={(event) => setDevLoginEmail(event.target.value)}
+                    className="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm font-semibold text-slate-900 outline-none transition focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
+                    placeholder="dianawu1202@gmail.com"
+                    autoComplete="email"
+                  />
+                  <input
+                    type="password"
+                    value={devLoginPassword}
+                    onChange={(event) => setDevLoginPassword(event.target.value)}
+                    className="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm font-semibold text-slate-900 outline-none transition focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
+                    placeholder={DEV_LOGIN_PASSWORD_PLACEHOLDER}
+                    autoComplete="current-password"
+                  />
+                  {devLoginError && (
+                    <p className="text-xs font-semibold text-rose-600">{devLoginError}</p>
+                  )}
+                  <button
+                    type="button"
+                    onClick={startDevLogin}
+                    disabled={devLoginLoading || !devLoginEmail.trim() || !devLoginPassword}
+                    className={`flex w-full items-center justify-center rounded-xl px-4 py-3 text-sm font-bold transition ${
+                      devLoginLoading || !devLoginEmail.trim() || !devLoginPassword
+                        ? 'bg-slate-100 text-slate-400'
+                        : 'bg-slate-950 text-white hover:bg-slate-800'
+                    }`}
+                  >
+                    {devLoginLoading ? 'Signing in...' : 'Use local test login'}
+                  </button>
+                </div>
+              </div>
+            )}
+            <p className="mt-4 text-center text-xs leading-5 text-slate-500">
+              {authTranslations.modalTerms}
+            </p>
+          </div>
+        </div>
+      </div>
+    )}
+    </>
   )
 }

@@ -454,18 +454,21 @@ nav.sticky-nav.scrolled {
   border-color: #4f46e5;
 }
 
-/* 工具页按钮（压缩、转换等）使用 btn-blue/btn-green 等类 */
 button {
-  padding: 12px 24px !important;
-  border: none !important;
   cursor: pointer;
+}
+
+/* 只给没有组件样式的旧按钮提供默认 pill 样式，避免覆盖色块、工具面板、上传图等组件自定义圆角 */
+button:not([class]) {
+  padding: 12px 24px;
+  border: none;
   font-weight: 600;
-  display: inline-flex !important;
+  display: inline-flex;
   align-items: center;
   gap: 8px;
   transition: 0.2s;
   white-space: nowrap;
-  border-radius: 9999px !important;
+  border-radius: 9999px;
 }
 
 /* 导航栏按钮：覆盖全局样式，避免被强制成 pill 形状 */
@@ -475,6 +478,15 @@ button {
   font-weight: 600;
   display: flex !important;
   align-items: center;
+}
+
+#mainNav button[data-account-avatar-trigger] {
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0 !important;
+  border-radius: 9999px !important;
+  min-width: 2.5rem;
+  min-height: 2.5rem;
 }
 
 /* WatermarkRemover 等工具内按钮：恢复组件自有 padding/圆角，避免被全局 button 强制成 pill */
@@ -618,4 +630,3 @@ footer button {
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
-

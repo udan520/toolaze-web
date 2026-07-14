@@ -1,23 +1,36 @@
 'use client'
 
 import { useState, useRef, useCallback, useEffect, useLayoutEffect } from 'react'
+import type { ReactNode } from 'react'
 import { useMemo } from 'react'
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import SiteImage from './SiteImage'
 import { getImageUploadUrl } from '@/lib/upload-url'
 import { useCommonTranslations } from '@/lib/use-common-translations'
 import DeleteIcon from './icons/DeleteIcon'
 import CloseIcon from './icons/CloseIcon'
-import ReplaceIcon from './icons/ReplaceIcon'
+import ImageReplaceButton from './ImageReplaceButton'
+import Breadcrumb from './Breadcrumb'
+import type { BreadcrumbItem } from './Breadcrumb'
+import { calculateImageGenerationCredits } from '@/lib/generation-credits'
+import { isCreditExhaustedGenerationError } from '@/lib/generation-error-classifier'
+import {
+  getCachedGenerationAuthState,
+  getGenerationAuthStateFromAuthMeResult,
+} from '@/lib/generation-auth-state'
+import type { GenerationAuthState } from '@/lib/generation-auth-state'
+import { getNanoBananaToolText } from '@/lib/nano-banana-tool-text'
 
 type RightPanelMode = 'sample' | 'generating' | 'history' | 'result'
 
 interface HistoryItem {
   id: string
   inputPreview: string
+  inputUrls?: string[]
   outputPreview: string
   prompt: string
   time: string
+  modelId?: ImageModelId
   aspectRatio?: string
   resolution?: string
   outputFormat?: string
@@ -96,6 +109,38 @@ const MODEL_CONFIG = {
     supportsHighResolution: true,
     maxFileSizeMb: 10,
   },
+  'seedream-5-0-lite': {
+    aspectRatios: [
+      { value: '1:1', label: '1:1' },
+      { value: '4:3', label: '4:3' },
+      { value: '3:4', label: '3:4' },
+      { value: '16:9', label: '16:9' },
+      { value: '9:16', label: '9:16' },
+      { value: '2:3', label: '2:3' },
+      { value: '3:2', label: '3:2' },
+      { value: '21:9', label: '21:9' },
+    ],
+    maxImages: 14,
+    supportsOutputFormat: false,
+    supportsHighResolution: true,
+    maxFileSizeMb: 10,
+  },
+  'seedream-5-0-pro': {
+    aspectRatios: [
+      { value: '1:1', label: '1:1' },
+      { value: '4:3', label: '4:3' },
+      { value: '3:4', label: '3:4' },
+      { value: '16:9', label: '16:9' },
+      { value: '9:16', label: '9:16' },
+      { value: '2:3', label: '2:3' },
+      { value: '3:2', label: '3:2' },
+      { value: '21:9', label: '21:9' },
+    ],
+    maxImages: 14,
+    supportsOutputFormat: false,
+    supportsHighResolution: true,
+    maxFileSizeMb: 10,
+  },
   'wan-2-7-image': {
     aspectRatios: [
       { value: '1:1', label: '1:1' },
@@ -121,11 +166,18 @@ interface ImageItem {
 interface PromptInsertEventDetail {
   prompt?: string
   imageUrl?: string
+  imageUrls?: string[]
   imageName?: string
   demoImageUrl?: string
   demoImageTitle?: string
   demoImageWidth?: number
   demoImageHeight?: number
+  modelId?: ImageModelId
+  aspectRatio?: string
+  resolution?: string
+  outputFormat?: string
+  presetLabel?: string
+  presetGroup?: string
 }
 
 interface PromptDemoImage {
@@ -135,23 +187,308 @@ interface PromptDemoImage {
   height: number
 }
 
+interface PromptPreset {
+  label: string
+  prompt?: string
+  color?: string
+  swatch?: string
+  image?: string
+  group?: string
+  referenceImage?: string
+}
+
+interface PromptPresetTab {
+  id: string
+  label: string
+}
+
+interface PromptModifierOption {
+  label: string
+  prompt: string
+  value?: string
+}
+
+interface PromptModifierConfig {
+  title: string
+  options: PromptModifierOption[]
+  defaultValue?: string
+}
+
+const EMPTY_PROMPT_PRESETS: PromptPreset[] = []
+const EMPTY_PROMPT_PRESET_TABS: PromptPresetTab[] = []
+
+const LOCALIZED_ROUTE_PREFIXES = new Set(['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it'])
+
+const HISTORY_TOOL_LABELS: Record<string, string> = {
+  'ai-image-generator': 'AI Image Generator',
+  'ai-image-to-image-generator': 'AI Image to Image Generator',
+  'text-to-image-generator': 'Text to Image Generator',
+  'ai-baby-generator': 'AI Baby Generator',
+  'ai-couple-photo-maker': 'AI Couple Photo Maker',
+  'ai-hairstyle-changer': 'AI Hairstyle Changer',
+  'ai-hair-color-changer': 'AI Hair Color Changer',
+  'watermark-remover': 'Watermark Remover',
+  'photo-restoration': 'Photo Restoration',
+  'ai-clothes-changer': 'AI Clothes Changer',
+}
+
+function getHistoryToolMetadata(pathname: string, modelName: string, selectedModelId: ImageModelId) {
+  const pathParts = pathname.split('/').filter(Boolean)
+  const routeParts = LOCALIZED_ROUTE_PREFIXES.has(pathParts[0] || '')
+    ? pathParts.slice(1)
+    : pathParts
+  const rootSegment = routeParts[0] || 'ai-image-generator'
+
+  if (rootSegment === 'model') {
+    const modelSlug = routeParts[1] || selectedModelId
+    return {
+      toolSlug: `model/${modelSlug}`,
+      toolLabel: modelName || modelSlug,
+      sourcePath: pathname,
+    }
+  }
+
+  return {
+    toolSlug: rootSegment,
+    toolLabel: HISTORY_TOOL_LABELS[rootSegment] || rootSegment,
+    sourcePath: pathname,
+  }
+}
+
+const composePromptParts = (...parts: Array<string | undefined>) =>
+  parts
+    .map((part) => part?.trim())
+    .filter((part): part is string => Boolean(part))
+    .join(' ')
+
+const HAIR_COLOR_SWATCHES: Record<string, string> = {
+  'rose pink': 'linear-gradient(135deg, #f9a8d4, #db2777)',
+  'honey blonde': 'linear-gradient(135deg, #fde68a, #d97706)',
+  'platinum blonde': 'linear-gradient(135deg, #fff7ed, #d6d3d1)',
+  'copper brown': 'linear-gradient(135deg, #fb923c, #92400e)',
+  'burgundy red': 'linear-gradient(135deg, #fda4af, #991b1b)',
+  'cherry red': 'linear-gradient(135deg, #ef4444, #7f1d1d)',
+  'silver gray': 'linear-gradient(135deg, #f8fafc, #64748b)',
+  'ash brown': 'linear-gradient(135deg, #a8a29e, #57534e)',
+  'jet black': 'linear-gradient(135deg, #27272a, #020617)',
+  'blue black': 'linear-gradient(135deg, #0f172a, #1d4ed8)',
+  'lavender purple': 'linear-gradient(135deg, #ddd6fe, #7c3aed)',
+}
+
+const getPromptPresetSwatchStyle = (preset: PromptPreset): React.CSSProperties => {
+  const swatch = (preset.swatch || preset.color || HAIR_COLOR_SWATCHES[preset.label.toLowerCase()] || 'linear-gradient(135deg, #6366f1, #ec4899)').trim()
+
+  if (swatch.includes('gradient(')) {
+    return {
+      background: swatch,
+      backgroundImage: swatch,
+      backgroundColor: '#f472b6',
+    }
+  }
+
+  return {
+    background: swatch,
+    backgroundColor: swatch,
+  }
+}
+
 interface NanoBananaToolProps {
   modelId?: ImageModelId
   modelName?: string
   dailyLimitStorageKey?: string
   presetMode?: 'default' | 'ai-couple-photo-maker'
+  defaultMode?: 'image-to-image' | 'text-to-image'
+  defaultPrompt?: string
+  defaultImageUrls?: string[]
+  maxUploadImages?: number
+  hideModelBranding?: boolean
+  sampleImageVariant?: 'default' | 'sharp'
   sampleImages?: Array<{
     url: string
     title?: string
     width?: number
     height?: number
   }>
+  promptPresets?: PromptPreset[]
+  promptPresetTitle?: string
+  promptPresetTabs?: PromptPresetTab[]
+  hidePresetPromptInput?: boolean
+  customPromptTabId?: string
+  promptModifier?: PromptModifierConfig
+  compactResultPanel?: boolean
+  sceneText?: {
+    uploadTitle?: string
+    uploadHelper?: string
+    promptLabel?: string
+    promptPlaceholder?: string
+    generateLabel?: string
+    safetyHelper?: string
+  }
+  heroBreadcrumbItems?: BreadcrumbItem[]
+  heroEyebrow?: ReactNode
+  heroTitle?: ReactNode
+  heroDescription?: ReactNode
   initialTranslations?: any
 }
 
 interface ModelOption {
   id: ImageModelId
   name: string
+  description: string
+  qualityRating: number
+  badge?: 'Hot' | 'New'
+}
+
+interface ModelGroup {
+  id: string
+  name: string
+  description: string
+  logoSrc: string
+  logoAlt: string
+  models: ModelOption[]
+}
+
+const MODEL_GROUPS: ModelGroup[] = [
+  {
+    id: 'openai-gpt',
+    name: 'OpenAI GPT',
+    description: 'Structured image generation and controlled edits.',
+    logoSrc: '/model-logos/openai.svg',
+    logoAlt: 'OpenAI logo',
+    models: [
+      {
+        id: 'gpt-image-2',
+        name: 'GPT Image 2',
+        description: 'Create structured images, marketing visuals, mockups, and image edits.',
+        qualityRating: 5,
+        badge: 'Hot',
+      },
+    ],
+  },
+  {
+    id: 'seedream',
+    name: 'Seedream',
+    description: 'Commercial image generation, reference editing, and design layouts.',
+    logoSrc: '/model-logos/dreamina.ico',
+    logoAlt: 'Dreamina logo',
+    models: [
+      {
+        id: 'seedream-5-0-pro',
+        name: 'Seedream 5.0 Pro',
+        description: 'Higher quality Seedream workflow for polished product and campaign images.',
+        qualityRating: 5,
+        badge: 'New',
+      },
+      {
+        id: 'seedream-5-0-lite',
+        name: 'Seedream 5.0 Lite',
+        description: 'Fast Seedream workflow for drafts, concepts, and lightweight iterations.',
+        qualityRating: 4.5,
+      },
+      {
+        id: 'seedream-4-5',
+        name: 'Seedream 4.5',
+        description: 'Reference-aware image generation for posters, products, and typography.',
+        qualityRating: 4,
+      },
+    ],
+  },
+  {
+    id: 'nano-banana',
+    name: 'Nano Banana',
+    description: 'Reference-heavy image editing and multi-image creative workflows.',
+    logoSrc: '/model-logos/google-gemini.png',
+    logoAlt: 'Google Gemini logo',
+    models: [
+      {
+        id: 'nano-banana-pro',
+        name: 'Nano Banana Pro',
+        description: 'Reliable image editing workflow for style transfer and reference-guided output.',
+        qualityRating: 5,
+      },
+      {
+        id: 'nano-banana-2',
+        name: 'Nano Banana 2',
+        description: 'Newer multi-reference image workflow with high-resolution output.',
+        qualityRating: 4,
+      },
+    ],
+  },
+  {
+    id: 'wan-ai',
+    name: 'Wan AI',
+    description: 'Thinking-mode image generation and multi-reference composition.',
+    logoSrc: '/model-logos/wan.ico',
+    logoAlt: 'Wan AI logo',
+    models: [
+      {
+        id: 'wan-2-7-image',
+        name: 'Wan 2.7 Image',
+        description: 'Create images with multi-reference support and structured visual reasoning.',
+        qualityRating: 4,
+      },
+    ],
+  },
+]
+
+const getFlatModelOptions = () => MODEL_GROUPS.flatMap((group) => group.models)
+
+const getModelGroupId = (modelId: ImageModelId) =>
+  MODEL_GROUPS.find((group) => group.models.some((model) => model.id === modelId))?.id || MODEL_GROUPS[0].id
+
+const TEXT_TO_IMAGE_DEFAULT_MODELS: ImageModelId[] = ['gpt-image-2', 'seedream-4-5', 'seedream-5-0-lite', 'seedream-5-0-pro', 'wan-2-7-image']
+
+const getDefaultTabForModel = (id: ImageModelId): 'image-to-image' | 'text-to-image' =>
+  TEXT_TO_IMAGE_DEFAULT_MODELS.includes(id) ? 'text-to-image' : 'image-to-image'
+
+const getDefaultAspectRatioForModel = (id: ImageModelId, presetMode: NanoBananaToolProps['presetMode']): string => {
+  const ratioOptions = presetMode === 'ai-couple-photo-maker'
+    ? WRAPPED_IMAGE_PLAY_RATIO_OPTIONS
+    : MODEL_CONFIG[id].aspectRatios
+
+  return ratioOptions.some((item) => item.value === '16:9')
+    ? '16:9'
+    : ratioOptions[0]?.value || 'auto'
+}
+
+const getResolutionOptionsForModel = (id: ImageModelId): string[] =>
+  id === 'seedream-5-0-pro' ? ['1K', '2K'] : ['1K', '2K', '4K']
+
+const getDefaultResolutionForModel = (id: ImageModelId): string =>
+  getResolutionOptionsForModel(id)[0] || '1K'
+
+function getModelOptionMetadata(id: ImageModelId): string[] {
+  const resolutionOptions = getResolutionOptionsForModel(id)
+  const maxResolution = resolutionOptions[resolutionOptions.length - 1] || '1K'
+  const creditCosts = resolutionOptions.map((option) => calculateImageGenerationCredits(id, option))
+  const minCredits = Math.min(...creditCosts)
+  const creditLabel = `${minCredits} credits +`
+
+  return [creditLabel, `Max ${maxResolution}`]
+}
+
+function ModelQualityRating({ value }: { value: number }) {
+  return (
+    <span
+      className="mt-2 flex items-center gap-1.5 text-[12px] font-semibold leading-none text-slate-400"
+      aria-label={`Quality ${value} out of 5`}
+    >
+      <span>Quality</span>
+      <span className="flex items-center gap-0.5" aria-hidden="true">
+        {[0, 1, 2, 3, 4].map((index) => {
+          const fill = Math.max(0, Math.min(1, value - index))
+          return (
+            <span key={index} className="relative inline-flex h-3.5 w-3.5 overflow-hidden text-slate-300">
+              <span className="absolute inset-0">★</span>
+              <span className="absolute inset-0 overflow-hidden text-amber-400" style={{ width: `${fill * 100}%` }}>
+                ★
+              </span>
+            </span>
+          )
+        })}
+      </span>
+    </span>
+  )
 }
 
 const WRAPPED_IMAGE_PLAY_RATIO_OPTIONS = [
@@ -165,6 +502,121 @@ const WRAPPED_IMAGE_PLAY_RATIO_OPTIONS = [
   { value: '1:1', label: '1:1' },
   { value: '21:9', label: '21:9' },
 ] as const
+
+const PENDING_REPROMPT_STORAGE_KEY = 'toolaze:pending-reprompt'
+const EMPTY_DEFAULT_IMAGE_URLS: string[] = []
+
+const areStringArraysEqual = (left: string[], right: string[]) =>
+  left.length === right.length && left.every((item, index) => item === right[index])
+
+function shouldUploadReferenceUrlForGeneration(url: string): boolean {
+  if (url.startsWith('/')) return true
+  if (typeof window === 'undefined') return false
+
+  try {
+    const parsed = new URL(url, window.location.origin)
+    return ['localhost', '127.0.0.1', '::1', '[::1]'].includes(parsed.hostname)
+  } catch {
+    return false
+  }
+}
+
+function getReferencePreviewUrl(url: string): string {
+  const hairColorReferencePath = '/ai-hair-color-changer/default-reference.png'
+  const hairColorReferencePreviewPath = '/ai-hair-color-changer/default-reference-preview.webp'
+
+  if (url === hairColorReferencePath || url.endsWith(hairColorReferencePath)) {
+    return hairColorReferencePreviewPath
+  }
+
+  return url
+}
+
+function getReferenceImageFileName(url: string, index: number): string {
+  const cleanPath = url.split('?')[0]?.split('#')[0] || ''
+  const name = cleanPath.split('/').filter(Boolean).pop()
+  return name || `reference-${index + 1}.png`
+}
+
+async function uploadRemoteReferenceUrlsForGeneration(
+  urls: string[],
+  uploadUrl: string,
+  uploadFailedMessage: string,
+): Promise<string[]> {
+  const nextUrls: string[] = []
+
+  for (const [index, url] of urls.entries()) {
+    if (!shouldUploadReferenceUrlForGeneration(url)) {
+      nextUrls.push(url)
+      continue
+    }
+
+    const imageResponse = await fetch(url)
+    if (!imageResponse.ok) {
+      throw new Error(uploadFailedMessage)
+    }
+
+    const blob = await imageResponse.blob()
+    const uploadForm = new FormData()
+    uploadForm.append('image', blob, getReferenceImageFileName(url, index))
+
+    const uploadResponse = await fetch(uploadUrl, { method: 'POST', body: uploadForm })
+    if (!uploadResponse.ok) {
+      throw new Error(uploadFailedMessage)
+    }
+
+    const result = await uploadResponse.json().catch(() => ({}))
+    if (typeof result.url !== 'string' || !result.url.startsWith('http')) {
+      throw new Error(uploadFailedMessage)
+    }
+
+    nextUrls.push(result.url)
+  }
+
+  return nextUrls
+}
+
+async function ensureSignedInForGeneration(requiredCredits: number): Promise<GenerationAuthState> {
+  const cachedAuthState = getCachedGenerationAuthState(requiredCredits)
+
+  try {
+    const response = await fetch('/api/auth/me', {
+      cache: 'no-store',
+      credentials: 'include',
+    })
+    const data = await response.json().catch(() => ({}))
+    if (data?.user && typeof window !== 'undefined') {
+      ;(window as any).__TOOLAZE_AUTH_USER__ = data.user
+    }
+
+    return getGenerationAuthStateFromAuthMeResult(response.status, data, requiredCredits, cachedAuthState)
+  } catch {
+    return cachedAuthState
+  }
+}
+
+async function requestImageGenerationTask(formData: FormData, nanoText: Record<string, string>): Promise<Response> {
+  const send = () => fetch('/api/image-to-image', {
+    method: 'POST',
+    body: formData,
+    credentials: 'include',
+  })
+
+  try {
+    return await send()
+  } catch (error: any) {
+    const msg = error?.message || ''
+    if (msg.includes('fetch') || msg.includes('Failed to fetch') || msg.includes('NetworkError')) {
+      await new Promise((resolve) => setTimeout(resolve, 600))
+      try {
+        return await send()
+      } catch {
+        throw new Error(nanoText.networkFailed)
+      }
+    }
+    throw error
+  }
+}
 
 type CoupleTemplateCategory = 'style'
 
@@ -181,7 +633,7 @@ const NANO_BANANA_2_COUPLE_TEMPLATES: CoupleTemplate[] = [
     id: 'rainy-eiffel',
     title: 'Rainy Paris + Eiffel Tower',
     category: 'style',
-    image: '/ai-couple-photo-maker/rainy-eiffel-4x3.jpg',
+    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/ai-couple-photo-maker/rainy-eiffel-4x3.jpg',
     prompt:
       'Medium frontal portrait of a couple standing side-by-side under a large transparent umbrella on a rainy Paris street, both facing the camera. Both subjects MUST match the facial features, identity, and appearance of the uploaded reference images, with no deviation. Both subjects are wearing coordinated elegant evening outfits with refined styling. They stand close together under the umbrella, subtle intimacy, joyful and confident expressions. Background: a rainy Paris street with the Eiffel Tower softly glowing in the misty distance. Wet pavement reflecting warm street lamps and city lights. Cinematic rain atmosphere with visible rain droplets on the transparent umbrella, soft diffusion from moisture in the air. Lighting: moody cinematic lighting with contrast between warm street lights and cool rainy tones. Extremely realistic skin texture, hyper-detailed, sharp focus, premium editorial photography. Lens: 50mm, shallow depth of field, subjects in sharp focus, background softly blurred. Color grading: rich, vibrant, high-end cinematic style.',
   },
@@ -189,7 +641,7 @@ const NANO_BANANA_2_COUPLE_TEMPLATES: CoupleTemplate[] = [
     id: 'rooftop',
     title: 'Rooftop Night',
     category: 'style',
-    image: '/ai-couple-photo-maker/rooftop-4x3.jpg',
+    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/ai-couple-photo-maker/rooftop-4x3.jpg',
     prompt:
       'Medium frontal portrait of a stylish couple standing side-by-side at a rooftop bar at night, both facing the camera. Both subjects MUST match the facial features, identity, and appearance of the uploaded reference images, with no deviation. Both subjects are wearing modern upscale evening outfits suitable for a rooftop setting. They are each holding a champagne glass, standing close together with subtle intimacy, relaxed and confident expressions. Background: a high-end rooftop bar with a stunning city skyline at night, filled with glowing neon lights and soft bokeh. Glass railings and modern architectural elements subtly visible. Lighting: warm ambient lighting from the bar mixed with cool city light reflections, creating cinematic contrast and a modern luxury atmosphere. Extremely realistic skin texture, hyper-detailed, sharp focus, premium editorial lifestyle photography. Lens: 50mm, shallow depth of field, subjects in sharp focus, background smoothly blurred with rich bokeh. Color grading: high contrast, rich tones, modern luxury cinematic style.',
   },
@@ -197,7 +649,7 @@ const NANO_BANANA_2_COUPLE_TEMPLATES: CoupleTemplate[] = [
     id: 'red-carpet',
     title: 'Red Carpet Event',
     category: 'style',
-    image: '/ai-couple-photo-maker/red-carpet-4x3.jpg',
+    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/ai-couple-photo-maker/red-carpet-4x3.jpg',
     prompt:
       'Medium frontal portrait of a glamorous couple standing shoulder-to-shoulder on a red carpet, both facing the camera. Both subjects MUST match the facial features, identity, and appearance of the uploaded reference images, with no deviation. Both subjects are wearing premium red-carpet formal outfits with black and gold accents. They stand close together with confident and elegant posture, maintaining refined expressions and strong eye contact with the camera. Composition: centered and symmetrical framing, clean foreground with the couple as the clear focal point. Background: a red carpet event setting with a softly blurred crowd, subtle silhouettes, and controlled camera flash bokeh, ensuring no background figures are sharp or distracting. Lighting: cinematic, high-fashion lighting with soft key light on faces and subtle rim light separation, combined with gentle flash highlights for a premium editorial look. Extremely realistic skin texture, clean and sharp facial details, high resolution, premium fashion photography. Lens: 50mm, shallow depth of field, subjects in crisp focus, background smoothly blurred. Color grading: high contrast with rich blacks and luminous gold tones, modern luxury editorial style.',
   },
@@ -205,7 +657,7 @@ const NANO_BANANA_2_COUPLE_TEMPLATES: CoupleTemplate[] = [
     id: 'candlelight-dinner',
     title: 'Candlelight Dinner',
     category: 'style',
-    image: '/ai-couple-photo-maker/candlelight-dinner-4x3.jpg',
+    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/ai-couple-photo-maker/candlelight-dinner-4x3.jpg',
     prompt:
       'Intimate frontal portrait of a couple seated at a candlelit dinner table in a sophisticated restaurant. Both subjects are looking and smiling at the camera, holding up fine red wine glasses for a toast. Their faces are softly illuminated by the warm, flickering orange glow of many candles on the table. Soft bokeh of a luxury dimly lit interior in the background. Dramatic shadows, deeply romantic atmosphere, hyper-realistic skin texture, elegant formal evening outfits.',
   },
@@ -213,7 +665,7 @@ const NANO_BANANA_2_COUPLE_TEMPLATES: CoupleTemplate[] = [
     id: 'rose-wall',
     title: 'Rose Wall',
     category: 'style',
-    image: '/ai-couple-photo-maker/rose-wall-4x3.jpg',
+    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/ai-couple-photo-maker/rose-wall-4x3.jpg',
     prompt:
       'Medium frontal portrait of a happily smiling couple standing side-by-side. One subject holds a luxurious bouquet of deep red roses with velvet ribbon, while the other leans naturally on their partner\'s shoulder, both looking confidently at the camera. Background is a lush, textured wall of red rose. Sunlight filtering through leaves (dappled light), extremely realistic skin texture, vibrant and rich colors, romantic high-end lifestyle photography.',
   },
@@ -221,7 +673,7 @@ const NANO_BANANA_2_COUPLE_TEMPLATES: CoupleTemplate[] = [
     id: 'opera-formal',
     title: 'Opera Formal',
     category: 'style',
-    image: '/ai-couple-photo-maker/opera-formal-4x3.jpg',
+    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/ai-couple-photo-maker/opera-formal-4x3.jpg',
     prompt:
       'Medium frontal portrait of a couple standing side-by-side on the grand staircase of an opulent opera house, both facing the camera. Both subjects MUST match the facial features, identity, and appearance of the uploaded reference images, with no deviation. Subject A has polished styling and is wearing a premium formal outfit. Subject B is wearing a shimmering formal outfit, with their arm elegantly linked with their partner. They stand centered on a plush red-carpeted staircase, with confident and joyful expressions, maintaining a poised and regal posture. Background: a luxurious opera house interior with gilded arches, a massive crystal chandelier overhead, and rich red velvet curtains. Architectural symmetry emphasized. Lighting: warm, golden cinematic lighting inspired by reference images, casting soft highlights on skin and fabric, with gentle falloff and dramatic shadows for depth. Extremely realistic skin texture, clean and detailed facial features, high sharpness, premium editorial photography. Lens: 50mm, shallow depth of field, subjects in sharp focus, background slightly softened while preserving grandeur. Color grading: rich gold and deep red tones, high contrast, cinematic luxury style.',
   },
@@ -229,7 +681,7 @@ const NANO_BANANA_2_COUPLE_TEMPLATES: CoupleTemplate[] = [
     id: 'beach-outdoor',
     title: 'Beach Outdoor',
     category: 'style',
-    image: '/ai-couple-photo-maker/beach-outdoor-4x3.jpg',
+    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/ai-couple-photo-maker/beach-outdoor-4x3.jpg',
     prompt:
       'Medium close-up frontal portrait of a couple, both facing the camera. Both subjects MUST match the facial features, identity, and appearance of the uploaded reference images, with no deviation. Subject B has neatly styled hair and is wearing an elegant white ceremonial outfit with refined details. Subject B leans gently toward Subject A with a joyful and relaxed expression. Subject A has polished styling and is wearing a tailored navy formal outfit with refined details. Both are smiling radiantly and confidently, maintaining natural intimacy and a relaxed posture. Composition: symmetrical, centered on their faces, filling the center third of the frame. Lighting: soft natural sunlight filtering through unseen palm leaves, creating dappled light patterns across their faces and shoulders, warm and organic highlights with gentle shadow contrast. Background: softly blurred lush palm foliage with subtle hints of ocean waves, creating a tropical, romantic atmosphere. Extremely realistic skin texture, clean and detailed facial features, high sharpness, premium lifestyle wedding photography. Lens: 50mm, shallow depth of field, subjects in crisp focus, background smoothly blurred. Color grading: warm, soft, inviting tones with a high-end editorial finish.',
   },
@@ -237,7 +689,7 @@ const NANO_BANANA_2_COUPLE_TEMPLATES: CoupleTemplate[] = [
     id: 'garden-tea',
     title: 'Garden Tea',
     category: 'style',
-    image: '/ai-couple-photo-maker/garden-tea-4x3.jpg',
+    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/ai-couple-photo-maker/garden-tea-4x3.jpg',
     prompt:
       'Medium frontal portrait of a couple sitting close together at an elegant outdoor tea table in a lush, sunlit garden, both facing the camera. Both subjects MUST match the facial features, identity, and appearance of the uploaded reference images, with no deviation. Both subjects are wearing coordinated elegant garden-party outfits. They are seated side-by-side, leaning slightly toward each other with relaxed posture, smiling warmly and confidently at the camera. Composition: centered and symmetrical framing, medium shot, with both faces clearly visible and unobstructed, table elements placed neatly in the foreground. Table details: a refined tea setting with delicate macarons, teacups, and tableware arranged neatly and not blocking the subjects. Lighting: soft natural sunlight filtering through leaves, creating controlled dappled light patterns across their faces, clothing, and table, with balanced highlights and gentle shadows. Background: a lush garden with greenery, flowers, and soft palm elements, smoothly blurred to create depth while maintaining a bright and airy atmosphere. Extremely realistic skin texture, clean facial details, high resolution, sharp focus, premium high-fashion lifestyle photography. Lens: 50mm, shallow depth of field, subjects in crisp focus, foreground and background softly blurred. Color grading: soft pastel tones with warm highlights, refined and elegant editorial finish.',
   },
@@ -245,7 +697,7 @@ const NANO_BANANA_2_COUPLE_TEMPLATES: CoupleTemplate[] = [
     id: 'snow-ring',
     title: 'Snow + Ring',
     category: 'style',
-    image: '/ai-couple-photo-maker/snow-ring-4x3.jpg',
+    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/ai-couple-photo-maker/snow-ring-4x3.jpg',
     prompt:
       'Medium frontal portrait of a couple standing close together in a romantic setting surrounded by abundant red rose arrangements, both facing the camera. Both subjects MUST match the facial features, identity, and appearance of the uploaded reference images, with no deviation. Subject A is holding a luxurious bouquet of deep red roses wrapped with a velvet ribbon, positioned slightly to the side and below chest level to keep both faces fully visible. Subject B gently leans toward Subject A, with a warm and elegant smile, showing natural intimacy. Both are looking directly at the camera with confident, joyful expressions. Composition: centered and symmetrical framing, medium close-up, with both subjects clearly visible and unobstructed. Environment: layered rose arrangements including foreground bouquets, mid-ground floral clusters, and soft background rose decor, creating depth instead of a flat wall. Background: softly blurred romantic floral setting with rich red tones, subtle greenery accents, and hints of a styled indoor or garden environment. Lighting: soft natural light combined with gentle warm highlights, creating a romantic glow with controlled dappled light and balanced shadows. Extremely realistic skin texture, clean facial details, high resolution, sharp focus, premium lifestyle photography. Lens: 50mm, shallow depth of field, subjects in crisp focus, foreground and background softly blurred for depth. Color grading: rich, controlled reds with warm cinematic tones, avoiding oversaturation while maintaining vibrancy, high-end editorial finish.',
   },
@@ -253,7 +705,7 @@ const NANO_BANANA_2_COUPLE_TEMPLATES: CoupleTemplate[] = [
     id: 'cozy-home',
     title: 'Cozy Home',
     category: 'style',
-    image: '/ai-couple-photo-maker/cozy-home-4x3.jpg',
+    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/ai-couple-photo-maker/cozy-home-4x3.jpg',
     prompt:
       'Medium frontal portrait of a couple in their early 30s seated closely together on a plush cream-colored sofa in a warm and cozy living room, both facing the camera. Both subjects MUST match the facial features, identity, and appearance of the uploaded reference images, with no deviation. Subject A is wearing a cozy knit outfit, with an arm gently around Subject B. Subject B is wearing a soft cream home outfit, snuggled closely with their head resting on Subject A\'s shoulder, holding a warm mug. Both are smiling naturally and warmly, with relaxed expressions and subtle intimacy. Composition: centered and balanced, medium close framing, the couple filling the central area with clean, symmetrical composition. Lighting: soft warm ambient lighting from a nearby fireplace combined with gentle diffused indoor light, creating natural highlights and soft shadow transitions across their faces. Background: a tastefully styled living room with softly blurred bookshelves, potted plants, textured walls, and a glowing fireplace, providing depth while keeping focus on the subjects. Extremely realistic skin texture, clean facial details, high resolution, sharp focus, premium lifestyle photography. Lens: 50mm, shallow depth of field, subjects in crisp focus, background smoothly blurred. Color grading: warm, soft, inviting tones with a refined high-end editorial finish.',
   },
@@ -261,7 +713,7 @@ const NANO_BANANA_2_COUPLE_TEMPLATES: CoupleTemplate[] = [
     id: 'sunset-beach',
     title: 'Sunset Beach',
     category: 'style',
-    image: '/ai-couple-photo-maker/sunset-beach-4x3.jpg',
+    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/ai-couple-photo-maker/sunset-beach-4x3.jpg',
     prompt:
       'Medium frontal portrait of a couple standing side-by-side on a beach during sunset, both facing the camera. Both subjects MUST match the facial features of the uploaded reference images. Subject A is holding a bouquet of flowers, Subject B gently leaning toward Subject A. Both are smiling softly and confidently. Golden sunset light casting warm glow, soft rim light around their hair. Ocean waves and horizon visible in the background, sky filled with orange, pink, and purple tones. Wind slightly moving hair and clothes, romantic cinematic atmosphere. Extremely realistic skin texture, high detail, premium lifestyle photography, 50mm lens, shallow depth of field.',
   },
@@ -269,7 +721,7 @@ const NANO_BANANA_2_COUPLE_TEMPLATES: CoupleTemplate[] = [
     id: 'mountain',
     title: 'Mountain Peak',
     category: 'style',
-    image: '/ai-couple-photo-maker/mountain-4x3.jpg',
+    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/ai-couple-photo-maker/mountain-4x3.jpg',
     prompt:
       'Medium frontal portrait of a couple standing together on a mountain peak, both facing the camera. Both subjects MUST match the facial features of the uploaded reference images. They are wearing stylish outdoor clothing, standing close together with subtle physical interaction (hand on shoulder or holding hands). Background shows dramatic mountains, snow-covered peaks, and vast sky. Natural sunlight with cinematic contrast, slightly cool tone. Wind blowing slightly, giving dynamic motion to clothing and hair. Extremely realistic skin texture, sharp focus, cinematic outdoor photography, high-end editorial style.',
   },
@@ -277,7 +729,7 @@ const NANO_BANANA_2_COUPLE_TEMPLATES: CoupleTemplate[] = [
     id: 'night-street',
     title: 'Night Street',
     category: 'style',
-    image: '/ai-couple-photo-maker/night-street-4x3.jpg',
+    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/ai-couple-photo-maker/night-street-4x3.jpg',
     prompt:
       'Medium frontal portrait of a couple standing side-by-side in a city at night, both facing the camera. Both subjects MUST match the facial features of the uploaded reference images. City lights, neon signs, and blurred traffic lights in the background creating strong bokeh. Cool and cinematic lighting with contrast between warm and cool tones. The couple dressed in stylish urban outfits, confident expression, slight intimacy. Extremely realistic skin texture, sharp focus on subjects, background softly blurred, premium editorial photography.',
   },
@@ -291,14 +743,32 @@ export default function NanoBananaTool({
   modelName = 'Nano Banana Pro',
   dailyLimitStorageKey = 'nano_banana_last_used_date',
   presetMode = 'default',
+  defaultMode,
+  defaultPrompt = '',
+  defaultImageUrls = EMPTY_DEFAULT_IMAGE_URLS,
+  maxUploadImages,
+  hideModelBranding = false,
+  sampleImageVariant = 'default',
   sampleImages,
+  promptPresets = EMPTY_PROMPT_PRESETS,
+  promptPresetTitle = 'Hair Color Presets',
+  promptPresetTabs = EMPTY_PROMPT_PRESET_TABS,
+  hidePresetPromptInput = false,
+  customPromptTabId = 'custom',
+  promptModifier,
+  compactResultPanel = false,
+  sceneText,
+  heroBreadcrumbItems,
+  heroEyebrow,
+  heroTitle,
+  heroDescription,
   initialTranslations,
 }: NanoBananaToolProps = {}) {
-  const router = useRouter()
   const pathname = usePathname()
+  const hasImagePromptPresets = promptPresets.some((preset) => Boolean(preset.image))
   const commonTranslations = useCommonTranslations(initialTranslations)
   const commonToolText = commonTranslations?.common?.tool
-  const nanoText = commonTranslations?.common?.nanoBananaTool || {
+  const defaultNanoText = {
     imageToImage: 'Image to Image',
     textToImage: 'Text to Image',
     models: 'Models',
@@ -318,7 +788,7 @@ export default function NanoBananaTool({
     outputFormat: 'Output Format',
     sampleImage: 'Sample image',
     noDemoImageYet: 'No demo image yet',
-    inputImage: 'Input image',
+    inputImage: 'Reference image',
     history: 'History',
     noHistory: 'No history yet. Generate an image to see it here.',
     recreate: 'Recreate',
@@ -334,9 +804,10 @@ export default function NanoBananaTool({
     generatedAlt: 'Generated',
     resultExpires: 'The image will disappear after you refresh the page. Please download it as soon as possible.',
     historyResultAlt: 'History result',
-    inputAlt: 'Input',
+    inputAlt: 'Reference image',
     fileTooLarge: 'File {name} exceeds 30MB limit',
     maxImagesAllowed: 'Maximum {max} images allowed. Only {remaining} will be added.',
+    uploadFailed: 'Image upload failed.',
     uploadMissingUrl: 'Upload did not return url',
     uploadRequestFailed: 'Image upload request failed. Please check the upload service configuration and network connection.',
     uploadFailedWithStatus: 'Upload failed: {status}',
@@ -345,6 +816,7 @@ export default function NanoBananaTool({
     requestFailed: 'Request failed:',
     checkStatusFailed: 'Failed to check status ({status})',
     generateFailed: 'Failed to generate image',
+    generationFailedWithMessage: 'Generation failed: {message}',
     noResult: 'No task ID or image URL received',
     networkError: 'Network error',
     networkFailed: 'Network connection failed. Please check your network connection and try again.',
@@ -353,27 +825,51 @@ export default function NanoBananaTool({
     generationTimeout: 'Generation timeout',
     dailyLimitReached: 'Daily free limit reached. Please come back tomorrow!',
     recreateMissingInput: 'No input image found. Switched to Text to Image for recreate.',
+    creditsUsedUpTitle: 'Credits Used Up',
+    creditsUsedUpMessage: 'Your credits have been used up. More ways to earn credits are coming soon, including bonus events and activity rewards.',
+    creditsUsedUpAction: 'Got it',
   }
+  const nanoText = getNanoBananaToolText(commonTranslations?.common?.nanoBananaTool, defaultNanoText)
   const formatNanoText = (template: string, values: Record<string, string | number>) =>
     Object.entries(values).reduce((next, [key, value]) => next.replace(`{${key}}`, String(value)), template)
   const isNanoBanana2CoupleMode = presetMode === 'ai-couple-photo-maker'
-  const modelConfig = MODEL_CONFIG[modelId]
-  const modelOptions: ModelOption[] = [
-    { id: 'nano-banana-pro', name: 'Nano Banana Pro' },
-    { id: 'nano-banana-2', name: 'Nano Banana 2' },
-    { id: 'gpt-image-2', name: 'GPT Image 2' },
-    { id: 'seedream-4-5', name: 'Seedream 4.5' },
-    { id: 'wan-2-7-image', name: 'Wan 2.7 Image' },
-  ]
-  const [activeTab, setActiveTab] = useState<'image-to-image' | 'text-to-image'>(
-    modelId === 'gpt-image-2' || modelId === 'seedream-4-5' || modelId === 'wan-2-7-image' ? 'text-to-image' : 'image-to-image'
-  )
+  const modelGroups = MODEL_GROUPS
+  const modelOptions = useMemo(() => getFlatModelOptions(), [])
+  const [selectedModelId, setSelectedModelId] = useState<ImageModelId>(modelId)
+  const selectedModelName = modelOptions.find((option) => option.id === selectedModelId)?.name || modelName
+  const selectedModelOption = modelOptions.find((option) => option.id === selectedModelId)
+  const displayModelName = hideModelBranding ? 'AI image' : selectedModelName
+  const modelConfig = MODEL_CONFIG[selectedModelId]
+  const configuredMaxImages = typeof maxUploadImages === 'number' && Number.isFinite(maxUploadImages)
+    ? Math.max(0, Math.min(Math.floor(maxUploadImages), modelConfig.maxImages))
+    : undefined
+  const MAX_IMAGES = configuredMaxImages ?? (isNanoBanana2CoupleMode ? 2 : modelConfig.maxImages)
+  const MAX_FILE_SIZE_MB = modelConfig.maxFileSizeMb ?? 30
+  const MAX_FILE_SIZE = MAX_FILE_SIZE_MB * 1024 * 1024
+  const [activeTab, setActiveTab] = useState<'image-to-image' | 'text-to-image'>(defaultMode || getDefaultTabForModel(modelId))
   const [imageFiles, setImageFiles] = useState<ImageItem[]>([])
-  const [prompt, setPrompt] = useState('')
-  const [aspectRatio, setAspectRatio] = useState<string>(
-    modelId === 'seedream-4-5' || modelId === 'wan-2-7-image' ? '1:1' : isNanoBanana2CoupleMode ? 'auto' : 'auto'
+  const [prompt, setPrompt] = useState(defaultPrompt)
+  const [selectedPromptModifier, setSelectedPromptModifier] = useState(
+    promptModifier?.defaultValue ||
+      promptModifier?.options[0]?.value ||
+      promptModifier?.options[0]?.label ||
+      ''
   )
-  const [resolution, setResolution] = useState<string>(isNanoBanana2CoupleMode ? '1K' : '1K')
+  const [customPromptDraft, setCustomPromptDraft] = useState('')
+  const [activePromptPresetTab, setActivePromptPresetTab] = useState(
+    promptPresetTabs[0]?.id || ''
+  )
+  const [selectedPromptPreset, setSelectedPromptPreset] = useState<string>(() => {
+    const firstTabId = promptPresetTabs[0]?.id
+    const firstPreset = promptPresets.find(
+      (item) => item.prompt?.trim() && (!firstTabId || item.group === firstTabId)
+    )
+    return firstPreset?.label ?? 'Custom'
+  })
+  const [aspectRatio, setAspectRatio] = useState<string>(
+    getDefaultAspectRatioForModel(modelId, presetMode)
+  )
+  const [resolution, setResolution] = useState<string>(getDefaultResolutionForModel(modelId))
   const [outputFormat, setOutputFormat] = useState(isNanoBanana2CoupleMode ? 'PNG' : 'Auto')
   const [selectedTemplateId, setSelectedTemplateId] = useState<string>(() => {
     const firstStyle = NANO_BANANA_2_COUPLE_TEMPLATES.find((item) => item.category === 'style')
@@ -383,14 +879,143 @@ export default function NanoBananaTool({
   const [rightMode, setRightMode] = useState<RightPanelMode>('sample')
   const [history, setHistory] = useState<HistoryItem[]>([])
   const [currentResult, setCurrentResult] = useState<HistoryItem | null>(null)
+  const [remoteImageUrls, setRemoteImageUrls] = useState<string[]>(defaultImageUrls.slice(0, MAX_IMAGES))
   const [previewImage, setPreviewImage] = useState<string | null>(null)
   const [promptDemoImage, setPromptDemoImage] = useState<PromptDemoImage | null>(null)
   const [downloadingUrl, setDownloadingUrl] = useState<string | null>(null)
   const [toasts, setToasts] = useState<Array<{ id: string; msg: string; type: string }>>([])
+  const [creditExhaustedModalOpen, setCreditExhaustedModalOpen] = useState(false)
   const [generatingSeconds, setGeneratingSeconds] = useState(0)
   const fileInputRef = useRef<HTMLInputElement>(null)
   const promptTextareaRef = useRef<HTMLTextAreaElement>(null)
+  const modelSelectorRef = useRef<HTMLDivElement>(null)
   const shouldPositionInsertedPromptRef = useRef(false)
+  const localIdRef = useRef(0)
+  const [isModelMenuOpen, setIsModelMenuOpen] = useState(false)
+  const [activeModelGroupId, setActiveModelGroupId] = useState(() => getModelGroupId(modelId))
+  const activeModelGroup = modelGroups.find((group) => group.id === activeModelGroupId) || modelGroups[0]
+  const selectedModelGroup = modelGroups.find((group) => group.models.some((model) => model.id === selectedModelId)) || modelGroups[0]
+  const generationCreditCost = calculateImageGenerationCredits(selectedModelId, resolution)
+  const resolutionOptions = useMemo(
+    () => getResolutionOptionsForModel(selectedModelId),
+    [selectedModelId]
+  )
+
+  useEffect(() => {
+    setSelectedModelId(modelId)
+    setActiveModelGroupId(getModelGroupId(modelId))
+  }, [modelId])
+
+  useEffect(() => {
+    if (!isModelMenuOpen) return
+
+    const handlePointerDown = (event: MouseEvent) => {
+      if (!modelSelectorRef.current) return
+      if (event.target instanceof Node && modelSelectorRef.current.contains(event.target)) return
+      setIsModelMenuOpen(false)
+    }
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsModelMenuOpen(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handlePointerDown)
+    document.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      document.removeEventListener('mousedown', handlePointerDown)
+      document.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [isModelMenuOpen])
+
+  useEffect(() => {
+    setActiveTab(defaultMode || getDefaultTabForModel(modelId))
+  }, [defaultMode, modelId])
+
+  useEffect(() => {
+    setPrompt(defaultPrompt)
+  }, [defaultPrompt])
+
+  useEffect(() => {
+    const nextTabId = promptPresetTabs[0]?.id || ''
+    setActivePromptPresetTab(nextTabId)
+    const firstPreset = promptPresets.find(
+      (item) => item.prompt?.trim() && (!nextTabId || item.group === nextTabId)
+    )
+    setSelectedPromptPreset(firstPreset?.label ?? 'Custom')
+    if (firstPreset?.prompt?.trim()) {
+      setPrompt(firstPreset.prompt)
+    }
+  }, [promptPresetTabs, promptPresets])
+
+  const visiblePromptPresets = promptPresets.filter((preset) => {
+    if (preset.label.toLowerCase() === 'custom') return false
+    if (promptPresetTabs.length === 0) return true
+    return preset.group === activePromptPresetTab
+  })
+
+  const selectedPromptPresetReferenceImage =
+    promptPresets.find((preset) => preset.label === selectedPromptPreset)?.referenceImage
+  const selectedPromptModifierOption = promptModifier?.options.find(
+    (option) => (option.value || option.label) === selectedPromptModifier
+  )
+
+  useEffect(() => {
+    const nextValue =
+      promptModifier?.defaultValue ||
+      promptModifier?.options[0]?.value ||
+      promptModifier?.options[0]?.label ||
+      ''
+    setSelectedPromptModifier(nextValue)
+  }, [promptModifier])
+
+  const getGenerationReferenceUrls = (
+    userReferenceUrls: string[],
+    templateReferenceImage?: string,
+  ) => {
+    const combined = templateReferenceImage
+      ? [...userReferenceUrls, templateReferenceImage]
+      : userReferenceUrls
+    return Array.from(new Set(combined)).slice(0, modelConfig.maxImages)
+  }
+
+  const selectPromptPresetTab = (tabId: string) => {
+    if (activePromptPresetTab === customPromptTabId) {
+      setCustomPromptDraft(prompt)
+    }
+
+    setActivePromptPresetTab(tabId)
+
+    if (tabId === customPromptTabId) {
+      setSelectedPromptPreset('Custom')
+      setPrompt(customPromptDraft)
+      requestAnimationFrame(() => promptTextareaRef.current?.focus())
+      return
+    }
+
+    const firstPreset = promptPresets.find(
+      (preset) => preset.group === tabId && preset.prompt?.trim()
+    )
+    setSelectedPromptPreset(firstPreset?.label ?? '')
+    setPrompt(firstPreset?.prompt || '')
+  }
+
+  useEffect(() => {
+    const nextRemoteImageUrls = defaultImageUrls.slice(0, MAX_IMAGES)
+    setRemoteImageUrls((prev) => areStringArraysEqual(prev, nextRemoteImageUrls) ? prev : nextRemoteImageUrls)
+  }, [defaultImageUrls, MAX_IMAGES])
+
+  useEffect(() => {
+    if (modelConfig.aspectRatios.some((item) => item.value === aspectRatio)) return
+    setAspectRatio(modelConfig.aspectRatios[0]?.value || 'auto')
+  }, [aspectRatio, modelConfig.aspectRatios])
+
+  useEffect(() => {
+    if (resolutionOptions.includes(resolution)) return
+    setResolution(resolutionOptions[0] || '1K')
+  }, [resolution, resolutionOptions])
 
   // 全屏预览时禁止底层页面滚动
   useEffect(() => {
@@ -439,56 +1064,84 @@ export default function NanoBananaTool({
     return () => window.cancelAnimationFrame(frameId)
   }, [prompt])
 
-  // 从 SEO 提示词案例板块一键带入 Prompt，可选携带参考图。
+  const applyPromptInsertDetail = useCallback((detail: PromptInsertEventDetail) => {
+    const nextPrompt = detail.prompt?.trim()
+    if (!nextPrompt) return false
+    const imageUrl = detail.imageUrl?.trim()
+    const imageUrls = Array.isArray(detail.imageUrls)
+      ? detail.imageUrls.filter((url): url is string => typeof url === 'string' && url.startsWith('http'))
+      : []
+    const demoImageUrl = detail.demoImageUrl?.trim()
+
+    shouldPositionInsertedPromptRef.current = true
+    if (detail.aspectRatio) setAspectRatio(detail.aspectRatio)
+    if (detail.resolution) setResolution(detail.resolution)
+    if (detail.outputFormat) setOutputFormat(detail.outputFormat)
+    if (detail.presetGroup) setActivePromptPresetTab(detail.presetGroup)
+    if (detail.presetLabel) setSelectedPromptPreset(detail.presetLabel)
+    setPrompt(nextPrompt)
+    setRightMode('sample')
+    setPromptDemoImage(
+      demoImageUrl
+        ? {
+            url: demoImageUrl,
+            title: detail.demoImageTitle || nanoText.sampleImage,
+            width: detail.demoImageWidth || 900,
+            height: detail.demoImageHeight || 1200,
+          }
+        : null
+    )
+
+    const urls = imageUrls.length > 0 ? imageUrls : imageUrl ? [imageUrl] : []
+    if (urls.length > 0) {
+      setRemoteImageUrls(urls.slice(0, MAX_IMAGES))
+      setActiveTab('image-to-image')
+    } else {
+      setActiveTab('text-to-image')
+      setRemoteImageUrls([])
+    }
+
+    showToast(nanoText.promptInserted, 'success')
+    return true
+  }, [MAX_IMAGES, nanoText.promptInserted, nanoText.sampleImage])
+
+  // 从提示词案例板块一键带入 Prompt，可选携带参考图。
   useEffect(() => {
     const handler = async (event: Event) => {
       const customEvent = event as CustomEvent<PromptInsertEventDetail>
-      const nextPrompt = customEvent.detail?.prompt?.trim()
-      if (!nextPrompt) return
-      const imageUrl = customEvent.detail?.imageUrl?.trim()
-      const demoImageUrl = customEvent.detail?.demoImageUrl?.trim()
-      shouldPositionInsertedPromptRef.current = true
-      setPrompt(nextPrompt)
-      setRightMode('sample')
-      setPromptDemoImage(
-        demoImageUrl
-          ? {
-              url: demoImageUrl,
-              title: customEvent.detail?.demoImageTitle || nanoText.sampleImage,
-              width: customEvent.detail?.demoImageWidth || 900,
-              height: customEvent.detail?.demoImageHeight || 1200,
-            }
-          : null
-      )
-
-      if (imageUrl) {
-        try {
-          const response = await fetch(imageUrl)
-          if (!response.ok) throw new Error(`Image fetch failed: ${response.status}`)
-          const blob = await response.blob()
-          const fileName = customEvent.detail?.imageName || imageUrl.split('/').pop() || 'template.webp'
-          const file = new File([blob], fileName, { type: blob.type || 'image/webp' })
-          setActiveTab('image-to-image')
-          setImageFiles((prev) => {
-            prev.forEach((item) => URL.revokeObjectURL(item.preview))
-            return [{ file, preview: URL.createObjectURL(file) }]
-          })
-        } catch {
-          setActiveTab('text-to-image')
-        }
-      } else {
-        setActiveTab('text-to-image')
+      if (customEvent.detail?.modelId && customEvent.detail.modelId !== selectedModelId) {
+        window.sessionStorage.setItem(PENDING_REPROMPT_STORAGE_KEY, JSON.stringify(customEvent.detail))
+        handleModelChange(customEvent.detail.modelId)
+        return
       }
-
-      showToast(nanoText.promptInserted, 'success')
+      applyPromptInsertDetail(customEvent.detail || {})
     }
 
     window.addEventListener('toolaze:use-prompt', handler as EventListener)
     return () => window.removeEventListener('toolaze:use-prompt', handler as EventListener)
-  }, [nanoText.promptInserted, nanoText.sampleImage])
+  }, [applyPromptInsertDetail, selectedModelId])
+
+  useEffect(() => {
+    const raw = window.sessionStorage.getItem(PENDING_REPROMPT_STORAGE_KEY)
+    if (!raw) return
+    try {
+      const detail = JSON.parse(raw) as PromptInsertEventDetail
+      if (detail.modelId && detail.modelId !== selectedModelId) return
+      if (applyPromptInsertDetail(detail)) {
+        window.sessionStorage.removeItem(PENDING_REPROMPT_STORAGE_KEY)
+      }
+    } catch {
+      window.sessionStorage.removeItem(PENDING_REPROMPT_STORAGE_KEY)
+    }
+  }, [applyPromptInsertDetail, selectedModelId])
+
+  const createLocalId = useCallback((prefix: string) => {
+    localIdRef.current += 1
+    return `${prefix}-${Date.now()}-${localIdRef.current}`
+  }, [])
 
   const showToast = (msg: string, type: 'success' | 'error' | 'warning' | 'info' = 'info') => {
-    const id = Math.random().toString(36).substr(2, 9)
+    const id = createLocalId('toast')
     const cleanMsg = msg.replace(/✅|❌|⚠️|❗/g, '').trim()
     
     setToasts(prev => [...prev, { id, msg: cleanMsg, type }])
@@ -497,10 +1150,6 @@ export default function NanoBananaTool({
       setToasts(prev => prev.filter(t => t.id !== id))
     }, 4000)
   }
-
-  const MAX_IMAGES = isNanoBanana2CoupleMode ? 2 : modelConfig.maxImages
-  const MAX_FILE_SIZE_MB = modelConfig.maxFileSizeMb ?? 30
-  const MAX_FILE_SIZE = MAX_FILE_SIZE_MB * 1024 * 1024
 
   const visibleTemplates = useMemo(
     () => NANO_BANANA_2_COUPLE_TEMPLATES.filter((item) => item.category === 'style'),
@@ -560,9 +1209,50 @@ export default function NanoBananaTool({
       preview: URL.createObjectURL(file)
     }))
 
+    setRemoteImageUrls([])
     setImageFiles(prev => {
       const combined = [...prev, ...newImages]
       return combined.slice(0, MAX_IMAGES)
+    })
+  }
+
+  const pickReplacementImage = (onReplace: (file: File) => void) => {
+    const input = document.createElement('input')
+    input.type = 'file'
+    input.accept = 'image/jpeg,image/jpg,image/png,image/webp'
+    input.onchange = (event) => {
+      const file = (event.target as HTMLInputElement).files?.[0]
+      if (!file || !file.type.startsWith('image/')) return
+      if (file.size > MAX_FILE_SIZE) {
+        showToast(formatNanoText(nanoText.fileTooLarge, { name: file.name }), 'error')
+        return
+      }
+      onReplace(file)
+    }
+    input.click()
+  }
+
+  const replaceRemoteImage = (index: number) => {
+    pickReplacementImage((file) => {
+      setRemoteImageUrls((prev) => prev.filter((_, itemIndex) => itemIndex !== index))
+      setImageFiles((prev) => [
+        ...prev,
+        { file, preview: URL.createObjectURL(file) },
+      ].slice(0, MAX_IMAGES))
+    })
+  }
+
+  const replaceLocalImage = (index: number) => {
+    pickReplacementImage((file) => {
+      setImageFiles((prev) => {
+        const nextFiles = [...prev]
+        URL.revokeObjectURL(nextFiles[index].preview)
+        nextFiles[index] = {
+          file,
+          preview: URL.createObjectURL(file),
+        }
+        return nextFiles
+      })
     })
   }
 
@@ -578,6 +1268,7 @@ export default function NanoBananaTool({
   const clearAllImages = () => {
     imageFiles.forEach(item => URL.revokeObjectURL(item.preview))
     setImageFiles([])
+    setRemoteImageUrls([])
   }
 
   const onDrop = (e: React.DragEvent) => {
@@ -590,51 +1281,47 @@ export default function NanoBananaTool({
     e.stopPropagation()
   }
 
-  const checkDailyLimit = (): boolean => {
-    if (isNanoBanana2CoupleMode) return true
-    const today = new Date().toISOString().split('T')[0]
-    const lastUsed = typeof localStorage !== 'undefined' ? localStorage.getItem(dailyLimitStorageKey) : null
-    if (lastUsed === today) {
-      alert(nanoText.dailyLimitReached)
-      return false
-    }
-    return true
-  }
-
-  const recordDailyUsage = () => {
-    if (isNanoBanana2CoupleMode) return
-    const today = new Date().toISOString().split('T')[0]
-    try {
-      localStorage.setItem(dailyLimitStorageKey, today)
-    } catch (_) {}
-  }
-
   const handleGenerate = async () => {
-    if (activeTab === 'image-to-image' && imageFiles.length === 0) return
+    const hasReferenceImages = imageFiles.length > 0 || remoteImageUrls.length > 0
+    if (activeTab === 'image-to-image' && !hasReferenceImages) return
     if (!prompt?.trim()) return
-    if (!checkDailyLimit()) return
+    const authState = await ensureSignedInForGeneration(generationCreditCost)
+    if (!authState.isSignedIn) {
+      showToast('Please sign in with Google to generate images.', 'warning')
+      window.dispatchEvent(new CustomEvent('toolaze:open-auth-modal'))
+      return
+    }
+    if (authState.creditsExhausted) {
+      setCreditExhaustedModalOpen(true)
+      return
+    }
     setIsGenerating(true)
     setRightMode('generating')
     
     try {
-      const effectivePrompt = isNanoBanana2CoupleMode
-        ? `${prompt.trim()} ${COUPLE_IDENTITY_LOCK_INSTRUCTION}`
-        : prompt.trim()
+      const effectivePrompt = composePromptParts(
+        prompt.trim(),
+        selectedPromptModifierOption?.prompt,
+        isNanoBanana2CoupleMode ? COUPLE_IDENTITY_LOCK_INSTRUCTION : undefined,
+      )
       const formData = new FormData()
       formData.append('prompt', effectivePrompt)
       formData.append('aspectRatio', aspectRatio)
-      formData.append('resolution', modelId === 'wan-2-7-image' && activeTab === 'image-to-image' && resolution === '4K' ? '2K' : resolution)
-      if (modelId === 'seedream-4-5') {
-        formData.append('quality', resolution === '4K' ? 'High' : 'Basic')
+      formData.append('resolution', selectedModelId === 'wan-2-7-image' && activeTab === 'image-to-image' && resolution === '4K' ? '2K' : resolution)
+      if (selectedModelId === 'seedream-4-5' || selectedModelId === 'seedream-5-0-lite' || selectedModelId === 'seedream-5-0-pro') {
+        formData.append('quality', selectedModelId === 'seedream-5-0-pro'
+          ? (resolution === '2K' ? 'High' : 'Basic')
+          : (resolution === '4K' ? 'High' : 'Basic'))
       }
       if (modelConfig.supportsOutputFormat) {
         formData.append('outputFormat', outputFormat)
       }
       formData.append('isImageToImage', String(activeTab === 'image-to-image'))
-      formData.append('model', modelId)
+      formData.append('model', selectedModelId)
 
       const uploadUrl = getImageUploadUrl()
 
+      let generationInputUrls = [...remoteImageUrls]
       if (activeTab === 'image-to-image' && imageFiles.length > 0) {
         // 批量上传所有图片
         const imageUrls: string[] = []
@@ -667,13 +1354,22 @@ export default function NanoBananaTool({
           }
         }
         // 将所有 URL 作为 JSON 字符串传递
-        formData.append('imageUrls', JSON.stringify(imageUrls))
+        generationInputUrls = imageUrls
+      }
+      generationInputUrls = getGenerationReferenceUrls(
+        generationInputUrls,
+        selectedPromptPresetReferenceImage,
+      )
+      if (activeTab === 'image-to-image' && generationInputUrls.length > 0) {
+        generationInputUrls = await uploadRemoteReferenceUrlsForGeneration(
+          generationInputUrls,
+          uploadUrl,
+          nanoText.uploadFailed,
+        )
+        formData.append('imageUrls', JSON.stringify(generationInputUrls))
       }
 
-      const generateResponse = await fetch('/api/image-to-image', {
-        method: 'POST',
-        body: formData,
-      })
+      const generateResponse = await requestImageGenerationTask(formData, nanoText)
 
       const parseJsonSafely = async (res: Response): Promise<Record<string, any>> => {
         const text = await res.text()
@@ -687,21 +1383,76 @@ export default function NanoBananaTool({
 
       if (!generateResponse.ok) {
         const errorData = await parseJsonSafely(generateResponse)
+        if (isCreditExhaustedGenerationError(generateResponse.status, errorData)) {
+          setCreditExhaustedModalOpen(true)
+          setIsGenerating(false)
+          setRightMode(currentResult ? 'result' : 'sample')
+          return
+        }
+        if (generateResponse.status === 401) {
+          const cachedAuthState = getCachedGenerationAuthState(generationCreditCost)
+          if (cachedAuthState.creditsExhausted) {
+            setCreditExhaustedModalOpen(true)
+            setIsGenerating(false)
+            setRightMode(currentResult ? 'result' : 'sample')
+            return
+          }
+
+          showToast('Please sign in with Google to generate images.', 'warning')
+          window.dispatchEvent(new CustomEvent('toolaze:open-auth-modal'))
+          setIsGenerating(false)
+          setRightMode(currentResult ? 'result' : 'sample')
+          return
+        }
         throw new Error(errorData.error || nanoText.generateFailed)
       }
 
       const generateResult = await parseJsonSafely(generateResponse)
+      window.dispatchEvent(new CustomEvent('toolaze:credits-updated', {
+        detail: generateResult.credits || null,
+      }))
       const taskId = generateResult.taskId
+      const creditHold = generateResult.creditHold || null
+
+      const persistHistoryItem = async (outputUrl: string, mediaType: 'image' | 'video' = 'image') => {
+        const historyTool = getHistoryToolMetadata(pathname, modelName, selectedModelId)
+
+        try {
+          const response = await fetch('/api/history', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              mediaType,
+              model: selectedModelId,
+              prompt: effectivePrompt,
+              outputUrl,
+              inputUrls: generationInputUrls,
+              aspectRatio,
+              resolution,
+              outputFormat,
+              ...historyTool,
+            }),
+          })
+          if (!response.ok) return null
+          const data = await response.json().catch(() => ({}))
+          return data?.item || null
+        } catch {
+          return null
+        }
+      }
 
       if (!taskId) {
         // 如果直接返回了图片 URL（同步）
         if (generateResult.imageUrl) {
+          const savedItem = await persistHistoryItem(generateResult.imageUrl)
           const item: HistoryItem = {
-            id: `sync-${Date.now()}-${Math.random().toString(36).substr(2, 9)}-${performance.now()}`,
-            inputPreview: imageFiles.length > 0 ? imageFiles[0].preview : '',
+            id: savedItem?.id || createLocalId('sync'),
+            inputPreview: imageFiles.length > 0 ? imageFiles[0].preview : generationInputUrls[0] || '',
+            inputUrls: generationInputUrls,
             outputPreview: generateResult.imageUrl,
-            prompt,
-            time: new Date().toLocaleString(),
+            prompt: effectivePrompt,
+            time: savedItem?.createdAt ? new Date(savedItem.createdAt).toLocaleString() : new Date().toLocaleString(),
+            modelId: selectedModelId,
             aspectRatio,
             resolution,
             outputFormat,
@@ -721,7 +1472,6 @@ export default function NanoBananaTool({
           setCurrentResult(item)
           setRightMode(isNanoBanana2CoupleMode ? 'history' : 'result')
           setIsGenerating(false)
-          recordDailyUsage()
           return
         }
         throw new Error(nanoText.noResult)
@@ -738,7 +1488,8 @@ export default function NanoBananaTool({
           statusResponse = await fetch('/api/image-to-image/status', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ taskId }),
+            body: JSON.stringify({ taskId, creditHold }),
+            credentials: 'include',
           })
         } catch (error: any) {
           const msg = error?.message || nanoText.networkError
@@ -772,6 +1523,11 @@ export default function NanoBananaTool({
         }
 
         const statusResult = await parseJsonSafely(statusResponse)
+        if (statusResult.credits) {
+          window.dispatchEvent(new CustomEvent('toolaze:credits-updated', {
+            detail: statusResult.credits,
+          }))
+        }
 
         if (statusResult.status === 'SUCCEEDED' && statusResult.imageUrl) {
           return statusResult.imageUrl
@@ -794,7 +1550,7 @@ export default function NanoBananaTool({
       const outputUrl = await pollStatus()
 
       if (outputUrl) {
-        // 尝试把 Kie 生成图存到自己的 R2，便于直接下载（避免跨域新开标签）
+        // 尝试把生成图存到自己的 R2，便于直接下载（避免跨域新开标签）
         let finalUrl = outputUrl
         try {
           const saveRes = await fetch('/api/save-image-to-r2', {
@@ -809,15 +1565,18 @@ export default function NanoBananaTool({
             }
           }
         } catch (_) {
-          // 存 R2 失败则继续用 Kie 的 URL
+          // 存 R2 失败则继续用原始 URL
         }
 
+        const savedItem = await persistHistoryItem(finalUrl)
         const item: HistoryItem = {
-          id: `async-${Date.now()}-${Math.random().toString(36).substr(2, 9)}-${performance.now()}`,
-          inputPreview: imageFiles.length > 0 ? imageFiles[0].preview : '',
+          id: savedItem?.id || createLocalId('async'),
+          inputPreview: imageFiles.length > 0 ? imageFiles[0].preview : generationInputUrls[0] || '',
+          inputUrls: generationInputUrls,
           outputPreview: finalUrl,
-          prompt,
-          time: new Date().toLocaleString(),
+          prompt: effectivePrompt,
+          time: savedItem?.createdAt ? new Date(savedItem.createdAt).toLocaleString() : new Date().toLocaleString(),
+          modelId: selectedModelId,
           aspectRatio,
           resolution,
           outputFormat,
@@ -836,10 +1595,14 @@ export default function NanoBananaTool({
         })
         setCurrentResult(item)
         setRightMode(isNanoBanana2CoupleMode ? 'history' : 'result')
-        recordDailyUsage()
       }
     } catch (error: any) {
-      console.error('Generation error:', error)
+      console.warn('Generation warning:', error)
+      if (isCreditExhaustedGenerationError(0, { error: error?.message })) {
+        setCreditExhaustedModalOpen(true)
+        setRightMode(currentResult ? 'result' : 'sample')
+        return
+      }
       alert(formatNanoText(nanoText.generationFailedWithMessage, { message: error.message }))
       setRightMode('sample')
     } finally {
@@ -898,7 +1661,7 @@ export default function NanoBananaTool({
       }
       // 代理 403/500 时不要再走代理链接，否则会下载错误页面
 
-      // 方法2: 直接 fetch 原始 URL（Kie AI CDN 等，CORS 允许时）
+      // 方法2: 直接 fetch 原始 URL（CORS 允许时）
       let directRes: Response | null = null
       try {
         directRes = await fetch(imageUrl, { mode: 'cors', credentials: 'omit' })
@@ -951,6 +1714,12 @@ export default function NanoBananaTool({
     'seedream-4-5': [
       'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/8d7b3c552db04e6ca02dff930d32bbdc.png',
     ],
+    'seedream-5-0-lite': [
+      'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/seedream-5-0-lite/gallery-search-grounded-product.webp',
+    ],
+    'seedream-5-0-pro': [
+      '/model-assets/seedream-5-0-pro/gallery-product-poster.webp',
+    ],
     'wan-2-7-image': [
       'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/0b0c01224b03466b913cc7b41683c785.png',
     ],
@@ -962,40 +1731,63 @@ export default function NanoBananaTool({
       const image = customImages[0]
       return {
         url: image.url,
-        caption: image.title || `${modelName} sample output`,
-        width: image.width,
-        height: image.height,
+        caption: image.title || `${displayModelName} sample output`,
+        width: image.width || 800,
+        height: image.height || 600,
       }
     }
 
-    const images = SAMPLE_IMAGES[modelId] || SAMPLE_IMAGES['nano-banana-pro']
-    const randomIndex = Math.floor(Math.random() * images.length)
+    const images = SAMPLE_IMAGES[selectedModelId] || SAMPLE_IMAGES['nano-banana-pro']
     return {
-      url: images[randomIndex],
-      caption: `${modelName} sample output`,
+      url: images[0],
+      caption: `${displayModelName} sample output`,
+      width: 800,
+      height: 600,
     }
-  }, [modelId, modelName, sampleImages])
+  }, [displayModelName, sampleImages, selectedModelId])
+  const isSharpSampleImage = sampleImageVariant === 'sharp'
 
   const handleModelChange = (nextModelId: ModelOption['id']) => {
-    if (nextModelId === modelId) return
+    if (nextModelId === selectedModelId) {
+      setIsModelMenuOpen(false)
+      return
+    }
+    setSelectedModelId(nextModelId)
+    setActiveModelGroupId(getModelGroupId(nextModelId))
+    setAspectRatio((currentAspectRatio) => {
+      const nextAspectRatios = MODEL_CONFIG[nextModelId].aspectRatios
+      return nextAspectRatios.some((item) => item.value === currentAspectRatio)
+        ? currentAspectRatio
+        : nextAspectRatios[0]?.value || 'auto'
+    })
+    setResolution((currentResolution) => {
+      const nextResolutionOptions = getResolutionOptionsForModel(nextModelId)
+      return nextResolutionOptions.includes(currentResolution)
+        ? currentResolution
+        : nextResolutionOptions[0] || '1K'
+    })
+    setIsModelMenuOpen(false)
+    if (isNanoBanana2CoupleMode) return
+    setActiveTab(imageFiles.length > 0 || remoteImageUrls.length > 0 ? 'image-to-image' : getDefaultTabForModel(nextModelId))
+
     const parts = pathname.split('/').filter(Boolean)
     const modelIndex = parts.indexOf('model')
     if (modelIndex !== -1 && parts.length > modelIndex + 1) {
       parts[modelIndex + 1] = nextModelId
-      router.push(`/${parts.join('/')}`)
+      window.history.pushState(null, '', `/${parts.join('/')}`)
       return
     }
-    router.push(`/model/${nextModelId}`)
+    window.history.pushState(null, '', `/model/${nextModelId}`)
   }
 
   return (
-    <section className="flex min-h-0 flex-1 flex-col overflow-hidden p-2 md:p-6">
-      <div className="flex min-h-0 min-w-0 flex-1 flex-col gap-4 md:flex-row md:gap-6">
+    <section className="flex min-h-0 flex-1 flex-col overflow-visible p-2 md:px-6 md:pb-6 md:pt-3 xl:pl-0 xl:pr-8 2xl:pl-0 2xl:pr-12">
+      <div className="flex min-h-0 min-w-0 flex-col gap-4 md:h-[calc(100dvh-10rem)] md:min-h-[640px] md:flex-row md:items-stretch md:gap-6 xl:h-[calc(100dvh-7rem)] xl:min-h-[720px] xl:gap-8 2xl:gap-10">
         {/* Left: 生图参数区 — 桌面可滚动+固定按钮；h5 上下流式布局，自然高度 */}
-        <div className="w-full md:w-[380px] flex-shrink-0 flex flex-col rounded-2xl border border-[#E0E7FF] bg-white shadow-lg shadow-[#4F46E5]/8 overflow-hidden">
-          <div className="p-2 md:p-6 space-y-4 md:space-y-5 md:flex-1 md:min-h-0 md:overflow-y-auto">
+        <div className="w-full md:h-full md:w-[380px] xl:w-[400px] 2xl:w-[420px] flex-shrink-0 flex flex-col rounded-2xl border border-[#E0E7FF] bg-white shadow-lg shadow-[#4F46E5]/8 overflow-visible">
+          <div className={`p-2 md:p-6 space-y-4 md:space-y-5 md:flex-1 md:min-h-0 md:overscroll-contain ${isModelMenuOpen ? 'md:overflow-visible' : 'md:overflow-y-auto'}`}>
             {/* Tabs */}
-            {!isNanoBanana2CoupleMode && (
+            {!isNanoBanana2CoupleMode && !hideModelBranding && (
               <div className="flex rounded-xl bg-[#EEF2FF] p-1">
                 <button
                   type="button"
@@ -1023,44 +1815,163 @@ export default function NanoBananaTool({
             )}
 
             {/* Models */}
-            {!isNanoBanana2CoupleMode && (
+            {!isNanoBanana2CoupleMode && !hideModelBranding && (
               <div>
                 <label className="block text-xs font-semibold text-slate-500 tracking-wide mb-2">{nanoText.models}</label>
-                <div className="relative">
-                  <select
-                    value={modelId}
-                    onChange={(e) => handleModelChange(e.target.value as ModelOption['id'])}
-                    className="w-full px-4 py-2.5 pr-10 rounded-xl border border-[#E0E7FF] bg-[#EEF2FF]/30 text-slate-800 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/40 focus:border-[#4F46E5] hover:border-[#C7D2FE] hover:bg-[#EEF2FF]/50 transition-all duration-200 appearance-none cursor-pointer shadow-sm"
+                <div ref={modelSelectorRef} className="relative z-40">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setActiveModelGroupId(selectedModelGroup.id)
+                      setIsModelMenuOpen((open) => !open)
+                    }}
+                    className="!flex w-full items-center justify-between gap-3 !rounded-xl !border !border-[#E0E7FF] bg-[#EEF2FF]/30 !px-3 !py-2.5 text-left text-sm font-medium text-slate-800 shadow-sm transition-all duration-200 !whitespace-normal hover:!border-[#C7D2FE] hover:bg-[#EEF2FF]/50 focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/40"
+                    aria-haspopup="listbox"
+                    aria-expanded={isModelMenuOpen}
                   >
-                    {modelOptions.map((option) => (
-                      <option key={option.id} value={option.id}>
-                        {option.name}
-                      </option>
-                    ))}
-                  </select>
-                  <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#4F46E5]">
+                    <span className="flex min-w-0 items-center gap-2">
+                      <img
+                        src={selectedModelGroup.logoSrc}
+                        alt={selectedModelGroup.logoAlt}
+                        className="h-5 w-5 shrink-0 rounded-md object-contain"
+                        loading="lazy"
+                      />
+                      <span className="min-w-0">
+                        <span className="flex min-w-0 items-center gap-2">
+                          <span className="truncate font-bold text-slate-900">{selectedModelName}</span>
+                          {selectedModelOption?.badge && (
+                            <span className={`rounded-full px-1.5 py-0.5 text-[10px] font-extrabold leading-none text-white ${
+                              selectedModelOption.badge === 'Hot' ? 'bg-red-500' : 'bg-emerald-500'
+                            }`}>
+                              {selectedModelOption.badge}
+                            </span>
+                          )}
+                        </span>
+                      </span>
+                    </span>
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className={`shrink-0 text-[#4F46E5] transition-transform duration-200 ${isModelMenuOpen ? 'rotate-180' : ''}`}
+                    >
                       <polyline points="6 9 12 15 18 9" />
                     </svg>
-                  </div>
+                  </button>
+
+                  {isModelMenuOpen && (
+                    <div className="absolute left-0 top-full z-50 mt-2 grid h-[380px] max-h-[70vh] w-full grid-cols-1 overflow-hidden !rounded-2xl !border !border-[#E0E7FF] bg-white shadow-xl shadow-[#4F46E5]/12 md:w-[640px] md:grid-cols-[210px_minmax(0,430px)]" role="listbox">
+                      <div className="h-full space-y-1 overflow-y-auto border-r border-slate-100 bg-slate-50/70 p-2">
+                        {modelGroups.map((group) => {
+                          const isActiveGroup = group.id === activeModelGroup.id
+                          return (
+                            <button
+                              key={group.id}
+                              type="button"
+                              onMouseEnter={() => setActiveModelGroupId(group.id)}
+                              onClick={() => setActiveModelGroupId(group.id)}
+                              className={`!flex w-full items-center gap-2 !rounded-xl !px-3 !py-2.5 text-left transition-colors duration-150 !whitespace-normal ${
+                                isActiveGroup
+                                  ? 'bg-[#E0E7FF] text-[#3730A3]'
+                                : 'text-slate-600 hover:bg-white hover:text-slate-900'
+                              }`}
+                            >
+                              <img
+                                src={group.logoSrc}
+                                alt={group.logoAlt}
+                                className="h-5 w-5 shrink-0 rounded-md object-contain"
+                                loading="lazy"
+                              />
+                              <span className="min-w-0 flex-1">
+                                <span className="block text-xs font-extrabold leading-5">{group.name}</span>
+                              </span>
+                              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
+                                <polyline points="9 18 15 12 9 6" />
+                              </svg>
+                            </button>
+                          )
+                        })}
+                      </div>
+
+                      <div className="h-full min-w-0 space-y-2 overflow-y-auto p-2">
+                        {activeModelGroup.models.map((option) => {
+                          const isSelectedModel = option.id === selectedModelId
+                          const metadata = getModelOptionMetadata(option.id)
+
+                          return (
+                            <button
+                              key={option.id}
+                              type="button"
+                              onClick={() => handleModelChange(option.id)}
+                              className={`!flex w-full flex-col items-stretch gap-0 !rounded-xl !px-3 !py-3 text-left transition-colors duration-150 !whitespace-normal ${
+                                isSelectedModel
+                                  ? 'bg-[#DBEAFE] text-slate-950'
+                                  : 'bg-white text-slate-700 hover:bg-[#F8FAFF]'
+                              }`}
+                              aria-selected={isSelectedModel}
+                            >
+                              <span className="flex min-w-0 items-start justify-between gap-3">
+                                <span className="min-w-0 flex-1">
+                                  <span className="flex min-w-0 items-center gap-2">
+                                    <img
+                                      src={activeModelGroup.logoSrc}
+                                      alt={activeModelGroup.logoAlt}
+                                      className="h-5 w-5 shrink-0 rounded-md object-contain"
+                                      loading="lazy"
+                                    />
+                                    <span className="truncate text-sm font-extrabold">{option.name}</span>
+                                    {option.badge && (
+                                      <span className={`rounded-full px-1.5 py-0.5 text-[10px] font-extrabold leading-none text-white ${
+                                        option.badge === 'Hot' ? 'bg-red-500' : 'bg-emerald-500'
+                                      }`}>
+                                        {option.badge}
+                                      </span>
+                                    )}
+                                  </span>
+                                  <span className="mt-1 block text-xs leading-5 text-slate-500 break-words">{option.description}</span>
+                                  <ModelQualityRating value={option.qualityRating} />
+                                </span>
+                                {isSelectedModel && (
+                                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="mt-0.5 shrink-0 text-[#4F46E5]">
+                                    <polyline points="20 6 9 17 4 12" />
+                                  </svg>
+                                )}
+                              </span>
+                              <span className="mt-2 flex flex-wrap gap-1.5">
+                                {metadata.map((item) => (
+                                  <span key={item} className="rounded-md border border-slate-200 bg-white/80 px-2 py-1 text-[11px] font-semibold leading-none text-slate-600">
+                                    {item}
+                                  </span>
+                                ))}
+                              </span>
+                            </button>
+                          )
+                        })}
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             )}
-
             {/* Image Upload (Image to Image) - 小正方形一排三个 */}
             {activeTab === 'image-to-image' && (
               <div>
                 <div className="flex items-center justify-between mb-2">
                   <label className="text-xs font-semibold text-slate-500 tracking-wide">
-                    {formatNanoText(nanoText.uploadUpTo, { count: MAX_IMAGES })}
+                    {sceneText?.uploadTitle || (MAX_IMAGES === 1 ? 'Upload your image' : formatNanoText(nanoText.uploadUpTo, { count: MAX_IMAGES }))}
                   </label>
-                  {imageFiles.length > 0 && (
-                    <span className="text-xs font-medium text-slate-400">{imageFiles.length}/{MAX_IMAGES}</span>
+                  {(imageFiles.length > 0 || remoteImageUrls.length > 0) && (
+                    <span className="text-xs font-medium text-slate-400">{imageFiles.length + remoteImageUrls.length}/{MAX_IMAGES}</span>
                   )}
                 </div>
-                <div className="grid grid-cols-3 gap-2">
+                <div className={`grid gap-2 ${MAX_IMAGES === 1 ? 'grid-cols-1 max-w-32' : 'grid-cols-3'}`}>
                   {/* 上传占位：第一格 */}
-                  {imageFiles.length < MAX_IMAGES && (
+                  {imageFiles.length + remoteImageUrls.length < MAX_IMAGES && (
                     <div
                       onClick={() => fileInputRef.current?.click()}
                       onDrop={onDrop}
@@ -1071,7 +1982,7 @@ export default function NanoBananaTool({
                         type="file"
                         ref={fileInputRef}
                         accept="image/jpeg,image/jpg,image/png,image/webp"
-                        multiple
+                        multiple={MAX_IMAGES > 1}
                         className="hidden"
                         onChange={(e) => {
                           if (e.target.files?.length) handleFiles(e.target.files)
@@ -1085,43 +1996,49 @@ export default function NanoBananaTool({
                       <span className="text-xs font-medium text-slate-500">{nanoText.upload}</span>
                     </div>
                   )}
+                  {remoteImageUrls.map((url, index) => (
+                    <div
+                      key={`${url}-${index}`}
+                      className="relative group aspect-square rounded-lg overflow-hidden border border-[#E0E7FF] bg-slate-100 cursor-pointer"
+                      onClick={() => setPreviewImage(url)}
+                    >
+                      <img
+                        src={getReferencePreviewUrl(url)}
+                        alt={`${nanoText.inputAlt} ${index + 1}`}
+                        className="w-full h-full object-cover"
+                      />
+                      <ImageReplaceButton
+                        onReplace={() => replaceRemoteImage(index)}
+                        label={nanoText.replace}
+                      />
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          setRemoteImageUrls((prev) => prev.filter((_, itemIndex) => itemIndex !== index))
+                        }}
+                        className="absolute top-1 right-1 w-6 h-6 rounded-md bg-white/80 flex items-center justify-center shadow-sm z-10 text-black [&_svg]:flex-shrink-0 md:opacity-0 md:invisible md:group-hover:opacity-100 md:group-hover:visible md:transition-opacity"
+                        title={nanoText.delete}
+                      >
+                        <DeleteIcon size={16} />
+                      </button>
+                    </div>
+                  ))}
+
                   {/* 已上传图片：小正方形 + 序号 */}
                   {imageFiles.map((item, index) => (
                     <div 
                       key={index} 
                       className="relative group aspect-square rounded-lg overflow-hidden border border-[#E0E7FF] bg-slate-100 cursor-pointer"
-                      onClick={() => {
-                        // 点击图片格子替换该位置的图片
-                        const input = document.createElement('input')
-                        input.type = 'file'
-                        input.accept = 'image/jpeg,image/jpg,image/png,image/webp'
-                        input.onchange = (e) => {
-                          const files = (e.target as HTMLInputElement).files
-                          if (files && files.length > 0) {
-                            const file = files[0]
-                            if (file.size > MAX_FILE_SIZE) {
-                              showToast(formatNanoText(nanoText.fileTooLarge, { name: file.name }), 'error')
-                              return
-                            }
-                            // 替换指定位置的图片
-                            setImageFiles(prev => {
-                              const newFiles = [...prev]
-                              URL.revokeObjectURL(newFiles[index].preview)
-                              newFiles[index] = {
-                                file,
-                                preview: URL.createObjectURL(file)
-                              }
-                              return newFiles
-                            })
-                          }
-                        }
-                        input.click()
-                      }}
                     >
                       <img
                         src={item.preview}
                         alt={`${nanoText.upload} ${index + 1}`}
                         className="w-full h-full object-cover"
+                      />
+                      <ImageReplaceButton
+                        onReplace={() => replaceLocalImage(index)}
+                        label={nanoText.replace}
                       />
                       {/* 序号：右下角 - 深灰色圆角方形，白色数字 */}
                       <span className="absolute bottom-1 right-1 w-5 h-5 rounded-md bg-white/80 text-black text-xs font-bold flex items-center justify-center shadow-sm z-10">
@@ -1139,18 +2056,11 @@ export default function NanoBananaTool({
                       >
                         <DeleteIcon size={16} />
                       </button>
-                      {/* Hover overlay：替换提示 */}
-                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <span className="px-3 py-1.5 bg-white text-[#4F46E5] rounded-lg font-semibold text-xs flex items-center gap-1.5">
-                          <ReplaceIcon size={14} />
-                          {nanoText.replace}
-                        </span>
-                      </div>
                     </div>
                   ))}
                 </div>
                 <p className="text-xs text-slate-400 mt-1.5">
-                  {formatNanoText(nanoText.fileLimit, { count: MAX_IMAGES }).replace('30MB', `${MAX_FILE_SIZE_MB}MB`)}
+                  {sceneText?.uploadHelper || formatNanoText(nanoText.fileLimit, { count: MAX_IMAGES }).replace('30MB', `${MAX_FILE_SIZE_MB}MB`)}
                 </p>
               </div>
             )}
@@ -1180,23 +2090,25 @@ export default function NanoBananaTool({
                 </div>
                 <div className="mt-2">
                   <label className="block text-xs font-semibold text-slate-500 tracking-wide mb-2">{nanoText.aspectRatios}</label>
-                  <div className="relative">
-                    <select
-                      value={aspectRatio}
-                      onChange={(e) => setAspectRatio(e.target.value)}
-                      className="w-full px-4 py-2.5 pr-10 rounded-xl border border-[#E0E7FF] bg-[#EEF2FF]/30 text-slate-800 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/40 focus:border-[#4F46E5] hover:border-[#C7D2FE] hover:bg-[#EEF2FF]/50 transition-all duration-200 appearance-none cursor-pointer shadow-sm"
-                    >
-                      {wrappedRatioOptions.map((ar) => (
-                        <option key={ar.value} value={ar.value}>
+                  <div className="grid grid-cols-4 gap-2">
+                    {wrappedRatioOptions.map((ar) => {
+                      const isSelected = aspectRatio === ar.value
+                      return (
+                        <button
+                          key={ar.value}
+                          type="button"
+                          aria-pressed={isSelected}
+                          onClick={() => setAspectRatio(ar.value)}
+                          className={`min-h-10 rounded-xl border px-2 py-2 text-center text-xs font-bold transition-all ${
+                            isSelected
+                              ? 'border-[#4F46E5] bg-[#EEF2FF] text-[#4F46E5] shadow-sm'
+                              : 'border-[#E0E7FF] bg-white text-slate-600 hover:border-[#C7D2FE] hover:bg-[#F8FAFF]'
+                          }`}
+                        >
                           {ar.label}
-                        </option>
-                      ))}
-                    </select>
-                    <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#4F46E5]">
-                        <polyline points="6 9 12 15 18 9" />
-                      </svg>
-                    </div>
+                        </button>
+                      )
+                    })}
                   </div>
                 </div>
               </div>
@@ -1205,15 +2117,148 @@ export default function NanoBananaTool({
             {/* Prompt */}
             {!isNanoBanana2CoupleMode && (
               <div>
-                <label className="block text-xs font-semibold text-slate-500 tracking-wide mb-2">{nanoText.prompt}</label>
-                <textarea
-                  ref={promptTextareaRef}
-                  value={prompt}
-                  onChange={(e) => setPrompt(e.target.value)}
-                  placeholder={nanoText.promptPlaceholder}
-                  className="h-[10.5rem] w-full resize-none overflow-y-auto rounded-xl border border-slate-200/90 bg-slate-50/50 px-4 py-3 text-sm leading-6 text-slate-800 placeholder:text-slate-400 transition-colors focus:border-[#4F46E5] focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/40"
-                  rows={6}
-                />
+                {promptModifier && promptModifier.options.length > 0 && (
+                  <div className="mb-4">
+                    <label className="mb-2 block text-xs font-semibold tracking-wide text-slate-500">
+                      {promptModifier.title}
+                    </label>
+                    <div className="grid grid-cols-3 gap-2">
+                      {promptModifier.options.map((option) => {
+                        const optionValue = option.value || option.label
+                        const isSelected = selectedPromptModifier === optionValue
+                        return (
+                          <button
+                            key={optionValue}
+                            type="button"
+                            aria-pressed={isSelected}
+                            onClick={() => setSelectedPromptModifier(optionValue)}
+                            className={`min-h-10 rounded-xl border px-3 py-2 text-xs font-bold transition-all ${
+                              isSelected
+                                ? 'border-[#4F46E5] bg-[#EEF2FF] text-[#4F46E5] shadow-sm'
+                                : 'border-[#E0E7FF] bg-white text-slate-600 hover:border-[#C7D2FE] hover:bg-[#F8FAFF]'
+                            }`}
+                          >
+                            {option.label}
+                          </button>
+                        )
+                      })}
+                    </div>
+                  </div>
+                )}
+                {promptPresets.length > 0 && (
+                  <div className="mb-3">
+                    <label className="block text-xs font-semibold text-slate-500 tracking-wide mb-2">
+                      {promptPresetTitle}
+                    </label>
+                    {promptPresetTabs.length > 0 && (
+                      <div
+                        role="tablist"
+                        aria-label={promptPresetTitle}
+                        className="mb-3 grid grid-cols-3 gap-1 rounded-xl bg-slate-100 p-1"
+                      >
+                        {promptPresetTabs.map((tab) => {
+                          const isActive = activePromptPresetTab === tab.id
+                          return (
+                            <button
+                              key={tab.id}
+                              type="button"
+                              role="tab"
+                              aria-selected={isActive}
+                              onClick={() => selectPromptPresetTab(tab.id)}
+                              className={`min-h-9 rounded-lg px-2 py-2 text-xs font-bold transition-colors ${
+                                isActive
+                                  ? 'bg-white text-[#4F46E5] shadow-sm'
+                                  : 'text-slate-500 hover:bg-white/70 hover:text-slate-800'
+                              }`}
+                            >
+                              {tab.label}
+                            </button>
+                          )
+                        })}
+                      </div>
+                    )}
+                    {activePromptPresetTab !== customPromptTabId && (
+                      <div className={hasImagePromptPresets ? 'grid grid-cols-3 gap-2' : 'grid grid-cols-4 gap-3'}>
+                      {visiblePromptPresets.map((preset) => {
+                        const isSelected = selectedPromptPreset === preset.label
+                        const hasImage = Boolean(preset.image)
+                        return (
+                          <button
+                            key={preset.label}
+                            type="button"
+                            title={preset.label}
+                            aria-label={preset.label}
+                            aria-pressed={isSelected}
+                            onClick={() => {
+                              setSelectedPromptPreset(preset.label)
+                              if (preset.prompt?.trim()) {
+                                setPrompt(preset.prompt)
+                              }
+                              if (!hidePresetPromptInput) {
+                                requestAnimationFrame(() => {
+                                  promptTextareaRef.current?.focus()
+                                })
+                              }
+                            }}
+                            className={
+                              hasImage
+                                ? `group overflow-hidden rounded-xl border bg-white text-left shadow-sm transition-all ${
+                                    isSelected
+                                      ? 'border-[#4F46E5] ring-2 ring-[#4F46E5]/20'
+                                      : 'border-slate-200 hover:border-[#C7D2FE] hover:shadow-[0_8px_20px_rgba(15,23,42,0.10)]'
+                                  }`
+                                : `flex h-12 w-12 items-center justify-center rounded-2xl border bg-white p-1.5 shadow-sm transition-all ${
+                                    isSelected
+                                      ? 'border-[#4F46E5] shadow-[0_10px_26px_rgba(79,70,229,0.22)]'
+                                      : 'border-slate-200 hover:border-[#C7D2FE] hover:shadow-[0_8px_20px_rgba(15,23,42,0.10)]'
+                                  }`
+                            }
+                          >
+                            {hasImage ? (
+                              <>
+                                <span className="block aspect-square w-full overflow-hidden bg-slate-100">
+                                  <img
+                                    src={preset.image}
+                                    alt=""
+                                    className="h-full w-full object-cover transition-transform duration-200 group-hover:scale-[1.03]"
+                                  />
+                                </span>
+                                <span className="block truncate px-2 py-1.5 text-center text-[11px] font-semibold text-slate-700">
+                                  {preset.label}
+                                </span>
+                              </>
+                            ) : (
+                              <span
+                                className="block min-h-9 min-w-9 rounded-xl border border-white shadow-sm"
+                                data-swatch={preset.label}
+                                style={getPromptPresetSwatchStyle(preset)}
+                              />
+                            )}
+                          </button>
+                        )
+                      })}
+                    </div>
+                    )}
+                  </div>
+                )}
+                {!(hidePresetPromptInput && activePromptPresetTab !== customPromptTabId) && (
+                  <>
+                    <label className="block text-xs font-semibold text-slate-500 tracking-wide mb-2">{sceneText?.promptLabel || nanoText.prompt}</label>
+                    <textarea
+                      ref={promptTextareaRef}
+                      value={prompt}
+                      onChange={(e) => {
+                        setPrompt(e.target.value)
+                        if (activePromptPresetTab === customPromptTabId) {
+                          setCustomPromptDraft(e.target.value)
+                        }
+                      }}
+                      placeholder={sceneText?.promptPlaceholder || nanoText.promptPlaceholder}
+                      className="h-[10.5rem] w-full resize-none overflow-y-auto rounded-xl border border-slate-200/90 bg-slate-50/50 px-4 py-3 text-sm leading-6 text-slate-800 placeholder:text-slate-400 transition-colors focus:border-[#4F46E5] focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/40"
+                      rows={6}
+                    />
+                  </>
+                )}
               </div>
             )}
 
@@ -1221,23 +2266,25 @@ export default function NanoBananaTool({
             {!isNanoBanana2CoupleMode && (
               <div>
                 <label className="block text-xs font-semibold text-slate-500 tracking-wide mb-2">{nanoText.outputAspectRatios}</label>
-                <div className="relative">
-                  <select
-                    value={aspectRatio}
-                    onChange={(e) => setAspectRatio(e.target.value)}
-                    className="w-full px-4 py-2.5 pr-10 rounded-xl border border-[#E0E7FF] bg-[#EEF2FF]/30 text-slate-800 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/40 focus:border-[#4F46E5] hover:border-[#C7D2FE] hover:bg-[#EEF2FF]/50 transition-all duration-200 appearance-none cursor-pointer shadow-sm"
-                  >
-                    {modelConfig.aspectRatios.map((ar) => (
-                      <option key={ar.value} value={ar.value}>
+                <div className="grid grid-cols-4 gap-2">
+                  {modelConfig.aspectRatios.map((ar) => {
+                    const isSelected = aspectRatio === ar.value
+                    return (
+                      <button
+                        key={ar.value}
+                        type="button"
+                        aria-pressed={isSelected}
+                        onClick={() => setAspectRatio(ar.value)}
+                        className={`min-h-10 rounded-xl border px-2 py-2 text-center text-xs font-bold transition-all ${
+                          isSelected
+                            ? 'border-[#4F46E5] bg-[#EEF2FF] text-[#4F46E5] shadow-sm'
+                            : 'border-[#E0E7FF] bg-white text-slate-600 hover:border-[#C7D2FE] hover:bg-[#F8FAFF]'
+                        }`}
+                      >
                         {ar.label}
-                      </option>
-                    ))}
-                  </select>
-                  <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#4F46E5]">
-                      <polyline points="6 9 12 15 18 9" />
-                    </svg>
-                  </div>
+                      </button>
+                    )
+                  })}
                 </div>
               </div>
             )}
@@ -1246,29 +2293,26 @@ export default function NanoBananaTool({
             {!isNanoBanana2CoupleMode && (
               <div>
                 <label className="block text-xs font-semibold text-slate-500 tracking-wide mb-2">{nanoText.resolution}</label>
-                <div className="relative">
-                  <select
-                    value={resolution}
-                    onChange={(e) => setResolution(e.target.value)}
-                    className="w-full px-4 py-2.5 pr-10 rounded-xl border border-[#E0E7FF] bg-[#EEF2FF]/30 text-slate-800 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/40 focus:border-[#4F46E5] hover:border-[#C7D2FE] hover:bg-[#EEF2FF]/50 transition-all duration-200 appearance-none cursor-pointer shadow-sm"
-                  >
-                    <option value="1K">1K</option>
-                    <option value="2K" disabled={!modelConfig.supportsHighResolution}>
-                      {modelConfig.supportsHighResolution ? '2K' : '2K (Temporarily unavailable)'}
-                    </option>
-                    <option value="4K" disabled={!modelConfig.supportsHighResolution}>
-                      {modelConfig.supportsHighResolution ? '4K' : '4K (Temporarily unavailable)'}
-                    </option>
-                  </select>
-                  <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#4F46E5]">
-                      <polyline points="6 9 12 15 18 9" />
-                    </svg>
-                  </div>
+                <div className="grid grid-cols-3 gap-2">
+                  {resolutionOptions.map((option) => {
+                    const isSelected = resolution === option
+                    return (
+                      <button
+                        key={option}
+                        type="button"
+                        aria-pressed={isSelected}
+                        onClick={() => setResolution(option)}
+                        className={`min-h-10 rounded-xl border px-3 py-2 text-center text-xs font-bold transition-all ${
+                          isSelected
+                            ? 'border-[#4F46E5] bg-[#EEF2FF] text-[#4F46E5] shadow-sm'
+                            : 'border-[#E0E7FF] bg-white text-slate-600 hover:border-[#C7D2FE] hover:bg-[#F8FAFF]'
+                        }`}
+                      >
+                        {option}
+                      </button>
+                    )
+                  })}
                 </div>
-                {!modelConfig.supportsHighResolution && (
-                  <p className="text-xs text-slate-400 mt-1.5">{nanoText.highResUnavailable}</p>
-                )}
               </div>
             )}
 
@@ -1297,28 +2341,78 @@ export default function NanoBananaTool({
           </div>
 
           {/* Generate 固定底部，始终在第一屏 */}
-          <div className="flex-shrink-0 p-2 md:p-6 pt-4 border-t border-[#E0E7FF] bg-white">
+          <div className="flex-shrink-0 rounded-b-2xl p-2 pt-4 md:p-6 md:pt-4 bg-white">
             <div className="flex gap-3">
               <button
                 type="button"
                 onClick={handleGenerate}
-                disabled={isGenerating || !prompt.trim() || (activeTab === 'image-to-image' && imageFiles.length === 0)}
+                disabled={isGenerating || !prompt.trim() || (activeTab === 'image-to-image' && imageFiles.length === 0 && remoteImageUrls.length === 0)}
                 className="flex-1 py-3.5 rounded-xl font-bold text-sm text-center flex items-center justify-center disabled:cursor-not-allowed transition-all duration-200 text-white shadow-md hover:shadow-lg disabled:shadow-none"
                 style={{
-                  background: isGenerating || !prompt.trim() || (activeTab === 'image-to-image' && imageFiles.length === 0)
+                  background: isGenerating || !prompt.trim() || (activeTab === 'image-to-image' && imageFiles.length === 0 && remoteImageUrls.length === 0)
                     ? 'linear-gradient(135deg, #C7D2FE 0%, #E0E7FF 100%)'
                     : 'linear-gradient(135deg, #4F46E5 0%, #9333EA 100%)',
                 }}
               >
-                {isGenerating ? formatNanoText(nanoText.generatingSeconds, { seconds: generatingSeconds }) : nanoText.generate}
+                {isGenerating ? (
+                  formatNanoText(nanoText.generatingSeconds, { seconds: generatingSeconds })
+                ) : (
+                  <span className="flex items-center justify-center gap-2">
+                    <span>{sceneText?.generateLabel || nanoText.generate}</span>
+                    <span
+                      className="inline-flex items-center gap-1.5 px-1 text-sm font-extrabold text-white"
+                      aria-label={`${generationCreditCost} credits`}
+                    >
+                      <span className="tabular-nums">{generationCreditCost}</span>
+                      <img
+                        src="/credits-icons/diamond-3d-indigo.svg"
+                        alt=""
+                        aria-hidden="true"
+                        className="h-[18px] w-[18px]"
+                      />
+                    </span>
+                  </span>
+                )}
               </button>
             </div>
+            {sceneText?.safetyHelper && (
+              <p className="mt-2 text-center text-xs leading-5 text-slate-500">
+                {sceneText.safetyHelper}
+              </p>
+            )}
           </div>
         </div>
 
+        <div className="flex min-h-0 min-w-0 flex-1 flex-col gap-4 md:h-full">
+          {(heroBreadcrumbItems?.length || heroEyebrow || heroTitle || heroDescription) && (
+            <div className="shrink-0 text-center md:px-4 md:pt-1 xl:pt-0">
+              {heroBreadcrumbItems?.length ? (
+                <div className="mx-auto mb-1 max-w-4xl">
+                  <Breadcrumb items={heroBreadcrumbItems} variant="inline" />
+                </div>
+              ) : null}
+              {heroEyebrow && (
+                <div className="mb-3 flex flex-wrap items-center justify-center gap-3">
+                  {heroEyebrow}
+                </div>
+              )}
+              {heroTitle && (
+                <h1 className="text-[30px] font-extrabold leading-tight tracking-tight text-slate-950 md:text-[36px] xl:text-[38px]">
+                  {heroTitle}
+                </h1>
+              )}
+              {heroDescription && (
+                <p className="mx-auto mt-3 max-w-4xl text-base leading-7 text-slate-600 md:text-[17px] md:leading-7">
+                  {heroDescription}
+                </p>
+              )}
+            </div>
+          )}
+
+          <div className="flex min-h-0 min-w-0 flex-1 flex-col gap-4 md:flex-row">
         {/* Middle: Generated Image (shown when result exists) or Generating Animation */}
         {isGenerating ? (
-          <div className="flex-1 min-w-0 bg-white rounded-2xl border border-[#E0E7FF] shadow-lg shadow-[#4F46E5]/8 flex items-center justify-center p-2 md:p-8">
+          <div className="flex-1 min-w-0 bg-white rounded-2xl border border-[#E0E7FF] shadow-lg shadow-[#4F46E5]/8 flex items-center justify-center p-2 md:p-8 xl:mx-auto xl:w-full xl:max-w-[1280px] 2xl:max-w-[1440px]">
             <div className="flex flex-col items-center gap-4">
               <div className="flex gap-2">
                 <div className="w-3 h-3 rounded-full bg-[#4F46E5] animate-pulse" style={{ animationDelay: '0s' }} />
@@ -1330,16 +2424,58 @@ export default function NanoBananaTool({
             </div>
           </div>
         ) : currentResult && (rightMode === 'result' || isNanoBanana2CoupleMode) ? (
-          <div className="flex-1 min-w-0 min-h-[400px] md:min-h-0 bg-white rounded-2xl border border-[#E0E7FF] shadow-lg shadow-[#4F46E5]/8 flex flex-col items-center justify-center p-2 md:p-8 relative z-10">
+          <div className="flex-1 min-w-0 min-h-[400px] md:min-h-0 bg-white rounded-2xl border border-[#E0E7FF] shadow-lg shadow-[#4F46E5]/8 flex flex-col items-center justify-center p-2 md:p-8 xl:mx-auto xl:w-full xl:max-w-[1280px] 2xl:max-w-[1440px] relative z-10">
             <img 
               src={currentResult.outputPreview} 
               alt={nanoText.generatedAlt} 
               onClick={() => setPreviewImage(currentResult.outputPreview)}
               className="max-w-full max-h-[60vh] md:max-h-full object-contain rounded-xl cursor-pointer hover:opacity-90 transition-opacity" 
             />
-            <p className="mt-4 text-xs text-slate-500 text-center">
-              {nanoText.resultExpires}
-            </p>
+            {!compactResultPanel && (
+              <p className="mt-4 text-xs text-slate-500 text-center">
+                {nanoText.resultExpires}
+              </p>
+            )}
+            {compactResultPanel && currentResult && (
+              <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
+                <span className="rounded-lg bg-[#EEF2FF] px-3 py-1.5 text-xs font-semibold text-[#4F46E5]">
+                  {formatTagValue(currentResult.aspectRatio || aspectRatio)}
+                </span>
+                <span className="rounded-lg bg-[#EEF2FF] px-3 py-1.5 text-xs font-semibold text-[#4F46E5]">
+                  {currentResult.time}
+                </span>
+                <button
+                  type="button"
+                  onClick={() => handleDownload(currentResult.outputPreview, `generated-${currentResult.id}.png`)}
+                  disabled={downloadingUrl === currentResult.outputPreview}
+                  className="flex h-9 w-9 items-center justify-center rounded-lg border border-[#C7D2FE] text-[#4F46E5] transition-colors hover:bg-[#EEF2FF] disabled:cursor-not-allowed disabled:opacity-50"
+                  title={downloadingUrl === currentResult.outputPreview ? nanoText.downloading : nanoText.download}
+                >
+                  {downloadingUrl === currentResult.outputPreview ? (
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" className="animate-spin">
+                      <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" strokeDasharray="32" strokeDashoffset="16" />
+                    </svg>
+                  ) : (
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                      <polyline points="7 10 12 15 17 10" />
+                      <line x1="12" y1="15" x2="12" y2="3" />
+                    </svg>
+                  )}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setCurrentResult(null)
+                    setRightMode('sample')
+                  }}
+                  className="flex h-9 w-9 items-center justify-center rounded-lg border border-[#C7D2FE] text-[#4F46E5] transition-colors hover:bg-[#EEF2FF]"
+                  title={nanoText.delete}
+                >
+                  <DeleteIcon size={18} />
+                </button>
+              </div>
+            )}
             {isNanoBanana2CoupleMode && (
               <div className="mt-4">
                 <button
@@ -1354,10 +2490,7 @@ export default function NanoBananaTool({
             )}
           </div>
         ) : isNanoBanana2CoupleMode ? (
-          <div className="flex-1 min-w-0 min-h-[400px] md:min-h-0 bg-white rounded-2xl border border-[#E0E7FF] shadow-lg shadow-[#4F46E5]/8 flex flex-col items-center justify-center p-2 md:p-8 relative z-10">
-            <h3 className="text-slate-700 font-semibold text-base uppercase tracking-wider mb-6 md:mb-8 shrink-0">
-              {nanoText.sampleImage}
-            </h3>
+          <div className="flex-1 min-w-0 min-h-[400px] md:min-h-0 bg-white rounded-2xl border border-[#E0E7FF] shadow-lg shadow-[#4F46E5]/8 flex flex-col items-center justify-center p-2 md:p-8 xl:mx-auto xl:w-full xl:max-w-[1280px] 2xl:max-w-[1440px] relative z-10">
             <div className="w-full flex-1 flex justify-center items-center min-h-0">
               {selectedTemplateImage ? (
                 <img
@@ -1375,8 +2508,10 @@ export default function NanoBananaTool({
         ) : null}
 
         {/* Right: 功能示例图 / 生成中 / 历史记录 / 结果详情 */}
-        {!isGenerating && !isNanoBanana2CoupleMode && (
-          <div className={`${rightMode === 'result' ? 'w-full md:w-[400px]' : 'flex-1'} min-h-0 min-w-0 bg-white ${isNanoBanana2CoupleMode ? 'rounded-none' : 'rounded-2xl'} border border-[#E0E7FF] shadow-lg shadow-[#4F46E5]/8 flex flex-col relative overflow-hidden`}>
+        {!isGenerating &&
+          !isNanoBanana2CoupleMode &&
+          !(compactResultPanel && rightMode === 'result' && currentResult) && (
+          <div className={`${rightMode === 'result' ? 'w-full md:w-[400px]' : 'flex-1 xl:mx-auto xl:w-full xl:max-w-[1280px] 2xl:max-w-[1440px]'} min-h-0 min-w-0 bg-white ${isNanoBanana2CoupleMode ? 'rounded-none' : 'rounded-2xl'} border border-[#E0E7FF] shadow-lg shadow-[#4F46E5]/8 flex flex-col relative overflow-hidden`}>
           {/* Tabs for right panel when history exists */}
           {(history.length > 0 || isGenerating) && !isGenerating && rightMode !== 'result' && !isNanoBanana2CoupleMode && (
             <div className="flex border-b border-[#E0E7FF] px-5 pt-4 gap-1 flex-shrink-0">
@@ -1387,7 +2522,7 @@ export default function NanoBananaTool({
                   rightMode === 'sample' ? 'bg-[#EEF2FF] text-[#4F46E5] border border-[#C7D2FE] border-b-0 -mb-px' : 'text-slate-500 hover:text-slate-700'
                 }`}
               >
-                {nanoText.sampleImage}
+                Demo
               </button>
               <button
                 type="button"
@@ -1404,7 +2539,6 @@ export default function NanoBananaTool({
           <div className={`flex min-h-0 flex-1 p-2 md:p-8 ${rightMode === 'result' || rightMode === 'history' ? 'flex-col justify-start overflow-auto' : 'flex-col items-center justify-center overflow-hidden'}`}>
             {rightMode === 'sample' && (
               <>
-                <h3 className="mb-6 shrink-0 text-base font-semibold uppercase tracking-wider text-slate-700">{nanoText.sampleImage}</h3>
                 <div className="flex min-h-0 w-full flex-1 items-center justify-center overflow-hidden">
                   {isNanoBanana2CoupleMode ? (
                     selectedTemplateImage ? (
@@ -1419,18 +2553,23 @@ export default function NanoBananaTool({
                       </div>
                     )
                   ) : (
-                    <div className="flex h-full w-full items-center justify-center overflow-hidden rounded-2xl p-2 ring-1 ring-slate-200/50 shadow-inner">
+                    <div
+                      className={`flex h-full w-full items-center justify-center overflow-hidden ring-1 ring-slate-200/50 ${
+                        isSharpSampleImage ? 'rounded-md bg-slate-50 p-0 shadow-none' : 'rounded-2xl p-2 shadow-inner'
+                      }`}
+                    >
                       <SiteImage
                         src={promptDemoImage?.url || sampleImage.url}
                         alt={promptDemoImage?.title || sampleImage.caption}
                         autoAlt={!promptDemoImage}
-                        width={promptDemoImage?.width || 800}
-                        height={promptDemoImage?.height || 600}
-                        className="max-h-full max-w-full"
+                        width={promptDemoImage?.width || sampleImage.width}
+                        height={promptDemoImage?.height || sampleImage.height}
+                        className={isSharpSampleImage ? 'max-h-full max-w-full rounded-md' : 'max-h-full max-w-full'}
                         style={{
                           objectFit: 'contain',
-                          width: 'auto',
-                          height: '100%'
+                          width: isSharpSampleImage ? '100%' : 'auto',
+                          height: '100%',
+                          maxHeight: '100%'
                         }}
                       />
                     </div>
@@ -1442,7 +2581,7 @@ export default function NanoBananaTool({
             {rightMode === 'generating' && !isGenerating && (
               <div className="flex flex-col items-center justify-center gap-8">
                 <div className="w-16 h-16 rounded-full border-4 border-[#EEF2FF] border-t-[#4F46E5] animate-spin" />
-                <p className="text-slate-500 font-medium text-sm uppercase tracking-wider">{`Generating... ${generatingSeconds}s`}</p>
+                <p className="text-slate-500 font-medium text-sm tracking-wider">{`Generating... ${generatingSeconds}s`}</p>
               </div>
             )}
 
@@ -1499,25 +2638,25 @@ export default function NanoBananaTool({
                   </div>
                 </div>
 
-                {/* Input Thumbnail */}
+                {/* Reference Thumbnail */}
                 {currentResult.inputPreview && (
-                  <div className="flex items-center gap-3">
+                  <div className="space-y-2">
+                    <p className="text-xs font-semibold text-slate-500">{nanoText.inputImage}</p>
                     <img 
                       src={currentResult.inputPreview} 
                       alt={nanoText.inputAlt} 
                       onClick={() => setPreviewImage(currentResult.inputPreview!)}
-                      className="w-12 h-12 rounded-full object-cover ring-2 ring-[#C7D2FE] cursor-pointer hover:opacity-80 transition-opacity" 
+                      className="h-12 w-12 rounded-lg object-cover ring-2 ring-[#C7D2FE] cursor-pointer hover:opacity-80 transition-opacity"
                     />
-                    <div className="flex-1">
-                      <p className="text-xs text-slate-500">{nanoText.inputImage}</p>
-                    </div>
                   </div>
                 )}
 
                 {/* Metadata Tags */}
                 <div className="flex flex-wrap gap-2">
                   <span className="px-3 py-1.5 rounded-lg bg-[#EEF2FF] text-[#4F46E5] text-xs font-semibold">{formatTagValue(aspectRatio)}</span>
-                  <span className="px-3 py-1.5 rounded-lg bg-[#EEF2FF] text-[#4F46E5] text-xs font-semibold">{modelName}</span>
+                  {!hideModelBranding && (
+                    <span className="px-3 py-1.5 rounded-lg bg-[#EEF2FF] text-[#4F46E5] text-xs font-semibold">{selectedModelName}</span>
+                  )}
                   <span className="px-3 py-1.5 rounded-lg bg-[#EEF2FF] text-[#4F46E5] text-xs font-semibold">{currentResult.time}</span>
                 </div>
 
@@ -1580,7 +2719,7 @@ export default function NanoBananaTool({
 
             {rightMode === 'history' && isNanoBanana2CoupleMode && (
               <div className="w-full max-w-[300px] mx-auto space-y-4">
-                <h3 className="text-slate-700 font-semibold text-base uppercase tracking-wider">{nanoText.history}</h3>
+                <h3 className="text-slate-700 font-semibold text-base tracking-wider">{nanoText.history}</h3>
                 {history.length > 0 ? (
                   <div className="grid grid-cols-2 gap-3">
                     {history.map((item) => (
@@ -1613,7 +2752,7 @@ export default function NanoBananaTool({
 
             {rightMode === 'history' && !isNanoBanana2CoupleMode && (
               <div className="w-full space-y-6">
-                <h3 className="text-slate-700 font-semibold text-base uppercase tracking-wider mb-6">{nanoText.history}</h3>
+                <h3 className="text-slate-700 font-semibold text-base tracking-wider mb-6">{nanoText.history}</h3>
                 {/* Generating Status at Top */}
                 {isGenerating && (
                   <div className="p-5 rounded-2xl border border-[#E0E7FF] bg-white shadow-sm">
@@ -1689,14 +2828,16 @@ export default function NanoBananaTool({
                           src={item.inputPreview} 
                           alt={nanoText.inputAlt} 
                           onClick={() => setPreviewImage(item.inputPreview!)}
-                          className="w-12 h-12 rounded-full object-cover ring-2 ring-[#C7D2FE] cursor-pointer hover:opacity-80 transition-opacity" 
+                          className="h-12 w-12 rounded-lg object-cover ring-2 ring-[#C7D2FE] cursor-pointer hover:opacity-80 transition-opacity"
                         />
                       ) : (
-                        <div className="w-12 h-12 rounded-full bg-[#EEF2FF] flex items-center justify-center text-xs text-[#4F46E5]">{nanoText.textToImage}</div>
+                        <div className="h-12 w-12 rounded-lg bg-[#EEF2FF] flex items-center justify-center text-xs text-[#4F46E5]">{nanoText.textToImage}</div>
                       )}
                       <div className="flex flex-wrap gap-2 flex-1">
                         <span className="px-3 py-1.5 rounded-lg bg-[#EEF2FF] text-[#4F46E5] text-xs font-semibold">{formatTagValue(item.aspectRatio)}</span>
-                        <span className="px-3 py-1.5 rounded-lg bg-[#EEF2FF] text-[#4F46E5] text-xs font-semibold">{modelName}</span>
+                        {!hideModelBranding && (
+                          <span className="px-3 py-1.5 rounded-lg bg-[#EEF2FF] text-[#4F46E5] text-xs font-semibold">{selectedModelName}</span>
+                        )}
                         <span className="px-3 py-1.5 rounded-lg bg-[#EEF2FF] text-[#4F46E5] text-xs font-semibold">{item.time}</span>
                       </div>
                     </div>
@@ -1798,6 +2939,8 @@ export default function NanoBananaTool({
           </div>
         </div>
         )}
+          </div>
+        </div>
       </div>
 
       {/* Image Preview Modal - 点击非图片区域（背景）可退出 */}
@@ -1822,6 +2965,53 @@ export default function NanoBananaTool({
               aria-label={commonToolText?.actions?.close || 'Close'}
             >
               <CloseIcon size={20} />
+            </button>
+          </div>
+        </div>
+      )}
+
+      {creditExhaustedModalOpen && (
+        <div
+          className="fixed inset-0 z-[10040] flex items-center justify-center bg-slate-950/45 px-4 py-6 backdrop-blur-sm"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="credit-exhausted-title"
+        >
+          <button
+            type="button"
+            className="absolute inset-0 h-full w-full cursor-default rounded-none border-0 bg-transparent p-0"
+            aria-label="Close credits dialog"
+            onClick={() => setCreditExhaustedModalOpen(false)}
+          />
+          <div className="relative w-full max-w-[420px] overflow-hidden rounded-2xl bg-white p-6 text-center shadow-2xl ring-1 ring-slate-200 sm:p-8">
+            <button
+              type="button"
+              onClick={() => setCreditExhaustedModalOpen(false)}
+              className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-500 hover:border-slate-300 hover:text-slate-900"
+              aria-label="Close credits dialog"
+            >
+              <CloseIcon size={18} />
+            </button>
+            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-indigo-50">
+              <img
+                src="/credits-icons/diamond-3d-indigo.svg"
+                alt=""
+                aria-hidden="true"
+                className="h-8 w-8"
+              />
+            </div>
+            <h2 id="credit-exhausted-title" className="mt-5 text-2xl font-extrabold leading-tight text-slate-950">
+              {nanoText.creditsUsedUpTitle}
+            </h2>
+            <p className="mt-3 text-sm leading-6 text-slate-600">
+              {nanoText.creditsUsedUpMessage}
+            </p>
+            <button
+              type="button"
+              onClick={() => setCreditExhaustedModalOpen(false)}
+              className="mt-6 inline-flex w-full items-center justify-center rounded-xl bg-slate-950 px-4 py-3 text-sm font-bold text-white transition hover:bg-slate-800"
+            >
+              {nanoText.creditsUsedUpAction}
             </button>
           </div>
         </div>

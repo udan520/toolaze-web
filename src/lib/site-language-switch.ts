@@ -32,7 +32,11 @@ export const TOOL_SUPPORTED_LOCALES: Record<string, readonly string[]> = {
   'emoji-copy-and-paste': ALL_LOCALE_CODES,
   'watermark-remover': ALL_LOCALE_CODES,
   'ai-couple-photo-maker': ALL_LOCALE_CODES,
+  'ai-baby-generator': ALL_LOCALE_CODES,
   'photo-restoration': ALL_LOCALE_CODES,
+  'ai-image-generator': ALL_LOCALE_CODES,
+  'text-to-image-generator': ALL_LOCALE_CODES,
+  'ai-image-to-image-generator': ALL_LOCALE_CODES,
   'world-cup-ai-image-generator': ALL_LOCALE_CODES,
   'prompts': ALL_LOCALE_CODES,
   /** 无各语言 SEO 数据时由页面重定向到 `/ai-tools` */
@@ -48,12 +52,14 @@ const MODEL_SUPPORTED_LOCALES: Record<string, readonly string[]> = {
   'gpt-image-2': ALL_LOCALE_CODES,
   'gpt-image-2-0': ALL_LOCALE_CODES,
   'nano-banana-pro': ALL_LOCALE_CODES,
+  'seedream-4-5': ALL_LOCALE_CODES,
+  'seedream-5-0-lite': ALL_LOCALE_CODES,
+  'seedream-5-0-pro': ALL_LOCALE_CODES,
+  'wan-2-7-image': ALL_LOCALE_CODES,
+  'seedance-2-5': ALL_LOCALE_CODES,
   'seedance-2': ALL_LOCALE_CODES,
   'kling-3': ALL_LOCALE_CODES,
 }
-
-/** 无多语言 URL 的根路径；切换到其他语言时直接回英文 canonical */
-const ENGLISH_ONLY_ROOT_TOOLS = new Set<string>()
 
 export function parseLocalePath(pathname: string): {
   pathLocale: string
@@ -93,10 +99,6 @@ export function getContentSupportedLocaleCodes(pathname: string | null): string[
       return [...ALL_LOCALE_CODES]
     }
     return [...(MODEL_SUPPORTED_LOCALES[modelSlug] || ALL_LOCALE_CODES)]
-  }
-
-  if (ENGLISH_ONLY_ROOT_TOOLS.has(root)) {
-    return ['en']
   }
 
   const perTool = TOOL_SUPPORTED_LOCALES[root]

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { notFound, redirect } from 'next/navigation'
-import { WorldCupAiImageGeneratorPageContent } from '@/app/world-cup-ai-image-generator/page'
+import WorldCupAiImageGeneratorPageContent from '@/components/WorldCupAiImageGeneratorPageContent'
 import { SUPPORTED_WORLD_CUP_LOCALES, getWorldCupPageCopy } from '@/app/world-cup-ai-image-generator/copy'
 
 const SUPPORTED_LOCALES = SUPPORTED_WORLD_CUP_LOCALES

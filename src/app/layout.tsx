@@ -4,6 +4,7 @@ import Script from 'next/script'
 import './globals.css'
 import ErrorSuppressor from '@/components/ErrorSuppressor'
 import HtmlLangSetter from '@/components/HtmlLangSetter'
+import GlobalWorkspaceShell from '@/components/GlobalWorkspaceShell'
 import { BROWSER_LOCALE_REDIRECT_SCRIPT } from '@/lib/browser-locale-redirect'
 
 export const metadata: Metadata = {
@@ -113,7 +114,9 @@ export default function RootLayout({
         />
         <HtmlLangSetter />
         <ErrorSuppressor />
-        {children}
+        <GlobalWorkspaceShell>
+          {children}
+        </GlobalWorkspaceShell>
         {/* Google Analytics - Must be at the end of body for static export */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-8KFZMZZ67F"

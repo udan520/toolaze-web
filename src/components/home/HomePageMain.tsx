@@ -61,10 +61,12 @@ const AI_IMAGE_PATHS: Record<string, string> = {
   'nano-banana-pro': '/model/nano-banana-pro',
   'nano-banana-2': '/model/nano-banana-2',
   'seedream-4-5': '/model/seedream-4-5',
+  'seedream-5-0-pro': '/model/seedream-5-0-pro',
 }
 
 // AI Video model paths (under /model/)
 const AI_VIDEO_PATHS: Record<string, string> = {
+  'seedance-2-5': '/model/seedance-2-5',
   'seedance-2': '/model/seedance-2',
   'kling-3': '/model/kling-3',
 }
@@ -79,29 +81,33 @@ type ToolCard = {
   modelType?: string
 }
 
+const TRENDING_MODEL_IDS = ['seedream-5-0-pro', 'gpt-image-2', 'nano-banana-pro', 'seedance-2-5'] as const
+
 /** 可选：在 common.home.trendingCards 中按 tool id 覆盖 Trending 区卡片标题与描述 */
 type HomeTrendingCardOverride = {
-  tool: string
+  tool?: string
   modelName?: string
   title?: string
   featuredDesc?: string
   description?: string
+  cardTitle?: string
+  summary?: string
 }
 
 function applyTrendingCardsOverrides(
   items: ToolCard[],
-  overrides: HomeTrendingCardOverride[] | undefined
+  overrides: HomeTrendingCardOverride[] | Record<string, HomeTrendingCardOverride> | undefined
 ): ToolCard[] {
-  if (!overrides?.length) return items
+  if (!overrides || (Array.isArray(overrides) && overrides.length === 0)) return items
   return items.map((item) => {
-    const o = overrides.find((x) => x.tool === item.tool)
+    const o = Array.isArray(overrides) ? overrides.find((x) => x.tool === item.tool) : overrides[item.tool]
     if (!o) return item
     return {
       ...item,
-      title: o.title ?? item.title,
-      description: o.description ?? item.description,
-      featuredDesc: o.featuredDesc ?? item.featuredDesc,
-      modelName: o.modelName ?? item.modelName,
+      title: o.title ?? o.cardTitle ?? item.title,
+      description: o.description ?? o.summary ?? item.description,
+      featuredDesc: o.featuredDesc ?? o.summary ?? item.featuredDesc,
+      modelName: o.modelName ?? o.cardTitle ?? item.modelName,
     }
   })
 }
@@ -213,25 +219,29 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
   if (!aiImageTools.some((item) => item.tool === seedream45Card.tool)) {
     aiImageTools.push(seedream45Card)
   }
-  const aiImageGeneratorCard = applyHomepageToolCardSummary(
+  const seedream50ProCard = applyHomepageToolCardSummary(
     {
-      tool: 'ai-image-generator',
-      title: 'AI Image Generator',
+      tool: 'seedream-5-0-pro',
+      title: 'Seedream 5.0 Pro',
       description:
-        'Free online AI image generator for text-to-image prompts, unlimited creative drafts, no sign up, and commercial visual ideas.',
-      href: '/ai-image-generator',
+        'Advanced AI image model for cinematic campaign visuals, brand systems, product ads, and high-resolution creative workflows.',
+      href: getHref('seedream-5-0-pro'),
       featuredDesc:
-        'Create unlimited AI images online from text prompts. No sign up required. Commercial use allowed for ads, posters, product concepts, thumbnails, and social visuals.',
-      modelName: 'AI Image Generator',
-      modelType: 'Free Online Tool',
+        'Advanced AI image model for cinematic campaign visuals, brand systems, product ads, and high-resolution creative workflows.',
+      modelName: 'Seedream 5.0 Pro',
+      modelType: 'AI Image Generator',
     },
     cardSummaries
   )
-
-  // All AI models for Trending section（可被 common.home.trendingCards 覆盖文案）
+  if (!aiImageTools.some((item) => item.tool === seedream50ProCard.tool)) {
+    aiImageTools.unshift(seedream50ProCard)
+  }
+  // Curated Trending section（只放首页首屏下方的四个重点模型）
   const trendingModels = applyTrendingCardsOverrides(
-    [...aiImageTools, ...aiVideoTools],
-    home?.trendingCards as HomeTrendingCardOverride[] | undefined
+    TRENDING_MODEL_IDS.map((tool) => [...aiImageTools, ...aiVideoTools].find((item) => item.tool === tool)).filter(
+      (item): item is ToolCard => Boolean(item)
+    ),
+    home?.trendingCards as Record<string, HomeTrendingCardOverride> | HomeTrendingCardOverride[] | undefined
   )
 
   async function loadHomeGridToolCard(tool: string): Promise<ToolCard | null> {
@@ -279,6 +289,7 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
       applyHomepageToolCardSummary({ ...card, ...(localizedAdvancedOverrides[tool] || {}) }, cardSummaries)
     )
   }
+  const aiToolsHubCards = advancedAiTools.filter((item) => item.tool !== 'world-cup-ai-image-generator').slice(0, 3)
 
   const utilityTools: ToolCard[] = []
   for (const tool of HOME_UTILITY_TOOL_IDS) {
@@ -364,16 +375,118 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
             </svg>
           </Link>
           <Link
-            href="/model/seedance-2"
+            href="/ai-image-to-image-generator"
             className="inline-flex items-center gap-2 px-8 py-3.5 bg-white text-indigo-600 font-bold rounded-full border-2 border-indigo-200 hover:border-indigo-400 hover:bg-indigo-50 transition-all duration-300"
           >
-            {home?.ctaVideo ?? 'Image to Video'}
+            {home?.ctaImageEdit ?? 'AI Image to Image Generator'}
           </Link>
         </div>
       </header>
 
+      {/* Trending AI Models - aiease: Featured highlights with descriptions */}
+      <section id="trending-models" className="py-20 px-6 bg-[#F8FAFF]">
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-12">
+            <h2 className="home-section-title text-4xl text-slate-900 mb-4 tracking-tight">
+              {home?.trendingTitle ?? 'Trending AI Image & Video Models, All in One Place'}
+            </h2>
+            <p className="text-slate-600 max-w-3xl text-base md:text-lg leading-relaxed">
+              {home?.trendingSubtitle ?? 'Access Seedream 5.0 Pro, GPT Image 2, Nano Banana Pro, and Seedance 2.5 without switching platforms.'}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {trendingModels.map((item) => {
+              const thumb = getHomeModelCardImage(item.tool)
+              return (
+                <Link
+                  key={item.tool}
+                  href={item.href}
+                  className="home-model-card block p-4 rounded-lg border border-indigo-100 transition-all duration-300 hover:border-indigo-200"
+                >
+                  {thumb ? (
+                    <div className="relative mb-3 aspect-[4/3] w-full overflow-hidden rounded-md ring-1 ring-indigo-100 bg-slate-50">
+                      <Image
+                        src={thumb.src}
+                        alt={thumb.alt}
+                        width={thumb.width}
+                        height={thumb.height}
+                        className="h-full w-full object-cover transition-transform duration-300 hover:scale-[1.02]"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 33vw, 25vw"
+                      />
+                    </div>
+                  ) : null}
+                  <h3 className="text-base font-bold text-indigo-600 mb-2">
+                    {item.modelName || item.title}
+                  </h3>
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    {item.featuredDesc || item.description}
+                  </p>
+                </Link>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* AI Image Generator - aiease structure */}
+      <section id="ai-image-generator" className="py-20 px-6 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-12">
+            <h2 className="home-section-title text-4xl text-slate-900 mb-4 tracking-tight">
+              {home?.sectionAiImageTitle ?? home?.aiImageTitle ?? 'AI Image Generator'}
+            </h2>
+            <p className="text-slate-600 max-w-3xl text-base md:text-lg leading-relaxed">
+              <TextWithLinks
+                text={
+                  home?.sectionAiImageSubtitle ??
+                  'Compare Toolaze image models by quality, resolution, reference support, edit strength, and best creative use case before choosing a model.'
+                }
+                links={[
+                  { term: 'GPT Image 2', href: '/model/gpt-image-2-0' },
+                  { term: 'Seedream 5.0 Pro', href: '/model/seedream-5-0-pro' },
+                  { term: 'Nano Banana Pro', href: '/model/nano-banana-pro' },
+                ]}
+              />
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {aiImageTools.map((item) => {
+              const thumb = getHomeModelCardImage(item.tool)
+              return (
+                <Link
+                  key={item.tool}
+                  href={item.href}
+                  className="home-model-card block p-4 rounded-lg border border-indigo-100 transition-all duration-300 hover:border-indigo-200"
+                >
+                  {thumb ? (
+                    <div className="relative mb-3 aspect-[4/3] w-full overflow-hidden rounded-md ring-1 ring-indigo-100 bg-slate-50">
+                      <Image
+                        src={thumb.src}
+                        alt={thumb.alt}
+                        width={thumb.width}
+                        height={thumb.height}
+                        className="h-full w-full object-cover transition-transform duration-300 hover:scale-[1.02]"
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                      />
+                    </div>
+                  ) : null}
+                  <h3 className="text-xl font-bold text-indigo-600 mb-3">
+                    {item.modelName || item.title}
+                  </h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    {item.featuredDesc || item.description}
+                  </p>
+                </Link>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+
       {/* AI Video Generator - aiease structure */}
-      <section id="ai-video-generator" className="py-20 px-6 bg-white">
+      <section id="ai-video-generator" className="py-20 px-6 bg-[#F8FAFF]">
         <div className="max-w-6xl mx-auto">
           <div className="mb-12">
             <h2 className="home-section-title text-4xl text-slate-900 mb-4 tracking-tight">
@@ -391,24 +504,24 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {aiVideoTools.map((item) => {
               const thumb = getHomeModelCardImage(item.tool)
               return (
                 <Link
                   key={item.tool}
                   href={item.href}
-                  className="home-model-card block p-8 rounded-[2rem] border border-indigo-100 transition-all duration-300 hover:border-indigo-200"
+                  className="home-model-card block p-4 rounded-lg border border-indigo-100 transition-all duration-300 hover:border-indigo-200"
                 >
                   {thumb ? (
-                    <div className="relative mb-4 aspect-[4/3] w-full overflow-hidden rounded-2xl ring-1 ring-indigo-100 bg-slate-50">
+                    <div className="relative mb-3 aspect-[4/3] w-full overflow-hidden rounded-md ring-1 ring-indigo-100 bg-slate-50">
                       <Image
                         src={thumb.src}
                         alt={thumb.alt}
                         width={thumb.width}
                         height={thumb.height}
                         className="h-full w-full object-cover transition-transform duration-300 hover:scale-[1.02]"
-                        sizes="(max-width: 768px) 100vw, 50vw"
+                        sizes="(max-width: 768px) 100vw, 33vw"
                       />
                     </div>
                   ) : null}
@@ -425,115 +538,16 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
         </div>
       </section>
 
-      {/* AI Image Generator - aiease structure */}
-      <section id="ai-image-generator" className="py-20 px-6 bg-[#F8FAFF]">
+      {/* AI Tools hub — SEO bridge between model discovery and utility tools */}
+      <section id="ai-tools-hub" className="py-20 px-6 bg-white">
         <div className="max-w-6xl mx-auto">
           <div className="mb-12">
             <h2 className="home-section-title text-4xl text-slate-900 mb-4 tracking-tight">
-              {home?.sectionAiImageTitle ?? home?.aiImageTitle ?? 'AI Image Generator'}
-            </h2>
-            <p className="text-slate-600 max-w-3xl text-base md:text-lg leading-relaxed">
-              <TextWithLinks
-                text={
-                  home?.sectionAiImageSubtitle ??
-                  home?.aiImageIntro ??
-                  ''
-                }
-                links={[{ term: 'AI Image Generator', href: '/ai-image-generator' }]}
-              />
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {[aiImageGeneratorCard, ...aiImageTools].map((item) => {
-              const thumb = getHomeModelCardImage(item.tool)
-              return (
-                <Link
-                  key={item.tool}
-                  href={item.href}
-                  className="home-model-card block p-8 rounded-[2rem] border border-indigo-100 transition-all duration-300 hover:border-indigo-200"
-                >
-                  {thumb ? (
-                    <div className="relative mb-4 aspect-[4/3] w-full overflow-hidden rounded-2xl ring-1 ring-indigo-100 bg-slate-50">
-                      <Image
-                        src={thumb.src}
-                        alt={thumb.alt}
-                        width={thumb.width}
-                        height={thumb.height}
-                        className="h-full w-full object-cover transition-transform duration-300 hover:scale-[1.02]"
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                      />
-                    </div>
-                  ) : null}
-                  <h3 className="text-xl font-bold text-indigo-600 mb-3">
-                    {item.modelName || item.title}
-                  </h3>
-                  <p className="text-sm text-slate-600 leading-relaxed">
-                    {item.featuredDesc || item.description}
-                  </p>
-                </Link>
-              )
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Trending AI Models - aiease: Featured highlights with descriptions */}
-      <section id="trending-models" className="py-20 px-6 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="mb-12">
-            <h2 className="home-section-title text-4xl text-slate-900 mb-4 tracking-tight">
-              {home?.trendingTitle ?? 'Trending AI Image & Video Models, All in One Place'}
-            </h2>
-            <p className="text-slate-600 max-w-3xl text-base md:text-lg leading-relaxed">
-              {home?.trendingSubtitle ?? 'Access Seedance 2.0, Kling 3.0, Nano Banana Pro, and Nano Banana 2 without switching platforms.'}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {trendingModels.map((item) => {
-              const thumb = getHomeModelCardImage(item.tool)
-              return (
-                <Link
-                  key={item.tool}
-                  href={item.href}
-                  className="home-model-card block p-6 rounded-[2rem] border border-indigo-100 transition-all duration-300 hover:border-indigo-200"
-                >
-                  {thumb ? (
-                    <div className="relative mb-3 aspect-[4/3] w-full overflow-hidden rounded-xl ring-1 ring-indigo-100 bg-slate-50">
-                      <Image
-                        src={thumb.src}
-                        alt={thumb.alt}
-                        width={thumb.width}
-                        height={thumb.height}
-                        className="h-full w-full object-cover transition-transform duration-300 hover:scale-[1.02]"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                      />
-                    </div>
-                  ) : null}
-                  <h3 className="text-base font-bold text-indigo-600 mb-2">
-                    {item.modelName || item.title}
-                  </h3>
-                  <p className="text-xs text-slate-600 leading-relaxed">
-                    {item.featuredDesc || item.description}
-                  </p>
-                </Link>
-              )
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* AI Tools hub — SEO bridge between trending models and utility grid */}
-      <section id="ai-tools-hub" className="py-20 px-6 bg-[#F8FAFF]">
-        <div className="max-w-6xl mx-auto">
-          <div className="mb-12">
-            <h2 className="home-section-title text-4xl text-slate-900 mb-4 tracking-tight">
-              {home?.aiToolsHubTitle ?? 'Free AI Tools for Images, Video & Everyday Media Workflows'}
+              {home?.aiToolsHubTitle ?? 'Free AI Tools for Creative Media Workflows'}
             </h2>
             <p className="text-slate-600 max-w-3xl text-base md:text-lg leading-relaxed">
               {home?.aiToolsHubSubtitle ??
-                'One hub for AI image generation, AI video generation, and fast browser utilities—no signup and no paywall.'}
+                'Explore concrete creative tools for portraits, style previews, restoration, watermark cleanup, and fast browser utilities.'}
             </p>
             {home?.aiToolsHubIntro ? (
               <p className="text-slate-600 max-w-3xl text-base md:text-lg leading-relaxed mt-4">
@@ -542,31 +556,9 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
             ) : null}
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {(Array.isArray(home?.aiToolsHubItems) && home.aiToolsHubItems.length > 0
-              ? home.aiToolsHubItems
-              : [
-                  {
-                    title: 'AI image generators',
-                    description:
-                      'Ship campaign-ready visuals with text-to-image and image-to-image using GPT Image 2, Nano Banana Pro, and Nano Banana 2.',
-                    href: '/model/gpt-image-2-0',
-                  },
-                  {
-                    title: 'AI video generators',
-                    description:
-                      'Create clips with Seedance 2.0 and Kling 3.0 using text-to-video and image-to-video workflows.',
-                    href: '/model/seedance-2',
-                  },
-                  {
-                    title: 'Browser media utilities',
-                    description:
-                      'Compress and convert images, remove watermarks, restore photos, and more—free in your browser.',
-                    href: '/image-compressor',
-                  },
-                ]
-            ).map((item: { title: string; description: string; href: string }, idx: number) => (
+            {aiToolsHubCards.map((item) => (
               <Link
-                key={`${item.href}-${idx}`}
+                key={item.tool}
                 href={item.href}
                 className="home-model-card block p-8 rounded-[2rem] border border-indigo-100 transition-all duration-300 hover:border-indigo-200"
               >
@@ -587,8 +579,12 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
                     />
                   </svg>
                 </div>
-                <h3 className="text-lg font-bold text-indigo-600 mb-3">{item.title}</h3>
-                <p className="text-sm text-slate-600 leading-relaxed">{item.description}</p>
+                <h3 className="text-lg font-bold text-indigo-600 mb-3">
+                  {(item.modelName || item.title || '').replace(/<[^>]*>/g, '').trim()}
+                </h3>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  {item.featuredDesc || item.description}
+                </p>
               </Link>
             ))}
           </div>

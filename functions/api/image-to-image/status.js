@@ -3,6 +3,9 @@
  * 部署后地址：https://toolaze-web.pages.dev/api/image-to-image/status
  * 需设置环境变量：KIE_AI_API_KEY
  */
+import { getCurrentUser } from '../../_shared/auth.mjs';
+import { refundCredits } from '../../_shared/credits.mjs';
+
 const KIE_AI_BASE = 'https://api.kie.ai/api/v1/jobs';
 const CORS = {
   'Access-Control-Allow-Origin': '*',
@@ -19,6 +22,53 @@ function jsonResponse(body, status = 200) {
     status,
     headers: { 'Content-Type': 'application/json', ...CORS },
   });
+}
+
+function readCreditHold(body, taskId) {
+  const creditHold = body?.creditHold;
+  const requiredCredits = Number(creditHold?.requiredCredits);
+
+  if (
+    creditHold?.provider !== 'credit-ledger' ||
+    creditHold?.taskId !== taskId ||
+    !creditHold?.consumptionId ||
+    !Number.isInteger(requiredCredits) ||
+    requiredCredits <= 0
+  ) {
+    return null;
+  }
+
+  return {
+    consumptionId: String(creditHold.consumptionId),
+    requiredCredits,
+  };
+}
+
+async function refundFailedGenerationCredits(env, request, body, taskId, message) {
+  if (!env?.DB) return null;
+
+  const creditHold = readCreditHold(body, taskId);
+  if (!creditHold) return null;
+
+  const user = await getCurrentUser(env, request);
+  if (!user) return null;
+
+  const refund = await refundCredits(env, user.id, creditHold.requiredCredits, {
+    reason: 'image_generation_refund',
+    description: 'Image generation refund',
+    consumptionId: creditHold.consumptionId,
+    metadata: {
+      taskId,
+      error: message || 'Image generation failed',
+    },
+  }).catch(() => null);
+
+  if (!refund) return null;
+
+  return {
+    credits: { balance: refund.balance, transactions: [] },
+    refundedCredits: refund.refunded,
+  };
 }
 
 export async function onRequest(context) {
@@ -79,10 +129,17 @@ export async function onRequest(context) {
       }
     }
 
+    const status = state === 'success' ? 'SUCCEEDED' : state === 'fail' ? 'FAILED' : 'PENDING';
+    const message = data?.failMsg ?? data?.message;
+    const creditRefund = status === 'FAILED'
+      ? await refundFailedGenerationCredits(env, request, body, taskId, message)
+      : null;
+
     return jsonResponse({
-      status: state === 'success' ? 'SUCCEEDED' : state === 'fail' ? 'FAILED' : 'PENDING',
+      status,
       imageUrl,
-      message: data?.failMsg ?? data?.message,
+      message,
+      ...(creditRefund || {}),
     });
   } catch (e) {
     return jsonResponse({

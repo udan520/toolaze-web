@@ -14,12 +14,14 @@ import NanoBananaTool from '@/components/NanoBananaTool'
 import WatermarkRemover from '@/components/WatermarkRemover'
 import PhotoRestoration from '@/components/PhotoRestoration'
 import SeedanceHeroPlaceholder from '@/components/blocks/SeedanceHeroPlaceholder'
+import Seedance25LaunchUpdates from '@/components/blocks/Seedance25LaunchUpdates'
 import KlingHeroPlaceholder from '@/components/blocks/KlingHeroPlaceholder'
 import NanoBanana2HeroPlaceholder from '@/components/blocks/NanoBanana2HeroPlaceholder'
 import TrustBar from '@/components/blocks/TrustBar'
 import Intro from '@/components/blocks/Intro'
 import Features from '@/components/blocks/Features'
 import PerformanceMetrics from '@/components/blocks/PerformanceMetrics'
+import ModelComparisonTable from '@/components/blocks/ModelComparisonTable'
 import HowToUse from '@/components/blocks/HowToUse'
 import Comparison from '@/components/blocks/Comparison'
 import ModelIntroBlock from '@/components/blocks/ModelIntroBlock'
@@ -34,6 +36,8 @@ interface ToolL2PageContentProps {
   locale: string
   tool: string
 }
+
+const AI_IMAGE_TOOL_TOP_COMPONENTS = new Set(['gpt-image-2'])
 
 // 从 hero.h1 中提取页面标题（用于面包屑）
 function extractPageTitle(h1: string): string {
@@ -123,6 +127,225 @@ function generateHowToSchema(
   }
 }
 
+interface StrategyCardItem {
+  title: string
+  desc?: string
+  prompt?: string
+  color?: string
+  badge?: string
+}
+
+interface StrategyCardSection {
+  title?: string
+  subtitle?: string
+  items?: StrategyCardItem[]
+}
+
+interface StrategyTableSection {
+  title?: string
+  subtitle?: string
+  columns?: string[]
+  rows?: string[][]
+}
+
+interface TestimonialItem {
+  name?: string
+  role?: string
+  quote: string
+}
+
+interface TestimonialsSection {
+  title?: string
+  subtitle?: string
+  items?: TestimonialItem[]
+}
+
+interface PromptPreset {
+  label: string
+  prompt?: string
+  color?: string
+  swatch?: string
+  image?: string
+  group?: string
+  referenceImage?: string
+}
+
+function Testimonials({
+  section,
+  bgClass,
+}: {
+  section?: TestimonialsSection
+  bgClass: string
+}) {
+  if (!section?.items || section.items.length === 0) return null
+
+  return (
+    <section className={`${bgClass} py-24 px-6`}>
+      <div className="max-w-6xl mx-auto">
+        {section.title && (
+          <h2 className="text-4xl font-extrabold text-center text-slate-900 mb-4">
+            {section.title}
+          </h2>
+        )}
+        {section.subtitle && (
+          <p className="desc-text text-center max-w-3xl mx-auto mb-12">
+            {section.subtitle}
+          </p>
+        )}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {section.items.slice(0, 3).map((item, idx) => (
+            <article
+              key={`${item.name || 'review'}-${idx}`}
+              className="flex h-full flex-col rounded-3xl border border-indigo-50 bg-white p-7 shadow-sm"
+            >
+              <div className="mb-5 flex gap-1 text-amber-400" aria-label="5 star review">
+                {Array.from({ length: 5 }).map((_, starIndex) => (
+                  <span key={starIndex}>★</span>
+                ))}
+              </div>
+              <p className="flex-1 text-sm leading-7 text-slate-600">“{item.quote}”</p>
+              {(item.name || item.role) && (
+                <div className="mt-6 border-t border-slate-100 pt-4">
+                  {item.name && <p className="font-bold text-slate-900">{item.name}</p>}
+                  {item.role && <p className="mt-1 text-xs font-semibold uppercase tracking-wide text-indigo-600">{item.role}</p>}
+                </div>
+              )}
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function StrategyCardGrid({
+  section,
+  bgClass,
+}: {
+  section?: StrategyCardSection
+  bgClass: string
+}) {
+  if (!section?.items || section.items.length === 0) return null
+  const gridClass =
+    section.items.length === 4
+      ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6'
+      : 'grid grid-cols-1 md:grid-cols-3 gap-6'
+
+  return (
+    <section className={`${bgClass} py-24 px-6`}>
+      <div className="max-w-6xl mx-auto">
+        {section.title && (
+          <h2 className="text-4xl font-extrabold text-center text-slate-900 mb-4">
+            {section.title}
+          </h2>
+        )}
+        {section.subtitle && (
+          <p className="desc-text text-center max-w-3xl mx-auto mb-12">
+            {section.subtitle}
+          </p>
+        )}
+        <div className={gridClass}>
+          {section.items.map((item, idx) => (
+            <article
+              key={`${item.title}-${idx}`}
+              className="rounded-3xl border border-indigo-50 bg-white p-6 shadow-sm"
+            >
+              <div className="flex items-center gap-3 mb-5">
+                <div
+                  className="h-12 w-12 rounded-2xl border-4 border-white shadow-sm"
+                  style={{ background: item.color || 'linear-gradient(135deg, #6366f1, #ec4899)' }}
+                />
+                {item.badge && (
+                  <span className="rounded-full bg-indigo-50 px-3 py-1 text-xs font-bold text-indigo-700">
+                    {item.badge}
+                  </span>
+                )}
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 mb-3">{item.title}</h3>
+              {item.desc && (
+                <p className="text-sm leading-relaxed text-slate-600">{item.desc}</p>
+              )}
+              {item.prompt && (
+                <p className="mt-4 rounded-2xl bg-slate-50 p-4 text-sm leading-relaxed text-slate-700">
+                  {item.prompt}
+                </p>
+              )}
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function StrategyTable({
+  section,
+  bgClass,
+}: {
+  section?: StrategyTableSection
+  bgClass: string
+}) {
+  if (!section?.rows || section.rows.length === 0) return null
+
+  return (
+    <section className={`${bgClass} py-24 px-6`}>
+      <div className="max-w-6xl mx-auto">
+        {section.title && (
+          <h2 className="text-4xl font-extrabold text-center text-slate-900 mb-4">
+            {section.title}
+          </h2>
+        )}
+        {section.subtitle && (
+          <p className="desc-text text-center max-w-3xl mx-auto mb-12">
+            {section.subtitle}
+          </p>
+        )}
+        <div className="overflow-hidden rounded-3xl border border-indigo-100 bg-white shadow-sm">
+          <div className="overflow-x-auto">
+            <table className="w-full min-w-[720px] border-collapse text-left">
+              {section.columns && section.columns.length > 0 && (
+                <thead>
+                  <tr className="bg-slate-50">
+                    {section.columns.map((column) => (
+                      <th key={column} className="px-6 py-4 text-sm font-bold text-slate-900">
+                        {column}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+              )}
+              <tbody>
+                {section.rows.map((row, rowIndex) => (
+                  <tr key={rowIndex} className="border-t border-slate-100">
+                    {row.map((cell, cellIndex) => (
+                      <td
+                        key={`${rowIndex}-${cellIndex}`}
+                        className={`px-6 py-5 text-sm leading-relaxed ${
+                          cellIndex === 0 ? 'font-bold text-slate-900' : 'text-slate-600'
+                        }`}
+                      >
+                        {cell}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function pickKeys<T extends Record<string, unknown>>(source: T | undefined, keys: string[]) {
+  if (!source) return undefined
+  return keys.reduce<Record<string, unknown>>((picked, key) => {
+    if (key in source) picked[key] = source[key]
+    return picked
+  }, {})
+}
+
 export default async function ToolL2PageContent({ locale, tool }: ToolL2PageContentProps) {
   try {
     if (!tool) {
@@ -149,9 +372,98 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
 
     // 顶部功能：优先使用 JSON 中的 topComponent，否则用 tool
     const topComp = (content.topComponent || tool) as string
+    const isScenePage = content.visiblePageType === 'scene'
+    const isAiImageToolPage = content.pageGroup === 'ai-tools' || AI_IMAGE_TOOL_TOP_COMPONENTS.has(topComp)
 
     // Load translations
     const t = await loadCommonTranslations(locale)
+    const sceneNavKeys = [
+      'language',
+      'quickTools',
+      'aiTools',
+      'imageCompression',
+      'imageConverter',
+      'watermarkRemover',
+      'photoRestoration',
+      'aiCouplePhotoMaker',
+      'aiBabyGenerator',
+      'worldCupAiImageGenerator',
+      'fontGenerator',
+      'emojiCopyAndPaste',
+      'aiImage',
+      'aiImageGenerator',
+      'textToImageGenerator',
+      'aiImageToImageGenerator',
+      'aiVideo',
+      'wan27Image',
+      'seedream45',
+      'seedream50Lite',
+      'seedance25',
+      'seedance2',
+      'kling3',
+      'promptLibrary',
+      'allPrompts',
+      'promptModels',
+      'promptScenes',
+      'kling',
+      'advertising',
+      'fashionBeauty',
+      'filmTrailer',
+      'aboutUs',
+      'viewAllAiTools',
+      'emojiMenu',
+    ]
+    const sceneFooterKeys = [
+      'home',
+      'allTools',
+      'aboutUs',
+      'privacyPolicy',
+      'termsOfService',
+      'contact',
+      'language',
+      'footerNavigation',
+      'noToolsAvailable',
+      'copyright',
+      'tagline',
+      'quickTools',
+      'aiTools',
+      'aiVideo',
+      'aiImage',
+      'aiImageGenerator',
+      'textToImageGenerator',
+      'aiImageToImageGenerator',
+      'watermarkRemover',
+      'photoRestoration',
+      'aiCouplePhotoMaker',
+      'aiBabyGenerator',
+      'worldCupAiImageGenerator',
+      'imageCompression',
+      'imageConverter',
+      'fontGenerator',
+      'emojiCopyAndPaste',
+      'seedance25',
+      'seedance2',
+      'kling3',
+      'wan27Image',
+      'seedream45',
+      'seedream50Lite',
+      'emojiMenu',
+    ]
+    const pageTranslations = isScenePage
+      ? {
+          suppressModelBranding: true,
+          nav: pickKeys(t?.nav, sceneNavKeys),
+          footer: pickKeys(t?.footer, sceneFooterKeys),
+          breadcrumb: t?.breadcrumb,
+          auth: t?.auth,
+          account: t?.account,
+          common: {
+            performanceMetrics: t?.common?.performanceMetrics,
+            nanoBananaTool: t?.common?.nanoBananaTool,
+            tryNow: t?.common?.tryNow,
+          },
+        }
+      : t
     const breadcrumbT = t?.breadcrumb || { home: 'Home', fontGenerator: 'Font Generator' }
 
     const fallbackPageTitle = content.hero?.h1 ? extractSimpleTitle(content.hero.h1) : tool
@@ -201,6 +513,12 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
           { label: breadcrumbT.aiTools || 'AI Tools', href: '/ai-tools' },
           { label: breadcrumbT.aiCouplePhotoMaker || 'AI Couple Photo Maker' },
         ]
+      : tool === 'ai-baby-generator'
+      ? [
+          { label: breadcrumbT.home, href: '/' },
+          { label: breadcrumbT.aiTools || 'AI Tools', href: '/ai-tools' },
+          { label: breadcrumbT.aiBabyGenerator || 'AI Baby Generator' },
+        ]
       : tool === 'nano-banana-pro'
       ? [
           { label: breadcrumbT.home, href: '/' },
@@ -213,11 +531,17 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
           { label: breadcrumbT.model || 'Model', href: '/model' },
           { label: 'Nano Banana 2' },
         ]
-      : tool === 'gpt-image-2'
+      : tool === 'gpt-image-2' && !isAiImageToolPage
       ? [
           { label: breadcrumbT.home, href: '/' },
           { label: breadcrumbT.model || 'Model', href: '/model' },
           { label: 'GPT Image 2' },
+        ]
+      : tool === 'seedance-2-5'
+      ? [
+          { label: breadcrumbT.home, href: '/' },
+          { label: breadcrumbT.model || 'Model', href: '/model' },
+          { label: 'Seedance 2.5' },
         ]
       : tool === 'seedance-2'
       ? [
@@ -231,10 +555,23 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
           { label: breadcrumbT.model || 'Model', href: '/model' },
           { label: 'Kling 3.0' },
         ]
+      : isAiImageToolPage
+      ? [
+          { label: breadcrumbT.home, href: locale === 'en' ? '/' : `/${locale}` },
+          { label: breadcrumbT.aiTools || 'AI Tools', href: locale === 'en' ? '/ai-tools' : `/${locale}/ai-tools` },
+          { label: pageTitle },
+        ]
       : [
           { label: breadcrumbT.home, href: locale === 'en' ? '/' : `/${locale}` },
           { label: pageTitle },
         ]
+    const toolHeroOwnsBreadcrumb = [
+      'ai-couple-photo-maker',
+      'ai-baby-generator',
+      'nano-banana-pro',
+      'gpt-image-2',
+      'nano-banana-2',
+    ].includes(topComp)
 
     // 获取推荐的其他功能
     // 模型页（视频/图片）：仅推荐同类型其他 L2 模型，无其他 L2 则不显示板块
@@ -243,6 +580,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
       if (modelTool === 'nano-banana-pro') return locale === 'en' ? '/model/nano-banana-pro' : `/${locale}/model/nano-banana-pro`
       if (modelTool === 'nano-banana-2') return locale === 'en' ? '/model/nano-banana-2' : `/${locale}/model/nano-banana-2`
       if (modelTool === 'gpt-image-2') return locale === 'en' ? '/model/gpt-image-2-0' : `/${locale}/model/gpt-image-2-0`
+      if (modelTool === 'seedance-2-5') return locale === 'en' ? '/model/seedance-2-5' : `/${locale}/model/seedance-2-5`
       if (modelTool === 'seedance-2') return locale === 'en' ? '/model/seedance-2' : `/${locale}/model/seedance-2`
       if (modelTool === 'kling-3') return locale === 'en' ? '/model/kling-3' : `/${locale}/model/kling-3`
       return locale === 'en' ? `/${modelTool}` : `/${locale}/${modelTool}`
@@ -338,7 +676,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
       'faq'
     ]
     let sectionsOrder = content.sectionsOrder || defaultSectionsOrder
-    if (IMAGE_MODEL_L2S.includes(tool) || VIDEO_MODEL_L2S.includes(tool)) {
+    if (IMAGE_MODEL_L2S.includes(tool) || (VIDEO_MODEL_L2S.includes(tool) && tool !== 'seedance-2-5')) {
       sectionsOrder = sectionsOrder.filter((s: string) => s !== 'comparison')
     }
 
@@ -346,6 +684,42 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
     const howToTitle = content.howToUse?.title || fallbackPageTitle
     const howToSteps = content.howToUse?.steps || howToUseSteps
     const jsonLdSchema = generateHowToSchema(howToTitle, howToSteps)
+
+    const getPromptPresetColor = (title: string) => {
+      const normalized = title.toLowerCase()
+      if (normalized.includes('pink')) return 'linear-gradient(135deg, #f9a8d4, #db2777)'
+      if (normalized.includes('blonde')) return 'linear-gradient(135deg, #fde68a, #d97706)'
+      if (normalized.includes('copper')) return 'linear-gradient(135deg, #fb923c, #92400e)'
+      if (normalized.includes('burgundy')) return 'linear-gradient(135deg, #fda4af, #991b1b)'
+      if (normalized.includes('silver')) return 'linear-gradient(135deg, #f8fafc, #64748b)'
+      if (normalized.includes('blue black')) return 'linear-gradient(135deg, #0f172a, #1d4ed8)'
+      return 'linear-gradient(135deg, #6366f1, #ec4899)'
+    }
+
+    const promptPresetItems = (content.promptExamples?.items || []) as Array<{ title?: string; prompt?: string; color?: string; swatch?: string; image?: string; group?: string; referenceImage?: string }>
+    const configuredPresetLabels = Array.isArray(content.topTool?.functionalAcceptance?.presets)
+      ? content.topTool.functionalAcceptance.presets
+      : []
+    const promptPresetMap = new Map(
+      promptPresetItems
+        .filter((item) => item.title && item.prompt)
+        .map((item) => [item.title, item])
+    )
+    const promptPresets: PromptPreset[] = configuredPresetLabels.length > 0
+      ? configuredPresetLabels.map((preset: string | PromptPreset) => {
+          const label = typeof preset === 'string' ? preset : preset.label
+          const matched = promptPresetMap.get(label)
+          return {
+            label,
+            prompt: label.toLowerCase() === 'custom' ? '' : (typeof preset === 'string' ? matched?.prompt : preset.prompt || matched?.prompt),
+            color: label.toLowerCase() === 'custom' ? undefined : (typeof preset === 'string' ? matched?.color : preset.color || matched?.color) || getPromptPresetColor(label),
+            swatch: label.toLowerCase() === 'custom' ? undefined : (typeof preset === 'string' ? matched?.swatch : preset.swatch || matched?.swatch),
+            image: label.toLowerCase() === 'custom' ? undefined : (typeof preset === 'string' ? matched?.image : preset.image),
+            group: typeof preset === 'string' ? matched?.group : preset.group || matched?.group,
+            referenceImage: typeof preset === 'string' ? matched?.referenceImage : preset.referenceImage || matched?.referenceImage,
+          }
+        })
+      : []
 
     return (
       <>
@@ -355,9 +729,9 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdSchema) }}
         />
         
-        <Navigation initialTranslations={t} />
+        <Navigation initialTranslations={pageTranslations} />
         
-        <Breadcrumb items={breadcrumbItems} />
+        {!toolHeroOwnsBreadcrumb && <Breadcrumb items={breadcrumbItems} />}
 
         <main className="min-h-screen bg-[#F8FAFF] overflow-x-hidden">
           {/* 1. Hero 板块 - 固定在最前面，不参与动态顺序；支持 topComponent 覆盖 */}
@@ -463,82 +837,118 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
               <PhotoRestoration initialTranslations={t} />
             </header>
           ) : topComp === 'ai-couple-photo-maker' ? (
-            <header className="bg-[#F8FAFF] pb-6 md:pb-12 w-full px-2 md:px-6">
-              <div className="w-full max-w-full text-center pt-6 md:pt-8 mb-6 md:mb-12">
-                <h1 className="text-[40px] font-extrabold tracking-tight mb-6 leading-tight text-slate-900">
-                  {content.hero?.h1 ? (
-                    renderH1WithGradient(content.hero.h1)
-                  ) : (
-                    <>AI Couple Photo Maker</>
-                  )}
-                </h1>
-                {content.hero?.desc && (
-                  <p className="desc-text text-lg md:text-xl max-w-4xl mx-auto">
-                    {content.hero.desc}
-                  </p>
-                )}
-              </div>
+            <header className="bg-[#F8FAFF] pb-6 md:pb-12 w-full pl-0 pr-2 md:pl-0 md:pr-6">
               <div className="w-full max-w-full">
-                <div className="flex flex-col md:h-screen md:overflow-hidden">
+                <div className="flex flex-col">
                   <NanoBananaTool
                     modelId="nano-banana-2"
                     modelName="Nano Banana 2"
                     dailyLimitStorageKey="ai_couple_photo_maker_last_used_date"
                     presetMode="ai-couple-photo-maker"
-                    initialTranslations={t}
+                    heroBreadcrumbItems={breadcrumbItems}
+                    heroTitle={content.hero?.h1 ? renderH1WithGradient(content.hero.h1) : <>AI Couple Photo Maker</>}
+                    heroDescription={content.hero?.desc}
+                    initialTranslations={pageTranslations}
+                  />
+                </div>
+              </div>
+            </header>
+          ) : topComp === 'ai-baby-generator' ? (
+            <header className="bg-[#F8FAFF] pb-6 md:pb-12 w-full pl-0 pr-2 md:pl-0 md:pr-6">
+              <div className="w-full max-w-full">
+                <div className="flex flex-col">
+                  <NanoBananaTool
+                    modelId="gpt-image-2"
+                    modelName={content.topTool?.displayName || 'AI Baby Generator'}
+                    dailyLimitStorageKey="ai_baby_generator_last_used_date"
+                    defaultMode="image-to-image"
+                    defaultPrompt={content.topTool?.defaultPrompt || ''}
+                    defaultImageUrls={Array.isArray(content.topTool?.defaultImageUrls) ? content.topTool.defaultImageUrls : []}
+                    maxUploadImages={typeof content.topTool?.maxUploadImages === 'number' ? content.topTool.maxUploadImages : undefined}
+                    hideModelBranding={content.topTool?.hideModelBranding === true}
+                    sampleImages={Array.isArray(content.topTool?.sampleImages) ? content.topTool.sampleImages : undefined}
+                    sampleImageVariant="sharp"
+                    promptPresets={promptPresets}
+                    promptPresetTitle={content.topTool?.functionalAcceptance?.presetTitle || 'Baby Portrait Styles'}
+                    promptModifier={content.topTool?.promptModifier}
+                    hidePresetPromptInput={content.topTool?.hidePresetPromptInput === true}
+                    compactResultPanel={content.topTool?.compactResultPanel === true}
+                    sceneText={content.topTool?.textOverrides}
+                    heroBreadcrumbItems={breadcrumbItems}
+                    heroTitle={content.hero?.h1 ? renderH1WithGradient(content.hero.h1) : <>AI Baby Generator</>}
+                    heroDescription={content.hero?.desc}
+                    initialTranslations={pageTranslations}
                   />
                 </div>
               </div>
             </header>
           ) : topComp === 'nano-banana-pro' ? (
-            <header className="bg-[#F8FAFF] pb-6 md:pb-12 w-full px-2 md:px-6">
-              <div className="w-full max-w-full text-center pt-6 md:pt-8 mb-6 md:mb-12">
-                <h1 className="text-[40px] font-extrabold tracking-tight mb-6 leading-tight text-slate-900">
-                  {content.hero?.h1 ? (
-                    renderH1WithGradient(content.hero.h1)
-                  ) : (
-                    <>Nano Banana Pro</>
-                  )}
-                </h1>
-                {content.hero?.desc && (
-                  <p className="desc-text text-lg md:text-xl max-w-4xl mx-auto">
-                    {content.hero.desc}
-                  </p>
-                )}
-              </div>
+            <header className="bg-[#F8FAFF] pb-6 md:pb-12 w-full pl-0 pr-2 md:pl-0 md:pr-6">
               <div className="w-full max-w-full">
                 {/* H5: 移除固定高度，让内容自然流式布局；桌面端保持固定高度 */}
-                <div className="flex flex-col md:h-screen md:overflow-hidden">
-                  <NanoBananaTool initialTranslations={t} />
-                </div>
-              </div>
-            </header>
-          ) : topComp === 'gpt-image-2' ? (
-            <header className="bg-[#F8FAFF] pb-6 md:pb-12 w-full px-2 md:px-6">
-              <div className="w-full max-w-full text-center pt-6 md:pt-8 mb-6 md:mb-12">
-                <h1 className="text-[40px] font-extrabold tracking-tight mb-6 leading-tight text-slate-900">
-                  {content.hero?.h1 ? (
-                    renderH1WithGradient(content.hero.h1)
-                  ) : (
-                    <>GPT Image 2</>
-                  )}
-                </h1>
-                {content.hero?.desc && (
-                  <p className="desc-text text-lg md:text-xl max-w-4xl mx-auto">
-                    {content.hero.desc}
-                  </p>
-                )}
-              </div>
-              <div className="w-full max-w-full">
-                <div className="flex flex-col md:h-screen md:overflow-hidden">
+                <div className="flex flex-col">
                   <NanoBananaTool
-                    modelId="gpt-image-2"
-                    modelName="GPT Image 2"
-                    dailyLimitStorageKey="gpt_image_2_last_used_date"
+                    heroBreadcrumbItems={breadcrumbItems}
+                    heroTitle={content.hero?.h1 ? renderH1WithGradient(content.hero.h1) : <>Nano Banana Pro</>}
+                    heroDescription={content.hero?.desc}
                     initialTranslations={t}
                   />
                 </div>
               </div>
+            </header>
+          ) : topComp === 'gpt-image-2' ? (
+            <header className="bg-[#F8FAFF] pb-6 md:pb-12 w-full pl-0 pr-2 md:pl-0 md:pr-6">
+              <div className="w-full max-w-full">
+                <div className="flex flex-col">
+                  <NanoBananaTool
+                    modelId="gpt-image-2"
+                    modelName={content.topTool?.displayName || 'AI Hair Color Changer'}
+                    dailyLimitStorageKey="gpt_image_2_last_used_date"
+                    defaultMode={content.topTool?.mode === 'image-to-image' ? 'image-to-image' : undefined}
+                    defaultPrompt={content.topTool?.defaultPrompt || ''}
+                    defaultImageUrls={Array.isArray(content.topTool?.defaultImageUrls) ? content.topTool.defaultImageUrls : []}
+                    maxUploadImages={typeof content.topTool?.maxUploadImages === 'number' ? content.topTool.maxUploadImages : undefined}
+                    hideModelBranding={content.topTool?.hideModelBranding === true}
+                    sampleImages={Array.isArray(content.topTool?.sampleImages) ? content.topTool.sampleImages : undefined}
+                    sampleImageVariant="sharp"
+                    promptPresets={promptPresets}
+                    promptPresetTitle={content.topTool?.functionalAcceptance?.presetTitle || 'Hair Color Presets'}
+                    promptPresetTabs={Array.isArray(content.topTool?.functionalAcceptance?.presetTabs) ? content.topTool.functionalAcceptance.presetTabs : undefined}
+                    hidePresetPromptInput={content.topTool?.functionalAcceptance?.hidePresetPromptInput === true}
+                    compactResultPanel={content.topTool?.compactResultPanel === true}
+                    customPromptTabId={content.topTool?.functionalAcceptance?.customPromptTabId || 'custom'}
+                    sceneText={content.topTool?.textOverrides}
+                    heroBreadcrumbItems={breadcrumbItems}
+                    heroTitle={
+                      content.hero?.h1
+                        ? renderH1WithGradient(content.hero.h1)
+                        : isScenePage || isAiImageToolPage
+                          ? <>{content.topTool?.displayName || fallbackPageTitle}</>
+                          : <>GPT Image 2</>
+                    }
+                    heroDescription={content.hero?.desc}
+                    initialTranslations={pageTranslations}
+                  />
+                </div>
+              </div>
+            </header>
+          ) : topComp === 'seedance-2-5' ? (
+            <header className="bg-[#F8FAFF] pb-12 px-6">
+              <div className="max-w-4xl mx-auto text-center pt-8 mb-12">
+                <h1 className="text-[40px] font-extrabold tracking-tight mb-6 leading-tight text-slate-900">
+                  {content.hero?.h1 ? (
+                    renderH1WithGradient(content.hero.h1)
+                  ) : (
+                    <>Seedance 2.5 AI Video Generator</>
+                  )}
+                </h1>
+                {content.hero?.desc && (
+                  <p className="desc-text text-lg md:text-xl max-w-4xl mx-auto">
+                    {content.hero.desc}
+                  </p>
+                )}
+              </div>
+              <Seedance25LaunchUpdates copy={content.launchUpdates} />
             </header>
           ) : topComp === 'seedance-2' ? (
             <header className="bg-[#F8FAFF] pb-12 px-6">
@@ -577,27 +987,16 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
               <KlingHeroPlaceholder initialTranslations={t} />
             </header>
           ) : topComp === 'nano-banana-2' ? (
-            <header className="bg-[#F8FAFF] pb-6 md:pb-12 w-full px-2 md:px-6">
-              <div className="w-full max-w-full text-center pt-6 md:pt-8 mb-6 md:mb-12">
-                <h1 className="text-[40px] font-extrabold tracking-tight mb-6 leading-tight text-slate-900">
-                  {content.hero?.h1 ? (
-                    renderH1WithGradient(content.hero.h1)
-                  ) : (
-                    <>Nano Banana 2</>
-                  )}
-                </h1>
-                {content.hero?.desc && (
-                  <p className="desc-text text-lg md:text-xl max-w-4xl mx-auto">
-                    {content.hero.desc}
-                  </p>
-                )}
-              </div>
+            <header className="bg-[#F8FAFF] pb-6 md:pb-12 w-full pl-0 pr-2 md:pl-0 md:pr-6">
               <div className="w-full max-w-full">
-                <div className="flex flex-col md:h-screen md:overflow-hidden">
+                <div className="flex flex-col">
                   <NanoBananaTool
                     modelId="nano-banana-2"
                     modelName="Nano Banana 2"
                     dailyLimitStorageKey="nano_banana_2_last_used_date"
+                    heroBreadcrumbItems={breadcrumbItems}
+                    heroTitle={content.hero?.h1 ? renderH1WithGradient(content.hero.h1) : <>Nano Banana 2</>}
+                    heroDescription={content.hero?.desc}
                     initialTranslations={t}
                   />
                 </div>
@@ -675,6 +1074,40 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                   />
                 )
               },
+              modelComparison: (bgClass: string) => {
+                const modelComparison = content.modelComparison as {
+                  title?: string
+                  rows?: Array<{ label: string; baseline: string; target: string }>
+                  columnHeaders?: { metric?: string; baseline?: string; target?: string }
+                } | undefined
+                if (!modelComparison?.rows || modelComparison.rows.length === 0) return null
+                return (
+                  <ModelComparisonTable
+                    key="modelComparison"
+                    title={modelComparison.title}
+                    rows={modelComparison.rows}
+                    columnHeaders={modelComparison.columnHeaders}
+                    bgClass={bgClass}
+                  />
+                )
+              },
+              competitorComparison: (bgClass: string) => {
+                const competitorComparison = content.competitorComparison as {
+                  title?: string
+                  rows?: Array<{ label: string; baseline: string; target: string }>
+                  columnHeaders?: { metric?: string; baseline?: string; target?: string }
+                } | undefined
+                if (!competitorComparison?.rows || competitorComparison.rows.length === 0) return null
+                return (
+                  <ModelComparisonTable
+                    key="competitorComparison"
+                    title={competitorComparison.title}
+                    rows={competitorComparison.rows}
+                    columnHeaders={competitorComparison.columnHeaders}
+                    bgClass={bgClass}
+                  />
+                )
+              },
               howToUse: (bgClass: string) => (
                 <HowToUse
                   key="howToUse"
@@ -714,7 +1147,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                 )
               },
               promptExamples: (bgClass: string) => {
-                const promptExamples = content.promptExamples as { title?: string; subtitle?: string; items?: Array<{ title: string; prompt: string; image: string }> } | undefined
+                const promptExamples = content.promptExamples as { title?: string; subtitle?: string; items?: Array<{ title: string; prompt: string; image?: string; note?: string; color?: string }> } | undefined
                 if (!promptExamples?.items || promptExamples.items.length === 0) return null
                 return (
                   <PromptExamples
@@ -726,6 +1159,34 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                   />
                 )
               },
+              colorIdeas: (bgClass: string) => (
+                <StrategyCardGrid
+                  key="colorIdeas"
+                  section={content.colorIdeas as StrategyCardSection | undefined}
+                  bgClass={bgClass}
+                />
+              ),
+              photoTips: (bgClass: string) => (
+                <StrategyCardGrid
+                  key="photoTips"
+                  section={content.photoTips as StrategyCardSection | undefined}
+                  bgClass={bgClass}
+                />
+              ),
+              workflowComparison: (bgClass: string) => (
+                <StrategyTable
+                  key="workflowComparison"
+                  section={content.workflowComparison as StrategyTableSection | undefined}
+                  bgClass={bgClass}
+                />
+              ),
+              testimonials: (bgClass: string) => (
+                <Testimonials
+                  key="testimonials"
+                  section={content.testimonials as TestimonialsSection | undefined}
+                  bgClass={bgClass}
+                />
+              ),
               rating: (bgClass: string) => {
                 // 确保使用 JSON 中的翻译标题
                 const ratingTitle = content.rating?.title
@@ -807,7 +1268,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
           )}
         </main>
 
-        <Footer initialTranslations={t} />
+        <Footer initialTranslations={pageTranslations} />
       </>
     )
   } catch (error) {

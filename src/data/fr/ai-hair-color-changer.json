@@ -1,0 +1,404 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 1,
+    "modelId": "gpt-image-2",
+    "defaultPrompt": "Change the hair color to rose pink while keeping the face, hairstyle, skin tone, and background natural.",
+    "defaultImageUrls": [
+      "/ai-hair-color-changer/default-reference.png"
+    ],
+    "hideModelBranding": true,
+    "displayName": "Changeur de couleur de cheveux IA",
+    "functionalAcceptance": {
+      "recommendedMode": "preset-first-with-custom-prompt",
+      "reason": "VisualGPT uses visible hair color choices to make the task easier than a prompt-only flow.",
+      "presetTitle": "Choisir une couleur de cheveux",
+      "presets": [
+        {
+          "label": "Rose poudré",
+          "prompt": "Change the hair color to soft rose pink while keeping the face, hairstyle, skin tone, and background natural.",
+          "swatch": "linear-gradient(135deg, #f9a8d4, #db2777)"
+        },
+        {
+          "label": "Blond miel",
+          "prompt": "Change the hair color to warm honey blonde with natural highlights and realistic lighting.",
+          "swatch": "linear-gradient(135deg, #fde68a, #d97706)"
+        },
+        {
+          "label": "Blond platine",
+          "prompt": "Change the hair color to platinum blonde with soft natural shadows and realistic hair texture.",
+          "swatch": "linear-gradient(135deg, #fff7ed, #d6d3d1)"
+        },
+        {
+          "label": "Brun cuivré",
+          "prompt": "Change the hair color to copper brown while preserving the original hairstyle, face, and background.",
+          "swatch": "linear-gradient(135deg, #fb923c, #92400e)"
+        },
+        {
+          "label": "Rouge bordeaux",
+          "prompt": "Change the hair color to deep burgundy red with a natural glossy finish.",
+          "swatch": "linear-gradient(135deg, #fda4af, #991b1b)"
+        },
+        {
+          "label": "Rouge cerise",
+          "prompt": "Change the hair color to cherry red with realistic shine, natural roots, and preserved facial features.",
+          "swatch": "linear-gradient(135deg, #ef4444, #7f1d1d)"
+        },
+        {
+          "label": "Gris argenté",
+          "prompt": "Change the hair color to silver gray while keeping the hair texture and facial features unchanged.",
+          "swatch": "linear-gradient(135deg, #f8fafc, #64748b)"
+        },
+        {
+          "label": "Brun cendré",
+          "prompt": "Change the hair color to ash brown with soft cool highlights and realistic shadows.",
+          "swatch": "linear-gradient(135deg, #a8a29e, #57534e)"
+        },
+        {
+          "label": "Noir intense",
+          "prompt": "Change the hair color to jet black with natural shine while preserving the face, hairstyle, and background.",
+          "swatch": "linear-gradient(135deg, #27272a, #020617)"
+        },
+        {
+          "label": "Noir bleuté",
+          "prompt": "Change the hair color to blue black with subtle cool highlights and realistic shadows.",
+          "swatch": "linear-gradient(135deg, #0f172a, #1d4ed8)"
+        },
+        {
+          "label": "Violet lavande",
+          "prompt": "Change the hair color to soft lavender purple while keeping the portrait natural and realistic.",
+          "swatch": "linear-gradient(135deg, #ddd6fe, #7c3aed)"
+        },
+        {
+          "label": "Personnalisé"
+        }
+      ]
+    },
+    "sampleImages": [
+      {
+        "url": "/ai-hair-color-changer/rose-pink-before-after.webp",
+        "title": "Rose Pink before and after",
+        "width": 1200,
+        "height": 450
+      },
+      {
+        "url": "/ai-hair-color-changer/honey-blonde-before-after.webp",
+        "title": "Honey Blonde before and after",
+        "width": 1200,
+        "height": 450
+      },
+      {
+        "url": "/ai-hair-color-changer/copper-brown-before-after.webp",
+        "title": "Copper Brown before and after",
+        "width": 1200,
+        "height": 450
+      }
+    ]
+  },
+  "metadata": {
+    "title": "Changeur de couleur de cheveux IA gratuit en ligne | Sans inscription | Toolaze",
+    "description": "Utilisez le changeur de couleur de cheveux IA gratuit de Toolaze en ligne, sans inscription et sans filigrane. Importez un portrait, décrivez une nouvelle couleur et prévisualisez du rose, blond, cuivre, argenté ou noir bleuté."
+  },
+  "sectionsOrder": [
+    "intro",
+    "howToUse",
+    "photoTips",
+    "promptExamples",
+    "scenes",
+    "workflowComparison",
+    "features",
+    "testimonials",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Changeur de <span class=\"text-gradient\">couleur de cheveux IA</span> gratuit en ligne",
+    "desc": "Importez un portrait net, choisissez ou décrivez la couleur de cheveux souhaitée et prévisualisez instantanément une retouche IA en ligne, sans inscription et sans filigrane."
+  },
+  "howToUse": {
+    "title": "Comment changer la couleur des cheveux avec l’IA",
+    "steps": [
+      {
+        "title": "Importer un portrait net",
+        "desc": "Choisissez une photo de face ou presque de face où les cheveux sont visibles de la racine aux pointes."
+      },
+      {
+        "title": "Décrire la couleur voulue",
+        "desc": "Écrivez une consigne directe, par exemple changer la couleur des cheveux en blond miel, brun cuivré, gris argenté ou rose poudré."
+      },
+      {
+        "title": "Générer puis ajuster",
+        "desc": "Consultez immédiatement l’aperçu, puis ajustez la consigne si la couleur paraît trop forte, trop plate ou trop éloignée de la nuance visée."
+      }
+    ]
+  },
+  "photoTips": {
+    "title": "Conseils photo pour de meilleurs résultats de couleur",
+    "subtitle": "La photo de référence compte. Une meilleure image d’entrée donne à l’IA plus d’informations sur la forme, la texture, la lumière et la zone où la couleur doit apparaître.",
+    "items": [
+      {
+        "title": "Utiliser un portrait de face",
+        "desc": "Les photos de face ou presque de face facilitent la conservation du visage et la retouche de la zone visible des cheveux.",
+        "color": "linear-gradient(135deg, #dbeafe, #6366f1)"
+      },
+      {
+        "title": "Montrer toute la forme des cheveux",
+        "desc": "Utilisez une photo où les cheveux ne sont pas coupés, cachés par un chapeau, bloqués par les mains ou perdus dans des ombres fortes.",
+        "color": "linear-gradient(135deg, #fce7f3, #db2777)"
+      },
+      {
+        "title": "Garder la texture visible",
+        "desc": "Boucles, dégradés, franges, tresses et reflets nets donnent plus de structure à suivre pour la retouche.",
+        "color": "linear-gradient(135deg, #fef3c7, #f97316)"
+      },
+      {
+        "title": "Éviter les angles extrêmes",
+        "desc": "Les vues de dos, le flou de mouvement, les profils de côté et les zones de cheveux très petites sont plus difficiles à évaluer dans un aperçu.",
+        "color": "linear-gradient(135deg, #ede9fe, #7c3aed)"
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "Idées de prompts populaires pour couleur de cheveux",
+    "subtitle": "Copiez un prompt dans l’outil, puis ajustez la nuance, l’intensité ou la finition.",
+    "items": [
+      {
+        "title": "Rose poudré",
+        "prompt": "Change the hair color to soft rose pink while keeping the face, hairstyle, skin tone, and background natural.",
+        "note": "Idéal pour un aperçu couleur ludique mais soigné.",
+        "color": "linear-gradient(135deg, #fbcfe8, #db2777)",
+        "image": "/ai-hair-color-changer/rose-pink-before-after.webp"
+      },
+      {
+        "title": "Blond miel",
+        "prompt": "Change the hair color to warm honey blonde with natural highlights and realistic lighting.",
+        "note": "À utiliser pour une direction plus douce de style salon.",
+        "color": "linear-gradient(135deg, #fde68a, #d97706)",
+        "image": "/ai-hair-color-changer/honey-blonde-before-after.webp"
+      },
+      {
+        "title": "Blond platine",
+        "prompt": "Change the hair color to copper brown while preserving the original hairstyle, face, and background.",
+        "note": "Une nuance chaude pratique pour des aperçus de portrait réalistes.",
+        "color": "linear-gradient(135deg, #fb923c, #92400e)",
+        "image": "/ai-hair-color-changer/copper-brown-before-after.webp"
+      },
+      {
+        "title": "Brun cuivré",
+        "prompt": "Change the hair color to deep burgundy red with a natural glossy finish.",
+        "note": "Fonctionne mieux quand la photo source montre assez de volume et de lumière.",
+        "color": "linear-gradient(135deg, #fda4af, #991b1b)",
+        "image": "/ai-hair-color-changer/burgundy-red-before-after.webp"
+      },
+      {
+        "title": "Rouge bordeaux",
+        "prompt": "Change the hair color to silver gray while keeping the hair texture and facial features unchanged.",
+        "note": "À utiliser pour des looks argentés, gris ou froids.",
+        "color": "linear-gradient(135deg, #f8fafc, #64748b)",
+        "image": "/ai-hair-color-changer/silver-gray-before-after.webp"
+      },
+      {
+        "title": "Rouge cerise",
+        "prompt": "Change the hair color to blue black with subtle cool highlights and realistic shadows.",
+        "note": "Une direction créative sombre avec un contraste plus naturel.",
+        "color": "linear-gradient(135deg, #0f172a, #1d4ed8)",
+        "image": "/ai-hair-color-changer/blue-black-before-after.webp"
+      }
+    ]
+  },
+  "scenesTitle": "Façons d’utiliser le changeur de couleur de cheveux IA",
+  "scenes": [
+    {
+      "title": "Aperçu avant coloration",
+      "icon": "🎨",
+      "desc": "Essayez rose, blond, cuivre, argenté, brun ou des tons plus foncés avant de prendre un vrai rendez-vous couleur."
+    },
+    {
+      "title": "Rafraîchir une photo de profil",
+      "icon": "👤",
+      "desc": "Créez un nouveau look pour avatars, profils de créateur, profils de rencontre ou brouillons de marque personnelle."
+    },
+    {
+      "title": "Cosplay et style de personnage",
+      "icon": "🎭",
+      "desc": "Testez des couleurs audacieuses pour cosplay, portraits fantasy, retouches thématiques ou looks inspirés de personnages."
+    },
+    {
+      "title": "Créer du contenu social",
+      "icon": "✨",
+      "desc": "Produisez rapidement des variantes visuelles pour posts, miniatures, stories et essais de style."
+    },
+    {
+      "title": "Référence pour coiffeur coloriste",
+      "icon": "💬",
+      "desc": "Créez une référence visuelle pour discuter d’une direction couleur avec un professionnel, sans considérer l’aperçu comme un résultat salon garanti."
+    }
+  ],
+  "workflowComparison": {
+    "title": "Quand utiliser le changeur de couleur IA plutôt qu’un filtre",
+    "subtitle": "Utilisez un filtre simple pour jouer vite avec la couleur. Utilisez Toolaze lorsque vous voulez un aperçu guidé par prompt qui décrit la nuance, la finition, le réalisme et ce qui doit rester inchangé.",
+    "columns": [
+      "Objectif",
+      "Un filtre simple suffit quand",
+      "Utilisez Toolaze quand"
+    ],
+    "rows": [
+      [
+        "Essayer une couleur rapide",
+        "Vous avez seulement besoin d’une superposition rose, blonde ou noire pour vous amuser.",
+        "Vous voulez que le résultat tienne compte du portrait original, de la lumière, de la coiffure et du teint."
+      ],
+      [
+        "Décrire une nuance précise",
+        "La liste de préréglages contient déjà exactement la couleur voulue.",
+        "Vous voulez des formulations comme rose poudré doux, blond miel chaud, brun cuivré ou noir bleuté avec de légers reflets."
+      ],
+      [
+        "Garder le portrait naturel",
+        "Un aperçu plat suffit pour une idée approximative.",
+        "Vous voulez demander à la retouche de préserver naturellement le visage, la coiffure, le teint, l’arrière-plan et les ombres réalistes."
+      ],
+      [
+        "Affiner le premier résultat",
+        "Vous n’avez rien à modifier après le premier aperçu.",
+        "Vous voulez ajuster le prompt si la couleur est trop forte, trop plate, trop chaude ou pas assez proche de la nuance imaginée."
+      ],
+      [
+        "Préparer un vrai changement",
+        "Vous voulez simplement un filtre social ludique.",
+        "Vous voulez une référence visuelle pour une direction de style avant d’en parler avec un coiffeur coloriste."
+      ]
+    ]
+  },
+  "features": {
+    "title": "Fonctionnalités du changeur de couleur de cheveux IA",
+    "items": [
+      {
+        "icon": "🖼️",
+        "iconType": "format",
+        "title": "Flux avec image de référence",
+        "desc": "Commencez à partir d’un portrait importé au lieu de générer un nouveau visage de zéro."
+      },
+      {
+        "icon": "✍️",
+        "iconType": "prompt",
+        "title": "Contrôle par prompt modifiable",
+        "desc": "Décrivez rose poudré, blond miel, brun cuivré, rouge bordeaux, gris argenté, noir bleuté ou votre propre nuance."
+      },
+      {
+        "icon": "🎨",
+        "iconType": "ai",
+        "title": "Idées couleur naturelles et créatives",
+        "desc": "Utilisez des nuances réalistes plus douces ou des couleurs créatives plus audacieuses pour portraits, profils et concepts visuels."
+      },
+      {
+        "icon": "🔁",
+        "iconType": "speed",
+        "title": "Affiner le résultat",
+        "desc": "Ajustez la couleur, la finition, la lumière ou le réalisme lorsque le premier aperçu doit être amélioré."
+      },
+      {
+        "icon": "📸",
+        "iconType": "quality",
+        "title": "Conseils sur la qualité photo",
+        "desc": "La page aide les utilisateurs à choisir des portraits frontaux plus nets où les cheveux sont visibles."
+      },
+      {
+        "icon": "🌐",
+        "iconType": "browser",
+        "title": "Flux gratuit en ligne",
+        "desc": "Utilisez la page dans un navigateur sans inscription et sans filigrane pour explorer rapidement des idées visuelles sans logiciel de retouche photo manuel."
+      }
+    ]
+  },
+  "testimonials": {
+    "title": "Ce que les utilisateurs disent du changeur de couleur IA",
+    "subtitle": "Trois usages fréquents de Toolaze pour prévisualiser des idées de couleur avant d’enregistrer, partager ou discuter d’un look.",
+    "items": [
+      {
+        "name": "Mia R.",
+        "role": "Aperçu couleur de salon",
+        "quote": "Je voulais voir si le brun cuivré irait avec mon teint avant de réserver un rendez-vous couleur. Les contrôles par prompt étaient plus utiles qu’un simple filtre, car je pouvais demander des reflets plus chauds et garder le reste du portrait naturel."
+      },
+      {
+        "name": "Jordan L.",
+        "role": "Rafraîchissement de profil créateur",
+        "quote": "Je l’ai utilisé pour un nouveau concept de photo de profil et j’ai essayé rose, argenté et noir bleuté en quelques minutes. Sans inscription, c’était facile de tester vite, et le meilleur résultat était assez propre pour servir de référence."
+      },
+      {
+        "name": "Priya S.",
+        "role": "Préparation de cosplay",
+        "quote": "Pour un cosplay, j’avais besoin d’un aperçu avant de choisir une couleur de perruque. Importer un portrait de face et changer seulement les cheveux m’a aidée à comparer les nuances sans reconstruire toute l’image."
+      }
+    ]
+  },
+  "intro": {
+    "title": "Qu’est-ce qu’un changeur de couleur de cheveux IA ?",
+    "content": [
+      {
+        "title": "Prévisualiser une nouvelle couleur depuis votre photo",
+        "text": "Un changeur de couleur de cheveux IA vous permet d’importer un portrait et de prévisualiser une nouvelle couleur en ligne avant une coloration, un rafraîchissement de photo de profil, une préparation de cosplay ou la création de visuels sociaux. Au lieu d’appliquer un filtre plat, Toolaze utilise l’image de référence et votre direction couleur pour retoucher la zone des cheveux tout en gardant le reste du portrait visuellement cohérent. Utilisation gratuite, sans inscription et sans filigrane."
+      }
+    ]
+  },
+  "faqTitle": "FAQ du changeur de couleur de cheveux IA",
+  "faq": [
+    {
+      "q": "Comment fonctionne un changeur de couleur de cheveux IA ?",
+      "a": "Il utilise votre photo importée comme image de référence et suit un prompt textuel pour retoucher la couleur des cheveux. L’objectif est de prévisualiser une nouvelle couleur tout en gardant le visage, la coiffure, le teint et l’arrière-plan visuellement cohérents."
+    },
+    {
+      "q": "Quel type de photo fonctionne le mieux ?",
+      "a": "Un portrait de face ou presque de face fonctionne généralement le mieux. Choisissez une photo où les cheveux sont clairement visibles, non couverts par un chapeau, non coupés et non cachés dans des ombres fortes."
+    },
+    {
+      "q": "L’IA changera-t-elle mon visage ou l’arrière-plan ?",
+      "a": "Le prompt doit demander à l’outil de garder le visage, la coiffure, le teint et l’arrière-plan naturels. Les résultats peuvent varier, alors vérifiez l’aperçu et affinez le prompt si quelque chose change plus que prévu."
+    },
+    {
+      "q": "Quelles couleurs de cheveux puis-je essayer ?",
+      "a": "Vous pouvez décrire des nuances courantes comme rose poudré, blond miel, brun cuivré, rouge bordeaux, gris argenté, brun, noir bleuté ou une direction personnalisée avec vos propres mots."
+    },
+    {
+      "q": "Puis-je passer de cheveux foncés à blond ou rose ?",
+      "a": "Oui, vous pouvez demander des couleurs plus claires ou plus vives comme blond, rose ou argenté. Pour les changements forts, utilisez une photo nette et ajoutez des détails comme reflets naturels, lumière douce ou texture réaliste."
+    },
+    {
+      "q": "Que faire si le résultat paraît trop plat ou artificiel ?",
+      "a": "Essayez un prompt plus précis. Mentionnez la nuance, la finition et le réalisme voulus, par exemple brun cuivré chaud avec reflets naturels ou rose poudré doux avec ombres réalistes."
+    },
+    {
+      "q": "Le changeur de couleur Toolaze est-il gratuit et sans inscription ?",
+      "a": "Oui. Vous pouvez utiliser le changeur de couleur de cheveux IA de Toolaze gratuitement en ligne, sans inscription et sans filigrane dans l’expérience standard des outils IA."
+    },
+    {
+      "q": "Puis-je télécharger la photo retouchée ?",
+      "a": "Après avoir généré un résultat, utilisez les contrôles de la page pour enregistrer ou télécharger l’aperçu."
+    },
+    {
+      "q": "Est-ce un remplacement pour un coiffeur professionnel ?",
+      "a": "Non. Utilisez-le comme aperçu visuel ou référence créative. Les résultats réels de coloration dépendent de l’état des cheveux, de la couleur de base, de la lumière, des produits et de la technique professionnelle."
+    }
+  ],
+  "moreTools": "Outils IA associés",
+  "moreToolsLinks": [
+    {
+      "title": "Générateur image à image IA",
+      "description": "Modifiez une image importée avec un prompt textuel.",
+      "href": "/ai-image-to-image-generator"
+    },
+    {
+      "title": "Changeur de vêtements IA",
+      "description": "Prévisualisez des changements de tenue à partir d’une photo de référence.",
+      "href": "/ai-tools"
+    },
+    {
+      "title": "Restauration photo",
+      "description": "Améliorez les portraits anciens ou abîmés.",
+      "href": "/photo-restoration"
+    }
+  ],
+  "visiblePageType": "scene"
+}
