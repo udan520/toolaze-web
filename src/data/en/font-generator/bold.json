@@ -44,7 +44,7 @@
         "icon": "🔒",
         "iconType": "privacy",
         "title": "Browser-Only Processing",
-        "desc": "All bold font generation happens in your browser—your text stays local, never uploaded to servers."
+        "desc": "Bold font previews are quick and covered by clear usage policies."
       },
       {
         "icon": "⚡",
@@ -68,7 +68,7 @@
         "icon": "🌐",
         "iconType": "browser",
         "title": "No Installation",
-        "desc": "Works completely in your browser—no software downloads or font installations required."
+        "desc": "Use it online with no software downloads or font installations required."
       }
     ]
   },
@@ -107,7 +107,7 @@
       },
       {
         "label": "Privacy",
-        "value": "No server uploads, complete local processing"
+        "value": "Transparent processing and clear policies"
       }
     ]
   },
@@ -129,7 +129,7 @@
     ]
   },
   "comparison": {
-    "toolaze": "Unlimited bold text generation, Unicode bold characters, Instant preview, Local browser processing, No limits, Complete privacy, Free",
+    "toolaze": "Unlimited bold text generation, Unicode bold characters, Instant preview, Clear workflow, No limits, Clear policies, Free",
     "others": "Character limits, Limited bold styles, Server delays, Cloud uploads, Privacy issues, Ads, Premium subscriptions"
   },
   "scenes": [
@@ -175,7 +175,7 @@
     }
   ],
   "compare": {
-    "toolaze": "Unlimited bold text generation, Multiple elegant styles, Instant real-time preview, Local-first architecture, No character limits, Complete privacy protection, 100% free",
+    "toolaze": "Unlimited bold text generation, Multiple elegant styles, Instant real-time preview, Clear workflow architecture, No character limits, Clear policies protection, 100% free",
     "others": "Character limits, Limited style options, Slow server processing, Cloud uploads required, Privacy concerns, Watermarks or ads, Paid premium features"
   }
 }

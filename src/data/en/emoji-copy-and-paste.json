@@ -23,7 +23,7 @@
     "content": [
       {
         "title": "What is Emoji Copy and Paste?",
-        "text": "Emoji copy and paste is a free online tool that lets you browse thousands of emojis by category, search by keyword, and copy any emoji with one click. You can copy and paste emojis into messages, social media, documents, or anywhere else. No app install or sign-up is needed—everything runs in your browser. Toolaze supports frequently used, smileys & people, animals & nature, food & drink, travel & places, activities, objects, symbols, and flags, so you can find the right emoji fast."
+        "text": "Emoji copy and paste is a free online tool that lets you browse thousands of emojis by category, search by keyword, and copy any emoji with one click. You can copy and paste emojis into messages, social media, documents, or anywhere else. No app install or sign-up is needed—the tool works online. Toolaze supports frequently used, smileys & people, animals & nature, food & drink, travel & places, activities, objects, symbols, and flags, so you can find the right emoji fast."
       },
       {
         "title": "Why Copy and Paste Emojis Online?",
@@ -62,7 +62,7 @@
         "icon": "🔒",
         "iconType": "privacy",
         "title": "Privacy First",
-        "desc": "All emoji browsing and copy and paste happen in your browser. Your recently used list is stored locally—nothing is sent to our servers."
+        "desc": "All emoji browsing and copy and paste happen in your browser. Your recently used list is saved for convenience and handled according to our Privacy Policy."
       },
       {
         "icon": "💎",
@@ -103,7 +103,7 @@
       },
       {
         "label": "Privacy",
-        "value": "No server uploads; recent list stored locally only"
+        "value": "Recent list saved for convenience"
       }
     ]
   },
@@ -177,7 +177,7 @@
     },
     {
       "q": "Where is my \"recently used\" list stored?",
-      "a": "Recently used emojis are stored only in your browser (local storage). Nothing is sent to our servers, so your usage stays private."
+      "a": "Recently used emojis are saved for convenience and handled according to our Privacy Policy."
     },
     {
       "q": "Can I search for specific emojis?",

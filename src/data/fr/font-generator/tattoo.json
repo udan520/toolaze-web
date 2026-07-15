@@ -67,7 +67,7 @@
       {
         "icon": "🌐",
         "iconType": "browser",
-        "title": "Aucun Téléchargement",
+        "title": "Flux clair",
         "desc": "Tout fonctionne dans votre navigateur en utilisant la technologie côté client—aucun logiciel ni polices à installer."
       }
     ]
@@ -107,7 +107,7 @@
       },
       {
         "label": "Confidentialité",
-        "value": "Aucun téléchargement serveur, traitement local complet"
+        "value": "Flux clair serveur, traitement local complet"
       }
     ]
   },

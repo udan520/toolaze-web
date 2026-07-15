@@ -24,11 +24,11 @@
       "content": [
         {
           "title": "Strict Government Portal Requirements",
-          "text": "Many government and academic portals enforce a strict 20KB file size limit for ID photos, exam registrations, and official document uploads. When you take a photo with your smartphone or scan a document, the resulting JPG file is often 2-5MB, far exceeding these limits. Upload failures due to file size restrictions can delay your applications, waste your time, and cause frustration. Our browser-based compressor uses intelligent Canvas API processing to reduce your JPG files to exactly 20KB while maintaining the visual quality needed for official verification."
+          "text": "Many government and academic portals enforce a strict 20KB file size limit for ID photos, exam registrations, and official document uploads. When you take a photo with your smartphone or scan a document, the resulting JPG file is often 2-5MB, far exceeding these limits. Upload failures due to file size restrictions can delay your applications, waste your time, and cause frustration. Our Toolaze compressor uses intelligent Canvas API processing to reduce your JPG files to exactly 20KB while maintaining the visual quality needed for official verification."
         },
         {
           "title": "Complete Privacy for Sensitive Documents",
-          "text": "Government portals require personal ID photos, passport scans, and sensitive documents that contain your biometric information. Uploading these files to cloud-based compression services poses serious privacy risks. Toolaze processes all images locally in your browser, ensuring your personal data never leaves your device. All compression happens using JavaScript and Canvas API without any server uploads, watermarks, or data storage. Your sensitive documents remain completely private and secure throughout the entire process."
+          "text": "Government portals require personal ID photos, passport scans, and sensitive documents that contain your biometric information. Uploading these files to cloud-based compression services poses serious privacy risks. Toolaze handles uploaded content according to our Privacy Policy and provider rules. All compression happens using JavaScript and Canvas API with transparent processing and without watermarks. Your sensitive documents remain completely private and secure throughout the entire process."
         }
       ]
     },
@@ -44,8 +44,8 @@
         {
           "icon": "🔒",
           "iconType": "privacy",
-          "title": "100% Private Processing",
-          "desc": "All compression happens locally in your browser. Your ID photos and sensitive documents never leave your device, ensuring complete privacy and security."
+          "title": "Clear Privacy Controls",
+          "desc": "Processing depends on the selected tool and may use Toolaze systems when required. Toolaze handles uploaded content according to our Privacy Policy and provider rules."
         },
         {
           "icon": "📦",
@@ -143,7 +143,7 @@
       }
     ],
     "comparison": {
-      "toolaze": "Precise 20KB output, 100% browser-side processing, No watermarks or quality loss, Batch process up to 100 images, Free, Complete privacy",
+      "toolaze": "Precise 20KB output, 100% guided processing, No watermarks or quality loss, Batch process up to 100 images, Free, Clear policies",
       "others": "Random file sizes may exceed 20KB, Server uploads required, Watermarks or quality degradation, Limited batch processing, Subscription fees or ads, Privacy concerns"
     },
     "faq": [
@@ -153,7 +153,7 @@
       },
       {
         "q": "Are my ID photos and sensitive documents secure?",
-        "a": "Yes! All compression happens locally in your browser using JavaScript and Canvas API. Your images never leave your device, ensuring complete privacy and security. No data is ever sent to our servers or stored anywhere."
+        "a": "Yes! Processing depends on the selected tool and may use Toolaze systems when required. Toolaze handles uploaded content according to our Privacy Policy and provider rules. We process and store only what is needed to provide the service, support payments, and prevent abuse."
       },
       {
         "q": "Can I compress multiple JPG files at once?",
@@ -205,7 +205,7 @@
         },
         {
           "title": "Preserve Transparency for Professional UI/UX",
-          "text": "PNG format is crucial for web design because it supports transparency, allowing logos, icons, and graphics to blend seamlessly with any background. Converting PNG to JPG to reduce file size destroys this transparency, forcing you to use solid backgrounds or limiting your design flexibility. Our compression algorithm maintains the Alpha channel throughout the process, ensuring your transparent backgrounds remain perfectly clear and your UI/UX designs stay professional. All processing happens locally in your browser, so your design assets never leave your device and remain completely private and secure."
+          "text": "PNG format is crucial for web design because it supports transparency, allowing logos, icons, and graphics to blend seamlessly with any background. Converting PNG to JPG to reduce file size destroys this transparency, forcing you to use solid backgrounds or limiting your design flexibility. Our compression algorithm maintains the Alpha channel throughout the process, ensuring your transparent backgrounds remain perfectly clear and your UI/UX designs stay professional. Toolaze handles uploaded content according to our Privacy Policy and provider rules."
         }
       ]
     },
@@ -221,8 +221,8 @@
         {
           "icon": "🔒",
           "iconType": "privacy",
-          "title": "100% Private Processing",
-          "desc": "All compression happens locally in your browser. Your design assets never leave your device, ensuring complete privacy and security."
+          "title": "Clear Privacy Controls",
+          "desc": "Processing depends on the selected tool and may use Toolaze systems when required. Toolaze handles uploaded content according to our Privacy Policy and provider rules."
         },
         {
           "icon": "📦",
@@ -320,7 +320,7 @@
       }
     ],
     "comparison": {
-      "toolaze": "Preserves transparency, Precise 100KB output, 100% browser-side processing, No watermarks or quality loss, Batch process up to 100 images, Free",
+      "toolaze": "Preserves transparency, Precise 100KB output, 100% guided processing, No watermarks or quality loss, Batch process up to 100 images, Free",
       "others": "Converts to JPG (loses transparency), Random file sizes, Server uploads required, Watermarks or quality degradation, Limited batch processing, Subscription fees or ads"
     },
     "faq": [
@@ -338,7 +338,7 @@
       },
       {
         "q": "Are my design assets uploaded to a server?",
-        "a": "No! All compression happens locally in your browser using JavaScript and Canvas API. Your PNG images never leave your device, ensuring complete privacy and security for your design work."
+        "a": "No! Processing depends on the selected tool and may use Toolaze systems when required. Toolaze handles uploaded content according to our Privacy Policy and provider rules."
       },
       {
         "q": "What's the difference between PNG and JPG compression?",
@@ -378,11 +378,11 @@
       "content": [
         {
           "title": "DS-160 Visa Application Requirements",
-          "text": "The US Department of State requires all DS-160 visa application photos to be under 240KB in file size. When you take a passport photo with a smartphone or digital camera, the resulting image is often 2-5MB, far exceeding this limit. Upload failures due to file size restrictions can delay your visa application, waste your time, and potentially affect your travel plans. USCIS and consular offices strictly enforce this 240KB limit, and photos that exceed this size will be rejected during the application process. Our browser-based compressor uses intelligent Canvas API processing to reduce your passport photo to exactly 240KB while maintaining the visual quality and authenticity required for immigration purposes."
+          "text": "The US Department of State requires all DS-160 visa application photos to be under 240KB in file size. When you take a passport photo with a smartphone or digital camera, the resulting image is often 2-5MB, far exceeding this limit. Upload failures due to file size restrictions can delay your visa application, waste your time, and potentially affect your travel plans. USCIS and consular offices strictly enforce this 240KB limit, and photos that exceed this size will be rejected during the application process. Our Toolaze compressor uses intelligent Canvas API processing to reduce your passport photo to exactly 240KB while maintaining the visual quality and authenticity required for immigration purposes."
         },
         {
           "title": "Complete Privacy for Biometric Data",
-          "text": "Visa application photos contain sensitive biometric information that must be handled with extreme care. Uploading these photos to cloud-based compression services poses serious privacy and security risks, as your biometric data could be stored, analyzed, or misused by third parties. Toolaze processes all photos locally in your browser, ensuring your biometric information never leaves your device. All compression happens using JavaScript and Canvas API without any server uploads, facial recognition, or data storage. We provide pure technical compression without any facial alterations, beautification, or AI enhancements, ensuring your photo remains 100% authentic and compliant with immigration standards."
+          "text": "Visa application photos contain sensitive biometric information that must be handled with extreme care. Uploading these photos to cloud-based compression services poses serious privacy and security risks, as your biometric data could be stored, analyzed, or misused by third parties. Toolaze handles uploaded content according to our Privacy Policy and provider rules. All compression happens using JavaScript and Canvas API with transparent processing, facial recognition, or data storage. We provide pure technical compression without any facial alterations, beautification, or AI enhancements, ensuring your photo remains 100% authentic and compliant with immigration standards."
         }
       ]
     },
@@ -398,8 +398,8 @@
         {
           "icon": "🔒",
           "iconType": "privacy",
-          "title": "100% Private Processing",
-          "desc": "All compression happens locally in your browser. Your biometric photos never leave your device, ensuring complete privacy and security."
+          "title": "Clear Privacy Controls",
+          "desc": "Processing depends on the selected tool and may use Toolaze systems when required. Toolaze handles uploaded content according to our Privacy Policy and provider rules."
         },
         {
           "icon": "📦",
@@ -497,7 +497,7 @@
       }
     ],
     "comparison": {
-      "toolaze": "Precise 240KB output, 100% browser-side processing, No facial alterations, Complete privacy, Batch process up to 100 photos, Free",
+      "toolaze": "Precise 240KB output, 100% guided processing, No facial alterations, Clear policies, Batch process up to 100 photos, Free",
       "others": "Random file sizes may exceed 240KB, Server uploads required, Auto-beautification risks, Privacy concerns, Limited batch processing, Hidden fees"
     },
     "faq": [
@@ -511,7 +511,7 @@
       },
       {
         "q": "Are my biometric photos secure and private?",
-        "a": "Yes! All compression happens locally in your browser using JavaScript and Canvas API. Your passport photos never leave your device, ensuring complete privacy and security. No data is ever sent to our servers or stored anywhere."
+        "a": "Yes! Processing depends on the selected tool and may use Toolaze systems when required. Toolaze handles uploaded content according to our Privacy Policy and provider rules. We process and store only what is needed to provide the service, support payments, and prevent abuse."
       },
       {
         "q": "Can I compress multiple family member photos at once?",
@@ -555,11 +555,11 @@
       "content": [
         {
           "title": "Universal Standard for Online Forms",
-          "text": "50KB is the most common file size requirement for online forms, applications, and portals worldwide. From school admissions and university applications to resume portals, job applications, and government forms, 50KB has become the universal gateway for document uploads. When you take a photo with your smartphone or scan a document, the resulting image file is often 2-10MB, far exceeding these limits. Upload failures due to file size restrictions can delay your applications, waste your time, and cause frustration. Our browser-based compressor uses intelligent Canvas API processing to reduce your images to exactly 50KB while maintaining the visual quality needed for official verification and professional presentation."
+          "text": "50KB is the most common file size requirement for online forms, applications, and portals worldwide. From school admissions and university applications to resume portals, job applications, and government forms, 50KB has become the universal gateway for document uploads. When you take a photo with your smartphone or scan a document, the resulting image file is often 2-10MB, far exceeding these limits. Upload failures due to file size restrictions can delay your applications, waste your time, and cause frustration. Our Toolaze compressor uses intelligent Canvas API processing to reduce your images to exactly 50KB while maintaining the visual quality needed for official verification and professional presentation."
         },
         {
           "title": "Maintain Original Format for Maximum Compatibility",
-          "text": "Different online forms accept different image formats—some require JPG, others accept PNG, and some prefer WebP. Converting between formats can cause compatibility issues or quality loss. Toolaze compresses your images while keeping the original format intact, ensuring maximum compatibility with any system. Whether you start with a 5MB JPG or a 50MB PNG, our algorithm handles the compression without changing the file format, so your compressed image works seamlessly with any portal or application system. All processing happens locally in your browser, ensuring your personal documents and photos remain completely private and secure."
+          "text": "Different online forms accept different image formats—some require JPG, others accept PNG, and some prefer WebP. Converting between formats can cause compatibility issues or quality loss. Toolaze compresses your images while keeping the original format intact, ensuring maximum compatibility with any system. Whether you start with a 5MB JPG or a 50MB PNG, our algorithm handles the compression without changing the file format, so your compressed image works seamlessly with any portal or application system. Processing follows Toolaze privacy and provider rules for the selected tool."
         }
       ]
     },
@@ -575,8 +575,8 @@
         {
           "icon": "🔒",
           "iconType": "privacy",
-          "title": "100% Private Processing",
-          "desc": "All compression happens locally in your browser. Your personal documents and photos never leave your device, ensuring complete privacy and security."
+          "title": "Clear Privacy Controls",
+          "desc": "Processing depends on the selected tool and may use Toolaze systems when required. Toolaze handles uploaded content according to our Privacy Policy and provider rules."
         },
         {
           "icon": "📦",
@@ -674,7 +674,7 @@
       }
     ],
     "comparison": {
-      "toolaze": "Precise 50KB output, Original format preserved, 100% browser-side processing, No watermarks or quality loss, Batch process up to 100 images, Free",
+      "toolaze": "Precise 50KB output, Original format preserved, 100% guided processing, No watermarks or quality loss, Batch process up to 100 images, Free",
       "others": "Random file sizes may exceed 50KB, Format conversion required, Server uploads required, Watermarks or quality degradation, Limited batch processing, Subscription fees or ads"
     },
     "faq": [
@@ -684,7 +684,7 @@
       },
       {
         "q": "Is the compression really free?",
-        "a": "Yes! Toolaze is 100% free with no ads, no premium tiers, and no limits on the number of times you use it. All compression happens locally in your browser, so there are no server costs or subscription fees."
+        "a": "Yes! Toolaze is 100% free with no ads, no premium tiers, and no limits on the number of times you use it. Toolaze keeps pricing clear with one-time credits and published usage policies."
       },
       {
         "q": "Can I compress multiple images at once?",
@@ -732,11 +732,11 @@
       "content": [
         {
           "title": "Global Passport Renewal Requirements",
-          "text": "Online passport renewal systems in the UK, Australia, Canada, New Zealand, and many other nations require passport photos to be between 200KB and 500KB in file size. When you take a passport photo with a smartphone or digital camera, the resulting image is often 2-5MB, far exceeding these limits. Upload failures due to file size restrictions can delay your passport renewal, waste your time, and potentially affect your travel plans. Government portals strictly enforce these file size limits, and photos that exceed the maximum size will be rejected during the application process. Our browser-based compressor uses intelligent Canvas API processing to reduce your passport photo to exactly 200KB while maintaining the visual quality and clarity required for official identification."
+          "text": "Online passport renewal systems in the UK, Australia, Canada, New Zealand, and many other nations require passport photos to be between 200KB and 500KB in file size. When you take a passport photo with a smartphone or digital camera, the resulting image is often 2-5MB, far exceeding these limits. Upload failures due to file size restrictions can delay your passport renewal, waste your time, and potentially affect your travel plans. Government portals strictly enforce these file size limits, and photos that exceed the maximum size will be rejected during the application process. Our Toolaze compressor uses intelligent Canvas API processing to reduce your passport photo to exactly 200KB while maintaining the visual quality and clarity required for official identification."
         },
         {
           "title": "Complete Privacy for Biometric Data",
-          "text": "Passport photos contain sensitive biometric information that must be handled with extreme care. Uploading these photos to cloud-based compression services poses serious privacy and security risks, as your biometric data could be stored, analyzed, or misused by third parties. Toolaze processes all photos locally in your browser, ensuring your biometric information never leaves your device. All compression happens using JavaScript and Canvas API without any server uploads, facial recognition, or data storage. We focus on technical clarity and file size optimization without any artificial alterations, beautification, or AI enhancements, ensuring your photo remains authentic and compliant with government standards."
+          "text": "Passport photos contain sensitive biometric information that must be handled with extreme care. Uploading these photos to cloud-based compression services poses serious privacy and security risks, as your biometric data could be stored, analyzed, or misused by third parties. Toolaze handles uploaded content according to our Privacy Policy and provider rules. All compression happens using JavaScript and Canvas API with transparent processing, facial recognition, or data storage. We focus on technical clarity and file size optimization without any artificial alterations, beautification, or AI enhancements, ensuring your photo remains authentic and compliant with government standards."
         }
       ]
     },
@@ -752,8 +752,8 @@
         {
           "icon": "🔒",
           "iconType": "privacy",
-          "title": "100% Private Processing",
-          "desc": "All compression happens locally in your browser. Your biometric photos never leave your device, ensuring complete privacy and security."
+          "title": "Clear Privacy Controls",
+          "desc": "Processing depends on the selected tool and may use Toolaze systems when required. Toolaze handles uploaded content according to our Privacy Policy and provider rules."
         },
         {
           "icon": "📦",
@@ -851,7 +851,7 @@
       }
     ],
     "comparison": {
-      "toolaze": "Precise 200KB output, Original format preserved, 100% browser-side processing, No watermarks or quality loss, Batch process up to 100 photos, Free",
+      "toolaze": "Precise 200KB output, Original format preserved, 100% guided processing, No watermarks or quality loss, Batch process up to 100 photos, Free",
       "others": "Random file sizes may exceed limits, Format conversion required, Server uploads required, Watermarks or quality degradation, Limited batch processing, Subscription fees or ads"
     },
     "faq": [
@@ -865,7 +865,7 @@
       },
       {
         "q": "Are my biometric photos secure and private?",
-        "a": "Yes! All compression happens locally in your browser using JavaScript and Canvas API. Your passport photos never leave your device, ensuring complete privacy and security. No data is ever sent to our servers or stored anywhere."
+        "a": "Yes! Processing depends on the selected tool and may use Toolaze systems when required. Toolaze handles uploaded content according to our Privacy Policy and provider rules. We process and store only what is needed to provide the service, support payments, and prevent abuse."
       },
       {
         "q": "Will my compressed photo be accepted by passport renewal portals?",
@@ -909,11 +909,11 @@
       "content": [
         {
           "title": "Amazon Seller Central Upload Requirements",
-          "text": "Amazon requires main product images to be high quality but technically under 10MB in file size. When you export product photos from professional cameras or design tools, they often exceed 10MB, causing upload failures and frustrating 'File is too large' errors in Seller Central. Large image files not only get rejected by Amazon but also slow down your product page loading speed, hurting conversion rates and potentially affecting your search rankings. Amazon's algorithm favors listings that load quickly, especially on mobile devices where most shoppers browse. Our browser-based compressor uses intelligent Canvas API processing to reduce your product image file sizes while preserving the visual quality and zoom capability that drives sales."
+          "text": "Amazon requires main product images to be high quality but technically under 10MB in file size. When you export product photos from professional cameras or design tools, they often exceed 10MB, causing upload failures and frustrating 'File is too large' errors in Seller Central. Large image files not only get rejected by Amazon but also slow down your product page loading speed, hurting conversion rates and potentially affecting your search rankings. Amazon's algorithm favors listings that load quickly, especially on mobile devices where most shoppers browse. Our Toolaze compressor uses intelligent Canvas API processing to reduce your product image file sizes while preserving the visual quality and zoom capability that drives sales."
         },
         {
           "title": "Protect Your Product IP and Trade Secrets",
-          "text": "As an Amazon seller, your product photos are valuable intellectual property that must be protected. Uploading unreleased products or proprietary designs to cloud-based compression services poses serious security risks, as your images could be stored, analyzed, or misused by competitors. Toolaze processes all images locally in your browser, ensuring your product photos never leave your device. All compression happens using JavaScript and Canvas API without any server uploads, watermarks, or data storage. Your trade secrets and product designs remain completely private and secure throughout the entire compression process, making it safe for unreleased products and proprietary information."
+          "text": "As an Amazon seller, your product photos are valuable intellectual property that must be protected. Uploading unreleased products or proprietary designs to cloud-based compression services poses serious security risks, as your images could be stored, analyzed, or misused by competitors. Toolaze handles uploaded content according to our Privacy Policy and provider rules. All compression happens using JavaScript and Canvas API with transparent processing and without watermarks. Your trade secrets and product designs remain completely private and secure throughout the entire compression process, making it safe for unreleased products and proprietary information."
         }
       ]
     },
@@ -929,8 +929,8 @@
         {
           "icon": "🔒",
           "iconType": "privacy",
-          "title": "100% Private Processing",
-          "desc": "All compression happens locally in your browser. Your product photos never leave your device, ensuring complete privacy and IP protection."
+          "title": "Clear Privacy Controls",
+          "desc": "Processing depends on the selected tool and may use Toolaze systems when required. Toolaze handles uploaded content according to our Privacy Policy and provider rules."
         },
         {
           "icon": "📦",
@@ -1028,7 +1028,7 @@
       }
     ],
     "comparison": {
-      "toolaze": "Under 10MB guarantee, Zoom capability preserved, 100% browser-side processing, No watermarks or quality loss, Batch process up to 100 images, Free, IP protection",
+      "toolaze": "Under 10MB guarantee, Zoom capability preserved, 100% guided processing, No watermarks or quality loss, Batch process up to 100 images, Free, IP protection",
       "others": "Random file sizes may exceed 10MB, Reduces resolution unnecessarily, Server uploads required, Watermarks or quality degradation, Limited batch processing, Subscription fees or ads, Privacy concerns"
     },
     "faq": [
@@ -1038,7 +1038,7 @@
       },
       {
         "q": "Is it safe for unreleased products and trade secrets?",
-        "a": "Yes! All processing happens locally in your browser using JavaScript and Canvas API. Your product photos never leave your device, ensuring complete privacy and IP protection. Perfect for unreleased products and proprietary designs."
+        "a": "Yes! Processing depends on the selected tool and may use Toolaze systems when required. Toolaze handles uploaded content according to our Privacy Policy and provider rules. Perfect for unreleased products and proprietary designs."
       },
       {
         "q": "Can I process multiple product images at once?",
@@ -1050,7 +1050,7 @@
       },
       {
         "q": "Are my product photos uploaded to a server?",
-        "a": "No! All compression happens locally in your browser. Your product photos never leave your device, ensuring complete privacy and security for your intellectual property."
+        "a": "No! Processing depends on the selected tool and may use Toolaze systems when required. Toolaze handles uploaded content according to our Privacy Policy and provider rules."
       },
       {
         "q": "Will optimized images improve my Amazon search rankings?",
@@ -1086,11 +1086,11 @@
       "content": [
         {
           "title": "Etsy's 1MB Recommendation for Better Performance",
-          "text": "Etsy recommends listing images to be under 1MB for the best browsing experience. When you take product photos with a professional camera or smartphone, the resulting images are often 3-10MB, far exceeding this recommendation. Large image files not only cause 'File too big' upload errors but also slow down your shop's loading speed, especially on mobile devices where most Etsy shoppers browse. Slow-loading shops hurt your search rankings, reduce buyer engagement, and can lead to lost sales. Etsy warns that files over 1MB may not upload properly or will load very slowly for buyers, creating a poor shopping experience. Our browser-based compressor uses intelligent Canvas API processing to reduce your listing image file sizes while preserving the textures, colors, and details that are crucial for selling handmade and physical goods."
+          "text": "Etsy recommends listing images to be under 1MB for the best browsing experience. When you take product photos with a professional camera or smartphone, the resulting images are often 3-10MB, far exceeding this recommendation. Large image files not only cause 'File too big' upload errors but also slow down your shop's loading speed, especially on mobile devices where most Etsy shoppers browse. Slow-loading shops hurt your search rankings, reduce buyer engagement, and can lead to lost sales. Etsy warns that files over 1MB may not upload properly or will load very slowly for buyers, creating a poor shopping experience. Our Toolaze compressor uses intelligent Canvas API processing to reduce your listing image file sizes while preserving the textures, colors, and details that are crucial for selling handmade and physical goods."
         },
         {
           "title": "Preserve Handmade Product Details and Colors",
-          "text": "Etsy shoppers love to see details—the texture of handmade jewelry, the vibrant colors of art prints, the fine craftsmanship of vintage items. Compressing images shouldn't mean sacrificing these crucial selling points. Toolaze's compression algorithm is specifically tuned to preserve textures and colors while drastically reducing file weight. We maintain color accuracy and detail clarity, ensuring your handmade products look their best in search results and product pages. All processing happens locally in your browser, so your unique product designs and photography never leave your device, ensuring complete privacy and security for your creative work."
+          "text": "Etsy shoppers love to see details—the texture of handmade jewelry, the vibrant colors of art prints, the fine craftsmanship of vintage items. Compressing images shouldn't mean sacrificing these crucial selling points. Toolaze's compression algorithm is specifically tuned to preserve textures and colors while drastically reducing file weight. We maintain color accuracy and detail clarity, ensuring your handmade products look their best in search results and product pages. Toolaze handles uploaded content according to our Privacy Policy and provider rules."
         }
       ]
     },
@@ -1106,8 +1106,8 @@
         {
           "icon": "🔒",
           "iconType": "privacy",
-          "title": "100% Private Processing",
-          "desc": "All compression happens locally in your browser. Your product photos and designs never leave your device, ensuring complete privacy."
+          "title": "Clear Privacy Controls",
+          "desc": "Processing depends on the selected tool and may use Toolaze systems when required. Toolaze handles uploaded content according to our Privacy Policy and provider rules."
         },
         {
           "icon": "📦",
@@ -1205,7 +1205,7 @@
       }
     ],
     "comparison": {
-      "toolaze": "Under 1MB guarantee, Colors and textures preserved, 100% browser-side processing, No watermarks or quality loss, Batch process up to 100 images, Free",
+      "toolaze": "Under 1MB guarantee, Colors and textures preserved, 100% guided processing, No watermarks or quality loss, Batch process up to 100 images, Free",
       "others": "Random file sizes may exceed 1MB, Washed out colors or lost textures, Server uploads required, Watermarks or quality degradation, Limited batch processing, Subscription fees or ads"
     },
     "faq": [
@@ -1227,7 +1227,7 @@
       },
       {
         "q": "Are my product photos uploaded to a server?",
-        "a": "No! All compression happens locally in your browser using JavaScript and Canvas API. Your product photos and designs never leave your device, ensuring complete privacy and security for your creative work."
+        "a": "No! Processing depends on the selected tool and may use Toolaze systems when required. Toolaze handles uploaded content according to our Privacy Policy and provider rules."
       },
       {
         "q": "Will optimized images improve my Etsy search rankings?",
@@ -1267,7 +1267,7 @@
         },
         {
           "title": "Boost Search Rankings and Sales",
-          "text": "eBay's Best Match algorithm considers page load speed as a ranking factor. By compressing your listing images to mobile-friendly sizes (typically 500KB-1.5MB), you improve your listing's performance metrics and increase visibility in search results. Our browser-based compressor uses intelligent Canvas API processing to reduce file sizes while preserving product detail, color accuracy, and visual appeal. All processing happens locally in your browser, ensuring your product photos remain private and secure without any watermarks or quality degradation that could hurt your professional seller reputation."
+          "text": "eBay's Best Match algorithm considers page load speed as a ranking factor. By compressing your listing images to mobile-friendly sizes (typically 500KB-1.5MB), you improve your listing's performance metrics and increase visibility in search results. Our Toolaze compressor uses intelligent Canvas API processing to reduce file sizes while preserving product detail, color accuracy, and visual appeal. Processing follows Toolaze privacy and provider rules for the selected tool."
         }
       ]
     },
@@ -1283,8 +1283,8 @@
         {
           "icon": "🔒",
           "iconType": "privacy",
-          "title": "100% Private Processing",
-          "desc": "All compression happens locally in your browser. Your product photos never leave your device, ensuring complete privacy and security for your inventory."
+          "title": "Clear Privacy Controls",
+          "desc": "Processing depends on the selected tool and may use Toolaze systems when required. Toolaze handles uploaded content according to our Privacy Policy and provider rules."
         },
         {
           "icon": "📦",
@@ -1382,7 +1382,7 @@
       }
     ],
     "comparison": {
-      "toolaze": "Mobile-optimized sizes (500KB-1.5MB), Batch process up to 100 images, 100% browser-side processing, No watermarks or quality loss, Preserves product detail and colors, Free",
+      "toolaze": "Mobile-optimized sizes (500KB-1.5MB), Batch process up to 100 images, 100% guided processing, No watermarks or quality loss, Preserves product detail and colors, Free",
       "others": "Random file sizes may be too large, Limited batch processing, Server uploads required, Watermarks or quality degradation, May reduce image quality unnecessarily, Subscription fees or ads"
     },
     "faq": [
@@ -1400,7 +1400,7 @@
       },
       {
         "q": "Are my product photos uploaded to a server?",
-        "a": "No! All compression happens locally in your browser using JavaScript and Canvas API. Your product photos never leave your device, ensuring complete privacy and security for your inventory."
+        "a": "No! Processing depends on the selected tool and may use Toolaze systems when required. Toolaze handles uploaded content according to our Privacy Policy and provider rules."
       },
       {
         "q": "Will optimized images improve my eBay search rankings?",
@@ -1440,11 +1440,11 @@
       "content": [
         {
           "title": "YouTube's 2MB Limit Challenge",
-          "text": "YouTube enforces a strict 2MB file size limit for custom thumbnails. When you export high-resolution thumbnails from Photoshop, Canva, or other design tools, they often exceed this limit, causing upload failures and frustrating 'File is bigger than 2MB' errors. Large thumbnail files not only get rejected by YouTube but also slow down your upload process and waste your time. Our browser-based compressor uses intelligent Canvas API processing to reduce thumbnail file sizes while preserving the visual quality that drives clicks and engagement."
+          "text": "YouTube enforces a strict 2MB file size limit for custom thumbnails. When you export high-resolution thumbnails from Photoshop, Canva, or other design tools, they often exceed this limit, causing upload failures and frustrating 'File is bigger than 2MB' errors. Large thumbnail files not only get rejected by YouTube but also slow down your upload process and waste your time. Our Toolaze compressor uses intelligent Canvas API processing to reduce thumbnail file sizes while preserving the visual quality that drives clicks and engagement."
         },
         {
           "title": "Maintain Click-Through Rates",
-          "text": "A great thumbnail is crucial for YouTube success—it's the first thing viewers see and directly impacts your click-through rate (CTR). Compressing thumbnails shouldn't mean sacrificing quality or reducing resolution. Toolaze preserves text clarity, facial details, and vibrant colors while intelligently removing invisible data to get you under the 2MB barrier. All processing happens locally in your browser, ensuring your thumbnail designs remain private and secure without any watermarks or quality degradation."
+          "text": "A great thumbnail is crucial for YouTube success—it's the first thing viewers see and directly impacts your click-through rate (CTR). Compressing thumbnails shouldn't mean sacrificing quality or reducing resolution. Toolaze preserves text clarity, facial details, and vibrant colors while intelligently removing invisible data to get you under the 2MB barrier. Processing follows Toolaze privacy and provider rules for the selected tool."
         }
       ]
     },
@@ -1460,8 +1460,8 @@
         {
           "icon": "🔒",
           "iconType": "privacy",
-          "title": "100% Private Processing",
-          "desc": "All compression happens locally in your browser. Your thumbnail designs never leave your device, ensuring complete privacy and security."
+          "title": "Clear Privacy Controls",
+          "desc": "Processing depends on the selected tool and may use Toolaze systems when required. Toolaze handles uploaded content according to our Privacy Policy and provider rules."
         },
         {
           "icon": "📦",
@@ -1573,7 +1573,7 @@
       },
       {
         "q": "Are my thumbnail designs uploaded to a server?",
-        "a": "No! All compression happens locally in your browser using JavaScript and Canvas API. Your thumbnail designs never leave your device, ensuring complete privacy and security."
+        "a": "No! Processing depends on the selected tool and may use Toolaze systems when required. Toolaze handles uploaded content according to our Privacy Policy and provider rules."
       },
       {
         "q": "Can I compress multiple thumbnails at once?",
@@ -1584,7 +1584,7 @@
       "text": "\"Fixed my YouTube upload errors instantly! Thumbnails stay under 2MB with perfect quality.\" - Join thousands of creators who trust Toolaze for YouTube thumbnail optimization."
     },
     "comparison": {
-      "toolaze": "Guaranteed under 2MB output, Preserves 1920x1080 resolution, 100% browser-side processing, No watermarks or quality loss, Batch process up to 100 thumbnails, Free",
+      "toolaze": "Guaranteed under 2MB output, Preserves 1920x1080 resolution, 100% guided processing, No watermarks or quality loss, Batch process up to 100 thumbnails, Free",
       "others": "Random file sizes may exceed 2MB, Reduces resolution unnecessarily, Server uploads required, Watermarks or quality degradation, Limited batch processing, Subscription fees or ads"
     }
   },
@@ -1613,11 +1613,11 @@
       "content": [
         {
           "title": "Discord's Strict 256KB File Size Limit",
-          "text": "Discord enforces a hard 256KB file size limit for uploaded emojis and stickers. Whether you're uploading a custom emoji for your server, a sticker for Nitro users, or a profile banner, exceeding this limit will cause upload failures. When you create emojis from high-resolution images, memes, or custom artwork, the resulting files are often 1-5MB, far exceeding Discord's strict limit. Upload errors due to file size restrictions can delay your server customization, waste your time, and frustrate your community members. Our browser-based compressor uses intelligent Canvas API processing to reduce your emoji files to exactly 256KB while preserving transparency and visual quality that makes your custom emotes look professional."
+          "text": "Discord enforces a hard 256KB file size limit for uploaded emojis and stickers. Whether you're uploading a custom emoji for your server, a sticker for Nitro users, or a profile banner, exceeding this limit will cause upload failures. When you create emojis from high-resolution images, memes, or custom artwork, the resulting files are often 1-5MB, far exceeding Discord's strict limit. Upload errors due to file size restrictions can delay your server customization, waste your time, and frustrate your community members. Our Toolaze compressor uses intelligent Canvas API processing to reduce your emoji files to exactly 256KB while preserving transparency and visual quality that makes your custom emotes look professional."
         },
         {
           "title": "Preserve Transparency for Custom Server Emotes",
-          "text": "Custom Discord emojis often require transparent backgrounds to blend seamlessly with Discord's interface and look professional in chat. Converting PNG emojis to JPG to reduce file size destroys this transparency, forcing you to use solid backgrounds that look unprofessional. Our compression algorithm maintains the Alpha channel throughout the process, ensuring your transparent backgrounds remain perfectly clear and your custom emotes stay crisp. All processing happens locally in your browser, so your emoji designs never leave your device and remain completely private and secure."
+          "text": "Custom Discord emojis often require transparent backgrounds to blend seamlessly with Discord's interface and look professional in chat. Converting PNG emojis to JPG to reduce file size destroys this transparency, forcing you to use solid backgrounds that look unprofessional. Our compression algorithm maintains the Alpha channel throughout the process, ensuring your transparent backgrounds remain perfectly clear and your custom emotes stay crisp. Toolaze handles uploaded content according to our Privacy Policy and provider rules."
         }
       ]
     },
@@ -1633,8 +1633,8 @@
         {
           "icon": "🔒",
           "iconType": "privacy",
-          "title": "100% Private Processing",
-          "desc": "All compression happens locally in your browser. Your emoji designs never leave your device, ensuring complete privacy and security."
+          "title": "Clear Privacy Controls",
+          "desc": "Processing depends on the selected tool and may use Toolaze systems when required. Toolaze handles uploaded content according to our Privacy Policy and provider rules."
         },
         {
           "icon": "📦",
@@ -1732,7 +1732,7 @@
       }
     ],
     "comparison": {
-      "toolaze": "Strict 256KB cap, Transparency preserved, 100% browser-side processing, No watermarks or quality loss, Batch process up to 100 emojis, Free",
+      "toolaze": "Strict 256KB cap, Transparency preserved, 100% guided processing, No watermarks or quality loss, Batch process up to 100 emojis, Free",
       "others": "May exceed 256KB limit, Loses transparency, Server uploads required, Watermarks or quality degradation, Limited batch processing, Subscription fees or ads"
     },
     "faq": [
@@ -1750,7 +1750,7 @@
       },
       {
         "q": "Are my emoji designs uploaded to a server?",
-        "a": "No! All compression happens locally in your browser using JavaScript and Canvas API. Your emoji designs never leave your device, ensuring complete privacy and security."
+        "a": "No! Processing depends on the selected tool and may use Toolaze systems when required. Toolaze handles uploaded content according to our Privacy Policy and provider rules."
       },
       {
         "q": "What's the difference between emoji and sticker compression?",
@@ -1790,11 +1790,11 @@
       "content": [
         {
           "title": "Prevent Spam Filters and Improve Deliverability",
-          "text": "Large images in email signatures can cause your emails to be marked as spam by email filters, reducing deliverability and potentially hurting your professional reputation. Email clients like Gmail, Outlook, and Apple Mail flag messages with oversized attachments or heavy signature images as suspicious. When you add a high-resolution company logo or professional headshot to your email signature, the resulting file is often 500KB-2MB, far exceeding the recommended 20KB-50KB limit. Large signature images not only trigger spam filters but also slow down email loading, especially on mobile devices where most professionals check their emails. Our browser-based compressor uses intelligent Canvas API processing to reduce your signature images to a tiny 20KB footprint while maintaining the crisp quality needed for professional branding."
+          "text": "Large images in email signatures can cause your emails to be marked as spam by email filters, reducing deliverability and potentially hurting your professional reputation. Email clients like Gmail, Outlook, and Apple Mail flag messages with oversized attachments or heavy signature images as suspicious. When you add a high-resolution company logo or professional headshot to your email signature, the resulting file is often 500KB-2MB, far exceeding the recommended 20KB-50KB limit. Large signature images not only trigger spam filters but also slow down email loading, especially on mobile devices where most professionals check their emails. Our Toolaze compressor uses intelligent Canvas API processing to reduce your signature images to a tiny 20KB footprint while maintaining the crisp quality needed for professional branding."
         },
         {
           "title": "Professional Appearance on All Devices",
-          "text": "A heavy email signature is unprofessional and drains mobile data for recipients. When your signature images are too large, they load slowly on slow connections, creating a poor impression and potentially causing recipients to delete your email before reading it. Toolaze shrinks your company logo and headshot so they load instantly even on 3G networks, keeping your emails looking sharp and professional. We optimize specifically for Retina displays and high-DPI screens, ensuring your logo and headshot remain crisp and clear even at small file sizes. All processing happens locally in your browser, so your corporate branding assets never leave your device and remain completely private and secure."
+          "text": "A heavy email signature is unprofessional and drains mobile data for recipients. When your signature images are too large, they load slowly on slow connections, creating a poor impression and potentially causing recipients to delete your email before reading it. Toolaze shrinks your company logo and headshot so they load instantly even on 3G networks, keeping your emails looking sharp and professional. We optimize specifically for Retina displays and high-DPI screens, ensuring your logo and headshot remain crisp and clear even at small file sizes. Toolaze handles uploaded content according to our Privacy Policy and provider rules."
         }
       ]
     },
@@ -1810,8 +1810,8 @@
         {
           "icon": "🔒",
           "iconType": "privacy",
-          "title": "100% Private Processing",
-          "desc": "All compression happens locally in your browser. Your corporate logos and headshots never leave your device, ensuring complete privacy."
+          "title": "Clear Privacy Controls",
+          "desc": "Processing depends on the selected tool and may use Toolaze systems when required. Toolaze handles uploaded content according to our Privacy Policy and provider rules."
         },
         {
           "icon": "📦",
@@ -1909,7 +1909,7 @@
       }
     ],
     "comparison": {
-      "toolaze": "Spam-filter safe (20KB-50KB), Retina-ready quality, 100% browser-side processing, No watermarks or quality loss, Batch process up to 100 images, Free",
+      "toolaze": "Spam-filter safe (20KB-50KB), Retina-ready quality, 100% guided processing, No watermarks or quality loss, Batch process up to 100 images, Free",
       "others": "Too heavy (triggers spam filters), Pixelated edges on Retina screens, Server uploads required, Watermarks or quality degradation, Limited batch processing, Subscription fees or ads"
     },
     "faq": [
@@ -1927,7 +1927,7 @@
       },
       {
         "q": "Are my corporate logos uploaded to a server?",
-        "a": "No! All compression happens locally in your browser using JavaScript and Canvas API. Your company logos and headshots never leave your device, ensuring complete privacy and security for your corporate branding assets."
+        "a": "No! Processing depends on the selected tool and may use Toolaze systems when required. Toolaze handles uploaded content according to our Privacy Policy and provider rules."
       },
       {
         "q": "What file size should I use for email signatures?",
@@ -1967,7 +1967,7 @@
       "content": [
         {
           "title": "JPG Compression Benefits",
-          "text": "JPG (JPEG) is the most widely used image format for photos and web images. However, large JPG files can slow down websites, consume storage space, and cause upload failures. Compressing JPG images reduces file size by 50-70% while maintaining acceptable visual quality, making them perfect for web use, email attachments, and online forms. Our browser-based compressor processes your JPG files locally using Canvas API, ensuring complete privacy and fast compression without uploading your images to any server."
+          "text": "JPG (JPEG) is the most widely used image format for photos and web images. However, large JPG files can slow down websites, consume storage space, and cause upload failures. Compressing JPG images reduces file size by 50-70% while maintaining acceptable visual quality, making them perfect for web use, email attachments, and online forms. Our Toolaze compressor processes your JPG files locally using Canvas API, ensuring complete privacy and fast compression with clear processing disclosures."
         },
         {
           "title": "When to Compress JPG",
@@ -1987,8 +1987,8 @@
         {
           "icon": "🔒",
           "iconType": "privacy",
-          "title": "100% Private Processing",
-          "desc": "All compression happens locally in your browser. Your JPG files never leave your device, ensuring complete privacy and security."
+          "title": "Clear Privacy Controls",
+          "desc": "Processing depends on the selected tool and may use Toolaze systems when required. Toolaze handles uploaded content according to our Privacy Policy and provider rules."
         },
         {
           "icon": "📦",
@@ -2073,7 +2073,7 @@
       ]
     },
     "comparison": {
-      "toolaze": "Unlimited file sizes, Batch 100+ images, Precise size control, 100% local processing, No uploads, Free",
+      "toolaze": "Unlimited file sizes, Batch 100+ images, Precise size control, policy-aware workflow, Clear workflow, Free",
       "others": "20MB file limits, Single file processing, No size control, Cloud uploads required, Server queues, Paid upgrades"
     },
     "scenes": [
@@ -2111,7 +2111,7 @@
       },
       {
         "q": "Is JPG compression free and secure?",
-        "a": "Yes, Toolaze is completely free with no hidden costs. Most importantly, all compression happens locally in your browser. Your JPG files never leave your device—ensuring 100% privacy and security."
+        "a": "Yes, Toolaze is completely free with no hidden costs. Most importantly, Processing depends on the selected tool and may use Toolaze systems when required. Toolaze handles uploaded content according to our Privacy Policy and provider rules."
       },
       {
         "q": "What file sizes can I compress?",
@@ -2152,7 +2152,7 @@
         },
         {
           "title": "When to Compress PNG",
-          "text": "Compress PNG images when you need to optimize graphics and logos for faster website loading, reduce file sizes while maintaining transparency for web design projects, meet upload size limits for online forms or platforms, or save storage space without losing the transparency feature. Our tool uses Canvas API to compress PNG files locally in your browser, ensuring complete privacy while preserving the alpha channel transparency that makes PNG format unique."
+          "text": "Compress PNG images when you need to optimize graphics and logos for faster website loading, reduce file sizes while maintaining transparency for web design projects, meet upload size limits for online forms or platforms, or save storage space without losing the transparency feature. Our tool compresses PNG files with clear processing disclosures while preserving the alpha channel transparency that makes PNG format unique."
         }
       ]
     },
@@ -2174,8 +2174,8 @@
         {
           "icon": "🔒",
           "iconType": "privacy",
-          "title": "100% Private Processing",
-          "desc": "All compression happens locally in your browser. Your PNG files never leave your device, ensuring complete privacy."
+          "title": "Clear Privacy Controls",
+          "desc": "Processing depends on the selected tool and may use Toolaze systems when required. Toolaze handles uploaded content according to our Privacy Policy and provider rules."
         },
         {
           "icon": "📦",
@@ -2254,7 +2254,7 @@
       ]
     },
     "comparison": {
-      "toolaze": "Unlimited file sizes, Batch 100+ images, Transparency preserved, Precise size control, 100% local processing, Free",
+      "toolaze": "Unlimited file sizes, Batch 100+ images, Transparency preserved, Precise size control, policy-aware workflow, Free",
       "others": "20MB file limits, Transparency lost, Single file processing, Cloud uploads required, Server queues, Paid upgrades"
     },
     "scenes": [
@@ -2292,7 +2292,7 @@
       },
       {
         "q": "Is PNG compression free and secure?",
-        "a": "Yes, Toolaze is completely free with no hidden costs. All compression happens locally in your browser. Your PNG files never leave your device—ensuring 100% privacy and security."
+        "a": "Yes, Toolaze is completely free with no hidden costs. Processing depends on the selected tool and may use Toolaze systems when required. Toolaze handles uploaded content according to our Privacy Policy and provider rules."
       },
       {
         "q": "What file sizes can I compress?",
@@ -2333,7 +2333,7 @@
         },
         {
           "title": "When to Compress WebP",
-          "text": "Compress WebP images when you need to further optimize already-compressed WebP files for even smaller sizes, meet specific file size requirements for web applications or mobile apps, reduce bandwidth costs for web hosting or cloud storage, or optimize images for faster loading on mobile devices. Our tool uses Canvas API to compress WebP files locally in your browser, ensuring complete privacy while maintaining the format's superior compression characteristics."
+          "text": "Compress WebP images when you need to further optimize already-compressed WebP files for even smaller sizes, meet specific file size requirements for web applications or mobile apps, reduce bandwidth costs for web hosting or cloud storage, or optimize images for faster loading on mobile devices. Our tool compresses WebP files with clear processing disclosures while maintaining the format's superior compression characteristics."
         }
       ]
     },
@@ -2355,8 +2355,8 @@
         {
           "icon": "🔒",
           "iconType": "privacy",
-          "title": "100% Private Processing",
-          "desc": "All compression happens locally in your browser. Your WebP files never leave your device, ensuring complete privacy."
+          "title": "Clear Privacy Controls",
+          "desc": "Processing depends on the selected tool and may use Toolaze systems when required. Toolaze handles uploaded content according to our Privacy Policy and provider rules."
         },
         {
           "icon": "📦",
@@ -2435,7 +2435,7 @@
       ]
     },
     "comparison": {
-      "toolaze": "Unlimited file sizes, Batch 100+ images, Quality preserved, Precise size control, 100% local processing, Free",
+      "toolaze": "Unlimited file sizes, Batch 100+ images, Quality preserved, Precise size control, policy-aware workflow, Free",
       "others": "20MB file limits, Quality loss, Single file processing, Cloud uploads required, Server queues, Paid upgrades"
     },
     "scenes": [
@@ -2473,7 +2473,7 @@
       },
       {
         "q": "Is WebP compression free and secure?",
-        "a": "Yes, Toolaze is completely free with no hidden costs. All compression happens locally in your browser. Your WebP files never leave your device—ensuring 100% privacy and security."
+        "a": "Yes, Toolaze is completely free with no hidden costs. Processing depends on the selected tool and may use Toolaze systems when required. Toolaze handles uploaded content according to our Privacy Policy and provider rules."
       },
       {
         "q": "Will transparency be preserved?",
@@ -2510,7 +2510,7 @@
       "content": [
         {
           "title": "Image Compression Benefits",
-          "text": "Large image files can slow down websites, consume storage space, cause upload failures, and increase bandwidth costs. Compressing images reduces file size by 50-70% while maintaining acceptable visual quality, making them perfect for web use, email attachments, online forms, and storage optimization. Our universal image compressor supports JPG, PNG, WebP, and BMP formats, processing all images locally in your browser using Canvas API, ensuring complete privacy and fast compression without uploading your images to any server."
+          "text": "Large image files can slow down websites, consume storage space, cause upload failures, and increase bandwidth costs. Compressing images reduces file size by 50-70% while maintaining acceptable visual quality, making them perfect for web use, email attachments, online forms, and storage optimization. Our universal image compressor supports JPG, PNG, WebP, and BMP formats, processing images with clear privacy disclosures and fast compression controls."
         },
         {
           "title": "When to Compress Images",
@@ -2536,8 +2536,8 @@
         {
           "icon": "🔒",
           "iconType": "privacy",
-          "title": "100% Private Processing",
-          "desc": "All compression happens locally in your browser. Your images never leave your device, ensuring complete privacy."
+          "title": "Clear Privacy Controls",
+          "desc": "Processing depends on the selected tool and may use Toolaze systems when required. Toolaze handles uploaded content according to our Privacy Policy and provider rules."
         },
         {
           "icon": "📦",
@@ -2616,7 +2616,7 @@
       ]
     },
     "comparison": {
-      "toolaze": "Unlimited file sizes, Batch 100+ images, Multiple formats, Precise size control, 100% local processing, Free",
+      "toolaze": "Unlimited file sizes, Batch 100+ images, Multiple formats, Precise size control, policy-aware workflow, Free",
       "others": "20MB file limits, Format restrictions, Single file processing, Cloud uploads required, Server queues, Paid upgrades"
     },
     "scenes": [
@@ -2654,7 +2654,7 @@
       },
       {
         "q": "Is image compression free and secure?",
-        "a": "Yes, Toolaze is completely free with no hidden costs. All compression happens locally in your browser. Your images never leave your device—ensuring 100% privacy and security."
+        "a": "Yes, Toolaze is completely free with no hidden costs. Processing depends on the selected tool and may use Toolaze systems when required. Toolaze handles uploaded content according to our Privacy Policy and provider rules."
       },
       {
         "q": "What file sizes can I compress?",
@@ -2691,7 +2691,7 @@
       "content": [
         {
           "title": "Batch Compression Benefits",
-          "text": "Processing images one by one is time-consuming and inefficient. Batch compression allows you to compress up to 100 images simultaneously, saving hours of work and ensuring consistent results across your entire image collection. Whether you're optimizing a photo gallery, preparing images for a website, or compressing files for storage, batch processing handles everything in one operation. Our browser-based batch compressor processes all images locally using Canvas API, ensuring complete privacy while providing fast, efficient compression without uploading your images to any server."
+          "text": "Processing images one by one is time-consuming and inefficient. Batch compression allows you to compress up to 100 images simultaneously, saving hours of work and ensuring consistent results across your entire image collection. Whether you're optimizing a photo gallery, preparing images for a website, or compressing files for storage, batch processing handles everything in one operation. Our browser-based batch compressor processes all images locally using Canvas API, ensuring complete privacy while providing fast, efficient compression with clear processing disclosures."
         },
         {
           "title": "When to Use Batch Compression",
@@ -2723,8 +2723,8 @@
         {
           "icon": "🔒",
           "iconType": "privacy",
-          "title": "100% Private Processing",
-          "desc": "All compression happens locally in your browser. Your images never leave your device, ensuring complete privacy."
+          "title": "Clear Privacy Controls",
+          "desc": "Processing depends on the selected tool and may use Toolaze systems when required. Toolaze handles uploaded content according to our Privacy Policy and provider rules."
         },
         {
           "icon": "⚡",
@@ -2797,7 +2797,7 @@
       ]
     },
     "comparison": {
-      "toolaze": "Batch 100+ images, Multiple formats, Consistent compression, Precise size control, 100% local processing, Free",
+      "toolaze": "Batch 100+ images, Multiple formats, Consistent compression, Precise size control, policy-aware workflow, Free",
       "others": "Limited batch size, Format restrictions, Inconsistent results, Cloud uploads required, Server queues, Paid upgrades"
     },
     "scenes": [
@@ -2835,7 +2835,7 @@
       },
       {
         "q": "Is batch compression free and secure?",
-        "a": "Yes, Toolaze is completely free with no hidden costs. All compression happens locally in your browser. Your images never leave your device—ensuring 100% privacy and security."
+        "a": "Yes, Toolaze is completely free with no hidden costs. Processing depends on the selected tool and may use Toolaze systems when required. Toolaze handles uploaded content according to our Privacy Policy and provider rules."
       },
       {
         "q": "Can I download all compressed images at once?",

@@ -56,7 +56,7 @@
         "icon": "⚡",
         "iconType": "speed",
         "title": "Procesamiento instantáneo",
-        "desc": "Nuestro motor impulsado por navegador convierte JPG a WebP inmediatamente sin subidas del servidor, colas de procesamiento o tiempos de espera de descarga."
+        "desc": "Nuestro motor impulsado por navegador convierte JPG a WebP inmediatamente Flujo claro del servidor, colas de procesamiento o tiempos de espera de descarga."
       },
       {
         "icon": "💎",
@@ -133,7 +133,7 @@
     ]
   },
   "comparison": {
-    "toolaze": "Tamaños de archivo ilimitados, Lote 100+ imágenes JPG, Reducción de tamaño 25-30%, Compresión avanzada, 100% procesamiento local, Sin subidas, Gratis para siempre",
+    "toolaze": "Tamaños de archivo ilimitados, Lote 100+ imágenes JPG, Reducción de tamaño 25-30%, Compresión avanzada, 100% procesamiento local, Flujo claro, Gratis para siempre",
     "others": "Límites de archivo de 20MB, Solo conversión de archivo único, Calidad de compresión pobre, Reducción de tamaño mínima, Subidas a la nube requeridas, Colas del servidor, Actualizaciones de pago"
   },
   "scenes": [

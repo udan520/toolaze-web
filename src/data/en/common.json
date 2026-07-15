@@ -51,7 +51,7 @@
   "home": {
     "metadata": {
       "title": "Toolaze - Free AI Image Generator & AI Video Generator Online",
-      "description": "Free AI image generator and AI video generator online. Create 4K images with Nano Banana 2, generate videos with Seedance 2.0 and Kling 3.0. Text-to-image, text-to-video. No sign up required. Image compression and format conversion tools too."
+      "description": "Create, edit, compress, and convert images with AI tools, one-time credits, and clear usage policies."
     },
     "badge": "Free AI Tools",
     "titleLine1": "All-in-One AI Image & Video",
@@ -93,7 +93,7 @@
         "summary": "Text-to-image AI built for clean compositions and legible in-image text—simple graphics, mockups, and backgrounds from natural-language prompts. Free to try online."
       },
       "watermark-remover": {
-        "summary": "Free AI watermark remover online: erase logos, date stamps, and overlays while keeping skin and texture believable. Runs in your browser for a private, no-upload workflow on Toolaze."
+        "summary": "Free AI watermark remover online: erase logos, date stamps, and overlays while keeping skin and texture believable. Works online on Toolaze with clear privacy and usage policies."
       },
       "photo-restoration": {
         "summary": "AI photo restoration for faded, scratched, or blurry pictures—recover clearer faces and finer detail for prints and archives. One-click repair, free online."
@@ -126,21 +126,21 @@
       },
       {
         "title": "Browser media utilities",
-        "description": "Round out your workflow with lossy image compression, format conversion, stylized font previews, and emoji copy-and-paste—lightweight, non-generative utilities that stay free in your browser.",
+        "description": "Round out your workflow with lossy image compression, format conversion, stylized font previews, and emoji copy-and-paste—lightweight, non-generative utilities that stay easy to use online.",
         "href": "/image-compressor"
       }
     ],
     "advancedToolsTitle": "More AI-Powered Creative Tools",
     "advancedToolsSubtitle": "Portrait generation, AI watermark removal, and AI photo restoration—free to try online, no signup required.",
     "utilityToolsTitle": "Free Browser Tools for Images & Text",
-    "utilityToolsSubtitle": "Image compression, format conversion, stylized font previews, and emoji copy-and-paste—fast utilities in your browser without generative AI.",
+    "utilityToolsSubtitle": "Image compression, format conversion, stylized font previews, and emoji copy-and-paste—fast utilities online without generative AI.",
     "faqTitle": "Have Questions? We Have Answers!",
     "sectionAiImageTitle": "AI Image Models",
     "sectionAiImageSubtitle": "Free AI image generator online. Text-to-image and image-to-image. 4K output, fast generation, no registration. Create AI art with Nano Banana Pro and Nano Banana 2.",
     "sectionAiVideoTitle": "AI Video Models",
     "sectionAiVideoSubtitle": "Free AI video generator online. Text-to-video and image-to-video. 1080p–4K output, multimodal video generation. Create videos with Seedance 2.0 and Kling 3.0—no sign up.",
     "sectionToolsTitle": "More Tools",
-    "sectionToolsSubtitle": "Image compression, format conversion, font generator—all free, all in your browser.",
+    "sectionToolsSubtitle": "Image compression, format conversion, font generator—free and available online.",
     "seoIntro": {
       "title": "Free AI Image Generator & AI Video Generator Online",
       "paragraph1": "Toolaze is your free AI image generator and AI video generator online. Create stunning 4K AI images with text-to-image and image-to-image—powered by Nano Banana Pro and Nano Banana 2. Generate Hollywood-quality videos with text-to-video and image-to-video using Seedance 2.0 and Kling 3.0. No sign up, no credit card, no daily limits.",
@@ -177,7 +177,7 @@
         },
         {
           "q": "Is the AI image generator free?",
-          "a": "Yes! Toolaze's AI image generators (Nano Banana Pro, Nano Banana 2) are free to use online. No sign-up, no credit card, no daily limits. Create 4K images with text-to-image and image-to-image—all from your browser."
+          "a": "Yes! Toolaze's AI image generators (Nano Banana Pro, Nano Banana 2) are free to use online. No sign-up, no credit card, no daily limits. Create 4K images with text-to-image and image-to-image—from the web interface."
         },
         {
           "q": "Is the AI video generator free?",
@@ -185,7 +185,7 @@
         },
         {
           "q": "How much does a free AI image generator cost?",
-          "a": "Toolaze's AI image generator is 100% free. No sign-up, no credit card, no daily limits. Create 4K images with text-to-image and image-to-image using Nano Banana Pro or Nano Banana 2—all from your browser."
+          "a": "Toolaze's AI image generator is 100% free. No sign-up, no credit card, no daily limits. Create 4K images with text-to-image and image-to-image using Nano Banana Pro or Nano Banana 2—from the web interface."
         },
         {
           "q": "Is there a free text-to-video generator online?",
@@ -245,14 +245,17 @@
     "aboutUs": "About Us",
     "privacyPolicy": "Privacy Policy",
     "termsOfService": "Terms of Service",
+    "pricing": "Pricing",
     "contact": "Contact",
     "language": "Language",
     "footerNavigation": "Footer navigation",
     "noToolsAvailable": "No tools available",
     "copyright": "© {year} Toolaze Lab. All rights reserved.",
-    "tagline": "Free Online Tools • No Registration Required • 100% Private",
+    "tagline": "AI generation tools • One-time credits • Clear usage policies",
     "wan27Image": "Wan 2.7 Image",
-    "aiImageGenerator": "AI Image Generator"
+    "aiImageGenerator": "AI Image Generator",
+    "refundPolicy": "Refund Policy",
+    "acceptableUse": "Acceptable Use Policy"
   },
   "breadcrumb": {
     "home": "Home",
@@ -265,6 +268,7 @@
     "aboutUs": "About Us",
     "privacyPolicy": "Privacy Policy",
     "termsOfService": "Terms of Service",
+    "pricing": "Pricing",
     "aiTools": "AI Tools",
     "model": "Model",
     "photoRestoration": "Photo Restoration",
@@ -273,12 +277,14 @@
     "aiBabyGenerator": "AI Baby Generator",
     "textToImageGenerator": "Text to Image Generator",
     "aiImageToImageGenerator": "AI Image to Image Generator",
-    "worldCupAiImageGenerator": "World Cup AI Image Generator"
+    "worldCupAiImageGenerator": "World Cup AI Image Generator",
+    "refundPolicy": "Refund Policy",
+    "acceptableUse": "Acceptable Use Policy"
   },
   "about": {
     "metadata": {
       "title": "About Us - Toolaze",
-      "description": "Learn about Toolaze - Free AI image tools that run locally in your browser. Privacy-first, unlimited."
+      "description": "Learn about Toolaze, an AI image and creative tools platform with one-time credits and clear usage policies."
     },
     "title": "We Handle the Tool. You Handle the Laze.",
     "titleTool": "Tool",
@@ -287,22 +293,22 @@
     "whyToolaze": {
       "title": "Why \"Toolaze\"?",
       "content1": "The name comes from a simple philosophy: Tool + Laze.",
-      "content2": "We believe that as a creator, your energy is finite. Every minute you spend resizing images, converting formats, or worrying about server privacy is a minute stolen from your creativity.",
-      "content3": "We built Toolaze to be the ultimate \"lazy\" solution. We use advanced Local AI to automate the boring technical stuff instantly in your browser. No uploads, no waiting, no friction.",
+      "content2": "We believe that as a creator, your energy is finite. Every minute you spend resizing images, converting formats, or worrying about unclear processing rules is a minute stolen from your creativity.",
+      "content3": "We built Toolaze to be the ultimate \"lazy\" solution. We use practical AI workflows to automate the boring technical stuff, from generation to editing to file cleanup.",
       "content4": "So go ahead, be a little lazy. We've got the tools covered."
     },
     "features": {
       "privacy": {
-        "title": "Laze on Privacy",
-        "desc": "Relax. Your files never leave your device. Zero risk of data leaks means zero anxiety for you."
+        "title": "Laze on Policy",
+        "desc": "Use clear privacy, refund, and acceptable-use rules before you spend credits or generate assets."
       },
       "waiting": {
         "title": "Laze on Waiting",
-        "desc": "Why wait for uploads? Our local WebAssembly engine processes files instantly. Done in a blink."
+        "desc": "Skip repetitive setup. Toolaze keeps AI generation, editing, and file cleanup moving in one workspace."
       },
       "cost": {
         "title": "Laze on Cost",
-        "desc": "Keep your wallet shut. We don't have expensive server bills, so you don't have to pay subscription fees."
+        "desc": "Buy credits once and use them across supported tools. Failed generations return credits when the failure is confirmed."
       }
     },
     "cta": {
@@ -342,9 +348,9 @@
       "placeholder": "Add text here to get started....",
       "defaultText": "Toolaze Font Generator 123",
       "trustBar": {
-        "private": "100% Private",
+        "private": "privacy-aware",
         "instantPreview": "Instant Preview",
-        "noServerLogs": "No Server Logs"
+        "noServerLogs": "Clear policies"
       },
       "fontTerms": {
         "Bold": "Bold",
@@ -498,9 +504,9 @@
         "error": "Error"
       },
       "trustBar": {
-        "private": "100% Private",
-        "localBrowser": "Local Browser API",
-        "noServerLogs": "No Server Logs"
+        "private": "privacy-aware",
+        "localBrowser": "Fast browser tools",
+        "noServerLogs": "Clear policies"
       }
     },
     "watermarkRemoverTool": {
@@ -655,96 +661,96 @@
   "privacy": {
     "metadata": {
       "title": "Privacy Policy - Toolaze",
-      "description": "Toolaze Privacy Policy - We process all images locally in your browser. Your files never leave your device."
+      "description": "Toolaze Privacy Policy for AI generation, uploads, credits, payments, analytics, and third-party providers."
     },
     "title": "Privacy Policy",
-    "lastUpdated": "Last Updated:",
-    "date": "January 14, 2026",
-    "intro": "At Toolaze (\"we,\" \"us,\" or \"our\"), accessible from https://toolaze.com, our main priority is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by Toolaze and how we use it.",
+    "lastUpdated": "Last updated:",
+    "date": "July 15, 2026",
+    "intro": "Toolaze provides AI generation and creative tools. This policy explains how we handle prompts, uploads, generated outputs, credits, payments, analytics, and support records.",
     "section1": {
-      "title": "1. Core Privacy Promise: Local Processing",
-      "content": "We differentiate ourselves by prioritizing your privacy. We do not upload your images or videos to our servers.",
+      "title": "1. AI generation and uploaded content",
+      "content": "Toolaze may process the information needed to provide the selected tool or generation.",
       "points": [
-        "All file processing happens locally within your web browser.",
-        "Your files never leave your device.",
-        "We cannot view, copy, or sell your content."
+        "AI generation may send prompts, uploaded images, uploaded videos, reference files, and generated outputs to third-party AI providers.",
+        "Creem or another payment processor may handle checkout, receipts, taxes, and refunds.",
+        "We may store content and metadata for history, downloads, abuse prevention, billing, debugging, refunds, and support."
       ]
     },
     "section2": {
-      "title": "2. Information We Collect",
-      "content": "We do not collect your files. We may collect anonymous non-personal information to improve our service:",
+      "title": "2. Information we collect",
+      "content": "We collect account, usage, payment, and technical information needed to run Toolaze.",
       "logFiles": {
-        "title": "A. Log Files",
-        "content": "Toolaze follows a standard procedure of using log files. These files log visitors when they visit websites. The information collected includes internet protocol (IP) addresses, browser type, date and time stamp, and referring/exit pages. These are not linked to any information that is personally identifiable."
+        "title": "A. Logs and usage records",
+        "content": "Logs may include IP address, browser type, device information, generation status, credit balance changes, timestamps, and error details."
       },
       "cookies": {
-        "title": "B. Cookies",
-        "content": "Toolaze uses \"cookies\" solely to store information about visitors' preferences (e.g., dark mode settings) and to optimize the user experience."
+        "title": "B. Cookies and analytics",
+        "content": "Toolaze uses cookies and analytics for authentication, preferences, checkout flows, security, reliability, and product measurement."
       }
     },
     "section3": {
-      "title": "3. Analytics",
-      "content": "We use Google Analytics to understand how our website is being used in order to improve user experience (e.g., which tools are most popular). All user data collected is anonymous and aggregated. We do not use this data for advertising profiling."
+      "title": "3. AI providers and vendors",
+      "content": "We may share prompts, uploaded images, generated outputs, account events, and payment metadata with AI providers, hosting, storage, CDN, analytics, moderation, authentication, email, and payment vendors."
     },
     "section4": {
-      "title": "4. GDPR & CCPA Rights",
-      "content": "We respect your data rights. Since we do not store personal data or files, we do not \"sell\" your data. You have the right to request information about our data practices at any time."
+      "title": "4. Your rights",
+      "content": "Depending on your location, you may ask to access, correct, delete, or export certain personal information. Some records may be kept for security, tax, accounting, legal, or fraud prevention reasons."
     },
     "section5": {
-      "title": "5. Contact Us",
-      "content": "If you have additional questions, do not hesitate to contact us at support@toolaze.com."
+      "title": "5. Contact us",
+      "content": "Questions about this Privacy Policy can be sent to support@toolaze.com."
     }
   },
   "terms": {
     "metadata": {
       "title": "Terms of Service - Toolaze",
-      "description": "Toolaze Terms of Service - Free AI image tools with local processing. No registration required."
+      "description": "Toolaze Terms of Service for AI generation, credits, one-time purchases, commercial use, refunds, and acceptable use."
     },
     "title": "Terms of Service",
-    "lastUpdated": "Last Updated:",
-    "date": "January 14, 2026",
-    "intro": "Welcome to Toolaze! By accessing or using our website (https://toolaze.com), you agree to be bound by these Terms of Service (\"Terms\"). If you disagree with any part of the terms, you may not access the Service.",
+    "lastUpdated": "Last updated:",
+    "date": "July 15, 2026",
+    "intro": "Welcome to Toolaze. By using Toolaze, you agree to these Terms, the Privacy Policy, the Refund Policy, and the Acceptable Use Policy.",
     "section1": {
-      "title": "1. Description of Service",
-      "content": "Toolaze provides free, web-based AI tools for image and video processing (e.g., compression, conversion, editing).",
-      "localProcessing": "Local Processing: Our distinct feature is that we process files locally in your browser using WebAssembly technology. We do not upload or store your files on our servers."
+      "title": "1. Service description",
+      "content": "Toolaze provides AI generation, AI editing, image utilities, video utilities, prompt workflows, generation history, and credit-based purchases.",
+      "localProcessing": "AI generation: Some tools use third-party model providers and cloud infrastructure to process prompts, uploaded media, and generated outputs."
     },
     "section2": {
-      "title": "2. Use of Service",
-      "license": "License: We grant you a limited, non-exclusive, non-transferable license to use our tools for personal or commercial purposes, provided you comply with these Terms.",
-      "noRegistration": "No Registration: You do not need to create an account to use our current tools.",
-      "prohibitedActs": "Prohibited Acts: You agree not to:",
+      "title": "2. Use of service",
+      "license": "License: You may use Toolaze for personal or commercial purposes if you follow these Terms.",
+      "noRegistration": "Credits: Purchased credits are one-time purchases, valid for 12 months, and returned when a failed generation is confirmed.",
+      "prohibitedActs": "Acceptable Use: You agree not to:",
       "prohibitedList": [
-        "Reverse engineer, decompile, or attempt to extract the source code of the Service.",
-        "Use the Service to process illegal content.",
-        "Use automated scripts (bots) that affect the stability of our website."
+        "Reverse engineer, decompile, scrape, overload, or interfere with the service.",
+        "Use the service to create illegal, NSFW, sexual, hateful, deceptive, or infringing content.",
+        "Use automated systems that harm availability, security, payment flows, or safety systems."
       ]
     },
     "section3": {
-      "title": "3. User Content & Data",
-      "ownership": "Your Ownership: You retain all rights and ownership of the images or videos you process using Toolaze. We claim no intellectual property rights over your content.",
-      "noLiability": "No Liability for Data Loss: Since we do not store your files, we cannot recover them for you. You are solely responsible for backing up your original data. If your browser crashes or the page refreshes during processing, any unsaved progress may be lost, and Toolaze is not liable for such loss."
+      "title": "3. User content and commercial use",
+      "ownership": "Your Ownership: You keep the rights you already have in prompts, uploads, reference files, and generated outputs.",
+      "noLiability": "Commercial Use: Commercial use is allowed for generated outputs, subject to these Terms, the Acceptable Use Policy, applicable law, and any third-party model provider rules."
     },
     "section4": {
-      "title": "4. Intellectual Property",
-      "content": "The Service itself (excluding your content), including its original content, features, code, and functionality, is and will remain the exclusive property of Toolaze and its licensors. Our trademarks (including the \"Toolaze\" name and Logo) may not be used without prior written consent."
+      "title": "4. Intellectual property",
+      "content": "Toolaze, including its website, software, design, branding, logos, and service features, belongs to Toolaze and its licensors."
     },
     "section5": {
-      "title": "5. Disclaimer of Warranties (\"AS IS\")",
-      "content": "The Service is provided on an \"AS IS\" and \"AS AVAILABLE\" basis. Toolaze makes no representations or warranties of any kind, express or implied, regarding the operation of the Service or the accuracy of the AI processing results.",
-      "guarantee": "We do not guarantee that the image quality after compression will perfectly meet your expectations, as AI algorithms may vary based on file types."
+      "title": "5. AI output limits",
+      "content": "AI outputs can be inaccurate, unexpected, delayed, unavailable, similar to outputs generated for other users, or blocked by safety systems.",
+      "guarantee": "We do not guarantee that a third-party model will produce a specific result, quality level, style, file type, or delivery time."
     },
     "section6": {
-      "title": "6. Limitation of Liability",
-      "content": "In no event shall Toolaze be liable for any indirect, incidental, special, consequential, or punitive damages, including without limitation, loss of profits, data, use, or goodwill, resulting from your use of the Service."
+      "title": "6. Limitation of liability",
+      "content": "To the fullest extent allowed by law, Toolaze is not liable for indirect, incidental, special, consequential, punitive, or lost-profit damages arising from use of the service."
     },
     "section7": {
-      "title": "7. Changes to Terms",
-      "content": "We reserve the right to modify or replace these Terms at any time. By continuing to access our Service after those revisions become effective, you agree to be bound by the revised terms."
+      "title": "7. Refunds and changes",
+      "content": "Refunds are available for unused credits under the Refund Policy. We may update these Terms from time to time, and continued use means you accept the updated Terms."
     },
     "section8": {
-      "title": "8. Contact Us",
-      "content": "If you have any questions about these Terms, please contact us at: support@toolaze.com"
+      "title": "8. Contact us",
+      "content": "Questions about these Terms can be sent to support@toolaze.com"
     }
   }
 }

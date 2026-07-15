@@ -68,7 +68,7 @@
         "icon": "🌐",
         "iconType": "browser",
         "title": "Aucune Installation Nécessaire",
-        "desc": "Tout fonctionne directement dans votre navigateur web en utilisant la technologie côté client—aucun téléchargement de logiciel ou installation de polices requise."
+        "desc": "Tout fonctionne directement dans votre navigateur web en utilisant la technologie côté client—Flux clair de logiciel ou installation de polices requise."
       }
     ]
   },
@@ -107,7 +107,7 @@
       },
       {
         "label": "Confidentialité",
-        "value": "Aucun téléchargement serveur, traitement local complet"
+        "value": "Flux clair serveur, traitement local complet"
       }
     ]
   },
@@ -135,7 +135,7 @@
     "vs": "VS",
     "smartChoice": "Choix Intelligent",
     "otherTools": "Autres Outils",
-    "toolazeFeatures": "Longueur de texte illimitée, Multiples styles de polices, Aperçu instantané, Génération en temps réel, Traitement 100% local, Aucun téléchargement, Gratuit pour toujours",
+    "toolazeFeatures": "Longueur de texte illimitée, Multiples styles de polices, Aperçu instantané, Génération en temps réel, Traitement policy-aware, Flux clair, Gratuit pour toujours",
     "othersFeatures": "Limites de caractères, Styles limités, Traitement lent, Téléchargements serveur requis, Files d'attente cloud, Préoccupations de confidentialité, Mises à niveau payantes"
   },
   "scenesTitle": "Cas d'Utilisation",

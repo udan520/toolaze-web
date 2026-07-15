@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const t = await loadCommonTranslations(locale)
   const metadata = t?.privacy?.metadata || {
     title: 'Privacy Policy - Toolaze',
-    description: 'Toolaze Privacy Policy - We process all images locally in your browser. Your files never leave your device.'
+    description: 'Toolaze Privacy Policy for AI generation, uploads, credits, payments, analytics, and third-party providers.'
   }
   
   return {
@@ -52,20 +52,20 @@ export default async function PrivacyPage({ params }: PageProps) {
   const translations = t?.privacy || {
     title: 'Privacy Policy',
     lastUpdated: 'Last Updated:',
-    date: 'January 14, 2026',
+    date: 'July 15, 2026',
     intro: 'At Toolaze ("we," "us," or "our"), accessible from https://toolaze.com, our main priority is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by Toolaze and how we use it.',
     section1: {
-      title: '1. Core Privacy Promise: Local Processing',
-      content: 'We differentiate ourselves by prioritizing your privacy. We do not upload your images or videos to our servers.',
+      title: '1. AI generation and uploaded content',
+      content: 'Toolaze may process prompts, uploaded images, uploaded videos, reference files, generated outputs, account activity, payment events, and credit usage to provide the service.',
       points: [
-        'All file processing happens locally within your web browser.',
-        'Your files never leave your device.',
-        'We cannot view, copy, or sell your content.'
+        'AI generation may send prompts and uploaded images to third-party AI providers.',
+        'Creem or another payment processor may handle checkout, receipts, taxes, and refunds.',
+        'We may store content and metadata for history, downloads, abuse prevention, billing, debugging, refunds, and support.'
       ]
     },
     section2: {
       title: '2. Information We Collect',
-      content: 'We do not collect your files. We may collect anonymous non-personal information to improve our service:',
+      content: 'We collect the information needed to run Toolaze, protect the service, and support purchases:',
       logFiles: {
         title: 'A. Log Files',
         content: 'Toolaze follows a standard procedure of using log files. These files log visitors when they visit websites. The information collected includes internet protocol (IP) addresses, browser type, date and time stamp, and referring/exit pages. These are not linked to any information that is personally identifiable.'
@@ -76,15 +76,15 @@ export default async function PrivacyPage({ params }: PageProps) {
       }
     },
     section3: {
-      title: '3. Analytics',
-      content: 'We use Google Analytics to understand how our website is being used in order to improve user experience (e.g., which tools are most popular). All user data collected is anonymous and aggregated. We do not use this data for advertising profiling.'
+      title: '3. Analytics, logs, and cookies',
+      content: 'We use Google Analytics, cookies, logs, and similar technologies to understand product usage, secure checkout flows, diagnose failures, and improve Toolaze.'
     },
     section4: {
-      title: '4. GDPR & CCPA Rights',
-      content: 'We respect your data rights. Since we do not store personal data or files, we do not "sell" your data. You have the right to request information about our data practices at any time.'
+      title: '4. Your rights',
+      content: 'Depending on your location, you may have rights to access, correct, delete, or export certain personal information. Some records may be kept for security, tax, accounting, legal, or fraud prevention reasons.'
     },
     section5: {
-      title: '5. Contact Us',
+      title: '5. Contact us',
       content: 'If you have additional questions, do not hesitate to contact us at support@toolaze.com.'
     }
   }

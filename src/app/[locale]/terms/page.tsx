@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const t = await loadCommonTranslations(locale)
   const metadata = t?.terms?.metadata || {
     title: 'Terms of Service - Toolaze',
-    description: 'Toolaze Terms of Service - Free AI image tools with local processing. No registration required.'
+    description: 'Toolaze Terms of Service for AI generation, credits, one-time purchases, commercial use, refunds, and acceptable use.'
   }
   
   return {
@@ -52,28 +52,28 @@ export default async function TermsPage({ params }: PageProps) {
   const translations = t?.terms || {
     title: 'Terms of Service',
     lastUpdated: 'Last Updated:',
-    date: 'January 14, 2026',
+    date: 'July 15, 2026',
     intro: 'Welcome to Toolaze! By accessing or using our website (https://toolaze.com), you agree to be bound by these Terms of Service ("Terms"). If you disagree with any part of the terms, you may not access the Service.',
     section1: {
       title: '1. Description of Service',
-      content: 'Toolaze provides free, web-based AI tools for image and video processing (e.g., compression, conversion, editing).',
-      localProcessing: 'Local Processing: Our distinct feature is that we process files locally in your browser using WebAssembly technology. We do not upload or store your files on our servers.'
+      content: 'Toolaze provides AI generation, AI editing, image utilities, video utilities, prompt workflows, generation history, and credit-based purchases.',
+      localProcessing: 'AI generation: Some tools use third-party model providers and cloud infrastructure to process prompts, uploaded media, and generated outputs.'
     },
     section2: {
       title: '2. Use of Service',
       license: 'License: We grant you a limited, non-exclusive, non-transferable license to use our tools for personal or commercial purposes, provided you comply with these Terms.',
-      noRegistration: 'No Registration: You do not need to create an account to use our current tools.',
-      prohibitedActs: 'Prohibited Acts: You agree not to:',
+      noRegistration: 'Credits: Purchased credits are one-time purchases, valid for 12 months, and returned when a failed generation is confirmed.',
+      prohibitedActs: 'Acceptable Use: You agree not to:',
       prohibitedList: [
         'Reverse engineer, decompile, or attempt to extract the source code of the Service.',
-        'Use the Service to process illegal content.',
+        'Use the Service to create illegal, NSFW, sexual, hateful, deceptive, or infringing content.',
         'Use automated scripts (bots) that affect the stability of our website.'
       ]
     },
     section3: {
       title: '3. User Content & Data',
-      ownership: 'Your Ownership: You retain all rights and ownership of the images or videos you process using Toolaze. We claim no intellectual property rights over your content.',
-      noLiability: 'No Liability for Data Loss: Since we do not store your files, we cannot recover them for you. You are solely responsible for backing up your original data. If your browser crashes or the page refreshes during processing, any unsaved progress may be lost, and Toolaze is not liable for such loss.'
+      ownership: 'Your Ownership: You keep the rights you already have in prompts, uploads, reference files, and generated outputs.',
+      noLiability: 'Commercial Use: Commercial use is allowed for generated outputs, subject to these Terms, the Acceptable Use Policy, applicable law, and any third-party model provider rules.'
     },
     section4: {
       title: '4. Intellectual Property',
@@ -82,7 +82,7 @@ export default async function TermsPage({ params }: PageProps) {
     section5: {
       title: '5. Disclaimer of Warranties ("AS IS")',
       content: 'The Service is provided on an "AS IS" and "AS AVAILABLE" basis. Toolaze makes no representations or warranties of any kind, express or implied, regarding the operation of the Service or the accuracy of the AI processing results.',
-      guarantee: 'We do not guarantee that the image quality after compression will perfectly meet your expectations, as AI algorithms may vary based on file types.'
+      guarantee: 'We do not guarantee that a third-party model will produce a specific result, quality level, style, file type, or delivery time.'
     },
     section6: {
       title: '6. Limitation of Liability',

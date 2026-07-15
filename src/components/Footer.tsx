@@ -23,12 +23,15 @@ const defaultTranslations = {
   aboutUs: 'About Us',
   privacyPolicy: 'Privacy Policy',
   termsOfService: 'Terms of Service',
+  refundPolicy: 'Refund Policy',
+  acceptableUse: 'Acceptable Use Policy',
+  pricing: 'Pricing',
   contact: 'Contact',
   language: 'Language',
   footerNavigation: 'Footer navigation',
   noToolsAvailable: 'No tools available',
   copyright: '© {year} Toolaze Lab. All rights reserved.',
-  tagline: 'Free Online Tools • No Registration Required • 100% Private',
+  tagline: 'AI generation tools • One-time credits • Clear usage policies',
   quickTools: 'Quick Tools',
   aiTools: 'AI Tools',
   aiVideo: 'AI Video',
@@ -389,8 +392,11 @@ export default function Footer({ initialTranslations }: FooterProps = {}) {
           <ul className="flex flex-wrap justify-center items-center gap-3 md:gap-4 text-sm">
             <li><Link href={getLocalizedHref('/')} className="text-slate-300 hover:text-indigo-400 transition-colors font-medium">{translations.home}</Link></li>
             <li><Link href={getLocalizedHref('/about')} className="text-slate-300 hover:text-indigo-400 transition-colors font-medium">{translations.aboutUs}</Link></li>
+            <li><Link href={getLocalizedHref('/pricing')} className="text-slate-300 hover:text-indigo-400 transition-colors font-medium">{translations.pricing}</Link></li>
             <li><Link href={getLocalizedHref('/privacy')} className="text-slate-300 hover:text-indigo-400 transition-colors font-medium">{translations.privacyPolicy}</Link></li>
             <li><Link href={getLocalizedHref('/terms')} className="text-slate-300 hover:text-indigo-400 transition-colors font-medium">{translations.termsOfService}</Link></li>
+            <li><Link href={getLocalizedHref('/refund-policy')} className="text-slate-300 hover:text-indigo-400 transition-colors font-medium">{translations.refundPolicy}</Link></li>
+            <li><Link href={getLocalizedHref('/acceptable-use')} className="text-slate-300 hover:text-indigo-400 transition-colors font-medium">{translations.acceptableUse}</Link></li>
             <li><a href="mailto:support@toolaze.com" className="text-slate-300 hover:text-indigo-400 transition-colors font-medium">{translations.contact}</a></li>
             
             {/* Language Switcher - 只在支持多语言的页面显示，且只显示该页面实际支持的语言 */}

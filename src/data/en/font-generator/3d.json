@@ -44,7 +44,7 @@
         "icon": "🔒",
         "iconType": "privacy",
         "title": "Local Browser Processing",
-        "desc": "Font generation occurs entirely in your browser—your text stays private on your device."
+        "desc": "Font previews are quick and covered by clear usage policies."
       },
       {
         "icon": "⚡",
@@ -68,7 +68,7 @@
         "icon": "🌐",
         "iconType": "browser",
         "title": "No 3D Software",
-        "desc": "Works entirely in your browser—no 3D modeling software or complex installations needed."
+        "desc": "works online—no 3D modeling software or complex installations needed."
       }
     ]
   },
@@ -107,7 +107,7 @@
       },
       {
         "label": "Privacy",
-        "value": "No server uploads, complete local processing"
+        "value": "Transparent processing and clear policies"
       }
     ]
   },
@@ -175,7 +175,7 @@
     }
   ],
   "compare": {
-    "toolaze": "Unlimited 3d text generation, Multiple elegant styles, Instant real-time preview, Local-first architecture, No character limits, Complete privacy protection, 100% free",
+    "toolaze": "Unlimited 3d text generation, Multiple elegant styles, Instant real-time preview, Clear workflow architecture, No character limits, Clear policies protection, 100% free",
     "others": "Character limits, Limited style options, Slow server processing, Cloud uploads required, Privacy concerns, Watermarks or ads, Paid premium features"
   }
 }

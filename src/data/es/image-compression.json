@@ -1473,7 +1473,7 @@
           "icon": "⚡",
           "iconType": "speed",
           "title": "Compresión instantánea",
-          "desc": "El procesamiento de la API Canvas nativa del navegador garantiza una compresión instantánea sin subidas al servidor ni colas de espera."
+          "desc": "El procesamiento de la API Canvas nativa del navegador garantiza una compresión instantánea Flujo claro al servidor ni colas de espera."
         },
         {
           "icon": "💎",
@@ -1646,7 +1646,7 @@
           "icon": "⚡",
           "iconType": "speed",
           "title": "Compresión instantánea",
-          "desc": "El procesamiento de la API Canvas nativa del navegador garantiza una compresión instantánea sin subidas al servidor ni colas de espera. Ten tus emotes listos de inmediato."
+          "desc": "El procesamiento de la API Canvas nativa del navegador garantiza una compresión instantánea Flujo claro al servidor ni colas de espera. Ten tus emotes listos de inmediato."
         },
         {
           "icon": "💎",
@@ -1823,7 +1823,7 @@
           "icon": "⚡",
           "iconType": "speed",
           "title": "Optimización instantánea",
-          "desc": "El procesamiento de la API Canvas nativa del navegador garantiza una compresión instantánea sin subidas al servidor ni colas de espera. Ten tus firmas listas de inmediato."
+          "desc": "El procesamiento de la API Canvas nativa del navegador garantiza una compresión instantánea Flujo claro al servidor ni colas de espera. Ten tus firmas listas de inmediato."
         },
         {
           "icon": "💎",
@@ -2000,7 +2000,7 @@
           "icon": "⚡",
           "iconType": "speed",
           "title": "Compresión rápida",
-          "desc": "El procesamiento de la API Canvas nativa del navegador garantiza una compresión instantánea sin subidas al servidor ni colas de espera."
+          "desc": "El procesamiento de la API Canvas nativa del navegador garantiza una compresión instantánea Flujo claro al servidor ni colas de espera."
         },
         {
           "icon": "💎",
@@ -2073,7 +2073,7 @@
       ]
     },
     "comparison": {
-      "toolaze": "Tamaños de archivo ilimitados, lote de más de 100 imágenes, control de tamaño preciso, procesamiento 100% local, sin subidas, gratis",
+      "toolaze": "Tamaños de archivo ilimitados, lote de más de 100 imágenes, control de tamaño preciso, procesamiento policy-aware, Flujo claro, gratis",
       "others": "Límites de archivo de 20 MB, procesamiento de un solo archivo, sin control de tamaño, requiere subidas a la nube, colas en el servidor, actualizaciones de pago"
     },
     "scenes": [
@@ -2187,7 +2187,7 @@
           "icon": "⚡",
           "iconType": "speed",
           "title": "Compresión rápida",
-          "desc": "El procesamiento nativo del navegador mediante la API Canvas garantiza una compresión instantánea sin subidas al servidor ni demoras."
+          "desc": "El procesamiento nativo del navegador mediante la API Canvas garantiza una compresión instantánea Flujo claro al servidor ni demoras."
         },
         {
           "icon": "💎",
@@ -2254,7 +2254,7 @@
       ]
     },
     "comparison": {
-      "toolaze": "Tamaños de archivo ilimitados, Lotes de más de 100 imágenes, Transparencia conservada, Control de tamaño preciso, Procesamiento 100% local, Gratis",
+      "toolaze": "Tamaños de archivo ilimitados, Lotes de más de 100 imágenes, Transparencia conservada, Control de tamaño preciso, Procesamiento policy-aware, Gratis",
       "others": "Límites de archivo de 20 MB, Pérdida de transparencia, Procesamiento de un solo archivo, Requiere subidas a la nube, Colas de servidor, Actualizaciones de pago"
     },
     "scenes": [
@@ -2368,7 +2368,7 @@
           "icon": "⚡",
           "iconType": "speed",
           "title": "Compresión rápida",
-          "desc": "El procesamiento nativo del navegador mediante la API Canvas garantiza una compresión instantánea sin subidas al servidor ni demoras."
+          "desc": "El procesamiento nativo del navegador mediante la API Canvas garantiza una compresión instantánea Flujo claro al servidor ni demoras."
         },
         {
           "icon": "💎",
@@ -2435,7 +2435,7 @@
       ]
     },
     "comparison": {
-      "toolaze": "Tamaños de archivo ilimitados, Lotes de más de 100 imágenes, Calidad conservada, Control de tamaño preciso, Procesamiento 100% local, Gratis",
+      "toolaze": "Tamaños de archivo ilimitados, Lotes de más de 100 imágenes, Calidad conservada, Control de tamaño preciso, Procesamiento policy-aware, Gratis",
       "others": "Límites de archivo de 20 MB, Pérdida de calidad, Procesamiento de un solo archivo, Requiere subidas a la nube, Colas de servidor, Actualizaciones de pago"
     },
     "scenes": [
@@ -2549,7 +2549,7 @@
           "icon": "⚡",
           "iconType": "speed",
           "title": "Compresión rápida",
-          "desc": "El procesamiento nativo del navegador mediante la API Canvas garantiza una compresión instantánea sin subidas al servidor ni demoras."
+          "desc": "El procesamiento nativo del navegador mediante la API Canvas garantiza una compresión instantánea Flujo claro al servidor ni demoras."
         },
         {
           "icon": "💎",
@@ -2616,7 +2616,7 @@
       ]
     },
     "comparison": {
-      "toolaze": "Tamaños de archivo ilimitados, Lotes de más de 100 imágenes, Múltiples formatos, Control de tamaño preciso, Procesamiento 100% local, Gratis",
+      "toolaze": "Tamaños de archivo ilimitados, Lotes de más de 100 imágenes, Múltiples formatos, Control de tamaño preciso, Procesamiento policy-aware, Gratis",
       "others": "Límites de archivo de 20 MB, Restricciones de formato, Procesamiento de un solo archivo, Requiere subidas a la nube, Colas de servidor, Actualizaciones de pago"
     },
     "scenes": [
@@ -2730,7 +2730,7 @@
           "icon": "⚡",
           "iconType": "speed",
           "title": "Procesamiento por lotes rápido",
-          "desc": "El procesamiento nativo del navegador mediante la API Canvas garantiza una compresión por lotes rápida sin subidas al servidor ni demoras."
+          "desc": "El procesamiento nativo del navegador mediante la API Canvas garantiza una compresión por lotes rápida Flujo claro al servidor ni demoras."
         },
         {
           "icon": "💎",
@@ -2797,7 +2797,7 @@
       ]
     },
     "comparison": {
-      "toolaze": "Lotes de más de 100 imágenes, Múltiples formatos, Compresión consistente, Control de tamaño preciso, Procesamiento 100% local, Gratis",
+      "toolaze": "Lotes de más de 100 imágenes, Múltiples formatos, Compresión consistente, Control de tamaño preciso, Procesamiento policy-aware, Gratis",
       "others": "Tamaño de lote limitado, Restricciones de formato, Resultados inconsistentes, Requiere subidas a la nube, Colas de servidor, Actualizaciones de pago"
     },
     "scenes": [

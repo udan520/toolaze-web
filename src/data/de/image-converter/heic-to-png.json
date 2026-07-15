@@ -187,7 +187,7 @@
     }
   ],
   "compare": {
-    "toolaze": "Unbegrenzte HEIC-zu-PNG-Konvertierung, Verlustfreie Qualitätserhaltung, Vollständige Transparenz-Unterstützung, WebAssembly-betrieben, Universelle Kompatibilität, Keine Dateigrößenlimits, Vollständige EXIF-Erhaltung, 100% private Verarbeitung",
+    "toolaze": "Unbegrenzte HEIC-zu-PNG-Konvertierung, Verlustfreie Qualitätserhaltung, Vollständige Transparenz-Unterstützung, WebAssembly-betrieben, Universelle Kompatibilität, Keine Dateigrößenlimits, Vollständige EXIF-Erhaltung, privacy-aware Verarbeitung",
     "others": "20MB Dateilimits, Cloud-Uploads erforderlich, Qualitätsverlust bei der Konvertierung, Transparenz nicht erhalten, Begrenzte Kompatibilität, Server-Warteschlangen, EXIF-Daten entfernt, Datenschutzbedenken"
   }
 }

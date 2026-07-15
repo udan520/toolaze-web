@@ -6,7 +6,7 @@ export default function OrganizationSchema() {
     url: 'https://toolaze.com',
     logo: 'https://toolaze.com/web-app-manifest-192x192.png',
     sameAs: [],
-    description: 'Free AI Image Compressor & Local Tools - Professional image processing tools that run entirely in your browser.',
+    description: 'AI image tools and creative utilities for creators, with one-time credits and clear usage policies.',
   }
 
   return (

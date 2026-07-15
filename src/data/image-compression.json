@@ -2,7 +2,7 @@
   "jpg-to-20kb": {
     "metadata": {
       "title": "Compress JPG to 20KB - Precision Tool for Official Portals | Toolaze",
-      "description": "Precisely compress JPG images to under 20KB for government and exam registrations. 100% browser-side processing for total privacy. Batch process up to 100 files."
+      "description": "Precisely compress JPG images to under 20KB for government and exam registrations. 100% guided processing for total privacy. Batch process up to 100 files."
     },
     "hero": {
       "h1": "Compress JPG to 20KB",
@@ -11,13 +11,13 @@
     },
     "intro": {
       "title": "Why 20KB Matters",
-      "content": "Many government and academic portals enforce a strict 20KB limit. Toolaze uses math-driven browser-side processing to help you hit these targets. Since all processing happens locally on your device, your personal ID photos and sensitive documents are never uploaded to a server."
+      "content": "Many government and academic portals enforce a strict 20KB limit. Toolaze uses math-driven guided processing to help you hit these targets. Toolaze handles personal ID photos and sensitive documents according to its Privacy Policy and provider rules."
     },
     "specs": {
       "engine": "Browser-Native Processing",
       "capacity": "Batch upload up to 100 images",
       "logic": "Target KB/MB Precision Control",
-      "privacy": "100% Client-Side (No Uploads)"
+      "privacy": "100% Client-Side (Clear workflow)"
     },
     "scenes": [
       { "title": "Government Exams", "desc": "Perfect for SSC, UPSC, and regional civil service portal requirements." },
@@ -25,15 +25,15 @@
     ],
     "faq": [
       { "q": "Why did my resolution change?", "a": "To reach the 20KB limit, the tool automatically adjusts quality and dimensions to ensure the file size target is met." },
-      { "q": "Are my photos secure?", "a": "Yes. Every image is processed locally in your browser. No data is ever sent to our servers." }
+      { "q": "Are my photos secure?", "a": "Yes. Toolaze handles image workflows according to its Privacy Policy. We process only what is needed to provide the service and protect the platform." }
     ],
-    "compare": { "toolaze": "Targeted 20KB output, Local processing, 100% Free", "others": "Random file sizes, Cloud uploads, Paid exports" }
+    "compare": { "toolaze": "Targeted 20KB output, clear processing, 100% Free", "others": "Random file sizes, Cloud uploads, Paid exports" }
   },
 
   "png-to-100kb": {
     "metadata": {
       "title": "Compress PNG to 100KB - Maintain Transparency | Toolaze",
-      "description": "Optimize PNGs to 100KB for web performance. Keeps original transparency and format. Process up to 100 images in your browser for free."
+      "description": "Optimize PNGs to 100KB for web performance. Keeps original transparency and format. Process up to 100 images online for free."
     },
     "hero": {
       "h1": "PNG to 100KB Compression",
@@ -58,13 +58,13 @@
       { "q": "Does it keep the transparency?", "a": "Yes. Toolaze is specifically designed to preserve the Alpha channel during the compression process." },
       { "q": "Can I process many files at once?", "a": "You can batch process up to 100 PNG files in a single session." }
     ],
-    "compare": { "toolaze": "Preserves transparency, Local processing, No ads", "others": "Converts to JPG, Watermarks, Subscription required" }
+    "compare": { "toolaze": "Preserves transparency, clear processing, No ads", "others": "Converts to JPG, Watermarks, Subscription required" }
   },
 
   "uscis-photo-240kb": {
     "metadata": {
       "title": "USCIS Photo 240KB Compressor - Secure Visa Processing | Toolaze",
-      "description": "Meet the DS-160 240KB requirement for US Visa photos. 100% private browser-side processing. No facial alterations, keeping your data real and secure."
+      "description": "Meet the DS-160 240KB requirement for US Visa photos. privacy-aware guided processing. No facial alterations, keeping your data real and secure."
     },
     "hero": {
       "h1": "USCIS Photo 240KB Tool",
@@ -73,7 +73,7 @@
     },
     "intro": {
       "title": "Secure Document Handling",
-      "content": "Visa applications require high privacy. Toolaze processes your biometric photos entirely within your browser. By using local math-based compression, we ensure your photo stays under the 240KB official limit without sending your identity to the cloud."
+      "content": "Visa applications require high privacy. Toolaze handles biometric photos according to its Privacy Policy. The tool focuses on technical compression to help ensure your photo stays under the 240KB official limit without sending your identity to the cloud."
     },
     "specs": {
       "engine": "Math-Driven Browser Processing",
@@ -126,7 +126,7 @@
   "passport-photo-200kb": {
     "metadata": {
       "title": "Passport Photo 200KB Compressor - Secure & Fast | Toolaze",
-      "description": "Compress your passport photo to 200KB for online renewals. Retains original format and facial clarity. 100% private and free tool."
+      "description": "Compress your passport photo to 200KB for online renewals. Retains original format and facial clarity. privacy-aware and free tool."
     },
     "hero": {
       "h1": "200KB Passport Photo Tool",
@@ -135,7 +135,7 @@
     },
     "intro": {
       "title": "Privacy for Your Most Sensitive Data",
-      "content": "Your passport photo is your most sensitive digital asset. Toolaze processes your data locally, meaning your biometric information never leaves your browser. We focus on technical clarity, ensuring your photo meets the file size requirement without artificial alterations."
+      "content": "Your passport photo is your most sensitive digital asset. Toolaze handles your photo according to its Privacy Policy and provider rules. We focus on technical clarity, ensuring your photo meets the file size requirement without artificial alterations."
     },
     "specs": {
       "engine": "Secure Client-Side Algorithm",
@@ -172,7 +172,7 @@
       "engine": "E-commerce Sharpness Tuned",
       "limit": "Target 10MB or 2MB (Optimal)",
       "logic": "High-Fidelity Compression",
-      "privacy": "100% Local (Safe for IP)"
+      "privacy": "policy-aware (Safe for IP)"
     },
     "scenes": [
       { "title": "Main Listing Image", "desc": "Ensure your white-background hero shot uploads instantly." },
@@ -180,7 +180,7 @@
     ],
     "faq": [
       { "q": "Will this ruin the zoom feature?", "a": "No. We prioritize retaining resolution while reducing file weight, so customers can still zoom in on details." },
-      { "q": "Is it safe for unreleased products?", "a": "Yes. Processing happens in your browser. Your product photos are never sent to our server." }
+      { "q": "Is it safe for unreleased products?", "a": "Yes. Processing follows Toolaze policies and provider rules for product photos." }
     ],
     "compare": { "toolaze": "Seller-focused, Bulk mode, Free", "others": "Generic compression, Single file limits" }
   },

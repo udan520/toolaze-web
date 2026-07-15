@@ -35,8 +35,11 @@ const defaultBreadcrumbTranslations = {
   emojiCopyAndPaste: 'Emoji Copy & Paste',
   model: 'Model',
   aboutUs: 'About Us',
+  pricing: 'Pricing',
   privacyPolicy: 'Privacy Policy',
-  termsOfService: 'Terms of Service'
+  termsOfService: 'Terms of Service',
+  refundPolicy: 'Refund Policy',
+  acceptableUse: 'Acceptable Use Policy'
 }
 
 // 加载翻译的函数
@@ -101,13 +104,16 @@ export default function Breadcrumb({ items, variant = 'page' }: BreadcrumbProps)
     if (label === 'Emoji Copy & Paste') return translations.emojiCopyAndPaste || 'Emoji Copy & Paste'
     if (label === 'Model') return translations.model || 'Model'
     if (label === 'About Us') return translations.aboutUs
+    if (label === 'Pricing') return translations.pricing || 'Pricing'
     if (label === 'Privacy Policy') return translations.privacyPolicy
     if (label === 'Terms of Service') return translations.termsOfService
+    if (label === 'Refund Policy') return translations.refundPolicy || 'Refund Policy'
+    if (label === 'Acceptable Use Policy') return translations.acceptableUse || 'Acceptable Use Policy'
     return label
   }
   
   // 仅存在于根路径、无 [locale] 版本的页面，始终不添加 locale 前缀（有 [locale]/... 的勿列入）
-  const LOCALE_LESS_PATHS = ['/model', '/model/seedance-2-5', '/model/seedance-2', '/model/kling-3', '/model/nano-banana-pro', '/model/nano-banana-2', '/model/gpt-image-2', '/model/seedream-4-5', '/model/seedream-5-0-lite', '/model/seedream-5-0-pro', '/model/wan-2-7-image']
+  const LOCALE_LESS_PATHS = ['/pricing', '/refund-policy', '/acceptable-use', '/model', '/model/seedance-2-5', '/model/seedance-2', '/model/kling-3', '/model/nano-banana-pro', '/model/nano-banana-2', '/model/gpt-image-2', '/model/seedream-4-5', '/model/seedream-5-0-lite', '/model/seedream-5-0-pro', '/model/wan-2-7-image']
   const getLocalizedHref = (href: string | undefined): string | undefined => {
     if (!href) return href
     if (href.startsWith('http')) return href

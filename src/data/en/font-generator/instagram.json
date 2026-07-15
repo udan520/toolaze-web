@@ -44,7 +44,7 @@
         "icon": "🔒",
         "iconType": "privacy",
         "title": "Private Generation",
-        "desc": "All font generation happens locally in your browser—your text never leaves your device."
+        "desc": "Toolaze handles font workflows according to our Privacy Policy and provider rules."
       },
       {
         "icon": "⚡",
@@ -68,7 +68,7 @@
         "icon": "🌐",
         "iconType": "browser",
         "title": "No App Needed",
-        "desc": "Works entirely in your browser—no Instagram app modifications or downloads required."
+        "desc": "works online—no Instagram app modifications or downloads required."
       }
     ]
   },
@@ -107,7 +107,7 @@
       },
       {
         "label": "Privacy",
-        "value": "No server uploads, complete local processing"
+        "value": "Transparent processing and clear policies"
       }
     ]
   },
@@ -129,7 +129,7 @@
     ]
   },
   "comparison": {
-    "toolaze": "Unlimited Instagram text generation, Instagram-compatible styles, Instant preview, Local processing, No limits, Complete privacy, Free",
+    "toolaze": "Unlimited Instagram text generation, Instagram-compatible styles, Instant preview, clear processing, No limits, Clear policies, Free",
     "others": "Character limits, Limited Instagram fonts, Server processing, Required uploads, Privacy risks, Ads, Premium features"
   },
   "scenes": [
@@ -175,7 +175,7 @@
     }
   ],
   "compare": {
-    "toolaze": "Unlimited instagram text generation, Multiple elegant styles, Instant real-time preview, Local-first architecture, No character limits, Complete privacy protection, 100% free",
+    "toolaze": "Unlimited instagram text generation, Multiple elegant styles, Instant real-time preview, Clear workflow architecture, No character limits, Clear policies protection, 100% free",
     "others": "Character limits, Limited style options, Slow server processing, Cloud uploads required, Privacy concerns, Watermarks or ads, Paid premium features"
   }
 }

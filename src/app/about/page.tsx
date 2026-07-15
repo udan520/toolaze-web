@@ -6,7 +6,7 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'About Us - Toolaze',
-  description: 'Learn about Toolaze - Free AI image tools that run locally in your browser. Privacy-first, unlimited.',
+  description: 'Learn about Toolaze, an AI image and creative tools platform with one-time credits and clear usage policies.',
   robots: 'index, follow',
   alternates: {
     canonical: 'https://toolaze.com/about',
@@ -44,10 +44,10 @@ export default function AboutPage() {
                 The name comes from a simple philosophy: <strong className="text-slate-900">Tool + Laze</strong>.
               </p>
               <p>
-                We believe that as a creator, your energy is finite. Every minute you spend resizing images, converting formats, or worrying about server privacy is a minute stolen from your creativity.
+                We believe that as a creator, your energy is finite. Every minute you spend resizing images, converting formats, or worrying about unclear processing rules is a minute stolen from your creativity.
               </p>
               <p>
-                We built <strong className="text-slate-900">Toolaze</strong> to be the ultimate &quot;lazy&quot; solution. We use advanced <strong className="text-indigo-600">Local AI</strong> to automate the boring technical stuff instantly in your browser. No uploads, no waiting, no friction.
+                We built <strong className="text-slate-900">Toolaze</strong> to be the ultimate &quot;lazy&quot; solution. We use practical <strong className="text-indigo-600">AI workflows</strong> to automate the boring technical stuff, from generation to editing to file cleanup.
               </p>
               <p className="font-bold text-indigo-600">
                 So go ahead, be a little lazy. We&apos;ve got the tools covered.
@@ -58,8 +58,8 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-white p-8 rounded-[2rem] border border-indigo-50 text-center hover:-translate-y-1 transition-transform group">
               <div className="w-16 h-16 mx-auto bg-indigo-50 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">🧘</div>
-              <h3 className="font-bold text-slate-900 text-lg mb-3">Laze on Privacy</h3>
-              <p className="text-sm text-slate-500">Relax. Your files never leave your device. Zero risk of data leaks means zero anxiety for you.</p>
+              <h3 className="font-bold text-slate-900 text-lg mb-3">Laze on Policy</h3>
+              <p className="text-sm text-slate-500">Use clear privacy, refund, and acceptable-use rules before you spend credits or generate assets.</p>
             </div>
             <div className="bg-white p-8 rounded-[2rem] border border-indigo-50 text-center hover:-translate-y-1 transition-transform group">
               <div className="w-16 h-16 mx-auto bg-purple-50 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">🚀</div>

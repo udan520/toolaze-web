@@ -44,7 +44,7 @@
         "icon": "🔒",
         "iconType": "privacy",
         "title": "Private Font Generation",
-        "desc": "All calligraphy font generation happens locally—your text never leaves your device."
+        "desc": "Calligraphy font previews are quick and covered by clear usage policies."
       },
       {
         "icon": "⚡",
@@ -68,7 +68,7 @@
         "icon": "🌐",
         "iconType": "browser",
         "title": "Browser-Based",
-        "desc": "Runs completely in your browser—no software or calligraphy font downloads required."
+        "desc": "Use it online with no software or calligraphy font downloads required."
       }
     ]
   },
@@ -107,7 +107,7 @@
       },
       {
         "label": "Privacy",
-        "value": "No server uploads, complete local processing"
+        "value": "Transparent processing and clear policies"
       }
     ]
   },
@@ -129,7 +129,7 @@
     ]
   },
   "comparison": {
-    "toolaze": "Unlimited calligraphy text generation, Elegant handwritten styles, Instant preview, Local processing, No limits, Complete privacy, Free",
+    "toolaze": "Unlimited calligraphy text generation, Elegant handwritten styles, Instant preview, clear processing, No limits, Clear policies, Free",
     "others": "Character limits, Few calligraphy options, Server delays, Required uploads, Privacy concerns, Ads, Premium tiers"
   },
   "scenes": [
@@ -175,7 +175,7 @@
     }
   ],
   "compare": {
-    "toolaze": "Unlimited calligraphy text generation, Multiple elegant styles, Instant real-time preview, Local-first architecture, No character limits, Complete privacy protection, 100% free",
+    "toolaze": "Unlimited calligraphy text generation, Multiple elegant styles, Instant real-time preview, Clear workflow architecture, No character limits, Clear policies protection, 100% free",
     "others": "Character limits, Limited style options, Slow server processing, Cloud uploads required, Privacy concerns, Watermarks or ads, Paid premium features"
   }
 }

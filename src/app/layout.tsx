@@ -8,8 +8,8 @@ import GlobalWorkspaceShell from '@/components/GlobalWorkspaceShell'
 import { BROWSER_LOCALE_REDIRECT_SCRIPT } from '@/lib/browser-locale-redirect'
 
 export const metadata: Metadata = {
-  title: 'Toolaze - Free AI Image Compressor & Local Tools',
-  description: 'Compress images locally in your browser. No server uploads, 100% private, free AI tools for creators.',
+  title: 'Toolaze - AI Image Tools and Creative Utilities',
+  description: 'Create, edit, compress, and convert images with AI tools, one-time credits, and clear usage policies.',
   robots: 'index, follow',
   icons: {
     icon: [
@@ -37,8 +37,8 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://toolaze.com',
     siteName: 'Toolaze',
-    title: 'Toolaze - Free AI Image Compressor & Local Tools',
-    description: 'Compress images locally in your browser. No server uploads, 100% private, free AI tools for creators.',
+    title: 'Toolaze - AI Image Tools and Creative Utilities',
+    description: 'Create, edit, compress, and convert images with AI tools, one-time credits, and clear usage policies.',
     images: [
       {
         url: 'https://toolaze.com/web-app-manifest-512x512.png',
@@ -50,8 +50,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Toolaze - Free AI Image Compressor & Local Tools',
-    description: 'Compress images locally in your browser. No server uploads, 100% private, free AI tools for creators.',
+    title: 'Toolaze - AI Image Tools and Creative Utilities',
+    description: 'Create, edit, compress, and convert images with AI tools, one-time credits, and clear usage policies.',
     images: ['https://toolaze.com/web-app-manifest-512x512.png'],
   },
 }
@@ -77,7 +77,7 @@ export default function RootLayout({
     logo: 'https://toolaze.com/web-app-manifest-512x512.png',
     image: 'https://toolaze.com/web-app-manifest-512x512.png',
     sameAs: [],
-    description: 'Free AI Image Compressor & Local Tools - Professional image processing tools that run entirely in your browser.',
+    description: 'AI image tools and creative utilities for creators, with one-time credits and clear usage policies.',
   }
 
   return (

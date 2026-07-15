@@ -56,7 +56,7 @@
         "icon": "⚡",
         "iconType": "speed",
         "title": "Velocidade de conversão rápida",
-        "desc": "Nosso decodificador HEVC alimentado por WebAssembly processa conversões de HEIC para PNG instantaneamente sem uploads de servidor ou atrasos de processamento."
+        "desc": "Nosso decodificador HEVC alimentado por WebAssembly processa conversões de HEIC para PNG instantaneamente Fluxo claro de servidor ou atrasos de processamento."
       },
       {
         "icon": "💎",
@@ -133,7 +133,7 @@
     ]
   },
   "comparison": {
-    "toolaze": "Tamanhos de arquivo ilimitados, Lote 100+ imagens HEIC, Conversão PNG sem perda, Preservação completa de transparência, Alimentado por WebAssembly, Processamento 100% local, Sem uploads, Grátis para sempre",
+    "toolaze": "Tamanhos de arquivo ilimitados, Lote 100+ imagens HEIC, Conversão PNG sem perda, Preservação completa de transparência, Alimentado por WebAssembly, Processamento policy-aware, Fluxo claro, Grátis para sempre",
     "others": "Limites de arquivo de 20MB, Apenas conversão de arquivo único, Perda de qualidade durante conversão, Transparência não preservada, Uploads na nuvem necessários, Filas de servidor, Atualizações pagas"
   },
   "scenes": [

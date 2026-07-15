@@ -7,7 +7,7 @@ interface RatingProps {
 
 export default function Rating({ title, rating, description, bgClass = 'bg-white' }: RatingProps) {
   const defaultRating = rating || '4.9/5 FROM 10K+ CREATORS'
-  const defaultDescription = description || 'Join thousands of satisfied users who trust Toolaze for fast, secure, and free image compression. No registration required, 100% private processing.'
+  const defaultDescription = description || 'Join thousands of satisfied users who trust Toolaze for fast, secure, and free image compression. No registration required, clear privacy and usage policies.'
   const defaultTitle = title || 'Trusted by Thousands of Creators'
 
   return (

@@ -44,7 +44,7 @@
         "icon": "🔒",
         "iconType": "privacy",
         "title": "Complete Privacy Protection",
-        "desc": "All font generation happens locally in your browser—your text never leaves your device, ensuring absolute data security."
+        "desc": "Toolaze handles font workflows according to our Privacy Policy and provider rules."
       },
       {
         "icon": "⚡",
@@ -107,7 +107,7 @@
       },
       {
         "label": "Privacy",
-        "value": "No server uploads, complete local processing"
+        "value": "Transparent processing and clear policies"
       }
     ]
   },
@@ -135,7 +135,7 @@
     "vs": "VS",
     "smartChoice": "Smart Choice",
     "otherTools": "Other Tools",
-    "toolazeFeatures": "Unlimited text length, Multiple font styles, Instant preview, Real-time generation, 100% local processing, No uploads, Free",
+    "toolazeFeatures": "Unlimited text length, Multiple font styles, Instant preview, Real-time generation, policy-aware workflow, Clear workflow, Free",
     "othersFeatures": "Character limits, Limited styles, Slow processing, Server uploads required, Cloud queues, Privacy concerns, Paid upgrades"
   },
   "scenesTitle": "Use Cases",
@@ -169,7 +169,7 @@
     },
     {
       "q": "Is this font generator really free?",
-      "a": "Yes! Toolaze is 100% free with no ads, no registration, and no hidden fees. All font generation happens in your browser."
+      "a": "Yes! Toolaze is 100% free with no ads, no registration, and no hidden fees. Font previews use Toolaze's current tool workflow."
     },
     {
       "q": "Can I use these fonts on social media?",
@@ -177,7 +177,7 @@
     },
     {
       "q": "Are my texts uploaded to a server?",
-      "a": "No! All font generation happens locally in your browser using JavaScript. Your text never leaves your device, ensuring complete privacy."
+      "a": "Toolaze handles font workflows according to our Privacy Policy and provider rules."
     },
     {
       "q": "Can I download font files?",

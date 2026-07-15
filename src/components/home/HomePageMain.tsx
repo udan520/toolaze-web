@@ -260,10 +260,10 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
         tool: 'world-cup-ai-image-generator',
         title: 'World Cup AI Image Generator',
         description:
-          'Create football posters, fan portraits, sticker packs, and watch-party visuals with GPT Image 2 directly in your browser.',
+          'Create football posters, fan portraits, sticker packs, and watch-party visuals with GPT Image 2 from the web interface.',
         href: '/world-cup-ai-image-generator',
         featuredDesc:
-          'Create football posters, fan portraits, sticker packs, and watch-party visuals with GPT Image 2 directly in your browser.',
+          'Create football posters, fan portraits, sticker packs, and watch-party visuals with GPT Image 2 from the web interface.',
         modelName: 'World Cup AI Image Generator',
         modelType: 'AI Image Generator',
       },
@@ -649,7 +649,7 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
             <p className="text-slate-600 max-w-3xl text-base md:text-lg leading-relaxed">
               {home?.sectionToolsSubtitle ??
                 home?.utilityToolsSubtitle ??
-                'Fast, private utilities that run in your browser—image compression and format conversion, stylish font previews, and emoji copy-and-paste. No AI generation required.'}
+                'Fast utility tools for image compression and format conversion, stylish font previews, and emoji copy-and-paste. No AI generation required.'}
             </p>
           </div>
 

@@ -56,7 +56,7 @@
         "icon": "⚡",
         "iconType": "speed",
         "title": "Conversão ultrarrápida",
-        "desc": "Nosso mecanismo nativo do navegador processa conversões PNG para WebP instantaneamente sem uploads do servidor, filas de download ou atrasos de processamento."
+        "desc": "Nosso mecanismo nativo do navegador processa conversões PNG para WebP instantaneamente Fluxo claro do servidor, filas de download ou atrasos de processamento."
       },
       {
         "icon": "💎",
@@ -133,7 +133,7 @@
     ]
   },
   "comparison": {
-    "toolaze": "Tamanhos de arquivo ilimitados, Lote 100+ imagens PNG, Redução de tamanho 25-35%, Transparência preservada, 100% processamento local, Sem uploads, Grátis para sempre",
+    "toolaze": "Tamanhos de arquivo ilimitados, Lote 100+ imagens PNG, Redução de tamanho 25-35%, Transparência preservada, 100% processamento local, Fluxo claro, Grátis para sempre",
     "others": "Limites de arquivo de 20MB, Apenas conversão de arquivo único, Compressão ruim, Transparência perdida, Uploads na nuvem necessários, Filas de servidor, Atualizações pagas"
   },
   "scenes": [

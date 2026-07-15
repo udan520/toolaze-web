@@ -28,8 +28,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   // Load translations for metadata
   const t = await loadCommonTranslations(locale)
   const metadata = t?.home?.metadata || {
-    title: 'Toolaze - Free AI Image Compressor & Local Tools',
-    description: 'Compress images locally in your browser. No server uploads, 100% private, free AI tools for creators.'
+    title: 'Toolaze - AI Image Tools and Creative Utilities',
+    description: 'Create, edit, compress, and convert images with AI tools, one-time credits, and clear usage policies.'
   }
   
   return {

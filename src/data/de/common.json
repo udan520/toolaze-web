@@ -51,7 +51,7 @@
   "home": {
     "metadata": {
       "title": "Toolaze - Kostenloser KI Bildgenerator & KI Videogenerator Online",
-      "description": "Kostenloser KI Bildgenerator und KI Videogenerator online. Erstellen Sie 4K-Bilder mit Nano Banana 2, generieren Sie Videos mit Seedance 2.0 und Kling 3.0. Text-zu-Bild, Text-zu-Video. Keine Anmeldung erforderlich. Bildkomprimierung und Formatkonvertierungstools ebenfalls."
+      "description": "Erstelle, bearbeite, komprimiere und konvertiere Bilder mit KI-Tools, Einmal-Credits und klaren Nutzungsregeln."
     },
     "badge": "Kostenlose KI-Tools",
     "titleLine1": "All-in-One KI Bild- & Video",
@@ -245,15 +245,18 @@
     "aboutUs": "Über uns",
     "privacyPolicy": "Datenschutzrichtlinie",
     "termsOfService": "Nutzungsbedingungen",
+    "pricing": "Preise",
     "contact": "Kontakt",
     "language": "Sprache",
     "footerNavigation": "Footer-Navigation",
     "noToolsAvailable": "Keine Tools verfügbar",
     "copyright": "© {year} Toolaze Lab. Alle Rechte vorbehalten.",
-    "tagline": "Kostenlose Online-Tools • Keine Registrierung erforderlich • 100% Privat",
+    "tagline": "KI-Generierungstools • Einmal-Credits • Klare Nutzungsregeln",
     "wan27Image": "Wan 2.7 Image",
     "worldCupAiImageGenerator": "WM-KI-Bildgenerator",
-    "aiImageGenerator": "KI-Bildgenerator"
+    "aiImageGenerator": "KI-Bildgenerator",
+    "refundPolicy": "Rückerstattungsrichtlinie",
+    "acceptableUse": "Richtlinie zur zulässigen Nutzung"
   },
   "breadcrumb": {
     "home": "Startseite",
@@ -264,6 +267,7 @@
     "aboutUs": "Über uns",
     "privacyPolicy": "Datenschutzrichtlinie",
     "termsOfService": "Nutzungsbedingungen",
+    "pricing": "Preise",
     "emojiCopyAndPaste": "Emoji kopieren & einfügen",
     "watermarkRemover": "Wasserzeichen-Entferner",
     "aiTools": "KI-Tools",
@@ -274,12 +278,14 @@
     "aiBabyGenerator": "KI-Babygenerator",
     "textToImageGenerator": "Text-zu-Bild-Generator",
     "aiImageToImageGenerator": "KI-Bild-zu-Bild-Generator",
-    "worldCupAiImageGenerator": "WM-KI-Bildgenerator"
+    "worldCupAiImageGenerator": "WM-KI-Bildgenerator",
+    "refundPolicy": "Rückerstattungsrichtlinie",
+    "acceptableUse": "Richtlinie zur zulässigen Nutzung"
   },
   "about": {
     "metadata": {
       "title": "Über uns - Toolaze",
-      "description": "Erfahren Sie mehr über Toolaze - Kostenlose KI-Bildtools, die lokal in Ihrem Browser laufen. Datenschutz zuerst, unbegrenzt."
+      "description": "Erfahre mehr über Toolaze, eine Plattform für KI-Bildtools mit Einmal-Credits und klaren Nutzungsregeln."
     },
     "title": "Wir kümmern uns um das Tool. Sie kümmern sich um die Laze.",
     "titleTool": "Tool",
@@ -289,21 +295,21 @@
       "title": "Warum \"Toolaze\"?",
       "content1": "Der Name kommt von einer einfachen Philosophie: Tool + Laze.",
       "content2": "Wir glauben, dass Ihre Energie als Kreativer begrenzt ist. Jede Minute, die Sie damit verbringen, Bilder zu ändern, Formate zu konvertieren oder sich über Server-Datenschutz Sorgen zu machen, ist eine Minute, die Ihrer Kreativität gestohlen wird.",
-      "content3": "Wir haben Toolaze als die ultimative \"faule\" Lösung gebaut. Wir verwenden fortschrittliche lokale KI, um die langweiligen technischen Dinge sofort in Ihrem Browser zu automatisieren. Keine Uploads, kein Warten, keine Reibung.",
+      "content3": "Wir haben Toolaze als einfache Lösung für kreative Arbeit gebaut. Praktische KI-Workflows übernehmen wiederholbare Aufgaben, von Generierung über Bearbeitung bis zur Dateiaufbereitung.",
       "content4": "Also los, seien Sie ein bisschen faul. Wir haben die Tools abgedeckt."
     },
     "features": {
       "privacy": {
-        "title": "Laze beim Datenschutz",
-        "desc": "Entspannen Sie sich. Ihre Dateien verlassen niemals Ihr Gerät. Null Risiko von Datenlecks bedeutet null Angst für Sie."
+        "title": "Regeln ohne Stress",
+        "desc": "Klare Datenschutz-, Rückerstattungs- und Nutzungsregeln, bevor du Credits ausgibst oder Inhalte generierst."
       },
       "waiting": {
         "title": "Laze beim Warten",
-        "desc": "Warum auf Uploads warten? Unsere lokale WebAssembly-Engine verarbeitet Dateien sofort. Fertig im Handumdrehen."
+        "desc": "Überspringe wiederholbare Einrichtung. Toolaze bündelt KI-Generierung, Bearbeitung und Dateiaufbereitung in einem Arbeitsbereich."
       },
       "cost": {
         "title": "Laze bei den Kosten",
-        "desc": "Behalten Sie Ihre Brieftasche geschlossen. Wir haben keine teuren Serverrechnungen, also müssen Sie keine Abonnementgebühren zahlen."
+        "desc": "Kaufe Credits einmalig und nutze sie in unterstützten Tools. Bestätigt fehlgeschlagene Generierungen geben Credits zurück."
       }
     },
     "cta": {
@@ -316,7 +322,7 @@
     "tryNow": "Jetzt ausprobieren →",
     "rating": {
       "rating": "4.9/5 VON 10K+ KREATIVEN",
-      "description": "Schließen Sie sich Tausenden zufriedener Benutzer an, die Toolaze für schnelle, sichere und kostenlose Bildkomprimierung vertrauen. Keine Registrierung erforderlich, 100% private Verarbeitung.",
+      "description": "Schließen Sie sich Tausenden zufriedener Benutzer an, die Toolaze für schnelle, sichere und kostenlose Bildkomprimierung vertrauen. Keine Registrierung erforderlich, privacy-aware Verarbeitung.",
       "title": "Vertraut von Tausenden von Creators"
     },
     "fontGenerator": {
@@ -861,96 +867,96 @@
   "privacy": {
     "metadata": {
       "title": "Datenschutzrichtlinie - Toolaze",
-      "description": "Toolaze Datenschutzrichtlinie - Wir verarbeiten alle Bilder lokal in Ihrem Browser. Ihre Dateien verlassen niemals Ihr Gerät."
+      "description": "Toolaze Datenschutzrichtlinie für KI-Generierung, Uploads, Credits, Zahlungen, Analysen und Anbieter."
     },
     "title": "Datenschutzrichtlinie",
     "lastUpdated": "Zuletzt aktualisiert:",
-    "date": "14. Januar 2026",
-    "intro": "Bei Toolaze (\"wir\", \"uns\" oder \"unser\"), erreichbar unter https://toolaze.com, ist unsere Hauptpriorität die Privatsphäre unserer Besucher. Dieses Datenschutzrichtliniendokument enthält Arten von Informationen, die von Toolaze gesammelt und aufgezeichnet werden, und wie wir sie verwenden.",
+    "date": "15. Juli 2026",
+    "intro": "Toolaze bietet KI-Generierung und Kreativtools. Diese Richtlinie erklärt, wie wir Prompts, Uploads, Ergebnisse, Credits, Zahlungen, Analysen und Supportdaten verarbeiten.",
     "section1": {
-      "title": "1. Kernversprechen zum Datenschutz: Lokale Verarbeitung",
-      "content": "Wir unterscheiden uns dadurch, dass wir Ihre Privatsphäre priorisieren. Wir laden Ihre Bilder oder Videos nicht auf unsere Server hoch.",
+      "title": "1. KI-Generierung und hochgeladene Inhalte",
+      "content": "Toolaze kann Informationen verarbeiten, die für das ausgewählte Tool oder die Generierung erforderlich sind.",
       "points": [
-        "Die gesamte Dateiverarbeitung erfolgt lokal in Ihrem Webbrowser.",
-        "Ihre Dateien verlassen niemals Ihr Gerät.",
-        "Wir können Ihre Inhalte nicht ansehen, kopieren oder verkaufen."
+        "KI-Generierung kann Prompts, hochgeladene Bilder, Videos, Referenzdateien und Ergebnisse an KI-Anbieter senden.",
+        "Creem oder ein anderer Zahlungsdienst kann Checkout, Belege, Steuern und Rückerstattungen abwickeln.",
+        "Wir können Inhalte und Metadaten für Verlauf, Downloads, Missbrauchsschutz, Abrechnung, Fehleranalyse, Rückerstattungen und Support speichern."
       ]
     },
     "section2": {
-      "title": "2. Informationen, die wir sammeln",
-      "content": "Wir sammeln Ihre Dateien nicht. Wir können anonyme, nicht persönliche Informationen sammeln, um unseren Service zu verbessern:",
+      "title": "2. Informationen, die wir erfassen",
+      "content": "Wir erfassen Konto-, Nutzungs-, Zahlungs- und technische Daten, die zum Betrieb von Toolaze nötig sind.",
       "logFiles": {
-        "title": "A. Protokolldateien",
-        "content": "Toolaze folgt einem Standardverfahren zur Verwendung von Protokolldateien. Diese Dateien protokollieren Besucher, wenn sie Websites besuchen. Die gesammelten Informationen umfassen Internetprotokoll (IP)-Adressen, Browsertyp, Datums- und Zeitstempel sowie Verweis-/Ausstiegsseiten. Diese sind nicht mit Informationen verknüpft, die persönlich identifizierbar sind."
+        "title": "A. Protokolle und Nutzungsdaten",
+        "content": "Protokolle können IP-Adresse, Browser, Gerät, Generierungsstatus, Credit-Änderungen, Zeitstempel und Fehlerdetails enthalten."
       },
       "cookies": {
-        "title": "B. Cookies",
-        "content": "Toolaze verwendet \"Cookies\" ausschließlich, um Informationen über die Präferenzen der Besucher zu speichern (z. B. Einstellungen für den dunklen Modus) und um die Benutzererfahrung zu optimieren."
+        "title": "B. Cookies und Analysen",
+        "content": "Toolaze nutzt Cookies und Analysen für Anmeldung, Einstellungen, Checkout, Sicherheit, Zuverlässigkeit und Produktmessung."
       }
     },
     "section3": {
-      "title": "3. Analyse",
-      "content": "Wir verwenden Google Analytics, um zu verstehen, wie unsere Website verwendet wird, um die Benutzererfahrung zu verbessern (z. B. welche Tools am beliebtesten sind). Alle gesammelten Benutzerdaten sind anonym und aggregiert. Wir verwenden diese Daten nicht für Werbeprofilierung."
+      "title": "3. KI-Anbieter und Dienstleister",
+      "content": "Wir können Prompts, Uploads, Ergebnisse, Kontoereignisse und Zahlungsmetadaten mit KI-, Hosting-, Speicher-, CDN-, Analyse-, Moderations-, Authentifizierungs-, E-Mail- und Zahlungsdiensten teilen."
     },
     "section4": {
-      "title": "4. DSGVO & CCPA-Rechte",
-      "content": "Wir respektieren Ihre Datenrechte. Da wir keine persönlichen Daten oder Dateien speichern, \"verkaufen\" wir Ihre Daten nicht. Sie haben jederzeit das Recht, Informationen über unsere Datenpraktiken anzufordern."
+      "title": "4. Deine Rechte",
+      "content": "Je nach Standort kannst du Auskunft, Berichtigung, Löschung oder Export bestimmter personenbezogener Daten verlangen. Manche Daten müssen aus Sicherheits-, Steuer-, Buchhaltungs-, Rechts- oder Betrugspräventionsgründen aufbewahrt werden."
     },
     "section5": {
-      "title": "5. Kontaktieren Sie uns",
-      "content": "Wenn Sie weitere Fragen haben, zögern Sie nicht, uns unter support@toolaze.com zu kontaktieren."
+      "title": "5. Kontakt",
+      "content": "Fragen zu dieser Datenschutzrichtlinie kannst du an support@toolaze.com senden."
     }
   },
   "terms": {
     "metadata": {
       "title": "Nutzungsbedingungen - Toolaze",
-      "description": "Toolaze Nutzungsbedingungen - Kostenlose KI-Bildtools mit lokaler Verarbeitung. Keine Registrierung erforderlich."
+      "description": "Toolaze Nutzungsbedingungen für KI-Generierung, Credits, Einmalkäufe, kommerzielle Nutzung, Rückerstattungen und zulässige Nutzung."
     },
     "title": "Nutzungsbedingungen",
     "lastUpdated": "Zuletzt aktualisiert:",
-    "date": "14. Januar 2026",
-    "intro": "Willkommen bei Toolaze! Durch den Zugriff auf oder die Nutzung unserer Website (https://toolaze.com) stimmen Sie zu, an diese Nutzungsbedingungen (\"Bedingungen\") gebunden zu sein. Wenn Sie mit einem Teil der Bedingungen nicht einverstanden sind, dürfen Sie möglicherweise nicht auf den Service zugreifen.",
+    "date": "15. Juli 2026",
+    "intro": "Willkommen bei Toolaze. Durch die Nutzung stimmst du diesen Bedingungen, der Datenschutzrichtlinie, der Rückerstattungsrichtlinie und der Richtlinie zur zulässigen Nutzung zu.",
     "section1": {
-      "title": "1. Beschreibung des Services",
-      "content": "Toolaze bietet kostenlose, webbasierte KI-Tools für Bild- und Videoverarbeitung (z. B. Komprimierung, Konvertierung, Bearbeitung).",
-      "localProcessing": "Lokale Verarbeitung: Unser besonderes Merkmal ist, dass wir Dateien lokal in Ihrem Browser mit WebAssembly-Technologie verarbeiten. Wir laden Ihre Dateien nicht auf unsere Server hoch oder speichern sie dort."
+      "title": "1. Beschreibung des Dienstes",
+      "content": "Toolaze bietet KI-Generierung, KI-Bearbeitung, Bild- und Videotools, Prompt-Workflows, Verlauf und creditbasierte Käufe.",
+      "localProcessing": "KI-Generierung: Manche Tools nutzen Modellanbieter und Cloud-Infrastruktur, um Prompts, Uploads und Ergebnisse zu verarbeiten."
     },
     "section2": {
-      "title": "2. Nutzung des Services",
-      "license": "Lizenz: Wir gewähren Ihnen eine begrenzte, nicht ausschließliche, nicht übertragbare Lizenz zur Nutzung unserer Tools für persönliche oder kommerzielle Zwecke, vorausgesetzt, Sie halten sich an diese Bedingungen.",
-      "noRegistration": "Keine Registrierung: Sie müssen kein Konto erstellen, um unsere aktuellen Tools zu verwenden.",
-      "prohibitedActs": "Verbotene Handlungen: Sie stimmen zu, Folgendes nicht zu tun:",
+      "title": "2. Nutzung des Dienstes",
+      "license": "Lizenz: Du darfst Toolaze privat oder kommerziell nutzen, wenn du diese Bedingungen einhältst.",
+      "noRegistration": "Credits: Gekaufte Credits sind Einmalkäufe, 12 Monate gültig und werden bei bestätigter fehlgeschlagener Generierung zurückgegeben.",
+      "prohibitedActs": "Zulässige Nutzung: Du verpflichtest dich, Folgendes zu unterlassen:",
       "prohibitedList": [
-        "Den Service reverse zu entwickeln, zu dekompilieren oder zu versuchen, den Quellcode des Services zu extrahieren.",
-        "Den Service zur Verarbeitung illegaler Inhalte zu verwenden.",
-        "Automatisierte Skripte (Bots) zu verwenden, die die Stabilität unserer Website beeinträchtigen."
+        "Den Dienst zurückzuentwickeln, zu dekompilieren, zu scrapen, zu überlasten oder zu stören.",
+        "Illegale, NSFW-, sexuelle, hasserfüllte, täuschende oder rechtsverletzende Inhalte zu erstellen.",
+        "Automatisierte Systeme zu nutzen, die Verfügbarkeit, Sicherheit, Zahlungen oder Schutzsysteme beeinträchtigen."
       ]
     },
     "section3": {
-      "title": "3. Benutzerinhalte & Daten",
-      "ownership": "Ihr Eigentum: Sie behalten alle Rechte und das Eigentum an den Bildern oder Videos, die Sie mit Toolaze verarbeiten. Wir erheben keinen Anspruch auf geistige Eigentumsrechte an Ihren Inhalten.",
-      "noLiability": "Keine Haftung für Datenverlust: Da wir Ihre Dateien nicht speichern, können wir sie nicht für Sie wiederherstellen. Sie sind allein dafür verantwortlich, Ihre ursprünglichen Daten zu sichern. Wenn Ihr Browser abstürzt oder die Seite während der Verarbeitung aktualisiert wird, kann jeder nicht gespeicherte Fortschritt verloren gehen, und Toolaze haftet nicht für einen solchen Verlust."
+      "title": "3. Nutzerinhalte und kommerzielle Nutzung",
+      "ownership": "Dein Eigentum: Du behältst Rechte, die du an Prompts, Uploads, Referenzen und Ergebnissen bereits hast.",
+      "noLiability": "Kommerzielle Nutzung: Ergebnisse dürfen kommerziell genutzt werden, vorbehaltlich dieser Bedingungen, der Nutzungsrichtlinie, geltendem Recht und Regeln von Modellanbietern."
     },
     "section4": {
       "title": "4. Geistiges Eigentum",
-      "content": "Der Service selbst (ausgenommen Ihre Inhalte), einschließlich seiner ursprünglichen Inhalte, Funktionen, Codes und Funktionalität, ist und bleibt das ausschließliche Eigentum von Toolaze und seinen Lizenzgebern. Unsere Marken (einschließlich des Namens \"Toolaze\" und des Logos) dürfen nicht ohne vorherige schriftliche Zustimmung verwendet werden."
+      "content": "Toolaze einschließlich Website, Software, Design, Marke, Logos und Funktionen gehört Toolaze und seinen Lizenzgebern."
     },
     "section5": {
-      "title": "5. Haftungsausschluss für Garantien (\"WIE BESEHEN\")",
-      "content": "Der Service wird \"WIE BESEHEN\" und \"WIE VERFÜGBAR\" bereitgestellt. Toolaze gibt keine Zusicherungen oder Garantien jeglicher Art, ausdrücklich oder stillschweigend, bezüglich des Betriebs des Services oder der Genauigkeit der KI-Verarbeitungsergebnisse.",
-      "guarantee": "Wir garantieren nicht, dass die Bildqualität nach der Komprimierung perfekt Ihren Erwartungen entspricht, da KI-Algorithmen je nach Dateityp variieren können."
+      "title": "5. Grenzen von KI-Ergebnissen",
+      "content": "KI-Ergebnisse können ungenau, unerwartet, verzögert, nicht verfügbar, ähnlich zu Ergebnissen anderer Nutzer oder durch Schutzsysteme blockiert sein.",
+      "guarantee": "Wir garantieren nicht, dass ein Modellanbieter ein bestimmtes Ergebnis, Qualitätsniveau, Format, Stil oder Lieferzeit liefert."
     },
     "section6": {
       "title": "6. Haftungsbeschränkung",
-      "content": "In keinem Fall haftet Toolaze für indirekte, zufällige, besondere, Folgeschäden oder Strafschäden, einschließlich ohne Einschränkung, Verlust von Gewinnen, Daten, Nutzung oder Goodwill, die sich aus Ihrer Nutzung des Services ergeben."
+      "content": "Soweit gesetzlich zulässig haftet Toolaze nicht für indirekte, zufällige, besondere, Folge-, Straf- oder Gewinnausfallschäden aus der Nutzung des Dienstes."
     },
     "section7": {
-      "title": "7. Änderungen der Bedingungen",
-      "content": "Wir behalten uns das Recht vor, diese Bedingungen jederzeit zu ändern oder zu ersetzen. Durch fortgesetzten Zugriff auf unseren Service nach Inkrafttreten dieser Überarbeitungen stimmen Sie zu, an die überarbeiteten Bedingungen gebunden zu sein."
+      "title": "7. Rückerstattungen und Änderungen",
+      "content": "Rückerstattungen sind für ungenutzte Credits gemäß der Rückerstattungsrichtlinie verfügbar. Wir können diese Bedingungen aktualisieren; weitere Nutzung gilt als Annahme."
     },
     "section8": {
-      "title": "8. Kontaktieren Sie uns",
-      "content": "Wenn Sie Fragen zu diesen Bedingungen haben, kontaktieren Sie uns bitte unter: support@toolaze.com"
+      "title": "8. Kontakt",
+      "content": "Fragen zu diesen Bedingungen kannst du an support@toolaze.com senden"
     }
   }
 }

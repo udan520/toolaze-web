@@ -73,7 +73,7 @@
     "vs": "VS",
     "smartChoice": "Smart Choice",
     "otherTools": "Other Tools",
-    "toolazeFeatures": "Batch up to 100 images, Multiple format support, Quality preserved, 100% private & free, No sign-up required",
+    "toolazeFeatures": "Batch up to 100 images, Multiple format support, Quality preserved, clear policies & free, No sign-up required",
     "othersFeatures": "Limited batch size, Format restrictions, Quality loss, Privacy concerns, Registration required"
   },
   "scenesTitle": "Use Cases",
@@ -97,7 +97,7 @@
   "rating": {
     "title": "Trusted by Thousands of Creators",
     "rating": "4.9/5 FROM 10K+ CREATORS",
-    "text": "Join thousands of satisfied users who trust Toolaze for fast, secure, and free image conversion. No registration required, 100% private processing."
+    "text": "Join thousands of satisfied users who trust Toolaze for fast, secure, and free image conversion. No registration required, clear privacy practices."
   },
   "faqTitle": "Frequently Asked Questions",
   "faq": [
@@ -107,7 +107,7 @@
     },
     {
       "q": "Is this tool really free?",
-      "a": "Yes! Toolaze is 100% free with no ads, no registration, and no hidden fees. All processing happens in your browser."
+      "a": "Yes! Toolaze is 100% free with no ads, no registration, and no hidden fees. Processing follows Toolaze policies for the selected tool."
     },
     {
       "q": "Can I convert more than 100 images?",
@@ -115,7 +115,7 @@
     },
     {
       "q": "Are my images uploaded to a server?",
-      "a": "No! All image conversion happens locally in your browser using JavaScript. Your images never leave your device, ensuring complete privacy."
+      "a": "No! Toolaze handles image conversion workflows according to our Privacy Policy and provider rules."
     },
     {
       "q": "Will quality be preserved during conversion?",

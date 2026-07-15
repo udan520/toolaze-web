@@ -44,7 +44,7 @@
         "icon": "🔒",
         "iconType": "privacy",
         "title": "Absolute Privacy Protection",
-        "desc": "Every conversion occurs entirely within your browser—your HEIC files never leave your device, guaranteeing complete data security and privacy."
+        "desc": "Processing depends on the selected tool and may use Toolaze systems when required."
       },
       {
         "icon": "📦",
@@ -133,7 +133,7 @@
     ]
   },
   "comparison": {
-    "toolaze": "Unlimited file sizes, Batch 100+ HEIC images, Optimized WebP compression, Transparency preserved, WebAssembly-powered, 100% local processing, No uploads, Free",
+    "toolaze": "Unlimited file sizes, Batch 100+ HEIC images, Optimized WebP compression, Transparency preserved, WebAssembly-powered, policy-aware workflow, Clear workflow, Free",
     "others": "20MB file limits, Single file conversion only, Poor compression quality, Transparency lost, Cloud uploads required, Server queues, Paid upgrades"
   },
   "scenes": [
@@ -171,7 +171,7 @@
     },
     {
       "q": "Is HEIC to WebP conversion free and secure?",
-      "a": "Yes, Toolaze is completely free with no hidden costs, subscriptions, or advertisements. Most importantly, all conversion happens locally in your browser using WebAssembly-powered HEVC decoder technology. Your HEIC files never leave your device—they're never uploaded to any server, ensuring 100% privacy and security for your iPhone photos."
+      "a": "Yes, Toolaze is completely free with no hidden costs, subscriptions, or advertisements. Most importantly, Processing depends on the selected tool and may use Toolaze systems when required. Toolaze handles uploaded content according to our Privacy Policy and provider rules."
     },
     {
       "q": "Can I convert multiple HEIC files to WebP at once?",
@@ -187,7 +187,7 @@
     }
   ],
   "compare": {
-    "toolaze": "Unlimited HEIC to WebP conversion, Optimized compression, Full transparency preservation, WebAssembly-powered, Universal browser support, No file size limits, Complete EXIF preservation, 100% private processing",
+    "toolaze": "Unlimited HEIC to WebP conversion, Optimized compression, Full transparency preservation, WebAssembly-powered, Universal browser support, No file size limits, Complete EXIF preservation, clear privacy practices",
     "others": "20MB file limits, Cloud uploads required, Poor compression quality, Transparency lost, Limited browser support, Server queues, EXIF data stripped, Privacy concerns"
   }
 }

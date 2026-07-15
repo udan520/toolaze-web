@@ -31,7 +31,7 @@ export default function ImageCompressor({ initialTarget, initialTranslations }: 
     gallery: { title: 'Gallery Preview', added: 'Added:', original: 'Original:', new: 'New:', preview: 'Preview' },
     actions: { close: 'Close', delete: 'Delete' },
     status: { waiting: 'Waiting', running: 'Running', done: 'Done', error: 'Error' },
-    trustBar: { private: '100% Private', localBrowser: 'Local Browser API', noServerLogs: 'No Server Logs' }
+    trustBar: { private: 'Privacy aware', localBrowser: 'Fast browser tools', noServerLogs: 'Clear policies' }
   }
   
   // Parse target from slug
@@ -907,9 +907,9 @@ export default function ImageCompressor({ initialTarget, initialTranslations }: 
           )}
         </div>
         <div className="mt-8 flex flex-wrap justify-center gap-4 text-[11px] font-bold text-indigo-900/60 uppercase tracking-widest">
-          <span>🔒 {toolT.trustBar?.private || '100% Private'}</span> <span className="hidden md:block">|</span>
-          <span>⚡ {toolT.trustBar?.localBrowser || 'Local Browser API'}</span> <span className="hidden md:block">|</span>
-          <span>🚫 {toolT.trustBar?.noServerLogs || 'No Server Logs'}</span>
+          <span>🔒 {toolT.trustBar?.private || 'Privacy aware'}</span> <span className="hidden md:block">|</span>
+          <span>⚡ {toolT.trustBar?.localBrowser || 'Fast browser tools'}</span> <span className="hidden md:block">|</span>
+          <span>🚫 {toolT.trustBar?.noServerLogs || 'Clear policies'}</span>
         </div>
       </div>
     </>

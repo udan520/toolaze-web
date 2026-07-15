@@ -12,7 +12,7 @@
     "description": [
       "Kuaishou's Kling 3.0 brings a unified multimodal architecture to AI video: text-to-video, image-to-video, reference-to-video, and in-video editing in one pipeline. Input text, images, audio, or video—and get native 4K or 2K output with up to 6 camera cuts per generation.",
       "The model handles photorealistic output, text preservation for signage and logos, and multi-shot storytelling with native audio in English, Chinese, Japanese, Korean, and Spanish—including regional dialects and multi-character dialogue. Output is 15-second videos with custom duration control.",
-      "Toolaze offers free access online. No sign-up required—start creating from your browser."
+      "Toolaze offers free access online. No sign-up required—start creating from the web interface."
     ],
     "featureCards": [
       {
@@ -46,7 +46,7 @@
       },
       {
         "title": "Free Online Access with No Registration Required",
-        "text": "Toolaze provides free access to Kling 3.0 AI video generation online. No sign-up, no credit card, and no hidden fees. Whether you're a content creator prototyping ideas, a marketer testing ad concepts, or a filmmaker exploring storyboards, you can start creating 4K videos immediately. The free AI video generator supports text-to-video, image-to-video, and full multimodal generation—all from your browser with no software installation required."
+        "text": "Toolaze provides free access to Kling 3.0 AI video generation online. No sign-up, no credit card, and no hidden fees. Whether you're a content creator prototyping ideas, a marketer testing ad concepts, or a filmmaker exploring storyboards, you can start creating 4K videos immediately. The free AI video generator supports text-to-video, image-to-video, and full multimodal generation—from the web interface with no software installation required."
       }
     ]
   },

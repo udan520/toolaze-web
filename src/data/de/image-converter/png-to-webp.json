@@ -187,7 +187,7 @@
     }
   ],
   "compare": {
-    "toolaze": "Unbegrenzte PNG-zu-WebP-Konvertierung, 25-35% Größenreduzierung, Vollständige Transparenz-Erhaltung, Lokale Architektur, Keine Dateigrößenlimits, Vollständige EXIF-Erhaltung, 100% private Verarbeitung",
+    "toolaze": "Unbegrenzte PNG-zu-WebP-Konvertierung, 25-35% Größenreduzierung, Vollständige Transparenz-Erhaltung, Klare Workflow-Architektur, Keine Dateigrößenlimits, Vollständige EXIF-Erhaltung, privacy-aware Verarbeitung",
     "others": "20MB Dateilimits, Cloud-Uploads erforderlich, Schlechte Komprimierungsqualität, Transparenz verloren, Server-Warteschlangen, EXIF-Daten entfernt, Datenschutzbedenken"
   }
 }

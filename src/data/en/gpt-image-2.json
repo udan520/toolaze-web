@@ -42,7 +42,7 @@
     "modelType": "AI Image Model",
     "description": [
       "GPT Image 2 supports both text-to-image and image-to-image workflows. You can describe a concept from scratch or upload reference images to guide style and composition.",
-      "On Toolaze, you can run GPT Image 2 directly in your browser with practical controls for aspect ratio and resolution. This helps creative teams iterate quickly while keeping output settings consistent.",
+      "On Toolaze, you can run GPT Image 2 from the web interface with practical controls for aspect ratio and resolution. This helps creative teams iterate quickly while keeping output settings consistent.",
       "The same interface supports ideation, visual editing, and final export in one place."
     ],
     "featureCards": [

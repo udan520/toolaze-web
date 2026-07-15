@@ -67,7 +67,7 @@
       {
         "icon": "🌐",
         "iconType": "browser",
-        "title": "Aucun Téléchargement",
+        "title": "Flux clair",
         "desc": "Fonctionne complètement dans votre navigateur—aucun logiciel ni téléchargement de polices Star Wars requis."
       }
     ]
@@ -107,7 +107,7 @@
       },
       {
         "label": "Confidentialité",
-        "value": "Aucun téléchargement serveur, traitement local complet"
+        "value": "Flux clair serveur, traitement local complet"
       }
     ]
   },

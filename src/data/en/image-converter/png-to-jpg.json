@@ -44,7 +44,7 @@
         "icon": "🔒",
         "iconType": "privacy",
         "title": "Total Data Security",
-        "desc": "Every conversion happens entirely within your browser—your PNG files never travel to external servers, guaranteeing complete privacy and security."
+        "desc": "Processing depends on the selected tool and may use Toolaze systems when required."
       },
       {
         "icon": "📦",
@@ -133,7 +133,7 @@
     ]
   },
   "comparison": {
-    "toolaze": "Unlimited file sizes, Batch 100+ PNG images, Smart JPG compression, 50-80% size reduction, 100% local processing, No uploads, Free",
+    "toolaze": "Unlimited file sizes, Batch 100+ PNG images, Smart JPG compression, 50-80% size reduction, policy-aware workflow, Clear workflow, Free",
     "others": "20MB file limits, Single file conversion only, Poor compression quality, Minimal size reduction, Cloud uploads required, Server queues, Paid upgrades"
   },
   "scenes": [
@@ -171,7 +171,7 @@
     },
     {
       "q": "Is PNG to JPG conversion free and secure?",
-      "a": "Yes, Toolaze is completely free with no hidden costs, subscriptions, or advertisements. Most importantly, all conversion happens locally in your browser using client-side technology. Your PNG files never leave your device—they're never uploaded to any server, ensuring 100% privacy and security for your images."
+      "a": "Yes, Toolaze is completely free with no hidden costs, subscriptions, or advertisements. Most importantly, Processing depends on the selected tool and may use Toolaze systems when required. Toolaze handles uploaded content according to our Privacy Policy and provider rules."
     },
     {
       "q": "Can I convert multiple PNG files to JPG at once?",
@@ -187,7 +187,7 @@
     }
   ],
   "compare": {
-    "toolaze": "Unlimited PNG to JPG conversion, Smart compression algorithms, 50-80% file size reduction, Local-first architecture, No file size limits, Complete EXIF preservation, 100% private processing",
+    "toolaze": "Unlimited PNG to JPG conversion, Smart compression algorithms, 50-80% file size reduction, Clear workflow architecture, No file size limits, Complete EXIF preservation, clear privacy practices",
     "others": "20MB file limits, Cloud uploads required, Poor compression quality, Minimal size reduction, Server queues, EXIF data stripped, Privacy concerns"
   }
 }

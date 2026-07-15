@@ -44,7 +44,7 @@
         "icon": "🔒",
         "iconType": "privacy",
         "title": "Secure Local Generation",
-        "desc": "Font generation occurs entirely in your browser—your text stays on your device, never uploaded anywhere."
+        "desc": "Font previews are quick and covered by clear usage policies."
       },
       {
         "icon": "⚡",
@@ -68,7 +68,7 @@
         "icon": "🌐",
         "iconType": "browser",
         "title": "Web-Based Tool",
-        "desc": "Runs completely in your browser—no downloads, installations, or font files needed."
+        "desc": "Use it online with no downloads, installations, or font files needed."
       }
     ]
   },
@@ -107,7 +107,7 @@
       },
       {
         "label": "Privacy",
-        "value": "No server uploads, complete local processing"
+        "value": "Transparent processing and clear policies"
       }
     ]
   },
@@ -175,7 +175,7 @@
     }
   ],
   "compare": {
-    "toolaze": "Unlimited disney text generation, Multiple elegant styles, Instant real-time preview, Local-first architecture, No character limits, Complete privacy protection, 100% free",
+    "toolaze": "Unlimited disney text generation, Multiple elegant styles, Instant real-time preview, Clear workflow architecture, No character limits, Clear policies protection, 100% free",
     "others": "Character limits, Limited style options, Slow server processing, Cloud uploads required, Privacy concerns, Watermarks or ads, Paid premium features"
   }
 }

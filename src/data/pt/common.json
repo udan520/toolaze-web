@@ -51,7 +51,7 @@
   "home": {
     "metadata": {
       "title": "Toolaze - Gerador de Imagens AI e Gerador de Vídeos AI Online Grátis",
-      "description": "Gerador de imagens AI e gerador de vídeos AI online grátis. Crie imagens 4K com Nano Banana 2, gere vídeos com Seedance 2.0 e Kling 3.0. Texto para imagem, texto para vídeo. Não é necessário registo. Ferramentas de compressão de imagem e conversão de formato também."
+      "description": "Crie, edite, comprima e converta imagens com ferramentas de IA, créditos de compra única e regras claras."
     },
     "badge": "Ferramentas AI Grátis",
     "titleLine1": "Plataforma Tudo-em-Um de Criação",
@@ -245,15 +245,18 @@
     "aboutUs": "Sobre Nós",
     "privacyPolicy": "Política de Privacidade",
     "termsOfService": "Termos de Serviço",
+    "pricing": "Preços",
     "contact": "Contato",
     "language": "Idioma",
     "footerNavigation": "Navegação do rodapé",
     "noToolsAvailable": "Nenhuma ferramenta disponível",
     "copyright": "© {year} Toolaze Lab. Todos os direitos reservados.",
-    "tagline": "Ferramentas Online Gratuitas • Nenhum Registro Necessário • 100% Privado",
+    "tagline": "Ferramentas de IA • Créditos de compra única • Regras claras",
     "wan27Image": "Wan 2.7 Image",
     "worldCupAiImageGenerator": "Gerador de imagens IA da Copa do Mundo",
-    "aiImageGenerator": "Gerador de imagens IA"
+    "aiImageGenerator": "Gerador de imagens IA",
+    "refundPolicy": "Política de reembolso",
+    "acceptableUse": "Política de uso aceitável"
   },
   "breadcrumb": {
     "home": "Início",
@@ -264,6 +267,7 @@
     "aboutUs": "Sobre Nós",
     "privacyPolicy": "Política de Privacidade",
     "termsOfService": "Termos de Serviço",
+    "pricing": "Preços",
     "emojiCopyAndPaste": "Copiar e colar emojis",
     "watermarkRemover": "Removedor de marca d’água",
     "aiTools": "Ferramentas de IA",
@@ -274,12 +278,14 @@
     "aiBabyGenerator": "Gerador de bebê IA",
     "textToImageGenerator": "Gerador de texto para imagem",
     "aiImageToImageGenerator": "Gerador IA de imagem para imagem",
-    "worldCupAiImageGenerator": "Gerador de imagens IA da Copa do Mundo"
+    "worldCupAiImageGenerator": "Gerador de imagens IA da Copa do Mundo",
+    "refundPolicy": "Política de reembolso",
+    "acceptableUse": "Política de uso aceitável"
   },
   "about": {
     "metadata": {
       "title": "Sobre Nós - Toolaze",
-      "description": "Conheça o Toolaze - Ferramentas de imagem IA gratuitas que funcionam localmente no seu navegador. Privacidade primeiro, ilimitado, grátis para sempre."
+      "description": "Conheça o Toolaze, uma plataforma de ferramentas criativas e imagens com IA, créditos de compra única e regras claras."
     },
     "title": "Nós Lidamos com a Ferramenta. Você Lida com a Preguiça.",
     "titleTool": "Ferramenta",
@@ -289,21 +295,21 @@
       "title": "Por Que \"Toolaze\"?",
       "content1": "O nome vem de uma filosofia simples: Ferramenta + Preguiça.",
       "content2": "Acreditamos que como criador, sua energia é finita. Cada minuto que você passa redimensionando imagens, convertendo formatos ou se preocupando com privacidade do servidor é um minuto roubado da sua criatividade.",
-      "content3": "Construímos o Toolaze para ser a solução \"preguiçosa\" definitiva. Usamos IA Local avançada para automatizar instantaneamente as coisas técnicas chatas no seu navegador. Sem uploads, sem espera, sem atrito.",
+      "content3": "Criamos o Toolaze como uma solução simples para trabalho criativo. Fluxos de IA ajudam com geração, edição e preparo de arquivos.",
       "content4": "Então vá em frente, seja um pouco preguiçoso. Nós cuidamos das ferramentas."
     },
     "features": {
       "privacy": {
-        "title": "Preguiça na Privacidade",
-        "desc": "Relaxe. Seus arquivos nunca deixam seu dispositivo. Zero risco de vazamentos de dados significa zero ansiedade para você."
+        "title": "Regras claras",
+        "desc": "Veja as regras de privacidade, reembolso e uso aceitável antes de gastar créditos ou gerar conteúdo."
       },
       "waiting": {
         "title": "Preguiça na Espera",
-        "desc": "Por que esperar uploads? Nosso motor WebAssembly local processa arquivos instantaneamente. Feito em um piscar de olhos."
+        "desc": "Evite etapas repetitivas. O Toolaze reúne geração por IA, edição e preparo de arquivos em um só espaço."
       },
       "cost": {
         "title": "Preguiça no Custo",
-        "desc": "Mantenha sua carteira fechada. Não temos contas de servidor caras, então você não precisa pagar taxas de assinatura."
+        "desc": "Compre créditos uma vez e use em ferramentas compatíveis. Gerações com falha confirmada devolvem créditos."
       }
     },
     "cta": {
@@ -861,96 +867,96 @@
   "privacy": {
     "metadata": {
       "title": "Política de Privacidade - Toolaze",
-      "description": "Política de Privacidade Toolaze - Processamos todas as imagens localmente no seu navegador. Seus arquivos nunca deixam seu dispositivo."
+      "description": "Política do Toolaze para geração por IA, uploads, créditos, pagamentos, análises e provedores."
     },
     "title": "Política de Privacidade",
-    "lastUpdated": "Última Atualização:",
-    "date": "14 de janeiro de 2026",
-    "intro": "Na Toolaze (\"nós\", \"nosso\" ou \"nossos\"), acessível em https://toolaze.com, nossa principal prioridade é a privacidade de nossos visitantes. Este documento de Política de Privacidade contém tipos de informações coletadas e registradas pela Toolaze e como as usamos.",
+    "lastUpdated": "Última atualização:",
+    "date": "15 de julho de 2026",
+    "intro": "O Toolaze oferece geração por IA e ferramentas criativas. Esta política explica como tratamos prompts, uploads, resultados, créditos, pagamentos, análises e suporte.",
     "section1": {
-      "title": "1. Promessa Central de Privacidade: Processamento Local",
-      "content": "Nos diferenciamos priorizando sua privacidade. Não fazemos upload de suas imagens ou vídeos para nossos servidores.",
+      "title": "1. Geração por IA e conteúdo enviado",
+      "content": "O Toolaze pode processar as informações necessárias para fornecer a ferramenta ou geração escolhida.",
       "points": [
-        "Todo o processamento de arquivos acontece localmente dentro do seu navegador web.",
-        "Seus arquivos nunca deixam seu dispositivo.",
-        "Não podemos ver, copiar ou vender seu conteúdo."
+        "A geração por IA pode enviar prompts, imagens, vídeos, arquivos de referência e resultados gerados para provedores de IA.",
+        "Creem ou outro processador de pagamento pode cuidar de checkout, recibos, impostos e reembolsos.",
+        "Podemos guardar conteúdo e metadados para histórico, downloads, prevenção de abuso, cobrança, depuração, reembolsos e suporte."
       ]
     },
     "section2": {
-      "title": "2. Informações que Coletamos",
-      "content": "Não coletamos seus arquivos. Podemos coletar informações anônimas não pessoais para melhorar nosso serviço:",
+      "title": "2. Informações que coletamos",
+      "content": "Coletamos informações de conta, uso, pagamento e dados técnicos necessários para operar o Toolaze.",
       "logFiles": {
-        "title": "A. Arquivos de Log",
-        "content": "Toolaze segue um procedimento padrão de uso de arquivos de log. Esses arquivos registram visitantes quando visitam sites. As informações coletadas incluem endereços de protocolo de internet (IP), tipo de navegador, marca de data e hora, e páginas de referência/saída. Estas não estão vinculadas a informações pessoalmente identificáveis."
+        "title": "A. Registros e uso",
+        "content": "Os registros podem incluir endereço IP, navegador, dispositivo, status da geração, alterações de créditos, horários e detalhes de erros."
       },
       "cookies": {
-        "title": "B. Cookies",
-        "content": "Toolaze usa \"cookies\" exclusivamente para armazenar informações sobre as preferências dos visitantes (por exemplo, configurações de modo escuro) e para otimizar a experiência do usuário."
+        "title": "B. Cookies e análises",
+        "content": "O Toolaze usa cookies e análises para login, preferências, checkout, segurança, confiabilidade e medição do produto."
       }
     },
     "section3": {
-      "title": "3. Análise",
-      "content": "Usamos Google Analytics para entender como nosso site está sendo usado para melhorar a experiência do usuário (por exemplo, quais ferramentas são mais populares). Todos os dados de usuário coletados são anônimos e agregados. Não usamos esses dados para perfilamento publicitário."
+      "title": "3. Provedores de IA e serviços",
+      "content": "Podemos compartilhar prompts, uploads, resultados, eventos de conta e metadados de pagamento com provedores de IA, hospedagem, armazenamento, CDN, análises, moderação, autenticação, e-mail e pagamentos."
     },
     "section4": {
-      "title": "4. Direitos GDPR e CCPA",
-      "content": "Respeitamos seus direitos de dados. Como não armazenamos dados pessoais ou arquivos, não \"vendemos\" seus dados. Você tem o direito de solicitar informações sobre nossas práticas de dados a qualquer momento."
+      "title": "4. Seus direitos",
+      "content": "Dependendo da sua localização, você pode solicitar acesso, correção, exclusão ou exportação de certas informações pessoais. Alguns registros podem ser mantidos por segurança, impostos, contabilidade, obrigações legais ou prevenção de fraude."
     },
     "section5": {
-      "title": "5. Entre em Contato",
-      "content": "Se você tiver perguntas adicionais, não hesite em nos contatar em support@toolaze.com."
+      "title": "5. Contato",
+      "content": "Dúvidas sobre esta Política de Privacidade podem ser enviadas para support@toolaze.com."
     }
   },
   "terms": {
     "metadata": {
       "title": "Termos de Serviço - Toolaze",
-      "description": "Termos de Serviço Toolaze - Ferramentas de imagem IA gratuitas com processamento local. Nenhum registro necessário."
+      "description": "Termos do Toolaze para geração por IA, créditos, compras únicas, uso comercial, reembolsos e uso aceitável."
     },
     "title": "Termos de Serviço",
-    "lastUpdated": "Última Atualização:",
-    "date": "14 de janeiro de 2026",
-    "intro": "Bem-vindo ao Toolaze! Ao acessar ou usar nosso site (https://toolaze.com), você concorda em estar vinculado por estes Termos de Serviço (\"Termos\"). Se você discordar de qualquer parte dos termos, você não pode acessar o Serviço.",
+    "lastUpdated": "Última atualização:",
+    "date": "15 de julho de 2026",
+    "intro": "Bem-vindo ao Toolaze. Ao usar o Toolaze, você aceita estes Termos, a Política de Privacidade, a Política de Reembolso e a Política de Uso Aceitável.",
     "section1": {
-      "title": "1. Descrição do Serviço",
-      "content": "Toolaze fornece ferramentas IA gratuitas baseadas na web para processamento de imagens e vídeos (por exemplo, compressão, conversão, edição).",
-      "localProcessing": "Processamento Local: Nossa característica distintiva é que processamos arquivos localmente no seu navegador usando tecnologia WebAssembly. Não fazemos upload nem armazenamos seus arquivos em nossos servidores."
+      "title": "1. Descrição do serviço",
+      "content": "O Toolaze oferece geração por IA, edição por IA, utilitários de imagem e vídeo, fluxos de prompts, histórico e compras baseadas em créditos.",
+      "localProcessing": "Geração por IA: algumas ferramentas usam provedores de modelos e infraestrutura em nuvem para processar prompts, mídia enviada e resultados gerados."
     },
     "section2": {
-      "title": "2. Uso do Serviço",
-      "license": "Licença: Concedemos a você uma licença limitada, não exclusiva, não transferível para usar nossas ferramentas para fins pessoais ou comerciais, desde que você cumpra estes Termos.",
-      "noRegistration": "Nenhum Registro: Você não precisa criar uma conta para usar nossas ferramentas atuais.",
-      "prohibitedActs": "Atos Proibidos: Você concorda em não:",
+      "title": "2. Uso do serviço",
+      "license": "Licença: você pode usar o Toolaze para fins pessoais ou comerciais se cumprir estes Termos.",
+      "noRegistration": "Créditos: créditos comprados são compras únicas, válidos por 12 meses e devolvidos quando uma geração com falha é confirmada.",
+      "prohibitedActs": "Uso aceitável: você concorda em não:",
       "prohibitedList": [
-        "Fazer engenharia reversa, descompilar ou tentar extrair o código-fonte do Serviço.",
-        "Usar o Serviço para processar conteúdo ilegal.",
-        "Usar scripts automatizados (bots) que afetem a estabilidade do nosso site."
+        "Fazer engenharia reversa, descompilar, extrair, sobrecarregar ou interferir no serviço.",
+        "Criar conteúdo ilegal, NSFW, sexual, de ódio, enganoso ou infrator.",
+        "Usar automações que prejudiquem disponibilidade, segurança, pagamentos ou sistemas de proteção."
       ]
     },
     "section3": {
-      "title": "3. Conteúdo e Dados do Usuário",
-      "ownership": "Sua Propriedade: Você mantém todos os direitos e propriedade das imagens ou vídeos que processa usando Toolaze. Não reivindicamos direitos de propriedade intelectual sobre seu conteúdo.",
-      "noLiability": "Sem Responsabilidade por Perda de Dados: Como não armazenamos seus arquivos, não podemos recuperá-los para você. Você é o único responsável por fazer backup dos seus dados originais. Se seu navegador travar ou a página atualizar durante o processamento, qualquer progresso não salvo pode ser perdido, e Toolaze não é responsável por tal perda."
+      "title": "3. Conteúdo do usuário e uso comercial",
+      "ownership": "Sua propriedade: você mantém os direitos que já possui sobre prompts, uploads, referências e resultados gerados.",
+      "noLiability": "Uso comercial: o uso comercial dos resultados é permitido, sujeito a estes Termos, à Política de Uso Aceitável, à lei aplicável e às regras dos provedores de modelos."
     },
     "section4": {
-      "title": "4. Propriedade Intelectual",
-      "content": "O Serviço em si (excluindo seu conteúdo), incluindo seu conteúdo original, recursos, código e funcionalidade, é e permanecerá propriedade exclusiva da Toolaze e seus licenciadores. Nossas marcas (incluindo o nome \"Toolaze\" e o Logo) não podem ser usadas sem consentimento prévio por escrito."
+      "title": "4. Propriedade intelectual",
+      "content": "O Toolaze, incluindo site, software, design, marca, logotipos e funcionalidades, pertence ao Toolaze e a seus licenciadores."
     },
     "section5": {
-      "title": "5. Isenção de Garantias (\"COMO ESTÁ\")",
-      "content": "O Serviço é fornecido \"COMO ESTÁ\" e \"CONFORME DISPONÍVEL\". Toolaze não faz declarações ou garantias de qualquer tipo, expressas ou implícitas, sobre a operação do Serviço ou a precisão dos resultados do processamento IA.",
-      "guarantee": "Não garantimos que a qualidade da imagem após a compressão atenderá perfeitamente suas expectativas, pois algoritmos IA podem variar com base em tipos de arquivo."
+      "title": "5. Limites dos resultados de IA",
+      "content": "Resultados de IA podem ser imprecisos, inesperados, atrasados, indisponíveis, parecidos com resultados de outros usuários ou bloqueados por sistemas de segurança.",
+      "guarantee": "Não garantimos que um provedor de modelos produza resultado, qualidade, estilo, formato ou prazo específico."
     },
     "section6": {
-      "title": "6. Limitação de Responsabilidade",
-      "content": "Em nenhum caso Toolaze será responsável por danos indiretos, incidentais, especiais, consequenciais ou punitivos, incluindo sem limitação, perda de lucros, dados, uso ou boa vontade, resultantes do seu uso do Serviço."
+      "title": "6. Limitação de responsabilidade",
+      "content": "Na medida permitida por lei, o Toolaze não responde por danos indiretos, incidentais, especiais, consequenciais, punitivos ou lucros cessantes decorrentes do uso do serviço."
     },
     "section7": {
-      "title": "7. Alterações nos Termos",
-      "content": "Reservamo-nos o direito de modificar ou substituir estes Termos a qualquer momento. Ao continuar acessando nosso Serviço após essas revisões se tornarem efetivas, você concorda em estar vinculado pelos termos revisados."
+      "title": "7. Reembolsos e alterações",
+      "content": "Reembolsos estão disponíveis para créditos não usados conforme a Política de Reembolso. Podemos atualizar estes Termos, e o uso contínuo significa aceitação."
     },
     "section8": {
-      "title": "8. Entre em Contato",
-      "content": "Se você tiver alguma pergunta sobre estes Termos, entre em contato conosco em: support@toolaze.com"
+      "title": "8. Contato",
+      "content": "Dúvidas sobre estes Termos podem ser enviadas para support@toolaze.com"
     }
   }
 }

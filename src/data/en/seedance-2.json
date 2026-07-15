@@ -12,7 +12,7 @@
     "description": [
       "ByteDance's Seedance 2.0 brings a single-pipeline approach to AI video: mix text prompts with up to 9 images, 3 video clips, and 3 audio clips in one request. No need to chain separate tools—describe your scene, add references, and get cinema-grade output.",
       "The model handles complex motion and physics-aware rendering, with fine control over lighting, camera, and performance. Output is 15-second 1080p multi-shot videos with stereo audio, ready for social, ads, or pre-production.",
-      "Toolaze offers free access online. No sign-up required—start creating from your browser."
+      "Toolaze offers free access online. No sign-up required—start creating from the web interface."
     ],
     "featureCards": [
       {
@@ -46,7 +46,7 @@
       },
       {
         "title": "Free Online Access with No Registration Required",
-        "text": "Toolaze provides free access to Seedance 2.0 AI video generation online. No sign-up, no credit card, and no hidden fees. Whether you're a content creator prototyping ideas, a marketer testing ad concepts, or a filmmaker exploring storyboards, you can start creating 1080p videos immediately. The free AI video generator supports text-to-video, image-to-video, and full multimodal generation—all from your browser with no software installation required."
+        "text": "Toolaze provides free access to Seedance 2.0 AI video generation online. No sign-up, no credit card, and no hidden fees. Whether you're a content creator prototyping ideas, a marketer testing ad concepts, or a filmmaker exploring storyboards, you can start creating 1080p videos immediately. The free AI video generator supports text-to-video, image-to-video, and full multimodal generation—from the web interface with no software installation required."
       }
     ]
   },

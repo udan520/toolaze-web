@@ -44,7 +44,7 @@
         "icon": "🔒",
         "iconType": "privacy",
         "title": "Complete Privacy Guarantee",
-        "desc": "All WebP to JPG conversion happens locally in your browser—your images never leave your device, ensuring absolute data protection."
+        "desc": "Processing depends on the selected tool and may use Toolaze systems when required."
       },
       {
         "icon": "📦",
@@ -133,7 +133,7 @@
     ]
   },
   "comparison": {
-    "toolaze": "Unlimited file sizes, Batch 100+ WebP images, Universal JPG compatibility, 100% local processing, No uploads, Works on all devices, Free",
+    "toolaze": "Unlimited file sizes, Batch 100+ WebP images, Universal JPG compatibility, policy-aware workflow, Clear workflow, Works on all devices, Free",
     "others": "20MB file limits, Single file conversion only, Limited browser support, Cloud uploads required, Server queues, Compatibility issues, Paid upgrades"
   },
   "scenes": [
@@ -171,7 +171,7 @@
     },
     {
       "q": "Is WebP to JPG conversion free and secure?",
-      "a": "Yes, Toolaze is completely free with no hidden costs, subscriptions, or advertisements. Most importantly, all conversion happens locally in your browser using client-side technology. Your WebP files never leave your device—they're never uploaded to any server, ensuring 100% privacy and security for your images."
+      "a": "Yes, Toolaze is completely free with no hidden costs, subscriptions, or advertisements. Most importantly, Processing depends on the selected tool and may use Toolaze systems when required. Toolaze handles uploaded content according to our Privacy Policy and provider rules."
     },
     {
       "q": "Can I convert multiple WebP files to JPG at once?",
@@ -187,7 +187,7 @@
     }
   ],
   "compare": {
-    "toolaze": "Unlimited WebP to JPG conversion, Universal compatibility guarantee, Local-first architecture, No file size limits, Complete EXIF preservation, 100% private processing, Works on all devices",
+    "toolaze": "Unlimited WebP to JPG conversion, Universal compatibility guarantee, Clear workflow architecture, No file size limits, Complete EXIF preservation, clear privacy practices, Works on all devices",
     "others": "20MB file limits, Cloud uploads required, Limited browser support, Server queues, EXIF data stripped, Privacy concerns, Compatibility issues"
   }
 }

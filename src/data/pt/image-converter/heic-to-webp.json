@@ -56,7 +56,7 @@
         "icon": "⚡",
         "iconType": "speed",
         "title": "Processamento instantâneo",
-        "desc": "Nosso decodificador HEVC alimentado por WebAssembly processa conversões de HEIC para WebP imediatamente sem uploads de servidor ou atrasos de processamento."
+        "desc": "Nosso decodificador HEVC alimentado por WebAssembly processa conversões de HEIC para WebP imediatamente Fluxo claro de servidor ou atrasos de processamento."
       },
       {
         "icon": "💎",
@@ -133,7 +133,7 @@
     ]
   },
   "comparison": {
-    "toolaze": "Tamanhos de arquivo ilimitados, Lote 100+ imagens HEIC, Compressão WebP otimizada, Transparência preservada, Alimentado por WebAssembly, Processamento 100% local, Sem uploads, Grátis para sempre",
+    "toolaze": "Tamanhos de arquivo ilimitados, Lote 100+ imagens HEIC, Compressão WebP otimizada, Transparência preservada, Alimentado por WebAssembly, Processamento policy-aware, Fluxo claro, Grátis para sempre",
     "others": "Limites de arquivo de 20MB, Apenas conversão de arquivo único, Qualidade de compressão ruim, Transparência perdida, Uploads na nuvem necessários, Filas de servidor, Atualizações pagas"
   },
   "scenes": [

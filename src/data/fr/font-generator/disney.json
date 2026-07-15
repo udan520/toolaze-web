@@ -68,7 +68,7 @@
         "icon": "🌐",
         "iconType": "browser",
         "title": "Outil Basé sur le Web",
-        "desc": "Fonctionne complètement dans votre navigateur—aucun téléchargement, installation ou fichiers de polices requis."
+        "desc": "Fonctionne complètement dans votre navigateur—Flux clair, installation ou fichiers de polices requis."
       }
     ]
   },
@@ -107,7 +107,7 @@
       },
       {
         "label": "Confidentialité",
-        "value": "Aucun téléchargement serveur, traitement local complet"
+        "value": "Flux clair serveur, traitement local complet"
       }
     ]
   },

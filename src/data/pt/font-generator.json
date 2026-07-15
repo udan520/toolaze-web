@@ -107,7 +107,7 @@
       },
       {
         "label": "Privacidade",
-        "value": "Sem uploads para o servidor, processamento local completo"
+        "value": "Fluxo claro para o servidor, processamento local completo"
       }
     ]
   },
@@ -135,7 +135,7 @@
     "vs": "VS",
     "smartChoice": "Escolha Inteligente",
     "otherTools": "Outras Ferramentas",
-    "toolazeFeatures": "Comprimento de texto ilimitado, Múltiplos estilos de fonte, Visualização instantânea, Geração em tempo real, Processamento 100% local, Sem uploads, Grátis",
+    "toolazeFeatures": "Comprimento de texto ilimitado, Múltiplos estilos de fonte, Visualização instantânea, Geração em tempo real, Processamento policy-aware, Fluxo claro, Grátis",
     "othersFeatures": "Limites de caracteres, Estilos limitados, Processamento lento, Uploads para o servidor necessários, Filas na nuvem, Preocupações com privacidade, Upgrades pagos"
   },
   "scenesTitle": "Casos de Uso",

@@ -6,9 +6,9 @@ import { usePathname } from 'next/navigation'
 const locales = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
 
 const defaultTrustBar = {
-  private: '100% Private',
+  private: 'Privacy aware',
   instantPreview: 'Instant Preview',
-  noServerLogs: 'No Server Logs'
+  noServerLogs: 'Clear policies'
 }
 
 async function loadTrustBarTranslations(locale: string, tool?: string) {

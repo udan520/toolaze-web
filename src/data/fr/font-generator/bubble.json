@@ -68,7 +68,7 @@
         "icon": "🌐",
         "iconType": "browser",
         "title": "Navigateur Uniquement",
-        "desc": "Fonctionne complètement dans votre navigateur—aucun téléchargement de logiciel ni installation de polices bulle requis."
+        "desc": "Fonctionne complètement dans votre navigateur—Flux clair de logiciel ni installation de polices bulle requis."
       }
     ]
   },
@@ -107,7 +107,7 @@
       },
       {
         "label": "Confidentialité",
-        "value": "Aucun téléchargement serveur, traitement local complet"
+        "value": "Flux clair serveur, traitement local complet"
       }
     ]
   },

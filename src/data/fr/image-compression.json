@@ -28,7 +28,7 @@
         },
         {
           "title": "Confidentialité totale pour les documents sensibles",
-          "text": "Les portails gouvernementaux exigent des photos d'identité personnelles, des scans de passeport et des documents sensibles contenant vos informations biométriques. Le téléchargement de ces fichiers vers des services de compression basés sur le cloud présente de graves risques pour la confidentialité. Toolaze traite toutes les images localement dans votre navigateur, garantissant que vos données personnelles ne quittent jamais votre appareil. Toute la compression s'effectue à l'aide de JavaScript et de l'API Canvas, sans aucun téléchargement sur serveur, filigrane ou stockage de données. Vos documents sensibles restent entièrement privés et sécurisés tout au long du processus."
+          "text": "Les portails gouvernementaux exigent des photos d'identité personnelles, des scans de passeport et des documents sensibles contenant vos informations biométriques. Le téléchargement de ces fichiers vers des services de compression basés sur le cloud présente de graves risques pour la confidentialité. Toolaze traite toutes les images localement dans votre navigateur, garantissant que vos données personnelles ne quittent jamais votre appareil. Toute la compression s'effectue à l'aide de JavaScript et de l'API Canvas, sans Flux clair sur serveur, filigrane ou stockage de données. Vos documents sensibles restent entièrement privés et sécurisés tout au long du processus."
         }
       ]
     },
@@ -382,7 +382,7 @@
         },
         {
           "title": "Confidentialité totale pour les données biométriques",
-          "text": "Les photos de demande de visa contiennent des informations biométriques sensibles qui doivent être traitées avec le plus grand soin. Le téléchargement de ces photos vers des services de compression basés sur le cloud présente de graves risques pour la confidentialité et la sécurité, car vos données biométriques pourraient être stockées, analysées ou utilisées à mauvais escient par des tiers. Toolaze traite toutes les photos localement dans votre navigateur, garantissant que vos informations biométriques ne quittent jamais votre appareil. Toute la compression s'effectue à l'aide de JavaScript et de l'API Canvas, sans aucun téléchargement sur serveur, reconnaissance faciale ou stockage de données. Nous fournissons une compression purement technique sans aucune altération du visage, embellissement ou amélioration par IA, garantissant que votre photo reste 100 % authentique et conforme aux normes d'immigration."
+          "text": "Les photos de demande de visa contiennent des informations biométriques sensibles qui doivent être traitées avec le plus grand soin. Le téléchargement de ces photos vers des services de compression basés sur le cloud présente de graves risques pour la confidentialité et la sécurité, car vos données biométriques pourraient être stockées, analysées ou utilisées à mauvais escient par des tiers. Toolaze traite toutes les photos localement dans votre navigateur, garantissant que vos informations biométriques ne quittent jamais votre appareil. Toute la compression s'effectue à l'aide de JavaScript et de l'API Canvas, sans Flux clair sur serveur, reconnaissance faciale ou stockage de données. Nous fournissons une compression purement technique sans aucune altération du visage, embellissement ou amélioration par IA, garantissant que votre photo reste 100 % authentique et conforme aux normes d'immigration."
         }
       ]
     },
@@ -736,7 +736,7 @@
         },
         {
           "title": "Confidentialité totale des données biométriques",
-          "text": "Les photos de passeport contiennent des informations biométriques sensibles qui doivent être traitées avec le plus grand soin. Le téléchargement de ces photos sur des services de compression basés sur le cloud pose de graves risques pour la confidentialité et la sécurité, car vos données biométriques pourraient être stockées, analysées ou utilisées à mauvais escient par des tiers. Toolaze traite toutes les photos localement dans votre navigateur, garantissant que vos informations biométriques ne quittent jamais votre appareil. Toute la compression s'effectue à l'aide de JavaScript et de l'API Canvas, sans aucun téléchargement sur un serveur, reconnaissance faciale ou stockage de données. Nous nous concentrons sur la clarté technique et l'optimisation de la taille du fichier sans aucune altération artificielle, embellissement ou amélioration par IA, garantissant que votre photo reste authentique et conforme aux normes gouvernementales."
+          "text": "Les photos de passeport contiennent des informations biométriques sensibles qui doivent être traitées avec le plus grand soin. Le téléchargement de ces photos sur des services de compression basés sur le cloud pose de graves risques pour la confidentialité et la sécurité, car vos données biométriques pourraient être stockées, analysées ou utilisées à mauvais escient par des tiers. Toolaze traite toutes les photos localement dans votre navigateur, garantissant que vos informations biométriques ne quittent jamais votre appareil. Toute la compression s'effectue à l'aide de JavaScript et de l'API Canvas, sans Flux clair sur un serveur, reconnaissance faciale ou stockage de données. Nous nous concentrons sur la clarté technique et l'optimisation de la taille du fichier sans aucune altération artificielle, embellissement ou amélioration par IA, garantissant que votre photo reste authentique et conforme aux normes gouvernementales."
         }
       ]
     },
@@ -913,7 +913,7 @@
         },
         {
           "title": "Protégez la propriété intellectuelle et les secrets commerciaux de vos produits",
-          "text": "En tant que vendeur Amazon, vos photos de produits constituent une propriété intellectuelle précieuse qui doit être protégée. Le téléchargement de produits non encore commercialisés ou de designs exclusifs sur des services de compression basés sur le cloud pose de graves risques de sécurité, car vos images pourraient être stockées, analysées ou utilisées à mauvais escient par des concurrents. Toolaze traite toutes les images localement dans votre navigateur, garantissant que vos photos de produits ne quittent jamais votre appareil. Toute la compression s'effectue à l'aide de JavaScript et de l'API Canvas, sans aucun téléchargement sur un serveur, filigrane ou stockage de données. Vos secrets commerciaux et vos designs de produits restent entièrement privés et sécurisés tout au long du processus de compression, ce qui garantit la sécurité des produits non commercialisés et des informations exclusives."
+          "text": "En tant que vendeur Amazon, vos photos de produits constituent une propriété intellectuelle précieuse qui doit être protégée. Le téléchargement de produits non encore commercialisés ou de designs exclusifs sur des services de compression basés sur le cloud pose de graves risques de sécurité, car vos images pourraient être stockées, analysées ou utilisées à mauvais escient par des concurrents. Toolaze traite toutes les images localement dans votre navigateur, garantissant que vos photos de produits ne quittent jamais votre appareil. Toute la compression s'effectue à l'aide de JavaScript et de l'API Canvas, sans Flux clair sur un serveur, filigrane ou stockage de données. Vos secrets commerciaux et vos designs de produits restent entièrement privés et sécurisés tout au long du processus de compression, ce qui garantit la sécurité des produits non commercialisés et des informations exclusives."
         }
       ]
     },
@@ -2012,7 +2012,7 @@
           "icon": "🌐",
           "iconType": "browser",
           "title": "Sans installation",
-          "desc": "Fonctionne directement dans votre navigateur web. Aucun téléchargement de logiciel ni installation de plugin requis."
+          "desc": "Fonctionne directement dans votre navigateur web. Flux clair de logiciel ni installation de plugin requis."
         }
       ]
     },

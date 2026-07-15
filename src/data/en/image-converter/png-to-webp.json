@@ -44,7 +44,7 @@
         "icon": "🔒",
         "iconType": "privacy",
         "title": "Total Privacy Assurance",
-        "desc": "All conversion processes occur entirely within your browser—your PNG files never leave your device, ensuring complete data security and privacy."
+        "desc": "Processing depends on the selected tool and may use Toolaze systems when required."
       },
       {
         "icon": "📦",
@@ -133,7 +133,7 @@
     ]
   },
   "comparison": {
-    "toolaze": "Unlimited file sizes, Batch 100+ PNG images, 25-35% size reduction, Transparency preserved, 100% local processing, No uploads, Free",
+    "toolaze": "Unlimited file sizes, Batch 100+ PNG images, 25-35% size reduction, Transparency preserved, policy-aware workflow, Clear workflow, Free",
     "others": "20MB file limits, Single file conversion only, Poor compression, Transparency lost, Cloud uploads required, Server queues, Paid upgrades"
   },
   "scenes": [
@@ -171,7 +171,7 @@
     },
     {
       "q": "Is PNG to WebP conversion free and secure?",
-      "a": "Yes, Toolaze is completely free with no hidden costs, subscriptions, or advertisements. Most importantly, all conversion happens locally in your browser using client-side technology. Your PNG files never leave your device—they're never uploaded to any server, ensuring 100% privacy and security for your images."
+      "a": "Yes, Toolaze is completely free with no hidden costs, subscriptions, or advertisements. Most importantly, Processing depends on the selected tool and may use Toolaze systems when required. Toolaze handles uploaded content according to our Privacy Policy and provider rules."
     },
     {
       "q": "Can I convert multiple PNG files to WebP at once?",
@@ -187,7 +187,7 @@
     }
   ],
   "compare": {
-    "toolaze": "Unlimited PNG to WebP conversion, 25-35% size reduction, Full transparency preservation, Local-first architecture, No file size limits, Complete EXIF preservation, 100% private processing",
+    "toolaze": "Unlimited PNG to WebP conversion, 25-35% size reduction, Full transparency preservation, Clear workflow architecture, No file size limits, Complete EXIF preservation, clear privacy practices",
     "others": "20MB file limits, Cloud uploads required, Poor compression quality, Transparency lost, Server queues, EXIF data stripped, Privacy concerns"
   }
 }

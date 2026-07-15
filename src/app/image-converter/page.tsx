@@ -128,7 +128,7 @@ export default function ImageConverterPage() {
                   </li>
                   <li className="flex items-center gap-2">
                     <span className="text-green-600 font-bold">✅</span>
-                    <span>100% private & free</span>
+                    <span>clear policies & free</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <span className="text-green-600 font-bold">✅</span>
@@ -193,7 +193,7 @@ export default function ImageConverterPage() {
               },
               {
                 q: "Is this tool really free?",
-                a: "Yes! Toolaze is 100% free with no ads, no registration, and no hidden fees. All processing happens in your browser."
+                a: "Yes! Toolaze is 100% free with no ads, no registration, and no hidden fees. Processing follows Toolaze policies for the selected tool."
               },
               {
                 q: "Can I convert more than 100 images?",
@@ -201,7 +201,7 @@ export default function ImageConverterPage() {
               },
               {
                 q: "Are my images uploaded to a server?",
-                a: "No! All image conversion happens locally in your browser using JavaScript. Your images never leave your device, ensuring complete privacy."
+                a: "No! Toolaze handles image conversion workflows according to our Privacy Policy and provider rules."
               },
               {
                 q: "Will quality be preserved during conversion?",

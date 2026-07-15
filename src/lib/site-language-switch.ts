@@ -92,6 +92,10 @@ export function getContentSupportedLocaleCodes(pathname: string | null): string[
     return [...ALL_LOCALE_CODES]
   }
 
+  if (['pricing', 'refund-policy', 'acceptable-use'].includes(root)) {
+    return ['en']
+  }
+
   if (root === 'model') {
     const modelSlug = segments[1]
     if (!modelSlug) {

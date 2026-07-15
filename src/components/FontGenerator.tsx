@@ -19,9 +19,9 @@ const defaultTranslations = {
   placeholder: 'Add text here to get started....',
   defaultText: 'Toolaze Font Generator 123',
   trustBar: {
-    private: '100% Private',
+    private: 'Privacy aware',
     instantPreview: 'Instant Preview',
-    noServerLogs: 'No Server Logs'
+    noServerLogs: 'Clear policies'
   },
   fontTerms: {
     Bold: 'Bold',

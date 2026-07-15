@@ -43,8 +43,8 @@
       {
         "icon": "🔒",
         "iconType": "privacy",
-        "title": "Local Processing Only",
-        "desc": "All font generation happens on your device—your text never leaves your computer, ensuring complete security."
+        "title": "Clear Processing",
+        "desc": "Font previews are instant and covered by clear usage policies."
       },
       {
         "icon": "⚡",
@@ -68,7 +68,7 @@
         "icon": "🌐",
         "iconType": "browser",
         "title": "No Downloads",
-        "desc": "Everything runs in your browser using client-side technology—no software or fonts to install."
+        "desc": "the tool works online using client-side technology—no software or fonts to install."
       }
     ]
   },
@@ -107,7 +107,7 @@
       },
       {
         "label": "Privacy",
-        "value": "No server uploads, complete local processing"
+        "value": "Transparent processing and clear policies"
       }
     ]
   },
@@ -129,7 +129,7 @@
     ]
   },
   "comparison": {
-    "toolaze": "Unlimited tattoo text generation, Multiple bold gothic styles, Instant preview, Local browser processing, No text length limits, Complete privacy, 100% free",
+    "toolaze": "Unlimited tattoo text generation, Multiple bold gothic styles, Instant preview, Clear workflow, No text length limits, Clear policies, 100% free",
     "others": "Text length restrictions, Few style choices, Server-side delays, Required cloud uploads, Data privacy risks, Advertisements, Premium subscriptions"
   },
   "scenes": [
@@ -175,7 +175,7 @@
     }
   ],
   "compare": {
-    "toolaze": "Unlimited tattoo text generation, Multiple elegant styles, Instant real-time preview, Local-first architecture, No character limits, Complete privacy protection, 100% free",
+    "toolaze": "Unlimited tattoo text generation, Multiple elegant styles, Instant real-time preview, Clear workflow architecture, No character limits, Clear policies protection, 100% free",
     "others": "Character limits, Limited style options, Slow server processing, Cloud uploads required, Privacy concerns, Watermarks or ads, Paid premium features"
   }
 }
