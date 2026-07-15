@@ -104,7 +104,7 @@ test('local dev generation consumes credits and returns the updated balance', as
 
     assert.equal(creditsPayload.credits.balance, 990)
     assert.equal(creditsPayload.credits.transactions[0].amount, -10)
-    assert.equal(creditsPayload.credits.transactions[0].description, 'Image generation')
+    assert.equal(creditsPayload.credits.transactions[0].description, 'GPT Image 2 text-to-image generation')
   } finally {
     resetLocalDevCreditsForTests(1000)
     globalThis.fetch = originalFetch
@@ -278,7 +278,7 @@ test('local dev generation refunds pre-deducted credits when task creation fails
     const credits = getLocalDevCreditSummary()
     assert.equal(credits.balance, 1000)
     assert.equal(credits.transactions[0].amount, 10)
-    assert.equal(credits.transactions[0].description, 'Image generation refund')
+    assert.equal(credits.transactions[0].description, 'GPT Image 2 text-to-image generation refund')
   } finally {
     resetLocalDevCreditsForTests(1000)
     globalThis.fetch = originalFetch

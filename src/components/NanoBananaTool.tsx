@@ -43,6 +43,7 @@ import {
   getHistoryToolMetadata,
   getLocalizedInternalPath,
 } from '@/lib/generation-history-tool-metadata'
+import { formatLocalTimestampToSeconds } from '@/lib/credit-history-time'
 
 type RightPanelMode = 'sample' | 'generating' | 'history' | 'result'
 
@@ -1490,7 +1491,7 @@ export default function NanoBananaTool({
             inputUrls: generationInputUrls,
             outputPreview: generateResult.imageUrl,
             prompt: effectivePrompt,
-            time: savedItem?.createdAt ? new Date(savedItem.createdAt).toLocaleString() : new Date().toLocaleString(),
+            time: formatLocalTimestampToSeconds(savedItem?.createdAt || new Date().toISOString()),
             modelId: selectedModelId,
             aspectRatio,
             resolution,
@@ -1613,7 +1614,7 @@ export default function NanoBananaTool({
           inputUrls: generationInputUrls,
           outputPreview: finalUrl,
           prompt: effectivePrompt,
-          time: savedItem?.createdAt ? new Date(savedItem.createdAt).toLocaleString() : new Date().toLocaleString(),
+          time: formatLocalTimestampToSeconds(savedItem?.createdAt || new Date().toISOString()),
           modelId: selectedModelId,
           aspectRatio,
           resolution,

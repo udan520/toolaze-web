@@ -196,6 +196,13 @@ See 'docs/SEO_MASTER_LAYOUT.md' section 3 for the exact breadcrumb structure.
 - **Before git commit**: Always review sitemap logic matches current tool and language support before committing
 - **New-page-only policy**: For each newly added page, update sitemap with only the new page URLs required for that change. Do not broaden sitemap scope or modify unrelated existing sitemap entries in the same commit.
 
+**PRODUCTION DEPLOYMENT TARGET RULE**: MANDATORY - `toolaze.com` production publishes through GitHub `main` and Vercel auto-deploy by default.
+- **Default publish flow**: local candidate branch/worktree → local `main` → `origin/main` → Vercel production auto-deploy. Do NOT run Cloudflare Pages deploy for normal "publish online main" / "发布线上 main" requests.
+- **Cloudflare exception**: Only run `wrangler pages deploy` when the user explicitly says "publish Cloudflare", "同步 pages.dev", or otherwise names Cloudflare Pages as the deployment target.
+- **Target verification**: Before any production publish, verify the current production host by checking project config and/or response headers for `https://toolaze.com` (for example `server`, `x-vercel-*`, `cf-*`). If headers show Vercel, treat Vercel as the production target even if Cloudflare files exist in the repo.
+- **Report separation**: Final release reports MUST clearly separate GitHub `main`, Vercel production, and Cloudflare preview/pages.dev status. Never describe a Cloudflare Pages deployment as the `toolaze.com` production release unless DNS/headers prove Cloudflare serves production.
+- **Cloudflare files are not authority**: `wrangler.toml`, `functions/`, or `pages_build_output_dir` in this repo are not sufficient evidence that Cloudflare is the production deployment path.
+
 **CLOUDFLARE BUILD-SAFETY RULE**: MANDATORY - Prevent TypeScript build failures in Cloudflare Pages:
 - **Safe translation key access**: In `Navigation` / `Footer` / `Breadcrumb` and other i18n-heavy components, do NOT directly access newly added dynamic keys on loosely typed objects (e.g. `navData.newKey`). Use safe access helpers (`Record<string, unknown>` + type guards) or explicit typing first.
 - **Before push/deploy**: ALWAYS run `npm run build` locally after adding new nav/footer/breadcrumb translation keys or new menu entries.

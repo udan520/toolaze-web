@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import CloseIcon from './icons/CloseIcon'
+import { mergeCreditSummaryUpdate } from '@/lib/credit-summary-merge'
 import { formatCreditTransactionTimestamp } from '@/lib/credit-history-time'
 import { getClientMenuItems, type ClientMenuItem } from '@/lib/client-menu-data'
 import {
@@ -280,6 +281,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
   const [isMounted, setIsMounted] = useState(false)
   const [authUser, setAuthUser] = useState<AuthUser | null>(null)
   const [creditSummary, setCreditSummary] = useState<CreditSummary>(emptyCreditSummary)
+  const creditSummaryRef = useRef<CreditSummary>(emptyCreditSummary)
   const [authLoaded, setAuthLoaded] = useState(false)
   const [authModalOpen, setAuthModalOpen] = useState(false)
   const [authRedirecting, setAuthRedirecting] = useState(false)
@@ -334,6 +336,10 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
     setAuthTranslations(getInitialAuthTranslations(initialTranslations))
     setAccountTranslations(getInitialAccountTranslations(initialTranslations))
   }, [initialTranslations])
+
+  useEffect(() => {
+    creditSummaryRef.current = creditSummary
+  }, [creditSummary])
 
   useEffect(() => {
     const cachedAuth = readCachedAuthSnapshot()
@@ -444,10 +450,12 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
       if (isCreditSummary(nextCredits)) {
         const cachedAuth = readCachedAuthSnapshot()
         const nextUser = cachedAuth?.user || (window as any).__TOOLAZE_AUTH_USER__ || null
+        const currentCredits = cachedAuth?.credits || creditSummaryRef.current
+        const mergedCredits = mergeCreditSummaryUpdate(currentCredits, nextCredits) as CreditSummary
 
-        setCreditSummary(nextCredits)
+        setCreditSummary(mergedCredits)
         if (nextUser) {
-          writeCachedAuthSnapshot(nextUser, nextCredits)
+          writeCachedAuthSnapshot(nextUser, mergedCredits)
         }
         return
       }

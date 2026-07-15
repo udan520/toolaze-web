@@ -8,6 +8,7 @@ import {
   refundLocalDevCreditHold,
 } from '../../_shared/local-dev-auth.js'
 import { proxyToPagesFunctions } from '../../_shared/backend-proxy.js'
+import { getImageGenerationCreditRefundDescription } from '../../../../../functions/_shared/generation-credit-label.mjs'
 
 function shouldUseLocalGenerationStatus(request) {
   const url = new URL(request.url)
@@ -33,7 +34,10 @@ async function runLocalGenerationStatusWithCreditRefund(request) {
     body?.creditHold?.provider === 'local-dev' &&
     body.creditHold.taskId === body.taskId
   ) {
-    const refundResult = refundLocalDevCreditHold(body.taskId)
+    const refundResult = refundLocalDevCreditHold(
+      body.taskId,
+      getImageGenerationCreditRefundDescription(body.creditHold.model, body.creditHold.isImageToImage),
+    )
     return Response.json({
       ...payload,
       credits: refundResult.credits,

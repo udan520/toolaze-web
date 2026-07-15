@@ -12,6 +12,10 @@ import {
 } from '../_shared/local-dev-auth.js'
 import { calculateImageGenerationCredits } from '../_shared/generation-credits.js'
 import { proxyToPagesFunctions } from '../_shared/backend-proxy.js'
+import {
+  getImageGenerationCreditDescription,
+  getImageGenerationCreditRefundDescription,
+} from '../../../../functions/_shared/generation-credit-label.mjs'
 
 function shouldUseLocalGeneration(request) {
   const url = new URL(request.url)
@@ -30,7 +34,10 @@ async function runLocalGenerationWithCredits(request) {
   const formData = await request.clone().formData()
   const model = String(formData.get('model') || 'nano-banana-pro')
   const resolution = String(formData.get('resolution') || '1K')
+  const isImageToImage = String(formData.get('isImageToImage') || '') === 'true'
   const requiredCredits = calculateImageGenerationCredits(model, resolution)
+  const creditDescription = getImageGenerationCreditDescription(model, isImageToImage)
+  const creditRefundDescription = getImageGenerationCreditRefundDescription(model, isImageToImage)
   const currentCredits = getLocalDevCreditSummary()
 
   if (currentCredits.balance < requiredCredits) {
@@ -44,7 +51,7 @@ async function runLocalGenerationWithCredits(request) {
     )
   }
 
-  const creditResult = consumeLocalDevCredits(requiredCredits)
+  const creditResult = consumeLocalDevCredits(requiredCredits, creditDescription)
   if (!creditResult.ok) {
     return Response.json(
       {
@@ -62,7 +69,7 @@ async function runLocalGenerationWithCredits(request) {
     response = await runLocalImageGeneration({ request, env: process.env })
     payload = await response.json().catch(() => ({}))
   } catch (error) {
-    const refundResult = refundLocalDevCredits(requiredCredits)
+    const refundResult = refundLocalDevCredits(requiredCredits, creditRefundDescription)
     return Response.json(
       {
         error: error instanceof Error ? error.message : 'Internal server error',
@@ -74,7 +81,7 @@ async function runLocalGenerationWithCredits(request) {
   }
 
   if (!response.ok) {
-    const refundResult = refundLocalDevCredits(requiredCredits)
+    const refundResult = refundLocalDevCredits(requiredCredits, creditRefundDescription)
     return Response.json(
       {
         ...payload,
@@ -86,7 +93,10 @@ async function runLocalGenerationWithCredits(request) {
   }
 
   const taskId = payload?.taskId
-  const creditHold = taskId ? registerLocalDevCreditHold(taskId, requiredCredits) : null
+  const creditHold = taskId ? registerLocalDevCreditHold(taskId, requiredCredits, {
+    model,
+    isImageToImage,
+  }) : null
 
   return Response.json({
     ...payload,

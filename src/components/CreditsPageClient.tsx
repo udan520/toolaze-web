@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { formatCreditTransactionTimestamp } from '@/lib/credit-history-time'
 
 type CreditTransaction = {
   id: string
@@ -59,18 +60,6 @@ function formatUiText(template: string, values: Record<string, string | number>)
   )
 }
 
-function formatCreditDate(value: string, locale: string) {
-  const date = new Date(value)
-  if (!Number.isFinite(date.getTime())) return ''
-  return date.toLocaleString(locale || 'en', {
-    month: 'short',
-    day: 'numeric',
-    year: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
-  })
-}
-
 function formatType(type: CreditTransaction['type'], copy: ReturnType<typeof getCreditsPageCopy>) {
   return copy.types[type] || copy.types.adjustment
 }
@@ -80,7 +69,7 @@ interface CreditsPageClientProps {
   locale?: string
 }
 
-export default function CreditsPageClient({ initialTranslations, locale = 'en' }: CreditsPageClientProps = {}) {
+export default function CreditsPageClient({ initialTranslations }: CreditsPageClientProps = {}) {
   const copy = getCreditsPageCopy(initialTranslations)
   const [credits, setCredits] = useState<CreditSummary>(emptyCreditSummary)
   const [loading, setLoading] = useState(true)
@@ -161,7 +150,7 @@ export default function CreditsPageClient({ initialTranslations, locale = 'en' }
                       {formatType(transaction.type, copy)}
                     </span>
                     <span className="text-xs font-semibold text-slate-500">
-                      {formatCreditDate(transaction.createdAt, locale)}
+                      {formatCreditTransactionTimestamp(transaction.createdAt)}
                     </span>
                   </div>
                   <p className="mt-2 text-sm font-bold text-slate-900">{transaction.description}</p>

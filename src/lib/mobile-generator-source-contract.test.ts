@@ -8,6 +8,7 @@ const nanoBananaSource = readFileSync(join(projectRoot, 'src/components/NanoBana
 const navigationSource = readFileSync(join(projectRoot, 'src/components/Navigation.tsx'), 'utf8')
 const rootLayoutSource = readFileSync(join(projectRoot, 'src/app/layout.tsx'), 'utf8')
 const historyPageSource = readFileSync(join(projectRoot, 'src/components/HistoryPageClient.tsx'), 'utf8')
+const creditsPageSource = readFileSync(join(projectRoot, 'src/components/CreditsPageClient.tsx'), 'utf8')
 
 test('mobile generator keeps the result panel directly after the generate button', () => {
   const buttonIndex = nanoBananaSource.indexOf('data-generate-button')
@@ -72,4 +73,13 @@ test('mobile account menu uses a fixed overlay so its actions remain tappable', 
 test('root viewport disables iOS input zoom', () => {
   assert.match(rootLayoutSource, /maximumScale:\s*1/)
   assert.match(rootLayoutSource, /userScalable:\s*false/)
+})
+
+test('generation and credit timestamps use local time down to seconds', () => {
+  assert.match(navigationSource, /formatCreditTransactionTimestamp\(transaction\.createdAt\)/)
+  assert.match(creditsPageSource, /formatCreditTransactionTimestamp\(transaction\.createdAt\)/)
+  assert.match(historyPageSource, /formatLocalTimestampToSeconds\(previewItem\.createdAt\)/)
+  assert.match(nanoBananaSource, /formatLocalTimestampToSeconds\(savedItem\?\.createdAt/)
+  assert.doesNotMatch(creditsPageSource, /function formatCreditDate/)
+  assert.doesNotMatch(historyPageSource, /function formatDate/)
 })

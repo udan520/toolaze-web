@@ -72,6 +72,8 @@ test('local dev status refunds pre-deducted credits once when generation fails a
       provider: 'local-dev',
       taskId: 'task_failed',
       requiredCredits: 10,
+      model: 'gpt-image-2',
+      isImageToImage: false,
     })
 
     globalThis.fetch = async () => {
@@ -102,7 +104,7 @@ test('local dev status refunds pre-deducted credits once when generation fails a
     assert.equal(getLocalDevCreditSummary().balance, 1000)
     assert.equal(
       getLocalDevCreditSummary().transactions.filter((transaction) => (
-        transaction.description === 'Image generation refund'
+        transaction.description === 'GPT Image 2 text-to-image generation refund'
       )).length,
       1,
     )

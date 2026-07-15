@@ -288,7 +288,7 @@ export function refundLocalDevCredits(amount, description = 'Image generation re
   }
 }
 
-export function registerLocalDevCreditHold(taskId, amount) {
+export function registerLocalDevCreditHold(taskId, amount, metadata = {}) {
   const state = getLocalDevCreditState()
 
   if (!taskId || !Number.isInteger(amount) || amount <= 0) return null
@@ -297,6 +297,8 @@ export function registerLocalDevCreditHold(taskId, amount) {
     taskId: String(taskId),
     amount,
     refunded: false,
+    model: metadata.model ? String(metadata.model) : undefined,
+    isImageToImage: Boolean(metadata.isImageToImage),
   })
   persistLocalDevCreditState(state)
 
@@ -304,6 +306,8 @@ export function registerLocalDevCreditHold(taskId, amount) {
     provider: 'local-dev',
     taskId: String(taskId),
     requiredCredits: amount,
+    model: metadata.model ? String(metadata.model) : undefined,
+    isImageToImage: Boolean(metadata.isImageToImage),
   }
 }
 

@@ -4,7 +4,8 @@
  * 需设置环境变量：KIE_AI_API_KEY
  */
 import { getCurrentUser } from '../../_shared/auth.mjs';
-import { refundCredits } from '../../_shared/credits.mjs';
+import { getCreditSummary, refundCredits } from '../../_shared/credits.mjs';
+import { getImageGenerationCreditRefundDescription } from '../../_shared/generation-credit-label.mjs';
 
 const KIE_AI_BASE = 'https://api.kie.ai/api/v1/jobs';
 const CORS = {
@@ -41,6 +42,8 @@ function readCreditHold(body, taskId) {
   return {
     consumptionId: String(creditHold.consumptionId),
     requiredCredits,
+    model: creditHold.model ? String(creditHold.model) : undefined,
+    isImageToImage: Boolean(creditHold.isImageToImage),
   };
 }
 
@@ -55,10 +58,12 @@ async function refundFailedGenerationCredits(env, request, body, taskId, message
 
   const refund = await refundCredits(env, user.id, creditHold.requiredCredits, {
     reason: 'image_generation_refund',
-    description: 'Image generation refund',
+    description: getImageGenerationCreditRefundDescription(creditHold.model, creditHold.isImageToImage),
     consumptionId: creditHold.consumptionId,
     metadata: {
       taskId,
+      model: creditHold.model,
+      isImageToImage: creditHold.isImageToImage,
       error: message || 'Image generation failed',
     },
   }).catch(() => null);
@@ -66,7 +71,7 @@ async function refundFailedGenerationCredits(env, request, body, taskId, message
   if (!refund) return null;
 
   return {
-    credits: { balance: refund.balance, transactions: [] },
+    credits: await getCreditSummary(env, user.id),
     refundedCredits: refund.refunded,
   };
 }

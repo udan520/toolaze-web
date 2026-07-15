@@ -2,7 +2,7 @@ function padDatePart(value: number): string {
   return String(value).padStart(2, '0')
 }
 
-export function formatCreditTransactionTimestamp(value: string): string {
+export function formatLocalTimestampToSeconds(value: string): string {
   const date = new Date(value)
   if (!Number.isFinite(date.getTime())) return ''
 
@@ -14,4 +14,8 @@ export function formatCreditTransactionTimestamp(value: string): string {
   const second = padDatePart(date.getSeconds())
 
   return `${year}-${month}-${day} ${hour}:${minute}:${second}`
+}
+
+export function formatCreditTransactionTimestamp(value: string): string {
+  return formatLocalTimestampToSeconds(value)
 }

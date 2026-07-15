@@ -14,6 +14,7 @@ import {
   getHistoryReferenceThumbnailUrl,
 } from '@/lib/history-preview-media'
 import { downloadImageInCurrentPage } from '@/lib/browser-image-download'
+import { formatLocalTimestampToSeconds } from '@/lib/credit-history-time'
 
 type GenerationHistoryItem = {
   id: string
@@ -63,17 +64,6 @@ function getHistoryPageCopy(initialTranslations?: any) {
   }
 }
 
-function formatDate(value: string, locale: string) {
-  const date = new Date(value)
-  if (!Number.isFinite(date.getTime())) return ''
-  return date.toLocaleString(locale || 'en', {
-    month: 'short',
-    day: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
-  })
-}
-
 function getModelHref(model: string) {
   const safeModel = String(model || 'nano-banana-pro').trim() || 'nano-banana-pro'
   return `/model/${safeModel}`
@@ -89,7 +79,7 @@ interface HistoryPageClientProps {
   locale?: string
 }
 
-export default function HistoryPageClient({ initialTranslations, locale = 'en' }: HistoryPageClientProps = {}) {
+export default function HistoryPageClient({ initialTranslations }: HistoryPageClientProps = {}) {
   const copy = getHistoryPageCopy(initialTranslations)
   const [items, setItems] = useState<GenerationHistoryItem[]>([])
   const [loading, setLoading] = useState(true)
@@ -228,6 +218,7 @@ export default function HistoryPageClient({ initialTranslations, locale = 'en' }
         outputUrl: previewItem.outputUrl,
       })
     : ''
+  const previewCreatedAt = previewItem ? formatLocalTimestampToSeconds(previewItem.createdAt) : ''
 
   return (
     <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-10 md:px-6 md:py-14">
@@ -337,6 +328,11 @@ export default function HistoryPageClient({ initialTranslations, locale = 'en' }
                 {previewItem.resolution && (
                   <span className="rounded-lg bg-indigo-50 px-3 py-1.5 text-xs font-extrabold text-indigo-700">
                     {previewItem.resolution}
+                  </span>
+                )}
+                {previewCreatedAt && (
+                  <span className="rounded-lg bg-indigo-50 px-3 py-1.5 text-xs font-extrabold text-indigo-700">
+                    {previewCreatedAt}
                   </span>
                 )}
               </div>
