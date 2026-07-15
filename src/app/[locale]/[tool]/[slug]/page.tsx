@@ -63,7 +63,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export const dynamic = 'force-static'
-export const dynamicParams = true
+export const dynamicParams = false
 export const revalidate = 86400
 
 const PREGENERATED_LOCALES = ['en'] as const
