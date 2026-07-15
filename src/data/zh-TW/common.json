@@ -586,7 +586,10 @@
       "generating": "生成中...",
       "generatingSeconds": "生成中... {seconds}s",
       "generatedAlt": "生成圖片",
-      "resultExpires": "重新整理頁面後圖片會消失，請盡快下載。",
+      "resultExpires": "登入後即可長久保留你的生成歷史。",
+      "resultRetentionLogin": "登入",
+      "resultRetentionMessage": "後即可長久保留你的生成歷史。",
+      "viewAll": "查看全部",
       "historyResultAlt": "歷史結果",
       "inputAlt": "輸入",
       "fileTooLarge": "檔案 {name} 超過 30MB 限制",
@@ -827,6 +830,33 @@
         "a": "品質保持取決於目標格式。PNG 是無損的，而 JPG 和 WebP 使用有損壓縮但保持高視覺品質。"
       }
     }
+  },
+  "historyPage": {
+    "metadataTitle": "生成歷史記錄 - Toolaze",
+    "metadataDescription": "查看你的 Toolaze AI 生成歷史記錄，下載結果，或依據先前的圖片與影片生成再次創作。",
+    "title": "歷史記錄",
+    "description": "查看已生成的圖片、開啟預覽、下載結果，或建立相似作品。",
+    "loading": "正在載入歷史記錄...",
+    "signInRequired": "請使用 Google 登入以查看你的歷史記錄。",
+    "loadError": "無法載入生成歷史記錄。",
+    "emptyTitle": "尚無生成歷史記錄。",
+    "emptyDescription": "生成完成的圖片會顯示在這裡。",
+    "previewLabel": "生成結果預覽",
+    "previewImageLabel": "預覽生成圖片",
+    "previewReferenceMedia": "預覽參考媒體",
+    "closePreview": "關閉預覽",
+    "referenceMedia": "參考媒體",
+    "prompt": "提示詞",
+    "copyPrompt": "複製提示詞",
+    "createSimilar": "建立相似作品",
+    "download": "下載",
+    "delete": "刪除",
+    "deleting": "刪除中",
+    "deleteHistoryConfirm": "是否從生成歷史中刪除此圖片？一經刪除，不可恢復。",
+    "deleteError": "無法刪除歷史記錄項目。",
+    "modeVideo": "影片",
+    "modeTextToImage": "文字生成圖片",
+    "modeImageToImage": "圖片轉圖片"
   },
   "privacy": {
     "metadata": {

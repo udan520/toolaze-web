@@ -13,6 +13,7 @@ import {
   getHistoryPreviewMediaUrl,
   getHistoryReferenceThumbnailUrl,
 } from '@/lib/history-preview-media'
+import { downloadImageInCurrentPage } from '@/lib/browser-image-download'
 
 type GenerationHistoryItem = {
   id: string
@@ -153,15 +154,38 @@ export default function HistoryPageClient({ initialTranslations, locale = 'en' }
     }
   }, [copy.loadError, copy.signInRequired])
 
-  const handleDownload = (item: GenerationHistoryItem) => {
+  const triggerBlobDownload = (blob: Blob, filename: string) => {
+    const blobUrl = URL.createObjectURL(blob)
     const link = document.createElement('a')
-    link.href = item.outputUrl
-    link.download = `toolaze-${item.id}.${item.mediaType === 'video' ? 'mp4' : 'png'}`
-    link.target = '_blank'
+    link.href = blobUrl
+    link.download = filename
+    link.style.display = 'none'
+    document.body.appendChild(link)
+    link.click()
+    setTimeout(() => {
+      document.body.removeChild(link)
+      URL.revokeObjectURL(blobUrl)
+    }, 100)
+  }
+
+  const triggerUrlDownload = (url: string, filename: string) => {
+    const link = document.createElement('a')
+    link.href = url
+    link.download = filename
     link.rel = 'noopener noreferrer'
+    link.style.display = 'none'
     document.body.appendChild(link)
     link.click()
     document.body.removeChild(link)
+  }
+
+  const handleDownload = async (item: GenerationHistoryItem) => {
+    await downloadImageInCurrentPage({
+      imageUrl: item.outputUrl,
+      filename: `toolaze-${item.id}.${item.mediaType === 'video' ? 'mp4' : 'png'}`,
+      triggerBlobDownload,
+      triggerUrlDownload,
+    })
   }
 
   const handleDelete = async (item: GenerationHistoryItem) => {
@@ -260,14 +284,15 @@ export default function HistoryPageClient({ initialTranslations, locale = 'en' }
 
       {previewItem && (
         <div
-          className="fixed inset-0 z-[10000] flex items-center justify-center bg-slate-950/55 px-4 py-6 backdrop-blur-sm"
+          data-history-preview-modal
+          className="fixed inset-0 z-[10000] flex items-start justify-center overflow-y-auto bg-slate-950/55 px-4 py-4 backdrop-blur-sm md:items-center md:py-6"
           role="dialog"
           aria-modal="true"
           aria-label={copy.previewLabel}
           onClick={closePreview}
         >
           <div
-            className="relative grid max-h-[92vh] w-full max-w-6xl grid-cols-1 overflow-hidden rounded-[28px] bg-slate-50 shadow-2xl md:grid-cols-[minmax(0,1.15fr)_minmax(360px,0.85fr)]"
+            className="relative grid w-full max-w-6xl grid-cols-1 overflow-visible rounded-[28px] bg-slate-50 shadow-2xl md:max-h-[92vh] md:grid-cols-[minmax(0,1.15fr)_minmax(360px,0.85fr)] md:overflow-hidden"
             onClick={(event) => event.stopPropagation()}
           >
             <button
@@ -279,12 +304,12 @@ export default function HistoryPageClient({ initialTranslations, locale = 'en' }
               <span className="text-2xl leading-none">×</span>
             </button>
 
-            <div className="min-h-0 bg-slate-100 p-4 md:p-5">
-              <div className="flex h-full min-h-[320px] items-center justify-center overflow-hidden rounded-2xl bg-slate-200">
+            <div className="min-h-0 bg-slate-100 p-3 md:p-5">
+              <div className="flex h-full min-h-[240px] items-center justify-center overflow-hidden rounded-2xl bg-slate-200 md:min-h-[320px]">
                 {previewItem.mediaType === 'video' && activePreviewMediaUrl === previewItem.outputUrl ? (
                   <video
                     src={activePreviewMediaUrl}
-                    className="max-h-[82vh] w-full object-contain"
+                    className="max-h-[52vh] w-full object-contain md:max-h-[82vh]"
                     controls
                     playsInline
                   />
@@ -292,13 +317,16 @@ export default function HistoryPageClient({ initialTranslations, locale = 'en' }
                   <img
                     src={activePreviewMediaUrl}
                     alt=""
-                    className="max-h-[82vh] w-full object-contain"
+                    className="max-h-[52vh] w-full object-contain md:max-h-[82vh]"
                   />
                 )}
               </div>
             </div>
 
-            <div className="min-h-0 overflow-y-auto px-5 py-6 md:px-7 md:py-8">
+            <div
+              data-history-preview-details
+              className="min-h-0 px-5 py-5 md:overflow-y-auto md:px-7 md:py-8"
+            >
               <div className="mb-6 flex flex-wrap gap-2 pr-10">
                 <span className="rounded-lg bg-indigo-50 px-3 py-1.5 text-xs font-extrabold text-indigo-700">
                   {getGenerationModeLabel(previewItem, copy)}
@@ -366,7 +394,10 @@ export default function HistoryPageClient({ initialTranslations, locale = 'en' }
                 </section>
               </div>
 
-              <div className="mt-6 grid gap-3 sm:grid-cols-[1fr_auto_auto]">
+              <div
+                data-history-preview-actions
+                className="sticky bottom-0 -mx-5 mt-6 grid gap-3 border-t border-slate-200 bg-slate-50/95 px-5 py-4 backdrop-blur sm:grid-cols-[1fr_auto_auto] md:static md:mx-0 md:border-t-0 md:bg-transparent md:p-0 md:backdrop-blur-0"
+              >
                 <button
                   type="button"
                   onClick={() => handleReprompt(previewItem)}
@@ -376,7 +407,7 @@ export default function HistoryPageClient({ initialTranslations, locale = 'en' }
                 </button>
                 <button
                   type="button"
-                  onClick={() => handleDownload(previewItem)}
+                  onClick={() => void handleDownload(previewItem)}
                   className="inline-flex items-center justify-center rounded-xl border border-slate-200 px-5 py-3 text-center text-sm font-extrabold text-slate-700 hover:border-indigo-200 hover:text-indigo-600"
                 >
                   {copy.download}

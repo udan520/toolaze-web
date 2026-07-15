@@ -586,7 +586,10 @@
       "generating": "Wird generiert...",
       "generatingSeconds": "Wird generiert... {seconds}s",
       "generatedAlt": "Generiert",
-      "resultExpires": "Das Bild verschwindet nach dem Aktualisieren der Seite. Bitte lade es so bald wie möglich herunter.",
+      "resultExpires": "Melde dich an, um deinen Generierungsverlauf dauerhaft zu behalten.",
+      "resultRetentionLogin": "Melde dich an",
+      "resultRetentionMessage": ", um deinen Generierungsverlauf dauerhaft zu behalten.",
+      "viewAll": "Alle anzeigen",
       "historyResultAlt": "Verlaufsergebnis",
       "inputAlt": "Eingabe",
       "fileTooLarge": "Datei {name} überschreitet das 30-MB-Limit",
@@ -827,6 +830,33 @@
         "a": "Die Qualitätserhaltung hängt vom Zielformat ab. PNG ist verlustfrei, während JPG und WebP verlustbehaftete Komprimierung verwenden, aber eine hohe visuelle Qualität beibehalten."
       }
     }
+  },
+  "historyPage": {
+    "metadataTitle": "Generierungsverlauf - Toolaze",
+    "metadataDescription": "Sieh dir deinen Toolaze KI-Generierungsverlauf an, lade Ergebnisse herunter und erstelle ähnliche Bilder oder Videos erneut.",
+    "title": "Verlauf",
+    "description": "Prüfe deine generierten Bilder, öffne Vorschauen, lade Ergebnisse herunter oder erstelle ähnliche Resultate.",
+    "loading": "Verlauf wird geladen...",
+    "signInRequired": "Bitte melde dich mit Google an, um deinen Verlauf zu sehen.",
+    "loadError": "Der Generierungsverlauf konnte nicht geladen werden.",
+    "emptyTitle": "Noch kein Generierungsverlauf.",
+    "emptyDescription": "Generierte Bilder erscheinen hier, sobald sie fertig sind.",
+    "previewLabel": "Generierungsvorschau",
+    "previewImageLabel": "Generiertes Bild ansehen",
+    "previewReferenceMedia": "Referenzmedien ansehen",
+    "closePreview": "Vorschau schließen",
+    "referenceMedia": "Referenzmedien",
+    "prompt": "Prompt",
+    "copyPrompt": "Prompt kopieren",
+    "createSimilar": "Ähnliches erstellen",
+    "download": "Herunterladen",
+    "delete": "Löschen",
+    "deleting": "Wird gelöscht",
+    "deleteHistoryConfirm": "Dieses Bild aus deinem Generierungsverlauf löschen? Nach dem Löschen kann es nicht wiederhergestellt werden.",
+    "deleteError": "Verlaufseintrag konnte nicht gelöscht werden.",
+    "modeVideo": "Video",
+    "modeTextToImage": "Text zu Bild",
+    "modeImageToImage": "Bild zu Bild"
   },
   "privacy": {
     "metadata": {

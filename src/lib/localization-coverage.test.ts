@@ -14,6 +14,10 @@ import {
   SEEDREAM_5_0_PRO_LOCALES,
   getSeedream50ProLandingCopy,
 } from '@/lib/seedream-5-0-pro-landing-copy'
+import {
+  MODEL_PAGE_LOCALES,
+  getModelPageCopy,
+} from '@/app/model/copy'
 import { loadCommonTranslations } from '@/lib/seo-loader'
 
 const projectRoot = process.cwd()
@@ -100,6 +104,31 @@ test('AI tools hub has localized page copy instead of redirecting localized rout
   assert.match(rootAiToolsPage, /getAiToolsPageCopy\(['"]en['"]\)/)
 })
 
+test('Model hub has localized page copy instead of redirecting localized routes to English', () => {
+  const localizedModelPage = readProjectFile('src/app/[locale]/model/page.tsx')
+  const rootModelPage = readProjectFile('src/app/model/page.tsx')
+
+  assert.match(localizedModelPage, /if \(locale === ['"]en['"]\) \{\s*redirect\(['"]\/model['"]\)/)
+  assert.match(localizedModelPage, /getModelPageCopy/)
+  assert.match(rootModelPage, /getModelPageCopy\(['"]en['"]\)/)
+})
+
+test('Model hub does not reuse English copy for localized routes', () => {
+  const en = getModelPageCopy('en')
+
+  for (const locale of MODEL_PAGE_LOCALES.filter((item) => item !== 'en')) {
+    const copy = getModelPageCopy(locale)
+
+    assert.notEqual(copy.metadata.title, en.metadata.title, `${locale} metadata.title`)
+    assert.notEqual(copy.hero.title, en.hero.title, `${locale} hero.title`)
+    assert.notEqual(copy.hero.description, en.hero.description, `${locale} hero.description`)
+    assert.notEqual(copy.about.title, en.about.title, `${locale} about.title`)
+    assert.notEqual(copy.about.paragraphs[0], en.about.paragraphs[0], `${locale} about.paragraphs.0`)
+    assert.notEqual(copy.cards[0].description, en.cards[0].description, `${locale} cards.0.description`)
+    assert.notEqual(copy.cards[0].cta, en.cards[0].cta, `${locale} cards.0.cta`)
+  }
+})
+
 test('Prompt example controls are locale-aware instead of hardcoded English', () => {
   const promptExamples = readProjectFile('src/components/blocks/PromptExamples.tsx')
 
@@ -170,6 +199,77 @@ test('server common translation loader returns localized navigation copy', async
   assert.equal(zhTW?.nav?.aiBabyGenerator, 'AI 寶寶生成器')
   assert.equal(zhTW?.nav?.textToImageGenerator, '文字轉圖像生成器')
   assert.equal(de?.nav?.aiBabyGenerator, 'KI-Babygenerator')
+})
+
+test('History page common copy exists for every supported locale', () => {
+  const requiredHistoryPageKeys = [
+    'metadataTitle',
+    'metadataDescription',
+    'title',
+    'description',
+    'loading',
+    'signInRequired',
+    'loadError',
+    'emptyTitle',
+    'emptyDescription',
+    'previewLabel',
+    'previewImageLabel',
+    'previewReferenceMedia',
+    'closePreview',
+    'referenceMedia',
+    'prompt',
+    'copyPrompt',
+    'createSimilar',
+    'download',
+    'delete',
+    'deleting',
+    'deleteHistoryConfirm',
+    'deleteError',
+    'modeVideo',
+    'modeTextToImage',
+    'modeImageToImage',
+  ]
+  const englishHistoryPage = readJson('src/data/en/common.json').historyPage
+  const localizedKeysThatMustTranslate = [
+    'metadataTitle',
+    'metadataDescription',
+    'title',
+    'description',
+    'loading',
+    'signInRequired',
+    'loadError',
+    'emptyTitle',
+    'emptyDescription',
+    'previewLabel',
+    'previewImageLabel',
+    'previewReferenceMedia',
+    'closePreview',
+    'referenceMedia',
+    'copyPrompt',
+    'createSimilar',
+    'download',
+    'delete',
+    'deleting',
+    'deleteHistoryConfirm',
+    'deleteError',
+    'modeTextToImage',
+    'modeImageToImage',
+  ]
+
+  for (const locale of supportedLocales) {
+    const historyPage = readJson(`src/data/${locale}/common.json`).historyPage
+
+    for (const key of requiredHistoryPageKeys) {
+      assert.equal(typeof historyPage?.[key], 'string', `${locale}.historyPage.${key}`)
+      assert.notEqual(historyPage[key].trim(), '', `${locale}.historyPage.${key}`)
+    }
+
+    if (locale !== 'en') {
+      for (const key of localizedKeysThatMustTranslate) {
+        assert.notEqual(historyPage[key], englishHistoryPage[key], `${locale}.historyPage.${key}`)
+      }
+    }
+  }
 })
 
 test('localized home hero includes image-to-image CTA copy', () => {

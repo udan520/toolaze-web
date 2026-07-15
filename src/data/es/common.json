@@ -586,7 +586,10 @@
       "generating": "Generando...",
       "generatingSeconds": "Generando... {seconds}s",
       "generatedAlt": "Generada",
-      "resultExpires": "La imagen desaparecerá cuando actualices la página. Descárgala lo antes posible.",
+      "resultExpires": "Inicia sesión para conservar tu historial de generación de forma permanente.",
+      "resultRetentionLogin": "Inicia sesión",
+      "resultRetentionMessage": " para conservar tu historial de generación de forma permanente.",
+      "viewAll": "ver todo",
       "historyResultAlt": "Resultado del historial",
       "inputAlt": "Entrada",
       "fileTooLarge": "El archivo {name} supera el límite de 30 MB",
@@ -827,6 +830,33 @@
         "a": "La preservación de la calidad depende del formato objetivo. PNG es sin pérdidas, mientras que JPG y WebP usan compresión con pérdidas pero mantienen alta calidad visual."
       }
     }
+  },
+  "historyPage": {
+    "metadataTitle": "Historial de generación - Toolaze",
+    "metadataDescription": "Consulta tu historial de generación con IA en Toolaze, descarga resultados y reutiliza generaciones anteriores de imagen o video.",
+    "title": "Historial",
+    "description": "Revisa tus imágenes generadas, abre vistas previas, descarga resultados o crea resultados similares.",
+    "loading": "Cargando historial...",
+    "signInRequired": "Inicia sesión con Google para ver tu historial.",
+    "loadError": "No se pudo cargar el historial de generación.",
+    "emptyTitle": "Aún no hay historial de generación.",
+    "emptyDescription": "Las imágenes generadas aparecerán aquí cuando se completen.",
+    "previewLabel": "Vista previa de generación",
+    "previewImageLabel": "Previsualizar imagen generada",
+    "previewReferenceMedia": "Previsualizar medios de referencia",
+    "closePreview": "Cerrar vista previa",
+    "referenceMedia": "Medios de referencia",
+    "prompt": "Prompt",
+    "copyPrompt": "Copiar prompt",
+    "createSimilar": "Crear similar",
+    "download": "Descargar",
+    "delete": "Eliminar",
+    "deleting": "Eliminando",
+    "deleteHistoryConfirm": "¿Eliminar esta imagen de tu historial de generación? Una vez eliminada, no se puede recuperar.",
+    "deleteError": "No se pudo eliminar el elemento del historial.",
+    "modeVideo": "Video",
+    "modeTextToImage": "Texto a imagen",
+    "modeImageToImage": "Imagen a imagen"
   },
   "privacy": {
     "metadata": {

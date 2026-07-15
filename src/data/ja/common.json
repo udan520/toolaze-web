@@ -598,7 +598,10 @@
       "generating": "生成中...",
       "generatingSeconds": "生成中... {seconds}s",
       "generatedAlt": "生成画像",
-      "resultExpires": "ページを更新すると画像は消えます。できるだけ早くダウンロードしてください。",
+      "resultExpires": "ログインすると生成履歴を長く保存できます。",
+      "resultRetentionLogin": "ログイン",
+      "resultRetentionMessage": "すると生成履歴を長く保存できます。",
+      "viewAll": "すべて表示",
       "historyResultAlt": "履歴結果",
       "inputAlt": "入力",
       "fileTooLarge": "ファイル {name} は30MBの制限を超えています",
@@ -839,6 +842,33 @@
         "a": "品質の保持はターゲット形式によって異なります。PNGは可逆圧縮で、JPGとWebPは非可逆圧縮を使用しますが、高い視覚品質を維持します。"
       }
     }
+  },
+  "historyPage": {
+    "metadataTitle": "生成履歴 - Toolaze",
+    "metadataDescription": "ToolazeのAI生成履歴を確認し、結果をダウンロードしたり、過去の画像や動画生成から似た結果を作成したりできます。",
+    "title": "履歴",
+    "description": "生成した画像を確認し、プレビューを開き、結果をダウンロードしたり、似た結果を作成したりできます。",
+    "loading": "履歴を読み込み中...",
+    "signInRequired": "履歴を表示するにはGoogleでログインしてください。",
+    "loadError": "生成履歴を読み込めませんでした。",
+    "emptyTitle": "生成履歴はまだありません。",
+    "emptyDescription": "生成が完了した画像はここに表示されます。",
+    "previewLabel": "生成プレビュー",
+    "previewImageLabel": "生成画像をプレビュー",
+    "previewReferenceMedia": "参照メディアをプレビュー",
+    "closePreview": "プレビューを閉じる",
+    "referenceMedia": "参照メディア",
+    "prompt": "プロンプト",
+    "copyPrompt": "プロンプトをコピー",
+    "createSimilar": "似た結果を作成",
+    "download": "ダウンロード",
+    "delete": "削除",
+    "deleting": "削除中",
+    "deleteHistoryConfirm": "この画像を生成履歴から削除しますか？削除すると復元できません。",
+    "deleteError": "履歴項目を削除できませんでした。",
+    "modeVideo": "動画",
+    "modeTextToImage": "テキストから画像",
+    "modeImageToImage": "画像から画像"
   },
   "privacy": {
     "metadata": {

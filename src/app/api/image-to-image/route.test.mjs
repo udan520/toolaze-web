@@ -24,13 +24,21 @@ import {
   resetLocalDevCreditsForTests,
 } from '../_shared/local-dev-auth.js'
 
-function createLocalDevGenerateRequest() {
+function createLocalDevGenerateRequest({
+  model = 'gpt-image-2',
+  isImageToImage = false,
+  imageUrls = [],
+  quality = '',
+  resolution = '1K',
+} = {}) {
   const formData = new FormData()
   formData.append('prompt', 'test prompt')
   formData.append('aspectRatio', '16:9')
-  formData.append('resolution', '1K')
-  formData.append('isImageToImage', 'false')
-  formData.append('model', 'gpt-image-2')
+  formData.append('resolution', resolution)
+  formData.append('isImageToImage', String(isImageToImage))
+  formData.append('model', model)
+  if (quality) formData.append('quality', quality)
+  if (imageUrls.length > 0) formData.append('imageUrls', JSON.stringify(imageUrls))
 
   return new Request('http://localhost:3016/api/image-to-image', {
     method: 'POST',
@@ -128,6 +136,117 @@ test('local dev generation pre-deducts credits before requesting the provider ta
     assert.equal(payload.taskId, 'task_pre_deducted')
     assert.equal(balanceDuringProviderRequest, 990)
     assert.equal(payload.credits.balance, 990)
+  } finally {
+    resetLocalDevCreditsForTests(1000)
+    globalThis.fetch = originalFetch
+    if (originalKey === undefined) {
+      delete process.env.KIE_AI_API_KEY
+    } else {
+      process.env.KIE_AI_API_KEY = originalKey
+    }
+  }
+})
+
+test('local dev generation forwards Seedream 5.0 Pro text tasks to the Seedream provider model', async () => {
+  const originalKey = process.env.KIE_AI_API_KEY
+  const originalFetch = globalThis.fetch
+  resetLocalDevCreditsForTests(1000)
+  process.env.KIE_AI_API_KEY = 'test-key'
+  let providerPayload = null
+
+  globalThis.fetch = async (_input, init) => {
+    providerPayload = JSON.parse(String(init?.body || '{}'))
+    return Response.json({ code: 200, data: { taskId: 'task_seedream_pro' } })
+  }
+
+  try {
+    const response = await POST(createLocalDevGenerateRequest({
+      model: 'seedream-5-0-pro',
+      quality: 'high',
+      resolution: '2K',
+    }))
+    const payload = await response.json()
+
+    assert.equal(response.status, 200)
+    assert.equal(payload.taskId, 'task_seedream_pro')
+    assert.equal(providerPayload.model, 'seedream/5-pro-text-to-image')
+    assert.equal(providerPayload.input.quality, 'high')
+    assert.equal(providerPayload.input.resolution, '2K')
+  } finally {
+    resetLocalDevCreditsForTests(1000)
+    globalThis.fetch = originalFetch
+    if (originalKey === undefined) {
+      delete process.env.KIE_AI_API_KEY
+    } else {
+      process.env.KIE_AI_API_KEY = originalKey
+    }
+  }
+})
+
+test('local dev generation forwards Seedream 5.0 Pro edit tasks with image_urls', async () => {
+  const originalKey = process.env.KIE_AI_API_KEY
+  const originalFetch = globalThis.fetch
+  resetLocalDevCreditsForTests(1000)
+  process.env.KIE_AI_API_KEY = 'test-key'
+  let providerPayload = null
+
+  globalThis.fetch = async (_input, init) => {
+    providerPayload = JSON.parse(String(init?.body || '{}'))
+    return Response.json({ code: 200, data: { taskId: 'task_seedream_pro_edit' } })
+  }
+
+  try {
+    const response = await POST(createLocalDevGenerateRequest({
+      model: 'seedream-5-0-pro',
+      isImageToImage: true,
+      imageUrls: ['https://example.com/reference.webp'],
+      quality: 'high',
+    }))
+    const payload = await response.json()
+
+    assert.equal(response.status, 200)
+    assert.equal(payload.taskId, 'task_seedream_pro_edit')
+    assert.equal(providerPayload.model, 'seedream/5-pro-image-to-image')
+    assert.deepEqual(providerPayload.input.image_urls, ['https://example.com/reference.webp'])
+    assert.equal(providerPayload.input.image_input, undefined)
+  } finally {
+    resetLocalDevCreditsForTests(1000)
+    globalThis.fetch = originalFetch
+    if (originalKey === undefined) {
+      delete process.env.KIE_AI_API_KEY
+    } else {
+      process.env.KIE_AI_API_KEY = originalKey
+    }
+  }
+})
+
+test('local dev generation forwards Seedream 5.0 Lite tasks to Seedream Lite', async () => {
+  const originalKey = process.env.KIE_AI_API_KEY
+  const originalFetch = globalThis.fetch
+  resetLocalDevCreditsForTests(1000)
+  process.env.KIE_AI_API_KEY = 'test-key'
+  const providerModels = []
+
+  globalThis.fetch = async (_input, init) => {
+    const body = JSON.parse(String(init?.body || '{}'))
+    providerModels.push(body.model)
+    return Response.json({ code: 200, data: { taskId: `task_${providerModels.length}` } })
+  }
+
+  try {
+    const textResponse = await POST(createLocalDevGenerateRequest({ model: 'seedream-5-0-lite' }))
+    const editResponse = await POST(createLocalDevGenerateRequest({
+      model: 'seedream-5-0-lite',
+      isImageToImage: true,
+      imageUrls: ['https://example.com/reference.webp'],
+    }))
+
+    assert.equal(textResponse.status, 200)
+    assert.equal(editResponse.status, 200)
+    assert.deepEqual(providerModels, [
+      'seedream/5-lite-text-to-image',
+      'seedream/5-lite-image-to-image',
+    ])
   } finally {
     resetLocalDevCreditsForTests(1000)
     globalThis.fetch = originalFetch

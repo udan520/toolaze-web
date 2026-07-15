@@ -580,7 +580,10 @@
       "generating": "Generating...",
       "generatingSeconds": "Generating... {seconds}s",
       "generatedAlt": "Generated",
-      "resultExpires": "The image will disappear after you refresh the page. Please download it as soon as possible.",
+      "resultExpires": "Log in to keep your generation history permanently.",
+      "resultRetentionLogin": "Log in",
+      "resultRetentionMessage": " to keep your generation history permanently.",
+      "viewAll": "view all",
       "historyResultAlt": "History result",
       "inputAlt": "Input",
       "fileTooLarge": "File {name} exceeds 30MB limit",
@@ -621,6 +624,33 @@
         "flags": "Flags"
       }
     }
+  },
+  "historyPage": {
+    "metadataTitle": "Generation History - Toolaze",
+    "metadataDescription": "View your Toolaze AI generation history, download results, and reprompt previous image or video generations.",
+    "title": "History",
+    "description": "Review your generated images, open previews, download outputs, or create similar results.",
+    "loading": "Loading history...",
+    "signInRequired": "Please sign in with Google to view your history.",
+    "loadError": "Could not load generation history.",
+    "emptyTitle": "No generation history yet.",
+    "emptyDescription": "Generated images will appear here after they complete.",
+    "previewLabel": "Generation preview",
+    "previewImageLabel": "Preview generated image",
+    "previewReferenceMedia": "Preview reference media",
+    "closePreview": "Close preview",
+    "referenceMedia": "Reference Media",
+    "prompt": "Prompt",
+    "copyPrompt": "Copy prompt",
+    "createSimilar": "Create Similar",
+    "download": "Download",
+    "delete": "Delete",
+    "deleting": "Deleting",
+    "deleteHistoryConfirm": "Delete this image from your generation history? Once deleted, it cannot be recovered.",
+    "deleteError": "Could not delete history item.",
+    "modeVideo": "Video",
+    "modeTextToImage": "Text to Image",
+    "modeImageToImage": "Image to Image"
   },
   "privacy": {
     "metadata": {

@@ -61,6 +61,8 @@ function resolveModel(model) {
   if (m === 'gpt-image-2') return 'gpt-image-2';
   if (m === 'nano-banana-2') return 'nano-banana-2';
   if (m === 'seedream-4-5') return 'seedream-4-5';
+  if (m === 'seedream-5-0-lite') return 'seedream-5-0-lite';
+  if (m === 'seedream-5-0-pro') return 'seedream-5-0-pro';
   if (m === 'wan-2-7-image') return 'wan-2-7-image';
   return 'nano-banana-pro';
 }
@@ -78,6 +80,18 @@ function resolveProviderModelId(model, env, isImageToImage, resolution) {
     }
     return env.KIE_SEEDREAM_4_5_TEXT_MODEL || 'seedream/4.5-text-to-image';
   }
+  if (model === 'seedream-5-0-lite') {
+    if (isImageToImage) {
+      return env.KIE_SEEDREAM_5_0_LITE_EDIT_MODEL || env.KIE_SEEDREAM_5_LITE_EDIT_MODEL || 'seedream/5-lite-image-to-image';
+    }
+    return env.KIE_SEEDREAM_5_0_LITE_TEXT_MODEL || env.KIE_SEEDREAM_5_LITE_TEXT_MODEL || 'seedream/5-lite-text-to-image';
+  }
+  if (model === 'seedream-5-0-pro') {
+    if (isImageToImage) {
+      return env.KIE_SEEDREAM_5_0_PRO_EDIT_MODEL || env.KIE_SEEDREAM_5_PRO_EDIT_MODEL || 'seedream/5-pro-image-to-image';
+    }
+    return env.KIE_SEEDREAM_5_0_PRO_TEXT_MODEL || env.KIE_SEEDREAM_5_PRO_TEXT_MODEL || 'seedream/5-pro-text-to-image';
+  }
   if (model === 'nano-banana-2') {
     return env.KIE_NANO_BANANA_2_MODEL || 'nano-banana-2';
   }
@@ -93,6 +107,8 @@ function resolveProviderModelId(model, env, isImageToImage, resolution) {
 function getMaxImagesForModel(model) {
   if (model === 'nano-banana-2') return 14;
   if (model === 'seedream-4-5') return 14;
+  if (model === 'seedream-5-0-lite') return 14;
+  if (model === 'seedream-5-0-pro') return 14;
   if (model === 'wan-2-7-image') return 9;
   return model === 'gpt-image-2' ? 16 : 8;
 }
@@ -201,7 +217,7 @@ export async function onRequest(context) {
       model === 'wan-2-7-image' && isImageToImage && resolution === '4K'
         ? '2K'
         : (resolution === '2K' || resolution === '4K' ? resolution : '1K');
-    const aspectRatio = requestedAspectRatio || (model === 'seedream-4-5' || model === 'wan-2-7-image' ? '1:1' : undefined);
+    const aspectRatio = requestedAspectRatio || (model === 'seedream-4-5' || model === 'seedream-5-0-lite' || model === 'seedream-5-0-pro' || model === 'wan-2-7-image' ? '1:1' : undefined);
     const providerModelId = resolveProviderModelId(model, env, isImageToImage, normalizedResolution);
     const maxImages = getMaxImagesForModel(model);
     const quality = String(formData.get('quality') || '').trim().toLowerCase();
@@ -258,8 +274,8 @@ export async function onRequest(context) {
           prompt,
           resolution: normalizedResolution,
         };
-    if (model === 'seedream-4-5') {
-      input.quality = quality === 'high' ? 'high' : 'basic';
+    if (model === 'seedream-4-5' || model === 'seedream-5-0-lite' || model === 'seedream-5-0-pro') {
+      input.quality = quality === 'ultra' ? 'ultra' : quality === 'high' ? 'high' : 'basic';
     }
     if (model === 'wan-2-7-image') {
       input.thinking_mode = !isImageToImage;
@@ -271,7 +287,7 @@ export async function onRequest(context) {
       input.output_format = mappedFormat;
     }
     if (isImageToImage && imageUrls.length > 0) {
-      if (model === 'seedream-4-5') {
+      if (model === 'seedream-4-5' || model === 'seedream-5-0-lite' || model === 'seedream-5-0-pro') {
         input.image_urls = imageUrls.slice(0, maxImages);
       } else if (model === 'gpt-image-2' || model === 'wan-2-7-image') {
         input.input_urls = imageUrls.slice(0, maxImages);

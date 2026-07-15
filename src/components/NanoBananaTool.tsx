@@ -3,6 +3,7 @@
 import { useState, useRef, useCallback, useEffect, useLayoutEffect } from 'react'
 import type { ReactNode } from 'react'
 import { useMemo } from 'react'
+import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import SiteImage from './SiteImage'
 import { getImageUploadUrl } from '@/lib/upload-url'
@@ -38,6 +39,10 @@ import {
   GENERATION_HISTORY_DELETE_CONFIRM_MESSAGE,
   shouldDeleteGenerationHistoryItem,
 } from '@/lib/generation-history-delete-confirm'
+import {
+  getHistoryToolMetadata,
+  getLocalizedInternalPath,
+} from '@/lib/generation-history-tool-metadata'
 
 type RightPanelMode = 'sample' | 'generating' | 'history' | 'result'
 
@@ -236,44 +241,7 @@ interface PromptModifierConfig {
 const EMPTY_PROMPT_PRESETS: PromptPreset[] = []
 const EMPTY_PROMPT_PRESET_TABS: PromptPresetTab[] = []
 
-const LOCALIZED_ROUTE_PREFIXES = new Set(['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it'])
 const AUTH_CACHE_STORAGE_KEY = 'toolaze.authSnapshot'
-
-const HISTORY_TOOL_LABELS: Record<string, string> = {
-  'ai-image-generator': 'AI Image Generator',
-  'ai-image-to-image-generator': 'AI Image to Image Generator',
-  'text-to-image-generator': 'Text to Image Generator',
-  'ai-baby-generator': 'AI Baby Generator',
-  'ai-couple-photo-maker': 'AI Couple Photo Maker',
-  'ai-hairstyle-changer': 'AI Hairstyle Changer',
-  'ai-hair-color-changer': 'AI Hair Color Changer',
-  'watermark-remover': 'Watermark Remover',
-  'photo-restoration': 'Photo Restoration',
-  'ai-clothes-changer': 'AI Clothes Changer',
-}
-
-function getHistoryToolMetadata(pathname: string, modelName: string, selectedModelId: ImageModelId) {
-  const pathParts = pathname.split('/').filter(Boolean)
-  const routeParts = LOCALIZED_ROUTE_PREFIXES.has(pathParts[0] || '')
-    ? pathParts.slice(1)
-    : pathParts
-  const rootSegment = routeParts[0] || 'ai-image-generator'
-
-  if (rootSegment === 'model') {
-    const modelSlug = routeParts[1] || selectedModelId
-    return {
-      toolSlug: `model/${modelSlug}`,
-      toolLabel: modelName || modelSlug,
-      sourcePath: pathname,
-    }
-  }
-
-  return {
-    toolSlug: rootSegment,
-    toolLabel: HISTORY_TOOL_LABELS[rootSegment] || rootSegment,
-    sourcePath: pathname,
-  }
-}
 
 const composePromptParts = (...parts: Array<string | undefined>) =>
   parts
@@ -833,7 +801,9 @@ export default function NanoBananaTool({
     generating: 'Generating...',
     generatingSeconds: 'Generating... {seconds}s',
     generatedAlt: 'Generated',
-    resultExpires: 'The image will disappear after you refresh the page. Please download it as soon as possible.',
+    resultRetentionLogin: 'Log in',
+    resultRetentionMessage: ' to keep your generation history permanently.',
+    viewAll: 'view all',
     historyResultAlt: 'History result',
     inputAlt: 'Reference image',
     fileTooLarge: 'File {name} exceeds 30MB limit',
@@ -917,6 +887,7 @@ export default function NanoBananaTool({
   const [toasts, setToasts] = useState<Array<{ id: string; msg: string; type: string }>>([])
   const [creditExhaustedModalOpen, setCreditExhaustedModalOpen] = useState(false)
   const [generatingSeconds, setGeneratingSeconds] = useState(0)
+  const [isUserSignedIn, setIsUserSignedIn] = useState(false)
   const fileInputRef = useRef<HTMLInputElement>(null)
   const promptTextareaRef = useRef<HTMLTextAreaElement>(null)
   const modelSelectorRef = useRef<HTMLDivElement>(null)
@@ -927,6 +898,7 @@ export default function NanoBananaTool({
   const activeModelGroup = modelGroups.find((group) => group.id === activeModelGroupId) || modelGroups[0]
   const selectedModelGroup = modelGroups.find((group) => group.models.some((model) => model.id === selectedModelId)) || modelGroups[0]
   const generationCreditCost = calculateImageGenerationCredits(selectedModelId, resolution)
+  const historyPageHref = getLocalizedInternalPath(pathname, '/history')
   const resolutionOptions = useMemo(
     () => getResolutionOptionsForModel(selectedModelId),
     [selectedModelId]
@@ -1077,6 +1049,25 @@ export default function NanoBananaTool({
     }, 1000)
     return () => clearInterval(timer)
   }, [isGenerating])
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+
+    const refreshSignedInState = () => {
+      setIsUserSignedIn(getCachedGenerationAuthState(0).isSignedIn)
+    }
+
+    refreshSignedInState()
+    window.addEventListener('toolaze:auth-updated', refreshSignedInState)
+    window.addEventListener('toolaze:credits-updated', refreshSignedInState)
+    window.addEventListener('focus', refreshSignedInState)
+
+    return () => {
+      window.removeEventListener('toolaze:auth-updated', refreshSignedInState)
+      window.removeEventListener('toolaze:credits-updated', refreshSignedInState)
+      window.removeEventListener('focus', refreshSignedInState)
+    }
+  }, [])
 
   useLayoutEffect(() => {
     if (!shouldPositionInsertedPromptRef.current) return
@@ -1330,6 +1321,7 @@ export default function NanoBananaTool({
       setCreditExhaustedModalOpen(true)
       return
     }
+    setIsUserSignedIn(true)
     setIsGenerating(true)
     setRightMode('generating')
     let rollbackOptimisticCredits = startOptimisticCreditDeduction(generationCreditCost)
@@ -1462,7 +1454,7 @@ export default function NanoBananaTool({
       const creditHold = generateResult.creditHold || null
 
       const persistHistoryItem = async (outputUrl: string, mediaType: 'image' | 'video' = 'image') => {
-        const historyTool = getHistoryToolMetadata(pathname, modelName, selectedModelId)
+        const historyTool = getHistoryToolMetadata(pathname, selectedModelName, selectedModelId)
 
         try {
           const response = await fetch('/api/history', {
@@ -1831,9 +1823,267 @@ export default function NanoBananaTool({
     window.history.pushState(null, '', `/model/${nextModelId}`)
   }
 
+  const openResultSignIn = () => {
+    if (typeof window === 'undefined') return
+    window.dispatchEvent(new CustomEvent('toolaze:open-auth-modal'))
+  }
+
+  const renderModelOptionButton = (option: ModelOption, group: ModelGroup) => {
+    const isSelectedModel = option.id === selectedModelId
+    const metadata = getModelOptionMetadata(option.id)
+
+    return (
+      <button
+        key={option.id}
+        type="button"
+        onClick={() => handleModelChange(option.id)}
+        className={`!flex w-full flex-col items-stretch gap-0 !rounded-xl !px-3 !py-3 text-left transition-colors duration-150 !whitespace-normal ${
+          isSelectedModel
+            ? 'bg-[#DBEAFE] text-slate-950'
+            : 'bg-white text-slate-700 hover:bg-[#F8FAFF]'
+        }`}
+        aria-selected={isSelectedModel}
+      >
+        <span className="flex min-w-0 items-start justify-between gap-3">
+          <span className="min-w-0 flex-1">
+            <span className="flex min-w-0 items-center gap-2">
+              <img
+                src={group.logoSrc}
+                alt={group.logoAlt}
+                className="h-5 w-5 shrink-0 rounded-md object-contain"
+                loading="lazy"
+              />
+              <span className="truncate text-sm font-extrabold">{option.name}</span>
+              {option.badge && (
+                <span className={`rounded-full px-1.5 py-0.5 text-[10px] font-extrabold leading-none text-white ${
+                  option.badge === 'Hot' ? 'bg-red-500' : 'bg-emerald-500'
+                }`}>
+                  {option.badge}
+                </span>
+              )}
+            </span>
+            <span className="mt-1 block text-xs leading-5 text-slate-500 break-words">{option.description}</span>
+            <ModelQualityRating value={option.qualityRating} />
+          </span>
+          {isSelectedModel && (
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="mt-0.5 shrink-0 text-[#4F46E5]">
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
+          )}
+        </span>
+        <span className="mt-2 flex flex-wrap gap-1.5">
+          {metadata.map((item) => (
+            <span key={item} className="rounded-md border border-slate-200 bg-white/80 px-2 py-1 text-[11px] font-semibold leading-none text-slate-600">
+              {item}
+            </span>
+          ))}
+        </span>
+      </button>
+    )
+  }
+
+  const renderDemoPreview = () => {
+    if (isNanoBanana2CoupleMode) {
+      return selectedTemplateImage ? (
+        <img
+          src={`${selectedTemplateImage}?v=20260508`}
+          alt={selectedTemplate?.title || nanoText.sampleImage}
+          className="h-full w-full rounded-xl object-contain ring-1 ring-slate-200/50"
+        />
+      ) : (
+        <div className="flex h-full w-full items-center justify-center rounded-xl bg-white text-sm text-slate-500 ring-1 ring-slate-200/50">
+          {nanoText.noDemoImageYet}
+        </div>
+      )
+    }
+
+    return (
+      <div
+        className={`flex h-full w-full items-center justify-center overflow-hidden ring-1 ring-slate-200/50 ${
+          isSharpSampleImage ? 'rounded-md bg-slate-50 p-0 shadow-none' : 'rounded-2xl p-2 shadow-inner'
+        }`}
+      >
+        <SiteImage
+          src={displayedSampleImageUrl}
+          alt={displayedSampleImageTitle}
+          autoAlt={!promptDemoImage}
+          width={displayedSampleImageWidth}
+          height={displayedSampleImageHeight}
+          unoptimized={shouldUseDirectImageForDemo(displayedSampleImageUrl)}
+          className={isSharpSampleImage ? 'max-h-full max-w-full rounded-md' : 'max-h-full max-w-full'}
+          style={{
+            objectFit: 'contain',
+            width: isSharpSampleImage ? '100%' : 'auto',
+            height: '100%',
+            maxHeight: '100%',
+          }}
+        />
+      </div>
+    )
+  }
+
+  const renderResultRetentionPrompt = () => {
+    if (isUserSignedIn) return null
+
+    return (
+      <p className="mt-4 text-center text-xs leading-5 text-slate-500">
+        <button
+          type="button"
+          onClick={openResultSignIn}
+          className="font-bold text-[#4F46E5] underline-offset-2 hover:underline"
+        >
+          {nanoText.resultRetentionLogin}
+        </button>
+        {nanoText.resultRetentionMessage}
+      </p>
+    )
+  }
+
+  const renderMobileTopPanel = () => (
+    <div className="space-y-4 md:hidden">
+      {(heroBreadcrumbItems?.length || heroEyebrow || heroTitle || heroDescription) && (
+        <div className="text-center">
+          {heroBreadcrumbItems?.length ? (
+            <div className="mx-auto mb-1 max-w-4xl">
+              <Breadcrumb items={heroBreadcrumbItems} variant="inline" />
+            </div>
+          ) : null}
+          {heroEyebrow && (
+            <div className="mb-3 flex flex-wrap items-center justify-center gap-3">
+              {heroEyebrow}
+            </div>
+          )}
+          {heroTitle && (
+            <h1 className="text-[30px] font-extrabold leading-tight tracking-tight text-slate-950">
+              {heroTitle}
+            </h1>
+          )}
+          {heroDescription && (
+            <p className="mx-auto mt-3 max-w-4xl text-base leading-7 text-slate-600">
+              {heroDescription}
+            </p>
+          )}
+        </div>
+      )}
+      <div data-mobile-demo-panel className="aspect-[4/3] overflow-hidden rounded-2xl border border-[#E0E7FF] bg-white p-2 shadow-lg shadow-[#4F46E5]/8">
+        {renderDemoPreview()}
+      </div>
+    </div>
+  )
+
+  const renderMobileGeneratingCard = () => (
+    <div
+      data-mobile-generating-card
+      className="flex aspect-[4/3] w-full items-center justify-center rounded-2xl border border-[#E0E7FF] bg-white p-4 shadow-sm"
+    >
+      <div className="flex flex-col items-center gap-4">
+        <div className="flex gap-2">
+          <div className="h-3 w-3 rounded-full bg-[#4F46E5] animate-pulse" style={{ animationDelay: '0s' }} />
+          <div className="h-3 w-3 rounded-full bg-[#4F46E5] animate-pulse" style={{ animationDelay: '0.2s' }} />
+          <div className="h-3 w-3 rounded-full bg-[#4F46E5] animate-pulse" style={{ animationDelay: '0.4s' }} />
+          <div className="h-3 w-3 rounded-full bg-[#4F46E5] animate-pulse" style={{ animationDelay: '0.6s' }} />
+        </div>
+        <p className="text-sm font-medium text-slate-500">{formatNanoText(nanoText.generatingSeconds, { seconds: generatingSeconds })}</p>
+      </div>
+    </div>
+  )
+
+  const renderMobileGenerationPanel = () => {
+    if (!isGenerating && !currentResult && !isUserSignedIn) return null
+
+    const recentHistory = history.slice(0, 4)
+    const currentResultRecreateDisabled =
+      !currentResult ||
+      isGenerating ||
+      !(currentResult.prompt && currentResult.prompt.trim()) ||
+      (activeTab === 'image-to-image' && imageFiles.length === 0 && !currentResult.inputPreview)
+
+    return (
+      <div data-mobile-generation-panel className="mt-3 md:hidden">
+        {isUserSignedIn && (
+          <div className="mb-2 flex items-center justify-between">
+            <h2 className="text-sm font-extrabold text-slate-900">{nanoText.history}</h2>
+            <Link href={historyPageHref} className="text-xs font-bold text-[#4F46E5] hover:text-[#3730A3]">
+              {nanoText.viewAll}
+            </Link>
+          </div>
+        )}
+        {isGenerating ? (
+          renderMobileGeneratingCard()
+        ) : currentResult ? (
+          <div className="rounded-2xl border border-[#E0E7FF] bg-white p-2 shadow-sm">
+            <img
+              src={currentResult.outputPreview}
+              alt={nanoText.generatedAlt}
+              onClick={() => setPreviewImage(currentResult.outputPreview)}
+              className="aspect-[4/3] w-full rounded-xl object-contain cursor-pointer bg-slate-50"
+            />
+            <div data-mobile-result-actions className="mt-3 grid grid-cols-3 gap-2">
+              <button
+                type="button"
+                onClick={handleRecreateFromCurrent}
+                disabled={currentResultRecreateDisabled}
+                className="min-w-0 truncate rounded-xl bg-[#4F46E5] px-2.5 py-2.5 text-xs font-extrabold text-white shadow-sm transition-colors hover:bg-[#4338CA] disabled:cursor-not-allowed disabled:bg-[#C7D2FE] disabled:shadow-none"
+              >
+                {nanoText.recreate}
+              </button>
+              <button
+                type="button"
+                onClick={() => handleDownload(currentResult.outputPreview, `generated-${currentResult.id}.png`)}
+                disabled={downloadingUrl === currentResult.outputPreview}
+                className="min-w-0 truncate rounded-xl border border-[#C7D2FE] px-2.5 py-2.5 text-xs font-extrabold text-[#4F46E5] transition-colors hover:bg-[#EEF2FF] disabled:cursor-not-allowed disabled:opacity-60"
+                title={downloadingUrl === currentResult.outputPreview ? nanoText.downloading : nanoText.download}
+              >
+                {downloadingUrl === currentResult.outputPreview ? nanoText.downloading : nanoText.download}
+              </button>
+              <button
+                type="button"
+                onClick={() => void handleDeleteCurrentResult()}
+                className="min-w-0 truncate rounded-xl border border-[#C7D2FE] px-2.5 py-2.5 text-xs font-extrabold text-[#4F46E5] transition-colors hover:bg-[#EEF2FF]"
+                title={nanoText.delete}
+              >
+                {nanoText.delete}
+              </button>
+            </div>
+            {renderResultRetentionPrompt()}
+          </div>
+        ) : isUserSignedIn ? (
+          recentHistory.length > 0 ? (
+            <div className="grid grid-cols-2 gap-2">
+              {recentHistory.map((item) => (
+                <button
+                  key={item.id}
+                  type="button"
+                  onClick={() => {
+                    setCurrentResult(item)
+                    setRightMode('result')
+                  }}
+                  className="overflow-hidden rounded-xl border border-[#E0E7FF] bg-white p-1 text-left"
+                >
+                  <img
+                    src={getDisplayImagePreviewUrl(item.outputPreview, 384)}
+                    alt={nanoText.historyResultAlt}
+                    className="aspect-[4/3] w-full rounded-lg object-cover"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </button>
+              ))}
+            </div>
+          ) : (
+            <p className="rounded-2xl border border-dashed border-[#E0E7FF] bg-white px-4 py-5 text-center text-sm text-slate-500">
+              {nanoText.noHistory}
+            </p>
+          )
+        ) : null}
+      </div>
+    )
+  }
+
   return (
     <section className="flex min-h-0 flex-1 flex-col overflow-visible p-2 md:px-6 md:pb-6 md:pt-3 xl:pl-0 xl:pr-8 2xl:pl-0 2xl:pr-12">
       <div className="flex min-h-0 min-w-0 flex-col gap-4 md:h-[calc(100dvh-10rem)] md:min-h-[640px] md:flex-row md:items-stretch md:gap-6 xl:h-[calc(100dvh-7rem)] xl:min-h-[720px] xl:gap-8 2xl:gap-10">
+        {renderMobileTopPanel()}
         {/* Left: 生图参数区 — 桌面可滚动+固定按钮；h5 上下流式布局，自然高度 */}
         <div className="w-full md:h-full md:w-[380px] xl:w-[400px] 2xl:w-[420px] flex-shrink-0 flex flex-col rounded-2xl border border-[#E0E7FF] bg-white shadow-lg shadow-[#4F46E5]/8 overflow-visible">
           <div className={`p-2 md:p-6 space-y-4 md:space-y-5 md:flex-1 md:min-h-0 md:overscroll-contain ${isModelMenuOpen ? 'md:overflow-visible' : 'md:overflow-y-auto'}`}>
@@ -1916,95 +2166,82 @@ export default function NanoBananaTool({
                   </button>
 
                   {isModelMenuOpen && (
-                    <div className="absolute left-0 top-full z-50 mt-2 grid h-[380px] max-h-[70vh] w-full grid-cols-1 overflow-hidden !rounded-2xl !border !border-[#E0E7FF] bg-white shadow-xl shadow-[#4F46E5]/12 md:w-[640px] md:grid-cols-[210px_minmax(0,430px)]" role="listbox">
-                      <div className="h-full space-y-1 overflow-y-auto border-r border-slate-100 bg-slate-50/70 p-2">
+                    <>
+                      <div data-mobile-model-menu className="absolute left-0 top-full z-50 mt-2 max-h-[70vh] w-full overflow-y-auto !rounded-2xl !border !border-[#E0E7FF] bg-white p-2 shadow-xl shadow-[#4F46E5]/12 md:hidden" role="listbox">
                         {modelGroups.map((group) => {
                           const isActiveGroup = group.id === activeModelGroup.id
                           return (
-                            <button
-                              key={group.id}
-                              type="button"
-                              onMouseEnter={() => setActiveModelGroupId(group.id)}
-                              onClick={() => setActiveModelGroupId(group.id)}
-                              className={`!flex w-full items-center gap-2 !rounded-xl !px-3 !py-2.5 text-left transition-colors duration-150 !whitespace-normal ${
-                                isActiveGroup
-                                  ? 'bg-[#E0E7FF] text-[#3730A3]'
-                                : 'text-slate-600 hover:bg-white hover:text-slate-900'
-                              }`}
-                            >
-                              <img
-                                src={group.logoSrc}
-                                alt={group.logoAlt}
-                                className="h-5 w-5 shrink-0 rounded-md object-contain"
-                                loading="lazy"
-                              />
-                              <span className="min-w-0 flex-1">
-                                <span className="block text-xs font-extrabold leading-5">{group.name}</span>
-                              </span>
-                              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
-                                <polyline points="9 18 15 12 9 6" />
-                              </svg>
-                            </button>
-                          )
-                        })}
-                      </div>
-
-                      <div className="h-full min-w-0 space-y-2 overflow-y-auto p-2">
-                        {activeModelGroup.models.map((option) => {
-                          const isSelectedModel = option.id === selectedModelId
-                          const metadata = getModelOptionMetadata(option.id)
-
-                          return (
-                            <button
-                              key={option.id}
-                              type="button"
-                              onClick={() => handleModelChange(option.id)}
-                              className={`!flex w-full flex-col items-stretch gap-0 !rounded-xl !px-3 !py-3 text-left transition-colors duration-150 !whitespace-normal ${
-                                isSelectedModel
-                                  ? 'bg-[#DBEAFE] text-slate-950'
-                                  : 'bg-white text-slate-700 hover:bg-[#F8FAFF]'
-                              }`}
-                              aria-selected={isSelectedModel}
-                            >
-                              <span className="flex min-w-0 items-start justify-between gap-3">
+                            <div key={group.id} className="space-y-1">
+                              <button
+                                type="button"
+                                onClick={() => setActiveModelGroupId(group.id)}
+                                className={`!flex w-full items-center gap-2 !rounded-xl !px-3 !py-2.5 text-left transition-colors duration-150 !whitespace-normal ${
+                                  isActiveGroup
+                                    ? 'bg-[#E0E7FF] text-[#3730A3]'
+                                    : 'text-slate-600 hover:bg-[#F8FAFF] hover:text-slate-900'
+                                }`}
+                              >
+                                <img
+                                  src={group.logoSrc}
+                                  alt={group.logoAlt}
+                                  className="h-5 w-5 shrink-0 rounded-md object-contain"
+                                  loading="lazy"
+                                />
                                 <span className="min-w-0 flex-1">
-                                  <span className="flex min-w-0 items-center gap-2">
-                                    <img
-                                      src={activeModelGroup.logoSrc}
-                                      alt={activeModelGroup.logoAlt}
-                                      className="h-5 w-5 shrink-0 rounded-md object-contain"
-                                      loading="lazy"
-                                    />
-                                    <span className="truncate text-sm font-extrabold">{option.name}</span>
-                                    {option.badge && (
-                                      <span className={`rounded-full px-1.5 py-0.5 text-[10px] font-extrabold leading-none text-white ${
-                                        option.badge === 'Hot' ? 'bg-red-500' : 'bg-emerald-500'
-                                      }`}>
-                                        {option.badge}
-                                      </span>
-                                    )}
-                                  </span>
-                                  <span className="mt-1 block text-xs leading-5 text-slate-500 break-words">{option.description}</span>
-                                  <ModelQualityRating value={option.qualityRating} />
+                                  <span className="block text-xs font-extrabold leading-5">{group.name}</span>
                                 </span>
-                                {isSelectedModel && (
-                                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="mt-0.5 shrink-0 text-[#4F46E5]">
-                                    <polyline points="20 6 9 17 4 12" />
-                                  </svg>
-                                )}
-                              </span>
-                              <span className="mt-2 flex flex-wrap gap-1.5">
-                                {metadata.map((item) => (
-                                  <span key={item} className="rounded-md border border-slate-200 bg-white/80 px-2 py-1 text-[11px] font-semibold leading-none text-slate-600">
-                                    {item}
-                                  </span>
-                                ))}
-                              </span>
-                            </button>
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className={`shrink-0 transition-transform ${isActiveGroup ? 'rotate-90' : ''}`}>
+                                  <polyline points="9 18 15 12 9 6" />
+                                </svg>
+                              </button>
+                              {group.id === activeModelGroup.id && (
+                                <div className="space-y-2 pb-2 pl-2">
+                                  {group.models.map((option) => renderModelOptionButton(option, group))}
+                                </div>
+                              )}
+                            </div>
                           )
                         })}
                       </div>
-                    </div>
+
+                      <div className="absolute left-0 top-full z-50 mt-2 hidden h-[380px] max-h-[70vh] overflow-hidden !rounded-2xl !border !border-[#E0E7FF] bg-white shadow-xl shadow-[#4F46E5]/12 md:grid md:w-[640px] md:grid-cols-[210px_minmax(0,430px)]" role="listbox">
+                        <div className="h-full space-y-1 overflow-y-auto border-r border-slate-100 bg-slate-50/70 p-2">
+                          {modelGroups.map((group) => {
+                            const isActiveGroup = group.id === activeModelGroup.id
+                            return (
+                              <button
+                                key={group.id}
+                                type="button"
+                                onMouseEnter={() => setActiveModelGroupId(group.id)}
+                                onClick={() => setActiveModelGroupId(group.id)}
+                                className={`!flex w-full items-center gap-2 !rounded-xl !px-3 !py-2.5 text-left transition-colors duration-150 !whitespace-normal ${
+                                  isActiveGroup
+                                    ? 'bg-[#E0E7FF] text-[#3730A3]'
+                                  : 'text-slate-600 hover:bg-white hover:text-slate-900'
+                                }`}
+                              >
+                                <img
+                                  src={group.logoSrc}
+                                  alt={group.logoAlt}
+                                  className="h-5 w-5 shrink-0 rounded-md object-contain"
+                                  loading="lazy"
+                                />
+                                <span className="min-w-0 flex-1">
+                                  <span className="block text-xs font-extrabold leading-5">{group.name}</span>
+                                </span>
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
+                                  <polyline points="9 18 15 12 9 6" />
+                                </svg>
+                              </button>
+                            )
+                          })}
+                        </div>
+
+                        <div className="h-full min-w-0 space-y-2 overflow-y-auto p-2">
+                          {activeModelGroup.models.map((option) => renderModelOptionButton(option, activeModelGroup))}
+                        </div>
+                      </div>
+                    </>
                   )}
                 </div>
               </div>
@@ -2398,6 +2635,7 @@ export default function NanoBananaTool({
             <div className="flex gap-3">
               <button
                 type="button"
+                data-generate-button
                 onClick={handleGenerate}
                 disabled={isGenerating || !prompt.trim() || (activeTab === 'image-to-image' && imageFiles.length === 0 && remoteImageUrls.length === 0)}
                 className="flex-1 py-3.5 rounded-xl font-bold text-sm text-center flex items-center justify-center disabled:cursor-not-allowed transition-all duration-200 text-white shadow-md hover:shadow-lg disabled:shadow-none"
@@ -2428,6 +2666,7 @@ export default function NanoBananaTool({
                 )}
               </button>
             </div>
+            {renderMobileGenerationPanel()}
             {sceneText?.safetyHelper && (
               <p className="mt-2 text-center text-xs leading-5 text-slate-500">
                 {sceneText.safetyHelper}
@@ -2436,7 +2675,7 @@ export default function NanoBananaTool({
           </div>
         </div>
 
-        <div className="flex min-h-0 min-w-0 flex-1 flex-col gap-4 md:h-full">
+        <div className="hidden min-h-0 min-w-0 flex-1 flex-col gap-4 md:flex md:h-full">
           {(heroBreadcrumbItems?.length || heroEyebrow || heroTitle || heroDescription) && (
             <div className="shrink-0 text-center md:px-4 md:pt-1 xl:pt-0">
               {heroBreadcrumbItems?.length ? (
@@ -2484,11 +2723,7 @@ export default function NanoBananaTool({
               onClick={() => setPreviewImage(currentResult.outputPreview)}
               className="max-w-full max-h-[60vh] md:max-h-full object-contain rounded-xl cursor-pointer hover:opacity-90 transition-opacity"
             />
-            {!compactResultPanel && (
-              <p className="mt-4 text-xs text-slate-500 text-center">
-                {nanoText.resultExpires}
-              </p>
-            )}
+            {!compactResultPanel && renderResultRetentionPrompt()}
             {compactResultPanel && currentResult && (
               <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
                 <span className="rounded-lg bg-[#EEF2FF] px-3 py-1.5 text-xs font-semibold text-[#4F46E5]">

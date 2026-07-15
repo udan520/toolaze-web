@@ -586,7 +586,10 @@
       "generating": "Generazione...",
       "generatingSeconds": "Generazione... {seconds}s",
       "generatedAlt": "Generata",
-      "resultExpires": "L’immagine scomparirà dopo l’aggiornamento della pagina. Scaricala il prima possibile.",
+      "resultExpires": "Accedi per conservare la cronologia delle generazioni in modo permanente.",
+      "resultRetentionLogin": "Accedi",
+      "resultRetentionMessage": " per conservare la cronologia delle generazioni in modo permanente.",
+      "viewAll": "Vedi tutto",
       "historyResultAlt": "Risultato cronologia",
       "inputAlt": "Input",
       "fileTooLarge": "Il file {name} supera il limite di 30 MB",
@@ -827,6 +830,33 @@
         "a": "La preservazione della qualità dipende dal formato obiettivo. PNG è senza perdite, mentre JPG e WebP usano compressione con perdite ma mantengono alta qualità visiva."
       }
     }
+  },
+  "historyPage": {
+    "metadataTitle": "Cronologia generazioni - Toolaze",
+    "metadataDescription": "Consulta la cronologia delle generazioni IA su Toolaze, scarica i risultati e riutilizza generazioni precedenti di immagini o video.",
+    "title": "Cronologia",
+    "description": "Rivedi le immagini generate, apri le anteprime, scarica i risultati o crea risultati simili.",
+    "loading": "Caricamento cronologia...",
+    "signInRequired": "Accedi con Google per vedere la tua cronologia.",
+    "loadError": "Impossibile caricare la cronologia delle generazioni.",
+    "emptyTitle": "Nessuna generazione nella cronologia.",
+    "emptyDescription": "Le immagini generate appariranno qui al termine della creazione.",
+    "previewLabel": "Anteprima generazione",
+    "previewImageLabel": "Anteprima immagine generata",
+    "previewReferenceMedia": "Anteprima media di riferimento",
+    "closePreview": "Chiudi anteprima",
+    "referenceMedia": "Media di riferimento",
+    "prompt": "Prompt",
+    "copyPrompt": "Copia prompt",
+    "createSimilar": "Crea simile",
+    "download": "Scarica",
+    "delete": "Elimina",
+    "deleting": "Eliminazione",
+    "deleteHistoryConfirm": "Eliminare questa immagine dalla cronologia delle generazioni? Una volta eliminata, non potrà essere recuperata.",
+    "deleteError": "Impossibile eliminare l’elemento dalla cronologia.",
+    "modeVideo": "Video",
+    "modeTextToImage": "Da testo a immagine",
+    "modeImageToImage": "Da immagine a immagine"
   },
   "privacy": {
     "metadata": {

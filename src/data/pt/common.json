@@ -586,7 +586,10 @@
       "generating": "Gerando...",
       "generatingSeconds": "Gerando... {seconds}s",
       "generatedAlt": "Gerada",
-      "resultExpires": "A imagem desaparecerá quando você atualizar a página. Baixe-a o quanto antes.",
+      "resultExpires": "Faça login para manter seu histórico de geração permanentemente.",
+      "resultRetentionLogin": "Faça login",
+      "resultRetentionMessage": " para manter seu histórico de geração permanentemente.",
+      "viewAll": "ver tudo",
       "historyResultAlt": "Resultado do histórico",
       "inputAlt": "Entrada",
       "fileTooLarge": "O arquivo {name} excede o limite de 30 MB",
@@ -827,6 +830,33 @@
         "a": "A preservação da qualidade depende do formato alvo. PNG é sem perdas, enquanto JPG e WebP usam compressão com perdas mas mantêm alta qualidade visual."
       }
     }
+  },
+  "historyPage": {
+    "metadataTitle": "Histórico de geração - Toolaze",
+    "metadataDescription": "Veja seu histórico de geração com IA no Toolaze, baixe resultados e reutilize gerações anteriores de imagem ou vídeo.",
+    "title": "Histórico",
+    "description": "Revise suas imagens geradas, abra prévias, baixe resultados ou crie resultados semelhantes.",
+    "loading": "Carregando histórico...",
+    "signInRequired": "Entre com Google para ver seu histórico.",
+    "loadError": "Não foi possível carregar o histórico de geração.",
+    "emptyTitle": "Ainda não há histórico de geração.",
+    "emptyDescription": "As imagens geradas aparecerão aqui quando forem concluídas.",
+    "previewLabel": "Prévia da geração",
+    "previewImageLabel": "Pré-visualizar imagem gerada",
+    "previewReferenceMedia": "Pré-visualizar mídia de referência",
+    "closePreview": "Fechar prévia",
+    "referenceMedia": "Mídia de referência",
+    "prompt": "Prompt",
+    "copyPrompt": "Copiar prompt",
+    "createSimilar": "Criar semelhante",
+    "download": "Baixar",
+    "delete": "Excluir",
+    "deleting": "Excluindo",
+    "deleteHistoryConfirm": "Excluir esta imagem do seu histórico de geração? Depois de excluída, ela não poderá ser recuperada.",
+    "deleteError": "Não foi possível excluir o item do histórico.",
+    "modeVideo": "Vídeo",
+    "modeTextToImage": "Texto para imagem",
+    "modeImageToImage": "Imagem para imagem"
   },
   "privacy": {
     "metadata": {

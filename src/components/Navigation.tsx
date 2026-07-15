@@ -249,17 +249,20 @@ function writeCachedAuthSnapshot(user: AuthUser | null, credits: CreditSummary =
   if (!user) {
     window.sessionStorage.removeItem(AUTH_CACHE_STORAGE_KEY)
     delete (window as any).__TOOLAZE_AUTH_USER__
+    window.dispatchEvent(new CustomEvent('toolaze:auth-updated', { detail: { user: null, credits: emptyCreditSummary } }))
     return
   }
 
   ;(window as any).__TOOLAZE_AUTH_USER__ = user
   window.sessionStorage.setItem(AUTH_CACHE_STORAGE_KEY, JSON.stringify({ user, credits }))
+  window.dispatchEvent(new CustomEvent('toolaze:auth-updated', { detail: { user, credits } }))
 }
 
 export default function Navigation({ initialTranslations }: NavigationProps = {}) {
   const navRef = useRef<HTMLElement>(null)
   const menuRef = useRef<HTMLDivElement>(null)
-  const accountMenuRef = useRef<HTMLDivElement>(null)
+  const mobileAccountMenuRef = useRef<HTMLDivElement>(null)
+  const desktopAccountMenuRef = useRef<HTMLDivElement>(null)
   const authPopupRef = useRef<Window | null>(null)
   const topNoticeTimerRef = useRef<number | null>(null)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -275,7 +278,6 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
     'emoji-copy-and-paste': []
   })
   const [isMounted, setIsMounted] = useState(false)
-  const [isMobileView, setIsMobileView] = useState(false)
   const [authUser, setAuthUser] = useState<AuthUser | null>(null)
   const [creditSummary, setCreditSummary] = useState<CreditSummary>(emptyCreditSummary)
   const [authLoaded, setAuthLoaded] = useState(false)
@@ -290,6 +292,14 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
   const pathname = usePathname()
 
   const currentLocale = getCurrentLocaleFromPath(pathname ?? null)
+
+  const isInsideAccountMenu = (target: EventTarget | null) => {
+    if (!(target instanceof Node)) return false
+    return Boolean(
+      mobileAccountMenuRef.current?.contains(target) ||
+      desktopAccountMenuRef.current?.contains(target),
+    )
+  }
 
   const [navLangOpen, setNavLangOpen] = useState(false)
 
@@ -454,17 +464,6 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
     }
   }, [])
 
-  // 运行时兜底：仅在移动端渲染 H5 菜单按钮，避免桌面端误显示
-  useEffect(() => {
-    if (typeof window === 'undefined') return
-    const updateViewport = () => {
-      setIsMobileView(window.innerWidth < 768)
-    }
-    updateViewport()
-    window.addEventListener('resize', updateViewport)
-    return () => window.removeEventListener('resize', updateViewport)
-  }, [])
-  
   // 加载三级菜单数据：客户端菜单只依赖轻量元数据，避免把服务端 SEO loader 打进浏览器包。
   useEffect(() => {
     setThirdLevelMenuData({
@@ -519,7 +518,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
         setOpenDesktopMenu(null)
       }
 
-      if (accountMenuOpen && accountMenuRef.current && !accountMenuRef.current.contains(event.target as Node)) {
+      if (accountMenuOpen && !isInsideAccountMenu(event.target)) {
         setAccountMenuOpen(false)
       }
     }
@@ -813,11 +812,18 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
     )
   }
 
-  const renderAccountMenu = () => {
+  const renderAccountMenu = (variant: 'desktop' | 'mobile' = 'desktop') => {
     if (!authUser) return null
 
     return (
-      <div className="absolute right-0 top-full z-[80] mt-3 w-[320px] overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl shadow-slate-200/60">
+      <div
+        data-account-menu-variant={variant}
+        className={`overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl shadow-slate-200/60 ${
+          variant === 'mobile'
+            ? 'fixed right-3 top-[64px] z-[120] w-[calc(100vw-1.5rem)] max-w-[320px]'
+            : 'absolute right-0 top-full z-[80] mt-3 w-[320px]'
+        }`}
+      >
         <div className="border-b border-slate-100 px-4 py-4">
           <div className="flex items-center gap-3">
             {renderAvatar('h-10 w-10')}
@@ -1010,10 +1016,9 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
         </Link>
         
         {/* 移动端账号入口 + 菜单按钮 */}
-        {isMobileView && (
-          <div className="absolute right-4 z-50 flex items-center gap-2 md:hidden">
+        <div className="absolute right-4 z-50 flex items-center gap-2 md:hidden">
             {authUser ? (
-              <div ref={accountMenuRef} className="relative flex items-center gap-2">
+              <div ref={mobileAccountMenuRef} className="relative flex items-center gap-2">
                 <span
                   className="inline-flex items-center gap-1 text-sm font-extrabold text-[#4F46E5]"
                   aria-label={`${creditSummary.balance} ${accountTranslations.credits}`}
@@ -1036,7 +1041,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                 >
                   {renderAvatar('h-10 w-10')}
                 </button>
-                {accountMenuOpen && renderAccountMenu()}
+                {accountMenuOpen && renderAccountMenu('mobile')}
               </div>
             ) : authLoaded ? (
               <button
@@ -1069,8 +1074,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                 </svg>
               )}
             </button>
-          </div>
-        )}
+        </div>
 
         {/* 桌面端菜单 */}
         <div className="hidden md:flex gap-5 text-sm font-bold text-slate-700 items-center">
@@ -1552,7 +1556,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
 
         <div className="absolute right-6 hidden md:flex items-center gap-3">
           {authUser ? (
-            <div ref={accountMenuRef} className="relative">
+            <div ref={desktopAccountMenuRef} className="relative">
               <button
                 type="button"
                 onClick={toggleAccountMenu}

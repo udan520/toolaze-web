@@ -586,7 +586,10 @@
       "generating": "생성 중...",
       "generatingSeconds": "생성 중... {seconds}s",
       "generatedAlt": "생성됨",
-      "resultExpires": "페이지를 새로고침하면 이미지가 사라집니다. 가능한 한 빨리 다운로드해 주세요.",
+      "resultExpires": "로그인하면 생성 기록을 오래 보관할 수 있습니다.",
+      "resultRetentionLogin": "로그인",
+      "resultRetentionMessage": "하면 생성 기록을 오래 보관할 수 있습니다.",
+      "viewAll": "전체 보기",
       "historyResultAlt": "기록 결과",
       "inputAlt": "입력",
       "fileTooLarge": "파일 {name}이 30MB 제한을 초과합니다",
@@ -827,6 +830,33 @@
         "a": "품질 보존은 목표 형식에 따라 다릅니다. PNG는 무손실이며, JPG와 WebP는 손실 압축을 사용하지만 높은 시각적 품질을 유지합니다."
       }
     }
+  },
+  "historyPage": {
+    "metadataTitle": "생성 기록 - Toolaze",
+    "metadataDescription": "Toolaze AI 생성 기록을 확인하고, 결과를 다운로드하거나 이전 이미지 및 동영상 생성을 다시 활용하세요.",
+    "title": "기록",
+    "description": "생성한 이미지를 확인하고, 미리보기를 열고, 결과를 다운로드하거나 비슷한 결과를 다시 만들 수 있습니다.",
+    "loading": "기록을 불러오는 중...",
+    "signInRequired": "기록을 보려면 Google로 로그인하세요.",
+    "loadError": "생성 기록을 불러오지 못했습니다.",
+    "emptyTitle": "아직 생성 기록이 없습니다.",
+    "emptyDescription": "생성이 완료된 이미지는 여기에 표시됩니다.",
+    "previewLabel": "생성 미리보기",
+    "previewImageLabel": "생성 이미지 미리보기",
+    "previewReferenceMedia": "참조 미디어 미리보기",
+    "closePreview": "미리보기 닫기",
+    "referenceMedia": "참조 미디어",
+    "prompt": "프롬프트",
+    "copyPrompt": "프롬프트 복사",
+    "createSimilar": "비슷하게 만들기",
+    "download": "다운로드",
+    "delete": "삭제",
+    "deleting": "삭제 중",
+    "deleteHistoryConfirm": "이 이미지를 생성 기록에서 삭제할까요? 삭제하면 복구할 수 없습니다.",
+    "deleteError": "기록 항목을 삭제하지 못했습니다.",
+    "modeVideo": "동영상",
+    "modeTextToImage": "텍스트에서 이미지",
+    "modeImageToImage": "이미지에서 이미지"
   },
   "privacy": {
     "metadata": {

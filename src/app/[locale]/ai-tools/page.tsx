@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { notFound, redirect } from 'next/navigation'
-import { AiToolsPageContent } from '@/app/ai-tools/page'
+import { AiToolsPageContent } from '@/app/ai-tools/AiToolsPageContent'
 import {
   AI_TOOLS_LOCALES,
   getAiToolsPageCopy,

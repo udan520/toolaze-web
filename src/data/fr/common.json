@@ -586,7 +586,10 @@
       "generating": "Génération...",
       "generatingSeconds": "Génération... {seconds}s",
       "generatedAlt": "Générée",
-      "resultExpires": "L’image disparaîtra après l’actualisation de la page. Téléchargez-la dès que possible.",
+      "resultExpires": "Connectez-vous pour conserver durablement votre historique de génération.",
+      "resultRetentionLogin": "Connectez-vous",
+      "resultRetentionMessage": " pour conserver durablement votre historique de génération.",
+      "viewAll": "Tout voir",
       "historyResultAlt": "Résultat de l’historique",
       "inputAlt": "Entrée",
       "fileTooLarge": "Le fichier {name} dépasse la limite de 30 Mo",
@@ -827,6 +830,33 @@
         "a": "La préservation de la qualité dépend du format cible. PNG est sans perte, tandis que JPG et WebP utilisent une compression avec perte mais maintiennent une haute qualité visuelle."
       }
     }
+  },
+  "historyPage": {
+    "metadataTitle": "Historique de génération - Toolaze",
+    "metadataDescription": "Consultez votre historique de génération IA sur Toolaze, téléchargez les résultats et relancez des générations d’images ou de vidéos précédentes.",
+    "title": "Historique",
+    "description": "Consultez vos images générées, ouvrez les aperçus, téléchargez les résultats ou créez des résultats similaires.",
+    "loading": "Chargement de l’historique...",
+    "signInRequired": "Connectez-vous avec Google pour voir votre historique.",
+    "loadError": "Impossible de charger l’historique de génération.",
+    "emptyTitle": "Aucun historique de génération pour le moment.",
+    "emptyDescription": "Les images générées apparaîtront ici une fois terminées.",
+    "previewLabel": "Aperçu de génération",
+    "previewImageLabel": "Prévisualiser l’image générée",
+    "previewReferenceMedia": "Prévisualiser le média de référence",
+    "closePreview": "Fermer l’aperçu",
+    "referenceMedia": "Médias de référence",
+    "prompt": "Prompt",
+    "copyPrompt": "Copier le prompt",
+    "createSimilar": "Créer similaire",
+    "download": "Télécharger",
+    "delete": "Supprimer",
+    "deleting": "Suppression",
+    "deleteHistoryConfirm": "Supprimer cette image de votre historique de génération ? Une fois supprimée, elle ne pourra pas être récupérée.",
+    "deleteError": "Impossible de supprimer l’élément de l’historique.",
+    "modeVideo": "Vidéo",
+    "modeTextToImage": "Texte vers image",
+    "modeImageToImage": "Image vers image"
   },
   "privacy": {
     "metadata": {
