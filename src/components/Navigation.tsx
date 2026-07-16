@@ -40,6 +40,7 @@ const defaultNavTranslations = {
   textToImageGenerator: 'Text to Image Generator',
   aiImageToImageGenerator: 'AI Image to Image Generator',
   aiVideo: 'AI Video',
+  pricing: 'Pricing',
   nanoBananaPro: 'Nano Banana Pro',
   nanoBanana2: 'Nano Banana 2',
   gptImage2: 'GPT Image 2',
@@ -1488,8 +1489,15 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
               </div>
             </div>
           </div>
+          <Link
+            href={getLocalizedHref('/pricing')}
+            onClick={() => setOpenDesktopMenu(null)}
+            className="order-5 hover:text-indigo-600 transition-colors"
+          >
+            {navTranslations.pricing || defaultNavTranslations.pricing}
+          </Link>
           {showNavLanguageSwitcher && (
-            <div className="relative order-5">
+            <div className="relative order-6">
               <button
                 type="button"
                 onClick={() => setNavLangOpen(!navLangOpen)}
@@ -1989,6 +1997,17 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                   </Link>
                 </div>
               </div>
+              <Link
+                href={getLocalizedHref('/pricing')}
+                onClick={() => {
+                  setMobileMenuOpen(false)
+                  setExpandedSubmenus(new Set())
+                }}
+                className="order-4 flex items-center justify-between rounded-lg border border-indigo-100 bg-indigo-50/50 px-3 py-2 text-sm font-bold text-slate-700 transition-colors hover:border-indigo-200 hover:bg-indigo-50 hover:text-indigo-600"
+              >
+                <span>{navTranslations.pricing || defaultNavTranslations.pricing}</span>
+                <span aria-hidden="true" className="text-indigo-500">→</span>
+              </Link>
               {showNavLanguageSwitcher && (
                 <div className="order-5 border-t border-indigo-50 pt-4 mt-2">
                   <div className="text-sm font-bold text-slate-700 mb-3">{navTranslations.language}</div>

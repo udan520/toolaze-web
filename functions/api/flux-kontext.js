@@ -6,6 +6,11 @@
  * 请求体：prompt, imageUrl（必填，公网可访问的图片 URL）, aspect_ratio, seed, output_format 等
  * 返回：{ id, polling_url }
  */
+import {
+  createModerationExternalId,
+  moderatePromptBeforeGeneration,
+} from '../_shared/creem-moderation.mjs';
+
 const DEFAULT_BASE = 'https://api.openai-hk.com';
 const CORS = {
   'Access-Control-Allow-Origin': '*',
@@ -55,6 +60,15 @@ export async function onRequest(context) {
     }
     if (!imageUrl || !imageUrl.startsWith('http')) {
       return jsonResponse({ error: 'imageUrl is required (public URL)' }, 400);
+    }
+
+    const moderation = await moderatePromptBeforeGeneration({
+      prompt,
+      env,
+      externalId: createModerationExternalId('flux-kontext'),
+    });
+    if (!moderation.allowed) {
+      return jsonResponse(moderation.body, moderation.status);
     }
 
     const apiKey = getApiKey(env);

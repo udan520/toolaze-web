@@ -7,6 +7,11 @@
  * 支持 imageUrl 时走图生图；否则文生图
  * 返回：{ id, polling_url }
  */
+import {
+  createModerationExternalId,
+  moderatePromptBeforeGeneration,
+} from '../_shared/creem-moderation.mjs';
+
 const DEFAULT_BASE = 'https://api.openai-hk.com';
 const CORS = {
   'Access-Control-Allow-Origin': '*',
@@ -64,6 +69,15 @@ export async function onRequest(context) {
 
     if (!prompt) {
       return jsonResponse({ error: 'prompt is required' }, 400);
+    }
+
+    const moderation = await moderatePromptBeforeGeneration({
+      prompt,
+      env,
+      externalId: createModerationExternalId('flux-dev'),
+    });
+    if (!moderation.allowed) {
+      return jsonResponse(moderation.body, moderation.status);
     }
 
     const apiKey = getApiKey(env);

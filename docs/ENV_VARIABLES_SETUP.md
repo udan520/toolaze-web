@@ -76,6 +76,24 @@ NEXT_PUBLIC_IMAGE_UPLOAD_URL = https://your-preview-branch.pages.dev/api/upload
 
 ### Flux 生图（可选）
 
+### Creem 生图 Prompt 检测（必填）
+
+所有会调用图片生成模型的后端入口都会先请求 Creem Moderation API。没有配置该 Key 时，生图会 fail closed，直接返回 `Prompt moderation is not configured.`，不会继续调用模型供应商。
+
+| 变量名 | 必填 | 说明 |
+|--------|------|------|
+| `CREEM_API_KEY` | 是 | Creem Moderation API Key，用于 `/v1/moderation/prompt` |
+
+如需切换 API 基础地址，可额外设置：
+
+```bash
+CREEM_API_BASE_URL=https://api.creem.io
+```
+
+生产环境需在当前实际部署平台的环境变量中配置。`toolaze.com` 当前由 Vercel 服务，Cloudflare Pages/Functions 预览环境如需使用对应旧 Functions，也需要同步配置。
+
+### Flux 生图（可选）
+
 如需使用 Flux API（去水印等），需配置：
 
 | 变量名 | 必填 | 说明 |

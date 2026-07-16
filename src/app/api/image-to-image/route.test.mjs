@@ -49,9 +49,37 @@ function createLocalDevGenerateRequest({
   })
 }
 
+function restoreEnvValue(name, value) {
+  if (value === undefined) {
+    delete process.env[name]
+  } else {
+    process.env[name] = value
+  }
+}
+
+function enableCreemModerationForTest() {
+  const originalCreemKey = process.env.CREEM_API_KEY
+  process.env.CREEM_API_KEY = 'creem-test-key'
+  return () => restoreEnvValue('CREEM_API_KEY', originalCreemKey)
+}
+
+function withCreemAllow(providerFetch) {
+  return async (url, init) => {
+    if (String(url).includes('/v1/moderation/prompt')) {
+      return Response.json({ id: 'mod_allow', object: 'moderation_result', decision: 'allow', usage: { units: 1 } })
+    }
+    return providerFetch(url, init)
+  }
+}
+
 test('local dev session uses local generation function instead of remote auth proxy', async () => {
   const originalKey = process.env.KIE_AI_API_KEY
+  const originalFetch = globalThis.fetch
+  const restoreCreem = enableCreemModerationForTest()
   delete process.env.KIE_AI_API_KEY
+  globalThis.fetch = withCreemAllow(async () => {
+    return Response.json({ code: 200, data: { taskId: 'task_should_not_be_used' } })
+  })
 
   try {
     const response = await POST(createLocalDevGenerateRequest())
@@ -65,18 +93,21 @@ test('local dev session uses local generation function instead of remote auth pr
     } else {
       process.env.KIE_AI_API_KEY = originalKey
     }
+    globalThis.fetch = originalFetch
+    restoreCreem()
   }
 })
 
 test('local dev generation consumes credits and returns the updated balance', async () => {
   const originalKey = process.env.KIE_AI_API_KEY
   const originalFetch = globalThis.fetch
+  const restoreCreem = enableCreemModerationForTest()
   resetLocalDevCreditsForTests(1000)
   process.env.KIE_AI_API_KEY = 'test-key'
 
-  globalThis.fetch = async () => {
+  globalThis.fetch = withCreemAllow(async () => {
     return Response.json({ code: 200, data: { taskId: 'task_test' } })
-  }
+  })
 
   try {
     const response = await POST(createLocalDevGenerateRequest())
@@ -113,20 +144,61 @@ test('local dev generation consumes credits and returns the updated balance', as
     } else {
       process.env.KIE_AI_API_KEY = originalKey
     }
+    restoreCreem()
+  }
+})
+
+test('local dev generation blocks Creem denied prompts before consuming credits', async () => {
+  const originalKey = process.env.KIE_AI_API_KEY
+  const originalCreemKey = process.env.CREEM_API_KEY
+  const originalFetch = globalThis.fetch
+  resetLocalDevCreditsForTests(1000)
+  process.env.KIE_AI_API_KEY = 'test-key'
+  process.env.CREEM_API_KEY = 'creem-test-key'
+  const fetchUrls = []
+
+  globalThis.fetch = async (url) => {
+    fetchUrls.push(String(url))
+    return Response.json({ id: 'mod_deny', object: 'moderation_result', decision: 'deny', usage: { units: 1 } })
+  }
+
+  try {
+    const response = await POST(createLocalDevGenerateRequest())
+    const payload = await response.json()
+
+    assert.equal(response.status, 400)
+    assert.equal(payload.error, 'This prompt cannot be generated. Please try a different idea.')
+    assert.equal(payload.moderation.decision, 'deny')
+    assert.equal(getLocalDevCreditSummary().balance, 1000)
+    assert.deepEqual(fetchUrls, ['https://api.creem.io/v1/moderation/prompt'])
+  } finally {
+    resetLocalDevCreditsForTests(1000)
+    globalThis.fetch = originalFetch
+    if (originalKey === undefined) {
+      delete process.env.KIE_AI_API_KEY
+    } else {
+      process.env.KIE_AI_API_KEY = originalKey
+    }
+    if (originalCreemKey === undefined) {
+      delete process.env.CREEM_API_KEY
+    } else {
+      process.env.CREEM_API_KEY = originalCreemKey
+    }
   }
 })
 
 test('local dev generation pre-deducts credits before requesting the provider task', async () => {
   const originalKey = process.env.KIE_AI_API_KEY
   const originalFetch = globalThis.fetch
+  const restoreCreem = enableCreemModerationForTest()
   resetLocalDevCreditsForTests(1000)
   process.env.KIE_AI_API_KEY = 'test-key'
   let balanceDuringProviderRequest = null
 
-  globalThis.fetch = async () => {
+  globalThis.fetch = withCreemAllow(async () => {
     balanceDuringProviderRequest = getLocalDevCreditSummary().balance
     return Response.json({ code: 200, data: { taskId: 'task_pre_deducted' } })
-  }
+  })
 
   try {
     const response = await POST(createLocalDevGenerateRequest())
@@ -144,20 +216,22 @@ test('local dev generation pre-deducts credits before requesting the provider ta
     } else {
       process.env.KIE_AI_API_KEY = originalKey
     }
+    restoreCreem()
   }
 })
 
 test('local dev generation forwards Seedream 5.0 Pro text tasks to the Seedream provider model', async () => {
   const originalKey = process.env.KIE_AI_API_KEY
   const originalFetch = globalThis.fetch
+  const restoreCreem = enableCreemModerationForTest()
   resetLocalDevCreditsForTests(1000)
   process.env.KIE_AI_API_KEY = 'test-key'
   let providerPayload = null
 
-  globalThis.fetch = async (_input, init) => {
+  globalThis.fetch = withCreemAllow(async (_input, init) => {
     providerPayload = JSON.parse(String(init?.body || '{}'))
     return Response.json({ code: 200, data: { taskId: 'task_seedream_pro' } })
-  }
+  })
 
   try {
     const response = await POST(createLocalDevGenerateRequest({
@@ -180,20 +254,22 @@ test('local dev generation forwards Seedream 5.0 Pro text tasks to the Seedream 
     } else {
       process.env.KIE_AI_API_KEY = originalKey
     }
+    restoreCreem()
   }
 })
 
 test('local dev generation forwards Seedream 5.0 Pro edit tasks with image_urls', async () => {
   const originalKey = process.env.KIE_AI_API_KEY
   const originalFetch = globalThis.fetch
+  const restoreCreem = enableCreemModerationForTest()
   resetLocalDevCreditsForTests(1000)
   process.env.KIE_AI_API_KEY = 'test-key'
   let providerPayload = null
 
-  globalThis.fetch = async (_input, init) => {
+  globalThis.fetch = withCreemAllow(async (_input, init) => {
     providerPayload = JSON.parse(String(init?.body || '{}'))
     return Response.json({ code: 200, data: { taskId: 'task_seedream_pro_edit' } })
-  }
+  })
 
   try {
     const response = await POST(createLocalDevGenerateRequest({
@@ -217,21 +293,23 @@ test('local dev generation forwards Seedream 5.0 Pro edit tasks with image_urls'
     } else {
       process.env.KIE_AI_API_KEY = originalKey
     }
+    restoreCreem()
   }
 })
 
 test('local dev generation forwards Seedream 5.0 Lite tasks to Seedream Lite', async () => {
   const originalKey = process.env.KIE_AI_API_KEY
   const originalFetch = globalThis.fetch
+  const restoreCreem = enableCreemModerationForTest()
   resetLocalDevCreditsForTests(1000)
   process.env.KIE_AI_API_KEY = 'test-key'
   const providerModels = []
 
-  globalThis.fetch = async (_input, init) => {
+  globalThis.fetch = withCreemAllow(async (_input, init) => {
     const body = JSON.parse(String(init?.body || '{}'))
     providerModels.push(body.model)
     return Response.json({ code: 200, data: { taskId: `task_${providerModels.length}` } })
-  }
+  })
 
   try {
     const textResponse = await POST(createLocalDevGenerateRequest({ model: 'seedream-5-0-lite' }))
@@ -255,18 +333,20 @@ test('local dev generation forwards Seedream 5.0 Lite tasks to Seedream Lite', a
     } else {
       process.env.KIE_AI_API_KEY = originalKey
     }
+    restoreCreem()
   }
 })
 
 test('local dev generation refunds pre-deducted credits when task creation fails', async () => {
   const originalKey = process.env.KIE_AI_API_KEY
   const originalFetch = globalThis.fetch
+  const restoreCreem = enableCreemModerationForTest()
   resetLocalDevCreditsForTests(1000)
   process.env.KIE_AI_API_KEY = 'test-key'
 
-  globalThis.fetch = async () => {
+  globalThis.fetch = withCreemAllow(async () => {
     return Response.json({ message: 'KIE task failed' }, { status: 500 })
-  }
+  })
 
   try {
     const response = await POST(createLocalDevGenerateRequest())
@@ -287,5 +367,6 @@ test('local dev generation refunds pre-deducted credits when task creation fails
     } else {
       process.env.KIE_AI_API_KEY = originalKey
     }
+    restoreCreem()
   }
 })

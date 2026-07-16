@@ -16,6 +16,10 @@ import {
   getImageGenerationCreditDescription,
   getImageGenerationCreditRefundDescription,
 } from '../../../../functions/_shared/generation-credit-label.mjs'
+import {
+  createModerationExternalId,
+  moderatePromptBeforeGeneration,
+} from '../../../../functions/_shared/creem-moderation.mjs'
 
 function shouldUseLocalGeneration(request) {
   const url = new URL(request.url)
@@ -32,6 +36,7 @@ function proxy(request) {
 
 async function runLocalGenerationWithCredits(request) {
   const formData = await request.clone().formData()
+  const prompt = String(formData.get('prompt') || '').trim()
   const model = String(formData.get('model') || 'nano-banana-pro')
   const resolution = String(formData.get('resolution') || '1K')
   const isImageToImage = String(formData.get('isImageToImage') || '') === 'true'
@@ -49,6 +54,15 @@ async function runLocalGenerationWithCredits(request) {
       },
       { status: 402 },
     )
+  }
+
+  const moderation = await moderatePromptBeforeGeneration({
+    prompt,
+    env: process.env,
+    externalId: createModerationExternalId(`local-image-${model}`),
+  })
+  if (!moderation.allowed) {
+    return Response.json(moderation.body, { status: moderation.status })
   }
 
   const creditResult = consumeLocalDevCredits(requiredCredits, creditDescription)

@@ -5,6 +5,10 @@ import {
   getImageGenerationCreditDescription,
   getImageGenerationCreditRefundDescription,
 } from '../_shared/generation-credit-label.mjs';
+import {
+  createModerationExternalId,
+  moderatePromptBeforeGeneration,
+} from '../_shared/creem-moderation.mjs';
 
 /**
  * Cloudflare Pages Function: Nano Banana Pro 生图 - 创建任务
@@ -259,6 +263,15 @@ export async function onRequest(context) {
     }
     if (isImageToImage && imageUrls.length > maxImages) {
       return jsonResponse({ error: `Maximum ${maxImages} images allowed` }, 400);
+    }
+
+    const moderation = await moderatePromptBeforeGeneration({
+      prompt,
+      env,
+      externalId: createModerationExternalId(`image-${model}`),
+    });
+    if (!moderation.allowed) {
+      return jsonResponse(moderation.body, moderation.status);
     }
 
     const apiKey = getApiKey(env);

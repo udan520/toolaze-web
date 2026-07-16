@@ -6,6 +6,11 @@
  * 接口：POST /v1/images/edits（multipart/form-data）
  * 文档：https://gpt-best.apifox.cn/api-341817449（nano-banana Edits 兼容）
  */
+import {
+  createModerationExternalId,
+  moderatePromptBeforeGeneration,
+} from '../_shared/creem-moderation.mjs'
+
 const DEFAULT_BASE = 'https://ai.t8star.cn'
 const CORS = {
   'Access-Control-Allow-Origin': '*',
@@ -40,11 +45,6 @@ export async function onRequest(context) {
     return jsonResponse({ error: 'Method not allowed', allow: 'POST, OPTIONS' }, 405)
   }
 
-  const apiKey = getApiKey(env)
-  if (!apiKey) {
-    return jsonResponse({ error: 'API key not configured (ZHEN_AI_API_KEY)' }, 500)
-  }
-
   try {
     const contentType = request.headers.get('Content-Type') || ''
     if (!contentType.includes('multipart/form-data')) {
@@ -61,6 +61,20 @@ export async function onRequest(context) {
     }
     if (!image || !(image instanceof Blob)) {
       return jsonResponse({ error: 'image file is required (field: image or file)' }, 400)
+    }
+
+    const moderation = await moderatePromptBeforeGeneration({
+      prompt,
+      env,
+      externalId: createModerationExternalId('qwen-image-edit'),
+    })
+    if (!moderation.allowed) {
+      return jsonResponse(moderation.body, moderation.status)
+    }
+
+    const apiKey = getApiKey(env)
+    if (!apiKey) {
+      return jsonResponse({ error: 'API key not configured (ZHEN_AI_API_KEY)' }, 500)
     }
 
     const baseUrl = getBaseUrl(env)
