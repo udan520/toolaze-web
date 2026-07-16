@@ -40,6 +40,19 @@ const cardAssets = {
   couple: '/ai-couple-photo-maker/rainy-eiffel-4x3.jpg',
 }
 
+const REVIEW_HIDDEN_AI_TOOL_HREFS = new Set(['/watermark-remover', '/ai-couple-photo-maker'])
+
+function getReviewSafeAiToolsCopy(copy: AiToolsPageCopy): AiToolsPageCopy {
+  return {
+    ...copy,
+    metadata: {
+      title: 'AI Tools - Creative Image Workflows | Toolaze',
+      description: 'Explore selected Toolaze AI tools with visual previews for image generation, restoration, and creative media workflows.',
+    },
+    cards: copy.cards.filter((card) => !REVIEW_HIDDEN_AI_TOOL_HREFS.has(card.href)),
+  }
+}
+
 const en: AiToolsPageCopy = {
   metadata: {
     title: 'AI Tools - AI Image Generator, Watermark Remover & Photo Restoration | Toolaze',
@@ -259,7 +272,8 @@ export function isAiToolsLocale(locale: string): locale is AiToolsLocale {
 }
 
 export function getAiToolsPageCopy(locale = 'en'): AiToolsPageCopy {
-  return isAiToolsLocale(locale) ? copies[locale] : copies.en
+  const copy = isAiToolsLocale(locale) ? copies[locale] : copies.en
+  return getReviewSafeAiToolsCopy(copy)
 }
 
 export function getAiToolsPageMetadata(

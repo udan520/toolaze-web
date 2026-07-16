@@ -336,7 +336,7 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
     image: 'https://toolaze.com/web-app-manifest-512x512.png',
     sameAs: [],
     description:
-      'Free AI Image Generator & AI Video Generator - Create 4K images and videos with Nano Banana 2, Seedance 2.0, Kling 3.0. Text-to-image, text-to-video. No sign up required.',
+      'AI Image & Video Creation Tools - Create images and videos with supported AI models, selected free trials, and credit-based generation.',
   }
 
   return (
@@ -360,7 +360,7 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
           </h1>
           <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
             {home?.heroTagline ??
-              'Top AI models, pro video & image creation. Image compression, format conversion, font generator — all free, no sign up required.'}
+              'Create AI images and videos with leading AI models. Try selected features for free and purchase credits when you need more generations.'}
           </p>
         </div>
 
@@ -600,7 +600,7 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
             </h2>
             <p className="text-slate-600 max-w-3xl text-base md:text-lg leading-relaxed">
               {home?.advancedToolsSubtitle ??
-                'Portrait generation, watermark removal, and photo restoration powered by AI—free to try online, no signup required.'}
+                'Portrait generation, authorized watermark cleanup, and photo restoration powered by AI. Try selected tools online and use credits for supported generation workflows.'}
             </p>
           </div>
 
@@ -721,7 +721,7 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
       <section className="py-20 px-6 bg-white">
         <div className="max-w-4xl mx-auto">
           <h2 className="home-section-title text-4xl text-slate-900 mb-6 tracking-tight">
-            {home?.seoIntro?.title ?? 'Free AI Image Generator & AI Video Generator Online'}
+            {home?.seoIntro?.title ?? 'AI Image Generator and AI Video Generator Online'}
           </h2>
           <div className="space-y-4 text-slate-600 text-base md:text-lg leading-relaxed">
             {home?.seoIntro?.paragraph1 ? <p>{home.seoIntro.paragraph1}</p> : null}

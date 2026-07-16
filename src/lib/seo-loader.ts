@@ -1077,12 +1077,6 @@ export async function getAllTools(locale: string = 'en'): Promise<Array<{ tool: 
     tools.push({ tool: 'seedance-2', slug })
   }
   
-  // 添加 Watermark Remover L3（各语言目录下 JSON；slug 列表按该 locale 的 fs 扫描）
-  const watermarkRemoverSlugs = await getAllSlugs('watermark-remover', locale)
-  for (const slug of watermarkRemoverSlugs) {
-    tools.push({ tool: 'watermark-remover', slug })
-  }
-
   return tools
 }
 

@@ -177,26 +177,10 @@ export default function Footer({ initialTranslations }: FooterProps = {}) {
               </li>
               <li>
                 <Link 
-                  href={getLocalizedHref('/watermark-remover')} 
-                  className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
-                >
-                  {translations.watermarkRemover || 'Watermark Remover'}
-                </Link>
-              </li>
-              <li>
-                <Link 
                   href={getLocalizedHref('/photo-restoration')} 
                   className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
                 >
                   {translations.photoRestoration || 'Photo Restoration'}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={getLocalizedHref('/ai-couple-photo-maker')}
-                  className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
-                >
-                  {translations.aiCouplePhotoMaker || 'AI Couple Photo Maker'}
                 </Link>
               </li>
             </ul>
@@ -397,7 +381,7 @@ export default function Footer({ initialTranslations }: FooterProps = {}) {
             <li><Link href={getLocalizedHref('/terms')} className="text-slate-300 hover:text-indigo-400 transition-colors font-medium">{translations.termsOfService}</Link></li>
             <li><Link href={getLocalizedHref('/refund-policy')} className="text-slate-300 hover:text-indigo-400 transition-colors font-medium">{translations.refundPolicy}</Link></li>
             <li><Link href={getLocalizedHref('/acceptable-use')} className="text-slate-300 hover:text-indigo-400 transition-colors font-medium">{translations.acceptableUse}</Link></li>
-            <li><a href="mailto:support@toolaze.com" className="text-slate-300 hover:text-indigo-400 transition-colors font-medium">{translations.contact}</a></li>
+            <li><Link href={getLocalizedHref('/contact')} className="text-slate-300 hover:text-indigo-400 transition-colors font-medium">{translations.contact}</Link></li>
             
             {/* Language Switcher - 只在支持多语言的页面显示，且只显示该页面实际支持的语言 */}
             {showLanguageSwitcher && (
@@ -457,6 +441,9 @@ export default function Footer({ initialTranslations }: FooterProps = {}) {
         </nav>
 
         <div className="text-center pt-6 border-t border-slate-700">
+          <p className="mx-auto mb-4 max-w-4xl text-xs leading-5 text-slate-500">
+            Toolaze AI generation is powered by supported AI model providers, Toolaze integrations, and cloud infrastructure. Product names, trademarks, and model names belong to their respective owners and identify supported model workflows available through Toolaze.
+          </p>
           <p className="text-xs text-slate-400 mb-2" suppressHydrationWarning>
             {translations.copyright.replace('{year}', currentYear.toString())}
           </p>

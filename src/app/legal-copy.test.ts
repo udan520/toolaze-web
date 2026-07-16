@@ -2,6 +2,7 @@ import assert from 'node:assert/strict'
 import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs'
 import { join, relative } from 'node:path'
 import test from 'node:test'
+import { getAiToolsPageCopy } from './ai-tools/copy'
 import { BROWSER_LOCALE_REDIRECT_SCRIPT } from '../lib/browser-locale-redirect'
 import { getPreferredLocalizedUrl } from '../lib/site-language-switch'
 
@@ -114,15 +115,19 @@ test('footer, sitemap, and locale redirects expose the required legal routes', (
   const footer = readProjectFile('src/components/Footer.tsx')
   assert.match(footer, /\/refund-policy/)
   assert.match(footer, /\/acceptable-use/)
+  assert.match(footer, /\/contact/)
 
   const sitemap = readProjectFile('src/app/sitemap.ts')
   assert.match(sitemap, /refund-policy/)
   assert.match(sitemap, /acceptable-use/)
+  assert.match(sitemap, /contact/)
 
   assert.equal(getPreferredLocalizedUrl('/refund-policy', 'de'), '/refund-policy')
   assert.equal(getPreferredLocalizedUrl('/acceptable-use', 'zh-TW'), '/acceptable-use')
+  assert.equal(getPreferredLocalizedUrl('/contact', 'fr'), '/contact')
   assert.match(BROWSER_LOCALE_REDIRECT_SCRIPT, /refund-policy/)
   assert.match(BROWSER_LOCALE_REDIRECT_SCRIPT, /acceptable-use/)
+  assert.match(BROWSER_LOCALE_REDIRECT_SCRIPT, /contact/)
 })
 
 test('localized common legal copy removes old local-only promises', () => {
@@ -142,4 +147,96 @@ test('localized common legal copy removes old local-only promises', () => {
 
     assert.match(legalCopy, /AI|KI|IA|AI|人工|인공|providers|payment|credits|退款|払い戻し|Rückerstattung|reembolso|rimborso/i)
   }
+})
+
+test('Creem-facing homepage and about copy match credit-based AI generation', () => {
+  const homePage = readProjectFile('src/components/home/HomePageMain.tsx')
+  const aboutPage = readProjectFile('src/app/about/page.tsx')
+  const homeCommon = JSON.stringify(readJson('src/data/en/common.json').home)
+  const combined = `${homePage}\n${aboutPage}\n${homeCommon}`
+
+  const misleadingAiClaims = [
+    /all free, no sign up required/i,
+    /no signup and no paywall/i,
+    /no sign up, no limits/i,
+    /no credit card, no daily limits/i,
+    /100%\s*free/i,
+    /free AI image generator and AI video generator online/i,
+    /AI image generator is 100%\s*free/i,
+    /Keep your wallet shut/i,
+    /expensive server bills/i,
+  ]
+
+  for (const pattern of misleadingAiClaims) {
+    assert.doesNotMatch(combined, pattern)
+  }
+
+  assert.match(combined, /Free to try/i)
+  assert.match(combined, /purchase credits/i)
+  assert.match(combined, /third-party AI models/i)
+  assert.match(combined, /cloud infrastructure/i)
+})
+
+test('public support and model-provider disclaimers are visible for Creem review', () => {
+  assert.equal(existsSync(join(projectRoot, 'src/app/contact/page.tsx')), true)
+
+  const contact = readProjectFile('src/app/contact/page.tsx')
+  assert.match(contact, /support@toolaze\.com/i)
+  assert.match(contact, /3 business days/i)
+  assert.match(contact, /refund/i)
+  assert.match(contact, /abuse/i)
+
+  const footer = readProjectFile('src/components/Footer.tsx')
+  assert.match(footer, /\/contact/)
+  assert.match(footer, /powered by supported AI model providers/i)
+  assert.match(footer, /supported model workflows available through Toolaze/i)
+
+  const navigation = readProjectFile('src/components/Navigation.tsx')
+  assert.match(navigation, /Help & Support/)
+  assert.match(navigation, /support@toolaze\.com/)
+
+  const terms = readProjectFile('src/app/terms/page.tsx')
+  assert.match(terms, /powered by supported AI model providers/i)
+  assert.match(terms, /model names belong to their respective owners/i)
+  assert.match(terms, /supported model workflows available through Toolaze/i)
+})
+
+test('sensitive creative tools show Creem-safe usage boundaries', () => {
+  const hairstyle = readJson('src/data/en/ai-hairstyle-changer.json')
+  const hairColor = readJson('src/data/en/ai-hair-color-changer.json')
+  const watermark = readProjectFile('src/data/en/watermark-remover.json')
+  const watermarkHowTo = readProjectFile('src/data/en/watermark-remover/how-to-remove-watermark.json')
+  const watermarkTool = readProjectFile('src/components/WatermarkRemover.tsx')
+
+  const hairstyleCopy = JSON.stringify(hairstyle)
+  const hairColorCopy = JSON.stringify(hairColor)
+  assert.match(hairstyleCopy, /changes hairstyle only|focused on hairstyle changes/i)
+  assert.match(hairstyleCopy, /preserving the face and non-hair details/i)
+  assert.match(hairColorCopy, /changes hair color only|focused on the visible hair area/i)
+  assert.match(hairColorCopy, /keeping the face, hairstyle, skin tone, and background/i)
+  assert.match(watermark, /own the image, have a license, or are authorized to edit/i)
+  assert.match(watermarkHowTo, /own the image or have permission/i)
+  assert.match(watermarkTool, /own this image or have permission/i)
+})
+
+test('payment review sensitive tools are hidden from public entry points', () => {
+  const hiddenToolHrefs = ['/watermark-remover', '/ai-couple-photo-maker']
+  const homeGrid = readProjectFile('src/lib/homepage-grid-tools.ts')
+  const navigation = readProjectFile('src/components/Navigation.tsx')
+  const footer = readProjectFile('src/components/Footer.tsx')
+  const sitemap = readProjectFile('src/app/sitemap.ts')
+  const seoLoader = readProjectFile('src/lib/seo-loader.ts')
+  const aiToolsCopy = getAiToolsPageCopy('en')
+
+  for (const href of hiddenToolHrefs) {
+    assert.doesNotMatch(homeGrid, new RegExp(`id: '${href.slice(1)}'`))
+    assert.doesNotMatch(navigation, new RegExp(`getLocalizedHref\\('${href}'\\)`))
+    assert.doesNotMatch(footer, new RegExp(`getLocalizedHref\\('${href}'\\)`))
+    assert.doesNotMatch(sitemap, new RegExp(href))
+    assert.equal(aiToolsCopy.cards.some((card) => card.href === href), false)
+  }
+
+  const metadata = JSON.stringify(aiToolsCopy.metadata)
+  assert.doesNotMatch(metadata, /Watermark Remover|AI Couple Photo Maker/i)
+  assert.doesNotMatch(seoLoader, /tools\.push\(\{ tool: 'watermark-remover'/)
 })

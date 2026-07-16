@@ -134,7 +134,7 @@
     },
     {
       "q": "Can I remove logos from images?",
-      "a": "Yes, our AI watermark remover can remove logos from images. It is designed to handle various types of watermarks, including text, logos, and patterns. For AI image generation, you can also use our <a href=\"/model/nano-banana-pro\">AI image generator</a>."
+      "a": "Use it only when you own the image or have permission to edit and remove the selected logo, watermark, or overlay. It is not intended to bypass copyright, stock preview restrictions, or third-party platform terms. For AI image generation, you can also use our <a href=\"/model/nano-banana-pro\">AI image generator</a>."
     }
   ],
   "useComponents": [

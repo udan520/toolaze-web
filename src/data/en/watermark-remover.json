@@ -46,7 +46,7 @@
     "content": [
       {
         "title": "Why Watermarks Exist—and When Removal Is Legitimate",
-        "text": "Watermarks protect creators' work and mark trial or sample versions. Stock sites use them on previews; photographers add them to proofs. Removal is legitimate when you own the image, have a license, or need to clean a personal photo (e.g., a screenshot with a UI overlay). It's not appropriate for circumventing copyright on images you don't have rights to. Toolaze is a tool—how you use it is your responsibility."
+        "text": "Watermarks protect creators' work and mark trial or sample versions. Stock sites use them on previews; photographers add them to proofs. Removal is legitimate when you own the image, have a license, or are authorized to edit the image and remove the selected overlay. It's not appropriate for circumventing copyright on images you don't have rights to. Toolaze is a tool—how you use it is your responsibility."
       },
       {
         "title": "The Practical Problem with Manual Removal",
@@ -155,7 +155,7 @@
     },
     {
       "q": "Is it legal to remove watermarks?",
-      "a": "It depends on your rights to the image. Removing a watermark from a copyrighted image you don't own or license can infringe the creator's rights. It's generally fine when you own the image, have a license, or are cleaning a personal photo (e.g., removing a camera timestamp). We provide the tool; you're responsible for lawful use."
+      "a": "It depends on your rights to the image. Removing a watermark from a copyrighted image you don't own or license can infringe the creator's rights. Use this tool only when you own the image, have a license, or are authorized to edit the image and remove the selected overlay. We provide the tool; you're responsible for lawful use."
     },
     {
       "q": "Does it work on videos or PDFs?",

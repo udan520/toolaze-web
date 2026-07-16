@@ -8,7 +8,7 @@ export const dynamic = 'force-static'
 const baseUrl = 'https://toolaze.com'
 const SUPPORTED_LOCALES = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
 const STATIC_PAGES = ['about', 'privacy', 'terms']
-const ENGLISH_STATIC_PAGES = ['pricing', 'refund-policy', 'acceptable-use']
+const ENGLISH_STATIC_PAGES = ['pricing', 'refund-policy', 'acceptable-use', 'contact']
 const TOOL_PAGES = ['image-compressor', 'image-converter', 'font-generator', 'emoji-copy-and-paste']
 
 interface SitemapEntry {
@@ -66,17 +66,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         changeFrequency: 'weekly',
         priority: 0.9,
       })
-    })
-  })
-
-  // 3c. Watermark Remover L2（无 all-tools 子页，不放入 TOOL_PAGES）
-  SUPPORTED_LOCALES.forEach((locale) => {
-    const path = locale === 'en' ? '/watermark-remover' : `/${locale}/watermark-remover`
-    entries.push({
-      url: `${baseUrl}${path}`,
-      lastModified: today,
-      changeFrequency: 'weekly',
-      priority: 0.9,
     })
   })
 
@@ -142,12 +131,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'weekly',
       priority: 0.9,
     })
-  })
-  entries.push({
-    url: `${baseUrl}/ai-couple-photo-maker`,
-    lastModified: today,
-    changeFrequency: 'weekly',
-    priority: 0.9,
   })
   entries.push({
     url: `${baseUrl}/ai-baby-generator`,
@@ -223,16 +206,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.65,
     })
   })
-  SUPPORTED_LOCALES.forEach((locale) => {
-    if (locale === 'en') return
-    entries.push({
-      url: `${baseUrl}/${locale}/ai-couple-photo-maker`,
-      lastModified: today,
-      changeFrequency: 'weekly',
-      priority: 0.85,
-    })
-  })
-
   // 4. Model 页面（AI 图像模型，仅英文）
   const MODEL_PAGES = ['nano-banana', 'nano-banana-pro', 'nano-banana-2', 'gpt-image-2', 'wan-2-7-image', 'seedream-4-5', 'seedream-5-0-lite', 'seedream-5-0-pro', 'seedance-2-5', 'seedance-2', 'kling-3']
   MODEL_PAGES.forEach((model) => {

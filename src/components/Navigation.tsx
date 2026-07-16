@@ -101,6 +101,8 @@ const defaultAccountTranslations = {
   seeAll: 'See all',
   history: 'History',
   viewAll: 'View all',
+  support: 'Help & Support',
+  supportEmail: 'support@toolaze.com',
   signOut: 'Sign out',
 }
 
@@ -871,6 +873,14 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
             <span>{accountTranslations.history}</span>
             <span className="text-xs text-slate-400">{accountTranslations.viewAll}</span>
           </Link>
+          <Link
+            href={getLocalizedHref('/contact')}
+            onClick={() => setAccountMenuOpen(false)}
+            className="mt-2 flex w-full items-center justify-between rounded-xl px-4 py-3 text-left text-sm font-bold text-slate-700 transition-colors hover:bg-indigo-50 hover:text-indigo-600"
+          >
+            <span>{accountTranslations.support}</span>
+            <span className="text-xs text-slate-400">{accountTranslations.supportEmail}</span>
+          </Link>
           <div className="mt-4 border-t border-slate-100 pt-3">
             <button
               type="button"
@@ -1163,18 +1173,6 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
             <div className={'absolute top-full left-0 mt-2 w-auto min-w-[280px] bg-white rounded-xl shadow-lg border border-indigo-50 transition-all duration-200 z-50 ' + (openDesktopMenu === 'ai-tools' ? 'opacity-100 visible' : 'opacity-0 invisible group-hover:opacity-100 group-hover:visible')}>
               <div className="py-2">
                 <Link
-                  href={getLocalizedHref('/ai-baby-generator')}
-                  onClick={() => setOpenDesktopMenu(null)}
-                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-3"
-                >
-                  <img
-                    src={AI_TOOLS_DEMO_IMAGES.aiBabyGenerator}
-                    alt={navTranslations.aiBabyGenerator || defaultNavTranslations.aiBabyGenerator}
-                    className="w-10 h-10 rounded-lg object-cover border border-indigo-100 flex-shrink-0"
-                  />
-                  <span>{navTranslations.aiBabyGenerator || defaultNavTranslations.aiBabyGenerator}</span>
-                </Link>
-                <Link
                   href={getLocalizedHref('/ai-hairstyle-changer')}
                   onClick={() => setOpenDesktopMenu(null)}
                   className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-3"
@@ -1199,18 +1197,6 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                   <span>{navTranslations.aiHairColorChanger || defaultNavTranslations.aiHairColorChanger}</span>
                 </Link>
                 <Link
-                  href={getLocalizedHref('/watermark-remover')}
-                  onClick={() => setOpenDesktopMenu(null)}
-                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-3"
-                >
-                  <img
-                    src={AI_TOOLS_DEMO_IMAGES.watermarkRemover}
-                    alt={navTranslations.watermarkRemover || 'Watermark Remover'}
-                    className="w-10 h-10 rounded-lg object-cover border border-indigo-100 flex-shrink-0"
-                  />
-                  <span>{navTranslations.watermarkRemover || 'Watermark Remover'}</span>
-                </Link>
-                <Link
                   href={getLocalizedHref('/photo-restoration')}
                   onClick={() => setOpenDesktopMenu(null)}
                   className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-3"
@@ -1221,18 +1207,6 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                     className="w-10 h-10 rounded-lg object-cover border border-indigo-100 flex-shrink-0"
                   />
                   <span>{navTranslations.photoRestoration || defaultNavTranslations.photoRestoration}</span>
-                </Link>
-                <Link
-                  href={getLocalizedHref('/ai-couple-photo-maker')}
-                  onClick={() => setOpenDesktopMenu(null)}
-                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-3"
-                >
-                  <img
-                    src={AI_TOOLS_DEMO_IMAGES.aiCouplePhotoMaker}
-                    alt={navTranslations.aiCouplePhotoMaker || defaultNavTranslations.aiCouplePhotoMaker}
-                    className="w-10 h-10 rounded-lg object-cover border border-indigo-100 flex-shrink-0"
-                  />
-                  <span>{navTranslations.aiCouplePhotoMaker || defaultNavTranslations.aiCouplePhotoMaker}</span>
                 </Link>
                 <Link
                   href={getLocalizedHref('/ai-tools')}
@@ -1676,21 +1650,6 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                 <div className="text-sm font-bold text-slate-700 mb-3">{navTranslations.aiTools || 'AI Tools'}</div>
                 <div className="space-y-2">
                   <Link
-                    href={getLocalizedHref('/ai-baby-generator')}
-                    onClick={() => {
-                      setMobileMenuOpen(false)
-                      setExpandedSubmenus(new Set())
-                    }}
-                    className="flex items-center gap-3 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
-                  >
-                    <img
-                      src={AI_TOOLS_DEMO_IMAGES.aiBabyGenerator}
-                      alt={navTranslations.aiBabyGenerator || defaultNavTranslations.aiBabyGenerator}
-                      className="w-10 h-10 rounded-lg object-cover border border-indigo-100 flex-shrink-0"
-                    />
-                    <span>{navTranslations.aiBabyGenerator || defaultNavTranslations.aiBabyGenerator}</span>
-                  </Link>
-                  <Link
                     href={getLocalizedHref('/ai-hairstyle-changer')}
                     onClick={() => {
                       setMobileMenuOpen(false)
@@ -1721,21 +1680,6 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                     <span>{navTranslations.aiHairColorChanger || defaultNavTranslations.aiHairColorChanger}</span>
                   </Link>
                   <Link
-                    href={getLocalizedHref('/watermark-remover')}
-                    onClick={() => {
-                      setMobileMenuOpen(false)
-                      setExpandedSubmenus(new Set())
-                    }}
-                    className="flex items-center gap-3 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
-                  >
-                    <img
-                      src={AI_TOOLS_DEMO_IMAGES.watermarkRemover}
-                      alt={navTranslations.watermarkRemover || 'Watermark Remover'}
-                      className="w-10 h-10 rounded-lg object-cover border border-indigo-100 flex-shrink-0"
-                    />
-                    <span>{navTranslations.watermarkRemover || 'Watermark Remover'}</span>
-                  </Link>
-                  <Link
                     href={getLocalizedHref('/photo-restoration')}
                     onClick={() => {
                       setMobileMenuOpen(false)
@@ -1749,21 +1693,6 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                       className="w-10 h-10 rounded-lg object-cover border border-indigo-100 flex-shrink-0"
                     />
                     <span>{navTranslations.photoRestoration || defaultNavTranslations.photoRestoration}</span>
-                  </Link>
-                  <Link
-                    href={getLocalizedHref('/ai-couple-photo-maker')}
-                    onClick={() => {
-                      setMobileMenuOpen(false)
-                      setExpandedSubmenus(new Set())
-                    }}
-                    className="flex items-center gap-3 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
-                  >
-                    <img
-                      src={AI_TOOLS_DEMO_IMAGES.aiCouplePhotoMaker}
-                      alt={navTranslations.aiCouplePhotoMaker || defaultNavTranslations.aiCouplePhotoMaker}
-                      className="w-10 h-10 rounded-lg object-cover border border-indigo-100 flex-shrink-0"
-                    />
-                    <span>{navTranslations.aiCouplePhotoMaker || defaultNavTranslations.aiCouplePhotoMaker}</span>
                   </Link>
                   <Link
                     href={getLocalizedHref('/ai-tools')}

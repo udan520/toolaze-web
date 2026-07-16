@@ -6,7 +6,7 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'About Us - Toolaze',
-  description: 'Learn about Toolaze, an AI image and creative tools platform with one-time credits and clear usage policies.',
+  description: 'Learn why Toolaze exists: practical AI creative tools, supported model workflows, one-time credits, and clear usage policies.',
   robots: 'index, follow',
   alternates: {
     canonical: 'https://toolaze.com/about',
@@ -17,69 +17,92 @@ export default function AboutPage() {
   return (
     <>
       <Navigation />
-      
+
       <Breadcrumb items={[
         { label: 'Home', href: '/' },
         { label: 'About Us' },
       ]} />
 
-      <main className="max-w-4xl mx-auto py-20 px-6">
-        <div className="text-center mb-20">
-          <h1 className="text-[40px] font-extrabold text-slate-900 mb-6 leading-tight">
-            We Handle the <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">Tool</span>.<br />
-            You Handle the <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">Laze</span>.
+      <main className="mx-auto max-w-5xl px-6 py-20">
+        <section className="mb-20 text-center">
+          <h1 className="mb-6 text-[40px] font-extrabold leading-tight text-slate-900 md:text-[48px]">
+            We Handle the <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">Tool</span>.<br />
+            You Handle the <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">Laze</span>.
           </h1>
-          <p className="text-lg text-slate-500 max-w-2xl mx-auto leading-relaxed">
-            Productivity isn&apos;t about working harder. It&apos;s about being smart enough to let AI do the heavy lifting.
+          <p className="mx-auto max-w-2xl text-lg leading-relaxed text-slate-500">
+            Productivity is not about doing every tiny task yourself. It is about knowing when the right tool can carry the boring part.
           </p>
-        </div>
+        </section>
 
         <div className="space-y-20">
-          <div className="bg-white p-10 md:p-14 rounded-[2.5rem] shadow-xl shadow-indigo-100/50 border border-indigo-50 relative overflow-hidden">
-            <div className="absolute -right-10 -top-10 text-[10rem] font-black text-slate-50 opacity-50 select-none pointer-events-none">Zzz</div>
-            
-            <h2 className="text-3xl font-bold text-slate-900 mb-6 relative z-10">Why &quot;Toolaze&quot;?</h2>
-            <div className="space-y-6 text-slate-500 leading-relaxed text-lg relative z-10">
+          <section className="relative overflow-hidden rounded-[2.5rem] border border-indigo-50 bg-white p-10 shadow-xl shadow-indigo-100/50 md:p-14">
+            <div className="pointer-events-none absolute -right-10 -top-10 select-none text-[10rem] font-black text-slate-50 opacity-70">Zzz</div>
+
+            <h2 className="relative z-10 mb-6 text-3xl font-bold text-slate-900">Why &quot;Toolaze&quot;?</h2>
+            <div className="relative z-10 space-y-6 text-lg leading-relaxed text-slate-500">
               <p>
                 The name comes from a simple philosophy: <strong className="text-slate-900">Tool + Laze</strong>.
               </p>
               <p>
-                We believe that as a creator, your energy is finite. Every minute you spend resizing images, converting formats, or worrying about unclear processing rules is a minute stolen from your creativity.
+                As a creator, your energy is finite. Every minute spent resizing images, converting formats, testing prompts, comparing model workflows, or checking usage rules is a minute stolen from the work that actually needs your taste.
               </p>
               <p>
-                We built <strong className="text-slate-900">Toolaze</strong> to be the ultimate &quot;lazy&quot; solution. We use practical <strong className="text-indigo-600">AI workflows</strong> to automate the boring technical stuff, from generation to editing to file cleanup.
+                Toolaze brings practical media utilities and AI creative workflows into one place. AI generation is powered by supported third-party AI models, Toolaze integrations, and cloud infrastructure when a model workflow needs them.
               </p>
               <p className="font-bold text-indigo-600">
                 So go ahead, be a little lazy. We&apos;ve got the tools covered.
               </p>
             </div>
-          </div>
+          </section>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white p-8 rounded-[2rem] border border-indigo-50 text-center hover:-translate-y-1 transition-transform group">
-              <div className="w-16 h-16 mx-auto bg-indigo-50 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">🧘</div>
-              <h3 className="font-bold text-slate-900 text-lg mb-3">Laze on Policy</h3>
-              <p className="text-sm text-slate-500">Use clear privacy, refund, and acceptable-use rules before you spend credits or generate assets.</p>
-            </div>
-            <div className="bg-white p-8 rounded-[2rem] border border-indigo-50 text-center hover:-translate-y-1 transition-transform group">
-              <div className="w-16 h-16 mx-auto bg-purple-50 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">🚀</div>
-              <h3 className="font-bold text-slate-900 text-lg mb-3">Laze on Waiting</h3>
-              <p className="text-sm text-slate-500">Why wait for uploads? Our local WebAssembly engine processes files instantly. Done in a blink.</p>
-            </div>
-            <div className="bg-white p-8 rounded-[2rem] border border-indigo-50 text-center hover:-translate-y-1 transition-transform group">
-              <div className="w-16 h-16 mx-auto bg-blue-50 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">💸</div>
-              <h3 className="font-bold text-slate-900 text-lg mb-3">Laze on Cost</h3>
-              <p className="text-sm text-slate-500">Keep your wallet shut. We don&apos;t have expensive server bills, so you don&apos;t have to pay subscription fees.</p>
-            </div>
-          </div>
+          <section className="grid grid-cols-1 gap-8 md:grid-cols-3">
+            <article className="group rounded-[2rem] border border-indigo-50 bg-white p-8 text-center transition-transform hover:-translate-y-1">
+              <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-indigo-50 text-3xl transition-transform group-hover:scale-110">🧘</div>
+              <h3 className="mb-3 text-lg font-bold text-slate-900">Laze on Busywork</h3>
+              <p className="text-sm leading-6 text-slate-500">
+                Compress, convert, restore, generate, and preview creative assets without stitching together a dozen separate workflows.
+              </p>
+            </article>
+            <article className="group rounded-[2rem] border border-indigo-50 bg-white p-8 text-center transition-transform hover:-translate-y-1">
+              <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-purple-50 text-3xl transition-transform group-hover:scale-110">🚀</div>
+              <h3 className="mb-3 text-lg font-bold text-slate-900">Laze on Model Hopping</h3>
+              <p className="text-sm leading-6 text-slate-500">
+                Use a Toolaze interface for supported image and video model workflows instead of jumping between model sites for every task.
+              </p>
+            </article>
+            <article className="group rounded-[2rem] border border-indigo-50 bg-white p-8 text-center transition-transform hover:-translate-y-1">
+              <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-blue-50 text-3xl transition-transform group-hover:scale-110">💎</div>
+              <h3 className="mb-3 text-lg font-bold text-slate-900">Laze on Guesswork</h3>
+              <p className="text-sm leading-6 text-slate-500">
+                Toolaze uses one-time credits for supported AI generation, clear refund terms for unused credits, and credit returns for confirmed failed generations.
+              </p>
+            </article>
+          </section>
 
-          <div className="text-center py-10">
-            <h3 className="text-2xl font-bold text-slate-900 mb-4">Ready to work less?</h3>
-            <p className="text-slate-500 mb-8">Try our tools and reclaim your creative time.</p>
-            <Link href="/" className="inline-block bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-10 py-4 rounded-full font-bold shadow-lg shadow-indigo-200 hover:shadow-indigo-300 transition-all hover:-translate-y-1">
-              Start Being Lazy Now →
-            </Link>
-          </div>
+          <section className="rounded-[2rem] border border-indigo-100 bg-[#F8FAFF] p-8 md:p-10">
+            <h2 className="mb-4 text-2xl font-extrabold text-slate-900">How processing works</h2>
+            <div className="space-y-4 text-base leading-7 text-slate-600">
+              <p>
+                Some utility tools may run in the browser where that makes sense. AI generation features may securely transmit prompts, uploaded media, generation settings, and outputs to third-party AI model providers and cloud infrastructure as required to deliver the requested result.
+              </p>
+              <p>
+                Model and brand names are used to identify supported powered-by model workflows available through Toolaze. Product names, trademarks, and model names belong to their respective owners.
+              </p>
+            </div>
+          </section>
+
+          <section className="py-10 text-center">
+            <h3 className="mb-4 text-2xl font-bold text-slate-900">Ready to work less?</h3>
+            <p className="mb-8 text-slate-500">Try Toolaze and reclaim more of your creative time.</p>
+            <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <Link href="/" className="inline-block rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 px-10 py-4 font-bold text-white shadow-lg shadow-indigo-200 transition-all hover:-translate-y-1 hover:shadow-indigo-300">
+                Start Being Lazy Now →
+              </Link>
+              <Link href="/contact" className="inline-block rounded-full border border-indigo-100 bg-white px-8 py-4 font-bold text-indigo-600 transition-all hover:-translate-y-1 hover:border-indigo-200 hover:bg-indigo-50">
+                Contact Support
+              </Link>
+            </div>
+          </section>
         </div>
       </main>
 

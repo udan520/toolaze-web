@@ -27,7 +27,7 @@ if(!raw){
 }
 if(!raw||raw==='en'||supported.indexOf(raw)<0)return;
 var root=parts[0]||'';
-if(root==='pricing'||root==='refund-policy'||root==='acceptable-use')return;
+if(root==='pricing'||root==='refund-policy'||root==='acceptable-use'||root==='contact')return;
 if(root==='prompts')return;
 if(root==='model'&&(parts[1]==='gpt-image-2'||parts[1]==='seedream-4-5'||parts[1]==='wan-2-7-image'))return;
 sessionStorage.setItem(redirectedKey,path);

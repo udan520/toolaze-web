@@ -117,6 +117,7 @@
     "h1": "Free AI <span class=\"text-gradient\">Hair Color Changer</span> Online",
     "desc": "Upload a clear portrait, enter the hair color you want, and instantly preview an AI-edited look online with no signup and no watermark."
   },
+  "safetyNotice": "This tool changes hair color only and keeps the edit focused on the visible hair area.",
   "howToUse": {
     "title": "How to Change Hair Color with AI",
     "steps": [
@@ -339,7 +340,7 @@
     "content": [
       {
         "title": "Preview a new hair color from your photo",
-        "text": "An AI hair color changer lets you upload a portrait and preview a new hair color online before dyeing your hair, refreshing a profile photo, planning cosplay, or creating social visuals. Instead of applying a flat color filter, Toolaze uses the reference image and your chosen color direction to edit the hair area while keeping the rest of the portrait visually consistent. Use it free with no signup and no watermark."
+        "text": "An AI hair color changer lets you upload a portrait and preview a new hair color online before dyeing your hair, refreshing a profile photo, planning cosplay, or creating social visuals. Instead of applying a flat color filter, Toolaze uses the reference image and your chosen color direction to edit the hair area while keeping the face, hairstyle, skin tone, and background visually consistent."
       }
     ]
   },
@@ -370,8 +371,8 @@
       "a": "Try a more specific prompt. Mention the shade, finish, and realism you want, such as warm copper brown with natural highlights or soft rose pink with realistic shadows."
     },
     {
-      "q": "Is Toolaze AI Hair Color Changer free with no signup?",
-      "a": "Yes. You can use the Toolaze AI Hair Color Changer online for free with no signup and no watermark on the standard AI Tools page experience."
+      "q": "Does AI Hair Color Changer use credits?",
+      "a": "Selected previews may be available to try. Continued AI generation can require credits depending on the selected model, settings, and account status."
     },
     {
       "q": "Can I download the edited hair color photo?",

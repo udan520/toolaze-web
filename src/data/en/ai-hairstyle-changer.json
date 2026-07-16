@@ -201,12 +201,13 @@
     "h1": "Free AI <span class=\"text-gradient\">Hairstyle Changer</span> Online",
     "desc": "Upload one clear portrait, browse Women or Men styles, or describe another look in Custom. No signup and no watermark."
   },
+  "safetyNotice": "This tool changes hairstyle only and keeps the edit focused on the visible hair area.",
   "intro": {
     "title": "What Is an AI Hairstyle Changer?",
     "content": [
       {
         "title": "Preview haircut and styling ideas from one photo",
-        "text": "An AI hairstyle changer edits the visible hair in an uploaded portrait so you can explore a different cut, length, texture, or styling direction. Toolaze separates popular looks into Women and Men tabs and provides a Custom option for another hairstyle. The result is a visual concept, not a guaranteed prediction of a real haircut."
+        "text": "An AI hairstyle changer edits the visible hair in an uploaded portrait so you can explore a different cut, length, texture, or styling direction. Toolaze separates popular looks into Women and Men tabs and provides a Custom option for another hairstyle. The edit stays focused on hairstyle changes while preserving the face and non-hair details. The result is a visual concept, not a guaranteed prediction of a real haircut."
       }
     ]
   },
@@ -561,8 +562,8 @@
       "a": "No. It is a visual concept. A real haircut depends on your hair texture, density, growth pattern, current length, styling routine, and the technique used by a professional."
     },
     {
-      "q": "Is Toolaze AI Hairstyle Changer free with no signup?",
-      "a": "Yes. You can use the standard Toolaze AI Hairstyle Changer online for free with no signup and no watermark."
+      "q": "Does AI Hairstyle Changer use credits?",
+      "a": "Selected previews may be available to try. Continued AI generation can require credits depending on the selected model, settings, and account status."
     },
     {
       "q": "Can I download the hairstyle preview?",

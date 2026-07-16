@@ -7,9 +7,6 @@
  */
 export const HOME_GRID_TOOLS = [
   { id: 'ai-hair-color-changer', usesAi: true },
-  { id: 'ai-baby-generator', usesAi: true },
-  { id: 'ai-couple-photo-maker', usesAi: true },
-  { id: 'watermark-remover', usesAi: true },
   { id: 'photo-restoration', usesAi: true },
   { id: 'image-compressor', usesAi: false },
   { id: 'image-converter', usesAi: false },

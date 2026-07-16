@@ -93,6 +93,9 @@ export default function TermsPage() {
               <p>
                 Toolaze, including its website, software, design, branding, logos, and service features, belongs to Toolaze and its licensors. You may not copy, reverse engineer, scrape, overload, resell, or interfere with the service except as allowed by these Terms.
               </p>
+              <p>
+                Toolaze AI generation is powered by supported AI model providers, Toolaze integrations, and cloud infrastructure. Product names, trademarks, and model names belong to their respective owners and are used to identify supported model workflows available through Toolaze.
+              </p>
             </section>
 
             <section className="space-y-4">

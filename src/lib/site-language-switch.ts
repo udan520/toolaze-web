@@ -92,7 +92,7 @@ export function getContentSupportedLocaleCodes(pathname: string | null): string[
     return [...ALL_LOCALE_CODES]
   }
 
-  if (['pricing', 'refund-policy', 'acceptable-use'].includes(root)) {
+  if (['pricing', 'refund-policy', 'acceptable-use', 'contact'].includes(root)) {
     return ['en']
   }
 

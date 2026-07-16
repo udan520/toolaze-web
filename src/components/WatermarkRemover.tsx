@@ -68,6 +68,7 @@ export default function WatermarkRemover({ initialTranslations }: WatermarkRemov
   const text = commonTranslations?.common?.watermarkRemoverTool || {
     uploadTitle: 'Click or drag image here',
     uploadFormats: 'JPG, PNG, WebP (max 30MB). Under 2MB or 1280px recommended for faster processing.',
+    rightsNotice: 'By uploading, you confirm that you own this image or have permission to edit and remove the selected overlay.',
     uploadNew: 'Upload New',
     generating: 'Generating...',
     regenerate: 'Regenerate',
@@ -280,6 +281,10 @@ export default function WatermarkRemover({ initialTranslations }: WatermarkRemov
             <div className="text-4xl">📤</div>
             <p className="text-slate-600 font-medium">{text.uploadTitle}</p>
             <p className="text-sm text-slate-400">{text.uploadFormats}</p>
+            <p className="mx-auto max-w-lg text-xs leading-5 text-slate-500">
+              {text.rightsNotice ||
+                'By uploading, you confirm that you own this image or have permission to edit and remove the selected overlay.'}
+            </p>
           </div>
         </div>
         {error && (
