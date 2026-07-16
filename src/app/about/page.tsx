@@ -47,7 +47,7 @@ export default function AboutPage() {
                 As a creator, your energy is finite. Every minute spent resizing images, converting formats, testing prompts, comparing model workflows, or checking usage rules is a minute stolen from the work that actually needs your taste.
               </p>
               <p>
-                Toolaze brings practical media utilities and AI creative workflows into one place. AI generation is powered by supported third-party AI models, Toolaze integrations, and cloud infrastructure when a model workflow needs them.
+                Toolaze brings practical media utilities and AI creative workflows into one place. AI generation runs through Toolaze interfaces for supported third-party AI workflows, integrations, and cloud infrastructure when a model workflow needs them.
               </p>
               <p className="font-bold text-indigo-600">
                 So go ahead, be a little lazy. We&apos;ve got the tools covered.
@@ -86,7 +86,7 @@ export default function AboutPage() {
                 Some utility tools may run in the browser where that makes sense. AI generation features may securely transmit prompts, uploaded media, generation settings, and outputs to third-party AI model providers and cloud infrastructure as required to deliver the requested result.
               </p>
               <p>
-                Model and brand names are used to identify supported powered-by model workflows available through Toolaze. Product names, trademarks, and model names belong to their respective owners.
+                Model and brand names identify supported third-party AI workflows available through Toolaze. Product names, trademarks, and model names belong to their respective owners.
               </p>
             </div>
           </section>

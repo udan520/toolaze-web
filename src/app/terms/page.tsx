@@ -39,7 +39,7 @@ export default function TermsPage() {
             <section className="space-y-4">
               <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 mt-12 mb-4">1. Service description</h2>
               <p>
-                Toolaze provides AI generation, AI editing, image utilities, video utilities, prompt workflows, account features, generation history, and credit-based purchases. Some tools use third-party model providers and cloud infrastructure to process prompts, uploaded media, and generated outputs.
+                Toolaze provides AI generation, AI editing, image utilities, video utilities, prompt workflows, account features, generation history, and credit-based purchases. Toolaze is an independent AI creative platform that provides a custom interface for supported third-party AI model workflows. Some tools use third-party model providers and cloud infrastructure to process prompts, uploaded media, and generated outputs.
               </p>
             </section>
 
@@ -94,7 +94,7 @@ export default function TermsPage() {
                 Toolaze, including its website, software, design, branding, logos, and service features, belongs to Toolaze and its licensors. You may not copy, reverse engineer, scrape, overload, resell, or interfere with the service except as allowed by these Terms.
               </p>
               <p>
-                Toolaze AI generation is powered by supported AI model providers, Toolaze integrations, and cloud infrastructure. Product names, trademarks, and model names belong to their respective owners and are used to identify supported model workflows available through Toolaze.
+                Product names, trademarks, and model names belong to their respective owners and are used to identify supported third-party AI model workflows available through Toolaze. Toolaze is not affiliated with or endorsed by model creators unless a page explicitly says otherwise.
               </p>
             </section>
 

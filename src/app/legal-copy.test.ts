@@ -193,17 +193,57 @@ test('public support and model-provider disclaimers are visible for Creem review
 
   const footer = readProjectFile('src/components/Footer.tsx')
   assert.match(footer, /\/contact/)
-  assert.match(footer, /powered by supported AI model providers/i)
-  assert.match(footer, /supported model workflows available through Toolaze/i)
+  assert.match(footer, /independent AI creative platform/i)
+  assert.match(footer, /custom interface for supported third-party AI model workflows/i)
+  assert.match(footer, /not affiliated with or endorsed by those model creators unless explicitly stated/i)
+  assert.doesNotMatch(footer, /powered by supported AI model providers/i)
 
   const navigation = readProjectFile('src/components/Navigation.tsx')
   assert.match(navigation, /Help & Support/)
   assert.match(navigation, /support@toolaze\.com/)
 
   const terms = readProjectFile('src/app/terms/page.tsx')
-  assert.match(terms, /powered by supported AI model providers/i)
+  assert.match(terms, /independent AI creative platform/i)
   assert.match(terms, /model names belong to their respective owners/i)
-  assert.match(terms, /supported model workflows available through Toolaze/i)
+  assert.match(terms, /not affiliated with or endorsed by model creators unless a page explicitly says otherwise/i)
+
+  const englishCommonTerms = JSON.stringify(readJson('src/data/en/common.json').terms)
+  assert.match(englishCommonTerms, /independent AI creative platform/i)
+  assert.match(englishCommonTerms, /not affiliated with or endorsed by model creators unless a page explicitly says otherwise/i)
+})
+
+test('model pages avoid repeated AI wrapper disclosure while keeping model titles unchanged', () => {
+  const modelSurfaces = [
+    'src/app/model/ModelPageContent.tsx',
+    'src/components/blocks/ToolL2PageContent.tsx',
+    'src/components/GptImage2LandingPage.tsx',
+    'src/components/Seedream45LandingPage.tsx',
+    'src/components/Seedream50LiteLandingPage.tsx',
+    'src/components/Seedream50ProLandingPage.tsx',
+    'src/components/Wan27ImageLandingPage.tsx',
+  ]
+
+  assert.equal(existsSync(join(projectRoot, 'src/components/ModelWorkflowDisclosure.tsx')), false)
+  for (const file of modelSurfaces) {
+    assert.doesNotMatch(
+      readProjectFile(file),
+      /ModelWorkflowDisclosure|Model workflow notice/i,
+      `${file} should rely on the global footer disclosure instead of repeating a page-level notice`,
+    )
+  }
+
+  const unchangedTitleFiles = [
+    'src/app/model/gpt-image-2/page.tsx',
+    'src/app/model/nano-banana-pro/page.tsx',
+    'src/app/model/nano-banana-2/page.tsx',
+    'src/app/model/kling-3/page.tsx',
+    'src/app/model/seedance-2/page.tsx',
+  ]
+
+  for (const file of unchangedTitleFiles) {
+    const content = readProjectFile(file)
+    assert.match(content, /metadata|generateMetadata|title:/, `${file} should keep its existing metadata title path`)
+  }
 })
 
 test('sensitive creative tools show Creem-safe usage boundaries', () => {

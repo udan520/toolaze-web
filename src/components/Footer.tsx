@@ -442,7 +442,7 @@ export default function Footer({ initialTranslations }: FooterProps = {}) {
 
         <div className="text-center pt-6 border-t border-slate-700">
           <p className="mx-auto mb-4 max-w-4xl text-xs leading-5 text-slate-500">
-            Toolaze AI generation is powered by supported AI model providers, Toolaze integrations, and cloud infrastructure. Product names, trademarks, and model names belong to their respective owners and identify supported model workflows available through Toolaze.
+            Toolaze is an independent AI creative platform with a custom interface for supported third-party AI model workflows. Product names, trademarks, and model names belong to their respective owners; Toolaze is not affiliated with or endorsed by those model creators unless explicitly stated.
           </p>
           <p className="text-xs text-slate-400 mb-2" suppressHydrationWarning>
             {translations.copyright.replace('{year}', currentYear.toString())}

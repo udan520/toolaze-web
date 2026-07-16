@@ -701,7 +701,7 @@
     "intro": "Welcome to Toolaze. By using Toolaze, you agree to these Terms, the Privacy Policy, the Refund Policy, and the Acceptable Use Policy.",
     "section1": {
       "title": "1. Service description",
-      "content": "Toolaze provides AI generation, AI editing, image utilities, video utilities, prompt workflows, generation history, and credit-based purchases.",
+      "content": "Toolaze provides AI generation, AI editing, image utilities, video utilities, prompt workflows, generation history, and credit-based purchases. Toolaze is an independent AI creative platform that provides a custom interface for supported third-party AI model workflows.",
       "localProcessing": "AI generation: Some tools use third-party model providers and cloud infrastructure to process prompts, uploaded media, and generated outputs."
     },
     "section2": {
@@ -722,7 +722,7 @@
     },
     "section4": {
       "title": "4. Intellectual property",
-      "content": "Toolaze, including its website, software, design, branding, logos, and service features, belongs to Toolaze and its licensors."
+      "content": "Toolaze, including its website, software, design, branding, logos, and service features, belongs to Toolaze and its licensors. Product names, trademarks, and model names belong to their respective owners and identify supported third-party AI model workflows available through Toolaze. Toolaze is not affiliated with or endorsed by model creators unless a page explicitly says otherwise."
     },
     "section5": {
       "title": "5. AI output limits",
