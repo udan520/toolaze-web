@@ -1,4 +1,5 @@
 import { getSeoContent, getAllSlugs, loadCommonTranslations, getL2SeoContent, VIDEO_MODEL_L2S, IMAGE_MODEL_L2S } from '@/lib/seo-loader'
+import { filterPaymentReviewSections } from '@/lib/payment-review-visibility'
 import { localizeLinksInObject } from '@/lib/localize-links'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
@@ -349,6 +350,7 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
     if (isSeedance) {
       sectionsOrder = sectionsOrder.filter((s: string) => s !== 'comparison')
     }
+    sectionsOrder = filterPaymentReviewSections(sectionsOrder)
 
     // 生成 JSON-LD HowTo Schema
     const howToTitle = content.howToUse?.title || `How to ${content.hero?.h1 ? extractSimpleTitle(content.hero.h1) : 'Use Tool'}`

@@ -4,6 +4,11 @@ import { join, relative } from 'node:path'
 import test from 'node:test'
 import { getAiToolsPageCopy } from './ai-tools/copy'
 import { BROWSER_LOCALE_REDIRECT_SCRIPT } from '../lib/browser-locale-redirect'
+import {
+  filterPaymentReviewSections,
+  sanitizePaymentReviewCommonTranslations,
+  shouldRenderPaymentReviewSocialProofSection,
+} from '../lib/payment-review-visibility'
 import { getPreferredLocalizedUrl } from '../lib/site-language-switch'
 
 const projectRoot = process.cwd()
@@ -239,4 +244,47 @@ test('payment review sensitive tools are hidden from public entry points', () =>
   const metadata = JSON.stringify(aiToolsCopy.metadata)
   assert.doesNotMatch(metadata, /Watermark Remover|AI Couple Photo Maker/i)
   assert.doesNotMatch(seoLoader, /tools\.push\(\{ tool: 'watermark-remover'/)
+})
+
+test('unverified social proof blocks are hidden during payment review', () => {
+  assert.deepEqual(
+    filterPaymentReviewSections(['howToUse', 'rating', 'features', 'testimonials', 'reviews', 'comments', 'faq']),
+    ['howToUse', 'features', 'faq']
+  )
+
+  for (const section of ['rating', 'testimonials', 'reviews', 'comments']) {
+    assert.equal(shouldRenderPaymentReviewSocialProofSection(section), false)
+  }
+
+  assert.equal(shouldRenderPaymentReviewSocialProofSection('faq'), true)
+
+  const sanitized = sanitizePaymentReviewCommonTranslations({
+    nav: { home: 'Home' },
+    rating: { rating: '4.9/5 FROM 10K+ CREATORS' },
+  })
+
+  assert.equal('rating' in sanitized, false)
+  assert.deepEqual(sanitized.nav, { home: 'Home' })
+})
+
+test('payment review bundles do not ship default fake social proof copy', () => {
+  const sourceFiles = [
+    'src/components/blocks/Rating.tsx',
+    'src/components/blocks/ToolL2PageContent.tsx',
+    'src/app/[locale]/[tool]/[slug]/ToolSlugPageContent.tsx',
+    'src/lib/payment-review-visibility.ts',
+  ]
+  const riskyDefaults = [
+    /4\.9\/5 FROM 10K/i,
+    /Trusted by Thousands/i,
+    /Join thousands of satisfied/i,
+    /5 star review/i,
+  ]
+
+  const violations = sourceFiles.flatMap((file) => {
+    const content = readProjectFile(file)
+    return riskyDefaults.filter((pattern) => pattern.test(content)).map((pattern) => `${file} -> ${pattern}`)
+  })
+
+  assert.deepEqual(violations, [])
 })

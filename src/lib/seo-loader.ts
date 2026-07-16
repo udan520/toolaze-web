@@ -1,5 +1,6 @@
 import path from 'path'
 import fs from 'fs'
+import { sanitizePaymentReviewCommonTranslations } from './payment-review-visibility'
 
 // 支持的所有语言列表
 const SUPPORTED_LOCALES = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
@@ -259,10 +260,10 @@ export async function loadCommonTranslations(locale: string = 'en') {
 
   const localizedPath = path.join(process.cwd(), 'src', 'data', normalizedLocale, 'common.json')
   const localizedData = readJsonFileSync(localizedPath)
-  if (localizedData) return localizedData
+  if (localizedData) return sanitizePaymentReviewCommonTranslations(localizedData)
 
   if (normalizedLocale !== 'en') {
-    return readJsonFileSync(path.join(process.cwd(), 'src', 'data', 'en', 'common.json'))
+    return sanitizePaymentReviewCommonTranslations(readJsonFileSync(path.join(process.cwd(), 'src', 'data', 'en', 'common.json')))
   }
 
   return null

@@ -1,4 +1,5 @@
 import { getL2SeoContent, getAllSlugs, loadCommonTranslations, getSeoContent, VIDEO_MODEL_L2S, IMAGE_MODEL_L2S } from '@/lib/seo-loader'
+import { filterPaymentReviewSections, shouldRenderPaymentReviewSocialProofSection } from '@/lib/payment-review-visibility'
 import { localizeLinksInObject } from '@/lib/localize-links'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
@@ -178,6 +179,7 @@ function Testimonials({
   section?: TestimonialsSection
   bgClass: string
 }) {
+  if (!shouldRenderPaymentReviewSocialProofSection('testimonials')) return null
   if (!section?.items || section.items.length === 0) return null
 
   return (
@@ -199,7 +201,7 @@ function Testimonials({
               key={`${item.name || 'review'}-${idx}`}
               className="flex h-full flex-col rounded-3xl border border-indigo-50 bg-white p-7 shadow-sm"
             >
-              <div className="mb-5 flex gap-1 text-amber-400" aria-label="5 star review">
+              <div className="mb-5 flex gap-1 text-amber-400" aria-label="rating stars">
                 {Array.from({ length: 5 }).map((_, starIndex) => (
                   <span key={starIndex}>★</span>
                 ))}
@@ -684,6 +686,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
     if (IMAGE_MODEL_L2S.includes(tool) || (VIDEO_MODEL_L2S.includes(tool) && tool !== 'seedance-2-5')) {
       sectionsOrder = sectionsOrder.filter((s: string) => s !== 'comparison')
     }
+    sectionsOrder = filterPaymentReviewSections(sectionsOrder)
 
     // 生成 JSON-LD HowTo Schema
     const howToTitle = content.howToUse?.title || fallbackPageTitle

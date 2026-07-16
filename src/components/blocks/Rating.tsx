@@ -1,3 +1,5 @@
+import { shouldRenderPaymentReviewSocialProofSection } from '@/lib/payment-review-visibility'
+
 interface RatingProps {
   title?: string
   rating?: string
@@ -6,9 +8,11 @@ interface RatingProps {
 }
 
 export default function Rating({ title, rating, description, bgClass = 'bg-white' }: RatingProps) {
-  const defaultRating = rating || '4.9/5 FROM 10K+ CREATORS'
-  const defaultDescription = description || 'Join thousands of satisfied users who trust Toolaze for fast, secure, and free image compression. No registration required, clear privacy and usage policies.'
-  const defaultTitle = title || 'Trusted by Thousands of Creators'
+  if (!shouldRenderPaymentReviewSocialProofSection('rating')) return null
+
+  const defaultRating = rating || ''
+  const defaultDescription = description || ''
+  const defaultTitle = title || 'User feedback'
 
   return (
     <section className={`${bgClass} py-24 px-6 border-t border-indigo-50/50`}>
@@ -22,10 +26,12 @@ export default function Rating({ title, rating, description, bgClass = 'bg-white
             <span className="text-4xl text-yellow-400">★</span>
             <span className="text-4xl text-yellow-400">★</span>
           </div>
-          <div className="text-sm font-bold text-slate-600 uppercase tracking-widest">{defaultRating}</div>
-          <p className="text-base text-slate-500 max-w-2xl mx-auto mt-4 leading-relaxed">
-            {defaultDescription}
-          </p>
+          {defaultRating && <div className="text-sm font-bold text-slate-600 uppercase tracking-widest">{defaultRating}</div>}
+          {defaultDescription && (
+            <p className="text-base text-slate-500 max-w-2xl mx-auto mt-4 leading-relaxed">
+              {defaultDescription}
+            </p>
+          )}
         </div>
       </div>
     </section>
