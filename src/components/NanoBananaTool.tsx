@@ -828,8 +828,10 @@ export default function NanoBananaTool({
     dailyLimitReached: 'Daily free limit reached. Please come back tomorrow!',
     recreateMissingInput: 'No input image found. Switched to Text to Image for recreate.',
     creditsUsedUpTitle: 'Credits Used Up',
-    creditsUsedUpMessage: 'Your credits have been used up. More ways to earn credits are coming soon, including bonus events and activity rewards.',
-    creditsUsedUpAction: 'Got it',
+    creditsUsedUpMessage: 'You need more credits to generate this image. Buy a one-time pack or earn free credits with daily rewards.',
+    creditsUsedUpBuyAction: 'Buy credits',
+    creditsUsedUpEarnAction: 'Earn free credits',
+    creditsUsedUpAction: 'Close',
   }
   const nanoText = getNanoBananaToolText(commonTranslations?.common?.nanoBananaTool, defaultNanoText)
   const formatNanoText = (template: string, values: Record<string, string | number>) =>
@@ -3292,10 +3294,26 @@ export default function NanoBananaTool({
             <p className="mt-3 text-sm leading-6 text-slate-600">
               {nanoText.creditsUsedUpMessage}
             </p>
+            <div className="mt-6 grid gap-2 sm:grid-cols-2">
+              <Link
+                href="/pricing"
+                onClick={() => setCreditExhaustedModalOpen(false)}
+                className="inline-flex w-full items-center justify-center rounded-xl bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-600 px-4 py-3 text-sm font-bold text-white shadow-lg shadow-indigo-100 transition hover:-translate-y-0.5"
+              >
+                {nanoText.creditsUsedUpBuyAction || 'Buy credits'}
+              </Link>
+              <Link
+                href="/earn-credits"
+                onClick={() => setCreditExhaustedModalOpen(false)}
+                className="inline-flex w-full items-center justify-center rounded-xl border border-indigo-100 bg-indigo-50 px-4 py-3 text-sm font-bold text-indigo-700 transition hover:bg-indigo-100"
+              >
+                {nanoText.creditsUsedUpEarnAction || 'Earn free credits'}
+              </Link>
+            </div>
             <button
               type="button"
               onClick={() => setCreditExhaustedModalOpen(false)}
-              className="mt-6 inline-flex w-full items-center justify-center rounded-xl bg-slate-950 px-4 py-3 text-sm font-bold text-white transition hover:bg-slate-800"
+              className="mt-3 inline-flex w-full items-center justify-center rounded-xl px-4 py-2 text-xs font-bold text-slate-500 transition hover:bg-slate-50 hover:text-slate-800"
             >
               {nanoText.creditsUsedUpAction}
             </button>

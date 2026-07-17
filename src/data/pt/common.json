@@ -618,8 +618,10 @@
       "dailyLimitReached": "O limite diário gratuito foi atingido. Volte amanhã.",
       "recreateMissingInput": "Nenhuma imagem de entrada encontrada. Alterado para texto para imagem para recriar.",
       "creditsUsedUpTitle": "Créditos esgotados",
-      "creditsUsedUpMessage": "Seus créditos acabaram. Novas formas de ganhar créditos chegarão em breve, incluindo eventos de bônus e recompensas por atividade.",
-      "creditsUsedUpAction": "Entendi"
+      "creditsUsedUpMessage": "Você precisa de mais créditos para gerar esta imagem. Compre um pacote único ou ganhe créditos grátis com recompensas diárias.",
+      "creditsUsedUpBuyAction": "Comprar créditos",
+      "creditsUsedUpEarnAction": "Ganhar créditos grátis",
+      "creditsUsedUpAction": "Fechar"
     },
     "emojiPicker": {
       "categoriesTitle": "Categorias",

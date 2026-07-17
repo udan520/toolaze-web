@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict'
-import { mkdtempSync, rmSync } from 'node:fs'
+import { mkdtempSync, rmSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { tmpdir } from 'node:os'
 import test from 'node:test'
@@ -18,7 +18,7 @@ test.after(() => {
   rmSync(tempStateDir, { recursive: true, force: true })
 })
 import { proxyToPagesFunctions } from './backend-proxy.js'
-import { resetLocalDevHistoryForTests } from './local-dev-auth.js'
+import { resetLocalDevCreditsForTests, resetLocalDevHistoryForTests } from './local-dev-auth.js'
 
 test('local dev session cookie returns local test account for auth state', async () => {
   const request = new Request('http://localhost:3016/api/auth/me', {
@@ -86,4 +86,264 @@ test('local dev session can create and list generation history', async () => {
   assert.equal(listPayload.items.length, 1)
   assert.equal(listPayload.items[0].id, createPayload.item.id)
   assert.equal(listPayload.items[0].outputUrl, createPayload.item.outputUrl)
+})
+
+test('local dev session can claim a daily check-in reward', async () => {
+  resetLocalDevCreditsForTests(1000)
+
+  const response = await proxyToPagesFunctions(new Request('http://localhost:3016/api/rewards/check-in', {
+    method: 'POST',
+    headers: {
+      Cookie: 'toolaze_session=toolaze-local-dev-session',
+    },
+  }), '/api/rewards/check-in')
+  const payload = await response.json()
+
+  assert.equal(response.status, 200)
+  assert.equal(payload.rewardCredits, 5)
+  assert.equal(payload.checkIn.day, 1)
+  assert.equal(payload.credits.balance, 1005)
+})
+
+test('local dev admin can review and approve x post rewards', async () => {
+  resetLocalDevCreditsForTests(1000)
+
+  const submitResponse = await proxyToPagesFunctions(new Request('http://localhost:3016/api/rewards/x-post', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Cookie: 'toolaze_session=toolaze-local-dev-session',
+    },
+    body: JSON.stringify({ postUrl: 'https://x.com/toolaze/status/789' }),
+  }), '/api/rewards/x-post')
+  const submitPayload = await submitResponse.json()
+
+  assert.equal(submitResponse.status, 201)
+  assert.equal(submitPayload.xPost.status, 'pending')
+
+  const blockedResponse = await proxyToPagesFunctions(new Request('http://localhost:3016/api/admin/reward-reviews'), '/api/admin/reward-reviews')
+  const blockedPayload = await blockedResponse.json()
+
+  assert.equal(blockedResponse.status, 403)
+  assert.equal(blockedPayload.error, 'Admin token required.')
+
+  const listResponse = await proxyToPagesFunctions(new Request('http://localhost:3016/api/admin/reward-reviews', {
+    headers: {
+      'x-admin-token': 'toolaze-local-dev-admin',
+    },
+  }), '/api/admin/reward-reviews')
+  const listPayload = await listResponse.json()
+
+  assert.equal(listResponse.status, 200)
+  assert.equal(listPayload.items.length, 1)
+  assert.equal(listPayload.items[0].id, submitPayload.xPost.id)
+
+  const approveResponse = await proxyToPagesFunctions(new Request('http://localhost:3016/api/admin/reward-reviews', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-admin-token': 'toolaze-local-dev-admin',
+    },
+    body: JSON.stringify({ id: submitPayload.xPost.id, action: 'approve' }),
+  }), '/api/admin/reward-reviews')
+  const approvePayload = await approveResponse.json()
+
+  assert.equal(approveResponse.status, 200)
+  assert.equal(approvePayload.xPost.status, 'approved')
+  assert.equal(approvePayload.credits.balance, 1010)
+
+  const duplicateResponse = await proxyToPagesFunctions(new Request('http://localhost:3016/api/admin/reward-reviews', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-admin-token': 'toolaze-local-dev-admin',
+    },
+    body: JSON.stringify({ id: submitPayload.xPost.id, action: 'approve' }),
+  }), '/api/admin/reward-reviews')
+  const duplicatePayload = await duplicateResponse.json()
+
+  assert.equal(duplicateResponse.status, 200)
+  assert.equal(duplicatePayload.alreadyReviewed, true)
+  assert.equal(duplicatePayload.credits.balance, 1010)
+})
+
+test('local dev admin can list credit reward events by source', async () => {
+  resetLocalDevCreditsForTests(1000)
+
+  await proxyToPagesFunctions(new Request('http://localhost:3016/api/rewards/check-in', {
+    method: 'POST',
+    headers: {
+      Cookie: 'toolaze_session=toolaze-local-dev-session',
+    },
+  }), '/api/rewards/check-in')
+
+  const submitResponse = await proxyToPagesFunctions(new Request('http://localhost:3016/api/rewards/x-post', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Cookie: 'toolaze_session=toolaze-local-dev-session',
+    },
+    body: JSON.stringify({ postUrl: 'https://x.com/toolaze/status/900' }),
+  }), '/api/rewards/x-post')
+  const submitPayload = await submitResponse.json()
+
+  await proxyToPagesFunctions(new Request('http://localhost:3016/api/admin/reward-reviews', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-admin-token': 'toolaze-local-dev-admin',
+    },
+    body: JSON.stringify({ id: submitPayload.xPost.id, action: 'approve' }),
+  }), '/api/admin/reward-reviews')
+
+  const blockedResponse = await proxyToPagesFunctions(
+    new Request('http://localhost:3016/api/admin/reward-events'),
+    '/api/admin/reward-events',
+  )
+  const blockedPayload = await blockedResponse.json()
+
+  assert.equal(blockedResponse.status, 403)
+  assert.equal(blockedPayload.error, 'Admin token required.')
+
+  const allResponse = await proxyToPagesFunctions(new Request('http://localhost:3016/api/admin/reward-events?reason=all', {
+    headers: {
+      'x-admin-token': 'toolaze-local-dev-admin',
+    },
+  }), '/api/admin/reward-events')
+  const allPayload = await allResponse.json()
+
+  assert.equal(allResponse.status, 200)
+  assert.deepEqual(allPayload.items.map((item) => item.reason), [
+    'x_post_reward',
+    'daily_checkin',
+    'new_user_bonus',
+  ])
+  assert.equal(allPayload.items[0].userEmail, 'dianawu1202@gmail.com')
+  assert.equal(allPayload.items[0].amount, 10)
+
+  const checkInResponse = await proxyToPagesFunctions(new Request('http://localhost:3016/api/admin/reward-events?reason=daily_checkin', {
+    headers: {
+      'x-admin-token': 'toolaze-local-dev-admin',
+    },
+  }), '/api/admin/reward-events')
+  const checkInPayload = await checkInResponse.json()
+
+  assert.equal(checkInResponse.status, 200)
+  assert.deepEqual(checkInPayload.items.map((item) => item.reason), ['daily_checkin'])
+})
+
+test('local dev admin can proxy reward events to production with the server admin token', async () => {
+  const previousToken = process.env.REWARD_REVIEW_ADMIN_TOKEN
+  const originalFetch = globalThis.fetch
+  process.env.REWARD_REVIEW_ADMIN_TOKEN = 'production-admin-token'
+
+  let proxiedRequest = null
+  globalThis.fetch = async (target, init = {}) => {
+    proxiedRequest = {
+      url: String(target),
+      method: init.method,
+      headers: new Headers(init.headers),
+    }
+    return Response.json({
+      ok: true,
+      reason: 'daily_checkin',
+      items: [{ id: 'prod_reward_1', reason: 'daily_checkin', amount: 5 }],
+    })
+  }
+
+  try {
+    const response = await proxyToPagesFunctions(new Request('http://localhost:3016/api/admin/reward-events?reason=daily_checkin&source=production', {
+      headers: {
+        'x-admin-token': 'toolaze-local-dev-admin',
+      },
+    }), '/api/admin/reward-events')
+    const payload = await response.json()
+
+    assert.equal(response.status, 200)
+    assert.equal(payload.items[0].id, 'prod_reward_1')
+    assert.equal(proxiedRequest.url, 'https://toolaze-web.pages.dev/api/admin/reward-events?reason=daily_checkin')
+    assert.equal(proxiedRequest.method, 'GET')
+    assert.equal(proxiedRequest.headers.get('x-admin-token'), 'production-admin-token')
+    assert.equal(proxiedRequest.headers.get('host'), null)
+  } finally {
+    globalThis.fetch = originalFetch
+    if (previousToken === undefined) {
+      delete process.env.REWARD_REVIEW_ADMIN_TOKEN
+    } else {
+      process.env.REWARD_REVIEW_ADMIN_TOKEN = previousToken
+    }
+  }
+})
+
+test('local dev production reward source requires a server admin token', async () => {
+  const previousToken = process.env.REWARD_REVIEW_ADMIN_TOKEN
+  const previousEnvFile = process.env.TOOLAZE_REWARD_ADMIN_ENV_FILE
+  process.env.TOOLAZE_REWARD_ADMIN_ENV_FILE = join(tempStateDir, 'missing-admin.env')
+  delete process.env.REWARD_REVIEW_ADMIN_TOKEN
+
+  try {
+    const response = await proxyToPagesFunctions(new Request('http://localhost:3016/api/admin/reward-events?source=production', {
+      headers: {
+        'x-admin-token': 'toolaze-local-dev-admin',
+      },
+    }), '/api/admin/reward-events')
+    const payload = await response.json()
+
+    assert.equal(response.status, 503)
+    assert.equal(payload.error, 'Production admin token is not configured.')
+  } finally {
+    if (previousEnvFile === undefined) {
+      delete process.env.TOOLAZE_REWARD_ADMIN_ENV_FILE
+    } else {
+      process.env.TOOLAZE_REWARD_ADMIN_ENV_FILE = previousEnvFile
+    }
+    if (previousToken === undefined) {
+      delete process.env.REWARD_REVIEW_ADMIN_TOKEN
+    } else {
+      process.env.REWARD_REVIEW_ADMIN_TOKEN = previousToken
+    }
+  }
+})
+
+test('local dev production reward source can read the admin token from a local env file', async () => {
+  const previousToken = process.env.REWARD_REVIEW_ADMIN_TOKEN
+  const previousEnvFile = process.env.TOOLAZE_REWARD_ADMIN_ENV_FILE
+  const originalFetch = globalThis.fetch
+  delete process.env.REWARD_REVIEW_ADMIN_TOKEN
+  process.env.TOOLAZE_REWARD_ADMIN_ENV_FILE = join(tempStateDir, 'reward-admin.env')
+  const localEnvText = 'REWARD_REVIEW_ADMIN_TOKEN="file-admin-token"\n'
+  writeFileSync(process.env.TOOLAZE_REWARD_ADMIN_ENV_FILE, localEnvText, 'utf8')
+
+  let proxiedRequest = null
+  globalThis.fetch = async (target, init = {}) => {
+    proxiedRequest = {
+      url: String(target),
+      headers: new Headers(init.headers),
+    }
+    return Response.json({ ok: true, items: [] })
+  }
+
+  try {
+    const response = await proxyToPagesFunctions(new Request('http://localhost:3016/api/admin/reward-events?source=production', {
+      headers: {
+        'x-admin-token': 'toolaze-local-dev-admin',
+      },
+    }), '/api/admin/reward-events')
+
+    assert.equal(response.status, 200)
+    assert.equal(proxiedRequest.url, 'https://toolaze-web.pages.dev/api/admin/reward-events')
+    assert.equal(proxiedRequest.headers.get('x-admin-token'), 'file-admin-token')
+  } finally {
+    globalThis.fetch = originalFetch
+    if (previousEnvFile === undefined) {
+      delete process.env.TOOLAZE_REWARD_ADMIN_ENV_FILE
+    } else {
+      process.env.TOOLAZE_REWARD_ADMIN_ENV_FILE = previousEnvFile
+    }
+    if (previousToken === undefined) {
+      delete process.env.REWARD_REVIEW_ADMIN_TOKEN
+    } else {
+      process.env.REWARD_REVIEW_ADMIN_TOKEN = previousToken
+    }
+  }
 })

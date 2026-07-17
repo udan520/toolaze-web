@@ -1,6 +1,13 @@
 import { allocateCreditConsumption } from './credit-allocation.mjs';
 
 const NEW_USER_CREDITS = 10;
+const CREDIT_REWARD_EVENT_REASONS = [
+  'new_user_bonus',
+  'daily_checkin',
+  'x_post_reward',
+  'admin_grant',
+  'bonus',
+];
 
 function nowIso(now = new Date()) {
   return now.toISOString();
@@ -265,6 +272,64 @@ export async function getCreditSummary(env, userId, limit = 10) {
       description: row.description,
       createdAt: row.created_at,
     })),
+  };
+}
+
+function normalizeCreditRewardReason(value) {
+  const reason = String(value || 'all').trim();
+  if (reason === 'all') return 'all';
+  return CREDIT_REWARD_EVENT_REASONS.includes(reason) ? reason : 'all';
+}
+
+function serializeCreditRewardEvent(row) {
+  return {
+    id: row.id,
+    userId: row.user_id,
+    userEmail: row.user_email || null,
+    userName: row.user_name || null,
+    type: row.type,
+    amount: row.amount,
+    balanceAfter: row.balance_after,
+    reason: row.reason,
+    description: row.description,
+    createdAt: row.created_at,
+  };
+}
+
+export async function listCreditRewardEvents(env, options = {}) {
+  const reason = normalizeCreditRewardReason(options.reason);
+  const limit = Math.min(Math.max(Number(options.limit) || 50, 1), 200);
+  const reasonFilter = reason === 'all'
+    ? `credit_transactions.reason in (${CREDIT_REWARD_EVENT_REASONS.map(() => '?').join(', ')})`
+    : 'credit_transactions.reason = ?';
+  const values = reason === 'all'
+    ? [...CREDIT_REWARD_EVENT_REASONS, limit]
+    : [reason, limit];
+
+  const result = await env.DB.prepare(`
+    select
+      credit_transactions.id,
+      credit_transactions.user_id,
+      users.email as user_email,
+      users.name as user_name,
+      credit_transactions.type,
+      credit_transactions.amount,
+      credit_transactions.balance_after,
+      credit_transactions.reason,
+      credit_transactions.description,
+      credit_transactions.created_at
+    from credit_transactions
+    left join users on users.id = credit_transactions.user_id
+    where credit_transactions.amount > 0
+      and ${reasonFilter}
+    order by credit_transactions.created_at desc
+    limit ?
+  `).bind(...values).all();
+
+  return {
+    ok: true,
+    reason,
+    items: (result?.results || []).map(serializeCreditRewardEvent),
   };
 }
 

@@ -618,8 +618,10 @@
       "dailyLimitReached": "Limite gratuito giornaliero raggiunto. Torna domani.",
       "recreateMissingInput": "Nessuna immagine di input trovata. Passaggio a testo-immagine per ricreare.",
       "creditsUsedUpTitle": "Crediti esauriti",
-      "creditsUsedUpMessage": "Hai esaurito i crediti. Presto arriveranno altri modi per ottenere crediti, inclusi eventi bonus e ricompense per le attività.",
-      "creditsUsedUpAction": "Ho capito"
+      "creditsUsedUpMessage": "Ti servono più crediti per generare questa immagine. Acquista un pacchetto una tantum o guadagna crediti gratis con le ricompense giornaliere.",
+      "creditsUsedUpBuyAction": "Acquista crediti",
+      "creditsUsedUpEarnAction": "Guadagna crediti gratis",
+      "creditsUsedUpAction": "Chiudi"
     },
     "emojiPicker": {
       "categoriesTitle": "Categorie",

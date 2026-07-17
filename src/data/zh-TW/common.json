@@ -618,8 +618,10 @@
       "dailyLimitReached": "今日免費額度已用完，請明天再來！",
       "recreateMissingInput": "找不到輸入圖片，已切換為文字轉圖片以重新建立。",
       "creditsUsedUpTitle": "點數已用完",
-      "creditsUsedUpMessage": "你的點數已用完。更多獲得點數的方式即將推出，包括獎勵活動和任務獎勵。",
-      "creditsUsedUpAction": "知道了"
+      "creditsUsedUpMessage": "你需要更多點數才能生成這張圖片。可以購買一次性點數包，或透過每日獎勵獲得免費點數。",
+      "creditsUsedUpBuyAction": "購買點數",
+      "creditsUsedUpEarnAction": "獲得免費點數",
+      "creditsUsedUpAction": "關閉"
     },
     "emojiPicker": {
       "categoriesTitle": "分類",

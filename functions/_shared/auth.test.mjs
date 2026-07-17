@@ -36,6 +36,7 @@ import {
   getCreditSummary,
   grantCredits,
   grantNewUserCredits,
+  listCreditRewardEvents,
   refundCredits,
 } from './credits.mjs';
 import {
@@ -149,6 +150,35 @@ class FakeD1Statement {
 
   async all() {
     const normalized = normalizeSql(this.sql);
+
+    if (normalized.includes('from credit_transactions') && normalized.includes('left join users')) {
+      const hasReasonFilter = normalized.includes('credit_transactions.reason = ?');
+      const reason = hasReasonFilter ? this.values[0] : null;
+      const allowedReasons = hasReasonFilter ? null : new Set(this.values.slice(0, -1));
+      const limit = this.values.at(-1);
+      const rows = this.db.creditTransactions
+        .filter((item) => Number(item.amount) > 0)
+        .filter((item) => !reason || item.reason === reason)
+        .filter((item) => !allowedReasons || allowedReasons.has(item.reason))
+        .sort((a, b) => b.created_at.localeCompare(a.created_at))
+        .slice(0, limit)
+        .map((row) => {
+          const user = this.db.users.find((candidate) => candidate.id === row.user_id);
+          return {
+            id: row.id,
+            user_id: row.user_id,
+            user_email: user?.email || null,
+            user_name: user?.name || null,
+            type: row.type,
+            amount: row.amount,
+            balance_after: row.balance_after,
+            reason: row.reason,
+            description: row.description,
+            created_at: row.created_at,
+          };
+        });
+      return { results: rows };
+    }
 
     if (normalized.includes('from credit_transactions')) {
       const [userId, limit] = this.values;
@@ -1164,6 +1194,40 @@ test('grantNewUserCredits adds the signup bonus once and records a transaction',
       },
     ],
   });
+});
+
+test('listCreditRewardEvents returns positive reward grants with user details', async () => {
+  const env = createAuthEnv();
+  const user = await upsertUser(env, {
+    googleSub: 'google-sub-1',
+    email: 'person@example.com',
+    name: 'Person',
+    avatarUrl: null,
+  });
+  await grantNewUserCredits(env, user.id);
+  await grantCredits(env, user.id, 5, {
+    requestId: `daily_checkin:${user.id}:2026-07-17`,
+    reason: 'daily_checkin',
+    description: 'Daily check-in reward (Day 1)',
+  });
+  await consumeCredits(env, user.id, 5, {
+    reason: 'image_generation',
+    description: 'Image generation',
+  });
+
+  const allRewards = await listCreditRewardEvents(env, { reason: 'all', limit: 10 });
+  assert.equal(allRewards.ok, true);
+  assert.deepEqual(new Set(allRewards.items.map((item) => item.reason)), new Set([
+    'daily_checkin',
+    'new_user_bonus',
+  ]));
+  const checkInReward = allRewards.items.find((item) => item.reason === 'daily_checkin');
+  assert.equal(checkInReward.userEmail, 'person@example.com');
+  assert.equal(checkInReward.amount, 5);
+  assert.equal(checkInReward.balanceAfter, 15);
+
+  const checkIns = await listCreditRewardEvents(env, { reason: 'daily_checkin', limit: 10 });
+  assert.deepEqual(checkIns.items.map((item) => item.reason), ['daily_checkin']);
 });
 
 test('consumeCredits deducts balance and records usage activity', async () => {

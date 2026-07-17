@@ -100,6 +100,7 @@ const defaultAccountTranslations = {
   balance: 'Balance',
   credits: 'credits',
   seeAll: 'See all',
+  earnCredits: 'Earn credits',
   history: 'History',
   viewAll: 'View all',
   support: 'Help & Support',
@@ -175,6 +176,11 @@ type TopNotice = {
   message: string
 }
 
+type CheckInNudge = {
+  day: number
+  rewardCredits: number
+}
+
 const emptyCreditSummary: CreditSummary = {
   balance: 0,
   transactions: [],
@@ -193,6 +199,7 @@ const TOP_NOTICE_DURATION_MS = 3000
 const AUTH_POPUP_NAME = 'toolaze-google-auth'
 const AUTH_POPUP_MESSAGE_TYPE = 'toolaze:auth-result'
 const AUTH_CACHE_STORAGE_KEY = 'toolaze.authSnapshot'
+const CHECK_IN_NUDGE_STORAGE_PREFIX = 'toolaze.checkInNudgeDismissed.v2'
 const LOCAL_AUTH_PROVIDER_ORIGIN = 'https://toolaze.com'
 const AUTH_POPUP_FEATURES = [
   'popup=yes',
@@ -294,6 +301,8 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
   const [devLoginError, setDevLoginError] = useState('')
   const [accountMenuOpen, setAccountMenuOpen] = useState(false)
   const [topNotice, setTopNotice] = useState<TopNotice | null>(null)
+  const [checkInNudge, setCheckInNudge] = useState<CheckInNudge | null>(null)
+  const [checkInNudgeCardHidden, setCheckInNudgeCardHidden] = useState(false)
   const pathname = usePathname()
 
   const currentLocale = getCurrentLocaleFromPath(pathname ?? null)
@@ -475,6 +484,56 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
     }
   }, [])
 
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    if (!authLoaded || !authUser) {
+      setCheckInNudge(null)
+      setCheckInNudgeCardHidden(false)
+      return
+    }
+
+    const currentPath = pathname || '/'
+    if (currentPath.includes('/earn-credits')) {
+      setCheckInNudge(null)
+      setCheckInNudgeCardHidden(false)
+      return
+    }
+
+    const today = new Date().toISOString().slice(0, 10)
+    const storageKey = `${CHECK_IN_NUDGE_STORAGE_PREFIX}:${today}`
+    const dismissedToday = Boolean(window.sessionStorage.getItem(storageKey))
+
+    let cancelled = false
+    const loadCheckInNudge = async () => {
+      try {
+        const response = await fetch('/api/rewards/check-in', {
+          cache: 'no-store',
+          credentials: 'include',
+        })
+        if (!response.ok) return
+        const data = await response.json().catch(() => ({}))
+        if (cancelled) return
+        if (data.checkIn?.checkedInToday) {
+          setCheckInNudge(null)
+          setCheckInNudgeCardHidden(false)
+          return
+        }
+        setCheckInNudge({
+          day: data.checkIn?.nextDay || 1,
+          rewardCredits: data.checkIn?.nextRewardCredits || 5,
+        })
+        setCheckInNudgeCardHidden(dismissedToday)
+      } catch {
+        // Reward nudges should never interrupt navigation.
+      }
+    }
+
+    void loadCheckInNudge()
+    return () => {
+      cancelled = true
+    }
+  }, [authLoaded, authUser?.id, pathname])
+
   // 加载三级菜单数据：客户端菜单只依赖轻量元数据，避免把服务端 SEO loader 打进浏览器包。
   useEffect(() => {
     setThirdLevelMenuData({
@@ -489,6 +548,8 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
     if (href.startsWith('http')) return href
     return getPreferredLocalizedUrl(href, navEffectiveLocale)
   }
+
+  const getEarnCreditsCheckInHref = () => `${getLocalizedHref('/earn-credits')}#daily-check-in`
   
   // 获取三级菜单项的函数（使用已加载的数据）
   const getThirdLevelItems = (tool: string): ClientMenuItem[] => {
@@ -622,6 +683,14 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
         topNoticeTimerRef.current = null
       }, TOP_NOTICE_DURATION_MS)
     }
+  }
+
+  function dismissCheckInNudge() {
+    if (typeof window !== 'undefined') {
+      const today = new Date().toISOString().slice(0, 10)
+      window.sessionStorage.setItem(`${CHECK_IN_NUDGE_STORAGE_PREFIX}:${today}`, '1')
+    }
+    setCheckInNudgeCardHidden(true)
   }
 
   function isTrustedAuthMessageOrigin(origin: string): boolean {
@@ -823,6 +892,58 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
     )
   }
 
+  const renderCheckInNudge = (variant: 'desktop' | 'mobile' = 'desktop') => {
+    if (!checkInNudge || checkInNudgeCardHidden || accountMenuOpen) return null
+
+    return (
+      <div
+        data-check-in-nudge
+        className={`absolute right-0 z-[90] w-[250px] overflow-visible rounded-2xl border border-indigo-100 bg-white/95 p-3 shadow-[0_18px_44px_rgba(79,70,229,0.18)] ring-1 ring-indigo-50 backdrop-blur ${
+          variant === 'mobile' ? 'top-[50px]' : 'top-[46px]'
+        }`}
+      >
+        <span
+          aria-hidden="true"
+          className="absolute -top-1.5 right-5 h-3 w-3 rotate-45 border-l border-t border-indigo-100 bg-white"
+        />
+        <button
+          type="button"
+          onClick={dismissCheckInNudge}
+          className="absolute right-2.5 top-2.5 rounded-full p-1 text-slate-400 transition hover:bg-slate-100 hover:text-slate-700"
+          aria-label={authTranslations.closeNotification}
+        >
+          <CloseIcon size={16} />
+        </button>
+        <div className="flex items-center gap-2.5 pr-6">
+          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-2xl bg-indigo-50">
+            <img src="/credits-icons/diamond-3d-indigo.svg" alt="" aria-hidden="true" className="h-6 w-6" />
+          </div>
+          <div className="min-w-0">
+            <p className="text-sm font-extrabold text-slate-950">Check-in ready</p>
+            <p className="mt-0.5 text-xs leading-5 text-slate-600">
+              Day {checkInNudge.day} · +{checkInNudge.rewardCredits} credits
+            </p>
+          </div>
+        </div>
+        <div className="mt-3 grid grid-cols-[1fr_auto] gap-2">
+          <Link
+            href={getEarnCreditsCheckInHref()}
+            className="rounded-xl bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-600 px-3 py-2.5 text-center text-xs font-extrabold text-white shadow-lg shadow-indigo-100 transition hover:-translate-y-0.5"
+          >
+            View rewards
+          </Link>
+          <button
+            type="button"
+            onClick={dismissCheckInNudge}
+            className="rounded-xl border border-indigo-100 bg-indigo-50 px-3 py-2.5 text-center text-xs font-extrabold text-indigo-700 transition hover:bg-indigo-100"
+          >
+            Later
+          </button>
+        </div>
+      </div>
+    )
+  }
+
   const renderAccountMenu = (variant: 'desktop' | 'mobile' = 'desktop') => {
     if (!authUser) return null
 
@@ -853,6 +974,22 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
               {creditSummary.balance}
             </p>
           </div>
+          <Link
+            href={getEarnCreditsCheckInHref()}
+            onClick={() => setAccountMenuOpen(false)}
+            className="mt-3 flex w-full items-center justify-between rounded-xl bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-600 px-4 py-3 text-left text-sm font-extrabold text-white shadow-lg shadow-indigo-100 transition hover:-translate-y-0.5"
+          >
+            <span>{accountTranslations.earnCredits}</span>
+            <span className="inline-flex items-center gap-1 text-xs">
+              +5
+              <img
+                src="/credits-icons/diamond-3d-indigo.svg"
+                alt=""
+                aria-hidden="true"
+                className="h-4 w-4 rounded-full bg-white/90"
+              />
+            </span>
+          </Link>
         </div>
         <div className="px-4 py-4">
           <div className="mb-3 flex items-center justify-between">
@@ -1054,12 +1191,22 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                   type="button"
                   onClick={toggleAccountMenu}
                   data-account-avatar-trigger
-                  className="flex h-10 w-10 appearance-none items-center justify-center overflow-hidden rounded-full border-0 bg-transparent p-0 shadow-none transition-colors hover:bg-transparent"
+                  className="relative flex h-10 w-10 appearance-none items-center justify-center rounded-full border-0 bg-transparent p-0 shadow-none transition-colors hover:bg-transparent"
                   aria-label={authTranslations.openAccountMenu}
                   aria-expanded={accountMenuOpen}
                 >
                   {renderAvatar('h-10 w-10')}
                 </button>
+                {checkInNudge && !accountMenuOpen && (
+                  <Link
+                    href={getEarnCreditsCheckInHref()}
+                    className="absolute -right-1 -top-1 z-[95] rounded-full bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-600 px-1.5 py-0.5 text-[10px] font-extrabold leading-none text-white shadow-lg shadow-indigo-200 ring-2 ring-white transition hover:-translate-y-0.5 motion-safe:animate-pulse"
+                    aria-label={`View daily check-in rewards and claim +${checkInNudge.rewardCredits} credits`}
+                  >
+                    +{checkInNudge.rewardCredits}
+                  </Link>
+                )}
+                {renderCheckInNudge('mobile')}
                 {accountMenuOpen && renderAccountMenu('mobile')}
               </div>
             ) : authLoaded ? (
@@ -1181,7 +1328,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                   <img
                     src={AI_TOOLS_DEMO_IMAGES.aiHairstyleChanger}
                     alt={navTranslations.aiHairstyleChanger || defaultNavTranslations.aiHairstyleChanger}
-                    className="w-10 h-10 rounded-lg object-cover border border-indigo-100 flex-shrink-0"
+                    className="w-14 aspect-[4/3] rounded-lg object-cover border border-indigo-100 flex-shrink-0"
                   />
                   <span>{navTranslations.aiHairstyleChanger || defaultNavTranslations.aiHairstyleChanger}</span>
                 </Link>
@@ -1193,7 +1340,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                   <img
                     src={AI_TOOLS_DEMO_IMAGES.aiHairColorChanger}
                     alt={navTranslations.aiHairColorChanger || defaultNavTranslations.aiHairColorChanger}
-                    className="w-10 h-10 rounded-lg object-cover border border-indigo-100 flex-shrink-0"
+                    className="w-14 aspect-[4/3] rounded-lg object-cover border border-indigo-100 flex-shrink-0"
                   />
                   <span>{navTranslations.aiHairColorChanger || defaultNavTranslations.aiHairColorChanger}</span>
                 </Link>
@@ -1205,7 +1352,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                   <img
                     src={AI_TOOLS_DEMO_IMAGES.photoRestoration}
                     alt={navTranslations.photoRestoration || defaultNavTranslations.photoRestoration}
-                    className="w-10 h-10 rounded-lg object-cover border border-indigo-100 flex-shrink-0"
+                    className="w-14 aspect-[4/3] rounded-lg object-cover border border-indigo-100 flex-shrink-0"
                   />
                   <span>{navTranslations.photoRestoration || defaultNavTranslations.photoRestoration}</span>
                 </Link>
@@ -1550,7 +1697,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
               <button
                 type="button"
                 onClick={toggleAccountMenu}
-                className="flex items-center gap-2 rounded-full bg-white p-1 pl-3 text-sm font-bold text-slate-700 shadow-sm transition-colors hover:bg-slate-50 hover:text-indigo-600"
+                className="relative flex items-center gap-2 rounded-full bg-white p-1 pl-3 text-sm font-bold text-slate-700 shadow-sm transition-colors hover:bg-slate-50 hover:text-indigo-600"
                 aria-label={authTranslations.openAccountMenu}
                 aria-expanded={accountMenuOpen}
               >
@@ -1568,6 +1715,16 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                 </span>
                 {renderAvatar()}
               </button>
+              {checkInNudge && !accountMenuOpen && (
+                <Link
+                  href={getEarnCreditsCheckInHref()}
+                  className="absolute -right-1 -top-1 z-[95] rounded-full bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-600 px-1.5 py-0.5 text-[10px] font-extrabold leading-none text-white shadow-lg shadow-indigo-200 ring-2 ring-white transition hover:-translate-y-0.5 motion-safe:animate-pulse"
+                  aria-label={`View daily check-in rewards and claim +${checkInNudge.rewardCredits} credits`}
+                >
+                  +{checkInNudge.rewardCredits}
+                </Link>
+              )}
+              {renderCheckInNudge()}
               {accountMenuOpen && renderAccountMenu()}
             </div>
           ) : authLoaded ? (
@@ -1668,7 +1825,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                     <img
                       src={AI_TOOLS_DEMO_IMAGES.aiHairstyleChanger}
                       alt={navTranslations.aiHairstyleChanger || defaultNavTranslations.aiHairstyleChanger}
-                      className="w-10 h-10 rounded-lg object-cover border border-indigo-100 flex-shrink-0"
+                      className="w-14 aspect-[4/3] rounded-lg object-cover border border-indigo-100 flex-shrink-0"
                     />
                     <span>{navTranslations.aiHairstyleChanger || defaultNavTranslations.aiHairstyleChanger}</span>
                   </Link>
@@ -1683,7 +1840,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                     <img
                       src={AI_TOOLS_DEMO_IMAGES.aiHairColorChanger}
                       alt={navTranslations.aiHairColorChanger || defaultNavTranslations.aiHairColorChanger}
-                      className="w-10 h-10 rounded-lg object-cover border border-indigo-100 flex-shrink-0"
+                      className="w-14 aspect-[4/3] rounded-lg object-cover border border-indigo-100 flex-shrink-0"
                     />
                     <span>{navTranslations.aiHairColorChanger || defaultNavTranslations.aiHairColorChanger}</span>
                   </Link>
@@ -1698,7 +1855,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                     <img
                       src={AI_TOOLS_DEMO_IMAGES.photoRestoration}
                       alt={navTranslations.photoRestoration || defaultNavTranslations.photoRestoration}
-                      className="w-10 h-10 rounded-lg object-cover border border-indigo-100 flex-shrink-0"
+                      className="w-14 aspect-[4/3] rounded-lg object-cover border border-indigo-100 flex-shrink-0"
                     />
                     <span>{navTranslations.photoRestoration || defaultNavTranslations.photoRestoration}</span>
                   </Link>

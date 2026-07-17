@@ -13,6 +13,7 @@
     "postbuild": "node scripts/postbuild-restore-api.js",
     "start": "next start -p 3006",
     "lint": "next lint",
+    "env:sync": "node scripts/sync-local-env.js",
     "sync-locales": "tsx scripts/sync-locales.ts",
     "sync-individual": "tsx scripts/sync-individual-locales.ts",
     "sync-exact": "tsx scripts/sync-exact-copy.ts",

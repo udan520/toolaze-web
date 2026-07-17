@@ -630,8 +630,10 @@
       "dailyLimitReached": "本日の無料上限に達しました。明日もう一度お試しください。",
       "recreateMissingInput": "入力画像が見つかりません。再作成のためテキストから画像に切り替えました。",
       "creditsUsedUpTitle": "クレジットを使い切りました",
-      "creditsUsedUpMessage": "クレジットを使い切りました。ボーナスイベントや利用特典など、クレジットを獲得する方法は近日追加予定です。",
-      "creditsUsedUpAction": "了解"
+      "creditsUsedUpMessage": "この画像を生成するには、さらにクレジットが必要です。1回限りのパックを購入するか、毎日の報酬で無料クレジットを獲得できます。",
+      "creditsUsedUpBuyAction": "クレジットを購入",
+      "creditsUsedUpEarnAction": "無料クレジットを獲得",
+      "creditsUsedUpAction": "閉じる"
     },
     "emojiPicker": {
       "categoriesTitle": "カテゴリー",

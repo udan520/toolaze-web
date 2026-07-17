@@ -618,8 +618,10 @@
       "dailyLimitReached": "Das tägliche Gratislimit ist erreicht. Bitte komm morgen wieder.",
       "recreateMissingInput": "Kein Eingabebild gefunden. Für die Neuerstellung wurde zu Text zu Bild gewechselt.",
       "creditsUsedUpTitle": "Credits aufgebraucht",
-      "creditsUsedUpMessage": "Deine Credits sind aufgebraucht. Weitere Möglichkeiten zum Sammeln von Credits folgen bald, einschließlich Bonusaktionen und Aktivitätsbelohnungen.",
-      "creditsUsedUpAction": "Verstanden"
+      "creditsUsedUpMessage": "Du benötigst mehr Credits, um dieses Bild zu generieren. Kaufe ein einmaliges Paket oder sammle kostenlose Credits mit täglichen Belohnungen.",
+      "creditsUsedUpBuyAction": "Credits kaufen",
+      "creditsUsedUpEarnAction": "Kostenlose Credits verdienen",
+      "creditsUsedUpAction": "Schließen"
     },
     "emojiPicker": {
       "categoriesTitle": "Kategorien",

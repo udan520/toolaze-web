@@ -55,11 +55,17 @@ function createLocalDevStatusRequest(taskId, creditHold) {
 test('local dev status refunds pre-deducted credits once when generation fails after task creation', async () => {
   const originalKey = process.env.KIE_AI_API_KEY
   const originalFetch = globalThis.fetch
+  const originalCreemKey = process.env.CREEM_API_KEY
   resetLocalDevCreditsForTests(1000)
   process.env.KIE_AI_API_KEY = 'test-key'
+  process.env.CREEM_API_KEY = 'creem-test-key'
 
   try {
-    globalThis.fetch = async () => {
+    globalThis.fetch = async (url) => {
+      if (String(url).includes('/v1/moderation/prompt')) {
+        return Response.json({ id: 'mod_allow', object: 'moderation_result', decision: 'allow', usage: { units: 1 } })
+      }
+
       return Response.json({ code: 200, data: { taskId: 'task_failed' } })
     }
 
@@ -115,6 +121,11 @@ test('local dev status refunds pre-deducted credits once when generation fails a
       delete process.env.KIE_AI_API_KEY
     } else {
       process.env.KIE_AI_API_KEY = originalKey
+    }
+    if (originalCreemKey === undefined) {
+      delete process.env.CREEM_API_KEY
+    } else {
+      process.env.CREEM_API_KEY = originalCreemKey
     }
   }
 })
