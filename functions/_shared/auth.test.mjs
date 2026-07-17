@@ -48,6 +48,7 @@ import {
 class FakeD1 {
   constructor() {
     this.users = [];
+    this.userSignupAttribution = [];
     this.sessions = [];
     this.usageDaily = [];
     this.creditAccounts = [];
@@ -314,6 +315,40 @@ class FakeD1Statement {
         updated_at: updatedAt,
       });
       return { success: true };
+    }
+
+    if (normalized.startsWith('insert into user_signup_attribution')) {
+      assert.equal(this.values.length, 11);
+      const [
+        userId,
+        signupPath,
+        signupUrl,
+        referrer,
+        utmSource,
+        utmMedium,
+        utmCampaign,
+        utmTerm,
+        utmContent,
+        createdAt,
+        updatedAt,
+      ] = this.values;
+      const exists = this.db.userSignupAttribution.some((row) => row.user_id === userId);
+      if (!exists) {
+        this.db.userSignupAttribution.push({
+          user_id: userId,
+          signup_path: signupPath,
+          signup_url: signupUrl,
+          referrer,
+          utm_source: utmSource,
+          utm_medium: utmMedium,
+          utm_campaign: utmCampaign,
+          utm_term: utmTerm,
+          utm_content: utmContent,
+          created_at: createdAt,
+          updated_at: updatedAt,
+        });
+      }
+      return { success: true, meta: { changes: exists ? 0 : 1 } };
     }
 
     if (normalized.startsWith('update users')) {
@@ -834,6 +869,29 @@ test('createGoogleAuthRedirectUrl creates Google auth URL with readable signed s
   assert.ok(state.exp <= after + 10 * 60 * 1000 + 100);
 });
 
+test('createGoogleAuthRedirectUrl stores safe signup attribution in signed state', async () => {
+  const env = createAuthEnv();
+  const authUrl = await createGoogleAuthRedirectUrl(
+    env,
+    'https://toolaze.test/api/auth/google?returnTo=%2Fauth%2Fpopup-callback&signupPath=%2Fmodel%2Fseedream-4-5&signupUrl=https%3A%2F%2Ftoolaze.test%2Fmodel%2Fseedream-4-5%3Futm_source%3Dgoogle%26utm_medium%3Dcpc%26utm_campaign%3Dseedream&referrer=https%3A%2F%2Fwww.google.com%2F'
+  );
+  const state = await readSignedState(
+    new URL(authUrl).searchParams.get('state'),
+    env.AUTH_COOKIE_SECRET
+  );
+
+  assert.deepEqual(state.signupAttribution, {
+    signupPath: '/model/seedream-4-5',
+    signupUrl: 'https://toolaze.test/model/seedream-4-5?utm_source=google&utm_medium=cpc&utm_campaign=seedream',
+    referrer: 'https://www.google.com/',
+    utmSource: 'google',
+    utmMedium: 'cpc',
+    utmCampaign: 'seedream',
+    utmTerm: null,
+    utmContent: null,
+  });
+});
+
 test('createGoogleAuthRedirectUrl reports missing local OAuth configuration clearly', async () => {
   const env = createAuthEnv({ AUTH_COOKIE_SECRET: '' });
 
@@ -1089,6 +1147,45 @@ test('upsertUser inserts first Google user then updates the same google_sub', as
   assert.equal(env.DB.users[0].email, 'second@example.com');
   assert.equal(env.DB.users[0].name, 'Second Name');
   assert.equal(env.DB.users[0].avatar_url, 'https://example.com/second.png');
+});
+
+test('upsertUser records signup attribution once for newly inserted users', async () => {
+  const env = createAuthEnv();
+  const attribution = {
+    signupPath: '/model/seedream-4-5',
+    signupUrl: 'https://toolaze.test/model/seedream-4-5?utm_source=google',
+    referrer: 'https://www.google.com/',
+    utmSource: 'google',
+    utmMedium: null,
+    utmCampaign: null,
+    utmTerm: null,
+    utmContent: null,
+  };
+
+  const inserted = await upsertUser(env, {
+    googleSub: 'google-sub-1',
+    email: 'first@example.com',
+    name: 'First Name',
+    avatarUrl: 'https://example.com/first.png',
+  }, attribution);
+  const updated = await upsertUser(env, {
+    googleSub: 'google-sub-1',
+    email: 'second@example.com',
+    name: 'Second Name',
+    avatarUrl: 'https://example.com/second.png',
+  }, {
+    ...attribution,
+    signupPath: '/pricing',
+  });
+
+  assert.equal(inserted.isNew, true);
+  assert.equal(updated.isNew, false);
+  assert.equal(env.DB.userSignupAttribution.length, 1);
+  assert.equal(env.DB.userSignupAttribution[0].user_id, inserted.id);
+  assert.equal(env.DB.userSignupAttribution[0].signup_path, '/model/seedream-4-5');
+  assert.equal(env.DB.userSignupAttribution[0].signup_url, 'https://toolaze.test/model/seedream-4-5?utm_source=google');
+  assert.equal(env.DB.userSignupAttribution[0].referrer, 'https://www.google.com/');
+  assert.equal(env.DB.userSignupAttribution[0].utm_source, 'google');
 });
 
 test('createSession and getCurrentUser find user by cookie token without storing raw token', async () => {

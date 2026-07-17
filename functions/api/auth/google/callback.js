@@ -37,7 +37,7 @@ export async function onRequest(context) {
 
     const tokens = await exchangeGoogleCode(env, code);
     const profile = await verifyGoogleIdToken(env, tokens.id_token);
-    const user = await upsertUser(env, profile);
+    const user = await upsertUser(env, profile, statePayload.signupAttribution);
     const grantedNewUserCredits = user.isNew
       ? await grantNewUserCredits(env, user.id)
       : false;

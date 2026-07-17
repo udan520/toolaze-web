@@ -18,6 +18,9 @@ const OAUTH_STATE_TTL_MS = 10 * 60 * 1000;
 const OAUTH_STATE_TTL_SECONDS = 10 * 60;
 const SESSION_TTL_SECONDS = 30 * 24 * 60 * 60;
 const SESSION_TTL_MS = SESSION_TTL_SECONDS * 1000;
+const ATTRIBUTION_URL_MAX_LENGTH = 1000;
+const ATTRIBUTION_TEXT_MAX_LENGTH = 500;
+const UTM_MAX_LENGTH = 120;
 
 export function parseCookies(request) {
   const header = request.headers.get('Cookie') || '';
@@ -62,8 +65,13 @@ export async function createGoogleAuthRedirectUrl(env, requestUrl) {
   const siteUrl = requireEnv(env, 'SITE_URL').replace(/\/+$/, '');
   const url = new URL(requestUrl);
   const returnTo = getSafeReturnTo(url.searchParams.get('returnTo'));
+  const signupAttribution = normalizeSignupAttribution({
+    signupPath: url.searchParams.get('signupPath'),
+    signupUrl: url.searchParams.get('signupUrl'),
+    referrer: url.searchParams.get('referrer'),
+  }, siteUrl);
   const state = await createSignedState(
-    { returnTo, exp: Date.now() + OAUTH_STATE_TTL_MS },
+    { returnTo, signupAttribution, exp: Date.now() + OAUTH_STATE_TTL_MS },
     authCookieSecret
   );
   const redirectUri = `${siteUrl}/api/auth/google/callback`;
@@ -91,6 +99,7 @@ export async function readOAuthState(env, state, request) {
   return {
     ...payload,
     returnTo: getSafeReturnTo(payload.returnTo),
+    signupAttribution: normalizeSignupAttribution(payload.signupAttribution, getSiteUrl(env)),
   };
 }
 
@@ -153,7 +162,7 @@ export async function verifyGoogleIdToken(env, idToken) {
   };
 }
 
-export async function upsertUser(env, profile) {
+export async function upsertUser(env, profile, signupAttribution = null) {
   const existing = await env.DB.prepare(
     'SELECT id FROM users WHERE google_sub = ?'
   ).bind(profile.googleSub).first();
@@ -184,6 +193,8 @@ export async function upsertUser(env, profile) {
     now,
     now
   ).run();
+
+  await recordSignupAttribution(env, id, signupAttribution, now);
 
   return { id, isNew: true };
 }
@@ -273,6 +284,141 @@ function decodeCookieValue(value) {
   } catch {
     return value;
   }
+}
+
+function normalizeSignupAttribution(value, siteUrl) {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return null;
+
+  const signupUrl = getSafeSignupUrl(value.signupUrl, siteUrl);
+  const signupPath = getSafeSignupPath(value.signupPath) || getSignupPathFromUrl(signupUrl);
+  if (!signupPath && !signupUrl) return null;
+
+  const signupUrlParams = signupUrl ? new URL(signupUrl).searchParams : new URLSearchParams();
+
+  return {
+    signupPath,
+    signupUrl,
+    referrer: getSafeExternalUrl(value.referrer, ATTRIBUTION_URL_MAX_LENGTH),
+    utmSource: getSafeText(value.utmSource, UTM_MAX_LENGTH) || getSafeText(signupUrlParams.get('utm_source'), UTM_MAX_LENGTH),
+    utmMedium: getSafeText(value.utmMedium, UTM_MAX_LENGTH) || getSafeText(signupUrlParams.get('utm_medium'), UTM_MAX_LENGTH),
+    utmCampaign: getSafeText(value.utmCampaign, UTM_MAX_LENGTH) || getSafeText(signupUrlParams.get('utm_campaign'), UTM_MAX_LENGTH),
+    utmTerm: getSafeText(value.utmTerm, UTM_MAX_LENGTH) || getSafeText(signupUrlParams.get('utm_term'), UTM_MAX_LENGTH),
+    utmContent: getSafeText(value.utmContent, UTM_MAX_LENGTH) || getSafeText(signupUrlParams.get('utm_content'), UTM_MAX_LENGTH),
+  };
+}
+
+async function recordSignupAttribution(env, userId, attribution, now) {
+  const normalized = normalizeSignupAttribution(attribution, getSiteUrl(env));
+  if (!normalized) return;
+
+  try {
+    await env.DB.prepare(
+      `INSERT INTO user_signup_attribution (
+        user_id,
+        signup_path,
+        signup_url,
+        referrer,
+        utm_source,
+        utm_medium,
+        utm_campaign,
+        utm_term,
+        utm_content,
+        created_at,
+        updated_at
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      ON CONFLICT(user_id) DO NOTHING`
+    ).bind(
+      userId,
+      normalized.signupPath,
+      normalized.signupUrl,
+      normalized.referrer,
+      normalized.utmSource,
+      normalized.utmMedium,
+      normalized.utmCampaign,
+      normalized.utmTerm,
+      normalized.utmContent,
+      now,
+      now
+    ).run();
+  } catch (error) {
+    console.warn('Unable to record signup attribution', error);
+  }
+}
+
+function getSafeSignupPath(value) {
+  const text = getSafeText(value, ATTRIBUTION_TEXT_MAX_LENGTH);
+  if (!text) return null;
+  if (!text.startsWith('/')) return null;
+  if (text.startsWith('//')) return null;
+  if (text.includes('\\')) return null;
+  return text;
+}
+
+function getSafeSignupUrl(value, siteUrl) {
+  const text = getSafeText(value, ATTRIBUTION_URL_MAX_LENGTH);
+  if (!text) return null;
+
+  try {
+    const url = new URL(text);
+    if (url.protocol !== 'http:' && url.protocol !== 'https:') return null;
+    if (!isAllowedSignupHost(url.hostname, siteUrl)) return null;
+    url.hash = '';
+    return url.toString();
+  } catch {
+    return null;
+  }
+}
+
+function getSafeExternalUrl(value, maxLength) {
+  const text = getSafeText(value, maxLength);
+  if (!text) return null;
+
+  try {
+    const url = new URL(text);
+    if (url.protocol !== 'http:' && url.protocol !== 'https:') return null;
+    url.hash = '';
+    return url.toString();
+  } catch {
+    return null;
+  }
+}
+
+function getSignupPathFromUrl(value) {
+  if (!value) return null;
+
+  try {
+    const url = new URL(value);
+    return `${url.pathname}${url.search}`;
+  } catch {
+    return null;
+  }
+}
+
+function getSafeText(value, maxLength) {
+  if (typeof value !== 'string') return null;
+  const trimmed = value.trim();
+  if (!trimmed) return null;
+  return trimmed.slice(0, maxLength);
+}
+
+function isAllowedSignupHost(hostname, siteUrl) {
+  const allowedHosts = new Set([
+    'toolaze.com',
+    'www.toolaze.com',
+    'toolaze-web.pages.dev',
+  ]);
+
+  try {
+    allowedHosts.add(new URL(siteUrl).hostname);
+  } catch {
+    // Ignore invalid environment values; required SITE_URL validation happens elsewhere.
+  }
+
+  return allowedHosts.has(hostname) || isLocalhostHostname(hostname);
+}
+
+function isLocalhostHostname(hostname) {
+  return ['localhost', '127.0.0.1', '::1', '[::1]'].includes(hostname);
 }
 
 function getSiteUrl(env) {

@@ -725,17 +725,27 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
   }
 
   function getSignInHref(): string {
-    const currentPath = pathname || '/'
+    const currentPath = typeof window === 'undefined'
+      ? pathname || '/'
+      : `${window.location.pathname || '/'}${window.location.search}`
     const callbackParams = new URLSearchParams({ returnTo: currentPath })
+    const authStartParams = new URLSearchParams({
+      returnTo: `/auth/popup-callback?${callbackParams.toString()}`,
+      signupPath: currentPath,
+    })
 
     if (typeof window !== 'undefined') {
       callbackParams.set('openerOrigin', window.location.origin)
+      authStartParams.set('returnTo', `/auth/popup-callback?${callbackParams.toString()}`)
+      authStartParams.set('signupUrl', window.location.href)
+      if (document.referrer) {
+        authStartParams.set('referrer', document.referrer)
+      }
     }
 
-    const popupReturnTo = `/auth/popup-callback?${callbackParams.toString()}`
     const authProviderOrigin = getAuthProviderOriginForCurrentPage()
 
-    return `${authProviderOrigin}/api/auth/google/start?returnTo=${encodeURIComponent(popupReturnTo)}`
+    return `${authProviderOrigin}/api/auth/google/start?${authStartParams.toString()}`
   }
 
   function openAuthModal() {
