@@ -22,7 +22,8 @@
     "build:prompt-shards": "node scripts/build-prompt-data-shards.js",
     "audit:prompt-titles": "node scripts/audit-prompt-titles.js",
     "admin:seo": "node scripts/admin-seo-server.js",
-    "admin:seo:restart": "pkill -f 'admin-seo-server' 2>/dev/null; sleep 1; node scripts/admin-seo-server.js"
+    "admin:seo:restart": "pkill -f 'admin-seo-server' 2>/dev/null; sleep 1; node scripts/admin-seo-server.js",
+    "test:admin": "npx --yes tsx --test src/lib/admin/*.test.ts"
   },
   "dependencies": {
     "@next/third-parties": "^16.1.2",

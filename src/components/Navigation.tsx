@@ -1267,18 +1267,6 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                 >
                   {navTranslations.allPrompts || defaultNavTranslations.allPrompts}
                 </Link>
-                <Link
-                  href={getLocalizedHref('/world-cup-ai-image-generator')}
-                  onClick={() => setOpenDesktopMenu(null)}
-                  className="flex items-center gap-3 px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors whitespace-nowrap"
-                >
-                  <img
-                    src={AI_TOOLS_DEMO_IMAGES.worldCupAiImageGenerator}
-                    alt={navTranslations.worldCupAiImageGenerator || defaultNavTranslations.worldCupAiImageGenerator}
-                    className="w-8 h-8 rounded-lg object-cover border border-indigo-100 flex-shrink-0"
-                  />
-                  <span>{navTranslations.worldCupAiImageGenerator || defaultNavTranslations.worldCupAiImageGenerator}</span>
-                </Link>
                 {promptMenuGroups.map((group) => (
                   <div key={group.key} className="relative group/secondary">
                     <div className="flex items-center justify-between px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors whitespace-nowrap">

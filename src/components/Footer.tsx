@@ -168,14 +168,6 @@ export default function Footer({ initialTranslations }: FooterProps = {}) {
                 </Link>
               </li>
               <li>
-                <Link
-                  href={getLocalizedHref('/world-cup-ai-image-generator')}
-                  className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
-                >
-                  {translations.worldCupAiImageGenerator || 'World Cup AI Image Generator'}
-                </Link>
-              </li>
-              <li>
                 <Link 
                   href={getLocalizedHref('/photo-restoration')} 
                   className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
