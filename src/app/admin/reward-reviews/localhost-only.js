@@ -1,1 +1,1 @@
-export { isLocalAdminHost } from '../../api/_shared/admin-route-guard.js'
+export { isLocalAdminHost } from '../../../lib/admin-route-guard.js'

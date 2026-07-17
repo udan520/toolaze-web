@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict'
+import { readFileSync } from 'node:fs'
 import test from 'node:test'
 import { isLocalAdminHost } from './localhost-only.js'
 
@@ -13,4 +14,10 @@ test('blocks production and preview admin hosts', () => {
   assert.equal(isLocalAdminHost('www.toolaze.com'), false)
   assert.equal(isLocalAdminHost('toolaze-web.vercel.app'), false)
   assert.equal(isLocalAdminHost('toolaze-web.pages.dev'), false)
+})
+
+test('does not import localhost guard from api routes', () => {
+  const source = readFileSync(new URL('./localhost-only.js', import.meta.url), 'utf8')
+
+  assert.doesNotMatch(source, /api\/_shared/)
 })

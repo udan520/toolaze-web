@@ -23,21 +23,37 @@ function removeBuildOutput(dirName) {
   console.log(`✅ 已清理旧构建产物 ${dirName}`)
 }
 
-function restoreApiRoutes() {
-  const apiDir = path.join(projectRoot, 'src', 'app', 'api')
-  const backupDir = path.join(projectRoot, '.api-backup')
+const temporaryBuildDirs = [
+  {
+    label: 'API 路由',
+    sourceDir: path.join(projectRoot, 'src', 'app', 'api'),
+    backupDir: path.join(projectRoot, '.api-backup'),
+  },
+  {
+    label: '本地后台页',
+    sourceDir: path.join(projectRoot, 'src', 'app', 'admin'),
+    backupDir: path.join(projectRoot, '.admin-backup'),
+  },
+]
 
-  if (!fs.existsSync(backupDir) || fs.existsSync(apiDir)) {
+function restoreTemporaryBuildDirs() {
+  for (const item of temporaryBuildDirs) {
+    restoreTemporaryBuildDir(item)
+  }
+}
+
+function restoreTemporaryBuildDir({ label, sourceDir, backupDir }) {
+  if (!fs.existsSync(backupDir) || fs.existsSync(sourceDir)) {
     return
   }
 
   try {
-    fs.renameSync(backupDir, apiDir)
-    console.log('✅ API 路由已恢复（供 next dev 使用）')
+    fs.renameSync(backupDir, sourceDir)
+    console.log(`✅ ${label}已恢复（供 next dev 使用）`)
   } catch (error) {
-    fs.cpSync(backupDir, apiDir, { recursive: true, force: true })
+    fs.cpSync(backupDir, sourceDir, { recursive: true, force: true })
     fs.rmSync(backupDir, { recursive: true, force: true, maxRetries: 5, retryDelay: 200 })
-    console.log('✅ API 路由已恢复（使用复制方式）')
+    console.log(`✅ ${label}已恢复（使用复制方式）`)
   }
 }
 
@@ -50,6 +66,6 @@ const result = spawnSync(process.execPath, [nextCli, 'build'], {
   windowsHide: true,
 })
 
-restoreApiRoutes()
+restoreTemporaryBuildDirs()
 
 process.exit(result.status === null ? 1 : result.status)

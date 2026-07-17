@@ -1,26 +1,45 @@
 #!/usr/bin/env node
 
 /**
- * Postbuild 脚本：恢复 src/app/api 供 next dev 使用
- * 构建时 prebuild 会移除 api，构建完成后恢复，以便本地开发时 /api/* 有占位响应
+ * Postbuild 脚本：恢复静态导出前临时移除的动态路由目录
+ * 构建时 prebuild 会移除 api/admin，构建完成后恢复，以便本地开发继续使用
  */
 const fs = require('fs');
 const path = require('path');
 
-const apiDir = path.join(__dirname, '..', 'src', 'app', 'api');
-const backupDir = path.join(__dirname, '..', '.api-backup');
+const projectRoot = path.join(__dirname, '..');
+const temporaryBuildDirs = [
+  {
+    label: 'API 路由',
+    sourceDir: path.join(projectRoot, 'src', 'app', 'api'),
+    backupDir: path.join(projectRoot, '.api-backup'),
+  },
+  {
+    label: '本地后台页',
+    sourceDir: path.join(projectRoot, 'src', 'app', 'admin'),
+    backupDir: path.join(projectRoot, '.admin-backup'),
+  },
+];
 
-if (fs.existsSync(backupDir) && !fs.existsSync(apiDir)) {
+for (const item of temporaryBuildDirs) {
+  restoreTemporaryBuildDir(item);
+}
+
+function restoreTemporaryBuildDir({ label, sourceDir, backupDir }) {
+  if (!fs.existsSync(backupDir) || fs.existsSync(sourceDir)) {
+    return;
+  }
+
   try {
-    fs.renameSync(backupDir, apiDir);
-    console.log('✅ API 路由已恢复（供 next dev 使用）');
+    fs.renameSync(backupDir, sourceDir);
+    console.log(`✅ ${label}已恢复（供 next dev 使用）`);
   } catch (e) {
     try {
-      fs.cpSync(backupDir, apiDir, { recursive: true, force: true });
+      fs.cpSync(backupDir, sourceDir, { recursive: true, force: true });
       fs.rmSync(backupDir, { recursive: true, force: true });
-      console.log('✅ API 路由已恢复（使用复制方式）');
+      console.log(`✅ ${label}已恢复（使用复制方式）`);
     } catch (e2) {
-      console.warn('⚠️  无法恢复 API 路由:', e2.message);
+      console.warn(`⚠️  无法恢复 ${label}:`, e2.message);
     }
   }
 }
