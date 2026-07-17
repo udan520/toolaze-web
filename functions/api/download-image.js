@@ -19,10 +19,18 @@ function getAllowedBaseUrl(env) {
 
 function isAllowedUrl(url, allowedBase) {
   if (!url || !url.startsWith('http')) return false;
+  let hostname = '';
+  try {
+    hostname = new URL(url).hostname.toLowerCase();
+  } catch {
+    return false;
+  }
   if (allowedBase && (url === allowedBase || url.startsWith(allowedBase + '/'))) return true;
-  if (/^https:\/\/[^/]+\.r2\.dev\//.test(url)) return true;
+  if (hostname.endsWith('.r2.dev')) return true;
+  // KIE / third-party result files can be temporary CDN URLs before we persist them to R2.
+  if (hostname === 'tempfile.aiquickdraw.com' || hostname.endsWith('.aiquickdraw.com')) return true;
   // AI 图生图 / 去水印等接口返回的 CDN 域名（如 ai.t8star.cn）
-  if (/^https:\/\/[^/]*t8star\.cn\//.test(url)) return true;
+  if (hostname.endsWith('t8star.cn')) return true;
   return false;
 }
 

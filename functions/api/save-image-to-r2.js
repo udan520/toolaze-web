@@ -9,6 +9,7 @@ const CORS = {
   'Access-Control-Allow-Methods': 'POST, OPTIONS',
   'Access-Control-Allow-Headers': 'Content-Type',
 };
+const DEFAULT_R2_PUBLIC_BASE_URL = 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev';
 
 export async function onRequest(context) {
   const { request, env } = context;
@@ -54,13 +55,7 @@ export async function onRequest(context) {
       httpMetadata: { contentType },
     });
 
-    const base = (env.R2_PUBLIC_BASE_URL || '').replace(/\/$/, '');
-    if (!base) {
-      return new Response(JSON.stringify({ error: 'R2_PUBLIC_BASE_URL not configured' }), {
-        status: 500,
-        headers: { 'Content-Type': 'application/json', ...CORS },
-      });
-    }
+    const base = (env.R2_PUBLIC_BASE_URL || DEFAULT_R2_PUBLIC_BASE_URL).replace(/\/$/, '');
     const publicUrl = `${base}/${key}`;
     return new Response(JSON.stringify({ url: publicUrl, key }), {
       headers: { 'Content-Type': 'application/json', ...CORS },

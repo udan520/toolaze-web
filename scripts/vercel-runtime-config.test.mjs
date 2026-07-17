@@ -20,6 +20,8 @@ test('Vercel API route handlers remain runtime dynamic', () => {
     'src/app/api/generate-alt/route.js',
     'src/app/api/image-to-image/route.js',
     'src/app/api/image-to-image/status/route.js',
+    'src/app/api/rewards/check-in/route.js',
+    'src/app/api/rewards/x-post/route.js',
     'src/app/api/save-image-to-r2/route.js',
   ]
 

@@ -8,6 +8,22 @@ type DownloadImageInCurrentPageOptions = {
   triggerUrlDownload: (url: string, filename: string) => void
 }
 
+function getProxyDownloadUrl(imageUrl: string, filename: string): string {
+  return `/api/download-image?url=${encodeURIComponent(imageUrl)}&filename=${encodeURIComponent(filename)}`
+}
+
+function canUseRawAnchorFallback(imageUrl: string): boolean {
+  if (imageUrl.startsWith('blob:') || imageUrl.startsWith('data:')) return true
+  if (imageUrl.startsWith('/') && !imageUrl.startsWith('//')) return true
+  if (typeof window === 'undefined') return false
+
+  try {
+    return new URL(imageUrl, window.location.href).origin === window.location.origin
+  } catch {
+    return false
+  }
+}
+
 export async function downloadImageInCurrentPage({
   imageUrl,
   filename,
@@ -15,7 +31,7 @@ export async function downloadImageInCurrentPage({
   triggerBlobDownload,
   triggerUrlDownload,
 }: DownloadImageInCurrentPageOptions): Promise<ImageDownloadResult> {
-  const proxyUrl = `/api/download-image?url=${encodeURIComponent(imageUrl)}&filename=${encodeURIComponent(filename)}`
+  const proxyUrl = getProxyDownloadUrl(imageUrl, filename)
 
   try {
     const proxyRes = await fetcher(proxyUrl).catch(() => null)
@@ -33,6 +49,6 @@ export async function downloadImageInCurrentPage({
     // Fall through to same-page anchor fallback.
   }
 
-  triggerUrlDownload(imageUrl, filename)
+  triggerUrlDownload(canUseRawAnchorFallback(imageUrl) ? imageUrl : proxyUrl, filename)
   return 'anchor'
 }

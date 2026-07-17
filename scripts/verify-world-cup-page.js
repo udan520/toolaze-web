@@ -5,10 +5,12 @@ const path = require('path')
 
 const root = path.resolve(__dirname, '..')
 const pagePath = path.join(root, 'src/app/world-cup-ai-image-generator/page.tsx')
+const pageContentPath = path.join(root, 'src/components/WorldCupAiImageGeneratorPageContent.tsx')
 const pageCopyPath = path.join(root, 'src/app/world-cup-ai-image-generator/copy.ts')
 const localizedPagePath = path.join(root, 'src/app/[locale]/world-cup-ai-image-generator/page.tsx')
 const sitemapPath = path.join(root, 'src/app/sitemap.ts')
 const aiToolsPagePath = path.join(root, 'src/app/ai-tools/page.tsx')
+const aiToolsCopyPath = path.join(root, 'src/app/ai-tools/copy.ts')
 const homePageMainPath = path.join(root, 'src/components/home/HomePageMain.tsx')
 const navigationPath = path.join(root, 'src/components/Navigation.tsx')
 const footerPath = path.join(root, 'src/components/Footer.tsx')
@@ -63,10 +65,14 @@ function read(filePath) {
   return fs.existsSync(filePath) ? fs.readFileSync(filePath, 'utf8') : ''
 }
 
-const page = read(pagePath)
+const routePage = read(pagePath)
+const pageContent = read(pageContentPath)
+const page = `${routePage}\n${pageContent}`
 const pageCopy = read(pageCopyPath)
 const sitemap = read(sitemapPath)
 const aiToolsPage = read(aiToolsPagePath)
+const aiToolsCopy = read(aiToolsCopyPath)
+const aiToolsSurface = `${aiToolsPage}\n${aiToolsCopy}`
 const homePageMain = read(homePageMainPath)
 const navigation = read(navigationPath)
 const footer = read(footerPath)
@@ -77,6 +83,7 @@ const templateGalleryPath = path.join(root, 'src/components/WorldCupTemplateGall
 const templateGallery = read(templateGalleryPath)
 const nanoBananaToolPath = path.join(root, 'src/components/NanoBananaTool.tsx')
 const nanoBananaTool = read(nanoBananaToolPath)
+const worldCupTopGenerator = pageContent.match(/<NanoBananaTool[\s\S]*?\/>/)?.[0] || ''
 const pageAndCopy = `${page}\n${pageCopy}`
 const pageAndCopyLower = pageAndCopy.toLowerCase()
 
@@ -117,6 +124,19 @@ checks.push({
     page.includes('modelId="gpt-image-2"') &&
     page.includes('id="world-cup-gpt-image-2-generator"') &&
     page.indexOf('id="world-cup-gpt-image-2-generator"') < page.indexOf('copy.templateSection.eyebrow'),
+})
+
+checks.push({
+  name: 'World Cup top generator uses a World Cup-specific demo image',
+  pass:
+    worldCupTopGenerator.includes('sampleImages={[') &&
+    worldCupTopGenerator.includes('uploads/world-cup-2026/templates/wc-030.webp') &&
+    worldCupTopGenerator.includes('World Cup fan portrait sample output'),
+})
+
+checks.push({
+  name: 'World Cup top generator does not use placeholder simple-image copy',
+  pass: !/simple image/i.test(worldCupTopGenerator),
 })
 
 checks.push({
@@ -229,10 +249,10 @@ checks.push({
 checks.push({
   name: 'World Cup discovery thumbnails use existing R2 images, not removed local assets',
   pass:
-    !aiToolsPage.includes('/model-assets/world-cup-2026/fan-poster.webp') &&
+    !aiToolsSurface.includes('/model-assets/world-cup-2026/fan-poster.webp') &&
     !homeAdvancedAiCardImages.includes('/model-assets/world-cup-2026/fan-poster.webp') &&
     !navigation.includes('/model-assets/world-cup-2026/fan-poster.webp') &&
-    [aiToolsPage, homeAdvancedAiCardImages, navigation].every((source) =>
+    [aiToolsSurface, homeAdvancedAiCardImages, navigation].every((source) =>
       source.includes('https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d67aebd7cde5431abd3a7bb74a89bac1.webp')
     ),
 })
@@ -240,9 +260,9 @@ checks.push({
 checks.push({
   name: 'World Cup discovery copy stays focused on still images',
   pass:
-    !aiToolsPage.includes('video key frames') &&
+    !aiToolsSurface.includes('video key frames') &&
     !homePageMain.includes('video key frame') &&
-    !aiToolsPage.includes('animate the best results'),
+    !aiToolsSurface.includes('animate the best results'),
 })
 
 checks.push({
@@ -319,15 +339,19 @@ checks.push({
 })
 
 checks.push({
-  name: 'World Cup generator fills the first screen and keeps prompt/demo areas constrained',
+  name: 'World Cup generator keeps the embedded tool scrollable without purple right shadows',
   pass:
-    page.includes('flex h-[100svh] flex-col overflow-hidden') &&
-    nanoBananaTool.includes('flex min-h-0 flex-1 flex-col overflow-hidden') &&
+    page.includes('fitParentHeight') &&
+    page.includes('plainRightPanel') &&
+    !page.includes('shadow-[18px_18px_0_rgba(79,70,229,0.16)]') &&
+    nanoBananaTool.includes("fitParentHeight ? 'md:h-full md:min-h-0'") &&
+    nanoBananaTool.includes("plainRightPanel ? 'shadow-none'") &&
+    nanoBananaTool.includes('flex min-h-0 flex-1 flex-col overflow-visible') &&
     nanoBananaTool.includes('h-[10.5rem] w-full resize-none overflow-y-auto') &&
     nanoBananaTool.includes('rows={6}') &&
     nanoBananaTool.includes('max-h-full max-w-full') &&
     nanoBananaTool.includes("height: '100%'") &&
-    nanoBananaTool.includes("width: 'auto'"),
+    nanoBananaTool.includes("width: isSharpSampleImage ? '100%' : 'auto'"),
 })
 
 checks.push({
@@ -387,8 +411,8 @@ checks.push({
 checks.push({
   name: 'World Cup tool is discoverable from AI tools hub',
   pass:
-    aiToolsPage.includes('/world-cup-ai-image-generator') &&
-    aiToolsPage.includes('World Cup AI Image Generator'),
+    aiToolsSurface.includes('/world-cup-ai-image-generator') &&
+    aiToolsSurface.includes('World Cup AI Image Generator'),
 })
 
 checks.push({

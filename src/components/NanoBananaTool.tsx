@@ -298,6 +298,8 @@ interface NanoBananaToolProps {
     width?: number
     height?: number
   }>
+  fitParentHeight?: boolean
+  plainRightPanel?: boolean
   promptPresets?: PromptPreset[]
   promptPresetTitle?: string
   promptPresetTabs?: PromptPresetTab[]
@@ -748,6 +750,8 @@ export default function NanoBananaTool({
   hideModelBranding = false,
   sampleImageVariant = 'default',
   sampleImages,
+  fitParentHeight = false,
+  plainRightPanel = false,
   promptPresets = EMPTY_PROMPT_PRESETS,
   promptPresetTitle = 'Hair Color Presets',
   promptPresetTabs = EMPTY_PROMPT_PRESET_TABS,
@@ -2083,9 +2087,11 @@ export default function NanoBananaTool({
     )
   }
 
+  const rightPanelShadowClass = plainRightPanel ? 'shadow-none' : 'shadow-lg shadow-[#4F46E5]/8'
+
   return (
     <section className="flex min-h-0 flex-1 flex-col overflow-visible p-2 md:px-6 md:pb-6 md:pt-3 xl:pl-0 xl:pr-8 2xl:pl-0 2xl:pr-12">
-      <div className="flex min-h-0 min-w-0 flex-col gap-4 md:h-[calc(100dvh-10rem)] md:min-h-[640px] md:flex-row md:items-stretch md:gap-6 xl:h-[calc(100dvh-7rem)] xl:min-h-[720px] xl:gap-8 2xl:gap-10">
+      <div className={`flex min-h-0 min-w-0 flex-col gap-4 ${fitParentHeight ? 'md:h-full md:min-h-0' : 'md:h-[calc(100dvh-10rem)] md:min-h-[640px] xl:h-[calc(100dvh-7rem)] xl:min-h-[720px]'} md:flex-row md:items-stretch md:gap-6 xl:gap-8 2xl:gap-10`}>
         {renderMobileTopPanel()}
         {/* Left: 生图参数区 — 桌面可滚动+固定按钮；h5 上下流式布局，自然高度 */}
         <div className="w-full md:h-full md:w-[380px] xl:w-[400px] 2xl:w-[420px] flex-shrink-0 flex flex-col rounded-2xl border border-[#E0E7FF] bg-white shadow-lg shadow-[#4F46E5]/8 overflow-visible">
@@ -2707,7 +2713,7 @@ export default function NanoBananaTool({
           <div className="flex min-h-0 min-w-0 flex-1 flex-col gap-4 md:flex-row">
         {/* Middle: Generated Image (shown when result exists) or Generating Animation */}
         {isGenerating ? (
-          <div className="flex-1 min-w-0 bg-white rounded-2xl border border-[#E0E7FF] shadow-lg shadow-[#4F46E5]/8 flex items-center justify-center p-2 md:p-8 xl:mx-auto xl:w-full xl:max-w-[1280px] 2xl:max-w-[1440px]">
+          <div className={`flex-1 min-w-0 bg-white rounded-2xl border border-[#E0E7FF] ${rightPanelShadowClass} flex items-center justify-center p-2 md:p-8 xl:mx-auto xl:w-full xl:max-w-[1280px] 2xl:max-w-[1440px]`}>
             <div className="flex flex-col items-center gap-4">
               <div className="flex gap-2">
                 <div className="w-3 h-3 rounded-full bg-[#4F46E5] animate-pulse" style={{ animationDelay: '0s' }} />
@@ -2719,7 +2725,7 @@ export default function NanoBananaTool({
             </div>
           </div>
         ) : currentResult && (rightMode === 'result' || isNanoBanana2CoupleMode) ? (
-          <div className="flex-1 min-w-0 min-h-[400px] md:min-h-0 bg-white rounded-2xl border border-[#E0E7FF] shadow-lg shadow-[#4F46E5]/8 flex flex-col items-center justify-center p-2 md:p-8 xl:mx-auto xl:w-full xl:max-w-[1280px] 2xl:max-w-[1440px] relative z-10">
+          <div className={`flex-1 min-w-0 min-h-[400px] md:min-h-0 bg-white rounded-2xl border border-[#E0E7FF] ${rightPanelShadowClass} flex flex-col items-center justify-center p-2 md:p-8 xl:mx-auto xl:w-full xl:max-w-[1280px] 2xl:max-w-[1440px] relative z-10`}>
             <img
               src={currentResult.outputPreview}
               alt={nanoText.generatedAlt}
@@ -2778,7 +2784,7 @@ export default function NanoBananaTool({
             )}
           </div>
         ) : isNanoBanana2CoupleMode ? (
-          <div className="flex-1 min-w-0 min-h-[400px] md:min-h-0 bg-white rounded-2xl border border-[#E0E7FF] shadow-lg shadow-[#4F46E5]/8 flex flex-col items-center justify-center p-2 md:p-8 xl:mx-auto xl:w-full xl:max-w-[1280px] 2xl:max-w-[1440px] relative z-10">
+          <div className={`flex-1 min-w-0 min-h-[400px] md:min-h-0 bg-white rounded-2xl border border-[#E0E7FF] ${rightPanelShadowClass} flex flex-col items-center justify-center p-2 md:p-8 xl:mx-auto xl:w-full xl:max-w-[1280px] 2xl:max-w-[1440px] relative z-10`}>
             <div className="w-full flex-1 flex justify-center items-center min-h-0">
               {selectedTemplateImage ? (
                 <img
@@ -2799,7 +2805,7 @@ export default function NanoBananaTool({
         {!isGenerating &&
           !isNanoBanana2CoupleMode &&
           !(compactResultPanel && rightMode === 'result' && currentResult) && (
-          <div className={`${rightMode === 'result' ? 'w-full md:w-[400px]' : 'flex-1 xl:mx-auto xl:w-full xl:max-w-[1280px] 2xl:max-w-[1440px]'} min-h-0 min-w-0 bg-white ${isNanoBanana2CoupleMode ? 'rounded-none' : 'rounded-2xl'} border border-[#E0E7FF] shadow-lg shadow-[#4F46E5]/8 flex flex-col relative overflow-hidden`}>
+          <div className={`${rightMode === 'result' ? 'w-full md:w-[400px]' : 'flex-1 xl:mx-auto xl:w-full xl:max-w-[1280px] 2xl:max-w-[1440px]'} min-h-0 min-w-0 bg-white ${isNanoBanana2CoupleMode ? 'rounded-none' : 'rounded-2xl'} border border-[#E0E7FF] ${rightPanelShadowClass} flex flex-col relative overflow-hidden`}>
           {/* Tabs for right panel when history exists */}
           {(history.length > 0 || isGenerating) && !isGenerating && rightMode !== 'result' && !isNanoBanana2CoupleMode && (
             <div className="flex border-b border-[#E0E7FF] px-5 pt-4 gap-1 flex-shrink-0">
@@ -3271,52 +3277,61 @@ export default function NanoBananaTool({
             aria-label="Close credits dialog"
             onClick={() => setCreditExhaustedModalOpen(false)}
           />
-          <div className="relative w-full max-w-[420px] overflow-hidden rounded-2xl bg-white p-6 text-center shadow-2xl ring-1 ring-slate-200 sm:p-8">
-            <button
-              type="button"
-              onClick={() => setCreditExhaustedModalOpen(false)}
-              className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-500 hover:border-slate-300 hover:text-slate-900"
-              aria-label="Close credits dialog"
-            >
-              <CloseIcon size={18} />
-            </button>
-            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-indigo-50">
-              <img
-                src="/credits-icons/diamond-3d-indigo.svg"
-                alt=""
-                aria-hidden="true"
-                className="h-8 w-8"
-              />
-            </div>
-            <h2 id="credit-exhausted-title" className="mt-5 text-2xl font-extrabold leading-tight text-slate-950">
-              {nanoText.creditsUsedUpTitle}
-            </h2>
-            <p className="mt-3 text-sm leading-6 text-slate-600">
-              {nanoText.creditsUsedUpMessage}
-            </p>
-            <div className="mt-6 grid gap-2 sm:grid-cols-2">
-              <Link
-                href="/pricing"
+          <div className="relative w-full max-w-[440px] overflow-hidden rounded-[28px] bg-[#fbfaff] p-[1px] shadow-[0_28px_80px_rgba(99,102,241,0.28)]">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_0%,rgba(168,85,247,0.28),transparent_34%),radial-gradient(circle_at_90%_18%,rgba(79,70,229,0.22),transparent_30%),linear-gradient(135deg,rgba(99,102,241,0.45),rgba(217,70,239,0.18),rgba(255,255,255,0))]" />
+            <div className="relative rounded-[27px] bg-[#fbfaff] px-5 pb-5 pt-6 text-left sm:px-7 sm:pb-7 sm:pt-8">
+              <button
+                type="button"
                 onClick={() => setCreditExhaustedModalOpen(false)}
-                className="inline-flex w-full items-center justify-center rounded-xl bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-600 px-4 py-3 text-sm font-bold text-white shadow-lg shadow-indigo-100 transition hover:-translate-y-0.5"
+                className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full border border-indigo-100 bg-white/90 text-slate-500 shadow-sm transition hover:-translate-y-0.5 hover:border-violet-200 hover:text-indigo-700 hover:shadow-md"
+                aria-label="Close credits dialog"
               >
-                {nanoText.creditsUsedUpBuyAction || 'Buy credits'}
-              </Link>
-              <Link
-                href="/earn-credits"
-                onClick={() => setCreditExhaustedModalOpen(false)}
-                className="inline-flex w-full items-center justify-center rounded-xl border border-indigo-100 bg-indigo-50 px-4 py-3 text-sm font-bold text-indigo-700 transition hover:bg-indigo-100"
-              >
-                {nanoText.creditsUsedUpEarnAction || 'Earn free credits'}
-              </Link>
+                <CloseIcon size={18} />
+              </button>
+              <div className="inline-flex items-center gap-3 rounded-2xl bg-white px-3 py-2 shadow-sm ring-1 ring-indigo-100">
+                <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-100 via-violet-100 to-fuchsia-100">
+                  <img
+                    src="/credits-icons/diamond-3d-indigo.svg"
+                    alt=""
+                    aria-hidden="true"
+                    className="h-7 w-7"
+                  />
+                </span>
+                <span className="text-xs font-extrabold text-indigo-600">Credits balance</span>
+              </div>
+              <h2 id="credit-exhausted-title" className="mt-5 max-w-[12rem] text-[28px] font-extrabold leading-[1.05] tracking-tight text-slate-950 sm:max-w-none sm:text-3xl">
+                {nanoText.creditsUsedUpTitle}
+              </h2>
+              <p className="mt-3 text-sm leading-6 text-slate-600">
+                {nanoText.creditsUsedUpMessage}
+              </p>
+              <div className="mt-5 grid grid-cols-2 gap-2 rounded-2xl bg-white/75 p-2 ring-1 ring-indigo-50">
+                <div className="rounded-xl bg-indigo-50/80 px-3 py-2">
+                  <p className="text-[11px] font-bold text-slate-500">Fastest</p>
+                  <p className="mt-0.5 text-sm font-extrabold text-indigo-700">One-time packs</p>
+                </div>
+                <div className="rounded-xl bg-fuchsia-50/70 px-3 py-2">
+                  <p className="text-[11px] font-bold text-slate-500">Free option</p>
+                  <p className="mt-0.5 text-sm font-extrabold text-fuchsia-700">Daily rewards</p>
+                </div>
+              </div>
+              <div className="mt-6 grid gap-2 sm:grid-cols-[1.1fr_0.9fr]">
+                <Link
+                  href="/pricing"
+                  onClick={() => setCreditExhaustedModalOpen(false)}
+                  className="inline-flex w-full items-center justify-center rounded-2xl bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-600 px-4 py-3 text-sm font-extrabold text-white shadow-[0_14px_30px_rgba(99,102,241,0.28)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_38px_rgba(99,102,241,0.34)]"
+                >
+                  {nanoText.creditsUsedUpBuyAction || 'Buy credits'}
+                </Link>
+                <Link
+                  href="/earn-credits"
+                  onClick={() => setCreditExhaustedModalOpen(false)}
+                  className="inline-flex w-full items-center justify-center rounded-2xl border border-indigo-100 bg-white px-4 py-3 text-sm font-extrabold text-indigo-700 shadow-sm transition hover:-translate-y-0.5 hover:border-violet-200 hover:bg-indigo-50"
+                >
+                  {nanoText.creditsUsedUpEarnAction || 'Earn free credits'}
+                </Link>
+              </div>
             </div>
-            <button
-              type="button"
-              onClick={() => setCreditExhaustedModalOpen(false)}
-              className="mt-3 inline-flex w-full items-center justify-center rounded-xl px-4 py-2 text-xs font-bold text-slate-500 transition hover:bg-slate-50 hover:text-slate-800"
-            >
-              {nanoText.creditsUsedUpAction}
-            </button>
           </div>
         </div>
       )}

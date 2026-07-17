@@ -66,5 +66,27 @@ test('uses same-page anchor fallback when fetches fail', async () => {
   })
 
   assert.equal(result, 'anchor')
-  assert.deepEqual(urls, [{ url: 'https://blocked.example.com/output.png', filename: 'generated.png' }])
+  assert.equal(urls.length, 1)
+  assert.match(urls[0].url, /^\/api\/download-image\?/)
+  assert.match(urls[0].url, /url=https%3A%2F%2Fblocked\.example\.com%2Foutput\.png/)
+  assert.equal(urls[0].filename, 'generated.png')
+})
+
+test('keeps same-origin fallback URLs unchanged', async () => {
+  const urls: Array<{ url: string; filename: string }> = []
+
+  const result = await downloadImageInCurrentPage({
+    imageUrl: '/generated/output.png',
+    filename: 'generated.png',
+    fetcher: async () => {
+      throw new Error('network blocked')
+    },
+    triggerBlobDownload: () => {
+      throw new Error('blob download should not be used')
+    },
+    triggerUrlDownload: (url, filename) => urls.push({ url, filename }),
+  })
+
+  assert.equal(result, 'anchor')
+  assert.deepEqual(urls, [{ url: '/generated/output.png', filename: 'generated.png' }])
 })

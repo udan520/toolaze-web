@@ -670,7 +670,7 @@ export default async function WorldCupAiImageGeneratorPageContent({ locale = 'en
 
             <div
               id="world-cup-gpt-image-2-generator"
-              className="mt-8 flex h-[100svh] flex-col overflow-hidden border border-indigo-100 bg-white p-3 text-slate-950 shadow-[18px_18px_0_rgba(79,70,229,0.16)] md:p-5"
+              className="mt-8 flex h-[100svh] flex-col overflow-hidden border border-indigo-100 bg-white p-3 text-slate-950 md:p-5"
             >
               <div className="mx-auto mb-4 max-w-4xl shrink-0 text-center">
                 <h1 className="text-[40px] font-extrabold leading-tight tracking-tight text-slate-950">
@@ -684,6 +684,16 @@ export default async function WorldCupAiImageGeneratorPageContent({ locale = 'en
                 modelId="gpt-image-2"
                 modelName="GPT Image 2"
                 dailyLimitStorageKey="world_cup_gpt_image_2_last_used_date"
+                fitParentHeight
+                plainRightPanel
+                sampleImages={[
+                  {
+                    url: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/world-cup-2026/templates/wc-030.webp',
+                    title: 'World Cup fan portrait sample output',
+                    width: 900,
+                    height: 1200,
+                  },
+                ]}
                 initialTranslations={t}
               />
             </div>

@@ -8,6 +8,10 @@ import { mergeCreditSummaryUpdate } from '@/lib/credit-summary-merge'
 import { formatCreditTransactionTimestamp } from '@/lib/credit-history-time'
 import { getClientMenuItems, type ClientMenuItem } from '@/lib/client-menu-data'
 import {
+  hasCheckInNudgeInteractionToday,
+  markCheckInNudgeInteractionToday,
+} from '@/lib/check-in-nudge'
+import {
   PREFERRED_LOCALE_STORAGE_KEY,
   SITE_LOCALES,
   getAlternateLanguageUrl,
@@ -199,7 +203,6 @@ const TOP_NOTICE_DURATION_MS = 3000
 const AUTH_POPUP_NAME = 'toolaze-google-auth'
 const AUTH_POPUP_MESSAGE_TYPE = 'toolaze:auth-result'
 const AUTH_CACHE_STORAGE_KEY = 'toolaze.authSnapshot'
-const CHECK_IN_NUDGE_STORAGE_PREFIX = 'toolaze.checkInNudgeDismissed.v2'
 const LOCAL_AUTH_PROVIDER_ORIGIN = 'https://toolaze.com'
 const AUTH_POPUP_FEATURES = [
   'popup=yes',
@@ -492,16 +495,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
       return
     }
 
-    const currentPath = pathname || '/'
-    if (currentPath.includes('/earn-credits')) {
-      setCheckInNudge(null)
-      setCheckInNudgeCardHidden(false)
-      return
-    }
-
-    const today = new Date().toISOString().slice(0, 10)
-    const storageKey = `${CHECK_IN_NUDGE_STORAGE_PREFIX}:${today}`
-    const dismissedToday = Boolean(window.sessionStorage.getItem(storageKey))
+    const interactedToday = hasCheckInNudgeInteractionToday(window.localStorage)
 
     let cancelled = false
     const loadCheckInNudge = async () => {
@@ -522,7 +516,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
           day: data.checkIn?.nextDay || 1,
           rewardCredits: data.checkIn?.nextRewardCredits || 5,
         })
-        setCheckInNudgeCardHidden(dismissedToday)
+        setCheckInNudgeCardHidden(interactedToday)
       } catch {
         // Reward nudges should never interrupt navigation.
       }
@@ -685,12 +679,15 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
     }
   }
 
-  function dismissCheckInNudge() {
+  function markCheckInNudgeInteracted() {
     if (typeof window !== 'undefined') {
-      const today = new Date().toISOString().slice(0, 10)
-      window.sessionStorage.setItem(`${CHECK_IN_NUDGE_STORAGE_PREFIX}:${today}`, '1')
+      markCheckInNudgeInteractionToday(window.localStorage)
     }
     setCheckInNudgeCardHidden(true)
+  }
+
+  function dismissCheckInNudge() {
+    markCheckInNudgeInteracted()
   }
 
   function isTrustedAuthMessageOrigin(origin: string): boolean {
@@ -898,6 +895,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
     return (
       <div
         data-check-in-nudge
+        onClickCapture={markCheckInNudgeInteracted}
         className={`absolute right-0 z-[90] w-[250px] overflow-visible rounded-2xl border border-indigo-100 bg-white/95 p-3 shadow-[0_18px_44px_rgba(79,70,229,0.18)] ring-1 ring-indigo-50 backdrop-blur ${
           variant === 'mobile' ? 'top-[50px]' : 'top-[46px]'
         }`}
