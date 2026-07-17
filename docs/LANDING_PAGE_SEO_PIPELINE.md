@@ -17,7 +17,7 @@
    - 参考：`src/app/photo-restoration/page.tsx`、`src/app/ai-couple-photo-maker/page.tsx`。
 
 4. **顶部交互区**  
-   - 若落地页含定制工具 UI（如 `NanoBananaTool`、`PhotoRestoration`），在 **`ToolL2PageContent.tsx`** 中按 **`topComponent === '<identifier>'`** 增加分支，并传入所需 props（勿在 JSON 里写 React 代码）。
+   - 若落地页含定制工具 UI（如 `AiImageGenerationTool`、`PhotoRestoration`），在 **`ToolL2PageContent.tsx`** 中按 **`topComponent === '<identifier>'`** 增加分支，并传入所需 props（勿在 JSON 里写 React 代码）。
 
 5. **面包屑**  
    - 同一文件中 **`breadcrumbItems`**：对单语 AI 工具页一般为 `Home → AI Tools → 页面名`（见 `photo-restoration`、`ai-couple-photo-maker`）。

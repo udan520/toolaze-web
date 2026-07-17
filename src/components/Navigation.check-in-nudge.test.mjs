@@ -16,3 +16,12 @@ test('daily check-in nudge records any card interaction for the local day', () =
   assert.match(navigationSource, /hasCheckInNudgeInteractionToday\(window\.localStorage\)/)
   assert.match(navigationSource, /markCheckInNudgeInteractionToday\(window\.localStorage\)/)
 })
+
+test('daily check-in nudge does not show a later action', () => {
+  const nudgeSource = navigationSource.slice(
+    navigationSource.indexOf('const renderCheckInNudge'),
+    navigationSource.indexOf('const renderAccountMenu'),
+  )
+
+  assert.ok(!nudgeSource.includes('Later'))
+})

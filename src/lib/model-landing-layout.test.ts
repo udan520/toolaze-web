@@ -20,7 +20,7 @@ const independentModelLandingPages = [
   },
 ]
 
-test('independent model landing pages render hero copy inside NanoBananaTool', () => {
+test('independent model landing pages render hero copy inside AiImageGenerationTool', () => {
   for (const page of independentModelLandingPages) {
     const source = readFileSync(join(projectRoot, page.file), 'utf8')
 
@@ -29,8 +29,8 @@ test('independent model landing pages render hero copy inside NanoBananaTool', (
       false,
       `${page.name} should not render a centered hero block above the generator`,
     )
-    assert.match(source, /heroBreadcrumbItems=\{\[/, `${page.name} should pass breadcrumbs into NanoBananaTool`)
-    assert.match(source, /heroTitle=\{/, `${page.name} should pass the H1 into NanoBananaTool`)
-    assert.match(source, /heroDescription=\{copy\.hero\.description\}/, `${page.name} should pass hero description into NanoBananaTool`)
+    assert.match(source, /heroBreadcrumbItems=\{\[/, `${page.name} should pass breadcrumbs into AiImageGenerationTool`)
+    assert.match(source, /heroTitle=\{/, `${page.name} should pass the H1 into AiImageGenerationTool`)
+    assert.match(source, /heroDescription=\{copy\.hero\.description\}/, `${page.name} should pass hero description into AiImageGenerationTool`)
   }
 })

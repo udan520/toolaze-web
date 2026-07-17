@@ -285,7 +285,7 @@ export default function R2UploadDemo() {
               <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
                 <p className="text-blue-700 text-sm font-semibold mb-2">💡 如何使用这个 URL：</p>
                 <p className="text-blue-600 text-xs mb-2">
-                  在 <code className="bg-blue-100 px-1 rounded">NanoBananaTool.tsx</code> 的 <code className="bg-blue-100 px-1 rounded">sampleImages</code> 数组中添加：
+                  在 <code className="bg-blue-100 px-1 rounded">AiImageGenerationTool.tsx</code> 的 <code className="bg-blue-100 px-1 rounded">sampleImages</code> 数组中添加：
                 </p>
                 <pre className="bg-blue-100 p-3 rounded text-xs overflow-x-auto">
 {`{ 

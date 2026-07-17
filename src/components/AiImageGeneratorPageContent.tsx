@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
-import NanoBananaTool from '@/components/NanoBananaTool'
+import AiImageGenerationTool from '@/components/AiImageGenerationTool'
 import PromptCopyButton from '@/components/PromptCopyButton'
 import { getHomeModelCardImage } from '@/lib/home-model-card-images'
 import { loadCommonTranslations } from '@/lib/seo-loader'
@@ -356,7 +356,7 @@ export async function AiImageGeneratorPageContent({
               id={toolId}
               className="flex flex-col"
             >
-              <NanoBananaTool
+              <AiImageGenerationTool
                 modelId="gpt-image-2"
                 modelName="GPT Image 2"
                 dailyLimitStorageKey={dailyLimitStorageKey}

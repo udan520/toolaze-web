@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
-import NanoBananaTool from '@/components/NanoBananaTool'
+import AiImageGenerationTool from '@/components/AiImageGenerationTool'
 import PromptCopyButton from '@/components/PromptCopyButton'
 import RedditMediaCarousel from '@/components/RedditMediaCarousel'
 import { loadCommonTranslations } from '@/lib/seo-loader'
@@ -671,7 +671,7 @@ export async function Seedream45LandingPage({ locale = 'en' }: { locale?: string
       <main className="min-h-screen overflow-x-hidden bg-[#F8FAFF] text-slate-950">
         <section id="seedream-4-5-generator" className="bg-[#F8FAFF] pb-12 pl-0 pr-2 md:pl-0 md:pr-4 xl:pl-0 xl:pr-6 2xl:pl-0 2xl:pr-8">
           <div className="w-full max-w-full">
-            <NanoBananaTool
+            <AiImageGenerationTool
               modelId="seedream-4-5"
               modelName="Seedream 4.5"
               dailyLimitStorageKey="seedream_4_5_last_used_date"

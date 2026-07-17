@@ -4,15 +4,15 @@ import { join } from 'node:path'
 import test from 'node:test'
 
 const projectRoot = process.cwd()
-const nanoBananaSource = readFileSync(join(projectRoot, 'src/components/NanoBananaTool.tsx'), 'utf8')
+const aiImageGenerationSource = readFileSync(join(projectRoot, 'src/components/AiImageGenerationTool.tsx'), 'utf8')
 const navigationSource = readFileSync(join(projectRoot, 'src/components/Navigation.tsx'), 'utf8')
 const rootLayoutSource = readFileSync(join(projectRoot, 'src/app/layout.tsx'), 'utf8')
 const historyPageSource = readFileSync(join(projectRoot, 'src/components/HistoryPageClient.tsx'), 'utf8')
 const creditsPageSource = readFileSync(join(projectRoot, 'src/components/CreditsPageClient.tsx'), 'utf8')
 
 test('mobile generator keeps the result panel directly after the generate button', () => {
-  const buttonIndex = nanoBananaSource.indexOf('data-generate-button')
-  const mobilePanelIndex = nanoBananaSource.indexOf('renderMobileGenerationPanel()', buttonIndex)
+  const buttonIndex = aiImageGenerationSource.indexOf('data-generate-button')
+  const mobilePanelIndex = aiImageGenerationSource.indexOf('renderMobileGenerationPanel()', buttonIndex)
 
   assert.ok(buttonIndex > -1, 'generate button should have a stable marker')
   assert.ok(mobilePanelIndex > buttonIndex, 'mobile generation panel should render after the generate button')
@@ -23,14 +23,14 @@ test('mobile generator keeps the result panel directly after the generate button
 })
 
 test('mobile generating state uses a 4:3 preview area', () => {
-  assert.match(nanoBananaSource, /data-mobile-generating-card[\s\S]*aspect-\[4\/3\]/)
+  assert.match(aiImageGenerationSource, /data-mobile-generating-card[\s\S]*aspect-\[4\/3\]/)
 })
 
 test('mobile history detail exposes result actions after selecting a history item', () => {
-  const panelIndex = nanoBananaSource.indexOf('data-mobile-generation-panel')
-  const currentResultIndex = nanoBananaSource.indexOf('currentResult ?', panelIndex)
-  const fallbackIndex = nanoBananaSource.indexOf(') : isUserSignedIn ?', currentResultIndex)
-  const currentResultBlock = nanoBananaSource.slice(currentResultIndex, fallbackIndex)
+  const panelIndex = aiImageGenerationSource.indexOf('data-mobile-generation-panel')
+  const currentResultIndex = aiImageGenerationSource.indexOf('currentResult ?', panelIndex)
+  const fallbackIndex = aiImageGenerationSource.indexOf(') : isUserSignedIn ?', currentResultIndex)
+  const currentResultBlock = aiImageGenerationSource.slice(currentResultIndex, fallbackIndex)
 
   assert.ok(panelIndex > -1, 'mobile generation panel should have a stable marker')
   assert.ok(currentResultIndex > panelIndex, 'mobile panel should render the current result branch')
@@ -50,14 +50,14 @@ test('history preview modal keeps action buttons reachable on h5', () => {
 })
 
 test('guest result retention copy uses clickable login and hides for signed-in users', () => {
-  assert.match(nanoBananaSource, /isUserSignedIn/)
-  assert.match(nanoBananaSource, /toolaze:open-auth-modal/)
-  assert.doesNotMatch(nanoBananaSource, /The image will disappear after you refresh the page/)
+  assert.match(aiImageGenerationSource, /isUserSignedIn/)
+  assert.match(aiImageGenerationSource, /toolaze:open-auth-modal/)
+  assert.doesNotMatch(aiImageGenerationSource, /The image will disappear after you refresh the page/)
 })
 
 test('mobile model submenu renders under the active first-level group', () => {
-  assert.match(nanoBananaSource, /data-mobile-model-menu/)
-  assert.match(nanoBananaSource, /group\.id === activeModelGroup\.id[\s\S]*group\.models\.map/)
+  assert.match(aiImageGenerationSource, /data-mobile-model-menu/)
+  assert.match(aiImageGenerationSource, /group\.id === activeModelGroup\.id[\s\S]*group\.models\.map/)
 })
 
 test('mobile account menu uses a fixed overlay so its actions remain tappable', () => {
@@ -79,7 +79,7 @@ test('generation and credit timestamps use local time down to seconds', () => {
   assert.match(navigationSource, /formatCreditTransactionTimestamp\(transaction\.createdAt\)/)
   assert.match(creditsPageSource, /formatCreditTransactionTimestamp\(transaction\.createdAt\)/)
   assert.match(historyPageSource, /formatLocalTimestampToSeconds\(previewItem\.createdAt\)/)
-  assert.match(nanoBananaSource, /formatLocalTimestampToSeconds\(savedItem\?\.createdAt/)
+  assert.match(aiImageGenerationSource, /formatLocalTimestampToSeconds\(savedItem\?\.createdAt/)
   assert.doesNotMatch(creditsPageSource, /function formatCreditDate/)
   assert.doesNotMatch(historyPageSource, /function formatDate/)
 })

@@ -1,7 +1,7 @@
 /**
  * Homepage sections: AI Video Generator, AI Image Generator, Trending models (#ai-video-generator,
  * #ai-image-generator, #trending-models). Card thumbnails = same samples as each image model’s
- * `NanoBananaTool` `SAMPLE_IMAGES` (R2 URLs), re-exported to dedicated R2 card paths.
+ * `AiImageGenerationTool` `SAMPLE_IMAGES` (R2 URLs), re-exported to dedicated R2 card paths.
  *
  * Video L2 pages (`SeedanceHeroPlaceholder` / `KlingHeroPlaceholder`) only show emoji placeholders
  * today; cards use curated cinema stills until an on-page video preview exists. Replace

@@ -2,7 +2,7 @@ import Link from 'next/link'
 import Script from 'next/script'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
-import NanoBananaTool from '@/components/NanoBananaTool'
+import AiImageGenerationTool from '@/components/AiImageGenerationTool'
 import PromptCopyButton from '@/components/PromptCopyButton'
 import RedditMediaCarousel from '@/components/RedditMediaCarousel'
 import { loadCommonTranslations } from '@/lib/seo-loader'
@@ -236,7 +236,7 @@ export async function Seedream50LiteLandingPage({ locale = 'en' }: { locale?: st
       <main className="min-h-screen overflow-x-hidden bg-[#F8FAFF] text-slate-950">
         <section id="seedream-5-0-lite-generator" className="bg-[#F8FAFF] pb-12 pl-0 pr-2 md:pl-0 md:pr-4 xl:pl-0 xl:pr-6 2xl:pl-0 2xl:pr-8">
           <div className="w-full max-w-full">
-            <NanoBananaTool
+            <AiImageGenerationTool
               modelId="seedream-5-0-lite"
               modelName="Seedream 5.0 Lite"
               dailyLimitStorageKey="seedream_5_0_lite_last_used_date"

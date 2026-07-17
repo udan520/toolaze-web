@@ -1,7 +1,7 @@
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import Breadcrumb from '@/components/Breadcrumb'
-import NanoBananaTool from '@/components/NanoBananaTool'
+import AiImageGenerationTool from '@/components/AiImageGenerationTool'
 import WorldCupTemplateGallery, { type WorldCupTemplateItem } from '@/components/WorldCupTemplateGallery'
 import { loadCommonTranslations } from '@/lib/seo-loader'
 import { getWorldCupPageCopy } from '@/app/world-cup-ai-image-generator/copy'
@@ -680,7 +680,7 @@ export default async function WorldCupAiImageGeneratorPageContent({ locale = 'en
                   {copy.hero.description}
                 </p>
               </div>
-              <NanoBananaTool
+              <AiImageGenerationTool
                 modelId="gpt-image-2"
                 modelName="GPT Image 2"
                 dailyLimitStorageKey="world_cup_gpt_image_2_last_used_date"

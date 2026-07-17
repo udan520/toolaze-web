@@ -11,7 +11,7 @@ import FontGenerator from '@/components/FontGenerator'
 import ImageCompressor from '@/components/ImageCompressor'
 import ImageConverter from '@/components/ImageConverter'
 import EmojiCategoryPage from '@/components/EmojiCategoryPage'
-import NanoBananaTool from '@/components/NanoBananaTool'
+import AiImageGenerationTool from '@/components/AiImageGenerationTool'
 import WatermarkRemover from '@/components/WatermarkRemover'
 import PhotoRestoration from '@/components/PhotoRestoration'
 import SeedanceHeroPlaceholder from '@/components/blocks/SeedanceHeroPlaceholder'
@@ -848,7 +848,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
             <header className="bg-[#F8FAFF] pb-6 md:pb-12 w-full pl-0 pr-2 md:pl-0 md:pr-6">
               <div className="w-full max-w-full">
                 <div className="flex flex-col">
-                  <NanoBananaTool
+                  <AiImageGenerationTool
                     modelId="nano-banana-2"
                     modelName="Nano Banana 2"
                     dailyLimitStorageKey="ai_couple_photo_maker_last_used_date"
@@ -865,7 +865,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
             <header className="bg-[#F8FAFF] pb-6 md:pb-12 w-full pl-0 pr-2 md:pl-0 md:pr-6">
               <div className="w-full max-w-full">
                 <div className="flex flex-col">
-                  <NanoBananaTool
+                  <AiImageGenerationTool
                     modelId="gpt-image-2"
                     modelName={content.topTool?.displayName || 'AI Baby Generator'}
                     dailyLimitStorageKey="ai_baby_generator_last_used_date"
@@ -895,7 +895,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
               <div className="w-full max-w-full">
                 {/* H5: 移除固定高度，让内容自然流式布局；桌面端保持固定高度 */}
                 <div className="flex flex-col">
-                  <NanoBananaTool
+                  <AiImageGenerationTool
                     heroBreadcrumbItems={breadcrumbItems}
                     heroTitle={content.hero?.h1 ? renderH1WithGradient(content.hero.h1) : <>Nano Banana Pro</>}
                     heroDescription={content.hero?.desc}
@@ -908,7 +908,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
             <header className="bg-[#F8FAFF] pb-6 md:pb-12 w-full pl-0 pr-2 md:pl-0 md:pr-6">
               <div className="w-full max-w-full">
                 <div className="flex flex-col">
-                  <NanoBananaTool
+                  <AiImageGenerationTool
                     modelId="gpt-image-2"
                     modelName={content.topTool?.displayName || 'AI Hair Color Changer'}
                     dailyLimitStorageKey="gpt_image_2_last_used_date"
@@ -998,7 +998,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
             <header className="bg-[#F8FAFF] pb-6 md:pb-12 w-full pl-0 pr-2 md:pl-0 md:pr-6">
               <div className="w-full max-w-full">
                 <div className="flex flex-col">
-                  <NanoBananaTool
+                  <AiImageGenerationTool
                     modelId="nano-banana-2"
                     modelName="Nano Banana 2"
                     dailyLimitStorageKey="nano_banana_2_last_used_date"

@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
-import NanoBananaTool from '@/components/NanoBananaTool'
+import AiImageGenerationTool from '@/components/AiImageGenerationTool'
 import PromptCopyButton from '@/components/PromptCopyButton'
 import { loadCommonTranslations } from '@/lib/seo-loader'
 import { getSeedream50ProLandingCopy } from '@/lib/seedream-5-0-pro-landing-copy'
@@ -144,7 +144,7 @@ export async function Seedream50ProLandingPage({ locale = 'en' }: { locale?: str
       <main className="min-h-screen overflow-x-hidden bg-[#F8FAFF] text-slate-950">
         <section id="seedream-5-0-pro-generator" className="bg-[#F8FAFF] pb-12 pl-0 pr-2 md:pl-0 md:pr-4 xl:pl-0 xl:pr-6 2xl:pl-0 2xl:pr-8">
           <div className="w-full max-w-full">
-            <NanoBananaTool
+            <AiImageGenerationTool
               modelId="seedream-5-0-pro"
               modelName="Seedream 5.0 Pro"
               dailyLimitStorageKey="seedream_5_0_pro_page_last_used_date"

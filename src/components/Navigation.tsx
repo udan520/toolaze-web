@@ -933,20 +933,13 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
             </p>
           </div>
         </div>
-        <div className="mt-3 grid grid-cols-[1fr_auto] gap-2">
+        <div className="mt-3">
           <Link
             href={getEarnCreditsCheckInHref()}
-            className="rounded-xl bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-600 px-3 py-2.5 text-center text-xs font-extrabold text-white shadow-lg shadow-indigo-100 transition hover:-translate-y-0.5"
+            className="block rounded-xl bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-600 px-3 py-2.5 text-center text-xs font-extrabold text-white shadow-lg shadow-indigo-100 transition hover:-translate-y-0.5"
           >
             View rewards
           </Link>
-          <button
-            type="button"
-            onClick={dismissCheckInNudge}
-            className="rounded-xl border border-indigo-100 bg-indigo-50 px-3 py-2.5 text-center text-xs font-extrabold text-indigo-700 transition hover:bg-indigo-100"
-          >
-            Later
-          </button>
         </div>
       </div>
     )

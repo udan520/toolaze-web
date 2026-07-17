@@ -1,7 +1,7 @@
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import Breadcrumb from '@/components/Breadcrumb'
-import NanoBananaTool from '@/components/NanoBananaTool'
+import AiImageGenerationTool from '@/components/AiImageGenerationTool'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -19,7 +19,7 @@ export default function NanoBananaPage() {
       {/* 第一屏：高度 = 100vh，左侧生图参数 + 右侧示例/生成中/历史 */}
       <div className="h-screen flex flex-col overflow-hidden bg-[#F8FAFF]">
         <Navigation />
-        <NanoBananaTool />
+        <AiImageGenerationTool />
       </div>
 
       {/* 第一屏以下：SEO 板块 */}
