@@ -37,3 +37,36 @@ test('localized tool ISR params do not prebuild api placeholders', () => {
   assert.doesNotMatch(source, /locale:\s*['"]api['"]/)
   assert.doesNotMatch(source, /\/api\/\*\s*占位/)
 })
+
+test('Vercel keeps account APIs on Next routes while leaving image storage rewrites on Pages', () => {
+  const config = JSON.parse(readProjectFile('vercel.json'))
+  const rewriteSources = new Set((config.rewrites || []).map((rewrite) => rewrite.source))
+
+  for (const source of [
+    '/api/auth/:path*',
+    '/api/credits',
+    '/api/history',
+    '/api/rewards/check-in',
+    '/api/rewards/x-post',
+    '/api/admin/reward-events',
+    '/api/admin/reward-reviews',
+  ]) {
+    assert.equal(
+      rewriteSources.has(source),
+      false,
+      `${source} should be served by Vercel's Next API route layer`,
+    )
+  }
+
+  for (const source of [
+    '/api/upload',
+    '/api/save-image-to-r2',
+    '/api/download-image',
+  ]) {
+    assert.equal(
+      rewriteSources.has(source),
+      true,
+      `${source} should keep using the existing Pages/R2 storage route`,
+    )
+  }
+})

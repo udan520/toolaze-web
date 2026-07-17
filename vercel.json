@@ -4,18 +4,6 @@
   "buildCommand": "npm run build",
   "rewrites": [
     {
-      "source": "/api/auth/:path*",
-      "destination": "https://toolaze-web.pages.dev/api/auth/:path*"
-    },
-    {
-      "source": "/api/credits",
-      "destination": "https://toolaze-web.pages.dev/api/credits"
-    },
-    {
-      "source": "/api/history",
-      "destination": "https://toolaze-web.pages.dev/api/history"
-    },
-    {
       "source": "/api/image-to-image",
       "destination": "https://toolaze-web.pages.dev/api/image-to-image"
     },
