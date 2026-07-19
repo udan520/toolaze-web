@@ -49,6 +49,34 @@ test('history preview modal keeps action buttons reachable on h5', () => {
   assert.match(historyPageSource, /data-history-preview-actions[\s\S]*sticky[\s\S]*bottom-0/)
 })
 
+test('history preview shows wrapped hair tool labels with the underlying model', () => {
+  assert.match(historyPageSource, /getWrappedHairToolHistoryDisplay/)
+  assert.match(historyPageSource, /previewHistoryDisplay\?\.showToolLabel[\s\S]*previewHistoryDisplay\.toolLabel/)
+  assert.match(historyPageSource, /previewHistoryDisplay\?\.showToolLabel\s*\?\s*previewHistoryDisplay\.modelLabel/)
+  assert.doesNotMatch(historyPageSource, /`Model: \$\{previewHistoryDisplay\.modelLabel\}`/)
+})
+
+test('history preview backfills wrapped hair tool reference images for older records', () => {
+  assert.match(historyPageSource, /getOriginalHistoryInputImageUrls/)
+  assert.match(historyPageSource, /normalizeGenerationHistoryItem\(/)
+  assert.match(historyPageSource, /inputUrls: getOriginalHistoryInputImageUrls\(normalizedItem\)/)
+})
+
+test('inline generator history can show wrapped hair tool model even when model branding is hidden', () => {
+  assert.match(aiImageGenerationSource, /getWrappedHairToolHistoryDisplay/)
+  assert.match(aiImageGenerationSource, /const renderInlineHistoryMeta = \(/)
+  assert.match(aiImageGenerationSource, /showModelLabel: Boolean\(modelLabel\)/)
+  assert.match(aiImageGenerationSource, /display\.showModelLabel && display\.modelLabel \? display\.modelLabel : ''/)
+  assert.match(aiImageGenerationSource, /metaTags\.map\(\(tag, index\) => \(/)
+  assert.doesNotMatch(aiImageGenerationSource, /`Model: \$\{display\.modelLabel\}`/)
+  assert.doesNotMatch(aiImageGenerationSource, /!\s*hideModelBranding\s*&&\s*\([\s\S]{0,160}<span>\{item\.modelName\}<\/span>/)
+})
+
+test('inline account history keeps model labels visible even on wrapped tool pages', () => {
+  assert.match(aiImageGenerationSource, /showModelLabel: Boolean\(modelLabel\)/)
+  assert.doesNotMatch(aiImageGenerationSource, /showModelLabel: historyDisplay\.showToolLabel \|\| !hideModelBranding/)
+})
+
 test('guest result retention copy uses clickable login and hides for signed-in users', () => {
   assert.match(aiImageGenerationSource, /isUserSignedIn/)
   assert.match(aiImageGenerationSource, /toolaze:open-auth-modal/)

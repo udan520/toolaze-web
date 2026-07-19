@@ -77,6 +77,18 @@ export default function EarnCreditsPageClient({ copy, locale = 'en' }: EarnCredi
   const pricingHref = locale === 'en' ? '/pricing' : `/${locale}/pricing`
 
   useEffect(() => {
+    const handleCheckInUpdated = (event: Event) => {
+      const nextCheckIn = (event as CustomEvent<CheckInStatus | null>).detail
+      if (nextCheckIn?.rewards?.length) setCheckIn(nextCheckIn)
+    }
+
+    window.addEventListener('toolaze:check-in-updated', handleCheckInUpdated)
+    return () => {
+      window.removeEventListener('toolaze:check-in-updated', handleCheckInUpdated)
+    }
+  }, [])
+
+  useEffect(() => {
     let cancelled = false
     const loadRewards = async () => {
       setLoading(true)

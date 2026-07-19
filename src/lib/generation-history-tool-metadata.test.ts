@@ -29,7 +29,7 @@ test('uses fixed tool labels for non-model generator routes', () => {
     getHistoryToolMetadata('/ai-hairstyle-changer', 'Seedream 5.0 Pro', 'seedream-5-0-pro'),
     {
       toolSlug: 'ai-hairstyle-changer',
-      toolLabel: 'AI Hairstyle Changer',
+      toolLabel: 'AI Hair Style Changer',
       sourcePath: '/ai-hairstyle-changer',
     },
   )

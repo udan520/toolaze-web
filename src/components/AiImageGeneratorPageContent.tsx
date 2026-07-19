@@ -350,7 +350,7 @@ export async function AiImageGeneratorPageContent({
       />
       <Navigation initialTranslations={t} />
       <main className="min-h-screen bg-[#F8FAFF] text-slate-950">
-        <section className="w-full pb-6 pl-0 pr-2 md:pb-12 md:pl-0 md:pr-6">
+        <section className="w-full pb-6 pl-0 pr-0 md:pb-12 md:pl-0 md:pr-0">
           <div className="w-full max-w-full">
             <div
               id={toolId}

@@ -36,6 +36,12 @@ test('earn credits feedback uses the global top notice surface', () => {
   assert.doesNotMatch(source, /border border-rose-200 bg-rose-50 px-4 py-3/)
 })
 
+test('earn credits page updates the check-in board from external check-in events', () => {
+  assert.match(source, /window\.addEventListener\('toolaze:check-in-updated', handleCheckInUpdated\)/)
+  assert.match(source, /window\.removeEventListener\('toolaze:check-in-updated', handleCheckInUpdated\)/)
+  assert.match(source, /setCheckIn\(nextCheckIn\)/)
+})
+
 test('earn credits page visible copy is supplied by locale copy props', () => {
   assert.match(source, /copy\.hero\.eyebrow/)
   assert.match(source, /copy\.hero\.title/)

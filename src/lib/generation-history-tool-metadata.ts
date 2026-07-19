@@ -6,7 +6,7 @@ const HISTORY_TOOL_LABELS: Record<string, string> = {
   'text-to-image-generator': 'Text to Image Generator',
   'ai-baby-generator': 'AI Baby Generator',
   'ai-couple-photo-maker': 'AI Couple Photo Maker',
-  'ai-hairstyle-changer': 'AI Hairstyle Changer',
+  'ai-hairstyle-changer': 'AI Hair Style Changer',
   'ai-hair-color-changer': 'AI Hair Color Changer',
   'watermark-remover': 'Watermark Remover',
   'photo-restoration': 'Photo Restoration',

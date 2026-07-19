@@ -350,6 +350,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
   const authPopupRef = useRef<Window | null>(null)
   const topNoticeTimerRef = useRef<number | null>(null)
   const confettiTimerRef = useRef<number | null>(null)
+  const checkInNudgeDismissTimerRef = useRef<number | null>(null)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [openDesktopMenu, setOpenDesktopMenu] = useState<string | null>(null)
   const [expandedSubmenus, setExpandedSubmenus] = useState<Set<string>>(new Set())
@@ -379,6 +380,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
   const [checkInNudge, setCheckInNudge] = useState<CheckInNudge | null>(null)
   const [checkInNudgeCardHidden, setCheckInNudgeCardHidden] = useState(false)
   const [checkInNudgeClaiming, setCheckInNudgeClaiming] = useState(false)
+  const [checkInNudgeClaimState, setCheckInNudgeClaimState] = useState<'idle' | 'claiming' | 'claimed'>('idle')
   const pathname = usePathname()
 
   const currentLocale = getCurrentLocaleFromPath(pathname ?? null)
@@ -446,6 +448,9 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
       }
       if (typeof window !== 'undefined' && confettiTimerRef.current) {
         window.clearTimeout(confettiTimerRef.current)
+      }
+      if (typeof window !== 'undefined' && checkInNudgeDismissTimerRef.current) {
+        window.clearTimeout(checkInNudgeDismissTimerRef.current)
       }
     }
   }, [])
@@ -565,8 +570,14 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
     const handleCheckInUpdated = (event: Event) => {
       const checkIn = (event as CustomEvent<CheckInUpdate | null>).detail
       if (checkIn?.checkedInToday) {
+        if (checkInNudgeDismissTimerRef.current) {
+          window.clearTimeout(checkInNudgeDismissTimerRef.current)
+          checkInNudgeDismissTimerRef.current = null
+        }
         setCheckInNudge(null)
         setCheckInNudgeCardHidden(false)
+        setCheckInNudgeClaimState('idle')
+        setCheckInNudgeClaiming(false)
       }
     }
 
@@ -606,6 +617,8 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
         if (data.checkIn?.checkedInToday) {
           setCheckInNudge(null)
           setCheckInNudgeCardHidden(false)
+          setCheckInNudgeClaimState('idle')
+          setCheckInNudgeClaiming(false)
           return
         }
         setCheckInNudge({
@@ -613,6 +626,8 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
           rewardCredits: data.checkIn?.nextRewardCredits || 5,
         })
         setCheckInNudgeCardHidden(interactedToday)
+        setCheckInNudgeClaimState('idle')
+        setCheckInNudgeClaiming(false)
       } catch {
         // Reward nudges should never interrupt navigation.
       }
@@ -802,10 +817,12 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
   }
 
   async function claimCheckInFromNudge() {
-    if (checkInNudgeClaiming || !checkInNudge) return
+    if (checkInNudgeClaiming || checkInNudgeClaimState !== 'idle' || !checkInNudge) return
 
     const pendingRewardCredits = checkInNudge.rewardCredits
+    let claimSucceeded = false
     setCheckInNudgeClaiming(true)
+    setCheckInNudgeClaimState('claiming')
 
     try {
       const response = await fetch('/api/rewards/check-in', {
@@ -829,22 +846,38 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
       }
 
       const nextCheckIn = data.checkIn || { checkedInToday: true }
-      window.dispatchEvent(new CustomEvent('toolaze:check-in-updated', { detail: nextCheckIn }))
-      setCheckInNudge(null)
-      setCheckInNudgeCardHidden(false)
+      claimSucceeded = true
+      setCheckInNudgeClaimState('claimed')
+      if (typeof window !== 'undefined') {
+        markCheckInNudgeInteractionToday(window.localStorage, undefined, authUser?.id)
+      }
       showTimedTopNotice({
         type: 'success',
         title: 'Daily Reward Claimed',
         message: `${data.rewardCredits || pendingRewardCredits} credits have been added to your account.`,
       })
+      if (checkInNudgeDismissTimerRef.current) {
+        window.clearTimeout(checkInNudgeDismissTimerRef.current)
+      }
+      checkInNudgeDismissTimerRef.current = window.setTimeout(() => {
+        window.dispatchEvent(new CustomEvent('toolaze:check-in-updated', { detail: nextCheckIn }))
+        setCheckInNudge(null)
+        setCheckInNudgeCardHidden(false)
+        setCheckInNudgeClaimState('idle')
+        setCheckInNudgeClaiming(false)
+        checkInNudgeDismissTimerRef.current = null
+      }, 900)
     } catch (error) {
+      setCheckInNudgeClaimState('idle')
       showTimedTopNotice({
         type: 'error',
         title: 'Check-In Failed',
         message: error instanceof Error ? error.message : 'Could not claim your daily reward.',
       })
     } finally {
-      setCheckInNudgeClaiming(false)
+      if (!claimSucceeded) {
+        setCheckInNudgeClaiming(false)
+      }
     }
   }
 
@@ -1063,7 +1096,6 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
     return (
       <div
         data-check-in-nudge
-        onClickCapture={markCheckInNudgeInteracted}
         className={`absolute right-0 z-[90] w-[250px] overflow-visible rounded-2xl border border-indigo-100 bg-white/95 p-3 shadow-[0_18px_44px_rgba(79,70,229,0.18)] ring-1 ring-indigo-50 backdrop-blur ${
           variant === 'mobile' ? 'top-[50px]' : 'top-[46px]'
         }`}
@@ -1097,10 +1129,12 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
           <button
             type="button"
             onClick={claimCheckInFromNudge}
-            disabled={checkInNudgeClaiming}
+            disabled={checkInNudgeClaiming || checkInNudgeClaimState === 'claimed'}
             className="flex items-center justify-center gap-1.5 rounded-xl bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-600 px-3 py-2.5 text-center text-xs font-extrabold text-white shadow-lg shadow-indigo-100 transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-70"
           >
-            {checkInNudgeClaiming ? (
+            {checkInNudgeClaimState === 'claimed' ? (
+              'Claimed'
+            ) : checkInNudgeClaiming ? (
               'Claiming...'
             ) : (
               <>
@@ -1116,6 +1150,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
           </button>
           <Link
             href={getEarnCreditsCheckInHref()}
+            onClick={markCheckInNudgeInteracted}
             className="flex items-center justify-center rounded-xl border border-indigo-100 bg-white px-3 py-2.5 text-center text-xs font-extrabold text-indigo-700 shadow-sm shadow-indigo-50 transition hover:-translate-y-0.5 hover:bg-indigo-50"
           >
             See Rewards

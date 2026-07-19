@@ -12,10 +12,17 @@ test('daily check-in nudge is not suppressed on earn credits pages', () => {
   )
 })
 
-test('daily check-in nudge records any card interaction for the local day', () => {
-  assert.match(navigationSource, /onClickCapture=\{markCheckInNudgeInteracted\}/)
+test('daily check-in nudge records intentional dismiss and reward navigation for the local day', () => {
+  const nudgeSource = navigationSource.slice(
+    navigationSource.indexOf('const renderCheckInNudge'),
+    navigationSource.indexOf('const renderAccountMenu'),
+  )
+
+  assert.doesNotMatch(nudgeSource, /onClickCapture=\{markCheckInNudgeInteracted\}/)
   assert.match(navigationSource, /hasCheckInNudgeInteractionToday\(window\.localStorage,\s*undefined,\s*authUser\.id\)/)
   assert.match(navigationSource, /markCheckInNudgeInteractionToday\(window\.localStorage,\s*undefined,\s*authUser\?\.id\)/)
+  assert.match(nudgeSource, /onClick=\{dismissCheckInNudge\}/)
+  assert.match(nudgeSource, /href=\{getEarnCreditsCheckInHref\(\)\}[\s\S]*onClick=\{markCheckInNudgeInteracted\}/)
 })
 
 test('daily check-in nudge clears immediately after a successful check-in event', () => {
@@ -152,6 +159,26 @@ test('daily check-in nudge can claim from the header and refresh credits', () =>
   assert.match(navigationSource, /window\.dispatchEvent\(new CustomEvent\('toolaze:check-in-updated'/)
   assert.match(navigationSource, /showTimedTopNotice\(\{\s*type: 'success'/)
   assert.match(navigationSource, /setCheckInNudge\(null\)/)
+})
+
+test('daily check-in nudge shows claimed state before dismissing after claim', () => {
+  const nudgeSource = navigationSource.slice(
+    navigationSource.indexOf('const renderCheckInNudge'),
+    navigationSource.indexOf('const renderAccountMenu'),
+  )
+  const claimSource = navigationSource.slice(
+    navigationSource.indexOf('async function claimCheckInFromNudge'),
+    navigationSource.indexOf('function isTrustedAuthMessageOrigin'),
+  )
+
+  assert.match(navigationSource, /const \[checkInNudgeClaimState, setCheckInNudgeClaimState\] = useState<'idle' \| 'claiming' \| 'claimed'>\('idle'\)/)
+  assert.doesNotMatch(nudgeSource, /onClickCapture=\{markCheckInNudgeInteracted\}/)
+  assert.match(nudgeSource, /checkInNudgeClaimState === 'claimed'[\s\S]*Claimed/)
+  assert.match(claimSource, /setCheckInNudgeClaimState\('claiming'\)/)
+  assert.match(claimSource, /setCheckInNudgeClaimState\('claimed'\)/)
+  assert.match(claimSource, /window\.setTimeout\(\(\) => \{[\s\S]*window\.dispatchEvent\(new CustomEvent\('toolaze:check-in-updated'/)
+  assert.match(claimSource, /window\.setTimeout\(\(\) => \{[\s\S]*setCheckInNudge\(null\)/)
+  assert.match(claimSource, /markCheckInNudgeInteractionToday\(window\.localStorage, undefined, authUser\?\.id\)/)
 })
 
 test('mobile header keeps the logo clear of account controls', () => {

@@ -4,6 +4,7 @@ import {
   buildHistoryRepromptPayload,
   getDisplayImagePreviewUrl,
   getHistoryReferenceImageUrls,
+  getOriginalHistoryInputImageUrls,
   getReferencePreviewUrl,
 } from './history-reprompt'
 
@@ -79,6 +80,42 @@ test('drops browser-only and unsafe reference URLs for Create Similar', () => {
 test('falls back to the original output image for Create Similar when no input reference exists', () => {
   assert.deepEqual(getHistoryReferenceImageUrls(baseHistoryItem), [baseHistoryItem.outputUrl])
   assert.deepEqual(buildHistoryRepromptPayload(baseHistoryItem).imageUrls, [baseHistoryItem.outputUrl])
+})
+
+test('uses input preview as the original input image for Recreate when input urls are missing', () => {
+  const item = {
+    ...baseHistoryItem,
+    inputUrls: [],
+    inputPreview: '/ai-hairstyle-changer/default-reference.png',
+  }
+
+  assert.deepEqual(getOriginalHistoryInputImageUrls(item), ['/ai-hairstyle-changer/default-reference.png'])
+})
+
+test('uses wrapped hair tool default references for older image-to-image history without input urls', () => {
+  const hairstyleItem = {
+    ...baseHistoryItem,
+    inputUrls: [],
+    inputPreview: '',
+    toolSlug: 'ai-hairstyle-changer',
+    sourcePath: '/ai-hairstyle-changer',
+  }
+  const hairColorItem = {
+    ...baseHistoryItem,
+    inputUrls: [],
+    inputPreview: '',
+    toolSlug: '',
+    sourcePath: '/zh-TW/ai-hair-color-changer',
+  }
+
+  assert.deepEqual(getOriginalHistoryInputImageUrls(hairstyleItem), ['/ai-hairstyle-changer/default-reference.png'])
+  assert.deepEqual(getHistoryReferenceImageUrls(hairstyleItem), ['/ai-hairstyle-changer/default-reference.png'])
+  assert.deepEqual(getOriginalHistoryInputImageUrls(hairColorItem), ['/ai-hair-color-changer/default-reference.png'])
+  assert.deepEqual(getHistoryReferenceImageUrls(hairColorItem), ['/ai-hair-color-changer/default-reference.png'])
+})
+
+test('does not fall back to output image for Recreate when no original input exists', () => {
+  assert.deepEqual(getOriginalHistoryInputImageUrls(baseHistoryItem), [])
 })
 
 test('creates a small display URL without changing the original image URL', () => {

@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from 'react'
 import DeleteIcon from './icons/DeleteIcon'
-import { buildHistoryRepromptPayload } from '@/lib/history-reprompt'
+import { buildHistoryRepromptPayload, getOriginalHistoryInputImageUrls } from '@/lib/history-reprompt'
 import {
   GENERATION_HISTORY_DELETE_CONFIRM_MESSAGE,
   shouldDeleteGenerationHistoryItem,
@@ -15,6 +15,7 @@ import {
 } from '@/lib/history-preview-media'
 import { downloadImageInCurrentPage } from '@/lib/browser-image-download'
 import { formatLocalTimestampToSeconds } from '@/lib/credit-history-time'
+import { getWrappedHairToolHistoryDisplay } from '@/lib/generation-history-display'
 
 type GenerationHistoryItem = {
   id: string
@@ -26,6 +27,9 @@ type GenerationHistoryItem = {
   aspectRatio: string | null
   resolution: string | null
   outputFormat: string | null
+  toolSlug?: string | null
+  toolLabel?: string | null
+  sourcePath?: string | null
   createdAt: string
 }
 
@@ -72,6 +76,18 @@ function getModelHref(model: string) {
 function getGenerationModeLabel(item: GenerationHistoryItem, copy: typeof defaultHistoryPageCopy) {
   if (item.mediaType === 'video') return copy.modeVideo
   return item.inputUrls.length > 0 ? copy.modeImageToImage : copy.modeTextToImage
+}
+
+function normalizeGenerationHistoryItem(item: GenerationHistoryItem): GenerationHistoryItem {
+  const normalizedItem = {
+    ...item,
+    inputUrls: Array.isArray(item.inputUrls) ? item.inputUrls : [],
+  }
+
+  return {
+    ...normalizedItem,
+    inputUrls: getOriginalHistoryInputImageUrls(normalizedItem),
+  }
 }
 
 interface HistoryPageClientProps {
@@ -130,7 +146,9 @@ export default function HistoryPageClient({ initialTranslations }: HistoryPageCl
         }
         if (!response.ok) throw new Error(copy.loadError)
         const data = await response.json().catch(() => ({ items: [] }))
-        if (!cancelled) setItems(Array.isArray(data.items) ? data.items : [])
+        if (!cancelled) {
+          setItems(Array.isArray(data.items) ? data.items.map(normalizeGenerationHistoryItem) : [])
+        }
       } catch (err) {
         if (!cancelled) setError(err instanceof Error ? err.message : copy.loadError)
       } finally {
@@ -219,6 +237,9 @@ export default function HistoryPageClient({ initialTranslations }: HistoryPageCl
       })
     : ''
   const previewCreatedAt = previewItem ? formatLocalTimestampToSeconds(previewItem.createdAt) : ''
+  const previewHistoryDisplay = previewItem
+    ? getWrappedHairToolHistoryDisplay(previewItem)
+    : null
 
   return (
     <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-10 md:px-6 md:py-14">
@@ -319,11 +340,18 @@ export default function HistoryPageClient({ initialTranslations }: HistoryPageCl
               className="min-h-0 px-5 py-5 md:overflow-y-auto md:px-7 md:py-8"
             >
               <div className="mb-6 flex flex-wrap gap-2 pr-10">
+                {previewHistoryDisplay?.showToolLabel && previewHistoryDisplay.toolLabel && (
+                  <span className="rounded-lg bg-indigo-50 px-3 py-1.5 text-xs font-extrabold text-indigo-700">
+                    {previewHistoryDisplay.toolLabel}
+                  </span>
+                )}
                 <span className="rounded-lg bg-indigo-50 px-3 py-1.5 text-xs font-extrabold text-indigo-700">
                   {getGenerationModeLabel(previewItem, copy)}
                 </span>
                 <span className="rounded-lg bg-indigo-50 px-3 py-1.5 text-xs font-extrabold text-indigo-700">
-                  {previewItem.model}
+                  {previewHistoryDisplay?.showToolLabel
+                    ? previewHistoryDisplay.modelLabel
+                    : previewItem.model}
                 </span>
                 {previewItem.resolution && (
                   <span className="rounded-lg bg-indigo-50 px-3 py-1.5 text-xs font-extrabold text-indigo-700">

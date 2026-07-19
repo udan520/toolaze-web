@@ -45,6 +45,20 @@ test('mobile generated result keeps the prompt visible above actions', () => {
   assert.match(source, /data-mobile-result-prompt[\s\S]*currentResult\.prompt[\s\S]*data-mobile-result-actions/)
 })
 
+test('mobile generated result shows compact metadata tags above the prompt', () => {
+  const mobileResultBlock = source.slice(
+    source.indexOf('data-mobile-generation-panel'),
+    source.indexOf('data-mobile-result-actions'),
+  )
+
+  assert.match(source, /data-mobile-history-meta/)
+  assert.match(mobileResultBlock, /renderMobileHistoryMeta\(\{[\s\S]*\.\.\.currentResult,[\s\S]*modelName: getHistoryItemModelName\(currentResult\),[\s\S]*\}, currentResult\.time\)/)
+  assert.ok(
+    mobileResultBlock.indexOf('renderMobileHistoryMeta') < mobileResultBlock.indexOf('data-mobile-result-prompt'),
+    'mobile metadata should render above the prompt',
+  )
+})
+
 test('mobile generated result uses icons for download and delete actions', () => {
   const mobileDownload = source.match(/<button\s+data-mobile-download[\s\S]*?<\/button>/)?.[0] || ''
   assert.notEqual(mobileDownload, '')
@@ -84,11 +98,24 @@ test('pending generations survive refresh and restored tasks keep polling', () =
 
 test('desktop history prompts clamp to four lines with full prompt on hover', () => {
   assert.match(source, /const promptPreviewClampStyle: React\.CSSProperties = \{[\s\S]*WebkitLineClamp: 4[\s\S]*WebkitBoxOrient: 'vertical'[\s\S]*overflow: 'hidden'/)
-  assert.match(source, /const renderDesktopPromptPreview = \(promptText: string, testId: string\) => \(/)
+  assert.match(source, /const renderDesktopPromptPreview = \(promptText: string, testId: string\) => \{/)
   assert.match(source, /const \[desktopPromptTooltip, setDesktopPromptTooltip\] = useState<DesktopPromptTooltipState>\(null\)/)
   assert.match(source, /const showDesktopPromptTooltip = \(/)
-  assert.match(source, /onMouseEnter=\{\(event\) => showDesktopPromptTooltip\(event, promptText\)\}/)
-  assert.match(source, /onMouseLeave=\{hideDesktopPromptTooltip\}/)
+  assert.match(source, /data-desktop-prompt-ellipsis/)
+  assert.match(source, /data-desktop-prompt-ellipsis[\s\S]*onMouseEnter=\{\(event\) => showDesktopPromptTooltip\(event, promptText\)\}/)
+  assert.match(source, /data-desktop-prompt-ellipsis[\s\S]*onMouseLeave=\{hideDesktopPromptTooltip\}/)
+  assert.doesNotMatch(source, /<button[\s\S]{0,180}data-desktop-prompt-ellipsis/)
+  assert.doesNotMatch(source, /data-desktop-prompt-ellipsis[\s\S]{0,220}aria-label="Show Full Prompt"/)
+  assert.doesNotMatch(source, /data-desktop-prompt-ellipsis[\s\S]{0,260}rounded/)
+  assert.doesNotMatch(source, /data-desktop-prompt-ellipsis[\s\S]{0,260}bg-\[/)
+  assert.doesNotMatch(source, /data-desktop-prompt-ellipsis[\s\S]{0,260}ring-/)
+  assert.match(source, /data-desktop-prompt-ellipsis[\s\S]*aria-hidden="true"/)
+  assert.match(source, /data-desktop-prompt-ellipsis[\s\S]*className="absolute bottom-0 right-0 h-6 w-8"/)
+  assert.doesNotMatch(source, /showEllipsisTrigger \? 'pr-8' : ''/)
+  assert.doesNotMatch(source, /data-desktop-result-prompt[\s\S]{0,220}pr-8/)
+  assert.doesNotMatch(source, /data-desktop-prompt-ellipsis[\s\S]{0,260}>\s*\.\.\.\s*<\/span>/)
+  assert.doesNotMatch(source, /<div\s+className="relative min-w-0"\s+onMouseEnter=\{\(event\) => showDesktopPromptTooltip\(event, promptText\)\}/)
+  assert.doesNotMatch(source, /<p[\s\S]{0,260}onMouseEnter=\{\(event\) => showDesktopPromptTooltip\(event, promptText\)\}/)
   assert.match(source, /data-desktop-prompt-tooltip[\s\S]*\{desktopPromptTooltip\.text\}/)
   assert.match(source, /data-desktop-prompt-tooltip[\s\S]*fixed[\s\S]*z-\[10060\]/)
   assert.doesNotMatch(source, /data-desktop-prompt-tooltip[\s\S]{0,220}z-40/)
@@ -98,6 +125,35 @@ test('desktop history prompts clamp to four lines with full prompt on hover', ()
   assert.match(source, /data-desktop-failed-result-prompt[\s\S]*style=\{promptPreviewClampStyle\}/)
   assert.doesNotMatch(source, /data-desktop-(?:result|pending-result|failed-result)-prompt[\s\S]{0,120}title=\{item\.prompt\}/)
   assert.doesNotMatch(source, /cursor-help/)
+})
+
+test('desktop history metadata appears as light tags above the prompt', () => {
+  const resultBlock = source.slice(
+    source.indexOf('const renderDesktopResultItem'),
+    source.indexOf('const renderDesktopPendingResultItem'),
+  )
+  const pendingBlock = source.slice(
+    source.indexOf('const renderDesktopPendingResultItem'),
+    source.indexOf('const applyGenerationItemToForm'),
+  )
+  const failedBlock = source.slice(
+    source.indexOf('const renderDesktopFailedResultItem'),
+    source.indexOf('const renderDesktopResultFeed'),
+  )
+
+  assert.ok(
+    resultBlock.indexOf('renderInlineHistoryMeta') < resultBlock.indexOf('data-desktop-result-prompt'),
+    'successful history metadata should render above the prompt',
+  )
+  assert.ok(
+    pendingBlock.indexOf('renderInlineHistoryMeta') < pendingBlock.indexOf('data-desktop-pending-result-prompt'),
+    'pending history metadata should render above the prompt',
+  )
+  assert.ok(
+    failedBlock.indexOf('renderInlineHistoryMeta') < failedBlock.indexOf('data-desktop-failed-result-prompt'),
+    'failed history metadata should render above the prompt',
+  )
+  assert.match(source, /rounded-full bg-\[#EEF2FF\]\/60 px-2 py-1 text-xs font-semibold text-slate-600 ring-1 ring-\[#C7D2FE\]\/70/)
 })
 
 test('left prompt input shows four lines and scrolls overflow', () => {
@@ -142,6 +198,15 @@ test('desktop generation and history columns use compact spacing', () => {
   assert.match(source, /data-desktop-result-card[\s\S]*flex-1[\s\S]*w-full/)
   assert.doesNotMatch(source, /data-desktop-result-card[\s\S]{0,260}xl:mx-auto/)
   assert.doesNotMatch(source, /data-desktop-result-card[\s\S]{0,260}xl:max-w-\[/)
+})
+
+test('desktop history uses compact laptop spacing so metadata tags have more row width', () => {
+  assert.match(source, /data-desktop-result-feed[\s\S]*className="flex h-full min-h-0 flex-col overflow-y-auto overscroll-contain p-4 md:p-5"/)
+  assert.match(source, /data-desktop-history-meta className="flex flex-wrap items-center gap-1"/)
+  assert.doesNotMatch(source, /data-desktop-result-feed[\s\S]{0,220} p-6"/)
+  assert.doesNotMatch(source, /data-desktop-history-meta className="flex flex-wrap items-center gap-1\.5"/)
+  assert.doesNotMatch(source, /data-desktop-result-item[\s\S]{0,220}grid gap-6/)
+  assert.match(source, /data-desktop-result-item[\s\S]*grid gap-4/)
 })
 
 test('desktop history wheel scroll stays inside history feed', () => {
@@ -214,8 +279,9 @@ test('history action uses settings instead of generating immediately', () => {
   assert.match(historyApply, /setAspectRatio\(item\.aspectRatio \|\| getDefaultAspectRatioForModel\(item\.modelId \|\| selectedModelId, presetMode\)\)/)
   assert.match(historyApply, /setResolution\(item\.resolution \|\| getDefaultResolutionForModel\(item\.modelId \|\| selectedModelId\)\)/)
   assert.match(historyApply, /setOutputFormat\(item\.outputFormat \|\| 'Auto'\)/)
-  assert.match(historyApply, /setRemoteImageUrls\(\(item\.inputUrls \|\| \[\]\)\.slice\(0, getMaxImagesForModel\(item\.modelId \|\| selectedModelId\)\)\)/)
-  assert.match(historyApply, /setActiveTab\(item\.inputUrls\?\.length \? 'image-to-image' : 'text-to-image'\)/)
+  assert.match(historyApply, /const inputImageUrls = getOriginalHistoryInputImageUrls\(item\)/)
+  assert.match(historyApply, /setRemoteImageUrls\(inputImageUrls\.slice\(0, getMaxImagesForModel\(item\.modelId \|\| selectedModelId\)\)\)/)
+  assert.match(historyApply, /setActiveTab\(inputImageUrls\.length > 0 \? 'image-to-image' : 'text-to-image'\)/)
   assert.match(historyApply, /setActiveSettingsHistoryItemId\(item\.id\)/)
   assert.match(historyApply, /historyItemRefs\.current\.get\(item\.id\)\?\.scrollIntoView\(\{ block: 'nearest', behavior: 'smooth' \}\)/)
   assert.doesNotMatch(historyApply, /setRightMode\('sample'\)/)
@@ -227,8 +293,9 @@ test('history action uses settings instead of generating immediately', () => {
   assert.match(failedApply, /setAspectRatio\(item\.aspectRatio \|\| getDefaultAspectRatioForModel\(item\.modelId, presetMode\)\)/)
   assert.match(failedApply, /setResolution\(item\.resolution \|\| getDefaultResolutionForModel\(item\.modelId\)\)/)
   assert.match(failedApply, /setOutputFormat\(item\.outputFormat \|\| 'Auto'\)/)
-  assert.match(failedApply, /setRemoteImageUrls\(\(item\.inputUrls \|\| \[\]\)\.slice\(0, getMaxImagesForModel\(item\.modelId\)\)\)/)
-  assert.match(failedApply, /setActiveTab\(item\.inputUrls\?\.length \? 'image-to-image' : 'text-to-image'\)/)
+  assert.match(failedApply, /const inputImageUrls = getOriginalHistoryInputImageUrls\(item\)/)
+  assert.match(failedApply, /setRemoteImageUrls\(inputImageUrls\.slice\(0, getMaxImagesForModel\(item\.modelId\)\)\)/)
+  assert.match(failedApply, /setActiveTab\(inputImageUrls\.length > 0 \? 'image-to-image' : 'text-to-image'\)/)
   assert.match(failedApply, /setActiveSettingsHistoryItemId\(item\.id\)/)
   assert.match(failedApply, /historyItemRefs\.current\.get\(item\.id\)\?\.scrollIntoView\(\{ block: 'nearest', behavior: 'smooth' \}\)/)
   assert.doesNotMatch(failedApply, /setRightMode\('sample'\)/)
@@ -239,7 +306,11 @@ test('history action uses settings instead of generating immediately', () => {
 
 test('history action can edit a generated image as the next reference image', () => {
   assert.match(source, /editImage: 'Edit Image'/)
+  assert.match(source, /const isGenericImageEditToolPath = \(pathname: string\) =>/)
   const historyEdit = source.match(/const editHistoryItemImage = \(item: HistoryItem\) => \{[\s\S]*?\n  \}/)?.[0] || ''
+  assert.match(historyEdit, /if \(!isGenericImageEditToolPath\(pathname\)\) \{/)
+  assert.match(historyEdit, /window\.sessionStorage\.setItem\(PENDING_REPROMPT_STORAGE_KEY, JSON\.stringify\(\{[\s\S]*mode: 'image-to-image'[\s\S]*imageUrl: item\.outputPreview/)
+  assert.match(historyEdit, /window\.location\.href = getLocalizedInternalPath\(pathname, '\/ai-image-generator'\)/)
   assert.doesNotMatch(historyEdit, /setSelectedModelId/)
   assert.doesNotMatch(historyEdit, /setActiveModelGroupId/)
   assert.doesNotMatch(historyEdit, /setPrompt/)
@@ -256,5 +327,16 @@ test('history action can edit a generated image as the next reference image', ()
   assert.match(source, /data-desktop-edit-image[\s\S]*onClick=\{\(\) => editHistoryItemImage\(item\)\}[\s\S]*\{toolText\.editImage\}/)
   assert.match(source, /data-desktop-edit-image[\s\S]*className="flex items-center justify-center rounded-xl border border-\[#C7D2FE\] px-3 py-2\.5 text-\[#4F46E5\] transition-colors hover:bg-\[#EEF2FF\]"/)
   assert.match(source, /data-mobile-edit-image/)
-  assert.match(source, /data-mobile-edit-image[\s\S]*onClick=\{\(\) => editHistoryItemImage\(currentResult\)\}[\s\S]*\{toolText\.editImage\}/)
+  assert.match(source, /data-mobile-edit-image[\s\S]*onClick=\{\(\) => editHistoryItemImage\(currentResult\)\}[\s\S]*\{toolText\.editImageShort\}/)
+  assert.match(source, /editImageShort: 'Edit'/)
+})
+
+test('pending reprompt can apply an image-only edit payload', () => {
+  const promptInsert = source.match(/const applyPromptInsertDetail = useCallback\(\(detail: PromptInsertEventDetail\) => \{[\s\S]*?\n  \}, \[/)?.[0] || ''
+
+  assert.match(promptInsert, /const nextPrompt = detail\.prompt\?\.trim\(\)/)
+  assert.match(promptInsert, /if \(!nextPrompt && urls\.length === 0\) return false/)
+  assert.match(promptInsert, /if \(nextPrompt\) \{[\s\S]*setPrompt\(nextPrompt\)/)
+  assert.match(promptInsert, /setRemoteImageUrls\(resolvePromptInsertRemoteImageUrls\(\{[\s\S]*referenceUrls: urls/)
+  assert.match(promptInsert, /setActiveTab\(nextMode\)/)
 })

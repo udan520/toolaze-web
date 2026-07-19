@@ -19,7 +19,9 @@ import { isCreditExhaustedGenerationError } from '@/lib/generation-error-classif
 import { downloadImageInCurrentPage } from '@/lib/browser-image-download'
 import {
   getDisplayImagePreviewUrl,
+  getOriginalHistoryInputImageUrls,
   getReferencePreviewUrl,
+  getWrappedHistoryDefaultInputImageUrls,
   normalizeReusableReferenceImageUrl,
 } from '@/lib/history-reprompt'
 import { getModelDemoImage, shouldUseDirectImageForDemo } from '@/lib/model-demo-images'
@@ -46,6 +48,8 @@ import {
 } from '@/lib/generation-history-tool-metadata'
 import { formatLocalTimestampToSeconds } from '@/lib/credit-history-time'
 import { dispatchToolazeTopNotice } from '@/lib/top-notice'
+import { parseLocalePath } from '@/lib/site-language-switch'
+import { getGenerationModelLabel, getWrappedHairToolHistoryDisplay } from '@/lib/generation-history-display'
 
 type RightPanelMode = 'sample' | 'generating' | 'history'
 
@@ -60,6 +64,9 @@ interface HistoryItem {
   aspectRatio?: string
   resolution?: string
   outputFormat?: string
+  toolSlug?: string | null
+  toolLabel?: string | null
+  sourcePath?: string | null
 }
 
 interface PendingGenerationItem {
@@ -73,6 +80,9 @@ interface PendingGenerationItem {
   aspectRatio?: string
   resolution?: string
   outputFormat?: string
+  toolSlug?: string | null
+  toolLabel?: string | null
+  sourcePath?: string | null
   taskId?: string
   creditHold?: unknown
   restored?: boolean
@@ -215,6 +225,9 @@ interface PersistedGenerationHistoryItem {
   aspectRatio?: string | null
   resolution?: string | null
   outputFormat?: string | null
+  toolSlug?: string | null
+  toolLabel?: string | null
+  sourcePath?: string | null
   createdAt?: string
 }
 
@@ -228,9 +241,20 @@ function mapPersistedHistoryItem(item: PersistedGenerationHistoryItem): HistoryI
   const prompt = String(item?.prompt || '').trim()
   if (!id || !outputPreview || !prompt) return null
 
-  const inputUrls = Array.isArray(item.inputUrls)
+  const rawInputUrls = Array.isArray(item.inputUrls)
     ? item.inputUrls.filter((url): url is string => typeof url === 'string' && url.trim().length > 0)
     : []
+  const normalizedItem = {
+    model: item.model,
+    outputUrl: outputPreview,
+    inputPreview: rawInputUrls[0] || '',
+    inputUrls: rawInputUrls,
+    toolSlug: item.toolSlug || null,
+    sourcePath: item.sourcePath || null,
+  }
+  const inputUrls = rawInputUrls.length > 0
+    ? rawInputUrls
+    : getWrappedHistoryDefaultInputImageUrls(normalizedItem)
 
   return {
     id,
@@ -243,6 +267,9 @@ function mapPersistedHistoryItem(item: PersistedGenerationHistoryItem): HistoryI
     aspectRatio: item.aspectRatio || undefined,
     resolution: item.resolution || undefined,
     outputFormat: item.outputFormat || undefined,
+    toolSlug: item.toolSlug || null,
+    toolLabel: item.toolLabel || null,
+    sourcePath: item.sourcePath || null,
   }
 }
 
@@ -285,6 +312,9 @@ function normalizeStoredPendingGenerationItem(item: unknown): PendingGenerationI
     aspectRatio: typeof candidate.aspectRatio === 'string' ? candidate.aspectRatio : undefined,
     resolution: typeof candidate.resolution === 'string' ? candidate.resolution : undefined,
     outputFormat: typeof candidate.outputFormat === 'string' ? candidate.outputFormat : undefined,
+    toolSlug: typeof candidate.toolSlug === 'string' ? candidate.toolSlug : null,
+    toolLabel: typeof candidate.toolLabel === 'string' ? candidate.toolLabel : null,
+    sourcePath: typeof candidate.sourcePath === 'string' ? candidate.sourcePath : null,
     taskId,
     creditHold: candidate.creditHold,
     restored: true,
@@ -637,9 +667,13 @@ const WRAPPED_IMAGE_PLAY_RATIO_OPTIONS = [
 
 const PENDING_REPROMPT_STORAGE_KEY = 'toolaze:pending-reprompt'
 const EMPTY_DEFAULT_IMAGE_URLS: string[] = []
+const GENERIC_IMAGE_EDIT_TOOL_SLUGS = new Set(['ai-image-generator', 'ai-image-to-image-generator'])
 
 const areStringArraysEqual = (left: string[], right: string[]) =>
   left.length === right.length && left.every((item, index) => item === right[index])
+
+const isGenericImageEditToolPath = (pathname: string) =>
+  GENERIC_IMAGE_EDIT_TOOL_SLUGS.has(parseLocalePath(pathname).segments[0] || '')
 
 function shouldUploadReferenceUrlForGeneration(url: string): boolean {
   if (url.startsWith('/')) return true
@@ -939,6 +973,7 @@ export default function AiImageGenerationTool({
     noHistory: 'No history yet. Generate an image to see it here.',
     recreate: 'Recreate',
     editImage: 'Edit Image',
+    editImageShort: 'Edit',
     download: 'Download',
     downloading: 'Downloading...',
     copyPrompt: 'Copy Prompt',
@@ -1266,33 +1301,35 @@ export default function AiImageGenerationTool({
 
   const applyPromptInsertDetail = useCallback((detail: PromptInsertEventDetail) => {
     const nextPrompt = detail.prompt?.trim()
-    if (!nextPrompt) return false
     const imageUrl = normalizeReusableReferenceImageUrl(detail.imageUrl)
     const imageUrls = Array.isArray(detail.imageUrls)
       ? detail.imageUrls.map(normalizeReusableReferenceImageUrl).filter(Boolean)
       : []
+    const urls = imageUrls.length > 0 ? imageUrls : imageUrl ? [imageUrl] : []
+    if (!nextPrompt && urls.length === 0) return false
     const demoImageUrl = detail.demoImageUrl?.trim()
 
-    shouldPositionInsertedPromptRef.current = true
     if (detail.aspectRatio) setAspectRatio(detail.aspectRatio)
     if (detail.resolution) setResolution(detail.resolution)
     if (detail.outputFormat) setOutputFormat(detail.outputFormat)
     if (detail.presetGroup) setActivePromptPresetTab(detail.presetGroup)
     if (detail.presetLabel) setSelectedPromptPreset(detail.presetLabel)
-    setPrompt(nextPrompt)
-    setRightMode('sample')
-    setPromptDemoImage(
-      demoImageUrl
-        ? {
-            url: demoImageUrl,
-            title: detail.demoImageTitle || toolText.sampleImage,
-            width: detail.demoImageWidth || 900,
-            height: detail.demoImageHeight || 1200,
-          }
-        : null
-    )
+    if (nextPrompt) {
+      shouldPositionInsertedPromptRef.current = true
+      setPrompt(nextPrompt)
+      setRightMode('sample')
+      setPromptDemoImage(
+        demoImageUrl
+          ? {
+              url: demoImageUrl,
+              title: detail.demoImageTitle || toolText.sampleImage,
+              width: detail.demoImageWidth || 900,
+              height: detail.demoImageHeight || 1200,
+            }
+          : null
+      )
+    }
 
-    const urls = imageUrls.length > 0 ? imageUrls : imageUrl ? [imageUrl] : []
     const nextMode = resolvePromptInsertMode({
       requestedMode: detail.mode,
       hasReferenceImages: urls.length > 0,
@@ -1305,7 +1342,7 @@ export default function AiImageGenerationTool({
     }))
     setActiveTab(nextMode)
 
-    showToast(toolText.promptInserted, 'success')
+    if (nextPrompt) showToast(toolText.promptInserted, 'success')
     return true
   }, [MAX_IMAGES, toolText.promptInserted, toolText.sampleImage, remoteImageUrls])
 
@@ -1803,6 +1840,7 @@ export default function AiImageGenerationTool({
     const requestOutputFormat = outputFormat
     const requestModelId = selectedModelId
     const requestModelName = selectedModelName
+    const requestHistoryTool = getHistoryToolMetadata(pathname, requestModelName, requestModelId)
     const requestModelConfig = MODEL_CONFIG[requestModelId]
     const requestCreditCost = generationCreditCost
     const requestPromptModifierPrompt = selectedPromptModifierOption?.prompt
@@ -1848,6 +1886,7 @@ export default function AiImageGenerationTool({
       aspectRatio: requestAspectRatio,
       resolution: requestResolution,
       outputFormat: requestOutputFormat,
+      ...requestHistoryTool,
     }
 
     setPendingGenerationItems((prev) => [pendingItem, ...prev])
@@ -1977,10 +2016,13 @@ export default function AiImageGenerationTool({
             resolution: requestResolution,
             outputFormat: requestOutputFormat,
           })
+          const savedInputUrls = Array.isArray(savedItem?.inputUrls) && savedItem.inputUrls.length > 0
+            ? savedItem.inputUrls
+            : generationInputUrls
           const item: HistoryItem = {
             id: savedItem?.id || createLocalId('sync'),
-            inputPreview: generationPreviewInputUrls[0] || '',
-            inputUrls: generationInputUrls,
+            inputPreview: savedInputUrls[0] || generationPreviewInputUrls[0] || '',
+            inputUrls: savedInputUrls,
             outputPreview: generateResult.imageUrl,
             prompt: effectivePrompt,
             time: formatLocalTimestampToSeconds(savedItem?.createdAt || new Date().toISOString()),
@@ -1988,6 +2030,9 @@ export default function AiImageGenerationTool({
             aspectRatio: requestAspectRatio,
             resolution: requestResolution,
             outputFormat: requestOutputFormat,
+            toolSlug: savedItem?.toolSlug || requestHistoryTool.toolSlug,
+            toolLabel: savedItem?.toolLabel || requestHistoryTool.toolLabel,
+            sourcePath: savedItem?.sourcePath || requestHistoryTool.sourcePath,
           }
           addHistoryItemToFeed(item)
           setRightMode('history')
@@ -2082,10 +2127,13 @@ export default function AiImageGenerationTool({
           resolution: requestResolution,
           outputFormat: requestOutputFormat,
         })
+        const savedInputUrls = Array.isArray(savedItem?.inputUrls) && savedItem.inputUrls.length > 0
+          ? savedItem.inputUrls
+          : generationInputUrls
         const item: HistoryItem = {
           id: savedItem?.id || createLocalId('async'),
-          inputPreview: generationPreviewInputUrls[0] || '',
-          inputUrls: generationInputUrls,
+          inputPreview: savedInputUrls[0] || generationPreviewInputUrls[0] || '',
+          inputUrls: savedInputUrls,
           outputPreview: finalUrl,
           prompt: effectivePrompt,
           time: formatLocalTimestampToSeconds(savedItem?.createdAt || new Date().toISOString()),
@@ -2093,6 +2141,9 @@ export default function AiImageGenerationTool({
           aspectRatio: requestAspectRatio,
           resolution: requestResolution,
           outputFormat: requestOutputFormat,
+          toolSlug: savedItem?.toolSlug || requestHistoryTool.toolSlug,
+          toolLabel: savedItem?.toolLabel || requestHistoryTool.toolLabel,
+          sourcePath: savedItem?.sourcePath || requestHistoryTool.sourcePath,
         }
         addHistoryItemToFeed(item)
         setRightMode('history')
@@ -2450,32 +2501,140 @@ export default function AiImageGenerationTool({
     setDesktopPromptTooltip(null)
   }
 
-  const renderDesktopPromptPreview = (promptText: string, testId: string) => (
-    <div
-      className="relative min-w-0"
-      onMouseEnter={(event) => showDesktopPromptTooltip(event, promptText)}
-      onMouseLeave={hideDesktopPromptTooltip}
-      onFocus={(event) => showDesktopPromptTooltip(event, promptText)}
-      onBlur={hideDesktopPromptTooltip}
-    >
-      <p
-        data-desktop-result-prompt={testId === 'data-desktop-result-prompt' ? true : undefined}
-        data-desktop-pending-result-prompt={testId === 'data-desktop-pending-result-prompt' ? true : undefined}
-        data-desktop-failed-result-prompt={testId === 'data-desktop-failed-result-prompt' ? true : undefined}
-        aria-label={promptText}
-        tabIndex={0}
-        style={promptPreviewClampStyle}
-        className="text-sm leading-6 text-slate-600 focus:outline-none"
-      >
-        {promptText}
-      </p>
-    </div>
-  )
+  const shouldShowPromptEllipsisTrigger = (promptText: string) =>
+    promptText.length > 220 || promptText.split(/\r\n|\r|\n/).length > 4
+
+  const renderDesktopPromptPreview = (promptText: string, testId: string) => {
+    const showEllipsisTrigger = shouldShowPromptEllipsisTrigger(promptText)
+
+    return (
+      <div className="relative min-w-0">
+        <p
+          data-desktop-result-prompt={testId === 'data-desktop-result-prompt' ? true : undefined}
+          data-desktop-pending-result-prompt={testId === 'data-desktop-pending-result-prompt' ? true : undefined}
+          data-desktop-failed-result-prompt={testId === 'data-desktop-failed-result-prompt' ? true : undefined}
+          style={promptPreviewClampStyle}
+          className="text-sm leading-6 text-slate-600"
+        >
+          {promptText}
+        </p>
+        {showEllipsisTrigger && (
+          <span
+            data-desktop-prompt-ellipsis
+            aria-hidden="true"
+            onMouseEnter={(event) => showDesktopPromptTooltip(event, promptText)}
+            onMouseLeave={hideDesktopPromptTooltip}
+            className="absolute bottom-0 right-0 h-6 w-8"
+          />
+        )}
+      </div>
+    )
+  }
 
   const getHistoryItemModelName = (item: HistoryItem) =>
     item.modelId
       ? modelOptions.find((option) => option.id === item.modelId)?.name || selectedModelName
       : selectedModelName
+
+  const getInlineHistoryDisplay = (item: {
+    modelId?: ImageModelId
+    modelName?: string
+    toolSlug?: string | null
+    toolLabel?: string | null
+    sourcePath?: string | null
+  }) => {
+    const historyDisplay = getWrappedHairToolHistoryDisplay({
+      model: item.modelId,
+      toolSlug: item.toolSlug,
+      toolLabel: item.toolLabel,
+      sourcePath: item.sourcePath || pathname,
+    })
+    const modelLabel = historyDisplay.showToolLabel
+      ? historyDisplay.modelLabel
+      : item.modelName || (item.modelId ? getGenerationModelLabel(item.modelId) : selectedModelName)
+
+    return {
+      ...historyDisplay,
+      modelLabel,
+      showModelLabel: Boolean(modelLabel),
+    }
+  }
+
+  const getHistoryMetaTags = (item: {
+    modelId?: ImageModelId
+    modelName?: string
+    aspectRatio?: string
+    resolution?: string
+    outputFormat?: string
+    toolSlug?: string | null
+    toolLabel?: string | null
+    sourcePath?: string | null
+  }, timeLabel: string) => {
+    const display = getInlineHistoryDisplay(item)
+    const outputFormatTag = item.outputFormat && item.outputFormat !== 'Auto'
+      ? formatTagValue(item.outputFormat)
+      : ''
+    return [
+      display.showToolLabel && display.toolLabel ? display.toolLabel : '',
+      display.showModelLabel && display.modelLabel ? display.modelLabel : '',
+      formatTagValue(item.aspectRatio),
+      item.resolution ? formatTagValue(item.resolution) : '',
+      outputFormatTag,
+      timeLabel,
+    ].filter(Boolean)
+  }
+
+  const renderInlineHistoryMeta = (item: {
+    modelId?: ImageModelId
+    modelName?: string
+    aspectRatio?: string
+    resolution?: string
+    outputFormat?: string
+    toolSlug?: string | null
+    toolLabel?: string | null
+    sourcePath?: string | null
+  }, timeLabel: string) => {
+    const metaTags = getHistoryMetaTags(item, timeLabel)
+
+    return (
+      <div data-desktop-history-meta className="flex flex-wrap items-center gap-1">
+        {metaTags.map((tag, index) => (
+          <span
+            key={`${tag}-${index}`}
+            className="rounded-full bg-[#EEF2FF]/60 px-2 py-1 text-xs font-semibold text-slate-600 ring-1 ring-[#C7D2FE]/70"
+          >
+            {tag}
+          </span>
+        ))}
+      </div>
+    )
+  }
+
+  const renderMobileHistoryMeta = (item: {
+    modelId?: ImageModelId
+    modelName?: string
+    aspectRatio?: string
+    resolution?: string
+    outputFormat?: string
+    toolSlug?: string | null
+    toolLabel?: string | null
+    sourcePath?: string | null
+  }, timeLabel: string) => {
+    const metaTags = getHistoryMetaTags(item, timeLabel)
+
+    return (
+      <div data-mobile-history-meta className="mt-3 flex flex-wrap items-center gap-1 px-1">
+        {metaTags.map((tag, index) => (
+          <span
+            key={`${tag}-${index}`}
+            className="rounded-full bg-[#EEF2FF]/60 px-2 py-0.5 text-[11px] font-semibold text-slate-600 ring-1 ring-[#C7D2FE]/70"
+          >
+            {tag}
+          </span>
+        ))}
+      </div>
+    )
+  }
 
   const setHistoryItemRef = (itemId: string, node: HTMLDivElement | null) => {
     if (node) {
@@ -2486,6 +2645,7 @@ export default function AiImageGenerationTool({
   }
 
   const applyHistoryItemToForm = (item: HistoryItem) => {
+    const inputImageUrls = getOriginalHistoryInputImageUrls(item)
     if (item.modelId) {
       setSelectedModelId(item.modelId)
       setActiveModelGroupId(getModelGroupId(item.modelId))
@@ -2494,14 +2654,23 @@ export default function AiImageGenerationTool({
     setAspectRatio(item.aspectRatio || getDefaultAspectRatioForModel(item.modelId || selectedModelId, presetMode))
     setResolution(item.resolution || getDefaultResolutionForModel(item.modelId || selectedModelId))
     setOutputFormat(item.outputFormat || 'Auto')
-    setRemoteImageUrls((item.inputUrls || []).slice(0, getMaxImagesForModel(item.modelId || selectedModelId)))
-    setActiveTab(item.inputUrls?.length ? 'image-to-image' : 'text-to-image')
+    setRemoteImageUrls(inputImageUrls.slice(0, getMaxImagesForModel(item.modelId || selectedModelId)))
+    setActiveTab(inputImageUrls.length > 0 ? 'image-to-image' : 'text-to-image')
     setCurrentResult(item)
     setActiveSettingsHistoryItemId(item.id)
     historyItemRefs.current.get(item.id)?.scrollIntoView({ block: 'nearest', behavior: 'smooth' })
   }
 
   const editHistoryItemImage = (item: HistoryItem) => {
+    if (!isGenericImageEditToolPath(pathname)) {
+      window.sessionStorage.setItem(PENDING_REPROMPT_STORAGE_KEY, JSON.stringify({
+        mode: 'image-to-image',
+        imageUrl: item.outputPreview,
+      }))
+      window.location.href = getLocalizedInternalPath(pathname, '/ai-image-generator')
+      return
+    }
+
     setImageFiles([])
     setRemoteImageUrls([item.outputPreview].slice(0, getMaxImagesForModel(selectedModelId)))
     setActiveTab('image-to-image')
@@ -2514,7 +2683,7 @@ export default function AiImageGenerationTool({
       key={item.id}
       ref={(node) => setHistoryItemRef(item.id, node)}
       data-desktop-result-item
-      className={`grid gap-6 rounded-2xl border-b border-[#E0E7FF] pb-6 transition-colors last:border-b-0 last:pb-0 lg:grid-cols-[minmax(0,240px)_minmax(0,1fr)] xl:grid-cols-[minmax(0,280px)_minmax(0,1fr)] ${
+      className={`grid gap-4 rounded-2xl border-b border-[#E0E7FF] pb-6 transition-colors last:border-b-0 last:pb-0 lg:grid-cols-[minmax(0,240px)_minmax(0,1fr)] xl:grid-cols-[minmax(0,280px)_minmax(0,1fr)] ${
         activeSettingsHistoryItemId === item.id ? 'bg-[#EEF2FF]/60 p-4 ring-1 ring-[#C7D2FE]' : ''
       }`}
     >
@@ -2534,6 +2703,11 @@ export default function AiImageGenerationTool({
       </button>
 
       <div className="min-w-0 space-y-4">
+        {renderInlineHistoryMeta({
+          ...item,
+          modelName: getHistoryItemModelName(item),
+        }, item.time)}
+
         <div className="flex items-start justify-between gap-4">
           <div className="min-w-0">
             <p className="mb-2 text-sm font-extrabold text-slate-900">{toolText.prompt}</p>
@@ -2568,18 +2742,6 @@ export default function AiImageGenerationTool({
             />
           </button>
         )}
-
-        <div className="flex flex-wrap items-center gap-3 text-sm text-slate-500">
-          <span>{formatTagValue(item.aspectRatio)}</span>
-          {!hideModelBranding && (
-            <>
-              <span className="h-4 w-px bg-[#E0E7FF]" />
-              <span>{getHistoryItemModelName(item)}</span>
-            </>
-          )}
-          <span className="h-4 w-px bg-[#E0E7FF]" />
-          <span>{item.time}</span>
-        </div>
 
         <div className="flex flex-wrap gap-2 pt-1">
           <button
@@ -2634,7 +2796,7 @@ export default function AiImageGenerationTool({
     <div
       key={item.id}
       data-desktop-result-item
-      className="grid gap-6 border-b border-[#E0E7FF] pb-6 lg:grid-cols-[minmax(0,240px)_minmax(0,1fr)] xl:grid-cols-[minmax(0,280px)_minmax(0,1fr)]"
+      className="grid gap-4 border-b border-[#E0E7FF] pb-6 lg:grid-cols-[minmax(0,240px)_minmax(0,1fr)] xl:grid-cols-[minmax(0,280px)_minmax(0,1fr)]"
     >
       <div className="flex min-h-[140px] items-center justify-center rounded-xl bg-slate-50 p-2">
         <div className="flex flex-col items-center gap-4">
@@ -2652,6 +2814,8 @@ export default function AiImageGenerationTool({
       </div>
 
       <div className="min-w-0 space-y-4">
+        {renderInlineHistoryMeta(item, new Date().toLocaleString())}
+
         <div>
           <p className="mb-2 text-sm font-extrabold text-slate-900">{toolText.prompt}</p>
           {renderDesktopPromptPreview(item.prompt, 'data-desktop-pending-result-prompt')}
@@ -2670,30 +2834,20 @@ export default function AiImageGenerationTool({
             />
           </button>
         )}
-        <div className="flex flex-wrap items-center gap-3 text-sm text-slate-500">
-          <span>{formatTagValue(item.aspectRatio)}</span>
-          {!hideModelBranding && (
-            <>
-              <span className="h-4 w-px bg-[#E0E7FF]" />
-              <span>{item.modelName}</span>
-            </>
-          )}
-          <span className="h-4 w-px bg-[#E0E7FF]" />
-          <span>{new Date().toLocaleString()}</span>
-        </div>
       </div>
     </div>
   )
 
   const applyGenerationItemToForm = (item: PendingGenerationItem) => {
+    const inputImageUrls = getOriginalHistoryInputImageUrls(item)
     setSelectedModelId(item.modelId)
     setActiveModelGroupId(getModelGroupId(item.modelId))
     setPrompt(item.prompt)
     setAspectRatio(item.aspectRatio || getDefaultAspectRatioForModel(item.modelId, presetMode))
     setResolution(item.resolution || getDefaultResolutionForModel(item.modelId))
     setOutputFormat(item.outputFormat || 'Auto')
-    setRemoteImageUrls((item.inputUrls || []).slice(0, getMaxImagesForModel(item.modelId)))
-    setActiveTab(item.inputUrls?.length ? 'image-to-image' : 'text-to-image')
+    setRemoteImageUrls(inputImageUrls.slice(0, getMaxImagesForModel(item.modelId)))
+    setActiveTab(inputImageUrls.length > 0 ? 'image-to-image' : 'text-to-image')
     setActiveSettingsHistoryItemId(item.id)
     historyItemRefs.current.get(item.id)?.scrollIntoView({ block: 'nearest', behavior: 'smooth' })
   }
@@ -2704,7 +2858,7 @@ export default function AiImageGenerationTool({
       ref={(node) => setHistoryItemRef(item.id, node)}
       data-desktop-failed-result-item
       data-desktop-result-item
-      className={`grid gap-6 rounded-2xl border-b border-[#E0E7FF] pb-6 transition-colors lg:grid-cols-[minmax(0,240px)_minmax(0,1fr)] xl:grid-cols-[minmax(0,280px)_minmax(0,1fr)] ${
+      className={`grid gap-4 rounded-2xl border-b border-[#E0E7FF] pb-6 transition-colors lg:grid-cols-[minmax(0,240px)_minmax(0,1fr)] xl:grid-cols-[minmax(0,280px)_minmax(0,1fr)] ${
         activeSettingsHistoryItemId === item.id ? 'bg-[#EEF2FF]/60 p-4 ring-1 ring-[#C7D2FE]' : ''
       }`}
     >
@@ -2726,6 +2880,8 @@ export default function AiImageGenerationTool({
       </div>
 
       <div className="min-w-0 space-y-4">
+        {renderInlineHistoryMeta(item, new Date(item.startedAt).toLocaleString())}
+
         <div className="flex items-start justify-between gap-4">
           <div className="min-w-0">
             <p className="mb-2 text-sm font-extrabold text-slate-900">{toolText.prompt}</p>
@@ -2760,18 +2916,6 @@ export default function AiImageGenerationTool({
             />
           </button>
         )}
-
-        <div className="flex flex-wrap items-center gap-3 text-sm text-slate-500">
-          <span>{formatTagValue(item.aspectRatio)}</span>
-          {!hideModelBranding && (
-            <>
-              <span className="h-4 w-px bg-[#E0E7FF]" />
-              <span>{item.modelName}</span>
-            </>
-          )}
-          <span className="h-4 w-px bg-[#E0E7FF]" />
-          <span>{new Date(item.startedAt).toLocaleString()}</span>
-        </div>
 
         <div className="flex flex-wrap gap-2 pt-1">
           <button
@@ -2811,7 +2955,7 @@ export default function AiImageGenerationTool({
     <div
       data-desktop-result-feed
       onWheel={handleDesktopResultFeedWheel}
-      className="flex h-full min-h-0 flex-col overflow-y-auto overscroll-contain p-6"
+      className="flex h-full min-h-0 flex-col overflow-y-auto overscroll-contain p-4 md:p-5"
     >
       <div className="space-y-6">
         {pendingGenerationItems.map((item) => (
@@ -2946,6 +3090,10 @@ export default function AiImageGenerationTool({
               onClick={() => setPreviewImage(currentResult.outputPreview)}
               className="aspect-[4/3] w-full rounded-xl object-contain cursor-pointer bg-slate-50"
             />
+            {renderMobileHistoryMeta({
+              ...currentResult,
+              modelName: getHistoryItemModelName(currentResult),
+            }, currentResult.time)}
             <div data-mobile-result-prompt className="mt-3 space-y-1.5 px-1">
               <div className="flex items-center justify-between gap-3">
                 <p className="text-xs font-extrabold text-slate-900">{toolText.prompt}</p>
@@ -2981,7 +3129,7 @@ export default function AiImageGenerationTool({
                 className="min-w-0 truncate rounded-xl border border-[#C7D2FE] px-2.5 py-2.5 text-xs font-extrabold text-[#4F46E5] transition-colors hover:bg-[#EEF2FF]"
                 title={toolText.editImage}
               >
-                {toolText.editImage}
+                {toolText.editImageShort}
               </button>
               <button
                 data-mobile-download

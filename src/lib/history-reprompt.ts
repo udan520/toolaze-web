@@ -2,7 +2,10 @@ type HistoryRepromptSource = {
   prompt?: string | null
   model?: string | null
   outputUrl?: string | null
+  inputPreview?: string | null
   inputUrls?: string[] | null
+  toolSlug?: string | null
+  sourcePath?: string | null
   aspectRatio?: string | null
   resolution?: string | null
   outputFormat?: string | null
@@ -36,6 +39,24 @@ function isNextImageUrl(url: string): boolean {
   return url.startsWith('/_next/image?')
 }
 
+function getHistoryToolSlug(item: HistoryRepromptSource): string {
+  const toolSlug = String(item.toolSlug || '').trim()
+  if (toolSlug) return toolSlug
+
+  const sourceSegments = String(item.sourcePath || '').split('/').filter(Boolean)
+  const localePattern = /^[a-z]{2}(?:-[A-Z]{2})?$/
+  return sourceSegments[0] && localePattern.test(sourceSegments[0])
+    ? sourceSegments[1] || ''
+    : sourceSegments[0] || ''
+}
+
+export function getWrappedHistoryDefaultInputImageUrls(item: HistoryRepromptSource): string[] {
+  const toolSlug = getHistoryToolSlug(item)
+  if (toolSlug === 'ai-hairstyle-changer') return ['/ai-hairstyle-changer/default-reference.png']
+  if (toolSlug === 'ai-hair-color-changer') return ['/ai-hair-color-changer/default-reference.png']
+  return []
+}
+
 function isOptimizableRemoteImageUrl(url: string): boolean {
   try {
     const parsed = new URL(url)
@@ -62,8 +83,24 @@ export function getHistoryReferenceImageUrls(item: HistoryRepromptSource): strin
 
   if (inputUrls.length > 0) return inputUrls
 
+  const wrappedDefaultInputUrls = getWrappedHistoryDefaultInputImageUrls(item)
+  if (wrappedDefaultInputUrls.length > 0) return wrappedDefaultInputUrls
+
   const outputUrl = normalizeReusableReferenceImageUrl(item.outputUrl)
   return outputUrl ? [outputUrl] : []
+}
+
+export function getOriginalHistoryInputImageUrls(item: HistoryRepromptSource): string[] {
+  const inputUrls = Array.isArray(item.inputUrls)
+    ? item.inputUrls.map(normalizeReusableReferenceImageUrl).filter(Boolean)
+    : []
+
+  if (inputUrls.length > 0) return inputUrls
+
+  const inputPreview = normalizeReusableReferenceImageUrl(item.inputPreview)
+  if (inputPreview) return [inputPreview]
+
+  return getWrappedHistoryDefaultInputImageUrls(item)
 }
 
 export function buildHistoryRepromptPayload(item: HistoryRepromptSource) {
