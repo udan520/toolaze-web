@@ -9,7 +9,7 @@ import {
   resetLocalDevCreditsForTests,
 } from './local-dev-auth.js'
 
-test('local dev status marks only the current checked-in reward as claimed', () => {
+test('local dev status marks completed active-streak rewards as claimed', () => {
   const stateDir = mkdtempSync(join(tmpdir(), 'toolaze-local-dev-auth-'))
   process.env.TOOLAZE_LOCAL_DEV_STATE_FILE = join(stateDir, 'state.json')
   resetLocalDevCreditsForTests()
@@ -21,6 +21,6 @@ test('local dev status marks only the current checked-in reward as claimed', () 
 
   assert.equal(status.checkedInToday, true)
   assert.equal(status.streakDay, 2)
-  assert.deepEqual(status.rewards.filter((reward) => reward.claimed).map((reward) => reward.day), [2])
+  assert.deepEqual(status.rewards.filter((reward) => reward.claimed).map((reward) => reward.day), [1, 2])
   assert.deepEqual(status.rewards.filter((reward) => reward.current).map((reward) => reward.day), [2])
 })

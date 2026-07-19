@@ -14,21 +14,30 @@ export function getLocalDateKey(date = new Date()): string {
   ].join('-')
 }
 
-export function getCheckInNudgeInteractionKey(date = new Date()): string {
-  return `${CHECK_IN_NUDGE_INTERACTION_STORAGE_PREFIX}:${getLocalDateKey(date)}`
+function normalizeNudgeScope(scope?: string | null): string {
+  return String(scope || '').trim().replace(/[^a-zA-Z0-9_-]/g, '_')
 }
 
-export function hasCheckInNudgeInteractionToday(storage: NudgeStorage, date = new Date()): boolean {
+export function getCheckInNudgeInteractionKey(date = new Date(), scope?: string | null): string {
+  const normalizedScope = normalizeNudgeScope(scope)
+  return [
+    CHECK_IN_NUDGE_INTERACTION_STORAGE_PREFIX,
+    normalizedScope || null,
+    getLocalDateKey(date),
+  ].filter(Boolean).join(':')
+}
+
+export function hasCheckInNudgeInteractionToday(storage: NudgeStorage, date = new Date(), scope?: string | null): boolean {
   try {
-    return storage.getItem(getCheckInNudgeInteractionKey(date)) === '1'
+    return storage.getItem(getCheckInNudgeInteractionKey(date, scope)) === '1'
   } catch {
     return false
   }
 }
 
-export function markCheckInNudgeInteractionToday(storage: NudgeStorage, date = new Date()) {
+export function markCheckInNudgeInteractionToday(storage: NudgeStorage, date = new Date(), scope?: string | null) {
   try {
-    storage.setItem(getCheckInNudgeInteractionKey(date), '1')
+    storage.setItem(getCheckInNudgeInteractionKey(date, scope), '1')
   } catch {
     // Ignore storage failures so the nudge never blocks navigation.
   }

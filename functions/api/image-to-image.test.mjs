@@ -19,6 +19,23 @@ function createGenerationRequest(overrides = {}) {
   })
 }
 
+function createModerationSettingsDb(enabled = true) {
+  const value = enabled ? 'true' : 'false'
+  return {
+    prepare() {
+      return {
+        bind() {
+          return {
+            async first() {
+              return { value }
+            },
+          }
+        },
+      }
+    },
+  }
+}
+
 test('GPT Image 2 image-to-image requests use the image-to-image provider model', async () => {
   const originalFetch = globalThis.fetch
   let requestBody = null
@@ -26,9 +43,6 @@ test('GPT Image 2 image-to-image requests use the image-to-image provider model'
 
   globalThis.fetch = async (url, init) => {
     fetchUrls.push(String(url))
-    if (String(url).includes('/v1/moderation/prompt')) {
-      return Response.json({ id: 'mod_allow', object: 'moderation_result', decision: 'allow', usage: { units: 1 } })
-    }
     requestBody = JSON.parse(String(init.body))
     return Response.json({ code: 200, data: { taskId: 'task_test' } })
   }
@@ -40,7 +54,7 @@ test('GPT Image 2 image-to-image requests use the image-to-image provider model'
     })
 
     assert.equal(response.status, 200)
-    assert.equal(fetchUrls[0], 'https://api.creem.io/v1/moderation/prompt')
+    assert.equal(fetchUrls[0], 'https://api.kie.ai/api/v1/jobs/createTask')
     assert.equal(requestBody.model, 'gpt-image-2-image-to-image')
     assert.deepEqual(requestBody.input.input_urls, ['https://example.com/reference.png'])
   } finally {
@@ -86,7 +100,7 @@ test('Creem moderation denial blocks image generation before provider request', 
   try {
     const response = await onRequest({
       request: createGenerationRequest({ prompt: 'blocked prompt' }),
-      env: { CREEM_API_KEY: 'creem-test-key', KIE_AI_API_KEY: 'test-key' },
+      env: { CREEM_API_KEY: 'creem-test-key', KIE_AI_API_KEY: 'test-key', DB: createModerationSettingsDb(true) },
     })
     const payload = await response.json()
 

@@ -566,6 +566,7 @@
       "history": "History",
       "noHistory": "No history yet. Generate an image to see it here.",
       "recreate": "Recreate",
+      "editImage": "Edit Image",
       "download": "Download",
       "downloading": "Downloading...",
       "copyPrompt": "Copy Prompt",
@@ -649,6 +650,33 @@
     "modeVideo": "Video",
     "modeTextToImage": "Text to Image",
     "modeImageToImage": "Image to Image"
+  },
+  "creditsPage": {
+    "metadataTitle": "Credit Activity - Toolaze",
+    "metadataDescription": "View your Toolaze credit balance and complete credit activity history.",
+    "title": "Credit Activity",
+    "description": "Review every credit change on your account, including bonuses, generation usage, refunds, and manual adjustments.",
+    "availableCredits": "Available Credits",
+    "loading": "Loading credit activity...",
+    "signInRequired": "Please sign in with Google to view your credits.",
+    "loadError": "Could not load credit activity.",
+    "emptyTitle": "No Credit Activity Yet.",
+    "emptyDescription": "Credit changes will appear here after signup bonuses, purchases, refunds, or generations.",
+    "filteredEmptyTitle": "No Records Yet.",
+    "balanceAfter": "Balance: {balance}",
+    "tabs": {
+      "all": "All",
+      "obtained": "Obtained",
+      "used": "Used",
+      "purchases": "Purchases"
+    },
+    "types": {
+      "grant": "Bonus",
+      "use": "Used",
+      "refund": "Refund",
+      "purchase": "Purchase",
+      "adjustment": "Adjustment"
+    }
   },
   "privacy": {
     "metadata": {

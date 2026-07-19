@@ -47,7 +47,7 @@ import {
 import { formatLocalTimestampToSeconds } from '@/lib/credit-history-time'
 import { dispatchToolazeTopNotice } from '@/lib/top-notice'
 
-type RightPanelMode = 'sample' | 'generating' | 'history' | 'result'
+type RightPanelMode = 'sample' | 'generating' | 'history'
 
 interface HistoryItem {
   id: string
@@ -60,6 +60,26 @@ interface HistoryItem {
   aspectRatio?: string
   resolution?: string
   outputFormat?: string
+}
+
+interface PendingGenerationItem {
+  id: string
+  inputPreview: string
+  inputUrls?: string[]
+  prompt: string
+  startedAt: number
+  modelId: ImageModelId
+  modelName: string
+  aspectRatio?: string
+  resolution?: string
+  outputFormat?: string
+  taskId?: string
+  creditHold?: unknown
+  restored?: boolean
+}
+
+interface FailedGenerationItem extends PendingGenerationItem {
+  errorMessage: string
 }
 
 const MODEL_CONFIG = {
@@ -184,6 +204,111 @@ const MODEL_CONFIG = {
 
 type ImageModelId = keyof typeof MODEL_CONFIG
 
+const PENDING_GENERATION_STORAGE_KEY = 'toolaze:image-generation-pending:v1'
+
+interface PersistedGenerationHistoryItem {
+  id?: string
+  model?: string
+  prompt?: string
+  outputUrl?: string
+  inputUrls?: string[]
+  aspectRatio?: string | null
+  resolution?: string | null
+  outputFormat?: string | null
+  createdAt?: string
+}
+
+function isImageModelId(value: unknown): value is ImageModelId {
+  return typeof value === 'string' && value in MODEL_CONFIG
+}
+
+function mapPersistedHistoryItem(item: PersistedGenerationHistoryItem): HistoryItem | null {
+  const id = String(item?.id || '').trim()
+  const outputPreview = String(item?.outputUrl || '').trim()
+  const prompt = String(item?.prompt || '').trim()
+  if (!id || !outputPreview || !prompt) return null
+
+  const inputUrls = Array.isArray(item.inputUrls)
+    ? item.inputUrls.filter((url): url is string => typeof url === 'string' && url.trim().length > 0)
+    : []
+
+  return {
+    id,
+    inputPreview: inputUrls[0] || '',
+    inputUrls,
+    outputPreview,
+    prompt,
+    time: formatLocalTimestampToSeconds(item.createdAt || new Date().toISOString()),
+    modelId: isImageModelId(item.model) ? item.model : undefined,
+    aspectRatio: item.aspectRatio || undefined,
+    resolution: item.resolution || undefined,
+    outputFormat: item.outputFormat || undefined,
+  }
+}
+
+function getPersistedHistoryCreatedAtMs(item: PersistedGenerationHistoryItem): number {
+  const createdAtMs = Date.parse(item.createdAt || '')
+  return Number.isFinite(createdAtMs) ? createdAtMs : 0
+}
+
+function sortPersistedHistoryItemsNewestFirst(items: PersistedGenerationHistoryItem[]): PersistedGenerationHistoryItem[] {
+  return [...items].sort((a, b) => getPersistedHistoryCreatedAtMs(b) - getPersistedHistoryCreatedAtMs(a))
+}
+
+function normalizeStoredPendingGenerationItem(item: unknown): PendingGenerationItem | null {
+  if (!item || typeof item !== 'object') return null
+  const candidate = item as Partial<PendingGenerationItem>
+  const id = String(candidate.id || '').trim()
+  const prompt = String(candidate.prompt || '').trim()
+  const modelId = candidate.modelId
+  const startedAt = Number(candidate.startedAt)
+
+  if (!id || !prompt || !isImageModelId(modelId) || !Number.isFinite(startedAt)) return null
+
+  const inputUrls = Array.isArray(candidate.inputUrls)
+    ? candidate.inputUrls.filter((url): url is string => typeof url === 'string' && url.trim().length > 0)
+    : []
+  const taskId = typeof candidate.taskId === 'string' && candidate.taskId.trim()
+    ? candidate.taskId.trim()
+    : undefined
+
+  return {
+    id,
+    inputPreview: typeof candidate.inputPreview === 'string' ? candidate.inputPreview : inputUrls[0] || '',
+    inputUrls,
+    prompt,
+    startedAt,
+    modelId,
+    modelName: typeof candidate.modelName === 'string' && candidate.modelName.trim()
+      ? candidate.modelName.trim()
+      : modelId,
+    aspectRatio: typeof candidate.aspectRatio === 'string' ? candidate.aspectRatio : undefined,
+    resolution: typeof candidate.resolution === 'string' ? candidate.resolution : undefined,
+    outputFormat: typeof candidate.outputFormat === 'string' ? candidate.outputFormat : undefined,
+    taskId,
+    creditHold: candidate.creditHold,
+    restored: true,
+  }
+}
+
+function getStoredPendingGenerationItems(): PendingGenerationItem[] {
+  if (typeof window === 'undefined') return []
+
+  try {
+    const raw = window.sessionStorage.getItem(PENDING_GENERATION_STORAGE_KEY)
+    if (!raw) return []
+    const parsed = JSON.parse(raw)
+    if (!Array.isArray(parsed)) return []
+    return parsed
+      .map(normalizeStoredPendingGenerationItem)
+      .filter((item): item is PendingGenerationItem => Boolean(item))
+      .sort((a, b) => b.startedAt - a.startedAt)
+  } catch {
+    window.sessionStorage.removeItem(PENDING_GENERATION_STORAGE_KEY)
+    return []
+  }
+}
+
 interface ImageItem {
   file: File
   preview: string
@@ -245,6 +370,20 @@ const EMPTY_PROMPT_PRESETS: PromptPreset[] = []
 const EMPTY_PROMPT_PRESET_TABS: PromptPresetTab[] = []
 
 const AUTH_CACHE_STORAGE_KEY = 'toolaze.authSnapshot'
+type DesktopPromptTooltipState = {
+  text: string
+  left: number
+  top: number
+  width: number
+} | null
+type RemoteReferenceImageState = 'loading' | 'loaded' | 'retrying' | 'failed'
+
+const promptPreviewClampStyle: React.CSSProperties = {
+  display: '-webkit-box',
+  WebkitLineClamp: 4,
+  WebkitBoxOrient: 'vertical',
+  overflow: 'hidden',
+}
 
 const composePromptParts = (...parts: Array<string | undefined>) =>
   parts
@@ -792,12 +931,14 @@ export default function AiImageGenerationTool({
     resolution: 'Resolution',
     highResUnavailable: '2K and 4K are temporarily unavailable.',
     outputFormat: 'Output Format',
+    demo: 'Demo',
     sampleImage: 'Sample Image',
     noDemoImageYet: 'No Demo Image Yet',
     inputImage: 'Reference Image',
     history: 'History',
     noHistory: 'No history yet. Generate an image to see it here.',
     recreate: 'Recreate',
+    editImage: 'Edit Image',
     download: 'Download',
     downloading: 'Downloading...',
     copyPrompt: 'Copy Prompt',
@@ -807,6 +948,7 @@ export default function AiImageGenerationTool({
     generate: 'Generate',
     generating: 'Generating...',
     generatingSeconds: 'Generating... {seconds}s',
+    referenceImageLoading: 'Loading',
     generatedAlt: 'Generated',
     resultRetentionLogin: 'Log In',
     resultRetentionMessage: ' to keep your generation history permanently.',
@@ -850,10 +992,14 @@ export default function AiImageGenerationTool({
   const selectedModelOption = modelOptions.find((option) => option.id === selectedModelId)
   const displayModelName = hideModelBranding ? 'AI image' : selectedModelName
   const modelConfig = MODEL_CONFIG[selectedModelId]
-  const configuredMaxImages = typeof maxUploadImages === 'number' && Number.isFinite(maxUploadImages)
-    ? Math.max(0, Math.min(Math.floor(maxUploadImages), modelConfig.maxImages))
-    : undefined
-  const MAX_IMAGES = configuredMaxImages ?? (isCouplePhotoMakerMode ? 2 : modelConfig.maxImages)
+  const getMaxImagesForModel = (id: ImageModelId) => {
+    const modelMaxImages = MODEL_CONFIG[id].maxImages
+    const configuredMaxImages = typeof maxUploadImages === 'number' && Number.isFinite(maxUploadImages)
+      ? Math.max(0, Math.min(Math.floor(maxUploadImages), modelMaxImages))
+      : undefined
+    return configuredMaxImages ?? (isCouplePhotoMakerMode ? Math.min(2, modelMaxImages) : modelMaxImages)
+  }
+  const MAX_IMAGES = getMaxImagesForModel(selectedModelId)
   const MAX_FILE_SIZE_MB = modelConfig.maxFileSizeMb ?? 30
   const MAX_FILE_SIZE = MAX_FILE_SIZE_MB * 1024 * 1024
   const [activeTab, setActiveTab] = useState<'image-to-image' | 'text-to-image'>(defaultMode || getDefaultTabForModel(modelId))
@@ -885,12 +1031,16 @@ export default function AiImageGenerationTool({
     const firstStyle = NANO_BANANA_2_COUPLE_TEMPLATES.find((item) => item.category === 'style')
     return firstStyle?.id ?? ''
   })
-  const [isGenerating, setIsGenerating] = useState(false)
   const [rightMode, setRightMode] = useState<RightPanelMode>('sample')
   const [history, setHistory] = useState<HistoryItem[]>([])
+  const [pendingGenerationItems, setPendingGenerationItems] = useState<PendingGenerationItem[]>(() => getStoredPendingGenerationItems())
+  const [failedGenerationItems, setFailedGenerationItems] = useState<FailedGenerationItem[]>([])
+  const [activeSettingsHistoryItemId, setActiveSettingsHistoryItemId] = useState<string | null>(null)
   const [currentResult, setCurrentResult] = useState<HistoryItem | null>(null)
   const [remoteImageUrls, setRemoteImageUrls] = useState<string[]>(defaultImageUrls.slice(0, MAX_IMAGES))
+  const [remoteImagePreviewStates, setRemoteImagePreviewStates] = useState<Record<string, RemoteReferenceImageState>>({})
   const [previewImage, setPreviewImage] = useState<string | null>(null)
+  const [desktopPromptTooltip, setDesktopPromptTooltip] = useState<DesktopPromptTooltipState>(null)
   const [promptDemoImage, setPromptDemoImage] = useState<PromptDemoImage | null>(null)
   const [downloadingUrl, setDownloadingUrl] = useState<string | null>(null)
   const [toasts, setToasts] = useState<Array<{ id: string; msg: string; type: string }>>([])
@@ -900,6 +1050,8 @@ export default function AiImageGenerationTool({
   const fileInputRef = useRef<HTMLInputElement>(null)
   const promptTextareaRef = useRef<HTMLTextAreaElement>(null)
   const modelSelectorRef = useRef<HTMLDivElement>(null)
+  const historyItemRefs = useRef(new Map<string, HTMLDivElement>())
+  const restoredGenerationPollIdsRef = useRef(new Set<string>())
   const shouldPositionInsertedPromptRef = useRef(false)
   const localIdRef = useRef(0)
   const [isModelMenuOpen, setIsModelMenuOpen] = useState(false)
@@ -908,6 +1060,8 @@ export default function AiImageGenerationTool({
   const selectedModelGroup = modelGroups.find((group) => group.models.some((model) => model.id === selectedModelId)) || modelGroups[0]
   const generationCreditCost = calculateImageGenerationCredits(selectedModelId, resolution)
   const historyPageHref = getLocalizedInternalPath(pathname, '/history')
+  const isGenerating = pendingGenerationItems.length > 0
+  const hasDesktopResultTabs = isGenerating || failedGenerationItems.length > 0 || history.length > 0
   const resolutionOptions = useMemo(
     () => getResolutionOptionsForModel(selectedModelId),
     [selectedModelId]
@@ -986,11 +1140,12 @@ export default function AiImageGenerationTool({
   const getGenerationReferenceUrls = (
     userReferenceUrls: string[],
     templateReferenceImage?: string,
+    maxImages = modelConfig.maxImages,
   ) => {
     const combined = templateReferenceImage
       ? [...userReferenceUrls, templateReferenceImage]
       : userReferenceUrls
-    return Array.from(new Set(combined)).slice(0, modelConfig.maxImages)
+    return Array.from(new Set(combined)).slice(0, maxImages)
   }
 
   const selectPromptPresetTab = (tabId: string) => {
@@ -1018,6 +1173,20 @@ export default function AiImageGenerationTool({
     const nextRemoteImageUrls = defaultImageUrls.slice(0, MAX_IMAGES)
     setRemoteImageUrls((prev) => areStringArraysEqual(prev, nextRemoteImageUrls) ? prev : nextRemoteImageUrls)
   }, [defaultImageUrls, MAX_IMAGES])
+
+  const setRemoteImagePreviewState = (url: string, state: RemoteReferenceImageState) => {
+    setRemoteImagePreviewStates((prev) => ({ ...prev, [url]: state }))
+  }
+
+  useEffect(() => {
+    setRemoteImagePreviewStates((prev) => {
+      const nextStates: Record<string, RemoteReferenceImageState> = {}
+      remoteImageUrls.forEach((url) => {
+        nextStates[url] = prev[url] || 'loading'
+      })
+      return nextStates
+    })
+  }, [remoteImageUrls])
 
   useEffect(() => {
     if (modelConfig.aspectRatios.some((item) => item.value === aspectRatio)) return
@@ -1175,6 +1344,195 @@ export default function AiImageGenerationTool({
     return `${prefix}-${Date.now()}-${localIdRef.current}`
   }, [])
 
+  const addHistoryItemToFeed = useCallback((item: HistoryItem) => {
+    setHistory((prev) => [item, ...prev.filter((historyItem) => historyItem.id !== item.id)].slice(0, 20))
+    setCurrentResult(item)
+  }, [])
+
+  const parseJsonSafely = useCallback(async (res: Response): Promise<Record<string, any>> => {
+    const text = await res.text()
+    if (!text) return {}
+    try {
+      return JSON.parse(text) as Record<string, any>
+    } catch {
+      throw new Error(toolText.serverNonJson)
+    }
+  }, [toolText.serverNonJson])
+
+  const saveGeneratedImageToR2 = useCallback(async (outputUrl: string) => {
+    try {
+      const saveRes = await fetch('/api/save-image-to-r2', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ imageUrl: outputUrl }),
+      })
+      if (!saveRes.ok) return outputUrl
+      const data = await parseJsonSafely(saveRes)
+      return typeof data.url === 'string' && data.url ? data.url : outputUrl
+    } catch {
+      return outputUrl
+    }
+  }, [parseJsonSafely])
+
+  const persistGeneratedHistoryItem = useCallback(async (
+    item: {
+      outputUrl: string
+      inputUrls?: string[]
+      prompt: string
+      modelId: ImageModelId
+      modelName: string
+      aspectRatio?: string
+      resolution?: string
+      outputFormat?: string
+      mediaType?: 'image' | 'video'
+    },
+  ) => {
+    const historyTool = getHistoryToolMetadata(pathname, item.modelName, item.modelId)
+
+    try {
+      const response = await fetch('/api/history', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          mediaType: item.mediaType || 'image',
+          model: item.modelId,
+          prompt: item.prompt,
+          outputUrl: item.outputUrl,
+          inputUrls: item.inputUrls || [],
+          aspectRatio: item.aspectRatio,
+          resolution: item.resolution,
+          outputFormat: item.outputFormat,
+          ...historyTool,
+        }),
+      })
+      if (!response.ok) return null
+      const data = await response.json().catch(() => ({}))
+      return data?.item || null
+    } catch {
+      return null
+    }
+  }, [pathname])
+
+  const pollRestoredGenerationItem = useCallback(async (item: PendingGenerationItem) => {
+    if (!item.taskId) return
+
+    try {
+      let attempts = 0
+      const maxAttempts = 60
+      const pollInterval = 5000
+
+      const pollStatus = async (): Promise<string> => {
+        let statusResponse: Response
+        try {
+          statusResponse = await fetch('/api/image-to-image/status', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ taskId: item.taskId, creditHold: item.creditHold || null }),
+            credentials: 'include',
+          })
+        } catch (error: any) {
+          const msg = error?.message || toolText.networkError
+          if (msg.includes('fetch') || msg.includes('Failed to fetch') || msg.includes('NetworkError')) {
+            attempts++
+            if (attempts >= maxAttempts) {
+              throw new Error(toolText.networkFailed)
+            }
+            await new Promise((resolve) => setTimeout(resolve, pollInterval))
+            return pollStatus()
+          }
+          throw new Error(`${toolText.requestFailed} ${msg}`)
+        }
+
+        if (!statusResponse.ok) {
+          const errBody = await parseJsonSafely(statusResponse).catch(() => ({}))
+          const errMsg = (errBody as { error?: string })?.error || formatToolText(toolText.checkStatusFailed, { status: statusResponse.status })
+          const transientError =
+            statusResponse.status >= 500 ||
+            errMsg.includes('fetch failed') ||
+            errMsg.includes('recordInfo is null')
+          if (transientError) {
+            attempts++
+            if (attempts >= maxAttempts) {
+              throw new Error(toolText.serviceUnstable)
+            }
+            await new Promise((resolve) => setTimeout(resolve, pollInterval))
+            return pollStatus()
+          }
+          throw new Error(errMsg)
+        }
+
+        const statusResult = await parseJsonSafely(statusResponse)
+        if (statusResult.credits) {
+          dispatchCreditsUpdated(statusResult.credits)
+        }
+        if (statusResult.status === 'SUCCEEDED' && statusResult.imageUrl) {
+          return statusResult.imageUrl as string
+        }
+        if (statusResult.status === 'FAILED') {
+          throw new Error(String(statusResult.message || toolText.imageGenerationFailed))
+        }
+
+        attempts++
+        if (attempts >= maxAttempts) {
+          throw new Error(toolText.generationTimeout)
+        }
+
+        await new Promise((resolve) => setTimeout(resolve, pollInterval))
+        return pollStatus()
+      }
+
+      const outputUrl = await pollStatus()
+      const finalUrl = await saveGeneratedImageToR2(outputUrl)
+      const savedItem = await persistGeneratedHistoryItem({
+        outputUrl: finalUrl,
+        inputUrls: item.inputUrls || [],
+        prompt: item.prompt,
+        modelId: item.modelId,
+        modelName: item.modelName,
+        aspectRatio: item.aspectRatio,
+        resolution: item.resolution,
+        outputFormat: item.outputFormat,
+      })
+      addHistoryItemToFeed({
+        id: savedItem?.id || item.id,
+        inputPreview: item.inputPreview || item.inputUrls?.[0] || '',
+        inputUrls: item.inputUrls || [],
+        outputPreview: finalUrl,
+        prompt: item.prompt,
+        time: formatLocalTimestampToSeconds(savedItem?.createdAt || new Date().toISOString()),
+        modelId: item.modelId,
+        aspectRatio: item.aspectRatio,
+        resolution: item.resolution,
+        outputFormat: item.outputFormat,
+      })
+      setRightMode('history')
+    } catch (error: any) {
+      const errorMessage = error?.message || toolText.imageGenerationFailed
+      dispatchToolazeTopNotice({
+        type: 'error',
+        title: 'Generation Failed',
+        message: errorMessage,
+      })
+      setFailedGenerationItems((prev) => [{ ...item, errorMessage }, ...prev].slice(0, 20))
+      setRightMode('history')
+    } finally {
+      setPendingGenerationItems((prev) => prev.filter((pendingItem) => pendingItem.id !== item.id))
+      restoredGenerationPollIdsRef.current.delete(item.id)
+    }
+  }, [
+    addHistoryItemToFeed,
+    parseJsonSafely,
+    persistGeneratedHistoryItem,
+    saveGeneratedImageToR2,
+    toolText.checkStatusFailed,
+    toolText.generationTimeout,
+    toolText.imageGenerationFailed,
+    toolText.networkError,
+    toolText.networkFailed,
+    toolText.requestFailed,
+    toolText.serviceUnstable,
+  ])
+
   const showToast = (msg: string, type: 'success' | 'error' | 'warning' | 'info' = 'info') => {
     const id = createLocalId('toast')
     const cleanMsg = msg.replace(/✅|❌|⚠️|❗/g, '').trim()
@@ -1185,6 +1543,71 @@ export default function AiImageGenerationTool({
       setToasts(prev => prev.filter(t => t.id !== id))
     }, 4000)
   }
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    if (pendingGenerationItems.length === 0) {
+      window.sessionStorage.removeItem(PENDING_GENERATION_STORAGE_KEY)
+      return
+    }
+
+    window.sessionStorage.setItem(PENDING_GENERATION_STORAGE_KEY, JSON.stringify(pendingGenerationItems))
+  }, [pendingGenerationItems])
+
+  useEffect(() => {
+    if (pendingGenerationItems.length > 0) {
+      setRightMode('history')
+    }
+  }, [pendingGenerationItems.length])
+
+  useEffect(() => {
+    const restoredPendingGenerationItems = pendingGenerationItems.filter((item) => item.restored && item.taskId)
+    restoredPendingGenerationItems.forEach((item) => {
+      if (restoredGenerationPollIdsRef.current.has(item.id)) return
+      restoredGenerationPollIdsRef.current.add(item.id)
+      void pollRestoredGenerationItem(item)
+    })
+  }, [pendingGenerationItems, pollRestoredGenerationItem])
+
+  useEffect(() => {
+    if (isCouplePhotoMakerMode) return
+
+    let cancelled = false
+
+    const loadInlineHistory = async () => {
+      try {
+        const response = await fetch('/api/history?limit=20', {
+          cache: 'no-store',
+          credentials: 'include',
+        })
+        if (!response.ok) return
+        const data: { items?: PersistedGenerationHistoryItem[] } = await response.json().catch(() => ({ items: [] }))
+        const loadedHistory = Array.isArray(data.items)
+          ? sortPersistedHistoryItemsNewestFirst(data.items)
+            .map(mapPersistedHistoryItem)
+            .filter((item: HistoryItem | null): item is HistoryItem => Boolean(item))
+          : []
+        if (cancelled || loadedHistory.length === 0) return
+        setHistory(loadedHistory)
+        setCurrentResult((prev) => prev || loadedHistory[0] || null)
+        setRightMode('history')
+      } catch {
+        // Inline history is an enhancement. The full History page remains the source of truth.
+      }
+    }
+
+    const refreshInlineHistory = () => {
+      void loadInlineHistory()
+    }
+
+    void loadInlineHistory()
+    window.addEventListener('toolaze:auth-updated', refreshInlineHistory)
+
+    return () => {
+      cancelled = true
+      window.removeEventListener('toolaze:auth-updated', refreshInlineHistory)
+    }
+  }, [isCouplePhotoMakerMode])
 
   const visibleTemplates = useMemo(
     () => NANO_BANANA_2_COUPLE_TEMPLATES.filter((item) => item.category === 'style'),
@@ -1371,11 +1794,26 @@ export default function AiImageGenerationTool({
   }
 
   const handleGenerate = async () => {
-    const hasReferenceImages = imageFiles.length > 0 || remoteImageUrls.length > 0
-    if (activeTab === 'image-to-image' && !hasReferenceImages) return
-    if (!prompt?.trim()) return
+    const requestPrompt = prompt.trim()
+    const requestActiveTab = activeTab
+    const requestImageFiles = [...imageFiles]
+    const requestRemoteImageUrls = [...remoteImageUrls]
+    const requestAspectRatio = aspectRatio
+    const requestResolution = resolution
+    const requestOutputFormat = outputFormat
+    const requestModelId = selectedModelId
+    const requestModelName = selectedModelName
+    const requestModelConfig = MODEL_CONFIG[requestModelId]
+    const requestCreditCost = generationCreditCost
+    const requestPromptModifierPrompt = selectedPromptModifierOption?.prompt
+    const requestTemplateReferenceImage = selectedPromptPresetReferenceImage
+    const hasReferenceImages = requestImageFiles.length > 0 || requestRemoteImageUrls.length > 0
+
+    if (requestActiveTab === 'image-to-image' && !hasReferenceImages) return
+    if (!requestPrompt) return
+
     trackToolazeEvent('image_generate_click', getGenerationAnalyticsPayload())
-    const authState = await ensureSignedInForGeneration(generationCreditCost)
+    const authState = await ensureSignedInForGeneration(requestCreditCost)
     if (!authState.isSignedIn) {
       showToast('Please sign in with Google to generate images.', 'warning')
       window.dispatchEvent(new CustomEvent('toolaze:open-auth-modal'))
@@ -1386,38 +1824,59 @@ export default function AiImageGenerationTool({
       return
     }
     setIsUserSignedIn(true)
-    setIsGenerating(true)
-    setRightMode('generating')
-    let rollbackOptimisticCredits = startOptimisticCreditDeduction(generationCreditCost)
+
+    const effectivePrompt = composePromptParts(
+      requestPrompt,
+      requestPromptModifierPrompt,
+      isCouplePhotoMakerMode ? COUPLE_IDENTITY_LOCK_INSTRUCTION : undefined,
+    )
+    const generationPreviewInputUrls = requestActiveTab === 'image-to-image'
+      ? getGenerationReferenceUrls(
+        [...requestImageFiles.map((item) => item.preview), ...requestRemoteImageUrls],
+        requestTemplateReferenceImage,
+        requestModelConfig.maxImages,
+      )
+      : []
+    const pendingItem: PendingGenerationItem = {
+      id: createLocalId('pending'),
+      inputPreview: generationPreviewInputUrls[0] || '',
+      inputUrls: generationPreviewInputUrls,
+      prompt: effectivePrompt,
+      startedAt: Date.now(),
+      modelId: requestModelId,
+      modelName: requestModelName,
+      aspectRatio: requestAspectRatio,
+      resolution: requestResolution,
+      outputFormat: requestOutputFormat,
+    }
+
+    setPendingGenerationItems((prev) => [pendingItem, ...prev])
+    setRightMode('history')
+    let rollbackOptimisticCredits = startOptimisticCreditDeduction(requestCreditCost)
 
     try {
-      const effectivePrompt = composePromptParts(
-        prompt.trim(),
-        selectedPromptModifierOption?.prompt,
-        isCouplePhotoMakerMode ? COUPLE_IDENTITY_LOCK_INSTRUCTION : undefined,
-      )
       const formData = new FormData()
       formData.append('prompt', effectivePrompt)
-      formData.append('aspectRatio', aspectRatio)
-      formData.append('resolution', selectedModelId === 'wan-2-7-image' && activeTab === 'image-to-image' && resolution === '4K' ? '2K' : resolution)
-      if (selectedModelId === 'seedream-4-5' || selectedModelId === 'seedream-5-0-lite' || selectedModelId === 'seedream-5-0-pro') {
-        formData.append('quality', selectedModelId === 'seedream-5-0-pro'
-          ? (resolution === '2K' ? 'High' : 'Basic')
-          : (resolution === '4K' ? 'High' : 'Basic'))
+      formData.append('aspectRatio', requestAspectRatio)
+      formData.append('resolution', requestModelId === 'wan-2-7-image' && requestActiveTab === 'image-to-image' && requestResolution === '4K' ? '2K' : requestResolution)
+      if (requestModelId === 'seedream-4-5' || requestModelId === 'seedream-5-0-lite' || requestModelId === 'seedream-5-0-pro') {
+        formData.append('quality', requestModelId === 'seedream-5-0-pro'
+          ? (requestResolution === '2K' ? 'High' : 'Basic')
+          : (requestResolution === '4K' ? 'High' : 'Basic'))
       }
-      if (modelConfig.supportsOutputFormat) {
-        formData.append('outputFormat', outputFormat)
+      if (requestModelConfig.supportsOutputFormat) {
+        formData.append('outputFormat', requestOutputFormat)
       }
-      formData.append('isImageToImage', String(activeTab === 'image-to-image'))
-      formData.append('model', selectedModelId)
+      formData.append('isImageToImage', String(requestActiveTab === 'image-to-image'))
+      formData.append('model', requestModelId)
 
       const uploadUrl = getImageUploadUrl()
 
-      let generationInputUrls = [...remoteImageUrls]
-      if (activeTab === 'image-to-image' && imageFiles.length > 0) {
+      let generationInputUrls = [...requestRemoteImageUrls]
+      if (requestActiveTab === 'image-to-image' && requestImageFiles.length > 0) {
         // 批量上传所有图片
         const imageUrls: string[] = []
-        for (const imageItem of imageFiles) {
+        for (const imageItem of requestImageFiles) {
           const uploadForm = new FormData()
           uploadForm.append('image', imageItem.file)
           let uploadRes: Response
@@ -1450,9 +1909,10 @@ export default function AiImageGenerationTool({
       }
       generationInputUrls = getGenerationReferenceUrls(
         generationInputUrls,
-        selectedPromptPresetReferenceImage,
+        requestTemplateReferenceImage,
+        requestModelConfig.maxImages,
       )
-      if (activeTab === 'image-to-image' && generationInputUrls.length > 0) {
+      if (requestActiveTab === 'image-to-image' && generationInputUrls.length > 0) {
         generationInputUrls = await uploadRemoteReferenceUrlsForGeneration(
           generationInputUrls,
           uploadUrl,
@@ -1462,16 +1922,6 @@ export default function AiImageGenerationTool({
       }
 
       const generateResponse = await requestImageGenerationTask(formData, toolText)
-
-      const parseJsonSafely = async (res: Response): Promise<Record<string, any>> => {
-        const text = await res.text()
-        if (!text) return {}
-        try {
-          return JSON.parse(text) as Record<string, any>
-        } catch {
-          throw new Error(toolText.serverNonJson)
-        }
-      }
 
       if (!generateResponse.ok) {
         const errorData = await parseJsonSafely(generateResponse)
@@ -1483,8 +1933,7 @@ export default function AiImageGenerationTool({
           rollbackOptimisticCredits?.()
           rollbackOptimisticCredits = null
           setCreditExhaustedModalOpen(true)
-          setIsGenerating(false)
-          setRightMode(currentResult ? 'result' : 'sample')
+          setRightMode(currentResult ? 'history' : 'sample')
           return
         }
         if (generateResponse.status === 401) {
@@ -1493,8 +1942,7 @@ export default function AiImageGenerationTool({
             rollbackOptimisticCredits?.()
             rollbackOptimisticCredits = null
             setCreditExhaustedModalOpen(true)
-            setIsGenerating(false)
-            setRightMode(currentResult ? 'result' : 'sample')
+            setRightMode(currentResult ? 'history' : 'sample')
             return
           }
 
@@ -1502,8 +1950,7 @@ export default function AiImageGenerationTool({
           rollbackOptimisticCredits = null
           showToast('Please sign in with Google to generate images.', 'warning')
           window.dispatchEvent(new CustomEvent('toolaze:open-auth-modal'))
-          setIsGenerating(false)
-          setRightMode(currentResult ? 'result' : 'sample')
+          setRightMode(currentResult ? 'history' : 'sample')
           return
         }
         throw new Error(errorData.error || toolText.generateFailed)
@@ -1517,68 +1964,39 @@ export default function AiImageGenerationTool({
       const taskId = generateResult.taskId
       const creditHold = generateResult.creditHold || null
 
-      const persistHistoryItem = async (outputUrl: string, mediaType: 'image' | 'video' = 'image') => {
-        const historyTool = getHistoryToolMetadata(pathname, selectedModelName, selectedModelId)
-
-        try {
-          const response = await fetch('/api/history', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              mediaType,
-              model: selectedModelId,
-              prompt: effectivePrompt,
-              outputUrl,
-              inputUrls: generationInputUrls,
-              aspectRatio,
-              resolution,
-              outputFormat,
-              ...historyTool,
-            }),
-          })
-          if (!response.ok) return null
-          const data = await response.json().catch(() => ({}))
-          return data?.item || null
-        } catch {
-          return null
-        }
-      }
-
       if (!taskId) {
         // 如果直接返回了图片 URL（同步）
         if (generateResult.imageUrl) {
-          const savedItem = await persistHistoryItem(generateResult.imageUrl)
+          const savedItem = await persistGeneratedHistoryItem({
+            outputUrl: generateResult.imageUrl,
+            inputUrls: generationInputUrls,
+            prompt: effectivePrompt,
+            modelId: requestModelId,
+            modelName: requestModelName,
+            aspectRatio: requestAspectRatio,
+            resolution: requestResolution,
+            outputFormat: requestOutputFormat,
+          })
           const item: HistoryItem = {
             id: savedItem?.id || createLocalId('sync'),
-            inputPreview: imageFiles.length > 0 ? imageFiles[0].preview : generationInputUrls[0] || '',
+            inputPreview: generationPreviewInputUrls[0] || '',
             inputUrls: generationInputUrls,
             outputPreview: generateResult.imageUrl,
             prompt: effectivePrompt,
             time: formatLocalTimestampToSeconds(savedItem?.createdAt || new Date().toISOString()),
-            modelId: selectedModelId,
-            aspectRatio,
-            resolution,
-            outputFormat,
+            modelId: requestModelId,
+            aspectRatio: requestAspectRatio,
+            resolution: requestResolution,
+            outputFormat: requestOutputFormat,
           }
-          // 使用函数式更新，确保基于最新状态
-          setHistory((prev) => {
-            // 确保不会重复添加相同的项
-            const exists = prev.find(h => h.id === item.id)
-            if (exists) {
-              console.warn('History item already exists:', item.id)
-              return prev
-            }
-            const newHistory = [item, ...prev]
-            console.log('Adding to history (sync):', item.id, 'Previous count:', prev.length, 'New count:', newHistory.length)
-            return newHistory
-          })
-          setCurrentResult(item)
-          setRightMode(isCouplePhotoMakerMode ? 'history' : 'result')
-          setIsGenerating(false)
+          addHistoryItemToFeed(item)
+          setRightMode('history')
           return
         }
         throw new Error(toolText.noResult)
       }
+
+      setPendingGenerationItems((prev) => prev.map((item) => item.id === pendingItem.id ? { ...item, taskId, creditHold } : item))
 
       // 轮询任务状态
       let attempts = 0
@@ -1652,51 +2070,32 @@ export default function AiImageGenerationTool({
       const outputUrl = await pollStatus()
 
       if (outputUrl) {
-        // 尝试把生成图存到自己的 R2，便于直接下载（避免跨域新开标签）
-        let finalUrl = outputUrl
-        try {
-          const saveRes = await fetch('/api/save-image-to-r2', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ imageUrl: outputUrl }),
-          })
-          if (saveRes.ok) {
-            const data = await parseJsonSafely(saveRes)
-            if ((data as { url?: string }).url) {
-              finalUrl = (data as { url: string }).url
-            }
-          }
-        } catch (_) {
-          // 存 R2 失败则继续用原始 URL
-        }
+        const finalUrl = await saveGeneratedImageToR2(outputUrl)
 
-        const savedItem = await persistHistoryItem(finalUrl)
+        const savedItem = await persistGeneratedHistoryItem({
+          outputUrl: finalUrl,
+          inputUrls: generationInputUrls,
+          prompt: effectivePrompt,
+          modelId: requestModelId,
+          modelName: requestModelName,
+          aspectRatio: requestAspectRatio,
+          resolution: requestResolution,
+          outputFormat: requestOutputFormat,
+        })
         const item: HistoryItem = {
           id: savedItem?.id || createLocalId('async'),
-          inputPreview: imageFiles.length > 0 ? imageFiles[0].preview : generationInputUrls[0] || '',
+          inputPreview: generationPreviewInputUrls[0] || '',
           inputUrls: generationInputUrls,
           outputPreview: finalUrl,
           prompt: effectivePrompt,
           time: formatLocalTimestampToSeconds(savedItem?.createdAt || new Date().toISOString()),
-          modelId: selectedModelId,
-          aspectRatio,
-          resolution,
-          outputFormat,
+          modelId: requestModelId,
+          aspectRatio: requestAspectRatio,
+          resolution: requestResolution,
+          outputFormat: requestOutputFormat,
         }
-        // 使用函数式更新，确保基于最新状态
-        setHistory((prev) => {
-          // 确保不会重复添加相同的项
-          const exists = prev.find(h => h.id === item.id)
-          if (exists) {
-            console.warn('History item already exists:', item.id)
-            return prev
-          }
-          const newHistory = [item, ...prev]
-          console.log('Adding to history (async):', item.id, 'Previous count:', prev.length, 'New count:', newHistory.length)
-          return newHistory
-        })
-        setCurrentResult(item)
-        setRightMode(isCouplePhotoMakerMode ? 'history' : 'result')
+        addHistoryItemToFeed(item)
+        setRightMode('history')
       }
     } catch (error: any) {
       rollbackOptimisticCredits?.()
@@ -1704,7 +2103,7 @@ export default function AiImageGenerationTool({
       console.warn('Generation warning:', error)
       if (isCreditExhaustedGenerationError(0, { error: error?.message })) {
         setCreditExhaustedModalOpen(true)
-        setRightMode(currentResult ? 'result' : 'sample')
+        setRightMode(currentResult ? 'history' : 'sample')
         return
       }
       dispatchToolazeTopNotice({
@@ -1712,9 +2111,11 @@ export default function AiImageGenerationTool({
         title: 'Generation Failed',
         message: error?.message || toolText.imageGenerationFailed,
       })
-      setRightMode('sample')
+      const errorMessage = error?.message || toolText.imageGenerationFailed
+      setFailedGenerationItems((prev) => [{ ...pendingItem, errorMessage }, ...prev].slice(0, 20))
+      setRightMode('history')
     } finally {
-      setIsGenerating(false)
+      setPendingGenerationItems((prev) => prev.filter((item) => item.id !== pendingItem.id))
     }
   }
 
@@ -1818,18 +2219,7 @@ export default function AiImageGenerationTool({
 
   const handleRecreateFromCurrent = () => {
     if (!currentResult) return
-    const nextPrompt = currentResult.prompt?.trim() || ''
-    if (!nextPrompt) return
-
-    setPrompt(nextPrompt)
-    if (activeTab === 'image-to-image' && imageFiles.length === 0) {
-      setActiveTab('text-to-image')
-      showToast(toolText.recreateMissingInput, 'info')
-    }
-
-    setTimeout(() => {
-      handleGenerate()
-    }, 0)
+    applyHistoryItemToForm(currentResult)
   }
 
   const sampleImage = useMemo(() => {
@@ -2007,6 +2397,476 @@ export default function AiImageGenerationTool({
     )
   }
 
+  const copyPromptToClipboard = async (promptText: string) => {
+    try {
+      await navigator.clipboard.writeText(promptText)
+      showToast(toolText.promptCopied, 'success')
+    } catch (err) {
+      console.error('Failed to copy:', err)
+      const textArea = document.createElement('textarea')
+      textArea.value = promptText
+      textArea.style.position = 'fixed'
+      textArea.style.opacity = '0'
+      document.body.appendChild(textArea)
+      textArea.select()
+      try {
+        document.execCommand('copy')
+        showToast(toolText.promptCopied, 'success')
+      } catch (fallbackErr) {
+        console.error('Fallback copy failed:', fallbackErr)
+        showToast(toolText.promptCopyFailed, 'error')
+      }
+      document.body.removeChild(textArea)
+    }
+  }
+
+  const handleDesktopResultFeedWheel = (event: React.WheelEvent<HTMLDivElement>) => {
+    const container = event.currentTarget
+    event.preventDefault()
+    event.stopPropagation()
+    container.scrollTop += event.deltaY
+  }
+
+  const showDesktopPromptTooltip = (
+    event: React.MouseEvent<HTMLElement> | React.FocusEvent<HTMLElement>,
+    promptText: string,
+  ) => {
+    const rect = event.currentTarget.getBoundingClientRect()
+    const viewportPadding = 16
+    const width = Math.min(544, window.innerWidth - viewportPadding * 2)
+    const left = Math.max(
+      viewportPadding,
+      Math.min(rect.left, window.innerWidth - width - viewportPadding),
+    )
+    const preferredTop = rect.bottom + 8
+    const top = preferredTop + 224 <= window.innerHeight - viewportPadding
+      ? preferredTop
+      : Math.max(viewportPadding, rect.top - 232)
+
+    setDesktopPromptTooltip({ text: promptText, left, top, width })
+  }
+
+  const hideDesktopPromptTooltip = () => {
+    setDesktopPromptTooltip(null)
+  }
+
+  const renderDesktopPromptPreview = (promptText: string, testId: string) => (
+    <div
+      className="relative min-w-0"
+      onMouseEnter={(event) => showDesktopPromptTooltip(event, promptText)}
+      onMouseLeave={hideDesktopPromptTooltip}
+      onFocus={(event) => showDesktopPromptTooltip(event, promptText)}
+      onBlur={hideDesktopPromptTooltip}
+    >
+      <p
+        data-desktop-result-prompt={testId === 'data-desktop-result-prompt' ? true : undefined}
+        data-desktop-pending-result-prompt={testId === 'data-desktop-pending-result-prompt' ? true : undefined}
+        data-desktop-failed-result-prompt={testId === 'data-desktop-failed-result-prompt' ? true : undefined}
+        aria-label={promptText}
+        tabIndex={0}
+        style={promptPreviewClampStyle}
+        className="text-sm leading-6 text-slate-600 focus:outline-none"
+      >
+        {promptText}
+      </p>
+    </div>
+  )
+
+  const getHistoryItemModelName = (item: HistoryItem) =>
+    item.modelId
+      ? modelOptions.find((option) => option.id === item.modelId)?.name || selectedModelName
+      : selectedModelName
+
+  const setHistoryItemRef = (itemId: string, node: HTMLDivElement | null) => {
+    if (node) {
+      historyItemRefs.current.set(itemId, node)
+      return
+    }
+    historyItemRefs.current.delete(itemId)
+  }
+
+  const applyHistoryItemToForm = (item: HistoryItem) => {
+    if (item.modelId) {
+      setSelectedModelId(item.modelId)
+      setActiveModelGroupId(getModelGroupId(item.modelId))
+    }
+    setPrompt(item.prompt)
+    setAspectRatio(item.aspectRatio || getDefaultAspectRatioForModel(item.modelId || selectedModelId, presetMode))
+    setResolution(item.resolution || getDefaultResolutionForModel(item.modelId || selectedModelId))
+    setOutputFormat(item.outputFormat || 'Auto')
+    setRemoteImageUrls((item.inputUrls || []).slice(0, getMaxImagesForModel(item.modelId || selectedModelId)))
+    setActiveTab(item.inputUrls?.length ? 'image-to-image' : 'text-to-image')
+    setCurrentResult(item)
+    setActiveSettingsHistoryItemId(item.id)
+    historyItemRefs.current.get(item.id)?.scrollIntoView({ block: 'nearest', behavior: 'smooth' })
+  }
+
+  const editHistoryItemImage = (item: HistoryItem) => {
+    setImageFiles([])
+    setRemoteImageUrls([item.outputPreview].slice(0, getMaxImagesForModel(selectedModelId)))
+    setActiveTab('image-to-image')
+    setActiveSettingsHistoryItemId(item.id)
+    historyItemRefs.current.get(item.id)?.scrollIntoView({ block: 'nearest', behavior: 'smooth' })
+  }
+
+  const renderDesktopResultItem = (item: HistoryItem) => (
+    <div
+      key={item.id}
+      ref={(node) => setHistoryItemRef(item.id, node)}
+      data-desktop-result-item
+      className={`grid gap-6 rounded-2xl border-b border-[#E0E7FF] pb-6 transition-colors last:border-b-0 last:pb-0 lg:grid-cols-[minmax(0,240px)_minmax(0,1fr)] xl:grid-cols-[minmax(0,280px)_minmax(0,1fr)] ${
+        activeSettingsHistoryItemId === item.id ? 'bg-[#EEF2FF]/60 p-4 ring-1 ring-[#C7D2FE]' : ''
+      }`}
+    >
+      <button
+        type="button"
+        onClick={() => setPreviewImage(item.outputPreview)}
+        className="flex min-h-[140px] items-center justify-center rounded-xl bg-slate-50 p-2 focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/40"
+        title={toolText.generatedAlt}
+      >
+        <img
+          src={getDisplayImagePreviewUrl(item.outputPreview, 960)}
+          alt={toolText.generatedAlt}
+          className="max-h-[220px] w-full rounded-lg object-contain transition-opacity hover:opacity-90"
+          loading="lazy"
+          decoding="async"
+        />
+      </button>
+
+      <div className="min-w-0 space-y-4">
+        <div className="flex items-start justify-between gap-4">
+          <div className="min-w-0">
+            <p className="mb-2 text-sm font-extrabold text-slate-900">{toolText.prompt}</p>
+            {renderDesktopPromptPreview(item.prompt, 'data-desktop-result-prompt')}
+          </div>
+          <button
+            type="button"
+            onClick={() => void copyPromptToClipboard(item.prompt)}
+            className="shrink-0 rounded-lg p-1.5 text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-800"
+            title={toolText.copyPrompt}
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+            </svg>
+          </button>
+        </div>
+
+        {item.inputPreview && (
+          <button
+            type="button"
+            onClick={() => setPreviewImage(item.inputPreview)}
+            className="block rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/40"
+            title={toolText.inputImage}
+          >
+            <img
+              src={getReferencePreviewUrl(item.inputPreview)}
+              alt={toolText.inputAlt}
+              className="h-14 w-14 rounded-lg object-cover ring-1 ring-[#E0E7FF] transition-opacity hover:opacity-80"
+              loading="lazy"
+              decoding="async"
+            />
+          </button>
+        )}
+
+        <div className="flex flex-wrap items-center gap-3 text-sm text-slate-500">
+          <span>{formatTagValue(item.aspectRatio)}</span>
+          {!hideModelBranding && (
+            <>
+              <span className="h-4 w-px bg-[#E0E7FF]" />
+              <span>{getHistoryItemModelName(item)}</span>
+            </>
+          )}
+          <span className="h-4 w-px bg-[#E0E7FF]" />
+          <span>{item.time}</span>
+        </div>
+
+        <div className="flex flex-wrap gap-2 pt-1">
+          <button
+            type="button"
+            onClick={() => applyHistoryItemToForm(item)}
+            className="rounded-xl bg-gradient-to-br from-[#4F46E5] to-[#9333EA] px-5 py-2.5 text-center text-sm font-bold text-white shadow-md transition-all duration-200 hover:shadow-lg"
+          >
+            {toolText.recreate}
+          </button>
+          <button
+            data-desktop-edit-image
+            type="button"
+            onClick={() => editHistoryItemImage(item)}
+            className="flex items-center justify-center rounded-xl border border-[#C7D2FE] px-3 py-2.5 text-[#4F46E5] transition-colors hover:bg-[#EEF2FF]"
+          >
+            {toolText.editImage}
+          </button>
+          <button
+            type="button"
+            onClick={() => handleDownload(item.outputPreview, `generated-${item.id}.png`)}
+            disabled={downloadingUrl === item.outputPreview}
+            className="flex items-center justify-center rounded-xl border border-[#C7D2FE] px-3 py-2.5 text-[#4F46E5] transition-colors hover:bg-[#EEF2FF] disabled:cursor-not-allowed disabled:opacity-50"
+            title={downloadingUrl === item.outputPreview ? toolText.downloading : toolText.download}
+          >
+            {downloadingUrl === item.outputPreview ? (
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="animate-spin">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" strokeDasharray="32" strokeDashoffset="16" opacity="0.3" />
+                <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" strokeDasharray="32" strokeDashoffset="16" strokeLinecap="round" />
+              </svg>
+            ) : (
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+            )}
+          </button>
+          <button
+            type="button"
+            onClick={() => void handleDeleteHistoryItem(item)}
+            className="flex items-center justify-center rounded-xl border border-[#C7D2FE] px-3 py-2.5 text-[#4F46E5] transition-colors hover:bg-[#EEF2FF]"
+            title={toolText.delete}
+          >
+            <DeleteIcon size={20} />
+          </button>
+        </div>
+      </div>
+    </div>
+  )
+
+  const renderDesktopPendingResultItem = (item: PendingGenerationItem) => (
+    <div
+      key={item.id}
+      data-desktop-result-item
+      className="grid gap-6 border-b border-[#E0E7FF] pb-6 lg:grid-cols-[minmax(0,240px)_minmax(0,1fr)] xl:grid-cols-[minmax(0,280px)_minmax(0,1fr)]"
+    >
+      <div className="flex min-h-[140px] items-center justify-center rounded-xl bg-slate-50 p-2">
+        <div className="flex flex-col items-center gap-4">
+          <div className="flex gap-2">
+            <div className="h-2.5 w-2.5 rounded-full bg-[#4F46E5] animate-pulse" style={{ animationDelay: '0s' }} />
+            <div className="h-2.5 w-2.5 rounded-full bg-[#4F46E5] animate-pulse" style={{ animationDelay: '0.2s' }} />
+            <div className="h-2.5 w-2.5 rounded-full bg-[#4F46E5] animate-pulse" style={{ animationDelay: '0.4s' }} />
+          </div>
+          <p className="text-sm font-semibold text-[#4F46E5]">
+            {formatToolText(toolText.generatingSeconds, {
+              seconds: Math.max(0, Math.floor((Date.now() - item.startedAt) / 1000)),
+            })}
+          </p>
+        </div>
+      </div>
+
+      <div className="min-w-0 space-y-4">
+        <div>
+          <p className="mb-2 text-sm font-extrabold text-slate-900">{toolText.prompt}</p>
+          {renderDesktopPromptPreview(item.prompt, 'data-desktop-pending-result-prompt')}
+        </div>
+        {item.inputPreview && (
+          <button
+            type="button"
+            onClick={() => setPreviewImage(item.inputPreview)}
+            className="block rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/40"
+            title={toolText.inputImage}
+          >
+            <img
+              src={getReferencePreviewUrl(item.inputPreview)}
+              alt={toolText.inputAlt}
+              className="h-14 w-14 rounded-lg object-cover ring-1 ring-[#E0E7FF]"
+            />
+          </button>
+        )}
+        <div className="flex flex-wrap items-center gap-3 text-sm text-slate-500">
+          <span>{formatTagValue(item.aspectRatio)}</span>
+          {!hideModelBranding && (
+            <>
+              <span className="h-4 w-px bg-[#E0E7FF]" />
+              <span>{item.modelName}</span>
+            </>
+          )}
+          <span className="h-4 w-px bg-[#E0E7FF]" />
+          <span>{new Date().toLocaleString()}</span>
+        </div>
+      </div>
+    </div>
+  )
+
+  const applyGenerationItemToForm = (item: PendingGenerationItem) => {
+    setSelectedModelId(item.modelId)
+    setActiveModelGroupId(getModelGroupId(item.modelId))
+    setPrompt(item.prompt)
+    setAspectRatio(item.aspectRatio || getDefaultAspectRatioForModel(item.modelId, presetMode))
+    setResolution(item.resolution || getDefaultResolutionForModel(item.modelId))
+    setOutputFormat(item.outputFormat || 'Auto')
+    setRemoteImageUrls((item.inputUrls || []).slice(0, getMaxImagesForModel(item.modelId)))
+    setActiveTab(item.inputUrls?.length ? 'image-to-image' : 'text-to-image')
+    setActiveSettingsHistoryItemId(item.id)
+    historyItemRefs.current.get(item.id)?.scrollIntoView({ block: 'nearest', behavior: 'smooth' })
+  }
+
+  const renderDesktopFailedResultItem = (item: FailedGenerationItem) => (
+    <div
+      key={item.id}
+      ref={(node) => setHistoryItemRef(item.id, node)}
+      data-desktop-failed-result-item
+      data-desktop-result-item
+      className={`grid gap-6 rounded-2xl border-b border-[#E0E7FF] pb-6 transition-colors lg:grid-cols-[minmax(0,240px)_minmax(0,1fr)] xl:grid-cols-[minmax(0,280px)_minmax(0,1fr)] ${
+        activeSettingsHistoryItemId === item.id ? 'bg-[#EEF2FF]/60 p-4 ring-1 ring-[#C7D2FE]' : ''
+      }`}
+    >
+      <div
+        data-desktop-failed-result-preview
+        className="flex min-h-[140px] items-center justify-center rounded-xl border border-red-100 bg-red-50/70 p-5 text-center"
+      >
+        <div className="space-y-2">
+          <div className="mx-auto flex h-9 w-9 items-center justify-center rounded-full bg-white text-red-600 ring-1 ring-red-200">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <line x1="12" y1="8" x2="12" y2="12" />
+              <line x1="12" y1="16" x2="12.01" y2="16" />
+            </svg>
+          </div>
+          <p className="text-sm font-extrabold text-red-700">{toolText.imageGenerationFailed}</p>
+          <p className="text-xs leading-5 text-red-600">{item.errorMessage}</p>
+        </div>
+      </div>
+
+      <div className="min-w-0 space-y-4">
+        <div className="flex items-start justify-between gap-4">
+          <div className="min-w-0">
+            <p className="mb-2 text-sm font-extrabold text-slate-900">{toolText.prompt}</p>
+            {renderDesktopPromptPreview(item.prompt, 'data-desktop-failed-result-prompt')}
+          </div>
+          <button
+            type="button"
+            onClick={() => void copyPromptToClipboard(item.prompt)}
+            className="shrink-0 rounded-lg p-1.5 text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-800"
+            title={toolText.copyPrompt}
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+            </svg>
+          </button>
+        </div>
+
+        {item.inputPreview && (
+          <button
+            type="button"
+            onClick={() => setPreviewImage(item.inputPreview)}
+            className="block rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/40"
+            title={toolText.inputImage}
+          >
+            <img
+              src={getReferencePreviewUrl(item.inputPreview)}
+              alt={toolText.inputAlt}
+              className="h-14 w-14 rounded-lg object-cover ring-1 ring-[#E0E7FF] transition-opacity hover:opacity-80"
+              loading="lazy"
+              decoding="async"
+            />
+          </button>
+        )}
+
+        <div className="flex flex-wrap items-center gap-3 text-sm text-slate-500">
+          <span>{formatTagValue(item.aspectRatio)}</span>
+          {!hideModelBranding && (
+            <>
+              <span className="h-4 w-px bg-[#E0E7FF]" />
+              <span>{item.modelName}</span>
+            </>
+          )}
+          <span className="h-4 w-px bg-[#E0E7FF]" />
+          <span>{new Date(item.startedAt).toLocaleString()}</span>
+        </div>
+
+        <div className="flex flex-wrap gap-2 pt-1">
+          <button
+            type="button"
+            onClick={() => applyGenerationItemToForm(item)}
+            className="rounded-xl bg-gradient-to-br from-[#4F46E5] to-[#9333EA] px-5 py-2.5 text-center text-sm font-bold text-white shadow-md transition-all duration-200 hover:shadow-lg"
+          >
+            {toolText.recreate}
+          </button>
+          <button
+            type="button"
+            data-desktop-failed-download
+            disabled
+            className="flex cursor-not-allowed items-center justify-center rounded-xl border border-slate-200 px-3 py-2.5 text-slate-300"
+            title={toolText.download}
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            onClick={() => setFailedGenerationItems((prev) => prev.filter((failedItem) => failedItem.id !== item.id))}
+            className="flex items-center justify-center rounded-xl border border-[#C7D2FE] px-3 py-2.5 text-[#4F46E5] transition-colors hover:bg-[#EEF2FF]"
+            title={toolText.delete}
+          >
+            <DeleteIcon size={20} />
+          </button>
+        </div>
+      </div>
+    </div>
+  )
+
+  const renderDesktopResultFeed = () => (
+    <div
+      data-desktop-result-feed
+      onWheel={handleDesktopResultFeedWheel}
+      className="flex h-full min-h-0 flex-col overflow-y-auto overscroll-contain p-6"
+    >
+      <div className="space-y-6">
+        {pendingGenerationItems.map((item) => (
+          renderDesktopPendingResultItem(item)
+        ))}
+        {failedGenerationItems.map((item) => (
+          renderDesktopFailedResultItem(item)
+        ))}
+        {history.map((item) => (
+          renderDesktopResultItem(item)
+        ))}
+        {!isGenerating && failedGenerationItems.length === 0 && history.length === 0 && (
+          <p className="rounded-2xl border border-dashed border-[#E0E7FF] bg-white px-4 py-10 text-center text-sm text-slate-500">
+            {toolText.noHistory}
+          </p>
+        )}
+        {renderResultRetentionPrompt()}
+      </div>
+    </div>
+  )
+
+  const renderDesktopResultTabs = () => (
+    <div
+      data-desktop-result-tabs
+      className="mx-auto flex w-fit shrink-0 items-center justify-center gap-1 rounded-full border border-[#E0E7FF] bg-white/90 p-1 shadow-sm shadow-[#4F46E5]/5"
+    >
+      <button
+        type="button"
+        data-desktop-result-tab="sample"
+        aria-pressed={rightMode !== 'history'}
+        onClick={() => setRightMode('sample')}
+        className={`inline-flex h-9 min-w-[84px] items-center justify-center rounded-full px-3.5 text-sm font-semibold transition-colors ${
+          rightMode !== 'history'
+            ? 'bg-[#EEF2FF] text-[#4F46E5] shadow-sm'
+            : 'text-slate-500 hover:bg-[#F8FAFF] hover:text-slate-700'
+        }`}
+      >
+        {toolText.demo}
+      </button>
+      <button
+        type="button"
+        data-desktop-result-tab="history"
+        aria-pressed={rightMode === 'history'}
+        onClick={() => setRightMode('history')}
+        className={`inline-flex h-9 min-w-[84px] items-center justify-center rounded-full px-3.5 text-sm font-semibold transition-colors ${
+          rightMode === 'history'
+            ? 'bg-[#EEF2FF] text-[#4F46E5] shadow-sm'
+            : 'text-slate-500 hover:bg-[#F8FAFF] hover:text-slate-700'
+        }`}
+      >
+        {toolText.history}
+      </button>
+    </div>
+  )
+
   const renderMobileTopPanel = () => (
     <div className="space-y-4 md:hidden">
       {(heroBreadcrumbItems?.length || heroEyebrow || heroTitle || heroDescription) && (
@@ -2086,7 +2946,26 @@ export default function AiImageGenerationTool({
               onClick={() => setPreviewImage(currentResult.outputPreview)}
               className="aspect-[4/3] w-full rounded-xl object-contain cursor-pointer bg-slate-50"
             />
-            <div data-mobile-result-actions className="mt-3 grid grid-cols-3 gap-2">
+            <div data-mobile-result-prompt className="mt-3 space-y-1.5 px-1">
+              <div className="flex items-center justify-between gap-3">
+                <p className="text-xs font-extrabold text-slate-900">{toolText.prompt}</p>
+                <button
+                  type="button"
+                  onClick={() => void copyPromptToClipboard(currentResult.prompt)}
+                  className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-800"
+                  title={toolText.copyPrompt}
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                  </svg>
+                </button>
+              </div>
+              <p className="max-h-24 overflow-y-auto text-xs leading-5 text-slate-600">
+                {currentResult.prompt}
+              </p>
+            </div>
+            <div data-mobile-result-actions className="mt-3 grid grid-cols-4 gap-2">
               <button
                 type="button"
                 onClick={handleRecreateFromCurrent}
@@ -2096,21 +2975,45 @@ export default function AiImageGenerationTool({
                 {toolText.recreate}
               </button>
               <button
+                data-mobile-edit-image
+                type="button"
+                onClick={() => editHistoryItemImage(currentResult)}
+                className="min-w-0 truncate rounded-xl border border-[#C7D2FE] px-2.5 py-2.5 text-xs font-extrabold text-[#4F46E5] transition-colors hover:bg-[#EEF2FF]"
+                title={toolText.editImage}
+              >
+                {toolText.editImage}
+              </button>
+              <button
+                data-mobile-download
                 type="button"
                 onClick={() => handleDownload(currentResult.outputPreview, `generated-${currentResult.id}.png`)}
                 disabled={downloadingUrl === currentResult.outputPreview}
-                className="min-w-0 truncate rounded-xl border border-[#C7D2FE] px-2.5 py-2.5 text-xs font-extrabold text-[#4F46E5] transition-colors hover:bg-[#EEF2FF] disabled:cursor-not-allowed disabled:opacity-60"
+                aria-label={downloadingUrl === currentResult.outputPreview ? toolText.downloading : toolText.download}
+                className="flex min-w-0 items-center justify-center rounded-xl border border-[#C7D2FE] px-2.5 py-2.5 text-xs font-extrabold text-[#4F46E5] transition-colors hover:bg-[#EEF2FF] disabled:cursor-not-allowed disabled:opacity-60"
                 title={downloadingUrl === currentResult.outputPreview ? toolText.downloading : toolText.download}
               >
-                {downloadingUrl === currentResult.outputPreview ? toolText.downloading : toolText.download}
+                {downloadingUrl === currentResult.outputPreview ? (
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="animate-spin">
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" strokeDasharray="32" strokeDashoffset="16" opacity="0.3" />
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" strokeDasharray="32" strokeDashoffset="16" strokeLinecap="round" />
+                  </svg>
+                ) : (
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="7 10 12 15 17 10" />
+                    <line x1="12" y1="15" x2="12" y2="3" />
+                  </svg>
+                )}
               </button>
               <button
+                data-mobile-delete
                 type="button"
                 onClick={() => void handleDeleteCurrentResult()}
-                className="min-w-0 truncate rounded-xl border border-[#C7D2FE] px-2.5 py-2.5 text-xs font-extrabold text-[#4F46E5] transition-colors hover:bg-[#EEF2FF]"
+                aria-label={toolText.delete}
+                className="flex min-w-0 items-center justify-center rounded-xl border border-[#C7D2FE] px-2.5 py-2.5 text-xs font-extrabold text-[#4F46E5] transition-colors hover:bg-[#EEF2FF]"
                 title={toolText.delete}
               >
-                {toolText.delete}
+                <DeleteIcon size={16} />
               </button>
             </div>
             {renderResultRetentionPrompt()}
@@ -2124,7 +3027,7 @@ export default function AiImageGenerationTool({
                   type="button"
                   onClick={() => {
                     setCurrentResult(item)
-                    setRightMode('result')
+                    setRightMode('history')
                   }}
                   className="overflow-hidden rounded-xl border border-[#E0E7FF] bg-white p-1 text-left"
                 >
@@ -2151,12 +3054,21 @@ export default function AiImageGenerationTool({
   const rightPanelShadowClass = plainRightPanel ? 'shadow-none' : 'shadow-lg shadow-[#4F46E5]/8'
 
   return (
-    <section className="flex min-h-0 flex-1 flex-col overflow-visible p-2 md:px-6 md:pb-6 md:pt-3 xl:pl-0 xl:pr-8 2xl:pl-0 2xl:pr-12">
-      <div className={`flex min-h-0 min-w-0 flex-col gap-4 ${fitParentHeight ? 'md:h-full md:min-h-0' : 'md:h-[calc(100dvh-10rem)] md:min-h-[640px] xl:h-[calc(100dvh-7rem)] xl:min-h-[720px]'} md:flex-row md:items-stretch md:gap-6 xl:gap-8 2xl:gap-10`}>
+    <section className="flex min-h-0 flex-1 flex-col overflow-visible p-2 md:pl-3 md:pr-3 md:pb-6 md:pt-3 xl:pl-4 xl:pr-4 2xl:pl-5 2xl:pr-5">
+      <div
+        data-generation-tool-shell
+        className={`flex min-h-0 min-w-0 flex-col gap-4 ${fitParentHeight ? 'md:h-full md:min-h-0' : 'md:h-[calc(100dvh-6rem)] md:max-h-[calc(100dvh-6rem)] md:min-h-0'} md:flex-row md:items-stretch md:gap-3 xl:gap-4 2xl:gap-5`}
+      >
         {renderMobileTopPanel()}
         {/* Left: 生图参数区 — 桌面可滚动+固定按钮；h5 上下流式布局，自然高度 */}
-        <div className="w-full md:h-full md:w-[380px] xl:w-[400px] 2xl:w-[420px] flex-shrink-0 flex flex-col rounded-2xl border border-[#E0E7FF] bg-white shadow-lg shadow-[#4F46E5]/8 overflow-visible">
-          <div className={`p-2 md:p-6 space-y-4 md:space-y-5 md:flex-1 md:min-h-0 md:overscroll-contain ${isModelMenuOpen ? 'md:overflow-visible' : 'md:overflow-y-auto'}`}>
+        <div
+          data-left-generation-panel
+          className="w-full md:h-full md:w-[380px] xl:w-[400px] 2xl:w-[420px] flex-shrink-0 flex flex-col rounded-2xl border border-[#E0E7FF] bg-white shadow-lg shadow-[#4F46E5]/8 overflow-visible"
+        >
+          <div
+            data-left-settings-scroll
+            className={`p-2 md:p-6 space-y-4 md:space-y-5 md:flex-1 md:min-h-0 md:overscroll-contain ${isModelMenuOpen ? 'md:overflow-visible' : 'md:overflow-y-auto'}`}
+          >
             {/* Tabs */}
             {!isCouplePhotoMakerMode && !hideModelBranding && (
               <div className="flex rounded-xl bg-[#EEF2FF] p-1">
@@ -2354,36 +3266,63 @@ export default function AiImageGenerationTool({
                       <span className="text-xs font-medium text-slate-500">{toolText.upload}</span>
                     </div>
                   )}
-                  {remoteImageUrls.map((url, index) => (
-                    <div
-                      key={`${url}-${index}`}
-                      className="relative group aspect-square rounded-lg overflow-hidden border border-[#E0E7FF] bg-slate-100 cursor-pointer"
-                      onClick={() => setPreviewImage(url)}
-                    >
-                      <img
-                        src={getReferencePreviewUrl(url)}
-                        alt={`${toolText.inputAlt} ${index + 1}`}
-                        className="w-full h-full object-cover"
-                        loading="lazy"
-                        decoding="async"
-                      />
-                      <ImageReplaceButton
-                        onReplace={() => replaceRemoteImage(index)}
-                        label={toolText.replace}
-                      />
-                      <button
-                        type="button"
-                        onClick={(e) => {
-                          e.stopPropagation()
-                          setRemoteImageUrls((prev) => prev.filter((_, itemIndex) => itemIndex !== index))
-                        }}
-                        className="absolute top-1 right-1 w-6 h-6 rounded-md bg-white/80 flex items-center justify-center shadow-sm z-10 text-black [&_svg]:flex-shrink-0 md:opacity-0 md:invisible md:group-hover:opacity-100 md:group-hover:visible md:transition-opacity"
-                        title={toolText.delete}
+                  {remoteImageUrls.map((url, index) => {
+                    const previewState = remoteImagePreviewStates[url] || 'loading'
+                    const isReferencePreviewLoading = previewState === 'loading' || previewState === 'retrying'
+
+                    return (
+                      <div
+                        key={`${url}-${index}`}
+                        className="relative group aspect-square rounded-lg overflow-hidden border border-[#E0E7FF] bg-slate-100 cursor-pointer"
+                        onClick={() => setPreviewImage(url)}
                       >
-                        <DeleteIcon size={16} />
-                      </button>
-                    </div>
-                  ))}
+                        {previewState !== 'failed' && (
+                          <img
+                            data-left-remote-reference-image
+                            src={previewState === 'retrying' ? normalizeReusableReferenceImageUrl(url) : getReferencePreviewUrl(url)}
+                            alt={`${toolText.inputAlt} ${index + 1}`}
+                            className={`w-full h-full object-cover transition-opacity duration-200 ${isReferencePreviewLoading ? 'opacity-0' : 'opacity-100'}`}
+                            loading="lazy"
+                            decoding="async"
+                            onLoad={() => setRemoteImagePreviewState(url, 'loaded')}
+                            onError={() => setRemoteImagePreviewState(url, previewState === 'retrying' ? 'failed' : 'retrying')}
+                          />
+                        )}
+                        {isReferencePreviewLoading && (
+                          <div
+                            data-left-remote-reference-loading
+                            className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-slate-100 text-xs font-semibold text-slate-500"
+                          >
+                            <span className="h-5 w-5 rounded-full border-2 border-[#C7D2FE] border-t-[#4F46E5] animate-spin" />
+                            <span>{toolText.referenceImageLoading}</span>
+                          </div>
+                        )}
+                        {previewState === 'failed' && (
+                          <div
+                            data-left-remote-reference-failed
+                            className="absolute inset-0 flex items-center justify-center bg-slate-100 px-3 text-center text-xs font-semibold text-slate-500"
+                          >
+                            Image Failed
+                          </div>
+                        )}
+                        <ImageReplaceButton
+                          onReplace={() => replaceRemoteImage(index)}
+                          label={toolText.replace}
+                        />
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation()
+                            setRemoteImageUrls((prev) => prev.filter((_, itemIndex) => itemIndex !== index))
+                          }}
+                          className="absolute top-1 right-1 w-6 h-6 rounded-md bg-white/80 flex items-center justify-center shadow-sm z-10 text-black [&_svg]:flex-shrink-0 md:opacity-0 md:invisible md:group-hover:opacity-100 md:group-hover:visible md:transition-opacity"
+                          title={toolText.delete}
+                        >
+                          <DeleteIcon size={16} />
+                        </button>
+                      </div>
+                    )
+                  })}
 
                   {/* 已上传图片：小正方形 + 序号 */}
                   {imageFiles.map((item, index) => (
@@ -2604,19 +3543,37 @@ export default function AiImageGenerationTool({
                 {!(hidePresetPromptInput && activePromptPresetTab !== customPromptTabId) && (
                   <>
                     <label className="block text-xs font-semibold text-slate-500 tracking-wide mb-2">{sceneText?.promptLabel || toolText.prompt}</label>
-                    <textarea
-                      ref={promptTextareaRef}
-                      value={prompt}
-                      onChange={(e) => {
-                        setPrompt(e.target.value)
-                        if (activePromptPresetTab === customPromptTabId) {
-                          setCustomPromptDraft(e.target.value)
-                        }
-                      }}
-                      placeholder={sceneText?.promptPlaceholder || toolText.promptPlaceholder}
-                      className="h-[10.5rem] w-full resize-none overflow-y-auto rounded-xl border border-slate-200/90 bg-slate-50/50 px-4 py-3 text-sm leading-6 text-slate-800 placeholder:text-slate-400 transition-colors focus:border-[#4F46E5] focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/40"
-                      rows={6}
-                    />
+                    <div data-left-prompt-field className="relative">
+                      <textarea
+                        ref={promptTextareaRef}
+                        data-left-prompt-input
+                        value={prompt}
+                        onChange={(e) => {
+                          setPrompt(e.target.value)
+                          if (activePromptPresetTab === customPromptTabId) {
+                            setCustomPromptDraft(e.target.value)
+                          }
+                        }}
+                        placeholder={sceneText?.promptPlaceholder || toolText.promptPlaceholder}
+                        className="h-[7.5rem] w-full resize-none overflow-y-auto rounded-xl border border-slate-200/90 bg-slate-50/50 px-4 py-3 pr-11 text-sm leading-6 text-slate-800 placeholder:text-slate-400 transition-colors focus:border-[#4F46E5] focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/40"
+                        rows={4}
+                      />
+                      {prompt && (
+                        <button
+                          type="button"
+                          data-left-prompt-clear
+                          aria-label="Clear Prompt"
+                          onClick={() => {
+                            setPrompt('')
+                            setCustomPromptDraft('')
+                            promptTextareaRef.current?.focus()
+                          }}
+                          className="absolute right-3 top-3 inline-flex h-7 w-7 items-center justify-center rounded-lg text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-700 focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/30"
+                        >
+                          <CloseIcon size={14} />
+                        </button>
+                      )}
+                    </div>
                   </>
                 )}
               </div>
@@ -2701,39 +3658,35 @@ export default function AiImageGenerationTool({
           </div>
 
           {/* Generate 固定底部，始终在第一屏 */}
-          <div className="flex-shrink-0 rounded-b-2xl p-2 pt-4 md:p-6 md:pt-4 bg-white">
+          <div data-generate-action-bar className="flex-shrink-0 rounded-b-2xl p-2 pt-4 md:p-6 md:pt-4 bg-white">
             <div className="flex gap-3">
               <button
                 type="button"
                 data-generate-button
                 onClick={handleGenerate}
-                disabled={isGenerating || !prompt.trim() || (activeTab === 'image-to-image' && imageFiles.length === 0 && remoteImageUrls.length === 0)}
+                disabled={!prompt.trim() || (activeTab === 'image-to-image' && imageFiles.length === 0 && remoteImageUrls.length === 0)}
                 className="flex-1 py-3.5 rounded-xl font-bold text-sm text-center flex items-center justify-center disabled:cursor-not-allowed transition-all duration-200 text-white shadow-md hover:shadow-lg disabled:shadow-none"
                 style={{
-                  background: isGenerating || !prompt.trim() || (activeTab === 'image-to-image' && imageFiles.length === 0 && remoteImageUrls.length === 0)
+                  background: !prompt.trim() || (activeTab === 'image-to-image' && imageFiles.length === 0 && remoteImageUrls.length === 0)
                     ? 'linear-gradient(135deg, #C7D2FE 0%, #E0E7FF 100%)'
                     : 'linear-gradient(135deg, #4F46E5 0%, #9333EA 100%)',
                 }}
               >
-                {isGenerating ? (
-                  formatToolText(toolText.generatingSeconds, { seconds: generatingSeconds })
-                ) : (
-                  <span className="flex items-center justify-center gap-2">
-                    <span>{sceneText?.generateLabel || toolText.generate}</span>
-                    <span
-                      className="inline-flex items-center gap-1.5 px-1 text-sm font-extrabold text-white"
-                      aria-label={`${generationCreditCost} credits`}
-                    >
-                      <span className="tabular-nums">{generationCreditCost}</span>
-                      <img
-                        src="/credits-icons/diamond-3d-indigo.svg"
-                        alt=""
-                        aria-hidden="true"
-                        className="h-[18px] w-[18px]"
-                      />
-                    </span>
+                <span className="flex items-center justify-center gap-2">
+                  <span>{sceneText?.generateLabel || toolText.generate}</span>
+                  <span
+                    className="inline-flex items-center gap-1.5 px-1 text-sm font-extrabold text-white"
+                    aria-label={`${generationCreditCost} credits`}
+                  >
+                    <span className="tabular-nums">{generationCreditCost}</span>
+                    <img
+                      src="/credits-icons/diamond-3d-indigo.svg"
+                      alt=""
+                      aria-hidden="true"
+                      className="h-[18px] w-[18px]"
+                    />
                   </span>
-                )}
+                </span>
               </button>
             </div>
             {renderMobileGenerationPanel()}
@@ -2746,8 +3699,10 @@ export default function AiImageGenerationTool({
         </div>
 
         <div className="hidden min-h-0 min-w-0 flex-1 flex-col gap-4 md:flex md:h-full">
-          {(heroBreadcrumbItems?.length || heroEyebrow || heroTitle || heroDescription) && (
-            <div className="shrink-0 text-center md:px-4 md:pt-1 xl:pt-0">
+          {hasDesktopResultTabs && !isCouplePhotoMakerMode ? renderDesktopResultTabs() : null}
+
+          {rightMode !== 'history' && (heroBreadcrumbItems?.length || heroEyebrow || heroTitle || heroDescription) && (
+            <div data-desktop-result-hero className="shrink-0 text-center md:px-4 md:pt-1 xl:pt-0">
               {heroBreadcrumbItems?.length ? (
                 <div className="mx-auto mb-1 max-w-4xl">
                   <Breadcrumb items={heroBreadcrumbItems} variant="inline" />
@@ -2772,531 +3727,65 @@ export default function AiImageGenerationTool({
           )}
 
           <div className="flex min-h-0 min-w-0 flex-1 flex-col gap-4 md:flex-row">
-        {/* Middle: Generated Image (shown when result exists) or Generating Animation */}
-        {isGenerating ? (
-          <div className={`flex-1 min-w-0 bg-white rounded-2xl border border-[#E0E7FF] ${rightPanelShadowClass} flex items-center justify-center p-2 md:p-8 xl:mx-auto xl:w-full xl:max-w-[1280px] 2xl:max-w-[1440px]`}>
-            <div className="flex flex-col items-center gap-4">
-              <div className="flex gap-2">
-                <div className="w-3 h-3 rounded-full bg-[#4F46E5] animate-pulse" style={{ animationDelay: '0s' }} />
-                <div className="w-3 h-3 rounded-full bg-[#4F46E5] animate-pulse" style={{ animationDelay: '0.2s' }} />
-                <div className="w-3 h-3 rounded-full bg-[#4F46E5] animate-pulse" style={{ animationDelay: '0.4s' }} />
-                <div className="w-3 h-3 rounded-full bg-[#4F46E5] animate-pulse" style={{ animationDelay: '0.6s' }} />
-              </div>
-              <p className="text-slate-500 font-medium text-sm">{formatToolText(toolText.generatingSeconds, { seconds: generatingSeconds })}</p>
-            </div>
-          </div>
-        ) : currentResult && (rightMode === 'result' || isCouplePhotoMakerMode) ? (
-          <div className={`flex-1 min-w-0 min-h-[400px] md:min-h-0 bg-white rounded-2xl border border-[#E0E7FF] ${rightPanelShadowClass} flex flex-col items-center justify-center p-2 md:p-8 xl:mx-auto xl:w-full xl:max-w-[1280px] 2xl:max-w-[1440px] relative z-10`}>
-            <img
-              src={currentResult.outputPreview}
-              alt={toolText.generatedAlt}
-              onClick={() => setPreviewImage(currentResult.outputPreview)}
-              className="max-w-full max-h-[60vh] md:max-h-full object-contain rounded-xl cursor-pointer hover:opacity-90 transition-opacity"
-            />
-            {!compactResultPanel && renderResultRetentionPrompt()}
-            {compactResultPanel && currentResult && (
-              <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
-                <span className="rounded-lg bg-[#EEF2FF] px-3 py-1.5 text-xs font-semibold text-[#4F46E5]">
-                  {formatTagValue(currentResult.aspectRatio || aspectRatio)}
-                </span>
-                <span className="rounded-lg bg-[#EEF2FF] px-3 py-1.5 text-xs font-semibold text-[#4F46E5]">
-                  {currentResult.time}
-                </span>
-                <button
-                  type="button"
-                  onClick={() => handleDownload(currentResult.outputPreview, `generated-${currentResult.id}.png`)}
-                  disabled={downloadingUrl === currentResult.outputPreview}
-                  className="flex h-9 w-9 items-center justify-center rounded-lg border border-[#C7D2FE] text-[#4F46E5] transition-colors hover:bg-[#EEF2FF] disabled:cursor-not-allowed disabled:opacity-50"
-                  title={downloadingUrl === currentResult.outputPreview ? toolText.downloading : toolText.download}
-                >
-                  {downloadingUrl === currentResult.outputPreview ? (
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" className="animate-spin">
-                      <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" strokeDasharray="32" strokeDashoffset="16" />
-                    </svg>
-                  ) : (
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                      <polyline points="7 10 12 15 17 10" />
-                      <line x1="12" y1="15" x2="12" y2="3" />
-                    </svg>
-                  )}
-                </button>
-                <button
-                  type="button"
-                  onClick={() => void handleDeleteCurrentResult()}
-                  className="flex h-9 w-9 items-center justify-center rounded-lg border border-[#C7D2FE] text-[#4F46E5] transition-colors hover:bg-[#EEF2FF]"
-                  title={toolText.delete}
-                >
-                  <DeleteIcon size={18} />
-                </button>
-              </div>
-            )}
-            {isCouplePhotoMakerMode && (
-              <div className="mt-4">
-                <button
-                  type="button"
-                  onClick={() => handleDownload(currentResult.outputPreview, `generated-${currentResult.id}.png`)}
-                  disabled={downloadingUrl === currentResult.outputPreview}
-                  className="px-6 py-2.5 rounded-xl border border-[#C7D2FE] text-[#4F46E5] hover:bg-[#EEF2FF] transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
-                >
-                  {downloadingUrl === currentResult.outputPreview ? toolText.downloading : toolText.download}
-                </button>
-              </div>
-            )}
-          </div>
-        ) : isCouplePhotoMakerMode ? (
-          <div className={`flex-1 min-w-0 min-h-[400px] md:min-h-0 bg-white rounded-2xl border border-[#E0E7FF] ${rightPanelShadowClass} flex flex-col items-center justify-center p-2 md:p-8 xl:mx-auto xl:w-full xl:max-w-[1280px] 2xl:max-w-[1440px] relative z-10`}>
-            <div className="w-full flex-1 flex justify-center items-center min-h-0">
-              {selectedTemplateImage ? (
-                <img
-                  src={`${selectedTemplateImage}?v=20260508`}
-                  alt={selectedTemplate?.title || toolText.sampleImage}
-                  className="max-w-full max-h-[60vh] md:max-h-full object-contain rounded-xl ring-1 ring-slate-200/50"
-                />
-              ) : (
-                <div className="w-full min-h-[200px] rounded-xl ring-1 ring-slate-200/50 bg-white flex items-center justify-center text-sm text-slate-500">
-                  {toolText.noDemoImageYet}
-                </div>
-              )}
-            </div>
-          </div>
-        ) : null}
-
-        {/* Right: 功能示例图 / 生成中 / 历史记录 / 结果详情 */}
-        {!isGenerating &&
-          !isCouplePhotoMakerMode &&
-          !(compactResultPanel && rightMode === 'result' && currentResult) && (
-          <div className={`${rightMode === 'result' ? 'w-full md:w-[400px]' : 'flex-1 xl:mx-auto xl:w-full xl:max-w-[1280px] 2xl:max-w-[1440px]'} min-h-0 min-w-0 bg-white ${isCouplePhotoMakerMode ? 'rounded-none' : 'rounded-2xl'} border border-[#E0E7FF] ${rightPanelShadowClass} flex flex-col relative overflow-hidden`}>
-          {/* Tabs for right panel when history exists */}
-          {(history.length > 0 || isGenerating) && !isGenerating && rightMode !== 'result' && !isCouplePhotoMakerMode && (
-            <div className="flex border-b border-[#E0E7FF] px-5 pt-4 gap-1 flex-shrink-0">
-              <button
-                type="button"
-                onClick={() => setRightMode('sample')}
-                className={`px-4 py-2.5 rounded-t-xl text-sm font-semibold transition-colors ${
-                  rightMode === 'sample' ? 'bg-[#EEF2FF] text-[#4F46E5] border border-[#C7D2FE] border-b-0 -mb-px' : 'text-slate-500 hover:text-slate-700'
-                }`}
-              >
-                Demo
-              </button>
-              <button
-                type="button"
-                onClick={() => setRightMode('history')}
-                className={`px-4 py-2.5 rounded-t-xl text-sm font-semibold transition-colors ${
-                  rightMode === 'history' ? 'bg-[#EEF2FF] text-[#4F46E5] border border-[#C7D2FE] border-b-0 -mb-px' : 'text-slate-500 hover:text-slate-700'
-                }`}
-              >
-                History
-              </button>
-            </div>
-          )}
-
-          <div className={`flex min-h-0 flex-1 p-2 md:p-8 ${rightMode === 'result' || rightMode === 'history' ? 'flex-col justify-start overflow-auto' : 'flex-col items-center justify-center overflow-hidden'}`}>
-            {rightMode === 'sample' && (
-              <>
-                <div className="flex min-h-0 w-full flex-1 items-center justify-center overflow-hidden">
-                  {isCouplePhotoMakerMode ? (
-                    selectedTemplateImage ? (
-                      <img
-                        src={`${selectedTemplateImage}?v=20260508`}
-                        alt={selectedTemplate?.title || toolText.sampleImage}
-                        className="w-full h-full rounded-xl object-contain ring-1 ring-slate-200/50"
-                      />
-                    ) : (
-                      <div className="w-full h-full rounded-xl ring-1 ring-slate-200/50 bg-white flex items-center justify-center text-sm text-slate-500">
-                        {toolText.noDemoImageYet}
-                      </div>
-                    )
-                  ) : (
-                    <div
-                      className={`flex h-full w-full items-center justify-center overflow-hidden ring-1 ring-slate-200/50 ${
-                        isSharpSampleImage ? 'rounded-md bg-slate-50 p-0 shadow-none' : 'rounded-2xl p-2 shadow-inner'
-                      }`}
-                    >
-                      <SiteImage
-                        src={displayedSampleImageUrl}
-                        alt={displayedSampleImageTitle}
-                        autoAlt={!promptDemoImage}
-                        width={displayedSampleImageWidth}
-                        height={displayedSampleImageHeight}
-                        unoptimized={shouldUseDirectImageForDemo(displayedSampleImageUrl)}
-                        className={isSharpSampleImage ? 'max-h-full max-w-full rounded-md' : 'max-h-full max-w-full'}
-                        style={{
-                          objectFit: 'contain',
-                          width: isSharpSampleImage ? '100%' : 'auto',
-                          height: '100%',
-                          maxHeight: '100%'
-                        }}
-                      />
-                    </div>
-                  )}
-                </div>
-              </>
-            )}
-
-            {rightMode === 'generating' && !isGenerating && (
-              <div className="flex flex-col items-center justify-center gap-8">
-                <div className="w-16 h-16 rounded-full border-4 border-[#EEF2FF] border-t-[#4F46E5] animate-spin" />
-                <p className="text-slate-500 font-medium text-sm tracking-wider">{`Generating... ${generatingSeconds}s`}</p>
-              </div>
-            )}
-
-            {rightMode === 'result' && currentResult && !isCouplePhotoMakerMode && (
-              <div className="w-full space-y-6">
-                {/* Output Prompt */}
-                <div>
-                  <label className="block text-xs font-semibold text-slate-500 tracking-wide mb-2">{toolText.prompt}</label>
-                  <div className="relative">
-                    <textarea
-                      value={currentResult.prompt}
-                      readOnly
-                      className="w-full min-h-[100px] px-4 py-3 pr-10 rounded-xl border border-slate-200/90 bg-slate-50/50 text-slate-800 text-sm resize-none"
-                      rows={4}
-                    />
-                    <button
-                      type="button"
-                      onClick={async (e) => {
-                        e.preventDefault()
-                        e.stopPropagation()
-                        const btn = e.currentTarget as HTMLButtonElement
-                        if (!btn) return
-
-                        try {
-                          await navigator.clipboard.writeText(currentResult.prompt)
-                          showToast(toolText.promptCopied, 'success')
-                        } catch (err) {
-                          console.error('Failed to copy:', err)
-                          // 降级方案：使用传统方法
-                          const textArea = document.createElement('textarea')
-                          textArea.value = currentResult.prompt
-                          textArea.style.position = 'fixed'
-                          textArea.style.opacity = '0'
-                          document.body.appendChild(textArea)
-                          textArea.select()
-                          try {
-                            document.execCommand('copy')
-                            showToast(toolText.promptCopied, 'success')
-                          } catch (fallbackErr) {
-                            console.error('Fallback copy failed:', fallbackErr)
-                            showToast(toolText.promptCopyFailed, 'error')
-                          }
-                          document.body.removeChild(textArea)
-                        }
-                      }}
-                      className="absolute top-3 right-3 p-1.5 rounded-lg hover:bg-white transition-colors cursor-pointer z-10"
-                      title={toolText.copyPrompt}
-                    >
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-
-                {/* Reference Thumbnail */}
-                {currentResult.inputPreview && (
-                  <div className="space-y-2">
-                    <p className="text-xs font-semibold text-slate-500">{toolText.inputImage}</p>
+            {isCouplePhotoMakerMode ? (
+              <div className={`relative z-10 flex min-h-[400px] min-w-0 flex-1 flex-col items-center justify-center rounded-2xl border border-[#E0E7FF] bg-white p-2 ${rightPanelShadowClass} md:min-h-0 md:p-8 xl:mx-auto xl:w-full xl:max-w-[1280px] 2xl:max-w-[1440px]`}>
+                {currentResult ? (
+                  <>
                     <img
-                      src={getDisplayImagePreviewUrl(currentResult.inputPreview, 96)}
-                      alt={toolText.inputAlt}
-                      onClick={() => setPreviewImage(currentResult.inputPreview!)}
-                      className="h-12 w-12 rounded-lg object-cover ring-2 ring-[#C7D2FE] cursor-pointer hover:opacity-80 transition-opacity"
-                      loading="lazy"
-                      decoding="async"
+                      src={currentResult.outputPreview}
+                      alt={toolText.generatedAlt}
+                      onClick={() => setPreviewImage(currentResult.outputPreview)}
+                      className="max-h-[60vh] max-w-full cursor-pointer rounded-xl object-contain transition-opacity hover:opacity-90 md:max-h-full"
                     />
-                  </div>
-                )}
-
-                {/* Metadata Tags */}
-                <div className="flex flex-wrap gap-2">
-                  <span className="px-3 py-1.5 rounded-lg bg-[#EEF2FF] text-[#4F46E5] text-xs font-semibold">{formatTagValue(aspectRatio)}</span>
-                  {!hideModelBranding && (
-                    <span className="px-3 py-1.5 rounded-lg bg-[#EEF2FF] text-[#4F46E5] text-xs font-semibold">{selectedModelName}</span>
-                  )}
-                  <span className="px-3 py-1.5 rounded-lg bg-[#EEF2FF] text-[#4F46E5] text-xs font-semibold">{currentResult.time}</span>
-                </div>
-
-                {/* Action Buttons */}
-                <div className="flex gap-3">
-                  <button
-                    type="button"
-                    onClick={handleRecreateFromCurrent}
-                    disabled={
-                      isGenerating ||
-                      !(currentResult.prompt && currentResult.prompt.trim()) ||
-                      (activeTab === 'image-to-image' && imageFiles.length === 0 && !currentResult.inputPreview)
-                    }
-                    className="flex-1 py-3 rounded-xl font-bold text-sm text-center disabled:cursor-not-allowed transition-all duration-200 text-white shadow-md hover:shadow-lg disabled:shadow-none"
-                    style={{
-                      background:
-                        isGenerating ||
-                        !(currentResult.prompt && currentResult.prompt.trim()) ||
-                        (activeTab === 'image-to-image' && imageFiles.length === 0 && !currentResult.inputPreview)
-                        ? 'linear-gradient(135deg, #C7D2FE 0%, #E0E7FF 100%)'
-                        : 'linear-gradient(135deg, #4F46E5 0%, #9333EA 100%)',
-                    }}
-                  >
-                    {toolText.recreate}
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => handleDownload(currentResult.outputPreview, `generated-${currentResult.id}.png`)}
-                    disabled={downloadingUrl === currentResult.outputPreview}
-                    className="px-4 py-3 rounded-xl border border-[#C7D2FE] text-[#4F46E5] hover:bg-[#EEF2FF] transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
-                    title={downloadingUrl === currentResult.outputPreview ? toolText.downloading : toolText.download}
-                  >
-                    {downloadingUrl === currentResult.outputPreview ? (
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="animate-spin">
-                        <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" strokeDasharray="32" strokeDashoffset="16" opacity="0.3" />
-                        <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" strokeDasharray="32" strokeDashoffset="16" strokeLinecap="round" />
-                      </svg>
-                    ) : (
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                        <polyline points="7 10 12 15 17 10" />
-                        <line x1="12" y1="15" x2="12" y2="3" />
-                      </svg>
-                    )}
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => void handleDeleteCurrentResult()}
-                    className="px-4 py-3 rounded-xl border border-[#C7D2FE] text-[#4F46E5] hover:bg-[#EEF2FF] transition-colors"
-                    title={toolText.delete}
-                  >
-                    <DeleteIcon size={20} />
-                  </button>
-                </div>
-              </div>
-            )}
-
-            {rightMode === 'history' && isCouplePhotoMakerMode && (
-              <div className="w-full max-w-[300px] mx-auto space-y-4">
-                <h3 className="text-slate-700 font-semibold text-base tracking-wider">{toolText.history}</h3>
-                {history.length > 0 ? (
-                  <div className="grid grid-cols-2 gap-3">
-                    {history.map((item) => (
+                    <div className="mt-4">
                       <button
-                        key={item.id}
                         type="button"
-                        onClick={() => {
-                          setCurrentResult(item)
-                          setRightMode('history')
-                        }}
-                        className={`relative rounded-xl overflow-hidden border transition-colors ${
-                          currentResult?.id === item.id
-                            ? 'border-[#6D28D9] ring-2 ring-[#DDD6FE]'
-                            : 'border-[#E0E7FF] hover:border-[#C7D2FE]'
-                        }`}
+                        onClick={() => handleDownload(currentResult.outputPreview, `generated-${currentResult.id}.png`)}
+                        disabled={downloadingUrl === currentResult.outputPreview}
+                        className="flex items-center justify-center rounded-xl border border-[#C7D2FE] px-6 py-2.5 text-[#4F46E5] transition-colors hover:bg-[#EEF2FF] disabled:cursor-not-allowed disabled:opacity-50"
                       >
-                        <img
-                          src={getDisplayImagePreviewUrl(item.outputPreview, 384)}
-                          alt={toolText.historyResultAlt}
-                          className="w-full aspect-[4/3] object-cover"
-                          loading="lazy"
-                          decoding="async"
-                        />
+                        {downloadingUrl === currentResult.outputPreview ? toolText.downloading : toolText.download}
                       </button>
-                    ))}
-                  </div>
+                    </div>
+                  </>
                 ) : (
-                  <p className="text-slate-500 text-sm">{toolText.noHistory}</p>
+                  <div className="flex min-h-0 w-full flex-1 items-center justify-center">
+                    {renderDemoPreview()}
+                  </div>
+                )}
+              </div>
+            ) : (
+              <div
+                data-desktop-result-card
+                className={`relative z-10 flex min-h-[440px] min-w-0 flex-1 w-full flex-col overflow-hidden rounded-2xl border border-[#E0E7FF] bg-white ${rightPanelShadowClass}`}
+              >
+                {hasDesktopResultTabs && rightMode === 'history' ? (
+                  renderDesktopResultFeed()
+                ) : (
+                  <div className="flex min-h-0 flex-1 items-center justify-center overflow-hidden p-2 md:p-8">
+                    {renderDemoPreview()}
+                  </div>
                 )}
               </div>
             )}
-
-            {rightMode === 'history' && !isCouplePhotoMakerMode && (
-              <div className="w-full space-y-6">
-                <h3 className="text-slate-700 font-semibold text-base tracking-wider mb-6">{toolText.history}</h3>
-                {/* Generating Status at Top */}
-                {isGenerating && (
-                  <div className="p-5 rounded-2xl border border-[#E0E7FF] bg-white shadow-sm">
-                    <div className="flex flex-col items-center justify-center gap-4 py-8">
-                      <div className="flex gap-2">
-                        <div className="w-3 h-3 rounded-full bg-[#4F46E5] animate-pulse" style={{ animationDelay: '0s' }} />
-                        <div className="w-3 h-3 rounded-full bg-[#4F46E5] animate-pulse" style={{ animationDelay: '0.2s' }} />
-                        <div className="w-3 h-3 rounded-full bg-[#4F46E5] animate-pulse" style={{ animationDelay: '0.4s' }} />
-                        <div className="w-3 h-3 rounded-full bg-[#4F46E5] animate-pulse" style={{ animationDelay: '0.6s' }} />
-                      </div>
-                      <p className="text-slate-500 font-medium text-sm">{formatToolText(toolText.generatingSeconds, { seconds: generatingSeconds })}</p>
-                    </div>
-                  </div>
-                )}
-                {/* History Items */}
-                {history.length > 0 && history.map((item) => (
-                  <div key={item.id} className="space-y-4 p-5 rounded-2xl border border-[#E0E7FF] bg-white shadow-sm">
-                    {/* Prompt */}
-                    <div>
-                      <label className="block text-xs font-semibold text-slate-500 tracking-wide mb-2">{toolText.prompt}</label>
-                      <div className="relative">
-                        <textarea
-                          value={item.prompt}
-                          readOnly
-                          className="w-full min-h-[80px] px-4 py-3 pr-10 rounded-xl border border-slate-200/90 bg-slate-50/50 text-slate-800 text-sm resize-none"
-                          rows={3}
-                        />
-                        <button
-                          type="button"
-                          onClick={async (e) => {
-                            e.preventDefault()
-                            e.stopPropagation()
-                            const btn = e.currentTarget as HTMLButtonElement
-                            if (!btn) return
-
-                            try {
-                              await navigator.clipboard.writeText(item.prompt)
-                              showToast(toolText.promptCopied, 'success')
-                            } catch (err) {
-                              console.error('Failed to copy:', err)
-                              // 降级方案：使用传统方法
-                              const textArea = document.createElement('textarea')
-                              textArea.value = item.prompt
-                              textArea.style.position = 'fixed'
-                              textArea.style.opacity = '0'
-                              document.body.appendChild(textArea)
-                              textArea.select()
-                              try {
-                                document.execCommand('copy')
-                                showToast(toolText.promptCopied, 'success')
-                              } catch (fallbackErr) {
-                                console.error('Fallback copy failed:', fallbackErr)
-                                showToast(toolText.promptCopyFailed, 'error')
-                              }
-                              document.body.removeChild(textArea)
-                            }
-                          }}
-                          className="absolute top-3 right-3 p-1.5 rounded-lg hover:bg-white transition-colors cursor-pointer z-10"
-                          title={toolText.copyPrompt}
-                        >
-                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
-                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-                          </svg>
-                        </button>
-                      </div>
-                    </div>
-
-                    {/* Input Thumbnail & Metadata */}
-                    <div className="flex items-center gap-3">
-                      {item.inputPreview ? (
-                        <img
-                          src={getDisplayImagePreviewUrl(item.inputPreview, 96)}
-                          alt={toolText.inputAlt}
-                          onClick={() => setPreviewImage(item.inputPreview!)}
-                          className="h-12 w-12 rounded-lg object-cover ring-2 ring-[#C7D2FE] cursor-pointer hover:opacity-80 transition-opacity"
-                          loading="lazy"
-                          decoding="async"
-                        />
-                      ) : (
-                        <div className="h-12 w-12 rounded-lg bg-[#EEF2FF] flex items-center justify-center text-xs text-[#4F46E5]">{toolText.textToImage}</div>
-                      )}
-                      <div className="flex flex-wrap gap-2 flex-1">
-                        <span className="px-3 py-1.5 rounded-lg bg-[#EEF2FF] text-[#4F46E5] text-xs font-semibold">{formatTagValue(item.aspectRatio)}</span>
-                        {!hideModelBranding && (
-                          <span className="px-3 py-1.5 rounded-lg bg-[#EEF2FF] text-[#4F46E5] text-xs font-semibold">{selectedModelName}</span>
-                        )}
-                        <span className="px-3 py-1.5 rounded-lg bg-[#EEF2FF] text-[#4F46E5] text-xs font-semibold">{item.time}</span>
-                      </div>
-                    </div>
-
-                    {/* Generated Image */}
-                    <div className="w-full">
-                      <img
-                        src={getDisplayImagePreviewUrl(item.outputPreview, 640)}
-                        alt={toolText.generatedAlt}
-                        onClick={() => setPreviewImage(item.outputPreview)}
-                        className="w-full rounded-xl object-cover cursor-pointer hover:opacity-90 transition-opacity border border-[#E0E7FF]"
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    </div>
-
-                    {/* Action Buttons */}
-                    <div className="flex gap-3">
-                      <button
-                        type="button"
-                        onClick={() => {
-                          setPrompt(item.prompt)
-                          setAspectRatio(item.aspectRatio || 'auto')
-                          setResolution(item.resolution || '1K')
-                          setOutputFormat(item.outputFormat || 'Auto')
-                          if (item.inputPreview) {
-                            // 如果有输入图片，切换到 image-to-image 模式
-                            setActiveTab('image-to-image')
-                            // 注意：这里无法直接恢复 imageFiles，因为它们是 File 对象
-                            // 但可以显示预览（仅显示第一张）
-                          }
-                          setCurrentResult(item)
-                          setRightMode('result')
-                        }}
-                        className="flex-1 py-3 rounded-xl font-bold text-sm text-center transition-all duration-200 text-white shadow-md hover:shadow-lg"
-                        style={{
-                          background: 'linear-gradient(135deg, #4F46E5 0%, #9333EA 100%)',
-                        }}
-                      >
-                        {toolText.recreate}
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => handleDownload(item.outputPreview, `generated-${item.id}.png`)}
-                        disabled={downloadingUrl === item.outputPreview}
-                        className="px-4 py-3 rounded-xl border border-[#C7D2FE] text-[#4F46E5] hover:bg-[#EEF2FF] transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
-                        title={downloadingUrl === item.outputPreview ? toolText.downloading : toolText.download}
-                      >
-                        {downloadingUrl === item.outputPreview ? (
-                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="animate-spin">
-                            <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" strokeDasharray="32" strokeDashoffset="16" opacity="0.3" />
-                            <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" strokeDasharray="32" strokeDashoffset="16" strokeLinecap="round" />
-                          </svg>
-                        ) : (
-                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                            <polyline points="7 10 12 15 17 10" />
-                            <line x1="12" y1="15" x2="12" y2="3" />
-                          </svg>
-                        )}
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => void handleDeleteHistoryItem(item)}
-                        className="px-4 py-3 rounded-xl border border-[#C7D2FE] text-[#4F46E5] hover:bg-[#EEF2FF] transition-colors"
-                        title={toolText.delete}
-                      >
-                        <DeleteIcon size={20} />
-                      </button>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
-
-            {rightMode === 'history' && history.length === 0 && !isGenerating && (
-              <p className="text-slate-500 text-sm">{toolText.noHistory}</p>
-            )}
-
-            {rightMode === 'history' && history.length === 0 && isGenerating && (
-              <div className="w-full max-w-3xl">
-                <div className="p-5 rounded-2xl border border-[#E0E7FF] bg-white shadow-sm">
-                  <div className="flex flex-col items-center justify-center gap-4 py-8">
-                    <div className="flex gap-2">
-                      <div className="w-3 h-3 rounded-full bg-[#4F46E5] animate-pulse" style={{ animationDelay: '0s' }} />
-                      <div className="w-3 h-3 rounded-full bg-[#4F46E5] animate-pulse" style={{ animationDelay: '0.2s' }} />
-                      <div className="w-3 h-3 rounded-full bg-[#4F46E5] animate-pulse" style={{ animationDelay: '0.4s' }} />
-                      <div className="w-3 h-3 rounded-full bg-[#4F46E5] animate-pulse" style={{ animationDelay: '0.6s' }} />
-                    </div>
-                    <p className="text-slate-500 font-medium text-sm">{formatToolText(toolText.generatingSeconds, { seconds: generatingSeconds })}</p>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-        )}
           </div>
         </div>
       </div>
+
+      {desktopPromptTooltip && (
+        <div
+          data-desktop-prompt-tooltip
+          role="tooltip"
+          className="pointer-events-none fixed z-[10060] max-h-56 overflow-y-auto rounded-xl border border-[#E0E7FF] bg-white p-3 text-sm leading-6 text-slate-700 shadow-xl shadow-slate-900/12"
+          style={{
+            left: desktopPromptTooltip.left,
+            top: desktopPromptTooltip.top,
+            width: desktopPromptTooltip.width,
+          }}
+        >
+          {desktopPromptTooltip.text}
+        </div>
+      )}
 
       {/* Image Preview Modal - 点击非图片区域（背景）可退出 */}
       {previewImage && (

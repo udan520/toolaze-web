@@ -10,6 +10,7 @@ import {
   shouldRenderPaymentReviewSocialProofSection,
 } from '../lib/payment-review-visibility'
 import { getPreferredLocalizedUrl } from '../lib/site-language-switch'
+import { getContactPageCopy, getSupportPolicyCopy } from './support-pages/support-page-copy'
 
 const projectRoot = process.cwd()
 const supportedLocales = ['en', 'de', 'es', 'fr', 'it', 'ja', 'ko', 'pt', 'zh-TW'] as const
@@ -100,14 +101,14 @@ test('legal policy pages exist and cover AI generation, credits, refunds, and ac
   assert.match(terms, /NSFW|sexual/i)
   assert.match(terms, /third-party model/i)
 
-  const refund = readProjectFile('src/app/refund-policy/page.tsx')
+  const refund = JSON.stringify(getSupportPolicyCopy('refundPolicy', 'en'))
   assert.match(refund, /unused credits/i)
   assert.match(refund, /used credits/i)
   assert.match(refund, /failed generation/i)
   assert.match(refund, /12 months/i)
   assert.match(refund, /support@toolaze\.com/i)
 
-  const acceptableUse = readProjectFile('src/app/acceptable-use/page.tsx')
+  const acceptableUse = JSON.stringify(getSupportPolicyCopy('acceptableUse', 'en'))
   assert.match(acceptableUse, /NSFW/i)
   assert.match(acceptableUse, /sexual/i)
   assert.match(acceptableUse, /illegal/i)
@@ -127,12 +128,12 @@ test('footer, sitemap, and locale redirects expose the required legal routes', (
   assert.match(sitemap, /acceptable-use/)
   assert.match(sitemap, /contact/)
 
-  assert.equal(getPreferredLocalizedUrl('/refund-policy', 'de'), '/refund-policy')
-  assert.equal(getPreferredLocalizedUrl('/acceptable-use', 'zh-TW'), '/acceptable-use')
-  assert.equal(getPreferredLocalizedUrl('/contact', 'fr'), '/contact')
-  assert.match(BROWSER_LOCALE_REDIRECT_SCRIPT, /refund-policy/)
-  assert.match(BROWSER_LOCALE_REDIRECT_SCRIPT, /acceptable-use/)
-  assert.match(BROWSER_LOCALE_REDIRECT_SCRIPT, /contact/)
+  assert.equal(getPreferredLocalizedUrl('/refund-policy', 'de'), '/de/refund-policy')
+  assert.equal(getPreferredLocalizedUrl('/acceptable-use', 'zh-TW'), '/zh-TW/acceptable-use')
+  assert.equal(getPreferredLocalizedUrl('/contact', 'fr'), '/fr/contact')
+  assert.doesNotMatch(BROWSER_LOCALE_REDIRECT_SCRIPT, /englishOnlyRoots[\s\S]*refund-policy/)
+  assert.doesNotMatch(BROWSER_LOCALE_REDIRECT_SCRIPT, /englishOnlyRoots[\s\S]*acceptable-use/)
+  assert.doesNotMatch(BROWSER_LOCALE_REDIRECT_SCRIPT, /englishOnlyRoots[\s\S]*contact/)
 })
 
 test('localized common legal copy removes old local-only promises', () => {
@@ -185,7 +186,7 @@ test('Creem-facing homepage and about copy match credit-based AI generation', ()
 test('public support and model-provider disclaimers are visible for Creem review', () => {
   assert.equal(existsSync(join(projectRoot, 'src/app/contact/page.tsx')), true)
 
-  const contact = readProjectFile('src/app/contact/page.tsx')
+  const contact = JSON.stringify(getContactPageCopy('en'))
   assert.match(contact, /support@toolaze\.com/i)
   assert.match(contact, /3 business days/i)
   assert.match(contact, /refund/i)

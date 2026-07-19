@@ -18,6 +18,8 @@ import {
   MODEL_PAGE_LOCALES,
   getModelPageCopy,
 } from '@/app/model/copy'
+import { getEarnCreditsPageCopy } from '@/app/earn-credits/earn-credits-copy'
+import { getContactPageCopy, getSupportPolicyCopy } from '@/app/support-pages/support-page-copy'
 import { loadCommonTranslations } from '@/lib/seo-loader'
 
 const projectRoot = process.cwd()
@@ -84,6 +86,47 @@ test('Text to Image Generator does not reuse English copy for localized routes',
     assert.notEqual(copy.howTo.title, en.howTo.title, `${locale} howTo.title`)
     assert.notEqual(copy.faq.title, en.faq.title, `${locale} faq.title`)
     assert.notEqual(copy.cta.title, en.cta.title, `${locale} cta.title`)
+  }
+})
+
+test('support and rewards pages do not reuse English copy for localized routes', () => {
+  const refundEn = getSupportPolicyCopy('refundPolicy', 'en')
+  const acceptableUseEn = getSupportPolicyCopy('acceptableUse', 'en')
+  const contactEn = getContactPageCopy('en')
+  const earnCreditsEn = getEarnCreditsPageCopy('en')
+
+  for (const locale of localizedLocales) {
+    assertLocalizedFieldsDoNotReuseEnglish(
+      'refund-policy',
+      refundEn,
+      getSupportPolicyCopy('refundPolicy', locale),
+      locale,
+      ['metadata.title', 'metadata.description', 'title', 'intro', 'sections.0.title', 'sections.0.body'],
+    )
+
+    assertLocalizedFieldsDoNotReuseEnglish(
+      'acceptable-use',
+      acceptableUseEn,
+      getSupportPolicyCopy('acceptableUse', locale),
+      locale,
+      ['metadata.title', 'metadata.description', 'title', 'intro', 'sections.0.title', 'sections.0.body'],
+    )
+
+    assertLocalizedFieldsDoNotReuseEnglish(
+      'contact',
+      contactEn,
+      getContactPageCopy(locale),
+      locale,
+      ['metadata.title', 'metadata.description', 'title', 'description', 'cards.0.title'],
+    )
+
+    assertLocalizedFieldsDoNotReuseEnglish(
+      'earn-credits',
+      earnCreditsEn,
+      getEarnCreditsPageCopy(locale),
+      locale,
+      ['metadata.title', 'metadata.description', 'hero.title', 'hero.description', 'checkIn.title', 'share.submitForReview'],
+    )
   }
 })
 
@@ -272,6 +315,65 @@ test('History page common copy exists for every supported locale', () => {
       for (const key of localizedKeysThatMustTranslate) {
         assert.notEqual(historyPage[key], englishHistoryPage[key], `${locale}.historyPage.${key}`)
       }
+    }
+  }
+})
+
+test('Credits page common copy exists for every supported locale', () => {
+  const requiredCreditsPageKeys = [
+    'metadataTitle',
+    'metadataDescription',
+    'title',
+    'description',
+    'availableCredits',
+    'loading',
+    'signInRequired',
+    'loadError',
+    'emptyTitle',
+    'emptyDescription',
+    'filteredEmptyTitle',
+    'balanceAfter',
+  ]
+  const requiredNestedKeys = {
+    tabs: ['all', 'obtained', 'used', 'purchases'],
+    types: ['grant', 'use', 'refund', 'purchase', 'adjustment'],
+  }
+  const englishCreditsPage = readJson('src/data/en/common.json').creditsPage
+  const localizedKeysThatMustTranslate = [
+    'metadataTitle',
+    'metadataDescription',
+    'title',
+    'description',
+    'availableCredits',
+    'loading',
+    'signInRequired',
+    'loadError',
+    'emptyTitle',
+    'emptyDescription',
+    'filteredEmptyTitle',
+  ]
+
+  for (const locale of supportedLocales) {
+    const creditsPage = readJson(`src/data/${locale}/common.json`).creditsPage
+
+    for (const key of requiredCreditsPageKeys) {
+      assert.equal(typeof creditsPage?.[key], 'string', `${locale}.creditsPage.${key}`)
+      assert.notEqual(creditsPage[key].trim(), '', `${locale}.creditsPage.${key}`)
+    }
+
+    for (const [group, keys] of Object.entries(requiredNestedKeys)) {
+      for (const key of keys) {
+        assert.equal(typeof creditsPage?.[group]?.[key], 'string', `${locale}.creditsPage.${group}.${key}`)
+        assert.notEqual(creditsPage[group][key].trim(), '', `${locale}.creditsPage.${group}.${key}`)
+      }
+    }
+
+    if (locale !== 'en') {
+      for (const key of localizedKeysThatMustTranslate) {
+        assert.notEqual(creditsPage[key], englishCreditsPage[key], `${locale}.creditsPage.${key}`)
+      }
+      assert.notEqual(creditsPage.tabs.obtained, englishCreditsPage.tabs.obtained, `${locale}.creditsPage.tabs.obtained`)
+      assert.notEqual(creditsPage.types.purchase, englishCreditsPage.types.purchase, `${locale}.creditsPage.types.purchase`)
     }
   }
 })

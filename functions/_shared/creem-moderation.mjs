@@ -1,3 +1,5 @@
+import { getCreemPromptModerationSetting } from './runtime-settings.mjs'
+
 const DEFAULT_CREEM_API_BASE_URL = 'https://api.creem.io'
 const MODERATION_PATH = '/v1/moderation/prompt'
 const BLOCKED_PROMPT_ERROR = 'This prompt cannot be generated. Please try a different idea.'
@@ -49,6 +51,19 @@ function buildUnavailableResult() {
   }
 }
 
+function buildSkippedResult(reason) {
+  return {
+    allowed: true,
+    status: 200,
+    body: {
+      moderation: {
+        skipped: true,
+        reason,
+      },
+    },
+  }
+}
+
 export async function moderatePromptBeforeGeneration({
   prompt,
   env = {},
@@ -63,6 +78,11 @@ export async function moderatePromptBeforeGeneration({
       status: 400,
       body: { error: 'Prompt is required' },
     }
+  }
+
+  const setting = await getCreemPromptModerationSetting(env)
+  if (!setting.enabled) {
+    return buildSkippedResult(setting.reason)
   }
 
   const apiKey = getCreemApiKey(env)

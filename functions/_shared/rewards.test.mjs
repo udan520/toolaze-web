@@ -233,7 +233,7 @@ test('status shows day one when the streak has expired', async () => {
   assert.equal(status.nextRewardCredits, 5);
 });
 
-test('status marks only the current checked-in reward as claimed', async () => {
+test('status marks completed active-streak rewards as claimed', async () => {
   const env = createEnv();
   const grantCreditsFn = async () => ({ ok: true, balance: 5, amount: 5 });
 
@@ -250,7 +250,7 @@ test('status marks only the current checked-in reward as claimed', async () => {
 
   assert.equal(status.checkedInToday, true);
   assert.equal(status.streakDay, 2);
-  assert.deepEqual(status.rewards.filter((reward) => reward.claimed).map((reward) => reward.day), [2]);
+  assert.deepEqual(status.rewards.filter((reward) => reward.claimed).map((reward) => reward.day), [1, 2]);
   assert.deepEqual(status.rewards.filter((reward) => reward.current).map((reward) => reward.day), [2]);
 });
 

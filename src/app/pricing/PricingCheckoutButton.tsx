@@ -2,6 +2,8 @@
 
 import { useState } from 'react'
 import type { PricingCheckoutCopy } from './pricing-copy'
+import { shouldUseEmbeddedCheckout } from './creem-checkout-mode'
+import { openCreemEmbeddedCheckout } from './open-creem-embedded-checkout'
 
 type PricingCheckoutButtonProps = {
   planId: string
@@ -48,6 +50,13 @@ export default function PricingCheckoutButton({
       }
       if (!response.ok || !payload.checkoutUrl) {
         throw new Error(payload.error || copy.checkoutFailed)
+      }
+
+      if (shouldUseEmbeddedCheckout()) {
+        await openCreemEmbeddedCheckout(payload.checkoutUrl, {
+          onClose: () => setLoading(false),
+        })
+        return
       }
 
       window.location.href = payload.checkoutUrl

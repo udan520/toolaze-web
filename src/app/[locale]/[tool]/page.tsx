@@ -1,4 +1,5 @@
 import { redirect, notFound } from 'next/navigation'
+import { ENGLISH_ONLY_ROOT_ROUTES, isEnglishOnlyRootRoute } from '@/lib/localized-route-fallbacks'
 
 // 支持的所有语言列表（仅用于非法 locale 校验；本页不再生成 locale×工具 的静态路径）
 const SUPPORTED_LOCALES = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it'] as const
@@ -15,7 +16,12 @@ export const dynamicParams = false
 
 export async function generateStaticParams(): Promise<Array<{ locale: string; tool: string }>> {
   // output: 'export' 要求动态路由至少返回一个静态参数；真实多语言工具页由显式路由负责。
-  return [{ locale: 'en', tool: 'not-found' }]
+  return [
+    { locale: 'en', tool: 'not-found' },
+    ...SUPPORTED_LOCALES.flatMap((locale) =>
+      ENGLISH_ONLY_ROOT_ROUTES.map((tool) => ({ locale, tool }))
+    ),
+  ]
 }
 
 export default async function ToolPage({ params }: PageProps) {
@@ -47,6 +53,11 @@ export default async function ToolPage({ params }: PageProps) {
 
   if (!SUPPORTED_LOCALES.includes(locale as (typeof SUPPORTED_LOCALES)[number])) {
     notFound()
+    return null
+  }
+
+  if (isEnglishOnlyRootRoute(tool)) {
+    redirect(`/${tool}`)
     return null
   }
 

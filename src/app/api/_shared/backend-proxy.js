@@ -22,6 +22,7 @@ const SESSION_COOKIE_NAME = 'toolaze_session'
 const SESSION_TTL_SECONDS = 30 * 24 * 60 * 60
 const LOCAL_DEV_ADMIN_TOKEN = 'toolaze-local-dev-admin'
 const ADMIN_PRODUCTION_SOURCE = 'production'
+const LOCAL_RUNTIME_SETTINGS_KEY = Symbol.for('toolaze.localRuntimeSettings')
 const backendOrigin = (process.env.ACCOUNT_API_BACKEND || 'https://toolaze-web.pages.dev').replace(/\/+$/, '')
 
 export async function proxyToPagesFunctions(request, pathname) {
@@ -131,6 +132,9 @@ function localDevJsonResponse(body, init = {}) {
 }
 
 async function handleLocalDevSessionRequest(request, incomingUrl, pathname, savedLocalSessionToken = '') {
+  if (isLocalhost(incomingUrl.hostname) && pathname === '/api/admin/settings') {
+    return handleLocalDevSettingsRequest(request, incomingUrl)
+  }
   if (isLocalhost(incomingUrl.hostname) && pathname === '/api/admin/reward-reviews') {
     return handleLocalDevRewardReviewRequest(request, incomingUrl)
   }
@@ -216,6 +220,55 @@ async function handleLocalDevSessionRequest(request, incomingUrl, pathname, save
   }
 
   return null
+}
+
+function getLocalRuntimeSettings() {
+  const globalKey = LOCAL_RUNTIME_SETTINGS_KEY
+  globalThis[globalKey] ??= {
+    creemPromptModerationEnabled: false,
+  }
+  return globalThis[globalKey]
+}
+
+function buildRuntimeSettingsPayload(settings, meta = {}) {
+  return {
+    settings: {
+      creemPromptModerationEnabled: Boolean(settings.creemPromptModerationEnabled),
+    },
+    meta: {
+      source: 'local-dev',
+      reason: settings.creemPromptModerationEnabled ? 'enabled_by_admin' : 'disabled_by_admin',
+      ...meta,
+    },
+  }
+}
+
+async function handleLocalDevSettingsRequest(request, incomingUrl) {
+  const adminToken = request.headers.get('x-admin-token') || ''
+  if (adminToken !== LOCAL_DEV_ADMIN_TOKEN) {
+    return Response.json({ error: 'Admin token required.' }, { status: 403 })
+  }
+  if (isProductionAdminSource(incomingUrl)) {
+    return proxyProductionAdminRequest(request, incomingUrl, '/api/admin/settings')
+  }
+
+  const settings = getLocalRuntimeSettings()
+
+  if (request.method === 'GET') {
+    return Response.json(buildRuntimeSettingsPayload(settings))
+  }
+
+  if (request.method === 'POST') {
+    const body = await request.json().catch(() => ({}))
+    if (typeof body?.creemPromptModerationEnabled !== 'boolean') {
+      return Response.json({ error: 'creemPromptModerationEnabled must be a boolean.' }, { status: 400 })
+    }
+
+    settings.creemPromptModerationEnabled = body.creemPromptModerationEnabled
+    return Response.json(buildRuntimeSettingsPayload(settings))
+  }
+
+  return Response.json({ error: 'Method not allowed', allow: 'GET, POST, OPTIONS' }, { status: 405 })
 }
 
 async function handleLocalDevCheckoutRequest(request, incomingUrl, savedLocalSessionToken = '') {

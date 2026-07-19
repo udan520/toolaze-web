@@ -2,6 +2,24 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import { moderatePromptBeforeGeneration } from './creem-moderation.mjs'
 
+function createModerationSettingEnv(value = 'true') {
+  return {
+    DB: {
+      prepare() {
+        return {
+          bind() {
+            return {
+              async first() {
+                return { value }
+              },
+            }
+          },
+        }
+      },
+    },
+  }
+}
+
 test('Creem moderation allows prompt only after allow decision', async () => {
   let requestBody = null
   const fetchImpl = async (_url, init) => {
@@ -11,7 +29,7 @@ test('Creem moderation allows prompt only after allow decision', async () => {
 
   const result = await moderatePromptBeforeGeneration({
     prompt: 'a product photo on a clean table',
-    env: { CREEM_API_KEY: 'creem-test-key' },
+    env: { ...createModerationSettingEnv('true'), CREEM_API_KEY: 'creem-test-key' },
     externalId: 'generation_123',
     fetchImpl,
   })
@@ -31,7 +49,7 @@ test('Creem moderation treats flag as a block', async () => {
 
   const result = await moderatePromptBeforeGeneration({
     prompt: 'risky prompt',
-    env: { CREEM_API_KEY: 'creem-test-key' },
+    env: { ...createModerationSettingEnv('true'), CREEM_API_KEY: 'creem-test-key' },
     fetchImpl,
   })
 
@@ -46,11 +64,88 @@ test('Creem moderation fails closed when API is unavailable', async () => {
 
   const result = await moderatePromptBeforeGeneration({
     prompt: 'safe prompt',
-    env: { CREEM_API_KEY: 'creem-test-key' },
+    env: { ...createModerationSettingEnv('true'), CREEM_API_KEY: 'creem-test-key' },
     fetchImpl,
   })
 
   assert.equal(result.allowed, false)
   assert.equal(result.status, 503)
   assert.equal(result.body.error, 'Prompt moderation is temporarily unavailable. Please try again.')
+})
+
+test('Creem moderation is skipped when the runtime admin setting is disabled', async () => {
+  let fetchCalled = false
+  const fetchImpl = async () => {
+    fetchCalled = true
+    return Response.json({ decision: 'deny' })
+  }
+
+  const result = await moderatePromptBeforeGeneration({
+    prompt: 'a normal prompt',
+    env: {
+      DB: {
+        prepare() {
+          return {
+            bind() {
+              return {
+                async first() {
+                  return { value: 'false' }
+                },
+              }
+            },
+          }
+        },
+      },
+    },
+    fetchImpl,
+  })
+
+  assert.equal(result.allowed, true)
+  assert.equal(result.body.moderation.skipped, true)
+  assert.equal(result.body.moderation.reason, 'disabled_by_admin')
+  assert.equal(fetchCalled, false)
+})
+
+test('Creem moderation is skipped when runtime settings storage is unavailable', async () => {
+  let fetchCalled = false
+  const fetchImpl = async () => {
+    fetchCalled = true
+    return Response.json({ decision: 'deny' })
+  }
+
+  const result = await moderatePromptBeforeGeneration({
+    prompt: 'a normal prompt',
+    env: {},
+    fetchImpl,
+  })
+
+  assert.equal(result.allowed, true)
+  assert.equal(result.body.moderation.skipped, true)
+  assert.equal(result.body.moderation.reason, 'settings_unbound')
+  assert.equal(fetchCalled, false)
+})
+
+test('Creem moderation is skipped when the runtime admin setting cannot be read', async () => {
+  let fetchCalled = false
+  const fetchImpl = async () => {
+    fetchCalled = true
+    return Response.json({ decision: 'deny' })
+  }
+
+  const result = await moderatePromptBeforeGeneration({
+    prompt: 'a normal prompt',
+    env: {
+      DB: {
+        prepare() {
+          throw new Error('D1 unavailable')
+        },
+      },
+    },
+    fetchImpl,
+  })
+
+  assert.equal(result.allowed, true)
+  assert.equal(result.body.moderation.skipped, true)
+  assert.equal(result.body.moderation.reason, 'settings_unavailable')
+  assert.equal(fetchCalled, false)
 })

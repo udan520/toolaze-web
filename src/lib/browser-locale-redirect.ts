@@ -1,4 +1,5 @@
 import { ALL_LOCALE_CODES, PREFERRED_LOCALE_STORAGE_KEY } from './site-language-switch'
+import { ENGLISH_ONLY_ROOT_ROUTES } from './localized-route-fallbacks'
 
 const LOCALE_REDIRECT_STORAGE_KEY = 'toolaze.localeRedirectedPath'
 
@@ -7,6 +8,7 @@ function getBrowserLocaleRedirectScript() {
 var supported=${JSON.stringify([...ALL_LOCALE_CODES])};
 var preferredKey=${JSON.stringify(PREFERRED_LOCALE_STORAGE_KEY)};
 var redirectedKey=${JSON.stringify(LOCALE_REDIRECT_STORAGE_KEY)};
+var englishOnlyRoots=${JSON.stringify([...ENGLISH_ONLY_ROOT_ROUTES])};
 var path=location.pathname||'/';
 var parts=path.split('/').filter(Boolean);
 var first=parts[0]||'';
@@ -27,7 +29,7 @@ if(!raw){
 }
 if(!raw||raw==='en'||supported.indexOf(raw)<0)return;
 var root=parts[0]||'';
-if(root==='refund-policy'||root==='acceptable-use'||root==='contact')return;
+if(englishOnlyRoots.indexOf(root)>=0)return;
 if(root==='prompts')return;
 if(root==='model'&&(parts[1]==='gpt-image-2'||parts[1]==='seedream-4-5'||parts[1]==='wan-2-7-image'))return;
 sessionStorage.setItem(redirectedKey,path);

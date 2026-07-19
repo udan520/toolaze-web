@@ -583,6 +583,7 @@
       "history": "Historial",
       "noHistory": "Aún no hay historial. Genera una imagen para verla aquí.",
       "recreate": "Recrear",
+      "editImage": "Editar imagen",
       "download": "Descargar",
       "downloading": "Descargando...",
       "copyPrompt": "Copiar prompt",
@@ -866,6 +867,33 @@
     "modeVideo": "Video",
     "modeTextToImage": "Texto a imagen",
     "modeImageToImage": "Imagen a imagen"
+  },
+  "creditsPage": {
+    "metadataTitle": "Actividad de créditos - Toolaze",
+    "metadataDescription": "Consulta tu saldo de créditos de Toolaze y el historial completo de actividad.",
+    "title": "Actividad de créditos",
+    "description": "Revisa cada cambio de créditos en tu cuenta, incluidos bonos, uso de generación, reembolsos y ajustes manuales.",
+    "availableCredits": "Créditos disponibles",
+    "loading": "Cargando actividad de créditos...",
+    "signInRequired": "Inicia sesión con Google para ver tus créditos.",
+    "loadError": "No se pudo cargar la actividad de créditos.",
+    "emptyTitle": "Aún no hay actividad de créditos.",
+    "emptyDescription": "Los cambios de créditos aparecerán aquí después de bonos de registro, compras, reembolsos o generaciones.",
+    "filteredEmptyTitle": "Aún no hay registros.",
+    "balanceAfter": "Saldo: {balance}",
+    "tabs": {
+      "all": "Todo",
+      "obtained": "Obtenidos",
+      "used": "Usados",
+      "purchases": "Compras"
+    },
+    "types": {
+      "grant": "Bonificación",
+      "use": "Usados",
+      "refund": "Reembolso",
+      "purchase": "Compra",
+      "adjustment": "Ajuste"
+    }
   },
   "privacy": {
     "metadata": {

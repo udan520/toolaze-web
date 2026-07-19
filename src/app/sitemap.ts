@@ -7,8 +7,7 @@ export const dynamic = 'force-static'
 
 const baseUrl = 'https://toolaze.com'
 const SUPPORTED_LOCALES = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
-const STATIC_PAGES = ['about', 'privacy', 'terms', 'pricing']
-const ENGLISH_STATIC_PAGES = ['refund-policy', 'acceptable-use', 'contact']
+const STATIC_PAGES = ['about', 'privacy', 'terms', 'pricing', 'refund-policy', 'acceptable-use', 'contact']
 const TOOL_PAGES = ['image-compressor', 'image-converter', 'font-generator', 'emoji-copy-and-paste']
 
 interface SitemapEntry {
@@ -43,16 +42,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         changeFrequency: 'monthly',
         priority: 0.8,
       })
-    })
-  })
-
-  // 2b. 英文 canonical 静态页面
-  ENGLISH_STATIC_PAGES.forEach((page) => {
-    entries.push({
-      url: `${baseUrl}/${page}`,
-      lastModified: today,
-      changeFrequency: 'monthly',
-      priority: 0.75,
     })
   })
 

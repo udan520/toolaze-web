@@ -582,7 +582,8 @@
       "inputImage": "輸入圖片",
       "history": "歷史記錄",
       "noHistory": "尚無歷史記錄。生成圖片後會顯示在這裡。",
-      "recreate": "重新建立",
+      "recreate": "重新創作",
+      "editImage": "編輯圖片",
       "download": "下載",
       "downloading": "下載中...",
       "copyPrompt": "複製提示詞",
@@ -866,6 +867,33 @@
     "modeVideo": "影片",
     "modeTextToImage": "文字生成圖片",
     "modeImageToImage": "圖片轉圖片"
+  },
+  "creditsPage": {
+    "metadataTitle": "點數紀錄 - Toolaze",
+    "metadataDescription": "查看你的 Toolaze 點數餘額與完整點數變動紀錄。",
+    "title": "點數紀錄",
+    "description": "查看帳號中的每一次點數變動，包括獎勵、生成消耗、退還與人工調整。",
+    "availableCredits": "可用點數",
+    "loading": "正在載入點數紀錄...",
+    "signInRequired": "請使用 Google 登入以查看你的點數。",
+    "loadError": "無法載入點數紀錄。",
+    "emptyTitle": "尚無點數紀錄。",
+    "emptyDescription": "註冊獎勵、購買、退還或生成後，點數變動會顯示在這裡。",
+    "filteredEmptyTitle": "尚無記錄。",
+    "balanceAfter": "餘額：{balance}",
+    "tabs": {
+      "all": "全部",
+      "obtained": "取得",
+      "used": "使用",
+      "purchases": "購買"
+    },
+    "types": {
+      "grant": "獎勵",
+      "use": "使用",
+      "refund": "退還",
+      "purchase": "購買",
+      "adjustment": "調整"
+    }
   },
   "privacy": {
     "metadata": {

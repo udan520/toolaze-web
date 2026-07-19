@@ -591,7 +591,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
       return
     }
 
-    const interactedToday = hasCheckInNudgeInteractionToday(window.localStorage)
+    const interactedToday = hasCheckInNudgeInteractionToday(window.localStorage, undefined, authUser.id)
 
     let cancelled = false
     const loadCheckInNudge = async () => {
@@ -792,7 +792,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
 
   function markCheckInNudgeInteracted() {
     if (typeof window !== 'undefined') {
-      markCheckInNudgeInteractionToday(window.localStorage)
+      markCheckInNudgeInteractionToday(window.localStorage, undefined, authUser?.id)
     }
     setCheckInNudgeCardHidden(true)
   }
@@ -1359,6 +1359,12 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                   aria-label={`${creditSummary.balance} ${accountTranslations.credits}`}
                 >
                   <span className="tabular-nums">{creditSummary.balance}</span>
+                  <img
+                    src="/credits-icons/diamond-3d-indigo.svg"
+                    alt=""
+                    aria-hidden="true"
+                    className="h-4 w-4 flex-none"
+                  />
                 </span>
                 <button
                   type="button"
@@ -1858,6 +1864,12 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                   aria-label={`${creditSummary.balance} ${accountTranslations.credits}`}
                 >
                   <span className="tabular-nums">{creditSummary.balance}</span>
+                  <img
+                    src="/credits-icons/diamond-3d-indigo.svg"
+                    alt=""
+                    aria-hidden="true"
+                    className="h-4 w-4 flex-none"
+                  />
                 </span>
                 {renderAvatar()}
               </button>

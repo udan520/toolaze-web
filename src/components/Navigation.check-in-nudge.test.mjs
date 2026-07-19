@@ -14,8 +14,8 @@ test('daily check-in nudge is not suppressed on earn credits pages', () => {
 
 test('daily check-in nudge records any card interaction for the local day', () => {
   assert.match(navigationSource, /onClickCapture=\{markCheckInNudgeInteracted\}/)
-  assert.match(navigationSource, /hasCheckInNudgeInteractionToday\(window\.localStorage\)/)
-  assert.match(navigationSource, /markCheckInNudgeInteractionToday\(window\.localStorage\)/)
+  assert.match(navigationSource, /hasCheckInNudgeInteractionToday\(window\.localStorage,\s*undefined,\s*authUser\.id\)/)
+  assert.match(navigationSource, /markCheckInNudgeInteractionToday\(window\.localStorage,\s*undefined,\s*authUser\?\.id\)/)
 })
 
 test('daily check-in nudge clears immediately after a successful check-in event', () => {
@@ -109,7 +109,7 @@ test('account menu stays within the viewport and scrolls to the sign out action'
   assert.doesNotMatch(signOutButtonSource, /text-left/)
 })
 
-test('account header credit balance shows the number without a large diamond icon', () => {
+test('account header credit balance shows the number with a compact diamond icon', () => {
   const mobileAccountEntrySource = navigationSource.slice(
     navigationSource.indexOf('/* 移动端账号入口 + 菜单按钮 */'),
     navigationSource.indexOf('data-account-avatar-trigger'),
@@ -121,8 +121,12 @@ test('account header credit balance shows the number without a large diamond ico
 
   assert.match(mobileAccountEntrySource, /creditSummary\.balance/)
   assert.match(desktopAccountButtonSource, /creditSummary\.balance/)
-  assert.doesNotMatch(mobileAccountEntrySource, /\/credits-icons\/diamond-3d-indigo\.svg/)
-  assert.doesNotMatch(desktopAccountButtonSource, /\/credits-icons\/diamond-3d-indigo\.svg/)
+  assert.match(mobileAccountEntrySource, /\/credits-icons\/diamond-3d-indigo\.svg/)
+  assert.match(desktopAccountButtonSource, /\/credits-icons\/diamond-3d-indigo\.svg/)
+  assert.match(mobileAccountEntrySource, /className="h-4 w-4/)
+  assert.match(desktopAccountButtonSource, /className="h-4 w-4/)
+  assert.doesNotMatch(mobileAccountEntrySource, /bg-white\/90 p-0\.5 shadow-sm/)
+  assert.doesNotMatch(desktopAccountButtonSource, /bg-white\/90 p-0\.5 shadow-sm/)
 })
 
 test('account avatar trigger does not render a numeric check-in reward badge', () => {

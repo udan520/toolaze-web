@@ -669,7 +669,7 @@ export async function Seedream45LandingPage({ locale = 'en' }: { locale?: string
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <Navigation initialTranslations={t} />
       <main className="min-h-screen overflow-x-hidden bg-[#F8FAFF] text-slate-950">
-        <section id="seedream-4-5-generator" className="bg-[#F8FAFF] pb-12 pl-0 pr-2 md:pl-0 md:pr-4 xl:pl-0 xl:pr-6 2xl:pl-0 2xl:pr-8">
+        <section id="seedream-4-5-generator" className="bg-[#F8FAFF] px-0 pb-12">
           <div className="w-full max-w-full">
             <AiImageGenerationTool
               modelId="seedream-4-5"

@@ -595,6 +595,7 @@
       "history": "履歴",
       "noHistory": "履歴はまだありません。画像を生成するとここに表示されます。",
       "recreate": "再作成",
+      "editImage": "画像を編集",
       "download": "ダウンロード",
       "downloading": "ダウンロード中...",
       "copyPrompt": "プロンプトをコピー",
@@ -878,6 +879,33 @@
     "modeVideo": "動画",
     "modeTextToImage": "テキストから画像",
     "modeImageToImage": "画像から画像"
+  },
+  "creditsPage": {
+    "metadataTitle": "クレジット履歴 - Toolaze",
+    "metadataDescription": "Toolaze のクレジット残高とすべてのクレジット履歴を確認できます。",
+    "title": "クレジット履歴",
+    "description": "ボーナス、生成での使用、返還、手動調整を含む、アカウント上のすべてのクレジット変動を確認できます。",
+    "availableCredits": "利用可能なクレジット",
+    "loading": "クレジット履歴を読み込んでいます...",
+    "signInRequired": "クレジットを表示するには Google でログインしてください。",
+    "loadError": "クレジット履歴を読み込めませんでした。",
+    "emptyTitle": "まだクレジット履歴はありません。",
+    "emptyDescription": "登録ボーナス、購入、返還、生成の後にクレジット変動がここに表示されます。",
+    "filteredEmptyTitle": "まだ記録はありません。",
+    "balanceAfter": "残高：{balance}",
+    "tabs": {
+      "all": "すべて",
+      "obtained": "獲得",
+      "used": "使用",
+      "purchases": "購入"
+    },
+    "types": {
+      "grant": "ボーナス",
+      "use": "使用",
+      "refund": "返還",
+      "purchase": "購入",
+      "adjustment": "調整"
+    }
   },
   "privacy": {
     "metadata": {

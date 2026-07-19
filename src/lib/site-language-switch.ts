@@ -3,6 +3,8 @@
  * @see docs/LANGUAGE_SWITCH_AND_REDIRECT.md
  */
 
+import { isEnglishOnlyRootRoute } from './localized-route-fallbacks'
+
 export const SITE_LOCALES = [
   { code: 'en', name: 'English', flag: '🇺🇸' },
   { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
@@ -88,11 +90,20 @@ export function getContentSupportedLocaleCodes(pathname: string | null): string[
 
   const root = segments[0]
 
-  if (['about', 'privacy', 'terms', 'pricing'].includes(root)) {
+  if ([
+    'about',
+    'privacy',
+    'terms',
+    'pricing',
+    'refund-policy',
+    'acceptable-use',
+    'contact',
+    'earn-credits',
+  ].includes(root)) {
     return [...ALL_LOCALE_CODES]
   }
 
-  if (['refund-policy', 'acceptable-use', 'contact'].includes(root)) {
+  if (isEnglishOnlyRootRoute(root)) {
     return ['en']
   }
 

@@ -583,6 +583,7 @@
       "history": "Verlauf",
       "noHistory": "Noch kein Verlauf. Generiere ein Bild, um es hier zu sehen.",
       "recreate": "Neu erstellen",
+      "editImage": "Bild bearbeiten",
       "download": "Herunterladen",
       "downloading": "Wird heruntergeladen...",
       "copyPrompt": "Prompt kopieren",
@@ -866,6 +867,33 @@
     "modeVideo": "Video",
     "modeTextToImage": "Text zu Bild",
     "modeImageToImage": "Bild zu Bild"
+  },
+  "creditsPage": {
+    "metadataTitle": "Credit-Verlauf - Toolaze",
+    "metadataDescription": "Sieh dir dein Toolaze Credit-Guthaben und den vollständigen Credit-Verlauf an.",
+    "title": "Credit-Verlauf",
+    "description": "Prüfe jede Credit-Änderung in deinem Konto, einschließlich Boni, Generierungsnutzung, Rückerstattungen und manueller Anpassungen.",
+    "availableCredits": "Verfügbare Credits",
+    "loading": "Credit-Verlauf wird geladen...",
+    "signInRequired": "Bitte melde dich mit Google an, um deine Credits zu sehen.",
+    "loadError": "Der Credit-Verlauf konnte nicht geladen werden.",
+    "emptyTitle": "Noch kein Credit-Verlauf.",
+    "emptyDescription": "Credit-Änderungen erscheinen hier nach Registrierungsboni, Käufen, Rückerstattungen oder Generierungen.",
+    "filteredEmptyTitle": "Noch keine Einträge.",
+    "balanceAfter": "Saldo: {balance}",
+    "tabs": {
+      "all": "Alle",
+      "obtained": "Erhalten",
+      "used": "Verwendet",
+      "purchases": "Käufe"
+    },
+    "types": {
+      "grant": "Bonus",
+      "use": "Verwendet",
+      "refund": "Rückerstattung",
+      "purchase": "Kauf",
+      "adjustment": "Anpassung"
+    }
   },
   "privacy": {
     "metadata": {

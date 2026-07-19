@@ -72,7 +72,7 @@ test('pricing supports localized navigation routes', () => {
   assert.doesNotMatch(BROWSER_LOCALE_REDIRECT_SCRIPT, /root==='pricing'/)
   assert.match(localizedPageSource, /generateStaticParams/)
   assert.match(localizedPageSource, /PricingPageContent/)
-  assert.match(sitemapSource, /const STATIC_PAGES = \['about', 'privacy', 'terms', 'pricing'\]/)
+  assert.match(sitemapSource, /const STATIC_PAGES = \[[^\]]*'pricing'[^\]]*\]/)
   assert.doesNotMatch(sitemapSource, /const ENGLISH_STATIC_PAGES = \['pricing'/)
 })
 

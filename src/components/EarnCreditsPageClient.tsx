@@ -2,6 +2,9 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import { dispatchToolazeTopNotice } from '@/lib/top-notice'
+import type { EarnCreditsPageCopy } from '@/app/earn-credits/earn-credits-copy'
+import { formatEarnCreditsCopy } from '@/app/earn-credits/earn-credits-copy'
 
 type CreditTransaction = {
   id: string
@@ -60,20 +63,23 @@ function dispatchCheckInUpdated(checkIn: CheckInStatus | null | undefined) {
   window.dispatchEvent(new CustomEvent('toolaze:check-in-updated', { detail: checkIn }))
 }
 
-export default function EarnCreditsPageClient() {
+type EarnCreditsPageClientProps = {
+  copy: EarnCreditsPageCopy
+  locale?: string
+}
+
+export default function EarnCreditsPageClient({ copy, locale = 'en' }: EarnCreditsPageClientProps) {
   const [checkIn, setCheckIn] = useState<CheckInStatus>(fallbackCheckIn)
   const [loading, setLoading] = useState(true)
   const [claiming, setClaiming] = useState(false)
   const [xPostUrl, setXPostUrl] = useState('')
   const [xSubmitting, setXSubmitting] = useState(false)
-  const [notice, setNotice] = useState('')
-  const [error, setError] = useState('')
+  const pricingHref = locale === 'en' ? '/pricing' : `/${locale}/pricing`
 
   useEffect(() => {
     let cancelled = false
     const loadRewards = async () => {
       setLoading(true)
-      setError('')
       try {
         const response = await fetch('/api/rewards/check-in', {
           cache: 'no-store',
@@ -81,16 +87,22 @@ export default function EarnCreditsPageClient() {
         })
         if (response.status === 401) {
           window.dispatchEvent(new CustomEvent('toolaze:open-auth-modal'))
-          throw new Error('Please sign in to earn credits.')
+          throw new Error(copy.notices.signInEarn)
         }
-        if (!response.ok) throw new Error('Could not load reward status.')
+        if (!response.ok) throw new Error(copy.notices.loadError)
         const data = await response.json().catch(() => ({}))
         if (cancelled) return
         const nextCheckIn = data.checkIn || fallbackCheckIn
         setCheckIn(nextCheckIn)
         dispatchCheckInUpdated(nextCheckIn)
       } catch (err) {
-        if (!cancelled) setError(err instanceof Error ? err.message : 'Could not load reward status.')
+        if (!cancelled) {
+          dispatchToolazeTopNotice({
+            type: 'error',
+            title: copy.notices.rewardsLoadTitle,
+            message: err instanceof Error ? err.message : copy.notices.loadError,
+          })
+        }
       } finally {
         if (!cancelled) setLoading(false)
       }
@@ -100,13 +112,11 @@ export default function EarnCreditsPageClient() {
     return () => {
       cancelled = true
     }
-  }, [])
+  }, [copy.notices.loadError, copy.notices.rewardsLoadTitle, copy.notices.signInEarn])
 
   const claimCheckIn = async () => {
     if (claiming || checkIn.checkedInToday) return
     setClaiming(true)
-    setNotice('')
-    setError('')
     try {
       const response = await fetch('/api/rewards/check-in', {
         method: 'POST',
@@ -115,19 +125,37 @@ export default function EarnCreditsPageClient() {
       const data = await response.json().catch(() => ({}))
       if (response.status === 401) {
         window.dispatchEvent(new CustomEvent('toolaze:open-auth-modal'))
-        throw new Error('Please sign in to earn credits.')
+        throw new Error(copy.notices.signInEarn)
       }
-      if (!response.ok) throw new Error(data.error || 'Could not claim your daily reward.')
+      if (!response.ok) throw new Error(data.error || copy.notices.checkInFailedMessage)
       const nextCheckIn = data.checkIn || fallbackCheckIn
       setCheckIn(nextCheckIn)
       dispatchCheckInUpdated(nextCheckIn)
       dispatchCreditsUpdated(data.credits)
-      setNotice(data.alreadyCheckedIn
-        ? 'You have already checked in today.'
-        : `Day ${data.checkIn?.day || checkIn.nextDay} reward added: +${data.rewardCredits} credits.`
-      )
+      if (data.alreadyCheckedIn) {
+        dispatchToolazeTopNotice({
+          type: 'success',
+          title: copy.notices.alreadyCheckedInTitle,
+          message: copy.notices.alreadyCheckedInMessage,
+        })
+      } else {
+        const rewardDay = data.checkIn?.day || checkIn.nextDay
+        const rewardCredits = data.rewardCredits || checkIn.nextRewardCredits
+        dispatchToolazeTopNotice({
+          type: 'success',
+          title: copy.notices.dailyRewardClaimedTitle,
+          message: formatEarnCreditsCopy(copy.notices.dailyRewardClaimedMessage, {
+            day: rewardDay,
+            credits: rewardCredits,
+          }),
+        })
+      }
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Could not claim your daily reward.')
+      dispatchToolazeTopNotice({
+        type: 'error',
+        title: copy.notices.checkInFailedTitle,
+        message: err instanceof Error ? err.message : copy.notices.checkInFailedMessage,
+      })
     } finally {
       setClaiming(false)
     }
@@ -136,8 +164,6 @@ export default function EarnCreditsPageClient() {
   const submitXPost = async () => {
     if (xSubmitting) return
     setXSubmitting(true)
-    setNotice('')
-    setError('')
     try {
       const response = await fetch('/api/rewards/x-post', {
         method: 'POST',
@@ -148,16 +174,23 @@ export default function EarnCreditsPageClient() {
       const data = await response.json().catch(() => ({}))
       if (response.status === 401) {
         window.dispatchEvent(new CustomEvent('toolaze:open-auth-modal'))
-        throw new Error('Please sign in to submit your X post.')
+        throw new Error(copy.notices.signInXPost)
       }
-      if (!response.ok) throw new Error(data.error || 'Could not submit this X post.')
-      setNotice(data.duplicate
-        ? 'This X post is already submitted and waiting for review.'
-        : 'X post submitted. Approved posts receive +10 credits.'
-      )
+      if (!response.ok) throw new Error(data.error || copy.notices.submissionFailedMessage)
+      dispatchToolazeTopNotice({
+        type: 'success',
+        title: copy.notices.xPostSubmittedTitle,
+        message: data.duplicate
+          ? copy.notices.xPostDuplicateMessage
+          : copy.notices.xPostSubmittedMessage,
+      })
       setXPostUrl('')
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Could not submit this X post.')
+      dispatchToolazeTopNotice({
+        type: 'error',
+        title: copy.notices.submissionFailedTitle,
+        message: err instanceof Error ? err.message : copy.notices.submissionFailedMessage,
+      })
     } finally {
       setXSubmitting(false)
     }
@@ -168,26 +201,15 @@ export default function EarnCreditsPageClient() {
       <section className="mx-auto max-w-5xl">
         <div className="flex flex-col gap-5">
           <div>
-            <p className="text-sm font-extrabold text-indigo-600">Earn Free Credits</p>
+            <p className="text-sm font-extrabold text-indigo-600">{copy.hero.eyebrow}</p>
             <h1 className="mt-2 text-3xl font-extrabold tracking-tight text-slate-900 md:text-5xl">
-              Get More Credits Without Buying a Pack
+              {copy.hero.title}
             </h1>
             <p className="mt-3 max-w-none text-base leading-7 text-slate-600">
-              Check in daily or share Toolaze on X. Rewards are added to your account after claim or review.
+              {copy.hero.description}
             </p>
           </div>
         </div>
-
-        {notice && (
-          <div className="mt-6 rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-bold text-emerald-700">
-            {notice}
-          </div>
-        )}
-        {error && (
-          <div className="mt-6 rounded-2xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm font-bold text-rose-700">
-            {error}
-          </div>
-        )}
 
         <div className="mt-8 grid gap-5 lg:grid-cols-[1.2fr_0.8fr]">
           <section
@@ -196,9 +218,9 @@ export default function EarnCreditsPageClient() {
           >
             <div>
               <div>
-                <h2 className="text-2xl font-extrabold text-slate-900">Daily check-in</h2>
+                <h2 className="text-2xl font-extrabold text-slate-900">{copy.checkIn.title}</h2>
                 <p className="mt-2 text-sm leading-6 text-slate-600">
-                  Keep the streak. Miss a day and the reward starts again from Day 1.
+                  {copy.checkIn.description}
                 </p>
               </div>
             </div>
@@ -215,7 +237,9 @@ export default function EarnCreditsPageClient() {
                         : 'border-slate-200 bg-white'
                   }`}
                 >
-                  <p className="text-xs font-extrabold text-slate-500">Day {reward.day}</p>
+                  <p className="text-xs font-extrabold text-slate-500">
+                    {formatEarnCreditsCopy(copy.checkIn.dayLabel, { day: reward.day })}
+                  </p>
                   <div className="mt-2 flex items-center justify-center gap-1">
                     <span className="text-lg font-extrabold text-slate-900">+{reward.credits}</span>
                     <img src="/credits-icons/diamond-3d-indigo.svg" alt="" aria-hidden="true" className="h-5 w-5" />
@@ -223,7 +247,7 @@ export default function EarnCreditsPageClient() {
                   {reward.claimed ? (
                     <span
                       className="absolute -left-1.5 -top-1.5 z-10 inline-flex h-5 w-5 items-center justify-center rounded-full bg-emerald-500 text-white shadow-sm shadow-emerald-100 ring-2 ring-white"
-                      aria-label={`Day ${reward.day} checked in`}
+                      aria-label={formatEarnCreditsCopy(copy.checkIn.checkedInAria, { day: reward.day })}
                     >
                       <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" aria-hidden="true">
                         <path
@@ -243,24 +267,29 @@ export default function EarnCreditsPageClient() {
               disabled={loading || claiming || checkIn.checkedInToday}
               className="mt-6 inline-flex w-full items-center justify-center rounded-2xl bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-600 px-5 py-3 text-sm font-extrabold text-white shadow-lg shadow-indigo-200 transition hover:-translate-y-0.5 hover:shadow-xl disabled:cursor-not-allowed disabled:opacity-60"
             >
-              {checkIn.checkedInToday ? 'Checked in today' : claiming ? 'Claiming...' : `Claim Day ${checkIn.nextDay} reward`}
+              {checkIn.checkedInToday
+                ? copy.checkIn.checkedInToday
+                : claiming
+                  ? copy.checkIn.claiming
+                  : formatEarnCreditsCopy(copy.checkIn.claimDayReward, { day: checkIn.nextDay })}
             </button>
           </section>
 
           <section className="rounded-3xl border border-indigo-100 bg-white p-5 shadow-xl shadow-indigo-100/60 md:p-6">
-            <h2 className="text-2xl font-extrabold text-slate-900">Share on X</h2>
+            <h2 className="text-2xl font-extrabold text-slate-900">{copy.share.title}</h2>
             <p className="mt-2 text-sm leading-6 text-slate-600">
-              Post about Toolaze on X, paste the post link here, and approved posts receive{' '}
-              <span className="font-extrabold text-purple-700">10 credits</span>.
+              {copy.share.description.split('{credits}')[0]}
+              <span className="font-extrabold text-purple-700">10</span>
+              {copy.share.description.split('{credits}')[1]}
             </p>
             <label className="mt-5 block text-sm font-bold text-slate-700" htmlFor="x-post-url">
-              X post URL
+              {copy.share.xPostUrlLabel}
             </label>
             <input
               id="x-post-url"
               value={xPostUrl}
               onChange={(event) => setXPostUrl(event.target.value)}
-              placeholder="https://x.com/yourname/status/..."
+              placeholder={copy.share.xPostUrlPlaceholder}
               className="mt-2 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-900 outline-none transition focus:border-indigo-300 focus:ring-4 focus:ring-indigo-100"
             />
             <button
@@ -269,12 +298,12 @@ export default function EarnCreditsPageClient() {
               disabled={xSubmitting || !xPostUrl.trim()}
               className="mt-4 inline-flex w-full items-center justify-center rounded-2xl border border-indigo-200 bg-indigo-50 px-5 py-3 text-sm font-extrabold text-indigo-700 transition hover:-translate-y-0.5 hover:bg-indigo-100 disabled:cursor-not-allowed disabled:opacity-60"
             >
-              {xSubmitting ? 'Submitting...' : 'Submit for review'}
+              {xSubmitting ? copy.share.submitting : copy.share.submitForReview}
             </button>
             <div className="mt-5 rounded-2xl bg-slate-50 px-4 py-4 text-sm leading-6 text-slate-600">
-              Need credits right now?{' '}
-              <Link href="/pricing" className="font-extrabold text-indigo-600 hover:text-purple-600">
-                Buy a one-time pack
+              {copy.cta.prefix}{' '}
+              <Link href={pricingHref} className="font-extrabold text-indigo-600 hover:text-purple-600">
+                {copy.cta.linkLabel}
               </Link>
               .
             </div>
