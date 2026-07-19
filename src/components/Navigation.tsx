@@ -1,11 +1,13 @@
 'use client'
 
 import Link from 'next/link'
+import type { CSSProperties } from 'react'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import CloseIcon from './icons/CloseIcon'
 import { mergeCreditSummaryUpdate } from '@/lib/credit-summary-merge'
 import { formatCreditTransactionTimestamp } from '@/lib/credit-history-time'
+import { formatCreditTransactionDescription } from '@/lib/credit-transaction-description'
 import { getClientMenuItems, type ClientMenuItem } from '@/lib/client-menu-data'
 import {
   hasCheckInNudgeInteractionToday,
@@ -77,39 +79,40 @@ const defaultNavTranslations = {
 }
 
 const defaultAuthTranslations = {
-  signIn: 'Sign in',
-  openAccountMenu: 'Open account menu',
-  closeNotification: 'Close notification',
-  modalTitle: 'Sign in to Toolaze',
-  modalEyebrow: 'Toolaze account',
+  signIn: 'Sign In',
+  openAccountMenu: 'Open Account Menu',
+  closeNotification: 'Close Notification',
+  modalTitle: 'Sign In to Toolaze',
+  modalEyebrow: 'Toolaze Account',
   modalDescription: 'Continue with Google to save your generation access and use Toolaze AI tools.',
   newUserBonus: 'New users receive 10 credits after signing up.',
   modalGoogleButton: 'Continue with Google',
   modalGoogleLoading: 'Connecting...',
   modalTerms: 'By continuing, you agree to use Toolaze with your Google account.',
-  closeDialog: 'Close sign in dialog',
-  noticeSignInFailedTitle: 'Sign-in failed',
+  closeDialog: 'Close Sign In Dialog',
+  noticeSignInFailedTitle: 'Sign-In Failed',
   noticeSignInFailedMessage: 'Google sign-in could not be completed. Please try again.',
-  noticeSignedInTitle: 'Signed in successfully',
+  noticeSignedInTitle: 'Signed In Successfully',
   noticeSignedInMessage: 'You can now use Toolaze AI tools with your account.',
   noticeNewUserCreditsTitle: 'Welcome to Toolaze',
   noticeNewUserCreditsMessage: 'Your 10 signup credits are ready.',
-  signOut: 'Sign out',
+  signOut: 'Sign Out',
 }
 
 const defaultAccountTranslations = {
-  availableCredits: 'Available credits',
-  creditHistory: 'Credit history',
-  noCreditActivity: 'No credit activity yet.',
+  availableCredits: 'Available Credits',
+  creditHistory: 'Credit History',
+  noCreditActivity: 'No Credit Activity Yet.',
   balance: 'Balance',
   credits: 'credits',
-  seeAll: 'See all',
-  earnCredits: 'Earn credits',
+  seeAll: 'See All',
+  buyCredits: 'Buy Credits',
+  earnCredits: 'Earn Credits',
   history: 'History',
-  viewAll: 'View all',
+  viewAll: 'View All',
   support: 'Help & Support',
   supportEmail: 'support@toolaze.com',
-  signOut: 'Sign out',
+  signOut: 'Sign Out',
 }
 
 const AI_TOOLS_DEMO_IMAGES = {
@@ -136,6 +139,7 @@ function getInitialNavTranslations(initialTranslations?: any) {
   return {
     ...defaultNavTranslations,
     ...(initialTranslations.nav || {}),
+    pricing: initialTranslations.nav?.pricing || initialTranslations.footer?.pricing || defaultNavTranslations.pricing,
     language: initialTranslations.footer?.language || defaultNavTranslations.language,
   }
 }
@@ -175,14 +179,21 @@ type CreditSummary = {
 }
 
 type TopNotice = {
-  type: 'success' | 'error'
+  type: 'success' | 'error' | 'warning'
   title: string
   message: string
+  celebration?: boolean
 }
 
 type CheckInNudge = {
   day: number
   rewardCredits: number
+}
+
+type CheckInUpdate = {
+  checkedInToday?: boolean
+  nextDay?: number
+  nextRewardCredits?: number
 }
 
 const emptyCreditSummary: CreditSummary = {
@@ -199,7 +210,66 @@ function isCreditSummary(value: unknown): value is CreditSummary {
   )
 }
 
-const TOP_NOTICE_DURATION_MS = 3000
+function isTopNotice(value: unknown): value is TopNotice {
+  if (!value || typeof value !== 'object') return false
+  const notice = value as Partial<TopNotice>
+  return (
+    (notice.type === 'success' || notice.type === 'error' || notice.type === 'warning') &&
+    typeof notice.title === 'string' &&
+    typeof notice.message === 'string' &&
+    (typeof notice.celebration === 'undefined' || typeof notice.celebration === 'boolean')
+  )
+}
+
+function getTopNoticeStyles(type: TopNotice['type']) {
+  if (type === 'success') {
+    return {
+      container: 'border-emerald-200 bg-white shadow-emerald-100/80',
+      icon: 'bg-emerald-50 text-emerald-600',
+      symbol: '✓',
+    }
+  }
+
+  if (type === 'warning') {
+    return {
+      container: 'border-amber-200 bg-white shadow-amber-100/80',
+      icon: 'bg-amber-50 text-amber-600',
+      symbol: '!',
+    }
+  }
+
+  return {
+    container: 'border-rose-200 bg-white shadow-rose-100/80',
+    icon: 'bg-rose-50 text-rose-600',
+    symbol: '!',
+  }
+}
+
+const TOP_NOTICE_DURATION_MS = 5000
+const CONFETTI_DURATION_MS = 3600
+const CONFETTI_PARTICLE_COUNT = 92
+const CONFETTI_PALETTE = ['#4F46E5', '#6366F1', '#8B5CF6', '#A855F7', '#D946EF', '#EC4899', '#F59E0B', '#22C55E', '#14B8A6', '#38BDF8'] as const
+const CONFETTI_PARTICLES = Array.from({ length: CONFETTI_PARTICLE_COUNT }, (_, index) => {
+  const fromLeft = index % 2 === 0
+  const ratio = ((index * 17) % 100) / 100
+  const width = 5 + ((index * 5) % 9)
+  const sideLift = ((index * 29) % 100) / 100
+  const direction = fromLeft ? 1 : -1
+
+  return {
+    left: fromLeft ? '8vw' : '92vw',
+    top: `${84 + ((index * 7) % 11)}vh`,
+    delay: (index * 19) % 680,
+    duration: 2300 + ((index * 31) % 780),
+    width,
+    height: width * (1.1 + ((index * 3) % 7) / 10),
+    radius: index % 4 === 0 ? '999px' : '3px',
+    x: direction * (120 + ratio * 440),
+    y: -230 - sideLift * 360,
+    rotation: direction * (360 + ((index * 41) % 840)),
+    color: CONFETTI_PALETTE[(index + (fromLeft ? 0 : 4)) % CONFETTI_PALETTE.length],
+  }
+})
 const AUTH_POPUP_NAME = 'toolaze-google-auth'
 const AUTH_POPUP_MESSAGE_TYPE = 'toolaze:auth-result'
 const AUTH_CACHE_STORAGE_KEY = 'toolaze.authSnapshot'
@@ -279,6 +349,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
   const desktopAccountMenuRef = useRef<HTMLDivElement>(null)
   const authPopupRef = useRef<Window | null>(null)
   const topNoticeTimerRef = useRef<number | null>(null)
+  const confettiTimerRef = useRef<number | null>(null)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [openDesktopMenu, setOpenDesktopMenu] = useState<string | null>(null)
   const [expandedSubmenus, setExpandedSubmenus] = useState<Set<string>>(new Set())
@@ -304,8 +375,10 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
   const [devLoginError, setDevLoginError] = useState('')
   const [accountMenuOpen, setAccountMenuOpen] = useState(false)
   const [topNotice, setTopNotice] = useState<TopNotice | null>(null)
+  const [confettiBurstId, setConfettiBurstId] = useState(0)
   const [checkInNudge, setCheckInNudge] = useState<CheckInNudge | null>(null)
   const [checkInNudgeCardHidden, setCheckInNudgeCardHidden] = useState(false)
+  const [checkInNudgeClaiming, setCheckInNudgeClaiming] = useState(false)
   const pathname = usePathname()
 
   const currentLocale = getCurrentLocaleFromPath(pathname ?? null)
@@ -370,6 +443,9 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
     return () => {
       if (typeof window !== 'undefined' && topNoticeTimerRef.current) {
         window.clearTimeout(topNoticeTimerRef.current)
+      }
+      if (typeof window !== 'undefined' && confettiTimerRef.current) {
+        window.clearTimeout(confettiTimerRef.current)
       }
     }
   }, [])
@@ -460,6 +536,15 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
     if (typeof window === 'undefined') return
 
     const handleOpenAuthModal = () => openAuthModal()
+    const handleTopNotice = (event: Event) => {
+      const notice = (event as CustomEvent<TopNotice | null>).detail
+      if (isTopNotice(notice)) {
+        showTimedTopNotice(notice)
+        if (notice.celebration) {
+          showCelebrationConfetti()
+        }
+      }
+    }
     const handleCreditsUpdated = (event: Event) => {
       const nextCredits = (event as CustomEvent<CreditSummary | null>).detail
       if (isCreditSummary(nextCredits)) {
@@ -477,13 +562,24 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
 
       void loadAuthState()
     }
+    const handleCheckInUpdated = (event: Event) => {
+      const checkIn = (event as CustomEvent<CheckInUpdate | null>).detail
+      if (checkIn?.checkedInToday) {
+        setCheckInNudge(null)
+        setCheckInNudgeCardHidden(false)
+      }
+    }
 
     window.addEventListener('toolaze:open-auth-modal', handleOpenAuthModal)
+    window.addEventListener('toolaze:top-notice', handleTopNotice)
     window.addEventListener('toolaze:credits-updated', handleCreditsUpdated)
+    window.addEventListener('toolaze:check-in-updated', handleCheckInUpdated)
 
     return () => {
       window.removeEventListener('toolaze:open-auth-modal', handleOpenAuthModal)
+      window.removeEventListener('toolaze:top-notice', handleTopNotice)
       window.removeEventListener('toolaze:credits-updated', handleCreditsUpdated)
+      window.removeEventListener('toolaze:check-in-updated', handleCheckInUpdated)
     }
   }, [])
 
@@ -679,6 +775,21 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
     }
   }
 
+  function showCelebrationConfetti() {
+    if (typeof window !== 'undefined' && confettiTimerRef.current) {
+      window.clearTimeout(confettiTimerRef.current)
+    }
+
+    setConfettiBurstId(Date.now())
+
+    if (typeof window !== 'undefined') {
+      confettiTimerRef.current = window.setTimeout(() => {
+        setConfettiBurstId(0)
+        confettiTimerRef.current = null
+      }, CONFETTI_DURATION_MS)
+    }
+  }
+
   function markCheckInNudgeInteracted() {
     if (typeof window !== 'undefined') {
       markCheckInNudgeInteractionToday(window.localStorage)
@@ -688,6 +799,53 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
 
   function dismissCheckInNudge() {
     markCheckInNudgeInteracted()
+  }
+
+  async function claimCheckInFromNudge() {
+    if (checkInNudgeClaiming || !checkInNudge) return
+
+    const pendingRewardCredits = checkInNudge.rewardCredits
+    setCheckInNudgeClaiming(true)
+
+    try {
+      const response = await fetch('/api/rewards/check-in', {
+        method: 'POST',
+        credentials: 'include',
+      })
+      const data = await response.json().catch(() => ({}))
+
+      if (response.status === 401) {
+        window.dispatchEvent(new CustomEvent('toolaze:open-auth-modal'))
+        throw new Error('Please sign in to earn credits.')
+      }
+      if (!response.ok) {
+        throw new Error(data.error || 'Could not claim your daily reward.')
+      }
+
+      if (isCreditSummary(data.credits)) {
+        window.dispatchEvent(new CustomEvent('toolaze:credits-updated', { detail: data.credits }))
+      } else {
+        void loadAuthState()
+      }
+
+      const nextCheckIn = data.checkIn || { checkedInToday: true }
+      window.dispatchEvent(new CustomEvent('toolaze:check-in-updated', { detail: nextCheckIn }))
+      setCheckInNudge(null)
+      setCheckInNudgeCardHidden(false)
+      showTimedTopNotice({
+        type: 'success',
+        title: 'Daily Reward Claimed',
+        message: `${data.rewardCredits || pendingRewardCredits} credits have been added to your account.`,
+      })
+    } catch (error) {
+      showTimedTopNotice({
+        type: 'error',
+        title: 'Check-In Failed',
+        message: error instanceof Error ? error.message : 'Could not claim your daily reward.',
+      })
+    } finally {
+      setCheckInNudgeClaiming(false)
+    }
   }
 
   function isTrustedAuthMessageOrigin(origin: string): boolean {
@@ -858,7 +1016,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
 
   const renderAuthLoadingPlaceholder = (mobile = false) => (
     <span
-      className={`${mobile ? 'h-10 w-[92px]' : 'h-9 w-24'} inline-flex animate-pulse rounded-full bg-slate-100`}
+      className={`${mobile ? 'h-10 w-20 max-[360px]:w-14' : 'h-9 w-24'} inline-flex animate-pulse rounded-full bg-slate-100`}
       aria-label="Loading account"
     />
   )
@@ -882,10 +1040,10 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
               <div className="flex items-start justify-between gap-3">
                 <div className="min-w-0">
                   <p className="truncate text-xs font-semibold text-slate-800">
-                    {transaction.description}
+                    {formatCreditTransactionDescription(transaction.description)}
                   </p>
                   <p className="mt-0.5 text-[11px] text-slate-500">
-                    {formatCreditTransactionTimestamp(transaction.createdAt)} · {accountTranslations.balance} {transaction.balanceAfter}
+                    {formatCreditTransactionTimestamp(transaction.createdAt)} · {accountTranslations.balance}: {transaction.balanceAfter.toLocaleString('en-US')}
                   </p>
                 </div>
                 <span className={`shrink-0 text-sm font-extrabold ${isPositive ? 'text-emerald-600' : 'text-rose-600'}`}>
@@ -926,19 +1084,41 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
           <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-2xl bg-indigo-50">
             <img src="/credits-icons/diamond-3d-indigo.svg" alt="" aria-hidden="true" className="h-6 w-6" />
           </div>
-          <div className="min-w-0">
-            <p className="text-sm font-extrabold text-slate-950">Check-in ready</p>
+          <div className="min-w-0 pr-4">
+            <p className="text-sm font-extrabold text-slate-950">
+              You have {checkInNudge.rewardCredits} credits waiting.
+            </p>
             <p className="mt-0.5 text-xs leading-5 text-slate-600">
               Day {checkInNudge.day} · +{checkInNudge.rewardCredits} credits
             </p>
           </div>
         </div>
-        <div className="mt-3">
+        <div className="mt-3 grid grid-cols-[minmax(0,1fr)_auto] gap-2">
+          <button
+            type="button"
+            onClick={claimCheckInFromNudge}
+            disabled={checkInNudgeClaiming}
+            className="flex items-center justify-center gap-1.5 rounded-xl bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-600 px-3 py-2.5 text-center text-xs font-extrabold text-white shadow-lg shadow-indigo-100 transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-70"
+          >
+            {checkInNudgeClaiming ? (
+              'Claiming...'
+            ) : (
+              <>
+                <span>Claim {checkInNudge.rewardCredits}</span>
+                <img
+                  src="/credits-icons/diamond-3d-indigo.svg"
+                  alt=""
+                  aria-hidden="true"
+                  className="h-4 w-4"
+                />
+              </>
+            )}
+          </button>
           <Link
             href={getEarnCreditsCheckInHref()}
-            className="block rounded-xl bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-600 px-3 py-2.5 text-center text-xs font-extrabold text-white shadow-lg shadow-indigo-100 transition hover:-translate-y-0.5"
+            className="flex items-center justify-center rounded-xl border border-indigo-100 bg-white px-3 py-2.5 text-center text-xs font-extrabold text-indigo-700 shadow-sm shadow-indigo-50 transition hover:-translate-y-0.5 hover:bg-indigo-50"
           >
-            View rewards
+            See Rewards
           </Link>
         </div>
       </div>
@@ -951,15 +1131,15 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
     return (
       <div
         data-account-menu-variant={variant}
-        className={`overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl shadow-slate-200/60 ${
+        className={`overflow-y-auto overscroll-contain rounded-2xl border border-slate-200 bg-white shadow-2xl shadow-slate-200/60 ${
           variant === 'mobile'
-            ? 'fixed right-3 top-[64px] z-[120] w-[calc(100vw-1.5rem)] max-w-[320px]'
-            : 'absolute right-0 top-full z-[80] mt-3 w-[320px]'
+            ? 'fixed right-3 top-[64px] z-[120] max-h-[calc(100vh-5rem)] w-[calc(100vw-1.5rem)] max-w-[320px]'
+            : 'absolute right-0 top-full z-[80] mt-3 max-h-[calc(100vh-6rem)] w-[320px]'
         }`}
       >
-        <div className="border-b border-slate-100 px-4 py-4">
+        <div className="border-b border-slate-100 px-4 py-3">
           <div className="flex items-center gap-3">
-            {renderAvatar('h-10 w-10')}
+            {renderAvatar('h-9 w-9')}
             <div className="min-w-0">
               <p className="truncate text-sm font-bold text-slate-900">{authUser.name || authUser.email}</p>
               {authUser.email && (
@@ -967,32 +1147,30 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
               )}
             </div>
           </div>
-          <div className="mt-4 rounded-xl bg-indigo-50 px-4 py-3">
-            <p className="text-xs font-semibold uppercase tracking-[0.12em] text-indigo-600">
+          <div className="mt-3 rounded-xl bg-indigo-50 px-3 py-2.5">
+            <p className="text-xs font-semibold text-indigo-600">
               {accountTranslations.availableCredits}
             </p>
-            <p className="mt-1 text-3xl font-extrabold text-slate-950">
+            <p className="mt-1 text-2xl font-extrabold text-slate-950">
               {creditSummary.balance}
             </p>
           </div>
           <Link
+            href={getLocalizedHref('/pricing')}
+            onClick={() => setAccountMenuOpen(false)}
+            className="mt-3 flex w-full items-center justify-center rounded-xl bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-600 px-4 py-2.5 text-center text-sm font-extrabold text-white shadow-lg shadow-indigo-100 transition hover:-translate-y-0.5"
+          >
+            <span>{accountTranslations.buyCredits}</span>
+          </Link>
+          <Link
             href={getEarnCreditsCheckInHref()}
             onClick={() => setAccountMenuOpen(false)}
-            className="mt-3 flex w-full items-center justify-between rounded-xl bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-600 px-4 py-3 text-left text-sm font-extrabold text-white shadow-lg shadow-indigo-100 transition hover:-translate-y-0.5"
+            className="mt-2 flex w-full items-center justify-center rounded-xl border border-indigo-100 bg-indigo-50/70 px-4 py-2.5 text-center text-sm font-extrabold text-indigo-700 shadow-sm shadow-indigo-50 transition hover:-translate-y-0.5 hover:bg-indigo-50"
           >
             <span>{accountTranslations.earnCredits}</span>
-            <span className="inline-flex items-center gap-1 text-xs">
-              +5
-              <img
-                src="/credits-icons/diamond-3d-indigo.svg"
-                alt=""
-                aria-hidden="true"
-                className="h-4 w-4 rounded-full bg-white/90"
-              />
-            </span>
           </Link>
         </div>
-        <div className="px-4 py-4">
+        <div className="px-4 py-3">
           <div className="mb-3 flex items-center justify-between">
             <p className="text-sm font-bold text-slate-900">{accountTranslations.creditHistory}</p>
             <Link
@@ -1007,7 +1185,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
           <Link
             href={getLocalizedHref('/history')}
             onClick={() => setAccountMenuOpen(false)}
-            className="mt-4 flex w-full items-center justify-between rounded-xl border-t border-slate-100 px-4 py-3 text-left text-sm font-bold text-slate-700 transition-colors hover:bg-indigo-50 hover:text-indigo-600"
+            className="mt-3 flex w-full items-center justify-between rounded-xl border-t border-slate-100 px-4 py-2.5 text-left text-sm font-bold text-slate-700 transition-colors hover:bg-indigo-50 hover:text-indigo-600"
           >
             <span>{accountTranslations.history}</span>
             <span className="text-xs text-slate-400">{accountTranslations.viewAll}</span>
@@ -1015,7 +1193,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
           <Link
             href={getLocalizedHref('/contact')}
             onClick={() => setAccountMenuOpen(false)}
-            className="mt-2 flex w-full items-center justify-between rounded-xl px-4 py-3 text-left text-sm font-bold text-slate-700 transition-colors hover:bg-indigo-50 hover:text-indigo-600"
+            className="mt-2 flex w-full items-center justify-between rounded-xl px-4 py-2.5 text-left text-sm font-bold text-slate-700 transition-colors hover:bg-indigo-50 hover:text-indigo-600"
           >
             <span>{accountTranslations.support}</span>
             <span className="text-xs text-slate-400">{accountTranslations.supportEmail}</span>
@@ -1024,7 +1202,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
             <button
               type="button"
               onClick={handleSignOut}
-              className="w-full rounded-xl px-4 py-2.5 text-left text-sm font-bold text-slate-700 transition-colors hover:bg-indigo-50 hover:text-indigo-600"
+              className="w-full rounded-xl px-4 py-2.5 text-center text-sm font-bold text-slate-700 transition-colors hover:bg-indigo-50 hover:text-indigo-600"
             >
               {accountTranslations.signOut}
             </button>
@@ -1162,14 +1340,14 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
     <>
     <nav id="mainNav" ref={navRef} className="sticky-nav w-full">
       <div className="h-[70px] px-6 flex justify-center items-center max-w-6xl mx-auto w-full relative">
-        <Link href={getLocalizedHref('/')} className="absolute left-6 text-3xl font-extrabold text-indigo-600 tracking-tighter flex items-center gap-3 hover:opacity-80 transition-opacity">
+        <Link href={getLocalizedHref('/')} className="absolute left-6 flex max-w-[calc(100%-9rem)] min-w-0 items-center gap-3 text-3xl font-extrabold tracking-tighter text-indigo-600 transition-opacity hover:opacity-80">
           <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="shadow-md shadow-indigo-100 rounded-lg">
             <rect width="40" height="40" rx="12" fill="white"/>
             <path d="M12 12H22C23.1 12 24 12.9 24 14V28C24 29.1 23.1 30 22 30H18C16.9 30 16 29.1 16 28V16H12C10.9 16 10 15.1 10 14V14C10 12.9 10.9 12 12 12Z" fill="url(#paint_wink)"/>
             <circle cx="29" cy="14" r="3" fill="url(#paint_wink)"/>
             <defs><linearGradient id="paint_wink" x1="10" y1="12" x2="29" y2="30" gradientUnits="userSpaceOnUse"><stop stopColor="#4F46E5"/><stop offset="1" stopColor="#9333EA"/></linearGradient></defs>
           </svg>
-          Toolaze
+          <span className="truncate">Toolaze</span>
         </Link>
         
         {/* 移动端账号入口 + 菜单按钮 */}
@@ -1181,12 +1359,6 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                   aria-label={`${creditSummary.balance} ${accountTranslations.credits}`}
                 >
                   <span className="tabular-nums">{creditSummary.balance}</span>
-                  <img
-                    src="/credits-icons/diamond-3d-indigo.svg"
-                    alt=""
-                    aria-hidden="true"
-                    className="h-5 w-5"
-                  />
                 </span>
                 <button
                   type="button"
@@ -1198,15 +1370,6 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                 >
                   {renderAvatar('h-10 w-10')}
                 </button>
-                {checkInNudge && !accountMenuOpen && (
-                  <Link
-                    href={getEarnCreditsCheckInHref()}
-                    className="absolute -right-1 -top-1 z-[95] rounded-full bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-600 px-1.5 py-0.5 text-[10px] font-extrabold leading-none text-white shadow-lg shadow-indigo-200 ring-2 ring-white transition hover:-translate-y-0.5 motion-safe:animate-pulse"
-                    aria-label={`View daily check-in rewards and claim +${checkInNudge.rewardCredits} credits`}
-                  >
-                    +{checkInNudge.rewardCredits}
-                  </Link>
-                )}
                 {renderCheckInNudge('mobile')}
                 {accountMenuOpen && renderAccountMenu('mobile')}
               </div>
@@ -1695,24 +1858,9 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                   aria-label={`${creditSummary.balance} ${accountTranslations.credits}`}
                 >
                   <span className="tabular-nums">{creditSummary.balance}</span>
-                  <img
-                    src="/credits-icons/diamond-3d-indigo.svg"
-                    alt=""
-                    aria-hidden="true"
-                    className="h-5 w-5"
-                  />
                 </span>
                 {renderAvatar()}
               </button>
-              {checkInNudge && !accountMenuOpen && (
-                <Link
-                  href={getEarnCreditsCheckInHref()}
-                  className="absolute -right-1 -top-1 z-[95] rounded-full bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-600 px-1.5 py-0.5 text-[10px] font-extrabold leading-none text-white shadow-lg shadow-indigo-200 ring-2 ring-white transition hover:-translate-y-0.5 motion-safe:animate-pulse"
-                  aria-label={`View daily check-in rewards and claim +${checkInNudge.rewardCredits} credits`}
-                >
-                  +{checkInNudge.rewardCredits}
-                </Link>
-              )}
               {renderCheckInNudge()}
               {accountMenuOpen && renderAccountMenu()}
             </div>
@@ -2184,10 +2332,38 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
         )}
       </div>
     </nav>
-    {topNotice && (
-      <div className="fixed right-4 top-20 z-[10000] max-w-sm rounded-2xl border border-slate-200 bg-white p-4 shadow-xl shadow-slate-200/70">
+    {confettiBurstId > 0 && (
+      <div key={confettiBurstId} className="toolaze-confetti-layer" aria-hidden="true">
+        {CONFETTI_PARTICLES.map((particle, index) => (
+          <span
+            key={`${confettiBurstId}-${index}`}
+            className="toolaze-confetti-particle"
+            style={{
+              left: particle.left,
+              top: particle.top,
+              width: `${particle.width}px`,
+              height: `${particle.height}px`,
+              borderRadius: particle.radius,
+              background: particle.color,
+              animationDelay: `${particle.delay}ms`,
+              animationDuration: `${particle.duration}ms`,
+              '--confetti-x': `${particle.x}px`,
+              '--confetti-y': `${particle.y}px`,
+              '--confetti-r': `${particle.rotation}deg`,
+              '--confetti-peak': '0.92',
+            } as CSSProperties}
+          />
+        ))}
+      </div>
+    )}
+    {topNotice && (() => {
+      const topNoticeStyles = getTopNoticeStyles(topNotice.type)
+      return (
+      <div className={`fixed left-1/2 top-[90px] z-[10000] w-[calc(100vw-2rem)] max-w-sm -translate-x-1/2 rounded-2xl border p-4 shadow-xl ${topNoticeStyles.container}`}>
         <div className="flex items-start gap-3">
-          <div className={`mt-1 h-2.5 w-2.5 rounded-full ${topNotice.type === 'success' ? 'bg-emerald-500' : 'bg-rose-500'}`} />
+          <div className={`mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-sm font-extrabold ${topNoticeStyles.icon}`} aria-hidden="true">
+            {topNoticeStyles.symbol}
+          </div>
           <div className="min-w-0 flex-1">
             <p className="text-sm font-extrabold text-slate-950">{topNotice.title}</p>
             <p className="mt-0.5 text-xs leading-5 text-slate-600">{topNotice.message}</p>
@@ -2202,7 +2378,8 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
           </button>
         </div>
       </div>
-    )}
+      )
+    })()}
     {authModalOpen && (
       <div
         className="fixed inset-0 z-[10000] flex items-center justify-center bg-slate-950/45 px-4 py-6 backdrop-blur-sm"
@@ -2231,7 +2408,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                 <path d="M12 3L14.3 8.1L20 8.7L15.7 12.4L17 18L12 15.1L7 18L8.3 12.4L4 8.7L9.7 8.1L12 3Z" fill="currentColor" />
               </svg>
             </div>
-            <p className="mb-2 text-xs font-bold uppercase tracking-[0.18em] text-indigo-600">
+            <p className="mb-2 text-xs font-bold text-indigo-600">
               {authTranslations.modalEyebrow}
             </p>
             <h2 id="auth-modal-title" className="text-2xl font-extrabold leading-tight text-slate-950">

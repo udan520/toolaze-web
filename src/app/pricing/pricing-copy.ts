@@ -1,4 +1,5 @@
 export type PricingPlan = {
+  id: string
   name: string
   price: string
   credits: number
@@ -6,6 +7,7 @@ export type PricingPlan = {
   bonusCredits: number
   billingLabel: string
   validity: string
+  checkoutEnabled: boolean
   badge?: string
 }
 
@@ -16,6 +18,7 @@ export type PricingFaqItem = {
 
 export const PRICING_PLANS: PricingPlan[] = [
   {
+    id: 'starter',
     name: 'Starter',
     price: '$1.99',
     credits: 200,
@@ -23,8 +26,10 @@ export const PRICING_PLANS: PricingPlan[] = [
     bonusCredits: 0,
     billingLabel: 'One-time purchase',
     validity: 'Credits valid for 12 months',
+    checkoutEnabled: true,
   },
   {
+    id: 'creator',
     name: 'Creator',
     price: '$8.99',
     credits: 1000,
@@ -32,18 +37,22 @@ export const PRICING_PLANS: PricingPlan[] = [
     bonusCredits: 100,
     billingLabel: 'One-time purchase',
     validity: 'Credits valid for 12 months',
+    checkoutEnabled: true,
     badge: 'Most Popular',
   },
   {
-    name: 'Growth',
+    id: 'plus',
+    name: 'Plus',
     price: '$39.99',
     credits: 5000,
     baseCredits: 4000,
     bonusCredits: 1000,
     billingLabel: 'One-time purchase',
     validity: 'Credits valid for 12 months',
+    checkoutEnabled: true,
   },
   {
+    id: 'studio',
     name: 'Studio',
     price: '$69.99',
     credits: 10000,
@@ -51,17 +60,21 @@ export const PRICING_PLANS: PricingPlan[] = [
     bonusCredits: 3000,
     billingLabel: 'One-time purchase',
     validity: 'Credits valid for 12 months',
+    checkoutEnabled: true,
   },
   {
-    name: 'Scale',
+    id: 'max',
+    name: 'Max',
     price: '$179.99',
     credits: 30000,
     baseCredits: 18000,
     bonusCredits: 12000,
     billingLabel: 'One-time purchase',
     validity: 'Credits valid for 12 months',
+    checkoutEnabled: true,
   },
   {
+    id: 'business',
     name: 'Business',
     price: '$249.99',
     credits: 50000,
@@ -69,6 +82,7 @@ export const PRICING_PLANS: PricingPlan[] = [
     bonusCredits: 25000,
     billingLabel: 'One-time purchase',
     validity: 'Credits valid for 12 months',
+    checkoutEnabled: true,
   },
 ]
 

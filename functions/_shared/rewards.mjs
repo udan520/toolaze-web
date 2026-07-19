@@ -112,7 +112,7 @@ export async function getDailyCheckInStatus(env, userId, now = new Date()) {
       day: index + 1,
       credits,
       current: checkedInToday ? index + 1 === streakDay : index + 1 === nextDay,
-      claimed: checkedInToday && index + 1 <= streakDay,
+      claimed: checkedInToday && index + 1 === streakDay,
     })),
   };
 }

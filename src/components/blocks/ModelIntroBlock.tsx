@@ -117,7 +117,7 @@ export default function ModelIntroBlock({
                       <span className="block text-3xl md:text-4xl font-extrabold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent tracking-tight">
                         {modelName}
                       </span>
-                      <p className="mt-2 text-xs font-semibold text-slate-400 uppercase tracking-[0.2em]">
+                      <p className="mt-2 text-xs font-semibold text-slate-400">
                         {modelType}
                       </p>
                     </div>

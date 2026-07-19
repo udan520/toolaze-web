@@ -26,7 +26,7 @@ export default function Rating({ title, rating, description, bgClass = 'bg-white
             <span className="text-4xl text-yellow-400">★</span>
             <span className="text-4xl text-yellow-400">★</span>
           </div>
-          {defaultRating && <div className="text-sm font-bold text-slate-600 uppercase tracking-widest">{defaultRating}</div>}
+          {defaultRating && <div className="text-sm font-bold text-slate-600">{defaultRating}</div>}
           {defaultDescription && (
             <p className="text-base text-slate-500 max-w-2xl mx-auto mt-4 leading-relaxed">
               {defaultDescription}

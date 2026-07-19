@@ -10,7 +10,7 @@ const locales = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
 
 // 默认翻译（英语）
 const defaultTranslations = {
-  selectFontStyle: 'Select a font style',
+  selectFontStyle: 'Select a Font Style',
   font: 'font',
   fonts: 'fonts',
   allFonts: 'All Fonts',
@@ -19,9 +19,9 @@ const defaultTranslations = {
   placeholder: 'Add text here to get started....',
   defaultText: 'Toolaze Font Generator 123',
   trustBar: {
-    private: 'Privacy aware',
+    private: 'Privacy Aware',
     instantPreview: 'Instant Preview',
-    noServerLogs: 'Clear policies'
+    noServerLogs: 'Clear Policies'
   },
   fontTerms: {
     Bold: 'Bold',
@@ -685,7 +685,7 @@ export default function FontGenerator({ initialTranslations }: FontGeneratorProp
         {/* 左侧分类栏 - 桌面端显示 */}
         <div className="hidden lg:block lg:col-span-1">
           <div className="bg-white rounded-2xl p-4 shadow-lg shadow-indigo-500/10 border border-indigo-50 sticky top-[calc(5rem+132px)] z-30">
-            <h3 className="text-sm font-bold text-slate-700 mb-4 uppercase tracking-wider">{translations?.selectFontStyle || 'Select a font style'}</h3>
+            <h3 className="mb-4 text-sm font-bold text-slate-700">{translations?.selectFontStyle || 'Select a Font Style'}</h3>
             <div ref={categoryListRef} className="space-y-2 max-h-[400px] overflow-y-auto">
               {availableCategories.map((category) => {
                 const isActive = selectedCategory === category.id

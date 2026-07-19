@@ -281,13 +281,13 @@ const en = buildCopy({
   heroSuffix: 'Image Generator',
   heroDescription:
     'Create football fan posters, selfie edits, country-color portraits, sticker packs, watch-party flyers, and social images with GPT Image 2 directly in your browser.',
-  templateEyebrow: 'Image templates',
-  templateTitle: 'Choose a World Cup image template and create a similar one',
+  templateEyebrow: 'Image Templates',
+  templateTitle: 'Choose a World Cup Image Template and Create a Similar One',
   templateDescription:
     'Start from the football image directions we already generated: fan posters, meme reactions, sticker packs, watch-party flyers, countdowns, collages, and fan cards. Click a template to send its image and prompt back to the GPT Image 2 editor above.',
-  copyPrompt: 'Copy prompt',
+  copyPrompt: 'Copy Prompt',
   copied: 'Copied',
-  createSimilar: 'Create similar',
+  createSimilar: 'Create Similar',
   altSuffix: 'World Cup AI image template',
   allCategory: 'All',
   templateTitlePrefix: 'Template',

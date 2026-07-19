@@ -31,7 +31,7 @@ declare global {
 export default function Seedance25LaunchUpdates({ copy }: Seedance25LaunchUpdatesProps) {
   const [email, setEmail] = useState('')
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle')
-  const badges = copy?.badges?.length ? copy.badges : ['Longer scenes', 'Reference control', 'Launch alerts']
+  const badges = copy?.badges?.length ? copy.badges : ['Longer Scenes', 'Reference Control', 'Launch Alerts']
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -78,8 +78,8 @@ export default function Seedance25LaunchUpdates({ copy }: Seedance25LaunchUpdate
           <div className="grid gap-4 md:grid-cols-[76px_1fr] md:items-start">
             <div className="text-5xl text-center md:text-left group-hover:scale-110 transition-transform">🎬</div>
             <div className="text-center md:text-left">
-              <p className="text-[12px] font-bold text-indigo-400 uppercase tracking-widest mb-3">
-                {copy?.eyebrow || 'Launch updates'}
+              <p className="mb-3 text-[12px] font-bold text-indigo-400">
+                {copy?.eyebrow || 'Launch Updates'}
               </p>
               <h2 className="text-xl md:text-2xl font-bold text-slate-800 mb-3">
                 {copy?.title || 'Get Seedance 2.5 access alerts'}
@@ -122,7 +122,7 @@ export default function Seedance25LaunchUpdates({ copy }: Seedance25LaunchUpdate
           </div>
         </div>
       </div>
-      <div className="mt-6 flex flex-wrap justify-center gap-4 text-[11px] font-bold text-indigo-900/60 uppercase tracking-widest">
+      <div className="mt-6 flex flex-wrap justify-center gap-4 text-[11px] font-bold text-indigo-900/60">
         {badges.map((badge, index) => (
           <Fragment key={badge}>
             <span>{badge}</span>

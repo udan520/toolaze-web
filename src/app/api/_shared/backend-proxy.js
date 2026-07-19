@@ -1,4 +1,5 @@
 import { readFile } from 'node:fs/promises'
+import { createCreditCheckout } from '../../../../functions/_shared/creem-payments.mjs'
 import {
   buildClearSessionCookie,
   buildLocalDevSessionCookie,
@@ -22,7 +23,6 @@ const SESSION_TTL_SECONDS = 30 * 24 * 60 * 60
 const LOCAL_DEV_ADMIN_TOKEN = 'toolaze-local-dev-admin'
 const ADMIN_PRODUCTION_SOURCE = 'production'
 const backendOrigin = (process.env.ACCOUNT_API_BACKEND || 'https://toolaze-web.pages.dev').replace(/\/+$/, '')
-const localSessionTokenFile = process.env.TOOLAZE_LOCAL_SESSION_TOKEN_FILE || '/tmp/toolaze-local-session-token.txt'
 
 export async function proxyToPagesFunctions(request, pathname) {
   const incomingUrl = new URL(request.url)
@@ -88,10 +88,14 @@ function applyLocalSessionFallback(headers, incomingUrl, token) {
 
 async function readLocalSessionToken() {
   try {
-    return (await readFile(localSessionTokenFile, 'utf8')).trim()
+    return (await readFile(getLocalSessionTokenFile(), 'utf8')).trim()
   } catch {
     return ''
   }
+}
+
+function getLocalSessionTokenFile() {
+  return process.env.TOOLAZE_LOCAL_SESSION_TOKEN_FILE || '/tmp/toolaze-local-session-token.txt'
 }
 
 function buildLocalSessionCookie(token) {
@@ -132,6 +136,9 @@ async function handleLocalDevSessionRequest(request, incomingUrl, pathname, save
   }
   if (isLocalhost(incomingUrl.hostname) && pathname === '/api/admin/reward-events') {
     return handleLocalDevRewardEventRequest(request, incomingUrl)
+  }
+  if (isLocalhost(incomingUrl.hostname) && pathname === '/api/billing/checkout') {
+    return handleLocalDevCheckoutRequest(request, incomingUrl, savedLocalSessionToken)
   }
 
   const hasSavedLocalDevSession = savedLocalSessionToken === getLocalDevSessionToken()
@@ -209,6 +216,75 @@ async function handleLocalDevSessionRequest(request, incomingUrl, pathname, save
   }
 
   return null
+}
+
+async function handleLocalDevCheckoutRequest(request, incomingUrl, savedLocalSessionToken = '') {
+  if (request.method !== 'POST') {
+    return localDevJsonResponse({ error: 'Method not allowed', allow: 'POST, OPTIONS' }, { status: 405 })
+  }
+
+  const body = await request.json().catch(() => ({}))
+  const user = await resolveLocalDevCheckoutUser(request, savedLocalSessionToken)
+  const checkout = await createCreditCheckout({
+    env: process.env,
+    requestUrl: incomingUrl.toString(),
+    planId: body.planId,
+    user,
+  })
+
+  if (!checkout.ok) return localDevJsonResponse(checkout.body, { status: checkout.status })
+
+  return localDevJsonResponse({
+    checkoutUrl: checkout.checkoutUrl,
+    checkoutId: checkout.checkoutId,
+    plan: {
+      id: checkout.plan.id,
+      name: checkout.plan.name,
+      price: checkout.plan.price,
+      credits: checkout.plan.credits,
+    },
+  })
+}
+
+async function resolveLocalDevCheckoutUser(request, savedLocalSessionToken = '') {
+  if (savedLocalSessionToken && savedLocalSessionToken !== getLocalDevSessionToken()) {
+    const savedSessionUser = await readBackendAuthUser(request, savedLocalSessionToken)
+    if (savedSessionUser) return savedSessionUser
+  }
+
+  const backendUser = await readBackendAuthUser(request)
+  if (backendUser) return backendUser
+
+  if (hasLocalDevSession(request) || savedLocalSessionToken === getLocalDevSessionToken()) {
+    return getLocalDevAuthState().user
+  }
+
+  return getLocalDevAuthState().user
+}
+
+async function readBackendAuthUser(request, sessionToken = '') {
+  const target = new URL('/api/auth/me', backendOrigin)
+  const headers = new Headers(request.headers)
+  headers.delete('host')
+  headers.delete('content-length')
+  if (sessionToken) {
+    headers.set('cookie', buildCookieHeader(headers.get('cookie') || '', sessionToken))
+  }
+
+  try {
+    const response = await fetch(target, {
+      method: 'GET',
+      headers,
+      redirect: 'manual',
+    })
+    if (!response.ok) return null
+
+    const payload = await response.json().catch(() => ({}))
+    if (!payload?.user?.id) return null
+    return payload.user
+  } catch {
+    return null
+  }
 }
 
 async function handleLocalDevRewardEventRequest(request, incomingUrl) {

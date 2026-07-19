@@ -82,7 +82,7 @@ export function ModelPageContent({
             <h1 className="text-[40px] font-extrabold text-slate-900 mt-8 mb-4">
               {copy.hero.title}
             </h1>
-            <p className="text-slate-600 text-lg leading-relaxed max-w-3xl">
+            <p className="text-slate-600 text-lg leading-relaxed max-w-5xl">
               {copy.hero.description}
             </p>
           </div>

@@ -106,7 +106,7 @@ export default async function ImageCompressorPage() {
         <section className="bg-white py-24 px-6 border-t border-indigo-50/50">
           <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="text-left space-y-6">
-              <span className="text-xs font-bold text-purple-500 uppercase tracking-widest bg-purple-50 px-3 py-1 rounded-full">Why Toolaze?</span>
+              <span className="rounded-full bg-purple-50 px-3 py-1 text-xs font-bold text-purple-500">Why Toolaze?</span>
               <h2 className="text-3xl font-extrabold text-slate-900 leading-tight">Stop Losing Time on Slow Image Compression Tools</h2>
               <p className="desc-text text-lg">Traditional image compressors are slow, limit file counts, and often compromise quality. Toolaze compresses up to 100 images simultaneously with precise size control, maintaining visual quality while dramatically reducing file sizes. Perfect for web developers, photographers, and content creators.</p>
             </div>
@@ -165,7 +165,7 @@ export default async function ImageCompressorPage() {
           <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
             <div className="md:col-span-5 relative order-1">
               <div className="relative bg-white rounded-[2rem] p-10 shadow-2xl shadow-indigo-500/20 border border-white">
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-brand text-white text-[10px] font-black uppercase px-4 py-1.5 rounded-full shadow-lg">Smart Choice</div>
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 rounded-full bg-gradient-brand px-4 py-1.5 text-[10px] font-black text-white shadow-lg">Smart Choice</div>
                 <h3 className="font-bold text-slate-900 text-xl mb-8 border-b border-indigo-50 pb-4">Toolaze 💎</h3>
                 <ul className="space-y-3 text-sm text-slate-700">
                   <li className="flex items-center gap-2">

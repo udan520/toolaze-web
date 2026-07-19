@@ -303,7 +303,7 @@ const en: AiImageGeneratorPageCopy = {
     title: 'Image to Image Prompt Templates',
     text:
       'Good prompts tell the model what to keep, what to change, and how the final image should feel.',
-    copyButton: 'Copy prompt',
+    copyButton: 'Copy Prompt',
     copiedButton: 'Copied',
     examples: [
       {

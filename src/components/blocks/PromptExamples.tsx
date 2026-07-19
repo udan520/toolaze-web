@@ -22,14 +22,16 @@ interface PromptExamplesProps {
   targetMode?: PromptInsertMode
 }
 
+const PROMPT_COPY_NOUN = 'Prompt'
+
 const PROMPT_EXAMPLE_LABELS = {
   en: {
     groupAria: 'Hairstyle example groups',
     women: 'Women',
     men: 'Men',
-    usePrompt: 'Use prompt',
-    copyPrompt: 'Copy prompt',
-    copiedPrompt: 'Copied prompt',
+    usePrompt: 'Use Prompt',
+    copyPrompt: `Copy ${PROMPT_COPY_NOUN}`,
+    copiedPrompt: `Copied ${PROMPT_COPY_NOUN}`,
   },
   de: {
     groupAria: 'Frisur-Beispielgruppen',

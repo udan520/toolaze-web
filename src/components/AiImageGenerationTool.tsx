@@ -45,6 +45,7 @@ import {
   getLocalizedInternalPath,
 } from '@/lib/generation-history-tool-metadata'
 import { formatLocalTimestampToSeconds } from '@/lib/credit-history-time'
+import { dispatchToolazeTopNotice } from '@/lib/top-notice'
 
 type RightPanelMode = 'sample' | 'generating' | 'history' | 'result'
 
@@ -791,27 +792,27 @@ export default function AiImageGenerationTool({
     resolution: 'Resolution',
     highResUnavailable: '2K and 4K are temporarily unavailable.',
     outputFormat: 'Output Format',
-    sampleImage: 'Sample image',
-    noDemoImageYet: 'No demo image yet',
-    inputImage: 'Reference image',
+    sampleImage: 'Sample Image',
+    noDemoImageYet: 'No Demo Image Yet',
+    inputImage: 'Reference Image',
     history: 'History',
     noHistory: 'No history yet. Generate an image to see it here.',
     recreate: 'Recreate',
     download: 'Download',
     downloading: 'Downloading...',
-    copyPrompt: 'Copy prompt',
-    promptCopied: 'Prompt copied to clipboard',
-    promptCopyFailed: 'Failed to copy prompt',
+    copyPrompt: 'Copy Prompt',
+    promptCopied: 'Prompt Copied to Clipboard',
+    promptCopyFailed: 'Failed to Copy Prompt',
     promptInserted: 'Prompt inserted. You can generate now.',
     generate: 'Generate',
     generating: 'Generating...',
     generatingSeconds: 'Generating... {seconds}s',
     generatedAlt: 'Generated',
-    resultRetentionLogin: 'Log in',
+    resultRetentionLogin: 'Log In',
     resultRetentionMessage: ' to keep your generation history permanently.',
-    viewAll: 'view all',
-    historyResultAlt: 'History result',
-    inputAlt: 'Reference image',
+    viewAll: 'View All',
+    historyResultAlt: 'History Result',
+    inputAlt: 'Reference Image',
     fileTooLarge: 'File {name} exceeds 30MB limit',
     maxImagesAllowed: 'Maximum {max} images allowed. Only {remaining} will be added.',
     uploadFailed: 'Image upload failed.',
@@ -828,14 +829,14 @@ export default function AiImageGenerationTool({
     networkError: 'Network error',
     networkFailed: 'Network connection failed. Please check your network connection and try again.',
     serviceUnstable: 'Generation service is temporarily unstable. Please try again in a moment.',
-    imageGenerationFailed: 'Image generation failed',
+    imageGenerationFailed: 'Image Generation Failed',
     generationTimeout: 'Generation timeout',
     dailyLimitReached: 'Daily free limit reached. Please come back tomorrow!',
     recreateMissingInput: 'No input image found. Switched to Text to Image for recreate.',
     creditsUsedUpTitle: 'Credits Used Up',
     creditsUsedUpMessage: 'You need more credits to generate this image. Buy a one-time pack or earn free credits with daily rewards.',
-    creditsUsedUpBuyAction: 'Buy credits',
-    creditsUsedUpEarnAction: 'Earn free credits',
+    creditsUsedUpBuyAction: 'Buy Credits',
+    creditsUsedUpEarnAction: 'Earn Free Credits',
     creditsUsedUpAction: 'Close',
   }
   const toolText = getAiImageGenerationToolText(commonTranslations?.common?.nanoBananaTool, defaultToolText)
@@ -1706,7 +1707,11 @@ export default function AiImageGenerationTool({
         setRightMode(currentResult ? 'result' : 'sample')
         return
       }
-      alert(formatToolText(toolText.generationFailedWithMessage, { message: error.message }))
+      dispatchToolazeTopNotice({
+        type: 'error',
+        title: 'Generation Failed',
+        message: error?.message || toolText.imageGenerationFailed,
+      })
       setRightMode('sample')
     } finally {
       setIsGenerating(false)
@@ -3356,14 +3361,14 @@ export default function AiImageGenerationTool({
                   onClick={() => handleCreditPaywallCtaClick('buy_credits', '/pricing')}
                   className="inline-flex w-full items-center justify-center rounded-2xl bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-600 px-4 py-3 text-sm font-extrabold text-white shadow-[0_14px_30px_rgba(99,102,241,0.28)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_38px_rgba(99,102,241,0.34)]"
                 >
-                  {toolText.creditsUsedUpBuyAction || 'Buy credits'}
+                  {toolText.creditsUsedUpBuyAction || 'Buy Credits'}
                 </Link>
                 <Link
                   href="/earn-credits"
                   onClick={() => handleCreditPaywallCtaClick('earn_free_credits', '/earn-credits')}
                   className="inline-flex w-full items-center justify-center rounded-2xl border border-indigo-100 bg-white px-4 py-3 text-sm font-extrabold text-indigo-700 shadow-sm transition hover:-translate-y-0.5 hover:border-violet-200 hover:bg-indigo-50"
                 >
-                  {toolText.creditsUsedUpEarnAction || 'Earn free credits'}
+                  {toolText.creditsUsedUpEarnAction || 'Earn Free Credits'}
                 </Link>
               </div>
             </div>

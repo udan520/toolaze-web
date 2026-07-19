@@ -27,8 +27,8 @@ export default function PerformanceMetrics({ title, metrics, bgClass = 'bg-white
             <table className="w-full">
               <thead>
                 <tr className="bg-gradient-to-r from-indigo-50 to-purple-50 border-b-2 border-indigo-200">
-                  <th className="px-6 py-4 text-left text-sm font-bold text-slate-900 uppercase tracking-wider">{columnHeaders?.metric || 'Performance Metric'}</th>
-                  <th className="px-6 py-4 text-left text-sm font-bold text-slate-900 uppercase tracking-wider">{columnHeaders?.specification || 'Toolaze Specification'}</th>
+                  <th className="px-6 py-4 text-left text-sm font-bold text-slate-900">{columnHeaders?.metric || 'Performance Metric'}</th>
+                  <th className="px-6 py-4 text-left text-sm font-bold text-slate-900">{columnHeaders?.specification || 'Toolaze Specification'}</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-indigo-100">

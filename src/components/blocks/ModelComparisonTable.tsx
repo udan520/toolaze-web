@@ -36,13 +36,13 @@ export default function ModelComparisonTable({
             <table className="w-full min-w-[760px]">
               <thead>
                 <tr className="bg-gradient-to-r from-indigo-50 to-purple-50 border-b-2 border-indigo-200">
-                  <th className="w-[22%] px-6 py-4 text-left text-sm font-bold text-slate-900 uppercase tracking-wider">
+                  <th className="w-[22%] px-6 py-4 text-left text-sm font-bold text-slate-900">
                     {columnHeaders?.metric || 'Comparison Point'}
                   </th>
-                  <th className="w-[39%] px-6 py-4 text-left text-sm font-bold text-slate-900 uppercase tracking-wider">
+                  <th className="w-[39%] px-6 py-4 text-left text-sm font-bold text-slate-900">
                     {columnHeaders?.baseline || 'Seedance 2.0'}
                   </th>
-                  <th className="w-[39%] px-6 py-4 text-left text-sm font-bold text-indigo-700 uppercase tracking-wider">
+                  <th className="w-[39%] px-6 py-4 text-left text-sm font-bold text-indigo-700">
                     {columnHeaders?.target || 'Seedance 2.5'}
                   </th>
                 </tr>

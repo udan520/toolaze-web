@@ -9,6 +9,8 @@ const CREDIT_REWARD_EVENT_REASONS = [
   'bonus',
 ];
 
+const CREDIT_GRANT_TRANSACTION_TYPES = new Set(['grant', 'purchase']);
+
 function nowIso(now = new Date()) {
   return now.toISOString();
 }
@@ -90,6 +92,9 @@ export async function grantCredits(env, userId, amount, options = {}) {
   const reason = options.reason || 'admin_grant';
   const description = options.description || 'Admin credit grant';
   const metadata = serializeMetadata(options.metadata);
+  const transactionType = CREDIT_GRANT_TRANSACTION_TYPES.has(options.transactionType)
+    ? options.transactionType
+    : 'grant';
 
   await ensureCreditAccount(env, userId, now);
 
@@ -152,10 +157,11 @@ export async function grantCredits(env, userId, amount, options = {}) {
       id, user_id, type, amount, balance_after,
       reason, description, metadata, created_at
     )
-    values (?, ?, 'grant', ?, ?, ?, ?, ?, ?)
+    values (?, ?, ?, ?, ?, ?, ?, ?, ?)
   `).bind(
     createId('credit_txn'),
     userId,
+    transactionType,
     amount,
     balance,
     reason,

@@ -92,6 +92,56 @@ CREEM_API_BASE_URL=https://api.creem.io
 
 生产环境需在当前实际部署平台的环境变量中配置。`toolaze.com` 当前由 Vercel 服务，Cloudflare Pages/Functions 预览环境如需使用对应旧 Functions，也需要同步配置。
 
+### Creem 支付 Checkout
+
+Pricing 页开放 6 个一次性 credits 购买档位。测试环境使用 Creem test product id；生产环境必须使用 Creem live product id。
+
+#### Production Live 商品映射
+
+```bash
+CREEM_STARTER_PRODUCT_ID=prod_5v51HXy6lkdreHTL8MHaA1
+CREEM_CREATOR_PRODUCT_ID=prod_ffSemtcIFcv2O1n8pQ0SZ
+CREEM_PLUS_PRODUCT_ID=prod_5HtkfYOxvsZcDRG075JjC0
+CREEM_STUDIO_PRODUCT_ID=prod_6iyCHMBJCLIvbOpaGcECXG
+CREEM_MAX_PRODUCT_ID=prod_anZZAJAeGjWOwSIvoB3C6
+CREEM_BUSINESS_PRODUCT_ID=prod_70nrQxTprKoF3ZwIdTqdjX
+```
+
+#### 必填环境变量
+
+| 变量名 | 必填 | 说明 |
+|--------|------|------|
+| `CREEM_PAYMENT_API_KEY` | 是 | Creem payment API key，用于创建 checkout。支付链路会优先使用该变量，避免和 prompt moderation 的 `CREEM_API_KEY` 混用 |
+| `CREEM_WEBHOOK_SECRET` | 是 | Creem webhook signing secret，用于校验 `creem-signature` |
+| `CREEM_STARTER_PRODUCT_ID` | 是 | Starter 200 credits 对应的 Creem product id |
+| `CREEM_CREATOR_PRODUCT_ID` | 是 | Creator 1,000 credits 对应的 Creem product id |
+| `CREEM_PLUS_PRODUCT_ID` | 是 | Plus 5,000 credits 对应的 Creem product id |
+| `CREEM_STUDIO_PRODUCT_ID` | 是 | Studio 10,000 credits 对应的 Creem product id |
+| `CREEM_MAX_PRODUCT_ID` | 是 | Max 30,000 credits 对应的 Creem product id |
+| `CREEM_BUSINESS_PRODUCT_ID` | 是 | Business 50,000 credits 对应的 Creem product id |
+| `CREEM_CHECKOUT_API_BASE_URL` | 测试环境必填 | Preview / test 设置为 `https://test-api.creem.io`；Production 不要配置测试域名，默认使用正式 Creem API |
+
+本地测试创建 checkout 可在 `.env.local` 加：
+
+```bash
+CREEM_PAYMENT_API_KEY=creem_test_xxx
+CREEM_CHECKOUT_API_BASE_URL=https://test-api.creem.io
+CREEM_STARTER_PRODUCT_ID=prod_test_starter
+CREEM_CREATOR_PRODUCT_ID=prod_test_creator
+CREEM_PLUS_PRODUCT_ID=prod_test_plus
+CREEM_STUDIO_PRODUCT_ID=prod_test_studio
+CREEM_MAX_PRODUCT_ID=prod_test_max
+CREEM_BUSINESS_PRODUCT_ID=prod_test_business
+```
+
+Webhook 地址用于线上测试闭环：
+
+```bash
+https://toolaze.com/api/billing/creem-webhook
+```
+
+注意：`CREEM_API_BASE_URL` 仍可用于 prompt moderation。支付测试建议使用单独的 `CREEM_CHECKOUT_API_BASE_URL`，避免把生图审核 API 一起切到测试域名。
+
 ### Flux 生图（可选）
 
 如需使用 Flux API（去水印等），需配置：

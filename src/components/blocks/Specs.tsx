@@ -40,7 +40,7 @@ export default function Specs({ data, initialTranslations }: SpecsProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {specs.map((spec, index) => (
             <div key={index} className="bg-white p-6 rounded-2xl border border-indigo-50 shadow-sm">
-              <div className="text-xs font-bold text-indigo-600 uppercase tracking-widest mb-2">{spec.label}</div>
+              <div className="mb-2 text-xs font-bold text-indigo-600">{spec.label}</div>
               <div className="text-base font-semibold text-slate-900">{spec.value}</div>
             </div>
           ))}

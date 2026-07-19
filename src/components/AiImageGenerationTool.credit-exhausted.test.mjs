@@ -42,3 +42,12 @@ test('analytics payload excludes sensitive prompt, image, user, and balance data
   assert.ok(!analyticsPayloadSource.includes('user'))
   assert.ok(!analyticsPayloadSource.includes('balance'))
 })
+
+test('default image tool button labels use Title Case', () => {
+  assert.match(source, /sampleImage: 'Sample Image'/)
+  assert.match(source, /copyPrompt: 'Copy Prompt'/)
+  assert.match(source, /resultRetentionLogin: 'Log In'/)
+  assert.match(source, /viewAll: 'View All'/)
+  assert.match(source, /creditsUsedUpBuyAction: 'Buy Credits'/)
+  assert.match(source, /creditsUsedUpEarnAction: 'Earn Free Credits'/)
+})

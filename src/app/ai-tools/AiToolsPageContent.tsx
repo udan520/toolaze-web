@@ -36,7 +36,7 @@ export function AiToolsPageContent({
               {copy.hero.highlight}
             </span>
           </h1>
-          <p className="text-slate-600 text-lg mb-10 max-w-3xl">
+          <p className="text-slate-600 text-lg mb-10 max-w-5xl">
             {copy.hero.description}
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">

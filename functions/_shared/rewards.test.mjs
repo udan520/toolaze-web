@@ -233,6 +233,27 @@ test('status shows day one when the streak has expired', async () => {
   assert.equal(status.nextRewardCredits, 5);
 });
 
+test('status marks only the current checked-in reward as claimed', async () => {
+  const env = createEnv();
+  const grantCreditsFn = async () => ({ ok: true, balance: 5, amount: 5 });
+
+  await claimDailyCheckIn(env, 'user-1', {
+    now: new Date('2026-07-01T12:00:00.000Z'),
+    grantCreditsFn,
+  });
+  await claimDailyCheckIn(env, 'user-1', {
+    now: new Date('2026-07-02T12:00:00.000Z'),
+    grantCreditsFn,
+  });
+
+  const status = await getDailyCheckInStatus(env, 'user-1', new Date('2026-07-02T12:05:00.000Z'));
+
+  assert.equal(status.checkedInToday, true);
+  assert.equal(status.streakDay, 2);
+  assert.deepEqual(status.rewards.filter((reward) => reward.claimed).map((reward) => reward.day), [2]);
+  assert.deepEqual(status.rewards.filter((reward) => reward.current).map((reward) => reward.day), [2]);
+});
+
 test('x post reward submissions are pending and duplicate-safe', async () => {
   const env = createEnv();
   const first = await submitXPostReward(env, 'user-1', 'https://x.com/toolaze/status/123');

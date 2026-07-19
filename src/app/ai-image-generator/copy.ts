@@ -526,7 +526,7 @@ const en: AiImageGeneratorPageCopy = {
     title: 'AI Image Prompt Templates to Copy',
     text:
       'Copy a prompt, paste it into the generator, then adjust the subject, brand style, format, and model for your own image.',
-    copyButton: 'Copy prompt',
+    copyButton: 'Copy Prompt',
     copiedButton: 'Copied',
     examples: [
       {

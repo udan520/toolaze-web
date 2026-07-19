@@ -390,7 +390,7 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
             <h2 className="home-section-title text-4xl text-slate-900 mb-4 tracking-tight">
               {home?.trendingTitle ?? 'Trending AI Image & Video Models, All in One Place'}
             </h2>
-            <p className="text-slate-600 max-w-3xl text-base md:text-lg leading-relaxed">
+            <p className="text-slate-600 max-w-5xl text-base md:text-lg leading-relaxed">
               {home?.trendingSubtitle ?? 'Access Seedream 5.0 Pro, GPT Image 2, Nano Banana Pro, and Seedance 2.5 without switching platforms.'}
             </p>
           </div>
@@ -436,7 +436,7 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
             <h2 className="home-section-title text-4xl text-slate-900 mb-4 tracking-tight">
               {home?.sectionAiImageTitle ?? home?.aiImageTitle ?? 'AI Image Generator'}
             </h2>
-            <p className="text-slate-600 max-w-3xl text-base md:text-lg leading-relaxed">
+            <p className="text-slate-600 max-w-5xl text-base md:text-lg leading-relaxed">
               <TextWithLinks
                 text={
                   home?.sectionAiImageSubtitle ??
@@ -492,7 +492,7 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
             <h2 className="home-section-title text-4xl text-slate-900 mb-4 tracking-tight">
               {home?.sectionAiVideoTitle ?? home?.aiVideoTitle ?? 'AI Video Generator'}
             </h2>
-            <p className="text-slate-600 max-w-3xl text-base md:text-lg leading-relaxed">
+            <p className="text-slate-600 max-w-5xl text-base md:text-lg leading-relaxed">
               <TextWithLinks
                 text={
                   home?.sectionAiVideoSubtitle ??
@@ -545,12 +545,12 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
             <h2 className="home-section-title text-4xl text-slate-900 mb-4 tracking-tight">
               {home?.aiToolsHubTitle ?? 'Free AI Tools for Creative Media Workflows'}
             </h2>
-            <p className="text-slate-600 max-w-3xl text-base md:text-lg leading-relaxed">
+            <p className="text-slate-600 max-w-5xl text-base md:text-lg leading-relaxed">
               {home?.aiToolsHubSubtitle ??
                 'Explore concrete creative tools for portraits, style previews, restoration, watermark cleanup, and fast browser utilities.'}
             </p>
             {home?.aiToolsHubIntro ? (
-              <p className="text-slate-600 max-w-3xl text-base md:text-lg leading-relaxed mt-4">
+              <p className="text-slate-600 max-w-5xl text-base md:text-lg leading-relaxed mt-4">
                 {home.aiToolsHubIntro}
               </p>
             ) : null}
@@ -598,7 +598,7 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
             <h2 className="home-section-title text-4xl text-slate-900 mb-4 tracking-tight">
               {home?.advancedToolsTitle ?? 'More AI-Powered Creative Tools'}
             </h2>
-            <p className="text-slate-600 max-w-3xl text-base md:text-lg leading-relaxed">
+            <p className="text-slate-600 max-w-5xl text-base md:text-lg leading-relaxed">
               {home?.advancedToolsSubtitle ??
                 'Portrait generation, authorized watermark cleanup, and photo restoration powered by AI. Try selected tools online and use credits for supported generation workflows.'}
             </p>
@@ -646,7 +646,7 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
             <h2 className="home-section-title text-4xl text-slate-900 mb-4 tracking-tight">
               {home?.sectionToolsTitle ?? home?.utilityToolsTitle ?? 'Free Browser Tools for Images & Text'}
             </h2>
-            <p className="text-slate-600 max-w-3xl text-base md:text-lg leading-relaxed">
+            <p className="text-slate-600 max-w-5xl text-base md:text-lg leading-relaxed">
               {home?.sectionToolsSubtitle ??
                 home?.utilityToolsSubtitle ??
                 'Fast utility tools for image compression and format conversion, stylish font previews, and emoji copy-and-paste. No AI generation required.'}
@@ -688,8 +688,8 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
       {/* Why Toolaze */}
       <section className="py-20 px-6 bg-white">
         <div className="max-w-6xl mx-auto">
-          <div className="max-w-3xl">
-            <p className="text-sm font-semibold text-indigo-600 tracking-wide uppercase mb-3">
+          <div className="max-w-5xl">
+            <p className="mb-3 text-sm font-semibold text-indigo-600">
               {whyToolaze?.badge ?? 'Why Toolaze?'}
             </p>
             <h2 className="home-section-title text-4xl text-slate-900 mb-4 tracking-tight">

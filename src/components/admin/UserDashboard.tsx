@@ -150,7 +150,7 @@ export default function UserDashboard({ data }: UserDashboardProps) {
         <div className="overflow-x-auto">
           <table className="min-w-[1540px] w-full border-collapse text-left">
             <thead>
-              <tr className="border-b border-slate-200 bg-white text-xs font-semibold uppercase tracking-wide text-slate-500">
+              <tr className="border-b border-slate-200 bg-white text-xs font-semibold text-slate-500">
                 <th className="px-5 py-3">用户</th>
                 <th className="px-4 py-3">注册时间</th>
                 <th className="px-4 py-3">注册入口</th>
@@ -364,7 +364,7 @@ function GrantHistorySection({ items }: { items: AdminCreditGrantHistoryItem[] }
       <div className="overflow-x-auto">
         <table className="min-w-[900px] w-full border-collapse text-left">
           <thead>
-            <tr className="border-b border-slate-200 bg-white text-xs font-semibold uppercase tracking-wide text-slate-500">
+            <tr className="border-b border-slate-200 bg-white text-xs font-semibold text-slate-500">
               <th className="px-5 py-3">用户</th>
               <th className="px-4 py-3 text-right">数量</th>
               <th className="px-4 py-3 text-right">赠送后余额</th>

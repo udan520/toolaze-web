@@ -427,13 +427,13 @@ export default function WatermarkRemover({ initialTranslations }: WatermarkRemov
 
 function ToastList({ toasts }: { toasts: Array<{ id: string; msg: string; type: string }> }) {
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-2">
+    <div className="fixed left-1/2 top-[90px] z-[10000] flex w-[calc(100vw-2rem)] max-w-sm -translate-x-1/2 flex-col items-center gap-2 pointer-events-none">
       {toasts.map(t => (
         <div
           key={t.id}
-          className={`px-4 py-2 rounded-lg text-sm font-medium shadow-lg ${
-            t.type === 'error' ? 'bg-red-500 text-white' :
-            t.type === 'success' ? 'bg-green-500 text-white' : 'bg-slate-800 text-white'
+          className={`w-full rounded-2xl border px-4 py-3 text-sm font-bold shadow-lg backdrop-blur pointer-events-auto ${
+            t.type === 'error' ? 'border-rose-200 bg-rose-50 text-rose-700 shadow-rose-100' :
+            t.type === 'success' ? 'border-emerald-200 bg-emerald-50 text-emerald-700 shadow-emerald-100' : 'border-amber-200 bg-amber-50 text-amber-700 shadow-amber-100'
           }`}
         >
           {t.msg}

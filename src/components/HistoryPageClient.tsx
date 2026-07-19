@@ -37,15 +37,15 @@ const defaultHistoryPageCopy = {
   loading: 'Loading history...',
   signInRequired: 'Please sign in with Google to view your history.',
   loadError: 'Could not load generation history.',
-  emptyTitle: 'No generation history yet.',
+  emptyTitle: 'No Generation History Yet.',
   emptyDescription: 'Generated images will appear here after they complete.',
-  previewLabel: 'Generation preview',
-  previewImageLabel: 'Preview generated image',
-  previewReferenceMedia: 'Preview reference media',
-  closePreview: 'Close preview',
+  previewLabel: 'Generation Preview',
+  previewImageLabel: 'Preview Generated Image',
+  previewReferenceMedia: 'Preview Reference Media',
+  closePreview: 'Close Preview',
   referenceMedia: 'Reference Media',
   prompt: 'Prompt',
-  copyPrompt: 'Copy prompt',
+  copyPrompt: 'Copy Prompt',
   createSimilar: 'Create Similar',
   download: 'Download',
   delete: 'Delete',
@@ -225,7 +225,7 @@ export default function HistoryPageClient({ initialTranslations }: HistoryPageCl
       <div className="mb-8">
         <div>
           <h1 className="text-3xl font-extrabold tracking-tight text-slate-950 md:text-4xl">{copy.title}</h1>
-          <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600">
+          <p className="mt-2 max-w-5xl text-sm leading-6 text-slate-600">
             {copy.description}
           </p>
         </div>

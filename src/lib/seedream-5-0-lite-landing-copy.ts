@@ -527,7 +527,7 @@ const en: Seedream50LiteLandingCopy = {
     title: 'Seedream 5.0 Lite Prompt Examples',
     text:
       'Use these prompts as starting points for reasoning-heavy, search-aware, and reference-guided image generation tasks.',
-    copyButton: 'Copy prompt',
+    copyButton: 'Copy Prompt',
     copiedButton: 'Copied',
     examples: [
       {

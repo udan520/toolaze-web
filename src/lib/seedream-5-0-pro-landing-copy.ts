@@ -282,7 +282,7 @@ const en: Seedream50ProLandingCopy = {
     title: 'Prompt examples for Seedream 5.0 Pro style planning',
     text:
       'Use these examples as starting points for Seedream 5.0 Pro style image planning.',
-    copyButton: 'Copy prompt',
+    copyButton: 'Copy Prompt',
     copiedButton: 'Copied',
     examples: [
       {
@@ -1060,7 +1060,7 @@ const liveAvailabilityOverrides: Record<Seedream50ProLocale, DeepPartial<Seedrea
       label: 'Generate now',
       title: 'Create Seedream 5.0 Pro images online',
       text: 'Use Seedream 5.0 Pro for campaign visuals, product scenes, social posts, and cinematic stills.',
-      button: 'Start generating',
+      button: 'Start Generating',
     },
   },
   de: {

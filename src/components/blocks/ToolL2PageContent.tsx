@@ -210,7 +210,7 @@ function Testimonials({
               {(item.name || item.role) && (
                 <div className="mt-6 border-t border-slate-100 pt-4">
                   {item.name && <p className="font-bold text-slate-900">{item.name}</p>}
-                  {item.role && <p className="mt-1 text-xs font-semibold uppercase tracking-wide text-indigo-600">{item.role}</p>}
+                  {item.role && <p className="mt-1 text-xs font-semibold text-indigo-600">{item.role}</p>}
                 </div>
               )}
             </article>

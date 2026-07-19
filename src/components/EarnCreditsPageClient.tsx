@@ -55,6 +55,11 @@ function dispatchCreditsUpdated(credits: CreditSummary | null | undefined) {
   window.dispatchEvent(new CustomEvent('toolaze:credits-updated', { detail: credits }))
 }
 
+function dispatchCheckInUpdated(checkIn: CheckInStatus | null | undefined) {
+  if (typeof window === 'undefined' || !checkIn) return
+  window.dispatchEvent(new CustomEvent('toolaze:check-in-updated', { detail: checkIn }))
+}
+
 export default function EarnCreditsPageClient() {
   const [checkIn, setCheckIn] = useState<CheckInStatus>(fallbackCheckIn)
   const [loading, setLoading] = useState(true)
@@ -81,7 +86,9 @@ export default function EarnCreditsPageClient() {
         if (!response.ok) throw new Error('Could not load reward status.')
         const data = await response.json().catch(() => ({}))
         if (cancelled) return
-        setCheckIn(data.checkIn || fallbackCheckIn)
+        const nextCheckIn = data.checkIn || fallbackCheckIn
+        setCheckIn(nextCheckIn)
+        dispatchCheckInUpdated(nextCheckIn)
       } catch (err) {
         if (!cancelled) setError(err instanceof Error ? err.message : 'Could not load reward status.')
       } finally {
@@ -111,7 +118,9 @@ export default function EarnCreditsPageClient() {
         throw new Error('Please sign in to earn credits.')
       }
       if (!response.ok) throw new Error(data.error || 'Could not claim your daily reward.')
-      setCheckIn(data.checkIn || fallbackCheckIn)
+      const nextCheckIn = data.checkIn || fallbackCheckIn
+      setCheckIn(nextCheckIn)
+      dispatchCheckInUpdated(nextCheckIn)
       dispatchCreditsUpdated(data.credits)
       setNotice(data.alreadyCheckedIn
         ? 'You have already checked in today.'
@@ -159,11 +168,11 @@ export default function EarnCreditsPageClient() {
       <section className="mx-auto max-w-5xl">
         <div className="flex flex-col gap-5">
           <div>
-            <p className="text-sm font-extrabold text-indigo-600">Earn free credits</p>
+            <p className="text-sm font-extrabold text-indigo-600">Earn Free Credits</p>
             <h1 className="mt-2 text-3xl font-extrabold tracking-tight text-slate-900 md:text-5xl">
-              Get more credits without buying a pack
+              Get More Credits Without Buying a Pack
             </h1>
-            <p className="mt-3 max-w-2xl text-base leading-7 text-slate-600">
+            <p className="mt-3 max-w-none text-base leading-7 text-slate-600">
               Check in daily or share Toolaze on X. Rewards are added to your account after claim or review.
             </p>
           </div>
@@ -198,11 +207,11 @@ export default function EarnCreditsPageClient() {
               {checkIn.rewards.map((reward) => (
                 <div
                   key={reward.day}
-                  className={`rounded-2xl border px-3 py-4 text-center transition ${
-                    reward.current
-                      ? 'border-indigo-300 bg-gradient-to-b from-indigo-50 to-violet-50 shadow-md shadow-indigo-100'
-                      : reward.claimed
-                        ? 'border-emerald-200 bg-emerald-50'
+                  className={`relative rounded-2xl border px-3 py-4 text-center transition ${
+                    reward.claimed
+                      ? 'border-emerald-200 bg-emerald-50'
+                      : reward.current
+                        ? 'border-indigo-300 bg-gradient-to-b from-indigo-50 to-violet-50 shadow-md shadow-indigo-100'
                         : 'border-slate-200 bg-white'
                   }`}
                 >
@@ -211,6 +220,19 @@ export default function EarnCreditsPageClient() {
                     <span className="text-lg font-extrabold text-slate-900">+{reward.credits}</span>
                     <img src="/credits-icons/diamond-3d-indigo.svg" alt="" aria-hidden="true" className="h-5 w-5" />
                   </div>
+                  {reward.claimed ? (
+                    <span
+                      className="absolute -left-1.5 -top-1.5 z-10 inline-flex h-5 w-5 items-center justify-center rounded-full bg-emerald-500 text-white shadow-sm shadow-emerald-100 ring-2 ring-white"
+                      aria-label={`Day ${reward.day} checked in`}
+                    >
+                      <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" aria-hidden="true">
+                        <path
+                          d="M6.6 11.4 3.2 8l1-1 2.4 2.4 5.2-5.2 1 1-6.2 6.2Z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </span>
+                  ) : null}
                 </div>
               ))}
             </div>

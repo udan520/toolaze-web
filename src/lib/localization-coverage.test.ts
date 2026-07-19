@@ -160,6 +160,7 @@ test('top navigation common copy includes every visible model and AI tool menu k
     'aiImageGenerator',
     'textToImageGenerator',
     'aiImageToImageGenerator',
+    'pricing',
     'wan27Image',
     'seedream50Lite',
     'seedream50Pro',
@@ -173,6 +174,7 @@ test('top navigation common copy includes every visible model and AI tool menu k
     'aiImageGenerator',
     'textToImageGenerator',
     'aiImageToImageGenerator',
+    'pricing',
   ]
   const englishNav = readJson('src/data/en/common.json').nav
 
@@ -198,7 +200,9 @@ test('server common translation loader returns localized navigation copy', async
 
   assert.equal(zhTW?.nav?.aiBabyGenerator, 'AI 寶寶生成器')
   assert.equal(zhTW?.nav?.textToImageGenerator, '文字轉圖像生成器')
+  assert.equal(zhTW?.nav?.pricing, '價格')
   assert.equal(de?.nav?.aiBabyGenerator, 'KI-Babygenerator')
+  assert.equal(de?.nav?.pricing, 'Preise')
 })
 
 test('History page common copy exists for every supported locale', () => {

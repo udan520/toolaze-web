@@ -20,6 +20,205 @@ test.after(() => {
 import { proxyToPagesFunctions } from './backend-proxy.js'
 import { resetLocalDevCreditsForTests, resetLocalDevHistoryForTests } from './local-dev-auth.js'
 
+test('local dev session can create a starter Creem checkout', async () => {
+  const originalFetch = globalThis.fetch
+  const previousApiKey = process.env.CREEM_API_KEY
+  const previousBaseUrl = process.env.CREEM_CHECKOUT_API_BASE_URL
+  const previousProductId = process.env.CREEM_STARTER_PRODUCT_ID
+  process.env.CREEM_API_KEY = 'creem-test-key'
+  process.env.CREEM_CHECKOUT_API_BASE_URL = 'https://test-api.creem.io'
+  process.env.CREEM_STARTER_PRODUCT_ID = 'prod_4GeFDXFa2HtXjHGnEksTzJ'
+
+  let checkoutRequestBody = null
+  globalThis.fetch = async (_target, init = {}) => {
+    checkoutRequestBody = JSON.parse(String(init.body))
+    return Response.json({
+      id: 'ch_local_123',
+      checkout_url: 'https://www.creem.io/test/payment/ch_local_123',
+    })
+  }
+
+  try {
+    const response = await proxyToPagesFunctions(new Request('http://localhost:3016/api/billing/checkout', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Cookie: 'toolaze_session=toolaze-local-dev-session',
+      },
+      body: JSON.stringify({ planId: 'starter' }),
+    }), '/api/billing/checkout')
+    const payload = await response.json()
+
+    assert.equal(response.status, 200)
+    assert.equal(payload.checkoutUrl, 'https://www.creem.io/test/payment/ch_local_123')
+    assert.equal(payload.plan.credits, 200)
+    assert.equal(checkoutRequestBody.product_id, 'prod_4GeFDXFa2HtXjHGnEksTzJ')
+    assert.equal(checkoutRequestBody.metadata.userId, 'local-dev-dianawu1202')
+  } finally {
+    globalThis.fetch = originalFetch
+    if (previousApiKey === undefined) {
+      delete process.env.CREEM_API_KEY
+    } else {
+      process.env.CREEM_API_KEY = previousApiKey
+    }
+    if (previousBaseUrl === undefined) {
+      delete process.env.CREEM_CHECKOUT_API_BASE_URL
+    } else {
+      process.env.CREEM_CHECKOUT_API_BASE_URL = previousBaseUrl
+    }
+    if (previousProductId === undefined) {
+      delete process.env.CREEM_STARTER_PRODUCT_ID
+    } else {
+      process.env.CREEM_STARTER_PRODUCT_ID = previousProductId
+    }
+  }
+})
+
+test('localhost checkout uses the signed-in backend user when available', async () => {
+  const originalFetch = globalThis.fetch
+  const previousApiKey = process.env.CREEM_API_KEY
+  const previousBaseUrl = process.env.CREEM_CHECKOUT_API_BASE_URL
+  const previousProductId = process.env.CREEM_STARTER_PRODUCT_ID
+  process.env.CREEM_API_KEY = 'creem-test-key'
+  process.env.CREEM_CHECKOUT_API_BASE_URL = 'https://test-api.creem.io'
+  process.env.CREEM_STARTER_PRODUCT_ID = 'prod_4GeFDXFa2HtXjHGnEksTzJ'
+
+  let checkoutRequestUrl = ''
+  let checkoutRequestBody = null
+  globalThis.fetch = async (target, init = {}) => {
+    if (String(target) === 'https://toolaze-web.pages.dev/api/auth/me') {
+      return Response.json({
+        user: {
+          id: 'user_production_123',
+          email: 'buyer@example.com',
+          name: 'Buyer',
+          avatarUrl: null,
+        },
+      })
+    }
+
+    checkoutRequestUrl = String(target)
+    checkoutRequestBody = JSON.parse(String(init.body))
+    return Response.json({
+      id: 'ch_local_without_session_123',
+      checkout_url: 'https://www.creem.io/test/payment/ch_local_without_session_123',
+    })
+  }
+
+  try {
+    const response = await proxyToPagesFunctions(new Request('http://localhost:3016/api/billing/checkout', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Cookie: 'toolaze_session=production-session-token',
+      },
+      body: JSON.stringify({ planId: 'starter' }),
+    }), '/api/billing/checkout')
+    const payload = await response.json()
+
+    assert.equal(response.status, 200)
+    assert.equal(payload.checkoutUrl, 'https://www.creem.io/test/payment/ch_local_without_session_123')
+    assert.equal(checkoutRequestUrl, 'https://test-api.creem.io/v1/checkouts')
+    assert.equal(checkoutRequestBody.metadata.userId, 'user_production_123')
+    assert.equal(checkoutRequestBody.customer.email, 'buyer@example.com')
+  } finally {
+    globalThis.fetch = originalFetch
+    if (previousApiKey === undefined) {
+      delete process.env.CREEM_API_KEY
+    } else {
+      process.env.CREEM_API_KEY = previousApiKey
+    }
+    if (previousBaseUrl === undefined) {
+      delete process.env.CREEM_CHECKOUT_API_BASE_URL
+    } else {
+      process.env.CREEM_CHECKOUT_API_BASE_URL = previousBaseUrl
+    }
+    if (previousProductId === undefined) {
+      delete process.env.CREEM_STARTER_PRODUCT_ID
+    } else {
+      process.env.CREEM_STARTER_PRODUCT_ID = previousProductId
+    }
+  }
+})
+
+test('localhost checkout prefers the saved backend session over a local dev cookie', async () => {
+  const originalFetch = globalThis.fetch
+  const previousApiKey = process.env.CREEM_API_KEY
+  const previousBaseUrl = process.env.CREEM_CHECKOUT_API_BASE_URL
+  const previousProductId = process.env.CREEM_STARTER_PRODUCT_ID
+  process.env.CREEM_API_KEY = 'creem-test-key'
+  process.env.CREEM_CHECKOUT_API_BASE_URL = 'https://test-api.creem.io'
+  process.env.CREEM_STARTER_PRODUCT_ID = 'prod_4GeFDXFa2HtXjHGnEksTzJ'
+
+  const previousSessionFile = process.env.TOOLAZE_LOCAL_SESSION_TOKEN_FILE
+  const sessionTokenFile = join(tempStateDir, 'saved-session-token.txt')
+  process.env.TOOLAZE_LOCAL_SESSION_TOKEN_FILE = sessionTokenFile
+  writeFileSync(sessionTokenFile, 'production-session-token', 'utf8')
+
+  let authCookieHeader = ''
+  let checkoutRequestBody = null
+  globalThis.fetch = async (target, init = {}) => {
+    if (String(target) === 'https://toolaze-web.pages.dev/api/auth/me') {
+      authCookieHeader = init.headers.get('cookie') || ''
+      return Response.json({
+        user: {
+          id: 'user_saved_session_123',
+          email: 'saved@example.com',
+          name: 'Saved User',
+          avatarUrl: null,
+        },
+      })
+    }
+
+    checkoutRequestBody = JSON.parse(String(init.body))
+    return Response.json({
+      id: 'ch_saved_session_123',
+      checkout_url: 'https://www.creem.io/test/payment/ch_saved_session_123',
+    })
+  }
+
+  try {
+    const response = await proxyToPagesFunctions(new Request('http://localhost:3016/api/billing/checkout', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Cookie: 'toolaze_session=toolaze-local-dev-session',
+      },
+      body: JSON.stringify({ planId: 'starter' }),
+    }), '/api/billing/checkout')
+    const payload = await response.json()
+
+    assert.equal(response.status, 200)
+    assert.equal(payload.checkoutUrl, 'https://www.creem.io/test/payment/ch_saved_session_123')
+    assert.equal(authCookieHeader, 'toolaze_session=production-session-token')
+    assert.equal(checkoutRequestBody.metadata.userId, 'user_saved_session_123')
+    assert.equal(checkoutRequestBody.customer.email, 'saved@example.com')
+  } finally {
+    globalThis.fetch = originalFetch
+    if (previousApiKey === undefined) {
+      delete process.env.CREEM_API_KEY
+    } else {
+      process.env.CREEM_API_KEY = previousApiKey
+    }
+    if (previousBaseUrl === undefined) {
+      delete process.env.CREEM_CHECKOUT_API_BASE_URL
+    } else {
+      process.env.CREEM_CHECKOUT_API_BASE_URL = previousBaseUrl
+    }
+    if (previousProductId === undefined) {
+      delete process.env.CREEM_STARTER_PRODUCT_ID
+    } else {
+      process.env.CREEM_STARTER_PRODUCT_ID = previousProductId
+    }
+    if (previousSessionFile === undefined) {
+      delete process.env.TOOLAZE_LOCAL_SESSION_TOKEN_FILE
+    } else {
+      process.env.TOOLAZE_LOCAL_SESSION_TOKEN_FILE = previousSessionFile
+    }
+  }
+})
+
+
 test('local dev session cookie returns local test account for auth state', async () => {
   const request = new Request('http://localhost:3016/api/auth/me', {
     headers: {

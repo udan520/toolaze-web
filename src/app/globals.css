@@ -72,6 +72,45 @@
   background: linear-gradient(135deg, #4f46e5 0%, #9333ea 100%);
 }
 
+.toolaze-confetti-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 30000;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.toolaze-confetti-particle {
+  position: absolute;
+  display: block;
+  opacity: 0;
+  box-shadow: 0 8px 18px rgba(79, 70, 229, 0.16);
+  transform: translate3d(0, 0, 0) rotate(0deg) scale(0.9);
+  will-change: transform, opacity;
+  animation: toolaze-confetti-cannon 2.8s cubic-bezier(0.18, 0.82, 0.18, 1) forwards;
+}
+
+@keyframes toolaze-confetti-cannon {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(0.9);
+  }
+  10%, 68% {
+    opacity: var(--confetti-peak, 1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--confetti-x, 0), var(--confetti-y, -420px), 0) rotate(var(--confetti-r, 360deg)) scale(0.98);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toolaze-confetti-particle {
+    animation: none;
+    opacity: 0;
+  }
+}
+
 /* Premium Homepage Styles */
 .home-hero-mesh {
   background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(99, 102, 241, 0.25), transparent),
@@ -200,7 +239,7 @@ nav.sticky-nav.scrolled {
 /* Toast Notification System */
 #toastContainer {
   position: fixed;
-  top: 20px;
+  top: calc(70px + 20px);
   left: 50%;
   transform: translateX(-50%);
   z-index: 10000;
@@ -208,6 +247,8 @@ nav.sticky-nav.scrolled {
   flex-direction: column;
   align-items: center;
   gap: 10px;
+  width: min(420px, calc(100vw - 32px));
+  pointer-events: none;
 }
 
 .toast {

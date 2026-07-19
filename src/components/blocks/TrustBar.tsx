@@ -6,9 +6,9 @@ import { usePathname } from 'next/navigation'
 const locales = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
 
 const defaultTrustBar = {
-  private: 'Privacy aware',
+  private: 'Privacy Aware',
   instantPreview: 'Instant Preview',
-  noServerLogs: 'Clear policies'
+  noServerLogs: 'Clear Policies'
 }
 
 async function loadTrustBarTranslations(locale: string, tool?: string) {
@@ -78,7 +78,7 @@ export default function TrustBar() {
   }, [pathname])
   
   return (
-    <div className="mt-8 flex flex-wrap justify-center gap-4 text-[11px] font-bold text-indigo-900/60 uppercase tracking-widest">
+    <div className="mt-8 flex flex-wrap justify-center gap-4 text-[11px] font-bold text-indigo-900/60">
       <span>🔒 {trustBar.private}</span> <span className="hidden md:block">|</span>
       <span>⚡ {trustBar.instantPreview}</span> <span className="hidden md:block">|</span>
       <span>🚫 {trustBar.noServerLogs}</span>

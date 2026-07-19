@@ -506,7 +506,7 @@ class FakeD1Statement {
     }
 
     if (normalized.startsWith('insert into credit_transactions')) {
-      assert.ok(this.values.length === 7 || this.values.length === 8);
+      assert.ok(this.values.length === 7 || this.values.length === 8 || this.values.length === 9);
       const [id, userId, amount] = this.values;
       assert.match(id, /^credit_txn_[a-f0-9]{32}$/);
       const isNewUserBonus = normalized.includes('select ?, ?,');
@@ -515,24 +515,27 @@ class FakeD1Statement {
       const account = this.db.creditAccounts.find((item) => item.user_id === accountUserId);
       if (!account) return { success: true, meta: { changes: 0 } };
       if (!isNewUserBonus) {
+        const usesBoundTransactionType = this.values.length === 9;
         const isExpiration = normalized.includes("'credit_expired'");
-        const balanceAfter = this.values[3];
-        const reason = isExpiration ? 'credit_expired' : this.values[4];
-        const description = isExpiration ? this.values[4] : this.values[5];
-        const metadata = isExpiration ? this.values[5] : this.values[6];
-        const createdAt = isExpiration ? this.values[6] : this.values[7];
-        const type = normalized.includes("'refund'")
+        const transactionType = usesBoundTransactionType ? this.values[2] : null;
+        const amountValue = usesBoundTransactionType ? this.values[3] : amount;
+        const balanceAfter = usesBoundTransactionType ? this.values[4] : this.values[3];
+        const reason = isExpiration ? 'credit_expired' : this.values[usesBoundTransactionType ? 5 : 4];
+        const description = isExpiration ? this.values[4] : this.values[usesBoundTransactionType ? 6 : 5];
+        const metadata = isExpiration ? this.values[5] : this.values[usesBoundTransactionType ? 7 : 6];
+        const createdAt = isExpiration ? this.values[6] : this.values[usesBoundTransactionType ? 8 : 7];
+        const type = transactionType || (normalized.includes("'refund'")
           ? 'refund'
           : normalized.includes("'adjustment'")
             ? 'adjustment'
             : normalized.includes("'grant'")
               ? 'grant'
-              : 'use';
+              : 'use');
         this.db.creditTransactions.push({
           id,
           user_id: userId,
           type,
-          amount,
+          amount: amountValue,
           balance_after: balanceAfter,
           reason,
           description,
@@ -1423,6 +1426,31 @@ test('admin grant is idempotent and creates an expiring batch', async () => {
     env.DB.creditTransactions.filter((transaction) => transaction.reason === 'admin_grant').length,
     1,
   );
+});
+
+test('credit purchase grants are recorded as purchase transactions', async () => {
+  const env = createAuthEnv();
+
+  const result = await grantCredits(env, 'user_1', 200, {
+    requestId: 'creem_order_12345678',
+    reason: 'credit_purchase',
+    description: 'Starter Credit Purchase',
+    transactionType: 'purchase',
+    expiresAt: '2099-08-01T00:00:00.000Z',
+  });
+
+  assert.equal(result.balance, 200);
+
+  const summary = await getCreditSummary(env, 'user_1');
+  assert.deepEqual(summary.transactions[0], {
+    id: env.DB.creditTransactions[0].id,
+    type: 'purchase',
+    amount: 200,
+    balanceAfter: 200,
+    reason: 'credit_purchase',
+    description: 'Starter Credit Purchase',
+    createdAt: env.DB.creditTransactions[0].created_at,
+  });
 });
 
 test('expired grants reduce available balance once', async () => {

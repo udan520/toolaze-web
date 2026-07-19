@@ -46,7 +46,7 @@
     "desc": "Create longer, more coherent AI videos with richer reference control, stronger scene consistency, and a workflow built for real creative production."
   },
   "launchUpdates": {
-    "eyebrow": "Launch updates",
+    "eyebrow": "Launch Updates",
     "title": "Get Seedance 2.5 access alerts",
     "description": "Enter your email to hear when Seedance 2.5 access opens.",
     "emailLabel": "Email address",
@@ -56,9 +56,9 @@
     "successText": "You're on the Seedance 2.5 update list.",
     "errorText": "Please enter a valid email address.",
     "badges": [
-      "Longer scenes",
-      "Reference control",
-      "Launch alerts"
+      "Longer Scenes",
+      "Reference Control",
+      "Launch Alerts"
     ]
   },
   "intro": {

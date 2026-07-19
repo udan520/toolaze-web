@@ -33,7 +33,7 @@ export default function ImageConverter({ initialFormat, initialTranslations }: I
     gallery: { title: 'Gallery Preview', added: 'Added:', original: 'Original:', new: 'New:', preview: 'Preview' },
     actions: { close: 'Close', delete: 'Delete' },
     status: { waiting: 'Waiting', running: 'Running', done: 'Done', error: 'Error' },
-    trustBar: { private: 'Privacy aware', localBrowser: 'Fast browser tools', noServerLogs: 'Clear policies' }
+    trustBar: { private: 'Privacy Aware', localBrowser: 'Fast Browser Tools', noServerLogs: 'Clear Policies' }
   }
   
   // Parse format from slug
@@ -787,7 +787,7 @@ export default function ImageConverter({ initialFormat, initialTranslations }: I
               </svg>
             </div>
             <h3 className="text-xl md:text-2xl font-bold text-slate-800 mb-2">{toolT.dropZone.title}</h3>
-            <p className="text-[12px] font-bold text-indigo-400 uppercase tracking-widest">{toolT.dropZone.formats}</p>
+            <p className="text-[12px] font-bold text-indigo-400">{toolT.dropZone.formats}</p>
             <input 
               type="file" 
               id="fileInput"
@@ -931,10 +931,10 @@ export default function ImageConverter({ initialFormat, initialTranslations }: I
             </>
           )}
         </div>
-        <div className="mt-8 flex flex-wrap justify-center gap-4 text-[11px] font-bold text-indigo-900/60 uppercase tracking-widest">
-          <span>🔒 {toolT.trustBar?.private || 'Privacy aware'}</span> <span className="hidden md:block">|</span>
-          <span>⚡ {toolT.trustBar?.localBrowser || 'Fast browser tools'}</span> <span className="hidden md:block">|</span>
-          <span>🚫 {toolT.trustBar?.noServerLogs || 'Clear policies'}</span>
+        <div className="mt-8 flex flex-wrap justify-center gap-4 text-[11px] font-bold text-indigo-900/60">
+          <span>🔒 {toolT.trustBar?.private || 'Privacy Aware'}</span> <span className="hidden md:block">|</span>
+          <span>⚡ {toolT.trustBar?.localBrowser || 'Fast Browser Tools'}</span> <span className="hidden md:block">|</span>
+          <span>🚫 {toolT.trustBar?.noServerLogs || 'Clear Policies'}</span>
         </div>
       </div>
     </>

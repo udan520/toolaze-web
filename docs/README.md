@@ -15,6 +15,7 @@ docs/
 │   ├── LANDING_PAGE_SEO_PIPELINE.md # 新落地页接入 SEO 后台流程（与 data/en JSON）
 │   ├── SEO_CONTENT_GUIDELINES.md    # 内容编写规范（索引，指向 sections/ 与 keywords/）
 │   ├── SEO_MASTER_LAYOUT.md         # 布局与设计系统（导航、Footer、样式）
+│   ├── UI_STYLE_GUIDE.md            # 产品级 UI 文案、提示、弹窗和 CTA 规范
 │   ├── TRANSLATION_STRUCTURE_GUIDE.md  # JSON 结构与翻译规范
 │   └── sections/                   # 各板块细致规范（按需查阅）
 │       ├── README.md               # 板块规范索引
@@ -61,9 +62,10 @@ docs/
 | 1. 确定功能范围 | `FEATURE_SPECIFICATIONS.md` → `specs/{tool}.md` |
 | 2. 内容规范 | `SEO_CONTENT_GUIDELINES.md`（索引）→ `sections/` 板块文档 |
 | 3. 布局与样式 | `SEO_MASTER_LAYOUT.md` |
-| 4. JSON 结构 | `TRANSLATION_STRUCTURE_GUIDE.md` |
-| 5. 关键词布局 | `keywords/KEYWORD_STRATEGY.md` + `keywords/{tool}-keywords.json` |
-| 6. 密度与 Rating | `keywords/KEYWORD_DENSITY_GUIDELINES.md` |
+| 4. 产品 UI 反馈 | `UI_STYLE_GUIDE.md` |
+| 5. JSON 结构 | `TRANSLATION_STRUCTURE_GUIDE.md` |
+| 6. 关键词布局 | `keywords/KEYWORD_STRATEGY.md` + `keywords/{tool}-keywords.json` |
+| 7. 密度与 Rating | `keywords/KEYWORD_DENSITY_GUIDELINES.md` |
 
 ### 使用管理后台 AI 生成时
 
@@ -86,6 +88,7 @@ docs/
 |------|------|------------|
 | **SEO_CONTENT_GUIDELINES** | 内容编写索引、L2/L3 差异化、流程 | 详细规范见 sections/、keywords/ |
 | **SEO_MASTER_LAYOUT** | 设计系统、导航、面包屑、Footer、HTML 模板 | 不写内容编写规则（见 SEO_CONTENT_GUIDELINES） |
+| **UI_STYLE_GUIDE** | 产品级 UI 文案、提示、弹窗和 CTA 规则 | 不写 SEO 内容结构或关键词规则 |
 | **TRANSLATION_STRUCTURE_GUIDE** | JSON 字段、sectionsOrder、必填项 | 不写板块内容规范（见 SEO_CONTENT_GUIDELINES） |
 | **KEYWORD_DENSITY_GUIDELINES** | 密度标准、Rating 板块格式 | 被 SEO_CONTENT_GUIDELINES 引用，避免两处维护 |
 | **specs/*.md** | 工具功能列表、技术栈 | 不写 SEO 策略 |
@@ -113,3 +116,4 @@ docs/
 - **SITEMAP_UPDATE_GUIDE.md**：部署前 Sitemap 检查
 - **MODEL_INTRO_BLOCK.md**：AI 模型页 Model Intro 板块
 - **PROMPTS_DATA_RULES.md**：Prompts 模板库标题、prompt 原文、X source、指标与媒体规则
+- **UI_STYLE_GUIDE.md**：产品级 UI 文案大小写、弱提示、强提示、弹窗和 CTA 规范

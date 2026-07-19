@@ -2,6 +2,7 @@
 
 import { useState, useRef, useCallback } from 'react'
 import { compressToWebP, formatFileSize } from '@/lib/image-compress'
+import { dispatchToolazeTopNotice } from '@/lib/top-notice'
 
 export default function R2UploadDemo() {
   const [uploading, setUploading] = useState(false)
@@ -138,7 +139,11 @@ export default function R2UploadDemo() {
   const copyUrl = () => {
     if (uploadedUrl) {
       navigator.clipboard.writeText(uploadedUrl)
-      alert('URL 已复制到剪贴板！')
+      dispatchToolazeTopNotice({
+        type: 'success',
+        title: 'URL Copied',
+        message: 'The uploaded image URL has been copied.',
+      })
     }
   }
 
