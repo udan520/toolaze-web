@@ -46,6 +46,11 @@ import {
   getHistoryToolMetadata,
   getLocalizedInternalPath,
 } from '@/lib/generation-history-tool-metadata'
+import {
+  trackGenerationHistoryDeleteClick,
+  trackGenerationHistoryDownloadClick,
+  trackGenerationHistoryRecreateClick,
+} from '@/lib/generation-history-analytics'
 import { formatLocalTimestampToSeconds } from '@/lib/credit-history-time'
 import { dispatchToolazeTopNotice } from '@/lib/top-notice'
 import { parseLocalePath } from '@/lib/site-language-switch'
@@ -1813,19 +1818,19 @@ export default function AiImageGenerationTool({
   useEffect(() => {
     if (!creditExhaustedModalOpen) return
 
-    trackToolazeEvent('credit_paywall_view', getGenerationAnalyticsPayload({
-      paywall_type: 'credit_exhausted',
-    }))
+    trackToolazeEvent('credit_insufficient_modal_view', getGenerationAnalyticsPayload())
   }, [creditExhaustedModalOpen, getGenerationAnalyticsPayload])
 
-  const handleCreditPaywallCtaClick = (
-    cta: 'buy_credits' | 'earn_free_credits',
-    destination: string,
-  ) => {
-    trackToolazeEvent('credit_paywall_cta_click', getGenerationAnalyticsPayload({
-      paywall_type: 'credit_exhausted',
-      cta,
-      destination,
+  const handleCreditInsufficientBuyCreditsClick = () => {
+    trackToolazeEvent('credit_insufficient_buy_credits_button_click', getGenerationAnalyticsPayload({
+      destination: '/pricing',
+    }))
+    setCreditExhaustedModalOpen(false)
+  }
+
+  const handleCreditInsufficientEarnFreeCreditsClick = () => {
+    trackToolazeEvent('credit_insufficient_earn_free_credits_button_click', getGenerationAnalyticsPayload({
+      destination: '/earn-credits',
     }))
     setCreditExhaustedModalOpen(false)
   }
@@ -2211,7 +2216,11 @@ export default function AiImageGenerationTool({
     document.body.removeChild(link)
   }
 
-  const handleDownload = async (imageUrl: string, filename: string) => {
+  const handleDownload = async (imageUrl: string, filename: string, item?: HistoryItem) => {
+    if (item) {
+      trackGenerationHistoryDownloadClick(item, { surface: 'inline_generator_history' })
+    }
+
     setDownloadingUrl(imageUrl)
 
     try {
@@ -2259,6 +2268,7 @@ export default function AiImageGenerationTool({
 
   const handleDeleteHistoryItem = async (item: HistoryItem) => {
     if (!confirmDeleteHistoryItem()) return
+    trackGenerationHistoryDeleteClick(item, { surface: 'inline_generator_history' })
     if (!(await deletePersistedHistoryItem(item.id))) return
     removeHistoryItemFromState(item.id)
   }
@@ -2645,6 +2655,8 @@ export default function AiImageGenerationTool({
   }
 
   const applyHistoryItemToForm = (item: HistoryItem) => {
+    trackGenerationHistoryRecreateClick(item, { surface: 'inline_generator_history' })
+
     const inputImageUrls = getOriginalHistoryInputImageUrls(item)
     if (item.modelId) {
       setSelectedModelId(item.modelId)
@@ -2761,7 +2773,7 @@ export default function AiImageGenerationTool({
           </button>
           <button
             type="button"
-            onClick={() => handleDownload(item.outputPreview, `generated-${item.id}.png`)}
+            onClick={() => handleDownload(item.outputPreview, `generated-${item.id}.png`, item)}
             disabled={downloadingUrl === item.outputPreview}
             className="flex items-center justify-center rounded-xl border border-[#C7D2FE] px-3 py-2.5 text-[#4F46E5] transition-colors hover:bg-[#EEF2FF] disabled:cursor-not-allowed disabled:opacity-50"
             title={downloadingUrl === item.outputPreview ? toolText.downloading : toolText.download}
@@ -3134,7 +3146,7 @@ export default function AiImageGenerationTool({
               <button
                 data-mobile-download
                 type="button"
-                onClick={() => handleDownload(currentResult.outputPreview, `generated-${currentResult.id}.png`)}
+                onClick={() => handleDownload(currentResult.outputPreview, `generated-${currentResult.id}.png`, currentResult)}
                 disabled={downloadingUrl === currentResult.outputPreview}
                 aria-label={downloadingUrl === currentResult.outputPreview ? toolText.downloading : toolText.download}
                 className="flex min-w-0 items-center justify-center rounded-xl border border-[#C7D2FE] px-2.5 py-2.5 text-xs font-extrabold text-[#4F46E5] transition-colors hover:bg-[#EEF2FF] disabled:cursor-not-allowed disabled:opacity-60"
@@ -3888,7 +3900,7 @@ export default function AiImageGenerationTool({
                     <div className="mt-4">
                       <button
                         type="button"
-                        onClick={() => handleDownload(currentResult.outputPreview, `generated-${currentResult.id}.png`)}
+                        onClick={() => handleDownload(currentResult.outputPreview, `generated-${currentResult.id}.png`, currentResult)}
                         disabled={downloadingUrl === currentResult.outputPreview}
                         className="flex items-center justify-center rounded-xl border border-[#C7D2FE] px-6 py-2.5 text-[#4F46E5] transition-colors hover:bg-[#EEF2FF] disabled:cursor-not-allowed disabled:opacity-50"
                       >
@@ -3995,14 +4007,14 @@ export default function AiImageGenerationTool({
               <div className="mt-6 grid gap-2 sm:grid-cols-[1.1fr_0.9fr]">
                 <Link
                   href="/pricing"
-                  onClick={() => handleCreditPaywallCtaClick('buy_credits', '/pricing')}
+                  onClick={handleCreditInsufficientBuyCreditsClick}
                   className="inline-flex w-full items-center justify-center rounded-2xl bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-600 px-4 py-3 text-sm font-extrabold text-white shadow-[0_14px_30px_rgba(99,102,241,0.28)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_38px_rgba(99,102,241,0.34)]"
                 >
                   {toolText.creditsUsedUpBuyAction || 'Buy Credits'}
                 </Link>
                 <Link
                   href="/earn-credits"
-                  onClick={() => handleCreditPaywallCtaClick('earn_free_credits', '/earn-credits')}
+                  onClick={handleCreditInsufficientEarnFreeCreditsClick}
                   className="inline-flex w-full items-center justify-center rounded-2xl border border-indigo-100 bg-white px-4 py-3 text-sm font-extrabold text-indigo-700 shadow-sm transition hover:-translate-y-0.5 hover:border-violet-200 hover:bg-indigo-50"
                 >
                   {toolText.creditsUsedUpEarnAction || 'Earn Free Credits'}

@@ -1,12 +1,15 @@
 'use client'
 
 import { useState } from 'react'
+import { trackToolazeEvent } from '@/lib/analytics'
 import type { PricingCheckoutCopy } from './pricing-copy'
 import { shouldUseEmbeddedCheckout } from './creem-checkout-mode'
 import { openCreemEmbeddedCheckout } from './open-creem-embedded-checkout'
 
 type PricingCheckoutButtonProps = {
   planId: string
+  credits: number
+  price: string
   enabled: boolean
   isFeatured: boolean
   copy?: PricingCheckoutCopy
@@ -23,6 +26,8 @@ const defaultCopy: PricingCheckoutCopy = {
 
 export default function PricingCheckoutButton({
   planId,
+  credits,
+  price,
   enabled,
   isFeatured,
   copy = defaultCopy,
@@ -36,6 +41,13 @@ export default function PricingCheckoutButton({
     setError('')
 
     try {
+      trackToolazeEvent('pricing_buy_credits_button_click', {
+        page_path: typeof window === 'undefined' ? undefined : window.location.pathname || '/',
+        plan_id: planId,
+        plan_credits: credits,
+        plan_price: price,
+      })
+
       const response = await fetch('/api/billing/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

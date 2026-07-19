@@ -9,6 +9,7 @@ import { mergeCreditSummaryUpdate } from '@/lib/credit-summary-merge'
 import { formatCreditTransactionTimestamp } from '@/lib/credit-history-time'
 import { formatCreditTransactionDescription } from '@/lib/credit-transaction-description'
 import { getClientMenuItems, type ClientMenuItem } from '@/lib/client-menu-data'
+import { trackToolazeEvent } from '@/lib/analytics'
 import {
   hasCheckInNudgeInteractionToday,
   markCheckInNudgeInteractionToday,
@@ -418,6 +419,15 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
   const navOtherLocales = navSupportedLocales.length === 1
     ? navSupportedLocales
     : navSupportedLocales.filter((l) => l.code !== navEffectiveLocale)
+
+  useEffect(() => {
+    if (!authModalOpen) return
+
+    trackToolazeEvent('login_modal_view', {
+      source: 'navigation_auth_modal',
+      page_path: pathname || '/',
+    })
+  }, [authModalOpen, pathname])
   
   // 翻译由 server page 作为 initialTranslations 传入，避免客户端打包全部 common.json。
   useEffect(() => {

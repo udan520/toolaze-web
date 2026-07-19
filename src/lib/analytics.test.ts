@@ -8,7 +8,7 @@ test('sends analytics events through gtag when GA4 is loaded', () => {
     gtag: (...args: unknown[]) => calls.push(args),
   }
 
-  trackToolazeEvent('credit_paywall_view', {
+  trackToolazeEvent('credit_insufficient_modal_view', {
     source: 'nano_banana_tool',
     credit_cost: 10,
     ignored: undefined,
@@ -17,7 +17,7 @@ test('sends analytics events through gtag when GA4 is loaded', () => {
   assert.deepEqual(calls, [
     [
       'event',
-      'credit_paywall_view',
+      'credit_insufficient_modal_view',
       {
         source: 'nano_banana_tool',
         credit_cost: 10,
@@ -52,8 +52,8 @@ test('does not throw during server rendering', () => {
   delete (globalThis as any).window
 
   assert.doesNotThrow(() => {
-    trackToolazeEvent('credit_paywall_cta_click', {
-      cta: 'buy_credits',
+    trackToolazeEvent('credit_insufficient_buy_credits_button_click', {
+      destination: '/pricing',
     })
   })
 })

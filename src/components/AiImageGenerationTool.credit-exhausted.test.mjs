@@ -23,10 +23,13 @@ test('credit exhausted modal only shows title description and CTAs', () => {
 
 test('generation and credit paywall actions are tracked in GA4', () => {
   assert.ok(source.includes("trackToolazeEvent('image_generate_click'"))
-  assert.ok(source.includes("trackToolazeEvent('credit_paywall_view'"))
-  assert.ok(source.includes("trackToolazeEvent('credit_paywall_cta_click'"))
-  assert.ok(source.includes("handleCreditPaywallCtaClick('buy_credits'"))
-  assert.ok(source.includes("handleCreditPaywallCtaClick('earn_free_credits'"))
+  assert.ok(source.includes("trackToolazeEvent('credit_insufficient_modal_view'"))
+  assert.ok(source.includes("trackToolazeEvent('credit_insufficient_buy_credits_button_click'"))
+  assert.ok(source.includes("trackToolazeEvent('credit_insufficient_earn_free_credits_button_click'"))
+  assert.ok(source.includes('handleCreditInsufficientBuyCreditsClick'))
+  assert.ok(source.includes('handleCreditInsufficientEarnFreeCreditsClick'))
+  assert.ok(!source.includes("trackToolazeEvent('credit_paywall_view'"))
+  assert.ok(!source.includes("trackToolazeEvent('credit_paywall_cta_click'"))
 })
 
 test('analytics payload excludes sensitive prompt, image, user, and balance data', () => {

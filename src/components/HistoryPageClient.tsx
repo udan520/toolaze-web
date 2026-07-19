@@ -16,6 +16,11 @@ import {
 import { downloadImageInCurrentPage } from '@/lib/browser-image-download'
 import { formatLocalTimestampToSeconds } from '@/lib/credit-history-time'
 import { getWrappedHairToolHistoryDisplay } from '@/lib/generation-history-display'
+import {
+  trackGenerationHistoryDeleteClick,
+  trackGenerationHistoryDownloadClick,
+  trackGenerationHistoryRecreateClick,
+} from '@/lib/generation-history-analytics'
 
 type GenerationHistoryItem = {
   id: string
@@ -188,6 +193,8 @@ export default function HistoryPageClient({ initialTranslations }: HistoryPageCl
   }
 
   const handleDownload = async (item: GenerationHistoryItem) => {
+    trackGenerationHistoryDownloadClick(item, { surface: 'history_page' })
+
     await downloadImageInCurrentPage({
       imageUrl: item.outputUrl,
       filename: `toolaze-${item.id}.${item.mediaType === 'video' ? 'mp4' : 'png'}`,
@@ -206,6 +213,8 @@ export default function HistoryPageClient({ initialTranslations }: HistoryPageCl
     ) {
       return
     }
+
+    trackGenerationHistoryDeleteClick(item, { surface: 'history_page' })
 
     setDeletingId(item.id)
     setError('')
@@ -227,6 +236,8 @@ export default function HistoryPageClient({ initialTranslations }: HistoryPageCl
   }
 
   const handleReprompt = (item: GenerationHistoryItem) => {
+    trackGenerationHistoryRecreateClick(item, { surface: 'history_page' })
+
     window.sessionStorage.setItem(PENDING_REPROMPT_STORAGE_KEY, JSON.stringify(buildHistoryRepromptPayload(item)))
     window.location.href = getModelHref(item.model)
   }

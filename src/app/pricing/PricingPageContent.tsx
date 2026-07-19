@@ -129,6 +129,8 @@ export default function PricingPageContent({
 
                       <PricingCheckoutButton
                         planId={plan.id}
+                        credits={plan.credits}
+                        price={plan.price}
                         enabled={plan.checkoutEnabled}
                         isFeatured={isFeatured}
                         copy={copy.checkout}
