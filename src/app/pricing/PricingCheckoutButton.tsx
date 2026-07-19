@@ -1,14 +1,30 @@
 'use client'
 
 import { useState } from 'react'
+import type { PricingCheckoutCopy } from './pricing-copy'
 
 type PricingCheckoutButtonProps = {
   planId: string
   enabled: boolean
   isFeatured: boolean
+  copy?: PricingCheckoutCopy
 }
 
-export default function PricingCheckoutButton({ planId, enabled, isFeatured }: PricingCheckoutButtonProps) {
+const defaultCopy: PricingCheckoutCopy = {
+  buyCredits: 'Buy Credits',
+  openingCheckout: 'Opening Checkout...',
+  checkoutComingSoon: 'Checkout Coming Soon',
+  validityNote: 'Credits valid for 12 months.',
+  signInRequired: 'Please sign in before buying credits.',
+  checkoutFailed: 'Checkout could not be started.',
+}
+
+export default function PricingCheckoutButton({
+  planId,
+  enabled,
+  isFeatured,
+  copy = defaultCopy,
+}: PricingCheckoutButtonProps) {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
@@ -28,15 +44,15 @@ export default function PricingCheckoutButton({ planId, enabled, isFeatured }: P
 
       if (response.status === 401) {
         window.dispatchEvent(new CustomEvent('toolaze:open-auth-modal'))
-        throw new Error('Please sign in before buying credits.')
+        throw new Error(copy.signInRequired)
       }
       if (!response.ok || !payload.checkoutUrl) {
-        throw new Error(payload.error || 'Checkout could not be started.')
+        throw new Error(payload.error || copy.checkoutFailed)
       }
 
       window.location.href = payload.checkoutUrl
     } catch (checkoutError) {
-      setError(checkoutError instanceof Error ? checkoutError.message : 'Checkout could not be started.')
+      setError(checkoutError instanceof Error ? checkoutError.message : copy.checkoutFailed)
       setLoading(false)
     }
   }
@@ -55,10 +71,10 @@ export default function PricingCheckoutButton({ planId, enabled, isFeatured }: P
               : 'bg-slate-100 text-slate-500 disabled:opacity-75 group-hover:bg-indigo-50 group-hover:text-indigo-700'
         }`}
       >
-        {enabled ? (loading ? 'Opening Checkout...' : 'Buy Credits') : 'Checkout Coming Soon'}
+        {enabled ? (loading ? copy.openingCheckout : copy.buyCredits) : copy.checkoutComingSoon}
       </button>
       <p className="mt-2 text-center text-xs font-semibold text-slate-400">
-        Credits valid for 12 months.
+        {copy.validityNote}
       </p>
       {error ? <p className="mt-2 text-center text-xs font-semibold text-rose-600">{error}</p> : null}
     </div>

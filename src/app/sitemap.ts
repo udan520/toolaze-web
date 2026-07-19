@@ -7,8 +7,8 @@ export const dynamic = 'force-static'
 
 const baseUrl = 'https://toolaze.com'
 const SUPPORTED_LOCALES = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
-const STATIC_PAGES = ['about', 'privacy', 'terms']
-const ENGLISH_STATIC_PAGES = ['pricing', 'refund-policy', 'acceptable-use', 'contact']
+const STATIC_PAGES = ['about', 'privacy', 'terms', 'pricing']
+const ENGLISH_STATIC_PAGES = ['refund-policy', 'acceptable-use', 'contact']
 const TOOL_PAGES = ['image-compressor', 'image-converter', 'font-generator', 'emoji-copy-and-paste']
 
 interface SitemapEntry {
@@ -52,7 +52,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: `${baseUrl}/${page}`,
       lastModified: today,
       changeFrequency: 'monthly',
-      priority: page === 'pricing' ? 0.9 : 0.75,
+      priority: 0.75,
     })
   })
 

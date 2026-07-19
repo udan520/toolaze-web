@@ -5,6 +5,7 @@ import {
   PRICING_FAQ,
   PRICING_PLANS,
   getBonusPercent,
+  getPricingPageCopy,
   getPricePerCredit,
 } from './pricing-copy'
 import { BROWSER_LOCALE_REDIRECT_SCRIPT } from '../../lib/browser-locale-redirect'
@@ -62,17 +63,45 @@ test('pricing FAQ covers failed generations, commercial use, and unused credit r
   assert.ok(PRICING_FAQ.some((item) => /subscription/i.test(item.question) && /one-time/i.test(item.answer)))
 })
 
-test('pricing remains an English canonical route from localized navigation', () => {
-  assert.equal(getPreferredLocalizedUrl('/pricing', 'de'), '/pricing')
-  assert.equal(getPreferredLocalizedUrl('/pricing', 'zh-TW'), '/pricing')
-  assert.match(BROWSER_LOCALE_REDIRECT_SCRIPT, /root==='pricing'/)
+test('pricing supports localized navigation routes', () => {
+  const localizedPageSource = readFileSync('src/app/[locale]/pricing/page.tsx', 'utf8')
+  const sitemapSource = readFileSync('src/app/sitemap.ts', 'utf8')
+
+  assert.equal(getPreferredLocalizedUrl('/pricing', 'de'), '/de/pricing')
+  assert.equal(getPreferredLocalizedUrl('/pricing', 'zh-TW'), '/zh-TW/pricing')
+  assert.doesNotMatch(BROWSER_LOCALE_REDIRECT_SCRIPT, /root==='pricing'/)
+  assert.match(localizedPageSource, /generateStaticParams/)
+  assert.match(localizedPageSource, /PricingPageContent/)
+  assert.match(sitemapSource, /const STATIC_PAGES = \['about', 'privacy', 'terms', 'pricing'\]/)
+  assert.doesNotMatch(sitemapSource, /const ENGLISH_STATIC_PAGES = \['pricing'/)
+})
+
+test('pricing page copy exists for every supported locale', () => {
+  const locales = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
+  const english = getPricingPageCopy('en')
+
+  for (const locale of locales) {
+    const copy = getPricingPageCopy(locale)
+    assert.equal(typeof copy.title, 'string', `${locale}.title`)
+    assert.equal(typeof copy.checkout.buyCredits, 'string', `${locale}.checkout.buyCredits`)
+    assert.equal(copy.faq.length, PRICING_FAQ.length, `${locale}.faq`)
+    assert.notEqual(copy.title.trim(), '', `${locale}.title`)
+    assert.notEqual(copy.checkout.validityNote.trim(), '', `${locale}.checkout.validityNote`)
+
+    if (locale !== 'en') {
+      assert.notEqual(copy.title, english.title, `${locale}.title should be localized`)
+      assert.notEqual(copy.checkout.buyCredits, english.checkout.buyCredits, `${locale}.checkout.buyCredits should be localized`)
+      assert.notEqual(copy.faqTitle, english.faqTitle, `${locale}.faqTitle should be localized`)
+    }
+  }
 })
 
 test('pricing page keeps the hero and checkout rows readable on mobile', () => {
-  const pageSource = readFileSync('src/app/pricing/page.tsx', 'utf8')
+  const pageSource = readFileSync('src/app/pricing/PricingPageContent.tsx', 'utf8')
+  const englishCopy = getPricingPageCopy('en')
 
-  assert.match(pageSource, />\s*Buy Credits, Pay As You Go\s*<\/h1>/)
-  assert.match(pageSource, /One-time credit packs for Toolaze AI creation\. No subscription required\./)
+  assert.equal(englishCopy.title, 'Buy Credits, Pay As You Go')
+  assert.equal(englishCopy.subtitle, 'One-time credit packs for Toolaze AI creation. No subscription required.')
   assert.doesNotMatch(pageSource, />\s*Buy Credits\s*<\/h1>/)
   assert.doesNotMatch(pageSource, /Buy Credits Once\. Use Them When You Need Them/)
   assert.doesNotMatch(pageSource, /Buy Toolaze Credits Once, Use Them When You Need Them/)
@@ -91,10 +120,10 @@ test('pricing page keeps the hero and checkout rows readable on mobile', () => {
   assert.doesNotMatch(pageSource, /\$\{hasTopBadge \? 'pt-7' : ''\}/)
   assert.match(pageSource, /rounded-full bg-amber-100 px-3 py-1\.5/)
   assert.match(pageSource, /rounded-full bg-gradient-to-r from-indigo-400 via-violet-400 to-purple-500 px-3 py-1\.5/)
-  assert.match(pageSource, /\+\{plan\.bonusCredits\.toLocaleString\('en-US'\)\} bonus/)
+  assert.match(pageSource, /\+\{plan\.bonusCredits\.toLocaleString\('en-US'\)\} \{copy\.bonusLabel\}/)
   assert.match(pageSource, /bg-clip-text text-sm text-transparent/)
   assert.match(pageSource, /inline-flex items-center justify-center px-1 py-1 text-sm font-extrabold text-slate-600/)
-  assert.match(pageSource, /\{plan\.credits\.toLocaleString\('en-US'\)\} credits included/)
+  assert.match(pageSource, /formatPricingCopy\(copy\.creditsIncludedLabel/)
   assert.doesNotMatch(pageSource, /inline-flex items-center justify-center rounded-full bg-white\/80 px-4 py-2 text-sm font-extrabold text-slate-600 shadow-sm shadow-indigo-100 ring-1 ring-indigo-100/)
   assert.doesNotMatch(pageSource, /inline-flex items-center justify-center rounded-full bg-white\/75 px-3 py-2 text-sm font-extrabold text-slate-600 shadow-sm shadow-indigo-100 ring-1 ring-indigo-100/)
   assert.doesNotMatch(pageSource, /left-0 top-0 rounded-br-2xl bg-gradient-to-r from-indigo-500/)
@@ -114,6 +143,7 @@ test('pricing checkout buttons show the credit validity note under each CTA', ()
   const buttonSource = readFileSync('src/app/pricing/PricingCheckoutButton.tsx', 'utf8')
 
   assert.match(buttonSource, /Credits valid for 12 months\./)
+  assert.match(buttonSource, /copy\.validityNote/)
   assert.match(buttonSource, /mt-2 text-center text-xs font-semibold text-slate-400/)
   assert.ok(
     buttonSource.indexOf('Credits valid for 12 months.') > buttonSource.indexOf('Buy Credits'),

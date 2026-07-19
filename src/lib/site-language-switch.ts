@@ -88,11 +88,11 @@ export function getContentSupportedLocaleCodes(pathname: string | null): string[
 
   const root = segments[0]
 
-  if (['about', 'privacy', 'terms'].includes(root)) {
+  if (['about', 'privacy', 'terms', 'pricing'].includes(root)) {
     return [...ALL_LOCALE_CODES]
   }
 
-  if (['pricing', 'refund-policy', 'acceptable-use', 'contact'].includes(root)) {
+  if (['refund-policy', 'acceptable-use', 'contact'].includes(root)) {
     return ['en']
   }
 
