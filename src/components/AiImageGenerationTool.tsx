@@ -1096,6 +1096,7 @@ export default function AiImageGenerationTool({
   const modelSelectorRef = useRef<HTMLDivElement>(null)
   const historyItemRefs = useRef(new Map<string, HTMLDivElement>())
   const restoredGenerationPollIdsRef = useRef(new Set<string>())
+  const lastRightPanelPathnameRef = useRef(pathname)
   const shouldPositionInsertedPromptRef = useRef(false)
   const localIdRef = useRef(0)
   const [isModelMenuOpen, setIsModelMenuOpen] = useState(false)
@@ -1613,6 +1614,13 @@ export default function AiImageGenerationTool({
   }, [pendingGenerationItems.length])
 
   useEffect(() => {
+    if (lastRightPanelPathnameRef.current === pathname) return
+    lastRightPanelPathnameRef.current = pathname
+    if (pendingGenerationItems.length > 0) return
+    setRightMode('sample')
+  }, [pathname, pendingGenerationItems.length])
+
+  useEffect(() => {
     const restoredPendingGenerationItems = pendingGenerationItems.filter((item) => item.restored && item.taskId)
     restoredPendingGenerationItems.forEach((item) => {
       if (restoredGenerationPollIdsRef.current.has(item.id)) return
@@ -1640,7 +1648,6 @@ export default function AiImageGenerationTool({
         if (cancelled || loadedHistory.length === 0) return
         setHistory(loadedHistory)
         setCurrentResult((prev) => prev || loadedHistory[0] || null)
-        setRightMode('history')
       } catch {
         // Inline history is an enhancement. The full History page remains the source of truth.
       }

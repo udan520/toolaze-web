@@ -35,9 +35,16 @@ test('desktop right panel shows history tab when account history exists', () => 
   assert.match(source, /data-desktop-result-tabs/)
   assert.match(source, /data-desktop-result-tab="sample"[\s\S]*>\s*\{toolText\.demo\}/)
   assert.match(source, /data-desktop-result-tab="history"[\s\S]*>\s*\{toolText\.history\}/)
-  assert.match(source, /setCurrentResult\(\(prev\) => prev \|\| loadedHistory\[0\] \|\| null\)\s*\n\s*setRightMode\('history'\)/)
+  assert.match(source, /setCurrentResult\(\(prev\) => prev \|\| loadedHistory\[0\] \|\| null\)/)
+  assert.doesNotMatch(source, /setCurrentResult\(\(prev\) => prev \|\| loadedHistory\[0\] \|\| null\)\s*\n\s*setRightMode\('history'\)/)
   assert.match(source, /setPendingGenerationItems\(\(prev\) => \[pendingItem, \.\.\.prev\]\)\s*\n\s*setRightMode\('history'\)/)
   assert.match(source, /rightMode === 'history' \? \(\s*renderDesktopResultFeed\(\)\s*\) : \(/)
+})
+
+test('desktop landing page navigation defaults the right panel to demo unless generation is running', () => {
+  assert.match(source, /const lastRightPanelPathnameRef = useRef\(pathname\)/)
+  assert.match(source, /useEffect\(\(\) => \{\s*if \(lastRightPanelPathnameRef\.current === pathname\) return\s*lastRightPanelPathnameRef\.current = pathname\s*if \(pendingGenerationItems\.length > 0\) return\s*setRightMode\('sample'\)\s*\}, \[pathname, pendingGenerationItems\.length\]\)/)
+  assert.match(source, /useEffect\(\(\) => \{\s*if \(pendingGenerationItems\.length > 0\) \{\s*setRightMode\('history'\)\s*\}\s*\}, \[pendingGenerationItems\.length\]\)/)
 })
 
 test('mobile generated result keeps the prompt visible above actions', () => {

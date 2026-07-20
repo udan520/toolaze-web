@@ -1032,6 +1032,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
       setTopNotice(null)
       setMobileMenuOpen(false)
       setExpandedSubmenus(new Set())
+      window.location.reload()
     }
   }
 

@@ -116,6 +116,20 @@ test('account menu stays within the viewport and scrolls to the sign out action'
   assert.doesNotMatch(signOutButtonSource, /text-left/)
 })
 
+test('sign out refreshes the current page after clearing local account state', () => {
+  const signOutSource = navigationSource.slice(
+    navigationSource.indexOf('async function handleSignOut()'),
+    navigationSource.indexOf('function toggleAccountMenu()'),
+  )
+
+  assert.match(signOutSource, /writeCachedAuthSnapshot\(null\)/)
+  assert.match(signOutSource, /window\.location\.reload\(\)/)
+  assert.ok(
+    signOutSource.indexOf('writeCachedAuthSnapshot(null)') < signOutSource.indexOf('window.location.reload()'),
+    'Current page should refresh after local account state is cleared',
+  )
+})
+
 test('account header credit balance shows the number with a compact diamond icon', () => {
   const mobileAccountEntrySource = navigationSource.slice(
     navigationSource.indexOf('/* 移动端账号入口 + 菜单按钮 */'),
