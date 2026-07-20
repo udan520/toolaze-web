@@ -265,26 +265,32 @@ test('sensitive creative tools show Creem-safe usage boundaries', () => {
   assert.match(watermarkTool, /own this image or have permission/i)
 })
 
-test('payment review sensitive tools are hidden from public entry points', () => {
-  const hiddenToolHrefs = ['/watermark-remover', '/ai-couple-photo-maker']
-  const homeGrid = readProjectFile('src/lib/homepage-grid-tools.ts')
+test('creative image tools are exposed from public entry points after review', () => {
+  const publicToolHrefs = [
+    '/ai-baby-generator',
+    '/ai-couple-photo-maker',
+    '/watermark-remover',
+    '/world-cup-ai-image-generator',
+  ]
   const navigation = readProjectFile('src/components/Navigation.tsx')
   const footer = readProjectFile('src/components/Footer.tsx')
   const sitemap = readProjectFile('src/app/sitemap.ts')
   const seoLoader = readProjectFile('src/lib/seo-loader.ts')
   const aiToolsCopy = getAiToolsPageCopy('en')
 
-  for (const href of hiddenToolHrefs) {
-    assert.doesNotMatch(homeGrid, new RegExp(`id: '${href.slice(1)}'`))
-    assert.doesNotMatch(navigation, new RegExp(`getLocalizedHref\\('${href}'\\)`))
-    assert.doesNotMatch(footer, new RegExp(`getLocalizedHref\\('${href}'\\)`))
-    assert.doesNotMatch(sitemap, new RegExp(href))
-    assert.equal(aiToolsCopy.cards.some((card) => card.href === href), false)
+  for (const href of publicToolHrefs) {
+    assert.match(navigation, new RegExp(`getLocalizedHref\\('${href}'\\)`))
+    assert.match(footer, new RegExp(`getLocalizedHref\\('${href}'\\)`))
+    assert.match(sitemap, new RegExp(href))
+    assert.equal(aiToolsCopy.cards.some((card) => card.href === href), true)
+  }
+
+  for (const href of ['/ai-baby-generator', '/ai-couple-photo-maker', '/watermark-remover']) {
+    assert.match(seoLoader, new RegExp(`importL2FlatJson\\('${href.slice(1)}'`))
   }
 
   const metadata = JSON.stringify(aiToolsCopy.metadata)
-  assert.doesNotMatch(metadata, /Watermark Remover|AI Couple Photo Maker/i)
-  assert.doesNotMatch(seoLoader, /tools\.push\(\{ tool: 'watermark-remover'/)
+  assert.match(metadata, /AI Baby Generator|Watermark Remover|AI Couple Photo Maker|World Cup AI Image Generator/i)
 })
 
 test('unverified social proof blocks are hidden during payment review', () => {

@@ -118,12 +118,18 @@ test('does not fall back to output image for Recreate when no original input exi
   assert.deepEqual(getOriginalHistoryInputImageUrls(baseHistoryItem), [])
 })
 
-test('creates a small display URL without changing the original image URL', () => {
+test('keeps remote R2 display URLs direct to avoid optimizer failures', () => {
   const previewUrl = getDisplayImagePreviewUrl(baseHistoryItem.outputUrl, 384)
+
+  assert.equal(previewUrl, baseHistoryItem.outputUrl)
+  assert.equal(baseHistoryItem.outputUrl.includes('/_next/image'), false)
+})
+
+test('creates a small display URL for same-origin images', () => {
+  const previewUrl = getDisplayImagePreviewUrl('/ai-hair-color-changer/default-reference-preview.webp', 384)
 
   assert.match(previewUrl, /^\/_next\/image\?/)
   assert.match(previewUrl, /w=384/)
-  assert.equal(baseHistoryItem.outputUrl.includes('/_next/image'), false)
 })
 
 test('keeps blob and data URLs unchanged for local browser previews', () => {

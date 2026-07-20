@@ -672,20 +672,18 @@ export default async function WorldCupAiImageGeneratorPageContent({ locale = 'en
               id="world-cup-gpt-image-2-generator"
               className="mt-8 flex h-[100svh] flex-col overflow-hidden border border-indigo-100 bg-white p-3 text-slate-950 md:p-5"
             >
-              <div className="mx-auto mb-4 max-w-4xl shrink-0 text-center">
-                <h1 className="text-[40px] font-extrabold leading-tight tracking-tight text-slate-950">
-                  <span className="text-[#4F46E5]">{copy.hero.highlight}</span> {copy.hero.suffix}
-                </h1>
-                <p className="mx-auto mt-4 max-w-3xl text-base leading-7 text-slate-700 md:text-lg">
-                  {copy.hero.description}
-                </p>
-              </div>
               <AiImageGenerationTool
                 modelId="gpt-image-2"
                 modelName="GPT Image 2"
                 dailyLimitStorageKey="world_cup_gpt_image_2_last_used_date"
                 fitParentHeight
                 plainRightPanel
+                heroTitle={
+                  <>
+                    <span className="text-[#4F46E5]">{copy.hero.highlight}</span> {copy.hero.suffix}
+                  </>
+                }
+                heroDescription={copy.hero.description}
                 sampleImages={[
                   {
                     url: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/world-cup-2026/templates/wc-030.webp',

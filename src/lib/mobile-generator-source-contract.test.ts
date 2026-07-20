@@ -62,6 +62,19 @@ test('history preview backfills wrapped hair tool reference images for older rec
   assert.match(historyPageSource, /inputUrls: getOriginalHistoryInputImageUrls\(normalizedItem\)/)
 })
 
+test('history library cards expose original reference media for image-to-image records', () => {
+  const cardGridBlock = historyPageSource.slice(
+    historyPageSource.indexOf("items.filter((item) => item.mediaType === 'image').map"),
+    historyPageSource.indexOf('{previewItem && ('),
+  )
+
+  assert.match(cardGridBlock, /data-history-card-preview/)
+  assert.match(cardGridBlock, /data-history-card-reference/)
+  assert.match(cardGridBlock, /item\.inputUrls\[0\]/)
+  assert.match(cardGridBlock, /getHistoryReferenceThumbnailUrl\(item\.inputUrls\[0\]\)/)
+  assert.match(cardGridBlock, /copy\.referenceMedia/)
+})
+
 test('inline generator history can show wrapped hair tool model even when model branding is hidden', () => {
   assert.match(aiImageGenerationSource, /getWrappedHairToolHistoryDisplay/)
   assert.match(aiImageGenerationSource, /const renderInlineHistoryMeta = \(/)

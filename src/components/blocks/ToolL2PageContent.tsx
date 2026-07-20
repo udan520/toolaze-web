@@ -12,8 +12,6 @@ import ImageCompressor from '@/components/ImageCompressor'
 import ImageConverter from '@/components/ImageConverter'
 import EmojiCategoryPage from '@/components/EmojiCategoryPage'
 import AiImageGenerationTool from '@/components/AiImageGenerationTool'
-import WatermarkRemover from '@/components/WatermarkRemover'
-import PhotoRestoration from '@/components/PhotoRestoration'
 import SeedanceHeroPlaceholder from '@/components/blocks/SeedanceHeroPlaceholder'
 import Seedance25LaunchUpdates from '@/components/blocks/Seedance25LaunchUpdates'
 import KlingHeroPlaceholder from '@/components/blocks/KlingHeroPlaceholder'
@@ -40,6 +38,10 @@ interface ToolL2PageContentProps {
 }
 
 const AI_IMAGE_TOOL_TOP_COMPONENTS = new Set(['gpt-image-2'])
+const WATERMARK_REMOVER_PROMPT =
+  'Remove visible watermarks, logos, timestamp overlays, or text overlays from this image. Preserve the original subject, background, lighting, texture, and composition. Only edit the overlay areas.'
+const PHOTO_RESTORATION_PROMPT =
+  'Restore and colorize this old photo by removing scratches, dust, and noise. Enhance clarity, sharpness, and details while preserving the original colors and natural look.'
 
 // 从 hero.h1 中提取页面标题（用于面包屑）
 function extractPageTitle(h1: string): string {
@@ -573,6 +575,8 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
           { label: pageTitle },
         ]
     const toolHeroOwnsBreadcrumb = [
+      'watermark-remover',
+      'photo-restoration',
       'ai-couple-photo-maker',
       'ai-baby-generator',
       'nano-banana-pro',
@@ -809,40 +813,62 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
               <TrustBar />
             </header>
           ) : topComp === 'watermark-remover' ? (
-            <header className="bg-[#F8FAFF] pb-12 px-6">
-              <div className="max-w-4xl mx-auto text-center pt-8 mb-12">
-                <h1 className="text-[40px] font-extrabold tracking-tight mb-6 leading-tight text-slate-900">
-                  {content.hero?.h1 ? (
-                    renderH1WithGradient(content.hero.h1)
-                  ) : (
-                    <>Free Watermark Remover</>
-                  )}
-                </h1>
-                {content.hero?.desc && (
-                  <p className="desc-text text-lg md:text-xl max-w-4xl mx-auto">
-                    {content.hero.desc}
-                  </p>
-                )}
+            <header className="bg-[#F8FAFF] pb-6 md:pb-12 w-full pl-0 pr-2 md:pl-0 md:pr-6">
+              <div className="w-full max-w-full">
+                <div className="flex flex-col">
+                  <AiImageGenerationTool
+                    modelId="gpt-image-2"
+                    modelName={content.topTool?.displayName || 'AI Watermark Remover'}
+                    dailyLimitStorageKey="watermark_remover_last_used_date"
+                    defaultMode="image-to-image"
+                    defaultPrompt={WATERMARK_REMOVER_PROMPT}
+                    defaultAspectRatio="auto"
+                    maxUploadImages={1}
+                    hideModelBranding
+                    hidePromptInput
+                    sampleImageVariant="sharp"
+                    sceneText={{
+                      uploadTitle: 'Upload image',
+                      uploadHelper: 'JPG, PNG, WebP up to 30MB.',
+                      generateLabel: 'Remove Watermark',
+                      safetyHelper: 'By uploading, you confirm that you own this image or have permission to edit and remove the selected overlay.',
+                    }}
+                    heroBreadcrumbItems={breadcrumbItems}
+                    heroTitle={content.hero?.h1 ? renderH1WithGradient(content.hero.h1) : <>AI Watermark Remover</>}
+                    heroDescription={content.hero?.desc}
+                    initialTranslations={pageTranslations}
+                  />
+                </div>
               </div>
-              <WatermarkRemover initialTranslations={t} />
             </header>
           ) : topComp === 'photo-restoration' ? (
-            <header className="bg-[#F8FAFF] pb-12 px-6">
-              <div className="max-w-4xl mx-auto text-center pt-8 mb-12">
-                <h1 className="text-[40px] font-extrabold tracking-tight mb-6 leading-tight text-slate-900">
-                  {content.hero?.h1 ? (
-                    renderH1WithGradient(content.hero.h1)
-                  ) : (
-                    <>Free Photo Restoration Online</>
-                  )}
-                </h1>
-                {content.hero?.desc && (
-                  <p className="desc-text text-lg md:text-xl max-w-4xl mx-auto">
-                    {content.hero.desc}
-                  </p>
-                )}
+            <header className="bg-[#F8FAFF] pb-6 md:pb-12 w-full pl-0 pr-2 md:pl-0 md:pr-6">
+              <div className="w-full max-w-full">
+                <div className="flex flex-col">
+                  <AiImageGenerationTool
+                    modelId="gpt-image-2"
+                    modelName={content.topTool?.displayName || 'Photo Restoration'}
+                    dailyLimitStorageKey="photo_restoration_last_used_date"
+                    defaultMode="image-to-image"
+                    defaultPrompt={PHOTO_RESTORATION_PROMPT}
+                    defaultAspectRatio="auto"
+                    maxUploadImages={1}
+                    hideModelBranding
+                    hidePromptInput
+                    sampleImageVariant="sharp"
+                    sceneText={{
+                      uploadTitle: 'Upload old photo',
+                      uploadHelper: 'JPG, PNG, WebP up to 30MB.',
+                      generateLabel: 'Restore Photo',
+                      safetyHelper: 'Upload a photo you own or have permission to restore.',
+                    }}
+                    heroBreadcrumbItems={breadcrumbItems}
+                    heroTitle={content.hero?.h1 ? renderH1WithGradient(content.hero.h1) : <>Photo Restoration</>}
+                    heroDescription={content.hero?.desc}
+                    initialTranslations={pageTranslations}
+                  />
+                </div>
               </div>
-              <PhotoRestoration initialTranslations={t} />
             </header>
           ) : topComp === 'ai-couple-photo-maker' ? (
             <header className="bg-[#F8FAFF] pb-6 md:pb-12 w-full pl-0 pr-2 md:pl-0 md:pr-6">

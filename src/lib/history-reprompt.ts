@@ -57,18 +57,6 @@ export function getWrappedHistoryDefaultInputImageUrls(item: HistoryRepromptSour
   return []
 }
 
-function isOptimizableRemoteImageUrl(url: string): boolean {
-  try {
-    const parsed = new URL(url)
-    return parsed.protocol === 'https:' && (
-      parsed.hostname.endsWith('.r2.dev') ||
-      parsed.hostname.endsWith('.r2.cloudflarestorage.com')
-    )
-  } catch {
-    return false
-  }
-}
-
 function normalizePreviewWidth(width: number): number {
   const safeWidth = Number.isFinite(width) ? Math.max(64, Math.round(width)) : 384
   return NEXT_IMAGE_WIDTHS.reduce((best, current) => (
@@ -118,7 +106,7 @@ export function getDisplayImagePreviewUrl(url: string, width = 384, quality = 75
   const imageUrl = normalizeImageUrl(url)
   if (!imageUrl || isBrowserOnlyPreviewUrl(imageUrl) || isNextImageUrl(imageUrl)) return imageUrl
 
-  const canUseNextImage = imageUrl.startsWith('/') || isOptimizableRemoteImageUrl(imageUrl)
+  const canUseNextImage = imageUrl.startsWith('/') && !imageUrl.startsWith('//')
   if (!canUseNextImage) return imageUrl
 
   const previewWidth = normalizePreviewWidth(width)

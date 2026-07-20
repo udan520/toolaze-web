@@ -37,21 +37,17 @@ test('uses the original reference image for full screen preview when the URL is 
   )
 })
 
-test('uses smaller thumbnails for the library grid before opening the original preview', () => {
+test('keeps remote R2 library thumbnails direct before opening the original preview', () => {
   const originalUrl = 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/generations/output-original.png'
   const thumbnailUrl = getHistoryLibraryThumbnailUrl(originalUrl)
 
-  assert.match(thumbnailUrl, /^\/_next\/image\?/)
-  assert.match(thumbnailUrl, /w=256/)
-  assert.match(thumbnailUrl, /q=60/)
+  assert.equal(thumbnailUrl, originalUrl)
 })
 
-test('uses compact reference thumbnails while preserving original click targets', () => {
+test('keeps remote R2 reference thumbnails direct while preserving original click targets', () => {
   const originalUrl = 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/reference-original.webp'
   const thumbnailUrl = getHistoryReferenceThumbnailUrl(originalUrl)
 
-  assert.match(thumbnailUrl, /^\/_next\/image\?/)
-  assert.match(thumbnailUrl, /w=128/)
-  assert.match(thumbnailUrl, /q=60/)
+  assert.equal(thumbnailUrl, originalUrl)
   assert.equal(getHistoryFullScreenPreviewUrl(originalUrl), originalUrl)
 })

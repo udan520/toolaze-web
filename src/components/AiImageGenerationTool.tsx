@@ -480,6 +480,8 @@ interface AiImageGenerationToolProps {
   promptPresetTitle?: string
   promptPresetTabs?: PromptPresetTab[]
   hidePresetPromptInput?: boolean
+  hidePromptInput?: boolean
+  defaultAspectRatio?: string
   customPromptTabId?: string
   promptModifier?: PromptModifierConfig
   compactResultPanel?: boolean
@@ -936,6 +938,8 @@ export default function AiImageGenerationTool({
   promptPresetTitle = 'Hair Color Presets',
   promptPresetTabs = EMPTY_PROMPT_PRESET_TABS,
   hidePresetPromptInput = false,
+  hidePromptInput = false,
+  defaultAspectRatio,
   customPromptTabId = 'custom',
   promptModifier,
   compactResultPanel = false,
@@ -1063,7 +1067,7 @@ export default function AiImageGenerationTool({
     return firstPreset?.label ?? 'Custom'
   })
   const [aspectRatio, setAspectRatio] = useState<string>(
-    getDefaultAspectRatioForModel(modelId, presetMode)
+    defaultAspectRatio || getDefaultAspectRatioForModel(modelId, presetMode)
   )
   const [resolution, setResolution] = useState<string>(getDefaultResolutionForModel(modelId))
   const [outputFormat, setOutputFormat] = useState(isCouplePhotoMakerMode ? 'PNG' : 'Auto')
@@ -1143,6 +1147,12 @@ export default function AiImageGenerationTool({
   useEffect(() => {
     setPrompt(defaultPrompt)
   }, [defaultPrompt])
+
+  useEffect(() => {
+    if (!defaultAspectRatio) return
+    if (!modelConfig.aspectRatios.some((item) => item.value === defaultAspectRatio)) return
+    setAspectRatio(defaultAspectRatio)
+  }, [defaultAspectRatio, modelConfig.aspectRatios])
 
   useEffect(() => {
     const nextTabId = promptPresetTabs[0]?.id || ''
@@ -1612,8 +1622,6 @@ export default function AiImageGenerationTool({
   }, [pendingGenerationItems, pollRestoredGenerationItem])
 
   useEffect(() => {
-    if (isCouplePhotoMakerMode) return
-
     let cancelled = false
 
     const loadInlineHistory = async () => {
@@ -1649,7 +1657,7 @@ export default function AiImageGenerationTool({
       cancelled = true
       window.removeEventListener('toolaze:auth-updated', refreshInlineHistory)
     }
-  }, [isCouplePhotoMakerMode])
+  }, [])
 
   const visibleTemplates = useMemo(
     () => NANO_BANANA_2_COUPLE_TEMPLATES.filter((item) => item.category === 'style'),
@@ -2177,7 +2185,7 @@ export default function AiImageGenerationTool({
 
   const handleClear = () => {
     clearAllImages()
-    setPrompt('')
+    setPrompt(hidePromptInput ? defaultPrompt : '')
     if (fileInputRef.current) fileInputRef.current.value = ''
   }
 
@@ -2546,6 +2554,17 @@ export default function AiImageGenerationTool({
       ? modelOptions.find((option) => option.id === item.modelId)?.name || selectedModelName
       : selectedModelName
 
+  const getHistoryReferencePreviewUrls = (item: {
+    inputPreview?: string
+    inputUrls?: string[]
+  }) => {
+    const inputUrls = Array.isArray(item.inputUrls)
+      ? item.inputUrls.filter((url): url is string => typeof url === 'string' && url.trim().length > 0)
+      : []
+    if (inputUrls.length > 0) return inputUrls
+    return item.inputPreview ? [item.inputPreview] : []
+  }
+
   const getInlineHistoryDisplay = (item: {
     modelId?: ImageModelId
     modelName?: string
@@ -2699,20 +2718,22 @@ export default function AiImageGenerationTool({
         activeSettingsHistoryItemId === item.id ? 'bg-[#EEF2FF]/60 p-4 ring-1 ring-[#C7D2FE]' : ''
       }`}
     >
-      <button
-        type="button"
-        onClick={() => setPreviewImage(item.outputPreview)}
-        className="flex min-h-[140px] items-center justify-center rounded-xl bg-slate-50 p-2 focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/40"
-        title={toolText.generatedAlt}
-      >
-        <img
-          src={getDisplayImagePreviewUrl(item.outputPreview, 960)}
-          alt={toolText.generatedAlt}
-          className="max-h-[220px] w-full rounded-lg object-contain transition-opacity hover:opacity-90"
-          loading="lazy"
-          decoding="async"
-        />
-      </button>
+      <div>
+        <button
+          type="button"
+          onClick={() => setPreviewImage(item.outputPreview)}
+          className="flex min-h-[140px] items-center justify-center rounded-xl bg-slate-50 p-2 focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/40"
+          title={toolText.generatedAlt}
+        >
+          <img
+            src={getDisplayImagePreviewUrl(item.outputPreview, 960)}
+            alt={toolText.generatedAlt}
+            className="max-h-[220px] w-full rounded-lg object-contain transition-opacity hover:opacity-90"
+            loading="lazy"
+            decoding="async"
+          />
+        </button>
+      </div>
 
       <div className="min-w-0 space-y-4">
         {renderInlineHistoryMeta({
@@ -2738,24 +2759,33 @@ export default function AiImageGenerationTool({
           </button>
         </div>
 
-        {item.inputPreview && (
-          <button
-            type="button"
-            onClick={() => setPreviewImage(item.inputPreview)}
-            className="block rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/40"
-            title={toolText.inputImage}
-          >
-            <img
-              src={getReferencePreviewUrl(item.inputPreview)}
-              alt={toolText.inputAlt}
-              className="h-14 w-14 rounded-lg object-cover ring-1 ring-[#E0E7FF] transition-opacity hover:opacity-80"
-              loading="lazy"
-              decoding="async"
-            />
-          </button>
+        {getHistoryReferencePreviewUrls(item).length > 0 && (
+          <div className="flex max-w-md flex-wrap gap-2">
+            {getHistoryReferencePreviewUrls(item).map((url, index) => (
+              <button
+                key={`${url}-${index}`}
+                data-desktop-result-reference
+                type="button"
+                onClick={() => setPreviewImage(url)}
+                className="flex min-w-[8.5rem] flex-1 items-center gap-2 rounded-xl bg-[#F8FAFF] p-2 text-left ring-1 ring-[#E0E7FF] transition hover:bg-[#EEF2FF] focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/40"
+                title={`${toolText.inputImage} ${index + 1}`}
+              >
+                <img
+                  src={getReferencePreviewUrl(url)}
+                  alt={`${toolText.inputAlt} ${index + 1}`}
+                  className="h-14 w-14 shrink-0 rounded-lg object-cover ring-1 ring-[#E0E7FF]"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span className="min-w-0 truncate text-xs font-extrabold text-slate-600">
+                  {getHistoryReferencePreviewUrls(item).length > 1 ? `${toolText.inputImage} ${index + 1}` : toolText.inputImage}
+                </span>
+              </button>
+            ))}
+          </div>
         )}
 
-        <div className="flex flex-wrap gap-2 pt-1">
+        <div data-desktop-result-actions className="flex flex-wrap gap-2 pt-1">
           <button
             type="button"
             onClick={() => applyHistoryItemToForm(item)}
@@ -3025,8 +3055,11 @@ export default function AiImageGenerationTool({
 
   const renderMobileTopPanel = () => (
     <div className="space-y-4 md:hidden">
+      <div data-mobile-demo-panel className="aspect-[4/3] overflow-hidden rounded-2xl border border-[#E0E7FF] bg-white p-2 shadow-lg shadow-[#4F46E5]/8">
+        {renderDemoPreview()}
+      </div>
       {(heroBreadcrumbItems?.length || heroEyebrow || heroTitle || heroDescription) && (
-        <div className="text-center">
+        <div data-mobile-result-hero className="text-center">
           {heroBreadcrumbItems?.length ? (
             <div className="mx-auto mb-1 max-w-4xl">
               <Breadcrumb items={heroBreadcrumbItems} variant="inline" />
@@ -3049,9 +3082,6 @@ export default function AiImageGenerationTool({
           )}
         </div>
       )}
-      <div data-mobile-demo-panel className="aspect-[4/3] overflow-hidden rounded-2xl border border-[#E0E7FF] bg-white p-2 shadow-lg shadow-[#4F46E5]/8">
-        {renderDemoPreview()}
-      </div>
     </div>
   )
 
@@ -3125,6 +3155,31 @@ export default function AiImageGenerationTool({
                 {currentResult.prompt}
               </p>
             </div>
+            {getHistoryReferencePreviewUrls(currentResult).length > 0 && (
+              <div className="mt-3 flex flex-wrap gap-2">
+                {getHistoryReferencePreviewUrls(currentResult).map((url, index) => (
+                  <button
+                    key={`${url}-${index}`}
+                    data-mobile-result-reference
+                    type="button"
+                    onClick={() => setPreviewImage(url)}
+                    className="flex min-w-[8.5rem] flex-1 items-center gap-2 rounded-xl bg-[#F8FAFF] p-2 text-left ring-1 ring-[#E0E7FF] transition hover:bg-[#EEF2FF] focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/40"
+                    title={`${toolText.inputImage} ${index + 1}`}
+                  >
+                    <img
+                      src={getReferencePreviewUrl(url)}
+                      alt={`${toolText.inputAlt} ${index + 1}`}
+                      className="h-14 w-14 shrink-0 rounded-lg object-cover ring-1 ring-[#E0E7FF]"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <span className="min-w-0 truncate text-xs font-extrabold text-slate-600">
+                      {getHistoryReferencePreviewUrls(currentResult).length > 1 ? `${toolText.inputImage} ${index + 1}` : toolText.inputImage}
+                    </span>
+                  </button>
+                ))}
+              </div>
+            )}
             <div data-mobile-result-actions className="mt-3 grid grid-cols-4 gap-2">
               <button
                 type="button"
@@ -3574,7 +3629,7 @@ export default function AiImageGenerationTool({
             )}
 
             {/* Prompt */}
-            {!isCouplePhotoMakerMode && (
+            {!hidePromptInput && !isCouplePhotoMakerMode && (
               <div>
                 {promptModifier && promptModifier.options.length > 0 && (
                   <div className="mb-4">
@@ -3859,7 +3914,7 @@ export default function AiImageGenerationTool({
         </div>
 
         <div className="hidden min-h-0 min-w-0 flex-1 flex-col gap-4 md:flex md:h-full">
-          {hasDesktopResultTabs && !isCouplePhotoMakerMode ? renderDesktopResultTabs() : null}
+          {hasDesktopResultTabs ? renderDesktopResultTabs() : null}
 
           {rightMode !== 'history' && (heroBreadcrumbItems?.length || heroEyebrow || heroTitle || heroDescription) && (
             <div data-desktop-result-hero className="shrink-0 text-center md:px-4 md:pt-1 xl:pt-0">
@@ -3887,47 +3942,18 @@ export default function AiImageGenerationTool({
           )}
 
           <div className="flex min-h-0 min-w-0 flex-1 flex-col gap-4 md:flex-row">
-            {isCouplePhotoMakerMode ? (
-              <div className={`relative z-10 flex min-h-[400px] min-w-0 flex-1 flex-col items-center justify-center rounded-2xl border border-[#E0E7FF] bg-white p-2 ${rightPanelShadowClass} md:min-h-0 md:p-8 xl:mx-auto xl:w-full xl:max-w-[1280px] 2xl:max-w-[1440px]`}>
-                {currentResult ? (
-                  <>
-                    <img
-                      src={currentResult.outputPreview}
-                      alt={toolText.generatedAlt}
-                      onClick={() => setPreviewImage(currentResult.outputPreview)}
-                      className="max-h-[60vh] max-w-full cursor-pointer rounded-xl object-contain transition-opacity hover:opacity-90 md:max-h-full"
-                    />
-                    <div className="mt-4">
-                      <button
-                        type="button"
-                        onClick={() => handleDownload(currentResult.outputPreview, `generated-${currentResult.id}.png`, currentResult)}
-                        disabled={downloadingUrl === currentResult.outputPreview}
-                        className="flex items-center justify-center rounded-xl border border-[#C7D2FE] px-6 py-2.5 text-[#4F46E5] transition-colors hover:bg-[#EEF2FF] disabled:cursor-not-allowed disabled:opacity-50"
-                      >
-                        {downloadingUrl === currentResult.outputPreview ? toolText.downloading : toolText.download}
-                      </button>
-                    </div>
-                  </>
-                ) : (
-                  <div className="flex min-h-0 w-full flex-1 items-center justify-center">
-                    {renderDemoPreview()}
-                  </div>
-                )}
-              </div>
-            ) : (
-              <div
-                data-desktop-result-card
-                className={`relative z-10 flex min-h-[440px] min-w-0 flex-1 w-full flex-col overflow-hidden rounded-2xl border border-[#E0E7FF] bg-white ${rightPanelShadowClass}`}
-              >
-                {hasDesktopResultTabs && rightMode === 'history' ? (
-                  renderDesktopResultFeed()
-                ) : (
-                  <div className="flex min-h-0 flex-1 items-center justify-center overflow-hidden p-2 md:p-8">
-                    {renderDemoPreview()}
-                  </div>
-                )}
-              </div>
-            )}
+            <div
+              data-desktop-result-card
+              className={`relative z-10 flex min-h-[440px] min-w-0 flex-1 w-full flex-col overflow-hidden rounded-2xl border border-[#E0E7FF] bg-white ${rightPanelShadowClass}`}
+            >
+              {hasDesktopResultTabs && rightMode === 'history' ? (
+                renderDesktopResultFeed()
+              ) : (
+                <div className="flex min-h-0 flex-1 items-center justify-center overflow-hidden p-2 md:p-8">
+                  {renderDemoPreview()}
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>

@@ -9,6 +9,12 @@ const baseUrl = 'https://toolaze.com'
 const SUPPORTED_LOCALES = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
 const STATIC_PAGES = ['about', 'privacy', 'terms', 'pricing', 'refund-policy', 'acceptable-use', 'contact']
 const TOOL_PAGES = ['image-compressor', 'image-converter', 'font-generator', 'emoji-copy-and-paste']
+const AI_IMAGE_L2_PAGES = [
+  { path: '/photo-restoration', priority: 0.9 },
+  { path: '/watermark-remover', priority: 0.9 },
+  { path: '/ai-couple-photo-maker', priority: 0.88 },
+  { path: '/ai-baby-generator', priority: 0.88 },
+] as const
 
 interface SitemapEntry {
   url: string
@@ -58,14 +64,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })
   })
 
-  // 3d. Photo Restoration L2（各语言均有 photo-restoration.json）
-  SUPPORTED_LOCALES.forEach((locale) => {
-    const path = locale === 'en' ? '/photo-restoration' : `/${locale}/photo-restoration`
-    entries.push({
-      url: `${baseUrl}${path}`,
-      lastModified: today,
-      changeFrequency: 'weekly',
-      priority: 0.9,
+  // 3d. AI image L2 tools（各语言均有对应 L2 JSON 与路由）
+  AI_IMAGE_L2_PAGES.forEach((page) => {
+    SUPPORTED_LOCALES.forEach((locale) => {
+      const path = locale === 'en' ? page.path : `/${locale}${page.path}`
+      entries.push({
+        url: `${baseUrl}${path}`,
+        lastModified: today,
+        changeFrequency: 'weekly',
+        priority: page.priority,
+      })
     })
   })
 
@@ -120,12 +128,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'weekly',
       priority: 0.9,
     })
-  })
-  entries.push({
-    url: `${baseUrl}/ai-baby-generator`,
-    lastModified: today,
-    changeFrequency: 'weekly',
-    priority: 0.9,
   })
   SUPPORTED_LOCALES.forEach((locale) => {
     const path = locale === 'en' ? '/ai-hair-color-changer' : `/${locale}/ai-hair-color-changer`

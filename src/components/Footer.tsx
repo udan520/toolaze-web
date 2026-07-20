@@ -40,6 +40,7 @@ const defaultTranslations = {
   watermarkRemover: 'Watermark Remover',
   photoRestoration: 'Photo Restoration',
   aiCouplePhotoMaker: 'AI Couple Photo Maker',
+  aiBabyGenerator: 'AI Baby Generator',
   worldCupAiImageGenerator: 'World Cup AI Image Generator',
   imageCompression: 'Image Compression',
   imageConverter: 'Image Converter',
@@ -168,11 +169,43 @@ export default function Footer({ initialTranslations }: FooterProps = {}) {
                 </Link>
               </li>
               <li>
+                <Link
+                  href={getLocalizedHref('/ai-baby-generator')}
+                  className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
+                >
+                  {translations.aiBabyGenerator || 'AI Baby Generator'}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={getLocalizedHref('/ai-couple-photo-maker')}
+                  className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
+                >
+                  {translations.aiCouplePhotoMaker || 'AI Couple Photo Maker'}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={getLocalizedHref('/watermark-remover')}
+                  className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
+                >
+                  {translations.watermarkRemover || 'Watermark Remover'}
+                </Link>
+              </li>
+              <li>
                 <Link 
                   href={getLocalizedHref('/photo-restoration')} 
                   className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
                 >
                   {translations.photoRestoration || 'Photo Restoration'}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={getLocalizedHref('/world-cup-ai-image-generator')}
+                  className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
+                >
+                  {translations.worldCupAiImageGenerator || 'World Cup AI Image Generator'}
                 </Link>
               </li>
             </ul>

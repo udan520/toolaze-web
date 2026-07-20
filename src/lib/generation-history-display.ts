@@ -1,11 +1,19 @@
-const WRAPPED_HAIR_TOOL_SLUGS = new Set([
+const WRAPPED_GENERATOR_TOOL_SLUGS = new Set([
+  'ai-baby-generator',
+  'ai-couple-photo-maker',
   'ai-hairstyle-changer',
   'ai-hair-color-changer',
+  'photo-restoration',
+  'watermark-remover',
 ])
 
-const WRAPPED_HAIR_TOOL_LABELS: Record<string, string> = {
+const WRAPPED_GENERATOR_TOOL_LABELS: Record<string, string> = {
+  'ai-baby-generator': 'AI Baby Generator',
+  'ai-couple-photo-maker': 'AI Couple Photo Maker',
   'ai-hairstyle-changer': 'AI Hair Style Changer',
   'ai-hair-color-changer': 'AI Hair Color Changer',
+  'photo-restoration': 'Photo Restoration',
+  'watermark-remover': 'Watermark Remover',
 }
 
 const MODEL_LABELS: Record<string, string> = {
@@ -41,13 +49,16 @@ export function getGenerationModelLabel(model: string | null | undefined) {
 
 export function isWrappedHairToolHistory(item: HistoryDisplaySource) {
   const toolSlug = String(item.toolSlug || '').trim()
-  if (WRAPPED_HAIR_TOOL_SLUGS.has(toolSlug)) return true
-  return WRAPPED_HAIR_TOOL_SLUGS.has(getSourcePathRoot(item.sourcePath))
+  if (WRAPPED_GENERATOR_TOOL_SLUGS.has(toolSlug)) return true
+  return WRAPPED_GENERATOR_TOOL_SLUGS.has(getSourcePathRoot(item.sourcePath))
 }
 
 export function getWrappedHairToolHistoryDisplay(item: HistoryDisplaySource) {
   const sourceRoot = getSourcePathRoot(item.sourcePath)
-  const toolSlug = String(item.toolSlug || '').trim() || sourceRoot
+  const storedToolSlug = String(item.toolSlug || '').trim()
+  const toolSlug = WRAPPED_GENERATOR_TOOL_SLUGS.has(sourceRoot)
+    ? sourceRoot
+    : storedToolSlug || sourceRoot
 
   if (!isWrappedHairToolHistory(item)) {
     return {
@@ -59,7 +70,7 @@ export function getWrappedHairToolHistoryDisplay(item: HistoryDisplaySource) {
 
   return {
     showToolLabel: true,
-    toolLabel: String(item.toolLabel || '').trim() || WRAPPED_HAIR_TOOL_LABELS[toolSlug] || toolSlug,
+    toolLabel: WRAPPED_GENERATOR_TOOL_LABELS[toolSlug] || String(item.toolLabel || '').trim() || toolSlug,
     modelLabel: getGenerationModelLabel(item.model),
   }
 }

@@ -222,6 +222,58 @@ test('image-to-image history keeps a stable reference preview URL', () => {
   assert.match(source, /onClick=\{\(\) => setPreviewImage\(item\.inputPreview\)\}/)
 })
 
+test('desktop and mobile history show the original reference below the prompt', () => {
+  const resultBlock = source.slice(
+    source.indexOf('const renderDesktopResultItem'),
+    source.indexOf('const renderDesktopPendingResultItem'),
+  )
+  const mobileResultStart = source.indexOf('data-mobile-generation-panel')
+  const mobileResultBlock = source.slice(
+    mobileResultStart,
+    source.indexOf('{renderResultRetentionPrompt()}', mobileResultStart),
+  )
+
+  assert.match(resultBlock, /data-desktop-result-reference/)
+  assert.match(resultBlock, /toolText\.inputImage/)
+  assert.ok(
+    resultBlock.indexOf('data-desktop-result-prompt') < resultBlock.indexOf('data-desktop-result-reference'),
+    'desktop original reference should render below the prompt',
+  )
+  assert.ok(
+    resultBlock.indexOf('data-desktop-result-reference') < resultBlock.indexOf('data-desktop-result-actions'),
+    'desktop original reference should render above history actions',
+  )
+  assert.match(mobileResultBlock, /data-mobile-result-reference/)
+  assert.match(mobileResultBlock, /getHistoryReferencePreviewUrls\(currentResult\)/)
+  assert.match(mobileResultBlock, /toolText\.inputImage/)
+  assert.ok(
+    mobileResultBlock.indexOf('data-mobile-result-prompt') < mobileResultBlock.indexOf('data-mobile-result-reference'),
+    'mobile original reference should render below the prompt',
+  )
+  assert.ok(
+    mobileResultBlock.indexOf('data-mobile-result-reference') < mobileResultBlock.indexOf('data-mobile-result-actions'),
+    'mobile original reference should render above history actions',
+  )
+})
+
+test('successful history renders every original reference image', () => {
+  const resultBlock = source.slice(
+    source.indexOf('const renderDesktopResultItem'),
+    source.indexOf('const renderDesktopPendingResultItem'),
+  )
+  const mobileResultStart = source.indexOf('data-mobile-generation-panel')
+  const mobileResultBlock = source.slice(
+    mobileResultStart,
+    source.indexOf('{renderResultRetentionPrompt()}', mobileResultStart),
+  )
+
+  assert.match(source, /const getHistoryReferencePreviewUrls = \(item: \{[\s\S]*inputPreview\?: string[\s\S]*inputUrls\?: string\[\][\s\S]*\}/)
+  assert.match(resultBlock, /getHistoryReferencePreviewUrls\(item\)\.map\(\(url, index\) => \(/)
+  assert.match(mobileResultBlock, /getHistoryReferencePreviewUrls\(currentResult\)\.map\(\(url, index\) => \(/)
+  assert.doesNotMatch(resultBlock, /\{item\.inputPreview && \(/)
+  assert.doesNotMatch(mobileResultBlock, /\{currentResult\.inputPreview && \(/)
+})
+
 test('left remote reference images show loading and fallback states', () => {
   assert.match(source, /type RemoteReferenceImageState = 'loading' \| 'loaded' \| 'retrying' \| 'failed'/)
   assert.match(source, /const \[remoteImagePreviewStates, setRemoteImagePreviewStates\] = useState<Record<string, RemoteReferenceImageState>>\(\{\}\)/)

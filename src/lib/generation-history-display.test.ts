@@ -6,7 +6,7 @@ import {
   isWrappedHairToolHistory,
 } from './generation-history-display'
 
-test('detects wrapped hair tools from tool slug and localized source path', () => {
+test('detects wrapped generator tools from tool slug and localized source path', () => {
   assert.equal(isWrappedHairToolHistory({
     toolSlug: 'ai-hairstyle-changer',
     sourcePath: '/ai-hairstyle-changer',
@@ -17,7 +17,7 @@ test('detects wrapped hair tools from tool slug and localized source path', () =
   }), true)
 })
 
-test('does not mark ordinary image generation history as wrapped hair tools', () => {
+test('does not mark ordinary image generation history as wrapped generator tools', () => {
   assert.equal(isWrappedHairToolHistory({
     toolSlug: 'ai-image-generator',
     sourcePath: '/ai-image-generator',
@@ -28,7 +28,7 @@ test('does not mark ordinary image generation history as wrapped hair tools', ()
   }), false)
 })
 
-test('returns function label and friendly model label for wrapped hair tool history', () => {
+test('returns function label and friendly model label for wrapped generator tool history', () => {
   assert.deepEqual(getWrappedHairToolHistoryDisplay({
     model: 'gpt-image-2',
     toolSlug: 'ai-hair-color-changer',
@@ -41,13 +41,48 @@ test('returns function label and friendly model label for wrapped hair tool hist
   })
 })
 
-test('falls back to the source path label for older wrapped hair tool history', () => {
+test('returns function label and friendly model label for AI Couple history', () => {
+  assert.deepEqual(getWrappedHairToolHistoryDisplay({
+    model: 'nano-banana-2',
+    toolSlug: 'ai-couple-photo-maker',
+    toolLabel: 'AI Couple Photo Maker',
+    sourcePath: '/ai-couple-photo-maker',
+  }), {
+    showToolLabel: true,
+    toolLabel: 'AI Couple Photo Maker',
+    modelLabel: 'Nano Banana 2',
+  })
+})
+
+test('falls back to the source path label for older wrapped generator tool history', () => {
   assert.deepEqual(getWrappedHairToolHistoryDisplay({
     model: 'gpt-image-2',
     sourcePath: '/zh-TW/ai-hairstyle-changer',
   }), {
     showToolLabel: true,
     toolLabel: 'AI Hair Style Changer',
+    modelLabel: 'GPT Image 2',
+  })
+
+  assert.deepEqual(getWrappedHairToolHistoryDisplay({
+    model: 'nano-banana-2',
+    sourcePath: '/zh-TW/ai-couple-photo-maker',
+  }), {
+    showToolLabel: true,
+    toolLabel: 'AI Couple Photo Maker',
+    modelLabel: 'Nano Banana 2',
+  })
+})
+
+test('uses canonical wrapped tool label when stored label is stale', () => {
+  assert.deepEqual(getWrappedHairToolHistoryDisplay({
+    model: 'gpt-image-2',
+    toolSlug: 'watermark-remover',
+    toolLabel: 'Photo Restoration',
+    sourcePath: '/de/watermark-remover',
+  }), {
+    showToolLabel: true,
+    toolLabel: 'Watermark Remover',
     modelLabel: 'GPT Image 2',
   })
 })

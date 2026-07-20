@@ -286,20 +286,36 @@ export default function HistoryPageClient({ initialTranslations }: HistoryPageCl
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5">
           {items.filter((item) => item.mediaType === 'image').map((item) => (
             <article key={item.id} className="overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-sm">
-              <img
-                src={getHistoryLibraryThumbnailUrl(item.outputUrl)}
-                alt=""
-                className="aspect-[3/4] h-auto w-full cursor-zoom-in object-cover object-center"
-                loading="lazy"
-                decoding="async"
+              <button
+                data-history-card-preview
+                type="button"
                 onClick={() => openPreview(item)}
-                onKeyDown={(event) => {
-                  if (event.key === 'Enter' || event.key === ' ') openPreview(item)
-                }}
-                tabIndex={0}
-                role="button"
+                className="group relative block w-full overflow-hidden text-left focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 aria-label={copy.previewImageLabel}
-              />
+              >
+                <img
+                  src={getHistoryLibraryThumbnailUrl(item.outputUrl)}
+                  alt=""
+                  className="aspect-[3/4] h-auto w-full object-cover object-center transition-opacity group-hover:opacity-90"
+                  loading="lazy"
+                  decoding="async"
+                />
+                {item.inputUrls[0] && (
+                  <span
+                    data-history-card-reference
+                    className="absolute bottom-2 left-2 right-2 flex items-center gap-2 rounded-xl bg-white/95 p-1.5 text-xs font-extrabold text-slate-700 shadow-sm ring-1 ring-slate-200"
+                  >
+                    <img
+                      src={getHistoryReferenceThumbnailUrl(item.inputUrls[0])}
+                      alt=""
+                      className="h-10 w-10 shrink-0 rounded-lg object-cover ring-1 ring-slate-200"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <span className="min-w-0 truncate">{copy.referenceMedia}</span>
+                  </span>
+                )}
+              </button>
             </article>
           ))}
         </div>

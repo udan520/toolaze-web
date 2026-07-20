@@ -12,13 +12,15 @@ const DEMO_IMAGE_URL = 'https://images.unsplash.com/photo-1582719478250-c89cae4d
 
 interface PhotoRestorationProps {
   initialTranslations?: any
+  heroTitle?: string
+  heroDescription?: string
 }
 
 function todayKey() {
   return new Date().toISOString().split('T')[0]
 }
 
-export default function PhotoRestoration({ initialTranslations }: PhotoRestorationProps) {
+export default function PhotoRestoration({ initialTranslations, heroTitle, heroDescription }: PhotoRestorationProps) {
   const commonTranslations = useCommonTranslations(initialTranslations)
   const text = commonTranslations?.common?.photoRestorationTool || {
     invalidImage: 'Please upload a valid image file.',
@@ -190,10 +192,10 @@ export default function PhotoRestoration({ initialTranslations }: PhotoRestorati
   }
 
   return (
-    <div className="max-w-6xl mx-auto">
+    <div className="mx-auto w-full max-w-7xl" data-legacy-generator-layout>
       <div className="bg-white rounded-3xl border border-indigo-100 shadow-lg p-4 md:p-6">
         <div className="grid grid-cols-1 gap-4 md:gap-6 items-start lg:grid-cols-[380px_1fr]">
-          <div className="rounded-2xl border border-slate-200 bg-white p-5 md:p-6 shadow-sm">
+          <div data-generator-controls-panel className="rounded-2xl border border-slate-200 bg-white p-5 md:p-6 shadow-sm">
             <div
               onDragEnter={(e) => {
                 e.preventDefault()
@@ -269,7 +271,21 @@ export default function PhotoRestoration({ initialTranslations }: PhotoRestorati
             </button>
           </div>
 
-          <div className="rounded-2xl border border-slate-200 bg-slate-50 min-h-[400px] md:min-h-[64vh] flex items-center justify-center p-3 md:p-4">
+          <div data-generator-demo-history-panel className="rounded-2xl border border-slate-200 bg-slate-50 min-h-[400px] md:min-h-[64vh] flex flex-col gap-4 p-3 md:p-4">
+            {(heroTitle || heroDescription) && (
+              <div className="mx-auto max-w-3xl px-2 pt-2 text-center">
+                {heroTitle && (
+                  <h1 className="text-[34px] font-extrabold leading-tight tracking-tight text-slate-950 md:text-[40px]">
+                    {heroTitle}
+                  </h1>
+                )}
+                {heroDescription && (
+                  <p className="mx-auto mt-3 max-w-2xl text-base leading-7 text-slate-700 md:text-lg">
+                    {heroDescription}
+                  </p>
+                )}
+              </div>
+            )}
             <div className="w-full h-full flex flex-col">
               <div className="relative flex-1 min-h-[340px] md:min-h-[56vh] rounded-xl overflow-hidden border border-slate-200 bg-white">
               {resultUrl ? (
