@@ -17,8 +17,9 @@ test.after(() => {
   delete globalThis[Symbol.for('toolaze.localDevAuthState')]
   rmSync(tempStateDir, { recursive: true, force: true })
 })
-import { proxyToPagesFunctions } from './backend-proxy.js'
-import { resetLocalDevCreditsForTests, resetLocalDevHistoryForTests } from './local-dev-auth.js'
+
+const { proxyToPagesFunctions } = await import('./backend-proxy.js')
+const { resetLocalDevCreditsForTests, resetLocalDevHistoryForTests } = await import('./local-dev-auth.js')
 
 test('local dev session can create a starter Creem checkout', async () => {
   const originalFetch = globalThis.fetch

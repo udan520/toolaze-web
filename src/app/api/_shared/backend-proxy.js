@@ -1,4 +1,4 @@
-import { readFile } from 'node:fs/promises'
+import { readFile, unlink } from 'node:fs/promises'
 import { createCreditCheckout } from '../../../../functions/_shared/creem-payments.mjs'
 import {
   buildClearSessionCookie,
@@ -95,6 +95,14 @@ async function readLocalSessionToken() {
   }
 }
 
+async function clearLocalSessionToken() {
+  try {
+    await unlink(getLocalSessionTokenFile())
+  } catch (error) {
+    if (error?.code !== 'ENOENT') throw error
+  }
+}
+
 function getLocalSessionTokenFile() {
   return process.env.TOOLAZE_LOCAL_SESSION_TOKEN_FILE || '/tmp/toolaze-local-session-token.txt'
 }
@@ -132,6 +140,18 @@ function localDevJsonResponse(body, init = {}) {
 }
 
 async function handleLocalDevSessionRequest(request, incomingUrl, pathname, savedLocalSessionToken = '') {
+  if (isLocalhost(incomingUrl.hostname) && pathname === '/api/auth/logout') {
+    await clearLocalSessionToken()
+    return Response.json(
+      { ok: true },
+      {
+        headers: {
+          'Set-Cookie': buildClearSessionCookie(),
+        },
+      },
+    )
+  }
+
   if (isLocalhost(incomingUrl.hostname) && pathname === '/api/admin/settings') {
     return handleLocalDevSettingsRequest(request, incomingUrl)
   }
@@ -206,17 +226,6 @@ async function handleLocalDevSessionRequest(request, incomingUrl, pathname, save
     }
 
     return localDevJsonResponse({ error: 'Method not allowed', allow: 'GET, POST, DELETE, OPTIONS' }, { status: 405 })
-  }
-
-  if (pathname === '/api/auth/logout') {
-    return Response.json(
-      { ok: true },
-      {
-        headers: {
-          'Set-Cookie': buildClearSessionCookie(),
-        },
-      },
-    )
   }
 
   return null

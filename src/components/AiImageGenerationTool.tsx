@@ -1107,6 +1107,7 @@ export default function AiImageGenerationTool({
   const historyPageHref = getLocalizedInternalPath(pathname, '/history')
   const isGenerating = pendingGenerationItems.length > 0
   const hasDesktopResultTabs = isGenerating || failedGenerationItems.length > 0 || history.length > 0
+  const hasMobileResultTabs = isGenerating || failedGenerationItems.length > 0 || history.length > 0
   const resolutionOptions = useMemo(
     () => getResolutionOptionsForModel(selectedModelId),
     [selectedModelId]
@@ -2774,19 +2775,16 @@ export default function AiImageGenerationTool({
                 data-desktop-result-reference
                 type="button"
                 onClick={() => setPreviewImage(url)}
-                className="flex min-w-[8.5rem] flex-1 items-center gap-2 rounded-xl bg-[#F8FAFF] p-2 text-left ring-1 ring-[#E0E7FF] transition hover:bg-[#EEF2FF] focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/40"
+                className="inline-flex items-center p-0 transition-opacity hover:opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4F46E5]/30"
                 title={`${toolText.inputImage} ${index + 1}`}
               >
                 <img
                   src={getReferencePreviewUrl(url)}
                   alt={`${toolText.inputAlt} ${index + 1}`}
-                  className="h-14 w-14 shrink-0 rounded-lg object-cover ring-1 ring-[#E0E7FF]"
+                  className="h-14 w-14 shrink-0 rounded-lg object-cover"
                   loading="lazy"
                   decoding="async"
                 />
-                <span className="min-w-0 truncate text-xs font-extrabold text-slate-600">
-                  {getHistoryReferencePreviewUrls(item).length > 1 ? `${toolText.inputImage} ${index + 1}` : toolText.inputImage}
-                </span>
               </button>
             ))}
           </div>
@@ -3029,7 +3027,7 @@ export default function AiImageGenerationTool({
   const renderDesktopResultTabs = () => (
     <div
       data-desktop-result-tabs
-      className="mx-auto flex w-fit shrink-0 items-center justify-center gap-1 rounded-full border border-[#E0E7FF] bg-white/90 p-1 shadow-sm shadow-[#4F46E5]/5"
+      className="flex w-fit shrink-0 items-center justify-center gap-1 rounded-full border border-[#E0E7FF] bg-white/90 p-1 shadow-sm shadow-[#4F46E5]/5"
     >
       <button
         type="button"
@@ -3060,35 +3058,37 @@ export default function AiImageGenerationTool({
     </div>
   )
 
-  const renderMobileTopPanel = () => (
-    <div className="space-y-4 md:hidden">
-      <div data-mobile-demo-panel className="aspect-[4/3] overflow-hidden rounded-2xl border border-[#E0E7FF] bg-white p-2 shadow-lg shadow-[#4F46E5]/8">
-        {renderDemoPreview()}
-      </div>
-      {(heroBreadcrumbItems?.length || heroEyebrow || heroTitle || heroDescription) && (
-        <div data-mobile-result-hero className="text-center">
-          {heroBreadcrumbItems?.length ? (
-            <div className="mx-auto mb-1 max-w-4xl">
-              <Breadcrumb items={heroBreadcrumbItems} variant="inline" />
-            </div>
-          ) : null}
-          {heroEyebrow && (
-            <div className="mb-3 flex flex-wrap items-center justify-center gap-3">
-              {heroEyebrow}
-            </div>
-          )}
-          {heroTitle && (
-            <h1 className="text-[30px] font-extrabold leading-tight tracking-tight text-slate-950">
-              {heroTitle}
-            </h1>
-          )}
-          {heroDescription && (
-            <p className="mx-auto mt-3 max-w-4xl text-base leading-7 text-slate-600">
-              {heroDescription}
-            </p>
-          )}
-        </div>
-      )}
+  const renderMobileResultTabs = () => (
+    <div
+      data-mobile-result-tabs
+      className="flex w-fit shrink-0 items-center justify-center gap-1 rounded-full border border-[#E0E7FF] bg-white/90 p-1 shadow-sm shadow-[#4F46E5]/5"
+    >
+      <button
+        type="button"
+        data-mobile-result-tab="sample"
+        aria-pressed={rightMode !== 'history'}
+        onClick={() => setRightMode('sample')}
+        className={`inline-flex h-8 min-w-[76px] items-center justify-center rounded-full px-3 text-xs font-semibold transition-colors ${
+          rightMode !== 'history'
+            ? 'bg-[#EEF2FF] text-[#4F46E5] shadow-sm'
+            : 'text-slate-500 hover:bg-[#F8FAFF] hover:text-slate-700'
+        }`}
+      >
+        {toolText.demo}
+      </button>
+      <button
+        type="button"
+        data-mobile-result-tab="history"
+        aria-pressed={rightMode === 'history'}
+        onClick={() => setRightMode('history')}
+        className={`inline-flex h-8 min-w-[76px] items-center justify-center rounded-full px-3 text-xs font-semibold transition-colors ${
+          rightMode === 'history'
+            ? 'bg-[#EEF2FF] text-[#4F46E5] shadow-sm'
+            : 'text-slate-500 hover:bg-[#F8FAFF] hover:text-slate-700'
+        }`}
+      >
+        {toolText.history}
+      </button>
     </div>
   )
 
@@ -3109,7 +3109,7 @@ export default function AiImageGenerationTool({
     </div>
   )
 
-  const renderMobileGenerationPanel = () => {
+  const renderMobileHistoryFeed = () => {
     if (!isGenerating && !currentResult && !isUserSignedIn) return null
 
     const recentHistory = history.slice(0, 4)
@@ -3120,7 +3120,7 @@ export default function AiImageGenerationTool({
       (activeTab === 'image-to-image' && imageFiles.length === 0 && !currentResult.inputPreview)
 
     return (
-      <div data-mobile-generation-panel className="mt-3 md:hidden">
+      <div data-mobile-generation-panel className="md:hidden">
         {isUserSignedIn && (
           <div className="mb-2 flex items-center justify-between">
             <h2 className="text-sm font-extrabold text-slate-900">{toolText.history}</h2>
@@ -3170,19 +3170,16 @@ export default function AiImageGenerationTool({
                     data-mobile-result-reference
                     type="button"
                     onClick={() => setPreviewImage(url)}
-                    className="flex min-w-[8.5rem] flex-1 items-center gap-2 rounded-xl bg-[#F8FAFF] p-2 text-left ring-1 ring-[#E0E7FF] transition hover:bg-[#EEF2FF] focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/40"
+                    className="inline-flex items-center p-0 transition-opacity hover:opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4F46E5]/30"
                     title={`${toolText.inputImage} ${index + 1}`}
                   >
                     <img
                       src={getReferencePreviewUrl(url)}
                       alt={`${toolText.inputAlt} ${index + 1}`}
-                      className="h-14 w-14 shrink-0 rounded-lg object-cover ring-1 ring-[#E0E7FF]"
+                      className="h-14 w-14 shrink-0 rounded-lg object-cover"
                       loading="lazy"
                       decoding="async"
                     />
-                    <span className="min-w-0 truncate text-xs font-extrabold text-slate-600">
-                      {getHistoryReferencePreviewUrls(currentResult).length > 1 ? `${toolText.inputImage} ${index + 1}` : toolText.inputImage}
-                    </span>
                   </button>
                 ))}
               </div>
@@ -3269,6 +3266,49 @@ export default function AiImageGenerationTool({
             </p>
           )
         ) : null}
+      </div>
+    )
+  }
+
+  const renderMobileTopPanel = () => {
+    const showMobileHero = rightMode !== 'history' && (heroBreadcrumbItems?.length || heroEyebrow || heroTitle || heroDescription)
+
+    return (
+      <div className="space-y-4 md:hidden">
+        {hasMobileResultTabs ? renderMobileResultTabs() : null}
+        {rightMode === 'history' ? (
+          renderMobileHistoryFeed()
+        ) : (
+          <>
+            <div data-mobile-demo-panel className="aspect-[4/3] overflow-hidden rounded-2xl border border-[#E0E7FF] bg-white p-2 shadow-lg shadow-[#4F46E5]/8">
+              {renderDemoPreview()}
+            </div>
+            {showMobileHero && (
+              <div data-mobile-result-hero className="text-left">
+                {heroBreadcrumbItems?.length ? (
+                  <div className="mb-1 flex justify-start">
+                    <Breadcrumb items={heroBreadcrumbItems} variant="inline" />
+                  </div>
+                ) : null}
+                {heroEyebrow && (
+                  <div className="mb-3 flex flex-wrap items-center justify-start gap-3">
+                    {heroEyebrow}
+                  </div>
+                )}
+                {heroTitle && (
+                  <h1 className="text-[30px] font-extrabold leading-tight tracking-tight text-slate-950">
+                    {heroTitle}
+                  </h1>
+                )}
+                {heroDescription && (
+                  <p className="mt-3 max-w-none text-base leading-7 text-slate-600">
+                    {heroDescription}
+                  </p>
+                )}
+              </div>
+            )}
+          </>
+        )}
       </div>
     )
   }
@@ -3911,7 +3951,6 @@ export default function AiImageGenerationTool({
                 </span>
               </button>
             </div>
-            {renderMobileGenerationPanel()}
             {sceneText?.safetyHelper && (
               <p className="mt-2 text-center text-xs leading-5 text-slate-500">
                 {sceneText.safetyHelper}
@@ -3924,9 +3963,9 @@ export default function AiImageGenerationTool({
           {hasDesktopResultTabs ? renderDesktopResultTabs() : null}
 
           {rightMode !== 'history' && (heroBreadcrumbItems?.length || heroEyebrow || heroTitle || heroDescription) && (
-            <div data-desktop-result-hero className="shrink-0 text-center md:px-4 md:pt-1 xl:pt-0">
+            <div data-desktop-result-hero className="shrink-0 text-center md:px-0 md:pt-1 xl:pt-0">
               {heroBreadcrumbItems?.length ? (
-                <div className="mx-auto mb-1 max-w-4xl">
+                <div data-desktop-result-breadcrumbs className="mb-1 flex justify-start">
                   <Breadcrumb items={heroBreadcrumbItems} variant="inline" />
                 </div>
               ) : null}

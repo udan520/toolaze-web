@@ -241,7 +241,15 @@ test('desktop and mobile history show the original reference below the prompt', 
   )
 
   assert.match(resultBlock, /data-desktop-result-reference/)
-  assert.match(resultBlock, /toolText\.inputImage/)
+  const desktopReferenceSource = resultBlock.slice(
+    resultBlock.indexOf('data-desktop-result-reference'),
+    resultBlock.indexOf('</button>', resultBlock.indexOf('data-desktop-result-reference')),
+  )
+  assert.match(desktopReferenceSource, /title=\{`\$\{toolText\.inputImage\} \$\{index \+ 1\}`\}/)
+  assert.doesNotMatch(desktopReferenceSource, /<span className="min-w-0 truncate text-xs font-extrabold text-slate-600">/)
+  assert.doesNotMatch(desktopReferenceSource, /getHistoryReferencePreviewUrls\(item\)\.length > 1 \? `\$\{toolText\.inputImage\}/)
+  assert.doesNotMatch(desktopReferenceSource, /rounded-xl bg-\[#F8FAFF\] p-2/)
+  assert.doesNotMatch(desktopReferenceSource, /ring-1 ring-\[#E0E7FF\]/)
   assert.ok(
     resultBlock.indexOf('data-desktop-result-prompt') < resultBlock.indexOf('data-desktop-result-reference'),
     'desktop original reference should render below the prompt',
@@ -252,7 +260,15 @@ test('desktop and mobile history show the original reference below the prompt', 
   )
   assert.match(mobileResultBlock, /data-mobile-result-reference/)
   assert.match(mobileResultBlock, /getHistoryReferencePreviewUrls\(currentResult\)/)
-  assert.match(mobileResultBlock, /toolText\.inputImage/)
+  const mobileReferenceSource = mobileResultBlock.slice(
+    mobileResultBlock.indexOf('data-mobile-result-reference'),
+    mobileResultBlock.indexOf('</button>', mobileResultBlock.indexOf('data-mobile-result-reference')),
+  )
+  assert.match(mobileReferenceSource, /title=\{`\$\{toolText\.inputImage\} \$\{index \+ 1\}`\}/)
+  assert.doesNotMatch(mobileReferenceSource, /<span className="min-w-0 truncate text-xs font-extrabold text-slate-600">/)
+  assert.doesNotMatch(mobileReferenceSource, /getHistoryReferencePreviewUrls\(currentResult\)\.length > 1 \? `\$\{toolText\.inputImage\}/)
+  assert.doesNotMatch(mobileReferenceSource, /rounded-xl bg-\[#F8FAFF\] p-2/)
+  assert.doesNotMatch(mobileReferenceSource, /ring-1 ring-\[#E0E7FF\]/)
   assert.ok(
     mobileResultBlock.indexOf('data-mobile-result-prompt') < mobileResultBlock.indexOf('data-mobile-result-reference'),
     'mobile original reference should render below the prompt',
@@ -319,12 +335,39 @@ test('desktop result tabs sit above hero copy and history mode hides hero copy',
   assert.match(source, /\{rightMode !== 'history' && \(heroBreadcrumbItems\?\.length \|\| heroEyebrow \|\| heroTitle \|\| heroDescription\) && \(/)
 })
 
+test('desktop demo breadcrumbs align to the left edge of the demo area', () => {
+  const heroBlock = source.slice(
+    source.indexOf('data-desktop-result-hero'),
+    source.indexOf('<div className="flex min-h-0 min-w-0 flex-1 flex-col gap-4 md:flex-row">'),
+  )
+  assert.match(heroBlock, /data-desktop-result-breadcrumbs className="mb-1 flex justify-start/)
+  assert.doesNotMatch(heroBlock, /mx-auto mb-1 max-w-4xl/)
+})
+
 test('desktop result tabs stay compact and hidden only when there is no history state', () => {
   assert.match(source, /const hasDesktopResultTabs = isGenerating \|\| failedGenerationItems\.length > 0 \|\| history\.length > 0/)
   assert.doesNotMatch(source, /hasRevealedDesktopResultTabs/)
-  assert.match(source, /data-desktop-result-tabs[\s\S]*className="mx-auto flex w-fit shrink-0/)
+  assert.match(source, /data-desktop-result-tabs[\s\S]*className="flex w-fit shrink-0/)
+  assert.doesNotMatch(source, /data-desktop-result-tabs[\s\S]{0,180}mx-auto/)
   assert.match(source, /data-desktop-result-tab="sample"[\s\S]*className=\{`inline-flex h-9 min-w-\[84px\]/)
   assert.match(source, /data-desktop-result-tab="history"[\s\S]*className=\{`inline-flex h-9 min-w-\[84px\]/)
+})
+
+test('mobile demo and history tabs follow the same compact panel switching rules', () => {
+  const mobileTopPanel = source.slice(
+    source.indexOf('const renderMobileTopPanel'),
+    source.indexOf('const rightPanelShadowClass'),
+  )
+
+  assert.match(source, /const hasMobileResultTabs = isGenerating \|\| failedGenerationItems\.length > 0 \|\| history\.length > 0/)
+  assert.match(mobileTopPanel, /\{hasMobileResultTabs \? renderMobileResultTabs\(\) : null\}/)
+  assert.match(mobileTopPanel, /rightMode === 'history' \? \(\s*renderMobileHistoryFeed\(\)\s*\) : \(/)
+  assert.match(mobileTopPanel, /const showMobileHero = rightMode !== 'history' && \(heroBreadcrumbItems\?\.length \|\| heroEyebrow \|\| heroTitle \|\| heroDescription\)/)
+  assert.match(mobileTopPanel, /\{showMobileHero && \(/)
+  assert.match(source, /data-mobile-result-tabs[\s\S]*className="flex w-fit shrink-0/)
+  assert.doesNotMatch(source, /data-mobile-result-tabs[\s\S]{0,180}mx-auto/)
+  assert.match(source, /data-mobile-result-tab="sample"[\s\S]*>\s*\{toolText\.demo\}/)
+  assert.match(source, /data-mobile-result-tab="history"[\s\S]*>\s*\{toolText\.history\}/)
 })
 
 test('history action uses settings instead of generating immediately', () => {
