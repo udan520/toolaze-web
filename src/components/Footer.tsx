@@ -36,6 +36,7 @@ const defaultTranslations = {
   aiTools: 'AI Tools',
   aiVideo: 'AI Video',
   aiVideoGenerator: 'AI Video Generator',
+  grok15Video: 'Grok 1.5 Video',
   aiImage: 'AI Image',
   aiImageGenerator: 'AI Image Generator',
   watermarkRemover: 'Watermark Remover',
@@ -236,6 +237,14 @@ export default function Footer({ initialTranslations }: FooterProps = {}) {
                   className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
                 >
                   {translations.aiVideoGenerator || 'AI Video Generator'}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={getLocalizedHref('/model/grok-imagine-video-1-5')}
+                  className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
+                >
+                  {translations.grok15Video || 'Grok 1.5 Video'}
                 </Link>
               </li>
               <li>

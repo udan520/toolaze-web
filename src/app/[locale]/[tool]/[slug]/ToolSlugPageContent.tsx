@@ -22,7 +22,8 @@ import FAQ from '@/components/blocks/FAQ'
 import ViewAllToolsButton from '@/components/ViewAllToolsButton'
 import ToolCard from '@/components/ToolCard'
 import EmojiCategoryPage from '@/components/EmojiCategoryPage'
-import SeedanceHeroPlaceholder from '@/components/blocks/SeedanceHeroPlaceholder'
+import AiVideoGeneratorTool from '@/components/AiVideoGeneratorTool'
+import type { AiVideoGeneratorModeId } from '@/lib/ai-video-generator-config'
 import React from 'react'
 
 interface ToolSlugPageContentProps {
@@ -152,6 +153,7 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
     const isFontGenerator = topComp === 'font-generator'
     const isEmoji = topComp === 'emoji-copy-and-paste'
     const isSeedance = topComp === 'seedance-2'
+    const videoWorkflowDefaultMode: AiVideoGeneratorModeId = slug === 'text-to-video' ? 'text-to-video' : 'image-to-video'
     const isWatermarkRemover = topComp === 'watermark-remover'
     const toolTranslations = isConverter ? t?.imageConverter : (isFontGenerator ? null : isEmoji ? null : t?.imageCompressor)
     const breadcrumbT = t?.breadcrumb || { 
@@ -367,7 +369,7 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
         
         <Navigation initialTranslations={t} />
         
-        <Breadcrumb items={breadcrumbItems} />
+        {!isSeedance ? <Breadcrumb items={breadcrumbItems} /> : null}
 
         <main className="min-h-screen bg-[#F8FAFF]">
           {/* 1. Hero 板块 - 固定在最前面，不参与动态顺序；支持 topComponent 覆盖 */}
@@ -398,22 +400,16 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
               </div>
             </header>
           ) : isSeedance ? (
-            <header className="bg-[#F8FAFF] pb-12 px-6">
-              <div className="max-w-4xl mx-auto text-center pt-8 mb-12">
-                <h1 className="text-[40px] font-extrabold tracking-tight mb-6 leading-tight text-slate-900">
-                  {content.hero?.h1 ? (
-                    renderH1WithGradient(content.hero.h1)
-                  ) : (
-                    <>Seedance 2.0</>
-                  )}
-                </h1>
-                {content.hero?.desc && (
-                  <p className="desc-text text-lg md:text-xl max-w-4xl mx-auto">
-                    {content.hero.desc}
-                  </p>
-                )}
-              </div>
-              <SeedanceHeroPlaceholder initialTranslations={t} />
+            <header className="bg-[#F8FAFF] pb-6 md:pb-12 w-full pl-0 pr-2 md:pl-0 md:pr-6">
+              <AiVideoGeneratorTool
+                modelId="seedance-2"
+                defaultMode={videoWorkflowDefaultMode}
+                allowModelSelect
+                heroBreadcrumbItems={breadcrumbItems}
+                heroTitleHtml={content.hero?.h1 || 'Seedance 2.0'}
+                heroDescription={content.hero?.desc}
+                initialTranslations={t}
+              />
             </header>
           ) : (
             <header className="bg-[#F8FAFF] pb-8 md:pb-12 px-6">

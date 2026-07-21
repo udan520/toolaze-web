@@ -50,6 +50,7 @@ const defaultNavTranslations = {
   aiImageToImageGenerator: 'AI Image to Image Generator',
   aiVideo: 'AI Video',
   aiVideoGenerator: 'AI Video Generator',
+  grok15Video: 'Grok 1.5 Video',
   pricing: 'Pricing',
   nanoBananaPro: 'Nano Banana Pro',
   nanoBanana2: 'Nano Banana 2',
@@ -1715,7 +1716,8 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                   onClick={() => setOpenDesktopMenu(null)}
                   className="order-5 block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
                 >
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
+                  <img src="/model-logos/openai.svg" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="hidden">
                     <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#aiImageGradient3)" opacity="0.2"/>
                     <path d="M7 15l3-3 2 2 5-5" stroke="url(#aiImageGradient3)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                     <defs>
@@ -1735,7 +1737,8 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                   onClick={() => setOpenDesktopMenu(null)}
                   className="order-4 block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
                 >
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
+                  <img src="/model-logos/bytedance.svg" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="hidden">
                     <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#aiImageGradient50Pro)" opacity="0.2"/>
                     <path d="M7 8h10M7 12h7M7 16h5M17 5l1.8 3.4L22 10l-3.2 1.6L17 15l-1.8-3.4L12 10l3.2-1.6L17 5Z" stroke="url(#aiImageGradient50Pro)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
                     <defs>
@@ -1755,7 +1758,8 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                   onClick={() => setOpenDesktopMenu(null)}
                   className="order-6 block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
                 >
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
+                  <img src="/model-logos/wan.ico" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="hidden">
                     <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#aiImageGradientWan27)" opacity="0.2"/>
                     <path d="M7 8h10M7 12h7M7 16h10M17 6l1.5 3L21 10.5l-2.5 1.5L17 15l-1.5-3L13 10.5 15.5 9 17 6Z" stroke="url(#aiImageGradientWan27)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
                     <defs>
@@ -1772,7 +1776,8 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                   onClick={() => setOpenDesktopMenu(null)}
                   className="order-7 block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
                 >
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
+                  <img src="/model-logos/google-gemini.png" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="hidden">
                     <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#aiImageGradient)" opacity="0.2"/>
                     <path d="M8 8H16M8 12H14M8 16H12" stroke="url(#aiImageGradient)" strokeWidth="2" strokeLinecap="round"/>
                     <circle cx="18" cy="6" r="2" fill="url(#aiImageGradient)"/>
@@ -1790,7 +1795,8 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                   onClick={() => setOpenDesktopMenu(null)}
                   className="order-8 block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
                 >
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
+                  <img src="/model-logos/google-gemini.png" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="hidden">
                     <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#aiImageGradient2)" opacity="0.2"/>
                     <path d="M8 8H16M8 12H14M8 16H12" stroke="url(#aiImageGradient2)" strokeWidth="2" strokeLinecap="round"/>
                     <circle cx="18" cy="6" r="2" fill="url(#aiImageGradient2)"/>
@@ -1808,7 +1814,8 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                   onClick={() => setOpenDesktopMenu(null)}
                   className="order-10 block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
                 >
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
+                  <img src="/model-logos/bytedance.svg" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="hidden">
                     <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#aiImageGradient4)" opacity="0.2"/>
                     <path d="M6 16c3-6 9-8 12-8M7 8h5M7 12h8" stroke="url(#aiImageGradient4)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                     <defs>
@@ -1825,7 +1832,8 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                   onClick={() => setOpenDesktopMenu(null)}
                   className="order-9 block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
                 >
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
+                  <img src="/model-logos/bytedance.svg" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="hidden">
                     <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#aiImageGradient50Lite)" opacity="0.2"/>
                     <path d="M7 8h7M7 12h10M7 16h6M17 6l1.5 3L21 10.5l-2.5 1.5L17 15l-1.5-3L13 10.5 15.5 9 17 6Z" stroke="url(#aiImageGradient50Lite)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
                     <defs>
@@ -1895,16 +1903,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                   onClick={() => setOpenDesktopMenu(null)}
                   className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
                 >
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
-                    <rect x="2" y="4" width="20" height="14" rx="2" fill="url(#aiVideoGradient25)" opacity="0.2"/>
-                    <path d="M10 8L16 12L10 16V8Z" fill="url(#aiVideoGradient25)"/>
-                    <defs>
-                      <linearGradient id="aiVideoGradient25" x1="2" y1="4" x2="22" y2="18" gradientUnits="userSpaceOnUse">
-                        <stop stopColor="#9333EA"/>
-                        <stop offset="1" stopColor="#4F46E5"/>
-                      </linearGradient>
-                    </defs>
-                  </svg>
+                  <img src="/model-logos/bytedance.svg" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
                   <span>{navTranslations.seedance25 || defaultNavTranslations.seedance25}</span>
                 </Link>
                 <Link
@@ -1912,16 +1911,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                   onClick={() => setOpenDesktopMenu(null)}
                   className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
                 >
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
-                    <rect x="2" y="4" width="20" height="14" rx="2" fill="url(#aiVideoGradient)" opacity="0.2"/>
-                    <path d="M10 8L16 12L10 16V8Z" fill="url(#aiVideoGradient)"/>
-                    <defs>
-                      <linearGradient id="aiVideoGradient" x1="2" y1="4" x2="22" y2="18" gradientUnits="userSpaceOnUse">
-                        <stop stopColor="#9333EA"/>
-                        <stop offset="1" stopColor="#4F46E5"/>
-                      </linearGradient>
-                    </defs>
-                  </svg>
+                  <img src="/model-logos/bytedance.svg" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
                   <span>{navTranslations.seedance2 || defaultNavTranslations.seedance2}</span>
                 </Link>
                 <Link
@@ -1929,17 +1919,16 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                   onClick={() => setOpenDesktopMenu(null)}
                   className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
                 >
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
-                    <rect x="2" y="4" width="20" height="14" rx="2" fill="url(#aiVideoGradient2)" opacity="0.2"/>
-                    <path d="M10 8L16 12L10 16V8Z" fill="url(#aiVideoGradient2)"/>
-                    <defs>
-                      <linearGradient id="aiVideoGradient2" x1="2" y1="4" x2="22" y2="18" gradientUnits="userSpaceOnUse">
-                        <stop stopColor="#9333EA"/>
-                        <stop offset="1" stopColor="#4F46E5"/>
-                      </linearGradient>
-                    </defs>
-                  </svg>
+                  <img src="/model-logos/kling.svg" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
                   <span>{navTranslations.kling3 || defaultNavTranslations.kling3}</span>
+                </Link>
+                <Link
+                  href={getLocalizedHref('/model/grok-imagine-video-1-5')}
+                  onClick={() => setOpenDesktopMenu(null)}
+                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
+                >
+                  <img src="/model-logos/grok.svg" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
+                  <span>{navTranslations.grok15Video || defaultNavTranslations.grok15Video}</span>
                 </Link>
               </div>
             </div>
@@ -2325,7 +2314,8 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                     }}
                     className="order-5 flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
                   >
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
+                    <img src="/model-logos/openai.svg" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="hidden">
                       <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#aiImageGradientMobile3)" opacity="0.2"/>
                       <path d="M7 15l3-3 2 2 5-5" stroke="url(#aiImageGradientMobile3)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                       <defs>
@@ -2348,7 +2338,8 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                   }}
                   className="order-4 flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
                 >
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
+                  <img src="/model-logos/bytedance.svg" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="hidden">
                     <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#aiImageGradientMobile50Pro)" opacity="0.2"/>
                     <path d="M7 8h10M7 12h7M7 16h5M17 5l1.8 3.4L22 10l-3.2 1.6L17 15l-1.8-3.4L12 10l3.2-1.6L17 5Z" stroke="url(#aiImageGradientMobile50Pro)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
                     <defs>
@@ -2371,7 +2362,8 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                   }}
                   className="order-6 flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
                 >
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
+                  <img src="/model-logos/wan.ico" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="hidden">
                     <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#aiImageGradientMobileWan27)" opacity="0.2"/>
                     <path d="M7 8h10M7 12h7M7 16h10M17 6l1.5 3L21 10.5l-2.5 1.5L17 15l-1.5-3L13 10.5 15.5 9 17 6Z" stroke="url(#aiImageGradientMobileWan27)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
                     <defs>
@@ -2391,7 +2383,8 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                     }}
                     className="order-7 flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
                   >
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
+                    <img src="/model-logos/google-gemini.png" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="hidden">
                       <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#aiImageGradientMobile)" opacity="0.2"/>
                       <path d="M8 8H16M8 12H14M8 16H12" stroke="url(#aiImageGradientMobile)" strokeWidth="2" strokeLinecap="round"/>
                       <circle cx="18" cy="6" r="2" fill="url(#aiImageGradientMobile)"/>
@@ -2412,7 +2405,8 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                     }}
                     className="order-8 flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
                   >
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
+                    <img src="/model-logos/google-gemini.png" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="hidden">
                       <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#aiImageGradientMobile2)" opacity="0.2"/>
                       <path d="M8 8H16M8 12H14M8 16H12" stroke="url(#aiImageGradientMobile2)" strokeWidth="2" strokeLinecap="round"/>
                       <circle cx="18" cy="6" r="2" fill="url(#aiImageGradientMobile2)"/>
@@ -2433,7 +2427,8 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                     }}
                     className="order-10 flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
                   >
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
+                    <img src="/model-logos/bytedance.svg" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="hidden">
                       <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#aiImageGradientMobile4)" opacity="0.2"/>
                       <path d="M6 16c3-6 9-8 12-8M7 8h5M7 12h8" stroke="url(#aiImageGradientMobile4)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                       <defs>
@@ -2453,7 +2448,8 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                     }}
                     className="order-9 flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
                   >
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
+                    <img src="/model-logos/bytedance.svg" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="hidden">
                       <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#aiImageGradientMobile50Lite)" opacity="0.2"/>
                       <path d="M7 8h7M7 12h10M7 16h6M17 6l1.5 3L21 10.5l-2.5 1.5L17 15l-1.5-3L13 10.5 15.5 9 17 6Z" stroke="url(#aiImageGradientMobile50Lite)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
                       <defs>
@@ -2520,16 +2516,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                     }}
                     className="flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
                   >
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
-                      <rect x="2" y="4" width="20" height="14" rx="2" fill="url(#aiVideoGradientMobile25)" opacity="0.2"/>
-                      <path d="M10 8L16 12L10 16V8Z" fill="url(#aiVideoGradientMobile25)"/>
-                      <defs>
-                        <linearGradient id="aiVideoGradientMobile25" x1="2" y1="4" x2="22" y2="18" gradientUnits="userSpaceOnUse">
-                          <stop stopColor="#9333EA"/>
-                          <stop offset="1" stopColor="#4F46E5"/>
-                        </linearGradient>
-                      </defs>
-                    </svg>
+                    <img src="/model-logos/bytedance.svg" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
                     <span>{navTranslations.seedance25 || defaultNavTranslations.seedance25}</span>
                   </Link>
                   <Link
@@ -2540,16 +2527,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                     }}
                     className="flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
                   >
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
-                      <rect x="2" y="4" width="20" height="14" rx="2" fill="url(#aiVideoGradientMobile)" opacity="0.2"/>
-                      <path d="M10 8L16 12L10 16V8Z" fill="url(#aiVideoGradientMobile)"/>
-                      <defs>
-                        <linearGradient id="aiVideoGradientMobile" x1="2" y1="4" x2="22" y2="18" gradientUnits="userSpaceOnUse">
-                          <stop stopColor="#9333EA"/>
-                          <stop offset="1" stopColor="#4F46E5"/>
-                        </linearGradient>
-                      </defs>
-                    </svg>
+                    <img src="/model-logos/bytedance.svg" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
                     <span>{navTranslations.seedance2 || defaultNavTranslations.seedance2}</span>
                   </Link>
                   <Link
@@ -2560,17 +2538,19 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                     }}
                     className="flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
                   >
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
-                      <rect x="2" y="4" width="20" height="14" rx="2" fill="url(#aiVideoGradientMobile2)" opacity="0.2"/>
-                      <path d="M10 8L16 12L10 16V8Z" fill="url(#aiVideoGradientMobile2)"/>
-                      <defs>
-                        <linearGradient id="aiVideoGradientMobile2" x1="2" y1="4" x2="22" y2="18" gradientUnits="userSpaceOnUse">
-                          <stop stopColor="#9333EA"/>
-                          <stop offset="1" stopColor="#4F46E5"/>
-                        </linearGradient>
-                      </defs>
-                    </svg>
+                    <img src="/model-logos/kling.svg" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
                     <span>{navTranslations.kling3 || defaultNavTranslations.kling3}</span>
+                  </Link>
+                  <Link
+                    href={getLocalizedHref('/model/grok-imagine-video-1-5')}
+                    onClick={() => {
+                      setMobileMenuOpen(false)
+                      setExpandedSubmenus(new Set())
+                    }}
+                    className="flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
+                  >
+                    <img src="/model-logos/grok.svg" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
+                    <span>{navTranslations.grok15Video || defaultNavTranslations.grok15Video}</span>
                   </Link>
                 </div>
               </div>

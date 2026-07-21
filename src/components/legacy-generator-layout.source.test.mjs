@@ -85,8 +85,8 @@ test('shared generator can hide fixed internal prompts for one-click tools', () 
 
 test('shared generator places the mobile hero breadcrumb below the demo panel', () => {
   const mobileTopPanel = aiImageToolSource.slice(
-    aiImageToolSource.indexOf('const renderMobileTopPanel = () => ('),
-    aiImageToolSource.indexOf('const renderMobileGeneratingCard = () => ('),
+    aiImageToolSource.indexOf('const renderMobileTopPanel = () => {'),
+    aiImageToolSource.indexOf('const rightPanelShadowClass'),
   )
 
   assert.match(mobileTopPanel, /data-mobile-demo-panel/)

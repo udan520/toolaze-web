@@ -18,14 +18,15 @@ import { getImageUploadUrl } from '@/lib/upload-url'
 import { calculateVideoGenerationCredits } from '@/lib/generation-credits'
 import { useCommonTranslations } from '@/lib/use-common-translations'
 import Breadcrumb, { type BreadcrumbItem } from '@/components/Breadcrumb'
-import ImageReplaceButton from '@/components/ImageReplaceButton'
 import DeleteIcon from '@/components/icons/DeleteIcon'
+import ReferenceImageUploader from '@/components/ReferenceImageUploader'
 import { formatLocalTimestampToSeconds } from '@/lib/credit-history-time'
 import {
   getHistoryToolMetadata,
   getLocalizedInternalPath,
 } from '@/lib/generation-history-tool-metadata'
 import { trackGenerationHistoryRecreateClick } from '@/lib/generation-history-analytics'
+import { dispatchToolazeTopNotice } from '@/lib/top-notice'
 
 interface ImageItem {
   file: File
@@ -94,6 +95,7 @@ interface PersistedVideoHistoryItem {
 
 interface AiVideoGeneratorToolProps {
   modelId?: AiVideoGeneratorModelId
+  defaultMode?: AiVideoGeneratorModeId
   allowModelSelect?: boolean
   heroBreadcrumbItems?: BreadcrumbItem[]
   heroTitleHtml?: string
@@ -232,6 +234,13 @@ function getModeLabel(mode: AiVideoGeneratorModeId, text: typeof FALLBACK_TEXT) 
   return mode === 'image-to-video' ? text.imageToVideo : text.textToVideo
 }
 
+function getInitialVideoMode(
+  modelConfig: AiVideoGeneratorModelConfig,
+  defaultMode?: AiVideoGeneratorModeId,
+) {
+  return defaultMode || modelConfig.defaultMode
+}
+
 async function parseJsonSafely(response: Response, errorMessage: string): Promise<Record<string, any>> {
   const body = await response.text()
   if (!body) return {}
@@ -291,6 +300,7 @@ function VideoModelQualityRating({ value }: { value: number }) {
 
 export default function AiVideoGeneratorTool({
   modelId = 'grok-1-5-video',
+  defaultMode,
   allowModelSelect = true,
   heroBreadcrumbItems,
   heroTitleHtml,
@@ -301,7 +311,6 @@ export default function AiVideoGeneratorTool({
   const pathname = usePathname()
   const commonTranslations = useCommonTranslations(initialTranslations)
   const text = { ...FALLBACK_TEXT, ...(commonTranslations?.common?.aiVideoGeneratorTool || {}) }
-  const fileInputRef = useRef<HTMLInputElement>(null)
   const imageFilesRef = useRef<ImageItem[]>([])
   const modelSelectorRef = useRef<HTMLDivElement>(null)
   const durationSelectorRef = useRef<HTMLDivElement>(null)
@@ -315,7 +324,7 @@ export default function AiVideoGeneratorTool({
   const modelConfig = useMemo(() => getAiVideoGeneratorModelConfig(selectedModelId), [selectedModelId])
   const selectedModelOption = modelOptions.find((option) => option.id === selectedModelId) || modelConfig
   const selectedModelGroup = modelGroups.find((group) => group.models.some((model) => model.id === selectedModelId)) || modelGroups[0]
-  const [activeMode, setActiveMode] = useState<AiVideoGeneratorModeId>(modelConfig.defaultMode)
+  const [activeMode, setActiveMode] = useState<AiVideoGeneratorModeId>(() => getInitialVideoMode(modelConfig, defaultMode))
   const [isModelMenuOpen, setIsModelMenuOpen] = useState(false)
   const [isDurationMenuOpen, setIsDurationMenuOpen] = useState(false)
   const [activeModelGroupId, setActiveModelGroupId] = useState(() => getAiVideoGeneratorModelGroupId(modelId))
@@ -439,7 +448,7 @@ export default function AiVideoGeneratorTool({
       return
     }
 
-    setActiveMode(modelConfig.defaultMode)
+    setActiveMode(getInitialVideoMode(modelConfig, defaultMode))
     setAspectRatio(modelConfig.aspectRatios[0]?.value || '16:9')
     setDuration(modelConfig.defaultDuration || modelConfig.durations[0] || 5)
     setResolution(modelConfig.resolutions[0] || '1080p')
@@ -450,7 +459,7 @@ export default function AiVideoGeneratorTool({
       return []
     })
     setRemoteImageUrls([])
-  }, [modelConfig])
+  }, [defaultMode, modelConfig])
 
   useEffect(() => {
     if (!supportsNativeAudio && nativeAudio) {
@@ -515,7 +524,6 @@ export default function AiVideoGeneratorTool({
           : []
         if (cancelled || loadedHistory.length === 0) return
         setHistory(loadedHistory)
-        setRightMode('history')
       } catch {
         // Inline history is optional; the full History page remains the source of truth.
       }
@@ -540,6 +548,14 @@ export default function AiVideoGeneratorTool({
   const isGenerating = currentRequest?.status === 'processing'
   const hasDesktopResultTabs = isGenerating || currentRequest?.status === 'failed' || history.length > 0
 
+  const showFileTooLargeNotice = (file: File) => {
+    dispatchToolazeTopNotice({
+      type: 'warning',
+      title: 'Warning',
+      message: formatText(text.fileTooLarge, { name: file.name, size: modelConfig.maxFileSizeMb }),
+    })
+  }
+
   const handleFiles = (files: FileList | File[]) => {
     const list = Array.isArray(files) ? files : Array.from(files)
     const remainingSlots = modelConfig.maxImages - referenceImageCount
@@ -551,7 +567,7 @@ export default function AiVideoGeneratorTool({
       .slice(0, remainingSlots)
       .filter((file) => {
         if (file.size <= maxSize) return true
-        window.alert(formatText(text.fileTooLarge, { name: file.name, size: modelConfig.maxFileSizeMb }))
+        showFileTooLargeNotice(file)
         return false
       })
 
@@ -567,34 +583,16 @@ export default function AiVideoGeneratorTool({
     ])
   }
 
-  const pickReplacementImage = (onReplace: (file: File) => void) => {
-    const input = document.createElement('input')
-    input.type = 'file'
-    input.accept = 'image/jpeg,image/jpg,image/png,image/webp'
-    input.onchange = (event) => {
-      const file = (event.target as HTMLInputElement).files?.[0]
-      if (!file || !file.type.startsWith('image/')) return
-      if (file.size > modelConfig.maxFileSizeMb * 1024 * 1024) {
-        window.alert(formatText(text.fileTooLarge, { name: file.name, size: modelConfig.maxFileSizeMb }))
-        return
+  const replaceImageWithFile = (index: number, file: File) => {
+    setImageFiles((prev) => {
+      const nextFiles = [...prev]
+      if (!nextFiles[index]) return prev
+      URL.revokeObjectURL(nextFiles[index].preview)
+      nextFiles[index] = {
+        file,
+        preview: URL.createObjectURL(file),
       }
-      onReplace(file)
-    }
-    input.click()
-  }
-
-  const replaceImage = (index: number) => {
-    pickReplacementImage((file) => {
-      setImageFiles((prev) => {
-        const nextFiles = [...prev]
-        if (!nextFiles[index]) return prev
-        URL.revokeObjectURL(nextFiles[index].preview)
-        nextFiles[index] = {
-          file,
-          preview: URL.createObjectURL(file),
-        }
-        return nextFiles
-      })
+      return nextFiles
     })
   }
 
@@ -653,6 +651,13 @@ export default function AiVideoGeneratorTool({
                 loading="lazy"
               />
               <span className="truncate text-sm font-extrabold">{option.name}</span>
+              {option.badge && (
+                <span className={`rounded-full px-1.5 py-0.5 text-[10px] font-extrabold leading-none text-white ${
+                  option.badge === 'Hot' ? 'bg-red-500' : 'bg-emerald-500'
+                }`}>
+                  {option.badge}
+                </span>
+              )}
             </span>
             <span className="mt-1 block text-xs leading-5 text-slate-500 break-words">{option.description}</span>
             <VideoModelQualityRating value={option.qualityRating} />
@@ -1367,97 +1372,34 @@ export default function AiVideoGeneratorTool({
                   ) : null}
 
                   {activeMode === 'image-to-video' ? (
-                    <div>
-                      <div className="mb-2 flex items-center justify-between gap-3">
-                        <label className="text-xs font-semibold tracking-wide text-slate-500">
-                          {modelConfig.maxImages === 1 ? text.uploadYourImage : formatText(text.uploadUpTo, { count: modelConfig.maxImages })}
-                        </label>
-                        {referenceImageCount > 0 ? (
-                          <span className="text-xs font-medium text-slate-400">{referenceImageCount}/{modelConfig.maxImages}</span>
-                        ) : null}
-                      </div>
-                      <div data-video-upload-grid className={`grid gap-2 ${modelConfig.maxImages === 1 ? 'grid-cols-1 max-w-40' : 'grid-cols-3'}`}>
-                        {referenceImageCount < modelConfig.maxImages ? (
-                          <div
-                            data-video-upload-tile
-                            onClick={() => fileInputRef.current?.click()}
-                            onDrop={(event) => {
-                              event.preventDefault()
-                              handleFiles(event.dataTransfer.files)
-                            }}
-                            onDragOver={(event) => event.preventDefault()}
-                            className="aspect-square rounded-lg border-2 border-dashed border-[#C7D2FE] bg-[#EEF2FF]/50 cursor-pointer hover:border-[#4F46E5]/50 hover:bg-[#E0E7FF]/50 transition-all duration-200 flex flex-col items-center justify-center"
-                          >
-                            <input
-                              ref={fileInputRef}
-                              type="file"
-                              accept="image/jpeg,image/jpg,image/png,image/webp"
-                              multiple={modelConfig.maxImages > 1}
-                              className="hidden"
-                              onChange={(event) => {
-                                if (event.target.files?.length) handleFiles(event.target.files)
-                                event.target.value = ''
-                              }}
-                            />
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mb-1">
-                              <line x1="12" y1="5" x2="12" y2="19" />
-                              <line x1="5" y1="12" x2="19" y2="12" />
-                            </svg>
-                            <span className="text-xs font-medium text-slate-500">{text.upload}</span>
-                          </div>
-                        ) : null}
-                        {remoteImageUrls.map((url, index) => (
-                          <div
-                            key={`${url}-${index}`}
-                            className="relative group aspect-square rounded-lg overflow-hidden border border-[#E0E7FF] bg-slate-100 cursor-pointer"
-                          >
-                            <img src={url} alt={`${text.referenceImage} ${index + 1}`} className="h-full w-full object-cover" />
-                            <span className="absolute bottom-1 right-1 w-5 h-5 rounded-md bg-white/80 text-black text-xs font-bold flex items-center justify-center shadow-sm z-10">
-                              {index + 1}
-                            </span>
-                            <button
-                              type="button"
-                              onClick={(event) => {
-                                event.stopPropagation()
-                                setRemoteImageUrls((prev) => prev.filter((_, itemIndex) => itemIndex !== index))
-                              }}
-                              className="absolute top-1 right-1 w-6 h-6 rounded-md bg-white/80 flex items-center justify-center shadow-sm z-10 text-black [&_svg]:flex-shrink-0 md:opacity-0 md:invisible md:group-hover:opacity-100 md:group-hover:visible md:transition-opacity"
-                              title={text.delete}
-                              aria-label={text.delete}
-                            >
-                              <DeleteIcon size={16} />
-                            </button>
-                          </div>
-                        ))}
-                        {imageFiles.map((item, index) => (
-                          <div
-                            key={`${item.file.name}-${index}`}
-                            className="relative group aspect-square rounded-lg overflow-hidden border border-[#E0E7FF] bg-slate-100 cursor-pointer"
-                          >
-                            <img src={item.preview} alt={`${text.upload} ${index + 1}`} className="h-full w-full object-cover" />
-                            <ImageReplaceButton onReplace={() => replaceImage(index)} label={text.replace} />
-                            <span className="absolute bottom-1 right-1 w-5 h-5 rounded-md bg-white/80 text-black text-xs font-bold flex items-center justify-center shadow-sm z-10">
-                              {index + 1}
-                            </span>
-                            <button
-                              type="button"
-                              onClick={(event) => {
-                                event.stopPropagation()
-                                removeImage(index)
-                              }}
-                              className="absolute top-1 right-1 w-6 h-6 rounded-md bg-white/80 flex items-center justify-center shadow-sm z-10 text-black [&_svg]:flex-shrink-0 md:opacity-0 md:invisible md:group-hover:opacity-100 md:group-hover:visible md:transition-opacity"
-                              title={text.delete}
-                              aria-label={text.delete}
-                            >
-                              <DeleteIcon size={16} />
-                            </button>
-                          </div>
-                        ))}
-                      </div>
-                      <p className="mt-1.5 text-xs text-slate-400">
-                        {formatText(text.fileLimit, { size: modelConfig.maxFileSizeMb })}
-                      </p>
-                    </div>
+                    <ReferenceImageUploader
+                      items={[
+                        ...remoteImageUrls.map((url, index) => ({
+                          id: `remote-${url}-${index}`,
+                          src: url,
+                          alt: `${text.referenceImage} ${index + 1}`,
+                          onRemove: () => setRemoteImageUrls((prev) => prev.filter((_, itemIndex) => itemIndex !== index)),
+                        })),
+                        ...imageFiles.map((item, index) => ({
+                          id: `local-${item.file.name}-${index}`,
+                          src: item.preview,
+                          alt: `${text.upload} ${index + 1}`,
+                          onRemove: () => removeImage(index),
+                          onReplace: (file: File) => replaceImageWithFile(index, file),
+                        })),
+                      ]}
+                      maxImages={modelConfig.maxImages}
+                      maxFileSizeMb={modelConfig.maxFileSizeMb}
+                      onFiles={handleFiles}
+                      onValidationError={showFileTooLargeNotice}
+                      label={modelConfig.maxImages === 1 ? text.uploadYourImage : formatText(text.uploadUpTo, { count: modelConfig.maxImages })}
+                      helperText={formatText(text.fileLimit, { size: modelConfig.maxFileSizeMb })}
+                      uploadLabel={text.upload}
+                      replaceLabel={text.replace}
+                      deleteLabel={text.delete}
+                      size="compact"
+                      testIdPrefix="video-reference"
+                    />
                   ) : null}
 
                   <div>

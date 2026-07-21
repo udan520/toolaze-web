@@ -3,6 +3,7 @@ import { readFileSync } from 'node:fs'
 import test from 'node:test'
 
 const source = readFileSync(new URL('./AiImageGenerationTool.tsx', import.meta.url), 'utf8')
+const referenceUploaderSource = readFileSync(new URL('./ReferenceImageUploader.tsx', import.meta.url), 'utf8')
 
 test('desktop result combines image preview and controls in one card', () => {
   assert.match(source, /data-desktop-result-card/)
@@ -301,19 +302,19 @@ test('left remote reference images show loading and fallback states', () => {
   assert.match(source, /type RemoteReferenceImageState = 'loading' \| 'loaded' \| 'retrying' \| 'failed'/)
   assert.match(source, /const \[remoteImagePreviewStates, setRemoteImagePreviewStates\] = useState<Record<string, RemoteReferenceImageState>>\(\{\}\)/)
   assert.match(source, /remoteImageUrls\.forEach\(\(url\) => \{[\s\S]*nextStates\[url\] = prev\[url\] \|\| 'loading'/)
-  assert.match(source, /data-left-remote-reference-image/)
-  assert.match(source, /src=\{previewState === 'retrying' \? normalizeReusableReferenceImageUrl\(url\) : getReferencePreviewUrl\(url\)\}/)
-  assert.match(source, /onLoad=\{\(\) => setRemoteImagePreviewState\(url, 'loaded'\)\}/)
-  assert.match(source, /onError=\{\(\) => setRemoteImagePreviewState\(url, previewState === 'retrying' \? 'failed' : 'retrying'\)\}/)
-  assert.match(source, /data-left-remote-reference-loading/)
-  assert.match(source, /previewState === 'loading' \|\| previewState === 'retrying'/)
-  assert.match(source, /data-left-remote-reference-failed/)
+  assert.match(source, /<ReferenceImageUploader/)
+  assert.match(source, /src: previewState === 'retrying' \? normalizeReusableReferenceImageUrl\(url\) : getReferencePreviewUrl\(url\)/)
+  assert.match(source, /onLoad: \(\) => setRemoteImagePreviewState\(url, 'loaded'\)/)
+  assert.match(source, /onError: \(\) => setRemoteImagePreviewState\(url, previewState === 'retrying' \? 'failed' : 'retrying'\)/)
+  assert.match(referenceUploaderSource, /isLoading/)
+  assert.match(referenceUploaderSource, /item\.status === 'loading' \|\| item\.status === 'retrying'/)
+  assert.match(referenceUploaderSource, /item\.status === 'failed'/)
 })
 
 test('left remote reference loading copy is not the generation copy', () => {
   assert.match(source, /referenceImageLoading: 'Loading'/)
-  assert.match(source, /data-left-remote-reference-loading[\s\S]*\{toolText\.referenceImageLoading\}/)
-  assert.doesNotMatch(source, /data-left-remote-reference-loading[\s\S]{0,260}\{toolText\.generating\}/)
+  assert.match(source, /loadingLabel=\{toolText\.referenceImageLoading\}/)
+  assert.doesNotMatch(referenceUploaderSource, /generating/)
 })
 
 test('failed generations stay in the desktop history feed with disabled download', () => {

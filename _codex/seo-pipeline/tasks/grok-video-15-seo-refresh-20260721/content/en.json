@@ -1,0 +1,12 @@
+{
+  "taskId": "grok-video-15-seo-refresh-20260721",
+  "slug": "grok-imagine-video-1-5",
+  "pageType": "model",
+  "status": "ready_for_publish",
+  "primaryKeyword": "Grok Imagine Video 1.5 AI video generator",
+  "strategy": {
+    "keep": ["generator", "model specs", "use cases", "prompt examples", "quality guidance", "related tools", "FAQ"],
+    "remove": ["standalone audience section", "generic workflow guide cards", "duplicate video concept cards"],
+    "add": ["prompt formula", "common problems and fixes", "native audio guidance", "video-only model comparison"]
+  }
+}

@@ -58,7 +58,7 @@ export const FONT_GENERATOR_SLUGS = [
 ]
 
 // 视频模型 L2 列表（用于「更多工具」推荐，仅推荐同类型 L2）
-export const VIDEO_MODEL_L2S = ['seedance-2-5', 'seedance-2', 'kling-3']
+export const VIDEO_MODEL_L2S = ['seedance-2-5', 'seedance-2', 'kling-3', 'grok-imagine-video-1-5']
 
 // 图片模型 L2 列表（用于「更多工具」推荐，仅推荐同类型 L2）
 export const IMAGE_MODEL_L2S = ['gpt-image-2', 'nano-banana-pro', 'nano-banana-2', 'seedream-5-0-pro']
@@ -819,6 +819,8 @@ export async function getL2SeoContent(tool: string, locale: string = 'en') {
         data = await importL2FlatJson('seedance-2', normalizedLocale)
       } else if (tool === 'kling-3') {
         data = await importL2FlatJson('kling-3', normalizedLocale)
+      } else if (tool === 'grok-imagine-video-1-5') {
+        data = await importL2FlatJson('grok-imagine-video-1-5', normalizedLocale)
       } else if (tool === 'watermark-remover') {
         data = await importL2FlatJson('watermark-remover', normalizedLocale)
       } else if (tool === 'photo-restoration') {
@@ -866,6 +868,8 @@ export async function getL2SeoContent(tool: string, locale: string = 'en') {
             data = await import('@/data/en/seedance-2.json')
           } else if (tool === 'kling-3') {
             data = await import('@/data/en/kling-3.json')
+          } else if (tool === 'grok-imagine-video-1-5') {
+            data = await import('@/data/en/grok-imagine-video-1-5.json')
           } else if (tool === 'watermark-remover') {
             data = await import('@/data/en/watermark-remover.json')
           } else if (tool === 'photo-restoration') {

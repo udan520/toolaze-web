@@ -378,19 +378,22 @@ test('Credits page common copy exists for every supported locale', () => {
   }
 })
 
-test('localized home hero includes image-to-image CTA copy', () => {
-  const englishCta = readJson('src/data/en/common.json').home?.ctaImageEdit
+test('localized home hero includes AI Video Generator CTA copy', () => {
+  const englishCta = readJson('src/data/en/common.json').home?.ctaVideo
 
-  assert.equal(typeof englishCta, 'string', 'en.home.ctaImageEdit')
-  assert.notEqual(englishCta.trim(), '', 'en.home.ctaImageEdit')
+  assert.equal(typeof englishCta, 'string', 'en.home.ctaVideo')
+  assert.notEqual(englishCta.trim(), '', 'en.home.ctaVideo')
 
   for (const locale of localizedLocales) {
-    const cta = readJson(`src/data/${locale}/common.json`).home?.ctaImageEdit
+    const cta = readJson(`src/data/${locale}/common.json`).home?.ctaVideo
 
-    assert.equal(typeof cta, 'string', `${locale}.home.ctaImageEdit`)
-    assert.notEqual(cta.trim(), '', `${locale}.home.ctaImageEdit`)
-    assert.notEqual(cta, englishCta, `${locale}.home.ctaImageEdit`)
+    assert.equal(typeof cta, 'string', `${locale}.home.ctaVideo`)
+    assert.notEqual(cta.trim(), '', `${locale}.home.ctaVideo`)
+    assert.notEqual(cta, englishCta, `${locale}.home.ctaVideo`)
   }
+
+  const homePageMain = readProjectFile('src/components/home/HomePageMain.tsx')
+  assert.match(homePageMain, /href="\/ai-video-generator"[\s\S]*home\?\.ctaVideo/)
 })
 
 test('localized homepage passes common translations into shared navigation and footer', () => {
@@ -468,15 +471,18 @@ test('workspace sidebar labels are localized instead of hardcoded English', () =
   assert.doesNotMatch(workspaceShell, /label:\s*['"]Home['"]/)
   assert.doesNotMatch(workspaceShell, /label:\s*['"]Create Image['"]/)
   assert.doesNotMatch(workspaceShell, /label:\s*['"]Edit Image['"]/)
+  assert.doesNotMatch(workspaceShell, /label:\s*['"]Create Video['"]/)
   assert.doesNotMatch(workspaceShell, /label:\s*['"]Image Tools['"]/)
   assert.doesNotMatch(workspaceShell, /label:\s*['"]Models['"]/)
   assert.doesNotMatch(workspaceShell, /label:\s*['"]Library['"]/)
   assert.match(workspaceShell, /['"]zh-TW['"][\s\S]*首頁/)
   assert.match(workspaceShell, /['"]zh-TW['"][\s\S]*建立圖像/)
   assert.match(workspaceShell, /['"]zh-TW['"][\s\S]*編輯圖像/)
+  assert.match(workspaceShell, /['"]zh-TW['"][\s\S]*建立影片/)
   assert.match(workspaceShell, /['"]zh-TW['"][\s\S]*圖像工具/)
   assert.match(workspaceShell, /['"]zh-TW['"][\s\S]*模型/)
   assert.match(workspaceShell, /['"]zh-TW['"][\s\S]*作品庫/)
+  assert.match(workspaceShell, /'editImage'[\s\S]*href:\s*'\/ai-image-to-image-generator'[\s\S]*'createVideo'[\s\S]*href:\s*'\/ai-video-generator'/)
 })
 
 test('Traditional Chinese JSON values do not contain pinyin tone marks', () => {

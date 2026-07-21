@@ -1,0 +1,241 @@
+{
+  "in_menu": true,
+  "topComponent": "grok-1-5-video",
+  "metadata": {
+    "title": "Grok Imagine Video 1.5 AI Video Generator | Toolaze",
+    "description": "Use Grok Imagine Video 1.5 on Toolaze to create short AI videos from a starting image or prompt, with 1-15 second clips and 480p/720p output."
+  },
+  "sectionsOrder": [
+    "modelIntro",
+    "features",
+    "performanceMetrics",
+    "scenes",
+    "howToUse",
+    "bestPrompts",
+    "comparison",
+    "faq"
+  ],
+  "hero": {
+    "h1": "<span class=\"text-gradient\">Grok Imagine Video 1.5</span> AI Video Generator",
+    "desc": "Use xAI's Grok Imagine Video 1.5 image-to-video model on Toolaze to turn a starting image into short motion clips, or draft a prompt-only scene in the Toolaze video workflow. Choose 1-15 seconds, 480p/720p, and aspect ratios for social clips, product motion, and storyboards.",
+    "demoVideo": {
+      "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/7b12e05c8c564a18b1ce7b02887051ac.png",
+      "label": "Grok Imagine Video 1.5 16:9 product motion demo"
+    }
+  },
+  "modelIntro": {
+    "title": "What Is Grok Imagine Video 1.5?",
+    "modelName": "Grok Imagine Video 1.5",
+    "modelType": "AI Video Model",
+    "description": [
+      "Grok Imagine Video 1.5 is xAI's generally available image-to-video model for short motion clips. It works best when you give it a starting image and a prompt that describes motion, camera movement, atmosphere, pacing, and what should stay visually consistent.",
+      "Toolaze packages that model into a focused AI video generator with image-to-video and prompt-only drafting paths, one uploaded starting image, aspect ratio controls, default 5-second output, 1-15 second duration, and 480p or 720p resolution.",
+      "Use it for product motion reveals, vertical social clips, storyboard beats, scene look tests, character motion studies, and early video directions that need clear movement before a final edit."
+    ],
+    "featureCards": [
+      {
+        "title": "Image-to-Video From One Reference Image",
+        "content": "Upload one starting image up to 20MB, then describe the motion, camera movement, lighting, mood, and what should stay unchanged."
+      },
+      {
+        "title": "Text-to-Video for Fast Concepts",
+        "content": "Start from a written scene description when no image is available. Prompt the subject, action, shot style, environment, and visual constraints."
+      },
+      {
+        "title": "Practical Output Controls",
+        "content": "Choose Auto, 16:9, 9:16, 1:1, 3:2, or 2:3, then generate a default 5-second clip or choose 1-15 seconds at 480p or 720p."
+      }
+    ]
+  },
+  "features": {
+    "title": "Grok Imagine Video 1.5 Generator Features",
+    "items": [
+      {
+        "icon": "video",
+        "title": "Image-to-Video",
+        "desc": "Upload one starting image and describe how it should move."
+      },
+      {
+        "icon": "prompt",
+        "title": "Text-to-Video",
+        "desc": "Generate a video from a prompt without uploading a reference."
+      },
+      {
+        "icon": "settings",
+        "title": "Focused Controls",
+        "desc": "Set aspect ratio, 1-15 second duration, and 480p or 720p resolution before generating."
+      },
+      {
+        "icon": "preview",
+        "title": "Video Preview",
+        "desc": "Watch generated clips with native browser video controls."
+      },
+      {
+        "icon": "download",
+        "title": "Save Result",
+        "desc": "Download the selected generated video after reviewing the clip."
+      }
+    ]
+  },
+  "performanceMetrics": {
+    "title": "Core Grok Video Settings on Toolaze",
+    "metrics": [
+      {
+        "label": "Modes",
+        "value": "Image-to-video, text-to-video"
+      },
+      {
+        "label": "Reference input",
+        "value": "One starting image"
+      },
+      {
+        "label": "Upload size",
+        "value": "One image up to 20MB"
+      },
+      {
+        "label": "Aspect ratio",
+        "value": "Auto, 16:9, 9:16, 1:1, 3:2, 2:3"
+      },
+      {
+        "label": "Resolution",
+        "value": "480p, 720p"
+      },
+      {
+        "label": "Duration",
+        "value": "Default 5-second clips, adjustable from 1-15 seconds"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "How to Generate Videos with Grok Imagine Video 1.5",
+    "steps": [
+      {
+        "title": "Choose a Mode",
+        "desc": "Select image-to-video if you have one starting image, or text-to-video if you want to start from a prompt."
+      },
+      {
+        "title": "Add Prompt and Settings",
+        "desc": "Describe the subject, motion, camera, lighting, and style. Choose aspect ratio, 480p or 720p, and a 1-15 second duration. The default is 5 seconds."
+      },
+      {
+        "title": "Generate and Review",
+        "desc": "Generate the video, preview the returned clip, compare recent attempts, and download the result if you want to keep it."
+      }
+    ]
+  },
+  "scenesTitle": "Grok Imagine Video 1.5 Use Cases",
+  "scenes": [
+    {
+      "title": "Product Motion Tests",
+      "icon": "product",
+      "desc": "Turn product stills into short motion concepts for ads, store pages, and launch visuals."
+    },
+    {
+      "title": "Social Video Concepts",
+      "icon": "social",
+      "desc": "Generate quick vertical or square clips for short-form social experiments."
+    },
+    {
+      "title": "Storyboard Exploration",
+      "icon": "storyboard",
+      "desc": "Prototype a camera move or visual idea before investing in a full production pass."
+    },
+    {
+      "title": "Character Motion Tests",
+      "icon": "character",
+      "desc": "Animate a reference character with subtle breathing, blinking, lighting, and camera movement."
+    }
+  ],
+  "bestPrompts": {
+    "title": "Best Grok Imagine Video 1.5 Prompt Examples",
+    "items": [
+      {
+        "title": "Product Reveal Prompt",
+        "prompt": "Animate the uploaded product image into a 5-second premium product reveal. Slow push-in camera, subtle rotation, glossy reflections, clean studio lighting, realistic shadow movement, no extra text, commercial style.",
+        "videoSrc": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/8de0b3095d15419a8a71f762d6235166.png",
+        "videoLabel": "16:9 product reveal prompt example video"
+      },
+      {
+        "title": "Interior Camera Move Prompt",
+        "prompt": "Use the uploaded room image as the reference. Preserve the layout and furniture. Add a gentle left-to-right camera drift, soft daylight through the window, moving curtain fabric, warm interior mood, realistic motion.",
+        "videoSrc": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/dbed78470f784d01a3cb413be3614ccf.png",
+        "videoLabel": "16:9 interior camera move prompt example video"
+      },
+      {
+        "title": "Storyboard Shot Prompt",
+        "prompt": "Create an establishing shot for a science-fiction short film. A small research vehicle crosses a frozen plain under green aurora, wide-angle camera, slow forward motion, wind-blown snow, quiet cinematic tension.",
+        "videoSrc": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
+        "videoLabel": "16:9 storyboard prompt example video"
+      }
+    ]
+  },
+  "comparison": {
+    "title": "Grok Imagine Video 1.5 vs Other Toolaze Models",
+    "rows": [
+      {
+        "capability": "Input resources",
+        "grok": "Starting image plus motion prompt; prompt-only drafts also supported.",
+        "seedance": "Text, image, audio, and video; up to 9 images, 3 clips, 3 audio files.",
+        "kling": "Text, images, audio, video; references for characters, objects, and scenes.",
+        "gptImage": "Text and image input; still image output only."
+      },
+      {
+        "capability": "Output and length",
+        "grok": "1-15 second video clips at 480p or 720p.",
+        "seedance": "Up to 15-second multi-shot audio-video scenes.",
+        "kling": "Up to 15 seconds with native audio and voiceover.",
+        "gptImage": "Static image output for posters, edits, UI, and graphics."
+      },
+      {
+        "capability": "Best task fit",
+        "grok": "Animating one strong starting frame for quick motion tests.",
+        "seedance": "Complex scenes using several source assets and audio cues.",
+        "kling": "Cinematic shots, dialogue, voiceover, and reference consistency.",
+        "gptImage": "Text-rich still images, edits, product visuals, and UI mockups."
+      },
+      {
+        "capability": "Control strengths",
+        "grok": "Camera moves, atmosphere, physics, and starting-frame detail.",
+        "seedance": "Mixed references, action logic, audio matching, and video extension.",
+        "kling": "Shot control, lip sync, speech, text, and consistency.",
+        "gptImage": "Still composition, image editing, readable text, structured layouts."
+      },
+      {
+        "capability": "Review focus",
+        "grok": "Motion consistency, identity, physics, faces, hands, brand details.",
+        "seedance": "Multi-subject consistency, audio distortion, prompt drift, edit effects.",
+        "kling": "Shot continuity, lip sync, voice order, text retention.",
+        "gptImage": "Spelling, small text, layout accuracy, faces, hands."
+      }
+    ]
+  },
+  "rating": {
+    "title": "Built for Short Motion Concepts",
+    "rating": "Image-to-video and text-to-video",
+    "text": "Use Grok Imagine Video 1.5 through a focused Toolaze workflow with upload, prompt, output settings, video preview, and download."
+  },
+  "faqTitle": "Frequently Asked Questions",
+  "faq": [
+    {
+      "q": "What is Grok Imagine Video 1.5?",
+      "a": "Grok Imagine Video 1.5 is xAI's generally available image-to-video model for short motion clips. On Toolaze, it runs inside a focused web generator with image-to-video and prompt-only drafting paths."
+    },
+    {
+      "q": "Does this support image-to-video?",
+      "a": "Yes. Upload one starting image up to 20MB, add a prompt, and generate a default 5-second clip or choose another duration from 1-15 seconds."
+    },
+    {
+      "q": "Does this support text-to-video?",
+      "a": "Toolaze keeps a text-to-video entry for prompt-only scene drafts. For the strongest Grok 1.5 match, use a starting image and describe the motion you want."
+    },
+    {
+      "q": "What settings are available?",
+      "a": "The Toolaze workflow exposes mode, prompt, one uploaded starting image, aspect ratio, 1-15 second duration control, and 480p or 720p resolution."
+    },
+    {
+      "q": "Is Grok Imagine Video 1.5 free on Toolaze?",
+      "a": "Availability may depend on the current Toolaze access policy, quota, model availability, and selected settings. Check the generator for the latest access state."
+    }
+  ],
+  "moreTools": "More AI Video Models"
+}

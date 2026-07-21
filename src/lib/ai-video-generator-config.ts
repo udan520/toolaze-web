@@ -22,6 +22,7 @@ export interface AiVideoGeneratorModelConfig {
   logoSrc: string
   logoAlt: string
   qualityRating: number
+  badge?: 'Hot' | 'New'
   minCredits: number
   defaultMode: AiVideoGeneratorModeId
   maxImages: number
@@ -96,6 +97,7 @@ export const AI_VIDEO_GENERATOR_MODEL_OPTIONS: AiVideoGeneratorModelConfig[] = [
     logoSrc: '/model-logos/bytedance.svg',
     logoAlt: 'ByteDance logo',
     qualityRating: 5,
+    badge: 'Hot',
     minCredits: 150,
     defaultMode: 'image-to-video',
     maxImages: 9,
@@ -123,6 +125,7 @@ export const AI_VIDEO_GENERATOR_MODEL_OPTIONS: AiVideoGeneratorModelConfig[] = [
     logoSrc: '/model-logos/bytedance.svg',
     logoAlt: 'ByteDance logo',
     qualityRating: 4.5,
+    badge: 'New',
     minCredits: 75,
     defaultMode: 'image-to-video',
     maxImages: 9,

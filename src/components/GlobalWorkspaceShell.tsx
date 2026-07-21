@@ -3,8 +3,8 @@
 import { usePathname } from 'next/navigation'
 import type { ReactNode } from 'react'
 
-type WorkspaceMenuIcon = 'home' | 'create' | 'edit' | 'tools' | 'models' | 'library'
-type WorkspaceMenuLabelKey = 'home' | 'createImage' | 'editImage' | 'imageTools' | 'models' | 'library'
+type WorkspaceMenuIcon = 'home' | 'create' | 'edit' | 'video' | 'tools' | 'models' | 'library'
+type WorkspaceMenuLabelKey = 'home' | 'createImage' | 'editImage' | 'createVideo' | 'imageTools' | 'models' | 'library'
 
 interface WorkspaceMenuItem {
   labelKey: WorkspaceMenuLabelKey
@@ -19,6 +19,7 @@ const WORKSPACE_MENU_TRANSLATIONS: Record<string, Record<WorkspaceMenuLabelKey, 
     home: 'Home',
     createImage: 'Create Image',
     editImage: 'Edit Image',
+    createVideo: 'Create Video',
     imageTools: 'Image Tools',
     models: 'Models',
     library: 'Library',
@@ -27,6 +28,7 @@ const WORKSPACE_MENU_TRANSLATIONS: Record<string, Record<WorkspaceMenuLabelKey, 
     home: 'Startseite',
     createImage: 'Bild erstellen',
     editImage: 'Bild bearbeiten',
+    createVideo: 'Video erstellen',
     imageTools: 'Bildtools',
     models: 'Modelle',
     library: 'Bibliothek',
@@ -35,6 +37,7 @@ const WORKSPACE_MENU_TRANSLATIONS: Record<string, Record<WorkspaceMenuLabelKey, 
     home: 'ホーム',
     createImage: '画像作成',
     editImage: '画像編集',
+    createVideo: '動画作成',
     imageTools: '画像ツール',
     models: 'モデル',
     library: 'ライブラリ',
@@ -43,6 +46,7 @@ const WORKSPACE_MENU_TRANSLATIONS: Record<string, Record<WorkspaceMenuLabelKey, 
     home: 'Inicio',
     createImage: 'Crear imagen',
     editImage: 'Editar imagen',
+    createVideo: 'Crear video',
     imageTools: 'Herramientas de imagen',
     models: 'Modelos',
     library: 'Biblioteca',
@@ -51,6 +55,7 @@ const WORKSPACE_MENU_TRANSLATIONS: Record<string, Record<WorkspaceMenuLabelKey, 
     home: '首頁',
     createImage: '建立圖像',
     editImage: '編輯圖像',
+    createVideo: '建立影片',
     imageTools: '圖像工具',
     models: '模型',
     library: '作品庫',
@@ -59,6 +64,7 @@ const WORKSPACE_MENU_TRANSLATIONS: Record<string, Record<WorkspaceMenuLabelKey, 
     home: 'Início',
     createImage: 'Criar imagem',
     editImage: 'Editar imagem',
+    createVideo: 'Criar vídeo',
     imageTools: 'Ferramentas de imagem',
     models: 'Modelos',
     library: 'Biblioteca',
@@ -67,6 +73,7 @@ const WORKSPACE_MENU_TRANSLATIONS: Record<string, Record<WorkspaceMenuLabelKey, 
     home: 'Accueil',
     createImage: 'Créer une image',
     editImage: 'Modifier une image',
+    createVideo: 'Créer une vidéo',
     imageTools: 'Outils image',
     models: 'Modèles',
     library: 'Bibliothèque',
@@ -75,6 +82,7 @@ const WORKSPACE_MENU_TRANSLATIONS: Record<string, Record<WorkspaceMenuLabelKey, 
     home: '홈',
     createImage: '이미지 만들기',
     editImage: '이미지 편집',
+    createVideo: '동영상 만들기',
     imageTools: '이미지 도구',
     models: '모델',
     library: '라이브러리',
@@ -83,6 +91,7 @@ const WORKSPACE_MENU_TRANSLATIONS: Record<string, Record<WorkspaceMenuLabelKey, 
     home: 'Pagina iniziale',
     createImage: 'Crea immagine',
     editImage: 'Modifica immagine',
+    createVideo: 'Crea video',
     imageTools: 'Strumenti immagine',
     models: 'Modelli',
     library: 'Libreria',
@@ -93,6 +102,7 @@ const WORKSPACE_MENU_ITEMS: WorkspaceMenuItem[] = [
   { labelKey: 'home', href: '/', icon: 'home' },
   { labelKey: 'createImage', href: '/ai-image-generator', icon: 'create' },
   { labelKey: 'editImage', href: '/ai-image-to-image-generator', icon: 'edit' },
+  { labelKey: 'createVideo', href: '/ai-video-generator', icon: 'video' },
   { labelKey: 'imageTools', href: '/ai-tools', icon: 'tools' },
   { labelKey: 'models', href: '/model', icon: 'models' },
   { labelKey: 'library', href: '/history', icon: 'library' },
@@ -170,6 +180,15 @@ function WorkspaceMenuIconSvg({ icon }: { icon: WorkspaceMenuIcon }) {
       <svg {...commonProps}>
         <path d="M4 20h4l10.5-10.5a2.1 2.1 0 0 0-3-3L5 17v3Z" />
         <path d="m14 7 3 3" />
+      </svg>
+    )
+  }
+
+  if (icon === 'video') {
+    return (
+      <svg {...commonProps}>
+        <rect x="3" y="6" width="13" height="12" rx="2" />
+        <path d="m16 10 5-3v10l-5-3" />
       </svg>
     )
   }

@@ -4,8 +4,10 @@ import { join } from 'node:path'
 import test from 'node:test'
 
 const componentPath = join(process.cwd(), 'src', 'components', 'AiVideoGeneratorTool.tsx')
+const referenceUploaderPath = join(process.cwd(), 'src', 'components', 'ReferenceImageUploader.tsx')
 const configPath = join(process.cwd(), 'src', 'lib', 'ai-video-generator-config.ts')
 const l2PagePath = join(process.cwd(), 'src', 'components', 'blocks', 'ToolL2PageContent.tsx')
+const l3PagePath = join(process.cwd(), 'src', 'app', '[locale]', '[tool]', '[slug]', 'ToolSlugPageContent.tsx')
 const aiVideoGeneratorDataPath = join(process.cwd(), 'src', 'data', 'en', 'ai-video-generator.json')
 const promptExamplesPath = join(process.cwd(), 'src', 'components', 'blocks', 'PromptExamples.tsx')
 const promptVideoSourcePath = join(process.cwd(), '_codex', 'ai-video-generator-assets', 'prompt-template-videos.source.json')
@@ -30,10 +32,14 @@ test('AI video pages reuse the shared video generator component', () => {
   assert.ok(existsSync(configPath), 'shared AI video model config should exist')
 
   const componentSource = readFileSync(componentPath, 'utf8')
+  const referenceUploaderSource = readFileSync(referenceUploaderPath, 'utf8')
   const configSource = readFileSync(configPath, 'utf8')
   const l2PageSource = readFileSync(l2PagePath, 'utf8')
+  const l3PageSource = readFileSync(l3PagePath, 'utf8')
 
   assert.match(componentSource, /data-video-model-selector/, 'video tool should render the reusable model selector')
+  assert.match(componentSource, /<ReferenceImageUploader/, 'video models should use the global reference image uploader')
+  assert.match(referenceUploaderSource, /max-w-60/, 'the global uploader should provide the larger single-reference tile')
   assert.match(componentSource, /AI_VIDEO_GENERATOR_MODEL_GROUPS/, 'video tool should use grouped video model config')
   assert.match(componentSource, /md:w-\[640px\] md:grid-cols-\[210px_minmax\(0,430px\)\]/, 'video model selector should keep the image-tool two-level dropdown shape')
   assert.match(componentSource, /data-generation-tool-shell/, 'video tool should share the image-tool shell contract')
@@ -48,9 +54,13 @@ test('AI video pages reuse the shared video generator component', () => {
   assert.match(configSource, /'seedance-2-mini'/, 'model config should include Seedance Mini video')
   assert.match(configSource, /'kling-3'/, 'model config should include Kling video')
 
-  assert.match(l2PageSource, /<AiVideoGeneratorTool[\s\S]*modelId="seedance-2"[\s\S]*allowModelSelect/, 'AI Video Generator should render the shared video tool with selectable video models')
-  assert.match(l2PageSource, /topComp === 'seedance-2'[\s\S]*<AiVideoGeneratorTool[\s\S]*modelId="seedance-2"/, 'Seedance model page should reuse the shared video tool')
-  assert.match(l2PageSource, /topComp === 'kling-3'[\s\S]*<AiVideoGeneratorTool[\s\S]*modelId="kling-3"/, 'Kling model page should reuse the shared video tool')
+  assert.match(l2PageSource, /const VIDEO_GENERATOR_DEFAULT_MODELS = \{[\s\S]*'ai-video-generator': 'grok-1-5-video'[\s\S]*'seedance-2': 'seedance-2'[\s\S]*'kling-3': 'kling-3'/, 'video landing pages should map to their page-specific default models')
+  assert.match(l2PageSource, /videoGeneratorDefaultModel \? \([\s\S]*<AiVideoGeneratorTool[\s\S]*modelId=\{videoGeneratorDefaultModel\}[\s\S]*allowModelSelect/, 'video landing pages should share one selectable generator branch')
+  assert.equal((l2PageSource.match(/<AiVideoGeneratorTool/g) || []).length, 1, 'L2 video landing pages should render one shared generator implementation')
+  assert.match(componentSource, /defaultMode\?: AiVideoGeneratorModeId/, 'shared video generator should accept a page-level default mode')
+  assert.match(componentSource, /getInitialVideoMode\(modelConfig, defaultMode\)/, 'shared video generator should resolve page mode against the active model')
+  assert.match(l3PageSource, /<AiVideoGeneratorTool[\s\S]*modelId="seedance-2"[\s\S]*defaultMode=\{videoWorkflowDefaultMode\}[\s\S]*allowModelSelect/, 'video workflow pages should reuse the shared selectable generator with a route-specific default mode')
+  assert.doesNotMatch(l3PageSource, /SeedanceHeroPlaceholder/, 'video workflow pages should not keep the legacy Seedance placeholder')
   assert.doesNotMatch(l2PageSource, /<SeedanceHeroPlaceholder/, 'Seedance should not keep the legacy placeholder generator')
   assert.doesNotMatch(l2PageSource, /<KlingHeroPlaceholder/, 'Kling should not keep the legacy placeholder generator')
 })

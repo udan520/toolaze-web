@@ -38,6 +38,7 @@ export const TOOL_SUPPORTED_LOCALES: Record<string, readonly string[]> = {
   'ai-dance-generator': ALL_LOCALE_CODES,
   'photo-restoration': ALL_LOCALE_CODES,
   'ai-image-generator': ALL_LOCALE_CODES,
+  'ai-video-generator': ALL_LOCALE_CODES,
   'text-to-image-generator': ALL_LOCALE_CODES,
   'ai-image-to-image-generator': ALL_LOCALE_CODES,
   'world-cup-ai-image-generator': ALL_LOCALE_CODES,
@@ -61,6 +62,7 @@ const MODEL_SUPPORTED_LOCALES: Record<string, readonly string[]> = {
   'seedance-2-5': ALL_LOCALE_CODES,
   'seedance-2': ALL_LOCALE_CODES,
   'kling-3': ALL_LOCALE_CODES,
+  'grok-imagine-video-1-5': ALL_LOCALE_CODES,
 }
 
 export function parseLocalePath(pathname: string): {

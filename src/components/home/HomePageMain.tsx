@@ -175,6 +175,22 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
 
   // Load AI Video models（标题/模型名仍来自 L2；描述用 common 提炼文案）
   const aiVideoTools: ToolCard[] = []
+  const grokVideoCard = await loadToolData(
+    'ai-video-generator',
+    locale,
+    getModelTitle,
+    getModelDesc,
+    getFeaturedDesc,
+    getModelMeta
+  )
+  if (grokVideoCard) {
+    aiVideoTools.push({
+      ...applyHomepageToolCardSummary(grokVideoCard, cardSummaries),
+      tool: 'grok-1-5-video',
+      modelName: 'Grok 1.5 Video',
+      href: '/model/grok-imagine-video-1-5',
+    })
+  }
   for (const tool of VIDEO_MODEL_L2S) {
     const card = await loadToolData(tool, locale, getModelTitle, getModelDesc, getFeaturedDesc, getModelMeta)
     if (card) aiVideoTools.push(applyHomepageToolCardSummary(card, cardSummaries))
@@ -386,10 +402,10 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
             </svg>
           </Link>
           <Link
-            href="/ai-image-to-image-generator"
+            href="/ai-video-generator"
             className="inline-flex items-center gap-2 px-8 py-3.5 bg-white text-indigo-600 font-bold rounded-full border-2 border-indigo-200 hover:border-indigo-400 hover:bg-indigo-50 transition-all duration-300"
           >
-            {home?.ctaImageEdit ?? 'AI Image to Image Generator'}
+            {home?.ctaVideo ?? 'AI Video Generator'}
           </Link>
         </div>
       </header>

@@ -11,7 +11,7 @@ import { getImageUploadUrl } from '@/lib/upload-url'
 import { useCommonTranslations } from '@/lib/use-common-translations'
 import DeleteIcon from './icons/DeleteIcon'
 import CloseIcon from './icons/CloseIcon'
-import ImageReplaceButton from './ImageReplaceButton'
+import ReferenceImageUploader from './ReferenceImageUploader'
 import Breadcrumb from './Breadcrumb'
 import type { BreadcrumbItem } from './Breadcrumb'
 import { calculateImageGenerationCredits } from '@/lib/generation-credits'
@@ -1179,7 +1179,6 @@ export default function AiImageGenerationTool({
   const [creditExhaustedModalOpen, setCreditExhaustedModalOpen] = useState(false)
   const [generatingSeconds, setGeneratingSeconds] = useState(0)
   const [isUserSignedIn, setIsUserSignedIn] = useState(false)
-  const fileInputRef = useRef<HTMLInputElement>(null)
   const promptTextareaRef = useRef<HTMLTextAreaElement>(null)
   const modelSelectorRef = useRef<HTMLDivElement>(null)
   const historyItemRefs = useRef(new Map<string, HTMLDivElement>())
@@ -1830,43 +1829,23 @@ export default function AiImageGenerationTool({
     })
   }
 
-  const pickReplacementImage = (onReplace: (file: File) => void) => {
-    const input = document.createElement('input')
-    input.type = 'file'
-    input.accept = 'image/jpeg,image/jpg,image/png,image/webp'
-    input.onchange = (event) => {
-      const file = (event.target as HTMLInputElement).files?.[0]
-      if (!file || !file.type.startsWith('image/')) return
-      if (file.size > MAX_FILE_SIZE) {
-        showToast(formatToolText(toolText.fileTooLarge, { name: file.name }), 'error')
-        return
+  const replaceRemoteImageWithFile = (index: number, file: File) => {
+    setRemoteImageUrls((prev) => prev.filter((_, itemIndex) => itemIndex !== index))
+    setImageFiles((prev) => [
+      ...prev,
+      { file, preview: URL.createObjectURL(file) },
+    ].slice(0, MAX_IMAGES))
+  }
+
+  const replaceLocalImageWithFile = (index: number, file: File) => {
+    setImageFiles((prev) => {
+      const nextFiles = [...prev]
+      URL.revokeObjectURL(nextFiles[index].preview)
+      nextFiles[index] = {
+        file,
+        preview: URL.createObjectURL(file),
       }
-      onReplace(file)
-    }
-    input.click()
-  }
-
-  const replaceRemoteImage = (index: number) => {
-    pickReplacementImage((file) => {
-      setRemoteImageUrls((prev) => prev.filter((_, itemIndex) => itemIndex !== index))
-      setImageFiles((prev) => [
-        ...prev,
-        { file, preview: URL.createObjectURL(file) },
-      ].slice(0, MAX_IMAGES))
-    })
-  }
-
-  const replaceLocalImage = (index: number) => {
-    pickReplacementImage((file) => {
-      setImageFiles((prev) => {
-        const nextFiles = [...prev]
-        URL.revokeObjectURL(nextFiles[index].preview)
-        nextFiles[index] = {
-          file,
-          preview: URL.createObjectURL(file),
-        }
-        return nextFiles
-      })
+      return nextFiles
     })
   }
 
@@ -1885,15 +1864,6 @@ export default function AiImageGenerationTool({
     setRemoteImageUrls([])
   }
 
-  const onDrop = (e: React.DragEvent) => {
-    e.preventDefault()
-    if (e.dataTransfer.files.length) handleFiles(e.dataTransfer.files)
-  }
-
-  const onDragOver = (e: React.DragEvent) => {
-    e.preventDefault()
-    e.stopPropagation()
-  }
 
   const getGenerationAnalyticsPayload = useCallback((extra: Record<string, string | number | boolean | undefined> = {}) => {
     const referenceImageCount = imageFiles.length + remoteImageUrls.length
@@ -2310,7 +2280,6 @@ export default function AiImageGenerationTool({
   const handleClear = () => {
     clearAllImages()
     setPrompt(hidePromptInput ? defaultPrompt : '')
-    if (fileInputRef.current) fileInputRef.current.value = ''
   }
 
   const formatTagValue = (value: string | undefined): string => {
@@ -3674,142 +3643,46 @@ export default function AiImageGenerationTool({
                 </div>
               </div>
             )}
-            {/* Image Upload (Image to Image) - 小正方形一排三个 */}
+            {/* Image Upload (Image to Image) */}
             {activeTab === 'image-to-image' && (
-              <div>
-                <div className="flex items-center justify-between mb-2">
-                  <label className="text-xs font-semibold text-slate-500 tracking-wide">
-                    {sceneText?.uploadTitle || (MAX_IMAGES === 1 ? 'Upload your image' : formatToolText(toolText.uploadUpTo, { count: MAX_IMAGES }))}
-                  </label>
-                  {(imageFiles.length > 0 || remoteImageUrls.length > 0) && (
-                    <span className="text-xs font-medium text-slate-400">{imageFiles.length + remoteImageUrls.length}/{MAX_IMAGES}</span>
-                  )}
-                </div>
-                <div className={`grid gap-2 ${MAX_IMAGES === 1 ? 'grid-cols-1 max-w-40' : 'grid-cols-3'}`}>
-                  {/* 上传占位：第一格 */}
-                  {imageFiles.length + remoteImageUrls.length < MAX_IMAGES && (
-                    <div
-                      onClick={() => fileInputRef.current?.click()}
-                      onDrop={onDrop}
-                      onDragOver={onDragOver}
-                      className="aspect-square rounded-lg border-2 border-dashed border-[#C7D2FE] bg-[#EEF2FF]/50 cursor-pointer hover:border-[#4F46E5]/50 hover:bg-[#E0E7FF]/50 transition-all duration-200 flex flex-col items-center justify-center"
-                    >
-                      <input
-                        type="file"
-                        ref={fileInputRef}
-                        accept="image/jpeg,image/jpg,image/png,image/webp"
-                        multiple={MAX_IMAGES > 1}
-                        className="hidden"
-                        onChange={(e) => {
-                          if (e.target.files?.length) handleFiles(e.target.files)
-                          e.target.value = ''
-                        }}
-                      />
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mb-1">
-                        <line x1="12" y1="5" x2="12" y2="19" />
-                        <line x1="5" y1="12" x2="19" y2="12" />
-                      </svg>
-                      <span className="text-xs font-medium text-slate-500">{toolText.upload}</span>
-                    </div>
-                  )}
-                  {remoteImageUrls.map((url, index) => {
+              <ReferenceImageUploader
+                items={[
+                  ...remoteImageUrls.map((url, index) => {
                     const previewState = remoteImagePreviewStates[url] || 'loading'
-                    const isReferencePreviewLoading = previewState === 'loading' || previewState === 'retrying'
-
-                    return (
-                      <div
-                        key={`${url}-${index}`}
-                        className="relative group aspect-square rounded-lg overflow-hidden border border-[#E0E7FF] bg-slate-100 cursor-pointer"
-                        onClick={() => setPreviewImage(url)}
-                      >
-                        {previewState !== 'failed' && (
-                          <img
-                            data-left-remote-reference-image
-                            src={previewState === 'retrying' ? normalizeReusableReferenceImageUrl(url) : getReferencePreviewUrl(url)}
-                            alt={`${toolText.inputAlt} ${index + 1}`}
-                            className={`w-full h-full object-cover transition-opacity duration-200 ${isReferencePreviewLoading ? 'opacity-0' : 'opacity-100'}`}
-                            loading="lazy"
-                            decoding="async"
-                            onLoad={() => setRemoteImagePreviewState(url, 'loaded')}
-                            onError={() => setRemoteImagePreviewState(url, previewState === 'retrying' ? 'failed' : 'retrying')}
-                          />
-                        )}
-                        {isReferencePreviewLoading && (
-                          <div
-                            data-left-remote-reference-loading
-                            className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-slate-100 text-xs font-semibold text-slate-500"
-                          >
-                            <span className="h-5 w-5 rounded-full border-2 border-[#C7D2FE] border-t-[#4F46E5] animate-spin" />
-                            <span>{toolText.referenceImageLoading}</span>
-                          </div>
-                        )}
-                        {previewState === 'failed' && (
-                          <div
-                            data-left-remote-reference-failed
-                            className="absolute inset-0 flex items-center justify-center bg-slate-100 px-3 text-center text-xs font-semibold text-slate-500"
-                          >
-                            Image Failed
-                          </div>
-                        )}
-                        <ImageReplaceButton
-                          onReplace={() => replaceRemoteImage(index)}
-                          label={toolText.replace}
-                        />
-                        <button
-                          type="button"
-                          onClick={(e) => {
-                            e.stopPropagation()
-                            setRemoteImageUrls((prev) => prev.filter((_, itemIndex) => itemIndex !== index))
-                          }}
-                          className="absolute top-1 right-1 w-6 h-6 rounded-md bg-white/80 flex items-center justify-center shadow-sm z-10 text-black [&_svg]:flex-shrink-0 md:opacity-0 md:invisible md:group-hover:opacity-100 md:group-hover:visible md:transition-opacity"
-                          title={toolText.delete}
-                        >
-                          <DeleteIcon size={16} />
-                        </button>
-                      </div>
-                    )
-                  })}
-
-                  {/* 已上传图片：小正方形 + 序号 */}
-                  {imageFiles.map((item, index) => (
-                    <div
-                      key={index}
-                      className="relative group aspect-square rounded-lg overflow-hidden border border-[#E0E7FF] bg-slate-100 cursor-pointer"
-                    >
-                      <img
-                        src={item.preview}
-                        alt={`${toolText.upload} ${index + 1}`}
-                        className="w-full h-full object-cover"
-                      />
-                      <ImageReplaceButton
-                        onReplace={() => replaceLocalImage(index)}
-                        label={toolText.replace}
-                      />
-                      {/* 序号：右下角 - 深灰色圆角方形，白色数字 */}
-                      <span className="absolute bottom-1 right-1 w-5 h-5 rounded-md bg-white/80 text-black text-xs font-bold flex items-center justify-center shadow-sm z-10">
-                        {index + 1}
-                      </span>
-                      {/* 删除按钮：右上角 - 与右下角序号同款底色和形状，Web hover 显示，H5 常显 */}
-                      <button
-                        type="button"
-                        onClick={(e) => {
-                          e.stopPropagation()
-                          removeImage(index)
-                        }}
-                        className="absolute top-1 right-1 w-6 h-6 rounded-md bg-white/80 flex items-center justify-center shadow-sm z-10 text-black [&_svg]:flex-shrink-0 md:opacity-0 md:invisible md:group-hover:opacity-100 md:group-hover:visible md:transition-opacity"
-                        title={toolText.delete}
-                      >
-                        <DeleteIcon size={16} />
-                      </button>
-                    </div>
-                  ))}
-                </div>
-                <p className="text-xs text-slate-400 mt-1.5">
-                  {sceneText?.uploadHelper || formatToolText(toolText.fileLimit, { count: MAX_IMAGES }).replace('30MB', `${MAX_FILE_SIZE_MB}MB`)}
-                </p>
-              </div>
+                    return {
+                      id: `remote-${url}-${index}`,
+                      src: previewState === 'retrying' ? normalizeReusableReferenceImageUrl(url) : getReferencePreviewUrl(url),
+                      alt: `${toolText.inputAlt} ${index + 1}`,
+                      status: previewState,
+                      onLoad: () => setRemoteImagePreviewState(url, 'loaded'),
+                      onError: () => setRemoteImagePreviewState(url, previewState === 'retrying' ? 'failed' : 'retrying'),
+                      onPreview: () => setPreviewImage(url),
+                      onRemove: () => setRemoteImageUrls((prev) => prev.filter((_, itemIndex) => itemIndex !== index)),
+                      onReplace: (file: File) => replaceRemoteImageWithFile(index, file),
+                    }
+                  }),
+                  ...imageFiles.map((item, index) => ({
+                    id: `local-${item.file.name}-${index}`,
+                    src: item.preview,
+                    alt: `${toolText.upload} ${index + 1}`,
+                    onRemove: () => removeImage(index),
+                    onReplace: (file: File) => replaceLocalImageWithFile(index, file),
+                  })),
+                ]}
+                maxImages={MAX_IMAGES}
+                maxFileSizeMb={MAX_FILE_SIZE_MB}
+                onFiles={handleFiles}
+                onValidationError={(file) => showToast(formatToolText(toolText.fileTooLarge, { name: file.name }), 'error')}
+                label={sceneText?.uploadTitle || (MAX_IMAGES === 1 ? 'Upload your image' : formatToolText(toolText.uploadUpTo, { count: MAX_IMAGES }))}
+                helperText={sceneText?.uploadHelper || formatToolText(toolText.fileLimit, { count: MAX_IMAGES }).replace('30MB', `${MAX_FILE_SIZE_MB}MB`)}
+                uploadLabel={toolText.upload}
+                replaceLabel={toolText.replace}
+                deleteLabel={toolText.delete}
+                loadingLabel={toolText.referenceImageLoading}
+                size="compact"
+                testIdPrefix="image-reference"
+              />
             )}
-
             {isCouplePhotoMakerMode && (
               <div className="flex flex-col flex-1 min-h-0">
                 <label className="block text-xs font-semibold text-slate-500 tracking-wide mb-2">{toolText.styleTemplates}</label>

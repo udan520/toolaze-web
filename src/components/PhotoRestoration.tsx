@@ -1,8 +1,9 @@
 'use client'
 
-import { useCallback, useRef, useState } from 'react'
+import { useCallback, useState } from 'react'
 import { getImageUploadUrl } from '@/lib/upload-url'
 import { useCommonTranslations } from '@/lib/use-common-translations'
+import ReferenceImageUploader from '@/components/ReferenceImageUploader'
 
 const MAX_FILE_SIZE = 30 * 1024 * 1024
 const DAILY_LIMIT_KEY = 'photo_restoration_last_used_date'
@@ -50,8 +51,6 @@ export default function PhotoRestoration({ initialTranslations, heroTitle, heroD
   const [previewImage, setPreviewImage] = useState<string | null>(null)
   const [isProcessing, setIsProcessing] = useState(false)
   const [error, setError] = useState<string | null>(null)
-  const [dragActive, setDragActive] = useState(false)
-  const fileInputRef = useRef<HTMLInputElement>(null)
 
   const isDailyLimitEnabled = () => {
     if (typeof window === 'undefined') return false
@@ -167,18 +166,10 @@ export default function PhotoRestoration({ initialTranslations, heroTitle, heroD
     }
   }, [file, isProcessing, text.createFailed, text.dailyLimit, text.restorationFailed, text.timeout, text.uploadFailed])
 
-  const handleDrop = useCallback((e: React.DragEvent<HTMLDivElement>) => {
-    e.preventDefault()
-    setDragActive(false)
-    const f = e.dataTransfer.files?.[0]
-    if (f) handlePickFile(f)
-  }, [handlePickFile])
-
   const clearUploadedImage = () => {
     if (previewUrl) URL.revokeObjectURL(previewUrl)
     setPreviewUrl(null)
     setFile(null)
-    if (fileInputRef.current) fileInputRef.current.value = ''
   }
 
   const handleDownload = () => {
@@ -196,69 +187,26 @@ export default function PhotoRestoration({ initialTranslations, heroTitle, heroD
       <div className="bg-white rounded-3xl border border-indigo-100 shadow-lg p-4 md:p-6">
         <div className="grid grid-cols-1 gap-4 md:gap-6 items-start lg:grid-cols-[380px_1fr]">
           <div data-generator-controls-panel className="rounded-2xl border border-slate-200 bg-white p-5 md:p-6 shadow-sm">
-            <div
-              onDragEnter={(e) => {
-                e.preventDefault()
-                setDragActive(true)
-              }}
-              onDragOver={(e) => {
-                e.preventDefault()
-                setDragActive(true)
-              }}
-              onDragLeave={(e) => {
-                e.preventDefault()
-                if (e.currentTarget === e.target) setDragActive(false)
-              }}
-              onDrop={handleDrop}
-              className={`w-full rounded-xl border-2 border-dashed py-7 px-4 text-center transition-colors ${
-                dragActive
-                  ? 'border-indigo-400 bg-indigo-50'
-                  : 'border-indigo-200 bg-[#F8FAFF] hover:border-indigo-300'
-              }`}
-            >
-              {previewUrl ? (
-                <div className="relative">
-                  <img src={previewUrl} alt={text.uploadPreviewAlt} className="w-full h-44 object-cover rounded-lg border border-slate-200" />
-                  <button
-                    type="button"
-                    onClick={clearUploadedImage}
-                    className="absolute top-2 right-2 h-8 w-8 rounded-full bg-white/95 text-slate-600 border border-slate-200 hover:bg-slate-50"
-                    aria-label={text.removeUploadedImage}
-                  >
-                    ✕
-                  </button>
-                </div>
-              ) : (
-                <>
-                  <div className="mb-4 flex justify-center text-indigo-500">
-                    <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                      <path d="M12 16V7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                      <path d="M8.5 10.5L12 7l3.5 3.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                      <rect x="4" y="16" width="16" height="4" rx="2" stroke="currentColor" strokeWidth="2" />
-                    </svg>
-                  </div>
-                  <p className="text-sm text-slate-600 mb-2 leading-relaxed font-medium">{text.uploadTitle}</p>
-                  <p className="text-xs text-slate-400 mb-4">{text.uploadFormats}</p>
-                  <button
-                    type="button"
-                    onClick={() => fileInputRef.current?.click()}
-                    className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white text-sm font-semibold px-6 py-2 transition-colors"
-                  >
-                    {text.uploadButton}
-                  </button>
-                </>
-              )}
-            </div>
-            <input
-              ref={fileInputRef}
-              type="file"
-              accept="image/jpeg,image/jpg,image/png,image/webp"
-              className="hidden"
-              onChange={(e) => {
-                const f = e.target.files?.[0]
-                if (f) handlePickFile(f)
-                e.currentTarget.value = ''
-              }}
+            <ReferenceImageUploader
+              items={previewUrl ? [{
+                id: 'photo-restoration-source',
+                src: previewUrl,
+                alt: text.uploadPreviewAlt,
+                onRemove: clearUploadedImage,
+                onReplace: handlePickFile,
+              }] : []}
+              maxImages={1}
+              maxFileSizeMb={30}
+              onFiles={(files) => handlePickFile(files[0])}
+              onInvalidType={() => setError(text.invalidImage)}
+              onValidationError={() => setError(text.tooLarge)}
+              label={text.uploadTitle}
+              helperText={text.uploadFormats}
+              uploadLabel={text.uploadButton}
+              replaceLabel={text.uploadButton}
+              deleteLabel={text.removeUploadedImage}
+              size="large"
+              testIdPrefix="photo-restoration-reference"
             />
             <button
               type="button"

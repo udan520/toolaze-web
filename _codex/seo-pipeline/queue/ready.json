@@ -1,6 +1,12 @@
 {
   "tasks": [
     {
+      "taskId": "grok-video-15-seo-refresh-20260721",
+      "slug": "grok-imagine-video-1-5",
+      "pageType": "model",
+      "status": "ready_for_publish"
+    },
+    {
       "taskId": "2026-07-21-ai-video-generator-localization",
       "slug": "ai-video-generator",
       "pageType": "l2",

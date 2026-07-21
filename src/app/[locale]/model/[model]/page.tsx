@@ -12,6 +12,8 @@ import { Seedream50LiteLandingPage } from '@/components/Seedream50LiteLandingPag
 import { getSeedream50LitePageMetadata } from '@/lib/seedream-5-0-lite-landing-copy'
 import { Seedream50ProLandingPage } from '@/components/Seedream50ProLandingPage'
 import { getSeedream50ProPageMetadata } from '@/lib/seedream-5-0-pro-landing-copy'
+import { GrokImagineVideo15LandingPage } from '@/components/GrokImagineVideo15LandingPage'
+import { getGrokImagineVideo15PageMetadata } from '@/lib/grok-imagine-video-1-5-landing-copy'
 
 const SUPPORTED_LOCALES = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it'] as const
 
@@ -27,6 +29,7 @@ const MODEL_TOOL_MAP: Record<string, string> = {
   'seedance-2-5': 'seedance-2-5',
   'seedance-2': 'seedance-2',
   'kling-3': 'kling-3',
+  'grok-imagine-video-1-5': 'grok-imagine-video-1-5',
 }
 
 interface PageProps {
@@ -67,6 +70,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (tool === 'seedream-5-0-pro') {
     return getSeedream50ProPageMetadata(locale, `https://toolaze.com/${locale}/model/${model}`)
+  }
+
+  if (tool === 'grok-imagine-video-1-5') {
+    return getGrokImagineVideo15PageMetadata(locale, `https://toolaze.com/${locale}/model/${model}`)
   }
 
   const content = await getL2SeoContent(tool, locale)
@@ -123,6 +130,7 @@ export default async function LocalizedModelPage({ params }: PageProps) {
     tool !== 'wan-2-7-image' &&
     tool !== 'seedream-5-0-lite' &&
     tool !== 'seedream-5-0-pro' &&
+    tool !== 'grok-imagine-video-1-5' &&
     !hasLocaleL2JsonFile(tool, locale)
   ) {
     redirect(`/model/${model}`)
@@ -146,6 +154,10 @@ export default async function LocalizedModelPage({ params }: PageProps) {
 
   if (tool === 'seedream-5-0-pro') {
     return <Seedream50ProLandingPage locale={locale} />
+  }
+
+  if (tool === 'grok-imagine-video-1-5') {
+    return <GrokImagineVideo15LandingPage locale={locale} />
   }
 
   return <ToolL2PageContent locale={locale} tool={tool} />

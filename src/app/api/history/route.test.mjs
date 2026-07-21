@@ -17,11 +17,8 @@ test.after(() => {
   delete globalThis[Symbol.for('toolaze.localDevAuthState')]
   rmSync(tempStateDir, { recursive: true, force: true })
 })
-import historyRoute from './route.js'
-import localDevAuth from '../_shared/local-dev-auth.js'
-
-const { POST } = historyRoute
-const { resetLocalDevHistoryForTests } = localDevAuth
+import { POST } from './route.js'
+import { resetLocalDevHistoryForTests } from '../_shared/local-dev-auth.js'
 
 function createHistoryPostRequest() {
   return new Request('http://localhost:3016/api/history', {

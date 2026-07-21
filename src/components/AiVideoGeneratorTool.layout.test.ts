@@ -4,6 +4,7 @@ import { join } from 'node:path'
 import test from 'node:test'
 
 const source = readFileSync(join(process.cwd(), 'src', 'components', 'AiVideoGeneratorTool.tsx'), 'utf8')
+const uploaderSource = readFileSync(join(process.cwd(), 'src', 'components', 'ReferenceImageUploader.tsx'), 'utf8')
 
 test('AI video generator renders hero copy inside the right demo panel', () => {
   const splitPanelIndex = source.indexOf("flex min-h-0 min-w-0 flex-col gap-4")
@@ -72,14 +73,14 @@ test('AI video generator keeps prompt sizing aligned with the image tool', () =>
   assert.equal(source.includes('rounded-2xl border border-slate-200 bg-slate-50/70'), false, 'prompt textarea should not keep the older video-only styling')
 })
 
-test('AI video generator reuses the compact image upload grid pattern', () => {
-  assert.notEqual(source.indexOf('data-video-upload-grid'), -1, 'video upload should expose a compact upload grid')
-  assert.notEqual(source.indexOf('data-video-upload-tile'), -1, 'video upload should use a square upload tile')
-  assert.notEqual(source.indexOf("modelConfig.maxImages === 1 ? 'grid-cols-1 max-w-40' : 'grid-cols-3'"), -1, 'single-reference video uploads should match the image tool max-w-40 tile')
-  assert.match(source, /className="aspect-square rounded-lg border-2 border-dashed border-\[#C7D2FE\]/, 'video upload tile should match the image tool square dashed tile')
-  assert.notEqual(source.indexOf('<ImageReplaceButton'), -1, 'uploaded video references should reuse the image replacement affordance')
+test('AI video generator uses the shared compact reference-image tile', () => {
+  assert.match(source, /<ReferenceImageUploader/, 'video upload should reuse the global reference uploader')
+  assert.match(source, /size="compact"/, 'video reference uploads should use the compact tile shared with image generators')
+  assert.match(uploaderSource, /data-reference-upload-tile/, 'shared upload should expose a square upload tile')
+  assert.match(uploaderSource, /max-w-28/, 'shared compact upload should stay close to the image generator grid tile size')
+  assert.match(uploaderSource, /<ImageReplaceButton/, 'shared uploader should expose image replacement')
   assert.notEqual(source.indexOf('removeImage(index)'), -1, 'uploaded video references should support the same inline delete action')
-  assert.notEqual(source.indexOf('multiple={modelConfig.maxImages > 1}'), -1, 'single-reference video models should not open a multi-file picker')
+  assert.match(uploaderSource, /maxImages > 1/, 'single-reference models should not open a multi-file picker')
   assert.equal(source.includes('min-h-[150px]'), false, 'video upload should not use the old large dropzone')
   assert.equal(source.includes('clearImages'), false, 'video upload should not keep a separate clear-all control')
 })
@@ -89,7 +90,7 @@ test('AI video generator uses the image-tool style two-level model selector abov
   const menuIndex = source.indexOf('data-video-model-menu')
   const desktopGroupIndex = source.indexOf('data-video-model-groups')
   const desktopOptionsIndex = source.indexOf('data-video-model-options')
-  const uploadIndex = source.indexOf('data-video-upload-grid')
+  const uploadIndex = source.indexOf('<ReferenceImageUploader')
 
   assert.notEqual(selectorIndex, -1, 'video model selector should exist')
   assert.notEqual(menuIndex, -1, 'video model selector should expose a menu')
@@ -111,6 +112,16 @@ test('AI video generator uses the image-tool style two-level model selector abov
   assert.equal(source.includes('inline-flex h-8 min-w-8'), false, 'video model mark should not make the selector taller than the image tool')
   assert.equal(source.includes('<select'), false, 'video model selector should not use the old dropdown select')
   assert.equal(source.includes('text.modeHint'), false, 'video tool should not render the mode hint sentence')
+})
+
+test('Seedance secondary model options show Hot and New badges', () => {
+  const configSource = readFileSync(join(process.cwd(), 'src', 'lib', 'ai-video-generator-config.ts'), 'utf8')
+
+  assert.match(configSource, /id: 'seedance-2',[\s\S]*?badge: 'Hot'/)
+  assert.match(configSource, /id: 'seedance-2-mini',[\s\S]*?badge: 'New'/)
+  assert.match(source, /option\.badge && \(/)
+  assert.match(source, /option\.badge === 'Hot' \? 'bg-red-500' : 'bg-emerald-500'/)
+  assert.match(source, /\{option\.badge\}/)
 })
 
 test('AI video generator ships the local Grok logo asset used by the selector', () => {
@@ -241,6 +252,17 @@ test('AI video generator right side uses the image-style sample and history feed
   assert.match(source, /data-video-result-item/)
   assert.match(source, /rightMode === 'history' \? \(\s*renderDesktopVideoResultFeed\(\)\s*\) : \(/)
   assert.equal(source.includes('<aside className="mt-4 rounded-2xl border border-[#E0E7FF] bg-white p-4'), false, 'video history should not render as a separate bottom panel')
+})
+
+test('AI video generator opens on Demo but switches to History after an in-page generation', () => {
+  const initialHistoryLoad = source.match(/const loadInlineHistory = async \(\) => \{[\s\S]*?\n    \}/)?.[0] || ''
+  const generateFlow = source.match(/const handleGenerate = async \(\) => \{[\s\S]*?\n  \}/)?.[0] || ''
+
+  assert.match(source, /const \[rightMode, setRightMode\] = useState<RightPanelMode>\('sample'\)/)
+  assert.match(source, /const hasDesktopResultTabs = isGenerating \|\| currentRequest\?\.status === 'failed' \|\| history\.length > 0/)
+  assert.doesNotMatch(initialHistoryLoad, /setRightMode\('history'\)/, 'loading persisted history must keep the initial Demo selection')
+  assert.match(generateFlow, /setCurrentRequest\(request\)[\s\S]*setRightMode\('history'\)/, 'starting a generation should reveal and select History')
+  assert.match(generateFlow, /addHistoryItemToFeed\(historyItem\)[\s\S]*setRightMode\('history'\)/, 'a completed generation should remain on History')
 })
 
 test('AI video generator aligns the outer desktop shell with the image generator shell', () => {

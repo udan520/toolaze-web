@@ -37,6 +37,11 @@ interface ToolL2PageContentProps {
 }
 
 const AI_IMAGE_TOOL_TOP_COMPONENTS = new Set(['gpt-image-2'])
+const VIDEO_GENERATOR_DEFAULT_MODELS = {
+  'ai-video-generator': 'grok-1-5-video',
+  'seedance-2': 'seedance-2',
+  'kling-3': 'kling-3',
+} as const
 type TopToolImageModelId =
   | 'gpt-image-2'
   | 'grok-1-5-image'
@@ -461,6 +466,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
 
     // 顶部功能：优先使用 JSON 中的 topComponent，否则用 tool
     const topComp = (content.topComponent || tool) as string
+    const videoGeneratorDefaultModel = VIDEO_GENERATOR_DEFAULT_MODELS[topComp as keyof typeof VIDEO_GENERATOR_DEFAULT_MODELS]
     const isScenePage = content.visiblePageType === 'scene'
     const isAiImageToolPage = content.pageGroup === 'ai-tools' || AI_IMAGE_TOOL_TOP_COMPONENTS.has(topComp)
     const promptExampleTargetMode: PromptInsertMode | undefined =
@@ -1068,15 +1074,21 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                 </div>
               </div>
             </header>
-          ) : topComp === 'ai-video-generator' ? (
+          ) : videoGeneratorDefaultModel ? (
             <header className="bg-[#F8FAFF] pb-6 md:pb-12 w-full pl-0 pr-2 md:pl-0 md:pr-6">
               <div className="w-full max-w-full">
                 <div className="flex flex-col">
                   <AiVideoGeneratorTool
-                    modelId="seedance-2"
+                    modelId={videoGeneratorDefaultModel}
                     allowModelSelect
                     heroBreadcrumbItems={breadcrumbItems}
-                    heroTitleHtml={content.hero?.h1 || 'AI Video Generator'}
+                    heroTitleHtml={content.hero?.h1 || (
+                      topComp === 'seedance-2'
+                        ? 'Seedance 2.0'
+                        : topComp === 'kling-3'
+                          ? 'Kling 3.0'
+                          : 'AI Video Generator'
+                    )}
                     heroDescription={content.hero?.desc}
                     demoVideo={content.heroDemoVideo as { src?: string; ariaLabel?: string } | undefined}
                     initialTranslations={pageTranslations}
@@ -1101,36 +1113,6 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                 )}
               </div>
               <Seedance25LaunchUpdates copy={content.launchUpdates} />
-            </header>
-          ) : topComp === 'seedance-2' ? (
-            <header className="bg-[#F8FAFF] pb-6 md:pb-12 w-full pl-0 pr-2 md:pl-0 md:pr-6">
-              <div className="w-full max-w-full">
-                <div className="flex flex-col">
-                  <AiVideoGeneratorTool
-                    modelId="seedance-2"
-                    allowModelSelect
-                    heroBreadcrumbItems={breadcrumbItems}
-                    heroTitleHtml={content.hero?.h1 || 'Seedance 2.0'}
-                    heroDescription={content.hero?.desc}
-                    initialTranslations={pageTranslations}
-                  />
-                </div>
-              </div>
-            </header>
-          ) : topComp === 'kling-3' ? (
-            <header className="bg-[#F8FAFF] pb-6 md:pb-12 w-full pl-0 pr-2 md:pl-0 md:pr-6">
-              <div className="w-full max-w-full">
-                <div className="flex flex-col">
-                  <AiVideoGeneratorTool
-                    modelId="kling-3"
-                    allowModelSelect
-                    heroBreadcrumbItems={breadcrumbItems}
-                    heroTitleHtml={content.hero?.h1 || 'Kling 3.0'}
-                    heroDescription={content.hero?.desc}
-                    initialTranslations={pageTranslations}
-                  />
-                </div>
-              </div>
             </header>
           ) : topComp === 'nano-banana-2' ? (
             <header className="bg-[#F8FAFF] pb-6 md:pb-12 w-full pl-0 pr-2 md:pl-0 md:pr-6">

@@ -61,6 +61,74 @@ test('AI Dance is discoverable from global navigation, footer, homepage, and AI 
   assert.doesNotMatch(aiToolsCopySource, /Grok/)
 })
 
+test('Grok 1.5 Video is discoverable from AI Video navigation, footer, and homepage models', () => {
+  assert.match(navigationSource, /grok15Video/)
+  assert.match(navigationSource, /href=\{getLocalizedHref\('\/ai-video-generator'\)\}[\s\S]*grok15Video/)
+  assert.match(footerSource, /grok15Video/)
+  assert.match(footerSource, /href=\{getLocalizedHref\('\/ai-video-generator'\)\}[\s\S]*grok15Video/)
+  assert.match(homePageSource, /tool: 'grok-1-5-video'/)
+  assert.match(homePageSource, /href: '\/ai-video-generator'/)
+})
+
+test('AI Video model links follow Dance and show manufacturer icons', () => {
+  const desktopAiVideoBlock = navigationSource.slice(
+    navigationSource.indexOf('{/* 一级菜单：AI Video */}'),
+    navigationSource.indexOf("href={getLocalizedHref('/pricing')}", navigationSource.indexOf('{/* 一级菜单：AI Video */}')),
+  )
+  const mobileAiVideoBlock = navigationSource.slice(
+    navigationSource.indexOf('{/* AI Video 部分 */}'),
+    navigationSource.indexOf("href={getLocalizedHref('/pricing')}", navigationSource.indexOf('{/* AI Video 部分 */}')),
+  )
+
+  for (const block of [desktopAiVideoBlock, mobileAiVideoBlock]) {
+    const orderedRoutes = [
+      '/ai-dance-generator',
+      '/model/seedance-2-5',
+      '/model/seedance-2',
+      '/model/kling-3',
+      '/model/grok-imagine-video-1-5',
+    ]
+    const routeIndexes = orderedRoutes.map((route) => block.indexOf(`href={getLocalizedHref('${route}')}`))
+
+    assert.ok(routeIndexes.every((index) => index >= 0))
+    assert.deepEqual(routeIndexes, [...routeIndexes].sort((a, b) => a - b))
+    assert.match(block, /href=\{getLocalizedHref\('\/model\/seedance-2-5'\)\}[\s\S]*?<img src="\/model-logos\/bytedance\.svg"/)
+    assert.match(block, /href=\{getLocalizedHref\('\/model\/seedance-2'\)\}[\s\S]*?<img src="\/model-logos\/bytedance\.svg"/)
+    assert.match(block, /href=\{getLocalizedHref\('\/model\/kling-3'\)\}[\s\S]*?<img src="\/model-logos\/kling\.svg"/)
+    assert.match(block, /href=\{getLocalizedHref\('\/model\/grok-imagine-video-1-5'\)\}[\s\S]*?<img src="\/model-logos\/grok\.svg"/)
+  }
+})
+
+test('AI Image model links show their manufacturer icons on desktop and mobile', () => {
+  const desktopAiImageBlock = navigationSource.slice(
+    navigationSource.indexOf('{/* 一级菜单：AI Image */}'),
+    navigationSource.indexOf('{/* 一级菜单：AI Video */}'),
+  )
+  const mobileAiImageBlock = navigationSource.slice(
+    navigationSource.indexOf('{/* AI Image 部分 */}'),
+    navigationSource.indexOf('{/* AI Video 部分 */}'),
+  )
+  const modelIcons = [
+    ['/model/gpt-image-2', '/model-logos/openai.svg'],
+    ['/model/seedream-5-0-pro', '/model-logos/bytedance.svg'],
+    ['/model/wan-2-7-image', '/model-logos/wan.ico'],
+    ['/model/nano-banana-pro', '/model-logos/google-gemini.png'],
+    ['/model/nano-banana-2', '/model-logos/google-gemini.png'],
+    ['/model/seedream-4-5', '/model-logos/bytedance.svg'],
+    ['/model/seedream-5-0-lite', '/model-logos/bytedance.svg'],
+  ]
+
+  for (const block of [desktopAiImageBlock, mobileAiImageBlock]) {
+    for (const [route, icon] of modelIcons) {
+      const linkStart = block.indexOf(`href={getLocalizedHref('${route}')}`)
+      const nextLink = block.indexOf('<Link', linkStart + 1)
+      const link = block.slice(linkStart, nextLink >= 0 ? nextLink : block.length)
+      assert.ok(linkStart >= 0, `${route} should be present in AI Image navigation`)
+      assert.match(link, new RegExp(`<img src="${icon.replaceAll('.', '\\.')}`))
+    }
+  }
+})
+
 test('AI Dance is the first AI Tools menu item with a localized Hot label', () => {
   const desktopAiToolsBlock = navigationSource.slice(
     navigationSource.indexOf('{/* 一级菜单：AI Tools */}'),

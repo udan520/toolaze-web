@@ -54,6 +54,12 @@ export const HOME_MODEL_CARD_IMAGES = {
     height: 941,
     alt: 'AI Dance Generator source image preview',
   },
+  'grok-1-5-video': {
+    src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/prompt-templates/image-guided-motion.webp',
+    width: 1280,
+    height: 720,
+    alt: 'Grok 1.5 Video image-to-video motion preview',
+  },
   'seedance-2': {
     src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/seedance-2.jpg',
     width: 800,

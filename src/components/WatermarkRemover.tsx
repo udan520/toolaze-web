@@ -1,8 +1,9 @@
 'use client'
 
-import { useState, useRef, useCallback, useEffect } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 import { getImageUploadUrl } from '@/lib/upload-url'
 import { useCommonTranslations } from '@/lib/use-common-translations'
+import ReferenceImageUploader from '@/components/ReferenceImageUploader'
 
 const HIDDEN_PROMPT = 'Remove visible watermarks, logos, timestamp overlays, or text overlays from this image. Preserve the original subject, background, lighting, texture, and composition. Only edit the overlay areas.'
 const MAX_FILE_SIZE = 30 * 1024 * 1024 // 30MB
@@ -106,7 +107,6 @@ export default function WatermarkRemover({ initialTranslations, heroTitle, heroD
   const [error, setError] = useState<string | null>(null)
   const [toasts, setToasts] = useState<Array<{ id: string; msg: string; type: string }>>([])
   const [comparePressed, setComparePressed] = useState(false)
-  const fileInputRef = useRef<HTMLInputElement>(null)
 
   const showToast = (msg: string, type: 'success' | 'error' | 'warning' | 'info' = 'info') => {
     const id = Math.random().toString(36).substr(2, 9)
@@ -218,23 +218,6 @@ export default function WatermarkRemover({ initialTranslations, heroTitle, heroD
     }
   }, [preview])
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const f = e.target.files?.[0]
-    if (f) handleFileSelect(f)
-  }
-
-  const handleDrop = useCallback((e: React.DragEvent) => {
-    e.preventDefault()
-    e.stopPropagation()
-    const f = e.dataTransfer.files?.[0]
-    if (f) handleFileSelect(f)
-  }, [handleFileSelect])
-
-  const handleDrag = useCallback((e: React.DragEvent) => {
-    e.preventDefault()
-    e.stopPropagation()
-  }, [])
-
   const handleRegenerate = () => {
     if (!file || isProcessing) return
     processImage(file)
@@ -247,7 +230,6 @@ export default function WatermarkRemover({ initialTranslations, heroTitle, heroD
     setResultUrl(null)
     setError(null)
     setComparePressed(false)
-    if (fileInputRef.current) fileInputRef.current.value = ''
   }
 
   const [downloading, setDownloading] = useState(false)
@@ -320,14 +302,6 @@ export default function WatermarkRemover({ initialTranslations, heroTitle, heroD
 
   return (
     <div className="mx-auto w-full max-w-7xl" data-tool-watermark data-legacy-generator-layout>
-      <input
-        ref={fileInputRef}
-        type="file"
-        accept="image/*"
-        onChange={handleInputChange}
-        className="hidden"
-      />
-
       <div className="grid min-h-[620px] grid-cols-1 gap-4 lg:grid-cols-[390px_minmax(0,1fr)] lg:items-stretch">
         <aside
           data-generator-controls-panel
@@ -338,50 +312,29 @@ export default function WatermarkRemover({ initialTranslations, heroTitle, heroD
             <h2 className="mt-2 text-xl font-extrabold tracking-tight text-slate-950">{text.uploadNew}</h2>
           </div>
 
-          <div
-            onDragEnter={handleDrag}
-            onDragOver={handleDrag}
-            onDragLeave={handleDrag}
-            onDrop={handleDrop}
-            onClick={() => fileInputRef.current?.click()}
-            className="group relative cursor-pointer rounded-2xl border-2 border-dashed border-indigo-200 bg-[#F8FAFF] p-4 text-center transition-colors hover:border-indigo-300 hover:bg-indigo-50/70"
-          >
-            {preview ? (
-              <div className="relative overflow-hidden rounded-xl border border-slate-200 bg-white">
-                <img src={preview} alt={text.originalAlt} className="h-52 w-full object-contain" />
-                <div className="absolute inset-x-0 bottom-0 bg-slate-950/70 px-3 py-2 text-xs font-bold text-white">
-                  {text.uploadNew}
-                </div>
-              </div>
-            ) : (
-              <div className="flex min-h-52 flex-col items-center justify-center gap-3">
-                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-[#4F46E5] shadow-sm ring-1 ring-indigo-100">
-                  <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 16V4m0 0L8 8m4-4 4 4M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" />
-                  </svg>
-                </span>
-                <div>
-                  <p className="text-sm font-bold text-slate-700">{text.uploadTitle}</p>
-                  <p className="mt-1 text-xs leading-5 text-slate-500">{text.uploadFormats}</p>
-                </div>
-              </div>
-            )}
-          </div>
+          <ReferenceImageUploader
+            items={preview ? [{
+              id: 'watermark-remover-source',
+              src: preview,
+              alt: text.originalAlt,
+              onRemove: handleClear,
+              onReplace: handleFileSelect,
+            }] : []}
+            maxImages={1}
+            maxFileSizeMb={30}
+            onFiles={(files) => handleFileSelect(files[0])}
+            onInvalidType={() => setError(text.invalidImage)}
+            onValidationError={() => setError(text.tooLarge)}
+            label={text.uploadTitle}
+            helperText={text.uploadFormats}
+            uploadLabel={text.uploadNew}
+            replaceLabel={text.uploadNew}
+            deleteLabel={text.uploadNew}
+            size="large"
+            testIdPrefix="watermark-remover-reference"
+          />
 
           <div className="mt-5 space-y-3">
-            {preview && (
-              <button
-                type="button"
-                onClick={() => fileInputRef.current?.click()}
-                className="flex w-full items-center justify-center gap-2 rounded-xl border border-indigo-200 bg-white px-4 py-3 text-sm font-bold text-[#4F46E5] transition-colors hover:bg-indigo-50"
-              >
-                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-1m-4-8-4-4m0 0L8 8m4-4v12" />
-                </svg>
-                {text.uploadNew}
-              </button>
-            )}
-
             <button
               type="button"
               onClick={handleRegenerate}
