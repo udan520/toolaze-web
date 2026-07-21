@@ -13,6 +13,7 @@ const aiVideoGeneratorDemoPath = join(process.cwd(), 'public', 'videos', 'ai-vid
 const aiVideoGeneratorDemoSourcePath = join(process.cwd(), 'public', 'videos', 'ai-video-generator-grok-demo.source.json')
 const seoFactoryContentDir = join(process.cwd(), '_codex', 'seo-pipeline', 'tasks', '2026-07-21-ai-video-generator-localization', 'content')
 const seedanceSlugPagePath = join(process.cwd(), 'src', 'app', 'model', 'seedance-2', '[slug]', 'page.tsx')
+const legacySeedanceSlugPagePath = join(process.cwd(), 'src', 'app', 'seedance-2', '[slug]', 'page.tsx')
 const seedanceAllToolsPagePath = join(process.cwd(), 'src', 'app', 'model', 'seedance-2', 'all-tools', 'page.tsx')
 const localizedLocales = ['de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
 
@@ -93,7 +94,11 @@ test('AI video generator page includes prompt examples after how-to guidance', (
     assert.equal(sourceAsset.description, item.description, `${item.title} source description should match the page description`)
     assert.equal(sourceAsset.uploadDate, item.uploadDate, `${item.title} source upload date should match the page metadata`)
     assert.equal(`PT${sourceAsset.durationSeconds}S`, item.duration, `${item.title} source duration should match the page metadata`)
-    assert.ok(existsSync(join(process.cwd(), 'public', item.poster)), `${item.title} poster should exist in public assets`)
+    assert.match(
+      item.poster,
+      /^https:\/\/pub-efeb0c7b9b53478d960218de80c52e3d\.r2\.dev\/uploads\/ai-video-generator\/prompt-templates\/.+\.webp$/,
+      `${item.title} poster should use its stable R2-hosted WebP`,
+    )
   }
 
   const productAd = pageData.promptExamples.items.find((item) => item.title === 'Product Ad Prompt')
@@ -206,12 +211,16 @@ test('AI video generator exposes FAQ and permanent prompt videos as structured d
 
 test('legacy Seedance generic generator URL permanently redirects to the model page', () => {
   const slugPageSource = readFileSync(seedanceSlugPagePath, 'utf8')
+  const legacySlugPageSource = readFileSync(legacySeedanceSlugPagePath, 'utf8')
   const allToolsSource = readFileSync(seedanceAllToolsPagePath, 'utf8')
 
   assert.match(slugPageSource, /import \{ permanentRedirect \} from 'next\/navigation'/, 'legacy route should use a permanent redirect')
   assert.match(slugPageSource, /\[\.\.\.new Set\(\[\.\.\.slugs, 'ai-video-generator'\]\)\]/, 'legacy redirect slug should be included in static generation')
   assert.match(slugPageSource, /resolvedParams\.slug === 'ai-video-generator'[\s\S]*permanentRedirect\('\/model\/seedance-2'\)/, 'legacy generic slug should redirect to the canonical Seedance model page')
   assert.match(slugPageSource, /robots:[\s\S]*index: false[\s\S]*follow: true/, 'legacy slug metadata should not compete in search while redirecting')
+  assert.match(legacySlugPageSource, /import \{ permanentRedirect \} from 'next\/navigation'/, 'legacy alias route should use a permanent redirect')
+  assert.match(legacySlugPageSource, /\[\.\.\.new Set\(\[\.\.\.slugs, 'ai-video-generator'\]\)\]/, 'legacy alias route should generate the generic video slug')
+  assert.match(legacySlugPageSource, /permanentRedirect\(`\/model\/seedance-2\/\$\{slug\}`\)/, 'legacy alias route should permanently redirect to its canonical model URL')
   assert.match(allToolsSource, /filter\(\(slug\) => slug !== 'ai-video-generator'\)/, 'legacy generic slug should be excluded from the all-tools grid')
 })
 
@@ -288,7 +297,10 @@ test('AI video generator page uses the selected Grok history video as the hero d
   const sourceMeta = JSON.parse(readFileSync(aiVideoGeneratorDemoSourcePath, 'utf8'))
 
   assert.ok(existsSync(aiVideoGeneratorDemoPath), 'AI Video Generator Grok demo video should be a local public asset')
-  assert.equal(pageData.heroDemoVideo?.src, '/videos/ai-video-generator-grok-demo.mp4')
+  assert.equal(
+    pageData.heroDemoVideo?.src,
+    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4',
+  )
   assert.match(pageData.heroDemoVideo?.ariaLabel || '', /Grok 1\.5 Video image-to-video demo/)
   assert.equal(sourceMeta.history.createdAt, '2026-07-21 12:31:57')
   assert.equal(sourceMeta.history.model, 'Grok 1.5 Video')

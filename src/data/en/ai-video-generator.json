@@ -43,7 +43,7 @@
     "desc": "Create short AI videos online from text prompts or reference images for social media, product ads, storyboards, and creative projects."
   },
   "heroDemoVideo": {
-    "src": "/videos/ai-video-generator-grok-demo.mp4",
+    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4",
     "ariaLabel": "Grok 1.5 Video image-to-video demo generated from a reference image with auto aspect ratio, 5 second duration, and 480p resolution",
     "sourceHistory": "Grok 1.5 Video · Image to Video · auto · 5s · 480p · 2026-07-21 12:31:57"
   },
@@ -161,7 +161,7 @@
         "title": "Social Short Prompt",
         "prompt": "Create a 9:16 social media video of a creator unboxing a compact desk gadget in a bright home studio. Start with a close-up of the package, cut to hands revealing the product, then finish with the gadget glowing on the desk. Fast upbeat pacing, clean daylight, handheld creator style, crisp product details.",
         "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/prompt-templates/social-short.mp4",
-        "poster": "/videos/ai-video-generator/prompt-templates/social-short.webp",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/prompt-templates/social-short.webp",
         "description": "Vertical AI video example of a creator unboxing a compact desk gadget in a bright home studio.",
         "duration": "PT5.042S",
         "uploadDate": "2026-07-21T11:49:35.949Z"
@@ -170,7 +170,7 @@
         "title": "Product Ad Prompt",
         "prompt": "Create a 5-second vertical 9:16 cinematic product ad for a fictional sparkling water can called Luma Fizz. Show condensation on the can, citrus slices floating through soft studio light, a slow push-in camera move, premium commercial lighting, and a clean white and indigo background.",
         "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/prompt-templates/product-ad.mp4",
-        "poster": "/videos/ai-video-generator/prompt-templates/product-ad.webp",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/prompt-templates/product-ad.webp",
         "description": "Vertical AI product video example featuring a sparkling water can, citrus slices, and a studio push-in shot.",
         "duration": "PT5.042S",
         "uploadDate": "2026-07-21T12:01:53.834Z"
@@ -179,7 +179,7 @@
         "title": "Image-Guided Motion Prompt",
         "prompt": "Animate the uploaded product image into a smooth hero video. Preserve the product shape, label placement, colors, and camera angle. Add subtle turntable motion, soft reflections, realistic shadows, and a gentle background light sweep. Keep the result clean, stable, and marketplace-ready.",
         "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/prompt-templates/image-guided-motion.mp4",
-        "poster": "/videos/ai-video-generator/prompt-templates/image-guided-motion.webp",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/prompt-templates/image-guided-motion.webp",
         "description": "AI image-to-video example with a stable product shape, turntable motion, reflections, and studio lighting.",
         "duration": "PT5.042S",
         "uploadDate": "2026-07-21T11:54:53.259Z"
@@ -188,7 +188,7 @@
         "title": "Storyboard Scene Prompt",
         "prompt": "Create a short storyboard-style video of a small coffee shop at sunrise. Shot 1: steam rising from a ceramic cup. Shot 2: barista placing a pastry on the counter. Shot 3: morning light moving across a wooden table. Warm color grade, slow camera movement, calm ambient mood, realistic cinematic texture.",
         "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/prompt-templates/storyboard-scene.mp4",
-        "poster": "/videos/ai-video-generator/prompt-templates/storyboard-scene.webp",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/prompt-templates/storyboard-scene.webp",
         "description": "AI storyboard video example showing a coffee shop at sunrise across three short cinematic shots.",
         "duration": "PT5.042S",
         "uploadDate": "2026-07-21T11:59:01.643Z"
