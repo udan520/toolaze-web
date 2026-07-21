@@ -47,6 +47,7 @@ const defaultNavTranslations = {
   textToImageGenerator: 'Text to Image Generator',
   aiImageToImageGenerator: 'AI Image to Image Generator',
   aiVideo: 'AI Video',
+  aiVideoGenerator: 'AI Video Generator',
   pricing: 'Pricing',
   nanoBananaPro: 'Nano Banana Pro',
   nanoBanana2: 'Nano Banana 2',
@@ -1835,6 +1836,23 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
             <div className={'absolute top-full left-0 pt-1 w-auto min-w-[200px] bg-transparent transition-all duration-200 z-50 ' + (openDesktopMenu === 'ai-video' ? 'opacity-100 visible' : 'opacity-0 invisible group-hover:opacity-100 group-hover:visible')}>
               <div className="bg-white rounded-xl shadow-lg border border-indigo-50 py-2">
                 <Link
+                  href={getLocalizedHref('/ai-video-generator')}
+                  onClick={() => setOpenDesktopMenu(null)}
+                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
+                    <rect x="2" y="4" width="20" height="14" rx="2" fill="url(#aiVideoGeneratorGradient)" opacity="0.2"/>
+                    <path d="M10 8L16 12L10 16V8Z" fill="url(#aiVideoGeneratorGradient)"/>
+                    <defs>
+                      <linearGradient id="aiVideoGeneratorGradient" x1="2" y1="4" x2="22" y2="18" gradientUnits="userSpaceOnUse">
+                        <stop stopColor="#9333EA"/>
+                        <stop offset="1" stopColor="#4F46E5"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                  <span>{navTranslations.aiVideoGenerator || defaultNavTranslations.aiVideoGenerator}</span>
+                </Link>
+                <Link
                   href={getLocalizedHref('/model/seedance-2-5')}
                   onClick={() => setOpenDesktopMenu(null)}
                   className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
@@ -2395,6 +2413,26 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
               <div className="order-3 border-b border-indigo-50 pb-4">
                 <div className="text-sm font-bold text-slate-700 mb-3">{navTranslations.aiVideo || defaultNavTranslations.aiVideo}</div>
                 <div className="space-y-2">
+                  <Link
+                    href={getLocalizedHref('/ai-video-generator')}
+                    onClick={() => {
+                      setMobileMenuOpen(false)
+                      setExpandedSubmenus(new Set())
+                    }}
+                    className="flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
+                  >
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
+                      <rect x="2" y="4" width="20" height="14" rx="2" fill="url(#aiVideoGeneratorGradientMobile)" opacity="0.2"/>
+                      <path d="M10 8L16 12L10 16V8Z" fill="url(#aiVideoGeneratorGradientMobile)"/>
+                      <defs>
+                        <linearGradient id="aiVideoGeneratorGradientMobile" x1="2" y1="4" x2="22" y2="18" gradientUnits="userSpaceOnUse">
+                          <stop stopColor="#9333EA"/>
+                          <stop offset="1" stopColor="#4F46E5"/>
+                        </linearGradient>
+                      </defs>
+                    </svg>
+                    <span>{navTranslations.aiVideoGenerator || defaultNavTranslations.aiVideoGenerator}</span>
+                  </Link>
                   <Link
                     href={getLocalizedHref('/model/seedance-2-5')}
                     onClick={() => {

@@ -42,9 +42,9 @@ export async function createGenerationHistoryItem(env, userId, item) {
   await env.DB.prepare(`
     insert into generation_history (
       id, user_id, media_type, model, prompt, output_url, input_urls,
-      aspect_ratio, resolution, output_format, tool_slug, tool_label, source_path, created_at
+      aspect_ratio, resolution, output_format, native_audio, tool_slug, tool_label, source_path, created_at
     )
-    values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
   `).bind(
     id,
     userId,
@@ -56,6 +56,7 @@ export async function createGenerationHistoryItem(env, userId, item) {
     item.aspectRatio || null,
     item.resolution || null,
     item.outputFormat || null,
+    item.nativeAudio === true ? 1 : 0,
     toolSlug,
     toolLabel,
     sourcePath,
@@ -72,6 +73,7 @@ export async function createGenerationHistoryItem(env, userId, item) {
     aspectRatio: item.aspectRatio || null,
     resolution: item.resolution || null,
     outputFormat: item.outputFormat || null,
+    nativeAudio: item.nativeAudio === true,
     toolSlug,
     toolLabel,
     sourcePath,
@@ -83,7 +85,7 @@ export async function listGenerationHistory(env, userId, limit = 100) {
   const safeLimit = Math.max(1, Math.min(Number(limit) || 100, 200));
   const result = await env.DB.prepare(`
     select id, media_type, model, prompt, output_url, input_urls,
-      aspect_ratio, resolution, output_format, tool_slug, tool_label, source_path, created_at
+      aspect_ratio, resolution, output_format, native_audio, tool_slug, tool_label, source_path, created_at
     from generation_history
     where user_id = ?
     order by created_at desc
@@ -100,6 +102,7 @@ export async function listGenerationHistory(env, userId, limit = 100) {
     aspectRatio: row.aspect_ratio,
     resolution: row.resolution,
     outputFormat: row.output_format,
+    nativeAudio: row.native_audio === 1,
     toolSlug: row.tool_slug,
     toolLabel: row.tool_label,
     sourcePath: row.source_path,

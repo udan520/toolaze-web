@@ -2,6 +2,7 @@ import ToolSlugPageContent from '@/app/[locale]/[tool]/[slug]/ToolSlugPageConten
 import { getAllSlugs, getSeoContent } from '@/lib/seo-loader'
 import { generateHreflangAlternates } from '@/lib/hreflang'
 import type { Metadata } from 'next'
+import { permanentRedirect } from 'next/navigation'
 
 interface PageProps {
   params: Promise<{
@@ -14,11 +15,21 @@ export const dynamicParams = false
 
 export async function generateStaticParams() {
   const slugs = await getAllSlugs('seedance-2', 'en')
-  return slugs.map((slug) => ({ slug }))
+  return [...new Set([...slugs, 'ai-video-generator'])].map((slug) => ({ slug }))
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const resolvedParams = await params
+  if (resolvedParams.slug === 'ai-video-generator') {
+    return {
+      title: 'Seedance 2.0 AI Video Generator | Toolaze',
+      robots: { index: false, follow: true },
+      alternates: {
+        canonical: 'https://toolaze.com/model/seedance-2',
+      },
+    }
+  }
+
   const content = await getSeoContent('seedance-2', resolvedParams.slug, 'en')
 
   if (!content) {
@@ -44,6 +55,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function Page({ params }: PageProps) {
   const resolvedParams = await params
+  if (resolvedParams.slug === 'ai-video-generator') {
+    permanentRedirect('/model/seedance-2')
+  }
+
   return (
     <ToolSlugPageContent
       locale="en"

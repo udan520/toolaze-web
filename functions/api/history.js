@@ -46,6 +46,7 @@ export async function onRequest(context) {
       aspectRatio: body.aspectRatio,
       resolution: body.resolution,
       outputFormat: body.outputFormat,
+      nativeAudio: body.nativeAudio,
       toolSlug: body.toolSlug,
       toolLabel: body.toolLabel,
       sourcePath: body.sourcePath,

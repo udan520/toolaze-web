@@ -12,9 +12,8 @@ import ImageCompressor from '@/components/ImageCompressor'
 import ImageConverter from '@/components/ImageConverter'
 import EmojiCategoryPage from '@/components/EmojiCategoryPage'
 import AiImageGenerationTool from '@/components/AiImageGenerationTool'
-import SeedanceHeroPlaceholder from '@/components/blocks/SeedanceHeroPlaceholder'
+import AiVideoGeneratorTool from '@/components/AiVideoGeneratorTool'
 import Seedance25LaunchUpdates from '@/components/blocks/Seedance25LaunchUpdates'
-import KlingHeroPlaceholder from '@/components/blocks/KlingHeroPlaceholder'
 import NanoBanana2HeroPlaceholder from '@/components/blocks/NanoBanana2HeroPlaceholder'
 import TrustBar from '@/components/blocks/TrustBar'
 import Intro from '@/components/blocks/Intro'
@@ -112,22 +111,80 @@ function renderH1WithGradient(h1: string): React.ReactElement {
   return <>{result}</>
 }
 
-// 生成 JSON-LD HowTo Schema
-function generateHowToSchema(
-  howToTitle: string,
+interface PromptVideoSchemaItem {
+  title?: string
+  description?: string
+  video?: string
+  poster?: string
+  uploadDate?: string
+  duration?: string
+}
+
+function toAbsoluteToolazeUrl(value: string): string {
+  return value.startsWith('http://') || value.startsWith('https://')
+    ? value
+    : `https://toolaze.com${value.startsWith('/') ? value : `/${value}`}`
+}
+
+function generatePageSchema({
+  howToTitle,
+  steps,
+  faqItems,
+  videoItems,
+}: {
+  howToTitle: string
   steps: Array<{ title?: string; desc?: string; description?: string }>
-): object {
-  const howToSteps = steps.map((step, index) => ({
-    '@type': 'HowToStep',
-    position: index + 1,
-    text: step.desc || step.description || step.title || `Step ${index + 1}`,
-  }))
+  faqItems: Array<{ q?: string; a?: string }>
+  videoItems: PromptVideoSchemaItem[]
+}): object {
+  const graph: object[] = []
+
+  if (steps.length > 0) {
+    graph.push({
+      '@type': 'HowTo',
+      name: howToTitle,
+      step: steps.map((step, index) => ({
+        '@type': 'HowToStep',
+        position: index + 1,
+        name: step.title,
+        text: step.desc || step.description || step.title || `Step ${index + 1}`,
+      })),
+    })
+  }
+
+  const faqEntities = faqItems
+    .filter((item) => item.q && item.a)
+    .map((item) => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.a,
+      },
+    }))
+  if (faqEntities.length > 0) {
+    graph.push({
+      '@type': 'FAQPage',
+      mainEntity: faqEntities,
+    })
+  }
+
+  for (const item of videoItems) {
+    if (!item.title || !item.description || !item.video || !item.poster || !item.uploadDate || !item.duration) continue
+    graph.push({
+      '@type': 'VideoObject',
+      name: item.title,
+      description: item.description,
+      thumbnailUrl: toAbsoluteToolazeUrl(item.poster),
+      uploadDate: item.uploadDate,
+      duration: item.duration,
+      contentUrl: toAbsoluteToolazeUrl(item.video),
+    })
+  }
 
   return {
     '@context': 'https://schema.org',
-    '@type': 'HowTo',
-    name: howToTitle,
-    step: howToSteps,
+    '@graph': graph,
   }
 }
 
@@ -528,6 +585,12 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
           { label: breadcrumbT.aiTools || 'AI Tools', href: '/ai-tools' },
           { label: breadcrumbT.aiBabyGenerator || 'AI Baby Generator' },
         ]
+      : tool === 'ai-video-generator'
+      ? [
+          { label: breadcrumbT.home, href: '/' },
+          { label: breadcrumbT.aiTools || 'AI Tools', href: '/ai-tools' },
+          { label: 'AI Video Generator' },
+        ]
       : tool === 'nano-banana-pro'
       ? [
           { label: breadcrumbT.home, href: '/' },
@@ -582,6 +645,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
       'nano-banana-pro',
       'gpt-image-2',
       'nano-banana-2',
+      'ai-video-generator',
     ].includes(topComp)
 
     // 获取推荐的其他功能
@@ -692,10 +756,16 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
     }
     sectionsOrder = filterPaymentReviewSections(sectionsOrder)
 
-    // 生成 JSON-LD HowTo Schema
+    // 生成页面 JSON-LD Schema
     const howToTitle = content.howToUse?.title || fallbackPageTitle
     const howToSteps = content.howToUse?.steps || howToUseSteps
-    const jsonLdSchema = generateHowToSchema(howToTitle, howToSteps)
+    const promptVideoItems = (content.promptExamples?.items || []) as PromptVideoSchemaItem[]
+    const jsonLdSchema = generatePageSchema({
+      howToTitle,
+      steps: howToSteps,
+      faqItems: content.faq || [],
+      videoItems: promptVideoItems,
+    })
 
     const getPromptPresetColor = (title: string) => {
       const normalized = title.toLowerCase()
@@ -708,7 +778,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
       return 'linear-gradient(135deg, #6366f1, #ec4899)'
     }
 
-    const promptPresetItems = (content.promptExamples?.items || []) as Array<{ title?: string; prompt?: string; color?: string; swatch?: string; image?: string; group?: string; referenceImage?: string }>
+    const promptPresetItems = (content.promptExamples?.items || []) as Array<{ title?: string; prompt?: string; color?: string; swatch?: string; image?: string; video?: string; group?: string; referenceImage?: string }>
     const configuredPresetLabels = Array.isArray(content.topTool?.functionalAcceptance?.presets)
       ? content.topTool.functionalAcceptance.presets
       : []
@@ -966,6 +1036,22 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                 </div>
               </div>
             </header>
+          ) : topComp === 'ai-video-generator' ? (
+            <header className="bg-[#F8FAFF] pb-6 md:pb-12 w-full pl-0 pr-2 md:pl-0 md:pr-6">
+              <div className="w-full max-w-full">
+                <div className="flex flex-col">
+                  <AiVideoGeneratorTool
+                    modelId="seedance-2"
+                    allowModelSelect
+                    heroBreadcrumbItems={breadcrumbItems}
+                    heroTitleHtml={content.hero?.h1 || 'AI Video Generator'}
+                    heroDescription={content.hero?.desc}
+                    demoVideo={content.heroDemoVideo as { src?: string; ariaLabel?: string } | undefined}
+                    initialTranslations={pageTranslations}
+                  />
+                </div>
+              </div>
+            </header>
           ) : topComp === 'seedance-2-5' ? (
             <header className="bg-[#F8FAFF] pb-12 px-6">
               <div className="max-w-4xl mx-auto text-center pt-8 mb-12">
@@ -985,40 +1071,34 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
               <Seedance25LaunchUpdates copy={content.launchUpdates} />
             </header>
           ) : topComp === 'seedance-2' ? (
-            <header className="bg-[#F8FAFF] pb-12 px-6">
-              <div className="max-w-4xl mx-auto text-center pt-8 mb-12">
-                <h1 className="text-[40px] font-extrabold tracking-tight mb-6 leading-tight text-slate-900">
-                  {content.hero?.h1 ? (
-                    renderH1WithGradient(content.hero.h1)
-                  ) : (
-                    <>Seedance 2.0</>
-                  )}
-                </h1>
-                {content.hero?.desc && (
-                  <p className="desc-text text-lg md:text-xl max-w-4xl mx-auto">
-                    {content.hero.desc}
-                  </p>
-                )}
+            <header className="bg-[#F8FAFF] pb-6 md:pb-12 w-full pl-0 pr-2 md:pl-0 md:pr-6">
+              <div className="w-full max-w-full">
+                <div className="flex flex-col">
+                  <AiVideoGeneratorTool
+                    modelId="seedance-2"
+                    allowModelSelect
+                    heroBreadcrumbItems={breadcrumbItems}
+                    heroTitleHtml={content.hero?.h1 || 'Seedance 2.0'}
+                    heroDescription={content.hero?.desc}
+                    initialTranslations={pageTranslations}
+                  />
+                </div>
               </div>
-              <SeedanceHeroPlaceholder initialTranslations={t} />
             </header>
           ) : topComp === 'kling-3' ? (
-            <header className="bg-[#F8FAFF] pb-12 px-6">
-              <div className="max-w-4xl mx-auto text-center pt-8 mb-12">
-                <h1 className="text-[40px] font-extrabold tracking-tight mb-6 leading-tight text-slate-900">
-                  {content.hero?.h1 ? (
-                    renderH1WithGradient(content.hero.h1)
-                  ) : (
-                    <>Kling 3.0</>
-                  )}
-                </h1>
-                {content.hero?.desc && (
-                  <p className="desc-text text-lg md:text-xl max-w-4xl mx-auto">
-                    {content.hero.desc}
-                  </p>
-                )}
+            <header className="bg-[#F8FAFF] pb-6 md:pb-12 w-full pl-0 pr-2 md:pl-0 md:pr-6">
+              <div className="w-full max-w-full">
+                <div className="flex flex-col">
+                  <AiVideoGeneratorTool
+                    modelId="kling-3"
+                    allowModelSelect
+                    heroBreadcrumbItems={breadcrumbItems}
+                    heroTitleHtml={content.hero?.h1 || 'Kling 3.0'}
+                    heroDescription={content.hero?.desc}
+                    initialTranslations={pageTranslations}
+                  />
+                </div>
               </div>
-              <KlingHeroPlaceholder initialTranslations={t} />
             </header>
           ) : topComp === 'nano-banana-2' ? (
             <header className="bg-[#F8FAFF] pb-6 md:pb-12 w-full pl-0 pr-2 md:pl-0 md:pr-6">
@@ -1108,6 +1188,20 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                   />
                 )
               },
+              modelSelectionGuide: (bgClass: string) => (
+                <StrategyCardGrid
+                  key="modelSelectionGuide"
+                  section={content.modelSelectionGuide as StrategyCardSection | undefined}
+                  bgClass={bgClass}
+                />
+              ),
+              troubleshooting: (bgClass: string) => (
+                <StrategyCardGrid
+                  key="troubleshooting"
+                  section={content.troubleshooting as StrategyCardSection | undefined}
+                  bgClass={bgClass}
+                />
+              ),
               modelComparison: (bgClass: string) => {
                 const modelComparison = content.modelComparison as {
                   title?: string
@@ -1181,7 +1275,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                 )
               },
               promptExamples: (bgClass: string) => {
-                const promptExamples = content.promptExamples as { title?: string; subtitle?: string; items?: Array<{ title: string; prompt: string; image?: string; note?: string; color?: string }> } | undefined
+                const promptExamples = content.promptExamples as { title?: string; subtitle?: string; items?: Array<{ title: string; prompt: string; image?: string; video?: string; poster?: string; description?: string; duration?: string; uploadDate?: string; note?: string; color?: string }> } | undefined
                 if (!promptExamples?.items || promptExamples.items.length === 0) return null
                 return (
                   <PromptExamples

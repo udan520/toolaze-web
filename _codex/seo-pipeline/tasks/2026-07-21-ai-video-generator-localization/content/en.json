@@ -1,0 +1,288 @@
+{
+  "in_menu": true,
+  "topComponent": "ai-video-generator",
+  "metadata": {
+    "title": "Free AI Video Generator Online | Text & Image to Video",
+    "description": "Create AI videos from text or images. Sign up for 10 free credits, enough for at least one eligible Grok video. Compare models, settings, and tested prompts."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "promptExamples",
+    "modelIntro",
+    "performanceMetrics",
+    "modelSelectionGuide",
+    "troubleshooting",
+    "scenes",
+    "faq"
+  ],
+  "modelIntro": {
+    "title": "Create Short AI Videos From Text or Images",
+    "modelName": "AI Video Generator",
+    "modelType": "Multi-Model Video Tool",
+    "description": [
+      "Toolaze AI Video Generator brings supported video models into one online workflow. Start with text-to-video when you have a scene idea, or use image-to-video when a product, character, layout, or reference image should guide the result.",
+      "Compare input modes, reference limits, duration, resolution, audio support, and estimated credits before generating. For better results, describe the subject, action, camera movement, lighting, pacing, and final format in the prompt."
+    ],
+    "featureCards": [
+      {
+        "title": "Text or Image Starting Points",
+        "content": "Create a video from a written prompt, or add reference images when the subject, product, character, or composition needs stronger guidance."
+      },
+      {
+        "title": "Model Choice in One Tool",
+        "content": "Compare supported video models by input type, duration, resolution, reference count, audio support, and estimated credits."
+      },
+      {
+        "title": "Prompt-Led Motion Control",
+        "content": "Describe camera movement, subject action, lighting, mood, timing, and style so each generation has a clear creative direction."
+      }
+    ]
+  },
+  "hero": {
+    "h1": "<span class=\"text-gradient\">Free AI Video Generator</span> Online",
+    "desc": "Create short AI videos online from text prompts or reference images for social media, product ads, storyboards, and creative projects."
+  },
+  "heroDemoVideo": {
+    "src": "/videos/ai-video-generator-grok-demo.mp4",
+    "ariaLabel": "Grok 1.5 Video image-to-video demo generated from a reference image with auto aspect ratio, 5 second duration, and 480p resolution",
+    "sourceHistory": "Grok 1.5 Video · Image to Video · auto · 5s · 480p · 2026-07-21 12:31:57"
+  },
+  "performanceMetrics": {
+    "title": "AI Video Model Settings and Credit Estimates",
+    "metrics": [
+      {
+        "label": "Grok 1.5 Video",
+        "value": "Image to video; 1 reference image; 1 to 15 seconds; 480p or 720p; estimated 3+ credits"
+      },
+      {
+        "label": "Seedance 2.0",
+        "value": "Text or image to video; up to 9 references; 5, 10, or 15 seconds; 480p to 4K; estimated 150+ credits"
+      },
+      {
+        "label": "Seedance 2.0 Mini",
+        "value": "Text or image to video; up to 9 references; 5, 10, or 15 seconds; 480p or 720p; estimated 75+ credits"
+      },
+      {
+        "label": "Kling 3.0",
+        "value": "Text or image to video; up to 4 references; 3 to 15 seconds; 720p to 4K; Native Audio at 720p or 1080p; estimated 60+ credits"
+      }
+    ]
+  },
+  "modelSelectionGuide": {
+    "title": "AI Video Model Selection Guide",
+    "subtitle": "Choose a model by input type, reference count, duration, resolution, audio support, and estimated credits.",
+    "items": [
+      {
+        "title": "Grok 1.5 Video",
+        "badge": "1-15s · 480p/720p",
+        "color": "linear-gradient(135deg, #111827, #4f46e5)",
+        "desc": "Use Grok for image-to-video drafts from one reference image, including product motion, creator clips, and fast visual tests.",
+        "prompt": "Choose it for short reference animations when 480p or 720p output is sufficient."
+      },
+      {
+        "title": "Seedance 2.0",
+        "badge": "Up to 9 references",
+        "color": "linear-gradient(135deg, #4f46e5, #ec4899)",
+        "desc": "Use Seedance 2.0 when a scene needs several reference images, 5 to 15 second durations, or output options up to 4K.",
+        "prompt": "Choose it for reference-heavy product shots, storyboards, and higher-resolution concept videos."
+      },
+      {
+        "title": "Seedance 2.0 Mini",
+        "badge": "480p/720p drafts",
+        "color": "linear-gradient(135deg, #0ea5e9, #6366f1)",
+        "desc": "Use Seedance 2.0 Mini for 480p or 720p drafts while comparing prompts, references, aspect ratios, and scene direction.",
+        "prompt": "Choose it when an estimated 75+ credit draft is more useful than a higher-resolution pass."
+      },
+      {
+        "title": "Kling 3.0",
+        "badge": "4K · Native Audio",
+        "color": "linear-gradient(135deg, #0f172a, #22c55e)",
+        "desc": "Use Kling 3.0 for text or image input, 3 to 15 second clips, output up to 4K, and Native Audio at 720p or 1080p.",
+        "prompt": "Choose it when the concept needs high-resolution motion or synchronized audio in a supported resolution."
+      }
+    ]
+  },
+  "troubleshooting": {
+    "title": "How to Improve AI Video Results",
+    "subtitle": "Start with one clear action and one camera direction, then add detail after the motion is stable.",
+    "items": [
+      {
+        "title": "Motion Feels Unstable",
+        "badge": "Simplify movement",
+        "color": "linear-gradient(135deg, #4f46e5, #818cf8)",
+        "desc": "Reduce the prompt to one subject action and one camera move. Competing movements often make short clips less predictable.",
+        "prompt": "Try: A ceramic cup stays centered while the camera makes one slow push-in."
+      },
+      {
+        "title": "Product Details Drift",
+        "badge": "Strengthen reference",
+        "color": "linear-gradient(135deg, #7c3aed, #c084fc)",
+        "desc": "Use a sharp reference image and name the shape, label position, colors, and camera angle that must remain unchanged.",
+        "prompt": "Try: Preserve the can shape, front label, silver rim, and three-quarter camera angle."
+      },
+      {
+        "title": "Output Looks Soft",
+        "badge": "Improve source",
+        "color": "linear-gradient(135deg, #0ea5e9, #38bdf8)",
+        "desc": "Start with a clean reference, describe the focal subject and lighting, and select a higher resolution when the model supports it.",
+        "prompt": "Try: Sharp product edges, focused front label, soft studio key light, clean background."
+      },
+      {
+        "title": "Generation Is Slow",
+        "badge": "Draft first",
+        "color": "linear-gradient(135deg, #059669, #34d399)",
+        "desc": "Test the idea at a shorter duration or lower resolution before using more credits on the final direction.",
+        "prompt": "Try a 5-second 480p or 720p draft, review the motion, then increase quality."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "How to Use Toolaze AI Video Generator",
+    "steps": [
+      {
+        "title": "Describe the Video",
+        "desc": "Write a clear prompt with the subject, scene, motion, camera angle, style, and desired mood."
+      },
+      {
+        "title": "Add References if Needed",
+        "desc": "Upload reference images when you need stronger control over product look, character consistency, visual style, or composition."
+      },
+      {
+        "title": "Generate and Refine",
+        "desc": "Create the video, review the result, then adjust the prompt or references for a cleaner next version."
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "AI Video Prompt Templates to Copy",
+    "subtitle": "Use these ready-to-run prompts to test motion, camera direction, pacing, and style in the video generator.",
+    "items": [
+      {
+        "title": "Social Short Prompt",
+        "prompt": "Create a 9:16 social media video of a creator unboxing a compact desk gadget in a bright home studio. Start with a close-up of the package, cut to hands revealing the product, then finish with the gadget glowing on the desk. Fast upbeat pacing, clean daylight, handheld creator style, crisp product details.",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/prompt-templates/social-short.mp4",
+        "poster": "/videos/ai-video-generator/prompt-templates/social-short.webp",
+        "description": "Vertical AI video example of a creator unboxing a compact desk gadget in a bright home studio.",
+        "duration": "PT5.042S",
+        "uploadDate": "2026-07-21T11:49:35.949Z"
+      },
+      {
+        "title": "Product Ad Prompt",
+        "prompt": "Create a 5-second vertical 9:16 cinematic product ad for a fictional sparkling water can called Luma Fizz. Show condensation on the can, citrus slices floating through soft studio light, a slow push-in camera move, premium commercial lighting, and a clean white and indigo background.",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/prompt-templates/product-ad.mp4",
+        "poster": "/videos/ai-video-generator/prompt-templates/product-ad.webp",
+        "description": "Vertical AI product video example featuring a sparkling water can, citrus slices, and a studio push-in shot.",
+        "duration": "PT5.042S",
+        "uploadDate": "2026-07-21T12:01:53.834Z"
+      },
+      {
+        "title": "Image-Guided Motion Prompt",
+        "prompt": "Animate the uploaded product image into a smooth hero video. Preserve the product shape, label placement, colors, and camera angle. Add subtle turntable motion, soft reflections, realistic shadows, and a gentle background light sweep. Keep the result clean, stable, and marketplace-ready.",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/prompt-templates/image-guided-motion.mp4",
+        "poster": "/videos/ai-video-generator/prompt-templates/image-guided-motion.webp",
+        "description": "AI image-to-video example with a stable product shape, turntable motion, reflections, and studio lighting.",
+        "duration": "PT5.042S",
+        "uploadDate": "2026-07-21T11:54:53.259Z"
+      },
+      {
+        "title": "Storyboard Scene Prompt",
+        "prompt": "Create a short storyboard-style video of a small coffee shop at sunrise. Shot 1: steam rising from a ceramic cup. Shot 2: barista placing a pastry on the counter. Shot 3: morning light moving across a wooden table. Warm color grade, slow camera movement, calm ambient mood, realistic cinematic texture.",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/prompt-templates/storyboard-scene.mp4",
+        "poster": "/videos/ai-video-generator/prompt-templates/storyboard-scene.webp",
+        "description": "AI storyboard video example showing a coffee shop at sunrise across three short cinematic shots.",
+        "duration": "PT5.042S",
+        "uploadDate": "2026-07-21T11:59:01.643Z"
+      }
+    ]
+  },
+  "scenesTitle": "Popular AI Video Generator Use Cases",
+  "scenes": [
+    {
+      "title": "Social Media Shorts",
+      "icon": "📱",
+      "desc": "Create 9:16 clips for TikTok, Instagram Reels, YouTube Shorts, and creator tests. Start with a text prompt for a new scene, or upload a reference image when the subject or product needs to stay consistent."
+    },
+    {
+      "title": "Product Ads and Ecommerce Motion",
+      "icon": "🛒",
+      "desc": "Turn product photos, packaging shots, and campaign notes into short ad concepts. Use image-to-video when label placement, product shape, colors, or camera angle should remain stable."
+    },
+    {
+      "title": "Storyboards and Pre-Production Clips",
+      "icon": "🎬",
+      "desc": "Prototype shot direction, camera movement, character action, lighting, and pacing before a real shoot. Use short durations to compare concepts quickly before refining the best version."
+    },
+    {
+      "title": "Explainer and Educational Videos",
+      "icon": "🎓",
+      "desc": "Draft short visual explanations for lessons, training content, product walkthroughs, or presentation clips. Keep prompts clear and structured so the video follows one idea at a time."
+    },
+    {
+      "title": "Creator UGC and Promo Concepts",
+      "icon": "🎥",
+      "desc": "Mock up creator-style openings, unboxing moments, event teasers, and quick promotional clips. Use fast draft models when testing hooks, pacing, and framing."
+    },
+    {
+      "title": "Game, Character, and Concept Scenes",
+      "icon": "🕹️",
+      "desc": "Explore character motion, atmosphere, environments, and cinematic scene ideas for games, stories, or visual development. Use higher-control models when consistency and mood matter."
+    }
+  ],
+  "moreTools": "Related AI Video Workflows",
+  "moreToolsLinks": [
+    {
+      "title": "Text to Video",
+      "description": "Start with a written prompt and generate short AI video clips.",
+      "href": "/model/seedance-2/text-to-video"
+    },
+    {
+      "title": "Image to Video",
+      "description": "Animate reference images into short AI videos.",
+      "href": "/model/seedance-2/image-to-video"
+    },
+    {
+      "title": "Kling 3.0",
+      "description": "Explore another AI video model for cinematic clips and video concepts.",
+      "href": "/model/kling-3"
+    }
+  ],
+  "faqTitle": "Frequently Asked Questions About AI Video Generator",
+  "faq": [
+    {
+      "q": "Is Toolaze AI Video Generator free?",
+      "a": "Yes. New users receive 10 free credits after sign-up. That is enough for at least one Grok 1.5 Video generation with eligible settings. Other models, longer durations, higher resolutions, and Native Audio may require more credits."
+    },
+    {
+      "q": "What is Toolaze AI Video Generator?",
+      "a": "Toolaze AI Video Generator creates short videos from text prompts or reference images. You can compare supported models, adjust the available duration and resolution, preview results, and return to previous generations in history."
+    },
+    {
+      "q": "Should I use text to video or image to video?",
+      "a": "Use text to video when the scene starts as a written idea. Use image to video when a product, character, composition, or visual style should remain recognizable from a reference image."
+    },
+    {
+      "q": "Can I create AI videos from images?",
+      "a": "Yes. Use image-to-video when you want a reference image to guide the subject, composition, product look, character direction, or visual style. Available limits and settings depend on the selected model."
+    },
+    {
+      "q": "How long can the generated videos be?",
+      "a": "Grok 1.5 Video supports 1 to 15 seconds, Seedance 2.0 and Seedance 2.0 Mini support 5, 10, or 15 seconds, and Kling 3.0 supports 3 to 15 seconds."
+    },
+    {
+      "q": "Does the AI video generator support audio?",
+      "a": "Kling 3.0 supports Native Audio for 720p and 1080p generations. The control is unavailable at 4K and for models that do not expose native audio in the generator."
+    },
+    {
+      "q": "How many credits does AI video generation need?",
+      "a": "The estimated credit requirement is shown beside the Generate button and changes with the model, duration, resolution, and Native Audio setting. Current minimum estimates start at Grok 3+, Seedance 2.0 150+, Seedance 2.0 Mini 75+, and Kling 3.0 60+ credits."
+    },
+    {
+      "q": "What prompts work best for AI video generation?",
+      "a": "Use prompts that describe the subject, action, camera movement, lighting, environment, style, and timing. Add references when visual consistency matters, and review the output before using it in commercial or client-facing work."
+    },
+    {
+      "q": "Why does my AI video look blurry or inconsistent?",
+      "a": "Start with a sharper reference image, reduce the scene to one main action, and describe the camera move separately. If the model supports it, review the motion in a draft first and then generate at a higher resolution."
+    }
+  ]
+}

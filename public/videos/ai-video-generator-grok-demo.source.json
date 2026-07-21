@@ -1,0 +1,17 @@
+{
+  "source": "Toolaze local generation history",
+  "history": {
+    "model": "Grok 1.5 Video",
+    "mode": "Image to Video",
+    "aspectRatio": "auto",
+    "duration": "5s",
+    "resolution": "480p",
+    "createdAt": "2026-07-21 12:31:57",
+    "prompt": "dance",
+    "inputUrls": [
+      "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/c02f9c987abf43cea88559a98393aab9.png"
+    ],
+    "originalOutputUrl": "https://tempfile.aiquickdraw.com/ggg/users/75bcdde9-9c15-4e57-b405-f455a487305f/generated/83ed53b2-099a-4f9c-bd03-ddc51db039c0/generated_video.mp4"
+  },
+  "asset": "/videos/ai-video-generator-grok-demo.mp4"
+}

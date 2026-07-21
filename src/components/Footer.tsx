@@ -35,6 +35,7 @@ const defaultTranslations = {
   quickTools: 'Quick Tools',
   aiTools: 'AI Tools',
   aiVideo: 'AI Video',
+  aiVideoGenerator: 'AI Video Generator',
   aiImage: 'AI Image',
   aiImageGenerator: 'AI Image Generator',
   watermarkRemover: 'Watermark Remover',
@@ -213,16 +214,24 @@ export default function Footer({ initialTranslations }: FooterProps = {}) {
 
           {/* AI Video */}
           <div>
-            <Link 
-              href={getLocalizedHref('/model/seedance-2')} 
+            <Link
+              href={getLocalizedHref('/ai-video-generator')}
               className="text-white font-bold text-sm mb-4 tracking-wide block hover:text-indigo-400 transition-colors"
             >
               {translations.aiVideo || 'AI Video'}
             </Link>
             <ul className="space-y-2 mt-4">
               <li>
-                <Link 
-                  href={getLocalizedHref('/model/seedance-2')} 
+                <Link
+                  href={getLocalizedHref('/ai-video-generator')}
+                  className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
+                >
+                  {translations.aiVideoGenerator || 'AI Video Generator'}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={getLocalizedHref('/model/seedance-2')}
                   className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
                 >
                   {translations.seedance2 || 'Seedance 2.0'}

@@ -67,7 +67,6 @@ export const IMAGE_MODEL_L2S = ['gpt-image-2', 'nano-banana-pro', 'nano-banana-2
 const SEEDANCE_2_SLUGS = [
   'text-to-video',
   'image-to-video',
-  'ai-video-generator',
 ]
 
 // Watermark Remover L3 页面 slug 列表（从文件系统动态读取，此为兜底）
@@ -363,7 +362,6 @@ async function loadToolJsonFile(locale: string, tool: string, slug: string) {
             switch (slug) {
               case 'text-to-video': data = await import('@/data/en/seedance-2/text-to-video.json'); break
               case 'image-to-video': data = await import('@/data/en/seedance-2/image-to-video.json'); break
-              case 'ai-video-generator': data = await import('@/data/en/seedance-2/ai-video-generator.json'); break
             }
           } else if (tool === 'watermark-remover') {
             switch (slug) {
@@ -701,7 +699,6 @@ async function loadToolJsonFile(locale: string, tool: string, slug: string) {
             switch (slug) {
               case 'text-to-video': data = await import('@/data/en/seedance-2/text-to-video.json'); break
               case 'image-to-video': data = await import('@/data/en/seedance-2/image-to-video.json'); break
-              case 'ai-video-generator': data = await import('@/data/en/seedance-2/ai-video-generator.json'); break
             }
           } else if (tool === 'watermark-remover') {
             try {
@@ -814,6 +811,8 @@ export async function getL2SeoContent(tool: string, locale: string = 'en') {
         data = await importL2FlatJson('nano-banana-2', normalizedLocale)
       } else if (tool === 'gpt-image-2') {
         data = await importL2FlatJson('gpt-image-2', normalizedLocale)
+      } else if (tool === 'ai-video-generator') {
+        data = await importL2FlatJson('ai-video-generator', normalizedLocale)
       } else if (tool === 'seedance-2-5') {
         data = await importL2FlatJson('seedance-2-5', normalizedLocale)
       } else if (tool === 'seedance-2') {
@@ -857,6 +856,8 @@ export async function getL2SeoContent(tool: string, locale: string = 'en') {
             data = await import('@/data/en/nano-banana-2.json')
           } else if (tool === 'gpt-image-2') {
             data = await import('@/data/en/gpt-image-2.json')
+          } else if (tool === 'ai-video-generator') {
+            data = await import('@/data/en/ai-video-generator.json')
           } else if (tool === 'seedance-2-5') {
             data = await import('@/data/en/seedance-2-5.json')
           } else if (tool === 'seedance-2') {

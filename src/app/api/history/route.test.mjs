@@ -17,8 +17,11 @@ test.after(() => {
   delete globalThis[Symbol.for('toolaze.localDevAuthState')]
   rmSync(tempStateDir, { recursive: true, force: true })
 })
-import { POST } from './route.js'
-import { resetLocalDevHistoryForTests } from '../_shared/local-dev-auth.js'
+import historyRoute from './route.js'
+import localDevAuth from '../_shared/local-dev-auth.js'
+
+const { POST } = historyRoute
+const { resetLocalDevHistoryForTests } = localDevAuth
 
 function createHistoryPostRequest() {
   return new Request('http://localhost:3016/api/history', {
@@ -49,4 +52,29 @@ test('history route accepts local dev POST requests', async () => {
   assert.equal(response.status, 201)
   assert.equal(payload.item.model, 'seedream-5-0-pro')
   assert.equal(payload.item.outputUrl, 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/test.webp')
+})
+
+test('history route preserves Native Audio for local video history', async () => {
+  resetLocalDevHistoryForTests()
+
+  const request = new Request('http://localhost:3016/api/history', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Cookie: 'toolaze_session=toolaze-local-dev-session',
+    },
+    body: JSON.stringify({
+      mediaType: 'video',
+      model: 'kling-3',
+      prompt: 'A cinematic car chase',
+      outputUrl: 'https://example.com/output.mp4',
+      nativeAudio: true,
+    }),
+  })
+
+  const response = await POST(request)
+  const payload = await response.json()
+
+  assert.equal(response.status, 201)
+  assert.equal(payload.item.nativeAudio, true)
 })

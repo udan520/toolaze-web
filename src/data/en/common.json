@@ -47,7 +47,8 @@
     "aiImageToImageGenerator": "AI Image to Image Generator",
     "seedream50Lite": "Seedream 5.0 Lite",
     "seedream50Pro": "Seedream 5.0 Pro",
-    "seedance25": "Seedance 2.5"
+    "seedance25": "Seedance 2.5",
+    "aiVideoGenerator": "AI Video Generator"
   },
   "home": {
     "metadata": {
@@ -123,7 +124,7 @@
       {
         "title": "AI video generators",
         "description": "Turn scripts and reference frames into cinematic clips. Seedance 2.0 and Kling 3.0 support text-to-video and image-to-video with multimodal inputs—ideal for promos, storyboards, and short-form storytelling.",
-        "href": "/model/seedance-2"
+        "href": "/ai-video-generator"
       },
       {
         "title": "Browser media utilities",
@@ -244,7 +245,8 @@
     "wan27Image": "Wan 2.7 Image",
     "aiImageGenerator": "AI Image Generator",
     "refundPolicy": "Refund Policy",
-    "acceptableUse": "Acceptable Use Policy"
+    "acceptableUse": "Acceptable Use Policy",
+    "aiVideoGenerator": "AI Video Generator"
   },
   "breadcrumb": {
     "home": "Home",
@@ -623,6 +625,44 @@
         "symbols": "Symbols",
         "flags": "Flags"
       }
+    },
+    "aiVideoGeneratorTool": {
+      "imageToVideo": "Image to Video",
+      "textToVideo": "Text to Video",
+      "models": "Models",
+      "uploadUpTo": "Upload up to {count} images",
+      "uploadYourImage": "Upload your image",
+      "upload": "Upload",
+      "fileLimit": "JPG, PNG, WEBP up to {size}MB each",
+      "fileTooLarge": "File {name} exceeds {size}MB limit",
+      "clear": "Clear",
+      "delete": "Delete",
+      "replace": "Replace",
+      "prompt": "Prompt",
+      "promptPlaceholder": "Describe the scene, motion, camera movement, and style.",
+      "aspectRatio": "Aspect Ratio",
+      "duration": "Duration",
+      "resolution": "Resolution",
+      "generate": "Generate Video",
+      "generating": "Generating video...",
+      "generatingSeconds": "Generating video... {seconds}s",
+      "samplePreview": "Sample Preview",
+      "previewHint": "Upload a reference image or write a prompt to generate a video.",
+      "motionCue": "Motion",
+      "cameraCue": "Camera",
+      "audioCue": "Audio",
+      "history": "History",
+      "noHistory": "No video requests yet.",
+      "resultReady": "Video ready",
+      "recreate": "Recreate",
+      "uploadRequestFailed": "Image upload request failed. Please try again.",
+      "uploadFailedWithStatus": "Image upload failed with status {status}.",
+      "serverNonJson": "The server returned an unreadable response.",
+      "checkStatusFailed": "Status check failed with status {status}.",
+      "generationTimeout": "Video generation timed out. Please try again.",
+      "videoGenerationFailed": "Video generation failed.",
+      "download": "Download",
+      "resultExpires": "Generated video links may expire. Download the result if you need to keep it."
     }
   },
   "historyPage": {

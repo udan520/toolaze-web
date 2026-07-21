@@ -14,7 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
   return {
     title: 'All Seedance 2.0 AI Video Tools - Toolaze',
-    description: 'Browse all Seedance 2.0 AI video generation tools. Text to video, image to video, and more. Free online. No sign-up required.',
+    description: 'Browse Seedance 2.0 AI video generation workflows. Text to video and image to video tools online.',
     robots: 'index, follow',
     alternates: {
       canonical: hreflang.canonical,
@@ -28,7 +28,7 @@ export default async function Seedance2AllToolsPage() {
   const t = await loadCommonTranslations(locale)
   const commonT = t?.common || {}
 
-  const allSlugs = await getAllSlugs('seedance-2', locale)
+  const allSlugs = (await getAllSlugs('seedance-2', locale)).filter((slug) => slug !== 'ai-video-generator')
   const allTools = await Promise.all(
     allSlugs.map(async (slug) => {
       try {
@@ -70,7 +70,7 @@ export default async function Seedance2AllToolsPage() {
               All <span className="text-gradient">Seedance 2.0</span> AI Video Tools
             </h1>
             <p className="desc-text text-lg md:text-xl max-w-2xl mx-auto">
-              Browse all Seedance 2.0 AI video generation tools. Text to video, image to video, and more. Free online.
+              Browse Seedance 2.0 AI video generation workflows: text to video and image to video.
             </p>
           </div>
         </header>

@@ -1,6 +1,6 @@
 'use client'
 
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { buildPromptExampleUseDetail } from '@/lib/prompt-example-use-detail'
 import type { PromptInsertMode } from '@/lib/prompt-insert-mode'
@@ -9,6 +9,11 @@ interface PromptExampleItem {
   title: string
   prompt: string
   image?: string
+  video?: string
+  poster?: string
+  description?: string
+  duration?: string
+  uploadDate?: string
   note?: string
   color?: string
   group?: string
@@ -104,6 +109,59 @@ function getPromptExampleLabels(pathname: string | null) {
   return PROMPT_EXAMPLE_LABELS[firstPart as keyof typeof PROMPT_EXAMPLE_LABELS] || PROMPT_EXAMPLE_LABELS.en
 }
 
+function DeferredPromptVideo({
+  src,
+  poster,
+  label,
+}: {
+  src: string
+  poster?: string
+  label: string
+}) {
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+
+    if (typeof IntersectionObserver === 'undefined') {
+      void video.play().catch(() => undefined)
+      return () => video.pause()
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting) {
+          void video.play().catch(() => undefined)
+        } else {
+          video.pause()
+        }
+      },
+      { rootMargin: '120px 0px', threshold: 0.25 }
+    )
+
+    observer.observe(video)
+    return () => {
+      observer.disconnect()
+      video.pause()
+    }
+  }, [])
+
+  return (
+    <video
+      ref={videoRef}
+      src={src}
+      poster={poster}
+      aria-label={label}
+      loop
+      muted
+      playsInline
+      preload="none"
+      className="h-full max-w-full object-contain"
+    />
+  )
+}
+
 export default function PromptExamples({
   title = 'Prompt Examples',
   subtitle,
@@ -197,7 +255,15 @@ export default function PromptExamples({
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {visibleItems.map((item, idx) => (
             <article key={`${item.title}-${idx}`} className="bg-white rounded-3xl border border-indigo-50 shadow-sm overflow-hidden">
-              {item.image ? (
+              {item.video ? (
+                <div className="flex h-[360px] items-center justify-center bg-slate-100 lg:h-[420px]">
+                  <DeferredPromptVideo
+                    src={item.video}
+                    poster={item.poster}
+                    label={`${item.title} example video`}
+                  />
+                </div>
+              ) : item.image ? (
                 <img
                   src={item.image}
                   alt={item.title}

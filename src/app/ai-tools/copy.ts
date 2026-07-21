@@ -31,6 +31,8 @@ type AiToolsPageCopy = {
 const cardAssets = {
   aiImage:
     'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/gpt-image-2.jpg',
+  aiVideo:
+    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/seedance-2.jpg',
   worldCup:
     'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d67aebd7cde5431abd3a7bb74a89bac1.webp',
   watermark:
@@ -63,6 +65,12 @@ const en: AiToolsPageCopy = {
       href: '/ai-image-generator',
       image: cardAssets.aiImage,
       description: 'Create high-quality AI images online from text prompts for ads, posters, concepts, and social visuals.',
+    },
+    {
+      title: 'AI Video Generator',
+      href: '/ai-video-generator',
+      image: cardAssets.aiVideo,
+      description: 'Create short AI videos online from text, images, video clips, or audio references.',
     },
     {
       title: 'World Cup AI Image Generator',

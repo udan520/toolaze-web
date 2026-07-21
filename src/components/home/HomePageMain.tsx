@@ -499,7 +499,7 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
                   home?.aiVideoIntro ??
                   ''
                 }
-                links={[{ term: 'AI Video Generator', href: '/model/seedance-2' }]}
+                links={[{ term: 'AI Video Generator', href: '/ai-video-generator' }]}
               />
             </p>
           </div>

@@ -91,6 +91,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.94,
   })
   SUPPORTED_LOCALES.forEach((locale) => {
+    const path = locale === 'en' ? '/ai-video-generator' : `/${locale}/ai-video-generator`
+    entries.push({
+      url: `${baseUrl}${path}`,
+      lastModified: today,
+      changeFrequency: 'weekly',
+      priority: locale === 'en' ? 0.94 : 0.9,
+    })
+  })
+  SUPPORTED_LOCALES.forEach((locale) => {
     if (locale === 'en') return
     entries.push({
       url: `${baseUrl}/${locale}/ai-image-generator`,

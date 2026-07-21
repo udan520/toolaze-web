@@ -519,6 +519,7 @@ export function createLocalDevHistoryItem(item) {
     aspectRatio: item?.aspectRatio || null,
     resolution: item?.resolution || null,
     outputFormat: item?.outputFormat || null,
+    nativeAudio: item?.nativeAudio === true,
     toolSlug: String(item?.toolSlug || '').trim() || null,
     toolLabel: String(item?.toolLabel || '').trim() || null,
     sourcePath: String(item?.sourcePath || '').trim() || null,

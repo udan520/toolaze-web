@@ -285,6 +285,7 @@ class FakeD1Statement {
           aspect_ratio: row.aspect_ratio,
           resolution: row.resolution,
           output_format: row.output_format,
+          native_audio: row.native_audio,
           tool_slug: row.tool_slug,
           tool_label: row.tool_label,
           source_path: row.source_path,
@@ -624,7 +625,7 @@ class FakeD1Statement {
     }
 
     if (normalized.startsWith('insert into generation_history')) {
-      assert.equal(this.values.length, 14);
+      assert.equal(this.values.length, 15);
       const [
         id,
         userId,
@@ -636,6 +637,7 @@ class FakeD1Statement {
         aspectRatio,
         resolution,
         outputFormat,
+        nativeAudio,
         toolSlug,
         toolLabel,
         sourcePath,
@@ -654,6 +656,7 @@ class FakeD1Statement {
         aspect_ratio: aspectRatio,
         resolution,
         output_format: outputFormat,
+        native_audio: nativeAudio,
         tool_slug: toolSlug,
         tool_label: toolLabel,
         source_path: sourcePath,
@@ -1520,6 +1523,7 @@ test('generation history stores and lists successful generated media', async () 
     aspectRatio: '1:1',
     resolution: '1K',
     outputFormat: 'PNG',
+    nativeAudio: false,
     toolSlug: 'ai-image-generator',
     toolLabel: 'AI Image Generator',
     sourcePath: '/ai-image-generator',
@@ -1536,6 +1540,7 @@ test('generation history stores and lists successful generated media', async () 
     aspectRatio: '1:1',
     resolution: '1K',
     outputFormat: 'PNG',
+    nativeAudio: false,
     toolSlug: 'ai-image-generator',
     toolLabel: 'AI Image Generator',
     sourcePath: '/ai-image-generator',

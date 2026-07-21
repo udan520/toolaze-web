@@ -69,35 +69,22 @@ export default function Features({ title, features, bgClass = 'bg-white' }: Feat
   const sectionTitle = title || 'Key Features'
 
   return (
-    <section 
-      className={`${bgClass} py-24 relative`} 
-      style={{ 
-        width: '100vw', 
-        position: 'relative',
-        left: '50%',
-        right: '50%',
-        marginLeft: '-50vw',
-        marginRight: '-50vw',
-        paddingLeft: '24px',
-        paddingRight: '24px',
-        boxSizing: 'border-box'
-      }}
-    >
-      <div className="w-full max-w-full">
+    <section className={`${bgClass} w-full max-w-full overflow-x-hidden px-6 py-24`}>
+      <div className="mx-auto w-full max-w-6xl min-w-0">
         {/* H2 标题 */}
-        <h2 className="text-4xl font-extrabold text-center text-slate-900 mb-12">
+        <h2 className="mx-auto mb-12 max-w-4xl text-center text-3xl font-extrabold leading-tight text-slate-900 sm:text-4xl break-words">
           {sectionTitle}
         </h2>
 
         {/* 特性卡片网格 - 2x3 布局（6个特性点） */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
+        <div className="grid w-full min-w-0 grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {features.slice(0, 6).map((feature, idx) => {
             const featureObj = typeof feature === 'object' ? feature : { icon: '📂', title: feature, desc: '' }
             // 优先使用 iconType 字段，如果没有则根据标题匹配
             const iconType = featureObj.iconType || getIconType(featureObj.title)
             
             return (
-              <div key={idx} className="bg-white p-6 rounded-lg shadow-sm">
+              <div key={idx} className="min-w-0 rounded-lg bg-white p-6 shadow-sm">
                 {/* 图标 - 居中显示，indigo虚线圆圈边框，极简线条图标 */}
                 <div className="flex flex-col items-center mb-4">
                   <div className="relative w-16 h-16 flex items-center justify-center mb-4">
@@ -125,14 +112,14 @@ export default function Features({ title, features, bgClass = 'bg-white' }: Feat
                   </div>
                   
                   {/* 标题 - 粗体深灰色，居中 */}
-                  <h4 className="font-bold text-slate-900 mb-3 text-lg text-center">
+                  <h4 className="mb-3 break-words text-center text-lg font-bold text-slate-900">
                     {featureObj.title}
                   </h4>
                   
                   {/* 描述 - 浅灰色段落，居中，支持HTML链接 */}
                   {(featureObj.desc || featureObj.description) && (
                     <p 
-                      className="text-sm text-slate-600 leading-relaxed text-center"
+                      className="break-words text-center text-sm leading-relaxed text-slate-600"
                       dangerouslySetInnerHTML={{ __html: featureObj.desc || featureObj.description || '' }}
                     />
                   )}

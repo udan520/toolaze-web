@@ -6,7 +6,7 @@ import { BROWSER_LOCALE_REDIRECT_SCRIPT } from './browser-locale-redirect'
 import { getPreferredLocalizedUrl } from './site-language-switch'
 
 test('formerly English-only support routes now have localized URLs', () => {
-  const localizedRoutes = ['refund-policy', 'acceptable-use', 'contact', 'earn-credits']
+  const localizedRoutes = ['refund-policy', 'acceptable-use', 'contact', 'earn-credits', 'ai-video-generator']
 
   for (const route of localizedRoutes) {
     assert.equal(getPreferredLocalizedUrl(`/${route}`, 'zh-TW'), `/zh-TW/${route}`)
@@ -26,7 +26,7 @@ test('localized support routes have explicit locale pages and indexed support si
   const sitemap = readFileSync('src/app/sitemap.ts', 'utf8')
   const indexedRoutes = ['refund-policy', 'acceptable-use', 'contact']
 
-  for (const route of ['refund-policy', 'acceptable-use', 'contact', 'earn-credits']) {
+  for (const route of ['refund-policy', 'acceptable-use', 'contact', 'earn-credits', 'ai-video-generator']) {
     assert.match(readFileSync(`src/app/[locale]/${route}/page.tsx`, 'utf8'), /generateStaticParams/)
   }
 
@@ -35,4 +35,5 @@ test('localized support routes have explicit locale pages and indexed support si
   }
 
   assert.doesNotMatch(sitemap, /const STATIC_PAGES = \[[^\]]*['"]earn-credits['"]/)
+  assert.match(sitemap, /SUPPORTED_LOCALES\.forEach\(\(locale\) => \{[\s\S]*ai-video-generator/, 'sitemap should enumerate localized AI Video Generator URLs')
 })
