@@ -81,7 +81,7 @@ export default async function ImageCompressorPage() {
   
   return (
     <>
-      <Navigation />
+      <Navigation initialTranslations={t} />
       
       <Breadcrumb items={[
         { label: 'Home', href: '/' },

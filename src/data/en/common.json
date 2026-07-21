@@ -2,6 +2,7 @@
   "nav": {
     "quickTools": "Quick Tools",
     "aiTools": "AI Tools",
+    "hot": "Hot",
     "imageCompression": "Image Compression",
     "imageConverter": "Image Converter",
     "watermarkRemover": "Watermark Remover",
@@ -48,7 +49,8 @@
     "seedream50Lite": "Seedream 5.0 Lite",
     "seedream50Pro": "Seedream 5.0 Pro",
     "seedance25": "Seedance 2.5",
-    "aiVideoGenerator": "AI Video Generator"
+    "aiVideoGenerator": "AI Video Generator",
+    "aiDanceGenerator": "AI Dance Generator"
   },
   "home": {
     "metadata": {
@@ -110,6 +112,10 @@
       "wan-2-7-image": {
         "cardTitle": "Wan 2.7 Image",
         "summary": "AI image generator for complex prompts, multi-reference inputs, prompt-based edits, readable text layouts, and 2K to 4K creative workflows on Toolaze."
+      },
+      "ai-dance-generator": {
+        "cardTitle": "AI Dance Generator",
+        "summary": "Upload one image and create a short dance video for choreography ideas, class promos, and social clips. Choose duration and aspect settings in the generator."
       }
     },
     "aiToolsHubTitle": "AI Tools for Images, Video & Everyday Media Workflows",
@@ -123,7 +129,7 @@
       },
       {
         "title": "AI video generators",
-        "description": "Turn scripts and reference frames into cinematic clips. Seedance 2.0 and Kling 3.0 support text-to-video and image-to-video with multimodal inputs—ideal for promos, storyboards, and short-form storytelling.",
+        "description": "Turn scripts, reference frames, or a single uploaded image into short video concepts. Use AI Video Generator for model-based text-to-video and image-to-video workflows, or AI Dance Generator for quick dance clips, class promos, and social posts.",
         "href": "/ai-video-generator"
       },
       {
@@ -140,7 +146,7 @@
     "sectionAiImageTitle": "AI Image Models",
     "sectionAiImageSubtitle": "AI image generation online with text-to-image and image-to-image workflows. Try selected tools for free, then use credits for continued generation depending on model and settings.",
     "sectionAiVideoTitle": "AI Video Models",
-    "sectionAiVideoSubtitle": "AI video generation online with text-to-video and image-to-video workflows. Credit use depends on model, duration, quality, and generation settings.",
+    "sectionAiVideoSubtitle": "Create AI videos from prompts, reference frames, or one uploaded image. Explore AI Dance Generator for short social dance clips alongside video tools for promos, storyboards, and cinematic scenes.",
     "sectionToolsTitle": "More Tools",
     "sectionToolsSubtitle": "Image compression, format conversion, font generator—free and available online.",
     "seoIntro": {
@@ -246,7 +252,8 @@
     "aiImageGenerator": "AI Image Generator",
     "refundPolicy": "Refund Policy",
     "acceptableUse": "Acceptable Use Policy",
-    "aiVideoGenerator": "AI Video Generator"
+    "aiVideoGenerator": "AI Video Generator",
+    "aiDanceGenerator": "AI Dance Generator"
   },
   "breadcrumb": {
     "home": "Home",

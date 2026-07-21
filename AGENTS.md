@@ -19,6 +19,7 @@
 - 小型 UI / 文案调整：直接改目标文件，做快速本地预览或源码检查，不默认跑完整 `npm run build`。
 - 涉及价格、支付、积分、退款、法律文案、SEO 路由、sitemap、导航入口：需要跑针对性测试，必要时再跑完整 build。
 - 只有用户明确说“上线 / 发布 / 过审核前最终检查 / 发 main”时，才执行完整验证链路：测试、build、本地 smoke、sitemap/关键路由检查。
+- 上线页面前，页面级图片 / 视频资源必须使用 R2 公网 URL；本地 `/public` 只允许保留 logo、favicon、图标、极小 UI 装饰或开发临时占位。新增落地页、模型页、工具页的 hero、demo、gallery、prompt 示例媒体不得以本地 `/model-assets`、`/images` 等路径作为最终发布资源。
 - 不为纯视觉微调启动过重流程；优先快速交付可见结果，再按风险补验证。
 
 ## 重复落地页 / 生成组件任务提速
@@ -39,3 +40,10 @@
 - 落地页常驻视频默认提供真实视频帧 poster，poster 使用 WebP 且在可行时小于 100KB；列表视频使用 `preload="none"` 并在进入视口后播放，避免首屏同时请求全部视频。
 - 有常驻视频示例的 SEO 页面应输出与可见内容一致的 `VideoObject`，至少包含唯一名称、描述、缩略图、发布日期、时长和 `contentUrl`；FAQ 与 HowTo 结构化数据也必须来自当前可见文案，不生成隐藏或虚构内容。
 - 修改 SEO URL、canonical、重定向、sitemap 或常驻远程资产时，必须补针对性契约测试，并核对旧 URL 去向、主要页面 canonical、sitemap 收录、poster 文件存在性和远程资源可达性。
+
+## SEO Factory 落地页流程
+
+- 以后生成、改写或接入任何 Toolaze SEO 落地页时，必须先建立 Seo-Factory 运行记录，再写正式页面产物。
+- 最小必建记录包括 `_codex/seo-pipeline/queue/ready.json`、`_codex/seo-pipeline/tasks/{taskId}/task.json`、`_codex/seo-pipeline/tasks/{taskId}/content/{locale}.json`。
+- 记录必须包含可被 `src/lib/seo-loader.ts` 识别的 `taskId`、`slug`、`pageType`、`status: "ready_for_publish"`，并让 `queue/ready.json` 指向对应 task。
+- 正式页面 JSON、路由、sitemap、hub/nav 入口等后续改动必须能追溯到对应 Seo-Factory task/content 记录；不得只写 `src/data` 或页面路由而缺少 Seo-Factory 记录。

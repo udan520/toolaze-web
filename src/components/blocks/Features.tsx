@@ -12,6 +12,7 @@ interface FeaturesProps {
   title?: string
   features?: FeatureItem[]
   bgClass?: string
+  layout?: 'default' | 'wide'
 }
 
 // 极简线条图标组件（indigo，极简线条风格）
@@ -51,7 +52,7 @@ const LineIcon = ({ type }: { type: string }) => {
   return icons[type] || icons.privacy
 }
 
-export default function Features({ title, features, bgClass = 'bg-white' }: FeaturesProps) {
+export default function Features({ title, features, bgClass = 'bg-white', layout = 'default' }: FeaturesProps) {
   if (!features || features.length === 0) return null
 
   // 根据标题匹配对应的图标类型
@@ -67,24 +68,47 @@ export default function Features({ title, features, bgClass = 'bg-white' }: Feat
   }
 
   const sectionTitle = title || 'Key Features'
+  const isWideLayout = layout === 'wide'
+  const containerClass = isWideLayout
+    ? 'mx-auto w-full max-w-6xl min-w-0'
+    : 'mx-auto w-full max-w-[1440px] min-w-0'
+  const gridClass = isWideLayout
+    ? 'grid w-full min-w-0 grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8'
+    : 'grid w-full min-w-0 grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3'
+  const cardClass = isWideLayout
+    ? 'min-w-0 rounded-xl bg-white p-7 shadow-sm lg:p-8'
+    : 'min-w-0 rounded-lg bg-white p-6 shadow-sm'
+  const sectionStyle: React.CSSProperties = isWideLayout
+    ? {
+        width: '100%',
+        boxSizing: 'border-box',
+      }
+    : {
+        width: '100%',
+        position: 'relative',
+        boxSizing: 'border-box',
+      }
 
   return (
-    <section className={`${bgClass} w-full max-w-full overflow-x-hidden px-6 py-24`}>
-      <div className="mx-auto w-full max-w-6xl min-w-0">
+    <section
+      className={`${bgClass} w-full max-w-full overflow-x-hidden px-6 py-24`}
+      style={sectionStyle}
+    >
+      <div className={containerClass}>
         {/* H2 标题 */}
         <h2 className="mx-auto mb-12 max-w-4xl text-center text-3xl font-extrabold leading-tight text-slate-900 sm:text-4xl break-words">
           {sectionTitle}
         </h2>
 
         {/* 特性卡片网格 - 2x3 布局（6个特性点） */}
-        <div className="grid w-full min-w-0 grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className={gridClass}>
           {features.slice(0, 6).map((feature, idx) => {
             const featureObj = typeof feature === 'object' ? feature : { icon: '📂', title: feature, desc: '' }
             // 优先使用 iconType 字段，如果没有则根据标题匹配
             const iconType = featureObj.iconType || getIconType(featureObj.title)
             
             return (
-              <div key={idx} className="min-w-0 rounded-lg bg-white p-6 shadow-sm">
+              <div key={idx} className={cardClass}>
                 {/* 图标 - 居中显示，indigo虚线圆圈边框，极简线条图标 */}
                 <div className="flex flex-col items-center mb-4">
                   <div className="relative w-16 h-16 flex items-center justify-center mb-4">

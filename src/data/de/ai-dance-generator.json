@@ -1,0 +1,208 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 1,
+    "modelId": "grok-video-1-5",
+    "defaultPrompt": "Lass die Person im Bild tanzen.",
+    "hideModelBranding": true,
+    "compactResultPanel": true,
+    "displayName": "KI-Tanzgenerator",
+    "textOverrides": {
+      "promptLabel": "Beschreibe die Tanzszene",
+      "promptPlaceholder": "Beispiel: Lass die Person im Bild tanzen",
+      "generateLabel": "Tanzvideo erstellen",
+      "uploadTitle": "Lade dein Bild hoch"
+    },
+    "sampleImages": [
+      {
+        "url": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/ai-dance-demo.mp4",
+        "title": "Demo eines KI-Tanzvideos",
+        "width": 16,
+        "height": 9,
+        "mediaType": "video"
+      }
+    ],
+    "defaultVideoDurationSeconds": 5,
+    "defaultImageUrls": [
+      "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/ai-dance-demo-source.png"
+    ]
+  },
+  "metadata": {
+    "title": "KI-Tanzgenerator online | Ein Bild hochladen",
+    "description": "Nutze den Toolaze KI-Tanzgenerator online, lade ein Bild hoch und erstelle kurze Tanzvideos, Choreografieideen, Promos und Social-Media-Clips."
+  },
+  "sectionsOrder": [
+    "intro",
+    "promptExamples",
+    "howToUse",
+    "scenes",
+    "features",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Kostenloser <span class=\"text-gradient\">KI-Tanzgenerator</span> online",
+    "desc": "Lade ein Bild hoch und beschreibe dann Tanzbewegung, Outfit, Licht und Bühnenstimmung, um ein kurzes KI-Tanzvideo für Promos, Choreografieideen und Social-Media-Posts zu erstellen."
+  },
+  "intro": {
+    "title": "Tanzvideos aus einem hochgeladenen Bild erstellen",
+    "content": [
+      {
+        "title": "Ein Bild in ein Tanzvideo verwandeln",
+        "text": "Der Toolaze KI-Tanzgenerator hilft Kreativen, ein einzelnes hochgeladenes Bild in ein kurzes Ganzkörper-Performance-Video zu verwandeln. Nutze ihn für Tanzpromos, Choreografie-Stimmungsboards, Kursankündigungen und kurze Social-Media-Clips."
+      },
+      {
+        "title": "Bewegung, Kamera und Bühne steuern",
+        "text": "Lade ein klares Bild hoch und beschreibe Tanzstil, Bewegung, Kleidung, Licht, Kamerawinkel und Hintergrund, damit der Ablauf auf kurze Tanzclips fokussiert bleibt."
+      },
+      {
+        "title": "Die Vorlage einfach halten",
+        "text": "Nutze ein Bild mit gut sichtbarem Motiv und verfeinere die Beschreibung mit Details wie Ganzkörperausschnitt, Bewegungsenergie, Spotlight, Studiohintergrund oder Kamerabewegung."
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "Einfache Tanzideen zum Wiederverwenden",
+    "subtitle": "Nutze nach dem Hochladen eines Bildes eine einfache Beschreibung und erstelle ein kurzes Tanzvideo.",
+    "items": [
+      {
+        "title": "Hip-Hop-Bühne",
+        "prompt": "Lass die Person im Bild einen einfachen Hip-Hop-Tanz machen.",
+        "note": "Gut für Kurs-Promos, Musikclips und urbane Performance-Ideen.",
+        "color": "linear-gradient(135deg, #111827, #6366f1)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/prompt-hip-hop-stage.mp4"
+      },
+      {
+        "title": "Anmutige Bewegung",
+        "prompt": "Lass die Person im Bild anmutig tanzen.",
+        "note": "Nutze dies, wenn das Video Eleganz, Balance und klare Körperlinien braucht.",
+        "color": "linear-gradient(135deg, #f5d0fe, #7c3aed)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/prompt-ballet-motion.mp4"
+      },
+      {
+        "title": "K-Pop-Auftritt",
+        "prompt": "Lass die Person im Bild einen K-Pop-Tanz machen.",
+        "note": "Gut für energiegeladene Fan-Bearbeitungen, Cover und Social-Media-Kampagnenclips.",
+        "color": "linear-gradient(135deg, #f9a8d4, #2563eb)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/prompt-k-pop-performance.mp4"
+      },
+      {
+        "title": "Lebendiger Tanz",
+        "prompt": "Lass die Person im Bild lebendig tanzen.",
+        "note": "Geeignet für Salsa, Bachata, Ballroom und Bühnenideen.",
+        "color": "linear-gradient(135deg, #fecaca, #dc2626)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/prompt-latin-dance.mp4"
+      },
+      {
+        "title": "Straßentanz",
+        "prompt": "Lass die Person im Bild auf einer Stadtstraße tanzen.",
+        "note": "Gut für Tanzcrews, lokale Events und lockere Creator-Clips.",
+        "color": "linear-gradient(135deg, #bfdbfe, #0f766e)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/prompt-street-dance.mp4"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "So verwendest du den KI-Tanzgenerator",
+    "steps": [
+      {
+        "title": "Ein Bild hochladen",
+        "desc": "Beginne mit einem klaren Porträt oder Ganzkörperbild, auf dem die Person leicht erkennbar ist."
+      },
+      {
+        "title": "Die Tanzszene beschreiben",
+        "desc": "Füge Tanzstil, Bewegung, Outfit, Licht, Hintergrund, Kamerawinkel und Richtung für ein Social-Media-Video hinzu."
+      },
+      {
+        "title": "Generieren und verfeinern",
+        "desc": "Erstelle das Video und passe die Beschreibung an, wenn die Bewegung klarere Körperlinien, stärkere Dynamik oder einen saubereren Hintergrund braucht."
+      }
+    ]
+  },
+  "scenesTitle": "Wo KI-Tanzvideos am besten funktionieren",
+  "scenes": [
+    {
+      "title": "Tanzkurs- und Workshop-Promos",
+      "icon": "🎭",
+      "desc": "Erstelle kurze Promo-Clips für Hip-Hop-Kurse, Ballett-Workshops, Studioevents und Community-Tanztermine, ohne zuerst ein Shooting zu planen."
+    },
+    {
+      "title": "Kurze Social-Media-Clips",
+      "icon": "🎬",
+      "desc": "Erzeuge Tanzclips für TikTok, Reels, Shorts und Musikposts, bei denen klare Bewegung und gutes Licht wichtig sind."
+    },
+    {
+      "title": "Choreografie-Stimmungsboards",
+      "icon": "🕺",
+      "desc": "Teste Bewegung, Kleidung, Bühnenbild und Licht, bevor du filmst, probst oder ein Kreativteam briefst."
+    }
+  ],
+  "features": {
+    "title": "Wichtige Funktionen für Tanzvideo-Erstellung",
+    "items": [
+      {
+        "icon": "🪩",
+        "iconType": "upload",
+        "title": "Ein Bild hochladen",
+        "desc": "Lade ein Quellbild hoch und steuere Tanzbewegung, Kleidung, Bühnenstimmung und Videoausschnitt per Beschreibung."
+      },
+      {
+        "icon": "📸",
+        "iconType": "camera",
+        "title": "Kamerasteuerung per Beschreibung",
+        "desc": "Beschreibe Ganzkörperausschnitt, Nahaufnahme-Energie, Bühnenlicht, Bewegungszeichen oder Kamerabewegung in einfacher Sprache."
+      },
+      {
+        "icon": "🎨",
+        "iconType": "creative",
+        "title": "Bereit für Social-Media-Videos",
+        "desc": "Nutze den erzeugten Clip für Kampagnenentwürfe, Kursankündigungen, Social-Media-Vorschauen und kreative Stimmungsboards."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Schneller Browser-Ablauf",
+        "desc": "Schreibe eine Beschreibung, generiere und verfeinere direkt im Browser, ohne Videoschnittsoftware einzurichten."
+      },
+      {
+        "icon": "💃",
+        "iconType": "motion",
+        "title": "Bewegungsorientierte Beschreibungen",
+        "desc": "Steuere Posen, Körperlinien, Energie, Kleidung in Bewegung und Bühnenstimmung für klarere Tanzclips."
+      },
+      {
+        "icon": "🧩",
+        "iconType": "workflow",
+        "title": "Bereit vor der Produktion",
+        "desc": "Erstelle Bewegungsreferenzen für Choreografie, Bühne, Licht und Social-Media-Konzepte vor dem Filmen oder Schneiden."
+      }
+    ]
+  },
+  "faqTitle": "FAQ zum KI-Tanzgenerator",
+  "faq": [
+    {
+      "q": "Was ist der KI-Tanzgenerator?",
+      "a": "Es ist eine Toolaze-Seite zum Erstellen kurzer tanzbezogener Videos aus einem hochgeladenen Bild und einer Textbeschreibung, etwa für Social-Media-Clips, Choreografieideen, Bühnenpromos und Creator-Posts."
+    },
+    {
+      "q": "Erzeugt diese Seite Tanzvideos?",
+      "a": "Ja. Das obere Werkzeug lädt ein Bild hoch und erstellt aus deiner Beschreibung ein kurzes Tanzvideo."
+    },
+    {
+      "q": "Was sollte ich in die Tanzbeschreibung schreiben?",
+      "a": "Nenne Tanzstil, Bewegung, Outfit, Bildausschnitt, Licht, Hintergrund, Kamerawinkel und ob du einen vertikalen Social Clip oder eine breitere Bühnenaufnahme möchtest. Beginne mit einem klaren hochgeladenen Bild."
+    },
+    {
+      "q": "Kann ich es für Tanzkurs-Marketing nutzen?",
+      "a": "Ja. Es eignet sich für Kurs-Promos, Workshop-Clips, Event-Teaser, Social-Media-Posts und Moodboards, bevor du finale Kampagnenmaterialien erstellst."
+    },
+    {
+      "q": "Wie bekomme ich bessere Ganzkörper-Tanzergebnisse?",
+      "a": "Lade ein klares Einzelbild hoch und bitte um Ganzkörperausschnitt, klare Körperlinien, realistische Anatomie, ausgewogene Bewegung, sichtbare Füße und Hände sowie einen sauberen Hintergrund. Wenn die Bewegung zu hektisch ist, vereinfache sie und generiere erneut."
+    }
+  ],
+  "moreTools": "Weitere KI-Videowerkzeuge"
+}

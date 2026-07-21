@@ -37,10 +37,37 @@ interface ToolL2PageContentProps {
 }
 
 const AI_IMAGE_TOOL_TOP_COMPONENTS = new Set(['gpt-image-2'])
+type TopToolImageModelId =
+  | 'gpt-image-2'
+  | 'grok-1-5-image'
+  | 'grok-video-1-5'
+  | 'nano-banana-pro'
+  | 'nano-banana-2'
+  | 'seedream-4-5'
+  | 'seedream-5-0-lite'
+  | 'seedream-5-0-pro'
+  | 'wan-2-7-image'
+const TOP_TOOL_IMAGE_MODEL_IDS = new Set([
+  'gpt-image-2',
+  'grok-1-5-image',
+  'grok-video-1-5',
+  'nano-banana-pro',
+  'nano-banana-2',
+  'seedream-4-5',
+  'seedream-5-0-lite',
+  'seedream-5-0-pro',
+  'wan-2-7-image',
+])
 const WATERMARK_REMOVER_PROMPT =
   'Remove visible watermarks, logos, timestamp overlays, or text overlays from this image. Preserve the original subject, background, lighting, texture, and composition. Only edit the overlay areas.'
 const PHOTO_RESTORATION_PROMPT =
   'Restore and colorize this old photo by removing scratches, dust, and noise. Enhance clarity, sharpness, and details while preserving the original colors and natural look.'
+
+function getTopToolImageModelId(modelId: unknown, fallback: 'gpt-image-2'): TopToolImageModelId {
+  return typeof modelId === 'string' && TOP_TOOL_IMAGE_MODEL_IDS.has(modelId)
+    ? modelId as TopToolImageModelId
+    : fallback
+}
 
 // 从 hero.h1 中提取页面标题（用于面包屑）
 function extractPageTitle(h1: string): string {
@@ -453,6 +480,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
       'photoRestoration',
       'aiCouplePhotoMaker',
       'aiBabyGenerator',
+      'aiDanceGenerator',
       'worldCupAiImageGenerator',
       'fontGenerator',
       'emojiCopyAndPaste',
@@ -461,6 +489,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
       'textToImageGenerator',
       'aiImageToImageGenerator',
       'aiVideo',
+      'pricing',
       'wan27Image',
       'seedream45',
       'seedream50Lite',
@@ -498,10 +527,12 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
       'aiImageGenerator',
       'textToImageGenerator',
       'aiImageToImageGenerator',
+      'pricing',
       'watermarkRemover',
       'photoRestoration',
       'aiCouplePhotoMaker',
       'aiBabyGenerator',
+      'aiDanceGenerator',
       'worldCupAiImageGenerator',
       'imageCompression',
       'imageConverter',
@@ -1005,12 +1036,13 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
               <div className="w-full max-w-full">
                 <div className="flex flex-col">
                   <AiImageGenerationTool
-                    modelId="gpt-image-2"
+                    modelId={getTopToolImageModelId(content.topTool?.modelId, 'gpt-image-2')}
                     modelName={content.topTool?.displayName || 'AI Hair Color Changer'}
                     dailyLimitStorageKey="gpt_image_2_last_used_date"
                     defaultMode={content.topTool?.mode === 'image-to-image' ? 'image-to-image' : undefined}
                     defaultPrompt={content.topTool?.defaultPrompt || ''}
                     defaultImageUrls={Array.isArray(content.topTool?.defaultImageUrls) ? content.topTool.defaultImageUrls : []}
+                    defaultVideoDurationSeconds={typeof content.topTool?.defaultVideoDurationSeconds === 'number' ? content.topTool.defaultVideoDurationSeconds : undefined}
                     maxUploadImages={typeof content.topTool?.maxUploadImages === 'number' ? content.topTool.maxUploadImages : undefined}
                     hideModelBranding={content.topTool?.hideModelBranding === true}
                     sampleImages={Array.isArray(content.topTool?.sampleImages) ? content.topTool.sampleImages : undefined}
@@ -1170,6 +1202,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                     title={content.features?.title || 'Key Features'}
                     features={featuresData}
                     bgClass={bgClass}
+                    layout={tool === 'ai-dance-generator' ? 'wide' : 'default'}
                   />
                 )
               },
@@ -1284,6 +1317,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                     subtitle={promptExamples.subtitle}
                     items={promptExamples.items}
                     bgClass={bgClass}
+                    layout={tool === 'ai-dance-generator' ? 'horizontal' : 'grid'}
                     targetMode={promptExampleTargetMode}
                   />
                 )

@@ -5,6 +5,12 @@
       "slug": "ai-video-generator",
       "pageType": "l2",
       "status": "ready_for_publish"
+    },
+    {
+      "taskId": "2026-07-20-ai-dance-generator",
+      "slug": "ai-dance-generator",
+      "pageType": "l2",
+      "status": "ready_for_publish"
     }
   ]
 }

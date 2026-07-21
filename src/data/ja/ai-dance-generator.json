@@ -1,0 +1,208 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 1,
+    "modelId": "grok-video-1-5",
+    "defaultPrompt": "画像の人物を踊らせてください。",
+    "hideModelBranding": true,
+    "compactResultPanel": true,
+    "displayName": "AIダンスジェネレーター",
+    "textOverrides": {
+      "promptLabel": "ダンスシーンを説明",
+      "promptPlaceholder": "例：画像の人物を踊らせる",
+      "generateLabel": "ダンス動画を作成",
+      "uploadTitle": "画像をアップロード"
+    },
+    "sampleImages": [
+      {
+        "url": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/ai-dance-demo.mp4",
+        "title": "AIダンス動画デモ",
+        "width": 16,
+        "height": 9,
+        "mediaType": "video"
+      }
+    ],
+    "defaultVideoDurationSeconds": 5,
+    "defaultImageUrls": [
+      "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/ai-dance-demo-source.png"
+    ]
+  },
+  "metadata": {
+    "title": "AIダンスジェネレーター｜画像1枚をアップロード",
+    "description": "ToolazeのAIダンスジェネレーターで画像を1枚アップロードし、短いダンス動画、振付アイデア、プロモーション、SNSクリップを作成できます。"
+  },
+  "sectionsOrder": [
+    "intro",
+    "promptExamples",
+    "howToUse",
+    "scenes",
+    "features",
+    "faq"
+  ],
+  "hero": {
+    "h1": "無料オンライン<span class=\"text-gradient\">AIダンスジェネレーター</span>",
+    "desc": "画像を1枚アップロードし、ダンスの動き、衣装、照明、ステージの雰囲気を説明して、プロモーション、振付アイデア、SNS投稿向けの短いAIダンス動画を作成します。"
+  },
+  "intro": {
+    "title": "アップロードした1枚の画像からダンス動画を作成",
+    "content": [
+      {
+        "title": "1枚の画像をダンス動画に変換",
+        "text": "ToolazeのAIダンスジェネレーターは、アップロードした1枚の画像を短い全身パフォーマンス動画に変えるのに役立ちます。ダンスのプロモーション、振付ムードボード、レッスン告知、短いSNSクリップに使えます。"
+      },
+      {
+        "title": "動き、カメラ、ステージを指定",
+        "text": "鮮明な画像を1枚アップロードし、ダンスジャンル、動き、衣装、照明、カメラ角度、背景を説明して、短いダンスクリップに集中した流れを作れます。"
+      },
+      {
+        "title": "元画像はシンプルに",
+        "text": "人物がはっきり見える画像を使い、全身フレーミング、動きの強さ、スポットライト、スタジオ背景、カメラ移動などを説明文で調整します。"
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "そのまま使えるシンプルなダンス案",
+    "subtitle": "画像を1枚アップロードした後、シンプルな説明文で短いダンス動画を生成します。",
+    "items": [
+      {
+        "title": "ヒップホップステージ",
+        "prompt": "画像の人物にシンプルなヒップホップダンスをさせてください。",
+        "note": "レッスン告知、音楽クリップ、都会的なパフォーマンス案に向いています。",
+        "color": "linear-gradient(135deg, #111827, #6366f1)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/prompt-hip-hop-stage.mp4"
+      },
+      {
+        "title": "優雅な動き",
+        "prompt": "画像の人物に優雅なダンスをさせてください。",
+        "note": "上品さ、バランス、きれいな身体のラインを見せたい動画に使えます。",
+        "color": "linear-gradient(135deg, #f5d0fe, #7c3aed)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/prompt-ballet-motion.mp4"
+      },
+      {
+        "title": "K-Popパフォーマンス",
+        "prompt": "画像の人物にK-Popダンスをさせてください。",
+        "note": "エネルギーのあるファン編集、カバー、SNSキャンペーンクリップに向いています。",
+        "color": "linear-gradient(135deg, #f9a8d4, #2563eb)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/prompt-k-pop-performance.mp4"
+      },
+      {
+        "title": "明るいダンス",
+        "prompt": "画像の人物に元気なダンスをさせてください。",
+        "note": "サルサ、バチャータ、社交ダンス、ステージ案に使えます。",
+        "color": "linear-gradient(135deg, #fecaca, #dc2626)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/prompt-latin-dance.mp4"
+      },
+      {
+        "title": "ストリートダンス",
+        "prompt": "画像の人物に街中でダンスをさせてください。",
+        "note": "ダンスクルー、地域イベント、カジュアルなクリエイター動画に向いています。",
+        "color": "linear-gradient(135deg, #bfdbfe, #0f766e)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/prompt-street-dance.mp4"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "AIダンスジェネレーターの使い方",
+    "steps": [
+      {
+        "title": "画像を1枚アップロード",
+        "desc": "人物を認識しやすい、鮮明なポートレートまたは全身画像から始めます。"
+      },
+      {
+        "title": "ダンスシーンを説明",
+        "desc": "ダンスジャンル、動き、衣装、照明、背景、カメラ角度、SNS動画としての方向性を追加します。"
+      },
+      {
+        "title": "生成して調整",
+        "desc": "動画を作成し、動きにより明確な身体ライン、強い動き、きれいな背景が必要な場合は説明文を調整します。"
+      }
+    ]
+  },
+  "scenesTitle": "AIダンス動画が活きる場面",
+  "scenes": [
+    {
+      "title": "ダンス教室やワークショップの告知",
+      "icon": "🎭",
+      "desc": "ヒップホップ教室、バレエワークショップ、スタジオイベント、コミュニティのダンスセッション向けに、撮影前の短いプロモーション動画を作成できます。"
+    },
+    {
+      "title": "短いSNSクリップ",
+      "icon": "🎬",
+      "desc": "動きの分かりやすさと強い照明が重要なTikTok、Reels、Shorts、音楽投稿向けのダンスクリップを生成できます。"
+    },
+    {
+      "title": "振付ムードボード",
+      "icon": "🕺",
+      "desc": "撮影、リハーサル、クリエイティブチームへの共有前に、動き、衣装、演出、照明の方向性を試せます。"
+    }
+  ],
+  "features": {
+    "title": "ダンス動画作成の主な機能",
+    "items": [
+      {
+        "icon": "🪩",
+        "iconType": "upload",
+        "title": "1枚画像のアップロード",
+        "desc": "元画像を1枚アップロードし、説明文でダンスの動き、衣装、ステージの雰囲気、完成動画の構図を指定します。"
+      },
+      {
+        "icon": "📸",
+        "iconType": "camera",
+        "title": "説明文によるカメラ指定",
+        "desc": "全身フレーミング、近距離の迫力、ステージ照明、動きの合図、カメラ移動を自然な言葉で説明できます。"
+      },
+      {
+        "icon": "🎨",
+        "iconType": "creative",
+        "title": "SNS動画に使いやすい",
+        "desc": "生成したクリップをキャンペーン案、レッスン告知、SNSプレビュー、クリエイティブムードボードに使えます。"
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "ブラウザで素早く作成",
+        "desc": "編集ソフトを準備せず、ブラウザ上で説明文を書き、生成し、調整できます。"
+      },
+      {
+        "icon": "💃",
+        "iconType": "motion",
+        "title": "動きに集中した説明",
+        "desc": "ポーズ、身体のライン、エネルギー、衣装の動き、ステージの雰囲気を指定して、より分かりやすいダンスクリップにできます。"
+      },
+      {
+        "icon": "🧩",
+        "iconType": "workflow",
+        "title": "制作前の参考に使える",
+        "desc": "撮影や編集前に、振付、ステージ、照明、SNS企画のための動きの参考動画を作成できます。"
+      }
+    ]
+  },
+  "faqTitle": "AIダンスジェネレーター FAQ",
+  "faq": [
+    {
+      "q": "AIダンスジェネレーターとは？",
+      "a": "Toolazeで、アップロードした1枚の画像とテキスト説明から短いダンス系動画を作成するページです。SNSクリップ、振付アイデア、ステージプロモーション、クリエイター投稿に使えます。"
+    },
+    {
+      "q": "このページでダンス動画を生成できますか？",
+      "a": "はい。上部のツールで画像を1枚アップロードし、説明文から短いダンス動画を作成します。"
+    },
+    {
+      "q": "ダンスの説明文には何を書けばよいですか？",
+      "a": "ダンスジャンル、動き、衣装、人物のフレーミング、照明、背景、カメラ角度、縦型SNSクリップか広めのステージショットかを含めてください。まずは鮮明な画像を1枚アップロードします。"
+    },
+    {
+      "q": "ダンス教室のマーケティングに使えますか？",
+      "a": "はい。最終的なキャンペーン素材を作る前に、レッスン告知、ワークショップ動画、イベント予告、SNS投稿、ムードボードの下書きに使えます。"
+    },
+    {
+      "q": "全身のダンス結果を良くするには？",
+      "a": "鮮明な画像を1枚アップロードし、全身フレーミング、明確な身体ライン、自然な身体構造、バランスの良い動き、見える手足、きれいな背景を指定します。動きが複雑すぎる場合は、動作を簡単にして再生成します。"
+    }
+  ],
+  "moreTools": "その他のAI動画ツール"
+}

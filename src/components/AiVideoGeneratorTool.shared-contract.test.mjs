@@ -81,7 +81,7 @@ test('AI video generator page includes prompt examples after how-to guidance', (
   assert.match(promptExamplesSource, /preload="none"/, 'prompt videos should not request all permanent videos during initial page load')
   assert.match(promptExamplesSource, /poster=\{item\.poster\}/, 'prompt videos should render their stable poster')
   assert.match(promptExamplesSource, /\)\s*:\s*item\.image\s*\?\s*\(/, 'shared prompt examples should keep the existing image fallback')
-  assert.match(promptExamplesSource, /\)\s*:\s*\(\s*<div className="aspect-\[4\/3\]/, 'shared prompt examples should keep the decorative placeholder fallback')
+  assert.match(promptExamplesSource, /\)\s*:\s*\(\s*<div className="aspect-\[(?:4\/3|9\/16)\]/, 'shared prompt examples should keep the decorative placeholder fallback')
   assert.equal(promptVideoSource.assets.length, pageData.promptExamples.items.length, 'source manifest should cover every prompt video')
   const sourceAssetsByTitle = new Map(promptVideoSource.assets.map((asset) => [asset.title, asset]))
   for (const item of pageData.promptExamples.items) {

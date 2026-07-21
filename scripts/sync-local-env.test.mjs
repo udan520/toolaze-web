@@ -47,19 +47,19 @@ test('syncLocalEnv copies allowed shared keys without leaking values', async () 
   assert.doesNotMatch(serialized, /sk-test-secret-value|creem-secret-value/)
 })
 
-test('syncLocalEnv finds a shared env in ancestor workspace folders', async () => {
-  const dir = await mkdtemp(join(tmpdir(), 'toolaze-env-sync-nested-'))
-  const projectRoot = join(dir, 'toolaze-worktrees', 'lp', 'ai-video-generator')
+test('syncLocalEnv discovers shared env from an ancestor workspace directory', async () => {
+  const dir = await mkdtemp(join(tmpdir(), 'toolaze-env-sync-'))
+  const projectRoot = join(dir, 'toolaze-worktrees', 'lp', 'ai-dance-generator')
   const sharedEnvPath = join(dir, '.toolaze-shared.env.local')
   const targetEnvPath = join(projectRoot, '.env.local')
 
   await mkdir(projectRoot, { recursive: true })
-  await writeFile(sharedEnvPath, 'KIE_AI_API_KEY=sk-nested-secret\n', 'utf8')
+  await writeFile(sharedEnvPath, 'KIE_AI_API_KEY=ancestor-secret\n', 'utf8')
 
   const { syncLocalEnv } = require('./sync-local-env.js')
-  const result = await syncLocalEnv({ projectRoot })
+  const result = await syncLocalEnv({ projectRoot, targetEnvPath })
   const next = await readFile(targetEnvPath, 'utf8')
 
   assert.equal(result.source, sharedEnvPath)
-  assert.match(next, /^KIE_AI_API_KEY=sk-nested-secret$/m)
+  assert.match(next, /^KIE_AI_API_KEY=ancestor-secret$/m)
 })

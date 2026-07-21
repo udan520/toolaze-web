@@ -60,7 +60,9 @@ npm run build
 
 ### ✅ 6. 静态资源检查
 
-- [ ] 所有静态资源（图片、字体等）都在 `public/` 目录下
+- [ ] 页面级图片 / 视频资源已经上传到 Cloudflare R2，并在页面 JSON / 组件中使用 R2 公网 URL
+- [ ] 新增或改版页面不存在作为最终发布资源的本地 `/model-assets`、`/images`、`/uploads` 引用
+- [ ] `public/` 仅保留 logo、favicon、图标、字体、极小 UI 装饰或明确的开发占位资源
 - [ ] 没有使用 Next.js Image 组件的优化功能
 - [ ] 所有外部链接都使用 `https://`
 

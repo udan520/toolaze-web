@@ -743,6 +743,7 @@ const HOME_MODEL_CARD_IMAGES = {
   'nano-banana-2': 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/nano-banana-2.jpg',
   'gpt-image-2': 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/gpt-image-2.jpg',
   'wan-2-7-image': '/model-assets/wan-2-7-image/gallery-event-poster.webp',
+  'ai-dance-generator': '/model-assets/ai-dance-generator/ai-dance-demo-source.png',
   'seedance-2': 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/seedance-2.jpg',
   'kling-3': 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/kling-3.jpg',
 }
@@ -754,6 +755,7 @@ const HOME_PREVIEW_AI_IMAGE_PATHS = {
   'wan-2-7-image': '/model/wan-2-7-image',
 }
 const HOME_PREVIEW_AI_VIDEO_PATHS = {
+  'ai-dance-generator': '/ai-dance-generator',
   'seedance-2': '/model/seedance-2',
   'kling-3': '/model/kling-3',
 }

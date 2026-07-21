@@ -1,0 +1,208 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 1,
+    "modelId": "grok-video-1-5",
+    "defaultPrompt": "Fais danser la personne dans l’image.",
+    "hideModelBranding": true,
+    "compactResultPanel": true,
+    "displayName": "Générateur de danse IA",
+    "textOverrides": {
+      "promptLabel": "Décrivez la scène de danse",
+      "promptPlaceholder": "Exemple : fais danser la personne dans l’image",
+      "generateLabel": "Créer la vidéo de danse",
+      "uploadTitle": "Importez votre image"
+    },
+    "sampleImages": [
+      {
+        "url": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/ai-dance-demo.mp4",
+        "title": "Démo de vidéo de danse IA",
+        "width": 16,
+        "height": 9,
+        "mediaType": "video"
+      }
+    ],
+    "defaultVideoDurationSeconds": 5,
+    "defaultImageUrls": [
+      "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/ai-dance-demo-source.png"
+    ]
+  },
+  "metadata": {
+    "title": "Générateur de danse IA en ligne | Importez une image",
+    "description": "Utilisez le générateur de danse IA de Toolaze en ligne pour importer une image et créer de courtes vidéos de danse, idées de chorégraphie, promos et clips sociaux."
+  },
+  "sectionsOrder": [
+    "intro",
+    "promptExamples",
+    "howToUse",
+    "scenes",
+    "features",
+    "faq"
+  ],
+  "hero": {
+    "h1": "<span class=\"text-gradient\">Générateur de danse IA</span> gratuit en ligne",
+    "desc": "Importez une image, puis décrivez le mouvement, la tenue, la lumière et l’ambiance de scène pour créer une courte vidéo de danse IA pour des promos, idées de chorégraphie et publications sociales."
+  },
+  "intro": {
+    "title": "Créez des vidéos de danse depuis une image importée",
+    "content": [
+      {
+        "title": "Transformer une image en vidéo de danse",
+        "text": "Le générateur de danse IA de Toolaze aide les créateurs à animer une seule image importée en une courte vidéo de performance en pied. Utilisez-le pour des promos de danse, planches d’ambiance de chorégraphie, annonces de cours et clips sociaux courts."
+      },
+      {
+        "title": "Guider le mouvement, la caméra et la scène",
+        "text": "Importez une image claire, puis décrivez le style de danse, le mouvement, la tenue, la lumière, l’angle de caméra et l’arrière-plan pour garder le flux centré sur de courts clips de danse."
+      },
+      {
+        "title": "Garder la source simple",
+        "text": "Utilisez une image avec un sujet bien visible, puis affinez la description avec des détails comme cadrage en pied, énergie du mouvement, projecteur, fond studio ou mouvement de caméra."
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "Idées simples de danse à réutiliser",
+    "subtitle": "Utilisez une description simple après avoir importé une image, puis générez une courte vidéo de danse.",
+    "items": [
+      {
+        "title": "Scène hip-hop",
+        "prompt": "Fais faire à la personne dans l’image une danse hip-hop simple.",
+        "note": "Utile pour les promos de cours, clips musicaux et concepts de performance urbaine.",
+        "color": "linear-gradient(135deg, #111827, #6366f1)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/prompt-hip-hop-stage.mp4"
+      },
+      {
+        "title": "Mouvement gracieux",
+        "prompt": "Fais danser la personne dans l’image avec grâce.",
+        "note": "À utiliser quand la vidéo doit montrer élégance, équilibre et lignes corporelles claires.",
+        "color": "linear-gradient(135deg, #f5d0fe, #7c3aed)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/prompt-ballet-motion.mp4"
+      },
+      {
+        "title": "Performance K-Pop",
+        "prompt": "Fais faire à la personne dans l’image une danse K-Pop.",
+        "note": "Idéal pour montages de fans énergiques, covers et clips de campagnes sociales.",
+        "color": "linear-gradient(135deg, #f9a8d4, #2563eb)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/prompt-k-pop-performance.mp4"
+      },
+      {
+        "title": "Danse vive",
+        "prompt": "Fais danser la personne dans l’image avec énergie.",
+        "note": "Utile pour salsa, bachata, danse de salon et concepts de scène.",
+        "color": "linear-gradient(135deg, #fecaca, #dc2626)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/prompt-latin-dance.mp4"
+      },
+      {
+        "title": "Danse de rue",
+        "prompt": "Fais danser la personne dans l’image dans une rue de ville.",
+        "note": "Utile pour crews de danse, événements locaux et clips créateur décontractés.",
+        "color": "linear-gradient(135deg, #bfdbfe, #0f766e)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/prompt-street-dance.mp4"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Comment utiliser le générateur de danse IA",
+    "steps": [
+      {
+        "title": "Importer une image",
+        "desc": "Commencez avec un portrait clair ou une image en pied où le sujet est facile à reconnaître."
+      },
+      {
+        "title": "Décrire la scène de danse",
+        "desc": "Ajoutez le style de danse, le mouvement, la tenue, la lumière, l’arrière-plan, l’angle de caméra et la direction pour une vidéo sociale."
+      },
+      {
+        "title": "Générer et affiner",
+        "desc": "Créez la vidéo, puis ajustez la description si le mouvement nécessite des lignes corporelles plus nettes, plus d’énergie ou un arrière-plan plus propre."
+      }
+    ]
+  },
+  "scenesTitle": "Où les vidéos de danse IA fonctionnent le mieux",
+  "scenes": [
+    {
+      "title": "Promos de cours et ateliers de danse",
+      "icon": "🎭",
+      "desc": "Créez de courts clips promotionnels pour cours de hip-hop, ateliers de ballet, événements studio et sessions communautaires sans organiser d’abord un tournage."
+    },
+    {
+      "title": "Clips sociaux courts",
+      "icon": "🎬",
+      "desc": "Générez des clips de danse pour TikTok, Reels, Shorts et publications musicales où le mouvement lisible et une lumière forte comptent."
+    },
+    {
+      "title": "Moodboards de chorégraphie",
+      "icon": "🕺",
+      "desc": "Explorez mouvement, tenue, mise en scène et lumière avant de filmer, répéter ou briefer une équipe créative."
+    }
+  ],
+  "features": {
+    "title": "Fonctions clés pour créer des vidéos de danse",
+    "items": [
+      {
+        "icon": "🪩",
+        "iconType": "upload",
+        "title": "Import d’une seule image",
+        "desc": "Importez une image source et guidez le mouvement de danse, la tenue, l’ambiance de scène et le cadrage final avec une description."
+      },
+      {
+        "icon": "📸",
+        "iconType": "camera",
+        "title": "Contrôle caméra par description",
+        "desc": "Décrivez le cadrage en pied, l’énergie du gros plan, la lumière de scène, les indices de mouvement ou le mouvement caméra en langage simple."
+      },
+      {
+        "icon": "🎨",
+        "iconType": "creative",
+        "title": "Prêt pour les vidéos sociales",
+        "desc": "Utilisez le clip généré pour des brouillons de campagne, annonces de cours, aperçus sociaux et planches d’ambiance créatives."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Flux rapide dans le navigateur",
+        "desc": "Rédigez une description, générez et affinez directement dans votre navigateur sans installer de logiciel de montage."
+      },
+      {
+        "icon": "💃",
+        "iconType": "motion",
+        "title": "Descriptions axées sur le mouvement",
+        "desc": "Guidez poses, lignes corporelles, énergie, mouvement de la tenue et ambiance de scène pour des clips de danse plus lisibles."
+      },
+      {
+        "icon": "🧩",
+        "iconType": "workflow",
+        "title": "Prêt avant la production",
+        "desc": "Créez des références de mouvement pour chorégraphie, scène, lumière et concepts sociaux avant le tournage ou le montage."
+      }
+    ]
+  },
+  "faqTitle": "FAQ du générateur de danse IA",
+  "faq": [
+    {
+      "q": "Qu’est-ce que le générateur de danse IA ?",
+      "a": "C’est une page Toolaze pour créer de courtes vidéos sur le thème de la danse à partir d’une image importée et d’une description texte, notamment des clips sociaux, idées de chorégraphie, promos de scène et publications créateur."
+    },
+    {
+      "q": "Cette page génère-t-elle des vidéos de danse ?",
+      "a": "Oui. L’outil supérieur importe une image et crée une courte vidéo de danse à partir de votre description."
+    },
+    {
+      "q": "Que dois-je inclure dans une description de danse ?",
+      "a": "Incluez le style de danse, le mouvement, la tenue, le cadrage de l’interprète, la lumière, l’arrière-plan, l’angle de caméra et si vous voulez un clip social vertical ou une scène plus large. Commencez avec une image importée claire."
+    },
+    {
+      "q": "Puis-je l’utiliser pour le marketing de cours de danse ?",
+      "a": "Oui. Il est utile pour préparer des promos de cours, clips d’ateliers, teasers d’événements, publications sociales et moodboards avant de créer les supports finaux de campagne."
+    },
+    {
+      "q": "Comment obtenir de meilleurs résultats en pied ?",
+      "a": "Importez une seule image claire et demandez un cadrage en pied, des lignes corporelles nettes, une anatomie réaliste, un mouvement équilibré, pieds et mains visibles et un arrière-plan propre. Si le mouvement est trop chargé, simplifiez-le et générez à nouveau."
+    }
+  ],
+  "moreTools": "Plus d’outils vidéo IA"
+}

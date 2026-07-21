@@ -48,6 +48,12 @@ export const HOME_MODEL_CARD_IMAGES = {
     height: 960,
     alt: 'Seedream 4.5 commercial image generation preview',
   },
+  'ai-dance-generator': {
+    src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/ai-dance-demo-source.png',
+    width: 1672,
+    height: 941,
+    alt: 'AI Dance Generator source image preview',
+  },
   'seedance-2': {
     src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/seedance-2.jpg',
     width: 800,

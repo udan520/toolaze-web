@@ -1,0 +1,208 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 1,
+    "modelId": "grok-video-1-5",
+    "defaultPrompt": "Make the person in the image dance.",
+    "hideModelBranding": true,
+    "compactResultPanel": true,
+    "displayName": "AI Dance Generator",
+    "textOverrides": {
+      "promptLabel": "Describe the dance transformation",
+      "promptPlaceholder": "Example: make the person in the image dance",
+      "generateLabel": "Create Dance Video",
+      "uploadTitle": "Upload your image"
+    },
+    "sampleImages": [
+      {
+        "url": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/ai-dance-demo.mp4",
+        "title": "AI dance video demo",
+        "width": 16,
+        "height": 9,
+        "mediaType": "video"
+      }
+    ],
+    "defaultVideoDurationSeconds": 5,
+    "defaultImageUrls": [
+      "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/ai-dance-demo-source.png"
+    ]
+  },
+  "metadata": {
+    "title": "AI Dance Generator Online | Upload One Image",
+    "description": "Use Toolaze AI Dance Generator online to upload one image and create short dance videos, choreography concepts, promos, and social clips."
+  },
+  "sectionsOrder": [
+    "intro",
+    "promptExamples",
+    "howToUse",
+    "scenes",
+    "features",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Free <span class=\"text-gradient\">AI Dance Generator</span> Online",
+    "desc": "Upload one image, then describe the dance move, outfit, lighting, and stage mood to create a short AI dance video for promos, choreography concepts, and social posts."
+  },
+  "intro": {
+    "title": "Create Dance Videos From One Uploaded Image",
+    "content": [
+      {
+        "title": "Turn one image into a dance video",
+        "text": "Toolaze AI Dance Generator helps creators animate a single uploaded image into a short full-body performance video. Use it for dance promos, choreography mood boards, class announcements, and short-form social clips."
+      },
+      {
+        "title": "Guide motion, camera, and stage direction",
+        "text": "Upload one clear image, then describe the dance genre, motion, wardrobe, lighting, camera angle, and background so the workflow stays focused on short dance clips."
+      },
+      {
+        "title": "Keep the source simple",
+        "text": "Use one image with a visible subject, then refine the prompt with details like full-body framing, motion energy, spotlight, studio background, or camera movement."
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "Dance Prompt Ideas You Can Reuse",
+    "subtitle": "Use a simple prompt after uploading one image, then generate a short dance video.",
+    "items": [
+      {
+        "title": "Hip-Hop Stage",
+        "prompt": "Make the person in the image do a simple hip-hop dance.",
+        "note": "Good for class promos, music clips, and urban performance concepts.",
+        "color": "linear-gradient(135deg, #111827, #6366f1)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/prompt-hip-hop-stage.mp4"
+      },
+      {
+        "title": "Ballet Motion",
+        "prompt": "Make the person in the image do a graceful dance.",
+        "note": "Use this when the video needs elegance, balance, and clear body lines.",
+        "color": "linear-gradient(135deg, #f5d0fe, #7c3aed)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/prompt-ballet-motion.mp4"
+      },
+      {
+        "title": "K-Pop Performance",
+        "prompt": "Make the person in the image do a K-pop dance.",
+        "note": "Good for energetic fan edits, covers, and social campaign clips.",
+        "color": "linear-gradient(135deg, #f9a8d4, #2563eb)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/prompt-k-pop-performance.mp4"
+      },
+      {
+        "title": "Latin Dance",
+        "prompt": "Make the person in the image do a lively dance.",
+        "note": "Use for salsa, bachata, ballroom, and stage showcase concepts.",
+        "color": "linear-gradient(135deg, #fecaca, #dc2626)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/prompt-latin-dance.mp4"
+      },
+      {
+        "title": "Street Dance",
+        "prompt": "Make the person in the image dance on a city street.",
+        "note": "Good for dance crews, local events, and casual creator clips.",
+        "color": "linear-gradient(135deg, #bfdbfe, #0f766e)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/prompt-street-dance.mp4"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "How to Use the AI Dance Generator",
+    "steps": [
+      {
+        "title": "Upload one image",
+        "desc": "Start with a single clear portrait or full-body image where the subject is easy to recognize."
+      },
+      {
+        "title": "Describe the dance transformation",
+        "desc": "Add the dance genre, motion, outfit, lighting, background, camera angle, and social video direction."
+      },
+      {
+        "title": "Generate and refine",
+        "desc": "Create the video, then adjust the prompt if the motion needs clearer body lines, stronger movement, or a cleaner background."
+      }
+    ]
+  },
+  "scenesTitle": "Where AI Dance Videos Work Best",
+  "scenes": [
+    {
+      "title": "Dance class and workshop promos",
+      "icon": "🎭",
+      "desc": "Create short promo clips for hip-hop classes, ballet workshops, studio events, and community dance sessions without arranging a shoot first."
+    },
+    {
+      "title": "Short-form social clips",
+      "icon": "🎬",
+      "desc": "Generate dance clips for TikTok, Reels, Shorts, and music posts where clear motion and strong lighting matter."
+    },
+    {
+      "title": "Choreography mood boards",
+      "icon": "🕺",
+      "desc": "Explore movement, wardrobe, staging, and lighting ideas before filming, rehearsing, or briefing a creative team."
+    }
+  ],
+  "features": {
+    "title": "Key Features for Dance Video Creation",
+    "items": [
+      {
+        "icon": "🪩",
+        "iconType": "upload",
+        "title": "Single-image upload",
+        "desc": "Upload one source image and guide the dance motion, wardrobe, stage mood, and finished video framing with a prompt."
+      },
+      {
+        "icon": "📸",
+        "iconType": "camera",
+        "title": "Prompt-led camera control",
+        "desc": "Describe full-body framing, close-up energy, stage lighting, motion cues, or camera movement in plain language."
+      },
+      {
+        "icon": "🎨",
+        "iconType": "creative",
+        "title": "Social video ready",
+        "desc": "Use the generated clip for campaign drafts, class announcements, social previews, and creative mood boards."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Fast browser workflow",
+        "desc": "Write a prompt, generate, and refine directly in your browser without setting up editing software."
+      },
+      {
+        "icon": "💃",
+        "iconType": "motion",
+        "title": "Movement-focused prompts",
+        "desc": "Guide poses, body lines, energy, wardrobe movement, and stage mood for clearer dance clips."
+      },
+      {
+        "icon": "🧩",
+        "iconType": "workflow",
+        "title": "Ready before production",
+        "desc": "Create motion references for choreography, staging, lighting, and social concepts before filming or editing."
+      }
+    ]
+  },
+  "faqTitle": "AI Dance Generator FAQ",
+  "faq": [
+    {
+      "q": "What is the AI Dance Generator?",
+      "a": "It is a Toolaze page for creating short dance-themed videos from one uploaded image plus a text prompt, including social clips, choreography concepts, stage promos, and creator posts."
+    },
+    {
+      "q": "Does this page generate dance videos?",
+      "a": "Yes. The top tool uploads one image and creates a short dance video from your prompt."
+    },
+    {
+      "q": "What should I include in a dance prompt?",
+      "a": "Include the dance genre, motion, outfit, performer framing, lighting, background, camera angle, and whether you want a vertical social clip or a wider stage shot. Start with one clear uploaded image."
+    },
+    {
+      "q": "Can I use it for dance class marketing?",
+      "a": "Yes. It is useful for drafting class promos, workshop clips, event teasers, social posts, and mood boards before you create final campaign assets."
+    },
+    {
+      "q": "How do I get better full-body dance results?",
+      "a": "Upload a clear single image and ask for full-body framing, clear body lines, realistic anatomy, balanced motion, visible feet and hands, and a clean background. If the motion is too busy, simplify the move and regenerate."
+    }
+  ],
+  "moreTools": "More AI Video Tools"
+}

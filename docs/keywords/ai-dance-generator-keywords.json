@@ -1,0 +1,54 @@
+{
+  "tool": "ai-dance-generator",
+  "primaryKeywords": [
+    {
+      "keyword": "AI dance generator",
+      "type": "primary",
+      "notes": "Main page keyword"
+    },
+    {
+      "keyword": "AI dance image generator",
+      "type": "primary",
+      "notes": "Clarifies image workflow"
+    }
+  ],
+  "longTailKeywords": [
+    {
+      "keyword": "dance poster generator",
+      "targetPage": "ai-dance-generator"
+    },
+    {
+      "keyword": "AI dance poster maker",
+      "targetPage": "ai-dance-generator"
+    },
+    {
+      "keyword": "dance thumbnail generator",
+      "targetPage": "ai-dance-generator"
+    },
+    {
+      "keyword": "choreography mood board AI",
+      "targetPage": "ai-dance-generator"
+    },
+    {
+      "keyword": "K-pop dance image generator",
+      "targetPage": "ai-dance-generator"
+    }
+  ],
+  "relatedKeywords": [
+    {
+      "keyword": "AI image generator",
+      "targetPage": "ai-image-generator",
+      "anchorText": "AI Image Generator"
+    },
+    {
+      "keyword": "text to image generator",
+      "targetPage": "text-to-image-generator",
+      "anchorText": "Text to Image Generator"
+    },
+    {
+      "keyword": "GPT Image 2",
+      "targetPage": "model/gpt-image-2",
+      "anchorText": "GPT Image 2"
+    }
+  ]
+}

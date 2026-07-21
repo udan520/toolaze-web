@@ -9,7 +9,7 @@ test('Features section does not use viewport-width full-bleed styles that overfl
   assert.equal(source.includes("width: '100vw'"), false)
   assert.equal(source.includes("marginLeft: '-50vw'"), false)
   assert.equal(source.includes("marginRight: '-50vw'"), false)
-  assert.match(source, /<section className=\{`\$\{bgClass\} w-full max-w-full overflow-x-hidden px-6 py-24`\}>/)
+  assert.match(source, /className=\{`\$\{bgClass\} w-full max-w-full overflow-x-hidden px-6 py-24`\}/)
   assert.match(source, /mx-auto w-full max-w-6xl min-w-0/)
 })
 

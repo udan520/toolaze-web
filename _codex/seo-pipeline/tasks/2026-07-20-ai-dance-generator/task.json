@@ -1,0 +1,38 @@
+{
+  "taskId": "2026-07-20-ai-dance-generator",
+  "slug": "ai-dance-generator",
+  "pageType": "l2",
+  "status": "ready_for_publish",
+  "tool": "ai-dance-generator",
+  "topic": "AI Dance Generator landing page",
+  "generatedBy": "Seo-Factory local pipeline",
+  "modelInstruction": "Use Grok Video 1.5 as the generation model for the functional single-image dance video workflow.",
+  "createdAt": "2026-07-20T00:00:00+08:00",
+  "workspace": "/Users/neva/Desktop/workspace/toolaze-worktrees/lp/ai-dance-generator",
+  "outputs": [
+    "_codex/seo-pipeline/tasks/2026-07-20-ai-dance-generator/content/en.json",
+    "src/data/en/ai-dance-generator.json",
+    "_codex/seo-pipeline/tasks/2026-07-20-ai-dance-generator/content/de.json",
+    "src/data/de/ai-dance-generator.json",
+    "_codex/seo-pipeline/tasks/2026-07-20-ai-dance-generator/content/ja.json",
+    "src/data/ja/ai-dance-generator.json",
+    "_codex/seo-pipeline/tasks/2026-07-20-ai-dance-generator/content/es.json",
+    "src/data/es/ai-dance-generator.json",
+    "_codex/seo-pipeline/tasks/2026-07-20-ai-dance-generator/content/zh-TW.json",
+    "src/data/zh-TW/ai-dance-generator.json",
+    "_codex/seo-pipeline/tasks/2026-07-20-ai-dance-generator/content/pt.json",
+    "src/data/pt/ai-dance-generator.json",
+    "_codex/seo-pipeline/tasks/2026-07-20-ai-dance-generator/content/fr.json",
+    "src/data/fr/ai-dance-generator.json",
+    "_codex/seo-pipeline/tasks/2026-07-20-ai-dance-generator/content/ko.json",
+    "src/data/ko/ai-dance-generator.json",
+    "_codex/seo-pipeline/tasks/2026-07-20-ai-dance-generator/content/it.json",
+    "src/data/it/ai-dance-generator.json"
+  ],
+  "notes": [
+    "Generated as an L2 AI tools landing page.",
+    "Functional top tool reuses the shared AI image generator component with topTool.modelId=grok-video-1-5.",
+    "Copy now claims short dance video generation because the configured model is Grok Video 1.5.",
+    "Localized AI Dance Generator into de, ja, es, zh-TW, pt, fr, ko, and it with matching Seo-Factory content records."
+  ]
+}

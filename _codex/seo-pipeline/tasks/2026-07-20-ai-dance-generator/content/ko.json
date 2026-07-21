@@ -1,0 +1,208 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 1,
+    "modelId": "grok-video-1-5",
+    "defaultPrompt": "이미지 속 인물이 춤추게 해 주세요.",
+    "hideModelBranding": true,
+    "compactResultPanel": true,
+    "displayName": "AI 댄스 생성기",
+    "textOverrides": {
+      "promptLabel": "댄스 장면 설명",
+      "promptPlaceholder": "예: 이미지 속 인물이 춤추게 하기",
+      "generateLabel": "댄스 영상 만들기",
+      "uploadTitle": "이미지 업로드"
+    },
+    "sampleImages": [
+      {
+        "url": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/ai-dance-demo.mp4",
+        "title": "AI 댄스 영상 데모",
+        "width": 16,
+        "height": 9,
+        "mediaType": "video"
+      }
+    ],
+    "defaultVideoDurationSeconds": 5,
+    "defaultImageUrls": [
+      "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/ai-dance-demo-source.png"
+    ]
+  },
+  "metadata": {
+    "title": "AI 댄스 생성기 온라인 | 이미지 한 장 업로드",
+    "description": "Toolaze AI 댄스 생성기를 온라인에서 사용해 이미지 한 장을 업로드하고 짧은 댄스 영상, 안무 아이디어, 홍보 영상, 소셜 클립을 만드세요."
+  },
+  "sectionsOrder": [
+    "intro",
+    "promptExamples",
+    "howToUse",
+    "scenes",
+    "features",
+    "faq"
+  ],
+  "hero": {
+    "h1": "무료 온라인 <span class=\"text-gradient\">AI 댄스 생성기</span>",
+    "desc": "이미지 한 장을 업로드한 뒤 춤 동작, 의상, 조명, 무대 분위기를 설명해 홍보, 안무 아이디어, 소셜 게시물용 짧은 AI 댄스 영상을 만드세요."
+  },
+  "intro": {
+    "title": "업로드한 이미지 한 장으로 댄스 영상 만들기",
+    "content": [
+      {
+        "title": "이미지 한 장을 댄스 영상으로 전환",
+        "text": "Toolaze AI 댄스 생성기는 업로드한 이미지 한 장을 짧은 전신 퍼포먼스 영상으로 애니메이션화하는 데 도움을 줍니다. 댄스 홍보, 안무 무드보드, 수업 공지, 짧은 소셜 클립에 사용할 수 있습니다."
+      },
+      {
+        "title": "동작, 카메라, 무대 연출 지정",
+        "text": "선명한 이미지 한 장을 업로드하고 춤 장르, 동작, 의상, 조명, 카메라 각도, 배경을 설명해 짧은 댄스 클립에 집중된 흐름을 유지하세요."
+      },
+      {
+        "title": "원본 이미지는 단순하게 유지",
+        "text": "인물이 잘 보이는 이미지를 사용하고 전신 프레이밍, 동작 에너지, 스포트라이트, 스튜디오 배경, 카메라 움직임 같은 세부 사항으로 설명을 다듬으세요."
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "바로 쓸 수 있는 간단한 댄스 아이디어",
+    "subtitle": "이미지 한 장을 업로드한 뒤 간단한 설명으로 짧은 댄스 영상을 생성하세요.",
+    "items": [
+      {
+        "title": "힙합 무대",
+        "prompt": "이미지 속 인물이 간단한 힙합 댄스를 하게 해 주세요.",
+        "note": "수업 홍보, 음악 클립, 도시적인 퍼포먼스 아이디어에 좋습니다.",
+        "color": "linear-gradient(135deg, #111827, #6366f1)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/prompt-hip-hop-stage.mp4"
+      },
+      {
+        "title": "우아한 움직임",
+        "prompt": "이미지 속 인물이 우아하게 춤추게 해 주세요.",
+        "note": "우아함, 균형, 또렷한 몸선을 보여줘야 하는 영상에 사용하세요.",
+        "color": "linear-gradient(135deg, #f5d0fe, #7c3aed)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/prompt-ballet-motion.mp4"
+      },
+      {
+        "title": "K-Pop 퍼포먼스",
+        "prompt": "이미지 속 인물이 K-Pop 댄스를 하게 해 주세요.",
+        "note": "에너지 있는 팬 편집, 커버, 소셜 캠페인 클립에 좋습니다.",
+        "color": "linear-gradient(135deg, #f9a8d4, #2563eb)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/prompt-k-pop-performance.mp4"
+      },
+      {
+        "title": "활기찬 춤",
+        "prompt": "이미지 속 인물이 활기차게 춤추게 해 주세요.",
+        "note": "살사, 바차타, 볼룸댄스, 무대 쇼케이스 아이디어에 사용하세요.",
+        "color": "linear-gradient(135deg, #fecaca, #dc2626)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/prompt-latin-dance.mp4"
+      },
+      {
+        "title": "스트리트 댄스",
+        "prompt": "이미지 속 인물이 도시 거리에서 춤추게 해 주세요.",
+        "note": "댄스 크루, 지역 행사, 캐주얼한 크리에이터 클립에 좋습니다.",
+        "color": "linear-gradient(135deg, #bfdbfe, #0f766e)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/prompt-street-dance.mp4"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "AI 댄스 생성기 사용 방법",
+    "steps": [
+      {
+        "title": "이미지 한 장 업로드",
+        "desc": "인물을 쉽게 알아볼 수 있는 선명한 인물 사진이나 전신 이미지로 시작하세요."
+      },
+      {
+        "title": "댄스 장면 설명",
+        "desc": "춤 장르, 동작, 의상, 조명, 배경, 카메라 각도, 소셜 영상 방향을 추가하세요."
+      },
+      {
+        "title": "생성하고 다듬기",
+        "desc": "영상을 만든 뒤 동작에 더 또렷한 몸선, 강한 움직임, 깔끔한 배경이 필요하면 설명을 조정하세요."
+      }
+    ]
+  },
+  "scenesTitle": "AI 댄스 영상이 가장 잘 맞는 곳",
+  "scenes": [
+    {
+      "title": "댄스 수업과 워크숍 홍보",
+      "icon": "🎭",
+      "desc": "촬영을 먼저 준비하지 않아도 힙합 수업, 발레 워크숍, 스튜디오 이벤트, 커뮤니티 댄스 세션용 짧은 홍보 클립을 만들 수 있습니다."
+    },
+    {
+      "title": "짧은 소셜 클립",
+      "icon": "🎬",
+      "desc": "분명한 움직임과 강한 조명이 중요한 TikTok, Reels, Shorts, 음악 게시물용 댄스 클립을 생성하세요."
+    },
+    {
+      "title": "안무 무드보드",
+      "icon": "🕺",
+      "desc": "촬영, 리허설, 크리에이티브 팀 브리핑 전에 움직임, 의상, 무대, 조명 아이디어를 탐색하세요."
+    }
+  ],
+  "features": {
+    "title": "댄스 영상 제작을 위한 주요 기능",
+    "items": [
+      {
+        "icon": "🪩",
+        "iconType": "upload",
+        "title": "단일 이미지 업로드",
+        "desc": "원본 이미지 한 장을 업로드하고 설명으로 춤 동작, 의상, 무대 분위기, 완성 영상 프레이밍을 안내하세요."
+      },
+      {
+        "icon": "📸",
+        "iconType": "camera",
+        "title": "설명 기반 카메라 제어",
+        "desc": "전신 프레이밍, 클로즈업 에너지, 무대 조명, 동작 신호, 카메라 움직임을 쉬운 말로 설명하세요."
+      },
+      {
+        "icon": "🎨",
+        "iconType": "creative",
+        "title": "소셜 영상에 적합",
+        "desc": "생성된 클립을 캠페인 초안, 수업 공지, 소셜 미리보기, 크리에이티브 무드보드에 사용하세요."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "빠른 브라우저 흐름",
+        "desc": "편집 소프트웨어를 설정하지 않고 브라우저에서 바로 설명을 쓰고 생성하고 다듬으세요."
+      },
+      {
+        "icon": "💃",
+        "iconType": "motion",
+        "title": "움직임 중심 설명",
+        "desc": "포즈, 몸선, 에너지, 의상 움직임, 무대 분위기를 안내해 더 명확한 댄스 클립을 만드세요."
+      },
+      {
+        "icon": "🧩",
+        "iconType": "workflow",
+        "title": "제작 전 준비 완료",
+        "desc": "촬영이나 편집 전에 안무, 무대, 조명, 소셜 콘셉트를 위한 움직임 참고 영상을 만드세요."
+      }
+    ]
+  },
+  "faqTitle": "AI 댄스 생성기 FAQ",
+  "faq": [
+    {
+      "q": "AI 댄스 생성기는 무엇인가요?",
+      "a": "업로드한 이미지 한 장과 텍스트 설명으로 짧은 댄스 테마 영상을 만드는 Toolaze 페이지입니다. 소셜 클립, 안무 아이디어, 무대 홍보, 크리에이터 게시물에 사용할 수 있습니다."
+    },
+    {
+      "q": "이 페이지에서 댄스 영상을 생성하나요?",
+      "a": "네. 상단 도구가 이미지 한 장을 업로드하고 설명을 바탕으로 짧은 댄스 영상을 만듭니다."
+    },
+    {
+      "q": "댄스 설명에는 무엇을 넣어야 하나요?",
+      "a": "춤 장르, 동작, 의상, 퍼포머 프레이밍, 조명, 배경, 카메라 각도, 세로형 소셜 클립인지 넓은 무대 샷인지 포함하세요. 선명한 업로드 이미지 한 장으로 시작하세요."
+    },
+    {
+      "q": "댄스 수업 마케팅에 사용할 수 있나요?",
+      "a": "네. 최종 캠페인 에셋을 만들기 전에 수업 홍보, 워크숍 클립, 이벤트 티저, 소셜 게시물, 무드보드 초안에 유용합니다."
+    },
+    {
+      "q": "전신 댄스 결과를 더 좋게 하려면 어떻게 하나요?",
+      "a": "선명한 단일 이미지를 업로드하고 전신 프레이밍, 또렷한 몸선, 현실적인 해부 구조, 균형 잡힌 움직임, 보이는 손과 발, 깨끗한 배경을 요청하세요. 움직임이 너무 복잡하면 동작을 단순화하고 다시 생성하세요."
+    }
+  ],
+  "moreTools": "더 많은 AI 영상 도구"
+}

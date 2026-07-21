@@ -21,6 +21,16 @@ import {
   moderatePromptBeforeGeneration,
 } from '../../../../functions/_shared/creem-moderation.mjs'
 
+const DEFAULT_VIDEO_DURATION_SECONDS = 8
+const MIN_VIDEO_DURATION_SECONDS = 1
+const MAX_VIDEO_DURATION_SECONDS = 15
+
+function normalizeVideoDurationSeconds(duration) {
+  const value = Math.round(Number(duration || DEFAULT_VIDEO_DURATION_SECONDS))
+  if (!Number.isFinite(value)) return DEFAULT_VIDEO_DURATION_SECONDS
+  return Math.max(MIN_VIDEO_DURATION_SECONDS, Math.min(MAX_VIDEO_DURATION_SECONDS, value))
+}
+
 function shouldUseLocalGeneration(request) {
   const url = new URL(request.url)
   return isLocalhost(url.hostname) && hasLocalDevSession(request)
@@ -39,8 +49,9 @@ async function runLocalGenerationWithCredits(request) {
   const prompt = String(formData.get('prompt') || '').trim()
   const model = String(formData.get('model') || 'nano-banana-pro')
   const resolution = String(formData.get('resolution') || '1K')
+  const durationSeconds = normalizeVideoDurationSeconds(formData.get('duration'))
   const isImageToImage = String(formData.get('isImageToImage') || '') === 'true'
-  const requiredCredits = calculateImageGenerationCredits(model, resolution)
+  const requiredCredits = calculateImageGenerationCredits(model, resolution, durationSeconds)
   const creditDescription = getImageGenerationCreditDescription(model, isImageToImage)
   const creditRefundDescription = getImageGenerationCreditRefundDescription(model, isImageToImage)
   const currentCredits = getLocalDevCreditSummary()
@@ -110,6 +121,7 @@ async function runLocalGenerationWithCredits(request) {
   const creditHold = taskId ? registerLocalDevCreditHold(taskId, requiredCredits, {
     model,
     isImageToImage,
+    durationSeconds,
   }) : null
 
   return Response.json({

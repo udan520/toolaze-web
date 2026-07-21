@@ -26,21 +26,24 @@ const DEFAULT_ALLOWED_KEYS = [
   'R2_PUBLIC_BASE_URL',
 ]
 
+async function pathExists(filePath) {
+  try {
+    await fs.access(filePath)
+    return true
+  } catch {
+    return false
+  }
+}
+
 async function findSharedEnvPath(projectRoot) {
-  let currentDir = path.resolve(projectRoot)
+  let dir = path.resolve(projectRoot)
+  const { root } = path.parse(dir)
 
   while (true) {
-    const candidate = path.join(currentDir, '.toolaze-shared.env.local')
-    try {
-      await fs.access(candidate)
-      return candidate
-    } catch (error) {
-      if (error.code !== 'ENOENT') throw error
-    }
-
-    const parentDir = path.dirname(currentDir)
-    if (parentDir === currentDir) break
-    currentDir = parentDir
+    const candidate = path.join(dir, '.toolaze-shared.env.local')
+    if (await pathExists(candidate)) return candidate
+    if (dir === root) break
+    dir = path.dirname(dir)
   }
 
   return path.resolve(projectRoot, '..', '.toolaze-shared.env.local')

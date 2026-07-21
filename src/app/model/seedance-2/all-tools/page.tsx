@@ -55,7 +55,7 @@ export default async function Seedance2AllToolsPage() {
 
   return (
     <>
-      <Navigation />
+      <Navigation initialTranslations={t} />
 
       <Breadcrumb items={[
         { label: t?.breadcrumb?.home || 'Home', href: '/' },

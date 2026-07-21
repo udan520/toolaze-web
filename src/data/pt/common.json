@@ -2,6 +2,7 @@
   "nav": {
     "quickTools": "Ferramentas Rápidas",
     "aiTools": "Ferramentas IA",
+    "hot": "Popular",
     "imageCompression": "Compressão de Imagens",
     "imageConverter": "Conversor de Imagens",
     "watermarkRemover": "Remover marca d'água",
@@ -47,7 +48,8 @@
     "aiImageToImageGenerator": "Gerador IA de imagem para imagem",
     "seedream50Lite": "Seedream 5.0 Lite",
     "seedream50Pro": "Seedream 5.0 Pro",
-    "seedance25": "Seedance 2.5"
+    "seedance25": "Seedance 2.5",
+    "aiDanceGenerator": "Gerador de dança com IA"
   },
   "home": {
     "metadata": {
@@ -109,6 +111,10 @@
       "world-cup-ai-image-generator": {
         "cardTitle": "Gerador de imagens IA da Copa do Mundo",
         "summary": "Crie pôsteres de futebol, retratos de torcedor, pacotes de stickers e artes para assistir aos jogos com GPT Image 2. Comece por um modelo ou selfie e gere imagens estáticas prontas para compartilhar no navegador."
+      },
+      "ai-dance-generator": {
+        "cardTitle": "Gerador de dança com IA",
+        "summary": "Envie uma imagem e crie um vídeo curto de dança para ideias de coreografia, promos de aulas e clipes sociais. Escolha duração e proporção no gerador."
       }
     },
     "aiToolsHubTitle": "Ferramentas AI Grátis para Imagens, Vídeos e Fluxos de Trabalho de Mídia Diários",
@@ -122,7 +128,7 @@
       },
       {
         "title": "Geradores de vídeos AI",
-        "description": "Transforme scripts e quadros de referência em clipes cinematográficos. Seedance 2.0 e Kling 3.0 suportam texto para vídeo e imagem para vídeo com entradas multimodais — ideal para promoções, storyboards e narrativa de formato curto.",
+        "description": "Transforme roteiros, quadros de referência ou uma única imagem enviada em conceitos curtos de vídeo. O Gerador de dança com IA cria clipes rápidos para promos de aulas e posts sociais; as páginas de vídeo ajudam em promos cinematográficas, storyboards e narrativas curtas.",
         "href": "/pt/seedance-2"
       },
       {
@@ -139,7 +145,7 @@
     "sectionAiImageTitle": "Modelos de Imagem AI",
     "sectionAiImageSubtitle": "Gerador de imagens AI online grátis. Texto para imagem e imagem para imagem. Saída 4K, geração rápida, sem registo. Crie arte AI com Nano Banana Pro e Nano Banana 2.",
     "sectionAiVideoTitle": "Modelos de Vídeo AI",
-    "sectionAiVideoSubtitle": "Gerador de vídeos AI online grátis. Texto para vídeo e imagem para vídeo. Saída 1080p–4K, geração de vídeo multimodal. Crie vídeos com Seedance 2.0 e Kling 3.0 — sem registo.",
+    "sectionAiVideoSubtitle": "Crie vídeos com IA a partir de prompts, quadros de referência ou uma imagem enviada. O Gerador de dança com IA cria clipes sociais curtos, enquanto as ferramentas de vídeo ajudam em promos, storyboards e cenas cinematográficas.",
     "sectionToolsTitle": "Mais Ferramentas",
     "sectionToolsSubtitle": "Compressão de imagem, conversão de formato, gerador de fontes — tudo grátis, tudo no seu navegador.",
     "seoIntro": {
@@ -257,7 +263,8 @@
     "worldCupAiImageGenerator": "Gerador de imagens IA da Copa do Mundo",
     "aiImageGenerator": "Gerador de imagens IA",
     "refundPolicy": "Política de reembolso",
-    "acceptableUse": "Política de uso aceitável"
+    "acceptableUse": "Política de uso aceitável",
+    "aiDanceGenerator": "Gerador de dança com IA"
   },
   "breadcrumb": {
     "home": "Início",
