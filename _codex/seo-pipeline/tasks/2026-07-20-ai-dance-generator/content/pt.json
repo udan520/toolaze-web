@@ -1,0 +1,208 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 1,
+    "modelId": "grok-video-1-5",
+    "defaultPrompt": "Faça a pessoa da imagem dançar.",
+    "hideModelBranding": true,
+    "compactResultPanel": true,
+    "displayName": "Gerador de dança com IA",
+    "textOverrides": {
+      "promptLabel": "Descreva a cena de dança",
+      "promptPlaceholder": "Exemplo: faça a pessoa da imagem dançar",
+      "generateLabel": "Criar vídeo de dança",
+      "uploadTitle": "Envie sua imagem"
+    },
+    "sampleImages": [
+      {
+        "url": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/ai-dance-demo.mp4",
+        "title": "Demo de vídeo de dança com IA",
+        "width": 16,
+        "height": 9,
+        "mediaType": "video"
+      }
+    ],
+    "defaultVideoDurationSeconds": 5,
+    "defaultImageUrls": [
+      "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/ai-dance-demo-source.png"
+    ]
+  },
+  "metadata": {
+    "title": "Gerador de dança com IA online | Envie uma imagem",
+    "description": "Use o gerador de dança com IA da Toolaze online para enviar uma imagem e criar vídeos curtos de dança, ideias de coreografia, promos e clipes sociais."
+  },
+  "sectionsOrder": [
+    "intro",
+    "promptExamples",
+    "howToUse",
+    "scenes",
+    "features",
+    "faq"
+  ],
+  "hero": {
+    "h1": "<span class=\"text-gradient\">Gerador de dança com IA</span> grátis online",
+    "desc": "Envie uma imagem e descreva o movimento, roupa, iluminação e clima de palco para criar um vídeo curto de dança com IA para promos, ideias de coreografia e posts sociais."
+  },
+  "intro": {
+    "title": "Crie vídeos de dança a partir de uma imagem enviada",
+    "content": [
+      {
+        "title": "Transforme uma imagem em vídeo de dança",
+        "text": "O gerador de dança com IA da Toolaze ajuda criadores a animar uma única imagem enviada em um vídeo curto de apresentação de corpo inteiro. Use para promos de dança, painéis de inspiração de coreografia, anúncios de aulas e clipes sociais curtos."
+      },
+      {
+        "title": "Guie movimento, câmera e palco",
+        "text": "Envie uma imagem clara e descreva gênero de dança, movimento, figurino, iluminação, ângulo de câmera e fundo para manter o fluxo focado em clipes curtos de dança."
+      },
+      {
+        "title": "Mantenha a origem simples",
+        "text": "Use uma imagem com sujeito visível e refine a descrição com detalhes como enquadramento de corpo inteiro, energia do movimento, spotlight, fundo de estúdio ou movimento de câmera."
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "Ideias simples de dança para reutilizar",
+    "subtitle": "Use uma descrição simples depois de enviar uma imagem e gere um vídeo curto de dança.",
+    "items": [
+      {
+        "title": "Palco hip-hop",
+        "prompt": "Faça a pessoa da imagem executar uma dança hip-hop simples.",
+        "note": "Bom para promos de aulas, clipes musicais e conceitos de performance urbana.",
+        "color": "linear-gradient(135deg, #111827, #6366f1)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/prompt-hip-hop-stage.mp4"
+      },
+      {
+        "title": "Movimento gracioso",
+        "prompt": "Faça a pessoa da imagem dançar com graça.",
+        "note": "Use quando o vídeo precisar de elegância, equilíbrio e linhas corporais claras.",
+        "color": "linear-gradient(135deg, #f5d0fe, #7c3aed)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/prompt-ballet-motion.mp4"
+      },
+      {
+        "title": "Performance K-Pop",
+        "prompt": "Faça a pessoa da imagem executar uma dança K-Pop.",
+        "note": "Bom para edições de fãs energéticas, covers e clipes de campanhas sociais.",
+        "color": "linear-gradient(135deg, #f9a8d4, #2563eb)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/prompt-k-pop-performance.mp4"
+      },
+      {
+        "title": "Dança animada",
+        "prompt": "Faça a pessoa da imagem dançar com energia.",
+        "note": "Use para salsa, bachata, dança de salão e conceitos de palco.",
+        "color": "linear-gradient(135deg, #fecaca, #dc2626)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/prompt-latin-dance.mp4"
+      },
+      {
+        "title": "Dança de rua",
+        "prompt": "Faça a pessoa da imagem dançar em uma rua da cidade.",
+        "note": "Bom para grupos de dança, eventos locais e clipes casuais de criadores.",
+        "color": "linear-gradient(135deg, #bfdbfe, #0f766e)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/prompt-street-dance.mp4"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Como usar o gerador de dança com IA",
+    "steps": [
+      {
+        "title": "Envie uma imagem",
+        "desc": "Comece com um retrato claro ou imagem de corpo inteiro em que o sujeito seja fácil de reconhecer."
+      },
+      {
+        "title": "Descreva a cena de dança",
+        "desc": "Adicione gênero de dança, movimento, roupa, iluminação, fundo, ângulo de câmera e direção para vídeo social."
+      },
+      {
+        "title": "Gere e refine",
+        "desc": "Crie o vídeo e ajuste a descrição se o movimento precisar de linhas corporais mais claras, mais energia ou fundo mais limpo."
+      }
+    ]
+  },
+  "scenesTitle": "Onde vídeos de dança com IA funcionam melhor",
+  "scenes": [
+    {
+      "title": "Promos de aulas e workshops de dança",
+      "icon": "🎭",
+      "desc": "Crie clipes promocionais curtos para aulas de hip-hop, workshops de balé, eventos de estúdio e sessões comunitárias sem organizar uma gravação primeiro."
+    },
+    {
+      "title": "Clipes sociais curtos",
+      "icon": "🎬",
+      "desc": "Gere clipes de dança para TikTok, Reels, Shorts e posts musicais em que movimento claro e iluminação forte importam."
+    },
+    {
+      "title": "Moodboards de coreografia",
+      "icon": "🕺",
+      "desc": "Explore movimento, figurino, palco e iluminação antes de filmar, ensaiar ou briefing uma equipe criativa."
+    }
+  ],
+  "features": {
+    "title": "Recursos principais para criar vídeos de dança",
+    "items": [
+      {
+        "icon": "🪩",
+        "iconType": "upload",
+        "title": "Envio de uma única imagem",
+        "desc": "Envie uma imagem de origem e guie movimento de dança, roupa, clima de palco e enquadramento final com uma descrição."
+      },
+      {
+        "icon": "📸",
+        "iconType": "camera",
+        "title": "Controle de câmera por descrição",
+        "desc": "Descreva enquadramento de corpo inteiro, energia de close-up, iluminação de palco, sinais de movimento ou movimento de câmera em linguagem simples."
+      },
+      {
+        "icon": "🎨",
+        "iconType": "creative",
+        "title": "Pronto para vídeos sociais",
+        "desc": "Use o clipe gerado em rascunhos de campanha, anúncios de aulas, prévias sociais e painéis de inspiração criativos."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Fluxo rápido no navegador",
+        "desc": "Escreva uma descrição, gere e refine diretamente no navegador sem configurar software de edição."
+      },
+      {
+        "icon": "💃",
+        "iconType": "motion",
+        "title": "Descrições focadas em movimento",
+        "desc": "Guie poses, linhas corporais, energia, movimento da roupa e clima de palco para clipes de dança mais claros."
+      },
+      {
+        "icon": "🧩",
+        "iconType": "workflow",
+        "title": "Pronto antes da produção",
+        "desc": "Crie referências de movimento para coreografia, palco, iluminação e conceitos sociais antes de filmar ou editar."
+      }
+    ]
+  },
+  "faqTitle": "Perguntas frequentes sobre o gerador de dança com IA",
+  "faq": [
+    {
+      "q": "O que é o gerador de dança com IA?",
+      "a": "É uma página da Toolaze para criar vídeos curtos com tema de dança a partir de uma imagem enviada e uma descrição em texto, incluindo clipes sociais, ideias de coreografia, promos de palco e posts de criadores."
+    },
+    {
+      "q": "Esta página gera vídeos de dança?",
+      "a": "Sim. A ferramenta superior envia uma imagem e cria um vídeo curto de dança a partir da sua descrição."
+    },
+    {
+      "q": "O que devo incluir em uma descrição de dança?",
+      "a": "Inclua o gênero de dança, movimento, roupa, enquadramento do performer, iluminação, fundo, ângulo de câmera e se deseja um clipe social vertical ou uma tomada de palco mais ampla. Comece com uma imagem enviada clara."
+    },
+    {
+      "q": "Posso usar para marketing de aulas de dança?",
+      "a": "Sim. É útil para rascunhar promos de aulas, clipes de workshops, teasers de eventos, posts sociais e painéis de inspiração antes de criar os materiais finais da campanha."
+    },
+    {
+      "q": "Como obtenho melhores resultados de corpo inteiro?",
+      "a": "Envie uma única imagem clara e peça enquadramento de corpo inteiro, linhas corporais claras, anatomia realista, movimento equilibrado, pés e mãos visíveis e um fundo limpo. Se o movimento ficar excessivo, simplifique o passo e gere novamente."
+    }
+  ],
+  "moreTools": "Mais ferramentas de vídeo com IA"
+}

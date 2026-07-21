@@ -61,7 +61,7 @@ export default async function AllToolsPage() {
   
   return (
     <>
-      <Navigation />
+      <Navigation initialTranslations={t} />
       
       <Breadcrumb items={[
         { label: breadcrumbT.home, href: homeHref },

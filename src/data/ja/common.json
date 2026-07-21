@@ -2,6 +2,7 @@
   "nav": {
     "quickTools": "クイックツール",
     "aiTools": "AIツール",
+    "hot": "注目",
     "imageCompression": "画像圧縮",
     "imageConverter": "画像変換",
     "watermarkRemover": "透かし除去",
@@ -47,7 +48,8 @@
     "aiImageToImageGenerator": "AI画像から画像生成",
     "seedream50Lite": "Seedream 5.0 Lite",
     "seedream50Pro": "Seedream 5.0 Pro",
-    "seedance25": "Seedance 2.5"
+    "seedance25": "Seedance 2.5",
+    "aiDanceGenerator": "AIダンスジェネレーター"
   },
   "home": {
     "metadata": {
@@ -109,6 +111,10 @@
       "world-cup-ai-image-generator": {
         "cardTitle": "ワールドカップAI画像ジェネレーター",
         "summary": "GPT Image 2でサッカーポスター、ファンポートレート、ステッカーパック、観戦パーティー用ビジュアルを作成できます。テンプレートや自撮りから始めて、ブラウザで共有向けの静止画像を生成します。"
+      },
+      "ai-dance-generator": {
+        "cardTitle": "AIダンスジェネレーター",
+        "summary": "1枚の画像をアップロードして、振付案、クラス告知、SNSクリップ向けの短いダンス動画を作成できます。生成画面で長さとアスペクト比を選べます。"
       }
     },
     "aiToolsHubTitle": "画像、動画、日常のメディアワークフローのための無料AIツール",
@@ -122,7 +128,7 @@
       },
       {
         "title": "AI動画生成ツール",
-        "description": "スクリプトと参照フレームを映画のようなクリップに変換。Seedance 2.0とKling 3.0は、マルチモーダル入力によるテキストから動画、画像から動画をサポート—プロモーション、絵コンテ、短編ストーリーテリングに最適です。",
+        "description": "スクリプト、参照フレーム、またはアップロードした1枚の画像を短い動画コンセプトに変換できます。AIダンスジェネレーターはクラス告知やSNS投稿向けの短いダンスクリップに対応し、動画モデルページはプロモ、絵コンテ、短編ストーリー制作を支援します。",
         "href": "/ja/seedance-2"
       },
       {
@@ -139,7 +145,7 @@
     "sectionAiImageTitle": "AI画像モデル",
     "sectionAiImageSubtitle": "無料のAI画像生成オンラインツール。テキストから画像、画像から画像。4K出力、高速生成、登録不要。Nano Banana ProとNano Banana 2でAIアートを作成。",
     "sectionAiVideoTitle": "AI動画モデル",
-    "sectionAiVideoSubtitle": "無料のAI動画生成オンラインツール。テキストから動画、画像から動画。1080p–4K出力、マルチモーダル動画生成。Seedance 2.0とKling 3.0で動画を作成—サインアップ不要。",
+    "sectionAiVideoSubtitle": "プロンプト、参照フレーム、またはアップロードした1枚の画像からAI動画を作成できます。AIダンスジェネレーターは短いSNS向けダンスクリップに、動画ツールはプロモ、絵コンテ、シネマティックなシーンに使えます。",
     "sectionToolsTitle": "その他のツール",
     "sectionToolsSubtitle": "画像圧縮、形式変換、フォントジェネレーター—すべて無料で、すべてブラウザ内で。",
     "seoIntro": {
@@ -257,7 +263,8 @@
     "worldCupAiImageGenerator": "ワールドカップAI画像ジェネレーター",
     "aiImageGenerator": "AI画像生成ツール",
     "refundPolicy": "返金ポリシー",
-    "acceptableUse": "利用許可ポリシー"
+    "acceptableUse": "利用許可ポリシー",
+    "aiDanceGenerator": "AIダンスジェネレーター"
   },
   "breadcrumb": {
     "home": "ホーム",

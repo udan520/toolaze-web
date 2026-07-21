@@ -16,6 +16,11 @@ import {
  * 需设置环境变量：KIE_AI_API_KEY，可选 NANO_BANANA_DAILY_CAP
  */
 const KIE_AI_BASE = 'https://api.kie.ai/api/v1/jobs';
+const GROK_VIDEO_MODEL_ID = 'grok-video-1-5';
+const GROK_VIDEO_PROVIDER_MODEL_ID = 'grok-imagine-video-1-5-preview';
+const GROK_VIDEO_DEFAULT_DURATION_SECONDS = 8;
+const GROK_VIDEO_MIN_DURATION_SECONDS = 1;
+const GROK_VIDEO_MAX_DURATION_SECONDS = 15;
 const CORS = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Methods': 'POST, OPTIONS',
@@ -72,7 +77,37 @@ function resolveModel(model) {
   if (m === 'seedream-5-0-lite') return 'seedream-5-0-lite';
   if (m === 'seedream-5-0-pro') return 'seedream-5-0-pro';
   if (m === 'wan-2-7-image') return 'wan-2-7-image';
+  if (m === 'grok-1-5-image') return 'grok-1-5-image';
+  if (m === GROK_VIDEO_MODEL_ID || m === 'grok-imagine-video-1-5-preview') return GROK_VIDEO_MODEL_ID;
   return 'nano-banana-pro';
+}
+
+function isVideoGenerationModel(model) {
+  return model === GROK_VIDEO_MODEL_ID;
+}
+
+function getGenerationMediaType(model) {
+  return isVideoGenerationModel(model) ? 'video' : 'image';
+}
+
+function normalizeVideoDurationSeconds(duration) {
+  const value = Math.round(Number(duration || GROK_VIDEO_DEFAULT_DURATION_SECONDS));
+  if (!Number.isFinite(value)) return GROK_VIDEO_DEFAULT_DURATION_SECONDS;
+  return Math.max(GROK_VIDEO_MIN_DURATION_SECONDS, Math.min(GROK_VIDEO_MAX_DURATION_SECONDS, value));
+}
+
+function normalizeResolution(model, isImageToImage, resolution) {
+  const value = String(resolution || '').trim();
+  const lowerValue = value.toLowerCase();
+
+  if (isVideoGenerationModel(model)) {
+    if (lowerValue === '720p') return '720p';
+    if (lowerValue === '1080p') return '1080p';
+    return '480p';
+  }
+
+  if (model === 'wan-2-7-image' && isImageToImage && value === '4K') return '2K';
+  return value === '2K' || value === '4K' ? value : '1K';
 }
 
 function resolveProviderModelId(model, env, isImageToImage, resolution) {
@@ -109,6 +144,12 @@ function resolveProviderModelId(model, env, isImageToImage, resolution) {
     }
     return env.KIE_WAN_2_7_IMAGE_MODEL || 'wan/2-7-image';
   }
+  if (model === 'grok-1-5-image') {
+    return env.KIE_GROK_1_5_IMAGE_MODEL || 'grok-1.5-image';
+  }
+  if (model === GROK_VIDEO_MODEL_ID) {
+    return env.KIE_GROK_VIDEO_1_5_MODEL || GROK_VIDEO_PROVIDER_MODEL_ID;
+  }
   return env.KIE_NANO_BANANA_MODEL || 'nano-banana-pro';
 }
 
@@ -118,6 +159,8 @@ function getMaxImagesForModel(model) {
   if (model === 'seedream-5-0-lite') return 14;
   if (model === 'seedream-5-0-pro') return 14;
   if (model === 'wan-2-7-image') return 9;
+  if (model === 'grok-1-5-image') return 1;
+  if (isVideoGenerationModel(model)) return 1;
   return model === 'gpt-image-2' ? 16 : 8;
 }
 
@@ -133,7 +176,7 @@ function shouldUseCreditLedger(env) {
 }
 
 async function consumeGenerationCredits(env, request, model, resolution, metadata) {
-  const requiredCredits = calculateImageGenerationCredits(model, resolution);
+  const requiredCredits = calculateImageGenerationCredits(model, resolution, metadata?.durationSeconds);
 
   if (!shouldUseCreditLedger(env)) {
     return {
@@ -228,13 +271,12 @@ export async function onRequest(context) {
     const requestedAspectRatio = mapAspectRatio(formData.get('aspectRatio'));
     const outputFormat = formData.get('outputFormat') || 'Auto';
     const resolution = formData.get('resolution') || '1K';
+    const durationSeconds = normalizeVideoDurationSeconds(formData.get('duration'));
     const isImageToImage = formData.get('isImageToImage') === 'true';
     const model = resolveModel(formData.get('model'));
-    const normalizedResolution =
-      model === 'wan-2-7-image' && isImageToImage && resolution === '4K'
-        ? '2K'
-        : (resolution === '2K' || resolution === '4K' ? resolution : '1K');
-    const aspectRatio = requestedAspectRatio || (model === 'seedream-4-5' || model === 'seedream-5-0-lite' || model === 'seedream-5-0-pro' || model === 'wan-2-7-image' ? '1:1' : undefined);
+    const mediaType = getGenerationMediaType(model);
+    const normalizedResolution = normalizeResolution(model, isImageToImage, resolution);
+    const aspectRatio = requestedAspectRatio || (isVideoGenerationModel(model) ? '16:9' : (model === 'seedream-4-5' || model === 'seedream-5-0-lite' || model === 'seedream-5-0-pro' || model === 'wan-2-7-image' ? '1:1' : undefined));
     const providerModelId = resolveProviderModelId(model, env, isImageToImage, normalizedResolution);
     const maxImages = getMaxImagesForModel(model);
     const quality = String(formData.get('quality') || '').trim().toLowerCase();
@@ -291,10 +333,18 @@ export async function onRequest(context) {
       providerModelId,
       resolution: normalizedResolution,
       isImageToImage,
+      mediaType,
+      durationSeconds: isVideoGenerationModel(model) ? durationSeconds : undefined,
     });
     if (creditContext.response) return creditContext.response;
 
-    const input = model === 'seedream-4-5'
+    const input = isVideoGenerationModel(model)
+      ? {
+          prompt,
+          resolution: normalizedResolution,
+          duration: durationSeconds,
+        }
+      : model === 'seedream-4-5'
       ? { prompt }
       : {
           prompt,
@@ -308,12 +358,12 @@ export async function onRequest(context) {
       input.nsfw_checker = true;
     }
     if (aspectRatio) input.aspect_ratio = aspectRatio;
-    const mappedFormat = mapOutputFormat(outputFormat);
+    const mappedFormat = isVideoGenerationModel(model) ? undefined : mapOutputFormat(outputFormat);
     if (mappedFormat) {
       input.output_format = mappedFormat;
     }
     if (isImageToImage && imageUrls.length > 0) {
-      if (model === 'seedream-4-5' || model === 'seedream-5-0-lite' || model === 'seedream-5-0-pro') {
+      if (isVideoGenerationModel(model) || model === 'seedream-4-5' || model === 'seedream-5-0-lite' || model === 'seedream-5-0-pro') {
         input.image_urls = imageUrls.slice(0, maxImages);
       } else if (model === 'gpt-image-2' || model === 'wan-2-7-image') {
         input.input_urls = imageUrls.slice(0, maxImages);
@@ -356,6 +406,7 @@ export async function onRequest(context) {
         providerModelId,
         resolution: normalizedResolution,
         isImageToImage,
+        durationSeconds: isVideoGenerationModel(model) ? durationSeconds : undefined,
         error: String(msg || 'Failed to create task'),
       });
       return jsonResponse({ error: msg || 'Failed to create task', credits }, response.status);
@@ -364,6 +415,7 @@ export async function onRequest(context) {
     if (result?.code === 200 && result?.data?.taskId) {
       return jsonResponse({
         taskId: result.data.taskId,
+        mediaType,
         credits: creditContext.credits,
         requiredCredits: creditContext.requiredCredits,
         creditHold: creditContext.consumption?.consumptionId
@@ -374,6 +426,8 @@ export async function onRequest(context) {
               requiredCredits: creditContext.requiredCredits,
               model,
               isImageToImage,
+              mediaType,
+              durationSeconds: isVideoGenerationModel(model) ? durationSeconds : undefined,
             }
           : null,
       });
@@ -384,6 +438,7 @@ export async function onRequest(context) {
       providerModelId,
       resolution: normalizedResolution,
       isImageToImage,
+      durationSeconds: isVideoGenerationModel(model) ? durationSeconds : undefined,
       error: result?.message ?? result?.msg ?? 'Unexpected response format',
     });
     return jsonResponse({

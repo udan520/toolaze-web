@@ -40,7 +40,7 @@ export default async function Kling3AllToolsPage() {
 
   return (
     <>
-      <Navigation />
+      <Navigation initialTranslations={t} />
 
       <Breadcrumb items={[
         { label: t?.breadcrumb?.home || 'Home', href: '/' },

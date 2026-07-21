@@ -2,6 +2,7 @@
   "nav": {
     "quickTools": "빠른 도구",
     "aiTools": "AI 도구",
+    "hot": "인기",
     "imageCompression": "이미지 압축",
     "imageConverter": "이미지 변환",
     "watermarkRemover": "워터마크 제거",
@@ -47,7 +48,8 @@
     "aiImageToImageGenerator": "AI 이미지-이미지 생성기",
     "seedream50Lite": "Seedream 5.0 Lite",
     "seedream50Pro": "Seedream 5.0 Pro",
-    "seedance25": "Seedance 2.5"
+    "seedance25": "Seedance 2.5",
+    "aiDanceGenerator": "AI 댄스 생성기"
   },
   "home": {
     "metadata": {
@@ -109,6 +111,10 @@
       "world-cup-ai-image-generator": {
         "cardTitle": "월드컵 AI 이미지 생성기",
         "summary": "GPT Image 2로 축구 포스터, 팬 초상화, 스티커 팩, 경기 관람 파티 이미지를 만드세요. 템플릿이나 셀피로 시작해 브라우저에서 바로 공유할 수 있는 정지 이미지를 생성합니다."
+      },
+      "ai-dance-generator": {
+        "cardTitle": "AI 댄스 생성기",
+        "summary": "이미지 한 장을 업로드해 안무 아이디어, 클래스 홍보, 소셜 클립용 짧은 댄스 영상을 만드세요. 생성기에서 길이와 비율을 선택할 수 있습니다."
       }
     },
     "aiToolsHubTitle": "이미지, 비디오 및 일상 미디어 워크플로우를 위한 무료 AI 도구",
@@ -139,7 +145,7 @@
     "sectionAiImageTitle": "AI 이미지 모델",
     "sectionAiImageSubtitle": "무료 AI 이미지 생성기 온라인. 텍스트-이미지 및 이미지-이미지. 4K 출력, 빠른 생성, 등록 불필요. Nano Banana Pro 및 Nano Banana 2로 AI 아트를 만드세요.",
     "sectionAiVideoTitle": "AI 비디오 모델",
-    "sectionAiVideoSubtitle": "무료 AI 비디오 생성기 온라인. 텍스트-비디오 및 이미지-비디오. 1080p–4K 출력, 다중 모드 비디오 생성. Seedance 2.0 및 Kling 3.0으로 비디오를 만드세요—가입 불필요.",
+    "sectionAiVideoSubtitle": "프롬프트, 참조 프레임 또는 업로드한 이미지 한 장으로 AI 영상을 만드세요. AI 댄스 생성기는 짧은 소셜 댄스 클립에, 비디오 도구는 홍보 영상, 스토리보드, 영화 같은 장면에 적합합니다.",
     "sectionToolsTitle": "더 많은 도구",
     "sectionToolsSubtitle": "이미지 압축, 형식 변환, 폰트 생성기—모두 무료, 모두 브라우저에서.",
     "seoIntro": {
@@ -257,7 +263,8 @@
     "worldCupAiImageGenerator": "월드컵 AI 이미지 생성기",
     "aiImageGenerator": "AI 이미지 생성기",
     "refundPolicy": "환불 정책",
-    "acceptableUse": "허용 사용 정책"
+    "acceptableUse": "허용 사용 정책",
+    "aiDanceGenerator": "AI 댄스 생성기"
   },
   "breadcrumb": {
     "home": "홈",

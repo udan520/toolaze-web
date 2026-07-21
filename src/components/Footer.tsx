@@ -41,6 +41,7 @@ const defaultTranslations = {
   photoRestoration: 'Photo Restoration',
   aiCouplePhotoMaker: 'AI Couple Photo Maker',
   aiBabyGenerator: 'AI Baby Generator',
+  aiDanceGenerator: 'AI Dance Generator',
   worldCupAiImageGenerator: 'World Cup AI Image Generator',
   imageCompression: 'Image Compression',
   imageConverter: 'Image Converter',
@@ -186,6 +187,14 @@ export default function Footer({ initialTranslations }: FooterProps = {}) {
               </li>
               <li>
                 <Link
+                  href={getLocalizedHref('/ai-dance-generator')}
+                  className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
+                >
+                  {translations.aiDanceGenerator || 'AI Dance Generator'}
+                </Link>
+              </li>
+              <li>
+                <Link
                   href={getLocalizedHref('/watermark-remover')}
                   className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
                 >
@@ -220,6 +229,14 @@ export default function Footer({ initialTranslations }: FooterProps = {}) {
               {translations.aiVideo || 'AI Video'}
             </Link>
             <ul className="space-y-2 mt-4">
+              <li>
+                <Link
+                  href={getLocalizedHref('/ai-dance-generator')}
+                  className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
+                >
+                  {translations.aiDanceGenerator || 'AI Dance Generator'}
+                </Link>
+              </li>
               <li>
                 <Link 
                   href={getLocalizedHref('/model/seedance-2')} 

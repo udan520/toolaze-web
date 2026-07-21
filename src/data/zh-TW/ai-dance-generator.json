@@ -1,0 +1,208 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 1,
+    "modelId": "grok-video-1-5",
+    "defaultPrompt": "讓圖片中的人物跳舞。",
+    "hideModelBranding": true,
+    "compactResultPanel": true,
+    "displayName": "AI 舞蹈生成器",
+    "textOverrides": {
+      "promptLabel": "描述舞蹈場景",
+      "promptPlaceholder": "範例：讓圖片中的人物跳舞",
+      "generateLabel": "建立舞蹈影片",
+      "uploadTitle": "上傳你的圖片"
+    },
+    "sampleImages": [
+      {
+        "url": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/ai-dance-demo.mp4",
+        "title": "AI 舞蹈影片示範",
+        "width": 16,
+        "height": 9,
+        "mediaType": "video"
+      }
+    ],
+    "defaultVideoDurationSeconds": 5,
+    "defaultImageUrls": [
+      "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/ai-dance-demo-source.png"
+    ]
+  },
+  "metadata": {
+    "title": "AI 舞蹈生成器線上版 | 上傳一張圖片",
+    "description": "使用 Toolaze AI 舞蹈生成器線上上傳一張圖片，建立短舞蹈影片、編舞概念、宣傳素材與社群短片。"
+  },
+  "sectionsOrder": [
+    "intro",
+    "promptExamples",
+    "howToUse",
+    "scenes",
+    "features",
+    "faq"
+  ],
+  "hero": {
+    "h1": "免費線上<span class=\"text-gradient\">AI 舞蹈生成器</span>",
+    "desc": "上傳一張圖片，接著描述舞蹈動作、服裝、燈光與舞台氛圍，建立適合宣傳、編舞概念和社群貼文的短 AI 舞蹈影片。"
+  },
+  "intro": {
+    "title": "用一張上傳圖片建立舞蹈影片",
+    "content": [
+      {
+        "title": "將一張圖片變成舞蹈影片",
+        "text": "Toolaze AI 舞蹈生成器可協助創作者把單張上傳圖片轉成短版全身表演影片。可用於舞蹈宣傳、編舞情緒板、課程公告和短社群影片。"
+      },
+      {
+        "title": "引導動作、鏡頭與舞台方向",
+        "text": "上傳一張清晰圖片，描述舞蹈類型、動作、服裝、燈光、鏡頭角度與背景，讓流程聚焦在短舞蹈影片。"
+      },
+      {
+        "title": "保持來源圖片簡單",
+        "text": "使用主體清楚可見的一張圖片，再用全身取景、動作能量、聚光燈、棚拍背景或鏡頭移動等細節調整描述。"
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "可重複使用的簡單舞蹈靈感",
+    "subtitle": "上傳一張圖片後使用簡單描述，生成一段短舞蹈影片。",
+    "items": [
+      {
+        "title": "嘻哈舞台",
+        "prompt": "讓圖片中的人物做一段簡單嘻哈舞。",
+        "note": "適合課程宣傳、音樂短片與都會表演概念。",
+        "color": "linear-gradient(135deg, #111827, #6366f1)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/prompt-hip-hop-stage.mp4"
+      },
+      {
+        "title": "優雅動作",
+        "prompt": "讓圖片中的人物優雅地跳舞。",
+        "note": "當影片需要優雅感、平衡與清楚身體線條時使用。",
+        "color": "linear-gradient(135deg, #f5d0fe, #7c3aed)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/prompt-ballet-motion.mp4"
+      },
+      {
+        "title": "K-Pop 表演",
+        "prompt": "讓圖片中的人物做一段 K-Pop 舞蹈。",
+        "note": "適合有活力的粉絲剪輯、翻跳和社群活動短片。",
+        "color": "linear-gradient(135deg, #f9a8d4, #2563eb)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/prompt-k-pop-performance.mp4"
+      },
+      {
+        "title": "活力舞蹈",
+        "prompt": "讓圖片中的人物活力跳舞。",
+        "note": "可用於 salsa、bachata、ballroom 和舞台展示概念。",
+        "color": "linear-gradient(135deg, #fecaca, #dc2626)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/prompt-latin-dance.mp4"
+      },
+      {
+        "title": "街頭舞蹈",
+        "prompt": "讓圖片中的人物在城市街道上跳舞。",
+        "note": "適合舞團、在地活動與輕鬆的創作者短片。",
+        "color": "linear-gradient(135deg, #bfdbfe, #0f766e)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/prompt-street-dance.mp4"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "如何使用 AI 舞蹈生成器",
+    "steps": [
+      {
+        "title": "上傳一張圖片",
+        "desc": "從一張清晰的人像或全身圖片開始，讓主體容易辨識。"
+      },
+      {
+        "title": "描述舞蹈場景",
+        "desc": "加入舞蹈類型、動作、服裝、燈光、背景、鏡頭角度與社群影片方向。"
+      },
+      {
+        "title": "生成並調整",
+        "desc": "建立影片後，如果動作需要更清楚的身體線條、更強動感或更乾淨背景，就調整描述再試一次。"
+      }
+    ]
+  },
+  "scenesTitle": "AI 舞蹈影片最適合的使用情境",
+  "scenes": [
+    {
+      "title": "舞蹈課程與工作坊宣傳",
+      "icon": "🎭",
+      "desc": "不用先安排拍攝，也能為嘻哈課、芭蕾工作坊、舞蹈教室活動和社群舞蹈課建立短宣傳影片。"
+    },
+    {
+      "title": "短社群影片",
+      "icon": "🎬",
+      "desc": "為 TikTok、Reels、Shorts 和音樂貼文生成舞蹈短片，適合需要清楚動作與強烈燈光的內容。"
+    },
+    {
+      "title": "編舞情緒板",
+      "icon": "🕺",
+      "desc": "在拍攝、排練或向創意團隊簡報之前，探索動作、服裝、舞台與燈光方向。"
+    }
+  ],
+  "features": {
+    "title": "舞蹈影片製作的主要功能",
+    "items": [
+      {
+        "icon": "🪩",
+        "iconType": "upload",
+        "title": "單張圖片上傳",
+        "desc": "上傳一張來源圖片，並用描述引導舞蹈動作、服裝、舞台氛圍與最終影片取景。"
+      },
+      {
+        "icon": "📸",
+        "iconType": "camera",
+        "title": "用描述控制鏡頭",
+        "desc": "以自然語言描述全身取景、近景能量、舞台燈光、動作提示或鏡頭移動。"
+      },
+      {
+        "icon": "🎨",
+        "iconType": "creative",
+        "title": "適合社群影片",
+        "desc": "將生成短片用於活動草稿、課程公告、社群預覽和創意情緒板。"
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "快速瀏覽器流程",
+        "desc": "不用設定剪輯軟體，直接在瀏覽器中撰寫描述、生成並調整。"
+      },
+      {
+        "icon": "💃",
+        "iconType": "motion",
+        "title": "以動作為核心的描述",
+        "desc": "引導姿勢、身體線條、能量、服裝擺動與舞台氛圍，讓舞蹈短片更清楚。"
+      },
+      {
+        "icon": "🧩",
+        "iconType": "workflow",
+        "title": "製作前先準備",
+        "desc": "在拍攝或剪輯前，建立可供編舞、舞台、燈光與社群概念參考的動作影片。"
+      }
+    ]
+  },
+  "faqTitle": "AI 舞蹈生成器常見問題",
+  "faq": [
+    {
+      "q": "什麼是 AI 舞蹈生成器？",
+      "a": "這是 Toolaze 用來從一張上傳圖片加文字描述建立短舞蹈主題影片的頁面，可用於社群短片、編舞概念、舞台宣傳和創作者貼文。"
+    },
+    {
+      "q": "這個頁面會生成舞蹈影片嗎？",
+      "a": "會。上方工具會上傳一張圖片，並依照你的描述建立短舞蹈影片。"
+    },
+    {
+      "q": "舞蹈描述應該包含什麼？",
+      "a": "包含舞蹈類型、動作、服裝、表演者取景、燈光、背景、鏡頭角度，以及你想要直式社群短片或較寬的舞台畫面。請先使用一張清晰上傳圖片。"
+    },
+    {
+      "q": "可以用於舞蹈課程行銷嗎？",
+      "a": "可以。它適合在製作正式活動素材前，先草擬課程宣傳、工作坊短片、活動預告、社群貼文與情緒板。"
+    },
+    {
+      "q": "如何得到更好的全身舞蹈效果？",
+      "a": "上傳清晰單張圖片，並要求全身取景、清楚身體線條、自然身體結構、平衡動作、可見手腳和乾淨背景。如果動作太複雜，請簡化舞步並重新生成。"
+    }
+  ],
+  "moreTools": "更多 AI 影片工具"
+}

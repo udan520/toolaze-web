@@ -57,12 +57,14 @@ import { parseLocalePath } from '@/lib/site-language-switch'
 import { getGenerationModelLabel, getWrappedHairToolHistoryDisplay } from '@/lib/generation-history-display'
 
 type RightPanelMode = 'sample' | 'generating' | 'history'
+type GenerationMediaType = 'image' | 'video'
 
 interface HistoryItem {
   id: string
   inputPreview: string
   inputUrls?: string[]
   outputPreview: string
+  mediaType?: GenerationMediaType
   prompt: string
   time: string
   modelId?: ImageModelId
@@ -82,6 +84,7 @@ interface PendingGenerationItem {
   startedAt: number
   modelId: ImageModelId
   modelName: string
+  mediaType?: GenerationMediaType
   aspectRatio?: string
   resolution?: string
   outputFormat?: string
@@ -154,6 +157,30 @@ const MODEL_CONFIG = {
     supportsHighResolution: true,
     maxFileSizeMb: 30,
   },
+  'grok-1-5-image': {
+    aspectRatios: [
+      { value: 'auto', label: 'Auto' },
+      { value: '1:1', label: '1:1' },
+      { value: '9:16', label: '9:16' },
+      { value: '16:9', label: '16:9' },
+      { value: '4:3', label: '4:3' },
+      { value: '3:4', label: '3:4' },
+    ],
+    maxImages: 1,
+    supportsOutputFormat: false,
+    supportsHighResolution: true,
+    maxFileSizeMb: 30,
+  },
+  'grok-video-1-5': {
+    aspectRatios: [
+      { value: '9:16', label: '9:16' },
+      { value: '16:9', label: '16:9' },
+    ],
+    maxImages: 1,
+    supportsOutputFormat: false,
+    supportsHighResolution: true,
+    maxFileSizeMb: 30,
+  },
   'seedream-4-5': {
     aspectRatios: [
       { value: '1:1', label: '1:1' },
@@ -220,6 +247,27 @@ const MODEL_CONFIG = {
 type ImageModelId = keyof typeof MODEL_CONFIG
 
 const PENDING_GENERATION_STORAGE_KEY = 'toolaze:image-generation-pending:v1'
+const VIDEO_DURATION_OPTIONS = [5, 8, 10, 15] as const
+const DEFAULT_VIDEO_DURATION_SECONDS = 8
+
+function getConfiguredVideoDurationSeconds(durationSeconds?: number): number {
+  return VIDEO_DURATION_OPTIONS.includes(durationSeconds as typeof VIDEO_DURATION_OPTIONS[number])
+    ? durationSeconds as typeof VIDEO_DURATION_OPTIONS[number]
+    : DEFAULT_VIDEO_DURATION_SECONDS
+}
+
+function getGenerationMediaType(modelId: ImageModelId): GenerationMediaType {
+  return modelId === 'grok-video-1-5' ? 'video' : 'image'
+}
+
+function getGeneratedFileExtension(item: { mediaType?: GenerationMediaType }): string {
+  return item.mediaType === 'video' ? 'mp4' : 'png'
+}
+
+type GenerationPollResult = {
+  outputUrl: string
+  mediaType: GenerationMediaType
+}
 
 interface PersistedGenerationHistoryItem {
   id?: string
@@ -230,6 +278,7 @@ interface PersistedGenerationHistoryItem {
   aspectRatio?: string | null
   resolution?: string | null
   outputFormat?: string | null
+  mediaType?: string | null
   toolSlug?: string | null
   toolLabel?: string | null
   sourcePath?: string | null
@@ -266,6 +315,7 @@ function mapPersistedHistoryItem(item: PersistedGenerationHistoryItem): HistoryI
     inputPreview: inputUrls[0] || '',
     inputUrls,
     outputPreview,
+    mediaType: item.mediaType === 'video' ? 'video' : 'image',
     prompt,
     time: formatLocalTimestampToSeconds(item.createdAt || new Date().toISOString()),
     modelId: isImageModelId(item.model) ? item.model : undefined,
@@ -317,6 +367,7 @@ function normalizeStoredPendingGenerationItem(item: unknown): PendingGenerationI
     aspectRatio: typeof candidate.aspectRatio === 'string' ? candidate.aspectRatio : undefined,
     resolution: typeof candidate.resolution === 'string' ? candidate.resolution : undefined,
     outputFormat: typeof candidate.outputFormat === 'string' ? candidate.outputFormat : undefined,
+    mediaType: candidate.mediaType === 'video' ? 'video' : 'image',
     toolSlug: typeof candidate.toolSlug === 'string' ? candidate.toolSlug : null,
     toolLabel: typeof candidate.toolLabel === 'string' ? candidate.toolLabel : null,
     sourcePath: typeof candidate.sourcePath === 'string' ? candidate.sourcePath : null,
@@ -372,6 +423,8 @@ interface PromptDemoImage {
   title: string
   width: number
   height: number
+  mediaType?: GenerationMediaType
+  poster?: string
 }
 
 interface PromptPreset {
@@ -465,6 +518,7 @@ interface AiImageGenerationToolProps {
   defaultMode?: 'image-to-image' | 'text-to-image'
   defaultPrompt?: string
   defaultImageUrls?: string[]
+  defaultVideoDurationSeconds?: number
   maxUploadImages?: number
   hideModelBranding?: boolean
   sampleImageVariant?: 'default' | 'sharp'
@@ -473,6 +527,8 @@ interface AiImageGenerationToolProps {
     title?: string
     width?: number
     height?: number
+    mediaType?: GenerationMediaType
+    poster?: string
   }>
   fitParentHeight?: boolean
   plainRightPanel?: boolean
@@ -531,6 +587,29 @@ const MODEL_GROUPS: ModelGroup[] = [
         description: 'Create structured images, marketing visuals, mockups, and image edits.',
         qualityRating: 5,
         badge: 'Hot',
+      },
+    ],
+  },
+  {
+    id: 'xai',
+    name: 'xAI',
+    description: 'Grok generation for fast creative drafts, images, and video scenes.',
+    logoSrc: '/favicon.svg',
+    logoAlt: 'xAI logo',
+    models: [
+      {
+        id: 'grok-video-1-5',
+        name: 'Grok Video 1.5',
+        description: 'Create short dance videos from one reference image and a motion prompt.',
+        qualityRating: 4,
+        badge: 'New',
+      },
+      {
+        id: 'grok-1-5-image',
+        name: 'Grok 1.5 Image',
+        description: 'Create image drafts, stylized scenes, and prompt-led visuals.',
+        qualityRating: 4,
+        badge: 'New',
       },
     ],
   },
@@ -605,12 +684,14 @@ const getFlatModelOptions = () => MODEL_GROUPS.flatMap((group) => group.models)
 const getModelGroupId = (modelId: ImageModelId) =>
   MODEL_GROUPS.find((group) => group.models.some((model) => model.id === modelId))?.id || MODEL_GROUPS[0].id
 
-const TEXT_TO_IMAGE_DEFAULT_MODELS: ImageModelId[] = ['gpt-image-2', 'seedream-4-5', 'seedream-5-0-lite', 'seedream-5-0-pro', 'wan-2-7-image']
+const TEXT_TO_IMAGE_DEFAULT_MODELS: ImageModelId[] = ['gpt-image-2', 'grok-1-5-image', 'seedream-4-5', 'seedream-5-0-lite', 'seedream-5-0-pro', 'wan-2-7-image']
 
 const getDefaultTabForModel = (id: ImageModelId): 'image-to-image' | 'text-to-image' =>
   TEXT_TO_IMAGE_DEFAULT_MODELS.includes(id) ? 'text-to-image' : 'image-to-image'
 
 const getDefaultAspectRatioForModel = (id: ImageModelId, presetMode: AiImageGenerationToolProps['presetMode']): string => {
+  if (id === 'grok-video-1-5') return '9:16'
+
   const ratioOptions = presetMode === 'ai-couple-photo-maker'
     ? WRAPPED_IMAGE_PLAY_RATIO_OPTIONS
     : MODEL_CONFIG[id].aspectRatios
@@ -621,7 +702,11 @@ const getDefaultAspectRatioForModel = (id: ImageModelId, presetMode: AiImageGene
 }
 
 const getResolutionOptionsForModel = (id: ImageModelId): string[] =>
-  id === 'seedream-5-0-pro' ? ['1K', '2K'] : ['1K', '2K', '4K']
+  id === 'grok-video-1-5'
+    ? ['480p', '720p', '1080p']
+    : id === 'seedream-5-0-pro'
+      ? ['1K', '2K']
+      : ['1K', '2K', '4K']
 
 const getDefaultResolutionForModel = (id: ImageModelId): string =>
   getResolutionOptionsForModel(id)[0] || '1K'
@@ -928,6 +1013,7 @@ export default function AiImageGenerationTool({
   defaultMode,
   defaultPrompt = '',
   defaultImageUrls = EMPTY_DEFAULT_IMAGE_URLS,
+  defaultVideoDurationSeconds,
   maxUploadImages,
   hideModelBranding = false,
   sampleImageVariant = 'default',
@@ -1009,13 +1095,13 @@ export default function AiImageGenerationTool({
     serverNonJson: 'Server returned a non-JSON response.',
     requestFailed: 'Request failed:',
     checkStatusFailed: 'Failed to check status ({status})',
-    generateFailed: 'Failed to generate image',
+    generateFailed: 'Failed to generate media',
     generationFailedWithMessage: 'Generation failed: {message}',
-    noResult: 'No task ID or image URL received',
+    noResult: 'No task ID or media URL received',
     networkError: 'Network error',
     networkFailed: 'Network connection failed. Please check your network connection and try again.',
     serviceUnstable: 'Generation service is temporarily unstable. Please try again in a moment.',
-    imageGenerationFailed: 'Image Generation Failed',
+    imageGenerationFailed: 'Generation Failed',
     generationTimeout: 'Generation timeout',
     dailyLimitReached: 'Daily free limit reached. Please come back tomorrow!',
     recreateMissingInput: 'No input image found. Switched to Text to Image for recreate.',
@@ -1034,7 +1120,8 @@ export default function AiImageGenerationTool({
   const [selectedModelId, setSelectedModelId] = useState<ImageModelId>(modelId)
   const selectedModelName = modelOptions.find((option) => option.id === selectedModelId)?.name || modelName
   const selectedModelOption = modelOptions.find((option) => option.id === selectedModelId)
-  const displayModelName = hideModelBranding ? 'AI image' : selectedModelName
+  const selectedMediaType = getGenerationMediaType(selectedModelId)
+  const displayModelName = hideModelBranding ? (selectedMediaType === 'video' ? 'AI video' : 'AI image') : selectedModelName
   const modelConfig = MODEL_CONFIG[selectedModelId]
   const getMaxImagesForModel = (id: ImageModelId) => {
     const modelMaxImages = MODEL_CONFIG[id].maxImages
@@ -1070,6 +1157,7 @@ export default function AiImageGenerationTool({
     defaultAspectRatio || getDefaultAspectRatioForModel(modelId, presetMode)
   )
   const [resolution, setResolution] = useState<string>(getDefaultResolutionForModel(modelId))
+  const [videoDurationSeconds, setVideoDurationSeconds] = useState<number>(() => getConfiguredVideoDurationSeconds(defaultVideoDurationSeconds))
   const [outputFormat, setOutputFormat] = useState(isCouplePhotoMakerMode ? 'PNG' : 'Auto')
   const [selectedTemplateId, setSelectedTemplateId] = useState<string>(() => {
     const firstStyle = NANO_BANANA_2_COUPLE_TEMPLATES.find((item) => item.category === 'style')
@@ -1103,7 +1191,7 @@ export default function AiImageGenerationTool({
   const [activeModelGroupId, setActiveModelGroupId] = useState(() => getModelGroupId(modelId))
   const activeModelGroup = modelGroups.find((group) => group.id === activeModelGroupId) || modelGroups[0]
   const selectedModelGroup = modelGroups.find((group) => group.models.some((model) => model.id === selectedModelId)) || modelGroups[0]
-  const generationCreditCost = calculateImageGenerationCredits(selectedModelId, resolution)
+  const generationCreditCost = calculateImageGenerationCredits(selectedModelId, resolution, videoDurationSeconds)
   const historyPageHref = getLocalizedInternalPath(pathname, '/history')
   const isGenerating = pendingGenerationItems.length > 0
   const hasDesktopResultTabs = isGenerating || failedGenerationItems.length > 0 || history.length > 0
@@ -1155,6 +1243,10 @@ export default function AiImageGenerationTool({
     if (!modelConfig.aspectRatios.some((item) => item.value === defaultAspectRatio)) return
     setAspectRatio(defaultAspectRatio)
   }, [defaultAspectRatio, modelConfig.aspectRatios])
+
+  useEffect(() => {
+    setVideoDurationSeconds(getConfiguredVideoDurationSeconds(defaultVideoDurationSeconds))
+  }, [defaultVideoDurationSeconds])
 
   useEffect(() => {
     const nextTabId = promptPresetTabs[0]?.id || ''
@@ -1474,8 +1566,9 @@ export default function AiImageGenerationTool({
       let attempts = 0
       const maxAttempts = 60
       const pollInterval = 5000
+      const pendingMediaType = item.mediaType || getGenerationMediaType(item.modelId)
 
-      const pollStatus = async (): Promise<string> => {
+      const pollStatus = async (): Promise<GenerationPollResult> => {
         let statusResponse: Response
         try {
           statusResponse = await fetch('/api/image-to-image/status', {
@@ -1519,8 +1612,11 @@ export default function AiImageGenerationTool({
         if (statusResult.credits) {
           dispatchCreditsUpdated(statusResult.credits)
         }
-        if (statusResult.status === 'SUCCEEDED' && statusResult.imageUrl) {
-          return statusResult.imageUrl as string
+        const outputUrl = String(statusResult.videoUrl || statusResult.imageUrl || '').trim()
+        if (statusResult.status === 'SUCCEEDED' && outputUrl) {
+          const mediaType: GenerationMediaType =
+            statusResult.mediaType === 'video' || statusResult.videoUrl ? 'video' : pendingMediaType
+          return { outputUrl, mediaType }
         }
         if (statusResult.status === 'FAILED') {
           throw new Error(String(statusResult.message || toolText.imageGenerationFailed))
@@ -1535,8 +1631,8 @@ export default function AiImageGenerationTool({
         return pollStatus()
       }
 
-      const outputUrl = await pollStatus()
-      const finalUrl = await saveGeneratedImageToR2(outputUrl)
+      const { outputUrl, mediaType } = await pollStatus()
+      const finalUrl = mediaType === 'image' ? await saveGeneratedImageToR2(outputUrl) : outputUrl
       const savedItem = await persistGeneratedHistoryItem({
         outputUrl: finalUrl,
         inputUrls: item.inputUrls || [],
@@ -1546,12 +1642,14 @@ export default function AiImageGenerationTool({
         aspectRatio: item.aspectRatio,
         resolution: item.resolution,
         outputFormat: item.outputFormat,
+        mediaType,
       })
       addHistoryItemToFeed({
         id: savedItem?.id || item.id,
         inputPreview: item.inputPreview || item.inputUrls?.[0] || '',
         inputUrls: item.inputUrls || [],
         outputPreview: finalUrl,
+        mediaType,
         prompt: item.prompt,
         time: formatLocalTimestampToSeconds(savedItem?.createdAt || new Date().toISOString()),
         modelId: item.modelId,
@@ -1808,6 +1906,7 @@ export default function AiImageGenerationTool({
       generation_mode: activeTab,
       resolution,
       aspect_ratio: aspectRatio,
+      video_duration_seconds: selectedMediaType === 'video' ? videoDurationSeconds : undefined,
       output_format: modelConfig.supportsOutputFormat && !isCouplePhotoMakerMode ? outputFormat : undefined,
       credit_cost: generationCreditCost,
       has_reference_images: referenceImageCount > 0,
@@ -1829,6 +1928,8 @@ export default function AiImageGenerationTool({
     resolution,
     selectedModelId,
     selectedModelName,
+    selectedMediaType,
+    videoDurationSeconds,
   ])
 
   useEffect(() => {
@@ -1861,6 +1962,8 @@ export default function AiImageGenerationTool({
     const requestOutputFormat = outputFormat
     const requestModelId = selectedModelId
     const requestModelName = selectedModelName
+    const requestMediaType = getGenerationMediaType(requestModelId)
+    const requestVideoDurationSeconds = videoDurationSeconds
     const requestHistoryTool = getHistoryToolMetadata(pathname, requestModelName, requestModelId)
     const requestModelConfig = MODEL_CONFIG[requestModelId]
     const requestCreditCost = generationCreditCost
@@ -1904,6 +2007,7 @@ export default function AiImageGenerationTool({
       startedAt: Date.now(),
       modelId: requestModelId,
       modelName: requestModelName,
+      mediaType: requestMediaType,
       aspectRatio: requestAspectRatio,
       resolution: requestResolution,
       outputFormat: requestOutputFormat,
@@ -1919,6 +2023,9 @@ export default function AiImageGenerationTool({
       formData.append('prompt', effectivePrompt)
       formData.append('aspectRatio', requestAspectRatio)
       formData.append('resolution', requestModelId === 'wan-2-7-image' && requestActiveTab === 'image-to-image' && requestResolution === '4K' ? '2K' : requestResolution)
+      if (requestMediaType === 'video') {
+        formData.append('duration', String(requestVideoDurationSeconds))
+      }
       if (requestModelId === 'seedream-4-5' || requestModelId === 'seedream-5-0-lite' || requestModelId === 'seedream-5-0-pro') {
         formData.append('quality', requestModelId === 'seedream-5-0-pro'
           ? (requestResolution === '2K' ? 'High' : 'Basic')
@@ -2025,10 +2132,12 @@ export default function AiImageGenerationTool({
       const creditHold = generateResult.creditHold || null
 
       if (!taskId) {
-        // 如果直接返回了图片 URL（同步）
-        if (generateResult.imageUrl) {
+        const syncOutputUrl = String(generateResult.videoUrl || generateResult.imageUrl || '').trim()
+        if (syncOutputUrl) {
+          const syncMediaType: GenerationMediaType =
+            generateResult.mediaType === 'video' || generateResult.videoUrl ? 'video' : requestMediaType
           const savedItem = await persistGeneratedHistoryItem({
-            outputUrl: generateResult.imageUrl,
+            outputUrl: syncOutputUrl,
             inputUrls: generationInputUrls,
             prompt: effectivePrompt,
             modelId: requestModelId,
@@ -2036,6 +2145,7 @@ export default function AiImageGenerationTool({
             aspectRatio: requestAspectRatio,
             resolution: requestResolution,
             outputFormat: requestOutputFormat,
+            mediaType: syncMediaType,
           })
           const savedInputUrls = Array.isArray(savedItem?.inputUrls) && savedItem.inputUrls.length > 0
             ? savedItem.inputUrls
@@ -2044,7 +2154,8 @@ export default function AiImageGenerationTool({
             id: savedItem?.id || createLocalId('sync'),
             inputPreview: savedInputUrls[0] || generationPreviewInputUrls[0] || '',
             inputUrls: savedInputUrls,
-            outputPreview: generateResult.imageUrl,
+            outputPreview: syncOutputUrl,
+            mediaType: syncMediaType,
             prompt: effectivePrompt,
             time: formatLocalTimestampToSeconds(savedItem?.createdAt || new Date().toISOString()),
             modelId: requestModelId,
@@ -2069,7 +2180,7 @@ export default function AiImageGenerationTool({
       const maxAttempts = 60 // 最多轮询 60 次（约 5 分钟）
       const pollInterval = 5000 // 每 5 秒轮询一次
 
-      const pollStatus = async (): Promise<string> => {
+      const pollStatus = async (): Promise<GenerationPollResult> => {
         let statusResponse: Response
         try {
           statusResponse = await fetch('/api/image-to-image/status', {
@@ -2115,8 +2226,11 @@ export default function AiImageGenerationTool({
           rollbackOptimisticCredits = null
         }
 
-        if (statusResult.status === 'SUCCEEDED' && statusResult.imageUrl) {
-          return statusResult.imageUrl
+        const outputUrl = String(statusResult.videoUrl || statusResult.imageUrl || '').trim()
+        if (statusResult.status === 'SUCCEEDED' && outputUrl) {
+          const mediaType: GenerationMediaType =
+            statusResult.mediaType === 'video' || statusResult.videoUrl ? 'video' : requestMediaType
+          return { outputUrl, mediaType }
         }
 
         if (statusResult.status === 'FAILED') {
@@ -2133,10 +2247,10 @@ export default function AiImageGenerationTool({
         return pollStatus()
       }
 
-      const outputUrl = await pollStatus()
+      const { outputUrl, mediaType } = await pollStatus()
 
       if (outputUrl) {
-        const finalUrl = await saveGeneratedImageToR2(outputUrl)
+        const finalUrl = mediaType === 'image' ? await saveGeneratedImageToR2(outputUrl) : outputUrl
 
         const savedItem = await persistGeneratedHistoryItem({
           outputUrl: finalUrl,
@@ -2147,6 +2261,7 @@ export default function AiImageGenerationTool({
           aspectRatio: requestAspectRatio,
           resolution: requestResolution,
           outputFormat: requestOutputFormat,
+          mediaType,
         })
         const savedInputUrls = Array.isArray(savedItem?.inputUrls) && savedItem.inputUrls.length > 0
           ? savedItem.inputUrls
@@ -2156,6 +2271,7 @@ export default function AiImageGenerationTool({
           inputPreview: savedInputUrls[0] || generationPreviewInputUrls[0] || '',
           inputUrls: savedInputUrls,
           outputPreview: finalUrl,
+          mediaType,
           prompt: effectivePrompt,
           time: formatLocalTimestampToSeconds(savedItem?.createdAt || new Date().toISOString()),
           modelId: requestModelId,
@@ -2308,6 +2424,8 @@ export default function AiImageGenerationTool({
         caption: image.title || `${displayModelName} sample output`,
         width: image.width || 800,
         height: image.height || 600,
+        mediaType: image.mediaType === 'video' || /\.(mp4|webm|mov|m4v)(?:[?#].*)?$/i.test(image.url) ? 'video' : 'image',
+        poster: image.poster,
       }
     }
 
@@ -2317,6 +2435,8 @@ export default function AiImageGenerationTool({
       caption: image.alt || `${displayModelName} sample output`,
       width: image.width,
       height: image.height,
+      mediaType: 'image' as GenerationMediaType,
+      poster: undefined,
     }
   }, [displayModelName, sampleImages, selectedModelId])
   const isSharpSampleImage = sampleImageVariant === 'sharp'
@@ -2324,6 +2444,8 @@ export default function AiImageGenerationTool({
   const displayedSampleImageTitle = promptDemoImage?.title || sampleImage.caption
   const displayedSampleImageWidth = promptDemoImage?.width || sampleImage.width
   const displayedSampleImageHeight = promptDemoImage?.height || sampleImage.height
+  const displayedSampleMediaType = promptDemoImage?.mediaType || sampleImage.mediaType
+  const displayedSamplePoster = promptDemoImage?.poster || sampleImage.poster
 
   const handleModelChange = (nextModelId: ModelOption['id']) => {
     if (nextModelId === selectedModelId) {
@@ -2438,21 +2560,36 @@ export default function AiImageGenerationTool({
           isSharpSampleImage ? 'rounded-md bg-slate-50 p-0 shadow-none' : 'rounded-2xl p-2 shadow-inner'
         }`}
       >
-        <SiteImage
-          src={displayedSampleImageUrl}
-          alt={displayedSampleImageTitle}
-          autoAlt={!promptDemoImage}
-          width={displayedSampleImageWidth}
-          height={displayedSampleImageHeight}
-          unoptimized={shouldUseDirectImageForDemo(displayedSampleImageUrl)}
-          className={isSharpSampleImage ? 'max-h-full max-w-full rounded-md' : 'max-h-full max-w-full'}
-          style={{
-            objectFit: 'contain',
-            width: isSharpSampleImage ? '100%' : 'auto',
-            height: '100%',
-            maxHeight: '100%',
-          }}
-        />
+        {displayedSampleMediaType === 'video' ? (
+          <video
+            src={displayedSampleImageUrl}
+            poster={displayedSamplePoster}
+            className={isSharpSampleImage ? 'h-full max-h-full max-w-full rounded-md object-contain' : 'h-full max-h-full max-w-full object-contain'}
+            autoPlay
+            muted
+            loop
+            playsInline
+            controls
+            preload="metadata"
+            aria-label={displayedSampleImageTitle}
+          />
+        ) : (
+          <SiteImage
+            src={displayedSampleImageUrl}
+            alt={displayedSampleImageTitle}
+            autoAlt={!promptDemoImage}
+            width={displayedSampleImageWidth}
+            height={displayedSampleImageHeight}
+            unoptimized={shouldUseDirectImageForDemo(displayedSampleImageUrl)}
+            className={isSharpSampleImage ? 'max-h-full max-w-full rounded-md' : 'max-h-full max-w-full'}
+            style={{
+              objectFit: 'contain',
+              width: isSharpSampleImage ? '100%' : 'auto',
+              height: '100%',
+              maxHeight: '100%',
+            }}
+          />
+        )}
       </div>
     )
   }
@@ -2701,6 +2838,11 @@ export default function AiImageGenerationTool({
   }
 
   const editHistoryItemImage = (item: HistoryItem) => {
+    if (item.mediaType === 'video') {
+      applyHistoryItemToForm(item)
+      return
+    }
+
     if (!isGenericImageEditToolPath(pathname)) {
       window.sessionStorage.setItem(PENDING_REPROMPT_STORAGE_KEY, JSON.stringify({
         mode: 'image-to-image',
@@ -2727,20 +2869,34 @@ export default function AiImageGenerationTool({
       }`}
     >
       <div>
-        <button
-          type="button"
-          onClick={() => setPreviewImage(item.outputPreview)}
-          className="flex min-h-[140px] items-center justify-center rounded-xl bg-slate-50 p-2 focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/40"
-          title={toolText.generatedAlt}
-        >
-          <img
-            src={getDisplayImagePreviewUrl(item.outputPreview, 960)}
-            alt={toolText.generatedAlt}
-            className="max-h-[220px] w-full rounded-lg object-contain transition-opacity hover:opacity-90"
-            loading="lazy"
-            decoding="async"
-          />
-        </button>
+        {item.mediaType === 'video' ? (
+          <div className="flex min-h-[140px] items-center justify-center rounded-xl bg-slate-950 p-2">
+            <video
+              src={item.outputPreview}
+              className="max-h-[220px] w-full rounded-lg object-contain"
+              autoPlay
+              muted
+              loop
+              controls
+              playsInline
+            />
+          </div>
+        ) : (
+          <button
+            type="button"
+            onClick={() => setPreviewImage(item.outputPreview)}
+            className="flex min-h-[140px] items-center justify-center rounded-xl bg-slate-50 p-2 focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/40"
+            title={toolText.generatedAlt}
+          >
+            <img
+              src={getDisplayImagePreviewUrl(item.outputPreview, 960)}
+              alt={toolText.generatedAlt}
+              className="max-h-[220px] w-full rounded-lg object-contain transition-opacity hover:opacity-90"
+              loading="lazy"
+              decoding="async"
+            />
+          </button>
+        )}
       </div>
 
       <div className="min-w-0 space-y-4">
@@ -2798,17 +2954,19 @@ export default function AiImageGenerationTool({
           >
             {toolText.recreate}
           </button>
+          {item.mediaType !== 'video' && (
+            <button
+              data-desktop-edit-image
+              type="button"
+              onClick={() => editHistoryItemImage(item)}
+              className="flex items-center justify-center rounded-xl border border-[#C7D2FE] px-3 py-2.5 text-[#4F46E5] transition-colors hover:bg-[#EEF2FF]"
+            >
+              {toolText.editImage}
+            </button>
+          )}
           <button
-            data-desktop-edit-image
             type="button"
-            onClick={() => editHistoryItemImage(item)}
-            className="flex items-center justify-center rounded-xl border border-[#C7D2FE] px-3 py-2.5 text-[#4F46E5] transition-colors hover:bg-[#EEF2FF]"
-          >
-            {toolText.editImage}
-          </button>
-          <button
-            type="button"
-            onClick={() => handleDownload(item.outputPreview, `generated-${item.id}.png`, item)}
+            onClick={() => handleDownload(item.outputPreview, `generated-${item.id}.${getGeneratedFileExtension(item)}`, item)}
             disabled={downloadingUrl === item.outputPreview}
             className="flex items-center justify-center rounded-xl border border-[#C7D2FE] px-3 py-2.5 text-[#4F46E5] transition-colors hover:bg-[#EEF2FF] disabled:cursor-not-allowed disabled:opacity-50"
             title={downloadingUrl === item.outputPreview ? toolText.downloading : toolText.download}
@@ -3133,12 +3291,24 @@ export default function AiImageGenerationTool({
           renderMobileGeneratingCard()
         ) : currentResult ? (
           <div className="rounded-2xl border border-[#E0E7FF] bg-white p-2 shadow-sm">
-            <img
-              src={currentResult.outputPreview}
-              alt={toolText.generatedAlt}
-              onClick={() => setPreviewImage(currentResult.outputPreview)}
-              className="aspect-[4/3] w-full rounded-xl object-contain cursor-pointer bg-slate-50"
-            />
+            {currentResult.mediaType === 'video' ? (
+              <video
+                src={currentResult.outputPreview}
+                className="aspect-[4/3] w-full rounded-xl bg-slate-950 object-contain"
+                autoPlay
+                muted
+                loop
+                controls
+                playsInline
+              />
+            ) : (
+              <img
+                src={currentResult.outputPreview}
+                alt={toolText.generatedAlt}
+                onClick={() => setPreviewImage(currentResult.outputPreview)}
+                className="aspect-[4/3] w-full rounded-xl object-contain cursor-pointer bg-slate-50"
+              />
+            )}
             {renderMobileHistoryMeta({
               ...currentResult,
               modelName: getHistoryItemModelName(currentResult),
@@ -3184,7 +3354,7 @@ export default function AiImageGenerationTool({
                 ))}
               </div>
             )}
-            <div data-mobile-result-actions className="mt-3 grid grid-cols-4 gap-2">
+            <div data-mobile-result-actions className={`mt-3 grid gap-2 ${currentResult.mediaType === 'video' ? 'grid-cols-3' : 'grid-cols-4'}`}>
               <button
                 type="button"
                 onClick={handleRecreateFromCurrent}
@@ -3193,19 +3363,21 @@ export default function AiImageGenerationTool({
               >
                 {toolText.recreate}
               </button>
-              <button
-                data-mobile-edit-image
-                type="button"
-                onClick={() => editHistoryItemImage(currentResult)}
-                className="min-w-0 truncate rounded-xl border border-[#C7D2FE] px-2.5 py-2.5 text-xs font-extrabold text-[#4F46E5] transition-colors hover:bg-[#EEF2FF]"
-                title={toolText.editImage}
-              >
-                {toolText.editImageShort}
-              </button>
+              {currentResult.mediaType !== 'video' && (
+                <button
+                  data-mobile-edit-image
+                  type="button"
+                  onClick={() => editHistoryItemImage(currentResult)}
+                  className="min-w-0 truncate rounded-xl border border-[#C7D2FE] px-2.5 py-2.5 text-xs font-extrabold text-[#4F46E5] transition-colors hover:bg-[#EEF2FF]"
+                  title={toolText.editImage}
+                >
+                  {toolText.editImageShort}
+                </button>
+              )}
               <button
                 data-mobile-download
                 type="button"
-                onClick={() => handleDownload(currentResult.outputPreview, `generated-${currentResult.id}.png`, currentResult)}
+                onClick={() => handleDownload(currentResult.outputPreview, `generated-${currentResult.id}.${getGeneratedFileExtension(currentResult)}`, currentResult)}
                 disabled={downloadingUrl === currentResult.outputPreview}
                 aria-label={downloadingUrl === currentResult.outputPreview ? toolText.downloading : toolText.download}
                 className="flex min-w-0 items-center justify-center rounded-xl border border-[#C7D2FE] px-2.5 py-2.5 text-xs font-extrabold text-[#4F46E5] transition-colors hover:bg-[#EEF2FF] disabled:cursor-not-allowed disabled:opacity-60"
@@ -3250,13 +3422,25 @@ export default function AiImageGenerationTool({
                   }}
                   className="overflow-hidden rounded-xl border border-[#E0E7FF] bg-white p-1 text-left"
                 >
-                  <img
-                    src={getDisplayImagePreviewUrl(item.outputPreview, 384)}
-                    alt={toolText.historyResultAlt}
-                    className="aspect-[4/3] w-full rounded-lg object-cover"
-                    loading="lazy"
-                    decoding="async"
-                  />
+                  {item.mediaType === 'video' ? (
+                    <video
+                      src={item.outputPreview}
+                      className="aspect-[4/3] w-full rounded-lg bg-slate-950 object-cover"
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      preload="metadata"
+                    />
+                  ) : (
+                    <img
+                      src={getDisplayImagePreviewUrl(item.outputPreview, 384)}
+                      alt={toolText.historyResultAlt}
+                      className="aspect-[4/3] w-full rounded-lg object-cover"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  )}
                 </button>
               ))}
             </div>
@@ -3888,6 +4072,32 @@ export default function AiImageGenerationTool({
                         }`}
                       >
                         {option}
+                      </button>
+                    )
+                  })}
+                </div>
+              </div>
+            )}
+
+            {selectedMediaType === 'video' && (
+              <div>
+                <label className="block text-xs font-semibold text-slate-500 tracking-wide mb-2">Video Duration</label>
+                <div className="grid grid-cols-4 gap-2">
+                  {VIDEO_DURATION_OPTIONS.map((option) => {
+                    const isSelected = videoDurationSeconds === option
+                    return (
+                      <button
+                        key={option}
+                        type="button"
+                        aria-pressed={isSelected}
+                        onClick={() => setVideoDurationSeconds(option)}
+                        className={`min-h-10 rounded-xl border px-3 py-2 text-center text-xs font-bold transition-all ${
+                          isSelected
+                            ? 'border-[#4F46E5] bg-[#EEF2FF] text-[#4F46E5] shadow-sm'
+                            : 'border-[#E0E7FF] bg-white text-slate-600 hover:border-[#C7D2FE] hover:bg-[#F8FAFF]'
+                        }`}
+                      >
+                        {option}s
                       </button>
                     )
                   })}

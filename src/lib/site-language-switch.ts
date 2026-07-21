@@ -35,6 +35,7 @@ export const TOOL_SUPPORTED_LOCALES: Record<string, readonly string[]> = {
   'watermark-remover': ALL_LOCALE_CODES,
   'ai-couple-photo-maker': ALL_LOCALE_CODES,
   'ai-baby-generator': ALL_LOCALE_CODES,
+  'ai-dance-generator': ALL_LOCALE_CODES,
   'photo-restoration': ALL_LOCALE_CODES,
   'ai-image-generator': ALL_LOCALE_CODES,
   'text-to-image-generator': ALL_LOCALE_CODES,

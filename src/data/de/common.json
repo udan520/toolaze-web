@@ -2,6 +2,7 @@
   "nav": {
     "quickTools": "Schnelle Tools",
     "aiTools": "KI-Tools",
+    "hot": "Beliebt",
     "imageCompression": "Bildkomprimierung",
     "imageConverter": "Bildkonverter",
     "watermarkRemover": "Wasserzeichen entfernen",
@@ -47,7 +48,8 @@
     "aiImageToImageGenerator": "KI-Bild-zu-Bild-Generator",
     "seedream50Lite": "Seedream 5.0 Lite",
     "seedream50Pro": "Seedream 5.0 Pro",
-    "seedance25": "Seedance 2.5"
+    "seedance25": "Seedance 2.5",
+    "aiDanceGenerator": "KI-Tanzgenerator"
   },
   "home": {
     "metadata": {
@@ -109,6 +111,10 @@
       "world-cup-ai-image-generator": {
         "cardTitle": "WM-KI-Bildgenerator",
         "summary": "Erstellen Sie Fußballposter, Fan-Porträts, Sticker-Packs und Watch-Party-Grafiken mit GPT Image 2. Starten Sie mit einer Vorlage oder einem Selfie und erzeugen Sie teilbare Standbilder direkt im Browser."
+      },
+      "ai-dance-generator": {
+        "cardTitle": "KI-Tanzgenerator",
+        "summary": "Laden Sie ein Bild hoch und erstellen Sie ein kurzes Tanzvideo für Choreografie-Ideen, Kurs-Promos und Social Clips. Dauer und Seitenverhältnis lassen sich im Generator wählen."
       }
     },
     "aiToolsHubTitle": "Kostenlose KI-Tools für Bilder, Videos & alltägliche Medien-Workflows",
@@ -122,7 +128,7 @@
       },
       {
         "title": "KI Videogeneratoren",
-        "description": "Verwandeln Sie Skripte und Referenzbilder in filmische Clips. Seedance 2.0 und Kling 3.0 unterstützen Text-zu-Video und Bild-zu-Video mit multimodalen Eingaben – ideal für Promos, Storyboards und Kurzgeschichten.",
+        "description": "Verwandeln Sie Skripte, Referenzbilder oder ein einzelnes hochgeladenes Bild in kurze Videokonzepte. Der KI-Tanzgenerator ergänzt schnelle Tanzclips für Kurs-Promos und Social Posts; die Videomodellseiten unterstützen filmische Promos, Storyboards und kurze Erzählformate.",
         "href": "/de/seedance-2"
       },
       {
@@ -139,7 +145,7 @@
     "sectionAiImageTitle": "KI Bildmodelle",
     "sectionAiImageSubtitle": "Kostenloser KI Bildgenerator online. Text-zu-Bild und Bild-zu-Bild. 4K-Ausgabe, schnelle Generierung, keine Registrierung. Erstellen Sie KI-Kunst mit Nano Banana Pro und Nano Banana 2.",
     "sectionAiVideoTitle": "KI Videomodelle",
-    "sectionAiVideoSubtitle": "Kostenloser KI Videogenerator online. Text-zu-Video und Bild-zu-Video. 1080p–4K-Ausgabe, multimodale Videogenerierung. Erstellen Sie Videos mit Seedance 2.0 und Kling 3.0 – keine Anmeldung.",
+    "sectionAiVideoSubtitle": "Erstellen Sie KI-Videos aus Prompts, Referenzbildern oder einem hochgeladenen Bild. Der KI-Tanzgenerator eignet sich für kurze Social-Dance-Clips, während die Videotools Promos, Storyboards und filmische Szenen abdecken.",
     "sectionToolsTitle": "Weitere Tools",
     "sectionToolsSubtitle": "Bildkomprimierung, Formatkonvertierung, Schriftgenerator – alles kostenlos, alles in Ihrem Browser.",
     "seoIntro": {
@@ -257,7 +263,8 @@
     "worldCupAiImageGenerator": "WM-KI-Bildgenerator",
     "aiImageGenerator": "KI-Bildgenerator",
     "refundPolicy": "Rückerstattungsrichtlinie",
-    "acceptableUse": "Richtlinie zur zulässigen Nutzung"
+    "acceptableUse": "Richtlinie zur zulässigen Nutzung",
+    "aiDanceGenerator": "KI-Tanzgenerator"
   },
   "breadcrumb": {
     "home": "Startseite",

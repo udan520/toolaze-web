@@ -12,6 +12,7 @@ interface FeaturesProps {
   title?: string
   features?: FeatureItem[]
   bgClass?: string
+  layout?: 'default' | 'wide'
 }
 
 // 极简线条图标组件（indigo，极简线条风格）
@@ -51,7 +52,7 @@ const LineIcon = ({ type }: { type: string }) => {
   return icons[type] || icons.privacy
 }
 
-export default function Features({ title, features, bgClass = 'bg-white' }: FeaturesProps) {
+export default function Features({ title, features, bgClass = 'bg-white', layout = 'default' }: FeaturesProps) {
   if (!features || features.length === 0) return null
 
   // 根据标题匹配对应的图标类型
@@ -67,12 +68,23 @@ export default function Features({ title, features, bgClass = 'bg-white' }: Feat
   }
 
   const sectionTitle = title || 'Key Features'
-
-  return (
-    <section 
-      className={`${bgClass} py-24 relative`} 
-      style={{ 
-        width: '100vw', 
+  const isWideLayout = layout === 'wide'
+  const containerClass = isWideLayout
+    ? 'mx-auto w-full max-w-6xl'
+    : 'mx-auto w-full max-w-[1440px]'
+  const gridClass = isWideLayout
+    ? 'grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 w-full'
+    : 'grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 w-full'
+  const cardClass = isWideLayout
+    ? 'bg-white p-7 lg:p-8 rounded-xl shadow-sm'
+    : 'bg-white p-6 rounded-lg shadow-sm'
+  const sectionStyle: React.CSSProperties = isWideLayout
+    ? {
+        width: '100%',
+        boxSizing: 'border-box',
+      }
+    : {
+        width: '100vw',
         position: 'relative',
         left: '50%',
         right: '50%',
@@ -80,24 +92,29 @@ export default function Features({ title, features, bgClass = 'bg-white' }: Feat
         marginRight: '-50vw',
         paddingLeft: '24px',
         paddingRight: '24px',
-        boxSizing: 'border-box'
-      }}
+        boxSizing: 'border-box',
+      }
+
+  return (
+    <section
+      className={`${bgClass} py-24 relative ${isWideLayout ? 'px-6' : ''}`}
+      style={sectionStyle}
     >
-      <div className="w-full max-w-full">
+      <div className={containerClass}>
         {/* H2 标题 */}
         <h2 className="text-4xl font-extrabold text-center text-slate-900 mb-12">
           {sectionTitle}
         </h2>
 
         {/* 特性卡片网格 - 2x3 布局（6个特性点） */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
+        <div className={gridClass}>
           {features.slice(0, 6).map((feature, idx) => {
             const featureObj = typeof feature === 'object' ? feature : { icon: '📂', title: feature, desc: '' }
             // 优先使用 iconType 字段，如果没有则根据标题匹配
             const iconType = featureObj.iconType || getIconType(featureObj.title)
             
             return (
-              <div key={idx} className="bg-white p-6 rounded-lg shadow-sm">
+              <div key={idx} className={cardClass}>
                 {/* 图标 - 居中显示，indigo虚线圆圈边框，极简线条图标 */}
                 <div className="flex flex-col items-center mb-4">
                   <div className="relative w-16 h-16 flex items-center justify-center mb-4">

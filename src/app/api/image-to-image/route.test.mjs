@@ -148,7 +148,7 @@ test('local dev generation consumes credits and returns the updated balance', as
   }
 })
 
-test('local dev generation blocks Creem denied prompts before consuming credits', async () => {
+test('local dev generation skips Creem moderation and consumes credits', async () => {
   const originalKey = process.env.KIE_AI_API_KEY
   const originalCreemKey = process.env.CREEM_API_KEY
   const originalFetch = globalThis.fetch
@@ -159,18 +159,20 @@ test('local dev generation blocks Creem denied prompts before consuming credits'
 
   globalThis.fetch = async (url) => {
     fetchUrls.push(String(url))
-    return Response.json({ id: 'mod_deny', object: 'moderation_result', decision: 'deny', usage: { units: 1 } })
+    if (String(url).includes('/v1/moderation/prompt')) {
+      return Response.json({ id: 'mod_deny', object: 'moderation_result', decision: 'deny', usage: { units: 1 } })
+    }
+    return Response.json({ code: 200, data: { taskId: 'task_local_skip_moderation' } })
   }
 
   try {
     const response = await POST(createLocalDevGenerateRequest())
     const payload = await response.json()
 
-    assert.equal(response.status, 400)
-    assert.equal(payload.error, 'This prompt cannot be generated. Please try a different idea.')
-    assert.equal(payload.moderation.decision, 'deny')
-    assert.equal(getLocalDevCreditSummary().balance, 1000)
-    assert.deepEqual(fetchUrls, ['https://api.creem.io/v1/moderation/prompt'])
+    assert.equal(response.status, 200)
+    assert.equal(payload.taskId, 'task_local_skip_moderation')
+    assert.equal(getLocalDevCreditSummary().balance, 990)
+    assert.deepEqual(fetchUrls, ['https://api.kie.ai/api/v1/jobs/createTask'])
   } finally {
     resetLocalDevCreditsForTests(1000)
     globalThis.fetch = originalFetch

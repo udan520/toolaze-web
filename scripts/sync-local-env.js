@@ -26,6 +26,29 @@ const DEFAULT_ALLOWED_KEYS = [
   'R2_PUBLIC_BASE_URL',
 ]
 
+async function pathExists(filePath) {
+  try {
+    await fs.access(filePath)
+    return true
+  } catch {
+    return false
+  }
+}
+
+async function findSharedEnvPath(projectRoot) {
+  let dir = path.resolve(projectRoot)
+  const { root } = path.parse(dir)
+
+  while (true) {
+    const candidate = path.join(dir, '.toolaze-shared.env.local')
+    if (await pathExists(candidate)) return candidate
+    if (dir === root) break
+    dir = path.dirname(dir)
+  }
+
+  return path.resolve(projectRoot, '..', '.toolaze-shared.env.local')
+}
+
 function parseEnv(content, allowedKeys = DEFAULT_ALLOWED_KEYS) {
   const allowed = new Set(allowedKeys)
   const values = new Map()
@@ -50,7 +73,7 @@ function parseEnv(content, allowedKeys = DEFAULT_ALLOWED_KEYS) {
 
 async function syncLocalEnv(options = {}) {
   const projectRoot = options.projectRoot || process.cwd()
-  const sharedEnvPath = options.sharedEnvPath || path.resolve(projectRoot, '..', '.toolaze-shared.env.local')
+  const sharedEnvPath = options.sharedEnvPath || await findSharedEnvPath(projectRoot)
   const targetEnvPath = options.targetEnvPath || path.join(projectRoot, '.env.local')
   const allowedKeys = options.allowedKeys || DEFAULT_ALLOWED_KEYS
 
@@ -121,6 +144,7 @@ if (require.main === module) {
 
 module.exports = {
   DEFAULT_ALLOWED_KEYS,
+  findSharedEnvPath,
   parseEnv,
   syncLocalEnv,
 }

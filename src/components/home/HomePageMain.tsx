@@ -179,6 +179,17 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
     const card = await loadToolData(tool, locale, getModelTitle, getModelDesc, getFeaturedDesc, getModelMeta)
     if (card) aiVideoTools.push(applyHomepageToolCardSummary(card, cardSummaries))
   }
+  const aiDanceCard = await loadToolData(
+    'ai-dance-generator',
+    locale,
+    getModelTitle,
+    getModelDesc,
+    getFeaturedDesc,
+    getModelMeta
+  )
+  if (aiDanceCard) {
+    aiVideoTools.unshift(applyHomepageToolCardSummary(aiDanceCard, cardSummaries))
+  }
 
   // Load AI Image models
   const aiImageTools: ToolCard[] = []
@@ -499,7 +510,10 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
                   home?.aiVideoIntro ??
                   ''
                 }
-                links={[{ term: 'AI Video Generator', href: '/model/seedance-2' }]}
+                links={[
+                  { term: 'AI Dance Generator', href: '/ai-dance-generator' },
+                  { term: 'AI Video Generator', href: '/model/seedance-2' },
+                ]}
               />
             </p>
           </div>

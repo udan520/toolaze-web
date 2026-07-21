@@ -9,6 +9,8 @@ interface PromptExampleItem {
   title: string
   prompt: string
   image?: string
+  video?: string
+  poster?: string
   note?: string
   color?: string
   group?: string
@@ -194,18 +196,31 @@ export default function PromptExamples({
             </div>
           </div>
         )}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-flow-col auto-cols-[minmax(240px,1fr)] gap-6 overflow-x-auto pb-3 md:auto-cols-[minmax(220px,1fr)] lg:auto-cols-[minmax(200px,1fr)]">
           {visibleItems.map((item, idx) => (
             <article key={`${item.title}-${idx}`} className="bg-white rounded-3xl border border-indigo-50 shadow-sm overflow-hidden">
-              {item.image ? (
+              {item.video ? (
+                <video
+                  src={item.video}
+                  poster={item.poster || item.image}
+                  className="aspect-[9/16] w-full bg-slate-950 object-cover"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  controls
+                  preload="metadata"
+                  aria-label={item.title}
+                />
+              ) : item.image ? (
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="block h-auto w-full"
+                  className="block aspect-[9/16] w-full object-cover"
                   loading="lazy"
                 />
               ) : (
-                <div className="aspect-[4/3] bg-[radial-gradient(circle_at_25%_20%,#fce7f3_0,#fce7f3_24%,transparent_25%),linear-gradient(135deg,#fff7ed_0%,#eef2ff_58%,#fdf2f8_100%)] p-6 flex items-end">
+                <div className="aspect-[9/16] bg-[radial-gradient(circle_at_25%_20%,#fce7f3_0,#fce7f3_24%,transparent_25%),linear-gradient(135deg,#fff7ed_0%,#eef2ff_58%,#fdf2f8_100%)] p-5 flex items-end">
                   <div className="w-full rounded-2xl bg-white/80 backdrop-blur-sm border border-white shadow-sm p-4">
                     <div
                       className="mb-4 h-12 w-12 rounded-xl border-4 border-white shadow-sm"

@@ -31,12 +31,14 @@ const defaultNavTranslations = {
   language: 'Language',
   quickTools: 'Quick Tools',
   aiTools: 'AI Tools',
+  hot: 'Hot',
   imageCompression: 'Image Compression',
   imageConverter: 'Image Converter',
   watermarkRemover: 'Watermark Remover',
   photoRestoration: 'Photo Restoration',
   aiCouplePhotoMaker: 'AI Couple Photo Maker',
   aiBabyGenerator: 'AI Baby Generator',
+  aiDanceGenerator: 'AI Dance Generator',
   aiHairstyleChanger: 'AI Hairstyle Changer',
   aiHairColorChanger: 'AI Hair Color Changer',
   worldCupAiImageGenerator: 'World Cup AI Image Generator',
@@ -129,6 +131,7 @@ const AI_TOOLS_DEMO_IMAGES = {
   photoRestoration:
     'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=400&q=80',
   aiCouplePhotoMaker: '/ai-couple-photo-maker/rainy-eiffel-4x3.jpg',
+  aiDanceGenerator: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/ai-dance-demo-source.png',
   aiImageToImageGenerator:
     'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/gpt-image-2/feature-image-editing.webp',
   worldCupAiImageGenerator:
@@ -1397,7 +1400,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
         </Link>
         
         {/* 移动端账号入口 + 菜单按钮 */}
-        <div className="absolute right-4 z-50 flex items-center gap-2 md:hidden">
+        <div className="absolute right-4 z-50 flex items-center gap-2 lg:hidden">
             {authUser ? (
               <div ref={mobileAccountMenuRef} className="relative flex items-center gap-2">
                 <span
@@ -1459,9 +1462,9 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
         </div>
 
         {/* 桌面端菜单 */}
-        <div className="hidden md:flex gap-5 text-sm font-bold text-slate-700 items-center">
+        <div className="hidden lg:flex gap-4 xl:gap-5 text-sm font-bold text-slate-700 items-center">
           {/* 一级菜单：Prompts */}
-          <div className="relative group order-4">
+          <div className="relative group order-5">
             <button
               type="button"
               onClick={() => toggleDesktopMenu('prompts')}
@@ -1524,6 +1527,23 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
             </button>
             <div className={'absolute top-full left-0 mt-2 w-auto min-w-[280px] bg-white rounded-xl shadow-lg border border-indigo-50 transition-all duration-200 z-50 ' + (openDesktopMenu === 'ai-tools' ? 'opacity-100 visible' : 'opacity-0 invisible group-hover:opacity-100 group-hover:visible')}>
               <div className="py-2">
+                <Link
+                  href={getLocalizedHref('/ai-dance-generator')}
+                  onClick={() => setOpenDesktopMenu(null)}
+                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-3"
+                >
+                  <img
+                    src={AI_TOOLS_DEMO_IMAGES.aiDanceGenerator}
+                    alt={navTranslations.aiDanceGenerator || defaultNavTranslations.aiDanceGenerator}
+                    className="w-14 aspect-[4/3] rounded-lg object-cover border border-indigo-100 flex-shrink-0"
+                  />
+                  <span className="flex min-w-0 items-center gap-2">
+                    <span>{navTranslations.aiDanceGenerator || defaultNavTranslations.aiDanceGenerator}</span>
+                    <span className="shrink-0 rounded-full bg-red-500 px-1.5 py-0.5 text-[10px] font-extrabold leading-none text-white">
+                      {navTranslations.hot || defaultNavTranslations.hot}
+                    </span>
+                  </span>
+                </Link>
                 <Link
                   href={getLocalizedHref('/ai-hairstyle-changer')}
                   onClick={() => setOpenDesktopMenu(null)}
@@ -1706,7 +1726,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                   </svg>
                   <span className="inline-flex items-center gap-2">
                     <span>{navTranslations.gptImage2 || defaultNavTranslations.gptImage2}</span>
-                    <span className="rounded-full bg-red-500 px-1.5 py-0.5 text-[10px] font-extrabold leading-none text-white">Hot</span>
+                    <span className="rounded-full bg-red-500 px-1.5 py-0.5 text-[10px] font-extrabold leading-none text-white">{navTranslations.hot || defaultNavTranslations.hot}</span>
                   </span>
                 </Link>
                 <Link
@@ -1835,6 +1855,24 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
             <div className={'absolute top-full left-0 pt-1 w-auto min-w-[200px] bg-transparent transition-all duration-200 z-50 ' + (openDesktopMenu === 'ai-video' ? 'opacity-100 visible' : 'opacity-0 invisible group-hover:opacity-100 group-hover:visible')}>
               <div className="bg-white rounded-xl shadow-lg border border-indigo-50 py-2">
                 <Link
+                  href={getLocalizedHref('/ai-dance-generator')}
+                  onClick={() => setOpenDesktopMenu(null)}
+                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
+                    <rect x="2" y="4" width="20" height="14" rx="2" fill="url(#aiDanceVideoGradient)" opacity="0.2"/>
+                    <path d="M9 8.5L13 12L9 15.5V8.5Z" fill="url(#aiDanceVideoGradient)"/>
+                    <path d="M15.5 8.5L18 12L15.5 15.5" stroke="url(#aiDanceVideoGradient)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    <defs>
+                      <linearGradient id="aiDanceVideoGradient" x1="2" y1="4" x2="22" y2="18" gradientUnits="userSpaceOnUse">
+                        <stop stopColor="#EC4899"/>
+                        <stop offset="1" stopColor="#4F46E5"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                  <span>{navTranslations.aiDanceGenerator || defaultNavTranslations.aiDanceGenerator}</span>
+                </Link>
+                <Link
                   href={getLocalizedHref('/model/seedance-2-5')}
                   onClick={() => setOpenDesktopMenu(null)}
                   className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
@@ -1891,12 +1929,12 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
           <Link
             href={getLocalizedHref('/pricing')}
             onClick={() => setOpenDesktopMenu(null)}
-            className="order-5 hover:text-indigo-600 transition-colors"
+            className="order-6 hover:text-indigo-600 transition-colors"
           >
             {navTranslations.pricing || defaultNavTranslations.pricing}
           </Link>
           {showNavLanguageSwitcher && (
-            <div className="relative order-6">
+            <div className="relative order-7">
               <button
                 type="button"
                 onClick={() => setNavLangOpen(!navLangOpen)}
@@ -1905,7 +1943,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                 aria-expanded={navLangOpen}
               >
                 <span className="text-base leading-none">{navCurrentLocaleInfo.flag}</span>
-                <span className="hidden lg:inline">{navCurrentLocaleInfo.name}</span>
+                <span className="hidden xl:inline">{navCurrentLocaleInfo.name}</span>
                 <svg
                   className={'w-4 h-4 transition-transform' + (navLangOpen ? ' rotate-180' : '')}
                   fill="none"
@@ -1943,7 +1981,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
           )}
         </div>
 
-        <div className="absolute right-6 hidden md:flex items-center gap-3">
+        <div className="absolute right-6 hidden lg:flex items-center gap-3">
           {authUser ? (
             <div ref={desktopAccountMenuRef} className="relative">
               <button
@@ -2057,6 +2095,26 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
               <div className="order-2 border-b border-indigo-50 pb-4">
                 <div className="text-sm font-bold text-slate-700 mb-3">{navTranslations.aiTools || 'AI Tools'}</div>
                 <div className="space-y-2">
+                  <Link
+                    href={getLocalizedHref('/ai-dance-generator')}
+                    onClick={() => {
+                      setMobileMenuOpen(false)
+                      setExpandedSubmenus(new Set())
+                    }}
+                    className="flex items-center gap-3 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
+                  >
+                    <img
+                      src={AI_TOOLS_DEMO_IMAGES.aiDanceGenerator}
+                      alt={navTranslations.aiDanceGenerator || defaultNavTranslations.aiDanceGenerator}
+                      className="w-14 aspect-[4/3] rounded-lg object-cover border border-indigo-100 flex-shrink-0"
+                    />
+                    <span className="flex min-w-0 items-center gap-2">
+                      <span>{navTranslations.aiDanceGenerator || defaultNavTranslations.aiDanceGenerator}</span>
+                      <span className="shrink-0 rounded-full bg-red-500 px-1.5 py-0.5 text-[10px] font-extrabold leading-none text-white">
+                        {navTranslations.hot || defaultNavTranslations.hot}
+                      </span>
+                    </span>
+                  </Link>
                   <Link
                     href={getLocalizedHref('/ai-hairstyle-changer')}
                     onClick={() => {
@@ -2261,7 +2319,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                   </svg>
                   <span className="inline-flex items-center gap-2">
                     <span>{navTranslations.gptImage2 || defaultNavTranslations.gptImage2}</span>
-                    <span className="rounded-full bg-red-500 px-1.5 py-0.5 text-[10px] font-extrabold leading-none text-white">Hot</span>
+                    <span className="rounded-full bg-red-500 px-1.5 py-0.5 text-[10px] font-extrabold leading-none text-white">{navTranslations.hot || defaultNavTranslations.hot}</span>
                   </span>
                 </Link>
                 <Link
@@ -2395,6 +2453,27 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
               <div className="order-3 border-b border-indigo-50 pb-4">
                 <div className="text-sm font-bold text-slate-700 mb-3">{navTranslations.aiVideo || defaultNavTranslations.aiVideo}</div>
                 <div className="space-y-2">
+                  <Link
+                    href={getLocalizedHref('/ai-dance-generator')}
+                    onClick={() => {
+                      setMobileMenuOpen(false)
+                      setExpandedSubmenus(new Set())
+                    }}
+                    className="flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
+                  >
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
+                      <rect x="2" y="4" width="20" height="14" rx="2" fill="url(#aiDanceVideoGradientMobile)" opacity="0.2"/>
+                      <path d="M9 8.5L13 12L9 15.5V8.5Z" fill="url(#aiDanceVideoGradientMobile)"/>
+                      <path d="M15.5 8.5L18 12L15.5 15.5" stroke="url(#aiDanceVideoGradientMobile)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                      <defs>
+                        <linearGradient id="aiDanceVideoGradientMobile" x1="2" y1="4" x2="22" y2="18" gradientUnits="userSpaceOnUse">
+                          <stop stopColor="#EC4899"/>
+                          <stop offset="1" stopColor="#4F46E5"/>
+                        </linearGradient>
+                      </defs>
+                    </svg>
+                    <span>{navTranslations.aiDanceGenerator || defaultNavTranslations.aiDanceGenerator}</span>
+                  </Link>
                   <Link
                     href={getLocalizedHref('/model/seedance-2-5')}
                     onClick={() => {

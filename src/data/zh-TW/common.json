@@ -2,6 +2,7 @@
   "nav": {
     "quickTools": "快速工具",
     "aiTools": "AI 工具",
+    "hot": "熱門",
     "imageCompression": "圖片壓縮",
     "imageConverter": "圖片轉換",
     "watermarkRemover": "浮水印移除",
@@ -47,7 +48,8 @@
     "aiImageToImageGenerator": "AI 圖像轉圖像生成器",
     "seedream50Lite": "Seedream 5.0 Lite",
     "seedream50Pro": "Seedream 5.0 Pro",
-    "seedance25": "Seedance 2.5"
+    "seedance25": "Seedance 2.5",
+    "aiDanceGenerator": "AI 跳舞生成器"
   },
   "home": {
     "metadata": {
@@ -109,6 +111,10 @@
       "world-cup-ai-image-generator": {
         "cardTitle": "世界盃 AI 圖像產生器",
         "summary": "使用 GPT Image 2 製作足球海報、球迷肖像、貼紙包與觀賽派對視覺。可從範本或自拍開始，直接在瀏覽器產生適合分享的靜態圖片。"
+      },
+      "ai-dance-generator": {
+        "cardTitle": "AI 跳舞生成器",
+        "summary": "上傳一張圖片，建立適合編舞概念、課程宣傳與社群短片的跳舞影片。可在生成器中選擇時長與比例。"
       }
     },
     "aiToolsHubTitle": "適用於圖片、影片和日常媒體工作流程的免費AI工具",
@@ -122,7 +128,7 @@
       },
       {
         "title": "AI影片生成器",
-        "description": "將腳本和參考幀轉化為電影級片段。Seedance 2.0和Kling 3.0支援文字轉影片和圖片轉影片，具有多模態輸入——非常適合促銷、故事板和短片敘事。",
+        "description": "將腳本、參考畫面或單張上傳圖片轉成短影片概念。AI 跳舞生成器可快速製作課程宣傳與社群貼文用跳舞短片，影片模型頁則適合電影感宣傳片、分鏡與短篇敘事。",
         "href": "/zh-TW/seedance-2"
       },
       {
@@ -139,7 +145,7 @@
     "sectionAiImageTitle": "AI圖片模型",
     "sectionAiImageSubtitle": "免費線上AI圖片生成器。文字轉圖片和圖片轉圖片。4K輸出，快速生成，無需註冊。使用Nano Banana Pro和Nano Banana 2創建AI藝術。",
     "sectionAiVideoTitle": "AI影片模型",
-    "sectionAiVideoSubtitle": "免費線上AI影片生成器。文字轉影片和圖片轉影片。1080p–4K輸出，多模態影片生成。使用Seedance 2.0和Kling 3.0創建影片——無需註冊。",
+    "sectionAiVideoSubtitle": "從提示詞、參考畫面或一張上傳圖片建立 AI 影片。AI 跳舞生成器適合短版社群跳舞片段，其他影片工具可用於宣傳片、分鏡與電影感場景。",
     "sectionToolsTitle": "更多工具",
     "sectionToolsSubtitle": "圖片壓縮、格式轉換、字體生成器——全部免費，都在您的瀏覽器中。",
     "seoIntro": {
@@ -257,7 +263,8 @@
     "worldCupAiImageGenerator": "世界盃 AI 圖像產生器",
     "aiImageGenerator": "AI 圖像產生器",
     "refundPolicy": "退款政策",
-    "acceptableUse": "可接受使用政策"
+    "acceptableUse": "可接受使用政策",
+    "aiDanceGenerator": "AI 跳舞生成器"
   },
   "breadcrumb": {
     "home": "首頁",

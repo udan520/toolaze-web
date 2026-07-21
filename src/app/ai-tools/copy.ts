@@ -39,13 +39,14 @@ const cardAssets = {
     'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80',
   couple: '/ai-couple-photo-maker/rainy-eiffel-4x3.jpg',
   baby: '/ai-baby-generator/hero-baby-portrait.webp',
+  dance: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/ai-dance-demo-source.png',
 }
 
 const en: AiToolsPageCopy = {
   metadata: {
     title: 'AI Tools - AI Image Generator, AI Baby, Watermark Remover & Photo Restoration | Toolaze',
     description:
-      'Explore Toolaze AI tools with visual previews. Use the free AI Image Generator, AI Baby Generator, Watermark Remover, Photo Restoration, AI Couple Photo Maker, and World Cup AI Image Generator online.',
+      'Explore Toolaze AI tools with visual previews. Use the free AI Image Generator, AI Dance Generator, AI Baby Generator, Watermark Remover, Photo Restoration, AI Couple Photo Maker, and World Cup AI Image Generator online.',
   },
   breadcrumbs: {
     home: 'Home',
@@ -94,6 +95,12 @@ const en: AiToolsPageCopy = {
       image: cardAssets.baby,
       description: 'Upload parent or couple photos and create playful fictional baby portraits with GPT Image 2.',
     },
+    {
+      title: 'AI Dance Generator',
+      href: '/ai-dance-generator',
+      image: cardAssets.dance,
+      description: 'Upload one image and create short dance videos for choreography concepts, class promos, and social clips.',
+    },
   ],
 }
 
@@ -118,6 +125,7 @@ const copies: Record<AiToolsLocale, AiToolsPageCopy> = {
       { ...en.cards[3], title: 'Fotorestaurierung', description: 'Restaurieren und kolorieren Sie alte Fotos mit KI und verbessern Sie Details.' },
       { ...en.cards[4], title: 'KI-Paarfoto-Generator', description: 'Laden Sie ein oder zwei Fotos hoch und erstellen Sie romantische Paarporträts mit Szenenvorlagen.' },
       { ...en.cards[5], title: 'KI-Babygenerator', description: 'Laden Sie Eltern- oder Paarfotos hoch und erstellen Sie spielerische fiktive Babyporträts mit GPT Image 2.' },
+      { ...en.cards[6], title: 'KI-Tanzgenerator', description: 'Laden Sie ein Bild hoch und erstellen Sie kurze Tanzvideos für Choreografie-Ideen, Kurs-Promos und Social Clips.' },
     ],
   },
   ja: {
@@ -139,6 +147,7 @@ const copies: Record<AiToolsLocale, AiToolsPageCopy> = {
       { ...en.cards[3], title: '写真修復', description: '古い写真をAIで修復・カラー化し、細部を改善できます。' },
       { ...en.cards[4], title: 'AIカップル写真メーカー', description: '1枚または2枚の写真をアップロードし、シーンテンプレートでロマンチックなカップル写真を生成できます。' },
       { ...en.cards[5], title: 'AIベビージェネレーター', description: '親またはカップルの写真をアップロードし、GPT Image 2で架空のベビーポートレートを作成できます。' },
+      { ...en.cards[6], title: 'AIダンスジェネレーター', description: '1枚の画像をアップロードして、振付案、クラス告知、SNSクリップ向けの短いダンス動画を作成できます。' },
     ],
   },
   es: {
@@ -160,6 +169,7 @@ const copies: Record<AiToolsLocale, AiToolsPageCopy> = {
       { ...en.cards[3], title: 'Restauración de fotos', description: 'Restaura y colorea fotos antiguas con IA mientras mejoras los detalles.' },
       { ...en.cards[4], title: 'Creador IA de fotos de pareja', description: 'Sube una o dos fotos y genera retratos románticos de pareja con plantillas de escena.' },
       { ...en.cards[5], title: 'Generador de bebés IA', description: 'Sube fotos de padres o pareja y crea retratos ficticios de bebé con GPT Image 2.' },
+      { ...en.cards[6], title: 'Generador de baile IA', description: 'Sube una imagen y crea videos cortos de baile para ideas de coreografía, promos de clases y clips sociales.' },
     ],
   },
   'zh-TW': {
@@ -181,6 +191,7 @@ const copies: Record<AiToolsLocale, AiToolsPageCopy> = {
       { ...en.cards[3], title: '照片修復', description: '使用 AI 修復舊照片、上色並改善細節。' },
       { ...en.cards[4], title: 'AI 情侶照片生成器', description: '上傳一張或兩張照片，透過場景範本生成浪漫情侶肖像。' },
       { ...en.cards[5], title: 'AI 寶寶生成器', description: '上傳父母或情侶照片，使用 GPT Image 2 建立趣味虛構寶寶肖像。' },
+      { ...en.cards[6], title: 'AI 跳舞生成器', description: '上傳一張圖片，建立適合編舞概念、課程宣傳與社群短片的跳舞影片。' },
     ],
   },
   pt: {
@@ -202,6 +213,7 @@ const copies: Record<AiToolsLocale, AiToolsPageCopy> = {
       { ...en.cards[3], title: 'Restauração de fotos', description: 'Restaure e colorize fotos antigas com IA enquanto melhora os detalhes.' },
       { ...en.cards[4], title: 'Criador de fotos de casal com IA', description: 'Envie uma ou duas fotos e gere retratos românticos de casal com modelos de cena.' },
       { ...en.cards[5], title: 'Gerador de bebê IA', description: 'Envie fotos dos pais ou do casal e crie retratos fictícios de bebê com GPT Image 2.' },
+      { ...en.cards[6], title: 'Gerador de dança com IA', description: 'Envie uma imagem e crie vídeos curtos de dança para ideias de coreografia, promos de aulas e clipes sociais.' },
     ],
   },
   fr: {
@@ -223,6 +235,7 @@ const copies: Record<AiToolsLocale, AiToolsPageCopy> = {
       { ...en.cards[3], title: 'Restauration photo', description: 'Restaurez et colorisez d’anciennes photos avec l’IA tout en améliorant les détails.' },
       { ...en.cards[4], title: 'Créateur IA de photos de couple', description: 'Importez une ou deux photos et générez des portraits romantiques de couple avec des modèles de scène.' },
       { ...en.cards[5], title: 'Générateur de bébé IA', description: 'Importez des photos de parents ou de couple et créez des portraits fictifs de bébé avec GPT Image 2.' },
+      { ...en.cards[6], title: 'Générateur de danse IA', description: 'Importez une image et créez de courtes vidéos de danse pour des idées de chorégraphie, promotions de cours et clips sociaux.' },
     ],
   },
   ko: {
@@ -244,6 +257,7 @@ const copies: Record<AiToolsLocale, AiToolsPageCopy> = {
       { ...en.cards[3], title: '사진 복원', description: 'AI로 오래된 사진을 복원하고 색을 입히며 디테일을 개선하세요.' },
       { ...en.cards[4], title: 'AI 커플 사진 제작', description: '사진 한 장 또는 두 장을 업로드하고 장면 템플릿으로 로맨틱한 커플 초상화를 생성하세요.' },
       { ...en.cards[5], title: 'AI 아기 생성기', description: '부모 또는 커플 사진을 업로드하고 GPT Image 2로 가상의 아기 초상화를 만드세요.' },
+      { ...en.cards[6], title: 'AI 댄스 생성기', description: '이미지 한 장을 업로드해 안무 아이디어, 클래스 홍보, 소셜 클립용 짧은 댄스 영상을 만드세요.' },
     ],
   },
   it: {
@@ -265,6 +279,7 @@ const copies: Record<AiToolsLocale, AiToolsPageCopy> = {
       { ...en.cards[3], title: 'Restauro foto', description: 'Restaura e colora vecchie foto con IA migliorandone i dettagli.' },
       { ...en.cards[4], title: 'Creatore IA di foto di coppia', description: 'Carica una o due foto e genera ritratti romantici di coppia con modelli di scena.' },
       { ...en.cards[5], title: 'Generatore di bebè IA', description: 'Carica foto dei genitori o della coppia e crea ritratti fittizi di bebè con GPT Image 2.' },
+      { ...en.cards[6], title: 'Generatore di danza IA', description: 'Carica un’immagine e crea brevi video di danza per idee coreografiche, promo di lezioni e clip social.' },
     ],
   },
 }
