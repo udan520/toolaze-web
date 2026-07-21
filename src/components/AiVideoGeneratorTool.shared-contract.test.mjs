@@ -220,7 +220,8 @@ test('legacy Seedance generic generator URL permanently redirects to the model p
   assert.match(slugPageSource, /robots:[\s\S]*index: false[\s\S]*follow: true/, 'legacy slug metadata should not compete in search while redirecting')
   assert.match(legacySlugPageSource, /import \{ permanentRedirect \} from 'next\/navigation'/, 'legacy alias route should use a permanent redirect')
   assert.match(legacySlugPageSource, /\[\.\.\.new Set\(\[\.\.\.slugs, 'ai-video-generator'\]\)\]/, 'legacy alias route should generate the generic video slug')
-  assert.match(legacySlugPageSource, /permanentRedirect\(`\/model\/seedance-2\/\$\{slug\}`\)/, 'legacy alias route should permanently redirect to its canonical model URL')
+  assert.match(legacySlugPageSource, /slug === 'ai-video-generator'[\s\S]*permanentRedirect\('\/model\/seedance-2'\)/, 'legacy generic video alias should redirect directly to the canonical Seedance model page')
+  assert.match(legacySlugPageSource, /permanentRedirect\(`\/model\/seedance-2\/\$\{slug\}`\)/, 'other legacy aliases should permanently redirect to their canonical model URL')
   assert.match(allToolsSource, /filter\(\(slug\) => slug !== 'ai-video-generator'\)/, 'legacy generic slug should be excluded from the all-tools grid')
 })
 
