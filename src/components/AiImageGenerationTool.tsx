@@ -3478,7 +3478,6 @@ export default function AiImageGenerationTool({
         data-generation-tool-shell
         className={`flex min-h-0 min-w-0 flex-col gap-4 ${fitParentHeight ? 'md:h-full md:min-h-0' : 'md:h-[calc(100dvh-6rem)] md:max-h-[calc(100dvh-6rem)] md:min-h-0'} md:flex-row md:items-stretch md:gap-3 xl:gap-4 2xl:gap-5`}
       >
-        {renderMobileTopPanel()}
         {/* Left: 生图参数区 — 桌面可滚动+固定按钮；h5 上下流式布局，自然高度 */}
         <div
           data-left-generation-panel
@@ -4045,6 +4044,8 @@ export default function AiImageGenerationTool({
             )}
           </div>
         </div>
+
+        {renderMobileTopPanel()}
 
         <div className="hidden min-h-0 min-w-0 flex-1 flex-col gap-4 md:flex md:h-full">
           {hasDesktopResultTabs ? renderDesktopResultTabs() : null}

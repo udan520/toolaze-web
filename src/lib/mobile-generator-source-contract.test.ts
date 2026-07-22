@@ -10,14 +10,14 @@ const rootLayoutSource = readFileSync(join(projectRoot, 'src/app/layout.tsx'), '
 const historyPageSource = readFileSync(join(projectRoot, 'src/components/HistoryPageClient.tsx'), 'utf8')
 const creditsPageSource = readFileSync(join(projectRoot, 'src/components/CreditsPageClient.tsx'), 'utf8')
 
-test('mobile generator keeps the demo or history panel above the controls', () => {
+test('mobile generator keeps the demo or history panel below the controls', () => {
   const shellIndex = aiImageGenerationSource.indexOf('data-generation-tool-shell')
   const mobilePanelIndex = aiImageGenerationSource.indexOf('renderMobileTopPanel()', shellIndex)
   const controlsIndex = aiImageGenerationSource.indexOf('data-left-generation-panel', shellIndex)
 
   assert.ok(shellIndex > -1, 'generation shell should have a stable marker')
   assert.ok(mobilePanelIndex > shellIndex, 'mobile result panel should render inside the generation shell')
-  assert.ok(controlsIndex > mobilePanelIndex, 'mobile result panel should render before the controls')
+  assert.ok(mobilePanelIndex > controlsIndex, 'mobile result panel should render after the controls')
 })
 
 test('mobile generating state uses a 4:3 preview area', () => {
