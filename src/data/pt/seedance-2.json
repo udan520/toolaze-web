@@ -42,6 +42,13 @@
     "h1": "Gerador de Vídeo de IA Seedance 2.0",
     "desc": "Planeje vídeos 1080p de 15 segundos com o Seedance 2.0. Revise as opções de entrada de texto, imagem, vídeo e áudio enquanto a interface do gerador está sendo preparada."
   },
+  "heroDemoVideo": {
+    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d0d55df5eef346809067197fddb1b251.png",
+    "ariaLabel": "Vídeo demo 16:9 para o gerador de vídeo IA Seedance 2.0",
+    "width": 16,
+    "height": 9,
+    "sourceHistory": "Grok Imagine Video 1.5 · Character Motion Prompt · 16:9 · R2"
+  },
   "intro": {
     "title": "Por que escolher o Gerador de Vídeo de IA Seedance 2.0?",
     "content": [

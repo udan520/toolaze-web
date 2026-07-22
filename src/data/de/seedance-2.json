@@ -42,6 +42,13 @@
     "h1": "Seedance 2.0 KI-Videogenerator",
     "desc": "Planen Sie 15-sekündige 1080p-Videos mit Seedance 2.0. Überprüfen Sie die Eingabeoptionen für Text, Bild, Video und Audio, während die Generator-Oberfläche vorbereitet wird."
   },
+  "heroDemoVideo": {
+    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d0d55df5eef346809067197fddb1b251.png",
+    "ariaLabel": "16:9-Demovideo für den Seedance 2.0 KI-Videogenerator",
+    "width": 16,
+    "height": 9,
+    "sourceHistory": "Grok Imagine Video 1.5 · Character Motion Prompt · 16:9 · R2"
+  },
   "intro": {
     "title": "Warum den Seedance 2.0 KI-Videogenerator wählen?",
     "content": [

@@ -62,7 +62,7 @@ test('history preview backfills wrapped hair tool reference images for older rec
 
 test('history library cards expose original reference media for image-to-image records', () => {
   const cardGridBlock = historyPageSource.slice(
-    historyPageSource.indexOf("items.filter((item) => item.mediaType === 'image').map"),
+    historyPageSource.indexOf('filteredItems.map((item) => ('),
     historyPageSource.indexOf('{previewItem && ('),
   )
 

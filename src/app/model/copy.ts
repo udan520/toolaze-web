@@ -342,12 +342,92 @@ const copies: Record<ModelPageLocale, ModelPageCopy> = {
   },
 }
 
+const modelHubSummaries: Record<ModelPageLocale, {
+  metadataTitle: string
+  metadataDescription: string
+  heroDescription: string
+  aboutParagraphs: string[]
+}> = {
+  en: {
+    metadataTitle: 'AI Models - Image and Video Generation | Toolaze',
+    metadataDescription: 'Compare Toolaze AI image and video models for text-to-image, image editing, text-to-video, and image-to-video generation.',
+    heroDescription: 'Compare all Toolaze AI image and video models, then choose the best model for your generation workflow.',
+    aboutParagraphs: ['Each Toolaze model fits a different image or video task, from reference-guided edits and product visuals to cinematic motion and quick concept drafts.', 'Use the model pages to compare capabilities, inputs, output settings, and quality ratings before choosing the best fit for your workflow.'],
+  },
+  de: {
+    metadataTitle: 'KI-Modelle für Bild- und Videogenerierung | Toolaze',
+    metadataDescription: 'Vergleichen Sie Toolaze KI-Modelle für Bilder und Videos, von Text-zu-Bild und Bildbearbeitung bis Text-zu-Video und Bild-zu-Video.',
+    heroDescription: 'Vergleichen Sie alle Toolaze KI-Modelle für Bilder und Videos und wählen Sie das passende Modell für Ihren Workflow.',
+    aboutParagraphs: ['Jedes Toolaze Modell passt zu einer anderen Bild- oder Videoaufgabe, von referenzbasierten Bearbeitungen und Produktvisuals bis zu filmischer Bewegung und schnellen Konzeptentwürfen.', 'Vergleichen Sie auf den Modellseiten Funktionen, Eingaben, Ausgabeeinstellungen und Qualitätsbewertungen, bevor Sie das passende Modell wählen.'],
+  },
+  ja: {
+    metadataTitle: '画像・動画生成AIモデル | Toolaze',
+    metadataDescription: 'テキストから画像、画像編集、テキストから動画、画像から動画に対応するToolazeのAIモデルを比較できます。',
+    heroDescription: 'Toolazeの画像・動画AIモデルをまとめて比較し、制作ワークフローに最適なモデルを選べます。',
+    aboutParagraphs: ['Toolazeの各モデルは、参照画像編集や商品ビジュアルから映画的な動き、素早いコンセプト作成まで、異なる画像・動画タスクに適しています。', 'モデルページで機能、入力、出力設定、品質評価を比較し、ワークフローに最適なモデルを選べます。'],
+  },
+  es: {
+    metadataTitle: 'Modelos IA para generar imágenes y videos | Toolaze',
+    metadataDescription: 'Compara modelos IA de Toolaze para texto a imagen, edición, texto a video e imagen a video.',
+    heroDescription: 'Compara todos los modelos IA de imagen y video de Toolaze y elige el mejor para tu flujo de generación.',
+    aboutParagraphs: ['Cada modelo de Toolaze se adapta a una tarea de imagen o video distinta, desde ediciones con referencias y visuales de producto hasta movimiento cinematográfico y conceptos rápidos.', 'Compara capacidades, entradas, ajustes de salida y puntuaciones de calidad en cada página antes de elegir el mejor modelo.'],
+  },
+  'zh-TW': {
+    metadataTitle: 'AI 圖像與影片生成模型 | Toolaze',
+    metadataDescription: '比較 Toolaze AI 圖像與影片模型，涵蓋文字生成圖像、圖像編輯、文字生成影片與圖像生成影片。',
+    heroDescription: '比較 Toolaze 的所有 AI 圖像與影片模型，並為你的生成工作流程選擇最合適的模型。',
+    aboutParagraphs: ['每個 Toolaze 模型都適合不同的圖像或影片任務，從參考圖編輯與產品視覺，到電影感動態與快速概念草稿。', '在模型頁比較功能、輸入、輸出設定與品質評分，再選擇最適合工作流程的模型。'],
+  },
+  pt: {
+    metadataTitle: 'Modelos de IA para gerar imagens e vídeos | Toolaze',
+    metadataDescription: 'Compare modelos de IA do Toolaze para texto em imagem, edição, texto em vídeo e imagem em vídeo.',
+    heroDescription: 'Compare todos os modelos de IA de imagem e vídeo do Toolaze e escolha o melhor para seu fluxo de geração.',
+    aboutParagraphs: ['Cada modelo do Toolaze atende a uma tarefa diferente de imagem ou vídeo, de edições com referência e visuais de produto a movimento cinematográfico e conceitos rápidos.', 'Compare recursos, entradas, configurações de saída e avaliações de qualidade nas páginas dos modelos antes de escolher o melhor para seu fluxo.'],
+  },
+  fr: {
+    metadataTitle: 'Modèles IA de génération d’images et de vidéos | Toolaze',
+    metadataDescription: 'Comparez les modèles IA Toolaze pour le texte vers image, la retouche, le texte vers vidéo et l’image vers vidéo.',
+    heroDescription: 'Comparez tous les modèles IA d’image et de vidéo de Toolaze et choisissez le meilleur pour votre workflow.',
+    aboutParagraphs: ['Chaque modèle Toolaze convient à une tâche d’image ou de vidéo différente, des retouches guidées par référence aux visuels produit, mouvements cinématographiques et concepts rapides.', 'Comparez les capacités, les entrées, les réglages de sortie et les notes de qualité avant de choisir le modèle adapté à votre workflow.'],
+  },
+  ko: {
+    metadataTitle: 'AI 이미지 및 동영상 생성 모델 | Toolaze',
+    metadataDescription: '텍스트 이미지, 이미지 편집, 텍스트 동영상 및 이미지 동영상 생성을 위한 Toolaze AI 모델을 비교하세요.',
+    heroDescription: 'Toolaze의 모든 AI 이미지 및 동영상 모델을 비교하고 생성 워크플로에 가장 적합한 모델을 선택하세요.',
+    aboutParagraphs: ['각 Toolaze 모델은 참조 이미지 편집과 제품 비주얼부터 시네마틱 모션과 빠른 콘셉트 초안까지 서로 다른 이미지 또는 동영상 작업에 적합합니다.', '모델 페이지에서 기능, 입력, 출력 설정 및 품질 평점을 비교한 뒤 워크플로에 가장 적합한 모델을 선택하세요.'],
+  },
+  it: {
+    metadataTitle: 'Modelli IA per generare immagini e video | Toolaze',
+    metadataDescription: 'Confronta i modelli IA Toolaze per testo in immagine, editing, testo in video e immagine in video.',
+    heroDescription: 'Confronta tutti i modelli IA di immagine e video di Toolaze e scegli il migliore per il tuo workflow.',
+    aboutParagraphs: ['Ogni modello Toolaze è adatto a un diverso compito di immagine o video, dall’editing con riferimenti e visual prodotto al movimento cinematografico e ai concept rapidi.', 'Confronta capacità, input, impostazioni di output e valutazioni di qualità nelle pagine dei modelli prima di scegliere quello più adatto.'],
+  },
+}
+
 export function isModelPageLocale(locale: string): locale is ModelPageLocale {
   return MODEL_PAGE_LOCALES.includes(locale as ModelPageLocale)
 }
 
 export function getModelPageCopy(locale = 'en'): ModelPageCopy {
-  return isModelPageLocale(locale) ? copies[locale] : copies.en
+  const resolvedLocale = isModelPageLocale(locale) ? locale : 'en'
+  const copy = copies[resolvedLocale]
+  const summary = modelHubSummaries[resolvedLocale]
+
+  return {
+    ...copy,
+    metadata: {
+      title: summary.metadataTitle,
+      description: summary.metadataDescription,
+    },
+    hero: {
+      ...copy.hero,
+      description: summary.heroDescription,
+    },
+    about: {
+      ...copy.about,
+      paragraphs: summary.aboutParagraphs,
+    },
+  }
 }
 
 export function getModelPageMetadata(

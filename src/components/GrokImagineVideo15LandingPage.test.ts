@@ -93,7 +93,7 @@ test('Grok page copy is centralized in a landing-copy source', () => {
   assert.match(copySource, /720p/)
   assert.match(copySource, /20MB/)
   assert.match(copySource, /1-15 second/i)
-  assert.match(copySource, /default 5-second/i)
+  assert.match(copySource, /default 3-second/i)
   assert.doesNotMatch(copySource, /8-second|8s/)
 })
 

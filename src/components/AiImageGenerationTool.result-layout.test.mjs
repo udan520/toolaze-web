@@ -336,6 +336,24 @@ test('desktop result tabs sit above hero copy and history mode hides hero copy',
   assert.match(source, /\{rightMode !== 'history' && \(heroBreadcrumbItems\?\.length \|\| heroEyebrow \|\| heroTitle \|\| heroDescription\) && \(/)
 })
 
+test('responsive hero title renders only one h1 tag', () => {
+  const h1Tags = source.match(/<h1\b/g) || []
+  const mobileHeroBlock = source.slice(
+    source.indexOf('data-mobile-result-hero'),
+    source.indexOf('const rightPanelShadowClass'),
+  )
+  const desktopHeroBlock = source.slice(
+    source.indexOf('data-desktop-result-hero'),
+    source.indexOf('<div className="flex min-h-0 min-w-0 flex-1 flex-col gap-4 md:flex-row">'),
+  )
+
+  assert.equal(h1Tags.length, 1)
+  assert.doesNotMatch(mobileHeroBlock, /<h1\b/)
+  assert.match(mobileHeroBlock, /role="heading"/)
+  assert.match(mobileHeroBlock, /aria-level=\{1\}/)
+  assert.match(desktopHeroBlock, /<h1\b/)
+})
+
 test('desktop demo breadcrumbs align to the left edge of the demo area', () => {
   const heroBlock = source.slice(
     source.indexOf('data-desktop-result-hero'),

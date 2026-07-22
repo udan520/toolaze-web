@@ -42,6 +42,13 @@
     "h1": "Générateur de vidéo IA <span class=\"text-gradient\">Kling 3.0</span> gratuit",
     "desc": "Créez des vidéos IA 4K avec Kling 3.0 gratuitement. Entrées texte, image, vidéo et audio. 4K native, multi-prises 6 plans, audio multilingue — bientôt disponible."
   },
+  "heroDemoVideo": {
+    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
+    "ariaLabel": "Vidéo de démonstration 16:9 pour le générateur vidéo IA Kling 3.0",
+    "width": 16,
+    "height": 9,
+    "sourceHistory": "Grok Imagine Video 1.5 · Storyboard Shot Prompt · 16:9 · R2"
+  },
   "intro": {
     "title": "Pourquoi choisir le générateur de vidéo IA Kling 3.0 ?",
     "content": [

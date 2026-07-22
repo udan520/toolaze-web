@@ -183,14 +183,14 @@ const englishCopy: GrokImagineVideo15LandingCopy = {
     title: 'What Is Grok Imagine Video 1.5?',
     paragraphs: [
       "Grok Imagine Video 1.5 is xAI's generally available image-to-video model for turning one strong starting frame into a short audiovisual clip. It is designed to preserve the source image while adding camera movement, atmosphere, more believable physics, sound effects, ambience, or speech.",
-      'On Toolaze, you can use one image up to 20MB or start from a text prompt, choose a default 5-second output or another duration from 1-15 seconds, and generate at 480p or 720p in landscape, portrait, square, or automatic aspect ratios.',
+      'On Toolaze, you can use one image up to 20MB or start from a text prompt, choose a default 3-second output or another duration from 1-15 seconds, and generate at 480p or 720p in landscape, portrait, square, or automatic aspect ratios.',
     ],
     specsTitle: 'Core Grok Video Settings on Toolaze',
     specs: [
       { label: 'Modes', value: 'Image-to-video and text-to-video' },
       { label: 'Reference input', value: 'One starting image' },
       { label: 'Upload size', value: 'One image up to 20MB' },
-      { label: 'Duration', value: 'Default 5-second clips, adjustable from 1-15 seconds' },
+      { label: 'Duration', value: 'Default 3-second clips, adjustable from 1-15 seconds' },
       { label: 'Resolution', value: '480p or 720p' },
       { label: 'Audio', value: 'Native synchronized sound, ambience, and speech' },
       { label: 'Aspect ratios', value: 'Auto, 16:9, 9:16, 1:1, 3:2, 2:3' },
@@ -229,7 +229,7 @@ const englishCopy: GrokImagineVideo15LandingCopy = {
         imageSrc: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/30bbc85166e24e05b7cf83b4bfa4a246.webp',
         imageAlt: 'One action scene composed across widescreen, vertical, and square video formats',
         paragraphs: [
-          'Grok Imagine Video 1.5 on Toolaze defaults to 5-second clips and lets you choose 1-15 seconds, with 480p and 720p output options. Keep early prompts short enough to fit the selected duration clearly.',
+          'Grok Imagine Video 1.5 on Toolaze defaults to 3-second clips and lets you choose 1-15 seconds, with 480p and 720p output options. Keep early prompts short enough to fit the selected duration clearly.',
           'Choose Auto, 16:9, 9:16, 1:1, 3:2, or 2:3 depending on where the clip will be reviewed: landing page, product page, presentation, short-form feed, or storyboard board.',
         ],
       },
@@ -357,7 +357,7 @@ const englishCopy: GrokImagineVideo15LandingCopy = {
       'Open the Grok Imagine Video 1.5 generator on Toolaze.',
       'Choose image-to-video when you have one starting image, or text-to-video when you want to start from a prompt.',
       'Describe subject, motion, camera movement, lighting, setting, style, and what should stay unchanged.',
-      'Select aspect ratio, 480p or 720p resolution, and a 1-15 second duration. The default is 5 seconds.',
+      'Select aspect ratio, 480p or 720p resolution, and a 1-15 second duration. The default is 3 seconds.',
       'Preview the returned clip, compare recent attempts, and download the result if you want to keep it.',
     ],
   },
@@ -518,7 +518,7 @@ const englishCopy: GrokImagineVideo15LandingCopy = {
       },
       {
         q: 'Does Grok Imagine Video 1.5 support image-to-video?',
-        a: 'Yes. Upload one starting image up to 20MB, describe the motion and camera direction, then generate a default 5-second video clip or choose another duration from 1-15 seconds.',
+        a: 'Yes. Upload one starting image up to 20MB, describe the motion and camera direction, then generate a default 3-second video clip or choose another duration from 1-15 seconds.',
       },
       {
         q: 'Does Grok Imagine Video 1.5 support text-to-video?',
@@ -554,7 +554,7 @@ const englishCopy: GrokImagineVideo15LandingCopy = {
   },
   visual: {
     badge: 'Grok Video',
-    duration: '5s',
+    duration: '3s',
     cues: ['Motion', 'Camera', 'Style'],
     container: 'Grok Imagine Video 1.5 visual preview',
   },

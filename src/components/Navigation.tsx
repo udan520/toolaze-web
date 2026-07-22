@@ -1595,6 +1595,18 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                   <span>{navTranslations.aiCouplePhotoMaker || defaultNavTranslations.aiCouplePhotoMaker}</span>
                 </Link>
                 <Link
+                  href={getLocalizedHref('/world-cup-ai-image-generator')}
+                  onClick={() => setOpenDesktopMenu(null)}
+                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-3"
+                >
+                  <img
+                    src={AI_TOOLS_DEMO_IMAGES.worldCupAiImageGenerator}
+                    alt={navTranslations.worldCupAiImageGenerator || defaultNavTranslations.worldCupAiImageGenerator}
+                    className="w-14 aspect-[4/3] rounded-lg object-cover border border-indigo-100 flex-shrink-0"
+                  />
+                  <span>{navTranslations.worldCupAiImageGenerator || defaultNavTranslations.worldCupAiImageGenerator}</span>
+                </Link>
+                <Link
                   href={getLocalizedHref('/watermark-remover')}
                   onClick={() => setOpenDesktopMenu(null)}
                   className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-3"
@@ -1617,18 +1629,6 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                     className="w-14 aspect-[4/3] rounded-lg object-cover border border-indigo-100 flex-shrink-0"
                   />
                   <span>{navTranslations.photoRestoration || defaultNavTranslations.photoRestoration}</span>
-                </Link>
-                <Link
-                  href={getLocalizedHref('/world-cup-ai-image-generator')}
-                  onClick={() => setOpenDesktopMenu(null)}
-                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-3"
-                >
-                  <img
-                    src={AI_TOOLS_DEMO_IMAGES.worldCupAiImageGenerator}
-                    alt={navTranslations.worldCupAiImageGenerator || defaultNavTranslations.worldCupAiImageGenerator}
-                    className="w-14 aspect-[4/3] rounded-lg object-cover border border-indigo-100 flex-shrink-0"
-                  />
-                  <span>{navTranslations.worldCupAiImageGenerator || defaultNavTranslations.worldCupAiImageGenerator}</span>
                 </Link>
                 <Link
                   href={getLocalizedHref('/ai-tools')}
@@ -2183,6 +2183,21 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                     <span>{navTranslations.aiCouplePhotoMaker || defaultNavTranslations.aiCouplePhotoMaker}</span>
                   </Link>
                   <Link
+                    href={getLocalizedHref('/world-cup-ai-image-generator')}
+                    onClick={() => {
+                      setMobileMenuOpen(false)
+                      setExpandedSubmenus(new Set())
+                    }}
+                    className="flex items-center gap-3 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
+                  >
+                    <img
+                      src={AI_TOOLS_DEMO_IMAGES.worldCupAiImageGenerator}
+                      alt={navTranslations.worldCupAiImageGenerator || defaultNavTranslations.worldCupAiImageGenerator}
+                      className="w-14 aspect-[4/3] rounded-lg object-cover border border-indigo-100 flex-shrink-0"
+                    />
+                    <span>{navTranslations.worldCupAiImageGenerator || defaultNavTranslations.worldCupAiImageGenerator}</span>
+                  </Link>
+                  <Link
                     href={getLocalizedHref('/watermark-remover')}
                     onClick={() => {
                       setMobileMenuOpen(false)
@@ -2211,21 +2226,6 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                       className="w-14 aspect-[4/3] rounded-lg object-cover border border-indigo-100 flex-shrink-0"
                     />
                     <span>{navTranslations.photoRestoration || defaultNavTranslations.photoRestoration}</span>
-                  </Link>
-                  <Link
-                    href={getLocalizedHref('/world-cup-ai-image-generator')}
-                    onClick={() => {
-                      setMobileMenuOpen(false)
-                      setExpandedSubmenus(new Set())
-                    }}
-                    className="flex items-center gap-3 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
-                  >
-                    <img
-                      src={AI_TOOLS_DEMO_IMAGES.worldCupAiImageGenerator}
-                      alt={navTranslations.worldCupAiImageGenerator || defaultNavTranslations.worldCupAiImageGenerator}
-                      className="w-14 aspect-[4/3] rounded-lg object-cover border border-indigo-100 flex-shrink-0"
-                    />
-                    <span>{navTranslations.worldCupAiImageGenerator || defaultNavTranslations.worldCupAiImageGenerator}</span>
                   </Link>
                   <Link
                     href={getLocalizedHref('/ai-tools')}

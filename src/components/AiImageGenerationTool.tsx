@@ -3449,9 +3449,13 @@ export default function AiImageGenerationTool({
                   </div>
                 )}
                 {heroTitle && (
-                  <h1 className="text-[30px] font-extrabold leading-tight tracking-tight text-slate-950">
+                  <div
+                    role="heading"
+                    aria-level={1}
+                    className="text-[30px] font-extrabold leading-tight tracking-tight text-slate-950"
+                  >
                     {heroTitle}
-                  </h1>
+                  </div>
                 )}
                 {heroDescription && (
                   <p className="mt-3 max-w-none text-base leading-7 text-slate-600">

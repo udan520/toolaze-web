@@ -24,7 +24,7 @@ const VIDEO_MODEL_CONFIGS = {
     aspectRatios: new Set(['auto', '1:1', '16:9', '9:16', '3:2', '2:3']),
     defaultResolution: '480p',
     resolutions: new Set(['480p', '720p']),
-    defaultDuration: 5,
+    defaultDuration: 3,
     minDuration: 1,
     maxDuration: 15,
     unsupportedAspectRatioError: 'Unsupported aspect ratio for Grok Imagine Video 1.5',

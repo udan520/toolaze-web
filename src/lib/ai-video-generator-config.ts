@@ -81,7 +81,7 @@ export const AI_VIDEO_GENERATOR_MODEL_OPTIONS: AiVideoGeneratorModelConfig[] = [
       { value: '2:3', label: '2:3' },
     ],
     durations: Array.from({ length: 15 }, (_, index) => index + 1),
-    defaultDuration: 5,
+    defaultDuration: 3,
     resolutions: ['480p', '720p'],
     promptPlaceholder:
       'Animate this reference into a cinematic product reveal with subtle camera movement, realistic motion, and clean lighting.',

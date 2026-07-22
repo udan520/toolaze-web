@@ -42,6 +42,13 @@
     "h1": "無料 <span class=\"text-gradient\">Kling 3.0</span> AI動画生成ツール",
     "desc": "Kling 3.0で4K AI動画を無料で作成。テキスト、画像、動画、音声入力に対応。ネイティブ4K、6ショットのマルチショット、多言語音声—近日公開。"
   },
+  "heroDemoVideo": {
+    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
+    "ariaLabel": "Kling 3.0 AI動画生成ツールの16:9デモ動画",
+    "width": 16,
+    "height": 9,
+    "sourceHistory": "Grok Imagine Video 1.5 · Storyboard Shot Prompt · 16:9 · R2"
+  },
   "intro": {
     "title": "Kling 3.0 AI動画生成ツールが選ばれる理由",
     "content": [

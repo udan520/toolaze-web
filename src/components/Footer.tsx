@@ -3,7 +3,6 @@
 import Link from 'next/link'
 import { useEffect, useMemo, useState } from 'react'
 import { usePathname } from 'next/navigation'
-import { getClientMenuItems, type ClientMenuItem } from '@/lib/client-menu-data'
 import {
   PREFERRED_LOCALE_STORAGE_KEY,
   SITE_LOCALES,
@@ -29,41 +28,37 @@ const defaultTranslations = {
   contact: 'Contact',
   language: 'Language',
   footerNavigation: 'Footer navigation',
-  noToolsAvailable: 'No tools available',
   copyright: '© {year} Toolaze Lab. All rights reserved.',
   tagline: 'AI generation tools • One-time credits • Clear usage policies',
-  quickTools: 'Quick Tools',
-  aiTools: 'AI Tools',
-  aiVideo: 'AI Video',
+  aiImageTools: 'AI Image Tools',
+  aiVideoTools: 'AI Video Tools',
+  aiImageModel: 'AI Image Model',
+  aiVideoModel: 'AI Video Model',
   aiVideoGenerator: 'AI Video Generator',
   grok15Video: 'Grok 1.5 Video',
   aiImage: 'AI Image',
+  aiVideo: 'AI Video',
   aiImageGenerator: 'AI Image Generator',
+  textToImageGenerator: 'Text to Image Generator',
+  aiImageToImageGenerator: 'AI Image to Image Generator',
   watermarkRemover: 'Watermark Remover',
   photoRestoration: 'Photo Restoration',
   aiCouplePhotoMaker: 'AI Couple Photo Maker',
   aiBabyGenerator: 'AI Baby Generator',
   aiDanceGenerator: 'AI Dance Generator',
+  aiHairstyleChanger: 'AI Hairstyle Changer',
+  aiHairColorChanger: 'AI Hair Color Changer',
   worldCupAiImageGenerator: 'World Cup AI Image Generator',
-  imageCompression: 'Image Compression',
-  imageConverter: 'Image Converter',
-  fontGenerator: 'Font Generator',
-  emojiCopyAndPaste: 'Emoji Copy & Paste',
   seedance2: 'Seedance 2.0',
+  seedance25: 'Seedance 2.5',
   kling3: 'Kling 3.0',
   gptImage2: 'GPT Image 2',
   wan27Image: 'Wan 2.7 Image',
   nanoBananaPro: 'Nano Banana Pro',
   nanoBanana2: 'Nano Banana 2',
+  seedream50Lite: 'Seedream 5.0 Lite',
+  seedream50Pro: 'Seedream 5.0 Pro',
   seedream45: 'Seedream 4.5',
-  emojiMenu: {
-    'crying-copy-and-paste': 'Crying Emoji Copy and Paste',
-    'cross-copy-and-paste': 'Cross Emoji Copy and Paste',
-    'adults-only-copy-and-paste': 'Adults Only Emoji Copy and Paste',
-    'fire-copy-and-paste': 'Fire Emoji Copy and Paste',
-    'birthday-copy-and-paste': 'Birthday Emoji Copy and Paste',
-    'cat-copy-and-paste': 'Cat Emoji Copy and Paste',
-  },
 }
 
 function getInitialFooterTranslations(initialTranslations?: any) {
@@ -72,7 +67,6 @@ function getInitialFooterTranslations(initialTranslations?: any) {
     ...defaultTranslations,
     ...(initialTranslations.footer || {}),
     ...(initialTranslations.nav || {}),
-    emojiMenu: initialTranslations.nav?.emojiMenu || defaultTranslations.emojiMenu,
   }
 }
 
@@ -87,22 +81,9 @@ export default function Footer({ initialTranslations }: FooterProps = {}) {
   const [currentLocale, setCurrentLocale] = useState<string>('en')
   const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false)
   const [translations, setTranslations] = useState(getInitialFooterTranslations(initialTranslations))
-  const [isMounted, setIsMounted] = useState(false)
-  const [footerMenuData, setFooterMenuData] = useState<{
-    'image-compressor': ClientMenuItem[]
-    'image-converter': ClientMenuItem[]
-    'font-generator': ClientMenuItem[]
-    'emoji-copy-and-paste': ClientMenuItem[]
-  }>({
-    'image-compressor': [],
-    'image-converter': [],
-    'font-generator': [],
-    'emoji-copy-and-paste': []
-  })
   const pathname = usePathname()
 
   useEffect(() => {
-    setIsMounted(true)
     // Update year after hydration to ensure it's current
     setCurrentYear(new Date().getFullYear())
     
@@ -117,19 +98,6 @@ export default function Footer({ initialTranslations }: FooterProps = {}) {
     // 翻译由 server page 作为 initialTranslations 传入，避免客户端重复加载 common.json。
     setTranslations(getInitialFooterTranslations(initialTranslations))
   }, [pathname, initialTranslations])
-
-  // 加载页脚菜单数据：客户端只使用轻量菜单元数据，避免把服务端 SEO loader 打进浏览器包。
-  useEffect(() => {
-    if (isMounted) {
-      const locale = resolveLocaleForPath(pathname || '/', currentLocale)
-      setFooterMenuData({
-        'image-compressor': getClientMenuItems('image-compressor', locale, translations),
-        'image-converter': getClientMenuItems('image-converter', locale, translations),
-        'font-generator': getClientMenuItems('font-generator', locale, translations),
-        'emoji-copy-and-paste': getClientMenuItems('emoji-copy-and-paste', locale, translations),
-      })
-    }
-  }, [currentLocale, pathname, isMounted, translations])
 
   const supportedLocales = useMemo(() => {
     const codes = getSupportedLocaleCodes(pathname ?? null)
@@ -153,14 +121,14 @@ export default function Footer({ initialTranslations }: FooterProps = {}) {
     <footer className="bg-slate-900 pt-16 pb-8 px-6 mt-auto">
       <div className="max-w-6xl mx-auto">
         {/* 二级和三级菜单 */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mb-12">
-          {/* AI Tools */}
+        <div className="grid grid-cols-1 gap-8 mb-12 sm:grid-cols-2 lg:grid-cols-4">
+          {/* AI Image */}
           <div>
             <Link 
-              href={getLocalizedHref('/ai-tools')} 
+              href={getLocalizedHref('/ai-image-generator')}
               className="text-white font-bold text-sm mb-4 tracking-wide block hover:text-indigo-400 transition-colors"
             >
-              {translations.aiTools || 'AI Tools'}
+              {translations.aiImage || 'AI Image'}
             </Link>
             <ul className="space-y-2 mt-4">
               <li>
@@ -169,6 +137,38 @@ export default function Footer({ initialTranslations }: FooterProps = {}) {
                   className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
                 >
                   {translations.aiImageGenerator || 'AI Image Generator'}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={getLocalizedHref('/text-to-image-generator')}
+                  className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
+                >
+                  {translations.textToImageGenerator || 'Text to Image Generator'}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={getLocalizedHref('/ai-image-to-image-generator')}
+                  className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
+                >
+                  {translations.aiImageToImageGenerator || 'AI Image to Image Generator'}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={getLocalizedHref('/ai-hairstyle-changer')}
+                  className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
+                >
+                  {translations.aiHairstyleChanger || 'AI Hairstyle Changer'}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={getLocalizedHref('/ai-hair-color-changer')}
+                  className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
+                >
+                  {translations.aiHairColorChanger || 'AI Hair Color Changer'}
                 </Link>
               </li>
               <li>
@@ -185,14 +185,6 @@ export default function Footer({ initialTranslations }: FooterProps = {}) {
                   className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
                 >
                   {translations.aiCouplePhotoMaker || 'AI Couple Photo Maker'}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={getLocalizedHref('/ai-dance-generator')}
-                  className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
-                >
-                  {translations.aiDanceGenerator || 'AI Dance Generator'}
                 </Link>
               </li>
               <li>
@@ -241,46 +233,22 @@ export default function Footer({ initialTranslations }: FooterProps = {}) {
               </li>
               <li>
                 <Link
-                  href={getLocalizedHref('/model/grok-imagine-video-1-5')}
-                  className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
-                >
-                  {translations.grok15Video || 'Grok 1.5 Video'}
-                </Link>
-              </li>
-              <li>
-                <Link
                   href={getLocalizedHref('/ai-dance-generator')}
                   className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
                 >
                   {translations.aiDanceGenerator || 'AI Dance Generator'}
                 </Link>
               </li>
-              <li>
-                <Link
-                  href={getLocalizedHref('/model/seedance-2')}
-                  className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
-                >
-                  {translations.seedance2 || 'Seedance 2.0'}
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  href={getLocalizedHref('/model/kling-3')} 
-                  className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
-                >
-                  {translations.kling3 || 'Kling 3.0'}
-                </Link>
-              </li>
             </ul>
           </div>
 
-          {/* AI Image */}
+          {/* AI Image Model */}
           <div>
             <Link 
-              href={getLocalizedHref('/model/gpt-image-2')}
+              href={getLocalizedHref('/model')}
               className="text-white font-bold text-sm mb-4 tracking-wide block hover:text-indigo-400 transition-colors"
             >
-              {translations.aiImage || 'AI Image'}
+              {translations.aiImageModel || 'AI Image Model'}
             </Link>
             <ul className="space-y-2 mt-4">
               <li>
@@ -289,6 +257,14 @@ export default function Footer({ initialTranslations }: FooterProps = {}) {
                   className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
                 >
                   {translations.gptImage2 || 'GPT Image 2'}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={getLocalizedHref('/model/seedream-5-0-pro')}
+                  className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
+                >
+                  {translations.seedream50Pro || 'Seedream 5.0 Pro'}
                 </Link>
               </li>
               <li>
@@ -317,6 +293,14 @@ export default function Footer({ initialTranslations }: FooterProps = {}) {
               </li>
               <li>
                 <Link
+                  href={getLocalizedHref('/model/seedream-5-0-lite')}
+                  className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
+                >
+                  {translations.seedream50Lite || 'Seedream 5.0 Lite'}
+                </Link>
+              </li>
+              <li>
+                <Link
                   href={getLocalizedHref('/model/seedream-4-5')}
                   className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
                 >
@@ -326,109 +310,50 @@ export default function Footer({ initialTranslations }: FooterProps = {}) {
             </ul>
           </div>
 
-          {/* Image Compression */}
+          {/* AI Video Model */}
           <div>
-            <Link 
-              href={getLocalizedHref('/image-compressor')} 
+            <Link
+              href={getLocalizedHref('/model')}
               className="text-white font-bold text-sm mb-4 tracking-wide block hover:text-indigo-400 transition-colors"
             >
-              {translations.imageCompression || 'Image Compression'}
+              {translations.aiVideoModel || 'AI Video Model'}
             </Link>
             <ul className="space-y-2 mt-4">
-              {footerMenuData['image-compressor'].length > 0 ? (
-                footerMenuData['image-compressor'].map((item) => (
-                  <li key={item.slug}>
-                    <Link 
-                      href={item.href} 
-                      className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
-                    >
-                      {item.title}
-                    </Link>
-                  </li>
-                ))
-              ) : (
-                <li className="text-slate-500 text-xs pl-4">{translations.noToolsAvailable}</li>
-              )}
+              <li>
+                <Link
+                  href={getLocalizedHref('/model/grok-imagine-video-1-5')}
+                  className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
+                >
+                  {translations.grok15Video || 'Grok 1.5 Video'}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={getLocalizedHref('/model/seedance-2-5')}
+                  className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
+                >
+                  {translations.seedance25 || 'Seedance 2.5'}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={getLocalizedHref('/model/seedance-2')}
+                  className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
+                >
+                  {translations.seedance2 || 'Seedance 2.0'}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={getLocalizedHref('/model/kling-3')}
+                  className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
+                >
+                  {translations.kling3 || 'Kling 3.0'}
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* Image Converter */}
-          <div>
-            <Link 
-              href={getLocalizedHref('/image-converter')} 
-              className="text-white font-bold text-sm mb-4 tracking-wide block hover:text-indigo-400 transition-colors"
-            >
-              {translations.imageConverter || 'Image Converter'}
-            </Link>
-            <ul className="space-y-2 mt-4">
-              {footerMenuData['image-converter'].length > 0 ? (
-                footerMenuData['image-converter'].map((item) => (
-                  <li key={item.slug}>
-                    <Link 
-                      href={item.href} 
-                      className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
-                    >
-                      {item.title}
-                    </Link>
-                  </li>
-                ))
-              ) : (
-                <li className="text-slate-500 text-xs pl-4">{translations.noToolsAvailable}</li>
-              )}
-            </ul>
-          </div>
-
-          {/* Font Generator */}
-          <div>
-            <Link 
-              href={getLocalizedHref('/font-generator')} 
-              className="text-white font-bold text-sm mb-4 tracking-wide block hover:text-indigo-400 transition-colors"
-            >
-              {translations.fontGenerator || 'Font Generator'}
-            </Link>
-            <ul className="space-y-2 mt-4">
-              {footerMenuData['font-generator'].length > 0 ? (
-                footerMenuData['font-generator'].map((item) => (
-                  <li key={item.slug}>
-                    <Link 
-                      href={item.href} 
-                      className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
-                    >
-                      {item.title}
-                    </Link>
-                  </li>
-                ))
-              ) : (
-                <li className="text-slate-500 text-xs pl-4">{translations.noToolsAvailable}</li>
-              )}
-            </ul>
-          </div>
-
-          {/* Emoji Copy & Paste */}
-          <div>
-            <Link 
-              href={getLocalizedHref('/emoji-copy-and-paste')} 
-              className="text-white font-bold text-sm mb-4 tracking-wide block hover:text-indigo-400 transition-colors"
-            >
-              {translations.emojiCopyAndPaste || 'Emoji Copy & Paste'}
-            </Link>
-            <ul className="space-y-2 mt-4">
-              {footerMenuData['emoji-copy-and-paste'].length > 0 ? (
-                footerMenuData['emoji-copy-and-paste'].map((item) => (
-                  <li key={item.slug}>
-                    <Link 
-                      href={item.href} 
-                      className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
-                    >
-                      {item.title}
-                    </Link>
-                  </li>
-                ))
-              ) : (
-                <li className="text-slate-500 text-xs pl-4">{translations.noToolsAvailable}</li>
-              )}
-            </ul>
-          </div>
         </div>
 
         {/* 基础导航链接 */}

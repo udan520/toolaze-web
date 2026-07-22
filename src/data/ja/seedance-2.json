@@ -42,6 +42,13 @@
     "h1": "Seedance 2.0 AIビデオジェネレーター",
     "desc": "Seedance 2.0で15秒の1080pビデオを計画しましょう。ジェネレーターのインターフェース準備中に、テキスト、画像、ビデオ、オーディオの入力オプションを確認してください。"
   },
+  "heroDemoVideo": {
+    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d0d55df5eef346809067197fddb1b251.png",
+    "ariaLabel": "Seedance 2.0 AI動画生成ツールの16:9デモ動画",
+    "width": 16,
+    "height": 9,
+    "sourceHistory": "Grok Imagine Video 1.5 · Character Motion Prompt · 16:9 · R2"
+  },
   "intro": {
     "title": "なぜSeedance 2.0 AIビデオジェネレーターを選ぶのか？",
     "content": [

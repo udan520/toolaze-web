@@ -42,6 +42,13 @@
     "h1": "Seedance 2.0 AI 影片生成器",
     "desc": "使用 Seedance 2.0 規劃 15 秒 1080p 影片。在生成器介面準備就緒前，查看文字、圖像、影片和音訊輸入選項。"
   },
+  "heroDemoVideo": {
+    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d0d55df5eef346809067197fddb1b251.png",
+    "ariaLabel": "Seedance 2.0 AI 影片生成器的 16:9 示範影片",
+    "width": 16,
+    "height": 9,
+    "sourceHistory": "Grok Imagine Video 1.5 · Character Motion Prompt · 16:9 · R2"
+  },
   "intro": {
     "title": "為什麼選擇 Seedance 2.0 AI 影片生成器？",
     "content": [

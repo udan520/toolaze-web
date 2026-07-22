@@ -33,6 +33,13 @@
     "h1": "Free <span class=\"text-gradient\">Seedance 2.0</span> AI Video Generator",
     "desc": "Create Hollywood-quality 1080p videos with Seedance 2.0 for free. Upload text, images, video, and audio online. Multimodal AI video generation—coming soon."
   },
+  "heroDemoVideo": {
+    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d0d55df5eef346809067197fddb1b251.png",
+    "ariaLabel": "16:9 demo video for the Seedance 2.0 AI video generator",
+    "width": 16,
+    "height": 9,
+    "sourceHistory": "Grok Imagine Video 1.5 · Character Motion Prompt · 16:9 · R2"
+  },
   "intro": {
     "title": "Why Choose Seedance 2.0 AI Video Generator?",
     "content": [

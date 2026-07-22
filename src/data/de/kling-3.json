@@ -42,6 +42,13 @@
     "h1": "Kostenloser <span class=\"text-gradient\">Kling 3.0</span> KI-Videogenerator",
     "desc": "Erstellen Sie kostenlos 4K-KI-Videos mit Kling 3.0. Text-, Bild-, Video- und Audio-Eingaben. Natives 4K, 6-Shot-Multi-Shot, mehrsprachiges Audio – demnächst verfügbar."
   },
+  "heroDemoVideo": {
+    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
+    "ariaLabel": "16:9-Demovideo für den Kling 3.0 KI-Videogenerator",
+    "width": 16,
+    "height": 9,
+    "sourceHistory": "Grok Imagine Video 1.5 · Storyboard Shot Prompt · 16:9 · R2"
+  },
   "intro": {
     "title": "Warum den Kling 3.0 KI-Videogenerator wählen?",
     "content": [

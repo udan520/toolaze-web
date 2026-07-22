@@ -4,11 +4,14 @@ export const AI_TOOLS_LOCALES = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'k
 
 export type AiToolsLocale = (typeof AI_TOOLS_LOCALES)[number]
 
-type AiToolsCard = {
+export type AiToolsCategory = 'all' | 'image' | 'video'
+
+export type AiToolsCard = {
   title: string
   href: string
   image: string
   description: string
+  category: Exclude<AiToolsCategory, 'all'>
 }
 
 type AiToolsPageCopy = {
@@ -25,12 +28,19 @@ type AiToolsPageCopy = {
     highlight: string
     description: string
   }
+  filters: Record<AiToolsCategory, string>
   cards: AiToolsCard[]
 }
+
+type StoredAiToolsPageCopy = Omit<AiToolsPageCopy, 'filters'>
 
 const cardAssets = {
   aiImage:
     'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/gpt-image-2.jpg',
+  textToImage:
+    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/ai-image-generator/text-to-image-generator.webp',
+  imageToImage:
+    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/gpt-image-2/feature-image-editing.webp',
   aiVideo:
     'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/seedance-2.jpg',
   worldCup:
@@ -42,9 +52,11 @@ const cardAssets = {
   couple: '/ai-couple-photo-maker/rainy-eiffel-4x3.jpg',
   baby: '/ai-baby-generator/hero-baby-portrait.webp',
   dance: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/ai-dance-demo-source.png',
+  hairstyle: '/ai-hairstyle-changer/hero-before-after.webp',
+  hairColor: '/ai-hair-color-changer/rose-pink-before-after.webp',
 }
 
-const en: AiToolsPageCopy = {
+const en: StoredAiToolsPageCopy = {
   metadata: {
     title: 'AI Tools - AI Image Generator, AI Baby, Watermark Remover & Photo Restoration | Toolaze',
     description:
@@ -66,53 +78,89 @@ const en: AiToolsPageCopy = {
       href: '/ai-image-generator',
       image: cardAssets.aiImage,
       description: 'Create high-quality AI images online from text prompts for ads, posters, concepts, and social visuals.',
+      category: 'image',
+    },
+    {
+      title: 'Text to Image Generator',
+      href: '/text-to-image-generator',
+      image: cardAssets.textToImage,
+      description: 'Turn written prompts into AI images for concepts, marketing visuals, posters, and social content.',
+      category: 'image',
+    },
+    {
+      title: 'AI Image to Image Generator',
+      href: '/ai-image-to-image-generator',
+      image: cardAssets.imageToImage,
+      description: 'Upload a reference image and use a prompt to restyle, edit, or transform it with AI.',
+      category: 'image',
     },
     {
       title: 'AI Video Generator',
       href: '/ai-video-generator',
       image: cardAssets.aiVideo,
       description: 'Create short AI videos online from text, images, video clips, or audio references.',
+      category: 'video',
     },
     {
       title: 'World Cup AI Image Generator',
       href: '/world-cup-ai-image-generator',
       image: cardAssets.worldCup,
       description: 'Create football posters, fan edits, sticker packs, and social images with GPT Image 2.',
+      category: 'image',
     },
     {
       title: 'Watermark Remover',
       href: '/watermark-remover',
       image: cardAssets.watermark,
       description: 'Remove watermarks from photos online with AI in one click.',
+      category: 'image',
     },
     {
       title: 'Photo Restoration',
       href: '/photo-restoration',
       image: cardAssets.restoration,
       description: 'Restore and colorize old photos with AI while improving detail.',
+      category: 'image',
     },
     {
       title: 'AI Couple Photo Maker',
       href: '/ai-couple-photo-maker',
       image: cardAssets.couple,
       description: 'Upload one or two photos and generate romantic couple portraits with scene templates.',
+      category: 'image',
     },
     {
       title: 'AI Baby Generator',
       href: '/ai-baby-generator',
       image: cardAssets.baby,
       description: 'Upload parent or couple photos and create playful fictional baby portraits with GPT Image 2.',
+      category: 'image',
     },
     {
       title: 'AI Dance Generator',
       href: '/ai-dance-generator',
       image: cardAssets.dance,
       description: 'Upload one image and create short dance videos for choreography concepts, class promos, and social clips.',
+      category: 'video',
+    },
+    {
+      title: 'AI Hairstyle Changer',
+      href: '/ai-hairstyle-changer',
+      image: cardAssets.hairstyle,
+      description: 'Try different hairstyles on a reference photo while keeping the person and overall look consistent.',
+      category: 'image',
+    },
+    {
+      title: 'AI Hair Color Changer',
+      href: '/ai-hair-color-changer',
+      image: cardAssets.hairColor,
+      description: 'Preview natural and creative hair colors on your photo with reference-guided AI editing.',
+      category: 'image',
     },
   ],
 }
 
-const copies: Record<AiToolsLocale, AiToolsPageCopy> = {
+const copies: Record<AiToolsLocale, StoredAiToolsPageCopy> = {
   en,
   de: {
     metadata: {
@@ -292,12 +340,170 @@ const copies: Record<AiToolsLocale, AiToolsPageCopy> = {
   },
 }
 
+type SupplementalCopy = {
+  filters: Record<AiToolsCategory, string>
+  heroDescription: string
+  textToImage: Pick<AiToolsCard, 'title' | 'description'>
+  imageToImage: Pick<AiToolsCard, 'title' | 'description'>
+  video: Pick<AiToolsCard, 'title' | 'description'>
+  hairstyle: Pick<AiToolsCard, 'title' | 'description'>
+  hairColor: Pick<AiToolsCard, 'title' | 'description'>
+}
+
+const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
+  en: {
+    filters: { all: 'All', image: 'AI Image Tools', video: 'AI Video Tools' },
+    heroDescription: 'Explore AI image and video tools with clear visual previews. Choose a workflow and start creating in seconds.',
+    textToImage: { title: 'Text to Image Generator', description: 'Turn written prompts into AI images for concepts, marketing visuals, posters, and social content.' },
+    imageToImage: { title: 'AI Image to Image Generator', description: 'Upload a reference image and use a prompt to restyle, edit, or transform it with AI.' },
+    video: { title: 'AI Video Generator', description: 'Create short AI videos online from text, images, video clips, or audio references.' },
+    hairstyle: { title: 'AI Hairstyle Changer', description: 'Try different hairstyles on a reference photo while keeping the person and overall look consistent.' },
+    hairColor: { title: 'AI Hair Color Changer', description: 'Preview natural and creative hair colors on your photo with reference-guided AI editing.' },
+  },
+  de: {
+    filters: { all: 'Alle', image: 'KI-Bildtools', video: 'KI-Videotools' },
+    heroDescription: 'Entdecken Sie KI-Tools für Bilder und Videos mit klaren Vorschauen. Wählen Sie einen Workflow und starten Sie in Sekunden.',
+    textToImage: { title: 'Text-zu-Bild-Generator', description: 'Verwandeln Sie Textprompts in KI-Bilder für Konzepte, Marketingvisuals, Poster und Social Media.' },
+    imageToImage: { title: 'KI-Bild-zu-Bild-Generator', description: 'Laden Sie ein Referenzbild hoch und gestalten, bearbeiten oder verwandeln Sie es per Prompt mit KI.' },
+    video: { title: 'KI-Videogenerator', description: 'Erstellen Sie kurze KI-Videos aus Text, Bildern, Videoclips oder Audioreferenzen.' },
+    hairstyle: { title: 'KI-Frisurenwechsler', description: 'Probieren Sie verschiedene Frisuren auf einem Referenzfoto aus und bewahren Sie das Aussehen der Person.' },
+    hairColor: { title: 'KI-Haarfarbenwechsler', description: 'Testen Sie natürliche und kreative Haarfarben auf Ihrem Foto mit referenzbasierter KI-Bearbeitung.' },
+  },
+  ja: {
+    filters: { all: 'すべて', image: 'AI画像ツール', video: 'AI動画ツール' },
+    heroDescription: '見やすいプレビュー付きのAI画像・動画ツールを選び、数秒で作成を始められます。',
+    textToImage: { title: 'テキストから画像生成', description: '文章プロンプトからコンセプト、広告、ポスター、SNS向けのAI画像を作成できます。' },
+    imageToImage: { title: 'AI画像から画像生成', description: '参照画像をアップロードし、プロンプトでスタイル変更、編集、変換を行えます。' },
+    video: { title: 'AI動画生成', description: 'テキスト、画像、動画クリップ、音声参照から短いAI動画をオンライン作成できます。' },
+    hairstyle: { title: 'AIヘアスタイルチェンジャー', description: '人物の印象を保ちながら、参照写真でさまざまな髪型を試せます。' },
+    hairColor: { title: 'AIヘアカラー変更', description: '参照画像を使ったAI編集で、自然な髪色や個性的なカラーを写真上で確認できます。' },
+  },
+  es: {
+    filters: { all: 'Todos', image: 'Herramientas de imagen IA', video: 'Herramientas de video IA' },
+    heroDescription: 'Explora herramientas IA de imagen y video con vistas previas claras. Elige un flujo y empieza en segundos.',
+    textToImage: { title: 'Generador de texto a imagen', description: 'Convierte prompts escritos en imágenes IA para conceptos, marketing, pósteres y contenido social.' },
+    imageToImage: { title: 'Generador IA de imagen a imagen', description: 'Sube una imagen de referencia y usa un prompt para cambiar su estilo, editarla o transformarla.' },
+    video: { title: 'Generador de video IA', description: 'Crea videos cortos con IA desde texto, imágenes, clips de video o referencias de audio.' },
+    hairstyle: { title: 'Cambiador de peinados IA', description: 'Prueba distintos peinados en una foto de referencia manteniendo el aspecto de la persona.' },
+    hairColor: { title: 'Cambiador de color de pelo IA', description: 'Prueba colores de pelo naturales y creativos con edición IA guiada por referencia.' },
+  },
+  'zh-TW': {
+    filters: { all: '全部', image: 'AI 圖像工具', video: 'AI 影片工具' },
+    heroDescription: '探索具備清楚預覽的 AI 圖像與影片工具。選擇工作流程後即可在數秒內開始創作。',
+    textToImage: { title: '文字轉圖像生成器', description: '將文字提示詞轉換為適合概念、行銷、海報與社群內容的 AI 圖像。' },
+    imageToImage: { title: 'AI 圖像轉圖像生成器', description: '上傳參考圖像並透過提示詞重新設計、編輯或轉換圖像。' },
+    video: { title: 'AI 影片生成器', description: '使用文字、圖像、影片片段或音訊參考在線建立 AI 短片。' },
+    hairstyle: { title: 'AI 髮型變換器', description: '在保留人物整體外觀的同時，透過參考照片嘗試不同髮型。' },
+    hairColor: { title: 'AI 髮色變換器', description: '使用參考圖引導的 AI 編輯，在照片上預覽自然或創意髮色。' },
+  },
+  pt: {
+    filters: { all: 'Todos', image: 'Ferramentas de imagem IA', video: 'Ferramentas de vídeo IA' },
+    heroDescription: 'Explore ferramentas de IA para imagem e vídeo com prévias claras. Escolha um fluxo e comece em segundos.',
+    textToImage: { title: 'Gerador de texto para imagem', description: 'Transforme prompts em imagens de IA para conceitos, marketing, pôsteres e conteúdo social.' },
+    imageToImage: { title: 'Gerador IA de imagem para imagem', description: 'Envie uma imagem de referência e use um prompt para editar, transformar ou mudar seu estilo.' },
+    video: { title: 'Gerador de vídeo IA', description: 'Crie vídeos curtos com IA a partir de texto, imagens, clipes ou referências de áudio.' },
+    hairstyle: { title: 'Alterador de penteado IA', description: 'Teste penteados diferentes em uma foto mantendo a pessoa e o visual geral consistentes.' },
+    hairColor: { title: 'Alterador de cor de cabelo IA', description: 'Visualize cores naturais e criativas no cabelo com edição de IA guiada por referência.' },
+  },
+  fr: {
+    filters: { all: 'Tous', image: 'Outils d’image IA', video: 'Outils vidéo IA' },
+    heroDescription: 'Explorez des outils IA pour l’image et la vidéo avec des aperçus clairs. Choisissez un workflow et démarrez en quelques secondes.',
+    textToImage: { title: 'Générateur texte-image', description: 'Transformez des prompts en images IA pour concepts, marketing, affiches et contenus sociaux.' },
+    imageToImage: { title: 'Générateur image-à-image IA', description: 'Importez une image de référence et utilisez un prompt pour la modifier, la restyler ou la transformer.' },
+    video: { title: 'Générateur de vidéo IA', description: 'Créez de courtes vidéos IA à partir de texte, d’images, de clips ou de références audio.' },
+    hairstyle: { title: 'Changeur de coiffure IA', description: 'Essayez différentes coiffures sur une photo de référence tout en conservant l’apparence de la personne.' },
+    hairColor: { title: 'Changeur de couleur de cheveux IA', description: 'Prévisualisez des couleurs naturelles ou créatives grâce à une retouche IA guidée par référence.' },
+  },
+  ko: {
+    filters: { all: '전체', image: 'AI 이미지 도구', video: 'AI 동영상 도구' },
+    heroDescription: '명확한 미리보기가 있는 AI 이미지 및 동영상 도구를 살펴보고 몇 초 만에 제작을 시작하세요.',
+    textToImage: { title: '텍스트-이미지 생성기', description: '텍스트 프롬프트를 콘셉트, 마케팅, 포스터 및 소셜 콘텐츠용 AI 이미지로 만드세요.' },
+    imageToImage: { title: 'AI 이미지-이미지 생성기', description: '참조 이미지를 업로드하고 프롬프트로 스타일 변경, 편집 또는 변환하세요.' },
+    video: { title: 'AI 동영상 생성기', description: '텍스트, 이미지, 동영상 클립 또는 오디오 참조로 짧은 AI 동영상을 만드세요.' },
+    hairstyle: { title: 'AI 헤어스타일 변경기', description: '인물의 전체적인 모습을 유지하면서 참조 사진에서 다양한 헤어스타일을 시험해 보세요.' },
+    hairColor: { title: 'AI 헤어 컬러 변경기', description: '참조 기반 AI 편집으로 사진에서 자연스럽거나 창의적인 헤어 컬러를 미리 확인하세요.' },
+  },
+  it: {
+    filters: { all: 'Tutti', image: 'Strumenti per immagini IA', video: 'Strumenti video IA' },
+    heroDescription: 'Esplora strumenti IA per immagini e video con anteprime chiare. Scegli un workflow e inizia in pochi secondi.',
+    textToImage: { title: 'Generatore da testo a immagine', description: 'Trasforma prompt scritti in immagini IA per concept, marketing, poster e contenuti social.' },
+    imageToImage: { title: 'Generatore IA da immagine a immagine', description: 'Carica un’immagine di riferimento e usa un prompt per modificarla, trasformarla o cambiarne lo stile.' },
+    video: { title: 'Generatore video IA', description: 'Crea brevi video IA da testo, immagini, clip video o riferimenti audio.' },
+    hairstyle: { title: 'Cambia acconciatura IA', description: 'Prova diverse acconciature su una foto mantenendo coerenti la persona e l’aspetto generale.' },
+    hairColor: { title: 'Cambia colore capelli IA', description: 'Visualizza colori naturali e creativi con editing IA guidato da un’immagine di riferimento.' },
+  },
+}
+
+function applyLocalizedCard(
+  baseCard: AiToolsCard,
+  localizedCard: Pick<AiToolsCard, 'title' | 'description'>,
+): AiToolsCard {
+  return {
+    ...baseCard,
+    title: localizedCard.title,
+    description: localizedCard.description,
+  }
+}
+
+function getLocalizedCards(locale: AiToolsLocale, storedCards: AiToolsCard[]): AiToolsCard[] {
+  const [image, worldCup, watermark, restoration, couple, baby, dance] = storedCards
+  const supplemental = supplementalCopies[locale]
+
+  if (locale === 'en') {
+    return [
+      en.cards[0],
+      en.cards[1],
+      en.cards[2],
+      en.cards[3],
+      en.cards[4],
+      en.cards[7],
+      en.cards[8],
+      en.cards[9],
+      en.cards[10],
+      en.cards[11],
+      en.cards[5],
+      en.cards[6],
+    ]
+  }
+
+  return [
+    applyLocalizedCard(en.cards[0], image),
+    applyLocalizedCard(en.cards[1], supplemental.textToImage),
+    applyLocalizedCard(en.cards[2], supplemental.imageToImage),
+    applyLocalizedCard(en.cards[3], supplemental.video),
+    applyLocalizedCard(en.cards[4], worldCup),
+    applyLocalizedCard(en.cards[7], couple),
+    applyLocalizedCard(en.cards[8], baby),
+    applyLocalizedCard(en.cards[9], dance),
+    applyLocalizedCard(en.cards[10], supplemental.hairstyle),
+    applyLocalizedCard(en.cards[11], supplemental.hairColor),
+    applyLocalizedCard(en.cards[5], watermark),
+    applyLocalizedCard(en.cards[6], restoration),
+  ]
+}
+
 export function isAiToolsLocale(locale: string): locale is AiToolsLocale {
   return AI_TOOLS_LOCALES.includes(locale as AiToolsLocale)
 }
 
 export function getAiToolsPageCopy(locale = 'en'): AiToolsPageCopy {
-  return isAiToolsLocale(locale) ? copies[locale] : copies.en
+  const resolvedLocale = isAiToolsLocale(locale) ? locale : 'en'
+  const copy = copies[resolvedLocale]
+  const supplemental = supplementalCopies[resolvedLocale]
+
+  return {
+    ...copy,
+    metadata: {
+      ...copy.metadata,
+      description: supplemental.heroDescription,
+    },
+    hero: {
+      ...copy.hero,
+      description: supplemental.heroDescription,
+    },
+    filters: supplemental.filters,
+    cards: getLocalizedCards(resolvedLocale, copy.cards),
+  }
 }
 
 export function getAiToolsPageMetadata(

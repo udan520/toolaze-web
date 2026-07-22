@@ -462,7 +462,7 @@ test('AI video generator rejects Kling 3.0 durations below three seconds', async
   }
 })
 
-test('AI video generator defaults missing Grok duration to five seconds', async () => {
+test('AI video generator defaults missing Grok duration to three seconds', async () => {
   let payload: Record<string, any> | undefined
   const originalFetch = globalThis.fetch
   globalThis.fetch = (async (_url: RequestInfo | URL, init?: RequestInit) => {
@@ -485,7 +485,7 @@ test('AI video generator defaults missing Grok duration to five seconds', async 
     })
 
     assert.equal(response.status, 200)
-    assert.equal(payload?.input?.duration, 5)
+    assert.equal(payload?.input?.duration, 3)
   } finally {
     globalThis.fetch = originalFetch
   }

@@ -1,12 +1,9 @@
 'use client'
 
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import DeleteIcon from './icons/DeleteIcon'
 import { buildHistoryRepromptPayload, getOriginalHistoryInputImageUrls } from '@/lib/history-reprompt'
-import {
-  GENERATION_HISTORY_DELETE_CONFIRM_MESSAGE,
-  shouldDeleteGenerationHistoryItem,
-} from '@/lib/generation-history-delete-confirm'
+import { GENERATION_HISTORY_DELETE_CONFIRM_MESSAGE } from '@/lib/generation-history-delete-confirm'
 import {
   getHistoryFullScreenPreviewUrl,
   getHistoryLibraryThumbnailUrl,
@@ -38,6 +35,11 @@ type GenerationHistoryItem = {
   createdAt: string
 }
 
+type HistoryFilter = 'all' | 'image' | 'video'
+type HistoryDeleteDialog =
+  | { mode: 'single'; item: GenerationHistoryItem }
+  | { mode: 'bulk' }
+
 const PENDING_REPROMPT_STORAGE_KEY = 'toolaze:pending-reprompt'
 
 const defaultHistoryPageCopy = {
@@ -47,7 +49,10 @@ const defaultHistoryPageCopy = {
   signInRequired: 'Please sign in with Google to view your history.',
   loadError: 'Could not load generation history.',
   emptyTitle: 'No Generation History Yet.',
-  emptyDescription: 'Generated images will appear here after they complete.',
+  emptyDescription: 'Generated images and videos will appear here after they complete.',
+  filterAll: 'All',
+  filterImages: 'Images',
+  filterVideos: 'Videos',
   previewLabel: 'Generation Preview',
   previewImageLabel: 'Preview Generated Image',
   previewReferenceMedia: 'Preview Reference Media',
@@ -59,8 +64,22 @@ const defaultHistoryPageCopy = {
   download: 'Download',
   delete: 'Delete',
   deleting: 'Deleting',
+  selected: 'Selected',
+  batchActions: 'Batch Actions',
+  done: 'Done',
+  selectItem: 'Select History Item',
+  selectAll: 'Select All',
+  clearSelection: 'Clear',
+  downloadSelected: 'Download Selected',
+  deleteSelected: 'Delete Selected',
+  downloading: 'Downloading',
+  deleteConfirmTitle: 'Delete This Result?',
+  deleteSelectedConfirmTitle: 'Delete Selected Results?',
+  cancel: 'Cancel',
   deleteHistoryConfirm: GENERATION_HISTORY_DELETE_CONFIRM_MESSAGE,
   deleteError: 'Could not delete history item.',
+  deleteSelectedConfirm: 'Delete selected history items? Once deleted, they cannot be recovered.',
+  deleteSelectedError: 'Could not delete selected history items.',
   modeVideo: 'Video',
   modeTextToImage: 'Text to Image',
   modeImageToImage: 'Image to Image',
@@ -108,6 +127,29 @@ export default function HistoryPageClient({ initialTranslations }: HistoryPageCl
   const [previewItem, setPreviewItem] = useState<GenerationHistoryItem | null>(null)
   const [fullScreenPreviewUrl, setFullScreenPreviewUrl] = useState('')
   const [deletingId, setDeletingId] = useState('')
+  const [bulkDeleting, setBulkDeleting] = useState(false)
+  const [bulkDownloading, setBulkDownloading] = useState(false)
+  const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set())
+  const [selectionMode, setSelectionMode] = useState(false)
+  const [activeFilter, setActiveFilter] = useState<HistoryFilter>('all')
+  const [deleteDialog, setDeleteDialog] = useState<HistoryDeleteDialog | null>(null)
+
+  const sortedItems = useMemo(
+    () => [...items].sort((left, right) => Date.parse(right.createdAt) - Date.parse(left.createdAt)),
+    [items],
+  )
+  const filteredItems = useMemo(
+    () => sortedItems.filter((item) => activeFilter === 'all' || item.mediaType === activeFilter),
+    [activeFilter, sortedItems],
+  )
+  const imageCount = items.filter((item) => item.mediaType === 'image').length
+  const videoCount = items.filter((item) => item.mediaType === 'video').length
+  const selectedItems = useMemo(
+    () => sortedItems.filter((item) => selectedIds.has(item.id)),
+    [selectedIds, sortedItems],
+  )
+  const allFilteredSelected = filteredItems.length > 0 && filteredItems.every((item) => selectedIds.has(item.id))
+  const selectionDisabled = bulkDeleting || bulkDownloading
 
   const closePreview = useCallback(() => {
     setPreviewItem(null)
@@ -167,6 +209,58 @@ export default function HistoryPageClient({ initialTranslations }: HistoryPageCl
     }
   }, [copy.loadError, copy.signInRequired])
 
+  useEffect(() => {
+    const itemIds = new Set(items.map((item) => item.id))
+    setSelectedIds((currentIds) => {
+      const nextIds = new Set([...currentIds].filter((id) => itemIds.has(id)))
+      return nextIds.size === currentIds.size ? currentIds : nextIds
+    })
+  }, [items])
+
+  const setHistoryFilter = (filter: HistoryFilter) => {
+    setActiveFilter(filter)
+    setSelectedIds(new Set())
+    setSelectionMode(false)
+  }
+
+  const toggleHistorySelection = (itemId: string) => {
+    if (!selectionMode || selectionDisabled) return
+    setSelectedIds((currentIds) => {
+      const nextIds = new Set(currentIds)
+      if (nextIds.has(itemId)) {
+        nextIds.delete(itemId)
+      } else {
+        nextIds.add(itemId)
+      }
+      return nextIds
+    })
+  }
+
+  const enterSelectionMode = () => {
+    if (selectionDisabled) return
+    setSelectionMode(true)
+  }
+
+  const exitSelectionMode = () => {
+    if (selectionDisabled) return
+    setSelectedIds(new Set())
+    setSelectionMode(false)
+  }
+
+  const selectAllFilteredItems = () => {
+    if (selectionDisabled || filteredItems.length === 0) return
+    setSelectedIds((currentIds) => {
+      const nextIds = new Set(currentIds)
+      for (const item of filteredItems) nextIds.add(item.id)
+      return nextIds
+    })
+  }
+
+  const clearSelection = () => {
+    if (selectionDisabled) return
+    setSelectedIds(new Set())
+  }
+
   const triggerBlobDownload = (blob: Blob, filename: string) => {
     const blobUrl = URL.createObjectURL(blob)
     const link = document.createElement('a')
@@ -203,36 +297,98 @@ export default function HistoryPageClient({ initialTranslations }: HistoryPageCl
     })
   }
 
-  const handleDelete = async (item: GenerationHistoryItem) => {
-    if (deletingId) return
-    if (
-      !shouldDeleteGenerationHistoryItem(
-        (message) => window.confirm(message),
-        copy.deleteHistoryConfirm,
-      )
-    ) {
-      return
+  const deleteHistoryItem = async (item: GenerationHistoryItem) => {
+    trackGenerationHistoryDeleteClick(item, { surface: 'history_page' })
+
+    const response = await fetch(`/api/history?id=${encodeURIComponent(item.id)}`, {
+      method: 'DELETE',
+    })
+    if (!response.ok) {
+      const body = await response.json().catch(() => ({}))
+      throw new Error(body.error || copy.deleteError)
     }
 
-    trackGenerationHistoryDeleteClick(item, { surface: 'history_page' })
+    setItems((currentItems) => currentItems.filter((currentItem) => currentItem.id !== item.id))
+    setSelectedIds((currentIds) => {
+      if (!currentIds.has(item.id)) return currentIds
+      const nextIds = new Set(currentIds)
+      nextIds.delete(item.id)
+      return nextIds
+    })
+    if (previewItem?.id === item.id) {
+      closePreview()
+    }
+  }
+
+  const handleDelete = async (item: GenerationHistoryItem) => {
+    if (deletingId || bulkDeleting) return
+    setDeleteDialog({ mode: 'single', item })
+  }
+
+  const confirmDeleteSingle = async (item: GenerationHistoryItem) => {
+    if (deletingId || bulkDeleting) return
 
     setDeletingId(item.id)
     setError('')
     try {
-      const response = await fetch(`/api/history?id=${encodeURIComponent(item.id)}`, {
-        method: 'DELETE',
-      })
-      if (!response.ok) {
-        const body = await response.json().catch(() => ({}))
-        throw new Error(body.error || copy.deleteError)
-      }
-      setItems((currentItems) => currentItems.filter((currentItem) => currentItem.id !== item.id))
-      closePreview()
+      await deleteHistoryItem(item)
+      setDeleteDialog(null)
     } catch (err) {
       setError(err instanceof Error ? err.message : copy.deleteError)
     } finally {
       setDeletingId('')
     }
+  }
+
+  const handleBulkDownload = async () => {
+    if (bulkDownloading || selectedItems.length === 0) return
+    setBulkDownloading(true)
+    try {
+      for (const item of selectedItems) {
+        await handleDownload(item)
+      }
+    } finally {
+      setBulkDownloading(false)
+    }
+  }
+
+  const handleBulkDelete = async () => {
+    if (bulkDeleting || selectedItems.length === 0) return
+    setDeleteDialog({ mode: 'bulk' })
+  }
+
+  const confirmDeleteSelected = async () => {
+    if (bulkDeleting || selectedItems.length === 0) return
+
+    setBulkDeleting(true)
+    setError('')
+    let failed = false
+    try {
+      for (const item of selectedItems) {
+        try {
+          await deleteHistoryItem(item)
+        } catch {
+          failed = true
+        }
+      }
+      if (failed) {
+        setError(copy.deleteSelectedError)
+      } else {
+        setSelectionMode(false)
+        setDeleteDialog(null)
+      }
+    } finally {
+      setBulkDeleting(false)
+    }
+  }
+
+  const confirmDeleteDialog = async () => {
+    if (!deleteDialog) return
+    if (deleteDialog.mode === 'single') {
+      await confirmDeleteSingle(deleteDialog.item)
+      return
+    }
+    await confirmDeleteSelected()
   }
 
   const handleReprompt = (item: GenerationHistoryItem) => {
@@ -251,6 +407,16 @@ export default function HistoryPageClient({ initialTranslations }: HistoryPageCl
   const previewHistoryDisplay = previewItem
     ? getWrappedHairToolHistoryDisplay(previewItem)
     : null
+  const deleteDialogTitle = deleteDialog?.mode === 'bulk'
+    ? copy.deleteSelectedConfirmTitle
+    : copy.deleteConfirmTitle
+  const deleteDialogMessage = deleteDialog?.mode === 'bulk'
+    ? copy.deleteSelectedConfirm
+    : copy.deleteHistoryConfirm
+  const deleteDialogActionLabel = deleteDialog?.mode === 'bulk' ? copy.deleteSelected : copy.delete
+  const deleteDialogBusy = deleteDialog?.mode === 'bulk'
+    ? bulkDeleting
+    : deleteDialog?.mode === 'single' && deletingId === deleteDialog.item.id
 
   return (
     <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-10 md:px-6 md:py-14">
@@ -262,6 +428,96 @@ export default function HistoryPageClient({ initialTranslations }: HistoryPageCl
           </p>
         </div>
       </div>
+
+      {!loading && !error && items.length > 0 && (
+        <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
+          <div className="flex w-fit rounded-xl bg-slate-100 p-1" role="tablist" aria-label={copy.title}>
+            {([
+              { id: 'all', label: copy.filterAll, count: items.length },
+              { id: 'image', label: copy.filterImages, count: imageCount },
+              { id: 'video', label: copy.filterVideos, count: videoCount },
+            ] as const).map((filter) => (
+              <button
+                key={filter.id}
+                type="button"
+                role="tab"
+                data-history-filter={filter.id}
+                aria-selected={activeFilter === filter.id}
+                onClick={() => setHistoryFilter(filter.id)}
+                className={`flex min-h-9 items-center justify-center gap-1.5 rounded-lg px-3 py-2 text-sm font-bold transition-colors ${
+                  activeFilter === filter.id
+                    ? 'bg-white text-indigo-600 shadow-sm'
+                    : 'text-slate-500 hover:text-slate-900'
+                }`}
+              >
+                <span>{filter.label}</span>
+                <span className="text-xs tabular-nums text-slate-400">{filter.count}</span>
+              </button>
+            ))}
+          </div>
+
+          <button
+            type="button"
+            data-history-enter-bulk-select
+            onClick={selectionMode ? exitSelectionMode : enterSelectionMode}
+            disabled={selectionDisabled}
+            className="inline-flex min-h-9 items-center justify-center rounded-xl border border-slate-200 bg-white px-3 py-2 text-center text-sm font-extrabold text-slate-700 shadow-sm hover:border-indigo-200 hover:text-indigo-600 disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            {selectionMode ? copy.done : copy.batchActions}
+          </button>
+        </div>
+      )}
+
+      {!loading && !error && items.length > 0 && selectionMode && (
+        <div
+          data-history-bulk-actions
+          className="mb-6 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-slate-200 bg-white px-3 py-3 shadow-sm"
+        >
+          <div className="flex flex-wrap items-center gap-2">
+            <button
+              type="button"
+              data-history-select-all
+              onClick={selectAllFilteredItems}
+              disabled={selectionDisabled || filteredItems.length === 0 || allFilteredSelected}
+              className="inline-flex min-h-9 items-center justify-center rounded-xl border border-slate-200 px-3 py-2 text-center text-sm font-extrabold text-slate-700 hover:border-indigo-200 hover:text-indigo-600 disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              {copy.selectAll}
+            </button>
+            {selectedItems.length > 0 && (
+              <button
+                type="button"
+                onClick={clearSelection}
+                disabled={selectionDisabled}
+                className="inline-flex min-h-9 items-center justify-center rounded-xl px-3 py-2 text-center text-sm font-extrabold text-slate-500 hover:bg-slate-100 hover:text-slate-900 disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                {copy.clearSelection}
+              </button>
+            )}
+            <span className="text-sm font-bold text-slate-500">
+              {copy.selected}: <span className="tabular-nums text-slate-900">{selectedItems.length}</span>
+            </span>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-2">
+            <button
+              type="button"
+              onClick={() => void handleBulkDownload()}
+              disabled={selectedItems.length === 0 || selectionDisabled}
+              className="inline-flex min-h-9 items-center justify-center rounded-xl border border-slate-200 px-3 py-2 text-center text-sm font-extrabold text-slate-700 hover:border-indigo-200 hover:text-indigo-600 disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              {bulkDownloading ? copy.downloading : copy.downloadSelected}
+            </button>
+            <button
+              type="button"
+              onClick={() => void handleBulkDelete()}
+              disabled={selectedItems.length === 0 || selectionDisabled}
+              className="inline-flex min-h-9 items-center justify-center rounded-xl border border-rose-200 px-3 py-2 text-center text-sm font-extrabold text-rose-600 hover:border-rose-300 hover:bg-rose-50 disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              {bulkDeleting ? copy.deleting : copy.deleteSelected}
+            </button>
+          </div>
+        </div>
+      )}
 
       {loading && (
         <div className="rounded-2xl border border-slate-200 bg-white px-6 py-12 text-center text-sm font-semibold text-slate-500">
@@ -275,31 +531,60 @@ export default function HistoryPageClient({ initialTranslations }: HistoryPageCl
         </div>
       )}
 
-      {!loading && !error && items.filter((item) => item.mediaType === 'image').length === 0 && (
+      {!loading && !error && filteredItems.length === 0 && (
         <div className="rounded-2xl border border-dashed border-slate-300 bg-white px-6 py-14 text-center">
           <p className="text-base font-extrabold text-slate-900">{copy.emptyTitle}</p>
           <p className="mt-2 text-sm text-slate-500">{copy.emptyDescription}</p>
         </div>
       )}
 
-      {!loading && !error && items.filter((item) => item.mediaType === 'image').length > 0 && (
+      {!loading && !error && filteredItems.length > 0 && (
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5">
-          {items.filter((item) => item.mediaType === 'image').map((item) => (
-            <article key={item.id} className="overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-sm">
+          {filteredItems.map((item) => (
+            <article key={item.id} className="relative overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-sm">
+              {selectionMode && (
+                <label className="absolute left-2 top-2 z-10 inline-flex cursor-pointer items-center justify-center">
+                  <input
+                    data-history-card-select
+                    type="checkbox"
+                    checked={selectedIds.has(item.id)}
+                    onChange={() => toggleHistorySelection(item.id)}
+                    disabled={selectionDisabled}
+                    className="h-5 w-5 cursor-pointer rounded-md border-2 border-white/90 bg-white/10 text-indigo-600 accent-indigo-600 shadow-sm focus:ring-2 focus:ring-indigo-300 focus:ring-offset-1 focus:ring-offset-slate-950/20 disabled:cursor-not-allowed disabled:opacity-50"
+                    aria-label={copy.selectItem}
+                    onClick={(event) => event.stopPropagation()}
+                  />
+                </label>
+              )}
               <button
                 data-history-card-preview
                 type="button"
                 onClick={() => openPreview(item)}
                 className="group relative block w-full overflow-hidden text-left focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                aria-label={copy.previewImageLabel}
+                aria-label={item.mediaType === 'video' ? copy.previewLabel : copy.previewImageLabel}
               >
-                <img
-                  src={getHistoryLibraryThumbnailUrl(item.outputUrl)}
-                  alt=""
-                  className="aspect-[3/4] h-auto w-full object-cover object-center transition-opacity group-hover:opacity-90"
-                  loading="lazy"
-                  decoding="async"
-                />
+                {item.mediaType === 'video' ? (
+                  <>
+                    <video
+                      src={item.outputUrl}
+                      className="aspect-[3/4] h-auto w-full object-cover object-center transition-opacity group-hover:opacity-90"
+                      preload="metadata"
+                      muted
+                      playsInline
+                    />
+                    <span className="absolute right-2 top-2 rounded-lg bg-slate-950/75 px-2 py-1 text-[11px] font-extrabold text-white">
+                      {copy.modeVideo}
+                    </span>
+                  </>
+                ) : (
+                  <img
+                    src={getHistoryLibraryThumbnailUrl(item.outputUrl)}
+                    alt=""
+                    className="aspect-[3/4] h-auto w-full object-cover object-center transition-opacity group-hover:opacity-90"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                )}
                 {item.inputUrls[0] && (
                   <span
                     data-history-card-reference
@@ -473,6 +758,53 @@ export default function HistoryPageClient({ initialTranslations }: HistoryPageCl
                   {deletingId === previewItem.id ? copy.deleting : copy.delete}
                 </button>
               </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {deleteDialog && (
+        <div
+          data-history-delete-confirm-dialog
+          className="fixed inset-0 z-[10020] flex items-center justify-center bg-slate-950/45 px-4 py-6 backdrop-blur-sm"
+          role="dialog"
+          aria-modal="true"
+          aria-label={deleteDialogTitle}
+          onClick={() => {
+            if (!deleteDialogBusy) setDeleteDialog(null)
+          }}
+        >
+          <div
+            className="w-full max-w-md rounded-[28px] border border-rose-100 bg-white p-5 shadow-2xl shadow-slate-950/20"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="flex items-start gap-4">
+              <div className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-rose-50 text-rose-600">
+                <DeleteIcon size={18} />
+              </div>
+              <div className="min-w-0 flex-1">
+                <h2 className="text-lg font-extrabold tracking-tight text-slate-950">{deleteDialogTitle}</h2>
+                <p className="mt-2 text-sm leading-6 text-slate-600">{deleteDialogMessage}</p>
+              </div>
+            </div>
+            <div className="mt-6 grid grid-cols-2 gap-3">
+              <button
+                type="button"
+                onClick={() => setDeleteDialog(null)}
+                disabled={deleteDialogBusy}
+                className="inline-flex min-h-11 items-center justify-center rounded-xl border border-slate-200 bg-white px-4 py-2 text-center text-sm font-extrabold text-slate-700 hover:border-slate-300 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                {copy.cancel}
+              </button>
+              <button
+                type="button"
+                onClick={() => void confirmDeleteDialog()}
+                disabled={deleteDialogBusy}
+                className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-rose-600 px-4 py-2 text-center text-sm font-extrabold text-white shadow-lg shadow-rose-100 hover:bg-rose-700 disabled:cursor-not-allowed disabled:bg-rose-300 disabled:shadow-none"
+              >
+                <DeleteIcon size={16} />
+                {deleteDialogBusy ? copy.deleting : deleteDialogActionLabel}
+              </button>
             </div>
           </div>
         </div>

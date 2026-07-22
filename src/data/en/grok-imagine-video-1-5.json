@@ -29,7 +29,7 @@
     "modelType": "AI Video Model",
     "description": [
       "Grok Imagine Video 1.5 is xAI's generally available image-to-video model for short motion clips. It works best when you give it a starting image and a prompt that describes motion, camera movement, atmosphere, pacing, and what should stay visually consistent.",
-      "Toolaze packages that model into a focused AI video generator with image-to-video and prompt-only drafting paths, one uploaded starting image, aspect ratio controls, default 5-second output, 1-15 second duration, and 480p or 720p resolution.",
+      "Toolaze packages that model into a focused AI video generator with image-to-video and prompt-only drafting paths, one uploaded starting image, aspect ratio controls, default 3-second output, 1-15 second duration, and 480p or 720p resolution.",
       "Use it for product motion reveals, vertical social clips, storyboard beats, scene look tests, character motion studies, and early video directions that need clear movement before a final edit."
     ],
     "featureCards": [
@@ -43,7 +43,7 @@
       },
       {
         "title": "Practical Output Controls",
-        "content": "Choose Auto, 16:9, 9:16, 1:1, 3:2, or 2:3, then generate a default 5-second clip or choose 1-15 seconds at 480p or 720p."
+        "content": "Choose Auto, 16:9, 9:16, 1:1, 3:2, or 2:3, then generate a default 3-second clip or choose 1-15 seconds at 480p or 720p."
       }
     ]
   },
@@ -102,7 +102,7 @@
       },
       {
         "label": "Duration",
-        "value": "Default 5-second clips, adjustable from 1-15 seconds"
+        "value": "Default 3-second clips, adjustable from 1-15 seconds"
       }
     ]
   },
@@ -115,7 +115,7 @@
       },
       {
         "title": "Add Prompt and Settings",
-        "desc": "Describe the subject, motion, camera, lighting, and style. Choose aspect ratio, 480p or 720p, and a 1-15 second duration. The default is 5 seconds."
+        "desc": "Describe the subject, motion, camera, lighting, and style. Choose aspect ratio, 480p or 720p, and a 1-15 second duration. The default is 3 seconds."
       },
       {
         "title": "Generate and Review",
@@ -222,7 +222,7 @@
     },
     {
       "q": "Does this support image-to-video?",
-      "a": "Yes. Upload one starting image up to 20MB, add a prompt, and generate a default 5-second clip or choose another duration from 1-15 seconds."
+      "a": "Yes. Upload one starting image up to 20MB, add a prompt, and generate a default 3-second clip or choose another duration from 1-15 seconds."
     },
     {
       "q": "Does this support text-to-video?",

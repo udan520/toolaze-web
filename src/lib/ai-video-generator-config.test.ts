@@ -54,7 +54,7 @@ test('AI video generator model configs define practical video output defaults', 
   assert.equal(grok.minCredits, 3)
   assert.deepEqual(grok.aspectRatios.map((ratio) => ratio.value), ['auto', '16:9', '9:16', '1:1', '3:2', '2:3'])
   assert.deepEqual(grok.durations, Array.from({ length: 15 }, (_, index) => index + 1))
-  assert.equal(grok.defaultDuration, 5)
+  assert.equal(grok.defaultDuration, 3)
   assert.deepEqual(grok.resolutions, ['480p', '720p'])
 
   assert.equal(seedance.maxImages, 9)

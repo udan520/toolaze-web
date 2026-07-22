@@ -42,6 +42,13 @@
     "h1": "免費 <span class=\"text-gradient\">Kling 3.0</span> AI 影片生成器",
     "desc": "使用 Kling 3.0 免費製作 4K AI 影片。支援文字、圖片、影片和音訊輸入。原生 4K、6 鏡頭多鏡位切換、多國語言音訊——即將推出。"
   },
+  "heroDemoVideo": {
+    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
+    "ariaLabel": "Kling 3.0 AI 影片生成器的 16:9 示範影片",
+    "width": 16,
+    "height": 9,
+    "sourceHistory": "Grok Imagine Video 1.5 · Storyboard Shot Prompt · 16:9 · R2"
+  },
   "intro": {
     "title": "為什麼選擇 Kling 3.0 AI 影片生成器？",
     "content": [
