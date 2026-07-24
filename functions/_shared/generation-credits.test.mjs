@@ -49,6 +49,20 @@ test('maps Kie video costs to cleaned Toolaze per-second video credits', () => {
   assert.equal(calculateVideoGenerationCredits('kling-3', '4K', 10, { nativeAudio: true }), null);
 });
 
+test('Kissing Grok Video uses the same credits as Grok 1.5 Video', () => {
+  for (const [resolution, duration] of [
+    ['480p', 3],
+    ['480p', 5],
+    ['720p', 8],
+    ['720p', 10],
+  ]) {
+    assert.equal(
+      calculateImageGenerationCredits('grok-video-1-5', resolution, duration),
+      calculateVideoGenerationCredits('grok-1-5-video', resolution, duration)
+    );
+  }
+});
+
 test('keeps cleaned video credit rates readable for users', () => {
   for (const [modelId, config] of Object.entries(VIDEO_GENERATION_CREDIT_RATES)) {
     for (const [resolution, creditsPerSecond] of Object.entries({

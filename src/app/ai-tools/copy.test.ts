@@ -11,6 +11,7 @@ const expectedRoutes = [
   '/ai-couple-photo-maker',
   '/ai-baby-generator',
   '/ai-dance-generator',
+  '/ai-kissing-video-generator',
   '/ai-hairstyle-changer',
   '/ai-hair-color-changer',
   '/watermark-remover',
@@ -22,7 +23,7 @@ test('AI Tools hub includes every global AI tool in every locale', () => {
     const cards = getAiToolsPageCopy(locale).cards
     assert.deepEqual(cards.map((card) => card.href), expectedRoutes, `${locale} has missing or mismatched tools`)
     assert.equal(cards.filter((card) => card.category === 'image').length, 10)
-    assert.equal(cards.filter((card) => card.category === 'video').length, 2)
+    assert.equal(cards.filter((card) => card.category === 'video').length, 3)
   }
 })
 

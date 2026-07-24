@@ -503,6 +503,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
       'photoRestoration',
       'aiCouplePhotoMaker',
       'aiBabyGenerator',
+      'aiKissingVideoGenerator',
       'aiDanceGenerator',
       'worldCupAiImageGenerator',
       'fontGenerator',
@@ -555,6 +556,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
       'photoRestoration',
       'aiCouplePhotoMaker',
       'aiBabyGenerator',
+      'aiKissingVideoGenerator',
       'aiDanceGenerator',
       'worldCupAiImageGenerator',
       'imageCompression',
@@ -1066,6 +1068,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                     defaultPrompt={content.topTool?.defaultPrompt || ''}
                     defaultImageUrls={Array.isArray(content.topTool?.defaultImageUrls) ? content.topTool.defaultImageUrls : []}
                     defaultVideoDurationSeconds={typeof content.topTool?.defaultVideoDurationSeconds === 'number' ? content.topTool.defaultVideoDurationSeconds : undefined}
+                    videoDurationOptions={Array.isArray(content.topTool?.videoDurationOptions) ? content.topTool.videoDurationOptions : undefined}
                     maxUploadImages={typeof content.topTool?.maxUploadImages === 'number' ? content.topTool.maxUploadImages : undefined}
                     hideModelBranding={content.topTool?.hideModelBranding === true}
                     sampleImages={Array.isArray(content.topTool?.sampleImages) ? content.topTool.sampleImages : undefined}

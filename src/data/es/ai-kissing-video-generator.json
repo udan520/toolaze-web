@@ -1,0 +1,238 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 2,
+    "modelId": "grok-video-1-5",
+    "defaultPrompt": "Haz que las personas de la foto compartan un beso romántico y suave en un video corto cinematográfico. Mantén un tono natural, respetuoso y no explícito.",
+    "hideModelBranding": true,
+    "compactResultPanel": true,
+    "displayName": "Generador de videos de besos IA",
+    "textOverrides": {
+      "promptLabel": "Describe el video de beso",
+      "promptPlaceholder": "Ejemplo: esta pareja se besa suavemente al atardecer",
+      "generateLabel": "Crear video de beso",
+      "uploadTitle": "Sube una o dos fotos"
+    },
+    "defaultVideoDurationSeconds": 5,
+    "videoDurationOptions": [
+      3,
+      5,
+      8,
+      10
+    ],
+    "sampleImages": [
+      {
+        "url": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/83a8c5b91a4945beb66275c38a731dbf.png",
+        "title": "Video de demostración de beso IA en 16:9",
+        "width": 16,
+        "height": 9,
+        "mediaType": "video",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/15ccbe71d8eb4921930b8b7638bcebab.webp"
+      }
+    ]
+  },
+  "metadata": {
+    "title": "Generador de videos de besos IA online | Crea videos de besos",
+    "description": "Usa Toolaze para convertir una o dos fotos en videos cortos de besos románticos para ediciones de pareja, reels de historias y clips sociales."
+  },
+  "sectionsOrder": [
+    "intro",
+    "promptExamples",
+    "howToUse",
+    "scenes",
+    "features",
+    "faq"
+  ],
+  "hero": {
+    "h1": "<span class=\"text-gradient\">Generador de videos de besos IA</span> online",
+    "desc": "Sube una o dos fotos claras, describe el ambiente y crea un video corto de beso romántico para ediciones de pareja, aniversarios y clips sociales cinematográficos."
+  },
+  "intro": {
+    "title": "Crea videos románticos de besos desde fotos",
+    "content": [
+      {
+        "title": "Convierte fotos en videos de beso",
+        "text": "Toolaze anima una o dos fotos subidas para crear un video corto de beso romántico, útil para ediciones de pareja, aniversarios, historias de amor y publicaciones sociales."
+      },
+      {
+        "title": "Dirige la escena con un prompt",
+        "text": "Describe el estilo del beso, cámara, iluminación, fondo, ropa y emoción para obtener un clip romántico natural."
+      },
+      {
+        "title": "Resultados respetuosos y realistas",
+        "text": "Usa fotos claras de adultos con permiso y pide movimiento suave, sonrisa cálida, abrazo cercano o cámara lenta cinematográfica."
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "Ideas de prompts para videos de besos IA",
+    "subtitle": "Sube una o dos fotos y reutiliza estas estructuras para videos románticos cortos.",
+    "items": [
+      {
+        "title": "Beso de pareja al atardecer",
+        "prompt": "Haz que esta pareja comparta un beso romántico y suave al atardecer, luz dorada cálida, suave acercamiento de cámara, sonrisas naturales, video cinematográfico de 5 segundos, formato vertical 9:16.",
+        "note": "Ideal para ediciones de aniversario, recuerdos de propuestas y reels de historias.",
+        "color": "linear-gradient(135deg, #fb7185, #7c3aed)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/644ef4ef82884741b92b7932d83b4735.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d94331861cac45a2b3d488966b18f6e0.webp",
+        "description": "Ideal para ediciones de aniversario, recuerdos de propuestas y reels de historias.",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-24T00:24:00.000Z"
+      },
+      {
+        "title": "Romance en una calle lluviosa",
+        "prompt": "Convierte la foto subida en un video de beso romántico en una calle lluviosa, suaves reflejos de neón, abrazo cercano, cámara lenta y expresiones realistas, formato vertical 9:16.",
+        "note": "Úsalo para ediciones de pareja con ambiente y clips sociales de estilo cinematográfico.",
+        "color": "linear-gradient(135deg, #38bdf8, #4c1d95)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/6469c25f84b947aeb4c544bfed5c9768.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ff969c52195b43e3be68f45fb11f5140.webp",
+        "description": "Úsalo para ediciones de pareja con ambiente y clips sociales de estilo cinematográfico.",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-24T00:24:00.000Z"
+      },
+      {
+        "title": "Momento de boda",
+        "prompt": "Crea un tierno video de beso de boda a partir de esta foto de pareja, luz elegante, fondo limpio, movimiento sutil del velo y el traje, emotivo pero realista, formato vertical 9:16.",
+        "note": "Útil para conceptos de boda, reels de invitación y borradores de recuerdos.",
+        "color": "linear-gradient(135deg, #f8fafc, #c084fc)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/7d41c57d1bc5441a9951fdb4bd8042aa.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/99189a0e1a4e4570ba7c059b3ad4d461.webp",
+        "description": "Útil para conceptos de boda, reels de invitación y borradores de recuerdos.",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-24T00:24:00.000Z"
+      },
+      {
+        "title": "Reencuentro a distancia",
+        "prompt": "Haz que las dos personas de estas fotos se encuentren y compartan un beso suave de reencuentro, ambiente de llegada al aeropuerto, luz cálida y suave giro de cámara, romance no explícito, formato vertical 9:16.",
+        "note": "Ideal para clips de pareja con narrativa y temas de reencuentro.",
+        "color": "linear-gradient(135deg, #f59e0b, #be123c)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/c1706eb3d80f4252a0ab290339158b7d.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/a4c16e2ca6c944f582c8b98d5eb3d23c.webp",
+        "description": "Ideal para clips de pareja con narrativa y temas de reencuentro.",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-24T00:24:00.000Z"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Cómo usar el generador de videos de besos IA",
+    "steps": [
+      {
+        "title": "Sube una o dos fotos",
+        "desc": "Empieza con fotos claras y bien iluminadas donde se vean los rostros. Usa personas adultas y fotos que tengas permiso para editar."
+      },
+      {
+        "title": "Describe la escena romántica",
+        "desc": "Indica el estilo del beso, ambiente, lugar, iluminación, movimiento de cámara, encuadre y si el clip debe sentirse cinematográfico, casual, de boda o narrativo."
+      },
+      {
+        "title": "Genera y ajusta",
+        "desc": "Crea el video y después simplifica el prompt o ajusta el encuadre si el movimiento, la expresión facial o el fondo necesitan un resultado más limpio."
+      }
+    ]
+  },
+  "scenesTitle": "Dónde funcionan mejor los videos de besos IA",
+  "scenes": [
+    {
+      "title": "Reels de historias de pareja",
+      "icon": "💞",
+      "desc": "Crea clips románticos cortos para aniversarios, publicaciones de historias de amor, recuerdos de compromiso y ediciones personales para redes."
+    },
+    {
+      "title": "Conceptos para boda y propuesta",
+      "icon": "💍",
+      "desc": "Diseña momentos de beso delicados para videos de invitación, tableros de boda, reels de propuesta y relatos de eventos."
+    },
+    {
+      "title": "Ediciones románticas cinematográficas",
+      "icon": "🎬",
+      "desc": "Explora iluminación suave, encuadres cercanos, escenas de lluvia, fondos de atardecer y movimiento romántico de estilo cinematográfico."
+    }
+  ],
+  "features": {
+    "title": "Funciones clave para crear videos de beso",
+    "items": [
+      {
+        "icon": "📷",
+        "iconType": "upload",
+        "title": "Carga de una o dos fotos",
+        "desc": "Sube una foto de pareja o dos fotos de referencia y guía el movimiento romántico con un prompt."
+      },
+      {
+        "icon": "🎥",
+        "iconType": "camera",
+        "title": "Dirección de video con prompt",
+        "desc": "Controla el ambiente, la iluminación, el fondo, el movimiento de cámara, el encuadre y el estilo del beso con lenguaje natural."
+      },
+      {
+        "icon": "💗",
+        "iconType": "creative",
+        "title": "Escenas románticas no explícitas",
+        "desc": "Crea besos suaves, abrazos cercanos, sonrisas cálidas, momentos de boda y reels de historias sin contenido explícito."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Flujo rápido en el navegador",
+        "desc": "Genera un clip corto en línea sin preparar software de edición de video ni líneas de tiempo de animación manual."
+      },
+      {
+        "icon": "🧑‍🤝‍🧑",
+        "iconType": "workflow",
+        "title": "Prompts centrados en la pareja",
+        "desc": "Usa prompts pensados para mantener la consistencia facial, expresiones naturales, movimiento suave y un encuadre limpio de la pareja."
+      },
+      {
+        "icon": "🛡️",
+        "iconType": "safety",
+        "title": "Edición basada en el respeto",
+        "desc": "Usa fotos que tengas permiso para editar y mantén los prompts centrados en escenas románticas respetuosas, consensuadas y entre adultos."
+      }
+    ]
+  },
+  "faqTitle": "Preguntas frecuentes",
+  "faq": [
+    {
+      "q": "¿Qué es el generador de videos de besos IA?",
+      "a": "Es una herramienta de Toolaze para crear videos cortos de besos románticos a partir de una o dos fotos subidas y un prompt de texto."
+    },
+    {
+      "q": "¿Puedo subir dos fotos separadas?",
+      "a": "Sí. La página admite una o dos fotos subidas, así que puedes empezar con una foto de pareja o con dos fotos de referencia compatibles."
+    },
+    {
+      "q": "¿Qué prompts funcionan mejor para videos de besos IA?",
+      "a": "Usa detalles claros como beso suave, luz de atardecer, abrazo cercano, ambiente de boda, acercamiento lento de cámara, sonrisa suave, expresiones realistas y romance no explícito."
+    },
+    {
+      "q": "¿Puedo usarlo para videos de boda o aniversario?",
+      "a": "Sí. Funciona bien para clips de concepto, reels de invitación, ediciones de aniversario, ideas de propuesta y publicaciones sociales cuando usas fotos autorizadas."
+    },
+    {
+      "q": "¿Cómo consigo resultados más naturales?",
+      "a": "Sube fotos claras, frontales y con iluminación similar; pide movimiento sutil, expresiones faciales realistas, encuadre limpio y un clip cinematográfico corto."
+    }
+  ],
+  "moreTools": "Más herramientas de video IA",
+  "moreToolsLinks": [
+    {
+      "title": "Generador de video IA",
+      "href": "/ai-video-generator",
+      "description": "Crea videos cortos con IA a partir de texto, imágenes, clips de video o referencias de audio."
+    },
+    {
+      "title": "Generador de baile IA",
+      "href": "/ai-dance-generator",
+      "description": "Sube una imagen y crea videos cortos de baile para coreografías y clips sociales."
+    },
+    {
+      "title": "Creador de fotos de pareja IA",
+      "href": "/ai-couple-photo-maker",
+      "description": "Genera retratos románticos de pareja cuando necesites resultados de imagen fija."
+    }
+  ]
+}

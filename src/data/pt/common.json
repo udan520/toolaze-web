@@ -50,7 +50,8 @@
     "seedream50Lite": "Seedream 5.0 Lite",
     "seedream50Pro": "Seedream 5.0 Pro",
     "seedance25": "Seedance 2.5",
-    "aiDanceGenerator": "Gerador de dança com IA"
+    "aiDanceGenerator": "Gerador de dança com IA",
+    "aiKissingVideoGenerator": "Gerador de vídeos de beijo com IA"
   },
   "home": {
     "metadata": {
@@ -270,7 +271,8 @@
     "aiImageGenerator": "Gerador de imagens IA",
     "refundPolicy": "Política de reembolso",
     "acceptableUse": "Política de uso aceitável",
-    "aiDanceGenerator": "Gerador de dança com IA"
+    "aiDanceGenerator": "Gerador de dança com IA",
+    "aiKissingVideoGenerator": "Gerador de vídeos de beijo com IA"
   },
   "breadcrumb": {
     "home": "Início",

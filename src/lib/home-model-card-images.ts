@@ -54,6 +54,12 @@ export const HOME_MODEL_CARD_IMAGES = {
     height: 941,
     alt: 'AI Dance Generator source image preview',
   },
+  'ai-kissing-video-generator': {
+    src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/15ccbe71d8eb4921930b8b7638bcebab.webp',
+    width: 1280,
+    height: 720,
+    alt: 'AI Kissing Video Generator demo preview',
+  },
   'grok-1-5-video': {
     src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/prompt-templates/image-guided-motion.webp',
     width: 1280,

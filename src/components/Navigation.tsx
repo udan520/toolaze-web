@@ -38,6 +38,7 @@ const defaultNavTranslations = {
   photoRestoration: 'Photo Restoration',
   aiCouplePhotoMaker: 'AI Couple Photo Maker',
   aiBabyGenerator: 'AI Baby Generator',
+  aiKissingVideoGenerator: 'AI Kissing Video Generator',
   aiDanceGenerator: 'AI Dance Generator',
   aiHairstyleChanger: 'AI Hairstyle Changer',
   aiHairColorChanger: 'AI Hair Color Changer',
@@ -133,6 +134,8 @@ const AI_TOOLS_DEMO_IMAGES = {
   photoRestoration:
     'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=400&q=80',
   aiCouplePhotoMaker: '/ai-couple-photo-maker/rainy-eiffel-4x3.jpg',
+  aiKissingVideoGenerator:
+    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/15ccbe71d8eb4921930b8b7638bcebab.webp',
   aiDanceGenerator: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/ai-dance-demo-source.png',
   aiImageToImageGenerator:
     'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/gpt-image-2/feature-image-editing.webp',
@@ -1530,6 +1533,18 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
             <div className={'absolute top-full left-0 mt-2 w-auto min-w-[280px] bg-white rounded-xl shadow-lg border border-indigo-50 transition-all duration-200 z-50 ' + (openDesktopMenu === 'ai-tools' ? 'opacity-100 visible' : 'opacity-0 invisible group-hover:opacity-100 group-hover:visible')}>
               <div className="py-2">
                 <Link
+                  href={getLocalizedHref('/ai-kissing-video-generator')}
+                  onClick={() => setOpenDesktopMenu(null)}
+                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-3"
+                >
+                  <img
+                    src={AI_TOOLS_DEMO_IMAGES.aiKissingVideoGenerator}
+                    alt={navTranslations.aiKissingVideoGenerator || defaultNavTranslations.aiKissingVideoGenerator}
+                    className="w-14 aspect-[4/3] rounded-lg object-cover border border-indigo-100 flex-shrink-0"
+                  />
+                  <span>{navTranslations.aiKissingVideoGenerator || defaultNavTranslations.aiKissingVideoGenerator}</span>
+                </Link>
+                <Link
                   href={getLocalizedHref('/ai-dance-generator')}
                   onClick={() => setOpenDesktopMenu(null)}
                   className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-3"
@@ -2102,6 +2117,21 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
               <div className="order-2 border-b border-indigo-50 pb-4">
                 <div className="text-sm font-bold text-slate-700 mb-3">{navTranslations.aiTools || 'AI Tools'}</div>
                 <div className="space-y-2">
+                  <Link
+                    href={getLocalizedHref('/ai-kissing-video-generator')}
+                    onClick={() => {
+                      setMobileMenuOpen(false)
+                      setExpandedSubmenus(new Set())
+                    }}
+                    className="flex items-center gap-3 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
+                  >
+                    <img
+                      src={AI_TOOLS_DEMO_IMAGES.aiKissingVideoGenerator}
+                      alt={navTranslations.aiKissingVideoGenerator || defaultNavTranslations.aiKissingVideoGenerator}
+                      className="w-14 aspect-[4/3] rounded-lg object-cover border border-indigo-100 flex-shrink-0"
+                    />
+                    <span>{navTranslations.aiKissingVideoGenerator || defaultNavTranslations.aiKissingVideoGenerator}</span>
+                  </Link>
                   <Link
                     href={getLocalizedHref('/ai-dance-generator')}
                     onClick={() => {

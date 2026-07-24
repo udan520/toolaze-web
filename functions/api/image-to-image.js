@@ -102,7 +102,6 @@ function normalizeResolution(model, isImageToImage, resolution) {
 
   if (isVideoGenerationModel(model)) {
     if (lowerValue === '720p') return '720p';
-    if (lowerValue === '1080p') return '1080p';
     return '480p';
   }
 
@@ -160,7 +159,7 @@ function getMaxImagesForModel(model) {
   if (model === 'seedream-5-0-pro') return 14;
   if (model === 'wan-2-7-image') return 9;
   if (model === 'grok-1-5-image') return 1;
-  if (isVideoGenerationModel(model)) return 1;
+  if (isVideoGenerationModel(model)) return 7;
   return model === 'gpt-image-2' ? 16 : 8;
 }
 

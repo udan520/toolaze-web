@@ -1,0 +1,238 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 2,
+    "modelId": "grok-video-1-5",
+    "defaultPrompt": "Faça as pessoas da foto compartilharem um beijo romântico e suave em um vídeo curto cinematográfico. Mantenha o resultado natural, respeitoso e não explícito.",
+    "hideModelBranding": true,
+    "compactResultPanel": true,
+    "displayName": "Gerador de vídeos de beijo com IA",
+    "textOverrides": {
+      "promptLabel": "Descreva o vídeo de beijo",
+      "promptPlaceholder": "Exemplo: este casal se beija suavemente ao pôr do sol",
+      "generateLabel": "Criar vídeo de beijo",
+      "uploadTitle": "Envie uma ou duas fotos"
+    },
+    "defaultVideoDurationSeconds": 5,
+    "videoDurationOptions": [
+      3,
+      5,
+      8,
+      10
+    ],
+    "sampleImages": [
+      {
+        "url": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/83a8c5b91a4945beb66275c38a731dbf.png",
+        "title": "Vídeo de demonstração de beijo com IA em 16:9",
+        "width": 16,
+        "height": 9,
+        "mediaType": "video",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/15ccbe71d8eb4921930b8b7638bcebab.webp"
+      }
+    ]
+  },
+  "metadata": {
+    "title": "Gerador de vídeos de beijo com IA online | Crie vídeos de beijo",
+    "description": "Use o Toolaze para transformar uma ou duas fotos em vídeos curtos de beijo romântico para edições de casal, reels e clipes sociais."
+  },
+  "sectionsOrder": [
+    "intro",
+    "promptExamples",
+    "howToUse",
+    "scenes",
+    "features",
+    "faq"
+  ],
+  "hero": {
+    "h1": "<span class=\"text-gradient\">Gerador de vídeos de beijo com IA</span> online",
+    "desc": "Envie uma ou duas fotos nítidas, descreva o clima e crie um vídeo curto de beijo romântico para edições de casal, aniversários e clipes sociais cinematográficos."
+  },
+  "intro": {
+    "title": "Crie vídeos românticos de beijo a partir de fotos",
+    "content": [
+      {
+        "title": "Transforme fotos em vídeos de beijo",
+        "text": "O Toolaze anima uma ou duas fotos enviadas em um vídeo curto de beijo romântico para edições de casal, aniversários e posts sociais."
+      },
+      {
+        "title": "Dirija a cena com prompt",
+        "text": "Descreva estilo do beijo, câmera, iluminação, fundo, roupa e emoção para obter um clipe romântico natural."
+      },
+      {
+        "title": "Resultados respeitosos e realistas",
+        "text": "Use fotos claras de adultos com permissão e peça movimento suave, sorriso caloroso, abraço próximo ou câmera lenta cinematográfica."
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "Ideias de prompts para vídeos de beijo com IA",
+    "subtitle": "Envie uma ou duas fotos e reutilize estas estruturas para vídeos românticos curtos.",
+    "items": [
+      {
+        "title": "Beijo de casal ao pôr do sol",
+        "prompt": "Faça este casal compartilhar um beijo romântico e suave ao pôr do sol, luz dourada quente, aproximação suave de câmera, sorrisos naturais, vídeo cinematográfico de 5 segundos, formato vertical 9:16.",
+        "note": "Ideal para edições de aniversário, memórias de pedido e reels de histórias.",
+        "color": "linear-gradient(135deg, #fb7185, #7c3aed)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/644ef4ef82884741b92b7932d83b4735.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d94331861cac45a2b3d488966b18f6e0.webp",
+        "description": "Ideal para edições de aniversário, memórias de pedido e reels de histórias.",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-24T00:24:00.000Z"
+      },
+      {
+        "title": "Romance na rua chuvosa",
+        "prompt": "Transforme a foto enviada em um vídeo de beijo romântico em uma rua chuvosa, reflexos suaves de néon, abraço próximo, câmera lenta e expressões faciais realistas, formato vertical 9:16.",
+        "note": "Use em edições de casal com clima e clipes sociais de estilo cinematográfico.",
+        "color": "linear-gradient(135deg, #38bdf8, #4c1d95)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/6469c25f84b947aeb4c544bfed5c9768.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ff969c52195b43e3be68f45fb11f5140.webp",
+        "description": "Use em edições de casal com clima e clipes sociais de estilo cinematográfico.",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-24T00:24:00.000Z"
+      },
+      {
+        "title": "Momento de casamento",
+        "prompt": "Crie um vídeo de beijo de casamento delicado a partir desta foto de casal, iluminação elegante, fundo limpo, movimento sutil do véu e do terno, emotivo mas realista, formato vertical 9:16.",
+        "note": "Útil para conceitos de casamento, reels de convite e rascunhos de lembranças.",
+        "color": "linear-gradient(135deg, #f8fafc, #c084fc)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/7d41c57d1bc5441a9951fdb4bd8042aa.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/99189a0e1a4e4570ba7c059b3ad4d461.webp",
+        "description": "Útil para conceitos de casamento, reels de convite e rascunhos de lembranças.",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-24T00:24:00.000Z"
+      },
+      {
+        "title": "Reencontro à distância",
+        "prompt": "Faça as duas pessoas destas fotos se encontrarem e compartilharem um beijo suave de reencontro, clima de chegada ao aeroporto, iluminação quente e movimento circular suave de câmera, romance não explícito, formato vertical 9:16.",
+        "note": "Ideal para clipes de casal com narrativa e temas de reencontro.",
+        "color": "linear-gradient(135deg, #f59e0b, #be123c)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/c1706eb3d80f4252a0ab290339158b7d.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/a4c16e2ca6c944f582c8b98d5eb3d23c.webp",
+        "description": "Ideal para clipes de casal com narrativa e temas de reencontro.",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-24T00:24:00.000Z"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Como usar o gerador de vídeos de beijo com IA",
+    "steps": [
+      {
+        "title": "Envie uma ou duas fotos",
+        "desc": "Comece com fotos nítidas e bem iluminadas, com os rostos visíveis. Use pessoas adultas e fotos que você tem permissão para editar."
+      },
+      {
+        "title": "Descreva a cena romântica",
+        "desc": "Inclua o estilo do beijo, clima, local, iluminação, movimento de câmera, enquadramento e se o clipe deve parecer cinematográfico, casual, de casamento ou narrativo."
+      },
+      {
+        "title": "Gere e refine",
+        "desc": "Crie o vídeo e depois simplifique o prompt ou ajuste o enquadramento se o movimento, a expressão facial ou o fundo precisarem de um resultado mais limpo."
+      }
+    ]
+  },
+  "scenesTitle": "Onde vídeos de beijo com IA funcionam melhor",
+  "scenes": [
+    {
+      "title": "Reels de histórias de casal",
+      "icon": "💞",
+      "desc": "Crie clipes românticos curtos para aniversários, posts de histórias de amor, memórias de noivado e edições pessoais para redes sociais."
+    },
+    {
+      "title": "Conceitos de casamento e pedido",
+      "icon": "💍",
+      "desc": "Crie momentos de beijo delicados para vídeos de convite, painéis de inspiração de casamento, reels de pedido e histórias de eventos."
+    },
+    {
+      "title": "Edições românticas cinematográficas",
+      "icon": "🎬",
+      "desc": "Explore iluminação suave, enquadramentos próximos, cenas de chuva, fundos de pôr do sol e movimentos românticos de estilo cinematográfico."
+    }
+  ],
+  "features": {
+    "title": "Recursos principais para criar vídeos de beijo",
+    "items": [
+      {
+        "icon": "📷",
+        "iconType": "upload",
+        "title": "Envio de uma ou duas fotos",
+        "desc": "Envie uma foto de casal ou duas fotos de referência e guie o movimento romântico com um prompt."
+      },
+      {
+        "icon": "🎥",
+        "iconType": "camera",
+        "title": "Direção de vídeo por prompt",
+        "desc": "Controle o clima, a iluminação, o fundo, o movimento de câmera, o enquadramento e o estilo do beijo em linguagem natural."
+      },
+      {
+        "icon": "💗",
+        "iconType": "creative",
+        "title": "Cenas românticas não explícitas",
+        "desc": "Crie beijos suaves, abraços próximos, sorrisos calorosos, momentos de casamento e reels de histórias sem conteúdo explícito."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Fluxo rápido no navegador",
+        "desc": "Gere um clipe curto online sem configurar software de edição de vídeo ou linhas do tempo de animação manual."
+      },
+      {
+        "icon": "🧑‍🤝‍🧑",
+        "iconType": "workflow",
+        "title": "Prompts voltados para casais",
+        "desc": "Use prompts pensados para consistência facial, expressões naturais, movimento suave e enquadramento limpo do casal."
+      },
+      {
+        "icon": "🛡️",
+        "iconType": "safety",
+        "title": "Edição com respeito em primeiro lugar",
+        "desc": "Use fotos que você pode editar e mantenha os prompts focados em cenas românticas respeitosas, consensuais e entre adultos."
+      }
+    ]
+  },
+  "faqTitle": "Perguntas frequentes",
+  "faq": [
+    {
+      "q": "O que é o gerador de vídeos de beijo com IA?",
+      "a": "É uma ferramenta da Toolaze para criar vídeos curtos de beijo romântico com uma ou duas fotos enviadas e um prompt de texto."
+    },
+    {
+      "q": "Posso enviar duas fotos separadas?",
+      "a": "Sim. A página aceita uma ou duas fotos, então você pode começar com uma foto de casal ou duas fotos de referência compatíveis."
+    },
+    {
+      "q": "Quais prompts funcionam melhor para vídeos de beijo com IA?",
+      "a": "Use detalhes claros como beijo suave, luz do pôr do sol, abraço próximo, clima de casamento, aproximação lenta de câmera, sorriso suave, expressões realistas e romance não explícito."
+    },
+    {
+      "q": "Posso usar para vídeos de casamento ou aniversário?",
+      "a": "Sim. Funciona bem para clipes de conceito, reels de convite, edições de aniversário, ideias de pedido e posts sociais quando você usa fotos permitidas."
+    },
+    {
+      "q": "Como consigo resultados mais naturais?",
+      "a": "Envie fotos nítidas, de frente e com iluminação semelhante; peça movimentos sutis, expressões faciais realistas, enquadramento limpo e um clipe cinematográfico curto."
+    }
+  ],
+  "moreTools": "Mais ferramentas de vídeo com IA",
+  "moreToolsLinks": [
+    {
+      "title": "Gerador de vídeo com IA",
+      "href": "/ai-video-generator",
+      "description": "Crie vídeos curtos com IA a partir de texto, imagens, clipes de vídeo ou referências de áudio."
+    },
+    {
+      "title": "Gerador de dança com IA",
+      "href": "/ai-dance-generator",
+      "description": "Envie uma imagem e crie vídeos curtos de dança para coreografias e clipes sociais."
+    },
+    {
+      "title": "Criador de fotos de casal com IA",
+      "href": "/ai-couple-photo-maker",
+      "description": "Gere retratos românticos de casal quando precisar de resultados em imagem estática."
+    }
+  ]
+}

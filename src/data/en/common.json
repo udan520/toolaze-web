@@ -51,7 +51,8 @@
     "seedream50Pro": "Seedream 5.0 Pro",
     "seedance25": "Seedance 2.5",
     "aiVideoGenerator": "AI Video Generator",
-    "aiDanceGenerator": "AI Dance Generator"
+    "aiDanceGenerator": "AI Dance Generator",
+    "aiKissingVideoGenerator": "AI Kissing Video Generator"
   },
   "home": {
     "metadata": {
@@ -259,7 +260,8 @@
     "refundPolicy": "Refund Policy",
     "acceptableUse": "Acceptable Use Policy",
     "aiVideoGenerator": "AI Video Generator",
-    "aiDanceGenerator": "AI Dance Generator"
+    "aiDanceGenerator": "AI Dance Generator",
+    "aiKissingVideoGenerator": "AI Kissing Video Generator"
   },
   "breadcrumb": {
     "home": "Home",

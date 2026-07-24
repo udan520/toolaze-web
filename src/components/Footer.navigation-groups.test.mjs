@@ -35,6 +35,7 @@ test('footer separates image tools, video tools, image models, and video models'
   assert.match(imageToolsBlock, /\/ai-hairstyle-changer/)
   assert.match(imageToolsBlock, /\/ai-hair-color-changer/)
   assert.match(videoToolsBlock, /\/ai-dance-generator/)
+  assert.match(videoToolsBlock, /\/ai-kissing-video-generator/)
   assert.doesNotMatch(videoToolsBlock, /\/model\/seedance-2|\/model\/kling-3|\/model\/grok-imagine-video-1-5/)
   assert.match(imageModelBlock, /\/model\/gpt-image-2/)
   assert.match(imageModelBlock, /\/model\/seedream-5-0-pro/)

@@ -176,7 +176,7 @@ const MODEL_CONFIG = {
       { value: '9:16', label: '9:16' },
       { value: '16:9', label: '16:9' },
     ],
-    maxImages: 1,
+    maxImages: 7,
     supportsOutputFormat: false,
     supportsHighResolution: true,
     maxFileSizeMb: 30,
@@ -247,13 +247,20 @@ const MODEL_CONFIG = {
 type ImageModelId = keyof typeof MODEL_CONFIG
 
 const PENDING_GENERATION_STORAGE_KEY = 'toolaze:image-generation-pending:v1'
-const VIDEO_DURATION_OPTIONS = [5, 8, 10, 15] as const
+const DEFAULT_VIDEO_DURATION_OPTIONS = [5, 8, 10, 15] as const
 const DEFAULT_VIDEO_DURATION_SECONDS = 8
 
-function getConfiguredVideoDurationSeconds(durationSeconds?: number): number {
-  return VIDEO_DURATION_OPTIONS.includes(durationSeconds as typeof VIDEO_DURATION_OPTIONS[number])
-    ? durationSeconds as typeof VIDEO_DURATION_OPTIONS[number]
-    : DEFAULT_VIDEO_DURATION_SECONDS
+function normalizeVideoDurationOptions(options?: number[]): number[] {
+  const validOptions = options?.filter((option) => Number.isInteger(option) && option >= 1 && option <= 15)
+  return validOptions?.length
+    ? Array.from(new Set(validOptions))
+    : [...DEFAULT_VIDEO_DURATION_OPTIONS]
+}
+
+function getConfiguredVideoDurationSeconds(durationSeconds: number | undefined, options: readonly number[]): number {
+  if (typeof durationSeconds === 'number' && options.includes(durationSeconds)) return durationSeconds
+  if (options.includes(DEFAULT_VIDEO_DURATION_SECONDS)) return DEFAULT_VIDEO_DURATION_SECONDS
+  return options[0] ?? DEFAULT_VIDEO_DURATION_SECONDS
 }
 
 function getGenerationMediaType(modelId: ImageModelId): GenerationMediaType {
@@ -519,6 +526,7 @@ interface AiImageGenerationToolProps {
   defaultPrompt?: string
   defaultImageUrls?: string[]
   defaultVideoDurationSeconds?: number
+  videoDurationOptions?: number[]
   maxUploadImages?: number
   hideModelBranding?: boolean
   sampleImageVariant?: 'default' | 'sharp'
@@ -600,7 +608,7 @@ const MODEL_GROUPS: ModelGroup[] = [
       {
         id: 'grok-video-1-5',
         name: 'Grok Video 1.5',
-        description: 'Create short dance videos from one reference image and a motion prompt.',
+        description: 'Create short video scenes from up to seven reference images and a motion prompt.',
         qualityRating: 4,
         badge: 'New',
       },
@@ -703,7 +711,7 @@ const getDefaultAspectRatioForModel = (id: ImageModelId, presetMode: AiImageGene
 
 const getResolutionOptionsForModel = (id: ImageModelId): string[] =>
   id === 'grok-video-1-5'
-    ? ['480p', '720p', '1080p']
+    ? ['480p', '720p']
     : id === 'seedream-5-0-pro'
       ? ['1K', '2K']
       : ['1K', '2K', '4K']
@@ -1014,6 +1022,7 @@ export default function AiImageGenerationTool({
   defaultPrompt = '',
   defaultImageUrls = EMPTY_DEFAULT_IMAGE_URLS,
   defaultVideoDurationSeconds,
+  videoDurationOptions,
   maxUploadImages,
   hideModelBranding = false,
   sampleImageVariant = 'default',
@@ -1157,7 +1166,13 @@ export default function AiImageGenerationTool({
     defaultAspectRatio || getDefaultAspectRatioForModel(modelId, presetMode)
   )
   const [resolution, setResolution] = useState<string>(getDefaultResolutionForModel(modelId))
-  const [videoDurationSeconds, setVideoDurationSeconds] = useState<number>(() => getConfiguredVideoDurationSeconds(defaultVideoDurationSeconds))
+  const configuredVideoDurationOptions = useMemo(
+    () => normalizeVideoDurationOptions(videoDurationOptions),
+    [videoDurationOptions]
+  )
+  const [videoDurationSeconds, setVideoDurationSeconds] = useState<number>(() =>
+    getConfiguredVideoDurationSeconds(defaultVideoDurationSeconds, configuredVideoDurationOptions)
+  )
   const [outputFormat, setOutputFormat] = useState(isCouplePhotoMakerMode ? 'PNG' : 'Auto')
   const [selectedTemplateId, setSelectedTemplateId] = useState<string>(() => {
     const firstStyle = NANO_BANANA_2_COUPLE_TEMPLATES.find((item) => item.category === 'style')
@@ -1244,8 +1259,8 @@ export default function AiImageGenerationTool({
   }, [defaultAspectRatio, modelConfig.aspectRatios])
 
   useEffect(() => {
-    setVideoDurationSeconds(getConfiguredVideoDurationSeconds(defaultVideoDurationSeconds))
-  }, [defaultVideoDurationSeconds])
+    setVideoDurationSeconds(getConfiguredVideoDurationSeconds(defaultVideoDurationSeconds, configuredVideoDurationOptions))
+  }, [configuredVideoDurationOptions, defaultVideoDurationSeconds])
 
   useEffect(() => {
     const nextTabId = promptPresetTabs[0]?.id || ''
@@ -3959,7 +3974,7 @@ export default function AiImageGenerationTool({
               <div>
                 <label className="block text-xs font-semibold text-slate-500 tracking-wide mb-2">Video Duration</label>
                 <div className="grid grid-cols-4 gap-2">
-                  {VIDEO_DURATION_OPTIONS.map((option) => {
+                  {configuredVideoDurationOptions.map((option) => {
                     const isSelected = videoDurationSeconds === option
                     return (
                       <button

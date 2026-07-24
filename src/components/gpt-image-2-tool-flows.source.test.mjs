@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict'
-import { readFileSync } from 'node:fs'
+import { existsSync, readFileSync, readdirSync } from 'node:fs'
 import test from 'node:test'
 
 const watermarkSource = readFileSync(new URL('./WatermarkRemover.tsx', import.meta.url), 'utf8')
@@ -7,6 +7,7 @@ const l2Source = readFileSync(new URL('./blocks/ToolL2PageContent.tsx', import.m
 const featuresSource = readFileSync(new URL('./blocks/Features.tsx', import.meta.url), 'utf8')
 const promptExamplesSource = readFileSync(new URL('./blocks/PromptExamples.tsx', import.meta.url), 'utf8')
 const aiImageToolSource = readFileSync(new URL('./AiImageGenerationTool.tsx', import.meta.url), 'utf8')
+const imageToImageFunctionSource = readFileSync(new URL('../../functions/api/image-to-image.js', import.meta.url), 'utf8')
 const navigationSource = readFileSync(new URL('./Navigation.tsx', import.meta.url), 'utf8')
 const footerSource = readFileSync(new URL('./Footer.tsx', import.meta.url), 'utf8')
 const homePageSource = readFileSync(new URL('./home/HomePageMain.tsx', import.meta.url), 'utf8')
@@ -59,6 +60,44 @@ test('AI Dance is discoverable from global navigation, footer, homepage, and AI 
   assert.match(aiToolsCopySource, /cardAssets\.dance/)
   assert.match(aiToolsCopySource, /\/model-assets\/ai-dance-generator\/ai-dance-demo-source\.png/)
   assert.doesNotMatch(aiToolsCopySource, /Grok/)
+})
+
+test('AI Kissing is discoverable from global navigation, footer, homepage, and AI Tools hub before AI Dance', () => {
+  const desktopAiToolsBlock = navigationSource.slice(
+    navigationSource.indexOf('{/* 一级菜单：AI Tools */}'),
+    navigationSource.indexOf('{/* 一级菜单：AI Image */}'),
+  )
+  const mobileAiToolsBlock = navigationSource.slice(
+    navigationSource.indexOf('{/* AI Tools 部分 */}'),
+    navigationSource.indexOf('{/* AI Image 部分 */}'),
+  )
+  const sceneNavKeysBlock = l2Source.slice(
+    l2Source.indexOf('const sceneNavKeys = ['),
+    l2Source.indexOf('const sceneFooterKeys = ['),
+  )
+  const sceneFooterKeysBlock = l2Source.slice(
+    l2Source.indexOf('const sceneFooterKeys = ['),
+    l2Source.indexOf('const pageTranslations ='),
+  )
+
+  for (const block of [desktopAiToolsBlock, mobileAiToolsBlock]) {
+    const kissingIndex = block.indexOf("href={getLocalizedHref('/ai-kissing-video-generator')}")
+    const danceIndex = block.indexOf("href={getLocalizedHref('/ai-dance-generator')}")
+    assert.notEqual(kissingIndex, -1)
+    assert.notEqual(danceIndex, -1)
+    assert.ok(kissingIndex < danceIndex)
+  }
+
+  assert.match(navigationSource, /aiKissingVideoGenerator/)
+  assert.match(footerSource, /aiKissingVideoGenerator/)
+  assert.match(footerSource, /href=\{getLocalizedHref\('\/ai-kissing-video-generator'\)\}/)
+  assert.match(homePageSource, /loadToolData\(\s*'ai-kissing-video-generator'/)
+  assert.match(homeModelCardImagesSource, /'ai-kissing-video-generator'/)
+  assert.match(aiToolsCopySource, /href: '\/ai-kissing-video-generator'/)
+  assert.match(aiToolsCopySource, /cardAssets\.kissing/)
+  assert.match(sceneNavKeysBlock, /'aiKissingVideoGenerator'/)
+  assert.match(sceneFooterKeysBlock, /'aiKissingVideoGenerator'/)
+  assert.match(siteLanguageSwitchSource, /'ai-kissing-video-generator': ALL_LOCALE_CODES/)
 })
 
 test('Grok 1.5 Video is discoverable from AI Video navigation, footer, and homepage models', () => {
@@ -261,6 +300,47 @@ test('AI Dance Grok Video results are handled as video media', () => {
   assert.match(aiImageToolSource, /<video/)
 })
 
+test('Grok Video 1.5 image upload flow supports KIE multi-image references', () => {
+  const grokConfigBlock = aiImageToolSource.slice(
+    aiImageToolSource.indexOf("'grok-video-1-5': {"),
+    aiImageToolSource.indexOf("'seedream-4-5': {"),
+  )
+  const grokModelOptionBlock = aiImageToolSource.slice(
+    aiImageToolSource.indexOf("id: 'grok-video-1-5'"),
+    aiImageToolSource.indexOf("id: 'grok-1-5-image'"),
+  )
+
+  assert.match(grokConfigBlock, /maxImages:\s*7/)
+  assert.doesNotMatch(grokModelOptionBlock, /one reference image/i)
+  assert.match(imageToImageFunctionSource, /if \(isVideoGenerationModel\(model\)\) return 7;/)
+  assert.deepEqual(
+    aiImageToolSource.match(/id === 'grok-video-1-5'\s*\? \[([^\]]+)\]/)?.[1].match(/'[^']+'/g),
+    ["'480p'", "'720p'"],
+  )
+})
+
+test('AI Kissing Video Generator keeps its upload, duration, and prompt contracts in every locale', () => {
+  const localeDirectories = readdirSync(new URL('../data/', import.meta.url)).filter((locale) =>
+    existsSync(new URL(`../data/${locale}/ai-kissing-video-generator.json`, import.meta.url)),
+  )
+  const factoryContentDirectory = new URL('../../_codex/seo-pipeline/tasks/2026-07-23-ai-kissing-video-generator/content/', import.meta.url)
+
+  for (const locale of localeDirectories) {
+    const pageContent = JSON.parse(readFileSync(new URL(`../data/${locale}/ai-kissing-video-generator.json`, import.meta.url), 'utf8'))
+    const factoryContent = JSON.parse(readFileSync(new URL(`${locale}.json`, factoryContentDirectory), 'utf8'))
+
+    for (const content of [pageContent, factoryContent]) {
+      assert.equal(content.topTool?.maxUploadImages, 2, locale)
+      assert.equal(content.topTool?.defaultVideoDurationSeconds, 5, locale)
+      assert.deepEqual(content.topTool?.videoDurationOptions, [3, 5, 8, 10], locale)
+      assert.equal(content.promptExamples?.items?.length, 4, locale)
+    }
+  }
+
+  assert.match(l2Source, /videoDurationOptions=\{Array\.isArray\(content\.topTool\?\.videoDurationOptions\)/)
+  assert.match(aiImageToolSource, /configuredVideoDurationOptions\.map\(\(option\)/)
+})
+
 test('AI Dance demo uses the latest generated video sample', () => {
   const expectedVideoUrl = 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/ai-dance-demo.mp4'
   const expectedSourceImageUrl = 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/ai-dance-demo-source.png'
@@ -308,7 +388,7 @@ test('AI Dance Grok Video exposes duration selection and submits duration', () =
   assert.match(aiImageToolSource, /Video Duration/)
   assert.match(aiImageToolSource, /formData\.append\('duration', String\(requestVideoDurationSeconds\)\)/)
   assert.match(aiImageToolSource, /calculateImageGenerationCredits\(selectedModelId, resolution, videoDurationSeconds\)/)
-  assert.match(aiImageToolSource, /getConfiguredVideoDurationSeconds\(defaultVideoDurationSeconds\)/)
+  assert.match(aiImageToolSource, /getConfiguredVideoDurationSeconds\(defaultVideoDurationSeconds, configuredVideoDurationOptions\)/)
   assert.match(l2Source, /defaultVideoDurationSeconds=\{typeof content\.topTool\?\.defaultVideoDurationSeconds === 'number'/)
   for (const content of [aiDanceContent, aiDanceFactoryContent]) {
     assert.equal(content.topTool?.defaultVideoDurationSeconds, 5)

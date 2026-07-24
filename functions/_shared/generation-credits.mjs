@@ -7,7 +7,7 @@ const BASE_CREDITS = {
   'seedream-5-0-pro': 10,
   'wan-2-7-image': 10,
   'grok-1-5-image': 10,
-  'grok-video-1-5': 80,
+  'grok-video-1-5': 3,
   'nano-banana-pro': 20,
 };
 
@@ -54,12 +54,6 @@ export const VIDEO_GENERATION_CREDIT_RATES = {
   },
 };
 
-const VIDEO_RESOLUTION_CREDITS = {
-  '480P': 80,
-  '720P': 140,
-  '1080P': 250,
-};
-
 const DEFAULT_VIDEO_DURATION_SECONDS = 8;
 const MIN_VIDEO_DURATION_SECONDS = 1;
 const MAX_VIDEO_DURATION_SECONDS = 15;
@@ -79,9 +73,12 @@ export function calculateImageGenerationCredits(modelId, resolution, durationSec
   }
 
   if (normalizedModel === 'grok-video-1-5') {
-    const baseVideoCredits = VIDEO_RESOLUTION_CREDITS[normalizedResolution] || VIDEO_RESOLUTION_CREDITS['480P'];
     const normalizedDuration = normalizeVideoDurationSeconds(durationSeconds);
-    return Math.ceil(baseVideoCredits * normalizedDuration / DEFAULT_VIDEO_DURATION_SECONDS);
+    return calculateVideoGenerationCredits(
+      'grok-1-5-video',
+      normalizedResolution.toLowerCase(),
+      normalizedDuration
+    ) ?? calculateVideoGenerationCredits('grok-1-5-video', '480p', normalizedDuration) ?? 3;
   }
 
   const baseCredits = BASE_CREDITS[normalizedModel] || BASE_CREDITS['nano-banana-pro'];
