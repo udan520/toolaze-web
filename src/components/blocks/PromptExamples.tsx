@@ -13,6 +13,7 @@ interface PromptExampleItem {
   video?: string
   poster?: string
   description?: string
+  aspectRatio?: string
   duration?: string
   uploadDate?: string
   note?: string
@@ -152,6 +153,7 @@ function DeferredPromptVideo({
   return (
     <video
       ref={videoRef}
+      suppressHydrationWarning
       src={src}
       poster={poster}
       aria-label={label}
@@ -340,7 +342,9 @@ export default function PromptExamples({
           {visibleItems.map((item, idx) => (
             <article key={`${item.title}-${idx}`} className="bg-white rounded-3xl border border-indigo-50 shadow-sm overflow-hidden">
               {item.video ? (
-                <div className={layout === 'horizontal'
+                <div className={item.aspectRatio === '16:9'
+                  ? 'flex aspect-video items-center justify-center bg-slate-100'
+                  : layout === 'horizontal'
                   ? 'flex aspect-[9/16] items-center justify-center bg-slate-100'
                   : 'flex h-[360px] items-center justify-center bg-slate-100 lg:h-[420px]'}>
                   <DeferredPromptVideo

@@ -107,6 +107,19 @@ function getQueuedSeoTasks(pageType?: 'l2' | 'l3_or_topic'): QueuedSeoTask[] {
   })
 }
 
+function readQueuedSeoSourceData(data: Record<string, unknown> | null): Record<string, unknown> | null {
+  const sourceData = typeof data?.sourceData === 'string' ? data.sourceData : ''
+  if (!sourceData) return null
+
+  const normalizedSource = path.normalize(sourceData)
+  const dataPrefix = ['src', 'data', ''].join(path.sep)
+  if (!normalizedSource.startsWith(dataPrefix) || !normalizedSource.endsWith('.json')) {
+    return null
+  }
+
+  return readJsonFileSync(path.join(process.cwd(), normalizedSource))
+}
+
 function getQueuedSeoContentBySlug(
   slug: string,
   locale: string,
@@ -119,6 +132,11 @@ function getQueuedSeoContentBySlug(
   const taskDir = path.join(process.cwd(), '_codex', 'seo-pipeline', 'tasks', task.taskId, 'content')
   const data = readJsonFileSync(path.join(taskDir, `${normalizedLocale}.json`)) ||
     readJsonFileSync(path.join(taskDir, 'en.json'))
+
+  const sourceData = readQueuedSeoSourceData(data)
+  if (sourceData && isPublished(sourceData)) {
+    return sourceData
+  }
 
   return data && isPublished(data) ? data : null
 }
@@ -815,6 +833,8 @@ export async function getL2SeoContent(tool: string, locale: string = 'en') {
         data = await importL2FlatJson('ai-video-generator', normalizedLocale)
       } else if (tool === 'image-to-video-generator') {
         data = await importL2FlatJson('image-to-video-generator', normalizedLocale)
+      } else if (tool === 'text-to-video-generator') {
+        data = await importL2FlatJson('text-to-video-generator', normalizedLocale)
       } else if (tool === 'seedance-2-5') {
         data = await importL2FlatJson('seedance-2-5', normalizedLocale)
       } else if (tool === 'seedance-2') {
@@ -864,6 +884,8 @@ export async function getL2SeoContent(tool: string, locale: string = 'en') {
             data = await import('@/data/en/gpt-image-2.json')
           } else if (tool === 'ai-video-generator') {
             data = await import('@/data/en/ai-video-generator.json')
+          } else if (tool === 'text-to-video-generator') {
+            data = await import('@/data/en/text-to-video-generator.json')
           } else if (tool === 'seedance-2-5') {
             data = await import('@/data/en/seedance-2-5.json')
           } else if (tool === 'seedance-2') {

@@ -480,9 +480,10 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
     // 顶部功能：优先使用 JSON 中的 topComponent，否则用 tool
     const topComp = (content.topComponent || tool) as string
     const videoGeneratorDefaultModel = VIDEO_GENERATOR_DEFAULT_MODELS[topComp as keyof typeof VIDEO_GENERATOR_DEFAULT_MODELS]
+    const configuredVideoMode = content.topTool?.defaultMode || content.topTool?.mode
     const videoGeneratorDefaultMode =
-      content.topTool?.defaultMode === 'image-to-video' || content.topTool?.defaultMode === 'text-to-video'
-        ? content.topTool.defaultMode
+      configuredVideoMode === 'image-to-video' || configuredVideoMode === 'text-to-video'
+        ? configuredVideoMode
         : undefined
     const isScenePage = content.visiblePageType === 'scene'
     const isAiImageToolPage = content.pageGroup === 'ai-tools' || AI_IMAGE_TOOL_TOP_COMPONENTS.has(topComp)
@@ -512,6 +513,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
       'textToImageGenerator',
       'aiImageToImageGenerator',
       'aiVideo',
+      'textToVideoGenerator',
       'pricing',
       'wan27Image',
       'seedream45',
@@ -546,6 +548,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
       'quickTools',
       'aiTools',
       'aiVideo',
+      'textToVideoGenerator',
       'aiImage',
       'aiImageGenerator',
       'textToImageGenerator',
@@ -645,6 +648,12 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
           { label: breadcrumbT.aiTools || 'AI Tools', href: '/ai-tools' },
           { label: 'AI Video Generator' },
         ]
+      : tool === 'text-to-video-generator'
+      ? [
+          { label: breadcrumbT.home, href: locale === 'en' ? '/' : `/${locale}` },
+          { label: breadcrumbT.aiTools || 'AI Tools', href: locale === 'en' ? '/ai-tools' : `/${locale}/ai-tools` },
+          { label: breadcrumbT.textToVideoGenerator || 'Text to Video Generator' },
+        ]
       : tool === 'nano-banana-pro'
       ? [
           { label: breadcrumbT.home, href: '/' },
@@ -700,6 +709,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
       'gpt-image-2',
       'nano-banana-2',
       'ai-video-generator',
+      'text-to-video-generator',
     ].includes(topComp)
 
     // 获取推荐的其他功能
@@ -1108,7 +1118,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                           : 'AI Video Generator'
                     )}
                     heroDescription={content.hero?.desc}
-                    demoVideo={content.heroDemoVideo as { src?: string; ariaLabel?: string } | undefined}
+                    demoVideo={content.heroDemoVideo as { src?: string; poster?: string; ariaLabel?: string } | undefined}
                     initialTranslations={pageTranslations}
                   />
                 </div>
@@ -1308,7 +1318,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                 )
               },
               promptExamples: (bgClass: string) => {
-                const promptExamples = content.promptExamples as { title?: string; subtitle?: string; layout?: 'grid' | 'horizontal' | 'reference-video'; items?: Array<{ title: string; prompt: string; referenceImage?: string; image?: string; video?: string; poster?: string; description?: string; duration?: string; uploadDate?: string; note?: string; color?: string }> } | undefined
+                const promptExamples = content.promptExamples as { title?: string; subtitle?: string; layout?: 'grid' | 'horizontal' | 'reference-video'; items?: Array<{ title: string; prompt: string; referenceImage?: string; image?: string; video?: string; poster?: string; description?: string; aspectRatio?: string; duration?: string; uploadDate?: string; note?: string; color?: string }> } | undefined
                 if (!promptExamples?.items || promptExamples.items.length === 0) return null
                 return (
                   <PromptExamples

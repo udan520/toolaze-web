@@ -50,6 +50,8 @@
     "seedream50Lite": "Seedream 5.0 Lite",
     "seedream50Pro": "Seedream 5.0 Pro",
     "seedance25": "Seedance 2.5",
+    "textToVideoGenerator": "テキストから動画生成",
+    "imageToVideoGenerator": "画像から動画生成",
     "aiDanceGenerator": "AIダンスジェネレーター"
   },
   "home": {
@@ -270,6 +272,8 @@
     "aiImageGenerator": "AI画像生成ツール",
     "refundPolicy": "返金ポリシー",
     "acceptableUse": "利用許可ポリシー",
+    "textToVideoGenerator": "テキストから動画生成",
+    "imageToVideoGenerator": "画像から動画生成",
     "aiDanceGenerator": "AIダンスジェネレーター"
   },
   "breadcrumb": {
@@ -294,7 +298,9 @@
     "aiImageToImageGenerator": "AI画像から画像生成",
     "worldCupAiImageGenerator": "ワールドカップAI画像ジェネレーター",
     "refundPolicy": "返金ポリシー",
-    "acceptableUse": "利用許可ポリシー"
+    "acceptableUse": "利用許可ポリシー",
+    "textToVideoGenerator": "テキストから動画生成",
+    "imageToVideoGenerator": "画像から動画生成"
   },
   "about": {
     "metadata": {

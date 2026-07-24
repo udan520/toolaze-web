@@ -43,6 +43,10 @@ const cardAssets = {
     'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/gpt-image-2/feature-image-editing.webp',
   aiVideo:
     'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/seedance-2.jpg',
+  textToVideo:
+    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/prompt-templates/storyboard-scene.webp',
+  imageToVideo:
+    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/880154a7e9874c2eb41e2beb2a9bab67.webp',
   worldCup:
     'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d67aebd7cde5431abd3a7bb74a89bac1.webp',
   watermark:
@@ -99,6 +103,20 @@ const en: StoredAiToolsPageCopy = {
       href: '/ai-video-generator',
       image: cardAssets.aiVideo,
       description: 'Create short AI videos online from text, images, video clips, or audio references.',
+      category: 'video',
+    },
+    {
+      title: 'Text to Video Generator',
+      href: '/text-to-video-generator',
+      image: cardAssets.textToVideo,
+      description: 'Turn written prompts into short AI videos for ads, storyboards, social clips, and concept tests.',
+      category: 'video',
+    },
+    {
+      title: 'Image to Video Generator',
+      href: '/image-to-video-generator',
+      image: cardAssets.imageToVideo,
+      description: 'Animate photos, product images, artwork, and reference frames with controlled AI motion.',
       category: 'video',
     },
     {
@@ -346,6 +364,8 @@ type SupplementalCopy = {
   textToImage: Pick<AiToolsCard, 'title' | 'description'>
   imageToImage: Pick<AiToolsCard, 'title' | 'description'>
   video: Pick<AiToolsCard, 'title' | 'description'>
+  textToVideo: Pick<AiToolsCard, 'title' | 'description'>
+  imageToVideo: Pick<AiToolsCard, 'title' | 'description'>
   hairstyle: Pick<AiToolsCard, 'title' | 'description'>
   hairColor: Pick<AiToolsCard, 'title' | 'description'>
 }
@@ -357,6 +377,8 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     textToImage: { title: 'Text to Image Generator', description: 'Turn written prompts into AI images for concepts, marketing visuals, posters, and social content.' },
     imageToImage: { title: 'AI Image to Image Generator', description: 'Upload a reference image and use a prompt to restyle, edit, or transform it with AI.' },
     video: { title: 'AI Video Generator', description: 'Create short AI videos online from text, images, video clips, or audio references.' },
+    textToVideo: { title: 'Text to Video Generator', description: 'Turn written prompts into short AI videos for ads, storyboards, social clips, and concept tests.' },
+    imageToVideo: { title: 'Image to Video Generator', description: 'Animate photos, product images, artwork, and reference frames with controlled AI motion.' },
     hairstyle: { title: 'AI Hairstyle Changer', description: 'Try different hairstyles on a reference photo while keeping the person and overall look consistent.' },
     hairColor: { title: 'AI Hair Color Changer', description: 'Preview natural and creative hair colors on your photo with reference-guided AI editing.' },
   },
@@ -366,6 +388,8 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     textToImage: { title: 'Text-zu-Bild-Generator', description: 'Verwandeln Sie Textprompts in KI-Bilder für Konzepte, Marketingvisuals, Poster und Social Media.' },
     imageToImage: { title: 'KI-Bild-zu-Bild-Generator', description: 'Laden Sie ein Referenzbild hoch und gestalten, bearbeiten oder verwandeln Sie es per Prompt mit KI.' },
     video: { title: 'KI-Videogenerator', description: 'Erstellen Sie kurze KI-Videos aus Text, Bildern, Videoclips oder Audioreferenzen.' },
+    textToVideo: { title: 'Text-zu-Video-Generator', description: 'Verwandeln Sie Textprompts in kurze KI-Videos für Anzeigen, Storyboards, Social Clips und Konzepttests.' },
+    imageToVideo: { title: 'Bild-zu-Video-Generator', description: 'Animieren Sie Fotos, Produktbilder, Kunstwerke und Referenzframes mit kontrollierter KI-Bewegung.' },
     hairstyle: { title: 'KI-Frisurenwechsler', description: 'Probieren Sie verschiedene Frisuren auf einem Referenzfoto aus und bewahren Sie das Aussehen der Person.' },
     hairColor: { title: 'KI-Haarfarbenwechsler', description: 'Testen Sie natürliche und kreative Haarfarben auf Ihrem Foto mit referenzbasierter KI-Bearbeitung.' },
   },
@@ -375,6 +399,8 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     textToImage: { title: 'テキストから画像生成', description: '文章プロンプトからコンセプト、広告、ポスター、SNS向けのAI画像を作成できます。' },
     imageToImage: { title: 'AI画像から画像生成', description: '参照画像をアップロードし、プロンプトでスタイル変更、編集、変換を行えます。' },
     video: { title: 'AI動画生成', description: 'テキスト、画像、動画クリップ、音声参照から短いAI動画をオンライン作成できます。' },
+    textToVideo: { title: 'テキストから動画生成', description: '文章プロンプトを広告、絵コンテ、SNSクリップ、コンセプト検証向けの短いAI動画にできます。' },
+    imageToVideo: { title: '画像から動画生成', description: '写真、商品画像、アート、参照フレームに制御可能なAIモーションを加えられます。' },
     hairstyle: { title: 'AIヘアスタイルチェンジャー', description: '人物の印象を保ちながら、参照写真でさまざまな髪型を試せます。' },
     hairColor: { title: 'AIヘアカラー変更', description: '参照画像を使ったAI編集で、自然な髪色や個性的なカラーを写真上で確認できます。' },
   },
@@ -384,6 +410,8 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     textToImage: { title: 'Generador de texto a imagen', description: 'Convierte prompts escritos en imágenes IA para conceptos, marketing, pósteres y contenido social.' },
     imageToImage: { title: 'Generador IA de imagen a imagen', description: 'Sube una imagen de referencia y usa un prompt para cambiar su estilo, editarla o transformarla.' },
     video: { title: 'Generador de video IA', description: 'Crea videos cortos con IA desde texto, imágenes, clips de video o referencias de audio.' },
+    textToVideo: { title: 'Generador de texto a video', description: 'Convierte prompts escritos en videos cortos con IA para anuncios, guiones visuales, clips sociales y pruebas de concepto.' },
+    imageToVideo: { title: 'Generador de imagen a video', description: 'Anima fotos, imágenes de producto, ilustraciones y fotogramas de referencia con movimiento IA controlado.' },
     hairstyle: { title: 'Cambiador de peinados IA', description: 'Prueba distintos peinados en una foto de referencia manteniendo el aspecto de la persona.' },
     hairColor: { title: 'Cambiador de color de pelo IA', description: 'Prueba colores de pelo naturales y creativos con edición IA guiada por referencia.' },
   },
@@ -393,6 +421,8 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     textToImage: { title: '文字轉圖像生成器', description: '將文字提示詞轉換為適合概念、行銷、海報與社群內容的 AI 圖像。' },
     imageToImage: { title: 'AI 圖像轉圖像生成器', description: '上傳參考圖像並透過提示詞重新設計、編輯或轉換圖像。' },
     video: { title: 'AI 影片生成器', description: '使用文字、圖像、影片片段或音訊參考在線建立 AI 短片。' },
+    textToVideo: { title: '文字轉影片生成器', description: '將文字提示詞轉為適合廣告、分鏡、社群短片與概念測試的 AI 短片。' },
+    imageToVideo: { title: '圖像轉影片生成器', description: '以可控的 AI 動態為照片、產品圖、藝術作品和參考畫面製作動畫。' },
     hairstyle: { title: 'AI 髮型變換器', description: '在保留人物整體外觀的同時，透過參考照片嘗試不同髮型。' },
     hairColor: { title: 'AI 髮色變換器', description: '使用參考圖引導的 AI 編輯，在照片上預覽自然或創意髮色。' },
   },
@@ -402,6 +432,8 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     textToImage: { title: 'Gerador de texto para imagem', description: 'Transforme prompts em imagens de IA para conceitos, marketing, pôsteres e conteúdo social.' },
     imageToImage: { title: 'Gerador IA de imagem para imagem', description: 'Envie uma imagem de referência e use um prompt para editar, transformar ou mudar seu estilo.' },
     video: { title: 'Gerador de vídeo IA', description: 'Crie vídeos curtos com IA a partir de texto, imagens, clipes ou referências de áudio.' },
+    textToVideo: { title: 'Gerador de texto para vídeo', description: 'Transforme prompts em vídeos curtos com IA para anúncios, storyboards, clipes sociais e testes de conceito.' },
+    imageToVideo: { title: 'Gerador de imagem para vídeo', description: 'Anime fotos, imagens de produtos, obras de arte e quadros de referência com movimento de IA controlado.' },
     hairstyle: { title: 'Alterador de penteado IA', description: 'Teste penteados diferentes em uma foto mantendo a pessoa e o visual geral consistentes.' },
     hairColor: { title: 'Alterador de cor de cabelo IA', description: 'Visualize cores naturais e criativas no cabelo com edição de IA guiada por referência.' },
   },
@@ -411,6 +443,8 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     textToImage: { title: 'Générateur texte-image', description: 'Transformez des prompts en images IA pour concepts, marketing, affiches et contenus sociaux.' },
     imageToImage: { title: 'Générateur image-à-image IA', description: 'Importez une image de référence et utilisez un prompt pour la modifier, la restyler ou la transformer.' },
     video: { title: 'Générateur de vidéo IA', description: 'Créez de courtes vidéos IA à partir de texte, d’images, de clips ou de références audio.' },
+    textToVideo: { title: 'Générateur texte-vidéo', description: 'Transformez des prompts en courtes vidéos IA pour annonces, storyboards, clips sociaux et tests de concept.' },
+    imageToVideo: { title: 'Générateur image-vidéo', description: 'Animez photos, images produit, créations et images de référence avec des mouvements IA contrôlés.' },
     hairstyle: { title: 'Changeur de coiffure IA', description: 'Essayez différentes coiffures sur une photo de référence tout en conservant l’apparence de la personne.' },
     hairColor: { title: 'Changeur de couleur de cheveux IA', description: 'Prévisualisez des couleurs naturelles ou créatives grâce à une retouche IA guidée par référence.' },
   },
@@ -420,6 +454,8 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     textToImage: { title: '텍스트-이미지 생성기', description: '텍스트 프롬프트를 콘셉트, 마케팅, 포스터 및 소셜 콘텐츠용 AI 이미지로 만드세요.' },
     imageToImage: { title: 'AI 이미지-이미지 생성기', description: '참조 이미지를 업로드하고 프롬프트로 스타일 변경, 편집 또는 변환하세요.' },
     video: { title: 'AI 동영상 생성기', description: '텍스트, 이미지, 동영상 클립 또는 오디오 참조로 짧은 AI 동영상을 만드세요.' },
+    textToVideo: { title: '텍스트-동영상 생성기', description: '텍스트 프롬프트를 광고, 스토리보드, 소셜 클립, 콘셉트 테스트용 짧은 AI 동영상으로 만드세요.' },
+    imageToVideo: { title: '이미지-동영상 생성기', description: '사진, 제품 이미지, 아트워크, 참조 프레임에 제어 가능한 AI 모션을 적용하세요.' },
     hairstyle: { title: 'AI 헤어스타일 변경기', description: '인물의 전체적인 모습을 유지하면서 참조 사진에서 다양한 헤어스타일을 시험해 보세요.' },
     hairColor: { title: 'AI 헤어 컬러 변경기', description: '참조 기반 AI 편집으로 사진에서 자연스럽거나 창의적인 헤어 컬러를 미리 확인하세요.' },
   },
@@ -429,6 +465,8 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     textToImage: { title: 'Generatore da testo a immagine', description: 'Trasforma prompt scritti in immagini IA per concept, marketing, poster e contenuti social.' },
     imageToImage: { title: 'Generatore IA da immagine a immagine', description: 'Carica un’immagine di riferimento e usa un prompt per modificarla, trasformarla o cambiarne lo stile.' },
     video: { title: 'Generatore video IA', description: 'Crea brevi video IA da testo, immagini, clip video o riferimenti audio.' },
+    textToVideo: { title: 'Generatore da testo a video', description: 'Trasforma prompt scritti in brevi video IA per annunci, storyboard, clip social e test di concept.' },
+    imageToVideo: { title: 'Generatore da immagine a video', description: 'Anima foto, immagini di prodotto, opere e fotogrammi di riferimento con movimenti IA controllati.' },
     hairstyle: { title: 'Cambia acconciatura IA', description: 'Prova diverse acconciature su una foto mantenendo coerenti la persona e l’aspetto generale.' },
     hairColor: { title: 'Cambia colore capelli IA', description: 'Visualizza colori naturali e creativi con editing IA guidato da un’immagine di riferimento.' },
   },
@@ -456,13 +494,15 @@ function getLocalizedCards(locale: AiToolsLocale, storedCards: AiToolsCard[]): A
       en.cards[2],
       en.cards[3],
       en.cards[4],
-      en.cards[7],
-      en.cards[8],
+      en.cards[5],
+      en.cards[6],
       en.cards[9],
       en.cards[10],
       en.cards[11],
-      en.cards[5],
-      en.cards[6],
+      en.cards[12],
+      en.cards[13],
+      en.cards[7],
+      en.cards[8],
     ]
   }
 
@@ -471,14 +511,16 @@ function getLocalizedCards(locale: AiToolsLocale, storedCards: AiToolsCard[]): A
     applyLocalizedCard(en.cards[1], supplemental.textToImage),
     applyLocalizedCard(en.cards[2], supplemental.imageToImage),
     applyLocalizedCard(en.cards[3], supplemental.video),
-    applyLocalizedCard(en.cards[4], worldCup),
-    applyLocalizedCard(en.cards[7], couple),
-    applyLocalizedCard(en.cards[8], baby),
-    applyLocalizedCard(en.cards[9], dance),
-    applyLocalizedCard(en.cards[10], supplemental.hairstyle),
-    applyLocalizedCard(en.cards[11], supplemental.hairColor),
-    applyLocalizedCard(en.cards[5], watermark),
-    applyLocalizedCard(en.cards[6], restoration),
+    applyLocalizedCard(en.cards[4], supplemental.textToVideo),
+    applyLocalizedCard(en.cards[5], supplemental.imageToVideo),
+    applyLocalizedCard(en.cards[6], worldCup),
+    applyLocalizedCard(en.cards[9], couple),
+    applyLocalizedCard(en.cards[10], baby),
+    applyLocalizedCard(en.cards[11], dance),
+    applyLocalizedCard(en.cards[12], supplemental.hairstyle),
+    applyLocalizedCard(en.cards[13], supplemental.hairColor),
+    applyLocalizedCard(en.cards[7], watermark),
+    applyLocalizedCard(en.cards[8], restoration),
   ]
 }
 

@@ -50,6 +50,8 @@
     "seedream50Lite": "Seedream 5.0 Lite",
     "seedream50Pro": "Seedream 5.0 Pro",
     "seedance25": "Seedance 2.5",
+    "textToVideoGenerator": "텍스트-동영상 생성기",
+    "imageToVideoGenerator": "이미지-동영상 생성기",
     "aiDanceGenerator": "AI 댄스 생성기"
   },
   "home": {
@@ -270,6 +272,8 @@
     "aiImageGenerator": "AI 이미지 생성기",
     "refundPolicy": "환불 정책",
     "acceptableUse": "허용 사용 정책",
+    "textToVideoGenerator": "텍스트-동영상 생성기",
+    "imageToVideoGenerator": "이미지-동영상 생성기",
     "aiDanceGenerator": "AI 댄스 생성기"
   },
   "breadcrumb": {
@@ -294,7 +298,9 @@
     "aiImageToImageGenerator": "AI 이미지-이미지 생성기",
     "worldCupAiImageGenerator": "월드컵 AI 이미지 생성기",
     "refundPolicy": "환불 정책",
-    "acceptableUse": "허용 사용 정책"
+    "acceptableUse": "허용 사용 정책",
+    "textToVideoGenerator": "텍스트-동영상 생성기",
+    "imageToVideoGenerator": "이미지-동영상 생성기"
   },
   "about": {
     "metadata": {

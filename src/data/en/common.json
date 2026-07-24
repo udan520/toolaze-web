@@ -51,6 +51,8 @@
     "seedream50Pro": "Seedream 5.0 Pro",
     "seedance25": "Seedance 2.5",
     "aiVideoGenerator": "AI Video Generator",
+    "textToVideoGenerator": "Text to Video Generator",
+    "imageToVideoGenerator": "Image to Video Generator",
     "aiDanceGenerator": "AI Dance Generator"
   },
   "home": {
@@ -259,6 +261,8 @@
     "refundPolicy": "Refund Policy",
     "acceptableUse": "Acceptable Use Policy",
     "aiVideoGenerator": "AI Video Generator",
+    "textToVideoGenerator": "Text to Video Generator",
+    "imageToVideoGenerator": "Image to Video Generator",
     "aiDanceGenerator": "AI Dance Generator"
   },
   "breadcrumb": {
@@ -283,7 +287,9 @@
     "aiImageToImageGenerator": "AI Image to Image Generator",
     "worldCupAiImageGenerator": "World Cup AI Image Generator",
     "refundPolicy": "Refund Policy",
-    "acceptableUse": "Acceptable Use Policy"
+    "acceptableUse": "Acceptable Use Policy",
+    "textToVideoGenerator": "Text to Video Generator",
+    "imageToVideoGenerator": "Image to Video Generator"
   },
   "about": {
     "metadata": {

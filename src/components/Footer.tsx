@@ -35,6 +35,8 @@ const defaultTranslations = {
   aiImageModel: 'AI Image Model',
   aiVideoModel: 'AI Video Model',
   aiVideoGenerator: 'AI Video Generator',
+  textToVideoGenerator: 'Text to Video Generator',
+  imageToVideoGenerator: 'Image to Video Generator',
   grok15Video: 'Grok 1.5 Video',
   aiImage: 'AI Image',
   aiVideo: 'AI Video',
@@ -229,6 +231,22 @@ export default function Footer({ initialTranslations }: FooterProps = {}) {
                   className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
                 >
                   {translations.aiVideoGenerator || 'AI Video Generator'}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={getLocalizedHref('/text-to-video-generator')}
+                  className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
+                >
+                  {translations.textToVideoGenerator || 'Text to Video Generator'}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={getLocalizedHref('/image-to-video-generator')}
+                  className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
+                >
+                  {translations.imageToVideoGenerator || 'Image to Video Generator'}
                 </Link>
               </li>
               <li>

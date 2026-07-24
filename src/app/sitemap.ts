@@ -9,6 +9,7 @@ const baseUrl = 'https://toolaze.com'
 const SUPPORTED_LOCALES = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
 const STATIC_PAGES = ['about', 'privacy', 'terms', 'pricing', 'refund-policy', 'acceptable-use', 'contact']
 const TOOL_PAGES = ['image-compressor', 'image-converter', 'font-generator', 'emoji-copy-and-paste']
+const VIDEO_GENERATOR_PAGES = ['text-to-video-generator', 'image-to-video-generator'] as const
 const AI_IMAGE_L2_PAGES = [
   { path: '/photo-restoration', priority: 0.9 },
   { path: '/watermark-remover', priority: 0.9 },
@@ -97,6 +98,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: today,
       changeFrequency: 'weekly',
       priority: locale === 'en' ? 0.94 : 0.9,
+    })
+  })
+  VIDEO_GENERATOR_PAGES.forEach((slug) => {
+    SUPPORTED_LOCALES.forEach((locale) => {
+      const path = locale === 'en' ? `/${slug}` : `/${locale}/${slug}`
+      entries.push({
+        url: `${baseUrl}${path}`,
+        lastModified: today,
+        changeFrequency: 'weekly',
+        priority: locale === 'en' ? 0.93 : 0.88,
+      })
     })
   })
   SUPPORTED_LOCALES.forEach((locale) => {
