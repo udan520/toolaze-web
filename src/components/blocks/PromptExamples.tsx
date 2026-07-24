@@ -8,6 +8,7 @@ import type { PromptInsertMode } from '@/lib/prompt-insert-mode'
 interface PromptExampleItem {
   title: string
   prompt: string
+  referenceImage?: string
   image?: string
   video?: string
   poster?: string
@@ -25,7 +26,7 @@ interface PromptExamplesProps {
   items?: PromptExampleItem[]
   bgClass?: string
   targetMode?: PromptInsertMode
-  layout?: 'grid' | 'horizontal'
+  layout?: 'grid' | 'horizontal' | 'reference-video'
 }
 
 const PROMPT_COPY_NOUN = 'Prompt'
@@ -213,6 +214,85 @@ export default function PromptExamples({
     } catch {
       setCopiedTitle(null)
     }
+  }
+
+  if (layout === 'reference-video') {
+    return (
+      <section className={`${bgClass} py-24 px-6`}>
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-extrabold text-center text-slate-900 mb-4">{title}</h2>
+          {subtitle && (
+            <p className="desc-text text-center max-w-3xl mx-auto mb-12">{subtitle}</p>
+          )}
+          <div className="space-y-8">
+            {visibleItems.map((item, idx) => {
+              const referenceImage = item.referenceImage || item.image || item.poster
+
+              return (
+                <article
+                  key={`${item.title}-${idx}`}
+                  className="grid gap-6 overflow-hidden rounded-3xl border border-indigo-100 bg-white p-4 shadow-sm lg:grid-cols-[minmax(0,1fr)_360px] lg:p-5"
+                >
+                  <div className="flex min-h-0 flex-col gap-4">
+                    <div className="rounded-2xl border border-slate-100 bg-slate-50 p-5">
+                      <h3 className="text-2xl font-extrabold text-slate-950">{item.title}</h3>
+                      <p className="mt-4 text-sm leading-7 text-slate-600">{item.prompt}</p>
+                      <div className="mt-5 flex flex-col gap-2 sm:flex-row">
+                        <button
+                          type="button"
+                          onClick={() => handleUsePrompt(item)}
+                          className="rounded-xl px-4 py-2 text-sm font-semibold text-white shadow-md transition-all duration-200 hover:shadow-lg"
+                          style={{ background: 'linear-gradient(135deg, #4F46E5 0%, #9333EA 100%)' }}
+                        >
+                          {labels.usePrompt}
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => handleCopyPrompt(item)}
+                          className="rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition-colors hover:border-[#C7D2FE] hover:bg-indigo-50 hover:text-[#4F46E5]"
+                        >
+                          {copiedTitle === item.title ? labels.copiedPrompt : labels.copyPrompt}
+                        </button>
+                      </div>
+                    </div>
+                    {referenceImage && (
+                      <div className="min-h-0 rounded-2xl border border-slate-100 bg-slate-50 p-3">
+                        <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-slate-500">Reference Image</p>
+                        <img
+                          src={referenceImage}
+                          alt={`${item.title} reference image`}
+                          className="block h-full max-h-[260px] w-full rounded-xl bg-slate-100 object-contain"
+                          loading="lazy"
+                        />
+                      </div>
+                    )}
+                  </div>
+                  <div className="rounded-2xl border border-slate-100 bg-slate-100 p-3">
+                    <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-slate-500">Result Video</p>
+                    <div className="flex h-[420px] items-center justify-center overflow-hidden rounded-xl bg-slate-950/5 lg:h-full lg:min-h-[520px]">
+                      {item.video ? (
+                        <DeferredPromptVideo
+                          src={item.video}
+                          poster={item.poster}
+                          label={`${item.title} result video`}
+                        />
+                      ) : referenceImage ? (
+                        <img
+                          src={referenceImage}
+                          alt={item.title}
+                          className="block h-full w-full object-contain"
+                          loading="lazy"
+                        />
+                      ) : null}
+                    </div>
+                  </div>
+                </article>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+    )
   }
 
   return (

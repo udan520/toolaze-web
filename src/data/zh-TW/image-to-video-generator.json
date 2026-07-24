@@ -1,0 +1,292 @@
+{
+  "in_menu": true,
+  "topComponent": "ai-video-generator",
+  "metadata": {
+    "title": "線上圖片轉影片產生器 | 用 AI 讓照片動起來",
+    "description": "在線將圖片轉換為短篇 AI 影片。上傳參考圖片、描述動作與鏡頭運動、比較支援的影片模型，再產生圖片轉影片片段。"
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "promptExamples",
+    "modelIntro",
+    "performanceMetrics",
+    "modelSelectionGuide",
+    "troubleshooting",
+    "scenes",
+    "faq"
+  ],
+  "modelIntro": {
+    "title": "從參考圖片建立 AI 影片",
+    "modelName": "圖片轉影片產生器",
+    "modelType": "AI 影片工具",
+    "description": [
+      "圖片轉影片產生器會將你上傳的圖片作為視覺錨點，再依提示詞加入動作、鏡頭方向、光線變化與節奏。當第一個影格很重要時特別實用，例如商品照、人像、插畫、室內空間、縮圖、廣告概念與分鏡影格。",
+      "Toolaze 的圖片轉影片流程專注於實用控制。上傳清晰圖片、撰寫以動作為主的提示詞、選擇支援的影片模型，並在產生前檢視時長、解析度、音訊、參考限制與預估點數。"
+    ],
+    "featureCards": [
+      {
+        "title": "以參考圖為先的影片建立",
+        "content": "使用靜態圖片保留主體、構圖、商品外型、角色身分或視覺風格，同時加入動態。"
+      },
+      {
+        "title": "動作提示詞引導",
+        "content": "描述鏡頭運動、主體動作、光線、節奏與最後構圖，讓影片具有清楚方向。"
+      },
+      {
+        "title": "多模型比較",
+        "content": "依輸入類型、參考圖數量、時長、解析度、音訊支援與預估點數比較支援的影片模型。"
+      }
+    ]
+  },
+  "hero": {
+    "h1": "<span class=\"text-gradient\">圖片轉影片產生器</span> 線上版",
+    "desc": "將照片、商品拍攝圖、插畫或參考影格轉為短篇 AI 影片，並在同一個 Toolaze 工作流程中控制動作、鏡頭運動與模型設定。"
+  },
+  "heroDemoVideo": {
+    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4",
+    "ariaLabel": "Grok 1.5 Video 圖片轉影片示範，使用自動比例、5 秒片長與 480p 解析度",
+    "sourceHistory": "Grok 1.5 Video · Image to Video · auto · 5s · 480p · 2026-07-21 12:31:57"
+  },
+  "performanceMetrics": {
+    "title": "圖片轉影片模型設定",
+    "metrics": [
+      {
+        "label": "Grok 1.5 Video",
+        "value": "圖片轉影片；1 張參考圖；1 至 15 秒；480p 或 720p；預估 3+ credits"
+      },
+      {
+        "label": "Seedance 2.0",
+        "value": "文字或圖片轉影片；最多 9 張參考圖；5、10 或 15 秒；480p 至 4K；預估 150+ credits"
+      },
+      {
+        "label": "Seedance 2.0 Mini",
+        "value": "文字或圖片轉影片；最多 9 張參考圖；5、10 或 15 秒；480p 或 720p；預估 75+ credits"
+      },
+      {
+        "label": "Kling 3.0",
+        "value": "文字或圖片轉影片；最多 4 張參考圖；3 至 15 秒；720p 至 4K；720p 或 1080p 支援 Native Audio；預估 60+ credits"
+      }
+    ]
+  },
+  "modelSelectionGuide": {
+    "title": "選擇合適的圖片轉影片模型",
+    "subtitle": "依所需參考圖數量、影片時長，以及解析度或音訊的重要性選擇模型。",
+    "items": [
+      {
+        "title": "Grok 1.5 Video",
+        "badge": "快速單圖草稿",
+        "color": "linear-gradient(135deg, #111827, #4f46e5)",
+        "desc": "若想快速以單張參考圖片建立草稿，且 480p 或 720p 已足夠，可使用 Grok。",
+        "prompt": "適合商品動態測試、創作者片段、縮圖動畫與快速視覺實驗。",
+        "logoSrc": "/model-logos/grok.svg",
+        "logoAlt": "Grok 1.5 Video 標誌"
+      },
+      {
+        "title": "Seedance 2.0",
+        "badge": "多參考圖概念",
+        "color": "linear-gradient(135deg, #4f46e5, #ec4899)",
+        "desc": "當場景需要多張參考圖片、較長片段或較高解析輸出時，可使用 Seedance 2.0。",
+        "prompt": "適合商品組合、角色一致性、分鏡變化與細緻的活動概念。",
+        "logoSrc": "/model-logos/bytedance.svg",
+        "logoAlt": "Seedance 2.0 標誌"
+      },
+      {
+        "title": "Seedance 2.0 Mini",
+        "badge": "較低點數的迭代",
+        "color": "linear-gradient(135deg, #0ea5e9, #6366f1)",
+        "desc": "測試參考圖片、提示詞、比例與動作方向時，可使用 Seedance 2.0 Mini 製作早期草稿。",
+        "prompt": "適合在最終版本投入更多點數前調整提示詞。",
+        "logoSrc": "/model-logos/bytedance.svg",
+        "logoAlt": "Seedance 2.0 Mini 標誌"
+      },
+      {
+        "title": "Kling 3.0",
+        "badge": "高解析動態或音訊",
+        "color": "linear-gradient(135deg, #0f172a, #22c55e)",
+        "desc": "需要高解析輸出或支援設定中的 Native Audio 時，可使用 Kling 3.0。",
+        "prompt": "適合精緻概念片段、電影感動態與考量音訊的影片測試。",
+        "logoSrc": "/model-logos/kling.svg",
+        "logoAlt": "Kling 3.0 標誌"
+      }
+    ]
+  },
+  "troubleshooting": {
+    "title": "如何獲得更乾淨的圖片轉影片成果",
+    "subtitle": "模糊的來源圖片、過多動作指令或不足的保留提示詞，通常會造成不穩定的圖片轉影片結果。",
+    "items": [
+      {
+        "title": "動態不穩定",
+        "badge": "簡化動作",
+        "color": "linear-gradient(135deg, #4f46e5, #818cf8)",
+        "desc": "將提示詞縮減為一個主體動作和一個鏡頭移動。動作過多會讓短片較難預測。",
+        "prompt": "試試：陶瓷杯保持在中央，鏡頭緩慢向前推進。"
+      },
+      {
+        "title": "產品細節產生偏移",
+        "badge": "加強參考",
+        "color": "linear-gradient(135deg, #7c3aed, #c084fc)",
+        "desc": "使用清晰參考圖，並指出必須保留的形狀、標籤位置、顏色與鏡頭角度。",
+        "prompt": "試試：保留罐身形狀、正面標籤、銀色罐口與四分之三鏡頭角度。"
+      },
+      {
+        "title": "畫面不夠清晰",
+        "badge": "改善來源",
+        "color": "linear-gradient(135deg, #0ea5e9, #38bdf8)",
+        "desc": "使用乾淨參考圖，描述焦點主體與光線，並在模型支援時選擇較高解析度。",
+        "prompt": "試試：清晰產品邊緣、正面標籤對焦、柔和棚燈、乾淨背景。"
+      },
+      {
+        "title": "產生速度較慢",
+        "badge": "先做草稿",
+        "color": "linear-gradient(135deg, #059669, #34d399)",
+        "desc": "先以較短片長或較低解析度測試，再將更多 credits 用於最終版本。",
+        "prompt": "先製作 5 秒 480p 或 720p 草稿，檢查動態後再提高品質。"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "如何將圖片轉成影片",
+    "steps": [
+      {
+        "title": "上傳清晰圖片",
+        "desc": "請從清楚的商品照、人像、插畫、室內照或分鏡影格開始。圖片越清晰，模型越容易保留主體。"
+      },
+      {
+        "title": "描述一個主要動作",
+        "desc": "在提示詞中描述主體動作、鏡頭運動、光線、節奏與輸出格式。先使用一個明確動作，再於草稿穩定後調整。"
+      },
+      {
+        "title": "選擇設定並產生",
+        "desc": "依參考圖數量、時長、解析度、音訊支援與預估點數比較圖片轉影片模型。"
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "圖片轉影片提示詞範本",
+    "subtitle": "使用這些 16:9 參考圖片提示詞，測試主體保留、受控鏡頭運動與圖片轉影片的動態品質。",
+    "layout": "reference-video",
+    "items": [
+      {
+        "title": "商品照片動畫",
+        "prompt": "Start from the uploaded 16:9 product photo and create a short marketplace-ready motion clip. Preserve the diffuser shape, ceramic texture, three-quarter angle, pedestal placement, and warm beige studio lighting while adding a controlled half-turn, soft shadow movement, a subtle foreground light sweep, and a clean final product hold.",
+        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/880154a7e9874c2eb41e2beb2a9bab67.webp",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/generated/239f15b24b5741efbb1a384e4c38a06f.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/880154a7e9874c2eb41e2beb2a9bab67.webp",
+        "description": "以相符參考圖片產生的 16:9 圖片轉影片範例。",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-23T10:30:59.824Z"
+      },
+      {
+        "title": "從參考圖片製作社群短片",
+        "prompt": "Use the uploaded 16:9 creator lifestyle image as the visual anchor for a horizontal social clip. Keep the face, outfit, cafe window setting, laptop, and warm daylight recognizable while adding a small camera push-in, natural handheld micro-movement, slight background motion outside the window, and one clean ending frame for a cover.",
+        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d94dc2c421ed40bd89f0811484b581bc.webp",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/generated/a5b41cf6b4b246aa8facc3e12ae19ecc.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d94dc2c421ed40bd89f0811484b581bc.webp",
+        "description": "以相符參考圖片產生的 16:9 圖片轉影片範例。",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-23T10:31:49.931Z"
+      },
+      {
+        "title": "分鏡影格轉電影感片段",
+        "prompt": "Turn the uploaded 16:9 coastal cyclist storyboard frame into one continuous cinematic shot. Preserve the rider scale, road curve, ocean horizon, golden-hour lighting, and wide composition while adding background parallax, a slow lens drift, light wind in the scene, and a final frame that still matches the original board.",
+        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/2b49461525a74c4fa3679a2c4e40a5db.webp",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/generated/2321a8e52ff243cf91086755405ebeef.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/2b49461525a74c4fa3679a2c4e40a5db.webp",
+        "description": "以相符參考圖片產生的 16:9 圖片轉影片範例。",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-23T10:32:51.369Z"
+      },
+      {
+        "title": "從靜態圖片製作廣告概念",
+        "prompt": "Use the uploaded 16:9 campaign still as the source frame for a 5-second ad motion test. Lock the bottle shape, citrus props, reflective tabletop, teal and coral panels, and product scale, then add a slow push-in, foreground light sweep, subtle condensation sparkle, reflection movement, and a brand-safe final hold.",
+        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d45047f7914948c28a6249cb2e32bbbc.webp",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/generated/96a796f9943c42519381d15b22ab1d1d.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d45047f7914948c28a6249cb2e32bbbc.webp",
+        "description": "以相符參考圖片產生的 16:9 圖片轉影片範例。",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-23T10:33:56.418Z"
+      }
+    ]
+  },
+  "scenesTitle": "熱門圖片轉影片用途",
+  "scenes": [
+    {
+      "title": "商品照片與電商廣告",
+      "icon": "📱",
+      "desc": "將包裝照、商城圖片、模型圖與活動靜態圖轉為短篇商品影片，並控制旋轉、反射與光線。"
+    },
+    {
+      "title": "人像與角色參考",
+      "icon": "🛒",
+      "desc": "以細微動態製作人像、虛擬人物或角色設定圖，同時保持身分、服裝、色彩與構圖一致。"
+    },
+    {
+      "title": "插畫、海報與縮圖",
+      "icon": "🎬",
+      "desc": "為靜態作品、標題卡與社群縮圖加入視差、氛圍動態、鏡頭漂移或聚光燈移動。"
+    },
+    {
+      "title": "分鏡與前期製作",
+      "icon": "🎓",
+      "desc": "將單一分鏡影格轉為短篇鏡頭測試，檢驗鏡頭運動、節奏、光線與場景方向。"
+    },
+    {
+      "title": "介面模型與產品展示",
+      "icon": "🎥",
+      "desc": "為網站截圖、App 模型、儀表板概念與功能畫面加入細微鏡頭動態，同時保持介面文字清晰。"
+    },
+    {
+      "title": "房地產與室內視覺",
+      "icon": "🕹️",
+      "desc": "將房間照、外觀照、佈置概念與裝修參考轉為短篇導覽式片段，保持穩定布局與自然光線變化。"
+    }
+  ],
+  "moreTools": "相關 AI 影片工具",
+  "moreToolsLinks": [
+    {
+      "title": "AI 影片產生器",
+      "description": "使用文字提示詞或參考圖片建立 AI 影片。",
+      "href": "/ai-video-generator"
+    },
+    {
+      "title": "Seedance 2.0",
+      "description": "使用 Seedance 2.0 進行文字、圖片、影片或音訊引導的影片生成。",
+      "href": "/model/seedance-2"
+    },
+    {
+      "title": "Kling 3.0",
+      "description": "探索另一個適合電影感短片與影片概念的模型。",
+      "href": "/model/kling-3"
+    }
+  ],
+  "faqTitle": "圖片轉影片產生器常見問題",
+  "faq": [
+    {
+      "q": "什麼是圖片轉影片產生器？",
+      "a": "圖片轉影片產生器會將靜態圖片轉成短篇影片，保留上傳的參考圖，並依提示詞加入動作、鏡頭運動、光線變化與節奏。"
+    },
+    {
+      "q": "哪些圖片效果最好？",
+      "a": "請使用主體清楚、邊緣明確且細節足夠的圖片。商品照、人像、插畫、室內照、海報、縮圖與分鏡影格通常比模糊或畫面擁擠的圖片更適合。"
+    },
+    {
+      "q": "我可以控制動作嗎？",
+      "a": "可以。請用提示詞描述一個主要動作、一個鏡頭運動、光線、節奏與最後影格。簡單的動作指令通常比含有多個互相競爭動作的長提示詞更穩定。"
+    },
+    {
+      "q": "圖片轉影片該選哪個 Toolaze 模型？",
+      "a": "快速單圖草稿可使用 Grok 1.5 Video；多參考圖場景可使用 Seedance 2.0；較低點數的迭代可使用 Seedance 2.0 Mini；需要支援的高解析輸出或 Native Audio 時可使用 Kling 3.0。"
+    },
+    {
+      "q": "Toolaze 的圖片轉影片是免費的嗎？",
+      "a": "Toolaze 可能依目前的存取政策提供免費點數或特定試用。產生器會在建立影片前顯示模型與點數需求。"
+    },
+    {
+      "q": "這與 Seedance 的圖片轉影片頁面有何不同？",
+      "a": "此頁面用於比較 Toolaze 支援影片模型的通用圖片轉影片流程；Seedance 頁面則聚焦於 Seedance 2.0 的特定設定與範例。"
+    }
+  ],
+  "topTool": {
+    "defaultMode": "image-to-video"
+  }
+}

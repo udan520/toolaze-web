@@ -109,6 +109,8 @@ interface AiVideoGeneratorToolProps {
 
 interface PromptInsertEventDetail {
   prompt?: string
+  imageUrl?: string
+  imageName?: string
 }
 
 const FALLBACK_TEXT = {
@@ -479,16 +481,17 @@ export default function AiVideoGeneratorTool({
     const handler = (event: Event) => {
       const detail = (event as CustomEvent<PromptInsertEventDetail>).detail
       const promptText = String(detail?.prompt || '').trim()
+      const promptImageUrl = String(detail?.imageUrl || '').trim()
       if (!promptText) return
 
       setPrompt(promptText)
-      setActiveMode('text-to-video')
+      setActiveMode(promptImageUrl ? 'image-to-video' : 'text-to-video')
       setIsModelMenuOpen(false)
       setIsDurationMenuOpen(false)
       imageFilesRef.current.forEach((item) => URL.revokeObjectURL(item.preview))
       imageFilesRef.current = []
       setImageFiles([])
-      setRemoteImageUrls([])
+      setRemoteImageUrls(promptImageUrl ? [promptImageUrl] : [])
       window.scrollTo({ top: 0, behavior: 'smooth' })
     }
 

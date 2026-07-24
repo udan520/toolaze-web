@@ -226,6 +226,8 @@ interface StrategyCardItem {
   prompt?: string
   color?: string
   badge?: string
+  logoSrc?: string
+  logoAlt?: string
 }
 
 interface StrategyCardSection {
@@ -345,17 +347,28 @@ function StrategyCardGrid({
               className="rounded-3xl border border-indigo-50 bg-white p-6 shadow-sm"
             >
               <div className="flex items-center gap-3 mb-5">
-                <div
-                  className="h-12 w-12 rounded-2xl border-4 border-white shadow-sm"
-                  style={{ background: item.color || 'linear-gradient(135deg, #6366f1, #ec4899)' }}
-                />
+                {item.logoSrc ? (
+                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-slate-100 bg-white shadow-sm">
+                    <img
+                      src={item.logoSrc}
+                      alt={item.logoAlt || `${item.title} logo`}
+                      className="h-9 w-9 object-contain"
+                      loading="lazy"
+                    />
+                  </div>
+                ) : (
+                  <div
+                    className="h-12 w-12 rounded-2xl border-4 border-white shadow-sm"
+                    style={{ background: item.color || 'linear-gradient(135deg, #6366f1, #ec4899)' }}
+                  />
+                )}
                 {item.badge && (
                   <span className="rounded-full bg-indigo-50 px-3 py-1 text-xs font-bold text-indigo-700">
                     {item.badge}
                   </span>
                 )}
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3">{item.title}</h3>
+              <h3 className={item.logoSrc ? 'text-2xl font-extrabold text-slate-950 mb-3' : 'text-xl font-bold text-slate-900 mb-3'}>{item.title}</h3>
               {item.desc && (
                 <p className="text-sm leading-relaxed text-slate-600">{item.desc}</p>
               )}
@@ -467,6 +480,10 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
     // 顶部功能：优先使用 JSON 中的 topComponent，否则用 tool
     const topComp = (content.topComponent || tool) as string
     const videoGeneratorDefaultModel = VIDEO_GENERATOR_DEFAULT_MODELS[topComp as keyof typeof VIDEO_GENERATOR_DEFAULT_MODELS]
+    const videoGeneratorDefaultMode =
+      content.topTool?.defaultMode === 'image-to-video' || content.topTool?.defaultMode === 'text-to-video'
+        ? content.topTool.defaultMode
+        : undefined
     const isScenePage = content.visiblePageType === 'scene'
     const isAiImageToolPage = content.pageGroup === 'ai-tools' || AI_IMAGE_TOOL_TOP_COMPONENTS.has(topComp)
     const promptExampleTargetMode: PromptInsertMode | undefined =
@@ -1081,6 +1098,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                   <AiVideoGeneratorTool
                     modelId={videoGeneratorDefaultModel}
                     allowModelSelect
+                    defaultMode={videoGeneratorDefaultMode}
                     heroBreadcrumbItems={breadcrumbItems}
                     heroTitleHtml={content.hero?.h1 || (
                       topComp === 'seedance-2'
@@ -1290,7 +1308,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                 )
               },
               promptExamples: (bgClass: string) => {
-                const promptExamples = content.promptExamples as { title?: string; subtitle?: string; items?: Array<{ title: string; prompt: string; image?: string; video?: string; poster?: string; description?: string; duration?: string; uploadDate?: string; note?: string; color?: string }> } | undefined
+                const promptExamples = content.promptExamples as { title?: string; subtitle?: string; layout?: 'grid' | 'horizontal' | 'reference-video'; items?: Array<{ title: string; prompt: string; referenceImage?: string; image?: string; video?: string; poster?: string; description?: string; duration?: string; uploadDate?: string; note?: string; color?: string }> } | undefined
                 if (!promptExamples?.items || promptExamples.items.length === 0) return null
                 return (
                   <PromptExamples
@@ -1299,7 +1317,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                     subtitle={promptExamples.subtitle}
                     items={promptExamples.items}
                     bgClass={bgClass}
-                    layout={tool === 'ai-dance-generator' ? 'horizontal' : 'grid'}
+                    layout={promptExamples.layout || (tool === 'ai-dance-generator' ? 'horizontal' : 'grid')}
                     targetMode={promptExampleTargetMode}
                   />
                 )

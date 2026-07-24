@@ -813,6 +813,8 @@ export async function getL2SeoContent(tool: string, locale: string = 'en') {
         data = await importL2FlatJson('gpt-image-2', normalizedLocale)
       } else if (tool === 'ai-video-generator') {
         data = await importL2FlatJson('ai-video-generator', normalizedLocale)
+      } else if (tool === 'image-to-video-generator') {
+        data = await importL2FlatJson('image-to-video-generator', normalizedLocale)
       } else if (tool === 'seedance-2-5') {
         data = await importL2FlatJson('seedance-2-5', normalizedLocale)
       } else if (tool === 'seedance-2') {
