@@ -1,0 +1,238 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 2,
+    "modelId": "grok-video-1-5",
+    "defaultPrompt": "アップロードした写真の人物が、短い映画風動画で自然でやさしいロマンチックなキスをするようにしてください。敬意があり、露骨ではない表現にします。",
+    "hideModelBranding": true,
+    "compactResultPanel": true,
+    "displayName": "AIキス動画ジェネレーター",
+    "textOverrides": {
+      "promptLabel": "キス動画を説明",
+      "promptPlaceholder": "例：夕日の中でカップルがやさしくキスする動画",
+      "generateLabel": "キス動画を作成",
+      "uploadTitle": "1枚または2枚の写真をアップロード"
+    },
+    "defaultVideoDurationSeconds": 5,
+    "videoDurationOptions": [
+      3,
+      5,
+      8,
+      10
+    ],
+    "sampleImages": [
+      {
+        "url": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/83a8c5b91a4945beb66275c38a731dbf.png",
+        "title": "AIキス 16:9デモ動画",
+        "width": 16,
+        "height": 9,
+        "mediaType": "video",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/15ccbe71d8eb4921930b8b7638bcebab.webp"
+      }
+    ]
+  },
+  "metadata": {
+    "title": "AIキス動画ジェネレーター オンライン | キス動画を作成",
+    "description": "ToolazeのAIキス動画ジェネレーターで、1枚または2枚の写真からカップル編集、記念日リール、SNS向けの短いロマンチックなキス動画を作成できます。"
+  },
+  "sectionsOrder": [
+    "intro",
+    "promptExamples",
+    "howToUse",
+    "scenes",
+    "features",
+    "faq"
+  ],
+  "hero": {
+    "h1": "<span class=\"text-gradient\">AIキス動画ジェネレーター</span> オンライン",
+    "desc": "鮮明な写真を1枚または2枚アップロードし、雰囲気を説明して、カップル編集や記念日リール向けの短いロマンチックなキス動画を作成します。"
+  },
+  "intro": {
+    "title": "写真からロマンチックなキス動画を作成",
+    "content": [
+      {
+        "title": "写真を短いキス動画へ",
+        "text": "Toolazeは1枚または2枚の写真を、カップル編集や記念日投稿向けのやさしいキス動画に変換します。"
+      },
+      {
+        "title": "プロンプトで場面を指定",
+        "text": "キスの雰囲気、カメラ、照明、背景、服装、感情を説明して自然な動画に近づけます。"
+      },
+      {
+        "title": "敬意ある自然な結果",
+        "text": "許可のある成人の写真を使い、やさしいキスや温かな笑顔など露骨ではない表現を指定します。"
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "AIキス動画のプロンプト例",
+    "subtitle": "写真をアップロードし、ロマンチックな短編動画用に再利用できます。",
+    "items": [
+      {
+        "title": "夕日のカップルキス",
+        "prompt": "このカップルが夕日の中でやさしくロマンチックにキスする、暖かな金色の光、柔らかなカメラ寄り、自然な笑顔、映画風5秒動画、縦長9:16。",
+        "note": "記念日やストーリー投稿に向いています。",
+        "color": "linear-gradient(135deg, #fb7185, #7c3aed)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/644ef4ef82884741b92b7932d83b4735.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d94331861cac45a2b3d488966b18f6e0.webp",
+        "description": "記念日やストーリー投稿に向いています。",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-24T00:24:00.000Z"
+      },
+      {
+        "title": "雨の街のロマンス",
+        "prompt": "アップロード写真を雨の街角のロマンチックなキス動画にする、ネオン反射、近い抱擁、スローモーション、自然な表情、縦長9:16。",
+        "note": "ムードのあるカップル編集に使えます。",
+        "color": "linear-gradient(135deg, #38bdf8, #4c1d95)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/6469c25f84b947aeb4c544bfed5c9768.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ff969c52195b43e3be68f45fb11f5140.webp",
+        "description": "ムードのあるカップル編集に使えます。",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-24T00:24:00.000Z"
+      },
+      {
+        "title": "結婚式の瞬間",
+        "prompt": "このカップル写真から優しい結婚式のキス動画を作成、上品な照明、清潔な背景、控えめな動き、感情的で現実的、縦長9:16。",
+        "note": "招待リールや結婚式ムードボードに便利です。",
+        "color": "linear-gradient(135deg, #f8fafc, #c084fc)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/7d41c57d1bc5441a9951fdb4bd8042aa.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/99189a0e1a4e4570ba7c059b3ad4d461.webp",
+        "description": "招待リールや結婚式ムードボードに便利です。",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-24T00:24:00.000Z"
+      },
+      {
+        "title": "再会のキス",
+        "prompt": "2人が再会してやさしくキスする、到着シーンの雰囲気、暖かな光、穏やかなカメラ回り、露骨ではないロマンス、縦長9:16。",
+        "note": "物語性のあるカップル動画に向きます。",
+        "color": "linear-gradient(135deg, #f59e0b, #be123c)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/c1706eb3d80f4252a0ab290339158b7d.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/a4c16e2ca6c944f582c8b98d5eb3d23c.webp",
+        "description": "物語性のあるカップル動画に向きます。",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-24T00:24:00.000Z"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "AIキス動画ジェネレーターの使い方",
+    "steps": [
+      {
+        "title": "写真をアップロード",
+        "desc": "顔が見える明るく鮮明な写真を使い、編集許可のある成人の写真から始めます。"
+      },
+      {
+        "title": "ロマンチックな場面を説明",
+        "desc": "キスの種類、雰囲気、場所、照明、カメラ、構図、映画風かカジュアルかを指定します。"
+      },
+      {
+        "title": "生成して調整",
+        "desc": "動画を作成し、動きや表情、背景を整えたい場合はプロンプトを短く明確にします。"
+      }
+    ]
+  },
+  "scenesTitle": "AIキス動画が役立つ場面",
+  "scenes": [
+    {
+      "title": "カップルのストーリーリール",
+      "icon": "💞",
+      "desc": "記念日、恋愛ストーリー、個人SNS編集向けの短いロマンチック動画を作成できます。"
+    },
+    {
+      "title": "結婚式やプロポーズの構想",
+      "icon": "💍",
+      "desc": "招待動画、結婚式ムードボード、プロポーズリール用のやさしいキスシーンを下書きできます。"
+    },
+    {
+      "title": "映画風ロマンス編集",
+      "icon": "🎬",
+      "desc": "柔らかな光、クローズアップ、雨、夕日、映画風のロマンチックな動きを試せます。"
+    }
+  ],
+  "features": {
+    "title": "AIキス動画作成の主な機能",
+    "items": [
+      {
+        "icon": "📷",
+        "iconType": "upload",
+        "title": "1枚または2枚の写真",
+        "desc": "カップル写真または2枚の参照写真をアップロードし、プロンプトで動きを指定できます。"
+      },
+      {
+        "icon": "🎥",
+        "iconType": "camera",
+        "title": "プロンプトによる動画演出",
+        "desc": "雰囲気、照明、背景、カメラ、構図、キスの種類を自然な言葉で指定できます。"
+      },
+      {
+        "icon": "💗",
+        "iconType": "creative",
+        "title": "露骨ではないロマンチック表現",
+        "desc": "やさしいキス、抱擁、笑顔、結婚式の瞬間、ストーリーリールを作成できます。"
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "高速ブラウザ作成",
+        "desc": "動画編集ソフトや手動アニメーションなしで短い動画をオンライン生成できます。"
+      },
+      {
+        "icon": "🧑‍🤝‍🧑",
+        "iconType": "workflow",
+        "title": "カップル向けプロンプト",
+        "desc": "顔の一貫性、自然な表情、穏やかな動き、きれいな構図を意識できます。"
+      },
+      {
+        "icon": "🛡️",
+        "iconType": "safety",
+        "title": "敬意を重視した編集",
+        "desc": "編集許可のある写真を使い、成人の合意あるロマンチック表現に限定します。"
+      }
+    ]
+  },
+  "faqTitle": "AIキス動画ジェネレーター FAQ",
+  "faq": [
+    {
+      "q": "AIキス動画ジェネレーターとは何ですか？",
+      "a": "1枚または2枚の写真とテキストプロンプトから、短いロマンチックなキス動画を作成するToolazeのページです。"
+    },
+    {
+      "q": "別々の2枚の写真を使えますか？",
+      "a": "はい。1枚または2枚の写真をアップロードできます。"
+    },
+    {
+      "q": "どんなプロンプトが合いますか？",
+      "a": "やさしいキス、夕日、近い抱擁、結婚式の雰囲気、滑らかなカメラ寄り、自然な笑顔を指定します。"
+    },
+    {
+      "q": "結婚式や記念日に使えますか？",
+      "a": "はい。許可のある写真で、コンセプト動画、招待リール、記念日編集、SNS投稿に使えます。"
+    },
+    {
+      "q": "自然に見せるには？",
+      "a": "鮮明で照明が近い写真を使い、控えめな動き、自然な表情、短い映画風クリップを指定します。"
+    }
+  ],
+  "moreTools": "その他のAI動画ツール",
+  "moreToolsLinks": [
+    {
+      "title": "AI動画ジェネレーター",
+      "href": "/ai-video-generator",
+      "description": "テキスト、画像、動画、音声から短いAI動画を作成できます。"
+    },
+    {
+      "title": "AIダンスジェネレーター",
+      "href": "/ai-dance-generator",
+      "description": "1枚の写真から短いダンス動画を作成できます。"
+    },
+    {
+      "title": "AIカップル写真メーカー",
+      "href": "/ai-couple-photo-maker",
+      "description": "静止画のロマンチックなカップル写真を作成できます。"
+    }
+  ]
+}

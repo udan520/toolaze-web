@@ -1,0 +1,238 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 2,
+    "modelId": "grok-video-1-5",
+    "defaultPrompt": "Make the people in the uploaded photo share a gentle, romantic kiss in a short cinematic video. Keep it natural, respectful, and non-explicit.",
+    "hideModelBranding": true,
+    "compactResultPanel": true,
+    "displayName": "AI Kissing Video Generator",
+    "textOverrides": {
+      "promptLabel": "Describe the kiss video",
+      "promptPlaceholder": "Example: make this couple share a gentle romantic kiss at sunset",
+      "generateLabel": "Create Kiss Video",
+      "uploadTitle": "Upload one or two photos"
+    },
+    "defaultVideoDurationSeconds": 5,
+    "videoDurationOptions": [
+      3,
+      5,
+      8,
+      10
+    ],
+    "sampleImages": [
+      {
+        "url": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/83a8c5b91a4945beb66275c38a731dbf.png",
+        "title": "AI Kissing 16:9 demo video",
+        "width": 16,
+        "height": 9,
+        "mediaType": "video",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/15ccbe71d8eb4921930b8b7638bcebab.webp"
+      }
+    ]
+  },
+  "metadata": {
+    "title": "AI Kissing Video Generator Online | Create AI Kiss Videos",
+    "description": "Use Toolaze AI Kissing Video Generator online to turn one or two photos into short romantic kiss videos for couple edits, story reels, and social clips."
+  },
+  "sectionsOrder": [
+    "intro",
+    "promptExamples",
+    "howToUse",
+    "scenes",
+    "features",
+    "faq"
+  ],
+  "hero": {
+    "h1": "<span class=\"text-gradient\">AI Kissing Video Generator</span> Online",
+    "desc": "Upload one or two clear photos, describe the mood, and create a short romantic AI kiss video for couple edits, anniversary reels, story posts, and cinematic social clips."
+  },
+  "intro": {
+    "title": "Create Romantic Kiss Videos From Photos",
+    "content": [
+      {
+        "title": "Turn photos into short kiss videos",
+        "text": "Toolaze AI Kissing Video Generator helps you animate one or two uploaded photos into a gentle romantic kiss video. Use it for couple edits, anniversary ideas, love story reels, and creative social posts."
+      },
+      {
+        "title": "Guide the scene with a prompt",
+        "text": "Describe the kiss style, camera angle, lighting, background, wardrobe, and emotion so the output feels like a natural romantic clip instead of a random animation."
+      },
+      {
+        "title": "Keep results respectful and realistic",
+        "text": "Use clear consenting adult subjects, avoid explicit wording, and ask for subtle motion such as a soft kiss, warm smile, close embrace, sunset lighting, or cinematic slow movement."
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "AI Kiss Video Prompt Ideas",
+    "subtitle": "Upload one or two photos, then reuse these prompt structures for romantic short videos.",
+    "items": [
+      {
+        "title": "Sunset Couple Kiss",
+        "prompt": "Make this couple share a gentle romantic kiss at sunset, warm golden light, soft camera push-in, natural smiles, cinematic 5-second video, vertical 9:16.",
+        "note": "Good for anniversary edits, proposal memories, and story reels.",
+        "color": "linear-gradient(135deg, #fb7185, #7c3aed)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/644ef4ef82884741b92b7932d83b4735.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d94331861cac45a2b3d488966b18f6e0.webp",
+        "description": "Good for anniversary edits, proposal memories, and story reels.",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-24T00:24:00.000Z"
+      },
+      {
+        "title": "Rainy Street Romance",
+        "prompt": "Turn the uploaded photo into a romantic rainy street kiss video, soft neon reflections, close embrace, slow motion, realistic facial expressions, vertical 9:16.",
+        "note": "Use for moody couple edits and film-style social clips.",
+        "color": "linear-gradient(135deg, #38bdf8, #4c1d95)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/6469c25f84b947aeb4c544bfed5c9768.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ff969c52195b43e3be68f45fb11f5140.webp",
+        "description": "Use for moody couple edits and film-style social clips.",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-24T00:24:00.000Z"
+      },
+      {
+        "title": "Wedding Moment",
+        "prompt": "Create a tender wedding kiss video from this couple photo, elegant lighting, clean background, subtle veil and suit movement, emotional but realistic, vertical 9:16.",
+        "note": "Useful for wedding concepts, invitation reels, and memory drafts.",
+        "color": "linear-gradient(135deg, #f8fafc, #c084fc)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/7d41c57d1bc5441a9951fdb4bd8042aa.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/99189a0e1a4e4570ba7c059b3ad4d461.webp",
+        "description": "Useful for wedding concepts, invitation reels, and memory drafts.",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-24T00:24:00.000Z"
+      },
+      {
+        "title": "Long-Distance Reunion",
+        "prompt": "Make the two people in these photos meet and share a soft reunion kiss, airport arrival mood, warm lighting, gentle camera orbit, non-explicit romance, vertical 9:16.",
+        "note": "Good for story-driven couple clips and reunion themes.",
+        "color": "linear-gradient(135deg, #f59e0b, #be123c)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/c1706eb3d80f4252a0ab290339158b7d.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/a4c16e2ca6c944f582c8b98d5eb3d23c.webp",
+        "description": "Good for story-driven couple clips and reunion themes.",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-24T00:24:00.000Z"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "How to Use the AI Kissing Video Generator",
+    "steps": [
+      {
+        "title": "Upload one or two photos",
+        "desc": "Start with clear, well-lit photos where faces are visible. Use adult subjects and photos you have permission to edit."
+      },
+      {
+        "title": "Describe the romantic scene",
+        "desc": "Add the kiss style, mood, setting, lighting, camera movement, framing, and whether the clip should feel cinematic, casual, wedding-like, or story-driven."
+      },
+      {
+        "title": "Generate and refine",
+        "desc": "Create the video, then simplify the prompt or adjust framing if the motion, facial expression, or background needs a cleaner result."
+      }
+    ]
+  },
+  "scenesTitle": "Where AI Kiss Videos Work Best",
+  "scenes": [
+    {
+      "title": "Couple story reels",
+      "icon": "💞",
+      "desc": "Create short romantic clips for anniversaries, love story posts, engagement memories, and personal social edits."
+    },
+    {
+      "title": "Wedding and proposal concepts",
+      "icon": "💍",
+      "desc": "Draft gentle kiss moments for invitation videos, wedding mood boards, proposal reels, and event storytelling."
+    },
+    {
+      "title": "Cinematic romance edits",
+      "icon": "🎬",
+      "desc": "Explore soft lighting, close-up framing, rain scenes, sunset backgrounds, and film-style romantic motion."
+    }
+  ],
+  "features": {
+    "title": "Key Features for AI Kiss Video Creation",
+    "items": [
+      {
+        "icon": "📷",
+        "iconType": "upload",
+        "title": "One or two photo upload",
+        "desc": "Upload a single couple photo or two reference photos and guide the romantic motion with a prompt."
+      },
+      {
+        "icon": "🎥",
+        "iconType": "camera",
+        "title": "Prompt-led video direction",
+        "desc": "Control mood, lighting, background, camera movement, framing, and kiss style in plain language."
+      },
+      {
+        "icon": "💗",
+        "iconType": "creative",
+        "title": "Romantic non-explicit scenes",
+        "desc": "Create soft kisses, close embraces, warm smiles, wedding moments, and story reels without explicit content."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Fast browser workflow",
+        "desc": "Generate a short clip online without setting up video editing software or manual animation timelines."
+      },
+      {
+        "icon": "🧑‍🤝‍🧑",
+        "iconType": "workflow",
+        "title": "Couple-focused prompts",
+        "desc": "Use prompts designed for facial consistency, natural expressions, gentle motion, and clean couple framing."
+      },
+      {
+        "icon": "🛡️",
+        "iconType": "safety",
+        "title": "Respect-first editing",
+        "desc": "Use photos you are allowed to edit and keep prompts focused on consensual, adult, respectful romantic scenes."
+      }
+    ]
+  },
+  "faqTitle": "AI Kissing Video Generator FAQ",
+  "faq": [
+    {
+      "q": "What is the AI Kissing Video Generator?",
+      "a": "It is a Toolaze tool page for creating short romantic kiss videos from one or two uploaded photos plus a text prompt."
+    },
+    {
+      "q": "Can I upload two separate photos?",
+      "a": "Yes. The page supports one or two uploaded photos, so you can start from a couple photo or two compatible reference photos."
+    },
+    {
+      "q": "What prompts work best for AI kiss videos?",
+      "a": "Use clear scene details such as gentle kiss, sunset light, close embrace, wedding mood, slow camera push-in, soft smile, realistic expressions, and non-explicit romance."
+    },
+    {
+      "q": "Can I use this for wedding or anniversary videos?",
+      "a": "Yes. It works well for concept clips, invitation reels, anniversary edits, proposal ideas, and social posts when you use permitted photos."
+    },
+    {
+      "q": "How do I get more natural results?",
+      "a": "Upload clear, front-facing photos with similar lighting and ask for subtle motion, realistic facial expressions, clean framing, and a short cinematic clip."
+    }
+  ],
+  "moreTools": "More AI Video Tools",
+  "moreToolsLinks": [
+    {
+      "title": "AI Video Generator",
+      "href": "/ai-video-generator",
+      "description": "Create short AI videos from text, images, video clips, or audio references."
+    },
+    {
+      "title": "AI Dance Generator",
+      "href": "/ai-dance-generator",
+      "description": "Upload one image and create short dance videos for choreography and social clips."
+    },
+    {
+      "title": "AI Couple Photo Maker",
+      "href": "/ai-couple-photo-maker",
+      "description": "Generate romantic couple portraits when you need still-image results."
+    }
+  ]
+}

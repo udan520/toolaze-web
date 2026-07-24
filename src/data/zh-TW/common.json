@@ -50,7 +50,8 @@
     "seedream50Lite": "Seedream 5.0 Lite",
     "seedream50Pro": "Seedream 5.0 Pro",
     "seedance25": "Seedance 2.5",
-    "aiDanceGenerator": "AI 跳舞生成器"
+    "aiDanceGenerator": "AI 跳舞生成器",
+    "aiKissingVideoGenerator": "AI 親吻影片生成器"
   },
   "home": {
     "metadata": {
@@ -270,7 +271,8 @@
     "aiImageGenerator": "AI 圖像產生器",
     "refundPolicy": "退款政策",
     "acceptableUse": "可接受使用政策",
-    "aiDanceGenerator": "AI 跳舞生成器"
+    "aiDanceGenerator": "AI 跳舞生成器",
+    "aiKissingVideoGenerator": "AI 親吻影片生成器"
   },
   "breadcrumb": {
     "home": "首頁",

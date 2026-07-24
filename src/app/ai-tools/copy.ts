@@ -52,6 +52,8 @@ const cardAssets = {
   couple: '/ai-couple-photo-maker/rainy-eiffel-4x3.jpg',
   baby: '/ai-baby-generator/hero-baby-portrait.webp',
   dance: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/ai-dance-demo-source.png',
+  kissing:
+    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/15ccbe71d8eb4921930b8b7638bcebab.webp',
   hairstyle: '/ai-hairstyle-changer/hero-before-after.webp',
   hairColor: '/ai-hair-color-changer/rose-pink-before-after.webp',
 }
@@ -141,6 +143,13 @@ const en: StoredAiToolsPageCopy = {
       href: '/ai-dance-generator',
       image: cardAssets.dance,
       description: 'Upload one image and create short dance videos for choreography concepts, class promos, and social clips.',
+      category: 'video',
+    },
+    {
+      title: 'AI Kissing Video Generator',
+      href: '/ai-kissing-video-generator',
+      image: cardAssets.kissing,
+      description: 'Upload one or two photos and create short romantic AI kiss videos for couple edits, anniversaries, and story reels.',
       category: 'video',
     },
     {
@@ -346,6 +355,7 @@ type SupplementalCopy = {
   textToImage: Pick<AiToolsCard, 'title' | 'description'>
   imageToImage: Pick<AiToolsCard, 'title' | 'description'>
   video: Pick<AiToolsCard, 'title' | 'description'>
+  kissing: Pick<AiToolsCard, 'title' | 'description'>
   hairstyle: Pick<AiToolsCard, 'title' | 'description'>
   hairColor: Pick<AiToolsCard, 'title' | 'description'>
 }
@@ -357,6 +367,7 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     textToImage: { title: 'Text to Image Generator', description: 'Turn written prompts into AI images for concepts, marketing visuals, posters, and social content.' },
     imageToImage: { title: 'AI Image to Image Generator', description: 'Upload a reference image and use a prompt to restyle, edit, or transform it with AI.' },
     video: { title: 'AI Video Generator', description: 'Create short AI videos online from text, images, video clips, or audio references.' },
+    kissing: { title: 'AI Kissing Video Generator', description: 'Upload one or two photos and create short romantic AI kiss videos for couple edits, anniversaries, and story reels.' },
     hairstyle: { title: 'AI Hairstyle Changer', description: 'Try different hairstyles on a reference photo while keeping the person and overall look consistent.' },
     hairColor: { title: 'AI Hair Color Changer', description: 'Preview natural and creative hair colors on your photo with reference-guided AI editing.' },
   },
@@ -366,6 +377,7 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     textToImage: { title: 'Text-zu-Bild-Generator', description: 'Verwandeln Sie Textprompts in KI-Bilder für Konzepte, Marketingvisuals, Poster und Social Media.' },
     imageToImage: { title: 'KI-Bild-zu-Bild-Generator', description: 'Laden Sie ein Referenzbild hoch und gestalten, bearbeiten oder verwandeln Sie es per Prompt mit KI.' },
     video: { title: 'KI-Videogenerator', description: 'Erstellen Sie kurze KI-Videos aus Text, Bildern, Videoclips oder Audioreferenzen.' },
+    kissing: { title: 'KI-Kuss-Video-Generator', description: 'Laden Sie ein oder zwei Fotos hoch und erstellen Sie kurze romantische KI-Kussvideos für Paar-Edits, Jubiläen und Story-Reels.' },
     hairstyle: { title: 'KI-Frisurenwechsler', description: 'Probieren Sie verschiedene Frisuren auf einem Referenzfoto aus und bewahren Sie das Aussehen der Person.' },
     hairColor: { title: 'KI-Haarfarbenwechsler', description: 'Testen Sie natürliche und kreative Haarfarben auf Ihrem Foto mit referenzbasierter KI-Bearbeitung.' },
   },
@@ -375,6 +387,7 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     textToImage: { title: 'テキストから画像生成', description: '文章プロンプトからコンセプト、広告、ポスター、SNS向けのAI画像を作成できます。' },
     imageToImage: { title: 'AI画像から画像生成', description: '参照画像をアップロードし、プロンプトでスタイル変更、編集、変換を行えます。' },
     video: { title: 'AI動画生成', description: 'テキスト、画像、動画クリップ、音声参照から短いAI動画をオンライン作成できます。' },
+    kissing: { title: 'AIキス動画ジェネレーター', description: '1枚または2枚の写真から、カップル編集、記念日、ストーリーリール向けの短いロマンチックなAIキス動画を作成できます。' },
     hairstyle: { title: 'AIヘアスタイルチェンジャー', description: '人物の印象を保ちながら、参照写真でさまざまな髪型を試せます。' },
     hairColor: { title: 'AIヘアカラー変更', description: '参照画像を使ったAI編集で、自然な髪色や個性的なカラーを写真上で確認できます。' },
   },
@@ -384,6 +397,7 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     textToImage: { title: 'Generador de texto a imagen', description: 'Convierte prompts escritos en imágenes IA para conceptos, marketing, pósteres y contenido social.' },
     imageToImage: { title: 'Generador IA de imagen a imagen', description: 'Sube una imagen de referencia y usa un prompt para cambiar su estilo, editarla o transformarla.' },
     video: { title: 'Generador de video IA', description: 'Crea videos cortos con IA desde texto, imágenes, clips de video o referencias de audio.' },
+    kissing: { title: 'Generador de videos de besos IA', description: 'Sube una o dos fotos y crea videos cortos de besos románticos para ediciones de pareja, aniversarios y reels.' },
     hairstyle: { title: 'Cambiador de peinados IA', description: 'Prueba distintos peinados en una foto de referencia manteniendo el aspecto de la persona.' },
     hairColor: { title: 'Cambiador de color de pelo IA', description: 'Prueba colores de pelo naturales y creativos con edición IA guiada por referencia.' },
   },
@@ -393,6 +407,7 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     textToImage: { title: '文字轉圖像生成器', description: '將文字提示詞轉換為適合概念、行銷、海報與社群內容的 AI 圖像。' },
     imageToImage: { title: 'AI 圖像轉圖像生成器', description: '上傳參考圖像並透過提示詞重新設計、編輯或轉換圖像。' },
     video: { title: 'AI 影片生成器', description: '使用文字、圖像、影片片段或音訊參考在線建立 AI 短片。' },
+    kissing: { title: 'AI 親吻影片生成器', description: '上傳一張或兩張照片，生成適合情侶剪輯、紀念日與 Story Reels 的浪漫親吻短片。' },
     hairstyle: { title: 'AI 髮型變換器', description: '在保留人物整體外觀的同時，透過參考照片嘗試不同髮型。' },
     hairColor: { title: 'AI 髮色變換器', description: '使用參考圖引導的 AI 編輯，在照片上預覽自然或創意髮色。' },
   },
@@ -402,6 +417,7 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     textToImage: { title: 'Gerador de texto para imagem', description: 'Transforme prompts em imagens de IA para conceitos, marketing, pôsteres e conteúdo social.' },
     imageToImage: { title: 'Gerador IA de imagem para imagem', description: 'Envie uma imagem de referência e use um prompt para editar, transformar ou mudar seu estilo.' },
     video: { title: 'Gerador de vídeo IA', description: 'Crie vídeos curtos com IA a partir de texto, imagens, clipes ou referências de áudio.' },
+    kissing: { title: 'Gerador de vídeos de beijo com IA', description: 'Envie uma ou duas fotos e crie vídeos curtos de beijo romântico para edições de casal, aniversários e reels.' },
     hairstyle: { title: 'Alterador de penteado IA', description: 'Teste penteados diferentes em uma foto mantendo a pessoa e o visual geral consistentes.' },
     hairColor: { title: 'Alterador de cor de cabelo IA', description: 'Visualize cores naturais e criativas no cabelo com edição de IA guiada por referência.' },
   },
@@ -411,6 +427,7 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     textToImage: { title: 'Générateur texte-image', description: 'Transformez des prompts en images IA pour concepts, marketing, affiches et contenus sociaux.' },
     imageToImage: { title: 'Générateur image-à-image IA', description: 'Importez une image de référence et utilisez un prompt pour la modifier, la restyler ou la transformer.' },
     video: { title: 'Générateur de vidéo IA', description: 'Créez de courtes vidéos IA à partir de texte, d’images, de clips ou de références audio.' },
+    kissing: { title: 'Générateur de vidéos de baiser IA', description: 'Importez une ou deux photos et créez de courtes vidéos de baiser romantique pour montages de couple, anniversaires et reels.' },
     hairstyle: { title: 'Changeur de coiffure IA', description: 'Essayez différentes coiffures sur une photo de référence tout en conservant l’apparence de la personne.' },
     hairColor: { title: 'Changeur de couleur de cheveux IA', description: 'Prévisualisez des couleurs naturelles ou créatives grâce à une retouche IA guidée par référence.' },
   },
@@ -420,6 +437,7 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     textToImage: { title: '텍스트-이미지 생성기', description: '텍스트 프롬프트를 콘셉트, 마케팅, 포스터 및 소셜 콘텐츠용 AI 이미지로 만드세요.' },
     imageToImage: { title: 'AI 이미지-이미지 생성기', description: '참조 이미지를 업로드하고 프롬프트로 스타일 변경, 편집 또는 변환하세요.' },
     video: { title: 'AI 동영상 생성기', description: '텍스트, 이미지, 동영상 클립 또는 오디오 참조로 짧은 AI 동영상을 만드세요.' },
+    kissing: { title: 'AI 키스 동영상 생성기', description: '사진 한 장 또는 두 장을 업로드해 커플 편집, 기념일, 스토리 릴용 짧은 로맨틱 AI 키스 영상을 만드세요.' },
     hairstyle: { title: 'AI 헤어스타일 변경기', description: '인물의 전체적인 모습을 유지하면서 참조 사진에서 다양한 헤어스타일을 시험해 보세요.' },
     hairColor: { title: 'AI 헤어 컬러 변경기', description: '참조 기반 AI 편집으로 사진에서 자연스럽거나 창의적인 헤어 컬러를 미리 확인하세요.' },
   },
@@ -429,6 +447,7 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     textToImage: { title: 'Generatore da testo a immagine', description: 'Trasforma prompt scritti in immagini IA per concept, marketing, poster e contenuti social.' },
     imageToImage: { title: 'Generatore IA da immagine a immagine', description: 'Carica un’immagine di riferimento e usa un prompt per modificarla, trasformarla o cambiarne lo stile.' },
     video: { title: 'Generatore video IA', description: 'Crea brevi video IA da testo, immagini, clip video o riferimenti audio.' },
+    kissing: { title: 'Generatore di video di baci IA', description: 'Carica una o due foto e crea brevi video di baci romantici per edit di coppia, anniversari e reel.' },
     hairstyle: { title: 'Cambia acconciatura IA', description: 'Prova diverse acconciature su una foto mantenendo coerenti la persona e l’aspetto generale.' },
     hairColor: { title: 'Cambia colore capelli IA', description: 'Visualizza colori naturali e creativi con editing IA guidato da un’immagine di riferimento.' },
   },
@@ -461,6 +480,7 @@ function getLocalizedCards(locale: AiToolsLocale, storedCards: AiToolsCard[]): A
       en.cards[9],
       en.cards[10],
       en.cards[11],
+      en.cards[12],
       en.cards[5],
       en.cards[6],
     ]
@@ -475,8 +495,9 @@ function getLocalizedCards(locale: AiToolsLocale, storedCards: AiToolsCard[]): A
     applyLocalizedCard(en.cards[7], couple),
     applyLocalizedCard(en.cards[8], baby),
     applyLocalizedCard(en.cards[9], dance),
-    applyLocalizedCard(en.cards[10], supplemental.hairstyle),
-    applyLocalizedCard(en.cards[11], supplemental.hairColor),
+    applyLocalizedCard(en.cards[10], supplemental.kissing),
+    applyLocalizedCard(en.cards[11], supplemental.hairstyle),
+    applyLocalizedCard(en.cards[12], supplemental.hairColor),
     applyLocalizedCard(en.cards[5], watermark),
     applyLocalizedCard(en.cards[6], restoration),
   ]

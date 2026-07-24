@@ -21,7 +21,7 @@ const BASE_CREDITS: Record<ImageGenerationModelId, number> = {
   'seedream-5-0-pro': 10,
   'wan-2-7-image': 10,
   'grok-1-5-image': 10,
-  'grok-video-1-5': 80,
+  'grok-video-1-5': 3,
   'nano-banana-pro': 20,
 }
 
@@ -72,12 +72,6 @@ export const VIDEO_GENERATION_CREDIT_RATES: Record<VideoGenerationModelId, {
   },
 }
 
-const VIDEO_RESOLUTION_CREDITS: Record<string, number> = {
-  '480P': 80,
-  '720P': 140,
-  '1080P': 250,
-}
-
 const DEFAULT_VIDEO_DURATION_SECONDS = 8
 const MIN_VIDEO_DURATION_SECONDS = 1
 const MAX_VIDEO_DURATION_SECONDS = 15
@@ -98,9 +92,12 @@ export function calculateImageGenerationCredits(
     return resolution.toUpperCase() === '2K' ? 20 : 10
   }
   if (modelId === 'grok-video-1-5') {
-    const baseVideoCredits = VIDEO_RESOLUTION_CREDITS[resolution.toUpperCase()] ?? VIDEO_RESOLUTION_CREDITS['480P']
     const normalizedDuration = normalizeVideoDurationSeconds(durationSeconds)
-    return Math.ceil(baseVideoCredits * normalizedDuration / DEFAULT_VIDEO_DURATION_SECONDS)
+    return calculateVideoGenerationCredits(
+      'grok-1-5-video',
+      resolution.toLowerCase(),
+      normalizedDuration,
+    ) ?? calculateVideoGenerationCredits('grok-1-5-video', '480p', normalizedDuration) ?? 3
   }
   const multiplier = RESOLUTION_MULTIPLIER[resolution.toUpperCase()] ?? 1
   return Math.ceil(baseCredits * multiplier)

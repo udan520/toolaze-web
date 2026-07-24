@@ -1,0 +1,238 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 2,
+    "modelId": "grok-video-1-5",
+    "defaultPrompt": "Lasse die Personen im hochgeladenen Foto einen sanften romantischen Kuss in einem kurzen filmischen Video teilen. Natürlich, respektvoll und nicht explizit.",
+    "hideModelBranding": true,
+    "compactResultPanel": true,
+    "displayName": "KI-Kuss-Video-Generator",
+    "textOverrides": {
+      "promptLabel": "Beschreiben Sie das Kussvideo",
+      "promptPlaceholder": "Beispiel: Dieses Paar küsst sich sanft bei Sonnenuntergang",
+      "generateLabel": "Kussvideo erstellen",
+      "uploadTitle": "Ein oder zwei Fotos hochladen"
+    },
+    "defaultVideoDurationSeconds": 5,
+    "videoDurationOptions": [
+      3,
+      5,
+      8,
+      10
+    ],
+    "sampleImages": [
+      {
+        "url": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/83a8c5b91a4945beb66275c38a731dbf.png",
+        "title": "KI-Kuss-Demovideo im Format 16:9",
+        "width": 16,
+        "height": 9,
+        "mediaType": "video",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/15ccbe71d8eb4921930b8b7638bcebab.webp"
+      }
+    ]
+  },
+  "metadata": {
+    "title": "KI-Kuss-Video-Generator im Internet | Kussvideos erstellen",
+    "description": "Nutzen Sie den Toolaze KI-Kuss-Video-Generator, um aus ein oder zwei Fotos kurze romantische Kussvideos für Paar-Edits, Story-Reels und Social Clips zu erstellen."
+  },
+  "sectionsOrder": [
+    "intro",
+    "promptExamples",
+    "howToUse",
+    "scenes",
+    "features",
+    "faq"
+  ],
+  "hero": {
+    "h1": "<span class=\"text-gradient\">KI-Kuss-Video-Generator</span> im Internet",
+    "desc": "Laden Sie ein oder zwei klare Fotos hoch, beschreiben Sie die Stimmung und erstellen Sie ein kurzes romantisches Kussvideo für Paar-Edits, Jubiläums-Reels und filmische Social Clips."
+  },
+  "intro": {
+    "title": "Romantische Kussvideos aus Fotos erstellen",
+    "content": [
+      {
+        "title": "Fotos in kurze Kussvideos verwandeln",
+        "text": "Toolaze animiert ein oder zwei hochgeladene Fotos zu einem sanften romantischen Kussvideo für Paar-Edits, Jubiläen und kreative Social Posts."
+      },
+      {
+        "title": "Die Szene per Prompt steuern",
+        "text": "Beschreiben Sie Kussstil, Kamera, Licht, Hintergrund, Kleidung und Emotion, damit das Ergebnis natürlich wirkt."
+      },
+      {
+        "title": "Respektvolle Ergebnisse",
+        "text": "Verwenden Sie klare Fotos erwachsener Personen mit Erlaubnis und formulieren Sie sanfte, nicht explizite romantische Bewegung."
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "Prompt-Ideen für KI-Kussvideos",
+    "subtitle": "Laden Sie ein oder zwei Fotos hoch und nutzen Sie diese Strukturen für romantische Kurzvideos.",
+    "items": [
+      {
+        "title": "Kuss bei Sonnenuntergang",
+        "prompt": "Dieses Paar teilt einen sanften romantischen Kuss bei Sonnenuntergang, warmes goldenes Licht, weiche Kamerafahrt, natürliches Lächeln, filmisches 5-Sekunden-Video im Hochformat 9:16.",
+        "note": "Gut für Jubiläen und Story-Reels.",
+        "color": "linear-gradient(135deg, #fb7185, #7c3aed)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/644ef4ef82884741b92b7932d83b4735.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d94331861cac45a2b3d488966b18f6e0.webp",
+        "description": "Gut für Jubiläen und Story-Reels.",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-24T00:24:00.000Z"
+      },
+      {
+        "title": "Romantik im Regen",
+        "prompt": "Verwandle das Foto in ein romantisches Kussvideo auf einer regennassen Straße, weiche Neonreflexionen, enge Umarmung, Zeitlupe, realistische Mimik, Hochformat 9:16.",
+        "note": "Für stimmungsvolle Paar-Edits.",
+        "color": "linear-gradient(135deg, #38bdf8, #4c1d95)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/6469c25f84b947aeb4c544bfed5c9768.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ff969c52195b43e3be68f45fb11f5140.webp",
+        "description": "Für stimmungsvolle Paar-Edits.",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-24T00:24:00.000Z"
+      },
+      {
+        "title": "Hochzeitsmoment",
+        "prompt": "Erstelle ein zärtliches Hochzeits-Kussvideo aus diesem Paarfoto, elegantes Licht, sauberer Hintergrund, dezente Bewegung, emotional und realistisch, Hochformat 9:16.",
+        "note": "Für Hochzeitseinladungen und Moodboards.",
+        "color": "linear-gradient(135deg, #f8fafc, #c084fc)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/7d41c57d1bc5441a9951fdb4bd8042aa.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/99189a0e1a4e4570ba7c059b3ad4d461.webp",
+        "description": "Für Hochzeitseinladungen und Moodboards.",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-24T00:24:00.000Z"
+      },
+      {
+        "title": "Wiedersehen",
+        "prompt": "Die zwei Personen treffen sich und teilen einen sanften Wiedersehens-Kuss, Ankunftsstimmung, warmes Licht, sanfte Kamerabewegung, respektvolle Romantik, Hochformat 9:16.",
+        "note": "Für erzählerische Paarclips.",
+        "color": "linear-gradient(135deg, #f59e0b, #be123c)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/c1706eb3d80f4252a0ab290339158b7d.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/a4c16e2ca6c944f582c8b98d5eb3d23c.webp",
+        "description": "Für erzählerische Paarclips.",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-24T00:24:00.000Z"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "So verwenden Sie den KI-Kuss-Video-Generator",
+    "steps": [
+      {
+        "title": "Ein oder zwei Fotos hochladen",
+        "desc": "Starten Sie mit klaren, gut beleuchteten Fotos mit sichtbaren Gesichtern und Bildern, die Sie bearbeiten dürfen."
+      },
+      {
+        "title": "Romantische Szene beschreiben",
+        "desc": "Ergänzen Sie Kussstil, Stimmung, Ort, Licht, Kamerabewegung, Bildausschnitt und gewünschten Stil."
+      },
+      {
+        "title": "Generieren und verfeinern",
+        "desc": "Erstellen Sie das Video und vereinfachen Sie den Prompt, wenn Bewegung, Mimik oder Hintergrund sauberer werden sollen."
+      }
+    ]
+  },
+  "scenesTitle": "Wofür KI-Kussvideos gut funktionieren",
+  "scenes": [
+    {
+      "title": "Paar-Story-Reels",
+      "icon": "💞",
+      "desc": "Erstellen Sie kurze romantische Clips für Jubiläen, Liebesgeschichten und persönliche Social Edits."
+    },
+    {
+      "title": "Hochzeits- und Antragkonzepte",
+      "icon": "💍",
+      "desc": "Entwerfen Sie sanfte Kussmomente für Einladungen, Hochzeits-Moodboards und Storytelling."
+    },
+    {
+      "title": "Filmische Romantik-Edits",
+      "icon": "🎬",
+      "desc": "Testen Sie weiches Licht, Nahaufnahmen, Regenszenen, Sonnenuntergänge und romantische Bewegung."
+    }
+  ],
+  "features": {
+    "title": "Wichtige Funktionen für KI-Kussvideos",
+    "items": [
+      {
+        "icon": "📷",
+        "iconType": "upload",
+        "title": "Ein oder zwei Fotos",
+        "desc": "Laden Sie ein Paarfoto oder zwei Referenzfotos hoch und steuern Sie die romantische Bewegung per Prompt."
+      },
+      {
+        "icon": "🎥",
+        "iconType": "camera",
+        "title": "Videoregie per Prompt",
+        "desc": "Steuern Sie Stimmung, Licht, Hintergrund, Kamera, Bildausschnitt und Kussstil in natürlicher Sprache."
+      },
+      {
+        "icon": "💗",
+        "iconType": "creative",
+        "title": "Sanfte romantische Szenen",
+        "desc": "Erstellen Sie weiche Küsse, Umarmungen, warme Lächeln, Hochzeitsmomente und Story-Reels ohne explizite Inhalte."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Schneller Browser-Workflow",
+        "desc": "Erzeugen Sie kurze Clips online ohne Videoschnittsoftware oder manuelle Animation."
+      },
+      {
+        "icon": "🧑‍🤝‍🧑",
+        "iconType": "workflow",
+        "title": "Prompts für Paare",
+        "desc": "Nutzen Sie Prompts für Gesichtskonsistenz, natürliche Mimik, sanfte Bewegung und saubere Paar-Komposition."
+      },
+      {
+        "icon": "🛡️",
+        "iconType": "safety",
+        "title": "Respektvolle Bearbeitung",
+        "desc": "Verwenden Sie erlaubte Fotos und halten Sie Prompts auf einvernehmliche erwachsene Romantik ausgerichtet."
+      }
+    ]
+  },
+  "faqTitle": "FAQ zum KI-Kuss-Video-Generator",
+  "faq": [
+    {
+      "q": "Was ist der KI-Kuss-Video-Generator?",
+      "a": "Eine Toolaze-Seite zum Erstellen kurzer romantischer Kussvideos aus ein oder zwei hochgeladenen Fotos plus Textprompt."
+    },
+    {
+      "q": "Kann ich zwei getrennte Fotos hochladen?",
+      "a": "Ja. Die Seite unterstützt ein oder zwei Fotos."
+    },
+    {
+      "q": "Welche Prompts funktionieren gut?",
+      "a": "Nennen Sie sanften Kuss, Sonnenuntergang, enge Umarmung, Hochzeitsstimmung, weiche Kamerafahrt, realistisches Lächeln und respektvolle Romantik."
+    },
+    {
+      "q": "Eignet sich das für Hochzeit oder Jubiläum?",
+      "a": "Ja, für Konzeptclips, Einladungs-Reels, Jubiläums-Edits und Social Posts mit erlaubten Fotos."
+    },
+    {
+      "q": "Wie werden Ergebnisse natürlicher?",
+      "a": "Nutzen Sie klare Fotos mit ähnlichem Licht und bitten Sie um dezente Bewegung, realistische Mimik und kurze filmische Clips."
+    }
+  ],
+  "moreTools": "Weitere KI-Videotools",
+  "moreToolsLinks": [
+    {
+      "title": "KI-Videogenerator",
+      "href": "/ai-video-generator",
+      "description": "Erstellen Sie kurze KI-Videos aus Text, Bildern, Clips oder Audio."
+    },
+    {
+      "title": "KI-Tanzgenerator",
+      "href": "/ai-dance-generator",
+      "description": "Erstellen Sie Tanzvideos aus einem Foto."
+    },
+    {
+      "title": "KI-Paarfoto-Generator",
+      "href": "/ai-couple-photo-maker",
+      "description": "Erstellen Sie romantische Paarporträts als Standbilder."
+    }
+  ]
+}

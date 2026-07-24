@@ -50,7 +50,8 @@
     "seedream50Lite": "Seedream 5.0 Lite",
     "seedream50Pro": "Seedream 5.0 Pro",
     "seedance25": "Seedance 2.5",
-    "aiDanceGenerator": "AI 댄스 생성기"
+    "aiDanceGenerator": "AI 댄스 생성기",
+    "aiKissingVideoGenerator": "AI 키스 동영상 생성기"
   },
   "home": {
     "metadata": {
@@ -270,7 +271,8 @@
     "aiImageGenerator": "AI 이미지 생성기",
     "refundPolicy": "환불 정책",
     "acceptableUse": "허용 사용 정책",
-    "aiDanceGenerator": "AI 댄스 생성기"
+    "aiDanceGenerator": "AI 댄스 생성기",
+    "aiKissingVideoGenerator": "AI 키스 동영상 생성기"
   },
   "breadcrumb": {
     "home": "홈",

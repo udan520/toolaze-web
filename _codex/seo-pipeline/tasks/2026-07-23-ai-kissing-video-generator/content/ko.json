@@ -1,0 +1,238 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 2,
+    "modelId": "grok-video-1-5",
+    "defaultPrompt": "업로드한 사진 속 인물이 짧은 영화 같은 영상에서 부드럽고 로맨틱하게 키스하도록 만들어 주세요. 자연스럽고 존중하는 비노골적 표현으로 유지합니다.",
+    "hideModelBranding": true,
+    "compactResultPanel": true,
+    "displayName": "AI 키스 동영상 생성기",
+    "textOverrides": {
+      "promptLabel": "키스 동영상 설명",
+      "promptPlaceholder": "예: 이 커플이 노을 속에서 부드럽게 키스합니다",
+      "generateLabel": "키스 동영상 만들기",
+      "uploadTitle": "사진 한 장 또는 두 장 업로드"
+    },
+    "defaultVideoDurationSeconds": 5,
+    "videoDurationOptions": [
+      3,
+      5,
+      8,
+      10
+    ],
+    "sampleImages": [
+      {
+        "url": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/83a8c5b91a4945beb66275c38a731dbf.png",
+        "title": "AI 키스 16:9 데모 동영상",
+        "width": 16,
+        "height": 9,
+        "mediaType": "video",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/15ccbe71d8eb4921930b8b7638bcebab.webp"
+      }
+    ]
+  },
+  "metadata": {
+    "title": "AI 키스 동영상 생성기 온라인 | 키스 영상 만들기",
+    "description": "Toolaze AI 키스 동영상 생성기로 사진 한 장 또는 두 장을 커플 편집, 기념일 릴, 소셜 클립용 짧은 로맨틱 키스 영상으로 바꾸세요."
+  },
+  "sectionsOrder": [
+    "intro",
+    "promptExamples",
+    "howToUse",
+    "scenes",
+    "features",
+    "faq"
+  ],
+  "hero": {
+    "h1": "<span class=\"text-gradient\">AI 키스 동영상 생성기</span> 온라인",
+    "desc": "선명한 사진 한 장 또는 두 장을 업로드하고 분위기를 설명해 커플 편집, 기념일 릴, 영화 같은 소셜 클립용 짧은 로맨틱 키스 영상을 만드세요."
+  },
+  "intro": {
+    "title": "사진으로 로맨틱한 키스 동영상 만들기",
+    "content": [
+      {
+        "title": "사진을 짧은 키스 영상으로 변환",
+        "text": "Toolaze는 업로드한 사진 한 장 또는 두 장을 커플 편집, 기념일, 러브 스토리 게시물용 부드러운 키스 영상으로 애니메이션화합니다."
+      },
+      {
+        "title": "프롬프트로 장면 지시",
+        "text": "키스 스타일, 카메라, 조명, 배경, 의상, 감정을 설명해 자연스러운 로맨틱 클립에 가깝게 만드세요."
+      },
+      {
+        "title": "존중 있고 현실적인 결과",
+        "text": "허락받은 성인 사진을 사용하고 부드러운 키스, 따뜻한 미소, 가까운 포옹, 영화 같은 느린 움직임을 요청하세요."
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "AI 키스 동영상 프롬프트 아이디어",
+    "subtitle": "사진을 업로드한 뒤 로맨틱한 짧은 영상에 재사용할 수 있습니다.",
+    "items": [
+      {
+        "title": "노을 아래 커플 키스",
+        "prompt": "이 커플이 노을 아래에서 부드럽고 로맨틱한 키스를 나누게 해 주세요. 따뜻한 황금빛 조명, 부드러운 카메라 줌인, 자연스러운 미소, 영화 같은 5초 동영상, 세로형 9:16.",
+        "note": "기념일 편집, 프러포즈 추억, 스토리 릴에 잘 어울립니다.",
+        "color": "linear-gradient(135deg, #fb7185, #7c3aed)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/644ef4ef82884741b92b7932d83b4735.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d94331861cac45a2b3d488966b18f6e0.webp",
+        "description": "기념일 편집, 프러포즈 추억, 스토리 릴에 잘 어울립니다.",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-24T00:24:00.000Z"
+      },
+      {
+        "title": "비 오는 거리의 로맨스",
+        "prompt": "업로드한 사진을 비 오는 거리의 로맨틱한 키스 동영상으로 바꿔 주세요. 부드러운 네온 반사광, 가까운 포옹, 슬로 모션, 현실적인 표정, 세로형 9:16.",
+        "note": "분위기 있는 커플 편집과 영화풍 소셜 클립에 사용하세요.",
+        "color": "linear-gradient(135deg, #38bdf8, #4c1d95)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/6469c25f84b947aeb4c544bfed5c9768.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ff969c52195b43e3be68f45fb11f5140.webp",
+        "description": "분위기 있는 커플 편집과 영화풍 소셜 클립에 사용하세요.",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-24T00:24:00.000Z"
+      },
+      {
+        "title": "웨딩 순간",
+        "prompt": "이 커플 사진으로 다정한 웨딩 키스 동영상을 만들어 주세요. 우아한 조명, 깔끔한 배경, 베일과 정장의 미세한 움직임, 감성적이면서 현실적인 표현, 세로형 9:16.",
+        "note": "웨딩 콘셉트, 초대 릴, 추억 초안에 유용합니다.",
+        "color": "linear-gradient(135deg, #f8fafc, #c084fc)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/7d41c57d1bc5441a9951fdb4bd8042aa.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/99189a0e1a4e4570ba7c059b3ad4d461.webp",
+        "description": "웨딩 콘셉트, 초대 릴, 추억 초안에 유용합니다.",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-24T00:24:00.000Z"
+      },
+      {
+        "title": "장거리 재회",
+        "prompt": "이 사진 속 두 사람이 만나 부드러운 재회의 키스를 나누게 해 주세요. 공항 도착 분위기, 따뜻한 조명, 부드러운 카메라 회전, 비노골적 로맨스, 세로형 9:16.",
+        "note": "이야기 중심의 커플 클립과 재회 테마에 잘 어울립니다.",
+        "color": "linear-gradient(135deg, #f59e0b, #be123c)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/c1706eb3d80f4252a0ab290339158b7d.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/a4c16e2ca6c944f582c8b98d5eb3d23c.webp",
+        "description": "이야기 중심의 커플 클립과 재회 테마에 잘 어울립니다.",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-24T00:24:00.000Z"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "AI 키스 동영상 생성기 사용법",
+    "steps": [
+      {
+        "title": "사진 한 장 또는 두 장 업로드",
+        "desc": "얼굴이 보이는 선명하고 밝은 사진으로 시작하세요. 성인 인물과 편집 권한이 있는 사진만 사용하세요."
+      },
+      {
+        "title": "로맨틱한 장면 설명",
+        "desc": "키스 스타일, 분위기, 장소, 조명, 카메라 움직임, 구도와 함께 영화풍, 일상적, 웨딩풍 또는 이야기 중심의 느낌 중 원하는 방향을 추가하세요."
+      },
+      {
+        "title": "생성하고 다듬기",
+        "desc": "동영상을 만든 뒤 움직임, 표정 또는 배경을 더 깔끔하게 하고 싶다면 프롬프트를 단순화하거나 구도를 조정하세요."
+      }
+    ]
+  },
+  "scenesTitle": "AI 키스 동영상이 잘 맞는 용도",
+  "scenes": [
+    {
+      "title": "커플 스토리 릴",
+      "icon": "💞",
+      "desc": "기념일, 사랑 이야기 게시물, 약혼 추억, 개인 소셜 편집을 위한 짧은 로맨틱 클립을 만드세요."
+    },
+    {
+      "title": "웨딩 및 프러포즈 콘셉트",
+      "icon": "💍",
+      "desc": "초대 동영상, 웨딩 무드보드, 프러포즈 릴, 이벤트 스토리텔링을 위한 부드러운 키스 장면을 구상하세요."
+    },
+    {
+      "title": "영화풍 로맨스 편집",
+      "icon": "🎬",
+      "desc": "부드러운 조명, 클로즈업 구도, 빗속 장면, 노을 배경, 영화풍 로맨틱 움직임을 살펴보세요."
+    }
+  ],
+  "features": {
+    "title": "AI 키스 영상 제작 주요 기능",
+    "items": [
+      {
+        "icon": "📷",
+        "iconType": "upload",
+        "title": "사진 한 장 또는 두 장 업로드",
+        "desc": "커플 사진 한 장 또는 참조 사진 두 장을 업로드하고 프롬프트로 로맨틱한 움직임을 안내하세요."
+      },
+      {
+        "icon": "🎥",
+        "iconType": "camera",
+        "title": "프롬프트 기반 동영상 연출",
+        "desc": "자연어로 분위기, 조명, 배경, 카메라 움직임, 구도, 키스 스타일을 제어하세요."
+      },
+      {
+        "icon": "💗",
+        "iconType": "creative",
+        "title": "비노골적 로맨틱 장면",
+        "desc": "노골적인 내용 없이 부드러운 키스, 가까운 포옹, 따뜻한 미소, 웨딩 순간, 스토리 릴을 만드세요."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "빠른 브라우저 작업 흐름",
+        "desc": "동영상 편집 소프트웨어나 수동 애니메이션 타임라인을 설정하지 않고 온라인에서 짧은 클립을 생성하세요."
+      },
+      {
+        "icon": "🧑‍🤝‍🧑",
+        "iconType": "workflow",
+        "title": "커플 중심 프롬프트",
+        "desc": "얼굴 일관성, 자연스러운 표정, 부드러운 움직임, 깔끔한 커플 구도를 위한 프롬프트를 사용하세요."
+      },
+      {
+        "icon": "🛡️",
+        "iconType": "safety",
+        "title": "존중을 우선하는 편집",
+        "desc": "편집 권한이 있는 사진을 사용하고, 프롬프트는 합의한 성인 간의 존중하는 로맨틱 장면에 집중하세요."
+      }
+    ]
+  },
+  "faqTitle": "AI 키스 동영상 생성기 FAQ",
+  "faq": [
+    {
+      "q": "AI 키스 동영상 생성기란 무엇인가요?",
+      "a": "사진 한 장 또는 두 장과 텍스트 프롬프트로 짧은 로맨틱 키스 동영상을 만드는 Toolaze 도구입니다."
+    },
+    {
+      "q": "서로 다른 사진 두 장을 업로드할 수 있나요?",
+      "a": "네. 이 페이지는 사진 한 장 또는 두 장을 지원하므로 커플 사진이나 서로 어울리는 참조 사진 두 장으로 시작할 수 있습니다."
+    },
+    {
+      "q": "AI 키스 동영상에는 어떤 프롬프트가 가장 잘 작동하나요?",
+      "a": "부드러운 키스, 노을빛, 가까운 포옹, 웨딩 분위기, 느린 카메라 줌인, 은은한 미소, 현실적인 표정, 비노골적 로맨스처럼 구체적인 장면 정보를 사용하세요."
+    },
+    {
+      "q": "웨딩 또는 기념일 동영상에 사용할 수 있나요?",
+      "a": "네. 허용된 사진을 사용한다면 콘셉트 클립, 초대 릴, 기념일 편집, 프러포즈 아이디어, 소셜 게시물에 잘 어울립니다."
+    },
+    {
+      "q": "더 자연스러운 결과를 얻으려면 어떻게 하나요?",
+      "a": "선명하고 정면을 향하며 조명이 비슷한 사진을 업로드하고, 미세한 움직임, 현실적인 표정, 깔끔한 구도, 짧은 영화풍 클립을 요청하세요."
+    }
+  ],
+  "moreTools": "더 많은 AI 동영상 도구",
+  "moreToolsLinks": [
+    {
+      "title": "AI 동영상 생성기",
+      "href": "/ai-video-generator",
+      "description": "텍스트, 이미지, 동영상 클립 또는 오디오 참조로 짧은 AI 동영상을 만드세요."
+    },
+    {
+      "title": "AI 댄스 생성기",
+      "href": "/ai-dance-generator",
+      "description": "이미지 한 장을 업로드하고 안무와 소셜 클립용 짧은 댄스 동영상을 만드세요."
+    },
+    {
+      "title": "AI 커플 사진 제작",
+      "href": "/ai-couple-photo-maker",
+      "description": "정지 이미지 결과가 필요할 때 로맨틱한 커플 인물 사진을 생성하세요."
+    }
+  ]
+}

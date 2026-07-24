@@ -1,0 +1,38 @@
+{
+  "taskId": "2026-07-23-ai-kissing-video-generator",
+  "slug": "ai-kissing-video-generator",
+  "pageType": "l2",
+  "status": "ready_for_publish",
+  "tool": "ai-kissing-video-generator",
+  "topic": "AI Kissing Video Generator landing page",
+  "generatedBy": "Seo-Factory local pipeline",
+  "modelInstruction": "Use Grok Video 1.5 as the generation model for a respectful photo-to-kiss-video workflow.",
+  "createdAt": "2026-07-23T00:00:00+08:00",
+  "workspace": "/Users/neva/Desktop/workspace/toolaze-worktrees/lp/ai-kissing-generator",
+  "outputs": [
+    "_codex/seo-pipeline/tasks/2026-07-23-ai-kissing-video-generator/content/en.json",
+    "src/data/en/ai-kissing-video-generator.json",
+    "_codex/seo-pipeline/tasks/2026-07-23-ai-kissing-video-generator/content/de.json",
+    "src/data/de/ai-kissing-video-generator.json",
+    "_codex/seo-pipeline/tasks/2026-07-23-ai-kissing-video-generator/content/ja.json",
+    "src/data/ja/ai-kissing-video-generator.json",
+    "_codex/seo-pipeline/tasks/2026-07-23-ai-kissing-video-generator/content/es.json",
+    "src/data/es/ai-kissing-video-generator.json",
+    "_codex/seo-pipeline/tasks/2026-07-23-ai-kissing-video-generator/content/zh-TW.json",
+    "src/data/zh-TW/ai-kissing-video-generator.json",
+    "_codex/seo-pipeline/tasks/2026-07-23-ai-kissing-video-generator/content/pt.json",
+    "src/data/pt/ai-kissing-video-generator.json",
+    "_codex/seo-pipeline/tasks/2026-07-23-ai-kissing-video-generator/content/fr.json",
+    "src/data/fr/ai-kissing-video-generator.json",
+    "_codex/seo-pipeline/tasks/2026-07-23-ai-kissing-video-generator/content/ko.json",
+    "src/data/ko/ai-kissing-video-generator.json",
+    "_codex/seo-pipeline/tasks/2026-07-23-ai-kissing-video-generator/content/it.json",
+    "src/data/it/ai-kissing-video-generator.json"
+  ],
+  "notes": [
+    "Generated as an L2 AI tools landing page.",
+    "Main keyword is AI Kissing Video Generator; AI Kissing Generator is covered as a secondary phrase inside user-facing copy.",
+    "Functional top tool reuses the shared AI image/video generation component with topTool.modelId=grok-video-1-5.",
+    "Localized into de, ja, es, zh-TW, pt, fr, ko, and it with matching Seo-Factory content records."
+  ]
+}

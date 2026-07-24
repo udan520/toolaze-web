@@ -1,0 +1,238 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 2,
+    "modelId": "grok-video-1-5",
+    "defaultPrompt": "Fai condividere alle persone nella foto un bacio romantico e delicato in un breve video cinematografico. Mantieni il risultato naturale, rispettoso e non esplicito.",
+    "hideModelBranding": true,
+    "compactResultPanel": true,
+    "displayName": "Generatore di video di baci IA",
+    "textOverrides": {
+      "promptLabel": "Descrivi il video di bacio",
+      "promptPlaceholder": "Esempio: questa coppia si bacia dolcemente al tramonto",
+      "generateLabel": "Crea video di bacio",
+      "uploadTitle": "Carica una o due foto"
+    },
+    "defaultVideoDurationSeconds": 5,
+    "videoDurationOptions": [
+      3,
+      5,
+      8,
+      10
+    ],
+    "sampleImages": [
+      {
+        "url": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/83a8c5b91a4945beb66275c38a731dbf.png",
+        "title": "Video demo di bacio IA in 16:9",
+        "width": 16,
+        "height": 9,
+        "mediaType": "video",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/15ccbe71d8eb4921930b8b7638bcebab.webp"
+      }
+    ]
+  },
+  "metadata": {
+    "title": "Generatore di video di baci IA online | Crea video di baci",
+    "description": "Usa Toolaze per trasformare una o due foto in brevi video di baci romantici per edit di coppia, reel e clip social."
+  },
+  "sectionsOrder": [
+    "intro",
+    "promptExamples",
+    "howToUse",
+    "scenes",
+    "features",
+    "faq"
+  ],
+  "hero": {
+    "h1": "<span class=\"text-gradient\">Generatore di video di baci IA</span> online",
+    "desc": "Carica una o due foto nitide, descrivi l’atmosfera e crea un breve video di bacio romantico per edit di coppia, anniversari e clip social cinematografiche."
+  },
+  "intro": {
+    "title": "Crea video romantici di baci dalle foto",
+    "content": [
+      {
+        "title": "Trasforma foto in video di baci",
+        "text": "Toolaze anima una o due foto caricate in un breve video di bacio romantico per edit di coppia, anniversari e post social."
+      },
+      {
+        "title": "Dirigi la scena con un prompt",
+        "text": "Descrivi stile del bacio, camera, luce, sfondo, abiti ed emozione per ottenere una clip romantica naturale."
+      },
+      {
+        "title": "Risultati rispettosi e realistici",
+        "text": "Usa foto chiare di adulti con permesso e chiedi movimenti delicati, sorriso caldo, abbraccio vicino o rallenty cinematografico."
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "Idee di prompt per video di baci IA",
+    "subtitle": "Carica una o due foto e riutilizza queste strutture per brevi video romantici.",
+    "items": [
+      {
+        "title": "Bacio di coppia al tramonto",
+        "prompt": "Fai condividere a questa coppia un bacio romantico e delicato al tramonto, luce dorata calda, morbido avvicinamento di camera, sorrisi naturali, video cinematografico di 5 secondi, formato verticale 9:16.",
+        "note": "Ideale per edit di anniversario, ricordi di proposte e reel di storie.",
+        "color": "linear-gradient(135deg, #fb7185, #7c3aed)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/644ef4ef82884741b92b7932d83b4735.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d94331861cac45a2b3d488966b18f6e0.webp",
+        "description": "Ideale per edit di anniversario, ricordi di proposte e reel di storie.",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-24T00:24:00.000Z"
+      },
+      {
+        "title": "Romance in una strada piovosa",
+        "prompt": "Trasforma la foto caricata in un video di bacio romantico in una strada piovosa, morbidi riflessi al neon, abbraccio ravvicinato, rallenty ed espressioni facciali realistiche, formato verticale 9:16.",
+        "note": "Usalo per edit di coppia suggestivi e clip social in stile cinematografico.",
+        "color": "linear-gradient(135deg, #38bdf8, #4c1d95)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/6469c25f84b947aeb4c544bfed5c9768.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ff969c52195b43e3be68f45fb11f5140.webp",
+        "description": "Usalo per edit di coppia suggestivi e clip social in stile cinematografico.",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-24T00:24:00.000Z"
+      },
+      {
+        "title": "Momento di matrimonio",
+        "prompt": "Crea un tenero video di bacio nuziale da questa foto di coppia, luce elegante, sfondo pulito, lievi movimenti di velo e abito, emozionante ma realistico, formato verticale 9:16.",
+        "note": "Utile per concetti di matrimonio, reel di invito e bozze di ricordi.",
+        "color": "linear-gradient(135deg, #f8fafc, #c084fc)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/7d41c57d1bc5441a9951fdb4bd8042aa.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/99189a0e1a4e4570ba7c059b3ad4d461.webp",
+        "description": "Utile per concetti di matrimonio, reel di invito e bozze di ricordi.",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-24T00:24:00.000Z"
+      },
+      {
+        "title": "Riunione a distanza",
+        "prompt": "Fai incontrare le due persone in queste foto e condividere un dolce bacio di riunione, atmosfera di arrivo in aeroporto, luce calda, delicato movimento circolare di camera, romanticismo non esplicito, formato verticale 9:16.",
+        "note": "Ideale per clip di coppia narrative e temi di riunione.",
+        "color": "linear-gradient(135deg, #f59e0b, #be123c)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/c1706eb3d80f4252a0ab290339158b7d.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/a4c16e2ca6c944f582c8b98d5eb3d23c.webp",
+        "description": "Ideale per clip di coppia narrative e temi di riunione.",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-24T00:24:00.000Z"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Come usare il generatore di video di baci IA",
+    "steps": [
+      {
+        "title": "Carica una o due foto",
+        "desc": "Inizia con foto nitide e ben illuminate in cui i volti siano visibili. Usa soggetti adulti e foto che hai il permesso di modificare."
+      },
+      {
+        "title": "Descrivi la scena romantica",
+        "desc": "Aggiungi lo stile del bacio, l’atmosfera, l’ambientazione, la luce, il movimento di camera, l’inquadratura e indica se il clip deve sembrare cinematografico, informale, nuziale o narrativo."
+      },
+      {
+        "title": "Genera e perfeziona",
+        "desc": "Crea il video, poi semplifica il prompt o regola l’inquadratura se il movimento, l’espressione del viso o lo sfondo richiedono un risultato più pulito."
+      }
+    ]
+  },
+  "scenesTitle": "Dove funzionano meglio i video di baci IA",
+  "scenes": [
+    {
+      "title": "Reel di storie di coppia",
+      "icon": "💞",
+      "desc": "Crea brevi clip romantiche per anniversari, post di storie d’amore, ricordi di fidanzamento ed edit personali per i social."
+    },
+    {
+      "title": "Concetti per matrimonio e proposta",
+      "icon": "💍",
+      "desc": "Progetta delicati momenti di bacio per video d’invito, moodboard di matrimonio, reel di proposta e racconti di eventi."
+    },
+    {
+      "title": "Edit romantici cinematografici",
+      "icon": "🎬",
+      "desc": "Esplora luci soffuse, inquadrature ravvicinate, scene di pioggia, sfondi al tramonto e movimenti romantici in stile cinematografico."
+    }
+  ],
+  "features": {
+    "title": "Funzioni chiave per creare video di baci",
+    "items": [
+      {
+        "icon": "📷",
+        "iconType": "upload",
+        "title": "Caricamento di una o due foto",
+        "desc": "Carica una foto di coppia o due foto di riferimento e guida il movimento romantico con un prompt."
+      },
+      {
+        "icon": "🎥",
+        "iconType": "camera",
+        "title": "Regia video guidata dal prompt",
+        "desc": "Controlla atmosfera, illuminazione, sfondo, movimento di camera, inquadratura e stile del bacio in linguaggio naturale."
+      },
+      {
+        "icon": "💗",
+        "iconType": "creative",
+        "title": "Scene romantiche non esplicite",
+        "desc": "Crea baci delicati, abbracci ravvicinati, sorrisi caldi, momenti di matrimonio e reel di storie senza contenuti espliciti."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Flusso rapido nel browser",
+        "desc": "Genera un breve clip online senza configurare software di montaggio video o timeline di animazione manuali."
+      },
+      {
+        "icon": "🧑‍🤝‍🧑",
+        "iconType": "workflow",
+        "title": "Prompt pensati per le coppie",
+        "desc": "Usa prompt progettati per coerenza del volto, espressioni naturali, movimento delicato e inquadratura pulita della coppia."
+      },
+      {
+        "icon": "🛡️",
+        "iconType": "safety",
+        "title": "Editing nel rispetto",
+        "desc": "Usa foto che hai il permesso di modificare e mantieni i prompt centrati su scene romantiche rispettose, consensuali e tra adulti."
+      }
+    ]
+  },
+  "faqTitle": "Domande frequenti",
+  "faq": [
+    {
+      "q": "Che cos’è il generatore di video di baci IA?",
+      "a": "È uno strumento Toolaze per creare brevi video di baci romantici da una o due foto caricate e un prompt di testo."
+    },
+    {
+      "q": "Posso caricare due foto separate?",
+      "a": "Sì. La pagina supporta una o due foto, quindi puoi iniziare da una foto di coppia o da due foto di riferimento compatibili."
+    },
+    {
+      "q": "Quali prompt funzionano meglio per i video di baci IA?",
+      "a": "Usa dettagli chiari della scena come bacio delicato, luce del tramonto, abbraccio ravvicinato, atmosfera di matrimonio, lento avvicinamento di camera, sorriso dolce, espressioni realistiche e romanticismo non esplicito."
+    },
+    {
+      "q": "Posso usarlo per video di matrimonio o anniversario?",
+      "a": "Sì. Funziona bene per clip concettuali, reel di invito, edit di anniversario, idee per proposte e post social quando usi foto autorizzate."
+    },
+    {
+      "q": "Come ottengo risultati più naturali?",
+      "a": "Carica foto nitide, frontali e con luce simile; chiedi movimenti sottili, espressioni realistiche, inquadratura pulita e un breve clip cinematografico."
+    }
+  ],
+  "moreTools": "Altri strumenti video IA",
+  "moreToolsLinks": [
+    {
+      "title": "Generatore video IA",
+      "href": "/ai-video-generator",
+      "description": "Crea brevi video IA da testo, immagini, clip video o riferimenti audio."
+    },
+    {
+      "title": "Generatore di danza IA",
+      "href": "/ai-dance-generator",
+      "description": "Carica un’immagine e crea brevi video di danza per coreografie e clip social."
+    },
+    {
+      "title": "Creatore di foto di coppia IA",
+      "href": "/ai-couple-photo-maker",
+      "description": "Genera ritratti romantici di coppia quando ti servono risultati in immagine fissa."
+    }
+  ]
+}

@@ -195,6 +195,17 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
     const card = await loadToolData(tool, locale, getModelTitle, getModelDesc, getFeaturedDesc, getModelMeta)
     if (card) aiVideoTools.push(applyHomepageToolCardSummary(card, cardSummaries))
   }
+  const aiKissingCard = await loadToolData(
+    'ai-kissing-video-generator',
+    locale,
+    getModelTitle,
+    getModelDesc,
+    getFeaturedDesc,
+    getModelMeta,
+  )
+  if (aiKissingCard) {
+    aiVideoTools.unshift(applyHomepageToolCardSummary(aiKissingCard, cardSummaries))
+  }
   const aiDanceCard = await loadToolData(
     'ai-dance-generator',
     locale,

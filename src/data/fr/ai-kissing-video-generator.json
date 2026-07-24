@@ -1,0 +1,238 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 2,
+    "modelId": "grok-video-1-5",
+    "defaultPrompt": "Faites partager aux personnes de la photo un baiser romantique et doux dans une courte vidéo cinématographique. Gardez un rendu naturel, respectueux et non explicite.",
+    "hideModelBranding": true,
+    "compactResultPanel": true,
+    "displayName": "Générateur de vidéos de baiser IA",
+    "textOverrides": {
+      "promptLabel": "Décrivez la vidéo de baiser",
+      "promptPlaceholder": "Exemple : ce couple s’embrasse doucement au coucher du soleil",
+      "generateLabel": "Créer une vidéo de baiser",
+      "uploadTitle": "Importer une ou deux photos"
+    },
+    "defaultVideoDurationSeconds": 5,
+    "videoDurationOptions": [
+      3,
+      5,
+      8,
+      10
+    ],
+    "sampleImages": [
+      {
+        "url": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/83a8c5b91a4945beb66275c38a731dbf.png",
+        "title": "Vidéo de démonstration de baiser IA en 16:9",
+        "width": 16,
+        "height": 9,
+        "mediaType": "video",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/15ccbe71d8eb4921930b8b7638bcebab.webp"
+      }
+    ]
+  },
+  "metadata": {
+    "title": "Générateur de vidéos de baiser IA en ligne | Créez des vidéos de baiser",
+    "description": "Utilisez Toolaze pour transformer une ou deux photos en courtes vidéos de baiser romantique pour montages de couple, reels et clips sociaux."
+  },
+  "sectionsOrder": [
+    "intro",
+    "promptExamples",
+    "howToUse",
+    "scenes",
+    "features",
+    "faq"
+  ],
+  "hero": {
+    "h1": "<span class=\"text-gradient\">Générateur de vidéos de baiser IA</span> en ligne",
+    "desc": "Importez une ou deux photos nettes, décrivez l’ambiance et créez une courte vidéo de baiser romantique pour montages de couple, anniversaires et clips sociaux cinématographiques."
+  },
+  "intro": {
+    "title": "Créez des vidéos romantiques de baiser à partir de photos",
+    "content": [
+      {
+        "title": "Transformer des photos en vidéos de baiser",
+        "text": "Toolaze anime une ou deux photos importées en une courte vidéo de baiser romantique pour montages de couple, anniversaires et publications sociales."
+      },
+      {
+        "title": "Diriger la scène par prompt",
+        "text": "Décrivez style de baiser, caméra, lumière, décor, tenue et émotion pour obtenir un clip romantique naturel."
+      },
+      {
+        "title": "Résultats respectueux et réalistes",
+        "text": "Utilisez des photos claires d’adultes avec autorisation et demandez un mouvement doux, un sourire chaleureux ou une lenteur cinématographique."
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "Idées de prompts pour vidéos de baiser IA",
+    "subtitle": "Importez une ou deux photos et réutilisez ces structures pour des vidéos romantiques courtes.",
+    "items": [
+      {
+        "title": "Baiser de couple au coucher du soleil",
+        "prompt": "Faites partager à ce couple un baiser romantique et doux au coucher du soleil, lumière dorée chaude, léger rapprochement de caméra, sourires naturels, vidéo cinématographique de 5 secondes, format vertical 9:16.",
+        "note": "Idéal pour les montages d’anniversaire, les souvenirs de demande et les reels de stories.",
+        "color": "linear-gradient(135deg, #fb7185, #7c3aed)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/644ef4ef82884741b92b7932d83b4735.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d94331861cac45a2b3d488966b18f6e0.webp",
+        "description": "Idéal pour les montages d’anniversaire, les souvenirs de demande et les reels de stories.",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-24T00:24:00.000Z"
+      },
+      {
+        "title": "Romance dans une rue pluvieuse",
+        "prompt": "Transformez la photo importée en vidéo de baiser romantique dans une rue pluvieuse, doux reflets néon, étreinte rapprochée, ralenti et expressions faciales réalistes, format vertical 9:16.",
+        "note": "À utiliser pour des montages de couple atmosphériques et des clips sociaux au style cinématographique.",
+        "color": "linear-gradient(135deg, #38bdf8, #4c1d95)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/6469c25f84b947aeb4c544bfed5c9768.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ff969c52195b43e3be68f45fb11f5140.webp",
+        "description": "À utiliser pour des montages de couple atmosphériques et des clips sociaux au style cinématographique.",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-24T00:24:00.000Z"
+      },
+      {
+        "title": "Moment de mariage",
+        "prompt": "Créez une tendre vidéo de baiser de mariage à partir de cette photo de couple, lumière élégante, fond propre, légers mouvements du voile et du costume, émouvant mais réaliste, format vertical 9:16.",
+        "note": "Utile pour les concepts de mariage, les reels d’invitation et les brouillons de souvenirs.",
+        "color": "linear-gradient(135deg, #f8fafc, #c084fc)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/7d41c57d1bc5441a9951fdb4bd8042aa.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/99189a0e1a4e4570ba7c059b3ad4d461.webp",
+        "description": "Utile pour les concepts de mariage, les reels d’invitation et les brouillons de souvenirs.",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-24T00:24:00.000Z"
+      },
+      {
+        "title": "Retrouvailles à distance",
+        "prompt": "Faites se rencontrer les deux personnes de ces photos et partager un doux baiser de retrouvailles, ambiance d’arrivée à l’aéroport, lumière chaude, léger mouvement circulaire de caméra, romance non explicite, format vertical 9:16.",
+        "note": "Idéal pour des clips de couple narratifs et des thèmes de retrouvailles.",
+        "color": "linear-gradient(135deg, #f59e0b, #be123c)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/c1706eb3d80f4252a0ab290339158b7d.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/a4c16e2ca6c944f582c8b98d5eb3d23c.webp",
+        "description": "Idéal pour des clips de couple narratifs et des thèmes de retrouvailles.",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-24T00:24:00.000Z"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Comment utiliser le générateur de vidéos de baiser IA",
+    "steps": [
+      {
+        "title": "Importez une ou deux photos",
+        "desc": "Commencez avec des photos nettes et bien éclairées où les visages sont visibles. Utilisez des personnes adultes et des photos que vous avez le droit de modifier."
+      },
+      {
+        "title": "Décrivez la scène romantique",
+        "desc": "Ajoutez le style du baiser, l’ambiance, le lieu, l’éclairage, le mouvement de caméra, le cadrage et indiquez si le clip doit être cinématographique, décontracté, inspiré d’un mariage ou narratif."
+      },
+      {
+        "title": "Générez et affinez",
+        "desc": "Créez la vidéo, puis simplifiez le prompt ou ajustez le cadrage si le mouvement, l’expression du visage ou l’arrière-plan doivent être plus nets."
+      }
+    ]
+  },
+  "scenesTitle": "Où les vidéos de baiser IA fonctionnent le mieux",
+  "scenes": [
+    {
+      "title": "Reels d’histoires de couple",
+      "icon": "💞",
+      "desc": "Créez de courts clips romantiques pour les anniversaires, les récits d’amour, les souvenirs de fiançailles et les montages personnels sur les réseaux sociaux."
+    },
+    {
+      "title": "Concepts de mariage et de demande",
+      "icon": "💍",
+      "desc": "Imaginez de doux moments de baiser pour les vidéos d’invitation, les tableaux d’inspiration de mariage, les reels de demande et les récits d’événement."
+    },
+    {
+      "title": "Montages romantiques cinématographiques",
+      "icon": "🎬",
+      "desc": "Explorez une lumière douce, des cadrages rapprochés, des scènes de pluie, des arrière-plans au coucher du soleil et des mouvements romantiques de style cinéma."
+    }
+  ],
+  "features": {
+    "title": "Fonctions clés pour créer des vidéos de baiser",
+    "items": [
+      {
+        "icon": "📷",
+        "iconType": "upload",
+        "title": "Import d’une ou deux photos",
+        "desc": "Importez une photo de couple ou deux photos de référence et guidez le mouvement romantique avec un prompt."
+      },
+      {
+        "icon": "🎥",
+        "iconType": "camera",
+        "title": "Direction vidéo par prompt",
+        "desc": "Contrôlez l’ambiance, l’éclairage, l’arrière-plan, le mouvement de caméra, le cadrage et le style du baiser en langage naturel."
+      },
+      {
+        "icon": "💗",
+        "iconType": "creative",
+        "title": "Scènes romantiques non explicites",
+        "desc": "Créez des baisers doux, des étreintes rapprochées, des sourires chaleureux, des moments de mariage et des reels d’histoires sans contenu explicite."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Workflow rapide dans le navigateur",
+        "desc": "Générez un court clip en ligne sans configurer de logiciel de montage ni de ligne de temps d’animation manuelle."
+      },
+      {
+        "icon": "🧑‍🤝‍🧑",
+        "iconType": "workflow",
+        "title": "Prompts pensés pour les couples",
+        "desc": "Utilisez des prompts conçus pour la cohérence des visages, des expressions naturelles, des mouvements doux et un cadrage de couple propre."
+      },
+      {
+        "icon": "🛡️",
+        "iconType": "safety",
+        "title": "Édition respectueuse",
+        "desc": "Utilisez des photos que vous avez le droit de modifier et gardez des prompts centrés sur des scènes romantiques respectueuses, consenties et entre adultes."
+      }
+    ]
+  },
+  "faqTitle": "Questions fréquentes",
+  "faq": [
+    {
+      "q": "Qu’est-ce que le générateur de vidéos de baiser IA ?",
+      "a": "C’est un outil Toolaze qui crée de courtes vidéos de baiser romantique à partir d’une ou deux photos importées et d’un prompt texte."
+    },
+    {
+      "q": "Puis-je importer deux photos distinctes ?",
+      "a": "Oui. La page accepte une ou deux photos, vous pouvez donc partir d’une photo de couple ou de deux photos de référence compatibles."
+    },
+    {
+      "q": "Quels prompts fonctionnent le mieux pour les vidéos de baiser IA ?",
+      "a": "Utilisez des détails clairs comme un baiser doux, une lumière de coucher du soleil, une étreinte rapprochée, une ambiance de mariage, un lent rapprochement de caméra, un sourire doux, des expressions réalistes et une romance non explicite."
+    },
+    {
+      "q": "Puis-je l’utiliser pour des vidéos de mariage ou d’anniversaire ?",
+      "a": "Oui. Il convient aux clips de concept, reels d’invitation, montages d’anniversaire, idées de demande et publications sociales lorsque vous utilisez des photos autorisées."
+    },
+    {
+      "q": "Comment obtenir un résultat plus naturel ?",
+      "a": "Importez des photos nettes, de face et avec une lumière similaire, puis demandez des mouvements subtils, des expressions réalistes, un cadrage propre et un court clip cinématographique."
+    }
+  ],
+  "moreTools": "Plus d’outils vidéo IA",
+  "moreToolsLinks": [
+    {
+      "title": "Générateur de vidéo IA",
+      "href": "/ai-video-generator",
+      "description": "Créez de courtes vidéos IA à partir de texte, d’images, de clips vidéo ou de références audio."
+    },
+    {
+      "title": "Générateur de danse IA",
+      "href": "/ai-dance-generator",
+      "description": "Importez une image et créez de courtes vidéos de danse pour la chorégraphie et les clips sociaux."
+    },
+    {
+      "title": "Créateur de photos de couple IA",
+      "href": "/ai-couple-photo-maker",
+      "description": "Générez des portraits romantiques de couple lorsque vous avez besoin d’un résultat statique."
+    }
+  ]
+}

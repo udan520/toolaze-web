@@ -153,6 +153,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.87,
     })
   })
+  entries.push({
+    url: `${baseUrl}/ai-kissing-video-generator`,
+    lastModified: today,
+    changeFrequency: 'weekly',
+    priority: 0.9,
+  })
+  SUPPORTED_LOCALES.forEach((locale) => {
+    if (locale === 'en') return
+    entries.push({
+      url: `${baseUrl}/${locale}/ai-kissing-video-generator`,
+      lastModified: today,
+      changeFrequency: 'weekly',
+      priority: 0.87,
+    })
+  })
 
   SUPPORTED_LOCALES.forEach((locale) => {
     const path = locale === 'en' ? '/ai-hair-color-changer' : `/${locale}/ai-hair-color-changer`

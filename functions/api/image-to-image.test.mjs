@@ -14,7 +14,10 @@ function createGenerationRequest(overrides = {}) {
   formData.append('isImageToImage', String(overrides.isImageToImage ?? true))
   formData.append('model', overrides.model || 'gpt-image-2')
   if (overrides.imageUrls !== false) {
-    formData.append('imageUrls', JSON.stringify(['https://example.com/reference.png']))
+    const imageUrls = Array.isArray(overrides.imageUrls)
+      ? overrides.imageUrls
+      : ['https://example.com/reference.png']
+    formData.append('imageUrls', JSON.stringify(imageUrls))
   }
 
   return new Request('http://localhost:3016/api/image-to-image', {
@@ -155,6 +158,35 @@ test('Grok Video 1.5 image-to-video requests use the KIE preview video model', a
   }
 })
 
+test('Grok Video 1.5 image-to-video requests forward up to seven image URLs to KIE', async () => {
+  const originalFetch = globalThis.fetch
+  let requestBody = null
+  const imageUrls = Array.from({ length: 7 }, (_, index) => `https://example.com/reference-${index + 1}.png`)
+
+  globalThis.fetch = async (_url, init) => {
+    requestBody = JSON.parse(String(init.body))
+    return Response.json({ code: 200, data: { taskId: 'task_video_multi_image' } })
+  }
+
+  try {
+    const response = await onRequest({
+      request: createGenerationRequest({
+        model: 'grok-video-1-5',
+        aspectRatio: '16:9',
+        resolution: '480p',
+        imageUrls,
+      }),
+      env: { CREEM_API_KEY: 'creem-test-key', KIE_AI_API_KEY: 'test-key' },
+    })
+
+    assert.equal(response.status, 200)
+    assert.equal(requestBody.model, 'grok-imagine-video-1-5-preview')
+    assert.deepEqual(requestBody.input.image_urls, imageUrls)
+  } finally {
+    globalThis.fetch = originalFetch
+  }
+})
+
 test('Grok Video 1.5 image-to-video requests forward selected duration and price by duration', async () => {
   const originalFetch = globalThis.fetch
   let requestBody = null
@@ -178,7 +210,7 @@ test('Grok Video 1.5 image-to-video requests forward selected duration and price
 
     assert.equal(response.status, 200)
     assert.equal(requestBody.input.duration, 15)
-    assert.equal(payload.requiredCredits, 263)
+    assert.equal(payload.requiredCredits, 75)
   } finally {
     globalThis.fetch = originalFetch
   }

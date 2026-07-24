@@ -197,6 +197,7 @@ test('Nano Banana credit exhausted text exists for every supported non-English l
 test('top navigation common copy includes every visible model and AI tool menu key', () => {
   const requiredNavKeys = [
     'aiBabyGenerator',
+    'aiKissingVideoGenerator',
     'aiHairstyleChanger',
     'aiHairColorChanger',
     'worldCupAiImageGenerator',

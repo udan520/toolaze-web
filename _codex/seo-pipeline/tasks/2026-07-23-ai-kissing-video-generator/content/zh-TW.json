@@ -1,0 +1,238 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 2,
+    "modelId": "grok-video-1-5",
+    "defaultPrompt": "讓上傳照片中的人物在短片中自然、溫柔地浪漫親吻。保持尊重、非露骨且有電影感。",
+    "hideModelBranding": true,
+    "compactResultPanel": true,
+    "displayName": "AI 親吻影片生成器",
+    "textOverrides": {
+      "promptLabel": "描述親吻影片",
+      "promptPlaceholder": "例如：讓這對情侶在夕陽下溫柔親吻",
+      "generateLabel": "生成親吻影片",
+      "uploadTitle": "上傳一張或兩張照片"
+    },
+    "defaultVideoDurationSeconds": 5,
+    "videoDurationOptions": [
+      3,
+      5,
+      8,
+      10
+    ],
+    "sampleImages": [
+      {
+        "url": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/83a8c5b91a4945beb66275c38a731dbf.png",
+        "title": "AI 親吻 16:9 示範影片",
+        "width": 16,
+        "height": 9,
+        "mediaType": "video",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/15ccbe71d8eb4921930b8b7638bcebab.webp"
+      }
+    ]
+  },
+  "metadata": {
+    "title": "AI 親吻影片生成器｜線上生成親吻短片",
+    "description": "使用 Toolaze AI 親吻影片生成器，將一張或兩張照片變成浪漫親吻短片，適合情侶剪輯、紀念日 Reels 與社群短片。"
+  },
+  "sectionsOrder": [
+    "intro",
+    "promptExamples",
+    "howToUse",
+    "scenes",
+    "features",
+    "faq"
+  ],
+  "hero": {
+    "h1": "<span class=\"text-gradient\">AI 親吻影片生成器</span> 線上版",
+    "desc": "上傳一張或兩張清晰照片，描述氛圍，即可生成浪漫親吻短片，用於情侶剪輯、紀念日 Reels 與電影感社群影片。"
+  },
+  "intro": {
+    "title": "從照片生成浪漫親吻影片",
+    "content": [
+      {
+        "title": "把照片變成親吻短片",
+        "text": "Toolaze 可將一張或兩張照片動畫化為溫柔浪漫的親吻短片，適合情侶剪輯、紀念日、愛情故事與社群貼文。"
+      },
+      {
+        "title": "用提示詞控制場景",
+        "text": "描述親吻風格、鏡頭、燈光、背景、服裝與情緒，讓結果更像自然的浪漫短片。"
+      },
+      {
+        "title": "保持尊重與真實",
+        "text": "使用清晰且獲得授權的成人照片，並以溫柔親吻、微笑、擁抱或電影感慢動作等非露骨方向提示。"
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "AI 親吻影片提示詞範例",
+    "subtitle": "上傳一張或兩張照片後，可套用這些結構生成浪漫短片。",
+    "items": [
+      {
+        "title": "夕陽下的情侶親吻",
+        "prompt": "讓這對情侶在夕陽下溫柔浪漫地親吻，暖金色光線、柔和鏡頭推近、自然微笑、電影感 5 秒影片、直式 9:16。",
+        "note": "適合週年紀念剪輯、求婚回憶與限時動態短片。",
+        "color": "linear-gradient(135deg, #fb7185, #7c3aed)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/644ef4ef82884741b92b7932d83b4735.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d94331861cac45a2b3d488966b18f6e0.webp",
+        "description": "適合週年紀念剪輯、求婚回憶與限時動態短片。",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-24T00:24:00.000Z"
+      },
+      {
+        "title": "雨中街頭浪漫",
+        "prompt": "將上傳照片轉成雨中街頭的浪漫親吻影片，柔和霓虹倒影、近距離擁抱、慢動作、真實自然的表情、直式 9:16。",
+        "note": "適合氛圍感情侶剪輯與電影感社群短片。",
+        "color": "linear-gradient(135deg, #38bdf8, #4c1d95)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/6469c25f84b947aeb4c544bfed5c9768.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ff969c52195b43e3be68f45fb11f5140.webp",
+        "description": "適合氛圍感情侶剪輯與電影感社群短片。",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-24T00:24:00.000Z"
+      },
+      {
+        "title": "婚禮時刻",
+        "prompt": "依這張情侶照片建立溫柔的婚禮親吻影片，優雅光線、乾淨背景、頭紗與西裝的細微動態、感性但真實、直式 9:16。",
+        "note": "適合婚禮概念、邀請短片與回憶草稿。",
+        "color": "linear-gradient(135deg, #f8fafc, #c084fc)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/7d41c57d1bc5441a9951fdb4bd8042aa.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/99189a0e1a4e4570ba7c059b3ad4d461.webp",
+        "description": "適合婚禮概念、邀請短片與回憶草稿。",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-24T00:24:00.000Z"
+      },
+      {
+        "title": "遠距重逢",
+        "prompt": "讓照片中的兩人相見並分享溫柔的重逢親吻，機場抵達的氛圍、溫暖光線、柔和環繞鏡頭、非露骨浪漫、直式 9:16。",
+        "note": "適合有故事感的情侶短片與重逢主題。",
+        "color": "linear-gradient(135deg, #f59e0b, #be123c)",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/c1706eb3d80f4252a0ab290339158b7d.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/a4c16e2ca6c944f582c8b98d5eb3d23c.webp",
+        "description": "適合有故事感的情侶短片與重逢主題。",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-24T00:24:00.000Z"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "如何使用 AI 親吻影片生成器",
+    "steps": [
+      {
+        "title": "上傳一張或兩張照片",
+        "desc": "請使用臉部清楚可見、光線良好的照片，並僅使用成年人及你有權編輯的照片。"
+      },
+      {
+        "title": "描述浪漫場景",
+        "desc": "補充親吻風格、氛圍、地點、燈光、鏡頭運動、構圖，以及希望短片呈現電影感、日常感、婚禮感或故事感。"
+      },
+      {
+        "title": "生成並微調",
+        "desc": "生成影片後，若動作、表情或背景需要更乾淨的結果，可簡化提示詞或調整構圖。"
+      }
+    ]
+  },
+  "scenesTitle": "AI 親吻影片適合的場景",
+  "scenes": [
+    {
+      "title": "情侶故事短片",
+      "icon": "💞",
+      "desc": "為週年紀念、愛情故事貼文、訂婚回憶與個人社群剪輯建立浪漫短片。"
+    },
+    {
+      "title": "婚禮與求婚概念",
+      "icon": "💍",
+      "desc": "為邀請影片、婚禮靈感板、求婚短片與活動故事設計溫柔的親吻畫面。"
+    },
+    {
+      "title": "電影感浪漫剪輯",
+      "icon": "🎬",
+      "desc": "嘗試柔和光線、近距離構圖、雨景、夕陽背景與電影感的浪漫動態。"
+    }
+  ],
+  "features": {
+    "title": "AI 親吻影片的主要功能",
+    "items": [
+      {
+        "icon": "📷",
+        "iconType": "upload",
+        "title": "支援一張或兩張照片",
+        "desc": "上傳一張情侶照片或兩張參考照片，並用提示詞引導浪漫動態。"
+      },
+      {
+        "icon": "🎥",
+        "iconType": "camera",
+        "title": "以提示詞導演影片",
+        "desc": "使用自然語言控制氛圍、燈光、背景、鏡頭運動、構圖與親吻風格。"
+      },
+      {
+        "icon": "💗",
+        "iconType": "creative",
+        "title": "非露骨的浪漫場景",
+        "desc": "建立溫柔親吻、近距離擁抱、暖心微笑、婚禮時刻與故事短片，不含露骨內容。"
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "快速瀏覽器工作流程",
+        "desc": "不必準備影片剪輯軟體或手動動畫時間軸，即可在線生成短片。"
+      },
+      {
+        "icon": "🧑‍🤝‍🧑",
+        "iconType": "workflow",
+        "title": "專為情侶設計的提示詞",
+        "desc": "使用有助於臉部一致性、自然表情、柔和動態與乾淨情侶構圖的提示詞。"
+      },
+      {
+        "icon": "🛡️",
+        "iconType": "safety",
+        "title": "以尊重為前提的編輯",
+        "desc": "僅使用你有權編輯的照片，並讓提示詞聚焦於成年人、合意且尊重的浪漫場景。"
+      }
+    ]
+  },
+  "faqTitle": "AI 親吻影片生成器常見問題",
+  "faq": [
+    {
+      "q": "什麼是 AI 親吻影片生成器？",
+      "a": "這是 Toolaze 的工具，可將一張或兩張上傳照片與文字提示詞變成浪漫親吻短片。"
+    },
+    {
+      "q": "我可以上傳兩張不同的照片嗎？",
+      "a": "可以。此頁支援上傳一張或兩張照片，可使用情侶合照，或兩張彼此相容的參考照片。"
+    },
+    {
+      "q": "哪些提示詞最適合 AI 親吻影片？",
+      "a": "請提供清楚的場景細節，例如溫柔親吻、夕陽光線、近距離擁抱、婚禮氛圍、緩慢推鏡、柔和微笑、真實表情與非露骨浪漫。"
+    },
+    {
+      "q": "可用於婚禮或週年紀念影片嗎？",
+      "a": "可以。使用獲得授權的照片時，它適合概念短片、邀請短片、週年紀念剪輯、求婚靈感與社群貼文。"
+    },
+    {
+      "q": "如何得到更自然的結果？",
+      "a": "上傳清晰、正面且光線相近的照片，並要求細微動態、真實表情、乾淨構圖與短版電影感影片。"
+    }
+  ],
+  "moreTools": "更多 AI 影片工具",
+  "moreToolsLinks": [
+    {
+      "title": "AI 影片生成器",
+      "href": "/ai-video-generator",
+      "description": "使用文字、圖像、影片片段或音訊參考建立 AI 短片。"
+    },
+    {
+      "title": "AI 跳舞生成器",
+      "href": "/ai-dance-generator",
+      "description": "上傳一張圖片，建立適合編舞與社群短片的跳舞影片。"
+    },
+    {
+      "title": "AI 情侶照片生成器",
+      "href": "/ai-couple-photo-maker",
+      "description": "需要靜態成果時，可生成浪漫的情侶肖像。"
+    }
+  ]
+}
