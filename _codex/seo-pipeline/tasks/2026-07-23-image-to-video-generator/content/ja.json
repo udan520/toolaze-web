@@ -1,0 +1,292 @@
+{
+  "in_menu": true,
+  "topComponent": "ai-video-generator",
+  "metadata": {
+    "title": "画像から動画を生成するAIツール | 写真をオンラインで動画化",
+    "description": "参照画像をアップロードし、動きやカメラワークを指定して、対応モデルを比較しながら短いAI動画を生成できます。"
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "promptExamples",
+    "modelIntro",
+    "performanceMetrics",
+    "modelSelectionGuide",
+    "troubleshooting",
+    "scenes",
+    "faq"
+  ],
+  "modelIntro": {
+    "title": "参照画像からAI動画を作成",
+    "modelName": "画像動画生成AI",
+    "modelType": "AI動画ツール",
+    "description": [
+      "画像動画生成AIは、アップロードした画像を視覚的な基準として維持しながら、プロンプトに沿って動き、カメラワーク、光の変化、タイミングを加えます。商品写真、人物、イラスト、室内、サムネイル、広告案、絵コンテに適しています。",
+      "Toolazeでは、画像をアップロードし、動きを中心にしたプロンプトを書き、対応モデルを選択できます。生成前に長さ、解像度、音声、参照上限、推定クレジットを確認できます。"
+    ],
+    "featureCards": [
+      {
+        "title": "参照画像を基準に生成",
+        "content": "静止画の被写体、構図、商品形状、人物の特徴、画風を保ちながら動きを加えます。"
+      },
+      {
+        "title": "動きを明確に指定",
+        "content": "カメラ移動、被写体の動作、光、テンポ、最後の構図を指定します。"
+      },
+      {
+        "title": "複数モデルを比較",
+        "content": "入力形式、参照数、長さ、解像度、音声、推定クレジットで対応モデルを比較できます。"
+      }
+    ]
+  },
+  "hero": {
+    "h1": "オンライン<span class=\"text-gradient\">画像動画生成AI</span>",
+    "desc": "写真、商品画像、イラスト、絵コンテのフレームを基に、動きやカメラワーク、モデル設定を調整して短いAI動画を作成できます。"
+  },
+  "heroDemoVideo": {
+    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4",
+    "ariaLabel": "Grok 1.5 Videoによる画像から動画のデモ。自動アスペクト比、5秒、480p解像度",
+    "sourceHistory": "Grok 1.5 Video · Image to Video · auto · 5s · 480p · 2026-07-21 12:31:57"
+  },
+  "performanceMetrics": {
+    "title": "画像動画モデルの設定",
+    "metrics": [
+      {
+        "label": "Grok 1.5 Video",
+        "value": "画像から動画; 参考画像1枚; 1～15秒; 480pまたは720p; 予想3+ credits"
+      },
+      {
+        "label": "Seedance 2.0",
+        "value": "テキストまたは画像から動画; 参考画像最大9枚; 5、10、15秒; 480p～4K; 予想150+ credits"
+      },
+      {
+        "label": "Seedance 2.0 Mini",
+        "value": "テキストまたは画像から動画; 参考画像最大9枚; 5、10、15秒; 480pまたは720p; 予想75+ credits"
+      },
+      {
+        "label": "Kling 3.0",
+        "value": "テキストまたは画像から動画; 参考画像最大4枚; 3～15秒; 720p～4K; 720pまたは1080pでNative Audio; 予想60+ credits"
+      }
+    ]
+  },
+  "modelSelectionGuide": {
+    "title": "用途に合う画像動画モデルを選ぶ",
+    "subtitle": "必要な参照画像数、動画の長さ、解像度、音声の優先度に合わせて選択します。",
+    "items": [
+      {
+        "title": "Grok 1.5 Video",
+        "badge": "1枚から高速で下書き",
+        "color": "linear-gradient(135deg, #111827, #4f46e5)",
+        "desc": "Grokは、1枚の参照画像から480pまたは720pの下書きを素早く作りたい場合に適しています。",
+        "prompt": "商品動作のテスト、クリエイター動画、サムネイルのアニメーション、素早い試作向けです。",
+        "logoSrc": "/model-logos/grok.svg",
+        "logoAlt": "Grok 1.5 Video ロゴ"
+      },
+      {
+        "title": "Seedance 2.0",
+        "badge": "多数の参照画像に対応",
+        "color": "linear-gradient(135deg, #4f46e5, #ec4899)",
+        "desc": "Seedance 2.0は、複数の参照画像、長い動画、高解像度出力が必要な場面に適しています。",
+        "prompt": "商品セット、人物の一貫性、絵コンテの展開、広告コンセプト向けです。",
+        "logoSrc": "/model-logos/bytedance.svg",
+        "logoAlt": "Seedance 2.0 ロゴ"
+      },
+      {
+        "title": "Seedance 2.0 Mini",
+        "badge": "少ないクレジットで試作",
+        "color": "linear-gradient(135deg, #0ea5e9, #6366f1)",
+        "desc": "Seedance 2.0 Miniは、参照画像、プロンプト、比率、動きの方向を低コストで試す際に適しています。",
+        "prompt": "最終生成に多くのクレジットを使う前のプロンプト調整向けです。",
+        "logoSrc": "/model-logos/bytedance.svg",
+        "logoAlt": "Seedance 2.0 Mini ロゴ"
+      },
+      {
+        "title": "Kling 3.0",
+        "badge": "高解像度または音声対応",
+        "color": "linear-gradient(135deg, #0f172a, #22c55e)",
+        "desc": "Kling 3.0は、高解像度出力や対応設定でのNative Audioが必要な場合に適しています。",
+        "prompt": "完成度の高いコンセプト動画、映画的な動き、音声を含むテスト向けです。",
+        "logoSrc": "/model-logos/kling.svg",
+        "logoAlt": "Kling 3.0 ロゴ"
+      }
+    ]
+  },
+  "troubleshooting": {
+    "title": "画像動画をきれいに仕上げるコツ",
+    "subtitle": "不鮮明な画像、動きの指定が多すぎるプロンプト、保持条件の不足は、結果が不安定になる主な原因です。",
+    "items": [
+      {
+        "title": "動きが不安定",
+        "badge": "動きを簡潔に",
+        "color": "linear-gradient(135deg, #4f46e5, #818cf8)",
+        "desc": "プロンプトを1つの被写体動作と1つのカメラ移動に絞ります。動きが多いと予測しにくくなります。",
+        "prompt": "例: 陶器のカップを中央に保ち、カメラだけがゆっくり近づく。"
+      },
+      {
+        "title": "商品の細部が変わる",
+        "badge": "参考画像を強化",
+        "color": "linear-gradient(135deg, #7c3aed, #c084fc)",
+        "desc": "鮮明な参考画像を使い、維持する形、ラベル位置、色、カメラ角度を指定します。",
+        "prompt": "例: 缶の形、正面ラベル、銀色の縁、斜め45度の角度を維持する。"
+      },
+      {
+        "title": "映像がぼやける",
+        "badge": "素材を改善",
+        "color": "linear-gradient(135deg, #0ea5e9, #38bdf8)",
+        "desc": "きれいな参考画像を使い、主題と照明を指定し、対応モデルでは高い解像度を選びます。",
+        "prompt": "例: 商品の輪郭を鮮明に、正面ラベルに焦点、柔らかなスタジオ照明、清潔な背景。"
+      },
+      {
+        "title": "生成に時間がかかる",
+        "badge": "先に下書き",
+        "color": "linear-gradient(135deg, #059669, #34d399)",
+        "desc": "最終版にcreditsを使う前に、短い時間や低い解像度で試します。",
+        "prompt": "5秒の480pまたは720p下書きを作り、動きを確認してから品質を上げる。"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "画像を動画にする方法",
+    "steps": [
+      {
+        "title": "鮮明な画像をアップロード",
+        "desc": "商品写真、人物、イラスト、室内写真、絵コンテなど、被写体と輪郭が明確な画像を用意します。"
+      },
+      {
+        "title": "中心となる動きを1つ指定",
+        "desc": "被写体の動作、カメラ移動、光、テンポ、最後の構図を記述します。まずは動きを1つに絞ると安定します。"
+      },
+      {
+        "title": "設定を選んで生成",
+        "desc": "参照画像数、長さ、解像度、音声対応、推定クレジットを比較してモデルを選びます。"
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "画像から動画を作るプロンプト例",
+    "subtitle": "16:9の参照画像とプロンプトを使い、被写体の保持、制御されたカメラ移動、動画品質を確認できます。",
+    "layout": "reference-video",
+    "items": [
+      {
+        "title": "商品写真のアニメーション",
+        "prompt": "Start from the uploaded 16:9 product photo and create a short marketplace-ready motion clip. Preserve the diffuser shape, ceramic texture, three-quarter angle, pedestal placement, and warm beige studio lighting while adding a controlled half-turn, soft shadow movement, a subtle foreground light sweep, and a clean final product hold.",
+        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/880154a7e9874c2eb41e2beb2a9bab67.webp",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/generated/239f15b24b5741efbb1a384e4c38a06f.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/880154a7e9874c2eb41e2beb2a9bab67.webp",
+        "description": "対応する参照画像から生成した16:9の画像動画サンプルです。",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-23T10:30:59.824Z"
+      },
+      {
+        "title": "参照画像から作るSNS動画",
+        "prompt": "Use the uploaded 16:9 creator lifestyle image as the visual anchor for a horizontal social clip. Keep the face, outfit, cafe window setting, laptop, and warm daylight recognizable while adding a small camera push-in, natural handheld micro-movement, slight background motion outside the window, and one clean ending frame for a cover.",
+        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d94dc2c421ed40bd89f0811484b581bc.webp",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/generated/a5b41cf6b4b246aa8facc3e12ae19ecc.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d94dc2c421ed40bd89f0811484b581bc.webp",
+        "description": "対応する参照画像から生成した16:9の画像動画サンプルです。",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-23T10:31:49.931Z"
+      },
+      {
+        "title": "絵コンテをシネマティック動画に変換",
+        "prompt": "Turn the uploaded 16:9 coastal cyclist storyboard frame into one continuous cinematic shot. Preserve the rider scale, road curve, ocean horizon, golden-hour lighting, and wide composition while adding background parallax, a slow lens drift, light wind in the scene, and a final frame that still matches the original board.",
+        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/2b49461525a74c4fa3679a2c4e40a5db.webp",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/generated/2321a8e52ff243cf91086755405ebeef.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/2b49461525a74c4fa3679a2c4e40a5db.webp",
+        "description": "対応する参照画像から生成した16:9の画像動画サンプルです。",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-23T10:32:51.369Z"
+      },
+      {
+        "title": "静止画から作る広告コンセプト",
+        "prompt": "Use the uploaded 16:9 campaign still as the source frame for a 5-second ad motion test. Lock the bottle shape, citrus props, reflective tabletop, teal and coral panels, and product scale, then add a slow push-in, foreground light sweep, subtle condensation sparkle, reflection movement, and a brand-safe final hold.",
+        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d45047f7914948c28a6249cb2e32bbbc.webp",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/generated/96a796f9943c42519381d15b22ab1d1d.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d45047f7914948c28a6249cb2e32bbbc.webp",
+        "description": "対応する参照画像から生成した16:9の画像動画サンプルです。",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-23T10:33:56.418Z"
+      }
+    ]
+  },
+  "scenesTitle": "画像動画生成AIの主な用途",
+  "scenes": [
+    {
+      "title": "商品写真とEC広告",
+      "icon": "📱",
+      "desc": "パッケージ写真や商品画像、モックアップ、広告ビジュアルに、回転、反射、光の動きを加えます。"
+    },
+    {
+      "title": "人物とキャラクター参照",
+      "icon": "🛒",
+      "desc": "顔、衣装、色、構図を保ちながら、人物やアバター、キャラクター設定画に自然な動きを加えます。"
+    },
+    {
+      "title": "イラスト、ポスター、サムネイル",
+      "icon": "🎬",
+      "desc": "静止画やタイトルカードに、視差、空気感、カメラ移動、スポットライトの動きを加えます。"
+    },
+    {
+      "title": "絵コンテとプリプロダクション",
+      "icon": "🎓",
+      "desc": "1枚の絵コンテから、カメラワーク、テンポ、照明、演出を確認する短いテスト動画を作ります。"
+    },
+    {
+      "title": "UIモックアップと製品デモ",
+      "icon": "🎥",
+      "desc": "Webサイトやアプリ、ダッシュボードの画面を読みやすく保ちながら、控えめなカメラ移動を加えます。"
+    },
+    {
+      "title": "不動産とインテリア",
+      "icon": "🕹️",
+      "desc": "部屋や外観、内装案、リノベーション資料を、構図を保った短いウォークスルー動画にします。"
+    }
+  ],
+  "moreTools": "関連するAI動画ツール",
+  "moreToolsLinks": [
+    {
+      "title": "AI動画生成",
+      "description": "テキストプロンプトや参考画像からAI動画を生成します。",
+      "href": "/ai-video-generator"
+    },
+    {
+      "title": "Seedance 2.0",
+      "description": "Seedance 2.0でテキスト、画像、動画、音声を使った動画生成を試せます。",
+      "href": "/model/seedance-2"
+    },
+    {
+      "title": "Kling 3.0",
+      "description": "シネマティックな動画やコンセプト向けの別モデルを確認します。",
+      "href": "/model/kling-3"
+    }
+  ],
+  "faqTitle": "画像動画生成AIのよくある質問",
+  "faq": [
+    {
+      "q": "画像動画生成AIとは何ですか？",
+      "a": "静止画を基に、参照画像の内容を保ちながら、プロンプトで動き、カメラワーク、光、タイミングを加えて短い動画にするツールです。"
+    },
+    {
+      "q": "どのような画像が適していますか？",
+      "a": "被写体が明確で輪郭と細部が見える画像が適しています。商品写真、人物、イラスト、室内、ポスター、サムネイル、絵コンテは、ぼやけた画像より安定しやすい傾向があります。"
+    },
+    {
+      "q": "動きを指定できますか？",
+      "a": "はい。中心となる動作を1つ、カメラ移動を1つ指定し、光、テンポ、最後の構図を補足してください。"
+    },
+    {
+      "q": "どのToolazeモデルを選べばよいですか？",
+      "a": "1枚からの高速な下書きにはGrok 1.5 Video、複数参照にはSeedance 2.0、低コストの試作にはSeedance 2.0 Mini、高解像度やNative AudioにはKling 3.0が適しています。"
+    },
+    {
+      "q": "Toolazeの画像動画生成は無料ですか？",
+      "a": "利用状況に応じて無料クレジットや一部の試用が提供される場合があります。生成前にモデルと必要クレジットが表示されます。"
+    },
+    {
+      "q": "Seedanceの画像動画ページとの違いは何ですか？",
+      "a": "このページではToolazeが対応する複数モデルの画像動画ワークフローを比較できます。SeedanceページではSeedance 2.0固有の設定と例を紹介します。"
+    }
+  ],
+  "topTool": {
+    "defaultMode": "image-to-video"
+  }
+}

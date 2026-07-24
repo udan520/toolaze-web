@@ -1,0 +1,288 @@
+{
+  "in_menu": true,
+  "topComponent": "ai-video-generator",
+  "topTool": {
+    "defaultMode": "image-to-video"
+  },
+  "metadata": {
+    "title": "Image to Video Generator Online | Animate Photos with AI",
+    "description": "Turn images into short AI videos online. Upload a reference image, describe motion and camera direction, compare supported video models, then generate image-to-video clips."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "promptExamples",
+    "modelIntro",
+    "performanceMetrics",
+    "modelSelectionGuide",
+    "troubleshooting",
+    "scenes",
+    "faq"
+  ],
+  "hero": {
+    "h1": "<span class=\"text-gradient\">Image to Video Generator</span> Online",
+    "desc": "Upload a photo, product shot, artwork, or reference frame and turn it into a short AI video with guided motion, camera movement, and model settings in one Toolaze workflow."
+  },
+  "heroDemoVideo": {
+    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4",
+    "ariaLabel": "Image-to-video demo generated from a reference image with auto aspect ratio, 5 second duration, and 480p resolution",
+    "sourceHistory": "Grok 1.5 Video · Image to Video · auto · 5s · 480p · 2026-07-21 12:31:57"
+  },
+  "howToUse": {
+    "title": "How to Turn an Image Into a Video",
+    "steps": [
+      {
+        "title": "Upload a Clear Image",
+        "desc": "Start with a sharp product photo, portrait, artwork, logo mockup, interior shot, or storyboard frame. The cleaner the image, the easier it is for the model to preserve the subject."
+      },
+      {
+        "title": "Describe One Main Motion",
+        "desc": "Write a prompt with the subject action, camera move, lighting, pacing, and output format. Use one clear motion first, then refine after the draft is stable."
+      },
+      {
+        "title": "Choose Settings and Generate",
+        "desc": "Compare supported image-to-video models by reference limits, duration, resolution, audio support, and estimated credits before creating the clip."
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "Image to Video Prompt Templates",
+    "subtitle": "Use these 16:9 reference-image prompts to test subject preservation, controlled camera movement, and Grok image-to-video motion quality.",
+    "layout": "reference-video",
+    "items": [
+      {
+        "title": "Product Photo Animation",
+        "prompt": "Start from the uploaded 16:9 product photo and create a short marketplace-ready motion clip. Preserve the diffuser shape, ceramic texture, three-quarter angle, pedestal placement, and warm beige studio lighting while adding a controlled half-turn, soft shadow movement, a subtle foreground light sweep, and a clean final product hold.",
+        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/880154a7e9874c2eb41e2beb2a9bab67.webp",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/generated/239f15b24b5741efbb1a384e4c38a06f.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/880154a7e9874c2eb41e2beb2a9bab67.webp",
+        "description": "16:9 Grok image-to-video example generated from a matching reference image for product photo animation.",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-23T10:30:59.824Z"
+      },
+      {
+        "title": "Social Short From a Reference Image",
+        "prompt": "Use the uploaded 16:9 creator lifestyle image as the visual anchor for a horizontal social clip. Keep the face, outfit, cafe window setting, laptop, and warm daylight recognizable while adding a small camera push-in, natural handheld micro-movement, slight background motion outside the window, and one clean ending frame for a cover.",
+        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d94dc2c421ed40bd89f0811484b581bc.webp",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/generated/a5b41cf6b4b246aa8facc3e12ae19ecc.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d94dc2c421ed40bd89f0811484b581bc.webp",
+        "description": "16:9 Grok image-to-video example generated from a matching reference image for social short from a reference image.",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-23T10:31:49.931Z"
+      },
+      {
+        "title": "Storyboard Frame to Cinematic Clip",
+        "prompt": "Turn the uploaded 16:9 coastal cyclist storyboard frame into one continuous cinematic shot. Preserve the rider scale, road curve, ocean horizon, golden-hour lighting, and wide composition while adding background parallax, a slow lens drift, light wind in the scene, and a final frame that still matches the original board.",
+        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/2b49461525a74c4fa3679a2c4e40a5db.webp",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/generated/2321a8e52ff243cf91086755405ebeef.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/2b49461525a74c4fa3679a2c4e40a5db.webp",
+        "description": "16:9 Grok image-to-video example generated from a matching reference image for storyboard frame to cinematic clip.",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-23T10:32:51.369Z"
+      },
+      {
+        "title": "Ad Concept From a Still Image",
+        "prompt": "Use the uploaded 16:9 campaign still as the source frame for a 5-second ad motion test. Lock the bottle shape, citrus props, reflective tabletop, teal and coral panels, and product scale, then add a slow push-in, foreground light sweep, subtle condensation sparkle, reflection movement, and a brand-safe final hold.",
+        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d45047f7914948c28a6249cb2e32bbbc.webp",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/generated/96a796f9943c42519381d15b22ab1d1d.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d45047f7914948c28a6249cb2e32bbbc.webp",
+        "description": "16:9 Grok image-to-video example generated from a matching reference image for ad concept from a still image.",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-23T10:33:56.418Z"
+      }
+    ]
+  },
+  "modelIntro": {
+    "title": "Create AI Videos From a Reference Image",
+    "modelName": "Image to Video Generator",
+    "modelType": "AI Video Tool",
+    "description": [
+      "An image to video generator uses your uploaded image as the visual anchor, then adds motion, camera direction, lighting changes, and timing from your prompt. It is useful when the first frame matters: product photos, portraits, artwork, interior shots, thumbnails, ad concepts, and storyboard frames.",
+      "Toolaze keeps the image-to-video workflow focused on practical controls. Upload a clear image, write one motion-first prompt, choose a supported video model, and review duration, resolution, audio support, reference limits, and estimated credits before generating."
+    ],
+    "featureCards": [
+      {
+        "title": "Reference-First Video Creation",
+        "content": "Use a still image to preserve the subject, composition, product shape, character identity, or visual style while adding motion."
+      },
+      {
+        "title": "Motion Prompt Guidance",
+        "content": "Describe camera movement, subject action, lighting, pacing, and final framing so the clip has a clear direction."
+      },
+      {
+        "title": "Multi-Model Comparison",
+        "content": "Compare supported Toolaze video models by input type, reference count, duration, resolution, audio support, and estimated credits."
+      }
+    ]
+  },
+  "performanceMetrics": {
+    "title": "Image to Video Model Settings",
+    "metrics": [
+      {
+        "label": "Grok 1.5 Video",
+        "value": "Single-reference image-to-video drafts; 1–15 second clips; 480p or 720p output; estimated 3+ credits"
+      },
+      {
+        "label": "Seedance 2.0",
+        "value": "Image-guided or prompt-guided clips; up to 9 references; 5/10/15 second durations; 480p through 4K; estimated 150+ credits"
+      },
+      {
+        "label": "Seedance 2.0 Mini",
+        "value": "Lower-credit image-to-video iteration; up to 9 references; 5/10/15 second durations; 480p or 720p; estimated 75+ credits"
+      },
+      {
+        "label": "Kling 3.0",
+        "value": "Image-to-video and text-to-video workflows; up to 4 references; 3–15 second clips; 720p through 4K; Native Audio at 720p/1080p; estimated 60+ credits"
+      }
+    ]
+  },
+  "modelSelectionGuide": {
+    "title": "Choose the Right Image-to-Video Model",
+    "subtitle": "Pick a model based on how many references you need, how long the clip should be, and whether resolution or audio matters most.",
+    "items": [
+      {
+        "title": "Grok 1.5 Video",
+        "badge": "Fast single-image drafts",
+        "logoSrc": "/model-logos/grok.svg",
+        "logoAlt": "Grok logo",
+        "desc": "Use Grok when you want a quick image-guided draft from one reference image and 480p or 720p output is enough.",
+        "prompt": "Best for product movement tests, creator clips, thumbnail animation, and fast visual experiments."
+      },
+      {
+        "title": "Seedance 2.0",
+        "badge": "Reference-heavy concepts",
+        "logoSrc": "/model-logos/bytedance.svg",
+        "logoAlt": "ByteDance logo",
+        "desc": "Use Seedance 2.0 when a scene needs several reference images, longer clips, or higher-resolution output options.",
+        "prompt": "Best for product sets, character continuity, storyboard variations, and detailed campaign concepts."
+      },
+      {
+        "title": "Seedance 2.0 Mini",
+        "badge": "Lower-credit iteration",
+        "logoSrc": "/model-logos/bytedance.svg",
+        "logoAlt": "ByteDance logo",
+        "desc": "Use Seedance 2.0 Mini for early drafts while testing references, prompts, aspect ratios, and motion direction.",
+        "prompt": "Best for prompt tuning before spending more credits on a final pass."
+      },
+      {
+        "title": "Kling 3.0",
+        "badge": "High-resolution motion or audio",
+        "logoSrc": "/model-logos/kling.svg",
+        "logoAlt": "Kling logo",
+        "desc": "Use Kling 3.0 when the clip needs high-resolution output or Native Audio in a supported setting.",
+        "prompt": "Best for polished concept clips, cinematic motion, and audio-aware video tests."
+      }
+    ]
+  },
+  "troubleshooting": {
+    "title": "How to Get Cleaner Image-to-Video Results",
+    "subtitle": "Most failed image-to-video attempts come from blurry source images, too many motion instructions, or weak preservation prompts.",
+    "items": [
+      {
+        "title": "The subject changes too much",
+        "badge": "Name what must stay fixed",
+        "color": "linear-gradient(135deg, #4f46e5, #818cf8)",
+        "desc": "Tell the model to preserve the subject shape, face, logo, label, clothing, colors, camera angle, and background elements that matter.",
+        "prompt": "Try: Preserve the exact product shape, front label, silver rim, and three-quarter camera angle."
+      },
+      {
+        "title": "Motion looks chaotic",
+        "badge": "Use one action",
+        "color": "linear-gradient(135deg, #7c3aed, #c084fc)",
+        "desc": "Start with one subject action and one camera move. Add secondary effects only after the core movement is stable.",
+        "prompt": "Try: The subject stays centered while the camera makes one slow push-in."
+      },
+      {
+        "title": "The clip looks soft",
+        "badge": "Improve the source",
+        "color": "linear-gradient(135deg, #0ea5e9, #38bdf8)",
+        "desc": "Use a clean, high-resolution image with clear edges and simple lighting before increasing output settings.",
+        "prompt": "Try: Keep the uploaded label readable, hold the camera angle, and add only one soft light sweep."
+      },
+      {
+        "title": "The first draft is expensive",
+        "badge": "Draft before final",
+        "color": "linear-gradient(135deg, #059669, #34d399)",
+        "desc": "Test the motion with a shorter or lower-resolution draft, then spend more credits only when the direction works.",
+        "prompt": "Try a 5-second draft, review subject stability, then increase resolution or duration."
+      }
+    ]
+  },
+  "scenesTitle": "Popular Image to Video Use Cases",
+  "scenes": [
+    {
+      "title": "Product Photos and Ecommerce Ads",
+      "icon": "🛒",
+      "desc": "Turn packaging shots, marketplace images, mockups, and campaign stills into short product videos with controlled rotation, reflections, and lighting."
+    },
+    {
+      "title": "Portraits and Character References",
+      "icon": "👤",
+      "desc": "Animate a portrait, avatar, or character sheet with subtle motion while keeping identity, clothing, colors, and composition consistent."
+    },
+    {
+      "title": "Artwork, Posters, and Thumbnails",
+      "icon": "🎨",
+      "desc": "Add parallax, atmospheric motion, camera drift, or spotlight movement to static art, title cards, and social thumbnails."
+    },
+    {
+      "title": "Storyboards and Pre-Production",
+      "icon": "🎬",
+      "desc": "Convert a single storyboard frame into a short shot test for camera movement, pacing, lighting, and scene direction before production."
+    },
+    {
+      "title": "UI Mockups and Product Demos",
+      "icon": "💻",
+      "desc": "Animate website screenshots, app mockups, dashboard concepts, and feature screens with subtle camera motion while keeping interface details readable."
+    },
+    {
+      "title": "Real Estate and Interior Visuals",
+      "icon": "🏠",
+      "desc": "Turn room photos, exterior shots, staging concepts, and renovation references into short walkthrough-style clips with stable layout and natural light movement."
+    }
+  ],
+  "moreTools": "Related AI Video Tools",
+  "moreToolsLinks": [
+    {
+      "title": "AI Video Generator",
+      "description": "Create AI videos from text prompts or reference images.",
+      "href": "/ai-video-generator"
+    },
+    {
+      "title": "Seedance 2.0",
+      "description": "Explore Seedance 2.0 for text, image, video, and audio-guided generation.",
+      "href": "/model/seedance-2"
+    },
+    {
+      "title": "Kling 3.0",
+      "description": "Create cinematic video concepts with text, images, and other supported inputs.",
+      "href": "/model/kling-3"
+    }
+  ],
+  "faqTitle": "Image to Video Generator FAQ",
+  "faq": [
+    {
+      "q": "What is an image to video generator?",
+      "a": "An image to video generator turns a still image into a short video by preserving the uploaded reference and adding motion, camera movement, lighting changes, and timing from your prompt."
+    },
+    {
+      "q": "What kinds of images work best?",
+      "a": "Use clear images with a recognizable subject, clean edges, and enough detail. Product photos, portraits, artwork, interiors, posters, thumbnails, and storyboard frames usually work better than blurry or crowded images."
+    },
+    {
+      "q": "Can I control the motion?",
+      "a": "Yes. Write a prompt that describes one main action, one camera move, lighting, pacing, and the final frame. Simple motion instructions are usually more stable than long prompts with competing actions."
+    },
+    {
+      "q": "Which Toolaze model should I choose for image to video?",
+      "a": "Use Grok 1.5 Video for quick single-image drafts, Seedance 2.0 for reference-heavy scenes, Seedance 2.0 Mini for lower-credit iteration, and Kling 3.0 when supported high-resolution output or Native Audio matters."
+    },
+    {
+      "q": "Is image-to-video generation free on Toolaze?",
+      "a": "Toolaze may provide free credits or selected trials depending on the current access policy. The generator shows model and credit requirements before you create a video."
+    },
+    {
+      "q": "How is this different from the Seedance image-to-video page?",
+      "a": "This page is for the general image-to-video workflow across supported Toolaze video models. The Seedance page focuses on Seedance 2.0-specific settings and examples."
+    }
+  ]
+}

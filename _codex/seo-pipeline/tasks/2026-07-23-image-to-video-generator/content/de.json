@@ -1,0 +1,292 @@
+{
+  "in_menu": true,
+  "topComponent": "ai-video-generator",
+  "metadata": {
+    "title": "Bild-zu-Video-Generator online | Fotos mit KI animieren",
+    "description": "Verwandle Bilder online in kurze KI-Videos. Lade ein Referenzbild hoch, beschreibe Bewegung und Kameraführung, vergleiche Videomodelle und erstelle Bild-zu-Video-Clips."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "promptExamples",
+    "modelIntro",
+    "performanceMetrics",
+    "modelSelectionGuide",
+    "troubleshooting",
+    "scenes",
+    "faq"
+  ],
+  "modelIntro": {
+    "title": "KI-Videos aus einem Referenzbild erstellen",
+    "modelName": "Bild-zu-Video-Generator",
+    "modelType": "KI-Videotool",
+    "description": [
+      "Ein Bild-zu-Video-Generator nutzt dein hochgeladenes Bild als visuellen Anker und ergänzt Bewegung, Kameraführung, Licht und Timing aus deinem Prompt. Das ist besonders nützlich, wenn der erste Frame zählt: für Produktfotos, Porträts, Kunstwerke, Interieurs, Thumbnails, Werbeideen und Storyboards.",
+      "Toolaze hält den Bild-zu-Video-Ablauf auf praktische Einstellungen konzentriert. Lade ein klares Bild hoch, schreibe einen bewegungsorientierten Prompt, wähle ein unterstütztes Modell und prüfe Dauer, Auflösung, Audio, Referenzlimits und geschätzte Credits vor der Generierung."
+    ],
+    "featureCards": [
+      {
+        "title": "Referenz zuerst",
+        "content": "Nutze ein Standbild, um Motiv, Komposition, Produktform, Figurenidentität oder Stil beim Hinzufügen von Bewegung zu bewahren."
+      },
+      {
+        "title": "Bewegung klar beschreiben",
+        "content": "Definiere Kamerabewegung, Handlung, Licht, Tempo und Schlussbild, damit der Clip eine eindeutige Richtung erhält."
+      },
+      {
+        "title": "Modelle vergleichen",
+        "content": "Vergleiche unterstützte Videomodelle nach Eingabetyp, Referenzanzahl, Dauer, Auflösung, Audio und geschätzten Credits."
+      }
+    ]
+  },
+  "hero": {
+    "h1": "<span class=\"text-gradient\">Bild-zu-Video-Generator</span> online",
+    "desc": "Verwandle Fotos, Produktaufnahmen, Illustrationen oder Referenzframes in kurze KI-Videos mit gesteuerter Bewegung, Kameraführung und Modelleinstellungen."
+  },
+  "heroDemoVideo": {
+    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4",
+    "ariaLabel": "Bild-zu-Video-Demo mit Grok 1.5 Video aus einem Referenzbild, automatischem Seitenverhältnis, 5 Sekunden Dauer und 480p-Auflösung",
+    "sourceHistory": "Grok 1.5 Video · Image to Video · auto · 5s · 480p · 2026-07-21 12:31:57"
+  },
+  "performanceMetrics": {
+    "title": "Einstellungen für Bild-zu-Video-Modelle",
+    "metrics": [
+      {
+        "label": "Grok 1.5 Video",
+        "value": "Bild zu Video; 1 Referenzbild; 1 bis 15 Sekunden; 480p oder 720p; geschätzt ab 3 Credits"
+      },
+      {
+        "label": "Seedance 2.0",
+        "value": "Text oder Bild zu Video; bis zu 9 Referenzen; 5, 10 oder 15 Sekunden; 480p bis 4K; geschätzt ab 150 Credits"
+      },
+      {
+        "label": "Seedance 2.0 Mini",
+        "value": "Text oder Bild zu Video; bis zu 9 Referenzen; 5, 10 oder 15 Sekunden; 480p oder 720p; geschätzt ab 75 Credits"
+      },
+      {
+        "label": "Kling 3.0",
+        "value": "Text oder Bild zu Video; bis zu 4 Referenzen; 3 bis 15 Sekunden; 720p bis 4K; Native Audio bei 720p oder 1080p; geschätzt ab 60 Credits"
+      }
+    ]
+  },
+  "modelSelectionGuide": {
+    "title": "Das passende Bild-zu-Video-Modell wählen",
+    "subtitle": "Wähle nach Referenzanzahl, gewünschter Cliplänge sowie der Bedeutung von Auflösung und Audio.",
+    "items": [
+      {
+        "title": "Grok 1.5 Video",
+        "badge": "Schnelle Entwürfe mit einem Bild",
+        "color": "linear-gradient(135deg, #111827, #4f46e5)",
+        "desc": "Nutze Grok für einen schnellen bildgeführten Entwurf aus einem Referenzbild, wenn 480p oder 720p ausreichen.",
+        "prompt": "Geeignet für Produktbewegungstests, Creator-Clips, Thumbnail-Animationen und schnelle visuelle Experimente.",
+        "logoSrc": "/model-logos/grok.svg",
+        "logoAlt": "Grok 1.5 Video Markenzeichen"
+      },
+      {
+        "title": "Seedance 2.0",
+        "badge": "Referenzintensive Konzepte",
+        "color": "linear-gradient(135deg, #4f46e5, #ec4899)",
+        "desc": "Nutze Seedance 2.0 für Szenen mit mehreren Referenzbildern, längeren Clips oder höher aufgelösten Ausgaben.",
+        "prompt": "Geeignet für Produktsets, Figurenkontinuität, Storyboard-Varianten und detaillierte Kampagnenideen.",
+        "logoSrc": "/model-logos/bytedance.svg",
+        "logoAlt": "Seedance 2.0 Markenzeichen"
+      },
+      {
+        "title": "Seedance 2.0 Mini",
+        "badge": "Iteration mit weniger Credits",
+        "color": "linear-gradient(135deg, #0ea5e9, #6366f1)",
+        "desc": "Nutze Seedance 2.0 Mini für frühe Entwürfe beim Testen von Referenzen, Prompts, Seitenverhältnissen und Bewegungsrichtung.",
+        "prompt": "Geeignet zum Abstimmen von Prompts, bevor du mehr Credits für den finalen Durchlauf einsetzt.",
+        "logoSrc": "/model-logos/bytedance.svg",
+        "logoAlt": "Seedance 2.0 Mini Markenzeichen"
+      },
+      {
+        "title": "Kling 3.0",
+        "badge": "Hochauflösende Bewegung oder Audio",
+        "color": "linear-gradient(135deg, #0f172a, #22c55e)",
+        "desc": "Nutze Kling 3.0, wenn der Clip eine hochauflösende Ausgabe oder Native Audio in einer unterstützten Einstellung benötigt.",
+        "prompt": "Geeignet für ausgearbeitete Konzeptclips, filmische Bewegung und audioorientierte Videotests.",
+        "logoSrc": "/model-logos/kling.svg",
+        "logoAlt": "Kling 3.0 Markenzeichen"
+      }
+    ]
+  },
+  "troubleshooting": {
+    "title": "Sauberere Bild-zu-Video-Ergebnisse erzielen",
+    "subtitle": "Unklare Ausgangsbilder, zu viele Bewegungsanweisungen oder schwache Erhaltungs-Prompts führen häufig zu instabilen Bild-zu-Video-Ergebnissen.",
+    "items": [
+      {
+        "title": "Die Bewegung wirkt instabil",
+        "badge": "Bewegung vereinfachen",
+        "color": "linear-gradient(135deg, #4f46e5, #818cf8)",
+        "desc": "Reduziere den Prompt auf eine Handlung und eine Kamerabewegung. Zu viele Bewegungen machen kurze Clips oft unberechenbar.",
+        "prompt": "Versuche: Eine Keramiktasse bleibt mittig, während die Kamera langsam näher fährt."
+      },
+      {
+        "title": "Produktdetails verändern sich",
+        "badge": "Referenz verstärken",
+        "color": "linear-gradient(135deg, #7c3aed, #c084fc)",
+        "desc": "Nutze ein scharfes Referenzbild und nenne Form, Etikettposition, Farben und Kamerawinkel, die unverändert bleiben müssen.",
+        "prompt": "Versuche: Dosenform, Frontetikett, silbernen Rand und Dreiviertel-Kamerawinkel beibehalten."
+      },
+      {
+        "title": "Die Ausgabe wirkt unscharf",
+        "badge": "Quelle verbessern",
+        "color": "linear-gradient(135deg, #0ea5e9, #38bdf8)",
+        "desc": "Beginne mit einer sauberen Referenz, beschreibe Hauptmotiv und Licht und wähle eine höhere Auflösung, wenn das Modell sie unterstützt.",
+        "prompt": "Versuche: Scharfe Produktkanten, fokussiertes Frontetikett, weiches Studiolicht, sauberer Hintergrund."
+      },
+      {
+        "title": "Die Generierung dauert lange",
+        "badge": "Zuerst Entwurf",
+        "color": "linear-gradient(135deg, #059669, #34d399)",
+        "desc": "Teste die Idee mit kürzerer Dauer oder niedrigerer Auflösung, bevor du mehr Credits für die finale Version einsetzt.",
+        "prompt": "Erstelle zuerst einen 5-Sekunden-Entwurf in 480p oder 720p, prüfe die Bewegung und erhöhe dann die Qualität."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "So wird aus einem Bild ein Video",
+    "steps": [
+      {
+        "title": "Ein klares Bild hochladen",
+        "desc": "Beginne mit einem scharfen Produktfoto, Porträt, Kunstwerk, Interieur oder Storyboard-Frame. Saubere Details helfen dem Modell, das Motiv zu bewahren."
+      },
+      {
+        "title": "Eine Hauptbewegung beschreiben",
+        "desc": "Beschreibe Handlung, Kamerabewegung, Licht, Tempo und Schlussbild. Starte mit einer eindeutigen Bewegung und verfeinere erst danach."
+      },
+      {
+        "title": "Einstellungen wählen und generieren",
+        "desc": "Vergleiche Bild-zu-Video-Modelle nach Referenzlimit, Dauer, Auflösung, Audio und geschätzten Credits."
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "Bild-zu-Video-Prompt-Vorlagen",
+    "subtitle": "Nutze diese 16:9-Vorlagen mit Referenzbildern, um Motivtreue, kontrollierte Kamerabewegung und Bild-zu-Video-Bewegung zu testen.",
+    "layout": "reference-video",
+    "items": [
+      {
+        "title": "Animation eines Produktfotos",
+        "prompt": "Start from the uploaded 16:9 product photo and create a short marketplace-ready motion clip. Preserve the diffuser shape, ceramic texture, three-quarter angle, pedestal placement, and warm beige studio lighting while adding a controlled half-turn, soft shadow movement, a subtle foreground light sweep, and a clean final product hold.",
+        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/880154a7e9874c2eb41e2beb2a9bab67.webp",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/generated/239f15b24b5741efbb1a384e4c38a06f.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/880154a7e9874c2eb41e2beb2a9bab67.webp",
+        "description": "16:9-Bild-zu-Video-Beispiel, das aus dem passenden Referenzbild erstellt wurde.",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-23T10:30:59.824Z"
+      },
+      {
+        "title": "Social-Clip aus einem Referenzbild",
+        "prompt": "Use the uploaded 16:9 creator lifestyle image as the visual anchor for a horizontal social clip. Keep the face, outfit, cafe window setting, laptop, and warm daylight recognizable while adding a small camera push-in, natural handheld micro-movement, slight background motion outside the window, and one clean ending frame for a cover.",
+        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d94dc2c421ed40bd89f0811484b581bc.webp",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/generated/a5b41cf6b4b246aa8facc3e12ae19ecc.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d94dc2c421ed40bd89f0811484b581bc.webp",
+        "description": "16:9-Bild-zu-Video-Beispiel, das aus dem passenden Referenzbild erstellt wurde.",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-23T10:31:49.931Z"
+      },
+      {
+        "title": "Storyboard-Frame als filmischer Clip",
+        "prompt": "Turn the uploaded 16:9 coastal cyclist storyboard frame into one continuous cinematic shot. Preserve the rider scale, road curve, ocean horizon, golden-hour lighting, and wide composition while adding background parallax, a slow lens drift, light wind in the scene, and a final frame that still matches the original board.",
+        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/2b49461525a74c4fa3679a2c4e40a5db.webp",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/generated/2321a8e52ff243cf91086755405ebeef.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/2b49461525a74c4fa3679a2c4e40a5db.webp",
+        "description": "16:9-Bild-zu-Video-Beispiel, das aus dem passenden Referenzbild erstellt wurde.",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-23T10:32:51.369Z"
+      },
+      {
+        "title": "Werbeidee aus einem Standbild",
+        "prompt": "Use the uploaded 16:9 campaign still as the source frame for a 5-second ad motion test. Lock the bottle shape, citrus props, reflective tabletop, teal and coral panels, and product scale, then add a slow push-in, foreground light sweep, subtle condensation sparkle, reflection movement, and a brand-safe final hold.",
+        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d45047f7914948c28a6249cb2e32bbbc.webp",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/generated/96a796f9943c42519381d15b22ab1d1d.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d45047f7914948c28a6249cb2e32bbbc.webp",
+        "description": "16:9-Bild-zu-Video-Beispiel, das aus dem passenden Referenzbild erstellt wurde.",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-23T10:33:56.418Z"
+      }
+    ]
+  },
+  "scenesTitle": "Beliebte Einsatzbereiche für Bild zu Video",
+  "scenes": [
+    {
+      "title": "Produktfotos und E-Commerce-Anzeigen",
+      "icon": "📱",
+      "desc": "Verwandle Verpackungsbilder, Marktplatzfotos, Mockups und Kampagnenmotive in kurze Produktvideos mit kontrollierter Drehung, Reflexionen und Licht."
+    },
+    {
+      "title": "Porträts und Figurenreferenzen",
+      "icon": "🛒",
+      "desc": "Animiere ein Porträt, einen Avatar oder ein Figurenblatt mit dezenten Bewegungen und bewahre Identität, Kleidung, Farben und Komposition."
+    },
+    {
+      "title": "Kunst, Poster und Thumbnails",
+      "icon": "🎬",
+      "desc": "Ergänze statische Kunst, Titelkarten und Social-Thumbnails um Parallaxe, atmosphärische Bewegung, Kameradrift oder Spotlicht."
+    },
+    {
+      "title": "Storyboards und Vorproduktion",
+      "icon": "🎓",
+      "desc": "Mache aus einem einzelnen Storyboard-Frame einen kurzen Shot-Test für Kamerabewegung, Tempo, Licht und Szenenführung."
+    },
+    {
+      "title": "UI-Mockups und Produktdemos",
+      "icon": "🎥",
+      "desc": "Bewege Website-Screenshots, App-Mockups, Dashboard-Konzepte und Feature-Ansichten dezent, ohne wichtige Oberflächendetails zu verlieren."
+    },
+    {
+      "title": "Immobilien und Interieur",
+      "icon": "🕹️",
+      "desc": "Verwandle Raumfotos, Außenansichten, Einrichtungs- und Renovierungsreferenzen in kurze Rundgang-Clips mit stabilem Layout und natürlicher Lichtbewegung."
+    }
+  ],
+  "moreTools": "Verwandte KI-Videotools",
+  "moreToolsLinks": [
+    {
+      "title": "KI-Videogenerator",
+      "description": "Erstelle KI-Videos aus Text-Prompts oder Referenzbildern.",
+      "href": "/ai-video-generator"
+    },
+    {
+      "title": "Seedance 2.0",
+      "description": "Nutze Seedance 2.0 für die Videogenerierung mit Text, Bildern, Videos oder Audio.",
+      "href": "/model/seedance-2"
+    },
+    {
+      "title": "Kling 3.0",
+      "description": "Entdecke ein weiteres KI-Videomodell für filmische Clips und Videokonzepte.",
+      "href": "/model/kling-3"
+    }
+  ],
+  "faqTitle": "Häufige Fragen zum Bild-zu-Video-Generator",
+  "faq": [
+    {
+      "q": "Was ist ein Bild-zu-Video-Generator?",
+      "a": "Ein Bild-zu-Video-Generator verwandelt ein Standbild in ein kurzes Video. Das Referenzbild bleibt erhalten, während dein Prompt Bewegung, Kameraführung, Licht und Timing ergänzt."
+    },
+    {
+      "q": "Welche Bilder funktionieren am besten?",
+      "a": "Nutze klare Bilder mit erkennbarem Motiv, sauberen Kanten und ausreichenden Details. Produktfotos, Porträts, Kunstwerke, Interieurs, Poster, Thumbnails und Storyboard-Frames funktionieren meist besser als unscharfe oder überladene Bilder."
+    },
+    {
+      "q": "Kann ich die Bewegung steuern?",
+      "a": "Ja. Beschreibe eine Hauptaktion, eine Kamerabewegung, Licht, Tempo und Schlussbild. Einfache Bewegungsanweisungen sind meist stabiler als lange Prompts mit konkurrierenden Aktionen."
+    },
+    {
+      "q": "Welches Toolaze-Modell eignet sich für Bild zu Video?",
+      "a": "Nutze Grok 1.5 Video für schnelle Entwürfe mit einem Bild, Seedance 2.0 für referenzintensive Szenen, Seedance 2.0 Mini für Iterationen mit weniger Credits und Kling 3.0, wenn unterstützte hochauflösende Ausgabe oder Native Audio wichtig sind."
+    },
+    {
+      "q": "Ist Bild-zu-Video auf Toolaze kostenlos?",
+      "a": "Toolaze kann je nach aktueller Zugriffslage kostenlose Credits oder ausgewählte Testmöglichkeiten anbieten. Vor der Erstellung zeigt der Generator Modell- und Credit-Anforderungen an."
+    },
+    {
+      "q": "Worin unterscheidet sich diese Seite von der Seedance-Bild-zu-Video-Seite?",
+      "a": "Hier vergleichst du den allgemeinen Bild-zu-Video-Ablauf über unterstützte Toolaze-Videomodelle hinweg. Die Seedance-Seite konzentriert sich auf Einstellungen und Beispiele von Seedance 2.0."
+    }
+  ],
+  "topTool": {
+    "defaultMode": "image-to-video"
+  }
+}

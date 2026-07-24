@@ -1,6 +1,12 @@
 {
   "tasks": [
     {
+      "taskId": "2026-07-23-image-to-video-generator",
+      "slug": "image-to-video-generator",
+      "pageType": "l2",
+      "status": "ready_for_publish"
+    },
+    {
       "taskId": "grok-video-15-seo-refresh-20260721",
       "slug": "grok-imagine-video-1-5",
       "pageType": "model",
@@ -15,6 +21,12 @@
     {
       "taskId": "2026-07-20-ai-dance-generator",
       "slug": "ai-dance-generator",
+      "pageType": "l2",
+      "status": "ready_for_publish"
+    },
+    {
+      "taskId": "2026-07-22-text-to-video-generator",
+      "slug": "text-to-video-generator",
       "pageType": "l2",
       "status": "ready_for_publish"
     }

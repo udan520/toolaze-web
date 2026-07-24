@@ -1,0 +1,292 @@
+{
+  "in_menu": true,
+  "topComponent": "ai-video-generator",
+  "metadata": {
+    "title": "Gerador de Imagem para Vídeo Online | Anime Fotos com IA",
+    "description": "Transforme imagens em vídeos curtos com IA. Envie uma referência, descreva o movimento e a câmera, compare modelos e gere clipes de imagem para vídeo."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "promptExamples",
+    "modelIntro",
+    "performanceMetrics",
+    "modelSelectionGuide",
+    "troubleshooting",
+    "scenes",
+    "faq"
+  ],
+  "modelIntro": {
+    "title": "Crie vídeos com IA a partir de uma referência",
+    "modelName": "Gerador de Imagem para Vídeo",
+    "modelType": "Ferramenta de vídeo com IA",
+    "description": [
+      "Um gerador de imagem para vídeo usa a imagem enviada como âncora visual e adiciona movimento, câmera, mudanças de luz e ritmo conforme o prompt. É útil para fotos de produtos, retratos, ilustrações, interiores, miniaturas, anúncios e storyboards.",
+      "No Toolaze, envie uma imagem clara, escreva um prompt focado em movimento, escolha um modelo compatível e confira duração, resolução, áudio, limites de referência e créditos estimados antes de gerar."
+    ],
+    "featureCards": [
+      {
+        "title": "Criação baseada em referência",
+        "content": "Preserve tema, composição, formato do produto, identidade do personagem ou estilo visual enquanto adiciona movimento."
+      },
+      {
+        "title": "Orientação de movimento",
+        "content": "Descreva câmera, ação, luz, ritmo e enquadramento final para dar uma direção clara ao clipe."
+      },
+      {
+        "title": "Comparação de modelos",
+        "content": "Compare modelos por entrada, número de referências, duração, resolução, áudio e créditos estimados."
+      }
+    ]
+  },
+  "hero": {
+    "h1": "<span class=\"text-gradient\">Gerador de Imagem para Vídeo</span> Online",
+    "desc": "Transforme fotos, imagens de produtos, ilustrações ou quadros de referência em vídeos curtos com IA, movimento orientado, câmera e configurações de modelo."
+  },
+  "heroDemoVideo": {
+    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4",
+    "ariaLabel": "Demonstração de imagem para vídeo com Grok 1.5 Video, proporção automática, 5 segundos e resolução 480p",
+    "sourceHistory": "Grok 1.5 Video · Image to Video · auto · 5s · 480p · 2026-07-21 12:31:57"
+  },
+  "performanceMetrics": {
+    "title": "Configurações de modelos de imagem para vídeo",
+    "metrics": [
+      {
+        "label": "Grok 1.5 Video",
+        "value": "Imagem para vídeo; 1 referência; 1 a 15 segundos; 480p ou 720p; estimativa a partir de 3 créditos"
+      },
+      {
+        "label": "Seedance 2.0",
+        "value": "Texto ou imagem para vídeo; até 9 referências; 5, 10 ou 15 segundos; 480p a 4K; estimativa a partir de 150 créditos"
+      },
+      {
+        "label": "Seedance 2.0 Mini",
+        "value": "Texto ou imagem para vídeo; até 9 referências; 5, 10 ou 15 segundos; 480p ou 720p; estimativa a partir de 75 créditos"
+      },
+      {
+        "label": "Kling 3.0",
+        "value": "Texto ou imagem para vídeo; até 4 referências; 3 a 15 segundos; 720p a 4K; Native Audio em 720p ou 1080p; estimativa a partir de 60 créditos"
+      }
+    ]
+  },
+  "modelSelectionGuide": {
+    "title": "Escolha o modelo certo de imagem para vídeo",
+    "subtitle": "Escolha conforme o número de referências, a duração desejada e a prioridade de resolução ou áudio.",
+    "items": [
+      {
+        "title": "Grok 1.5 Video",
+        "badge": "Rascunhos rápidos com uma imagem",
+        "color": "linear-gradient(135deg, #111827, #4f46e5)",
+        "desc": "Use o Grok para um rascunho rápido com uma referência quando 480p ou 720p forem suficientes.",
+        "prompt": "Ideal para testes de movimento de produtos, vídeos de criadores, animação de miniaturas e experimentos rápidos.",
+        "logoSrc": "/model-logos/grok.svg",
+        "logoAlt": "Grok 1.5 Video logotipo"
+      },
+      {
+        "title": "Seedance 2.0",
+        "badge": "Conceitos com várias referências",
+        "color": "linear-gradient(135deg, #4f46e5, #ec4899)",
+        "desc": "Use o Seedance 2.0 para várias referências, clipes mais longos ou opções de maior resolução.",
+        "prompt": "Ideal para conjuntos de produtos, continuidade de personagens, variações de storyboard e campanhas detalhadas.",
+        "logoSrc": "/model-logos/bytedance.svg",
+        "logoAlt": "Seedance 2.0 logotipo"
+      },
+      {
+        "title": "Seedance 2.0 Mini",
+        "badge": "Iteração com menos créditos",
+        "color": "linear-gradient(135deg, #0ea5e9, #6366f1)",
+        "desc": "Use o Seedance 2.0 Mini para testar referências, prompts, proporções e direção de movimento.",
+        "prompt": "Ideal para ajustar prompts antes de gastar mais créditos na versão final.",
+        "logoSrc": "/model-logos/bytedance.svg",
+        "logoAlt": "Seedance 2.0 Mini logotipo"
+      },
+      {
+        "title": "Kling 3.0",
+        "badge": "Movimento em alta resolução ou áudio",
+        "color": "linear-gradient(135deg, #0f172a, #22c55e)",
+        "desc": "Use o Kling 3.0 quando precisar de alta resolução ou Native Audio em uma configuração compatível.",
+        "prompt": "Ideal para clipes conceituais refinados, movimento cinematográfico e testes com áudio.",
+        "logoSrc": "/model-logos/kling.svg",
+        "logoAlt": "Kling 3.0 logotipo"
+      }
+    ]
+  },
+  "troubleshooting": {
+    "title": "Como obter resultados mais limpos",
+    "subtitle": "Imagens desfocadas, instruções demais ou prompts fracos de preservação costumam causar resultados instáveis.",
+    "items": [
+      {
+        "title": "O movimento está instável",
+        "badge": "Simplifique o movimento",
+        "color": "linear-gradient(135deg, #4f46e5, #818cf8)",
+        "desc": "Reduza o prompt a uma ação e uma câmera. Muitos movimentos deixam o clipe imprevisível.",
+        "prompt": "Tente: uma xícara fica no centro enquanto a câmera se aproxima lentamente."
+      },
+      {
+        "title": "Os detalhes do produto mudam",
+        "badge": "Reforce a referência",
+        "color": "linear-gradient(135deg, #7c3aed, #c084fc)",
+        "desc": "Use uma referência nítida e indique forma, rótulo, cores e ângulo que devem permanecer.",
+        "prompt": "Tente: mantenha o formato da lata, rótulo frontal, borda prateada e ângulo de três quartos."
+      },
+      {
+        "title": "O resultado está pouco nítido",
+        "badge": "Melhore a fonte",
+        "color": "linear-gradient(135deg, #0ea5e9, #38bdf8)",
+        "desc": "Use uma referência limpa, descreva o tema e a luz e aumente a resolução quando disponível.",
+        "prompt": "Tente: bordas nítidas, rótulo em foco, luz suave de estúdio e fundo limpo."
+      },
+      {
+        "title": "A geração está lenta",
+        "badge": "Faça um rascunho",
+        "color": "linear-gradient(135deg, #059669, #34d399)",
+        "desc": "Teste menor duração ou resolução antes de usar mais créditos.",
+        "prompt": "Gere um rascunho de 5 segundos em 480p ou 720p, confira o movimento e aumente a qualidade."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Como transformar uma imagem em vídeo",
+    "steps": [
+      {
+        "title": "Envie uma imagem nítida",
+        "desc": "Comece com uma foto de produto, retrato, ilustração, ambiente ou quadro de storyboard bem definido. Detalhes claros ajudam a preservar o tema."
+      },
+      {
+        "title": "Descreva um movimento principal",
+        "desc": "Indique a ação, o movimento de câmera, a luz, o ritmo e o quadro final. Comece com um movimento claro e refine depois."
+      },
+      {
+        "title": "Escolha as configurações e gere",
+        "desc": "Compare modelos por limite de referências, duração, resolução, áudio e créditos estimados."
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "Modelos de prompt de imagem para vídeo",
+    "subtitle": "Use estes exemplos 16:9 com imagens de referência para testar preservação do tema, câmera controlada e qualidade de movimento.",
+    "layout": "reference-video",
+    "items": [
+      {
+        "title": "Animação de foto de produto",
+        "prompt": "Start from the uploaded 16:9 product photo and create a short marketplace-ready motion clip. Preserve the diffuser shape, ceramic texture, three-quarter angle, pedestal placement, and warm beige studio lighting while adding a controlled half-turn, soft shadow movement, a subtle foreground light sweep, and a clean final product hold.",
+        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/880154a7e9874c2eb41e2beb2a9bab67.webp",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/generated/239f15b24b5741efbb1a384e4c38a06f.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/880154a7e9874c2eb41e2beb2a9bab67.webp",
+        "description": "Exemplo 16:9 de imagem para vídeo gerado com a referência correspondente.",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-23T10:30:59.824Z"
+      },
+      {
+        "title": "Vídeo social a partir de uma referência",
+        "prompt": "Use the uploaded 16:9 creator lifestyle image as the visual anchor for a horizontal social clip. Keep the face, outfit, cafe window setting, laptop, and warm daylight recognizable while adding a small camera push-in, natural handheld micro-movement, slight background motion outside the window, and one clean ending frame for a cover.",
+        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d94dc2c421ed40bd89f0811484b581bc.webp",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/generated/a5b41cf6b4b246aa8facc3e12ae19ecc.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d94dc2c421ed40bd89f0811484b581bc.webp",
+        "description": "Exemplo 16:9 de imagem para vídeo gerado com a referência correspondente.",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-23T10:31:49.931Z"
+      },
+      {
+        "title": "Storyboard transformado em clipe cinematográfico",
+        "prompt": "Turn the uploaded 16:9 coastal cyclist storyboard frame into one continuous cinematic shot. Preserve the rider scale, road curve, ocean horizon, golden-hour lighting, and wide composition while adding background parallax, a slow lens drift, light wind in the scene, and a final frame that still matches the original board.",
+        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/2b49461525a74c4fa3679a2c4e40a5db.webp",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/generated/2321a8e52ff243cf91086755405ebeef.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/2b49461525a74c4fa3679a2c4e40a5db.webp",
+        "description": "Exemplo 16:9 de imagem para vídeo gerado com a referência correspondente.",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-23T10:32:51.369Z"
+      },
+      {
+        "title": "Conceito de anúncio a partir de uma imagem",
+        "prompt": "Use the uploaded 16:9 campaign still as the source frame for a 5-second ad motion test. Lock the bottle shape, citrus props, reflective tabletop, teal and coral panels, and product scale, then add a slow push-in, foreground light sweep, subtle condensation sparkle, reflection movement, and a brand-safe final hold.",
+        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d45047f7914948c28a6249cb2e32bbbc.webp",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/generated/96a796f9943c42519381d15b22ab1d1d.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d45047f7914948c28a6249cb2e32bbbc.webp",
+        "description": "Exemplo 16:9 de imagem para vídeo gerado com a referência correspondente.",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-23T10:33:56.418Z"
+      }
+    ]
+  },
+  "scenesTitle": "Usos populares de imagem para vídeo",
+  "scenes": [
+    {
+      "title": "Fotos de produtos e anúncios de comércio eletrônico",
+      "icon": "📱",
+      "desc": "Transforme embalagens, fotos de marketplace, maquetes e campanhas em vídeos curtos com rotação, reflexos e luz controlados."
+    },
+    {
+      "title": "Retratos e referências de personagens",
+      "icon": "🛒",
+      "desc": "Anime retratos, avatares e fichas de personagens preservando identidade, roupa, cores e composição."
+    },
+    {
+      "title": "Ilustrações, cartazes e miniaturas",
+      "icon": "🎬",
+      "desc": "Adicione paralaxe, movimento atmosférico, câmera ou luz a artes estáticas e miniaturas sociais."
+    },
+    {
+      "title": "Storyboards e pré-produção",
+      "icon": "🎓",
+      "desc": "Transforme um quadro de storyboard em um teste curto de câmera, ritmo, luz e direção de cena."
+    },
+    {
+      "title": "Maquetes de interface e demonstrações",
+      "icon": "🎥",
+      "desc": "Anime sites, aplicativos e painéis com câmera sutil, mantendo os detalhes legíveis."
+    },
+    {
+      "title": "Imóveis e interiores",
+      "icon": "🕹️",
+      "desc": "Transforme fotos de ambientes, fachadas e projetos em passeios curtos com layout estável e luz natural."
+    }
+  ],
+  "moreTools": "Ferramentas de vídeo com IA relacionadas",
+  "moreToolsLinks": [
+    {
+      "title": "Gerador de vídeos com IA",
+      "description": "Crie vídeos com IA a partir de prompts de texto ou imagens de referência.",
+      "href": "/ai-video-generator"
+    },
+    {
+      "title": "Seedance 2.0",
+      "description": "Explore o Seedance 2.0 para gerar vídeos com texto, imagens, vídeo ou áudio.",
+      "href": "/model/seedance-2"
+    },
+    {
+      "title": "Kling 3.0",
+      "description": "Conheça outro modelo para clipes e conceitos cinematográficos.",
+      "href": "/model/kling-3"
+    }
+  ],
+  "faqTitle": "Perguntas frequentes sobre imagem para vídeo",
+  "faq": [
+    {
+      "q": "O que é um gerador de imagem para vídeo?",
+      "a": "É uma ferramenta que transforma uma imagem estática em vídeo curto, preservando a referência e adicionando movimento, câmera, luz e ritmo conforme o prompt."
+    },
+    {
+      "q": "Quais imagens funcionam melhor?",
+      "a": "Use imagens nítidas, com tema reconhecível, bordas limpas e detalhes suficientes. Fotos de produtos, retratos, artes, interiores, cartazes, miniaturas e storyboards costumam funcionar melhor."
+    },
+    {
+      "q": "Posso controlar o movimento?",
+      "a": "Sim. Descreva uma ação principal, um movimento de câmera, luz, ritmo e quadro final. Instruções simples tendem a ser mais estáveis."
+    },
+    {
+      "q": "Qual modelo Toolaze devo escolher?",
+      "a": "Use Grok 1.5 Video para rascunhos rápidos, Seedance 2.0 para várias referências, Seedance 2.0 Mini para iterar com menos créditos e Kling 3.0 para alta resolução compatível ou Native Audio."
+    },
+    {
+      "q": "A geração é gratuita no Toolaze?",
+      "a": "O Toolaze pode oferecer créditos gratuitos ou testes selecionados conforme a política de acesso atual. O gerador mostra o modelo e os créditos necessários antes da criação."
+    },
+    {
+      "q": "Qual é a diferença para a página Seedance?",
+      "a": "Esta página compara o fluxo geral de imagem para vídeo entre os modelos compatíveis do Toolaze. A página Seedance destaca configurações e exemplos do Seedance 2.0."
+    }
+  ],
+  "topTool": {
+    "defaultMode": "image-to-video"
+  }
+}

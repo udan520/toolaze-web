@@ -1,0 +1,56 @@
+{
+  "taskId": "2026-07-23-image-to-video-generator",
+  "slug": "image-to-video-generator",
+  "pageType": "l2",
+  "status": "ready_for_publish",
+  "tool": "image-to-video-generator",
+  "topic": "Image to Video Generator core keyword landing page",
+  "generatedBy": "Seo-Factory local pipeline",
+  "createdAt": "2026-07-23T00:00:00+08:00",
+  "workspace": "/Users/neva/Desktop/workspace/toolaze-worktrees/lp/image-to-video-generator",
+  "locales": [
+    "en",
+    "de",
+    "ja",
+    "es",
+    "zh-TW",
+    "pt",
+    "fr",
+    "ko",
+    "it"
+  ],
+  "strategy": {
+    "primaryKeyword": "image to video generator",
+    "secondaryKeywords": [
+      "AI image to video generator",
+      "turn image into video",
+      "animate image with AI",
+      "photo to video AI generator",
+      "image to video online"
+    ],
+    "differentiation": "Core multi-model image-to-video page. Keep Seedance-specific claims on /model/seedance-2/image-to-video and use this page for users comparing image-guided video workflows across supported Toolaze video models."
+  },
+  "outputs": [
+    "src/app/image-to-video-generator/page.tsx",
+    "src/app/[locale]/image-to-video-generator/page.tsx",
+    "_codex/seo-pipeline/tasks/2026-07-23-image-to-video-generator/content/en.json",
+    "src/data/en/image-to-video-generator.json",
+    "_codex/seo-pipeline/tasks/2026-07-23-image-to-video-generator/content/de.json",
+    "src/data/de/image-to-video-generator.json",
+    "_codex/seo-pipeline/tasks/2026-07-23-image-to-video-generator/content/ja.json",
+    "src/data/ja/image-to-video-generator.json",
+    "_codex/seo-pipeline/tasks/2026-07-23-image-to-video-generator/content/es.json",
+    "src/data/es/image-to-video-generator.json",
+    "_codex/seo-pipeline/tasks/2026-07-23-image-to-video-generator/content/zh-TW.json",
+    "src/data/zh-TW/image-to-video-generator.json",
+    "_codex/seo-pipeline/tasks/2026-07-23-image-to-video-generator/content/pt.json",
+    "src/data/pt/image-to-video-generator.json",
+    "_codex/seo-pipeline/tasks/2026-07-23-image-to-video-generator/content/fr.json",
+    "src/data/fr/image-to-video-generator.json",
+    "_codex/seo-pipeline/tasks/2026-07-23-image-to-video-generator/content/ko.json",
+    "src/data/ko/image-to-video-generator.json",
+    "_codex/seo-pipeline/tasks/2026-07-23-image-to-video-generator/content/it.json",
+    "src/data/it/image-to-video-generator.json"
+  ],
+  "releaseBoundary": "SEO Factory preview plus English public route only. No homepage, global navigation, footer, sitemap, or production release scope is included in this task."
+}
