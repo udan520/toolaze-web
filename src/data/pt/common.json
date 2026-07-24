@@ -50,6 +50,8 @@
     "seedream50Lite": "Seedream 5.0 Lite",
     "seedream50Pro": "Seedream 5.0 Pro",
     "seedance25": "Seedance 2.5",
+    "textToVideoGenerator": "Gerador de texto para vídeo",
+    "imageToVideoGenerator": "Gerador de imagem para vídeo",
     "aiDanceGenerator": "Gerador de dança com IA",
     "aiKissingVideoGenerator": "Gerador de vídeos de beijo com IA"
   },
@@ -271,6 +273,8 @@
     "aiImageGenerator": "Gerador de imagens IA",
     "refundPolicy": "Política de reembolso",
     "acceptableUse": "Política de uso aceitável",
+    "textToVideoGenerator": "Gerador de texto para vídeo",
+    "imageToVideoGenerator": "Gerador de imagem para vídeo",
     "aiDanceGenerator": "Gerador de dança com IA",
     "aiKissingVideoGenerator": "Gerador de vídeos de beijo com IA"
   },
@@ -296,7 +300,9 @@
     "aiImageToImageGenerator": "Gerador IA de imagem para imagem",
     "worldCupAiImageGenerator": "Gerador de imagens IA da Copa do Mundo",
     "refundPolicy": "Política de reembolso",
-    "acceptableUse": "Política de uso aceitável"
+    "acceptableUse": "Política de uso aceitável",
+    "textToVideoGenerator": "Gerador de texto para vídeo",
+    "imageToVideoGenerator": "Gerador de imagem para vídeo"
   },
   "about": {
     "metadata": {

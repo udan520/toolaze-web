@@ -1,0 +1,322 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "topComponent": "ai-video-generator",
+  "topTool": {
+    "mode": "text-to-video"
+  },
+  "metadata": {
+    "title": "テキスト動画生成ツール オンライン | スクリプトからAI動画",
+    "description": "プロンプト、脚本、商品メモから短いAI動画を作成。Toolazeでモデル、アスペクト比、長さ、音声、字幕、creditsを比較できます。"
+  },
+  "sectionsOrder": [
+    "modelIntro",
+    "performanceMetrics",
+    "modelSelectionGuide",
+    "promptExamples",
+    "howToUse",
+    "troubleshooting",
+    "scenes",
+    "faq"
+  ],
+  "modelIntro": {
+    "title": "テキストだけでAI動画を作成",
+    "modelName": "テキスト動画生成ツール",
+    "modelType": "AI動画ツール",
+    "description": [
+      "Toolazeのテキスト動画生成ツールは、短尺クリップ、SNS広告、商品モーション、絵コンテ、解説動画、Bロール案など、プロンプトから始める動画制作に向いています。参照画像をアップロードせず、シーンを言葉で説明できる場合に使えます。",
+      "短いプロンプト、構成済みの脚本、商品ブリーフから始め、対応する動画モデルと出力設定を選びます。必要なcreditsは生成前に表示され、選んだモデル、長さ、解像度、音声オプション、品質設定によって変わります。"
+    ],
+    "featureCards": [
+      {
+        "title": "プロンプト起点の動画作成",
+        "content": "被写体、場所、動き、カメラ方向、光、テンポ、最後のフレームを生成前に説明します。"
+      },
+      {
+        "title": "脚本と絵コンテ用プロンプト",
+        "content": "フック、シーンリスト、商品メモ、解説構成を、より明確な短尺動画プロンプトにできます。"
+      },
+      {
+        "title": "モデルと設定の確認",
+        "content": "テキスト入力、長さ、比率、音声オプション、推定creditsで対応動画モデルを比較します。"
+      },
+      {
+        "title": "短尺動画の事前設計",
+        "content": "SNSクリップ、商品広告、Bロール、絵コンテ、解説動画、クリエイティブテストを本制作前に下書きできます。"
+      }
+    ]
+  },
+  "hero": {
+    "h1": "<span class=\"text-gradient\">テキスト動画生成ツール</span> オンライン",
+    "desc": "プロンプト、脚本、商品アイデア、SNSフック、絵コンテメモをToolazeで短いAI動画に変換します。テキストから始め、対応動画モデルを選び、動き、カメラ方向、テンポ、比率、長さ、音声設定、形式を調整できます。"
+  },
+  "heroDemoVideo": {
+    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/1b0129b9d2504494825f8fd28b00f4af.png",
+    "ariaLabel": "Toolazeの旅行商品コンセプトプロンプトから生成したテキスト動画デモ",
+    "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/c601d39d801e44938e5e33711e19df32.webp",
+    "sourceHistory": "Grok text-to-video · 40622216026309ff8f4410d965143e74 · 5s · 16:9"
+  },
+  "performanceMetrics": {
+    "title": "テキスト動画の設定と出力チェック",
+    "metrics": [
+      {
+        "label": "主な入力",
+        "value": "プロンプト、短い脚本、シーンリスト、商品メモ、広告フック、絵コンテ指示"
+      },
+      {
+        "label": "テキスト動画に向く条件",
+        "value": "被写体、動き、カメラ移動、スタイル、最後のフレームを明確に説明できる場合に最適"
+      },
+      {
+        "label": "アスペクト比",
+        "value": "利用可能な場合、SNSショートには縦型、フィードには正方形、絵コンテにはワイドを使えます"
+      },
+      {
+        "label": "対応モデル",
+        "value": "Seedance 2.0、Seedance 2.0 Mini、Kling 3.0、およびテキスト入力に対応するToolaze動画モデル"
+      },
+      {
+        "label": "一般的な長さ",
+        "value": "選択したモデルと設定により3〜15秒"
+      },
+      {
+        "label": "音声と字幕",
+        "value": "音声、ボイス、字幕は選択モデルによって異なります。必要なら編集時に字幕を追加します"
+      },
+      {
+        "label": "creditsポリシー",
+        "value": "必要creditsは生成前に表示され、モデル、長さ、解像度、品質設定によって変わります"
+      }
+    ]
+  },
+  "modelSelectionGuide": {
+    "title": "テキスト動画モデルを選ぶ",
+    "subtitle": "プロンプトだけのシーンが明確になってからモデルを選びます。生成前に下書きコスト、動きの複雑さ、音声対応設定、長さ、解像度、creditsを比較しましょう。",
+    "items": [
+      {
+        "title": "Seedance 2.0",
+        "badge": "バランス型テキストプロンプト",
+        "color": "linear-gradient(135deg, #4f46e5, #ec4899)",
+        "desc": "テキストプロンプトで複数ショット、商品モーション、絵コンテ、少し長めの短尺クリップが必要なときにSeedance 2.0を使います。",
+        "prompt": "脚本広告、シーンリスト、シネマ風コンセプトクリップに向いています。"
+      },
+      {
+        "title": "Seedance 2.0 Mini",
+        "badge": "下書き用プロンプト反復",
+        "color": "linear-gradient(135deg, #0ea5e9, #6366f1)",
+        "desc": "最終設定に多くのcreditsを使う前に、より低コストでプロンプト表現を試したいときにMiniを使います。",
+        "prompt": "フック、テンポ、比率、最後のフレームの比較に向いています。"
+      },
+      {
+        "title": "Kling 3.0",
+        "badge": "シネマ風・音声対応寄り",
+        "color": "linear-gradient(135deg, #0f172a, #22c55e)",
+        "desc": "テキストプロンプトにシネマ風の動き、対応設定でのネイティブ音声、または高解像度の最終テストが必要なときにKling 3.0を使います。",
+        "prompt": "予告編風クリップ、ドラマチックなカメラ移動、音声を意識したシーンに向いています。"
+      }
+    ]
+  },
+  "troubleshooting": {
+    "title": "テキスト動画の結果を改善する方法",
+    "subtitle": "細部を足す前に、明確な動き、カメラ方向、ビジュアルスタイルを1つずつ書きます。",
+    "items": [
+      {
+        "title": "動きが多すぎる",
+        "badge": "シンプルにする",
+        "color": "linear-gradient(135deg, #4f46e5, #818cf8)",
+        "desc": "被写体の動きは1つ、カメラ移動も1つに絞ります。競合する動きが多いと短いクリップは不安定になります。",
+        "prompt": "例：1つの商品がゆっくり回転し、カメラがやさしく近づく。"
+      },
+      {
+        "title": "シーンの方向性が弱い",
+        "badge": "構成を足す",
+        "color": "linear-gradient(135deg, #7c3aed, #c084fc)",
+        "desc": "ショット順、光、時間帯、レンズ、最後のフレームを加えると、モデルの目標が明確になります。",
+        "prompt": "例：ワイドから始め、クローズアップへ移り、商品ラベルで終わる。"
+      },
+      {
+        "title": "creditsが高すぎる",
+        "badge": "先に下書き",
+        "color": "linear-gradient(135deg, #059669, #34d399)",
+        "desc": "最終方向に多くのcreditsを使う前に、短い長さや低い解像度でテストします。",
+        "prompt": "まず5秒の下書きを試し、動きが合ってから設定を上げます。"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "テキストから動画を生成する方法",
+    "steps": [
+      {
+        "title": "シーンプロンプトを書く",
+        "desc": "生成前に被写体、場所、動き、カメラ方向、光、テンポ、アスペクト比を書きます。"
+      },
+      {
+        "title": "モデルと設定を選ぶ",
+        "desc": "テキスト入力、長さ、解像度、音声オプション、推定creditsで対応動画モデルを比較します。"
+      },
+      {
+        "title": "生成、確認、調整する",
+        "desc": "本制作に時間をかける前に、SNS広告、商品クリップ、絵コンテ、解説動画、クリエイティブテストを下書きします。"
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "テキスト動画プロンプトテンプレート",
+    "subtitle": "脚本、SNSフック、カメラ移動、テンポ、形式、モデル適性を試すためのプロンプトパターンです。",
+    "items": [
+      {
+        "title": "エディトリアル人物撮影プロンプト",
+        "prompt": "Create a 5-second widescreen editorial portrait video of a young creative professional standing near a large studio window. Use a slow push-in camera, a gentle head turn, subtle hair and fabric movement, soft natural light, shallow depth of field, realistic skin texture, calm confident mood, and a clean neutral background. No logos, no celebrity likeness.",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/21430f5f6ed54b72910b26b4f73b0ca2.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/74292aa585fb494ebe467dbcd3858996.webp",
+        "description": "柔らかな窓光、控えめな動き、ゆっくりしたプッシュインを含むワイド画面のGrokテキスト動画人物例。",
+        "aspectRatio": "16:9",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-22T15:42:21.445Z",
+        "sourceHistory": "Grok text-to-video · 18a5175b27ce2750d44fa1d5e135f432 · 5s · 16:9",
+        "note": "被写体、光、カメラ移動を説明しやすい人物クリップに使います。",
+        "color": "linear-gradient(135deg, #334155, #8b5cf6)"
+      },
+      {
+        "title": "再生可能エネルギー解説Bロールプロンプト",
+        "prompt": "Create a 5-second explainer B-roll clip for a lesson about renewable energy. Show sunlight moving across rooftop solar panels, a close-up of an energy meter rising, and a clean classroom-style graphic transition. Calm motion, realistic daylight, gentle camera pan, educational presentation tone.",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/c1430e47f07f42f18c90ba0eb1c75d19.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/8e50266141384e78b7b0e5e2a864d463.webp",
+        "description": "教育向けの再生可能エネルギーBロールを想定したワイド画面Grokテキスト動画例。",
+        "aspectRatio": "16:9",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-22T15:09:27.742Z",
+        "sourceHistory": "Grok text-to-video · 5ce07326b105f18c9ff777ae874c99ca · 5s · 16:9",
+        "note": "授業、解説、プレゼン用に中立的な補助映像が必要なときに使います。",
+        "color": "linear-gradient(135deg, #059669, #38bdf8)"
+      },
+      {
+        "title": "橋のトラッキングショットプロンプト",
+        "prompt": "Create a 5-second widescreen cinematic shot of a cyclist crossing a quiet bridge at sunset. Use one smooth left-to-right tracking move, warm backlight, shallow depth of field, realistic motion blur, and a final frame where the cyclist exits into the glow.",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/33f7fe1f247e42ababbbe11202793cee.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/f6ffbf3298544f06b258e353586e0128.webp",
+        "description": "自転車の1つの動きと滑らかなトラッキングショットを試すワイド画面Grokテキスト動画例。",
+        "aspectRatio": "16:9",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-22T15:09:27.742Z",
+        "sourceHistory": "Grok text-to-video · 32cc0c402f47b46c852be4f7a7010b94 · 5s · 16:9",
+        "note": "細部を増やす前に、1つの被写体動作と1つのカメラ移動を試すときに使います。",
+        "color": "linear-gradient(135deg, #f97316, #7c3aed)"
+      },
+      {
+        "title": "旅行用商品コンセプトプロンプト",
+        "prompt": "Create a 5-second product concept video for a compact travel coffee grinder. Show the grinder on a hotel desk, beans pouring into the top, a quick close-up of the dial, and a final frame with a clean cup beside a city window. Soft morning light, premium travel gear mood, steady push-in camera.",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/1b0129b9d2504494825f8fd28b00f4af.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/c601d39d801e44938e5e33711e19df32.webp",
+        "description": "架空の小型旅行用コーヒーグラインダーを想定したワイド画面Grokテキスト動画例。",
+        "aspectRatio": "16:9",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-22T15:09:27.742Z",
+        "sourceHistory": "Grok text-to-video · 40622216026309ff8f4410d965143e74 · 5s · 16:9",
+        "note": "撮影前に商品アイデアの簡単なビジュアルコンセプトが必要なときに使います。",
+        "color": "linear-gradient(135deg, #92400e, #f59e0b)"
+      }
+    ]
+  },
+  "scenesTitle": "人気のテキスト動画ユースケース",
+  "scenes": [
+    {
+      "title": "SNSクリップ",
+      "icon": "📱",
+      "desc": "シンプルな文章アイデアから、Reels、Shorts、TikTok、クリエイターテスト向けの9:16クリップを下書きします。"
+    },
+    {
+      "title": "商品広告",
+      "icon": "🛒",
+      "desc": "撮影を予約する前に、キャンペーンメモを短い商品モーションコンセプトに変換します。"
+    },
+    {
+      "title": "絵コンテ",
+      "icon": "🎬",
+      "desc": "本制作前にショット順、動き、カメラ移動、光、テンポを確認します。"
+    },
+    {
+      "title": "解説動画",
+      "icon": "🎓",
+      "desc": "授業、ローンチデモ、プレゼン用クリップ向けに短い視覚説明を作成します。"
+    },
+    {
+      "title": "Bロールとカメラテスト",
+      "icon": "🎥",
+      "desc": "長い編集を作る前に、1つの被写体動作、1つのカメラ移動、1つの最後のフレームを試します。"
+    },
+    {
+      "title": "人物モーションクリップ",
+      "icon": "🧑‍🎨",
+      "desc": "控えめな頭の動き、柔らかな光、明確なカメラ方向を持つシンプルな16:9人物ショットを作成します。"
+    }
+  ],
+  "moreTools": "関連AI動画ツール",
+  "moreToolsLinks": [
+    {
+      "title": "AI動画生成ツール",
+      "href": "/ai-video-generator",
+      "description": "テキスト、画像、動画クリップ、音声参照を1つの動画ワークスペースで使えます。"
+    },
+    {
+      "title": "Seedance 2.0",
+      "href": "/model/seedance-2",
+      "description": "テキスト動画、画像動画、マルチモーダル生成の詳細を確認できる動画モデルページです。"
+    },
+    {
+      "title": "Seedance 2.5",
+      "href": "/model/seedance-2-5",
+      "description": "シネマ風プロンプトや短尺クリエイティブテスト向けの新しいSeedance動画モデルを比較できます。"
+    },
+    {
+      "title": "Kling 3.0",
+      "href": "/model/kling-3",
+      "description": "シネマ風クリップ、音声対応設定、高解像度ワークフロー向けのKling動画機能を確認できます。"
+    },
+    {
+      "title": "Grok Imagine Video 1.5",
+      "href": "/model/grok-imagine-video-1-5",
+      "description": "短い画像動画モーションクリップやプロンプトだけの動画下書きにGrokを使えます。"
+    },
+    {
+      "title": "AIダンス生成ツール",
+      "href": "/ai-dance-generator",
+      "description": "画像を1枚アップロードし、SNSやクラス告知向けの短いダンスクリップを作成できます。"
+    }
+  ],
+  "faqTitle": "テキスト動画生成ツール FAQ",
+  "faq": [
+    {
+      "q": "テキスト動画生成ツールとは何ですか？",
+      "a": "テキスト動画生成ツールは、書いたプロンプトを短い動画クリップに変換します。Toolazeでは、シーン、動き、カメラ移動、スタイルを説明し、対応するAI動画モデルを選びます。"
+    },
+    {
+      "q": "Toolazeのテキスト動画は無料ですか？",
+      "a": "Toolazeでは無料creditsや一部の試用アクセスが提供される場合がありますが、動画生成に必要なcreditsは選んだモデルと設定によって変わります。生成フローで開始前に必要creditsが表示されます。"
+    },
+    {
+      "q": "テキスト動画クリップはどのくらいの長さにできますか？",
+      "a": "Toolazeの一般的なテキスト動画は短尺出力で、選んだモデルと設定により3〜15秒程度です。長さや品質を上げる前に、短い下書きで動き、カメラ方向、プロンプト表現を試してください。"
+    },
+    {
+      "q": "テキスト動画には音声や字幕が含まれますか？",
+      "a": "音声、ボイス、字幕の対応は選択した動画モデルと利用可能な設定によって異なります。モデルがネイティブ音声や字幕を提供しない場合は、先に映像を生成し、編集ツールで字幕、ナレーション、音楽を追加します。"
+    },
+    {
+      "q": "テキスト動画で何を作れますか？",
+      "a": "SNSフック、商品広告、Bロール、絵コンテ、解説動画、コンセプトクリップ、カメラ移動テストに使えます。具体的な参照画像に頼らず、シーンを明確に説明できる場合に最も向いています。"
+    },
+    {
+      "q": "テキスト動画と画像動画の違いは何ですか？",
+      "a": "テキスト動画は文章のシーン説明から始まり、見た目の生成にモデルの自由度があります。画像動画は参照画像から始まり、動きを加えながら商品、人物、レイアウト、構図、視覚スタイルを保ちやすくします。"
+    },
+    {
+      "q": "テキスト動画プロンプトには何を書けばよいですか？",
+      "a": "被写体、動き、カメラ移動、光、雰囲気、テンポ、アスペクト比、最後のフレームを書きます。最初の下書きはシンプルにし、動きが合ってから詳細を足します。"
+    },
+    {
+      "q": "生成したテキスト動画クリップを商用利用できますか？",
+      "a": "商用利用は、選択モデル、Toolazeアカウント状態、素材、適用される条件によって異なります。権利のない制限ブランド、人物、著作権素材の使用は避け、クライアント案件や有料公開の前に最新の利用ルールを確認してください。"
+    }
+  ]
+}

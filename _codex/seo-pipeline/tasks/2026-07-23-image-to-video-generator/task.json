@@ -52,5 +52,5 @@
     "_codex/seo-pipeline/tasks/2026-07-23-image-to-video-generator/content/it.json",
     "src/data/it/image-to-video-generator.json"
   ],
-  "releaseBoundary": "SEO Factory preview plus English public route only. No homepage, global navigation, footer, sitemap, or production release scope is included in this task."
+  "releaseBoundary": "Public landing-page release includes the relevant desktop and mobile navigation, Footer, AI Tools hub, sitemap, and supported locale entry points. SEO Factory internal dashboards, prompts, and administrative routes remain excluded."
 }

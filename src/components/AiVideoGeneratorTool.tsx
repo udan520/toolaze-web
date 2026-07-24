@@ -102,6 +102,7 @@ interface AiVideoGeneratorToolProps {
   heroDescription?: string
   demoVideo?: {
     src?: string
+    poster?: string
     ariaLabel?: string
   }
   initialTranslations?: any
@@ -1587,8 +1588,10 @@ export default function AiVideoGeneratorTool({
                         {demoVideo?.src ? (
                           <video
                             data-video-demo-media
+                            suppressHydrationWarning
                             className="block h-auto max-h-[520px] w-auto max-w-full object-contain"
                             src={demoVideo.src}
+                            poster={demoVideo.poster}
                             aria-label={demoVideo.ariaLabel || text.previewHint}
                             autoPlay
                             loop

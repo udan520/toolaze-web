@@ -1,0 +1,10 @@
+{
+  "taskId": "2026-07-22-text-to-video-generator",
+  "slug": "text-to-video-generator",
+  "pageType": "l2",
+  "pageGroup": "ai-tools",
+  "status": "ready_for_publish",
+  "locale": "de",
+  "sourceData": "src/data/de/text-to-video-generator.json",
+  "canonicalPath": "/de/text-to-video-generator"
+}

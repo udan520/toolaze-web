@@ -50,6 +50,8 @@
     "seedream50Lite": "Seedream 5.0 Lite",
     "seedream50Pro": "Seedream 5.0 Pro",
     "seedance25": "Seedance 2.5",
+    "textToVideoGenerator": "文字轉影片生成器",
+    "imageToVideoGenerator": "圖像轉影片生成器",
     "aiDanceGenerator": "AI 跳舞生成器",
     "aiKissingVideoGenerator": "AI 親吻影片生成器"
   },
@@ -271,6 +273,8 @@
     "aiImageGenerator": "AI 圖像產生器",
     "refundPolicy": "退款政策",
     "acceptableUse": "可接受使用政策",
+    "textToVideoGenerator": "文字轉影片生成器",
+    "imageToVideoGenerator": "圖像轉影片生成器",
     "aiDanceGenerator": "AI 跳舞生成器",
     "aiKissingVideoGenerator": "AI 親吻影片生成器"
   },
@@ -296,7 +300,9 @@
     "aiImageToImageGenerator": "AI 圖像轉圖像生成器",
     "worldCupAiImageGenerator": "世界盃 AI 圖像產生器",
     "refundPolicy": "退款政策",
-    "acceptableUse": "可接受使用政策"
+    "acceptableUse": "可接受使用政策",
+    "textToVideoGenerator": "文字轉影片生成器",
+    "imageToVideoGenerator": "圖像轉影片生成器"
   },
   "about": {
     "metadata": {

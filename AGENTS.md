@@ -50,3 +50,4 @@
 - 最小必建记录包括 `_codex/seo-pipeline/queue/ready.json`、`_codex/seo-pipeline/tasks/{taskId}/task.json`、`_codex/seo-pipeline/tasks/{taskId}/content/{locale}.json`。
 - 记录必须包含可被 `src/lib/seo-loader.ts` 识别的 `taskId`、`slug`、`pageType`、`status: "ready_for_publish"`，并让 `queue/ready.json` 指向对应 task。
 - 正式页面 JSON、路由、sitemap、hub/nav 入口等后续改动必须能追溯到对应 Seo-Factory task/content 记录；不得只写 `src/data` 或页面路由而缺少 Seo-Factory 记录。
+- 每个公开 Toolaze 落地页默认必须接入相关桌面菜单、移动菜单、Footer 分组、AI Tools Hub、sitemap 和支持语言的导航数据。只有产品负责人明确要求页面保持隐藏或不公开列出时，才能省略入口。该规则适用于 SEO Factory 的公开页面产物；Factory 仪表盘、提示词、任务备注和管理路由继续保持私有。

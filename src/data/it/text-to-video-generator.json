@@ -1,0 +1,322 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "topComponent": "ai-video-generator",
+  "topTool": {
+    "mode": "text-to-video"
+  },
+  "metadata": {
+    "title": "Generatore da testo a video online | Script in video IA",
+    "description": "Crea brevi video IA da prompt, script e note prodotto. Confronta modelli, proporzioni, durata, audio, sottotitoli e crediti su Toolaze."
+  },
+  "sectionsOrder": [
+    "modelIntro",
+    "performanceMetrics",
+    "modelSelectionGuide",
+    "promptExamples",
+    "howToUse",
+    "troubleshooting",
+    "scenes",
+    "faq"
+  ],
+  "modelIntro": {
+    "title": "Crea video IA direttamente dal testo",
+    "modelName": "Generatore da testo a video",
+    "modelType": "Strumento video IA",
+    "description": [
+      "Il Generatore da testo a video di Toolaze è pensato per creare video da prompt: clip brevi, annunci social, movimento prodotto, storyboard, video esplicativi e idee B-roll. Usalo quando la scena può essere descritta a parole e non serve caricare un’immagine di riferimento.",
+      "Inizia con un prompt compatto, uno script strutturato o un brief prodotto, poi scegli un modello video supportato e le impostazioni di output. I crediti richiesti vengono mostrati prima della generazione e variano in base a modello, durata, risoluzione, audio e qualità."
+    ],
+    "featureCards": [
+      {
+        "title": "Creazione video da prompt",
+        "content": "Descrivi soggetto, ambientazione, azione, direzione camera, luce, ritmo e fotogramma finale prima di generare."
+      },
+      {
+        "title": "Prompt per script e storyboard",
+        "content": "Trasforma hook, liste scena, note prodotto e scalette esplicative in prompt più chiari per video brevi."
+      },
+      {
+        "title": "Controllo modello e impostazioni",
+        "content": "Confronta i modelli supportati per input testuale, durata, proporzioni, audio e crediti stimati."
+      },
+      {
+        "title": "Pianificazione short-form",
+        "content": "Abbozza clip social, annunci prodotto, B-roll, storyboard, spiegazioni e test creativi prima della produzione."
+      }
+    ]
+  },
+  "hero": {
+    "h1": "<span class=\"text-gradient\">Generatore da testo a video</span> online",
+    "desc": "Trasforma prompt, script, idee prodotto, hook social e note storyboard in brevi video IA con Toolaze. Parti dal testo, scegli un modello video supportato e regola movimento, camera, ritmo, proporzioni, durata, audio e formato."
+  },
+  "heroDemoVideo": {
+    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/1b0129b9d2504494825f8fd28b00f4af.png",
+    "ariaLabel": "Demo da testo a video generata in Toolaze dal prompt del concept prodotto da viaggio",
+    "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/c601d39d801e44938e5e33711e19df32.webp",
+    "sourceHistory": "Grok text-to-video · 40622216026309ff8f4410d965143e74 · 5s · 16:9"
+  },
+  "performanceMetrics": {
+    "title": "Impostazioni e controlli output da testo a video",
+    "metrics": [
+      {
+        "label": "Input principale",
+        "value": "Prompt, script brevi, liste scena, note prodotto, hook pubblicitari e indicazioni storyboard"
+      },
+      {
+        "label": "Quando funziona da testo a video",
+        "value": "Ideale quando soggetto, azione, movimento camera, stile e fotogramma finale sono descrivibili con chiarezza"
+      },
+      {
+        "label": "Proporzioni",
+        "value": "Usa verticale per short social, quadrato per feed o widescreen per storyboard quando disponibile"
+      },
+      {
+        "label": "Modelli supportati",
+        "value": "Seedance 2.0, Seedance 2.0 Mini, Kling 3.0 e altri modelli video Toolaze quando supportano input testuale"
+      },
+      {
+        "label": "Durata tipica",
+        "value": "Da 3 a 15 secondi in base al modello e alle impostazioni selezionate"
+      },
+      {
+        "label": "Audio e sottotitoli",
+        "value": "Le opzioni audio, voce e sottotitoli dipendono dal modello; aggiungi sottotitoli in editing se necessario"
+      },
+      {
+        "label": "Politica crediti",
+        "value": "I crediti richiesti appaiono prima della generazione e variano per modello, durata, risoluzione e qualità"
+      }
+    ]
+  },
+  "modelSelectionGuide": {
+    "title": "Scegli un modello da testo a video",
+    "subtitle": "Scegli il modello dopo aver chiarito la scena solo da prompt. Confronta costo bozza, complessità del movimento, impostazioni audio, durata, risoluzione e crediti prima di generare.",
+    "items": [
+      {
+        "title": "Seedance 2.0",
+        "badge": "Prompt testuali bilanciati",
+        "color": "linear-gradient(135deg, #4f46e5, #ec4899)",
+        "desc": "Usa Seedance 2.0 quando un prompt testuale richiede struttura multi-shot, movimento prodotto, storyboard o clip brevi più lunghe.",
+        "prompt": "Adatto ad annunci sceneggiati, liste scena e clip concept cinematografiche."
+      },
+      {
+        "title": "Seedance 2.0 Mini",
+        "badge": "Iterazione prompt economica",
+        "color": "linear-gradient(135deg, #0ea5e9, #6366f1)",
+        "desc": "Usa Mini quando vuoi testare formulazioni di prompt a costo minore prima di spendere più crediti sulle impostazioni finali.",
+        "prompt": "Adatto a confrontare hook, ritmo, proporzioni e fotogrammi finali."
+      },
+      {
+        "title": "Kling 3.0",
+        "badge": "Cinematico e orientato all’audio",
+        "color": "linear-gradient(135deg, #0f172a, #22c55e)",
+        "desc": "Usa Kling 3.0 quando un prompt richiede movimento cinematografico, audio nativo nelle impostazioni supportate o test finali a risoluzione più alta.",
+        "prompt": "Adatto a clip trailer, movimenti camera drammatici e scene pensate per l’audio."
+      }
+    ]
+  },
+  "troubleshooting": {
+    "title": "Come migliorare i risultati da testo a video",
+    "subtitle": "Scrivi un’azione chiara, una direzione camera e uno stile visivo prima di aggiungere altri dettagli.",
+    "items": [
+      {
+        "title": "Il movimento è troppo carico",
+        "badge": "Semplifica",
+        "color": "linear-gradient(135deg, #4f46e5, #818cf8)",
+        "desc": "Mantieni un’azione del soggetto e un movimento camera. Troppi movimenti in competizione rendono instabili le clip brevi.",
+        "prompt": "Prova: un solo prodotto ruota lentamente mentre la camera fa un leggero push-in."
+      },
+      {
+        "title": "La scena manca di direzione",
+        "badge": "Aggiungi struttura",
+        "color": "linear-gradient(135deg, #7c3aed, #c084fc)",
+        "desc": "Aggiungi ordine degli shot, luce, momento della giornata, lente e fotogramma finale per dare al modello un obiettivo più chiaro.",
+        "prompt": "Prova: inizia largo, passa a un close-up, chiudi sull’etichetta del prodotto."
+      },
+      {
+        "title": "I crediti sono troppo alti",
+        "badge": "Prima la bozza",
+        "color": "linear-gradient(135deg, #059669, #34d399)",
+        "desc": "Prova durata più breve o risoluzione più bassa prima di usare più crediti sulla direzione finale.",
+        "prompt": "Prova una bozza di 5 secondi, poi aumenta le impostazioni quando il movimento funziona."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Come generare video dal testo",
+    "steps": [
+      {
+        "title": "Scrivi il prompt della scena",
+        "desc": "Scrivi soggetto, ambientazione, azione, direzione camera, luce, ritmo e proporzioni prima di generare."
+      },
+      {
+        "title": "Scegli modello e impostazioni",
+        "desc": "Confronta i modelli supportati per input testuale, durata, risoluzione, audio e crediti stimati."
+      },
+      {
+        "title": "Genera, controlla e rifinisci",
+        "desc": "Abbozza annunci social, clip prodotto, storyboard, spiegazioni e test creativi prima di investire tempo nella produzione."
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "Template prompt da testo a video",
+    "subtitle": "Copia questi schemi di prompt per testare script, hook social, movimento camera, ritmo, formato e compatibilità del modello.",
+    "items": [
+      {
+        "title": "Prompt ritratto editoriale",
+        "prompt": "Create a 5-second widescreen editorial portrait video of a young creative professional standing near a large studio window. Use a slow push-in camera, a gentle head turn, subtle hair and fabric movement, soft natural light, shallow depth of field, realistic skin texture, calm confident mood, and a clean neutral background. No logos, no celebrity likeness.",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/21430f5f6ed54b72910b26b4f73b0ca2.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/74292aa585fb494ebe467dbcd3858996.webp",
+        "description": "Esempio Grok da testo a video widescreen con luce morbida da finestra, movimento sottile e lento push-in camera.",
+        "aspectRatio": "16:9",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-22T15:42:21.445Z",
+        "sourceHistory": "Grok text-to-video · 18a5175b27ce2750d44fa1d5e135f432 · 5s · 16:9",
+        "note": "Usalo per clip ritratto in cui soggetto, luce e movimento camera devono essere facili da descrivere.",
+        "color": "linear-gradient(135deg, #334155, #8b5cf6)"
+      },
+      {
+        "title": "Prompt B-roll esplicativo sulle energie rinnovabili",
+        "prompt": "Create a 5-second explainer B-roll clip for a lesson about renewable energy. Show sunlight moving across rooftop solar panels, a close-up of an energy meter rising, and a clean classroom-style graphic transition. Calm motion, realistic daylight, gentle camera pan, educational presentation tone.",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/c1430e47f07f42f18c90ba0eb1c75d19.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/8e50266141384e78b7b0e5e2a864d463.webp",
+        "description": "Esempio Grok da testo a video widescreen per B-roll educativo sulle energie rinnovabili.",
+        "aspectRatio": "16:9",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-22T15:09:27.742Z",
+        "sourceHistory": "Grok text-to-video · 5ce07326b105f18c9ff777ae874c99ca · 5s · 16:9",
+        "note": "Usalo per lezioni, spiegazioni e clip di presentazione che richiedono materiale visivo neutro di supporto.",
+        "color": "linear-gradient(135deg, #059669, #38bdf8)"
+      },
+      {
+        "title": "Prompt tracking shot sul ponte",
+        "prompt": "Create a 5-second widescreen cinematic shot of a cyclist crossing a quiet bridge at sunset. Use one smooth left-to-right tracking move, warm backlight, shallow depth of field, realistic motion blur, and a final frame where the cyclist exits into the glow.",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/33f7fe1f247e42ababbbe11202793cee.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/f6ffbf3298544f06b258e353586e0128.webp",
+        "description": "Esempio Grok da testo a video widescreen per testare un’azione del ciclista e un tracking shot fluido.",
+        "aspectRatio": "16:9",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-22T15:09:27.742Z",
+        "sourceHistory": "Grok text-to-video · 32cc0c402f47b46c852be4f7a7010b94 · 5s · 16:9",
+        "note": "Usalo per testare un’azione del soggetto e un movimento camera prima di aggiungere dettagli.",
+        "color": "linear-gradient(135deg, #f97316, #7c3aed)"
+      },
+      {
+        "title": "Prompt concept prodotto da viaggio",
+        "prompt": "Create a 5-second product concept video for a compact travel coffee grinder. Show the grinder on a hotel desk, beans pouring into the top, a quick close-up of the dial, and a final frame with a clean cup beside a city window. Soft morning light, premium travel gear mood, steady push-in camera.",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/1b0129b9d2504494825f8fd28b00f4af.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/c601d39d801e44938e5e33711e19df32.webp",
+        "description": "Esempio Grok da testo a video widescreen per il concept fittizio di un macinacaffè compatto da viaggio.",
+        "aspectRatio": "16:9",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-22T15:09:27.742Z",
+        "sourceHistory": "Grok text-to-video · 40622216026309ff8f4410d965143e74 · 5s · 16:9",
+        "note": "Usalo quando un’idea prodotto ha bisogno di un concept visivo rapido prima di un set.",
+        "color": "linear-gradient(135deg, #92400e, #f59e0b)"
+      }
+    ]
+  },
+  "scenesTitle": "Casi d’uso popolari da testo a video",
+  "scenes": [
+    {
+      "title": "Clip social",
+      "icon": "📱",
+      "desc": "Abbozza clip 9:16 per Reels, Shorts, TikTok e test creator da una semplice idea scritta."
+    },
+    {
+      "title": "Annunci prodotto",
+      "icon": "🛒",
+      "desc": "Trasforma note campagna in brevi concept di movimento prodotto prima di prenotare un set."
+    },
+    {
+      "title": "Storyboard",
+      "icon": "🎬",
+      "desc": "Visualizza ordine degli shot, azione, movimento camera, luce e ritmo prima della produzione."
+    },
+    {
+      "title": "Video esplicativi",
+      "icon": "🎓",
+      "desc": "Crea brevi spiegazioni visive per lezioni, demo di lancio e clip di presentazione."
+    },
+    {
+      "title": "B-roll e test camera",
+      "icon": "🎥",
+      "desc": "Testa un’azione del soggetto, un movimento camera e un fotogramma finale prima di creare montaggi più lunghi."
+    },
+    {
+      "title": "Clip ritratto in movimento",
+      "icon": "🧑‍🎨",
+      "desc": "Crea semplici inquadrature ritratto 16:9 con leggero movimento della testa, luce morbida e chiara direzione camera."
+    }
+  ],
+  "moreTools": "Strumenti video IA correlati",
+  "moreToolsLinks": [
+    {
+      "title": "Generatore video IA",
+      "href": "/ai-video-generator",
+      "description": "Usa testo, immagini, clip video o riferimenti audio in un unico spazio di lavoro video."
+    },
+    {
+      "title": "Seedance 2.0",
+      "href": "/model/seedance-2",
+      "description": "Esplora una pagina modello video con dettagli su testo-video, immagine-video e generazione multimodale."
+    },
+    {
+      "title": "Seedance 2.5",
+      "href": "/model/seedance-2-5",
+      "description": "Confronta un modello Seedance più recente per prompt cinematografici e test creativi short-form."
+    },
+    {
+      "title": "Kling 3.0",
+      "href": "/model/kling-3",
+      "description": "Rivedi le capacità video Kling per clip cinematiche, impostazioni audio e workflow ad alta risoluzione."
+    },
+    {
+      "title": "Grok Imagine Video 1.5",
+      "href": "/model/grok-imagine-video-1-5",
+      "description": "Usa Grok per brevi clip immagine-video o bozze video solo da prompt."
+    },
+    {
+      "title": "Generatore di danza IA",
+      "href": "/ai-dance-generator",
+      "description": "Carica un’immagine e crea brevi clip di danza per workflow social e promo di lezioni."
+    }
+  ],
+  "faqTitle": "FAQ del generatore da testo a video",
+  "faq": [
+    {
+      "q": "Che cos’è un generatore da testo a video?",
+      "a": "Un generatore da testo a video trasforma un prompt scritto in una breve clip video. Su Toolaze descrivi scena, azione, movimento camera e stile, poi scegli un modello video IA supportato."
+    },
+    {
+      "q": "Il testo a video è gratuito su Toolaze?",
+      "a": "Toolaze può offrire crediti gratuiti o accessi di prova selezionati, ma i crediti richiesti dipendono dal modello e dalle impostazioni scelte. Il flusso di generazione mostra i crediti necessari prima di iniziare."
+    },
+    {
+      "q": "Quanto possono durare le clip da testo a video?",
+      "a": "Le clip da testo a video su Toolaze sono output brevi, spesso tra 3 e 15 secondi in base a modello e impostazioni. Usa bozze più corte per testare movimento, camera e formulazione del prompt prima di aumentare durata o qualità."
+    },
+    {
+      "q": "Il testo a video include audio o sottotitoli?",
+      "a": "Supporto audio, voce e sottotitoli dipendono dal modello video selezionato e dalle impostazioni disponibili. Se il modello non fornisce audio o sottotitoli nativi, genera prima la clip visiva e aggiungi sottotitoli, voiceover o musica in un editor."
+    },
+    {
+      "q": "Cosa posso creare con testo a video?",
+      "a": "Usa testo a video per hook social, annunci prodotto, B-roll, storyboard, spiegazioni, clip concept e test di movimento camera. Funziona meglio quando la scena può essere descritta chiaramente senza dipendere da una specifica immagine di riferimento."
+    },
+    {
+      "q": "Qual è la differenza tra testo-video e immagine-video?",
+      "a": "Testo-video parte da una descrizione scritta e dà al modello più libertà nel creare l’aspetto. Immagine-video parte da un’immagine di riferimento, aiutando a preservare prodotto, personaggio, layout, composizione o stile visivo mentre aggiunge movimento."
+    },
+    {
+      "q": "Cosa devo scrivere in un prompt da testo a video?",
+      "a": "Includi soggetto, azione, movimento camera, luce, atmosfera, ritmo, proporzioni e fotogramma finale. Mantieni semplice la prima bozza e aggiungi dettagli quando il movimento funziona."
+    },
+    {
+      "q": "Posso usare commercialmente le clip generate?",
+      "a": "L’uso commerciale dipende dal modello selezionato, stato dell’account Toolaze, materiali sorgente e termini applicabili. Evita marchi limitati, persone o materiali protetti senza diritti e verifica le regole d’uso aggiornate prima di pubblicare lavori per clienti o a pagamento."
+    }
+  ]
+}

@@ -7,6 +7,8 @@ const expectedRoutes = [
   '/text-to-image-generator',
   '/ai-image-to-image-generator',
   '/ai-video-generator',
+  '/text-to-video-generator',
+  '/image-to-video-generator',
   '/world-cup-ai-image-generator',
   '/ai-couple-photo-maker',
   '/ai-baby-generator',
@@ -23,7 +25,7 @@ test('AI Tools hub includes every global AI tool in every locale', () => {
     const cards = getAiToolsPageCopy(locale).cards
     assert.deepEqual(cards.map((card) => card.href), expectedRoutes, `${locale} has missing or mismatched tools`)
     assert.equal(cards.filter((card) => card.category === 'image').length, 10)
-    assert.equal(cards.filter((card) => card.category === 'video').length, 3)
+    assert.equal(cards.filter((card) => card.category === 'video').length, 5)
   }
 })
 

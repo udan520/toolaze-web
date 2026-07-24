@@ -1,0 +1,322 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "topComponent": "ai-video-generator",
+  "topTool": {
+    "mode": "text-to-video"
+  },
+  "metadata": {
+    "title": "文字轉影片生成器線上版 | 腳本轉 AI 影片",
+    "description": "從提示詞、腳本與產品筆記建立短 AI 影片。在 Toolaze 比較模型、比例、時長、音訊、字幕與 credits。"
+  },
+  "sectionsOrder": [
+    "modelIntro",
+    "performanceMetrics",
+    "modelSelectionGuide",
+    "promptExamples",
+    "howToUse",
+    "troubleshooting",
+    "scenes",
+    "faq"
+  ],
+  "modelIntro": {
+    "title": "直接用文字建立 AI 影片",
+    "modelName": "文字轉影片生成器",
+    "modelType": "AI 影片工具",
+    "description": [
+      "Toolaze 文字轉影片生成器專注於以提示詞開始的短片創作，適合社群廣告、產品動態、分鏡、解說影片與 B-roll 概念。當場景可以用文字描述，而且不需要上傳參考圖片時，就適合使用。",
+      "先從精簡提示詞、結構化腳本或產品簡報開始，再選擇支援的影片模型與輸出設定。所需 credits 會在生成前顯示，並依模型、時長、解析度、音訊選項與品質設定而不同。"
+    ],
+    "featureCards": [
+      {
+        "title": "以提示詞開始影片創作",
+        "content": "在生成前描述主體、場景、動作、鏡頭方向、光線、節奏與最後畫面。"
+      },
+      {
+        "title": "腳本與分鏡提示詞",
+        "content": "把開場 hook、場景列表、產品筆記與解說大綱轉成更清楚的短片提示詞。"
+      },
+      {
+        "title": "模型與設定檢查",
+        "content": "依文字輸入、時長、比例、音訊選項與預估 credits 比較支援的影片模型。"
+      },
+      {
+        "title": "短片前期規劃",
+        "content": "在正式製作前先草擬社群短片、產品廣告、B-roll、分鏡、解說影片與創意測試。"
+      }
+    ]
+  },
+  "hero": {
+    "h1": "<span class=\"text-gradient\">文字轉影片生成器</span>線上版",
+    "desc": "用 Toolaze 將提示詞、腳本、產品想法、社群 hook 與分鏡筆記轉成短 AI 影片。從文字開始，選擇支援的影片模型，再調整動作、鏡頭方向、節奏、比例、時長、音訊設定與格式。"
+  },
+  "heroDemoVideo": {
+    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/1b0129b9d2504494825f8fd28b00f4af.png",
+    "ariaLabel": "Toolaze 依旅行產品概念提示詞生成的文字轉影片 Demo",
+    "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/c601d39d801e44938e5e33711e19df32.webp",
+    "sourceHistory": "Grok text-to-video · 40622216026309ff8f4410d965143e74 · 5s · 16:9"
+  },
+  "performanceMetrics": {
+    "title": "文字轉影片設定與輸出檢查",
+    "metrics": [
+      {
+        "label": "主要輸入",
+        "value": "提示詞、短腳本、場景列表、產品筆記、廣告 hook 與分鏡指令"
+      },
+      {
+        "label": "文字轉影片適用情境",
+        "value": "當主體、動作、鏡頭移動、風格與最後畫面都能清楚描述時最適合"
+      },
+      {
+        "label": "影片比例",
+        "value": "可用時，社群短片用直式，動態牆用方形，分鏡用寬螢幕"
+      },
+      {
+        "label": "支援模型",
+        "value": "Seedance 2.0、Seedance 2.0 Mini、Kling 3.0，以及其他支援文字輸入的 Toolaze 影片模型"
+      },
+      {
+        "label": "常見時長",
+        "value": "依所選模型與設定，通常為 3 到 15 秒"
+      },
+      {
+        "label": "音訊與字幕",
+        "value": "音訊、語音與字幕選項取決於所選模型；需要時可在後製時加入字幕"
+      },
+      {
+        "label": "Credits 規則",
+        "value": "所需 credits 會在生成前顯示，並依模型、時長、解析度與品質設定而不同"
+      }
+    ]
+  },
+  "modelSelectionGuide": {
+    "title": "選擇文字轉影片模型",
+    "subtitle": "當純文字場景已經清楚後再選模型。生成前比較草稿成本、動作複雜度、音訊相關設定、時長、解析度與 credits。",
+    "items": [
+      {
+        "title": "Seedance 2.0",
+        "badge": "均衡文字提示詞",
+        "color": "linear-gradient(135deg, #4f46e5, #ec4899)",
+        "desc": "當文字提示詞需要多鏡頭結構、產品動態、分鏡或較長短片時，使用 Seedance 2.0。",
+        "prompt": "適合腳本廣告、場景列表與電影感概念短片。"
+      },
+      {
+        "title": "Seedance 2.0 Mini",
+        "badge": "草稿提示詞迭代",
+        "color": "linear-gradient(135deg, #0ea5e9, #6366f1)",
+        "desc": "當你想先用較低成本測試提示詞寫法，再把更多 credits 用在最終設定時，使用 Mini。",
+        "prompt": "適合比較 hook、節奏、比例與最後畫面。"
+      },
+      {
+        "title": "Kling 3.0",
+        "badge": "電影感與音訊導向",
+        "color": "linear-gradient(135deg, #0f172a, #22c55e)",
+        "desc": "當文字提示詞需要電影感動作、支援設定中的原生音訊，或較高解析度的最終測試時，使用 Kling 3.0。",
+        "prompt": "適合預告片風格短片、戲劇化鏡頭移動與音訊導向場景。"
+      }
+    ]
+  },
+  "troubleshooting": {
+    "title": "如何改善文字轉影片結果",
+    "subtitle": "先寫一個清楚動作、一個鏡頭方向和一種視覺風格，再加入更多細節。",
+    "items": [
+      {
+        "title": "動作太雜",
+        "badge": "簡化",
+        "color": "linear-gradient(135deg, #4f46e5, #818cf8)",
+        "desc": "保留一個主體動作和一個鏡頭移動。太多互相競爭的動作會讓短片不穩定。",
+        "prompt": "試試：單一產品緩慢旋轉，鏡頭做一次柔和推近。"
+      },
+      {
+        "title": "場景缺少方向",
+        "badge": "加入結構",
+        "color": "linear-gradient(135deg, #7c3aed, #c084fc)",
+        "desc": "加入鏡頭順序、光線、時間、鏡頭焦段與最後畫面，讓模型有更清楚的目標。",
+        "prompt": "試試：從遠景開始，切到特寫，最後停在產品標籤上。"
+      },
+      {
+        "title": "Credits 太高",
+        "badge": "先做草稿",
+        "color": "linear-gradient(135deg, #059669, #34d399)",
+        "desc": "先用較短時長或較低解析度測試，再把更多 credits 用在最終方向。",
+        "prompt": "先做 5 秒草稿，等動作可行後再提高設定。"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "如何從文字生成影片",
+    "steps": [
+      {
+        "title": "撰寫場景提示詞",
+        "desc": "生成前寫下主體、場景、動作、鏡頭方向、光線、節奏與影片比例。"
+      },
+      {
+        "title": "選擇模型與設定",
+        "desc": "依文字輸入、時長、解析度、音訊選項與預估 credits 比較支援的影片模型。"
+      },
+      {
+        "title": "生成、檢查並調整",
+        "desc": "在投入正式製作前，先草擬社群廣告、產品短片、分鏡、解說影片與創意測試。"
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "文字轉影片提示詞模板",
+    "subtitle": "複製這些提示詞模式，測試腳本、社群 hook、鏡頭移動、節奏、格式與模型適配度。",
+    "items": [
+      {
+        "title": "編輯風人像鏡頭提示詞",
+        "prompt": "Create a 5-second widescreen editorial portrait video of a young creative professional standing near a large studio window. Use a slow push-in camera, a gentle head turn, subtle hair and fabric movement, soft natural light, shallow depth of field, realistic skin texture, calm confident mood, and a clean neutral background. No logos, no celebrity likeness.",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/21430f5f6ed54b72910b26b4f73b0ca2.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/74292aa585fb494ebe467dbcd3858996.webp",
+        "description": "寬螢幕 Grok 文字轉影片人像範例，包含柔和窗光、細微動作與慢速推近鏡頭。",
+        "aspectRatio": "16:9",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-22T15:42:21.445Z",
+        "sourceHistory": "Grok text-to-video · 18a5175b27ce2750d44fa1d5e135f432 · 5s · 16:9",
+        "note": "適合主體、光線與鏡頭移動需要容易描述的人像短片。",
+        "color": "linear-gradient(135deg, #334155, #8b5cf6)"
+      },
+      {
+        "title": "再生能源解說 B-roll 提示詞",
+        "prompt": "Create a 5-second explainer B-roll clip for a lesson about renewable energy. Show sunlight moving across rooftop solar panels, a close-up of an energy meter rising, and a clean classroom-style graphic transition. Calm motion, realistic daylight, gentle camera pan, educational presentation tone.",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/c1430e47f07f42f18c90ba0eb1c75d19.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/8e50266141384e78b7b0e5e2a864d463.webp",
+        "description": "用於教育型再生能源 B-roll 的寬螢幕 Grok 文字轉影片範例。",
+        "aspectRatio": "16:9",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-22T15:09:27.742Z",
+        "sourceHistory": "Grok text-to-video · 5ce07326b105f18c9ff777ae874c99ca · 5s · 16:9",
+        "note": "適合課程、解說與簡報短片，需要中性的輔助畫面時使用。",
+        "color": "linear-gradient(135deg, #059669, #38bdf8)"
+      },
+      {
+        "title": "橋上追蹤鏡頭提示詞",
+        "prompt": "Create a 5-second widescreen cinematic shot of a cyclist crossing a quiet bridge at sunset. Use one smooth left-to-right tracking move, warm backlight, shallow depth of field, realistic motion blur, and a final frame where the cyclist exits into the glow.",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/33f7fe1f247e42ababbbe11202793cee.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/f6ffbf3298544f06b258e353586e0128.webp",
+        "description": "用來測試單一騎士動作與平順追蹤鏡頭的寬螢幕 Grok 文字轉影片範例。",
+        "aspectRatio": "16:9",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-22T15:09:27.742Z",
+        "sourceHistory": "Grok text-to-video · 32cc0c402f47b46c852be4f7a7010b94 · 5s · 16:9",
+        "note": "適合在加入更多細節前，先測試一個主體動作與一個鏡頭移動。",
+        "color": "linear-gradient(135deg, #f97316, #7c3aed)"
+      },
+      {
+        "title": "旅行產品概念提示詞",
+        "prompt": "Create a 5-second product concept video for a compact travel coffee grinder. Show the grinder on a hotel desk, beans pouring into the top, a quick close-up of the dial, and a final frame with a clean cup beside a city window. Soft morning light, premium travel gear mood, steady push-in camera.",
+        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/1b0129b9d2504494825f8fd28b00f4af.png",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/c601d39d801e44938e5e33711e19df32.webp",
+        "description": "為虛構的輕巧旅行咖啡磨豆機概念製作的寬螢幕 Grok 文字轉影片範例。",
+        "aspectRatio": "16:9",
+        "duration": "PT5S",
+        "uploadDate": "2026-07-22T15:09:27.742Z",
+        "sourceHistory": "Grok text-to-video · 40622216026309ff8f4410d965143e74 · 5s · 16:9",
+        "note": "當產品想法在拍攝前需要快速視覺概念時使用。",
+        "color": "linear-gradient(135deg, #92400e, #f59e0b)"
+      }
+    ]
+  },
+  "scenesTitle": "熱門文字轉影片用途",
+  "scenes": [
+    {
+      "title": "社群短片",
+      "icon": "📱",
+      "desc": "從簡單文字想法草擬 Reels、Shorts、TikTok 與創作者測試用的 9:16 短片。"
+    },
+    {
+      "title": "產品廣告",
+      "icon": "🛒",
+      "desc": "在預約拍攝前，把活動筆記轉成短產品動態概念。"
+    },
+    {
+      "title": "分鏡",
+      "icon": "🎬",
+      "desc": "在製作前預覽鏡頭順序、動作、鏡頭移動、光線與節奏。"
+    },
+    {
+      "title": "解說影片",
+      "icon": "🎓",
+      "desc": "為課程、上市 Demo 與簡報短片建立短視覺解說。"
+    },
+    {
+      "title": "B-roll 與鏡頭測試",
+      "icon": "🎥",
+      "desc": "在製作較長剪輯前，先測試一個主體動作、一個鏡頭移動與一個最後畫面。"
+    },
+    {
+      "title": "人像動態短片",
+      "icon": "🧑‍🎨",
+      "desc": "建立簡單 16:9 人像鏡頭，包含細微頭部動作、柔和光線與清楚鏡頭方向。"
+    }
+  ],
+  "moreTools": "相關 AI 影片工具",
+  "moreToolsLinks": [
+    {
+      "title": "AI 影片生成器",
+      "href": "/ai-video-generator",
+      "description": "在同一個影片工作區使用文字、圖片、影片片段或音訊參考。"
+    },
+    {
+      "title": "Seedance 2.0",
+      "href": "/model/seedance-2",
+      "description": "查看影片模型頁，了解文字轉影片、圖片轉影片與多模態生成細節。"
+    },
+    {
+      "title": "Seedance 2.5",
+      "href": "/model/seedance-2-5",
+      "description": "比較更新的 Seedance 影片模型，用於電影感提示詞與短片創意測試。"
+    },
+    {
+      "title": "Kling 3.0",
+      "href": "/model/kling-3",
+      "description": "檢視 Kling 影片能力，適合電影感短片、音訊相關設定與高解析工作流程。"
+    },
+    {
+      "title": "Grok Imagine Video 1.5",
+      "href": "/model/grok-imagine-video-1-5",
+      "description": "使用 Grok 建立短圖片轉影片動態片段，或純提示詞影片草稿。"
+    },
+    {
+      "title": "AI 跳舞生成器",
+      "href": "/ai-dance-generator",
+      "description": "上傳一張圖片，建立社群與課程宣傳工作流程用的短跳舞影片。"
+    }
+  ],
+  "faqTitle": "文字轉影片生成器 FAQ",
+  "faq": [
+    {
+      "q": "什麼是文字轉影片生成器？",
+      "a": "文字轉影片生成器會把書面提示詞轉成短影片片段。在 Toolaze，你可以描述場景、動作、鏡頭移動與風格，再選擇支援的 AI 影片模型。"
+    },
+    {
+      "q": "Toolaze 的文字轉影片免費嗎？",
+      "a": "Toolaze 可能提供免費 credits 或部分試用權限，但影片生成所需 credits 會依所選模型與設定而不同。生成流程會在開始前顯示所需 credits。"
+    },
+    {
+      "q": "文字轉影片片段可以多長？",
+      "a": "Toolaze 上常見的文字轉影片輸出是短片，通常依所選模型與設定介於 3 到 15 秒。建議先用較短草稿測試動作、鏡頭方向與提示詞寫法，再提高時長或品質。"
+    },
+    {
+      "q": "文字轉影片包含音訊或字幕嗎？",
+      "a": "音訊、語音與字幕支援取決於所選影片模型與可用設定。如果模型不提供原生音訊或字幕，先生成視覺短片，再用剪輯工具加入字幕、旁白或音樂。"
+    },
+    {
+      "q": "我可以用文字轉影片做什麼？",
+      "a": "可用於社群 hook、產品廣告、B-roll、分鏡、解說影片、概念短片與鏡頭移動測試。當場景能清楚描述、不依賴特定上傳參考圖時最適合。"
+    },
+    {
+      "q": "文字轉影片和圖片轉影片有什麼差異？",
+      "a": "文字轉影片從書面場景描述開始，讓模型對畫面外觀有更多創作自由。圖片轉影片從參考圖片開始，有助於在加入動作時保留產品、角色、版面、構圖或視覺風格。"
+    },
+    {
+      "q": "文字轉影片提示詞應該寫什麼？",
+      "a": "包含主體、動作、鏡頭移動、光線、情緒、節奏、比例與最後畫面。第一版保持簡單，等動作可行後再加入細節。"
+    },
+    {
+      "q": "生成的文字轉影片短片可以商用嗎？",
+      "a": "商用取決於所選模型、Toolaze 帳號狀態、來源素材與適用條款。避免未取得權利就使用受限制品牌、人物或受著作權保護素材，並在發布客戶或付費作品前檢查最新使用規則。"
+    }
+  ]
+}
