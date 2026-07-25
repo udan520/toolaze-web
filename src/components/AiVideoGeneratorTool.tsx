@@ -58,6 +58,7 @@ interface VideoGenerationRequest {
 
 interface VideoHistoryItem {
   id: string
+  mediaType: 'image' | 'video'
   modelId: AiVideoGeneratorModelId
   modelName: string
   mode: AiVideoGeneratorModeId
@@ -195,13 +196,12 @@ function sortPersistedVideoHistoryItemsNewestFirst(items: PersistedVideoHistoryI
 }
 
 function mapPersistedVideoHistoryItem(item: PersistedVideoHistoryItem): VideoHistoryItem | null {
-  if (item.mediaType !== 'video') return null
-
   const id = String(item.id || '').trim()
   const outputPreview = String(item.outputUrl || '').trim()
   const prompt = String(item.prompt || '').trim()
   if (!id || !outputPreview || !prompt) return null
 
+  const mediaType = item.mediaType === 'video' ? 'video' : 'image'
   const modelId = getVideoModelIdFromHistoryModel(item.model)
   const modelConfig = getAiVideoGeneratorModelConfig(modelId)
   const inputUrls = Array.isArray(item.inputUrls)
@@ -210,6 +210,7 @@ function mapPersistedVideoHistoryItem(item: PersistedVideoHistoryItem): VideoHis
 
   return {
     id,
+    mediaType,
     modelId,
     modelName: modelConfig.name,
     mode: inputUrls.length > 0 ? 'image-to-video' : 'text-to-video',
@@ -912,6 +913,7 @@ export default function AiVideoGeneratorTool({
       const savedItem = await persistGeneratedVideoHistoryItem(completedRequest, videoUrl, imageUrls, requestHistoryTool)
       const historyItem: VideoHistoryItem = {
         id: savedItem?.id || completedRequest.id,
+        mediaType: 'video',
         modelId: completedRequest.modelId,
         modelName: completedRequest.modelName,
         mode: completedRequest.mode,
@@ -957,7 +959,7 @@ export default function AiVideoGeneratorTool({
   }
 
   const applyHistoryItemToForm = (item: VideoHistoryItem) => {
-    trackGenerationHistoryRecreateClick({ ...item, mediaType: 'video' }, { surface: 'inline_generator_history' })
+    trackGenerationHistoryRecreateClick({ ...item, mediaType: item.mediaType === 'video' ? 'video' : 'image' }, { surface: 'inline_generator_history' })
 
     const itemConfig = getAiVideoGeneratorModelConfig(item.modelId)
     if (item.modelId !== selectedModelId) {
@@ -1111,12 +1113,22 @@ export default function AiVideoGeneratorTool({
         data-video-result-panel
         className="flex h-full items-start justify-center lg:h-[260px]"
       >
-        <video
-          src={item.outputPreview}
-          controls
-          playsInline
-          className="h-full max-h-[260px] max-w-full object-contain"
-        />
+        {item.mediaType === 'video' ? (
+          <video
+            src={item.outputPreview}
+            controls
+            playsInline
+            className="h-full max-h-[260px] max-w-full object-contain"
+          />
+        ) : (
+          <img
+            src={item.outputPreview}
+            alt={text.resultReady}
+            className="h-full max-h-[260px] max-w-full object-contain"
+            loading="lazy"
+            decoding="async"
+          />
+        )}
       </div>
 
       <div data-video-result-details className="flex h-full min-w-0 flex-col gap-4 lg:h-[260px]">
@@ -1206,7 +1218,7 @@ export default function AiVideoGeneratorTool({
   const renderDesktopResultTabs = () => (
     <div
       data-desktop-result-tabs
-      className="mx-auto flex w-fit shrink-0 items-center justify-center gap-1 rounded-full border border-[#E0E7FF] bg-white/90 p-1 shadow-sm shadow-[#4F46E5]/5"
+      className="flex w-fit shrink-0 items-center justify-start gap-1 rounded-full border border-[#E0E7FF] bg-white/90 p-1 shadow-sm shadow-[#4F46E5]/5"
     >
       <button
         type="button"

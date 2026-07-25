@@ -5,6 +5,7 @@ import type { CSSProperties } from 'react'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import CloseIcon from './icons/CloseIcon'
+import { WATERMARK_REMOVER_DEMO_IMAGE } from './WatermarkRemoverDemoComparison'
 import { mergeCreditSummaryUpdate } from '@/lib/credit-summary-merge'
 import { formatCreditTransactionTimestamp } from '@/lib/credit-history-time'
 import { formatCreditTransactionDescription } from '@/lib/credit-transaction-description'
@@ -132,7 +133,7 @@ const AI_TOOLS_DEMO_IMAGES = {
   textToImageGenerator:
     'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/ai-image-generator/text-to-image-generator.webp',
   watermarkRemover:
-    'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=400&q=80',
+    WATERMARK_REMOVER_DEMO_IMAGE,
   photoRestoration:
     'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=400&q=80',
   aiCouplePhotoMaker: '/ai-couple-photo-maker/rainy-eiffel-4x3.jpg',
@@ -1544,7 +1545,12 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                     alt={navTranslations.aiKissingVideoGenerator || defaultNavTranslations.aiKissingVideoGenerator}
                     className="w-14 aspect-[4/3] rounded-lg object-cover border border-indigo-100 flex-shrink-0"
                   />
-                  <span>{navTranslations.aiKissingVideoGenerator || defaultNavTranslations.aiKissingVideoGenerator}</span>
+                  <span className="flex min-w-0 items-center gap-2">
+                    <span>{navTranslations.aiKissingVideoGenerator || defaultNavTranslations.aiKissingVideoGenerator}</span>
+                    <span className="shrink-0 rounded-full bg-red-500 px-1.5 py-0.5 text-[10px] font-extrabold leading-none text-white">
+                      {navTranslations.hot || defaultNavTranslations.hot}
+                    </span>
+                  </span>
                 </Link>
                 <Link
                   href={getLocalizedHref('/ai-dance-generator')}
@@ -2154,7 +2160,12 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                       alt={navTranslations.aiKissingVideoGenerator || defaultNavTranslations.aiKissingVideoGenerator}
                       className="w-14 aspect-[4/3] rounded-lg object-cover border border-indigo-100 flex-shrink-0"
                     />
-                    <span>{navTranslations.aiKissingVideoGenerator || defaultNavTranslations.aiKissingVideoGenerator}</span>
+                    <span className="flex min-w-0 items-center gap-2">
+                      <span>{navTranslations.aiKissingVideoGenerator || defaultNavTranslations.aiKissingVideoGenerator}</span>
+                      <span className="shrink-0 rounded-full bg-red-500 px-1.5 py-0.5 text-[10px] font-extrabold leading-none text-white">
+                        {navTranslations.hot || defaultNavTranslations.hot}
+                      </span>
+                    </span>
                   </Link>
                   <Link
                     href={getLocalizedHref('/ai-dance-generator')}

@@ -12,6 +12,7 @@ import { useCommonTranslations } from '@/lib/use-common-translations'
 import DeleteIcon from './icons/DeleteIcon'
 import CloseIcon from './icons/CloseIcon'
 import ReferenceImageUploader from './ReferenceImageUploader'
+import WatermarkRemoverDemoComparison from './WatermarkRemoverDemoComparison'
 import Breadcrumb from './Breadcrumb'
 import type { BreadcrumbItem } from './Breadcrumb'
 import { calculateImageGenerationCredits } from '@/lib/generation-credits'
@@ -538,6 +539,13 @@ interface AiImageGenerationToolProps {
     mediaType?: GenerationMediaType
     poster?: string
   }>
+  demoComparison?: {
+    imageUrl: string
+    alt: string
+    beforeLabel?: string
+    afterLabel?: string
+    watermarkText?: string
+  }
   fitParentHeight?: boolean
   plainRightPanel?: boolean
   promptPresets?: PromptPreset[]
@@ -602,7 +610,7 @@ const MODEL_GROUPS: ModelGroup[] = [
     id: 'xai',
     name: 'xAI',
     description: 'Grok generation for fast creative drafts, images, and video scenes.',
-    logoSrc: '/favicon.svg',
+    logoSrc: '/model-logos/grok.svg',
     logoAlt: 'xAI logo',
     models: [
       {
@@ -1027,6 +1035,7 @@ export default function AiImageGenerationTool({
   hideModelBranding = false,
   sampleImageVariant = 'default',
   sampleImages,
+  demoComparison,
   fitParentHeight = false,
   plainRightPanel = false,
   promptPresets = EMPTY_PROMPT_PRESETS,
@@ -1124,8 +1133,14 @@ export default function AiImageGenerationTool({
   const formatToolText = (template: string, values: Record<string, string | number>) =>
     Object.entries(values).reduce((next, [key, value]) => next.replace(`{${key}}`, String(value)), template)
   const isCouplePhotoMakerMode = presetMode === 'ai-couple-photo-maker'
-  const modelGroups = MODEL_GROUPS
-  const modelOptions = useMemo(() => getFlatModelOptions(), [])
+  const modelGroups = useMemo(
+    () => MODEL_GROUPS.map((group) => ({
+      ...group,
+      models: group.models.filter((option) => option.id !== 'grok-video-1-5'),
+    })).filter((group) => group.models.length > 0),
+    [],
+  )
+  const modelOptions = useMemo(() => modelGroups.flatMap((group) => group.models), [modelGroups])
   const [selectedModelId, setSelectedModelId] = useState<ImageModelId>(modelId)
   const selectedModelName = modelOptions.find((option) => option.id === selectedModelId)?.name || modelName
   const selectedModelOption = modelOptions.find((option) => option.id === selectedModelId)
@@ -2535,6 +2550,18 @@ export default function AiImageGenerationTool({
         <div className="flex h-full w-full items-center justify-center rounded-xl bg-white text-sm text-slate-500 ring-1 ring-slate-200/50">
           {toolText.noDemoImageYet}
         </div>
+      )
+    }
+
+    if (demoComparison) {
+      return (
+        <WatermarkRemoverDemoComparison
+          imageUrl={demoComparison.imageUrl}
+          alt={demoComparison.alt}
+          beforeLabel={demoComparison.beforeLabel}
+          afterLabel={demoComparison.afterLabel}
+          watermarkText={demoComparison.watermarkText}
+        />
       )
     }
 

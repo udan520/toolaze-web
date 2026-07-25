@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import type { AiToolsCard, AiToolsCategory } from './copy'
+import WatermarkRemoverDemoComparison from '@/components/WatermarkRemoverDemoComparison'
 
 const AI_TOOL_CATEGORIES: AiToolsCategory[] = ['all', 'image', 'video']
 
@@ -52,7 +53,11 @@ export default function AiToolsGrid({
             className="group flex h-full flex-col overflow-hidden rounded-3xl border border-indigo-100 bg-white shadow-sm transition-colors hover:border-indigo-200"
           >
             <div className="aspect-[4/3] w-full overflow-hidden">
-              <img src={card.image} alt={card.title} className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]" />
+              {card.href === '/watermark-remover' ? (
+                <WatermarkRemoverDemoComparison className="rounded-none p-0 transition-transform duration-300 group-hover:scale-[1.02]" />
+              ) : (
+                <img src={card.image} alt={card.title} className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]" />
+              )}
             </div>
             <div className="flex flex-1 flex-col p-6">
               <h2 className="mb-2 text-xl font-bold text-slate-900 transition-colors group-hover:text-indigo-600">

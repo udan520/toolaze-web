@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Script from 'next/script'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
+import HomeAiToolsTabs, { type HomeAiToolsTabCard } from '@/components/home/HomeAiToolsTabs'
 import { loadCommonTranslations, IMAGE_MODEL_L2S, VIDEO_MODEL_L2S } from '@/lib/seo-loader'
 import { HOME_ADVANCED_AI_TOOL_IDS, HOME_UTILITY_TOOL_IDS } from '@/lib/homepage-grid-tools'
 import { getHomeAdvancedAiCardImage } from '@/lib/home-advanced-ai-card-images'
@@ -172,50 +173,27 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
   })
 
   const cardSummaries = home?.homepageToolCardSummaries as HomepageToolCardSummaries | undefined
+  const navCopy = common?.nav ?? {}
+  const localizeHomeHref = (href: string) => (locale === 'en' ? href : `/${locale}${href}`)
 
   // Load AI Video models（标题/模型名仍来自 L2；描述用 common 提炼文案）
   const aiVideoTools: ToolCard[] = []
-  const grokVideoCard = await loadToolData(
-    'ai-video-generator',
-    locale,
-    getModelTitle,
-    getModelDesc,
-    getFeaturedDesc,
-    getModelMeta
-  )
-  if (grokVideoCard) {
-    aiVideoTools.push({
-      ...applyHomepageToolCardSummary(grokVideoCard, cardSummaries),
-      tool: 'grok-1-5-video',
-      modelName: 'Grok 1.5 Video',
-      href: '/model/grok-imagine-video-1-5',
-    })
-  }
   for (const tool of VIDEO_MODEL_L2S) {
     const card = await loadToolData(tool, locale, getModelTitle, getModelDesc, getFeaturedDesc, getModelMeta)
-    if (card) aiVideoTools.push(applyHomepageToolCardSummary(card, cardSummaries))
-  }
-  const aiKissingCard = await loadToolData(
-    'ai-kissing-video-generator',
-    locale,
-    getModelTitle,
-    getModelDesc,
-    getFeaturedDesc,
-    getModelMeta,
-  )
-  if (aiKissingCard) {
-    aiVideoTools.unshift(applyHomepageToolCardSummary(aiKissingCard, cardSummaries))
-  }
-  const aiDanceCard = await loadToolData(
-    'ai-dance-generator',
-    locale,
-    getModelTitle,
-    getModelDesc,
-    getFeaturedDesc,
-    getModelMeta
-  )
-  if (aiDanceCard) {
-    aiVideoTools.unshift(applyHomepageToolCardSummary(aiDanceCard, cardSummaries))
+    if (!card) continue
+    aiVideoTools.push(
+      applyHomepageToolCardSummary(
+        tool === 'grok-imagine-video-1-5'
+          ? {
+              ...card,
+              tool: 'grok-1-5-video',
+              modelName: card.modelName || 'Grok 1.5 Video',
+              href: '/model/grok-imagine-video-1-5',
+            }
+          : card,
+        cardSummaries
+      )
+    )
   }
 
   // Load AI Image models
@@ -327,7 +305,147 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
       applyHomepageToolCardSummary({ ...card, ...(localizedAdvancedOverrides[tool] || {}) }, cardSummaries)
     )
   }
-  const aiToolsHubCards = advancedAiTools.filter((item) => item.tool !== 'world-cup-ai-image-generator').slice(0, 3)
+  const homeVideoToolCards: HomeAiToolsTabCard[] = [
+    {
+      title: navCopy.aiVideoGenerator || 'AI Video Generator',
+      href: localizeHomeHref('/ai-video-generator'),
+      media: {
+        type: 'video',
+        src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4',
+        alt: 'AI Video Generator demo video',
+      },
+    },
+    {
+      title: navCopy.textToVideoGenerator || 'Text to Video Generator',
+      href: localizeHomeHref('/text-to-video-generator'),
+      media: {
+        type: 'video',
+        src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/1b0129b9d2504494825f8fd28b00f4af.png',
+        poster: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/c601d39d801e44938e5e33711e19df32.webp',
+        alt: 'Text to Video Generator demo video',
+      },
+    },
+    {
+      title: navCopy.imageToVideoGenerator || 'Image to Video Generator',
+      href: localizeHomeHref('/image-to-video-generator'),
+      media: {
+        type: 'video',
+        src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4',
+        alt: 'Image to Video Generator demo video',
+      },
+    },
+    {
+      title: navCopy.aiDanceGenerator || 'AI Dance Generator',
+      href: localizeHomeHref('/ai-dance-generator'),
+      media: {
+        type: 'video',
+        src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/ai-dance-demo.mp4',
+        alt: 'AI Dance Generator demo video',
+      },
+    },
+    {
+      title: navCopy.aiKissingVideoGenerator || 'AI Kissing Video Generator',
+      href: localizeHomeHref('/ai-kissing-video-generator'),
+      media: {
+        type: 'video',
+        src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/83a8c5b91a4945beb66275c38a731dbf.png',
+        poster: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/15ccbe71d8eb4921930b8b7638bcebab.webp',
+        alt: 'AI Kissing Video Generator demo video',
+      },
+    },
+  ]
+  const homeImageToolCards: HomeAiToolsTabCard[] = [
+    {
+      title: navCopy.aiImageGenerator || 'AI Image Generator',
+      href: localizeHomeHref('/ai-image-generator'),
+      media: {
+        type: 'image',
+        src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/gpt-image-2.jpg',
+        alt: 'AI Image Generator demo image',
+      },
+    },
+    {
+      title: navCopy.textToImageGenerator || 'Text to Image Generator',
+      href: localizeHomeHref('/text-to-image-generator'),
+      media: {
+        type: 'image',
+        src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/ai-image-generator/text-to-image-generator.webp',
+        alt: 'Text to Image Generator demo image',
+      },
+    },
+    {
+      title: navCopy.aiImageToImageGenerator || 'AI Image to Image Generator',
+      href: localizeHomeHref('/ai-image-to-image-generator'),
+      media: {
+        type: 'image',
+        src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/gpt-image-2/feature-image-editing.webp',
+        alt: 'AI Image to Image Generator demo image',
+      },
+    },
+    {
+      title: navCopy.aiHairstyleChanger || 'AI Hairstyle Changer',
+      href: localizeHomeHref('/ai-hairstyle-changer'),
+      media: {
+        type: 'image',
+        src: '/ai-hairstyle-changer/hero-before-after.webp',
+        alt: 'AI Hairstyle Changer demo image',
+      },
+    },
+    {
+      title: navCopy.aiHairColorChanger || 'AI Hair Color Changer',
+      href: localizeHomeHref('/ai-hair-color-changer'),
+      media: {
+        type: 'image',
+        src: '/ai-hair-color-changer/rose-pink-before-after.webp',
+        alt: 'AI Hair Color Changer demo image',
+      },
+    },
+    {
+      title: navCopy.aiBabyGenerator || 'AI Baby Generator',
+      href: localizeHomeHref('/ai-baby-generator'),
+      media: {
+        type: 'image',
+        src: '/ai-baby-generator/hero-baby-portrait.webp',
+        alt: 'AI Baby Generator demo image',
+      },
+    },
+    {
+      title: navCopy.aiCouplePhotoMaker || 'AI Couple Photo Maker',
+      href: localizeHomeHref('/ai-couple-photo-maker'),
+      media: {
+        type: 'image',
+        src: '/ai-couple-photo-maker/rainy-eiffel-4x3.jpg',
+        alt: 'AI Couple Photo Maker demo image',
+      },
+    },
+    {
+      title: navCopy.worldCupAiImageGenerator || 'World Cup AI Image Generator',
+      href: localizeHomeHref('/world-cup-ai-image-generator'),
+      media: {
+        type: 'image',
+        src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d67aebd7cde5431abd3a7bb74a89bac1.webp',
+        alt: 'World Cup AI Image Generator demo image',
+      },
+    },
+    {
+      title: navCopy.watermarkRemover || 'Watermark Remover',
+      href: localizeHomeHref('/watermark-remover'),
+      media: {
+        type: 'image',
+        src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-advanced-ai/watermark-remover.jpg',
+        alt: 'Watermark Remover demo image',
+      },
+    },
+    {
+      title: navCopy.photoRestoration || 'Photo Restoration',
+      href: localizeHomeHref('/photo-restoration'),
+      media: {
+        type: 'image',
+        src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-advanced-ai/photo-restoration.jpg',
+        alt: 'Photo Restoration demo image',
+      },
+    },
+  ]
 
   const utilityTools: ToolCard[] = []
   for (const tool of HOME_UTILITY_TOOL_IDS) {
@@ -579,56 +697,26 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
         </div>
       </section>
 
-      {/* AI Tools hub — SEO bridge between model discovery and utility tools */}
+      {/* AI Tools hub — image and video tools from the global navigation */}
       <section id="ai-tools-hub" className="py-20 px-6 bg-white">
         <div className="max-w-6xl mx-auto">
           <div className="mb-12">
             <h2 className="home-section-title text-4xl text-slate-900 mb-4 tracking-tight">
-              {home?.aiToolsHubTitle ?? 'Free AI Tools for Creative Media Workflows'}
+              {navCopy.aiTools || 'AI Tools'}
             </h2>
             <p className="text-slate-600 max-w-5xl text-base md:text-lg leading-relaxed">
               {home?.aiToolsHubSubtitle ??
                 'Explore concrete creative tools for portraits, style previews, restoration, watermark cleanup, and fast browser utilities.'}
             </p>
-            {home?.aiToolsHubIntro ? (
-              <p className="text-slate-600 max-w-5xl text-base md:text-lg leading-relaxed mt-4">
-                {home.aiToolsHubIntro}
-              </p>
-            ) : null}
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {aiToolsHubCards.map((item) => (
-              <Link
-                key={item.tool}
-                href={item.href}
-                className="home-model-card block p-8 rounded-[2rem] border border-indigo-100 transition-all duration-300 hover:border-indigo-200"
-              >
-                <div className="w-12 h-12 home-model-card-icon rounded-xl flex items-center justify-center mb-4">
-                  <svg
-                    width="22"
-                    height="22"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="text-indigo-600"
-                  >
-                    <path
-                      d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-bold text-indigo-600 mb-3">
-                  {(item.modelName || item.title || '').replace(/<[^>]*>/g, '').trim()}
-                </h3>
-                <p className="text-sm text-slate-600 leading-relaxed">
-                  {item.featuredDesc || item.description}
-                </p>
-              </Link>
-            ))}
-          </div>
+          <HomeAiToolsTabs
+            copy={{
+              videoTools: 'Video Tools',
+              imageTools: 'Image Tools',
+            }}
+            videoTools={homeVideoToolCards}
+            imageTools={homeImageToolCards}
+          />
         </div>
       </section>
 

@@ -55,7 +55,7 @@ test('AI Dance is discoverable from global navigation, footer, homepage, and AI 
   )
   assert.match(footerSource, /aiDanceGenerator/)
   assert.match(footerSource, /href=\{getLocalizedHref\('\/ai-dance-generator'\)\}/)
-  assert.match(homePageSource, /loadToolData\(\s*'ai-dance-generator'/)
+  assert.match(homePageSource, /href: localizeHomeHref\('\/ai-dance-generator'\)/)
   assert.match(homeModelCardImagesSource, /'ai-dance-generator'/)
   assert.match(aiToolsCopySource, /cardAssets\.dance/)
   assert.match(aiToolsCopySource, /\/model-assets\/ai-dance-generator\/ai-dance-demo-source\.png/)
@@ -91,7 +91,7 @@ test('AI Kissing is discoverable from global navigation, footer, homepage, and A
   assert.match(navigationSource, /aiKissingVideoGenerator/)
   assert.match(footerSource, /aiKissingVideoGenerator/)
   assert.match(footerSource, /href=\{getLocalizedHref\('\/ai-kissing-video-generator'\)\}/)
-  assert.match(homePageSource, /loadToolData\(\s*'ai-kissing-video-generator'/)
+  assert.match(homePageSource, /href: localizeHomeHref\('\/ai-kissing-video-generator'\)/)
   assert.match(homeModelCardImagesSource, /'ai-kissing-video-generator'/)
   assert.match(aiToolsCopySource, /href: '\/ai-kissing-video-generator'/)
   assert.match(aiToolsCopySource, /cardAssets\.kissing/)
@@ -168,7 +168,7 @@ test('AI Image model links show their manufacturer icons on desktop and mobile',
   }
 })
 
-test('AI Dance is the first AI Tools menu item with a localized Hot label', () => {
+test('AI Kissing and AI Dance show localized Hot labels in AI Tools navigation', () => {
   const desktopAiToolsBlock = navigationSource.slice(
     navigationSource.indexOf('{/* 一级菜单：AI Tools */}'),
     navigationSource.indexOf('{/* 一级菜单：AI Image */}'),
@@ -179,6 +179,12 @@ test('AI Dance is the first AI Tools menu item with a localized Hot label', () =
   )
 
   for (const block of [desktopAiToolsBlock, mobileAiToolsBlock]) {
+    const linkFor = (route) => {
+      const start = block.indexOf(`href={getLocalizedHref('${route}')}`)
+      const end = block.indexOf('</Link>', start)
+      return block.slice(start, end >= 0 ? end : block.length)
+    }
+    const kissingIndex = block.indexOf("href={getLocalizedHref('/ai-kissing-video-generator')}")
     const danceIndex = block.indexOf("href={getLocalizedHref('/ai-dance-generator')}")
     const hairstyleIndex = block.indexOf("href={getLocalizedHref('/ai-hairstyle-changer')}")
     const worldCupIndex = block.indexOf("href={getLocalizedHref('/world-cup-ai-image-generator')}")
@@ -186,18 +192,22 @@ test('AI Dance is the first AI Tools menu item with a localized Hot label', () =
     const restorationIndex = block.indexOf("href={getLocalizedHref('/photo-restoration')}")
     const viewAllIndex = block.indexOf("href={getLocalizedHref('/ai-tools')}")
 
+    assert.notEqual(kissingIndex, -1)
     assert.notEqual(danceIndex, -1)
     assert.notEqual(hairstyleIndex, -1)
     assert.notEqual(worldCupIndex, -1)
     assert.notEqual(watermarkIndex, -1)
     assert.notEqual(restorationIndex, -1)
     assert.notEqual(viewAllIndex, -1)
+    assert.ok(kissingIndex < danceIndex)
     assert.ok(danceIndex < hairstyleIndex)
     assert.ok(worldCupIndex < watermarkIndex)
     assert.ok(watermarkIndex < restorationIndex)
     assert.ok(restorationIndex < viewAllIndex)
-    assert.match(block, /navTranslations\.hot \|\| defaultNavTranslations\.hot/)
-    assert.match(block, /bg-red-500 px-1\.5 py-0\.5 text-\[10px\] font-extrabold leading-none text-white/)
+    for (const link of [linkFor('/ai-kissing-video-generator'), linkFor('/ai-dance-generator')]) {
+      assert.match(link, /navTranslations\.hot \|\| defaultNavTranslations\.hot/)
+      assert.match(link, /bg-red-500 px-1\.5 py-0\.5 text-\[10px\] font-extrabold leading-none text-white/)
+    }
     assert.doesNotMatch(block, /bg-rose-50/)
   }
 })
