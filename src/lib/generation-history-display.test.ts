@@ -87,6 +87,30 @@ test('uses canonical wrapped tool label when stored label is stale', () => {
   })
 })
 
+test('keeps AI dance and AI kissing labels distinct in shared history', () => {
+  assert.deepEqual(getWrappedHairToolHistoryDisplay({
+    model: 'grok-video-1-5',
+    toolSlug: 'ai-dance-generator',
+    toolLabel: 'AI Dance Generator',
+    sourcePath: '/ai-dance-generator',
+  }), {
+    showToolLabel: true,
+    toolLabel: 'AI Dance Generator',
+    modelLabel: 'Grok Video 1.5',
+  })
+
+  assert.deepEqual(getWrappedHairToolHistoryDisplay({
+    model: 'grok-video-1-5',
+    toolSlug: 'ai-dance-generator',
+    toolLabel: 'AI Dance Generator',
+    sourcePath: '/zh-TW/ai-kissing-video-generator',
+  }), {
+    showToolLabel: true,
+    toolLabel: 'AI Kissing Video Generator',
+    modelLabel: 'Grok Video 1.5',
+  })
+})
+
 test('formats known model ids for user-facing history labels', () => {
   assert.equal(getGenerationModelLabel('gpt-image-2'), 'GPT Image 2')
   assert.equal(getGenerationModelLabel('seedream-5-0-pro'), 'Seedream 5.0 Pro')

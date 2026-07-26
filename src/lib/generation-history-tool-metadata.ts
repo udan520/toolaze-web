@@ -11,6 +11,8 @@ const HISTORY_TOOL_LABELS: Record<string, string> = {
   'watermark-remover': 'Watermark Remover',
   'photo-restoration': 'Photo Restoration',
   'ai-clothes-changer': 'AI Clothes Changer',
+  'ai-dance-generator': 'AI Dance Generator',
+  'ai-kissing-video-generator': 'AI Kissing Video Generator',
 }
 
 function getRouteParts(pathname: string) {

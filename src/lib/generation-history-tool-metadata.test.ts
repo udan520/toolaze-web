@@ -34,3 +34,22 @@ test('uses fixed tool labels for non-model generator routes', () => {
     },
   )
 })
+
+test('keeps AI dance and AI kissing history labels tied to their source routes', () => {
+  assert.deepEqual(
+    getHistoryToolMetadata('/ai-dance-generator', 'AI Dance Generator', 'grok-video-1-5'),
+    {
+      toolSlug: 'ai-dance-generator',
+      toolLabel: 'AI Dance Generator',
+      sourcePath: '/ai-dance-generator',
+    },
+  )
+  assert.deepEqual(
+    getHistoryToolMetadata('/zh-TW/ai-kissing-video-generator', 'AI Kissing Video Generator', 'grok-video-1-5'),
+    {
+      toolSlug: 'ai-kissing-video-generator',
+      toolLabel: 'AI Kissing Video Generator',
+      sourcePath: '/zh-TW/ai-kissing-video-generator',
+    },
+  )
+})

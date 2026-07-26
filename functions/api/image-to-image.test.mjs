@@ -264,7 +264,7 @@ test('image generation status returns videoUrl for Grok Video 1.5 results', asyn
   }
 })
 
-test('image generation status prefers Kie videoUrls over resultUrls thumbnails for Grok Video 1.5', async () => {
+test('image generation status prefers the video in Kie resultUrls over its thumbnail', async () => {
   const originalFetch = globalThis.fetch
 
   globalThis.fetch = async () => {
@@ -272,8 +272,10 @@ test('image generation status prefers Kie videoUrls over resultUrls thumbnails f
       data: {
         state: 'success',
         resultJson: JSON.stringify({
-          resultUrls: ['https://example.com/kissing-thumbnail.png'],
-          videoUrls: ['https://example.com/kissing-result.mp4'],
+          resultUrls: [
+            'https://example.com/kissing-thumbnail.jpeg',
+            'https://example.com/kissing-result.mp4',
+          ],
         }),
       },
     })
