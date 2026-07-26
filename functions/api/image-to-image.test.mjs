@@ -1,7 +1,10 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import { onRequest } from './image-to-image.js'
-import { onRequest as checkImageGenerationStatus } from './image-to-image/status.js'
+import imageToImageModule from './image-to-image.js'
+import imageToImageStatusModule from './image-to-image/status.js'
+
+const { onRequest } = imageToImageModule
+const { onRequest: checkImageGenerationStatus } = imageToImageStatusModule
 
 function createGenerationRequest(overrides = {}) {
   const formData = new FormData()
@@ -254,6 +257,53 @@ test('image generation status returns videoUrl for Grok Video 1.5 results', asyn
     assert.equal(response.status, 200)
     assert.equal(payload.status, 'SUCCEEDED')
     assert.equal(payload.videoUrl, 'https://example.com/dance-result.mp4')
+    assert.equal(payload.imageUrl, undefined)
+    assert.equal(payload.mediaType, 'video')
+  } finally {
+    globalThis.fetch = originalFetch
+  }
+})
+
+test('image generation status prefers Kie videoUrls over resultUrls thumbnails for Grok Video 1.5', async () => {
+  const originalFetch = globalThis.fetch
+
+  globalThis.fetch = async () => {
+    return Response.json({
+      data: {
+        state: 'success',
+        resultJson: JSON.stringify({
+          resultUrls: ['https://example.com/kissing-thumbnail.png'],
+          videoUrls: ['https://example.com/kissing-result.mp4'],
+        }),
+      },
+    })
+  }
+
+  try {
+    const response = await checkImageGenerationStatus({
+      request: new Request('http://localhost:3016/api/image-to-image/status', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          taskId: 'task_kissing_video',
+          creditHold: {
+            provider: 'credit-ledger',
+            taskId: 'task_kissing_video',
+            consumptionId: 'consume_kissing_video',
+            requiredCredits: 25,
+            model: 'grok-video-1-5',
+            isImageToImage: true,
+            mediaType: 'video',
+          },
+        }),
+      }),
+      env: { KIE_AI_API_KEY: 'test-key' },
+    })
+    const payload = await response.json()
+
+    assert.equal(response.status, 200)
+    assert.equal(payload.status, 'SUCCEEDED')
+    assert.equal(payload.videoUrl, 'https://example.com/kissing-result.mp4')
     assert.equal(payload.imageUrl, undefined)
     assert.equal(payload.mediaType, 'video')
   } finally {

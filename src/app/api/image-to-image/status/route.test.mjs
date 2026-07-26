@@ -17,12 +17,16 @@ test.after(() => {
   delete globalThis[Symbol.for('toolaze.localDevAuthState')]
   rmSync(tempStateDir, { recursive: true, force: true })
 })
-import { POST as createImageTask } from '../route.js'
-import { POST as checkImageTaskStatus } from './route.js'
-import {
+import imageTaskRoute from '../route.js'
+import imageTaskStatusRoute from './route.js'
+import localDevAuthModule from '../../_shared/local-dev-auth.js'
+
+const { POST: createImageTask } = imageTaskRoute
+const { POST: checkImageTaskStatus } = imageTaskStatusRoute
+const {
   getLocalDevCreditSummary,
   resetLocalDevCreditsForTests,
-} from '../../_shared/local-dev-auth.js'
+} = localDevAuthModule
 
 function createLocalDevGenerateRequest() {
   const formData = new FormData()

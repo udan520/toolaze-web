@@ -102,9 +102,16 @@ function getGenerationModeLabel(item: GenerationHistoryItem, copy: typeof defaul
   return item.inputUrls.length > 0 ? copy.modeImageToImage : copy.modeTextToImage
 }
 
+function isVideoHistoryUrl(url: string) {
+  return /\.(mp4|webm|mov|m4v)(?:[?#].*)?$/i.test(String(url || '').trim())
+}
+
 function normalizeGenerationHistoryItem(item: GenerationHistoryItem): GenerationHistoryItem {
+  const mediaType: GenerationHistoryItem['mediaType'] =
+    item.mediaType === 'video' || isVideoHistoryUrl(item.outputUrl) ? 'video' : 'image'
   const normalizedItem = {
     ...item,
+    mediaType,
     inputUrls: Array.isArray(item.inputUrls) ? item.inputUrls : [],
   }
 

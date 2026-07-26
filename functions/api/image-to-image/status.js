@@ -22,6 +22,78 @@ function isVideoUrl(url) {
   return /\.(mp4|webm|mov|m4v)(?:[?#].*)?$/i.test(String(url || '').trim());
 }
 
+function normalizeStatus(state) {
+  const value = String(state || '').trim().toLowerCase();
+  if (value === 'success' || value === 'succeeded' || value === 'completed') return 'SUCCEEDED';
+  if (value === 'fail' || value === 'failed' || value === 'error') return 'FAILED';
+  return 'PENDING';
+}
+
+function urlsFrom(value) {
+  if (typeof value === 'string' && value.trim()) return [value.trim()];
+  if (!Array.isArray(value)) {
+    if (value && typeof value === 'object') {
+      return urlsFrom(value.url || value.videoUrl || value.video_url || value.imageUrl || value.image_url);
+    }
+    return [];
+  }
+
+  return value.flatMap((item) => urlsFrom(item));
+}
+
+function firstUrlFrom(value) {
+  return urlsFrom(value)[0];
+}
+
+function firstVideoPreferredUrlFrom(value) {
+  const urls = urlsFrom(value);
+  return urls.find(isVideoUrl) || urls[0];
+}
+
+function parseResultJson(data) {
+  if (!data?.resultJson) return null;
+
+  try {
+    return typeof data.resultJson === 'string'
+      ? JSON.parse(data.resultJson)
+      : data.resultJson;
+  } catch {
+    return null;
+  }
+}
+
+function parseGenerationResultUrl(data, expectedMediaType) {
+  const parsed = parseResultJson(data);
+
+  if (expectedMediaType === 'video') {
+    return firstVideoPreferredUrlFrom(data?.videoUrl)
+      || firstVideoPreferredUrlFrom(data?.video_url)
+      || firstVideoPreferredUrlFrom(data?.videos)
+      || firstVideoPreferredUrlFrom(parsed?.videoUrls)
+      || firstVideoPreferredUrlFrom(parsed?.video_urls)
+      || firstVideoPreferredUrlFrom(parsed?.videos)
+      || firstVideoPreferredUrlFrom(parsed?.resultUrls)
+      || firstVideoPreferredUrlFrom(data?.resultUrls)
+      || firstVideoPreferredUrlFrom(parsed?.url)
+      || firstVideoPreferredUrlFrom(data?.url)
+      || firstVideoPreferredUrlFrom(parsed?.videoUrl)
+      || firstVideoPreferredUrlFrom(parsed?.video_url);
+  }
+
+  return firstUrlFrom(data?.imageUrl)
+    || firstUrlFrom(data?.image_url)
+    || firstUrlFrom(data?.images)
+    || firstUrlFrom(parsed?.imageUrls)
+    || firstUrlFrom(parsed?.image_urls)
+    || firstUrlFrom(parsed?.images)
+    || firstUrlFrom(parsed?.resultUrls)
+    || firstUrlFrom(data?.resultUrls)
+    || firstUrlFrom(parsed?.url)
+    || firstUrlFrom(data?.url)
+    || firstUrlFrom(parsed?.imageUrl)
+    || firstUrlFrom(parsed?.image_url);
+}
+
 function getCreditHoldMediaType(body) {
   const creditHold = body?.creditHold;
   if (creditHold?.mediaType === 'video') return 'video';
@@ -53,14 +125,14 @@ function readCreditHold(body, taskId) {
     return null;
   }
 
-	  return {
-	    consumptionId: String(creditHold.consumptionId),
-	    requiredCredits,
-	    model: creditHold.model ? String(creditHold.model) : undefined,
-	    isImageToImage: Boolean(creditHold.isImageToImage),
-	    mediaType: creditHold.mediaType === 'video' ? 'video' : 'image',
-	  };
-	}
+  return {
+    consumptionId: String(creditHold.consumptionId),
+    requiredCredits,
+    model: creditHold.model ? String(creditHold.model) : undefined,
+    isImageToImage: Boolean(creditHold.isImageToImage),
+    mediaType: creditHold.mediaType === 'video' ? 'video' : 'image',
+  };
+}
 
 async function refundFailedGenerationCredits(env, request, body, taskId, message) {
   if (!env?.DB) return null;
@@ -79,9 +151,9 @@ async function refundFailedGenerationCredits(env, request, body, taskId, message
       taskId,
       model: creditHold.model,
       isImageToImage: creditHold.isImageToImage,
-	      error: message || 'Generation failed',
-	    },
-	  }).catch(() => null);
+      error: message || 'Generation failed',
+    },
+  }).catch(() => null);
 
   if (!refund) return null;
 
@@ -131,41 +203,26 @@ export async function onRequest(context) {
       return jsonResponse({ error: msg || 'Failed to get task status' }, response.status);
     }
 
-	    const data = result?.data ?? result;
-	    const state = data?.state;
-	    let resultUrl;
-
-	    if (data?.resultJson) {
-	      try {
-	        const parsed = typeof data.resultJson === 'string'
-	          ? JSON.parse(data.resultJson)
-	          : data.resultJson;
-	        const urls = parsed?.resultUrls;
-	        if (Array.isArray(urls) && urls.length > 0) {
-	          resultUrl = urls[0];
-	        }
-	      } catch {
-	        // ignore parse error
-	      }
-	    }
-
-	    const status = state === 'success' ? 'SUCCEEDED' : state === 'fail' ? 'FAILED' : 'PENDING';
-	    const mediaType = getCreditHoldMediaType(body) === 'video' || isVideoUrl(resultUrl) ? 'video' : 'image';
-	    const imageUrl = mediaType === 'image' ? resultUrl : undefined;
-	    const videoUrl = mediaType === 'video' ? resultUrl : undefined;
-	    const message = data?.failMsg ?? data?.message;
-	    const creditRefund = status === 'FAILED'
+    const data = result?.data ?? result;
+    const expectedMediaType = getCreditHoldMediaType(body);
+    const resultUrl = parseGenerationResultUrl(data, expectedMediaType);
+    const status = normalizeStatus(data?.state ?? data?.status);
+    const mediaType = expectedMediaType === 'video' || isVideoUrl(resultUrl) ? 'video' : 'image';
+    const imageUrl = mediaType === 'image' ? resultUrl : undefined;
+    const videoUrl = mediaType === 'video' ? resultUrl : undefined;
+    const message = data?.failMsg ?? data?.message;
+    const creditRefund = status === 'FAILED'
       ? await refundFailedGenerationCredits(env, request, body, taskId, message)
       : null;
 
-	    return jsonResponse({
-	      status,
-	      imageUrl,
-	      videoUrl,
-	      mediaType,
-	      message,
-	      ...(creditRefund || {}),
-	    });
+    return jsonResponse({
+      status,
+      imageUrl,
+      videoUrl,
+      mediaType,
+      message,
+      ...(creditRefund || {}),
+    });
   } catch (e) {
     return jsonResponse({
       error: e instanceof Error ? e.message : 'Internal server error',

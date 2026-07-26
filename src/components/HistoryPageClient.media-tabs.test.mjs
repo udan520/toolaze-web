@@ -20,6 +20,11 @@ test('History cards render both generated images and generated videos', () => {
   assert.match(source, /<img[\s\S]*getHistoryLibraryThumbnailUrl\(item\.outputUrl\)/)
 })
 
+test('History normalizer treats video file URLs as video even when legacy media type is wrong', () => {
+  assert.match(source, /function isVideoHistoryUrl\(url: string\)/)
+  assert.match(source, /item\.mediaType === 'video' \|\| isVideoHistoryUrl\(item\.outputUrl\) \? 'video' : 'image'/)
+})
+
 test('History page supports selecting records for batch download and delete', () => {
   assert.match(source, /const \[selectionMode, setSelectionMode\] = useState\(false\)/)
   assert.match(source, /const \[selectedIds, setSelectedIds\] = useState<Set<string>>/)
