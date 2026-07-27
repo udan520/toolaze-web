@@ -149,7 +149,7 @@ export default function WatermarkRemover({ initialTranslations, heroTitle, heroD
         const statusRes = await fetch('/api/image-to-image/status', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ taskId: createData.taskId }),
+          body: JSON.stringify({ taskId: createData.taskId, creditHold: createData.creditHold || null }),
         })
         const statusData = await statusRes.json().catch(() => ({}))
         if (statusData?.status === 'SUCCEEDED' && statusData?.imageUrl) {

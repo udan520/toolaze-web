@@ -9,6 +9,7 @@ import {
   createModerationExternalId,
   moderatePromptBeforeGeneration,
 } from '../_shared/creem-moderation.mjs';
+import { attachGenerationTaskIdToConsumption } from '../_shared/generation-task-access.mjs';
 
 /**
  * Cloudflare Pages Function: Nano Banana Pro 生图 - 创建任务
@@ -424,6 +425,21 @@ export async function onRequest(context) {
     }
 
     if (result?.code === 200 && result?.data?.taskId) {
+      if (creditContext.consumption?.consumptionId) {
+        await attachGenerationTaskIdToConsumption(
+          env,
+          creditContext.user.id,
+          creditContext.consumption.consumptionId,
+          result.data.taskId
+        ).catch((error) => {
+          console.error('Failed to bind generation task to credit consumption', {
+            consumptionId: creditContext.consumption.consumptionId,
+            taskId: result.data.taskId,
+            error: error instanceof Error ? error.message : String(error),
+          });
+        });
+      }
+
       return jsonResponse({
         taskId: result.data.taskId,
         mediaType,

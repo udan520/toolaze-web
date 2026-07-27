@@ -40,6 +40,41 @@ function createUnauthenticatedDb() {
   }
 }
 
+function createTaskOwnershipDb({ taskId = 'owned_task' } = {}) {
+  return {
+    prepare(sql: string) {
+      return {
+        bind(...values: any[]) {
+          return {
+            async first() {
+              const normalized = sql.replace(/\s+/g, ' ').toLowerCase()
+              if (normalized.includes('from sessions') && normalized.includes('join users')) {
+                return {
+                  id: 'user_owner',
+                  email: 'owner@example.com',
+                  name: 'Owner',
+                  avatar_url: null,
+                  session_id: 'sess_owner',
+                  expires_at: new Date(Date.now() + 60_000).toISOString(),
+                }
+              }
+              if (normalized.includes('from credit_consumptions') && normalized.includes('join credit_transactions')) {
+                return {
+                  id: values[0],
+                  user_id: values[1],
+                  transaction_id: 'credit_txn_owner',
+                  metadata: JSON.stringify({ taskId }),
+                }
+              }
+              return null
+            },
+          }
+        },
+      }
+    },
+  }
+}
+
 test('AI video generator rejects requests without a prompt', async () => {
   const response = await createVideoTask({
     request: createFormRequest({ mode: 'text-to-video' }),
@@ -737,6 +772,55 @@ test('AI video status rejects unauthenticated checks before provider request', a
   }
 })
 
+test('AI video status rejects task ids not bound to the current account', async () => {
+  const originalFetch = globalThis.fetch
+  let providerCalled = false
+  globalThis.fetch = (async () => {
+    providerCalled = true
+    return new Response(JSON.stringify({
+      code: 200,
+      data: {
+        state: 'success',
+        resultJson: JSON.stringify({ videoUrls: ['https://cdn.example.com/victim.mp4'] }),
+      },
+    }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    })
+  }) as typeof fetch
+
+  try {
+    const response = await getVideoTaskStatus({
+      request: new Request('https://toolaze.test/api/ai-video-generator/status', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Cookie: 'toolaze_session=owner-session',
+        },
+        body: JSON.stringify({
+          taskId: 'victim_task',
+          creditHold: {
+            provider: 'credit-ledger',
+            taskId: 'victim_task',
+            consumptionId: 'credit_cons_owner',
+            requiredCredits: 150,
+            model: 'seedance-2',
+            mode: 'text-to-video',
+          },
+        }),
+      }),
+      env: { KIE_AI_API_KEY: 'test-key', DB: createTaskOwnershipDb({ taskId: 'owned_task' }) },
+    })
+    const payload = await readJson(response)
+
+    assert.equal(response.status, 403)
+    assert.equal(payload.error, 'Generation task is not available for this account.')
+    assert.equal(providerCalled, false)
+  } finally {
+    globalThis.fetch = originalFetch
+  }
+})
+
 test('AI video generator status parses Kie video result URLs', async () => {
   const originalFetch = globalThis.fetch
   globalThis.fetch = (async () => new Response(JSON.stringify({
@@ -754,10 +838,24 @@ test('AI video generator status parses Kie video result URLs', async () => {
     const response = await getVideoTaskStatus({
       request: new Request('https://toolaze.test/api/ai-video-generator/status', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ taskId: 'task_123' }),
+        headers: {
+          'Content-Type': 'application/json',
+          Cookie: 'toolaze_session=owner-session',
+        },
+        body: JSON.stringify({
+          taskId: 'task_123',
+          creditHold: {
+            provider: 'credit-ledger',
+            taskId: 'task_123',
+            consumptionId: 'credit_cons_owner',
+            requiredCredits: 150,
+            model: 'seedance-2',
+            mode: 'text-to-video',
+            mediaType: 'video',
+          },
+        }),
       }),
-      env: { KIE_AI_API_KEY: 'test-key' },
+      env: { KIE_AI_API_KEY: 'test-key', DB: createTaskOwnershipDb({ taskId: 'task_123' }) },
     })
 
     assert.equal(response.status, 200)

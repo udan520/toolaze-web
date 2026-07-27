@@ -9,7 +9,7 @@ const MAX_FILE_SIZE = 30 * 1024 * 1024
 const DAILY_LIMIT_KEY = 'photo_restoration_last_used_date'
 
 const RESTORE_COLORIZE_PROMPT = 'Restore and colorize this old photo by removing scratches, dust, and noise. Enhance clarity, sharpness, and details while preserving the original colors and natural look.'
-const DEMO_IMAGE_URL = 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80'
+const DEMO_IMAGE_URL = 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-advanced-ai/photo-restoration.jpg'
 
 interface PhotoRestorationProps {
   initialTranslations?: any
@@ -128,7 +128,7 @@ export default function PhotoRestoration({ initialTranslations, heroTitle, heroD
         const statusRes = await fetch('/api/image-to-image/status', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ taskId: createData.taskId }),
+          body: JSON.stringify({ taskId: createData.taskId, creditHold: createData.creditHold || null }),
         })
         const statusData = await statusRes.json().catch(() => ({}))
         if (statusData?.status === 'SUCCEEDED' && statusData?.imageUrl) {

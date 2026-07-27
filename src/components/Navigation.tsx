@@ -135,7 +135,7 @@ const AI_TOOLS_DEMO_IMAGES = {
   watermarkRemover:
     WATERMARK_REMOVER_DEMO_IMAGE,
   photoRestoration:
-    'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=400&q=80',
+    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-advanced-ai/photo-restoration.jpg',
   aiCouplePhotoMaker: '/ai-couple-photo-maker/rainy-eiffel-4x3.jpg',
   aiKissingVideoGenerator:
     'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/15ccbe71d8eb4921930b8b7638bcebab.webp',

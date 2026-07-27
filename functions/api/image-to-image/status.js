@@ -6,6 +6,10 @@
 import { getCurrentUser } from '../../_shared/auth.mjs';
 import { getCreditSummary, refundCredits } from '../../_shared/credits.mjs';
 import { getImageGenerationCreditRefundDescription } from '../../_shared/generation-credit-label.mjs';
+import {
+  GENERATION_TASK_ACCESS_ERROR,
+  verifyGenerationTaskAccess,
+} from '../../_shared/generation-task-access.mjs';
 
 const KIE_AI_BASE = 'https://api.kie.ai/api/v1/jobs';
 const CORS = {
@@ -180,7 +184,7 @@ export async function onRequest(context) {
 
   try {
     const body = await request.json().catch(() => ({}));
-    const taskId = body?.taskId;
+    const taskId = String(body?.taskId || '').trim();
     if (!taskId) {
       return jsonResponse({ error: 'Task ID is required' }, 400);
     }
@@ -190,6 +194,12 @@ export async function onRequest(context) {
       : null;
     if (shouldUseCreditLedger(env) && !user) {
       return jsonResponse({ error: 'Please sign in with Google to check generation status.' }, 401);
+    }
+    if (
+      shouldUseCreditLedger(env)
+      && !(await verifyGenerationTaskAccess(env, user.id, body, taskId))
+    ) {
+      return jsonResponse({ error: GENERATION_TASK_ACCESS_ERROR }, 403);
     }
 
     const apiKey = getApiKey(env);

@@ -37,3 +37,13 @@ test('AI Tools hub exposes localized category labels', () => {
     assert.ok(filters.video)
   }
 })
+
+test('Photo Restoration cards use the shared R2 demo image instead of the old stock photo', () => {
+  for (const locale of AI_TOOLS_LOCALES) {
+    const restorationCard = getAiToolsPageCopy(locale).cards.find((card) => card.href === '/photo-restoration')
+
+    assert.ok(restorationCard, `${locale} is missing Photo Restoration`)
+    assert.match(restorationCard.image, /home-advanced-ai\/photo-restoration\.jpg/)
+    assert.doesNotMatch(restorationCard.image, /images\.unsplash\.com/)
+  }
+})

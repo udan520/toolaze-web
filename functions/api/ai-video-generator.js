@@ -5,6 +5,7 @@ import {
   getVideoGenerationCreditDescription,
   getVideoGenerationCreditRefundDescription,
 } from '../_shared/generation-credit-label.mjs';
+import { attachGenerationTaskIdToConsumption } from '../_shared/generation-task-access.mjs';
 
 /**
  * Cloudflare Pages Function: AI 视频生成 - 创建 Kie 视频任务
@@ -464,6 +465,18 @@ export async function onRequest(context) {
         requiredCredits,
       };
       if (creditContext.consumption?.consumptionId) {
+        await attachGenerationTaskIdToConsumption(
+          env,
+          creditContext.user.id,
+          creditContext.consumption.consumptionId,
+          taskId
+        ).catch((error) => {
+          console.error('Failed to bind video task to credit consumption', {
+            consumptionId: creditContext.consumption.consumptionId,
+            taskId,
+            error: error instanceof Error ? error.message : String(error),
+          });
+        });
         payload.credits = creditContext.credits;
         payload.creditHold = {
           provider: 'credit-ledger',

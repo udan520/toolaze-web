@@ -62,6 +62,41 @@ function createUnauthenticatedDb() {
   }
 }
 
+function createTaskOwnershipDb({ taskId = 'owned_task' } = {}) {
+  return {
+    prepare(sql) {
+      return {
+        bind(...values) {
+          return {
+            async first() {
+              const normalized = sql.replace(/\s+/g, ' ').toLowerCase()
+              if (normalized.includes('from sessions') && normalized.includes('join users')) {
+                return {
+                  id: 'user_owner',
+                  email: 'owner@example.com',
+                  name: 'Owner',
+                  avatar_url: null,
+                  session_id: 'sess_owner',
+                  expires_at: new Date(Date.now() + 60_000).toISOString(),
+                }
+              }
+              if (normalized.includes('from credit_consumptions') && normalized.includes('join credit_transactions')) {
+                return {
+                  id: values[0],
+                  user_id: values[1],
+                  transaction_id: 'credit_txn_owner',
+                  metadata: JSON.stringify({ taskId }),
+                }
+              }
+              return null
+            },
+          }
+        },
+      }
+    },
+  }
+}
+
 test('GPT Image 2 image-to-image requests use the image-to-image provider model', async () => {
   const originalFetch = globalThis.fetch
   let requestBody = null
@@ -283,7 +318,10 @@ test('image generation status returns videoUrl for Grok Video 1.5 results', asyn
     const response = await checkImageGenerationStatus({
       request: new Request('http://localhost:3016/api/image-to-image/status', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          Cookie: 'toolaze_session=owner-session',
+        },
         body: JSON.stringify({
           taskId: 'task_video',
           creditHold: {
@@ -296,7 +334,7 @@ test('image generation status returns videoUrl for Grok Video 1.5 results', asyn
           },
         }),
       }),
-      env: { KIE_AI_API_KEY: 'test-key' },
+      env: { KIE_AI_API_KEY: 'test-key', DB: createTaskOwnershipDb({ taskId: 'task_video' }) },
     })
     const payload = await response.json()
 
@@ -337,6 +375,53 @@ test('image generation status rejects unauthenticated checks before provider req
 
     assert.equal(response.status, 401)
     assert.equal(payload.error, 'Please sign in with Google to check generation status.')
+    assert.equal(providerCalled, false)
+  } finally {
+    globalThis.fetch = originalFetch
+  }
+})
+
+test('image generation status rejects task ids not bound to the current account', async () => {
+  const originalFetch = globalThis.fetch
+  let providerCalled = false
+
+  globalThis.fetch = async () => {
+    providerCalled = true
+    return Response.json({
+      data: {
+        state: 'success',
+        resultJson: JSON.stringify({ resultUrls: ['https://example.com/victim.webp'] }),
+      },
+    })
+  }
+
+  try {
+    const response = await checkImageGenerationStatus({
+      request: new Request('http://localhost:3016/api/image-to-image/status', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Cookie: 'toolaze_session=owner-session',
+        },
+        body: JSON.stringify({
+          taskId: 'victim_task',
+          creditHold: {
+            provider: 'credit-ledger',
+            taskId: 'victim_task',
+            consumptionId: 'credit_cons_owner',
+            requiredCredits: 20,
+            model: 'gpt-image-2',
+            isImageToImage: false,
+            mediaType: 'image',
+          },
+        }),
+      }),
+      env: { KIE_AI_API_KEY: 'test-key', DB: createTaskOwnershipDb({ taskId: 'owned_task' }) },
+    })
+    const payload = await response.json()
+
+    assert.equal(response.status, 403)
+    assert.equal(payload.error, 'Generation task is not available for this account.')
     assert.equal(providerCalled, false)
   } finally {
     globalThis.fetch = originalFetch

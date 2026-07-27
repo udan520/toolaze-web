@@ -52,7 +52,7 @@ const cardAssets = {
   watermark:
     'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=80',
   restoration:
-    'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80',
+    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-advanced-ai/photo-restoration.jpg',
   couple: '/ai-couple-photo-maker/rainy-eiffel-4x3.jpg',
   baby: '/ai-baby-generator/hero-baby-portrait.webp',
   dance: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/ai-dance-demo-source.png',

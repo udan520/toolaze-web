@@ -1001,6 +1001,12 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                     hideModelBranding
                     hidePromptInput
                     sampleImageVariant="sharp"
+                    sampleImages={[{
+                      url: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-advanced-ai/photo-restoration.jpg',
+                      title: 'Photo Restoration demo image',
+                      width: 800,
+                      height: 533,
+                    }]}
                     sceneText={{
                       uploadTitle: 'Upload old photo',
                       uploadHelper: 'JPG, PNG, WebP up to 30MB.',
