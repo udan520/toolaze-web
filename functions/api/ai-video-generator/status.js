@@ -3,6 +3,10 @@
  * 部署后地址：https://toolaze-web.pages.dev/api/ai-video-generator/status
  * 需设置环境变量：KIE_AI_API_KEY
  */
+import { getCurrentUser } from '../../_shared/auth.mjs';
+import { getCreditSummary, refundCredits } from '../../_shared/credits.mjs';
+import { getVideoGenerationCreditRefundDescription } from '../../_shared/generation-credit-label.mjs';
+
 const KIE_AI_BASE = 'https://api.kie.ai/api/v1/jobs';
 const CORS = {
   'Access-Control-Allow-Origin': '*',
@@ -19,6 +23,10 @@ function jsonResponse(body, status = 200) {
     status,
     headers: { 'Content-Type': 'application/json', ...CORS },
   });
+}
+
+function shouldUseCreditLedger(env) {
+  return Boolean(env?.DB);
 }
 
 function normalizeStatus(state) {
@@ -65,6 +73,55 @@ function parseVideoUrl(data) {
   }
 }
 
+function readCreditHold(body, taskId) {
+  const creditHold = body?.creditHold;
+  const requiredCredits = Number(creditHold?.requiredCredits);
+
+  if (
+    creditHold?.provider !== 'credit-ledger' ||
+    creditHold?.taskId !== taskId ||
+    !creditHold?.consumptionId ||
+    !Number.isInteger(requiredCredits) ||
+    requiredCredits <= 0
+  ) {
+    return null;
+  }
+
+  return {
+    consumptionId: String(creditHold.consumptionId),
+    requiredCredits,
+    model: creditHold.model ? String(creditHold.model) : undefined,
+    mode: creditHold.mode === 'image-to-video' ? 'image-to-video' : 'text-to-video',
+  };
+}
+
+async function refundFailedVideoCredits(env, user, body, taskId, message) {
+  if (!user || !shouldUseCreditLedger(env)) return null;
+
+  const creditHold = readCreditHold(body, taskId);
+  if (!creditHold) return null;
+
+  const refund = await refundCredits(env, user.id, creditHold.requiredCredits, {
+    reason: 'video_generation_refund',
+    description: getVideoGenerationCreditRefundDescription(creditHold.model, creditHold.mode),
+    consumptionId: creditHold.consumptionId,
+    metadata: {
+      taskId,
+      model: creditHold.model,
+      mode: creditHold.mode,
+      mediaType: 'video',
+      error: message || 'Video generation failed',
+    },
+  }).catch(() => null);
+
+  if (!refund) return null;
+
+  return {
+    credits: await getCreditSummary(env, user.id),
+    refundedCredits: refund.refunded,
+  };
+}
+
 export async function onRequest(context) {
   const { request, env } = context;
   const method = request.method;
@@ -81,6 +138,13 @@ export async function onRequest(context) {
     const taskId = String(body?.taskId || '').trim();
     if (!taskId) {
       return jsonResponse({ error: 'Task ID is required' }, 400);
+    }
+
+    const user = shouldUseCreditLedger(env)
+      ? await getCurrentUser(env, request)
+      : null;
+    if (shouldUseCreditLedger(env) && !user) {
+      return jsonResponse({ error: 'Please sign in with Google to check video status.' }, 401);
     }
 
     const apiKey = getApiKey(env);
@@ -108,12 +172,16 @@ export async function onRequest(context) {
     const data = result?.data ?? result;
     const status = normalizeStatus(data?.state ?? data?.status);
     const videoUrl = parseVideoUrl(data);
+    const message = data?.failMsg ?? data?.message;
+    const creditRefund = status === 'FAILED'
+      ? await refundFailedVideoCredits(env, user, body, taskId, message)
+      : null;
 
     return jsonResponse({
       status,
       ...(videoUrl && { videoUrl }),
-      ...(data?.failMsg || data?.message ? { message: data.failMsg ?? data.message } : {}),
-      raw: result,
+      ...(message ? { message } : {}),
+      ...(creditRefund || {}),
     });
   } catch (e) {
     return jsonResponse({

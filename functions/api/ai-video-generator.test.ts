@@ -24,6 +24,22 @@ async function readJson(response: Response) {
   return response.json() as Promise<Record<string, any>>
 }
 
+function createUnauthenticatedDb() {
+  return {
+    prepare() {
+      return {
+        bind() {
+          return {
+            async first() {
+              return null
+            },
+          }
+        },
+      }
+    },
+  }
+}
+
 test('AI video generator rejects requests without a prompt', async () => {
   const response = await createVideoTask({
     request: createFormRequest({ mode: 'text-to-video' }),
@@ -45,6 +61,38 @@ test('AI video generator requires image URLs for image-to-video', async () => {
 
   assert.equal(response.status, 400)
   assert.equal((await readJson(response)).error, 'Image-to-video requires at least one image URL')
+})
+
+test('AI video generator rejects unauthenticated generation before provider request', async () => {
+  const originalFetch = globalThis.fetch
+  let providerCalled = false
+  globalThis.fetch = (async () => {
+    providerCalled = true
+    return new Response(JSON.stringify({ code: 200, data: { taskId: 'unexpected_task' } }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    })
+  }) as typeof fetch
+
+  try {
+    const response = await createVideoTask({
+      request: createFormRequest({
+        mode: 'text-to-video',
+        model: 'seedance-2',
+        prompt: 'A valid video prompt that must not reach KIE while signed out.',
+        aspectRatio: '16:9',
+        resolution: '480p',
+        duration: '5',
+      }),
+      env: { KIE_AI_API_KEY: 'test-key', DB: createUnauthenticatedDb() },
+    })
+
+    assert.equal(response.status, 401)
+    assert.equal((await readJson(response)).error, 'Please sign in with Google to generate videos.')
+    assert.equal(providerCalled, false)
+  } finally {
+    globalThis.fetch = originalFetch
+  }
 })
 
 test('AI video generator creates a Kie Grok 1.5 image-to-video task', async () => {
@@ -652,6 +700,43 @@ test('AI video generator rejects more than one Grok reference image before provi
   }
 })
 
+test('AI video status rejects unauthenticated checks before provider request', async () => {
+  const originalFetch = globalThis.fetch
+  let providerCalled = false
+  globalThis.fetch = (async () => {
+    providerCalled = true
+    return new Response(JSON.stringify({
+      code: 200,
+      data: {
+        state: 'success',
+        resultJson: JSON.stringify({ videoUrls: ['https://cdn.example.com/output.mp4'] }),
+      },
+    }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    })
+  }) as typeof fetch
+
+  try {
+    const response = await getVideoTaskStatus({
+      request: new Request('https://toolaze.test/api/ai-video-generator/status', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ taskId: 'task_123' }),
+      }),
+      env: { KIE_AI_API_KEY: 'test-key', DB: createUnauthenticatedDb() },
+    })
+    const payload = await readJson(response)
+
+    assert.equal(response.status, 401)
+    assert.equal(payload.error, 'Please sign in with Google to check video status.')
+    assert.equal(payload.raw, undefined)
+    assert.equal(providerCalled, false)
+  } finally {
+    globalThis.fetch = originalFetch
+  }
+})
+
 test('AI video generator status parses Kie video result URLs', async () => {
   const originalFetch = globalThis.fetch
   globalThis.fetch = (async () => new Response(JSON.stringify({
@@ -679,13 +764,6 @@ test('AI video generator status parses Kie video result URLs', async () => {
     assert.deepEqual(await readJson(response), {
       status: 'SUCCEEDED',
       videoUrl: 'https://cdn.example.com/output.mp4',
-      raw: {
-        code: 200,
-        data: {
-          state: 'success',
-          resultJson: JSON.stringify({ videoUrls: ['https://cdn.example.com/output.mp4'] }),
-        },
-      },
     })
   } finally {
     globalThis.fetch = originalFetch

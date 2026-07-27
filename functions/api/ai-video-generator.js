@@ -1,4 +1,10 @@
+import { getCurrentUser } from '../_shared/auth.mjs';
+import { consumeCredits, getCreditSummary, refundCredits } from '../_shared/credits.mjs';
 import { calculateVideoGenerationCredits } from '../_shared/generation-credits.mjs';
+import {
+  getVideoGenerationCreditDescription,
+  getVideoGenerationCreditRefundDescription,
+} from '../_shared/generation-credit-label.mjs';
 
 /**
  * Cloudflare Pages Function: AI 视频生成 - 创建 Kie 视频任务
@@ -102,6 +108,8 @@ const VIDEO_MODEL_CONFIGS = {
 };
 
 const DEFAULT_VIDEO_MODEL_ID = 'grok-1-5-video';
+const GENERATION_SERVICE_UNAVAILABLE_MESSAGE =
+  'The generation service is temporarily unavailable. Please try again later.';
 
 function getApiKey(env) {
   return env.KIE_AI_API_KEY;
@@ -112,6 +120,75 @@ function jsonResponse(body, status = 200) {
     status,
     headers: { 'Content-Type': 'application/json', ...CORS },
   });
+}
+
+function shouldUseCreditLedger(env) {
+  return Boolean(env?.DB);
+}
+
+async function consumeVideoGenerationCredits(env, request, requiredCredits, metadata) {
+  if (!shouldUseCreditLedger(env)) {
+    return {
+      credits: null,
+      user: null,
+      consumption: null,
+      response: null,
+    };
+  }
+
+  const user = await getCurrentUser(env, request);
+  if (!user) {
+    return {
+      credits: null,
+      user: null,
+      consumption: null,
+      response: jsonResponse({
+        error: 'Please sign in with Google to generate videos.',
+        requiredCredits,
+      }, 401),
+    };
+  }
+
+  const consumption = await consumeCredits(env, user.id, requiredCredits, {
+    reason: 'video_generation',
+    description: getVideoGenerationCreditDescription(metadata.model, metadata.mode),
+    metadata,
+  });
+
+  if (!consumption.ok) {
+    const credits = await getCreditSummary(env, user.id);
+    return {
+      credits,
+      user,
+      consumption: null,
+      response: jsonResponse({
+        error: 'Insufficient credits to generate this video.',
+        credits,
+        requiredCredits,
+      }, 402),
+    };
+  }
+
+  return {
+    credits: await getCreditSummary(env, user.id),
+    user,
+    consumption,
+    response: null,
+  };
+}
+
+async function refundVideoGenerationCredits(env, creditContext, metadata) {
+  if (!creditContext?.user || !creditContext?.consumption?.consumptionId) return null;
+
+  const refund = await refundCredits(env, creditContext.user.id, metadata.requiredCredits, {
+    reason: 'video_generation_refund',
+    description: getVideoGenerationCreditRefundDescription(metadata.model, metadata.mode),
+    consumptionId: creditContext.consumption.consumptionId,
+    metadata,
+  }).catch(() => null);
+
+  if (!refund) return null;
+  return getCreditSummary(env, creditContext.user.id).catch(() => null);
 }
 
 function normalizeMode(formData) {
@@ -250,6 +327,8 @@ function buildProviderInput({
 export async function onRequest(context) {
   const { request, env } = context;
   const method = request.method;
+  let creditContext = null;
+  let creditMetadata = null;
 
   if (method === 'OPTIONS') {
     return new Response(null, { status: 204, headers: CORS });
@@ -321,6 +400,29 @@ export async function onRequest(context) {
       duration.value,
       { nativeAudio }
     );
+    if (!Number.isInteger(requiredCredits) || requiredCredits <= 0) {
+      return jsonResponse({ error: 'Video pricing is not configured for this model.' }, 500);
+    }
+
+    creditMetadata = {
+      model: modelConfig.creditModelId,
+      providerModel,
+      mode,
+      mediaType: 'video',
+      resolution: resolution.value,
+      aspectRatio: aspectRatio.value,
+      duration: duration.value,
+      nativeAudio,
+      requiredCredits,
+    };
+
+    creditContext = await consumeVideoGenerationCredits(
+      env,
+      request,
+      requiredCredits,
+      creditMetadata
+    );
+    if (creditContext.response) return creditContext.response;
 
     const response = await fetch(`${KIE_AI_BASE}/createTask`, {
       method: 'POST',
@@ -337,26 +439,80 @@ export async function onRequest(context) {
     const result = await response.json().catch(() => ({}));
     if (!response.ok) {
       const msg = result?.message ?? result?.msg ?? await response.text();
-      return jsonResponse({ error: msg || 'Failed to create video task' }, response.status);
+      const credits = await refundVideoGenerationCredits(env, creditContext, {
+        ...creditMetadata,
+        requiredCredits,
+        error: String(msg || 'Failed to create video task'),
+      });
+      console.error('KIE video task creation failed', {
+        status: response.status,
+        model: modelConfig.creditModelId,
+        providerModel,
+        error: String(msg || 'Failed to create video task'),
+      });
+      return jsonResponse({
+        error: GENERATION_SERVICE_UNAVAILABLE_MESSAGE,
+        code: 'UPSTREAM_GENERATION_ERROR',
+        credits,
+      }, response.status);
     }
 
     const taskId = result?.data?.taskId ?? result?.taskId;
     if (taskId) {
-      return jsonResponse(requiredCredits ? { taskId, requiredCredits } : { taskId });
+      const payload = {
+        taskId,
+        requiredCredits,
+      };
+      if (creditContext.consumption?.consumptionId) {
+        payload.credits = creditContext.credits;
+        payload.creditHold = {
+          provider: 'credit-ledger',
+          taskId,
+          consumptionId: creditContext.consumption.consumptionId,
+          requiredCredits,
+          model: modelConfig.creditModelId,
+          mode,
+          mediaType: 'video',
+        };
+      }
+      return jsonResponse(payload);
     }
 
     const videoUrl = result?.data?.videoUrl ?? result?.videoUrl;
     if (videoUrl) {
-      return jsonResponse(requiredCredits ? { videoUrl, requiredCredits } : { videoUrl });
+      const payload = {
+        videoUrl,
+        requiredCredits,
+      };
+      if (creditContext.credits) payload.credits = creditContext.credits;
+      return jsonResponse(payload);
     }
 
-    return jsonResponse({
+    const credits = await refundVideoGenerationCredits(env, creditContext, {
+      ...creditMetadata,
+      requiredCredits,
       error: result?.message ?? result?.msg ?? 'Unexpected response format',
-      raw: result,
+    });
+    console.error('KIE video task returned an unexpected response', {
+      model: modelConfig.creditModelId,
+      providerModel,
+      code: result?.code,
+      error: result?.message ?? result?.msg ?? 'Unexpected response format',
+    });
+    return jsonResponse({
+      error: GENERATION_SERVICE_UNAVAILABLE_MESSAGE,
+      code: 'UPSTREAM_GENERATION_ERROR',
+      credits,
     }, 500);
   } catch (e) {
+    const credits = await refundVideoGenerationCredits(env, creditContext, {
+      ...(creditMetadata || {}),
+      requiredCredits: creditMetadata?.requiredCredits,
+      error: e instanceof Error ? e.message : 'Internal server error',
+    });
     return jsonResponse({
       error: e instanceof Error ? e.message : 'Internal server error',
+      credits,
     }, 500);
   }
 }

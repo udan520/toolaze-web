@@ -10,6 +10,13 @@ const MODEL_LABELS = {
   'grok-video-1-5': 'Grok Video 1.5',
 };
 
+const VIDEO_MODEL_LABELS = {
+  'grok-1-5-video': 'Grok Imagine Video 1.5',
+  'seedance-2': 'Seedance 2.0',
+  'seedance-2-mini': 'Seedance 2.0 Mini',
+  'kling-3': 'Kling 3.0',
+};
+
 function isVideoGenerationModel(model) {
   return String(model || '').trim().toLowerCase() === 'grok-video-1-5';
 }
@@ -36,4 +43,15 @@ export function getImageGenerationCreditDescription(model, isImageToImage = fals
 
 export function getImageGenerationCreditRefundDescription(model, isImageToImage = false) {
   return `${getImageGenerationCreditDescription(model, isImageToImage)} refund`;
+}
+
+export function getVideoGenerationCreditDescription(model, mode = 'text-to-video') {
+  const normalizedModel = String(model || '').toLowerCase();
+  const label = VIDEO_MODEL_LABELS[normalizedModel] || fallbackModelLabel(model);
+  const normalizedMode = mode === 'image-to-video' ? 'image-to-video' : 'text-to-video';
+  return `${label} ${normalizedMode} generation`;
+}
+
+export function getVideoGenerationCreditRefundDescription(model, mode = 'text-to-video') {
+  return `${getVideoGenerationCreditDescription(model, mode)} refund`;
 }

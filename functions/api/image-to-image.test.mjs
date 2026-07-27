@@ -46,6 +46,22 @@ function createModerationSettingsDb(enabled = true) {
   }
 }
 
+function createUnauthenticatedDb() {
+  return {
+    prepare() {
+      return {
+        bind() {
+          return {
+            async first() {
+              return null
+            },
+          }
+        },
+      }
+    },
+  }
+}
+
 test('GPT Image 2 image-to-image requests use the image-to-image provider model', async () => {
   const originalFetch = globalThis.fetch
   let requestBody = null
@@ -289,6 +305,39 @@ test('image generation status returns videoUrl for Grok Video 1.5 results', asyn
     assert.equal(payload.videoUrl, 'https://example.com/dance-result.mp4')
     assert.equal(payload.imageUrl, undefined)
     assert.equal(payload.mediaType, 'video')
+  } finally {
+    globalThis.fetch = originalFetch
+  }
+})
+
+test('image generation status rejects unauthenticated checks before provider request', async () => {
+  const originalFetch = globalThis.fetch
+  let providerCalled = false
+
+  globalThis.fetch = async () => {
+    providerCalled = true
+    return Response.json({
+      data: {
+        state: 'success',
+        resultJson: JSON.stringify({ resultUrls: ['https://example.com/output.webp'] }),
+      },
+    })
+  }
+
+  try {
+    const response = await checkImageGenerationStatus({
+      request: new Request('http://localhost:3016/api/image-to-image/status', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ taskId: 'task_image' }),
+      }),
+      env: { KIE_AI_API_KEY: 'test-key', DB: createUnauthenticatedDb() },
+    })
+    const payload = await response.json()
+
+    assert.equal(response.status, 401)
+    assert.equal(payload.error, 'Please sign in with Google to check generation status.')
+    assert.equal(providerCalled, false)
   } finally {
     globalThis.fetch = originalFetch
   }

@@ -52,6 +52,7 @@ interface VideoGenerationRequest {
   startedAt: number
   status: VideoGenerationStatus
   taskId?: string
+  creditHold?: unknown
   videoUrl?: string
   error?: string
 }
@@ -763,7 +764,7 @@ export default function AiVideoGeneratorTool({
     }
   }
 
-  const pollVideoStatus = async (taskId: string) => {
+  const pollVideoStatus = async (taskId: string, creditHold?: unknown) => {
     const maxAttempts = 60
     const pollInterval = 5000
 
@@ -771,7 +772,7 @@ export default function AiVideoGeneratorTool({
       const statusResponse = await fetch('/api/ai-video-generator/status', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ taskId }),
+        body: JSON.stringify({ taskId, creditHold: creditHold || null }),
       })
 
       const statusResult = await parseJsonSafely(statusResponse, text.serverNonJson)
@@ -895,8 +896,9 @@ export default function AiVideoGeneratorTool({
 
       let videoUrl = String(createResult.videoUrl || '').trim()
       const taskId = String(createResult.taskId || '').trim()
+      const creditHold = createResult.creditHold || null
       if (!videoUrl && taskId) {
-        videoUrl = await pollVideoStatus(taskId)
+        videoUrl = await pollVideoStatus(taskId, creditHold)
       }
       if (!videoUrl) {
         throw new Error(text.videoGenerationFailed)
@@ -906,6 +908,7 @@ export default function AiVideoGeneratorTool({
         ...request,
         status: 'succeeded',
         taskId: taskId || undefined,
+        creditHold,
         videoUrl,
         inputUrls: imageUrls,
         inputPreview: imageUrls[0] || request.inputPreview,

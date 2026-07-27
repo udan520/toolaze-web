@@ -111,6 +111,10 @@ function jsonResponse(body, status = 200) {
   });
 }
 
+function shouldUseCreditLedger(env) {
+  return Boolean(env?.DB);
+}
+
 function readCreditHold(body, taskId) {
   const creditHold = body?.creditHold;
   const requiredCredits = Number(creditHold?.requiredCredits);
@@ -179,6 +183,13 @@ export async function onRequest(context) {
     const taskId = body?.taskId;
     if (!taskId) {
       return jsonResponse({ error: 'Task ID is required' }, 400);
+    }
+
+    const user = shouldUseCreditLedger(env)
+      ? await getCurrentUser(env, request)
+      : null;
+    if (shouldUseCreditLedger(env) && !user) {
+      return jsonResponse({ error: 'Please sign in with Google to check generation status.' }, 401);
     }
 
     const apiKey = getApiKey(env);
