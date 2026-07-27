@@ -22,12 +22,17 @@ function readCreditBalance(payload: GenerationErrorPayload): number | null {
 }
 
 export function isCreditExhaustedGenerationError(status: number, payload: GenerationErrorPayload): boolean {
-  if (status === 402) return true
-
   const text = collectErrorText(payload)
-  const mentionsCredits = /\bcredit|credits|balance\b/i.test(text)
+  if (/upstream_generation_error/i.test(String(payload?.code || ''))) return false
+
+  const mentionsCredits = /\bcredits?\b/i.test(text)
   const describesShortage = /insufficient|not enough|no credits?|used up|remaining|exhausted|too low|用完|不足|余额|餘額|點數|点数/i.test(text)
   if (mentionsCredits && describesShortage) return true
+
+  const requiredCredits = payload?.requiredCredits
+  if (status === 402 && typeof requiredCredits === 'number' && Number.isFinite(requiredCredits)) {
+    return true
+  }
 
   const balance = readCreditBalance(payload)
   return balance === 0 && (mentionsCredits || status === 401 || status === 403)

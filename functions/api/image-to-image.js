@@ -21,6 +21,8 @@ const GROK_VIDEO_PROVIDER_MODEL_ID = 'grok-imagine-video-1-5-preview';
 const GROK_VIDEO_DEFAULT_DURATION_SECONDS = 8;
 const GROK_VIDEO_MIN_DURATION_SECONDS = 1;
 const GROK_VIDEO_MAX_DURATION_SECONDS = 15;
+const GENERATION_SERVICE_UNAVAILABLE_MESSAGE =
+  'The generation service is temporarily unavailable. Please try again later.';
 const CORS = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Methods': 'POST, OPTIONS',
@@ -408,7 +410,17 @@ export async function onRequest(context) {
         durationSeconds: isVideoGenerationModel(model) ? durationSeconds : undefined,
         error: String(msg || 'Failed to create task'),
       });
-      return jsonResponse({ error: msg || 'Failed to create task', credits }, response.status);
+      console.error('KIE generation task creation failed', {
+        status: response.status,
+        model,
+        providerModelId,
+        error: String(msg || 'Failed to create task'),
+      });
+      return jsonResponse({
+        error: GENERATION_SERVICE_UNAVAILABLE_MESSAGE,
+        code: 'UPSTREAM_GENERATION_ERROR',
+        credits,
+      }, response.status);
     }
 
     if (result?.code === 200 && result?.data?.taskId) {
@@ -440,8 +452,15 @@ export async function onRequest(context) {
       durationSeconds: isVideoGenerationModel(model) ? durationSeconds : undefined,
       error: result?.message ?? result?.msg ?? 'Unexpected response format',
     });
-    return jsonResponse({
+    console.error('KIE generation task returned an unexpected response', {
+      model,
+      providerModelId,
+      code: result?.code,
       error: result?.message ?? result?.msg ?? 'Unexpected response format',
+    });
+    return jsonResponse({
+      error: GENERATION_SERVICE_UNAVAILABLE_MESSAGE,
+      code: 'UPSTREAM_GENERATION_ERROR',
       credits,
     }, 500);
   } catch (e) {

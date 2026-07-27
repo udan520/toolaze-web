@@ -26,3 +26,14 @@ test('keeps ordinary unauthorized responses as sign-in required', () => {
     false,
   )
 })
+
+test('does not treat an upstream provider balance error as exhausted user credits', () => {
+  assert.equal(
+    isCreditExhaustedGenerationError(402, { error: 'Insufficient balance. Please recharge your provider account.' }),
+    false,
+  )
+  assert.equal(
+    isCreditExhaustedGenerationError(400, { message: 'Account balance is not enough.' }),
+    false,
+  )
+})

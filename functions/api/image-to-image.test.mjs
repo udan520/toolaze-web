@@ -219,6 +219,36 @@ test('Grok Video 1.5 image-to-video requests forward selected duration and price
   }
 })
 
+test('provider balance failures are identified as upstream errors instead of user credit errors', async () => {
+  const originalFetch = globalThis.fetch
+
+  globalThis.fetch = async () => Response.json(
+    { code: 402, message: 'Insufficient balance. Please recharge your provider account.' },
+    { status: 402 },
+  )
+
+  try {
+    const response = await onRequest({
+      request: createGenerationRequest({
+        model: 'grok-video-1-5',
+        resolution: '480p',
+      }),
+      env: { CREEM_API_KEY: 'creem-test-key', KIE_AI_API_KEY: 'test-key' },
+    })
+    const payload = await response.json()
+
+    assert.equal(response.status, 402)
+    assert.equal(payload.code, 'UPSTREAM_GENERATION_ERROR')
+    assert.equal(
+      payload.error,
+      'The generation service is temporarily unavailable. Please try again later.',
+    )
+    assert.doesNotMatch(payload.error, /balance|provider|recharge/i)
+  } finally {
+    globalThis.fetch = originalFetch
+  }
+})
+
 test('image generation status returns videoUrl for Grok Video 1.5 results', async () => {
   const originalFetch = globalThis.fetch
 
