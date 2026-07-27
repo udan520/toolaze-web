@@ -52,7 +52,6 @@
     "seedream50Lite": "Seedream 5.0 Lite",
     "seedream50Pro": "Seedream 5.0 Pro",
     "seedance25": "Seedance 2.5",
-    "aiVideoGenerator": "AI Video Generator",
     "textToVideoGenerator": "Text to Video Generator",
     "imageToVideoGenerator": "Image to Video Generator",
     "aiDanceGenerator": "AI Dance Generator",
@@ -647,6 +646,93 @@
         "objects": "Objects",
         "symbols": "Symbols",
         "flags": "Flags"
+      }
+    },
+    "modelSelector": {
+      "badges": {
+        "hot": "Hot",
+        "new": "New"
+      },
+      "image": {
+        "groups": {
+          "openai-gpt": {
+            "description": "Structured image generation and controlled edits.",
+            "logoAlt": "OpenAI logo"
+          },
+          "xai": {
+            "description": "Grok generation for fast creative drafts and prompt-led images.",
+            "logoAlt": "xAI logo"
+          },
+          "seedream": {
+            "description": "Commercial image generation, reference editing, and design layouts.",
+            "logoAlt": "Dreamina logo"
+          },
+          "nano-banana": {
+            "description": "Reference-heavy image editing and multi-image creative workflows.",
+            "logoAlt": "Google Gemini logo"
+          },
+          "wan-ai": {
+            "description": "Thinking-mode image generation and multi-reference composition.",
+            "logoAlt": "Wan AI logo"
+          }
+        },
+        "models": {
+          "gpt-image-2": {
+            "description": "Create structured images, marketing visuals, mockups, and image edits."
+          },
+          "grok-1-5-image": {
+            "description": "Create image drafts, stylized scenes, and prompt-led visuals."
+          },
+          "seedream-5-0-pro": {
+            "description": "Higher quality Seedream workflow for polished product and campaign images."
+          },
+          "seedream-5-0-lite": {
+            "description": "Fast Seedream workflow for drafts, concepts, and lightweight iterations."
+          },
+          "seedream-4-5": {
+            "description": "Reference-aware image generation for posters, products, and typography."
+          },
+          "nano-banana-pro": {
+            "description": "Reliable image editing workflow for style transfer and reference-guided output."
+          },
+          "nano-banana-2": {
+            "description": "Newer multi-reference image workflow with high-resolution output."
+          },
+          "wan-2-7-image": {
+            "description": "Create images with multi-reference support and structured visual reasoning."
+          }
+        }
+      },
+      "video": {
+        "groups": {
+          "grok": {
+            "logoAlt": "Grok logo"
+          },
+          "seedance": {
+            "logoAlt": "ByteDance logo"
+          },
+          "kling": {
+            "logoAlt": "Kling logo"
+          }
+        },
+        "models": {
+          "grok-1-5-video": {
+            "description": "Fast reference-to-video motion for punchy product, creator, and social clips.",
+            "logoAlt": "Grok logo"
+          },
+          "seedance-2": {
+            "description": "High-control multimodal video generation for cinematic scenes and polished motion.",
+            "logoAlt": "ByteDance logo"
+          },
+          "seedance-2-mini": {
+            "description": "Efficient Seedance workflow for faster 480p and 720p drafts with strong reference control.",
+            "logoAlt": "ByteDance logo"
+          },
+          "kling-3": {
+            "description": "Sharp video generation for cinematic movement, high-resolution shots, and dynamic scenes.",
+            "logoAlt": "Kling logo"
+          }
+        }
       }
     },
     "aiVideoGeneratorTool": {

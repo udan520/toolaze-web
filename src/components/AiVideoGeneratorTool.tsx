@@ -316,6 +316,12 @@ export default function AiVideoGeneratorTool({
   const pathname = usePathname()
   const commonTranslations = useCommonTranslations(initialTranslations)
   const text = { ...FALLBACK_TEXT, ...(commonTranslations?.common?.aiVideoGeneratorTool || {}) }
+  const videoModelSelectorCopy = commonTranslations?.common?.modelSelector?.video
+  const modelSelectorBadgeLabels = commonTranslations?.common?.modelSelector?.badges
+  const getModelBadgeLabel = (badge?: AiVideoGeneratorModelConfig['badge']) => {
+    if (!badge) return ''
+    return modelSelectorBadgeLabels?.[badge.toLowerCase()] || badge
+  }
   const imageFilesRef = useRef<ImageItem[]>([])
   const modelSelectorRef = useRef<HTMLDivElement>(null)
   const durationSelectorRef = useRef<HTMLDivElement>(null)
@@ -323,7 +329,21 @@ export default function AiVideoGeneratorTool({
   const durationMenuRef = useRef<HTMLDivElement>(null)
   const historyItemRefs = useRef(new Map<string, HTMLDivElement>())
   const isApplyingHistoryItemRef = useRef(false)
-  const modelGroups = AI_VIDEO_GENERATOR_MODEL_GROUPS
+  const modelGroups = useMemo(
+    () => AI_VIDEO_GENERATOR_MODEL_GROUPS.map((group) => ({
+      ...group,
+      logoAlt: videoModelSelectorCopy?.groups?.[group.id]?.logoAlt || group.logoAlt,
+      models: group.models.map((model) => {
+        const modelCopy = videoModelSelectorCopy?.models?.[model.id]
+        return {
+          ...model,
+          description: modelCopy?.description || model.description,
+          logoAlt: modelCopy?.logoAlt || model.logoAlt,
+        }
+      }),
+    })),
+    [videoModelSelectorCopy],
+  )
   const modelOptions = useMemo(() => modelGroups.flatMap((group) => group.models), [modelGroups])
   const [selectedModelId, setSelectedModelId] = useState<AiVideoGeneratorModelId>(modelId)
   const modelConfig = useMemo(() => getAiVideoGeneratorModelConfig(selectedModelId), [selectedModelId])
@@ -661,7 +681,7 @@ export default function AiVideoGeneratorTool({
                 <span className={`rounded-full px-1.5 py-0.5 text-[10px] font-extrabold leading-none text-white ${
                   option.badge === 'Hot' ? 'bg-red-500' : 'bg-emerald-500'
                 }`}>
-                  {option.badge}
+                  {getModelBadgeLabel(option.badge)}
                 </span>
               )}
             </span>

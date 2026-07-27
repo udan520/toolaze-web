@@ -676,6 +676,93 @@
         "flags": "旗"
       }
     },
+    "modelSelector": {
+      "badges": {
+        "hot": "人気",
+        "new": "新着"
+      },
+      "image": {
+        "groups": {
+          "openai-gpt": {
+            "description": "構造化された画像生成と制御しやすい編集。",
+            "logoAlt": "OpenAIロゴ"
+          },
+          "xai": {
+            "description": "素早いクリエイティブ草案とプロンプト主導の画像向けGrok生成。",
+            "logoAlt": "xAIロゴ"
+          },
+          "seedream": {
+            "description": "商用画像生成、参照編集、デザインレイアウト。",
+            "logoAlt": "Dreaminaロゴ"
+          },
+          "nano-banana": {
+            "description": "参照画像を多用する画像編集と複数画像のクリエイティブワークフロー。",
+            "logoAlt": "Google Geminiロゴ"
+          },
+          "wan-ai": {
+            "description": "思考モードの画像生成と複数参照の構図作成。",
+            "logoAlt": "Wan AIロゴ"
+          }
+        },
+        "models": {
+          "gpt-image-2": {
+            "description": "構造化画像、マーケティング素材、モックアップ、画像編集を作成します。"
+          },
+          "grok-1-5-image": {
+            "description": "画像ドラフト、スタイル化されたシーン、プロンプト主導のビジュアルを作成します。"
+          },
+          "seedream-5-0-pro": {
+            "description": "商品画像やキャンペーン画像を磨き込む高品質なSeedreamワークフロー。"
+          },
+          "seedream-5-0-lite": {
+            "description": "草案、コンセプト、軽い反復に向いた高速Seedreamワークフロー。"
+          },
+          "seedream-4-5": {
+            "description": "ポスター、商品、タイポグラフィ向けの参照対応画像生成。"
+          },
+          "nano-banana-pro": {
+            "description": "スタイル変換と参照ガイド出力に強い安定した画像編集ワークフロー。"
+          },
+          "nano-banana-2": {
+            "description": "高解像度出力に対応した新しい複数参照画像ワークフロー。"
+          },
+          "wan-2-7-image": {
+            "description": "複数参照サポートと構造化された視覚推論で画像を作成します。"
+          }
+        }
+      },
+      "video": {
+        "groups": {
+          "grok": {
+            "logoAlt": "Grokロゴ"
+          },
+          "seedance": {
+            "logoAlt": "ByteDanceロゴ"
+          },
+          "kling": {
+            "logoAlt": "Klingロゴ"
+          }
+        },
+        "models": {
+          "grok-1-5-video": {
+            "description": "商品、クリエイター、SNS向けの短いクリップに適した高速な参照画像から動画への動き生成。",
+            "logoAlt": "Grokロゴ"
+          },
+          "seedance-2": {
+            "description": "映画的なシーンと洗練された動き向けの高制御マルチモーダル動画生成。",
+            "logoAlt": "ByteDanceロゴ"
+          },
+          "seedance-2-mini": {
+            "description": "強い参照制御を備えた、480p/720p草案向けの効率的なSeedanceワークフロー。",
+            "logoAlt": "ByteDanceロゴ"
+          },
+          "kling-3": {
+            "description": "映画的な動き、高解像度ショット、ダイナミックなシーン向けのシャープな動画生成。",
+            "logoAlt": "Klingロゴ"
+          }
+        }
+      }
+    },
     "aiVideoGeneratorTool": {
       "imageToVideo": "画像から動画",
       "textToVideo": "テキストから動画",

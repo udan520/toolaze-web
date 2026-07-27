@@ -121,7 +121,7 @@ test('Seedance secondary model options show Hot and New badges', () => {
   assert.match(configSource, /id: 'seedance-2-mini',[\s\S]*?badge: 'New'/)
   assert.match(source, /option\.badge && \(/)
   assert.match(source, /option\.badge === 'Hot' \? 'bg-red-500' : 'bg-emerald-500'/)
-  assert.match(source, /\{option\.badge\}/)
+  assert.match(source, /\{getModelBadgeLabel\(option\.badge\)\}/)
 })
 
 test('AI video generator ships the local Grok logo asset used by the selector', () => {
@@ -212,7 +212,7 @@ test('AI video history Recreate restores every recorded setting without generati
   assert.match(source, /if \(isApplyingHistoryItemRef\.current\) \{[\s\S]*?isApplyingHistoryItemRef\.current = false[\s\S]*?return/)
 
   const historyApply = source.match(/const applyHistoryItemToForm = \(item: VideoHistoryItem\) => \{[\s\S]*?\n  \}/)?.[0] || ''
-  assert.match(historyApply, /trackGenerationHistoryRecreateClick\(\{ \.\.\.item, mediaType: 'video' \}, \{ surface: 'inline_generator_history' \}\)/)
+  assert.match(historyApply, /trackGenerationHistoryRecreateClick\(\{ \.\.\.item, mediaType: item\.mediaType === 'video' \? 'video' : 'image' \}, \{ surface: 'inline_generator_history' \}\)/)
   assert.match(historyApply, /setSelectedModelId\(item\.modelId\)/)
   assert.match(historyApply, /isApplyingHistoryItemRef\.current = true/)
   assert.match(historyApply, /setActiveModelGroupId\(getAiVideoGeneratorModelGroupId\(item\.modelId\)\)/)

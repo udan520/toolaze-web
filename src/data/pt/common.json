@@ -664,6 +664,93 @@
         "flags": "Bandeiras"
       }
     },
+    "modelSelector": {
+      "badges": {
+        "hot": "Popular",
+        "new": "Novo"
+      },
+      "image": {
+        "groups": {
+          "openai-gpt": {
+            "description": "Geração de imagens estruturadas e edições controladas.",
+            "logoAlt": "Logo da OpenAI"
+          },
+          "xai": {
+            "description": "Geração Grok para rascunhos criativos rápidos e imagens guiadas por prompt.",
+            "logoAlt": "Logo da xAI"
+          },
+          "seedream": {
+            "description": "Geração comercial de imagens, edição com referências e layouts de design.",
+            "logoAlt": "Logo da Dreamina"
+          },
+          "nano-banana": {
+            "description": "Edição de imagens com muitas referências e fluxos criativos com várias imagens.",
+            "logoAlt": "Logo do Google Gemini"
+          },
+          "wan-ai": {
+            "description": "Geração de imagens em modo de raciocínio e composição com várias referências.",
+            "logoAlt": "Logo da Wan AI"
+          }
+        },
+        "models": {
+          "gpt-image-2": {
+            "description": "Crie imagens estruturadas, visuais de marketing, mockups e edições de imagem."
+          },
+          "grok-1-5-image": {
+            "description": "Crie rascunhos de imagem, cenas estilizadas e visuais guiados por prompt."
+          },
+          "seedream-5-0-pro": {
+            "description": "Fluxo Seedream de maior qualidade para imagens de produto e campanha refinadas."
+          },
+          "seedream-5-0-lite": {
+            "description": "Fluxo Seedream rápido para rascunhos, conceitos e iterações leves."
+          },
+          "seedream-4-5": {
+            "description": "Geração de imagens com referências para pôsteres, produtos e tipografia."
+          },
+          "nano-banana-pro": {
+            "description": "Fluxo confiável de edição para transferência de estilo e saída guiada por referências."
+          },
+          "nano-banana-2": {
+            "description": "Fluxo novo com várias referências e saída em alta resolução."
+          },
+          "wan-2-7-image": {
+            "description": "Crie imagens com suporte a várias referências e raciocínio visual estruturado."
+          }
+        }
+      },
+      "video": {
+        "groups": {
+          "grok": {
+            "logoAlt": "Logo da Grok"
+          },
+          "seedance": {
+            "logoAlt": "Logo da ByteDance"
+          },
+          "kling": {
+            "logoAlt": "Logo da Kling"
+          }
+        },
+        "models": {
+          "grok-1-5-video": {
+            "description": "Movimento rápido de referência para vídeo para clipes de produto, criadores e redes sociais.",
+            "logoAlt": "Logo da Grok"
+          },
+          "seedance-2": {
+            "description": "Geração de vídeo multimodal com alto controle para cenas cinematográficas e movimento refinado.",
+            "logoAlt": "Logo da ByteDance"
+          },
+          "seedance-2-mini": {
+            "description": "Fluxo Seedance eficiente para rascunhos 480p e 720p mais rápidos com forte controle de referência.",
+            "logoAlt": "Logo da ByteDance"
+          },
+          "kling-3": {
+            "description": "Geração de vídeo nítida para movimento cinematográfico, tomadas de alta resolução e cenas dinâmicas.",
+            "logoAlt": "Logo da Kling"
+          }
+        }
+      }
+    },
     "aiVideoGeneratorTool": {
       "imageToVideo": "Imagem para vídeo",
       "textToVideo": "Texto para vídeo",

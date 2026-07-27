@@ -607,29 +607,6 @@ const MODEL_GROUPS: ModelGroup[] = [
     ],
   },
   {
-    id: 'xai',
-    name: 'xAI',
-    description: 'Grok generation for fast creative drafts, images, and video scenes.',
-    logoSrc: '/model-logos/grok.svg',
-    logoAlt: 'xAI logo',
-    models: [
-      {
-        id: 'grok-video-1-5',
-        name: 'Grok Video 1.5',
-        description: 'Create short video scenes from up to seven reference images and a motion prompt.',
-        qualityRating: 4,
-        badge: 'New',
-      },
-      {
-        id: 'grok-1-5-image',
-        name: 'Grok 1.5 Image',
-        description: 'Create image drafts, stylized scenes, and prompt-led visuals.',
-        qualityRating: 4,
-        badge: 'New',
-      },
-    ],
-  },
-  {
     id: 'seedream',
     name: 'Seedream',
     description: 'Commercial image generation, reference editing, and design layouts.',
@@ -675,6 +652,29 @@ const MODEL_GROUPS: ModelGroup[] = [
         name: 'Nano Banana 2',
         description: 'Newer multi-reference image workflow with high-resolution output.',
         qualityRating: 4,
+      },
+    ],
+  },
+  {
+    id: 'xai',
+    name: 'xAI',
+    description: 'Grok generation for fast creative drafts, images, and video scenes.',
+    logoSrc: '/model-logos/grok.svg',
+    logoAlt: 'xAI logo',
+    models: [
+      {
+        id: 'grok-video-1-5',
+        name: 'Grok Video 1.5',
+        description: 'Create short video scenes from up to seven reference images and a motion prompt.',
+        qualityRating: 4,
+        badge: 'New',
+      },
+      {
+        id: 'grok-1-5-image',
+        name: 'Grok 1.5 Image',
+        description: 'Create image drafts, stylized scenes, and prompt-led visuals.',
+        qualityRating: 4,
+        badge: 'New',
       },
     ],
   },
@@ -1130,15 +1130,31 @@ export default function AiImageGenerationTool({
     creditsUsedUpAction: 'Close',
   }
   const toolText = getAiImageGenerationToolText(commonTranslations?.common?.nanoBananaTool, defaultToolText)
+  const imageModelSelectorCopy = commonTranslations?.common?.modelSelector?.image
+  const modelSelectorBadgeLabels = commonTranslations?.common?.modelSelector?.badges
+  const getModelBadgeLabel = (badge?: ModelOption['badge']) => {
+    if (!badge) return ''
+    return modelSelectorBadgeLabels?.[badge.toLowerCase()] || badge
+  }
   const formatToolText = (template: string, values: Record<string, string | number>) =>
     Object.entries(values).reduce((next, [key, value]) => next.replace(`{${key}}`, String(value)), template)
   const isCouplePhotoMakerMode = presetMode === 'ai-couple-photo-maker'
   const modelGroups = useMemo(
-    () => MODEL_GROUPS.map((group) => ({
-      ...group,
-      models: group.models.filter((option) => option.id !== 'grok-video-1-5'),
-    })).filter((group) => group.models.length > 0),
-    [],
+    () => MODEL_GROUPS.map((group) => {
+      const groupCopy = imageModelSelectorCopy?.groups?.[group.id]
+      return {
+        ...group,
+        description: groupCopy?.description || group.description,
+        logoAlt: groupCopy?.logoAlt || group.logoAlt,
+        models: group.models
+          .filter((option) => option.id !== 'grok-video-1-5')
+          .map((option) => ({
+            ...option,
+            description: imageModelSelectorCopy?.models?.[option.id]?.description || option.description,
+          })),
+      }
+    }).filter((group) => group.models.length > 0),
+    [imageModelSelectorCopy],
   )
   const modelOptions = useMemo(() => modelGroups.flatMap((group) => group.models), [modelGroups])
   const [selectedModelId, setSelectedModelId] = useState<ImageModelId>(modelId)
@@ -2514,7 +2530,7 @@ export default function AiImageGenerationTool({
                 <span className={`rounded-full px-1.5 py-0.5 text-[10px] font-extrabold leading-none text-white ${
                   option.badge === 'Hot' ? 'bg-red-500' : 'bg-emerald-500'
                 }`}>
-                  {option.badge}
+                  {getModelBadgeLabel(option.badge)}
                 </span>
               )}
             </span>
@@ -3586,7 +3602,7 @@ export default function AiImageGenerationTool({
                             <span className={`rounded-full px-1.5 py-0.5 text-[10px] font-extrabold leading-none text-white ${
                               selectedModelOption.badge === 'Hot' ? 'bg-red-500' : 'bg-emerald-500'
                             }`}>
-                              {selectedModelOption.badge}
+                              {getModelBadgeLabel(selectedModelOption.badge)}
                             </span>
                           )}
                         </span>

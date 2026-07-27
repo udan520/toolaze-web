@@ -10,6 +10,20 @@ test('image selector excludes video models and uses the official Grok logo', () 
   assert.match(source, /MODEL_GROUPS\.map\(.*filter\(.*grok-video-1-5/s)
   assert.match(source, /logoSrc: '\/model-logos\/grok\.svg'/)
   assert.doesNotMatch(source, /modelGroups = MODEL_GROUPS\s*$/)
+
+  const groupIndexes = ['openai-gpt', 'seedream', 'nano-banana', 'xai', 'wan-ai'].map((id) =>
+    source.indexOf(`id: '${id}'`),
+  )
+  assert.deepEqual(
+    groupIndexes.every((index) => index >= 0),
+    true,
+    'image model groups should all exist in the dropdown config',
+  )
+  assert.deepEqual(
+    groupIndexes,
+    [...groupIndexes].sort((a, b) => a - b),
+    'xAI should appear directly after Nano Banana in the first-level image model dropdown',
+  )
 })
 
 test('video inline history loads both image and video records and left-aligns tabs', () => {

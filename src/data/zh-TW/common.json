@@ -664,6 +664,93 @@
         "flags": "旗幟"
       }
     },
+    "modelSelector": {
+      "badges": {
+        "hot": "熱門",
+        "new": "最新"
+      },
+      "image": {
+        "groups": {
+          "openai-gpt": {
+            "description": "結構化圖片生成與可控圖片編輯。",
+            "logoAlt": "OpenAI 標誌"
+          },
+          "xai": {
+            "description": "適合快速創意草稿與提示詞驅動圖片的 Grok 生成。",
+            "logoAlt": "xAI 標誌"
+          },
+          "seedream": {
+            "description": "商用圖片生成、參考圖編輯與設計版面。",
+            "logoAlt": "Dreamina 標誌"
+          },
+          "nano-banana": {
+            "description": "偏重參考圖的圖片編輯與多圖創作流程。",
+            "logoAlt": "Google Gemini 標誌"
+          },
+          "wan-ai": {
+            "description": "思考模式圖片生成與多參考圖構圖。",
+            "logoAlt": "Wan AI 標誌"
+          }
+        },
+        "models": {
+          "gpt-image-2": {
+            "description": "生成結構化圖片、行銷視覺、Mockup 與圖片編輯結果。"
+          },
+          "grok-1-5-image": {
+            "description": "生成圖片草稿、風格化場景與提示詞驅動視覺。"
+          },
+          "seedream-5-0-pro": {
+            "description": "更高品質的 Seedream 流程，適合精修產品與活動圖片。"
+          },
+          "seedream-5-0-lite": {
+            "description": "快速 Seedream 流程，適合草稿、概念與輕量迭代。"
+          },
+          "seedream-4-5": {
+            "description": "支援參考圖理解，適合海報、產品與字體排版圖片。"
+          },
+          "nano-banana-pro": {
+            "description": "穩定的圖片編輯流程，適合風格轉換與參考圖引導輸出。"
+          },
+          "nano-banana-2": {
+            "description": "更新的多參考圖圖片流程，支援高解析輸出。"
+          },
+          "wan-2-7-image": {
+            "description": "用多參考圖支援與結構化視覺推理生成圖片。"
+          }
+        }
+      },
+      "video": {
+        "groups": {
+          "grok": {
+            "logoAlt": "Grok 標誌"
+          },
+          "seedance": {
+            "logoAlt": "ByteDance 標誌"
+          },
+          "kling": {
+            "logoAlt": "Kling 標誌"
+          }
+        },
+        "models": {
+          "grok-1-5-video": {
+            "description": "快速參考圖轉影片動態，適合產品、創作者與社群短片。",
+            "logoAlt": "Grok 標誌"
+          },
+          "seedance-2": {
+            "description": "高控制多模態影片生成，適合電影感場景與精緻動態。",
+            "logoAlt": "ByteDance 標誌"
+          },
+          "seedance-2-mini": {
+            "description": "更高效率的 Seedance 流程，適合 480p、720p 草稿並保留強參考控制。",
+            "logoAlt": "ByteDance 標誌"
+          },
+          "kling-3": {
+            "description": "清晰影片生成，適合電影感運動、高解析鏡頭與動態場景。",
+            "logoAlt": "Kling 標誌"
+          }
+        }
+      }
+    },
     "aiVideoGeneratorTool": {
       "imageToVideo": "圖像轉影片",
       "textToVideo": "文字轉影片",

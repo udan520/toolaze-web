@@ -1737,7 +1737,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                 <Link
                   href={getLocalizedHref('/model/gpt-image-2')}
                   onClick={() => setOpenDesktopMenu(null)}
-                  className="order-5 block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
+                  className="order-4 block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
                 >
                   <img src="/model-logos/openai.svg" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="hidden">
@@ -1758,7 +1758,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                 <Link
                   href={getLocalizedHref('/model/seedream-5-0-pro')}
                   onClick={() => setOpenDesktopMenu(null)}
-                  className="order-4 block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
+                  className="order-5 block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
                 >
                   <img src="/model-logos/bytedance.svg" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="hidden">
@@ -1779,7 +1779,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                 <Link
                   href={getLocalizedHref('/model/wan-2-7-image')}
                   onClick={() => setOpenDesktopMenu(null)}
-                  className="order-6 block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
+                  className="order-8 block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
                 >
                   <img src="/model-logos/wan.ico" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="hidden">
@@ -1797,7 +1797,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                 <Link
                   href={getLocalizedHref('/model/nano-banana-pro')}
                   onClick={() => setOpenDesktopMenu(null)}
-                  className="order-7 block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
+                  className="order-9 block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
                 >
                   <img src="/model-logos/google-gemini.png" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="hidden">
@@ -1816,7 +1816,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                 <Link
                   href={getLocalizedHref('/model/nano-banana-2')}
                   onClick={() => setOpenDesktopMenu(null)}
-                  className="order-8 block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
+                  className="order-10 block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
                 >
                   <img src="/model-logos/google-gemini.png" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="hidden">
@@ -1835,7 +1835,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                 <Link
                   href={getLocalizedHref('/model/seedream-4-5')}
                   onClick={() => setOpenDesktopMenu(null)}
-                  className="order-10 block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
+                  className="order-7 block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
                 >
                   <img src="/model-logos/bytedance.svg" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="hidden">
@@ -1853,7 +1853,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                 <Link
                   href={getLocalizedHref('/model/seedream-5-0-lite')}
                   onClick={() => setOpenDesktopMenu(null)}
-                  className="order-9 block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
+                  className="order-6 block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
                 >
                   <img src="/model-logos/bytedance.svg" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="hidden">
@@ -1904,17 +1904,6 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                   <span>{navTranslations.aiVideoGenerator || defaultNavTranslations.aiVideoGenerator}</span>
                 </Link>
                 <Link
-                  href={getLocalizedHref('/text-to-video-generator')}
-                  onClick={() => setOpenDesktopMenu(null)}
-                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
-                >
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
-                    <rect x="2" y="4" width="20" height="14" rx="2" fill="#E0E7FF"/>
-                    <path d="M6 8H12M6 11H10M14 9L18 12L14 15V9Z" stroke="#4F46E5" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                  <span>{navTranslations.textToVideoGenerator || defaultNavTranslations.textToVideoGenerator}</span>
-                </Link>
-                <Link
                   href={getLocalizedHref('/image-to-video-generator')}
                   onClick={() => setOpenDesktopMenu(null)}
                   className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
@@ -1924,6 +1913,17 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                     <path d="M5 15L9 11L12 14L14 12M15 8.5L19 12L15 15.5V8.5Z" stroke="#DB2777" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                   <span>{navTranslations.imageToVideoGenerator || defaultNavTranslations.imageToVideoGenerator}</span>
+                </Link>
+                <Link
+                  href={getLocalizedHref('/text-to-video-generator')}
+                  onClick={() => setOpenDesktopMenu(null)}
+                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
+                    <rect x="2" y="4" width="20" height="14" rx="2" fill="#E0E7FF"/>
+                    <path d="M6 8H12M6 11H10M14 9L18 12L14 15V9Z" stroke="#4F46E5" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                  <span>{navTranslations.textToVideoGenerator || defaultNavTranslations.textToVideoGenerator}</span>
                 </Link>
                 <Link
                   href={getLocalizedHref('/ai-dance-generator')}
@@ -2377,7 +2377,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                       setMobileMenuOpen(false)
                       setExpandedSubmenus(new Set())
                     }}
-                    className="order-5 flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
+                    className="order-4 flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
                   >
                     <img src="/model-logos/openai.svg" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="hidden">
@@ -2401,7 +2401,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                     setMobileMenuOpen(false)
                     setExpandedSubmenus(new Set())
                   }}
-                  className="order-4 flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
+                  className="order-5 flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
                 >
                   <img src="/model-logos/bytedance.svg" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="hidden">
@@ -2425,7 +2425,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                     setMobileMenuOpen(false)
                     setExpandedSubmenus(new Set())
                   }}
-                  className="order-6 flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
+                  className="order-8 flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
                 >
                   <img src="/model-logos/wan.ico" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="hidden">
@@ -2446,7 +2446,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                       setMobileMenuOpen(false)
                       setExpandedSubmenus(new Set())
                     }}
-                    className="order-7 flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
+                    className="order-9 flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
                   >
                     <img src="/model-logos/google-gemini.png" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="hidden">
@@ -2468,7 +2468,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                       setMobileMenuOpen(false)
                       setExpandedSubmenus(new Set())
                     }}
-                    className="order-8 flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
+                    className="order-10 flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
                   >
                     <img src="/model-logos/google-gemini.png" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="hidden">
@@ -2490,7 +2490,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                       setMobileMenuOpen(false)
                       setExpandedSubmenus(new Set())
                     }}
-                    className="order-10 flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
+                    className="order-7 flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
                   >
                     <img src="/model-logos/bytedance.svg" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="hidden">
@@ -2511,7 +2511,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                       setMobileMenuOpen(false)
                       setExpandedSubmenus(new Set())
                     }}
-                    className="order-9 flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
+                    className="order-6 flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
                   >
                     <img src="/model-logos/bytedance.svg" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="hidden">
@@ -2553,20 +2553,6 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                     <span>{navTranslations.aiVideoGenerator || defaultNavTranslations.aiVideoGenerator}</span>
                   </Link>
                   <Link
-                    href={getLocalizedHref('/text-to-video-generator')}
-                    onClick={() => {
-                      setMobileMenuOpen(false)
-                      setExpandedSubmenus(new Set())
-                    }}
-                    className="flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
-                  >
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
-                      <rect x="2" y="4" width="20" height="14" rx="2" fill="#E0E7FF"/>
-                      <path d="M6 8H12M6 11H10M14 9L18 12L14 15V9Z" stroke="#4F46E5" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                    <span>{navTranslations.textToVideoGenerator || defaultNavTranslations.textToVideoGenerator}</span>
-                  </Link>
-                  <Link
                     href={getLocalizedHref('/image-to-video-generator')}
                     onClick={() => {
                       setMobileMenuOpen(false)
@@ -2579,6 +2565,20 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                       <path d="M5 15L9 11L12 14L14 12M15 8.5L19 12L15 15.5V8.5Z" stroke="#DB2777" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                     <span>{navTranslations.imageToVideoGenerator || defaultNavTranslations.imageToVideoGenerator}</span>
+                  </Link>
+                  <Link
+                    href={getLocalizedHref('/text-to-video-generator')}
+                    onClick={() => {
+                      setMobileMenuOpen(false)
+                      setExpandedSubmenus(new Set())
+                    }}
+                    className="flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
+                  >
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
+                      <rect x="2" y="4" width="20" height="14" rx="2" fill="#E0E7FF"/>
+                      <path d="M6 8H12M6 11H10M14 9L18 12L14 15V9Z" stroke="#4F46E5" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                    <span>{navTranslations.textToVideoGenerator || defaultNavTranslations.textToVideoGenerator}</span>
                   </Link>
                   <Link
                     href={getLocalizedHref('/ai-dance-generator')}

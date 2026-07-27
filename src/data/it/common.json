@@ -664,6 +664,93 @@
         "flags": "Bandiere"
       }
     },
+    "modelSelector": {
+      "badges": {
+        "hot": "Popolare",
+        "new": "Novità"
+      },
+      "image": {
+        "groups": {
+          "openai-gpt": {
+            "description": "Generazione di immagini strutturate e modifiche controllate.",
+            "logoAlt": "Logo OpenAI"
+          },
+          "xai": {
+            "description": "Generazione Grok per bozze creative rapide e immagini guidate da prompt.",
+            "logoAlt": "Logo xAI"
+          },
+          "seedream": {
+            "description": "Generazione di immagini commerciali, editing con riferimenti e layout di design.",
+            "logoAlt": "Logo Dreamina"
+          },
+          "nano-banana": {
+            "description": "Editing immagini ricco di riferimenti e workflow creativi multi-immagine.",
+            "logoAlt": "Logo Google Gemini"
+          },
+          "wan-ai": {
+            "description": "Generazione immagini in modalità ragionamento e composizione multi-riferimento.",
+            "logoAlt": "Logo Wan AI"
+          }
+        },
+        "models": {
+          "gpt-image-2": {
+            "description": "Crea immagini strutturate, visual di marketing, mockup e modifiche immagine."
+          },
+          "grok-1-5-image": {
+            "description": "Crea bozze immagine, scene stilizzate e visual guidati da prompt."
+          },
+          "seedream-5-0-pro": {
+            "description": "Workflow Seedream di qualità superiore per immagini prodotto e campagne rifinite."
+          },
+          "seedream-5-0-lite": {
+            "description": "Workflow Seedream rapido per bozze, concept e iterazioni leggere."
+          },
+          "seedream-4-5": {
+            "description": "Generazione immagini sensibile ai riferimenti per poster, prodotti e tipografia."
+          },
+          "nano-banana-pro": {
+            "description": "Workflow affidabile di editing per trasferimento stile e output guidato da riferimenti."
+          },
+          "nano-banana-2": {
+            "description": "Nuovo workflow multi-riferimento con output ad alta risoluzione."
+          },
+          "wan-2-7-image": {
+            "description": "Crea immagini con supporto multi-riferimento e ragionamento visivo strutturato."
+          }
+        }
+      },
+      "video": {
+        "groups": {
+          "grok": {
+            "logoAlt": "Logo Grok"
+          },
+          "seedance": {
+            "logoAlt": "Logo ByteDance"
+          },
+          "kling": {
+            "logoAlt": "Logo Kling"
+          }
+        },
+        "models": {
+          "grok-1-5-video": {
+            "description": "Movimento rapido da riferimento a video per clip prodotto, creator e social.",
+            "logoAlt": "Logo Grok"
+          },
+          "seedance-2": {
+            "description": "Generazione video multimodale ad alto controllo per scene cinematografiche e movimento rifinito.",
+            "logoAlt": "Logo ByteDance"
+          },
+          "seedance-2-mini": {
+            "description": "Workflow Seedance efficiente per bozze 480p e 720p più rapide con forte controllo dei riferimenti.",
+            "logoAlt": "Logo ByteDance"
+          },
+          "kling-3": {
+            "description": "Generazione video nitida per movimento cinematografico, riprese ad alta risoluzione e scene dinamiche.",
+            "logoAlt": "Logo Kling"
+          }
+        }
+      }
+    },
     "aiVideoGeneratorTool": {
       "imageToVideo": "Da immagine a video",
       "textToVideo": "Da testo a video",

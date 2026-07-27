@@ -497,6 +497,69 @@ test('breadcrumb component maps every global AI tool label through translations'
   }
 })
 
+test('model selector copy is localized for image and video dropdowns', () => {
+  const requiredImageGroups = ['openai-gpt', 'xai', 'seedream', 'nano-banana', 'wan-ai']
+  const requiredImageModels = [
+    'gpt-image-2',
+    'grok-1-5-image',
+    'seedream-5-0-pro',
+    'seedream-5-0-lite',
+    'seedream-4-5',
+    'nano-banana-pro',
+    'nano-banana-2',
+    'wan-2-7-image',
+  ]
+  const requiredVideoGroups = ['grok', 'seedance', 'kling']
+  const requiredVideoModels = ['grok-1-5-video', 'seedance-2', 'seedance-2-mini', 'kling-3']
+  const enSelector = readJson('src/data/en/common.json').common?.modelSelector
+  const imageToolSource = readProjectFile('src/components/AiImageGenerationTool.tsx')
+  const videoToolSource = readProjectFile('src/components/AiVideoGeneratorTool.tsx')
+
+  assert.match(imageToolSource, /commonTranslations\?\.common\?\.modelSelector\?\.image/)
+  assert.match(videoToolSource, /commonTranslations\?\.common\?\.modelSelector\?\.video/)
+
+  for (const locale of supportedLocales) {
+    const selector = readJson(`src/data/${locale}/common.json`).common?.modelSelector
+
+    assert.equal(typeof selector?.badges?.hot, 'string', `${locale}.badges.hot`)
+    assert.equal(typeof selector?.badges?.new, 'string', `${locale}.badges.new`)
+    if (locale !== 'en') {
+      assert.notEqual(selector.badges.hot, enSelector.badges.hot, `${locale}.badges.hot`)
+      assert.notEqual(selector.badges.new, enSelector.badges.new, `${locale}.badges.new`)
+    }
+
+    for (const groupId of requiredImageGroups) {
+      const groupCopy = selector?.image?.groups?.[groupId]
+      assert.equal(typeof groupCopy?.description, 'string', `${locale}.image.groups.${groupId}.description`)
+      assert.equal(typeof groupCopy?.logoAlt, 'string', `${locale}.image.groups.${groupId}.logoAlt`)
+      if (locale !== 'en') {
+        assert.notEqual(groupCopy.description, enSelector.image.groups[groupId].description, `${locale}.image.groups.${groupId}.description`)
+      }
+    }
+
+    for (const modelId of requiredImageModels) {
+      const modelCopy = selector?.image?.models?.[modelId]
+      assert.equal(typeof modelCopy?.description, 'string', `${locale}.image.models.${modelId}.description`)
+      if (locale !== 'en') {
+        assert.notEqual(modelCopy.description, enSelector.image.models[modelId].description, `${locale}.image.models.${modelId}.description`)
+      }
+    }
+
+    for (const groupId of requiredVideoGroups) {
+      assert.equal(typeof selector?.video?.groups?.[groupId]?.logoAlt, 'string', `${locale}.video.groups.${groupId}.logoAlt`)
+    }
+
+    for (const modelId of requiredVideoModels) {
+      const modelCopy = selector?.video?.models?.[modelId]
+      assert.equal(typeof modelCopy?.description, 'string', `${locale}.video.models.${modelId}.description`)
+      assert.equal(typeof modelCopy?.logoAlt, 'string', `${locale}.video.models.${modelId}.logoAlt`)
+      if (locale !== 'en') {
+        assert.notEqual(modelCopy.description, enSelector.video.models[modelId].description, `${locale}.video.models.${modelId}.description`)
+      }
+    }
+  }
+})
+
 test('workspace sidebar labels are localized instead of hardcoded English', () => {
   const workspaceShell = readProjectFile('src/components/GlobalWorkspaceShell.tsx')
 

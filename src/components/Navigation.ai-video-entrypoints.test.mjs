@@ -13,6 +13,56 @@ test('AI Video navigation exposes Image to Video and Text to Video on desktop an
   assert.equal(textToVideoLinks.length, 2)
 })
 
+test('AI Video navigation lists Image to Video before Text to Video', () => {
+  const desktopAiVideoBlock = navigationSource.slice(
+    navigationSource.indexOf('{/* 一级菜单：AI Video */}'),
+    navigationSource.indexOf("href={getLocalizedHref('/pricing')}", navigationSource.indexOf('{/* 一级菜单：AI Video */}')),
+  )
+  const mobileAiVideoBlock = navigationSource.slice(
+    navigationSource.indexOf('{/* AI Video 部分 */}'),
+    navigationSource.indexOf("href={getLocalizedHref('/pricing')}", navigationSource.indexOf('{/* AI Video 部分 */}')),
+  )
+
+  for (const block of [desktopAiVideoBlock, mobileAiVideoBlock]) {
+    const imageToVideoIndex = block.indexOf("href={getLocalizedHref('/image-to-video-generator')}")
+    const textToVideoIndex = block.indexOf("href={getLocalizedHref('/text-to-video-generator')}")
+
+    assert.notEqual(imageToVideoIndex, -1)
+    assert.notEqual(textToVideoIndex, -1)
+    assert.ok(imageToVideoIndex < textToVideoIndex)
+  }
+})
+
+test('AI Image navigation puts GPT Image 2 first and keeps Seedream models grouped after Pro', () => {
+  const desktopAiImageBlock = navigationSource.slice(
+    navigationSource.indexOf('{/* 一级菜单：AI Image */}'),
+    navigationSource.indexOf('{/* 一级菜单：AI Video */}'),
+  )
+  const mobileAiImageBlock = navigationSource.slice(
+    navigationSource.indexOf('{/* AI Image 部分 */}'),
+    navigationSource.indexOf('{/* AI Video 部分 */}'),
+  )
+  const expectedModelOrder = [
+    '/model/gpt-image-2',
+    '/model/seedream-5-0-pro',
+    '/model/seedream-5-0-lite',
+    '/model/seedream-4-5',
+    '/model/wan-2-7-image',
+    '/model/nano-banana-pro',
+    '/model/nano-banana-2',
+  ]
+  const getOrder = (block, href) => {
+    const match = block.match(new RegExp(`href=\\{getLocalizedHref\\('${href}'\\)\\}[\\s\\S]*?className="[^"]*\\border-(\\d+)\\b`))
+    assert.notEqual(match, null, `${href} should exist in AI Image navigation`)
+    return Number(match[1])
+  }
+
+  for (const block of [desktopAiImageBlock, mobileAiImageBlock]) {
+    const orders = expectedModelOrder.map((href) => getOrder(block, href))
+    assert.deepEqual(orders, [4, 5, 6, 7, 8, 9, 10])
+  }
+})
+
 test('every navigation label used by the component exists for every supported locale', () => {
   const referencedKeys = [
     ...new Set(
