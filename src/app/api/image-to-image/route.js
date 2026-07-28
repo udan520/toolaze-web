@@ -14,6 +14,7 @@ import { calculateImageGenerationCredits } from '../_shared/generation-credits.j
 import { proxyToPagesFunctions } from '../_shared/backend-proxy.js'
 import {
   getImageGenerationCreditDescription,
+  getImageGenerationCreditMetadata,
   getImageGenerationCreditRefundDescription,
 } from '../../../../functions/_shared/generation-credit-label.mjs'
 import {
@@ -52,8 +53,15 @@ async function runLocalGenerationWithCredits(request) {
   const durationSeconds = normalizeVideoDurationSeconds(formData.get('duration'))
   const isImageToImage = String(formData.get('isImageToImage') || '') === 'true'
   const requiredCredits = calculateImageGenerationCredits(model, resolution, durationSeconds)
-  const creditDescription = getImageGenerationCreditDescription(model, isImageToImage)
-  const creditRefundDescription = getImageGenerationCreditRefundDescription(model, isImageToImage)
+  const creditMetadata = getImageGenerationCreditMetadata(model, isImageToImage, {
+    resolution,
+    durationSeconds: String(model || '').toLowerCase() === 'grok-video-1-5' ? durationSeconds : undefined,
+    toolSlug: formData.get('toolSlug'),
+    toolLabel: formData.get('toolLabel'),
+    sourcePath: formData.get('sourcePath'),
+  })
+  const creditDescription = getImageGenerationCreditDescription(model, isImageToImage, creditMetadata)
+  const creditRefundDescription = getImageGenerationCreditRefundDescription(model, isImageToImage, creditMetadata)
   const currentCredits = getLocalDevCreditSummary()
 
   if (currentCredits.balance < requiredCredits) {
@@ -76,7 +84,7 @@ async function runLocalGenerationWithCredits(request) {
     return Response.json(moderation.body, { status: moderation.status })
   }
 
-  const creditResult = consumeLocalDevCredits(requiredCredits, creditDescription)
+  const creditResult = consumeLocalDevCredits(requiredCredits, creditDescription, creditMetadata)
   if (!creditResult.ok) {
     return Response.json(
       {
@@ -94,7 +102,7 @@ async function runLocalGenerationWithCredits(request) {
     response = await runLocalImageGeneration({ request, env: process.env })
     payload = await response.json().catch(() => ({}))
   } catch (error) {
-    const refundResult = refundLocalDevCredits(requiredCredits, creditRefundDescription)
+    const refundResult = refundLocalDevCredits(requiredCredits, creditRefundDescription, creditMetadata)
     return Response.json(
       {
         error: error instanceof Error ? error.message : 'Internal server error',
@@ -106,7 +114,7 @@ async function runLocalGenerationWithCredits(request) {
   }
 
   if (!response.ok) {
-    const refundResult = refundLocalDevCredits(requiredCredits, creditRefundDescription)
+    const refundResult = refundLocalDevCredits(requiredCredits, creditRefundDescription, creditMetadata)
     return Response.json(
       {
         ...payload,
@@ -118,11 +126,7 @@ async function runLocalGenerationWithCredits(request) {
   }
 
   const taskId = payload?.taskId
-  const creditHold = taskId ? registerLocalDevCreditHold(taskId, requiredCredits, {
-    model,
-    isImageToImage,
-    durationSeconds,
-  }) : null
+  const creditHold = taskId ? registerLocalDevCreditHold(taskId, requiredCredits, creditMetadata) : null
 
   return Response.json({
     ...payload,

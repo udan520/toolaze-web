@@ -190,6 +190,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: locale === 'en' ? 0.92 : 0.87,
     })
   })
+  SUPPORTED_LOCALES.forEach((locale) => {
+    const path = locale === 'en' ? '/ai-clothes-changer' : `/${locale}/ai-clothes-changer`
+    entries.push({
+      url: `${baseUrl}${path}`,
+      lastModified: today,
+      changeFrequency: 'weekly',
+      priority: locale === 'en' ? 0.92 : 0.87,
+    })
+  })
   entries.push({
     url: `${baseUrl}/world-cup-ai-image-generator`,
     lastModified: today,

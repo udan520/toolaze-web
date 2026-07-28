@@ -30,6 +30,9 @@ function createLocalDevGenerateRequest({
   imageUrls = [],
   quality = '',
   resolution = '1K',
+  toolSlug = '',
+  toolLabel = '',
+  sourcePath = '',
 } = {}) {
   const formData = new FormData()
   formData.append('prompt', 'test prompt')
@@ -38,6 +41,9 @@ function createLocalDevGenerateRequest({
   formData.append('isImageToImage', String(isImageToImage))
   formData.append('model', model)
   if (quality) formData.append('quality', quality)
+  if (toolSlug) formData.append('toolSlug', toolSlug)
+  if (toolLabel) formData.append('toolLabel', toolLabel)
+  if (sourcePath) formData.append('sourcePath', sourcePath)
   if (imageUrls.length > 0) formData.append('imageUrls', JSON.stringify(imageUrls))
 
   return new Request('http://localhost:3016/api/image-to-image', {
@@ -94,6 +100,45 @@ test('local dev session uses local generation function instead of remote auth pr
       process.env.KIE_AI_API_KEY = originalKey
     }
     globalThis.fetch = originalFetch
+    restoreCreem()
+  }
+})
+
+test('local dev generation records wrapped tool credit titles with model metadata', async () => {
+  const originalKey = process.env.KIE_AI_API_KEY
+  const originalFetch = globalThis.fetch
+  const restoreCreem = enableCreemModerationForTest()
+  resetLocalDevCreditsForTests(1000)
+  process.env.KIE_AI_API_KEY = 'test-key'
+
+  globalThis.fetch = withCreemAllow(async () => {
+    return Response.json({ code: 200, data: { taskId: 'task_clothes_changer' } })
+  })
+
+  try {
+    const response = await POST(createLocalDevGenerateRequest({
+      model: 'seedream-5-0-lite',
+      isImageToImage: true,
+      imageUrls: ['https://example.com/person.webp', 'https://example.com/clothes.webp'],
+      toolSlug: 'ai-clothes-changer',
+      toolLabel: 'AI Clothes Changer',
+      sourcePath: '/ai-clothes-changer',
+    }))
+    const payload = await response.json()
+
+    assert.equal(response.status, 200)
+    assert.equal(payload.taskId, 'task_clothes_changer')
+    assert.equal(payload.credits.transactions[0].description, 'Clothes Changer')
+    assert.equal(payload.credits.transactions[0].metadata.toolLabel, 'Clothes Changer')
+    assert.equal(payload.credits.transactions[0].metadata.modelLabel, 'Seedream 5.0 Lite')
+  } finally {
+    resetLocalDevCreditsForTests(1000)
+    globalThis.fetch = originalFetch
+    if (originalKey === undefined) {
+      delete process.env.KIE_AI_API_KEY
+    } else {
+      process.env.KIE_AI_API_KEY = originalKey
+    }
     restoreCreem()
   }
 })
@@ -355,7 +400,7 @@ test('local dev generation refunds pre-deducted credits when task creation fails
     const payload = await response.json()
 
     assert.equal(response.status, 500)
-    assert.equal(payload.error, 'KIE task failed')
+    assert.equal(payload.error, 'The generation service is temporarily unavailable. Please try again later.')
 
     const credits = getLocalDevCreditSummary()
     assert.equal(credits.balance, 1000)

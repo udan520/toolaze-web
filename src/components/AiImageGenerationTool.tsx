@@ -1216,6 +1216,8 @@ export default function AiImageGenerationTool({
   const [activeSettingsHistoryItemId, setActiveSettingsHistoryItemId] = useState<string | null>(null)
   const [currentResult, setCurrentResult] = useState<HistoryItem | null>(null)
   const [remoteImageUrls, setRemoteImageUrls] = useState<string[]>(defaultImageUrls.slice(0, MAX_IMAGES))
+  const [clothingReferenceFiles, setClothingReferenceFiles] = useState<ImageItem[]>([])
+  const [clothingReferenceRemoteUrls, setClothingReferenceRemoteUrls] = useState<string[]>([])
   const [remoteImagePreviewStates, setRemoteImagePreviewStates] = useState<Record<string, RemoteReferenceImageState>>({})
   const [previewImage, setPreviewImage] = useState<string | null>(null)
   const [desktopPromptTooltip, setDesktopPromptTooltip] = useState<DesktopPromptTooltipState>(null)
@@ -1229,6 +1231,30 @@ export default function AiImageGenerationTool({
   const modelSelectorRef = useRef<HTMLDivElement>(null)
   const historyItemRefs = useRef(new Map<string, HTMLDivElement>())
   const restoredGenerationPollIdsRef = useRef(new Set<string>())
+  const presetReferenceImages = useMemo(
+    () => new Set(
+      promptPresets
+        .flatMap((preset) => [preset.referenceImage, preset.image])
+        .filter((url): url is string => Boolean(url))
+    ),
+    [promptPresets]
+  )
+  const applyPromptPresetReferenceImage = useCallback((referenceImage?: string) => {
+    if (promptPresetTabs.length > 0) {
+      setClothingReferenceFiles((prev) => {
+        prev.forEach((item) => URL.revokeObjectURL(item.preview))
+        return []
+      })
+      setClothingReferenceRemoteUrls(referenceImage ? [referenceImage] : [])
+      return
+    }
+
+    setRemoteImageUrls((prev) => {
+      const userReferenceUrls = prev.filter((url) => !presetReferenceImages.has(url))
+      const nextUrls = referenceImage ? [...userReferenceUrls, referenceImage] : userReferenceUrls
+      return nextUrls.slice(0, MAX_IMAGES)
+    })
+  }, [MAX_IMAGES, presetReferenceImages, promptPresetTabs.length])
   const lastRightPanelPathnameRef = useRef(pathname)
   const shouldPositionInsertedPromptRef = useRef(false)
   const localIdRef = useRef(0)
@@ -1296,6 +1322,12 @@ export default function AiImageGenerationTool({
   useEffect(() => {
     const nextTabId = promptPresetTabs[0]?.id || ''
     setActivePromptPresetTab(nextTabId)
+    if (promptPresetTabs.length > 0) {
+      setSelectedPromptPreset('')
+      setPrompt(defaultPrompt)
+      applyPromptPresetReferenceImage(undefined)
+      return
+    }
     const firstPreset = promptPresets.find(
       (item) => item.prompt?.trim() && (!nextTabId || item.group === nextTabId)
     )
@@ -1303,7 +1335,8 @@ export default function AiImageGenerationTool({
     if (firstPreset?.prompt?.trim()) {
       setPrompt(firstPreset.prompt)
     }
-  }, [promptPresetTabs, promptPresets])
+    applyPromptPresetReferenceImage(firstPreset?.referenceImage || firstPreset?.image)
+  }, [applyPromptPresetReferenceImage, defaultPrompt, promptPresetTabs, promptPresets])
 
   const visiblePromptPresets = promptPresets.filter((preset) => {
     if (preset.label.toLowerCase() === 'custom') return false
@@ -1311,11 +1344,19 @@ export default function AiImageGenerationTool({
     return preset.group === activePromptPresetTab
   })
 
-  const selectedPromptPresetReferenceImage =
-    promptPresets.find((preset) => preset.label === selectedPromptPreset)?.referenceImage
+  const selectedPromptPresetReferenceImage = (() => {
+    const preset = promptPresets.find((item) => item.label === selectedPromptPreset)
+    return preset?.referenceImage || preset?.image
+  })()
   const selectedPromptModifierOption = promptModifier?.options.find(
     (option) => (option.value || option.label) === selectedPromptModifier
   )
+  const shouldRenderWorkflowTabsAboveUpload = promptPresetTabs.length > 0
+  const currentMaxUploadImages = shouldRenderWorkflowTabsAboveUpload && activePromptPresetTab === customPromptTabId
+    ? Math.min(1, MAX_IMAGES)
+    : MAX_IMAGES
+  const personUploadMaxImages = shouldRenderWorkflowTabsAboveUpload ? Math.min(1, MAX_IMAGES) : currentMaxUploadImages
+  const clothingReferenceMaxImages = Math.min(1, MAX_IMAGES)
 
   useEffect(() => {
     const nextValue =
@@ -1347,21 +1388,36 @@ export default function AiImageGenerationTool({
     if (tabId === customPromptTabId) {
       setSelectedPromptPreset('Custom')
       setPrompt(customPromptDraft)
+      applyPromptPresetReferenceImage(undefined)
       requestAnimationFrame(() => promptTextareaRef.current?.focus())
       return
     }
 
-    const firstPreset = promptPresets.find(
-      (preset) => preset.group === tabId && preset.prompt?.trim()
-    )
-    setSelectedPromptPreset(firstPreset?.label ?? '')
-    setPrompt(firstPreset?.prompt || '')
+    setSelectedPromptPreset('')
+    setPrompt(defaultPrompt)
+    applyPromptPresetReferenceImage(undefined)
   }
 
   useEffect(() => {
-    const nextRemoteImageUrls = defaultImageUrls.slice(0, MAX_IMAGES)
+    const baseImageUrls = defaultImageUrls.filter((url) => !presetReferenceImages.has(url))
+    const presetReferenceImage = activePromptPresetTab === customPromptTabId ? undefined : selectedPromptPresetReferenceImage
+    const nextRemoteImageUrls = shouldRenderWorkflowTabsAboveUpload
+      ? baseImageUrls.slice(0, personUploadMaxImages)
+      : (presetReferenceImage ? [...baseImageUrls, presetReferenceImage] : baseImageUrls).slice(0, MAX_IMAGES)
     setRemoteImageUrls((prev) => areStringArraysEqual(prev, nextRemoteImageUrls) ? prev : nextRemoteImageUrls)
-  }, [defaultImageUrls, MAX_IMAGES])
+    if (shouldRenderWorkflowTabsAboveUpload) {
+      setClothingReferenceRemoteUrls((prev) => {
+        const nextUrls = presetReferenceImage ? [presetReferenceImage] : []
+        return areStringArraysEqual(prev, nextUrls) ? prev : nextUrls
+      })
+    }
+  }, [activePromptPresetTab, customPromptTabId, defaultImageUrls, MAX_IMAGES, personUploadMaxImages, presetReferenceImages, selectedPromptPresetReferenceImage, shouldRenderWorkflowTabsAboveUpload])
+
+  useEffect(() => {
+    if (!shouldRenderWorkflowTabsAboveUpload || activePromptPresetTab !== customPromptTabId) return
+    setImageFiles((prev) => prev.length <= currentMaxUploadImages ? prev : prev.slice(0, currentMaxUploadImages))
+    setRemoteImageUrls((prev) => prev.length <= currentMaxUploadImages ? prev : prev.slice(0, currentMaxUploadImages))
+  }, [activePromptPresetTab, currentMaxUploadImages, customPromptTabId, shouldRenderWorkflowTabsAboveUpload])
 
   const setRemoteImagePreviewState = (url: string, state: RemoteReferenceImageState) => {
     setRemoteImagePreviewStates((prev) => ({ ...prev, [url]: state }))
@@ -1370,12 +1426,13 @@ export default function AiImageGenerationTool({
   useEffect(() => {
     setRemoteImagePreviewStates((prev) => {
       const nextStates: Record<string, RemoteReferenceImageState> = {}
-      remoteImageUrls.forEach((url) => {
+      const referenceUrls = [...remoteImageUrls, ...clothingReferenceRemoteUrls]
+      referenceUrls.forEach((url) => {
         nextStates[url] = prev[url] || 'loading'
       })
       return nextStates
     })
-  }, [remoteImageUrls])
+  }, [clothingReferenceRemoteUrls, remoteImageUrls])
 
   useEffect(() => {
     if (modelConfig.aspectRatios.some((item) => item.value === aspectRatio)) return
@@ -1584,6 +1641,7 @@ export default function AiImageGenerationTool({
       const response = await fetch('/api/history', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
         body: JSON.stringify({
           mediaType: item.mediaType || 'image',
           model: item.modelId,
@@ -1857,9 +1915,13 @@ export default function AiImageGenerationTool({
     if (validFiles.length === 0) return
 
     const currentCount = imageFiles.length
-    const remainingSlots = MAX_IMAGES - currentCount
+    const remainingSlots = personUploadMaxImages - currentCount
+    if (remainingSlots <= 0) {
+      showToast(formatToolText(toolText.maxImagesAllowed, { max: personUploadMaxImages, remaining: 0 }), 'warning')
+      return
+    }
     if (validFiles.length > remainingSlots) {
-      showToast(formatToolText(toolText.maxImagesAllowed, { max: MAX_IMAGES, remaining: remainingSlots }), 'warning')
+      showToast(formatToolText(toolText.maxImagesAllowed, { max: personUploadMaxImages, remaining: Math.max(remainingSlots, 0) }), 'warning')
       validFiles.splice(remainingSlots)
     }
 
@@ -1871,7 +1933,7 @@ export default function AiImageGenerationTool({
     setRemoteImageUrls([])
     setImageFiles(prev => {
       const combined = [...prev, ...newImages]
-      return combined.slice(0, MAX_IMAGES)
+      return combined.slice(0, personUploadMaxImages)
     })
   }
 
@@ -1880,7 +1942,7 @@ export default function AiImageGenerationTool({
     setImageFiles((prev) => [
       ...prev,
       { file, preview: URL.createObjectURL(file) },
-    ].slice(0, MAX_IMAGES))
+    ].slice(0, personUploadMaxImages))
   }
 
   const replaceLocalImageWithFile = (index: number, file: File) => {
@@ -1891,6 +1953,58 @@ export default function AiImageGenerationTool({
         file,
         preview: URL.createObjectURL(file),
       }
+      return nextFiles
+    })
+  }
+
+  const handleClothingReferenceFiles = (files: FileList | File[]) => {
+    const list = Array.isArray(files) ? files : Array.from(files)
+    const validFiles = list.filter((f) => {
+      if (!f.type.startsWith('image/')) return false
+      if (f.size > MAX_FILE_SIZE) {
+        showToast(formatToolText(toolText.fileTooLarge, { name: f.name }), 'error')
+        return false
+      }
+      return true
+    })
+    const [file] = validFiles
+    if (!file) return
+
+    setSelectedPromptPreset('')
+    setClothingReferenceRemoteUrls([])
+    setClothingReferenceFiles((prev) => {
+      prev.forEach((item) => URL.revokeObjectURL(item.preview))
+      return [{ file, preview: URL.createObjectURL(file) }]
+    })
+  }
+
+  const replaceClothingReferenceRemoteImageWithFile = (_index: number, file: File) => {
+    setSelectedPromptPreset('')
+    setClothingReferenceRemoteUrls([])
+    setClothingReferenceFiles((prev) => {
+      prev.forEach((item) => URL.revokeObjectURL(item.preview))
+      return [{ file, preview: URL.createObjectURL(file) }]
+    })
+  }
+
+  const replaceClothingReferenceLocalImageWithFile = (index: number, file: File) => {
+    setSelectedPromptPreset('')
+    setClothingReferenceFiles((prev) => {
+      const nextFiles = [...prev]
+      URL.revokeObjectURL(nextFiles[index].preview)
+      nextFiles[index] = {
+        file,
+        preview: URL.createObjectURL(file),
+      }
+      return nextFiles.slice(0, clothingReferenceMaxImages)
+    })
+  }
+
+  const removeClothingReferenceImage = (index: number) => {
+    setClothingReferenceFiles((prev) => {
+      const nextFiles = [...prev]
+      URL.revokeObjectURL(nextFiles[index].preview)
+      nextFiles.splice(index, 1)
       return nextFiles
     })
   }
@@ -1906,13 +2020,20 @@ export default function AiImageGenerationTool({
 
   const clearAllImages = () => {
     imageFiles.forEach(item => URL.revokeObjectURL(item.preview))
+    clothingReferenceFiles.forEach(item => URL.revokeObjectURL(item.preview))
     setImageFiles([])
     setRemoteImageUrls([])
+    setClothingReferenceFiles([])
+    setClothingReferenceRemoteUrls([])
   }
 
 
   const getGenerationAnalyticsPayload = useCallback((extra: Record<string, string | number | boolean | undefined> = {}) => {
-    const referenceImageCount = imageFiles.length + remoteImageUrls.length
+    const referenceImageCount =
+      imageFiles.length +
+      remoteImageUrls.length +
+      clothingReferenceFiles.length +
+      clothingReferenceRemoteUrls.length
 
     return {
       source: 'nano_banana_tool',
@@ -1934,6 +2055,8 @@ export default function AiImageGenerationTool({
     activeTab,
     aspectRatio,
     generationCreditCost,
+    clothingReferenceFiles.length,
+    clothingReferenceRemoteUrls.length,
     imageFiles.length,
     isCouplePhotoMakerMode,
     modelConfig.supportsOutputFormat,
@@ -1973,6 +2096,12 @@ export default function AiImageGenerationTool({
     const requestActiveTab = activeTab
     const requestImageFiles = [...imageFiles]
     const requestRemoteImageUrls = [...remoteImageUrls]
+    const requestClothingReferenceFiles = shouldRenderWorkflowTabsAboveUpload && activePromptPresetTab !== customPromptTabId
+      ? [...clothingReferenceFiles]
+      : []
+    const requestClothingReferenceRemoteUrls = shouldRenderWorkflowTabsAboveUpload && activePromptPresetTab !== customPromptTabId
+      ? [...clothingReferenceRemoteUrls]
+      : []
     const requestAspectRatio = aspectRatio
     const requestResolution = resolution
     const requestOutputFormat = outputFormat
@@ -1984,8 +2113,12 @@ export default function AiImageGenerationTool({
     const requestModelConfig = MODEL_CONFIG[requestModelId]
     const requestCreditCost = generationCreditCost
     const requestPromptModifierPrompt = selectedPromptModifierOption?.prompt
-    const requestTemplateReferenceImage = selectedPromptPresetReferenceImage
-    const hasReferenceImages = requestImageFiles.length > 0 || requestRemoteImageUrls.length > 0
+    const requestTemplateReferenceImage = shouldRenderWorkflowTabsAboveUpload ? undefined : selectedPromptPresetReferenceImage
+    const hasPersonReferenceImages = requestImageFiles.length > 0 || requestRemoteImageUrls.length > 0
+    const hasClothingReferenceImages = requestClothingReferenceFiles.length > 0 || requestClothingReferenceRemoteUrls.length > 0
+    const hasReferenceImages = shouldRenderWorkflowTabsAboveUpload && activePromptPresetTab !== customPromptTabId
+      ? hasPersonReferenceImages && hasClothingReferenceImages
+      : hasPersonReferenceImages
 
     if (requestActiveTab === 'image-to-image' && !hasReferenceImages) return
     if (!requestPrompt) return
@@ -2010,7 +2143,12 @@ export default function AiImageGenerationTool({
     )
     const generationPreviewInputUrls = requestActiveTab === 'image-to-image'
       ? getGenerationReferenceUrls(
-        [...requestImageFiles.map((item) => item.preview), ...requestRemoteImageUrls],
+        [
+          ...requestImageFiles.map((item) => item.preview),
+          ...requestRemoteImageUrls,
+          ...requestClothingReferenceFiles.map((item) => item.preview),
+          ...requestClothingReferenceRemoteUrls,
+        ],
         requestTemplateReferenceImage,
         requestModelConfig.maxImages,
       )
@@ -2052,14 +2190,15 @@ export default function AiImageGenerationTool({
       }
       formData.append('isImageToImage', String(requestActiveTab === 'image-to-image'))
       formData.append('model', requestModelId)
+      formData.append('toolSlug', requestHistoryTool.toolSlug)
+      formData.append('toolLabel', requestHistoryTool.toolLabel)
+      formData.append('sourcePath', requestHistoryTool.sourcePath)
 
       const uploadUrl = getImageUploadUrl()
 
-      let generationInputUrls = [...requestRemoteImageUrls]
-      if (requestActiveTab === 'image-to-image' && requestImageFiles.length > 0) {
-        // 批量上传所有图片
+      const uploadLocalImageFiles = async (files: ImageItem[]) => {
         const imageUrls: string[] = []
-        for (const imageItem of requestImageFiles) {
+        for (const imageItem of files) {
           const uploadForm = new FormData()
           uploadForm.append('image', imageItem.file)
           let uploadRes: Response
@@ -2087,8 +2226,25 @@ export default function AiImageGenerationTool({
             throw new Error(toolText.uploadMissingUrl)
           }
         }
-        // 将所有 URL 作为 JSON 字符串传递
-        generationInputUrls = imageUrls
+        return imageUrls
+      }
+
+      let generationInputUrls = [...requestRemoteImageUrls]
+      if (requestActiveTab === 'image-to-image' && requestImageFiles.length > 0) {
+        generationInputUrls = [
+          ...generationInputUrls,
+          ...await uploadLocalImageFiles(requestImageFiles),
+        ]
+      }
+      generationInputUrls = [
+        ...generationInputUrls,
+        ...requestClothingReferenceRemoteUrls,
+      ]
+      if (requestActiveTab === 'image-to-image' && requestClothingReferenceFiles.length > 0) {
+        generationInputUrls = [
+          ...generationInputUrls,
+          ...await uploadLocalImageFiles(requestClothingReferenceFiles),
+        ]
       }
       generationInputUrls = getGenerationReferenceUrls(
         generationInputUrls,
@@ -2394,6 +2550,7 @@ export default function AiImageGenerationTool({
     try {
       const response = await fetch(`/api/history?id=${encodeURIComponent(itemId)}`, {
         method: 'DELETE',
+        credentials: 'include',
       })
       if (response.ok || response.status === 404) return true
     } catch (error) {
@@ -2875,7 +3032,7 @@ export default function AiImageGenerationTool({
         mode: 'image-to-image',
         imageUrl: item.outputPreview,
       }))
-      window.location.href = getLocalizedInternalPath(pathname, '/ai-image-generator')
+      window.location.href = getLocalizedInternalPath(pathname, '/ai-image-to-image-generator')
       return
     }
 
@@ -3528,6 +3685,35 @@ export default function AiImageGenerationTool({
     )
   }
 
+  const renderWorkflowPresetTabs = () => (
+    <div
+      role="tablist"
+      aria-label={promptPresetTitle}
+      data-workflow-preset-tabs
+      className="grid grid-cols-2 gap-1 rounded-xl bg-slate-100 p-1"
+    >
+      {promptPresetTabs.map((tab) => {
+        const isActive = activePromptPresetTab === tab.id
+        return (
+          <button
+            key={tab.id}
+            type="button"
+            role="tab"
+            aria-selected={isActive}
+            onClick={() => selectPromptPresetTab(tab.id)}
+            className={`min-h-9 rounded-lg px-2 py-2 text-xs font-bold transition-colors ${
+              isActive
+                ? 'bg-white text-[#4F46E5] shadow-sm'
+                : 'text-slate-500 hover:bg-white/70 hover:text-slate-800'
+            }`}
+          >
+            {tab.label}
+          </button>
+        )
+      })}
+    </div>
+  )
+
   const rightPanelShadowClass = plainRightPanel ? 'shadow-none' : 'shadow-lg shadow-[#4F46E5]/8'
 
   return (
@@ -3704,6 +3890,9 @@ export default function AiImageGenerationTool({
                 </div>
               </div>
             )}
+            {shouldRenderWorkflowTabsAboveUpload && !isCouplePhotoMakerMode && (
+              renderWorkflowPresetTabs()
+            )}
             {/* Image Upload (Image to Image) */}
             {activeTab === 'image-to-image' && (
               <ReferenceImageUploader
@@ -3730,18 +3919,57 @@ export default function AiImageGenerationTool({
                     onReplace: (file: File) => replaceLocalImageWithFile(index, file),
                   })),
                 ]}
-                maxImages={MAX_IMAGES}
+                maxImages={personUploadMaxImages}
                 maxFileSizeMb={MAX_FILE_SIZE_MB}
                 onFiles={handleFiles}
                 onValidationError={(file) => showToast(formatToolText(toolText.fileTooLarge, { name: file.name }), 'error')}
-                label={sceneText?.uploadTitle || (MAX_IMAGES === 1 ? 'Upload your image' : formatToolText(toolText.uploadUpTo, { count: MAX_IMAGES }))}
-                helperText={sceneText?.uploadHelper || formatToolText(toolText.fileLimit, { count: MAX_IMAGES }).replace('30MB', `${MAX_FILE_SIZE_MB}MB`)}
+                label={shouldRenderWorkflowTabsAboveUpload ? 'Upload person photo' : (sceneText?.uploadTitle || (personUploadMaxImages === 1 ? 'Upload your image' : formatToolText(toolText.uploadUpTo, { count: personUploadMaxImages })))}
+                helperText={shouldRenderWorkflowTabsAboveUpload ? 'Image 1: upload the person photo you want to edit.' : (sceneText?.uploadHelper || formatToolText(toolText.fileLimit, { count: personUploadMaxImages }).replace('30MB', `${MAX_FILE_SIZE_MB}MB`))}
                 uploadLabel={toolText.upload}
                 replaceLabel={toolText.replace}
                 deleteLabel={toolText.delete}
                 loadingLabel={toolText.referenceImageLoading}
                 size="compact"
                 testIdPrefix="image-reference"
+              />
+            )}
+            {activeTab === 'image-to-image' && shouldRenderWorkflowTabsAboveUpload && activePromptPresetTab !== customPromptTabId && (
+              <ReferenceImageUploader
+                items={[
+                  ...clothingReferenceRemoteUrls.map((url, index) => {
+                    const previewState = remoteImagePreviewStates[url] || 'loading'
+                    return {
+                      id: `clothing-remote-${url}-${index}`,
+                      src: previewState === 'retrying' ? normalizeReusableReferenceImageUrl(url) : getReferencePreviewUrl(url),
+                      alt: `Clothing Reference ${index + 1}`,
+                      status: previewState,
+                      onLoad: () => setRemoteImagePreviewState(url, 'loaded'),
+                      onError: () => setRemoteImagePreviewState(url, previewState === 'retrying' ? 'failed' : 'retrying'),
+                      onPreview: () => setPreviewImage(url),
+                      onRemove: () => setClothingReferenceRemoteUrls((prev) => prev.filter((_, itemIndex) => itemIndex !== index)),
+                      onReplace: (file: File) => replaceClothingReferenceRemoteImageWithFile(index, file),
+                    }
+                  }),
+                  ...clothingReferenceFiles.map((item, index) => ({
+                    id: `clothing-local-${item.file.name}-${index}`,
+                    src: item.preview,
+                    alt: `Clothing Reference ${index + 1}`,
+                    onRemove: () => removeClothingReferenceImage(index),
+                    onReplace: (file: File) => replaceClothingReferenceLocalImageWithFile(index, file),
+                  })),
+                ]}
+                maxImages={clothingReferenceMaxImages}
+                maxFileSizeMb={MAX_FILE_SIZE_MB}
+                onFiles={handleClothingReferenceFiles}
+                onValidationError={(file) => showToast(formatToolText(toolText.fileTooLarge, { name: file.name }), 'error')}
+                label={promptPresetTitle}
+                helperText="Image 2: upload your target clothing image, or choose one preset below."
+                uploadLabel={toolText.upload}
+                replaceLabel={toolText.replace}
+                deleteLabel={toolText.delete}
+                loadingLabel={toolText.referenceImageLoading}
+                size="compact"
+                testIdPrefix="clothing-reference"
               />
             )}
             {isCouplePhotoMakerMode && (
@@ -3827,9 +4055,9 @@ export default function AiImageGenerationTool({
                 {promptPresets.length > 0 && (
                   <div className="mb-3">
                     <label className="block text-xs font-semibold text-slate-500 tracking-wide mb-2">
-                      {promptPresetTitle}
+                      {shouldRenderWorkflowTabsAboveUpload ? 'Or choose a built-in clothing reference' : promptPresetTitle}
                     </label>
-                    {promptPresetTabs.length > 0 && (
+                    {!shouldRenderWorkflowTabsAboveUpload && promptPresetTabs.length > 0 && (
                       <div
                         role="tablist"
                         aria-label={promptPresetTitle}
@@ -3857,9 +4085,14 @@ export default function AiImageGenerationTool({
                       </div>
                     )}
                     {activePromptPresetTab !== customPromptTabId && (
-                      <div className={hasImagePromptPresets ? 'grid grid-cols-3 gap-2' : 'grid grid-cols-4 gap-3'}>
+                      <div className={
+                        shouldRenderWorkflowTabsAboveUpload
+                          ? 'grid grid-cols-4 gap-2'
+                          : hasImagePromptPresets
+                            ? 'grid grid-cols-3 gap-2'
+                            : 'grid grid-cols-4 gap-3'
+                      }>
                       {visiblePromptPresets.map((preset) => {
-                        const isSelected = selectedPromptPreset === preset.label
                         const hasImage = Boolean(preset.image)
                         return (
                           <button
@@ -3867,11 +4100,14 @@ export default function AiImageGenerationTool({
                             type="button"
                             title={preset.label}
                             aria-label={preset.label}
-                            aria-pressed={isSelected}
                             onClick={() => {
                               setSelectedPromptPreset(preset.label)
                               if (preset.prompt?.trim()) {
                                 setPrompt(preset.prompt)
+                              }
+                              const presetReferenceImage = preset.referenceImage || preset.image
+                              if (presetReferenceImage) {
+                                applyPromptPresetReferenceImage(presetReferenceImage)
                               }
                               if (!hidePresetPromptInput) {
                                 requestAnimationFrame(() => {
@@ -3879,39 +4115,34 @@ export default function AiImageGenerationTool({
                                 })
                               }
                             }}
-                            className={
-                              hasImage
-                                ? `group overflow-hidden rounded-xl border bg-white text-left shadow-sm transition-all ${
-                                    isSelected
-                                      ? 'border-[#4F46E5] ring-2 ring-[#4F46E5]/20'
-                                      : 'border-slate-200 hover:border-[#C7D2FE] hover:shadow-[0_8px_20px_rgba(15,23,42,0.10)]'
-                                  }`
-                                : `flex h-12 w-12 items-center justify-center rounded-2xl border bg-white p-1.5 shadow-sm transition-all ${
-                                    isSelected
-                                      ? 'border-[#4F46E5] shadow-[0_10px_26px_rgba(79,70,229,0.22)]'
-                                      : 'border-slate-200 hover:border-[#C7D2FE] hover:shadow-[0_8px_20px_rgba(15,23,42,0.10)]'
-                                  }`
-                            }
+                            className="group overflow-hidden rounded-lg border border-slate-200 bg-white text-left transition-colors hover:border-[#A5B4FC] hover:bg-[#F8FAFF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4F46E5]/30"
                           >
                             {hasImage ? (
                               <>
-                                <span className="block aspect-square w-full overflow-hidden bg-slate-100">
+                                <span className="block aspect-[3/4] w-full overflow-hidden bg-slate-50 p-1">
                                   <img
                                     src={preset.image}
                                     alt=""
-                                    className="h-full w-full object-cover transition-transform duration-200 group-hover:scale-[1.03]"
+                                    className="h-full w-full object-contain"
                                   />
                                 </span>
-                                <span className="block truncate px-2 py-1.5 text-center text-[11px] font-semibold text-slate-700">
+                                <span className="block truncate px-1 py-1 text-center text-[10px] font-semibold text-slate-600">
                                   {preset.label}
                                 </span>
                               </>
                             ) : (
-                              <span
-                                className="block min-h-9 min-w-9 rounded-xl border border-white shadow-sm"
-                                data-swatch={preset.label}
-                                style={getPromptPresetSwatchStyle(preset)}
-                              />
+                              <>
+                                <span className="flex aspect-square w-full items-center justify-center bg-slate-50 p-2">
+                                  <span
+                                    className="block h-full w-full rounded-xl border border-white shadow-sm"
+                                    data-swatch={preset.label}
+                                    style={getPromptPresetSwatchStyle(preset)}
+                                  />
+                                </span>
+                                <span className="block truncate px-1 py-1 text-center text-[10px] font-semibold text-slate-600">
+                                  {preset.label}
+                                </span>
+                              </>
                             )}
                           </button>
                         )

@@ -55,7 +55,8 @@
     "textToVideoGenerator": "텍스트-동영상 생성기",
     "imageToVideoGenerator": "이미지-동영상 생성기",
     "aiDanceGenerator": "AI 댄스 생성기",
-    "aiKissingVideoGenerator": "AI 키스 동영상 생성기"
+    "aiKissingVideoGenerator": "AI 키스 동영상 생성기",
+    "aiClothesChanger": "AI 의상 체인저"
   },
   "home": {
     "metadata": {
@@ -278,7 +279,8 @@
     "textToVideoGenerator": "텍스트-동영상 생성기",
     "imageToVideoGenerator": "이미지-동영상 생성기",
     "aiDanceGenerator": "AI 댄스 생성기",
-    "aiKissingVideoGenerator": "AI 키스 동영상 생성기"
+    "aiKissingVideoGenerator": "AI 키스 동영상 생성기",
+    "aiClothesChanger": "AI 의상 체인저"
   },
   "breadcrumb": {
     "home": "홈",
@@ -304,7 +306,8 @@
     "refundPolicy": "환불 정책",
     "acceptableUse": "허용 사용 정책",
     "textToVideoGenerator": "텍스트-동영상 생성기",
-    "imageToVideoGenerator": "이미지-동영상 생성기"
+    "imageToVideoGenerator": "이미지-동영상 생성기",
+    "aiClothesChanger": "AI 의상 체인저"
   },
   "about": {
     "metadata": {

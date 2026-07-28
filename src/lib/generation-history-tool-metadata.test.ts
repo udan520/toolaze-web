@@ -53,3 +53,15 @@ test('keeps AI dance and AI kissing history labels tied to their source routes',
     },
   )
 })
+
+
+test('uses Clothes Changer as the feature label for AI clothes changer route metadata', () => {
+  assert.deepEqual(
+    getHistoryToolMetadata('/ai-clothes-changer', 'Seedream 5.0 Lite', 'seedream-5-0-lite'),
+    {
+      toolSlug: 'ai-clothes-changer',
+      toolLabel: 'Clothes Changer',
+      sourcePath: '/ai-clothes-changer',
+    },
+  )
+})

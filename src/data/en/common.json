@@ -55,7 +55,8 @@
     "textToVideoGenerator": "Text to Video Generator",
     "imageToVideoGenerator": "Image to Video Generator",
     "aiDanceGenerator": "AI Dance Generator",
-    "aiKissingVideoGenerator": "AI Kissing Video Generator"
+    "aiKissingVideoGenerator": "AI Kissing Video Generator",
+    "aiClothesChanger": "AI Clothes Changer"
   },
   "home": {
     "metadata": {
@@ -266,7 +267,8 @@
     "textToVideoGenerator": "Text to Video Generator",
     "imageToVideoGenerator": "Image to Video Generator",
     "aiDanceGenerator": "AI Dance Generator",
-    "aiKissingVideoGenerator": "AI Kissing Video Generator"
+    "aiKissingVideoGenerator": "AI Kissing Video Generator",
+    "aiClothesChanger": "AI Clothes Changer"
   },
   "breadcrumb": {
     "home": "Home",
@@ -292,7 +294,8 @@
     "refundPolicy": "Refund Policy",
     "acceptableUse": "Acceptable Use Policy",
     "textToVideoGenerator": "Text to Video Generator",
-    "imageToVideoGenerator": "Image to Video Generator"
+    "imageToVideoGenerator": "Image to Video Generator",
+    "aiClothesChanger": "AI Clothes Changer"
   },
   "about": {
     "metadata": {

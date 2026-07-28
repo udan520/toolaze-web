@@ -3,6 +3,7 @@ import { consumeCredits, getCreditSummary, refundCredits } from '../_shared/cred
 import { calculateImageGenerationCredits } from '../_shared/generation-credits.mjs';
 import {
   getImageGenerationCreditDescription,
+  getImageGenerationCreditMetadata,
   getImageGenerationCreditRefundDescription,
 } from '../_shared/generation-credit-label.mjs';
 import {
@@ -208,7 +209,7 @@ async function consumeGenerationCredits(env, request, model, resolution, metadat
 
   const consumption = await consumeCredits(env, user.id, requiredCredits, {
     reason: 'image_generation',
-    description: getImageGenerationCreditDescription(model, metadata?.isImageToImage),
+    description: getImageGenerationCreditDescription(model, metadata?.isImageToImage, metadata),
     metadata,
   });
 
@@ -244,7 +245,7 @@ async function refundGenerationCredits(env, creditContext, metadata) {
 
   const refund = await refundCredits(env, creditContext.user.id, creditContext.requiredCredits, {
     reason: 'image_generation_refund',
-    description: getImageGenerationCreditRefundDescription(metadata?.model, metadata?.isImageToImage),
+    description: getImageGenerationCreditRefundDescription(metadata?.model, metadata?.isImageToImage, metadata),
     consumptionId: creditContext.consumption.consumptionId,
     metadata,
   }).catch(() => null);
@@ -282,6 +283,15 @@ export async function onRequest(context) {
     const providerModelId = resolveProviderModelId(model, env, isImageToImage, normalizedResolution);
     const maxImages = getMaxImagesForModel(model);
     const quality = String(formData.get('quality') || '').trim().toLowerCase();
+    const creditMetadata = getImageGenerationCreditMetadata(model, isImageToImage, {
+      providerModelId,
+      resolution: normalizedResolution,
+      mediaType,
+      durationSeconds: isVideoGenerationModel(model) ? durationSeconds : undefined,
+      toolSlug: formData.get('toolSlug'),
+      toolLabel: formData.get('toolLabel'),
+      sourcePath: formData.get('sourcePath'),
+    });
 
     if (!prompt) {
       return jsonResponse({ error: 'Prompt is required' }, 400);
@@ -330,14 +340,7 @@ export async function onRequest(context) {
       );
     }
 
-    creditContext = await consumeGenerationCredits(env, request, model, normalizedResolution, {
-      model,
-      providerModelId,
-      resolution: normalizedResolution,
-      isImageToImage,
-      mediaType,
-      durationSeconds: isVideoGenerationModel(model) ? durationSeconds : undefined,
-    });
+    creditContext = await consumeGenerationCredits(env, request, model, normalizedResolution, creditMetadata);
     if (creditContext.response) return creditContext.response;
 
     const input = isVideoGenerationModel(model)
@@ -404,11 +407,7 @@ export async function onRequest(context) {
         msg = 'Current KIE key does not support GPT Image 2. Set KIE_GPT_IMAGE_2_TEXT_MODEL or KIE_GPT_IMAGE_2_IMAGE_MODEL to your account-enabled model id.';
       }
       const credits = await refundGenerationCredits(env, creditContext, {
-        model,
-        providerModelId,
-        resolution: normalizedResolution,
-        isImageToImage,
-        durationSeconds: isVideoGenerationModel(model) ? durationSeconds : undefined,
+        ...creditMetadata,
         error: String(msg || 'Failed to create task'),
       });
       console.error('KIE generation task creation failed', {
@@ -452,8 +451,12 @@ export async function onRequest(context) {
               consumptionId: creditContext.consumption.consumptionId,
               requiredCredits: creditContext.requiredCredits,
               model,
+              modelLabel: creditMetadata.modelLabel,
               isImageToImage,
               mediaType,
+              toolSlug: creditMetadata.toolSlug,
+              toolLabel: creditMetadata.toolLabel,
+              sourcePath: creditMetadata.sourcePath,
               durationSeconds: isVideoGenerationModel(model) ? durationSeconds : undefined,
             }
           : null,
@@ -461,11 +464,7 @@ export async function onRequest(context) {
     }
 
     const credits = await refundGenerationCredits(env, creditContext, {
-      model,
-      providerModelId,
-      resolution: normalizedResolution,
-      isImageToImage,
-      durationSeconds: isVideoGenerationModel(model) ? durationSeconds : undefined,
+      ...creditMetadata,
       error: result?.message ?? result?.msg ?? 'Unexpected response format',
     });
     console.error('KIE generation task returned an unexpected response', {

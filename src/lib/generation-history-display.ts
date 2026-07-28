@@ -3,6 +3,7 @@ const WRAPPED_GENERATOR_TOOL_SLUGS = new Set([
   'ai-couple-photo-maker',
   'ai-hairstyle-changer',
   'ai-hair-color-changer',
+  'ai-clothes-changer',
   'photo-restoration',
   'watermark-remover',
   'ai-dance-generator',
@@ -14,6 +15,7 @@ const WRAPPED_GENERATOR_TOOL_LABELS: Record<string, string> = {
   'ai-couple-photo-maker': 'AI Couple Photo Maker',
   'ai-hairstyle-changer': 'AI Hair Style Changer',
   'ai-hair-color-changer': 'AI Hair Color Changer',
+  'ai-clothes-changer': 'Clothes Changer',
   'photo-restoration': 'Photo Restoration',
   'watermark-remover': 'Watermark Remover',
   'ai-dance-generator': 'AI Dance Generator',
@@ -53,18 +55,22 @@ export function getGenerationModelLabel(model: string | null | undefined) {
   return MODEL_LABELS[normalized] || normalized
 }
 
+export function getWrappedGeneratorToolSlug(item: HistoryDisplaySource) {
+  const sourceRoot = getSourcePathRoot(item.sourcePath)
+  const storedToolSlug = String(item.toolSlug || '').trim()
+  if (WRAPPED_GENERATOR_TOOL_SLUGS.has(sourceRoot)) return sourceRoot
+  if (WRAPPED_GENERATOR_TOOL_SLUGS.has(storedToolSlug)) return storedToolSlug
+  return ''
+}
+
 export function isWrappedHairToolHistory(item: HistoryDisplaySource) {
-  const toolSlug = String(item.toolSlug || '').trim()
-  if (WRAPPED_GENERATOR_TOOL_SLUGS.has(toolSlug)) return true
-  return WRAPPED_GENERATOR_TOOL_SLUGS.has(getSourcePathRoot(item.sourcePath))
+  return Boolean(getWrappedGeneratorToolSlug(item))
 }
 
 export function getWrappedHairToolHistoryDisplay(item: HistoryDisplaySource) {
   const sourceRoot = getSourcePathRoot(item.sourcePath)
   const storedToolSlug = String(item.toolSlug || '').trim()
-  const toolSlug = WRAPPED_GENERATOR_TOOL_SLUGS.has(sourceRoot)
-    ? sourceRoot
-    : storedToolSlug || sourceRoot
+  const toolSlug = getWrappedGeneratorToolSlug(item) || storedToolSlug || sourceRoot
 
   if (!isWrappedHairToolHistory(item)) {
     return {

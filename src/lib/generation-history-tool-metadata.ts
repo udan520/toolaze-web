@@ -10,7 +10,7 @@ const HISTORY_TOOL_LABELS: Record<string, string> = {
   'ai-hair-color-changer': 'AI Hair Color Changer',
   'watermark-remover': 'Watermark Remover',
   'photo-restoration': 'Photo Restoration',
-  'ai-clothes-changer': 'AI Clothes Changer',
+  'ai-clothes-changer': 'Clothes Changer',
   'ai-dance-generator': 'AI Dance Generator',
   'ai-kissing-video-generator': 'AI Kissing Video Generator',
 }

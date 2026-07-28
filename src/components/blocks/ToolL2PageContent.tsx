@@ -508,6 +508,9 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
       'aiBabyGenerator',
       'aiKissingVideoGenerator',
       'aiDanceGenerator',
+      'aiHairstyleChanger',
+      'aiHairColorChanger',
+      'aiClothesChanger',
       'worldCupAiImageGenerator',
       'fontGenerator',
       'emojiCopyAndPaste',
@@ -534,6 +537,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
       'filmTrailer',
       'aboutUs',
       'viewAllAiTools',
+      'hot',
       'emojiMenu',
     ]
     const sceneFooterKeys = [
@@ -563,6 +567,9 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
       'aiBabyGenerator',
       'aiKissingVideoGenerator',
       'aiDanceGenerator',
+      'aiHairstyleChanger',
+      'aiHairColorChanger',
+      'aiClothesChanger',
       'worldCupAiImageGenerator',
       'imageCompression',
       'imageConverter',

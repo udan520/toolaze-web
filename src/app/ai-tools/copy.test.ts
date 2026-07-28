@@ -16,6 +16,7 @@ const expectedRoutes = [
   '/ai-kissing-video-generator',
   '/ai-hairstyle-changer',
   '/ai-hair-color-changer',
+  '/ai-clothes-changer',
   '/watermark-remover',
   '/photo-restoration',
 ]
@@ -24,7 +25,7 @@ test('AI Tools hub includes every global AI tool in every locale', () => {
   for (const locale of AI_TOOLS_LOCALES) {
     const cards = getAiToolsPageCopy(locale).cards
     assert.deepEqual(cards.map((card) => card.href), expectedRoutes, `${locale} has missing or mismatched tools`)
-    assert.equal(cards.filter((card) => card.category === 'image').length, 10)
+    assert.equal(cards.filter((card) => card.category === 'image').length, 11)
     assert.equal(cards.filter((card) => card.category === 'video').length, 5)
   }
 })
@@ -44,7 +45,7 @@ test('Photo Restoration cards use the shared page demo image instead of the old 
 
     assert.ok(restorationCard, `${locale} is missing Photo Restoration`)
     assert.equal(restorationCard.image, 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-advanced-ai/photo-restoration-demo-before-after.webp')
-    assert.doesNotMatch(restorationCard.image, /images\.unsplash\.com/)
+    assert.doesNotMatch(restorationCard.image, /images.unsplash.com/)
   }
 })
 
@@ -54,6 +55,23 @@ test('Watermark Remover cards use the shared page demo image instead of the old 
 
     assert.ok(watermarkCard, `${locale} is missing Watermark Remover`)
     assert.equal(watermarkCard.image, 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-advanced-ai/watermark-remover-demo-before-after.webp')
-    assert.doesNotMatch(watermarkCard.image, /images\.unsplash\.com/)
+    assert.doesNotMatch(watermarkCard.image, /images.unsplash.com/)
+  }
+})
+
+test('AI Clothes Changer hub card is localized outside English', () => {
+  const englishCard = getAiToolsPageCopy('en').cards.find((card) => card.href === '/ai-clothes-changer')
+  assert.ok(englishCard)
+
+  for (const locale of AI_TOOLS_LOCALES.filter((locale) => locale !== 'en')) {
+    const localizedCard = getAiToolsPageCopy(locale).cards.find((card) => card.href === '/ai-clothes-changer')
+
+    assert.ok(localizedCard, `${locale} is missing the AI Clothes Changer hub card`)
+    assert.notEqual(localizedCard.title, englishCard.title, `${locale} title should not fall back to English`)
+    assert.notEqual(
+      localizedCard.description,
+      englishCard.description,
+      `${locale} description should not fall back to English`,
+    )
   }
 })

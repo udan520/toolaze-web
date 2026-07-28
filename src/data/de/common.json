@@ -55,7 +55,8 @@
     "textToVideoGenerator": "Text-zu-Video-Generator",
     "imageToVideoGenerator": "Bild-zu-Video-Generator",
     "aiDanceGenerator": "KI-Tanzgenerator",
-    "aiKissingVideoGenerator": "KI-Kuss-Video-Generator"
+    "aiKissingVideoGenerator": "KI-Kuss-Video-Generator",
+    "aiClothesChanger": "KI-Kleiderwechsler"
   },
   "home": {
     "metadata": {
@@ -278,7 +279,8 @@
     "textToVideoGenerator": "Text-zu-Video-Generator",
     "imageToVideoGenerator": "Bild-zu-Video-Generator",
     "aiDanceGenerator": "KI-Tanzgenerator",
-    "aiKissingVideoGenerator": "KI-Kuss-Video-Generator"
+    "aiKissingVideoGenerator": "KI-Kuss-Video-Generator",
+    "aiClothesChanger": "KI-Kleiderwechsler"
   },
   "breadcrumb": {
     "home": "Startseite",
@@ -304,7 +306,8 @@
     "refundPolicy": "Rückerstattungsrichtlinie",
     "acceptableUse": "Richtlinie zur zulässigen Nutzung",
     "textToVideoGenerator": "Text-zu-Video-Generator",
-    "imageToVideoGenerator": "Bild-zu-Video-Generator"
+    "imageToVideoGenerator": "Bild-zu-Video-Generator",
+    "aiClothesChanger": "KI-Kleiderwechsler"
   },
   "about": {
     "metadata": {

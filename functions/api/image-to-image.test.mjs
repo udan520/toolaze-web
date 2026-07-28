@@ -1,10 +1,7 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import imageToImageModule from './image-to-image.js'
-import imageToImageStatusModule from './image-to-image/status.js'
-
-const { onRequest } = imageToImageModule
-const { onRequest: checkImageGenerationStatus } = imageToImageStatusModule
+import { onRequest } from './image-to-image.js'
+import { onRequest as checkImageGenerationStatus } from './image-to-image/status.js'
 
 function createGenerationRequest(overrides = {}) {
   const formData = new FormData()

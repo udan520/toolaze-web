@@ -11,13 +11,17 @@ const imageToImageFunctionSource = readFileSync(new URL('../../functions/api/ima
 const navigationSource = readFileSync(new URL('./Navigation.tsx', import.meta.url), 'utf8')
 const footerSource = readFileSync(new URL('./Footer.tsx', import.meta.url), 'utf8')
 const homePageSource = readFileSync(new URL('./home/HomePageMain.tsx', import.meta.url), 'utf8')
+const homepageGridToolsSource = readFileSync(new URL('../lib/homepage-grid-tools.ts', import.meta.url), 'utf8')
+const homeAdvancedAiCardImagesSource = readFileSync(new URL('../lib/home-advanced-ai-card-images.ts', import.meta.url), 'utf8')
 const homeModelCardImagesSource = readFileSync(new URL('../lib/home-model-card-images.ts', import.meta.url), 'utf8')
 const aiToolsCopySource = readFileSync(new URL('../app/ai-tools/copy.ts', import.meta.url), 'utf8')
 const siteLanguageSwitchSource = readFileSync(new URL('../lib/site-language-switch.ts', import.meta.url), 'utf8')
 const sitemapSource = readFileSync(new URL('../app/sitemap.ts', import.meta.url), 'utf8')
 const localeAiDancePageSource = readFileSync(new URL('../app/[locale]/ai-dance-generator/page.tsx', import.meta.url), 'utf8')
+const localeAiClothesChangerPageSource = readFileSync(new URL('../app/[locale]/ai-clothes-changer/page.tsx', import.meta.url), 'utf8')
 const aiDanceContent = JSON.parse(readFileSync(new URL('../data/en/ai-dance-generator.json', import.meta.url), 'utf8'))
 const aiDanceFactoryContent = JSON.parse(readFileSync('_codex/seo-pipeline/tasks/2026-07-20-ai-dance-generator/content/en.json', 'utf8'))
+const aiClothesChangerContent = JSON.parse(readFileSync(new URL('../data/en/ai-clothes-changer.json', import.meta.url), 'utf8'))
 const aiDanceLocales = ['en', 'de', 'es', 'fr', 'it', 'ja', 'ko', 'pt', 'zh-TW']
 const aiDanceLocaleContent = Object.fromEntries(
   aiDanceLocales.map((locale) => [
@@ -231,6 +235,38 @@ test('AI Dance supports localized route switching and localized shell copy', () 
   assert.match(sceneFooterKeysBlock, /'aiDanceGenerator'/)
 })
 
+test('AI Clothes Changer supports localized route switching, sitemap, and shell entry points', () => {
+  const sceneNavKeysBlock = l2Source.slice(
+    l2Source.indexOf('const sceneNavKeys = ['),
+    l2Source.indexOf('const sceneFooterKeys = ['),
+  )
+  const sceneFooterKeysBlock = l2Source.slice(
+    l2Source.indexOf('const sceneFooterKeys = ['),
+    l2Source.indexOf('const pageTranslations ='),
+  )
+
+  assert.match(navigationSource, /aiClothesChanger/)
+  assert.match(navigationSource, /href=\{getLocalizedHref\('\/ai-clothes-changer'\)\}/)
+  assert.match(footerSource, /aiClothesChanger/)
+  assert.match(footerSource, /href=\{getLocalizedHref\('\/ai-clothes-changer'\)\}/)
+  assert.match(homepageGridToolsSource, /\{ id: 'ai-clothes-changer', usesAi: true \}/)
+  assert.match(homeAdvancedAiCardImagesSource, /'ai-clothes-changer'/)
+  assert.match(homePageSource, /for \(const tool of HOME_ADVANCED_AI_TOOL_IDS\)/)
+  assert.match(aiToolsCopySource, /href: '\/ai-clothes-changer'/)
+  assert.match(aiToolsCopySource, /supplemental\.clothes/)
+  assert.match(siteLanguageSwitchSource, /'ai-clothes-changer': ALL_LOCALE_CODES/)
+  assert.match(localeAiClothesChangerPageSource, /generateStaticParams/)
+  assert.match(localeAiClothesChangerPageSource, /hasLocaleL2JsonFile\('ai-clothes-changer', locale\)/)
+  assert.match(sitemapSource, /const path = locale === 'en' \? '\/ai-clothes-changer' : `\/\$\{locale\}\/ai-clothes-changer`/)
+  assert.match(sceneNavKeysBlock, /'aiHairstyleChanger'/)
+  assert.match(sceneNavKeysBlock, /'aiHairColorChanger'/)
+  assert.match(sceneNavKeysBlock, /'aiClothesChanger'/)
+  assert.match(sceneNavKeysBlock, /'hot'/)
+  assert.match(sceneFooterKeysBlock, /'aiHairstyleChanger'/)
+  assert.match(sceneFooterKeysBlock, /'aiHairColorChanger'/)
+  assert.match(sceneFooterKeysBlock, /'aiClothesChanger'/)
+})
+
 test('AI Dance localizes the top upload title in page data and Seo Factory content', () => {
   const expectedUploadTitles = {
     en: 'Upload your image',
@@ -288,6 +324,72 @@ test('generic GPT Image 2 top component can use a JSON-configured model id', () 
 
   assert.match(gptTopBranch, /modelId=\{getTopToolImageModelId\(content\.topTool\?\.modelId, 'gpt-image-2'\)\}/)
   assert.doesNotMatch(gptTopBranch, /modelId="gpt-image-2"/)
+})
+
+test('AI Clothes Changer keeps workflow tabs above upload and clothing presets below upload', () => {
+  assert.equal(aiClothesChangerContent.topTool?.mode, 'image-to-image')
+  assert.equal(aiClothesChangerContent.topTool?.maxUploadImages, 2)
+  assert.deepEqual(
+    aiClothesChangerContent.topTool?.functionalAcceptance?.presetTabs?.map((tab) => tab.id),
+    ['clothing-reference', 'custom'],
+  )
+
+  const workflowTabsIndex = aiImageToolSource.indexOf('data-workflow-preset-tabs')
+  const uploaderIndex = aiImageToolSource.indexOf('<ReferenceImageUploader')
+  const clothingUploaderIndex = aiImageToolSource.indexOf('testIdPrefix="clothing-reference"')
+  const presetCardsIndex = aiImageToolSource.indexOf('visiblePromptPresets.map')
+
+  assert.ok(workflowTabsIndex > -1, 'workflow tabs should render as the top-level clothes changer mode switch')
+  assert.ok(uploaderIndex > workflowTabsIndex, 'upload component should sit directly under the workflow tabs')
+  assert.ok(clothingUploaderIndex > uploaderIndex, 'clothing reference mode should render a dedicated clothing upload component')
+  assert.ok(presetCardsIndex > clothingUploaderIndex, 'clothing preset cards should stay below the clothing upload component')
+  assert.deepEqual(aiClothesChangerContent.topTool?.defaultImageUrls, [])
+  assert.match(aiClothesChangerContent.topTool?.sampleImages?.[0]?.url, /^https:\/\/pub-[a-z0-9]+\.r2\.dev\/uploads\/[a-z0-9]+\.webp$/)
+  assert.equal(aiClothesChangerContent.topTool?.sampleImages?.[0]?.width, 1600)
+  assert.equal(aiClothesChangerContent.topTool?.sampleImages?.[0]?.height, 900)
+  assert.match(aiImageToolSource, /preset\.referenceImage \|\| preset\.image/)
+  assert.match(aiImageToolSource, /requestClothingReferenceFiles/)
+  assert.match(aiImageToolSource, /requestClothingReferenceRemoteUrls/)
+})
+
+test('AI Clothes Changer renders clothing presets as four compact import shortcuts', () => {
+  const presetShortcutBlock = aiImageToolSource.slice(
+    aiImageToolSource.indexOf('{visiblePromptPresets.map((preset) => {'),
+    aiImageToolSource.indexOf('})}', aiImageToolSource.indexOf('{visiblePromptPresets.map((preset) => {')) + 3,
+  )
+
+  assert.match(aiImageToolSource, /shouldRenderWorkflowTabsAboveUpload\s*\? 'grid grid-cols-4 gap-2'/)
+  assert.match(presetShortcutBlock, /aspect-\[3\/4\]/)
+  assert.match(presetShortcutBlock, /object-contain/)
+  assert.doesNotMatch(presetShortcutBlock, /aria-pressed/)
+  assert.doesNotMatch(presetShortcutBlock, /isSelected\s*\?|ring-2 ring-\[#4F46E5\]/)
+  assert.match(aiImageToolSource, /if \(promptPresetTabs\.length > 0\) \{[\s\S]*setSelectedPromptPreset\(''\)[\s\S]*applyPromptPresetReferenceImage\(undefined\)[\s\S]*return/)
+})
+
+test('AI Clothes Changer uses Seedream 5.0 Lite for generation', () => {
+  assert.equal(aiClothesChangerContent.topTool?.modelId, 'seedream-5-0-lite')
+  assert.doesNotMatch(JSON.stringify(aiClothesChangerContent), /GPT Image 2/)
+})
+
+test('AI Clothes Changer presets use four generated R2 clothing references', () => {
+  const presets = aiClothesChangerContent.topTool?.functionalAcceptance?.presets
+    ?.filter((preset) => preset.group === 'clothing-reference') || []
+
+  assert.equal(presets.length, 4)
+  for (const preset of presets) {
+    assert.match(preset.image, /^https:\/\/pub-[a-z0-9]+\.r2\.dev\/uploads\/[a-z0-9]+\.webp$/)
+    assert.equal(preset.referenceImage, preset.image)
+  }
+})
+
+test('AI Clothes Changer prompt ideas use four 9:16 R2 images', () => {
+  const promptItems = aiClothesChangerContent.promptExamples?.items || []
+
+  assert.equal(promptItems.length, 4)
+  for (const item of promptItems) {
+    assert.match(item.image, /^https:\/\/pub-[a-z0-9]+\.r2\.dev\/uploads\/[a-z0-9]+\.webp$/)
+  }
+  assert.match(promptExamplesSource, /aspect-\[9\/16\]/)
 })
 
 test('AI Dance uses a single-image upload flow without style presets', () => {

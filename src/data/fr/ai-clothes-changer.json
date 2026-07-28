@@ -1,0 +1,305 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 2,
+    "modelId": "seedream-5-0-lite",
+    "defaultPrompt": "Image 1 is the person photo. Image 2 is the target clothing reference. Put the clothing from image 2 onto the person in image 1. Preserve the same face, identity, age, skin tone, hair, body proportions, pose, hands, background, lighting, and camera angle from image 1. Match the garment style, coverage, fabric, color, and silhouette from image 2 as closely as possible. Keep the result realistic, tasteful, and fully dressed in the target outfit.",
+    "defaultImageUrls": [],
+    "hideModelBranding": true,
+    "compactResultPanel": true,
+    "displayName": "Changeur de vêtements IA",
+    "functionalAcceptance": {
+      "recommendedMode": "clothing-reference-first-with-custom-prompt",
+      "reason": "The primary flow uses two images: a person photo plus a clothing reference. Users without a clothing photo can click a built-in full-body clothing reference. Custom mode keeps the one-person-photo plus prompt workflow.",
+      "presetTitle": "Choisir une référence de vêtement",
+      "presetTabs": [
+        {
+          "id": "clothing-reference",
+          "label": "Référence vêtement"
+        },
+        {
+          "id": "custom",
+          "label": "Personnalisé"
+        }
+      ],
+      "hidePresetPromptInput": true,
+      "customPromptTabId": "custom",
+      "presets": [
+        {
+          "label": "Costume professionnel",
+          "group": "clothing-reference",
+          "prompt": "Image 1 is the person photo. Image 2 is the target clothing reference. Put the formal business suit from image 2 onto the person in image 1. Preserve the same face, identity, age, skin tone, hair, body proportions, pose, hands, background, lighting, and camera angle from image 1. Match the suit structure, shirt, trousers, fabric, color, and fit from image 2 as closely as possible. Keep the result realistic and professionally styled.",
+          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ab409a2a358c44fb8e4178b8062ca365.webp",
+          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ab409a2a358c44fb8e4178b8062ca365.webp",
+          "swatch": "linear-gradient(135deg, #e5e7eb, #334155)"
+        },
+        {
+          "label": "Robe de soirée",
+          "group": "clothing-reference",
+          "prompt": "Image 1 is the person photo. Image 2 is the target clothing reference. Put the luxurious formal gown from image 2 onto the person in image 1. Preserve the same face, identity, age, skin tone, hair, body proportions, pose, hands, background, lighting, and camera angle from image 1. Match the gown silhouette, fabric shine, color, length, neckline, and elegant styling from image 2 as closely as possible. Keep the result realistic and tasteful.",
+          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d18eb177f182452c9a619f36c4007df4.webp",
+          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d18eb177f182452c9a619f36c4007df4.webp",
+          "swatch": "linear-gradient(135deg, #312e81, #c084fc)"
+        },
+        {
+          "label": "Bikini noir",
+          "group": "clothing-reference",
+          "prompt": "Image 1 is the person photo. Image 2 is the target clothing reference. Put the tasteful black bikini from image 2 onto the adult person in image 1. Preserve the same face, identity, age, skin tone, hair, body proportions, pose, hands, background, lighting, and camera angle from image 1. Match the swimwear shape, coverage, straps, color, and fabric from image 2 as closely as possible. Keep the result realistic, non-explicit, and suitable for a swimwear preview.",
+          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d9c58f4a47544904909fc28a0e9cd584.webp",
+          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d9c58f4a47544904909fc28a0e9cd584.webp",
+          "swatch": "linear-gradient(135deg, #111827, #020617)"
+        },
+        {
+          "label": "Bikini resort",
+          "group": "clothing-reference",
+          "prompt": "Image 1 is the person photo. Image 2 is the target clothing reference. Put the colorful resort bikini from image 2 onto the adult person in image 1. Preserve the same face, identity, age, skin tone, hair, body proportions, pose, hands, background, lighting, and camera angle from image 1. Match the swimwear shape, coverage, straps, color palette, pattern, and fabric from image 2 as closely as possible. Keep the result realistic, non-explicit, and suitable for a swimwear preview.",
+          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3f39d75486cc4e20994d4780c322336a.webp",
+          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3f39d75486cc4e20994d4780c322336a.webp",
+          "swatch": "linear-gradient(135deg, #f97316, #ec4899)"
+        },
+        {
+          "label": "Personnalisé",
+          "group": "custom"
+        }
+      ]
+    },
+    "sampleImages": [
+      {
+        "url": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/84b9bf50f4414a2c962ebd3f74cb07f0.webp",
+        "title": "AI clothes changer before and after preview",
+        "width": 1600,
+        "height": 900
+      }
+    ],
+    "textOverrides": {
+      "uploadTitle": "Importer photo de personne + référence vêtement",
+      "uploadHelper": "Importez d’abord la photo de la personne, puis importez ou choisissez ci-dessous une référence de vêtement en pied.",
+      "promptLabel": "Décrivez votre tenue",
+      "promptPlaceholder": "Mode personnalisé : importez une photo de personne, puis décrivez vêtement, tissu, palette, coupe, couvrance et occasion."
+    }
+  },
+  "metadata": {
+    "title": "Changeur de vêtements IA gratuit en ligne | Essayage virtuel | Toolaze",
+    "description": "Utilisez le changeur de vêtements IA gratuit de Toolaze pour modifier une tenue sur une photo. Importez une image, décrivez les vêtements et prévisualisez des essayages virtuels entièrement habillés."
+  },
+  "sectionsOrder": [
+    "intro",
+    "howToUse",
+    "photoTips",
+    "promptExamples",
+    "workflowComparison",
+    "scenes",
+    "features",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Changeur de <span class=\"text-gradient\">vêtements IA</span> gratuit en ligne",
+    "desc": "Importez une photo de personne avec une référence de vêtement, ou utilisez le mode personnalisé avec une photo et un prompt. Prévisualisez des changements de tenue réalistes pour business, looks formels, swimwear, créateurs et styling produit."
+  },
+  "safetyNotice": "Cet outil est destiné aux retouches de tenues de bon goût et aux aperçus de maillots de bain pour adultes. Utilisez des photos que vous possédez ou que vous avez le droit de modifier, et évitez les demandes qui retirent des vêtements, sexualisent une personne, imitent quelqu’un ou abusent d’uniformes et de logos protégés.",
+  "intro": {
+    "title": "Qu’est-ce qu’un changeur de vêtements IA ?",
+    "content": [
+      {
+        "title": "Tester des idées de tenue sans refaire de shooting",
+        "text": "Un changeur de vêtements IA modifie les vêtements visibles sur une photo tout en gardant la personne, la pose, la lumière et la scène aussi stables que possible. Toolaze prend en charge un workflow à deux images : importez la personne comme image 1, importez ou choisissez une référence de vêtement comme image 2, puis générez un aperçu d’essayage qui transfère la tenue sur la personne. Le mode personnalisé est disponible lorsque vous n’avez qu’une photo de personne et souhaitez décrire la tenue avec des mots."
+      },
+      {
+        "title": "Conçu pour les références de vêtements et les prompts personnalisés",
+        "text": "Le workflow avec référence est idéal lorsque vous avez une image cible du vêtement. Le workflow personnalisé convient quand vous voulez décrire un costume, une robe, un bikini, un manteau ou un autre style sans importer de photo du vêtement. Considérez le résultat comme un aperçu visuel : les étiquettes fines, logos exacts, coutures cachées et superpositions physiquement impossibles peuvent encore demander une vérification manuelle."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Comment changer de vêtements avec l’IA",
+    "steps": [
+      {
+        "title": "Importer la photo de la personne",
+        "desc": "Utilisez l’image 1 pour la personne. Choisissez une photo claire en pied ou mi-corps où la tenue actuelle, les bras, le torse et la silhouette sont visibles."
+      },
+      {
+        "title": "Ajouter une référence vêtement ou choisir Personnalisé",
+        "desc": "Pour le workflow avec référence, importez l’image 2 comme photo du vêtement cible ou cliquez sur une référence intégrée. En mode personnalisé, importez seulement la photo de la personne et décrivez la tenue."
+      },
+      {
+        "title": "Générer puis affiner",
+        "desc": "Vérifiez si le visage, les proportions, les mains, l’arrière-plan et la couvrance du vêtement restent stables. Si besoin, ajoutez des contraintes comme conserver la pose, garder le visage inchangé, reprendre le vêtement de l’image 2, plis de tissu réalistes."
+      }
+    ]
+  },
+  "photoTips": {
+    "title": "Conseils photo pour de meilleurs changements de tenue",
+    "subtitle": "Les retouches de vêtements IA fonctionnent mieux lorsque l’image de référence montre clairement la personne et la zone du vêtement à remplacer.",
+    "items": [
+      {
+        "title": "Montrer toute la zone de la tenue",
+        "desc": "Les photos en pied ou cadrées à la taille fonctionnent souvent mieux que les gros plans du visage, car le modèle peut lire les manches, ourlets, mains et position du corps.",
+        "color": "linear-gradient(135deg, #dbeafe, #6366f1)"
+      },
+      {
+        "title": "Commencer par des poses simples",
+        "desc": "Les poses debout ou assises simples sont plus faciles que les bras croisés, torses cachés, flou de mouvement, miroirs ou fortes occultations.",
+        "color": "linear-gradient(135deg, #fce7f3, #db2777)"
+      },
+      {
+        "title": "Rendre les contraintes d’identité explicites",
+        "desc": "Ajoutez conserver le visage, les cheveux, le teint, la pose, les proportions, l’arrière-plan et la lumière si vous voulez un aperçu d’essayage propre.",
+        "color": "linear-gradient(135deg, #fef3c7, #f97316)"
+      },
+      {
+        "title": "Éviter les petits textes et logos exacts",
+        "desc": "Les petites marques, badges, étiquettes et broderies peuvent se déformer. Utilisez des logos fictifs ou des vêtements unis sauf si vous possédez et devez utiliser l’élément précis.",
+        "color": "linear-gradient(135deg, #ede9fe, #7c3aed)"
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "Idées de prompts pour le changeur de vêtements IA",
+    "subtitle": "Voici les quatre directions vestimentaires par défaut de l’outil. Utilisez-les avec une référence vêtement, ou adaptez la formulation en mode personnalisé.",
+    "items": [
+      {
+        "title": "Costume professionnel",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/0953e4dfb6e94ce4ac2de2f7454055b2.webp",
+        "prompt": "Image 1 is the person photo. Image 2 is the target clothing reference. Put the formal business suit from image 2 onto the person in image 1. Preserve the same face, identity, body proportions, pose, hands, background, lighting, and camera angle from image 1. Match the suit structure, shirt, trousers, fabric, color, and fit from image 2 as closely as possible.",
+        "note": "Idéal pour les profils professionnels, aperçus formels en pied et tests de styling pro.",
+        "color": "linear-gradient(135deg, #e5e7eb, #334155)"
+      },
+      {
+        "title": "Robe de soirée",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/6f759339ca844449b5f0a527528660e6.webp",
+        "prompt": "Image 1 is the person photo. Image 2 is the target clothing reference. Put the luxurious formal gown from image 2 onto the person in image 1. Preserve the same face, identity, body proportions, pose, hands, background, lighting, and camera angle from image 1. Match the gown silhouette, fabric shine, color, length, neckline, and elegant styling from image 2 as closely as possible.",
+        "note": "Idéal pour le styling d’événements, concepts tapis rouge et aperçus mode premium.",
+        "color": "linear-gradient(135deg, #312e81, #c084fc)"
+      },
+      {
+        "title": "Bikini noir",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/356f99aafcde4d3a896a58f01eec038a.webp",
+        "prompt": "Image 1 is the person photo. Image 2 is the target clothing reference. Put the tasteful black bikini from image 2 onto the adult person in image 1. Preserve the same face, identity, body proportions, pose, hands, background, lighting, and camera angle from image 1. Match the swimwear shape, coverage, straps, color, and fabric from image 2 as closely as possible. Keep the result non-explicit and suitable for a swimwear preview.",
+        "note": "Idéal pour des aperçus de maillot adulte de bon goût avec un style classique.",
+        "color": "linear-gradient(135deg, #111827, #020617)"
+      },
+      {
+        "title": "Bikini resort",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/6f282bf0828b4635b42f88777a24bc3d.webp",
+        "prompt": "Image 1 is the person photo. Image 2 is the target clothing reference. Put the colorful resort bikini from image 2 onto the adult person in image 1. Preserve the same face, identity, body proportions, pose, hands, background, lighting, and camera angle from image 1. Match the swimwear shape, coverage, straps, color palette, pattern, and fabric from image 2 as closely as possible. Keep the result non-explicit and suitable for a swimwear preview.",
+        "note": "Idéal pour des aperçus de maillot adulte avec une esthétique vacances plus colorée.",
+        "color": "linear-gradient(135deg, #f97316, #ec4899)"
+      }
+    ]
+  },
+  "workflowComparison": {
+    "title": "Changeur de vêtements IA vs retouche manuelle",
+    "subtitle": "Utilisez l’IA pour une direction rapide, puis la retouche manuelle ou un vrai shooting lorsque la fidélité produit exacte est nécessaire.",
+    "columns": [
+      "Workflow",
+      "Idéal pour",
+      "Points à surveiller"
+    ],
+    "rows": [
+      [
+        "Changeur de vêtements IA Toolaze",
+        "Aperçus rapides de tenues, looks créateurs, mises à jour de profil, moodboards, tests e-commerce et visuels sociaux.",
+        "Vérifiez les mains, les bords, la logique du tissu, les petits logos et les détails exacts avant publication."
+      ],
+      [
+        "Retouche manuelle Photoshop",
+        "Corrections au pixel près, campagnes validées par marque, placement exact des logos et finition commerciale.",
+        "Prend plus de temps et nécessite souvent un retoucheur qualifié."
+      ],
+      [
+        "Shooting photo physique",
+        "Images finales de catalogue, exactitude légale du produit, validation de la coupe et détails de construction.",
+        "Nécessite vêtements, temps modèle, lieu, styling et budget de reshoot."
+      ]
+    ]
+  },
+  "scenesTitle": "Cas d’usage populaires du changement de tenue IA",
+  "scenes": [
+    {
+      "icon": "💼",
+      "title": "Styling de profil et headshot",
+      "desc": "Prévisualisez vestes professionnelles, hauts et idées de garde-robe tout en gardant votre visage et le cadrage du portrait stables."
+    },
+    {
+      "icon": "📱",
+      "title": "Contenu créateur et social",
+      "desc": "Testez streetwear, tenues saisonnières, looks événementiels et styling de miniatures sans organiser une nouvelle séance photo."
+    },
+    {
+      "icon": "🛍️",
+      "title": "Planification e-commerce",
+      "desc": "Maquettez les premières directions de lookbook, coloris et concepts de garde-robe de campagne avant le shooting final."
+    }
+  ],
+  "features": {
+    "title": "Pourquoi utiliser Toolaze pour changer de tenue avec l’IA",
+    "items": [
+      {
+        "icon": "👕",
+        "iconType": "ai",
+        "title": "Retouches guidées par référence",
+        "desc": "Importez une photo de personne et guidez l’édition avec un prompt de tenue direct au lieu de reconstruire toute l’image."
+      },
+      {
+        "icon": "🧍",
+        "iconType": "ai",
+        "title": "Structure de prompt qui préserve l’identité",
+        "desc": "Utilisez des modèles de prompts intégrés qui indiquent au modèle de garder visage, cheveux, pose, proportions, lumière et arrière-plan stables."
+      },
+      {
+        "icon": "🛡️",
+        "iconType": "ai",
+        "title": "Limite claire : entièrement habillé",
+        "desc": "La page est conçue pour des retouches habillées de bon goût et une planification pratique de tenues, pas pour retirer des vêtements ou imiter quelqu’un."
+      }
+    ]
+  },
+  "moreToolsLinks": [
+    {
+      "title": "Changeur de coiffure IA",
+      "description": "Essayez une nouvelle coiffure sur le même portrait après avoir prévisualisé la tenue.",
+      "href": "/ai-hairstyle-changer"
+    },
+    {
+      "title": "Changeur de couleur de cheveux IA",
+      "description": "Associez la nouvelle tenue à un aperçu de couleur de cheveux différente.",
+      "href": "/ai-hair-color-changer"
+    },
+    {
+      "title": "Générateur image-à-image IA",
+      "description": "Utilisez un workflow image-à-image plus large pour restyling, retouches de scène et transformations guidées par référence.",
+      "href": "/ai-image-to-image-generator"
+    }
+  ],
+  "faqTitle": "FAQ du changeur de vêtements IA",
+  "faq": [
+    {
+      "q": "Puis-je utiliser Toolaze comme changeur de vêtements IA gratuit ?",
+      "a": "Oui. Toolaze propose un workflow en ligne pour des aperçus rapides de tenue. La disponibilité et les limites de génération peuvent dépendre de la politique d’accès affichée dans le produit."
+    },
+    {
+      "q": "Est-ce la même chose qu’un essayage virtuel ?",
+      "a": "C’est une retouche d’image de type essayage virtuel : importez une photo de personne et décrivez les vêtements à prévisualiser. C’est utile pour des idées visuelles, mais cela ne remplace pas l’essayage réel, les tailles ou la photographie finale de produit."
+    },
+    {
+      "q": "Quel type de photo fonctionne le mieux ?",
+      "a": "Utilisez une photo claire en pied ou mi-corps avec vêtements visibles, pose simple, bonne lumière et peu d’occultation. Les bras croisés, torses coupés, mains cachées ou flou important sont plus difficiles."
+    },
+    {
+      "q": "Puis-je changer seulement la chemise, la robe, la veste ou le pantalon ?",
+      "a": "Oui. Dites exactement quel vêtement remplacer et ce qui doit rester inchangé. Par exemple : changer seulement la veste en blazer bleu marine, garder la chemise, le visage, les cheveux, la pose et l’arrière-plan inchangés."
+    },
+    {
+      "q": "Puis-je utiliser des logos de marque ou des uniformes ?",
+      "a": "Utilisez marques, uniformes ou designs protégés seulement si vous détenez les droits ou l’autorisation. Pour les aperçus généraux, les vêtements unis et logos fictifs sont plus sûrs et se rendent souvent plus proprement."
+    },
+    {
+      "q": "L’outil prend-il en charge le retrait de vêtements ?",
+      "a": "Non. Cette page est destinée aux retouches de tenues de bon goût et entièrement habillées. Ne l’utilisez pas pour retirer des vêtements, créer des images sexualisées, imiter quelqu’un ou modifier une personne sans autorisation appropriée."
+    }
+  ]
+}

@@ -55,7 +55,8 @@
     "textToVideoGenerator": "Générateur texte-vidéo",
     "imageToVideoGenerator": "Générateur image-vidéo",
     "aiDanceGenerator": "Générateur de danse IA",
-    "aiKissingVideoGenerator": "Générateur de vidéos de baiser IA"
+    "aiKissingVideoGenerator": "Générateur de vidéos de baiser IA",
+    "aiClothesChanger": "Changeur de vêtements IA"
   },
   "home": {
     "metadata": {
@@ -278,7 +279,8 @@
     "textToVideoGenerator": "Générateur texte-vidéo",
     "imageToVideoGenerator": "Générateur image-vidéo",
     "aiDanceGenerator": "Générateur de danse IA",
-    "aiKissingVideoGenerator": "Générateur de vidéos de baiser IA"
+    "aiKissingVideoGenerator": "Générateur de vidéos de baiser IA",
+    "aiClothesChanger": "Changeur de vêtements IA"
   },
   "breadcrumb": {
     "home": "Accueil",
@@ -304,7 +306,8 @@
     "refundPolicy": "Politique de remboursement",
     "acceptableUse": "Politique d’utilisation acceptable",
     "textToVideoGenerator": "Générateur texte-vidéo",
-    "imageToVideoGenerator": "Générateur image-vidéo"
+    "imageToVideoGenerator": "Générateur image-vidéo",
+    "aiClothesChanger": "Changeur de vêtements IA"
   },
   "about": {
     "metadata": {

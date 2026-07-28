@@ -17,6 +17,16 @@ const VIDEO_MODEL_LABELS = {
   'kling-3': 'Kling 3.0',
 };
 
+const WRAPPED_TOOL_LABELS = {
+  'ai-baby-generator': 'AI Baby Generator',
+  'ai-couple-photo-maker': 'AI Couple Photo Maker',
+  'ai-hairstyle-changer': 'AI Hair Style Changer',
+  'ai-hair-color-changer': 'AI Hair Color Changer',
+  'ai-clothes-changer': 'Clothes Changer',
+  'photo-restoration': 'Photo Restoration',
+  'watermark-remover': 'Watermark Remover',
+};
+
 function isVideoGenerationModel(model) {
   return String(model || '').trim().toLowerCase() === 'grok-video-1-5';
 }
@@ -32,17 +42,73 @@ function fallbackModelLabel(model) {
     .join(' ');
 }
 
-export function getImageGenerationCreditDescription(model, isImageToImage = false) {
+function normalizeString(value) {
+  return String(value || '').trim();
+}
+
+export function getImageGenerationModelLabel(model) {
+  const normalizedModel = normalizeString(model).toLowerCase();
+  return MODEL_LABELS[normalizedModel] || fallbackModelLabel(model);
+}
+
+export function getImageGenerationToolLabel(toolSlug, toolLabel) {
+  const normalizedToolSlug = normalizeString(toolSlug).toLowerCase();
+  if (WRAPPED_TOOL_LABELS[normalizedToolSlug]) return WRAPPED_TOOL_LABELS[normalizedToolSlug];
+  return normalizeString(toolLabel);
+}
+
+export function getImageGenerationCreditMetadata(model, isImageToImage = false, options = {}) {
+  const metadata = {
+    ...(options || {}),
+    model,
+    modelLabel: getImageGenerationModelLabel(model),
+    isImageToImage: Boolean(isImageToImage),
+  };
+  const normalizedToolSlug = normalizeString(options.toolSlug).toLowerCase();
+  const toolLabel = getImageGenerationToolLabel(normalizedToolSlug, options.toolLabel);
+  const sourcePath = normalizeString(options.sourcePath);
+
+  if (normalizedToolSlug) {
+    metadata.toolSlug = normalizedToolSlug;
+  } else {
+    delete metadata.toolSlug;
+  }
+
+  if (toolLabel) {
+    metadata.toolLabel = toolLabel;
+  } else {
+    delete metadata.toolLabel;
+  }
+
+  if (sourcePath) {
+    metadata.sourcePath = sourcePath;
+  } else {
+    delete metadata.sourcePath;
+  }
+
+  Object.keys(metadata).forEach((key) => {
+    if (metadata[key] === undefined || metadata[key] === null || metadata[key] === '') {
+      delete metadata[key];
+    }
+  });
+
+  return metadata;
+}
+
+export function getImageGenerationCreditDescription(model, isImageToImage = false, options = {}) {
+  const toolLabel = getImageGenerationToolLabel(options.toolSlug, options.toolLabel);
+  if (toolLabel) return toolLabel;
+
   const normalizedModel = String(model || '').toLowerCase();
-  const label = MODEL_LABELS[normalizedModel] || fallbackModelLabel(model);
+  const label = getImageGenerationModelLabel(model);
   const mode = isVideoGenerationModel(normalizedModel)
     ? (isImageToImage ? 'image-to-video' : 'text-to-video')
     : (isImageToImage ? 'image-to-image' : 'text-to-image');
   return `${label} ${mode} generation`;
 }
 
-export function getImageGenerationCreditRefundDescription(model, isImageToImage = false) {
-  return `${getImageGenerationCreditDescription(model, isImageToImage)} refund`;
+export function getImageGenerationCreditRefundDescription(model, isImageToImage = false, options = {}) {
+  return `${getImageGenerationCreditDescription(model, isImageToImage, options)} refund`;
 }
 
 export function getVideoGenerationCreditDescription(model, mode = 'text-to-video') {

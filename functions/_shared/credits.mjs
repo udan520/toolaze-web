@@ -1,6 +1,13 @@
 import { allocateCreditConsumption } from './credit-allocation.mjs';
+import {
+  getImageGenerationCreditDescription,
+  getImageGenerationCreditMetadata,
+  getImageGenerationCreditRefundDescription,
+  getImageGenerationModelLabel,
+} from './generation-credit-label.mjs';
 
 const NEW_USER_CREDITS = 10;
+const LEGACY_IMAGE_CREDIT_HISTORY_MATCH_WINDOW_MS = 15 * 60 * 1000;
 const CREDIT_REWARD_EVENT_REASONS = [
   'new_user_bonus',
   'daily_checkin',
@@ -10,6 +17,16 @@ const CREDIT_REWARD_EVENT_REASONS = [
 ];
 
 const CREDIT_GRANT_TRANSACTION_TYPES = new Set(['grant', 'purchase']);
+const LOCALIZED_ROUTE_PREFIXES = new Set(['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']);
+const WRAPPED_IMAGE_TOOL_SLUGS = new Set([
+  'ai-baby-generator',
+  'ai-couple-photo-maker',
+  'ai-hairstyle-changer',
+  'ai-hair-color-changer',
+  'ai-clothes-changer',
+  'photo-restoration',
+  'watermark-remover',
+]);
 
 function nowIso(now = new Date()) {
   return now.toISOString();
@@ -21,6 +38,130 @@ function createId(prefix) {
 
 function serializeMetadata(metadata) {
   return metadata ? JSON.stringify(metadata) : null;
+}
+
+function parseMetadata(metadata) {
+  if (!metadata) return null;
+  if (typeof metadata === 'object') return metadata;
+  try {
+    const parsed = JSON.parse(String(metadata));
+    return parsed && typeof parsed === 'object' ? parsed : null;
+  } catch {
+    return null;
+  }
+}
+
+function parseJsonArray(value) {
+  if (!value) return [];
+  try {
+    const parsed = JSON.parse(String(value));
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
+}
+
+function getTimestampMs(value) {
+  const timestamp = Date.parse(String(value || ''));
+  return Number.isFinite(timestamp) ? timestamp : 0;
+}
+
+function getSourcePathRoot(sourcePath) {
+  const parts = String(sourcePath || '').split('/').filter(Boolean);
+  const first = parts[0] || '';
+  const second = parts[1] || '';
+  return LOCALIZED_ROUTE_PREFIXES.has(first) ? second : first;
+}
+
+function getHistoryToolSlug(historyItem) {
+  const storedToolSlug = String(historyItem?.toolSlug || '').trim();
+  if (storedToolSlug) return storedToolSlug;
+
+  const sourceRoot = getSourcePathRoot(historyItem?.sourcePath);
+  return WRAPPED_IMAGE_TOOL_SLUGS.has(sourceRoot) ? sourceRoot : '';
+}
+
+function isLegacyImageGenerationCreditTransaction(transaction) {
+  if (!transaction || typeof transaction !== 'object') return false;
+  if (transaction.metadata?.toolLabel) return false;
+  return transaction.reason === 'image_generation' || transaction.reason === 'image_generation_refund';
+}
+
+function getImageGenerationModeFromCreditDescription(description, historyItem) {
+  const normalizedDescription = String(description || '').toLowerCase();
+  if (normalizedDescription.includes('image-to-image')) return true;
+  if (normalizedDescription.includes('text-to-image')) return false;
+  return Array.isArray(historyItem?.inputUrls) && historyItem.inputUrls.length > 0;
+}
+
+function findHistoryMatchForCreditTransaction(transaction, historyItems) {
+  const transactionTime = getTimestampMs(transaction?.createdAt);
+  if (!transactionTime || !Array.isArray(historyItems) || historyItems.length === 0) return null;
+
+  const description = String(transaction.description || '').toLowerCase();
+  const candidates = historyItems
+    .filter((item) => getHistoryToolSlug(item))
+    .map((item) => {
+      const createdAtMs = getTimestampMs(item.createdAt);
+      return {
+        item,
+        distance: createdAtMs ? Math.abs(createdAtMs - transactionTime) : Number.POSITIVE_INFINITY,
+        modelMatches: description.includes(getImageGenerationModelLabel(item.model).toLowerCase()),
+      };
+    })
+    .filter((candidate) => candidate.distance <= LEGACY_IMAGE_CREDIT_HISTORY_MATCH_WINDOW_MS)
+    .sort((left, right) => {
+      if (left.modelMatches !== right.modelMatches) return left.modelMatches ? -1 : 1;
+      return left.distance - right.distance;
+    });
+
+  return candidates[0]?.item || null;
+}
+
+function enrichCreditTransactionWithHistory(transaction, historyItems) {
+  if (!isLegacyImageGenerationCreditTransaction(transaction)) return transaction;
+
+  const historyItem = findHistoryMatchForCreditTransaction(transaction, historyItems);
+  if (!historyItem) return transaction;
+
+  const isImageToImage = getImageGenerationModeFromCreditDescription(transaction.description, historyItem);
+  const metadata = getImageGenerationCreditMetadata(historyItem.model, isImageToImage, {
+    ...(transaction.metadata || {}),
+    toolSlug: getHistoryToolSlug(historyItem),
+    toolLabel: historyItem.toolLabel,
+    sourcePath: historyItem.sourcePath,
+  });
+  const description = transaction.reason === 'image_generation_refund'
+    ? getImageGenerationCreditRefundDescription(historyItem.model, isImageToImage, metadata)
+    : getImageGenerationCreditDescription(historyItem.model, isImageToImage, metadata);
+
+  return {
+    ...transaction,
+    description,
+    metadata,
+  };
+}
+
+async function listGenerationHistoryForCreditBackfill(env, userId, limit) {
+  const safeLimit = Math.max(1, Math.min(Number(limit) || 50, 200));
+  const result = await env.DB.prepare(`
+    select id, media_type, model, input_urls, tool_slug, tool_label, source_path, created_at
+    from generation_history
+    where user_id = ?
+    order by created_at desc
+    limit ?
+  `).bind(userId, safeLimit).all();
+
+  return (result?.results || []).map((row) => ({
+    id: row.id,
+    mediaType: row.media_type,
+    model: row.model,
+    inputUrls: parseJsonArray(row.input_urls),
+    toolSlug: row.tool_slug,
+    toolLabel: row.tool_label,
+    sourcePath: row.source_path,
+    createdAt: row.created_at,
+  }));
 }
 
 async function ensureCreditAccount(env, userId, now) {
@@ -260,24 +401,35 @@ export async function getCreditSummary(env, userId, limit = 10) {
 
   const balance = await readBalance(env, userId);
   const result = await env.DB.prepare(`
-    select id, type, amount, balance_after, reason, description, created_at
+    select id, type, amount, balance_after, reason, description, metadata, created_at
     from credit_transactions
     where user_id = ?
     order by created_at desc
     limit ?
   `).bind(userId, limit).all();
-
-  return {
-    balance,
-    transactions: (result?.results || []).map((row) => ({
+  const transactions = (result?.results || []).map((row) => {
+    const metadata = parseMetadata(row.metadata);
+    return {
       id: row.id,
       type: row.type,
       amount: row.amount,
       balanceAfter: row.balance_after,
       reason: row.reason,
       description: row.description,
+      ...(metadata ? { metadata } : {}),
       createdAt: row.created_at,
-    })),
+    };
+  });
+  const needsHistoryBackfill = transactions.some(isLegacyImageGenerationCreditTransaction);
+  const historyItems = needsHistoryBackfill
+    ? await listGenerationHistoryForCreditBackfill(env, userId, Math.max(limit * 5, 50))
+    : [];
+
+  return {
+    balance,
+    transactions: transactions.map((transaction) => (
+      enrichCreditTransactionWithHistory(transaction, historyItems)
+    )),
   };
 }
 

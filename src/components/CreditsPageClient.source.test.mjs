@@ -15,9 +15,11 @@ test('credits page short English labels use Title Case', () => {
   assert.doesNotMatch(source, /balanceAfter: 'Balance: \{balance\} Credits'/)
 })
 
-test('credits page formats legacy purchase descriptions for display', () => {
-  assert.match(source, /formatCreditTransactionDescription/)
-  assert.match(source, /formatCreditTransactionDescription\(transaction\.description\)/)
+test('credits page formats transaction titles and model supplements for display', () => {
+  assert.match(source, /formatCreditTransactionTitle/)
+  assert.match(source, /formatCreditTransactionTitle\(transaction\)/)
+  assert.match(source, /formatCreditTransactionSupplement\(transaction\)/)
+  assert.match(source, /transactionSupplement \? `\$\{transactionSupplement\} · \$\{balanceText\}` : balanceText/)
   assert.match(transactionDescriptionSource, /replace\(\/\[_-\]\+\/g, ' '\)/)
   assert.match(transactionDescriptionSource, /charAt\(0\)\.toUpperCase\(\)/)
 })

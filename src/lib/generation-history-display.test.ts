@@ -54,6 +54,19 @@ test('returns function label and friendly model label for AI Couple history', ()
   })
 })
 
+test('returns Clothes Changer label for AI Clothes Changer history', () => {
+  assert.deepEqual(getWrappedHairToolHistoryDisplay({
+    model: 'seedream-5-0-lite',
+    toolSlug: 'ai-clothes-changer',
+    toolLabel: 'AI Clothes Changer',
+    sourcePath: '/ai-clothes-changer',
+  }), {
+    showToolLabel: true,
+    toolLabel: 'Clothes Changer',
+    modelLabel: 'Seedream 5.0 Lite',
+  })
+})
+
 test('falls back to the source path label for older wrapped generator tool history', () => {
   assert.deepEqual(getWrappedHairToolHistoryDisplay({
     model: 'gpt-image-2',

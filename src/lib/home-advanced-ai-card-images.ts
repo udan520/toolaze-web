@@ -18,6 +18,12 @@ export const HOME_ADVANCED_AI_CARD_IMAGES = {
     height: 450,
     alt: 'AI Hair Color Changer rose pink before and after preview',
   },
+  'ai-clothes-changer': {
+    src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/84b9bf50f4414a2c962ebd3f74cb07f0.webp',
+    width: 1600,
+    height: 900,
+    alt: 'AI Clothes Changer before and after outfit preview',
+  },
   'ai-baby-generator': {
     src: '/ai-baby-generator/hero-baby-portrait.webp',
     width: 1200,

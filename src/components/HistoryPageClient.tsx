@@ -193,7 +193,10 @@ export default function HistoryPageClient({ initialTranslations }: HistoryPageCl
       setLoading(true)
       setError('')
       try {
-        const response = await fetch('/api/history?limit=200', { cache: 'no-store' })
+        const response = await fetch('/api/history?limit=200', {
+          cache: 'no-store',
+          credentials: 'include',
+        })
         if (response.status === 401) {
           window.dispatchEvent(new CustomEvent('toolaze:open-auth-modal'))
           throw new Error(copy.signInRequired)
@@ -309,6 +312,7 @@ export default function HistoryPageClient({ initialTranslations }: HistoryPageCl
 
     const response = await fetch(`/api/history?id=${encodeURIComponent(item.id)}`, {
       method: 'DELETE',
+      credentials: 'include',
     })
     if (!response.ok) {
       const body = await response.json().catch(() => ({}))

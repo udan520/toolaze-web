@@ -1,0 +1,305 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 2,
+    "modelId": "seedream-5-0-lite",
+    "defaultPrompt": "Image 1 is the person photo. Image 2 is the target clothing reference. Put the clothing from image 2 onto the person in image 1. Preserve the same face, identity, age, skin tone, hair, body proportions, pose, hands, background, lighting, and camera angle from image 1. Match the garment style, coverage, fabric, color, and silhouette from image 2 as closely as possible. Keep the result realistic, tasteful, and fully dressed in the target outfit.",
+    "defaultImageUrls": [],
+    "hideModelBranding": true,
+    "compactResultPanel": true,
+    "displayName": "AI 換衣工具",
+    "functionalAcceptance": {
+      "recommendedMode": "clothing-reference-first-with-custom-prompt",
+      "reason": "The primary flow uses two images: a person photo plus a clothing reference. Users without a clothing photo can click a built-in full-body clothing reference. Custom mode keeps the one-person-photo plus prompt workflow.",
+      "presetTitle": "選擇服裝參考",
+      "presetTabs": [
+        {
+          "id": "clothing-reference",
+          "label": "服裝參考"
+        },
+        {
+          "id": "custom",
+          "label": "自訂"
+        }
+      ],
+      "hidePresetPromptInput": true,
+      "customPromptTabId": "custom",
+      "presets": [
+        {
+          "label": "商務西裝",
+          "group": "clothing-reference",
+          "prompt": "Image 1 is the person photo. Image 2 is the target clothing reference. Put the formal business suit from image 2 onto the person in image 1. Preserve the same face, identity, age, skin tone, hair, body proportions, pose, hands, background, lighting, and camera angle from image 1. Match the suit structure, shirt, trousers, fabric, color, and fit from image 2 as closely as possible. Keep the result realistic and professionally styled.",
+          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ab409a2a358c44fb8e4178b8062ca365.webp",
+          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ab409a2a358c44fb8e4178b8062ca365.webp",
+          "swatch": "linear-gradient(135deg, #e5e7eb, #334155)"
+        },
+        {
+          "label": "奢華禮服",
+          "group": "clothing-reference",
+          "prompt": "Image 1 is the person photo. Image 2 is the target clothing reference. Put the luxurious formal gown from image 2 onto the person in image 1. Preserve the same face, identity, age, skin tone, hair, body proportions, pose, hands, background, lighting, and camera angle from image 1. Match the gown silhouette, fabric shine, color, length, neckline, and elegant styling from image 2 as closely as possible. Keep the result realistic and tasteful.",
+          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d18eb177f182452c9a619f36c4007df4.webp",
+          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d18eb177f182452c9a619f36c4007df4.webp",
+          "swatch": "linear-gradient(135deg, #312e81, #c084fc)"
+        },
+        {
+          "label": "黑色比基尼",
+          "group": "clothing-reference",
+          "prompt": "Image 1 is the person photo. Image 2 is the target clothing reference. Put the tasteful black bikini from image 2 onto the adult person in image 1. Preserve the same face, identity, age, skin tone, hair, body proportions, pose, hands, background, lighting, and camera angle from image 1. Match the swimwear shape, coverage, straps, color, and fabric from image 2 as closely as possible. Keep the result realistic, non-explicit, and suitable for a swimwear preview.",
+          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d9c58f4a47544904909fc28a0e9cd584.webp",
+          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d9c58f4a47544904909fc28a0e9cd584.webp",
+          "swatch": "linear-gradient(135deg, #111827, #020617)"
+        },
+        {
+          "label": "度假風比基尼",
+          "group": "clothing-reference",
+          "prompt": "Image 1 is the person photo. Image 2 is the target clothing reference. Put the colorful resort bikini from image 2 onto the adult person in image 1. Preserve the same face, identity, age, skin tone, hair, body proportions, pose, hands, background, lighting, and camera angle from image 1. Match the swimwear shape, coverage, straps, color palette, pattern, and fabric from image 2 as closely as possible. Keep the result realistic, non-explicit, and suitable for a swimwear preview.",
+          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3f39d75486cc4e20994d4780c322336a.webp",
+          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3f39d75486cc4e20994d4780c322336a.webp",
+          "swatch": "linear-gradient(135deg, #f97316, #ec4899)"
+        },
+        {
+          "label": "自訂",
+          "group": "custom"
+        }
+      ]
+    },
+    "sampleImages": [
+      {
+        "url": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/84b9bf50f4414a2c962ebd3f74cb07f0.webp",
+        "title": "AI clothes changer before and after preview",
+        "width": 1600,
+        "height": 900
+      }
+    ],
+    "textOverrides": {
+      "uploadTitle": "上傳人物照片 + 服裝參考",
+      "uploadHelper": "先上傳人物照片，再在下方上傳或選擇一張全身服裝參考。",
+      "promptLabel": "描述你的服裝",
+      "promptPlaceholder": "自訂模式：上傳一張人物照片，描述服裝、布料、色彩、版型、覆蓋程度和場合。"
+    }
+  },
+  "metadata": {
+    "title": "免費 AI 換衣工具線上使用 | 虛擬試穿 | Toolaze",
+    "description": "使用 Toolaze 免費 AI 換衣工具線上更換照片中的服裝。上傳圖片、描述衣服，預覽自然且完整穿著的虛擬試穿效果。"
+  },
+  "sectionsOrder": [
+    "intro",
+    "howToUse",
+    "photoTips",
+    "promptExamples",
+    "workflowComparison",
+    "scenes",
+    "features",
+    "faq"
+  ],
+  "hero": {
+    "h1": "免費線上 <span class=\"text-gradient\">AI 換衣工具</span>",
+    "desc": "上傳人物照片和服裝參考，或使用自訂模式以一張照片加提示詞生成。預覽適合商務、正式場合、泳裝、創作者與商品造型的逼真 AI 換裝效果。"
+  },
+  "safetyNotice": "此工具僅用於得體的服裝編輯與成人泳裝預覽。請使用你擁有或取得授權可編輯的照片，避免移除衣物、性化人物、冒充他人，或濫用受保護的制服與標誌。",
+  "intro": {
+    "title": "什麼是 AI 換衣工具？",
+    "content": [
+      {
+        "title": "不用重拍也能預覽穿搭想法",
+        "text": "AI 換衣工具會編輯人物照片中可見的服裝，同時盡可能保持人物、姿勢、光線和場景穩定。Toolaze 支援雙圖流程：將人物作為圖片 1，上傳或選擇服裝參考作為圖片 2，再生成把該服裝轉移到人物身上的試穿預覽。當你只有人物照片、想用文字描述服裝時，也可以使用自訂模式。"
+      },
+      {
+        "title": "支援服裝參考與自訂提示詞",
+        "text": "當你有目標服裝圖片時，參考流程最適合。當你想描述西裝、禮服、比基尼、大衣或其他風格，又沒有服裝照片時，自訂流程更適合。請把結果視為視覺預覽；細小布標、精準品牌 logo、隱藏縫線和不合理疊穿仍可能需要人工檢查。"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "如何用 AI 更換衣服",
+    "steps": [
+      {
+        "title": "上傳人物照片",
+        "desc": "圖片 1 用於人物。選擇清楚的全身或半身照片，讓目前服裝、手臂、軀幹和身形輪廓可見。"
+      },
+      {
+        "title": "加入服裝參考或選擇自訂",
+        "desc": "參考流程中，將圖片 2 上傳為目標服裝照片，或點選內建服裝參考。自訂模式只需上傳人物照片並描述服裝。"
+      },
+      {
+        "title": "生成並微調",
+        "desc": "檢查臉部、身形比例、手部、背景和服裝覆蓋是否穩定。如有需要，加入保留姿勢、臉部不變、匹配圖片 2 服裝、真實布料皺褶等限制。"
+      }
+    ]
+  },
+  "photoTips": {
+    "title": "讓換裝效果更好的照片技巧",
+    "subtitle": "當參考圖能清楚顯示人物和要替換的服裝區域時，AI 服裝編輯效果最好。",
+    "items": [
+      {
+        "title": "顯示完整服裝區域",
+        "desc": "全身或腰部以上照片通常比緊貼臉部裁切更好，因為模型能讀取袖子、下擺、手部和身體姿勢。",
+        "color": "linear-gradient(135deg, #dbeafe, #6366f1)"
+      },
+      {
+        "title": "先使用簡單姿勢",
+        "desc": "正面站姿或坐姿比交叉手臂、遮住軀幹、動態模糊、鏡面反射或嚴重遮擋更容易處理。",
+        "color": "linear-gradient(135deg, #fce7f3, #db2777)"
+      },
+      {
+        "title": "明確寫出身份保留條件",
+        "desc": "若需要乾淨的虛擬試穿預覽，請加入保留臉部、頭髮、膚色、姿勢、身形比例、背景和光線。",
+        "color": "linear-gradient(135deg, #fef3c7, #f97316)"
+      },
+      {
+        "title": "避免太小文字和精準 logo",
+        "desc": "小品牌標誌、徽章、標籤和刺繡可能變形。除非你擁有並需要特定素材，否則使用虛構 logo 或素面服裝更安全。",
+        "color": "linear-gradient(135deg, #ede9fe, #7c3aed)"
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "AI 換衣提示詞範例",
+    "subtitle": "這是工具預設的四種服裝方向。可搭配服裝參考圖使用，也可在自訂模式中調整文字。",
+    "items": [
+      {
+        "title": "商務西裝",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/0953e4dfb6e94ce4ac2de2f7454055b2.webp",
+        "prompt": "Image 1 is the person photo. Image 2 is the target clothing reference. Put the formal business suit from image 2 onto the person in image 1. Preserve the same face, identity, body proportions, pose, hands, background, lighting, and camera angle from image 1. Match the suit structure, shirt, trousers, fabric, color, and fit from image 2 as closely as possible.",
+        "note": "適合商務個人檔案、正式全身預覽和專業造型測試。",
+        "color": "linear-gradient(135deg, #e5e7eb, #334155)"
+      },
+      {
+        "title": "奢華禮服",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/6f759339ca844449b5f0a527528660e6.webp",
+        "prompt": "Image 1 is the person photo. Image 2 is the target clothing reference. Put the luxurious formal gown from image 2 onto the person in image 1. Preserve the same face, identity, body proportions, pose, hands, background, lighting, and camera angle from image 1. Match the gown silhouette, fabric shine, color, length, neckline, and elegant styling from image 2 as closely as possible.",
+        "note": "適合正式活動造型、紅毯概念和高級時尚預覽。",
+        "color": "linear-gradient(135deg, #312e81, #c084fc)"
+      },
+      {
+        "title": "黑色比基尼",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/356f99aafcde4d3a896a58f01eec038a.webp",
+        "prompt": "Image 1 is the person photo. Image 2 is the target clothing reference. Put the tasteful black bikini from image 2 onto the adult person in image 1. Preserve the same face, identity, body proportions, pose, hands, background, lighting, and camera angle from image 1. Match the swimwear shape, coverage, straps, color, and fabric from image 2 as closely as possible. Keep the result non-explicit and suitable for a swimwear preview.",
+        "note": "適合經典風格、得體的成人泳裝預覽。",
+        "color": "linear-gradient(135deg, #111827, #020617)"
+      },
+      {
+        "title": "度假風比基尼",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/6f282bf0828b4635b42f88777a24bc3d.webp",
+        "prompt": "Image 1 is the person photo. Image 2 is the target clothing reference. Put the colorful resort bikini from image 2 onto the adult person in image 1. Preserve the same face, identity, body proportions, pose, hands, background, lighting, and camera angle from image 1. Match the swimwear shape, coverage, straps, color palette, pattern, and fabric from image 2 as closely as possible. Keep the result non-explicit and suitable for a swimwear preview.",
+        "note": "適合更明亮度假風的成人泳裝預覽。",
+        "color": "linear-gradient(135deg, #f97316, #ec4899)"
+      }
+    ]
+  },
+  "workflowComparison": {
+    "title": "AI 換衣 vs 手動服裝修圖",
+    "subtitle": "用 AI 快速探索方向；需要精準商品還原時，再使用手動修圖或真實拍攝。",
+    "columns": [
+      "流程",
+      "最適合",
+      "注意事項"
+    ],
+    "rows": [
+      [
+        "Toolaze AI 換衣工具",
+        "快速穿搭預覽、創作者造型、個人檔案更新、情緒板、電商概念測試和社群視覺。",
+        "發布前請檢查手部、邊緣、布料邏輯、小 logo 和精準商品細節。"
+      ],
+      [
+        "手動 Photoshop 修圖",
+        "像素級修正、品牌核准活動、精準 logo 位置和商業圖像完稿。",
+        "需要更多時間，通常也需要熟練修圖師。"
+      ],
+      [
+        "實體拍攝",
+        "最終商品目錄圖、法律層面的商品準確性、版型驗證和服裝結構細節。",
+        "需要服裝、模特時間、場地、造型和重拍預算。"
+      ]
+    ]
+  },
+  "scenesTitle": "熱門 AI 換裝使用場景",
+  "scenes": [
+    {
+      "icon": "💼",
+      "title": "個人檔案與頭像造型",
+      "desc": "預覽適合工作的外套、上衣和乾淨衣櫃想法，同時保持臉部與肖像構圖穩定。"
+    },
+    {
+      "icon": "📱",
+      "title": "創作者與社群內容",
+      "desc": "不用再安排拍攝，也能測試街頭穿搭、季節造型、活動 look 和縮圖風格。"
+    },
+    {
+      "icon": "🛍️",
+      "title": "電商概念規劃",
+      "desc": "在正式拍攝前，快速模擬早期 lookbook 方向、配色和活動服裝概念。"
+    }
+  ],
+  "features": {
+    "title": "為什麼使用 Toolaze 進行 AI 換裝",
+    "items": [
+      {
+        "icon": "👕",
+        "iconType": "ai",
+        "title": "參考圖引導的服裝編輯",
+        "desc": "上傳一張人物照片，並用直接的服裝提示詞引導編輯，而不是從零重建整張圖。"
+      },
+      {
+        "icon": "🧍",
+        "iconType": "ai",
+        "title": "保留身份的提示詞結構",
+        "desc": "使用內建提示詞模式，讓模型保持臉部、頭髮、姿勢、身形比例、光線和背景穩定。"
+      },
+      {
+        "icon": "🛡️",
+        "iconType": "ai",
+        "title": "清楚的完整穿著邊界",
+        "desc": "此頁面用於得體、完整穿著的服裝編輯和實用穿搭規劃，不用於移除衣物或冒充他人。"
+      }
+    ]
+  },
+  "moreToolsLinks": [
+    {
+      "title": "AI 髮型變換器",
+      "description": "預覽服裝後，在同一張肖像上嘗試新髮型。",
+      "href": "/ai-hairstyle-changer"
+    },
+    {
+      "title": "AI 髮色變換器",
+      "description": "用不同髮色預覽搭配新的服裝。",
+      "href": "/ai-hair-color-changer"
+    },
+    {
+      "title": "AI 圖像轉圖像生成器",
+      "description": "使用更廣泛的圖像轉圖像流程，進行重新造型、場景編輯和參考引導轉換。",
+      "href": "/ai-image-to-image-generator"
+    }
+  ],
+  "faqTitle": "AI 換衣工具 FAQ",
+  "faq": [
+    {
+      "q": "我可以把 Toolaze 當免費 AI 換衣工具使用嗎？",
+      "a": "可以。Toolaze 提供線上 AI 換衣流程，用於快速穿搭預覽。可用性與生成限制可能取決於產品中顯示的 Toolaze 存取政策。"
+    },
+    {
+      "q": "這和虛擬試穿一樣嗎？",
+      "a": "這是虛擬試穿風格的圖像編輯：上傳人物照片並描述要預覽的衣服。它適合視覺想法，但不能取代真實試穿、尺寸判斷或最終商品攝影。"
+    },
+    {
+      "q": "哪種照片效果最好？",
+      "a": "使用清楚的全身或半身照片，服裝可見、姿勢簡單、光線良好且遮擋少。交叉手臂、軀幹被裁切、手部被遮住或嚴重模糊都較難乾淨編輯。"
+    },
+    {
+      "q": "可以只換襯衫、洋裝、外套或褲子嗎？",
+      "a": "可以。明確說出要替換哪件衣服，以及哪些地方必須保持不變。例如：只把外套改成海軍藍西裝外套，襯衫、臉、頭髮、姿勢和背景保持不變。"
+    },
+    {
+      "q": "可以使用品牌 logo 或制服嗎？",
+      "a": "只有在你擁有權利或取得授權時，才使用品牌標誌、制服或受保護設計。一般預覽使用素面服裝和虛構 logo 更安全，也通常更乾淨。"
+    },
+    {
+      "q": "這個工具支援移除衣服嗎？",
+      "a": "不支援。此頁面用於得體、完整穿著的服裝編輯。請勿用於移除衣物、建立性化圖片、冒充他人，或在未取得適當許可時編輯人物。"
+    }
+  ]
+}

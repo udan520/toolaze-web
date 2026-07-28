@@ -17,16 +17,12 @@ test.after(() => {
   delete globalThis[Symbol.for('toolaze.localDevAuthState')]
   rmSync(tempStateDir, { recursive: true, force: true })
 })
-import imageTaskRoute from '../route.js'
-import imageTaskStatusRoute from './route.js'
-import localDevAuthModule from '../../_shared/local-dev-auth.js'
-
-const { POST: createImageTask } = imageTaskRoute
-const { POST: checkImageTaskStatus } = imageTaskStatusRoute
-const {
+import { POST as createImageTask } from '../route.js'
+import { POST as checkImageTaskStatus } from './route.js'
+import {
   getLocalDevCreditSummary,
   resetLocalDevCreditsForTests,
-} = localDevAuthModule
+} from '../../_shared/local-dev-auth.js'
 
 function createLocalDevGenerateRequest() {
   const formData = new FormData()
@@ -84,6 +80,12 @@ test('local dev status refunds pre-deducted credits once when generation fails a
       requiredCredits: 10,
       model: 'gpt-image-2',
       isImageToImage: false,
+      metadata: {
+        model: 'gpt-image-2',
+        modelLabel: 'GPT Image 2',
+        isImageToImage: false,
+        resolution: '1K',
+      },
     })
 
     globalThis.fetch = async () => {
@@ -112,6 +114,15 @@ test('local dev status refunds pre-deducted credits once when generation fails a
 
     assert.equal(duplicateRefundPayload.refundedCredits, 0)
     assert.equal(getLocalDevCreditSummary().balance, 1000)
+    const refundTransaction = getLocalDevCreditSummary().transactions.find((transaction) => (
+      transaction.description === 'GPT Image 2 text-to-image generation refund'
+    ))
+    assert.deepEqual(refundTransaction?.metadata, {
+      model: 'gpt-image-2',
+      modelLabel: 'GPT Image 2',
+      isImageToImage: false,
+      resolution: '1K',
+    })
     assert.equal(
       getLocalDevCreditSummary().transactions.filter((transaction) => (
         transaction.description === 'GPT Image 2 text-to-image generation refund'

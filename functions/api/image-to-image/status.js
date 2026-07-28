@@ -139,6 +139,16 @@ function readCreditHold(body, taskId) {
     model: creditHold.model ? String(creditHold.model) : undefined,
     isImageToImage: Boolean(creditHold.isImageToImage),
     mediaType: creditHold.mediaType === 'video' ? 'video' : 'image',
+    metadata: {
+      ...(creditHold.metadata && typeof creditHold.metadata === 'object' ? creditHold.metadata : {}),
+      model: creditHold.model ? String(creditHold.model) : undefined,
+      modelLabel: creditHold.modelLabel ? String(creditHold.modelLabel) : undefined,
+      toolSlug: creditHold.toolSlug ? String(creditHold.toolSlug) : undefined,
+      toolLabel: creditHold.toolLabel ? String(creditHold.toolLabel) : undefined,
+      sourcePath: creditHold.sourcePath ? String(creditHold.sourcePath) : undefined,
+      isImageToImage: Boolean(creditHold.isImageToImage),
+      mediaType: creditHold.mediaType === 'video' ? 'video' : 'image',
+    },
   };
 }
 
@@ -151,16 +161,21 @@ async function refundFailedGenerationCredits(env, request, body, taskId, message
   const user = await getCurrentUser(env, request);
   if (!user) return null;
 
+  const refundMetadata = {
+    ...creditHold.metadata,
+    taskId,
+    error: message || 'Generation failed',
+  };
+
   const refund = await refundCredits(env, user.id, creditHold.requiredCredits, {
     reason: 'image_generation_refund',
-    description: getImageGenerationCreditRefundDescription(creditHold.model, creditHold.isImageToImage),
+    description: getImageGenerationCreditRefundDescription(
+      creditHold.model,
+      creditHold.isImageToImage,
+      refundMetadata,
+    ),
     consumptionId: creditHold.consumptionId,
-    metadata: {
-      taskId,
-      model: creditHold.model,
-      isImageToImage: creditHold.isImageToImage,
-      error: message || 'Generation failed',
-    },
+    metadata: refundMetadata,
   }).catch(() => null);
 
   if (!refund) return null;

@@ -1,5 +1,11 @@
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname } from 'node:path'
+import {
+  getImageGenerationCreditDescription,
+  getImageGenerationCreditMetadata,
+  getImageGenerationCreditRefundDescription,
+  getImageGenerationModelLabel,
+} from '../../../../functions/_shared/generation-credit-label.mjs'
 
 const SESSION_COOKIE_NAME = 'toolaze_session'
 const SESSION_TTL_SECONDS = 30 * 24 * 60 * 60
@@ -10,6 +16,7 @@ const INITIAL_LOCAL_DEV_CREDIT_BALANCE = 1000
 const DEFAULT_LOCAL_DEV_STATE_FILE = '/tmp/toolaze-local-dev-state.json'
 const LOCAL_DEV_CHECK_IN_REWARDS = [5, 10, 15, 20, 25, 30, 50]
 const LOCAL_DEV_X_POST_REWARD_CREDITS = 10
+const LOCAL_DEV_LEGACY_CREDIT_HISTORY_MATCH_WINDOW_MS = 15 * 60 * 1000
 const LOCAL_DEV_REWARD_EVENT_REASONS = [
   'new_user_bonus',
   'daily_checkin',
@@ -45,6 +52,7 @@ function normalizeLocalDevCreditState(value) {
         taskId: String(hold.taskId),
         amount: Number(hold.amount) || 0,
         refunded: hold.refunded === true,
+        metadata: hold.metadata && typeof hold.metadata === 'object' ? hold.metadata : {},
       }]))
 
   return {
@@ -95,8 +103,9 @@ function createLocalDevCreditTransaction({
   balanceAfter,
   createdAt = new Date().toISOString(),
   reason,
+  metadata,
 }) {
-  return {
+  const transaction = {
     id,
     amount,
     type,
@@ -110,6 +119,10 @@ function createLocalDevCreditTransaction({
     createdAt,
     expiresAt: null,
   }
+  if (metadata && typeof metadata === 'object' && Object.keys(metadata).length > 0) {
+    transaction.metadata = metadata
+  }
+  return transaction
 }
 
 function createLocalDevCreditState(balance = INITIAL_LOCAL_DEV_CREDIT_BALANCE) {
@@ -228,12 +241,79 @@ function getLocalDevCreditState() {
   return state
 }
 
+function getTimestampMs(value) {
+  const timestamp = Date.parse(String(value || ''))
+  return Number.isFinite(timestamp) ? timestamp : 0
+}
+
+function isLegacyImageGenerationCreditTransaction(transaction) {
+  if (!transaction || typeof transaction !== 'object') return false
+  if (transaction.metadata?.toolLabel) return false
+  return transaction.reason === 'image_generation' || transaction.reason === 'image_generation_refund'
+}
+
+function getImageGenerationModeFromCreditDescription(description, historyItem) {
+  const normalizedDescription = String(description || '').toLowerCase()
+  if (normalizedDescription.includes('image-to-image')) return true
+  if (normalizedDescription.includes('text-to-image')) return false
+  return Array.isArray(historyItem?.inputUrls) && historyItem.inputUrls.length > 0
+}
+
+function findLocalDevHistoryMatchForCreditTransaction(transaction, historyItems) {
+  const transactionTime = getTimestampMs(transaction?.createdAt)
+  if (!transactionTime || !Array.isArray(historyItems) || historyItems.length === 0) return null
+
+  const description = String(transaction.description || '').toLowerCase()
+  const candidates = historyItems
+    .filter((item) => item?.toolSlug || item?.sourcePath)
+    .map((item) => {
+      const createdAtMs = getTimestampMs(item.createdAt)
+      return {
+        item,
+        distance: createdAtMs ? Math.abs(createdAtMs - transactionTime) : Number.POSITIVE_INFINITY,
+        modelMatches: description.includes(getImageGenerationModelLabel(item.model).toLowerCase()),
+      }
+    })
+    .filter((candidate) => candidate.distance <= LOCAL_DEV_LEGACY_CREDIT_HISTORY_MATCH_WINDOW_MS)
+    .sort((left, right) => {
+      if (left.modelMatches !== right.modelMatches) return left.modelMatches ? -1 : 1
+      return left.distance - right.distance
+    })
+
+  return candidates[0]?.item || null
+}
+
+function enrichLocalDevCreditTransaction(transaction, historyItems) {
+  if (!isLegacyImageGenerationCreditTransaction(transaction)) return transaction
+
+  const historyItem = findLocalDevHistoryMatchForCreditTransaction(transaction, historyItems)
+  if (!historyItem) return transaction
+
+  const isImageToImage = getImageGenerationModeFromCreditDescription(transaction.description, historyItem)
+  const metadata = getImageGenerationCreditMetadata(historyItem.model, isImageToImage, {
+    toolSlug: historyItem.toolSlug,
+    toolLabel: historyItem.toolLabel,
+    sourcePath: historyItem.sourcePath,
+  })
+  const description = transaction.reason === 'image_generation_refund'
+    ? getImageGenerationCreditRefundDescription(historyItem.model, isImageToImage, metadata)
+    : getImageGenerationCreditDescription(historyItem.model, isImageToImage, metadata)
+
+  return {
+    ...transaction,
+    description,
+    metadata,
+  }
+}
+
 export function getLocalDevCreditSummary() {
   const state = getLocalDevCreditState()
 
   return {
     balance: state.balance,
-    transactions: state.transactions.slice(0, 10),
+    transactions: state.transactions
+      .slice(0, 10)
+      .map((transaction) => enrichLocalDevCreditTransaction(transaction, state.history)),
   }
 }
 
@@ -551,7 +631,7 @@ export function deleteLocalDevHistoryItem(itemId) {
   }
 }
 
-export function consumeLocalDevCredits(amount, description = 'Image generation') {
+export function consumeLocalDevCredits(amount, description = 'Image generation', metadata) {
   const state = getLocalDevCreditState()
 
   if (!Number.isInteger(amount) || amount <= 0) {
@@ -572,6 +652,7 @@ export function consumeLocalDevCredits(amount, description = 'Image generation')
     type: 'use',
     description,
     balanceAfter: state.balance,
+    metadata,
   }))
   persistLocalDevCreditState(state)
 
@@ -582,7 +663,7 @@ export function consumeLocalDevCredits(amount, description = 'Image generation')
   }
 }
 
-export function refundLocalDevCredits(amount, description = 'Image generation refund') {
+export function refundLocalDevCredits(amount, description = 'Image generation refund', metadata) {
   const state = getLocalDevCreditState()
 
   if (!Number.isInteger(amount) || amount <= 0) {
@@ -595,6 +676,7 @@ export function refundLocalDevCredits(amount, description = 'Image generation re
     type: 'refund',
     description,
     balanceAfter: state.balance,
+    metadata,
   }))
   persistLocalDevCreditState(state)
 
@@ -616,6 +698,7 @@ export function registerLocalDevCreditHold(taskId, amount, metadata = {}) {
     refunded: false,
     model: metadata.model ? String(metadata.model) : undefined,
     isImageToImage: Boolean(metadata.isImageToImage),
+    metadata: metadata && typeof metadata === 'object' ? metadata : {},
   })
   persistLocalDevCreditState(state)
 
@@ -625,6 +708,7 @@ export function registerLocalDevCreditHold(taskId, amount, metadata = {}) {
     requiredCredits: amount,
     model: metadata.model ? String(metadata.model) : undefined,
     isImageToImage: Boolean(metadata.isImageToImage),
+    metadata: metadata && typeof metadata === 'object' ? metadata : {},
   }
 }
 
@@ -642,7 +726,7 @@ export function refundLocalDevCreditHold(taskId, description = 'Image generation
 
   hold.refunded = true
   state.holds.set(hold.taskId, hold)
-  return refundLocalDevCredits(hold.amount, description)
+  return refundLocalDevCredits(hold.amount, description, hold.metadata)
 }
 
 export function resetLocalDevCreditsForTests(balance = INITIAL_LOCAL_DEV_CREDIT_BALANCE) {

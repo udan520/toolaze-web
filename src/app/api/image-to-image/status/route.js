@@ -36,7 +36,11 @@ async function runLocalGenerationStatusWithCreditRefund(request) {
   ) {
     const refundResult = refundLocalDevCreditHold(
       body.taskId,
-      getImageGenerationCreditRefundDescription(body.creditHold.model, body.creditHold.isImageToImage),
+      getImageGenerationCreditRefundDescription(
+        body.creditHold.model,
+        body.creditHold.isImageToImage,
+        body.creditHold.metadata,
+      ),
     )
     return Response.json({
       ...payload,

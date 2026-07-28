@@ -55,7 +55,8 @@
     "textToVideoGenerator": "テキストから動画生成",
     "imageToVideoGenerator": "画像から動画生成",
     "aiDanceGenerator": "AIダンスジェネレーター",
-    "aiKissingVideoGenerator": "AIキス動画ジェネレーター"
+    "aiKissingVideoGenerator": "AIキス動画ジェネレーター",
+    "aiClothesChanger": "AI服装チェンジャー"
   },
   "home": {
     "metadata": {
@@ -278,7 +279,8 @@
     "textToVideoGenerator": "テキストから動画生成",
     "imageToVideoGenerator": "画像から動画生成",
     "aiDanceGenerator": "AIダンスジェネレーター",
-    "aiKissingVideoGenerator": "AIキス動画ジェネレーター"
+    "aiKissingVideoGenerator": "AIキス動画ジェネレーター",
+    "aiClothesChanger": "AI服装チェンジャー"
   },
   "breadcrumb": {
     "home": "ホーム",
@@ -304,7 +306,8 @@
     "refundPolicy": "返金ポリシー",
     "acceptableUse": "利用許可ポリシー",
     "textToVideoGenerator": "テキストから動画生成",
-    "imageToVideoGenerator": "画像から動画生成"
+    "imageToVideoGenerator": "画像から動画生成",
+    "aiClothesChanger": "AI服装チェンジャー"
   },
   "about": {
     "metadata": {

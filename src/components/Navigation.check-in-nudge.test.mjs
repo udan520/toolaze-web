@@ -215,9 +215,11 @@ test('navigation pricing label can use localized nav or footer copy', () => {
   assert.match(navigationSource, /pricing: 'Pricing'/)
 })
 
-test('credit purchase transaction descriptions are formatted for display', () => {
-  assert.match(navigationSource, /formatCreditTransactionDescription/)
-  assert.match(navigationSource, /formatCreditTransactionDescription\(transaction\.description\)/)
+test('credit transaction titles and model supplements are formatted for display', () => {
+  assert.match(navigationSource, /formatCreditTransactionTitle/)
+  assert.match(navigationSource, /formatCreditTransactionTitle\(transaction\)/)
+  assert.match(navigationSource, /formatCreditTransactionSupplement\(transaction\)/)
+  assert.match(navigationSource, /transactionSupplement \? `\$\{transactionSupplement\} · \$\{timestampAndBalance\}` : timestampAndBalance/)
   assert.match(navigationSource, /transaction\.balanceAfter\.toLocaleString\('en-US'\)/)
   assert.doesNotMatch(navigationSource, /transaction\.balanceAfter\.toLocaleString\('en-US'\)\} \{accountTranslations\.credits\}/)
 })

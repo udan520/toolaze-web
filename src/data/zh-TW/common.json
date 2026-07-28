@@ -55,7 +55,8 @@
     "textToVideoGenerator": "文字轉影片生成器",
     "imageToVideoGenerator": "圖像轉影片生成器",
     "aiDanceGenerator": "AI 跳舞生成器",
-    "aiKissingVideoGenerator": "AI 親吻影片生成器"
+    "aiKissingVideoGenerator": "AI 親吻影片生成器",
+    "aiClothesChanger": "AI 換衣工具"
   },
   "home": {
     "metadata": {
@@ -278,7 +279,8 @@
     "textToVideoGenerator": "文字轉影片生成器",
     "imageToVideoGenerator": "圖像轉影片生成器",
     "aiDanceGenerator": "AI 跳舞生成器",
-    "aiKissingVideoGenerator": "AI 親吻影片生成器"
+    "aiKissingVideoGenerator": "AI 親吻影片生成器",
+    "aiClothesChanger": "AI 換衣工具"
   },
   "breadcrumb": {
     "home": "首頁",
@@ -304,7 +306,8 @@
     "refundPolicy": "退款政策",
     "acceptableUse": "可接受使用政策",
     "textToVideoGenerator": "文字轉影片生成器",
-    "imageToVideoGenerator": "圖像轉影片生成器"
+    "imageToVideoGenerator": "圖像轉影片生成器",
+    "aiClothesChanger": "AI 換衣工具"
   },
   "about": {
     "metadata": {

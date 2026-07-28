@@ -60,6 +60,8 @@ const cardAssets = {
     'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/15ccbe71d8eb4921930b8b7638bcebab.webp',
   hairstyle: '/ai-hairstyle-changer/hero-before-after.webp',
   hairColor: '/ai-hair-color-changer/rose-pink-before-after.webp',
+  clothes:
+    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/84b9bf50f4414a2c962ebd3f74cb07f0.webp',
 }
 
 const en: StoredAiToolsPageCopy = {
@@ -182,6 +184,13 @@ const en: StoredAiToolsPageCopy = {
       href: '/ai-hair-color-changer',
       image: cardAssets.hairColor,
       description: 'Preview natural and creative hair colors on your photo with reference-guided AI editing.',
+      category: 'image',
+    },
+    {
+      title: 'AI Clothes Changer',
+      href: '/ai-clothes-changer',
+      image: cardAssets.clothes,
+      description: 'Upload a person photo and preview realistic outfit changes with virtual try-on style prompts.',
       category: 'image',
     },
   ],
@@ -378,6 +387,7 @@ type SupplementalCopy = {
   imageToVideo: Pick<AiToolsCard, 'title' | 'description'>
   hairstyle: Pick<AiToolsCard, 'title' | 'description'>
   hairColor: Pick<AiToolsCard, 'title' | 'description'>
+  clothes: Pick<AiToolsCard, 'title' | 'description'>
 }
 
 const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
@@ -392,6 +402,7 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     imageToVideo: { title: 'Image to Video Generator', description: 'Animate photos, product images, artwork, and reference frames with controlled AI motion.' },
     hairstyle: { title: 'AI Hairstyle Changer', description: 'Try different hairstyles on a reference photo while keeping the person and overall look consistent.' },
     hairColor: { title: 'AI Hair Color Changer', description: 'Preview natural and creative hair colors on your photo with reference-guided AI editing.' },
+    clothes: { title: 'AI Clothes Changer', description: 'Upload a person photo and preview realistic outfit changes with virtual try-on style prompts.' },
   },
   de: {
     filters: { all: 'Alle', image: 'KI-Bildtools', video: 'KI-Videotools' },
@@ -404,6 +415,7 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     imageToVideo: { title: 'Bild-zu-Video-Generator', description: 'Animieren Sie Fotos, Produktbilder, Kunstwerke und Referenzframes mit kontrollierter KI-Bewegung.' },
     hairstyle: { title: 'KI-Frisurenwechsler', description: 'Probieren Sie verschiedene Frisuren auf einem Referenzfoto aus und bewahren Sie das Aussehen der Person.' },
     hairColor: { title: 'KI-Haarfarbenwechsler', description: 'Testen Sie natürliche und kreative Haarfarben auf Ihrem Foto mit referenzbasierter KI-Bearbeitung.' },
+    clothes: { title: 'KI-Kleiderwechsler', description: 'Laden Sie ein Personenfoto hoch und testen Sie realistische Outfitwechsel mit virtuellen Anprobe-Prompts.' },
   },
   ja: {
     filters: { all: 'すべて', image: 'AI画像ツール', video: 'AI動画ツール' },
@@ -416,6 +428,7 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     imageToVideo: { title: '画像から動画生成', description: '写真、商品画像、アート、参照フレームに制御可能なAIモーションを加えられます。' },
     hairstyle: { title: 'AIヘアスタイルチェンジャー', description: '人物の印象を保ちながら、参照写真でさまざまな髪型を試せます。' },
     hairColor: { title: 'AIヘアカラー変更', description: '参照画像を使ったAI編集で、自然な髪色や個性的なカラーを写真上で確認できます。' },
+    clothes: { title: 'AI服装チェンジャー', description: '人物写真をアップロードし、バーチャル試着向けプロンプトでリアルな衣装変更をプレビューできます。' },
   },
   es: {
     filters: { all: 'Todos', image: 'Herramientas de imagen IA', video: 'Herramientas de video IA' },
@@ -428,6 +441,7 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     imageToVideo: { title: 'Generador de imagen a video', description: 'Anima fotos, imágenes de producto, ilustraciones y fotogramas de referencia con movimiento IA controlado.' },
     hairstyle: { title: 'Cambiador de peinados IA', description: 'Prueba distintos peinados en una foto de referencia manteniendo el aspecto de la persona.' },
     hairColor: { title: 'Cambiador de color de pelo IA', description: 'Prueba colores de pelo naturales y creativos con edición IA guiada por referencia.' },
+    clothes: { title: 'Cambiador de ropa con IA', description: 'Sube una foto de persona y previsualiza cambios de outfit realistas con prompts de prueba virtual.' },
   },
   'zh-TW': {
     filters: { all: '全部', image: 'AI 圖像工具', video: 'AI 影片工具' },
@@ -440,6 +454,7 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     imageToVideo: { title: '圖像轉影片生成器', description: '以可控的 AI 動態為照片、產品圖、藝術作品和參考畫面製作動畫。' },
     hairstyle: { title: 'AI 髮型變換器', description: '在保留人物整體外觀的同時，透過參考照片嘗試不同髮型。' },
     hairColor: { title: 'AI 髮色變換器', description: '使用參考圖引導的 AI 編輯，在照片上預覽自然或創意髮色。' },
+    clothes: { title: 'AI 換衣工具', description: '上傳人物照片，使用虛擬試穿提示詞預覽逼真的換裝效果。' },
   },
   pt: {
     filters: { all: 'Todos', image: 'Ferramentas de imagem IA', video: 'Ferramentas de vídeo IA' },
@@ -452,6 +467,7 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     imageToVideo: { title: 'Gerador de imagem para vídeo', description: 'Anime fotos, imagens de produtos, obras de arte e quadros de referência com movimento de IA controlado.' },
     hairstyle: { title: 'Alterador de penteado IA', description: 'Teste penteados diferentes em uma foto mantendo a pessoa e o visual geral consistentes.' },
     hairColor: { title: 'Alterador de cor de cabelo IA', description: 'Visualize cores naturais e criativas no cabelo com edição de IA guiada por referência.' },
+    clothes: { title: 'Trocador de roupas com IA', description: 'Envie uma foto da pessoa e visualize trocas de roupa realistas com prompts de prova virtual.' },
   },
   fr: {
     filters: { all: 'Tous', image: 'Outils d’image IA', video: 'Outils vidéo IA' },
@@ -464,6 +480,7 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     imageToVideo: { title: 'Générateur image-vidéo', description: 'Animez photos, images produit, créations et images de référence avec des mouvements IA contrôlés.' },
     hairstyle: { title: 'Changeur de coiffure IA', description: 'Essayez différentes coiffures sur une photo de référence tout en conservant l’apparence de la personne.' },
     hairColor: { title: 'Changeur de couleur de cheveux IA', description: 'Prévisualisez des couleurs naturelles ou créatives grâce à une retouche IA guidée par référence.' },
+    clothes: { title: 'Changeur de vêtements IA', description: 'Importez une photo de personne et prévisualisez des changements de tenue réalistes avec des prompts d’essayage virtuel.' },
   },
   ko: {
     filters: { all: '전체', image: 'AI 이미지 도구', video: 'AI 동영상 도구' },
@@ -476,6 +493,7 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     imageToVideo: { title: '이미지-동영상 생성기', description: '사진, 제품 이미지, 아트워크, 참조 프레임에 제어 가능한 AI 모션을 적용하세요.' },
     hairstyle: { title: 'AI 헤어스타일 변경기', description: '인물의 전체적인 모습을 유지하면서 참조 사진에서 다양한 헤어스타일을 시험해 보세요.' },
     hairColor: { title: 'AI 헤어 컬러 변경기', description: '참조 기반 AI 편집으로 사진에서 자연스럽거나 창의적인 헤어 컬러를 미리 확인하세요.' },
+    clothes: { title: 'AI 의상 체인저', description: '인물 사진을 업로드하고 가상 착용 스타일 프롬프트로 현실적인 의상 변경을 미리보세요.' },
   },
   it: {
     filters: { all: 'Tutti', image: 'Strumenti per immagini IA', video: 'Strumenti video IA' },
@@ -488,6 +506,7 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     imageToVideo: { title: 'Generatore da immagine a video', description: 'Anima foto, immagini di prodotto, opere e fotogrammi di riferimento con movimenti IA controllati.' },
     hairstyle: { title: 'Cambia acconciatura IA', description: 'Prova diverse acconciature su una foto mantenendo coerenti la persona e l’aspetto generale.' },
     hairColor: { title: 'Cambia colore capelli IA', description: 'Visualizza colori naturali e creativi con editing IA guidato da un’immagine di riferimento.' },
+    clothes: { title: 'Cambia abiti con IA', description: 'Carica una foto della persona e visualizza cambi outfit realistici con prompt da prova virtuale.' },
   },
 }
 
@@ -521,6 +540,7 @@ function getLocalizedCards(locale: AiToolsLocale, storedCards: AiToolsCard[]): A
       en.cards[12],
       en.cards[13],
       en.cards[14],
+      en.cards[15],
       en.cards[7],
       en.cards[8],
     ]
@@ -540,6 +560,7 @@ function getLocalizedCards(locale: AiToolsLocale, storedCards: AiToolsCard[]): A
     applyLocalizedCard(en.cards[12], supplemental.kissing),
     applyLocalizedCard(en.cards[13], supplemental.hairstyle),
     applyLocalizedCard(en.cards[14], supplemental.hairColor),
+    applyLocalizedCard(en.cards[15], supplemental.clothes),
     applyLocalizedCard(en.cards[7], watermark),
     applyLocalizedCard(en.cards[8], restoration),
   ]

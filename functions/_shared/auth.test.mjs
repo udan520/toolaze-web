@@ -194,6 +194,7 @@ class FakeD1Statement {
           balance_after: row.balance_after,
           reason: row.reason,
           description: row.description,
+          metadata: row.metadata,
           created_at: row.created_at,
         }));
       return { results: rows };
@@ -1359,7 +1360,40 @@ test('consumeCredits deducts balance and records usage activity', async () => {
     balanceAfter: 0,
     reason: 'image_generation',
     description: 'Nano Banana 2 image generation',
+    metadata: { model: 'nano-banana-2', resolution: '1K' },
     createdAt: env.DB.creditTransactions[1].created_at,
+  });
+});
+
+test('getCreditSummary backfills wrapped tool labels for legacy image generation transactions', async () => {
+  const env = createAuthEnv();
+  await grantNewUserCredits(env, 'user_1');
+  await consumeCredits(env, 'user_1', 10, {
+    reason: 'image_generation',
+    description: 'Seedream 5.0 Lite image-to-image generation',
+  });
+  await createGenerationHistoryItem(env, 'user_1', {
+    mediaType: 'image',
+    model: 'seedream-5-0-lite',
+    prompt: 'Change the outfit using the target clothing reference.',
+    outputUrl: 'https://example.com/generated-clothes.webp',
+    inputUrls: ['https://example.com/person.webp', 'https://example.com/dress.webp'],
+    toolSlug: 'ai-clothes-changer',
+    toolLabel: 'AI Clothes Changer',
+    sourcePath: '/ai-clothes-changer',
+  });
+
+  const summary = await getCreditSummary(env, 'user_1');
+  const usageTransaction = summary.transactions.find((transaction) => transaction.type === 'use');
+
+  assert.equal(usageTransaction.description, 'Clothes Changer');
+  assert.deepEqual(usageTransaction.metadata, {
+    model: 'seedream-5-0-lite',
+    modelLabel: 'Seedream 5.0 Lite',
+    isImageToImage: true,
+    toolSlug: 'ai-clothes-changer',
+    toolLabel: 'Clothes Changer',
+    sourcePath: '/ai-clothes-changer',
   });
 });
 
@@ -1405,6 +1439,7 @@ test('refundCredits restores balance and records refund activity', async () => {
     balanceAfter: 10,
     reason: 'image_generation_refund',
     description: 'Image generation refund',
+    metadata: { taskId: 'task_1' },
     createdAt: env.DB.creditTransactions[2].created_at,
   });
 });
@@ -1452,6 +1487,11 @@ test('credit purchase grants are recorded as purchase transactions', async () =>
     balanceAfter: 200,
     reason: 'credit_purchase',
     description: 'Starter Credit Purchase',
+    metadata: {
+      requestId: 'creem_order_12345678',
+      grantId: env.DB.creditGrants[0].id,
+      expiresAt: '2099-08-01T00:00:00.000Z',
+    },
     createdAt: env.DB.creditTransactions[0].created_at,
   });
 });

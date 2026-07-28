@@ -301,7 +301,8 @@ test('successful history renders every original reference image', () => {
 test('left remote reference images show loading and fallback states', () => {
   assert.match(source, /type RemoteReferenceImageState = 'loading' \| 'loaded' \| 'retrying' \| 'failed'/)
   assert.match(source, /const \[remoteImagePreviewStates, setRemoteImagePreviewStates\] = useState<Record<string, RemoteReferenceImageState>>\(\{\}\)/)
-  assert.match(source, /remoteImageUrls\.forEach\(\(url\) => \{[\s\S]*nextStates\[url\] = prev\[url\] \|\| 'loading'/)
+  assert.match(source, /const referenceUrls = \[\.\.\.remoteImageUrls, \.\.\.clothingReferenceRemoteUrls\]/)
+  assert.match(source, /referenceUrls\.forEach\(\(url\) => \{[\s\S]*nextStates\[url\] = prev\[url\] \|\| 'loading'/)
   assert.match(source, /<ReferenceImageUploader/)
   assert.match(source, /src: previewState === 'retrying' \? normalizeReusableReferenceImageUrl\(url\) : getReferencePreviewUrl\(url\)/)
   assert.match(source, /onLoad: \(\) => setRemoteImagePreviewState\(url, 'loaded'\)/)
@@ -431,7 +432,8 @@ test('history action can edit a generated image as the next reference image', ()
   const historyEdit = source.match(/const editHistoryItemImage = \(item: HistoryItem\) => \{[\s\S]*?\n  \}/)?.[0] || ''
   assert.match(historyEdit, /if \(!isGenericImageEditToolPath\(pathname\)\) \{/)
   assert.match(historyEdit, /window\.sessionStorage\.setItem\(PENDING_REPROMPT_STORAGE_KEY, JSON\.stringify\(\{[\s\S]*mode: 'image-to-image'[\s\S]*imageUrl: item\.outputPreview/)
-  assert.match(historyEdit, /window\.location\.href = getLocalizedInternalPath\(pathname, '\/ai-image-generator'\)/)
+  assert.match(historyEdit, /window\.location\.href = getLocalizedInternalPath\(pathname, '\/ai-image-to-image-generator'\)/)
+  assert.doesNotMatch(historyEdit, /window\.location\.href = getLocalizedInternalPath\(pathname, '\/ai-image-generator'\)/)
   assert.doesNotMatch(historyEdit, /setSelectedModelId/)
   assert.doesNotMatch(historyEdit, /setActiveModelGroupId/)
   assert.doesNotMatch(historyEdit, /setPrompt/)
@@ -450,6 +452,19 @@ test('history action can edit a generated image as the next reference image', ()
   assert.match(source, /data-mobile-edit-image/)
   assert.match(source, /data-mobile-edit-image[\s\S]*onClick=\{\(\) => editHistoryItemImage\(currentResult\)\}[\s\S]*\{toolText\.editImageShort\}/)
   assert.match(source, /editImageShort: 'Edit'/)
+})
+
+test('inline image tool uses one shared account history endpoint across landing pages', () => {
+  assert.match(source, /fetch\('\/api\/history\?limit=20', \{[\s\S]*credentials: 'include'/)
+  assert.doesNotMatch(source, /\/api\/history\?limit=20[^\n]*toolSlug/)
+
+  const persistHistory = source.match(/const persistGeneratedHistoryItem = useCallback\(async \([\s\S]*?\n  \}, \[pathname\]\)/)?.[0] || ''
+  assert.match(persistHistory, /fetch\('\/api\/history', \{[\s\S]*method: 'POST'[\s\S]*credentials: 'include'/)
+  assert.match(persistHistory, /\.\.\.historyTool/)
+  assert.doesNotMatch(persistHistory, /\/api\/history\?toolSlug/)
+
+  const deleteHistory = source.match(/const deletePersistedHistoryItem = async \(itemId: string\) => \{[\s\S]*?\n  \}/)?.[0] || ''
+  assert.match(deleteHistory, /fetch\(`\/api\/history\?id=\$\{encodeURIComponent\(itemId\)\}`, \{[\s\S]*method: 'DELETE'[\s\S]*credentials: 'include'/)
 })
 
 test('pending reprompt can apply an image-only edit payload', () => {

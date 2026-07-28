@@ -7,6 +7,8 @@ const source = readFileSync(new URL('./HistoryPageClient.tsx', import.meta.url),
 test('History page exposes All, Images, and Videos filters over one shared history feed', () => {
   assert.match(source, /type HistoryFilter = 'all' \| 'image' \| 'video'/)
   assert.match(source, /const \[activeFilter, setActiveFilter\] = useState<HistoryFilter>\('all'\)/)
+  assert.match(source, /fetch\('\/api\/history\?limit=200', \{[\s\S]*credentials: 'include'/)
+  assert.doesNotMatch(source, /\/api\/history\?limit=200[^\n]*toolSlug/)
   assert.match(source, /data-history-filter=/)
   assert.match(source, /copy\.filterAll/)
   assert.match(source, /copy\.filterImages/)

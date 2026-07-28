@@ -51,6 +51,7 @@ const defaultTranslations = {
   aiDanceGenerator: 'AI Dance Generator',
   aiHairstyleChanger: 'AI Hairstyle Changer',
   aiHairColorChanger: 'AI Hair Color Changer',
+  aiClothesChanger: 'AI Clothes Changer',
   worldCupAiImageGenerator: 'World Cup AI Image Generator',
   seedance2: 'Seedance 2.0',
   seedance25: 'Seedance 2.5',
@@ -172,6 +173,14 @@ export default function Footer({ initialTranslations }: FooterProps = {}) {
                   className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
                 >
                   {translations.aiHairColorChanger || 'AI Hair Color Changer'}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={getLocalizedHref('/ai-clothes-changer')}
+                  className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
+                >
+                  {translations.aiClothesChanger || 'AI Clothes Changer'}
                 </Link>
               </li>
               <li>

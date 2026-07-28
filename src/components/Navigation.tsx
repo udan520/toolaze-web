@@ -8,7 +8,10 @@ import CloseIcon from './icons/CloseIcon'
 import { WATERMARK_REMOVER_DEMO_IMAGE } from './WatermarkRemoverDemoComparison'
 import { mergeCreditSummaryUpdate } from '@/lib/credit-summary-merge'
 import { formatCreditTransactionTimestamp } from '@/lib/credit-history-time'
-import { formatCreditTransactionDescription } from '@/lib/credit-transaction-description'
+import {
+  formatCreditTransactionSupplement,
+  formatCreditTransactionTitle,
+} from '@/lib/credit-transaction-description'
 import { getClientMenuItems, type ClientMenuItem } from '@/lib/client-menu-data'
 import { trackToolazeEvent } from '@/lib/analytics'
 import {
@@ -43,6 +46,7 @@ const defaultNavTranslations = {
   aiDanceGenerator: 'AI Dance Generator',
   aiHairstyleChanger: 'AI Hairstyle Changer',
   aiHairColorChanger: 'AI Hair Color Changer',
+  aiClothesChanger: 'AI Clothes Changer',
   worldCupAiImageGenerator: 'World Cup AI Image Generator',
   fontGenerator: 'Font Generator',
   emojiCopyAndPaste: 'Emoji Copy & Paste',
@@ -128,6 +132,7 @@ const AI_TOOLS_DEMO_IMAGES = {
   aiBabyGenerator: '/ai-baby-generator/hero-baby-portrait.webp',
   aiHairstyleChanger: '/ai-hairstyle-changer/hero-before-after.webp',
   aiHairColorChanger: '/ai-hair-color-changer/rose-pink-before-after.webp',
+  aiClothesChanger: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/84b9bf50f4414a2c962ebd3f74cb07f0.webp',
   aiImageGenerator:
     'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/gpt-image-2.jpg',
   textToImageGenerator:
@@ -182,6 +187,10 @@ type CreditTransaction = {
   amount: number
   balanceAfter: number
   description: string
+  metadata?: {
+    toolLabel?: string | null
+    modelLabel?: string | null
+  } | null
   createdAt: string
 }
 
@@ -1090,15 +1099,18 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
       <div className="space-y-2">
         {recentTransactions.map((transaction) => {
           const isPositive = transaction.amount > 0
+          const transactionTitle = formatCreditTransactionTitle(transaction)
+          const transactionSupplement = formatCreditTransactionSupplement(transaction)
+          const timestampAndBalance = `${formatCreditTransactionTimestamp(transaction.createdAt)} · ${accountTranslations.balance}: ${transaction.balanceAfter.toLocaleString('en-US')}`
           return (
             <div key={transaction.id} className="rounded-xl border border-slate-100 bg-slate-50/70 px-3 py-2">
               <div className="flex items-start justify-between gap-3">
                 <div className="min-w-0">
                   <p className="truncate text-xs font-semibold text-slate-800">
-                    {formatCreditTransactionDescription(transaction.description)}
+                    {transactionTitle}
                   </p>
                   <p className="mt-0.5 text-[11px] text-slate-500">
-                    {formatCreditTransactionTimestamp(transaction.createdAt)} · {accountTranslations.balance}: {transaction.balanceAfter.toLocaleString('en-US')}
+                    {transactionSupplement ? `${transactionSupplement} · ${timestampAndBalance}` : timestampAndBalance}
                   </p>
                 </div>
                 <span className={`shrink-0 text-sm font-extrabold ${isPositive ? 'text-emerald-600' : 'text-rose-600'}`}>
@@ -1592,6 +1604,18 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                     className="w-14 aspect-[4/3] rounded-lg object-cover border border-indigo-100 flex-shrink-0"
                   />
                   <span>{navTranslations.aiHairColorChanger || defaultNavTranslations.aiHairColorChanger}</span>
+                </Link>
+                <Link
+                  href={getLocalizedHref('/ai-clothes-changer')}
+                  onClick={() => setOpenDesktopMenu(null)}
+                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-3"
+                >
+                  <img
+                    src={AI_TOOLS_DEMO_IMAGES.aiClothesChanger}
+                    alt={navTranslations.aiClothesChanger || defaultNavTranslations.aiClothesChanger}
+                    className="w-14 aspect-[4/3] rounded-lg object-cover border border-indigo-100 flex-shrink-0"
+                  />
+                  <span>{navTranslations.aiClothesChanger || defaultNavTranslations.aiClothesChanger}</span>
                 </Link>
                 <Link
                   href={getLocalizedHref('/ai-baby-generator')}
@@ -2214,8 +2238,23 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                       src={AI_TOOLS_DEMO_IMAGES.aiHairColorChanger}
                       alt={navTranslations.aiHairColorChanger || defaultNavTranslations.aiHairColorChanger}
                       className="w-14 aspect-[4/3] rounded-lg object-cover border border-indigo-100 flex-shrink-0"
-                    />
+                  />
                     <span>{navTranslations.aiHairColorChanger || defaultNavTranslations.aiHairColorChanger}</span>
+                  </Link>
+                  <Link
+                    href={getLocalizedHref('/ai-clothes-changer')}
+                    onClick={() => {
+                      setMobileMenuOpen(false)
+                      setExpandedSubmenus(new Set())
+                    }}
+                    className="flex items-center gap-3 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
+                  >
+                    <img
+                      src={AI_TOOLS_DEMO_IMAGES.aiClothesChanger}
+                      alt={navTranslations.aiClothesChanger || defaultNavTranslations.aiClothesChanger}
+                      className="w-14 aspect-[4/3] rounded-lg object-cover border border-indigo-100 flex-shrink-0"
+                    />
+                    <span>{navTranslations.aiClothesChanger || defaultNavTranslations.aiClothesChanger}</span>
                   </Link>
                   <Link
                     href={getLocalizedHref('/ai-baby-generator')}
