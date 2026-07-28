@@ -432,7 +432,7 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
       href: localizeHomeHref('/watermark-remover'),
       media: {
         type: 'image',
-        src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-advanced-ai/watermark-remover.jpg',
+        src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-advanced-ai/watermark-remover-demo-before-after.webp',
         alt: 'Watermark Remover demo image',
       },
     },
@@ -441,7 +441,7 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
       href: localizeHomeHref('/photo-restoration'),
       media: {
         type: 'image',
-        src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-advanced-ai/photo-restoration.jpg',
+        src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-advanced-ai/photo-restoration-demo-before-after.webp',
         alt: 'Photo Restoration demo image',
       },
     },

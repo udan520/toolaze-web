@@ -38,12 +38,22 @@ test('AI Tools hub exposes localized category labels', () => {
   }
 })
 
-test('Photo Restoration cards use the shared R2 demo image instead of the old stock photo', () => {
+test('Photo Restoration cards use the shared page demo image instead of the old stock photo', () => {
   for (const locale of AI_TOOLS_LOCALES) {
     const restorationCard = getAiToolsPageCopy(locale).cards.find((card) => card.href === '/photo-restoration')
 
     assert.ok(restorationCard, `${locale} is missing Photo Restoration`)
-    assert.match(restorationCard.image, /home-advanced-ai\/photo-restoration\.jpg/)
+    assert.equal(restorationCard.image, 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-advanced-ai/photo-restoration-demo-before-after.webp')
     assert.doesNotMatch(restorationCard.image, /images\.unsplash\.com/)
+  }
+})
+
+test('Watermark Remover cards use the shared page demo image instead of the old stock photo', () => {
+  for (const locale of AI_TOOLS_LOCALES) {
+    const watermarkCard = getAiToolsPageCopy(locale).cards.find((card) => card.href === '/watermark-remover')
+
+    assert.ok(watermarkCard, `${locale} is missing Watermark Remover`)
+    assert.equal(watermarkCard.image, 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-advanced-ai/watermark-remover-demo-before-after.webp')
+    assert.doesNotMatch(watermarkCard.image, /images\.unsplash\.com/)
   }
 })

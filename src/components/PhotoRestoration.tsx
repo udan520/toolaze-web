@@ -9,7 +9,7 @@ const MAX_FILE_SIZE = 30 * 1024 * 1024
 const DAILY_LIMIT_KEY = 'photo_restoration_last_used_date'
 
 const RESTORE_COLORIZE_PROMPT = 'Restore and colorize this old photo by removing scratches, dust, and noise. Enhance clarity, sharpness, and details while preserving the original colors and natural look.'
-const DEMO_IMAGE_URL = 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-advanced-ai/photo-restoration.jpg'
+const DEMO_IMAGE_URL = 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-advanced-ai/photo-restoration-demo-before-after.webp'
 
 interface PhotoRestorationProps {
   initialTranslations?: any
@@ -245,17 +245,11 @@ export default function PhotoRestoration({ initialTranslations, heroTitle, heroD
                   <img src={resultUrl} alt={text.resultAlt} className="w-full h-full object-contain bg-slate-100" />
                 </button>
               ) : (
-                <>
-                  <div className="absolute inset-y-0 left-0 w-1/2">
-                    <img src={DEMO_IMAGE_URL} alt={text.oldExampleAlt} className="w-full h-full object-cover grayscale contrast-125 brightness-90" />
-                    <div className="absolute inset-0 opacity-35 bg-[repeating-linear-gradient(115deg,transparent,transparent_16px,rgba(255,255,255,0.75)_17px,rgba(255,255,255,0.75)_18px)]" />
-                    <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_20%_30%,rgba(0,0,0,0.45)_0,rgba(0,0,0,0)_45%),radial-gradient(circle_at_78%_70%,rgba(0,0,0,0.4)_0,rgba(0,0,0,0)_40%)]" />
-                  </div>
-                  <div className="absolute inset-y-0 right-0 w-1/2">
-                    <img src={DEMO_IMAGE_URL} alt={text.restoredExampleAlt} className="w-full h-full object-cover saturate-110 contrast-110" />
-                  </div>
-                  <div className="absolute inset-y-0 left-1/2 w-[2px] -ml-[1px] bg-white/80" />
-                </>
+                <img
+                  src={DEMO_IMAGE_URL}
+                  alt={text.previewAlt}
+                  className="absolute inset-0 h-full w-full object-contain bg-slate-100"
+                />
               )}
               {isProcessing && (
                 <div className="absolute inset-0 z-20 flex items-center justify-center bg-slate-900/40 backdrop-blur-[1px]">

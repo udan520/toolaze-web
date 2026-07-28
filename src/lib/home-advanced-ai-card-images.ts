@@ -32,16 +32,16 @@ export const HOME_ADVANCED_AI_CARD_IMAGES = {
   },
   /** L2 has no static hero image; matches /ai-tools and marketing sample (portrait with watermark use-case). */
   'watermark-remover': {
-    src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-advanced-ai/watermark-remover.jpg',
-    width: 533,
-    height: 800,
-    alt: 'Sample photo for AI watermark removal preview',
+    src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-advanced-ai/watermark-remover-demo-before-after.webp',
+    width: 1200,
+    height: 675,
+    alt: 'Watermark Remover before and after demo preview',
   },
-  /** Same source as PhotoRestoration.tsx DEMO_IMAGE_URL (optimized local file). */
+  /** Same source as the Photo Restoration page demo. */
   'photo-restoration': {
-    src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-advanced-ai/photo-restoration.jpg',
-    width: 800,
-    height: 533,
+    src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-advanced-ai/photo-restoration-demo-before-after.webp',
+    width: 1200,
+    height: 675,
     alt: 'Photo restoration — before and after style sample preview',
   },
 } as const

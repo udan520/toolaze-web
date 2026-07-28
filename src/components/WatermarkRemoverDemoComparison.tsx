@@ -1,7 +1,10 @@
 import type { HTMLAttributes } from 'react'
 
-export const WATERMARK_REMOVER_DEMO_IMAGE =
+export const WATERMARK_REMOVER_SOURCE_IMAGE =
   'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-advanced-ai/watermark-remover.jpg'
+
+export const WATERMARK_REMOVER_DEMO_IMAGE =
+  'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-advanced-ai/watermark-remover-demo-before-after.webp'
 
 export type WatermarkRemoverDemoComparisonProps = HTMLAttributes<HTMLDivElement> & {
   imageUrl?: string
@@ -12,7 +15,7 @@ export type WatermarkRemoverDemoComparisonProps = HTMLAttributes<HTMLDivElement>
 }
 
 export default function WatermarkRemoverDemoComparison({
-  imageUrl = WATERMARK_REMOVER_DEMO_IMAGE,
+  imageUrl = WATERMARK_REMOVER_SOURCE_IMAGE,
   alt = 'Watermark remover before and after demo',
   beforeLabel = 'Before',
   afterLabel = 'After',

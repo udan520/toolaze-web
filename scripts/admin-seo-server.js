@@ -734,8 +734,8 @@ const HOMEPAGE_TOOL_CARD_KEYS = [
 /** 与 src/lib/home-advanced-ai-card-images.ts 路径一致；缩略图长边≤800px、约≤100KB（最终使用 R2 URL） */
 const HOME_ADVANCED_AI_CARD_IMAGES = {
   'ai-couple-photo-maker': 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-advanced-ai/ai-couple-photo-maker.jpg',
-  'watermark-remover': 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-advanced-ai/watermark-remover.jpg',
-  'photo-restoration': 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-advanced-ai/photo-restoration.jpg',
+  'watermark-remover': 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-advanced-ai/watermark-remover-demo-before-after.webp',
+  'photo-restoration': 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-advanced-ai/photo-restoration-demo-before-after.webp',
 }
 /** 与 src/lib/home-model-card-images.ts 一致（首页 AI Video / AI Image / Trending，最终使用 R2 URL） */
 const HOME_MODEL_CARD_IMAGES = {

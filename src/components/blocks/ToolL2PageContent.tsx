@@ -65,7 +65,7 @@ const TOP_TOOL_IMAGE_MODEL_IDS = new Set([
 ])
 const WATERMARK_REMOVER_PROMPT =
   'Remove visible watermarks, logos, timestamp overlays, or text overlays from this image. Preserve the original subject, background, lighting, texture, and composition. Only edit the overlay areas.'
-const WATERMARK_REMOVER_DEMO_IMAGE =
+const WATERMARK_REMOVER_SOURCE_IMAGE =
   'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-advanced-ai/watermark-remover.jpg'
 const PHOTO_RESTORATION_PROMPT =
   'Restore and colorize this old photo by removing scratches, dust, and noise. Enhance clarity, sharpness, and details while preserving the original colors and natural look.'
@@ -966,7 +966,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                     hidePromptInput
                     sampleImageVariant="sharp"
                     demoComparison={{
-                      imageUrl: WATERMARK_REMOVER_DEMO_IMAGE,
+                      imageUrl: WATERMARK_REMOVER_SOURCE_IMAGE,
                       alt: 'Watermark remover before and after demo',
                       beforeLabel: 'Before',
                       afterLabel: 'After',
@@ -1002,10 +1002,10 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                     hidePromptInput
                     sampleImageVariant="sharp"
                     sampleImages={[{
-                      url: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-advanced-ai/photo-restoration.jpg',
+                      url: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-advanced-ai/photo-restoration-demo-before-after.webp',
                       title: 'Photo Restoration demo image',
-                      width: 800,
-                      height: 533,
+                      width: 1200,
+                      height: 675,
                     }]}
                     sceneText={{
                       uploadTitle: 'Upload old photo',
