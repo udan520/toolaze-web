@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { formatCreditTransactionTimestamp } from '@/lib/credit-history-time'
-import { backfillCreditTransactionsWithHistory } from '@/lib/credit-transaction-history-backfill'
+import { enrichCreditSummaryWithHistory } from '@/lib/credit-summary-display'
 import {
   formatCreditTransactionSupplement,
   formatCreditTransactionTitle,
@@ -30,15 +30,6 @@ type CreditTransaction = {
 type CreditSummary = {
   balance: number
   transactions: CreditTransaction[]
-}
-
-type GenerationHistoryItem = {
-  model?: string | null
-  inputUrls?: string[] | null
-  toolSlug?: string | null
-  toolLabel?: string | null
-  sourcePath?: string | null
-  createdAt?: string | null
 }
 
 const emptyCreditSummary: CreditSummary = {
@@ -106,7 +97,7 @@ function formatType(type: CreditTransaction['type'], copy: ReturnType<typeof get
 function getTypeBadgeClass(type: CreditTransaction['type']) {
   if (type === 'use') return 'bg-emerald-50 text-emerald-700 ring-1 ring-inset ring-emerald-100'
   if (type === 'refund') return 'bg-orange-50 text-orange-700 ring-1 ring-inset ring-orange-100'
-  if (type === 'grant' || type === 'bonus') return 'bg-indigo-50 text-indigo-700 ring-1 ring-inset ring-indigo-100'
+  if (type === 'grant' || type === 'bonus' || type === 'purchase') return 'bg-indigo-50 text-indigo-700 ring-1 ring-inset ring-indigo-100'
 
   return 'bg-slate-100 text-slate-700'
 }
@@ -140,23 +131,7 @@ export default function CreditsPageClient({ initialTranslations }: CreditsPageCl
         }
         if (!response.ok) throw new Error(copy.loadError)
         const data = await response.json().catch(() => ({ credits: emptyCreditSummary }))
-        let nextCredits: CreditSummary = data.credits || emptyCreditSummary
-        try {
-          const historyResponse = await fetch('/api/history?limit=200', {
-            cache: 'no-store',
-            credentials: 'include',
-          })
-          if (historyResponse.ok) {
-            const historyData = await historyResponse.json().catch(() => ({ items: [] }))
-            const historyItems = Array.isArray(historyData.items) ? historyData.items as GenerationHistoryItem[] : []
-            nextCredits = {
-              ...nextCredits,
-              transactions: backfillCreditTransactionsWithHistory(nextCredits.transactions, historyItems),
-            }
-          }
-        } catch {
-          // History is a display enhancement for legacy credit rows; credits remain the source of truth.
-        }
+        const nextCredits = await enrichCreditSummaryWithHistory(data.credits || emptyCreditSummary) as CreditSummary
         if (!cancelled) setCredits(nextCredits)
       } catch (err) {
         if (!cancelled) setError(err instanceof Error ? err.message : copy.loadError)
@@ -249,9 +224,16 @@ export default function CreditsPageClient({ initialTranslations }: CreditsPageCl
                           {formatCreditTransactionTimestamp(transaction.createdAt)}
                         </span>
                       </div>
-                      <p className="mt-2 text-sm font-bold text-slate-900">{transactionTitle}</p>
+                      <div className="mt-2 flex min-w-0 flex-wrap items-center gap-2">
+                        <span className="min-w-0 max-w-full truncate text-sm font-bold text-slate-900">{transactionTitle}</span>
+                        {transactionSupplement && (
+                          <span className="shrink-0 rounded-full border border-indigo-100 bg-indigo-50/60 px-2 py-0.5 text-[11px] font-extrabold text-indigo-500">
+                            {transactionSupplement}
+                          </span>
+                        )}
+                      </div>
                       <p className="mt-1 text-xs text-slate-500">
-                        {transactionSupplement ? `${transactionSupplement} · ${balanceText}` : balanceText}
+                        {balanceText}
                       </p>
                     </div>
                     <div className={`flex items-center justify-start text-lg font-extrabold sm:justify-end ${isPositive ? 'text-emerald-600' : 'text-rose-600'}`}>

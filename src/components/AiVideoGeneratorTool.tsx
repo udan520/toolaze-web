@@ -1048,7 +1048,10 @@ export default function AiVideoGeneratorTool({
   )
 
   const renderPromptPreview = (promptText: string) => (
-    <p className="line-clamp-4 text-sm leading-6 text-slate-600">
+    <p
+      data-video-history-prompt
+      className="max-h-[8rem] overflow-y-auto overscroll-contain pr-2 text-sm leading-6 whitespace-pre-wrap text-slate-600"
+    >
       {promptText}
     </p>
   )
@@ -1156,8 +1159,8 @@ export default function AiVideoGeneratorTool({
 
       <div data-video-result-details className="flex h-full min-w-0 flex-col gap-4 lg:h-[260px]">
         {renderVideoMetaTags(item, item.time)}
-        <div className="flex min-h-0 items-start justify-between gap-4 overflow-hidden">
-          <div className="min-w-0">
+        <div className="flex min-h-0 items-start justify-between gap-4">
+          <div className="min-w-0 flex-1">
             <p className="mb-2 text-sm font-extrabold text-slate-900">{text.prompt}</p>
             {renderPromptPreview(item.prompt)}
           </div>

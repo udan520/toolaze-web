@@ -466,20 +466,7 @@ const EMPTY_PROMPT_PRESETS: PromptPreset[] = []
 const EMPTY_PROMPT_PRESET_TABS: PromptPresetTab[] = []
 
 const AUTH_CACHE_STORAGE_KEY = 'toolaze.authSnapshot'
-type DesktopPromptTooltipState = {
-  text: string
-  left: number
-  top: number
-  width: number
-} | null
 type RemoteReferenceImageState = 'loading' | 'loaded' | 'retrying' | 'failed'
-
-const promptPreviewClampStyle: React.CSSProperties = {
-  display: '-webkit-box',
-  WebkitLineClamp: 4,
-  WebkitBoxOrient: 'vertical',
-  overflow: 'hidden',
-}
 
 const composePromptParts = (...parts: Array<string | undefined>) =>
   parts
@@ -1220,7 +1207,6 @@ export default function AiImageGenerationTool({
   const [clothingReferenceRemoteUrls, setClothingReferenceRemoteUrls] = useState<string[]>([])
   const [remoteImagePreviewStates, setRemoteImagePreviewStates] = useState<Record<string, RemoteReferenceImageState>>({})
   const [previewImage, setPreviewImage] = useState<string | null>(null)
-  const [desktopPromptTooltip, setDesktopPromptTooltip] = useState<DesktopPromptTooltipState>(null)
   const [promptDemoImage, setPromptDemoImage] = useState<PromptDemoImage | null>(null)
   const [downloadingUrl, setDownloadingUrl] = useState<string | null>(null)
   const [toasts, setToasts] = useState<Array<{ id: string; msg: string; type: string }>>([])
@@ -2825,56 +2811,16 @@ export default function AiImageGenerationTool({
     container.scrollTop += event.deltaY
   }
 
-  const showDesktopPromptTooltip = (
-    event: React.MouseEvent<HTMLElement> | React.FocusEvent<HTMLElement>,
-    promptText: string,
-  ) => {
-    const rect = event.currentTarget.getBoundingClientRect()
-    const viewportPadding = 16
-    const width = Math.min(544, window.innerWidth - viewportPadding * 2)
-    const left = Math.max(
-      viewportPadding,
-      Math.min(rect.left, window.innerWidth - width - viewportPadding),
-    )
-    const preferredTop = rect.bottom + 8
-    const top = preferredTop + 224 <= window.innerHeight - viewportPadding
-      ? preferredTop
-      : Math.max(viewportPadding, rect.top - 232)
-
-    setDesktopPromptTooltip({ text: promptText, left, top, width })
-  }
-
-  const hideDesktopPromptTooltip = () => {
-    setDesktopPromptTooltip(null)
-  }
-
-  const shouldShowPromptEllipsisTrigger = (promptText: string) =>
-    promptText.length > 220 || promptText.split(/\r\n|\r|\n/).length > 4
-
   const renderDesktopPromptPreview = (promptText: string, testId: string) => {
-    const showEllipsisTrigger = shouldShowPromptEllipsisTrigger(promptText)
-
     return (
-      <div className="relative min-w-0">
-        <p
-          data-desktop-result-prompt={testId === 'data-desktop-result-prompt' ? true : undefined}
-          data-desktop-pending-result-prompt={testId === 'data-desktop-pending-result-prompt' ? true : undefined}
-          data-desktop-failed-result-prompt={testId === 'data-desktop-failed-result-prompt' ? true : undefined}
-          style={promptPreviewClampStyle}
-          className="text-sm leading-6 text-slate-600"
-        >
-          {promptText}
-        </p>
-        {showEllipsisTrigger && (
-          <span
-            data-desktop-prompt-ellipsis
-            aria-hidden="true"
-            onMouseEnter={(event) => showDesktopPromptTooltip(event, promptText)}
-            onMouseLeave={hideDesktopPromptTooltip}
-            className="absolute bottom-0 right-0 h-6 w-8"
-          />
-        )}
-      </div>
+      <p
+        data-desktop-result-prompt={testId === 'data-desktop-result-prompt' ? true : undefined}
+        data-desktop-pending-result-prompt={testId === 'data-desktop-pending-result-prompt' ? true : undefined}
+        data-desktop-failed-result-prompt={testId === 'data-desktop-failed-result-prompt' ? true : undefined}
+        className="max-h-[8rem] overflow-y-auto overscroll-contain pr-2 text-sm leading-6 whitespace-pre-wrap text-slate-600"
+      >
+        {promptText}
+      </p>
     )
   }
 
@@ -4380,21 +4326,6 @@ export default function AiImageGenerationTool({
           </div>
         </div>
       </div>
-
-      {desktopPromptTooltip && (
-        <div
-          data-desktop-prompt-tooltip
-          role="tooltip"
-          className="pointer-events-none fixed z-[10060] max-h-56 overflow-y-auto rounded-xl border border-[#E0E7FF] bg-white p-3 text-sm leading-6 text-slate-700 shadow-xl shadow-slate-900/12"
-          style={{
-            left: desktopPromptTooltip.left,
-            top: desktopPromptTooltip.top,
-            width: desktopPromptTooltip.width,
-          }}
-        >
-          {desktopPromptTooltip.text}
-        </div>
-      )}
 
       {/* Image Preview Modal - 点击非图片区域（背景）可退出 */}
       {previewImage && (

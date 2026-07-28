@@ -7,6 +7,7 @@ import { usePathname } from 'next/navigation'
 import CloseIcon from './icons/CloseIcon'
 import { WATERMARK_REMOVER_DEMO_IMAGE } from './WatermarkRemoverDemoComparison'
 import { mergeCreditSummaryUpdate } from '@/lib/credit-summary-merge'
+import { enrichCreditSummaryWithHistory } from '@/lib/credit-summary-display'
 import { formatCreditTransactionTimestamp } from '@/lib/credit-history-time'
 import {
   formatCreditTransactionSupplement,
@@ -536,7 +537,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
         }
 
         if (event.data.user) {
-          const nextCredits = event.data.credits || creditSummary
+          const nextCredits = await enrichCreditSummaryWithHistory(event.data.credits || creditSummary) as CreditSummary
           setAuthUser(event.data.user)
           setCreditSummary(nextCredits)
           writeCachedAuthSnapshot(event.data.user, nextCredits)
@@ -588,10 +589,13 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
         const currentCredits = cachedAuth?.credits || creditSummaryRef.current
         const mergedCredits = mergeCreditSummaryUpdate(currentCredits, nextCredits) as CreditSummary
 
-        setCreditSummary(mergedCredits)
-        if (nextUser) {
-          writeCachedAuthSnapshot(nextUser, mergedCredits)
-        }
+        void (async () => {
+          const displayCredits = await enrichCreditSummaryWithHistory(mergedCredits) as CreditSummary
+          setCreditSummary(displayCredits)
+          if (nextUser) {
+            writeCachedAuthSnapshot(nextUser, displayCredits)
+          }
+        })()
         return
       }
 
@@ -758,7 +762,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
       const data = await response.json().catch(() => ({}))
       if (cancelled?.()) return false
       const nextUser = data?.user || null
-      const nextCredits = data?.credits || emptyCreditSummary
+      const nextCredits = await enrichCreditSummaryWithHistory(data?.credits || emptyCreditSummary) as CreditSummary
       setAuthUser(nextUser)
       setCreditSummary(nextCredits)
       writeCachedAuthSnapshot(nextUser, nextCredits)
@@ -1025,7 +1029,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
       setDevLoginPassword('')
       showTimedTopNotice(buildAuthNotice('success'))
       if (data.user) {
-        const nextCredits = data.credits || emptyCreditSummary
+        const nextCredits = await enrichCreditSummaryWithHistory(data.credits || emptyCreditSummary) as CreditSummary
         setAuthUser(data.user)
         setCreditSummary(nextCredits)
         writeCachedAuthSnapshot(data.user, nextCredits)
@@ -1106,11 +1110,18 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
             <div key={transaction.id} className="rounded-xl border border-slate-100 bg-slate-50/70 px-3 py-2">
               <div className="flex items-start justify-between gap-3">
                 <div className="min-w-0">
-                  <p className="truncate text-xs font-semibold text-slate-800">
-                    {transactionTitle}
-                  </p>
+                  <div className="flex min-w-0 flex-wrap items-center gap-1.5">
+                    <span className="min-w-0 max-w-full truncate text-xs font-semibold text-slate-800">
+                      {transactionTitle}
+                    </span>
+                    {transactionSupplement && (
+                      <span className="shrink-0 rounded-full border border-indigo-100 bg-white/80 px-1.5 py-0.5 text-[10px] font-bold text-indigo-500">
+                        {transactionSupplement}
+                      </span>
+                    )}
+                  </div>
                   <p className="mt-0.5 text-[11px] text-slate-500">
-                    {transactionSupplement ? `${transactionSupplement} · ${timestampAndBalance}` : timestampAndBalance}
+                    {timestampAndBalance}
                   </p>
                 </div>
                 <span className={`shrink-0 text-sm font-extrabold ${isPositive ? 'text-emerald-600' : 'text-rose-600'}`}>

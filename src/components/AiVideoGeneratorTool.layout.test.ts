@@ -254,6 +254,13 @@ test('AI video generator right side uses the image-style sample and history feed
   assert.equal(source.includes('<aside className="mt-4 rounded-2xl border border-[#E0E7FF] bg-white p-4'), false, 'video history should not render as a separate bottom panel')
 })
 
+test('AI video history prompts scroll instead of clipping long text', () => {
+  assert.match(source, /const renderPromptPreview = \(promptText: string\) => \(/)
+  assert.match(source, /data-video-history-prompt[\s\S]*className="max-h-\[8rem\][\s\S]*overflow-y-auto[\s\S]*overscroll-contain/)
+  assert.doesNotMatch(source, /line-clamp-4 text-sm leading-6 text-slate-600/)
+  assert.doesNotMatch(source, /items-start justify-between gap-4 overflow-hidden/)
+})
+
 test('AI video generator opens on Demo but switches to History after an in-page generation', () => {
   const initialHistoryLoad = source.match(/const loadInlineHistory = async \(\) => \{[\s\S]*?\n    \}/)?.[0] || ''
   const generateFlow = source.match(/const handleGenerate = async \(\) => \{[\s\S]*?\n  \}/)?.[0] || ''

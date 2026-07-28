@@ -4,6 +4,7 @@ import test from 'node:test'
 
 const navigationSource = readFileSync(new URL('./Navigation.tsx', import.meta.url), 'utf8')
 const globalStylesSource = readFileSync(new URL('../app/globals.css', import.meta.url), 'utf8')
+const creditSummaryDisplaySource = readFileSync(new URL('../lib/credit-summary-display.ts', import.meta.url), 'utf8')
 
 test('daily check-in nudge is not suppressed on earn credits pages', () => {
   assert.equal(
@@ -219,7 +220,11 @@ test('credit transaction titles and model supplements are formatted for display'
   assert.match(navigationSource, /formatCreditTransactionTitle/)
   assert.match(navigationSource, /formatCreditTransactionTitle\(transaction\)/)
   assert.match(navigationSource, /formatCreditTransactionSupplement\(transaction\)/)
-  assert.match(navigationSource, /transactionSupplement \? `\$\{transactionSupplement\} · \$\{timestampAndBalance\}` : timestampAndBalance/)
+  assert.match(navigationSource, /enrichCreditSummaryWithHistory/)
+  assert.match(creditSummaryDisplaySource, /\/api\/history\?limit=200/)
+  assert.match(navigationSource, /transactionSupplement && \(/)
+  assert.match(navigationSource, /\{timestampAndBalance\}/)
+  assert.doesNotMatch(navigationSource, /transactionSupplement \? `\$\{transactionSupplement\} · \$\{timestampAndBalance\}` : timestampAndBalance/)
   assert.match(navigationSource, /transaction\.balanceAfter\.toLocaleString\('en-US'\)/)
   assert.doesNotMatch(navigationSource, /transaction\.balanceAfter\.toLocaleString\('en-US'\)\} \{accountTranslations\.credits\}/)
 })
