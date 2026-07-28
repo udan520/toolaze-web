@@ -15,7 +15,7 @@ import {
 
 type CreditTransaction = {
   id: string
-  type: 'grant' | 'use' | 'refund' | 'purchase' | 'adjustment'
+  type: 'grant' | 'bonus' | 'use' | 'refund' | 'purchase' | 'adjustment'
   amount: number
   balanceAfter: number
   reason: string
@@ -99,7 +99,16 @@ function formatCreditBalance(balance: number) {
 }
 
 function formatType(type: CreditTransaction['type'], copy: ReturnType<typeof getCreditsPageCopy>) {
+  if (type === 'bonus') return copy.types.grant
   return copy.types[type] || copy.types.adjustment
+}
+
+function getTypeBadgeClass(type: CreditTransaction['type']) {
+  if (type === 'use') return 'bg-emerald-50 text-emerald-700 ring-1 ring-inset ring-emerald-100'
+  if (type === 'refund') return 'bg-orange-50 text-orange-700 ring-1 ring-inset ring-orange-100'
+  if (type === 'grant' || type === 'bonus') return 'bg-indigo-50 text-indigo-700 ring-1 ring-inset ring-indigo-100'
+
+  return 'bg-slate-100 text-slate-700'
 }
 
 interface CreditsPageClientProps {
@@ -233,7 +242,7 @@ export default function CreditsPageClient({ initialTranslations }: CreditsPageCl
                   <article key={transaction.id} className="grid gap-3 border-b border-slate-100 px-5 py-4 last:border-b-0 sm:grid-cols-[1fr_auto]">
                     <div className="min-w-0">
                       <div className="flex flex-wrap items-center gap-2">
-                        <span className="rounded-lg bg-slate-100 px-2.5 py-1 text-xs font-extrabold text-slate-700">
+                        <span className={`rounded-lg px-2.5 py-1 text-xs font-extrabold ${getTypeBadgeClass(transaction.type)}`}>
                           {formatType(transaction.type, copy)}
                         </span>
                         <span className="text-xs font-semibold text-slate-500">
