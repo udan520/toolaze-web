@@ -1,7 +1,30 @@
 import { calculateVideoGenerationCredits } from './generation-credits'
 
 export type AiVideoGeneratorModeId = 'image-to-video' | 'text-to-video'
-export type AiVideoGeneratorModelId = 'grok-1-5-video' | 'seedance-2' | 'seedance-2-mini' | 'kling-3'
+export type AiVideoGeneratorModelId =
+  | 'grok-1-5-video'
+  | 'seedance-2'
+  | 'seedance-2-mini'
+  | 'seedance-2-fast'
+  | 'seedance-1-5-pro'
+  | 'seedance-1-pro-fast'
+  | 'seedance-1-pro'
+  | 'seedance-1-lite'
+  | 'wan-2-7'
+  | 'wan-2-6'
+  | 'wan-2-5'
+  | 'wan-2-2'
+  | 'kling-3-turbo'
+  | 'kling-3'
+  | 'kling-2-6'
+  | 'kling-2-5'
+  | 'kling-2-1'
+  | 'veo-3-1-lite'
+  | 'veo-3-1-fast'
+  | 'veo-3-1-quality'
+  | 'pixverse-v6'
+  | 'happyhorse-1-1'
+  | 'happyhorse'
 
 export interface AiVideoGeneratorOption<T extends string | number = string> {
   value: T
@@ -25,6 +48,7 @@ export interface AiVideoGeneratorModelConfig {
   badge?: 'Hot' | 'New'
   minCredits: number
   defaultMode: AiVideoGeneratorModeId
+  supportedModes: AiVideoGeneratorModeId[]
   maxImages: number
   maxFileSizeMb: number
   aspectRatios: Array<AiVideoGeneratorOption>
@@ -33,6 +57,8 @@ export interface AiVideoGeneratorModelConfig {
   resolutions: string[]
   supportsNativeAudio?: boolean
   nativeAudioResolutions?: string[]
+  supportsNativeAudioOutput: boolean
+  supportsMultiShot: boolean
   promptPlaceholder: string
   samplePrompt: string
   previewTone: string
@@ -59,7 +85,7 @@ export const AI_VIDEO_GENERATOR_MODE_OPTIONS: AiVideoGeneratorModeOption[] = [
   },
 ]
 
-export const AI_VIDEO_GENERATOR_MODEL_OPTIONS: AiVideoGeneratorModelConfig[] = [
+const AI_VIDEO_GENERATOR_MODEL_OPTIONS_BASE = [
   {
     id: 'grok-1-5-video',
     name: 'Grok 1.5 Video',
@@ -100,7 +126,7 @@ export const AI_VIDEO_GENERATOR_MODEL_OPTIONS: AiVideoGeneratorModelConfig[] = [
     badge: 'Hot',
     minCredits: 150,
     defaultMode: 'image-to-video',
-    maxImages: 9,
+    maxImages: 2,
     maxFileSizeMb: 30,
     aspectRatios: [
       { value: '16:9', label: '16:9' },
@@ -128,7 +154,7 @@ export const AI_VIDEO_GENERATOR_MODEL_OPTIONS: AiVideoGeneratorModelConfig[] = [
     badge: 'New',
     minCredits: 75,
     defaultMode: 'image-to-video',
-    maxImages: 9,
+    maxImages: 2,
     maxFileSizeMb: 30,
     aspectRatios: [
       { value: 'adaptive', label: 'Adaptive' },
@@ -148,6 +174,110 @@ export const AI_VIDEO_GENERATOR_MODEL_OPTIONS: AiVideoGeneratorModelConfig[] = [
       'A lifestyle product photo becomes a polished social video, gentle parallax, clean studio light, smooth motion, crisp 720p output.',
     previewTone: 'Fast 720p video preview',
   },
+  ...([
+    ['seedance-2-fast', 'Seedance 2.0 Fast', 125, ['480p', '720p', '1080p', '4K'], [5, 10, 15], 2, true],
+    ['seedance-1-5-pro', 'Seedance 1.5 Pro', 60, ['480p', '720p', '1080p'], [4, 8, 12], 2, true],
+    ['seedance-1-pro-fast', 'Seedance 1.0 Pro Fast', 24, ['720p', '1080p'], [5, 10], 1, false],
+    ['seedance-1-pro', 'Seedance 1.0 Pro', 25, ['480p', '720p', '1080p'], [5, 10], 1, false],
+    ['seedance-1-lite', 'Seedance 1.0 Lite', 25, ['480p', '720p', '1080p'], [5, 10], 1, false],
+  ] as const).map(([id, name, minCredits, resolutions, durations, maxImages, supportsNativeAudio]) => ({
+    id,
+    name,
+    vendor: 'ByteDance',
+    description: id === 'seedance-1-pro-fast'
+      ? 'Fast image-to-video generation with stable motion and polished 720p or 1080p output.'
+      : 'ByteDance text-to-video and image-to-video generation with controllable camera motion and flexible output settings.',
+    logoSrc: '/model-logos/bytedance.svg',
+    logoAlt: 'ByteDance logo',
+    qualityRating: id === 'seedance-2-fast' ? 4.5 : id === 'seedance-1-5-pro' ? 4.5 : 4,
+    badge: id === 'seedance-2-fast' || id === 'seedance-1-pro-fast' ? 'New' as const : undefined,
+    minCredits,
+    defaultMode: id === 'seedance-1-pro-fast' ? 'image-to-video' as const : 'text-to-video' as const,
+    supportedModes: id === 'seedance-1-pro-fast'
+      ? ['image-to-video' as const]
+      : ['image-to-video' as const, 'text-to-video' as const],
+    maxImages,
+    maxFileSizeMb: id.startsWith('seedance-2') ? 30 : 10,
+    aspectRatios: ['16:9', '9:16', '1:1', '4:3', '3:4'].map((value) => ({ value, label: value })),
+    durations: [...durations],
+    defaultDuration: durations[0],
+    resolutions: [...resolutions],
+    supportsNativeAudio,
+    nativeAudioResolutions: supportsNativeAudio ? [...resolutions] : undefined,
+    promptPlaceholder: 'Describe the scene, action, camera movement, lighting, and audio when enabled.',
+    samplePrompt: 'A cinematic product scene with controlled camera movement, natural motion, detailed lighting, and clean composition.',
+    previewTone: 'Seedance cinematic preview',
+  })),
+  {
+    id: 'wan-2-7',
+    name: 'Wan 2.7',
+    vendor: 'Alibaba',
+    description: 'Latest Wan generation with first/last-frame control, audio-guided motion, and polished 1080p output.',
+    logoSrc: '/model-logos/wan.ico',
+    logoAlt: 'Wan logo',
+    qualityRating: 5,
+    badge: 'New',
+    minCredits: 50,
+    defaultMode: 'text-to-video',
+    maxImages: 2,
+    maxFileSizeMb: 10,
+    aspectRatios: [{ value: '16:9', label: '16:9' }, { value: '9:16', label: '9:16' }, { value: '1:1', label: '1:1' }],
+    durations: Array.from({ length: 9 }, (_, index) => index + 2),
+    defaultDuration: 5,
+    resolutions: ['720p', '1080p'],
+    promptPlaceholder: 'Describe the visuals, motion, camera, and synchronized sound.',
+    samplePrompt: 'Macro glass fruit cutting, slow precise blade motion, crisp synchronized sound, soft studio light.',
+    previewTone: 'Native-audio cinematic preview',
+  },
+  ...([
+    ['wan-2-6', 'Wan 2.6', 100, [5, 10, 15], ['720p', '1080p']],
+    ['wan-2-5', 'Wan 2.5', 100, [5, 10], ['720p', '1080p']],
+    ['wan-2-2', 'Wan 2.2', 50, [5], ['480p', '720p']],
+  ] as const).map(([id, name, minCredits, durations, resolutions]) => ({
+    id,
+    name,
+    vendor: 'Alibaba',
+    description: 'Wan text-to-video and image-to-video generation with controllable cinematic motion.',
+    logoSrc: '/model-logos/wan.ico',
+    logoAlt: 'Wan logo',
+    qualityRating: id === 'wan-2-6' ? 4.5 : 4,
+    minCredits,
+    defaultMode: 'text-to-video' as const,
+    maxImages: 1,
+    maxFileSizeMb: 10,
+    aspectRatios: [{ value: '16:9', label: '16:9' }, { value: '9:16', label: '9:16' }, { value: '1:1', label: '1:1' }],
+    durations: [...durations],
+    defaultDuration: 5,
+    resolutions: [...resolutions],
+    promptPlaceholder: 'Describe the subject, motion, camera direction, and desired audio.',
+    samplePrompt: 'A tactile close-up with slow deliberate motion, detailed materials, and clean synchronized sound.',
+    previewTone: 'Cinematic Wan video preview',
+  })),
+  ...([
+    ['kling-3-turbo', 'Kling 3 Turbo', 225, ['720p', '1080p'], true],
+  ] as const).map(([id, name, minCredits, resolutions, supportsNativeAudio]) => ({
+    id,
+    name,
+    vendor: 'Kuaishou',
+    description: 'Fast Kling generation for expressive motion, native audio, and short cinematic scenes.',
+    logoSrc: '/model-logos/kling.svg',
+    logoAlt: 'Kling logo',
+    qualityRating: 4.5,
+    badge: 'New' as const,
+    minCredits,
+    defaultMode: 'text-to-video' as const,
+    maxImages: 2,
+    maxFileSizeMb: 10,
+    aspectRatios: [{ value: '16:9', label: '16:9' }, { value: '9:16', label: '9:16' }, { value: '1:1', label: '1:1' }],
+    durations: [5, 10],
+    defaultDuration: 5,
+    resolutions: [...resolutions],
+    supportsNativeAudio,
+    nativeAudioResolutions: [...resolutions],
+    promptPlaceholder: 'Describe a complete scene with motion, camera, dialogue, and sound.',
+    samplePrompt: 'A cinematic macro scene with precise hand motion and crisp synchronized material sounds.',
+    previewTone: 'Fast native-audio preview',
+  })),
   {
     id: 'kling-3',
     name: 'Kling 3.0',
@@ -176,7 +306,161 @@ export const AI_VIDEO_GENERATOR_MODEL_OPTIONS: AiVideoGeneratorModelConfig[] = [
       'A sleek electric car crosses a rain-soaked downtown bridge at night, 6-shot commercial sequence, reflections, tire spray, cinematic 4K lighting.',
     previewTone: '4K multi-shot preview',
   },
+  ...([
+    ['kling-2-6', 'Kling 2.6', 100, ['720p', '1080p'], true],
+    ['kling-2-5', 'Kling 2.5 Turbo Pro', 150, ['1080p'], false],
+    ['kling-2-1', 'Kling 2.1 Master', 250, ['1080p'], false],
+  ] as const).map(([id, name, minCredits, resolutions, supportsNativeAudio]) => ({
+    id,
+    name,
+    vendor: 'Kuaishou',
+    description: 'Reliable Kling text-to-video and image-to-video generation with strong motion consistency.',
+    logoSrc: '/model-logos/kling.svg',
+    logoAlt: 'Kling logo',
+    qualityRating: id === 'kling-2-6' ? 4.5 : 4,
+    minCredits,
+    defaultMode: 'text-to-video' as const,
+    maxImages: 1,
+    maxFileSizeMb: 10,
+    aspectRatios: [{ value: '16:9', label: '16:9' }, { value: '9:16', label: '9:16' }, { value: '1:1', label: '1:1' }],
+    durations: [5, 10],
+    defaultDuration: 5,
+    resolutions: [...resolutions],
+    supportsNativeAudio,
+    nativeAudioResolutions: supportsNativeAudio ? [...resolutions] : undefined,
+    promptPlaceholder: 'Describe the subject, movement, camera, and final visual style.',
+    samplePrompt: 'A close-up product scene with controlled motion, tactile materials, and cinematic lighting.',
+    previewTone: 'Kling cinematic preview',
+  })),
+  ...([
+    ['veo-3-1-lite', 'Veo 3.1 Lite', 45, 4],
+    ['veo-3-1-fast', 'Veo 3.1 Fast', 90, 4.5],
+    ['veo-3-1-quality', 'Veo 3.1 Quality', 375, 5],
+  ] as const).map(([id, name, minCredits, qualityRating]) => ({
+    id,
+    name,
+    vendor: 'Google',
+    description: 'Native-audio video generation for detailed motion, synchronized sound, and cinematic scenes.',
+    logoSrc: '/model-logos/google-gemini.png',
+    logoAlt: 'Google Gemini logo',
+    qualityRating,
+    minCredits,
+    defaultMode: 'text-to-video' as const,
+    maxImages: 2,
+    maxFileSizeMb: 30,
+    aspectRatios: [
+      { value: '16:9', label: '16:9' },
+      { value: '9:16', label: '9:16' },
+    ],
+    durations: [4, 6, 8],
+    defaultDuration: 8,
+    resolutions: ['720p', '1080p'],
+    promptPlaceholder: 'Describe the scene, motion, camera, textures, and synchronized audio in detail.',
+    samplePrompt: 'A macro soap cutting scene, precise blade movement, crisp synchronized texture sounds, soft studio light.',
+    previewTone: 'Native-audio cinematic preview',
+  })),
+  {
+    id: 'pixverse-v6',
+    name: 'PixVerse V6',
+    vendor: 'PixVerse',
+    description: 'Flexible text-to-video and image-to-video generation with native audio and outputs up to 1080p.',
+    logoSrc: '/model-logos/pixverse.svg',
+    logoAlt: 'PixVerse logo',
+    qualityRating: 4.5,
+    badge: 'New',
+    minCredits: 10,
+    defaultMode: 'text-to-video',
+    maxImages: 1,
+    maxFileSizeMb: 20,
+    aspectRatios: ['16:9', '4:3', '1:1', '3:4', '9:16', '2:3', '3:2', '21:9']
+      .map((value) => ({ value, label: value })),
+    durations: Array.from({ length: 15 }, (_, index) => index + 1),
+    defaultDuration: 5,
+    resolutions: ['360p', '540p', '720p', '1080p'],
+    supportsNativeAudio: true,
+    nativeAudioResolutions: ['360p', '540p', '720p', '1080p'],
+    promptPlaceholder: 'Describe the scene, motion, camera, visual style, and synchronized sound.',
+    samplePrompt: 'A cinematic macro product reveal with smooth camera movement, tactile details, and synchronized ambient audio.',
+    previewTone: 'Native-audio PixVerse preview',
+  },
+  ...([
+    ['happyhorse-1-1', 'HappyHorse 1.1', 75, 4.5],
+    ['happyhorse', 'HappyHorse', 60, 4],
+  ] as const).map(([id, name, minCredits, qualityRating]) => ({
+    id,
+    name,
+    vendor: 'Alibaba',
+    description: 'Text-to-video and image-to-video generation with smooth motion and consistent visual storytelling.',
+    logoSrc: '/model-logos/happyhorse.svg',
+    logoAlt: 'HappyHorse logo',
+    qualityRating,
+    minCredits,
+    defaultMode: 'text-to-video' as const,
+    maxImages: 1,
+    maxFileSizeMb: 20,
+    aspectRatios: [
+      '16:9',
+      '9:16',
+      '1:1',
+      '4:3',
+      '3:4',
+      ...(id === 'happyhorse-1-1' ? ['4:5', '5:4', '9:21', '21:9'] : []),
+    ].map((value) => ({ value, label: value })),
+    durations: Array.from({ length: 13 }, (_, index) => index + 3),
+    defaultDuration: 5,
+    resolutions: ['720p', '1080p'],
+    promptPlaceholder: 'Describe the subject, action, camera movement, lighting, and final visual style.',
+    samplePrompt: 'A polished cinematic scene with expressive subject motion, smooth camera movement, and detailed natural lighting.',
+    previewTone: 'HappyHorse cinematic preview',
+  })),
 ]
+
+const NATIVE_AUDIO_OUTPUT_MODEL_IDS = new Set<AiVideoGeneratorModelId>([
+  'grok-1-5-video',
+  'seedance-2',
+  'seedance-2-mini',
+  'seedance-2-fast',
+  'seedance-1-5-pro',
+  'wan-2-6',
+  'wan-2-5',
+  'kling-3-turbo',
+  'kling-3',
+  'kling-2-6',
+  'veo-3-1-lite',
+  'veo-3-1-fast',
+  'veo-3-1-quality',
+  'pixverse-v6',
+  'happyhorse-1-1',
+  'happyhorse',
+])
+
+const MULTI_SHOT_MODEL_IDS = new Set<AiVideoGeneratorModelId>([
+  'seedance-2',
+  'seedance-2-mini',
+  'seedance-2-fast',
+  'seedance-1-5-pro',
+  'seedance-1-pro-fast',
+  'seedance-1-pro',
+  'wan-2-6',
+  'kling-3-turbo',
+  'kling-3',
+  'veo-3-1-lite',
+  'veo-3-1-fast',
+  'veo-3-1-quality',
+  'pixverse-v6',
+  'happyhorse-1-1',
+  'happyhorse',
+])
+
+export const AI_VIDEO_GENERATOR_MODEL_OPTIONS: AiVideoGeneratorModelConfig[] =
+  AI_VIDEO_GENERATOR_MODEL_OPTIONS_BASE.map((model) => ({
+    ...model,
+    supportedModes: 'supportedModes' in model
+      ? [...model.supportedModes]
+      : ['image-to-video', 'text-to-video'],
+    supportsNativeAudioOutput: NATIVE_AUDIO_OUTPUT_MODEL_IDS.has(model.id as AiVideoGeneratorModelId),
+    supportsMultiShot: MULTI_SHOT_MODEL_IDS.has(model.id as AiVideoGeneratorModelId),
+  })) as AiVideoGeneratorModelConfig[]
 
 export const AI_VIDEO_GENERATOR_MODEL_GROUPS: AiVideoGeneratorModelGroup[] = [
   {
@@ -191,16 +475,63 @@ export const AI_VIDEO_GENERATOR_MODEL_GROUPS: AiVideoGeneratorModelGroup[] = [
     name: 'Seedance',
     logoSrc: '/model-logos/bytedance.svg',
     logoAlt: 'ByteDance logo',
-    models: [AI_VIDEO_GENERATOR_MODEL_OPTIONS[1], AI_VIDEO_GENERATOR_MODEL_OPTIONS[2]],
+    models: AI_VIDEO_GENERATOR_MODEL_OPTIONS.filter((model) => model.id.startsWith('seedance-')),
+  },
+  {
+    id: 'wan',
+    name: 'Wan',
+    logoSrc: '/model-logos/wan.ico',
+    logoAlt: 'Wan logo',
+    models: AI_VIDEO_GENERATOR_MODEL_OPTIONS.filter((model) => model.id.startsWith('wan-')),
   },
   {
     id: 'kling',
     name: 'Kling',
     logoSrc: '/model-logos/kling.svg',
     logoAlt: 'Kling logo',
-    models: [AI_VIDEO_GENERATOR_MODEL_OPTIONS[3]],
+    models: AI_VIDEO_GENERATOR_MODEL_OPTIONS.filter((model) => model.id.startsWith('kling-')),
+  },
+  {
+    id: 'veo',
+    name: 'Veo',
+    logoSrc: '/model-logos/google-gemini.png',
+    logoAlt: 'Google Gemini logo',
+    models: AI_VIDEO_GENERATOR_MODEL_OPTIONS.filter((model) => model.id.startsWith('veo-')),
+  },
+  {
+    id: 'pixverse',
+    name: 'PixVerse',
+    logoSrc: '/model-logos/pixverse.svg',
+    logoAlt: 'PixVerse logo',
+    models: AI_VIDEO_GENERATOR_MODEL_OPTIONS.filter((model) => model.id.startsWith('pixverse-')),
+  },
+  {
+    id: 'happyhorse',
+    name: 'HappyHorse',
+    logoSrc: '/model-logos/happyhorse.svg',
+    logoAlt: 'HappyHorse logo',
+    models: AI_VIDEO_GENERATOR_MODEL_OPTIONS.filter((model) => model.id.startsWith('happyhorse')),
   },
 ]
+
+export function getAiVideoGeneratorModelGroupsForMode(
+  mode: AiVideoGeneratorModeId,
+): AiVideoGeneratorModelGroup[] {
+  return AI_VIDEO_GENERATOR_MODEL_GROUPS
+    .map((group) => ({
+      ...group,
+      models: group.models
+        .filter((model) => model.supportedModes.includes(mode))
+        .sort((left, right) => right.qualityRating - left.qualityRating),
+    }))
+    .filter((group) => group.models.length > 0)
+}
+
+export function getAiVideoGeneratorFallbackModel(
+  mode: AiVideoGeneratorModeId,
+): AiVideoGeneratorModelConfig | undefined {
+  return getAiVideoGeneratorModelGroupsForMode(mode)[0]?.models[0]
+}
 
 export function getAiVideoGeneratorModelGroupId(modelId: AiVideoGeneratorModelId): string {
   return AI_VIDEO_GENERATOR_MODEL_GROUPS.find((group) =>

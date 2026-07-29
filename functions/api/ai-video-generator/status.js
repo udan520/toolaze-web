@@ -12,6 +12,7 @@ import {
 } from '../../_shared/generation-task-access.mjs';
 
 const KIE_AI_BASE = 'https://api.kie.ai/api/v1/jobs';
+const KIE_VEO_BASE = 'https://api.kie.ai/api/v1/veo';
 const CORS = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Methods': 'POST, OPTIONS',
@@ -37,6 +38,12 @@ function normalizeStatus(state) {
   const value = String(state || '').toLowerCase();
   if (value === 'success' || value === 'succeeded' || value === 'completed') return 'SUCCEEDED';
   if (value === 'fail' || value === 'failed' || value === 'error') return 'FAILED';
+  return 'PENDING';
+}
+
+function normalizeVeoStatus(successFlag) {
+  if (Number(successFlag) === 1) return 'SUCCEEDED';
+  if (Number(successFlag) === 2 || Number(successFlag) === 3) return 'FAILED';
   return 'PENDING';
 }
 
@@ -162,8 +169,11 @@ export async function onRequest(context) {
       return jsonResponse({ error: 'API key not configured (KIE_AI_API_KEY)' }, 500);
     }
 
+    const isVeoTask = body?.taskProvider === 'veo';
     const response = await fetch(
-      `${KIE_AI_BASE}/recordInfo?taskId=${encodeURIComponent(taskId)}`,
+      isVeoTask
+        ? `${KIE_VEO_BASE}/record-info?taskId=${encodeURIComponent(taskId)}`
+        : `${KIE_AI_BASE}/recordInfo?taskId=${encodeURIComponent(taskId)}`,
       {
         method: 'GET',
         headers: {
@@ -180,8 +190,11 @@ export async function onRequest(context) {
     }
 
     const data = result?.data ?? result;
-    const status = normalizeStatus(data?.state ?? data?.status);
-    const videoUrl = parseVideoUrl(data);
+    const veoResponse = isVeoTask ? data?.response : null;
+    const status = isVeoTask
+      ? normalizeVeoStatus(data?.successFlag)
+      : normalizeStatus(data?.state ?? data?.status);
+    const videoUrl = parseVideoUrl(veoResponse || data);
     const message = data?.failMsg ?? data?.message;
     const creditRefund = status === 'FAILED'
       ? await refundFailedVideoCredits(env, user, body, taskId, message)

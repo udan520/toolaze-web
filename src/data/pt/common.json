@@ -790,7 +790,11 @@
       "generationTimeout": "A geração de vídeo expirou. Tente novamente.",
       "videoGenerationFailed": "A geração de vídeo falhou.",
       "download": "Baixar",
-      "resultExpires": "Links de vídeos gerados podem expirar. Baixe o resultado se precisar mantê-lo."
+      "resultExpires": "Links de vídeos gerados podem expirar. Baixe o resultado se precisar mantê-lo.",
+      "modelSwitchedTitle": "Modelo alterado",
+      "modelSwitchedDescription": "{previousModel} não suporta {mode}. Mudámos para {nextModel}.",
+      "noCompatibleModelTitle": "Nenhum modelo compatível",
+      "noCompatibleModelDescription": "Atualmente nenhum modelo suporta {mode}. Escolha outro modo."
     }
   },
   "imageCompressor": {

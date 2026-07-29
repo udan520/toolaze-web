@@ -5,6 +5,16 @@ import test from 'node:test'
 const source = readFileSync(new URL('./AiImageGenerationTool.tsx', import.meta.url), 'utf8')
 const referenceUploaderSource = readFileSync(new URL('./ReferenceImageUploader.tsx', import.meta.url), 'utf8')
 
+test('switching image models keeps the current page URL unchanged', () => {
+  const modelChangeHandler = source.match(
+    /const handleModelChange = \(nextModelId: ModelOption\['id'\]\) => \{[\s\S]*?\n  \}\n\n  const openResultSignIn/,
+  )?.[0] || ''
+
+  assert.notEqual(modelChangeHandler, '', 'image model change handler should be present')
+  assert.doesNotMatch(modelChangeHandler, /window\.history\.(?:pushState|replaceState)/)
+  assert.doesNotMatch(modelChangeHandler, /router\.(?:push|replace)/)
+})
+
 test('desktop result combines image preview and controls in one card', () => {
   assert.match(source, /data-desktop-result-card/)
   assert.match(source, /data-desktop-result-feed/)

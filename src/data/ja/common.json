@@ -802,7 +802,11 @@
       "generationTimeout": "動画生成がタイムアウトしました。もう一度お試しください。",
       "videoGenerationFailed": "動画生成に失敗しました。",
       "download": "ダウンロード",
-      "resultExpires": "生成された動画リンクは期限切れになる場合があります。保存したい場合は結果をダウンロードしてください。"
+      "resultExpires": "生成された動画リンクは期限切れになる場合があります。保存したい場合は結果をダウンロードしてください。",
+      "modelSwitchedTitle": "モデルを切り替えました",
+      "modelSwitchedDescription": "{previousModel}は{mode}に対応していません。{nextModel}に切り替えました。",
+      "noCompatibleModelTitle": "対応モデルがありません",
+      "noCompatibleModelDescription": "現在、{mode}に対応するモデルはありません。別のモードを選択してください。"
     }
   },
   "imageCompressor": {

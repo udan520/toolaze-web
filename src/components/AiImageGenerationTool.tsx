@@ -56,6 +56,13 @@ import { formatLocalTimestampToSeconds } from '@/lib/credit-history-time'
 import { dispatchToolazeTopNotice } from '@/lib/top-notice'
 import { parseLocalePath } from '@/lib/site-language-switch'
 import { getGenerationModelLabel, getWrappedHairToolHistoryDisplay } from '@/lib/generation-history-display'
+import {
+  AI_IMAGE_GENERATOR_GROUPS,
+  AI_IMAGE_GENERATOR_MODELS,
+  type AiImageGeneratorBadge,
+  type AiImageGeneratorModelId,
+} from '@/lib/ai-image-generator-config'
+import { getLocalizedModelSelectorCopy } from '@/lib/model-selector-i18n'
 
 type RightPanelMode = 'sample' | 'generating' | 'history'
 type GenerationMediaType = 'image' | 'video'
@@ -101,7 +108,7 @@ interface FailedGenerationItem extends PendingGenerationItem {
   errorMessage: string
 }
 
-const MODEL_CONFIG = {
+const LEGACY_MODEL_CONFIG = {
   'nano-banana-pro': {
     aspectRatios: [
       { value: '1:1', label: '1:1' },
@@ -245,7 +252,8 @@ const MODEL_CONFIG = {
   },
 } as const
 
-type ImageModelId = keyof typeof MODEL_CONFIG
+const MODEL_CONFIG = AI_IMAGE_GENERATOR_MODELS
+type ImageModelId = AiImageGeneratorModelId
 
 const PENDING_GENERATION_STORAGE_KEY = 'toolaze:image-generation-pending:v1'
 const DEFAULT_VIDEO_DURATION_OPTIONS = [5, 8, 10, 15] as const
@@ -564,7 +572,7 @@ interface ModelOption {
   name: string
   description: string
   qualityRating: number
-  badge?: 'Hot' | 'New'
+  badge?: AiImageGeneratorBadge
 }
 
 interface ModelGroup {
@@ -576,7 +584,7 @@ interface ModelGroup {
   models: ModelOption[]
 }
 
-const MODEL_GROUPS: ModelGroup[] = [
+const LEGACY_MODEL_GROUPS: ModelGroup[] = [
   {
     id: 'openai-gpt',
     name: 'OpenAI GPT',
@@ -682,15 +690,24 @@ const MODEL_GROUPS: ModelGroup[] = [
   },
 ]
 
+const MODEL_GROUPS: ModelGroup[] = AI_IMAGE_GENERATOR_GROUPS.map((group) => ({
+  ...group,
+  models: group.modelIds.map((id) => ({
+    id,
+    name: MODEL_CONFIG[id].name,
+    description: MODEL_CONFIG[id].description,
+    qualityRating: MODEL_CONFIG[id].qualityRating,
+    badge: ('badge' in MODEL_CONFIG[id] ? MODEL_CONFIG[id].badge : undefined) as AiImageGeneratorBadge | undefined,
+  })),
+}))
+
 const getFlatModelOptions = () => MODEL_GROUPS.flatMap((group) => group.models)
 
 const getModelGroupId = (modelId: ImageModelId) =>
   MODEL_GROUPS.find((group) => group.models.some((model) => model.id === modelId))?.id || MODEL_GROUPS[0].id
 
-const TEXT_TO_IMAGE_DEFAULT_MODELS: ImageModelId[] = ['gpt-image-2', 'grok-1-5-image', 'seedream-4-5', 'seedream-5-0-lite', 'seedream-5-0-pro', 'wan-2-7-image']
-
 const getDefaultTabForModel = (id: ImageModelId): 'image-to-image' | 'text-to-image' =>
-  TEXT_TO_IMAGE_DEFAULT_MODELS.includes(id) ? 'text-to-image' : 'image-to-image'
+  MODEL_CONFIG[id].defaultMode
 
 const getDefaultAspectRatioForModel = (id: ImageModelId, presetMode: AiImageGenerationToolProps['presetMode']): string => {
   if (id === 'grok-video-1-5') return '9:16'
@@ -705,22 +722,19 @@ const getDefaultAspectRatioForModel = (id: ImageModelId, presetMode: AiImageGene
 }
 
 const getResolutionOptionsForModel = (id: ImageModelId): string[] =>
-  id === 'grok-video-1-5'
-    ? ['480p', '720p']
-    : id === 'seedream-5-0-pro'
-      ? ['1K', '2K']
-      : ['1K', '2K', '4K']
+  MODEL_CONFIG[id].setting.options
 
 const getDefaultResolutionForModel = (id: ImageModelId): string =>
-  getResolutionOptionsForModel(id)[0] || '1K'
+  MODEL_CONFIG[id].setting.defaultValue
 
 function getModelOptionMetadata(id: ImageModelId): string[] {
   const resolutionOptions = getResolutionOptionsForModel(id)
-  const maxResolution = resolutionOptions[resolutionOptions.length - 1] || '1K'
   const creditCosts = resolutionOptions.map((option) => calculateImageGenerationCredits(id, option))
   const minCredits = Math.min(...creditCosts)
   const creditLabel = `${minCredits} credits +`
 
+  if (MODEL_CONFIG[id].setting.kind === 'quality') return [creditLabel, 'Medium / High']
+  const maxResolution = resolutionOptions[resolutionOptions.length - 1] || '1K'
   return [creditLabel, `Max ${maxResolution}`]
 }
 
@@ -1117,8 +1131,15 @@ export default function AiImageGenerationTool({
     creditsUsedUpAction: 'Close',
   }
   const toolText = getAiImageGenerationToolText(commonTranslations?.common?.nanoBananaTool, defaultToolText)
-  const imageModelSelectorCopy = commonTranslations?.common?.modelSelector?.image
-  const modelSelectorBadgeLabels = commonTranslations?.common?.modelSelector?.badges
+  const localizedModelSelectorCopy = useMemo(
+    () => getLocalizedModelSelectorCopy(
+      parseLocalePath(pathname).pathLocale || 'en',
+      commonTranslations?.common?.modelSelector,
+    ),
+    [commonTranslations, pathname],
+  )
+  const imageModelSelectorCopy = localizedModelSelectorCopy.image
+  const modelSelectorBadgeLabels = localizedModelSelectorCopy.badges
   const getModelBadgeLabel = (badge?: ModelOption['badge']) => {
     if (!badge) return ''
     return modelSelectorBadgeLabels?.[badge.toLowerCase()] || badge
@@ -1259,9 +1280,16 @@ export default function AiImageGenerationTool({
   )
 
   useEffect(() => {
-    setSelectedModelId(modelId)
-    setActiveModelGroupId(getModelGroupId(modelId))
-  }, [modelId])
+    const queryModelId = new URLSearchParams(window.location.search).get('model')
+    const nextModelId = isImageModelId(queryModelId) && queryModelId !== 'grok-video-1-5'
+      ? queryModelId
+      : modelId
+    setSelectedModelId(nextModelId)
+    setActiveModelGroupId(getModelGroupId(nextModelId))
+    setAspectRatio(getDefaultAspectRatioForModel(nextModelId, presetMode))
+    setResolution(getDefaultResolutionForModel(nextModelId))
+    if (!defaultMode) setActiveTab(getDefaultTabForModel(nextModelId))
+  }, [defaultMode, modelId, presetMode])
 
   useEffect(() => {
     if (!isModelMenuOpen) return
@@ -2162,7 +2190,11 @@ export default function AiImageGenerationTool({
       const formData = new FormData()
       formData.append('prompt', effectivePrompt)
       formData.append('aspectRatio', requestAspectRatio)
-      formData.append('resolution', requestModelId === 'wan-2-7-image' && requestActiveTab === 'image-to-image' && requestResolution === '4K' ? '2K' : requestResolution)
+      if (MODEL_CONFIG[requestModelId].setting.kind === 'quality') {
+        formData.append('quality', requestResolution)
+      } else {
+        formData.append('resolution', requestModelId === 'wan-2-7-image' && requestActiveTab === 'image-to-image' && requestResolution === '4K' ? '2K' : requestResolution)
+      }
       if (requestMediaType === 'video') {
         formData.append('duration', String(requestVideoDurationSeconds))
       }
@@ -2627,15 +2659,6 @@ export default function AiImageGenerationTool({
     setIsModelMenuOpen(false)
     if (isCouplePhotoMakerMode) return
     setActiveTab(imageFiles.length > 0 || remoteImageUrls.length > 0 ? 'image-to-image' : getDefaultTabForModel(nextModelId))
-
-    const parts = pathname.split('/').filter(Boolean)
-    const modelIndex = parts.indexOf('model')
-    if (modelIndex !== -1 && parts.length > modelIndex + 1) {
-      parts[modelIndex + 1] = nextModelId
-      window.history.pushState(null, '', `/${parts.join('/')}`)
-      return
-    }
-    window.history.pushState(null, '', `/model/${nextModelId}`)
   }
 
   const openResultSignIn = () => {
@@ -4163,10 +4186,14 @@ export default function AiImageGenerationTool({
               </div>
             )}
 
-            {/* Resolution */}
+            {/* Model quality or resolution */}
             {!isCouplePhotoMakerMode && (
               <div>
-                <label className="block text-xs font-semibold text-slate-500 tracking-wide mb-2">{toolText.resolution}</label>
+                <label className="block text-xs font-semibold text-slate-500 tracking-wide mb-2">
+                  {modelConfig.setting.kind === 'quality'
+                    ? imageModelSelectorCopy?.quality || 'Quality'
+                    : toolText.resolution}
+                </label>
                 <div className="grid grid-cols-3 gap-2">
                   {resolutionOptions.map((option) => {
                     const isSelected = resolution === option
@@ -4182,7 +4209,9 @@ export default function AiImageGenerationTool({
                             : 'border-[#E0E7FF] bg-white text-slate-600 hover:border-[#C7D2FE] hover:bg-[#F8FAFF]'
                         }`}
                       >
-                        {option}
+                        {modelConfig.setting.kind === 'quality'
+                          ? imageModelSelectorCopy?.qualityOptions?.[option as 'medium' | 'high'] || option[0].toUpperCase() + option.slice(1)
+                          : option}
                       </button>
                     )
                   })}

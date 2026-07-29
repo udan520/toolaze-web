@@ -6,6 +6,7 @@
     "node": ">=20.0.0"
   },
   "scripts": {
+    "predev": "npm run env:sync",
     "dev": "next dev -p 3006",
     "dev:clean": "node -e \"const fs=require('fs');fs.rmSync('.next',{recursive:true,force:true,maxRetries:10,retryDelay:200});console.log('✅ .next cleaned')\" && next dev -p 3006",
     "dev:all": "npx --yes concurrently -n web,seo -c blue,magenta \"npm run dev\" \"npm run admin:seo\"",

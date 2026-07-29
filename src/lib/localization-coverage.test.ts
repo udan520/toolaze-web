@@ -21,6 +21,15 @@ import {
 import { getEarnCreditsPageCopy } from '@/app/earn-credits/earn-credits-copy'
 import { getContactPageCopy, getSupportPolicyCopy } from '@/app/support-pages/support-page-copy'
 import { loadCommonTranslations } from '@/lib/seo-loader'
+import {
+  AI_IMAGE_GENERATOR_GROUPS,
+  AI_IMAGE_GENERATOR_MODEL_OPTIONS,
+} from '@/lib/ai-image-generator-config'
+import {
+  AI_VIDEO_GENERATOR_MODEL_GROUPS,
+  AI_VIDEO_GENERATOR_MODEL_OPTIONS,
+} from '@/lib/ai-video-generator-config'
+import { getLocalizedModelSelectorCopy } from '@/lib/model-selector-i18n'
 
 const projectRoot = process.cwd()
 const supportedLocales = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it'] as const
@@ -502,28 +511,27 @@ test('breadcrumb component maps every global AI tool label through translations'
 })
 
 test('model selector copy is localized for image and video dropdowns', () => {
-  const requiredImageGroups = ['openai-gpt', 'xai', 'seedream', 'nano-banana', 'wan-ai']
-  const requiredImageModels = [
-    'gpt-image-2',
-    'grok-1-5-image',
-    'seedream-5-0-pro',
-    'seedream-5-0-lite',
-    'seedream-4-5',
-    'nano-banana-pro',
-    'nano-banana-2',
-    'wan-2-7-image',
-  ]
-  const requiredVideoGroups = ['grok', 'seedance', 'kling']
-  const requiredVideoModels = ['grok-1-5-video', 'seedance-2', 'seedance-2-mini', 'kling-3']
-  const enSelector = readJson('src/data/en/common.json').common?.modelSelector
+  const requiredImageGroups = AI_IMAGE_GENERATOR_GROUPS.map(({ id }) => id)
+  const requiredImageModels = AI_IMAGE_GENERATOR_MODEL_OPTIONS
+    .filter(({ id }) => id !== 'grok-video-1-5')
+    .map(({ id }) => id)
+  const requiredVideoGroups = AI_VIDEO_GENERATOR_MODEL_GROUPS.map(({ id }) => id)
+  const requiredVideoModels = AI_VIDEO_GENERATOR_MODEL_OPTIONS.map(({ id }) => id)
+  const enSelector = getLocalizedModelSelectorCopy(
+    'en',
+    readJson('src/data/en/common.json').common?.modelSelector,
+  )
   const imageToolSource = readProjectFile('src/components/AiImageGenerationTool.tsx')
   const videoToolSource = readProjectFile('src/components/AiVideoGeneratorTool.tsx')
 
-  assert.match(imageToolSource, /commonTranslations\?\.common\?\.modelSelector\?\.image/)
-  assert.match(videoToolSource, /commonTranslations\?\.common\?\.modelSelector\?\.video/)
+  assert.match(imageToolSource, /getLocalizedModelSelectorCopy/)
+  assert.match(videoToolSource, /getLocalizedModelSelectorCopy/)
 
   for (const locale of supportedLocales) {
-    const selector = readJson(`src/data/${locale}/common.json`).common?.modelSelector
+    const selector = getLocalizedModelSelectorCopy(
+      locale,
+      readJson(`src/data/${locale}/common.json`).common?.modelSelector,
+    )
 
     assert.equal(typeof selector?.badges?.hot, 'string', `${locale}.badges.hot`)
     assert.equal(typeof selector?.badges?.new, 'string', `${locale}.badges.new`)
@@ -531,6 +539,9 @@ test('model selector copy is localized for image and video dropdowns', () => {
       assert.notEqual(selector.badges.hot, enSelector.badges.hot, `${locale}.badges.hot`)
       assert.notEqual(selector.badges.new, enSelector.badges.new, `${locale}.badges.new`)
     }
+    assert.equal(typeof selector.image.quality, 'string', `${locale}.image.quality`)
+    assert.equal(typeof selector.image.qualityOptions.medium, 'string', `${locale}.image.qualityOptions.medium`)
+    assert.equal(typeof selector.image.qualityOptions.high, 'string', `${locale}.image.qualityOptions.high`)
 
     for (const groupId of requiredImageGroups) {
       const groupCopy = selector?.image?.groups?.[groupId]
@@ -551,6 +562,7 @@ test('model selector copy is localized for image and video dropdowns', () => {
 
     for (const groupId of requiredVideoGroups) {
       assert.equal(typeof selector?.video?.groups?.[groupId]?.logoAlt, 'string', `${locale}.video.groups.${groupId}.logoAlt`)
+      assert.equal(typeof selector?.video?.groups?.[groupId]?.description, 'string', `${locale}.video.groups.${groupId}.description`)
     }
 
     for (const modelId of requiredVideoModels) {

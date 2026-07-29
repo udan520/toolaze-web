@@ -24,6 +24,9 @@ const WRAPPED_GENERATOR_TOOL_LABELS: Record<string, string> = {
 
 const MODEL_LABELS: Record<string, string> = {
   'gpt-image-2': 'GPT Image 2',
+  'gpt-image-1-5': 'GPT Image 1.5',
+  'flux-2-pro': 'Flux 2 Pro',
+  'flux-2-flex': 'Flux 2 Flex',
   'nano-banana-pro': 'Nano Banana Pro',
   'nano-banana-2': 'Nano Banana 2',
   'seedream-4-5': 'Seedream 4.5',

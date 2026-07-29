@@ -179,7 +179,7 @@ test('AI video generator creates a Kie Grok 1.5 image-to-video task', async () =
   }
 })
 
-test('AI video generator creates a Kie Seedance 2.0 task with the documented reference image payload', async () => {
+test('AI video generator creates a Kie Seedance 2.0 first-and-last-frame task', async () => {
   const calls: FetchCall[] = []
   const originalFetch = globalThis.fetch
   globalThis.fetch = (async (url: RequestInfo | URL, init?: RequestInit) => {
@@ -215,10 +215,9 @@ test('AI video generator creates a Kie Seedance 2.0 task with the documented ref
 
     const payload = JSON.parse(String(calls[0].init?.body))
     assert.equal(payload.model, 'bytedance/seedance-2')
-    assert.deepEqual(payload.input.reference_image_urls, [
-      'https://cdn.example.com/one.png',
-      'https://cdn.example.com/two.png',
-    ])
+    assert.equal(payload.input.first_frame_url, 'https://cdn.example.com/one.png')
+    assert.equal(payload.input.last_frame_url, 'https://cdn.example.com/two.png')
+    assert.equal(payload.input.reference_image_urls, undefined)
     assert.equal(payload.input.image_urls, undefined)
     assert.equal(payload.input.resolution, '1080p')
     assert.equal(payload.input.duration, 15)
@@ -265,10 +264,195 @@ test('AI video generator creates a Kie Seedance 2.0 Mini task and returns mapped
 
     const payload = JSON.parse(String(calls[0].init?.body))
     assert.equal(payload.model, 'bytedance/seedance-2-mini')
-    assert.deepEqual(payload.input.reference_image_urls, ['https://cdn.example.com/mini.png'])
+    assert.equal(payload.input.first_frame_url, 'https://cdn.example.com/mini.png')
+    assert.equal(payload.input.reference_image_urls, undefined)
     assert.equal(payload.input.aspect_ratio, 'adaptive')
     assert.equal(payload.input.resolution, '720p')
     assert.equal(payload.input.duration, 10)
+  } finally {
+    globalThis.fetch = originalFetch
+  }
+})
+
+test('AI video generator maps Seedance 1.0 Pro Fast image-to-video requests', async () => {
+  let requestBody: Record<string, any> | undefined
+  const originalFetch = globalThis.fetch
+  globalThis.fetch = (async (_url: RequestInfo | URL, init?: RequestInit) => {
+    requestBody = JSON.parse(String(init?.body))
+    return new Response(JSON.stringify({ code: 200, data: { taskId: 'seedance_pro_fast_task' } }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    })
+  }) as typeof fetch
+
+  try {
+    const response = await createVideoTask({
+      request: createFormRequest({
+        mode: 'image-to-video',
+        model: 'seedance-1-pro-fast',
+        prompt: 'Animate the product with a slow cinematic push-in.',
+        imageUrls: JSON.stringify(['https://cdn.example.com/product.png']),
+        aspectRatio: '16:9',
+        resolution: '720p',
+        duration: '5',
+      }),
+      env: { KIE_AI_API_KEY: 'test-key' },
+    })
+
+    assert.equal(response.status, 200)
+    assert.equal(requestBody?.model, 'bytedance/v1-pro-fast-image-to-video')
+    assert.deepEqual(requestBody?.input, {
+      prompt: 'Animate the product with a slow cinematic push-in.',
+      image_url: 'https://cdn.example.com/product.png',
+      resolution: '720p',
+      duration: '5',
+      nsfw_checker: true,
+    })
+  } finally {
+    globalThis.fetch = originalFetch
+  }
+})
+
+test('AI video generator rejects Seedance 1.0 Pro Fast text-to-video requests', async () => {
+  let providerCalled = false
+  const originalFetch = globalThis.fetch
+  globalThis.fetch = (async () => {
+    providerCalled = true
+    return new Response(JSON.stringify({ code: 200, data: { taskId: 'unexpected' } }))
+  }) as typeof fetch
+
+  try {
+    const response = await createVideoTask({
+      request: createFormRequest({
+        mode: 'text-to-video',
+        model: 'seedance-1-pro-fast',
+        prompt: 'A cinematic product reveal.',
+        aspectRatio: '16:9',
+        resolution: '720p',
+        duration: '5',
+      }),
+      env: { KIE_AI_API_KEY: 'test-key' },
+    })
+
+    assert.equal(response.status, 400)
+    assert.equal((await readJson(response)).error, 'Seedance 1.0 Pro Fast supports image-to-video only')
+    assert.equal(providerCalled, false)
+  } finally {
+    globalThis.fetch = originalFetch
+  }
+})
+
+test('AI video generator creates a Kie Veo 3.1 Fast task through the Veo endpoint', async () => {
+  const calls: FetchCall[] = []
+  const originalFetch = globalThis.fetch
+  globalThis.fetch = (async (url: RequestInfo | URL, init?: RequestInit) => {
+    calls.push({ url: String(url), init })
+    return new Response(JSON.stringify({ code: 200, data: { taskId: 'veo_fast_task' } }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    })
+  }) as typeof fetch
+
+  try {
+    const response = await createVideoTask({
+      request: createFormRequest({
+        mode: 'image-to-video',
+        model: 'veo-3-1-fast',
+        prompt: 'A macro product scene with precise motion and synchronized texture sound.',
+        imageUrls: JSON.stringify(['https://cdn.example.com/soap.png']),
+        aspectRatio: '9:16',
+        resolution: '1080p',
+        duration: '8',
+      }),
+      env: { KIE_AI_API_KEY: 'test-key' },
+    })
+
+    assert.equal(response.status, 200)
+    assert.deepEqual(await readJson(response), {
+      taskId: 'veo_fast_task',
+      requiredCredits: 100,
+      taskProvider: 'veo',
+    })
+    assert.equal(calls.length, 1)
+    assert.equal(calls[0].url, 'https://api.kie.ai/api/v1/veo/generate')
+
+    const payload = JSON.parse(String(calls[0].init?.body))
+    assert.deepEqual(payload, {
+      prompt: 'A macro product scene with precise motion and synchronized texture sound.',
+      imageUrls: ['https://cdn.example.com/soap.png'],
+      model: 'veo3_fast',
+      generationType: 'FIRST_AND_LAST_FRAMES_2_VIDEO',
+      aspect_ratio: '9:16',
+      enableTranslation: true,
+    })
+  } finally {
+    globalThis.fetch = originalFetch
+  }
+})
+
+test('AI video generator maps Veo 3.1 Lite to the Kie Lite provider model', async () => {
+  let payload: Record<string, any> | undefined
+  const originalFetch = globalThis.fetch
+  globalThis.fetch = (async (_url: RequestInfo | URL, init?: RequestInit) => {
+    payload = JSON.parse(String(init?.body))
+    return new Response(JSON.stringify({ code: 200, data: { taskId: 'veo_lite_task' } }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    })
+  }) as typeof fetch
+
+  try {
+    const response = await createVideoTask({
+      request: createFormRequest({
+        mode: 'text-to-video',
+        model: 'veo-3-1-lite',
+        prompt: 'A quiet cinematic scene with synchronized natural audio.',
+        aspectRatio: '16:9',
+        resolution: '720p',
+        duration: '8',
+      }),
+      env: { KIE_AI_API_KEY: 'test-key' },
+    })
+
+    assert.equal(response.status, 200)
+    assert.equal(payload?.model, 'veo3_lite')
+  } finally {
+    globalThis.fetch = originalFetch
+  }
+})
+
+test('AI video generator rejects more than two Veo 3.1 reference images before provider request', async () => {
+  const originalFetch = globalThis.fetch
+  let providerCalled = false
+  globalThis.fetch = (async () => {
+    providerCalled = true
+    return new Response(JSON.stringify({ code: 200, data: { taskId: 'unexpected' } }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    })
+  }) as typeof fetch
+
+  try {
+    const response = await createVideoTask({
+      request: createFormRequest({
+        mode: 'image-to-video',
+        model: 'veo-3-1-quality',
+        prompt: 'A controlled first and last frame transition.',
+        imageUrls: JSON.stringify([
+          'https://cdn.example.com/start.png',
+          'https://cdn.example.com/end.png',
+          'https://cdn.example.com/extra.png',
+        ]),
+        aspectRatio: '16:9',
+        resolution: '720p',
+        duration: '8',
+      }),
+      env: { KIE_AI_API_KEY: 'test-key' },
+    })
+
+    assert.equal(response.status, 400)
+    assert.equal((await readJson(response)).error, 'Veo 3.1 supports up to two reference images')
+    assert.equal(providerCalled, false)
   } finally {
     globalThis.fetch = originalFetch
   }
@@ -863,6 +1047,116 @@ test('AI video generator status parses Kie video result URLs', async () => {
       status: 'SUCCEEDED',
       videoUrl: 'https://cdn.example.com/output.mp4',
     })
+  } finally {
+    globalThis.fetch = originalFetch
+  }
+})
+
+test('AI video generator status parses Kie Veo result URLs through the Veo endpoint', async () => {
+  const calls: FetchCall[] = []
+  const originalFetch = globalThis.fetch
+  globalThis.fetch = (async (url: RequestInfo | URL, init?: RequestInit) => {
+    calls.push({ url: String(url), init })
+    return new Response(JSON.stringify({
+      code: 200,
+      data: {
+        successFlag: 1,
+        response: {
+          resultUrls: ['https://cdn.example.com/veo-output.mp4'],
+          resolution: '1080p',
+        },
+      },
+    }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    })
+  }) as typeof fetch
+
+  try {
+    const response = await getVideoTaskStatus({
+      request: new Request('https://toolaze.test/api/ai-video-generator/status', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          taskId: 'veo_fast_task',
+          taskProvider: 'veo',
+        }),
+      }),
+      env: { KIE_AI_API_KEY: 'test-key' },
+    })
+
+    assert.equal(response.status, 200)
+    assert.deepEqual(await readJson(response), {
+      status: 'SUCCEEDED',
+      videoUrl: 'https://cdn.example.com/veo-output.mp4',
+    })
+    assert.equal(calls.length, 1)
+    assert.equal(calls[0].url, 'https://api.kie.ai/api/v1/veo/record-info?taskId=veo_fast_task')
+  } finally {
+    globalThis.fetch = originalFetch
+  }
+})
+
+test('AI video generator selects the documented provider model for each creation mode', async () => {
+  const cases = [
+    ['wan-2-7', 'wan/2-7-text-to-video', 'wan/2-7-image-to-video', '720p'],
+    ['wan-2-6', 'wan/2-6-text-to-video', 'wan/2-6-image-to-video', '720p'],
+    ['wan-2-5', 'wan/2-5-text-to-video', 'wan/2-5-image-to-video', '720p'],
+    ['wan-2-2', 'wan/2-2-a14b-text-to-video-turbo', 'wan/2-2-a14b-image-to-video-turbo', '480p'],
+    ['kling-3-turbo', 'kling/v3-turbo-text-to-video', 'kling/v3-turbo-image-to-video', '720p'],
+    ['kling-2-6', 'kling-2.6/text-to-video', 'kling-2.6/image-to-video', '720p'],
+    ['kling-2-5', 'kling/v2-5-turbo-text-to-video-pro', 'kling/v2-5-turbo-image-to-video-pro', '1080p'],
+    ['kling-2-1', 'kling/v2-1-master-text-to-video', 'kling/v2-1-master-image-to-video', '1080p'],
+    ['pixverse-v6', 'pixverse/v6/text-to-video', 'pixverse/v6/image-to-video', '720p'],
+    ['happyhorse-1-1', 'happyhorse-1-1/text-to-video', 'happyhorse-1-1/image-to-video', '1080p'],
+    ['happyhorse', 'happyhorse/text-to-video', 'happyhorse/image-to-video', '1080p'],
+    ['seedance-1-pro', 'bytedance/v1-pro-text-to-video', 'bytedance/v1-pro-image-to-video', '720p'],
+    ['seedance-1-lite', 'bytedance/v1-lite-text-to-video', 'bytedance/v1-lite-image-to-video', '720p'],
+  ] as const
+  const calls: FetchCall[] = []
+  const originalFetch = globalThis.fetch
+  globalThis.fetch = (async (url: RequestInfo | URL, init?: RequestInit) => {
+    calls.push({ url: String(url), init })
+    return new Response(JSON.stringify({ code: 200, data: { taskId: `task_${calls.length}` } }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    })
+  }) as typeof fetch
+
+  try {
+    for (const [model, textProvider, imageProvider, resolution] of cases) {
+      for (const [mode, providerModel] of [
+        ['text-to-video', textProvider],
+        ['image-to-video', imageProvider],
+      ] as const) {
+        const response = await createVideoTask({
+          request: createFormRequest({
+            mode,
+            model,
+            prompt: 'A tactile macro product scene with precise motion and synchronized sound.',
+            ...(mode === 'image-to-video'
+              ? { imageUrls: JSON.stringify(['https://cdn.example.com/reference.png']) }
+              : {}),
+            aspectRatio: '16:9',
+            resolution,
+            duration: '5',
+          }),
+          env: { KIE_AI_API_KEY: 'test-key' },
+        })
+
+        assert.equal(response.status, 200, `${model} ${mode}`)
+        const payload = JSON.parse(String(calls.at(-1)?.init?.body))
+        assert.equal(payload.model, providerModel)
+        if (model === 'pixverse-v6') {
+          assert.equal(payload.input.quality, resolution)
+          assert.equal(payload.input.generate_audio_switch, false)
+          assert.equal('resolution' in payload.input, false)
+        }
+        if (mode === 'image-to-video' && ['happyhorse-1-1', 'happyhorse'].includes(model)) {
+          assert.deepEqual(payload.input.image_urls, ['https://cdn.example.com/reference.png'])
+        }
+      }
+    }
   } finally {
     globalThis.fetch = originalFetch
   }

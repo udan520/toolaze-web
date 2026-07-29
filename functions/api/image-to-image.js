@@ -76,6 +76,9 @@ function mapAspectRatio(aspectRatio) {
 function resolveModel(model) {
   const m = String(model || '').trim().toLowerCase();
   if (m === 'gpt-image-2') return 'gpt-image-2';
+  if (m === 'gpt-image-1-5') return 'gpt-image-1-5';
+  if (m === 'flux-2-pro') return 'flux-2-pro';
+  if (m === 'flux-2-flex') return 'flux-2-flex';
   if (m === 'nano-banana-2') return 'nano-banana-2';
   if (m === 'seedream-4-5') return 'seedream-4-5';
   if (m === 'seedream-5-0-lite') return 'seedream-5-0-lite';
@@ -114,6 +117,21 @@ function normalizeResolution(model, isImageToImage, resolution) {
 }
 
 function resolveProviderModelId(model, env, isImageToImage, resolution) {
+  if (model === 'gpt-image-1-5') {
+    return isImageToImage
+      ? env.KIE_GPT_IMAGE_1_5_IMAGE_MODEL || 'gpt-image/1.5-image-to-image'
+      : env.KIE_GPT_IMAGE_1_5_TEXT_MODEL || 'gpt-image/1.5-text-to-image';
+  }
+  if (model === 'flux-2-pro') {
+    return isImageToImage
+      ? env.KIE_FLUX_2_PRO_IMAGE_MODEL || 'flux-2/pro-image-to-image'
+      : env.KIE_FLUX_2_PRO_TEXT_MODEL || 'flux-2/pro-text-to-image';
+  }
+  if (model === 'flux-2-flex') {
+    return isImageToImage
+      ? env.KIE_FLUX_2_FLEX_IMAGE_MODEL || 'flux-2/flex-image-to-image'
+      : env.KIE_FLUX_2_FLEX_TEXT_MODEL || 'flux-2/flex-text-to-image';
+  }
   if (model === 'gpt-image-2') {
     if (isImageToImage) {
       return env.KIE_GPT_IMAGE_2_IMAGE_MODEL || env.KIE_GPT_IMAGE_2_EDIT_MODEL || env.KIE_GPT_IMAGE_2_IMAGE_TO_IMAGE_MODEL || env.KIE_GPT_IMAGE_2_MODEL || 'gpt-image-2-image-to-image';
@@ -164,7 +182,14 @@ function getMaxImagesForModel(model) {
   if (model === 'wan-2-7-image') return 9;
   if (model === 'grok-1-5-image') return 1;
   if (isVideoGenerationModel(model)) return 7;
-  return model === 'gpt-image-2' ? 16 : 8;
+  return model === 'gpt-image-2' || model === 'gpt-image-1-5' ? 16 : 8;
+}
+
+const GPT_IMAGE_1_5_ASPECT_RATIOS = new Set(['1:1', '2:3', '3:2']);
+const FLUX_2_ASPECT_RATIOS = new Set(['1:1', '4:3', '3:4', '16:9', '9:16', '3:2', '2:3']);
+
+function isFlux2Model(model) {
+  return model === 'flux-2-pro' || model === 'flux-2-flex';
 }
 
 function jsonResponse(body, status = 200) {
@@ -274,15 +299,30 @@ export async function onRequest(context) {
     const requestedAspectRatio = mapAspectRatio(formData.get('aspectRatio'));
     const outputFormat = formData.get('outputFormat') || 'Auto';
     const resolution = formData.get('resolution') || '1K';
+    const quality = String(formData.get('quality') || '').trim().toLowerCase();
     const durationSeconds = normalizeVideoDurationSeconds(formData.get('duration'));
     const isImageToImage = formData.get('isImageToImage') === 'true';
     const model = resolveModel(formData.get('model'));
     const mediaType = getGenerationMediaType(model);
-    const normalizedResolution = normalizeResolution(model, isImageToImage, resolution);
-    const aspectRatio = requestedAspectRatio || (isVideoGenerationModel(model) ? '16:9' : (model === 'seedream-4-5' || model === 'seedream-5-0-lite' || model === 'seedream-5-0-pro' || model === 'wan-2-7-image' ? '1:1' : undefined));
+    const normalizedResolution = model === 'gpt-image-1-5'
+      ? (quality || 'medium')
+      : normalizeResolution(model, isImageToImage, resolution);
+    const aspectRatio = requestedAspectRatio || (
+      isVideoGenerationModel(model)
+        ? '16:9'
+        : (
+          model === 'gpt-image-1-5' ||
+          isFlux2Model(model) ||
+          model === 'seedream-4-5' ||
+          model === 'seedream-5-0-lite' ||
+          model === 'seedream-5-0-pro' ||
+          model === 'wan-2-7-image'
+            ? '1:1'
+            : undefined
+        )
+    );
     const providerModelId = resolveProviderModelId(model, env, isImageToImage, normalizedResolution);
     const maxImages = getMaxImagesForModel(model);
-    const quality = String(formData.get('quality') || '').trim().toLowerCase();
     const creditMetadata = getImageGenerationCreditMetadata(model, isImageToImage, {
       providerModelId,
       resolution: normalizedResolution,
@@ -318,6 +358,22 @@ export async function onRequest(context) {
     if (isImageToImage && imageUrls.length > maxImages) {
       return jsonResponse({ error: `Maximum ${maxImages} images allowed` }, 400);
     }
+    if (model === 'gpt-image-1-5') {
+      if (!['medium', 'high'].includes(normalizedResolution)) {
+        return jsonResponse({ error: 'Quality must be medium or high' }, 400);
+      }
+      if (requestedAspectRatio && !GPT_IMAGE_1_5_ASPECT_RATIOS.has(requestedAspectRatio)) {
+        return jsonResponse({ error: 'Unsupported aspect ratio for GPT Image 1.5' }, 400);
+      }
+    }
+    if (isFlux2Model(model)) {
+      if (!['1K', '2K'].includes(String(resolution))) {
+        return jsonResponse({ error: 'Resolution must be 1K or 2K' }, 400);
+      }
+      if (requestedAspectRatio && !FLUX_2_ASPECT_RATIOS.has(requestedAspectRatio)) {
+        return jsonResponse({ error: 'Unsupported aspect ratio for Flux 2' }, 400);
+      }
+    }
 
     const moderation = await moderatePromptBeforeGeneration({
       prompt,
@@ -343,7 +399,12 @@ export async function onRequest(context) {
     creditContext = await consumeGenerationCredits(env, request, model, normalizedResolution, creditMetadata);
     if (creditContext.response) return creditContext.response;
 
-    const input = isVideoGenerationModel(model)
+    const input = model === 'gpt-image-1-5'
+      ? {
+          prompt,
+          quality: normalizedResolution,
+        }
+      : isVideoGenerationModel(model)
       ? {
           prompt,
           resolution: normalizedResolution,
@@ -362,6 +423,9 @@ export async function onRequest(context) {
       input.thinking_mode = !isImageToImage;
       input.nsfw_checker = true;
     }
+    if (isFlux2Model(model)) {
+      input.nsfw_checker = true;
+    }
     if (aspectRatio) input.aspect_ratio = aspectRatio;
     const mappedFormat = isVideoGenerationModel(model) ? undefined : mapOutputFormat(outputFormat);
     if (mappedFormat) {
@@ -370,7 +434,12 @@ export async function onRequest(context) {
     if (isImageToImage && imageUrls.length > 0) {
       if (isVideoGenerationModel(model) || model === 'seedream-4-5' || model === 'seedream-5-0-lite' || model === 'seedream-5-0-pro') {
         input.image_urls = imageUrls.slice(0, maxImages);
-      } else if (model === 'gpt-image-2' || model === 'wan-2-7-image') {
+      } else if (
+        model === 'gpt-image-2' ||
+        model === 'gpt-image-1-5' ||
+        isFlux2Model(model) ||
+        model === 'wan-2-7-image'
+      ) {
         input.input_urls = imageUrls.slice(0, maxImages);
       } else {
         input.image_input = imageUrls.slice(0, maxImages);

@@ -774,7 +774,11 @@
       "generationTimeout": "Video generation timed out. Please try again.",
       "videoGenerationFailed": "Video generation failed.",
       "download": "Download",
-      "resultExpires": "Generated video links may expire. Download the result if you need to keep it."
+      "resultExpires": "Generated video links may expire. Download the result if you need to keep it.",
+      "modelSwitchedTitle": "Model Switched",
+      "modelSwitchedDescription": "{previousModel} doesn’t support {mode}. Switched to {nextModel}.",
+      "noCompatibleModelTitle": "No Compatible Model",
+      "noCompatibleModelDescription": "No model currently supports {mode}. Please choose another mode."
     }
   },
   "historyPage": {

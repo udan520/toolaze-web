@@ -19,6 +19,53 @@ const legacySeedanceSlugPagePath = join(process.cwd(), 'src', 'app', 'seedance-2
 const seedanceAllToolsPagePath = join(process.cwd(), 'src', 'app', 'model', 'seedance-2', 'all-tools', 'page.tsx')
 const localizedLocales = ['de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
 
+test('switching video models keeps the current page URL unchanged', () => {
+  const toolSource = readFileSync(componentPath, 'utf8')
+  const modelChangeHandler = toolSource.match(
+    /const handleModelChange = \(nextModelId: AiVideoGeneratorModelId\) => \{[\s\S]*?\n  \}\n\n  const renderModelGroupMark/,
+  )?.[0] || ''
+
+  assert.notEqual(modelChangeHandler, '', 'video model change handler should be present')
+  assert.doesNotMatch(modelChangeHandler, /window\.history\.(?:pushState|replaceState)/)
+  assert.doesNotMatch(modelChangeHandler, /router\.(?:push|replace)/)
+})
+
+test('landing-page demo video keeps autoplay muted while exposing native controls', () => {
+  const toolSource = readFileSync(componentPath, 'utf8')
+  const demoVideo = toolSource.match(/<video\s+data-video-demo-media[\s\S]*?\/>/)?.[0] || ''
+
+  assert.match(demoVideo, /\bcontrols\b/)
+  assert.match(demoVideo, /\bautoPlay\b/)
+  assert.match(demoVideo, /\bloop\b/)
+  assert.match(demoVideo, /\bmuted\b/)
+  assert.match(demoVideo, /\bplaysInline\b/)
+})
+
+test('video model cards expose native-audio and shot-structure capability tags', () => {
+  const toolSource = readFileSync(componentPath, 'utf8')
+
+  assert.match(toolSource, /Native Audio/)
+  assert.match(toolSource, /No Native Audio/)
+  assert.match(toolSource, /Multi-shot/)
+  assert.match(toolSource, /Single-shot/)
+  assert.match(toolSource, /supportsNativeAudioOutput/)
+  assert.match(toolSource, /supportsMultiShot/)
+})
+
+test('video mode tabs stay switchable and incompatible models fall back with a warning', () => {
+  const toolSource = readFileSync(componentPath, 'utf8')
+  const configSource = readFileSync(configPath, 'utf8')
+
+  assert.match(configSource, /supportedModes:\s*AiVideoGeneratorModeId\[\]/)
+  assert.match(configSource, /'seedance-1-pro-fast'/)
+  assert.match(toolSource, /getAiVideoGeneratorModelGroupsForMode\(activeMode\)/)
+  assert.match(toolSource, /getAiVideoGeneratorFallbackModel\(nextMode\)/)
+  assert.match(toolSource, /handleModeChange\(mode\.id\)/)
+  assert.match(toolSource, /applyModelSelection/)
+  assert.match(toolSource, /type:\s*['"]warning['"]/)
+  assert.doesNotMatch(toolSource, /disabled=\{!isModeSupported\}/)
+})
+
 function getValueShape(value) {
   if (Array.isArray(value)) return value.map(getValueShape)
   if (value && typeof value === 'object') {
@@ -40,7 +87,7 @@ test('AI video pages reuse the shared video generator component', () => {
   assert.match(componentSource, /data-video-model-selector/, 'video tool should render the reusable model selector')
   assert.match(componentSource, /<ReferenceImageUploader/, 'video models should use the global reference image uploader')
   assert.match(referenceUploaderSource, /max-w-60/, 'the global uploader should provide the larger single-reference tile')
-  assert.match(componentSource, /AI_VIDEO_GENERATOR_MODEL_GROUPS/, 'video tool should use grouped video model config')
+  assert.match(componentSource, /getAiVideoGeneratorModelGroupsForMode/, 'video tool should use mode-filtered grouped video model config')
   assert.match(componentSource, /md:w-\[640px\] md:grid-cols-\[210px_minmax\(0,430px\)\]/, 'video model selector should keep the image-tool two-level dropdown shape')
   assert.match(componentSource, /data-generation-tool-shell/, 'video tool should share the image-tool shell contract')
   assert.match(componentSource, /data-left-generation-panel/, 'video tool should expose the shared left settings panel')
@@ -63,6 +110,15 @@ test('AI video pages reuse the shared video generator component', () => {
   assert.doesNotMatch(l3PageSource, /SeedanceHeroPlaceholder/, 'video workflow pages should not keep the legacy Seedance placeholder')
   assert.doesNotMatch(l2PageSource, /<SeedanceHeroPlaceholder/, 'Seedance should not keep the legacy placeholder generator')
   assert.doesNotMatch(l2PageSource, /<KlingHeroPlaceholder/, 'Kling should not keep the legacy placeholder generator')
+})
+
+test('AI video generator preserves provider routing while polling Veo tasks', () => {
+  const componentSource = readFileSync(componentPath, 'utf8')
+
+  assert.match(componentSource, /taskProvider\?: string/)
+  assert.match(componentSource, /const taskProvider = String\(createResult\.taskProvider \|\| ''\)\.trim\(\)/)
+  assert.match(componentSource, /pollVideoStatus\(taskId, creditHold, taskProvider\)/)
+  assert.match(componentSource, /JSON\.stringify\(\{ taskId, creditHold: creditHold \|\| null, taskProvider: taskProvider \|\| null \}\)/)
 })
 
 test('AI video generator page includes prompt examples after how-to guidance', () => {

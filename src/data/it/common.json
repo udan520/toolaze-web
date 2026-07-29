@@ -790,7 +790,11 @@
       "generationTimeout": "Generazione video scaduta. Riprova.",
       "videoGenerationFailed": "Generazione video non riuscita.",
       "download": "Scarica",
-      "resultExpires": "I link dei video generati possono scadere. Scarica il risultato se devi conservarlo."
+      "resultExpires": "I link dei video generati possono scadere. Scarica il risultato se devi conservarlo.",
+      "modelSwitchedTitle": "Modello cambiato",
+      "modelSwitchedDescription": "{previousModel} non supporta {mode}. Passaggio a {nextModel}.",
+      "noCompatibleModelTitle": "Nessun modello compatibile",
+      "noCompatibleModelDescription": "Al momento nessun modello supporta {mode}. Scegli un'altra modalità."
     }
   },
   "imageCompressor": {

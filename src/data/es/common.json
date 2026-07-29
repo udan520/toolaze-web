@@ -790,7 +790,11 @@
       "generationTimeout": "La generación de video agotó el tiempo. Inténtalo de nuevo.",
       "videoGenerationFailed": "La generación de video falló.",
       "download": "Descargar",
-      "resultExpires": "Los enlaces de video generado pueden caducar. Descarga el resultado si necesitas conservarlo."
+      "resultExpires": "Los enlaces de video generado pueden caducar. Descarga el resultado si necesitas conservarlo.",
+      "modelSwitchedTitle": "Modelo cambiado",
+      "modelSwitchedDescription": "{previousModel} no admite {mode}. Se ha cambiado a {nextModel}.",
+      "noCompatibleModelTitle": "No hay un modelo compatible",
+      "noCompatibleModelDescription": "Actualmente ningún modelo admite {mode}. Elige otro modo."
     }
   },
   "imageCompressor": {

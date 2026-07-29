@@ -790,7 +790,11 @@
       "generationTimeout": "Videogenerierung hat zu lange gedauert. Bitte erneut versuchen.",
       "videoGenerationFailed": "Videogenerierung fehlgeschlagen.",
       "download": "Herunterladen",
-      "resultExpires": "Generierte Videolinks können ablaufen. Lade das Ergebnis herunter, wenn du es behalten möchtest."
+      "resultExpires": "Generierte Videolinks können ablaufen. Lade das Ergebnis herunter, wenn du es behalten möchtest.",
+      "modelSwitchedTitle": "Modell gewechselt",
+      "modelSwitchedDescription": "{previousModel} unterstützt {mode} nicht. Zu {nextModel} gewechselt.",
+      "noCompatibleModelTitle": "Kein kompatibles Modell",
+      "noCompatibleModelDescription": "Derzeit unterstützt kein Modell {mode}. Bitte wähle einen anderen Modus."
     }
   },
   "imageCompressor": {

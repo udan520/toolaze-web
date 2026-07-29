@@ -83,7 +83,7 @@ export default function ModelHubGrid({
 
           return (
             <Link
-              key={model.href}
+              key={`${model.href}-${model.name}`}
               href={localizeHref(model.href, locale)}
               className="group flex min-h-72 flex-col rounded-2xl border border-[#E0E7FF] bg-white p-6 shadow-lg shadow-[#4F46E5]/8 transition-all duration-200 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#4F46E5]/12"
             >

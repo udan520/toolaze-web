@@ -790,7 +790,11 @@
       "generationTimeout": "影片生成逾時。請再試一次。",
       "videoGenerationFailed": "影片生成失敗。",
       "download": "下載",
-      "resultExpires": "生成的影片連結可能會過期。如需保留，請下載結果。"
+      "resultExpires": "生成的影片連結可能會過期。如需保留，請下載結果。",
+      "modelSwitchedTitle": "已切換模型",
+      "modelSwitchedDescription": "{previousModel} 不支援{mode}，已切換至 {nextModel}。",
+      "noCompatibleModelTitle": "沒有相容模型",
+      "noCompatibleModelDescription": "目前沒有模型支援{mode}，請選擇其他模式。"
     }
   },
   "imageCompressor": {

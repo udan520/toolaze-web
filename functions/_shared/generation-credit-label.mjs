@@ -1,5 +1,8 @@
 const MODEL_LABELS = {
   'gpt-image-2': 'GPT Image 2',
+  'gpt-image-1-5': 'GPT Image 1.5',
+  'flux-2-pro': 'Flux 2 Pro',
+  'flux-2-flex': 'Flux 2 Flex',
   'nano-banana-pro': 'Nano Banana Pro',
   'nano-banana-2': 'Nano Banana 2',
   'seedream-4-5': 'Seedream 4.5',
@@ -14,7 +17,14 @@ const VIDEO_MODEL_LABELS = {
   'grok-1-5-video': 'Grok Imagine Video 1.5',
   'seedance-2': 'Seedance 2.0',
   'seedance-2-mini': 'Seedance 2.0 Mini',
+  'seedance-2-fast': 'Seedance 2.0 Fast',
+  'seedance-1-5-pro': 'Seedance 1.5 Pro',
+  'seedance-1-pro': 'Seedance 1.0 Pro',
+  'seedance-1-lite': 'Seedance 1.0 Lite',
   'kling-3': 'Kling 3.0',
+  'pixverse-v6': 'PixVerse V6',
+  'happyhorse-1-1': 'HappyHorse 1.1',
+  'happyhorse': 'HappyHorse',
 };
 
 const WRAPPED_TOOL_LABELS = {

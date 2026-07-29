@@ -11,6 +11,15 @@ test('keeps existing image credit calculation unchanged', () => {
   assert.equal(calculateImageGenerationCredits('seedream-5-0-pro', '2K'), 20);
 });
 
+test('uses the mirrored Toolaze product credits for GPT Image 1.5 and Flux 2', () => {
+  assert.equal(calculateImageGenerationCredits('gpt-image-1-5', 'medium'), 15);
+  assert.equal(calculateImageGenerationCredits('gpt-image-1-5', 'high'), 25);
+  assert.equal(calculateImageGenerationCredits('flux-2-pro', '1K'), 15);
+  assert.equal(calculateImageGenerationCredits('flux-2-pro', '2K'), 25);
+  assert.equal(calculateImageGenerationCredits('flux-2-flex', '1K'), 20);
+  assert.equal(calculateImageGenerationCredits('flux-2-flex', '2K'), 30);
+});
+
 test('maps Kie video costs to cleaned Toolaze per-second video credits', () => {
   assert.equal(
     VIDEO_GENERATION_CREDIT_RATES['seedance-2-mini'].source,
@@ -33,6 +42,16 @@ test('maps Kie video costs to cleaned Toolaze per-second video credits', () => {
   assert.equal(VIDEO_GENERATION_CREDIT_RATES['kling-3'].ratesByResolution['4K'], 90);
   assert.equal(VIDEO_GENERATION_CREDIT_RATES['kling-3'].nativeAudioRatesByResolution['720p'], 30);
   assert.equal(VIDEO_GENERATION_CREDIT_RATES['kling-3'].nativeAudioRatesByResolution['1080p'], 40);
+  assert.match(
+    VIDEO_GENERATION_CREDIT_RATES['veo-3-1-lite'].source,
+    /Kie Veo 3\.1 pricing/
+  );
+  assert.equal(VIDEO_GENERATION_CREDIT_RATES['veo-3-1-lite'].ratesByResolution['720p'], 45);
+  assert.equal(VIDEO_GENERATION_CREDIT_RATES['veo-3-1-lite'].ratesByResolution['1080p'], 55);
+  assert.equal(VIDEO_GENERATION_CREDIT_RATES['veo-3-1-fast'].ratesByResolution['720p'], 90);
+  assert.equal(VIDEO_GENERATION_CREDIT_RATES['veo-3-1-fast'].ratesByResolution['1080p'], 100);
+  assert.equal(VIDEO_GENERATION_CREDIT_RATES['veo-3-1-quality'].ratesByResolution['720p'], 375);
+  assert.equal(VIDEO_GENERATION_CREDIT_RATES['veo-3-1-quality'].ratesByResolution['1080p'], 385);
   assert.equal(calculateVideoGenerationCredits('grok-1-5-video', '480p', 5), 15);
   assert.equal(calculateVideoGenerationCredits('grok-1-5-video', '720p', 10), 50);
   assert.equal(calculateVideoGenerationCredits('seedance-2', '480p', 5), 150);
@@ -47,6 +66,9 @@ test('maps Kie video costs to cleaned Toolaze per-second video credits', () => {
   assert.equal(calculateVideoGenerationCredits('kling-3', '720p', 5, { nativeAudio: true }), 150);
   assert.equal(calculateVideoGenerationCredits('kling-3', '1080p', 10, { nativeAudio: true }), 400);
   assert.equal(calculateVideoGenerationCredits('kling-3', '4K', 10, { nativeAudio: true }), null);
+  assert.equal(calculateVideoGenerationCredits('veo-3-1-lite', '720p', 8), 45);
+  assert.equal(calculateVideoGenerationCredits('veo-3-1-fast', '1080p', 8), 100);
+  assert.equal(calculateVideoGenerationCredits('veo-3-1-quality', '720p', 4), 375);
 });
 
 test('Kissing Grok Video uses the same credits as Grok 1.5 Video', () => {
@@ -77,4 +99,11 @@ test('keeps cleaned video credit rates readable for users', () => {
       );
     }
   }
+});
+
+test('Seedance 1.0 Pro Fast uses fixed credits for each supported output spec', () => {
+  assert.equal(calculateVideoGenerationCredits('seedance-1-pro-fast', '720p', 5), 24);
+  assert.equal(calculateVideoGenerationCredits('seedance-1-pro-fast', '720p', 10), 54);
+  assert.equal(calculateVideoGenerationCredits('seedance-1-pro-fast', '1080p', 5), 54);
+  assert.equal(calculateVideoGenerationCredits('seedance-1-pro-fast', '1080p', 10), 108);
 });

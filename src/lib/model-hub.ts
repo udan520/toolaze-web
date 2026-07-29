@@ -1,3 +1,12 @@
+import {
+  AI_VIDEO_GENERATOR_MODEL_OPTIONS,
+  type AiVideoGeneratorModelId,
+} from './ai-video-generator-config'
+import {
+  AI_IMAGE_GENERATOR_GROUPS,
+  AI_IMAGE_GENERATOR_MODEL_OPTIONS,
+} from './ai-image-generator-config'
+
 export type ModelHubCategory = 'all' | 'image' | 'video'
 
 export interface ModelHubModel {
@@ -10,7 +19,23 @@ export interface ModelHubModel {
   qualityRating: number | null
 }
 
-export const MODEL_HUB_MODELS: ModelHubModel[] = [
+const VIDEO_MODEL_PAGE_HREFS: Partial<Record<AiVideoGeneratorModelId, string>> = {
+  'grok-1-5-video': '/model/grok-imagine-video-1-5',
+  'seedance-2': '/model/seedance-2',
+  'kling-3': '/model/kling-3',
+}
+
+const IMAGE_MODEL_PAGE_HREFS: Record<string, string> = {
+  'gpt-image-2': '/model/gpt-image-2',
+  'seedream-5-0-pro': '/model/seedream-5-0-pro',
+  'nano-banana-pro': '/model/nano-banana-pro',
+  'seedream-5-0-lite': '/model/seedream-5-0-lite',
+  'wan-2-7-image': '/model/wan-2-7-image',
+  'nano-banana-2': '/model/nano-banana-2',
+  'seedream-4-5': '/model/seedream-4-5',
+}
+
+const LEGACY_MODEL_HUB_MODELS: ModelHubModel[] = [
   {
     name: 'GPT Image 2',
     href: '/model/gpt-image-2',
@@ -75,33 +100,6 @@ export const MODEL_HUB_MODELS: ModelHubModel[] = [
     qualityRating: 4,
   },
   {
-    name: 'Seedance 2.0',
-    href: '/model/seedance-2',
-    category: 'video',
-    vendor: 'ByteDance',
-    logoSrc: '/model-logos/bytedance.svg',
-    logoAlt: 'ByteDance logo',
-    qualityRating: 5,
-  },
-  {
-    name: 'Kling 3.0',
-    href: '/model/kling-3',
-    category: 'video',
-    vendor: 'Kuaishou',
-    logoSrc: '/model-logos/kling.svg',
-    logoAlt: 'Kling logo',
-    qualityRating: 4.5,
-  },
-  {
-    name: 'Grok 1.5 Video',
-    href: '/model/grok-imagine-video-1-5',
-    category: 'video',
-    vendor: 'xAI',
-    logoSrc: '/model-logos/grok.svg',
-    logoAlt: 'Grok logo',
-    qualityRating: 4,
-  },
-  {
     name: 'Seedance 2.5',
     href: '/model/seedance-2-5',
     category: 'video',
@@ -110,6 +108,39 @@ export const MODEL_HUB_MODELS: ModelHubModel[] = [
     logoAlt: 'ByteDance logo',
     qualityRating: null,
   },
+  ...AI_VIDEO_GENERATOR_MODEL_OPTIONS.map((model) => ({
+    name: model.name,
+    href: VIDEO_MODEL_PAGE_HREFS[model.id] || '/ai-video-generator',
+    category: 'video' as const,
+    vendor: model.vendor,
+    logoSrc: model.logoSrc,
+    logoAlt: model.logoAlt,
+    qualityRating: model.qualityRating,
+  })),
+]
+
+const IMAGE_MODEL_GROUPS = new Map(
+  AI_IMAGE_GENERATOR_GROUPS.flatMap((group) =>
+    group.modelIds.map((modelId) => [modelId, group] as const),
+  ),
+)
+
+export const MODEL_HUB_MODELS: ModelHubModel[] = [
+  ...AI_IMAGE_GENERATOR_MODEL_OPTIONS
+    .filter((model) => model.id !== 'grok-video-1-5')
+    .map((model) => {
+      const group = IMAGE_MODEL_GROUPS.get(model.id)
+      return {
+        name: model.name,
+        href: IMAGE_MODEL_PAGE_HREFS[model.id] || `/ai-image-generator?model=${model.id}`,
+        category: 'image' as const,
+        vendor: model.vendor,
+        logoSrc: group?.logoSrc || '/model-logos/openai.svg',
+        logoAlt: group?.logoAlt || `${model.vendor} logo`,
+        qualityRating: model.qualityRating,
+      }
+    }),
+  ...LEGACY_MODEL_HUB_MODELS.filter((model) => model.category === 'video'),
 ]
 
 export function getModelHubModels(category: ModelHubCategory): ModelHubModel[] {

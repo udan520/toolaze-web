@@ -5,7 +5,6 @@ import { createPortal } from 'react-dom'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import {
-  AI_VIDEO_GENERATOR_MODEL_GROUPS,
   AI_VIDEO_GENERATOR_MODE_OPTIONS,
   type AiVideoGeneratorModeId,
   type AiVideoGeneratorModelConfig,
@@ -13,7 +12,10 @@ import {
   getAiVideoGeneratorModelGroupId,
   getAiVideoGeneratorModelMinimumCredits,
   getAiVideoGeneratorModelConfig,
+  getAiVideoGeneratorFallbackModel,
+  getAiVideoGeneratorModelGroupsForMode,
 } from '@/lib/ai-video-generator-config'
+import { getLocalizedModelSelectorCopy } from '@/lib/model-selector-i18n'
 import { getImageUploadUrl } from '@/lib/upload-url'
 import { calculateVideoGenerationCredits } from '@/lib/generation-credits'
 import { useCommonTranslations } from '@/lib/use-common-translations'
@@ -27,6 +29,7 @@ import {
 } from '@/lib/generation-history-tool-metadata'
 import { trackGenerationHistoryRecreateClick } from '@/lib/generation-history-analytics'
 import { dispatchToolazeTopNotice } from '@/lib/top-notice'
+import { parseLocalePath } from '@/lib/site-language-switch'
 
 interface ImageItem {
   file: File
@@ -53,6 +56,7 @@ interface VideoGenerationRequest {
   status: VideoGenerationStatus
   taskId?: string
   creditHold?: unknown
+  taskProvider?: string
   videoUrl?: string
   error?: string
 }
@@ -159,13 +163,36 @@ const FALLBACK_TEXT = {
   videoGenerationFailed: 'Video generation failed.',
   download: 'Download',
   resultExpires: 'Generated video links may expire. Download the result if you need to keep it.',
+  modelSwitchedTitle: 'Model Switched',
+  modelSwitchedDescription: '{previousModel} doesn’t support {mode}. Switched to {nextModel}.',
+  noCompatibleModelTitle: 'No Compatible Model',
+  noCompatibleModelDescription: 'No model currently supports {mode}. Please choose another mode.',
 }
 
 const VIDEO_HISTORY_MODEL_SLUGS: Record<AiVideoGeneratorModelId, string> = {
   'grok-1-5-video': 'grok-imagine-video-1-5',
   'seedance-2': 'seedance-2',
   'seedance-2-mini': 'seedance-2-mini',
+  'seedance-2-fast': 'seedance-2-fast',
+  'seedance-1-5-pro': 'seedance-1-5-pro',
+  'seedance-1-pro-fast': 'seedance-1-pro-fast',
+  'seedance-1-pro': 'seedance-1-pro',
+  'seedance-1-lite': 'seedance-1-lite',
+  'wan-2-7': 'wan-2-7',
+  'wan-2-6': 'wan-2-6',
+  'wan-2-5': 'wan-2-5',
+  'wan-2-2': 'wan-2-2',
+  'kling-3-turbo': 'kling-3-turbo',
   'kling-3': 'kling-3',
+  'kling-2-6': 'kling-2-6',
+  'kling-2-5': 'kling-2-5',
+  'kling-2-1': 'kling-2-1',
+  'veo-3-1-lite': 'veo-3-1-lite',
+  'veo-3-1-fast': 'veo-3-1-fast',
+  'veo-3-1-quality': 'veo-3-1-quality',
+  'pixverse-v6': 'pixverse-v6',
+  'happyhorse-1-1': 'happyhorse-1-1',
+  'happyhorse': 'happyhorse',
 }
 
 function getVideoHistoryModelSlug(modelId: AiVideoGeneratorModelId) {
@@ -176,9 +203,6 @@ function getVideoModelIdFromHistoryModel(model: unknown): AiVideoGeneratorModelI
   const normalized = String(model || '').trim()
   const match = Object.entries(VIDEO_HISTORY_MODEL_SLUGS).find(([, slug]) => slug === normalized)
   if (match) return match[0] as AiVideoGeneratorModelId
-  if (normalized === 'grok-1-5-video' || normalized === 'seedance-2' || normalized === 'seedance-2-mini' || normalized === 'kling-3') {
-    return normalized
-  }
   return 'grok-1-5-video'
 }
 
@@ -243,7 +267,8 @@ function getInitialVideoMode(
   modelConfig: AiVideoGeneratorModelConfig,
   defaultMode?: AiVideoGeneratorModeId,
 ) {
-  return defaultMode || modelConfig.defaultMode
+  if (defaultMode && modelConfig.supportedModes.includes(defaultMode)) return defaultMode
+  return modelConfig.defaultMode
 }
 
 async function parseJsonSafely(response: Response, errorMessage: string): Promise<Record<string, any>> {
@@ -276,6 +301,14 @@ function getVideoModelOptionMetadata(option: AiVideoGeneratorModelConfig) {
     { label: `${minimumCredits}+`, iconSrc: '/credits-icons/diamond-3d-indigo.svg', ariaLabel: `${minimumCredits}+ credits` },
     { label: `${firstDuration}-${lastDuration}s` },
     { label: option.resolutions.join('/') },
+    {
+      label: option.supportsNativeAudioOutput ? 'Native Audio' : 'No Native Audio',
+      tone: option.supportsNativeAudioOutput ? 'positive' : 'neutral',
+    },
+    {
+      label: option.supportsMultiShot ? 'Multi-shot' : 'Single-shot',
+      tone: option.supportsMultiShot ? 'positive' : 'neutral',
+    },
   ]
 }
 
@@ -316,8 +349,15 @@ export default function AiVideoGeneratorTool({
   const pathname = usePathname()
   const commonTranslations = useCommonTranslations(initialTranslations)
   const text = { ...FALLBACK_TEXT, ...(commonTranslations?.common?.aiVideoGeneratorTool || {}) }
-  const videoModelSelectorCopy = commonTranslations?.common?.modelSelector?.video
-  const modelSelectorBadgeLabels = commonTranslations?.common?.modelSelector?.badges
+  const localizedModelSelectorCopy = useMemo(
+    () => getLocalizedModelSelectorCopy(
+      parseLocalePath(pathname).pathLocale || 'en',
+      commonTranslations?.common?.modelSelector,
+    ),
+    [commonTranslations, pathname],
+  )
+  const videoModelSelectorCopy = localizedModelSelectorCopy.video
+  const modelSelectorBadgeLabels = localizedModelSelectorCopy.badges
   const getModelBadgeLabel = (badge?: AiVideoGeneratorModelConfig['badge']) => {
     if (!badge) return ''
     return modelSelectorBadgeLabels?.[badge.toLowerCase()] || badge
@@ -328,10 +368,13 @@ export default function AiVideoGeneratorTool({
   const durationButtonRef = useRef<HTMLButtonElement>(null)
   const durationMenuRef = useRef<HTMLDivElement>(null)
   const historyItemRefs = useRef(new Map<string, HTMLDivElement>())
-  const isApplyingHistoryItemRef = useRef(false)
+  const [selectedModelId, setSelectedModelId] = useState<AiVideoGeneratorModelId>(modelId)
+  const modelConfig = useMemo(() => getAiVideoGeneratorModelConfig(selectedModelId), [selectedModelId])
+  const [activeMode, setActiveMode] = useState<AiVideoGeneratorModeId>(() => getInitialVideoMode(modelConfig, defaultMode))
   const modelGroups = useMemo(
-    () => AI_VIDEO_GENERATOR_MODEL_GROUPS.map((group) => ({
+    () => getAiVideoGeneratorModelGroupsForMode(activeMode).map((group) => ({
       ...group,
+      description: videoModelSelectorCopy?.groups?.[group.id]?.description,
       logoAlt: videoModelSelectorCopy?.groups?.[group.id]?.logoAlt || group.logoAlt,
       models: group.models.map((model) => {
         const modelCopy = videoModelSelectorCopy?.models?.[model.id]
@@ -342,14 +385,11 @@ export default function AiVideoGeneratorTool({
         }
       }),
     })),
-    [videoModelSelectorCopy],
+    [activeMode, videoModelSelectorCopy],
   )
   const modelOptions = useMemo(() => modelGroups.flatMap((group) => group.models), [modelGroups])
-  const [selectedModelId, setSelectedModelId] = useState<AiVideoGeneratorModelId>(modelId)
-  const modelConfig = useMemo(() => getAiVideoGeneratorModelConfig(selectedModelId), [selectedModelId])
   const selectedModelOption = modelOptions.find((option) => option.id === selectedModelId) || modelConfig
   const selectedModelGroup = modelGroups.find((group) => group.models.some((model) => model.id === selectedModelId)) || modelGroups[0]
-  const [activeMode, setActiveMode] = useState<AiVideoGeneratorModeId>(() => getInitialVideoMode(modelConfig, defaultMode))
   const [isModelMenuOpen, setIsModelMenuOpen] = useState(false)
   const [isDurationMenuOpen, setIsDurationMenuOpen] = useState(false)
   const [activeModelGroupId, setActiveModelGroupId] = useState(() => getAiVideoGeneratorModelGroupId(modelId))
@@ -377,6 +417,68 @@ export default function AiVideoGeneratorTool({
     }) ?? minimumCreditCost,
     [selectedModelId, resolution, duration, supportsNativeAudio, nativeAudio, minimumCreditCost],
   )
+
+  const applyModelSelection = (nextModel: AiVideoGeneratorModelConfig) => {
+    const nextResolution = nextModel.resolutions.includes(resolution)
+      ? resolution
+      : nextModel.resolutions[0] || '1080p'
+    setSelectedModelId(nextModel.id)
+    setActiveModelGroupId(getAiVideoGeneratorModelGroupId(nextModel.id))
+    setAspectRatio((current) =>
+      nextModel.aspectRatios.some((option) => option.value === current)
+        ? current
+        : nextModel.aspectRatios[0]?.value || '16:9',
+    )
+    setDuration((current) =>
+      nextModel.durations.includes(current)
+        ? current
+        : nextModel.defaultDuration || nextModel.durations[0] || 5,
+    )
+    setResolution(nextResolution)
+    setNativeAudio((current) =>
+      Boolean(
+        current &&
+        nextModel.supportsNativeAudio &&
+        (!nextModel.nativeAudioResolutions || nextModel.nativeAudioResolutions.includes(nextResolution)),
+      ),
+    )
+    setIsModelMenuOpen(false)
+    setIsDurationMenuOpen(false)
+  }
+
+  const handleModeChange = (nextMode: AiVideoGeneratorModeId) => {
+    setIsModelMenuOpen(false)
+    setIsDurationMenuOpen(false)
+    if (modelConfig.supportedModes.includes(nextMode)) {
+      setActiveMode(nextMode)
+      return
+    }
+
+    const fallbackModel = getAiVideoGeneratorFallbackModel(nextMode)
+    if (!fallbackModel) {
+      dispatchToolazeTopNotice({
+        type: 'error',
+        title: text.noCompatibleModelTitle,
+        message: formatText(text.noCompatibleModelDescription, {
+          mode: getModeLabel(nextMode, text),
+        }),
+      })
+      return
+    }
+
+    const previousModelName = modelConfig.name
+    applyModelSelection(fallbackModel)
+    setActiveMode(nextMode)
+    dispatchToolazeTopNotice({
+      type: 'warning',
+      title: text.modelSwitchedTitle,
+      message: formatText(text.modelSwitchedDescription, {
+        previousModel: previousModelName,
+        mode: getModeLabel(nextMode, text),
+        nextModel: fallbackModel.name,
+      }),
+    })
+  }
 
   const updateDurationMenuRect = useCallback(() => {
     const rect = durationButtonRef.current?.getBoundingClientRect()
@@ -410,9 +512,10 @@ export default function AiVideoGeneratorTool({
   }, [])
 
   useEffect(() => {
-    setSelectedModelId(modelId)
-    setActiveModelGroupId(getAiVideoGeneratorModelGroupId(modelId))
-  }, [modelId])
+    const nextModel = getAiVideoGeneratorModelConfig(modelId)
+    applyModelSelection(nextModel)
+    setActiveMode(getInitialVideoMode(nextModel, defaultMode))
+  }, [defaultMode, modelId])
 
   useEffect(() => {
     if (!isModelMenuOpen) return
@@ -467,37 +570,10 @@ export default function AiVideoGeneratorTool({
   }, [isDurationMenuOpen, updateDurationMenuRect])
 
   useEffect(() => {
-    if (isApplyingHistoryItemRef.current) {
-      isApplyingHistoryItemRef.current = false
-      setIsDurationMenuOpen(false)
-      return
-    }
-
-    setActiveMode(getInitialVideoMode(modelConfig, defaultMode))
-    setAspectRatio(modelConfig.aspectRatios[0]?.value || '16:9')
-    setDuration(modelConfig.defaultDuration || modelConfig.durations[0] || 5)
-    setResolution(modelConfig.resolutions[0] || '1080p')
-    setNativeAudio(false)
-    setIsDurationMenuOpen(false)
-    setImageFiles((prev) => {
-      prev.forEach((item) => URL.revokeObjectURL(item.preview))
-      return []
-    })
-    setRemoteImageUrls([])
-  }, [defaultMode, modelConfig])
-
-  useEffect(() => {
     if (!supportsNativeAudio && nativeAudio) {
       setNativeAudio(false)
     }
   }, [supportsNativeAudio, nativeAudio])
-
-  useEffect(() => {
-    if (activeMode !== 'text-to-video') return
-    imageFiles.forEach((item) => URL.revokeObjectURL(item.preview))
-    setImageFiles([])
-    setRemoteImageUrls([])
-  }, [activeMode])
 
   // 从提示词案例板块一键带入 Prompt，保持与图片生成器相同的使用路径。
   useEffect(() => {
@@ -637,9 +713,7 @@ export default function AiVideoGeneratorTool({
       setIsModelMenuOpen(false)
       return
     }
-    setSelectedModelId(nextModelId)
-    setActiveModelGroupId(getAiVideoGeneratorModelGroupId(nextModelId))
-    setIsModelMenuOpen(false)
+    applyModelSelection(getAiVideoGeneratorModelConfig(nextModelId))
   }
 
   const renderModelGroupMark = (group: typeof modelGroups[number]) => (
@@ -689,7 +763,15 @@ export default function AiVideoGeneratorTool({
             <VideoModelQualityRating value={option.qualityRating} />
             <span className="mt-2 flex flex-wrap gap-1.5">
               {metadata.map((item) => (
-                <span key={item.label} className="inline-flex items-center gap-1 rounded-md border border-slate-200 bg-white/80 px-2 py-1 text-[11px] font-semibold leading-none text-slate-600" aria-label={item.ariaLabel}>
+                <span
+                  key={item.label}
+                  className={`inline-flex items-center gap-1 rounded-md border px-2 py-1 text-[11px] font-semibold leading-none ${
+                    item.tone === 'positive'
+                      ? 'border-indigo-200 bg-indigo-50 text-indigo-700'
+                      : 'border-slate-200 bg-white/80 text-slate-500'
+                  }`}
+                  aria-label={item.ariaLabel}
+                >
                   {item.iconSrc ? (
                     <img
                       src={item.iconSrc}
@@ -784,7 +866,7 @@ export default function AiVideoGeneratorTool({
     }
   }
 
-  const pollVideoStatus = async (taskId: string, creditHold?: unknown) => {
+  const pollVideoStatus = async (taskId: string, creditHold?: unknown, taskProvider?: string) => {
     const maxAttempts = 60
     const pollInterval = 5000
 
@@ -792,7 +874,7 @@ export default function AiVideoGeneratorTool({
       const statusResponse = await fetch('/api/ai-video-generator/status', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ taskId, creditHold: creditHold || null }),
+        body: JSON.stringify({ taskId, creditHold: creditHold || null, taskProvider: taskProvider || null }),
       })
 
       const statusResult = await parseJsonSafely(statusResponse, text.serverNonJson)
@@ -917,8 +999,9 @@ export default function AiVideoGeneratorTool({
       let videoUrl = String(createResult.videoUrl || '').trim()
       const taskId = String(createResult.taskId || '').trim()
       const creditHold = createResult.creditHold || null
+      const taskProvider = String(createResult.taskProvider || '').trim()
       if (!videoUrl && taskId) {
-        videoUrl = await pollVideoStatus(taskId, creditHold)
+        videoUrl = await pollVideoStatus(taskId, creditHold, taskProvider)
       }
       if (!videoUrl) {
         throw new Error(text.videoGenerationFailed)
@@ -929,6 +1012,7 @@ export default function AiVideoGeneratorTool({
         status: 'succeeded',
         taskId: taskId || undefined,
         creditHold,
+        taskProvider: taskProvider || undefined,
         videoUrl,
         inputUrls: imageUrls,
         inputPreview: imageUrls[0] || request.inputPreview,
@@ -985,9 +1069,6 @@ export default function AiVideoGeneratorTool({
     trackGenerationHistoryRecreateClick({ ...item, mediaType: item.mediaType === 'video' ? 'video' : 'image' }, { surface: 'inline_generator_history' })
 
     const itemConfig = getAiVideoGeneratorModelConfig(item.modelId)
-    if (item.modelId !== selectedModelId) {
-      isApplyingHistoryItemRef.current = true
-    }
     setSelectedModelId(item.modelId)
     setActiveModelGroupId(getAiVideoGeneratorModelGroupId(item.modelId))
     setActiveMode(item.inputUrls.length > 0 ? 'image-to-video' : item.mode)
@@ -1285,20 +1366,22 @@ export default function AiVideoGeneratorTool({
                 <div data-left-settings-scroll className={`p-2 md:p-6 space-y-4 md:space-y-5 md:flex-1 md:min-h-0 md:overscroll-contain ${shouldAllowLeftOverlay ? 'md:overflow-visible' : 'md:overflow-y-auto'}`}>
                   <div className="rounded-2xl bg-[#EEF2FF] p-1">
                     <div className="grid grid-cols-2 gap-1">
-                      {AI_VIDEO_GENERATOR_MODE_OPTIONS.map((mode) => (
-                        <button
-                          key={mode.id}
-                          type="button"
-                          onClick={() => setActiveMode(mode.id)}
-                          className={`rounded-xl px-3 py-2.5 text-sm font-bold transition ${
-                            activeMode === mode.id
-                              ? 'bg-white text-indigo-700 shadow-sm'
-                              : 'text-slate-500 hover:text-slate-800'
-                          }`}
-                        >
-                          {getModeLabel(mode.id, text)}
-                        </button>
-                      ))}
+                      {AI_VIDEO_GENERATOR_MODE_OPTIONS.map((mode) => {
+                        return (
+                          <button
+                            key={mode.id}
+                            type="button"
+                            onClick={() => handleModeChange(mode.id)}
+                            className={`rounded-xl px-3 py-2.5 text-sm font-bold transition ${
+                              activeMode === mode.id
+                                ? 'bg-white text-indigo-700 shadow-sm'
+                                : 'text-slate-500 hover:text-slate-800'
+                            }`}
+                          >
+                            {getModeLabel(mode.id, text)}
+                          </button>
+                        )
+                      })}
                     </div>
                   </div>
 
@@ -1631,6 +1714,7 @@ export default function AiVideoGeneratorTool({
                             src={demoVideo.src}
                             poster={demoVideo.poster}
                             aria-label={demoVideo.ariaLabel || text.previewHint}
+                            controls
                             autoPlay
                             loop
                             muted

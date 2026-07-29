@@ -8,6 +8,8 @@ import {
   AI_VIDEO_GENERATOR_MODEL_OPTIONS,
   getAiVideoGeneratorModelMinimumCredits,
   getAiVideoGeneratorModelConfig,
+  getAiVideoGeneratorFallbackModel,
+  getAiVideoGeneratorModelGroupsForMode,
 } from './ai-video-generator-config'
 
 test('AI video generator keeps text-to-video and image-to-video as the only creation modes', () => {
@@ -17,10 +19,75 @@ test('AI video generator keeps text-to-video and image-to-video as the only crea
   )
 })
 
-test('AI video generator exposes Grok, Seedance, Seedance Mini, and Kling model configs', () => {
+test('text-to-video model groups exclude image-only models and empty groups', () => {
+  const groups = getAiVideoGeneratorModelGroupsForMode('text-to-video')
+
+  assert.equal(
+    groups.flatMap((group) => group.models).some((model) => model.id === 'seedance-1-pro-fast'),
+    false,
+  )
+  assert.ok(groups.every((group) => group.models.length > 0))
+})
+
+test('mode-filtered model groups sort each family by quality while preserving equal-score order', () => {
+  for (const mode of ['image-to-video', 'text-to-video'] as const) {
+    for (const group of getAiVideoGeneratorModelGroupsForMode(mode)) {
+      assert.deepEqual(
+        group.models.map((model) => model.qualityRating),
+        [...group.models]
+          .sort((left, right) => right.qualityRating - left.qualityRating)
+          .map((model) => model.qualityRating),
+        `${mode}.${group.id}`,
+      )
+
+      const originalIds = AI_VIDEO_GENERATOR_MODEL_GROUPS
+        .find((candidate) => candidate.id === group.id)
+        ?.models.map((model) => model.id) || []
+      for (let index = 1; index < group.models.length; index += 1) {
+        const previous = group.models[index - 1]
+        const current = group.models[index]
+        if (previous.qualityRating !== current.qualityRating) continue
+        assert.ok(originalIds.indexOf(previous.id) < originalIds.indexOf(current.id))
+      }
+    }
+  }
+})
+
+test('mode fallback is the first compatible model in the sorted menu', () => {
+  for (const mode of ['image-to-video', 'text-to-video'] as const) {
+    const groups = getAiVideoGeneratorModelGroupsForMode(mode)
+    assert.equal(getAiVideoGeneratorFallbackModel(mode)?.id, groups[0]?.models[0]?.id)
+  }
+})
+
+test('AI video generator exposes all configured video model variants', () => {
   assert.deepEqual(
     AI_VIDEO_GENERATOR_MODEL_OPTIONS.map((model) => model.id),
-    ['grok-1-5-video', 'seedance-2', 'seedance-2-mini', 'kling-3']
+    [
+      'grok-1-5-video',
+      'seedance-2',
+      'seedance-2-mini',
+      'seedance-2-fast',
+      'seedance-1-5-pro',
+      'seedance-1-pro-fast',
+      'seedance-1-pro',
+      'seedance-1-lite',
+      'wan-2-7',
+      'wan-2-6',
+      'wan-2-5',
+      'wan-2-2',
+      'kling-3-turbo',
+      'kling-3',
+      'kling-2-6',
+      'kling-2-5',
+      'kling-2-1',
+      'veo-3-1-lite',
+      'veo-3-1-fast',
+      'veo-3-1-quality',
+      'pixverse-v6',
+      'happyhorse-1-1',
+      'happyhorse',
+    ]
   )
 })
 
@@ -34,10 +101,75 @@ test('AI video generator exposes a two-level visible model menu for every video 
     })),
     [
       { id: 'grok', logoSrc: '/model-logos/grok.svg', logoAlt: 'Grok logo', modelIds: ['grok-1-5-video'] },
-      { id: 'seedance', logoSrc: '/model-logos/bytedance.svg', logoAlt: 'ByteDance logo', modelIds: ['seedance-2', 'seedance-2-mini'] },
-      { id: 'kling', logoSrc: '/model-logos/kling.svg', logoAlt: 'Kling logo', modelIds: ['kling-3'] },
+      {
+        id: 'seedance',
+        logoSrc: '/model-logos/bytedance.svg',
+        logoAlt: 'ByteDance logo',
+        modelIds: ['seedance-2', 'seedance-2-mini', 'seedance-2-fast', 'seedance-1-5-pro', 'seedance-1-pro-fast', 'seedance-1-pro', 'seedance-1-lite'],
+      },
+      {
+        id: 'wan',
+        logoSrc: '/model-logos/wan.ico',
+        logoAlt: 'Wan logo',
+        modelIds: ['wan-2-7', 'wan-2-6', 'wan-2-5', 'wan-2-2'],
+      },
+      {
+        id: 'kling',
+        logoSrc: '/model-logos/kling.svg',
+        logoAlt: 'Kling logo',
+        modelIds: ['kling-3-turbo', 'kling-3', 'kling-2-6', 'kling-2-5', 'kling-2-1'],
+      },
+      {
+        id: 'veo',
+        logoSrc: '/model-logos/google-gemini.png',
+        logoAlt: 'Google Gemini logo',
+        modelIds: ['veo-3-1-lite', 'veo-3-1-fast', 'veo-3-1-quality'],
+      },
+      {
+        id: 'pixverse',
+        logoSrc: '/model-logos/pixverse.svg',
+        logoAlt: 'PixVerse logo',
+        modelIds: ['pixverse-v6'],
+      },
+      {
+        id: 'happyhorse',
+        logoSrc: '/model-logos/happyhorse.svg',
+        logoAlt: 'HappyHorse logo',
+        modelIds: ['happyhorse-1-1', 'happyhorse'],
+      },
     ]
   )
+})
+
+test('PixVerse and HappyHorse expose only text-to-video and image-to-video settings', () => {
+  const pixverse = getAiVideoGeneratorModelConfig('pixverse-v6')
+  const happyhorse11 = getAiVideoGeneratorModelConfig('happyhorse-1-1')
+  const happyhorse = getAiVideoGeneratorModelConfig('happyhorse')
+
+  assert.equal(pixverse.defaultMode, 'text-to-video')
+  assert.equal(pixverse.maxImages, 1)
+  assert.deepEqual(pixverse.durations, Array.from({ length: 15 }, (_, index) => index + 1))
+  assert.deepEqual(pixverse.resolutions, ['360p', '540p', '720p', '1080p'])
+  assert.equal(pixverse.supportsNativeAudio, true)
+
+  for (const model of [happyhorse11, happyhorse]) {
+    assert.equal(model.defaultMode, 'text-to-video')
+    assert.equal(model.maxImages, 1)
+    assert.deepEqual(model.durations, Array.from({ length: 13 }, (_, index) => index + 3))
+    assert.deepEqual(model.resolutions, ['720p', '1080p'])
+  }
+})
+
+test('Seedance 1.0 Pro Fast is an image-to-video-only model', () => {
+  const model = getAiVideoGeneratorModelConfig('seedance-1-pro-fast')
+
+  assert.equal(model.name, 'Seedance 1.0 Pro Fast')
+  assert.equal(model.defaultMode, 'image-to-video')
+  assert.deepEqual(model.supportedModes, ['image-to-video'])
+  assert.equal(model.maxImages, 1)
+  assert.equal(model.maxFileSizeMb, 10)
+  assert.deepEqual(model.durations, [5, 10])
+  assert.deepEqual(model.resolutions, ['720p', '1080p'])
 })
 
 test('AI video generator model configs define practical video output defaults', () => {
@@ -45,6 +177,9 @@ test('AI video generator model configs define practical video output defaults', 
   const seedance = getAiVideoGeneratorModelConfig('seedance-2')
   const seedanceMini = getAiVideoGeneratorModelConfig('seedance-2-mini')
   const kling = getAiVideoGeneratorModelConfig('kling-3')
+  const veoLite = getAiVideoGeneratorModelConfig('veo-3-1-lite')
+  const veoFast = getAiVideoGeneratorModelConfig('veo-3-1-fast')
+  const veoQuality = getAiVideoGeneratorModelConfig('veo-3-1-quality')
 
   assert.equal(grok.defaultMode, 'image-to-video')
   assert.equal(grok.maxImages, 1)
@@ -57,7 +192,7 @@ test('AI video generator model configs define practical video output defaults', 
   assert.equal(grok.defaultDuration, 3)
   assert.deepEqual(grok.resolutions, ['480p', '720p'])
 
-  assert.equal(seedance.maxImages, 9)
+  assert.equal(seedance.maxImages, 2)
   assert.ok(seedance.durations.includes(15))
   assert.equal(seedance.logoSrc, '/model-logos/bytedance.svg')
   assert.equal(seedance.qualityRating, 5)
@@ -66,7 +201,7 @@ test('AI video generator model configs define practical video output defaults', 
 
   assert.equal(seedanceMini.name, 'Seedance 2.0 Mini')
   assert.equal(seedanceMini.defaultMode, 'image-to-video')
-  assert.equal(seedanceMini.maxImages, 9)
+  assert.equal(seedanceMini.maxImages, 2)
   assert.equal(seedanceMini.logoSrc, '/model-logos/bytedance.svg')
   assert.equal(seedanceMini.qualityRating, 4.5)
   assert.equal(seedanceMini.minCredits, 75)
@@ -81,6 +216,21 @@ test('AI video generator model configs define practical video output defaults', 
   assert.equal(kling.supportsNativeAudio, true)
   assert.deepEqual(kling.nativeAudioResolutions, ['720p', '1080p'])
   assert.equal(kling.defaultMode, 'text-to-video')
+
+  for (const veo of [veoLite, veoFast, veoQuality]) {
+    assert.equal(veo.vendor, 'Google')
+    assert.equal(veo.logoSrc, '/model-logos/google-gemini.png')
+    assert.equal(veo.logoAlt, 'Google Gemini logo')
+    assert.equal(veo.maxImages, 2)
+    assert.equal(veo.defaultMode, 'text-to-video')
+    assert.deepEqual(veo.aspectRatios.map((ratio) => ratio.value), ['16:9', '9:16'])
+    assert.deepEqual(veo.durations, [4, 6, 8])
+    assert.equal(veo.defaultDuration, 8)
+    assert.deepEqual(veo.resolutions, ['720p', '1080p'])
+  }
+  assert.equal(veoLite.minCredits, 45)
+  assert.equal(veoFast.minCredits, 90)
+  assert.equal(veoQuality.minCredits, 375)
 })
 
 test('AI video generator model menu minimum credits match shared pricing', () => {
@@ -93,6 +243,66 @@ test('AI video generator model menu minimum credits match shared pricing', () =>
       model.id + ' menu minimum credits should match shared pricing'
     )
   }
+})
+
+test('every video model declares native-audio and multi-shot capabilities', () => {
+  for (const model of AI_VIDEO_GENERATOR_MODEL_OPTIONS) {
+    assert.equal(typeof model.supportsNativeAudioOutput, 'boolean', `${model.id} native audio capability`)
+    assert.equal(typeof model.supportsMultiShot, 'boolean', `${model.id} multi-shot capability`)
+  }
+})
+
+test('HappyHorse models advertise their native audio and multi-shot capabilities', () => {
+  for (const modelId of ['happyhorse-1-1', 'happyhorse'] as const) {
+    const model = getAiVideoGeneratorModelConfig(modelId)
+    assert.equal(model.supportsNativeAudioOutput, true)
+    assert.equal(model.supportsMultiShot, true)
+  }
+})
+
+test('video capability labels match the audited KIE model matrix', () => {
+  const nativeAudioModels = AI_VIDEO_GENERATOR_MODEL_OPTIONS
+    .filter((model) => model.supportsNativeAudioOutput)
+    .map((model) => model.id)
+  const multiShotModels = AI_VIDEO_GENERATOR_MODEL_OPTIONS
+    .filter((model) => model.supportsMultiShot)
+    .map((model) => model.id)
+
+  assert.deepEqual(nativeAudioModels, [
+    'grok-1-5-video',
+    'seedance-2',
+    'seedance-2-mini',
+    'seedance-2-fast',
+    'seedance-1-5-pro',
+    'wan-2-6',
+    'wan-2-5',
+    'kling-3-turbo',
+    'kling-3',
+    'kling-2-6',
+    'veo-3-1-lite',
+    'veo-3-1-fast',
+    'veo-3-1-quality',
+    'pixverse-v6',
+    'happyhorse-1-1',
+    'happyhorse',
+  ])
+  assert.deepEqual(multiShotModels, [
+    'seedance-2',
+    'seedance-2-mini',
+    'seedance-2-fast',
+    'seedance-1-5-pro',
+    'seedance-1-pro-fast',
+    'seedance-1-pro',
+    'wan-2-6',
+    'kling-3-turbo',
+    'kling-3',
+    'veo-3-1-lite',
+    'veo-3-1-fast',
+    'veo-3-1-quality',
+    'pixverse-v6',
+    'happyhorse-1-1',
+    'happyhorse',
+  ])
 })
 
 test('AI video generator translation slots exist for every supported locale', () => {
@@ -121,6 +331,10 @@ test('AI video generator translation slots exist for every supported locale', ()
     'videoGenerationFailed',
     'download',
     'resultExpires',
+    'modelSwitchedTitle',
+    'modelSwitchedDescription',
+    'noCompatibleModelTitle',
+    'noCompatibleModelDescription',
   ]
 
   const missing: string[] = []
@@ -138,6 +352,23 @@ test('AI video generator translation slots exist for every supported locale', ()
   }
 
   assert.deepEqual(missing, [], missing.join('\n'))
+
+  const englishToolText = JSON.parse(
+    readFileSync(join(process.cwd(), 'src', 'data', 'en', 'common.json'), 'utf8'),
+  ).common.aiVideoGeneratorTool
+  for (const locale of locales.filter((item) => item !== 'en')) {
+    const localizedToolText = JSON.parse(
+      readFileSync(join(process.cwd(), 'src', 'data', locale, 'common.json'), 'utf8'),
+    ).common.aiVideoGeneratorTool
+    for (const key of [
+      'modelSwitchedTitle',
+      'modelSwitchedDescription',
+      'noCompatibleModelTitle',
+      'noCompatibleModelDescription',
+    ]) {
+      assert.notEqual(localizedToolText[key], englishToolText[key], `${locale}.${key}`)
+    }
+  }
 })
 
 test('AI video generator uses upload action copy instead of image-limit wording', () => {

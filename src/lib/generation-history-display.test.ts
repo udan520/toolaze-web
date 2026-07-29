@@ -127,5 +127,8 @@ test('keeps AI dance and AI kissing labels distinct in shared history', () => {
 test('formats known model ids for user-facing history labels', () => {
   assert.equal(getGenerationModelLabel('gpt-image-2'), 'GPT Image 2')
   assert.equal(getGenerationModelLabel('seedream-5-0-pro'), 'Seedream 5.0 Pro')
+  assert.equal(getGenerationModelLabel('gpt-image-1-5'), 'GPT Image 1.5')
+  assert.equal(getGenerationModelLabel('flux-2-pro'), 'Flux 2 Pro')
+  assert.equal(getGenerationModelLabel('flux-2-flex'), 'Flux 2 Flex')
   assert.equal(getGenerationModelLabel('custom-model'), 'custom-model')
 })

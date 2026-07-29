@@ -8,6 +8,9 @@ function createGenerationRequest(overrides = {}) {
   formData.append('prompt', overrides.prompt || 'Change the hair color to rose pink.')
   formData.append('aspectRatio', overrides.aspectRatio || 'auto')
   formData.append('resolution', overrides.resolution || '1K')
+  if (overrides.quality) {
+    formData.append('quality', overrides.quality)
+  }
   if (overrides.duration) {
     formData.append('duration', String(overrides.duration))
   }
@@ -25,6 +28,119 @@ function createGenerationRequest(overrides = {}) {
     body: formData,
   })
 }
+
+for (const scenario of [
+  {
+    name: 'GPT Image 1.5 text-to-image',
+    model: 'gpt-image-1-5',
+    providerModel: 'gpt-image/1.5-text-to-image',
+    isImageToImage: false,
+    setting: { quality: 'high' },
+  },
+  {
+    name: 'GPT Image 1.5 image-to-image',
+    model: 'gpt-image-1-5',
+    providerModel: 'gpt-image/1.5-image-to-image',
+    isImageToImage: true,
+    setting: { quality: 'medium' },
+  },
+  {
+    name: 'Flux 2 Pro text-to-image',
+    model: 'flux-2-pro',
+    providerModel: 'flux-2/pro-text-to-image',
+    isImageToImage: false,
+    setting: { resolution: '2K' },
+  },
+  {
+    name: 'Flux 2 Pro image-to-image',
+    model: 'flux-2-pro',
+    providerModel: 'flux-2/pro-image-to-image',
+    isImageToImage: true,
+    setting: { resolution: '1K' },
+  },
+  {
+    name: 'Flux 2 Flex text-to-image',
+    model: 'flux-2-flex',
+    providerModel: 'flux-2/flex-text-to-image',
+    isImageToImage: false,
+    setting: { resolution: '1K' },
+  },
+  {
+    name: 'Flux 2 Flex image-to-image',
+    model: 'flux-2-flex',
+    providerModel: 'flux-2/flex-image-to-image',
+    isImageToImage: true,
+    setting: { resolution: '2K' },
+  },
+]) {
+  test(`${scenario.name} uses the exact KIE Market contract`, async () => {
+    const originalFetch = globalThis.fetch
+    let requestBody = null
+
+    globalThis.fetch = async (_url, init) => {
+      requestBody = JSON.parse(String(init.body))
+      return Response.json({ code: 200, data: { taskId: 'task_new_image_model' } })
+    }
+
+    try {
+      const response = await onRequest({
+        request: createGenerationRequest({
+          model: scenario.model,
+          isImageToImage: scenario.isImageToImage,
+          imageUrls: scenario.isImageToImage ? ['https://example.com/reference.png'] : false,
+          aspectRatio: '1:1',
+          ...scenario.setting,
+        }),
+        env: { KIE_AI_API_KEY: 'test-key' },
+      })
+
+      assert.equal(response.status, 200)
+      assert.equal(requestBody.model, scenario.providerModel)
+      assert.equal(requestBody.input.prompt, 'Change the hair color to rose pink.')
+      assert.equal(requestBody.input.aspect_ratio, '1:1')
+      if (scenario.model === 'gpt-image-1-5') {
+        assert.equal(requestBody.input.quality, scenario.setting.quality)
+        assert.equal(requestBody.input.resolution, undefined)
+      } else {
+        assert.equal(requestBody.input.resolution, scenario.setting.resolution)
+        assert.equal(requestBody.input.nsfw_checker, true)
+      }
+      assert.deepEqual(
+        requestBody.input.input_urls,
+        scenario.isImageToImage ? ['https://example.com/reference.png'] : undefined,
+      )
+    } finally {
+      globalThis.fetch = originalFetch
+    }
+  })
+}
+
+test('new image models reject invalid settings before calling KIE', async () => {
+  const originalFetch = globalThis.fetch
+  let fetchCount = 0
+  globalThis.fetch = async () => {
+    fetchCount += 1
+    return Response.json({ code: 200, data: { taskId: 'should_not_exist' } })
+  }
+
+  try {
+    for (const overrides of [
+      { model: 'gpt-image-1-5', quality: 'ultra', aspectRatio: '1:1', isImageToImage: false, imageUrls: false },
+      { model: 'gpt-image-1-5', quality: 'medium', aspectRatio: '16:9', isImageToImage: false, imageUrls: false },
+      { model: 'flux-2-pro', resolution: '4K', aspectRatio: '1:1', isImageToImage: false, imageUrls: false },
+      { model: 'flux-2-flex', resolution: '2K', aspectRatio: '21:9', isImageToImage: false, imageUrls: false },
+    ]) {
+      const response = await onRequest({
+        request: createGenerationRequest(overrides),
+        env: { KIE_AI_API_KEY: 'test-key' },
+      })
+      assert.equal(response.status, 400)
+    }
+    assert.equal(fetchCount, 0)
+  } finally {
+    globalThis.fetch = originalFetch
+  }
+})
 
 function createModerationSettingsDb(enabled = true) {
   const value = enabled ? 'true' : 'false'
