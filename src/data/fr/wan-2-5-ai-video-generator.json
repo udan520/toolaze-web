@@ -321,9 +321,9 @@
   "moreTools": "Plus de modèles vidéo IA",
   "moreToolsLinks": [
     {
-      "title": "Wan 2.7",
-      "description": "Essayez l’option Wan la plus récente dans le sélecteur Toolaze.",
-      "href": "/ai-video-generator"
+      "title": "Seedance 2.0",
+      "description": "Essayez Seedance 2.0 pour générer des vidéos IA cinématographiques en texte-vers-vidéo et image-vers-vidéo.",
+      "href": "/model/seedance-2"
     },
     {
       "title": "Kling 3.0",

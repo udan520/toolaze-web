@@ -321,9 +321,9 @@
   "moreTools": "更多 AI 影片模型",
   "moreToolsLinks": [
     {
-      "title": "Wan 2.7",
-      "description": "在 Toolaze 選單中試用較新的 Wan 影片選項。",
-      "href": "/ai-video-generator"
+      "title": "Seedance 2.0",
+      "description": "試用 Seedance 2.0，透過文字轉影片與圖片轉影片流程生成電影感 AI 影片。",
+      "href": "/model/seedance-2"
     },
     {
       "title": "Kling 3.0",

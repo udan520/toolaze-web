@@ -1,6 +1,7 @@
 import { getL2SeoContent, getAllSlugs, loadCommonTranslations, getSeoContent, VIDEO_MODEL_L2S, IMAGE_MODEL_L2S } from '@/lib/seo-loader'
 import { filterPaymentReviewSections, shouldRenderPaymentReviewSocialProofSection } from '@/lib/payment-review-visibility'
 import { localizeLinksInObject } from '@/lib/localize-links'
+import { isSiteLocaleCode } from '@/lib/site-language-switch'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import Navigation from '@/components/Navigation'
@@ -76,6 +77,36 @@ function getTopToolImageModelId(modelId: unknown, fallback: 'gpt-image-2'): TopT
   return typeof modelId === 'string' && TOP_TOOL_IMAGE_MODEL_IDS.has(modelId)
     ? modelId as TopToolImageModelId
     : fallback
+}
+
+function getLocalizedContentHref(href: string | undefined, locale: string): string {
+  const value = href?.trim()
+  if (!value) return '#'
+  if (
+    value.startsWith('http://') ||
+    value.startsWith('https://') ||
+    value.startsWith('//') ||
+    value.startsWith('#') ||
+    value.startsWith('?') ||
+    value.toLowerCase().startsWith('mailto:') ||
+    value.toLowerCase().startsWith('tel:')
+  ) {
+    return value
+  }
+  if (locale === 'en') return value
+
+  const normalized = value.startsWith('/') ? value : `/${value}`
+  const localePrefix = `/${locale}`
+  if (normalized === localePrefix || normalized.startsWith(`${localePrefix}/`)) {
+    return normalized
+  }
+
+  const [, firstSegment = '', rest = ''] = normalized.match(/^\/([^/?#]+)(.*)$/) || []
+  if (firstSegment && isSiteLocaleCode(firstSegment)) {
+    return `${localePrefix}${rest || ''}`
+  }
+
+  return `${localePrefix}${normalized}`
 }
 
 // 从 hero.h1 中提取页面标题（用于面包屑）
@@ -1472,7 +1503,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                         key={recTool.slug}
                         title={recTool.title}
                         description={recTool.description}
-                        href={recTool.href}
+                        href={getLocalizedContentHref(recTool.href, locale)}
                         iconBgColor={iconBgColor}
                         tryNowText={t?.common?.tryNow || 'Try Now →'}
                       />

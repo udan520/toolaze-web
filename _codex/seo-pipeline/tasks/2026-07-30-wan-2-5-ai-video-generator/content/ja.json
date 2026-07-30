@@ -321,9 +321,9 @@
   "moreTools": "さらにAI動画モデルを見る",
   "moreToolsLinks": [
     {
-      "title": "Wan 2.7",
-      "description": "Toolazeセレクターで新しいWan動画オプションを試せます。",
-      "href": "/ai-video-generator"
+      "title": "Seedance 2.0",
+      "description": "テキストから動画、画像から動画のワークフローで映画的なAI動画を作るならSeedance 2.0を試せます。",
+      "href": "/model/seedance-2"
     },
     {
       "title": "Kling 3.0",
