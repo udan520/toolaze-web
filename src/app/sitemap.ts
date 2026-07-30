@@ -9,7 +9,7 @@ const baseUrl = 'https://toolaze.com'
 const SUPPORTED_LOCALES = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
 const STATIC_PAGES = ['about', 'privacy', 'terms', 'pricing', 'refund-policy', 'acceptable-use', 'contact']
 const TOOL_PAGES = ['image-compressor', 'image-converter', 'font-generator', 'emoji-copy-and-paste']
-const VIDEO_GENERATOR_PAGES = ['text-to-video-generator', 'image-to-video-generator'] as const
+const VIDEO_GENERATOR_PAGES = ['kling-ai-video-generator', 'text-to-video-generator', 'image-to-video-generator'] as const
 const AI_IMAGE_L2_PAGES = [
   { path: '/photo-restoration', priority: 0.9 },
   { path: '/watermark-remover', priority: 0.9 },

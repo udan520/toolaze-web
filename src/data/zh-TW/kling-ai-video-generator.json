@@ -1,0 +1,315 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "kling-ai-video-generator",
+  "topTool": {
+    "defaultMode": "text-to-video",
+    "displayName": "Kling AI 影片生成器",
+    "modelId": "kling-3"
+  },
+  "metadata": {
+    "title": "Kling AI 影片生成器線上版 | Toolaze",
+    "description": "使用 Kling 3.0 從文字提示詞或參考圖像建立 AI 短片。在 Toolaze 測試電影感動態、原生音訊、4K 輸出與多鏡頭提示詞。"
+  },
+  "sectionsOrder": [
+    "modelIntro",
+    "performanceMetrics",
+    "modelSelectionGuide",
+    "promptExamples",
+    "howToUse",
+    "troubleshooting",
+    "scenes",
+    "features",
+    "faq"
+  ],
+  "hero": {
+    "h1": "<span class=\"text-gradient\">Kling AI 影片生成器</span>線上版",
+    "desc": "在 Toolaze 使用文字或參考圖像建立 Kling 3.0 影片。先設定主體、鏡頭移動、鏡頭序列與聲音方向，再調整時長、比例、解析度與原生音訊。"
+  },
+  "modelIntro": {
+    "title": "從文字或圖像生成 Kling 3.0 影片",
+    "modelName": "Kling AI 影片生成器",
+    "modelType": "AI 影片工具",
+    "description": [
+      "Kling AI 影片生成器讓創作者可在 Toolaze 直接測試 Kling 3.0。需要從零描述完整場景時使用文字轉影片；需要產品、角色、第一幀或視覺風格引導結果時使用圖像轉影片。",
+      "Kling 3.0 適合電影感動態、高解析視覺草稿、短篇多鏡頭序列，以及需要同步聲音的場景。在 Toolaze 中，Kling 3.0 支援文字或圖像輸入、最多 4 張參考圖、3 到 15 秒時長、720p 到 4K 輸出，以及 720p 或 1080p 原生音訊。"
+    ],
+    "featureCards": [
+      {
+        "title": "文字與圖像起點",
+        "content": "從零描述新場景；或在主體、產品、風格或構圖需要更強控制時加入參考圖像。"
+      },
+      {
+        "title": "預設選擇 Kling 3.0",
+        "content": "Kling 3.0 預設已選取，方便立即測試動態、解析度、原生音訊與多鏡頭表現。"
+      },
+      {
+        "title": "提示鏡頭與聲音",
+        "content": "提示詞包含動作、鏡頭路徑、鏡頭數、光線、聲音提示與清楚輸出格式時，Kling 通常更穩定。"
+      }
+    ]
+  },
+  "performanceMetrics": {
+    "title": "Toolaze 中的 Kling 3.0 設定",
+    "metrics": [
+      {
+        "label": "輸入模式",
+        "value": "文字轉影片或圖像轉影片"
+      },
+      {
+        "label": "參考圖像",
+        "value": "最多 4 張圖像"
+      },
+      {
+        "label": "時長",
+        "value": "3 到 15 秒"
+      },
+      {
+        "label": "解析度",
+        "value": "720p、1080p 或 4K"
+      },
+      {
+        "label": "原生音訊",
+        "value": "720p 與 1080p 可用"
+      },
+      {
+        "label": "Credits 預估",
+        "value": "依設定不同，從 60+ credits 起"
+      }
+    ]
+  },
+  "modelSelectionGuide": {
+    "title": "在 Toolaze 比較 Kling 模型",
+    "subtitle": "依解析度、速度、音訊支援、參考圖數量與 credits 等級，在 Kling 3.0、Kling 3 Turbo 與較早版本之間選擇。",
+    "items": [
+      {
+        "title": "Kling 3.0",
+        "badge": "此頁預設",
+        "logoSrc": "/model-logos/kling.svg",
+        "logoAlt": "Kling logo",
+        "desc": "使用 Kling 3.0 取得最完整設定：3 到 15 秒、最多 4 張參考圖、720p 到 4K，以及 720p 或 1080p 原生音訊。",
+        "prompt": "可用於精修社群短片、產品廣告、分鏡、高解析草稿與原生音訊場景。"
+      },
+      {
+        "title": "Kling 3 Turbo",
+        "badge": "快速原生音訊草稿",
+        "logoSrc": "/model-logos/kling.svg",
+        "logoAlt": "Kling logo",
+        "desc": "速度比 4K 更重要時使用 Kling 3 Turbo。它支援 5 或 10 秒、最多 2 張參考圖、720p 或 1080p，以及原生音訊。",
+        "prompt": "可用於提示詞探索、快速創意方向與帶有聲音提示的短場景。"
+      },
+      {
+        "title": "Kling 2.6",
+        "badge": "高效率音訊選項",
+        "logoSrc": "/model-logos/kling.svg",
+        "logoAlt": "Kling logo",
+        "desc": "使用 Kling 2.6 製作可靠的 5 或 10 秒文字轉影片或圖像轉影片，支援 720p 或 1080p 與原生音訊。",
+        "prompt": "可用於低 credits Kling 測試、簡單分鏡，以及不需要 4K 的音訊草稿。"
+      },
+      {
+        "title": "Kling 2.5 Turbo Pro",
+        "badge": "1080p 視覺草稿",
+        "logoSrc": "/model-logos/kling.svg",
+        "logoAlt": "Kling logo",
+        "desc": "需要不含原生音訊的 1080p 視覺短片時，使用 Kling 2.5 Turbo Pro 進行 5 或 10 秒測試。",
+        "prompt": "可用於動態檢查、產品動作與直接的視覺迭代。"
+      },
+      {
+        "title": "Kling 2.1 Master",
+        "badge": "成熟 1080p 選項",
+        "logoSrc": "/model-logos/kling.svg",
+        "logoAlt": "Kling logo",
+        "desc": "若一致性比最新模型更重要，可使用 Kling 2.1 Master 製作較早期的 1080p 視覺短片。",
+        "prompt": "可用於受控短片，以及偏好較早 Master 選項的場景。"
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "Kling AI 影片提示詞範例",
+    "subtitle": "使用這四種提示詞結構測試動態、鏡頭控制、音訊方向與參考圖生成。",
+    "items": [
+      {
+        "title": "電影感產品展示",
+        "prompt": "A premium black smartwatch rests on a reflective glass surface. Slow 6-shot commercial sequence: macro crown detail, side profile, screen glow, strap texture, water droplets sliding off, final hero angle. Clean studio lighting, smooth dolly movement, subtle electronic sound design.",
+        "note": "適合測試產品細節、鏡頭切換、反射與聲音氛圍。",
+        "color": "linear-gradient(135deg, #111827, #6366f1)"
+      },
+      {
+        "title": "城市夜間汽車場景",
+        "prompt": "A sleek electric car crosses a rain-soaked downtown bridge at night. Cinematic tracking shot with tire spray, neon reflections, mist, realistic headlights, dramatic 4K lighting, low camera angle, synchronized rain and road ambience.",
+        "note": "適合測試動態、反射表面、天氣與高解析輸出。",
+        "color": "linear-gradient(135deg, #0f172a, #0ea5e9)"
+      },
+      {
+        "title": "創作者生活風短片",
+        "prompt": "Vertical 9:16 video of a creator opening a compact travel camera in a bright apartment. Start with hands unboxing, cut to lens close-up, then show the creator smiling near a window. Natural handheld movement, warm daylight, soft room tone, social media pacing.",
+        "note": "適合測試短影音創作者內容與手機直式構圖。",
+        "color": "linear-gradient(135deg, #8b5cf6, #ec4899)"
+      },
+      {
+        "title": "圖像引導時尚動態",
+        "prompt": "Animate the uploaded fashion portrait into a graceful editorial video. Preserve the face, outfit color, pose, and background palette. Add a slow camera push-in, subtle fabric movement, soft hair motion, studio fan effect, elegant lighting, and clean cinematic texture.",
+        "note": "適合測試需要保留身份、服裝與風格穩定的圖像轉影片。",
+        "color": "linear-gradient(135deg, #4f46e5, #22c55e)"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "如何使用 Kling AI 影片生成器",
+    "steps": [
+      {
+        "title": "選擇起始模式",
+        "desc": "新場景使用文字轉影片；需要產品、人物、構圖或第一幀引導結果時使用圖像轉影片。"
+      },
+      {
+        "title": "寫出清楚場景方向",
+        "desc": "描述主體、動作、鏡頭移動、鏡頭數、光線、情緒、聲音、比例與最終用途。"
+      },
+      {
+        "title": "選擇 Kling 設定",
+        "desc": "選擇時長、比例、解析度與原生音訊。先用較短草稿測試，再投入更多 credits 製作高解析輸出。"
+      },
+      {
+        "title": "生成並微調",
+        "desc": "檢查動態穩定性、主體一致性、音訊同步與構圖，再依需要簡化或擴充提示詞。"
+      }
+    ]
+  },
+  "troubleshooting": {
+    "title": "改善 Kling 影片結果",
+    "subtitle": "較弱的影片結果通常來自提示詞過於擁擠、鏡頭移動不清楚，或在短片中要求太多動作。",
+    "items": [
+      {
+        "title": "動態看起來不穩",
+        "badge": "使用一個主要動作",
+        "color": "linear-gradient(135deg, #4f46e5, #818cf8)",
+        "desc": "先把提示詞縮減為一個主體動作與一個鏡頭移動，再加入額外鏡頭細節。",
+        "prompt": "嘗試：一個緩慢推近鏡頭、一個置中的主體、不要快速切換。"
+      },
+      {
+        "title": "音訊不吻合",
+        "badge": "明確命名聲音",
+        "color": "linear-gradient(135deg, #0f172a, #22c55e)",
+        "desc": "啟用原生音訊時，描述確切聲源並移除不需要的背景聲。",
+        "prompt": "嘗試：雨滴同步落在金屬上、安靜城市氛圍、無音樂、無對話。"
+      },
+      {
+        "title": "參考細節漂移",
+        "badge": "保留具體細節",
+        "color": "linear-gradient(135deg, #7c3aed, #c084fc)",
+        "desc": "圖像轉影片時，明確指出需穩定保留的臉、Logo、產品形狀、衣服顏色或鏡頭角度。",
+        "prompt": "嘗試：保留正面標籤、銀色瓶蓋、黑色袖口與四分之三鏡頭角度。"
+      },
+      {
+        "title": "短片感覺普通",
+        "badge": "加入鏡頭語言",
+        "color": "linear-gradient(135deg, #f59e0b, #ec4899)",
+        "desc": "指定鏡頭風格、鏡頭序列、光線、主體表演與輸出格式，讓 Kling 有更明確方向。",
+        "prompt": "嘗試：微距開場、低角度跟拍、最後英雄畫面、電影感產品廣告風格。"
+      }
+    ]
+  },
+  "scenesTitle": "常見 Kling AI 影片用途",
+  "scenes": [
+    {
+      "title": "產品廣告與電商動態",
+      "desc": "將產品概念、包裝畫面與廣告 brief 轉為具有清楚鏡頭移動和高級光線的短篇電影感影片。"
+    },
+    {
+      "title": "社群短影音",
+      "desc": "建立適合 TikTok、Reels、Shorts 與創作者貼文的 9:16 直式短片，節奏可控且視覺 hook 明確。"
+    },
+    {
+      "title": "分鏡與前期製作",
+      "desc": "在實拍或客戶審閱前，快速測試鏡頭序列、鏡頭移動、光線與表演節奏。"
+    },
+    {
+      "title": "音樂與原生音訊測試",
+      "desc": "測試需要讓環境聲、對話提示、音效或音樂節奏與畫面一起規劃的場景。"
+    },
+    {
+      "title": "時尚與肖像動態",
+      "desc": "使用圖像轉影片為肖像、服裝、 editorial 姿勢與 campaign stills 加入動態，同時保留原始外觀。"
+    },
+    {
+      "title": "電影感環境短片",
+      "desc": "建立含天氣、光線、景觀動態、城市反射與氛圍鏡頭路徑的情緒片段。"
+    }
+  ],
+  "features": {
+    "title": "為什麼在 Toolaze 製作 Kling 影片",
+    "items": [
+      {
+        "iconType": "easy",
+        "title": "Kling 預設選取",
+        "desc": "Kling 3.0 已預先選取，讓你立即專注於提示詞、參考圖與輸出設定。"
+      },
+      {
+        "iconType": "browser",
+        "title": "直接在瀏覽器創作",
+        "desc": "在瀏覽器中直接使用文字提示詞、參考圖、影片設定、歷史記錄與下載。"
+      },
+      {
+        "iconType": "speed",
+        "title": "高品質生成前先打草稿",
+        "desc": "先用較短或較低解析度測試，再在動態、構圖與聲音方向成立後提高品質。"
+      }
+    ]
+  },
+  "faqTitle": "Kling AI 影片生成器常見問題",
+  "faq": [
+    {
+      "q": "什麼是 Kling AI 影片生成器？",
+      "a": "它是 Toolaze 的影片生成器，預設選擇 Kling 3.0。你可以從文字提示詞或參考圖像建立影片，並調整時長、比例、解析度與原生音訊。"
+    },
+    {
+      "q": "這個工具使用哪個 Kling 模型？",
+      "a": "此工具預設使用 Kling 3.0。Toolaze 的影片模型選擇器也提供其他 Kling 選項，可用來比較速度、成本、原生音訊或品質設定。"
+    },
+    {
+      "q": "Kling 支援圖像轉影片嗎？",
+      "a": "支援。在 Toolaze 中，Kling 3.0 支援文字轉影片與圖像轉影片。當主體、產品、角色、服裝或第一幀需要引導片段時，請使用圖像輸入。"
+    },
+    {
+      "q": "Kling 可以生成原生音訊嗎？",
+      "a": "Kling 3.0 在 Toolaze 模型設定中支援 720p 與 1080p 原生音訊。啟用音訊時，可在提示詞中描述音效、環境聲、對話提示或音樂方向。"
+    },
+    {
+      "q": "Kling 需要多少 credits？",
+      "a": "Kling 3.0 在 Toolaze 從 60+ credits 起。最終 credits 取決於時長、解析度、原生音訊與所選模型選項。"
+    },
+    {
+      "q": "如何寫出更好的 Kling 影片提示詞？",
+      "a": "寫清楚一個主體、一個主要動作、一個鏡頭方向與最終格式。等核心動態清楚後，再加入光線、聲音、鏡頭風格與鏡頭序列。"
+    }
+  ],
+  "moreTools": "相關 AI 影片工具",
+  "moreToolsLinks": [
+    {
+      "slug": "ai-video-generator",
+      "title": "AI 影片生成器",
+      "description": "需要比較 Kling 以外的支援影片模型時，開啟更完整的影片生成器。",
+      "href": "/ai-video-generator"
+    },
+    {
+      "slug": "image-to-video-generator",
+      "title": "圖像轉影片生成器",
+      "description": "將產品照、肖像、藝術作品或第一幀製作成 AI 短片。",
+      "href": "/image-to-video-generator"
+    },
+    {
+      "slug": "kling-3",
+      "title": "Kling 3.0 影片生成器",
+      "description": "探索 Kling 3.0 設定、輸入選項與相關影片創作路徑。",
+      "href": "/model/kling-3"
+    }
+  ],
+  "heroDemoVideo": {
+    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
+    "ariaLabel": "Kling 3.0 AI 影片生成器的 16:9 示範影片",
+    "width": 16,
+    "height": 9,
+    "sourceHistory": "Shared with /model/kling-3 hero demo · 16:9 · R2"
+  }
+}

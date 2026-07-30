@@ -1,0 +1,315 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "kling-ai-video-generator",
+  "topTool": {
+    "defaultMode": "text-to-video",
+    "displayName": "Generador de video IA Kling",
+    "modelId": "kling-3"
+  },
+  "metadata": {
+    "title": "Generador de video IA Kling online | Toolaze",
+    "description": "Crea videos cortos con Kling 3.0 desde prompts de texto o imágenes de referencia. Prueba movimiento cinematográfico, audio nativo, salida 4K y prompts multi-toma en Toolaze."
+  },
+  "sectionsOrder": [
+    "modelIntro",
+    "performanceMetrics",
+    "modelSelectionGuide",
+    "promptExamples",
+    "howToUse",
+    "troubleshooting",
+    "scenes",
+    "features",
+    "faq"
+  ],
+  "hero": {
+    "h1": "<span class=\"text-gradient\">Generador de video IA Kling</span> online",
+    "desc": "Crea videos con Kling 3.0 desde texto o imágenes de referencia en Toolaze. Empieza con sujeto, movimiento de cámara, secuencia de tomas y dirección sonora; después ajusta duración, relación de aspecto, resolución y audio nativo."
+  },
+  "modelIntro": {
+    "title": "Genera videos Kling 3.0 desde texto o imágenes",
+    "modelName": "Generador de video IA Kling",
+    "modelType": "Herramienta de video IA",
+    "description": [
+      "El Generador de video IA Kling ofrece a creadores una forma directa de probar Kling 3.0 en Toolaze. Usa texto a video para describir una escena completa desde cero, o imagen a video cuando un producto, personaje, primer fotograma o estilo visual deba guiar el resultado.",
+      "Kling 3.0 funciona mejor para movimiento cinematográfico, borradores visuales de alta resolución, secuencias cortas multi-toma y escenas donde el audio sincronizado importa. En Toolaze, Kling 3.0 admite texto o imagen, hasta 4 imágenes de referencia, duraciones de 3 a 15 segundos, 720p a 4K y audio nativo a 720p o 1080p."
+    ],
+    "featureCards": [
+      {
+        "title": "Puntos de partida con texto e imagen",
+        "content": "Describe una escena nueva desde cero o añade imágenes de referencia cuando el sujeto, producto, estilo o composición necesite más control."
+      },
+      {
+        "title": "Kling 3.0 como modelo predeterminado",
+        "content": "Kling 3.0 está seleccionado por defecto para probar movimiento, resolución, audio nativo y comportamiento multi-toma sin cambiar de modelo."
+      },
+      {
+        "title": "Prompts para cámara y sonido",
+        "content": "Kling responde mejor cuando el prompt incluye acción, trayectoria de cámara, número de tomas, iluminación, señales sonoras y un formato final claro."
+      }
+    ]
+  },
+  "performanceMetrics": {
+    "title": "Ajustes de Kling 3.0 en Toolaze",
+    "metrics": [
+      {
+        "label": "Modos de entrada",
+        "value": "Texto a video o imagen a video"
+      },
+      {
+        "label": "Imágenes de referencia",
+        "value": "Hasta 4 imágenes"
+      },
+      {
+        "label": "Duración",
+        "value": "De 3 a 15 segundos"
+      },
+      {
+        "label": "Resolución",
+        "value": "720p, 1080p o 4K"
+      },
+      {
+        "label": "Audio nativo",
+        "value": "Disponible en 720p y 1080p"
+      },
+      {
+        "label": "Estimación de créditos",
+        "value": "Desde 60+ créditos, según los ajustes elegidos"
+      }
+    ]
+  },
+  "modelSelectionGuide": {
+    "title": "Compara modelos Kling en Toolaze",
+    "subtitle": "Elige entre Kling 3.0, Kling 3 Turbo y opciones anteriores por resolución, velocidad, audio, referencias y nivel de créditos.",
+    "items": [
+      {
+        "title": "Kling 3.0",
+        "badge": "Predeterminado aquí",
+        "logoSrc": "/model-logos/kling.svg",
+        "logoAlt": "Kling logo",
+        "desc": "Usa Kling 3.0 para la configuración más amplia: clips de 3 a 15 segundos, hasta 4 referencias, salida de 720p a 4K y audio nativo a 720p o 1080p.",
+        "prompt": "Úsalo para clips sociales pulidos, anuncios de producto, storyboards, borradores de alta resolución y escenas con audio nativo."
+      },
+      {
+        "title": "Kling 3 Turbo",
+        "badge": "Borradores rápidos con audio nativo",
+        "logoSrc": "/model-logos/kling.svg",
+        "logoAlt": "Kling logo",
+        "desc": "Usa Kling 3 Turbo cuando la velocidad importe más que 4K. Admite clips de 5 o 10 segundos, hasta 2 referencias, 720p o 1080p y audio nativo.",
+        "prompt": "Úsalo para explorar prompts, definir dirección creativa rápido y escenas cortas con señales sonoras."
+      },
+      {
+        "title": "Kling 2.6",
+        "badge": "Opción eficiente con audio",
+        "logoSrc": "/model-logos/kling.svg",
+        "logoAlt": "Kling logo",
+        "desc": "Usa Kling 2.6 para clips fiables de 5 o 10 segundos desde texto o imagen con salida 720p o 1080p y audio nativo.",
+        "prompt": "Úsalo para pruebas Kling con menos créditos, storyboards sencillos y borradores con audio que no necesitan 4K."
+      },
+      {
+        "title": "Kling 2.5 Turbo Pro",
+        "badge": "Borradores visuales 1080p",
+        "logoSrc": "/model-logos/kling.svg",
+        "logoAlt": "Kling logo",
+        "desc": "Usa Kling 2.5 Turbo Pro para clips visuales 1080p cuando quieras una pasada Kling de 5 o 10 segundos sin audio nativo.",
+        "prompt": "Úsalo para revisar movimiento, movimiento de producto e iteraciones visuales directas."
+      },
+      {
+        "title": "Kling 2.1 Master",
+        "badge": "Opción 1080p establecida",
+        "logoSrc": "/model-logos/kling.svg",
+        "logoAlt": "Kling logo",
+        "desc": "Usa Kling 2.1 Master para generaciones visuales 1080p anteriores cuando la consistencia importe más que usar la opción más nueva.",
+        "prompt": "Úsalo para clips cortos controlados y casos donde se prefiere la opción Master anterior."
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "Ejemplos de prompts para video IA Kling",
+    "subtitle": "Usa estas cuatro estructuras para probar movimiento, control de cámara, dirección de audio y generación guiada por referencias.",
+    "items": [
+      {
+        "title": "Revelación cinematográfica de producto",
+        "prompt": "A premium black smartwatch rests on a reflective glass surface. Slow 6-shot commercial sequence: macro crown detail, side profile, screen glow, strap texture, water droplets sliding off, final hero angle. Clean studio lighting, smooth dolly movement, subtle electronic sound design.",
+        "note": "Útil para probar detalle de producto, cortes de cámara, reflejos y atmósfera sonora.",
+        "color": "linear-gradient(135deg, #111827, #6366f1)"
+      },
+      {
+        "title": "Escena urbana nocturna con coche",
+        "prompt": "A sleek electric car crosses a rain-soaked downtown bridge at night. Cinematic tracking shot with tire spray, neon reflections, mist, realistic headlights, dramatic 4K lighting, low camera angle, synchronized rain and road ambience.",
+        "note": "Útil para probar movimiento, superficies reflectantes, clima y salida de alta resolución.",
+        "color": "linear-gradient(135deg, #0f172a, #0ea5e9)"
+      },
+      {
+        "title": "Short de estilo de vida para creadores",
+        "prompt": "Vertical 9:16 video of a creator opening a compact travel camera in a bright apartment. Start with hands unboxing, cut to lens close-up, then show the creator smiling near a window. Natural handheld movement, warm daylight, soft room tone, social media pacing.",
+        "note": "Útil para probar contenido de creador en formato corto y encuadre móvil.",
+        "color": "linear-gradient(135deg, #8b5cf6, #ec4899)"
+      },
+      {
+        "title": "Movimiento de moda guiado por imagen",
+        "prompt": "Animate the uploaded fashion portrait into a graceful editorial video. Preserve the face, outfit color, pose, and background palette. Add a slow camera push-in, subtle fabric movement, soft hair motion, studio fan effect, elegant lighting, and clean cinematic texture.",
+        "note": "Útil para pruebas de imagen a video donde identidad, vestuario y estilo deben mantenerse estables.",
+        "color": "linear-gradient(135deg, #4f46e5, #22c55e)"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Cómo usar el Generador de video IA Kling",
+    "steps": [
+      {
+        "title": "Elige el modo inicial",
+        "desc": "Usa texto a video para una escena nueva, o imagen a video cuando producto, persona, composición o primer fotograma deban guiar el resultado."
+      },
+      {
+        "title": "Escribe una dirección clara",
+        "desc": "Describe sujeto, acción, cámara, número de tomas, iluminación, ambiente, sonido, relación de aspecto y uso final."
+      },
+      {
+        "title": "Selecciona ajustes Kling",
+        "desc": "Elige duración, relación de aspecto, resolución y audio nativo. Empieza con un borrador corto antes de gastar más créditos en alta resolución."
+      },
+      {
+        "title": "Genera y refina",
+        "desc": "Revisa estabilidad del movimiento, consistencia del sujeto, sincronía de audio y encuadre. Luego simplifica o amplía el prompt según lo que necesite mejorar."
+      }
+    ]
+  },
+  "troubleshooting": {
+    "title": "Mejora los resultados de video Kling",
+    "subtitle": "La mayoría de generaciones débiles vienen de prompts saturados, cámara poco clara o demasiadas acciones en un clip corto.",
+    "items": [
+      {
+        "title": "El movimiento se ve inestable",
+        "badge": "Usa una acción principal",
+        "color": "linear-gradient(135deg, #4f46e5, #818cf8)",
+        "desc": "Reduce el prompt a una acción del sujeto y un movimiento de cámara antes de añadir detalles de tomas.",
+        "prompt": "Prueba: un avance lento de cámara, un sujeto centrado, sin cortes rápidos."
+      },
+      {
+        "title": "El audio no coincide",
+        "badge": "Nombra el sonido",
+        "color": "linear-gradient(135deg, #0f172a, #22c55e)",
+        "desc": "Con audio nativo activado, describe la fuente exacta de sonido y elimina sonidos de fondo que no quieres.",
+        "prompt": "Prueba: lluvia sincronizada sobre metal, ambiente urbano suave, sin música, sin diálogo."
+      },
+      {
+        "title": "Los detalles de referencia cambian",
+        "badge": "Preserva detalles",
+        "color": "linear-gradient(135deg, #7c3aed, #c084fc)",
+        "desc": "En imagen a video, indica el rostro, logo, forma del producto, color de ropa o ángulo de cámara que debe mantenerse estable.",
+        "prompt": "Prueba: conservar etiqueta frontal, tapa plateada, manga negra y ángulo de tres cuartos."
+      },
+      {
+        "title": "El clip parece genérico",
+        "badge": "Añade lenguaje de tomas",
+        "color": "linear-gradient(135deg, #f59e0b, #ec4899)",
+        "desc": "Especifica lente, secuencia, iluminación, actuación y formato de salida para dar a Kling una dirección más fuerte.",
+        "prompt": "Prueba: toma macro inicial, travelling bajo, fotograma final hero, estilo de anuncio cinematográfico."
+      }
+    ]
+  },
+  "scenesTitle": "Usos populares de video IA Kling",
+  "scenes": [
+    {
+      "title": "Anuncios de producto y movimiento e-commerce",
+      "desc": "Convierte conceptos de producto, tomas de empaque y briefs publicitarios en videos cortos cinematográficos con cámara clara e iluminación premium."
+    },
+    {
+      "title": "Shorts para redes sociales",
+      "desc": "Crea clips verticales 9:16 para TikTok, Reels, Shorts y publicaciones de creador con ritmo controlado y ganchos visuales rápidos."
+    },
+    {
+      "title": "Storyboards y preproducción",
+      "desc": "Prototipa secuencias de tomas, cámara, iluminación y beats de actuación antes de un rodaje o revisión con cliente."
+    },
+    {
+      "title": "Pruebas de música y audio nativo",
+      "desc": "Prueba escenas donde ambiente, diálogo, efectos o timing musical deben planearse junto con las imágenes."
+    },
+    {
+      "title": "Movimiento de moda y retrato",
+      "desc": "Usa imagen a video para animar retratos, outfits, poses editoriales y stills de campaña manteniendo el look original."
+    },
+    {
+      "title": "Clips de entorno cinematográfico",
+      "desc": "Crea mood shots con clima, iluminación, movimiento de paisaje, reflejos urbanos y cámaras atmosféricas."
+    }
+  ],
+  "features": {
+    "title": "Por qué crear videos Kling en Toolaze",
+    "items": [
+      {
+        "iconType": "easy",
+        "title": "Kling empieza seleccionado",
+        "desc": "Kling 3.0 empieza seleccionado para que te concentres de inmediato en prompt, referencias y ajustes de salida."
+      },
+      {
+        "iconType": "browser",
+        "title": "Crea en tu navegador",
+        "desc": "Usa prompts de texto, imágenes de referencia, ajustes de video, historial y descargas directamente en tu navegador."
+      },
+      {
+        "iconType": "speed",
+        "title": "Borrador antes de alta calidad",
+        "desc": "Empieza con una prueba corta o de menor resolución y sube la calidad cuando movimiento, encuadre y sonido funcionen."
+      }
+    ]
+  },
+  "faqTitle": "Preguntas frecuentes del Generador de video IA Kling",
+  "faq": [
+    {
+      "q": "¿Qué es el Generador de video IA Kling?",
+      "a": "Es un generador de video de Toolaze con Kling 3.0 seleccionado por defecto. Puedes crear videos desde prompts de texto o imágenes de referencia y ajustar duración, relación de aspecto, resolución y audio nativo."
+    },
+    {
+      "q": "¿Qué modelo Kling usa esta herramienta?",
+      "a": "La herramienta usa Kling 3.0 por defecto. Toolaze también incluye otras opciones Kling en el selector de modelos de video para comparar velocidad, coste, audio nativo o calidad."
+    },
+    {
+      "q": "¿Kling admite imagen a video?",
+      "a": "Sí. En Toolaze, Kling 3.0 admite texto a video e imagen a video. Usa imágenes cuando el sujeto, producto, personaje, outfit o primer fotograma deba guiar el clip."
+    },
+    {
+      "q": "¿Kling puede generar audio nativo?",
+      "a": "Kling 3.0 admite audio nativo a 720p y 1080p en los ajustes de modelo de Toolaze. Describe efectos, ambiente, diálogo o dirección musical en el prompt cuando el audio esté activado."
+    },
+    {
+      "q": "¿Cuántos créditos usa Kling?",
+      "a": "Kling 3.0 empieza desde 60+ créditos en Toolaze. El uso final depende de duración, resolución, audio nativo y la opción de modelo elegida."
+    },
+    {
+      "q": "¿Cómo consigo mejores prompts para Kling?",
+      "a": "Escribe un sujeto claro, una acción principal, una dirección de cámara y el formato final. Añade iluminación, sonido, lente y secuencia de tomas solo después de aclarar el movimiento principal."
+    }
+  ],
+  "moreTools": "Herramientas de video IA relacionadas",
+  "moreToolsLinks": [
+    {
+      "slug": "ai-video-generator",
+      "title": "Generador de video IA",
+      "description": "Abre el generador de video general cuando quieras comparar modelos compatibles más allá de Kling.",
+      "href": "/ai-video-generator"
+    },
+    {
+      "slug": "image-to-video-generator",
+      "title": "Generador de imagen a video",
+      "description": "Anima una foto de producto, retrato, arte o primer fotograma en un video corto con IA.",
+      "href": "/image-to-video-generator"
+    },
+    {
+      "slug": "kling-3",
+      "title": "Generador de video Kling 3.0",
+      "description": "Explora ajustes de Kling 3.0, opciones de entrada y rutas relacionadas de creación de video.",
+      "href": "/model/kling-3"
+    }
+  ],
+  "heroDemoVideo": {
+    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
+    "ariaLabel": "Video de demostración 16:9 para el generador de video IA Kling 3.0",
+    "width": 16,
+    "height": 9,
+    "sourceHistory": "Shared with /model/kling-3 hero demo · 16:9 · R2"
+  }
+}

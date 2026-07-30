@@ -1,0 +1,315 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "kling-ai-video-generator",
+  "topTool": {
+    "defaultMode": "text-to-video",
+    "displayName": "Kling AI動画ジェネレーター",
+    "modelId": "kling-3"
+  },
+  "metadata": {
+    "title": "Kling AI動画ジェネレーター オンライン | Toolaze",
+    "description": "Kling 3.0でテキストプロンプトや参照画像から短いAI動画を作成。Toolazeで映画的な動き、ネイティブ音声、4K出力、マルチショットプロンプトを試せます。"
+  },
+  "sectionsOrder": [
+    "modelIntro",
+    "performanceMetrics",
+    "modelSelectionGuide",
+    "promptExamples",
+    "howToUse",
+    "troubleshooting",
+    "scenes",
+    "features",
+    "faq"
+  ],
+  "hero": {
+    "h1": "<span class=\"text-gradient\">Kling AI動画ジェネレーター</span> オンライン",
+    "desc": "Toolazeでテキストまたは参照画像からKling 3.0動画を作成します。被写体、カメラ移動、ショット構成、音の方向を決めてから、長さ、比率、解像度、ネイティブ音声を調整します。"
+  },
+  "modelIntro": {
+    "title": "テキストや画像からKling 3.0動画を生成",
+    "modelName": "Kling AI動画ジェネレーター",
+    "modelType": "AI動画ツール",
+    "description": [
+      "Kling AI動画ジェネレーターは、ToolazeでKling 3.0をテキストから動画、または画像から動画として試せる作成ツールです。新しい場面を一から描くときはテキストを使い、商品、人物、最初のフレーム、視覚スタイルを保ちたいときは画像を使います。",
+      "Kling 3.0は3〜15秒、最大4枚の参照画像、720p〜4K、720pまたは1080pのネイティブ音声に対応する最も幅広い設定です。"
+    ],
+    "featureCards": [
+      {
+        "title": "テキストや画像からKling 3.0動画を生成",
+        "content": "Toolazeでテキストまたは参照画像からKling 3.0動画を作成します。被写体、カメラ移動、ショット構成、音の方向を決めてから、長さ、比率、解像度、ネイティブ音声を調整します。"
+      },
+      {
+        "title": "Kling 3.0",
+        "content": "Kling 3 Turboは4Kより速度を優先する場合に使います。5秒または10秒、最大2枚の参照画像、720p/1080p、ネイティブ音声に対応します。"
+      },
+      {
+        "title": "AI動画ツール",
+        "content": "Kling 2.6は720p/1080pとネイティブ音声に対応した信頼性のある5秒または10秒クリップ向けです。"
+      }
+    ]
+  },
+  "performanceMetrics": {
+    "title": "ToolazeのKling 3.0設定",
+    "metrics": [
+      {
+        "label": "入力モード",
+        "value": "テキストから動画、または画像から動画"
+      },
+      {
+        "label": "参照画像",
+        "value": "最大4枚"
+      },
+      {
+        "label": "長さ",
+        "value": "3〜15秒"
+      },
+      {
+        "label": "解像度",
+        "value": "720p、1080p、または4K"
+      },
+      {
+        "label": "ネイティブ音声",
+        "value": "720pと1080pで利用可能"
+      },
+      {
+        "label": "クレジット目安",
+        "value": "選択した設定により60+クレジットから"
+      }
+    ]
+  },
+  "modelSelectionGuide": {
+    "title": "ToolazeでKlingモデルを比較",
+    "subtitle": "Kling 3.0、Kling 3 Turbo、以前のKlingオプションを、解像度、速度、音声、参照画像数、クレジット水準で選べます。",
+    "items": [
+      {
+        "title": "Kling 3.0",
+        "badge": "このページの標準",
+        "logoSrc": "/model-logos/kling.svg",
+        "logoAlt": "Kling",
+        "desc": "Kling 3.0は3〜15秒、最大4枚の参照画像、720p〜4K、720pまたは1080pのネイティブ音声に対応する最も幅広い設定です。",
+        "prompt": "洗練されたSNSクリップ、商品広告、絵コンテ、高解像度ドラフト、ネイティブ音声付きの場面に適しています。"
+      },
+      {
+        "title": "Kling 3 Turbo",
+        "badge": "高速なネイティブ音声ドラフト",
+        "logoSrc": "/model-logos/kling.svg",
+        "logoAlt": "Kling",
+        "desc": "Kling 3 Turboは4Kより速度を優先する場合に使います。5秒または10秒、最大2枚の参照画像、720p/1080p、ネイティブ音声に対応します。",
+        "prompt": "プロンプト探索、素早いクリエイティブ方向確認、音の手がかりを含む短い場面に適しています。"
+      },
+      {
+        "title": "Kling 2.6",
+        "badge": "効率的な音声オプション",
+        "logoSrc": "/model-logos/kling.svg",
+        "logoAlt": "Kling",
+        "desc": "Kling 2.6は720p/1080pとネイティブ音声に対応した信頼性のある5秒または10秒クリップ向けです。",
+        "prompt": "低クレジットのKlingテスト、シンプルな絵コンテ、4K不要の音声付きドラフトに適しています。"
+      },
+      {
+        "title": "Kling 2.5 Turbo Pro",
+        "badge": "1080pの視覚ドラフト",
+        "logoSrc": "/model-logos/kling.svg",
+        "logoAlt": "Kling",
+        "desc": "Kling 2.5 Turbo Proはネイティブ音声なしの1080p視覚ドラフト向けです。",
+        "prompt": "動きの確認、商品モーション、わかりやすい視覚反復に適しています。"
+      },
+      {
+        "title": "Kling 2.1 Master",
+        "badge": "実績ある1080pオプション",
+        "logoSrc": "/model-logos/kling.svg",
+        "logoAlt": "Kling",
+        "desc": "Kling 2.1 Masterは安定性を重視する旧世代1080p視覚生成向けです。",
+        "prompt": "制御しやすい短いクリップや、以前のMasterオプションを優先したい場合に適しています。"
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "Kling AI動画プロンプト例",
+    "subtitle": "この4つの構成で、動き、カメラ制御、音声方向、参照画像に基づく生成を試せます。",
+    "items": [
+      {
+        "title": "映画的な商品リビール",
+        "prompt": "A premium black smartwatch rests on a reflective glass surface. Slow 6-shot commercial sequence: macro crown detail, side profile, screen glow, strap texture, water droplets sliding off, final hero angle. Clean studio lighting, smooth dolly movement, subtle electronic sound design.",
+        "note": "商品ディテール、カメラカット、反射、音の雰囲気を試すのに向いています。",
+        "color": "linear-gradient(135deg, #111827, #6366f1)"
+      },
+      {
+        "title": "夜の都市を走る車の場面",
+        "prompt": "A sleek electric car crosses a rain-soaked downtown bridge at night. Cinematic tracking shot with tire spray, neon reflections, mist, realistic headlights, dramatic 4K lighting, low camera angle, synchronized rain and road ambience.",
+        "note": "動き、反射面、天候、高解像度出力を試すのに向いています。",
+        "color": "linear-gradient(135deg, #0f172a, #0ea5e9)"
+      },
+      {
+        "title": "縦型ライフスタイルショート",
+        "prompt": "Vertical 9:16 video of a creator opening a compact travel camera in a bright apartment. Start with hands unboxing, cut to lens close-up, then show the creator smiling near a window. Natural handheld movement, warm daylight, soft room tone, social media pacing.",
+        "note": "短尺クリエイター動画とモバイル向け構図を試すのに向いています。",
+        "color": "linear-gradient(135deg, #8b5cf6, #ec4899)"
+      },
+      {
+        "title": "画像ガイド付きファッション動画",
+        "prompt": "Animate the uploaded fashion portrait into a graceful editorial video. Preserve the face, outfit color, pose, and background palette. Add a slow camera push-in, subtle fabric movement, soft hair motion, studio fan effect, elegant lighting, and clean cinematic texture.",
+        "note": "人物の同一性、衣装、スタイルを保つ画像から動画のテストに向いています。",
+        "color": "linear-gradient(135deg, #4f46e5, #22c55e)"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Kling AI動画ジェネレーターの使い方",
+    "steps": [
+      {
+        "title": "開始モードを選ぶ",
+        "desc": "新しい場面はテキストから動画、商品・人物・構図・最初のフレームを保ちたい場合は画像から動画を使います。"
+      },
+      {
+        "title": "場面の方向を明確に書く",
+        "desc": "被写体、動作、カメラ移動、ショット数、光、ムード、音、比率、最終用途を説明します。"
+      },
+      {
+        "title": "Kling設定を選ぶ",
+        "desc": "長さ、アスペクト比、解像度、ネイティブ音声を選びます。高解像度に多くのクレジットを使う前に短いドラフトで確認します。"
+      },
+      {
+        "title": "生成して調整する",
+        "desc": "動きの安定性、被写体の一貫性、音声同期、フレーミングを確認し、必要に応じてプロンプトを簡略化または拡張します。"
+      }
+    ]
+  },
+  "troubleshooting": {
+    "title": "Kling動画の結果を改善する",
+    "subtitle": "弱い結果の多くは、詰め込みすぎたプロンプト、不明確なカメラ移動、短いクリップ内の多すぎる動作から生まれます。",
+    "items": [
+      {
+        "title": "動きが不安定に見える",
+        "badge": "主動作を一つに絞る",
+        "color": "linear-gradient(135deg, #4f46e5, #818cf8)",
+        "desc": "追加ショットの詳細を入れる前に、被写体の動作を一つ、カメラ移動を一つに絞ります。",
+        "prompt": "例: ゆっくり寄るカメラ移動、中央の被写体、速いカットなし。"
+      },
+      {
+        "title": "音声が合わない",
+        "badge": "音を具体的に書く",
+        "color": "linear-gradient(135deg, #0f172a, #22c55e)",
+        "desc": "ネイティブ音声を使うときは、正確な音源を説明し、不要な背景音を取り除きます。",
+        "prompt": "例: 金属に当たる雨音、静かな都市の環境音、音楽なし、会話なし。"
+      },
+      {
+        "title": "参照ディテールがずれる",
+        "badge": "具体点を保つ",
+        "color": "linear-gradient(135deg, #7c3aed, #c084fc)",
+        "desc": "画像から動画では、固定したい顔、ロゴ、商品形状、服の色、カメラ角度を明記します。",
+        "prompt": "例: 正面ラベル、銀色キャップ、黒い袖、斜め四分の三の角度を維持。"
+      },
+      {
+        "title": "クリップが平凡に見える",
+        "badge": "ショット表現を足す",
+        "color": "linear-gradient(135deg, #f59e0b, #ec4899)",
+        "desc": "レンズ表現、ショット順、照明、被写体の演技、出力形式を指定してKlingに明確な方向を与えます。",
+        "prompt": "例: マクロの導入、ローアングルの追従、最後のヒーローフレーム、映画的な商品広告スタイル。"
+      }
+    ]
+  },
+  "scenesTitle": "Kling AI動画の主な活用例",
+  "scenes": [
+    {
+      "title": "商品広告とEC向けモーション",
+      "desc": "商品コンセプト、パッケージ、広告ブリーフを、明確なカメラ移動と上質な照明の短い映画的動画に変換します。"
+    },
+    {
+      "title": "SNS向けショート動画",
+      "desc": "TikTok、Reels、Shorts、クリエイター投稿向けに、テンポを制御した縦型9:16クリップを作成します。"
+    },
+    {
+      "title": "絵コンテとプリプロダクション",
+      "desc": "撮影やクライアント確認の前に、ショット順、カメラ移動、照明、演技の流れを試作します。"
+    },
+    {
+      "title": "音楽とネイティブ音声のテスト",
+      "desc": "環境音、台詞の手がかり、効果音、音楽的なタイミングを映像と合わせて設計する場面を試します。"
+    },
+    {
+      "title": "ファッションとポートレートの動き",
+      "desc": "画像から動画でポートレート、衣装、エディトリアルポーズ、キャンペーン静止画を元の雰囲気を保ちながら動かします。"
+    },
+    {
+      "title": "映画的な環境クリップ",
+      "desc": "天候、照明、風景の動き、都市の反射、雰囲気あるカメラパスを含むムードショットを作ります。"
+    }
+  ],
+  "features": {
+    "title": "ToolazeでKling動画を作る理由",
+    "items": [
+      {
+        "iconType": "easy",
+        "title": "Klingが最初から選択済み",
+        "desc": "Kling 3.0が最初から選ばれているため、すぐにプロンプト、参照画像、出力設定へ集中できます。"
+      },
+      {
+        "iconType": "browser",
+        "title": "ブラウザで作成",
+        "desc": "テキストプロンプト、参照画像、動画設定、履歴、ダウンロードをブラウザ内で直接使えます。"
+      },
+      {
+        "iconType": "speed",
+        "title": "高品質生成の前にドラフト確認",
+        "desc": "短い、または低解像度のテストから始め、動き、構図、音の方向が合ってから品質を上げられます。"
+      }
+    ]
+  },
+  "faqTitle": "Kling AI動画ジェネレーターのよくある質問",
+  "faq": [
+    {
+      "q": "Kling AI動画ジェネレーターとは何ですか？",
+      "a": "Kling 3.0を標準選択したToolazeの動画生成ツールです。テキストプロンプトや参照画像から動画を作成し、長さ、比率、解像度、ネイティブ音声などを調整できます。"
+    },
+    {
+      "q": "このジェネレーターはどのKlingモデルを使いますか？",
+      "a": "標準ではKling 3.0を使います。Toolazeの動画モデル選択には他のKlingオプションもあり、速度、コスト、ネイティブ音声、品質設定を比較できます。"
+    },
+    {
+      "q": "Klingは画像から動画に対応していますか？",
+      "a": "はい。ToolazeのKling 3.0はテキストから動画と画像から動画に対応します。被写体、商品、キャラクター、衣装、最初のフレームで動画を導きたいときは画像入力を使います。"
+    },
+    {
+      "q": "Klingはネイティブ音声を生成できますか？",
+      "a": "Toolazeのモデル設定では、Kling 3.0は720pと1080pでネイティブ音声に対応します。音声を有効にする場合は効果音、環境音、台詞の手がかり、音楽方向をプロンプト内に書きます。"
+    },
+    {
+      "q": "Klingは何クレジット必要ですか？",
+      "a": "ToolazeではKling 3.0は60+クレジットからです。最終的な使用量は、長さ、解像度、ネイティブ音声、選択したモデルオプションによって変わります。"
+    },
+    {
+      "q": "Kling動画プロンプトを良くするには？",
+      "a": "明確な被写体、一つの主動作、一つのカメラ方向、最終形式を書きます。中心となる動きが明確になってから、照明、音、レンズ、ショット順を追加します。"
+    }
+  ],
+  "moreTools": "関連するAI動画ツール",
+  "moreToolsLinks": [
+    {
+      "slug": "ai-video-generator",
+      "title": "AI動画ジェネレーター",
+      "description": "Kling以外の対応動画モデルも比較したいときは、より広い動画ジェネレーターを開きます。",
+      "href": "/ai-video-generator"
+    },
+    {
+      "slug": "image-to-video-generator",
+      "title": "画像から動画ジェネレーター",
+      "description": "商品写真、ポートレート、アート、最初のフレームを短いAI動画へアニメーション化します。",
+      "href": "/image-to-video-generator"
+    },
+    {
+      "slug": "kling-3",
+      "title": "Kling 3.0動画ジェネレーター",
+      "description": "Kling 3.0の設定、入力方式、関連する動画作成導線を確認できます。",
+      "href": "/model/kling-3"
+    }
+  ],
+  "heroDemoVideo": {
+    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
+    "ariaLabel": "Kling 3.0 AI動画ジェネレーターの16:9デモ動画",
+    "width": 16,
+    "height": 9,
+    "sourceHistory": "Shared with /model/kling-3 hero demo · 16:9 · R2"
+  }
+}

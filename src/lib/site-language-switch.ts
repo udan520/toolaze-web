@@ -42,6 +42,7 @@ export const TOOL_SUPPORTED_LOCALES: Record<string, readonly string[]> = {
   'photo-restoration': ALL_LOCALE_CODES,
   'ai-image-generator': ALL_LOCALE_CODES,
   'ai-video-generator': ALL_LOCALE_CODES,
+  'kling-ai-video-generator': ALL_LOCALE_CODES,
   'text-to-image-generator': ALL_LOCALE_CODES,
   'ai-image-to-image-generator': ALL_LOCALE_CODES,
   'world-cup-ai-image-generator': ALL_LOCALE_CODES,

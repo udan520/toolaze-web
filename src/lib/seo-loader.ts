@@ -831,6 +831,8 @@ export async function getL2SeoContent(tool: string, locale: string = 'en') {
         data = await importL2FlatJson('gpt-image-2', normalizedLocale)
       } else if (tool === 'ai-video-generator') {
         data = await importL2FlatJson('ai-video-generator', normalizedLocale)
+      } else if (tool === 'kling-ai-video-generator') {
+        data = await importL2FlatJson('kling-ai-video-generator', normalizedLocale)
       } else if (tool === 'image-to-video-generator') {
         data = await importL2FlatJson('image-to-video-generator', normalizedLocale)
       } else if (tool === 'text-to-video-generator') {
@@ -892,6 +894,8 @@ export async function getL2SeoContent(tool: string, locale: string = 'en') {
             data = await import('@/data/en/gpt-image-2.json')
           } else if (tool === 'ai-video-generator') {
             data = await import('@/data/en/ai-video-generator.json')
+          } else if (tool === 'kling-ai-video-generator') {
+            data = await import('@/data/en/kling-ai-video-generator.json')
           } else if (tool === 'text-to-video-generator') {
             data = await import('@/data/en/text-to-video-generator.json')
           } else if (tool === 'wan-2-5-ai-video-generator') {

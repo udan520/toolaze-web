@@ -1,4 +1,5 @@
 import { getL2SeoContent, getAllSlugs, loadCommonTranslations, getSeoContent, VIDEO_MODEL_L2S, IMAGE_MODEL_L2S } from '@/lib/seo-loader'
+import { AI_VIDEO_GENERATOR_MODEL_OPTIONS, type AiVideoGeneratorModelId } from '@/lib/ai-video-generator-config'
 import { filterPaymentReviewSections, shouldRenderPaymentReviewSocialProofSection } from '@/lib/payment-review-visibility'
 import { localizeLinksInObject } from '@/lib/localize-links'
 import { isSiteLocaleCode } from '@/lib/site-language-switch'
@@ -38,13 +39,15 @@ interface ToolL2PageContentProps {
 }
 
 const AI_IMAGE_TOOL_TOP_COMPONENTS = new Set(['gpt-image-2'])
-const VIDEO_GENERATOR_DEFAULT_MODELS = {
+const VIDEO_GENERATOR_DEFAULT_MODELS: Record<string, AiVideoGeneratorModelId> = {
   'ai-video-generator': 'grok-1-5-video',
   'ai-asmr-video-generator': 'grok-1-5-video',
   'wan-2-5-ai-video-generator': 'wan-2-5',
+  'kling-ai-video-generator': 'kling-3',
   'seedance-2': 'seedance-2',
   'kling-3': 'kling-3',
-} as const
+}
+const VIDEO_GENERATOR_MODEL_IDS = new Set<string>(AI_VIDEO_GENERATOR_MODEL_OPTIONS.map((model) => model.id))
 type TopToolImageModelId =
   | 'gpt-image-2'
   | 'grok-1-5-image'
@@ -77,6 +80,12 @@ function getTopToolImageModelId(modelId: unknown, fallback: 'gpt-image-2'): TopT
   return typeof modelId === 'string' && TOP_TOOL_IMAGE_MODEL_IDS.has(modelId)
     ? modelId as TopToolImageModelId
     : fallback
+}
+
+function getTopToolVideoModelId(modelId: unknown): AiVideoGeneratorModelId | undefined {
+  return typeof modelId === 'string' && VIDEO_GENERATOR_MODEL_IDS.has(modelId)
+    ? modelId as AiVideoGeneratorModelId
+    : undefined
 }
 
 function getLocalizedContentHref(href: string | undefined, locale: string): string {
@@ -514,7 +523,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
 
     // 顶部功能：优先使用 JSON 中的 topComponent，否则用 tool
     const topComp = (content.topComponent || tool) as string
-    const videoGeneratorDefaultModel = VIDEO_GENERATOR_DEFAULT_MODELS[topComp as keyof typeof VIDEO_GENERATOR_DEFAULT_MODELS]
+    const videoGeneratorDefaultModel = getTopToolVideoModelId(content.topTool?.modelId) || VIDEO_GENERATOR_DEFAULT_MODELS[topComp]
     const configuredVideoMode = content.topTool?.defaultMode || content.topTool?.mode
     const videoGeneratorDefaultMode =
       configuredVideoMode === 'image-to-video' || configuredVideoMode === 'text-to-video'

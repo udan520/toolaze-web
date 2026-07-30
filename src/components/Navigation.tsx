@@ -66,6 +66,7 @@ const defaultNavTranslations = {
   aiImageToImageGenerator: 'AI Image to Image Generator',
   aiVideo: 'AI Video',
   aiVideoGenerator: 'AI Video Generator',
+  klingAiVideoGenerator: 'Kling AI Video Generator',
   textToVideoGenerator: 'Text to Video Generator',
   imageToVideoGenerator: 'Image to Video Generator',
   grok15Video: 'Grok 1.5 Video',
@@ -2073,6 +2074,14 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                   <span>{navTranslations.kling3 || defaultNavTranslations.kling3}</span>
                 </Link>
                 <Link
+                  href={getLocalizedHref('/kling-ai-video-generator')}
+                  onClick={() => setOpenDesktopMenu(null)}
+                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
+                >
+                  <img src="/model-logos/kling.svg" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
+                  <span>{navTranslations.klingAiVideoGenerator || defaultNavTranslations.klingAiVideoGenerator}</span>
+                </Link>
+                <Link
                   href={getLocalizedHref('/model/grok-imagine-video-1-5')}
                   onClick={() => setOpenDesktopMenu(null)}
                   className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
@@ -2616,6 +2625,17 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                   >
                     <img src="/model-logos/kling.svg" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
                     <span>{navTranslations.kling3 || defaultNavTranslations.kling3}</span>
+                  </Link>
+                  <Link
+                    href={getLocalizedHref('/kling-ai-video-generator')}
+                    onClick={() => {
+                      setMobileMenuOpen(false)
+                      setExpandedSubmenus(new Set())
+                    }}
+                    className="flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
+                  >
+                    <img src="/model-logos/kling.svg" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
+                    <span>{navTranslations.klingAiVideoGenerator || defaultNavTranslations.klingAiVideoGenerator}</span>
                   </Link>
                   <Link
                     href={getLocalizedHref('/model/grok-imagine-video-1-5')}

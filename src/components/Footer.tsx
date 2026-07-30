@@ -35,6 +35,7 @@ const defaultTranslations = {
   aiImageModel: 'AI Image Model',
   aiVideoModel: 'AI Video Model',
   aiVideoGenerator: 'AI Video Generator',
+  klingAiVideoGenerator: 'Kling AI Video Generator',
   textToVideoGenerator: 'Text to Video Generator',
   imageToVideoGenerator: 'Image to Video Generator',
   grok15Video: 'Grok 1.5 Video',
@@ -402,6 +403,14 @@ export default function Footer({ initialTranslations }: FooterProps = {}) {
                   className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
                 >
                   {translations.kling3 || 'Kling 3.0'}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={getLocalizedHref('/kling-ai-video-generator')}
+                  className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
+                >
+                  {translations.klingAiVideoGenerator || 'Kling AI Video Generator'}
                 </Link>
               </li>
             </ul>

@@ -1,0 +1,315 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "kling-ai-video-generator",
+  "topTool": {
+    "defaultMode": "text-to-video",
+    "displayName": "Kling AI 동영상 생성기",
+    "modelId": "kling-3"
+  },
+  "metadata": {
+    "title": "Kling AI 동영상 생성기 온라인 | Toolaze",
+    "description": "Kling 3.0으로 텍스트 프롬프트나 참조 이미지에서 짧은 AI 동영상을 만드세요. Toolaze에서 시네마틱 모션, 네이티브 오디오, 4K 출력, 멀티샷 프롬프트를 테스트할 수 있습니다."
+  },
+  "sectionsOrder": [
+    "modelIntro",
+    "performanceMetrics",
+    "modelSelectionGuide",
+    "promptExamples",
+    "howToUse",
+    "troubleshooting",
+    "scenes",
+    "features",
+    "faq"
+  ],
+  "hero": {
+    "h1": "<span class=\"text-gradient\">Kling AI 동영상 생성기</span> 온라인",
+    "desc": "Toolaze에서 텍스트나 참조 이미지로 Kling 3.0 동영상을 만드세요. 주제, 카메라 이동, 샷 순서, 사운드 방향을 정한 뒤 길이, 비율, 해상도, 네이티브 오디오를 조정합니다."
+  },
+  "modelIntro": {
+    "title": "텍스트 또는 이미지로 Kling 3.0 동영상 생성",
+    "modelName": "Kling AI 동영상 생성기",
+    "modelType": "AI 동영상 도구",
+    "description": [
+      "Kling AI 동영상 생성기는 Toolaze에서 Kling 3.0을 텍스트-동영상 또는 이미지-동영상 방식으로 테스트할 수 있게 합니다. 완전한 장면을 처음부터 설명하려면 텍스트를 사용하고, 제품, 인물, 첫 프레임 또는 시각 스타일이 결과를 이끌어야 하면 이미지를 사용하세요.",
+      "Kling 3.0은 3~15초, 최대 4개의 참조 이미지, 720p~4K 출력, 720p 또는 1080p 네이티브 오디오를 지원하는 가장 넓은 설정입니다."
+    ],
+    "featureCards": [
+      {
+        "title": "텍스트 또는 이미지로 Kling 3.0 동영상 생성",
+        "content": "Toolaze에서 텍스트나 참조 이미지로 Kling 3.0 동영상을 만드세요. 주제, 카메라 이동, 샷 순서, 사운드 방향을 정한 뒤 길이, 비율, 해상도, 네이티브 오디오를 조정합니다."
+      },
+      {
+        "title": "Kling 3.0",
+        "content": "Kling 3 Turbo는 4K보다 속도가 중요할 때 사용하며 5초 또는 10초, 최대 2개 참조 이미지, 720p/1080p, 네이티브 오디오를 지원합니다."
+      },
+      {
+        "title": "AI 동영상 도구",
+        "content": "Kling 2.6은 720p 또는 1080p와 네이티브 오디오가 필요한 안정적인 5초/10초 클립에 적합합니다."
+      }
+    ]
+  },
+  "performanceMetrics": {
+    "title": "Toolaze의 Kling 3.0 설정",
+    "metrics": [
+      {
+        "label": "입력 모드",
+        "value": "텍스트-동영상 또는 이미지-동영상"
+      },
+      {
+        "label": "참조 이미지",
+        "value": "최대 4장"
+      },
+      {
+        "label": "길이",
+        "value": "3~15초"
+      },
+      {
+        "label": "해상도",
+        "value": "720p, 1080p 또는 4K"
+      },
+      {
+        "label": "네이티브 오디오",
+        "value": "720p 및 1080p에서 사용 가능"
+      },
+      {
+        "label": "크레딧 예상치",
+        "value": "선택한 설정에 따라 60+ 크레딧부터"
+      }
+    ]
+  },
+  "modelSelectionGuide": {
+    "title": "Toolaze에서 Kling 모델 비교",
+    "subtitle": "해상도, 속도, 오디오 지원, 참조 수, 크레딧 수준에 따라 Kling 3.0, Kling 3 Turbo, 이전 Kling 옵션을 선택하세요.",
+    "items": [
+      {
+        "title": "Kling 3.0",
+        "badge": "이 페이지 기본값",
+        "logoSrc": "/model-logos/kling.svg",
+        "logoAlt": "Kling",
+        "desc": "Kling 3.0은 3~15초, 최대 4개의 참조 이미지, 720p~4K 출력, 720p 또는 1080p 네이티브 오디오를 지원하는 가장 넓은 설정입니다.",
+        "prompt": "완성도 높은 소셜 클립, 제품 광고, 스토리보드, 고해상도 초안, 네이티브 오디오 장면에 사용하세요."
+      },
+      {
+        "title": "Kling 3 Turbo",
+        "badge": "빠른 네이티브 오디오 초안",
+        "logoSrc": "/model-logos/kling.svg",
+        "logoAlt": "Kling",
+        "desc": "Kling 3 Turbo는 4K보다 속도가 중요할 때 사용하며 5초 또는 10초, 최대 2개 참조 이미지, 720p/1080p, 네이티브 오디오를 지원합니다.",
+        "prompt": "프롬프트 탐색, 빠른 크리에이티브 방향 확인, 소리 단서가 있는 짧은 장면에 사용하세요."
+      },
+      {
+        "title": "Kling 2.6",
+        "badge": "효율적인 오디오 옵션",
+        "logoSrc": "/model-logos/kling.svg",
+        "logoAlt": "Kling",
+        "desc": "Kling 2.6은 720p 또는 1080p와 네이티브 오디오가 필요한 안정적인 5초/10초 클립에 적합합니다.",
+        "prompt": "낮은 크레딧의 Kling 테스트, 단순한 스토리보드, 4K가 필요 없는 오디오 초안에 사용하세요."
+      },
+      {
+        "title": "Kling 2.5 Turbo Pro",
+        "badge": "1080p 시각 초안",
+        "logoSrc": "/model-logos/kling.svg",
+        "logoAlt": "Kling",
+        "desc": "Kling 2.5 Turbo Pro는 네이티브 오디오 없는 1080p 시각 초안에 적합합니다.",
+        "prompt": "모션 확인, 제품 움직임, 간단한 시각 반복 작업에 사용하세요."
+      },
+      {
+        "title": "Kling 2.1 Master",
+        "badge": "검증된 1080p 옵션",
+        "logoSrc": "/model-logos/kling.svg",
+        "logoAlt": "Kling",
+        "desc": "Kling 2.1 Master는 최신 옵션보다 일관성을 우선할 때 쓰는 기존 1080p 시각 생성 옵션입니다.",
+        "prompt": "제어된 짧은 클립이나 이전 Master 옵션이 더 적합한 경우에 사용하세요."
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "Kling AI 동영상 프롬프트 예시",
+    "subtitle": "이 네 가지 구조로 움직임, 카메라 제어, 오디오 방향, 참조 기반 생성을 테스트하세요.",
+    "items": [
+      {
+        "title": "시네마틱 제품 공개",
+        "prompt": "A premium black smartwatch rests on a reflective glass surface. Slow 6-shot commercial sequence: macro crown detail, side profile, screen glow, strap texture, water droplets sliding off, final hero angle. Clean studio lighting, smooth dolly movement, subtle electronic sound design.",
+        "note": "제품 디테일, 카메라 컷, 반사, 오디오 분위기를 테스트하기 좋습니다.",
+        "color": "linear-gradient(135deg, #111827, #6366f1)"
+      },
+      {
+        "title": "도심 야간 자동차 장면",
+        "prompt": "A sleek electric car crosses a rain-soaked downtown bridge at night. Cinematic tracking shot with tire spray, neon reflections, mist, realistic headlights, dramatic 4K lighting, low camera angle, synchronized rain and road ambience.",
+        "note": "움직임, 반사 표면, 날씨, 고해상도 출력을 테스트하기 좋습니다.",
+        "color": "linear-gradient(135deg, #0f172a, #0ea5e9)"
+      },
+      {
+        "title": "세로형 라이프스타일 쇼트",
+        "prompt": "Vertical 9:16 video of a creator opening a compact travel camera in a bright apartment. Start with hands unboxing, cut to lens close-up, then show the creator smiling near a window. Natural handheld movement, warm daylight, soft room tone, social media pacing.",
+        "note": "짧은 크리에이터 콘텐츠와 모바일 프레이밍을 테스트하기 좋습니다.",
+        "color": "linear-gradient(135deg, #8b5cf6, #ec4899)"
+      },
+      {
+        "title": "이미지 기반 패션 모션",
+        "prompt": "Animate the uploaded fashion portrait into a graceful editorial video. Preserve the face, outfit color, pose, and background palette. Add a slow camera push-in, subtle fabric movement, soft hair motion, studio fan effect, elegant lighting, and clean cinematic texture.",
+        "note": "정체성, 의상, 스타일을 안정적으로 유지해야 하는 이미지-동영상 테스트에 좋습니다.",
+        "color": "linear-gradient(135deg, #4f46e5, #22c55e)"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Kling AI 동영상 생성기 사용 방법",
+    "steps": [
+      {
+        "title": "시작 모드 선택",
+        "desc": "새 장면은 텍스트-동영상을 사용하고, 제품, 인물, 구성 또는 첫 프레임이 결과를 이끌어야 하면 이미지-동영상을 사용하세요."
+      },
+      {
+        "title": "명확한 장면 방향 작성",
+        "desc": "주제, 동작, 카메라 움직임, 샷 수, 조명, 분위기, 소리, 화면비, 최종 용도를 설명하세요."
+      },
+      {
+        "title": "Kling 설정 선택",
+        "desc": "길이, 화면비, 해상도, 네이티브 오디오를 선택하세요. 고해상도에 더 많은 크레딧을 쓰기 전에 짧은 초안으로 시작하세요."
+      },
+      {
+        "title": "생성 후 다듬기",
+        "desc": "움직임 안정성, 주제 일관성, 오디오 동기화, 프레이밍을 확인한 뒤 개선할 부분에 맞춰 프롬프트를 단순화하거나 확장하세요."
+      }
+    ]
+  },
+  "troubleshooting": {
+    "title": "Kling 동영상 결과 개선",
+    "subtitle": "약한 결과는 대개 복잡한 프롬프트, 불명확한 카메라 움직임, 짧은 클립 안의 과도한 동작에서 나옵니다.",
+    "items": [
+      {
+        "title": "움직임이 불안정해 보임",
+        "badge": "주요 동작 하나 사용",
+        "color": "linear-gradient(135deg, #4f46e5, #818cf8)",
+        "desc": "추가 샷 디테일을 넣기 전에 주제 동작 하나와 카메라 움직임 하나로 줄이세요.",
+        "prompt": "예: 느린 푸시인 카메라, 중앙의 피사체, 빠른 컷 없음."
+      },
+      {
+        "title": "오디오가 맞지 않음",
+        "badge": "소리 이름 지정",
+        "color": "linear-gradient(135deg, #0f172a, #22c55e)",
+        "desc": "네이티브 오디오를 켰다면 정확한 소리 원천을 설명하고 원하지 않는 배경음을 제거하세요.",
+        "prompt": "예: 금속 위에 떨어지는 빗소리, 조용한 도시 분위기, 음악 없음, 대사 없음."
+      },
+      {
+        "title": "참조 디테일이 달라짐",
+        "badge": "구체 요소 유지",
+        "color": "linear-gradient(135deg, #7c3aed, #c084fc)",
+        "desc": "이미지-동영상에서는 안정적으로 유지할 얼굴, 로고, 제품 형태, 의상 색, 카메라 각도를 명시하세요.",
+        "prompt": "예: 전면 라벨, 은색 캡, 검은 소매, 3/4 카메라 각도 유지."
+      },
+      {
+        "title": "클립이 평범해 보임",
+        "badge": "샷 언어 추가",
+        "color": "linear-gradient(135deg, #f59e0b, #ec4899)",
+        "desc": "렌즈 스타일, 샷 순서, 조명, 주제 연기, 출력 형식을 지정해 Kling에 더 강한 방향을 주세요.",
+        "prompt": "예: 매크로 오프닝 샷, 낮은 각도 트래킹 샷, 최종 히어로 프레임, 시네마틱 제품 광고 스타일."
+      }
+    ]
+  },
+  "scenesTitle": "Kling AI 동영상 주요 활용 사례",
+  "scenes": [
+    {
+      "title": "제품 광고와 이커머스 모션",
+      "desc": "제품 콘셉트, 패키징 샷, 광고 브리프를 명확한 카메라 움직임과 프리미엄 조명이 있는 짧은 시네마틱 영상으로 바꾸세요."
+    },
+    {
+      "title": "소셜 미디어 쇼츠",
+      "desc": "TikTok, Reels, Shorts, 크리에이터 게시물용 세로 9:16 클립을 제어된 속도와 빠른 시각 후킹으로 만드세요."
+    },
+    {
+      "title": "스토리보드와 프리프로덕션",
+      "desc": "실제 촬영이나 고객 검토 전에 샷 순서, 카메라 움직임, 조명, 퍼포먼스 비트를 프로토타입하세요."
+    },
+    {
+      "title": "음악과 네이티브 오디오 테스트",
+      "desc": "분위기음, 대사 단서, 효과음, 음악적 타이밍을 영상과 함께 설계해야 하는 장면을 테스트하세요."
+    },
+    {
+      "title": "패션과 포트레이트 모션",
+      "desc": "이미지-동영상으로 초상, 의상, 에디토리얼 포즈, 캠페인 스틸을 원본 느낌을 보존하며 움직이세요."
+    },
+    {
+      "title": "시네마틱 환경 클립",
+      "desc": "날씨, 조명, 풍경 움직임, 도시 반사, 분위기 있는 카메라 경로가 있는 무드 샷을 만드세요."
+    }
+  ],
+  "features": {
+    "title": "Toolaze에서 Kling 동영상을 만드는 이유",
+    "items": [
+      {
+        "iconType": "easy",
+        "title": "Kling이 기본 선택됨",
+        "desc": "Kling 3.0이 기본 선택되어 프롬프트, 참조, 출력 설정에 바로 집중할 수 있습니다."
+      },
+      {
+        "iconType": "browser",
+        "title": "브라우저에서 제작",
+        "desc": "텍스트 프롬프트, 참조 이미지, 동영상 설정, 기록, 다운로드를 브라우저에서 바로 사용할 수 있습니다."
+      },
+      {
+        "iconType": "speed",
+        "title": "고품질 실행 전 초안 확인",
+        "desc": "짧거나 낮은 해상도 테스트로 시작하고, 움직임, 프레이밍, 사운드 방향이 맞으면 품질을 높이세요."
+      }
+    ]
+  },
+  "faqTitle": "Kling AI 동영상 생성기 FAQ",
+  "faq": [
+    {
+      "q": "Kling AI 동영상 생성기란 무엇인가요?",
+      "a": "Kling 3.0이 기본 선택된 Toolaze 동영상 생성기입니다. 텍스트 프롬프트나 참조 이미지로 동영상을 만들고 길이, 화면비, 해상도, 네이티브 오디오를 조정할 수 있습니다."
+    },
+    {
+      "q": "이 생성기는 어떤 Kling 모델을 사용하나요?",
+      "a": "기본값은 Kling 3.0입니다. Toolaze에는 속도, 비용, 네이티브 오디오, 품질 설정을 비교할 수 있도록 다른 Kling 옵션도 동영상 모델 선택기에 포함되어 있습니다."
+    },
+    {
+      "q": "Kling은 이미지-동영상을 지원하나요?",
+      "a": "네. Toolaze에서 Kling 3.0은 텍스트-동영상과 이미지-동영상을 지원합니다. 주제, 제품, 캐릭터, 의상 또는 첫 프레임이 클립을 이끌어야 할 때 이미지 입력을 사용하세요."
+    },
+    {
+      "q": "Kling은 네이티브 오디오를 생성할 수 있나요?",
+      "a": "Toolaze 모델 설정에서 Kling 3.0은 720p와 1080p에서 네이티브 오디오를 지원합니다. 오디오를 켰다면 효과음, 분위기, 대사 단서, 음악 방향을 프롬프트에 직접 설명하세요."
+    },
+    {
+      "q": "Kling은 크레딧을 얼마나 사용하나요?",
+      "a": "Toolaze에서 Kling 3.0은 60+ 크레딧부터 시작합니다. 최종 사용량은 길이, 해상도, 네이티브 오디오, 선택한 모델 옵션에 따라 달라집니다."
+    },
+    {
+      "q": "더 좋은 Kling 동영상 프롬프트는 어떻게 쓰나요?",
+      "a": "명확한 주제, 하나의 주요 동작, 하나의 카메라 방향, 최종 형식을 쓰세요. 핵심 움직임이 분명해진 뒤 조명, 소리, 렌즈 스타일, 샷 순서를 추가하세요."
+    }
+  ],
+  "moreTools": "관련 AI 동영상 도구",
+  "moreToolsLinks": [
+    {
+      "slug": "ai-video-generator",
+      "title": "AI 동영상 생성기",
+      "description": "Kling 외의 지원 동영상 모델을 비교하고 싶을 때 더 넓은 동영상 생성기를 여세요.",
+      "href": "/ai-video-generator"
+    },
+    {
+      "slug": "image-to-video-generator",
+      "title": "이미지-동영상 생성기",
+      "description": "제품 사진, 초상화, 아트워크 또는 첫 프레임을 짧은 AI 동영상으로 움직이세요.",
+      "href": "/image-to-video-generator"
+    },
+    {
+      "slug": "kling-3",
+      "title": "Kling 3.0 동영상 생성기",
+      "description": "Kling 3.0 설정, 입력 옵션, 관련 동영상 제작 경로를 살펴보세요.",
+      "href": "/model/kling-3"
+    }
+  ],
+  "heroDemoVideo": {
+    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
+    "ariaLabel": "Kling 3.0 AI 동영상 생성기용 16:9 데모 동영상",
+    "width": 16,
+    "height": 9,
+    "sourceHistory": "Shared with /model/kling-3 hero demo · 16:9 · R2"
+  }
+}
