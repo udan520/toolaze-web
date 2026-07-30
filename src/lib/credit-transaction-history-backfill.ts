@@ -24,6 +24,7 @@ type CreditTransactionForHistoryBackfill = {
 }
 
 type GenerationHistoryForCreditBackfill = {
+  mediaType?: string | null
   model?: string | null
   inputUrls?: string[] | null
   toolSlug?: string | null
@@ -61,7 +62,7 @@ function findHistoryMatchForCreditTransaction(
 
   const description = String(transaction.description || '').toLowerCase()
   return historyItems
-    .filter((item) => getWrappedGeneratorToolSlug(item))
+    .filter((item) => item.mediaType !== 'video' && getWrappedGeneratorToolSlug(item))
     .map((item) => {
       const createdAtMs = getTimestampMs(item.createdAt)
       return {

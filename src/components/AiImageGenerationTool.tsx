@@ -19,6 +19,7 @@ import { calculateImageGenerationCredits } from '@/lib/generation-credits'
 import { isCreditExhaustedGenerationError } from '@/lib/generation-error-classifier'
 import { downloadImageInCurrentPage } from '@/lib/browser-image-download'
 import {
+  buildHistoryRecreateHref,
   getDisplayImagePreviewUrl,
   getOriginalHistoryInputImageUrls,
   getReferencePreviewUrl,
@@ -75,7 +76,9 @@ interface HistoryItem {
   mediaType?: GenerationMediaType
   prompt: string
   time: string
+  model?: string | null
   modelId?: ImageModelId
+  modelName?: string
   aspectRatio?: string
   resolution?: string
   outputFormat?: string
@@ -327,22 +330,29 @@ function mapPersistedHistoryItem(item: PersistedGenerationHistoryItem): HistoryI
   const inputUrls = rawInputUrls.length > 0
     ? rawInputUrls
     : getWrappedHistoryDefaultInputImageUrls(normalizedItem)
+  const mediaType: GenerationMediaType = item.mediaType === 'video' ? 'video' : 'image'
+  const rawModel = String(item.model || '').trim()
 
   return {
     id,
     inputPreview: inputUrls[0] || '',
     inputUrls,
     outputPreview,
-    mediaType: item.mediaType === 'video' ? 'video' : 'image',
+    mediaType,
     prompt,
     time: formatLocalTimestampToSeconds(item.createdAt || new Date().toISOString()),
-    modelId: isImageModelId(item.model) ? item.model : undefined,
+    model: rawModel || null,
+    modelId: isImageModelId(rawModel) ? rawModel : undefined,
+    modelName: rawModel ? getGenerationModelLabel(rawModel) : undefined,
     aspectRatio: item.aspectRatio || undefined,
     resolution: item.resolution || undefined,
     outputFormat: item.outputFormat || undefined,
     toolSlug: item.toolSlug || null,
     toolLabel: item.toolLabel || null,
     sourcePath: item.sourcePath || null,
+    generationMode: mediaType === 'image'
+      ? (inputUrls.length > 0 ? 'image-to-image' : 'text-to-image')
+      : undefined,
   }
 }
 
@@ -1784,7 +1794,9 @@ export default function AiImageGenerationTool({
         mediaType,
         prompt: item.prompt,
         time: formatLocalTimestampToSeconds(savedItem?.createdAt || new Date().toISOString()),
+        model: item.modelId,
         modelId: item.modelId,
+        modelName: item.modelName,
         aspectRatio: item.aspectRatio,
         resolution: item.resolution,
         outputFormat: item.outputFormat,
@@ -2366,7 +2378,9 @@ export default function AiImageGenerationTool({
             mediaType: syncMediaType,
             prompt: effectivePrompt,
             time: formatLocalTimestampToSeconds(savedItem?.createdAt || new Date().toISOString()),
+            model: requestModelId,
             modelId: requestModelId,
+            modelName: requestModelName,
             aspectRatio: requestAspectRatio,
             resolution: requestResolution,
             outputFormat: requestOutputFormat,
@@ -2483,7 +2497,9 @@ export default function AiImageGenerationTool({
           mediaType,
           prompt: effectivePrompt,
           time: formatLocalTimestampToSeconds(savedItem?.createdAt || new Date().toISOString()),
+          model: requestModelId,
           modelId: requestModelId,
+          modelName: requestModelName,
           aspectRatio: requestAspectRatio,
           resolution: requestResolution,
           outputFormat: requestOutputFormat,
@@ -2868,9 +2884,9 @@ export default function AiImageGenerationTool({
   }
 
   const getHistoryItemModelName = (item: HistoryItem) =>
-    item.modelId
-      ? modelOptions.find((option) => option.id === item.modelId)?.name || selectedModelName
-      : selectedModelName
+    item.modelName
+      || (item.modelId ? modelOptions.find((option) => option.id === item.modelId)?.name || getGenerationModelLabel(item.modelId) : '')
+      || selectedModelName
 
   const getHistoryReferencePreviewUrls = (item: {
     inputPreview?: string
@@ -2891,7 +2907,7 @@ export default function AiImageGenerationTool({
     sourcePath?: string | null
   }) => {
     const historyDisplay = getWrappedHairToolHistoryDisplay({
-      model: item.modelId,
+      model: item.modelId || item.modelName,
       toolSlug: item.toolSlug,
       toolLabel: item.toolLabel,
       sourcePath: item.sourcePath || pathname,
@@ -2995,6 +3011,23 @@ export default function AiImageGenerationTool({
     trackGenerationHistoryRecreateClick(item, { surface: 'inline_generator_history' })
 
     const inputImageUrls = getOriginalHistoryInputImageUrls(item)
+    if (item.mediaType === 'video') {
+      window.sessionStorage.setItem(PENDING_REPROMPT_STORAGE_KEY, JSON.stringify({
+        prompt: item.prompt,
+        imageUrls: inputImageUrls,
+        modelId: item.model || item.modelId,
+        aspectRatio: item.aspectRatio,
+        resolution: item.resolution,
+        outputFormat: item.outputFormat,
+        mode: inputImageUrls.length > 0 ? 'image-to-video' : 'text-to-video',
+      }))
+      window.location.href = buildHistoryRecreateHref({
+        mediaType: 'video',
+        model: item.model || item.modelId,
+      }, parseLocalePath(pathname).pathLocale || 'en')
+      return
+    }
+
     if (item.modelId) {
       setSelectedModelId(item.modelId)
       setActiveModelGroupId(getModelGroupId(item.modelId))

@@ -59,3 +59,28 @@ test('local dev credit summary backfills wrapped tool metadata from shared gener
     sourcePath: '/ai-clothes-changer',
   })
 })
+
+test('local dev credit summary ignores video history when backfilling image credit activity', () => {
+  const stateDir = mkdtempSync(join(tmpdir(), 'toolaze-local-dev-auth-'))
+  process.env.TOOLAZE_LOCAL_DEV_STATE_FILE = join(stateDir, 'state.json')
+  resetLocalDevCreditsForTests(1000)
+
+  const creditResult = consumeLocalDevCredits(10, 'Image generation')
+  assert.equal(creditResult.ok, true)
+
+  const videoHistoryResult = createLocalDevHistoryItem({
+    mediaType: 'video',
+    model: 'grok-video-1-5',
+    prompt: 'Make the subject dance.',
+    outputUrl: 'https://example.com/generated-dance.mp4',
+    inputUrls: ['https://example.com/source.webp'],
+    toolSlug: 'ai-dance-generator',
+    toolLabel: 'AI Dance Generator',
+    sourcePath: '/ai-dance-generator',
+  })
+  assert.equal(videoHistoryResult.ok, true)
+
+  const [usageTransaction] = getLocalDevCreditSummary().transactions
+  assert.equal(usageTransaction.description, 'Image generation')
+  assert.equal(usageTransaction.metadata, undefined)
+})

@@ -100,7 +100,7 @@ function findHistoryMatchForCreditTransaction(transaction, historyItems) {
 
   const description = String(transaction.description || '').toLowerCase();
   const candidates = historyItems
-    .filter((item) => getHistoryToolSlug(item))
+    .filter((item) => item?.mediaType !== 'video' && getHistoryToolSlug(item))
     .map((item) => {
       const createdAtMs = getTimestampMs(item.createdAt);
       return {

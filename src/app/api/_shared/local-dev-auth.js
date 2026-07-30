@@ -265,7 +265,7 @@ function findLocalDevHistoryMatchForCreditTransaction(transaction, historyItems)
 
   const description = String(transaction.description || '').toLowerCase()
   const candidates = historyItems
-    .filter((item) => item?.toolSlug || item?.sourcePath)
+    .filter((item) => item?.mediaType !== 'video' && (item?.toolSlug || item?.sourcePath))
     .map((item) => {
       const createdAtMs = getTimestampMs(item.createdAt)
       return {

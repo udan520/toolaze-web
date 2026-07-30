@@ -54,6 +54,7 @@ test('uses original input references for Create Similar when they exist', () => 
     aspectRatio: item.aspectRatio,
     resolution: item.resolution,
     outputFormat: item.outputFormat,
+    mode: 'image-to-image',
   })
 })
 
@@ -96,9 +97,36 @@ test('drops browser-only and unsafe reference URLs for Create Similar', () => {
   ])
 })
 
-test('falls back to the original output image for Create Similar when no input reference exists', () => {
+test('keeps text-to-image Recreate as text-to-image when no original input exists', () => {
   assert.deepEqual(getHistoryReferenceImageUrls(baseHistoryItem), [baseHistoryItem.outputUrl])
-  assert.deepEqual(buildHistoryRepromptPayload(baseHistoryItem).imageUrls, [baseHistoryItem.outputUrl])
+  assert.deepEqual(buildHistoryRepromptPayload(baseHistoryItem), {
+    prompt: baseHistoryItem.prompt,
+    imageUrls: [],
+    modelId: baseHistoryItem.model,
+    aspectRatio: baseHistoryItem.aspectRatio,
+    resolution: baseHistoryItem.resolution,
+    outputFormat: baseHistoryItem.outputFormat,
+    mode: 'text-to-image',
+  })
+})
+
+test('keeps image-to-image Recreate tied to original input references', () => {
+  const item = {
+    ...baseHistoryItem,
+    inputUrls: [
+      'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/reference-one.png',
+    ],
+  }
+
+  assert.deepEqual(buildHistoryRepromptPayload(item), {
+    prompt: item.prompt,
+    imageUrls: item.inputUrls,
+    modelId: item.model,
+    aspectRatio: item.aspectRatio,
+    resolution: item.resolution,
+    outputFormat: item.outputFormat,
+    mode: 'image-to-image',
+  })
 })
 
 test('uses input preview as the original input image for Recreate when input urls are missing', () => {

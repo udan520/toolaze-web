@@ -27,6 +27,12 @@ import {
   getHistoryToolMetadata,
   getLocalizedInternalPath,
 } from '@/lib/generation-history-tool-metadata'
+import {
+  buildHistoryRecreateHref,
+  buildHistoryRepromptPayload,
+  normalizeReusableReferenceImageUrl,
+} from '@/lib/history-reprompt'
+import { getGenerationModelLabel } from '@/lib/generation-history-display'
 import { trackGenerationHistoryRecreateClick } from '@/lib/generation-history-analytics'
 import { dispatchToolazeTopNotice } from '@/lib/top-notice'
 import { parseLocalePath } from '@/lib/site-language-switch'
@@ -38,6 +44,7 @@ interface ImageItem {
 
 type VideoGenerationStatus = 'processing' | 'succeeded' | 'failed'
 type RightPanelMode = 'sample' | 'history'
+type SharedHistoryMode = AiVideoGeneratorModeId | 'text-to-image' | 'image-to-image'
 
 interface VideoGenerationRequest {
   id: string
@@ -64,13 +71,15 @@ interface VideoGenerationRequest {
 interface VideoHistoryItem {
   id: string
   mediaType: 'image' | 'video'
-  modelId: AiVideoGeneratorModelId
+  modelId?: AiVideoGeneratorModelId
+  model?: string | null
   modelName: string
-  mode: AiVideoGeneratorModeId
+  mode: SharedHistoryMode
   prompt: string
   aspectRatio: string
-  duration: number
+  duration?: number
   resolution: string
+  outputFormat?: string | null
   nativeAudio: boolean
   inputPreview: string
   inputUrls: string[]
@@ -117,12 +126,20 @@ interface AiVideoGeneratorToolProps {
 interface PromptInsertEventDetail {
   prompt?: string
   imageUrl?: string
+  imageUrls?: string[]
   imageName?: string
+  modelId?: string
+  aspectRatio?: string
+  resolution?: string
+  outputFormat?: string
+  mode?: string
 }
 
 const FALLBACK_TEXT = {
   imageToVideo: 'Image to Video',
   textToVideo: 'Text to Video',
+  imageToImage: 'Image to Image',
+  textToImage: 'Text to Image',
   models: 'Models',
   uploadUpTo: 'Upload up to {count} images',
   uploadYourImage: 'Upload your image',
@@ -195,6 +212,8 @@ const VIDEO_HISTORY_MODEL_SLUGS: Record<AiVideoGeneratorModelId, string> = {
   'happyhorse': 'happyhorse',
 }
 
+const PENDING_REPROMPT_STORAGE_KEY = 'toolaze:pending-reprompt'
+
 function getVideoHistoryModelSlug(modelId: AiVideoGeneratorModelId) {
   return VIDEO_HISTORY_MODEL_SLUGS[modelId] || modelId
 }
@@ -209,6 +228,10 @@ function getVideoModelIdFromHistoryModel(model: unknown): AiVideoGeneratorModelI
 function getHistoryDuration(outputFormat: string | null | undefined, fallback: number) {
   const duration = Number(String(outputFormat || '').replace(/s$/i, ''))
   return Number.isFinite(duration) && duration > 0 ? duration : fallback
+}
+
+function isVideoHistoryMediaType(item: PersistedVideoHistoryItem) {
+  return item.mediaType === 'video' || /\.(mp4|webm|mov|m4v)(?:[?#].*)?$/i.test(String(item.outputUrl || '').trim())
 }
 
 function getPersistedHistoryCreatedAtMs(item: PersistedVideoHistoryItem): number {
@@ -226,16 +249,41 @@ function mapPersistedVideoHistoryItem(item: PersistedVideoHistoryItem): VideoHis
   const prompt = String(item.prompt || '').trim()
   if (!id || !outputPreview || !prompt) return null
 
-  const mediaType = item.mediaType === 'video' ? 'video' : 'image'
-  const modelId = getVideoModelIdFromHistoryModel(item.model)
-  const modelConfig = getAiVideoGeneratorModelConfig(modelId)
+  const mediaType = isVideoHistoryMediaType(item) ? 'video' : 'image'
   const inputUrls = Array.isArray(item.inputUrls)
     ? item.inputUrls.filter((url): url is string => typeof url === 'string' && url.trim().length > 0)
     : []
 
+  if (mediaType === 'image') {
+    return {
+      id,
+      mediaType,
+      model: String(item.model || '').trim() || null,
+      modelName: getGenerationModelLabel(item.model),
+      mode: inputUrls.length > 0 ? 'image-to-image' : 'text-to-image',
+      prompt,
+      aspectRatio: item.aspectRatio || '',
+      resolution: item.resolution || '',
+      outputFormat: item.outputFormat || null,
+      nativeAudio: false,
+      inputPreview: inputUrls[0] || '',
+      inputUrls,
+      outputPreview,
+      time: formatLocalTimestampToSeconds(item.createdAt || new Date().toISOString()),
+      persisted: true,
+      toolSlug: item.toolSlug || null,
+      toolLabel: item.toolLabel || null,
+      sourcePath: item.sourcePath || null,
+    }
+  }
+
+  const modelId = getVideoModelIdFromHistoryModel(item.model)
+  const modelConfig = getAiVideoGeneratorModelConfig(modelId)
+
   return {
     id,
     mediaType,
+    model: String(item.model || '').trim() || null,
     modelId,
     modelName: modelConfig.name,
     mode: inputUrls.length > 0 ? 'image-to-video' : 'text-to-video',
@@ -243,6 +291,7 @@ function mapPersistedVideoHistoryItem(item: PersistedVideoHistoryItem): VideoHis
     aspectRatio: item.aspectRatio || modelConfig.aspectRatios[0]?.value || '16:9',
     duration: getHistoryDuration(item.outputFormat, modelConfig.defaultDuration || modelConfig.durations[0] || 5),
     resolution: item.resolution || modelConfig.resolutions[0] || '480p',
+    outputFormat: item.outputFormat || null,
     nativeAudio: item.nativeAudio === true,
     inputPreview: inputUrls[0] || '',
     inputUrls,
@@ -261,6 +310,12 @@ function formatText(template: string, values: Record<string, string | number>) {
 
 function getModeLabel(mode: AiVideoGeneratorModeId, text: typeof FALLBACK_TEXT) {
   return mode === 'image-to-video' ? text.imageToVideo : text.textToVideo
+}
+
+function getImageHistoryModeLabel(mode: SharedHistoryMode, text: typeof FALLBACK_TEXT) {
+  if (mode === 'image-to-image') return text.imageToImage
+  if (mode === 'text-to-image') return text.textToImage
+  return getModeLabel(mode, text)
 }
 
 function getInitialVideoMode(
@@ -575,28 +630,79 @@ export default function AiVideoGeneratorTool({
     }
   }, [supportsNativeAudio, nativeAudio])
 
+  const applyPromptInsertDetail = useCallback((detail: PromptInsertEventDetail) => {
+    const promptText = String(detail?.prompt || '').trim()
+    const singleImageUrl = normalizeReusableReferenceImageUrl(detail?.imageUrl)
+    const imageUrls = Array.isArray(detail?.imageUrls)
+      ? detail.imageUrls.map(normalizeReusableReferenceImageUrl).filter(Boolean)
+      : []
+    const referenceUrls = imageUrls.length > 0 ? imageUrls : singleImageUrl ? [singleImageUrl] : []
+    if (!promptText && referenceUrls.length === 0) return false
+
+    const nextModel = detail?.modelId
+      ? getAiVideoGeneratorModelConfig(getVideoModelIdFromHistoryModel(detail.modelId))
+      : modelConfig
+    const requestedMode: AiVideoGeneratorModeId =
+      detail?.mode === 'text-to-video' || detail?.mode === 'image-to-video'
+        ? detail.mode
+        : referenceUrls.length > 0 ? 'image-to-video' : 'text-to-video'
+    const nextMode = nextModel.supportedModes.includes(requestedMode)
+      ? requestedMode
+      : getInitialVideoMode(nextModel, undefined)
+    const nextDuration = getHistoryDuration(detail?.outputFormat, nextModel.defaultDuration || nextModel.durations[0] || 5)
+
+    setSelectedModelId(nextModel.id)
+    setActiveModelGroupId(getAiVideoGeneratorModelGroupId(nextModel.id))
+    setActiveMode(nextMode)
+    setPrompt(promptText)
+    setAspectRatio(
+      detail?.aspectRatio && nextModel.aspectRatios.some((option) => option.value === detail.aspectRatio)
+        ? detail.aspectRatio
+        : nextModel.aspectRatios[0]?.value || '16:9',
+    )
+    setDuration(
+      nextModel.durations.includes(nextDuration)
+        ? nextDuration
+        : nextModel.defaultDuration || nextModel.durations[0] || 5,
+    )
+    setResolution(
+      detail?.resolution && nextModel.resolutions.includes(detail.resolution)
+        ? detail.resolution
+        : nextModel.resolutions[0] || '480p',
+    )
+    setNativeAudio(false)
+    setIsModelMenuOpen(false)
+    setIsDurationMenuOpen(false)
+    imageFilesRef.current.forEach((item) => URL.revokeObjectURL(item.preview))
+    imageFilesRef.current = []
+    setImageFiles([])
+    setRemoteImageUrls(nextMode === 'image-to-video' ? referenceUrls.slice(0, nextModel.maxImages) : [])
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+    return true
+  }, [modelConfig])
+
   // 从提示词案例板块一键带入 Prompt，保持与图片生成器相同的使用路径。
   useEffect(() => {
     const handler = (event: Event) => {
-      const detail = (event as CustomEvent<PromptInsertEventDetail>).detail
-      const promptText = String(detail?.prompt || '').trim()
-      const promptImageUrl = String(detail?.imageUrl || '').trim()
-      if (!promptText) return
-
-      setPrompt(promptText)
-      setActiveMode(promptImageUrl ? 'image-to-video' : 'text-to-video')
-      setIsModelMenuOpen(false)
-      setIsDurationMenuOpen(false)
-      imageFilesRef.current.forEach((item) => URL.revokeObjectURL(item.preview))
-      imageFilesRef.current = []
-      setImageFiles([])
-      setRemoteImageUrls(promptImageUrl ? [promptImageUrl] : [])
-      window.scrollTo({ top: 0, behavior: 'smooth' })
+      applyPromptInsertDetail((event as CustomEvent<PromptInsertEventDetail>).detail || {})
     }
 
     window.addEventListener('toolaze:use-prompt', handler as EventListener)
     return () => window.removeEventListener('toolaze:use-prompt', handler as EventListener)
-  }, [])
+  }, [applyPromptInsertDetail])
+
+  useEffect(() => {
+    const raw = window.sessionStorage.getItem(PENDING_REPROMPT_STORAGE_KEY)
+    if (!raw) return
+    try {
+      const detail = JSON.parse(raw) as PromptInsertEventDetail
+      if (applyPromptInsertDetail(detail)) {
+        window.sessionStorage.removeItem(PENDING_REPROMPT_STORAGE_KEY)
+      }
+    } catch {
+      window.sessionStorage.removeItem(PENDING_REPROMPT_STORAGE_KEY)
+    }
+  }, [applyPromptInsertDetail])
 
   useEffect(() => {
     if (currentRequest?.status !== 'processing') return
@@ -1021,6 +1127,7 @@ export default function AiVideoGeneratorTool({
       const historyItem: VideoHistoryItem = {
         id: savedItem?.id || completedRequest.id,
         mediaType: 'video',
+        model: getVideoHistoryModelSlug(completedRequest.modelId),
         modelId: completedRequest.modelId,
         modelName: completedRequest.modelName,
         mode: completedRequest.mode,
@@ -1068,10 +1175,28 @@ export default function AiVideoGeneratorTool({
   const applyHistoryItemToForm = (item: VideoHistoryItem) => {
     trackGenerationHistoryRecreateClick({ ...item, mediaType: item.mediaType === 'video' ? 'video' : 'image' }, { surface: 'inline_generator_history' })
 
+    if (item.mediaType === 'image') {
+      window.sessionStorage.setItem(PENDING_REPROMPT_STORAGE_KEY, JSON.stringify(buildHistoryRepromptPayload({
+        prompt: item.prompt,
+        model: item.model,
+        outputUrl: item.outputPreview,
+        inputUrls: item.inputUrls,
+        aspectRatio: item.aspectRatio,
+        resolution: item.resolution,
+        outputFormat: item.outputFormat,
+      })))
+      window.location.href = buildHistoryRecreateHref({
+        mediaType: 'image',
+        model: item.model,
+      }, parseLocalePath(pathname).pathLocale || 'en')
+      return
+    }
+
+    if (!item.modelId) return
     const itemConfig = getAiVideoGeneratorModelConfig(item.modelId)
     setSelectedModelId(item.modelId)
     setActiveModelGroupId(getAiVideoGeneratorModelGroupId(item.modelId))
-    setActiveMode(item.inputUrls.length > 0 ? 'image-to-video' : item.mode)
+    setActiveMode(item.inputUrls.length > 0 ? 'image-to-video' : item.mode as AiVideoGeneratorModeId)
     setPrompt(item.prompt)
     setAspectRatio(item.aspectRatio || itemConfig.aspectRatios[0]?.value || '16:9')
     setDuration(item.duration || itemConfig.defaultDuration || itemConfig.durations[0] || 5)
@@ -1103,21 +1228,32 @@ export default function AiVideoGeneratorTool({
   }
 
   const renderVideoMetaTags = (item: {
+    mediaType?: 'image' | 'video'
     modelName: string
-    mode: AiVideoGeneratorModeId
+    mode: SharedHistoryMode
     aspectRatio: string
-    duration: number
+    duration?: number
     resolution: string
+    outputFormat?: string | null
   }, timeLabel: string) => (
     <div data-desktop-history-meta className="flex flex-wrap items-center gap-1">
-      {[
-        item.modelName,
-        getModeLabel(item.mode, text),
-        item.aspectRatio,
-        `${item.duration}s`,
-        item.resolution,
-        timeLabel,
-      ].filter(Boolean).map((tag, index) => (
+      {(item.mediaType === 'image'
+        ? [
+            item.modelName,
+            getImageHistoryModeLabel(item.mode, text),
+            item.aspectRatio,
+            item.resolution,
+            item.outputFormat && item.outputFormat !== 'Auto' ? item.outputFormat : '',
+            timeLabel,
+          ]
+        : [
+            item.modelName,
+            getModeLabel(item.mode as AiVideoGeneratorModeId, text),
+            item.aspectRatio,
+            item.duration ? `${item.duration}s` : '',
+            item.resolution,
+            timeLabel,
+          ]).filter(Boolean).map((tag, index) => (
         <span
           key={`${tag}-${index}`}
           className="rounded-full bg-[#EEF2FF]/60 px-2 py-1 text-xs font-semibold text-slate-600 ring-1 ring-[#C7D2FE]/70"

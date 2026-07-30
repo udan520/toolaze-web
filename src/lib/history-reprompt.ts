@@ -11,6 +11,8 @@ type HistoryRepromptSource = {
   outputFormat?: string | null
 }
 
+type HistoryImageRecreateMode = 'text-to-image' | 'image-to-image'
+
 type HistoryRecreateSource = {
   mediaType?: 'image' | 'video' | null
   model?: string | null
@@ -105,13 +107,17 @@ export function getOriginalHistoryInputImageUrls(item: HistoryRepromptSource): s
 }
 
 export function buildHistoryRepromptPayload(item: HistoryRepromptSource) {
+  const imageUrls = getOriginalHistoryInputImageUrls(item)
+  const mode: HistoryImageRecreateMode = imageUrls.length > 0 ? 'image-to-image' : 'text-to-image'
+
   return {
     prompt: item.prompt || '',
-    imageUrls: getHistoryReferenceImageUrls(item),
+    imageUrls,
     modelId: item.model || undefined,
     aspectRatio: item.aspectRatio || undefined,
     resolution: item.resolution || undefined,
     outputFormat: item.outputFormat || undefined,
+    mode,
   }
 }
 

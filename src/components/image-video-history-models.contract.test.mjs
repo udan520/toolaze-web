@@ -33,3 +33,15 @@ test('video inline history loads both image and video records and left-aligns ta
   assert.match(source, /item\.mediaType === 'video' \? \(\s*<video/s)
   assert.match(source, /item\.mediaType === 'video' \? 'video' : 'image'/)
 })
+
+test('video inline shared history preserves image model and mode metadata', () => {
+  const source = read('src/components/AiVideoGeneratorTool.tsx')
+  const imageBranch = source.match(/if \(mediaType === 'image'\) \{([\s\S]*?)\n  \}\n\n  const modelId = getVideoModelIdFromHistoryModel\(item\.model\)/)?.[1] || ''
+
+  assert.notEqual(imageBranch, '', 'image history mapping branch should exist')
+  assert.match(source, /mediaType === 'image'[\s\S]*getGenerationModelLabel\(item\.model\)/)
+  assert.match(source, /mediaType === 'image'[\s\S]*inputUrls\.length > 0 \? 'image-to-image' : 'text-to-image'/)
+  assert.match(source, /item\.mediaType === 'image'[\s\S]*getImageHistoryModeLabel\(item\.mode, text\)/)
+  assert.doesNotMatch(imageBranch, /getVideoModelIdFromHistoryModel/)
+  assert.doesNotMatch(imageBranch, /grok-1-5-video/)
+})
