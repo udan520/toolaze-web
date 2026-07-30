@@ -13,6 +13,12 @@ import {
   formatCreditTransactionSupplement,
   formatCreditTransactionTitle,
 } from '@/lib/credit-transaction-description'
+import {
+  formatCreditTransactionType,
+  getCreditTransactionBadgeClass,
+  type CreditTransactionType,
+  type CreditTransactionTypeLabels,
+} from '@/lib/credit-transaction-badge'
 import { getClientMenuItems, type ClientMenuItem } from '@/lib/client-menu-data'
 import { trackToolazeEvent } from '@/lib/analytics'
 import {
@@ -129,6 +135,14 @@ const defaultAccountTranslations = {
   signOut: 'Sign Out',
 }
 
+const defaultCreditTypeTranslations: CreditTransactionTypeLabels = {
+  grant: 'Bonus',
+  use: 'Used',
+  refund: 'Refund',
+  purchase: 'Purchase',
+  adjustment: 'Adjustment',
+}
+
 const AI_TOOLS_DEMO_IMAGES = {
   aiBabyGenerator: '/ai-baby-generator/hero-baby-portrait.webp',
   aiHairstyleChanger: '/ai-hairstyle-changer/hero-before-after.webp',
@@ -176,6 +190,13 @@ function getInitialAccountTranslations(initialTranslations?: any) {
   }
 }
 
+function getInitialCreditTypeTranslations(initialTranslations?: any): CreditTransactionTypeLabels {
+  return {
+    ...defaultCreditTypeTranslations,
+    ...(initialTranslations?.creditsPage?.types || {}),
+  }
+}
+
 type AuthUser = {
   id?: string
   email?: string
@@ -185,8 +206,10 @@ type AuthUser = {
 
 type CreditTransaction = {
   id: string
+  type: CreditTransactionType
   amount: number
   balanceAfter: number
+  reason: string
   description: string
   metadata?: {
     toolLabel?: string | null
@@ -379,6 +402,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
   const [navTranslations, setNavTranslations] = useState(getInitialNavTranslations(initialTranslations))
   const [authTranslations, setAuthTranslations] = useState(getInitialAuthTranslations(initialTranslations))
   const [accountTranslations, setAccountTranslations] = useState(getInitialAccountTranslations(initialTranslations))
+  const [creditTypeTranslations, setCreditTypeTranslations] = useState(getInitialCreditTypeTranslations(initialTranslations))
   const [thirdLevelMenuData, setThirdLevelMenuData] = useState<Record<string, ClientMenuItem[]>>({
     'image-compressor': [],
     'image-converter': [],
@@ -456,6 +480,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
     setNavTranslations(getInitialNavTranslations(initialTranslations))
     setAuthTranslations(getInitialAuthTranslations(initialTranslations))
     setAccountTranslations(getInitialAccountTranslations(initialTranslations))
+    setCreditTypeTranslations(getInitialCreditTypeTranslations(initialTranslations))
   }, [initialTranslations])
 
   useEffect(() => {
@@ -1111,6 +1136,9 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
               <div className="flex items-start justify-between gap-3">
                 <div className="min-w-0">
                   <div className="flex min-w-0 flex-wrap items-center gap-1.5">
+                    <span className={`shrink-0 rounded-md px-1.5 py-0.5 text-[10px] font-extrabold ${getCreditTransactionBadgeClass(transaction.type)}`}>
+                      {formatCreditTransactionType(transaction.type, creditTypeTranslations)}
+                    </span>
                     <span className="min-w-0 max-w-full truncate text-xs font-semibold text-slate-800">
                       {transactionTitle}
                     </span>
@@ -2112,9 +2140,9 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
         {mobileMenuOpen && (
           <div
             ref={menuRef}
-            className="block md:!hidden absolute top-full left-0 right-0 bg-white shadow-xl border-t border-indigo-50 z-40 max-h-[calc(100vh-70px)] overflow-y-auto overscroll-contain"
+            className="block md:!hidden absolute top-full left-0 right-0 z-40 max-h-[calc(100dvh-70px)] overflow-y-auto overscroll-contain border-t border-indigo-50 bg-white shadow-xl"
           >
-            <div className="flex flex-col gap-4 px-6 py-4 pb-8">
+            <div className="flex flex-col gap-4 px-6 py-4 pb-[calc(2rem+env(safe-area-inset-bottom))]">
               {/* Prompts 部分 */}
               <div className="order-4 border-b border-indigo-50 pb-4">
                 <div className="mb-3 flex items-center justify-between">

@@ -50,3 +50,10 @@ test('new image models are grouped under OpenAI and Flux', () => {
   assert.ok(openAi?.modelIds.includes('gpt-image-1-5'))
   assert.deepEqual(flux?.modelIds, ['flux-2-pro', 'flux-2-flex'])
 })
+
+test('Grok Image exposes separate official KIE text and image provider models', () => {
+  const model = AI_IMAGE_GENERATOR_MODELS['grok-1-5-image']
+
+  assert.equal(model.providerModels.textToImage, 'grok-imagine/text-to-image')
+  assert.equal(model.providerModels.imageToImage, 'grok-imagine/image-to-image')
+})

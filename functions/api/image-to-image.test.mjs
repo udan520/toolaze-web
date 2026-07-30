@@ -72,6 +72,20 @@ for (const scenario of [
     isImageToImage: true,
     setting: { resolution: '2K' },
   },
+  {
+    name: 'Grok 1.5 Image text-to-image',
+    model: 'grok-1-5-image',
+    providerModel: 'grok-imagine/text-to-image',
+    isImageToImage: false,
+    setting: { resolution: '1K' },
+  },
+  {
+    name: 'Grok 1.5 Image image-to-image',
+    model: 'grok-1-5-image',
+    providerModel: 'grok-imagine/image-to-image',
+    isImageToImage: true,
+    setting: { resolution: '1K' },
+  },
 ]) {
   test(`${scenario.name} uses the exact KIE Market contract`, async () => {
     const originalFetch = globalThis.fetch
@@ -101,14 +115,21 @@ for (const scenario of [
       if (scenario.model === 'gpt-image-1-5') {
         assert.equal(requestBody.input.quality, scenario.setting.quality)
         assert.equal(requestBody.input.resolution, undefined)
-      } else {
+      } else if (scenario.model !== 'grok-1-5-image') {
         assert.equal(requestBody.input.resolution, scenario.setting.resolution)
         assert.equal(requestBody.input.nsfw_checker, true)
       }
-      assert.deepEqual(
-        requestBody.input.input_urls,
-        scenario.isImageToImage ? ['https://example.com/reference.png'] : undefined,
-      )
+      if (scenario.model === 'grok-1-5-image') {
+        assert.deepEqual(
+          requestBody.input.image_urls,
+          scenario.isImageToImage ? ['https://example.com/reference.png'] : undefined,
+        )
+      } else {
+        assert.deepEqual(
+          requestBody.input.input_urls,
+          scenario.isImageToImage ? ['https://example.com/reference.png'] : undefined,
+        )
+      }
     } finally {
       globalThis.fetch = originalFetch
     }
@@ -136,6 +157,33 @@ test('new image models reject invalid settings before calling KIE', async () => 
       })
       assert.equal(response.status, 400)
     }
+    assert.equal(fetchCount, 0)
+  } finally {
+    globalThis.fetch = originalFetch
+  }
+})
+
+test('unknown image models are rejected instead of falling back to Nano Banana Pro', async () => {
+  const originalFetch = globalThis.fetch
+  let fetchCount = 0
+  globalThis.fetch = async () => {
+    fetchCount += 1
+    return Response.json({ code: 200, data: { taskId: 'should_not_exist' } })
+  }
+
+  try {
+    const response = await onRequest({
+      request: createGenerationRequest({
+        model: 'future-image-model',
+        isImageToImage: false,
+        imageUrls: false,
+      }),
+      env: { KIE_AI_API_KEY: 'test-key' },
+    })
+    const payload = await response.json()
+
+    assert.equal(response.status, 400)
+    assert.equal(payload.error, 'Unsupported image model.')
     assert.equal(fetchCount, 0)
   } finally {
     globalThis.fetch = originalFetch
@@ -262,7 +310,7 @@ test('GPT Image 2 text-to-image requests keep the text-to-image provider model',
   }
 })
 
-test('Grok 1.5 image requests use the configured provider model id', async () => {
+test('Grok 1.5 image requests use the official text-to-image provider model id', async () => {
   const originalFetch = globalThis.fetch
   let requestBody = null
 
@@ -282,8 +330,8 @@ test('Grok 1.5 image requests use the configured provider model id', async () =>
     })
 
     assert.equal(response.status, 200)
-    assert.equal(requestBody.model, 'grok-1.5-image')
-    assert.equal(requestBody.input.input_urls, undefined)
+    assert.equal(requestBody.model, 'grok-imagine/text-to-image')
+    assert.equal(requestBody.input.image_urls, undefined)
   } finally {
     globalThis.fetch = originalFetch
   }

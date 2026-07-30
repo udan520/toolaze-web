@@ -12,6 +12,13 @@
 
 const fs = require('fs');
 const path = require('path');
+const { execSync } = require('child_process');
+
+console.log('🔗 检查 Vercel / Cloudflare 生成模型契约...');
+execSync('npm run check:generation-contract', {
+  cwd: path.join(__dirname, '..'),
+  stdio: 'inherit',
+});
 
 const isStaticExport =
   process.env.NEXT_OUTPUT_EXPORT === 'true' ||

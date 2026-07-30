@@ -11,8 +11,21 @@ type HistoryRepromptSource = {
   outputFormat?: string | null
 }
 
+type HistoryRecreateSource = {
+  mediaType?: 'image' | 'video' | null
+  model?: string | null
+}
+
 const NEXT_IMAGE_WIDTHS = [64, 96, 128, 256, 384, 640, 750, 828, 1080, 1200] as const
 const REFERENCE_PREVIEW_WIDTH = 384
+
+export function buildHistoryRecreateHref(item: HistoryRecreateSource, locale = 'en'): string {
+  const localePrefix = locale && locale !== 'en' ? `/${locale}` : ''
+  if (item.mediaType === 'video') return `${localePrefix}/ai-video-generator`
+
+  const model = String(item.model || 'nano-banana-pro').trim() || 'nano-banana-pro'
+  return `${localePrefix}/ai-image-generator?model=${encodeURIComponent(model)}`
+}
 
 function normalizeImageUrl(url: unknown): string {
   return typeof url === 'string' ? url.trim() : ''

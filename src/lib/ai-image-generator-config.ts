@@ -106,6 +106,10 @@ export const AI_IMAGE_GENERATOR_MODELS = {
     supportsHighResolution: true,
     defaultMode: 'text-to-image',
     setting: { kind: 'resolution', options: ['1K', '2K', '4K'], defaultValue: '1K' },
+    providerModels: {
+      textToImage: 'grok-imagine/text-to-image',
+      imageToImage: 'grok-imagine/image-to-image',
+    },
   },
   'grok-video-1-5': {
     name: 'Grok Video 1.5',

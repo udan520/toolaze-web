@@ -91,6 +91,19 @@ test('mobile generated result uses icons for download and delete actions', () =>
   assert.doesNotMatch(mobileDelete, />\s*\{toolText\.delete\}\s*<\/button>/)
 })
 
+test('mobile Recreate availability depends on the selected result instead of current form state', () => {
+  assert.match(source, /const currentResultRecreateDisabled =\s*!currentResult\?\.prompt\?\.trim\(\)/)
+  assert.doesNotMatch(source, /const currentResultRecreateDisabled =[\s\S]{0,240}isGenerating/)
+  assert.doesNotMatch(source, /const currentResultRecreateDisabled =[\s\S]{0,320}imageFiles\.length/)
+})
+
+test('mobile generation scrolls to the history panel after the pending result renders', () => {
+  assert.match(source, /mobileGenerationPanelRef/)
+  assert.match(source, /shouldScrollToMobileHistoryRef/)
+  assert.match(source, /data-mobile-generation-panel[\s\S]*ref=\{mobileGenerationPanelRef\}/)
+  assert.match(source, /scrollIntoView\(\{ behavior: 'smooth', block: 'start' \}\)/)
+})
+
 test('generation supports multiple pending tasks instead of blocking the button', () => {
   assert.match(source, /pendingGenerationItems\.map\(\(item\) => \(/)
   assert.match(source, /setPendingGenerationItems\(\(prev\) => \[pendingItem, \.\.\.prev\]\)/)

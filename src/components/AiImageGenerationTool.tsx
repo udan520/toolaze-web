@@ -1236,6 +1236,8 @@ export default function AiImageGenerationTool({
   const [isUserSignedIn, setIsUserSignedIn] = useState(false)
   const promptTextareaRef = useRef<HTMLTextAreaElement>(null)
   const modelSelectorRef = useRef<HTMLDivElement>(null)
+  const mobileGenerationPanelRef = useRef<HTMLDivElement>(null)
+  const shouldScrollToMobileHistoryRef = useRef(false)
   const historyItemRefs = useRef(new Map<string, HTMLDivElement>())
   const restoredGenerationPollIdsRef = useRef(new Set<string>())
   const presetReferenceImages = useMemo(
@@ -1278,6 +1280,16 @@ export default function AiImageGenerationTool({
     () => getResolutionOptionsForModel(selectedModelId),
     [selectedModelId]
   )
+
+  useEffect(() => {
+    if (!shouldScrollToMobileHistoryRef.current || rightMode !== 'history' || pendingGenerationItems.length === 0) return
+    if (!window.matchMedia('(max-width: 767px)').matches) return
+
+    shouldScrollToMobileHistoryRef.current = false
+    window.requestAnimationFrame(() => {
+      mobileGenerationPanelRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    })
+  }, [pendingGenerationItems.length, rightMode])
 
   useEffect(() => {
     const queryModelId = new URLSearchParams(window.location.search).get('model')
@@ -2182,6 +2194,7 @@ export default function AiImageGenerationTool({
       ...requestHistoryTool,
     }
 
+    shouldScrollToMobileHistoryRef.current = true
     setPendingGenerationItems((prev) => [pendingItem, ...prev])
     setRightMode('history')
     let rollbackOptimisticCredits = startOptimisticCreditDeduction(requestCreditCost)
@@ -3424,14 +3437,10 @@ export default function AiImageGenerationTool({
     if (!isGenerating && !currentResult && !isUserSignedIn) return null
 
     const recentHistory = history.slice(0, 4)
-    const currentResultRecreateDisabled =
-      !currentResult ||
-      isGenerating ||
-      !(currentResult.prompt && currentResult.prompt.trim()) ||
-      (activeTab === 'image-to-image' && imageFiles.length === 0 && !currentResult.inputPreview)
+    const currentResultRecreateDisabled = !currentResult?.prompt?.trim()
 
     return (
-      <div data-mobile-generation-panel className="md:hidden">
+      <div data-mobile-generation-panel ref={mobileGenerationPanelRef} className="scroll-mt-20 md:hidden">
         {isUserSignedIn && (
           <div className="mb-2 flex items-center justify-between">
             <h2 className="text-sm font-extrabold text-slate-900">{toolText.history}</h2>

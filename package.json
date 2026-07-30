@@ -18,6 +18,7 @@
     "sync-locales": "tsx scripts/sync-locales.ts",
     "sync-individual": "tsx scripts/sync-individual-locales.ts",
     "sync-exact": "tsx scripts/sync-exact-copy.ts",
+    "check:generation-contract": "tsx scripts/check-generation-contract.ts",
     "pre-deploy": "node scripts/pre-deploy-check.js",
     "prebuild": "node scripts/prebuild-check.js",
     "build:prompt-shards": "node scripts/build-prompt-data-shards.js",

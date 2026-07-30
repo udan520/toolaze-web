@@ -24,6 +24,12 @@ test('mobile generating state uses a 4:3 preview area', () => {
   assert.match(aiImageGenerationSource, /data-mobile-generating-card[\s\S]*aspect-\[4\/3\]/)
 })
 
+test('mobile generation moves to the rendered History panel after Generate', () => {
+  assert.match(aiImageGenerationSource, /shouldScrollToMobileHistoryRef\.current = true/)
+  assert.match(aiImageGenerationSource, /window\.matchMedia\('\(max-width: 767px\)'\)/)
+  assert.match(aiImageGenerationSource, /mobileGenerationPanelRef\.current\?\.scrollIntoView/)
+})
+
 test('mobile history detail exposes result actions after selecting a history item', () => {
   const panelIndex = aiImageGenerationSource.indexOf('data-mobile-generation-panel')
   const currentResultIndex = aiImageGenerationSource.indexOf('currentResult ?', panelIndex)

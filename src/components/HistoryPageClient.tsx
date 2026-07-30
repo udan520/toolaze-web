@@ -2,7 +2,11 @@
 
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import DeleteIcon from './icons/DeleteIcon'
-import { buildHistoryRepromptPayload, getOriginalHistoryInputImageUrls } from '@/lib/history-reprompt'
+import {
+  buildHistoryRecreateHref,
+  buildHistoryRepromptPayload,
+  getOriginalHistoryInputImageUrls,
+} from '@/lib/history-reprompt'
 import { GENERATION_HISTORY_DELETE_CONFIRM_MESSAGE } from '@/lib/generation-history-delete-confirm'
 import {
   getHistoryFullScreenPreviewUrl,
@@ -13,6 +17,7 @@ import {
 import { downloadImageInCurrentPage } from '@/lib/browser-image-download'
 import { formatLocalTimestampToSeconds } from '@/lib/credit-history-time'
 import { getWrappedHairToolHistoryDisplay } from '@/lib/generation-history-display'
+import { dispatchToolazeTopNotice } from '@/lib/top-notice'
 import {
   trackGenerationHistoryDeleteClick,
   trackGenerationHistoryDownloadClick,
@@ -60,7 +65,9 @@ const defaultHistoryPageCopy = {
   referenceMedia: 'Reference Media',
   prompt: 'Prompt',
   copyPrompt: 'Copy Prompt',
-  createSimilar: 'Create Similar',
+  promptCopied: 'Prompt Copied',
+  promptCopyFailed: 'Copy Failed',
+  recreate: 'Recreate',
   download: 'Download',
   delete: 'Delete',
   deleting: 'Deleting',
@@ -92,11 +99,6 @@ function getHistoryPageCopy(initialTranslations?: any) {
   }
 }
 
-function getModelHref(model: string) {
-  const safeModel = String(model || 'nano-banana-pro').trim() || 'nano-banana-pro'
-  return `/model/${safeModel}`
-}
-
 function getGenerationModeLabel(item: GenerationHistoryItem, copy: typeof defaultHistoryPageCopy) {
   if (item.mediaType === 'video') return copy.modeVideo
   return item.inputUrls.length > 0 ? copy.modeImageToImage : copy.modeTextToImage
@@ -126,7 +128,7 @@ interface HistoryPageClientProps {
   locale?: string
 }
 
-export default function HistoryPageClient({ initialTranslations }: HistoryPageClientProps = {}) {
+export default function HistoryPageClient({ initialTranslations, locale = 'en' }: HistoryPageClientProps = {}) {
   const copy = getHistoryPageCopy(initialTranslations)
   const [items, setItems] = useState<GenerationHistoryItem[]>([])
   const [loading, setLoading] = useState(true)
@@ -406,7 +408,24 @@ export default function HistoryPageClient({ initialTranslations }: HistoryPageCl
     trackGenerationHistoryRecreateClick(item, { surface: 'history_page' })
 
     window.sessionStorage.setItem(PENDING_REPROMPT_STORAGE_KEY, JSON.stringify(buildHistoryRepromptPayload(item)))
-    window.location.href = getModelHref(item.model)
+    window.location.href = buildHistoryRecreateHref(item, locale)
+  }
+
+  const handleCopyPrompt = async (prompt: string) => {
+    try {
+      await navigator.clipboard.writeText(prompt)
+      dispatchToolazeTopNotice({
+        type: 'success',
+        title: copy.promptCopied,
+        message: '',
+      })
+    } catch {
+      dispatchToolazeTopNotice({
+        type: 'error',
+        title: copy.promptCopyFailed,
+        message: '',
+      })
+    }
   }
 
   const activePreviewMediaUrl = previewItem
@@ -725,7 +744,7 @@ export default function HistoryPageClient({ initialTranslations }: HistoryPageCl
                     <h2 className="text-sm font-extrabold text-slate-900">{copy.prompt}</h2>
                     <button
                       type="button"
-                      onClick={() => navigator.clipboard.writeText(previewItem.prompt).catch(() => {})}
+                      onClick={() => void handleCopyPrompt(previewItem.prompt)}
                       className="inline-flex items-center justify-center rounded-lg p-1.5 text-slate-500 hover:bg-slate-100 hover:text-slate-900"
                       aria-label={copy.copyPrompt}
                     >
@@ -735,7 +754,10 @@ export default function HistoryPageClient({ initialTranslations }: HistoryPageCl
                       </svg>
                     </button>
                   </div>
-                  <div className="min-h-[260px] rounded-2xl bg-indigo-50/70 px-4 py-4 text-sm leading-6 text-slate-800">
+                  <div
+                    data-history-preview-prompt
+                    className="max-h-24 overflow-y-auto overscroll-contain whitespace-pre-wrap rounded-2xl bg-indigo-50/70 px-4 py-3 text-sm leading-6 text-slate-800"
+                  >
                     {previewItem.prompt}
                   </div>
                 </section>
@@ -743,30 +765,41 @@ export default function HistoryPageClient({ initialTranslations }: HistoryPageCl
 
               <div
                 data-history-preview-actions
-                className="sticky bottom-0 -mx-5 mt-6 grid gap-3 border-t border-slate-200 bg-slate-50/95 px-5 py-4 backdrop-blur sm:grid-cols-[1fr_auto_auto] md:static md:mx-0 md:border-t-0 md:bg-transparent md:p-0 md:backdrop-blur-0"
+                className="sticky bottom-0 -mx-5 mt-6 grid grid-cols-[minmax(0,1fr)_44px_44px] gap-2 border-t border-slate-200 bg-slate-50/95 px-5 py-4 backdrop-blur sm:grid-cols-[1fr_auto_auto] sm:gap-3 md:static md:mx-0 md:border-t-0 md:bg-transparent md:p-0 md:backdrop-blur-0"
               >
                 <button
                   type="button"
                   onClick={() => handleReprompt(previewItem)}
                   className="inline-flex items-center justify-center rounded-xl bg-indigo-600 px-5 py-3 text-center text-sm font-extrabold text-white hover:bg-indigo-700"
                 >
-                  {copy.createSimilar}
+                  {copy.recreate}
                 </button>
                 <button
                   type="button"
                   onClick={() => void handleDownload(previewItem)}
-                  className="inline-flex items-center justify-center rounded-xl border border-slate-200 px-5 py-3 text-center text-sm font-extrabold text-slate-700 hover:border-indigo-200 hover:text-indigo-600"
+                  aria-label={copy.download}
+                  title={copy.download}
+                  className="inline-flex h-11 items-center justify-center rounded-xl border border-slate-200 px-0 text-center text-sm font-extrabold text-slate-700 hover:border-indigo-200 hover:text-indigo-600 sm:h-auto sm:px-5 sm:py-3"
                 >
-                  {copy.download}
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="7 10 12 15 17 10" />
+                    <line x1="12" y1="15" x2="12" y2="3" />
+                  </svg>
+                  <span className="ml-2 hidden sm:inline">{copy.download}</span>
                 </button>
                 <button
                   type="button"
                   onClick={() => handleDelete(previewItem)}
                   disabled={deletingId === previewItem.id}
-                  className="inline-flex items-center justify-center gap-2 rounded-xl border border-rose-200 px-5 py-3 text-center text-sm font-extrabold text-rose-600 hover:border-rose-300 hover:bg-rose-50 disabled:cursor-not-allowed disabled:opacity-60"
+                  aria-label={deletingId === previewItem.id ? copy.deleting : copy.delete}
+                  title={deletingId === previewItem.id ? copy.deleting : copy.delete}
+                  className="inline-flex h-11 items-center justify-center rounded-xl border border-rose-200 px-0 text-center text-sm font-extrabold text-rose-600 hover:border-rose-300 hover:bg-rose-50 disabled:cursor-not-allowed disabled:opacity-60 sm:h-auto sm:px-5 sm:py-3"
                 >
                   <DeleteIcon size={16} />
-                  {deletingId === previewItem.id ? copy.deleting : copy.delete}
+                  <span className="ml-2 hidden sm:inline">
+                    {deletingId === previewItem.id ? copy.deleting : copy.delete}
+                  </span>
                 </button>
               </div>
             </div>

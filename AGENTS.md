@@ -36,6 +36,7 @@
 - 浏览器自动化交互只在用户要求视觉/交互确认，或源码与 HTML smoke 不能证明问题时再做；默认不为了单纯给预览链接而启动完整浏览器流程。
 - 小型首屏布局、组件接线、文案微调默认不扩展后端 API、导航、sitemap、SEO Factory 记录或完整验证矩阵，除非改动实际触碰这些面。
 - 共享生成组件变更若影响真实生成请求、模型选择、上传、积分、历史记录或 API 参数，必须补针对性测试；否则优先用源码契约测试、类型检查和本地页面 smoke。
+- 新增或修改生成模型时，Vercel 前端模型清单与 Cloudflare 生成后端清单必须通过 `npm run check:generation-contract`。生产发布顺序固定为先发布 Cloudflare Production 契约与生成函数，再发布 Vercel Production；Cloudflare 线上契约版本不一致时，Vercel Production 构建必须失败，不得绕过后继续上线。
 
 ## SEO 页面与常驻视频资产规则
 

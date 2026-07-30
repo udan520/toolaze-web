@@ -1,12 +1,31 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
 import {
+  buildHistoryRecreateHref,
   buildHistoryRepromptPayload,
   getDisplayImagePreviewUrl,
   getHistoryReferenceImageUrls,
   getOriginalHistoryInputImageUrls,
   getReferencePreviewUrl,
 } from './history-reprompt'
+
+test('routes image history Recreate to the localized generic image generator', () => {
+  assert.equal(
+    buildHistoryRecreateHref({ mediaType: 'image', model: 'flux-2-pro' }, 'en'),
+    '/ai-image-generator?model=flux-2-pro',
+  )
+  assert.equal(
+    buildHistoryRecreateHref({ mediaType: 'image', model: 'gpt-image-1-5' }, 'zh-TW'),
+    '/zh-TW/ai-image-generator?model=gpt-image-1-5',
+  )
+})
+
+test('routes video history Recreate to the localized generic video generator', () => {
+  assert.equal(
+    buildHistoryRecreateHref({ mediaType: 'video', model: 'grok-1-5-video' }, 'ja'),
+    '/ja/ai-video-generator',
+  )
+})
 
 const baseHistoryItem = {
   prompt: 'Create a premium citrus soda campaign image.',

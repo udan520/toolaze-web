@@ -11,6 +11,7 @@ import {
   moderatePromptBeforeGeneration,
 } from '../_shared/creem-moderation.mjs';
 import { attachGenerationTaskIdToConsumption } from '../_shared/generation-task-access.mjs';
+import { SUPPORTED_IMAGE_GENERATION_MODEL_IDS } from '../_shared/image-generation-contract.mjs';
 
 /**
  * Cloudflare Pages Function: Nano Banana Pro 生图 - 创建任务
@@ -32,6 +33,7 @@ const CORS = {
 };
 
 let dailyCount = { date: '', count: 0 };
+const SUPPORTED_IMAGE_GENERATION_MODELS = new Set(SUPPORTED_IMAGE_GENERATION_MODEL_IDS);
 
 function getDailyCap(env) {
   const cap = env.NANO_BANANA_DAILY_CAP;
@@ -75,18 +77,8 @@ function mapAspectRatio(aspectRatio) {
 
 function resolveModel(model) {
   const m = String(model || '').trim().toLowerCase();
-  if (m === 'gpt-image-2') return 'gpt-image-2';
-  if (m === 'gpt-image-1-5') return 'gpt-image-1-5';
-  if (m === 'flux-2-pro') return 'flux-2-pro';
-  if (m === 'flux-2-flex') return 'flux-2-flex';
-  if (m === 'nano-banana-2') return 'nano-banana-2';
-  if (m === 'seedream-4-5') return 'seedream-4-5';
-  if (m === 'seedream-5-0-lite') return 'seedream-5-0-lite';
-  if (m === 'seedream-5-0-pro') return 'seedream-5-0-pro';
-  if (m === 'wan-2-7-image') return 'wan-2-7-image';
-  if (m === 'grok-1-5-image') return 'grok-1-5-image';
-  if (m === GROK_VIDEO_MODEL_ID || m === 'grok-imagine-video-1-5-preview') return GROK_VIDEO_MODEL_ID;
-  return 'nano-banana-pro';
+  if (m === 'grok-imagine-video-1-5-preview') return GROK_VIDEO_MODEL_ID;
+  return SUPPORTED_IMAGE_GENERATION_MODELS.has(m) ? m : null;
 }
 
 function isVideoGenerationModel(model) {
@@ -166,7 +158,9 @@ function resolveProviderModelId(model, env, isImageToImage, resolution) {
     return env.KIE_WAN_2_7_IMAGE_MODEL || 'wan/2-7-image';
   }
   if (model === 'grok-1-5-image') {
-    return env.KIE_GROK_1_5_IMAGE_MODEL || 'grok-1.5-image';
+    return isImageToImage
+      ? env.KIE_GROK_1_5_IMAGE_TO_IMAGE_MODEL || 'grok-imagine/image-to-image'
+      : env.KIE_GROK_1_5_TEXT_TO_IMAGE_MODEL || 'grok-imagine/text-to-image';
   }
   if (model === GROK_VIDEO_MODEL_ID) {
     return env.KIE_GROK_VIDEO_1_5_MODEL || GROK_VIDEO_PROVIDER_MODEL_ID;
@@ -303,6 +297,9 @@ export async function onRequest(context) {
     const durationSeconds = normalizeVideoDurationSeconds(formData.get('duration'));
     const isImageToImage = formData.get('isImageToImage') === 'true';
     const model = resolveModel(formData.get('model'));
+    if (!model) {
+      return jsonResponse({ error: 'Unsupported image model.' }, 400);
+    }
     const mediaType = getGenerationMediaType(model);
     const normalizedResolution = model === 'gpt-image-1-5'
       ? (quality || 'medium')
@@ -432,7 +429,7 @@ export async function onRequest(context) {
       input.output_format = mappedFormat;
     }
     if (isImageToImage && imageUrls.length > 0) {
-      if (isVideoGenerationModel(model) || model === 'seedream-4-5' || model === 'seedream-5-0-lite' || model === 'seedream-5-0-pro') {
+      if (isVideoGenerationModel(model) || model === 'grok-1-5-image' || model === 'seedream-4-5' || model === 'seedream-5-0-lite' || model === 'seedream-5-0-pro') {
         input.image_urls = imageUrls.slice(0, maxImages);
       } else if (
         model === 'gpt-image-2' ||
