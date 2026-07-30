@@ -60,6 +60,12 @@ export const HOME_MODEL_CARD_IMAGES = {
     height: 720,
     alt: 'AI Kissing Video Generator demo preview',
   },
+  'ai-asmr-video-generator': {
+    src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/ai-asmr-video-generator/demo-poster.webp',
+    width: 960,
+    height: 540,
+    alt: 'AI ASMR Video Generator demo preview',
+  },
   'grok-1-5-video': {
     src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/prompt-templates/image-guided-motion.webp',
     width: 1280,

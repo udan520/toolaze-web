@@ -42,6 +42,8 @@ const defaultNavTranslations = {
   language: 'Language',
   quickTools: 'Quick Tools',
   aiTools: 'AI Tools',
+  imageTools: 'Image Tools',
+  videoTools: 'Video Tools',
   hot: 'Hot',
   imageCompression: 'Image Compression',
   imageConverter: 'Image Converter',
@@ -49,6 +51,7 @@ const defaultNavTranslations = {
   photoRestoration: 'Photo Restoration',
   aiCouplePhotoMaker: 'AI Couple Photo Maker',
   aiBabyGenerator: 'AI Baby Generator',
+  aiAsmrVideoGenerator: 'AI ASMR Video Generator',
   aiKissingVideoGenerator: 'AI Kissing Video Generator',
   aiDanceGenerator: 'AI Dance Generator',
   aiHairstyleChanger: 'AI Hairstyle Changer',
@@ -159,12 +162,51 @@ const AI_TOOLS_DEMO_IMAGES = {
   aiCouplePhotoMaker: '/ai-couple-photo-maker/rainy-eiffel-4x3.jpg',
   aiKissingVideoGenerator:
     'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/15ccbe71d8eb4921930b8b7638bcebab.webp',
+  aiAsmrVideoGenerator:
+    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/ai-asmr-video-generator/demo-poster.webp',
   aiDanceGenerator: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/ai-dance-demo-source.png',
   aiImageToImageGenerator:
     'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/gpt-image-2/feature-image-editing.webp',
   worldCupAiImageGenerator:
     'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d67aebd7cde5431abd3a7bb74a89bac1.webp',
 }
+
+type AiToolNavLabelKey =
+  | 'aiHairstyleChanger'
+  | 'aiHairColorChanger'
+  | 'aiClothesChanger'
+  | 'aiBabyGenerator'
+  | 'aiCouplePhotoMaker'
+  | 'worldCupAiImageGenerator'
+  | 'watermarkRemover'
+  | 'photoRestoration'
+  | 'aiAsmrVideoGenerator'
+  | 'aiKissingVideoGenerator'
+  | 'aiDanceGenerator'
+
+type AiToolMenuItem = {
+  href: string
+  labelKey: AiToolNavLabelKey
+  imageKey: keyof typeof AI_TOOLS_DEMO_IMAGES
+  hot?: boolean
+}
+
+const AI_IMAGE_TOOL_MENU_ITEMS: readonly AiToolMenuItem[] = [
+  { href: '/ai-hairstyle-changer', labelKey: 'aiHairstyleChanger', imageKey: 'aiHairstyleChanger' },
+  { href: '/ai-hair-color-changer', labelKey: 'aiHairColorChanger', imageKey: 'aiHairColorChanger' },
+  { href: '/ai-clothes-changer', labelKey: 'aiClothesChanger', imageKey: 'aiClothesChanger' },
+  { href: '/ai-baby-generator', labelKey: 'aiBabyGenerator', imageKey: 'aiBabyGenerator' },
+  { href: '/ai-couple-photo-maker', labelKey: 'aiCouplePhotoMaker', imageKey: 'aiCouplePhotoMaker' },
+  { href: '/world-cup-ai-image-generator', labelKey: 'worldCupAiImageGenerator', imageKey: 'worldCupAiImageGenerator' },
+  { href: '/watermark-remover', labelKey: 'watermarkRemover', imageKey: 'watermarkRemover' },
+  { href: '/photo-restoration', labelKey: 'photoRestoration', imageKey: 'photoRestoration' },
+]
+
+const AI_VIDEO_TOOL_MENU_ITEMS: readonly AiToolMenuItem[] = [
+  { href: '/ai-asmr-video-generator', labelKey: 'aiAsmrVideoGenerator', imageKey: 'aiAsmrVideoGenerator' },
+  { href: '/ai-kissing-video-generator', labelKey: 'aiKissingVideoGenerator', imageKey: 'aiKissingVideoGenerator', hot: true },
+  { href: '/ai-dance-generator', labelKey: 'aiDanceGenerator', imageKey: 'aiDanceGenerator', hot: true },
+]
 
 function getInitialNavTranslations(initialTranslations?: any) {
   if (!initialTranslations) return defaultNavTranslations
@@ -713,6 +755,92 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
     return getPreferredLocalizedUrl(href, navEffectiveLocale)
   }
 
+  const getAiToolLabel = (item: AiToolMenuItem): string => (
+    navTranslations[item.labelKey] || defaultNavTranslations[item.labelKey]
+  )
+
+  const renderAiToolMenuItem = (item: AiToolMenuItem, surface: 'desktop' | 'mobile') => {
+    const label = getAiToolLabel(item)
+
+    return (
+      <Link
+        key={`${surface}-${item.href}`}
+        href={getLocalizedHref(item.href)}
+        onClick={() => {
+          if (surface === 'desktop') {
+            setOpenDesktopMenu(null)
+          } else {
+            setMobileMenuOpen(false)
+            setExpandedSubmenus(new Set())
+          }
+        }}
+        className="flex min-w-0 items-center gap-3 rounded-lg px-3 py-2 text-sm text-slate-700 transition-colors hover:bg-indigo-50 hover:text-indigo-600"
+      >
+        <img
+          src={AI_TOOLS_DEMO_IMAGES[item.imageKey]}
+          alt={label}
+          className="h-[42px] w-14 shrink-0 rounded-md border border-indigo-100 object-cover"
+        />
+        <span className="flex min-w-0 items-center gap-2 leading-tight">
+          <span>{label}</span>
+          {item.hot && (
+            <span className="shrink-0 rounded-full bg-red-500 px-1.5 py-0.5 text-[10px] font-extrabold leading-none text-white">
+              {navTranslations.hot || defaultNavTranslations.hot}
+            </span>
+          )}
+        </span>
+      </Link>
+    )
+  }
+
+  const getDefaultAiToolsExpandedSubmenus = () => {
+    const normalizedPathname = pathname.replace(/\/$/, '')
+    if (AI_IMAGE_TOOL_MENU_ITEMS.some((item) => normalizedPathname.endsWith(item.href))) {
+      return new Set(['ai-tools-image'])
+    }
+    if (AI_VIDEO_TOOL_MENU_ITEMS.some((item) => normalizedPathname.endsWith(item.href))) {
+      return new Set(['ai-tools-video'])
+    }
+    return new Set<string>()
+  }
+
+  const renderMobileAiToolsGroup = (
+    groupKey: 'image' | 'video',
+    title: string,
+    items: readonly AiToolMenuItem[],
+  ) => {
+    const submenuKey = `ai-tools-${groupKey}`
+    const isExpanded = expandedSubmenus.has(submenuKey)
+
+    return (
+      <div data-ai-tools-group={groupKey} className="overflow-hidden rounded-lg border border-indigo-50 bg-white">
+        <button
+          type="button"
+          onClick={() => {
+            setExpandedSubmenus((current) => {
+              const next = new Set(current)
+              if (next.has(submenuKey)) next.delete(submenuKey)
+              else next.add(submenuKey)
+              return next
+            })
+          }}
+          className="flex w-full items-center justify-between px-3 py-2.5 text-left text-sm font-bold text-slate-700 transition-colors hover:bg-indigo-50 hover:text-indigo-600"
+          aria-expanded={isExpanded}
+        >
+          <span>{title}</span>
+          <svg className={`h-4 w-4 transition-transform ${isExpanded ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        {isExpanded && (
+          <div className="border-t border-indigo-50 p-1.5">
+            {items.map((item) => renderAiToolMenuItem(item, 'mobile'))}
+          </div>
+        )}
+      </div>
+    )
+  }
+
   const getEarnCreditsCheckInHref = () => `${getLocalizedHref('/earn-credits')}#daily-check-in`
   
   // 获取三级菜单项的函数（使用已加载的数据）
@@ -1114,8 +1242,9 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
     />
   )
 
-  const renderCreditTransactions = () => {
-    const recentTransactions = creditSummary.transactions.slice(0, 3)
+  const renderCreditTransactions = (variant: 'desktop' | 'mobile' = 'desktop') => {
+    const transactionLimit = variant === 'mobile' ? 2 : 3
+    const recentTransactions = creditSummary.transactions.slice(0, transactionLimit)
     if (recentTransactions.length === 0) {
       return (
         <div className="rounded-xl border border-dashed border-slate-200 px-3 py-4 text-center text-xs text-slate-500">
@@ -1239,82 +1368,84 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
     return (
       <div
         data-account-menu-variant={variant}
-        className={`overflow-y-auto overscroll-contain rounded-2xl border border-slate-200 bg-white shadow-2xl shadow-slate-200/60 ${
+        className={`flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl shadow-slate-200/60 ${
           variant === 'mobile'
-            ? 'fixed right-3 top-[64px] z-[120] max-h-[calc(100vh-5rem)] w-[calc(100vw-1.5rem)] max-w-[320px]'
+            ? 'fixed right-3 top-[64px] z-[120] max-h-[calc(100dvh-4.75rem)] w-[calc(100vw-1.5rem)] max-w-[320px]'
             : 'absolute right-0 top-full z-[80] mt-3 max-h-[calc(100vh-6rem)] w-[320px]'
         }`}
       >
-        <div className="border-b border-slate-100 px-4 py-3">
-          <div className="flex items-center gap-3">
-            {renderAvatar('h-9 w-9')}
-            <div className="min-w-0">
-              <p className="truncate text-sm font-bold text-slate-900">{authUser.name || authUser.email}</p>
-              {authUser.email && (
-                <p className="truncate text-xs text-slate-500">{authUser.email}</p>
-              )}
+        <div data-account-menu-scroll-content className="min-h-0 flex-1 overflow-y-auto overscroll-y-contain">
+          <div className="border-b border-slate-100 px-4 py-3">
+            <div className="flex items-center gap-3">
+              {renderAvatar('h-9 w-9')}
+              <div className="min-w-0">
+                <p className="truncate text-sm font-bold text-slate-900">{authUser.name || authUser.email}</p>
+                {authUser.email && (
+                  <p className="truncate text-xs text-slate-500">{authUser.email}</p>
+                )}
+              </div>
             </div>
-          </div>
-          <div className="mt-3 rounded-xl bg-indigo-50 px-3 py-2.5">
-            <p className="text-xs font-semibold text-indigo-600">
-              {accountTranslations.availableCredits}
-            </p>
-            <p className="mt-1 text-2xl font-extrabold text-slate-950">
-              {creditSummary.balance}
-            </p>
-          </div>
-          <Link
-            href={getLocalizedHref('/pricing')}
-            onClick={() => setAccountMenuOpen(false)}
-            className="mt-3 flex w-full items-center justify-center rounded-xl bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-600 px-4 py-2.5 text-center text-sm font-extrabold text-white shadow-lg shadow-indigo-100 transition hover:-translate-y-0.5"
-          >
-            <span>{accountTranslations.buyCredits}</span>
-          </Link>
-          <Link
-            href={getEarnCreditsCheckInHref()}
-            onClick={() => setAccountMenuOpen(false)}
-            className="mt-2 flex w-full items-center justify-center rounded-xl border border-indigo-100 bg-indigo-50/70 px-4 py-2.5 text-center text-sm font-extrabold text-indigo-700 shadow-sm shadow-indigo-50 transition hover:-translate-y-0.5 hover:bg-indigo-50"
-          >
-            <span>{accountTranslations.earnCredits}</span>
-          </Link>
-        </div>
-        <div className="px-4 py-3">
-          <div className="mb-3 flex items-center justify-between">
-            <p className="text-sm font-bold text-slate-900">{accountTranslations.creditHistory}</p>
+            <div className="mt-3 rounded-xl bg-indigo-50 px-3 py-2.5">
+              <p className="text-xs font-semibold text-indigo-600">
+                {accountTranslations.availableCredits}
+              </p>
+              <p className="mt-1 text-2xl font-extrabold text-slate-950">
+                {creditSummary.balance}
+              </p>
+            </div>
             <Link
-              href={getLocalizedHref('/credits')}
+              href={getLocalizedHref('/pricing')}
               onClick={() => setAccountMenuOpen(false)}
-              className="text-xs font-bold text-indigo-600 hover:text-indigo-700"
+              className="mt-3 flex w-full items-center justify-center rounded-xl bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-600 px-4 py-2.5 text-center text-sm font-extrabold text-white shadow-lg shadow-indigo-100 transition hover:-translate-y-0.5"
             >
-              {accountTranslations.seeAll}
+              <span>{accountTranslations.buyCredits}</span>
+            </Link>
+            <Link
+              href={getEarnCreditsCheckInHref()}
+              onClick={() => setAccountMenuOpen(false)}
+              className="mt-2 flex w-full items-center justify-center rounded-xl border border-indigo-100 bg-indigo-50/70 px-4 py-2.5 text-center text-sm font-extrabold text-indigo-700 shadow-sm shadow-indigo-50 transition hover:-translate-y-0.5 hover:bg-indigo-50"
+            >
+              <span>{accountTranslations.earnCredits}</span>
             </Link>
           </div>
-          {renderCreditTransactions()}
-          <Link
-            href={getLocalizedHref('/history')}
-            onClick={() => setAccountMenuOpen(false)}
-            className="mt-3 flex w-full items-center justify-between rounded-xl border-t border-slate-100 px-4 py-2.5 text-left text-sm font-bold text-slate-700 transition-colors hover:bg-indigo-50 hover:text-indigo-600"
-          >
-            <span>{accountTranslations.history}</span>
-            <span className="text-xs text-slate-400">{accountTranslations.viewAll}</span>
-          </Link>
-          <Link
-            href={getLocalizedHref('/contact')}
-            onClick={() => setAccountMenuOpen(false)}
-            className="mt-2 flex w-full items-center justify-between rounded-xl px-4 py-2.5 text-left text-sm font-bold text-slate-700 transition-colors hover:bg-indigo-50 hover:text-indigo-600"
-          >
-            <span>{accountTranslations.support}</span>
-            <span className="text-xs text-slate-400">{accountTranslations.supportEmail}</span>
-          </Link>
-          <div className="mt-4 border-t border-slate-100 pt-3">
-            <button
-              type="button"
-              onClick={handleSignOut}
-              className="w-full rounded-xl px-4 py-2.5 text-center text-sm font-bold text-slate-700 transition-colors hover:bg-indigo-50 hover:text-indigo-600"
+          <div className="px-4 py-3">
+            <div className="mb-3 flex items-center justify-between">
+              <p className="text-sm font-bold text-slate-900">{accountTranslations.creditHistory}</p>
+              <Link
+                href={getLocalizedHref('/credits')}
+                onClick={() => setAccountMenuOpen(false)}
+                className="text-xs font-bold text-indigo-600 hover:text-indigo-700"
+              >
+                {accountTranslations.seeAll}
+              </Link>
+            </div>
+            {renderCreditTransactions(variant)}
+            <Link
+              href={getLocalizedHref('/history')}
+              onClick={() => setAccountMenuOpen(false)}
+              className="mt-3 flex w-full items-center justify-between rounded-xl border-t border-slate-100 px-4 py-2.5 text-left text-sm font-bold text-slate-700 transition-colors hover:bg-indigo-50 hover:text-indigo-600"
             >
-              {accountTranslations.signOut}
-            </button>
+              <span>{accountTranslations.history}</span>
+              <span className="text-xs text-slate-400">{accountTranslations.viewAll}</span>
+            </Link>
+            <Link
+              href={getLocalizedHref('/contact')}
+              onClick={() => setAccountMenuOpen(false)}
+              className="mt-2 flex w-full items-center justify-between rounded-xl px-4 py-2.5 text-left text-sm font-bold text-slate-700 transition-colors hover:bg-indigo-50 hover:text-indigo-600"
+            >
+              <span>{accountTranslations.support}</span>
+              <span className="text-xs text-slate-400">{accountTranslations.supportEmail}</span>
+            </Link>
           </div>
+        </div>
+        <div data-account-menu-sign-out className="shrink-0 border-t border-slate-100 bg-white px-4 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
+          <button
+            type="button"
+            onClick={handleSignOut}
+            className="w-full rounded-xl px-4 py-2.5 text-center text-sm font-bold text-slate-700 transition-colors hover:bg-indigo-50 hover:text-indigo-600"
+          >
+            {accountTranslations.signOut}
+          </button>
         </div>
       </div>
     )
@@ -1500,12 +1631,10 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
             )}
             <button
               onClick={() => {
-                setMobileMenuOpen(!mobileMenuOpen)
+                const nextOpen = !mobileMenuOpen
+                setMobileMenuOpen(nextOpen)
                 setAccountMenuOpen(false)
-                // 关闭菜单时重置子菜单展开状态
-                if (mobileMenuOpen) {
-                  setExpandedSubmenus(new Set())
-                }
+                setExpandedSubmenus(nextOpen ? getDefaultAiToolsExpandedSubmenus() : new Set())
               }}
               className="p-2 text-slate-700 transition-colors hover:text-indigo-600"
               aria-label="Toggle menu"
@@ -1537,6 +1666,18 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
             </button>
             <div className={'absolute top-full left-0 mt-2 w-auto min-w-[220px] max-w-[320px] bg-white rounded-xl shadow-lg border border-indigo-50 transition-all duration-200 z-50 overflow-visible ' + (openDesktopMenu === 'prompts' ? 'opacity-100 visible' : 'opacity-0 invisible group-hover:opacity-100 group-hover:visible')}>
               <div className="py-2">
+                <Link
+                  href={getLocalizedHref('/ai-asmr-video-generator')}
+                  onClick={() => setOpenDesktopMenu(null)}
+                  className="flex items-center gap-3 px-4 py-2 text-sm text-slate-700 transition-colors hover:bg-indigo-50 hover:text-indigo-600"
+                >
+                  <img
+                    src={AI_TOOLS_DEMO_IMAGES.aiAsmrVideoGenerator}
+                    alt="AI ASMR Video Generator"
+                    className="w-14 aspect-[4/3] rounded-lg object-cover border border-indigo-100 flex-shrink-0"
+                  />
+                  <span>AI ASMR Video Generator</span>
+                </Link>
                 <Link
                   href={getLocalizedHref('/prompts')}
                   onClick={() => setOpenDesktopMenu(null)}
@@ -1584,144 +1725,32 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
               </svg>
             </button>
-            <div className={'absolute top-full left-0 mt-2 w-auto min-w-[280px] bg-white rounded-xl shadow-lg border border-indigo-50 transition-all duration-200 z-50 ' + (openDesktopMenu === 'ai-tools' ? 'opacity-100 visible' : 'opacity-0 invisible group-hover:opacity-100 group-hover:visible')}>
-              <div className="py-2">
-                <Link
-                  href={getLocalizedHref('/ai-kissing-video-generator')}
-                  onClick={() => setOpenDesktopMenu(null)}
-                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-3"
-                >
-                  <img
-                    src={AI_TOOLS_DEMO_IMAGES.aiKissingVideoGenerator}
-                    alt={navTranslations.aiKissingVideoGenerator || defaultNavTranslations.aiKissingVideoGenerator}
-                    className="w-14 aspect-[4/3] rounded-lg object-cover border border-indigo-100 flex-shrink-0"
-                  />
-                  <span className="flex min-w-0 items-center gap-2">
-                    <span>{navTranslations.aiKissingVideoGenerator || defaultNavTranslations.aiKissingVideoGenerator}</span>
-                    <span className="shrink-0 rounded-full bg-red-500 px-1.5 py-0.5 text-[10px] font-extrabold leading-none text-white">
-                      {navTranslations.hot || defaultNavTranslations.hot}
-                    </span>
-                  </span>
-                </Link>
-                <Link
-                  href={getLocalizedHref('/ai-dance-generator')}
-                  onClick={() => setOpenDesktopMenu(null)}
-                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-3"
-                >
-                  <img
-                    src={AI_TOOLS_DEMO_IMAGES.aiDanceGenerator}
-                    alt={navTranslations.aiDanceGenerator || defaultNavTranslations.aiDanceGenerator}
-                    className="w-14 aspect-[4/3] rounded-lg object-cover border border-indigo-100 flex-shrink-0"
-                  />
-                  <span className="flex min-w-0 items-center gap-2">
-                    <span>{navTranslations.aiDanceGenerator || defaultNavTranslations.aiDanceGenerator}</span>
-                    <span className="shrink-0 rounded-full bg-red-500 px-1.5 py-0.5 text-[10px] font-extrabold leading-none text-white">
-                      {navTranslations.hot || defaultNavTranslations.hot}
-                    </span>
-                  </span>
-                </Link>
-                <Link
-                  href={getLocalizedHref('/ai-hairstyle-changer')}
-                  onClick={() => setOpenDesktopMenu(null)}
-                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-3"
-                >
-                  <img
-                    src={AI_TOOLS_DEMO_IMAGES.aiHairstyleChanger}
-                    alt={navTranslations.aiHairstyleChanger || defaultNavTranslations.aiHairstyleChanger}
-                    className="w-14 aspect-[4/3] rounded-lg object-cover border border-indigo-100 flex-shrink-0"
-                  />
-                  <span>{navTranslations.aiHairstyleChanger || defaultNavTranslations.aiHairstyleChanger}</span>
-                </Link>
-                <Link
-                  href={getLocalizedHref('/ai-hair-color-changer')}
-                  onClick={() => setOpenDesktopMenu(null)}
-                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-3"
-                >
-                  <img
-                    src={AI_TOOLS_DEMO_IMAGES.aiHairColorChanger}
-                    alt={navTranslations.aiHairColorChanger || defaultNavTranslations.aiHairColorChanger}
-                    className="w-14 aspect-[4/3] rounded-lg object-cover border border-indigo-100 flex-shrink-0"
-                  />
-                  <span>{navTranslations.aiHairColorChanger || defaultNavTranslations.aiHairColorChanger}</span>
-                </Link>
-                <Link
-                  href={getLocalizedHref('/ai-clothes-changer')}
-                  onClick={() => setOpenDesktopMenu(null)}
-                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-3"
-                >
-                  <img
-                    src={AI_TOOLS_DEMO_IMAGES.aiClothesChanger}
-                    alt={navTranslations.aiClothesChanger || defaultNavTranslations.aiClothesChanger}
-                    className="w-14 aspect-[4/3] rounded-lg object-cover border border-indigo-100 flex-shrink-0"
-                  />
-                  <span>{navTranslations.aiClothesChanger || defaultNavTranslations.aiClothesChanger}</span>
-                </Link>
-                <Link
-                  href={getLocalizedHref('/ai-baby-generator')}
-                  onClick={() => setOpenDesktopMenu(null)}
-                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-3"
-                >
-                  <img
-                    src={AI_TOOLS_DEMO_IMAGES.aiBabyGenerator}
-                    alt={navTranslations.aiBabyGenerator || defaultNavTranslations.aiBabyGenerator}
-                    className="w-14 aspect-[4/3] rounded-lg object-cover border border-indigo-100 flex-shrink-0"
-                  />
-                  <span>{navTranslations.aiBabyGenerator || defaultNavTranslations.aiBabyGenerator}</span>
-                </Link>
-                <Link
-                  href={getLocalizedHref('/ai-couple-photo-maker')}
-                  onClick={() => setOpenDesktopMenu(null)}
-                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-3"
-                >
-                  <img
-                    src={AI_TOOLS_DEMO_IMAGES.aiCouplePhotoMaker}
-                    alt={navTranslations.aiCouplePhotoMaker || defaultNavTranslations.aiCouplePhotoMaker}
-                    className="w-14 aspect-[4/3] rounded-lg object-cover border border-indigo-100 flex-shrink-0"
-                  />
-                  <span>{navTranslations.aiCouplePhotoMaker || defaultNavTranslations.aiCouplePhotoMaker}</span>
-                </Link>
-                <Link
-                  href={getLocalizedHref('/world-cup-ai-image-generator')}
-                  onClick={() => setOpenDesktopMenu(null)}
-                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-3"
-                >
-                  <img
-                    src={AI_TOOLS_DEMO_IMAGES.worldCupAiImageGenerator}
-                    alt={navTranslations.worldCupAiImageGenerator || defaultNavTranslations.worldCupAiImageGenerator}
-                    className="w-14 aspect-[4/3] rounded-lg object-cover border border-indigo-100 flex-shrink-0"
-                  />
-                  <span>{navTranslations.worldCupAiImageGenerator || defaultNavTranslations.worldCupAiImageGenerator}</span>
-                </Link>
-                <Link
-                  href={getLocalizedHref('/watermark-remover')}
-                  onClick={() => setOpenDesktopMenu(null)}
-                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-3"
-                >
-                  <img
-                    src={AI_TOOLS_DEMO_IMAGES.watermarkRemover}
-                    alt={navTranslations.watermarkRemover || defaultNavTranslations.watermarkRemover}
-                    className="w-14 aspect-[4/3] rounded-lg object-cover border border-indigo-100 flex-shrink-0"
-                  />
-                  <span>{navTranslations.watermarkRemover || defaultNavTranslations.watermarkRemover}</span>
-                </Link>
-                <Link
-                  href={getLocalizedHref('/photo-restoration')}
-                  onClick={() => setOpenDesktopMenu(null)}
-                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-3"
-                >
-                  <img
-                    src={AI_TOOLS_DEMO_IMAGES.photoRestoration}
-                    alt={navTranslations.photoRestoration || defaultNavTranslations.photoRestoration}
-                    className="w-14 aspect-[4/3] rounded-lg object-cover border border-indigo-100 flex-shrink-0"
-                  />
-                  <span>{navTranslations.photoRestoration || defaultNavTranslations.photoRestoration}</span>
-                </Link>
+            <div className={'absolute left-1/2 top-full z-50 mt-2 w-[760px] max-w-[calc(100vw-2rem)] -translate-x-1/2 overflow-hidden rounded-lg border border-indigo-50 bg-white shadow-xl transition-all duration-200 ' + (openDesktopMenu === 'ai-tools' ? 'opacity-100 visible' : 'opacity-0 invisible group-hover:opacity-100 group-hover:visible')}>
+              <div className="grid grid-cols-[minmax(0,1.55fr)_minmax(0,0.9fr)]">
+                <section data-ai-tools-group="image" className="border-r border-indigo-50 p-3">
+                  <h3 className="px-3 pb-2 pt-1 text-xs font-extrabold text-indigo-700">
+                    {navTranslations.imageTools || defaultNavTranslations.imageTools}
+                  </h3>
+                  <div className="grid grid-cols-2 gap-x-2">
+                    {AI_IMAGE_TOOL_MENU_ITEMS.map((item) => renderAiToolMenuItem(item, 'desktop'))}
+                  </div>
+                </section>
+                <section data-ai-tools-group="video" className="p-3">
+                  <h3 className="px-3 pb-2 pt-1 text-xs font-extrabold text-indigo-700">
+                    {navTranslations.videoTools || defaultNavTranslations.videoTools}
+                  </h3>
+                  <div>
+                    {AI_VIDEO_TOOL_MENU_ITEMS.map((item) => renderAiToolMenuItem(item, 'desktop'))}
+                  </div>
+                </section>
+              </div>
+              <div className="border-t border-indigo-50 p-2">
                 <Link
                   href={getLocalizedHref('/ai-tools')}
                   onClick={() => {
                     setOpenDesktopMenu(null)
                   }}
-                  className="block px-4 pt-2 pb-1 text-xs font-medium tracking-normal text-indigo-600 hover:bg-indigo-50 transition-colors"
+                  className="block rounded-md px-3 py-2 text-xs font-semibold tracking-normal text-indigo-600 transition-colors hover:bg-indigo-50"
                 >
                   {navTranslations.viewAllAiTools || defaultNavTranslations.viewAllAiTools}
                 </Link>
@@ -2208,175 +2237,27 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
               </div>
               {/* AI Tools 部分 */}
               <div className="order-2 border-b border-indigo-50 pb-4">
-                <div className="text-sm font-bold text-slate-700 mb-3">{navTranslations.aiTools || 'AI Tools'}</div>
+                <div className="mb-3 text-sm font-bold text-slate-700">
+                  {navTranslations.aiTools || defaultNavTranslations.aiTools}
+                </div>
                 <div className="space-y-2">
-                  <Link
-                    href={getLocalizedHref('/ai-kissing-video-generator')}
-                    onClick={() => {
-                      setMobileMenuOpen(false)
-                      setExpandedSubmenus(new Set())
-                    }}
-                    className="flex items-center gap-3 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
-                  >
-                    <img
-                      src={AI_TOOLS_DEMO_IMAGES.aiKissingVideoGenerator}
-                      alt={navTranslations.aiKissingVideoGenerator || defaultNavTranslations.aiKissingVideoGenerator}
-                      className="w-14 aspect-[4/3] rounded-lg object-cover border border-indigo-100 flex-shrink-0"
-                    />
-                    <span className="flex min-w-0 items-center gap-2">
-                      <span>{navTranslations.aiKissingVideoGenerator || defaultNavTranslations.aiKissingVideoGenerator}</span>
-                      <span className="shrink-0 rounded-full bg-red-500 px-1.5 py-0.5 text-[10px] font-extrabold leading-none text-white">
-                        {navTranslations.hot || defaultNavTranslations.hot}
-                      </span>
-                    </span>
-                  </Link>
-                  <Link
-                    href={getLocalizedHref('/ai-dance-generator')}
-                    onClick={() => {
-                      setMobileMenuOpen(false)
-                      setExpandedSubmenus(new Set())
-                    }}
-                    className="flex items-center gap-3 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
-                  >
-                    <img
-                      src={AI_TOOLS_DEMO_IMAGES.aiDanceGenerator}
-                      alt={navTranslations.aiDanceGenerator || defaultNavTranslations.aiDanceGenerator}
-                      className="w-14 aspect-[4/3] rounded-lg object-cover border border-indigo-100 flex-shrink-0"
-                    />
-                    <span className="flex min-w-0 items-center gap-2">
-                      <span>{navTranslations.aiDanceGenerator || defaultNavTranslations.aiDanceGenerator}</span>
-                      <span className="shrink-0 rounded-full bg-red-500 px-1.5 py-0.5 text-[10px] font-extrabold leading-none text-white">
-                        {navTranslations.hot || defaultNavTranslations.hot}
-                      </span>
-                    </span>
-                  </Link>
-                  <Link
-                    href={getLocalizedHref('/ai-hairstyle-changer')}
-                    onClick={() => {
-                      setMobileMenuOpen(false)
-                      setExpandedSubmenus(new Set())
-                    }}
-                    className="flex items-center gap-3 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
-                  >
-                    <img
-                      src={AI_TOOLS_DEMO_IMAGES.aiHairstyleChanger}
-                      alt={navTranslations.aiHairstyleChanger || defaultNavTranslations.aiHairstyleChanger}
-                      className="w-14 aspect-[4/3] rounded-lg object-cover border border-indigo-100 flex-shrink-0"
-                    />
-                    <span>{navTranslations.aiHairstyleChanger || defaultNavTranslations.aiHairstyleChanger}</span>
-                  </Link>
-                  <Link
-                    href={getLocalizedHref('/ai-hair-color-changer')}
-                    onClick={() => {
-                      setMobileMenuOpen(false)
-                      setExpandedSubmenus(new Set())
-                    }}
-                    className="flex items-center gap-3 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
-                  >
-                    <img
-                      src={AI_TOOLS_DEMO_IMAGES.aiHairColorChanger}
-                      alt={navTranslations.aiHairColorChanger || defaultNavTranslations.aiHairColorChanger}
-                      className="w-14 aspect-[4/3] rounded-lg object-cover border border-indigo-100 flex-shrink-0"
-                  />
-                    <span>{navTranslations.aiHairColorChanger || defaultNavTranslations.aiHairColorChanger}</span>
-                  </Link>
-                  <Link
-                    href={getLocalizedHref('/ai-clothes-changer')}
-                    onClick={() => {
-                      setMobileMenuOpen(false)
-                      setExpandedSubmenus(new Set())
-                    }}
-                    className="flex items-center gap-3 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
-                  >
-                    <img
-                      src={AI_TOOLS_DEMO_IMAGES.aiClothesChanger}
-                      alt={navTranslations.aiClothesChanger || defaultNavTranslations.aiClothesChanger}
-                      className="w-14 aspect-[4/3] rounded-lg object-cover border border-indigo-100 flex-shrink-0"
-                    />
-                    <span>{navTranslations.aiClothesChanger || defaultNavTranslations.aiClothesChanger}</span>
-                  </Link>
-                  <Link
-                    href={getLocalizedHref('/ai-baby-generator')}
-                    onClick={() => {
-                      setMobileMenuOpen(false)
-                      setExpandedSubmenus(new Set())
-                    }}
-                    className="flex items-center gap-3 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
-                  >
-                    <img
-                      src={AI_TOOLS_DEMO_IMAGES.aiBabyGenerator}
-                      alt={navTranslations.aiBabyGenerator || defaultNavTranslations.aiBabyGenerator}
-                      className="w-14 aspect-[4/3] rounded-lg object-cover border border-indigo-100 flex-shrink-0"
-                    />
-                    <span>{navTranslations.aiBabyGenerator || defaultNavTranslations.aiBabyGenerator}</span>
-                  </Link>
-                  <Link
-                    href={getLocalizedHref('/ai-couple-photo-maker')}
-                    onClick={() => {
-                      setMobileMenuOpen(false)
-                      setExpandedSubmenus(new Set())
-                    }}
-                    className="flex items-center gap-3 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
-                  >
-                    <img
-                      src={AI_TOOLS_DEMO_IMAGES.aiCouplePhotoMaker}
-                      alt={navTranslations.aiCouplePhotoMaker || defaultNavTranslations.aiCouplePhotoMaker}
-                      className="w-14 aspect-[4/3] rounded-lg object-cover border border-indigo-100 flex-shrink-0"
-                    />
-                    <span>{navTranslations.aiCouplePhotoMaker || defaultNavTranslations.aiCouplePhotoMaker}</span>
-                  </Link>
-                  <Link
-                    href={getLocalizedHref('/world-cup-ai-image-generator')}
-                    onClick={() => {
-                      setMobileMenuOpen(false)
-                      setExpandedSubmenus(new Set())
-                    }}
-                    className="flex items-center gap-3 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
-                  >
-                    <img
-                      src={AI_TOOLS_DEMO_IMAGES.worldCupAiImageGenerator}
-                      alt={navTranslations.worldCupAiImageGenerator || defaultNavTranslations.worldCupAiImageGenerator}
-                      className="w-14 aspect-[4/3] rounded-lg object-cover border border-indigo-100 flex-shrink-0"
-                    />
-                    <span>{navTranslations.worldCupAiImageGenerator || defaultNavTranslations.worldCupAiImageGenerator}</span>
-                  </Link>
-                  <Link
-                    href={getLocalizedHref('/watermark-remover')}
-                    onClick={() => {
-                      setMobileMenuOpen(false)
-                      setExpandedSubmenus(new Set())
-                    }}
-                    className="flex items-center gap-3 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
-                  >
-                    <img
-                      src={AI_TOOLS_DEMO_IMAGES.watermarkRemover}
-                      alt={navTranslations.watermarkRemover || defaultNavTranslations.watermarkRemover}
-                      className="w-14 aspect-[4/3] rounded-lg object-cover border border-indigo-100 flex-shrink-0"
-                    />
-                    <span>{navTranslations.watermarkRemover || defaultNavTranslations.watermarkRemover}</span>
-                  </Link>
-                  <Link
-                    href={getLocalizedHref('/photo-restoration')}
-                    onClick={() => {
-                      setMobileMenuOpen(false)
-                      setExpandedSubmenus(new Set())
-                    }}
-                    className="flex items-center gap-3 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
-                  >
-                    <img
-                      src={AI_TOOLS_DEMO_IMAGES.photoRestoration}
-                      alt={navTranslations.photoRestoration || defaultNavTranslations.photoRestoration}
-                      className="w-14 aspect-[4/3] rounded-lg object-cover border border-indigo-100 flex-shrink-0"
-                    />
-                    <span>{navTranslations.photoRestoration || defaultNavTranslations.photoRestoration}</span>
-                  </Link>
+                  {renderMobileAiToolsGroup(
+                    'image',
+                    navTranslations.imageTools || defaultNavTranslations.imageTools,
+                    AI_IMAGE_TOOL_MENU_ITEMS,
+                  )}
+                  {renderMobileAiToolsGroup(
+                    'video',
+                    navTranslations.videoTools || defaultNavTranslations.videoTools,
+                    AI_VIDEO_TOOL_MENU_ITEMS,
+                  )}
                   <Link
                     href={getLocalizedHref('/ai-tools')}
                     onClick={() => {
                       setMobileMenuOpen(false)
                       setExpandedSubmenus(new Set())
                     }}
-                    className="flex items-center gap-3 px-3 py-2 text-xs font-medium tracking-normal text-indigo-600 hover:bg-indigo-50 rounded-lg transition-colors"
+                    className="flex items-center rounded-lg px-3 py-2 text-xs font-semibold tracking-normal text-indigo-600 transition-colors hover:bg-indigo-50"
                   >
                     {navTranslations.viewAllAiTools || defaultNavTranslations.viewAllAiTools}
                   </Link>

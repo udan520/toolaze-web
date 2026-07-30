@@ -95,19 +95,21 @@ test('account menu earn credits button keeps the label visually centered', () =>
   assert.doesNotMatch(earnCreditsButtonSource, /bg-white\/90/)
 })
 
-test('account menu stays within the viewport and scrolls to the sign out action', () => {
+test('mobile account menu uses the dynamic viewport and keeps sign out outside the scrolling content', () => {
   const accountMenuSource = navigationSource.slice(
     navigationSource.indexOf('const renderAccountMenu'),
     navigationSource.indexOf('const renderMobileAccountButton'),
   )
 
-  assert.match(accountMenuSource, /overflow-y-auto/)
-  assert.match(accountMenuSource, /overscroll-contain/)
-  assert.match(accountMenuSource, /max-h-\[calc\(100vh-5rem\)\]/)
+  assert.match(accountMenuSource, /max-h-\[calc\(100dvh-4\.75rem\)\]/)
   assert.match(accountMenuSource, /max-h-\[calc\(100vh-6rem\)\]/)
+  assert.match(accountMenuSource, /data-account-menu-scroll-content/)
+  assert.match(accountMenuSource, /min-h-0 flex-1 overflow-y-auto overscroll-y-contain/)
+  assert.match(accountMenuSource, /data-account-menu-sign-out/)
+  assert.match(accountMenuSource, /shrink-0 border-t border-slate-100/)
   assert.ok(
-    accountMenuSource.indexOf('overflow-y-auto') < accountMenuSource.indexOf('{accountTranslations.signOut}'),
-    'Scrollable account menu wrapper should contain the sign out action',
+    accountMenuSource.indexOf('</div>\n        <div data-account-menu-sign-out') > accountMenuSource.indexOf('data-account-menu-scroll-content'),
+    'Sign out footer should be a sibling after the scrolling content',
   )
   const signOutButtonSource = accountMenuSource.slice(
     accountMenuSource.indexOf('onClick={handleSignOut}'),

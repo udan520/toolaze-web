@@ -82,6 +82,7 @@ interface HistoryItem {
   toolSlug?: string | null
   toolLabel?: string | null
   sourcePath?: string | null
+  generationMode?: 'text-to-image' | 'image-to-image'
 }
 
 interface PendingGenerationItem {
@@ -102,6 +103,7 @@ interface PendingGenerationItem {
   taskId?: string
   creditHold?: unknown
   restored?: boolean
+  generationMode?: 'text-to-image' | 'image-to-image'
 }
 
 interface FailedGenerationItem extends PendingGenerationItem {
@@ -390,6 +392,7 @@ function normalizeStoredPendingGenerationItem(item: unknown): PendingGenerationI
     taskId,
     creditHold: candidate.creditHold,
     restored: true,
+    generationMode: candidate.generationMode ?? (inputUrls.length > 0 ? 'image-to-image' : 'text-to-image'),
   }
 }
 
@@ -1785,6 +1788,7 @@ export default function AiImageGenerationTool({
         aspectRatio: item.aspectRatio,
         resolution: item.resolution,
         outputFormat: item.outputFormat,
+        generationMode: item.generationMode,
       })
       setRightMode('history')
     } catch (error: any) {
@@ -2191,6 +2195,7 @@ export default function AiImageGenerationTool({
       aspectRatio: requestAspectRatio,
       resolution: requestResolution,
       outputFormat: requestOutputFormat,
+      generationMode: requestActiveTab,
       ...requestHistoryTool,
     }
 
@@ -2368,6 +2373,7 @@ export default function AiImageGenerationTool({
             toolSlug: savedItem?.toolSlug || requestHistoryTool.toolSlug,
             toolLabel: savedItem?.toolLabel || requestHistoryTool.toolLabel,
             sourcePath: savedItem?.sourcePath || requestHistoryTool.sourcePath,
+            generationMode: requestActiveTab,
           }
           addHistoryItemToFeed(item)
           setRightMode('history')
@@ -2484,6 +2490,7 @@ export default function AiImageGenerationTool({
           toolSlug: savedItem?.toolSlug || requestHistoryTool.toolSlug,
           toolLabel: savedItem?.toolLabel || requestHistoryTool.toolLabel,
           sourcePath: savedItem?.sourcePath || requestHistoryTool.sourcePath,
+          generationMode: requestActiveTab,
         }
         addHistoryItemToFeed(item)
         setRightMode('history')
@@ -2997,7 +3004,7 @@ export default function AiImageGenerationTool({
     setResolution(item.resolution || getDefaultResolutionForModel(item.modelId || selectedModelId))
     setOutputFormat(item.outputFormat || 'Auto')
     setRemoteImageUrls(inputImageUrls.slice(0, getMaxImagesForModel(item.modelId || selectedModelId)))
-    setActiveTab(inputImageUrls.length > 0 ? 'image-to-image' : 'text-to-image')
+    setActiveTab(item.generationMode ?? (inputImageUrls.length > 0 ? 'image-to-image' : 'text-to-image'))
     setCurrentResult(item)
     setActiveSettingsHistoryItemId(item.id)
     historyItemRefs.current.get(item.id)?.scrollIntoView({ block: 'nearest', behavior: 'smooth' })
@@ -3218,7 +3225,7 @@ export default function AiImageGenerationTool({
     setResolution(item.resolution || getDefaultResolutionForModel(item.modelId))
     setOutputFormat(item.outputFormat || 'Auto')
     setRemoteImageUrls(inputImageUrls.slice(0, getMaxImagesForModel(item.modelId)))
-    setActiveTab(inputImageUrls.length > 0 ? 'image-to-image' : 'text-to-image')
+    setActiveTab(item.generationMode ?? (inputImageUrls.length > 0 ? 'image-to-image' : 'text-to-image'))
     setActiveSettingsHistoryItemId(item.id)
     historyItemRefs.current.get(item.id)?.scrollIntoView({ block: 'nearest', behavior: 'smooth' })
   }

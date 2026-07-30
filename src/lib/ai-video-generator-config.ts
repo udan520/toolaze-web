@@ -225,8 +225,8 @@ const AI_VIDEO_GENERATOR_MODEL_OPTIONS_BASE = [
     durations: Array.from({ length: 9 }, (_, index) => index + 2),
     defaultDuration: 5,
     resolutions: ['720p', '1080p'],
-    promptPlaceholder: 'Describe the visuals, motion, camera, and synchronized sound.',
-    samplePrompt: 'Macro glass fruit cutting, slow precise blade motion, crisp synchronized sound, soft studio light.',
+    promptPlaceholder: 'Describe the visuals, motion, camera, and synchronized ASMR sound.',
+    samplePrompt: 'Macro ASMR glass fruit cutting, slow precise blade motion, crisp synchronized sound, soft studio light.',
     previewTone: 'Native-audio cinematic preview',
   },
   ...([
@@ -250,7 +250,7 @@ const AI_VIDEO_GENERATOR_MODEL_OPTIONS_BASE = [
     defaultDuration: 5,
     resolutions: [...resolutions],
     promptPlaceholder: 'Describe the subject, motion, camera direction, and desired audio.',
-    samplePrompt: 'A tactile close-up with slow deliberate motion, detailed materials, and clean synchronized sound.',
+    samplePrompt: 'A tactile ASMR close-up with slow deliberate motion, detailed materials, and clean synchronized sound.',
     previewTone: 'Cinematic Wan video preview',
   })),
   ...([
@@ -275,7 +275,7 @@ const AI_VIDEO_GENERATOR_MODEL_OPTIONS_BASE = [
     supportsNativeAudio,
     nativeAudioResolutions: [...resolutions],
     promptPlaceholder: 'Describe a complete scene with motion, camera, dialogue, and sound.',
-    samplePrompt: 'A cinematic macro scene with precise hand motion and crisp synchronized material sounds.',
+    samplePrompt: 'A cinematic macro ASMR scene with precise hand motion and crisp synchronized material sounds.',
     previewTone: 'Fast native-audio preview',
   })),
   {
@@ -329,7 +329,7 @@ const AI_VIDEO_GENERATOR_MODEL_OPTIONS_BASE = [
     supportsNativeAudio,
     nativeAudioResolutions: supportsNativeAudio ? [...resolutions] : undefined,
     promptPlaceholder: 'Describe the subject, movement, camera, and final visual style.',
-    samplePrompt: 'A close-up product scene with controlled motion, tactile materials, and cinematic lighting.',
+    samplePrompt: 'A close-up ASMR scene with controlled motion, tactile materials, and cinematic lighting.',
     previewTone: 'Kling cinematic preview',
   })),
   ...([
@@ -356,7 +356,7 @@ const AI_VIDEO_GENERATOR_MODEL_OPTIONS_BASE = [
     defaultDuration: 8,
     resolutions: ['720p', '1080p'],
     promptPlaceholder: 'Describe the scene, motion, camera, textures, and synchronized audio in detail.',
-    samplePrompt: 'A macro soap cutting scene, precise blade movement, crisp synchronized texture sounds, soft studio light.',
+    samplePrompt: 'A macro ASMR soap cutting scene, precise blade movement, crisp synchronized texture sounds, soft studio light.',
     previewTone: 'Native-audio cinematic preview',
   })),
   {

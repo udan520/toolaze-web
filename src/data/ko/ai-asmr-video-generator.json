@@ -1,0 +1,314 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "ai-asmr-video-generator",
+  "topTool": {
+    "defaultMode": "text-to-video",
+    "displayName": "AI ASMR 영상 생성기"
+  },
+  "metadata": {
+    "title": "사운드 동기화 AI ASMR 영상 생성기 | Toolaze",
+    "description": "자르기, 부수기, 붓기, 두드리기, 브러싱, 수면용 루프 등 다양한 동작에 맞춰 촉각적 사운드와 매크로(접사) 움직임이 동기화된 AI ASMR 영상을 제작해 보세요. 텍스트나 이미지를 활용해 제어할 수 있습니다."
+  },
+  "hero": {
+    "h1": "<span class=\"text-gradient\">AI ASMR 영상 생성기</span> (사운드 동기화 기능 포함)",
+    "desc": "촉각적 요소가 담긴 프롬프트나 참조 이미지를 활용해, 클로즈업 동작과 그에 어울리는 사운드가 포함된 짧은 ASMR 영상을 만들어 보세요. 소재, 동작, 카메라 구도, 속도, 사운드 특성을 설명한 뒤, 입력 내용과 오디오, 품질 요구 사항에 가장 적합한 Toolaze 영상 모델을 선택하면 됩니다."
+  },
+  "heroDemoVideo": {
+    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/ai-asmr-video-generator/demo.mp4",
+    "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/ai-asmr-video-generator/demo-poster.webp",
+    "ariaLabel": "AI로 생성된 ASMR 데모 영상"
+  },
+  "sectionsOrder": [
+    "modelIntro",
+    "intro",
+    "performanceMetrics",
+    "modelSelectionGuide",
+    "promptExamples",
+    "howToUse",
+    "troubleshooting",
+    "scenes",
+    "features",
+    "faq"
+  ],
+  "modelIntro": {
+    "title": "텍스트나 이미지로 사운드 중심의 ASMR 클립 제작",
+    "modelName": "AI ASMR 영상 생성기",
+    "modelType": "AI 영상 도구",
+    "description": [
+      "AI ASMR 영상 생성기는 촉각적 아이디어를 바탕으로 움직임과 사운드가 조화롭게 기획된 영상을 만들어냅니다. 효과적인 프롬프트는 단순히 사물의 이름을 나열하는 데 그치지 않고, 소재, 물리적 동작, 사운드의 질감, ​​카메라 거리, 속도, 그리고 배경음을 없앨지 여부 등을 구체적으로 설명합니다.",
+      "유리 과일 자르기, 비누 조각, 키네틱 샌드, 슬라임, 두드리기, 브러싱, 빗소리, 수면용 루프 등의 컨셉에는 텍스트-투-비디오(text-to-video) 기능을 활용해 보세요. 제품, 첫 프레임, 질감 샘플, 패키지 사진, 또는 크리에이터의 모습 등을 유지하면서 ASMR 동작을 추가해야 할 때는 이미지-투-비디오(image-to-video) 기능을 사용하면 됩니다."
+    ],
+    "featureCards": [
+      {
+        "title": "장면뿐만 아니라 사운드까지 프롬프트로 설정",
+        "content": "사운드의 특성을 직접 입력해 보세요. 예: 경쾌하게 깨지는 유리 소리, 건조한 모래가 압축되는 소리, 끈적한 꿀이 겹쳐지는 소리, 부드러운 브러시 터치, 잔잔한 빗소리, 또는 쉽게 부서지는 얼음 소리 등."
+      },
+      {
+        "title": "텍스트 또는 이미지 제어 방식 선택",
+        "content": "완전히 새로운 창의적 장면을 만들고 싶다면 프롬프트로 시작하고, 피사체, 제품, 색상, 구도 등을 그대로 유지해야 한다면 참조 이미지를 업로드하세요."
+      },
+      {
+        "title": "짧고 촉각적인 느낌을 주는 클립 만들기",
+        "content": "ASMR은 명확한 하나의 동작, 근접 촬영, 느린 타이밍, 최소한의 배경 소음, 그리고 단순하게 반복 가능한 움직임이 있을 때 가장 효과적입니다."
+      }
+    ]
+  },
+  "intro": {
+    "title": "ASMR과 AI ASMR 영상이란 무엇인가요?",
+    "content": [
+      {
+        "title": "ASMR이란 무엇인가요?",
+        "text": "ASMR은 '자율 감각 쾌락 반응(Autonomous Sensory Meridian Response)'을 의미합니다. 이는 두드리기, 솔질하기, 자르기, 긁기, 빗소리, 속삭임, 또는 사물이 천천히 움직이는 모습 등 부드러운 소리와 근접 동작을 통해 사람들이 느끼는 차분한 전율이나 편안한 기분을 말합니다."
+      },
+      {
+        "title": "AI ASMR 영상이란 무엇인가요?",
+        "text": "AI ASMR 영상은 생성된 근접 촬영 장면과 촉각적 느낌을 주는 소리 요소를 결합한 것입니다. 효과적인 결과물은 시각적으로 명확한 하나의 동작을 유지하면서, 얼음이 깨지는 선명한 소리, 마른 모래가 눌리는 소리, 부드러운 솔질 소리, 혹은 꾸준히 내리는 빗소리 등 특정 소리의 질감과 동작을 조화롭게 매칭합니다."
+      }
+    ]
+  },
+  "performanceMetrics": {
+    "title": "중요한 ASMR 영상 설정",
+    "metrics": [
+      {
+        "label": "권장 시작 모드",
+        "value": "독창적인 ASMR 아이디어에는 '텍스트-투-비디오(Text to Video)'를 사용하고, 제품, 질감, 첫 프레임 또는 시각적 참조 대상을 정밀하게 제어해야 할 때는 '이미지-투-비디오(Image to Video)'를 사용하세요."
+      },
+      {
+        "label": "프롬프트 공식",
+        "value": "소재 또는 사물 + 물리적 동작 + 소리의 특징 + 매크로(근접) 촬영 + 느린 템포 + 조용한 배경"
+      },
+      {
+        "label": "기본 모델 설정 방향",
+        "value": "생성 전 입력 모드, 해상도, 재생 시간, 오디오 특성, 움직임 안정성, 예상 크레딧 소모량을 기준으로 Toolaze 영상 모델들을 비교해 보세요."
+      },
+      {
+        "label": "클립 구성",
+        "value": "화면 중앙에 피사체 하나 배치, 반복되는 동작 하나, 타이트한 프레이밍(근접 구도), 깔끔한 조명을 사용하세요. 속삭이는 ASMR이 목적이 아니라면 대사는 넣지 않는 것이 좋습니다."
+      },
+      {
+        "label": "플랫폼별 프레이밍",
+        "value": "틱톡(TikTok), 릴스(Reels), 쇼츠(Shorts) 및 모바일용 반복 영상에는 9:16 비율을 사용하고, 웹사이트 데모, 제품 질감 광고, 분위기 조성을 위한 배경 영상에는 16:9 비율을 사용하세요."
+      }
+    ]
+  },
+  "modelSelectionGuide": {
+    "title": "ASMR 영상에 적합한 모델 선택하기",
+    "subtitle": "ASMR의 품질은 오디오의 특성, 움직임의 안정성, 입력 제어, 그리고 소재가 요구하는 디테일의 수준에 따라 달라집니다.",
+    "items": [
+      {
+        "title": "Wan 2.7",
+        "badge": "기본 ASMR 시작하기",
+        "color": "linear-gradient(135deg, #6d28d9, #ec4899)",
+        "desc": "촉각적 소재의 디테일이 필요하거나, 텍스트/이미지 기반 영상 생성이 필요하거나, ASMR 장면을 위한 균형 잡힌 초기 결과물이 필요할 때 Wan 2.7을 사용하세요.",
+        "prompt": "유리 과일 자르기, 비누 조각, 키네틱 샌드 압축, 꿀 붓기 등 질감을 근접 촬영한 영상에 적합합니다."
+      },
+      {
+        "title": "Kling Models",
+        "badge": "오디오 연동 테스트",
+        "color": "linear-gradient(135deg, #0f172a, #22c55e)",
+        "desc": "빠른 반복 작업보다 사운드 동기화나 세련된 영화적 움직임이 더 중요할 때는 Kling 옵션을 사용하세요.",
+        "prompt": "선명한 자르기, 두드리기, 브러싱, 부수기처럼 소리와 동작의 일치가 핵심인 짧은 영상에 적합합니다."
+      },
+      {
+        "title": "Seedance Models",
+        "badge": "참조 자료(레퍼런스)가 중요한 장면",
+        "color": "linear-gradient(135deg, #4f46e5, #06b6d4)",
+        "desc": "여러 시각적 참조 자료, 강력한 시각적 연속성, 또는 제품 및 스토리보드에 대한 정밀한 제어가 필요할 때는 Seedance를 사용하세요.",
+        "prompt": "제품 질감 광고, 스킨케어 과정, 패키지 근접 촬영 또는 여러 장면으로 구성된 콘셉트 초안에 적합합니다."
+      },
+      {
+        "title": "Grok or Veo Options",
+        "badge": "빠른 시각적 탐색",
+        "color": "linear-gradient(135deg, #111827, #6366f1)",
+        "desc": "빠른 시각적 탐색이나 분위기 테스트를 할 때, 또는 프롬프트에 색다른 움직임 스타일이 필요할 때 이 옵션들을 사용하세요.",
+        "prompt": "최종 ASMR 생성 전에 카메라 움직임, 구도, 조명, 숏폼 소셜 콘셉트를 비교하는 데 적합합니다."
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "AI ASMR 영상 프롬프트 아이디어",
+    "subtitle": "대상(object), 동작(action), 소리(sound), 카메라(camera), 속도감(pacing)을 구체적으로 명시하는 4가지 실용적인 프롬프트 구조입니다.",
+    "items": [
+      {
+        "title": "유리 과일 자르기",
+        "prompt": "Macro close-up of a translucent glass strawberry being sliced slowly with a polished knife, tiny crystalline fragments, soft studio light, locked camera, crisp synchronized glass cutting sounds, no music.",
+        "note": "슬로우 모션과 고정된 매크로(접사) 카메라를 사용하고, '바삭한(crisp)', '잘 부서지는(brittle)', '수정처럼 맑은(crystalline)'과 ​​같은 정확한 소리 묘사 단어를 사용하세요.",
+        "color": "linear-gradient(135deg, #fb7185, #7dd3fc)"
+      },
+      {
+        "title": "키네틱 샌드(모래 점토) 압축하기",
+        "prompt": "Top-down macro shot of pastel kinetic sand pressed into perfect geometric layers, gradual compression, fine grains separating at the edges, dry granular ASMR sound, even diffused light.",
+        "note": "압력, 입자 크기, 그리고 소재가 어떻게 부서지는지를 묘사하세요.",
+        "color": "linear-gradient(135deg, #f9a8d4, #c4b5fd)"
+      },
+      {
+        "title": "얼음 조각 부수기",
+        "prompt": "Macro close-up of clear ice cubes being crushed slowly under a stainless steel press, sharp cracks, tiny frost fragments, cold blue studio light, locked camera, crisp synchronized ice cracking and crunching sounds, no music.",
+        "note": "소리 효과가 명확하게 전달되도록 잘 부서지는(brittle) 느낌, 갈라지는(cracking) 소리, 아작거리는(crunching) 소리, 그리고 파편(fragment)의 디테일을 활용하세요.",
+        "color": "linear-gradient(135deg, #38bdf8, #6366f1)"
+      },
+      {
+        "title": "비누 조각하기",
+        "prompt": "Macro ASMR soap carving with a sharp blade creating thin even curls, powder collecting on a dark slate surface, precise hand movement, crisp scraping and soft crumble sounds, no dialogue.",
+        "note": "동작을 반복적으로 유지하고, 소리에 집중하는 것을 방해하는 불필요한 사물은 배제하세요.",
+        "color": "linear-gradient(135deg, #67e8f9, #a7f3d0)"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "AI ASMR 영상 제작 방법",
+    "steps": [
+      {
+        "title": "프롬프트에 하나의 ASMR 동작을 묘사하세요.",
+        "desc": "얼음 자르기, 모래 부수기, 폼(foam) 누르기, 유리 두드리기, 천 문지르기, 슬라임 늘리기, 빗소리 배경음, 또는 조용한 수면 유도 루프와 같은 촉각적 동작을 프롬프트에 직접 입력하세요."
+      },
+      {
+        "title": "소리를 우선시하는 프롬프트 작성하기",
+        "desc": "다음 공식을 활용하세요: 소재, 동작, 소리의 특성, 카메라, 템포, 조명, 배경 소음. '만족스러운(satisfying)'과 같은 모호한 단어 대신 구체적인 소리 묘사를 사용하세요."
+      },
+      {
+        "title": "텍스트 또는 이미지 입력 ​​선택",
+        "desc": "새로운 장면을 만들 때는 텍스트를 사용하고, 제품, 사물, 질감 또는 첫 프레임의 형태를 유지해야 할 때는 참조 이미지를 업로드하세요."
+      },
+      {
+        "title": "짧은 초안 생성",
+        "desc": "명확한 동작 하나와 짧은 재생 시간으로 시작하여 오디오와 영상의 조화를 확인한 후, 해상도, 재생 시간 또는 시각적 복잡도를 높이세요."
+      }
+    ]
+  },
+  "troubleshooting": {
+    "title": "일반적인 AI ASMR 영상 문제 해결",
+    "subtitle": "ASMR 효과가 떨어지는 경우는 대부분 모호한 소리 묘사, 과도한 동작, 또는 소재의 특성이 충분히 드러나지 않는 장면 설정 때문입니다.",
+    "items": [
+      {
+        "title": "소리가 동작과 일치하지 않음",
+        "badge": "소리의 질감 명시",
+        "color": "linear-gradient(135deg, #ef4444, #f97316)",
+        "desc": "소재에 맞는 구체적인 소리 표현을 추가하고, 의도하지 않은 경우 음악, 대사, 배경 소음은 제거하세요.",
+        "prompt": "Try: crisp synchronized glass cutting sounds, quiet studio background, no music, no voice."
+      },
+      {
+        "title": "일반적인 영상처럼 느껴짐",
+        "badge": "더 가까이 다가가기",
+        "color": "linear-gradient(135deg, #7c3aed, #c084fc)",
+        "desc": "매크로(접사) 구도, 반복적인 동작 하나, 느린 타이밍, 그리고 촉각을 자극하는 소재의 디테일을 활용하여 평범한 영상이 아닌 ASMR 느낌이 나도록 하세요.",
+        "prompt": "Try: extreme close-up, locked macro camera, slow repeated blade motion, visible texture flakes."
+      },
+      {
+        "title": "소재가 비현실적으로 보임",
+        "badge": "물리적 거동 정의",
+        "color": "linear-gradient(135deg, #0ea5e9, #38bdf8)",
+        "desc": "물체가 변형, 균열, 부서짐, 접힘, 늘어남, 흐름 등의 반응을 어떻게 보일지 설명하세요. 소재에는 단순한 이름이 아닌 물리적 규칙이 필요합니다.",
+        "prompt": "Try: brittle shell cracks into tiny fragments while the soft center stays glossy."
+      },
+      {
+        "title": "장면이 너무 산만함",
+        "badge": "하나의 동작만 사용",
+        "color": "linear-gradient(135deg, #059669, #34d399)",
+        "desc": "부차적인 카메라 움직임, 불필요한 소품, 여러 동작이 동시에 일어나는 상황을 제거하세요. ASMR은 하나의 동작을 반복할 때 더 효과적입니다.",
+        "prompt": "Try: one hand presses the sand block straight down while the camera remains fixed overhead."
+      },
+      {
+        "title": "루프가 매끄럽지 않음",
+        "badge": "마무리(엔딩) 계획",
+        "color": "linear-gradient(135deg, #f59e0b, #ec4899)",
+        "desc": "수면 유도, 빗소리, 환경음, 또는 소셜용 루프 영상의 경우, 안정적인 리듬과 시작 프레임으로 자연스럽게 돌아갈 수 있는 마지막 프레임을 설정하세요.",
+        "prompt": "Try: seamless slow rain on leaves, consistent rhythm, no sudden camera movement, loopable final frame."
+      }
+    ]
+  },
+  "scenesTitle": "인기 있는 AI ASMR 영상 스타일",
+  "scenes": [
+    {
+      "title": "유리 자르기 및 쉽게 부서지는 물체",
+      "icon": "🔪",
+      "desc": "유리 같은 과일, 얼음, 사탕 껍질, 결정체, 그리고 바삭하게 잘리거나 깨지거나 두드리는 소리가 동반되는 잘 부서지는 질감."
+    },
+    {
+      "title": "비누, 점토, 거품, 키네틱 샌드(모래 놀이용 모래).",
+      "icon": "🧼",
+      "desc": "부드러운 조각, 가루처럼 부서짐, 알갱이 압축, 느린 긁기, 기하학적 형태 누르기 장면."
+    },
+    {
+      "title": "슬라임, 꿀, 레진, 액체 붓기.",
+      "icon": "🍯",
+      "desc": "끈적하게 접히기, 윤기 있게 늘어나기, 걸쭉하게 붓기, 부드럽게 섞기, 그리고 유리·도자기·금속에 닿는 소리."
+    },
+    {
+      "title": "두드리기, 브러싱(솔질), 스킨케어 질감.",
+      "icon": "🖌️",
+      "desc": "붓질, 손톱으로 두드리기, 제품 질감 클로즈업, 크림 펴 바르기, 포장 소리, 스파 스타일의 차분한 움직임."
+    },
+    {
+      "title": "비, 수면 유도용 반복 영상(루프), 주변 환경음(앰비언스).",
+      "icon": "🌧️",
+      "desc": "반복 재생 가능한 빗소리, 부드러운 실내 소리, 느리고 자연스러운 움직임, 휴식용 영상에 어울리는 차분한 배경 ​​비주얼."
+    },
+    {
+      "title": "제품 질감 강조 광고.",
+      "icon": "📦",
+      "desc": "음식, 뷰티, 웰니스, 포장, 이커머스 제품의 클로즈업 영상으로, 촉각적 소리를 통해 제품의 실재감을 높임."
+    }
+  ],
+  "features": {
+    "title": "AI ASMR 영상 제작에 Toolaze를 사용하는 이유.",
+    "items": [
+      {
+        "icon": "🎧",
+        "iconType": "creative",
+        "title": "사운드 중심의 생성 워크플로.",
+        "desc": "오디오를 나중에 추가하는 방식이 아니라, 시각적 움직임과 ASMR 사운드를 위한 프롬프트를 동시에 설정."
+      },
+      {
+        "icon": "🖼️",
+        "iconType": "upload",
+        "title": "텍스트 및 이미지를 시작점으로 활용.",
+        "desc": "독창적인 트리거(자극) 장면 생성 또는 제어된 제품, 질감, 첫 프레임 참조 이미지를 활용한 애니메이션 제작."
+      },
+      {
+        "icon": "🎛️",
+        "iconType": "workflow",
+        "title": "하나의 도구에서 다양한 비디오 모델 제공.",
+        "desc": "도구 전환 없이 모델 특성, 입력 방식, 재생 시간, 해상도, 오디오 지원 여부, 예상 크레딧 소모량 비교."
+      }
+    ]
+  },
+  "faqTitle": "AI ASMR 영상 생성기 FAQ.",
+  "faq": [
+    {
+      "q": "AI ASMR 영상 생성기란 무엇인가요?",
+      "a": "텍스트 프롬프트나 참조 이미지를 바탕으로 촉각적 느낌을 주는 짧은 영상을 생성합니다. ASMR의 경우, 프롬프트에 바삭한 자르기, 건조하게 부서지기, 끈적하게 붓기, 부드러운 브러싱, 조용한 빗소리 등 시각적 동작과 사운드의 특성을 모두 정의해야 합니다."
+    },
+    {
+      "q": "AI ASMR 영상에 싱크가 맞는 사운드를 포함할 수 있나요?",
+      "a": "네, 선택한 모델과 설정이 오디오를 지원하는 경우 가능합니다. 오디오와 영상의 조화를 높이려면 프롬프트에 소재, 구체적인 동작, 소리의 질감, ​​속도, 배경 소음을 상세히 기술하세요."
+    },
+    {
+      "q": "ASMR 영상을 만들 때 어떤 모델로 시작해야 할까요?",
+      "a": "영상의 목적에 맞춰 모델을 선택하세요. 필요한 입력 유형, 해상도, 길이, 오디오 특성을 지원하는 모델을 사용하고, 최종 작업에 크레딧을 본격적으로 쓰기 전에 짧은 초안을 먼저 생성해 보세요."
+    },
+    {
+      "q": "이미지로 ASMR 영상을 만들 수 있나요?",
+      "a": "네, 가능합니다. 선명한 참조 이미지를 업로드하고 '이미지-영상 변환(Image to Video)' 기능을 선택하세요. 그런 다음 추가하고 싶은 움직임과 소리를 묘사하고, 형태가 유지되어야 할 제품, 사물, 질감 또는 구도를 명시하세요."
+    },
+    {
+      "q": "좋은 ASMR 영상 프롬프트란 어떤 것인가요?",
+      "a": "구체적인 사물, 단일 동작, 특정 소리 질감, 매크로(접사) 카메라 구도, 느린 템포, 조용한 배경을 활용하세요. 단순히 '편안한'이나 '만족스러운'과 같은 모호한 표현은 피해야 합니다."
+    },
+    {
+      "q": "틱톡이나 유튜브 쇼츠용 ASMR 영상은 어떻게 만드나요?",
+      "a": "가능하다면 9:16 세로형 비율을 사용하고, 하나의 클로즈업 트리거(소리 유발 요소)에 집중하며, 반복 재생에 적합한 엔딩을 구성하세요. 또한 모바일에서 읽기 힘든 텍스트 위주의 화면 구성은 피하는 것이 좋습니다."
+    },
+    {
+      "q": "ASMR 영상 결과물이 왜 비현실적으로 보일까요?",
+      "a": "프롬프트에 소재의 물리적 변화 양상이 충분히 묘사되지 않았을 수 있습니다. 사물이 갈라지거나, 압축되거나, 접히거나, 늘어나거나, 녹거나, 부서지거나, 흐르는 등의 세부적인 움직임을 추가해 보세요."
+    },
+    {
+      "q": "제품 홍보 영상에 AI ASMR을 활용할 수 있나요?",
+      "a": "네, 가능합니다. 선명한 참조 이미지를 사용하고 제품의 형태, 라벨, 색상이 안정적으로 유지되도록 프롬프트를 작성한다면, 식품, 뷰티, 웰니스, 패키징, 이커머스 제품 시연 등에 제품 질감을 강조한 영상을 효과적으로 활용할 수 있습니다."
+    }
+  ],
+  "moreTools": "추가 AI 영상 도구"
+}

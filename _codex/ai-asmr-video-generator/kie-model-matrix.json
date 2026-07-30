@@ -1,0 +1,76 @@
+{
+  "updatedAt": "2026-07-29",
+  "statusEndpoint": "https://api.kie.ai/api/v1/jobs/recordInfo",
+  "billingRule": "Toolaze credits are rounded cleanly after applying the existing $0.01/credit and 200% gross-profit rule.",
+  "models": [
+    {
+      "id": "wan-2-7",
+      "textToVideo": "wan/2-7-text-to-video",
+      "imageToVideo": "wan/2-7-image-to-video",
+      "resolutions": ["720p", "1080p"],
+      "durations": [2, 3, 4, 5, 6, 7, 8, 9, 10],
+      "toolazeCreditsPerSecond": { "720p": 25, "1080p": 35 }
+    },
+    {
+      "id": "wan-2-6",
+      "textToVideo": "wan/2-6-text-to-video",
+      "imageToVideo": "wan/2-6-image-to-video",
+      "resolutions": ["720p", "1080p"],
+      "durations": [5, 10, 15],
+      "toolazeCreditsPerSecond": { "720p": 20, "1080p": 30 }
+    },
+    {
+      "id": "wan-2-5",
+      "textToVideo": "wan/2-5-text-to-video",
+      "imageToVideo": "wan/2-5-image-to-video",
+      "resolutions": ["720p", "1080p"],
+      "durations": [5, 10],
+      "toolazeCreditsPerSecond": { "720p": 20, "1080p": 30 }
+    },
+    {
+      "id": "wan-2-2",
+      "textToVideo": "wan/2-2-a14b-text-to-video-turbo",
+      "imageToVideo": "wan/2-2-a14b-image-to-video-turbo",
+      "resolutions": ["480p", "720p"],
+      "durations": [5],
+      "toolazeCreditsPerSecond": { "480p": 10, "720p": 10 }
+    },
+    {
+      "id": "kling-3-turbo",
+      "textToVideo": "kling/v3-turbo-text-to-video",
+      "imageToVideo": "kling/v3-turbo-image-to-video",
+      "resolutions": ["720p", "1080p"],
+      "durations": [5, 10],
+      "toolazeCreditsPerSecond": { "720p": 45, "1080p": 55 }
+    },
+    {
+      "id": "kling-2-6",
+      "textToVideo": "kling-2.6/text-to-video",
+      "imageToVideo": "kling-2.6/image-to-video",
+      "resolutions": ["720p", "1080p"],
+      "durations": [5, 10],
+      "toolazeCreditsPerSecond": { "720p": 20, "1080p": 30 },
+      "nativeAudioCreditsPerSecond": { "720p": 30, "1080p": 40 }
+    },
+    {
+      "id": "kling-2-5",
+      "textToVideo": "kling/v2-5-turbo-text-to-video-pro",
+      "imageToVideo": "kling/v2-5-turbo-image-to-video-pro",
+      "resolutions": ["1080p"],
+      "durations": [5, 10],
+      "toolazeCreditsPerSecond": { "1080p": 30 }
+    },
+    {
+      "id": "kling-2-1",
+      "textToVideo": "kling/v2-1-master-text-to-video",
+      "imageToVideo": "kling/v2-1-master-image-to-video",
+      "resolutions": ["1080p"],
+      "durations": [5, 10],
+      "toolazeCreditsPerSecond": { "1080p": 50 }
+    }
+  ],
+  "excluded": [
+    "Kling 3 Motion Control",
+    "Kling 2.6 Motion Control"
+  ]
+}

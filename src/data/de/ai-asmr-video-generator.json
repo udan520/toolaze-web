@@ -1,0 +1,314 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "ai-asmr-video-generator",
+  "topTool": {
+    "defaultMode": "text-to-video",
+    "displayName": "KI-ASMR-Videogenerator"
+  },
+  "metadata": {
+    "title": "KI-ASMR-Videogenerator mit synchronisiertem Ton | Toolaze",
+    "description": "Erstellen Sie KI-ASMR-Videos mit synchronisierten taktilen Geräuschen, Makro-Bewegungen sowie Text- oder Bildsteuerung – ideal für Szenen wie Schneiden, Zerdrücken, Eingießen, Klopfen, Bürsten und Sleep-Loops."
+  },
+  "hero": {
+    "h1": "<span class=\"text-gradient\">KI-ASMR-Videogenerator</span> mit synchronisiertem Ton",
+    "desc": "Verwandeln Sie eine taktile Eingabeaufforderung (Prompt) oder ein Referenzbild in ein kurzes ASMR-Video mit Nahaufnahmen und passendem Ton. Beschreiben Sie Material, Aktion, Kameraführung, Tempo und Klangcharakter, und wählen Sie dann das Toolaze-Videomodell, das am besten zu Ihren Anforderungen hinsichtlich Eingabe, Audio und Qualität passt."
+  },
+  "heroDemoVideo": {
+    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/ai-asmr-video-generator/demo.mp4",
+    "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/ai-asmr-video-generator/demo-poster.webp",
+    "ariaLabel": "KI-generiertes ASMR-Demo-Video"
+  },
+  "sectionsOrder": [
+    "modelIntro",
+    "intro",
+    "performanceMetrics",
+    "modelSelectionGuide",
+    "promptExamples",
+    "howToUse",
+    "troubleshooting",
+    "scenes",
+    "features",
+    "faq"
+  ],
+  "modelIntro": {
+    "title": "Erstellen Sie tonbasierte ASMR-Clips aus Text oder Bildern",
+    "modelName": "KI-ASMR-Videogenerator",
+    "modelType": "KI-Videotool",
+    "description": [
+      "Ein KI-ASMR-Videogenerator verwandelt eine kurze taktile Idee in ein Video, bei dem Bewegung und Ton aufeinander abgestimmt geplant werden. Die besten Prompts benennen nicht nur ein Objekt, sondern beschreiben Material, physische Aktion, Klangtextur, Kameraabstand, Tempo und ob der Hintergrund still bleiben soll.",
+      "Nutzen Sie Text-zu-Video für Konzepte wie das Schneiden von Glasfrüchten, Seifenschnitzen, kinetischen Sand, Schleim, Klopfen, Bürsten, Regen und Sleep-Loops. Verwenden Sie Bild-zu-Video, wenn ein Produkt, das erste Einzelbild, eine Texturprobe, eine Verpackungsaufnahme oder das visuelle Erscheinungsbild eines Creators erkennbar bleiben sollen, während die ASMR-Aktion hinzugefügt wird."
+    ],
+    "featureCards": [
+      {
+        "title": "Definieren Sie den Ton per Prompt, nicht nur die Szene",
+        "content": "Beschreiben Sie den Klangcharakter direkt: knackiges Glasbersten, Verdichten von trockenem Sand, Faltenbildung bei klebrigem Honig, sanfte Pinselstriche, leiser Regen oder Zerbrechen von sprödem Eis."
+      },
+      {
+        "title": "Wählen Sie zwischen Text- oder Bildsteuerung",
+        "content": "Starten Sie mit einem Prompt für rein kreative Szenen oder laden Sie ein Referenzbild hoch, wenn Motiv, Produkt, Farbe oder Komposition unverändert bleiben sollen."
+      },
+      {
+        "title": "Den Clip kurz und haptisch gestalten",
+        "content": "ASMR funktioniert am besten mit einer klaren Handlung, einer Nahaufnahme, langsamem Timing, minimalen Hintergrundgeräuschen und einer einfachen, wiederholbaren Bewegung."
+      }
+    ]
+  },
+  "intro": {
+    "title": "Was sind ASMR- und KI-ASMR-Videos?",
+    "content": [
+      {
+        "title": "Was ist ASMR?",
+        "text": "ASMR steht für „Autonomous Sensory Meridian Response“ (autonome sensorische Meridianreaktion). Der Begriff beschreibt das beruhigende Kribbeln oder entspannende Gefühl, das manche Menschen bei sanften Geräuschen und Nahaufnahmen von Handlungen wie Klopfen, Bürsten, Schneiden, Schaben, Regengeräuschen, Flüstern oder langsamen Materialbewegungen empfinden."
+      },
+      {
+        "title": "Was ist ein KI-ASMR-Video?",
+        "text": "Ein KI-ASMR-Video kombiniert eine generierte Nahaufnahme mit haptischen Klangmerkmalen. Ein überzeugendes Ergebnis zeichnet sich durch eine visuell klare Handlung aus, die mit einer spezifischen Klangtextur abgestimmt ist – etwa knackendes Eis, das Zusammendrücken von trockenem Sand, sanfte Pinselstriche oder gleichmäßiges Regengeräusch."
+      }
+    ]
+  },
+  "performanceMetrics": {
+    "title": "Entscheidende Einstellungen für ASMR-Videos",
+    "metrics": [
+      {
+        "label": "Bester Startmodus",
+        "value": "„Text-zu-Video“ für originelle ASMR-Ideen; „Bild-zu-Video“, wenn Produkt, Textur, Startbild oder visuelle Referenz genau kontrolliert werden müssen"
+      },
+      {
+        "label": "Prompt-Formel",
+        "value": "Material oder Objekt + physische Handlung + Klangcharakter + Makro-Kamera + langsames Tempo + ruhiger Hintergrund"
+      },
+      {
+        "label": "Standard-Modellausrichtung",
+        "value": "Vergleichen Sie KI-Videomodelle vor der Generierung hinsichtlich Eingabemodus, Auflösung, Dauer, Audioverhalten, Bewegungsstabilität und geschätztem Credit-Verbrauch"
+      },
+      {
+        "label": "Clip-Komposition",
+        "value": "Nutzen Sie ein zentriertes Motiv, eine wiederholte Bewegung, einen engen Bildausschnitt, saubere Beleuchtung und keinen Dialog – es sei denn, das Ziel ist Flüstern-ASMR"
+      },
+      {
+        "label": "Bildformat je nach Plattform",
+        "value": "Verwenden Sie 9:16 für TikTok, Reels, Shorts und mobile Loops; nutzen Sie 16:9 für Website-Demos, Werbung für Produkttexturen und atmosphärische Hintergrund-Clips"
+      }
+    ]
+  },
+  "modelSelectionGuide": {
+    "title": "Das richtige Modell für ASMR-Videos wählen",
+    "subtitle": "Die ASMR-Qualität hängt vom Audioverhalten, der Bewegungsstabilität, der Steuerung der Eingabe und dem Detailgrad des Materials ab.",
+    "items": [
+      {
+        "title": "Wan 2.7",
+        "badge": "Standard-Option für den ASMR-Einstieg",
+        "color": "linear-gradient(135deg, #6d28d9, #ec4899)",
+        "desc": "Verwenden Sie Wan 2.7, wenn der Prompt taktile Materialdetails, Text-zu-Video- oder Bild-zu-Video-Eingaben sowie einen ausgewogenen ersten Durchlauf für ASMR-Szenen erfordert.",
+        "prompt": "Ideal für das Schneiden von Glasfrüchten, Seifenschnitzerei, kinetischen Sand, Honig-Aufnahmen und andere Nahaufnahmen von Texturen."
+      },
+      {
+        "title": "Kling Models",
+        "badge": "Tests mit Fokus auf Audio",
+        "color": "linear-gradient(135deg, #0f172a, #22c55e)",
+        "desc": "Nutzen Sie die Kling-Optionen, wenn synchroner Ton oder ausgefeilte, filmische Bewegungen wichtiger sind als schnelle Iterationszyklen.",
+        "prompt": "Ideal für präzise Schnitte, Klopf- und Bürstgeräusche, Zerdrücken sowie kurze Clips, bei denen die Synchronität des Tons das entscheidende Qualitätsmerkmal ist."
+      },
+      {
+        "title": "Seedance Models",
+        "badge": "Szenen mit starkem Referenzbezug",
+        "color": "linear-gradient(135deg, #4f46e5, #06b6d4)",
+        "desc": "Verwenden Sie Seedance, wenn der ASMR-Clip mehrere visuelle Referenzen, eine stärkere visuelle Kontinuität oder eine präzise Kontrolle über Produkt und Storyboard benötigt.",
+        "prompt": "Ideal für Werbeaufnahmen von Produkttexturen, Hautpflegeroutinen, Nahaufnahmen von Verpackungen oder Konzeptentwürfe mit mehreren Einstellungen."
+      },
+      {
+        "title": "Grok or Veo Options",
+        "badge": "Schnelle visuelle Erkundung",
+        "color": "linear-gradient(135deg, #111827, #6366f1)",
+        "desc": "Nutzen Sie diese Optionen für schnelle visuelle Erkundungen, Stimmungstests oder wenn ein Prompt einen anderen Bewegungsstil erfordert.",
+        "prompt": "Ideal für den Vergleich von Kamerabewegungen, Bildausschnitten, Beleuchtung und Social-Media-Konzepten im Kurzformat vor der finalen ASMR-Bearbeitung."
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "Ideen für KI-ASMR-Video-Prompts",
+    "subtitle": "Vier praxisnahe Prompt-Strukturen, die Objekt, Aktion, Ton, Kamera und Tempo definieren.",
+    "items": [
+      {
+        "title": "Schneiden von Glasfrüchten",
+        "prompt": "Macro close-up of a translucent glass strawberry being sliced slowly with a polished knife, tiny crystalline fragments, soft studio light, locked camera, crisp synchronized glass cutting sounds, no music.",
+        "note": "Verwenden Sie Zeitlupe, eine fixierte Makrokamera und präzise Begriffe für den Klang, wie etwa „knackig“, „spröde“ oder „kristallin“.",
+        "color": "linear-gradient(135deg, #fb7185, #7dd3fc)"
+      },
+      {
+        "title": "Komprimieren von kinetischem Sand",
+        "prompt": "Top-down macro shot of pastel kinetic sand pressed into perfect geometric layers, gradual compression, fine grains separating at the edges, dry granular ASMR sound, even diffused light.",
+        "note": "Beschreiben Sie den Druck, die Korngröße und die Art und Weise, wie das Material auseinanderbricht.",
+        "color": "linear-gradient(135deg, #f9a8d4, #c4b5fd)"
+      },
+      {
+        "title": "Zerdrücken von Eiswürfeln",
+        "prompt": "Macro close-up of clear ice cubes being crushed slowly under a stainless steel press, sharp cracks, tiny frost fragments, cold blue studio light, locked camera, crisp synchronized ice cracking and crunching sounds, no music.",
+        "note": "Nutzen Sie Begriffe wie „spröde“, „knackend“, „knirschend“ und Details zu den Bruchstücken, damit der akustische Effekt deutlich wird.",
+        "color": "linear-gradient(135deg, #38bdf8, #6366f1)"
+      },
+      {
+        "title": "Schnitzen in Seife",
+        "prompt": "Macro ASMR soap carving with a sharp blade creating thin even curls, powder collecting on a dark slate surface, precise hand movement, crisp scraping and soft crumble sounds, no dialogue.",
+        "note": "Gestalten Sie die Aktion repetitiv und vermeiden Sie zusätzliche Objekte, die vom Klang ablenken könnten.",
+        "color": "linear-gradient(135deg, #67e8f9, #a7f3d0)"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Erstellung eines KI-ASMR-Videos",
+    "steps": [
+      {
+        "title": "Beschreiben Sie eine einzelne ASMR-Aktion im Prompt.",
+        "desc": "Geben Sie eine taktile Aktion direkt im Prompt an, zum Beispiel: Eis schneiden, Sand zerdrücken, Schaumstoff drücken, gegen Glas klopfen, über Stoff streichen, Schleim dehnen, Regenatmosphäre oder eine ruhige Schlaf-Loop."
+      },
+      {
+        "title": "Verfassen Sie einen Prompt mit Fokus auf den Klang.",
+        "desc": "Verwenden Sie die Formel: Material, Aktion, Klangcharakter, Kamera, Tempo, Beleuchtung und Hintergrundgeräusche. Ersetzen Sie vage Begriffe wie „befriedigend“ durch präzise Angaben zum Klang."
+      },
+      {
+        "title": "Wählen Sie zwischen Texteingabe und Bildeingabe",
+        "desc": "Nutzen Sie Text für neue Szenen oder laden Sie ein Referenzbild hoch, wenn das Produkt, das Objekt, die Textur oder der erste Frame erkennbar bleiben sollen."
+      },
+      {
+        "title": "Erstellen Sie einen kurzen Entwurf",
+        "desc": "Beginnen Sie mit einer klaren Bewegung und kurzer Dauer, prüfen Sie die Abstimmung von Ton und Bild und erhöhen Sie anschließend Auflösung, Dauer oder visuelle Komplexität."
+      }
+    ]
+  },
+  "troubleshooting": {
+    "title": "Häufige Probleme bei KI-ASMR-Videos beheben",
+    "subtitle": "Schwache ASMR-Ergebnisse entstehen meist durch vage Klangbeschreibungen, zu viele Aktionen oder eine Szene, die nicht nah genug am Material ist.",
+    "items": [
+      {
+        "title": "Der Ton passt nicht zur Aktion",
+        "badge": "Benennen Sie die Klangtextur",
+        "color": "linear-gradient(135deg, #ef4444, #f97316)",
+        "desc": "Fügen Sie eine konkrete Klangbeschreibung für das Material hinzu und entfernen Sie Musik, Dialoge oder Umgebungsgeräusche, sofern diese nicht gewünscht sind.",
+        "prompt": "Try: crisp synchronized glass cutting sounds, quiet studio background, no music, no voice."
+      },
+      {
+        "title": "Der Clip wirkt wie ein gewöhnliches Video",
+        "badge": "Gehen Sie näher heran",
+        "color": "linear-gradient(135deg, #7c3aed, #c084fc)",
+        "desc": "Nutzen Sie Makro-Einstellungen, eine wiederholte Aktion, langsames Timing und fühlbare Materialdetails, damit das Ergebnis als ASMR und nicht als gewöhnliches Videomaterial wahrgenommen wird.",
+        "prompt": "Try: extreme close-up, locked macro camera, slow repeated blade motion, visible texture flakes."
+      },
+      {
+        "title": "Das Material wirkt unrealistisch",
+        "badge": "Definieren Sie das physikalische Verhalten",
+        "color": "linear-gradient(135deg, #0ea5e9, #38bdf8)",
+        "desc": "Beschreiben Sie, wie sich das Objekt verformen, brechen, zerbröckeln, falten, dehnen oder fließen soll. Materialien benötigen physikalische Regeln, nicht nur Bezeichnungen.",
+        "prompt": "Try: brittle shell cracks into tiny fragments while the soft center stays glossy."
+      },
+      {
+        "title": "Die Szene ist zu chaotisch",
+        "badge": "Konzentrieren Sie sich auf eine Aktion",
+        "color": "linear-gradient(135deg, #059669, #34d399)",
+        "desc": "Verzichten Sie auf zusätzliche Kamerabewegungen, weitere Requisiten und mehrere gleichzeitige Aktionen. ASMR funktioniert am besten mit einer einzelnen, wiederholten Geste.",
+        "prompt": "Try: one hand presses the sand block straight down while the camera remains fixed overhead."
+      },
+      {
+        "title": "Der Loop ist nicht nahtlos",
+        "badge": "Planen Sie das Ende",
+        "color": "linear-gradient(135deg, #f59e0b, #ec4899)",
+        "desc": "Achten Sie bei Loops für Schlaf, Regen, Atmosphäre oder soziale Interaktionen auf einen gleichmäßigen Rhythmus und einen End-Frame, der nahtlos zum Start-Frame zurückführt.",
+        "prompt": "Try: seamless slow rain on leaves, consistent rhythm, no sudden camera movement, loopable final frame."
+      }
+    ]
+  },
+  "scenesTitle": "Beliebte Stile für KI-ASMR-Videos",
+  "scenes": [
+    {
+      "title": "Glasschneiden und spröde Objekte",
+      "icon": "🔪",
+      "desc": "Glasartiges Obst, Eis, Zuckerkrusten, Kristalle und spröde Texturen mit knackigen Schneid-, Knack- oder Klopfgeräuschen."
+    },
+    {
+      "title": "Seife, Ton, Schaum und kinetischer Sand.",
+      "icon": "🧼",
+      "desc": "Szenen mit sanftem Schnitzen, pulverigem Zerbröseln, körnigem Zusammendrücken, langsamem Schaben und geometrischem Pressen."
+    },
+    {
+      "title": "Slime, Honig, Harz und flüssige Güsse.",
+      "icon": "🍯",
+      "desc": "Klebriges Falten, glänzendes Dehnen, dickflüssiges Gießen, sanftes Vermengen und Kontaktgeräusche auf Glas, Keramik oder Metall."
+    },
+    {
+      "title": "Klopfen, Bürsten und Hautpflege-Texturen.",
+      "icon": "🖌️",
+      "desc": "Pinselstriche, Fingernagel-Klopfen, Nahaufnahmen von Produkttexturen, Verteilen von Cremes, Verpackungsgeräusche und ruhige Bewegungen im Spa-Stil."
+    },
+    {
+      "title": "Regen, Schlaf-Loops und Ambiente.",
+      "icon": "🌧️",
+      "desc": "Wiederholbarer Regen, sanfte Raumakustik, langsame natürliche Bewegungen und beruhigende visuelle Hintergründe für Entspannungs-Clips."
+    },
+    {
+      "title": "Werbung mit Fokus auf Produkttexturen.",
+      "icon": "📦",
+      "desc": "Nahaufnahmen aus den Bereichen Lebensmittel, Beauty, Wellness, Verpackung und E-Commerce, bei denen taktile Geräusche das Produkt greifbarer wirken lassen."
+    }
+  ],
+  "features": {
+    "title": "Warum Toolaze für KI-ASMR-Videos nutzen?",
+    "items": [
+      {
+        "icon": "🎧",
+        "iconType": "creative",
+        "title": "Workflow mit Fokus auf den Ton (Sound-First-Ansatz).",
+        "desc": "Visuelle Bewegung und ASMR-Sound gemeinsam per Prompt steuern, anstatt Audio erst nachträglich zu berücksichtigen."
+      },
+      {
+        "icon": "🖼️",
+        "iconType": "upload",
+        "title": "Ausgangspunkte: Text und Bild.",
+        "desc": "Erstellung einer originellen Trigger-Szene oder Animation eines kontrollierten Produkts, einer Textur oder einer Referenz für das erste Bild."
+      },
+      {
+        "icon": "🎛️",
+        "iconType": "workflow",
+        "title": "Mehrere Videomodelle in einem Tool.",
+        "desc": "Vergleich von Modellverhalten, Eingabemodus, Dauer, Auflösung, Audio-Unterstützung und geschätztem Credit-Verbrauch ohne Tool-Wechsel."
+      }
+    ]
+  },
+  "faqTitle": "FAQ zum KI-ASMR-Videogenerator.",
+  "faq": [
+    {
+      "q": "Was ist ein KI-ASMR-Videogenerator?",
+      "a": "Er erstellt ein kurzes, taktiles Video aus einer Texteingabe (Prompt) oder einem Referenzbild. Für ASMR sollte der Prompt sowohl die visuelle Aktion als auch den Klangcharakter definieren – etwa knackiges Schneiden, trockenes Zerbröseln, klebriges Gießen, sanftes Bürsten oder leisen Regen."
+    },
+    {
+      "q": "Können KI-ASMR-Videos synchronisierten Ton enthalten?",
+      "a": "Ja, sofern das gewählte Modell und die Einstellungen Audio unterstützen. Für eine bessere Abstimmung von Audio und Video sollten Sie im Prompt das Material, die genaue Handlung, die Klangbeschaffenheit, das Tempo und die Hintergrundgeräusche beschreiben."
+    },
+    {
+      "q": "Mit welchem ​​Modell sollte ich für ASMR beginnen?",
+      "a": "Wählen Sie das Modell passend zum Ziel des Clips aus. Nutzen Sie ein Modell, das den benötigten Eingabetyp, die Auflösung, die Dauer und das Audioverhalten unterstützt, und erstellen Sie zunächst einen kurzen Entwurf, bevor Sie weitere Credits für einen finalen Durchlauf investieren."
+    },
+    {
+      "q": "Kann ich ASMR-Clips aus Bildern erstellen (Image-to-Video)?",
+      "a": "Ja. Laden Sie ein klares Referenzbild hoch, wählen Sie die Option „Image to Video“ und beschreiben Sie die gewünschte Bewegung sowie den Ton, während Sie gleichzeitig das Produkt, Objekt, die Textur oder die Komposition benennen, die unverändert bleiben sollen."
+    },
+    {
+      "q": "Was macht einen guten Prompt für ASMR-Videos aus?",
+      "a": "Verwenden Sie ein konkretes Objekt, eine physische Handlung, eine bestimmte Klangbeschaffenheit, eine Makro-Kameraeinstellung, ein langsames Tempo und einen ruhigen Hintergrund. Vermeiden Sie vage Prompts, die lediglich Begriffe wie „entspannend“ oder „befriedigend“ enthalten."
+    },
+    {
+      "q": "Wie erstelle ich ASMR-Videos für TikTok oder YouTube Shorts?",
+      "a": "Nutzen Sie das vertikale 9:16-Format (sofern verfügbar), konzentrieren Sie die Szene auf einen einzelnen „Trigger“ in der Nahaufnahme, gestalten Sie ein für Loops geeignetes Ende und vermeiden Sie visuelle Elemente mit viel Text, die auf Mobilgeräten schwer zu lesen sind."
+    },
+    {
+      "q": "Warum wirkt mein ASMR-Ergebnis unrealistisch?",
+      "a": "Möglicherweise beschreibt der Prompt das Materialverhalten nicht ausreichend. Fügen Sie Details dazu hinzu, wie das Objekt bricht, komprimiert wird, sich faltet, dehnt, schmilzt, zerbröckelt oder fließt."
+    },
+    {
+      "q": "Kann ich KI-generiertes ASMR für Produktvideos verwenden?",
+      "a": "Ja. Clips, die sich auf die Textur von Produkten konzentrieren, eignen sich hervorragend für Lebensmittel, Beauty, Wellness, Verpackungen und E-Commerce-Demos – vorausgesetzt, das Referenzbild ist klar und der Prompt sorgt dafür, dass Produktform, Etikett und Farbe unverändert bleiben."
+    }
+  ],
+  "moreTools": "Weitere KI-Videotools"
+}

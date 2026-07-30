@@ -2,6 +2,9 @@
   "nav": {
     "quickTools": "빠른 도구",
     "aiTools": "AI 도구",
+    "imageTools": "이미지 도구",
+    "videoTools": "영상 도구",
+    "aiAsmrVideoGenerator": "AI ASMR 영상 생성기",
     "hot": "인기",
     "language": "언어",
     "imageCompression": "이미지 압축",

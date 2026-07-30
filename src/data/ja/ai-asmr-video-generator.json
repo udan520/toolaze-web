@@ -1,0 +1,314 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "ai-asmr-video-generator",
+  "topTool": {
+    "defaultMode": "text-to-video",
+    "displayName": "AI ASMR動画生成ツール"
+  },
+  "metadata": {
+    "title": "音と映像が同期するAI ASMR動画生成ツール | Toolaze",
+    "description": "切る、砕く、注ぐ、叩く、ブラシでこする、睡眠用ループといった動作に対し、触覚的な音、マクロ撮影の動き、テキストや画像による制御を組み合わせて、AI ASMR動画を作成できます。"
+  },
+  "hero": {
+    "h1": "<span class=\"text-gradient\">AI ASMR動画生成ツール</span> （音と映像の同期機能付き）",
+    "desc": "触覚的な要素を含むプロンプトや参考画像から、クローズアップ映像とそれに合った音声を組み合わせた短いASMR動画を生成します。 素材、動作、カメラワーク、テンポ、音の質感を指定し、入力内容や音声、品質のニーズに最適なToolazeの動画モデルを選択してください。"
+  },
+  "heroDemoVideo": {
+    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/ai-asmr-video-generator/demo.mp4",
+    "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/ai-asmr-video-generator/demo-poster.webp",
+    "ariaLabel": "AI生成ASMRデモ動画"
+  },
+  "sectionsOrder": [
+    "modelIntro",
+    "intro",
+    "performanceMetrics",
+    "modelSelectionGuide",
+    "promptExamples",
+    "howToUse",
+    "troubleshooting",
+    "scenes",
+    "features",
+    "faq"
+  ],
+  "modelIntro": {
+    "title": "テキストや画像から「音」主導のASMRクリップを作成",
+    "modelName": "AI ASMR動画生成ツール",
+    "modelType": "AI動画ツール",
+    "description": [
+      "AI ASMR動画生成ツールは、触覚的なアイデアを、動きと音が一体となって設計された動画へと変換します。 効果的なプロンプトとは、単に対象物を挙げるだけでなく、素材、物理的な動作、音の質感、カメラとの距離、ペース、そして背景を無音にするかどうかまでを記述したものです。",
+      "ガラスのフルーツカット、石鹸のカービング、キネティックサンド、スライム、タッピング、ブラッシング、雨、睡眠用ループなどのコンセプトには、テキストから動画を生成する機能（Text-to-Video）を活用しましょう。 製品、最初のフレーム、質感のサンプル、パッケージ写真、クリエイターのビジュアルなどを維持しつつASMRの動作を追加したい場合は、画像から動画を生成する機能（Image-to-Video）を使用します。"
+    ],
+    "featureCards": [
+      {
+        "title": "シーンだけでなく「音」もプロンプトで指定",
+        "content": "音の質感を直接記述します（例：ガラスが割れるパリッとした音、乾いた砂が圧縮される音、粘り気のある蜂蜜が重なる音、柔らかいブラシのストローク音、静かな雨の音、氷が砕ける音など）。"
+      },
+      {
+        "title": "テキストまたは画像による制御を選択",
+        "content": "自由な発想でシーンを作成する場合はプロンプトから始め、被写体、製品、色、構図などを固定したい場合は参考画像をアップロードします。"
+      },
+      {
+        "title": "クリップは短く、触覚的な要素を重視する",
+        "content": "ASMR動画は、明確な動作、クローズアップの構図、ゆったりとしたテンポ、最小限の背景ノイズ、そしてシンプルでループ可能な動きを組み合わせることで最も効果を発揮します。"
+      }
+    ]
+  },
+  "intro": {
+    "title": "ASMRとAI ASMR動画とは？",
+    "content": [
+      {
+        "title": "ASMRとは？",
+        "text": "ASMRは「Autonomous Sensory Meridian Response（自律感覚絶頂反応）」の略です。 これは、タッピング（軽く叩く）、ブラッシング、切断、こする動作、雨音、ささやき声、あるいは素材がゆっくり動く様子など、穏やかな音やクローズアップの動作によって、一部の人が感じる心地よいゾクゾク感やリラックスした感覚を指します。"
+      },
+      {
+        "title": "AI ASMR動画とは？",
+        "text": "AI ASMR動画は、生成されたクローズアップ映像と、触覚を想起させる音の要素を組み合わせたものです。 効果的な動画にするには、一つの動作を視覚的に明確にし、それに特定の音の質感（氷がパキッと割れる音、乾いた砂が押し固められる音、柔らかいブラシの動き、一定の雨音など）を合わせるのがポイントです。"
+      }
+    ]
+  },
+  "performanceMetrics": {
+    "title": "ASMR動画制作の重要な設定",
+    "metrics": [
+      {
+        "label": "おすすめの開始モード",
+        "value": "独自のASMRアイデアには「テキストから動画生成（Text to Video）」を、製品、質感、最初のフレーム、視覚的な参照イメージを厳密に制御したい場合は「画像から動画生成（Image to Video）」を使用します。"
+      },
+      {
+        "label": "プロンプトの構成式",
+        "value": "素材または物体 ＋ 物理的な動作 ＋ 音の特性 ＋ マクロ撮影（クローズアップ） ＋ ゆったりとしたテンポ ＋ 静かな背景"
+      },
+      {
+        "label": "デフォルトのモデル設定の指針",
+        "value": "生成前に、入力モード、解像度、動画の長さ、音声の挙動、動きの安定性、クレジット消費量の目安を比較してモデルを選定します。"
+      },
+      {
+        "label": "クリップの構成",
+        "value": "被写体を中央に配置し、同じ動作を繰り返し、タイトな構図（被写体を大きく映す）とクリアな照明を使用します。ささやき声のASMRを目的とする場合を除き、会話は入れません。"
+      },
+      {
+        "label": "プラットフォームに合わせた構図",
+        "value": "TikTok、Reels、Shorts、モバイル用ループ動画には9:16を、サイトのデモ、製品の質感を強調する広告、アンビエントな背景用クリップには16:9を使用します。"
+      }
+    ]
+  },
+  "modelSelectionGuide": {
+    "title": "ASMR動画に適したモデルの選択",
+    "subtitle": "ASMRの品質は、音声の挙動、動きの安定性、入力制御、そして素材に求められるディテールの細かさによって決まります。",
+    "items": [
+      {
+        "title": "Wan 2.7",
+        "badge": "ASMR制作の基本となる選択肢",
+        "color": "linear-gradient(135deg, #6d28d9, #ec4899)",
+        "desc": "触覚的な素材のディテール、テキスト/画像から動画への変換、あるいはASMRシーンに適したバランスの取れた初期生成（ファーストパス）が必要な場合は、「Wan 2.7」を使用します。",
+        "prompt": "ガラスの果物のカット、石鹸彫刻、キネティックサンド、蜂蜜を注ぐ場面など、質感を捉えたクローズアップ動画に最適です。"
+      },
+      {
+        "title": "Kling Models",
+        "badge": "音声を重視したテスト",
+        "color": "linear-gradient(135deg, #0f172a, #22c55e)",
+        "desc": "迅速な試行錯誤よりも、音との同期や洗練された映画的な動きが重要な場合は、「Kling」のオプションを使用します。",
+        "prompt": "鮮明な切断音、タッピング、ブラッシング、粉砕音など、音と動きの一致が重要な短い動画に最適です。"
+      },
+      {
+        "title": "Seedance Models",
+        "badge": "多くの参照要素（リファレンス）を必要とするシーン",
+        "color": "linear-gradient(135deg, #4f46e5, #06b6d4)",
+        "desc": "複数の視覚的リファレンス、より強い視覚的連続性、あるいは製品や絵コンテに基づいた制御が必要なASMRクリップには、「Seedance」を使用します。",
+        "prompt": "製品の質感広告、スキンケア手順、パッケージのクローズアップ、複数ショットのコンセプト案に最適です。"
+      },
+      {
+        "title": "Grok or Veo Options",
+        "badge": "迅速なビジュアル検討",
+        "color": "linear-gradient(135deg, #111827, #6366f1)",
+        "desc": "素早いビジュアル検討やムード（雰囲気）のテストを行う場合、あるいはプロンプトで異なる動きのスタイルを求める場合は、これらのオプションを使用します。",
+        "prompt": "最終的なASMR生成の前に、カメラワーク、構図、照明、短尺SNS向けのアイデアを比較する用途に最適です。"
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "AI ASMR動画のプロンプト案",
+    "subtitle": "オブジェクト、動作、音、カメラワーク、ペースを指定する、4つの実用的なプロンプト構成。",
+    "items": [
+      {
+        "title": "ガラス製フルーツの切断",
+        "prompt": "Macro close-up of a translucent glass strawberry being sliced slowly with a polished knife, tiny crystalline fragments, soft studio light, locked camera, crisp synchronized glass cutting sounds, no music.",
+        "note": "スローモーション、固定されたマクロカメラを使用し、「crisp（パリッとした）」、「brittle（もろい）」、「crystalline（クリスタルのような）」といった音を的確に表す言葉を用います。",
+        "color": "linear-gradient(135deg, #fb7185, #7dd3fc)"
+      },
+      {
+        "title": "キネティックサンド（不思議な砂）の圧縮",
+        "prompt": "Top-down macro shot of pastel kinetic sand pressed into perfect geometric layers, gradual compression, fine grains separating at the edges, dry granular ASMR sound, even diffused light.",
+        "note": "圧力、粒子の大きさ、そして素材がどのように崩れるかを記述します。",
+        "color": "linear-gradient(135deg, #f9a8d4, #c4b5fd)"
+      },
+      {
+        "title": "氷の塊を砕く",
+        "prompt": "Macro close-up of clear ice cubes being crushed slowly under a stainless steel press, sharp cracks, tiny frost fragments, cold blue studio light, locked camera, crisp synchronized ice cracking and crunching sounds, no music.",
+        "note": "「brittle（もろい）」、「cracking（ひび割れる）」、「crunching（バリバリと砕ける）」、「fragment（破片）」といった詳細を盛り込み、音の要素を明確にします。",
+        "color": "linear-gradient(135deg, #38bdf8, #6366f1)"
+      },
+      {
+        "title": "石鹸のカービング（彫刻）",
+        "prompt": "Macro ASMR soap carving with a sharp blade creating thin even curls, powder collecting on a dark slate surface, precise hand movement, crisp scraping and soft crumble sounds, no dialogue.",
+        "note": "動作を反復させ、音の妨げとなる余計なオブジェクトは排除します。",
+        "color": "linear-gradient(135deg, #67e8f9, #a7f3d0)"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "AI ASMR動画の作成方法",
+    "steps": [
+      {
+        "title": "プロンプトでASMRの動作を1つ記述する",
+        "desc": "氷を切る、砂を砕く、フォーム（発泡素材）を押す、ガラスを叩く、布をブラシでこする、スライムを伸ばす、雨の環境音、静かな睡眠用ループなど、触覚を伴う動作を1つ直接プロンプトに入力します。"
+      },
+      {
+        "title": "音を主軸にしたプロンプトを書く",
+        "desc": "「素材、動作、音の性質、カメラワーク、テンポ、照明、背景ノイズ」という構成要素を使用します。 「満足感のある（satisfying）」といった曖昧な言葉を避け、具体的な音のディテールを指定しましょう。"
+      },
+      {
+        "title": "テキスト入力か画像入力かを選択する",
+        "desc": "オリジナルのシーンにはテキストを使用し、製品、物体、質感、あるいは最初のフレームの形状を維持したい場合は、参考画像をアップロードします。"
+      },
+      {
+        "title": "短いドラフトを生成する",
+        "desc": "まずは明確な動作と短い尺（再生時間）で始め、音声と映像の整合性を確認してから、解像度、尺、または映像の複雑さを調整します。"
+      }
+    ]
+  },
+  "troubleshooting": {
+    "title": "AI ASMR動画によくある問題の解決法",
+    "subtitle": "ASMR動画のクオリティが低くなる主な原因は、音に関する表現が曖昧であること、動作が多すぎること、あるいはシーンが素材の特性を十分に捉えていないことです。",
+    "items": [
+      {
+        "title": "音と動作が一致していない",
+        "badge": "音の質感を具体的に指定する",
+        "color": "linear-gradient(135deg, #ef4444, #f97316)",
+        "desc": "素材に合わせた具体的な音の表現を追加し、意図しない限り、音楽、セリフ、環境音などは除外します。",
+        "prompt": "Try: crisp synchronized glass cutting sounds, quiet studio background, no music, no voice."
+      },
+      {
+        "title": "普通の動画のように感じられる",
+        "badge": "視点を近づける",
+        "color": "linear-gradient(135deg, #7c3aed, #c084fc)",
+        "desc": "マクロ撮影（接写）、単一動作の繰り返し、スローなタイミング、素材の触感が伝わるディテールを取り入れ、単なる映像ではなくASMRとして認識されるようにします。",
+        "prompt": "Try: extreme close-up, locked macro camera, slow repeated blade motion, visible texture flakes."
+      },
+      {
+        "title": "素材が非現実的に見える",
+        "badge": "物理的な挙動を定義する",
+        "color": "linear-gradient(135deg, #0ea5e9, #38bdf8)",
+        "desc": "物体がどのように変形、ひび割れ、崩壊、折り畳み、伸縮、あるいは流動するのかを説明します。 素材には単なる名称だけでなく、物理的な挙動のルールが必要です。",
+        "prompt": "Try: brittle shell cracks into tiny fragments while the soft center stays glossy."
+      },
+      {
+        "title": "シーンが雑然としすぎている",
+        "badge": "動作を一つに絞る",
+        "color": "linear-gradient(135deg, #059669, #34d399)",
+        "desc": "二次的なカメラワーク、余分な小道具、複数の同時動作を取り除きます。 ASMRは、単一の動作を繰り返すスタイルの方が効果的です。",
+        "prompt": "Try: one hand presses the sand block straight down while the camera remains fixed overhead."
+      },
+      {
+        "title": "ループがスムーズでない",
+        "badge": "終わりの部分を計画する",
+        "color": "linear-gradient(135deg, #f59e0b, #ec4899)",
+        "desc": "睡眠用、雨、環境音、あるいはソーシャルメディア向けのループ動画では、安定したリズムと、開始フレームに自然に戻れるような終了フレームを指定します。",
+        "prompt": "Try: seamless slow rain on leaves, consistent rhythm, no sudden camera movement, loopable final frame."
+      }
+    ]
+  },
+  "scenesTitle": "人気のAI ASMR動画スタイル",
+  "scenes": [
+    {
+      "title": "ガラスの切断や脆い物体の破壊",
+      "icon": "🔪",
+      "desc": "ガラスのような質感のフルーツ、氷、キャンディの殻、結晶、脆い素材など、サクサクと切る、割る、あるいは軽く叩くような音を伴う質感。"
+    },
+    {
+      "title": "石鹸、粘土、フォーム（泡）、キネティックサンド（砂遊び用素材）。",
+      "icon": "🧼",
+      "desc": "柔らかい素材を削る、粉状に崩す、粒状のものを押し固める、ゆっくりとこする、幾何学的な形に押し付けるといったシーン。"
+    },
+    {
+      "title": "スライム、蜂蜜、樹脂（レジン）、液体を注ぐ様子。",
+      "icon": "🍯",
+      "desc": "粘り気のある折り畳み、艶やかに伸びる様子、とろりとした液体の注入、滑らかな混合、そしてガラス・陶器・金属に触れる音。"
+    },
+    {
+      "title": "タッピング（軽く叩く）、ブラッシング、スキンケア製品の質感。",
+      "icon": "🖌️",
+      "desc": "ブラシのストローク、爪で叩く音、製品の質感のクローズアップ、クリームを伸ばす様子、パッケージの音、スパのような静かな動作。"
+    },
+    {
+      "title": "雨、睡眠用ループ動画、環境音（アンビエンス）。",
+      "icon": "🌧️",
+      "desc": "ループ再生可能な雨の音、穏やかな室内の雰囲気音、ゆっくりとした自然な動き、リラクゼーション動画向けの心を落ち着かせる背景映像。"
+    },
+    {
+      "title": "製品の質感を強調した広告映像。",
+      "icon": "📦",
+      "desc": "食品、美容、ウェルネス、パッケージ、Eコマース関連のクローズアップ映像。触覚的な音によって製品の質感をリアルに感じさせます。"
+    }
+  ],
+  "features": {
+    "title": "AI ASMR動画制作にToolazeを使う理由",
+    "items": [
+      {
+        "icon": "🎧",
+        "iconType": "creative",
+        "title": "「音」を起点とした生成ワークフロー",
+        "desc": "音声を後付けにするのではなく、視覚的な動きとASMR音声を同時にプロンプ​​トで指定します。"
+      },
+      {
+        "icon": "🖼️",
+        "iconType": "upload",
+        "title": "テキストや画像を起点とした生成",
+        "desc": "オリジナルのトリガーシーン（ASMRのきっかけとなる場面）を生成したり、制御された製品、質感、あるいは最初のフレームの参照画像を使ってアニメーションを作成したりできます。"
+      },
+      {
+        "icon": "🎛️",
+        "iconType": "workflow",
+        "title": "複数の動画生成モデルを一つのツールで利用可能",
+        "desc": "ツールを切り替えることなく、モデルの挙動、入力モード、再生時間、解像度、音声対応状況、クレジット消費の目安などを比較できます。"
+      }
+    ]
+  },
+  "faqTitle": "AI ASMR動画生成ツールに関するFAQ",
+  "faq": [
+    {
+      "q": "AI ASMR動画生成ツールとは何ですか？",
+      "a": "テキストプロンプトや参照画像から、触覚的な感覚を呼び起こす短い動画を生成するツールです。 ASMR動画の場合、プロンプトで視覚的な動作と音の性質（例：サクサクと切る、乾燥したものを崩す、粘り気のある液体を注ぐ、柔らかくブラシをかける、静かな雨など）の両方を指定します。"
+    },
+    {
+      "q": "AI ASMR動画に同期した音声を含めることはできますか？",
+      "a": "はい、選択したモデルと設定が音声に対応している場合に可能です。 映像と音声の整合性を高めるには、プロンプトに素材、具体的な動作、音の質感、ペース、背景ノイズを記述してください。"
+    },
+    {
+      "q": "ASMRにはどのモデルから始めるべきですか？",
+      "a": "クリップの目的に合わせて選んでください。 必要な入力タイプ、解像度、長さ、音声の挙動に対応したモデルを使用し、本番の生成にクレジットを消費する前に、まずは短いドラフト（試作）を実行しましょう。"
+    },
+    {
+      "q": "画像からASMR動画クリップを作成できますか？",
+      "a": "はい、可能です。 鮮明な参照画像をアップロードし、「Image to Video（画像から動画へ）」を選択します。そして、追加したい動きや音を記述しつつ、形状を維持すべき製品、物体、質感、構図などを指定してください。"
+    },
+    {
+      "q": "優れたASMR動画プロンプトとはどのようなものですか？",
+      "a": "特定の物体、一つの物理的な動作、一つの音の質感、マクロ撮影の視点、遅いテンポ、静かな背景を指定します。 「リラックスできる」「満足感がある」といった曖昧な表現は避けましょう。"
+    },
+    {
+      "q": "TikTokやYouTube Shorts向けのASMR動画はどうすれば作れますか？",
+      "a": "可能であれば縦型（9:16）のフォーマットを使用し、一つのクローズアップされた「トリガー（音や刺激の源）」に焦点を当てます。ループ再生に適した終わり方にし、モバイル端末では読みづらいような、文字情報の多い映像は避けましょう。"
+    },
+    {
+      "q": "生成されたASMR動画が非現実的に見えるのはなぜですか？",
+      "a": "プロンプトに素材の挙動が記述されていない可能性があります。 物体がどのように割れるか、圧縮されるか、折りたたまれるか、伸びるか、溶けるか、崩れるか、あるいは流れるかといった詳細を追加してください。"
+    },
+    {
+      "q": "AI ASMRを製品紹介動画に使えますか？",
+      "a": "はい。 鮮明な参照画像を使用し、製品の形状、ラベル、色を安定させるプロンプトであれば、食品、美容、ウェルネス、パッケージ、ECサイトのデモ動画などに、製品の質感を活かしたクリップを効果的に活用できます。"
+    }
+  ],
+  "moreTools": "その他のAI動画ツール"
+}

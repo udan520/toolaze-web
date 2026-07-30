@@ -16,6 +16,7 @@ const homeAdvancedAiCardImagesSource = readFileSync(new URL('../lib/home-advance
 const homeModelCardImagesSource = readFileSync(new URL('../lib/home-model-card-images.ts', import.meta.url), 'utf8')
 const aiToolsCopySource = readFileSync(new URL('../app/ai-tools/copy.ts', import.meta.url), 'utf8')
 const siteLanguageSwitchSource = readFileSync(new URL('../lib/site-language-switch.ts', import.meta.url), 'utf8')
+const aiImageGeneratorConfigSource = readFileSync(new URL('../lib/ai-image-generator-config.ts', import.meta.url), 'utf8')
 const sitemapSource = readFileSync(new URL('../app/sitemap.ts', import.meta.url), 'utf8')
 const localeAiDancePageSource = readFileSync(new URL('../app/[locale]/ai-dance-generator/page.tsx', import.meta.url), 'utf8')
 const localeAiClothesChangerPageSource = readFileSync(new URL('../app/[locale]/ai-clothes-changer/page.tsx', import.meta.url), 'utf8')
@@ -67,13 +68,9 @@ test('AI Dance is discoverable from global navigation, footer, homepage, and AI 
 })
 
 test('AI Kissing is discoverable from global navigation, footer, homepage, and AI Tools hub before AI Dance', () => {
-  const desktopAiToolsBlock = navigationSource.slice(
-    navigationSource.indexOf('{/* 一级菜单：AI Tools */}'),
-    navigationSource.indexOf('{/* 一级菜单：AI Image */}'),
-  )
-  const mobileAiToolsBlock = navigationSource.slice(
-    navigationSource.indexOf('{/* AI Tools 部分 */}'),
-    navigationSource.indexOf('{/* AI Image 部分 */}'),
+  const videoToolsBlock = navigationSource.slice(
+    navigationSource.indexOf('const AI_VIDEO_TOOL_MENU_ITEMS'),
+    navigationSource.indexOf('function getInitialNavTranslations'),
   )
   const sceneNavKeysBlock = l2Source.slice(
     l2Source.indexOf('const sceneNavKeys = ['),
@@ -84,13 +81,11 @@ test('AI Kissing is discoverable from global navigation, footer, homepage, and A
     l2Source.indexOf('const pageTranslations ='),
   )
 
-  for (const block of [desktopAiToolsBlock, mobileAiToolsBlock]) {
-    const kissingIndex = block.indexOf("href={getLocalizedHref('/ai-kissing-video-generator')}")
-    const danceIndex = block.indexOf("href={getLocalizedHref('/ai-dance-generator')}")
-    assert.notEqual(kissingIndex, -1)
-    assert.notEqual(danceIndex, -1)
-    assert.ok(kissingIndex < danceIndex)
-  }
+  const kissingIndex = videoToolsBlock.indexOf("href: '/ai-kissing-video-generator'")
+  const danceIndex = videoToolsBlock.indexOf("href: '/ai-dance-generator'")
+  assert.notEqual(kissingIndex, -1)
+  assert.notEqual(danceIndex, -1)
+  assert.ok(kissingIndex < danceIndex)
 
   assert.match(navigationSource, /aiKissingVideoGenerator/)
   assert.match(footerSource, /aiKissingVideoGenerator/)
@@ -173,47 +168,20 @@ test('AI Image model links show their manufacturer icons on desktop and mobile',
 })
 
 test('AI Kissing and AI Dance show localized Hot labels in AI Tools navigation', () => {
-  const desktopAiToolsBlock = navigationSource.slice(
-    navigationSource.indexOf('{/* 一级菜单：AI Tools */}'),
-    navigationSource.indexOf('{/* 一级菜单：AI Image */}'),
+  const videoToolsBlock = navigationSource.slice(
+    navigationSource.indexOf('const AI_VIDEO_TOOL_MENU_ITEMS'),
+    navigationSource.indexOf('function getInitialNavTranslations'),
   )
-  const mobileAiToolsBlock = navigationSource.slice(
-    navigationSource.indexOf('{/* AI Tools 部分 */}'),
-    navigationSource.indexOf('{/* AI Image 部分 */}'),
+  const sharedToolRenderer = navigationSource.slice(
+    navigationSource.indexOf('const renderAiToolMenuItem'),
+    navigationSource.indexOf('const getDefaultAiToolsExpandedSubmenus'),
   )
 
-  for (const block of [desktopAiToolsBlock, mobileAiToolsBlock]) {
-    const linkFor = (route) => {
-      const start = block.indexOf(`href={getLocalizedHref('${route}')}`)
-      const end = block.indexOf('</Link>', start)
-      return block.slice(start, end >= 0 ? end : block.length)
-    }
-    const kissingIndex = block.indexOf("href={getLocalizedHref('/ai-kissing-video-generator')}")
-    const danceIndex = block.indexOf("href={getLocalizedHref('/ai-dance-generator')}")
-    const hairstyleIndex = block.indexOf("href={getLocalizedHref('/ai-hairstyle-changer')}")
-    const worldCupIndex = block.indexOf("href={getLocalizedHref('/world-cup-ai-image-generator')}")
-    const watermarkIndex = block.indexOf("href={getLocalizedHref('/watermark-remover')}")
-    const restorationIndex = block.indexOf("href={getLocalizedHref('/photo-restoration')}")
-    const viewAllIndex = block.indexOf("href={getLocalizedHref('/ai-tools')}")
-
-    assert.notEqual(kissingIndex, -1)
-    assert.notEqual(danceIndex, -1)
-    assert.notEqual(hairstyleIndex, -1)
-    assert.notEqual(worldCupIndex, -1)
-    assert.notEqual(watermarkIndex, -1)
-    assert.notEqual(restorationIndex, -1)
-    assert.notEqual(viewAllIndex, -1)
-    assert.ok(kissingIndex < danceIndex)
-    assert.ok(danceIndex < hairstyleIndex)
-    assert.ok(worldCupIndex < watermarkIndex)
-    assert.ok(watermarkIndex < restorationIndex)
-    assert.ok(restorationIndex < viewAllIndex)
-    for (const link of [linkFor('/ai-kissing-video-generator'), linkFor('/ai-dance-generator')]) {
-      assert.match(link, /navTranslations\.hot \|\| defaultNavTranslations\.hot/)
-      assert.match(link, /bg-red-500 px-1\.5 py-0\.5 text-\[10px\] font-extrabold leading-none text-white/)
-    }
-    assert.doesNotMatch(block, /bg-rose-50/)
-  }
+  assert.match(videoToolsBlock, /aiKissingVideoGenerator[\s\S]*hot: true/)
+  assert.match(videoToolsBlock, /aiDanceGenerator[\s\S]*hot: true/)
+  assert.match(sharedToolRenderer, /navTranslations\.hot \|\| defaultNavTranslations\.hot/)
+  assert.match(sharedToolRenderer, /bg-red-500 px-1\.5 py-0\.5 text-\[10px\] font-extrabold leading-none text-white/)
+  assert.doesNotMatch(sharedToolRenderer, /bg-rose-50/)
 })
 
 test('AI Dance supports localized route switching and localized shell copy', () => {
@@ -246,7 +214,7 @@ test('AI Clothes Changer supports localized route switching, sitemap, and shell 
   )
 
   assert.match(navigationSource, /aiClothesChanger/)
-  assert.match(navigationSource, /href=\{getLocalizedHref\('\/ai-clothes-changer'\)\}/)
+  assert.match(navigationSource, /href: '\/ai-clothes-changer'/)
   assert.match(footerSource, /aiClothesChanger/)
   assert.match(footerSource, /href=\{getLocalizedHref\('\/ai-clothes-changer'\)\}/)
   assert.match(homepageGridToolsSource, /\{ id: 'ai-clothes-changer', usesAi: true \}/)
@@ -425,10 +393,11 @@ test('Grok Video 1.5 image upload flow supports KIE multi-image references', () 
   assert.match(grokConfigBlock, /maxImages:\s*7/)
   assert.doesNotMatch(grokModelOptionBlock, /one reference image/i)
   assert.match(imageToImageFunctionSource, /if \(isVideoGenerationModel\(model\)\) return 7;/)
-  assert.deepEqual(
-    aiImageToolSource.match(/id === 'grok-video-1-5'\s*\? \[([^\]]+)\]/)?.[1].match(/'[^']+'/g),
-    ["'480p'", "'720p'"],
+  assert.match(
+    aiImageGeneratorConfigSource,
+    /'grok-video-1-5': \{[\s\S]*setting: \{ kind: 'resolution', options: \['480p', '720p'\], defaultValue: '480p' \}/,
   )
+  assert.match(aiImageToolSource, /const getResolutionOptionsForModel = \(id: ImageModelId\): string\[] =>\s+MODEL_CONFIG\[id\]\.setting\.options/)
 })
 
 test('AI Kissing Video Generator keeps its upload, duration, and prompt contracts in every locale', () => {

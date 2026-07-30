@@ -39,6 +39,7 @@ interface ToolL2PageContentProps {
 const AI_IMAGE_TOOL_TOP_COMPONENTS = new Set(['gpt-image-2'])
 const VIDEO_GENERATOR_DEFAULT_MODELS = {
   'ai-video-generator': 'grok-1-5-video',
+  'ai-asmr-video-generator': 'grok-1-5-video',
   'seedance-2': 'seedance-2',
   'kling-3': 'kling-3',
 } as const
@@ -500,12 +501,15 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
       'language',
       'quickTools',
       'aiTools',
+      'imageTools',
+      'videoTools',
       'imageCompression',
       'imageConverter',
       'watermarkRemover',
       'photoRestoration',
       'aiCouplePhotoMaker',
       'aiBabyGenerator',
+      'aiAsmrVideoGenerator',
       'aiKissingVideoGenerator',
       'aiDanceGenerator',
       'aiHairstyleChanger',
@@ -829,7 +833,10 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
     if (IMAGE_MODEL_L2S.includes(tool) || (VIDEO_MODEL_L2S.includes(tool) && tool !== 'seedance-2-5')) {
       sectionsOrder = sectionsOrder.filter((s: string) => s !== 'comparison')
     }
-    sectionsOrder = filterPaymentReviewSections(sectionsOrder)
+    const filteredSectionsOrder = filterPaymentReviewSections(sectionsOrder)
+    sectionsOrder = filteredSectionsOrder.length > 0
+      ? filteredSectionsOrder
+      : sectionsOrder.filter((sectionKey: string) => sectionKey !== 'testimonials' && sectionKey !== 'rating')
 
     // 生成页面 JSON-LD Schema
     const howToTitle = content.howToUse?.title || fallbackPageTitle

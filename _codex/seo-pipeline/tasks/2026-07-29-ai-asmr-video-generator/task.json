@@ -1,0 +1,22 @@
+{
+  "taskId": "2026-07-29-ai-asmr-video-generator",
+  "slug": "ai-asmr-video-generator",
+  "pageType": "l2",
+  "status": "ready_for_publish",
+  "tool": "ai-asmr-video-generator",
+  "topic": "AI ASMR Video Generator landing page",
+  "generatedBy": "Seo-Factory local pipeline",
+  "modelInstruction": "Use the supplied 16:9 R2 video as the hero demo. Keep the public hero model-neutral; model choice should be explained in the model-selection section rather than hardcoded into first-screen copy. Expand the public page around sound-first ASMR intent, prompt formula, model selection, trigger matrix, troubleshooting, and short-form use cases.",
+  "createdAt": "2026-07-29T13:00:00+08:00",
+  "outputs": [
+    "_codex/seo-pipeline/tasks/2026-07-29-ai-asmr-video-generator/content/en.json",
+    "src/data/en/ai-asmr-video-generator.json",
+    "src/app/ai-asmr-video-generator/page.tsx"
+  ],
+  "notes": [
+    "English canonical page with locale routes falling back to English until localized content is added.",
+    "Four prompt examples and three product reasons follow the project landing-page rules.",
+    "Hero video and poster use stable R2 public URLs.",
+    "Content was expanded after competitor SEO review; the page now targets synchronized sound, text/image workflows, ASMR trigger types, model-choice questions, and common failure fixes."
+  ]
+}

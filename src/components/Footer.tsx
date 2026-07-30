@@ -237,6 +237,14 @@ export default function Footer({ initialTranslations }: FooterProps = {}) {
             <ul className="space-y-2 mt-4">
               <li>
                 <Link
+                  href={getLocalizedHref('/ai-asmr-video-generator')}
+                  className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
+                >
+                  AI ASMR Video Generator
+                </Link>
+              </li>
+              <li>
+                <Link
                   href={getLocalizedHref('/ai-video-generator')}
                   className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
                 >

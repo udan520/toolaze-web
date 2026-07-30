@@ -102,6 +102,7 @@ test('AI video pages reuse the shared video generator component', () => {
   assert.match(configSource, /'kling-3'/, 'model config should include Kling video')
 
   assert.match(l2PageSource, /const VIDEO_GENERATOR_DEFAULT_MODELS = \{[\s\S]*'ai-video-generator': 'grok-1-5-video'[\s\S]*'seedance-2': 'seedance-2'[\s\S]*'kling-3': 'kling-3'/, 'video landing pages should map to their page-specific default models')
+  assert.match(l2PageSource, /'ai-asmr-video-generator': 'grok-1-5-video'/, 'AI ASMR should default to Grok video')
   assert.match(l2PageSource, /videoGeneratorDefaultModel \? \([\s\S]*<AiVideoGeneratorTool[\s\S]*modelId=\{videoGeneratorDefaultModel\}[\s\S]*allowModelSelect/, 'video landing pages should share one selectable generator branch')
   assert.equal((l2PageSource.match(/<AiVideoGeneratorTool/g) || []).length, 1, 'L2 video landing pages should render one shared generator implementation')
   assert.match(componentSource, /defaultMode\?: AiVideoGeneratorModeId/, 'shared video generator should accept a page-level default mode')

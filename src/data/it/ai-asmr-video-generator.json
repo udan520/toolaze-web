@@ -1,0 +1,314 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "ai-asmr-video-generator",
+  "topTool": {
+    "defaultMode": "text-to-video",
+    "displayName": "Generatore di video ASMR basato su IA"
+  },
+  "metadata": {
+    "title": "Generatore di video ASMR basato su IA con audio sincronizzato | Toolaze",
+    "description": "Crea video ASMR con IA dotati di audio tattile sincronizzato, movimenti macro e controllo tramite testo o immagine per azioni come tagliare, frantumare, versare, picchiettare, spazzolare e creare loop per il sonno."
+  },
+  "hero": {
+    "h1": "<span class=\"text-gradient\">Generatore di video ASMR basato su IA</span> con audio sincronizzato",
+    "desc": "Trasforma un prompt tattile o un'immagine di riferimento in un breve video ASMR con movimenti in primo piano e audio corrispondente. Descrivi il materiale, l'azione, l'inquadratura, il ritmo e le caratteristiche del suono, quindi scegli il modello video Toolaze più adatto alle tue esigenze di input, audio e qualità."
+  },
+  "heroDemoVideo": {
+    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/ai-asmr-video-generator/demo.mp4",
+    "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/ai-asmr-video-generator/demo-poster.webp",
+    "ariaLabel": "Video dimostrativo ASMR generato dall'IA"
+  },
+  "sectionsOrder": [
+    "modelIntro",
+    "intro",
+    "performanceMetrics",
+    "modelSelectionGuide",
+    "promptExamples",
+    "howToUse",
+    "troubleshooting",
+    "scenes",
+    "features",
+    "faq"
+  ],
+  "modelIntro": {
+    "title": "Crea clip ASMR incentrate sull'audio partendo da testo o immagini",
+    "modelName": "Generatore di video ASMR basato su IA",
+    "modelType": "Strumento video basato su IA",
+    "description": [
+      "Un generatore di video ASMR basato su IA trasforma una breve idea tattile in un video in cui movimento e suono sono progettati insieme. I prompt migliori non si limitano a nominare un oggetto, ma descrivono il materiale, l'azione fisica, la consistenza del suono, la distanza della telecamera, il ritmo e se lo sfondo debba rimanere silenzioso.",
+      "Usa la funzione \"da testo a video\" per concetti come il taglio di frutta di vetro, l'intaglio del sapone, la sabbia cinetica, lo slime, il picchiettio, lo spazzolamento, la pioggia e i loop per il sonno. Usa la funzione \"da immagine a video\" quando un prodotto, il fotogramma iniziale, un campione di texture, lo scatto di una confezione o l'immagine di un creator devono rimanere riconoscibili mentre viene aggiunta l'azione ASMR."
+    ],
+    "featureCards": [
+      {
+        "title": "Definisci il suono nel prompt, non solo la scena",
+        "content": "Descrivi direttamente le caratteristiche del suono: il crepitio nitido del vetro, la compressione della sabbia asciutta, le pieghe del miele viscoso, le pennellate delicate, la pioggia leggera o la frantumazione del ghiaccio fragile."
+      },
+      {
+        "title": "Scegli il controllo tramite testo o immagine",
+        "content": "Parti da un prompt per scene puramente creative oppure carica un'immagine di riferimento quando il soggetto, il prodotto, il colore o la composizione devono rimanere invariati."
+      },
+      {
+        "title": "Mantieni la clip breve e incentrata sulla sensazione tattile",
+        "content": "L'ASMR funziona meglio con un'azione chiara, un'inquadratura ravvicinata, ritmi lenti, rumore di fondo minimo e un movimento semplice e ripetibile in loop."
+      }
+    ]
+  },
+  "intro": {
+    "title": "Cosa sono l'ASMR e i video ASMR generati dall'IA?",
+    "content": [
+      {
+        "title": "Cos'è l'ASMR?",
+        "text": "ASMR sta per Autonomous Sensory Meridian Response (Risposta autonoma del meridiano sensoriale). Descrive la sensazione di formicolio calmante o di rilassamento che alcune persone provano in risposta a suoni delicati e azioni ravvicinate, come picchiettare, spazzolare, tagliare, raschiare, il rumore della pioggia, sussurri o il lento movimento di materiali."
+      },
+      {
+        "title": "Cos'è un video ASMR generato dall'IA?",
+        "text": "Un video ASMR generato dall'IA combina una scena ravvicinata generata artificialmente con stimoli sonori tattili. Un risultato efficace mantiene l'azione visivamente chiara e la abbina a una specifica consistenza sonora, come il crepitio nitido del ghiaccio, la compressione di sabbia asciutta, delicate pennellate o una pioggia costante."
+      }
+    ]
+  },
+  "performanceMetrics": {
+    "title": "Impostazioni fondamentali per i video ASMR",
+    "metrics": [
+      {
+        "label": "Modalità di partenza ideale",
+        "value": "Da testo a video (Text-to-Video) per idee ASMR originali; da immagine a video (Image-to-Video) quando è necessario mantenere il controllo su un prodotto, una texture, il fotogramma iniziale o un riferimento visivo specifico."
+      },
+      {
+        "label": "Formula del prompt",
+        "value": "Materiale o oggetto + azione fisica + caratteristiche del suono + inquadratura macro + ritmo lento + sfondo silenzioso"
+      },
+      {
+        "label": "Orientamento predefinito del modello",
+        "value": "Confronta i modelli video di Toolaze in base a modalità di input, risoluzione, durata, comportamento audio, stabilità del movimento e stima dei crediti prima di generare."
+      },
+      {
+        "label": "Composizione della clip",
+        "value": "Usa un unico soggetto centrato, un movimento ripetuto, un'inquadratura stretta, un'illuminazione pulita e nessun dialogo, a meno che l'obiettivo non sia un ASMR basato su sussurri."
+      },
+      {
+        "label": "Inquadratura in base alla piattaforma",
+        "value": "Usa il formato 9:16 per TikTok, Reels, Shorts e loop per dispositivi mobili; usa il 16:9 per demo su siti web, annunci incentrati sulla texture del prodotto e clip di sottofondo ambientale."
+      }
+    ]
+  },
+  "modelSelectionGuide": {
+    "title": "Scegli il modello giusto per i video ASMR",
+    "subtitle": "La qualità dell'ASMR dipende dal comportamento dell'audio, dalla stabilità del movimento, dal controllo dell'input e dal livello di dettaglio richiesto dal materiale.",
+    "items": [
+      {
+        "title": "Wan 2.7",
+        "badge": "Opzione predefinita per iniziare con l'ASMR",
+        "color": "linear-gradient(135deg, #6d28d9, #ec4899)",
+        "desc": "Usa Wan 2.7 quando il prompt richiede dettagli tattili del materiale, input text-to-video o image-to-video e una prima elaborazione bilanciata per scene ASMR.",
+        "prompt": "Ideale per tagliare frutta di vetro, intagliare sapone, comprimere sabbia cinetica, versare miele e creare altri primi piani di texture."
+      },
+      {
+        "title": "Kling Models",
+        "badge": "Test incentrati sull'audio",
+        "color": "linear-gradient(135deg, #0f172a, #22c55e)",
+        "desc": "Usa le opzioni Kling quando la sincronizzazione del suono o un movimento cinematografico rifinito sono più importanti di una rapida iterazione.",
+        "prompt": "Ideale per tagli netti, picchiettio, spazzolatura, frantumazione e clip brevi in cui la sincronizzazione sonora è il principale indicatore di qualità."
+      },
+      {
+        "title": "Seedance Models",
+        "badge": "Scene ricche di riferimenti",
+        "color": "linear-gradient(135deg, #4f46e5, #06b6d4)",
+        "desc": "Usa Seedance quando la clip ASMR richiede diversi riferimenti visivi, una maggiore continuità visiva o il controllo su prodotto e storyboard.",
+        "prompt": "Ideale per annunci sulla texture dei prodotti, routine di cura della pelle, primi piani di confezioni o bozze con più inquadrature."
+      },
+      {
+        "title": "Grok or Veo Options",
+        "badge": "Esplorazione visiva rapida",
+        "color": "linear-gradient(135deg, #111827, #6366f1)",
+        "desc": "Usa queste opzioni per un'esplorazione visiva veloce, test di atmosfera o quando un prompt richiede uno stile di movimento diverso.",
+        "prompt": "Ideale per confrontare movimenti di camera, inquadratura, illuminazione e concept per i social prima della generazione ASMR finale."
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "Idee per prompt di video ASMR generati dall'IA",
+    "subtitle": "Quattro strutture pratiche di prompt che specificano oggetto, azione, suono, inquadratura e ritmo.",
+    "items": [
+      {
+        "title": "Taglio di frutta in vetro",
+        "prompt": "Macro close-up of a translucent glass strawberry being sliced slowly with a polished knife, tiny crystalline fragments, soft studio light, locked camera, crisp synchronized glass cutting sounds, no music.",
+        "note": "Usa il rallentatore (slow motion), una telecamera macro fissa e un termine preciso per descrivere il suono, come nitido, fragile o cristallino.",
+        "color": "linear-gradient(135deg, #fb7185, #7dd3fc)"
+      },
+      {
+        "title": "Compressione di sabbia cinetica",
+        "prompt": "Top-down macro shot of pastel kinetic sand pressed into perfect geometric layers, gradual compression, fine grains separating at the edges, dry granular ASMR sound, even diffused light.",
+        "note": "Descrivi la pressione, la granulometria e il modo in cui il materiale si sgretola.",
+        "color": "linear-gradient(135deg, #f9a8d4, #c4b5fd)"
+      },
+      {
+        "title": "Frantumazione di cubetti di ghiaccio",
+        "prompt": "Macro close-up of clear ice cubes being crushed slowly under a stainless steel press, sharp cracks, tiny frost fragments, cold blue studio light, locked camera, crisp synchronized ice cracking and crunching sounds, no music.",
+        "note": "Includi dettagli su fragilità, crepe, scricchiolii e frammenti affinché il riferimento sonoro sia evidente.",
+        "color": "linear-gradient(135deg, #38bdf8, #6366f1)"
+      },
+      {
+        "title": "Intaglio del sapone",
+        "prompt": "Macro ASMR soap carving with a sharp blade creating thin even curls, powder collecting on a dark slate surface, precise hand movement, crisp scraping and soft crumble sounds, no dialogue.",
+        "note": "Mantieni l'azione ripetitiva ed evita oggetti superflui che possano distogliere l'attenzione dal suono.",
+        "color": "linear-gradient(135deg, #67e8f9, #a7f3d0)"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Come creare un video ASMR con l'IA",
+    "steps": [
+      {
+        "title": "Descrivi una singola azione ASMR nel prompt",
+        "desc": "Inserisci direttamente nel prompt un'azione tattile, come affettare ghiaccio, schiacciare sabbia, premere schiuma, picchiettare sul vetro, spazzolare un tessuto, allungare slime, creare un'atmosfera di pioggia o un loop rilassante per il sonno."
+      },
+      {
+        "title": "Scrivi il prompt partendo dal suono",
+        "desc": "Usa la formula: materiale, azione, caratteristiche del suono, inquadratura, ritmo, illuminazione e rumore di fondo. Sostituisci termini generici come \"appagante\" con descrizioni sonore precise."
+      },
+      {
+        "title": "Scegli tra input testuale o immagine",
+        "desc": "Usa il testo per scene originali, oppure carica un'immagine di riferimento se il prodotto, l'oggetto, la texture o il fotogramma iniziale devono rimanere riconoscibili."
+      },
+      {
+        "title": "Genera una breve bozza",
+        "desc": "Inizia con un movimento chiaro e una durata ridotta, verifica la sincronia audio-video, quindi aumenta la risoluzione, la durata o la complessità visiva."
+      }
+    ]
+  },
+  "troubleshooting": {
+    "title": "Risolvi i problemi comuni dei video ASMR generati dall'IA",
+    "subtitle": "La maggior parte delle generazioni ASMR poco efficaci deriva da descrizioni sonore vaghe, troppe azioni o una scena troppo distante dal materiale.",
+    "items": [
+      {
+        "title": "Il suono non corrisponde all'azione",
+        "badge": "Definisci la texture sonora",
+        "color": "linear-gradient(135deg, #ef4444, #f97316)",
+        "desc": "Aggiungi una descrizione sonora concreta per il materiale ed elimina musica, dialoghi o rumori ambientali, a meno che non siano voluti.",
+        "prompt": "Try: crisp synchronized glass cutting sounds, quiet studio background, no music, no voice."
+      },
+      {
+        "title": "La clip sembra un video normale",
+        "badge": "Avvicinati",
+        "color": "linear-gradient(135deg, #7c3aed, #c084fc)",
+        "desc": "Usa inquadrature macro, un'azione ripetuta, ritmi lenti e dettagli tattili del materiale affinché il risultato venga percepito come ASMR anziché come un filmato generico.",
+        "prompt": "Try: extreme close-up, locked macro camera, slow repeated blade motion, visible texture flakes."
+      },
+      {
+        "title": "Il materiale appare irreale",
+        "badge": "Definisci il comportamento fisico",
+        "color": "linear-gradient(135deg, #0ea5e9, #38bdf8)",
+        "desc": "Spiega come l'oggetto deve deformarsi, incrinarsi, sgretolarsi, piegarsi, allungarsi o fluire. I materiali richiedono regole fisiche, non solo nomi.",
+        "prompt": "Try: brittle shell cracks into tiny fragments while the soft center stays glossy."
+      },
+      {
+        "title": "La scena è troppo caotica",
+        "badge": "Usa un'unica azione",
+        "color": "linear-gradient(135deg, #059669, #34d399)",
+        "desc": "Elimina movimenti di camera secondari, oggetti di scena superflui e azioni simultanee multiple. L'ASMR funziona meglio con un singolo gesto ripetuto.",
+        "prompt": "Try: one hand presses the sand block straight down while the camera remains fixed overhead."
+      },
+      {
+        "title": "Il loop non è fluido",
+        "badge": "Pianifica la conclusione",
+        "color": "linear-gradient(135deg, #f59e0b, #ec4899)",
+        "desc": "Per loop dedicati al sonno, alla pioggia, all'atmosfera o alle interazioni sociali, richiedi un ritmo costante e un fotogramma finale che possa ricollegarsi a quello iniziale.",
+        "prompt": "Try: seamless slow rain on leaves, consistent rhythm, no sudden camera movement, loopable final frame."
+      }
+    ]
+  },
+  "scenesTitle": "Stili popolari di video ASMR generati dall'IA",
+  "scenes": [
+    {
+      "title": "Taglio del vetro e oggetti fragili",
+      "icon": "🔪",
+      "desc": "Frutta di vetro, ghiaccio, gusci di caramelle, cristalli e consistenze fragili accompagnati da suoni nitidi di taglio, rottura o picchiettio."
+    },
+    {
+      "title": "Sapone, argilla, schiuma e sabbia cinetica.",
+      "icon": "🧼",
+      "desc": "Scene di incisione delicata, sbriciolamento polveroso, compressione di materiali granulari, raschiamento lento e pressione geometrica."
+    },
+    {
+      "title": "Slime, miele, resina e colate di liquidi.",
+      "icon": "🍯",
+      "desc": "Pieghe appiccicose, allungamenti lucidi, colate dense, miscelazione fluida e suoni di contatto con vetro, ceramica o metallo."
+    },
+    {
+      "title": "Picchiettii, spennellate e consistenze tipiche dei prodotti per la cura della pelle.",
+      "icon": "🖌️",
+      "desc": "Pennellate, picchiettii con le unghie, primi piani sulla consistenza dei prodotti, stesura di creme, suoni di confezioni e movimenti silenziosi in stile spa."
+    },
+    {
+      "title": "Pioggia, loop per il sonno e suoni ambientali.",
+      "icon": "🌧️",
+      "desc": "Pioggia in loop, rumore di fondo ambientale delicato, movimenti naturali lenti e immagini di sfondo rilassanti per clip dedicate al relax."
+    },
+    {
+      "title": "Video incentrati sulla consistenza dei prodotti.",
+      "icon": "📦",
+      "desc": "Primi piani su cibo, bellezza, benessere, confezioni ed e-commerce, dove il suono tattile rende il prodotto più tangibile."
+    }
+  ],
+  "features": {
+    "title": "Perché usare Toolaze per video ASMR generati dall'IA?",
+    "items": [
+      {
+        "icon": "🎧",
+        "iconType": "creative",
+        "title": "Flusso di lavoro che privilegia il suono.",
+        "desc": "Generazione simultanea di movimento visivo e suono ASMR, evitando di considerare l'audio come un elemento secondario."
+      },
+      {
+        "icon": "🖼️",
+        "iconType": "upload",
+        "title": "Punti di partenza basati su testo e immagini.",
+        "desc": "Generazione di una scena \"trigger\" originale o animazione di un prodotto, una consistenza o un riferimento visivo iniziale controllati."
+      },
+      {
+        "icon": "🎛️",
+        "iconType": "workflow",
+        "title": "Più modelli video in un unico strumento.",
+        "desc": "Confronto tra comportamento del modello, modalità di input, durata, risoluzione, supporto audio e stima dei crediti, senza cambiare strumento."
+      }
+    ]
+  },
+  "faqTitle": "FAQ sul generatore di video ASMR con IA.",
+  "faq": [
+    {
+      "q": "Cos'è un generatore di video ASMR con IA?",
+      "a": "Crea un breve video tattile partendo da un prompt testuale o da un'immagine di riferimento. Per l'ASMR, il prompt deve definire sia l'azione visiva che le caratteristiche sonore, come tagli nitidi, sbriciolamento secco, colate appiccicose, spennellate delicate o pioggia leggera."
+    },
+    {
+      "q": "I video ASMR generati dall'IA possono includere audio sincronizzato?",
+      "a": "Sì, quando il modello e le impostazioni selezionati supportano l'audio. Per una migliore sincronizzazione audio-video, descrivi nel prompt il materiale, l'azione specifica, la texture sonora, il ritmo e il rumore di fondo."
+    },
+    {
+      "q": "Con quale modello dovrei iniziare per l'ASMR?",
+      "a": "Scegli in base all'obiettivo del video. Usa un modello che supporti il ​​tipo di input, la risoluzione, la durata e le caratteristiche audio desiderate; quindi, genera una bozza veloce prima di consumare altri crediti per la versione definitiva."
+    },
+    {
+      "q": "Posso creare video ASMR partendo da un'immagine (image-to-video)?",
+      "a": "Sì. Carica un'immagine di riferimento nitida, seleziona l'opzione \"Image to Video\" e descrivi il movimento e il suono che vuoi aggiungere, specificando al contempo quale prodotto, oggetto, texture o elemento della composizione deve rimanere stabile."
+    },
+    {
+      "q": "Quali sono gli elementi chiave per un buon prompt di video ASMR?",
+      "a": "Specifica un oggetto, un'azione fisica, una texture sonora, un'inquadratura macro, un ritmo lento e uno sfondo silenzioso. Evita prompt generici che si limitano a termini come \"rilassante\" o \"soddisfacente\"."
+    },
+    {
+      "q": "Come posso creare video ASMR per TikTok o YouTube Shorts?",
+      "a": "Usa il formato verticale 9:16 (se disponibile), concentra la scena su un unico elemento scatenante (trigger) in primo piano, crea un finale adatto al loop ed evita elementi visivi troppo ricchi di testo, difficili da leggere su dispositivi mobili."
+    },
+    {
+      "q": "Perché il risultato del mio video ASMR appare poco realistico?",
+      "a": "Il prompt potrebbe non descrivere correttamente il comportamento del materiale. Aggiungi dettagli su come l'oggetto si incrina, si comprime, si piega, si allunga, si scioglie, si sgretola o scorre."
+    },
+    {
+      "q": "Posso usare l'IA per creare video ASMR di prodotti?",
+      "a": "Sì. I video incentrati sulla texture del prodotto sono ideali per settori come food, beauty, benessere, packaging e demo e-commerce, a patto che l'immagine di riferimento sia nitida e il prompt mantenga stabili la forma, l'etichetta e il colore del prodotto."
+    }
+  ],
+  "moreTools": "Altri strumenti video basati su IA"
+}

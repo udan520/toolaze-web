@@ -8,6 +8,7 @@ const WRAPPED_GENERATOR_TOOL_SLUGS = new Set([
   'watermark-remover',
   'ai-dance-generator',
   'ai-kissing-video-generator',
+  'ai-asmr-video-generator',
 ])
 
 const WRAPPED_GENERATOR_TOOL_LABELS: Record<string, string> = {
@@ -20,6 +21,7 @@ const WRAPPED_GENERATOR_TOOL_LABELS: Record<string, string> = {
   'watermark-remover': 'Watermark Remover',
   'ai-dance-generator': 'AI Dance Generator',
   'ai-kissing-video-generator': 'AI Kissing Video Generator',
+  'ai-asmr-video-generator': 'AI ASMR Video Generator',
 }
 
 const MODEL_LABELS: Record<string, string> = {

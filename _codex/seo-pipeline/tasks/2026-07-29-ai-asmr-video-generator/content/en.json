@@ -1,0 +1,49 @@
+{
+  "taskId": "2026-07-29-ai-asmr-video-generator",
+  "slug": "ai-asmr-video-generator",
+  "pageType": "l2",
+  "status": "ready_for_publish",
+  "locale": "en",
+  "sourceData": "src/data/en/ai-asmr-video-generator.json",
+  "strategySource": "Competitor-informed rewrite based on AI ASMR generator SERP patterns: sound-first positioning, prompt formula, model selection, trigger matrix, troubleshooting, short-form use cases, and FAQ answer coverage.",
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "ai-asmr-video-generator",
+  "topTool": {
+    "defaultMode": "text-to-video",
+    "displayName": "AI ASMR Video Generator"
+  },
+  "metadata": {
+    "title": "AI ASMR Video Generator with Synced Sound | Toolaze",
+    "description": "Create AI ASMR videos with synchronized tactile sound, macro motion, and text or image control for cutting, crushing, pouring, tapping, brushing, and sleep loops."
+  },
+  "hero": {
+    "h1": "<span class=\"text-gradient\">AI ASMR Video Generator</span> with Synced Sound",
+    "desc": "Turn a tactile prompt or reference image into a short ASMR video with close-up motion and matching sound. Describe the material, action, camera, tempo, and sound character, then choose the Toolaze video model that best fits your input, audio, and quality needs."
+  },
+  "sectionsOrder": [
+    "modelIntro",
+    "performanceMetrics",
+    "modelSelectionGuide",
+    "promptExamples",
+    "howToUse",
+    "troubleshooting",
+    "scenes",
+    "features",
+    "faq"
+  ],
+  "contentDepthNotes": [
+    "Defines ASMR video generation above the fold with sound-first language.",
+    "Adds a visible What Is ASMR and What Is an AI ASMR Video definition section for informational search intent.",
+    "Adds prompt formula, model-selection logic, trigger matrix, and troubleshooting to match competitor depth without adding extra prompt cards.",
+    "Keeps four prompt examples and three Why Toolaze reasons per project rules.",
+    "Avoids unsupported claims such as unlimited free, no watermark, guaranteed viral output, or fake hard model limits."
+  ],
+  "competitorPatternSummary": [
+    "Ranking ASMR generator pages emphasize synchronized audio, not generic video creation.",
+    "Strong pages answer whether text-to-video and image-to-video are supported, which models produce audio, and how users should prompt sound.",
+    "Vertical ASMR competitors split demand into glass cutting, soap carving, slime, tapping, rain, sleep loops, TikTok, YouTube Shorts, and product texture use cases.",
+    "Comparison-style pages highlight prompt specificity, action verbs, and sound character as the main controllable variables."
+  ]
+}

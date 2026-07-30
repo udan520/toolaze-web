@@ -36,6 +36,7 @@ export const TOOL_SUPPORTED_LOCALES: Record<string, readonly string[]> = {
   'ai-couple-photo-maker': ALL_LOCALE_CODES,
   'ai-baby-generator': ALL_LOCALE_CODES,
   'ai-kissing-video-generator': ALL_LOCALE_CODES,
+  'ai-asmr-video-generator': ALL_LOCALE_CODES,
   'ai-dance-generator': ALL_LOCALE_CODES,
   'ai-clothes-changer': ALL_LOCALE_CODES,
   'photo-restoration': ALL_LOCALE_CODES,

@@ -407,7 +407,7 @@ test('history action uses settings instead of generating immediately', () => {
   assert.match(historyApply, /setOutputFormat\(item\.outputFormat \|\| 'Auto'\)/)
   assert.match(historyApply, /const inputImageUrls = getOriginalHistoryInputImageUrls\(item\)/)
   assert.match(historyApply, /setRemoteImageUrls\(inputImageUrls\.slice\(0, getMaxImagesForModel\(item\.modelId \|\| selectedModelId\)\)\)/)
-  assert.match(historyApply, /setActiveTab\(inputImageUrls\.length > 0 \? 'image-to-image' : 'text-to-image'\)/)
+  assert.match(historyApply, /setActiveTab\(item\.generationMode \?\? \(inputImageUrls\.length > 0 \? 'image-to-image' : 'text-to-image'\)\)/)
   assert.match(historyApply, /setActiveSettingsHistoryItemId\(item\.id\)/)
   assert.match(historyApply, /historyItemRefs\.current\.get\(item\.id\)\?\.scrollIntoView\(\{ block: 'nearest', behavior: 'smooth' \}\)/)
   assert.doesNotMatch(historyApply, /setRightMode\('sample'\)/)
@@ -421,13 +421,20 @@ test('history action uses settings instead of generating immediately', () => {
   assert.match(failedApply, /setOutputFormat\(item\.outputFormat \|\| 'Auto'\)/)
   assert.match(failedApply, /const inputImageUrls = getOriginalHistoryInputImageUrls\(item\)/)
   assert.match(failedApply, /setRemoteImageUrls\(inputImageUrls\.slice\(0, getMaxImagesForModel\(item\.modelId\)\)\)/)
-  assert.match(failedApply, /setActiveTab\(inputImageUrls\.length > 0 \? 'image-to-image' : 'text-to-image'\)/)
+  assert.match(failedApply, /setActiveTab\(item\.generationMode \?\? \(inputImageUrls\.length > 0 \? 'image-to-image' : 'text-to-image'\)\)/)
   assert.match(failedApply, /setActiveSettingsHistoryItemId\(item\.id\)/)
   assert.match(failedApply, /historyItemRefs\.current\.get\(item\.id\)\?\.scrollIntoView\(\{ block: 'nearest', behavior: 'smooth' \}\)/)
   assert.doesNotMatch(failedApply, /setRightMode\('sample'\)/)
   assert.match(source, /ref=\{\(node\) => setHistoryItemRef\(item\.id, node\)\}/)
   assert.match(source, /activeSettingsHistoryItemId === item\.id/)
   assert.doesNotMatch(source, /const handleRecreateFromCurrent = \(\) => \{[\s\S]*handleGenerate\(\)/)
+})
+
+test('Recreate preserves the actual generation mode for current and restored tasks', () => {
+  assert.match(source, /generationMode\?: 'text-to-image' \| 'image-to-image'/)
+  assert.match(source, /generationMode: requestActiveTab/)
+  assert.match(source, /generationMode: candidate\.generationMode \?\? \(inputUrls\.length > 0 \? 'image-to-image' : 'text-to-image'\)/)
+  assert.match(source, /generationMode: item\.generationMode/)
 })
 
 test('history action can edit a generated image as the next reference image', () => {

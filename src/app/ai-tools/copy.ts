@@ -58,6 +58,8 @@ const cardAssets = {
   dance: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/ai-dance-demo-source.png',
   kissing:
     'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/15ccbe71d8eb4921930b8b7638bcebab.webp',
+  asmr:
+    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/ai-asmr-video-generator/demo-poster.webp',
   hairstyle: '/ai-hairstyle-changer/hero-before-after.webp',
   hairColor: '/ai-hair-color-changer/rose-pink-before-after.webp',
   clothes:
@@ -192,6 +194,13 @@ const en: StoredAiToolsPageCopy = {
       image: cardAssets.clothes,
       description: 'Upload a person photo and preview realistic outfit changes with virtual try-on style prompts.',
       category: 'image',
+    },
+    {
+      title: 'AI ASMR Video Generator',
+      href: '/ai-asmr-video-generator',
+      image: cardAssets.asmr,
+      description: 'Create tactile AI ASMR videos with synchronized sound from a text prompt or reference image.',
+      category: 'video',
     },
   ],
 }
@@ -541,6 +550,7 @@ function getLocalizedCards(locale: AiToolsLocale, storedCards: AiToolsCard[]): A
       en.cards[13],
       en.cards[14],
       en.cards[15],
+      en.cards[16],
       en.cards[7],
       en.cards[8],
     ]
@@ -561,6 +571,7 @@ function getLocalizedCards(locale: AiToolsLocale, storedCards: AiToolsCard[]): A
     applyLocalizedCard(en.cards[13], supplemental.hairstyle),
     applyLocalizedCard(en.cards[14], supplemental.hairColor),
     applyLocalizedCard(en.cards[15], supplemental.clothes),
+    en.cards[16],
     applyLocalizedCard(en.cards[7], watermark),
     applyLocalizedCard(en.cards[8], restoration),
   ]

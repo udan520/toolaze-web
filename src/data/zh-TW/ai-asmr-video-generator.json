@@ -1,0 +1,314 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "ai-asmr-video-generator",
+  "topTool": {
+    "defaultMode": "text-to-video",
+    "displayName": "AI ASMR 視訊產生器"
+  },
+  "metadata": {
+    "title": "具有同步聲音的 AI ASMR 視訊產生器 | Toolaze",
+    "description": "創建 AI ASMR 視頻，可同步觸覺聲音、宏觀動作，並可控製文字或圖像，用於切割、碾壓、傾倒、敲擊、刷拭和睡眠循環。"
+  },
+  "hero": {
+    "h1": "<span class=\"text-gradient\">AI ASMR 視訊產生器</span> 搭配同步聲音",
+    "desc": "將觸覺提示或參考影像轉換為帶有特寫鏡頭和匹配聲音的短 ASMR 影片。 描述材質、動作、鏡頭、節奏和聲音特性，然後選擇最符合您的輸入、音訊和品質需求的 Toolaze 視訊模型。"
+  },
+  "heroDemoVideo": {
+    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/ai-asmr-video-generator/demo.mp4",
+    "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/ai-asmr-video-generator/demo-poster.webp",
+    "ariaLabel": "AI 產生的 ASMR 演示視頻"
+  },
+  "sectionsOrder": [
+    "modelIntro",
+    "intro",
+    "performanceMetrics",
+    "modelSelectionGuide",
+    "promptExamples",
+    "howToUse",
+    "troubleshooting",
+    "scenes",
+    "features",
+    "faq"
+  ],
+  "modelIntro": {
+    "title": "從文字或影像建立以聲音為主的 ASMR 片段",
+    "modelName": "AI ASMR 視訊產生器",
+    "modelType": "AI 視訊工具",
+    "description": [
+      "AI ASMR 視訊產生器可以將簡短的觸覺想法轉化為視頻，其中動作和聲音是同步規劃的。 最佳提示不僅僅是描述物體；它們還會描述材質、物理動作、聲音質感、鏡頭距離、節奏以及背景是否需要保持靜音。",
+      "使用文字轉影片功能，可以實現玻璃水果切割、肥皂雕刻、動力沙、史萊姆、敲擊、刷拭、雨水和睡眠循環等概念。 當產品、首幀、紋理樣本、包裝鏡頭或創作者視覺元素需要在添加 ASMR 動作的同時保持可識別性時，可以使用影像轉影片功能。"
+    ],
+    "featureCards": [
+      {
+        "title": "提示聲音，而不僅僅是場景",
+        "content": "直接輸入聲音特徵：清脆的玻璃碎裂聲、乾燥沙子的擠壓聲、黏稠蜂蜜的褶皺、輕柔的筆觸聲、靜謐的雨聲或冰塊破碎的聲音。"
+      },
+      {
+        "title": "選擇文字或影像控制",
+        "content": "可以從提示開始，創造純粹的場景；或者，當需要保持主題、產品、顏色或構圖穩定時，上傳參考圖像。"
+      },
+      {
+        "title": "保持影片短小精悍且觸感豐富",
+        "content": "ASMR 的最佳效果是：一個清晰的動作、近距離拍攝、緩慢的節奏、最小的背景噪音以及簡單的循環播放動作。"
+      }
+    ]
+  },
+  "intro": {
+    "title": "什麼是 ASMR 和 AI ASMR 影片？",
+    "content": [
+      {
+        "title": "什麼是 ASMR？",
+        "text": "ASMR 的全名為「自發性知覺經絡反應」。 它描述了某些人透過輕柔的聲音和近距離動作（例如輕敲、刷拭、切割、刮擦、雨聲、耳語或緩慢的物體移動）所體驗到的平靜、酥麻或放鬆的感覺。"
+      },
+      {
+        "title": "什麼是 AI ASMR 影片？",
+        "text": "AI ASMR 影片將產生的近距離場景與觸覺聲音線索結合。 優秀的影片能夠保持一個動作的視覺清晰度，並將其與特定的聲音質感相匹配，例如清脆的冰裂聲、乾燥沙子的擠壓聲、輕柔的刷拭聲或持續的雨聲。"
+      }
+    ]
+  },
+  "performanceMetrics": {
+    "title": "重要的 ASMR 影片設置",
+    "metrics": [
+      {
+        "label": "最佳啟動模式",
+        "value": "原始 ASMR 創意的文本轉視頻功能；當產品、紋理、首幀或視覺參考需要保持可控時，圖像轉視頻"
+      },
+      {
+        "label": "提示公式",
+        "value": "材質或物件 + 物理動作 + 音效角色 + 微距鏡頭 + 慢節奏 + 安靜的背景"
+      },
+      {
+        "label": "預設模型方向",
+        "value": "生成前，請根據輸入模式、解析度、時長、音訊表現、運動穩定性以及預估費用比較 Toolaze 視訊模型"
+      },
+      {
+        "label": "片段構圖",
+        "value": "使用一個居中的主體、一個重複的動作、緊湊的構圖、乾淨的光線，除非目標是輕聲細語的 ASMR，否則不要添加對話"
+      },
+      {
+        "label": "平台構圖",
+        "value": "TikTok、Reels、Shorts 和行動循環影片使用 9:16 比例；網站示範、產品紋理廣告和環境背景片段使用 16:9 比例"
+      }
+    ]
+  },
+  "modelSelectionGuide": {
+    "title": "選擇適合 ASMR 影片的模型",
+    "subtitle": "ASMR 的品質取決於音訊表現、動作穩定性、輸入控制以及素材所需的細節程度。",
+    "items": [
+      {
+        "title": "Wan 2.7",
+        "badge": "預設 ASMR 起始畫面",
+        "color": "linear-gradient(135deg, #6d28d9, #ec4899)",
+        "desc": "當提示需要觸覺細節、文字轉影片或影像轉影片輸入，以及需要對 ASMR 場景進行平衡的初稿處理時，請使用 Wan 2.7。",
+        "prompt": "適合玻璃水果切割、肥皂雕刻、動力沙、蜂蜜傾倒及其他材質特寫短片。"
+      },
+      {
+        "title": "Kling Models",
+        "badge": "音訊感知測試",
+        "color": "linear-gradient(135deg, #0f172a, #22c55e)",
+        "desc": "當同步聲音或流暢的電影級動作比快速迭代更重要時，請使用 Kling 選項。",
+        "prompt": "適合清脆切割、敲擊、刷拭、碾碎，以及以聲音同步為主要品質指標的短片。"
+      },
+      {
+        "title": "Seedance Models",
+        "badge": "參考素材豐富的場景",
+        "color": "linear-gradient(135deg, #4f46e5, #06b6d4)",
+        "desc": "當 ASMR 片段需要多個視覺參考、更強的視覺連貫性或產品和故事板控制時，請使用 Seedance。",
+        "prompt": "適合產品材質廣告、護膚流程、包裝特寫或多鏡頭概念草稿。"
+      },
+      {
+        "title": "Grok or Veo Options",
+        "badge": "快速視覺探索",
+        "color": "linear-gradient(135deg, #111827, #6366f1)",
+        "desc": "使用這些選項進行快速視覺探索、情緒測試，或當提示需要不同的動作風格時。",
+        "prompt": "適合在最終生成 ASMR 影片前，比較鏡頭運動、構圖、燈光與短影音社群概念。"
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "AI ASMR 影片提示創意",
+    "subtitle": "四種實用的提示結構，分別指定物體、動作、聲音、鏡頭和節奏。",
+    "items": [
+      {
+        "title": "切玻璃水果",
+        "prompt": "Macro close-up of a translucent glass strawberry being sliced slowly with a polished knife, tiny crystalline fragments, soft studio light, locked camera, crisp synchronized glass cutting sounds, no music.",
+        "note": "使用慢動作、固定微距鏡頭，以及諸如「清脆」、「易碎」或「晶瑩剔透」等精準的音效詞。",
+        "color": "linear-gradient(135deg, #fb7185, #7dd3fc)"
+      },
+      {
+        "title": "壓縮動力沙",
+        "prompt": "Top-down macro shot of pastel kinetic sand pressed into perfect geometric layers, gradual compression, fine grains separating at the edges, dry granular ASMR sound, even diffused light.",
+        "note": "描述壓力、顆粒大小、材料破碎的方式。",
+        "color": "linear-gradient(135deg, #f9a8d4, #c4b5fd)"
+      },
+      {
+        "title": "壓碎冰塊",
+        "prompt": "Macro close-up of clear ice cubes being crushed slowly under a stainless steel press, sharp cracks, tiny frost fragments, cold blue studio light, locked camera, crisp synchronized ice cracking and crunching sounds, no music.",
+        "note": "使用「易碎」、「斷裂」、「嘎吱」和「碎片」等細節，使聲音提示清晰可辨。",
+        "color": "linear-gradient(135deg, #38bdf8, #6366f1)"
+      },
+      {
+        "title": "雕刻肥皂",
+        "prompt": "Macro ASMR soap carving with a sharp blade creating thin even curls, powder collecting on a dark slate surface, precise hand movement, crisp scraping and soft crumble sounds, no dialogue.",
+        "note": "保持動作重複，避免使用會分散注意力的額外物體。",
+        "color": "linear-gradient(135deg, #67e8f9, #a7f3d0)"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "如何製作 AI ASMR 影片",
+    "steps": [
+      {
+        "title": "在提示中描述一個 ASMR 動作",
+        "desc": "直接在提示中輸入一個觸覺動作，例如切冰、捏沙、按壓泡沫、敲擊玻璃、刷布、拉伸史萊姆、雨聲環境或安靜的睡眠循環。"
+      },
+      {
+        "title": "寫出以聲音為先的提示",
+        "desc": "使用以下公式：材質、動作、聲音特徵、鏡頭、節奏、光線和背景噪音。 用具體的聲音細節取代「令人滿意」等模糊的字眼。"
+      },
+      {
+        "title": "選擇文字或影像輸入",
+        "desc": "使用文字描述原始場景，或在需要保持產品、物件、紋理或首幀可識別的情況下上傳參考影像。"
+      },
+      {
+        "title": "產生簡短草稿",
+        "desc": "先從一個清晰的動作和一個較短的持續時間開始，檢查音視頻匹配度，然後提高分辨率、持續時間或視覺複雜度。"
+      }
+    ]
+  },
+  "troubleshooting": {
+    "title": "修復常見的 AI ASMR 視訊問題",
+    "subtitle": "大多數效果不佳的 ASMR 影片都源自於模糊的聲音語言、過多的動作或與素材不夠貼近的場景。",
+    "items": [
+      {
+        "title": "聲音與動作不匹配",
+        "badge": "為聲音紋理命名",
+        "color": "linear-gradient(135deg, #ef4444, #f97316)",
+        "desc": "為素材添加一個特定的聲音短語，並移除音樂、對話或環境噪音（除非您需要）。",
+        "prompt": "Try: crisp synchronized glass cutting sounds, quiet studio background, no music, no voice."
+      },
+      {
+        "title": "影片片段感覺像普通視頻",
+        "badge": "拉近距離",
+        "color": "linear-gradient(135deg, #7c3aed, #c084fc)",
+        "desc": "使用宏觀鏡頭、重複的動作、慢速播放和觸感豐富的素材細節，使最終效果看起來像 ASMR 而不是普通的視訊素材。",
+        "prompt": "Try: extreme close-up, locked macro camera, slow repeated blade motion, visible texture flakes."
+      },
+      {
+        "title": "材質看起來不真實",
+        "badge": "定義物理行為",
+        "color": "linear-gradient(135deg, #0ea5e9, #38bdf8)",
+        "desc": "解釋物體應該如何變形、開裂、崩解、折疊、拉伸或流動。 材質需要物理規則，而不僅僅是名稱。",
+        "prompt": "Try: brittle shell cracks into tiny fragments while the soft center stays glossy."
+      },
+      {
+        "title": "場景過於混亂",
+        "badge": "使用單一動作",
+        "color": "linear-gradient(135deg, #059669, #34d399)",
+        "desc": "移除次要的鏡頭移動、額外的道具和多個同時進行的動作。 ASMR 使用單一重複的動作效果更佳。",
+        "prompt": "Try: one hand presses the sand block straight down while the camera remains fixed overhead."
+      },
+      {
+        "title": "循環不夠流暢",
+        "badge": "規劃結尾",
+        "color": "linear-gradient(135deg, #f59e0b, #ec4899)",
+        "desc": "對於睡眠、雨聲、氛圍或社交循環視頻，要求穩定的節奏和可以回到開頭的結尾幀。",
+        "prompt": "Try: seamless slow rain on leaves, consistent rhythm, no sudden camera movement, loopable final frame."
+      }
+    ]
+  },
+  "scenesTitle": "流行的 AI ASMR 影片風格",
+  "scenes": [
+    {
+      "title": "玻璃切割與易碎物品",
+      "icon": "🔪",
+      "desc": "玻璃水果、冰塊、糖殼、水晶和易碎材質，伴隨清脆的切割、斷裂或敲擊聲。"
+    },
+    {
+      "title": "肥皂、黏土、泡沫和動力沙。",
+      "icon": "🧼",
+      "desc": "輕柔的雕刻、粉末狀的碎屑、顆粒狀的壓縮、緩慢的刮擦和幾何形狀的按壓場景。"
+    },
+    {
+      "title": "史萊姆、蜂蜜、樹脂和液體傾倒。",
+      "icon": "🍯",
+      "desc": "黏稠的折疊、光滑的拉伸、濃稠的傾倒、平滑的混合以及與玻璃、陶瓷或金屬接觸的聲音。"
+    },
+    {
+      "title": "敲擊、刷塗和保養品的質感。",
+      "icon": "🖌️",
+      "desc": "刷痕、指甲敲擊、產品質感特寫、乳霜塗抹、包裝聲以及水療式的輕柔動作。"
+    },
+    {
+      "title": "雨聲、睡眠循環與環境音",
+      "icon": "🌧️",
+      "desc": "循環播放的雨聲、柔和的房間音、緩慢的自然運動以及舒緩的背景畫面，適用於放鬆影片。"
+    },
+    {
+      "title": "產品紋理廣告",
+      "icon": "📦",
+      "desc": "食品、美容、健康、包裝和電商產品的特寫鏡頭，透過觸感音效增強產品的實體感。"
+    }
+  ],
+  "features": {
+    "title": "為什麼使用 Toolaze 製作 AI ASMR 視頻",
+    "items": [
+      {
+        "icon": "🎧",
+        "iconType": "creative",
+        "title": "以聲音為先導的生成工作流程",
+        "desc": "將視覺動畫和 ASMR 音效同步生成，而不是將音訊作為事後添加。"
+      },
+      {
+        "icon": "🖼️",
+        "iconType": "upload",
+        "title": "文字與圖像的起始點",
+        "desc": "產生原始觸發場景，或對受控產品、紋理或首幀參考進行動畫製作。"
+      },
+      {
+        "icon": "🎛️",
+        "iconType": "workflow",
+        "title": "一個工具支援多種視訊模型",
+        "desc": "無需切換工具即可比較模型的行為、輸入模式、時長、解析度、音訊支援和積分估算。"
+      }
+    ]
+  },
+  "faqTitle": "AI ASMR 視訊產生器常見問題解答",
+  "faq": [
+    {
+      "q": "什麼是 AI ASMR 視訊產生器？",
+      "a": "它可以根據文字提示或參考圖片產生一段簡短的觸覺影片。 對於 ASMR 視頻，提示應同時描述視覺動作和聲音特徵，例如清脆的切割聲、乾脆的碎屑聲、粘稠的傾倒聲、輕柔的刷拭聲或靜謐的雨聲。"
+    },
+    {
+      "q": "AI ASMR 影片可以包含同步聲音嗎？",
+      "a": "可以，當所選模型和設定支援音訊時。 為了更好地匹配音視頻，請在提示中描述材質、確切的動作、聲音質感、節奏和背景噪音。"
+    },
+    {
+      "q": "我應該從哪個模型開始製作 ASMR 影片？",
+      "a": "根據視訊目標選擇。 選擇一個支援您所需輸入類型、解析度、長度和音訊效果的模型，然後執行簡短的草稿，再花費更多積分進行最終製作。"
+    },
+    {
+      "q": "我可以製作圖片轉影片的ASMR短片嗎？",
+      "a": "可以。 上傳一張清晰的參考圖片，選擇「圖片轉影片」模式，描述你想要加入的動作和聲音，並註明需要保持穩定的產品、物件、紋理或構圖。"
+    },
+    {
+      "q": "好的ASMR影片提示應該具備哪些要素？",
+      "a": "使用特定的物體、一個動作、一種聲音紋理、微距鏡頭、慢節奏和安靜的背景。 避免使用只包含「放鬆」或「滿足」等模糊字詞的提示。"
+    },
+    {
+      "q": "如何製作適用於TikTok或YouTube Shorts的ASMR影片？",
+      "a": "盡可能使用9:16的垂直螢幕格式，保持畫面聚焦在一個特寫鏡頭，寫一個適合循環播放的結尾，並避免使用在行動裝置上難以閱讀的文字過多的畫面。"
+    },
+    {
+      "q": "為什麼我的ASMR影片看起來不真實？",
+      "a": "提示可能無法準確描述材料特性。 請加入關於物體如何開裂、壓縮、折疊、拉伸、熔化、碎裂或流動等細節。"
+    },
+    {
+      "q": "我可以將 AI ASMR 用於產品影片嗎？",
+      "a": "可以。 當參考圖像清晰且提示能夠保持產品形狀、標籤和顏色穩定時，產品紋理片段非常適合用於食品、美容、健康、包裝和電商演示。"
+    }
+  ],
+  "moreTools": "更多 AI 影片工具"
+}
