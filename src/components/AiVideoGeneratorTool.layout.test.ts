@@ -6,6 +6,24 @@ import test from 'node:test'
 const source = readFileSync(join(process.cwd(), 'src', 'components', 'AiVideoGeneratorTool.tsx'), 'utf8')
 const uploaderSource = readFileSync(join(process.cwd(), 'src', 'components', 'ReferenceImageUploader.tsx'), 'utf8')
 
+function extractConstFunctionSource(name: string) {
+  const start = source.indexOf(`const ${name} =`)
+  assert.notEqual(start, -1, `${name} should exist`)
+
+  const bodyStart = source.indexOf('{', start)
+  assert.notEqual(bodyStart, -1, `${name} should have a function body`)
+
+  let depth = 0
+  for (let index = bodyStart; index < source.length; index += 1) {
+    const char = source[index]
+    if (char === '{') depth += 1
+    if (char === '}') depth -= 1
+    if (depth === 0) return source.slice(start, index + 1)
+  }
+
+  assert.fail(`${name} should have a complete function body`)
+}
+
 test('AI video generator renders hero copy inside the right demo panel', () => {
   const splitPanelIndex = source.indexOf("flex min-h-0 min-w-0 flex-col gap-4")
   const leftPanelIndex = source.indexOf("md:w-[380px] xl:w-[400px] 2xl:w-[420px]")
@@ -97,7 +115,7 @@ test('AI video generator uses the image-tool style two-level model selector abov
   assert.notEqual(desktopGroupIndex, -1, 'video model selector should expose first-level groups')
   assert.notEqual(desktopOptionsIndex, -1, 'video model selector should expose second-level models')
   assert.ok(selectorIndex < uploadIndex, 'video model selector should sit above the image upload area')
-  assert.match(source, /AI_VIDEO_GENERATOR_MODEL_GROUPS/, 'video selector should use grouped model data')
+  assert.match(source, /getAiVideoGeneratorModelGroupsForMode\(activeMode\)/, 'video selector should use grouped model data for the active mode')
   assert.notEqual(source.indexOf('md:w-[640px] md:grid-cols-[210px_minmax(0,430px)]'), -1, 'desktop model selector should match the image tool two-level width')
   assert.notEqual(source.indexOf('src={group.logoSrc}'), -1, 'video model mark should render the configured model logo')
   assert.notEqual(source.indexOf('alt={group.logoAlt}'), -1, 'video model logo should keep descriptive alt text')
@@ -208,15 +226,16 @@ test('AI video history Recreate restores every recorded setting without generati
   assert.match(source, /nativeAudio:\s*boolean/)
   assert.match(source, /const \[activeSettingsHistoryItemId, setActiveSettingsHistoryItemId\] = useState<string \| null>\(null\)/)
   assert.match(source, /const historyItemRefs = useRef\(new Map<string, HTMLDivElement>\(\)\)/)
-  assert.match(source, /const isApplyingHistoryItemRef = useRef\(false\)/)
-  assert.match(source, /if \(isApplyingHistoryItemRef\.current\) \{[\s\S]*?isApplyingHistoryItemRef\.current = false[\s\S]*?return/)
 
-  const historyApply = source.match(/const applyHistoryItemToForm = \(item: VideoHistoryItem\) => \{[\s\S]*?\n  \}/)?.[0] || ''
+  const historyApply = extractConstFunctionSource('applyHistoryItemToForm')
   assert.match(historyApply, /trackGenerationHistoryRecreateClick\(\{ \.\.\.item, mediaType: item\.mediaType === 'video' \? 'video' : 'image' \}, \{ surface: 'inline_generator_history' \}\)/)
+  assert.match(historyApply, /if \(item\.mediaType === 'image'\) \{/)
+  assert.match(historyApply, /window\.sessionStorage\.setItem\(PENDING_REPROMPT_STORAGE_KEY, JSON\.stringify\(buildHistoryRepromptPayload\(\{/)
+  assert.match(historyApply, /window\.location\.href = buildHistoryRecreateHref\(\{[\s\S]*mediaType: 'image'[\s\S]*model: item\.model/)
+  assert.match(historyApply, /if \(!item\.modelId\) return/)
   assert.match(historyApply, /setSelectedModelId\(item\.modelId\)/)
-  assert.match(historyApply, /isApplyingHistoryItemRef\.current = true/)
   assert.match(historyApply, /setActiveModelGroupId\(getAiVideoGeneratorModelGroupId\(item\.modelId\)\)/)
-  assert.match(historyApply, /setActiveMode\(item\.inputUrls\.length > 0 \? 'image-to-video' : item\.mode\)/)
+  assert.match(historyApply, /setActiveMode\(item\.inputUrls\.length > 0 \? 'image-to-video' : item\.mode as AiVideoGeneratorModeId\)/)
   assert.match(historyApply, /setPrompt\(item\.prompt\)/)
   assert.match(historyApply, /setAspectRatio\(/)
   assert.match(historyApply, /setDuration\(/)
@@ -263,13 +282,30 @@ test('AI video history prompts scroll instead of clipping long text', () => {
 
 test('AI video generator opens on Demo but switches to History after an in-page generation', () => {
   const initialHistoryLoad = source.match(/const loadInlineHistory = async \(\) => \{[\s\S]*?\n    \}/)?.[0] || ''
-  const generateFlow = source.match(/const handleGenerate = async \(\) => \{[\s\S]*?\n  \}/)?.[0] || ''
+  const generateFlow = extractConstFunctionSource('handleGenerate')
 
   assert.match(source, /const \[rightMode, setRightMode\] = useState<RightPanelMode>\('sample'\)/)
   assert.match(source, /const hasDesktopResultTabs = isGenerating \|\| currentRequest\?\.status === 'failed' \|\| history\.length > 0/)
   assert.doesNotMatch(initialHistoryLoad, /setRightMode\('history'\)/, 'loading persisted history must keep the initial Demo selection')
   assert.match(generateFlow, /setCurrentRequest\(request\)[\s\S]*setRightMode\('history'\)/, 'starting a generation should reveal and select History')
   assert.match(generateFlow, /addHistoryItemToFeed\(historyItem\)[\s\S]*setRightMode\('history'\)/, 'a completed generation should remain on History')
+})
+
+test('AI video generator checks credits before entering the generating state', () => {
+  const generateFlow = extractConstFunctionSource('handleGenerate')
+  const authCheckIndex = generateFlow.indexOf('await ensureSignedInForGeneration(requestCreditCost)')
+  const startRequestIndex = generateFlow.indexOf('setCurrentRequest(request)')
+
+  assert.match(source, /getCachedGenerationAuthState[\s\S]*getGenerationAuthStateFromAuthMeResult[\s\S]*type GenerationAuthState/)
+  assert.notEqual(source.indexOf('const [creditExhaustedModalOpen, setCreditExhaustedModalOpen] = useState(false)'), -1)
+  assert.notEqual(authCheckIndex, -1, 'video generate should check auth and credits before starting')
+  assert.notEqual(startRequestIndex, -1, 'video generate should still start a request after the preflight')
+  assert.ok(authCheckIndex < startRequestIndex, 'credits preflight must happen before History enters generating state')
+  assert.match(generateFlow, /const requestCreditCost = generationCreditCost/)
+  assert.match(generateFlow, /if \(authState\.creditsExhausted\) \{[\s\S]*setCreditExhaustedModalOpen\(true\)[\s\S]*return[\s\S]*\}/)
+  assert.match(source, /aria-labelledby="video-credit-exhausted-title"/)
+  assert.match(source, /href=\{getLocalizedInternalPath\(pathname, '\/pricing'\)\}/)
+  assert.match(source, /href=\{getLocalizedInternalPath\(pathname, '\/earn-credits'\)\}/)
 })
 
 test('AI video generator aligns the outer desktop shell with the image generator shell', () => {

@@ -20,9 +20,15 @@ import { getImageUploadUrl } from '@/lib/upload-url'
 import { calculateVideoGenerationCredits } from '@/lib/generation-credits'
 import { useCommonTranslations } from '@/lib/use-common-translations'
 import Breadcrumb, { type BreadcrumbItem } from '@/components/Breadcrumb'
+import CloseIcon from './icons/CloseIcon'
 import DeleteIcon from '@/components/icons/DeleteIcon'
 import ReferenceImageUploader from '@/components/ReferenceImageUploader'
 import { formatLocalTimestampToSeconds } from '@/lib/credit-history-time'
+import {
+  getCachedGenerationAuthState,
+  getGenerationAuthStateFromAuthMeResult,
+  type GenerationAuthState,
+} from '@/lib/generation-auth-state'
 import {
   getHistoryToolMetadata,
   getLocalizedInternalPath,
@@ -178,6 +184,12 @@ const FALLBACK_TEXT = {
   checkStatusFailed: 'Status check failed with status {status}.',
   generationTimeout: 'Video generation timed out. Please try again.',
   videoGenerationFailed: 'Video generation failed.',
+  signInRequiredTitle: 'Sign In Required',
+  signInRequiredMessage: 'Please sign in with Google to generate videos.',
+  creditsUsedUpTitle: 'Credits Used Up',
+  creditsUsedUpMessage: 'You need more credits to generate this video. Buy a one-time pack or earn free credits with daily rewards.',
+  creditsUsedUpBuyAction: 'Buy Credits',
+  creditsUsedUpEarnAction: 'Earn Free Credits',
   download: 'Download',
   resultExpires: 'Generated video links may expire. Download the result if you need to keep it.',
   modelSwitchedTitle: 'Model Switched',
@@ -336,6 +348,25 @@ async function parseJsonSafely(response: Response, errorMessage: string): Promis
   }
 }
 
+async function ensureSignedInForGeneration(requiredCredits: number): Promise<GenerationAuthState> {
+  const cachedAuthState = getCachedGenerationAuthState(requiredCredits)
+
+  try {
+    const response = await fetch('/api/auth/me', {
+      cache: 'no-store',
+      credentials: 'include',
+    })
+    const data = await response.json().catch(() => ({}))
+    if (data?.user && typeof window !== 'undefined') {
+      ;(window as any).__TOOLAZE_AUTH_USER__ = data.user
+    }
+
+    return getGenerationAuthStateFromAuthMeResult(response.status, data, requiredCredits, cachedAuthState)
+  } catch {
+    return cachedAuthState
+  }
+}
+
 function wait(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms))
 }
@@ -458,6 +489,7 @@ export default function AiVideoGeneratorTool({
   const [nativeAudio, setNativeAudio] = useState(false)
   const [isPreparing, setIsPreparing] = useState(false)
   const [currentRequest, setCurrentRequest] = useState<VideoGenerationRequest | null>(null)
+  const [creditExhaustedModalOpen, setCreditExhaustedModalOpen] = useState(false)
   const [generatingSeconds, setGeneratingSeconds] = useState(0)
   const [history, setHistory] = useState<VideoHistoryItem[]>([])
   const [activeSettingsHistoryItemId, setActiveSettingsHistoryItemId] = useState<string | null>(null)
@@ -1051,9 +1083,24 @@ export default function AiVideoGeneratorTool({
 
   const handleGenerate = async () => {
     if (!canGenerate) return
+    const requestCreditCost = generationCreditCost
+    const authState = await ensureSignedInForGeneration(requestCreditCost)
+    if (!authState.isSignedIn) {
+      dispatchToolazeTopNotice({
+        type: 'warning',
+        title: text.signInRequiredTitle,
+        message: text.signInRequiredMessage,
+      })
+      window.dispatchEvent(new CustomEvent('toolaze:open-auth-modal'))
+      return
+    }
+    if (authState.creditsExhausted) {
+      setCreditExhaustedModalOpen(true)
+      return
+    }
+
     setIsPreparing(true)
     setGeneratingSeconds(0)
-
     const startedAt = Date.now()
     const requestHistoryTool = getHistoryToolMetadata(pathname, modelConfig.name, getVideoHistoryModelSlug(selectedModelId))
     const request: VideoGenerationRequest = {
@@ -1880,6 +1927,56 @@ export default function AiVideoGeneratorTool({
                 ) : null}
               </div>
       </div>
+      {creditExhaustedModalOpen && (
+        <div
+          className="fixed inset-0 z-[10040] flex items-center justify-center bg-slate-950/45 px-4 py-6 backdrop-blur-sm"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="video-credit-exhausted-title"
+        >
+          <button
+            type="button"
+            className="absolute inset-0 h-full w-full cursor-default rounded-none border-0 bg-transparent p-0"
+            aria-label="Close credits dialog"
+            onClick={() => setCreditExhaustedModalOpen(false)}
+          />
+          <div className="relative w-full max-w-[440px] overflow-hidden rounded-[28px] bg-[#fbfaff] p-[1px] shadow-[0_28px_80px_rgba(99,102,241,0.28)]">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_0%,rgba(168,85,247,0.28),transparent_34%),radial-gradient(circle_at_90%_18%,rgba(79,70,229,0.22),transparent_30%),linear-gradient(135deg,rgba(99,102,241,0.45),rgba(217,70,239,0.18),rgba(255,255,255,0))]" />
+            <div className="relative rounded-[27px] bg-[#fbfaff] px-5 pb-5 pt-6 text-left sm:px-7 sm:pb-7 sm:pt-8">
+              <button
+                type="button"
+                onClick={() => setCreditExhaustedModalOpen(false)}
+                className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full border border-indigo-100 bg-white/90 text-slate-500 shadow-sm transition hover:-translate-y-0.5 hover:border-violet-200 hover:text-indigo-700 hover:shadow-md"
+                aria-label="Close credits dialog"
+              >
+                <CloseIcon size={18} />
+              </button>
+              <h2 id="video-credit-exhausted-title" className="max-w-[12rem] pr-10 text-[28px] font-extrabold leading-[1.05] tracking-tight text-slate-950 sm:max-w-none sm:text-3xl">
+                {text.creditsUsedUpTitle}
+              </h2>
+              <p className="mt-3 text-sm leading-6 text-slate-600">
+                {text.creditsUsedUpMessage}
+              </p>
+              <div className="mt-6 grid gap-2 sm:grid-cols-[1.1fr_0.9fr]">
+                <Link
+                  href={getLocalizedInternalPath(pathname, '/pricing')}
+                  onClick={() => setCreditExhaustedModalOpen(false)}
+                  className="inline-flex w-full items-center justify-center rounded-2xl bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-600 px-4 py-3 text-sm font-extrabold text-white shadow-[0_14px_30px_rgba(99,102,241,0.28)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_38px_rgba(99,102,241,0.34)]"
+                >
+                  {text.creditsUsedUpBuyAction}
+                </Link>
+                <Link
+                  href={getLocalizedInternalPath(pathname, '/earn-credits')}
+                  onClick={() => setCreditExhaustedModalOpen(false)}
+                  className="inline-flex w-full items-center justify-center rounded-2xl border border-indigo-100 bg-white px-4 py-3 text-sm font-extrabold text-indigo-700 shadow-sm transition hover:-translate-y-0.5 hover:border-violet-200 hover:bg-indigo-50"
+                >
+                  {text.creditsUsedUpEarnAction}
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
       {renderDurationMenu()}
     </section>
   )
