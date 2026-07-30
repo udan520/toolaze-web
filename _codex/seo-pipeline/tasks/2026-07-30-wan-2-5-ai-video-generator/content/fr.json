@@ -1,0 +1,339 @@
+{
+  "in_menu": true,
+  "seoFactoryTaskId": "2026-07-30-wan-2-5-ai-video-generator",
+  "topComponent": "wan-2-5-ai-video-generator",
+  "topTool": {
+    "modelId": "wan-2-5",
+    "defaultMode": "text-to-video",
+    "mode": "text-to-video",
+    "displayName": "Wan 2.5"
+  },
+  "metadata": {
+    "title": "Générateur vidéo IA Wan 2.5 | Texte vers vidéo et image vers vidéo",
+    "description": "Utilisez Wan 2.5 sur Toolaze pour créer des vidéos IA depuis du texte ou une image de référence, avec clips de 5 ou 10 secondes, 16:9, 9:16, 1:1, 720p/1080p et audio natif.",
+    "published": true
+  },
+  "hero": {
+    "h1": "Générateur vidéo IA <span class=\"text-gradient\">Wan 2.5</span>",
+    "desc": "Créez des vidéos Wan 2.5 depuis un prompt ou une image. Choisissez texte vers vidéo ou image vers vidéo, réglez 16:9, 9:16 ou 1:1, 5 ou 10 secondes en 720p/1080p, puis décrivez mouvement, caméra, matières et son synchronisé."
+  },
+  "heroDemoVideo": {
+    "src": "/model-assets/grok-imagine-video-1-5/grok-hero-demo-16x9.mp4",
+    "ariaLabel": "Aperçu démo 16:9 de Toolaze Wan 2.5",
+    "width": 16,
+    "height": 9,
+    "sourceHistory": "Existing Toolaze Grok Imagine Video 1.5 hero demo asset · 16:9"
+  },
+  "sectionsOrder": [
+    "modelIntro",
+    "performanceMetrics",
+    "modelSelectionGuide",
+    "features",
+    "promptExamples",
+    "workflowComparison",
+    "howToUse",
+    "troubleshooting",
+    "scenes",
+    "faq"
+  ],
+  "modelIntro": {
+    "title": "Qu’est-ce que le générateur vidéo IA Wan 2.5 ?",
+    "modelName": "Wan 2.5",
+    "modelType": "Modèle vidéo IA",
+    "description": [
+      "Wan 2.5 est un modèle vidéo de la famille Alibaba Wan pour créer des vidéos guidées par prompt. Sur Toolaze, il fonctionne dans le générateur vidéo IA partagé, à partir de texte ou d’une image de référence.",
+      "La configuration Toolaze vise des clips courts et contrôlables : 5 ou 10 secondes, 16:9, 9:16 ou 1:1, en 720p ou 1080p. Elle convient aux mouvements produit, détails tactiles type ASMR, clips sociaux et animations guidées par image.",
+      "Utilisez Wan 2.5 lorsque les consignes de mouvement et d’audio comptent, avec sélection du modèle, import, exemples de prompts, historique récent, aperçu et téléchargement dans une seule session de navigateur."
+    ],
+    "featureCards": [
+      {
+        "title": "Texte vers vidéo et image vers vidéo",
+        "content": "Commencez avec une scène écrite ou une image, puis guidez mouvement, caméra, composition et son."
+      },
+      {
+        "title": "Clips de 5 ou 10 secondes",
+        "content": "Créez des boucles produit, shorts, beats storyboard, moments ASMR et tests créatifs rapides."
+      },
+      {
+        "title": "Sortie 720p et 1080p",
+        "content": "Choisissez 720p pour les brouillons rapides ou 1080p pour plus de détail en revue, annonce et publication."
+      }
+    ]
+  },
+  "performanceMetrics": {
+    "title": "Réglages Wan 2.5 sur Toolaze",
+    "metrics": [
+      {
+        "label": "Fournisseur",
+        "value": "Famille Alibaba Wan"
+      },
+      {
+        "label": "Modes de création",
+        "value": "Texte vers vidéo et image vers vidéo"
+      },
+      {
+        "label": "Entrée de référence",
+        "value": "Une image importée pour image vers vidéo"
+      },
+      {
+        "label": "Format",
+        "value": "16:9, 9:16, 1:1"
+      },
+      {
+        "label": "Durée",
+        "value": "5 ou 10 secondes"
+      },
+      {
+        "label": "Résolution",
+        "value": "720p ou 1080p"
+      },
+      {
+        "label": "Audio natif",
+        "value": "Audio natif disponible pour Wan 2.5 sur Toolaze"
+      },
+      {
+        "label": "Crédits",
+        "value": "Wan 2.5 commence à 100 crédits avant ajustements de durée et résolution"
+      }
+    ]
+  },
+  "modelSelectionGuide": {
+    "title": "Meilleurs usages de Wan 2.5",
+    "subtitle": "Écrivez le prompt pour une tâche vidéo concrète.",
+    "items": [
+      {
+        "title": "Mouvement tactile et ASMR",
+        "desc": "Découpe, pression, versement, tapotement, brossage, emballage et sons de matière en gros plan.",
+        "badge": "Audio natif",
+        "logoSrc": "/model-logos/wan.ico",
+        "logoAlt": "Wan logo"
+      },
+      {
+        "title": "Produit et clips sociaux",
+        "desc": "Reveals produit, ouvertures créateur, boucles lifestyle, ecommerce et variantes paid social.",
+        "badge": "Brouillons 5/10s",
+        "logoSrc": "/model-logos/wan.ico",
+        "logoAlt": "Wan logo"
+      },
+      {
+        "title": "Animation guidée par image",
+        "desc": "Animez photo produit, affiche, personnage ou concept tout en gardant le sujet reconnaissable.",
+        "badge": "Une image",
+        "logoSrc": "/model-logos/wan.ico",
+        "logoAlt": "Wan logo"
+      }
+    ]
+  },
+  "features": {
+    "title": "Pourquoi utiliser Toolaze pour Wan 2.5",
+    "items": [
+      {
+        "title": "Contrôles réels du modèle",
+        "desc": "Choisissez Wan 2.5 et réglez mode, format, durée, résolution, audio natif, prompt et uploads dans un seul générateur.",
+        "iconType": "easy"
+      },
+      {
+        "title": "Du prompt à l’aperçu",
+        "desc": "Utilisez des prompts d’exemple, les générations récentes, l’aperçu, la recréation et les téléchargements sans changer d’outil.",
+        "iconType": "speed"
+      },
+      {
+        "title": "Comparaison claire des modèles",
+        "desc": "Comparez Wan 2.5 avec Wan 2.6, Wan 2.7, Kling, Grok, Seedance, Veo, PixVerse et d’autres modèles.",
+        "iconType": "browser"
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "Exemples de prompts Wan 2.5",
+    "subtitle": "Copiez ces prompts pour un mouvement contrôlé, une courte durée et une direction audio.",
+    "layout": "grid",
+    "items": [
+      {
+        "title": "Passage audio au marché sous la pluie",
+        "prompt": "Créez une vidéo Wan 2.5 de 10 secondes en 9:16 dans un stand de nourriture de marché de nuit sous une pluie légère. La caméra avance depuis une enseigne de menu lumineuse vers des mains qui retournent des galettes à la ciboule sur une plaque chaude. Ajoutez vapeur, reflets de rue, grésillement synchronisé, pluie sur la bâche et ambiance douce de foule.",
+        "description": "Prompt audio natif pour ambiance, mouvement culinaire, pluie détaillée et son synchronisé.",
+        "aspectRatio": "9:16"
+      },
+      {
+        "title": "Gros plan de lanterne assemblée",
+        "prompt": "Créez une vidéo 9:16 de 5 secondes montrant une lanterne de camping compacte qui s’assemble sur un établi. Montrez des panneaux en métal brossé qui glissent en place, un pouce qui clique l’interrupteur, une lumière chaude derrière le verre dépoli, une faible profondeur de champ, des ombres propres et un audio précis de clic et de bourdonnement.",
+        "description": "Prompt produit tactile pour assemblage, détails de matière et courts repères audio synchronisés.",
+        "aspectRatio": "9:16"
+      },
+      {
+        "title": "Marche depuis une seule image",
+        "prompt": "Animez le concept de personnage en pied importé en boucle de marche 9:16 de 5 secondes. Préservez le visage, la tenue, la silhouette et la palette de l’image de référence. Ajoutez un travelling latéral lent, un léger mouvement du manteau et des cheveux, des reflets de néon mouillé et des pas discrets sans changer l’identité.",
+        "description": "Prompt image-vers-vidéo pour préserver un personnage de référence tout en ajoutant un mouvement contrôlé.",
+        "aspectRatio": "9:16"
+      },
+      {
+        "title": "Glissé architectural du matin",
+        "prompt": "Créez un glissé cinématographique 9:16 de 10 secondes dans une maison moderne avec cour au lever du soleil. Commencez sur un îlot de cuisine en pierre, passez devant des portes vitrées coulissantes et terminez sur des plantes qui bougent dans la cour. Gardez les lignes verticales stables, des ombres naturelles, un son doux de pièce, des oiseaux dehors et aucune déformation des murs.",
+        "description": "Prompt de contrôle caméra pour architecture stable, lumière naturelle et ambiance sonore douce.",
+        "aspectRatio": "9:16"
+      }
+    ]
+  },
+  "workflowComparison": {
+    "title": "Wan 2.5 face aux autres modèles vidéo Toolaze",
+    "subtitle": "Comparez les réglages et les points forts du modèle avant d’utiliser des crédits.",
+    "columns": [
+      "Modèle",
+      "Adapté à",
+      "À vérifier"
+    ],
+    "rows": [
+      [
+        "Wan 2.5",
+        "Clips T2V/I2V courts avec une image, 5/10 secondes, 720p/1080p et prompts audio.",
+        "Pour mouvement tactile, boucles produit et réglages simples."
+      ],
+      [
+        "Wan 2.6 ou Wan 2.7",
+        "Options Wan plus récentes avec davantage de réglages de durée et de contrôle dans le sélecteur Toolaze.",
+        "À utiliser quand le dernier modèle Wan ou plus de contrôle image compte davantage que la spécialisation Wan 2.5."
+      ],
+      [
+        "Kling 3.0",
+        "Mouvement haut de gamme plus net, entrée multi-image, audio natif et réglages jusqu’à 4K dans Toolaze.",
+        "Pour mouvement cinématique ou 4K."
+      ],
+      [
+        "Grok 1.5 Video",
+        "Brouillons image vers vidéo rapides et tests 480p/720p.",
+        "Pour vitesse et itération."
+      ],
+      [
+        "Seedance 2.0",
+        "Génération vidéo ByteDance à fort contrôle avec plus de références et options plus longues.",
+        "Pour contrôle multimodal et clips plus longs."
+      ]
+    ]
+  },
+  "howToUse": {
+    "title": "Comment utiliser Wan 2.5 sur Toolaze",
+    "steps": [
+      {
+        "title": "Choisir Wan 2.5",
+        "desc": "Ouvrez le sélecteur du générateur vidéo IA et choisissez Wan 2.5 dans le groupe Wan."
+      },
+      {
+        "title": "Choisir un mode",
+        "desc": "Utilisez texte vers vidéo pour une scène complète ou image vers vidéo avec une référence."
+      },
+      {
+        "title": "Régler la sortie",
+        "desc": "Choisissez 16:9, 9:16 ou 1:1, 5 ou 10 secondes, 720p ou 1080p, et l’audio natif si utile."
+      },
+      {
+        "title": "Générer et affiner",
+        "desc": "Prévisualisez, ajustez le mouvement ou l’audio, recréez si besoin puis téléchargez."
+      }
+    ]
+  },
+  "troubleshooting": {
+    "title": "Conseils de prompt pour de meilleurs résultats",
+    "subtitle": "Wan 2.5 répond mieux à des prompts concrets, courts et adaptés à la durée.",
+    "items": [
+      {
+        "title": "Décrire une action principale",
+        "desc": "Une action claire fonctionne souvent mieux que plusieurs changements de scène en 5 ou 10 secondes."
+      },
+      {
+        "title": "Ajouter la direction caméra",
+        "desc": "Utilisez slow push-in, locked tripod, top-down macro, handheld, orbit ou gentle parallax."
+      },
+      {
+        "title": "Inclure l’audio dans la scène",
+        "desc": "Mentionnez découpe, versement, tissu, ambiance ou dialogue seulement si vous voulez l’audio natif."
+      }
+    ]
+  },
+  "scenesTitle": "Ce que vous pouvez créer avec Wan 2.5",
+  "scenes": [
+    {
+      "title": "Clips ASMR tactiles",
+      "icon": "🧊",
+      "desc": "Gros plans de découpe, écrasement, versement, tapotement, brossage, emballage et sons de matière."
+    },
+    {
+      "title": "Publicités produit en mouvement",
+      "icon": "🛍️",
+      "desc": "Transformez des images produit en clips pour paid social, marketplaces et tests de campagne."
+    },
+    {
+      "title": "Animation par référence",
+      "icon": "🖼️",
+      "desc": "Animez une image en conservant sujet, forme, mise en page, couleur et angle."
+    },
+    {
+      "title": "Shorts sociaux",
+      "icon": "📱",
+      "desc": "Générez ouvertures, boucles, clips verticaux et hooks pour Reels, TikTok et Shorts."
+    },
+    {
+      "title": "Beats storyboard",
+      "icon": "🎬",
+      "desc": "Esquissez une scène avec action, caméra, lumière, rythme et son."
+    },
+    {
+      "title": "Boucles d’ambiance",
+      "icon": "🌧️",
+      "desc": "Créez pluie sur vitre, bureau, nature morte produit ou scène de café."
+    }
+  ],
+  "faqTitle": "FAQ du générateur vidéo IA Wan 2.5",
+  "faq": [
+    {
+      "q": "Qu’est-ce que le générateur vidéo IA Wan 2.5 ?",
+      "a": "Wan 2.5 crée de courtes vidéos IA avec le modèle de la famille Wan d’Alibaba. Sur Toolaze, vous pouvez utiliser texte vers vidéo ou image vers vidéo, puis contrôler prompt, format, durée, résolution et audio natif."
+    },
+    {
+      "q": "Wan 2.5 prend-il en charge image vers vidéo ?",
+      "a": "Oui. Toolaze utilise une image de référence importée pour Wan 2.5."
+    },
+    {
+      "q": "Wan 2.5 prend-il en charge texte vers vidéo ?",
+      "a": "Oui. Décrivez sujet, action, caméra, lumière, style et son."
+    },
+    {
+      "q": "Quelles durées et résolutions sont disponibles ?",
+      "a": "5 ou 10 secondes, en 720p ou 1080p."
+    },
+    {
+      "q": "Wan 2.5 peut-il créer une vidéo avec son ?",
+      "a": "Wan 2.5 prend en charge l’audio natif sur Toolaze, ce qui permet d’inclure son synchronisé, ambiance, bruit de matière ou intention audio lorsque le réglage est activé."
+    },
+    {
+      "q": "Combien d’images de référence ?",
+      "a": "Une image importée en mode image vers vidéo."
+    },
+    {
+      "q": "Wan 2.5 est-il gratuit sur Toolaze ?",
+      "a": "L’accès dépend des crédits, du compte, de la disponibilité du modèle, de la durée et de la résolution."
+    },
+    {
+      "q": "Quand choisir Wan 2.5 plutôt que Wan 2.7 ?",
+      "a": "Choisissez Wan 2.5 pour des clips directs de 5 ou 10 secondes. Essayez Wan 2.7 pour l’option Wan la plus récente."
+    }
+  ],
+  "moreTools": "Plus de modèles vidéo IA",
+  "moreToolsLinks": [
+    {
+      "title": "Wan 2.7",
+      "description": "Essayez l’option Wan la plus récente dans le sélecteur Toolaze.",
+      "href": "/ai-video-generator"
+    },
+    {
+      "title": "Kling 3.0",
+      "description": "Explorez un modèle avancé pour mouvement cinématique.",
+      "href": "/model/kling-3"
+    },
+    {
+      "title": "Grok Imagine Video 1.5",
+      "description": "Créez rapidement des brouillons image vers vidéo.",
+      "href": "/model/grok-imagine-video-1-5"
+    }
+  ]
+}

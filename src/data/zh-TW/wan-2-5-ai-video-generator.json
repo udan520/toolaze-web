@@ -1,0 +1,339 @@
+{
+  "in_menu": true,
+  "seoFactoryTaskId": "2026-07-30-wan-2-5-ai-video-generator",
+  "topComponent": "wan-2-5-ai-video-generator",
+  "topTool": {
+    "modelId": "wan-2-5",
+    "defaultMode": "text-to-video",
+    "mode": "text-to-video",
+    "displayName": "Wan 2.5"
+  },
+  "metadata": {
+    "title": "Wan 2.5 AI 影片生成器｜文字轉影片與圖片轉影片",
+    "description": "在 Toolaze 使用 Wan 2.5，從文字提示詞或一張參考圖建立 AI 影片，支援 5 或 10 秒、16:9、9:16、1:1、720p/1080p 與原生音訊輸出。",
+    "published": true
+  },
+  "hero": {
+    "h1": "<span class=\"text-gradient\">Wan 2.5</span> AI 影片生成器",
+    "desc": "用文字提示詞或一張參考圖建立 Wan 2.5 影片。選擇文字轉影片或圖片轉影片，設定 16:9、9:16 或 1:1，5 或 10 秒、720p/1080p，並描述動作、鏡頭、材質與同步聲音。"
+  },
+  "heroDemoVideo": {
+    "src": "/model-assets/grok-imagine-video-1-5/grok-hero-demo-16x9.mp4",
+    "ariaLabel": "Toolaze Wan 2.5 16:9 示範片段預覽",
+    "width": 16,
+    "height": 9,
+    "sourceHistory": "Existing Toolaze Grok Imagine Video 1.5 hero demo asset · 16:9"
+  },
+  "sectionsOrder": [
+    "modelIntro",
+    "performanceMetrics",
+    "modelSelectionGuide",
+    "features",
+    "promptExamples",
+    "workflowComparison",
+    "howToUse",
+    "troubleshooting",
+    "scenes",
+    "faq"
+  ],
+  "modelIntro": {
+    "title": "什麼是 Wan 2.5 AI 影片生成器？",
+    "modelName": "Wan 2.5",
+    "modelType": "AI 影片模型",
+    "description": [
+      "Wan 2.5 是 Alibaba Wan 系列的影片模型，適合用提示詞建立短篇影片。在 Toolaze 中，它整合在 AI 影片生成器裡，可以從文字開始，也可以上傳一張參考圖，再用同一段提示詞描述動作、鏡頭、光線與聲音。",
+      "Toolaze 的 Wan 2.5 設定聚焦於短而可控的影片：5 秒或 10 秒、16:9、9:16 或 1:1，以及 720p 或 1080p。它適合產品動態、ASMR 風格材質細節、社群短片與圖片引導動畫。",
+      "如果你在意動作與音訊提示，但仍希望保留瀏覽器內的模型選擇、上傳、提示詞範例、歷史紀錄、預覽與下載流程，Wan 2.5 是很直接的起點。"
+    ],
+    "featureCards": [
+      {
+        "title": "文字轉影片與圖片轉影片",
+        "content": "可以從完整文字場景開始，也可以上傳一張參考圖，並在提示詞中指定動作、鏡頭、構圖與聲音。"
+      },
+      {
+        "title": "5 秒或 10 秒短片",
+        "content": "適合產品循環、創作者短片、分鏡片段、ASMR 片段與快速創意測試。"
+      },
+      {
+        "title": "720p 與 1080p 輸出",
+        "content": "720p 適合快速草稿；需要更乾淨細節、廣告預覽或發布素材時可選 1080p。"
+      }
+    ]
+  },
+  "performanceMetrics": {
+    "title": "Toolaze 上的 Wan 2.5 設定",
+    "metrics": [
+      {
+        "label": "提供方",
+        "value": "Alibaba Wan 系列"
+      },
+      {
+        "label": "模式",
+        "value": "文字轉影片與圖片轉影片"
+      },
+      {
+        "label": "參考輸入",
+        "value": "圖片轉影片可上傳一張參考圖"
+      },
+      {
+        "label": "畫面比例",
+        "value": "16:9、9:16、1:1"
+      },
+      {
+        "label": "時長",
+        "value": "5 秒或 10 秒"
+      },
+      {
+        "label": "解析度",
+        "value": "720p 或 1080p"
+      },
+      {
+        "label": "原生音訊輸出",
+        "value": "Wan 2.5 在 Toolaze 可使用原生音訊"
+      },
+      {
+        "label": "點數參考",
+        "value": "Wan 2.5 從 100 點數起，實際會依時長與解析度調整"
+      }
+    ]
+  },
+  "modelSelectionGuide": {
+    "title": "Wan 2.5 最適合的用途",
+    "subtitle": "把提示詞寫成具體影片任務，而不是泛泛要求電影感。",
+    "items": [
+      {
+        "title": "觸覺與 ASMR 動作",
+        "desc": "切割、按壓、傾倒、敲擊、刷洗、包裝與材質聲音等需要動作節奏的近距離短片。",
+        "badge": "原生音訊輸出",
+        "logoSrc": "/model-logos/wan.ico",
+        "logoAlt": "Wan logo"
+      },
+      {
+        "title": "產品與社群短片",
+        "desc": "產品 reveal、創作者開場、生活風循環、電商動態與付費社群素材變體。",
+        "badge": "5/10 秒草稿",
+        "logoSrc": "/model-logos/wan.ico",
+        "logoAlt": "Wan logo"
+      },
+      {
+        "title": "圖片引導動畫",
+        "desc": "讓產品照、海報、角色畫面或概念圖動起來，同時保留主體辨識度。",
+        "badge": "一張參考圖",
+        "logoSrc": "/model-logos/wan.ico",
+        "logoAlt": "Wan logo"
+      }
+    ]
+  },
+  "features": {
+    "title": "為什麼用 Toolaze 建立 Wan 2.5 影片？",
+    "items": [
+      {
+        "title": "真實模型控制",
+        "desc": "直接選擇 Wan 2.5，並在同一個生成器設定模式、比例、時長、解析度、原生音訊、提示詞與上傳圖片。",
+        "iconType": "easy"
+      },
+      {
+        "title": "從提示詞到預覽",
+        "desc": "使用提示詞範例、近期生成、預覽播放、重新生成與下載，不必切換工具。",
+        "iconType": "speed"
+      },
+      {
+        "title": "清楚的模型比較",
+        "desc": "可在模型選單中比較 Wan 2.5、Wan 2.6、Wan 2.7、Kling、Grok、Seedance、Veo、PixVerse 等影片模型。",
+        "iconType": "browser"
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "Wan 2.5 提示詞範例",
+    "subtitle": "用這些提示詞測試可控動作、短片長與音訊方向。",
+    "layout": "grid",
+    "items": [
+      {
+        "title": "雨夜市集音效運鏡",
+        "prompt": "建立一支 10 秒 9:16 的 Wan 2.5 影片，場景是細雨中的夜市小吃攤。鏡頭從發光菜單牌慢慢推進到雙手在熱鐵板上翻蔥油餅。加入蒸氣、街燈在雨地上的反光、同步滋滋聲、雨滴打在棚布上的聲音，以及柔和的人群環境音。",
+        "description": "測試原生音訊、食物動態、雨夜細節與同步聲音的提示詞。",
+        "aspectRatio": "9:16"
+      },
+      {
+        "title": "露營燈組裝特寫",
+        "prompt": "建立一支 5 秒 9:16 特寫影片，呈現一盞小型露營燈在工作台上組裝完成。顯示髮絲紋金屬面板滑入定位、拇指按下開關、暖光穿過霧面玻璃、淺景深、乾淨產品陰影，以及精準的卡扣聲與低微嗡鳴。",
+        "description": "適合呈現產品組裝、材質細節與短促同步音效的觸感提示詞。",
+        "aspectRatio": "9:16"
+      },
+      {
+        "title": "單圖角色走路循環",
+        "prompt": "將上傳的全身角色設定圖製作成 5 秒 9:16 走路循環。保留參考圖中的臉、服裝、輪廓與配色。加入緩慢側向跟拍、細微外套與髮絲動態、潮濕霓虹反光，以及安靜腳步聲，不要改變角色身份。",
+        "description": "用一張參考角色圖保持身份一致，同時加入可控動態的圖片轉影片提示詞。",
+        "aspectRatio": "9:16"
+      },
+      {
+        "title": "清晨建築滑行鏡頭",
+        "prompt": "建立一支 10 秒 9:16 電影感滑行鏡頭，穿過日出時安靜的現代中庭住宅。從石材廚房中島開始，經過滑動玻璃門，最後停在中庭中輕微晃動的植物。保持垂直線穩定、自然陰影、柔和室內聲、戶外鳥鳴，避免牆面變形。",
+        "description": "測試穩定建築線條、自然光與溫和環境音的鏡頭控制提示詞。",
+        "aspectRatio": "9:16"
+      }
+    ]
+  },
+  "workflowComparison": {
+    "title": "Wan 2.5 與其他 Toolaze 影片模型比較",
+    "subtitle": "使用點數前，先比較設定與模型強項。",
+    "columns": [
+      "模型選擇",
+      "適合用途",
+      "注意事項"
+    ],
+    "rows": [
+      [
+        "Wan 2.5",
+        "一張參考圖、5/10 秒、720p/1080p、音訊感提示的短篇 T2V/I2V。",
+        "適合觸覺動作、產品循環與簡單設定。"
+      ],
+      [
+        "Wan 2.6 或 Wan 2.7",
+        "Toolaze 選擇器中的較新 Wan 選項，提供更廣的時長與控制設定。",
+        "當最新 Wan 模型或額外圖片控制比 Wan 2.5 專用性更重要時使用。"
+      ],
+      [
+        "Kling 3.0",
+        "更銳利的高階動態、多圖輸入、原生音訊，以及 Toolaze 最高 4K 設定。",
+        "適合動態電影感或 4K 需求。"
+      ],
+      [
+        "Grok 1.5 Video",
+        "快速圖片轉影片草稿、創作者短片、產品動態與 480p/720p 測試。",
+        "適合速度與快速迭代優先。"
+      ],
+      [
+        "Seedance 2.0",
+        "高控制度 ByteDance 影片生成，支援更多參考輸入與較長設定選項。",
+        "適合多模態控制與更長片段。"
+      ]
+    ]
+  },
+  "howToUse": {
+    "title": "如何在 Toolaze 使用 Wan 2.5",
+    "steps": [
+      {
+        "title": "選擇 Wan 2.5",
+        "desc": "打開 AI 影片生成器的模型選單，從 Wan 模型群組選擇 Wan 2.5。"
+      },
+      {
+        "title": "選擇模式",
+        "desc": "完整文字場景使用文字轉影片；需要參考圖時選圖片轉影片並上傳一張圖片。"
+      },
+      {
+        "title": "設定輸出",
+        "desc": "選擇 16:9、9:16 或 1:1，5 或 10 秒、720p 或 1080p，並在合適時開啟原生音訊。"
+      },
+      {
+        "title": "生成並微調",
+        "desc": "預覽影片，調整動作或聲音描述，需要時重新生成，最後下載要保留的影片。"
+      }
+    ]
+  },
+  "troubleshooting": {
+    "title": "讓 Wan 2.5 結果更好的提示詞技巧",
+    "subtitle": "Wan 2.5 更適合具體、短而清楚、符合所選時長的提示詞。",
+    "items": [
+      {
+        "title": "只描述一個主要動作",
+        "desc": "5 或 10 秒短片通常比多場景切換更適合單一清楚動作。"
+      },
+      {
+        "title": "加入鏡頭方向",
+        "desc": "可以使用 slow push-in、locked tripod、top-down macro、handheld、orbit、gentle parallax 等描述。"
+      },
+      {
+        "title": "把聲音寫進場景",
+        "desc": "只有在需要原生音訊時，再寫清楚切割聲、傾倒聲、布料摩擦、環境聲或對話。"
+      }
+    ]
+  },
+  "scenesTitle": "你可以用 Wan 2.5 建立什麼",
+  "scenes": [
+    {
+      "title": "觸覺 ASMR 短片",
+      "icon": "🧊",
+      "desc": "建立切割、壓碎、傾倒、敲擊、刷洗、包裝與材質聲音的近距離短片。"
+    },
+    {
+      "title": "產品動態廣告",
+      "icon": "🛍️",
+      "desc": "把產品照片變成適合付費社群、電商頁與活動測試的短影片。"
+    },
+    {
+      "title": "參考圖動畫",
+      "icon": "🖼️",
+      "desc": "讓一張上傳圖片動起來，同時保留主體、形狀、版面、顏色與鏡頭角度。"
+    },
+    {
+      "title": "社群 Shorts",
+      "icon": "📱",
+      "desc": "生成 Reels、TikTok、Shorts 使用的開場、循環、直式短片與 hook。"
+    },
+    {
+      "title": "分鏡片段",
+      "icon": "🎬",
+      "desc": "用動作、鏡頭、光線、節奏與聲音方向快速起草單一場景。"
+    },
+    {
+      "title": "氛圍循環",
+      "icon": "🌧️",
+      "desc": "建立雨滴窗面、桌面 setup、產品靜物或咖啡店等安靜氛圍短片。"
+    }
+  ],
+  "faqTitle": "Wan 2.5 AI 影片生成器 FAQ",
+  "faq": [
+    {
+      "q": "Wan 2.5 AI 影片生成器是什麼？",
+      "a": "Wan 2.5 使用 Alibaba Wan 系列模型建立短篇 AI 影片。在 Toolaze，你可以使用文字轉影片或圖片轉影片，並控制提示詞、比例、時長、解析度與原生音訊。"
+    },
+    {
+      "q": "Wan 2.5 支援圖片轉影片嗎？",
+      "a": "支援。Toolaze 的 Wan 2.5 圖片轉影片可使用一張上傳參考圖。"
+    },
+    {
+      "q": "Wan 2.5 支援文字轉影片嗎？",
+      "a": "支援。你可以用文字描述主體、動作、鏡頭、光線、風格與聲音。"
+    },
+    {
+      "q": "可以選哪些時長與解析度？",
+      "a": "Toolaze 上的 Wan 2.5 提供 5 或 10 秒，720p 或 1080p。"
+    },
+    {
+      "q": "Wan 2.5 可以生成有聲影片嗎？",
+      "a": "Wan 2.5 在 Toolaze 支援原生音訊，因此啟用設定後，提示詞可以包含同步聲音、環境音、材質聲或音訊氛圍。"
+    },
+    {
+      "q": "可以使用幾張參考圖？",
+      "a": "Wan 2.5 的圖片轉影片在 Toolaze 使用一張上傳參考圖。"
+    },
+    {
+      "q": "Wan 2.5 在 Toolaze 免費嗎？",
+      "a": "使用條件會依點數、帳號狀態、模型可用性、時長與解析度而變動，生成器會在送出前顯示目前需求。"
+    },
+    {
+      "q": "什麼時候選 Wan 2.5 而不是 Wan 2.7？",
+      "a": "如果要簡單建立 5 或 10 秒短片，可以選 Wan 2.5；如果想試最新 Wan 選項，可在模型選單切到 Wan 2.7。"
+    }
+  ],
+  "moreTools": "更多 AI 影片模型",
+  "moreToolsLinks": [
+    {
+      "title": "Wan 2.7",
+      "description": "在 Toolaze 選單中試用較新的 Wan 影片選項。",
+      "href": "/ai-video-generator"
+    },
+    {
+      "title": "Kling 3.0",
+      "description": "探索適合電影感動態的高階影片模型。",
+      "href": "/model/kling-3"
+    },
+    {
+      "title": "Grok Imagine Video 1.5",
+      "description": "用於快速圖片轉影片草稿、創作者片段與產品動態。",
+      "href": "/model/grok-imagine-video-1-5"
+    }
+  ]
+}

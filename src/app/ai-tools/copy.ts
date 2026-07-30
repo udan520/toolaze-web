@@ -43,6 +43,8 @@ const cardAssets = {
     'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/gpt-image-2/feature-image-editing.webp',
   aiVideo:
     'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/seedance-2.jpg',
+  wan25Video:
+    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/prompt-templates/storyboard-scene.webp',
   textToVideo:
     'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/prompt-templates/storyboard-scene.webp',
   imageToVideo:
@@ -200,6 +202,13 @@ const en: StoredAiToolsPageCopy = {
       href: '/ai-asmr-video-generator',
       image: cardAssets.asmr,
       description: 'Create tactile AI ASMR videos with synchronized sound from a text prompt or reference image.',
+      category: 'video',
+    },
+    {
+      title: 'Wan 2.5 AI Video Generator',
+      href: '/model/wan-2-5-ai-video-generator',
+      image: cardAssets.wan25Video,
+      description: 'Create Wan 2.5 text-to-video or image-to-video clips with 5/10 second, 720p/1080p, and native audio settings.',
       category: 'video',
     },
   ],
@@ -519,6 +528,18 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
   },
 }
 
+const wan25VideoCards: Record<AiToolsLocale, Pick<AiToolsCard, 'title' | 'description'>> = {
+  en: { title: 'Wan 2.5 AI Video Generator', description: 'Create Wan 2.5 text-to-video or image-to-video clips with 5/10 second, 720p/1080p, and native audio settings.' },
+  de: { title: 'Wan 2.5 KI-Videogenerator', description: 'Erstellen Sie Wan 2.5 Text-zu-Video- oder Bild-zu-Video-Clips mit 5/10 Sekunden, 720p/1080p und nativen Audioeinstellungen.' },
+  ja: { title: 'Wan 2.5 AI動画生成', description: 'Wan 2.5でテキスト動画または画像動画を作成し、5/10秒、720p/1080p、ネイティブ音声設定を使えます。' },
+  es: { title: 'Generador de video IA Wan 2.5', description: 'Crea clips Wan 2.5 de texto a video o imagen a video con 5/10 segundos, 720p/1080p y audio nativo.' },
+  'zh-TW': { title: 'Wan 2.5 AI 影片生成器', description: '使用 Wan 2.5 建立文字轉影片或圖片轉影片短片，支援 5/10 秒、720p/1080p 與原生音訊設定。' },
+  pt: { title: 'Gerador de vídeo IA Wan 2.5', description: 'Crie clipes Wan 2.5 de texto para vídeo ou imagem para vídeo com 5/10 segundos, 720p/1080p e áudio nativo.' },
+  fr: { title: 'Générateur vidéo IA Wan 2.5', description: 'Créez des clips Wan 2.5 texte vers vidéo ou image vers vidéo avec 5/10 secondes, 720p/1080p et audio natif.' },
+  ko: { title: 'Wan 2.5 AI 동영상 생성기', description: 'Wan 2.5로 5/10초, 720p/1080p, 네이티브 오디오 설정의 텍스트-동영상 또는 이미지-동영상을 만드세요.' },
+  it: { title: 'Generatore video IA Wan 2.5', description: 'Crea clip Wan 2.5 da testo o immagine con 5/10 secondi, 720p/1080p e audio nativo.' },
+}
+
 function applyLocalizedCard(
   baseCard: AiToolsCard,
   localizedCard: Pick<AiToolsCard, 'title' | 'description'>,
@@ -551,6 +572,7 @@ function getLocalizedCards(locale: AiToolsLocale, storedCards: AiToolsCard[]): A
       en.cards[14],
       en.cards[15],
       en.cards[16],
+      en.cards[17],
       en.cards[7],
       en.cards[8],
     ]
@@ -572,6 +594,7 @@ function getLocalizedCards(locale: AiToolsLocale, storedCards: AiToolsCard[]): A
     applyLocalizedCard(en.cards[14], supplemental.hairColor),
     applyLocalizedCard(en.cards[15], supplemental.clothes),
     en.cards[16],
+    applyLocalizedCard(en.cards[17], wan25VideoCards[locale]),
     applyLocalizedCard(en.cards[7], watermark),
     applyLocalizedCard(en.cards[8], restoration),
   ]

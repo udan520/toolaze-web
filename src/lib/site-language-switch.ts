@@ -62,6 +62,7 @@ const MODEL_SUPPORTED_LOCALES: Record<string, readonly string[]> = {
   'seedream-5-0-lite': ALL_LOCALE_CODES,
   'seedream-5-0-pro': ALL_LOCALE_CODES,
   'wan-2-7-image': ALL_LOCALE_CODES,
+  'wan-2-5-ai-video-generator': ALL_LOCALE_CODES,
   'seedance-2-5': ALL_LOCALE_CODES,
   'seedance-2': ALL_LOCALE_CODES,
   'kling-3': ALL_LOCALE_CODES,

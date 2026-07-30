@@ -404,6 +404,18 @@ const modelHubSummaries: Record<ModelPageLocale, {
   },
 }
 
+const wan25VideoModelCards: Record<ModelPageLocale, ModelCard> = {
+  en: { title: 'Wan 2.5 Video', href: '/model/wan-2-5-ai-video-generator', description: 'Create Wan 2.5 text-to-video and image-to-video clips with 5/10 second, 720p/1080p, and native audio settings.', tags: ['Text to Video', 'Image to Video', 'Native Audio'], cta: 'Try Wan 2.5 Video', icon: 'plainText' },
+  de: { title: 'Wan 2.5 Video', href: '/model/wan-2-5-ai-video-generator', description: 'Erstellen Sie Wan 2.5 Text-zu-Video- und Bild-zu-Video-Clips mit 5/10 Sekunden, 720p/1080p und nativen Audioeinstellungen.', tags: ['Text zu Video', 'Bild zu Video', 'Natives Audio'], cta: 'Wan 2.5 Video ausprobieren', icon: 'plainText' },
+  ja: { title: 'Wan 2.5動画', href: '/model/wan-2-5-ai-video-generator', description: 'Wan 2.5でテキスト動画と画像動画を作成し、5/10秒、720p/1080p、ネイティブ音声設定を使えます。', tags: ['テキスト動画', '画像動画', 'ネイティブ音声'], cta: 'Wan 2.5動画を試す', icon: 'plainText' },
+  es: { title: 'Wan 2.5 Video', href: '/model/wan-2-5-ai-video-generator', description: 'Crea clips Wan 2.5 de texto a video e imagen a video con 5/10 segundos, 720p/1080p y audio nativo.', tags: ['Texto a video', 'Imagen a video', 'Audio nativo'], cta: 'Probar Wan 2.5 Video', icon: 'plainText' },
+  'zh-TW': { title: 'Wan 2.5 影片', href: '/model/wan-2-5-ai-video-generator', description: '使用 Wan 2.5 建立文字轉影片與圖片轉影片短片，支援 5/10 秒、720p/1080p 與原生音訊設定。', tags: ['文字轉影片', '圖片轉影片', '原生音訊'], cta: '試用 Wan 2.5 影片', icon: 'plainText' },
+  pt: { title: 'Wan 2.5 Vídeo', href: '/model/wan-2-5-ai-video-generator', description: 'Crie clipes Wan 2.5 de texto para vídeo e imagem para vídeo com 5/10 segundos, 720p/1080p e áudio nativo.', tags: ['Texto para vídeo', 'Imagem para vídeo', 'Áudio nativo'], cta: 'Testar Wan 2.5 Vídeo', icon: 'plainText' },
+  fr: { title: 'Vidéo Wan 2.5', href: '/model/wan-2-5-ai-video-generator', description: 'Créez des clips Wan 2.5 texte vers vidéo et image vers vidéo avec 5/10 secondes, 720p/1080p et audio natif.', tags: ['Texte vers vidéo', 'Image vers vidéo', 'Audio natif'], cta: 'Essayer Wan 2.5 Vidéo', icon: 'plainText' },
+  ko: { title: 'Wan 2.5 동영상', href: '/model/wan-2-5-ai-video-generator', description: 'Wan 2.5로 5/10초, 720p/1080p, 네이티브 오디오 설정의 텍스트-동영상과 이미지-동영상을 만드세요.', tags: ['텍스트 동영상', '이미지 동영상', '네이티브 오디오'], cta: 'Wan 2.5 동영상 사용하기', icon: 'plainText' },
+  it: { title: 'Wan 2.5 Video', href: '/model/wan-2-5-ai-video-generator', description: 'Crea clip Wan 2.5 da testo in video e immagine in video con 5/10 secondi, 720p/1080p e audio nativo.', tags: ['Testo in video', 'Immagine in video', 'Audio nativo'], cta: 'Prova Wan 2.5 Video', icon: 'plainText' },
+}
+
 export function isModelPageLocale(locale: string): locale is ModelPageLocale {
   return MODEL_PAGE_LOCALES.includes(locale as ModelPageLocale)
 }
@@ -423,6 +435,7 @@ export function getModelPageCopy(locale = 'en'): ModelPageCopy {
       ...copy.hero,
       description: summary.heroDescription,
     },
+    cards: [...copy.cards, wan25VideoModelCards[resolvedLocale]],
     about: {
       ...copy.about,
       paragraphs: summary.aboutParagraphs,

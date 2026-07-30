@@ -125,6 +125,8 @@ interface AiVideoGeneratorToolProps {
     src?: string
     poster?: string
     ariaLabel?: string
+    width?: number
+    height?: number
   }
   initialTranslations?: any
 }
@@ -435,6 +437,7 @@ export default function AiVideoGeneratorTool({
   const pathname = usePathname()
   const commonTranslations = useCommonTranslations(initialTranslations)
   const text = { ...FALLBACK_TEXT, ...(commonTranslations?.common?.aiVideoGeneratorTool || {}) }
+  const demoVideoIsSixteenNine = demoVideo?.width === 16 && demoVideo?.height === 9
   const localizedModelSelectorCopy = useMemo(
     () => getLocalizedModelSelectorCopy(
       parseLocalePath(pathname).pathLocale || 'en',
@@ -1886,14 +1889,16 @@ export default function AiVideoGeneratorTool({
                       <div
                         data-video-preview-frame
                         className={demoVideo?.src
-                          ? 'relative inline-flex max-h-full max-w-full overflow-hidden rounded-2xl bg-transparent shadow-lg shadow-slate-200/70 ring-1 ring-slate-200/80'
+                          ? demoVideoIsSixteenNine
+                            ? 'relative flex aspect-video w-full max-w-3xl overflow-hidden rounded-2xl bg-transparent shadow-lg shadow-slate-200/70 ring-1 ring-slate-200/80'
+                            : 'relative inline-flex max-h-full max-w-full overflow-hidden rounded-2xl bg-transparent shadow-lg shadow-slate-200/70 ring-1 ring-slate-200/80'
                           : 'relative aspect-video w-full max-w-3xl overflow-hidden rounded-2xl bg-slate-950 shadow-lg shadow-slate-200/70 ring-1 ring-slate-200/80'}
                       >
                         {demoVideo?.src ? (
                           <video
                             data-video-demo-media
                             suppressHydrationWarning
-                            className="block h-auto max-h-[520px] w-auto max-w-full object-contain"
+                            className={demoVideoIsSixteenNine ? 'block h-full w-full object-cover' : 'block h-auto max-h-[520px] w-auto max-w-full object-contain'}
                             src={demoVideo.src}
                             poster={demoVideo.poster}
                             aria-label={demoVideo.ariaLabel || text.previewHint}

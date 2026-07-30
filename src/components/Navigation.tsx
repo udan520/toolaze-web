@@ -69,6 +69,7 @@ const defaultNavTranslations = {
   textToVideoGenerator: 'Text to Video Generator',
   imageToVideoGenerator: 'Image to Video Generator',
   grok15Video: 'Grok 1.5 Video',
+  wan25Video: 'Wan 2.5 Video',
   pricing: 'Pricing',
   nanoBananaPro: 'Nano Banana Pro',
   nanoBanana2: 'Nano Banana 2',
@@ -1534,6 +1535,10 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
       key: 'prompt-models',
       items: [
         {
+          title: navTranslations.wan25Video || defaultNavTranslations.wan25Video,
+          href: getLocalizedHref('/model/wan-2-5-ai-video-generator'),
+        },
+        {
           title: navTranslations.seedance25 || defaultNavTranslations.seedance25,
           href: getLocalizedHref('/model/seedance-2-5'),
         },
@@ -2034,6 +2039,14 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                     </defs>
                   </svg>
                   <span>{navTranslations.aiDanceGenerator || defaultNavTranslations.aiDanceGenerator}</span>
+                </Link>
+                <Link
+                  href={getLocalizedHref('/model/wan-2-5-ai-video-generator')}
+                  onClick={() => setOpenDesktopMenu(null)}
+                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
+                >
+                  <img src="/model-logos/wan.ico" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
+                  <span>{navTranslations.wan25Video || defaultNavTranslations.wan25Video}</span>
                 </Link>
                 <Link
                   href={getLocalizedHref('/model/seedance-2-5')}
@@ -2559,6 +2572,17 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                       </defs>
                     </svg>
                     <span>{navTranslations.aiDanceGenerator || defaultNavTranslations.aiDanceGenerator}</span>
+                  </Link>
+                  <Link
+                    href={getLocalizedHref('/model/wan-2-5-ai-video-generator')}
+                    onClick={() => {
+                      setMobileMenuOpen(false)
+                      setExpandedSubmenus(new Set())
+                    }}
+                    className="flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
+                  >
+                    <img src="/model-logos/wan.ico" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
+                    <span>{navTranslations.wan25Video || defaultNavTranslations.wan25Video}</span>
                   </Link>
                   <Link
                     href={getLocalizedHref('/model/seedance-2-5')}

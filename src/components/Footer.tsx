@@ -38,6 +38,7 @@ const defaultTranslations = {
   textToVideoGenerator: 'Text to Video Generator',
   imageToVideoGenerator: 'Image to Video Generator',
   grok15Video: 'Grok 1.5 Video',
+  wan25Video: 'Wan 2.5 Video',
   aiImage: 'AI Image',
   aiVideo: 'AI Video',
   aiImageGenerator: 'AI Image Generator',
@@ -363,6 +364,14 @@ export default function Footer({ initialTranslations }: FooterProps = {}) {
               {translations.aiVideoModel || 'AI Video Model'}
             </Link>
             <ul className="space-y-2 mt-4">
+              <li>
+                <Link
+                  href={getLocalizedHref('/model/wan-2-5-ai-video-generator')}
+                  className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
+                >
+                  {translations.wan25Video || 'Wan 2.5 Video'}
+                </Link>
+              </li>
               <li>
                 <Link
                   href={getLocalizedHref('/model/grok-imagine-video-1-5')}

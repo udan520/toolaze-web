@@ -40,6 +40,7 @@ const AI_IMAGE_TOOL_TOP_COMPONENTS = new Set(['gpt-image-2'])
 const VIDEO_GENERATOR_DEFAULT_MODELS = {
   'ai-video-generator': 'grok-1-5-video',
   'ai-asmr-video-generator': 'grok-1-5-video',
+  'wan-2-5-ai-video-generator': 'wan-2-5',
   'seedance-2': 'seedance-2',
   'kling-3': 'kling-3',
 } as const
@@ -524,6 +525,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
       'aiImageToImageGenerator',
       'aiVideo',
       'textToVideoGenerator',
+      'wan25Video',
       'pricing',
       'wan27Image',
       'seedream45',
@@ -560,6 +562,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
       'aiTools',
       'aiVideo',
       'textToVideoGenerator',
+      'wan25Video',
       'aiImage',
       'aiImageGenerator',
       'textToImageGenerator',
@@ -693,6 +696,12 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
           { label: breadcrumbT.model || 'Model', href: '/model' },
           { label: 'Seedance 2.5' },
         ]
+      : tool === 'wan-2-5-ai-video-generator'
+      ? [
+          { label: breadcrumbT.home, href: '/' },
+          { label: breadcrumbT.model || 'Model', href: '/model' },
+          { label: 'Wan 2.5 AI Video Generator' },
+        ]
       : tool === 'seedance-2'
       ? [
           { label: breadcrumbT.home, href: '/' },
@@ -724,6 +733,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
       'gpt-image-2',
       'nano-banana-2',
       'ai-video-generator',
+      'wan-2-5-ai-video-generator',
       'text-to-video-generator',
     ].includes(topComp)
 
@@ -734,6 +744,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
       if (modelTool === 'nano-banana-pro') return locale === 'en' ? '/model/nano-banana-pro' : `/${locale}/model/nano-banana-pro`
       if (modelTool === 'nano-banana-2') return locale === 'en' ? '/model/nano-banana-2' : `/${locale}/model/nano-banana-2`
       if (modelTool === 'gpt-image-2') return locale === 'en' ? '/model/gpt-image-2' : `/${locale}/model/gpt-image-2`
+      if (modelTool === 'wan-2-5-ai-video-generator') return locale === 'en' ? '/model/wan-2-5-ai-video-generator' : `/${locale}/model/wan-2-5-ai-video-generator`
       if (modelTool === 'seedance-2-5') return locale === 'en' ? '/model/seedance-2-5' : `/${locale}/model/seedance-2-5`
       if (modelTool === 'seedance-2') return locale === 'en' ? '/model/seedance-2' : `/${locale}/model/seedance-2`
       if (modelTool === 'kling-3') return locale === 'en' ? '/model/kling-3' : `/${locale}/model/kling-3`

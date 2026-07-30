@@ -1,0 +1,46 @@
+{
+  "taskId": "2026-07-30-wan-2-5-ai-video-generator",
+  "slug": "wan-2-5-ai-video-generator",
+  "pageType": "l2",
+  "status": "ready_for_publish",
+  "localeCoverage": [
+    "en",
+    "de",
+    "ja",
+    "es",
+    "zh-TW",
+    "pt",
+    "fr",
+    "ko",
+    "it"
+  ],
+  "sourceData": "src/data/en/wan-2-5-ai-video-generator.json",
+  "canonicalPath": "/model/wan-2-5-ai-video-generator",
+  "modelId": "wan-2-5",
+  "createdAt": "2026-07-30T00:00:00.000Z",
+  "owner": "Codex",
+  "intent": "Create a public Toolaze model SEO landing page for Wan 2.5 AI Video Generator with text-to-video and image-to-video intent.",
+  "researchSummary": {
+    "officialSignals": [
+      "Alibaba Cloud Model Studio lists Wan 2.5 Preview for video generation with T2V and I2V, multiple aspect ratios, 5/10 second output, 480P/720P/1080P, and 30fps.",
+      "Toolaze local model configuration exposes Wan 2.5 as a video model with text-to-video, image-to-video, one reference image, 5/10 second duration, 720p/1080p, native audio output, and 100 starting credits."
+    ],
+    "competitorPatterns": [
+      "Ranking AI video generator pages put the tool near the top, followed by definition, use cases, examples, how-to, model/spec comparison, and FAQ.",
+      "Useful smaller competitor pages make hard settings visible early instead of hiding duration, resolution, modes, and input limits in FAQ only.",
+      "Prompt examples should be concrete and tied to visible creation jobs such as product clips, social video, storyboard beats, and ASMR/tactile motion."
+    ]
+  },
+  "releaseBoundary": "Public landing-page release includes route files, desktop and mobile navigation, Footer, AI Tools hub, model hub, sitemap, supported locale data, SEO Factory run records, and targeted tests. SEO Factory dashboards, admin routes, backend migrations, production deploys, commits, and pushes remain excluded.",
+  "publicEntrypoints": [
+    "/model/wan-2-5-ai-video-generator",
+    "/de/model/wan-2-5-ai-video-generator",
+    "/ja/model/wan-2-5-ai-video-generator",
+    "/es/model/wan-2-5-ai-video-generator",
+    "/zh-TW/model/wan-2-5-ai-video-generator",
+    "/pt/model/wan-2-5-ai-video-generator",
+    "/fr/model/wan-2-5-ai-video-generator",
+    "/ko/model/wan-2-5-ai-video-generator",
+    "/it/model/wan-2-5-ai-video-generator"
+  ]
+}
