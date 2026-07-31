@@ -1285,13 +1285,13 @@ test('grantNewUserCredits adds the signup bonus once and records a transaction',
   assert.equal(await grantNewUserCredits(env, 'user_1'), false);
 
   assert.deepEqual(await getCreditSummary(env, 'user_1'), {
-    balance: 10,
+    balance: 20,
     transactions: [
       {
         id: env.DB.creditTransactions[0].id,
         type: 'grant',
-        amount: 10,
-        balanceAfter: 10,
+        amount: 20,
+        balanceAfter: 20,
         reason: 'new_user_bonus',
         description: 'New user bonus',
         createdAt: env.DB.creditTransactions[0].created_at,
@@ -1328,7 +1328,7 @@ test('listCreditRewardEvents returns positive reward grants with user details', 
   const checkInReward = allRewards.items.find((item) => item.reason === 'daily_checkin');
   assert.equal(checkInReward.userEmail, 'person@example.com');
   assert.equal(checkInReward.amount, 5);
-  assert.equal(checkInReward.balanceAfter, 15);
+  assert.equal(checkInReward.balanceAfter, 25);
 
   const checkIns = await listCreditRewardEvents(env, { reason: 'daily_checkin', limit: 10 });
   assert.deepEqual(checkIns.items.map((item) => item.reason), ['daily_checkin']);
@@ -1345,19 +1345,19 @@ test('consumeCredits deducts balance and records usage activity', async () => {
   });
 
   assert.equal(result.ok, true);
-  assert.equal(result.balance, 0);
+  assert.equal(result.balance, 10);
   assert.equal(result.required, 10);
   assert.match(result.consumptionId, /^credit_cons_[a-f0-9]{32}$/);
 
   const summary = await getCreditSummary(env, 'user_1');
-  assert.equal(summary.balance, 0);
+  assert.equal(summary.balance, 10);
   assert.equal(summary.transactions.length, 2);
   const usageTransaction = summary.transactions.find((transaction) => transaction.type === 'use');
   assert.deepEqual(usageTransaction, {
     id: env.DB.creditTransactions[1].id,
     type: 'use',
     amount: -10,
-    balanceAfter: 0,
+    balanceAfter: 10,
     reason: 'image_generation',
     description: 'Nano Banana 2 image generation',
     metadata: { model: 'nano-banana-2', resolution: '1K' },
@@ -1426,17 +1426,17 @@ test('refundCredits restores balance and records refund activity', async () => {
 
   assert.deepEqual(result, {
     ok: true,
-    balance: 10,
+    balance: 20,
     refunded: 10,
   });
   const summary = await getCreditSummary(env, 'user_1');
-  assert.equal(summary.balance, 10);
+  assert.equal(summary.balance, 20);
   const refundTransaction = summary.transactions.find((transaction) => transaction.type === 'refund');
   assert.deepEqual(refundTransaction, {
     id: env.DB.creditTransactions[2].id,
     type: 'refund',
     amount: 10,
-    balanceAfter: 10,
+    balanceAfter: 20,
     reason: 'image_generation_refund',
     description: 'Image generation refund',
     metadata: { taskId: 'task_1' },

@@ -7,7 +7,7 @@ import {
   upsertUser,
   verifyGoogleIdToken,
 } from '../../../_shared/auth.mjs';
-import { grantNewUserCredits } from '../../../_shared/credits.mjs';
+import { NEW_USER_CREDITS, grantNewUserCredits } from '../../../_shared/credits.mjs';
 import { getSafeReturnTo, jsonResponse, redirectResponse } from '../../../_shared/http.mjs';
 
 function redirectWithClearedState(location, env) {
@@ -44,7 +44,7 @@ export async function onRequest(context) {
     const session = await createSession(env, user.id);
     const returnUrl = new URL(getSafeReturnTo(statePayload.returnTo), 'http://toolaze.local');
     if (grantedNewUserCredits) {
-      returnUrl.searchParams.set('new_user_credits', '10');
+      returnUrl.searchParams.set('new_user_credits', String(NEW_USER_CREDITS));
     } else {
       returnUrl.searchParams.set('auth_success', '1');
     }

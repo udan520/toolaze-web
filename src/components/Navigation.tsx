@@ -73,6 +73,7 @@ const defaultNavTranslations = {
   klingAiVideoGenerator: 'Kling AI Video Generator',
   textToVideoGenerator: 'Text to Video Generator',
   imageToVideoGenerator: 'Image to Video Generator',
+  supportedAiModels: 'Supported AI Models',
   grok15Video: 'Grok 1.5 Video',
   wan25Video: 'Wan 2.5 Video',
   pricing: 'Pricing',
@@ -114,7 +115,7 @@ const defaultAuthTranslations = {
   modalTitle: 'Sign In to Toolaze',
   modalEyebrow: 'Toolaze Account',
   modalDescription: 'Continue with Google to save your generation access and use Toolaze AI tools.',
-  newUserBonus: 'New users receive 10 credits after signing up.',
+  newUserBonus: 'New users receive 20 credits after signing up.',
   modalGoogleButton: 'Continue with Google',
   modalGoogleLoading: 'Connecting...',
   modalTerms: 'By continuing, you agree to use Toolaze with your Google account.',
@@ -124,7 +125,7 @@ const defaultAuthTranslations = {
   noticeSignedInTitle: 'Signed In Successfully',
   noticeSignedInMessage: 'You can now use Toolaze AI tools with your account.',
   noticeNewUserCreditsTitle: 'Welcome to Toolaze',
-  noticeNewUserCreditsMessage: 'Your 10 signup credits are ready.',
+  noticeNewUserCreditsMessage: 'Your 20 signup credits are ready.',
   signOut: 'Sign Out',
 }
 
@@ -226,6 +227,44 @@ const AI_VIDEO_TOOL_MENU_ITEMS: readonly AiToolMenuItem[] = [
   { href: '/talking-avatar-creator', labelKey: 'talkingAvatarCreator', imageKey: 'talkingAvatarCreator' },
   { href: '/ai-kissing-video-generator', labelKey: 'aiKissingVideoGenerator', imageKey: 'aiKissingVideoGenerator', hot: true },
   { href: '/ai-dance-generator', labelKey: 'aiDanceGenerator', imageKey: 'aiDanceGenerator', hot: true },
+]
+
+type AiVideoNavLabelKey =
+  | 'aiVideoGenerator'
+  | 'textToVideoGenerator'
+  | 'imageToVideoGenerator'
+  | 'wan25Video'
+  | 'seedance25'
+  | 'seedance2'
+  | 'kling3'
+  | 'klingAiVideoGenerator'
+  | 'grok15Video'
+
+type AiVideoFunctionMenuItem = {
+  href: string
+  labelKey: AiVideoNavLabelKey
+  icon: 'video' | 'image' | 'text'
+}
+
+type AiVideoModelMenuItem = {
+  href: string
+  labelKey: AiVideoNavLabelKey
+  logoSrc: string
+}
+
+const AI_VIDEO_FUNCTION_MENU_ITEMS: readonly AiVideoFunctionMenuItem[] = [
+  { href: '/ai-video-generator', labelKey: 'aiVideoGenerator', icon: 'video' },
+  { href: '/image-to-video-generator', labelKey: 'imageToVideoGenerator', icon: 'image' },
+  { href: '/text-to-video-generator', labelKey: 'textToVideoGenerator', icon: 'text' },
+]
+
+const AI_VIDEO_MODEL_MENU_ITEMS: readonly AiVideoModelMenuItem[] = [
+  { href: '/model/wan-2-5-ai-video-generator', labelKey: 'wan25Video', logoSrc: '/model-logos/wan.ico' },
+  { href: '/model/seedance-2-5', labelKey: 'seedance25', logoSrc: '/model-logos/bytedance.svg' },
+  { href: '/model/seedance-2', labelKey: 'seedance2', logoSrc: '/model-logos/bytedance.svg' },
+  { href: '/model/kling-3', labelKey: 'kling3', logoSrc: '/model-logos/kling.svg' },
+  { href: '/kling-ai-video-generator', labelKey: 'klingAiVideoGenerator', logoSrc: '/model-logos/kling.svg' },
+  { href: '/model/grok-imagine-video-1-5', labelKey: 'grok15Video', logoSrc: '/model-logos/grok.svg' },
 ]
 
 function getInitialNavTranslations(initialTranslations?: any) {
@@ -809,6 +848,94 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
             </span>
           )}
         </span>
+      </Link>
+    )
+  }
+
+  const getAiVideoLabel = (item: AiVideoFunctionMenuItem | AiVideoModelMenuItem): string => (
+    navTranslations[item.labelKey] || defaultNavTranslations[item.labelKey]
+  )
+
+  const renderAiVideoFunctionIcon = (icon: AiVideoFunctionMenuItem['icon']) => {
+    if (icon === 'image') {
+      return (
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-7 w-7">
+          <rect x="2" y="4" width="20" height="14" rx="2" fill="#FCE7F3"/>
+          <path d="M5 15L9 11L12 14L14 12M15 8.5L19 12L15 15.5V8.5Z" stroke="#DB2777" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      )
+    }
+
+    if (icon === 'text') {
+      return (
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-7 w-7">
+          <rect x="2" y="4" width="20" height="14" rx="2" fill="#E0E7FF"/>
+          <path d="M6 8H12M6 11H10M14 9L18 12L14 15V9Z" stroke="#4F46E5" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      )
+    }
+
+    return (
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-7 w-7">
+        <rect x="2" y="4" width="20" height="14" rx="2" fill="#EEF2FF"/>
+        <path d="M10 8L16 12L10 16V8Z" fill="#4F46E5"/>
+      </svg>
+    )
+  }
+
+  const renderAiVideoFunctionMenuItem = (item: AiVideoFunctionMenuItem, surface: 'desktop' | 'mobile') => {
+    const label = getAiVideoLabel(item)
+    const isDesktop = surface === 'desktop'
+
+    return (
+      <Link
+        key={`${surface}-ai-video-function-${item.href}`}
+        href={getLocalizedHref(item.href)}
+        onClick={() => {
+          if (isDesktop) {
+            setOpenDesktopMenu(null)
+          } else {
+            setMobileMenuOpen(false)
+            setExpandedSubmenus(new Set())
+          }
+        }}
+        className={[
+          'flex items-center gap-3 rounded-xl border border-transparent text-slate-800 transition-colors hover:border-indigo-100 hover:bg-indigo-50 hover:text-indigo-600',
+          isDesktop ? 'px-4 py-3' : 'px-3 py-2.5',
+        ].join(' ')}
+      >
+        <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white shadow-sm ring-1 ring-indigo-50">
+          {renderAiVideoFunctionIcon(item.icon)}
+        </span>
+        <span className="min-w-0 text-sm font-bold leading-tight">{label}</span>
+      </Link>
+    )
+  }
+
+  const renderAiVideoModelMenuItem = (item: AiVideoModelMenuItem, surface: 'desktop' | 'mobile') => {
+    const label = getAiVideoLabel(item)
+    const isDesktop = surface === 'desktop'
+
+    return (
+      <Link
+        key={`${surface}-ai-video-model-${item.href}`}
+        href={getLocalizedHref(item.href)}
+        onClick={() => {
+          if (isDesktop) {
+            setOpenDesktopMenu(null)
+          } else {
+            setMobileMenuOpen(false)
+            setExpandedSubmenus(new Set())
+          }
+        }}
+        className={[
+          'inline-flex items-center gap-2 rounded-full bg-indigo-50 px-3 py-2 text-sm font-semibold text-slate-600 transition-colors hover:bg-indigo-100 hover:text-indigo-700',
+          isDesktop ? 'max-w-full' : 'max-w-[calc(100vw-3.5rem)]',
+        ].join(' ')}
+        data-ai-video-model-tag
+      >
+        <img src={item.logoSrc} alt="" width="18" height="18" className="h-[18px] w-[18px] shrink-0 rounded" />
+        <span className="truncate">{label}</span>
       </Link>
     )
   }
@@ -2000,126 +2127,19 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
               </svg>
             </button>
-            <div className={'absolute top-full left-0 pt-1 w-auto min-w-[200px] bg-transparent transition-all duration-200 z-50 ' + (openDesktopMenu === 'ai-video' ? 'opacity-100 visible' : 'opacity-0 invisible group-hover:opacity-100 group-hover:visible')}>
-              <div className="bg-white rounded-xl shadow-lg border border-indigo-50 py-2">
-                <Link
-                  href={getLocalizedHref('/ai-video-generator')}
-                  onClick={() => setOpenDesktopMenu(null)}
-                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
-                >
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
-                    <rect x="2" y="4" width="20" height="14" rx="2" fill="url(#aiVideoGeneratorGradient)" opacity="0.2"/>
-                    <path d="M10 8L16 12L10 16V8Z" fill="url(#aiVideoGeneratorGradient)"/>
-                    <defs>
-                      <linearGradient id="aiVideoGeneratorGradient" x1="2" y1="4" x2="22" y2="18" gradientUnits="userSpaceOnUse">
-                        <stop stopColor="#9333EA"/>
-                        <stop offset="1" stopColor="#4F46E5"/>
-                      </linearGradient>
-                    </defs>
-                  </svg>
-                  <span>{navTranslations.aiVideoGenerator || defaultNavTranslations.aiVideoGenerator}</span>
-                </Link>
-                <Link
-                  href={getLocalizedHref('/image-to-video-generator')}
-                  onClick={() => setOpenDesktopMenu(null)}
-                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
-                >
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
-                    <rect x="2" y="4" width="20" height="14" rx="2" fill="#FCE7F3"/>
-                    <path d="M5 15L9 11L12 14L14 12M15 8.5L19 12L15 15.5V8.5Z" stroke="#DB2777" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                  <span>{navTranslations.imageToVideoGenerator || defaultNavTranslations.imageToVideoGenerator}</span>
-                </Link>
-                <Link
-                  href={getLocalizedHref('/text-to-video-generator')}
-                  onClick={() => setOpenDesktopMenu(null)}
-                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
-                >
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
-                    <rect x="2" y="4" width="20" height="14" rx="2" fill="#E0E7FF"/>
-                    <path d="M6 8H12M6 11H10M14 9L18 12L14 15V9Z" stroke="#4F46E5" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                  <span>{navTranslations.textToVideoGenerator || defaultNavTranslations.textToVideoGenerator}</span>
-                </Link>
-                <Link
-                  href={getLocalizedHref('/ai-dance-generator')}
-                  onClick={() => setOpenDesktopMenu(null)}
-                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
-                >
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
-                    <rect x="2" y="4" width="20" height="14" rx="2" fill="url(#aiDanceVideoGradient)" opacity="0.2"/>
-                    <path d="M9 8.5L13 12L9 15.5V8.5Z" fill="url(#aiDanceVideoGradient)"/>
-                    <path d="M15.5 8.5L18 12L15.5 15.5" stroke="url(#aiDanceVideoGradient)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    <defs>
-                      <linearGradient id="aiDanceVideoGradient" x1="2" y1="4" x2="22" y2="18" gradientUnits="userSpaceOnUse">
-                        <stop stopColor="#EC4899"/>
-                        <stop offset="1" stopColor="#4F46E5"/>
-                      </linearGradient>
-                    </defs>
-                  </svg>
-                  <span>{navTranslations.aiDanceGenerator || defaultNavTranslations.aiDanceGenerator}</span>
-                </Link>
-                <Link
-                  href={getLocalizedHref('/model/wan-2-5-ai-video-generator')}
-                  onClick={() => setOpenDesktopMenu(null)}
-                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
-                >
-                  <img src="/model-logos/wan.ico" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
-                  <span>{navTranslations.wan25Video || defaultNavTranslations.wan25Video}</span>
-                </Link>
-                <Link
-                  href={getLocalizedHref('/talking-avatar-creator')}
-                  onClick={() => setOpenDesktopMenu(null)}
-                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
-                >
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
-                    <rect x="3" y="4" width="18" height="16" rx="3" fill="#EEF2FF"/>
-                    <circle cx="12" cy="10" r="3" stroke="#4F46E5" strokeWidth="1.6"/>
-                    <path d="M7.5 18C8.7 15.8 10.1 14.8 12 14.8C13.9 14.8 15.3 15.8 16.5 18" stroke="#4F46E5" strokeWidth="1.6" strokeLinecap="round"/>
-                    <path d="M17 8.5V15.5" stroke="#EC4899" strokeWidth="1.5" strokeLinecap="round"/>
-                  </svg>
-                  <span>{navTranslations.talkingAvatarCreator || defaultNavTranslations.talkingAvatarCreator}</span>
-                </Link>
-                <Link
-                  href={getLocalizedHref('/model/seedance-2-5')}
-                  onClick={() => setOpenDesktopMenu(null)}
-                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
-                >
-                  <img src="/model-logos/bytedance.svg" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
-                  <span>{navTranslations.seedance25 || defaultNavTranslations.seedance25}</span>
-                </Link>
-                <Link
-                  href={getLocalizedHref('/model/seedance-2')}
-                  onClick={() => setOpenDesktopMenu(null)}
-                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
-                >
-                  <img src="/model-logos/bytedance.svg" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
-                  <span>{navTranslations.seedance2 || defaultNavTranslations.seedance2}</span>
-                </Link>
-                <Link
-                  href={getLocalizedHref('/model/kling-3')}
-                  onClick={() => setOpenDesktopMenu(null)}
-                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
-                >
-                  <img src="/model-logos/kling.svg" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
-                  <span>{navTranslations.kling3 || defaultNavTranslations.kling3}</span>
-                </Link>
-                <Link
-                  href={getLocalizedHref('/kling-ai-video-generator')}
-                  onClick={() => setOpenDesktopMenu(null)}
-                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
-                >
-                  <img src="/model-logos/kling.svg" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
-                  <span>{navTranslations.klingAiVideoGenerator || defaultNavTranslations.klingAiVideoGenerator}</span>
-                </Link>
-                <Link
-                  href={getLocalizedHref('/model/grok-imagine-video-1-5')}
-                  onClick={() => setOpenDesktopMenu(null)}
-                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
-                >
-                  <img src="/model-logos/grok.svg" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
-                  <span>{navTranslations.grok15Video || defaultNavTranslations.grok15Video}</span>
-                </Link>
+            <div className={'absolute top-full left-0 pt-2 w-[560px] max-w-[calc(100vw-2rem)] bg-transparent transition-all duration-200 z-50 ' + (openDesktopMenu === 'ai-video' ? 'opacity-100 visible' : 'opacity-0 invisible group-hover:opacity-100 group-hover:visible')}>
+              <div className="overflow-hidden rounded-xl border border-indigo-50 bg-white p-4 shadow-xl">
+                <div data-ai-video-section="functions" className="grid gap-2">
+                  {AI_VIDEO_FUNCTION_MENU_ITEMS.map((item) => renderAiVideoFunctionMenuItem(item, 'desktop'))}
+                </div>
+                <div data-ai-video-section="models" className="mt-4 border-t border-indigo-50 pt-4">
+                  <div className="mb-3 text-xs font-extrabold uppercase tracking-wide text-slate-500">
+                    {navTranslations.supportedAiModels || defaultNavTranslations.supportedAiModels}
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {AI_VIDEO_MODEL_MENU_ITEMS.map((item) => renderAiVideoModelMenuItem(item, 'desktop'))}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -2542,159 +2562,17 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
               </div>
               {/* AI Video 部分 */}
               <div className="order-3 border-b border-indigo-50 pb-4">
-                <div className="text-sm font-bold text-slate-700 mb-3">{navTranslations.aiVideo || defaultNavTranslations.aiVideo}</div>
-                <div className="space-y-2">
-                  <Link
-                    href={getLocalizedHref('/ai-video-generator')}
-                    onClick={() => {
-                      setMobileMenuOpen(false)
-                      setExpandedSubmenus(new Set())
-                    }}
-                    className="flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
-                  >
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
-                      <rect x="2" y="4" width="20" height="14" rx="2" fill="url(#aiVideoGeneratorGradientMobile)" opacity="0.2"/>
-                      <path d="M10 8L16 12L10 16V8Z" fill="url(#aiVideoGeneratorGradientMobile)"/>
-                      <defs>
-                        <linearGradient id="aiVideoGeneratorGradientMobile" x1="2" y1="4" x2="22" y2="18" gradientUnits="userSpaceOnUse">
-                          <stop stopColor="#9333EA"/>
-                          <stop offset="1" stopColor="#4F46E5"/>
-                        </linearGradient>
-                      </defs>
-                    </svg>
-                    <span>{navTranslations.aiVideoGenerator || defaultNavTranslations.aiVideoGenerator}</span>
-                  </Link>
-                  <Link
-                    href={getLocalizedHref('/image-to-video-generator')}
-                    onClick={() => {
-                      setMobileMenuOpen(false)
-                      setExpandedSubmenus(new Set())
-                    }}
-                    className="flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
-                  >
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
-                      <rect x="2" y="4" width="20" height="14" rx="2" fill="#FCE7F3"/>
-                      <path d="M5 15L9 11L12 14L14 12M15 8.5L19 12L15 15.5V8.5Z" stroke="#DB2777" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                    <span>{navTranslations.imageToVideoGenerator || defaultNavTranslations.imageToVideoGenerator}</span>
-                  </Link>
-                  <Link
-                    href={getLocalizedHref('/text-to-video-generator')}
-                    onClick={() => {
-                      setMobileMenuOpen(false)
-                      setExpandedSubmenus(new Set())
-                    }}
-                    className="flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
-                  >
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
-                      <rect x="2" y="4" width="20" height="14" rx="2" fill="#E0E7FF"/>
-                      <path d="M6 8H12M6 11H10M14 9L18 12L14 15V9Z" stroke="#4F46E5" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                    <span>{navTranslations.textToVideoGenerator || defaultNavTranslations.textToVideoGenerator}</span>
-                  </Link>
-                  <Link
-                    href={getLocalizedHref('/ai-dance-generator')}
-                    onClick={() => {
-                      setMobileMenuOpen(false)
-                      setExpandedSubmenus(new Set())
-                    }}
-                    className="flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
-                  >
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
-                      <rect x="2" y="4" width="20" height="14" rx="2" fill="url(#aiDanceVideoGradientMobile)" opacity="0.2"/>
-                      <path d="M9 8.5L13 12L9 15.5V8.5Z" fill="url(#aiDanceVideoGradientMobile)"/>
-                      <path d="M15.5 8.5L18 12L15.5 15.5" stroke="url(#aiDanceVideoGradientMobile)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                      <defs>
-                        <linearGradient id="aiDanceVideoGradientMobile" x1="2" y1="4" x2="22" y2="18" gradientUnits="userSpaceOnUse">
-                          <stop stopColor="#EC4899"/>
-                          <stop offset="1" stopColor="#4F46E5"/>
-                        </linearGradient>
-                      </defs>
-                    </svg>
-                    <span>{navTranslations.aiDanceGenerator || defaultNavTranslations.aiDanceGenerator}</span>
-                  </Link>
-                  <Link
-                    href={getLocalizedHref('/model/wan-2-5-ai-video-generator')}
-                    onClick={() => {
-                      setMobileMenuOpen(false)
-                      setExpandedSubmenus(new Set())
-                    }}
-                    className="flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
-                  >
-                    <img src="/model-logos/wan.ico" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
-                    <span>{navTranslations.wan25Video || defaultNavTranslations.wan25Video}</span>
-                  </Link>
-                  <Link
-                    href={getLocalizedHref('/talking-avatar-creator')}
-                    onClick={() => {
-                      setMobileMenuOpen(false)
-                      setExpandedSubmenus(new Set())
-                    }}
-                    className="flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
-                  >
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
-                      <rect x="3" y="4" width="18" height="16" rx="3" fill="#EEF2FF"/>
-                      <circle cx="12" cy="10" r="3" stroke="#4F46E5" strokeWidth="1.6"/>
-                      <path d="M7.5 18C8.7 15.8 10.1 14.8 12 14.8C13.9 14.8 15.3 15.8 16.5 18" stroke="#4F46E5" strokeWidth="1.6" strokeLinecap="round"/>
-                      <path d="M17 8.5V15.5" stroke="#EC4899" strokeWidth="1.5" strokeLinecap="round"/>
-                    </svg>
-                    <span>{navTranslations.talkingAvatarCreator || defaultNavTranslations.talkingAvatarCreator}</span>
-                  </Link>
-                  <Link
-                    href={getLocalizedHref('/model/seedance-2-5')}
-                    onClick={() => {
-                      setMobileMenuOpen(false)
-                      setExpandedSubmenus(new Set())
-                    }}
-                    className="flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
-                  >
-                    <img src="/model-logos/bytedance.svg" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
-                    <span>{navTranslations.seedance25 || defaultNavTranslations.seedance25}</span>
-                  </Link>
-                  <Link
-                    href={getLocalizedHref('/model/seedance-2')}
-                    onClick={() => {
-                      setMobileMenuOpen(false)
-                      setExpandedSubmenus(new Set())
-                    }}
-                    className="flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
-                  >
-                    <img src="/model-logos/bytedance.svg" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
-                    <span>{navTranslations.seedance2 || defaultNavTranslations.seedance2}</span>
-                  </Link>
-                  <Link
-                    href={getLocalizedHref('/model/kling-3')}
-                    onClick={() => {
-                      setMobileMenuOpen(false)
-                      setExpandedSubmenus(new Set())
-                    }}
-                    className="flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
-                  >
-                    <img src="/model-logos/kling.svg" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
-                    <span>{navTranslations.kling3 || defaultNavTranslations.kling3}</span>
-                  </Link>
-                  <Link
-                    href={getLocalizedHref('/kling-ai-video-generator')}
-                    onClick={() => {
-                      setMobileMenuOpen(false)
-                      setExpandedSubmenus(new Set())
-                    }}
-                    className="flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
-                  >
-                    <img src="/model-logos/kling.svg" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
-                    <span>{navTranslations.klingAiVideoGenerator || defaultNavTranslations.klingAiVideoGenerator}</span>
-                  </Link>
-                  <Link
-                    href={getLocalizedHref('/model/grok-imagine-video-1-5')}
-                    onClick={() => {
-                      setMobileMenuOpen(false)
-                      setExpandedSubmenus(new Set())
-                    }}
-                    className="flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
-                  >
-                    <img src="/model-logos/grok.svg" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
-                    <span>{navTranslations.grok15Video || defaultNavTranslations.grok15Video}</span>
-                  </Link>
+                <div className="mb-3 text-sm font-bold text-slate-700">{navTranslations.aiVideo || defaultNavTranslations.aiVideo}</div>
+                <div data-ai-video-section="functions" className="space-y-2">
+                  {AI_VIDEO_FUNCTION_MENU_ITEMS.map((item) => renderAiVideoFunctionMenuItem(item, 'mobile'))}
+                </div>
+                <div data-ai-video-section="models" className="mt-4 border-t border-indigo-50 pt-4">
+                  <div className="mb-3 text-xs font-extrabold uppercase tracking-wide text-slate-500">
+                    {navTranslations.supportedAiModels || defaultNavTranslations.supportedAiModels}
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {AI_VIDEO_MODEL_MENU_ITEMS.map((item) => renderAiVideoModelMenuItem(item, 'mobile'))}
+                  </div>
                 </div>
               </div>
               <Link

@@ -1,7 +1,7 @@
 {
   "in_menu": true,
   "topComponent": "ai-video-generator",
-  "metadata": {"title": "Kostenloser KI-Videogenerator online | Text und Bild zu Video", "description": "Erstelle KI-Videos aus Text oder Bildern. Nach der Anmeldung erhältst du 10 kostenlose Credits, genug für mindestens ein geeignetes Grok-Video."},
+  "metadata": {"title": "Kostenloser KI-Videogenerator online | Text und Bild zu Video", "description": "Erstelle KI-Videos aus Text oder Bildern. Nach der Anmeldung erhältst du 20 kostenlose Credits, genug für mindestens ein geeignetes Grok-Video."},
   "sectionsOrder": ["howToUse", "promptExamples", "modelIntro", "performanceMetrics", "modelSelectionGuide", "troubleshooting", "scenes", "faq"],
   "modelIntro": {
     "title": "Kurze KI-Videos aus Text oder Bildern erstellen", "modelName": "KI-Videogenerator", "modelType": "Videotool mit mehreren Modellen",
@@ -57,7 +57,7 @@
     {"title": "Kling 3.0", "description": "Entdecke ein weiteres KI-Videomodell für filmische Clips und Videokonzepte.", "href": "/model/kling-3"}
   ],
   "faqTitle": "Häufige Fragen zum KI-Videogenerator", "faq": [
-    {"q": "Ist der Toolaze KI-Videogenerator kostenlos?", "a": "Ja. Neue Nutzer erhalten nach der Anmeldung 10 kostenlose Credits. Das reicht für mindestens eine Grok-1.5-Video-Generierung mit geeigneten Einstellungen. Andere Modelle, längere Laufzeiten, höhere Auflösungen und Native Audio können mehr Credits benötigen."},
+    {"q": "Ist der Toolaze KI-Videogenerator kostenlos?", "a": "Ja. Neue Nutzer erhalten nach der Anmeldung 20 kostenlose Credits. Das reicht für mindestens eine Grok-1.5-Video-Generierung mit geeigneten Einstellungen. Andere Modelle, längere Laufzeiten, höhere Auflösungen und Native Audio können mehr Credits benötigen."},
     {"q": "Was ist der Toolaze KI-Videogenerator?", "a": "Der Toolaze KI-Videogenerator erstellt kurze Videos aus Text-Prompts oder Referenzbildern. Du kannst Modelle vergleichen, Dauer und Auflösung einstellen, Ergebnisse ansehen und frühere Generierungen im Verlauf öffnen."},
     {"q": "Sollte ich Text-zu-Video oder Bild-zu-Video nutzen?", "a": "Nutze Text-zu-Video, wenn die Szene als geschriebene Idee beginnt. Nutze Bild-zu-Video, wenn Produkt, Figur, Komposition oder Stil aus einem Referenzbild erkennbar bleiben sollen."},
     {"q": "Kann ich KI-Videos aus Bildern erstellen?", "a": "Ja. Mit Bild-zu-Video führt ein Referenzbild Motiv, Komposition, Produktlook, Figurenrichtung oder Stil. Grenzen und Einstellungen hängen vom gewählten Modell ab."},

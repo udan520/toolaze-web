@@ -42,7 +42,7 @@ test('AI Tools navigation defines the approved image and video groups once', () 
   )
   const videoGroup = sourceBetween(
     'const AI_VIDEO_TOOL_MENU_ITEMS',
-    'function getInitialNavTranslations',
+    'type AiVideoNavLabelKey',
   )
 
   for (const href of imageToolHrefs) assert.match(imageGroup, new RegExp(`href: '${href}'`))

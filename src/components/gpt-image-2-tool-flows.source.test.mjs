@@ -42,6 +42,25 @@ const aiDanceFactoryLocaleContent = Object.fromEntries(
   ]),
 )
 
+function sourceBetween(source, start, end) {
+  const startIndex = source.indexOf(start)
+  const endIndex = source.indexOf(end, startIndex + start.length)
+  assert.notEqual(startIndex, -1, `missing source marker: ${start}`)
+  assert.notEqual(endIndex, -1, `missing source marker: ${end}`)
+  return source.slice(startIndex, endIndex)
+}
+
+const aiVideoToolMenuSource = sourceBetween(
+  navigationSource,
+  'const AI_VIDEO_TOOL_MENU_ITEMS',
+  'type AiVideoNavLabelKey',
+)
+const aiVideoModelMenuSource = sourceBetween(
+  navigationSource,
+  'const AI_VIDEO_MODEL_MENU_ITEMS',
+  'function getInitialNavTranslations',
+)
+
 test('AI tools hub exposes baby, couple, dance, watermark, and World Cup entries', () => {
   for (const href of [
     '/ai-baby-generator',
@@ -58,7 +77,7 @@ test('AI tools hub exposes baby, couple, dance, watermark, and World Cup entries
 
 test('AI Dance is discoverable from global navigation, footer, homepage, and AI Tools hub', () => {
   assert.match(navigationSource, /aiDanceGenerator/)
-  assert.match(navigationSource, /href=\{getLocalizedHref\('\/ai-dance-generator'\)\}/)
+  assert.match(aiVideoToolMenuSource, /href: '\/ai-dance-generator'/)
   assert.doesNotMatch(
     navigationSource,
     /href=\{getLocalizedHref\('\/ai-dance-generator'\)\}\s+onClick=\{\(\) => setOpenDesktopMenu\(null\)\}\s+className="order-[0-9]+ hover:text-indigo-600 transition-colors whitespace-nowrap"/s,
@@ -73,10 +92,7 @@ test('AI Dance is discoverable from global navigation, footer, homepage, and AI 
 })
 
 test('AI Kissing is discoverable from global navigation, footer, homepage, and AI Tools hub before AI Dance', () => {
-  const videoToolsBlock = navigationSource.slice(
-    navigationSource.indexOf('const AI_VIDEO_TOOL_MENU_ITEMS'),
-    navigationSource.indexOf('function getInitialNavTranslations'),
-  )
+  const videoToolsBlock = aiVideoToolMenuSource
   const sceneNavKeysBlock = l2Source.slice(
     l2Source.indexOf('const sceneNavKeys = ['),
     l2Source.indexOf('const sceneFooterKeys = ['),
@@ -106,40 +122,34 @@ test('AI Kissing is discoverable from global navigation, footer, homepage, and A
 
 test('Grok 1.5 Video is discoverable from AI Video navigation, footer, and homepage models', () => {
   assert.match(navigationSource, /grok15Video/)
-  assert.match(navigationSource, /href=\{getLocalizedHref\('\/ai-video-generator'\)\}[\s\S]*grok15Video/)
+  assert.match(aiVideoModelMenuSource, /href: '\/model\/grok-imagine-video-1-5'[\s\S]*labelKey: 'grok15Video'/)
   assert.match(footerSource, /grok15Video/)
   assert.match(footerSource, /href=\{getLocalizedHref\('\/ai-video-generator'\)\}[\s\S]*grok15Video/)
   assert.match(homePageSource, /tool: 'grok-1-5-video'/)
   assert.match(homePageSource, /href: '\/ai-video-generator'/)
 })
 
-test('AI Video model links follow Dance and show manufacturer icons', () => {
-  const desktopAiVideoBlock = navigationSource.slice(
-    navigationSource.indexOf('{/* 一级菜单：AI Video */}'),
-    navigationSource.indexOf("href={getLocalizedHref('/pricing')}", navigationSource.indexOf('{/* 一级菜单：AI Video */}')),
-  )
-  const mobileAiVideoBlock = navigationSource.slice(
-    navigationSource.indexOf('{/* AI Video 部分 */}'),
-    navigationSource.indexOf("href={getLocalizedHref('/pricing')}", navigationSource.indexOf('{/* AI Video 部分 */}')),
-  )
+test('AI Video model tags are separated from tool links and show manufacturer icons', () => {
+  const orderedRoutes = [
+    '/model/wan-2-5-ai-video-generator',
+    '/model/seedance-2-5',
+    '/model/seedance-2',
+    '/model/kling-3',
+    '/kling-ai-video-generator',
+    '/model/grok-imagine-video-1-5',
+  ]
+  const routeIndexes = orderedRoutes.map((route) => aiVideoModelMenuSource.indexOf(`href: '${route}'`))
 
-  for (const block of [desktopAiVideoBlock, mobileAiVideoBlock]) {
-    const orderedRoutes = [
-      '/ai-dance-generator',
-      '/model/seedance-2-5',
-      '/model/seedance-2',
-      '/model/kling-3',
-      '/model/grok-imagine-video-1-5',
-    ]
-    const routeIndexes = orderedRoutes.map((route) => block.indexOf(`href={getLocalizedHref('${route}')}`))
-
-    assert.ok(routeIndexes.every((index) => index >= 0))
-    assert.deepEqual(routeIndexes, [...routeIndexes].sort((a, b) => a - b))
-    assert.match(block, /href=\{getLocalizedHref\('\/model\/seedance-2-5'\)\}[\s\S]*?<img src="\/model-logos\/bytedance\.svg"/)
-    assert.match(block, /href=\{getLocalizedHref\('\/model\/seedance-2'\)\}[\s\S]*?<img src="\/model-logos\/bytedance\.svg"/)
-    assert.match(block, /href=\{getLocalizedHref\('\/model\/kling-3'\)\}[\s\S]*?<img src="\/model-logos\/kling\.svg"/)
-    assert.match(block, /href=\{getLocalizedHref\('\/model\/grok-imagine-video-1-5'\)\}[\s\S]*?<img src="\/model-logos\/grok\.svg"/)
-  }
+  assert.ok(routeIndexes.every((index) => index >= 0))
+  assert.deepEqual(routeIndexes, [...routeIndexes].sort((a, b) => a - b))
+  assert.doesNotMatch(aiVideoModelMenuSource, /href: '\/ai-dance-generator'/)
+  assert.doesNotMatch(aiVideoModelMenuSource, /href: '\/talking-avatar-creator'/)
+  assert.match(aiVideoModelMenuSource, /href: '\/model\/wan-2-5-ai-video-generator'[\s\S]*logoSrc: '\/model-logos\/wan\.ico'/)
+  assert.match(aiVideoModelMenuSource, /href: '\/model\/seedance-2-5'[\s\S]*logoSrc: '\/model-logos\/bytedance\.svg'/)
+  assert.match(aiVideoModelMenuSource, /href: '\/model\/seedance-2'[\s\S]*logoSrc: '\/model-logos\/bytedance\.svg'/)
+  assert.match(aiVideoModelMenuSource, /href: '\/model\/kling-3'[\s\S]*logoSrc: '\/model-logos\/kling\.svg'/)
+  assert.match(aiVideoModelMenuSource, /href: '\/model\/grok-imagine-video-1-5'[\s\S]*logoSrc: '\/model-logos\/grok\.svg'/)
+  assert.match(navigationSource, /data-ai-video-section="models"[\s\S]*AI_VIDEO_MODEL_MENU_ITEMS\.map/)
 })
 
 test('AI Image model links show their manufacturer icons on desktop and mobile', () => {
@@ -515,7 +525,7 @@ test('AI Bikini Generator visible SEO copy is user-facing and free-claim qualifi
   }
 
   const englishVisibleCopy = collectStrings(aiBikiniGeneratorContent).join('\n')
-  assert.match(englishVisibleCopy, /10 free credits/i)
+  assert.match(englishVisibleCopy, /20 free credits/i)
   assert.match(englishVisibleCopy, /sign-up/i)
   assert.match(englishVisibleCopy, /Seedream 5\.0 Lite/i)
   assert.match(englishVisibleCopy, /10 credits/i)

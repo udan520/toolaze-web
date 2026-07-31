@@ -6,7 +6,7 @@ import {
   getImageGenerationModelLabel,
 } from './generation-credit-label.mjs';
 
-const NEW_USER_CREDITS = 10;
+export const NEW_USER_CREDITS = 20;
 const LEGACY_IMAGE_CREDIT_HISTORY_MATCH_WINDOW_MS = 15 * 60 * 1000;
 const CREDIT_REWARD_EVENT_REASONS = [
   'new_user_bonus',

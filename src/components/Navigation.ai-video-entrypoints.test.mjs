@@ -5,17 +5,44 @@ import { test } from 'node:test'
 const navigationSource = readFileSync(new URL('./Navigation.tsx', import.meta.url), 'utf8')
 const locales = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
 
+function getConstantBlock(start, end) {
+  return navigationSource.slice(
+    navigationSource.indexOf(start),
+    navigationSource.indexOf(end, navigationSource.indexOf(start)),
+  )
+}
+
+const aiVideoFunctionMenuSource = getConstantBlock(
+  'const AI_VIDEO_FUNCTION_MENU_ITEMS',
+  'const AI_VIDEO_MODEL_MENU_ITEMS',
+)
+const aiVideoModelMenuSource = getConstantBlock(
+  'const AI_VIDEO_MODEL_MENU_ITEMS',
+  'function getInitialNavTranslations',
+)
+
 test('AI Video navigation exposes video tools and Wan 2.5 model entry points', () => {
-  const imageToVideoLinks = navigationSource.match(/getLocalizedHref\('\/image-to-video-generator'\)/g) ?? []
-  const textToVideoLinks = navigationSource.match(/getLocalizedHref\('\/text-to-video-generator'\)/g) ?? []
-  const wan25VideoLinks = navigationSource.match(/getLocalizedHref\('\/model\/wan-2-5-ai-video-generator'\)/g) ?? []
-
-  assert.equal(imageToVideoLinks.length, 2)
-  assert.equal(textToVideoLinks.length, 2)
-  assert.equal(wan25VideoLinks.length, 3)
+  assert.match(aiVideoFunctionMenuSource, /href: '\/ai-video-generator'/)
+  assert.match(aiVideoFunctionMenuSource, /href: '\/image-to-video-generator'/)
+  assert.match(aiVideoFunctionMenuSource, /href: '\/text-to-video-generator'/)
+  assert.match(aiVideoModelMenuSource, /href: '\/model\/wan-2-5-ai-video-generator'/)
 })
 
-test('AI Video navigation lists Image to Video before Text to Video', () => {
+function getDesktopAiVideoBlock() {
+  return navigationSource.slice(
+    navigationSource.indexOf('{/* 一级菜单：AI Video */}'),
+    navigationSource.indexOf("href={getLocalizedHref('/pricing')}", navigationSource.indexOf('{/* 一级菜单：AI Video */}')),
+  )
+}
+
+function getMobileAiVideoBlock() {
+  return navigationSource.slice(
+    navigationSource.indexOf('{/* AI Video 部分 */}'),
+    navigationSource.indexOf("href={getLocalizedHref('/pricing')}", navigationSource.indexOf('{/* AI Video 部分 */}')),
+  )
+}
+
+test('AI Video navigation separates functional entries from model tags', () => {
   const desktopAiVideoBlock = navigationSource.slice(
     navigationSource.indexOf('{/* 一级菜单：AI Video */}'),
     navigationSource.indexOf("href={getLocalizedHref('/pricing')}", navigationSource.indexOf('{/* 一级菜单：AI Video */}')),
@@ -26,39 +53,51 @@ test('AI Video navigation lists Image to Video before Text to Video', () => {
   )
 
   for (const block of [desktopAiVideoBlock, mobileAiVideoBlock]) {
-    const imageToVideoIndex = block.indexOf("href={getLocalizedHref('/image-to-video-generator')}")
-    const textToVideoIndex = block.indexOf("href={getLocalizedHref('/text-to-video-generator')}")
+    const functionalSectionIndex = block.indexOf('data-ai-video-section="functions"')
+    const modelSectionIndex = block.indexOf('data-ai-video-section="models"')
+    const supportedModelsIndex = block.indexOf('supportedAiModels')
 
-    assert.notEqual(imageToVideoIndex, -1)
-    assert.notEqual(textToVideoIndex, -1)
-    assert.ok(imageToVideoIndex < textToVideoIndex)
+    assert.notEqual(functionalSectionIndex, -1)
+    assert.notEqual(modelSectionIndex, -1)
+    assert.notEqual(supportedModelsIndex, -1)
+    assert.ok(functionalSectionIndex < modelSectionIndex)
+    assert.ok(supportedModelsIndex > functionalSectionIndex)
   }
 })
 
-test('AI Video navigation keeps functional tools before model-specific links', () => {
-  const desktopAiVideoBlock = navigationSource.slice(
-    navigationSource.indexOf('{/* 一级菜单：AI Video */}'),
-    navigationSource.indexOf("href={getLocalizedHref('/pricing')}", navigationSource.indexOf('{/* 一级菜单：AI Video */}')),
-  )
-  const mobileAiVideoBlock = navigationSource.slice(
-    navigationSource.indexOf('{/* AI Video 部分 */}'),
-    navigationSource.indexOf("href={getLocalizedHref('/pricing')}", navigationSource.indexOf('{/* AI Video 部分 */}')),
-  )
-
-  for (const block of [desktopAiVideoBlock, mobileAiVideoBlock]) {
-    const aiVideoIndex = block.indexOf("href={getLocalizedHref('/ai-video-generator')}")
-    const imageToVideoIndex = block.indexOf("href={getLocalizedHref('/image-to-video-generator')}")
-    const textToVideoIndex = block.indexOf("href={getLocalizedHref('/text-to-video-generator')}")
-    const danceIndex = block.indexOf("href={getLocalizedHref('/ai-dance-generator')}")
-    const wan25Index = block.indexOf("href={getLocalizedHref('/model/wan-2-5-ai-video-generator')}")
-    const seedanceIndex = block.indexOf("href={getLocalizedHref('/model/seedance-2-5')}")
-
-    assert.ok(aiVideoIndex < imageToVideoIndex)
-    assert.ok(imageToVideoIndex < textToVideoIndex)
-    assert.ok(textToVideoIndex < danceIndex)
-    assert.ok(danceIndex < wan25Index)
-    assert.ok(wan25Index < seedanceIndex)
+test('AI Video navigation keeps AI Dance and Talking Avatar in AI Tools only', () => {
+  for (const block of [getDesktopAiVideoBlock(), getMobileAiVideoBlock()]) {
+    assert.equal(block.includes("href={getLocalizedHref('/ai-dance-generator')}"), false)
+    assert.equal(block.includes("href={getLocalizedHref('/talking-avatar-creator')}"), false)
   }
+
+  assert.match(navigationSource, /const AI_VIDEO_TOOL_MENU_ITEMS[\s\S]*\/talking-avatar-creator[\s\S]*\/ai-dance-generator/)
+})
+
+test('AI Video model links render as tag-style entries after the function cards', () => {
+  const expectedModelLinks = [
+    '/model/wan-2-5-ai-video-generator',
+    '/model/seedance-2-5',
+    '/model/seedance-2',
+    '/model/kling-3',
+    '/kling-ai-video-generator',
+    '/model/grok-imagine-video-1-5',
+  ]
+
+  for (const href of expectedModelLinks) {
+    const escapedHref = href.replace(/\//g, '\\/')
+    assert.match(aiVideoModelMenuSource, new RegExp(`href: '${escapedHref}'`), `${href} should exist in AI Video model tags`)
+  }
+
+  for (const block of [getDesktopAiVideoBlock(), getMobileAiVideoBlock()]) {
+    const modelSectionIndex = block.indexOf('data-ai-video-section="models"')
+    const modelMapIndex = block.indexOf('AI_VIDEO_MODEL_MENU_ITEMS.map')
+    assert.notEqual(modelSectionIndex, -1)
+    assert.notEqual(modelMapIndex, -1)
+    assert.ok(modelMapIndex > modelSectionIndex)
+  }
+
+  assert.match(navigationSource, /rounded-full[\s\S]*data-ai-video-model-tag/)
 })
 
 test('AI Image navigation puts GPT Image 2 first and keeps Seedream models grouped after Pro', () => {
