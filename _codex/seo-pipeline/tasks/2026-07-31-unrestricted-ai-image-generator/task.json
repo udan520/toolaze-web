@@ -1,0 +1,20 @@
+{
+  "taskId": "2026-07-31-unrestricted-ai-image-generator",
+  "slug": "unrestricted-ai-image-generator",
+  "pageType": "l2",
+  "status": "ready_for_publish",
+  "primaryKeyword": "unrestricted ai image generator",
+  "targetUrl": "/unrestricted-ai-image-generator",
+  "locales": [
+    "en",
+    "de",
+    "ja",
+    "es",
+    "zh-TW",
+    "pt",
+    "fr",
+    "ko",
+    "it"
+  ],
+  "sourceData": "src/data/{locale}/unrestricted-ai-image-generator.json"
+}

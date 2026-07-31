@@ -7,10 +7,12 @@ const toolL2PageSource = readFileSync(new URL('./blocks/ToolL2PageContent.tsx', 
 const locales = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
 
 const imageToolHrefs = [
+  '/unrestricted-ai-image-generator',
   '/ai-hairstyle-changer',
   '/ai-hair-color-changer',
   '/ai-clothes-changer',
   '/ai-bikini-generator',
+  '/ai-breast-expansion',
   '/ai-baby-generator',
   '/ai-couple-photo-maker',
   '/world-cup-ai-image-generator',
@@ -80,6 +82,16 @@ test('AI Tools category headings are translated in every locale', () => {
       `${locale} aiBikiniGenerator should exist`,
     )
     assert.equal(
+      typeof common.nav.unrestrictedAiImageGenerator,
+      'string',
+      `${locale} unrestrictedAiImageGenerator should exist`,
+    )
+    assert.match(
+      common.nav.unrestrictedAiImageGenerator,
+      /Unrestricted|Unlimited/,
+      `${locale} unrestrictedAiImageGenerator should keep the unrestricted/unlimited entry label`,
+    )
+    assert.equal(
       typeof common.nav.talkingAvatarCreator,
       'string',
       `${locale} talkingAvatarCreator should exist`,
@@ -99,5 +111,6 @@ test('scene pages preserve AI Tools group translations in the navigation payload
   assert.match(sceneNavKeys, /'videoTools'/)
   assert.match(sceneNavKeys, /'aiAsmrVideoGenerator'/)
   assert.match(sceneNavKeys, /'aiBikiniGenerator'/)
+  assert.match(sceneNavKeys, /'unrestrictedAiImageGenerator'/)
   assert.match(sceneNavKeys, /'talkingAvatarCreator'/)
 })

@@ -62,10 +62,10 @@
     "aiClothesChanger": "AI 의상 체인저",
     "wan25Video": "Wan 2.5 동영상",
     "klingAiVideoGenerator": "Kling AI 동영상 생성기",
-    "aiBikiniGenerator": "AI 비키니 생성기"
-,
-    "talkingAvatarCreator": "AI 말하는 아바타"
-
+    "aiBikiniGenerator": "AI 비키니 생성기",
+    "unrestrictedAiImageGenerator": "Unlimited AI 이미지",
+    "talkingAvatarCreator": "AI 말하는 아바타",
+    "aiBreastExpansion": "AI 가슴 확대 미리보기"
   },
   "home": {
     "metadata": {
@@ -135,6 +135,14 @@
       "ai-bikini-generator": {
         "cardTitle": "AI 비키니 생성기",
         "summary": "성인 인물 사진과 비키니 참조 이미지를 업로드해 원본 인물을 유지한 깔끔한 수영복 편집을 미리보세요."
+      },
+      "unrestricted-ai-image-generator": {
+        "cardTitle": "Unrestricted / Unlimited AI 이미지 생성기",
+        "summary": "텍스트 이미지, 이미지 편집, 직접 프롬프트 제어, 명확한 창작 경계로 더 넓은 unlimited-style AI 이미지 콘셉트를 만드세요."
+      },
+      "ai-breast-expansion": {
+        "cardTitle": "AI 가슴 확대 미리보기",
+        "summary": "옷을 입은 성인 사진을 업로드하고 인물, 옷, 포즈, 장면을 유지한 자연스러운 가슴 크기 편집을 미리보세요."
       }
     },
     "aiToolsHubTitle": "이미지, 비디오 및 일상 미디어 워크플로우를 위한 무료 AI 도구",
@@ -296,10 +304,10 @@
     "aiClothesChanger": "AI 의상 체인저",
     "wan25Video": "Wan 2.5 동영상",
     "klingAiVideoGenerator": "Kling AI 동영상 생성기",
-    "aiBikiniGenerator": "AI 비키니 생성기"
-,
-    "talkingAvatarCreator": "AI 말하는 아바타"
-
+    "aiBikiniGenerator": "AI 비키니 생성기",
+    "unrestrictedAiImageGenerator": "Unrestricted / Unlimited AI 이미지 생성기",
+    "talkingAvatarCreator": "AI 말하는 아바타",
+    "aiBreastExpansion": "AI 가슴 확대 미리보기"
   },
   "breadcrumb": {
     "home": "홈",

@@ -30,6 +30,7 @@ test('footer separates image tools, video tools, image models, and video models'
 
   assert.doesNotMatch(imageToolsBlock, /\/ai-dance-generator/)
   assert.match(imageToolsBlock, /\/ai-image-generator/)
+  assert.match(imageToolsBlock, /\/unrestricted-ai-image-generator/)
   assert.match(imageToolsBlock, /\/text-to-image-generator/)
   assert.match(imageToolsBlock, /\/ai-image-to-image-generator/)
   assert.match(imageToolsBlock, /\/ai-hairstyle-changer/)
@@ -65,9 +66,14 @@ test('footer no longer renders utility directory groups', () => {
 test('footer tool group titles exist in every supported locale', () => {
   for (const locale of locales) {
     const common = JSON.parse(readFileSync(`src/data/${locale}/common.json`, 'utf8'))
-    for (const key of ['aiImage', 'aiVideo', 'aiImageModel', 'aiVideoModel', 'aiClothesChanger', 'aiBikiniGenerator', 'wan25Video']) {
+    for (const key of ['aiImage', 'aiVideo', 'aiImageModel', 'aiVideoModel', 'aiClothesChanger', 'aiBikiniGenerator', 'unrestrictedAiImageGenerator', 'wan25Video']) {
       assert.equal(typeof common.footer[key], 'string', `${locale} is missing footer.${key}`)
       assert.ok(common.footer[key].length > 0, `${locale}.footer.${key} is empty`)
     }
+    assert.match(
+      common.footer.unrestrictedAiImageGenerator,
+      /Unrestricted|Unlimited/,
+      `${locale}.footer.unrestrictedAiImageGenerator should keep the unrestricted/unlimited entry label`,
+    )
   }
 })

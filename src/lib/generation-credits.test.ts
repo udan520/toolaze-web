@@ -30,18 +30,29 @@ test('Veo 3.1 model variants use video cost-times-two per-video pricing', () => 
 })
 
 test('video pricing rounds cost-times-two credits to the nearest integer', () => {
+  assert.equal(VIDEO_GENERATION_CREDIT_RATES['infinitalk'].ratesByResolution['480p'], 6)
+  assert.equal(VIDEO_GENERATION_CREDIT_RATES['infinitalk'].ratesByResolution['720p'], 24)
+  assert.equal(calculateVideoGenerationCredits('infinitalk', '480p', 15), 90)
+  assert.equal(calculateVideoGenerationCredits('infinitalk', '480p', 14.5), 90)
+  assert.equal(calculateVideoGenerationCredits('infinitalk', '720p', 15), 360)
   assert.equal(VIDEO_GENERATION_CREDIT_RATES['grok-1-5-video'].ratesByResolution['480p'], 3)
   assert.equal(calculateVideoGenerationCredits('grok-1-5-video', '480p', 5), 15)
-  assert.equal(calculateVideoGenerationCredits('grok-1-5-video', '480p', 3), 10)
-  assert.equal(VIDEO_GENERATION_CREDIT_RATES['seedance-2-mini'].ratesByResolution['480p'], 20)
-  assert.equal(calculateVideoGenerationCredits('seedance-2-mini', '480p', 5), 100)
-  assert.equal(VIDEO_GENERATION_CREDIT_RATES['seedance-1-lite'].ratesByResolution['720p'], 10)
+  assert.equal(calculateVideoGenerationCredits('grok-1-5-video', '480p', 3), 9)
+  assert.equal(VIDEO_GENERATION_CREDIT_RATES['seedance-2-mini'].ratesByResolution['480p'], 19)
+  assert.equal(calculateVideoGenerationCredits('seedance-2-mini', '480p', 5), 95)
+  assert.equal(VIDEO_GENERATION_CREDIT_RATES['seedance-1-lite'].ratesByResolution['720p'], 9)
   assert.equal(VIDEO_GENERATION_CREDIT_RATES['pixverse-v6'].ratesByResolution['540p'], 11)
   assert.equal(VIDEO_GENERATION_CREDIT_RATES['pixverse-v6'].ratesByResolution['720p'], 14)
-  assert.equal(VIDEO_GENERATION_CREDIT_RATES['pixverse-v6'].ratesByResolution['1080p'], 30)
-  assert.equal(VIDEO_GENERATION_CREDIT_RATES['pixverse-v6'].nativeAudioRatesByResolution?.['720p'], 20)
+  assert.equal(VIDEO_GENERATION_CREDIT_RATES['pixverse-v6'].ratesByResolution['1080p'], 29)
+  assert.equal(VIDEO_GENERATION_CREDIT_RATES['pixverse-v6'].nativeAudioRatesByResolution?.['720p'], 19)
   assert.equal(calculateVideoGenerationCredits('pixverse-v6', '720p', 5), 70)
-  assert.equal(calculateVideoGenerationCredits('pixverse-v6', '720p', 5, { nativeAudio: true }), 100)
+  assert.equal(calculateVideoGenerationCredits('pixverse-v6', '720p', 5, { nativeAudio: true }), 95)
+})
+
+test('video pricing never moves 9-credit totals to the next ten', () => {
+  assert.equal(calculateVideoGenerationCredits('grok-1-5-video', '480p', 3), 9)
+  assert.equal(calculateVideoGenerationCredits('seedance-2-mini', '480p', 1), 19)
+  assert.equal(calculateVideoGenerationCredits('pixverse-v6', '1080p', 1), 29)
 })
 
 test('image pricing moves 9-credit results to the next ten', () => {

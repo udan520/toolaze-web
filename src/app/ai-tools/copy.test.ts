@@ -6,6 +6,7 @@ const expectedRoutes = [
   '/ai-image-generator',
   '/text-to-image-generator',
   '/ai-image-to-image-generator',
+  '/unrestricted-ai-image-generator',
   '/ai-video-generator',
   '/text-to-video-generator',
   '/image-to-video-generator',
@@ -19,6 +20,7 @@ const expectedRoutes = [
   '/ai-hair-color-changer',
   '/ai-clothes-changer',
   '/ai-bikini-generator',
+  '/ai-breast-expansion',
   '/ai-asmr-video-generator',
   '/model/wan-2-5-ai-video-generator',
   '/watermark-remover',
@@ -29,7 +31,7 @@ test('AI Tools hub includes every global AI tool in every locale', () => {
   for (const locale of AI_TOOLS_LOCALES) {
     const cards = getAiToolsPageCopy(locale).cards
     assert.deepEqual(cards.map((card) => card.href), expectedRoutes, `${locale} has missing or mismatched tools`)
-    assert.equal(cards.filter((card) => card.category === 'image').length, 12)
+    assert.equal(cards.filter((card) => card.category === 'image').length, 14)
     assert.equal(cards.filter((card) => card.category === 'video').length, 8)
   }
 })
@@ -90,6 +92,26 @@ test('AI Bikini Generator hub card is localized outside English', () => {
 
     assert.ok(localizedCard, `${locale} is missing the AI Bikini Generator hub card`)
     assert.notEqual(localizedCard.title, englishCard.title, `${locale} title should not fall back to English`)
+    assert.notEqual(
+      localizedCard.description,
+      englishCard.description,
+      `${locale} description should not fall back to English`,
+    )
+  }
+})
+
+test('Unrestricted AI Image Generator hub card is localized and keeps unlimited keyword coverage', () => {
+  const englishCard = getAiToolsPageCopy('en').cards.find((card) => card.href === '/unrestricted-ai-image-generator')
+  assert.ok(englishCard)
+  assert.match(englishCard.title, /Unlimited/)
+  assert.match(englishCard.description, /unlimited-style/)
+
+  for (const locale of AI_TOOLS_LOCALES.filter((locale) => locale !== 'en')) {
+    const localizedCard = getAiToolsPageCopy(locale).cards.find((card) => card.href === '/unrestricted-ai-image-generator')
+
+    assert.ok(localizedCard, `${locale} is missing the Unrestricted AI Image Generator hub card`)
+    assert.match(localizedCard.title, /Unrestricted|Unlimited/, `${locale} title should keep the SEO entry keyword`)
+    assert.match(localizedCard.description, /unlimited-style/, `${locale} description should keep unlimited-style coverage`)
     assert.notEqual(
       localizedCard.description,
       englishCard.description,

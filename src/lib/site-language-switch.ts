@@ -41,6 +41,8 @@ export const TOOL_SUPPORTED_LOCALES: Record<string, readonly string[]> = {
   'ai-dance-generator': ALL_LOCALE_CODES,
   'ai-clothes-changer': ALL_LOCALE_CODES,
   'ai-bikini-generator': ALL_LOCALE_CODES,
+  'ai-breast-expansion': ALL_LOCALE_CODES,
+  'unrestricted-ai-image-generator': ALL_LOCALE_CODES,
   'photo-restoration': ALL_LOCALE_CODES,
   'ai-image-generator': ALL_LOCALE_CODES,
   'ai-video-generator': ALL_LOCALE_CODES,

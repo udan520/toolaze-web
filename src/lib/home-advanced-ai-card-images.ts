@@ -6,6 +6,12 @@
  * Source files can be prepared locally, but homepage should consume uploaded R2 URLs.
  */
 export const HOME_ADVANCED_AI_CARD_IMAGES = {
+  'unrestricted-ai-image-generator': {
+    src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/unrestricted-ai-image-generator/pool-bikini-demo.webp',
+    width: 512,
+    height: 512,
+    alt: 'Unrestricted / Unlimited AI Image Generator flexible creative image preview',
+  },
   'world-cup-ai-image-generator': {
     src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d67aebd7cde5431abd3a7bb74a89bac1.webp',
     width: 358,
@@ -29,6 +35,12 @@ export const HOME_ADVANCED_AI_CARD_IMAGES = {
     width: 1600,
     height: 900,
     alt: 'AI Bikini Generator normal outfit to bikini before and after preview',
+  },
+  'ai-breast-expansion': {
+    src: '/ai-breast-expansion/demo-before-after.webp',
+    width: 1200,
+    height: 675,
+    alt: 'AI Breast Expansion before and after demo preview',
   },
   'ai-baby-generator': {
     src: '/ai-baby-generator/hero-baby-portrait.webp',

@@ -1,0 +1,257 @@
+{
+  "in_menu": false,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 1,
+    "modelId": "wan-2-7-image",
+    "defaultPrompt": "Make the breasts of the person in the image slightly fuller. Keep everything else in the image unchanged.",
+    "defaultImageUrls": [],
+    "hideModelBranding": false,
+    "compactResultPanel": true,
+    "displayName": "Augmentation de poitrine IA",
+    "sampleImages": [
+      {
+        "url": "/ai-breast-expansion/demo-before-after.webp",
+        "title": "Démo avant après de l'augmentation de poitrine IA",
+        "width": 1200,
+        "height": 675
+      }
+    ],
+    "textOverrides": {
+      "uploadTitle": "Importez une photo d'adulte habillé",
+      "uploadHelper": "Utilisez une photo qui vous appartient ou que vous avez l'autorisation de modifier. La personne doit être adulte, habillée et clairement visible.",
+      "promptLabel": "Décrivez l'aperçu de poitrine",
+      "promptPlaceholder": "Make the breasts of the person in the image fuller. Keep everything else in the image unchanged.",
+      "generateLabel": "Générer l'aperçu"
+    },
+    "functionalAcceptance": {
+      "recommendedMode": "text-preset-prompt-only",
+      "reason": "L'outil supérieur utilise une image importée et trois presets uniquement textuels. Cliquer sur un preset met à jour le champ de prompt sans importer d'images preset ni d'images de référence.",
+      "presetTitle": "Choisissez le niveau d'augmentation",
+      "hidePresetPromptInput": false,
+      "presets": [
+        {
+          "label": "Légèrement plus volumineuse",
+          "prompt": "Make the breasts of the person in the image slightly fuller. Keep everything else in the image unchanged.",
+          "group": "breast-expansion-level"
+        },
+        {
+          "label": "Poitrine plus volumineuse",
+          "prompt": "Make the breasts of the person in the image fuller. Keep everything else in the image unchanged.",
+          "group": "breast-expansion-level"
+        },
+        {
+          "label": "Très volumineuse",
+          "prompt": "Make the breasts of the person in the image much fuller. Keep everything else in the image unchanged.",
+          "group": "breast-expansion-level"
+        }
+      ]
+    }
+  },
+  "metadata": {
+    "title": "Augmentation de poitrine IA gratuite en ligne | Aperçu naturel | Toolaze",
+    "description": "Prévisualisez des ajustements de taille de poitrine sur des photos d'adultes habillés avec Toolaze. Les nouveaux utilisateurs reçoivent 10 crédits gratuits après inscription. Gardez les résultats réalistes, non explicites et basés sur le consentement."
+  },
+  "sectionsOrder": [
+    "intro",
+    "howToUse",
+    "photoTips",
+    "promptExamples",
+    "workflowComparison",
+    "scenes",
+    "features",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Augmentation de <span class=\"text-gradient\">poitrine IA</span> gratuite en ligne",
+    "desc": "Importez une photo d'adulte habillé et prévisualisez des ajustements naturels de taille de poitrine pour tester une coupe, planifier un costume, préparer un style pour créateurs ou revoir une photo personnelle. Toolaze garde les vêtements, le visage, la pose, l'arrière-plan et la lumière stables, tout en évitant les modifications explicites ou non autorisés."
+  },
+  "intro": {
+    "title": "Qu'est-ce que l'augmentation de poitrine IA ?",
+    "content": [
+      {
+        "title": "Un aperçu de poitrine habillé pour photos d'adultes",
+        "text": "L'augmentation de poitrine IA est un flux de retouche d'image qui ajuste la zone de la poitrine sur une photo d'adulte habillé, tout en préservant le reste de la personne et de la scène. Toolaze est conçu pour des aperçus réalistes de proportions corporelles, pas pour retirer des vêtements, créer des images explicites, donner un avis médical ou manipuler une identité."
+      },
+      {
+        "title": "Utile pour le style, la coupe et la planification des proportions",
+        "text": "Utilisez-le pour tester un léger rehaussement, une silhouette naturelle plus volumineuse, une direction de coupe de tenue ou une idée de proportion de costume avant une séance photo ou une retouche manuelle. Les résultats sont seulement des aperçus visuels et doivent être vérifiés pour la logique du tissu, les mains, les contours, les ombres et l'équilibre du corps."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Comment utiliser l'augmentation de poitrine IA",
+    "steps": [
+      {
+        "title": "Importez une photo d'adulte habillé",
+        "desc": "Choisissez une photo qui vous appartient ou que vous avez l'autorisation de modifier. La personne doit être adulte, habillée et clairement visible à partir de la taille ou du haut du corps."
+      },
+      {
+        "title": "Choisissez un niveau d'augmentation",
+        "desc": "Sélectionnez Légèrement plus volumineuse, Poitrine plus volumineuse ou Très volumineuse pour mettre à jour le champ de prompt, puis modifiez le prompt si besoin avant de générer."
+      },
+      {
+        "title": "Vérifiez les zones inchangées",
+        "desc": "Contrôlez le visage, l'identité, la pose, les mains, la taille, les hanches, l'arrière-plan, la lumière, la couverture des vêtements et la texture du tissu. Régénérez avec des consignes de préservation plus strictes si un élément dérive."
+      }
+    ]
+  },
+  "photoTips": {
+    "title": "Conseils photo pour des aperçus naturels",
+    "subtitle": "Des photos sources nettes et des consignes directes de préservation produisent des résultats plus crédibles et non explicites.",
+    "items": [
+      {
+        "title": "Utilisez uniquement des photos d'adultes habillés",
+        "desc": "L'outil est destiné aux images d'adultes avec consentement et vêtements intacts. Évitez les mineurs, la nudité, les retouches en sous-vêtements seuls, les demandes d'exposition du corps ou les photos que vous n'êtes pas autorisé à modifier.",
+        "color": "linear-gradient(135deg, #e0e7ff, #6366f1)"
+      },
+      {
+        "title": "Gardez le torse lisible",
+        "desc": "Les photos à partir de la taille, en demi-corps ou en corps entier fonctionnent mieux lorsque la poitrine, les épaules, les bras et les coutures du vêtement sont visibles.",
+        "color": "linear-gradient(135deg, #fce7f3, #db2777)"
+      },
+      {
+        "title": "Évitez les poses bloquées",
+        "desc": "Les bras croisés, les ombres fortes, les sacs, les cheveux couvrant la poitrine, les miroirs ou les torses recadrés peuvent rendre le tissu et les proportions plus difficiles à préserver.",
+        "color": "linear-gradient(135deg, #fef3c7, #f97316)"
+      },
+      {
+        "title": "Nommez ce qui doit rester fixe",
+        "desc": "Répétez préserver le visage, l'identité, la pose, la taille, les hanches, les mains, la couverture des vêtements, l'arrière-plan, la lumière et l'angle de caméra lorsque la continuité exacte compte.",
+        "color": "linear-gradient(135deg, #ede9fe, #7c3aed)"
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "Niveaux de prompt pour augmentation de poitrine IA",
+    "subtitle": "Choisissez l'un des trois presets textuels dans le générateur. Chaque option change seulement le texte du prompt et ne charge aucune image preset.",
+    "items": [
+      {
+        "title": "Légèrement plus volumineuse",
+        "prompt": "Make the breasts of the person in the image slightly fuller. Keep everything else in the image unchanged.",
+        "note": "Idéal pour un ajustement léger et naturel.",
+        "color": "linear-gradient(135deg, #e0e7ff, #a78bfa)"
+      },
+      {
+        "title": "Poitrine plus volumineuse",
+        "prompt": "Make the breasts of the person in the image fuller. Keep everything else in the image unchanged.",
+        "note": "Idéal pour un aperçu plus marqué mais encore équilibré.",
+        "color": "linear-gradient(135deg, #fce7f3, #ec4899)"
+      },
+      {
+        "title": "Très volumineuse",
+        "prompt": "Make the breasts of the person in the image much fuller. Keep everything else in the image unchanged.",
+        "note": "Idéal pour l'option d'aperçu la plus spectaculaire.",
+        "color": "linear-gradient(135deg, #fef3c7, #f97316)"
+      }
+    ]
+  },
+  "workflowComparison": {
+    "title": "Augmentation de poitrine IA vs retouche corporelle manuelle",
+    "subtitle": "Utilisez l'IA pour obtenir vite une direction, puis la retouche manuelle quand l'image finale exige un contrôle au pixel près.",
+    "columns": [
+      "Flux",
+      "Idéal pour",
+      "Points à vérifier"
+    ],
+    "rows": [
+      [
+        "Toolaze Augmentation de poitrine IA",
+        "Aperçus rapides de poitrine sur adultes habillés, tests de coupe, essais de proportions de costume, concepts de style pour créateurs et premières directions photo.",
+        "Vérifiez coutures, ombres, mains, posture et équilibre du corps avant de partager ou publier."
+      ],
+      [
+        "Retouche manuelle",
+        "Retouches commerciales précises, images de mode validées par une marque, supports finaux de campagne et corrections autour de tissus complexes.",
+        "Demande plus de temps et de compétence, surtout autour des plis du tissu et des lignes du corps."
+      ],
+      [
+        "Essayage réel ou séance photo",
+        "Validation finale de coupe, photographie produit, consultation médicale, taille de vêtement et décisions réelles liées au corps.",
+        "Demande garde-robe, lieu, éclairage, temps et souvent photographe ou styliste."
+      ]
+    ]
+  },
+  "scenesTitle": "Usages populaires de l'augmentation de poitrine IA",
+  "scenes": [
+    {
+      "title": "Aperçus de coupe mode",
+      "desc": "Vérifiez comment un haut, une robe, un maillot ou un costume pourrait rendre avec une autre proportion de poitrine tout en gardant la tenue habillée."
+    },
+    {
+      "title": "Style pour créateurs et portraits",
+      "desc": "Explorez une direction naturelle de silhouette pour des photos personnelles, miniatures ou moodboards sans modifier visage, pose, fond ou lumière."
+    },
+    {
+      "title": "Planification de costume et personnage",
+      "desc": "Prévisualisez une silhouette sobre pour cosplay, référence de personnage ou plan de garde-robe avant la couture ou la retouche manuelle."
+    }
+  ],
+  "features": {
+    "title": "Pourquoi utiliser Toolaze pour l'augmentation de poitrine IA",
+    "items": [
+      {
+        "iconType": "workflow",
+        "title": "Aperçu corporel avec une seule photo",
+        "desc": "Importez une photo d'adulte habillé, puis choisissez l'un des trois presets textuels pour mettre à jour le champ de prompt sans utiliser d'images preset."
+      },
+      {
+        "iconType": "guidance",
+        "title": "Prompts centrés sur la préservation",
+        "desc": "Le texte intégré indique au modèle de garder stables visage, identité, taille, hanches, pose, couverture des vêtements, arrière-plan, lumière et angle de caméra."
+      },
+      {
+        "iconType": "limits",
+        "title": "Limite non explicite claire",
+        "desc": "Le contenu est limité aux aperçus adultes, habillés et consentis, et exclut nudité, retrait de vêtements, mineurs, imitation et retouches explicites."
+      }
+    ]
+  },
+  "moreToolsLinks": [
+    {
+      "title": "Générateur de bikini IA",
+      "description": "Prévisualisez des retouches de maillots adultes sobres avec un flux guidé par référence.",
+      "href": "/ai-bikini-generator"
+    },
+    {
+      "title": "Changeur de vêtements IA",
+      "description": "Changez la tenue d'une photo de personne tout en gardant la pose et la scène d'origine.",
+      "href": "/ai-clothes-changer"
+    },
+    {
+      "title": "Générateur image vers image IA",
+      "description": "Utilisez un flux plus large guidé par référence pour le restyling, les retouches photo et les variations visuelles.",
+      "href": "/ai-image-to-image-generator"
+    }
+  ],
+  "faqTitle": "FAQ sur l'augmentation de poitrine IA",
+  "faq": [
+    {
+      "q": "Puis-je utiliser Toolaze gratuitement pour l'augmentation de poitrine IA ?",
+      "a": "Les nouveaux utilisateurs Toolaze reçoivent 10 crédits gratuits après inscription. Le coût de génération peut varier selon le modèle d'image, la résolution, le mode et la politique de crédits Toolaze affichée dans le générateur."
+    },
+    {
+      "q": "Quel type de photo fonctionne le mieux ?",
+      "a": "Utilisez une photo d'adulte habillé avec haut du corps clair, épaules visibles, tissu lisible et éclairage simple. Les photos à partir de la taille, en demi-corps et en corps entier sont souvent plus faciles que les cadrages serrés ou les torses couverts."
+    },
+    {
+      "q": "Le résultat aura-t-il l'air naturel ?",
+      "a": "Les résultats naturels dépendent de la photo source, des vêtements, de la pose et du prompt. Les ajustements subtils préservent généralement mieux la texture du tissu et l'équilibre du corps que les changements extrêmes."
+    },
+    {
+      "q": "Quelles photos puis-je utiliser ?",
+      "a": "Utilisez uniquement des photos d'adultes, habillés et consentants. Ne demandez pas de nudité, de déshabillage, de contenu explicite, de mineurs, d'imitation ou de retouche photo non autorisée."
+    },
+    {
+      "q": "Cet outil retire-t-il les vêtements ou crée-t-il de la nudité ?",
+      "a": "Non. Cette page sert uniquement aux aperçus de proportions corporelles sur adultes habillés. Gardez les vêtements intacts et utilisez l'outil seulement pour des retouches d'image consentis et non explicites."
+    },
+    {
+      "q": "Est-ce un avis médical ou chirurgical ?",
+      "a": "Non. La sortie est seulement un aperçu visuel pour des idées de style et de retouche d'image. Elle ne doit pas servir à des décisions médicales, garanties de taille ou plans de chirurgie."
+    }
+  ]
+}

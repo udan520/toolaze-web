@@ -62,10 +62,10 @@
     "aiClothesChanger": "AI服装チェンジャー",
     "wan25Video": "Wan 2.5動画",
     "klingAiVideoGenerator": "Kling AI動画ジェネレーター",
-    "aiBikiniGenerator": "AIビキニジェネレーター"
-,
-    "talkingAvatarCreator": "AIトーキングアバター"
-
+    "aiBikiniGenerator": "AIビキニジェネレーター",
+    "unrestrictedAiImageGenerator": "Unlimited AI画像",
+    "talkingAvatarCreator": "AIトーキングアバター",
+    "aiBreastExpansion": "AIバストボリュームアップ"
   },
   "home": {
     "metadata": {
@@ -135,6 +135,14 @@
       "ai-bikini-generator": {
         "cardTitle": "AIビキニジェネレーター",
         "summary": "成人の人物写真とビキニ参照をアップロードし、人物を保ったまま上品なスイムウェア編集をプレビューできます。"
+      },
+      "unrestricted-ai-image-generator": {
+        "cardTitle": "Unrestricted / Unlimited AI画像生成",
+        "summary": "テキスト画像生成、画像編集、直接的なプロンプト操作、明確な創作境界で、unlimited-styleの幅広い画像案を作成できます。"
+      },
+      "ai-breast-expansion": {
+        "cardTitle": "AIバストボリュームアップ",
+        "summary": "服を着た成人写真をアップロードし、人物、服、ポーズ、シーンを保ちながら自然なバストサイズ編集を確認できます。"
       }
     },
     "aiToolsHubTitle": "画像、動画、日常のメディアワークフローのための無料AIツール",
@@ -296,10 +304,10 @@
     "aiClothesChanger": "AI服装チェンジャー",
     "wan25Video": "Wan 2.5動画",
     "klingAiVideoGenerator": "Kling AI動画ジェネレーター",
-    "aiBikiniGenerator": "AIビキニジェネレーター"
-,
-    "talkingAvatarCreator": "AIトーキングアバター"
-
+    "aiBikiniGenerator": "AIビキニジェネレーター",
+    "unrestrictedAiImageGenerator": "Unrestricted / Unlimited AI画像生成",
+    "talkingAvatarCreator": "AIトーキングアバター",
+    "aiBreastExpansion": "AIバストボリュームアップ"
   },
   "breadcrumb": {
     "home": "ホーム",

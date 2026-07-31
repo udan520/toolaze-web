@@ -1,0 +1,257 @@
+{
+  "in_menu": false,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 1,
+    "modelId": "wan-2-7-image",
+    "defaultPrompt": "Make the breasts of the person in the image slightly fuller. Keep everything else in the image unchanged.",
+    "defaultImageUrls": [],
+    "hideModelBranding": false,
+    "compactResultPanel": true,
+    "displayName": "AI 豐胸預覽",
+    "sampleImages": [
+      {
+        "url": "/ai-breast-expansion/demo-before-after.webp",
+        "title": "AI 豐胸預覽前後對比示範",
+        "width": 1200,
+        "height": 675
+      }
+    ],
+    "textOverrides": {
+      "uploadTitle": "上傳穿著衣服的成人照片",
+      "uploadHelper": "請使用你擁有或取得編輯授權的照片。人物必須是成人、穿著衣服，且清楚可見。",
+      "promptLabel": "描述胸型預覽",
+      "promptPlaceholder": "Make the breasts of the person in the image fuller. Keep everything else in the image unchanged.",
+      "generateLabel": "生成預覽"
+    },
+    "functionalAcceptance": {
+      "recommendedMode": "text-preset-prompt-only",
+      "reason": "頂部工具使用一張上傳圖片和三個純文字預設。點擊預設只會更新提示詞輸入框，不會匯入預設圖片或參考圖片。",
+      "presetTitle": "選擇調整幅度",
+      "hidePresetPromptInput": false,
+      "presets": [
+        {
+          "label": "稍微更飽滿",
+          "prompt": "Make the breasts of the person in the image slightly fuller. Keep everything else in the image unchanged.",
+          "group": "breast-expansion-level"
+        },
+        {
+          "label": "胸部飽滿",
+          "prompt": "Make the breasts of the person in the image fuller. Keep everything else in the image unchanged.",
+          "group": "breast-expansion-level"
+        },
+        {
+          "label": "超級飽滿",
+          "prompt": "Make the breasts of the person in the image much fuller. Keep everything else in the image unchanged.",
+          "group": "breast-expansion-level"
+        }
+      ]
+    }
+  },
+  "metadata": {
+    "title": "免費 AI 豐胸預覽線上工具 | 自然胸型預覽 | Toolaze",
+    "description": "使用 Toolaze 預覽穿著衣服的成人照片胸型尺寸調整。新用戶註冊後可獲得 10 點免費 credits。請保持結果真實、非露骨，且基於同意。"
+  },
+  "sectionsOrder": [
+    "intro",
+    "howToUse",
+    "photoTips",
+    "promptExamples",
+    "workflowComparison",
+    "scenes",
+    "features",
+    "faq"
+  ],
+  "hero": {
+    "h1": "免費線上 AI <span class=\"text-gradient\">豐胸預覽</span>",
+    "desc": "上傳穿著衣服的成人照片，為服裝版型、造型規劃、創作者風格或個人照片檢視預覽自然的胸型尺寸調整。Toolaze 會盡量保持衣物覆蓋、臉部、姿勢、背景與光線穩定，並避免露骨或未授權的編輯。"
+  },
+  "intro": {
+    "title": "什麼是 AI 豐胸預覽？",
+    "content": [
+      {
+        "title": "適用成人照片的穿衣胸型預覽",
+        "text": "AI 豐胸預覽是一種圖片編輯流程，會調整穿著衣服成人照片中的胸部區域，同時保留人物其他部分與場景。Toolaze 用於真實的身形比例預覽，不用於脫衣、露骨影像、醫療建議或身份操弄。"
+      },
+      {
+        "title": "適合造型、合身度與比例規劃",
+        "text": "你可以在拍攝或手動修圖前，測試輕微提升、更自然飽滿的輪廓、穿搭合身方向或角色服裝比例概念。結果僅供視覺預覽，請仔細檢查布料邏輯、手部、邊緣、陰影與身體平衡。"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "如何使用 AI 豐胸預覽",
+    "steps": [
+      {
+        "title": "上傳穿著衣服的成人照片",
+        "desc": "選擇你擁有或取得編輯授權的照片。人物必須是成人、穿著衣服，且腰部以上或上半身清楚可見。"
+      },
+      {
+        "title": "選擇調整幅度",
+        "desc": "選擇稍微更飽滿、胸部飽滿或超級飽滿來更新提示詞輸入框，生成前也可以再自行修改提示詞。"
+      },
+      {
+        "title": "檢查未變更區域",
+        "desc": "檢查臉部、身份、姿勢、手部、腰部、臀部、背景、光線、衣物覆蓋與布料質感。如果任何部分跑偏，請用更嚴格的保留描述重新生成。"
+      }
+    ]
+  },
+  "photoTips": {
+    "title": "自然胸型預覽的照片建議",
+    "subtitle": "清楚的來源照片和直接的保留描述，更容易產生可信、非露骨的結果。",
+    "items": [
+      {
+        "title": "僅使用穿著衣服的成人照片",
+        "desc": "此工具適用於基於同意、衣物完整的成人影像。請避免未成年人、裸露、僅內衣的編輯、要求暴露身體，或你未獲授權更改的照片。",
+        "color": "linear-gradient(135deg, #e0e7ff, #6366f1)"
+      },
+      {
+        "title": "保持軀幹清楚可讀",
+        "desc": "腰部以上、半身或全身照片通常更好，前提是胸部區域、肩膀、手臂和衣服接縫清楚可見。",
+        "color": "linear-gradient(135deg, #fce7f3, #db2777)"
+      },
+      {
+        "title": "避免遮擋姿勢",
+        "desc": "交叉手臂、強陰影、包包、遮住胸前的頭髮、鏡面或裁切過多的軀幹，都會讓布料與身體比例更難維持。",
+        "color": "linear-gradient(135deg, #fef3c7, #f97316)"
+      },
+      {
+        "title": "寫明必須固定的內容",
+        "desc": "當你需要精準連續性時，請重複要求保留臉部、身份、姿勢、腰部、臀部、手部、衣物覆蓋、背景、光線與相機角度。",
+        "color": "linear-gradient(135deg, #ede9fe, #7c3aed)"
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "AI 豐胸預覽提示詞等級",
+    "subtitle": "在生成器中選擇三個文字預設之一。每個選項只會更改提示詞文字，不會載入預設圖片。",
+    "items": [
+      {
+        "title": "稍微更飽滿",
+        "prompt": "Make the breasts of the person in the image slightly fuller. Keep everything else in the image unchanged.",
+        "note": "適合輕微、自然感的調整。",
+        "color": "linear-gradient(135deg, #e0e7ff, #a78bfa)"
+      },
+      {
+        "title": "胸部飽滿",
+        "prompt": "Make the breasts of the person in the image fuller. Keep everything else in the image unchanged.",
+        "note": "適合更明顯但仍保持平衡的預覽。",
+        "color": "linear-gradient(135deg, #fce7f3, #ec4899)"
+      },
+      {
+        "title": "超級飽滿",
+        "prompt": "Make the breasts of the person in the image much fuller. Keep everything else in the image unchanged.",
+        "note": "適合最強烈的飽滿胸型預覽。",
+        "color": "linear-gradient(135deg, #fef3c7, #f97316)"
+      }
+    ]
+  },
+  "workflowComparison": {
+    "title": "AI 豐胸預覽與手動身形修圖比較",
+    "subtitle": "用 AI 快速確認方向，當最終圖片需要像素級控制時再使用手動修圖。",
+    "columns": [
+      "流程",
+      "最適合",
+      "注意事項"
+    ],
+    "rows": [
+      [
+        "Toolaze AI 豐胸預覽",
+        "快速預覽穿著衣服的成人胸型、檢查穿搭合身度、測試服裝比例、創作者造型概念與早期照片方向。",
+        "分享或發布前，請檢查布料接縫、陰影、手部、姿態與身體平衡。"
+      ],
+      [
+        "手動修圖",
+        "精準商業編輯、品牌核准的時尚圖片、最終活動素材，以及複雜布料周邊的修正。",
+        "需要更多時間與修圖能力，尤其是布料皺褶和身體線條附近。"
+      ],
+      [
+        "實體造型或拍攝",
+        "最終合身度驗證、產品攝影、醫療諮詢、服裝尺寸和現實身體決策。",
+        "需要服裝、場地、燈光、時間，通常也需要攝影師或造型師。"
+      ]
+    ]
+  },
+  "scenesTitle": "常見 AI 豐胸預覽用途",
+  "scenes": [
+    {
+      "title": "服裝合身預覽",
+      "desc": "在保持穿著的前提下，查看上衣、洋裝、泳衣或服裝輪廓在不同胸型比例下的效果。"
+    },
+    {
+      "title": "創作者與人像造型",
+      "desc": "為個人照片、縮圖或概念板探索自然的身形方向，同時不改變臉部、姿勢、背景或光線。"
+    },
+    {
+      "title": "服裝與角色規劃",
+      "desc": "在訂製或手動修圖前，為 cosplay、角色參考或衣櫥規劃預覽得體的輪廓。"
+    }
+  ],
+  "features": {
+    "title": "為什麼用 Toolaze 做 AI 豐胸預覽",
+    "items": [
+      {
+        "iconType": "workflow",
+        "title": "單張照片身形預覽",
+        "desc": "上傳一張穿著衣服的成人照片，從三個文字預設中選擇，即可更新提示詞輸入框，不需要預設圖片。"
+      },
+      {
+        "iconType": "guidance",
+        "title": "優先保留原圖的提示詞",
+        "desc": "內建文字會要求模型保持臉部、身份、腰部、臀部、姿勢、衣物覆蓋、背景、光線和相機角度穩定。"
+      },
+      {
+        "iconType": "limits",
+        "title": "清楚的非露骨邊界",
+        "desc": "內容限定於成人、穿著衣服、基於同意的預覽，排除裸露、脫衣、未成年人、冒充與露骨編輯。"
+      }
+    ]
+  },
+  "moreToolsLinks": [
+    {
+      "title": "AI 比基尼生成器",
+      "description": "使用參考引導流程，預覽得體的成人泳裝編輯。",
+      "href": "/ai-bikini-generator"
+    },
+    {
+      "title": "AI 換衣工具",
+      "description": "在保留原始姿勢與場景的同時，替換人物照片中的服裝。",
+      "href": "/ai-clothes-changer"
+    },
+    {
+      "title": "AI 以圖生圖生成器",
+      "description": "使用更完整的參考引導流程，進行重新造型、照片編輯與視覺變化。",
+      "href": "/ai-image-to-image-generator"
+    }
+  ],
+  "faqTitle": "AI 豐胸預覽常見問題",
+  "faq": [
+    {
+      "q": "我可以免費使用 Toolaze 的 AI 豐胸預覽嗎？",
+      "a": "Toolaze 新用戶註冊後可獲得 10 點免費 credits。生成成本可能依你選擇的圖片模型、解析度、模式，以及生成器中顯示的最新 Toolaze credits 規則而變動。"
+    },
+    {
+      "q": "哪種照片效果最好？",
+      "a": "請使用穿著衣服、上半身清楚、肩膀可見、布料可辨識且光線簡單的成人照片。腰部以上、半身和全身照片通常比緊密裁切或被遮住的軀幹更容易處理。"
+    },
+    {
+      "q": "結果會自然嗎？",
+      "a": "自然程度取決於來源照片、衣服、姿勢和提示詞。比起極端變化，細微調整通常更能保留布料質感和身體平衡。"
+    },
+    {
+      "q": "我可以使用哪些照片？",
+      "a": "僅使用成人、穿著衣服且獲得同意的照片。請勿要求裸露、脫衣、露骨內容、未成年人、冒充他人或未授權的照片編輯。"
+    },
+    {
+      "q": "這個工具會移除衣服或生成裸露內容嗎？",
+      "a": "不會。此頁面僅用於穿著衣服的成人身形比例預覽。請保持衣物完整，並只用於基於同意的非露骨圖片編輯。"
+    },
+    {
+      "q": "這是醫療或手術建議嗎？",
+      "a": "不是。輸出僅是造型和圖片編輯想法的視覺預覽，不應用於醫療決策、尺寸保證或手術規劃。"
+    }
+  ]
+}

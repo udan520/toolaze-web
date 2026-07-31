@@ -871,6 +871,10 @@ export async function getL2SeoContent(tool: string, locale: string = 'en') {
         data = await importL2FlatJson('ai-clothes-changer', normalizedLocale)
       } else if (tool === 'ai-bikini-generator') {
         data = await importL2FlatJson('ai-bikini-generator', normalizedLocale)
+      } else if (tool === 'ai-breast-expansion') {
+        data = await importL2FlatJson('ai-breast-expansion', normalizedLocale)
+      } else if (tool === 'unrestricted-ai-image-generator') {
+        data = await importL2FlatJson('unrestricted-ai-image-generator', normalizedLocale)
       }
       
       const resolved = data?.default || data
@@ -936,6 +940,10 @@ export async function getL2SeoContent(tool: string, locale: string = 'en') {
             data = await import('@/data/en/ai-clothes-changer.json')
           } else if (tool === 'ai-bikini-generator') {
             data = await import('@/data/en/ai-bikini-generator.json')
+          } else if (tool === 'ai-breast-expansion') {
+            data = await import('@/data/en/ai-breast-expansion.json')
+          } else if (tool === 'unrestricted-ai-image-generator') {
+            data = await import('@/data/en/unrestricted-ai-image-generator.json')
           }
           const fallbackResolved = data?.default || data
           if (fallbackResolved && isPublished(fallbackResolved)) {

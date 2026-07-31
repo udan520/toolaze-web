@@ -1,0 +1,275 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "text-to-image",
+    "modelId": "wan-2-7-image",
+    "displayName": "Gerador de imagens IA sem restrições rígidas",
+    "defaultPrompt": "Create a cinematic dark fantasy character concept sheet for an original warrior queen in obsidian armor, with three full-body poses, close-up face details, weapon variants, readable labels, controlled lighting, and a polished game-art presentation. Keep the character adult, original, non-celebrity, and non-explicit.",
+    "hideModelBranding": false,
+    "compactResultPanel": true,
+    "sampleImages": [
+      {
+        "url": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/unrestricted-ai-image-generator/pool-bikini-demo.webp",
+        "title": "Imagem demo de biquíni à beira da piscina",
+        "width": 880,
+        "height": 495
+      }
+    ],
+    "textOverrides": {
+      "promptLabel": "Descreva a imagem desejada",
+      "promptPlaceholder": "Descreva uma cena, personagem, pôster, conceito de produto ou edição original. Inclua estilo, composição, câmera, luz, proporção e limites.",
+      "generateLabel": "Gerador de imagens IA sem restrições rígidas",
+      "safetyHelper": "Sim, quando uma referência deve orientar composição, pose, produto, sala ou estilo. Use apenas imagens próprias ou autorizadas."
+    }
+  },
+  "metadata": {
+    "title": "Gerador de imagens IA Unrestricted & Unlimited online | Toolaze",
+    "description": "Use o Toolaze como gerador IA unrestricted e unlimited-style para ideias visuais mais amplas, menos reescritas desnecessárias, controle direto do prompt e limites criativos claros."
+  },
+  "sectionsOrder": [
+    "intro",
+    "howToUse",
+    "promptExamples",
+    "workflowComparison",
+    "photoTips",
+    "scenes",
+    "features",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Gerador de <span class=\"text-gradient\">imagens IA Unrestricted & Unlimited</span> online",
+    "desc": "Crie conceitos originais com um gerador unlimited-style feito para maior controle do prompt, menos reescritas desnecessárias e limites criativos claros."
+  },
+  "intro": {
+    "title": "O que geração unrestricted e unlimited-style significa no Toolaze",
+    "content": [
+      {
+        "title": "Controle de prompt unlimited-style",
+        "text": "Use o Toolaze quando quiser uma sensação de unlimited AI image generator: menos reescritas desnecessárias e mais controle sobre estilo, composição, tom e referências."
+      },
+      {
+        "title": "Linguagem no-restriction com responsabilidade",
+        "text": "No-restriction AI image generator não significa sem regras. O Toolaze permite detalhes criativos mais amplos, mas mantém uso legal, com permissão, não nocivo e não explícito."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Como usar o Unrestricted / Unlimited AI Image Generator",
+    "steps": [
+      {
+        "title": "Escreva um prompt direto",
+        "desc": "Descreva assunto, estilo, clima, luz, composição e formato."
+      },
+      {
+        "title": "Adicione referência",
+        "desc": "Use imagem para imagem quando quiser preservar pose, produto, ambiente ou estilo."
+      },
+      {
+        "title": "Defina limites",
+        "desc": "Indique o que manter, evitar ou excluir."
+      },
+      {
+        "title": "Gere e refine",
+        "desc": "Ajuste câmera, materiais, tipografia, cor ou composição."
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "Ideias de prompts para maior controle criativo",
+    "subtitle": "Use estas quatro estruturas e adapte tema, tom, formato e limites.",
+    "layout": "grid",
+    "items": [
+      {
+        "title": "Ficha de personagem dark fantasy",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/gpt-image-2/prompt-character-sheet.webp",
+        "aspectRatio": "16:9",
+        "prompt": "Create a cinematic dark fantasy character concept sheet for an original warrior queen in obsidian armor, with three full-body poses, close-up face details, weapon variants, readable labels, controlled lighting, and a polished game-art presentation. Keep the character adult, original, non-celebrity, and non-explicit.",
+        "note": "Para personagens originais de fantasia."
+      },
+      {
+        "title": "Storyboard de ação sci-fi",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/gpt-image-2/prompt-storyboard.webp",
+        "aspectRatio": "16:9",
+        "prompt": "Create a widescreen sci-fi action storyboard with four clean panels showing an original pilot escaping a neon orbital station, dynamic camera angles, readable panel captions, smoke, sparks, motion blur, and a polished cinematic color grade. Keep it intense but non-graphic.",
+        "note": "Para planejar ação sem detalhe gráfico."
+      },
+      {
+        "title": "Pôster de álbum synthwave",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/gpt-image-2/prompt-product-poster.webp",
+        "aspectRatio": "16:9",
+        "prompt": "Create a bold album-cover style poster for an imaginary synthwave artist named NIGHT SIGNAL, with large readable typography, chrome lettering, a surreal city skyline, dramatic magenta-blue lighting, and a print-ready square composition.",
+        "note": "Para pôsteres com texto legível."
+      },
+      {
+        "title": "Conceito de interior surreal",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/seedream-4-5/prompt-interior-redesign.webp",
+        "aspectRatio": "16:9",
+        "prompt": "Create a surreal interior design concept for a private creative studio inside a glass cliffside room, with sculptural furniture, warm natural light, plants, art objects, clean spatial layout, and realistic materials. No people, no brands, no logos.",
+        "note": "Para design de espaço e atmosfera."
+      }
+    ]
+  },
+  "workflowComparison": {
+    "title": "Geração unlimited-style versus ferramentas rígidas",
+    "subtitle": "Use o Toolaze quando seu conceito precisa de direção mais específica do que um gerador com restrições rígidas.",
+    "columns": [
+      "Ponto de decisão",
+      "Gerador rígido",
+      "Gerador flexível Toolaze"
+    ],
+    "rows": [
+      [
+        "Controle do prompt",
+        "Pode transformar ideias fortes em resultados genéricos.",
+        "Mantém melhor a direção criativa quando respeita as regras de uso."
+      ],
+      [
+        "Amplitude criativa",
+        "Funciona melhor para saídas comuns e previsíveis.",
+        "Suporta fantasia, visual cinematográfico, pôsteres, produtos, interiores e edições com referência."
+      ],
+      [
+        "Edição com referência",
+        "Pode separar texto para imagem e imagem para imagem.",
+        "Conecta ideias de prompt a fluxos de imagem guiados por referência."
+      ],
+      [
+        "Clareza",
+        "Pode falhar sem explicar o motivo.",
+        "Mostra limites para refinar prompts sem adivinhar."
+      ]
+    ]
+  },
+  "photoTips": {
+    "title": "Prompts melhores para geração unlimited-style",
+    "subtitle": "Um bom prompt unrestricted ou unlimited-style é específico, original e delimitado.",
+    "items": [
+      {
+        "title": "Defina o assunto",
+        "desc": "Indique assunto, cenário, pose, época visual e finalidade antes do estilo."
+      },
+      {
+        "title": "Controle a composição",
+        "desc": "Inclua câmera, enquadramento, proporção, densidade do fundo e posição do texto."
+      },
+      {
+        "title": "Proteja permissões",
+        "desc": "Use imagens próprias ou licenciadas e evite pessoas privadas, menores e edições enganosas."
+      },
+      {
+        "title": "Descreva o permitido",
+        "desc": "Explique o resultado final permitido e o que deve permanecer original, não explícito ou sem marcas."
+      }
+    ]
+  },
+  "scenesTitle": "Melhores usos para imagens unrestricted e unlimited-style",
+  "scenes": [
+    {
+      "title": "Arte conceitual",
+      "desc": "Crie personagens, mundos, objetos, figurinos, pôsteres e key art originais."
+    },
+    {
+      "title": "Visuais de marketing",
+      "desc": "Rascunhe capas, campanhas, miniaturas, anúncios sociais, conceitos de produto e layouts com texto."
+    },
+    {
+      "title": "Edições com referência",
+      "desc": "Use imagem para guiar atmosfera, composição, produto, sala, pose ou estilo."
+    }
+  ],
+  "features": {
+    "title": "Por que usar o Toolaze como gerador unlimited-style",
+    "items": [
+      {
+        "title": "Intenção direta do prompt",
+        "desc": "Controle direção, tom, enquadramento e estilo com instruções claras."
+      },
+      {
+        "title": "Suporte a imagem para imagem",
+        "desc": "Use referências para manter layout, produto, personagem ou espaço consistentes."
+      },
+      {
+        "title": "Limites visíveis",
+        "desc": "Estimula uso seguro, original e baseado em permissão."
+      },
+      {
+        "title": "Exemplos reutilizáveis",
+        "desc": "Comece com prompts estruturados para personagens, cenas, pôsteres e interiores."
+      },
+      {
+        "title": "Ecossistema Toolaze",
+        "desc": "Conecte com Image Generator, Image to Image e ferramentas relacionadas."
+      },
+      {
+        "title": "Iteração rápida online",
+        "desc": "Gere, revise e ajuste sem configurar modelos locais."
+      }
+    ]
+  },
+  "faqTitle": "FAQ do gerador flexível",
+  "faq": [
+    {
+      "q": "O que é um unrestricted ou unlimited AI image generator?",
+      "a": "É um gerador para prompts criativos mais amplos, mais controle de estilo e menos reescritas genéricas. No Toolaze, ainda há limites criativos claros."
+    },
+    {
+      "q": "O Toolaze é um no-restriction AI image generator?",
+      "a": "O Toolaze aceita conceitos originais mais amplos e menos reescritas rígidas, mas não é literalmente unlimited nem sem regras."
+    },
+    {
+      "q": "Posso usar imagem para imagem?",
+      "a": "Sim, quando uma referência deve orientar composição, pose, produto, sala ou estilo. Use apenas imagens próprias ou autorizadas."
+    },
+    {
+      "q": "É grátis para testar?",
+      "a": "O acesso depende de conta, modelo, créditos e configurações. Confira o painel antes de gerar."
+    },
+    {
+      "q": "Como melhorar os resultados?",
+      "a": "Escreva assunto, estilo, luz, câmera, composição, formato e limites de uso."
+    },
+    {
+      "q": "Qual proporção de imagem devo escolher?",
+      "a": "Use 16:9 para banners cinematográficos e cenas amplas, 1:1 para posts quadrados e formatos verticais para retratos ou imagens mobile-first."
+    }
+  ],
+  "moreTools": "Mais ferramentas de imagem IA",
+  "moreToolsLinks": [
+    {
+      "slug": "ai-image-generator",
+      "title": "Gerador de imagens IA",
+      "description": "Crie ideias de texto para imagem, visuais sociais e rascunhos de campanha.",
+      "href": "/ai-image-generator",
+      "media": {
+        "type": "image",
+        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/gpt-image-2.jpg",
+        "alt": "Gerador de imagens IA"
+      }
+    },
+    {
+      "slug": "ai-image-to-image-generator",
+      "title": "Gerador de imagem para imagem",
+      "description": "Envie uma referência e transforme-a com prompts.",
+      "href": "/ai-image-to-image-generator",
+      "media": {
+        "type": "image",
+        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/gpt-image-2/feature-image-editing.webp",
+        "alt": "Gerador de imagem para imagem"
+      }
+    },
+    {
+      "slug": "ai-clothes-changer",
+      "title": "Trocador de roupas IA",
+      "description": "Teste conceitos de moda seguros com edição de pessoas.",
+      "href": "/ai-clothes-changer",
+      "media": {
+        "type": "image",
+        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/84b9bf50f4414a2c962ebd3f74cb07f0.webp",
+        "alt": "Trocador de roupas IA"
+      }
+    }
+  ]
+}

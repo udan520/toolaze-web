@@ -1,0 +1,275 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "text-to-image",
+    "modelId": "wan-2-7-image",
+    "displayName": "制限が少ないAI画像生成",
+    "defaultPrompt": "Create a cinematic dark fantasy character concept sheet for an original warrior queen in obsidian armor, with three full-body poses, close-up face details, weapon variants, readable labels, controlled lighting, and a polished game-art presentation. Keep the character adult, original, non-celebrity, and non-explicit.",
+    "hideModelBranding": false,
+    "compactResultPanel": true,
+    "sampleImages": [
+      {
+        "url": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/unrestricted-ai-image-generator/pool-bikini-demo.webp",
+        "title": "プールサイドのビキニデモ画像",
+        "width": 880,
+        "height": 495
+      }
+    ],
+    "textOverrides": {
+      "promptLabel": "作りたい画像を説明",
+      "promptPlaceholder": "オリジナルのシーン、キャラクター、ポスター、商品案、画像編集を説明します。スタイル、構図、カメラ、光、比率、守るべき境界を含めてください。",
+      "generateLabel": "制限が少ないAI画像生成",
+      "safetyHelper": "はい。構図、ポーズ、部屋、商品、スタイルを参照画像で誘導したい場合に使えます。"
+    }
+  },
+  "metadata": {
+    "title": "Unrestricted & Unlimited AI画像生成オンライン | Toolaze",
+    "description": "Toolazeをunrestrictedかつunlimited-styleのAI画像生成として使い、より広い画像アイデア、少ない不要な書き換え、直接的なプロンプト制御、明確な創作境界を得られます。"
+  },
+  "sectionsOrder": [
+    "intro",
+    "howToUse",
+    "promptExamples",
+    "workflowComparison",
+    "photoTips",
+    "scenes",
+    "features",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Unrestricted & <span class=\"text-gradient\">Unlimited AI画像生成</span> オンライン",
+    "desc": "unlimited-styleの画像生成で、大胆なオリジナル案を作成できます。より広いプロンプト制御、少ない不要な書き換え、明確な創作境界を保ちます。"
+  },
+  "intro": {
+    "title": "Toolazeでのunrestricted / unlimited-style画像生成とは",
+    "content": [
+      {
+        "title": "Unlimited-styleのプロンプト制御",
+        "text": "unlimited AI image generatorに近い感覚が必要なとき、Toolazeは不要な書き換えを減らし、スタイル、構図、雰囲気、参照ディテールを直接制御しやすくします。"
+      },
+      {
+        "title": "No-restriction表現と責任ある利用",
+        "text": "No-restriction AI image generatorは無規則や危険な生成を意味しません。Toolazeは通常の創作ディテールを広く扱いながら、合法・許可ベース・非露骨な利用を求めます。"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Unrestricted / Unlimited AI画像生成の使い方",
+    "steps": [
+      {
+        "title": "直接的に書く",
+        "desc": "主題、スタイル、雰囲気、光、構図、出力形式を具体的に書きます。"
+      },
+      {
+        "title": "必要なら参照を追加",
+        "desc": "レイアウト、ポーズ、商品、部屋を保ちたい場合は画像編集を使います。"
+      },
+      {
+        "title": "境界を指定",
+        "desc": "残すもの、避けるもの、除外する要素を書きます。"
+      },
+      {
+        "title": "生成して調整",
+        "desc": "結果を見て、カメラ、素材、文字、色をより明確にします。"
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "創作コントロールを高めるプロンプト例",
+    "subtitle": "4つの構造を出発点にして、主題、トーン、形式、境界を調整してください。",
+    "layout": "grid",
+    "items": [
+      {
+        "title": "ダークファンタジー設定画",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/gpt-image-2/prompt-character-sheet.webp",
+        "aspectRatio": "16:9",
+        "prompt": "Create a cinematic dark fantasy character concept sheet for an original warrior queen in obsidian armor, with three full-body poses, close-up face details, weapon variants, readable labels, controlled lighting, and a polished game-art presentation. Keep the character adult, original, non-celebrity, and non-explicit.",
+        "note": "オリジナルのファンタジー人物向け。"
+      },
+      {
+        "title": "SFアクション絵コンテ",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/gpt-image-2/prompt-storyboard.webp",
+        "aspectRatio": "16:9",
+        "prompt": "Create a widescreen sci-fi action storyboard with four clean panels showing an original pilot escaping a neon orbital station, dynamic camera angles, readable panel captions, smoke, sparks, motion blur, and a polished cinematic color grade. Keep it intense but non-graphic.",
+        "note": "過度な表現なしのアクション構成向け。"
+      },
+      {
+        "title": "シンセウェーブ音楽ポスター",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/gpt-image-2/prompt-product-poster.webp",
+        "aspectRatio": "16:9",
+        "prompt": "Create a bold album-cover style poster for an imaginary synthwave artist named NIGHT SIGNAL, with large readable typography, chrome lettering, a surreal city skyline, dramatic magenta-blue lighting, and a print-ready square composition.",
+        "note": "文字を活かすポスター案向け。"
+      },
+      {
+        "title": "シュールな室内コンセプト",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/seedream-4-5/prompt-interior-redesign.webp",
+        "aspectRatio": "16:9",
+        "prompt": "Create a surreal interior design concept for a private creative studio inside a glass cliffside room, with sculptural furniture, warm natural light, plants, art objects, clean spatial layout, and realistic materials. No people, no brands, no logos.",
+        "note": "空間デザインと雰囲気づくり向け。"
+      }
+    ]
+  },
+  "workflowComparison": {
+    "title": "Unlimited-style生成と固定的な画像ツールの違い",
+    "subtitle": "厳格すぎる制限のある画像生成よりも具体的な指示が必要なときにToolazeを使えます。",
+    "columns": [
+      "判断項目",
+      "固定的な生成ツール",
+      "Toolazeの柔軟な生成"
+    ],
+    "rows": [
+      [
+        "プロンプト制御",
+        "大胆な方向を一般的な画像に寄せやすい。",
+        "安全ルール内で創作意図をより明確に保ちます。"
+      ],
+      [
+        "創作範囲",
+        "一般的な素材風の出力に向きます。",
+        "ファンタジー、映画風、ポスター、商品、室内、参照編集に使えます。"
+      ],
+      [
+        "参照編集",
+        "テキスト生成と画像編集が分かれがちです。",
+        "プロンプト案と参照画像編集をつなげやすくします。"
+      ],
+      [
+        "透明性",
+        "失敗理由が見えにくいことがあります。",
+        "境界が見えるため、修正しやすくなります。"
+      ]
+    ]
+  },
+  "photoTips": {
+    "title": "Unlimited-style画像生成のための良いプロンプト",
+    "subtitle": "強いunrestrictedまたはunlimited-styleプロンプトは、具体的で、オリジナルで、境界が明確です。",
+    "items": [
+      {
+        "title": "主題を明確にする",
+        "desc": "主題、場所、ポーズ、時代感、目的を先に書きます。"
+      },
+      {
+        "title": "構図を指定する",
+        "desc": "カメラ、画角、比率、背景密度、文字位置を指定します。"
+      },
+      {
+        "title": "権利を守る",
+        "desc": "自分の画像や許可された参照を使い、個人、未成年、なりすましを避けます。"
+      },
+      {
+        "title": "弱い否定を置き換える",
+        "desc": "許可された完成形を具体的に説明し、非露骨・オリジナル・ブランドなしなどを明記します。"
+      }
+    ]
+  },
+  "scenesTitle": "Unrestricted / unlimited-style AI画像の主な用途",
+  "scenes": [
+    {
+      "title": "コンセプトアート",
+      "desc": "人物、世界観、小道具、衣装、ポスター、キービジュアルを具体的に作れます。"
+    },
+    {
+      "title": "マーケティング画像",
+      "desc": "カバー、キャンペーンポスター、サムネイル、広告、商品案、文字入りレイアウトに使えます。"
+    },
+    {
+      "title": "参照画像編集",
+      "desc": "雰囲気、構図、商品、部屋、ポーズ、スタイルを参照画像で誘導できます。"
+    }
+  ],
+  "features": {
+    "title": "Toolazeをunlimited-style画像生成として使う理由",
+    "items": [
+      {
+        "title": "意図を伝えやすい",
+        "desc": "方向、雰囲気、構図、スタイルをテキストで制御しやすくします。"
+      },
+      {
+        "title": "画像編集に対応",
+        "desc": "レイアウト、商品、人物、空間を保ちたいときに参照を使えます。"
+      },
+      {
+        "title": "明確なルール",
+        "desc": "安全でオリジナル、許可に基づく使い方を促します。"
+      },
+      {
+        "title": "再利用できる例",
+        "desc": "人物、シーン、ポスター、室内用の構造化プロンプトから始められます。"
+      },
+      {
+        "title": "Toolazeの画像ツール連携",
+        "desc": "画像生成、画像編集、関連ツールへ移動しやすくなります。"
+      },
+      {
+        "title": "オンラインで素早く反復",
+        "desc": "ローカル環境なしで生成、確認、修正できます。"
+      }
+    ]
+  },
+  "faqTitle": "柔軟なAI画像生成 FAQ",
+  "faq": [
+    {
+      "q": "Unrestrictedまたはunlimited AI画像生成とは何ですか？",
+      "a": "より広い創作プロンプト、強いスタイル制御、少ない不要な書き換えを重視した画像生成です。Toolazeでは明確な創作境界と許可ベースの利用を前提にします。"
+    },
+    {
+      "q": "Toolazeはno-restriction AI image generatorですか？",
+      "a": "Toolazeはより広いオリジナルコンセプトと少ない硬直した書き換えを支援しますが、文字通りunlimitedでも無規則でもありません。"
+    },
+    {
+      "q": "画像編集も使えますか？",
+      "a": "はい。構図、ポーズ、部屋、商品、スタイルを参照画像で誘導したい場合に使えます。"
+    },
+    {
+      "q": "無料で試せますか？",
+      "a": "利用可否はアカウント、モデル、クレジット、設定によって変わります。生成前にパネルを確認してください。"
+    },
+    {
+      "q": "結果を良くするには？",
+      "a": "主題、スタイル、光、カメラ、構図、形式、境界を具体的に書きます。"
+    },
+    {
+      "q": "どのアスペクト比を選べばよいですか？",
+      "a": "映画的なバナーや横長シーンには16:9、正方形のSNS投稿には1:1、ポートレートやモバイル向け画像には縦長比率を選びます。"
+    }
+  ],
+  "moreTools": "その他のAI画像ツール",
+  "moreToolsLinks": [
+    {
+      "slug": "ai-image-generator",
+      "title": "AI画像生成",
+      "description": "通常のテキスト画像生成、SNS画像、キャンペーン案に使えます。",
+      "href": "/ai-image-generator",
+      "media": {
+        "type": "image",
+        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/gpt-image-2.jpg",
+        "alt": "AI画像生成"
+      }
+    },
+    {
+      "slug": "ai-image-to-image-generator",
+      "title": "AI画像編集",
+      "description": "参照画像をアップロードして、プロンプトで編集や変換を行えます。",
+      "href": "/ai-image-to-image-generator",
+      "media": {
+        "type": "image",
+        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/gpt-image-2/feature-image-editing.webp",
+        "alt": "AI画像編集"
+      }
+    },
+    {
+      "slug": "ai-clothes-changer",
+      "title": "AI服装チェンジャー",
+      "description": "ファッション寄りの安全な人物編集に使えます。",
+      "href": "/ai-clothes-changer",
+      "media": {
+        "type": "image",
+        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/84b9bf50f4414a2c962ebd3f74cb07f0.webp",
+        "alt": "AI服装チェンジャー"
+      }
+    }
+  ]
+}

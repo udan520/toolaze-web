@@ -13,6 +13,22 @@ test('switching image models keeps the current page URL unchanged', () => {
   assert.notEqual(modelChangeHandler, '', 'image model change handler should be present')
   assert.doesNotMatch(modelChangeHandler, /window\.history\.(?:pushState|replaceState)/)
   assert.doesNotMatch(modelChangeHandler, /router\.(?:push|replace)/)
+  assert.doesNotMatch(modelChangeHandler, /setPrompt\(/)
+  assert.doesNotMatch(modelChangeHandler, /setRemoteImageUrls\(/)
+  assert.doesNotMatch(modelChangeHandler, /setImageFiles\(/)
+})
+
+test('switching image models limits visible references without deleting hidden uploads', () => {
+  const uploaderBlock = source.slice(
+    source.indexOf('<ReferenceImageUploader'),
+    source.indexOf('maxImages={personUploadMaxImages}'),
+  )
+
+  assert.notEqual(uploaderBlock, '', 'primary reference uploader should be present')
+  assert.match(
+    uploaderBlock,
+    /\[\s*\.\.\.remoteImageUrls\.map[\s\S]*\.\.\.imageFiles\.map[\s\S]*\]\.slice\(0, personUploadMaxImages\)/,
+  )
 })
 
 test('desktop result combines image preview and controls in one card', () => {

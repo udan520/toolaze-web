@@ -186,6 +186,10 @@ test('Talking avatar creator restores prompt, reference image, and reference aud
 })
 
 test('Talking avatar creator hides generate credit cost until audio is available', () => {
+  assert.match(source, /import \{ calculateVideoGenerationCredits \} from '@\/lib\/generation-credits'/, 'Talking Avatar credits should come from the shared generation pricing table')
+  assert.doesNotMatch(source, /function getRequiredCredits\(resolution: Resolution\)/, 'Talking Avatar should not keep a local hardcoded credit ladder')
+  assert.match(source, /durationSeconds/, 'Talking Avatar should keep the accepted audio billing duration')
+  assert.match(source, /formData\.append\('durationSeconds', String\(requestDurationSeconds\)\)/, 'backend charge should receive the same audio duration used by the button')
   assert.match(source, /const showGenerateCredits = Boolean\(hasGenerationAudio && !isGenerating\)/, 'credit display should depend on an uploaded or restored audio file')
 
   const actionBarBlock = source.slice(
@@ -193,8 +197,8 @@ test('Talking avatar creator hides generate credit cost until audio is available
     source.indexOf('</button>', source.indexOf('data-talking-avatar-action-bar')),
   )
 
-  assert.match(actionBarBlock, /showGenerateCredits \? \([\s\S]*getRequiredCredits\(resolution\)[\s\S]*diamond-3d-indigo\.svg/, 'generate button should only render credit cost after audio upload')
-  assert.doesNotMatch(actionBarBlock, /!isGenerating \? \([\s\S]*getRequiredCredits\(resolution\)/, 'generate button should not show credit cost before audio exists')
+  assert.match(actionBarBlock, /showGenerateCredits \? \([\s\S]*requiredCredits[\s\S]*diamond-3d-indigo\.svg/, 'generate button should only render shared-table credit cost after audio upload')
+  assert.doesNotMatch(actionBarBlock, /!isGenerating \? \([\s\S]*requiredCredits/, 'generate button should not show credit cost before audio exists')
 })
 
 test('Talking avatar creator lets users choose a max 15-second segment before accepting long audio', () => {
@@ -208,7 +212,7 @@ test('Talking avatar creator lets users choose a max 15-second segment before ac
   assert.match(source, /data-talking-avatar-audio-trim-modal/, 'long audio should open a segment selection modal')
   assert.match(source, /audioTrimStartSeconds/, 'the user should be able to choose which part of the audio to keep')
   assert.match(source, /trimAudioToSegment\(pendingAudioTrim\.file, audioTrimStartSeconds, audioTrimEndSeconds\)/, 'confirmed long audio should be trimmed from the selected segment before upload')
-  assert.match(source, /setAudio\(\{ file: nextAudioFile, preview: URL\.createObjectURL\(nextAudioFile\) \}\)/, 'audio box should receive the accepted or trimmed file')
+  assert.match(source, /setAudio\(\{[\s\S]*file: nextAudioFile,[\s\S]*preview: URL\.createObjectURL\(nextAudioFile\),[\s\S]*durationSeconds: normalizeBillingDurationSeconds\(nextDurationSeconds\),[\s\S]*\}\)/, 'audio box should receive the accepted or trimmed file and billing duration')
 
   const selectAudioBlock = source.slice(
     source.indexOf('const selectAudio = async'),
@@ -217,6 +221,17 @@ test('Talking avatar creator lets users choose a max 15-second segment before ac
 
   assert.match(selectAudioBlock, /durationInSeconds > MAX_REFERENCE_AUDIO_EXPORT_SECONDS[\s\S]*setPendingAudioTrim\(\{ file, preview, duration: durationInSeconds \}\)[\s\S]*setAudioTrimStartSeconds\(0\)[\s\S]*return/, 'audio near the upstream limit should wait for user-selected trimming before entering the audio field')
   assert.doesNotMatch(selectAudioBlock, /window\.confirm/, 'long audio should use the custom segment chooser instead of a browser confirm dialog')
+})
+
+test('Talking avatar audio trim labels round displayed seconds up to whole seconds', () => {
+  const formatBlock = source.slice(
+    source.indexOf('function formatAudioTime'),
+    source.indexOf('async function getAudioDurationInSeconds'),
+  )
+
+  assert.notEqual(formatBlock, '', 'audio time formatter should be present')
+  assert.match(formatBlock, /Math\.ceil/, '14.5-second safe trims should display as 15 seconds')
+  assert.doesNotMatch(formatBlock, /roundedTenths/, 'audio trim labels should not expose fractional seconds')
 })
 
 test('Talking avatar audio trimming never produces a segment longer than 15 seconds', () => {

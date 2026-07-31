@@ -62,10 +62,10 @@
     "aiClothesChanger": "AI Clothes Changer",
     "wan25Video": "Wan 2.5 Video",
     "klingAiVideoGenerator": "Kling AI Video Generator",
-    "aiBikiniGenerator": "AI Bikini Generator"
-,
-    "talkingAvatarCreator": "AI Talking Avatar"
-
+    "aiBikiniGenerator": "AI Bikini Generator",
+    "unrestrictedAiImageGenerator": "Unlimited AI Image",
+    "talkingAvatarCreator": "AI Talking Avatar",
+    "aiBreastExpansion": "AI Breast Expansion"
   },
   "home": {
     "metadata": {
@@ -135,6 +135,14 @@
       "ai-bikini-generator": {
         "cardTitle": "AI Bikini Generator",
         "summary": "Upload an adult person photo and a bikini reference to preview tasteful swimwear edits while preserving the original person."
+      },
+      "unrestricted-ai-image-generator": {
+        "cardTitle": "Unrestricted / Unlimited AI Image Generator",
+        "summary": "Create broader unlimited-style AI image concepts with text-to-image, image-to-image, direct prompt control, and clear creative boundaries."
+      },
+      "ai-breast-expansion": {
+        "cardTitle": "AI Breast Expansion",
+        "summary": "Upload a clothed adult photo and preview natural bust-size edits while keeping the person, clothing, pose, and scene stable."
       }
     },
     "aiToolsHubTitle": "AI Tools for Images, Video & Everyday Media Workflows",
@@ -284,10 +292,10 @@
     "aiClothesChanger": "AI Clothes Changer",
     "wan25Video": "Wan 2.5 Video",
     "klingAiVideoGenerator": "Kling AI Video Generator",
-    "aiBikiniGenerator": "AI Bikini Generator"
-,
-    "talkingAvatarCreator": "AI Talking Avatar"
-
+    "aiBikiniGenerator": "AI Bikini Generator",
+    "unrestrictedAiImageGenerator": "Unrestricted / Unlimited AI Image Generator",
+    "talkingAvatarCreator": "AI Talking Avatar",
+    "aiBreastExpansion": "AI Breast Expansion"
   },
   "breadcrumb": {
     "home": "Home",

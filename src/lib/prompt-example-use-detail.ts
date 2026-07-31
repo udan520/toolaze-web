@@ -13,14 +13,17 @@ export function buildPromptExampleUseDetail(
   item: PromptExampleUseItem,
   targetMode?: PromptInsertMode,
 ) {
-  const imageUrl = item.referenceImage || item.image || item.poster
-  const imageName = imageUrl?.split('/').pop()?.split('?')[0] || `${item.title}.webp`
+  const referenceImageUrl = item.referenceImage
+  const demoImageUrl = item.referenceImage || item.image || item.poster
+  const referenceImageName = referenceImageUrl?.split('/').pop()?.split('?')[0] || `${item.title}.webp`
 
   return {
     prompt: item.prompt,
-    imageUrl,
-    imageName,
-    demoImageUrl: item.referenceImage || item.image || item.poster,
+    ...(referenceImageUrl ? {
+      imageUrl: referenceImageUrl,
+      imageName: referenceImageName,
+    } : {}),
+    demoImageUrl,
     demoImageTitle: item.title,
     mode: targetMode,
     presetLabel: item.title,

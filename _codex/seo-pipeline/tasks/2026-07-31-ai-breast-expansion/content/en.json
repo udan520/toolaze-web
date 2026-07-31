@@ -1,0 +1,257 @@
+{
+  "in_menu": false,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 1,
+    "modelId": "wan-2-7-image",
+    "defaultPrompt": "Make the breasts of the person in the image slightly fuller. Keep everything else in the image unchanged.",
+    "defaultImageUrls": [],
+    "hideModelBranding": false,
+    "compactResultPanel": true,
+    "displayName": "AI Breast Expansion",
+    "sampleImages": [
+      {
+        "url": "/ai-breast-expansion/demo-before-after.webp",
+        "title": "AI Breast Expansion before and after demo",
+        "width": 1200,
+        "height": 675
+      }
+    ],
+    "textOverrides": {
+      "uploadTitle": "Upload a clothed adult photo",
+      "uploadHelper": "Use a photo you own or have permission to edit. Keep the subject clothed, adult, and clearly visible.",
+      "promptLabel": "Describe the bust preview",
+      "promptPlaceholder": "Make the breasts of the person in the image fuller. Keep everything else in the image unchanged.",
+      "generateLabel": "Generate Preview"
+    },
+    "functionalAcceptance": {
+      "recommendedMode": "text-preset-prompt-only",
+      "reason": "The top tool uses one uploaded image and three text-only presets. Clicking a preset updates the prompt textarea without importing preset images or reference images.",
+      "presetTitle": "Choose expansion level",
+      "hidePresetPromptInput": false,
+      "presets": [
+        {
+          "label": "Slightly Fuller",
+          "prompt": "Make the breasts of the person in the image slightly fuller. Keep everything else in the image unchanged.",
+          "group": "breast-expansion-level"
+        },
+        {
+          "label": "Fuller Breasts",
+          "prompt": "Make the breasts of the person in the image fuller. Keep everything else in the image unchanged.",
+          "group": "breast-expansion-level"
+        },
+        {
+          "label": "Super Full",
+          "prompt": "Make the breasts of the person in the image much fuller. Keep everything else in the image unchanged.",
+          "group": "breast-expansion-level"
+        }
+      ]
+    }
+  },
+  "metadata": {
+    "title": "Free AI Breast Expansion Online | Natural Bust Preview | Toolaze",
+    "description": "Preview clothed adult bust-size edits with Toolaze. New users get 10 free credits after sign-up; keep results realistic, non-explicit, and consent-based."
+  },
+  "sectionsOrder": [
+    "intro",
+    "howToUse",
+    "photoTips",
+    "promptExamples",
+    "workflowComparison",
+    "scenes",
+    "features",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Free AI <span class=\"text-gradient\">Breast Expansion</span> Online",
+    "desc": "Upload a clothed adult photo and preview natural bust-size adjustments for fashion fit, costume planning, creator styling, or personal photo review. Toolaze keeps clothing coverage, face, pose, background, and lighting stable while avoiding explicit or unauthorized edits."
+  },
+  "intro": {
+    "title": "What Is AI Breast Expansion?",
+    "content": [
+      {
+        "title": "A clothed bust-size preview for adult photos",
+        "text": "AI breast expansion is an image-editing workflow that adjusts the chest area in a clothed adult photo while preserving the rest of the person and scene. Toolaze is designed for realistic body-proportion previews, not clothing removal, explicit imagery, medical advice, or identity manipulation."
+      },
+      {
+        "title": "Useful for styling, fit, and proportion planning",
+        "text": "Use it to test a subtle lift, a fuller natural silhouette, an outfit-fit direction, or a costume proportion concept before a photoshoot or manual edit. Results are visual previews only and should be reviewed carefully for fabric logic, hands, edges, shadows, and body balance."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "How to Use AI Breast Expansion",
+    "steps": [
+      {
+        "title": "Upload a clothed adult photo",
+        "desc": "Choose a photo you own or have permission to edit. The subject must be an adult, clothed, and clearly visible from the waist or upper body."
+      },
+      {
+        "title": "Choose an expansion level",
+        "desc": "Pick Slightly Fuller, Fuller Breasts, or Super Full to update the prompt box, then edit the prompt if needed before generating."
+      },
+      {
+        "title": "Review the unchanged areas",
+        "desc": "Check face, identity, pose, hands, waist, hips, background, lighting, clothing coverage, and fabric texture. Regenerate with stricter preservation wording if anything drifts."
+      }
+    ]
+  },
+  "photoTips": {
+    "title": "Photo Tips for Natural Bust Previews",
+    "subtitle": "Clear source photos and direct preservation wording produce more believable, non-explicit results.",
+    "items": [
+      {
+        "title": "Use clothed adult photos only",
+        "desc": "The tool is for consent-based adult images with clothing intact. Avoid minors, nudity, underwear-only edits, exposed body requests, or photos you are not authorized to change.",
+        "color": "linear-gradient(135deg, #e0e7ff, #6366f1)"
+      },
+      {
+        "title": "Keep the torso readable",
+        "desc": "Waist-up, half-body, or full-body photos work better when the chest area, shoulders, arms, and clothing seams are visible.",
+        "color": "linear-gradient(135deg, #fce7f3, #db2777)"
+      },
+      {
+        "title": "Avoid blocked poses",
+        "desc": "Crossed arms, heavy shadows, bags, hair covering the chest, mirrors, or cropped torsos can make fabric and body proportions harder to preserve.",
+        "color": "linear-gradient(135deg, #fef3c7, #f97316)"
+      },
+      {
+        "title": "Name what must stay fixed",
+        "desc": "Repeat preserve face, identity, pose, waist, hips, hands, clothing coverage, background, lighting, and camera angle when exact continuity matters.",
+        "color": "linear-gradient(135deg, #ede9fe, #7c3aed)"
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "AI Breast Expansion Prompt Levels",
+    "subtitle": "Choose one of three text presets in the generator. Each option changes only the prompt text and does not load preset images.",
+    "items": [
+      {
+        "title": "Slightly Fuller",
+        "prompt": "Make the breasts of the person in the image slightly fuller. Keep everything else in the image unchanged.",
+        "note": "Best for a light, natural-looking adjustment.",
+        "color": "linear-gradient(135deg, #e0e7ff, #a78bfa)"
+      },
+      {
+        "title": "Fuller Breasts",
+        "prompt": "Make the breasts of the person in the image fuller. Keep everything else in the image unchanged.",
+        "note": "Best for a stronger but still balanced preview.",
+        "color": "linear-gradient(135deg, #fce7f3, #ec4899)"
+      },
+      {
+        "title": "Super Full",
+        "prompt": "Make the breasts of the person in the image much fuller. Keep everything else in the image unchanged.",
+        "note": "Best for the most dramatic fuller-shape preview option.",
+        "color": "linear-gradient(135deg, #fef3c7, #f97316)"
+      }
+    ]
+  },
+  "workflowComparison": {
+    "title": "AI Breast Expansion vs Manual Body Editing",
+    "subtitle": "Use AI for fast direction, then use manual retouching when a final image needs pixel-level control.",
+    "columns": [
+      "Workflow",
+      "Best for",
+      "Watch-outs"
+    ],
+    "rows": [
+      [
+        "Toolaze AI Breast Expansion",
+        "Fast clothed adult bust previews, outfit-fit checks, costume proportion tests, creator styling concepts, and early photo directions.",
+        "Review fabric seams, shadows, hands, posture, and body balance before sharing or publishing."
+      ],
+      [
+        "Manual retouching",
+        "Precise commercial edits, brand-approved fashion images, final campaign assets, and corrections around complex fabrics.",
+        "Requires more time and editing skill, especially around fabric folds and body lines."
+      ],
+      [
+        "Physical styling or photoshoot",
+        "Final fit validation, product photography, medical consultation, garment sizing, and real-world body decisions.",
+        "Requires wardrobe, location, lighting, time, and often a photographer or stylist."
+      ]
+    ]
+  },
+  "scenesTitle": "Popular AI Breast Expansion Use Cases",
+  "scenes": [
+    {
+      "title": "Fashion fit previews",
+      "desc": "Check how a top, dress, swimsuit, or costume silhouette might read with a different bust proportion while keeping the outfit clothed."
+    },
+    {
+      "title": "Creator and portrait styling",
+      "desc": "Explore a natural body-shape direction for personal photos, thumbnails, or concept boards without changing face, pose, background, or lighting."
+    },
+    {
+      "title": "Costume and character planning",
+      "desc": "Preview a tasteful silhouette for cosplay, character reference, or wardrobe planning before committing to tailoring or manual editing."
+    }
+  ],
+  "features": {
+    "title": "Why Use Toolaze for AI Breast Expansion",
+    "items": [
+      {
+        "iconType": "workflow",
+        "title": "Single-photo body preview",
+        "desc": "Upload one clothed adult photo, then choose one of three text presets to update the prompt box without using preset images."
+      },
+      {
+        "iconType": "guidance",
+        "title": "Preservation-first prompts",
+        "desc": "Built-in wording tells the model to keep face, identity, waist, hips, pose, clothing coverage, background, lighting, and camera angle stable."
+      },
+      {
+        "iconType": "limits",
+        "title": "Clear non-explicit boundary",
+        "desc": "The content is scoped to adult, clothed, consent-based previews and excludes nudity, clothing removal, minors, impersonation, and explicit edits."
+      }
+    ]
+  },
+  "moreToolsLinks": [
+    {
+      "title": "AI Bikini Generator",
+      "description": "Preview tasteful adult swimwear edits with a reference-guided flow.",
+      "href": "/ai-bikini-generator"
+    },
+    {
+      "title": "AI Clothes Changer",
+      "description": "Change outfits in a person photo while keeping the original pose and scene.",
+      "href": "/ai-clothes-changer"
+    },
+    {
+      "title": "AI Image to Image Generator",
+      "description": "Use a broader reference-guided workflow for restyling, photo edits, and visual variations.",
+      "href": "/ai-image-to-image-generator"
+    }
+  ],
+  "faqTitle": "AI Breast Expansion FAQ",
+  "faq": [
+    {
+      "q": "Can I use Toolaze for free AI breast expansion?",
+      "a": "New Toolaze users receive 10 free credits after sign-up. Generation cost may vary by the selected image model, resolution, mode, and current Toolaze credit policy shown in the generator."
+    },
+    {
+      "q": "What kind of photo works best?",
+      "a": "Use a clothed adult photo with a clear upper body, visible shoulders, readable fabric, and simple lighting. Waist-up, half-body, and full-body photos are usually easier than tight crops or covered torsos."
+    },
+    {
+      "q": "Will the result look natural?",
+      "a": "Natural results depend on the source photo, clothing, pose, and prompt. Subtle adjustments usually preserve fabric texture and body balance better than extreme changes."
+    },
+    {
+      "q": "What photos can I use?",
+      "a": "Use only adult, clothed, consensual photos. Do not request nudity, undressing, explicit content, minors, impersonation, or unauthorized photo edits."
+    },
+    {
+      "q": "Does this tool remove clothing or create nudity?",
+      "a": "No. Use it only for clothed adult body-proportion previews. Keep clothing intact and use the tool only for consensual, non-explicit image edits."
+    },
+    {
+      "q": "Is this medical or surgical advice?",
+      "a": "No. The output is only a visual preview for styling and image-editing ideas. It should not be used for medical decisions, sizing guarantees, or surgery planning."
+    }
+  ]
+}

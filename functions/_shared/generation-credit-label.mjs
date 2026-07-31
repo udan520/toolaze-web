@@ -35,6 +35,7 @@ const WRAPPED_TOOL_LABELS = {
   'ai-hairstyle-changer': 'AI Hair Style Changer',
   'ai-hair-color-changer': 'AI Hair Color Changer',
   'ai-clothes-changer': 'Clothes Changer',
+  'ai-breast-expansion': 'AI Breast Expansion',
   'photo-restoration': 'Photo Restoration',
   'watermark-remover': 'Watermark Remover',
   'ai-dance-generator': 'AI Dance Generator',

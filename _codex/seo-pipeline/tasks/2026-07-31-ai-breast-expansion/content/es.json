@@ -1,0 +1,257 @@
+{
+  "in_menu": false,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 1,
+    "modelId": "wan-2-7-image",
+    "defaultPrompt": "Make the breasts of the person in the image slightly fuller. Keep everything else in the image unchanged.",
+    "defaultImageUrls": [],
+    "hideModelBranding": false,
+    "compactResultPanel": true,
+    "displayName": "Aumento de busto con IA",
+    "sampleImages": [
+      {
+        "url": "/ai-breast-expansion/demo-before-after.webp",
+        "title": "Demo antes y después de aumento de busto con IA",
+        "width": 1200,
+        "height": 675
+      }
+    ],
+    "textOverrides": {
+      "uploadTitle": "Sube una foto de un adulto con ropa",
+      "uploadHelper": "Usa una foto que sea tuya o que tengas permiso para editar. La persona debe ser adulta, estar vestida y verse con claridad.",
+      "promptLabel": "Describe la vista previa del busto",
+      "promptPlaceholder": "Make the breasts of the person in the image fuller. Keep everything else in the image unchanged.",
+      "generateLabel": "Generar vista previa"
+    },
+    "functionalAcceptance": {
+      "recommendedMode": "text-preset-prompt-only",
+      "reason": "La herramienta superior usa una imagen cargada y tres presets solo de texto. Al hacer clic en un preset se actualiza el cuadro de prompt sin importar imágenes preset ni imágenes de referencia.",
+      "presetTitle": "Elige el nivel de aumento",
+      "hidePresetPromptInput": false,
+      "presets": [
+        {
+          "label": "Ligeramente más lleno",
+          "prompt": "Make the breasts of the person in the image slightly fuller. Keep everything else in the image unchanged.",
+          "group": "breast-expansion-level"
+        },
+        {
+          "label": "Busto más lleno",
+          "prompt": "Make the breasts of the person in the image fuller. Keep everything else in the image unchanged.",
+          "group": "breast-expansion-level"
+        },
+        {
+          "label": "Súper lleno",
+          "prompt": "Make the breasts of the person in the image much fuller. Keep everything else in the image unchanged.",
+          "group": "breast-expansion-level"
+        }
+      ]
+    }
+  },
+  "metadata": {
+    "title": "Aumento de busto con IA gratis online | Vista natural de busto | Toolaze",
+    "description": "Previsualiza ediciones de tamaño de busto en fotos de adultos vestidos con Toolaze. Los usuarios nuevos reciben 10 créditos gratis después de registrarse. Mantén los resultados realistas, no explícitos y basados en consentimiento."
+  },
+  "sectionsOrder": [
+    "intro",
+    "howToUse",
+    "photoTips",
+    "promptExamples",
+    "workflowComparison",
+    "scenes",
+    "features",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Aumento de <span class=\"text-gradient\">busto con IA</span> gratis online",
+    "desc": "Sube una foto de un adulto con ropa y previsualiza ajustes naturales de tamaño de busto para probar ajuste de moda, planificar vestuario, preparar estilos de creador o revisar fotos personales. Toolaze mantiene estable la ropa, el rostro, la pose, el fondo y la iluminación, y evita ediciones explícitas o no autorizadas."
+  },
+  "intro": {
+    "title": "Qué es el aumento de busto con IA",
+    "content": [
+      {
+        "title": "Una vista previa de busto con ropa para fotos de adultos",
+        "text": "El aumento de busto con IA es un flujo de edición de imagen que ajusta el área del pecho en una foto de un adulto con ropa, mientras conserva el resto de la persona y la escena. Toolaze está diseñado para previsualizar proporciones corporales realistas, no para quitar ropa, crear imágenes explícitas, dar consejos médicos ni manipular identidades."
+      },
+      {
+        "title": "Útil para estilo, ajuste y planificación de proporciones",
+        "text": "Úsalo para probar un realce sutil, una silueta natural más llena, una dirección de ajuste del atuendo o una idea de proporción de disfraz antes de una sesión de fotos o una edición manual. Los resultados son solo vistas previas visuales y conviene revisar tela, manos, bordes, sombras y equilibrio corporal."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Cómo usar el aumento de busto con IA",
+    "steps": [
+      {
+        "title": "Sube una foto de un adulto con ropa",
+        "desc": "Elige una foto que sea tuya o que tengas permiso para editar. La persona debe ser adulta, estar vestida y verse claramente desde la cintura o la parte superior del cuerpo."
+      },
+      {
+        "title": "Elige un nivel de aumento",
+        "desc": "Selecciona Ligeramente más lleno, Busto más lleno o Súper lleno para actualizar el cuadro de prompt. Después puedes editar el prompt antes de generar."
+      },
+      {
+        "title": "Revisa las áreas sin cambios",
+        "desc": "Comprueba rostro, identidad, pose, manos, cintura, caderas, fondo, iluminación, cobertura de ropa y textura de tela. Regenera con instrucciones de conservación más estrictas si algo cambia."
+      }
+    ]
+  },
+  "photoTips": {
+    "title": "Consejos de foto para vistas naturales de busto",
+    "subtitle": "Las fotos fuente claras y las instrucciones directas de conservación producen resultados más creíbles y no explícitos.",
+    "items": [
+      {
+        "title": "Usa solo fotos de adultos con ropa",
+        "desc": "La herramienta es para imágenes de adultos con consentimiento y con la ropa intacta. Evita menores, desnudez, ediciones solo en ropa interior, solicitudes de exposición corporal o fotos que no estés autorizado a modificar.",
+        "color": "linear-gradient(135deg, #e0e7ff, #6366f1)"
+      },
+      {
+        "title": "Mantén el torso legible",
+        "desc": "Las fotos de cintura hacia arriba, medio cuerpo o cuerpo completo funcionan mejor cuando se ven el pecho, los hombros, los brazos y las costuras de la ropa.",
+        "color": "linear-gradient(135deg, #fce7f3, #db2777)"
+      },
+      {
+        "title": "Evita poses bloqueadas",
+        "desc": "Brazos cruzados, sombras fuertes, bolsos, cabello sobre el pecho, espejos o torsos recortados pueden dificultar la conservación de tela y proporciones.",
+        "color": "linear-gradient(135deg, #fef3c7, #f97316)"
+      },
+      {
+        "title": "Nombra lo que debe quedar fijo",
+        "desc": "Repite conservar rostro, identidad, pose, cintura, caderas, manos, cobertura de ropa, fondo, iluminación y ángulo de cámara cuando la continuidad exacta sea importante.",
+        "color": "linear-gradient(135deg, #ede9fe, #7c3aed)"
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "Niveles de prompt para aumento de busto con IA",
+    "subtitle": "Elige uno de los tres presets de texto en el generador. Cada opción cambia solo el texto del prompt y no carga imágenes preset.",
+    "items": [
+      {
+        "title": "Ligeramente más lleno",
+        "prompt": "Make the breasts of the person in the image slightly fuller. Keep everything else in the image unchanged.",
+        "note": "Ideal para un ajuste ligero y natural.",
+        "color": "linear-gradient(135deg, #e0e7ff, #a78bfa)"
+      },
+      {
+        "title": "Busto más lleno",
+        "prompt": "Make the breasts of the person in the image fuller. Keep everything else in the image unchanged.",
+        "note": "Ideal para una vista previa más marcada pero equilibrada.",
+        "color": "linear-gradient(135deg, #fce7f3, #ec4899)"
+      },
+      {
+        "title": "Súper lleno",
+        "prompt": "Make the breasts of the person in the image much fuller. Keep everything else in the image unchanged.",
+        "note": "Ideal para la opción más dramática de forma más llena.",
+        "color": "linear-gradient(135deg, #fef3c7, #f97316)"
+      }
+    ]
+  },
+  "workflowComparison": {
+    "title": "Aumento de busto con IA vs. edición corporal manual",
+    "subtitle": "Usa IA para explorar una dirección rápida y recurre al retoque manual cuando una imagen final necesite control a nivel de píxel.",
+    "columns": [
+      "Flujo",
+      "Ideal para",
+      "Qué revisar"
+    ],
+    "rows": [
+      [
+        "Toolaze Aumento de busto con IA",
+        "Vistas rápidas de busto en adultos con ropa, comprobaciones de ajuste del atuendo, pruebas de proporción de disfraz, ideas de estilo para creadores y primeras direcciones de foto.",
+        "Revisa costuras, sombras, manos, postura y equilibrio corporal antes de compartir o publicar."
+      ],
+      [
+        "Retoque manual",
+        "Ediciones comerciales precisas, imágenes de moda aprobadas por marca, recursos finales de campaña y correcciones en telas complejas.",
+        "Requiere más tiempo y habilidad de edición, sobre todo en pliegues de tela y líneas corporales."
+      ],
+      [
+        "Estilismo físico o sesión de fotos",
+        "Validación final de ajuste, fotografía de producto, consulta médica, tallaje de prendas y decisiones corporales reales.",
+        "Requiere vestuario, ubicación, iluminación, tiempo y a menudo fotógrafo o estilista."
+      ]
+    ]
+  },
+  "scenesTitle": "Usos populares del aumento de busto con IA",
+  "scenes": [
+    {
+      "title": "Vistas de ajuste de moda",
+      "desc": "Comprueba cómo se vería un top, vestido, traje de baño o disfraz con otra proporción de busto, manteniendo la ropa puesta."
+    },
+    {
+      "title": "Estilo para creadores y retratos",
+      "desc": "Explora una dirección natural de forma corporal para fotos personales, miniaturas o tableros de concepto sin cambiar rostro, pose, fondo ni luz."
+    },
+    {
+      "title": "Planificación de disfraces y personajes",
+      "desc": "Previsualiza una silueta sobria para cosplay, referencia de personaje o planificación de vestuario antes de ajustar prendas o editar a mano."
+    }
+  ],
+  "features": {
+    "title": "Por qué usar Toolaze para aumento de busto con IA",
+    "items": [
+      {
+        "iconType": "workflow",
+        "title": "Vista corporal con una sola foto",
+        "desc": "Sube una foto de un adulto con ropa y elige uno de tres presets de texto para actualizar el cuadro de prompt sin usar imágenes preset."
+      },
+      {
+        "iconType": "guidance",
+        "title": "Prompts centrados en conservar",
+        "desc": "La redacción integrada indica al modelo que mantenga estables rostro, identidad, cintura, caderas, pose, cobertura de ropa, fondo, luz y ángulo de cámara."
+      },
+      {
+        "iconType": "limits",
+        "title": "Límite no explícito claro",
+        "desc": "El contenido se limita a vistas previas de adultos, con ropa y consentimiento, y excluye desnudez, quitar ropa, menores, suplantación y ediciones explícitas."
+      }
+    ]
+  },
+  "moreToolsLinks": [
+    {
+      "title": "Generador de bikini con IA",
+      "description": "Previsualiza ediciones de traje de baño para adultos con un flujo guiado por referencia.",
+      "href": "/ai-bikini-generator"
+    },
+    {
+      "title": "Cambiador de ropa con IA",
+      "description": "Cambia outfits en una foto de persona manteniendo la pose y la escena originales.",
+      "href": "/ai-clothes-changer"
+    },
+    {
+      "title": "Generador de imagen a imagen con IA",
+      "description": "Usa un flujo más amplio guiado por referencia para restyling, ediciones de foto y variaciones visuales.",
+      "href": "/ai-image-to-image-generator"
+    }
+  ],
+  "faqTitle": "Preguntas frecuentes sobre aumento de busto con IA",
+  "faq": [
+    {
+      "q": "Puedo usar Toolaze gratis para aumento de busto con IA",
+      "a": "Los usuarios nuevos de Toolaze reciben 10 créditos gratis después de registrarse. El costo de generación puede variar según el modelo de imagen, la resolución, el modo y la política actual de créditos de Toolaze que aparece en el generador."
+    },
+    {
+      "q": "Qué tipo de foto funciona mejor",
+      "a": "Usa una foto de un adulto con ropa, parte superior clara, hombros visibles, tela legible e iluminación sencilla. Las fotos de cintura hacia arriba, medio cuerpo y cuerpo completo suelen ser más fáciles que recortes cerrados o torsos cubiertos."
+    },
+    {
+      "q": "El resultado se verá natural",
+      "a": "Los resultados naturales dependen de la foto fuente, la ropa, la pose y el prompt. Los ajustes sutiles suelen conservar mejor la textura de la tela y el equilibrio corporal que los cambios extremos."
+    },
+    {
+      "q": "Qué fotos puedo usar",
+      "a": "Usa solo fotos de adultos, con ropa y consentimiento. No solicites desnudez, desnudar, contenido explícito, menores, suplantación ni ediciones de fotos no autorizadas."
+    },
+    {
+      "q": "Esta herramienta quita ropa o crea desnudez",
+      "a": "No. Esta página es solo para vistas previas de proporciones corporales en adultos con ropa. Mantén la ropa intacta y usa la herramienta solo para ediciones de imagen con consentimiento y no explícitas."
+    },
+    {
+      "q": "Es consejo médico o quirúrgico",
+      "a": "No. La salida es solo una vista previa visual para ideas de estilo y edición de imagen. No debe usarse para decisiones médicas, garantías de talla ni planificación de cirugía."
+    }
+  ]
+}

@@ -1,0 +1,257 @@
+{
+  "in_menu": false,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 1,
+    "modelId": "wan-2-7-image",
+    "defaultPrompt": "Make the breasts of the person in the image slightly fuller. Keep everything else in the image unchanged.",
+    "defaultImageUrls": [],
+    "hideModelBranding": false,
+    "compactResultPanel": true,
+    "displayName": "AI 가슴 확대 미리보기",
+    "sampleImages": [
+      {
+        "url": "/ai-breast-expansion/demo-before-after.webp",
+        "title": "AI 가슴 확대 전후 데모",
+        "width": 1200,
+        "height": 675
+      }
+    ],
+    "textOverrides": {
+      "uploadTitle": "옷을 입은 성인 사진 업로드",
+      "uploadHelper": "본인이 소유했거나 편집 허가를 받은 사진을 사용하세요. 대상은 성인이고 옷을 입고 있어야 하며 선명하게 보여야 합니다.",
+      "promptLabel": "가슴 미리보기 설명",
+      "promptPlaceholder": "Make the breasts of the person in the image fuller. Keep everything else in the image unchanged.",
+      "generateLabel": "미리보기 생성"
+    },
+    "functionalAcceptance": {
+      "recommendedMode": "text-preset-prompt-only",
+      "reason": "상단 도구는 업로드한 이미지 1장과 텍스트 전용 프리셋 3개를 사용합니다. 프리셋을 클릭하면 프리셋 이미지나 참조 이미지를 가져오지 않고 프롬프트 입력창만 업데이트됩니다.",
+      "presetTitle": "확대 수준 선택",
+      "hidePresetPromptInput": false,
+      "presets": [
+        {
+          "label": "살짝 더 풍성하게",
+          "prompt": "Make the breasts of the person in the image slightly fuller. Keep everything else in the image unchanged.",
+          "group": "breast-expansion-level"
+        },
+        {
+          "label": "풍성한 가슴",
+          "prompt": "Make the breasts of the person in the image fuller. Keep everything else in the image unchanged.",
+          "group": "breast-expansion-level"
+        },
+        {
+          "label": "매우 풍성하게",
+          "prompt": "Make the breasts of the person in the image much fuller. Keep everything else in the image unchanged.",
+          "group": "breast-expansion-level"
+        }
+      ]
+    }
+  },
+  "metadata": {
+    "title": "무료 AI 가슴 확대 온라인 | 자연스러운 가슴 미리보기 | Toolaze",
+    "description": "Toolaze에서 옷을 입은 성인 사진의 가슴 크기 편집을 미리 확인하세요. 신규 사용자는 가입 후 무료 크레딧 10개를 받습니다. 결과는 현실적이고 노골적이지 않으며 동의에 기반해야 합니다."
+  },
+  "sectionsOrder": [
+    "intro",
+    "howToUse",
+    "photoTips",
+    "promptExamples",
+    "workflowComparison",
+    "scenes",
+    "features",
+    "faq"
+  ],
+  "hero": {
+    "h1": "무료 온라인 AI <span class=\"text-gradient\">가슴 확대</span>",
+    "desc": "옷을 입은 성인 사진을 업로드하고 패션 핏, 의상 계획, 크리에이터 스타일링 또는 개인 사진 검토를 위한 자연스러운 가슴 크기 조정을 미리 확인하세요. Toolaze는 옷의 덮임, 얼굴, 포즈, 배경, 조명을 안정적으로 유지하고 노골적이거나 무단인 편집을 피합니다."
+  },
+  "intro": {
+    "title": "AI 가슴 확대란?",
+    "content": [
+      {
+        "title": "성인 사진을 위한 옷을 입은 상태의 가슴 크기 미리보기",
+        "text": "AI 가슴 확대는 옷을 입은 성인 사진에서 가슴 부위를 조정하면서 인물의 나머지 부분과 장면을 보존하는 이미지 편집 흐름입니다. Toolaze는 현실적인 신체 비율 미리보기를 위한 도구이며, 옷 제거, 노골적인 이미지, 의료 조언 또는 신원 조작을 위한 도구가 아닙니다."
+      },
+      {
+        "title": "스타일링, 핏, 비율 계획에 유용",
+        "text": "촬영이나 수동 편집 전에 은은한 리프트, 더 풍성한 자연스러운 실루엣, 의상 핏 방향 또는 코스튬 비율 콘셉트를 테스트할 수 있습니다. 결과는 시각적 미리보기일 뿐이며 천의 자연스러움, 손, 가장자리, 그림자, 신체 균형을 꼼꼼히 확인해야 합니다."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "AI 가슴 확대 사용 방법",
+    "steps": [
+      {
+        "title": "옷을 입은 성인 사진 업로드",
+        "desc": "본인이 소유했거나 편집 허가를 받은 사진을 선택하세요. 대상은 성인이고 옷을 입고 있어야 하며 허리 위 또는 상체가 선명하게 보여야 합니다."
+      },
+      {
+        "title": "확대 수준 선택",
+        "desc": "살짝 더 풍성하게, 풍성한 가슴, 매우 풍성하게 중 하나를 선택해 프롬프트 입력창을 업데이트한 뒤 필요하면 생성 전에 문구를 수정하세요."
+      },
+      {
+        "title": "변하지 않은 영역 확인",
+        "desc": "얼굴, 신원, 포즈, 손, 허리, 엉덩이, 배경, 조명, 옷의 덮임, 천 질감을 확인하세요. 무언가 달라졌다면 보존 문구를 더 엄격하게 넣고 다시 생성하세요."
+      }
+    ]
+  },
+  "photoTips": {
+    "title": "자연스러운 가슴 미리보기를 위한 사진 팁",
+    "subtitle": "선명한 원본 사진과 직접적인 보존 지시가 더 믿을 만하고 노골적이지 않은 결과를 만듭니다.",
+    "items": [
+      {
+        "title": "옷을 입은 성인 사진만 사용",
+        "desc": "이 도구는 동의에 기반한 성인 이미지에서 옷을 그대로 유지하는 용도입니다. 미성년자, 노출, 속옷만 있는 편집, 신체 노출 요청 또는 편집 권한이 없는 사진은 피하세요.",
+        "color": "linear-gradient(135deg, #e0e7ff, #6366f1)"
+      },
+      {
+        "title": "상체가 잘 보이게 하기",
+        "desc": "가슴 부위, 어깨, 팔, 옷의 솔기가 보이는 허리 위, 반신 또는 전신 사진이 더 잘 작동합니다.",
+        "color": "linear-gradient(135deg, #fce7f3, #db2777)"
+      },
+      {
+        "title": "가려진 포즈 피하기",
+        "desc": "팔짱, 강한 그림자, 가방, 가슴을 덮는 머리카락, 거울, 잘린 상체는 천과 신체 비율 보존을 어렵게 만들 수 있습니다.",
+        "color": "linear-gradient(135deg, #fef3c7, #f97316)"
+      },
+      {
+        "title": "고정해야 할 요소를 명시",
+        "desc": "정확한 연속성이 중요하다면 얼굴, 신원, 포즈, 허리, 엉덩이, 손, 옷의 덮임, 배경, 조명, 카메라 각도를 보존하라고 반복해서 적으세요.",
+        "color": "linear-gradient(135deg, #ede9fe, #7c3aed)"
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "AI 가슴 확대 프롬프트 수준",
+    "subtitle": "생성기에서 세 가지 텍스트 프리셋 중 하나를 선택하세요. 각 옵션은 프롬프트 텍스트만 바꾸며 프리셋 이미지를 불러오지 않습니다.",
+    "items": [
+      {
+        "title": "살짝 더 풍성하게",
+        "prompt": "Make the breasts of the person in the image slightly fuller. Keep everything else in the image unchanged.",
+        "note": "가볍고 자연스러운 조정에 적합합니다.",
+        "color": "linear-gradient(135deg, #e0e7ff, #a78bfa)"
+      },
+      {
+        "title": "풍성한 가슴",
+        "prompt": "Make the breasts of the person in the image fuller. Keep everything else in the image unchanged.",
+        "note": "더 강하지만 균형 잡힌 미리보기에 적합합니다.",
+        "color": "linear-gradient(135deg, #fce7f3, #ec4899)"
+      },
+      {
+        "title": "매우 풍성하게",
+        "prompt": "Make the breasts of the person in the image much fuller. Keep everything else in the image unchanged.",
+        "note": "가장 드라마틱한 풍성한 형태의 미리보기에 적합합니다.",
+        "color": "linear-gradient(135deg, #fef3c7, #f97316)"
+      }
+    ]
+  },
+  "workflowComparison": {
+    "title": "AI 가슴 확대와 수동 신체 편집 비교",
+    "subtitle": "빠른 방향 확인에는 AI를 사용하고, 최종 이미지에 픽셀 단위 제어가 필요할 때는 수동 리터칭을 사용하세요.",
+    "columns": [
+      "흐름",
+      "적합한 용도",
+      "확인할 점"
+    ],
+    "rows": [
+      [
+        "Toolaze AI 가슴 확대",
+        "옷을 입은 성인 가슴 미리보기, 의상 핏 확인, 코스튬 비율 테스트, 크리에이터 스타일링 콘셉트, 초기 사진 방향 설정.",
+        "공유하거나 게시하기 전에 천 솔기, 그림자, 손, 자세, 신체 균형을 확인하세요."
+      ],
+      [
+        "수동 리터칭",
+        "정밀한 상업용 편집, 브랜드 승인 패션 이미지, 최종 캠페인 자산, 복잡한 원단 주변 보정.",
+        "특히 천 주름과 신체 라인 주변에서 더 많은 시간과 편집 기술이 필요합니다."
+      ],
+      [
+        "실제 스타일링 또는 촬영",
+        "최종 핏 검증, 제품 촬영, 의료 상담, 의류 사이즈, 실제 신체 관련 결정.",
+        "의상, 장소, 조명, 시간이 필요하며 종종 사진가나 스타일리스트가 필요합니다."
+      ]
+    ]
+  },
+  "scenesTitle": "AI 가슴 확대의 인기 사용 사례",
+  "scenes": [
+    {
+      "title": "패션 핏 미리보기",
+      "desc": "옷을 입은 상태를 유지하면서 상의, 드레스, 수영복 또는 코스튬이 다른 가슴 비율에서 어떻게 보이는지 확인하세요."
+    },
+    {
+      "title": "크리에이터와 인물 스타일링",
+      "desc": "개인 사진, 썸네일 또는 콘셉트 보드에서 얼굴, 포즈, 배경, 조명을 바꾸지 않고 자연스러운 체형 방향을 탐색하세요."
+    },
+    {
+      "title": "코스튬과 캐릭터 계획",
+      "desc": "재단이나 수동 편집 전에 코스프레, 캐릭터 참고 자료 또는 의상 계획을 위한 단정한 실루엣을 미리 확인하세요."
+    }
+  ],
+  "features": {
+    "title": "AI 가슴 확대에 Toolaze를 사용하는 이유",
+    "items": [
+      {
+        "iconType": "workflow",
+        "title": "사진 한 장으로 신체 미리보기",
+        "desc": "옷을 입은 성인 사진 한 장을 업로드하고 세 가지 텍스트 프리셋 중 하나를 선택해 프리셋 이미지 없이 프롬프트 입력창을 업데이트하세요."
+      },
+      {
+        "iconType": "guidance",
+        "title": "보존 우선 프롬프트",
+        "desc": "내장 문구가 모델에 얼굴, 신원, 허리, 엉덩이, 포즈, 옷의 덮임, 배경, 조명, 카메라 각도를 안정적으로 유지하라고 지시합니다."
+      },
+      {
+        "iconType": "limits",
+        "title": "명확한 비노골적 경계",
+        "desc": "콘텐츠는 성인, 착의, 동의 기반 미리보기에 한정되며 노출, 옷 제거, 미성년자, 사칭, 노골적 편집을 제외합니다."
+      }
+    ]
+  },
+  "moreToolsLinks": [
+    {
+      "title": "AI 비키니 생성기",
+      "description": "참조 기반 흐름으로 성인용 수영복 편집을 단정하게 미리 확인하세요.",
+      "href": "/ai-bikini-generator"
+    },
+    {
+      "title": "AI 옷 바꾸기",
+      "description": "원래 포즈와 장면을 유지하면서 인물 사진의 옷을 바꾸세요.",
+      "href": "/ai-clothes-changer"
+    },
+    {
+      "title": "AI 이미지 투 이미지 생성기",
+      "description": "참조 기반의 더 넓은 흐름으로 스타일 변경, 사진 편집, 시각적 변형을 만드세요.",
+      "href": "/ai-image-to-image-generator"
+    }
+  ],
+  "faqTitle": "AI 가슴 확대 FAQ",
+  "faq": [
+    {
+      "q": "Toolaze에서 AI 가슴 확대를 무료로 사용할 수 있나요?",
+      "a": "신규 Toolaze 사용자는 가입 후 무료 크레딧 10개를 받습니다. 생성 비용은 선택한 이미지 모델, 해상도, 모드, 생성기에 표시되는 현재 Toolaze 크레딧 정책에 따라 달라질 수 있습니다."
+    },
+    {
+      "q": "어떤 사진이 가장 잘 작동하나요?",
+      "a": "상체가 선명하고 어깨가 보이며 천이 잘 읽히고 조명이 단순한, 옷을 입은 성인 사진을 사용하세요. 허리 위, 반신, 전신 사진이 너무 가까운 크롭이나 가려진 상체보다 보통 더 쉽습니다."
+    },
+    {
+      "q": "결과가 자연스럽게 보이나요?",
+      "a": "자연스러운 결과는 원본 사진, 옷, 포즈, 프롬프트에 따라 달라집니다. 과도한 변경보다 은은한 조정이 보통 천 질감과 신체 균형을 더 잘 보존합니다."
+    },
+    {
+      "q": "어떤 사진을 사용할 수 있나요?",
+      "a": "성인, 착의, 동의가 있는 사진만 사용하세요. 노출, 탈의, 노골적 콘텐츠, 미성년자, 사칭 또는 허가 없는 사진 편집을 요청하지 마세요."
+    },
+    {
+      "q": "이 도구가 옷을 제거하거나 노출 이미지를 만들나요?",
+      "a": "아니요. 이 페이지는 옷을 입은 성인의 신체 비율 미리보기 전용입니다. 옷은 그대로 유지하고 동의 기반의 비노골적 이미지 편집에만 사용하세요."
+    },
+    {
+      "q": "의료나 수술 조언인가요?",
+      "a": "아니요. 출력은 스타일링과 이미지 편집 아이디어를 위한 시각적 미리보기일 뿐입니다. 의료 결정, 사이즈 보장 또는 수술 계획에 사용해서는 안 됩니다."
+    }
+  ]
+}

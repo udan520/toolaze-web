@@ -62,10 +62,10 @@
     "aiClothesChanger": "KI-Kleiderwechsler",
     "wan25Video": "Wan 2.5 Video",
     "klingAiVideoGenerator": "Kling KI-Videogenerator",
-    "aiBikiniGenerator": "KI-Bikini-Generator"
-,
-    "talkingAvatarCreator": "KI Talking Avatar"
-
+    "aiBikiniGenerator": "KI-Bikini-Generator",
+    "unrestrictedAiImageGenerator": "Unlimited KI-Bild",
+    "talkingAvatarCreator": "KI Talking Avatar",
+    "aiBreastExpansion": "KI-Brustvergrößerung"
   },
   "home": {
     "metadata": {
@@ -135,6 +135,14 @@
       "ai-bikini-generator": {
         "cardTitle": "KI-Bikini-Generator",
         "summary": "Laden Sie ein Erwachsenenfoto und eine Bikini-Referenz hoch, um geschmackvolle Swimwear-Edits mit stabiler Personenvorschau zu testen."
+      },
+      "unrestricted-ai-image-generator": {
+        "cardTitle": "Unrestricted / Unlimited KI-Bildgenerator",
+        "summary": "Erstellen Sie breitere unlimited-style KI-Bildkonzepte mit Text-zu-Bild, Bild-zu-Bild, direkter Prompt-Kontrolle und klaren kreativen Grenzen."
+      },
+      "ai-breast-expansion": {
+        "cardTitle": "KI-Brustvergrößerung",
+        "summary": "Laden Sie ein bekleidetes Erwachsenenfoto hoch und prüfen Sie natürliche Büstengrößen-Edits, während Person, Kleidung, Pose und Szene stabil bleiben."
       }
     },
     "aiToolsHubTitle": "Kostenlose KI-Tools für Bilder, Videos & alltägliche Medien-Workflows",
@@ -296,10 +304,10 @@
     "aiClothesChanger": "KI-Kleiderwechsler",
     "wan25Video": "Wan 2.5 Video",
     "klingAiVideoGenerator": "Kling KI-Videogenerator",
-    "aiBikiniGenerator": "KI-Bikini-Generator"
-,
-    "talkingAvatarCreator": "KI Talking Avatar"
-
+    "aiBikiniGenerator": "KI-Bikini-Generator",
+    "unrestrictedAiImageGenerator": "Unrestricted / Unlimited KI-Bildgenerator",
+    "talkingAvatarCreator": "KI Talking Avatar",
+    "aiBreastExpansion": "KI-Brustvergrößerung"
   },
   "breadcrumb": {
     "home": "Startseite",

@@ -1,0 +1,257 @@
+{
+  "in_menu": false,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 1,
+    "modelId": "wan-2-7-image",
+    "defaultPrompt": "Make the breasts of the person in the image slightly fuller. Keep everything else in the image unchanged.",
+    "defaultImageUrls": [],
+    "hideModelBranding": false,
+    "compactResultPanel": true,
+    "displayName": "AIバストボリュームアップ",
+    "sampleImages": [
+      {
+        "url": "/ai-breast-expansion/demo-before-after.webp",
+        "title": "AIバストボリュームアップのビフォーアフターデモ",
+        "width": 1200,
+        "height": 675
+      }
+    ],
+    "textOverrides": {
+      "uploadTitle": "服を着た成人の写真をアップロード",
+      "uploadHelper": "自分が所有している写真、または編集許可のある写真を使ってください。被写体は成人で、服を着ており、はっきり見える必要があります。",
+      "promptLabel": "バストプレビューを説明",
+      "promptPlaceholder": "Make the breasts of the person in the image fuller. Keep everything else in the image unchanged.",
+      "generateLabel": "プレビューを生成"
+    },
+    "functionalAcceptance": {
+      "recommendedMode": "text-preset-prompt-only",
+      "reason": "上部ツールはアップロード画像1枚と3つのテキストプリセットを使います。プリセットをクリックすると、プリセット画像や参照画像を読み込まずにプロンプト欄だけが更新されます。",
+      "presetTitle": "調整レベルを選択",
+      "hidePresetPromptInput": false,
+      "presets": [
+        {
+          "label": "少しふっくら",
+          "prompt": "Make the breasts of the person in the image slightly fuller. Keep everything else in the image unchanged.",
+          "group": "breast-expansion-level"
+        },
+        {
+          "label": "ふっくらしたバスト",
+          "prompt": "Make the breasts of the person in the image fuller. Keep everything else in the image unchanged.",
+          "group": "breast-expansion-level"
+        },
+        {
+          "label": "かなりふっくら",
+          "prompt": "Make the breasts of the person in the image much fuller. Keep everything else in the image unchanged.",
+          "group": "breast-expansion-level"
+        }
+      ]
+    }
+  },
+  "metadata": {
+    "title": "無料AIバストボリュームアップ | 自然なバストプレビュー | Toolaze",
+    "description": "Toolazeで、服を着た成人写真のバストサイズ調整をプレビューできます。新規ユーザーは登録後に無料クレジット10点を受け取れます。結果はリアルで、非露骨かつ同意に基づく内容にしてください。"
+  },
+  "sectionsOrder": [
+    "intro",
+    "howToUse",
+    "photoTips",
+    "promptExamples",
+    "workflowComparison",
+    "scenes",
+    "features",
+    "faq"
+  ],
+  "hero": {
+    "h1": "無料AI<span class=\"text-gradient\">バストボリュームアップ</span>",
+    "desc": "服を着た成人の写真をアップロードし、ファッションのフィット感、衣装計画、クリエイター向けスタイリング、個人写真の確認に使える自然なバストサイズ調整をプレビューできます。Toolazeは服の覆い、顔、ポーズ、背景、光を保ちながら、露骨な編集や無断編集を避けます。"
+  },
+  "intro": {
+    "title": "AIバストボリュームアップとは",
+    "content": [
+      {
+        "title": "成人写真向けの服を着たままのバストサイズプレビュー",
+        "text": "AIバストボリュームアップは、服を着た成人写真の胸元だけを調整し、人物の他の部分とシーンを保つ画像編集ワークフローです。Toolazeはリアルな体型バランスのプレビュー向けで、服を脱がせる編集、露骨な画像、医療助言、本人性の操作を目的としていません。"
+      },
+      {
+        "title": "スタイリング、フィット感、比率の確認に便利",
+        "text": "撮影や手作業の編集前に、控えめな持ち上がり、自然にふっくらしたシルエット、衣装の方向性、コスチュームの比率案を試せます。結果は視覚的なプレビューのみなので、布の自然さ、手、輪郭、影、体のバランスを確認してください。"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "AIバストボリュームアップの使い方",
+    "steps": [
+      {
+        "title": "服を着た成人の写真をアップロード",
+        "desc": "自分が所有している写真、または編集許可のある写真を選びます。被写体は成人で、服を着ており、腰から上または上半身がはっきり見える必要があります。"
+      },
+      {
+        "title": "調整レベルを選ぶ",
+        "desc": "少しふっくら、ふっくらしたバスト、かなりふっくらのいずれかを選ぶとプロンプト欄が更新されます。必要なら生成前に文章を編集してください。"
+      },
+      {
+        "title": "変えたくない部分を確認",
+        "desc": "顔、本人性、ポーズ、手、ウエスト、ヒップ、背景、光、服の覆い、布の質感を確認します。ずれがある場合は、保持したい部分をより強く指定して再生成してください。"
+      }
+    ]
+  },
+  "photoTips": {
+    "title": "自然なバストプレビューの写真のコツ",
+    "subtitle": "はっきりした元写真と、何を保持するかを直接書いた指示が、自然で非露骨な結果につながります。",
+    "items": [
+      {
+        "title": "服を着た成人写真のみ使用",
+        "desc": "このツールは、同意に基づく成人画像を服を着たまま扱うためのものです。未成年、ヌード、下着だけの編集、露出を求める依頼、編集許可のない写真は避けてください。",
+        "color": "linear-gradient(135deg, #e0e7ff, #6366f1)"
+      },
+      {
+        "title": "胴体が読み取れる写真を使う",
+        "desc": "胸元、肩、腕、服の縫い目が見える腰上、半身、全身写真のほうがうまくいきます。",
+        "color": "linear-gradient(135deg, #fce7f3, #db2777)"
+      },
+      {
+        "title": "隠れたポーズを避ける",
+        "desc": "腕組み、強い影、バッグ、胸元にかかる髪、鏡、切れた胴体は、布や体の比率を保つのが難しくなります。",
+        "color": "linear-gradient(135deg, #fef3c7, #f97316)"
+      },
+      {
+        "title": "固定したい要素を書く",
+        "desc": "正確な連続性が必要な場合は、顔、本人性、ポーズ、ウエスト、ヒップ、手、服の覆い、背景、光、カメラアングルを保つと繰り返し指定してください。",
+        "color": "linear-gradient(135deg, #ede9fe, #7c3aed)"
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "AIバストボリュームアップのプロンプトレベル",
+    "subtitle": "生成ツール内の3つのテキストプリセットから選びます。各オプションはプロンプト文だけを変更し、プリセット画像は読み込みません。",
+    "items": [
+      {
+        "title": "少しふっくら",
+        "prompt": "Make the breasts of the person in the image slightly fuller. Keep everything else in the image unchanged.",
+        "note": "軽く自然に見える調整に向いています。",
+        "color": "linear-gradient(135deg, #e0e7ff, #a78bfa)"
+      },
+      {
+        "title": "ふっくらしたバスト",
+        "prompt": "Make the breasts of the person in the image fuller. Keep everything else in the image unchanged.",
+        "note": "より強めでもバランスを保ちたいプレビューに向いています。",
+        "color": "linear-gradient(135deg, #fce7f3, #ec4899)"
+      },
+      {
+        "title": "かなりふっくら",
+        "prompt": "Make the breasts of the person in the image much fuller. Keep everything else in the image unchanged.",
+        "note": "最も大胆にふっくら見せるプレビューに向いています。",
+        "color": "linear-gradient(135deg, #fef3c7, #f97316)"
+      }
+    ]
+  },
+  "workflowComparison": {
+    "title": "AIバストボリュームアップと手作業の体型編集",
+    "subtitle": "まずAIで方向性を素早く確認し、最終画像にピクセル単位の調整が必要な場合は手作業のレタッチを使います。",
+    "columns": [
+      "方法",
+      "向いている用途",
+      "注意点"
+    ],
+    "rows": [
+      [
+        "Toolaze AIバストボリュームアップ",
+        "服を着た成人写真のバストプレビュー、衣装のフィット感確認、コスチューム比率テスト、クリエイター向けスタイリング、初期の写真方向性。",
+        "共有や公開前に、布の縫い目、影、手、姿勢、体のバランスを確認してください。"
+      ],
+      [
+        "手作業のレタッチ",
+        "精密な商用編集、ブランド承認済みのファッション画像、最終キャンペーン素材、複雑な布まわりの修正。",
+        "特に布のしわや体のラインでは、より多くの時間と編集スキルが必要です。"
+      ],
+      [
+        "実際のスタイリングや撮影",
+        "最終的なフィット確認、商品撮影、医療相談、衣類サイズ、現実の体に関する判断。",
+        "衣装、場所、照明、時間が必要で、多くの場合は撮影者やスタイリストも必要です。"
+      ]
+    ]
+  },
+  "scenesTitle": "AIバストボリュームアップの主な用途",
+  "scenes": [
+    {
+      "title": "ファッションのフィット感プレビュー",
+      "desc": "トップス、ドレス、水着、コスチュームが、別のバスト比率でどう見えるかを服を着たまま確認できます。"
+    },
+    {
+      "title": "クリエイターとポートレートのスタイリング",
+      "desc": "個人写真、サムネイル、コンセプトボードで、顔、ポーズ、背景、光を変えずに自然な体型方向を試せます。"
+    },
+    {
+      "title": "衣装とキャラクター計画",
+      "desc": "仕立てや手作業の編集に入る前に、コスプレ、キャラクター資料、ワードローブ計画用の上品なシルエットを確認できます。"
+    }
+  ],
+  "features": {
+    "title": "AIバストボリュームアップにToolazeを使う理由",
+    "items": [
+      {
+        "iconType": "workflow",
+        "title": "1枚写真の体型プレビュー",
+        "desc": "服を着た成人写真を1枚アップロードし、3つのテキストプリセットから選ぶだけで、プリセット画像なしにプロンプト欄を更新できます。"
+      },
+      {
+        "iconType": "guidance",
+        "title": "保持を優先するプロンプト",
+        "desc": "内蔵の文言が、顔、本人性、ウエスト、ヒップ、ポーズ、服の覆い、背景、光、カメラアングルを保つようモデルに伝えます。"
+      },
+      {
+        "iconType": "limits",
+        "title": "明確な非露骨の境界",
+        "desc": "内容は成人、服を着た状態、同意に基づくプレビューに限定され、ヌード、服を脱がせる編集、未成年、なりすまし、露骨な編集を除外します。"
+      }
+    ]
+  },
+  "moreToolsLinks": [
+    {
+      "title": "AIビキニジェネレーター",
+      "description": "参照画像を使って、成人向けの上品な水着編集をプレビューします。",
+      "href": "/ai-bikini-generator"
+    },
+    {
+      "title": "AI服装チェンジャー",
+      "description": "人物写真の元のポーズとシーンを保ちながら服装を変更します。",
+      "href": "/ai-clothes-changer"
+    },
+    {
+      "title": "AI画像から画像生成ツール",
+      "description": "参照画像を使った広いワークフローで、リスタイル、写真編集、ビジュアルのバリエーションを作れます。",
+      "href": "/ai-image-to-image-generator"
+    }
+  ],
+  "faqTitle": "AIバストボリュームアップ FAQ",
+  "faq": [
+    {
+      "q": "ToolazeでAIバストボリュームアップを無料で使えますか",
+      "a": "新規Toolazeユーザーは登録後に無料クレジット10点を受け取れます。生成コストは、選択した画像モデル、解像度、モード、生成ツールに表示される現在のToolazeクレジット方針によって変わる場合があります。"
+    },
+    {
+      "q": "どのような写真が最適ですか",
+      "a": "上半身がはっきり見え、肩が見え、布の状態が読み取れ、光がシンプルな服を着た成人写真を使ってください。腰上、半身、全身写真は、きつい切り抜きや隠れた胴体より扱いやすいことが多いです。"
+    },
+    {
+      "q": "結果は自然に見えますか",
+      "a": "自然さは元写真、服、ポーズ、プロンプトによって変わります。控えめな調整のほうが、極端な変更より布の質感と体のバランスを保ちやすくなります。"
+    },
+    {
+      "q": "どの写真を使えますか",
+      "a": "成人、服を着ている、同意がある写真のみを使用してください。ヌード、脱衣、露骨な内容、未成年、なりすまし、許可のない写真編集を依頼しないでください。"
+    },
+    {
+      "q": "このツールは服を脱がせたりヌードを作ったりしますか",
+      "a": "いいえ。このページは、服を着た成人の体型比率プレビュー専用です。服はそのまま保ち、同意に基づく非露骨な画像編集にのみ使ってください。"
+    },
+    {
+      "q": "医療や手術の助言になりますか",
+      "a": "いいえ。出力はスタイリングや画像編集アイデアのための視覚的プレビューにすぎません。医療判断、サイズ保証、手術計画には使用しないでください。"
+    }
+  ]
+}

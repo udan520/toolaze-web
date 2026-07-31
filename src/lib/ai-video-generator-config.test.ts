@@ -205,7 +205,7 @@ test('AI video generator model configs define practical video output defaults', 
   assert.equal(seedanceMini.maxImages, 2)
   assert.equal(seedanceMini.logoSrc, '/model-logos/bytedance.svg')
   assert.equal(seedanceMini.qualityRating, 4.5)
-  assert.equal(seedanceMini.minCredits, 100)
+  assert.equal(seedanceMini.minCredits, 95)
   assert.deepEqual(seedanceMini.resolutions, ['480p', '720p'])
   assert.ok(seedanceMini.aspectRatios.some((ratio) => ratio.value === 'adaptive'))
 
@@ -245,7 +245,7 @@ test('AI video generator model menu minimum credits match shared pricing', () =>
   const expectedMinimumCreditsByModel = new Map([
     ['grok-1-5-video', 3],
     ['seedance-2', 190],
-    ['seedance-2-mini', 100],
+    ['seedance-2-mini', 95],
     ['seedance-2-fast', 155],
     ['seedance-1-5-pro', 16],
     ['seedance-1-pro-fast', 32],

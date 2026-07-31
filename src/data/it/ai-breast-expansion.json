@@ -1,0 +1,257 @@
+{
+  "in_menu": false,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 1,
+    "modelId": "wan-2-7-image",
+    "defaultPrompt": "Make the breasts of the person in the image slightly fuller. Keep everything else in the image unchanged.",
+    "defaultImageUrls": [],
+    "hideModelBranding": false,
+    "compactResultPanel": true,
+    "displayName": "Aumento seno con IA",
+    "sampleImages": [
+      {
+        "url": "/ai-breast-expansion/demo-before-after.webp",
+        "title": "Demo prima e dopo dell'aumento seno con IA",
+        "width": 1200,
+        "height": 675
+      }
+    ],
+    "textOverrides": {
+      "uploadTitle": "Carica una foto di un adulto vestito",
+      "uploadHelper": "Usa una foto di tua proprietà o che hai il permesso di modificare. La persona deve essere adulta, vestita e chiaramente visibile.",
+      "promptLabel": "Descrivi l'anteprima del seno",
+      "promptPlaceholder": "Make the breasts of the person in the image fuller. Keep everything else in the image unchanged.",
+      "generateLabel": "Genera anteprima"
+    },
+    "functionalAcceptance": {
+      "recommendedMode": "text-preset-prompt-only",
+      "reason": "Lo strumento superiore usa una foto caricata e tre preset solo testuali. Cliccando un preset si aggiorna il campo prompt senza importare immagini preset o immagini di riferimento.",
+      "presetTitle": "Scegli il livello di aumento",
+      "hidePresetPromptInput": false,
+      "presets": [
+        {
+          "label": "Leggermente più pieno",
+          "prompt": "Make the breasts of the person in the image slightly fuller. Keep everything else in the image unchanged.",
+          "group": "breast-expansion-level"
+        },
+        {
+          "label": "Seno più pieno",
+          "prompt": "Make the breasts of the person in the image fuller. Keep everything else in the image unchanged.",
+          "group": "breast-expansion-level"
+        },
+        {
+          "label": "Molto pieno",
+          "prompt": "Make the breasts of the person in the image much fuller. Keep everything else in the image unchanged.",
+          "group": "breast-expansion-level"
+        }
+      ]
+    }
+  },
+  "metadata": {
+    "title": "Aumento seno con IA gratis online | Anteprima naturale del seno | Toolaze",
+    "description": "Visualizza modifiche alla dimensione del seno su foto di adulti vestiti con Toolaze. I nuovi utenti ricevono 10 crediti gratis dopo la registrazione. Mantieni i risultati realistici, non espliciti e basati sul consenso."
+  },
+  "sectionsOrder": [
+    "intro",
+    "howToUse",
+    "photoTips",
+    "promptExamples",
+    "workflowComparison",
+    "scenes",
+    "features",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Aumento <span class=\"text-gradient\">seno con IA</span> gratis online",
+    "desc": "Carica una foto di un adulto vestito e visualizza regolazioni naturali della dimensione del seno per prove di vestibilità, pianificazione di costumi, stile per creatori o revisione di foto personali. Toolaze mantiene stabili copertura dei vestiti, volto, posa, sfondo e illuminazione, evitando modifiche esplicite o non autorizzate."
+  },
+  "intro": {
+    "title": "Che cos'è l'aumento seno con IA?",
+    "content": [
+      {
+        "title": "Un'anteprima del seno vestita per foto di adulti",
+        "text": "L'aumento seno con IA è un flusso di modifica immagini che regola l'area del petto in una foto di adulto vestito, preservando il resto della persona e della scena. Toolaze è pensato per anteprime realistiche delle proporzioni corporee, non per rimuovere vestiti, creare immagini esplicite, dare consigli medici o manipolare identità."
+      },
+      {
+        "title": "Utile per stile, vestibilità e pianificazione delle proporzioni",
+        "text": "Usalo per provare un lieve sollevamento, una silhouette naturale più piena, una direzione di vestibilità del look o un concetto di proporzione per costume prima di un servizio fotografico o di una modifica manuale. I risultati sono solo anteprime visive e vanno controllati per logica del tessuto, mani, bordi, ombre ed equilibrio del corpo."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Come usare l'aumento seno con IA",
+    "steps": [
+      {
+        "title": "Carica una foto di un adulto vestito",
+        "desc": "Scegli una foto di tua proprietà o che hai il permesso di modificare. La persona deve essere adulta, vestita e chiaramente visibile dalla vita in su o nella parte superiore del corpo."
+      },
+      {
+        "title": "Scegli un livello di aumento",
+        "desc": "Seleziona Leggermente più pieno, Seno più pieno o Molto pieno per aggiornare il campo prompt, poi modifica il prompt se necessario prima di generare."
+      },
+      {
+        "title": "Controlla le aree invariate",
+        "desc": "Verifica volto, identità, posa, mani, vita, fianchi, sfondo, illuminazione, copertura dei vestiti e texture del tessuto. Rigenera con istruzioni di preservazione più rigide se qualcosa cambia."
+      }
+    ]
+  },
+  "photoTips": {
+    "title": "Consigli foto per anteprime naturali del seno",
+    "subtitle": "Foto sorgente chiare e istruzioni dirette di preservazione producono risultati più credibili e non espliciti.",
+    "items": [
+      {
+        "title": "Usa solo foto di adulti vestiti",
+        "desc": "Lo strumento è per immagini adulte basate sul consenso e con vestiti intatti. Evita minori, nudità, modifiche solo in intimo, richieste di esposizione del corpo o foto che non sei autorizzato a cambiare.",
+        "color": "linear-gradient(135deg, #e0e7ff, #6366f1)"
+      },
+      {
+        "title": "Mantieni leggibile il torso",
+        "desc": "Foto dalla vita in su, mezzo busto o corpo intero funzionano meglio quando area del petto, spalle, braccia e cuciture dei vestiti sono visibili.",
+        "color": "linear-gradient(135deg, #fce7f3, #db2777)"
+      },
+      {
+        "title": "Evita pose bloccate",
+        "desc": "Braccia incrociate, ombre forti, borse, capelli che coprono il petto, specchi o torso tagliato possono rendere più difficile preservare tessuto e proporzioni corporee.",
+        "color": "linear-gradient(135deg, #fef3c7, #f97316)"
+      },
+      {
+        "title": "Indica cosa deve restare fisso",
+        "desc": "Ripeti conserva volto, identità, posa, vita, fianchi, mani, copertura dei vestiti, sfondo, illuminazione e angolo di camera quando serve continuità precisa.",
+        "color": "linear-gradient(135deg, #ede9fe, #7c3aed)"
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "Livelli di prompt per aumento seno con IA",
+    "subtitle": "Scegli uno dei tre preset testuali nel generatore. Ogni opzione cambia solo il testo del prompt e non carica immagini preset.",
+    "items": [
+      {
+        "title": "Leggermente più pieno",
+        "prompt": "Make the breasts of the person in the image slightly fuller. Keep everything else in the image unchanged.",
+        "note": "Ideale per una regolazione leggera e naturale.",
+        "color": "linear-gradient(135deg, #e0e7ff, #a78bfa)"
+      },
+      {
+        "title": "Seno più pieno",
+        "prompt": "Make the breasts of the person in the image fuller. Keep everything else in the image unchanged.",
+        "note": "Ideale per un'anteprima più marcata ma ancora equilibrata.",
+        "color": "linear-gradient(135deg, #fce7f3, #ec4899)"
+      },
+      {
+        "title": "Molto pieno",
+        "prompt": "Make the breasts of the person in the image much fuller. Keep everything else in the image unchanged.",
+        "note": "Ideale per l'opzione più evidente di forma più piena.",
+        "color": "linear-gradient(135deg, #fef3c7, #f97316)"
+      }
+    ]
+  },
+  "workflowComparison": {
+    "title": "Aumento seno con IA vs modifica manuale del corpo",
+    "subtitle": "Usa l'IA per una direzione rapida, poi il ritocco manuale quando l'immagine finale richiede controllo a livello di pixel.",
+    "columns": [
+      "Flusso",
+      "Ideale per",
+      "Attenzioni"
+    ],
+    "rows": [
+      [
+        "Toolaze Aumento seno con IA",
+        "Anteprime rapide del seno su adulti vestiti, controlli di vestibilità del look, test di proporzione costume, concetti di stile per creatori e prime direzioni foto.",
+        "Controlla cuciture, ombre, mani, postura ed equilibrio del corpo prima di condividere o pubblicare."
+      ],
+      [
+        "Ritocco manuale",
+        "Modifiche commerciali precise, immagini moda approvate dal brand, asset finali di campagna e correzioni intorno a tessuti complessi.",
+        "Richiede più tempo e capacità di editing, soprattutto su pieghe del tessuto e linee del corpo."
+      ],
+      [
+        "Stile reale o servizio fotografico",
+        "Validazione finale della vestibilità, fotografia prodotto, consulenza medica, taglie di abbigliamento e decisioni reali sul corpo.",
+        "Richiede guardaroba, location, luci, tempo e spesso fotografo o stylist."
+      ]
+    ]
+  },
+  "scenesTitle": "Usi popolari dell'aumento seno con IA",
+  "scenes": [
+    {
+      "title": "Anteprime di vestibilità moda",
+      "desc": "Controlla come una maglia, un vestito, un costume da bagno o un abito di scena potrebbe apparire con una diversa proporzione del seno mantenendo il look vestito."
+    },
+    {
+      "title": "Stile per creatori e ritratto",
+      "desc": "Esplora una direzione naturale della forma del corpo per foto personali, thumbnail o concept board senza cambiare volto, posa, sfondo o illuminazione."
+    },
+    {
+      "title": "Pianificazione costume e personaggio",
+      "desc": "Visualizza una silhouette sobria per cosplay, reference di personaggio o pianificazione guardaroba prima di sartoria o modifica manuale."
+    }
+  ],
+  "features": {
+    "title": "Perché usare Toolaze per aumento seno con IA",
+    "items": [
+      {
+        "iconType": "workflow",
+        "title": "Anteprima corpo con una sola foto",
+        "desc": "Carica una foto di un adulto vestito e scegli uno dei tre preset testuali per aggiornare il campo prompt senza usare immagini preset."
+      },
+      {
+        "iconType": "guidance",
+        "title": "Prompt orientati alla preservazione",
+        "desc": "Il testo integrato dice al modello di mantenere stabili volto, identità, vita, fianchi, posa, copertura dei vestiti, sfondo, illuminazione e angolo di camera."
+      },
+      {
+        "iconType": "limits",
+        "title": "Confine non esplicito chiaro",
+        "desc": "Il contenuto è limitato ad anteprime adulte, vestite e consensuali, ed esclude nudità, rimozione di vestiti, minori, impersonificazione e modifiche esplicite."
+      }
+    ]
+  },
+  "moreToolsLinks": [
+    {
+      "title": "Generatore bikini con IA",
+      "description": "Visualizza modifiche sobrie di costumi da bagno per adulti con un flusso guidato da riferimento.",
+      "href": "/ai-bikini-generator"
+    },
+    {
+      "title": "Cambia vestiti con IA",
+      "description": "Cambia look in una foto di persona mantenendo posa e scena originali.",
+      "href": "/ai-clothes-changer"
+    },
+    {
+      "title": "Generatore da immagine a immagine IA",
+      "description": "Usa un flusso più ampio guidato da riferimento per restyling, modifiche foto e variazioni visive.",
+      "href": "/ai-image-to-image-generator"
+    }
+  ],
+  "faqTitle": "FAQ sull'aumento seno con IA",
+  "faq": [
+    {
+      "q": "Posso usare Toolaze gratis per aumento seno con IA?",
+      "a": "I nuovi utenti Toolaze ricevono 10 crediti gratis dopo la registrazione. Il costo di generazione può variare in base al modello immagine, alla risoluzione, alla modalità e alla politica crediti Toolaze mostrata nel generatore."
+    },
+    {
+      "q": "Che tipo di foto funziona meglio?",
+      "a": "Usa una foto di adulto vestito con parte superiore chiara, spalle visibili, tessuto leggibile e luce semplice. Le foto dalla vita in su, mezzo busto e corpo intero sono di solito più facili dei crop stretti o dei torsii coperti."
+    },
+    {
+      "q": "Il risultato sembrerà naturale?",
+      "a": "I risultati naturali dipendono da foto sorgente, vestiti, posa e prompt. Le regolazioni sottili di solito preservano meglio texture del tessuto ed equilibrio del corpo rispetto a cambiamenti estremi."
+    },
+    {
+      "q": "Quali foto posso usare?",
+      "a": "Usa solo foto di adulti, vestiti e consensuali. Non richiedere nudità, svestizione, contenuti espliciti, minori, impersonificazione o modifiche foto non autorizzate."
+    },
+    {
+      "q": "Questo strumento rimuove vestiti o crea nudità?",
+      "a": "No. Questa pagina è solo per anteprime di proporzioni corporee su adulti vestiti. Mantieni i vestiti intatti e usa lo strumento solo per modifiche di immagine consensuali e non esplicite."
+    },
+    {
+      "q": "È un consiglio medico o chirurgico?",
+      "a": "No. Il risultato è solo un'anteprima visiva per idee di stile e modifica immagini. Non deve essere usato per decisioni mediche, garanzie di taglia o pianificazione chirurgica."
+    }
+  ]
+}

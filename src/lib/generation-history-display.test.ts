@@ -160,3 +160,16 @@ test('returns AI Bikini Generator label for bikini generator history', () => {
     modelLabel: 'Seedream 5.0 Lite',
   })
 })
+
+test('returns AI Breast Expansion label before model for breast expansion history', () => {
+  assert.deepEqual(getWrappedHairToolHistoryDisplay({
+    model: 'wan-2-7-image',
+    toolSlug: 'ai-breast-expansion',
+    toolLabel: 'AI Breast Expansion',
+    sourcePath: '/ai-breast-expansion',
+  }), {
+    showToolLabel: true,
+    toolLabel: 'AI Breast Expansion',
+    modelLabel: 'Wan 2.7 Image',
+  })
+})

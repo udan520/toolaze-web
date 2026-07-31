@@ -39,6 +39,7 @@
 - 小型首屏布局、组件接线、文案微调默认不扩展后端 API、导航、sitemap、SEO Factory 记录或完整验证矩阵，除非改动实际触碰这些面。
 - 共享生成组件变更若影响真实生成请求、模型选择、上传、积分、历史记录或 API 参数，必须补针对性测试；否则优先用源码契约测试、类型检查和本地页面 smoke。
 - 新增或修改生成模型时，Vercel 前端模型清单与 Cloudflare 生成后端清单必须通过 `npm run check:generation-contract`。生产发布顺序固定为先发布 Cloudflare Production 契约与生成函数，再发布 Vercel Production；Cloudflare 线上契约版本不一致时，Vercel Production 构建必须失败，不得绕过后继续上线。
+- 新增或修改任何生成模型扣点时，定价必须以 **KIE 模型 API 定价** 为准，不使用 Google、Fal、Replicate、官方模型页或其它公开模型成本替代。先核对 KIE 模型页面展示价格，再核对 KIE MCP/模型 registry 中的 credits 价格；两者一致时按 `1 credit = $0.005` 和目标 200% 利润计算 Toolaze 扣点并落地测试。若 KIE 页面价与 KIE MCP/registry 价格不一致，必须先反馈差异、来源和建议扣点，等用户确认后再修改代码。
 
 ## SEO 页面与常驻视频资产规则
 
@@ -52,6 +53,10 @@
 - AI Clothes Changer 的内置服装参考图必须是真实可读的全身人像穿着该服装，而不是单独平铺衣服、裁切半身、抽象服装图或 UI 占位。默认内置 4 类：正式 business 西装、奢华礼服、黑色比基尼、另一款彩色/度假风比基尼；泳装示例必须是成人、非露骨、非性化的正常穿着展示。
 - 视频、聊天、多模态等非图片工具只有在免费额度、登录要求和限制已经明确时，才可在标题、H1、FAQ 或 CTA 中使用 `Free`。若免费来自注册赠送 credits，可覆盖一次真实生成，就应明确写出注册条件、credits 数量以及适用模型或设置；不得据此延伸成 `Unlimited Free`、`Free Forever`、`No Signup` 或 `No Login`，除非这些承诺也已单独验证。
 - 用户可见 SEO 文案不得出现“this page is built”“the page covers”“one model page”“search intent”等编辑、站点架构或 SEO 规划口吻；直接写能力、限制、设置、输出和用户决策依据。
+- 新增或改写任何 SEO 落地页后，必须对最终页面 JSON 和渲染 HTML 做一次用户可见文案负面扫描；至少覆盖 `this page`、`the page is designed`、`search intent`、`keyword`、`ranking`、`SEO`、`AI Overview`、`API platform`、`integration`、`provider route`、`Unlimited Free`、`Free Forever`、`No Signup`、`No Login` 等词，并修掉所有命中，除非命中属于开发文档或用户不可见字段。
+- 新增或改写带多语言 JSON 的 SEO 落地页时，不能只本地化 metadata、H1、导航或首屏描述；必须递归检查 intro、how-to、tips、prompt 示例标题/说明、对比表、features、FAQ、related tools、schema 可见文本等嵌套字段。除 URL、图片路径、模型名、品牌名、技术规格和刻意给用户复制的 prompt 外，非英文 locale 不得复用英文正文。
+- 任何页面标题、H1、meta description、FAQ 或 CTA 使用 `Free` / `免费` / `gratis` / `gratuit` 等免费承诺时，必须在同一页面可见位置说明真实条件：是否需要注册、赠送 credits 数量、可覆盖的模型或设置、以及更高规格或持续使用可能需要更多 credits；并用针对性测试或脚本断言禁止 `Unlimited Free`、`Free Forever`、`No Signup`、`No Login` 等未验证扩展承诺。
+- 新增或大改 SEO 页面时，必须补页面级内容契约测试或等价脚本，检查用户可见文案没有内部 SEO/编辑口吻、免费承诺已限定、多语言正文无英文残留，并同步检查 `src/data/{locale}` 与 `_codex/seo-pipeline/tasks/{taskId}/content/{locale}.json` 两份内容；不能只靠人工浏览或单个 locale smoke。
 - 模型对比和选择指南优先使用输入类型、参考数量、时长、分辨率、音频支持和 credits 等客观字段。模型下拉中已有的 Quality 评分属于独立产品 UI，除非任务明确要求，不因 SEO 文案清理而修改或删除。
 - 常驻提示词视频的可见 prompt、画幅、时长和输入方式必须与实际文件一致；资产清单至少记录稳定 URL、宽高、时长、发布日期、poster 和来源历史，更新任一侧时用测试校验映射。
 - 落地页常驻视频默认提供真实视频帧 poster，poster 使用 WebP 且在可行时小于 100KB；列表视频使用 `preload="none"` 并在进入视口后播放，避免首屏同时请求全部视频。

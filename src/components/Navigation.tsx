@@ -59,6 +59,8 @@ const defaultNavTranslations = {
   aiHairColorChanger: 'AI Hair Color Changer',
   aiClothesChanger: 'AI Clothes Changer',
   aiBikiniGenerator: 'AI Bikini Generator',
+  aiBreastExpansion: 'AI Breast Expansion',
+  unrestrictedAiImageGenerator: 'Unlimited AI Image',
   worldCupAiImageGenerator: 'World Cup AI Image Generator',
   fontGenerator: 'Font Generator',
   emojiCopyAndPaste: 'Emoji Copy & Paste',
@@ -151,11 +153,14 @@ const defaultCreditTypeTranslations: CreditTransactionTypeLabels = {
 }
 
 const AI_TOOLS_DEMO_IMAGES = {
+  unrestrictedAiImageGenerator:
+    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/unrestricted-ai-image-generator/pool-bikini-demo.webp',
   aiBabyGenerator: '/ai-baby-generator/hero-baby-portrait.webp',
   aiHairstyleChanger: '/ai-hairstyle-changer/hero-before-after.webp',
   aiHairColorChanger: '/ai-hair-color-changer/rose-pink-before-after.webp',
   aiClothesChanger: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/84b9bf50f4414a2c962ebd3f74cb07f0.webp',
   aiBikiniGenerator: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/6bcf91ffd06e45a8bcda2ea867015141.webp',
+  aiBreastExpansion: '/ai-breast-expansion/demo-before-after.webp',
   aiImageGenerator:
     'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/gpt-image-2.jpg',
   textToImageGenerator:
@@ -179,10 +184,12 @@ const AI_TOOLS_DEMO_IMAGES = {
 }
 
 type AiToolNavLabelKey =
+  | 'unrestrictedAiImageGenerator'
   | 'aiHairstyleChanger'
   | 'aiHairColorChanger'
   | 'aiClothesChanger'
   | 'aiBikiniGenerator'
+  | 'aiBreastExpansion'
   | 'aiBabyGenerator'
   | 'aiCouplePhotoMaker'
   | 'worldCupAiImageGenerator'
@@ -201,10 +208,12 @@ type AiToolMenuItem = {
 }
 
 const AI_IMAGE_TOOL_MENU_ITEMS: readonly AiToolMenuItem[] = [
+  { href: '/unrestricted-ai-image-generator', labelKey: 'unrestrictedAiImageGenerator', imageKey: 'unrestrictedAiImageGenerator', hot: true },
   { href: '/ai-hairstyle-changer', labelKey: 'aiHairstyleChanger', imageKey: 'aiHairstyleChanger' },
   { href: '/ai-hair-color-changer', labelKey: 'aiHairColorChanger', imageKey: 'aiHairColorChanger' },
   { href: '/ai-clothes-changer', labelKey: 'aiClothesChanger', imageKey: 'aiClothesChanger' },
   { href: '/ai-bikini-generator', labelKey: 'aiBikiniGenerator', imageKey: 'aiBikiniGenerator' },
+  { href: '/ai-breast-expansion', labelKey: 'aiBreastExpansion', imageKey: 'aiBreastExpansion' },
   { href: '/ai-baby-generator', labelKey: 'aiBabyGenerator', imageKey: 'aiBabyGenerator' },
   { href: '/ai-couple-photo-maker', labelKey: 'aiCouplePhotoMaker', imageKey: 'aiCouplePhotoMaker' },
   { href: '/world-cup-ai-image-generator', labelKey: 'worldCupAiImageGenerator', imageKey: 'worldCupAiImageGenerator' },

@@ -5,6 +5,7 @@ import {
   getVideoGenerationCreditRefundDescription,
 } from '../_shared/generation-credit-label.mjs';
 import { attachGenerationTaskIdToConsumption } from '../_shared/generation-task-access.mjs';
+import { calculateVideoGenerationCredits } from '../_shared/generation-credits.mjs';
 
 const KIE_AI_BASE = 'https://api.kie.ai/api/v1/jobs';
 const INFINITALK_MODEL_ID = 'infinitalk';
@@ -37,9 +38,10 @@ function normalizeResolution(value) {
   return resolution === '720p' ? '720p' : '480p';
 }
 
-function getRequiredCredits(resolution) {
-  // Initial fixed ladder for the Infinitalk MVP until product pricing is finalized.
-  return resolution === '720p' ? 90 : 45;
+function normalizeDurationSeconds(value) {
+  const duration = Number(value);
+  if (!Number.isFinite(duration) || duration <= 0) return 15;
+  return Math.max(1, Math.min(15, Math.ceil(duration)));
 }
 
 async function consumeTalkingAvatarCredits(env, request, requiredCredits, metadata) {
@@ -118,6 +120,7 @@ export async function onRequest(context) {
     const audioUrl = readString(formData, 'audioUrl');
     const prompt = readString(formData, 'prompt');
     const resolution = normalizeResolution(readString(formData, 'resolution'));
+    const durationSeconds = normalizeDurationSeconds(readString(formData, 'durationSeconds'));
 
     if (!imageUrl) return jsonResponse({ error: 'Portrait image URL is required.' }, 400);
     if (!audioUrl) return jsonResponse({ error: 'Audio URL is required.' }, 400);
@@ -128,7 +131,10 @@ export async function onRequest(context) {
       return jsonResponse({ error: 'API key not configured (KIE_AI_API_KEY)' }, 500);
     }
 
-    const requiredCredits = getRequiredCredits(resolution);
+    const requiredCredits = calculateVideoGenerationCredits(INFINITALK_MODEL_ID, resolution, durationSeconds);
+    if (!requiredCredits) {
+      return jsonResponse({ error: 'Video pricing is not configured for this model.' }, 500);
+    }
     creditMetadata = {
       model: INFINITALK_MODEL_ID,
       modelLabel: 'Infinitalk',
@@ -136,6 +142,7 @@ export async function onRequest(context) {
       mode: 'image-to-video',
       mediaType: 'video',
       resolution,
+      durationSeconds,
       requiredCredits,
       toolSlug: 'talking-avatar-creator',
       toolLabel: 'AI Talking Avatar',

@@ -511,6 +511,8 @@ const HAIR_COLOR_SWATCHES: Record<string, string> = {
   'lavender purple': 'linear-gradient(135deg, #ddd6fe, #7c3aed)',
 }
 
+const BREAST_EXPANSION_PRESET_GROUP = 'breast-expansion-level'
+
 const getPromptPresetSwatchStyle = (preset: PromptPreset): React.CSSProperties => {
   const swatch = (preset.swatch || preset.color || HAIR_COLOR_SWATCHES[preset.label.toLowerCase()] || 'linear-gradient(135deg, #6366f1, #ec4899)').trim()
 
@@ -526,6 +528,50 @@ const getPromptPresetSwatchStyle = (preset: PromptPreset): React.CSSProperties =
     background: swatch,
     backgroundColor: swatch,
   }
+}
+
+const BreastExpansionPresetIcon = ({ label }: { label: string }) => {
+  const normalizedLabel = label.toLowerCase()
+  const icon = normalizedLabel.includes('super')
+    ? {
+        left: 'M48 29C42 21 27 23 21 35C15 48 26 58 39 57C45 56 48 49 48 42',
+        right: 'M48 29C54 21 69 23 75 35C81 48 70 58 57 57C51 56 48 49 48 42',
+        center: 'M48 28C46 35 46 43 48 50',
+        lower: 'M24 53C33 61 43 59 48 51C53 59 63 61 72 53',
+      }
+    : normalizedLabel.includes('fuller breasts')
+      ? {
+          left: 'M48 31C43 25 31 26 26 35C21 45 29 53 39 52C44 51 47 46 48 40',
+          right: 'M48 31C53 25 65 26 70 35C75 45 67 53 57 52C52 51 49 46 48 40',
+          center: 'M48 30C47 36 47 42 48 47',
+          lower: 'M27 50C35 56 43 55 48 49C53 55 61 56 69 50',
+        }
+      : {
+          left: 'M48 33C44 28 35 29 31 36C27 43 33 49 40 48C44 47 47 43 48 39',
+          right: 'M48 33C52 28 61 29 65 36C69 43 63 49 56 48C52 47 49 43 48 39',
+          center: 'M48 32C47 37 47 41 48 44',
+          lower: 'M31 47C37 51 43 50 48 46C53 50 59 51 65 47',
+        }
+
+  return (
+    <svg
+      viewBox="0 0 96 64"
+      aria-hidden="true"
+      className="h-full w-full"
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M33 12c0 7-4 12-11 15-7 4-11 11-12 23" strokeWidth="3.5" opacity="0.72" />
+      <path d="M63 12c0 7 4 12 11 15 7 4 11 11 12 23" strokeWidth="3.5" opacity="0.72" />
+      <path d="M34 15c4 4 9 6 14 6s10-2 14-6" strokeWidth="3" opacity="0.55" />
+      <path d={icon.left} strokeWidth="3.8" />
+      <path d={icon.right} strokeWidth="3.8" />
+      <path d={icon.center} strokeWidth="2.8" opacity="0.7" />
+      <path d={icon.lower} strokeWidth="2.8" opacity="0.42" />
+    </svg>
+  )
 }
 
 interface AiImageGenerationToolProps {
@@ -1385,6 +1431,9 @@ export default function AiImageGenerationTool({
     if (promptPresetTabs.length === 0) return true
     return preset.group === activePromptPresetTab
   })
+  const hasBreastExpansionPromptPresets = visiblePromptPresets.some(
+    (preset) => preset.group === BREAST_EXPANSION_PRESET_GROUP
+  )
 
   const selectedPromptPresetReferenceImage = (() => {
     const preset = promptPresets.find((item) => item.label === selectedPromptPreset)
@@ -3980,7 +4029,7 @@ export default function AiImageGenerationTool({
                     onRemove: () => removeImage(index),
                     onReplace: (file: File) => replaceLocalImageWithFile(index, file),
                   })),
-                ]}
+                ].slice(0, personUploadMaxImages)}
                 maxImages={personUploadMaxImages}
                 maxFileSizeMb={MAX_FILE_SIZE_MB}
                 onFiles={handleFiles}
@@ -4019,7 +4068,7 @@ export default function AiImageGenerationTool({
                     onRemove: () => removeClothingReferenceImage(index),
                     onReplace: (file: File) => replaceClothingReferenceLocalImageWithFile(index, file),
                   })),
-                ]}
+                ].slice(0, clothingReferenceMaxImages)}
                 maxImages={clothingReferenceMaxImages}
                 maxFileSizeMb={MAX_FILE_SIZE_MB}
                 onFiles={handleClothingReferenceFiles}
@@ -4152,10 +4201,13 @@ export default function AiImageGenerationTool({
                           ? 'grid grid-cols-4 gap-2'
                           : hasImagePromptPresets
                             ? 'grid grid-cols-3 gap-2'
-                            : 'grid grid-cols-4 gap-3'
+                            : hasBreastExpansionPromptPresets
+                              ? 'grid grid-cols-3 gap-2'
+                              : 'grid grid-cols-4 gap-3'
                       }>
                       {visiblePromptPresets.map((preset) => {
                         const hasImage = Boolean(preset.image)
+                        const isBreastExpansionPreset = preset.group === BREAST_EXPANSION_PRESET_GROUP
                         return (
                           <button
                             key={preset.label}
@@ -4189,6 +4241,15 @@ export default function AiImageGenerationTool({
                                   />
                                 </span>
                                 <span className="block truncate px-1 py-1 text-center text-[10px] font-semibold text-slate-600">
+                                  {preset.label}
+                                </span>
+                              </>
+                            ) : isBreastExpansionPreset ? (
+                              <>
+                                <span className="flex aspect-[4/3] w-full items-center justify-center bg-[#F8FAFC] px-4 py-3 text-slate-700 transition-colors group-hover:bg-[#EEF2FF] group-hover:text-[#4F46E5]">
+                                  <BreastExpansionPresetIcon label={preset.label} />
+                                </span>
+                                <span className="block px-2 py-2 text-center text-[11px] font-semibold text-slate-700">
                                   {preset.label}
                                 </span>
                               </>

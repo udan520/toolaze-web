@@ -1,0 +1,275 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "text-to-image",
+    "modelId": "wan-2-7-image",
+    "displayName": "KI-Bildgenerator mit weniger Einschränkungen",
+    "defaultPrompt": "Create a cinematic dark fantasy character concept sheet for an original warrior queen in obsidian armor, with three full-body poses, close-up face details, weapon variants, readable labels, controlled lighting, and a polished game-art presentation. Keep the character adult, original, non-celebrity, and non-explicit.",
+    "hideModelBranding": false,
+    "compactResultPanel": true,
+    "sampleImages": [
+      {
+        "url": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/unrestricted-ai-image-generator/pool-bikini-demo.webp",
+        "title": "Poolside-Bikini-Demo",
+        "width": 880,
+        "height": 495
+      }
+    ],
+    "textOverrides": {
+      "promptLabel": "Beschreiben Sie das gewünschte Bild",
+      "promptPlaceholder": "Beschreiben Sie eine originale Szene, Figur, ein Poster, Produktkonzept oder einen Edit. Nennen Sie Stil, Komposition, Kamera, Licht, Format und Grenzen.",
+      "generateLabel": "KI-Bildgenerator mit weniger Einschränkungen",
+      "safetyHelper": "Ja. Nutzen Sie es, wenn eine Referenz Komposition, Pose, Raum, Produktform oder Stil führen soll. Verwenden Sie nur erlaubte Bilder."
+    }
+  },
+  "metadata": {
+    "title": "Unrestricted & Unlimited KI-Bildgenerator online | Toolaze",
+    "description": "Nutzen Sie Toolaze als unrestricted und unlimited-style KI-Bildgenerator online für breitere Bildideen, weniger unnötige Prompt-Umschreibungen, direkte Kontrolle und klare kreative Grenzen."
+  },
+  "sectionsOrder": [
+    "intro",
+    "howToUse",
+    "promptExamples",
+    "workflowComparison",
+    "photoTips",
+    "scenes",
+    "features",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Unrestricted & <span class=\"text-gradient\">Unlimited KI-Bildgenerator</span> online",
+    "desc": "Erstellen Sie mutige originale Konzepte mit einem unlimited-style Bildgenerator für breitere Prompt-Kontrolle, weniger unnötige Umschreibungen und klare kreative Grenzen."
+  },
+  "intro": {
+    "title": "Was unrestricted und unlimited-style KI-Bildgenerierung auf Toolaze bedeutet",
+    "content": [
+      {
+        "title": "Unlimited-style Prompt-Kontrolle",
+        "text": "Nutzen Sie Toolaze, wenn Sie das Gefühl eines unlimited AI image generator suchen: weniger unnötige Umschreibungen, direktere Kontrolle über Stil, Komposition, Ton und Referenzen."
+      },
+      {
+        "title": "No-restriction Sprache mit Verantwortung",
+        "text": "No-restriction AI image generator bedeutet nicht regel- oder grenzenlos. Toolaze erlaubt breitere kreative Details, bleibt aber legal, verantwortungsvoll, erlaubnisbasiert und nicht explizit."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "So nutzen Sie den Unrestricted / Unlimited KI-Bildgenerator",
+    "steps": [
+      {
+        "title": "Direkten Prompt schreiben",
+        "desc": "Beschreiben Sie Motiv, Stil, Stimmung, Licht, Komposition und Ausgabeformat."
+      },
+      {
+        "title": "Referenz ergänzen",
+        "desc": "Wechseln Sie zu Bild-zu-Bild, wenn Layout, Pose, Produkt oder Raum erhalten bleiben soll."
+      },
+      {
+        "title": "Grenzen definieren",
+        "desc": "Schreiben Sie, was original bleiben, vermieden oder ausgeschlossen werden soll."
+      },
+      {
+        "title": "Generieren und verfeinern",
+        "desc": "Prüfen Sie das Ergebnis und präzisieren Sie Kamera, Material, Typografie oder Farbe."
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "Prompt-Ideen für mehr kreative Kontrolle",
+    "subtitle": "Nutzen Sie diese vier Strukturen als Startpunkt und passen Sie Motiv, Ton, Format und Grenzen an.",
+    "layout": "grid",
+    "items": [
+      {
+        "title": "Dunkles Fantasy-Charakterblatt",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/gpt-image-2/prompt-character-sheet.webp",
+        "aspectRatio": "16:9",
+        "prompt": "Create a cinematic dark fantasy character concept sheet for an original warrior queen in obsidian armor, with three full-body poses, close-up face details, weapon variants, readable labels, controlled lighting, and a polished game-art presentation. Keep the character adult, original, non-celebrity, and non-explicit.",
+        "note": "Für originale Fantasy-Figuren."
+      },
+      {
+        "title": "Sci-Fi-Action-Storyboard",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/gpt-image-2/prompt-storyboard.webp",
+        "aspectRatio": "16:9",
+        "prompt": "Create a widescreen sci-fi action storyboard with four clean panels showing an original pilot escaping a neon orbital station, dynamic camera angles, readable panel captions, smoke, sparks, motion blur, and a polished cinematic color grade. Keep it intense but non-graphic.",
+        "note": "Für Actionplanung ohne grafische Details."
+      },
+      {
+        "title": "Synthwave-Albumplakat",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/gpt-image-2/prompt-product-poster.webp",
+        "aspectRatio": "16:9",
+        "prompt": "Create a bold album-cover style poster for an imaginary synthwave artist named NIGHT SIGNAL, with large readable typography, chrome lettering, a surreal city skyline, dramatic magenta-blue lighting, and a print-ready square composition.",
+        "note": "Für textstarke Posterideen."
+      },
+      {
+        "title": "Surreales Innenraumkonzept",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/seedream-4-5/prompt-interior-redesign.webp",
+        "aspectRatio": "16:9",
+        "prompt": "Create a surreal interior design concept for a private creative studio inside a glass cliffside room, with sculptural furniture, warm natural light, plants, art objects, clean spatial layout, and realistic materials. No people, no brands, no logos.",
+        "note": "Für Raumkonzepte und Stimmung."
+      }
+    ]
+  },
+  "workflowComparison": {
+    "title": "Unlimited-style Generierung im Vergleich zu starren Tools",
+    "subtitle": "Nutzen Sie Toolaze, wenn Ihr Konzept präzisere Steuerung braucht als ein Generator mit starren Einschränkungen.",
+    "columns": [
+      "Entscheidungspunkt",
+      "Starres Tool",
+      "Toolaze flexible Generierung"
+    ],
+    "rows": [
+      [
+        "Prompt-Kontrolle",
+        "Formuliert starke Ideen oft allgemeiner um.",
+        "Erhält die kreative Richtung klarer, solange sie zu den Nutzungsregeln passt."
+      ],
+      [
+        "Kreative Bandbreite",
+        "Eignet sich vor allem für häufige Standardmotive.",
+        "Unterstützt Fantasy, Kino-Looks, Poster, Konzeptkunst, Produkte, Räume und Referenz-Edits."
+      ],
+      [
+        "Referenzbearbeitung",
+        "Trennt Text-zu-Bild und Bild-zu-Bild oft deutlich.",
+        "Verbindet Prompt-Ideen mit referenzgeführten Toolaze-Bildabläufen."
+      ],
+      [
+        "Transparenz",
+        "Scheitert manchmal ohne klare Erklärung.",
+        "Zeigt Grenzen klarer, damit Prompts gezielt verbessert werden können."
+      ]
+    ]
+  },
+  "photoTips": {
+    "title": "Bessere Prompts für unlimited-style Bildgenerierung",
+    "subtitle": "Ein starker unrestricted oder unlimited-style Prompt ist spezifisch, originell und klar begrenzt.",
+    "items": [
+      {
+        "title": "Motiv definieren",
+        "desc": "Nennen Sie Motiv, Umgebung, Pose, Stilrichtung und Zweck, bevor Sie Stilwörter ergänzen."
+      },
+      {
+        "title": "Komposition steuern",
+        "desc": "Beschreiben Sie Kamera, Bildausschnitt, Seitenverhältnis, Hintergrunddichte und Textplatzierung."
+      },
+      {
+        "title": "Rechte schützen",
+        "desc": "Nutzen Sie eigene oder lizenzierte Referenzen und vermeiden Sie private Personen, Minderjährige und täuschende Edits."
+      },
+      {
+        "title": "Schwache Verbote ersetzen",
+        "desc": "Beschreiben Sie das erlaubte Endergebnis klar und nennen Sie, was original, nicht explizit oder markenfrei bleiben soll."
+      }
+    ]
+  },
+  "scenesTitle": "Beste Einsätze für unrestricted und unlimited-style KI-Bilder",
+  "scenes": [
+    {
+      "title": "Konzeptkunst",
+      "desc": "Erstellen Sie originale Figuren, Welten, Requisiten, Kostüme, Poster und Key Art mit präziser Richtung."
+    },
+    {
+      "title": "Marketing-Visuals",
+      "desc": "Entwerfen Sie Cover, Kampagnenposter, Thumbnails, Social Ads, Produktideen und textreiche Layouts."
+    },
+    {
+      "title": "Referenzgeführte Edits",
+      "desc": "Nutzen Sie Bild-zu-Bild für Stimmung, Komposition, Produkte, Räume, Posen oder Stilreferenzen."
+    }
+  ],
+  "features": {
+    "title": "Warum Creator Toolaze als unlimited-style Bildgenerator nutzen",
+    "items": [
+      {
+        "title": "Direkte Prompt-Absicht",
+        "desc": "Klare Textanweisungen machen Richtung, Ton, Rahmen und Stil leichter steuerbar."
+      },
+      {
+        "title": "Bild-zu-Bild-Unterstützung",
+        "desc": "Nutzen Sie Referenzen, wenn Layout, Produkt, Figur oder Raum konsistent bleiben sollen."
+      },
+      {
+        "title": "Klare Grenzen",
+        "desc": "Der Ablauf fördert sichere, originale und erlaubnisbasierte Nutzung."
+      },
+      {
+        "title": "Wiederverwendbare Beispiele",
+        "desc": "Starten Sie mit strukturierten Prompts für Figuren, Szenen, Poster und Innenräume."
+      },
+      {
+        "title": "Toolaze-Bildsystem",
+        "desc": "Kombinieren Sie diesen Generator bei Bedarf mit KI-Bildgenerator, KI-Bild-zu-Bild-Generator und weiteren Bildtools."
+      },
+      {
+        "title": "Schnelle Online-Iteration",
+        "desc": "Generieren, prüfen und verfeinern Sie ohne lokale Modellumgebung."
+      }
+    ]
+  },
+  "faqTitle": "FAQ zum flexiblen KI-Bildgenerator",
+  "faq": [
+    {
+      "q": "Was ist ein unrestricted oder unlimited KI-Bildgenerator?",
+      "a": "Er ist für breitere kreative Prompts, stärkere Stilkontrolle und weniger unnötige generische Umschreibungen gedacht, bleibt auf Toolaze aber an klare kreative Grenzen gebunden."
+    },
+    {
+      "q": "Ist Toolaze ein no-restriction AI image generator?",
+      "a": "Toolaze unterstützt breitere originale Konzepte und weniger starre Prompt-Umschreibungen, ist aber nicht buchstäblich unlimited oder regel-frei."
+    },
+    {
+      "q": "Kann ich Bild-zu-Bild verwenden?",
+      "a": "Ja. Nutzen Sie es, wenn eine Referenz Komposition, Pose, Raum, Produktform oder Stil führen soll. Verwenden Sie nur erlaubte Bilder."
+    },
+    {
+      "q": "Ist es kostenlos testbar?",
+      "a": "Der Zugriff hängt von Konto, Modellverfügbarkeit, Credits und Einstellungen ab. Prüfen Sie vor der Generierung die aktuellen Hinweise im Tool."
+    },
+    {
+      "q": "Wie bekomme ich bessere Ergebnisse?",
+      "a": "Schreiben Sie konkrete Prompts mit Motiv, Stil, Licht, Kamera, Komposition, Ausgabeformat und Grenzen."
+    },
+    {
+      "q": "Welches Seitenverhältnis sollte ich wählen?",
+      "a": "Nutze 16:9 für filmische Banner und weite Szenen, 1:1 für quadratische Social Posts und vertikale Formate für Porträts oder mobile Bilder."
+    }
+  ],
+  "moreTools": "Weitere KI-Bildtools",
+  "moreToolsLinks": [
+    {
+      "slug": "ai-image-generator",
+      "title": "KI-Bildgenerator",
+      "description": "Nutzen Sie den breiteren Toolaze-Bildbereich für Text-zu-Bild, Social Visuals und Kampagnenentwürfe.",
+      "href": "/ai-image-generator",
+      "media": {
+        "type": "image",
+        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/gpt-image-2.jpg",
+        "alt": "KI-Bildgenerator"
+      }
+    },
+    {
+      "slug": "ai-image-to-image-generator",
+      "title": "KI-Bild-zu-Bild-Generator",
+      "description": "Laden Sie eine Referenz hoch und transformieren Sie sie per Prompt.",
+      "href": "/ai-image-to-image-generator",
+      "media": {
+        "type": "image",
+        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/gpt-image-2/feature-image-editing.webp",
+        "alt": "KI-Bild-zu-Bild-Generator"
+      }
+    },
+    {
+      "slug": "ai-clothes-changer",
+      "title": "KI-Kleiderwechsler",
+      "description": "Vorschau für modische, sichere Outfit-Konzepte.",
+      "href": "/ai-clothes-changer",
+      "media": {
+        "type": "image",
+        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/84b9bf50f4414a2c962ebd3f74cb07f0.webp",
+        "alt": "KI-Kleiderwechsler"
+      }
+    }
+  ]
+}

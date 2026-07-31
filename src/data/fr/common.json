@@ -62,10 +62,10 @@
     "aiClothesChanger": "Changeur de vêtements IA",
     "wan25Video": "Vidéo Wan 2.5",
     "klingAiVideoGenerator": "Générateur de vidéo IA Kling",
-    "aiBikiniGenerator": "Générateur de bikini IA"
-,
-    "talkingAvatarCreator": "Avatar parlant IA"
-
+    "aiBikiniGenerator": "Générateur de bikini IA",
+    "unrestrictedAiImageGenerator": "Image IA Unlimited",
+    "talkingAvatarCreator": "Avatar parlant IA",
+    "aiBreastExpansion": "Augmentation de poitrine IA"
   },
   "home": {
     "metadata": {
@@ -135,6 +135,14 @@
       "ai-bikini-generator": {
         "cardTitle": "Générateur de bikini IA",
         "summary": "Importez une photo adulte et une référence bikini pour prévisualiser des retouches swimwear sobres en conservant la personne."
+      },
+      "unrestricted-ai-image-generator": {
+        "cardTitle": "Générateur IA Unrestricted / Unlimited",
+        "summary": "Créez des concepts visuels unlimited-style plus larges avec texte vers image, image vers image, contrôle direct du prompt et limites créatives claires."
+      },
+      "ai-breast-expansion": {
+        "cardTitle": "Augmentation de poitrine IA",
+        "summary": "Importez une photo d’adulte habillé et prévisualisez des retouches naturelles de poitrine en gardant personne, vêtements, pose et scène."
       }
     },
     "aiToolsHubTitle": "Outils IA Gratuits pour les Images, la Vidéo et les Flux de Travail Média Quotidiens",
@@ -296,10 +304,10 @@
     "aiClothesChanger": "Changeur de vêtements IA",
     "wan25Video": "Vidéo Wan 2.5",
     "klingAiVideoGenerator": "Générateur de vidéo IA Kling",
-    "aiBikiniGenerator": "Générateur de bikini IA"
-,
-    "talkingAvatarCreator": "Avatar parlant IA"
-
+    "aiBikiniGenerator": "Générateur de bikini IA",
+    "unrestrictedAiImageGenerator": "Générateur IA Unrestricted / Unlimited",
+    "talkingAvatarCreator": "Avatar parlant IA",
+    "aiBreastExpansion": "Augmentation de poitrine IA"
   },
   "breadcrumb": {
     "home": "Accueil",

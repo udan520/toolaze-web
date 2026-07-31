@@ -77,3 +77,14 @@ test('uses AI Bikini Generator as the feature label for bikini route metadata', 
     },
   )
 })
+
+test('uses AI Breast Expansion as the feature label for breast expansion route metadata', () => {
+  assert.deepEqual(
+    getHistoryToolMetadata('/ai-breast-expansion', 'Wan 2.7 Image', 'wan-2-7-image'),
+    {
+      toolSlug: 'ai-breast-expansion',
+      toolLabel: 'AI Breast Expansion',
+      sourcePath: '/ai-breast-expansion',
+    },
+  )
+})

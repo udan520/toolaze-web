@@ -27,6 +27,7 @@ const aiBikiniGeneratorPath = new URL('../data/en/ai-bikini-generator.json', imp
 const aiBikiniGeneratorContent = existsSync(aiBikiniGeneratorPath)
   ? JSON.parse(readFileSync(aiBikiniGeneratorPath, 'utf8'))
   : null
+const aiBreastExpansionContent = JSON.parse(readFileSync(new URL('../data/en/ai-breast-expansion.json', import.meta.url), 'utf8'))
 const aiDanceLocales = ['en', 'de', 'es', 'fr', 'it', 'ja', 'ko', 'pt', 'zh-TW']
 const aiDanceLocaleContent = Object.fromEntries(
   aiDanceLocales.map((locale) => [
@@ -341,6 +342,45 @@ test('AI Clothes Changer renders clothing presets as four compact import shortcu
 test('AI Clothes Changer uses Seedream 5.0 Lite for generation', () => {
   assert.equal(aiClothesChangerContent.topTool?.modelId, 'seedream-5-0-lite')
   assert.doesNotMatch(JSON.stringify(aiClothesChangerContent), /GPT Image 2/)
+})
+
+test('AI Breast Expansion renders three full-width line illustration prompt choices', () => {
+  const presets = aiBreastExpansionContent.topTool?.functionalAcceptance?.presets || []
+
+  assert.equal(presets.length, 3)
+  for (const preset of presets) {
+    assert.equal(preset.group, 'breast-expansion-level')
+    assert.equal(preset.image, undefined)
+    assert.equal(preset.referenceImage, undefined)
+    assert.equal(preset.swatch, undefined)
+  }
+  assert.match(aiImageToolSource, /BREAST_EXPANSION_PRESET_GROUP = 'breast-expansion-level'/)
+  assert.match(aiImageToolSource, /const BreastExpansionPresetIcon/)
+  assert.match(aiImageToolSource, /hasBreastExpansionPromptPresets[\s\S]*\? 'grid grid-cols-3 gap-2'/)
+})
+
+test('AI Breast Expansion is discoverable from public Toolaze entry points in every locale', () => {
+  assert.match(navigationSource, /aiBreastExpansion/)
+  assert.match(navigationSource, /href: '\/ai-breast-expansion'/)
+  assert.match(footerSource, /aiBreastExpansion/)
+  assert.match(footerSource, /href=\{getLocalizedHref\('\/ai-breast-expansion'\)\}/)
+  assert.match(homepageGridToolsSource, /\{ id: 'ai-breast-expansion', usesAi: true \}/)
+  assert.match(homeAdvancedAiCardImagesSource, /'ai-breast-expansion'/)
+  assert.match(homeAdvancedAiCardImagesSource, /\/ai-breast-expansion\/demo-before-after\.webp/)
+  assert.match(aiToolsCopySource, /breastExpansion:/)
+  assert.match(aiToolsCopySource, /href: '\/ai-breast-expansion'/)
+  assert.match(aiToolsCopySource, /cardAssets\.breastExpansion/)
+  assert.match(aiToolsCopySource, /'\/ai-breast-expansion': supplemental\.breastExpansion/)
+
+  for (const locale of aiDanceLocales) {
+    const common = JSON.parse(readFileSync(new URL(`../data/${locale}/common.json`, import.meta.url), 'utf8'))
+    assert.ok(common.nav?.aiBreastExpansion?.trim(), `${locale} nav.aiBreastExpansion should exist`)
+    assert.ok(common.footer?.aiBreastExpansion?.trim(), `${locale} footer.aiBreastExpansion should exist`)
+    assert.ok(
+      common.home?.homepageToolCardSummaries?.['ai-breast-expansion']?.summary?.trim(),
+      `${locale} home summary should exist`,
+    )
+  }
 })
 
 test('AI Clothes Changer presets use four generated R2 clothing references', () => {

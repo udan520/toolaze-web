@@ -1,0 +1,29 @@
+{
+  "taskId": "2026-07-31-ai-breast-expansion",
+  "slug": "ai-breast-expansion",
+  "pageType": "l2",
+  "pageGroup": "ai-tools",
+  "status": "ready_for_publish",
+  "tool": "ai-breast-expansion",
+  "topic": "AI Breast Expansion landing page",
+  "generatedBy": "Seo-Factory local pipeline",
+  "createdAt": "2026-07-31T00:00:00+08:00",
+  "modelInstruction": "Default to Wan 2.7 Image for the single-image, consent-based, clothed adult body proportion preview while leaving the model selector visible. Prompt constraints must preserve face, identity, pose, clothing coverage, background, lighting, and all non-target body areas.",
+  "localeCoverage": [
+    "en"
+  ],
+  "sourceData": "src/data/en/ai-breast-expansion.json",
+  "canonicalPath": "/ai-breast-expansion",
+  "releaseBoundary": "This change creates English landing-page content, a root route, SEO Factory records, sitemap inclusion, and English-only locale fallback. Full public navigation, homepage cards, AI Tools hub entries, localized copy, dedicated R2 demo media, commits, pushes, and production deploys remain excluded.",
+  "notes": [
+    "The page is scoped to clothed adult bust-size preview and body-proportion planning.",
+    "Prompts require consent, adult subjects, intact clothing, non-explicit results, and preservation of all non-target areas.",
+    "The page avoids no-signup, unlimited-free, medical, surgical, or explicit claims."
+  ],
+  "outputs": [
+    "src/app/ai-breast-expansion/page.tsx",
+    "src/app/[locale]/ai-breast-expansion/page.tsx",
+    "_codex/seo-pipeline/tasks/2026-07-31-ai-breast-expansion/content/en.json",
+    "src/data/en/ai-breast-expansion.json"
+  ]
+}

@@ -24,6 +24,7 @@ const WRAPPED_IMAGE_TOOL_SLUGS = new Set([
   'ai-hairstyle-changer',
   'ai-hair-color-changer',
   'ai-clothes-changer',
+  'ai-breast-expansion',
   'photo-restoration',
   'watermark-remover',
 ]);

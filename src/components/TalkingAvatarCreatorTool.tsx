@@ -19,6 +19,7 @@ import {
 import type { GenerationAuthState } from '@/lib/generation-auth-state'
 import { isCreditExhaustedGenerationError } from '@/lib/generation-error-classifier'
 import { normalizeReusableReferenceImageUrl } from '@/lib/history-reprompt'
+import { calculateVideoGenerationCredits } from '@/lib/generation-credits'
 
 type Resolution = '480p' | '720p'
 type RightPanelMode = 'sample' | 'history'
@@ -83,6 +84,7 @@ interface TalkingAvatarCreatorToolProps {
 interface UploadFileState {
   file: File
   preview?: string
+  durationSeconds?: number
 }
 
 interface PendingAudioTrimState {
@@ -120,6 +122,7 @@ interface TalkingAvatarGenerationRequest {
   createdAt: string
   startedAt: number
   status: TalkingAvatarGenerationStatus
+  durationSeconds: number
   taskId?: string
   creditHold?: unknown
   taskProvider?: string
@@ -229,10 +232,6 @@ function isImageFile(file: File) {
   return file.type.startsWith('image/')
 }
 
-function getRequiredCredits(resolution: Resolution) {
-  return resolution === '720p' ? 90 : 45
-}
-
 const DEFAULT_REFERENCE_AUDIO_NAME = 'Reference audio'
 const TALKING_AVATAR_TOOL_SLUG = 'talking-avatar-creator'
 const PENDING_REPROMPT_STORAGE_KEY = 'toolaze:pending-reprompt'
@@ -241,6 +240,12 @@ const MAX_REFERENCE_AUDIO_SECONDS = 15
 const AUDIO_DURATION_SAFETY_BUFFER_SECONDS = 0.5
 const MAX_REFERENCE_AUDIO_EXPORT_SECONDS = MAX_REFERENCE_AUDIO_SECONDS - AUDIO_DURATION_SAFETY_BUFFER_SECONDS
 const MIN_REFERENCE_AUDIO_SECONDS = 1
+
+function normalizeBillingDurationSeconds(value: number | null | undefined) {
+  const duration = Number(value)
+  if (!Number.isFinite(duration) || duration <= 0) return MAX_REFERENCE_AUDIO_SECONDS
+  return Math.max(MIN_REFERENCE_AUDIO_SECONDS, Math.min(MAX_REFERENCE_AUDIO_SECONDS, Math.ceil(duration)))
+}
 
 function getRemoteMediaName(url: string, fallback: string) {
   const cleanUrl = url.split('?')[0]?.split('#')[0] || ''
@@ -257,7 +262,7 @@ function isPersistedTalkingAvatarHistoryItem(item: PersistedTalkingAvatarHistory
 }
 
 function formatAudioTime(seconds: number) {
-  const safeSeconds = Math.max(0, Math.round(seconds))
+  const safeSeconds = Math.max(0, Math.ceil(Number.isFinite(seconds) ? seconds : 0))
   const minutes = Math.floor(safeSeconds / 60)
   const remainingSeconds = safeSeconds % 60
   return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`
@@ -433,6 +438,7 @@ export default function TalkingAvatarCreatorTool({
   const [remoteImageUrl, setRemoteImageUrl] = useState('')
   const [remoteAudioUrl, setRemoteAudioUrl] = useState('')
   const [remoteAudioName, setRemoteAudioName] = useState(DEFAULT_REFERENCE_AUDIO_NAME)
+  const [remoteAudioDurationSeconds, setRemoteAudioDurationSeconds] = useState(MAX_REFERENCE_AUDIO_SECONDS)
   const [prompt, setPrompt] = useState(() => text.promptPlaceholder)
   const [resolution, setResolution] = useState<Resolution>('480p')
   const [currentRequest, setCurrentRequest] = useState<TalkingAvatarGenerationRequest | null>(null)
@@ -454,6 +460,8 @@ export default function TalkingAvatarCreatorTool({
   const hasGenerationAudio = Boolean(audio?.file || remoteAudioUrl)
   const canGenerate = Boolean(hasGenerationImage && hasGenerationAudio && prompt.trim() && !isGenerating)
   const showGenerateCredits = Boolean(hasGenerationAudio && !isGenerating)
+  const durationSeconds = normalizeBillingDurationSeconds(audio?.durationSeconds ?? (remoteAudioUrl ? remoteAudioDurationSeconds : MAX_REFERENCE_AUDIO_SECONDS))
+  const requiredCredits = calculateVideoGenerationCredits('infinitalk', resolution, durationSeconds) ?? 0
   const hasDesktopResultTabs = isGenerating || currentRequest?.status === 'failed' || history.length > 0
   const historyPageHref = getLocalizedInternalPath(pathname, '/history')
   const creditsPageHref = getLocalizedInternalPath(pathname, '/credits')
@@ -543,6 +551,7 @@ export default function TalkingAvatarCreatorTool({
         setAudio(null)
         setRemoteAudioUrl(audioUrl)
         setRemoteAudioName(getRemoteMediaName(audioUrl, DEFAULT_REFERENCE_AUDIO_NAME))
+        setRemoteAudioDurationSeconds(MAX_REFERENCE_AUDIO_SECONDS)
       }
       setRightMode('sample')
       window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -606,11 +615,16 @@ export default function TalkingAvatarCreatorTool({
     setImage({ file, preview: URL.createObjectURL(file) })
   }
 
-  const acceptAudioFile = (nextAudioFile: File) => {
+  const acceptAudioFile = (nextAudioFile: File, nextDurationSeconds = MAX_REFERENCE_AUDIO_SECONDS) => {
     if (audio?.preview) URL.revokeObjectURL(audio.preview)
     setRemoteAudioUrl('')
     setRemoteAudioName(DEFAULT_REFERENCE_AUDIO_NAME)
-    setAudio({ file: nextAudioFile, preview: URL.createObjectURL(nextAudioFile) })
+    setRemoteAudioDurationSeconds(MAX_REFERENCE_AUDIO_SECONDS)
+    setAudio({
+      file: nextAudioFile,
+      preview: URL.createObjectURL(nextAudioFile),
+      durationSeconds: normalizeBillingDurationSeconds(nextDurationSeconds),
+    })
   }
 
   const selectAudio = async (files: FileList | null) => {
@@ -641,7 +655,7 @@ export default function TalkingAvatarCreatorTool({
       return
     }
 
-    acceptAudioFile(file)
+    acceptAudioFile(file, durationInSeconds)
   }
 
   const cancelAudioTrim = () => {
@@ -654,7 +668,7 @@ export default function TalkingAvatarCreatorTool({
     setIsTrimmingAudio(true)
     try {
       const nextAudioFile = await trimAudioToSegment(pendingAudioTrim.file, audioTrimStartSeconds, audioTrimEndSeconds)
-      acceptAudioFile(nextAudioFile)
+      acceptAudioFile(nextAudioFile, audioTrimEndSeconds - audioTrimStartSeconds)
       setPendingAudioTrim(null)
     } catch {
       dispatchToolazeTopNotice({ type: 'warning', title: 'Warning', message: text.audioTrimFailedMessage })
@@ -769,9 +783,10 @@ export default function TalkingAvatarCreatorTool({
     const requestImagePreview = requestImage?.preview || requestRemoteImageUrl
     const requestAudioPreview = requestAudio?.preview || requestRemoteAudioUrl
     const requestAudioName = requestAudio?.file.name || remoteAudioName
-    const requiredCredits = getRequiredCredits(requestResolution)
+    const requestDurationSeconds = durationSeconds
+    const requestRequiredCredits = calculateVideoGenerationCredits('infinitalk', requestResolution, requestDurationSeconds) ?? requiredCredits
 
-    const authState = await ensureSignedInForTalkingAvatarGeneration(requiredCredits)
+    const authState = await ensureSignedInForTalkingAvatarGeneration(requestRequiredCredits)
     if (!authState.isSignedIn) {
       dispatchToolazeTopNotice({ type: 'warning', title: 'Warning', message: text.signedOutMessage })
       window.dispatchEvent(new CustomEvent('toolaze:open-auth-modal'))
@@ -795,6 +810,7 @@ export default function TalkingAvatarCreatorTool({
       createdAt: formatLocalTimestampToSeconds(new Date(startedAt).toISOString()),
       startedAt,
       status: 'processing',
+      durationSeconds: requestDurationSeconds,
     }
 
     setGeneratingSeconds(0)
@@ -816,6 +832,7 @@ export default function TalkingAvatarCreatorTool({
       formData.append('audioUrl', audioUrl)
       formData.append('prompt', requestPrompt)
       formData.append('resolution', requestResolution)
+      formData.append('durationSeconds', String(requestDurationSeconds))
 
       const response = await fetch('/api/talking-avatar-creator', {
         method: 'POST',
@@ -1348,8 +1365,8 @@ export default function TalkingAvatarCreatorTool({
                   <span className="flex items-center justify-center gap-2">
                     <span>{isGenerating ? text.generatingLabel : text.generateLabel}</span>
                     {showGenerateCredits ? (
-                      <span className="inline-flex items-center gap-1.5 px-1 text-sm font-extrabold text-white" aria-label={`${getRequiredCredits(resolution)} credits`}>
-                        <span className="tabular-nums">{getRequiredCredits(resolution)}</span>
+                      <span className="inline-flex items-center gap-1.5 px-1 text-sm font-extrabold text-white" aria-label={`${requiredCredits} credits`}>
+                        <span className="tabular-nums">{requiredCredits}</span>
                         <img src="/credits-icons/diamond-3d-indigo.svg" alt="" aria-hidden="true" className="h-[18px] w-[18px]" />
                       </span>
                     ) : null}

@@ -1,0 +1,275 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "text-to-image",
+    "modelId": "wan-2-7-image",
+    "displayName": "제한 적은 AI 이미지 생성기",
+    "defaultPrompt": "Create a cinematic dark fantasy character concept sheet for an original warrior queen in obsidian armor, with three full-body poses, close-up face details, weapon variants, readable labels, controlled lighting, and a polished game-art presentation. Keep the character adult, original, non-celebrity, and non-explicit.",
+    "hideModelBranding": false,
+    "compactResultPanel": true,
+    "sampleImages": [
+      {
+        "url": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/unrestricted-ai-image-generator/pool-bikini-demo.webp",
+        "title": "수영장 옆 비키니 데모 이미지",
+        "width": 880,
+        "height": 495
+      }
+    ],
+    "textOverrides": {
+      "promptLabel": "원하는 이미지를 설명하세요",
+      "promptPlaceholder": "오리지널 장면, 캐릭터, 포스터, 제품 콘셉트 또는 이미지 편집을 설명하세요. 스타일, 구성, 카메라, 조명, 비율, 경계를 포함하세요.",
+      "generateLabel": "제한 적은 AI 이미지 생성기",
+      "safetyHelper": "네. 참조가 구성, 포즈, 제품, 공간, 스타일을 안내해야 할 때 사용하세요."
+    }
+  },
+  "metadata": {
+    "title": "Unrestricted & Unlimited AI 이미지 생성기 온라인 | Toolaze",
+    "description": "Toolaze를 unrestricted 및 unlimited-style AI 이미지 생성기로 사용해 더 넓은 이미지 아이디어, 적은 불필요한 재작성, 직접 프롬프트 제어, 명확한 창작 경계를 얻으세요."
+  },
+  "sectionsOrder": [
+    "intro",
+    "howToUse",
+    "promptExamples",
+    "workflowComparison",
+    "photoTips",
+    "scenes",
+    "features",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Unrestricted & <span class=\"text-gradient\">Unlimited AI 이미지 생성기</span> 온라인",
+    "desc": "unlimited-style 이미지 생성기로 대담한 오리지널 콘셉트를 만들고, 더 넓은 프롬프트 제어, 적은 불필요한 재작성, 명확한 창작 경계를 유지하세요."
+  },
+  "intro": {
+    "title": "Toolaze에서 unrestricted 및 unlimited-style 이미지 생성의 의미",
+    "content": [
+      {
+        "title": "Unlimited-style 프롬프트 제어",
+        "text": "unlimited AI image generator에 가까운 사용감을 원할 때 Toolaze는 불필요한 재작성을 줄이고 스타일, 구도, 톤, 참조 디테일을 더 직접 제어하게 합니다."
+      },
+      {
+        "title": "No-restriction 표현과 책임 있는 사용",
+        "text": "No-restriction AI image generator는 규칙 없는 도구를 뜻하지 않습니다. Toolaze는 일반 창작 디테일은 더 넓게 다루되 합법적이고 허가 기반이며 비노골적인 사용을 요구합니다."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Unrestricted / Unlimited AI 이미지 생성기 사용법",
+    "steps": [
+      {
+        "title": "직접 작성",
+        "desc": "주제, 스타일, 분위기, 조명, 구성, 출력 형식을 설명하세요."
+      },
+      {
+        "title": "참조 추가",
+        "desc": "포즈, 제품, 공간, 스타일을 유지하려면 이미지 편집을 사용하세요."
+      },
+      {
+        "title": "경계 설정",
+        "desc": "유지할 것, 피할 것, 제외할 것을 적으세요."
+      },
+      {
+        "title": "생성 후 개선",
+        "desc": "카메라, 재질, 글자, 색상, 구성을 더 명확히 조정하세요."
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "더 넓은 창작 제어를 위한 프롬프트 아이디어",
+    "subtitle": "네 가지 구조를 시작점으로 삼고 주제, 톤, 형식, 경계를 조정하세요.",
+    "layout": "grid",
+    "items": [
+      {
+        "title": "다크 판타지 캐릭터 시트",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/gpt-image-2/prompt-character-sheet.webp",
+        "aspectRatio": "16:9",
+        "prompt": "Create a cinematic dark fantasy character concept sheet for an original warrior queen in obsidian armor, with three full-body poses, close-up face details, weapon variants, readable labels, controlled lighting, and a polished game-art presentation. Keep the character adult, original, non-celebrity, and non-explicit.",
+        "note": "오리지널 판타지 캐릭터용."
+      },
+      {
+        "title": "SF 액션 스토리보드",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/gpt-image-2/prompt-storyboard.webp",
+        "aspectRatio": "16:9",
+        "prompt": "Create a widescreen sci-fi action storyboard with four clean panels showing an original pilot escaping a neon orbital station, dynamic camera angles, readable panel captions, smoke, sparks, motion blur, and a polished cinematic color grade. Keep it intense but non-graphic.",
+        "note": "과한 묘사 없는 액션 기획용."
+      },
+      {
+        "title": "신스웨이브 앨범 포스터",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/gpt-image-2/prompt-product-poster.webp",
+        "aspectRatio": "16:9",
+        "prompt": "Create a bold album-cover style poster for an imaginary synthwave artist named NIGHT SIGNAL, with large readable typography, chrome lettering, a surreal city skyline, dramatic magenta-blue lighting, and a print-ready square composition.",
+        "note": "읽기 쉬운 텍스트 포스터용."
+      },
+      {
+        "title": "초현실 실내 콘셉트",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/seedream-4-5/prompt-interior-redesign.webp",
+        "aspectRatio": "16:9",
+        "prompt": "Create a surreal interior design concept for a private creative studio inside a glass cliffside room, with sculptural furniture, warm natural light, plants, art objects, clean spatial layout, and realistic materials. No people, no brands, no logos.",
+        "note": "공간 디자인과 분위기용."
+      }
+    ]
+  },
+  "workflowComparison": {
+    "title": "Unlimited-style 생성과 경직된 도구 비교",
+    "subtitle": "경직된 제한이 있는 이미지 생성기보다 더 구체적인 지시가 필요할 때 Toolaze를 사용하세요.",
+    "columns": [
+      "판단 기준",
+      "경직된 생성기",
+      "Toolaze 유연한 생성기"
+    ],
+    "rows": [
+      [
+        "프롬프트 제어",
+        "강한 아이디어를 일반적인 결과로 바꿀 수 있습니다.",
+        "사용 규칙 안에서 창작 방향을 더 명확히 유지합니다."
+      ],
+      [
+        "창작 범위",
+        "주로 일반적인 출력에 적합합니다.",
+        "판타지, 시네마틱, 포스터, 제품, 실내, 참조 편집에 사용할 수 있습니다."
+      ],
+      [
+        "참조 편집",
+        "텍스트 이미지와 이미지 편집이 분리될 수 있습니다.",
+        "프롬프트 아이디어를 참조 기반 이미지 흐름과 연결합니다."
+      ],
+      [
+        "명확성",
+        "이유 없이 실패하는 것처럼 보일 수 있습니다.",
+        "경계가 보여 프롬프트를 쉽게 다듬을 수 있습니다."
+      ]
+    ]
+  },
+  "photoTips": {
+    "title": "Unlimited-style 이미지 생성을 위한 더 좋은 프롬프트",
+    "subtitle": "강한 unrestricted 또는 unlimited-style 프롬프트는 구체적이고 독창적이며 경계가 명확합니다.",
+    "items": [
+      {
+        "title": "주제 정의",
+        "desc": "주제, 배경, 포즈, 시각 시대감, 목적을 먼저 적으세요."
+      },
+      {
+        "title": "구성 제어",
+        "desc": "카메라, 프레이밍, 비율, 배경 밀도, 텍스트 위치를 지정하세요."
+      },
+      {
+        "title": "권리 보호",
+        "desc": "본인 소유 또는 허가된 참조를 쓰고 사적 인물, 미성년자, 기만적 편집을 피하세요."
+      },
+      {
+        "title": "허용 결과 설명",
+        "desc": "허용되는 최종 결과와 원본성, 비노골성, 무브랜드 조건을 명확히 쓰세요."
+      }
+    ]
+  },
+  "scenesTitle": "Unrestricted 및 unlimited-style AI 이미지의 주요 용도",
+  "scenes": [
+    {
+      "title": "콘셉트 아트",
+      "desc": "오리지널 캐릭터, 세계, 소품, 의상, 포스터, 키아트를 만드세요."
+    },
+    {
+      "title": "마케팅 비주얼",
+      "desc": "커버, 캠페인 포스터, 썸네일, 소셜 광고, 제품 콘셉트, 텍스트 레이아웃을 초안화하세요."
+    },
+    {
+      "title": "참조 기반 편집",
+      "desc": "이미지로 분위기, 구성, 제품, 공간, 포즈, 스타일을 안내하세요."
+    }
+  ],
+  "features": {
+    "title": "창작자가 Toolaze를 unlimited-style 이미지 생성기로 쓰는 이유",
+    "items": [
+      {
+        "title": "직접적인 의도 전달",
+        "desc": "명확한 지시로 방향, 톤, 프레이밍, 스타일을 제어합니다."
+      },
+      {
+        "title": "이미지 편집 지원",
+        "desc": "레이아웃, 제품, 캐릭터, 공간을 유지할 때 참조를 사용합니다."
+      },
+      {
+        "title": "보이는 경계",
+        "desc": "안전하고 독창적이며 허가 기반의 사용을 유도합니다."
+      },
+      {
+        "title": "재사용 가능한 예시",
+        "desc": "캐릭터, 장면, 포스터, 실내용 구조화 프롬프트로 시작합니다."
+      },
+      {
+        "title": "Toolaze 이미지 생태계",
+        "desc": "Image Generator, Image to Image, 관련 도구와 연결됩니다."
+      },
+      {
+        "title": "빠른 온라인 반복",
+        "desc": "로컬 모델 설정 없이 생성, 검토, 수정할 수 있습니다."
+      }
+    ]
+  },
+  "faqTitle": "유연한 AI 이미지 생성기 FAQ",
+  "faq": [
+    {
+      "q": "Unrestricted 또는 unlimited AI 이미지 생성기는 무엇인가요?",
+      "a": "더 넓은 창작 프롬프트, 강한 스타일 제어, 적은 불필요한 일반화 재작성을 위한 이미지 생성기입니다. Toolaze에서는 명확한 창작 경계와 허가 기반 사용을 유지합니다."
+    },
+    {
+      "q": "Toolaze는 no-restriction AI image generator인가요?",
+      "a": "Toolaze는 더 넓은 오리지널 콘셉트와 적은 경직된 재작성을 지원하지만, 문자 그대로 unlimited이거나 규칙 없는 도구는 아닙니다."
+    },
+    {
+      "q": "이미지 편집을 사용할 수 있나요?",
+      "a": "네. 참조가 구성, 포즈, 제품, 공간, 스타일을 안내해야 할 때 사용하세요."
+    },
+    {
+      "q": "무료로 시험할 수 있나요?",
+      "a": "접근은 계정, 모델, 크레딧, 설정에 따라 달라집니다. 생성 전 패널을 확인하세요."
+    },
+    {
+      "q": "결과를 개선하려면?",
+      "a": "주제, 스타일, 빛, 카메라, 구성, 형식, 사용 경계를 구체적으로 쓰세요."
+    },
+    {
+      "q": "어떤 화면 비율을 선택해야 하나요?",
+      "a": "시네마틱 배너와 넓은 장면에는 16:9, 정사각형 소셜 게시물에는 1:1, 인물이나 모바일 중심 이미지는 세로 비율을 사용하세요."
+    }
+  ],
+  "moreTools": "더 많은 AI 이미지 도구",
+  "moreToolsLinks": [
+    {
+      "slug": "ai-image-generator",
+      "title": "AI 이미지 생성기",
+      "description": "텍스트 이미지 아이디어, 소셜 비주얼, 캠페인 초안을 만드세요.",
+      "href": "/ai-image-generator",
+      "media": {
+        "type": "image",
+        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/gpt-image-2.jpg",
+        "alt": "AI 이미지 생성기"
+      }
+    },
+    {
+      "slug": "ai-image-to-image-generator",
+      "title": "AI 이미지 편집",
+      "description": "참조 이미지를 업로드하고 프롬프트로 변환하세요.",
+      "href": "/ai-image-to-image-generator",
+      "media": {
+        "type": "image",
+        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/gpt-image-2/feature-image-editing.webp",
+        "alt": "AI 이미지 편집"
+      }
+    },
+    {
+      "slug": "ai-clothes-changer",
+      "title": "AI 의상 체인저",
+      "description": "안전한 패션 인물 편집 콘셉트를 미리보세요.",
+      "href": "/ai-clothes-changer",
+      "media": {
+        "type": "image",
+        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/84b9bf50f4414a2c962ebd3f74cb07f0.webp",
+        "alt": "AI 의상 체인저"
+      }
+    }
+  ]
+}

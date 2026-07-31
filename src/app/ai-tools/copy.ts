@@ -40,6 +40,8 @@ type StoredAiToolsPageCopy = Omit<AiToolsPageCopy, 'filters' | 'cards'> & {
 }
 
 const cardAssets = {
+  unrestricted:
+    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/unrestricted-ai-image-generator/pool-bikini-demo.webp',
   aiImage:
     'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/gpt-image-2.jpg',
   textToImage:
@@ -75,6 +77,7 @@ const cardAssets = {
     'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/84b9bf50f4414a2c962ebd3f74cb07f0.webp',
   bikini:
     'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/6bcf91ffd06e45a8bcda2ea867015141.webp',
+  breastExpansion: '/ai-breast-expansion/demo-before-after.webp',
 }
 
 const cardVideos = {
@@ -132,6 +135,13 @@ const en: StoredAiToolsPageCopy = {
       href: '/ai-image-to-image-generator',
       image: cardAssets.imageToImage,
       description: 'Upload a reference image and use a prompt to restyle, edit, or transform it with AI.',
+      category: 'image',
+    },
+    {
+      title: 'Unrestricted / Unlimited AI Image Generator',
+      href: '/unrestricted-ai-image-generator',
+      image: cardAssets.unrestricted,
+      description: 'Create broader unlimited-style AI image concepts online with text-to-image, image-to-image, direct prompt control, and visible creative boundaries.',
       category: 'image',
     },
     {
@@ -243,6 +253,13 @@ const en: StoredAiToolsPageCopy = {
       href: '/ai-bikini-generator',
       image: cardAssets.bikini,
       description: 'Upload an adult person photo and a bikini reference to preview tasteful swimwear edits while preserving the original person.',
+      category: 'image',
+    },
+    {
+      title: 'AI Breast Expansion',
+      href: '/ai-breast-expansion',
+      image: cardAssets.breastExpansion,
+      description: 'Upload a clothed adult photo and preview natural bust-size edits while keeping the person, clothing, pose, and scene stable.',
       category: 'image',
     },
     {
@@ -449,6 +466,7 @@ type SupplementalCopy = {
   heroDescription: string
   textToImage: Pick<AiToolsCard, 'title' | 'description'>
   imageToImage: Pick<AiToolsCard, 'title' | 'description'>
+  unrestricted: Pick<AiToolsCard, 'title' | 'description'>
   video: Pick<AiToolsCard, 'title' | 'description'>
   asmr: Pick<AiToolsCard, 'title' | 'description'>
   kissing: Pick<AiToolsCard, 'title' | 'description'>
@@ -459,6 +477,7 @@ type SupplementalCopy = {
   hairColor: Pick<AiToolsCard, 'title' | 'description'>
   clothes: Pick<AiToolsCard, 'title' | 'description'>
   bikini: Pick<AiToolsCard, 'title' | 'description'>
+  breastExpansion: Pick<AiToolsCard, 'title' | 'description'>
 }
 
 const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
@@ -467,6 +486,7 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     heroDescription: 'Explore AI image and video tools with clear visual previews. Choose a tool and start creating in seconds.',
     textToImage: { title: 'Text to Image Generator', description: 'Turn written prompts into AI images for concepts, marketing visuals, posters, and social content.' },
     imageToImage: { title: 'AI Image to Image Generator', description: 'Upload a reference image and use a prompt to restyle, edit, or transform it with AI.' },
+    unrestricted: { title: 'Unrestricted / Unlimited AI Image Generator', description: 'Create broader unlimited-style image concepts with text-to-image, image-to-image, direct prompt control, and clear creative boundaries.' },
     video: { title: 'AI Video Generator', description: 'Create short AI videos online from text, images, video clips, or audio references.' },
     asmr: { title: 'AI ASMR Video Generator', description: 'Create tactile AI ASMR videos with synchronized sound from a text prompt or reference image.' },
     kissing: { title: 'AI Kissing Video Generator', description: 'Upload one or two photos and create short romantic AI kiss videos for couple edits, anniversaries, and story reels.' },
@@ -477,12 +497,14 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     hairColor: { title: 'AI Hair Color Changer', description: 'Preview natural and creative hair colors on your photo with reference-guided AI editing.' },
     clothes: { title: 'AI Clothes Changer', description: 'Upload a person photo and preview realistic outfit changes with virtual try-on style prompts.' },
     bikini: { title: 'AI Bikini Generator', description: 'Upload an adult person photo and a bikini reference to preview tasteful swimwear edits while preserving the original person.' },
+    breastExpansion: { title: 'AI Breast Expansion', description: 'Upload a clothed adult photo and preview natural bust-size edits while keeping the person, clothing, pose, and scene stable.' },
   },
   de: {
     filters: { all: 'Alle', image: 'KI-Bildtools', video: 'KI-Videotools' },
     heroDescription: 'Entdecken Sie KI-Tools für Bilder und Videos mit klaren Vorschauen. Wählen Sie ein Tool und starten Sie in Sekunden.',
     textToImage: { title: 'Text-zu-Bild-Generator', description: 'Verwandeln Sie Textprompts in KI-Bilder für Konzepte, Marketingvisuals, Poster und Social Media.' },
     imageToImage: { title: 'KI-Bild-zu-Bild-Generator', description: 'Laden Sie ein Referenzbild hoch und gestalten, bearbeiten oder verwandeln Sie es per Prompt mit KI.' },
+    unrestricted: { title: 'Unrestricted / Unlimited KI-Bildgenerator', description: 'Erstellen Sie breitere unlimited-style Bildkonzepte mit Text-zu-Bild, Bild-zu-Bild, direkter Prompt-Kontrolle und klaren kreativen Grenzen.' },
     video: { title: 'KI-Videogenerator', description: 'Erstellen Sie kurze KI-Videos aus Text, Bildern, Videoclips oder Audioreferenzen.' },
     asmr: { title: 'KI-ASMR-Videogenerator', description: 'Erstellen Sie taktile KI-ASMR-Videos mit synchronisiertem Sound aus Text oder Referenzbild.' },
     kissing: { title: 'KI-Kuss-Video-Generator', description: 'Laden Sie ein oder zwei Fotos hoch und erstellen Sie kurze romantische KI-Kussvideos für Paar-Edits, Jubiläen und Story-Reels.' },
@@ -493,12 +515,14 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     hairColor: { title: 'KI-Haarfarbenwechsler', description: 'Testen Sie natürliche und kreative Haarfarben auf Ihrem Foto mit referenzbasierter KI-Bearbeitung.' },
     clothes: { title: 'KI-Kleiderwechsler', description: 'Laden Sie ein Personenfoto hoch und testen Sie realistische Outfitwechsel mit virtuellen Anprobe-Prompts.' },
     bikini: { title: 'KI-Bikini-Generator', description: 'Laden Sie ein Erwachsenenfoto und eine Bikini-Referenz hoch, um geschmackvolle Swimwear-Edits mit stabiler Personenvorschau zu testen.' },
+    breastExpansion: { title: 'KI-Brustvergrößerung', description: 'Laden Sie ein bekleidetes Erwachsenenfoto hoch und prüfen Sie natürliche Büstengrößen-Edits, während Person, Kleidung, Pose und Szene stabil bleiben.' },
   },
   ja: {
     filters: { all: 'すべて', image: 'AI画像ツール', video: 'AI動画ツール' },
     heroDescription: '見やすいプレビュー付きのAI画像・動画ツールを選び、数秒で作成を始められます。',
     textToImage: { title: 'テキストから画像生成', description: '文章プロンプトからコンセプト、広告、ポスター、SNS向けのAI画像を作成できます。' },
     imageToImage: { title: 'AI画像から画像生成', description: '参照画像をアップロードし、プロンプトでスタイル変更、編集、変換を行えます。' },
+    unrestricted: { title: 'Unrestricted / Unlimited AI画像生成', description: 'テキスト画像生成、画像編集、直接的なプロンプト操作、明確な創作境界でunlimited-styleの幅広い画像案を作成できます。' },
     video: { title: 'AI動画生成', description: 'テキスト、画像、動画クリップ、音声参照から短いAI動画をオンライン作成できます。' },
     asmr: { title: 'AI ASMR動画ジェネレーター', description: 'テキストや参照画像から、同期した音付きの触感的なAI ASMR動画を作成できます。' },
     kissing: { title: 'AIキス動画ジェネレーター', description: '1枚または2枚の写真から、カップル編集、記念日、ストーリーリール向けの短いロマンチックなAIキス動画を作成できます。' },
@@ -509,12 +533,14 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     hairColor: { title: 'AIヘアカラー変更', description: '参照画像を使ったAI編集で、自然な髪色や個性的なカラーを写真上で確認できます。' },
     clothes: { title: 'AI服装チェンジャー', description: '人物写真をアップロードし、バーチャル試着向けプロンプトでリアルな衣装変更をプレビューできます。' },
     bikini: { title: 'AIビキニジェネレーター', description: '成人の人物写真とビキニ参照をアップロードし、人物を保ったまま上品なスイムウェア編集をプレビューできます。' },
+    breastExpansion: { title: 'AIバストボリュームアップ', description: '服を着た成人写真をアップロードし、人物、服、ポーズ、シーンを保ちながら自然なバストサイズ編集を確認できます。' },
   },
   es: {
     filters: { all: 'Todos', image: 'Herramientas de imagen IA', video: 'Herramientas de video IA' },
     heroDescription: 'Explora herramientas IA de imagen y video con vistas previas claras. Elige una herramienta y empieza en segundos.',
     textToImage: { title: 'Generador de texto a imagen', description: 'Convierte prompts escritos en imágenes IA para conceptos, marketing, pósteres y contenido social.' },
     imageToImage: { title: 'Generador IA de imagen a imagen', description: 'Sube una imagen de referencia y usa un prompt para cambiar su estilo, editarla o transformarla.' },
+    unrestricted: { title: 'Generador IA Unrestricted / Unlimited', description: 'Crea conceptos visuales unlimited-style más amplios con texto a imagen, imagen a imagen, control directo del prompt y límites creativos claros.' },
     video: { title: 'Generador de video IA', description: 'Crea videos cortos con IA desde texto, imágenes, clips de video o referencias de audio.' },
     asmr: { title: 'Generador de video ASMR IA', description: 'Crea videos ASMR táctiles con sonido sincronizado desde un prompt de texto o una imagen de referencia.' },
     kissing: { title: 'Generador de videos de besos IA', description: 'Sube una o dos fotos y crea videos cortos de besos románticos para ediciones de pareja, aniversarios y reels.' },
@@ -525,12 +551,14 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     hairColor: { title: 'Cambiador de color de pelo IA', description: 'Prueba colores de pelo naturales y creativos con edición IA guiada por referencia.' },
     clothes: { title: 'Cambiador de ropa con IA', description: 'Sube una foto de persona y previsualiza cambios de outfit realistas con prompts de prueba virtual.' },
     bikini: { title: 'Generador de bikini con IA', description: 'Sube una foto adulta y una referencia de bikini para previsualizar ediciones de swimwear de buen gusto sin cambiar a la persona.' },
+    breastExpansion: { title: 'Aumento de busto con IA', description: 'Sube una foto de un adulto con ropa y previsualiza cambios naturales de busto manteniendo persona, ropa, pose y escena.' },
   },
   'zh-TW': {
     filters: { all: '全部', image: 'AI 圖像工具', video: 'AI 影片工具' },
     heroDescription: '探索具備清楚預覽的 AI 圖像與影片工具。選擇工具後即可在數秒內開始創作。',
     textToImage: { title: '文字轉圖像生成器', description: '將文字提示詞轉換為適合概念、行銷、海報與社群內容的 AI 圖像。' },
     imageToImage: { title: 'AI 圖像轉圖像生成器', description: '上傳參考圖像並透過提示詞重新設計、編輯或轉換圖像。' },
+    unrestricted: { title: 'Unrestricted / Unlimited AI 圖像生成器', description: '使用文字生成、圖像轉圖像、直接提示詞控制與清楚創作邊界，建立更廣的 unlimited-style AI 圖像概念。' },
     video: { title: 'AI 影片生成器', description: '使用文字、圖像、影片片段或音訊參考在線建立 AI 短片。' },
     asmr: { title: 'AI ASMR 影片生成器', description: '使用文字提示詞或參考圖像建立具備同步聲音的觸感式 AI ASMR 影片。' },
     kissing: { title: 'AI 親吻影片生成器', description: '上傳一張或兩張照片，生成適合情侶剪輯、紀念日與 Story Reels 的浪漫親吻短片。' },
@@ -541,12 +569,14 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     hairColor: { title: 'AI 髮色變換器', description: '使用參考圖引導的 AI 編輯，在照片上預覽自然或創意髮色。' },
     clothes: { title: 'AI 換衣工具', description: '上傳人物照片，使用虛擬試穿提示詞預覽逼真的換裝效果。' },
     bikini: { title: 'AI 比基尼生成器', description: '上傳成人人物照片與比基尼參考圖，在保留原人物的同時預覽得體的泳裝編輯效果。' },
+    breastExpansion: { title: 'AI 豐胸預覽', description: '上傳穿著衣服的成人照片，在保留人物、衣服、姿勢和場景的同時預覽自然胸型調整。' },
   },
   pt: {
     filters: { all: 'Todos', image: 'Ferramentas de imagem IA', video: 'Ferramentas de vídeo IA' },
     heroDescription: 'Explore ferramentas de IA para imagem e vídeo com prévias claras. Escolha uma ferramenta e comece em segundos.',
     textToImage: { title: 'Gerador de texto para imagem', description: 'Transforme prompts em imagens de IA para conceitos, marketing, pôsteres e conteúdo social.' },
     imageToImage: { title: 'Gerador IA de imagem para imagem', description: 'Envie uma imagem de referência e use um prompt para editar, transformar ou mudar seu estilo.' },
+    unrestricted: { title: 'Gerador IA Unrestricted / Unlimited', description: 'Crie conceitos visuais unlimited-style mais amplos com texto para imagem, imagem para imagem, controle direto do prompt e limites criativos claros.' },
     video: { title: 'Gerador de vídeo IA', description: 'Crie vídeos curtos com IA a partir de texto, imagens, clipes ou referências de áudio.' },
     asmr: { title: 'Gerador de vídeo ASMR com IA', description: 'Crie vídeos ASMR táteis com som sincronizado a partir de texto ou imagem de referência.' },
     kissing: { title: 'Gerador de vídeos de beijo com IA', description: 'Envie uma ou duas fotos e crie vídeos curtos de beijo romântico para edições de casal, aniversários e reels.' },
@@ -557,12 +587,14 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     hairColor: { title: 'Alterador de cor de cabelo IA', description: 'Visualize cores naturais e criativas no cabelo com edição de IA guiada por referência.' },
     clothes: { title: 'Trocador de roupas com IA', description: 'Envie uma foto da pessoa e visualize trocas de roupa realistas com prompts de prova virtual.' },
     bikini: { title: 'Gerador de biquíni com IA', description: 'Envie uma foto adulta e uma referência de biquíni para visualizar edições de swimwear de bom gosto mantendo a pessoa original.' },
+    breastExpansion: { title: 'Aumento de busto com IA', description: 'Envie uma foto de adulto com roupa e visualize edições naturais de busto mantendo pessoa, roupa, pose e cena.' },
   },
   fr: {
     filters: { all: 'Tous', image: 'Outils d’image IA', video: 'Outils vidéo IA' },
     heroDescription: 'Explorez des outils IA pour l’image et la vidéo avec des aperçus clairs. Choisissez un outil et démarrez en quelques secondes.',
     textToImage: { title: 'Générateur texte-image', description: 'Transformez des prompts en images IA pour concepts, marketing, affiches et contenus sociaux.' },
     imageToImage: { title: 'Générateur image-à-image IA', description: 'Importez une image de référence et utilisez un prompt pour la modifier, la restyler ou la transformer.' },
+    unrestricted: { title: 'Générateur IA Unrestricted / Unlimited', description: 'Créez des concepts visuels unlimited-style plus larges avec texte vers image, image vers image, contrôle direct du prompt et limites créatives claires.' },
     video: { title: 'Générateur de vidéo IA', description: 'Créez de courtes vidéos IA à partir de texte, d’images, de clips ou de références audio.' },
     asmr: { title: 'Générateur de vidéo ASMR IA', description: 'Créez des vidéos ASMR tactiles avec son synchronisé depuis un prompt texte ou une image de référence.' },
     kissing: { title: 'Générateur de vidéos de baiser IA', description: 'Importez une ou deux photos et créez de courtes vidéos de baiser romantique pour montages de couple, anniversaires et reels.' },
@@ -573,12 +605,14 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     hairColor: { title: 'Changeur de couleur de cheveux IA', description: 'Prévisualisez des couleurs naturelles ou créatives grâce à une retouche IA guidée par référence.' },
     clothes: { title: 'Changeur de vêtements IA', description: 'Importez une photo de personne et prévisualisez des changements de tenue réalistes avec des prompts d’essayage virtuel.' },
     bikini: { title: 'Générateur de bikini IA', description: 'Importez une photo adulte et une référence bikini pour prévisualiser des retouches swimwear sobres en conservant la personne.' },
+    breastExpansion: { title: 'Augmentation de poitrine IA', description: 'Importez une photo d’adulte habillé et prévisualisez des retouches naturelles de poitrine en gardant personne, vêtements, pose et scène.' },
   },
   ko: {
     filters: { all: '전체', image: 'AI 이미지 도구', video: 'AI 동영상 도구' },
     heroDescription: '명확한 미리보기가 있는 AI 이미지 및 동영상 도구를 살펴보고 몇 초 만에 제작을 시작하세요.',
     textToImage: { title: '텍스트-이미지 생성기', description: '텍스트 프롬프트를 콘셉트, 마케팅, 포스터 및 소셜 콘텐츠용 AI 이미지로 만드세요.' },
     imageToImage: { title: 'AI 이미지-이미지 생성기', description: '참조 이미지를 업로드하고 프롬프트로 스타일 변경, 편집 또는 변환하세요.' },
+    unrestricted: { title: 'Unrestricted / Unlimited AI 이미지 생성기', description: '텍스트 이미지, 이미지 편집, 직접 프롬프트 제어, 명확한 창작 경계로 더 넓은 unlimited-style 이미지 콘셉트를 만드세요.' },
     video: { title: 'AI 동영상 생성기', description: '텍스트, 이미지, 동영상 클립 또는 오디오 참조로 짧은 AI 동영상을 만드세요.' },
     asmr: { title: 'AI ASMR 동영상 생성기', description: '텍스트 프롬프트나 참조 이미지로 동기화된 사운드가 있는 촉각적인 AI ASMR 영상을 만드세요.' },
     kissing: { title: 'AI 키스 동영상 생성기', description: '사진 한 장 또는 두 장을 업로드해 커플 편집, 기념일, 스토리 릴용 짧은 로맨틱 AI 키스 영상을 만드세요.' },
@@ -589,12 +623,14 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     hairColor: { title: 'AI 헤어 컬러 변경기', description: '참조 기반 AI 편집으로 사진에서 자연스럽거나 창의적인 헤어 컬러를 미리 확인하세요.' },
     clothes: { title: 'AI 의상 체인저', description: '인물 사진을 업로드하고 가상 착용 스타일 프롬프트로 현실적인 의상 변경을 미리보세요.' },
     bikini: { title: 'AI 비키니 생성기', description: '성인 인물 사진과 비키니 참조 이미지를 업로드해 원본 인물을 유지한 깔끔한 수영복 편집을 미리보세요.' },
+    breastExpansion: { title: 'AI 가슴 확대 미리보기', description: '옷을 입은 성인 사진을 업로드하고 인물, 옷, 포즈, 장면을 유지한 자연스러운 가슴 크기 편집을 미리보세요.' },
   },
   it: {
     filters: { all: 'Tutti', image: 'Strumenti per immagini IA', video: 'Strumenti video IA' },
     heroDescription: 'Esplora strumenti IA per immagini e video con anteprime chiare. Scegli uno strumento e inizia in pochi secondi.',
     textToImage: { title: 'Generatore da testo a immagine', description: 'Trasforma prompt scritti in immagini IA per concept, marketing, poster e contenuti social.' },
     imageToImage: { title: 'Generatore IA da immagine a immagine', description: 'Carica un’immagine di riferimento e usa un prompt per modificarla, trasformarla o cambiarne lo stile.' },
+    unrestricted: { title: 'Generatore IA Unrestricted / Unlimited', description: 'Crea concept visivi unlimited-style più ampi con testo-immagine, immagine-immagine, controllo diretto del prompt e confini creativi chiari.' },
     video: { title: 'Generatore video IA', description: 'Crea brevi video IA da testo, immagini, clip video o riferimenti audio.' },
     asmr: { title: 'Generatore video ASMR IA', description: 'Crea video ASMR tattili con audio sincronizzato da un prompt testuale o da un’immagine di riferimento.' },
     kissing: { title: 'Generatore di video di baci IA', description: 'Carica una o due foto e crea brevi video di baci romantici per edit di coppia, anniversari e reel.' },
@@ -605,6 +641,7 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     hairColor: { title: 'Cambia colore capelli IA', description: 'Visualizza colori naturali e creativi con editing IA guidato da un’immagine di riferimento.' },
     clothes: { title: 'Cambia abiti con IA', description: 'Carica una foto della persona e visualizza cambi outfit realistici con prompt da prova virtuale.' },
     bikini: { title: 'Generatore di bikini IA', description: 'Carica una foto adulta e un riferimento bikini per visualizzare edit swimwear di buon gusto mantenendo la persona originale.' },
+    breastExpansion: { title: 'Aumento seno con IA', description: 'Carica una foto di un adulto vestito e visualizza modifiche naturali del seno mantenendo persona, vestiti, posa e scena.' },
   },
 }
 
@@ -635,6 +672,7 @@ const aiToolsCardOrder = [
   '/ai-image-generator',
   '/text-to-image-generator',
   '/ai-image-to-image-generator',
+  '/unrestricted-ai-image-generator',
   '/ai-video-generator',
   '/text-to-video-generator',
   '/image-to-video-generator',
@@ -648,6 +686,7 @@ const aiToolsCardOrder = [
   '/ai-hair-color-changer',
   '/ai-clothes-changer',
   '/ai-bikini-generator',
+  '/ai-breast-expansion',
   '/ai-asmr-video-generator',
   '/model/wan-2-5-ai-video-generator',
   '/watermark-remover',
@@ -671,6 +710,7 @@ function getSupplementalCardByHref(
   const cardsByHref: Record<string, Pick<AiToolsCard, 'title' | 'description'>> = {
     '/text-to-image-generator': supplemental.textToImage,
     '/ai-image-to-image-generator': supplemental.imageToImage,
+    '/unrestricted-ai-image-generator': supplemental.unrestricted,
     '/ai-video-generator': supplemental.video,
     '/text-to-video-generator': supplemental.textToVideo,
     '/image-to-video-generator': supplemental.imageToVideo,
@@ -680,6 +720,7 @@ function getSupplementalCardByHref(
     '/ai-hair-color-changer': supplemental.hairColor,
     '/ai-clothes-changer': supplemental.clothes,
     '/ai-bikini-generator': supplemental.bikini,
+    '/ai-breast-expansion': supplemental.breastExpansion,
     '/ai-asmr-video-generator': supplemental.asmr,
     '/model/wan-2-5-ai-video-generator': wan25VideoCards[locale],
   }

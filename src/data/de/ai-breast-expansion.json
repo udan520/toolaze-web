@@ -1,0 +1,257 @@
+{
+  "in_menu": false,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 1,
+    "modelId": "wan-2-7-image",
+    "defaultPrompt": "Make the breasts of the person in the image slightly fuller. Keep everything else in the image unchanged.",
+    "defaultImageUrls": [],
+    "hideModelBranding": false,
+    "compactResultPanel": true,
+    "displayName": "KI-Brustvergrößerung",
+    "sampleImages": [
+      {
+        "url": "/ai-breast-expansion/demo-before-after.webp",
+        "title": "Vorher-Nachher-Demo der KI-Brustvergrößerung",
+        "width": 1200,
+        "height": 675
+      }
+    ],
+    "textOverrides": {
+      "uploadTitle": "Bekleidetes Erwachsenenfoto hochladen",
+      "uploadHelper": "Verwenden Sie ein Foto, das Ihnen gehört oder das Sie bearbeiten dürfen. Die Person muss bekleidet, erwachsen und gut sichtbar sein.",
+      "promptLabel": "Büstenvorschau beschreiben",
+      "promptPlaceholder": "Make the breasts of the person in the image fuller. Keep everything else in the image unchanged.",
+      "generateLabel": "Vorschau generieren"
+    },
+    "functionalAcceptance": {
+      "recommendedMode": "text-preset-prompt-only",
+      "reason": "Das obere Tool nutzt ein hochgeladenes Bild und drei reine Text-Presets. Ein Klick auf ein Preset aktualisiert das Prompt-Feld, ohne Preset-Bilder oder Referenzbilder zu importieren.",
+      "presetTitle": "Vergrößerungsstufe wählen",
+      "hidePresetPromptInput": false,
+      "presets": [
+        {
+          "label": "Etwas voller",
+          "prompt": "Make the breasts of the person in the image slightly fuller. Keep everything else in the image unchanged.",
+          "group": "breast-expansion-level"
+        },
+        {
+          "label": "Vollere Brust",
+          "prompt": "Make the breasts of the person in the image fuller. Keep everything else in the image unchanged.",
+          "group": "breast-expansion-level"
+        },
+        {
+          "label": "Sehr voll",
+          "prompt": "Make the breasts of the person in the image much fuller. Keep everything else in the image unchanged.",
+          "group": "breast-expansion-level"
+        }
+      ]
+    }
+  },
+  "metadata": {
+    "title": "Kostenlose KI-Brustvergrößerung online | Natürliche Büstenvorschau | Toolaze",
+    "description": "Vorschau bekleideter Erwachsenenfotos mit angepasster Büstengröße in Toolaze. Neue Nutzer erhalten nach der Registrierung 10 kostenlose Credits. Halten Sie Ergebnisse realistisch, nicht explizit und einvernehmlich."
+  },
+  "sectionsOrder": [
+    "intro",
+    "howToUse",
+    "photoTips",
+    "promptExamples",
+    "workflowComparison",
+    "scenes",
+    "features",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Kostenlose KI-<span class=\"text-gradient\">Brustvergrößerung</span> online",
+    "desc": "Laden Sie ein bekleidetes Erwachsenenfoto hoch und prüfen Sie natürliche Änderungen der Büstengröße für Modepassform, Kostümplanung, Gestaltung für Inhalte oder die private Fotobewertung. Toolaze hält Kleidung, Gesicht, Pose, Hintergrund und Licht stabil und vermeidet explizite oder unautorisierte Bearbeitungen."
+  },
+  "intro": {
+    "title": "Was ist KI-Brustvergrößerung?",
+    "content": [
+      {
+        "title": "Eine bekleidete Büstenvorschau für Erwachsenenfotos",
+        "text": "KI-Brustvergrößerung ist ein Bildbearbeitungsablauf, der den Brustbereich in einem bekleideten Erwachsenenfoto anpasst und den Rest der Person sowie die Szene erhält. Toolaze ist für realistische Vorschauen von Körperproportionen gedacht, nicht für das Entfernen von Kleidung, explizite Bilder, medizinische Beratung oder Identitätsmanipulation."
+      },
+      {
+        "title": "Hilfreich für Gestaltung, Passform und Proportionsplanung",
+        "text": "Nutzen Sie es, um eine dezente Anhebung, eine vollere natürliche Silhouette, eine Richtung für die Kleidung oder ein Kostümproportion-Konzept vor einer Fotosession oder einer manuellen Bearbeitung zu testen. Ergebnisse sind nur visuelle Vorschauen und sollten sorgfältig auf Stofflogik, Hände, Kanten, Schatten und Körperbalance geprüft werden."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "So verwenden Sie KI-Brustvergrößerung",
+    "steps": [
+      {
+        "title": "Bekleidetes Erwachsenenfoto hochladen",
+        "desc": "Wählen Sie ein Foto, das Ihnen gehört oder das Sie bearbeiten dürfen. Die Person muss erwachsen, bekleidet und ab Taille oder Oberkörper klar sichtbar sein."
+      },
+      {
+        "title": "Vergrößerungsstufe wählen",
+        "desc": "Wählen Sie Etwas voller, Vollere Brust oder Sehr voll, um das Prompt-Feld zu aktualisieren, und passen Sie den Prompt vor dem Generieren bei Bedarf an."
+      },
+      {
+        "title": "Unveränderte Bereiche prüfen",
+        "desc": "Prüfen Sie Gesicht, Identität, Pose, Hände, Taille, Hüften, Hintergrund, Licht, Kleidung und Stofftextur. Generieren Sie mit strengeren Erhaltungsangaben neu, wenn etwas abweicht."
+      }
+    ]
+  },
+  "photoTips": {
+    "title": "Fototipps für natürliche Büstenvorschauen",
+    "subtitle": "Klare Ausgangsfotos und direkte Erhaltungsangaben erzeugen glaubwürdigere, nicht explizite Ergebnisse.",
+    "items": [
+      {
+        "title": "Nur bekleidete Erwachsenenfotos verwenden",
+        "desc": "Das Tool ist für einvernehmliche Erwachsenenbilder mit intakter Kleidung gedacht. Vermeiden Sie Minderjährige, Nacktheit, reine Unterwäsche-Bearbeitungen, freigelegte Körperwünsche oder Fotos, die Sie nicht bearbeiten dürfen.",
+        "color": "linear-gradient(135deg, #e0e7ff, #6366f1)"
+      },
+      {
+        "title": "Oberkörper gut sichtbar halten",
+        "desc": "Fotos ab Taille, Halbfigur oder Ganzkörper funktionieren besser, wenn Brustbereich, Schultern, Arme und Kleidungsnähte erkennbar sind.",
+        "color": "linear-gradient(135deg, #fce7f3, #db2777)"
+      },
+      {
+        "title": "Blockierte Posen vermeiden",
+        "desc": "Verschränkte Arme, starke Schatten, Taschen, Haare vor der Brust, Spiegel oder abgeschnittene Oberkörper erschweren es, Stoff und Körperproportionen zu erhalten.",
+        "color": "linear-gradient(135deg, #fef3c7, #f97316)"
+      },
+      {
+        "title": "Festlegen, was unverändert bleiben muss",
+        "desc": "Wiederholen Sie Gesicht, Identität, Pose, Taille, Hüften, Hände, Kleidung, Hintergrund, Licht und Kamerawinkel beibehalten, wenn genaue Kontinuität wichtig ist.",
+        "color": "linear-gradient(135deg, #ede9fe, #7c3aed)"
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "Prompt-Stufen für KI-Brustvergrößerung",
+    "subtitle": "Wählen Sie eines von drei Text-Presets im Generator. Jede Option ändert nur den Prompt-Text und lädt keine Preset-Bilder.",
+    "items": [
+      {
+        "title": "Etwas voller",
+        "prompt": "Make the breasts of the person in the image slightly fuller. Keep everything else in the image unchanged.",
+        "note": "Am besten für eine leichte, natürlich wirkende Anpassung.",
+        "color": "linear-gradient(135deg, #e0e7ff, #a78bfa)"
+      },
+      {
+        "title": "Vollere Brust",
+        "prompt": "Make the breasts of the person in the image fuller. Keep everything else in the image unchanged.",
+        "note": "Am besten für eine stärkere, aber ausgewogene Vorschau.",
+        "color": "linear-gradient(135deg, #fce7f3, #ec4899)"
+      },
+      {
+        "title": "Sehr voll",
+        "prompt": "Make the breasts of the person in the image much fuller. Keep everything else in the image unchanged.",
+        "note": "Am besten für die deutlichste Vorschau einer volleren Form.",
+        "color": "linear-gradient(135deg, #fef3c7, #f97316)"
+      }
+    ]
+  },
+  "workflowComparison": {
+    "title": "KI-Brustvergrößerung vs. manuelle Körperbearbeitung",
+    "subtitle": "Nutzen Sie KI für eine schnelle Richtung und manuelle Retusche, wenn ein finales Bild Kontrolle auf Pixelebene braucht.",
+    "columns": [
+      "Ablauf",
+      "Am besten für",
+      "Worauf achten"
+    ],
+    "rows": [
+      [
+        "Toolaze KI-Brustvergrößerung",
+        "Schnelle bekleidete Büstenvorschauen für Erwachsene, Passformprüfungen für Kleidung, Kostümproportionen, Gestaltungskonzepte für Inhalte und frühe Fotokonzepte.",
+        "Prüfen Sie Stoffnähte, Schatten, Hände, Haltung und Körperbalance, bevor Sie ein Ergebnis teilen oder veröffentlichen."
+      ],
+      [
+        "Manuelle Retusche",
+        "Präzise kommerzielle Bearbeitungen, markenfreigegebene Modebilder, finale Kampagnenmaterialien und Korrekturen rund um komplexe Stoffe.",
+        "Benötigt mehr Zeit und Bearbeitungserfahrung, besonders bei Stofffalten und Körperlinien."
+      ],
+      [
+        "Praktische Anprobe oder Fotosession",
+        "Finale Passformprüfung, Produktfotografie, medizinische Beratung, Größenauswahl von Kleidung und reale Körperentscheidungen.",
+        "Benötigt Garderobe, Location, Licht, Zeit und oft Fotograf oder Stylist."
+      ]
+    ]
+  },
+  "scenesTitle": "Beliebte Einsatzfälle für KI-Brustvergrößerung",
+  "scenes": [
+    {
+      "title": "Mode-Fit-Vorschauen",
+      "desc": "Prüfen Sie, wie ein Oberteil, Kleid, Badeanzug oder Kostüm mit anderer Büstenproportion wirkt, während die Kleidung angezogen bleibt."
+    },
+    {
+      "title": "Inhalts- und Porträtgestaltung",
+      "desc": "Erkunden Sie eine natürliche Körperform-Richtung für persönliche Fotos, Thumbnails oder Konzeptboards, ohne Gesicht, Pose, Hintergrund oder Licht zu ändern."
+    },
+    {
+      "title": "Kostüm- und Charakterplanung",
+      "desc": "Sehen Sie eine geschmackvolle Silhouette für Cosplay, Charakterreferenzen oder Garderobenplanung vorab, bevor Sie schneidern oder manuell bearbeiten."
+    }
+  ],
+  "features": {
+    "title": "Warum Toolaze für KI-Brustvergrößerung nutzen?",
+    "items": [
+      {
+        "iconType": "workflow",
+        "title": "Körpervorschau mit einem Foto",
+        "desc": "Laden Sie ein bekleidetes Erwachsenenfoto hoch und wählen Sie eines von drei Text-Presets, um das Prompt-Feld ohne Preset-Bilder zu aktualisieren."
+      },
+      {
+        "iconType": "guidance",
+        "title": "Prompts mit Erhalt im Fokus",
+        "desc": "Die integrierte Formulierung weist das Modell an, Gesicht, Identität, Taille, Hüften, Pose, Kleidung, Hintergrund, Licht und Kamerawinkel stabil zu halten."
+      },
+      {
+        "iconType": "limits",
+        "title": "Klare nicht explizite Grenze",
+        "desc": "Der Inhalt ist auf erwachsene, bekleidete und einvernehmliche Vorschauen begrenzt und schließt Nacktheit, Kleidung entfernen, Minderjährige, Nachahmung und explizite Bearbeitungen aus."
+      }
+    ]
+  },
+  "moreToolsLinks": [
+    {
+      "title": "KI-Bikini-Generator",
+      "description": "Erstellen Sie geschmackvolle Bademoden-Vorschauen für Erwachsene mit referenzgeführtem Ablauf.",
+      "href": "/ai-bikini-generator"
+    },
+    {
+      "title": "KI-Kleidung wechseln",
+      "description": "Ändern Sie Outfits in einem Personenfoto, während Pose und Szene erhalten bleiben.",
+      "href": "/ai-clothes-changer"
+    },
+    {
+      "title": "KI-Bild-zu-Bild-Generator",
+      "description": "Nutzen Sie einen breiteren referenzgeführten Ablauf für Restyling, Fotoedits und visuelle Varianten.",
+      "href": "/ai-image-to-image-generator"
+    }
+  ],
+  "faqTitle": "FAQ zur KI-Brustvergrößerung",
+  "faq": [
+    {
+      "q": "Kann ich Toolaze kostenlos für KI-Brustvergrößerung nutzen?",
+      "a": "Neue Toolaze Nutzer erhalten nach der Registrierung 10 kostenlose Credits. Die Generierungskosten können je nach Bildmodell, Auflösung, Modus und aktueller Toolaze Credit-Richtlinie im Generator variieren."
+    },
+    {
+      "q": "Welche Art von Foto funktioniert am besten?",
+      "a": "Verwenden Sie ein bekleidetes Erwachsenenfoto mit klarem Oberkörper, sichtbaren Schultern, gut lesbarem Stoff und einfachem Licht. Fotos ab Taille, Halbfigur und Ganzkörper sind meist leichter als enge Ausschnitte oder verdeckte Oberkörper."
+    },
+    {
+      "q": "Wird das Ergebnis natürlich aussehen?",
+      "a": "Natürliche Ergebnisse hängen vom Ausgangsfoto, der Kleidung, Pose und dem Prompt ab. Dezente Anpassungen erhalten Stofftextur und Körperbalance meist besser als extreme Änderungen."
+    },
+    {
+      "q": "Welche Fotos darf ich verwenden?",
+      "a": "Verwenden Sie nur erwachsene, bekleidete und einvernehmliche Fotos. Fordern Sie keine Nacktheit, kein Entkleiden, keine expliziten Inhalte, keine Minderjährigen, keine Nachahmung und keine unautorisierten Fotobearbeitungen an."
+    },
+    {
+      "q": "Entfernt dieses Tool Kleidung oder erzeugt Nacktheit?",
+      "a": "Nein. Diese Seite ist nur für bekleidete Körperproportions-Vorschauen von Erwachsenen gedacht. Kleidung muss intakt bleiben, und das Tool darf nur für einvernehmliche, nicht explizite Bildbearbeitung genutzt werden."
+    },
+    {
+      "q": "Ist das medizinische oder chirurgische Beratung?",
+      "a": "Nein. Die Ausgabe ist nur eine visuelle Vorschau für Gestaltungs- und Bildbearbeitungsideen. Sie sollte nicht für medizinische Entscheidungen, Größenversprechen oder OP-Planung verwendet werden."
+    }
+  ]
+}

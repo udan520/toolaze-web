@@ -1,0 +1,275 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "text-to-image",
+    "modelId": "wan-2-7-image",
+    "displayName": "不受限制 AI 圖像生成器",
+    "defaultPrompt": "Create a cinematic dark fantasy character concept sheet for an original warrior queen in obsidian armor, with three full-body poses, close-up face details, weapon variants, readable labels, controlled lighting, and a polished game-art presentation. Keep the character adult, original, non-celebrity, and non-explicit.",
+    "hideModelBranding": false,
+    "compactResultPanel": true,
+    "sampleImages": [
+      {
+        "url": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/unrestricted-ai-image-generator/pool-bikini-demo.webp",
+        "title": "泳池邊比基尼示範圖",
+        "width": 880,
+        "height": 495
+      }
+    ],
+    "textOverrides": {
+      "promptLabel": "描述你想建立的圖像",
+      "promptPlaceholder": "描述原創場景、角色、海報、產品概念或圖像編輯。包含風格、構圖、鏡頭、光線、比例與需要保留的邊界。",
+      "generateLabel": "不受限制 AI 圖像生成器",
+      "safetyHelper": "可以。當參考圖需要引導構圖、姿勢、產品、房間或風格時使用。"
+    }
+  },
+  "metadata": {
+    "title": "Unrestricted & Unlimited AI 圖像生成器線上版 | Toolaze",
+    "description": "將 Toolaze 作為 unrestricted 與 unlimited-style AI 圖像生成器使用，取得更廣的圖像概念、更少不必要改寫、直接提示詞控制與清楚創作邊界。"
+  },
+  "sectionsOrder": [
+    "intro",
+    "howToUse",
+    "promptExamples",
+    "workflowComparison",
+    "photoTips",
+    "scenes",
+    "features",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Unrestricted & <span class=\"text-gradient\">Unlimited AI 圖像生成器</span> 線上版",
+    "desc": "使用 unlimited-style 圖像生成器建立大膽原創概念，保留更廣的提示詞控制、更少不必要改寫與清楚創作邊界。"
+  },
+  "intro": {
+    "title": "Toolaze 上的 unrestricted 與 unlimited-style 圖像生成代表什麼",
+    "content": [
+      {
+        "title": "Unlimited-style 提示詞控制",
+        "text": "當你想要接近 unlimited AI image generator 的體驗時，Toolaze 可減少不必要提示詞改寫，讓風格、構圖、語氣與參考細節更直接可控。"
+      },
+      {
+        "title": "No-restriction 說法與責任邊界",
+        "text": "No-restriction AI image generator 不代表沒有規則或不安全生成。Toolaze 支援更廣的普通創作細節，但仍要求合法、非傷害、基於授權、非露骨與成人安全的使用。"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "如何使用 Unrestricted / Unlimited AI 圖像生成器",
+    "steps": [
+      {
+        "title": "寫出直接提示詞",
+        "desc": "描述主體、風格、情緒、光線、構圖與輸出格式。"
+      },
+      {
+        "title": "需要時加入參考圖",
+        "desc": "若要保留版面、姿勢、產品或室內方向，切換到圖像轉圖像。"
+      },
+      {
+        "title": "設定清楚邊界",
+        "desc": "說明哪些要保留、避免或排除。"
+      },
+      {
+        "title": "生成並調整",
+        "desc": "檢查結果，再細化鏡頭、材質、文字、顏色或構圖。"
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "更自由創作控制的提示詞想法",
+    "subtitle": "用四種結構開始，再調整主題、語氣、格式與安全邊界。",
+    "layout": "grid",
+    "items": [
+      {
+        "title": "暗黑奇幻角色設定",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/gpt-image-2/prompt-character-sheet.webp",
+        "aspectRatio": "16:9",
+        "prompt": "Create a cinematic dark fantasy character concept sheet for an original warrior queen in obsidian armor, with three full-body poses, close-up face details, weapon variants, readable labels, controlled lighting, and a polished game-art presentation. Keep the character adult, original, non-celebrity, and non-explicit.",
+        "note": "適合原創奇幻角色。"
+      },
+      {
+        "title": "科幻動作分鏡",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/gpt-image-2/prompt-storyboard.webp",
+        "aspectRatio": "16:9",
+        "prompt": "Create a widescreen sci-fi action storyboard with four clean panels showing an original pilot escaping a neon orbital station, dynamic camera angles, readable panel captions, smoke, sparks, motion blur, and a polished cinematic color grade. Keep it intense but non-graphic.",
+        "note": "適合不含血腥細節的動作規劃。"
+      },
+      {
+        "title": "合成波專輯海報",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/gpt-image-2/prompt-product-poster.webp",
+        "aspectRatio": "16:9",
+        "prompt": "Create a bold album-cover style poster for an imaginary synthwave artist named NIGHT SIGNAL, with large readable typography, chrome lettering, a surreal city skyline, dramatic magenta-blue lighting, and a print-ready square composition.",
+        "note": "適合文字清楚的海報。"
+      },
+      {
+        "title": "超現實室內概念",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/seedream-4-5/prompt-interior-redesign.webp",
+        "aspectRatio": "16:9",
+        "prompt": "Create a surreal interior design concept for a private creative studio inside a glass cliffside room, with sculptural furniture, warm natural light, plants, art objects, clean spatial layout, and realistic materials. No people, no brands, no logos.",
+        "note": "適合空間設計與氛圍。"
+      }
+    ]
+  },
+  "workflowComparison": {
+    "title": "Unlimited-style 生成與僵硬圖像工具比較",
+    "subtitle": "當你的概念需要比僵硬限制更多的具體指令時，可以使用 Toolaze，同時保留可見責任邊界。",
+    "columns": [
+      "決策點",
+      "僵硬生成器",
+      "Toolaze 彈性生成器"
+    ],
+    "rows": [
+      [
+        "提示詞控制",
+        "容易把大膽方向改成通用圖像。",
+        "在安全規則內更清楚保留創作方向。"
+      ],
+      [
+        "創作範圍",
+        "多適合常見素材式輸出。",
+        "支援奇幻、電影感、海報、產品、室內與參考圖編輯。"
+      ],
+      [
+        "參考圖編輯",
+        "文字生成與圖像轉圖像常被分開。",
+        "可把提示詞想法接到參考圖工作流。"
+      ],
+      [
+        "透明度",
+        "可能不知道失敗原因。",
+        "邊界更清楚，方便修正提示詞。"
+      ]
+    ]
+  },
+  "photoTips": {
+    "title": "Unlimited-style 圖像生成的更好提示詞",
+    "subtitle": "好的 unrestricted 或 unlimited-style 提示詞應該具體、原創，並清楚設定邊界。",
+    "items": [
+      {
+        "title": "定義主體",
+        "desc": "先寫主體、場景、姿勢、視覺年代與用途。"
+      },
+      {
+        "title": "控制構圖",
+        "desc": "指定鏡頭、取景、比例、背景密度與文字位置。"
+      },
+      {
+        "title": "保護授權",
+        "desc": "使用自己的或授權參考圖，避免私人、未成年與欺騙性編輯。"
+      },
+      {
+        "title": "描述允許結果",
+        "desc": "清楚寫出合法完成圖，並說明哪些要保持原創、非露骨或無品牌。"
+      }
+    ]
+  },
+  "scenesTitle": "Unrestricted 與 unlimited-style AI 圖像的最佳用途",
+  "scenes": [
+    {
+      "title": "概念藝術",
+      "desc": "建立原創角色、世界、道具、服裝、海報與主視覺。"
+    },
+    {
+      "title": "行銷視覺",
+      "desc": "草擬封面、活動海報、縮圖、社群廣告、產品概念與文字版面。"
+    },
+    {
+      "title": "參考圖編輯",
+      "desc": "用圖片引導氛圍、構圖、產品、房間、姿勢或風格。"
+    }
+  ],
+  "features": {
+    "title": "創作者為何把 Toolaze 作為 unlimited-style 圖像生成器",
+    "items": [
+      {
+        "title": "直接提示意圖",
+        "desc": "更容易控制方向、語氣、取景與風格。"
+      },
+      {
+        "title": "支援圖像轉圖像",
+        "desc": "需要保留版面、產品、角色或空間時可使用參考。"
+      },
+      {
+        "title": "清楚創作邊界",
+        "desc": "鼓勵安全、原創且有授權的使用方式。"
+      },
+      {
+        "title": "可重用範例",
+        "desc": "從角色、場景、海報與室內的結構化提示詞開始。"
+      },
+      {
+        "title": "Toolaze 圖像生態",
+        "desc": "可連到圖像生成、圖像轉圖像與相關工具。"
+      },
+      {
+        "title": "線上快速迭代",
+        "desc": "不用設定本地模型即可生成、檢查與修正。"
+      }
+    ]
+  },
+  "faqTitle": "不受限制 AI 圖像生成器 FAQ",
+  "faq": [
+    {
+      "q": "什麼是 unrestricted 或 unlimited AI 圖像生成器？",
+      "a": "它是為更廣創作提示詞、更強風格控制與更少不必要通用改寫而設計的圖像生成器。在 Toolaze，unlimited-style 生成仍保留清楚創作邊界與授權使用。"
+    },
+    {
+      "q": "Toolaze 是 no-restriction AI image generator 嗎？",
+      "a": "Toolaze 支援更廣的原創概念與較少僵硬提示詞改寫，但並非字面上的 unlimited 或無規則工具。"
+    },
+    {
+      "q": "可以使用圖像轉圖像嗎？",
+      "a": "可以。當參考圖需要引導構圖、姿勢、產品、房間或風格時使用。"
+    },
+    {
+      "q": "可以免費試用嗎？",
+      "a": "取決於帳戶、模型、credits 與設定。生成前請查看工具面板。"
+    },
+    {
+      "q": "如何得到更好結果？",
+      "a": "寫清楚主體、風格、光線、鏡頭、構圖、格式與邊界。"
+    },
+    {
+      "q": "應該選擇哪種畫面比例？",
+      "a": "16:9 適合電影感橫幅與寬場景，1:1 適合方形社群貼文，直式比例適合人像或手機優先圖片。"
+    }
+  ],
+  "moreTools": "更多 AI 圖像工具",
+  "moreToolsLinks": [
+    {
+      "slug": "ai-image-generator",
+      "title": "AI 圖像生成器",
+      "description": "建立日常文字生成、社群視覺與行銷草稿。",
+      "href": "/ai-image-generator",
+      "media": {
+        "type": "image",
+        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/gpt-image-2.jpg",
+        "alt": "AI 圖像生成器"
+      }
+    },
+    {
+      "slug": "ai-image-to-image-generator",
+      "title": "AI 圖像轉圖像生成器",
+      "description": "上傳參考圖並用提示詞轉換。",
+      "href": "/ai-image-to-image-generator",
+      "media": {
+        "type": "image",
+        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/gpt-image-2/feature-image-editing.webp",
+        "alt": "AI 圖像轉圖像生成器"
+      }
+    },
+    {
+      "slug": "ai-clothes-changer",
+      "title": "AI 換衣工具",
+      "description": "用於安全的時尚人物編輯概念。",
+      "href": "/ai-clothes-changer",
+      "media": {
+        "type": "image",
+        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/84b9bf50f4414a2c962ebd3f74cb07f0.webp",
+        "alt": "AI 換衣工具"
+      }
+    }
+  ]
+}

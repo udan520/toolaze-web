@@ -62,10 +62,10 @@
     "aiClothesChanger": "Trocador de roupas com IA",
     "wan25Video": "Wan 2.5 Vídeo",
     "klingAiVideoGenerator": "Gerador de vídeo IA Kling",
-    "aiBikiniGenerator": "Gerador de biquíni com IA"
-,
-    "talkingAvatarCreator": "Avatar falante IA"
-
+    "aiBikiniGenerator": "Gerador de biquíni com IA",
+    "unrestrictedAiImageGenerator": "Imagem IA Unlimited",
+    "talkingAvatarCreator": "Avatar falante IA",
+    "aiBreastExpansion": "Aumento de busto com IA"
   },
   "home": {
     "metadata": {
@@ -135,6 +135,14 @@
       "ai-bikini-generator": {
         "cardTitle": "Gerador de biquíni com IA",
         "summary": "Envie uma foto adulta e uma referência de biquíni para visualizar edições de swimwear de bom gosto mantendo a pessoa original."
+      },
+      "unrestricted-ai-image-generator": {
+        "cardTitle": "Gerador IA Unrestricted / Unlimited",
+        "summary": "Crie conceitos visuais unlimited-style mais amplos com texto para imagem, imagem para imagem, controle direto do prompt e limites criativos claros."
+      },
+      "ai-breast-expansion": {
+        "cardTitle": "Aumento de busto com IA",
+        "summary": "Envie uma foto de adulto com roupa e visualize edições naturais de busto mantendo pessoa, roupa, pose e cena."
       }
     },
     "aiToolsHubTitle": "Ferramentas AI Grátis para Imagens, Vídeos e Fluxos de Trabalho de Mídia Diários",
@@ -296,10 +304,10 @@
     "aiClothesChanger": "Trocador de roupas com IA",
     "wan25Video": "Wan 2.5 Vídeo",
     "klingAiVideoGenerator": "Gerador de vídeo IA Kling",
-    "aiBikiniGenerator": "Gerador de biquíni com IA"
-,
-    "talkingAvatarCreator": "Avatar falante IA"
-
+    "aiBikiniGenerator": "Gerador de biquíni com IA",
+    "unrestrictedAiImageGenerator": "Gerador IA Unrestricted / Unlimited",
+    "talkingAvatarCreator": "Avatar falante IA",
+    "aiBreastExpansion": "Aumento de busto com IA"
   },
   "breadcrumb": {
     "home": "Início",

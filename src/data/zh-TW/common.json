@@ -62,10 +62,10 @@
     "aiClothesChanger": "AI 換衣工具",
     "wan25Video": "Wan 2.5 影片",
     "klingAiVideoGenerator": "Kling AI 影片生成器",
-    "aiBikiniGenerator": "AI 比基尼生成器"
-,
-    "talkingAvatarCreator": "AI 說話頭像"
-
+    "aiBikiniGenerator": "AI 比基尼生成器",
+    "unrestrictedAiImageGenerator": "Unlimited AI 圖像",
+    "talkingAvatarCreator": "AI 說話頭像",
+    "aiBreastExpansion": "AI 豐胸預覽"
   },
   "home": {
     "metadata": {
@@ -135,6 +135,14 @@
       "ai-bikini-generator": {
         "cardTitle": "AI 比基尼生成器",
         "summary": "上傳成人人物照片與比基尼參考圖，在保留原人物的同時預覽得體的泳裝編輯效果。"
+      },
+      "unrestricted-ai-image-generator": {
+        "cardTitle": "Unrestricted / Unlimited AI 圖像生成器",
+        "summary": "使用文字生成、圖像轉圖像、直接提示詞控制與清楚創作邊界，建立更廣的 unlimited-style AI 圖像概念。"
+      },
+      "ai-breast-expansion": {
+        "cardTitle": "AI 豐胸預覽",
+        "summary": "上傳穿著衣服的成人照片，在保留人物、衣服、姿勢和場景的同時預覽自然胸型調整。"
       }
     },
     "aiToolsHubTitle": "適用於圖片、影片和日常媒體工作流程的免費AI工具",
@@ -296,10 +304,10 @@
     "aiClothesChanger": "AI 換衣工具",
     "wan25Video": "Wan 2.5 影片",
     "klingAiVideoGenerator": "Kling AI 影片生成器",
-    "aiBikiniGenerator": "AI 比基尼生成器"
-,
-    "talkingAvatarCreator": "AI 說話頭像"
-
+    "aiBikiniGenerator": "AI 比基尼生成器",
+    "unrestrictedAiImageGenerator": "Unrestricted / Unlimited AI 圖像生成器",
+    "talkingAvatarCreator": "AI 說話頭像",
+    "aiBreastExpansion": "AI 豐胸預覽"
   },
   "breadcrumb": {
     "home": "首頁",

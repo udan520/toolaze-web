@@ -11,11 +11,13 @@ const STATIC_PAGES = ['about', 'privacy', 'terms', 'pricing', 'refund-policy', '
 const TOOL_PAGES = ['image-compressor', 'image-converter', 'font-generator', 'emoji-copy-and-paste']
 const VIDEO_GENERATOR_PAGES = ['kling-ai-video-generator', 'text-to-video-generator', 'image-to-video-generator'] as const
 const AI_IMAGE_L2_PAGES = [
+  { path: '/unrestricted-ai-image-generator', priority: 0.91 },
   { path: '/photo-restoration', priority: 0.9 },
   { path: '/watermark-remover', priority: 0.9 },
   { path: '/ai-couple-photo-maker', priority: 0.88 },
   { path: '/ai-baby-generator', priority: 0.88 },
   { path: '/ai-bikini-generator', priority: 0.88 },
+  { path: '/ai-breast-expansion', priority: 0.84 },
 ] as const
 
 interface SitemapEntry {

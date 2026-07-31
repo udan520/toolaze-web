@@ -23,3 +23,24 @@ test('includes image-to-image target mode when building prompt example insert de
     },
   )
 })
+
+test('keeps text-to-image prompt examples prompt-only when the card image is only a demo preview', () => {
+  assert.deepEqual(
+    buildPromptExampleUseDetail(
+      {
+        title: 'Dark fantasy character sheet',
+        prompt: 'Create a cinematic dark fantasy character concept sheet.',
+        image: 'https://example.com/prompt-character-sheet.webp',
+      },
+      'text-to-image',
+    ),
+    {
+      prompt: 'Create a cinematic dark fantasy character concept sheet.',
+      demoImageUrl: 'https://example.com/prompt-character-sheet.webp',
+      demoImageTitle: 'Dark fantasy character sheet',
+      mode: 'text-to-image',
+      presetLabel: 'Dark fantasy character sheet',
+      presetGroup: undefined,
+    },
+  )
+})

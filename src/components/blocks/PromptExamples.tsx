@@ -357,7 +357,9 @@ export default function PromptExamples({
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="block aspect-[9/16] w-full object-cover"
+                  className={item.aspectRatio === '16:9'
+                    ? 'block aspect-video w-full bg-slate-100 object-contain'
+                    : 'block aspect-[9/16] w-full object-cover'}
                   loading="lazy"
                 />
               ) : (
