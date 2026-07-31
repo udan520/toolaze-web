@@ -28,16 +28,19 @@
 ## 数量与布局
 
 - 推荐数量：3 个（卡片式）
-- 每项：标题、描述、链接
+- 每项：标题、描述、链接、媒体
 - 标题：使用 `hero.h1` 或 `metadata.title` 提取的纯文本
 - 描述：`hero.desc` 或 `metadata.description`，截断至约 100 字
+- 媒体：优先使用被推荐落地页顶部 Demo 图或 Demo 视频；不要在 More Tools 卡片顶部使用 icon-only 样式。若目标页暂无 Demo 媒体，才允许使用现有 icon 兜底，并应补齐 Demo 资产。
 
 ## JSON 字段
 
 - `moreTools`：板块标题，如 `"More Image Compression Tools"`、`"More Image Converter Tools"`
-- `moreToolsLinks`（可选）：推荐链接数组，格式 `[{ "slug", "title", "description", "href" }]`。若配置则优先使用；未配置时由代码根据工具类型动态生成
+- `moreToolsLinks`（可选）：推荐链接数组，格式 `[{ "slug", "title", "description", "href", "media" }]`。若配置则优先使用；未配置时由代码根据工具类型动态生成
+- `media`：格式为 `{ "type": "image" | "video", "src": "...", "poster": "...", "alt": "..." }`，其中 `poster` 仅视频需要时填写，`alt` 必须多语言本地化
 
 ## 禁止
 
 - 不能推荐与当前页面无关的工具
 - 不能推荐已下架或不可用的页面
+- 新增或改写 SEO 落地页时，不能把 More Tools 卡片做成纯 icon 展示；应直接复用对应页面顶部 Demo 媒体

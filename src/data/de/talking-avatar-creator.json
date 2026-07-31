@@ -1,0 +1,262 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "talking-avatar-creator",
+  "topTool": {
+    "displayName": "KI-Sprechavatar",
+    "textOverrides": {
+      "imageTitle": "Avatarbild hochladen",
+      "imageHelper": "Nutzen Sie ein klares Porträt von vorn. JPG, PNG oder WebP eignet sich am besten.",
+      "audioTitle": "Sprachaudio hochladen",
+      "audioHelper": "MP3, WAV, M4A oder OGG. Halten Sie Audio unter 10 MB und 15 Sekunden für bessere Lippensynchronität.",
+      "promptLabel": "Sprechavatar steuern",
+      "promptPlaceholder": "Natürliche Kopfbewegung, freundlicher Blickkontakt, dezente Mimik, Studiolicht, sauberes Sprechavatar-Video.",
+      "resolutionLabel": "Auflösung",
+      "generateLabel": "Sprechavatar erstellen",
+      "generatingLabel": "Avatar-Video wird erstellt...",
+      "resultTitle": "Sprechavatar-Ergebnis",
+      "resultEmptyTitle": "Ihr Ergebnis erscheint hier",
+      "resultEmptyText": "Laden Sie ein Porträt und eine Audiodatei hoch, um ein lippensynchrones Sprechavatar-Video zu erstellen.",
+      "audioTrimTitle": "Audiosegment auswählen",
+      "audioTrimMessage": "Diese Audiodatei ist länger als 15 Sekunden. Wählen Sie den Teil aus, der in das Audiofeld übernommen werden soll.",
+      "audioTrimStartLabel": "Startzeit",
+      "audioTrimLengthLabel": "Cliplänge",
+      "audioTrimRangeLabel": "Ausgewählter Bereich",
+      "audioTrimConfirmAction": "Dieses Segment verwenden",
+      "audioTrimCancelAction": "Upload abbrechen",
+      "audioTooLongMessage": "Audio-Uploads unterstützen maximal 15 Sekunden. Wählen Sie ein Segment oder laden Sie eine kürzere Datei hoch.",
+      "audioReadFailedMessage": "Die Audiodauer konnte nicht gelesen werden. Bitte laden Sie eine Audiodatei mit höchstens 15 Sekunden hoch.",
+      "audioTrimFailedMessage": "Dieses Audio konnte nicht zugeschnitten werden. Bitte laden Sie eine Audiodatei mit höchstens 15 Sekunden hoch."
+    }
+  },
+  "metadata": {
+    "title": "KI-Sprechavatar online erstellen | Toolaze",
+    "description": "Erstellen Sie ein Sprechavatar-Video aus einem Porträtbild und einer Sprachdatei mit Lippensynchronität, Mimik und Kurzvideo-Ausgabe."
+  },
+  "hero": {
+    "h1": "<span class=\"text-gradient\">KI-Sprechavatar</span> erstellen",
+    "desc": "Laden Sie ein Porträt hoch, fügen Sie einen klaren Sprachclip hinzu und erstellen Sie ein kurzes KI-Sprechavatar-Video mit Lippensynchronität, Gesichtsbewegung und natürlicher Kopfbewegung. Geeignet für Creator-Intros, Produkterklärungen, Kursauszüge, Sales-Outreach und Social Videos."
+  },
+  "sectionsOrder": [
+    "intro",
+    "howToUse",
+    "promptExamples",
+    "scenes",
+    "features",
+    "performanceMetrics",
+    "faq"
+  ],
+  "intro": {
+    "title": "Sprechavatar-Videos aus Porträt und Stimme erstellen",
+    "content": [
+      {
+        "title": "Was ist ein KI-Sprechavatar?",
+        "text": "Ein KI-Sprechavatar verwandelt ein Standporträt in ein kurzes sprechendes Video. Das hochgeladene Audio steuert die Mundbewegung, während die Anweisung Mimik, Kopfbewegung, Licht und Kamerawirkung führt."
+      },
+      {
+        "title": "Wann Sie ihn verwenden",
+        "text": "Nutzen Sie ihn, wenn Sie ein Präsentatorvideo brauchen, aber keine neue Aufnahme drehen möchten. Am besten funktioniert es mit einem klaren Gesicht, einer sauberen Tonspur und einer fokussierten Anweisung."
+      },
+      {
+        "title": "Was Sie vorbereiten sollten",
+        "text": "Beginnen Sie mit einem frontalen Porträt und einem kurzen Sprachclip. Vermeiden Sie Rauschen, verdeckte Münder, Seitenprofile und lange Skripte mit Szenenwechseln."
+      }
+    ]
+  },
+  "performanceMetrics": {
+    "title": "Wichtige Eingaben für Sprechavatare",
+    "metrics": [
+      {
+        "label": "Beste Eingabe",
+        "value": "Ein klares Porträtbild plus eine Sprachdatei."
+      },
+      {
+        "label": "Auflösung",
+        "value": "480p für schnelle Entwürfe, 720p für schärfere veröffentlichte Clips."
+      },
+      {
+        "label": "Audioführung",
+        "value": "Nutzen Sie klare Sprache unter 10 MB; kurze Clips lassen sich leichter synchronisieren und prüfen."
+      },
+      {
+        "label": "Anweisungsfokus",
+        "value": "Beschreiben Sie Mimik, Kopfbewegung, Blickkontakt, Stimmung, Licht und stabile Hintergründe."
+      },
+      {
+        "label": "Beste Ausgabe",
+        "value": "Kurze Präsentatorclips, Creator-Intros, Erklärvideos, Profilvideos und UGC-artige Talking-Head-Entwürfe."
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "Beispiele für Sprechavatar-Anweisungen",
+    "subtitle": "Kombinieren Sie Porträt und Audiodatei mit einer fokussierten Richtung für Ausdruck und Bewegung.",
+    "items": [
+      {
+        "title": "Creator-Intro",
+        "prompt": "Natural creator intro, friendly eye contact, subtle smile, small head movement, soft studio lighting, stable background, realistic lip sync.",
+        "note": "Gut für Profilvideos, Kanalintros und Personal-Brand-Clips.",
+        "color": "linear-gradient(135deg, #4f46e5, #06b6d4)"
+      },
+      {
+        "title": "Produkterklärung",
+        "prompt": "Confident presenter explaining a product feature, professional expression, gentle camera presence, clean office lighting, natural blinking, accurate lip sync.",
+        "note": "Für kurze SaaS-, E-Commerce- oder App-Erklärentwürfe.",
+        "color": "linear-gradient(135deg, #7c3aed, #ec4899)"
+      },
+      {
+        "title": "Kurs-Teaser",
+        "prompt": "Warm instructor speaking to camera, calm face motion, slight nods, clear educational tone, neutral background, polished 720p talking avatar video.",
+        "note": "Ideal für Kursauszüge und Unterrichtsvorschauen.",
+        "color": "linear-gradient(135deg, #0f172a, #22c55e)"
+      },
+      {
+        "title": "Sales-Outreach",
+        "prompt": "Professional spokesperson greeting the viewer, relaxed smile, steady eye contact, subtle gestures, bright modern lighting, trustworthy tone.",
+        "note": "Für personalisierte Ansprache und Onboarding-Nachrichten.",
+        "color": "linear-gradient(135deg, #f97316, #ef4444)"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "So erstellen Sie einen KI-Sprechavatar",
+    "steps": [
+      {
+        "title": "Porträt hochladen",
+        "desc": "Wählen Sie ein klares Bild mit sichtbarem Gesicht, gutem Licht und wenig Abdeckung rund um den Mund."
+      },
+      {
+        "title": "Sprachaudio hochladen",
+        "desc": "Nutzen Sie einen kurzen Sprachclip mit wenig Hintergrundgeräusch und einer einzelnen Stimme."
+      },
+      {
+        "title": "Bewegung beschreiben",
+        "desc": "Beschreiben Sie Gesichtsausdruck, Kopfbewegung, Stimmung, Blickkontakt, Beleuchtung und ob der Hintergrund stabil bleiben soll."
+      },
+      {
+        "title": "Generieren und prüfen",
+        "desc": "Starten Sie mit 480p für einen schnellen Entwurf und wechseln Sie zu 720p, wenn Stimme, Gesicht und Timing passen."
+      }
+    ]
+  },
+  "scenesTitle": "Anwendungsfälle für KI-Sprechavatare",
+  "scenes": [
+    {
+      "title": "Creator-Intros",
+      "desc": "Verwandeln Sie Profilfoto und Sprachclip in ein kurzes Talking-Head-Intro für Social Channels.",
+      "icon": "🎥"
+    },
+    {
+      "title": "Produkterklärungen",
+      "desc": "Erstellen Sie präsentatorartige Clips für Launches, Feature-Demos, Landingpages und Anzeigen.",
+      "icon": "📢"
+    },
+    {
+      "title": "Training-Snippets",
+      "desc": "Erstellen Sie kurze Kurs-, Onboarding- oder FAQ-Videos ohne neue Aufnahmesitzung.",
+      "icon": "🎓"
+    }
+  ],
+  "features": {
+    "title": "Warum Toolaze für Sprechavatare nutzen",
+    "items": [
+      {
+        "title": "Bild-und-Audio-Ablauf",
+        "desc": "Das Tool ist auf die echten Eingaben eines Sprechavatars ausgelegt: ein Porträtbild, eine Sprachdatei und eine Richtungsanweisung."
+      },
+      {
+        "title": "Bewegungssteuerung per Anweisung",
+        "desc": "Führen Sie Lippensynchronität, Mimik, Kopfbewegung, Kamerastimmung und Hintergrundstabilität ohne Werkzeugwechsel."
+      },
+      {
+        "title": "Fokus auf Kurzform-Ausgabe",
+        "desc": "Entwerfen Sie kompakte Videos für Social, Produkt, Bildung und Vertrieb, wenn ein schneller Talking-Head-Clip reicht."
+      },
+      {
+        "title": "Ergebnisse mit Verlauf",
+        "desc": "Generierte Videos können mit Quellseite und Modellmetadaten im Kontoverlauf gespeichert werden."
+      },
+      {
+        "title": "Klare Eingabelimits",
+        "desc": "Der Ablauf nennt Porträtqualität, Audioklarheit, Auflösung und Verhalten kurzer Clips vor der Generierung."
+      },
+      {
+        "title": "Praktische Creator-Hinweise",
+        "desc": "Die Seite erklärt Anwendungsfälle, Grenzen und Beispiele in klarer Sprache, bevor Sie Credits ausgeben."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "Was ist ein KI-Sprechavatar-Ersteller?",
+      "a": "Er erzeugt aus einem Porträtbild und einer Audiodatei ein kurzes sprechendes Video. Das Audio steuert das Timing, die Anweisung steuert Ausdruck und Präsentationsstil."
+    },
+    {
+      "q": "Welches Bild funktioniert am besten?",
+      "a": "Nutzen Sie ein klares frontales Porträt mit guter Beleuchtung und unverdecktem Mund. Vermeiden Sie Seitenprofile, Sonnenbrillen, starke Unschärfe oder angeschnittene Gesichter."
+    },
+    {
+      "q": "Kann ich meine eigene Stimme verwenden?",
+      "a": "Ja. Laden Sie eine Sprachdatei hoch, für deren Nutzung Sie die Rechte haben. Kurze, klare Sprache mit einer Stimme ergibt meist bessere Lippensynchronität."
+    },
+    {
+      "q": "Unterstützt das Tool 720p?",
+      "a": "Ja. Die Toolaze-Seite bietet 480p für Entwürfe und 720p für schärfere Sprechavatar-Clips."
+    },
+    {
+      "q": "Ist das für ASMR-Video gedacht?",
+      "a": "Nein. Diese Seite ist für sprachgeführte Sprechavatar-Videos. ASMR-Videogenerierung gehört auf eine eigene Toolseite."
+    },
+    {
+      "q": "Was soll ich in die Anweisung schreiben?",
+      "a": "Beschreiben Sie Gesichtsausdruck, Blickkontakt, Kopfbewegung, Licht, Hintergrundstabilität und die gewünschte Präsentatorstimmung."
+    }
+  ],
+  "moreToolsLinks": [
+    {
+      "slug": "ai-video-generator",
+      "title": "KI-Videogenerator",
+      "description": "Erstellen Sie allgemeine KI-Videoclips aus Text- oder Bildanweisungen.",
+      "href": "/ai-video-generator",
+      "media": {
+        "type": "video",
+        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4",
+        "alt": "Demo-Video des KI-Videogenerators"
+      }
+    },
+    {
+      "slug": "image-to-video-generator",
+      "title": "Bild-zu-Video-Generator",
+      "description": "Animieren Sie ein Standbild mit kontrollierter Bewegung.",
+      "href": "/image-to-video-generator",
+      "media": {
+        "type": "video",
+        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4",
+        "alt": "Demo-Video des Bild-zu-Video-Generators"
+      }
+    },
+    {
+      "slug": "ai-image-generator",
+      "title": "KI-Bildgenerator",
+      "description": "Erstellen Sie Porträts, Profilbilder und Ausgangsvisuals vor der Animation.",
+      "href": "/ai-image-generator",
+      "media": {
+        "type": "image",
+        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/gpt-image-2.jpg",
+        "alt": "Demo-Bild des KI-Bildgenerators"
+      }
+    }
+  ],
+  "faqTitle": "KI-Sprechavatar FAQ",
+  "faqDescription": "Kurze Antworten zu Porträts, Sprachaudio, Lippensynchronität, Ausgabequalität und sicherer Nutzung.",
+  "moreTools": "Weitere Tools für Sprechavatare",
+  "heroDemoVideo": {
+    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/talking-avatar-creator/demo.mp4",
+    "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/talking-avatar-creator/demo-poster.webp",
+    "ariaLabel": "Demo-Video mit einem kurzen KI-Sprechavatar-Clip mit Lippensynchronität und Präsentator-Mimik",
+    "duration": "PT14.48S",
+    "uploadDate": "2026-07-31T07:08:59.000Z",
+    "sourceHistory": "Talking Avatar Creator demo · 14.48s · uploaded to Toolaze R2 on 2026-07-31"
+  }
+}

@@ -37,6 +37,7 @@ type GenerationHistoryItem = {
   toolSlug?: string | null
   toolLabel?: string | null
   sourcePath?: string | null
+  recreateInputUrls?: string[]
   createdAt: string
 }
 
@@ -111,14 +112,16 @@ function isVideoHistoryUrl(url: string) {
 function normalizeGenerationHistoryItem(item: GenerationHistoryItem): GenerationHistoryItem {
   const mediaType: GenerationHistoryItem['mediaType'] =
     item.mediaType === 'video' || isVideoHistoryUrl(item.outputUrl) ? 'video' : 'image'
+  const rawInputUrls = Array.isArray(item.inputUrls) ? item.inputUrls : []
   const normalizedItem = {
     ...item,
     mediaType,
-    inputUrls: Array.isArray(item.inputUrls) ? item.inputUrls : [],
+    inputUrls: rawInputUrls,
   }
 
   return {
     ...normalizedItem,
+    recreateInputUrls: rawInputUrls,
     inputUrls: getOriginalHistoryInputImageUrls(normalizedItem),
   }
 }
@@ -407,7 +410,7 @@ export default function HistoryPageClient({ initialTranslations, locale = 'en' }
   const handleReprompt = (item: GenerationHistoryItem) => {
     trackGenerationHistoryRecreateClick(item, { surface: 'history_page' })
 
-    window.sessionStorage.setItem(PENDING_REPROMPT_STORAGE_KEY, JSON.stringify(buildHistoryRepromptPayload(item)))
+    window.sessionStorage.setItem(PENDING_REPROMPT_STORAGE_KEY, JSON.stringify(buildHistoryRepromptPayload({ ...item, inputUrls: item.recreateInputUrls || item.inputUrls })))
     window.location.href = buildHistoryRecreateHref(item, locale)
   }
 

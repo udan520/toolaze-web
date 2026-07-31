@@ -48,9 +48,41 @@ const LineIcon = ({ type }: { type: string }) => {
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
       </svg>
     ),
+    workflow: (
+      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 8.5A2.5 2.5 0 016.5 6h3A2.5 2.5 0 0112 8.5v7A2.5 2.5 0 019.5 18h-3A2.5 2.5 0 014 15.5v-7zM14 7.5h2.5A3.5 3.5 0 0120 11v1.5a3.5 3.5 0 01-3.5 3.5H14m1.5-6l-2 2 2 2" />
+      </svg>
+    ),
+    motion: (
+      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 15.5c2.4-4 5.1-4 7.5 0s5.1 4 7.5 0M5 8.5c2.4 4 5.1 4 7.5 0s5.1-4 7.5 0" />
+      </svg>
+    ),
+    output: (
+      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 7.5A2.5 2.5 0 017.5 5h9A2.5 2.5 0 0119 7.5v9a2.5 2.5 0 01-2.5 2.5h-9A2.5 2.5 0 015 16.5v-9zM10 9l5 3-5 3V9z" />
+      </svg>
+    ),
+    history: (
+      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6.5 7.5A7 7 0 1112 19M6.5 7.5V4.5m0 3H10M12 8v4l2.5 1.5" />
+      </svg>
+    ),
+    limits: (
+      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 7h14M8 7v10m8-10v10M5 17h14M9.5 12h5" />
+      </svg>
+    ),
+    guidance: (
+      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 18h6M10 21h4M12 3a6 6 0 00-3 11.2c.7.4 1 1.1 1 1.8h4c0-.7.3-1.4 1-1.8A6 6 0 0012 3z" />
+      </svg>
+    ),
   }
   return icons[type] || icons.privacy
 }
+
+const fallbackFeatureIconTypes = ['workflow', 'motion', 'output', 'history', 'limits', 'guidance'] as const
 
 export default function Features({ title, features, bgClass = 'bg-white', layout = 'default' }: FeaturesProps) {
   if (!features || features.length === 0) return null
@@ -64,6 +96,12 @@ export default function Features({ title, features, bgClass = 'bg-white', layout
     if (titleLower.includes('batch')) return 'batch'
     if (titleLower.includes('browser')) return 'browser'
     if (titleLower.includes('easy') || titleLower.includes('use')) return 'easy'
+    if (titleLower.includes('image') || titleLower.includes('audio') || titleLower.includes('workflow')) return 'workflow'
+    if (titleLower.includes('motion') || titleLower.includes('prompt')) return 'motion'
+    if (titleLower.includes('output') || titleLower.includes('video')) return 'output'
+    if (titleLower.includes('history') || titleLower.includes('result')) return 'history'
+    if (titleLower.includes('limit')) return 'limits'
+    if (titleLower.includes('guidance') || titleLower.includes('creator')) return 'guidance'
     return null
   }
 
@@ -106,6 +144,7 @@ export default function Features({ title, features, bgClass = 'bg-white', layout
             const featureObj = typeof feature === 'object' ? feature : { icon: '📂', title: feature, desc: '' }
             // 优先使用 iconType 字段，如果没有则根据标题匹配
             const iconType = featureObj.iconType || getIconType(featureObj.title)
+            const featureIconType = iconType || (featureObj.icon ? null : fallbackFeatureIconTypes[idx % fallbackFeatureIconTypes.length])
             
             return (
               <div key={idx} className={cardClass}>
@@ -127,8 +166,8 @@ export default function Features({ title, features, bgClass = 'bg-white', layout
                     </svg>
                     {/* 图标内容 - indigo（logo 主题色）极简线条图标 */}
                     <div className="relative z-10 text-indigo-600">
-                      {iconType ? (
-                        <LineIcon type={iconType} />
+                      {featureIconType ? (
+                        <LineIcon type={featureIconType} />
                       ) : featureObj.icon ? (
                         <span className="text-2xl">{featureObj.icon}</span>
                       ) : null}

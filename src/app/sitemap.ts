@@ -172,6 +172,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     changeFrequency: 'weekly',
     priority: 0.9,
   })
+  SUPPORTED_LOCALES.forEach((locale) => {
+    const path = locale === 'en' ? '/talking-avatar-creator' : `/${locale}/talking-avatar-creator`
+    entries.push({
+      url: `${baseUrl}${path}`,
+      lastModified: today,
+      changeFrequency: 'weekly',
+      priority: locale === 'en' ? 0.9 : 0.87,
+    })
+  })
   entries.push({
     url: `${baseUrl}/ai-kissing-video-generator`,
     lastModified: today,

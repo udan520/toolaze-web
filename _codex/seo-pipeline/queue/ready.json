@@ -59,6 +59,12 @@
       "slug": "ai-bikini-generator",
       "pageType": "l2",
       "status": "ready_for_publish"
+    },
+    {
+      "taskId": "2026-07-31-talking-avatar-creator",
+      "slug": "talking-avatar-creator",
+      "pageType": "l2",
+      "status": "ready_for_publish"
     }
   ]
 }

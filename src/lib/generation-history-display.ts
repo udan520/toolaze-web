@@ -10,6 +10,7 @@ const WRAPPED_GENERATOR_TOOL_SLUGS = new Set([
   'ai-dance-generator',
   'ai-kissing-video-generator',
   'ai-asmr-video-generator',
+  'talking-avatar-creator',
 ])
 
 const WRAPPED_GENERATOR_TOOL_LABELS: Record<string, string> = {
@@ -24,6 +25,7 @@ const WRAPPED_GENERATOR_TOOL_LABELS: Record<string, string> = {
   'ai-dance-generator': 'AI Dance Generator',
   'ai-kissing-video-generator': 'AI Kissing Video Generator',
   'ai-asmr-video-generator': 'AI ASMR Video Generator',
+  'talking-avatar-creator': 'AI Talking Avatar',
 }
 
 const MODEL_LABELS: Record<string, string> = {
@@ -40,6 +42,7 @@ const MODEL_LABELS: Record<string, string> = {
   'wan-2-7-image': 'Wan 2.7 Image',
   'grok-1-5-image': 'Grok 1.5 Image',
   'grok-video-1-5': 'Grok Video 1.5',
+  'infinitalk': 'Infinitalk',
 }
 
 type HistoryDisplaySource = {

@@ -1,0 +1,262 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "talking-avatar-creator",
+  "topTool": {
+    "displayName": "AIトーキングアバター",
+    "textOverrides": {
+      "imageTitle": "アバター画像をアップロード",
+      "imageHelper": "正面向きで鮮明なポートレートを使ってください。JPG、PNG、WebP が適しています。",
+      "audioTitle": "音声をアップロード",
+      "audioHelper": "MP3、WAV、M4A、OGG に対応。リップシンク品質のため、10MB 未満かつ 15 秒以内にしてください。",
+      "promptLabel": "話すアバターを演出",
+      "promptPlaceholder": "自然な頭の動き、温かいアイコンタクト、控えめな表情、スタジオ照明、きれいなトーキングアバター動画。",
+      "resolutionLabel": "解像度",
+      "generateLabel": "トーキングアバターを作成",
+      "generatingLabel": "アバター動画を作成中...",
+      "resultTitle": "トーキングアバター結果",
+      "resultEmptyTitle": "ここに結果が表示されます",
+      "resultEmptyText": "ポートレート 1 枚と音声ファイル 1 つをアップロードして、リップシンク付きのトーキングアバター動画を生成します。",
+      "audioTrimTitle": "音声区間を選択",
+      "audioTrimMessage": "この音声は 15 秒を超えています。音声欄に追加する前に残す部分を選んでください。",
+      "audioTrimStartLabel": "開始時間",
+      "audioTrimLengthLabel": "クリップの長さ",
+      "audioTrimRangeLabel": "選択範囲",
+      "audioTrimConfirmAction": "この区間を使う",
+      "audioTrimCancelAction": "アップロードを取消",
+      "audioTooLongMessage": "音声アップロードは最大 15 秒までです。区間を選ぶか、短いファイルをアップロードしてください。",
+      "audioReadFailedMessage": "音声の長さを読み取れませんでした。15 秒以内の音声ファイルをアップロードしてください。",
+      "audioTrimFailedMessage": "この音声をトリミングできませんでした。15 秒以内の音声ファイルをアップロードしてください。"
+    }
+  },
+  "metadata": {
+    "title": "AIトーキングアバター作成オンライン | Toolaze",
+    "description": "ポートレート画像と音声ファイルから、リップシンク、表情、短尺動画出力を備えたトーキングアバター動画を作成します。"
+  },
+  "hero": {
+    "h1": "<span class=\"text-gradient\">AIトーキングアバター</span>作成",
+    "desc": "ポートレートをアップロードし、明瞭な音声クリップを追加して、リップシンク、顔の動き、自然な頭の動きを備えた短い AI トーキングアバター動画を作成できます。クリエイター紹介、商品説明、講座の一部、営業メッセージ、SNS 動画に使えます。"
+  },
+  "sectionsOrder": [
+    "intro",
+    "howToUse",
+    "promptExamples",
+    "scenes",
+    "features",
+    "performanceMetrics",
+    "faq"
+  ],
+  "intro": {
+    "title": "ポートレートと音声からトーキングアバター動画を作成",
+    "content": [
+      {
+        "title": "AIトーキングアバターとは？",
+        "text": "AIトーキングアバターは静止したポートレートを短い話す動画に変換します。アップロードした音声が口の動きを制御し、指示文が表情、頭の動き、照明、カメラ感を導きます。"
+      },
+      {
+        "title": "使う場面",
+        "text": "新しく撮影せずにプレゼンター風動画が必要なときに使います。明瞭な顔、きれいな音声、絞った指示があるほど安定します。"
+      },
+      {
+        "title": "準備するもの",
+        "text": "正面向きのポートレートと短い音声クリップから始めます。ノイズ、口元の隠れ、横顔、シーン変更が必要な長い台本は避けてください。"
+      }
+    ]
+  },
+  "performanceMetrics": {
+    "title": "トーキングアバターで重要な入力",
+    "metrics": [
+      {
+        "label": "最適な入力",
+        "value": "鮮明なポートレート画像 1 枚と音声ファイル 1 つ。"
+      },
+      {
+        "label": "解像度",
+        "value": "素早い下書きは 480p、公開用の鮮明なクリップは 720p。"
+      },
+      {
+        "label": "音声ガイド",
+        "value": "10MB 未満の明瞭な音声を使ってください。短いクリップほど同期と確認が簡単です。"
+      },
+      {
+        "label": "指示の焦点",
+        "value": "表情、頭の動き、アイコンタクト、雰囲気、照明、背景の安定性を説明します。"
+      },
+      {
+        "label": "適した出力",
+        "value": "短いプレゼンタークリップ、クリエイター紹介、説明動画、プロフィール動画、UGC 風の talking-head 下書き。"
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "トーキングアバター指示例",
+    "subtitle": "ポートレートと音声に、表情と動きの方向を 1 つ加えます。",
+    "items": [
+      {
+        "title": "クリエイター紹介",
+        "prompt": "Natural creator intro, friendly eye contact, subtle smile, small head movement, soft studio lighting, stable background, realistic lip sync.",
+        "note": "プロフィール動画、チャンネル紹介、個人ブランド向けクリップに適しています。",
+        "color": "linear-gradient(135deg, #4f46e5, #06b6d4)"
+      },
+      {
+        "title": "商品説明",
+        "prompt": "Confident presenter explaining a product feature, professional expression, gentle camera presence, clean office lighting, natural blinking, accurate lip sync.",
+        "note": "短い SaaS、EC、アプリ説明の下書きに使えます。",
+        "color": "linear-gradient(135deg, #7c3aed, #ec4899)"
+      },
+      {
+        "title": "講座ティザー",
+        "prompt": "Warm instructor speaking to camera, calm face motion, slight nods, clear educational tone, neutral background, polished 720p talking avatar video.",
+        "note": "講座の一部やレッスン予告に最適です。",
+        "color": "linear-gradient(135deg, #0f172a, #22c55e)"
+      },
+      {
+        "title": "営業メッセージ",
+        "prompt": "Professional spokesperson greeting the viewer, relaxed smile, steady eye contact, subtle gestures, bright modern lighting, trustworthy tone.",
+        "note": "個別の案内やオンボーディングメッセージに使えます。",
+        "color": "linear-gradient(135deg, #f97316, #ef4444)"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "AIトーキングアバターの作り方",
+    "steps": [
+      {
+        "title": "ポートレートをアップロード",
+        "desc": "顔が見え、照明がよく、口元の隠れが少ない鮮明な画像を選びます。"
+      },
+      {
+        "title": "音声をアップロード",
+        "desc": "背景ノイズが少なく、話者が 1 人の短い音声クリップを使います。"
+      },
+      {
+        "title": "動きを指示",
+        "desc": "表情、頭の動き、雰囲気、アイコンタクト、照明、背景を安定させるかどうかを説明します。"
+      },
+      {
+        "title": "生成して確認",
+        "desc": "素早い下書きは 480p で始め、声・顔・タイミングが整ったら 720p を使います。"
+      }
+    ]
+  },
+  "scenesTitle": "AIトーキングアバターの活用例",
+  "scenes": [
+    {
+      "title": "クリエイター紹介",
+      "desc": "プロフィール写真と音声クリップを、SNS 向けの短い talking-head イントロに変換します。",
+      "icon": "🎥"
+    },
+    {
+      "title": "商品説明",
+      "desc": "ローンチ、機能デモ、ランディングページ、広告向けのプレゼンター風クリップを作成します。",
+      "icon": "📢"
+    },
+    {
+      "title": "研修スニペット",
+      "desc": "新たな収録を行わずに、講座、オンボーディング、FAQ の短い動画を作れます。",
+      "icon": "🎓"
+    }
+  ],
+  "features": {
+    "title": "トーキングアバターに Toolaze を使う理由",
+    "items": [
+      {
+        "title": "画像と音声の流れ",
+        "desc": "このツールは、トーキングアバターに必要な実際の入力であるポートレート、音声、演出指示を中心に作られています。"
+      },
+      {
+        "title": "指示文で動きを制御",
+        "desc": "リップシンク、表情、頭の動き、カメラの雰囲気、背景の安定性を別ツールなしで調整できます。"
+      },
+      {
+        "title": "短尺出力に集中",
+        "desc": "SNS、商品、教育、営業で短い talking-head クリップが必要なとき、コンパクトな動画を下書きできます。"
+      },
+      {
+        "title": "履歴に残せる結果",
+        "desc": "生成した動画は、元ページとモデル情報付きでアカウント履歴に保存できます。"
+      },
+      {
+        "title": "明確な入力制限",
+        "desc": "生成前に、ポートレート品質、音声の明瞭さ、解像度、短いクリップの扱いを確認できます。"
+      },
+      {
+        "title": "実用的な作成ガイド",
+        "desc": "クレジットを使う前に、用途、制限、指示例をわかりやすく確認できます。"
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "AIトーキングアバター作成ツールとは？",
+      "a": "ポートレート画像と音声ファイルから短い話す動画を作成します。音声が発話タイミングを動かし、指示文が表情とプレゼンテーションの雰囲気を制御します。"
+    },
+    {
+      "q": "どんな画像が最適ですか？",
+      "a": "明るく正面向きで、口元が隠れていない鮮明なポートレートを使ってください。横顔、サングラス、強いぼけ、切れた顔は避けます。"
+    },
+    {
+      "q": "自分の声を使えますか？",
+      "a": "はい。使用権のある音声ファイルをアップロードしてください。短く明瞭で話者が 1 人の音声ほど、リップシンクが安定します。"
+    },
+    {
+      "q": "720p に対応していますか？",
+      "a": "はい。Toolaze では下書き用の 480p と、より鮮明なトーキングアバター向けの 720p を選べます。"
+    },
+    {
+      "q": "ASMR 動画用ですか？",
+      "a": "いいえ。このページは音声主導のトーキングアバター動画用です。ASMR 動画生成は別のツールページで扱います。"
+    },
+    {
+      "q": "指示文には何を書けばよいですか？",
+      "a": "表情、アイコンタクト、頭の動き、照明、背景の安定性、求めるプレゼンターの雰囲気を書いてください。"
+    }
+  ],
+  "moreToolsLinks": [
+    {
+      "slug": "ai-video-generator",
+      "title": "AI動画生成",
+      "description": "テキストや画像の指示から一般的な AI 動画クリップを作成します。",
+      "href": "/ai-video-generator",
+      "media": {
+        "type": "video",
+        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4",
+        "alt": "AI動画生成のデモ動画"
+      }
+    },
+    {
+      "slug": "image-to-video-generator",
+      "title": "画像から動画生成",
+      "description": "静止画に指示された動きを加えてアニメーション化します。",
+      "href": "/image-to-video-generator",
+      "media": {
+        "type": "video",
+        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4",
+        "alt": "画像から動画生成のデモ動画"
+      }
+    },
+    {
+      "slug": "ai-image-generator",
+      "title": "AI画像生成",
+      "description": "アニメーション前のポートレート、プロフィール画像、元ビジュアルを作成します。",
+      "href": "/ai-image-generator",
+      "media": {
+        "type": "image",
+        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/gpt-image-2.jpg",
+        "alt": "AI画像生成のデモ画像"
+      }
+    }
+  ],
+  "faqTitle": "AIトーキングアバター FAQ",
+  "faqDescription": "ポートレート、音声、リップシンク、出力品質、安全な利用についての短い回答です。",
+  "moreTools": "関連するトーキングアバターツール",
+  "heroDemoVideo": {
+    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/talking-avatar-creator/demo.mp4",
+    "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/talking-avatar-creator/demo-poster.webp",
+    "ariaLabel": "リップシンクとプレゼンター風の表情を備えた短いAIトーキングアバターのデモ動画",
+    "duration": "PT14.48S",
+    "uploadDate": "2026-07-31T07:08:59.000Z",
+    "sourceHistory": "Talking Avatar Creator demo · 14.48s · uploaded to Toolaze R2 on 2026-07-31"
+  }
+}

@@ -14,6 +14,7 @@ const expectedRoutes = [
   '/ai-baby-generator',
   '/ai-dance-generator',
   '/ai-kissing-video-generator',
+  '/talking-avatar-creator',
   '/ai-hairstyle-changer',
   '/ai-hair-color-changer',
   '/ai-clothes-changer',
@@ -29,7 +30,7 @@ test('AI Tools hub includes every global AI tool in every locale', () => {
     const cards = getAiToolsPageCopy(locale).cards
     assert.deepEqual(cards.map((card) => card.href), expectedRoutes, `${locale} has missing or mismatched tools`)
     assert.equal(cards.filter((card) => card.category === 'image').length, 12)
-    assert.equal(cards.filter((card) => card.category === 'video').length, 7)
+    assert.equal(cards.filter((card) => card.category === 'video').length, 8)
   }
 })
 
@@ -94,5 +95,31 @@ test('AI Bikini Generator hub card is localized outside English', () => {
       englishCard.description,
       `${locale} description should not fall back to English`,
     )
+  }
+})
+
+test('AI Talking Avatar hub card uses the shared R2 demo poster', () => {
+  for (const locale of AI_TOOLS_LOCALES) {
+    const talkingAvatarCard = getAiToolsPageCopy(locale).cards.find((card) => card.href === '/talking-avatar-creator')
+
+    assert.ok(talkingAvatarCard, `${locale} is missing AI Talking Avatar`)
+    assert.equal(
+      talkingAvatarCard.image,
+      'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/talking-avatar-creator/demo-poster.webp',
+    )
+    assert.doesNotMatch(talkingAvatarCard.image, /^\/ai-image-generator\//)
+  }
+})
+
+test('AI Tools video category cards provide real video previews', () => {
+  for (const locale of AI_TOOLS_LOCALES) {
+    const videoCards = getAiToolsPageCopy(locale).cards.filter((card) => card.category === 'video')
+
+    assert.equal(videoCards.length, 8)
+    for (const card of videoCards) {
+      assert.ok(card.video, `${locale} ${card.href} should provide a video preview`)
+      assert.match(card.video, /^(https:\/\/pub-efeb0c7b9b53478d960218de80c52e3d\.r2\.dev\/|\/model-assets\/)/)
+      assert.ok(card.image, `${locale} ${card.href} should keep a poster image`)
+    }
   }
 })

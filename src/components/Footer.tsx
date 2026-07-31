@@ -50,6 +50,7 @@ const defaultTranslations = {
   aiCouplePhotoMaker: 'AI Couple Photo Maker',
   aiBabyGenerator: 'AI Baby Generator',
   aiKissingVideoGenerator: 'AI Kissing Video Generator',
+  talkingAvatarCreator: 'AI Talking Avatar',
   aiDanceGenerator: 'AI Dance Generator',
   aiHairstyleChanger: 'AI Hairstyle Changer',
   aiHairColorChanger: 'AI Hair Color Changer',
@@ -284,6 +285,14 @@ export default function Footer({ initialTranslations }: FooterProps = {}) {
                   className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
                 >
                   {translations.aiDanceGenerator || 'AI Dance Generator'}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={getLocalizedHref('/talking-avatar-creator')}
+                  className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
+                >
+                  {translations.talkingAvatarCreator || 'AI Talking Avatar'}
                 </Link>
               </li>
               <li>

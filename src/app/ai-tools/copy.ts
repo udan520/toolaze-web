@@ -10,6 +10,7 @@ export type AiToolsCard = {
   title: string
   href: string
   image: string
+  video?: string
   description: string
   category: Exclude<AiToolsCategory, 'all'>
 }
@@ -66,12 +67,33 @@ const cardAssets = {
     'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/15ccbe71d8eb4921930b8b7638bcebab.webp',
   asmr:
     'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/ai-asmr-video-generator/demo-poster.webp',
+  talkingAvatar:
+    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/talking-avatar-creator/demo-poster.webp',
   hairstyle: '/ai-hairstyle-changer/hero-before-after.webp',
   hairColor: '/ai-hair-color-changer/rose-pink-before-after.webp',
   clothes:
     'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/84b9bf50f4414a2c962ebd3f74cb07f0.webp',
   bikini:
     'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/6bcf91ffd06e45a8bcda2ea867015141.webp',
+}
+
+const cardVideos = {
+  aiVideo:
+    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4',
+  wan25Video:
+    '/model-assets/grok-imagine-video-1-5/grok-hero-demo-16x9.mp4',
+  textToVideo:
+    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/1b0129b9d2504494825f8fd28b00f4af.png',
+  imageToVideo:
+    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4',
+  dance:
+    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/ai-dance-demo.mp4',
+  kissing:
+    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/83a8c5b91a4945beb66275c38a731dbf.png',
+  asmr:
+    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/ai-asmr-video-generator/demo.mp4',
+  talkingAvatar:
+    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/talking-avatar-creator/demo.mp4',
 }
 
 const en: StoredAiToolsPageCopy = {
@@ -116,6 +138,7 @@ const en: StoredAiToolsPageCopy = {
       title: 'AI Video Generator',
       href: '/ai-video-generator',
       image: cardAssets.aiVideo,
+      video: cardVideos.aiVideo,
       description: 'Create short AI videos online from text, images, video clips, or audio references.',
       category: 'video',
     },
@@ -123,6 +146,7 @@ const en: StoredAiToolsPageCopy = {
       title: 'Text to Video Generator',
       href: '/text-to-video-generator',
       image: cardAssets.textToVideo,
+      video: cardVideos.textToVideo,
       description: 'Turn written prompts into short AI videos for ads, storyboards, social clips, and concept tests.',
       category: 'video',
     },
@@ -130,6 +154,7 @@ const en: StoredAiToolsPageCopy = {
       title: 'Image to Video Generator',
       href: '/image-to-video-generator',
       image: cardAssets.imageToVideo,
+      video: cardVideos.imageToVideo,
       description: 'Animate photos, product images, artwork, and reference frames with controlled AI motion.',
       category: 'video',
     },
@@ -172,6 +197,7 @@ const en: StoredAiToolsPageCopy = {
       title: 'AI Dance Generator',
       href: '/ai-dance-generator',
       image: cardAssets.dance,
+      video: cardVideos.dance,
       description: 'Upload one image and create short dance videos for choreography concepts, class promos, and social clips.',
       category: 'video',
     },
@@ -179,7 +205,16 @@ const en: StoredAiToolsPageCopy = {
       title: 'AI Kissing Video Generator',
       href: '/ai-kissing-video-generator',
       image: cardAssets.kissing,
+      video: cardVideos.kissing,
       description: 'Upload one or two photos and create short romantic AI kiss videos for couple edits, anniversaries, and story reels.',
+      category: 'video',
+    },
+    {
+      title: 'AI Talking Avatar',
+      href: '/talking-avatar-creator',
+      image: cardAssets.talkingAvatar,
+      video: cardVideos.talkingAvatar,
+      description: 'Upload a portrait and voice audio to create a short lip-synced talking avatar video.',
       category: 'video',
     },
     {
@@ -214,6 +249,7 @@ const en: StoredAiToolsPageCopy = {
       title: 'AI ASMR Video Generator',
       href: '/ai-asmr-video-generator',
       image: cardAssets.asmr,
+      video: cardVideos.asmr,
       description: 'Create tactile AI ASMR videos with synchronized sound from a text prompt or reference image.',
       category: 'video',
     },
@@ -221,6 +257,7 @@ const en: StoredAiToolsPageCopy = {
       title: 'Wan 2.5 AI Video Generator',
       href: '/model/wan-2-5-ai-video-generator',
       image: cardAssets.wan25Video,
+      video: cardVideos.wan25Video,
       description: 'Create Wan 2.5 text-to-video or image-to-video clips with 5/10 second, 720p/1080p, and native audio settings.',
       category: 'video',
     },
@@ -415,6 +452,7 @@ type SupplementalCopy = {
   video: Pick<AiToolsCard, 'title' | 'description'>
   asmr: Pick<AiToolsCard, 'title' | 'description'>
   kissing: Pick<AiToolsCard, 'title' | 'description'>
+  talkingAvatar: Pick<AiToolsCard, 'title' | 'description'>
   textToVideo: Pick<AiToolsCard, 'title' | 'description'>
   imageToVideo: Pick<AiToolsCard, 'title' | 'description'>
   hairstyle: Pick<AiToolsCard, 'title' | 'description'>
@@ -432,6 +470,7 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     video: { title: 'AI Video Generator', description: 'Create short AI videos online from text, images, video clips, or audio references.' },
     asmr: { title: 'AI ASMR Video Generator', description: 'Create tactile AI ASMR videos with synchronized sound from a text prompt or reference image.' },
     kissing: { title: 'AI Kissing Video Generator', description: 'Upload one or two photos and create short romantic AI kiss videos for couple edits, anniversaries, and story reels.' },
+    talkingAvatar: { title: 'AI Talking Avatar', description: 'Upload a portrait and voice audio to create a short lip-synced talking avatar video.' },
     textToVideo: { title: 'Text to Video Generator', description: 'Turn written prompts into short AI videos for ads, storyboards, social clips, and concept tests.' },
     imageToVideo: { title: 'Image to Video Generator', description: 'Animate photos, product images, artwork, and reference frames with controlled AI motion.' },
     hairstyle: { title: 'AI Hairstyle Changer', description: 'Try different hairstyles on a reference photo while keeping the person and overall look consistent.' },
@@ -447,6 +486,7 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     video: { title: 'KI-Videogenerator', description: 'Erstellen Sie kurze KI-Videos aus Text, Bildern, Videoclips oder Audioreferenzen.' },
     asmr: { title: 'KI-ASMR-Videogenerator', description: 'Erstellen Sie taktile KI-ASMR-Videos mit synchronisiertem Sound aus Text oder Referenzbild.' },
     kissing: { title: 'KI-Kuss-Video-Generator', description: 'Laden Sie ein oder zwei Fotos hoch und erstellen Sie kurze romantische KI-Kussvideos für Paar-Edits, Jubiläen und Story-Reels.' },
+    talkingAvatar: { title: 'KI-Sprechavatar', description: 'Laden Sie ein Porträt und Sprachaudio hoch, um ein kurzes lippensynchrones Sprechavatar-Video zu erstellen.' },
     textToVideo: { title: 'Text-zu-Video-Generator', description: 'Verwandeln Sie Textprompts in kurze KI-Videos für Anzeigen, Storyboards, Social Clips und Konzepttests.' },
     imageToVideo: { title: 'Bild-zu-Video-Generator', description: 'Animieren Sie Fotos, Produktbilder, Kunstwerke und Referenzframes mit kontrollierter KI-Bewegung.' },
     hairstyle: { title: 'KI-Frisurenwechsler', description: 'Probieren Sie verschiedene Frisuren auf einem Referenzfoto aus und bewahren Sie das Aussehen der Person.' },
@@ -462,6 +502,7 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     video: { title: 'AI動画生成', description: 'テキスト、画像、動画クリップ、音声参照から短いAI動画をオンライン作成できます。' },
     asmr: { title: 'AI ASMR動画ジェネレーター', description: 'テキストや参照画像から、同期した音付きの触感的なAI ASMR動画を作成できます。' },
     kissing: { title: 'AIキス動画ジェネレーター', description: '1枚または2枚の写真から、カップル編集、記念日、ストーリーリール向けの短いロマンチックなAIキス動画を作成できます。' },
+    talkingAvatar: { title: 'AIトーキングアバター', description: 'ポートレートと音声をアップロードして、リップシンク付きの短いトーキングアバター動画を作成できます。' },
     textToVideo: { title: 'テキストから動画生成', description: '文章プロンプトを広告、絵コンテ、SNSクリップ、コンセプト検証向けの短いAI動画にできます。' },
     imageToVideo: { title: '画像から動画生成', description: '写真、商品画像、アート、参照フレームに制御可能なAIモーションを加えられます。' },
     hairstyle: { title: 'AIヘアスタイルチェンジャー', description: '人物の印象を保ちながら、参照写真でさまざまな髪型を試せます。' },
@@ -477,6 +518,7 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     video: { title: 'Generador de video IA', description: 'Crea videos cortos con IA desde texto, imágenes, clips de video o referencias de audio.' },
     asmr: { title: 'Generador de video ASMR IA', description: 'Crea videos ASMR táctiles con sonido sincronizado desde un prompt de texto o una imagen de referencia.' },
     kissing: { title: 'Generador de videos de besos IA', description: 'Sube una o dos fotos y crea videos cortos de besos románticos para ediciones de pareja, aniversarios y reels.' },
+    talkingAvatar: { title: 'Avatar parlante con IA', description: 'Sube un retrato y audio de voz para crear un video corto de avatar con labios sincronizados.' },
     textToVideo: { title: 'Generador de texto a video', description: 'Convierte prompts escritos en videos cortos con IA para anuncios, guiones visuales, clips sociales y pruebas de concepto.' },
     imageToVideo: { title: 'Generador de imagen a video', description: 'Anima fotos, imágenes de producto, ilustraciones y fotogramas de referencia con movimiento IA controlado.' },
     hairstyle: { title: 'Cambiador de peinados IA', description: 'Prueba distintos peinados en una foto de referencia manteniendo el aspecto de la persona.' },
@@ -492,6 +534,7 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     video: { title: 'AI 影片生成器', description: '使用文字、圖像、影片片段或音訊參考在線建立 AI 短片。' },
     asmr: { title: 'AI ASMR 影片生成器', description: '使用文字提示詞或參考圖像建立具備同步聲音的觸感式 AI ASMR 影片。' },
     kissing: { title: 'AI 親吻影片生成器', description: '上傳一張或兩張照片，生成適合情侶剪輯、紀念日與 Story Reels 的浪漫親吻短片。' },
+    talkingAvatar: { title: 'AI 說話頭像', description: '上傳人像與語音音訊，建立短的唇形同步說話頭像影片。' },
     textToVideo: { title: '文字轉影片生成器', description: '將文字提示詞轉為適合廣告、分鏡、社群短片與概念測試的 AI 短片。' },
     imageToVideo: { title: '圖像轉影片生成器', description: '以可控的 AI 動態為照片、產品圖、藝術作品和參考畫面製作動畫。' },
     hairstyle: { title: 'AI 髮型變換器', description: '在保留人物整體外觀的同時，透過參考照片嘗試不同髮型。' },
@@ -507,6 +550,7 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     video: { title: 'Gerador de vídeo IA', description: 'Crie vídeos curtos com IA a partir de texto, imagens, clipes ou referências de áudio.' },
     asmr: { title: 'Gerador de vídeo ASMR com IA', description: 'Crie vídeos ASMR táteis com som sincronizado a partir de texto ou imagem de referência.' },
     kissing: { title: 'Gerador de vídeos de beijo com IA', description: 'Envie uma ou duas fotos e crie vídeos curtos de beijo romântico para edições de casal, aniversários e reels.' },
+    talkingAvatar: { title: 'Avatar falante com IA', description: 'Envie um retrato e áudio de voz para criar um vídeo curto de avatar com lábios sincronizados.' },
     textToVideo: { title: 'Gerador de texto para vídeo', description: 'Transforme prompts em vídeos curtos com IA para anúncios, storyboards, clipes sociais e testes de conceito.' },
     imageToVideo: { title: 'Gerador de imagem para vídeo', description: 'Anime fotos, imagens de produtos, obras de arte e quadros de referência com movimento de IA controlado.' },
     hairstyle: { title: 'Alterador de penteado IA', description: 'Teste penteados diferentes em uma foto mantendo a pessoa e o visual geral consistentes.' },
@@ -522,6 +566,7 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     video: { title: 'Générateur de vidéo IA', description: 'Créez de courtes vidéos IA à partir de texte, d’images, de clips ou de références audio.' },
     asmr: { title: 'Générateur de vidéo ASMR IA', description: 'Créez des vidéos ASMR tactiles avec son synchronisé depuis un prompt texte ou une image de référence.' },
     kissing: { title: 'Générateur de vidéos de baiser IA', description: 'Importez une ou deux photos et créez de courtes vidéos de baiser romantique pour montages de couple, anniversaires et reels.' },
+    talkingAvatar: { title: 'Avatar parlant IA', description: 'Importez un portrait et un audio vocal pour créer une courte vidéo d’avatar synchronisée.' },
     textToVideo: { title: 'Générateur texte-vidéo', description: 'Transformez des prompts en courtes vidéos IA pour annonces, storyboards, clips sociaux et tests de concept.' },
     imageToVideo: { title: 'Générateur image-vidéo', description: 'Animez photos, images produit, créations et images de référence avec des mouvements IA contrôlés.' },
     hairstyle: { title: 'Changeur de coiffure IA', description: 'Essayez différentes coiffures sur une photo de référence tout en conservant l’apparence de la personne.' },
@@ -537,6 +582,7 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     video: { title: 'AI 동영상 생성기', description: '텍스트, 이미지, 동영상 클립 또는 오디오 참조로 짧은 AI 동영상을 만드세요.' },
     asmr: { title: 'AI ASMR 동영상 생성기', description: '텍스트 프롬프트나 참조 이미지로 동기화된 사운드가 있는 촉각적인 AI ASMR 영상을 만드세요.' },
     kissing: { title: 'AI 키스 동영상 생성기', description: '사진 한 장 또는 두 장을 업로드해 커플 편집, 기념일, 스토리 릴용 짧은 로맨틱 AI 키스 영상을 만드세요.' },
+    talkingAvatar: { title: 'AI 말하는 아바타', description: '인물 사진과 음성 오디오를 업로드해 짧은 립싱크 말하는 아바타 영상을 만드세요.' },
     textToVideo: { title: '텍스트-동영상 생성기', description: '텍스트 프롬프트를 광고, 스토리보드, 소셜 클립, 콘셉트 테스트용 짧은 AI 동영상으로 만드세요.' },
     imageToVideo: { title: '이미지-동영상 생성기', description: '사진, 제품 이미지, 아트워크, 참조 프레임에 제어 가능한 AI 모션을 적용하세요.' },
     hairstyle: { title: 'AI 헤어스타일 변경기', description: '인물의 전체적인 모습을 유지하면서 참조 사진에서 다양한 헤어스타일을 시험해 보세요.' },
@@ -552,6 +598,7 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     video: { title: 'Generatore video IA', description: 'Crea brevi video IA da testo, immagini, clip video o riferimenti audio.' },
     asmr: { title: 'Generatore video ASMR IA', description: 'Crea video ASMR tattili con audio sincronizzato da un prompt testuale o da un’immagine di riferimento.' },
     kissing: { title: 'Generatore di video di baci IA', description: 'Carica una o due foto e crea brevi video di baci romantici per edit di coppia, anniversari e reel.' },
+    talkingAvatar: { title: 'Avatar parlante IA', description: 'Carica un ritratto e audio vocale per creare un breve video avatar con labbra sincronizzate.' },
     textToVideo: { title: 'Generatore da testo a video', description: 'Trasforma prompt scritti in brevi video IA per annunci, storyboard, clip social e test di concept.' },
     imageToVideo: { title: 'Generatore da immagine a video', description: 'Anima foto, immagini di prodotto, opere e fotogrammi di riferimento con movimenti IA controllati.' },
     hairstyle: { title: 'Cambia acconciatura IA', description: 'Prova diverse acconciature su una foto mantenendo coerenti la persona e l’aspetto generale.' },
@@ -596,6 +643,7 @@ const aiToolsCardOrder = [
   '/ai-baby-generator',
   '/ai-dance-generator',
   '/ai-kissing-video-generator',
+  '/talking-avatar-creator',
   '/ai-hairstyle-changer',
   '/ai-hair-color-changer',
   '/ai-clothes-changer',
@@ -627,6 +675,7 @@ function getSupplementalCardByHref(
     '/text-to-video-generator': supplemental.textToVideo,
     '/image-to-video-generator': supplemental.imageToVideo,
     '/ai-kissing-video-generator': supplemental.kissing,
+    '/talking-avatar-creator': supplemental.talkingAvatar,
     '/ai-hairstyle-changer': supplemental.hairstyle,
     '/ai-hair-color-changer': supplemental.hairColor,
     '/ai-clothes-changer': supplemental.clothes,

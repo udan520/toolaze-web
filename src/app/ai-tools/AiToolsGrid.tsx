@@ -10,6 +10,32 @@ function localizeHref(href: string, locale: string) {
   return locale === 'en' ? href : `/${locale}${href}`
 }
 
+function ToolPreview({ card }: { card: AiToolsCard }) {
+  if (card.category === 'video' && card.video) {
+    return (
+      <video
+        className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+        src={card.video}
+        poster={card.image}
+        aria-label={card.title}
+        muted
+        loop
+        playsInline
+        autoPlay
+        preload="metadata"
+      />
+    )
+  }
+
+  return (
+    <img
+      src={card.image}
+      alt={card.title}
+      className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+    />
+  )
+}
+
 export default function AiToolsGrid({
   cards,
   filters,
@@ -51,8 +77,8 @@ export default function AiToolsGrid({
             href={localizeHref(card.href, locale)}
             className="group flex h-full flex-col overflow-hidden rounded-3xl border border-indigo-100 bg-white shadow-sm transition-colors hover:border-indigo-200"
           >
-            <div className="aspect-[4/3] w-full overflow-hidden">
-              <img src={card.image} alt={card.title} className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]" />
+            <div className="aspect-video w-full overflow-hidden bg-slate-100">
+              <ToolPreview card={card} />
             </div>
             <div className="flex flex-1 flex-col p-6">
               <h2 className="mb-2 text-xl font-bold text-slate-900 transition-colors group-hover:text-indigo-600">

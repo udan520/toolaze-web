@@ -15,6 +15,7 @@ import ImageConverter from '@/components/ImageConverter'
 import EmojiCategoryPage from '@/components/EmojiCategoryPage'
 import AiImageGenerationTool from '@/components/AiImageGenerationTool'
 import AiVideoGeneratorTool from '@/components/AiVideoGeneratorTool'
+import TalkingAvatarCreatorTool from '@/components/TalkingAvatarCreatorTool'
 import Seedance25LaunchUpdates from '@/components/blocks/Seedance25LaunchUpdates'
 import NanoBanana2HeroPlaceholder from '@/components/blocks/NanoBanana2HeroPlaceholder'
 import TrustBar from '@/components/blocks/TrustBar'
@@ -36,6 +37,48 @@ import React from 'react'
 interface ToolL2PageContentProps {
   locale: string
   tool: string
+}
+
+type RecommendedToolMedia = {
+  type: 'image' | 'video'
+  src: string
+  poster?: string
+  alt?: string
+}
+
+type RecommendedTool = {
+  slug: string
+  title: string
+  description: string
+  href: string
+  media?: RecommendedToolMedia
+}
+
+function normalizeRecommendedToolMedia(media: unknown): RecommendedToolMedia | undefined {
+  if (!media || typeof media !== 'object') return undefined
+
+  const candidate = media as { type?: unknown; src?: unknown; poster?: unknown; alt?: unknown }
+  if ((candidate.type !== 'image' && candidate.type !== 'video') || typeof candidate.src !== 'string' || !candidate.src.trim()) {
+    return undefined
+  }
+
+  return {
+    type: candidate.type,
+    src: candidate.src,
+    poster: typeof candidate.poster === 'string' && candidate.poster.trim() ? candidate.poster : undefined,
+    alt: typeof candidate.alt === 'string' && candidate.alt.trim() ? candidate.alt : undefined,
+  }
+}
+
+function getHeroDemoMedia(data: { heroDemoVideo?: { src?: string; poster?: string; ariaLabel?: string } } | null | undefined, fallbackAlt: string): RecommendedToolMedia | undefined {
+  if (!data?.heroDemoVideo?.src) return undefined
+
+  return {
+    type: 'video',
+    src: data.heroDemoVideo.src,
+    poster: data.heroDemoVideo.poster,
+    alt: data.heroDemoVideo.ariaLabel || fallbackAlt,
+  }
 }
 
 const AI_IMAGE_TOOL_TOP_COMPONENTS = new Set(['gpt-image-2'])
@@ -552,6 +595,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
       'aiBabyGenerator',
       'aiAsmrVideoGenerator',
       'aiKissingVideoGenerator',
+      'talkingAvatarCreator',
       'aiDanceGenerator',
       'aiHairstyleChanger',
       'aiHairColorChanger',
@@ -777,6 +821,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
       'ai-video-generator',
       'wan-2-5-ai-video-generator',
       'text-to-video-generator',
+      'talking-avatar-creator',
     ].includes(topComp)
 
     // 获取推荐的其他功能
@@ -792,26 +837,32 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
       if (modelTool === 'kling-3') return locale === 'en' ? '/model/kling-3' : `/${locale}/model/kling-3`
       return locale === 'en' ? `/${modelTool}` : `/${locale}/${modelTool}`
     }
-    let filteredRecommendedTools: Array<{ slug: string; title: string; description: string; href: string }> = []
+    let filteredRecommendedTools: RecommendedTool[] = []
     if (Array.isArray(content.moreToolsLinks) && content.moreToolsLinks.length > 0) {
       filteredRecommendedTools = content.moreToolsLinks
         .filter((l: { title?: string; href?: string }) => l?.title && l?.href)
-        .map((l: { slug?: string; title: string; description?: string; href: string }) => ({
-          slug: l.slug || l.href?.split('/').pop() || '',
-          title: l.title,
-          description: l.description || '',
-          href: l.href,
-        }))
+        .map((l: { slug?: string; title: string; description?: string; href: string; media?: unknown }) => {
+          const media = normalizeRecommendedToolMedia(l.media)
+          return {
+            slug: l.slug || l.href?.split('/').pop() || '',
+            title: l.title,
+            description: l.description || '',
+            href: l.href,
+            ...(media ? { media } : {}),
+          }
+        })
     } else if (VIDEO_MODEL_L2S.includes(tool)) {
       const otherVideoModels = VIDEO_MODEL_L2S.filter((t) => t !== tool)
       filteredRecommendedTools = await Promise.all(
         otherVideoModels.slice(0, 3).map(async (modelTool) => {
           const data = await getL2SeoContent(modelTool, locale)
+          const title = data?.hero?.h1 ? extractSimpleTitle(data.hero.h1) : modelTool
           return {
             slug: modelTool,
-            title: data?.hero?.h1 ? extractSimpleTitle(data.hero.h1) : modelTool,
+            title,
             description: data?.hero?.desc || data?.metadata?.description || '',
             href: getModelL2Href(modelTool),
+            media: getHeroDemoMedia(data, title),
           }
         })
       ).then((arr) => arr.filter((t) => t.title && t.href))
@@ -820,11 +871,13 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
       filteredRecommendedTools = await Promise.all(
         otherImageModels.slice(0, 3).map(async (modelTool) => {
           const data = await getL2SeoContent(modelTool, locale)
+          const title = data?.hero?.h1 ? extractSimpleTitle(data.hero.h1) : modelTool
           return {
             slug: modelTool,
-            title: data?.hero?.h1 ? extractSimpleTitle(data.hero.h1) : modelTool,
+            title,
             description: data?.hero?.desc || data?.metadata?.description || '',
             href: getModelL2Href(modelTool),
+            media: getHeroDemoMedia(data, title),
           }
         })
       ).then((arr) => arr.filter((t) => t.title && t.href))
@@ -1186,6 +1239,14 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                 </div>
               </div>
             </header>
+          ) : topComp === 'talking-avatar-creator' ? (
+            <TalkingAvatarCreatorTool
+              heroBreadcrumbItems={breadcrumbItems}
+              heroTitleHtml={content.hero?.h1 || 'AI Talking Avatar'}
+              heroDescription={content.hero?.desc}
+              copy={content.topTool?.textOverrides}
+              demoVideo={content.heroDemoVideo as { src?: string; poster?: string; ariaLabel?: string } | undefined}
+            />
           ) : videoGeneratorDefaultModel ? (
             <header className="bg-[#F8FAFF] pb-6 md:pb-12 w-full pl-0 pr-2 md:pl-0 md:pr-6">
               <div className="w-full max-w-full">
@@ -1515,6 +1576,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                         title={recTool.title}
                         description={recTool.description}
                         href={getLocalizedContentHref(recTool.href, locale)}
+                        media={recTool.media}
                         iconBgColor={iconBgColor}
                         tryNowText={t?.common?.tryNow || 'Try Now →'}
                       />

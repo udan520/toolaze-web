@@ -859,6 +859,8 @@ export async function getL2SeoContent(tool: string, locale: string = 'en') {
         data = await importL2FlatJson('ai-kissing-video-generator', normalizedLocale)
       } else if (tool === 'ai-asmr-video-generator') {
         data = await importL2FlatJson('ai-asmr-video-generator', normalizedLocale)
+      } else if (tool === 'talking-avatar-creator') {
+        data = await importL2FlatJson('talking-avatar-creator', normalizedLocale)
       } else if (tool === 'ai-baby-generator') {
         data = await importL2FlatJson('ai-baby-generator', normalizedLocale)
       } else if (tool === 'ai-hairstyle-changer') {
@@ -922,6 +924,8 @@ export async function getL2SeoContent(tool: string, locale: string = 'en') {
             data = await import('@/data/en/ai-kissing-video-generator.json')
           } else if (tool === 'ai-asmr-video-generator') {
             data = await import('@/data/en/ai-asmr-video-generator.json')
+          } else if (tool === 'talking-avatar-creator') {
+            data = await import('@/data/en/talking-avatar-creator.json')
           } else if (tool === 'ai-baby-generator') {
             data = await import('@/data/en/ai-baby-generator.json')
           } else if (tool === 'ai-hairstyle-changer') {

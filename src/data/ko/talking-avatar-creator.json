@@ -1,0 +1,262 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "talking-avatar-creator",
+  "topTool": {
+    "displayName": "AI 말하는 아바타",
+    "textOverrides": {
+      "imageTitle": "아바타 이미지 업로드",
+      "imageHelper": "정면을 향한 선명한 인물 사진을 사용하세요. JPG, PNG, WebP가 가장 적합합니다.",
+      "audioTitle": "음성 오디오 업로드",
+      "audioHelper": "MP3, WAV, M4A, OGG 지원. 더 나은 립싱크를 위해 10MB 미만, 15초 이내로 유지하세요.",
+      "promptLabel": "말하는 아바타 연출",
+      "promptPlaceholder": "자연스러운 머리 움직임, 따뜻한 시선, 은은한 표정, 스튜디오 조명, 깔끔한 말하는 아바타 영상.",
+      "resolutionLabel": "해상도",
+      "generateLabel": "말하는 아바타 만들기",
+      "generatingLabel": "아바타 영상을 만드는 중...",
+      "resultTitle": "말하는 아바타 결과",
+      "resultEmptyTitle": "여기에 결과가 표시됩니다",
+      "resultEmptyText": "인물 사진 하나와 오디오 파일 하나를 업로드해 립싱크된 말하는 아바타 영상을 생성하세요.",
+      "audioTrimTitle": "오디오 구간 선택",
+      "audioTrimMessage": "이 오디오는 15초보다 깁니다. 오디오 입력란에 넣기 전에 유지할 부분을 선택하세요.",
+      "audioTrimStartLabel": "시작 시간",
+      "audioTrimLengthLabel": "클립 길이",
+      "audioTrimRangeLabel": "선택한 구간",
+      "audioTrimConfirmAction": "이 구간 사용",
+      "audioTrimCancelAction": "업로드 취소",
+      "audioTooLongMessage": "오디오 업로드는 최대 15초까지 지원됩니다. 구간을 선택하거나 더 짧은 파일을 업로드하세요.",
+      "audioReadFailedMessage": "오디오 길이를 읽을 수 없습니다. 15초 이내의 오디오 파일을 업로드하세요.",
+      "audioTrimFailedMessage": "이 오디오를 자를 수 없습니다. 15초 이내의 오디오 파일을 업로드하세요."
+    }
+  },
+  "metadata": {
+    "title": "AI 말하는 아바타 생성기 온라인 | Toolaze",
+    "description": "인물 이미지와 음성 파일로 립싱크, 표정, 짧은 영상 출력을 갖춘 말하는 아바타 영상을 만드세요."
+  },
+  "hero": {
+    "h1": "<span class=\"text-gradient\">AI 말하는 아바타</span> 생성기",
+    "desc": "인물 사진을 업로드하고 깨끗한 음성 클립을 추가해 립싱크, 얼굴 움직임, 자연스러운 머리 움직임이 있는 짧은 AI 말하는 아바타 영상을 만드세요. 크리에이터 인트로, 제품 설명, 강의 스니펫, 세일즈 메시지, 소셜 영상에 사용할 수 있습니다."
+  },
+  "sectionsOrder": [
+    "intro",
+    "howToUse",
+    "promptExamples",
+    "scenes",
+    "features",
+    "performanceMetrics",
+    "faq"
+  ],
+  "intro": {
+    "title": "인물 사진과 음성으로 말하는 아바타 영상 만들기",
+    "content": [
+      {
+        "title": "AI 말하는 아바타란?",
+        "text": "AI 말하는 아바타는 정지 인물 사진을 짧은 말하는 영상으로 바꿉니다. 업로드한 오디오는 입 움직임을 제어하고, 지시는 표정, 머리 움직임, 조명, 카메라 느낌을 안내합니다."
+      },
+      {
+        "title": "사용하기 좋은 경우",
+        "text": "새 촬영 없이 발표자 스타일 영상이 필요할 때 사용하세요. 선명한 얼굴, 깨끗한 오디오, 집중된 지시가 있을 때 가장 좋습니다."
+      },
+      {
+        "title": "준비할 것",
+        "text": "정면 인물 사진과 짧은 음성 클립으로 시작하세요. 잡음, 가려진 입, 측면 얼굴, 장면 전환이 필요한 긴 대본은 피하세요."
+      }
+    ]
+  },
+  "performanceMetrics": {
+    "title": "말하는 아바타에 중요한 입력",
+    "metrics": [
+      {
+        "label": "최적 입력",
+        "value": "선명한 인물 이미지 하나와 음성 파일 하나."
+      },
+      {
+        "label": "해상도",
+        "value": "빠른 초안은 480p, 더 선명한 게시용 클립은 720p."
+      },
+      {
+        "label": "오디오 가이드",
+        "value": "10MB 미만의 깨끗한 음성을 사용하세요. 짧은 클립이 동기화와 검토에 더 쉽습니다."
+      },
+      {
+        "label": "지시 초점",
+        "value": "표정, 머리 움직임, 시선, 분위기, 조명, 배경 안정성을 설명하세요."
+      },
+      {
+        "label": "적합한 출력",
+        "value": "짧은 발표자 클립, 크리에이터 인트로, 설명 영상, 프로필 영상, UGC 스타일 talking-head 초안."
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "말하는 아바타 지시 예시",
+    "subtitle": "인물 사진과 오디오에 표정과 움직임을 위한 하나의 명확한 방향을 더하세요.",
+    "items": [
+      {
+        "title": "크리에이터 인트로",
+        "prompt": "Natural creator intro, friendly eye contact, subtle smile, small head movement, soft studio lighting, stable background, realistic lip sync.",
+        "note": "프로필 영상, 채널 인트로, 개인 브랜딩 클립에 좋습니다.",
+        "color": "linear-gradient(135deg, #4f46e5, #06b6d4)"
+      },
+      {
+        "title": "제품 설명",
+        "prompt": "Confident presenter explaining a product feature, professional expression, gentle camera presence, clean office lighting, natural blinking, accurate lip sync.",
+        "note": "짧은 SaaS, 이커머스, 앱 설명 초안에 사용하세요.",
+        "color": "linear-gradient(135deg, #7c3aed, #ec4899)"
+      },
+      {
+        "title": "강의 티저",
+        "prompt": "Warm instructor speaking to camera, calm face motion, slight nods, clear educational tone, neutral background, polished 720p talking avatar video.",
+        "note": "강의 일부와 레슨 미리보기에 적합합니다.",
+        "color": "linear-gradient(135deg, #0f172a, #22c55e)"
+      },
+      {
+        "title": "세일즈 메시지",
+        "prompt": "Professional spokesperson greeting the viewer, relaxed smile, steady eye contact, subtle gestures, bright modern lighting, trustworthy tone.",
+        "note": "개인화된 안내와 온보딩 메시지에 사용하세요.",
+        "color": "linear-gradient(135deg, #f97316, #ef4444)"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "AI 말하는 아바타 만드는 방법",
+    "steps": [
+      {
+        "title": "인물 사진 업로드",
+        "desc": "얼굴이 보이고 조명이 좋으며 입 주변이 거의 가려지지 않은 선명한 이미지를 선택하세요."
+      },
+      {
+        "title": "음성 오디오 업로드",
+        "desc": "배경 소음이 적고 한 명이 말하는 짧은 음성 클립을 사용하세요."
+      },
+      {
+        "title": "움직임 지시 작성",
+        "desc": "얼굴 표정, 머리 움직임, 분위기, 시선, 조명, 배경 유지 여부를 설명하세요."
+      },
+      {
+        "title": "생성 후 확인",
+        "desc": "빠른 초안은 480p로 시작하고, 목소리와 얼굴 및 타이밍이 준비되면 720p를 사용하세요."
+      }
+    ]
+  },
+  "scenesTitle": "AI 말하는 아바타 활용 사례",
+  "scenes": [
+    {
+      "title": "크리에이터 인트로",
+      "desc": "프로필 사진과 음성 클립을 소셜 채널용 짧은 talking-head 인트로로 바꾸세요.",
+      "icon": "🎥"
+    },
+    {
+      "title": "제품 설명",
+      "desc": "출시, 기능 데모, 랜딩 페이지, 광고용 발표자 스타일 클립을 만드세요.",
+      "icon": "📢"
+    },
+    {
+      "title": "교육 스니펫",
+      "desc": "추가 녹화 일정 없이 짧은 강의, 온보딩, FAQ 영상을 만드세요.",
+      "icon": "🎓"
+    }
+  ],
+  "features": {
+    "title": "말하는 아바타에 Toolaze를 쓰는 이유",
+    "items": [
+      {
+        "title": "이미지와 오디오 흐름",
+        "desc": "이 도구는 말하는 아바타에 필요한 실제 입력인 인물 사진, 음성 파일, 연출 지시에 맞춰져 있습니다."
+      },
+      {
+        "title": "지시 기반 움직임 제어",
+        "desc": "도구를 바꾸지 않고 립싱크, 표정, 머리 움직임, 카메라 분위기, 배경 안정성을 안내할 수 있습니다."
+      },
+      {
+        "title": "짧은 출력 중심",
+        "desc": "빠른 talking-head 클립이면 충분한 소셜, 제품, 교육, 세일즈 작업을 위해 간결한 영상을 초안으로 만들 수 있습니다."
+      },
+      {
+        "title": "기록 가능한 결과",
+        "desc": "생성된 영상은 출처 페이지와 모델 메타데이터와 함께 계정 기록에 저장될 수 있습니다."
+      },
+      {
+        "title": "명확한 입력 제한",
+        "desc": "생성 전에 인물 사진 품질, 오디오 선명도, 해상도, 짧은 클립 동작을 알려줍니다."
+      },
+      {
+        "title": "실용적인 제작 안내",
+        "desc": "크레딧을 사용하기 전에 사용 사례, 제한, 지시 예시를 쉬운 언어로 확인할 수 있습니다."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "AI 말하는 아바타 생성기란?",
+      "a": "인물 이미지와 오디오 파일로 짧은 말하는 영상을 만듭니다. 오디오는 말의 타이밍을 움직이고 지시는 표정과 발표 스타일을 제어합니다."
+    },
+    {
+      "q": "어떤 이미지가 가장 좋나요?",
+      "a": "조명이 좋고 입이 가려지지 않은 선명한 정면 인물 사진을 사용하세요. 측면 얼굴, 선글라스, 심한 흐림, 잘린 얼굴은 피하세요."
+    },
+    {
+      "q": "내 목소리를 사용할 수 있나요?",
+      "a": "네. 사용할 권리가 있는 음성 파일을 업로드하세요. 짧고 깨끗하며 한 명이 말하는 오디오가 보통 더 좋은 립싱크를 만듭니다."
+    },
+    {
+      "q": "720p를 지원하나요?",
+      "a": "네. Toolaze 페이지는 초안용 480p와 더 선명한 말하는 아바타 클립용 720p를 제공합니다."
+    },
+    {
+      "q": "ASMR 영상용인가요?",
+      "a": "아니요. 이 페이지는 음성 중심 말하는 아바타 영상용입니다. ASMR 영상 생성은 별도 도구 페이지에 있습니다."
+    },
+    {
+      "q": "지시에는 무엇을 써야 하나요?",
+      "a": "얼굴 표정, 시선, 머리 움직임, 조명, 배경 안정성, 원하는 발표자 분위기를 설명하세요."
+    }
+  ],
+  "moreToolsLinks": [
+    {
+      "slug": "ai-video-generator",
+      "title": "AI 동영상 생성기",
+      "description": "텍스트나 이미지 지시로 일반 AI 동영상 클립을 만드세요.",
+      "href": "/ai-video-generator",
+      "media": {
+        "type": "video",
+        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4",
+        "alt": "AI 동영상 생성기 데모 동영상"
+      }
+    },
+    {
+      "slug": "image-to-video-generator",
+      "title": "이미지-동영상 생성기",
+      "description": "정지 이미지를 안내된 움직임으로 애니메이션화하세요.",
+      "href": "/image-to-video-generator",
+      "media": {
+        "type": "video",
+        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4",
+        "alt": "이미지-동영상 생성기 데모 동영상"
+      }
+    },
+    {
+      "slug": "ai-image-generator",
+      "title": "AI 이미지 생성기",
+      "description": "애니메이션 전에 인물 사진, 프로필 이미지, 소스 비주얼을 만드세요.",
+      "href": "/ai-image-generator",
+      "media": {
+        "type": "image",
+        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/gpt-image-2.jpg",
+        "alt": "AI 이미지 생성기 데모 이미지"
+      }
+    }
+  ],
+  "faqTitle": "AI 말하는 아바타 FAQ",
+  "faqDescription": "인물 사진, 음성 오디오, 립싱크, 출력 품질, 안전한 사용에 대한 짧은 답변입니다.",
+  "moreTools": "말하는 아바타 관련 도구",
+  "heroDemoVideo": {
+    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/talking-avatar-creator/demo.mp4",
+    "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/talking-avatar-creator/demo-poster.webp",
+    "ariaLabel": "립싱크와 발표자 스타일 얼굴 움직임을 보여주는 짧은 AI 말하는 아바타 데모 영상",
+    "duration": "PT14.48S",
+    "uploadDate": "2026-07-31T07:08:59.000Z",
+    "sourceHistory": "Talking Avatar Creator demo · 14.48s · uploaded to Toolaze R2 on 2026-07-31"
+  }
+}
