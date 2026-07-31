@@ -20,6 +20,7 @@ type HistoryRecreateSource = {
 
 const NEXT_IMAGE_WIDTHS = [64, 96, 128, 256, 384, 640, 750, 828, 1080, 1200] as const
 const REFERENCE_PREVIEW_WIDTH = 384
+const GENERIC_IMAGE_EDIT_TOOL_SLUGS = new Set(['ai-image-generator', 'ai-image-to-image-generator'])
 
 export function buildHistoryRecreateHref(item: HistoryRecreateSource, locale = 'en'): string {
   const localePrefix = locale && locale !== 'en' ? `/${locale}` : ''
@@ -65,6 +66,25 @@ function getHistoryToolSlug(item: HistoryRepromptSource): string {
     : sourceSegments[0] || ''
 }
 
+function getPathRootSlug(pathname: string): string {
+  const sourceSegments = String(pathname || '').split('/').filter(Boolean)
+  const localePattern = /^[a-z]{2}(?:-[A-Z]{2})?$/
+  return sourceSegments[0] && localePattern.test(sourceSegments[0])
+    ? sourceSegments[1] || ''
+    : sourceSegments[0] || ''
+}
+
+export function shouldUseGenericImageGeneratorForHistoryRecreate(
+  currentPathname: string,
+  item: HistoryRepromptSource,
+): boolean {
+  const currentRootSlug = getPathRootSlug(currentPathname)
+  if (!currentRootSlug || GENERIC_IMAGE_EDIT_TOOL_SLUGS.has(currentRootSlug)) return false
+
+  const historyRootSlug = getHistoryToolSlug(item).split('/')[0] || ''
+  return Boolean(historyRootSlug && historyRootSlug !== currentRootSlug)
+}
+
 export function getWrappedHistoryDefaultInputImageUrls(item: HistoryRepromptSource): string[] {
   const toolSlug = getHistoryToolSlug(item)
   if (toolSlug === 'ai-hairstyle-changer') return ['/ai-hairstyle-changer/default-reference.png']
@@ -104,6 +124,24 @@ export function getOriginalHistoryInputImageUrls(item: HistoryRepromptSource): s
   if (inputPreview) return [inputPreview]
 
   return getWrappedHistoryDefaultInputImageUrls(item)
+}
+
+export function splitDualUploadReferenceImageUrls(imageUrls: string[], useSecondaryReferenceSlot: boolean) {
+  const reusableUrls = Array.isArray(imageUrls)
+    ? imageUrls.map(normalizeReusableReferenceImageUrl).filter(Boolean)
+    : []
+
+  if (!useSecondaryReferenceSlot) {
+    return {
+      personImageUrls: reusableUrls,
+      secondaryReferenceImageUrls: [],
+    }
+  }
+
+  return {
+    personImageUrls: reusableUrls.slice(0, 1),
+    secondaryReferenceImageUrls: reusableUrls.slice(1, 2),
+  }
 }
 
 export function buildHistoryRepromptPayload(item: HistoryRepromptSource) {

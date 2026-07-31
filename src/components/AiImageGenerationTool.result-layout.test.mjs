@@ -97,6 +97,32 @@ test('mobile Recreate availability depends on the selected result instead of cur
   assert.doesNotMatch(source, /const currentResultRecreateDisabled =[\s\S]{0,320}imageFiles\.length/)
 })
 
+test('history Recreate restores dual-upload image tools into separate upload slots', () => {
+  const recreateBlock = source.slice(
+    source.indexOf('const applyHistoryItemToForm = (item: HistoryItem) => {'),
+    source.indexOf('const editHistoryItemImage = (item: HistoryItem) => {'),
+  )
+
+  assert.notEqual(recreateBlock, '', 'history Recreate handler should be present')
+  assert.match(recreateBlock, /splitDualUploadReferenceImageUrls\(inputImageUrls, shouldRenderWorkflowTabsAboveUpload\)/)
+  assert.match(recreateBlock, /setRemoteImageUrls\(recreateReferenceSlots\.personImageUrls\)/)
+  assert.match(recreateBlock, /setClothingReferenceRemoteUrls\(recreateReferenceSlots\.secondaryReferenceImageUrls\)/)
+  assert.match(recreateBlock, /setImageFiles\(\[\]\)/)
+  assert.match(recreateBlock, /setClothingReferenceFiles\(\[\]\)/)
+})
+
+test('history Recreate redirects cross-tool image records to the generic image generator', () => {
+  const recreateBlock = source.slice(
+    source.indexOf('const applyHistoryItemToForm = (item: HistoryItem) => {'),
+    source.indexOf('const editHistoryItemImage = (item: HistoryItem) => {'),
+  )
+
+  assert.notEqual(recreateBlock, '', 'history Recreate handler should be present')
+  assert.match(recreateBlock, /shouldUseGenericImageGeneratorForHistoryRecreate\(pathname, item\)/)
+  assert.match(recreateBlock, /window\.sessionStorage\.setItem\(PENDING_REPROMPT_STORAGE_KEY, JSON\.stringify\(\{[\s\S]*prompt: item\.prompt,[\s\S]*imageUrls: inputImageUrls,[\s\S]*mode: recreateGenerationMode,[\s\S]*\}\)\)/)
+  assert.match(recreateBlock, /window\.location\.href = buildHistoryRecreateHref\(\{[\s\S]*mediaType: 'image',[\s\S]*model: recreateModelId,[\s\S]*\}, parseLocalePath\(pathname\)\.pathLocale \|\| 'en'\)/)
+})
+
 test('mobile generation scrolls to the history panel after the pending result renders', () => {
   assert.match(source, /mobileGenerationPanelRef/)
   assert.match(source, /shouldScrollToMobileHistoryRef/)
@@ -399,15 +425,17 @@ test('history action uses settings instead of generating immediately', () => {
   assert.match(source, /const \[activeSettingsHistoryItemId, setActiveSettingsHistoryItemId\] = useState<string \| null>\(null\)/)
   assert.match(source, /const historyItemRefs = useRef\(new Map<string, HTMLDivElement>\(\)\)/)
   const historyApply = source.match(/const applyHistoryItemToForm = \(item: HistoryItem\) => \{[\s\S]*?\n  \}/)?.[0] || ''
-  assert.match(historyApply, /setSelectedModelId\(item\.modelId\)/)
-  assert.match(historyApply, /setActiveModelGroupId\(getModelGroupId\(item\.modelId\)\)/)
+  assert.match(historyApply, /const recreateModelId = item\.modelId \|\| \(isImageModelId\(item\.model\) \? item\.model : undefined\)/)
+  assert.match(historyApply, /setSelectedModelId\(recreateModelId\)/)
+  assert.match(historyApply, /setActiveModelGroupId\(getModelGroupId\(recreateModelId\)\)/)
   assert.match(historyApply, /setPrompt\(item\.prompt\)/)
   assert.match(historyApply, /setAspectRatio\(item\.aspectRatio \|\| getDefaultAspectRatioForModel\(item\.modelId \|\| selectedModelId, presetMode\)\)/)
   assert.match(historyApply, /setResolution\(item\.resolution \|\| getDefaultResolutionForModel\(item\.modelId \|\| selectedModelId\)\)/)
   assert.match(historyApply, /setOutputFormat\(item\.outputFormat \|\| 'Auto'\)/)
   assert.match(historyApply, /const inputImageUrls = getOriginalHistoryInputImageUrls\(item\)/)
-  assert.match(historyApply, /setRemoteImageUrls\(inputImageUrls\.slice\(0, getMaxImagesForModel\(item\.modelId \|\| selectedModelId\)\)\)/)
-  assert.match(historyApply, /setActiveTab\(item\.generationMode \?\? \(inputImageUrls\.length > 0 \? 'image-to-image' : 'text-to-image'\)\)/)
+  assert.match(historyApply, /const recreateReferenceSlots = splitDualUploadReferenceImageUrls\(inputImageUrls, shouldRenderWorkflowTabsAboveUpload\)/)
+  assert.match(historyApply, /setRemoteImageUrls\(recreateReferenceSlots\.personImageUrls\)/)
+  assert.match(historyApply, /setActiveTab\(recreateGenerationMode\)/)
   assert.match(historyApply, /setActiveSettingsHistoryItemId\(item\.id\)/)
   assert.match(historyApply, /historyItemRefs\.current\.get\(item\.id\)\?\.scrollIntoView\(\{ block: 'nearest', behavior: 'smooth' \}\)/)
   assert.doesNotMatch(historyApply, /setRightMode\('sample'\)/)

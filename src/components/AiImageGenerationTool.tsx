@@ -25,6 +25,8 @@ import {
   getReferencePreviewUrl,
   getWrappedHistoryDefaultInputImageUrls,
   normalizeReusableReferenceImageUrl,
+  shouldUseGenericImageGeneratorForHistoryRecreate,
+  splitDualUploadReferenceImageUrls,
 } from '@/lib/history-reprompt'
 import { getModelDemoImage, shouldUseDirectImageForDemo } from '@/lib/model-demo-images'
 import { createOptimisticCreditDeduction } from '@/lib/optimistic-credits'
@@ -1253,6 +1255,7 @@ export default function AiImageGenerationTool({
   const shouldScrollToMobileHistoryRef = useRef(false)
   const historyItemRefs = useRef(new Map<string, HTMLDivElement>())
   const restoredGenerationPollIdsRef = useRef(new Set<string>())
+  const skipNextWorkflowReferenceSyncRef = useRef(false)
   const presetReferenceImages = useMemo(
     () => new Set(
       promptPresets
@@ -1438,6 +1441,11 @@ export default function AiImageGenerationTool({
   }
 
   useEffect(() => {
+    if (skipNextWorkflowReferenceSyncRef.current) {
+      skipNextWorkflowReferenceSyncRef.current = false
+      return
+    }
+
     const baseImageUrls = defaultImageUrls.filter((url) => !presetReferenceImages.has(url))
     const presetReferenceImage = activePromptPresetTab === customPromptTabId ? undefined : selectedPromptPresetReferenceImage
     const nextRemoteImageUrls = shouldRenderWorkflowTabsAboveUpload
@@ -3028,16 +3036,52 @@ export default function AiImageGenerationTool({
       return
     }
 
-    if (item.modelId) {
-      setSelectedModelId(item.modelId)
-      setActiveModelGroupId(getModelGroupId(item.modelId))
+    const recreateModelId = item.modelId || (isImageModelId(item.model) ? item.model : undefined)
+    const recreateGenerationMode = item.generationMode ?? (inputImageUrls.length > 0 ? 'image-to-image' : 'text-to-image')
+
+    if (shouldUseGenericImageGeneratorForHistoryRecreate(pathname, item)) {
+      window.sessionStorage.setItem(PENDING_REPROMPT_STORAGE_KEY, JSON.stringify({
+        prompt: item.prompt,
+        imageUrls: inputImageUrls,
+        modelId: recreateModelId,
+        aspectRatio: item.aspectRatio,
+        resolution: item.resolution,
+        outputFormat: item.outputFormat,
+        mode: recreateGenerationMode,
+      }))
+      window.location.href = buildHistoryRecreateHref({
+        mediaType: 'image',
+        model: recreateModelId,
+      }, parseLocalePath(pathname).pathLocale || 'en')
+      return
     }
+
+    if (recreateModelId) {
+      setSelectedModelId(recreateModelId)
+      setActiveModelGroupId(getModelGroupId(recreateModelId))
+    }
+    const recreateReferenceSlots = splitDualUploadReferenceImageUrls(inputImageUrls, shouldRenderWorkflowTabsAboveUpload)
+    if (shouldRenderWorkflowTabsAboveUpload) {
+      skipNextWorkflowReferenceSyncRef.current = true
+      const nextWorkflowTab = recreateReferenceSlots.secondaryReferenceImageUrls.length > 0
+        ? promptPresetTabs.find((tab) => tab.id !== customPromptTabId)?.id || activePromptPresetTab
+        : customPromptTabId
+      setActivePromptPresetTab(nextWorkflowTab)
+      setSelectedPromptPreset(nextWorkflowTab === customPromptTabId ? 'Custom' : '')
+      setCustomPromptDraft(nextWorkflowTab === customPromptTabId ? item.prompt : '')
+    }
+
+    imageFiles.forEach((image) => URL.revokeObjectURL(image.preview))
+    clothingReferenceFiles.forEach((image) => URL.revokeObjectURL(image.preview))
+    setImageFiles([])
+    setClothingReferenceFiles([])
     setPrompt(item.prompt)
     setAspectRatio(item.aspectRatio || getDefaultAspectRatioForModel(item.modelId || selectedModelId, presetMode))
     setResolution(item.resolution || getDefaultResolutionForModel(item.modelId || selectedModelId))
     setOutputFormat(item.outputFormat || 'Auto')
-    setRemoteImageUrls(inputImageUrls.slice(0, getMaxImagesForModel(item.modelId || selectedModelId)))
-    setActiveTab(item.generationMode ?? (inputImageUrls.length > 0 ? 'image-to-image' : 'text-to-image'))
+    setRemoteImageUrls(recreateReferenceSlots.personImageUrls)
+    setClothingReferenceRemoteUrls(recreateReferenceSlots.secondaryReferenceImageUrls)
+    setActiveTab(recreateGenerationMode)
     setCurrentResult(item)
     setActiveSettingsHistoryItemId(item.id)
     historyItemRefs.current.get(item.id)?.scrollIntoView({ block: 'nearest', behavior: 'smooth' })

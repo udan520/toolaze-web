@@ -7,6 +7,8 @@ import {
   getHistoryReferenceImageUrls,
   getOriginalHistoryInputImageUrls,
   getReferencePreviewUrl,
+  shouldUseGenericImageGeneratorForHistoryRecreate,
+  splitDualUploadReferenceImageUrls,
 } from './history-reprompt'
 
 test('routes image history Recreate to the localized generic image generator', () => {
@@ -56,6 +58,70 @@ test('uses original input references for Create Similar when they exist', () => 
     outputFormat: item.outputFormat,
     mode: 'image-to-image',
   })
+})
+
+test('splits dual-upload Recreate references into person and clothing slots', () => {
+  const inputUrls = [
+    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/person.webp',
+    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/bikini-reference.webp',
+  ]
+
+  assert.deepEqual(splitDualUploadReferenceImageUrls(inputUrls, true), {
+    personImageUrls: [inputUrls[0]],
+    secondaryReferenceImageUrls: [inputUrls[1]],
+  })
+})
+
+test('keeps normal Recreate references in the primary upload slot', () => {
+  const inputUrls = [
+    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/reference-one.webp',
+    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/reference-two.webp',
+  ]
+
+  assert.deepEqual(splitDualUploadReferenceImageUrls(inputUrls, false), {
+    personImageUrls: inputUrls,
+    secondaryReferenceImageUrls: [],
+  })
+})
+
+test('redirects cross-tool image Recreate from wrapped tool pages to generic image generator', () => {
+  const photoRestorationItem = {
+    ...baseHistoryItem,
+    toolSlug: 'photo-restoration',
+    sourcePath: '/photo-restoration',
+  }
+
+  assert.equal(
+    shouldUseGenericImageGeneratorForHistoryRecreate('/ai-bikini-generator', photoRestorationItem),
+    true,
+  )
+  assert.equal(
+    shouldUseGenericImageGeneratorForHistoryRecreate('/zh-TW/ai-bikini-generator', {
+      ...photoRestorationItem,
+      toolSlug: '',
+      sourcePath: '/zh-TW/photo-restoration',
+    }),
+    true,
+  )
+})
+
+test('keeps same-tool and generic image Recreate on the current page', () => {
+  assert.equal(
+    shouldUseGenericImageGeneratorForHistoryRecreate('/ai-bikini-generator', {
+      ...baseHistoryItem,
+      toolSlug: 'ai-bikini-generator',
+      sourcePath: '/ai-bikini-generator',
+    }),
+    false,
+  )
+  assert.equal(
+    shouldUseGenericImageGeneratorForHistoryRecreate('/ai-image-generator', {
+      ...baseHistoryItem,
+      toolSlug: 'photo-restoration',
+      sourcePath: '/photo-restoration',
+    }),
+    false,
+  )
 })
 
 
