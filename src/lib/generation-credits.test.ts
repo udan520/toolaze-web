@@ -20,27 +20,47 @@ test('Kissing Grok Video uses the same credits as Grok 1.5 Video', () => {
   }
 })
 
-test('Veo 3.1 model variants use mapped per-video pricing', () => {
-  assert.equal(VIDEO_GENERATION_CREDIT_RATES['veo-3-1-lite'].ratesByResolution['720p'], 45)
-  assert.equal(VIDEO_GENERATION_CREDIT_RATES['veo-3-1-fast'].ratesByResolution['1080p'], 100)
-  assert.equal(VIDEO_GENERATION_CREDIT_RATES['veo-3-1-quality'].ratesByResolution['720p'], 375)
-  assert.equal(calculateVideoGenerationCredits('veo-3-1-lite', '720p', 8), 45)
-  assert.equal(calculateVideoGenerationCredits('veo-3-1-fast', '1080p', 8), 100)
-  assert.equal(calculateVideoGenerationCredits('veo-3-1-quality', '720p', 4), 375)
+test('Veo 3.1 model variants use video cost-times-two per-video pricing', () => {
+  assert.equal(VIDEO_GENERATION_CREDIT_RATES['veo-3-1-lite'].ratesByResolution['720p'], 30)
+  assert.equal(VIDEO_GENERATION_CREDIT_RATES['veo-3-1-fast'].ratesByResolution['1080p'], 75)
+  assert.equal(VIDEO_GENERATION_CREDIT_RATES['veo-3-1-quality'].ratesByResolution['720p'], 450)
+  assert.equal(calculateVideoGenerationCredits('veo-3-1-lite', '720p', 8), 30)
+  assert.equal(calculateVideoGenerationCredits('veo-3-1-fast', '1080p', 8), 75)
+  assert.equal(calculateVideoGenerationCredits('veo-3-1-quality', '720p', 4), 450)
+})
+
+test('video pricing rounds cost-times-two credits to the nearest integer', () => {
+  assert.equal(VIDEO_GENERATION_CREDIT_RATES['grok-1-5-video'].ratesByResolution['480p'], 3)
+  assert.equal(calculateVideoGenerationCredits('grok-1-5-video', '480p', 5), 15)
+  assert.equal(calculateVideoGenerationCredits('grok-1-5-video', '480p', 3), 10)
+  assert.equal(VIDEO_GENERATION_CREDIT_RATES['seedance-2-mini'].ratesByResolution['480p'], 20)
+  assert.equal(calculateVideoGenerationCredits('seedance-2-mini', '480p', 5), 100)
+  assert.equal(VIDEO_GENERATION_CREDIT_RATES['seedance-1-lite'].ratesByResolution['720p'], 10)
+  assert.equal(VIDEO_GENERATION_CREDIT_RATES['pixverse-v6'].ratesByResolution['540p'], 11)
+  assert.equal(VIDEO_GENERATION_CREDIT_RATES['pixverse-v6'].ratesByResolution['720p'], 14)
+  assert.equal(VIDEO_GENERATION_CREDIT_RATES['pixverse-v6'].ratesByResolution['1080p'], 30)
+  assert.equal(VIDEO_GENERATION_CREDIT_RATES['pixverse-v6'].nativeAudioRatesByResolution?.['720p'], 20)
+  assert.equal(calculateVideoGenerationCredits('pixverse-v6', '720p', 5), 70)
+  assert.equal(calculateVideoGenerationCredits('pixverse-v6', '720p', 5, { nativeAudio: true }), 100)
+})
+
+test('image pricing moves 9-credit results to the next ten', () => {
+  assert.equal(calculateImageGenerationCredits('nano-banana-2-lite', '1K'), 10)
+  assert.equal(calculateImageGenerationCredits('gpt-image-2', '1K'), 10)
 })
 
 test('Seedance 1.0 Pro Fast uses fixed credits for each supported output spec', () => {
-  assert.equal(calculateVideoGenerationCredits('seedance-1-pro-fast', '720p', 5), 24)
-  assert.equal(calculateVideoGenerationCredits('seedance-1-pro-fast', '720p', 10), 54)
-  assert.equal(calculateVideoGenerationCredits('seedance-1-pro-fast', '1080p', 5), 54)
-  assert.equal(calculateVideoGenerationCredits('seedance-1-pro-fast', '1080p', 10), 108)
+  assert.equal(calculateVideoGenerationCredits('seedance-1-pro-fast', '720p', 5), 32)
+  assert.equal(calculateVideoGenerationCredits('seedance-1-pro-fast', '720p', 10), 72)
+  assert.equal(calculateVideoGenerationCredits('seedance-1-pro-fast', '1080p', 5), 72)
+  assert.equal(calculateVideoGenerationCredits('seedance-1-pro-fast', '1080p', 10), 144)
 })
 
-test('GPT Image 1.5 and Flux 2 use explicit Toolaze product credits', () => {
-  assert.equal(calculateImageGenerationCredits('gpt-image-1-5', 'medium'), 15)
-  assert.equal(calculateImageGenerationCredits('gpt-image-1-5', 'high'), 25)
+test('GPT Image 1.5 and Flux 2 use KIE cost times three credits', () => {
+  assert.equal(calculateImageGenerationCredits('gpt-image-1-5', 'medium'), 12)
+  assert.equal(calculateImageGenerationCredits('gpt-image-1-5', 'high'), 66)
   assert.equal(calculateImageGenerationCredits('flux-2-pro', '1K'), 15)
-  assert.equal(calculateImageGenerationCredits('flux-2-pro', '2K'), 25)
-  assert.equal(calculateImageGenerationCredits('flux-2-flex', '1K'), 20)
-  assert.equal(calculateImageGenerationCredits('flux-2-flex', '2K'), 30)
+  assert.equal(calculateImageGenerationCredits('flux-2-pro', '2K'), 21)
+  assert.equal(calculateImageGenerationCredits('flux-2-flex', '1K'), 42)
+  assert.equal(calculateImageGenerationCredits('flux-2-flex', '2K'), 72)
 })

@@ -51,6 +51,22 @@ test('new image models are grouped under OpenAI and Flux', () => {
   assert.deepEqual(flux?.modelIds, ['flux-2-pro', 'flux-2-flex'])
 })
 
+test('Nano Banana 2 Lite exposes the KIE 1K-only workflow contract', () => {
+  const model = AI_IMAGE_GENERATOR_MODELS['nano-banana-2-lite']
+  const group = AI_IMAGE_GENERATOR_GROUPS.find(({ id }) => id === 'nano-banana')
+
+  assert.equal(model.name, 'Nano Banana 2 Lite')
+  assert.equal(model.vendor, 'Google')
+  assert.equal(model.defaultMode, 'image-to-image')
+  assert.equal(model.maxImages, 14)
+  assert.equal(model.maxFileSizeMb, 30)
+  assert.equal(model.supportsOutputFormat, true)
+  assert.equal(model.supportsHighResolution, false)
+  assert.equal(model.setting.kind, 'resolution')
+  assert.deepEqual(model.setting.options, ['1K'])
+  assert.deepEqual(group?.modelIds, ['nano-banana-pro', 'nano-banana-2', 'nano-banana-2-lite'])
+})
+
 test('Grok Image exposes separate official KIE text and image provider models', () => {
   const model = AI_IMAGE_GENERATOR_MODELS['grok-1-5-image']
 

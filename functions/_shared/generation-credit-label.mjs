@@ -5,6 +5,7 @@ const MODEL_LABELS = {
   'flux-2-flex': 'Flux 2 Flex',
   'nano-banana-pro': 'Nano Banana Pro',
   'nano-banana-2': 'Nano Banana 2',
+  'nano-banana-2-lite': 'Nano Banana 2 Lite',
   'seedream-4-5': 'Seedream 4.5',
   'seedream-5-0-lite': 'Seedream 5.0 Lite',
   'seedream-5-0-pro': 'Seedream 5.0 Pro',

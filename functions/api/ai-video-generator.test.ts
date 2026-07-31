@@ -210,7 +210,7 @@ test('AI video generator creates a Kie Seedance 2.0 first-and-last-frame task', 
     })
 
     assert.equal(response.status, 200)
-    assert.deepEqual(await readJson(response), { taskId: 'seedance_task', requiredCredits: 2250 })
+    assert.deepEqual(await readJson(response), { taskId: 'seedance_task', requiredCredits: 3060 })
     assert.equal(calls.length, 1)
 
     const payload = JSON.parse(String(calls[0].init?.body))
@@ -258,7 +258,7 @@ test('AI video generator creates a Kie Seedance 2.0 Mini task and returns mapped
     assert.equal(response.status, 200)
     assert.deepEqual(await readJson(response), {
       taskId: 'seedance_mini_task',
-      requiredCredits: 300,
+      requiredCredits: 410,
     })
     assert.equal(calls.length, 1)
 
@@ -269,6 +269,35 @@ test('AI video generator creates a Kie Seedance 2.0 Mini task and returns mapped
     assert.equal(payload.input.aspect_ratio, 'adaptive')
     assert.equal(payload.input.resolution, '720p')
     assert.equal(payload.input.duration, 10)
+  } finally {
+    globalThis.fetch = originalFetch
+  }
+})
+
+test('AI video generator rejects unpriced Seedance 2.0 Fast specs before provider request', async () => {
+  let providerCalled = false
+  const originalFetch = globalThis.fetch
+  globalThis.fetch = (async () => {
+    providerCalled = true
+    return new Response(JSON.stringify({ code: 200, data: { taskId: 'unexpected' } }))
+  }) as typeof fetch
+
+  try {
+    const response = await createVideoTask({
+      request: createFormRequest({
+        mode: 'text-to-video',
+        model: 'seedance-2-fast',
+        prompt: 'A cinematic product reveal.',
+        aspectRatio: '16:9',
+        resolution: '1080p',
+        duration: '5',
+      }),
+      env: { KIE_AI_API_KEY: 'test-key' },
+    })
+
+    assert.equal(response.status, 400)
+    assert.equal((await readJson(response)).error, 'Unsupported resolution for Seedance 2.0 Fast')
+    assert.equal(providerCalled, false)
   } finally {
     globalThis.fetch = originalFetch
   }
@@ -370,7 +399,7 @@ test('AI video generator creates a Kie Veo 3.1 Fast task through the Veo endpoin
     assert.equal(response.status, 200)
     assert.deepEqual(await readJson(response), {
       taskId: 'veo_fast_task',
-      requiredCredits: 100,
+      requiredCredits: 75,
       taskProvider: 'veo',
     })
     assert.equal(calls.length, 1)
@@ -518,7 +547,7 @@ test('AI video generator uses the default Kie Kling 3.0 provider model when env 
     })
 
     assert.equal(response.status, 200)
-    assert.deepEqual(await readJson(response), { taskId: 'task_unexpected', requiredCredits: 900 })
+    assert.deepEqual(await readJson(response), { taskId: 'task_unexpected', requiredCredits: 1340 })
     assert.equal(payload?.model, 'kling-3.0/video')
     assert.equal(payload?.input?.mode, '4K')
   } finally {
@@ -556,7 +585,7 @@ test('AI video generator creates a Kie Kling 3.0 task with mode-based pricing', 
     assert.equal(response.status, 200)
     assert.deepEqual(await readJson(response), {
       taskId: 'kling_task',
-      requiredCredits: 1350,
+      requiredCredits: 2010,
     })
     assert.equal(calls.length, 1)
 
@@ -603,7 +632,7 @@ test('AI video generator prices and sends Kling 3.0 Native Audio requests', asyn
     assert.equal(response.status, 200)
     assert.deepEqual(await readJson(response), {
       taskId: 'kling_audio_task',
-      requiredCredits: 400,
+      requiredCredits: 540,
     })
     assert.equal(calls.length, 1)
 
@@ -682,7 +711,7 @@ test('AI video generator supports Kling 3.0 duration range from 3 to 15 seconds'
     assert.equal(response.status, 200)
     assert.deepEqual(await readJson(response), {
       taskId: 'kling_short_task',
-      requiredCredits: 60,
+      requiredCredits: 84,
     })
     assert.equal(calls.length, 1)
 
@@ -752,6 +781,7 @@ test('AI video generator defaults missing Grok duration to three seconds', async
     })
 
     assert.equal(response.status, 200)
+    assert.deepEqual(await readJson(response), { taskId: 'task_default_duration', requiredCredits: 10 })
     assert.equal(payload?.input?.duration, 3)
   } finally {
     globalThis.fetch = originalFetch

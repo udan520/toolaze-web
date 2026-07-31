@@ -86,6 +86,15 @@ for (const scenario of [
     isImageToImage: true,
     setting: { resolution: '1K' },
   },
+  {
+    name: 'Nano Banana 2 Lite image-to-image',
+    model: 'nano-banana-2-lite',
+    providerModel: 'nano-banana-2-lite',
+    isImageToImage: true,
+    setting: { resolution: '4K' },
+    expectedResolution: '1K',
+    expectedCredits: 10,
+  },
 ]) {
   test(`${scenario.name} uses the exact KIE Market contract`, async () => {
     const originalFetch = globalThis.fetch
@@ -107,6 +116,7 @@ for (const scenario of [
         }),
         env: { KIE_AI_API_KEY: 'test-key' },
       })
+      const payload = await response.clone().json()
 
       assert.equal(response.status, 200)
       assert.equal(requestBody.model, scenario.providerModel)
@@ -116,12 +126,24 @@ for (const scenario of [
         assert.equal(requestBody.input.quality, scenario.setting.quality)
         assert.equal(requestBody.input.resolution, undefined)
       } else if (scenario.model !== 'grok-1-5-image') {
-        assert.equal(requestBody.input.resolution, scenario.setting.resolution)
-        assert.equal(requestBody.input.nsfw_checker, true)
+        assert.equal(requestBody.input.resolution, scenario.expectedResolution || scenario.setting.resolution)
+        if (scenario.expectedCredits) {
+          assert.equal(payload.requiredCredits, scenario.expectedCredits)
+        }
+        if (scenario.model.startsWith('flux-')) {
+          assert.equal(requestBody.input.nsfw_checker, true)
+        } else {
+          assert.equal(requestBody.input.nsfw_checker, undefined)
+        }
       }
       if (scenario.model === 'grok-1-5-image') {
         assert.deepEqual(
           requestBody.input.image_urls,
+          scenario.isImageToImage ? ['https://example.com/reference.png'] : undefined,
+        )
+      } else if (scenario.model.startsWith('nano-banana')) {
+        assert.deepEqual(
+          requestBody.input.image_input,
           scenario.isImageToImage ? ['https://example.com/reference.png'] : undefined,
         )
       } else {
@@ -425,7 +447,7 @@ test('Grok Video 1.5 image-to-video requests forward selected duration and price
 
     assert.equal(response.status, 200)
     assert.equal(requestBody.input.duration, 15)
-    assert.equal(payload.requiredCredits, 75)
+    assert.equal(payload.requiredCredits, 90)
   } finally {
     globalThis.fetch = originalFetch
   }

@@ -4,6 +4,7 @@ export type ImageGenerationModelId =
   | 'flux-2-pro'
   | 'flux-2-flex'
   | 'nano-banana-2'
+  | 'nano-banana-2-lite'
   | 'nano-banana-pro'
   | 'seedream-4.5'
   | 'seedream-4-5'
@@ -14,27 +15,28 @@ export type ImageGenerationModelId =
   | 'grok-video-1-5'
 
 export type VideoGenerationModelId = string
+type DirectImageGenerationModelId = Exclude<ImageGenerationModelId, 'grok-video-1-5'>
 
-const BASE_CREDITS: Record<ImageGenerationModelId, number> = {
-  'gpt-image-2': 10,
-  'gpt-image-1-5': 15,
-  'flux-2-pro': 15,
-  'flux-2-flex': 20,
-  'nano-banana-2': 10,
-  'seedream-4.5': 10,
-  'seedream-4-5': 10,
-  'seedream-5-0-lite': 10,
-  'seedream-5-0-pro': 10,
-  'wan-2-7-image': 10,
-  'grok-1-5-image': 10,
-  'grok-video-1-5': 3,
-  'nano-banana-pro': 20,
+function moveNineEndingCreditsToNextTen(credits: number): number {
+  if (!Number.isFinite(credits) || credits <= 0) return credits
+  return credits % 10 === 9 ? credits + 1 : credits
 }
 
-const RESOLUTION_MULTIPLIER: Record<string, number> = {
-  '2K': 1.5,
-  '4K': 2,
-}
+const IMAGE_GENERATION_CREDITS: Record<DirectImageGenerationModelId, Record<string, number>> = {
+  'nano-banana-pro': { '1K': 24, '2K': 24, '4K': 42 },
+  'nano-banana-2': { '1K': 15, '2K': 24, '4K': 36 },
+  'nano-banana-2-lite': { '1K': moveNineEndingCreditsToNextTen(9) },
+  'gpt-image-2': { '1K': moveNineEndingCreditsToNextTen(9), '2K': 15, '4K': 24 },
+  'gpt-image-1-5': { medium: 12, high: 66 },
+  'flux-2-pro': { '1K': 15, '2K': 21 },
+  'flux-2-flex': { '1K': 42, '2K': 72 },
+  'seedream-4.5': { '1K': 20, '2K': 20, '4K': 20 },
+  'seedream-4-5': { '1K': 20, '2K': 20, '4K': 20 },
+  'seedream-5-0-lite': { '1K': 17, '2K': 17, '4K': 17 },
+  'seedream-5-0-pro': { '1K': 21, '2K': 42 },
+  'wan-2-7-image': { '1K': 15, '2K': 15, '4K': 15 },
+  'grok-1-5-image': { '1K': 10, '2K': 15, '4K': 20 },
+};
 
 export const VIDEO_GENERATION_CREDIT_RATES: Record<VideoGenerationModelId, {
   source: string
@@ -44,128 +46,130 @@ export const VIDEO_GENERATION_CREDIT_RATES: Record<VideoGenerationModelId, {
   fixedPerVideo?: boolean
 }> = {
   'grok-1-5-video': {
-    source: 'Kie pricing: 480p $0.008/output second, 720p $0.015/output second; Toolaze target: $0.01/credit with 200% profit over cost',
+    source: 'Kie pricing: 480p $0.008/output second, 720p $0.015/output second; Toolaze price = Kie cost × 2, then round(price / $0.005 per credit)',
     ratesByResolution: {
       '480p': 3,
-      '720p': 5,
+      '720p': 6,
     },
   },
   'seedance-2': {
-    source: 'Kie Seedance 2 pricing, no-video column: 480p $0.095/output second, 720p $0.205/output second, 1080p $0.51/output second, 4K $1.04/output second; Toolaze target: $0.01/credit with 200% profit over cost',
+    source: 'Kie Seedance 2 pricing, no-video column: 480p $0.095/output second, 720p $0.205/output second, 1080p $0.51/output second, 4K $1.04/output second; Toolaze price = Kie cost × 2, then round(price / $0.005 per credit)',
     ratesByResolution: {
-      '480p': 30,
-      '720p': 60,
-      '1080p': 150,
-      '4K': 310,
+      '480p': 38,
+      '720p': 82,
+      '1080p': 204,
+      '4K': 416,
     },
   },
   'seedance-2-mini': {
-    source: 'Kie pricing: 480p $0.0475/output second, 720p $0.1025/output second; Toolaze target: $0.01/credit with 200% profit over cost',
+    source: 'Kie pricing: 480p $0.0475/output second, 720p $0.1025/output second; Toolaze price = Kie cost × 2, then round(price / $0.005 per credit), moving 9-ending credits to the next ten',
     ratesByResolution: {
-      '480p': 15,
-      '720p': 30,
+      '480p': moveNineEndingCreditsToNextTen(19),
+      '720p': 41,
     },
   },
   'seedance-2-fast': {
-    source: 'Kie Seedance 2.0 Fast pricing mapped from the Seedance 2.0 rate ladder',
-    ratesByResolution: { '480p': 25, '720p': 50, '1080p': 120, '4K': 250 },
-    nativeAudioRatesByResolution: { '480p': 30, '720p': 60, '1080p': 150, '4K': 300 },
+    source: 'Kie Seedance 2.0 Fast pricing mapped from published 480p and 720p costs; Toolaze price = Kie cost × 2, then round(price / $0.005 per credit). 1080p and 4K public costs are not listed.',
+    ratesByResolution: { '480p': 31, '720p': 66 },
   },
   'seedance-1-5-pro': {
-    source: 'Kie Seedance 1.5 Pro product rate mapped to Toolaze credits',
-    ratesByResolution: { '480p': 15, '720p': 30, '1080p': 60 },
-    nativeAudioRatesByResolution: { '480p': 20, '720p': 40, '1080p': 80 },
+    source: 'Kie Seedance 1.5 Pro product rate mapped at cost × 2 and $0.005/credit',
+    ratesByResolution: { '480p': 4, '720p': 7, '1080p': 15 },
+    nativeAudioRatesByResolution: { '480p': 7, '720p': 14, '1080p': 30 },
   },
   'seedance-1-pro-fast': {
-    source: 'Kie Seedance 1.0 Pro Fast fixed output pricing mapped to Toolaze credits',
+    source: 'Kie Seedance 1.0 Pro Fast fixed output pricing mapped at cost × 2 and $0.005/credit',
     ratesByResolution: {},
     ratesByResolutionAndDuration: {
-      '720p': { 5: 24, 10: 54 },
-      '1080p': { 5: 54, 10: 108 },
+      '720p': { 5: 32, 10: 72 },
+      '1080p': { 5: 72, 10: 144 },
     },
   },
   'seedance-1-pro': {
-    source: 'Kie Seedance 1.0 Pro pricing mapped to Toolaze at $0.01/credit',
-    ratesByResolution: { '480p': 5, '720p': 10, '1080p': 25 },
+    source: 'Kie Seedance 1.0 Pro pricing mapped at cost × 2 and $0.005/credit',
+    ratesByResolution: { '480p': 6, '720p': 12, '1080p': 28 },
   },
   'seedance-1-lite': {
-    source: 'Kie Seedance 1.0 Lite pricing mapped to Toolaze at $0.01/credit',
-    ratesByResolution: { '480p': 5, '720p': 10, '1080p': 15 },
+    source: 'Kie Seedance 1.0 Lite pricing mapped at cost × 2 and $0.005/credit, moving 9-ending credits to the next ten',
+    ratesByResolution: { '480p': 4, '720p': moveNineEndingCreditsToNextTen(9), '1080p': 20 },
   },
   'wan-2-7': {
-    source: 'Kie Wan 2.7 pricing: 720p 16 Kie credits/output second, 1080p 24 Kie credits/output second; Toolaze target: $0.01/credit with 200% profit over cost',
-    ratesByResolution: { '720p': 25, '1080p': 35 },
+    source: 'Kie Wan 2.7 pricing: 720p $0.08/output second, 1080p $0.12/output second; Toolaze price = Kie cost × 2, then round(price / $0.005 per credit)',
+    ratesByResolution: { '720p': 32, '1080p': 48 },
   },
   'wan-2-6': {
-    source: 'Kie Wan 2.6 pricing: 720p 12 Kie credits/output second, 1080p 20 Kie credits/output second; Toolaze target: $0.01/credit with 200% profit over cost',
-    ratesByResolution: { '720p': 20, '1080p': 30 },
+    source: 'Kie Wan 2.6 pricing mapped at cost × 2 and $0.005/credit',
+    ratesByResolution: { '720p': 28, '1080p': 42 },
   },
   'wan-2-5': {
-    source: 'Kie Wan 2.5 pricing: 720p 12 Kie credits/output second, 1080p 20 Kie credits/output second; Toolaze target: $0.01/credit with 200% profit over cost',
-    ratesByResolution: { '720p': 20, '1080p': 30 },
+    source: 'Kie Wan 2.5 pricing mapped at cost × 2 and $0.005/credit',
+    ratesByResolution: { '720p': 24, '1080p': 40 },
   },
   'wan-2-2': {
-    source: 'Kie Wan 2.2 A14B Turbo pricing mapped to Toolaze at $0.01/credit with 200% profit over cost',
-    ratesByResolution: { '480p': 10, '720p': 10 },
+    source: 'Kie Wan 2.2 A14B Turbo pricing mapped at cost × 2 and $0.005/credit',
+    ratesByResolution: { '720p': 32 },
+    ratesByResolutionAndDuration: {
+      '480p': { 5: 16 },
+    },
   },
   'kling-3-turbo': {
-    source: 'Kie Kling 3 Turbo pricing mapped to Toolaze at $0.01/credit with 200% profit over cost',
-    ratesByResolution: { '720p': 45, '1080p': 55 },
+    source: 'Kie Kling 3 Turbo pricing mapped at cost × 2 and $0.005/credit',
+    ratesByResolution: { '720p': 36, '1080p': 45 },
   },
   'kling-3': {
-    source: 'Kling official pricing: no-native-audio 720p 6 credits/s, 1080p 8 credits/s, 4K 30 credits/s; native-audio 720p 9 credits/s, 1080p 12 credits/s; Toolaze target: $0.01/credit with cleaned per-second rates',
+    source: 'Kling official pricing mapped at cost × 2 and $0.005/credit',
     ratesByResolution: {
-      '720p': 20,
-      '1080p': 25,
-      '4K': 90,
+      '720p': 28,
+      '1080p': 36,
+      '4K': 134,
     },
     nativeAudioRatesByResolution: {
-      '720p': 30,
-      '1080p': 40,
+      '720p': 40,
+      '1080p': 54,
     },
   },
   'kling-2-6': {
-    source: 'Kie Kling 2.6 pricing mapped to Toolaze at $0.01/credit with 200% profit over cost',
-    ratesByResolution: { '720p': 20, '1080p': 30 },
-    nativeAudioRatesByResolution: { '720p': 30, '1080p': 40 },
+    source: 'Kie Kling 2.6 pricing mapped at cost × 2 and $0.005/credit',
+    ratesByResolution: { '720p': 22, '1080p': 22 },
+    nativeAudioRatesByResolution: { '720p': 44, '1080p': 44 },
   },
   'kling-2-5': {
-    source: 'Kie Kling 2.5 Turbo Pro pricing mapped to Toolaze at $0.01/credit with 200% profit over cost',
-    ratesByResolution: { '1080p': 30 },
+    source: 'Kie Kling 2.5 Turbo Pro pricing mapped at cost × 2 and $0.005/credit',
+    ratesByResolution: { '1080p': 17 },
   },
   'kling-2-1': {
-    source: 'Kie Kling 2.1 Master pricing: $0.80/5 seconds and $1.60/10 seconds; Toolaze target: $0.01/credit with 200% profit over cost',
-    ratesByResolution: { '1080p': 50 },
+    source: 'Kie Kling 2.1 Master pricing mapped at cost × 2 and $0.005/credit',
+    ratesByResolution: { '1080p': 64 },
   },
   'veo-3-1-lite': {
-    source: 'Kie Veo 3.1 pricing: Lite 720p $0.15/video, 1080p $0.18/video; Toolaze target: $0.01/credit with 200% profit over cost',
-    ratesByResolution: { '720p': 45, '1080p': 55 },
+    source: 'Kie Veo 3.1 pricing mapped at cost × 2 and $0.005/credit',
+    ratesByResolution: { '720p': 30, '1080p': 45 },
     fixedPerVideo: true,
   },
   'veo-3-1-fast': {
-    source: 'Kie Veo 3.1 pricing: Fast 720p $0.30/video, 1080p $0.33/video; Toolaze target: $0.01/credit with 200% profit over cost',
-    ratesByResolution: { '720p': 90, '1080p': 100 },
+    source: 'Kie Veo 3.1 pricing mapped at cost × 2 and $0.005/credit',
+    ratesByResolution: { '720p': 60, '1080p': 75 },
     fixedPerVideo: true,
   },
   'veo-3-1-quality': {
-    source: 'Kie Veo 3.1 pricing: Quality 720p $1.25/video, 1080p $1.28/video; Toolaze target: $0.01/credit with 200% profit over cost',
-    ratesByResolution: { '720p': 375, '1080p': 385 },
+    source: 'Kie Veo 3.1 pricing mapped at cost × 2 and $0.005/credit',
+    ratesByResolution: { '720p': 450, '1080p': 465 },
     fixedPerVideo: true,
   },
   'pixverse-v6': {
-    source: 'PixVerse V6 official pricing mapped to Toolaze at $0.01/credit with 200% target margin',
-    ratesByResolution: { '360p': 10, '540p': 15, '720p': 15, '1080p': 30 },
-    nativeAudioRatesByResolution: { '360p': 15, '540p': 15, '720p': 20, '1080p': 35 },
+    source: 'PixVerse V6 official pricing mapped at cost × 2 and $0.005/credit, moving 9-ending credits to the next ten',
+    ratesByResolution: { '360p': 8, '540p': 11, '720p': 14, '1080p': moveNineEndingCreditsToNextTen(29) },
+    nativeAudioRatesByResolution: { '360p': 11, '540p': 14, '720p': moveNineEndingCreditsToNextTen(19), '1080p': 37 },
   },
   'happyhorse-1-1': {
-    source: 'Kie HappyHorse 1.1 product rate mapped to Toolaze credits',
-    ratesByResolution: { '720p': 25, '1080p': 30 },
+    source: 'Kie HappyHorse 1.1 product rate mapped at cost × 2 and $0.005/credit',
+    ratesByResolution: { '720p': 45, '1080p': 58 },
   },
   'happyhorse': {
-    source: 'Kie HappyHorse product rate mapped to Toolaze credits',
-    ratesByResolution: { '720p': 20, '1080p': 25 },
+    source: 'Kie HappyHorse product rate mapped at cost × 2 and $0.005/credit',
+    ratesByResolution: { '720p': 56, '1080p': 96 },
   },
-}
+};
 
 const DEFAULT_VIDEO_DURATION_SECONDS = 8
 const MIN_VIDEO_DURATION_SECONDS = 1
@@ -182,29 +186,21 @@ export function calculateImageGenerationCredits(
   resolution: string,
   durationSeconds?: number | string | null
 ): number {
-  const baseCredits = BASE_CREDITS[modelId]
-  if (modelId === 'gpt-image-1-5') {
-    return resolution.toLowerCase() === 'high' ? 25 : 15
-  }
-  if (modelId === 'flux-2-pro') {
-    return resolution.toUpperCase() === '2K' ? 25 : 15
-  }
-  if (modelId === 'flux-2-flex') {
-    return resolution.toUpperCase() === '2K' ? 30 : 20
-  }
-  if (modelId === 'seedream-5-0-pro') {
-    return resolution.toUpperCase() === '2K' ? 20 : 10
-  }
+  const normalizedResolution = String(resolution || '1K').trim()
   if (modelId === 'grok-video-1-5') {
     const normalizedDuration = normalizeVideoDurationSeconds(durationSeconds)
     return calculateVideoGenerationCredits(
       'grok-1-5-video',
-      resolution.toLowerCase(),
+      normalizedResolution.toLowerCase(),
       normalizedDuration,
     ) ?? calculateVideoGenerationCredits('grok-1-5-video', '480p', normalizedDuration) ?? 3
   }
-  const multiplier = RESOLUTION_MULTIPLIER[resolution.toUpperCase()] ?? 1
-  return Math.ceil(baseCredits * multiplier)
+  const modelCredits = IMAGE_GENERATION_CREDITS[modelId as DirectImageGenerationModelId] ?? IMAGE_GENERATION_CREDITS['nano-banana-pro']
+  const credits = modelCredits[normalizedResolution]
+    ?? modelCredits[normalizedResolution.toUpperCase()]
+    ?? modelCredits[normalizedResolution.toLowerCase()]
+    ?? modelCredits['1K']
+  return moveNineEndingCreditsToNextTen(credits)
 }
 
 export function calculateVideoGenerationCredits(
@@ -215,12 +211,12 @@ export function calculateVideoGenerationCredits(
 ): number | null {
   const rateConfig = VIDEO_GENERATION_CREDIT_RATES[modelId]
   const fixedSpecCredits = rateConfig?.ratesByResolutionAndDuration?.[resolution]?.[duration]
-  if (fixedSpecCredits) return fixedSpecCredits
+  if (fixedSpecCredits) return moveNineEndingCreditsToNextTen(fixedSpecCredits)
   const ratesByResolution = options.nativeAudio
     ? rateConfig?.nativeAudioRatesByResolution
     : rateConfig?.ratesByResolution
   const creditsPerSecond = ratesByResolution?.[resolution]
   if (!creditsPerSecond || !Number.isFinite(duration) || duration <= 0) return null
-  if (rateConfig.fixedPerVideo) return creditsPerSecond
-  return Math.ceil(creditsPerSecond * duration)
+  if (rateConfig.fixedPerVideo) return moveNineEndingCreditsToNextTen(creditsPerSecond)
+  return moveNineEndingCreditsToNextTen(Math.ceil(creditsPerSecond * duration))
 }

@@ -1,6 +1,7 @@
 export const SUPPORTED_IMAGE_GENERATION_MODEL_IDS = Object.freeze([
   'nano-banana-pro',
   'nano-banana-2',
+  'nano-banana-2-lite',
   'gpt-image-2',
   'gpt-image-1-5',
   'grok-1-5-image',

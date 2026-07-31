@@ -176,6 +176,7 @@ test('AI video generator model configs define practical video output defaults', 
   const grok = getAiVideoGeneratorModelConfig('grok-1-5-video')
   const seedance = getAiVideoGeneratorModelConfig('seedance-2')
   const seedanceMini = getAiVideoGeneratorModelConfig('seedance-2-mini')
+  const seedanceFast = getAiVideoGeneratorModelConfig('seedance-2-fast')
   const kling = getAiVideoGeneratorModelConfig('kling-3')
   const veoLite = getAiVideoGeneratorModelConfig('veo-3-1-lite')
   const veoFast = getAiVideoGeneratorModelConfig('veo-3-1-fast')
@@ -196,7 +197,7 @@ test('AI video generator model configs define practical video output defaults', 
   assert.ok(seedance.durations.includes(15))
   assert.equal(seedance.logoSrc, '/model-logos/bytedance.svg')
   assert.equal(seedance.qualityRating, 5)
-  assert.equal(seedance.minCredits, 150)
+  assert.equal(seedance.minCredits, 190)
   assert.deepEqual(seedance.resolutions, ['480p', '720p', '1080p', '4K'])
 
   assert.equal(seedanceMini.name, 'Seedance 2.0 Mini')
@@ -204,13 +205,18 @@ test('AI video generator model configs define practical video output defaults', 
   assert.equal(seedanceMini.maxImages, 2)
   assert.equal(seedanceMini.logoSrc, '/model-logos/bytedance.svg')
   assert.equal(seedanceMini.qualityRating, 4.5)
-  assert.equal(seedanceMini.minCredits, 75)
+  assert.equal(seedanceMini.minCredits, 100)
   assert.deepEqual(seedanceMini.resolutions, ['480p', '720p'])
   assert.ok(seedanceMini.aspectRatios.some((ratio) => ratio.value === 'adaptive'))
 
+  assert.equal(seedanceFast.minCredits, 155)
+  assert.deepEqual(seedanceFast.resolutions, ['480p', '720p'])
+  assert.equal(seedanceFast.supportsNativeAudio, false)
+  assert.equal(seedanceFast.nativeAudioResolutions, undefined)
+
   assert.equal(kling.logoSrc, '/model-logos/kling.svg')
   assert.equal(kling.qualityRating, 4.5)
-  assert.equal(kling.minCredits, 60)
+  assert.equal(kling.minCredits, 84)
   assert.deepEqual(kling.resolutions, ['720p', '1080p', '4K'])
   assert.deepEqual(kling.durations, Array.from({ length: 13 }, (_, index) => index + 3))
   assert.equal(kling.supportsNativeAudio, true)
@@ -228,15 +234,46 @@ test('AI video generator model configs define practical video output defaults', 
     assert.equal(veo.defaultDuration, 8)
     assert.deepEqual(veo.resolutions, ['720p', '1080p'])
   }
-  assert.equal(veoLite.minCredits, 45)
-  assert.equal(veoFast.minCredits, 90)
-  assert.equal(veoQuality.minCredits, 375)
+  assert.equal(veoLite.minCredits, 30)
+  assert.equal(veoFast.minCredits, 60)
+  assert.equal(veoQuality.minCredits, 450)
 })
 
 test('AI video generator model menu minimum credits match shared pricing', () => {
-  assert.equal(getAiVideoGeneratorModelMinimumCredits(getAiVideoGeneratorModelConfig('seedance-2')), 150)
+  assert.equal(getAiVideoGeneratorModelMinimumCredits(getAiVideoGeneratorModelConfig('seedance-2')), 190)
+
+  const expectedMinimumCreditsByModel = new Map([
+    ['grok-1-5-video', 3],
+    ['seedance-2', 190],
+    ['seedance-2-mini', 100],
+    ['seedance-2-fast', 155],
+    ['seedance-1-5-pro', 16],
+    ['seedance-1-pro-fast', 32],
+    ['seedance-1-pro', 30],
+    ['seedance-1-lite', 20],
+    ['wan-2-7', 64],
+    ['wan-2-6', 140],
+    ['wan-2-5', 120],
+    ['wan-2-2', 16],
+    ['kling-3-turbo', 180],
+    ['kling-3', 84],
+    ['kling-2-6', 110],
+    ['kling-2-5', 85],
+    ['kling-2-1', 320],
+    ['veo-3-1-lite', 30],
+    ['veo-3-1-fast', 60],
+    ['veo-3-1-quality', 450],
+    ['pixverse-v6', 8],
+    ['happyhorse-1-1', 135],
+    ['happyhorse', 168],
+  ])
 
   for (const model of AI_VIDEO_GENERATOR_MODEL_OPTIONS) {
+    assert.equal(
+      model.minCredits,
+      expectedMinimumCreditsByModel.get(model.id),
+      model.id + ' menu minimum credits should use video cost-times-two pricing'
+    )
     assert.equal(
       model.minCredits,
       getAiVideoGeneratorModelMinimumCredits(model),
@@ -272,7 +309,6 @@ test('video capability labels match the audited KIE model matrix', () => {
     'grok-1-5-video',
     'seedance-2',
     'seedance-2-mini',
-    'seedance-2-fast',
     'seedance-1-5-pro',
     'wan-2-6',
     'wan-2-5',

@@ -104,6 +104,7 @@ function normalizeResolution(model, isImageToImage, resolution) {
     return '480p';
   }
 
+  if (model === 'nano-banana-2-lite') return '1K';
   if (model === 'wan-2-7-image' && isImageToImage && value === '4K') return '2K';
   return value === '2K' || value === '4K' ? value : '1K';
 }
@@ -151,6 +152,9 @@ function resolveProviderModelId(model, env, isImageToImage, resolution) {
   if (model === 'nano-banana-2') {
     return env.KIE_NANO_BANANA_2_MODEL || 'nano-banana-2';
   }
+  if (model === 'nano-banana-2-lite') {
+    return env.KIE_NANO_BANANA_2_LITE_MODEL || env.KIE_NANO_BANANA_LITE_MODEL || 'nano-banana-2-lite';
+  }
   if (model === 'wan-2-7-image') {
     if (!isImageToImage && resolution === '4K') {
       return env.KIE_WAN_2_7_IMAGE_PRO_MODEL || 'wan/2-7-image-pro';
@@ -169,7 +173,7 @@ function resolveProviderModelId(model, env, isImageToImage, resolution) {
 }
 
 function getMaxImagesForModel(model) {
-  if (model === 'nano-banana-2') return 14;
+  if (model === 'nano-banana-2' || model === 'nano-banana-2-lite') return 14;
   if (model === 'seedream-4-5') return 14;
   if (model === 'seedream-5-0-lite') return 14;
   if (model === 'seedream-5-0-pro') return 14;
