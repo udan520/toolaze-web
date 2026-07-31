@@ -781,7 +781,7 @@ test('AI video generator defaults missing Grok duration to three seconds', async
     })
 
     assert.equal(response.status, 200)
-    assert.deepEqual(await readJson(response), { taskId: 'task_default_duration', requiredCredits: 10 })
+    assert.deepEqual(await readJson(response), { taskId: 'task_default_duration', requiredCredits: 9 })
     assert.equal(payload?.input?.duration, 3)
   } finally {
     globalThis.fetch = originalFetch

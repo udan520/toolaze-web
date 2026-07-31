@@ -17,7 +17,8 @@
 - 图片类已核实 KIE 成本规格使用：**目标售价 = KIE API成本 × 3**。
 - 视频类已核实 KIE 成本规格使用：**目标售价 = KIE API成本 × 2**。
 - 视频 Toolaze 扣点使用：**credits = round(目标售价 / $0.005)**，即按最接近的整数 credits 四舍五入。
-- 末位为 9 的 credits 统一进位到下一个整十，例如 9→10、19→20、29→30。
+- 按秒计费的视频先将实际请求 / 裁剪秒数**向上取整**，例如 14.5 秒按 15 秒显示和扣点。
+- 单张图片末位为 9 的 credits 进位到下一个整十，例如 9→10；视频不适用此规则，例如 3 credits/s × 3秒 = 9 credits。
 - 图片示例：KIE API成本 **$0.015 / 张图** → 目标售价 **$0.045** → **9 credits** → **10 credits**。
 - 视频示例：KIE API成本 **$0.008 / 输出秒** → 目标售价 **$0.016** → `0.016 / 0.005 = 3.2` → **3 credits / 输出秒**。
 - Toolaze 收入 = `credits × $0.005`；由于 credits 必须是整数且视频使用四舍五入，收入可能略高或略低于对应目标倍数。
@@ -49,7 +50,7 @@
 | --- | --- | --- | ---: | --- | --- |
 | Grok 1.5 Video | `grok-1-5-video` | xAI | 3+ credits | 480p × 1秒 | 能力标签支持输出；无独立加价表 |
 | Seedance 2.0 | `seedance-2` | ByteDance | 190+ credits | 480p × 5秒 | 能力标签支持输出；无独立加价表 |
-| Seedance 2.0 Mini | `seedance-2-mini` | ByteDance | 100+ credits | 480p × 5秒 | 能力标签支持输出；无独立加价表 |
+| Seedance 2.0 Mini | `seedance-2-mini` | ByteDance | 95+ credits | 480p × 5秒 | 能力标签支持输出；无独立加价表 |
 | Seedance 2.0 Fast | `seedance-2-fast` | ByteDance | 155+ credits | 480p × 5秒 | 未核实成本，暂不开放 Native Audio 定价 |
 | Seedance 1.5 Pro | `seedance-1-5-pro` | ByteDance | 16+ credits | 480p × 4秒 | 有独立加价表 |
 | Seedance 1.0 Pro Fast | `seedance-1-pro-fast` | ByteDance | 32+ credits | 720p × 5秒 × 1个视频 | 不支持 |
@@ -77,12 +78,12 @@
 | --- | --- | --- | --- | --- |
 | Grok 1.5 Video | `grok-1-5-video` | 按秒 | 480p: 3/s<br>720p: 6/s | 无独立加价表 |
 | Seedance 2.0 | `seedance-2` | 按秒 | 480p: 38/s<br>720p: 82/s<br>1080p: 204/s<br>4K: 416/s | 无独立加价表 |
-| Seedance 2.0 Mini | `seedance-2-mini` | 按秒 | 480p: 20/s<br>720p: 41/s | 无独立加价表 |
+| Seedance 2.0 Mini | `seedance-2-mini` | 按秒 | 480p: 19/s<br>720p: 41/s | 无独立加价表 |
 | Seedance 2.0 Fast | `seedance-2-fast` | 按秒 | 480p: 31/s<br>720p: 66/s<br>1080p/4K: 待确认，暂不开放 | 待确认，暂不开放 |
 | Seedance 1.5 Pro | `seedance-1-5-pro` | 按秒 | 480p: 4/s<br>720p: 7/s<br>1080p: 15/s | 480p: 7/s<br>720p: 14/s<br>1080p: 30/s |
 | Seedance 1.0 Pro Fast | `seedance-1-pro-fast` | 固定规格 | 720p: 5s = 32, 10s = 72<br>1080p: 5s = 72, 10s = 144 | 不支持 |
 | Seedance 1.0 Pro | `seedance-1-pro` | 按秒 | 480p: 6/s<br>720p: 12/s<br>1080p: 28/s | 不支持 |
-| Seedance 1.0 Lite | `seedance-1-lite` | 按秒 | 480p: 4/s<br>720p: 10/s<br>1080p: 20/s | 不支持 |
+| Seedance 1.0 Lite | `seedance-1-lite` | 按秒 | 480p: 4/s<br>720p: 9/s<br>1080p: 20/s | 不支持 |
 | Wan 2.7 | `wan-2-7` | 按秒 | 720p: 32/s<br>1080p: 48/s | 不支持 |
 | Wan 2.6 | `wan-2-6` | 按秒 | 720p: 28/s<br>1080p: 42/s | 无独立加价表 |
 | Wan 2.5 | `wan-2-5` | 按秒 | 720p: 24/s<br>1080p: 40/s | 无独立加价表 |
@@ -95,7 +96,7 @@
 | Veo 3.1 Lite | `veo-3-1-lite` | 固定每条 | 720p: 30/video<br>1080p: 45/video | 无独立加价表 |
 | Veo 3.1 Fast | `veo-3-1-fast` | 固定每条 | 720p: 60/video<br>1080p: 75/video | 无独立加价表 |
 | Veo 3.1 Quality | `veo-3-1-quality` | 固定每条 | 720p: 450/video<br>1080p: 465/video | 无独立加价表 |
-| PixVerse V6 | `pixverse-v6` | 按秒 | 360p: 8/s<br>540p: 11/s<br>720p: 14/s<br>1080p: 30/s | 360p: 11/s<br>540p: 14/s<br>720p: 20/s<br>1080p: 37/s |
+| PixVerse V6 | `pixverse-v6` | 按秒 | 360p: 8/s<br>540p: 11/s<br>720p: 14/s<br>1080p: 29/s | 360p: 11/s<br>540p: 14/s<br>720p: 19/s<br>1080p: 37/s |
 | HappyHorse 1.1 | `happyhorse-1-1` | 按秒 | 720p: 45/s<br>1080p: 58/s | 无独立加价表 |
 | HappyHorse | `happyhorse` | 按秒 | 720p: 56/s<br>1080p: 96/s | 无独立加价表 |
 

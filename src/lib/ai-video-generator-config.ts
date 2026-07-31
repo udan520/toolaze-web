@@ -152,7 +152,7 @@ const AI_VIDEO_GENERATOR_MODEL_OPTIONS_BASE = [
     logoAlt: 'ByteDance logo',
     qualityRating: 4.5,
     badge: 'New',
-    minCredits: 100,
+    minCredits: 95,
     defaultMode: 'image-to-video',
     maxImages: 2,
     maxFileSizeMb: 30,

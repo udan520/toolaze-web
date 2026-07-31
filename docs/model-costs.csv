@@ -167,12 +167,12 @@ Toolaze收入 $1.0200 / 输出秒
 Toolaze定价 204 积分 / 输出秒
 成本率 50.0%
 毛利率 50.0%",,按输出秒计费
-视频模型,视频,Seedance 2.0 Mini,seedance-2-mini,,,,,ByteDance,100+ 积分,480p × 5秒,KIE官网已核实,KIE官方价格页; functions/_shared/generation-credits.mjs; src/lib/generation-credits.ts,https://kie.ai/seedance-2-0-mini,KIE模型页 pricingDesc：本表按 no video 输出秒成本映射；with video 输入成本另低于 no video。,,"每输出秒:
+视频模型,视频,Seedance 2.0 Mini,seedance-2-mini,,,,,ByteDance,95+ 积分,480p × 5秒,KIE官网已核实,KIE官方价格页; functions/_shared/generation-credits.mjs; src/lib/generation-credits.ts,https://kie.ai/seedance-2-0-mini,KIE模型页 pricingDesc：本表按 no video 输出秒成本映射；with video 输入成本另低于 no video。,,"每输出秒:
 KIE API成本 $0.0475 / 输出秒
-Toolaze收入 $0.1000 / 输出秒
-Toolaze定价 20 积分 / 输出秒
-成本率 47.5%
-毛利率 52.5%",,"每输出秒:
+Toolaze收入 $0.0950 / 输出秒
+Toolaze定价 19 积分 / 输出秒
+成本率 50.0%
+毛利率 50.0%",,"每输出秒:
 KIE API成本 $0.1025 / 输出秒
 Toolaze收入 $0.2050 / 输出秒
 Toolaze定价 41 积分 / 输出秒
@@ -306,10 +306,10 @@ Toolaze定价 4 积分 / 输出秒
 成本率 50.0%
 毛利率 50.0%",,"每输出秒:
 KIE API成本 $0.0225 / 输出秒
-Toolaze收入 $0.0500 / 输出秒
-Toolaze定价 10 积分 / 输出秒
-成本率 45.0%
-毛利率 55.0%","每输出秒:
+Toolaze收入 $0.0450 / 输出秒
+Toolaze定价 9 积分 / 输出秒
+成本率 50.0%
+毛利率 50.0%","每输出秒:
 KIE API成本 $0.0500 / 输出秒
 Toolaze收入 $0.1000 / 输出秒
 Toolaze定价 20 积分 / 输出秒
@@ -503,15 +503,15 @@ Toolaze定价 14 积分 / 输出秒
 
 原生音频 / 每输出秒:
 KIE API成本 $0.0480 / 输出秒
-Toolaze收入 $0.1000 / 输出秒
-Toolaze定价 20 积分 / 输出秒
-成本率 48.0%
-毛利率 52.0%","每输出秒:
+Toolaze收入 $0.0950 / 输出秒
+Toolaze定价 19 积分 / 输出秒
+成本率 50.5%
+毛利率 49.5%","每输出秒:
 KIE API成本 $0.0720 / 输出秒
-Toolaze收入 $0.1500 / 输出秒
-Toolaze定价 30 积分 / 输出秒
-成本率 48.0%
-毛利率 52.0%
+Toolaze收入 $0.1450 / 输出秒
+Toolaze定价 29 积分 / 输出秒
+成本率 49.7%
+毛利率 50.3%
 
 原生音频 / 每输出秒:
 KIE API成本 $0.0920 / 输出秒

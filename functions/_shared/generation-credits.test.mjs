@@ -40,7 +40,7 @@ test('maps Kie video costs to credits from KIE cost times two', () => {
   assert.equal(VIDEO_GENERATION_CREDIT_RATES['seedance-2'].ratesByResolution['720p'], 82);
   assert.equal(VIDEO_GENERATION_CREDIT_RATES['seedance-2'].ratesByResolution['1080p'], 204);
   assert.equal(VIDEO_GENERATION_CREDIT_RATES['seedance-2'].ratesByResolution['4K'], 416);
-  assert.equal(VIDEO_GENERATION_CREDIT_RATES['seedance-2-mini'].ratesByResolution['480p'], 20);
+  assert.equal(VIDEO_GENERATION_CREDIT_RATES['seedance-2-mini'].ratesByResolution['480p'], 19);
   assert.equal(VIDEO_GENERATION_CREDIT_RATES['seedance-2-mini'].ratesByResolution['720p'], 41);
   assert.equal(VIDEO_GENERATION_CREDIT_RATES['kling-3'].ratesByResolution['720p'], 28);
   assert.equal(VIDEO_GENERATION_CREDIT_RATES['kling-3'].ratesByResolution['1080p'], 36);
@@ -59,17 +59,17 @@ test('maps Kie video costs to credits from KIE cost times two', () => {
   assert.equal(VIDEO_GENERATION_CREDIT_RATES['veo-3-1-quality'].ratesByResolution['1080p'], 465);
   assert.equal(VIDEO_GENERATION_CREDIT_RATES['pixverse-v6'].ratesByResolution['540p'], 11);
   assert.equal(VIDEO_GENERATION_CREDIT_RATES['pixverse-v6'].ratesByResolution['720p'], 14);
-  assert.equal(VIDEO_GENERATION_CREDIT_RATES['seedance-1-lite'].ratesByResolution['720p'], 10);
-  assert.equal(VIDEO_GENERATION_CREDIT_RATES['pixverse-v6'].ratesByResolution['1080p'], 30);
-  assert.equal(VIDEO_GENERATION_CREDIT_RATES['pixverse-v6'].nativeAudioRatesByResolution['720p'], 20);
+  assert.equal(VIDEO_GENERATION_CREDIT_RATES['seedance-1-lite'].ratesByResolution['720p'], 9);
+  assert.equal(VIDEO_GENERATION_CREDIT_RATES['pixverse-v6'].ratesByResolution['1080p'], 29);
+  assert.equal(VIDEO_GENERATION_CREDIT_RATES['pixverse-v6'].nativeAudioRatesByResolution['720p'], 19);
   assert.equal(calculateVideoGenerationCredits('grok-1-5-video', '480p', 5), 15);
-  assert.equal(calculateVideoGenerationCredits('grok-1-5-video', '480p', 3), 10);
+  assert.equal(calculateVideoGenerationCredits('grok-1-5-video', '480p', 3), 9);
   assert.equal(calculateVideoGenerationCredits('grok-1-5-video', '720p', 10), 60);
   assert.equal(calculateVideoGenerationCredits('seedance-2', '480p', 5), 190);
   assert.equal(calculateVideoGenerationCredits('seedance-2', '720p', 5), 410);
   assert.equal(calculateVideoGenerationCredits('seedance-2', '1080p', 15), 3060);
   assert.equal(calculateVideoGenerationCredits('seedance-2', '4K', 15), 6240);
-  assert.equal(calculateVideoGenerationCredits('seedance-2-mini', '480p', 5), 100);
+  assert.equal(calculateVideoGenerationCredits('seedance-2-mini', '480p', 5), 95);
   assert.equal(calculateVideoGenerationCredits('seedance-2-mini', '720p', 10), 410);
   assert.equal(calculateVideoGenerationCredits('kling-3', '720p', 5), 140);
   assert.equal(calculateVideoGenerationCredits('kling-3', '1080p', 10), 360);
@@ -81,7 +81,13 @@ test('maps Kie video costs to credits from KIE cost times two', () => {
   assert.equal(calculateVideoGenerationCredits('veo-3-1-fast', '1080p', 8), 75);
   assert.equal(calculateVideoGenerationCredits('veo-3-1-quality', '720p', 4), 450);
   assert.equal(calculateVideoGenerationCredits('pixverse-v6', '720p', 5), 70);
-  assert.equal(calculateVideoGenerationCredits('pixverse-v6', '720p', 5, { nativeAudio: true }), 100);
+  assert.equal(calculateVideoGenerationCredits('pixverse-v6', '720p', 5, { nativeAudio: true }), 95);
+});
+
+test('video pricing never moves 9-credit totals to the next ten', () => {
+  assert.equal(calculateVideoGenerationCredits('grok-1-5-video', '480p', 3), 9);
+  assert.equal(calculateVideoGenerationCredits('seedance-2-mini', '480p', 1), 19);
+  assert.equal(calculateVideoGenerationCredits('pixverse-v6', '1080p', 1), 29);
 });
 
 test('Kissing Grok Video uses the same credits as Grok 1.5 Video', () => {

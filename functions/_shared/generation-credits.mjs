@@ -37,9 +37,9 @@ export const VIDEO_GENERATION_CREDIT_RATES = {
     },
   },
   'seedance-2-mini': {
-    source: 'Kie pricing: 480p $0.0475/output second, 720p $0.1025/output second; Toolaze price = Kie cost × 2, then round(price / $0.005 per credit), moving 9-ending credits to the next ten',
+    source: 'Kie pricing: 480p $0.0475/output second, 720p $0.1025/output second; Toolaze price = Kie cost × 2, then round(price / $0.005 per credit)',
     ratesByResolution: {
-      '480p': moveNineEndingCreditsToNextTen(19),
+      '480p': 19,
       '720p': 41,
     },
   },
@@ -65,8 +65,8 @@ export const VIDEO_GENERATION_CREDIT_RATES = {
     ratesByResolution: { '480p': 6, '720p': 12, '1080p': 28 },
   },
   'seedance-1-lite': {
-    source: 'Kie Seedance 1.0 Lite pricing mapped at cost × 2 and $0.005/credit, moving 9-ending credits to the next ten',
-    ratesByResolution: { '480p': 4, '720p': moveNineEndingCreditsToNextTen(9), '1080p': 20 },
+    source: 'Kie Seedance 1.0 Lite pricing mapped at cost × 2 and $0.005/credit',
+    ratesByResolution: { '480p': 4, '720p': 9, '1080p': 20 },
   },
   'wan-2-7': {
     source: 'Kie Wan 2.7 pricing: 720p $0.08/output second, 1080p $0.12/output second; Toolaze price = Kie cost × 2, then round(price / $0.005 per credit)',
@@ -132,9 +132,9 @@ export const VIDEO_GENERATION_CREDIT_RATES = {
     fixedPerVideo: true,
   },
   'pixverse-v6': {
-    source: 'PixVerse V6 official pricing mapped at cost × 2 and $0.005/credit, moving 9-ending credits to the next ten',
-    ratesByResolution: { '360p': 8, '540p': 11, '720p': 14, '1080p': moveNineEndingCreditsToNextTen(29) },
-    nativeAudioRatesByResolution: { '360p': 11, '540p': 14, '720p': moveNineEndingCreditsToNextTen(19), '1080p': 37 },
+    source: 'PixVerse V6 official pricing mapped at cost × 2 and $0.005/credit',
+    ratesByResolution: { '360p': 8, '540p': 11, '720p': 14, '1080p': 29 },
+    nativeAudioRatesByResolution: { '360p': 11, '540p': 14, '720p': 19, '1080p': 37 },
   },
   'happyhorse-1-1': {
     source: 'Kie HappyHorse 1.1 product rate mapped at cost × 2 and $0.005/credit',
@@ -151,7 +151,7 @@ const MIN_VIDEO_DURATION_SECONDS = 1;
 const MAX_VIDEO_DURATION_SECONDS = 15;
 
 function normalizeVideoDurationSeconds(durationSeconds) {
-  const value = Math.round(Number(durationSeconds ?? DEFAULT_VIDEO_DURATION_SECONDS));
+  const value = Math.ceil(Number(durationSeconds ?? DEFAULT_VIDEO_DURATION_SECONDS));
   if (!Number.isFinite(value)) return DEFAULT_VIDEO_DURATION_SECONDS;
   return Math.max(MIN_VIDEO_DURATION_SECONDS, Math.min(MAX_VIDEO_DURATION_SECONDS, value));
 }
@@ -180,10 +180,10 @@ export function calculateImageGenerationCredits(modelId, resolution, durationSec
 export function calculateVideoGenerationCredits(modelId, resolution, duration, options = {}) {
   const normalizedModel = String(modelId || '').trim();
   const normalizedResolution = String(resolution || '').trim();
-  const normalizedDuration = Number(duration);
+  const normalizedDuration = Math.ceil(Number(duration));
   const rateConfig = VIDEO_GENERATION_CREDIT_RATES[normalizedModel];
   const fixedSpecCredits = rateConfig?.ratesByResolutionAndDuration?.[normalizedResolution]?.[normalizedDuration];
-  if (fixedSpecCredits) return moveNineEndingCreditsToNextTen(fixedSpecCredits);
+  if (fixedSpecCredits) return fixedSpecCredits;
   const modelRates = options.nativeAudio
     ? rateConfig?.nativeAudioRatesByResolution
     : rateConfig?.ratesByResolution;
@@ -193,6 +193,6 @@ export function calculateVideoGenerationCredits(modelId, resolution, duration, o
     return null;
   }
 
-  if (rateConfig.fixedPerVideo) return moveNineEndingCreditsToNextTen(creditsPerSecond);
-  return moveNineEndingCreditsToNextTen(Math.ceil(creditsPerSecond * normalizedDuration));
+  if (rateConfig.fixedPerVideo) return creditsPerSecond;
+  return Math.ceil(creditsPerSecond * normalizedDuration);
 }
