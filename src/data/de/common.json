@@ -61,7 +61,8 @@
     "aiKissingVideoGenerator": "KI-Kuss-Video-Generator",
     "aiClothesChanger": "KI-Kleiderwechsler",
     "wan25Video": "Wan 2.5 Video",
-    "klingAiVideoGenerator": "Kling KI-Videogenerator"
+    "klingAiVideoGenerator": "Kling KI-Videogenerator",
+    "aiBikiniGenerator": "KI-Bikini-Generator"
   },
   "home": {
     "metadata": {
@@ -127,6 +128,10 @@
       "ai-dance-generator": {
         "cardTitle": "KI-Tanzgenerator",
         "summary": "Laden Sie ein Bild hoch und erstellen Sie ein kurzes Tanzvideo für Choreografie-Ideen, Kurs-Promos und Social Clips. Dauer und Seitenverhältnis lassen sich im Generator wählen."
+      },
+      "ai-bikini-generator": {
+        "cardTitle": "KI-Bikini-Generator",
+        "summary": "Laden Sie ein Erwachsenenfoto und eine Bikini-Referenz hoch, um geschmackvolle Swimwear-Edits mit stabiler Personenvorschau zu testen."
       }
     },
     "aiToolsHubTitle": "Kostenlose KI-Tools für Bilder, Videos & alltägliche Medien-Workflows",
@@ -287,7 +292,8 @@
     "aiKissingVideoGenerator": "KI-Kuss-Video-Generator",
     "aiClothesChanger": "KI-Kleiderwechsler",
     "wan25Video": "Wan 2.5 Video",
-    "klingAiVideoGenerator": "Kling KI-Videogenerator"
+    "klingAiVideoGenerator": "Kling KI-Videogenerator",
+    "aiBikiniGenerator": "KI-Bikini-Generator"
   },
   "breadcrumb": {
     "home": "Startseite",
@@ -314,7 +320,8 @@
     "acceptableUse": "Richtlinie zur zulässigen Nutzung",
     "textToVideoGenerator": "Text-zu-Video-Generator",
     "imageToVideoGenerator": "Bild-zu-Video-Generator",
-    "aiClothesChanger": "KI-Kleiderwechsler"
+    "aiClothesChanger": "KI-Kleiderwechsler",
+    "aiBikiniGenerator": "KI-Bikini-Generator"
   },
   "about": {
     "metadata": {
@@ -1048,7 +1055,8 @@
     "deleteSelectedError": "Ausgewählte Verlaufseinträge konnten nicht gelöscht werden.",
     "modeVideo": "Video",
     "modeTextToImage": "Text zu Bild",
-    "modeImageToImage": "Bild zu Bild"
+    "modeImageToImage": "Bild zu Bild",
+    "createSimilar": "Ähnlich erstellen"
   },
   "creditsPage": {
     "metadataTitle": "Credit-Verlauf - Toolaze",

@@ -17,6 +17,7 @@ const expectedRoutes = [
   '/ai-hairstyle-changer',
   '/ai-hair-color-changer',
   '/ai-clothes-changer',
+  '/ai-bikini-generator',
   '/ai-asmr-video-generator',
   '/model/wan-2-5-ai-video-generator',
   '/watermark-remover',
@@ -27,7 +28,7 @@ test('AI Tools hub includes every global AI tool in every locale', () => {
   for (const locale of AI_TOOLS_LOCALES) {
     const cards = getAiToolsPageCopy(locale).cards
     assert.deepEqual(cards.map((card) => card.href), expectedRoutes, `${locale} has missing or mismatched tools`)
-    assert.equal(cards.filter((card) => card.category === 'image').length, 11)
+    assert.equal(cards.filter((card) => card.category === 'image').length, 12)
     assert.equal(cards.filter((card) => card.category === 'video').length, 7)
   }
 })
@@ -69,6 +70,24 @@ test('AI Clothes Changer hub card is localized outside English', () => {
     const localizedCard = getAiToolsPageCopy(locale).cards.find((card) => card.href === '/ai-clothes-changer')
 
     assert.ok(localizedCard, `${locale} is missing the AI Clothes Changer hub card`)
+    assert.notEqual(localizedCard.title, englishCard.title, `${locale} title should not fall back to English`)
+    assert.notEqual(
+      localizedCard.description,
+      englishCard.description,
+      `${locale} description should not fall back to English`,
+    )
+  }
+})
+
+test('AI Bikini Generator hub card is localized outside English', () => {
+  const englishCard = getAiToolsPageCopy('en').cards.find((card) => card.href === '/ai-bikini-generator')
+  assert.ok(englishCard)
+  assert.equal(englishCard.image, 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/6bcf91ffd06e45a8bcda2ea867015141.webp')
+
+  for (const locale of AI_TOOLS_LOCALES.filter((locale) => locale !== 'en')) {
+    const localizedCard = getAiToolsPageCopy(locale).cards.find((card) => card.href === '/ai-bikini-generator')
+
+    assert.ok(localizedCard, `${locale} is missing the AI Bikini Generator hub card`)
     assert.notEqual(localizedCard.title, englishCard.title, `${locale} title should not fall back to English`)
     assert.notEqual(
       localizedCard.description,

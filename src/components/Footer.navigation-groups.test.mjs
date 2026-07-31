@@ -35,6 +35,7 @@ test('footer separates image tools, video tools, image models, and video models'
   assert.match(imageToolsBlock, /\/ai-hairstyle-changer/)
   assert.match(imageToolsBlock, /\/ai-hair-color-changer/)
   assert.match(imageToolsBlock, /\/ai-clothes-changer/)
+  assert.match(imageToolsBlock, /\/ai-bikini-generator/)
   assert.match(videoToolsBlock, /\/ai-dance-generator/)
   assert.match(videoToolsBlock, /\/ai-kissing-video-generator/)
   assert.doesNotMatch(videoToolsBlock, /\/model\/seedance-2|\/model\/kling-3|\/model\/grok-imagine-video-1-5/)
@@ -64,7 +65,7 @@ test('footer no longer renders utility directory groups', () => {
 test('footer tool group titles exist in every supported locale', () => {
   for (const locale of locales) {
     const common = JSON.parse(readFileSync(`src/data/${locale}/common.json`, 'utf8'))
-    for (const key of ['aiImage', 'aiVideo', 'aiImageModel', 'aiVideoModel', 'aiClothesChanger', 'wan25Video']) {
+    for (const key of ['aiImage', 'aiVideo', 'aiImageModel', 'aiVideoModel', 'aiClothesChanger', 'aiBikiniGenerator', 'wan25Video']) {
       assert.equal(typeof common.footer[key], 'string', `${locale} is missing footer.${key}`)
       assert.ok(common.footer[key].length > 0, `${locale}.footer.${key} is empty`)
     }

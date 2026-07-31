@@ -61,7 +61,8 @@
     "aiKissingVideoGenerator": "AI 키스 동영상 생성기",
     "aiClothesChanger": "AI 의상 체인저",
     "wan25Video": "Wan 2.5 동영상",
-    "klingAiVideoGenerator": "Kling AI 동영상 생성기"
+    "klingAiVideoGenerator": "Kling AI 동영상 생성기",
+    "aiBikiniGenerator": "AI 비키니 생성기"
   },
   "home": {
     "metadata": {
@@ -127,6 +128,10 @@
       "ai-dance-generator": {
         "cardTitle": "AI 댄스 생성기",
         "summary": "이미지 한 장을 업로드해 안무 아이디어, 클래스 홍보, 소셜 클립용 짧은 댄스 영상을 만드세요. 생성기에서 길이와 비율을 선택할 수 있습니다."
+      },
+      "ai-bikini-generator": {
+        "cardTitle": "AI 비키니 생성기",
+        "summary": "성인 인물 사진과 비키니 참조 이미지를 업로드해 원본 인물을 유지한 깔끔한 수영복 편집을 미리보세요."
       }
     },
     "aiToolsHubTitle": "이미지, 비디오 및 일상 미디어 워크플로우를 위한 무료 AI 도구",
@@ -287,7 +292,8 @@
     "aiKissingVideoGenerator": "AI 키스 동영상 생성기",
     "aiClothesChanger": "AI 의상 체인저",
     "wan25Video": "Wan 2.5 동영상",
-    "klingAiVideoGenerator": "Kling AI 동영상 생성기"
+    "klingAiVideoGenerator": "Kling AI 동영상 생성기",
+    "aiBikiniGenerator": "AI 비키니 생성기"
   },
   "breadcrumb": {
     "home": "홈",
@@ -314,7 +320,8 @@
     "acceptableUse": "허용 사용 정책",
     "textToVideoGenerator": "텍스트-동영상 생성기",
     "imageToVideoGenerator": "이미지-동영상 생성기",
-    "aiClothesChanger": "AI 의상 체인저"
+    "aiClothesChanger": "AI 의상 체인저",
+    "aiBikiniGenerator": "AI 비키니 생성기"
   },
   "about": {
     "metadata": {
@@ -1048,7 +1055,8 @@
     "deleteSelectedError": "선택한 기록 항목을 삭제할 수 없습니다.",
     "modeVideo": "동영상",
     "modeTextToImage": "텍스트에서 이미지",
-    "modeImageToImage": "이미지에서 이미지"
+    "modeImageToImage": "이미지에서 이미지",
+    "createSimilar": "비슷하게 만들기"
   },
   "creditsPage": {
     "metadataTitle": "크레딧 활동 - Toolaze",

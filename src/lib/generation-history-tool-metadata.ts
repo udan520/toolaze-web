@@ -11,6 +11,7 @@ const HISTORY_TOOL_LABELS: Record<string, string> = {
   'watermark-remover': 'Watermark Remover',
   'photo-restoration': 'Photo Restoration',
   'ai-clothes-changer': 'Clothes Changer',
+  'ai-bikini-generator': 'AI Bikini Generator',
   'ai-dance-generator': 'AI Dance Generator',
   'ai-kissing-video-generator': 'AI Kissing Video Generator',
   'ai-asmr-video-generator': 'AI ASMR Video Generator',

@@ -10,6 +10,7 @@ const imageToolHrefs = [
   '/ai-hairstyle-changer',
   '/ai-hair-color-changer',
   '/ai-clothes-changer',
+  '/ai-bikini-generator',
   '/ai-baby-generator',
   '/ai-couple-photo-maker',
   '/world-cup-ai-image-generator',
@@ -72,6 +73,11 @@ test('AI Tools category headings are translated in every locale', () => {
       'string',
       `${locale} aiAsmrVideoGenerator should exist`,
     )
+    assert.equal(
+      typeof common.nav.aiBikiniGenerator,
+      'string',
+      `${locale} aiBikiniGenerator should exist`,
+    )
     assert.notEqual(common.nav.imageTools.trim(), '', `${locale} imageTools should not be empty`)
     assert.notEqual(common.nav.videoTools.trim(), '', `${locale} videoTools should not be empty`)
   }
@@ -86,4 +92,5 @@ test('scene pages preserve AI Tools group translations in the navigation payload
   assert.match(sceneNavKeys, /'imageTools'/)
   assert.match(sceneNavKeys, /'videoTools'/)
   assert.match(sceneNavKeys, /'aiAsmrVideoGenerator'/)
+  assert.match(sceneNavKeys, /'aiBikiniGenerator'/)
 })

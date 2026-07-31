@@ -61,7 +61,8 @@
     "aiKissingVideoGenerator": "AI 親吻影片生成器",
     "aiClothesChanger": "AI 換衣工具",
     "wan25Video": "Wan 2.5 影片",
-    "klingAiVideoGenerator": "Kling AI 影片生成器"
+    "klingAiVideoGenerator": "Kling AI 影片生成器",
+    "aiBikiniGenerator": "AI 比基尼生成器"
   },
   "home": {
     "metadata": {
@@ -127,6 +128,10 @@
       "ai-dance-generator": {
         "cardTitle": "AI 跳舞生成器",
         "summary": "上傳一張圖片，建立適合編舞概念、課程宣傳與社群短片的跳舞影片。可在生成器中選擇時長與比例。"
+      },
+      "ai-bikini-generator": {
+        "cardTitle": "AI 比基尼生成器",
+        "summary": "上傳成人人物照片與比基尼參考圖，在保留原人物的同時預覽得體的泳裝編輯效果。"
       }
     },
     "aiToolsHubTitle": "適用於圖片、影片和日常媒體工作流程的免費AI工具",
@@ -287,7 +292,8 @@
     "aiKissingVideoGenerator": "AI 親吻影片生成器",
     "aiClothesChanger": "AI 換衣工具",
     "wan25Video": "Wan 2.5 影片",
-    "klingAiVideoGenerator": "Kling AI 影片生成器"
+    "klingAiVideoGenerator": "Kling AI 影片生成器",
+    "aiBikiniGenerator": "AI 比基尼生成器"
   },
   "breadcrumb": {
     "home": "首頁",
@@ -314,7 +320,8 @@
     "acceptableUse": "可接受使用政策",
     "textToVideoGenerator": "文字轉影片生成器",
     "imageToVideoGenerator": "圖像轉影片生成器",
-    "aiClothesChanger": "AI 換衣工具"
+    "aiClothesChanger": "AI 換衣工具",
+    "aiBikiniGenerator": "AI 比基尼生成器"
   },
   "about": {
     "metadata": {
@@ -1048,7 +1055,8 @@
     "deleteSelectedError": "無法刪除已選取的歷史記錄。",
     "modeVideo": "影片",
     "modeTextToImage": "文字生成圖片",
-    "modeImageToImage": "圖片轉圖片"
+    "modeImageToImage": "圖片轉圖片",
+    "createSimilar": "建立相似結果"
   },
   "creditsPage": {
     "metadataTitle": "點數紀錄 - Toolaze",

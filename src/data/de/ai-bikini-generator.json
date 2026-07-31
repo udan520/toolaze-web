@@ -1,0 +1,399 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 2,
+    "modelId": "seedream-5-0-lite",
+    "defaultPrompt": "Bild 1 ist das ursprüngliche Personenfoto. Bild 2 ist die Bikini- oder Bademoden-Referenz. Ersetzen Sie nur die sichtbare Kleidung jeder klar sichtbaren Person in Bild 1 durch die Bademode aus Bild 2. Wenn Bild 1 mehrere Personen enthält, wenden Sie denselben Bademodenstil auf jede klar sichtbare Person an. Lassen Sie alles andere bei jeder Person und in der Szene exakt unverändert: Gesicht, Identität, Alter, Hautton, Haare, Körperform, Körperproportionen, Pose, Hände, Ausdruck, relative Position, Hintergrund, Licht, Kamerawinkel, Bildausschnitt und Bildqualität. Nicht verschlanken, nicht vergrößern, nicht retuschieren, nicht umformen, Pose nicht ändern, Gesicht nicht ändern, Körper nicht ändern, relative Positionen nicht ändern und Szene nicht verändern. Stimmen Sie Stil, Bedeckung, Stoff, Farbe, Träger und Silhouette der Bademode möglichst genau mit Bild 2 ab. Das Ergebnis soll realistisch, geschmackvoll, nicht explizit und für eine Bademoden-Vorschau geeignet sein.",
+    "defaultImageUrls": [],
+    "hideModelBranding": true,
+    "compactResultPanel": true,
+    "displayName": "KI-Bikini-Generator",
+    "functionalAcceptance": {
+      "recommendedMode": "bikini-reference-first-with-custom-prompt",
+      "reason": "Der Hauptablauf nutzt zwei Bilder: ein Erwachsenenfoto und eine Bikini- oder Bademoden-Referenz. Der benutzerdefinierte Modus nutzt ein Personenfoto plus Bademodenbeschreibung.",
+      "presetTitle": "Bikini-Referenz wählen",
+      "presetTabs": [
+        {
+          "id": "bikini-reference",
+          "label": "Bikini-Referenz"
+        },
+        {
+          "id": "custom",
+          "label": "Benutzerdefiniert"
+        }
+      ],
+      "hidePresetPromptInput": true,
+      "customPromptTabId": "custom",
+      "presets": [
+        {
+          "label": "Klassischer schwarzer Bikini",
+          "group": "bikini-reference",
+          "prompt": "Bild 1 ist das ursprüngliche Personenfoto. Bild 2 ist die Bikini- oder Bademoden-Referenz. Ersetzen Sie nur die sichtbare Kleidung jeder klar sichtbaren Person in Bild 1 durch den klassischen schwarzen Triangel-Bikini aus Bild 2. Wenn Bild 1 mehrere Personen enthält, wenden Sie denselben Bademodenstil auf jede klar sichtbare Person an. Lassen Sie alles andere bei jeder Person und in der Szene exakt unverändert: Gesicht, Identität, Alter, Hautton, Haare, Körperform, Körperproportionen, Pose, Hände, Ausdruck, relative Position, Hintergrund, Licht, Kamerawinkel, Bildausschnitt und Bildqualität. Nicht verschlanken, nicht vergrößern, nicht retuschieren, nicht umformen, Pose nicht ändern, Gesicht nicht ändern, Körper nicht ändern, relative Positionen nicht ändern und Szene nicht verändern. Stimmen Sie schwarzen Stoff, dünne Träger, Bedeckung, Oberteilform, Unterteilform und Silhouette möglichst genau mit Bild 2 ab. Das Ergebnis soll realistisch, geschmackvoll, nicht explizit und für eine Bademoden-Vorschau geeignet sein.",
+          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3d80ed2905334169b0a2d06d1f86c01d.webp",
+          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3d80ed2905334169b0a2d06d1f86c01d.webp",
+          "swatch": "linear-gradient(135deg, #111827, #020617)"
+        },
+        {
+          "label": "Klassischer weißer Bikini",
+          "group": "bikini-reference",
+          "prompt": "Bild 1 ist das ursprüngliche Personenfoto. Bild 2 ist die Bikini- oder Bademoden-Referenz. Ersetzen Sie nur die sichtbare Kleidung jeder klar sichtbaren Person in Bild 1 durch den klassischen weißen Triangel-Bikini aus Bild 2. Wenn Bild 1 mehrere Personen enthält, wenden Sie denselben Bademodenstil auf jede klar sichtbare Person an. Lassen Sie alles andere bei jeder Person und in der Szene exakt unverändert: Gesicht, Identität, Alter, Hautton, Haare, Körperform, Körperproportionen, Pose, Hände, Ausdruck, relative Position, Hintergrund, Licht, Kamerawinkel, Bildausschnitt und Bildqualität. Nicht verschlanken, nicht vergrößern, nicht retuschieren, nicht umformen, Pose nicht ändern, Gesicht nicht ändern, Körper nicht ändern, relative Positionen nicht ändern und Szene nicht verändern. Stimmen Sie Bedeckung, dünne Träger, sauberen weißen Stoff, Oberteilform, Unterteilform und Silhouette möglichst genau mit Bild 2 ab. Das Ergebnis soll realistisch, geschmackvoll, nicht explizit und für eine Bademoden-Vorschau geeignet sein.",
+          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/95db19f5e40a4afa9cc89731f091a5ce.webp",
+          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/95db19f5e40a4afa9cc89731f091a5ce.webp",
+          "swatch": "linear-gradient(135deg, #ffffff, #e5e7eb)"
+        },
+        {
+          "label": "Roter High-Waist-Bikini",
+          "group": "bikini-reference",
+          "prompt": "Bild 1 ist das ursprüngliche Personenfoto. Bild 2 ist die Bikini- oder Bademoden-Referenz. Ersetzen Sie nur die sichtbare Kleidung jeder klar sichtbaren Person in Bild 1 durch den roten Retro-Bikini mit hoher Taille aus Bild 2. Wenn Bild 1 mehrere Personen enthält, wenden Sie denselben Bademodenstil auf jede klar sichtbare Person an. Lassen Sie alles andere bei jeder Person und in der Szene exakt unverändert: Gesicht, Identität, Alter, Hautton, Haare, Körperform, Körperproportionen, Pose, Hände, Ausdruck, relative Position, Hintergrund, Licht, Kamerawinkel, Bildausschnitt und Bildqualität. Nicht verschlanken, nicht vergrößern, nicht retuschieren, nicht umformen, Pose nicht ändern, Gesicht nicht ändern, Körper nicht ändern, relative Positionen nicht ändern und Szene nicht verändern. Stimmen Sie hohe Taille, stützendes Oberteil, saubere Nähte, roten Stoff, Bedeckung und Silhouette möglichst genau mit Bild 2 ab. Das Ergebnis soll realistisch, geschmackvoll, nicht explizit und für eine Bademoden-Vorschau geeignet sein.",
+          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3028cca8904b49249b517c0ef32386ee.webp",
+          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3028cca8904b49249b517c0ef32386ee.webp",
+          "swatch": "linear-gradient(135deg, #ef4444, #991b1b)"
+        },
+        {
+          "label": "Marineblauer Nautik-Bikini",
+          "group": "bikini-reference",
+          "prompt": "Bild 1 ist das ursprüngliche Personenfoto. Bild 2 ist die Bikini- oder Bademoden-Referenz. Ersetzen Sie nur die sichtbare Kleidung jeder klar sichtbaren Person in Bild 1 durch den marineblauen nautischen Bikini aus Bild 2. Wenn Bild 1 mehrere Personen enthält, wenden Sie denselben Bademodenstil auf jede klar sichtbare Person an. Lassen Sie alles andere bei jeder Person und in der Szene exakt unverändert: Gesicht, Identität, Alter, Hautton, Haare, Körperform, Körperproportionen, Pose, Hände, Ausdruck, relative Position, Hintergrund, Licht, Kamerawinkel, Bildausschnitt und Bildqualität. Nicht verschlanken, nicht vergrößern, nicht retuschieren, nicht umformen, Pose nicht ändern, Gesicht nicht ändern, Körper nicht ändern, relative Positionen nicht ändern und Szene nicht verändern. Stimmen Sie marineblaue Farbe, weiße Besatz- oder Streifendetails, Träger, Bedeckung, Stoff und Silhouette möglichst genau mit Bild 2 ab. Das Ergebnis soll realistisch, geschmackvoll, nicht explizit und für eine Bademoden-Vorschau geeignet sein.",
+          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3312de502e7344c493d7aaa3796ef6fc.webp",
+          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3312de502e7344c493d7aaa3796ef6fc.webp",
+          "swatch": "linear-gradient(135deg, #1e3a8a, #f8fafc)"
+        },
+        {
+          "label": "Tropischer Blumenbikini",
+          "group": "bikini-reference",
+          "prompt": "Bild 1 ist das ursprüngliche Personenfoto. Bild 2 ist die Bikini- oder Bademoden-Referenz. Ersetzen Sie nur die sichtbare Kleidung jeder klar sichtbaren Person in Bild 1 durch den tropischen Blumen-Bikini aus Bild 2. Wenn Bild 1 mehrere Personen enthält, wenden Sie denselben Bademodenstil auf jede klar sichtbare Person an. Lassen Sie alles andere bei jeder Person und in der Szene exakt unverändert: Gesicht, Identität, Alter, Hautton, Haare, Körperform, Körperproportionen, Pose, Hände, Ausdruck, relative Position, Hintergrund, Licht, Kamerawinkel, Bildausschnitt und Bildqualität. Nicht verschlanken, nicht vergrößern, nicht retuschieren, nicht umformen, Pose nicht ändern, Gesicht nicht ändern, Körper nicht ändern, relative Positionen nicht ändern und Szene nicht verändern. Stimmen Sie botanisches Muster, Farbpalette, Träger, Bedeckung, Stoff und Silhouette möglichst genau mit Bild 2 ab. Das Ergebnis soll realistisch, geschmackvoll, nicht explizit und für eine Bademoden-Vorschau geeignet sein.",
+          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/bad0f5902cb643df87a8fe34210dc99c.webp",
+          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/bad0f5902cb643df87a8fe34210dc99c.webp",
+          "swatch": "linear-gradient(135deg, #22c55e, #f97316, #f43f5e)"
+        },
+        {
+          "label": "Sportlicher türkisfarbener Bikini",
+          "group": "bikini-reference",
+          "prompt": "Bild 1 ist das ursprüngliche Personenfoto. Bild 2 ist die Bikini- oder Bademoden-Referenz. Ersetzen Sie nur die sichtbare Kleidung jeder klar sichtbaren Person in Bild 1 durch den sportlichen türkisfarbenen Bikini mit Racerback-Anmutung aus Bild 2. Wenn Bild 1 mehrere Personen enthält, wenden Sie denselben Bademodenstil auf jede klar sichtbare Person an. Lassen Sie alles andere bei jeder Person und in der Szene exakt unverändert: Gesicht, Identität, Alter, Hautton, Haare, Körperform, Körperproportionen, Pose, Hände, Ausdruck, relative Position, Hintergrund, Licht, Kamerawinkel, Bildausschnitt und Bildqualität. Nicht verschlanken, nicht vergrößern, nicht retuschieren, nicht umformen, Pose nicht ändern, Gesicht nicht ändern, Körper nicht ändern, relative Positionen nicht ändern und Szene nicht verändern. Stimmen Sie sportliche Oberteilform, Türkisfarbe, stabile Träger, Bedeckung, Stoff und Silhouette möglichst genau mit Bild 2 ab. Das Ergebnis soll realistisch, geschmackvoll, nicht explizit und für eine Bademoden-Vorschau geeignet sein.",
+          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/49b1ef80a71344b6990bc71150c35644.webp",
+          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/49b1ef80a71344b6990bc71150c35644.webp",
+          "swatch": "linear-gradient(135deg, #0f766e, #22d3ee)"
+        },
+        {
+          "label": "Gelber Rippstruktur-Bikini",
+          "group": "bikini-reference",
+          "prompt": "Bild 1 ist das ursprüngliche Personenfoto. Bild 2 ist die Bikini- oder Bademoden-Referenz. Ersetzen Sie nur die sichtbare Kleidung jeder klar sichtbaren Person in Bild 1 durch den gelben Bikini mit Rippstruktur aus Bild 2. Wenn Bild 1 mehrere Personen enthält, wenden Sie denselben Bademodenstil auf jede klar sichtbare Person an. Lassen Sie alles andere bei jeder Person und in der Szene exakt unverändert: Gesicht, Identität, Alter, Hautton, Haare, Körperform, Körperproportionen, Pose, Hände, Ausdruck, relative Position, Hintergrund, Licht, Kamerawinkel, Bildausschnitt und Bildqualität. Nicht verschlanken, nicht vergrößern, nicht retuschieren, nicht umformen, Pose nicht ändern, Gesicht nicht ändern, Körper nicht ändern, relative Positionen nicht ändern und Szene nicht verändern. Stimmen Sie warme gelbe Farbe, gerippte Stoffstruktur, Träger, Bedeckung, Stoff und Silhouette möglichst genau mit Bild 2 ab. Das Ergebnis soll realistisch, geschmackvoll, nicht explizit und für eine Bademoden-Vorschau geeignet sein.",
+          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/f2eadccf020a4fe1a733b91335d23ceb.webp",
+          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/f2eadccf020a4fe1a733b91335d23ceb.webp",
+          "swatch": "linear-gradient(135deg, #facc15, #f59e0b)"
+        },
+        {
+          "label": "Korallfarbener One-Shoulder-Bikini",
+          "group": "bikini-reference",
+          "prompt": "Bild 1 ist das ursprüngliche Personenfoto. Bild 2 ist die Bikini- oder Bademoden-Referenz. Ersetzen Sie nur die sichtbare Kleidung jeder klar sichtbaren Person in Bild 1 durch den korallfarbenen One-Shoulder-Bikini aus Bild 2. Wenn Bild 1 mehrere Personen enthält, wenden Sie denselben Bademodenstil auf jede klar sichtbare Person an. Lassen Sie alles andere bei jeder Person und in der Szene exakt unverändert: Gesicht, Identität, Alter, Hautton, Haare, Körperform, Körperproportionen, Pose, Hände, Ausdruck, relative Position, Hintergrund, Licht, Kamerawinkel, Bildausschnitt und Bildqualität. Nicht verschlanken, nicht vergrößern, nicht retuschieren, nicht umformen, Pose nicht ändern, Gesicht nicht ändern, Körper nicht ändern, relative Positionen nicht ändern und Szene nicht verändern. Stimmen Sie One-Shoulder-Oberteilform, Korallfarbe, asymmetrischen Ausschnitt, Bedeckung, Stoff und Silhouette möglichst genau mit Bild 2 ab. Das Ergebnis soll realistisch, geschmackvoll, nicht explizit und für eine Bademoden-Vorschau geeignet sein.",
+          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/5020adfd323e4cf9a3fd7154e243a1b0.webp",
+          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/5020adfd323e4cf9a3fd7154e243a1b0.webp",
+          "swatch": "linear-gradient(135deg, #fb7185, #f97316)"
+        },
+        {
+          "label": "Smaragdgrüner Wickel-Bikini",
+          "group": "bikini-reference",
+          "prompt": "Bild 1 ist das ursprüngliche Personenfoto. Bild 2 ist die Bikini- oder Bademoden-Referenz. Ersetzen Sie nur die sichtbare Kleidung jeder klar sichtbaren Person in Bild 1 durch den smaragdgrünen Bikini mit Wickeldetail aus Bild 2. Wenn Bild 1 mehrere Personen enthält, wenden Sie denselben Bademodenstil auf jede klar sichtbare Person an. Lassen Sie alles andere bei jeder Person und in der Szene exakt unverändert: Gesicht, Identität, Alter, Hautton, Haare, Körperform, Körperproportionen, Pose, Hände, Ausdruck, relative Position, Hintergrund, Licht, Kamerawinkel, Bildausschnitt und Bildqualität. Nicht verschlanken, nicht vergrößern, nicht retuschieren, nicht umformen, Pose nicht ändern, Gesicht nicht ändern, Körper nicht ändern, relative Positionen nicht ändern und Szene nicht verändern. Stimmen Sie wickelartige Oberteildetails, Smaragdgrün, Träger, Bedeckung, Stoff und Silhouette möglichst genau mit Bild 2 ab. Das Ergebnis soll realistisch, geschmackvoll, nicht explizit und für eine Bademoden-Vorschau geeignet sein.",
+          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/cb70d59d82a6425a9e02350f87f3acec.webp",
+          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/cb70d59d82a6425a9e02350f87f3acec.webp",
+          "swatch": "linear-gradient(135deg, #047857, #10b981)"
+        },
+        {
+          "label": "Lavendel-Bikini mit Bogenkante",
+          "group": "bikini-reference",
+          "prompt": "Bild 1 ist das ursprüngliche Personenfoto. Bild 2 ist die Bikini- oder Bademoden-Referenz. Ersetzen Sie nur die sichtbare Kleidung jeder klar sichtbaren Person in Bild 1 durch den lavendelfarbenen Bikini mit Bogenkante aus Bild 2. Wenn Bild 1 mehrere Personen enthält, wenden Sie denselben Bademodenstil auf jede klar sichtbare Person an. Lassen Sie alles andere bei jeder Person und in der Szene exakt unverändert: Gesicht, Identität, Alter, Hautton, Haare, Körperform, Körperproportionen, Pose, Hände, Ausdruck, relative Position, Hintergrund, Licht, Kamerawinkel, Bildausschnitt und Bildqualität. Nicht verschlanken, nicht vergrößern, nicht retuschieren, nicht umformen, Pose nicht ändern, Gesicht nicht ändern, Körper nicht ändern, relative Positionen nicht ändern und Szene nicht verändern. Stimmen Sie Lavendelfarbe, bogenförmige Kanten, Träger, Bedeckung, Stoff und Silhouette möglichst genau mit Bild 2 ab. Das Ergebnis soll realistisch, geschmackvoll, nicht explizit und für eine Bademoden-Vorschau geeignet sein.",
+          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/30aae7250fd54652a4da62137d3d398c.webp",
+          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/30aae7250fd54652a4da62137d3d398c.webp",
+          "swatch": "linear-gradient(135deg, #c4b5fd, #8b5cf6)"
+        },
+        {
+          "label": "Benutzerdefiniert",
+          "group": "custom"
+        }
+      ]
+    },
+    "sampleImages": [
+      {
+        "url": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/6bcf91ffd06e45a8bcda2ea867015141.webp",
+        "title": "KI-Bikini-Generator",
+        "width": 1600,
+        "height": 900
+      }
+    ],
+    "textOverrides": {
+      "uploadTitle": "Personenfoto + Bikini-Referenz hochladen",
+      "uploadHelper": "Laden Sie zuerst das Erwachsenenfoto hoch und fügen Sie dann eine geschmackvolle Bademoden-Referenz hinzu.",
+      "promptLabel": "Bademode beschreiben",
+      "promptPlaceholder": "Benutzerdefiniert: Laden Sie ein Erwachsenenfoto hoch und beschreiben Sie Bikini-Stil, Bedeckung, Farbe, Träger, Stoff und Einsatz."
+    }
+  },
+  "metadata": {
+    "title": "Kostenloser KI-Bikini-Generator online | Toolaze",
+    "description": "Erstelle geschmackvolle Bikini-Vorschauen mit Toolaze. Neue Nutzer erhalten nach der Anmeldung 10 kostenlose Credits, genug für eine Standardvorschau mit Seedream 5.0 Lite in 1K."
+  },
+  "sectionsOrder": [
+    "intro",
+    "howToUse",
+    "photoTips",
+    "promptExamples",
+    "workflowComparison",
+    "scenes",
+    "features",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Kostenloser KI-<span class=\"text-gradient\">Bikini-Generator</span> online",
+    "desc": "Laden Sie ein Erwachsenenfoto und eine Bikini-Referenz hoch oder nutzen Sie den benutzerdefinierten Modus mit einem Foto und einer Beschreibung. Gesicht, Körperform, Pose, Licht und Hintergrund bleiben erhalten."
+  },
+  "intro": {
+    "title": "Was ist ein KI-Bikini-Generator?",
+    "content": [
+      {
+        "title": "Bademodenideen testen, ohne die Person zu verändern",
+        "text": "Ein KI-Bikini-Generator bearbeitet nur den sichtbaren Kleidungsbereich in einem Erwachsenenfoto. Toolaze nutzt einen referenzgeführten Ablauf: Bild 1 ist die Originalperson, Bild 2 ist die Bikini-Referenz. Die Vorschau hält Gesicht, Körperform, Proportionen, Pose, Hintergrund, Licht und Kamerawinkel stabil."
+      },
+      {
+        "title": "Geschmackvolle Vorschauen für erwachsene Bademode",
+        "text": "Erstellen Sie Strandlooks, Urlaubsideen, Vorschaubilder für Kreative, Resort-Stimmungsbilder und Kleidungsplanungen. Ergebnisse sind visuelle Vorschauen, keine Passformgarantie. Vermeiden Sie Anfragen zu Entkleidung, Sexualisierung, Minderjährigen, Identitätsnachahmung oder Bildern ohne Erlaubnis."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "So erstellen Sie eine Bikini-Vorschau mit KI",
+    "steps": [
+      {
+        "title": "Originalfoto der Person hochladen",
+        "desc": "Nutzen Sie ein klares Erwachsenenfoto, auf dem Kleidung, Oberkörper, Arme und Körperkontur gut sichtbar sind. Einfache Posen funktionieren besser als verdeckte oder verwackelte Aufnahmen."
+      },
+      {
+        "title": "Bikini-Referenz hinzufügen oder benutzerdefiniert arbeiten",
+        "desc": "Laden Sie eine Bademoden-Referenz als Bild 2 hoch oder wählen Sie eine integrierte Referenz. Im benutzerdefinierten Modus laden Sie ein Foto hoch und beschreiben Stil, Bedeckung, Farbe, Stoff und Träger."
+      },
+      {
+        "title": "Generieren und unveränderte Bereiche prüfen",
+        "desc": "Prüfen Sie, ob Gesicht, Körperform, Pose, Hände, Hintergrund, Licht und Kamerawinkel stabil bleiben. Passen Sie die Eingabe an, falls das Modell mehr als die Bademode verändert."
+      }
+    ]
+  },
+  "photoTips": {
+    "title": "Fototipps für bessere Bikini-Bearbeitungen",
+    "subtitle": "Klare Ausgangsfotos und direkte Erhaltungsanweisungen liefern die besten Ergebnisse.",
+    "items": [
+      {
+        "title": "Erwachsenenfoto mit sichtbarer Kleidung verwenden",
+        "desc": "Wählen Sie ein Foto, das Ihnen gehört oder das Sie bearbeiten dürfen. Die Person muss erwachsen sein und der Kleidungsbereich sollte klar erkennbar sein.",
+        "color": "linear-gradient(135deg, #dbeafe, #6366f1)"
+      },
+      {
+        "title": "Pose einfach halten",
+        "desc": "Stehende, sitzende oder leicht gedrehte Posen erhalten die Körperform meist besser als verschränkte Arme, Spiegel, starke Schatten oder verdeckte Oberkörper.",
+        "color": "linear-gradient(135deg, #fce7f3, #db2777)"
+      },
+      {
+        "title": "Lesbare Bademoden-Referenz nutzen",
+        "desc": "Ganzkörper-Referenzen helfen dem Modell, Träger, Bedeckung, Stoff, Farbe und Silhouette zu treffen, ohne Details zu erfinden.",
+        "color": "linear-gradient(135deg, #fef3c7, #f97316)"
+      },
+      {
+        "title": "Klar sagen, was unverändert bleiben soll",
+        "desc": "Wiederholen Sie Gesicht, Körperform, Proportionen, Pose, Hände, Hintergrund, Licht und Kamerawinkel, wenn Identität und Bildaufbau wichtig sind.",
+        "color": "linear-gradient(135deg, #ede9fe, #7c3aed)"
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "Textideen für den KI-Bikini-Generator",
+    "subtitle": "Starten Sie mit acht Bademoden-Referenzstilen und passen Sie dann Bedeckung, Farbe, Stoff, Träger und Silhouette an.",
+    "items": [
+      {
+        "title": "Klassischer schwarzer Bikini",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3d80ed2905334169b0a2d06d1f86c01d.webp",
+        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3d80ed2905334169b0a2d06d1f86c01d.webp",
+        "prompt": "Bild 1 ist das ursprüngliche Personenfoto. Bild 2 ist die Bikini- oder Bademoden-Referenz. Ersetzen Sie nur die sichtbare Kleidung jeder klar sichtbaren Person in Bild 1 durch den klassischen schwarzen Triangel-Bikini aus Bild 2. Wenn Bild 1 mehrere Personen enthält, wenden Sie denselben Bademodenstil auf jede klar sichtbare Person an. Lassen Sie alles andere bei jeder Person und in der Szene exakt unverändert: Gesicht, Identität, Alter, Hautton, Haare, Körperform, Körperproportionen, Pose, Hände, Ausdruck, relative Position, Hintergrund, Licht, Kamerawinkel, Bildausschnitt und Bildqualität. Nicht verschlanken, nicht vergrößern, nicht retuschieren, nicht umformen, Pose nicht ändern, Gesicht nicht ändern, Körper nicht ändern, relative Positionen nicht ändern und Szene nicht verändern. Stimmen Sie schwarzen Stoff, dünne Träger, Bedeckung, Oberteilform, Unterteilform und Silhouette möglichst genau mit Bild 2 ab. Das Ergebnis soll realistisch, geschmackvoll, nicht explizit und für eine Bademoden-Vorschau geeignet sein.",
+        "note": "Verwendet das passende Bikini-Referenzbild für diesen Stil.",
+        "color": "linear-gradient(135deg, #111827, #020617)",
+        "group": "bikini-reference"
+      },
+      {
+        "title": "Klassischer weißer Bikini",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/95db19f5e40a4afa9cc89731f091a5ce.webp",
+        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/95db19f5e40a4afa9cc89731f091a5ce.webp",
+        "prompt": "Bild 1 ist das ursprüngliche Personenfoto. Bild 2 ist die Bikini- oder Bademoden-Referenz. Ersetzen Sie nur die sichtbare Kleidung jeder klar sichtbaren Person in Bild 1 durch den klassischen weißen Triangel-Bikini aus Bild 2. Wenn Bild 1 mehrere Personen enthält, wenden Sie denselben Bademodenstil auf jede klar sichtbare Person an. Lassen Sie alles andere bei jeder Person und in der Szene exakt unverändert: Gesicht, Identität, Alter, Hautton, Haare, Körperform, Körperproportionen, Pose, Hände, Ausdruck, relative Position, Hintergrund, Licht, Kamerawinkel, Bildausschnitt und Bildqualität. Nicht verschlanken, nicht vergrößern, nicht retuschieren, nicht umformen, Pose nicht ändern, Gesicht nicht ändern, Körper nicht ändern, relative Positionen nicht ändern und Szene nicht verändern. Stimmen Sie Bedeckung, dünne Träger, sauberen weißen Stoff, Oberteilform, Unterteilform und Silhouette möglichst genau mit Bild 2 ab. Das Ergebnis soll realistisch, geschmackvoll, nicht explizit und für eine Bademoden-Vorschau geeignet sein.",
+        "note": "Verwendet das passende Bikini-Referenzbild für diesen Stil.",
+        "color": "linear-gradient(135deg, #ffffff, #e5e7eb)",
+        "group": "bikini-reference"
+      },
+      {
+        "title": "Roter High-Waist-Bikini",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3028cca8904b49249b517c0ef32386ee.webp",
+        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3028cca8904b49249b517c0ef32386ee.webp",
+        "prompt": "Bild 1 ist das ursprüngliche Personenfoto. Bild 2 ist die Bikini- oder Bademoden-Referenz. Ersetzen Sie nur die sichtbare Kleidung jeder klar sichtbaren Person in Bild 1 durch den roten Retro-Bikini mit hoher Taille aus Bild 2. Wenn Bild 1 mehrere Personen enthält, wenden Sie denselben Bademodenstil auf jede klar sichtbare Person an. Lassen Sie alles andere bei jeder Person und in der Szene exakt unverändert: Gesicht, Identität, Alter, Hautton, Haare, Körperform, Körperproportionen, Pose, Hände, Ausdruck, relative Position, Hintergrund, Licht, Kamerawinkel, Bildausschnitt und Bildqualität. Nicht verschlanken, nicht vergrößern, nicht retuschieren, nicht umformen, Pose nicht ändern, Gesicht nicht ändern, Körper nicht ändern, relative Positionen nicht ändern und Szene nicht verändern. Stimmen Sie hohe Taille, stützendes Oberteil, saubere Nähte, roten Stoff, Bedeckung und Silhouette möglichst genau mit Bild 2 ab. Das Ergebnis soll realistisch, geschmackvoll, nicht explizit und für eine Bademoden-Vorschau geeignet sein.",
+        "note": "Verwendet das passende Bikini-Referenzbild für diesen Stil.",
+        "color": "linear-gradient(135deg, #ef4444, #991b1b)",
+        "group": "bikini-reference"
+      },
+      {
+        "title": "Marineblauer Nautik-Bikini",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3312de502e7344c493d7aaa3796ef6fc.webp",
+        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3312de502e7344c493d7aaa3796ef6fc.webp",
+        "prompt": "Bild 1 ist das ursprüngliche Personenfoto. Bild 2 ist die Bikini- oder Bademoden-Referenz. Ersetzen Sie nur die sichtbare Kleidung jeder klar sichtbaren Person in Bild 1 durch den marineblauen nautischen Bikini aus Bild 2. Wenn Bild 1 mehrere Personen enthält, wenden Sie denselben Bademodenstil auf jede klar sichtbare Person an. Lassen Sie alles andere bei jeder Person und in der Szene exakt unverändert: Gesicht, Identität, Alter, Hautton, Haare, Körperform, Körperproportionen, Pose, Hände, Ausdruck, relative Position, Hintergrund, Licht, Kamerawinkel, Bildausschnitt und Bildqualität. Nicht verschlanken, nicht vergrößern, nicht retuschieren, nicht umformen, Pose nicht ändern, Gesicht nicht ändern, Körper nicht ändern, relative Positionen nicht ändern und Szene nicht verändern. Stimmen Sie marineblaue Farbe, weiße Besatz- oder Streifendetails, Träger, Bedeckung, Stoff und Silhouette möglichst genau mit Bild 2 ab. Das Ergebnis soll realistisch, geschmackvoll, nicht explizit und für eine Bademoden-Vorschau geeignet sein.",
+        "note": "Verwendet das passende Bikini-Referenzbild für diesen Stil.",
+        "color": "linear-gradient(135deg, #1e3a8a, #f8fafc)",
+        "group": "bikini-reference"
+      },
+      {
+        "title": "Tropischer Blumenbikini",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/bad0f5902cb643df87a8fe34210dc99c.webp",
+        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/bad0f5902cb643df87a8fe34210dc99c.webp",
+        "prompt": "Bild 1 ist das ursprüngliche Personenfoto. Bild 2 ist die Bikini- oder Bademoden-Referenz. Ersetzen Sie nur die sichtbare Kleidung jeder klar sichtbaren Person in Bild 1 durch den tropischen Blumen-Bikini aus Bild 2. Wenn Bild 1 mehrere Personen enthält, wenden Sie denselben Bademodenstil auf jede klar sichtbare Person an. Lassen Sie alles andere bei jeder Person und in der Szene exakt unverändert: Gesicht, Identität, Alter, Hautton, Haare, Körperform, Körperproportionen, Pose, Hände, Ausdruck, relative Position, Hintergrund, Licht, Kamerawinkel, Bildausschnitt und Bildqualität. Nicht verschlanken, nicht vergrößern, nicht retuschieren, nicht umformen, Pose nicht ändern, Gesicht nicht ändern, Körper nicht ändern, relative Positionen nicht ändern und Szene nicht verändern. Stimmen Sie botanisches Muster, Farbpalette, Träger, Bedeckung, Stoff und Silhouette möglichst genau mit Bild 2 ab. Das Ergebnis soll realistisch, geschmackvoll, nicht explizit und für eine Bademoden-Vorschau geeignet sein.",
+        "note": "Verwendet das passende Bikini-Referenzbild für diesen Stil.",
+        "color": "linear-gradient(135deg, #22c55e, #f97316, #f43f5e)",
+        "group": "bikini-reference"
+      },
+      {
+        "title": "Sportlicher türkisfarbener Bikini",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/49b1ef80a71344b6990bc71150c35644.webp",
+        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/49b1ef80a71344b6990bc71150c35644.webp",
+        "prompt": "Bild 1 ist das ursprüngliche Personenfoto. Bild 2 ist die Bikini- oder Bademoden-Referenz. Ersetzen Sie nur die sichtbare Kleidung jeder klar sichtbaren Person in Bild 1 durch den sportlichen türkisfarbenen Bikini mit Racerback-Anmutung aus Bild 2. Wenn Bild 1 mehrere Personen enthält, wenden Sie denselben Bademodenstil auf jede klar sichtbare Person an. Lassen Sie alles andere bei jeder Person und in der Szene exakt unverändert: Gesicht, Identität, Alter, Hautton, Haare, Körperform, Körperproportionen, Pose, Hände, Ausdruck, relative Position, Hintergrund, Licht, Kamerawinkel, Bildausschnitt und Bildqualität. Nicht verschlanken, nicht vergrößern, nicht retuschieren, nicht umformen, Pose nicht ändern, Gesicht nicht ändern, Körper nicht ändern, relative Positionen nicht ändern und Szene nicht verändern. Stimmen Sie sportliche Oberteilform, Türkisfarbe, stabile Träger, Bedeckung, Stoff und Silhouette möglichst genau mit Bild 2 ab. Das Ergebnis soll realistisch, geschmackvoll, nicht explizit und für eine Bademoden-Vorschau geeignet sein.",
+        "note": "Verwendet das passende Bikini-Referenzbild für diesen Stil.",
+        "color": "linear-gradient(135deg, #0f766e, #22d3ee)",
+        "group": "bikini-reference"
+      },
+      {
+        "title": "Gelber Rippstruktur-Bikini",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/f2eadccf020a4fe1a733b91335d23ceb.webp",
+        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/f2eadccf020a4fe1a733b91335d23ceb.webp",
+        "prompt": "Bild 1 ist das ursprüngliche Personenfoto. Bild 2 ist die Bikini- oder Bademoden-Referenz. Ersetzen Sie nur die sichtbare Kleidung jeder klar sichtbaren Person in Bild 1 durch den gelben Bikini mit Rippstruktur aus Bild 2. Wenn Bild 1 mehrere Personen enthält, wenden Sie denselben Bademodenstil auf jede klar sichtbare Person an. Lassen Sie alles andere bei jeder Person und in der Szene exakt unverändert: Gesicht, Identität, Alter, Hautton, Haare, Körperform, Körperproportionen, Pose, Hände, Ausdruck, relative Position, Hintergrund, Licht, Kamerawinkel, Bildausschnitt und Bildqualität. Nicht verschlanken, nicht vergrößern, nicht retuschieren, nicht umformen, Pose nicht ändern, Gesicht nicht ändern, Körper nicht ändern, relative Positionen nicht ändern und Szene nicht verändern. Stimmen Sie warme gelbe Farbe, gerippte Stoffstruktur, Träger, Bedeckung, Stoff und Silhouette möglichst genau mit Bild 2 ab. Das Ergebnis soll realistisch, geschmackvoll, nicht explizit und für eine Bademoden-Vorschau geeignet sein.",
+        "note": "Verwendet das passende Bikini-Referenzbild für diesen Stil.",
+        "color": "linear-gradient(135deg, #facc15, #f59e0b)",
+        "group": "bikini-reference"
+      },
+      {
+        "title": "Korallfarbener One-Shoulder-Bikini",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/5020adfd323e4cf9a3fd7154e243a1b0.webp",
+        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/5020adfd323e4cf9a3fd7154e243a1b0.webp",
+        "prompt": "Bild 1 ist das ursprüngliche Personenfoto. Bild 2 ist die Bikini- oder Bademoden-Referenz. Ersetzen Sie nur die sichtbare Kleidung jeder klar sichtbaren Person in Bild 1 durch den korallfarbenen One-Shoulder-Bikini aus Bild 2. Wenn Bild 1 mehrere Personen enthält, wenden Sie denselben Bademodenstil auf jede klar sichtbare Person an. Lassen Sie alles andere bei jeder Person und in der Szene exakt unverändert: Gesicht, Identität, Alter, Hautton, Haare, Körperform, Körperproportionen, Pose, Hände, Ausdruck, relative Position, Hintergrund, Licht, Kamerawinkel, Bildausschnitt und Bildqualität. Nicht verschlanken, nicht vergrößern, nicht retuschieren, nicht umformen, Pose nicht ändern, Gesicht nicht ändern, Körper nicht ändern, relative Positionen nicht ändern und Szene nicht verändern. Stimmen Sie One-Shoulder-Oberteilform, Korallfarbe, asymmetrischen Ausschnitt, Bedeckung, Stoff und Silhouette möglichst genau mit Bild 2 ab. Das Ergebnis soll realistisch, geschmackvoll, nicht explizit und für eine Bademoden-Vorschau geeignet sein.",
+        "note": "Verwendet das passende Bikini-Referenzbild für diesen Stil.",
+        "color": "linear-gradient(135deg, #fb7185, #f97316)",
+        "group": "bikini-reference"
+      }
+    ]
+  },
+  "workflowComparison": {
+    "title": "KI-Bikini-Generator vs. manuelle Bademoden-Bearbeitung",
+    "subtitle": "Nutzen Sie KI für schnelle Stilvorschauen und manuelle Bearbeitung oder eine echte Fotoproduktion, wenn Passform, Stoff oder Produktdetails exakt sein müssen.",
+    "columns": [
+      "Option",
+      "Geeignet für",
+      "Vor Nutzung prüfen"
+    ],
+    "rows": [
+      [
+        "Toolaze KI-Bikini-Generator",
+        "Schnelle Erwachsenen-Bademoden-Vorschauen, Kreativ-Visuals, Urlaubslooks und Konzeptchecks mit Personenfoto plus Referenz.",
+        "Körperproportionen, Hände, Kleidungsränder, Träger, Stofflogik und stabile unveränderte Bereiche prüfen."
+      ],
+      [
+        "Manuelle Retusche",
+        "Pixelgenaue Bereinigung, Kampagnen-Finishing, exakte Produktdetails und markenfreigegebene Bademoden-Bearbeitungen.",
+        "Benötigt mehr Zeit und erfahrene Bildbearbeitung."
+      ],
+      [
+        "Echte Fotoproduktion",
+        "Finale Onlineshop-Bilder, Passformprüfung, rechtssichere Produktgenauigkeit und reale Verarbeitung der Bademode.",
+        "Benötigt Musterteile, Modelzeit, Ort, Gestaltung und Budget für Nachaufnahmen."
+      ]
+    ]
+  },
+  "scenesTitle": "Beliebte Einsatzfälle für KI-Bikini-Vorschauen",
+  "scenes": [
+    {
+      "icon": "🏖️",
+      "title": "Vorschauen für Urlaubslooks",
+      "desc": "Testen Sie Strand-, Resort- und Pool-Ideen, bevor Sie eine Fotoserie oder Reisegarderobe planen."
+    },
+    {
+      "icon": "📱",
+      "title": "Vorschaubilder und Stimmungsbilder für Kreative",
+      "desc": "Erstellen Sie geschmackvolle Bademoden-Konzepte für Social-Media-Bilder, Vorschaubilder und Stiltafeln."
+    },
+    {
+      "icon": "🛍️",
+      "title": "Bademoden-Konzeptchecks",
+      "desc": "Prüfen Sie grobe Richtungen für Farbe, Bedeckung und Silhouette vor manuellen Bearbeitungen oder Produktfotografie."
+    }
+  ],
+  "features": {
+    "title": "Warum Toolaze für KI-Bikini-Vorschauen nutzen",
+    "items": [
+      {
+        "icon": "👙",
+        "iconType": "ai",
+        "title": "Referenzgeführte Bademoden-Bearbeitungen",
+        "desc": "Laden Sie ein Personenfoto und eine Bademoden-Referenz hoch, damit die Bearbeitung einem echten Bikini-Stil folgt statt nur vagem Text."
+      },
+      {
+        "icon": "🧍",
+        "iconType": "ai",
+        "title": "Starke Eingabe zum Erhalt der Person",
+        "desc": "Die integrierten Eingaben bewahren ausdrücklich Gesicht, Identität, Körperform, Proportionen, Pose, Hintergrund, Licht, Kamerawinkel und Bildqualität."
+      },
+      {
+        "icon": "🛡️",
+        "iconType": "ai",
+        "title": "Grenze für geschmackvolle Erwachsenennutzung",
+        "desc": "Nutzen Sie Toolaze für Erwachsenen-Bademoden-Vorschauen und vermeiden Sie Entkleidung, explizite Bearbeitungen, Minderjährigenbilder, Identitätsnachahmung oder unbefugte Fotos."
+      }
+    ]
+  },
+  "faqTitle": "FAQ zum KI-Bikini-Generator",
+  "faq": [
+    {
+      "q": "Ist der Toolaze KI-Bikini-Generator kostenlos?",
+      "a": "Ja. Neue Nutzer erhalten nach der Anmeldung 10 kostenlose Credits. Seedream 5.0 Lite startet bei 10 Credits für eine Standardgenerierung in 1K, sodass diese Credits für eine geeignete Standard-Bikini-Vorschau reichen. Höhere Auflösung oder weitere Nutzung kann mehr Credits erfordern."
+    },
+    {
+      "q": "Welches Modell nutzt der KI-Bikini-Generator?",
+      "a": "Toolaze nutzt Seedream 5.0 Lite für diesen Bademoden-Vorschauablauf."
+    },
+    {
+      "q": "Verändert das Tool mein Gesicht oder meine Körperform?",
+      "a": "Die Standardeingabe weist das Modell an, nur die sichtbare Kleidung zu ersetzen und Gesicht, Identität, Körperform, Proportionen, Pose, Hintergrund, Licht und Kamerawinkel unverändert zu lassen. Prüfen Sie das Ergebnis trotzdem vor der Nutzung."
+    },
+    {
+      "q": "Kann ich meine eigene Bikini-Referenz hochladen?",
+      "a": "Ja. Im Bikini-Referenzmodus laden Sie zuerst das Personenfoto hoch und anschließend eine Bademoden-Referenz oder wählen eine integrierte Referenz."
+    },
+    {
+      "q": "Kann ich es ohne Bikini-Referenzbild verwenden?",
+      "a": "Ja. Nutzen Sie den benutzerdefinierten Modus, laden Sie ein Erwachsenenfoto hoch und beschreiben Sie Stil, Bedeckung, Farbe, Träger, Stoff und Anlass."
+    },
+    {
+      "q": "Welche Sicherheitsregeln gelten?",
+      "a": "Nutzen Sie Erwachsenenfotos, die Ihnen gehören oder die Sie bearbeiten dürfen. Vermeiden Sie Minderjährige, explizite Inhalte, Entkleidung, Identitätsnachahmung und Bilder ohne Zustimmung."
+    }
+  ],
+  "moreToolsLinks": [
+    {
+      "slug": "ai-clothes-changer",
+      "title": "KI-Kleidung wechseln",
+      "description": "Vorschauen für geschäftliche, formelle, Bademoden- und benutzerdefinierte Kleidungswechsel aus einem Personenfoto.",
+      "href": "/ai-clothes-changer"
+    },
+    {
+      "slug": "ai-image-to-image-generator",
+      "title": "KI-Bild-zu-Bild-Generator",
+      "description": "Referenzbild hochladen und mit eingabegesteuerter KI-Bearbeitung transformieren.",
+      "href": "/ai-image-to-image-generator"
+    },
+    {
+      "slug": "ai-hairstyle-changer",
+      "title": "KI-Frisurenwechsler",
+      "description": "Frisurenideen testen und dabei die ursprüngliche Porträtidentität bewahren.",
+      "href": "/ai-hairstyle-changer"
+    }
+  ]
+}

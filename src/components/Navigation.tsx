@@ -57,6 +57,7 @@ const defaultNavTranslations = {
   aiHairstyleChanger: 'AI Hairstyle Changer',
   aiHairColorChanger: 'AI Hair Color Changer',
   aiClothesChanger: 'AI Clothes Changer',
+  aiBikiniGenerator: 'AI Bikini Generator',
   worldCupAiImageGenerator: 'World Cup AI Image Generator',
   fontGenerator: 'Font Generator',
   emojiCopyAndPaste: 'Emoji Copy & Paste',
@@ -153,6 +154,7 @@ const AI_TOOLS_DEMO_IMAGES = {
   aiHairstyleChanger: '/ai-hairstyle-changer/hero-before-after.webp',
   aiHairColorChanger: '/ai-hair-color-changer/rose-pink-before-after.webp',
   aiClothesChanger: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/84b9bf50f4414a2c962ebd3f74cb07f0.webp',
+  aiBikiniGenerator: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/6bcf91ffd06e45a8bcda2ea867015141.webp',
   aiImageGenerator:
     'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/gpt-image-2.jpg',
   textToImageGenerator:
@@ -177,6 +179,7 @@ type AiToolNavLabelKey =
   | 'aiHairstyleChanger'
   | 'aiHairColorChanger'
   | 'aiClothesChanger'
+  | 'aiBikiniGenerator'
   | 'aiBabyGenerator'
   | 'aiCouplePhotoMaker'
   | 'worldCupAiImageGenerator'
@@ -197,6 +200,7 @@ const AI_IMAGE_TOOL_MENU_ITEMS: readonly AiToolMenuItem[] = [
   { href: '/ai-hairstyle-changer', labelKey: 'aiHairstyleChanger', imageKey: 'aiHairstyleChanger' },
   { href: '/ai-hair-color-changer', labelKey: 'aiHairColorChanger', imageKey: 'aiHairColorChanger' },
   { href: '/ai-clothes-changer', labelKey: 'aiClothesChanger', imageKey: 'aiClothesChanger' },
+  { href: '/ai-bikini-generator', labelKey: 'aiBikiniGenerator', imageKey: 'aiBikiniGenerator' },
   { href: '/ai-baby-generator', labelKey: 'aiBabyGenerator', imageKey: 'aiBabyGenerator' },
   { href: '/ai-couple-photo-maker', labelKey: 'aiCouplePhotoMaker', imageKey: 'aiCouplePhotoMaker' },
   { href: '/world-cup-ai-image-generator', labelKey: 'worldCupAiImageGenerator', imageKey: 'worldCupAiImageGenerator' },

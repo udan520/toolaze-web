@@ -1,0 +1,399 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 2,
+    "modelId": "seedream-5-0-lite",
+    "defaultPrompt": "L’image 1 est la photo originale de la personne. L’image 2 est la référence bikini ou maillot de bain. Remplacez uniquement le vêtement visible sur chaque personne clairement visible dans l’image 1 par le maillot de bain de l’image 2. Si l’image 1 contient plusieurs personnes, appliquez le même style de maillot à chaque personne clairement visible. Gardez tout le reste exactement identique pour chaque personne et pour la scène : visage, identité, âge, teint, cheveux, silhouette, proportions du corps, pose, mains, expression, fond, lumière, angle caméra, cadrage et qualité d’image. Ne pas amincir, ne pas agrandir, ne pas retoucher, ne pas remodeler, ne pas changer la pose, ne pas changer le visage, ne pas changer le corps et ne pas modifier la scène. Faites correspondre le style, la couvrance, le tissu, la couleur, les bretelles et la silhouette du maillot de l’image 2 aussi précisément que possible. Gardez un résultat réaliste, sobre, non explicite et adapté à un aperçu de maillot de bain.",
+    "defaultImageUrls": [],
+    "hideModelBranding": true,
+    "compactResultPanel": true,
+    "displayName": "Générateur de bikini IA",
+    "functionalAcceptance": {
+      "recommendedMode": "bikini-reference-first-with-custom-prompt",
+      "reason": "Le flux principal utilise deux images : une photo adulte et une référence bikini ou maillot de bain. Le mode personnalisé utilise une photo de personne avec une description du maillot.",
+      "presetTitle": "Choisir une référence bikini",
+      "presetTabs": [
+        {
+          "id": "bikini-reference",
+          "label": "Référence bikini"
+        },
+        {
+          "id": "custom",
+          "label": "Personnalisé"
+        }
+      ],
+      "hidePresetPromptInput": true,
+      "customPromptTabId": "custom",
+      "presets": [
+        {
+          "label": "Bikini noir classique",
+          "group": "bikini-reference",
+          "prompt": "L’image 1 est la photo originale de la personne. L’image 2 est la référence bikini ou maillot de bain. Remplacez uniquement le vêtement visible sur chaque personne clairement visible dans l’image 1 par le bikini triangle noir classique de l’image 2. Si l’image 1 contient plusieurs personnes, appliquez le même style de maillot à chaque personne clairement visible. Gardez tout le reste exactement identique pour chaque personne et pour la scène : visage, identité, âge, teint, cheveux, silhouette, proportions du corps, pose, mains, expression, fond, lumière, angle caméra, cadrage et qualité d’image. Ne pas amincir, ne pas agrandir, ne pas retoucher, ne pas remodeler, ne pas changer la pose, ne pas changer le visage, ne pas changer le corps et ne pas modifier la scène. Faites correspondre le tissu noir, les fines bretelles, la couvrance, la forme du haut, la forme du bas et la silhouette de l’image 2 aussi précisément que possible. Gardez un résultat réaliste, sobre, non explicite et adapté à un aperçu de maillot de bain.",
+          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3d80ed2905334169b0a2d06d1f86c01d.webp",
+          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3d80ed2905334169b0a2d06d1f86c01d.webp",
+          "swatch": "linear-gradient(135deg, #111827, #020617)"
+        },
+        {
+          "label": "Bikini blanc classique",
+          "group": "bikini-reference",
+          "prompt": "L’image 1 est la photo originale de la personne. L’image 2 est la référence bikini ou maillot de bain. Remplacez uniquement le vêtement visible sur chaque personne clairement visible dans l’image 1 par le bikini triangle blanc classique de l’image 2. Si l’image 1 contient plusieurs personnes, appliquez le même style de maillot à chaque personne clairement visible. Gardez tout le reste exactement identique pour chaque personne et pour la scène : visage, identité, âge, teint, cheveux, silhouette, proportions du corps, pose, mains, expression, fond, lumière, angle caméra, cadrage et qualité d’image. Ne pas amincir, ne pas agrandir, ne pas retoucher, ne pas remodeler, ne pas changer la pose, ne pas changer le visage, ne pas changer le corps et ne pas modifier la scène. Faites correspondre la couvrance, les fines bretelles, le tissu blanc net, la forme du haut, la forme du bas et la silhouette de l’image 2 aussi précisément que possible. Gardez un résultat réaliste, sobre, non explicite et adapté à un aperçu de maillot de bain.",
+          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/95db19f5e40a4afa9cc89731f091a5ce.webp",
+          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/95db19f5e40a4afa9cc89731f091a5ce.webp",
+          "swatch": "linear-gradient(135deg, #ffffff, #e5e7eb)"
+        },
+        {
+          "label": "Bikini rouge taille haute",
+          "group": "bikini-reference",
+          "prompt": "L’image 1 est la photo originale de la personne. L’image 2 est la référence bikini ou maillot de bain. Remplacez uniquement le vêtement visible sur chaque personne clairement visible dans l’image 1 par le bikini rouge rétro taille haute de l’image 2. Si l’image 1 contient plusieurs personnes, appliquez le même style de maillot à chaque personne clairement visible. Gardez tout le reste exactement identique pour chaque personne et pour la scène : visage, identité, âge, teint, cheveux, silhouette, proportions du corps, pose, mains, expression, fond, lumière, angle caméra, cadrage et qualité d’image. Ne pas amincir, ne pas agrandir, ne pas retoucher, ne pas remodeler, ne pas changer la pose, ne pas changer le visage, ne pas changer le corps et ne pas modifier la scène. Faites correspondre la taille haute, le haut de maintien, les coutures nettes, le tissu rouge, la couvrance et la silhouette de l’image 2 aussi précisément que possible. Gardez un résultat réaliste, sobre, non explicite et adapté à un aperçu de maillot de bain.",
+          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3028cca8904b49249b517c0ef32386ee.webp",
+          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3028cca8904b49249b517c0ef32386ee.webp",
+          "swatch": "linear-gradient(135deg, #ef4444, #991b1b)"
+        },
+        {
+          "label": "Bikini nautique bleu marine",
+          "group": "bikini-reference",
+          "prompt": "L’image 1 est la photo originale de la personne. L’image 2 est la référence bikini ou maillot de bain. Remplacez uniquement le vêtement visible sur chaque personne clairement visible dans l’image 1 par le bikini nautique bleu marine de l’image 2. Si l’image 1 contient plusieurs personnes, appliquez le même style de maillot à chaque personne clairement visible. Gardez tout le reste exactement identique pour chaque personne et pour la scène : visage, identité, âge, teint, cheveux, silhouette, proportions du corps, pose, mains, expression, fond, lumière, angle caméra, cadrage et qualité d’image. Ne pas amincir, ne pas agrandir, ne pas retoucher, ne pas remodeler, ne pas changer la pose, ne pas changer le visage, ne pas changer le corps et ne pas modifier la scène. Faites correspondre la couleur bleu marine, les détails blancs de bordure ou de rayure, les bretelles, la couvrance, le tissu et la silhouette de l’image 2 aussi précisément que possible. Gardez un résultat réaliste, sobre, non explicite et adapté à un aperçu de maillot de bain.",
+          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3312de502e7344c493d7aaa3796ef6fc.webp",
+          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3312de502e7344c493d7aaa3796ef6fc.webp",
+          "swatch": "linear-gradient(135deg, #1e3a8a, #f8fafc)"
+        },
+        {
+          "label": "Bikini floral tropical",
+          "group": "bikini-reference",
+          "prompt": "L’image 1 est la photo originale de la personne. L’image 2 est la référence bikini ou maillot de bain. Remplacez uniquement le vêtement visible sur chaque personne clairement visible dans l’image 1 par le bikini floral tropical de l’image 2. Si l’image 1 contient plusieurs personnes, appliquez le même style de maillot à chaque personne clairement visible. Gardez tout le reste exactement identique pour chaque personne et pour la scène : visage, identité, âge, teint, cheveux, silhouette, proportions du corps, pose, mains, expression, fond, lumière, angle caméra, cadrage et qualité d’image. Ne pas amincir, ne pas agrandir, ne pas retoucher, ne pas remodeler, ne pas changer la pose, ne pas changer le visage, ne pas changer le corps et ne pas modifier la scène. Faites correspondre l’imprimé botanique, la palette de couleurs, les bretelles, la couvrance, le tissu et la silhouette de l’image 2 aussi précisément que possible. Gardez un résultat réaliste, sobre, non explicite et adapté à un aperçu de maillot de bain.",
+          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/bad0f5902cb643df87a8fe34210dc99c.webp",
+          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/bad0f5902cb643df87a8fe34210dc99c.webp",
+          "swatch": "linear-gradient(135deg, #22c55e, #f97316, #f43f5e)"
+        },
+        {
+          "label": "Bikini sportif bleu sarcelle",
+          "group": "bikini-reference",
+          "prompt": "L’image 1 est la photo originale de la personne. L’image 2 est la référence bikini ou maillot de bain. Remplacez uniquement le vêtement visible sur chaque personne clairement visible dans l’image 1 par le bikini sportif bleu sarcelle inspiré racerback de l’image 2. Si l’image 1 contient plusieurs personnes, appliquez le même style de maillot à chaque personne clairement visible. Gardez tout le reste exactement identique pour chaque personne et pour la scène : visage, identité, âge, teint, cheveux, silhouette, proportions du corps, pose, mains, expression, fond, lumière, angle caméra, cadrage et qualité d’image. Ne pas amincir, ne pas agrandir, ne pas retoucher, ne pas remodeler, ne pas changer la pose, ne pas changer le visage, ne pas changer le corps et ne pas modifier la scène. Faites correspondre la forme sportive du haut, la couleur bleu sarcelle, les bretelles stables, la couvrance, le tissu et la silhouette de l’image 2 aussi précisément que possible. Gardez un résultat réaliste, sobre, non explicite et adapté à un aperçu de maillot de bain.",
+          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/49b1ef80a71344b6990bc71150c35644.webp",
+          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/49b1ef80a71344b6990bc71150c35644.webp",
+          "swatch": "linear-gradient(135deg, #0f766e, #22d3ee)"
+        },
+        {
+          "label": "Bikini jaune côtelé",
+          "group": "bikini-reference",
+          "prompt": "L’image 1 est la photo originale de la personne. L’image 2 est la référence bikini ou maillot de bain. Remplacez uniquement le vêtement visible sur chaque personne clairement visible dans l’image 1 par le bikini jaune côtelé de l’image 2. Si l’image 1 contient plusieurs personnes, appliquez le même style de maillot à chaque personne clairement visible. Gardez tout le reste exactement identique pour chaque personne et pour la scène : visage, identité, âge, teint, cheveux, silhouette, proportions du corps, pose, mains, expression, fond, lumière, angle caméra, cadrage et qualité d’image. Ne pas amincir, ne pas agrandir, ne pas retoucher, ne pas remodeler, ne pas changer la pose, ne pas changer le visage, ne pas changer le corps et ne pas modifier la scène. Faites correspondre la couleur jaune chaude, la texture côtelée, les bretelles, la couvrance, le tissu et la silhouette de l’image 2 aussi précisément que possible. Gardez un résultat réaliste, sobre, non explicite et adapté à un aperçu de maillot de bain.",
+          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/f2eadccf020a4fe1a733b91335d23ceb.webp",
+          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/f2eadccf020a4fe1a733b91335d23ceb.webp",
+          "swatch": "linear-gradient(135deg, #facc15, #f59e0b)"
+        },
+        {
+          "label": "Bikini corail asymétrique",
+          "group": "bikini-reference",
+          "prompt": "L’image 1 est la photo originale de la personne. L’image 2 est la référence bikini ou maillot de bain. Remplacez uniquement le vêtement visible sur chaque personne clairement visible dans l’image 1 par le bikini corail asymétrique de l’image 2. Si l’image 1 contient plusieurs personnes, appliquez le même style de maillot à chaque personne clairement visible. Gardez tout le reste exactement identique pour chaque personne et pour la scène : visage, identité, âge, teint, cheveux, silhouette, proportions du corps, pose, mains, expression, fond, lumière, angle caméra, cadrage et qualité d’image. Ne pas amincir, ne pas agrandir, ne pas retoucher, ne pas remodeler, ne pas changer la pose, ne pas changer le visage, ne pas changer le corps et ne pas modifier la scène. Faites correspondre la forme du haut asymétrique, la couleur corail, l’encolure asymétrique, la couvrance, le tissu et la silhouette de l’image 2 aussi précisément que possible. Gardez un résultat réaliste, sobre, non explicite et adapté à un aperçu de maillot de bain.",
+          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/5020adfd323e4cf9a3fd7154e243a1b0.webp",
+          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/5020adfd323e4cf9a3fd7154e243a1b0.webp",
+          "swatch": "linear-gradient(135deg, #fb7185, #f97316)"
+        },
+        {
+          "label": "Bikini croisé émeraude",
+          "group": "bikini-reference",
+          "prompt": "L’image 1 est la photo originale de la personne. L’image 2 est la référence bikini ou maillot de bain. Remplacez uniquement le vêtement visible sur chaque personne clairement visible dans l’image 1 par le bikini vert émeraude avec détail drapé de l’image 2. Si l’image 1 contient plusieurs personnes, appliquez le même style de maillot à chaque personne clairement visible. Gardez tout le reste exactement identique pour chaque personne et pour la scène : visage, identité, âge, teint, cheveux, silhouette, proportions du corps, pose, mains, expression, fond, lumière, angle caméra, cadrage et qualité d’image. Ne pas amincir, ne pas agrandir, ne pas retoucher, ne pas remodeler, ne pas changer la pose, ne pas changer le visage, ne pas changer le corps et ne pas modifier la scène. Faites correspondre le détail de haut façon drapé, la couleur émeraude, les bretelles, la couvrance, le tissu et la silhouette de l’image 2 aussi précisément que possible. Gardez un résultat réaliste, sobre, non explicite et adapté à un aperçu de maillot de bain.",
+          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/cb70d59d82a6425a9e02350f87f3acec.webp",
+          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/cb70d59d82a6425a9e02350f87f3acec.webp",
+          "swatch": "linear-gradient(135deg, #047857, #10b981)"
+        },
+        {
+          "label": "Bikini lavande à bord festonné",
+          "group": "bikini-reference",
+          "prompt": "L’image 1 est la photo originale de la personne. L’image 2 est la référence bikini ou maillot de bain. Remplacez uniquement le vêtement visible sur chaque personne clairement visible dans l’image 1 par le bikini lavande à bord festonné de l’image 2. Si l’image 1 contient plusieurs personnes, appliquez le même style de maillot à chaque personne clairement visible. Gardez tout le reste exactement identique pour chaque personne et pour la scène : visage, identité, âge, teint, cheveux, silhouette, proportions du corps, pose, mains, expression, fond, lumière, angle caméra, cadrage et qualité d’image. Ne pas amincir, ne pas agrandir, ne pas retoucher, ne pas remodeler, ne pas changer la pose, ne pas changer le visage, ne pas changer le corps et ne pas modifier la scène. Faites correspondre la couleur lavande, la finition festonnée, les bretelles, la couvrance, le tissu et la silhouette de l’image 2 aussi précisément que possible. Gardez un résultat réaliste, sobre, non explicite et adapté à un aperçu de maillot de bain.",
+          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/30aae7250fd54652a4da62137d3d398c.webp",
+          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/30aae7250fd54652a4da62137d3d398c.webp",
+          "swatch": "linear-gradient(135deg, #c4b5fd, #8b5cf6)"
+        },
+        {
+          "label": "Personnalisé",
+          "group": "custom"
+        }
+      ]
+    },
+    "sampleImages": [
+      {
+        "url": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/6bcf91ffd06e45a8bcda2ea867015141.webp",
+        "title": "Générateur de bikini IA",
+        "width": 1600,
+        "height": 900
+      }
+    ],
+    "textOverrides": {
+      "uploadTitle": "Importer photo de personne + référence bikini",
+      "uploadHelper": "Importez d’abord la photo adulte, puis ajoutez une référence de maillot de bain sobre.",
+      "promptLabel": "Décrire le maillot de bain",
+      "promptPlaceholder": "Personnalisé : importez une photo adulte puis décrivez le style, la couvrance, la couleur, les bretelles, le tissu et l’usage du bikini."
+    }
+  },
+  "metadata": {
+    "title": "Générateur de bikini IA gratuit en ligne | Toolaze",
+    "description": "Créez des aperçus bikini soignés avec Toolaze. Les nouveaux utilisateurs reçoivent 10 crédits gratuits après inscription, assez pour un aperçu standard 1K avec Seedream 5.0 Lite."
+  },
+  "sectionsOrder": [
+    "intro",
+    "howToUse",
+    "photoTips",
+    "promptExamples",
+    "workflowComparison",
+    "scenes",
+    "features",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Générateur de <span class=\"text-gradient\">bikini IA</span> gratuit en ligne",
+    "desc": "Importez une photo adulte et une référence bikini, ou utilisez le mode personnalisé avec une photo et une description. Conservez le visage, la silhouette, la pose, la lumière et le fond."
+  },
+  "intro": {
+    "title": "Qu’est-ce qu’un générateur de bikini IA ?",
+    "content": [
+      {
+        "title": "Tester des idées de maillot sans modifier la personne",
+        "text": "Un générateur de bikini IA modifie uniquement la zone de vêtement visible dans une photo adulte. Toolaze utilise un flux guidé par référence : l’image 1 est la personne d’origine et l’image 2 est la référence bikini. L’aperçu garde stables le visage, la silhouette, les proportions, la pose, le fond, la lumière et l’angle caméra."
+      },
+      {
+        "title": "Aperçus sobres de maillot de bain adulte",
+        "text": "Créez des concepts plage, des styles vacances, des miniatures créateur, des planches d’inspiration vacances et des idées de tenue. Les résultats sont des aperçus visuels, pas des garanties d’ajustement. Évitez les demandes de retrait de vêtements, de sexualisation, de mineurs, d’usurpation d’identité ou d’images sans autorisation."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Comment générer un aperçu bikini avec l’IA",
+    "steps": [
+      {
+        "title": "Importer la photo originale de la personne",
+        "desc": "Utilisez une photo adulte nette où la tenue actuelle, le torse, les bras et le contour du corps sont visibles. Les poses simples fonctionnent mieux que les zones masquées ou le flou."
+      },
+      {
+        "title": "Ajouter une référence bikini ou personnaliser",
+        "desc": "Importez une référence de maillot comme image 2 ou choisissez une référence intégrée. En mode personnalisé, importez une photo et décrivez le style, la couvrance, la couleur, le tissu et les bretelles."
+      },
+      {
+        "title": "Générer et vérifier les zones inchangées",
+        "desc": "Vérifiez que le visage, la silhouette, la pose, les mains, le fond, la lumière et l’angle caméra restent stables. Ajustez l’instruction si le modèle change autre chose que le maillot."
+      }
+    ]
+  },
+  "photoTips": {
+    "title": "Conseils photo pour de meilleures retouches bikini",
+    "subtitle": "Les meilleurs résultats viennent de photos source nettes et d’instructions de préservation directes.",
+    "items": [
+      {
+        "title": "Utiliser une photo adulte avec vêtement visible",
+        "desc": "Choisissez une photo que vous possédez ou avez le droit de modifier. La personne doit être adulte et la zone de tenue facile à identifier.",
+        "color": "linear-gradient(135deg, #dbeafe, #6366f1)"
+      },
+      {
+        "title": "Garder une pose simple",
+        "desc": "Les poses debout, assises ou légèrement tournées préservent mieux la silhouette que les bras croisés, miroirs, ombres fortes ou torses cachés.",
+        "color": "linear-gradient(135deg, #fce7f3, #db2777)"
+      },
+      {
+        "title": "Utiliser une référence de maillot lisible",
+        "desc": "Les références corps entier aident le modèle à reproduire bretelles, couvrance, tissu, couleur et silhouette sans inventer de détails.",
+        "color": "linear-gradient(135deg, #fef3c7, #f97316)"
+      },
+      {
+        "title": "Dire clairement ce qui ne doit pas changer",
+        "desc": "Répétez visage, silhouette, proportions, pose, mains, fond, lumière et angle caméra lorsque l’identité et le cadrage comptent.",
+        "color": "linear-gradient(135deg, #ede9fe, #7c3aed)"
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "Idées d’instructions pour générateur de bikini IA",
+    "subtitle": "Commencez par huit styles de référence de maillot, puis ajustez couvrance, couleur, tissu, bretelles et silhouette.",
+    "items": [
+      {
+        "title": "Bikini noir classique",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3d80ed2905334169b0a2d06d1f86c01d.webp",
+        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3d80ed2905334169b0a2d06d1f86c01d.webp",
+        "prompt": "L’image 1 est la photo originale de la personne. L’image 2 est la référence bikini ou maillot de bain. Remplacez uniquement le vêtement visible sur chaque personne clairement visible dans l’image 1 par le bikini triangle noir classique de l’image 2. Si l’image 1 contient plusieurs personnes, appliquez le même style de maillot à chaque personne clairement visible. Gardez tout le reste exactement identique pour chaque personne et pour la scène : visage, identité, âge, teint, cheveux, silhouette, proportions du corps, pose, mains, expression, fond, lumière, angle caméra, cadrage et qualité d’image. Ne pas amincir, ne pas agrandir, ne pas retoucher, ne pas remodeler, ne pas changer la pose, ne pas changer le visage, ne pas changer le corps et ne pas modifier la scène. Faites correspondre le tissu noir, les fines bretelles, la couvrance, la forme du haut, la forme du bas et la silhouette de l’image 2 aussi précisément que possible. Gardez un résultat réaliste, sobre, non explicite et adapté à un aperçu de maillot de bain.",
+        "note": "Utilise l’image de référence bikini correspondante pour ce style.",
+        "color": "linear-gradient(135deg, #111827, #020617)",
+        "group": "bikini-reference"
+      },
+      {
+        "title": "Bikini blanc classique",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/95db19f5e40a4afa9cc89731f091a5ce.webp",
+        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/95db19f5e40a4afa9cc89731f091a5ce.webp",
+        "prompt": "L’image 1 est la photo originale de la personne. L’image 2 est la référence bikini ou maillot de bain. Remplacez uniquement le vêtement visible sur chaque personne clairement visible dans l’image 1 par le bikini triangle blanc classique de l’image 2. Si l’image 1 contient plusieurs personnes, appliquez le même style de maillot à chaque personne clairement visible. Gardez tout le reste exactement identique pour chaque personne et pour la scène : visage, identité, âge, teint, cheveux, silhouette, proportions du corps, pose, mains, expression, fond, lumière, angle caméra, cadrage et qualité d’image. Ne pas amincir, ne pas agrandir, ne pas retoucher, ne pas remodeler, ne pas changer la pose, ne pas changer le visage, ne pas changer le corps et ne pas modifier la scène. Faites correspondre la couvrance, les fines bretelles, le tissu blanc net, la forme du haut, la forme du bas et la silhouette de l’image 2 aussi précisément que possible. Gardez un résultat réaliste, sobre, non explicite et adapté à un aperçu de maillot de bain.",
+        "note": "Utilise l’image de référence bikini correspondante pour ce style.",
+        "color": "linear-gradient(135deg, #ffffff, #e5e7eb)",
+        "group": "bikini-reference"
+      },
+      {
+        "title": "Bikini rouge taille haute",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3028cca8904b49249b517c0ef32386ee.webp",
+        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3028cca8904b49249b517c0ef32386ee.webp",
+        "prompt": "L’image 1 est la photo originale de la personne. L’image 2 est la référence bikini ou maillot de bain. Remplacez uniquement le vêtement visible sur chaque personne clairement visible dans l’image 1 par le bikini rouge rétro taille haute de l’image 2. Si l’image 1 contient plusieurs personnes, appliquez le même style de maillot à chaque personne clairement visible. Gardez tout le reste exactement identique pour chaque personne et pour la scène : visage, identité, âge, teint, cheveux, silhouette, proportions du corps, pose, mains, expression, fond, lumière, angle caméra, cadrage et qualité d’image. Ne pas amincir, ne pas agrandir, ne pas retoucher, ne pas remodeler, ne pas changer la pose, ne pas changer le visage, ne pas changer le corps et ne pas modifier la scène. Faites correspondre la taille haute, le haut de maintien, les coutures nettes, le tissu rouge, la couvrance et la silhouette de l’image 2 aussi précisément que possible. Gardez un résultat réaliste, sobre, non explicite et adapté à un aperçu de maillot de bain.",
+        "note": "Utilise l’image de référence bikini correspondante pour ce style.",
+        "color": "linear-gradient(135deg, #ef4444, #991b1b)",
+        "group": "bikini-reference"
+      },
+      {
+        "title": "Bikini nautique bleu marine",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3312de502e7344c493d7aaa3796ef6fc.webp",
+        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3312de502e7344c493d7aaa3796ef6fc.webp",
+        "prompt": "L’image 1 est la photo originale de la personne. L’image 2 est la référence bikini ou maillot de bain. Remplacez uniquement le vêtement visible sur chaque personne clairement visible dans l’image 1 par le bikini nautique bleu marine de l’image 2. Si l’image 1 contient plusieurs personnes, appliquez le même style de maillot à chaque personne clairement visible. Gardez tout le reste exactement identique pour chaque personne et pour la scène : visage, identité, âge, teint, cheveux, silhouette, proportions du corps, pose, mains, expression, fond, lumière, angle caméra, cadrage et qualité d’image. Ne pas amincir, ne pas agrandir, ne pas retoucher, ne pas remodeler, ne pas changer la pose, ne pas changer le visage, ne pas changer le corps et ne pas modifier la scène. Faites correspondre la couleur bleu marine, les détails blancs de bordure ou de rayure, les bretelles, la couvrance, le tissu et la silhouette de l’image 2 aussi précisément que possible. Gardez un résultat réaliste, sobre, non explicite et adapté à un aperçu de maillot de bain.",
+        "note": "Utilise l’image de référence bikini correspondante pour ce style.",
+        "color": "linear-gradient(135deg, #1e3a8a, #f8fafc)",
+        "group": "bikini-reference"
+      },
+      {
+        "title": "Bikini floral tropical",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/bad0f5902cb643df87a8fe34210dc99c.webp",
+        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/bad0f5902cb643df87a8fe34210dc99c.webp",
+        "prompt": "L’image 1 est la photo originale de la personne. L’image 2 est la référence bikini ou maillot de bain. Remplacez uniquement le vêtement visible sur chaque personne clairement visible dans l’image 1 par le bikini floral tropical de l’image 2. Si l’image 1 contient plusieurs personnes, appliquez le même style de maillot à chaque personne clairement visible. Gardez tout le reste exactement identique pour chaque personne et pour la scène : visage, identité, âge, teint, cheveux, silhouette, proportions du corps, pose, mains, expression, fond, lumière, angle caméra, cadrage et qualité d’image. Ne pas amincir, ne pas agrandir, ne pas retoucher, ne pas remodeler, ne pas changer la pose, ne pas changer le visage, ne pas changer le corps et ne pas modifier la scène. Faites correspondre l’imprimé botanique, la palette de couleurs, les bretelles, la couvrance, le tissu et la silhouette de l’image 2 aussi précisément que possible. Gardez un résultat réaliste, sobre, non explicite et adapté à un aperçu de maillot de bain.",
+        "note": "Utilise l’image de référence bikini correspondante pour ce style.",
+        "color": "linear-gradient(135deg, #22c55e, #f97316, #f43f5e)",
+        "group": "bikini-reference"
+      },
+      {
+        "title": "Bikini sportif bleu sarcelle",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/49b1ef80a71344b6990bc71150c35644.webp",
+        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/49b1ef80a71344b6990bc71150c35644.webp",
+        "prompt": "L’image 1 est la photo originale de la personne. L’image 2 est la référence bikini ou maillot de bain. Remplacez uniquement le vêtement visible sur chaque personne clairement visible dans l’image 1 par le bikini sportif bleu sarcelle inspiré racerback de l’image 2. Si l’image 1 contient plusieurs personnes, appliquez le même style de maillot à chaque personne clairement visible. Gardez tout le reste exactement identique pour chaque personne et pour la scène : visage, identité, âge, teint, cheveux, silhouette, proportions du corps, pose, mains, expression, fond, lumière, angle caméra, cadrage et qualité d’image. Ne pas amincir, ne pas agrandir, ne pas retoucher, ne pas remodeler, ne pas changer la pose, ne pas changer le visage, ne pas changer le corps et ne pas modifier la scène. Faites correspondre la forme sportive du haut, la couleur bleu sarcelle, les bretelles stables, la couvrance, le tissu et la silhouette de l’image 2 aussi précisément que possible. Gardez un résultat réaliste, sobre, non explicite et adapté à un aperçu de maillot de bain.",
+        "note": "Utilise l’image de référence bikini correspondante pour ce style.",
+        "color": "linear-gradient(135deg, #0f766e, #22d3ee)",
+        "group": "bikini-reference"
+      },
+      {
+        "title": "Bikini jaune côtelé",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/f2eadccf020a4fe1a733b91335d23ceb.webp",
+        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/f2eadccf020a4fe1a733b91335d23ceb.webp",
+        "prompt": "L’image 1 est la photo originale de la personne. L’image 2 est la référence bikini ou maillot de bain. Remplacez uniquement le vêtement visible sur chaque personne clairement visible dans l’image 1 par le bikini jaune côtelé de l’image 2. Si l’image 1 contient plusieurs personnes, appliquez le même style de maillot à chaque personne clairement visible. Gardez tout le reste exactement identique pour chaque personne et pour la scène : visage, identité, âge, teint, cheveux, silhouette, proportions du corps, pose, mains, expression, fond, lumière, angle caméra, cadrage et qualité d’image. Ne pas amincir, ne pas agrandir, ne pas retoucher, ne pas remodeler, ne pas changer la pose, ne pas changer le visage, ne pas changer le corps et ne pas modifier la scène. Faites correspondre la couleur jaune chaude, la texture côtelée, les bretelles, la couvrance, le tissu et la silhouette de l’image 2 aussi précisément que possible. Gardez un résultat réaliste, sobre, non explicite et adapté à un aperçu de maillot de bain.",
+        "note": "Utilise l’image de référence bikini correspondante pour ce style.",
+        "color": "linear-gradient(135deg, #facc15, #f59e0b)",
+        "group": "bikini-reference"
+      },
+      {
+        "title": "Bikini corail asymétrique",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/5020adfd323e4cf9a3fd7154e243a1b0.webp",
+        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/5020adfd323e4cf9a3fd7154e243a1b0.webp",
+        "prompt": "L’image 1 est la photo originale de la personne. L’image 2 est la référence bikini ou maillot de bain. Remplacez uniquement le vêtement visible sur chaque personne clairement visible dans l’image 1 par le bikini corail asymétrique de l’image 2. Si l’image 1 contient plusieurs personnes, appliquez le même style de maillot à chaque personne clairement visible. Gardez tout le reste exactement identique pour chaque personne et pour la scène : visage, identité, âge, teint, cheveux, silhouette, proportions du corps, pose, mains, expression, fond, lumière, angle caméra, cadrage et qualité d’image. Ne pas amincir, ne pas agrandir, ne pas retoucher, ne pas remodeler, ne pas changer la pose, ne pas changer le visage, ne pas changer le corps et ne pas modifier la scène. Faites correspondre la forme du haut asymétrique, la couleur corail, l’encolure asymétrique, la couvrance, le tissu et la silhouette de l’image 2 aussi précisément que possible. Gardez un résultat réaliste, sobre, non explicite et adapté à un aperçu de maillot de bain.",
+        "note": "Utilise l’image de référence bikini correspondante pour ce style.",
+        "color": "linear-gradient(135deg, #fb7185, #f97316)",
+        "group": "bikini-reference"
+      }
+    ]
+  },
+  "workflowComparison": {
+    "title": "Générateur bikini IA vs retouche manuelle de maillot",
+    "subtitle": "Utilisez l’IA pour des aperçus rapides, puis la retouche manuelle ou une vraie séance photo quand l’ajustement, le tissu ou la précision produit sont essentiels.",
+    "columns": [
+      "Option",
+      "Utile pour",
+      "À vérifier avant usage"
+    ],
+    "rows": [
+      [
+        "Générateur bikini IA Toolaze",
+        "Aperçus rapides de maillot adulte, visuels créateur, stylisme vacances et tests de concept depuis une photo plus référence.",
+        "Vérifiez proportions, mains, bords du vêtement, bretelles, logique du tissu et stabilité des zones inchangées."
+      ],
+      [
+        "Retouche manuelle",
+        "Nettoyage pixel par pixel, finition de campagne, détails produit exacts et retouches validées par une marque.",
+        "Demande plus de temps et une retouche expérimentée."
+      ],
+      [
+        "Séance photo réelle",
+        "Images finales pour boutique en ligne, validation d’ajustement, précision produit légale et construction réelle du maillot.",
+        "Demande des échantillons, du temps modèle, un lieu, du stylisme et un budget de reprise."
+      ]
+    ]
+  },
+  "scenesTitle": "Usages populaires des aperçus bikini IA",
+  "scenes": [
+    {
+      "icon": "🏖️",
+      "title": "Aperçus de stylisme vacances",
+      "desc": "Testez des idées plage, séjour et piscine avant de planifier une séance photo ou une garde-robe de voyage."
+    },
+    {
+      "icon": "📱",
+      "title": "Miniatures créateur et planches d’inspiration",
+      "desc": "Créez des concepts de maillot adulte sobres pour visuels sociaux, miniatures et planches de direction stylistique."
+    },
+    {
+      "icon": "🛍️",
+      "title": "Tests de concepts maillot",
+      "desc": "Prévisualisez couleur, couvrance et silhouette avant une retouche manuelle ou une photo produit."
+    }
+  ],
+  "features": {
+    "title": "Pourquoi utiliser Toolaze pour les aperçus bikini IA",
+    "items": [
+      {
+        "icon": "👙",
+        "iconType": "ai",
+        "title": "Retouches de maillot guidées par référence",
+        "desc": "Importez une photo de personne et une référence de maillot pour que la retouche suive un vrai style bikini plutôt qu’un texte vague."
+      },
+      {
+        "icon": "🧍",
+        "iconType": "ai",
+        "title": "Instruction forte de préservation de la personne",
+        "desc": "Les instructions intégrées préservent explicitement visage, identité, silhouette, proportions, pose, fond, lumière, angle caméra et qualité d’image."
+      },
+      {
+        "icon": "🛡️",
+        "iconType": "ai",
+        "title": "Cadre adulte sobre",
+        "desc": "Utilisez Toolaze pour des aperçus de maillot adulte tout en évitant retrait de vêtements, retouches explicites, mineurs, usurpation d’identité ou photos non autorisées."
+      }
+    ]
+  },
+  "faqTitle": "FAQ du générateur de bikini IA",
+  "faq": [
+    {
+      "q": "Le générateur de bikini IA Toolaze est-il gratuit ?",
+      "a": "Oui. Les nouveaux utilisateurs reçoivent 10 crédits gratuits après inscription. Seedream 5.0 Lite commence à 10 crédits pour une génération standard 1K, donc ces crédits suffisent pour un aperçu bikini standard éligible. Une résolution plus élevée ou une utilisation continue peut demander plus de crédits."
+    },
+    {
+      "q": "Quel modèle utilise le générateur de bikini IA ?",
+      "a": "Toolaze utilise Seedream 5.0 Lite pour ce flux d’aperçu de maillot."
+    },
+    {
+      "q": "L’outil changera-t-il mon visage ou ma silhouette ?",
+      "a": "L’instruction par défaut demande au modèle de remplacer uniquement le vêtement visible et de garder visage, identité, silhouette, proportions, pose, fond, lumière et angle caméra inchangés. Vérifiez tout de même le résultat avant usage."
+    },
+    {
+      "q": "Puis-je importer ma propre référence bikini ?",
+      "a": "Oui. En mode Référence bikini, importez d’abord la photo de la personne, puis une référence de maillot ou choisissez une référence intégrée."
+    },
+    {
+      "q": "Puis-je l’utiliser sans image de référence bikini ?",
+      "a": "Oui. Utilisez le mode personnalisé, importez une photo adulte et décrivez le style, la couvrance, la couleur, les bretelles, le tissu et l’occasion."
+    },
+    {
+      "q": "Quelles règles de sécurité suivre ?",
+      "a": "Utilisez des photos adultes que vous possédez ou avez le droit de modifier. Évitez les mineurs, le contenu explicite, le retrait de vêtements, l’usurpation et les images sans consentement."
+    }
+  ],
+  "moreToolsLinks": [
+    {
+      "slug": "ai-clothes-changer",
+      "title": "Changeur de vêtements IA",
+      "description": "Prévisualisez des tenues professionnelles, formelles, maillot ou personnalisées à partir d’une photo de personne.",
+      "href": "/ai-clothes-changer"
+    },
+    {
+      "slug": "ai-image-to-image-generator",
+      "title": "Générateur image vers image IA",
+      "description": "Importez une image de référence et transformez-la avec une édition IA guidée par instructions.",
+      "href": "/ai-image-to-image-generator"
+    },
+    {
+      "slug": "ai-hairstyle-changer",
+      "title": "Changeur de coiffure IA",
+      "description": "Testez des idées de coiffure tout en préservant l’identité du portrait d’origine.",
+      "href": "/ai-hairstyle-changer"
+    }
+  ]
+}

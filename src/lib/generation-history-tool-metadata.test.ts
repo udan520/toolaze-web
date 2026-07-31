@@ -65,3 +65,15 @@ test('uses Clothes Changer as the feature label for AI clothes changer route met
     },
   )
 })
+
+
+test('uses AI Bikini Generator as the feature label for bikini route metadata', () => {
+  assert.deepEqual(
+    getHistoryToolMetadata('/ai-bikini-generator', 'Seedream 5.0 Lite', 'seedream-5-0-lite'),
+    {
+      toolSlug: 'ai-bikini-generator',
+      toolLabel: 'AI Bikini Generator',
+      sourcePath: '/ai-bikini-generator',
+    },
+  )
+})

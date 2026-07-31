@@ -61,7 +61,8 @@
     "aiKissingVideoGenerator": "AIキス動画ジェネレーター",
     "aiClothesChanger": "AI服装チェンジャー",
     "wan25Video": "Wan 2.5動画",
-    "klingAiVideoGenerator": "Kling AI動画ジェネレーター"
+    "klingAiVideoGenerator": "Kling AI動画ジェネレーター",
+    "aiBikiniGenerator": "AIビキニジェネレーター"
   },
   "home": {
     "metadata": {
@@ -127,6 +128,10 @@
       "ai-dance-generator": {
         "cardTitle": "AIダンスジェネレーター",
         "summary": "1枚の画像をアップロードして、振付案、クラス告知、SNSクリップ向けの短いダンス動画を作成できます。生成画面で長さとアスペクト比を選べます。"
+      },
+      "ai-bikini-generator": {
+        "cardTitle": "AIビキニジェネレーター",
+        "summary": "成人の人物写真とビキニ参照をアップロードし、人物を保ったまま上品なスイムウェア編集をプレビューできます。"
       }
     },
     "aiToolsHubTitle": "画像、動画、日常のメディアワークフローのための無料AIツール",
@@ -287,7 +292,8 @@
     "aiKissingVideoGenerator": "AIキス動画ジェネレーター",
     "aiClothesChanger": "AI服装チェンジャー",
     "wan25Video": "Wan 2.5動画",
-    "klingAiVideoGenerator": "Kling AI動画ジェネレーター"
+    "klingAiVideoGenerator": "Kling AI動画ジェネレーター",
+    "aiBikiniGenerator": "AIビキニジェネレーター"
   },
   "breadcrumb": {
     "home": "ホーム",
@@ -314,7 +320,8 @@
     "acceptableUse": "利用許可ポリシー",
     "textToVideoGenerator": "テキストから動画生成",
     "imageToVideoGenerator": "画像から動画生成",
-    "aiClothesChanger": "AI服装チェンジャー"
+    "aiClothesChanger": "AI服装チェンジャー",
+    "aiBikiniGenerator": "AIビキニジェネレーター"
   },
   "about": {
     "metadata": {
@@ -1060,7 +1067,8 @@
     "deleteSelectedError": "選択した履歴項目を削除できませんでした。",
     "modeVideo": "動画",
     "modeTextToImage": "テキストから画像",
-    "modeImageToImage": "画像から画像"
+    "modeImageToImage": "画像から画像",
+    "createSimilar": "似た画像を作成"
   },
   "creditsPage": {
     "metadataTitle": "クレジット履歴 - Toolaze",

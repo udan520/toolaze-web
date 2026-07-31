@@ -61,7 +61,8 @@
     "aiKissingVideoGenerator": "AI Kissing Video Generator",
     "aiClothesChanger": "AI Clothes Changer",
     "wan25Video": "Wan 2.5 Video",
-    "klingAiVideoGenerator": "Kling AI Video Generator"
+    "klingAiVideoGenerator": "Kling AI Video Generator",
+    "aiBikiniGenerator": "AI Bikini Generator"
   },
   "home": {
     "metadata": {
@@ -127,6 +128,10 @@
       "ai-dance-generator": {
         "cardTitle": "AI Dance Generator",
         "summary": "Upload one image and create a short dance video for choreography ideas, class promos, and social clips. Choose duration and aspect settings in the generator."
+      },
+      "ai-bikini-generator": {
+        "cardTitle": "AI Bikini Generator",
+        "summary": "Upload an adult person photo and a bikini reference to preview tasteful swimwear edits while preserving the original person."
       }
     },
     "aiToolsHubTitle": "AI Tools for Images, Video & Everyday Media Workflows",
@@ -275,7 +280,8 @@
     "aiKissingVideoGenerator": "AI Kissing Video Generator",
     "aiClothesChanger": "AI Clothes Changer",
     "wan25Video": "Wan 2.5 Video",
-    "klingAiVideoGenerator": "Kling AI Video Generator"
+    "klingAiVideoGenerator": "Kling AI Video Generator",
+    "aiBikiniGenerator": "AI Bikini Generator"
   },
   "breadcrumb": {
     "home": "Home",
@@ -302,7 +308,8 @@
     "acceptableUse": "Acceptable Use Policy",
     "textToVideoGenerator": "Text to Video Generator",
     "imageToVideoGenerator": "Image to Video Generator",
-    "aiClothesChanger": "AI Clothes Changer"
+    "aiClothesChanger": "AI Clothes Changer",
+    "aiBikiniGenerator": "AI Bikini Generator"
   },
   "about": {
     "metadata": {
@@ -832,7 +839,8 @@
     "deleteSelectedError": "Could not delete selected history items.",
     "modeVideo": "Video",
     "modeTextToImage": "Text to Image",
-    "modeImageToImage": "Image to Image"
+    "modeImageToImage": "Image to Image",
+    "createSimilar": "Create Similar"
   },
   "creditsPage": {
     "metadataTitle": "Credit Activity - Toolaze",

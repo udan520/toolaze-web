@@ -24,6 +24,12 @@ export const HOME_ADVANCED_AI_CARD_IMAGES = {
     height: 900,
     alt: 'AI Clothes Changer before and after outfit preview',
   },
+  'ai-bikini-generator': {
+    src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/6bcf91ffd06e45a8bcda2ea867015141.webp',
+    width: 1600,
+    height: 900,
+    alt: 'AI Bikini Generator normal outfit to bikini before and after preview',
+  },
   'ai-baby-generator': {
     src: '/ai-baby-generator/hero-baby-portrait.webp',
     width: 1200,

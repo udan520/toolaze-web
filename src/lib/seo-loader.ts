@@ -867,6 +867,8 @@ export async function getL2SeoContent(tool: string, locale: string = 'en') {
         data = await importL2FlatJson('ai-hair-color-changer', normalizedLocale)
       } else if (tool === 'ai-clothes-changer') {
         data = await importL2FlatJson('ai-clothes-changer', normalizedLocale)
+      } else if (tool === 'ai-bikini-generator') {
+        data = await importL2FlatJson('ai-bikini-generator', normalizedLocale)
       }
       
       const resolved = data?.default || data
@@ -928,6 +930,8 @@ export async function getL2SeoContent(tool: string, locale: string = 'en') {
             data = await import('@/data/en/ai-hair-color-changer.json')
           } else if (tool === 'ai-clothes-changer') {
             data = await import('@/data/en/ai-clothes-changer.json')
+          } else if (tool === 'ai-bikini-generator') {
+            data = await import('@/data/en/ai-bikini-generator.json')
           }
           const fallbackResolved = data?.default || data
           if (fallbackResolved && isPublished(fallbackResolved)) {

@@ -1,0 +1,399 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 2,
+    "modelId": "seedream-5-0-lite",
+    "defaultPrompt": "A imagem 1 é a foto original da pessoa. A imagem 2 é a referência de biquíni ou moda praia. Troque apenas a roupa visível em cada pessoa claramente visível da imagem 1 por a moda praia da imagem 2. Se a imagem 1 contiver várias pessoas, aplique o mesmo estilo de moda praia a cada pessoa claramente visível. Mantenha todo o resto exatamente igual para cada pessoa e para a cena: rosto, identidade, idade, tom de pele, cabelo, corpo, proporções corporais, pose, mãos, expressão, posição relativa, fundo, iluminação, ângulo da câmera, enquadramento e qualidade da imagem. Não afine, não aumente, não retoque, não remodele, não mude a pose, não mude o rosto, não mude o corpo, não altere as posições relativas e não modifique a cena. Combine o estilo, a cobertura, o tecido, a cor, as alças e a silhueta da moda praia da imagem 2 o mais próximo possível. Mantenha o resultado realista, de bom gosto, não explícito e adequado para uma prévia de moda praia.",
+    "defaultImageUrls": [],
+    "hideModelBranding": true,
+    "compactResultPanel": true,
+    "displayName": "Gerador de biquíni com IA",
+    "functionalAcceptance": {
+      "recommendedMode": "bikini-reference-first-with-custom-prompt",
+      "reason": "O fluxo principal usa duas imagens: uma foto adulta e uma referência de biquíni ou moda praia. O modo personalizado usa uma foto da pessoa com uma descrição de moda praia.",
+      "presetTitle": "Escolha uma referência de biquíni",
+      "presetTabs": [
+        {
+          "id": "bikini-reference",
+          "label": "Referência de biquíni"
+        },
+        {
+          "id": "custom",
+          "label": "Personalizado"
+        }
+      ],
+      "hidePresetPromptInput": true,
+      "customPromptTabId": "custom",
+      "presets": [
+        {
+          "label": "Biquíni preto clássico",
+          "group": "bikini-reference",
+          "prompt": "A imagem 1 é a foto original da pessoa. A imagem 2 é a referência de biquíni ou moda praia. Troque apenas a roupa visível em cada pessoa claramente visível da imagem 1 por o biquíni triângulo preto clássico da imagem 2. Se a imagem 1 contiver várias pessoas, aplique o mesmo estilo de moda praia a cada pessoa claramente visível. Mantenha todo o resto exatamente igual para cada pessoa e para a cena: rosto, identidade, idade, tom de pele, cabelo, corpo, proporções corporais, pose, mãos, expressão, posição relativa, fundo, iluminação, ângulo da câmera, enquadramento e qualidade da imagem. Não afine, não aumente, não retoque, não remodele, não mude a pose, não mude o rosto, não mude o corpo, não altere as posições relativas e não modifique a cena. Combine o tecido preto, as alças finas, a cobertura, o formato do top, o formato da parte de baixo e a silhueta da imagem 2 o mais próximo possível. Mantenha o resultado realista, de bom gosto, não explícito e adequado para uma prévia de moda praia.",
+          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3d80ed2905334169b0a2d06d1f86c01d.webp",
+          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3d80ed2905334169b0a2d06d1f86c01d.webp",
+          "swatch": "linear-gradient(135deg, #111827, #020617)"
+        },
+        {
+          "label": "Biquíni branco clássico",
+          "group": "bikini-reference",
+          "prompt": "A imagem 1 é a foto original da pessoa. A imagem 2 é a referência de biquíni ou moda praia. Troque apenas a roupa visível em cada pessoa claramente visível da imagem 1 por o biquíni triângulo branco clássico da imagem 2. Se a imagem 1 contiver várias pessoas, aplique o mesmo estilo de moda praia a cada pessoa claramente visível. Mantenha todo o resto exatamente igual para cada pessoa e para a cena: rosto, identidade, idade, tom de pele, cabelo, corpo, proporções corporais, pose, mãos, expressão, posição relativa, fundo, iluminação, ângulo da câmera, enquadramento e qualidade da imagem. Não afine, não aumente, não retoque, não remodele, não mude a pose, não mude o rosto, não mude o corpo, não altere as posições relativas e não modifique a cena. Combine a cobertura, as alças finas, o tecido branco limpo, o formato do top, o formato da parte de baixo e a silhueta da imagem 2 o mais próximo possível. Mantenha o resultado realista, de bom gosto, não explícito e adequado para uma prévia de moda praia.",
+          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/95db19f5e40a4afa9cc89731f091a5ce.webp",
+          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/95db19f5e40a4afa9cc89731f091a5ce.webp",
+          "swatch": "linear-gradient(135deg, #ffffff, #e5e7eb)"
+        },
+        {
+          "label": "Biquíni vermelho de cintura alta",
+          "group": "bikini-reference",
+          "prompt": "A imagem 1 é a foto original da pessoa. A imagem 2 é a referência de biquíni ou moda praia. Troque apenas a roupa visível em cada pessoa claramente visível da imagem 1 por o biquíni vermelho retrô de cintura alta da imagem 2. Se a imagem 1 contiver várias pessoas, aplique o mesmo estilo de moda praia a cada pessoa claramente visível. Mantenha todo o resto exatamente igual para cada pessoa e para a cena: rosto, identidade, idade, tom de pele, cabelo, corpo, proporções corporais, pose, mãos, expressão, posição relativa, fundo, iluminação, ângulo da câmera, enquadramento e qualidade da imagem. Não afine, não aumente, não retoque, não remodele, não mude a pose, não mude o rosto, não mude o corpo, não altere as posições relativas e não modifique a cena. Combine a cintura alta, o top de sustentação, as costuras limpas, o tecido vermelho, a cobertura e a silhueta da imagem 2 o mais próximo possível. Mantenha o resultado realista, de bom gosto, não explícito e adequado para uma prévia de moda praia.",
+          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3028cca8904b49249b517c0ef32386ee.webp",
+          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3028cca8904b49249b517c0ef32386ee.webp",
+          "swatch": "linear-gradient(135deg, #ef4444, #991b1b)"
+        },
+        {
+          "label": "Biquíni náutico azul-marinho",
+          "group": "bikini-reference",
+          "prompt": "A imagem 1 é a foto original da pessoa. A imagem 2 é a referência de biquíni ou moda praia. Troque apenas a roupa visível em cada pessoa claramente visível da imagem 1 por o biquíni náutico azul-marinho da imagem 2. Se a imagem 1 contiver várias pessoas, aplique o mesmo estilo de moda praia a cada pessoa claramente visível. Mantenha todo o resto exatamente igual para cada pessoa e para a cena: rosto, identidade, idade, tom de pele, cabelo, corpo, proporções corporais, pose, mãos, expressão, posição relativa, fundo, iluminação, ângulo da câmera, enquadramento e qualidade da imagem. Não afine, não aumente, não retoque, não remodele, não mude a pose, não mude o rosto, não mude o corpo, não altere as posições relativas e não modifique a cena. Combine a cor azul-marinho, os detalhes brancos de acabamento ou listras, as alças, a cobertura, o tecido e a silhueta da imagem 2 o mais próximo possível. Mantenha o resultado realista, de bom gosto, não explícito e adequado para uma prévia de moda praia.",
+          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3312de502e7344c493d7aaa3796ef6fc.webp",
+          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3312de502e7344c493d7aaa3796ef6fc.webp",
+          "swatch": "linear-gradient(135deg, #1e3a8a, #f8fafc)"
+        },
+        {
+          "label": "Biquíni floral tropical",
+          "group": "bikini-reference",
+          "prompt": "A imagem 1 é a foto original da pessoa. A imagem 2 é a referência de biquíni ou moda praia. Troque apenas a roupa visível em cada pessoa claramente visível da imagem 1 por o biquíni floral tropical da imagem 2. Se a imagem 1 contiver várias pessoas, aplique o mesmo estilo de moda praia a cada pessoa claramente visível. Mantenha todo o resto exatamente igual para cada pessoa e para a cena: rosto, identidade, idade, tom de pele, cabelo, corpo, proporções corporais, pose, mãos, expressão, posição relativa, fundo, iluminação, ângulo da câmera, enquadramento e qualidade da imagem. Não afine, não aumente, não retoque, não remodele, não mude a pose, não mude o rosto, não mude o corpo, não altere as posições relativas e não modifique a cena. Combine a estampa botânica, a paleta de cores, as alças, a cobertura, o tecido e a silhueta da imagem 2 o mais próximo possível. Mantenha o resultado realista, de bom gosto, não explícito e adequado para uma prévia de moda praia.",
+          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/bad0f5902cb643df87a8fe34210dc99c.webp",
+          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/bad0f5902cb643df87a8fe34210dc99c.webp",
+          "swatch": "linear-gradient(135deg, #22c55e, #f97316, #f43f5e)"
+        },
+        {
+          "label": "Biquíni esportivo verde-azulado",
+          "group": "bikini-reference",
+          "prompt": "A imagem 1 é a foto original da pessoa. A imagem 2 é a referência de biquíni ou moda praia. Troque apenas a roupa visível em cada pessoa claramente visível da imagem 1 por o biquíni esportivo verde-azulado inspirado em nadador da imagem 2. Se a imagem 1 contiver várias pessoas, aplique o mesmo estilo de moda praia a cada pessoa claramente visível. Mantenha todo o resto exatamente igual para cada pessoa e para a cena: rosto, identidade, idade, tom de pele, cabelo, corpo, proporções corporais, pose, mãos, expressão, posição relativa, fundo, iluminação, ângulo da câmera, enquadramento e qualidade da imagem. Não afine, não aumente, não retoque, não remodele, não mude a pose, não mude o rosto, não mude o corpo, não altere as posições relativas e não modifique a cena. Combine o formato esportivo do top, a cor verde-azulada, as alças estáveis, a cobertura, o tecido e a silhueta da imagem 2 o mais próximo possível. Mantenha o resultado realista, de bom gosto, não explícito e adequado para uma prévia de moda praia.",
+          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/49b1ef80a71344b6990bc71150c35644.webp",
+          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/49b1ef80a71344b6990bc71150c35644.webp",
+          "swatch": "linear-gradient(135deg, #0f766e, #22d3ee)"
+        },
+        {
+          "label": "Biquíni amarelo canelado",
+          "group": "bikini-reference",
+          "prompt": "A imagem 1 é a foto original da pessoa. A imagem 2 é a referência de biquíni ou moda praia. Troque apenas a roupa visível em cada pessoa claramente visível da imagem 1 por o biquíni amarelo canelado da imagem 2. Se a imagem 1 contiver várias pessoas, aplique o mesmo estilo de moda praia a cada pessoa claramente visível. Mantenha todo o resto exatamente igual para cada pessoa e para a cena: rosto, identidade, idade, tom de pele, cabelo, corpo, proporções corporais, pose, mãos, expressão, posição relativa, fundo, iluminação, ângulo da câmera, enquadramento e qualidade da imagem. Não afine, não aumente, não retoque, não remodele, não mude a pose, não mude o rosto, não mude o corpo, não altere as posições relativas e não modifique a cena. Combine a cor amarela quente, a textura canelada, as alças, a cobertura, o tecido e a silhueta da imagem 2 o mais próximo possível. Mantenha o resultado realista, de bom gosto, não explícito e adequado para uma prévia de moda praia.",
+          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/f2eadccf020a4fe1a733b91335d23ceb.webp",
+          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/f2eadccf020a4fe1a733b91335d23ceb.webp",
+          "swatch": "linear-gradient(135deg, #facc15, #f59e0b)"
+        },
+        {
+          "label": "Biquíni coral de um ombro",
+          "group": "bikini-reference",
+          "prompt": "A imagem 1 é a foto original da pessoa. A imagem 2 é a referência de biquíni ou moda praia. Troque apenas a roupa visível em cada pessoa claramente visível da imagem 1 por o biquíni coral de um ombro da imagem 2. Se a imagem 1 contiver várias pessoas, aplique o mesmo estilo de moda praia a cada pessoa claramente visível. Mantenha todo o resto exatamente igual para cada pessoa e para a cena: rosto, identidade, idade, tom de pele, cabelo, corpo, proporções corporais, pose, mãos, expressão, posição relativa, fundo, iluminação, ângulo da câmera, enquadramento e qualidade da imagem. Não afine, não aumente, não retoque, não remodele, não mude a pose, não mude o rosto, não mude o corpo, não altere as posições relativas e não modifique a cena. Combine o formato do top de um ombro, a cor coral, o decote assimétrico, a cobertura, o tecido e a silhueta da imagem 2 o mais próximo possível. Mantenha o resultado realista, de bom gosto, não explícito e adequado para uma prévia de moda praia.",
+          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/5020adfd323e4cf9a3fd7154e243a1b0.webp",
+          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/5020adfd323e4cf9a3fd7154e243a1b0.webp",
+          "swatch": "linear-gradient(135deg, #fb7185, #f97316)"
+        },
+        {
+          "label": "Biquíni transpassado esmeralda",
+          "group": "bikini-reference",
+          "prompt": "A imagem 1 é a foto original da pessoa. A imagem 2 é a referência de biquíni ou moda praia. Troque apenas a roupa visível em cada pessoa claramente visível da imagem 1 por o biquíni verde esmeralda com detalhe transpassado da imagem 2. Se a imagem 1 contiver várias pessoas, aplique o mesmo estilo de moda praia a cada pessoa claramente visível. Mantenha todo o resto exatamente igual para cada pessoa e para a cena: rosto, identidade, idade, tom de pele, cabelo, corpo, proporções corporais, pose, mãos, expressão, posição relativa, fundo, iluminação, ângulo da câmera, enquadramento e qualidade da imagem. Não afine, não aumente, não retoque, não remodele, não mude a pose, não mude o rosto, não mude o corpo, não altere as posições relativas e não modifique a cena. Combine o detalhe transpassado no top, a cor esmeralda, as alças, a cobertura, o tecido e a silhueta da imagem 2 o mais próximo possível. Mantenha o resultado realista, de bom gosto, não explícito e adequado para uma prévia de moda praia.",
+          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/cb70d59d82a6425a9e02350f87f3acec.webp",
+          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/cb70d59d82a6425a9e02350f87f3acec.webp",
+          "swatch": "linear-gradient(135deg, #047857, #10b981)"
+        },
+        {
+          "label": "Biquíni lavanda com borda ondulada",
+          "group": "bikini-reference",
+          "prompt": "A imagem 1 é a foto original da pessoa. A imagem 2 é a referência de biquíni ou moda praia. Troque apenas a roupa visível em cada pessoa claramente visível da imagem 1 por o biquíni lavanda com borda ondulada da imagem 2. Se a imagem 1 contiver várias pessoas, aplique o mesmo estilo de moda praia a cada pessoa claramente visível. Mantenha todo o resto exatamente igual para cada pessoa e para a cena: rosto, identidade, idade, tom de pele, cabelo, corpo, proporções corporais, pose, mãos, expressão, posição relativa, fundo, iluminação, ângulo da câmera, enquadramento e qualidade da imagem. Não afine, não aumente, não retoque, não remodele, não mude a pose, não mude o rosto, não mude o corpo, não altere as posições relativas e não modifique a cena. Combine a cor lavanda, o acabamento ondulado, as alças, a cobertura, o tecido e a silhueta da imagem 2 o mais próximo possível. Mantenha o resultado realista, de bom gosto, não explícito e adequado para uma prévia de moda praia.",
+          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/30aae7250fd54652a4da62137d3d398c.webp",
+          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/30aae7250fd54652a4da62137d3d398c.webp",
+          "swatch": "linear-gradient(135deg, #c4b5fd, #8b5cf6)"
+        },
+        {
+          "label": "Personalizado",
+          "group": "custom"
+        }
+      ]
+    },
+    "sampleImages": [
+      {
+        "url": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/6bcf91ffd06e45a8bcda2ea867015141.webp",
+        "title": "Gerador de biquíni com IA",
+        "width": 1600,
+        "height": 900
+      }
+    ],
+    "textOverrides": {
+      "uploadTitle": "Enviar foto da pessoa + referência de biquíni",
+      "uploadHelper": "Envie primeiro a foto adulta e depois adicione uma referência de moda praia de bom gosto.",
+      "promptLabel": "Descreva a moda praia",
+      "promptPlaceholder": "Personalizado: envie uma foto adulta e descreva estilo, cobertura, cor, alças, tecido e uso do biquíni."
+    }
+  },
+  "metadata": {
+    "title": "Gerador de biquíni com IA grátis online | Toolaze",
+    "description": "Crie prévias de biquíni de bom gosto com Toolaze. Novos usuários recebem 10 créditos grátis após cadastro, suficientes para uma prévia padrão 1K com Seedream 5.0 Lite."
+  },
+  "sectionsOrder": [
+    "intro",
+    "howToUse",
+    "photoTips",
+    "promptExamples",
+    "workflowComparison",
+    "scenes",
+    "features",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Gerador de <span class=\"text-gradient\">biquíni com IA</span> grátis online",
+    "desc": "Envie uma foto adulta e uma referência de biquíni, ou use o modo personalizado com uma foto e uma descrição. Mantenha rosto, corpo, pose, luz e fundo sem mudanças."
+  },
+  "intro": {
+    "title": "O que é um gerador de biquíni com IA?",
+    "content": [
+      {
+        "title": "Teste ideias de moda praia sem mudar a pessoa",
+        "text": "Um gerador de biquíni com IA edita apenas a área visível da roupa em uma foto adulta. Toolaze usa um fluxo guiado por referência: a imagem 1 é a pessoa original e a imagem 2 é a referência de biquíni. A prévia mantém rosto, corpo, proporções, pose, fundo, luz e ângulo da câmera estáveis."
+      },
+      {
+        "title": "Prévias adultas de moda praia com bom gosto",
+        "text": "Crie conceitos de praia, produções visuais de férias, miniaturas de criador, painéis de inspiração de resort e ideias de visual. Os resultados são prévias visuais, não garantias de caimento. Evite pedidos de remover roupa, sexualizar pessoas, editar menores, imitar identidade ou usar imagens sem permissão."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Como gerar uma prévia de biquíni com IA",
+    "steps": [
+      {
+        "title": "Envie a foto original da pessoa",
+        "desc": "Use uma foto adulta clara em que roupa atual, tronco, braços e contorno do corpo estejam visíveis. Poses simples funcionam melhor do que oclusão, sombras fortes ou movimento."
+      },
+      {
+        "title": "Adicione uma referência de biquíni ou personalize",
+        "desc": "Envie uma referência de moda praia como imagem 2 ou escolha uma referência integrada. No modo personalizado, envie uma foto e descreva estilo, cobertura, cor, tecido e alças."
+      },
+      {
+        "title": "Gere e revise as áreas preservadas",
+        "desc": "Confira se rosto, corpo, pose, mãos, fundo, luz e ângulo da câmera continuam estáveis. Ajuste a instrução se o modelo mudar algo além da moda praia."
+      }
+    ]
+  },
+  "photoTips": {
+    "title": "Dicas de foto para melhores edições de biquíni",
+    "subtitle": "Os melhores resultados vêm de fotos de origem claras e instruções diretas de preservação.",
+    "items": [
+      {
+        "title": "Use uma foto adulta com roupa visível",
+        "desc": "Escolha uma foto sua ou que você tenha permissão para editar. A pessoa deve ser adulta e a área do look deve ser fácil de identificar.",
+        "color": "linear-gradient(135deg, #dbeafe, #6366f1)"
+      },
+      {
+        "title": "Mantenha a pose simples",
+        "desc": "Poses em pé, sentadas ou levemente anguladas preservam melhor o corpo do que braços cruzados, espelhos, sombras fortes ou troncos cobertos.",
+        "color": "linear-gradient(135deg, #fce7f3, #db2777)"
+      },
+      {
+        "title": "Use uma referência de moda praia legível",
+        "desc": "Referências de corpo inteiro ajudam o modelo a combinar alças, cobertura, tecido, cor e silhueta sem inventar detalhes.",
+        "color": "linear-gradient(135deg, #fef3c7, #f97316)"
+      },
+      {
+        "title": "Diga claramente o que não deve mudar",
+        "desc": "Repita rosto, corpo, proporções, pose, mãos, fundo, luz e ângulo da câmera quando identidade e enquadramento importarem.",
+        "color": "linear-gradient(135deg, #ede9fe, #7c3aed)"
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "Ideias de instruções para gerador de biquíni com IA",
+    "subtitle": "Comece por oito estilos de referência de moda praia e ajuste cobertura, cor, tecido, alças e silhueta.",
+    "items": [
+      {
+        "title": "Biquíni preto clássico",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3d80ed2905334169b0a2d06d1f86c01d.webp",
+        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3d80ed2905334169b0a2d06d1f86c01d.webp",
+        "prompt": "A imagem 1 é a foto original da pessoa. A imagem 2 é a referência de biquíni ou moda praia. Troque apenas a roupa visível em cada pessoa claramente visível da imagem 1 por o biquíni triângulo preto clássico da imagem 2. Se a imagem 1 contiver várias pessoas, aplique o mesmo estilo de moda praia a cada pessoa claramente visível. Mantenha todo o resto exatamente igual para cada pessoa e para a cena: rosto, identidade, idade, tom de pele, cabelo, corpo, proporções corporais, pose, mãos, expressão, posição relativa, fundo, iluminação, ângulo da câmera, enquadramento e qualidade da imagem. Não afine, não aumente, não retoque, não remodele, não mude a pose, não mude o rosto, não mude o corpo, não altere as posições relativas e não modifique a cena. Combine o tecido preto, as alças finas, a cobertura, o formato do top, o formato da parte de baixo e a silhueta da imagem 2 o mais próximo possível. Mantenha o resultado realista, de bom gosto, não explícito e adequado para uma prévia de moda praia.",
+        "note": "Usa a imagem de referência de biquíni correspondente para este estilo.",
+        "color": "linear-gradient(135deg, #111827, #020617)",
+        "group": "bikini-reference"
+      },
+      {
+        "title": "Biquíni branco clássico",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/95db19f5e40a4afa9cc89731f091a5ce.webp",
+        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/95db19f5e40a4afa9cc89731f091a5ce.webp",
+        "prompt": "A imagem 1 é a foto original da pessoa. A imagem 2 é a referência de biquíni ou moda praia. Troque apenas a roupa visível em cada pessoa claramente visível da imagem 1 por o biquíni triângulo branco clássico da imagem 2. Se a imagem 1 contiver várias pessoas, aplique o mesmo estilo de moda praia a cada pessoa claramente visível. Mantenha todo o resto exatamente igual para cada pessoa e para a cena: rosto, identidade, idade, tom de pele, cabelo, corpo, proporções corporais, pose, mãos, expressão, posição relativa, fundo, iluminação, ângulo da câmera, enquadramento e qualidade da imagem. Não afine, não aumente, não retoque, não remodele, não mude a pose, não mude o rosto, não mude o corpo, não altere as posições relativas e não modifique a cena. Combine a cobertura, as alças finas, o tecido branco limpo, o formato do top, o formato da parte de baixo e a silhueta da imagem 2 o mais próximo possível. Mantenha o resultado realista, de bom gosto, não explícito e adequado para uma prévia de moda praia.",
+        "note": "Usa a imagem de referência de biquíni correspondente para este estilo.",
+        "color": "linear-gradient(135deg, #ffffff, #e5e7eb)",
+        "group": "bikini-reference"
+      },
+      {
+        "title": "Biquíni vermelho de cintura alta",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3028cca8904b49249b517c0ef32386ee.webp",
+        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3028cca8904b49249b517c0ef32386ee.webp",
+        "prompt": "A imagem 1 é a foto original da pessoa. A imagem 2 é a referência de biquíni ou moda praia. Troque apenas a roupa visível em cada pessoa claramente visível da imagem 1 por o biquíni vermelho retrô de cintura alta da imagem 2. Se a imagem 1 contiver várias pessoas, aplique o mesmo estilo de moda praia a cada pessoa claramente visível. Mantenha todo o resto exatamente igual para cada pessoa e para a cena: rosto, identidade, idade, tom de pele, cabelo, corpo, proporções corporais, pose, mãos, expressão, posição relativa, fundo, iluminação, ângulo da câmera, enquadramento e qualidade da imagem. Não afine, não aumente, não retoque, não remodele, não mude a pose, não mude o rosto, não mude o corpo, não altere as posições relativas e não modifique a cena. Combine a cintura alta, o top de sustentação, as costuras limpas, o tecido vermelho, a cobertura e a silhueta da imagem 2 o mais próximo possível. Mantenha o resultado realista, de bom gosto, não explícito e adequado para uma prévia de moda praia.",
+        "note": "Usa a imagem de referência de biquíni correspondente para este estilo.",
+        "color": "linear-gradient(135deg, #ef4444, #991b1b)",
+        "group": "bikini-reference"
+      },
+      {
+        "title": "Biquíni náutico azul-marinho",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3312de502e7344c493d7aaa3796ef6fc.webp",
+        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3312de502e7344c493d7aaa3796ef6fc.webp",
+        "prompt": "A imagem 1 é a foto original da pessoa. A imagem 2 é a referência de biquíni ou moda praia. Troque apenas a roupa visível em cada pessoa claramente visível da imagem 1 por o biquíni náutico azul-marinho da imagem 2. Se a imagem 1 contiver várias pessoas, aplique o mesmo estilo de moda praia a cada pessoa claramente visível. Mantenha todo o resto exatamente igual para cada pessoa e para a cena: rosto, identidade, idade, tom de pele, cabelo, corpo, proporções corporais, pose, mãos, expressão, posição relativa, fundo, iluminação, ângulo da câmera, enquadramento e qualidade da imagem. Não afine, não aumente, não retoque, não remodele, não mude a pose, não mude o rosto, não mude o corpo, não altere as posições relativas e não modifique a cena. Combine a cor azul-marinho, os detalhes brancos de acabamento ou listras, as alças, a cobertura, o tecido e a silhueta da imagem 2 o mais próximo possível. Mantenha o resultado realista, de bom gosto, não explícito e adequado para uma prévia de moda praia.",
+        "note": "Usa a imagem de referência de biquíni correspondente para este estilo.",
+        "color": "linear-gradient(135deg, #1e3a8a, #f8fafc)",
+        "group": "bikini-reference"
+      },
+      {
+        "title": "Biquíni floral tropical",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/bad0f5902cb643df87a8fe34210dc99c.webp",
+        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/bad0f5902cb643df87a8fe34210dc99c.webp",
+        "prompt": "A imagem 1 é a foto original da pessoa. A imagem 2 é a referência de biquíni ou moda praia. Troque apenas a roupa visível em cada pessoa claramente visível da imagem 1 por o biquíni floral tropical da imagem 2. Se a imagem 1 contiver várias pessoas, aplique o mesmo estilo de moda praia a cada pessoa claramente visível. Mantenha todo o resto exatamente igual para cada pessoa e para a cena: rosto, identidade, idade, tom de pele, cabelo, corpo, proporções corporais, pose, mãos, expressão, posição relativa, fundo, iluminação, ângulo da câmera, enquadramento e qualidade da imagem. Não afine, não aumente, não retoque, não remodele, não mude a pose, não mude o rosto, não mude o corpo, não altere as posições relativas e não modifique a cena. Combine a estampa botânica, a paleta de cores, as alças, a cobertura, o tecido e a silhueta da imagem 2 o mais próximo possível. Mantenha o resultado realista, de bom gosto, não explícito e adequado para uma prévia de moda praia.",
+        "note": "Usa a imagem de referência de biquíni correspondente para este estilo.",
+        "color": "linear-gradient(135deg, #22c55e, #f97316, #f43f5e)",
+        "group": "bikini-reference"
+      },
+      {
+        "title": "Biquíni esportivo verde-azulado",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/49b1ef80a71344b6990bc71150c35644.webp",
+        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/49b1ef80a71344b6990bc71150c35644.webp",
+        "prompt": "A imagem 1 é a foto original da pessoa. A imagem 2 é a referência de biquíni ou moda praia. Troque apenas a roupa visível em cada pessoa claramente visível da imagem 1 por o biquíni esportivo verde-azulado inspirado em nadador da imagem 2. Se a imagem 1 contiver várias pessoas, aplique o mesmo estilo de moda praia a cada pessoa claramente visível. Mantenha todo o resto exatamente igual para cada pessoa e para a cena: rosto, identidade, idade, tom de pele, cabelo, corpo, proporções corporais, pose, mãos, expressão, posição relativa, fundo, iluminação, ângulo da câmera, enquadramento e qualidade da imagem. Não afine, não aumente, não retoque, não remodele, não mude a pose, não mude o rosto, não mude o corpo, não altere as posições relativas e não modifique a cena. Combine o formato esportivo do top, a cor verde-azulada, as alças estáveis, a cobertura, o tecido e a silhueta da imagem 2 o mais próximo possível. Mantenha o resultado realista, de bom gosto, não explícito e adequado para uma prévia de moda praia.",
+        "note": "Usa a imagem de referência de biquíni correspondente para este estilo.",
+        "color": "linear-gradient(135deg, #0f766e, #22d3ee)",
+        "group": "bikini-reference"
+      },
+      {
+        "title": "Biquíni amarelo canelado",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/f2eadccf020a4fe1a733b91335d23ceb.webp",
+        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/f2eadccf020a4fe1a733b91335d23ceb.webp",
+        "prompt": "A imagem 1 é a foto original da pessoa. A imagem 2 é a referência de biquíni ou moda praia. Troque apenas a roupa visível em cada pessoa claramente visível da imagem 1 por o biquíni amarelo canelado da imagem 2. Se a imagem 1 contiver várias pessoas, aplique o mesmo estilo de moda praia a cada pessoa claramente visível. Mantenha todo o resto exatamente igual para cada pessoa e para a cena: rosto, identidade, idade, tom de pele, cabelo, corpo, proporções corporais, pose, mãos, expressão, posição relativa, fundo, iluminação, ângulo da câmera, enquadramento e qualidade da imagem. Não afine, não aumente, não retoque, não remodele, não mude a pose, não mude o rosto, não mude o corpo, não altere as posições relativas e não modifique a cena. Combine a cor amarela quente, a textura canelada, as alças, a cobertura, o tecido e a silhueta da imagem 2 o mais próximo possível. Mantenha o resultado realista, de bom gosto, não explícito e adequado para uma prévia de moda praia.",
+        "note": "Usa a imagem de referência de biquíni correspondente para este estilo.",
+        "color": "linear-gradient(135deg, #facc15, #f59e0b)",
+        "group": "bikini-reference"
+      },
+      {
+        "title": "Biquíni coral de um ombro",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/5020adfd323e4cf9a3fd7154e243a1b0.webp",
+        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/5020adfd323e4cf9a3fd7154e243a1b0.webp",
+        "prompt": "A imagem 1 é a foto original da pessoa. A imagem 2 é a referência de biquíni ou moda praia. Troque apenas a roupa visível em cada pessoa claramente visível da imagem 1 por o biquíni coral de um ombro da imagem 2. Se a imagem 1 contiver várias pessoas, aplique o mesmo estilo de moda praia a cada pessoa claramente visível. Mantenha todo o resto exatamente igual para cada pessoa e para a cena: rosto, identidade, idade, tom de pele, cabelo, corpo, proporções corporais, pose, mãos, expressão, posição relativa, fundo, iluminação, ângulo da câmera, enquadramento e qualidade da imagem. Não afine, não aumente, não retoque, não remodele, não mude a pose, não mude o rosto, não mude o corpo, não altere as posições relativas e não modifique a cena. Combine o formato do top de um ombro, a cor coral, o decote assimétrico, a cobertura, o tecido e a silhueta da imagem 2 o mais próximo possível. Mantenha o resultado realista, de bom gosto, não explícito e adequado para uma prévia de moda praia.",
+        "note": "Usa a imagem de referência de biquíni correspondente para este estilo.",
+        "color": "linear-gradient(135deg, #fb7185, #f97316)",
+        "group": "bikini-reference"
+      }
+    ]
+  },
+  "workflowComparison": {
+    "title": "Gerador de biquíni com IA vs edição manual de moda praia",
+    "subtitle": "Use IA para prévias rápidas de estilo e edição manual ou ensaio real quando caimento, tecido ou precisão do produto forem essenciais.",
+    "columns": [
+      "Opção",
+      "Útil para",
+      "Verifique antes de usar"
+    ],
+    "rows": [
+      [
+        "Gerador de biquíni com IA Toolaze",
+        "Prévias rápidas de moda praia adulta, visuais para criadores, produções de férias e checagens de conceito com foto de pessoa mais referência.",
+        "Revise proporções, mãos, bordas da peça, alças, lógica do tecido e estabilidade das áreas preservadas."
+      ],
+      [
+        "Retoque manual",
+        "Limpeza pixel a pixel, finalização de campanha, detalhes exatos de produto e edições aprovadas por marca.",
+        "Exige mais tempo e um editor experiente."
+      ],
+      [
+        "Ensaio fotográfico real",
+        "Imagens finais para comércio eletrônico, validação de caimento, precisão legal do produto e construção real da moda praia.",
+        "Exige amostras, tempo de modelo, locação, direção visual e orçamento para refazer fotos."
+      ]
+    ]
+  },
+  "scenesTitle": "Usos populares de prévias de biquíni com IA",
+  "scenes": [
+    {
+      "icon": "🏖️",
+      "title": "Prévias de produção visual de férias",
+      "desc": "Teste ideias de praia, resort e piscina antes de planejar um ensaio ou mala de viagem."
+    },
+    {
+      "icon": "📱",
+      "title": "Miniaturas e painéis de inspiração de criador",
+      "desc": "Crie conceitos adultos de moda praia com bom gosto para visuais sociais, miniaturas e painéis de direção de estilo."
+    },
+    {
+      "icon": "🛍️",
+      "title": "Checagem de conceitos de moda praia",
+      "desc": "Visualize direções de cor, cobertura e silhueta antes de edição manual ou fotografia de produto."
+    }
+  ],
+  "features": {
+    "title": "Por que usar Toolaze para prévias de biquíni com IA",
+    "items": [
+      {
+        "icon": "👙",
+        "iconType": "ai",
+        "title": "Edições de moda praia guiadas por referência",
+        "desc": "Envie uma foto da pessoa e uma referência de moda praia para que a edição siga um estilo real de biquíni em vez de texto vago."
+      },
+      {
+        "icon": "🧍",
+        "iconType": "ai",
+        "title": "Instrução forte para preservar a pessoa",
+        "desc": "As instruções integradas preservam explicitamente rosto, identidade, corpo, proporções, pose, fundo, luz, ângulo da câmera e qualidade da imagem."
+      },
+      {
+        "icon": "🛡️",
+        "iconType": "ai",
+        "title": "Limite de uso adulto com bom gosto",
+        "desc": "Use Toolaze para prévias adultas de moda praia e evite remover roupas, edições explícitas, imagens de menores, imitação de identidade ou fotos não autorizadas."
+      }
+    ]
+  },
+  "faqTitle": "FAQ do gerador de biquíni com IA",
+  "faq": [
+    {
+      "q": "O gerador de biquíni com IA da Toolaze é grátis?",
+      "a": "Sim. Novos usuários recebem 10 créditos grátis após o cadastro. Seedream 5.0 Lite começa em 10 créditos para geração padrão 1K, então esses créditos bastam para uma prévia padrão elegível de biquíni. Resolução maior ou uso contínuo pode exigir mais créditos."
+    },
+    {
+      "q": "Qual modelo o gerador de biquíni com IA usa?",
+      "a": "Toolaze usa Seedream 5.0 Lite para este fluxo de prévia de moda praia."
+    },
+    {
+      "q": "A ferramenta vai mudar meu rosto ou corpo?",
+      "a": "A instrução padrão pede ao modelo para trocar apenas a roupa visível e manter rosto, identidade, corpo, proporções, pose, fundo, luz e ângulo da câmera sem mudanças. Ainda assim, revise o resultado antes de usar."
+    },
+    {
+      "q": "Posso enviar minha própria referência de biquíni?",
+      "a": "Sim. No modo Referência de biquíni, envie primeiro a foto da pessoa e depois uma referência de moda praia ou escolha uma referência integrada."
+    },
+    {
+      "q": "Posso usar sem imagem de referência de biquíni?",
+      "a": "Sim. Use o modo personalizado, envie uma foto adulta e descreva estilo, cobertura, cor, alças, tecido e ocasião."
+    },
+    {
+      "q": "Quais regras de segurança devo seguir?",
+      "a": "Use fotos adultas suas ou que você tenha permissão para editar. Evite menores, conteúdo explícito, remoção de roupas, imitação de identidade e imagens sem consentimento."
+    }
+  ],
+  "moreToolsLinks": [
+    {
+      "slug": "ai-clothes-changer",
+      "title": "Trocador de roupas com IA",
+      "description": "Pré-visualize roupas profissionais, formais, moda praia e looks personalizados a partir de uma foto de pessoa.",
+      "href": "/ai-clothes-changer"
+    },
+    {
+      "slug": "ai-image-to-image-generator",
+      "title": "Gerador imagem para imagem com IA",
+      "description": "Envie uma imagem de referência e transforme-a com edição de IA guiada por instruções.",
+      "href": "/ai-image-to-image-generator"
+    },
+    {
+      "slug": "ai-hairstyle-changer",
+      "title": "Trocador de penteado com IA",
+      "description": "Teste ideias de penteado preservando a identidade do retrato original.",
+      "href": "/ai-hairstyle-changer"
+    }
+  ]
+}

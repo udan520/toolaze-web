@@ -23,6 +23,10 @@ const localeAiClothesChangerPageSource = readFileSync(new URL('../app/[locale]/a
 const aiDanceContent = JSON.parse(readFileSync(new URL('../data/en/ai-dance-generator.json', import.meta.url), 'utf8'))
 const aiDanceFactoryContent = JSON.parse(readFileSync('_codex/seo-pipeline/tasks/2026-07-20-ai-dance-generator/content/en.json', 'utf8'))
 const aiClothesChangerContent = JSON.parse(readFileSync(new URL('../data/en/ai-clothes-changer.json', import.meta.url), 'utf8'))
+const aiBikiniGeneratorPath = new URL('../data/en/ai-bikini-generator.json', import.meta.url)
+const aiBikiniGeneratorContent = existsSync(aiBikiniGeneratorPath)
+  ? JSON.parse(readFileSync(aiBikiniGeneratorPath, 'utf8'))
+  : null
 const aiDanceLocales = ['en', 'de', 'es', 'fr', 'it', 'ja', 'ko', 'pt', 'zh-TW']
 const aiDanceLocaleContent = Object.fromEntries(
   aiDanceLocales.map((locale) => [
@@ -358,6 +362,175 @@ test('AI Clothes Changer prompt ideas use four 9:16 R2 images', () => {
     assert.match(item.image, /^https:\/\/pub-[a-z0-9]+\.r2\.dev\/uploads\/[a-z0-9]+\.webp$/)
   }
   assert.match(promptExamplesSource, /aspect-\[9\/16\]/)
+})
+
+test('AI Bikini Generator uses Seedream 5.0 Lite and preserves the source person except swimwear', () => {
+  assert.ok(aiBikiniGeneratorContent, 'AI Bikini Generator content should exist')
+  assert.equal(aiBikiniGeneratorContent.topComponent, 'gpt-image-2')
+  assert.equal(aiBikiniGeneratorContent.topTool?.mode, 'image-to-image')
+  assert.equal(aiBikiniGeneratorContent.topTool?.maxUploadImages, 2)
+  assert.equal(aiBikiniGeneratorContent.topTool?.modelId, 'seedream-5-0-lite')
+  assert.doesNotMatch(JSON.stringify(aiBikiniGeneratorContent), /GPT Image 2/i)
+  assert.match(
+    aiBikiniGeneratorContent.topTool?.sampleImages?.[0]?.url || '',
+    /^https:\/\/pub-[a-z0-9]+\.r2\.dev\/uploads\/[a-z0-9]+\.webp$/,
+  )
+  assert.equal(aiBikiniGeneratorContent.topTool?.sampleImages?.[0]?.width, 1600)
+  assert.equal(aiBikiniGeneratorContent.topTool?.sampleImages?.[0]?.height, 900)
+
+  const bikiniReferencePresets = aiBikiniGeneratorContent.topTool?.functionalAcceptance?.presets
+    ?.filter((preset) => preset.group === 'bikini-reference') || []
+  assert.equal(bikiniReferencePresets.length, 10)
+  assert.equal(bikiniReferencePresets[0]?.label, 'Classic Black Bikini')
+  for (const preset of bikiniReferencePresets) {
+    assert.match(preset.image, /^https:\/\/pub-[a-z0-9]+\.r2\.dev\/uploads\/[a-z0-9]+\.webp$/)
+    assert.equal(preset.referenceImage, preset.image)
+  }
+
+  const prompts = [
+    aiBikiniGeneratorContent.topTool?.defaultPrompt,
+    ...(aiBikiniGeneratorContent.topTool?.functionalAcceptance?.presets || [])
+      .map((preset) => preset.prompt),
+  ].filter(Boolean).join('\n')
+
+  for (const required of [
+    'Keep everything else exactly the same',
+    'face',
+    'identity',
+    'body shape',
+    'body proportions',
+    'pose',
+    'background',
+    'lighting',
+    'Do not slim',
+    'Do not enlarge',
+    'Do not retouch',
+    'Do not reshape',
+    'only the visible clothing',
+  ]) {
+    assert.match(prompts, new RegExp(required, 'i'))
+  }
+})
+
+test('AI Bikini Generator prompt ideas mirror eight bikini reference styles in every locale', () => {
+  const factoryContentDirectory = '_codex/seo-pipeline/tasks/2026-07-31-ai-bikini-generator/content'
+
+  for (const locale of aiDanceLocales) {
+    const pageContent = JSON.parse(readFileSync(new URL(`../data/${locale}/ai-bikini-generator.json`, import.meta.url), 'utf8'))
+    const factoryContent = JSON.parse(readFileSync(`${factoryContentDirectory}/${locale}.json`, 'utf8'))
+
+    for (const content of [pageContent, factoryContent]) {
+      const referencePresets = content.topTool?.functionalAcceptance?.presets
+        ?.filter((preset) => preset.group === 'bikini-reference') || []
+      const promptItems = content.promptExamples?.items || []
+
+      assert.equal(promptItems.length, 8, locale)
+      assert.match(promptExamplesSource, /lg:grid-cols-4/)
+
+      referencePresets.slice(0, 8).forEach((preset, index) => {
+        const promptItem = promptItems[index]
+        assert.equal(promptItem.title, preset.label, `${locale} prompt title ${index}`)
+        assert.equal(promptItem.image, preset.image, `${locale} prompt image ${index}`)
+        assert.equal(promptItem.referenceImage, preset.referenceImage, `${locale} prompt reference image ${index}`)
+        assert.equal(promptItem.prompt, preset.prompt, `${locale} prompt text ${index}`)
+        assert.match(promptItem.image, /^https:\/\/pub-[a-z0-9]+\.r2\.dev\/uploads\/[a-z0-9]+\.webp$/)
+      })
+    }
+  }
+})
+
+test('AI Bikini Generator visible SEO copy is user-facing and free-claim qualified', () => {
+  const factoryContentDirectory = '_codex/seo-pipeline/tasks/2026-07-31-ai-bikini-generator/content'
+  const skippedKeys = new Set(['defaultPrompt', 'prompt', 'image', 'referenceImage', 'url', 'color', 'swatch', 'recommendedMode', 'customPromptTabId'])
+  const collectStrings = (value, path = []) => {
+    if (typeof value === 'string') {
+      if (path.includes('sectionsOrder')) return []
+      return skippedKeys.has(path.at(-1)) ? [] : [value]
+    }
+    if (Array.isArray(value)) {
+      return value.flatMap((item, index) => collectStrings(item, [...path, String(index)]))
+    }
+    if (value && typeof value === 'object') {
+      return Object.entries(value).flatMap(([key, item]) => collectStrings(item, [...path, key]))
+    }
+    return []
+  }
+
+  for (const locale of aiDanceLocales) {
+    const pageContent = JSON.parse(readFileSync(new URL(`../data/${locale}/ai-bikini-generator.json`, import.meta.url), 'utf8'))
+    const factoryContent = JSON.parse(readFileSync(`${factoryContentDirectory}/${locale}.json`, 'utf8'))
+
+    for (const content of [pageContent, factoryContent]) {
+      const visibleCopy = collectStrings(content).join('\n')
+      assert.doesNotMatch(visibleCopy, /\b(use this page|the page is designed|search intent|SEO|keyword|ranking|AI Overview|API platform|integration)\b/i, locale)
+      assert.doesNotMatch(visibleCopy, /\b(unlimited free|free forever|no signup|no login)\b/i, locale)
+      if (locale !== 'en') {
+        assert.doesNotMatch(
+          visibleCopy,
+          /prompt|outfit|ecommerce|creator|thumbnail|moodboard|shooting|styling|business|identity|pixel-level|location/i,
+          locale,
+        )
+      }
+    }
+  }
+
+  const englishVisibleCopy = collectStrings(aiBikiniGeneratorContent).join('\n')
+  assert.match(englishVisibleCopy, /10 free credits/i)
+  assert.match(englishVisibleCopy, /sign-up/i)
+  assert.match(englishVisibleCopy, /Seedream 5\.0 Lite/i)
+  assert.match(englishVisibleCopy, /10 credits/i)
+})
+
+test('AI Bikini Generator localizes visible SEO copy beyond metadata in every locale', () => {
+  const englishContent = aiBikiniGeneratorContent
+  const comparedPaths = [
+    'metadata.description',
+    'hero.desc',
+    'topTool.textOverrides.uploadHelper',
+    'topTool.functionalAcceptance.presetTitle',
+    'topTool.functionalAcceptance.presetTabs.0.label',
+    'intro.title',
+    'intro.content.0.title',
+    'intro.content.0.text',
+    'intro.content.1.title',
+    'intro.content.1.text',
+    'howToUse.title',
+    'howToUse.steps.0.title',
+    'howToUse.steps.0.desc',
+    'photoTips.title',
+    'photoTips.subtitle',
+    'workflowComparison.title',
+    'workflowComparison.subtitle',
+    'scenesTitle',
+    'features.title',
+    'faqTitle',
+    'faq.0.q',
+    'faq.0.a',
+    'moreToolsLinks.0.description',
+  ]
+  const readPath = (content, path) => path.split('.').reduce((current, key) => current?.[key], content)
+
+  for (const locale of aiDanceLocales.filter((item) => item !== 'en')) {
+    const pageContent = JSON.parse(readFileSync(new URL(`../data/${locale}/ai-bikini-generator.json`, import.meta.url), 'utf8'))
+    const factoryContent = JSON.parse(readFileSync(`_codex/seo-pipeline/tasks/2026-07-31-ai-bikini-generator/content/${locale}.json`, 'utf8'))
+
+    for (const content of [pageContent, factoryContent]) {
+      for (const path of comparedPaths) {
+        assert.notEqual(readPath(content, path), readPath(englishContent, path), `${locale} ${path}`)
+      }
+
+      const localizedPrompts = [
+        content.topTool?.defaultPrompt,
+        ...(content.topTool?.functionalAcceptance?.presets || []).map((preset) => preset.prompt),
+        ...(content.promptExamples?.items || []).map((item) => item.prompt),
+      ].filter(Boolean).join('\n')
+      assert.doesNotMatch(
+        localizedPrompts,
+        /Image 1 is|Image 2 is|original person photo|Keep everything else exactly the same|Do not slim|Do not enlarge|Do not retouch|Do not reshape|adult swimwear preview/i,
+        `${locale} localized prompt text`,
+      )
+    }
+  }
 })
 
 test('AI Dance uses a single-image upload flow without style presets', () => {

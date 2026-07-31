@@ -28,6 +28,7 @@ const defaultBreadcrumbTranslations = {
   aiCouplePhotoMaker: 'AI Couple Photo Maker',
   aiBabyGenerator: 'AI Baby Generator',
   aiClothesChanger: 'AI Clothes Changer',
+  aiBikiniGenerator: 'AI Bikini Generator',
   aiImageGenerator: 'AI Image Generator',
   textToImageGenerator: 'Text to Image Generator',
   aiImageToImageGenerator: 'AI Image to Image Generator',
@@ -100,6 +101,7 @@ export default function Breadcrumb({ items, variant = 'page' }: BreadcrumbProps)
     if (label === 'AI Couple Photo Maker') return translations.aiCouplePhotoMaker || 'AI Couple Photo Maker'
     if (label === 'AI Baby Generator') return translations.aiBabyGenerator || 'AI Baby Generator'
     if (label === 'AI Clothes Changer') return translations.aiClothesChanger || 'AI Clothes Changer'
+    if (label === 'AI Bikini Generator') return translations.aiBikiniGenerator || 'AI Bikini Generator'
     if (label === 'AI Image Generator') return translations.aiImageGenerator || 'AI Image Generator'
     if (label === 'Text to Image Generator') return translations.textToImageGenerator || 'Text to Image Generator'
     if (label === 'AI Image to Image Generator') return translations.aiImageToImageGenerator || 'AI Image to Image Generator'

@@ -15,6 +15,7 @@ const AI_IMAGE_L2_PAGES = [
   { path: '/watermark-remover', priority: 0.9 },
   { path: '/ai-couple-photo-maker', priority: 0.88 },
   { path: '/ai-baby-generator', priority: 0.88 },
+  { path: '/ai-bikini-generator', priority: 0.88 },
 ] as const
 
 interface SitemapEntry {

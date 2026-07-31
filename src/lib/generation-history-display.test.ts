@@ -132,3 +132,17 @@ test('formats known model ids for user-facing history labels', () => {
   assert.equal(getGenerationModelLabel('flux-2-flex'), 'Flux 2 Flex')
   assert.equal(getGenerationModelLabel('custom-model'), 'custom-model')
 })
+
+
+test('returns AI Bikini Generator label for bikini generator history', () => {
+  assert.deepEqual(getWrappedHairToolHistoryDisplay({
+    model: 'seedream-5-0-lite',
+    toolSlug: 'ai-bikini-generator',
+    toolLabel: 'AI Bikini Generator',
+    sourcePath: '/ai-bikini-generator',
+  }), {
+    showToolLabel: true,
+    toolLabel: 'AI Bikini Generator',
+    modelLabel: 'Seedream 5.0 Lite',
+  })
+})

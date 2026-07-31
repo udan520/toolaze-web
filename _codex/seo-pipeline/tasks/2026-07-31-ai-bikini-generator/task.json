@@ -1,0 +1,53 @@
+{
+  "taskId": "2026-07-31-ai-bikini-generator",
+  "slug": "ai-bikini-generator",
+  "pageType": "l2",
+  "pageGroup": "ai-tools",
+  "status": "ready_for_publish",
+  "tool": "ai-bikini-generator",
+  "topic": "AI Bikini Generator landing page",
+  "generatedBy": "Seo-Factory local pipeline",
+  "createdAt": "2026-07-31T00:00:00+08:00",
+  "modelInstruction": "Use Seedream 5.0 Lite for the functional adult swimwear image-to-image workflow. Prompt constraints must preserve the original person and scene except for visible clothing replacement.",
+  "localeCoverage": [
+    "en",
+    "de",
+    "ja",
+    "es",
+    "zh-TW",
+    "pt",
+    "fr",
+    "ko",
+    "it"
+  ],
+  "sourceData": "src/data/en/ai-bikini-generator.json",
+  "canonicalPath": "/ai-bikini-generator",
+  "releaseBoundary": "Public landing-page release includes route files, navigation, Footer, AI Tools hub, homepage entry, sitemap, supported locale data, SEO Factory records, and targeted tests. Production deploys, commits, pushes, admin routes, migrations, and unrelated backend work remain excluded.",
+  "notes": [
+    "Functional top tool reuses the shared AI image generation component with topTool.modelId=seedream-5-0-lite.",
+    "Default and preset prompts require replacing only visible clothing while preserving face, identity, body shape, body proportions, pose, background, lighting, camera angle, framing, and image quality.",
+    "The page is scoped to tasteful adult swimwear previews and excludes clothing removal, explicit edits, minor imagery, impersonation, and unauthorized photo use."
+  ],
+  "outputs": [
+    "src/app/ai-bikini-generator/page.tsx",
+    "src/app/[locale]/ai-bikini-generator/page.tsx",
+    "_codex/seo-pipeline/tasks/2026-07-31-ai-bikini-generator/content/en.json",
+    "src/data/en/ai-bikini-generator.json",
+    "_codex/seo-pipeline/tasks/2026-07-31-ai-bikini-generator/content/de.json",
+    "src/data/de/ai-bikini-generator.json",
+    "_codex/seo-pipeline/tasks/2026-07-31-ai-bikini-generator/content/ja.json",
+    "src/data/ja/ai-bikini-generator.json",
+    "_codex/seo-pipeline/tasks/2026-07-31-ai-bikini-generator/content/es.json",
+    "src/data/es/ai-bikini-generator.json",
+    "_codex/seo-pipeline/tasks/2026-07-31-ai-bikini-generator/content/zh-TW.json",
+    "src/data/zh-TW/ai-bikini-generator.json",
+    "_codex/seo-pipeline/tasks/2026-07-31-ai-bikini-generator/content/pt.json",
+    "src/data/pt/ai-bikini-generator.json",
+    "_codex/seo-pipeline/tasks/2026-07-31-ai-bikini-generator/content/fr.json",
+    "src/data/fr/ai-bikini-generator.json",
+    "_codex/seo-pipeline/tasks/2026-07-31-ai-bikini-generator/content/ko.json",
+    "src/data/ko/ai-bikini-generator.json",
+    "_codex/seo-pipeline/tasks/2026-07-31-ai-bikini-generator/content/it.json",
+    "src/data/it/ai-bikini-generator.json"
+  ]
+}

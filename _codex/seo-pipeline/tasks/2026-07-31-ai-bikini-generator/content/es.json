@@ -1,0 +1,399 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 2,
+    "modelId": "seedream-5-0-lite",
+    "defaultPrompt": "La imagen 1 es la foto original de la persona. La imagen 2 es la referencia de bikini o traje de baño. Reemplaza solo la ropa visible de cada persona claramente visible en la imagen 1 con el traje de baño de la imagen 2. Si la imagen 1 contiene varias personas, aplica el mismo estilo de traje de baño a cada persona claramente visible. Mantén todo lo demás exactamente igual para cada persona y la escena: rostro, identidad, edad, tono de piel, cabello, forma corporal, proporciones corporales, pose, manos, expresión, posición relativa, fondo, iluminación, ángulo de cámara, encuadre y calidad de imagen. No adelgaces, no agrandes, no retoques, no remodeles, no cambies la pose, no cambies el rostro, no cambies el cuerpo, no cambies las posiciones relativas y no modifiques la escena. Igualar el estilo, la cobertura, la tela, el color, los tirantes y la silueta del traje de baño de la imagen 2 lo más posible. Mantén el resultado realista, de buen gusto, no explícito y adecuado para una vista previa de traje de baño.",
+    "defaultImageUrls": [],
+    "hideModelBranding": true,
+    "compactResultPanel": true,
+    "displayName": "Generador de bikini con IA",
+    "functionalAcceptance": {
+      "recommendedMode": "bikini-reference-first-with-custom-prompt",
+      "reason": "El flujo principal usa dos imágenes: una foto adulta y una referencia de bikini o traje de baño. El modo personalizado mantiene una foto de persona más una descripción de traje de baño.",
+      "presetTitle": "Elige una referencia de bikini",
+      "presetTabs": [
+        {
+          "id": "bikini-reference",
+          "label": "Referencia de bikini"
+        },
+        {
+          "id": "custom",
+          "label": "Personalizado"
+        }
+      ],
+      "hidePresetPromptInput": true,
+      "customPromptTabId": "custom",
+      "presets": [
+        {
+          "label": "Bikini negro clásico",
+          "group": "bikini-reference",
+          "prompt": "La imagen 1 es la foto original de la persona. La imagen 2 es la referencia de bikini o traje de baño. Reemplaza solo la ropa visible de cada persona claramente visible en la imagen 1 con el bikini triangular negro clásico de la imagen 2. Si la imagen 1 contiene varias personas, aplica el mismo estilo de traje de baño a cada persona claramente visible. Mantén todo lo demás exactamente igual para cada persona y la escena: rostro, identidad, edad, tono de piel, cabello, forma corporal, proporciones corporales, pose, manos, expresión, posición relativa, fondo, iluminación, ángulo de cámara, encuadre y calidad de imagen. No adelgaces, no agrandes, no retoques, no remodeles, no cambies la pose, no cambies el rostro, no cambies el cuerpo, no cambies las posiciones relativas y no modifiques la escena. Igualar la tela negra, los tirantes finos, la cobertura, la forma del top, la forma de la parte inferior y la silueta de la imagen 2 lo más posible. Mantén el resultado realista, de buen gusto, no explícito y adecuado para una vista previa de traje de baño.",
+          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3d80ed2905334169b0a2d06d1f86c01d.webp",
+          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3d80ed2905334169b0a2d06d1f86c01d.webp",
+          "swatch": "linear-gradient(135deg, #111827, #020617)"
+        },
+        {
+          "label": "Bikini blanco clásico",
+          "group": "bikini-reference",
+          "prompt": "La imagen 1 es la foto original de la persona. La imagen 2 es la referencia de bikini o traje de baño. Reemplaza solo la ropa visible de cada persona claramente visible en la imagen 1 con el bikini triangular blanco clásico de la imagen 2. Si la imagen 1 contiene varias personas, aplica el mismo estilo de traje de baño a cada persona claramente visible. Mantén todo lo demás exactamente igual para cada persona y la escena: rostro, identidad, edad, tono de piel, cabello, forma corporal, proporciones corporales, pose, manos, expresión, posición relativa, fondo, iluminación, ángulo de cámara, encuadre y calidad de imagen. No adelgaces, no agrandes, no retoques, no remodeles, no cambies la pose, no cambies el rostro, no cambies el cuerpo, no cambies las posiciones relativas y no modifiques la escena. Igualar la cobertura, los tirantes finos, la tela blanca limpia, la forma del top, la forma de la parte inferior y la silueta de la imagen 2 lo más posible. Mantén el resultado realista, de buen gusto, no explícito y adecuado para una vista previa de traje de baño.",
+          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/95db19f5e40a4afa9cc89731f091a5ce.webp",
+          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/95db19f5e40a4afa9cc89731f091a5ce.webp",
+          "swatch": "linear-gradient(135deg, #ffffff, #e5e7eb)"
+        },
+        {
+          "label": "Bikini rojo de talle alto",
+          "group": "bikini-reference",
+          "prompt": "La imagen 1 es la foto original de la persona. La imagen 2 es la referencia de bikini o traje de baño. Reemplaza solo la ropa visible de cada persona claramente visible en la imagen 1 con el bikini rojo retro de talle alto de la imagen 2. Si la imagen 1 contiene varias personas, aplica el mismo estilo de traje de baño a cada persona claramente visible. Mantén todo lo demás exactamente igual para cada persona y la escena: rostro, identidad, edad, tono de piel, cabello, forma corporal, proporciones corporales, pose, manos, expresión, posición relativa, fondo, iluminación, ángulo de cámara, encuadre y calidad de imagen. No adelgaces, no agrandes, no retoques, no remodeles, no cambies la pose, no cambies el rostro, no cambies el cuerpo, no cambies las posiciones relativas y no modifiques la escena. Igualar la cintura alta, el top de soporte, las costuras limpias, la tela roja, la cobertura y la silueta de la imagen 2 lo más posible. Mantén el resultado realista, de buen gusto, no explícito y adecuado para una vista previa de traje de baño.",
+          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3028cca8904b49249b517c0ef32386ee.webp",
+          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3028cca8904b49249b517c0ef32386ee.webp",
+          "swatch": "linear-gradient(135deg, #ef4444, #991b1b)"
+        },
+        {
+          "label": "Bikini náutico azul marino",
+          "group": "bikini-reference",
+          "prompt": "La imagen 1 es la foto original de la persona. La imagen 2 es la referencia de bikini o traje de baño. Reemplaza solo la ropa visible de cada persona claramente visible en la imagen 1 con el bikini náutico azul marino de la imagen 2. Si la imagen 1 contiene varias personas, aplica el mismo estilo de traje de baño a cada persona claramente visible. Mantén todo lo demás exactamente igual para cada persona y la escena: rostro, identidad, edad, tono de piel, cabello, forma corporal, proporciones corporales, pose, manos, expresión, posición relativa, fondo, iluminación, ángulo de cámara, encuadre y calidad de imagen. No adelgaces, no agrandes, no retoques, no remodeles, no cambies la pose, no cambies el rostro, no cambies el cuerpo, no cambies las posiciones relativas y no modifiques la escena. Igualar el color azul marino, los detalles blancos de ribete o rayas, los tirantes, la cobertura, la tela y la silueta de la imagen 2 lo más posible. Mantén el resultado realista, de buen gusto, no explícito y adecuado para una vista previa de traje de baño.",
+          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3312de502e7344c493d7aaa3796ef6fc.webp",
+          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3312de502e7344c493d7aaa3796ef6fc.webp",
+          "swatch": "linear-gradient(135deg, #1e3a8a, #f8fafc)"
+        },
+        {
+          "label": "Bikini floral tropical",
+          "group": "bikini-reference",
+          "prompt": "La imagen 1 es la foto original de la persona. La imagen 2 es la referencia de bikini o traje de baño. Reemplaza solo la ropa visible de cada persona claramente visible en la imagen 1 con el bikini floral tropical de la imagen 2. Si la imagen 1 contiene varias personas, aplica el mismo estilo de traje de baño a cada persona claramente visible. Mantén todo lo demás exactamente igual para cada persona y la escena: rostro, identidad, edad, tono de piel, cabello, forma corporal, proporciones corporales, pose, manos, expresión, posición relativa, fondo, iluminación, ángulo de cámara, encuadre y calidad de imagen. No adelgaces, no agrandes, no retoques, no remodeles, no cambies la pose, no cambies el rostro, no cambies el cuerpo, no cambies las posiciones relativas y no modifiques la escena. Igualar el estampado botánico, la paleta de color, los tirantes, la cobertura, la tela y la silueta de la imagen 2 lo más posible. Mantén el resultado realista, de buen gusto, no explícito y adecuado para una vista previa de traje de baño.",
+          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/bad0f5902cb643df87a8fe34210dc99c.webp",
+          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/bad0f5902cb643df87a8fe34210dc99c.webp",
+          "swatch": "linear-gradient(135deg, #22c55e, #f97316, #f43f5e)"
+        },
+        {
+          "label": "Bikini deportivo verde azulado",
+          "group": "bikini-reference",
+          "prompt": "La imagen 1 es la foto original de la persona. La imagen 2 es la referencia de bikini o traje de baño. Reemplaza solo la ropa visible de cada persona claramente visible en la imagen 1 con el bikini deportivo verde azulado con inspiración racerback de la imagen 2. Si la imagen 1 contiene varias personas, aplica el mismo estilo de traje de baño a cada persona claramente visible. Mantén todo lo demás exactamente igual para cada persona y la escena: rostro, identidad, edad, tono de piel, cabello, forma corporal, proporciones corporales, pose, manos, expresión, posición relativa, fondo, iluminación, ángulo de cámara, encuadre y calidad de imagen. No adelgaces, no agrandes, no retoques, no remodeles, no cambies la pose, no cambies el rostro, no cambies el cuerpo, no cambies las posiciones relativas y no modifiques la escena. Igualar la forma deportiva del top, el color verde azulado, los tirantes firmes, la cobertura, la tela y la silueta de la imagen 2 lo más posible. Mantén el resultado realista, de buen gusto, no explícito y adecuado para una vista previa de traje de baño.",
+          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/49b1ef80a71344b6990bc71150c35644.webp",
+          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/49b1ef80a71344b6990bc71150c35644.webp",
+          "swatch": "linear-gradient(135deg, #0f766e, #22d3ee)"
+        },
+        {
+          "label": "Bikini amarillo acanalado",
+          "group": "bikini-reference",
+          "prompt": "La imagen 1 es la foto original de la persona. La imagen 2 es la referencia de bikini o traje de baño. Reemplaza solo la ropa visible de cada persona claramente visible en la imagen 1 con el bikini amarillo con textura acanalada de la imagen 2. Si la imagen 1 contiene varias personas, aplica el mismo estilo de traje de baño a cada persona claramente visible. Mantén todo lo demás exactamente igual para cada persona y la escena: rostro, identidad, edad, tono de piel, cabello, forma corporal, proporciones corporales, pose, manos, expresión, posición relativa, fondo, iluminación, ángulo de cámara, encuadre y calidad de imagen. No adelgaces, no agrandes, no retoques, no remodeles, no cambies la pose, no cambies el rostro, no cambies el cuerpo, no cambies las posiciones relativas y no modifiques la escena. Igualar el amarillo cálido, la textura acanalada, los tirantes, la cobertura, la tela y la silueta de la imagen 2 lo más posible. Mantén el resultado realista, de buen gusto, no explícito y adecuado para una vista previa de traje de baño.",
+          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/f2eadccf020a4fe1a733b91335d23ceb.webp",
+          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/f2eadccf020a4fe1a733b91335d23ceb.webp",
+          "swatch": "linear-gradient(135deg, #facc15, #f59e0b)"
+        },
+        {
+          "label": "Bikini coral de un hombro",
+          "group": "bikini-reference",
+          "prompt": "La imagen 1 es la foto original de la persona. La imagen 2 es la referencia de bikini o traje de baño. Reemplaza solo la ropa visible de cada persona claramente visible en la imagen 1 con el bikini coral de un hombro de la imagen 2. Si la imagen 1 contiene varias personas, aplica el mismo estilo de traje de baño a cada persona claramente visible. Mantén todo lo demás exactamente igual para cada persona y la escena: rostro, identidad, edad, tono de piel, cabello, forma corporal, proporciones corporales, pose, manos, expresión, posición relativa, fondo, iluminación, ángulo de cámara, encuadre y calidad de imagen. No adelgaces, no agrandes, no retoques, no remodeles, no cambies la pose, no cambies el rostro, no cambies el cuerpo, no cambies las posiciones relativas y no modifiques la escena. Igualar la forma del top de un hombro, el color coral, el escote asimétrico, la cobertura, la tela y la silueta de la imagen 2 lo más posible. Mantén el resultado realista, de buen gusto, no explícito y adecuado para una vista previa de traje de baño.",
+          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/5020adfd323e4cf9a3fd7154e243a1b0.webp",
+          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/5020adfd323e4cf9a3fd7154e243a1b0.webp",
+          "swatch": "linear-gradient(135deg, #fb7185, #f97316)"
+        },
+        {
+          "label": "Bikini cruzado esmeralda",
+          "group": "bikini-reference",
+          "prompt": "La imagen 1 es la foto original de la persona. La imagen 2 es la referencia de bikini o traje de baño. Reemplaza solo la ropa visible de cada persona claramente visible en la imagen 1 con el bikini verde esmeralda con detalle cruzado de la imagen 2. Si la imagen 1 contiene varias personas, aplica el mismo estilo de traje de baño a cada persona claramente visible. Mantén todo lo demás exactamente igual para cada persona y la escena: rostro, identidad, edad, tono de piel, cabello, forma corporal, proporciones corporales, pose, manos, expresión, posición relativa, fondo, iluminación, ángulo de cámara, encuadre y calidad de imagen. No adelgaces, no agrandes, no retoques, no remodeles, no cambies la pose, no cambies el rostro, no cambies el cuerpo, no cambies las posiciones relativas y no modifiques la escena. Igualar el detalle superior tipo cruzado, el color esmeralda, los tirantes, la cobertura, la tela y la silueta de la imagen 2 lo más posible. Mantén el resultado realista, de buen gusto, no explícito y adecuado para una vista previa de traje de baño.",
+          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/cb70d59d82a6425a9e02350f87f3acec.webp",
+          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/cb70d59d82a6425a9e02350f87f3acec.webp",
+          "swatch": "linear-gradient(135deg, #047857, #10b981)"
+        },
+        {
+          "label": "Bikini lavanda con borde festoneado",
+          "group": "bikini-reference",
+          "prompt": "La imagen 1 es la foto original de la persona. La imagen 2 es la referencia de bikini o traje de baño. Reemplaza solo la ropa visible de cada persona claramente visible en la imagen 1 con el bikini lavanda con borde festoneado de la imagen 2. Si la imagen 1 contiene varias personas, aplica el mismo estilo de traje de baño a cada persona claramente visible. Mantén todo lo demás exactamente igual para cada persona y la escena: rostro, identidad, edad, tono de piel, cabello, forma corporal, proporciones corporales, pose, manos, expresión, posición relativa, fondo, iluminación, ángulo de cámara, encuadre y calidad de imagen. No adelgaces, no agrandes, no retoques, no remodeles, no cambies la pose, no cambies el rostro, no cambies el cuerpo, no cambies las posiciones relativas y no modifiques la escena. Igualar el color lavanda, los bordes festoneados, los tirantes, la cobertura, la tela y la silueta de la imagen 2 lo más posible. Mantén el resultado realista, de buen gusto, no explícito y adecuado para una vista previa de traje de baño.",
+          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/30aae7250fd54652a4da62137d3d398c.webp",
+          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/30aae7250fd54652a4da62137d3d398c.webp",
+          "swatch": "linear-gradient(135deg, #c4b5fd, #8b5cf6)"
+        },
+        {
+          "label": "Personalizado",
+          "group": "custom"
+        }
+      ]
+    },
+    "sampleImages": [
+      {
+        "url": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/6bcf91ffd06e45a8bcda2ea867015141.webp",
+        "title": "Generador de bikini con IA",
+        "width": 1600,
+        "height": 900
+      }
+    ],
+    "textOverrides": {
+      "uploadTitle": "Sube foto de persona + referencia de bikini",
+      "uploadHelper": "Sube primero la foto adulta y después una referencia de traje de baño de buen gusto.",
+      "promptLabel": "Describe el traje de baño",
+      "promptPlaceholder": "Personalizado: sube una foto adulta y describe estilo de bikini, cobertura, color, tirantes, tela y uso."
+    }
+  },
+  "metadata": {
+    "title": "Generador de bikini con IA gratis online | Toolaze",
+    "description": "Crea vistas previas de bikini con Toolaze. Los nuevos usuarios reciben 10 créditos gratis al registrarse, suficientes para una vista estándar 1K con Seedream 5.0 Lite."
+  },
+  "sectionsOrder": [
+    "intro",
+    "howToUse",
+    "photoTips",
+    "promptExamples",
+    "workflowComparison",
+    "scenes",
+    "features",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Generador de <span class=\"text-gradient\">bikini con IA</span> gratis online",
+    "desc": "Sube una foto adulta y una referencia de bikini, o usa el modo personalizado con una foto y una descripción. Mantén rostro, forma corporal, pose, luz y fondo sin cambios."
+  },
+  "intro": {
+    "title": "¿Qué es un generador de bikini con IA?",
+    "content": [
+      {
+        "title": "Prueba ideas de traje de baño sin cambiar a la persona",
+        "text": "Un generador de bikini con IA edita solo la zona visible de la ropa en una foto adulta. Toolaze usa un flujo guiado por referencia: la imagen 1 es la persona original y la imagen 2 es la referencia de bikini. La vista previa mantiene estables rostro, forma corporal, proporciones, pose, fondo, luz y ángulo de cámara."
+      },
+      {
+        "title": "Vistas previas de traje de baño adulto con buen gusto",
+        "text": "Crea conceptos de playa, estilismos de vacaciones, miniaturas para creadores, tableros de inspiración para resort y planes de atuendo. Los resultados son vistas visuales, no garantías de ajuste. Evita solicitudes de quitar ropa, sexualizar personas, editar menores, suplantar identidades o usar imágenes sin permiso."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Cómo generar una vista previa de bikini con IA",
+    "steps": [
+      {
+        "title": "Sube la foto original de la persona",
+        "desc": "Usa una foto adulta clara donde se vean el atuendo actual, torso, brazos y contorno corporal. Las poses sencillas funcionan mejor que la oclusión, sombras fuertes o desenfoque."
+      },
+      {
+        "title": "Añade una referencia de bikini o usa personalizado",
+        "desc": "Sube una referencia de traje de baño como imagen 2 o elige una integrada. En modo personalizado, sube una foto y describe estilo, cobertura, color, tela y tirantes."
+      },
+      {
+        "title": "Genera y revisa las zonas sin cambios",
+        "desc": "Comprueba que rostro, forma corporal, pose, manos, fondo, luz y ángulo de cámara se mantengan estables. Ajusta la instrucción si el modelo cambia algo más que el traje de baño."
+      }
+    ]
+  },
+  "photoTips": {
+    "title": "Consejos de foto para mejores ediciones de bikini",
+    "subtitle": "Los mejores resultados salen de fotos fuente claras e instrucciones directas de preservación.",
+    "items": [
+      {
+        "title": "Usa una foto adulta con ropa visible",
+        "desc": "Elige una foto tuya o con permiso de edición. La persona debe ser adulta y la zona del atuendo debe identificarse con facilidad.",
+        "color": "linear-gradient(135deg, #dbeafe, #6366f1)"
+      },
+      {
+        "title": "Mantén la pose sencilla",
+        "desc": "Poses de pie, sentadas o ligeramente giradas suelen preservar mejor la forma corporal que brazos cruzados, espejos, sombras fuertes o torso cubierto.",
+        "color": "linear-gradient(135deg, #fce7f3, #db2777)"
+      },
+      {
+        "title": "Usa una referencia de traje de baño legible",
+        "desc": "Las referencias de cuerpo completo ayudan al modelo a igualar tirantes, cobertura, tela, color y silueta sin inventar detalles.",
+        "color": "linear-gradient(135deg, #fef3c7, #f97316)"
+      },
+      {
+        "title": "Indica qué no debe cambiar",
+        "desc": "Repite rostro, forma corporal, proporciones, pose, manos, fondo, luz y ángulo de cámara cuando importen identidad y encuadre.",
+        "color": "linear-gradient(135deg, #ede9fe, #7c3aed)"
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "Ideas de instrucciones para el generador de bikini con IA",
+    "subtitle": "Empieza con ocho estilos de referencia de traje de baño y ajusta cobertura, color, tela, tirantes y silueta.",
+    "items": [
+      {
+        "title": "Bikini negro clásico",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3d80ed2905334169b0a2d06d1f86c01d.webp",
+        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3d80ed2905334169b0a2d06d1f86c01d.webp",
+        "prompt": "La imagen 1 es la foto original de la persona. La imagen 2 es la referencia de bikini o traje de baño. Reemplaza solo la ropa visible de cada persona claramente visible en la imagen 1 con el bikini triangular negro clásico de la imagen 2. Si la imagen 1 contiene varias personas, aplica el mismo estilo de traje de baño a cada persona claramente visible. Mantén todo lo demás exactamente igual para cada persona y la escena: rostro, identidad, edad, tono de piel, cabello, forma corporal, proporciones corporales, pose, manos, expresión, posición relativa, fondo, iluminación, ángulo de cámara, encuadre y calidad de imagen. No adelgaces, no agrandes, no retoques, no remodeles, no cambies la pose, no cambies el rostro, no cambies el cuerpo, no cambies las posiciones relativas y no modifiques la escena. Igualar la tela negra, los tirantes finos, la cobertura, la forma del top, la forma de la parte inferior y la silueta de la imagen 2 lo más posible. Mantén el resultado realista, de buen gusto, no explícito y adecuado para una vista previa de traje de baño.",
+        "note": "Usa la imagen de referencia de bikini correspondiente para este estilo.",
+        "color": "linear-gradient(135deg, #111827, #020617)",
+        "group": "bikini-reference"
+      },
+      {
+        "title": "Bikini blanco clásico",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/95db19f5e40a4afa9cc89731f091a5ce.webp",
+        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/95db19f5e40a4afa9cc89731f091a5ce.webp",
+        "prompt": "La imagen 1 es la foto original de la persona. La imagen 2 es la referencia de bikini o traje de baño. Reemplaza solo la ropa visible de cada persona claramente visible en la imagen 1 con el bikini triangular blanco clásico de la imagen 2. Si la imagen 1 contiene varias personas, aplica el mismo estilo de traje de baño a cada persona claramente visible. Mantén todo lo demás exactamente igual para cada persona y la escena: rostro, identidad, edad, tono de piel, cabello, forma corporal, proporciones corporales, pose, manos, expresión, posición relativa, fondo, iluminación, ángulo de cámara, encuadre y calidad de imagen. No adelgaces, no agrandes, no retoques, no remodeles, no cambies la pose, no cambies el rostro, no cambies el cuerpo, no cambies las posiciones relativas y no modifiques la escena. Igualar la cobertura, los tirantes finos, la tela blanca limpia, la forma del top, la forma de la parte inferior y la silueta de la imagen 2 lo más posible. Mantén el resultado realista, de buen gusto, no explícito y adecuado para una vista previa de traje de baño.",
+        "note": "Usa la imagen de referencia de bikini correspondiente para este estilo.",
+        "color": "linear-gradient(135deg, #ffffff, #e5e7eb)",
+        "group": "bikini-reference"
+      },
+      {
+        "title": "Bikini rojo de talle alto",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3028cca8904b49249b517c0ef32386ee.webp",
+        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3028cca8904b49249b517c0ef32386ee.webp",
+        "prompt": "La imagen 1 es la foto original de la persona. La imagen 2 es la referencia de bikini o traje de baño. Reemplaza solo la ropa visible de cada persona claramente visible en la imagen 1 con el bikini rojo retro de talle alto de la imagen 2. Si la imagen 1 contiene varias personas, aplica el mismo estilo de traje de baño a cada persona claramente visible. Mantén todo lo demás exactamente igual para cada persona y la escena: rostro, identidad, edad, tono de piel, cabello, forma corporal, proporciones corporales, pose, manos, expresión, posición relativa, fondo, iluminación, ángulo de cámara, encuadre y calidad de imagen. No adelgaces, no agrandes, no retoques, no remodeles, no cambies la pose, no cambies el rostro, no cambies el cuerpo, no cambies las posiciones relativas y no modifiques la escena. Igualar la cintura alta, el top de soporte, las costuras limpias, la tela roja, la cobertura y la silueta de la imagen 2 lo más posible. Mantén el resultado realista, de buen gusto, no explícito y adecuado para una vista previa de traje de baño.",
+        "note": "Usa la imagen de referencia de bikini correspondiente para este estilo.",
+        "color": "linear-gradient(135deg, #ef4444, #991b1b)",
+        "group": "bikini-reference"
+      },
+      {
+        "title": "Bikini náutico azul marino",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3312de502e7344c493d7aaa3796ef6fc.webp",
+        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3312de502e7344c493d7aaa3796ef6fc.webp",
+        "prompt": "La imagen 1 es la foto original de la persona. La imagen 2 es la referencia de bikini o traje de baño. Reemplaza solo la ropa visible de cada persona claramente visible en la imagen 1 con el bikini náutico azul marino de la imagen 2. Si la imagen 1 contiene varias personas, aplica el mismo estilo de traje de baño a cada persona claramente visible. Mantén todo lo demás exactamente igual para cada persona y la escena: rostro, identidad, edad, tono de piel, cabello, forma corporal, proporciones corporales, pose, manos, expresión, posición relativa, fondo, iluminación, ángulo de cámara, encuadre y calidad de imagen. No adelgaces, no agrandes, no retoques, no remodeles, no cambies la pose, no cambies el rostro, no cambies el cuerpo, no cambies las posiciones relativas y no modifiques la escena. Igualar el color azul marino, los detalles blancos de ribete o rayas, los tirantes, la cobertura, la tela y la silueta de la imagen 2 lo más posible. Mantén el resultado realista, de buen gusto, no explícito y adecuado para una vista previa de traje de baño.",
+        "note": "Usa la imagen de referencia de bikini correspondiente para este estilo.",
+        "color": "linear-gradient(135deg, #1e3a8a, #f8fafc)",
+        "group": "bikini-reference"
+      },
+      {
+        "title": "Bikini floral tropical",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/bad0f5902cb643df87a8fe34210dc99c.webp",
+        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/bad0f5902cb643df87a8fe34210dc99c.webp",
+        "prompt": "La imagen 1 es la foto original de la persona. La imagen 2 es la referencia de bikini o traje de baño. Reemplaza solo la ropa visible de cada persona claramente visible en la imagen 1 con el bikini floral tropical de la imagen 2. Si la imagen 1 contiene varias personas, aplica el mismo estilo de traje de baño a cada persona claramente visible. Mantén todo lo demás exactamente igual para cada persona y la escena: rostro, identidad, edad, tono de piel, cabello, forma corporal, proporciones corporales, pose, manos, expresión, posición relativa, fondo, iluminación, ángulo de cámara, encuadre y calidad de imagen. No adelgaces, no agrandes, no retoques, no remodeles, no cambies la pose, no cambies el rostro, no cambies el cuerpo, no cambies las posiciones relativas y no modifiques la escena. Igualar el estampado botánico, la paleta de color, los tirantes, la cobertura, la tela y la silueta de la imagen 2 lo más posible. Mantén el resultado realista, de buen gusto, no explícito y adecuado para una vista previa de traje de baño.",
+        "note": "Usa la imagen de referencia de bikini correspondiente para este estilo.",
+        "color": "linear-gradient(135deg, #22c55e, #f97316, #f43f5e)",
+        "group": "bikini-reference"
+      },
+      {
+        "title": "Bikini deportivo verde azulado",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/49b1ef80a71344b6990bc71150c35644.webp",
+        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/49b1ef80a71344b6990bc71150c35644.webp",
+        "prompt": "La imagen 1 es la foto original de la persona. La imagen 2 es la referencia de bikini o traje de baño. Reemplaza solo la ropa visible de cada persona claramente visible en la imagen 1 con el bikini deportivo verde azulado con inspiración racerback de la imagen 2. Si la imagen 1 contiene varias personas, aplica el mismo estilo de traje de baño a cada persona claramente visible. Mantén todo lo demás exactamente igual para cada persona y la escena: rostro, identidad, edad, tono de piel, cabello, forma corporal, proporciones corporales, pose, manos, expresión, posición relativa, fondo, iluminación, ángulo de cámara, encuadre y calidad de imagen. No adelgaces, no agrandes, no retoques, no remodeles, no cambies la pose, no cambies el rostro, no cambies el cuerpo, no cambies las posiciones relativas y no modifiques la escena. Igualar la forma deportiva del top, el color verde azulado, los tirantes firmes, la cobertura, la tela y la silueta de la imagen 2 lo más posible. Mantén el resultado realista, de buen gusto, no explícito y adecuado para una vista previa de traje de baño.",
+        "note": "Usa la imagen de referencia de bikini correspondiente para este estilo.",
+        "color": "linear-gradient(135deg, #0f766e, #22d3ee)",
+        "group": "bikini-reference"
+      },
+      {
+        "title": "Bikini amarillo acanalado",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/f2eadccf020a4fe1a733b91335d23ceb.webp",
+        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/f2eadccf020a4fe1a733b91335d23ceb.webp",
+        "prompt": "La imagen 1 es la foto original de la persona. La imagen 2 es la referencia de bikini o traje de baño. Reemplaza solo la ropa visible de cada persona claramente visible en la imagen 1 con el bikini amarillo con textura acanalada de la imagen 2. Si la imagen 1 contiene varias personas, aplica el mismo estilo de traje de baño a cada persona claramente visible. Mantén todo lo demás exactamente igual para cada persona y la escena: rostro, identidad, edad, tono de piel, cabello, forma corporal, proporciones corporales, pose, manos, expresión, posición relativa, fondo, iluminación, ángulo de cámara, encuadre y calidad de imagen. No adelgaces, no agrandes, no retoques, no remodeles, no cambies la pose, no cambies el rostro, no cambies el cuerpo, no cambies las posiciones relativas y no modifiques la escena. Igualar el amarillo cálido, la textura acanalada, los tirantes, la cobertura, la tela y la silueta de la imagen 2 lo más posible. Mantén el resultado realista, de buen gusto, no explícito y adecuado para una vista previa de traje de baño.",
+        "note": "Usa la imagen de referencia de bikini correspondiente para este estilo.",
+        "color": "linear-gradient(135deg, #facc15, #f59e0b)",
+        "group": "bikini-reference"
+      },
+      {
+        "title": "Bikini coral de un hombro",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/5020adfd323e4cf9a3fd7154e243a1b0.webp",
+        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/5020adfd323e4cf9a3fd7154e243a1b0.webp",
+        "prompt": "La imagen 1 es la foto original de la persona. La imagen 2 es la referencia de bikini o traje de baño. Reemplaza solo la ropa visible de cada persona claramente visible en la imagen 1 con el bikini coral de un hombro de la imagen 2. Si la imagen 1 contiene varias personas, aplica el mismo estilo de traje de baño a cada persona claramente visible. Mantén todo lo demás exactamente igual para cada persona y la escena: rostro, identidad, edad, tono de piel, cabello, forma corporal, proporciones corporales, pose, manos, expresión, posición relativa, fondo, iluminación, ángulo de cámara, encuadre y calidad de imagen. No adelgaces, no agrandes, no retoques, no remodeles, no cambies la pose, no cambies el rostro, no cambies el cuerpo, no cambies las posiciones relativas y no modifiques la escena. Igualar la forma del top de un hombro, el color coral, el escote asimétrico, la cobertura, la tela y la silueta de la imagen 2 lo más posible. Mantén el resultado realista, de buen gusto, no explícito y adecuado para una vista previa de traje de baño.",
+        "note": "Usa la imagen de referencia de bikini correspondiente para este estilo.",
+        "color": "linear-gradient(135deg, #fb7185, #f97316)",
+        "group": "bikini-reference"
+      }
+    ]
+  },
+  "workflowComparison": {
+    "title": "Generador de bikini con IA vs edición manual de traje de baño",
+    "subtitle": "Usa IA para vistas rápidas de estilo y edición manual o una sesión real cuando el ajuste, la tela o la precisión del producto sean críticos.",
+    "columns": [
+      "Opción",
+      "Útil para",
+      "Revisar antes de usar"
+    ],
+    "rows": [
+      [
+        "Generador de bikini con IA de Toolaze",
+        "Vistas rápidas de traje de baño adulto, visuales para creadores, estilismo vacacional y conceptos desde foto de persona más referencia.",
+        "Revisa proporciones, manos, bordes de la prenda, tirantes, lógica de tela y estabilidad de las zonas sin cambios."
+      ],
+      [
+        "Retoque manual",
+        "Limpieza píxel a píxel, acabado de campañas, detalles exactos de producto y ediciones aprobadas por marca.",
+        "Requiere más tiempo y una persona experta en edición."
+      ],
+      [
+        "Sesión fotográfica real",
+        "Imágenes finales para comercio electrónico, validación de ajuste, precisión legal del producto y construcción real del traje de baño.",
+        "Requiere muestras, tiempo de modelo, ubicación, estilismo y presupuesto para repetir tomas."
+      ]
+    ]
+  },
+  "scenesTitle": "Usos populares para vistas previas de bikini con IA",
+  "scenes": [
+    {
+      "icon": "🏖️",
+      "title": "Estilismo de vacaciones",
+      "desc": "Prueba ideas de playa, resort y piscina antes de planear una sesión o maleta de viaje."
+    },
+    {
+      "icon": "📱",
+      "title": "Miniaturas y tableros de inspiración para creadores",
+      "desc": "Crea conceptos de traje de baño adulto con buen gusto para redes, miniaturas y tableros de dirección visual."
+    },
+    {
+      "icon": "🛍️",
+      "title": "Comprobación de conceptos de traje de baño",
+      "desc": "Previsualiza direcciones de color, cobertura y silueta antes de pasar a edición manual o fotografía de producto."
+    }
+  ],
+  "features": {
+    "title": "Por qué usar Toolaze para vistas de bikini con IA",
+    "items": [
+      {
+        "icon": "👙",
+        "iconType": "ai",
+        "title": "Ediciones guiadas por referencia",
+        "desc": "Sube una foto de persona y una referencia de traje de baño para que la edición siga un estilo real de bikini en lugar de texto impreciso."
+      },
+      {
+        "icon": "🧍",
+        "iconType": "ai",
+        "title": "Instrucción fuerte para preservar a la persona",
+        "desc": "Las instrucciones integradas preservan explícitamente rostro, identidad, forma corporal, proporciones, pose, fondo, luz, ángulo de cámara y calidad."
+      },
+      {
+        "icon": "🛡️",
+        "iconType": "ai",
+        "title": "Límite de uso adulto con buen gusto",
+        "desc": "Usa Toolaze para vistas de traje de baño adulto y evita quitar ropa, ediciones explícitas, imágenes de menores, suplantación o fotos no autorizadas."
+      }
+    ]
+  },
+  "faqTitle": "Preguntas frecuentes del generador de bikini con IA",
+  "faq": [
+    {
+      "q": "¿El generador de bikini con IA de Toolaze es gratis?",
+      "a": "Sí. Los nuevos usuarios reciben 10 créditos gratis después de registrarse. Seedream 5.0 Lite empieza en 10 créditos para una generación estándar 1K, por lo que esos créditos alcanzan para una vista previa estándar elegible de bikini. Mayor resolución o uso continuo puede requerir más créditos."
+    },
+    {
+      "q": "¿Qué modelo usa el generador de bikini con IA?",
+      "a": "Toolaze usa Seedream 5.0 Lite para este flujo de vista previa de traje de baño."
+    },
+    {
+      "q": "¿La herramienta cambiará mi rostro o forma corporal?",
+      "a": "La instrucción predeterminada indica al modelo que reemplace solo la ropa visible y mantenga rostro, identidad, forma corporal, proporciones, pose, fondo, luz y ángulo de cámara sin cambios. Aun así, revisa el resultado antes de usarlo."
+    },
+    {
+      "q": "¿Puedo subir mi propia referencia de bikini?",
+      "a": "Sí. En modo Referencia de bikini, sube primero la foto de la persona y después una referencia de traje de baño o elige una referencia integrada."
+    },
+    {
+      "q": "¿Puedo usarlo sin imagen de referencia de bikini?",
+      "a": "Sí. Usa el modo personalizado, sube una foto adulta y describe estilo, cobertura, color, tirantes, tela y ocasión."
+    },
+    {
+      "q": "¿Qué reglas de seguridad debo seguir?",
+      "a": "Usa fotos adultas tuyas o con permiso de edición. Evita menores, contenido explícito, quitar ropa, suplantación e imágenes usadas sin consentimiento."
+    }
+  ],
+  "moreToolsLinks": [
+    {
+      "slug": "ai-clothes-changer",
+      "title": "Cambiador de ropa con IA",
+      "description": "Previsualiza cambios de atuendo de negocios, formal, traje de baño y personalizado desde una foto de persona.",
+      "href": "/ai-clothes-changer"
+    },
+    {
+      "slug": "ai-image-to-image-generator",
+      "title": "Generador de imagen a imagen con IA",
+      "description": "Sube una imagen de referencia y transfórmala con edición de IA guiada por instrucciones.",
+      "href": "/ai-image-to-image-generator"
+    },
+    {
+      "slug": "ai-hairstyle-changer",
+      "title": "Cambiador de peinado con IA",
+      "description": "Prueba ideas de peinado mientras preservas la identidad del retrato original.",
+      "href": "/ai-hairstyle-changer"
+    }
+  ]
+}

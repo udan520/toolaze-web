@@ -53,6 +53,12 @@
       "slug": "kling-ai-video-generator",
       "pageType": "l2",
       "status": "ready_for_publish"
+    },
+    {
+      "taskId": "2026-07-31-ai-bikini-generator",
+      "slug": "ai-bikini-generator",
+      "pageType": "l2",
+      "status": "ready_for_publish"
     }
   ]
 }

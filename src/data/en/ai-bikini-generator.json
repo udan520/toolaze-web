@@ -1,0 +1,399 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 2,
+    "modelId": "seedream-5-0-lite",
+    "defaultPrompt": "Image 1 is the original person photo. Image 2 is the bikini or swimwear reference. Replace only the visible clothing on each clearly visible person in image 1 with the swimwear from image 2. If image 1 contains multiple people, apply the same swimwear style to every clearly visible person. Keep everything else exactly the same for each person and the scene: face, identity, age, skin tone, hair, body shape, body proportions, pose, hands, expression, relative position, background, lighting, camera angle, framing, and image quality. Do not slim, do not enlarge, do not retouch, do not reshape, do not change posture, do not change the face, do not change the body, do not change relative positions, and do not modify the scene. Match the swimwear style, coverage, fabric, color, straps, and silhouette from image 2 as closely as possible. Keep the result realistic, tasteful, non-explicit, and suitable for a swimwear preview.",
+    "defaultImageUrls": [],
+    "hideModelBranding": true,
+    "compactResultPanel": true,
+    "displayName": "AI Bikini Generator",
+    "functionalAcceptance": {
+      "recommendedMode": "bikini-reference-first-with-custom-prompt",
+      "reason": "The primary flow uses two images: an adult person photo plus a bikini or swimwear reference. Custom mode keeps the one-person-photo plus swimwear prompt workflow.",
+      "presetTitle": "Choose a bikini reference",
+      "presetTabs": [
+        {
+          "id": "bikini-reference",
+          "label": "Bikini Reference"
+        },
+        {
+          "id": "custom",
+          "label": "Custom"
+        }
+      ],
+      "hidePresetPromptInput": true,
+      "customPromptTabId": "custom",
+      "presets": [
+        {
+          "label": "Classic Black Bikini",
+          "group": "bikini-reference",
+          "prompt": "Image 1 is the original person photo. Image 2 is the bikini or swimwear reference. Replace only the visible clothing on each clearly visible person in image 1 with the classic black triangle bikini from image 2. If image 1 contains multiple people, apply the same swimwear style to every clearly visible person. Keep everything else exactly the same for each person and the scene: face, identity, age, skin tone, hair, body shape, body proportions, pose, hands, expression, relative position, background, lighting, camera angle, framing, and image quality. Do not slim, do not enlarge, do not retouch, do not reshape, do not change posture, do not change the face, do not change the body, do not change relative positions, and do not modify the scene. Match the swimwear black fabric, thin straps, coverage, top shape, bottom shape, and silhouette from image 2 as closely as possible. Keep the result realistic, tasteful, non-explicit, and suitable for a swimwear preview.",
+          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3d80ed2905334169b0a2d06d1f86c01d.webp",
+          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3d80ed2905334169b0a2d06d1f86c01d.webp",
+          "swatch": "linear-gradient(135deg, #111827, #020617)"
+        },
+        {
+          "label": "Classic White Bikini",
+          "group": "bikini-reference",
+          "prompt": "Image 1 is the original person photo. Image 2 is the bikini or swimwear reference. Replace only the visible clothing on each clearly visible person in image 1 with the classic white triangle bikini from image 2. If image 1 contains multiple people, apply the same swimwear style to every clearly visible person. Keep everything else exactly the same for each person and the scene: face, identity, age, skin tone, hair, body shape, body proportions, pose, hands, expression, relative position, background, lighting, camera angle, framing, and image quality. Do not slim, do not enlarge, do not retouch, do not reshape, do not change posture, do not change the face, do not change the body, do not change relative positions, and do not modify the scene. Match the swimwear coverage, thin straps, clean white fabric, top shape, bottom shape, and silhouette from image 2 as closely as possible. Keep the result realistic, tasteful, non-explicit, and suitable for a swimwear preview.",
+          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/95db19f5e40a4afa9cc89731f091a5ce.webp",
+          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/95db19f5e40a4afa9cc89731f091a5ce.webp",
+          "swatch": "linear-gradient(135deg, #ffffff, #e5e7eb)"
+        },
+        {
+          "label": "Red High-Waisted Bikini",
+          "group": "bikini-reference",
+          "prompt": "Image 1 is the original person photo. Image 2 is the bikini or swimwear reference. Replace only the visible clothing on each clearly visible person in image 1 with the red high-waisted retro bikini from image 2. If image 1 contains multiple people, apply the same swimwear style to every clearly visible person. Keep everything else exactly the same for each person and the scene: face, identity, age, skin tone, hair, body shape, body proportions, pose, hands, expression, relative position, background, lighting, camera angle, framing, and image quality. Do not slim, do not enlarge, do not retouch, do not reshape, do not change posture, do not change the face, do not change the body, do not change relative positions, and do not modify the scene. Match the swimwear high waistline, supportive top, clean seams, red fabric, coverage, and silhouette from image 2 as closely as possible. Keep the result realistic, tasteful, non-explicit, and suitable for a swimwear preview.",
+          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3028cca8904b49249b517c0ef32386ee.webp",
+          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3028cca8904b49249b517c0ef32386ee.webp",
+          "swatch": "linear-gradient(135deg, #ef4444, #991b1b)"
+        },
+        {
+          "label": "Navy Nautical Bikini",
+          "group": "bikini-reference",
+          "prompt": "Image 1 is the original person photo. Image 2 is the bikini or swimwear reference. Replace only the visible clothing on each clearly visible person in image 1 with the navy nautical bikini from image 2. If image 1 contains multiple people, apply the same swimwear style to every clearly visible person. Keep everything else exactly the same for each person and the scene: face, identity, age, skin tone, hair, body shape, body proportions, pose, hands, expression, relative position, background, lighting, camera angle, framing, and image quality. Do not slim, do not enlarge, do not retouch, do not reshape, do not change posture, do not change the face, do not change the body, do not change relative positions, and do not modify the scene. Match the swimwear navy color, white trim or stripe detail, straps, coverage, fabric, and silhouette from image 2 as closely as possible. Keep the result realistic, tasteful, non-explicit, and suitable for a swimwear preview.",
+          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3312de502e7344c493d7aaa3796ef6fc.webp",
+          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3312de502e7344c493d7aaa3796ef6fc.webp",
+          "swatch": "linear-gradient(135deg, #1e3a8a, #f8fafc)"
+        },
+        {
+          "label": "Tropical Floral Bikini",
+          "group": "bikini-reference",
+          "prompt": "Image 1 is the original person photo. Image 2 is the bikini or swimwear reference. Replace only the visible clothing on each clearly visible person in image 1 with the tropical floral bikini from image 2. If image 1 contains multiple people, apply the same swimwear style to every clearly visible person. Keep everything else exactly the same for each person and the scene: face, identity, age, skin tone, hair, body shape, body proportions, pose, hands, expression, relative position, background, lighting, camera angle, framing, and image quality. Do not slim, do not enlarge, do not retouch, do not reshape, do not change posture, do not change the face, do not change the body, do not change relative positions, and do not modify the scene. Match the swimwear botanical print, color palette, straps, coverage, fabric, and silhouette from image 2 as closely as possible. Keep the result realistic, tasteful, non-explicit, and suitable for a swimwear preview.",
+          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/bad0f5902cb643df87a8fe34210dc99c.webp",
+          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/bad0f5902cb643df87a8fe34210dc99c.webp",
+          "swatch": "linear-gradient(135deg, #22c55e, #f97316, #f43f5e)"
+        },
+        {
+          "label": "Sporty Teal Bikini",
+          "group": "bikini-reference",
+          "prompt": "Image 1 is the original person photo. Image 2 is the bikini or swimwear reference. Replace only the visible clothing on each clearly visible person in image 1 with the sporty teal racerback-inspired bikini from image 2. If image 1 contains multiple people, apply the same swimwear style to every clearly visible person. Keep everything else exactly the same for each person and the scene: face, identity, age, skin tone, hair, body shape, body proportions, pose, hands, expression, relative position, background, lighting, camera angle, framing, and image quality. Do not slim, do not enlarge, do not retouch, do not reshape, do not change posture, do not change the face, do not change the body, do not change relative positions, and do not modify the scene. Match the swimwear athletic top shape, teal color, stable straps, coverage, fabric, and silhouette from image 2 as closely as possible. Keep the result realistic, tasteful, non-explicit, and suitable for a swimwear preview.",
+          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/49b1ef80a71344b6990bc71150c35644.webp",
+          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/49b1ef80a71344b6990bc71150c35644.webp",
+          "swatch": "linear-gradient(135deg, #0f766e, #22d3ee)"
+        },
+        {
+          "label": "Yellow Ribbed Bikini",
+          "group": "bikini-reference",
+          "prompt": "Image 1 is the original person photo. Image 2 is the bikini or swimwear reference. Replace only the visible clothing on each clearly visible person in image 1 with the yellow ribbed texture bikini from image 2. If image 1 contains multiple people, apply the same swimwear style to every clearly visible person. Keep everything else exactly the same for each person and the scene: face, identity, age, skin tone, hair, body shape, body proportions, pose, hands, expression, relative position, background, lighting, camera angle, framing, and image quality. Do not slim, do not enlarge, do not retouch, do not reshape, do not change posture, do not change the face, do not change the body, do not change relative positions, and do not modify the scene. Match the swimwear warm yellow color, ribbed fabric texture, straps, coverage, fabric, and silhouette from image 2 as closely as possible. Keep the result realistic, tasteful, non-explicit, and suitable for a swimwear preview.",
+          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/f2eadccf020a4fe1a733b91335d23ceb.webp",
+          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/f2eadccf020a4fe1a733b91335d23ceb.webp",
+          "swatch": "linear-gradient(135deg, #facc15, #f59e0b)"
+        },
+        {
+          "label": "One-Shoulder Coral Bikini",
+          "group": "bikini-reference",
+          "prompt": "Image 1 is the original person photo. Image 2 is the bikini or swimwear reference. Replace only the visible clothing on each clearly visible person in image 1 with the one-shoulder coral bikini from image 2. If image 1 contains multiple people, apply the same swimwear style to every clearly visible person. Keep everything else exactly the same for each person and the scene: face, identity, age, skin tone, hair, body shape, body proportions, pose, hands, expression, relative position, background, lighting, camera angle, framing, and image quality. Do not slim, do not enlarge, do not retouch, do not reshape, do not change posture, do not change the face, do not change the body, do not change relative positions, and do not modify the scene. Match the swimwear one-shoulder top shape, coral color, asymmetrical neckline, coverage, fabric, and silhouette from image 2 as closely as possible. Keep the result realistic, tasteful, non-explicit, and suitable for a swimwear preview.",
+          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/5020adfd323e4cf9a3fd7154e243a1b0.webp",
+          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/5020adfd323e4cf9a3fd7154e243a1b0.webp",
+          "swatch": "linear-gradient(135deg, #fb7185, #f97316)"
+        },
+        {
+          "label": "Emerald Wrap Bikini",
+          "group": "bikini-reference",
+          "prompt": "Image 1 is the original person photo. Image 2 is the bikini or swimwear reference. Replace only the visible clothing on each clearly visible person in image 1 with the emerald green wrap-detail bikini from image 2. If image 1 contains multiple people, apply the same swimwear style to every clearly visible person. Keep everything else exactly the same for each person and the scene: face, identity, age, skin tone, hair, body shape, body proportions, pose, hands, expression, relative position, background, lighting, camera angle, framing, and image quality. Do not slim, do not enlarge, do not retouch, do not reshape, do not change posture, do not change the face, do not change the body, do not change relative positions, and do not modify the scene. Match the swimwear wrap-inspired top detail, emerald color, straps, coverage, fabric, and silhouette from image 2 as closely as possible. Keep the result realistic, tasteful, non-explicit, and suitable for a swimwear preview.",
+          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/cb70d59d82a6425a9e02350f87f3acec.webp",
+          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/cb70d59d82a6425a9e02350f87f3acec.webp",
+          "swatch": "linear-gradient(135deg, #047857, #10b981)"
+        },
+        {
+          "label": "Lavender Edge Bikini",
+          "group": "bikini-reference",
+          "prompt": "Image 1 is the original person photo. Image 2 is the bikini or swimwear reference. Replace only the visible clothing on each clearly visible person in image 1 with the lavender scallop-edge bikini from image 2. If image 1 contains multiple people, apply the same swimwear style to every clearly visible person. Keep everything else exactly the same for each person and the scene: face, identity, age, skin tone, hair, body shape, body proportions, pose, hands, expression, relative position, background, lighting, camera angle, framing, and image quality. Do not slim, do not enlarge, do not retouch, do not reshape, do not change posture, do not change the face, do not change the body, do not change relative positions, and do not modify the scene. Match the swimwear lavender color, scallop-edge trim, straps, coverage, fabric, and silhouette from image 2 as closely as possible. Keep the result realistic, tasteful, non-explicit, and suitable for a swimwear preview.",
+          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/30aae7250fd54652a4da62137d3d398c.webp",
+          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/30aae7250fd54652a4da62137d3d398c.webp",
+          "swatch": "linear-gradient(135deg, #c4b5fd, #8b5cf6)"
+        },
+        {
+          "label": "Custom",
+          "group": "custom"
+        }
+      ]
+    },
+    "sampleImages": [
+      {
+        "url": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/6bcf91ffd06e45a8bcda2ea867015141.webp",
+        "title": "AI bikini generator before and after preview",
+        "width": 1600,
+        "height": 900
+      }
+    ],
+    "textOverrides": {
+      "uploadTitle": "Upload person photo + bikini reference",
+      "uploadHelper": "Upload the adult person photo first, then upload or choose a tasteful swimwear reference.",
+      "promptLabel": "Describe the swimwear",
+      "promptPlaceholder": "Custom mode: upload one adult person photo, then describe the bikini style, coverage, color, straps, fabric, and beach or resort use case."
+    }
+  },
+  "metadata": {
+    "title": "Free AI Bikini Generator Online | Adult Swimwear Preview | Toolaze",
+    "description": "Preview tasteful adult swimwear edits with Toolaze. New users get 10 free credits after sign-up, enough for one standard 1K Seedream 5.0 Lite bikini preview."
+  },
+  "sectionsOrder": [
+    "intro",
+    "howToUse",
+    "photoTips",
+    "promptExamples",
+    "workflowComparison",
+    "scenes",
+    "features",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Free AI <span class=\"text-gradient\">Bikini Generator</span> Online",
+    "desc": "Upload an adult person photo plus a bikini reference, or use Custom mode with one photo and a swimwear prompt. Preview tasteful bikini edits while keeping the original face, body shape, pose, lighting, and background unchanged."
+  },
+  "intro": {
+    "title": "What Is an AI Bikini Generator?",
+    "content": [
+      {
+        "title": "Preview swimwear ideas without changing the person",
+        "text": "An AI bikini generator edits only the visible clothing area in an adult person photo. Toolaze uses a reference-guided flow: upload the original person as image 1, upload or choose a bikini reference as image 2, then generate a swimwear preview that keeps the original face, body shape, body proportions, pose, background, lighting, and camera angle stable."
+      },
+      {
+        "title": "Tasteful adult swimwear previews",
+        "text": "Create beachwear concepts, vacation styling, creator thumbnails, resort moodboards, and outfit-planning visuals. Results are visual previews, not fit guarantees. Avoid requests that remove clothing, sexualize a person, edit minors, impersonate someone, or use images without permission."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "How to Generate a Bikini Preview with AI",
+    "steps": [
+      {
+        "title": "Upload the original person photo",
+        "desc": "Use a clear adult photo where the current outfit, torso, arms, and body outline are visible. Straightforward poses work better than heavy occlusion or motion blur."
+      },
+      {
+        "title": "Add a bikini reference or choose Custom",
+        "desc": "Upload a swimwear reference as image 2 or choose one built-in reference. In Custom mode, upload one person photo and describe the bikini style, coverage, color, fabric, and straps."
+      },
+      {
+        "title": "Generate and review the unchanged areas",
+        "desc": "Check that the face, body shape, pose, hands, background, lighting, and camera angle remain stable. Refine the prompt if the model changes anything beyond the swimwear."
+      }
+    ]
+  },
+  "photoTips": {
+    "title": "Photo Tips for Better Bikini Edits",
+    "subtitle": "The strongest results come from clear source photos and direct preservation instructions.",
+    "items": [
+      {
+        "title": "Use an adult photo with visible clothing",
+        "desc": "Choose a photo you own or have permission to edit. The person must be an adult, and the outfit area should be easy to identify.",
+        "color": "linear-gradient(135deg, #dbeafe, #6366f1)"
+      },
+      {
+        "title": "Keep the pose simple",
+        "desc": "Standing, seated, or lightly angled poses usually preserve body shape better than crossed arms, mirrors, heavy shadows, or covered torsos.",
+        "color": "linear-gradient(135deg, #fce7f3, #db2777)"
+      },
+      {
+        "title": "Use a readable swimwear reference",
+        "desc": "Full-body swimwear references help the model match straps, coverage, fabric, color, and silhouette without inventing extra details.",
+        "color": "linear-gradient(135deg, #fef3c7, #f97316)"
+      },
+      {
+        "title": "Tell the model what not to change",
+        "desc": "Repeat preserve face, body shape, body proportions, pose, hands, background, lighting, and camera angle when exact identity and framing matter.",
+        "color": "linear-gradient(135deg, #ede9fe, #7c3aed)"
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "AI Bikini Generator Prompt Ideas",
+    "subtitle": "Start from eight swimwear reference styles, then adjust coverage, color, fabric, straps, and silhouette.",
+    "items": [
+      {
+        "title": "Classic Black Bikini",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3d80ed2905334169b0a2d06d1f86c01d.webp",
+        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3d80ed2905334169b0a2d06d1f86c01d.webp",
+        "prompt": "Image 1 is the original person photo. Image 2 is the bikini or swimwear reference. Replace only the visible clothing on each clearly visible person in image 1 with the classic black triangle bikini from image 2. If image 1 contains multiple people, apply the same swimwear style to every clearly visible person. Keep everything else exactly the same for each person and the scene: face, identity, age, skin tone, hair, body shape, body proportions, pose, hands, expression, relative position, background, lighting, camera angle, framing, and image quality. Do not slim, do not enlarge, do not retouch, do not reshape, do not change posture, do not change the face, do not change the body, do not change relative positions, and do not modify the scene. Match the swimwear black fabric, thin straps, coverage, top shape, bottom shape, and silhouette from image 2 as closely as possible. Keep the result realistic, tasteful, non-explicit, and suitable for a swimwear preview.",
+        "note": "Uses the matching bikini reference image for this style.",
+        "color": "linear-gradient(135deg, #111827, #020617)",
+        "group": "bikini-reference"
+      },
+      {
+        "title": "Classic White Bikini",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/95db19f5e40a4afa9cc89731f091a5ce.webp",
+        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/95db19f5e40a4afa9cc89731f091a5ce.webp",
+        "prompt": "Image 1 is the original person photo. Image 2 is the bikini or swimwear reference. Replace only the visible clothing on each clearly visible person in image 1 with the classic white triangle bikini from image 2. If image 1 contains multiple people, apply the same swimwear style to every clearly visible person. Keep everything else exactly the same for each person and the scene: face, identity, age, skin tone, hair, body shape, body proportions, pose, hands, expression, relative position, background, lighting, camera angle, framing, and image quality. Do not slim, do not enlarge, do not retouch, do not reshape, do not change posture, do not change the face, do not change the body, do not change relative positions, and do not modify the scene. Match the swimwear coverage, thin straps, clean white fabric, top shape, bottom shape, and silhouette from image 2 as closely as possible. Keep the result realistic, tasteful, non-explicit, and suitable for a swimwear preview.",
+        "note": "Uses the matching bikini reference image for this style.",
+        "color": "linear-gradient(135deg, #ffffff, #e5e7eb)",
+        "group": "bikini-reference"
+      },
+      {
+        "title": "Red High-Waisted Bikini",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3028cca8904b49249b517c0ef32386ee.webp",
+        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3028cca8904b49249b517c0ef32386ee.webp",
+        "prompt": "Image 1 is the original person photo. Image 2 is the bikini or swimwear reference. Replace only the visible clothing on each clearly visible person in image 1 with the red high-waisted retro bikini from image 2. If image 1 contains multiple people, apply the same swimwear style to every clearly visible person. Keep everything else exactly the same for each person and the scene: face, identity, age, skin tone, hair, body shape, body proportions, pose, hands, expression, relative position, background, lighting, camera angle, framing, and image quality. Do not slim, do not enlarge, do not retouch, do not reshape, do not change posture, do not change the face, do not change the body, do not change relative positions, and do not modify the scene. Match the swimwear high waistline, supportive top, clean seams, red fabric, coverage, and silhouette from image 2 as closely as possible. Keep the result realistic, tasteful, non-explicit, and suitable for a swimwear preview.",
+        "note": "Uses the matching bikini reference image for this style.",
+        "color": "linear-gradient(135deg, #ef4444, #991b1b)",
+        "group": "bikini-reference"
+      },
+      {
+        "title": "Navy Nautical Bikini",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3312de502e7344c493d7aaa3796ef6fc.webp",
+        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3312de502e7344c493d7aaa3796ef6fc.webp",
+        "prompt": "Image 1 is the original person photo. Image 2 is the bikini or swimwear reference. Replace only the visible clothing on each clearly visible person in image 1 with the navy nautical bikini from image 2. If image 1 contains multiple people, apply the same swimwear style to every clearly visible person. Keep everything else exactly the same for each person and the scene: face, identity, age, skin tone, hair, body shape, body proportions, pose, hands, expression, relative position, background, lighting, camera angle, framing, and image quality. Do not slim, do not enlarge, do not retouch, do not reshape, do not change posture, do not change the face, do not change the body, do not change relative positions, and do not modify the scene. Match the swimwear navy color, white trim or stripe detail, straps, coverage, fabric, and silhouette from image 2 as closely as possible. Keep the result realistic, tasteful, non-explicit, and suitable for a swimwear preview.",
+        "note": "Uses the matching bikini reference image for this style.",
+        "color": "linear-gradient(135deg, #1e3a8a, #f8fafc)",
+        "group": "bikini-reference"
+      },
+      {
+        "title": "Tropical Floral Bikini",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/bad0f5902cb643df87a8fe34210dc99c.webp",
+        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/bad0f5902cb643df87a8fe34210dc99c.webp",
+        "prompt": "Image 1 is the original person photo. Image 2 is the bikini or swimwear reference. Replace only the visible clothing on each clearly visible person in image 1 with the tropical floral bikini from image 2. If image 1 contains multiple people, apply the same swimwear style to every clearly visible person. Keep everything else exactly the same for each person and the scene: face, identity, age, skin tone, hair, body shape, body proportions, pose, hands, expression, relative position, background, lighting, camera angle, framing, and image quality. Do not slim, do not enlarge, do not retouch, do not reshape, do not change posture, do not change the face, do not change the body, do not change relative positions, and do not modify the scene. Match the swimwear botanical print, color palette, straps, coverage, fabric, and silhouette from image 2 as closely as possible. Keep the result realistic, tasteful, non-explicit, and suitable for a swimwear preview.",
+        "note": "Uses the matching bikini reference image for this style.",
+        "color": "linear-gradient(135deg, #22c55e, #f97316, #f43f5e)",
+        "group": "bikini-reference"
+      },
+      {
+        "title": "Sporty Teal Bikini",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/49b1ef80a71344b6990bc71150c35644.webp",
+        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/49b1ef80a71344b6990bc71150c35644.webp",
+        "prompt": "Image 1 is the original person photo. Image 2 is the bikini or swimwear reference. Replace only the visible clothing on each clearly visible person in image 1 with the sporty teal racerback-inspired bikini from image 2. If image 1 contains multiple people, apply the same swimwear style to every clearly visible person. Keep everything else exactly the same for each person and the scene: face, identity, age, skin tone, hair, body shape, body proportions, pose, hands, expression, relative position, background, lighting, camera angle, framing, and image quality. Do not slim, do not enlarge, do not retouch, do not reshape, do not change posture, do not change the face, do not change the body, do not change relative positions, and do not modify the scene. Match the swimwear athletic top shape, teal color, stable straps, coverage, fabric, and silhouette from image 2 as closely as possible. Keep the result realistic, tasteful, non-explicit, and suitable for a swimwear preview.",
+        "note": "Uses the matching bikini reference image for this style.",
+        "color": "linear-gradient(135deg, #0f766e, #22d3ee)",
+        "group": "bikini-reference"
+      },
+      {
+        "title": "Yellow Ribbed Bikini",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/f2eadccf020a4fe1a733b91335d23ceb.webp",
+        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/f2eadccf020a4fe1a733b91335d23ceb.webp",
+        "prompt": "Image 1 is the original person photo. Image 2 is the bikini or swimwear reference. Replace only the visible clothing on each clearly visible person in image 1 with the yellow ribbed texture bikini from image 2. If image 1 contains multiple people, apply the same swimwear style to every clearly visible person. Keep everything else exactly the same for each person and the scene: face, identity, age, skin tone, hair, body shape, body proportions, pose, hands, expression, relative position, background, lighting, camera angle, framing, and image quality. Do not slim, do not enlarge, do not retouch, do not reshape, do not change posture, do not change the face, do not change the body, do not change relative positions, and do not modify the scene. Match the swimwear warm yellow color, ribbed fabric texture, straps, coverage, fabric, and silhouette from image 2 as closely as possible. Keep the result realistic, tasteful, non-explicit, and suitable for a swimwear preview.",
+        "note": "Uses the matching bikini reference image for this style.",
+        "color": "linear-gradient(135deg, #facc15, #f59e0b)",
+        "group": "bikini-reference"
+      },
+      {
+        "title": "One-Shoulder Coral Bikini",
+        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/5020adfd323e4cf9a3fd7154e243a1b0.webp",
+        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/5020adfd323e4cf9a3fd7154e243a1b0.webp",
+        "prompt": "Image 1 is the original person photo. Image 2 is the bikini or swimwear reference. Replace only the visible clothing on each clearly visible person in image 1 with the one-shoulder coral bikini from image 2. If image 1 contains multiple people, apply the same swimwear style to every clearly visible person. Keep everything else exactly the same for each person and the scene: face, identity, age, skin tone, hair, body shape, body proportions, pose, hands, expression, relative position, background, lighting, camera angle, framing, and image quality. Do not slim, do not enlarge, do not retouch, do not reshape, do not change posture, do not change the face, do not change the body, do not change relative positions, and do not modify the scene. Match the swimwear one-shoulder top shape, coral color, asymmetrical neckline, coverage, fabric, and silhouette from image 2 as closely as possible. Keep the result realistic, tasteful, non-explicit, and suitable for a swimwear preview.",
+        "note": "Uses the matching bikini reference image for this style.",
+        "color": "linear-gradient(135deg, #fb7185, #f97316)",
+        "group": "bikini-reference"
+      }
+    ]
+  },
+  "workflowComparison": {
+    "title": "AI Bikini Generator vs Manual Swimwear Editing",
+    "subtitle": "Use AI for quick styling previews, then use manual editing or a real shoot when exact fit, fabric, or product accuracy matters.",
+    "columns": [
+      "Option",
+      "Good for",
+      "Check before using"
+    ],
+    "rows": [
+      [
+        "Toolaze AI Bikini Generator",
+        "Fast adult swimwear previews, creator visuals, vacation styling, and concept checks from a person photo plus reference.",
+        "Review body proportions, hands, garment edges, straps, fabric logic, and whether unchanged areas stayed stable."
+      ],
+      [
+        "Manual retouching",
+        "Pixel-level cleanup, campaign finishing, exact product details, and brand-approved swimwear edits.",
+        "Requires more time and an experienced editor."
+      ],
+      [
+        "Physical photoshoot",
+        "Final ecommerce, fit validation, legal product accuracy, and real swimwear construction details.",
+        "Requires garment samples, model time, location, styling, and reshoot budget."
+      ]
+    ]
+  },
+  "scenesTitle": "Popular AI Bikini Preview Use Cases",
+  "scenes": [
+    {
+      "icon": "🏖️",
+      "title": "Vacation styling previews",
+      "desc": "Test beach, resort, and poolside swimwear ideas before planning a shoot or trip wardrobe."
+    },
+    {
+      "icon": "📱",
+      "title": "Creator thumbnails and moodboards",
+      "desc": "Create tasteful adult swimwear concepts for social visuals, thumbnails, and styling direction boards."
+    },
+    {
+      "icon": "🛍️",
+      "title": "Swimwear concept checks",
+      "desc": "Preview broad color, coverage, and silhouette directions before committing to manual edits or product photography."
+    }
+  ],
+  "features": {
+    "title": "Why Use Toolaze for AI Bikini Previews",
+    "items": [
+      {
+        "icon": "👙",
+        "iconType": "ai",
+        "title": "Reference-guided swimwear edits",
+        "desc": "Upload a person photo and a swimwear reference so the edit follows a real bikini style instead of relying on vague text only."
+      },
+      {
+        "icon": "🧍",
+        "iconType": "ai",
+        "title": "Strong person-preservation prompt",
+        "desc": "Built-in prompts explicitly preserve face, identity, body shape, body proportions, pose, background, lighting, camera angle, and image quality."
+      },
+      {
+        "icon": "🛡️",
+        "iconType": "ai",
+        "title": "Tasteful adult-use boundary",
+        "desc": "Use Toolaze for adult swimwear previews while avoiding clothing removal, explicit edits, minor imagery, impersonation, or unauthorized photo use."
+      }
+    ]
+  },
+  "faqTitle": "AI Bikini Generator FAQ",
+  "faq": [
+    {
+      "q": "Is Toolaze AI Bikini Generator free?",
+      "a": "Yes. New users receive 10 free credits after sign-up. Seedream 5.0 Lite starts at 10 credits for standard 1K generation, so those credits are enough for one eligible standard bikini preview. Higher resolution or continued use may require more credits."
+    },
+    {
+      "q": "Which model does the AI Bikini Generator use?",
+      "a": "Toolaze uses Seedream 5.0 Lite for this swimwear preview workflow."
+    },
+    {
+      "q": "Will the tool change my face or body shape?",
+      "a": "The default prompt tells the model to replace only the visible clothing and keep the face, identity, body shape, body proportions, pose, background, lighting, and camera angle unchanged. You should still review the output before using it."
+    },
+    {
+      "q": "Can I upload my own bikini reference?",
+      "a": "Yes. In Bikini Reference mode, upload the person photo first and then upload a swimwear reference or choose one of the built-in references."
+    },
+    {
+      "q": "Can I use it without a bikini reference image?",
+      "a": "Yes. Use Custom mode, upload one adult person photo, and describe the swimwear style, coverage, color, straps, fabric, and occasion."
+    },
+    {
+      "q": "What safety rules should I follow?",
+      "a": "Use adult photos you own or have permission to edit. Avoid requests involving minors, explicit content, clothing removal, impersonation, or images used without consent."
+    }
+  ],
+  "moreToolsLinks": [
+    {
+      "slug": "ai-clothes-changer",
+      "title": "AI Clothes Changer",
+      "description": "Preview business, formal, swimwear, and custom outfit changes from a person photo.",
+      "href": "/ai-clothes-changer"
+    },
+    {
+      "slug": "ai-image-to-image-generator",
+      "title": "AI Image to Image Generator",
+      "description": "Upload a reference image and transform it with prompt-guided AI editing.",
+      "href": "/ai-image-to-image-generator"
+    },
+    {
+      "slug": "ai-hairstyle-changer",
+      "title": "AI Hairstyle Changer",
+      "description": "Try hairstyle ideas while preserving the original portrait identity.",
+      "href": "/ai-hairstyle-changer"
+    }
+  ]
+}

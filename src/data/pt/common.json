@@ -61,7 +61,8 @@
     "aiKissingVideoGenerator": "Gerador de vídeos de beijo com IA",
     "aiClothesChanger": "Trocador de roupas com IA",
     "wan25Video": "Wan 2.5 Vídeo",
-    "klingAiVideoGenerator": "Gerador de vídeo IA Kling"
+    "klingAiVideoGenerator": "Gerador de vídeo IA Kling",
+    "aiBikiniGenerator": "Gerador de biquíni com IA"
   },
   "home": {
     "metadata": {
@@ -127,6 +128,10 @@
       "ai-dance-generator": {
         "cardTitle": "Gerador de dança com IA",
         "summary": "Envie uma imagem e crie um vídeo curto de dança para ideias de coreografia, promos de aulas e clipes sociais. Escolha duração e proporção no gerador."
+      },
+      "ai-bikini-generator": {
+        "cardTitle": "Gerador de biquíni com IA",
+        "summary": "Envie uma foto adulta e uma referência de biquíni para visualizar edições de swimwear de bom gosto mantendo a pessoa original."
       }
     },
     "aiToolsHubTitle": "Ferramentas AI Grátis para Imagens, Vídeos e Fluxos de Trabalho de Mídia Diários",
@@ -287,7 +292,8 @@
     "aiKissingVideoGenerator": "Gerador de vídeos de beijo com IA",
     "aiClothesChanger": "Trocador de roupas com IA",
     "wan25Video": "Wan 2.5 Vídeo",
-    "klingAiVideoGenerator": "Gerador de vídeo IA Kling"
+    "klingAiVideoGenerator": "Gerador de vídeo IA Kling",
+    "aiBikiniGenerator": "Gerador de biquíni com IA"
   },
   "breadcrumb": {
     "home": "Início",
@@ -314,7 +320,8 @@
     "acceptableUse": "Política de uso aceitável",
     "textToVideoGenerator": "Gerador de texto para vídeo",
     "imageToVideoGenerator": "Gerador de imagem para vídeo",
-    "aiClothesChanger": "Trocador de roupas com IA"
+    "aiClothesChanger": "Trocador de roupas com IA",
+    "aiBikiniGenerator": "Gerador de biquíni com IA"
   },
   "about": {
     "metadata": {
@@ -1048,7 +1055,8 @@
     "deleteSelectedError": "Não foi possível excluir os itens selecionados do histórico.",
     "modeVideo": "Vídeo",
     "modeTextToImage": "Texto para imagem",
-    "modeImageToImage": "Imagem para imagem"
+    "modeImageToImage": "Imagem para imagem",
+    "createSimilar": "Criar semelhante"
   },
   "creditsPage": {
     "metadataTitle": "Atividade de créditos - Toolaze",

@@ -61,7 +61,8 @@
     "aiKissingVideoGenerator": "Générateur de vidéos de baiser IA",
     "aiClothesChanger": "Changeur de vêtements IA",
     "wan25Video": "Vidéo Wan 2.5",
-    "klingAiVideoGenerator": "Générateur de vidéo IA Kling"
+    "klingAiVideoGenerator": "Générateur de vidéo IA Kling",
+    "aiBikiniGenerator": "Générateur de bikini IA"
   },
   "home": {
     "metadata": {
@@ -127,6 +128,10 @@
       "ai-dance-generator": {
         "cardTitle": "Générateur de danse IA",
         "summary": "Importez une image et créez une courte vidéo de danse pour des idées de chorégraphie, promotions de cours et clips sociaux. Choisissez la durée et le format dans le générateur."
+      },
+      "ai-bikini-generator": {
+        "cardTitle": "Générateur de bikini IA",
+        "summary": "Importez une photo adulte et une référence bikini pour prévisualiser des retouches swimwear sobres en conservant la personne."
       }
     },
     "aiToolsHubTitle": "Outils IA Gratuits pour les Images, la Vidéo et les Flux de Travail Média Quotidiens",
@@ -287,7 +292,8 @@
     "aiKissingVideoGenerator": "Générateur de vidéos de baiser IA",
     "aiClothesChanger": "Changeur de vêtements IA",
     "wan25Video": "Vidéo Wan 2.5",
-    "klingAiVideoGenerator": "Générateur de vidéo IA Kling"
+    "klingAiVideoGenerator": "Générateur de vidéo IA Kling",
+    "aiBikiniGenerator": "Générateur de bikini IA"
   },
   "breadcrumb": {
     "home": "Accueil",
@@ -314,7 +320,8 @@
     "acceptableUse": "Politique d’utilisation acceptable",
     "textToVideoGenerator": "Générateur texte-vidéo",
     "imageToVideoGenerator": "Générateur image-vidéo",
-    "aiClothesChanger": "Changeur de vêtements IA"
+    "aiClothesChanger": "Changeur de vêtements IA",
+    "aiBikiniGenerator": "Générateur de bikini IA"
   },
   "about": {
     "metadata": {
@@ -1048,7 +1055,8 @@
     "deleteSelectedError": "Impossible de supprimer les éléments sélectionnés.",
     "modeVideo": "Vidéo",
     "modeTextToImage": "Texte vers image",
-    "modeImageToImage": "Image vers image"
+    "modeImageToImage": "Image vers image",
+    "createSimilar": "Créer similaire"
   },
   "creditsPage": {
     "metadataTitle": "Activité des crédits - Toolaze",
