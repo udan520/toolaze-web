@@ -1,6 +1,7 @@
 type HistoryRepromptSource = {
   prompt?: string | null
   model?: string | null
+  mediaType?: 'image' | 'video' | null
   outputUrl?: string | null
   inputPreview?: string | null
   inputUrls?: string[] | null
@@ -14,13 +15,23 @@ type HistoryRepromptSource = {
 type HistoryRecreateSource = {
   mediaType?: 'image' | 'video' | null
   model?: string | null
+  toolSlug?: string | null
+  sourcePath?: string | null
 }
 
 const NEXT_IMAGE_WIDTHS = [64, 96, 128, 256, 384, 640, 750, 828, 1080, 1200] as const
 const REFERENCE_PREVIEW_WIDTH = 384
+const LOCALE_PATTERN = /^[a-z]{2}(?:-[A-Z]{2})?$/
+
+function getLocalePrefix(locale = 'en'): string {
+  return locale && locale !== 'en' ? `/${locale}` : ''
+}
 
 export function buildHistoryRecreateHref(item: HistoryRecreateSource, locale = 'en'): string {
-  const localePrefix = locale && locale !== 'en' ? `/${locale}` : ''
+  const localePrefix = getLocalePrefix(locale)
+  const sourceHref = getLocalizedSourceHref(item, localePrefix)
+  if (sourceHref) return sourceHref
+
   if (item.mediaType === 'video') return `${localePrefix}/ai-video-generator`
 
   const model = String(item.model || 'nano-banana-pro').trim() || 'nano-banana-pro'
@@ -57,10 +68,30 @@ function getHistoryToolSlug(item: HistoryRepromptSource): string {
   if (toolSlug) return toolSlug
 
   const sourceSegments = String(item.sourcePath || '').split('/').filter(Boolean)
-  const localePattern = /^[a-z]{2}(?:-[A-Z]{2})?$/
-  return sourceSegments[0] && localePattern.test(sourceSegments[0])
+  return sourceSegments[0] && LOCALE_PATTERN.test(sourceSegments[0])
     ? sourceSegments[1] || ''
     : sourceSegments[0] || ''
+}
+
+function getLocalizedSourceHref(item: HistoryRecreateSource, localePrefix: string): string {
+  const rawSourcePath = String(item.sourcePath || '').trim()
+  if (rawSourcePath.startsWith('/') && !rawSourcePath.startsWith('//')) {
+    const hashIndex = rawSourcePath.indexOf('#')
+    const sourceWithoutHash = hashIndex >= 0 ? rawSourcePath.slice(0, hashIndex) : rawSourcePath
+    const queryIndex = sourceWithoutHash.indexOf('?')
+    const pathOnly = queryIndex >= 0 ? sourceWithoutHash.slice(0, queryIndex) : sourceWithoutHash
+    const query = queryIndex >= 0 ? sourceWithoutHash.slice(queryIndex) : ''
+    const sourceSegments = pathOnly.split('/').filter(Boolean)
+    const routeSegments = sourceSegments[0] && LOCALE_PATTERN.test(sourceSegments[0])
+      ? sourceSegments.slice(1)
+      : sourceSegments
+    if (routeSegments.length > 0 && routeSegments[0] !== 'history') {
+      return `${localePrefix}/${routeSegments.join('/')}${query}`
+    }
+  }
+
+  const toolSlug = getHistoryToolSlug(item)
+  return toolSlug && toolSlug !== 'history' ? `${localePrefix}/${toolSlug}` : ''
 }
 
 export function getWrappedHistoryDefaultInputImageUrls(item: HistoryRepromptSource): string[] {
@@ -105,13 +136,26 @@ export function getOriginalHistoryInputImageUrls(item: HistoryRepromptSource): s
 }
 
 export function buildHistoryRepromptPayload(item: HistoryRepromptSource) {
+  const toolSlug = getHistoryToolSlug(item)
+  const originalInputUrls = Array.isArray(item.inputUrls) && item.inputUrls.length > 0
+    ? item.inputUrls.map(normalizeReusableReferenceImageUrl).filter(Boolean)
+    : getOriginalHistoryInputImageUrls(item)
+  const isTalkingAvatar = toolSlug === 'talking-avatar-creator'
+  const talkingAvatarImageUrls = isTalkingAvatar && originalInputUrls[0] ? [originalInputUrls[0]] : []
+  const talkingAvatarAudioUrl = isTalkingAvatar && originalInputUrls[1] ? originalInputUrls[1] : ''
+
   return {
     prompt: item.prompt || '',
-    imageUrls: getHistoryReferenceImageUrls(item),
+    imageUrls: isTalkingAvatar ? talkingAvatarImageUrls : getHistoryReferenceImageUrls(item),
+    ...(isTalkingAvatar && originalInputUrls.length > 0 ? { inputUrls: originalInputUrls } : {}),
+    ...(talkingAvatarAudioUrl ? { audioUrl: talkingAvatarAudioUrl, audioUrls: [talkingAvatarAudioUrl] } : {}),
     modelId: item.model || undefined,
     aspectRatio: item.aspectRatio || undefined,
     resolution: item.resolution || undefined,
     outputFormat: item.outputFormat || undefined,
+    ...(toolSlug ? { toolSlug } : {}),
+    ...(item.sourcePath ? { sourcePath: item.sourcePath } : {}),
+    ...(item.mediaType ? { mediaType: item.mediaType } : {}),
   }
 }
 

@@ -59,7 +59,8 @@
     "imageToVideoGenerator": "Bild-zu-Video-Generator",
     "aiDanceGenerator": "KI-Tanzgenerator",
     "aiKissingVideoGenerator": "KI-Kuss-Video-Generator",
-    "aiClothesChanger": "KI-Kleiderwechsler"
+    "aiClothesChanger": "KI-Kleiderwechsler",
+    "talkingAvatarCreator": "KI Talking Avatar"
   },
   "home": {
     "metadata": {
@@ -283,7 +284,8 @@
     "imageToVideoGenerator": "Bild-zu-Video-Generator",
     "aiDanceGenerator": "KI-Tanzgenerator",
     "aiKissingVideoGenerator": "KI-Kuss-Video-Generator",
-    "aiClothesChanger": "KI-Kleiderwechsler"
+    "aiClothesChanger": "KI-Kleiderwechsler",
+    "talkingAvatarCreator": "KI Talking Avatar"
   },
   "breadcrumb": {
     "home": "Startseite",

@@ -14,6 +14,7 @@ const HISTORY_TOOL_LABELS: Record<string, string> = {
   'ai-dance-generator': 'AI Dance Generator',
   'ai-kissing-video-generator': 'AI Kissing Video Generator',
   'ai-asmr-video-generator': 'AI ASMR Video Generator',
+  'talking-avatar-creator': 'AI Talking Avatar',
 }
 
 function getRouteParts(pathname: string) {

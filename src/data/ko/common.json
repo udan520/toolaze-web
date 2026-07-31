@@ -59,7 +59,8 @@
     "imageToVideoGenerator": "이미지-동영상 생성기",
     "aiDanceGenerator": "AI 댄스 생성기",
     "aiKissingVideoGenerator": "AI 키스 동영상 생성기",
-    "aiClothesChanger": "AI 의상 체인저"
+    "aiClothesChanger": "AI 의상 체인저",
+    "talkingAvatarCreator": "AI 말하는 아바타"
   },
   "home": {
     "metadata": {
@@ -283,7 +284,8 @@
     "imageToVideoGenerator": "이미지-동영상 생성기",
     "aiDanceGenerator": "AI 댄스 생성기",
     "aiKissingVideoGenerator": "AI 키스 동영상 생성기",
-    "aiClothesChanger": "AI 의상 체인저"
+    "aiClothesChanger": "AI 의상 체인저",
+    "talkingAvatarCreator": "AI 말하는 아바타"
   },
   "breadcrumb": {
     "home": "홈",

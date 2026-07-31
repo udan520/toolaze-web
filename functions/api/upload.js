@@ -38,9 +38,15 @@ export async function onRequest(context) {
         });
       }
       blob = file;
-      const name = file.name || '';
-      if (name.endsWith('.jpg') || name.endsWith('.jpeg')) ext = 'jpg';
-      else if (name.endsWith('.webp')) ext = 'webp';
+      const name = (file.name || '').toLowerCase();
+      const type = (file.type || '').toLowerCase();
+      if (name.endsWith('.jpg') || name.endsWith('.jpeg') || type.includes('jpeg') || type.includes('jpg')) ext = 'jpg';
+      else if (name.endsWith('.webp') || type.includes('webp')) ext = 'webp';
+      else if (name.endsWith('.mp4') || type.includes('video/mp4')) ext = 'mp4';
+      else if (name.endsWith('.mp3') || type.includes('mpeg')) ext = 'mp3';
+      else if (name.endsWith('.wav') || type.includes('wav')) ext = 'wav';
+      else if (name.endsWith('.m4a') || type.includes('audio/mp4') || type.includes('x-m4a')) ext = 'm4a';
+      else if (name.endsWith('.ogg') || type.includes('ogg')) ext = 'ogg';
     } else if (contentType.includes('application/octet-stream') || contentType.includes('image/')) {
       blob = await request.blob();
       if (contentType.includes('jpeg') || contentType.includes('jpg')) ext = 'jpg';

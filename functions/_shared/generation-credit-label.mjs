@@ -25,6 +25,7 @@ const VIDEO_MODEL_LABELS = {
   'pixverse-v6': 'PixVerse V6',
   'happyhorse-1-1': 'HappyHorse 1.1',
   'happyhorse': 'HappyHorse',
+  'infinitalk': 'Infinitalk',
 };
 
 const WRAPPED_TOOL_LABELS = {
@@ -35,6 +36,10 @@ const WRAPPED_TOOL_LABELS = {
   'ai-clothes-changer': 'Clothes Changer',
   'photo-restoration': 'Photo Restoration',
   'watermark-remover': 'Watermark Remover',
+  'ai-dance-generator': 'AI Dance Generator',
+  'ai-kissing-video-generator': 'AI Kissing Video Generator',
+  'ai-asmr-video-generator': 'AI ASMR Video Generator',
+  'talking-avatar-creator': 'AI Talking Avatar',
 };
 
 function isVideoGenerationModel(model) {
@@ -62,6 +67,12 @@ export function getImageGenerationModelLabel(model) {
 }
 
 export function getImageGenerationToolLabel(toolSlug, toolLabel) {
+  const normalizedToolSlug = normalizeString(toolSlug).toLowerCase();
+  if (WRAPPED_TOOL_LABELS[normalizedToolSlug]) return WRAPPED_TOOL_LABELS[normalizedToolSlug];
+  return normalizeString(toolLabel);
+}
+
+export function getVideoGenerationToolLabel(toolSlug, toolLabel) {
   const normalizedToolSlug = normalizeString(toolSlug).toLowerCase();
   if (WRAPPED_TOOL_LABELS[normalizedToolSlug]) return WRAPPED_TOOL_LABELS[normalizedToolSlug];
   return normalizeString(toolLabel);
@@ -121,13 +132,16 @@ export function getImageGenerationCreditRefundDescription(model, isImageToImage 
   return `${getImageGenerationCreditDescription(model, isImageToImage, options)} refund`;
 }
 
-export function getVideoGenerationCreditDescription(model, mode = 'text-to-video') {
+export function getVideoGenerationCreditDescription(model, mode = 'text-to-video', options = {}) {
+  const toolLabel = getVideoGenerationToolLabel(options.toolSlug, options.toolLabel);
+  if (toolLabel) return toolLabel;
+
   const normalizedModel = String(model || '').toLowerCase();
   const label = VIDEO_MODEL_LABELS[normalizedModel] || fallbackModelLabel(model);
   const normalizedMode = mode === 'image-to-video' ? 'image-to-video' : 'text-to-video';
   return `${label} ${normalizedMode} generation`;
 }
 
-export function getVideoGenerationCreditRefundDescription(model, mode = 'text-to-video') {
-  return `${getVideoGenerationCreditDescription(model, mode)} refund`;
+export function getVideoGenerationCreditRefundDescription(model, mode = 'text-to-video', options = {}) {
+  return `${getVideoGenerationCreditDescription(model, mode, options)} refund`;
 }

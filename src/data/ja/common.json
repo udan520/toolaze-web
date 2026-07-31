@@ -59,7 +59,8 @@
     "imageToVideoGenerator": "画像から動画生成",
     "aiDanceGenerator": "AIダンスジェネレーター",
     "aiKissingVideoGenerator": "AIキス動画ジェネレーター",
-    "aiClothesChanger": "AI服装チェンジャー"
+    "aiClothesChanger": "AI服装チェンジャー",
+    "talkingAvatarCreator": "AIトーキングアバター"
   },
   "home": {
     "metadata": {
@@ -283,7 +284,8 @@
     "imageToVideoGenerator": "画像から動画生成",
     "aiDanceGenerator": "AIダンスジェネレーター",
     "aiKissingVideoGenerator": "AIキス動画ジェネレーター",
-    "aiClothesChanger": "AI服装チェンジャー"
+    "aiClothesChanger": "AI服装チェンジャー",
+    "talkingAvatarCreator": "AIトーキングアバター"
   },
   "breadcrumb": {
     "home": "ホーム",

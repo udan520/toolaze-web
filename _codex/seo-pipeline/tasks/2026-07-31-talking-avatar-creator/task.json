@@ -1,0 +1,37 @@
+{
+  "taskId": "2026-07-31-talking-avatar-creator",
+  "slug": "talking-avatar-creator",
+  "pageType": "l2",
+  "status": "ready_for_publish",
+  "tool": "talking-avatar-creator",
+  "topic": "AI Talking Avatar Creator landing page",
+  "generatedBy": "Seo-Factory local pipeline",
+  "modelInstruction": "Use Kie Infinitalk from-audio for portrait plus audio lip-sync talking avatar video generation.",
+  "createdAt": "2026-07-31T00:00:00+08:00",
+  "workspace": "/Users/neva/Desktop/workspace/toolaze-worktrees/lp/talking-avatar-creator",
+  "outputs": [
+    "_codex/seo-pipeline/tasks/2026-07-31-talking-avatar-creator/content/en.json",
+    "src/data/en/talking-avatar-creator.json",
+    "_codex/seo-pipeline/tasks/2026-07-31-talking-avatar-creator/content/zh-TW.json",
+    "src/data/zh-TW/talking-avatar-creator.json",
+    "_codex/seo-pipeline/tasks/2026-07-31-talking-avatar-creator/content/de.json",
+    "src/data/de/talking-avatar-creator.json",
+    "_codex/seo-pipeline/tasks/2026-07-31-talking-avatar-creator/content/ja.json",
+    "src/data/ja/talking-avatar-creator.json",
+    "_codex/seo-pipeline/tasks/2026-07-31-talking-avatar-creator/content/es.json",
+    "src/data/es/talking-avatar-creator.json",
+    "_codex/seo-pipeline/tasks/2026-07-31-talking-avatar-creator/content/pt.json",
+    "src/data/pt/talking-avatar-creator.json",
+    "_codex/seo-pipeline/tasks/2026-07-31-talking-avatar-creator/content/fr.json",
+    "src/data/fr/talking-avatar-creator.json",
+    "_codex/seo-pipeline/tasks/2026-07-31-talking-avatar-creator/content/ko.json",
+    "src/data/ko/talking-avatar-creator.json",
+    "_codex/seo-pipeline/tasks/2026-07-31-talking-avatar-creator/content/it.json",
+    "src/data/it/talking-avatar-creator.json"
+  ],
+  "notes": [
+    "Generated as an L2 AI tools landing page at /talking-avatar-creator.",
+    "Functional top tool uses a portrait image, a voice audio file, prompt guidance, and 480p/720p resolution.",
+    "Infinitalk provider details are kept out of user-facing page copy."
+  ]
+}

@@ -1,0 +1,262 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "talking-avatar-creator",
+  "topTool": {
+    "displayName": "AI Talking Avatar",
+    "textOverrides": {
+      "imageTitle": "Upload avatar image",
+      "imageHelper": "Use a clear front-facing portrait. JPG, PNG, or WebP works best.",
+      "audioTitle": "Upload voice audio",
+      "audioHelper": "MP3, WAV, M4A, or OGG. Keep audio under 10MB and 15 seconds for better lip sync.",
+      "promptLabel": "Direct the talking avatar",
+      "promptPlaceholder": "Natural head movement, warm eye contact, subtle expressions, studio lighting, clean talking avatar video.",
+      "resolutionLabel": "Resolution",
+      "generateLabel": "Create Talking Avatar",
+      "generatingLabel": "Creating avatar video...",
+      "resultTitle": "Talking avatar result",
+      "resultEmptyTitle": "Your result appears here",
+      "resultEmptyText": "Upload one portrait and one audio file, then generate a lip-synced talking avatar video.",
+      "audioTrimTitle": "Choose audio segment",
+      "audioTrimMessage": "This audio is longer than 15 seconds. Choose the part to keep before adding it to the audio box.",
+      "audioTrimStartLabel": "Start time",
+      "audioTrimLengthLabel": "Clip length",
+      "audioTrimRangeLabel": "Selected range",
+      "audioTrimConfirmAction": "Use this segment",
+      "audioTrimCancelAction": "Cancel upload",
+      "audioTooLongMessage": "Audio upload supports up to 15 seconds. Choose a segment or upload a shorter file.",
+      "audioReadFailedMessage": "We could not read the audio duration. Please upload an audio file up to 15 seconds.",
+      "audioTrimFailedMessage": "We could not trim this audio. Please upload an audio file up to 15 seconds."
+    }
+  },
+  "metadata": {
+    "title": "AI Talking Avatar Creator Online | Toolaze",
+    "description": "Create a talking avatar video from one portrait image and one voice audio file with lip sync, facial expression, and short-form video output."
+  },
+  "hero": {
+    "h1": "<span class=\"text-gradient\">AI Talking Avatar</span> Creator",
+    "desc": "Upload a portrait, add a clean voice clip, and create a short AI talking avatar video with lip sync, facial motion, and natural head movement. Use it for creator intros, product explainers, course snippets, sales outreach, and social videos."
+  },
+  "sectionsOrder": [
+    "intro",
+    "howToUse",
+    "promptExamples",
+    "scenes",
+    "features",
+    "performanceMetrics",
+    "faq"
+  ],
+  "intro": {
+    "title": "Create Talking Avatar Videos From a Portrait and Voice",
+    "content": [
+      {
+        "title": "What is an AI talking avatar?",
+        "text": "An AI talking avatar turns a still portrait into a short speaking video. The uploaded audio controls the mouth movement while the prompt guides expression, head motion, lighting, and camera feel."
+      },
+      {
+        "title": "When to use it",
+        "text": "Use it when you need a presenter-style video but do not want to film a new take. It works best with one clear face, one clean audio track, and a focused prompt."
+      },
+      {
+        "title": "What to prepare",
+        "text": "Start with a front-facing portrait and a short speech clip. Avoid noisy audio, covered mouths, side-profile faces, and long scripts that need scene changes."
+      }
+    ]
+  },
+  "performanceMetrics": {
+    "title": "Talking Avatar Inputs That Matter",
+    "metrics": [
+      {
+        "label": "Best input",
+        "value": "One clear portrait image plus one voice audio file."
+      },
+      {
+        "label": "Resolution",
+        "value": "480p for fast drafts, 720p for sharper published clips."
+      },
+      {
+        "label": "Audio guidance",
+        "value": "Use clean speech under 10MB; short clips are easier to sync and review."
+      },
+      {
+        "label": "Prompt focus",
+        "value": "Describe expression, head movement, eye contact, mood, lighting, and background stability."
+      },
+      {
+        "label": "Best output",
+        "value": "Short presenter clips, creator intros, explainers, profile videos, and UGC-style talking-head drafts."
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "Talking Avatar Prompt Examples",
+    "subtitle": "Pair a portrait and audio file with one focused direction for expression and motion.",
+    "items": [
+      {
+        "title": "Creator intro",
+        "prompt": "Natural creator intro, friendly eye contact, subtle smile, small head movement, soft studio lighting, stable background, realistic lip sync.",
+        "note": "Good for profile videos, channel intros, and personal brand clips.",
+        "color": "linear-gradient(135deg, #4f46e5, #06b6d4)"
+      },
+      {
+        "title": "Product explainer",
+        "prompt": "Confident presenter explaining a product feature, professional expression, gentle camera presence, clean office lighting, natural blinking, accurate lip sync.",
+        "note": "Use for short SaaS, ecommerce, or app explainer drafts.",
+        "color": "linear-gradient(135deg, #7c3aed, #ec4899)"
+      },
+      {
+        "title": "Course teaser",
+        "prompt": "Warm instructor speaking to camera, calm face motion, slight nods, clear educational tone, neutral background, polished 720p talking avatar video.",
+        "note": "Best for course snippets and lesson previews.",
+        "color": "linear-gradient(135deg, #0f172a, #22c55e)"
+      },
+      {
+        "title": "Sales outreach",
+        "prompt": "Professional spokesperson greeting the viewer, relaxed smile, steady eye contact, subtle gestures, bright modern lighting, trustworthy tone.",
+        "note": "Use for personalized outreach and onboarding messages.",
+        "color": "linear-gradient(135deg, #f97316, #ef4444)"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "How to Create an AI Talking Avatar",
+    "steps": [
+      {
+        "title": "Upload a portrait",
+        "desc": "Choose a clear image with a visible face, good lighting, and minimal obstruction around the mouth."
+      },
+      {
+        "title": "Upload voice audio",
+        "desc": "Use a short speech clip with low background noise and one speaker."
+      },
+      {
+        "title": "Write motion guidance",
+        "desc": "Describe facial expression, head movement, mood, eye contact, lighting, and whether the background should stay still."
+      },
+      {
+        "title": "Generate and review",
+        "desc": "Start with 480p for a quick draft, then use 720p when the voice, face, and timing look ready."
+      }
+    ]
+  },
+  "scenesTitle": "Use Cases for AI Talking Avatars",
+  "scenes": [
+    {
+      "title": "Creator intros",
+      "desc": "Turn a profile photo and voice clip into a short talking-head intro for social channels.",
+      "icon": "🎥"
+    },
+    {
+      "title": "Product explainers",
+      "desc": "Create presenter-style clips for launches, feature demos, landing pages, and ads.",
+      "icon": "📢"
+    },
+    {
+      "title": "Training snippets",
+      "desc": "Make short course, onboarding, or FAQ videos without scheduling another recording session.",
+      "icon": "🎓"
+    }
+  ],
+  "features": {
+    "title": "Why Use Toolaze for Talking Avatars",
+    "items": [
+      {
+        "title": "Image and audio workflow",
+        "desc": "The tool is built around the real inputs a talking avatar needs: one portrait image, one voice file, and one direction prompt."
+      },
+      {
+        "title": "Prompt-level motion control",
+        "desc": "Guide lip sync style, expression, head motion, camera mood, and background stability without switching tools."
+      },
+      {
+        "title": "Short-form output focus",
+        "desc": "Draft compact videos for social, product, education, and sales workflows where a fast talking-head clip is enough."
+      },
+      {
+        "title": "History-ready results",
+        "desc": "Generated videos can be saved to account history with the source page and model metadata attached."
+      },
+      {
+        "title": "Clear input limits",
+        "desc": "The flow calls out portrait quality, audio cleanliness, resolution, and short clip behavior before generation."
+      },
+      {
+        "title": "Practical creator guidance",
+        "desc": "The page explains use cases, limits, and prompt examples in plain language before you spend credits."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "What is an AI talking avatar creator?",
+      "a": "It creates a short speaking video from a portrait image and an audio file. The audio drives speech timing while the prompt controls expression and presentation style."
+    },
+    {
+      "q": "What image works best?",
+      "a": "Use a clear front-facing portrait with good lighting and an unobstructed mouth. Avoid side profiles, sunglasses, heavy blur, or cropped faces."
+    },
+    {
+      "q": "Can I use my own voice?",
+      "a": "Yes. Upload a voice audio file you have the rights to use. Short, clean speech with one speaker usually gives better lip sync."
+    },
+    {
+      "q": "Does it support 720p?",
+      "a": "Yes. The Toolaze page offers 480p for drafts and 720p for sharper talking avatar clips."
+    },
+    {
+      "q": "Is this for ASMR video?",
+      "a": "No. This page is for voice-led talking avatar videos. ASMR video generation belongs on a separate tool page."
+    },
+    {
+      "q": "What should I write in the prompt?",
+      "a": "Describe facial expression, eye contact, head movement, lighting, background stability, and the kind of presenter mood you want."
+    }
+  ],
+  "moreToolsLinks": [
+    {
+      "slug": "ai-video-generator",
+      "title": "AI Video Generator",
+      "description": "Create general AI video clips from text or image prompts.",
+      "href": "/ai-video-generator",
+      "media": {
+        "type": "video",
+        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4",
+        "alt": "AI Video Generator demo video"
+      }
+    },
+    {
+      "slug": "image-to-video-generator",
+      "title": "Image to Video Generator",
+      "description": "Animate a still image with prompt-guided motion.",
+      "href": "/image-to-video-generator",
+      "media": {
+        "type": "video",
+        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4",
+        "alt": "Image to Video Generator demo video"
+      }
+    },
+    {
+      "slug": "ai-image-generator",
+      "title": "AI Image Generator",
+      "description": "Create portraits, profile images, and source visuals before animating.",
+      "href": "/ai-image-generator",
+      "media": {
+        "type": "image",
+        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/gpt-image-2.jpg",
+        "alt": "AI Image Generator demo image"
+      }
+    }
+  ],
+  "faqTitle": "AI Talking Avatar FAQ",
+  "faqDescription": "Short answers about portraits, voice audio, lip sync, output quality, and safe use.",
+  "moreTools": "More Talking Avatar Tools",
+  "heroDemoVideo": {
+    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/talking-avatar-creator/demo.mp4",
+    "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/talking-avatar-creator/demo-poster.webp",
+    "ariaLabel": "Demo video showing a short AI talking avatar clip with lip sync and presenter-style face motion",
+    "duration": "PT14.48S",
+    "uploadDate": "2026-07-31T07:08:59.000Z",
+    "sourceHistory": "Talking Avatar Creator demo · 14.48s · uploaded to Toolaze R2 on 2026-07-31"
+  }
+}

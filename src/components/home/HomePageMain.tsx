@@ -344,6 +344,16 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
       },
     },
     {
+      title: navCopy.talkingAvatarCreator || 'AI Talking Avatar',
+      href: localizeHomeHref('/talking-avatar-creator'),
+      media: {
+        type: 'video',
+        src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/talking-avatar-creator/demo.mp4',
+        poster: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/talking-avatar-creator/demo-poster.webp',
+        alt: 'AI Talking Avatar demo video',
+      },
+    },
+    {
       title: navCopy.aiKissingVideoGenerator || 'AI Kissing Video Generator',
       href: localizeHomeHref('/ai-kissing-video-generator'),
       media: {

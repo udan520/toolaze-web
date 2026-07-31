@@ -1,0 +1,262 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "talking-avatar-creator",
+  "topTool": {
+    "displayName": "Avatar falante com IA",
+    "textOverrides": {
+      "imageTitle": "Enviar imagem do avatar",
+      "imageHelper": "Use um retrato frontal e nítido. JPG, PNG ou WebP funciona melhor.",
+      "audioTitle": "Enviar áudio de voz",
+      "audioHelper": "MP3, WAV, M4A ou OGG. Mantenha o áudio abaixo de 10 MB e 15 segundos para melhor sincronização labial.",
+      "promptLabel": "Dirija o avatar falante",
+      "promptPlaceholder": "Movimento natural da cabeça, contato visual acolhedor, expressões sutis, luz de estúdio, vídeo limpo de avatar falante.",
+      "resolutionLabel": "Resolução",
+      "generateLabel": "Criar avatar falante",
+      "generatingLabel": "Criando vídeo do avatar...",
+      "resultTitle": "Resultado do avatar falante",
+      "resultEmptyTitle": "Seu resultado aparecerá aqui",
+      "resultEmptyText": "Envie um retrato e um arquivo de áudio para gerar um vídeo de avatar com lábios sincronizados.",
+      "audioTrimTitle": "Escolher segmento de áudio",
+      "audioTrimMessage": "Este áudio tem mais de 15 segundos. Escolha a parte que deseja manter antes de adicioná-la ao campo de áudio.",
+      "audioTrimStartLabel": "Hora de início",
+      "audioTrimLengthLabel": "Duração do clipe",
+      "audioTrimRangeLabel": "Intervalo selecionado",
+      "audioTrimConfirmAction": "Usar este segmento",
+      "audioTrimCancelAction": "Cancelar envio",
+      "audioTooLongMessage": "O envio de áudio aceita até 15 segundos. Escolha um segmento ou envie um arquivo mais curto.",
+      "audioReadFailedMessage": "Não foi possível ler a duração do áudio. Envie um arquivo de áudio com até 15 segundos.",
+      "audioTrimFailedMessage": "Não foi possível cortar este áudio. Envie um arquivo de áudio com até 15 segundos."
+    }
+  },
+  "metadata": {
+    "title": "Criador de avatar falante com IA online | Toolaze",
+    "description": "Crie um vídeo de avatar falante a partir de um retrato e um áudio de voz com sincronização labial, expressão facial e saída curta."
+  },
+  "hero": {
+    "h1": "Criador de <span class=\"text-gradient\">avatar falante com IA</span>",
+    "desc": "Envie um retrato, adicione um clipe de voz limpo e crie um vídeo curto de avatar falante com sincronização labial, movimento facial e movimento natural da cabeça. Use para intros de criadores, explicações de produto, trechos de curso, mensagens de vendas e vídeos sociais."
+  },
+  "sectionsOrder": [
+    "intro",
+    "howToUse",
+    "promptExamples",
+    "scenes",
+    "features",
+    "performanceMetrics",
+    "faq"
+  ],
+  "intro": {
+    "title": "Crie vídeos de avatar falante com retrato e voz",
+    "content": [
+      {
+        "title": "O que é um avatar falante com IA?",
+        "text": "Um avatar falante com IA transforma um retrato parado em um vídeo curto falando. O áudio enviado controla a boca, enquanto a instrução guia expressão, movimento da cabeça, luz e sensação de câmera."
+      },
+      {
+        "title": "Quando usar",
+        "text": "Use quando precisar de um vídeo no estilo apresentador sem gravar uma nova tomada. Funciona melhor com um rosto claro, áudio limpo e uma instrução focada."
+      },
+      {
+        "title": "O que preparar",
+        "text": "Comece com um retrato frontal e um clipe curto de voz. Evite ruído, boca coberta, rosto de perfil e roteiros longos que exijam mudanças de cena."
+      }
+    ]
+  },
+  "performanceMetrics": {
+    "title": "Entradas importantes para avatares falantes",
+    "metrics": [
+      {
+        "label": "Melhor entrada",
+        "value": "Um retrato claro mais um arquivo de voz."
+      },
+      {
+        "label": "Resolução",
+        "value": "480p para rascunhos rápidos, 720p para clipes publicados mais nítidos."
+      },
+      {
+        "label": "Guia de áudio",
+        "value": "Use fala limpa abaixo de 10 MB; clipes curtos são mais fáceis de sincronizar e revisar."
+      },
+      {
+        "label": "Foco da instrução",
+        "value": "Descreva expressão, movimento da cabeça, contato visual, clima, iluminação e estabilidade do fundo."
+      },
+      {
+        "label": "Melhor saída",
+        "value": "Clipes curtos de apresentador, intros de criadores, explicações, vídeos de perfil e rascunhos estilo UGC."
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "Exemplos de instruções para avatar falante",
+    "subtitle": "Combine retrato e áudio com uma direção focada para expressão e movimento.",
+    "items": [
+      {
+        "title": "Intro de criador",
+        "prompt": "Natural creator intro, friendly eye contact, subtle smile, small head movement, soft studio lighting, stable background, realistic lip sync.",
+        "note": "Bom para vídeos de perfil, intros de canal e clipes de marca pessoal.",
+        "color": "linear-gradient(135deg, #4f46e5, #06b6d4)"
+      },
+      {
+        "title": "Explicador de produto",
+        "prompt": "Confident presenter explaining a product feature, professional expression, gentle camera presence, clean office lighting, natural blinking, accurate lip sync.",
+        "note": "Use para rascunhos curtos de SaaS, e-commerce ou aplicativo.",
+        "color": "linear-gradient(135deg, #7c3aed, #ec4899)"
+      },
+      {
+        "title": "Teaser de curso",
+        "prompt": "Warm instructor speaking to camera, calm face motion, slight nods, clear educational tone, neutral background, polished 720p talking avatar video.",
+        "note": "Ideal para trechos de curso e prévias de aulas.",
+        "color": "linear-gradient(135deg, #0f172a, #22c55e)"
+      },
+      {
+        "title": "Mensagem de vendas",
+        "prompt": "Professional spokesperson greeting the viewer, relaxed smile, steady eye contact, subtle gestures, bright modern lighting, trustworthy tone.",
+        "note": "Use para abordagem personalizada e mensagens de onboarding.",
+        "color": "linear-gradient(135deg, #f97316, #ef4444)"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Como criar um avatar falante com IA",
+    "steps": [
+      {
+        "title": "Envie um retrato",
+        "desc": "Escolha uma imagem clara com rosto visível, boa iluminação e pouca obstrução ao redor da boca."
+      },
+      {
+        "title": "Envie o áudio de voz",
+        "desc": "Use um clipe curto de fala com pouco ruído de fundo e uma pessoa falando."
+      },
+      {
+        "title": "Escreva a direção de movimento",
+        "desc": "Descreva expressão facial, movimento da cabeça, clima, contato visual, iluminação e se o fundo deve ficar estável."
+      },
+      {
+        "title": "Gere e revise",
+        "desc": "Comece com 480p para um rascunho rápido e use 720p quando voz, rosto e tempo estiverem prontos."
+      }
+    ]
+  },
+  "scenesTitle": "Casos de uso para avatares falantes com IA",
+  "scenes": [
+    {
+      "title": "Intros de criadores",
+      "desc": "Transforme foto de perfil e voz em uma breve intro falando para canais sociais.",
+      "icon": "🎥"
+    },
+    {
+      "title": "Explicações de produto",
+      "desc": "Crie clipes no estilo apresentador para lançamentos, demos, landing pages e anúncios.",
+      "icon": "📢"
+    },
+    {
+      "title": "Trechos de treinamento",
+      "desc": "Faça vídeos curtos de curso, onboarding ou FAQ sem agendar outra gravação.",
+      "icon": "🎓"
+    }
+  ],
+  "features": {
+    "title": "Por que usar Toolaze para avatares falantes",
+    "items": [
+      {
+        "title": "Fluxo de imagem e áudio",
+        "desc": "A ferramenta segue as entradas reais de um avatar falante: um retrato, um arquivo de voz e uma instrução de direção."
+      },
+      {
+        "title": "Controle de movimento por instrução",
+        "desc": "Guie sincronização labial, expressão, movimento da cabeça, clima de câmera e estabilidade do fundo sem trocar de ferramenta."
+      },
+      {
+        "title": "Foco em saída curta",
+        "desc": "Crie vídeos compactos para social, produto, educação e vendas quando um clipe rápido de apresentador for suficiente."
+      },
+      {
+        "title": "Resultados com histórico",
+        "desc": "Vídeos gerados podem ser salvos no histórico da conta com página de origem e metadados do modelo."
+      },
+      {
+        "title": "Limites claros de entrada",
+        "desc": "O fluxo mostra qualidade do retrato, limpeza do áudio, resolução e comportamento de clipes curtos antes da geração."
+      },
+      {
+        "title": "Guia prático para criadores",
+        "desc": "A página explica usos, limites e exemplos em linguagem clara antes de gastar créditos."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "O que é um criador de avatar falante com IA?",
+      "a": "Ele cria um vídeo curto falando a partir de um retrato e um arquivo de áudio. O áudio define o tempo da fala e a instrução controla expressão e estilo de apresentação."
+    },
+    {
+      "q": "Qual imagem funciona melhor?",
+      "a": "Use um retrato frontal claro, bem iluminado e com boca visível. Evite perfis, óculos escuros, muito desfoque ou rostos cortados."
+    },
+    {
+      "q": "Posso usar minha própria voz?",
+      "a": "Sim. Envie um arquivo de voz que você tenha direito de usar. Fala curta e limpa com uma pessoa costuma gerar melhor sincronização labial."
+    },
+    {
+      "q": "Suporta 720p?",
+      "a": "Sim. A página da Toolaze oferece 480p para rascunhos e 720p para clipes de avatar falante mais nítidos."
+    },
+    {
+      "q": "Isso é para vídeo ASMR?",
+      "a": "Não. Esta página é para vídeos de avatar guiados por voz. A geração de vídeo ASMR fica em uma página separada."
+    },
+    {
+      "q": "O que devo escrever na instrução?",
+      "a": "Descreva expressão facial, contato visual, movimento da cabeça, iluminação, estabilidade do fundo e o clima do apresentador."
+    }
+  ],
+  "moreToolsLinks": [
+    {
+      "slug": "ai-video-generator",
+      "title": "Gerador de vídeo com IA",
+      "description": "Crie clipes gerais de vídeo com IA a partir de texto ou imagem.",
+      "href": "/ai-video-generator",
+      "media": {
+        "type": "video",
+        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4",
+        "alt": "Vídeo de demonstração do gerador de vídeo com IA"
+      }
+    },
+    {
+      "slug": "image-to-video-generator",
+      "title": "Gerador de imagem para vídeo",
+      "description": "Anime uma imagem parada com movimento guiado.",
+      "href": "/image-to-video-generator",
+      "media": {
+        "type": "video",
+        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4",
+        "alt": "Vídeo de demonstração do gerador de imagem para vídeo"
+      }
+    },
+    {
+      "slug": "ai-image-generator",
+      "title": "Gerador de imagens com IA",
+      "description": "Crie retratos, imagens de perfil e visuais de origem antes de animar.",
+      "href": "/ai-image-generator",
+      "media": {
+        "type": "image",
+        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/gpt-image-2.jpg",
+        "alt": "Imagem de demonstração do gerador de imagens com IA"
+      }
+    }
+  ],
+  "faqTitle": "FAQ sobre avatar falante com IA",
+  "faqDescription": "Respostas curtas sobre retratos, áudio de voz, sincronização labial, qualidade de saída e uso seguro.",
+  "moreTools": "Mais ferramentas para avatar falante",
+  "heroDemoVideo": {
+    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/talking-avatar-creator/demo.mp4",
+    "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/talking-avatar-creator/demo-poster.webp",
+    "ariaLabel": "Vídeo de demonstração com um clipe curto de avatar falante com sincronização labial e movimento facial de apresentador",
+    "duration": "PT14.48S",
+    "uploadDate": "2026-07-31T07:08:59.000Z",
+    "sourceHistory": "Talking Avatar Creator demo · 14.48s · uploaded to Toolaze R2 on 2026-07-31"
+  }
+}

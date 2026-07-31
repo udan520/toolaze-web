@@ -1,0 +1,262 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "talking-avatar-creator",
+  "topTool": {
+    "displayName": "AI 說話頭像",
+    "textOverrides": {
+      "imageTitle": "上傳頭像圖片",
+      "imageHelper": "使用清楚的正面人像。JPG、PNG 或 WebP 效果最佳。",
+      "audioTitle": "上傳語音音訊",
+      "audioHelper": "支援 MP3、WAV、M4A 或 OGG。音訊請控制在 10MB 以內、15 秒以內，以獲得更好的唇形同步。",
+      "promptLabel": "指示說話頭像",
+      "promptPlaceholder": "自然頭部動作、溫和眼神接觸、細微表情、棚拍燈光、乾淨的說話頭像影片。",
+      "resolutionLabel": "解析度",
+      "generateLabel": "建立說話頭像",
+      "generatingLabel": "正在建立頭像影片...",
+      "resultTitle": "說話頭像結果",
+      "resultEmptyTitle": "你的結果會顯示在這裡",
+      "resultEmptyText": "上傳一張人像與一個音訊檔，即可生成唇形同步的說話頭像影片。",
+      "audioTrimTitle": "選擇音訊片段",
+      "audioTrimMessage": "這段音訊超過 15 秒。加入音訊框之前，請選擇要保留的部分。",
+      "audioTrimStartLabel": "開始時間",
+      "audioTrimLengthLabel": "片段長度",
+      "audioTrimRangeLabel": "已選範圍",
+      "audioTrimConfirmAction": "使用這段音訊",
+      "audioTrimCancelAction": "取消上傳",
+      "audioTooLongMessage": "音訊上傳最多支援 15 秒。請選擇片段或上傳較短的檔案。",
+      "audioReadFailedMessage": "無法讀取音訊長度。請上傳 15 秒以內的音訊檔。",
+      "audioTrimFailedMessage": "無法裁剪這段音訊。請上傳 15 秒以內的音訊檔。"
+    }
+  },
+  "metadata": {
+    "title": "AI 說話頭像建立工具線上版 | Toolaze",
+    "description": "使用一張人像圖片和一段語音音訊，建立具備唇形同步、臉部表情與短影片輸出的說話頭像影片。"
+  },
+  "hero": {
+    "h1": "<span class=\"text-gradient\">AI 說話頭像</span>建立工具",
+    "desc": "上傳一張人像，加入清楚的語音片段，即可建立具備唇形同步、臉部動作與自然頭部動作的 AI 說話頭像短片。適合創作者開場、產品解說、課程片段、銷售訊息與社群影片。"
+  },
+  "sectionsOrder": [
+    "intro",
+    "howToUse",
+    "promptExamples",
+    "scenes",
+    "features",
+    "performanceMetrics",
+    "faq"
+  ],
+  "intro": {
+    "title": "用人像與語音建立說話頭像影片",
+    "content": [
+      {
+        "title": "什麼是 AI 說話頭像？",
+        "text": "AI 說話頭像會把靜態人像轉成一段短的說話影片。上傳的音訊控制嘴型動作，文字指示則引導表情、頭部動作、光線與鏡頭感。"
+      },
+      {
+        "title": "適合使用的情境",
+        "text": "當你需要主持人式影片，但不想重新拍攝時，可以使用這個工具。清楚臉部、乾淨音訊與聚焦指示會得到更穩定的結果。"
+      },
+      {
+        "title": "需要準備什麼",
+        "text": "準備一張正面人像和一段短語音。避免背景雜音、嘴部遮擋、側臉，以及需要換場景的長稿。"
+      }
+    ]
+  },
+  "performanceMetrics": {
+    "title": "說話頭像的重要輸入",
+    "metrics": [
+      {
+        "label": "最佳輸入",
+        "value": "一張清楚人像圖片加上一個語音音訊檔。"
+      },
+      {
+        "label": "解析度",
+        "value": "480p 適合快速草稿，720p 適合較清晰的發布片段。"
+      },
+      {
+        "label": "音訊指引",
+        "value": "使用 10MB 以內的清晰語音；短片段更容易同步與檢查。"
+      },
+      {
+        "label": "指示重點",
+        "value": "描述表情、頭部動作、眼神接觸、情緒、燈光與背景穩定性。"
+      },
+      {
+        "label": "最佳輸出",
+        "value": "短主持人片段、創作者開場、解說影片、個人檔案影片與 UGC 風格 talking-head 草稿。"
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "說話頭像指示範例",
+    "subtitle": "搭配一張人像和一個音訊檔，加入聚焦的表情與動作方向。",
+    "items": [
+      {
+        "title": "創作者開場",
+        "prompt": "Natural creator intro, friendly eye contact, subtle smile, small head movement, soft studio lighting, stable background, realistic lip sync.",
+        "note": "適合個人檔案影片、頻道開場與個人品牌短片。",
+        "color": "linear-gradient(135deg, #4f46e5, #06b6d4)"
+      },
+      {
+        "title": "產品解說",
+        "prompt": "Confident presenter explaining a product feature, professional expression, gentle camera presence, clean office lighting, natural blinking, accurate lip sync.",
+        "note": "適合 SaaS、電商或 App 的短解說草稿。",
+        "color": "linear-gradient(135deg, #7c3aed, #ec4899)"
+      },
+      {
+        "title": "課程預告",
+        "prompt": "Warm instructor speaking to camera, calm face motion, slight nods, clear educational tone, neutral background, polished 720p talking avatar video.",
+        "note": "最適合課程片段與單元預覽。",
+        "color": "linear-gradient(135deg, #0f172a, #22c55e)"
+      },
+      {
+        "title": "銷售訊息",
+        "prompt": "Professional spokesperson greeting the viewer, relaxed smile, steady eye contact, subtle gestures, bright modern lighting, trustworthy tone.",
+        "note": "適合個人化外聯與 onboarding 訊息。",
+        "color": "linear-gradient(135deg, #f97316, #ef4444)"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "如何建立 AI 說話頭像",
+    "steps": [
+      {
+        "title": "上傳人像",
+        "desc": "選擇一張臉部清楚、光線良好、嘴部周圍沒有明顯遮擋的圖片。"
+      },
+      {
+        "title": "上傳語音音訊",
+        "desc": "使用背景雜音低、單一說話者的短語音片段。"
+      },
+      {
+        "title": "撰寫動作指示",
+        "desc": "描述臉部表情、頭部動作、情緒、眼神接觸、燈光，以及背景是否需要保持穩定。"
+      },
+      {
+        "title": "生成並檢查",
+        "desc": "先用 480p 做快速草稿；當語音、臉部與節奏都合適後，再用 720p 生成更清晰版本。"
+      }
+    ]
+  },
+  "scenesTitle": "AI 說話頭像適用情境",
+  "scenes": [
+    {
+      "title": "創作者開場",
+      "desc": "把個人照片與語音片段轉成社群頻道可用的短 talking-head 開場。",
+      "icon": "🎥"
+    },
+    {
+      "title": "產品解說",
+      "desc": "為新品發布、功能展示、落地頁與廣告建立主持人式片段。",
+      "icon": "📢"
+    },
+    {
+      "title": "訓練片段",
+      "desc": "無需安排另一次錄影，即可製作課程、onboarding 或 FAQ 短片。",
+      "icon": "🎓"
+    }
+  ],
+  "features": {
+    "title": "為什麼用 Toolaze 建立說話頭像",
+    "items": [
+      {
+        "title": "圖片與音訊流程",
+        "desc": "工具圍繞說話頭像真正需要的輸入建立：一張人像、一個語音檔與一段方向指示。"
+      },
+      {
+        "title": "用指示控制動作",
+        "desc": "不用切換工具，就能引導唇形同步、表情、頭部動作、鏡頭氛圍與背景穩定性。"
+      },
+      {
+        "title": "聚焦短影片輸出",
+        "desc": "當社群、產品、教育與銷售流程只需要快速 talking-head 片段時，可快速生成緊湊草稿。"
+      },
+      {
+        "title": "可保存到歷史記錄",
+        "desc": "生成影片可保存到帳戶歷史記錄，並附帶來源頁面與模型資訊。"
+      },
+      {
+        "title": "清楚的輸入限制",
+        "desc": "生成前會提示人像品質、音訊清晰度、解析度與短片段行為。"
+      },
+      {
+        "title": "實用創作指引",
+        "desc": "在消耗 credits 前，頁面會用清楚文案說明用途、限制與指示範例。"
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "什麼是 AI 說話頭像建立工具？",
+      "a": "它會從一張人像和一個音訊檔建立短說話影片。音訊控制說話節奏，文字指示控制表情與呈現風格。"
+    },
+    {
+      "q": "什麼圖片效果最好？",
+      "a": "請使用清楚正面人像，光線良好且嘴部沒有遮擋。避免側臉、太陽眼鏡、嚴重模糊或臉部裁切。"
+    },
+    {
+      "q": "可以使用自己的聲音嗎？",
+      "a": "可以。請上傳你有權使用的語音音訊。短且清楚、單一說話者的語音通常會有更好的唇形同步。"
+    },
+    {
+      "q": "支援 720p 嗎？",
+      "a": "支援。Toolaze 頁面提供 480p 做草稿，以及 720p 生成更清晰的說話頭像片段。"
+    },
+    {
+      "q": "這是 ASMR 影片工具嗎？",
+      "a": "不是。此頁面用於語音導向的說話頭像影片。ASMR 影片生成屬於另一個工具頁面。"
+    },
+    {
+      "q": "指示文字應該寫什麼？",
+      "a": "描述臉部表情、眼神接觸、頭部動作、燈光、背景穩定性，以及你想要的主持人氛圍。"
+    }
+  ],
+  "moreToolsLinks": [
+    {
+      "slug": "ai-video-generator",
+      "title": "AI 影片生成器",
+      "description": "使用文字或圖片指示建立一般 AI 影片片段。",
+      "href": "/ai-video-generator",
+      "media": {
+        "type": "video",
+        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4",
+        "alt": "AI 影片生成器示範影片"
+      }
+    },
+    {
+      "slug": "image-to-video-generator",
+      "title": "圖像轉影片生成器",
+      "description": "用指示引導動態，讓靜態圖片動起來。",
+      "href": "/image-to-video-generator",
+      "media": {
+        "type": "video",
+        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4",
+        "alt": "圖像轉影片生成器示範影片"
+      }
+    },
+    {
+      "slug": "ai-image-generator",
+      "title": "AI 圖像生成器",
+      "description": "在動畫化之前，先建立人像、個人檔案圖片與來源視覺。",
+      "href": "/ai-image-generator",
+      "media": {
+        "type": "image",
+        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/gpt-image-2.jpg",
+        "alt": "AI 圖像生成器示範圖片"
+      }
+    }
+  ],
+  "faqTitle": "AI 說話頭像常見問題",
+  "faqDescription": "快速了解人像、語音音訊、唇形同步、輸出品質與安全使用。",
+  "moreTools": "更多說話頭像工具",
+  "heroDemoVideo": {
+    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/talking-avatar-creator/demo.mp4",
+    "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/talking-avatar-creator/demo-poster.webp",
+    "ariaLabel": "展示短篇 AI 說話頭像、唇形同步與主持人式臉部動作的示範影片",
+    "duration": "PT14.48S",
+    "uploadDate": "2026-07-31T07:08:59.000Z",
+    "sourceHistory": "Talking Avatar Creator demo · 14.48s · uploaded to Toolaze R2 on 2026-07-31"
+  }
+}

@@ -27,6 +27,25 @@ test('routes video history Recreate to the localized generic video generator', (
   )
 })
 
+test('routes history Recreate back to the original localized tool page when available', () => {
+  assert.equal(
+    buildHistoryRecreateHref({
+      mediaType: 'video',
+      model: 'infinitalk',
+      toolSlug: 'talking-avatar-creator',
+    }, 'zh-TW'),
+    '/zh-TW/talking-avatar-creator',
+  )
+  assert.equal(
+    buildHistoryRecreateHref({
+      mediaType: 'video',
+      model: 'infinitalk',
+      sourcePath: '/ja/talking-avatar-creator',
+    }, 'zh-TW'),
+    '/zh-TW/talking-avatar-creator',
+  )
+})
+
 const baseHistoryItem = {
   prompt: 'Create a premium citrus soda campaign image.',
   model: 'seedream-5-0-pro',
@@ -54,6 +73,37 @@ test('uses original input references for Create Similar when they exist', () => 
     aspectRatio: item.aspectRatio,
     resolution: item.resolution,
     outputFormat: item.outputFormat,
+  })
+})
+
+test('keeps talking avatar image and audio inputs in the pending Recreate payload', () => {
+  const item = {
+    ...baseHistoryItem,
+    mediaType: 'video' as const,
+    model: 'infinitalk',
+    toolSlug: 'talking-avatar-creator',
+    sourcePath: '/zh-TW/talking-avatar-creator',
+    inputUrls: [
+      'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/avatar-reference.webp',
+      'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/reference-audio.wav',
+    ],
+    resolution: '720p',
+    outputFormat: 'audio-driven',
+  }
+
+  assert.deepEqual(buildHistoryRepromptPayload(item), {
+    prompt: item.prompt,
+    imageUrls: [item.inputUrls[0]],
+    inputUrls: item.inputUrls,
+    audioUrl: item.inputUrls[1],
+    audioUrls: [item.inputUrls[1]],
+    modelId: item.model,
+    aspectRatio: item.aspectRatio,
+    resolution: item.resolution,
+    outputFormat: item.outputFormat,
+    toolSlug: item.toolSlug,
+    sourcePath: item.sourcePath,
+    mediaType: item.mediaType,
   })
 })
 

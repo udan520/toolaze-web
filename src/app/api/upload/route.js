@@ -64,10 +64,15 @@ function getSigningKey(secretAccessKey, dateStamp) {
 }
 
 function getExtension(file) {
-  const type = file?.type || ''
-  const name = file?.name || ''
+  const type = (file?.type || '').toLowerCase()
+  const name = (file?.name || '').toLowerCase()
   if (type.includes('jpeg') || type.includes('jpg') || /\.jpe?g$/i.test(name)) return 'jpg'
   if (type.includes('webp') || /\.webp$/i.test(name)) return 'webp'
+  if (type.includes('video/mp4') || /\.mp4$/i.test(name)) return 'mp4'
+  if (type.includes('mpeg') || /\.mp3$/i.test(name)) return 'mp3'
+  if (type.includes('wav') || /\.wav$/i.test(name)) return 'wav'
+  if (type.includes('audio/mp4') || type.includes('x-m4a') || /\.m4a$/i.test(name)) return 'm4a'
+  if (type.includes('ogg') || /\.ogg$/i.test(name)) return 'ogg'
   return 'png'
 }
 

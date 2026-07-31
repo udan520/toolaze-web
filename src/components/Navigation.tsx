@@ -54,6 +54,7 @@ const defaultNavTranslations = {
   aiAsmrVideoGenerator: 'AI ASMR Video Generator',
   aiKissingVideoGenerator: 'AI Kissing Video Generator',
   aiDanceGenerator: 'AI Dance Generator',
+  talkingAvatarCreator: 'AI Talking Avatar',
   aiHairstyleChanger: 'AI Hairstyle Changer',
   aiHairColorChanger: 'AI Hair Color Changer',
   aiClothesChanger: 'AI Clothes Changer',
@@ -165,6 +166,8 @@ const AI_TOOLS_DEMO_IMAGES = {
   aiAsmrVideoGenerator:
     'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/ai-asmr-video-generator/demo-poster.webp',
   aiDanceGenerator: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/ai-dance-demo-source.png',
+  talkingAvatarCreator:
+    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/talking-avatar-creator/demo-poster.webp',
   aiImageToImageGenerator:
     'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/gpt-image-2/feature-image-editing.webp',
   worldCupAiImageGenerator:
@@ -183,6 +186,7 @@ type AiToolNavLabelKey =
   | 'aiAsmrVideoGenerator'
   | 'aiKissingVideoGenerator'
   | 'aiDanceGenerator'
+  | 'talkingAvatarCreator'
 
 type AiToolMenuItem = {
   href: string
@@ -204,6 +208,7 @@ const AI_IMAGE_TOOL_MENU_ITEMS: readonly AiToolMenuItem[] = [
 
 const AI_VIDEO_TOOL_MENU_ITEMS: readonly AiToolMenuItem[] = [
   { href: '/ai-asmr-video-generator', labelKey: 'aiAsmrVideoGenerator', imageKey: 'aiAsmrVideoGenerator' },
+  { href: '/talking-avatar-creator', labelKey: 'talkingAvatarCreator', imageKey: 'talkingAvatarCreator' },
   { href: '/ai-kissing-video-generator', labelKey: 'aiKissingVideoGenerator', imageKey: 'aiKissingVideoGenerator', hot: true },
   { href: '/ai-dance-generator', labelKey: 'aiDanceGenerator', imageKey: 'aiDanceGenerator', hot: true },
 ]
@@ -2036,6 +2041,19 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                   <span>{navTranslations.aiDanceGenerator || defaultNavTranslations.aiDanceGenerator}</span>
                 </Link>
                 <Link
+                  href={getLocalizedHref('/talking-avatar-creator')}
+                  onClick={() => setOpenDesktopMenu(null)}
+                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
+                    <rect x="3" y="4" width="18" height="16" rx="3" fill="#EEF2FF"/>
+                    <circle cx="12" cy="10" r="3" stroke="#4F46E5" strokeWidth="1.6"/>
+                    <path d="M7.5 18C8.7 15.8 10.1 14.8 12 14.8C13.9 14.8 15.3 15.8 16.5 18" stroke="#4F46E5" strokeWidth="1.6" strokeLinecap="round"/>
+                    <path d="M17 8.5V15.5" stroke="#EC4899" strokeWidth="1.5" strokeLinecap="round"/>
+                  </svg>
+                  <span>{navTranslations.talkingAvatarCreator || defaultNavTranslations.talkingAvatarCreator}</span>
+                </Link>
+                <Link
                   href={getLocalizedHref('/model/seedance-2-5')}
                   onClick={() => setOpenDesktopMenu(null)}
                   className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
@@ -2559,6 +2577,22 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                       </defs>
                     </svg>
                     <span>{navTranslations.aiDanceGenerator || defaultNavTranslations.aiDanceGenerator}</span>
+                  </Link>
+                  <Link
+                    href={getLocalizedHref('/talking-avatar-creator')}
+                    onClick={() => {
+                      setMobileMenuOpen(false)
+                      setExpandedSubmenus(new Set())
+                    }}
+                    className="flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
+                  >
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
+                      <rect x="3" y="4" width="18" height="16" rx="3" fill="#EEF2FF"/>
+                      <circle cx="12" cy="10" r="3" stroke="#4F46E5" strokeWidth="1.6"/>
+                      <path d="M7.5 18C8.7 15.8 10.1 14.8 12 14.8C13.9 14.8 15.3 15.8 16.5 18" stroke="#4F46E5" strokeWidth="1.6" strokeLinecap="round"/>
+                      <path d="M17 8.5V15.5" stroke="#EC4899" strokeWidth="1.5" strokeLinecap="round"/>
+                    </svg>
+                    <span>{navTranslations.talkingAvatarCreator || defaultNavTranslations.talkingAvatarCreator}</span>
                   </Link>
                   <Link
                     href={getLocalizedHref('/model/seedance-2-5')}

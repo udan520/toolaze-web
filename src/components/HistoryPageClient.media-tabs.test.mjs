@@ -50,6 +50,13 @@ test('History Recreate uses an existing localized generator route', () => {
   assert.doesNotMatch(source, /window\.location\.href = `?\/model\//)
 })
 
+test('History Recreate preserves the raw generation inputs for the target landing page', () => {
+  assert.match(source, /recreateInputUrls\?: string\[\]/, 'history items should keep raw input URLs for Recreate')
+  assert.match(source, /const rawInputUrls = Array\.isArray\(item\.inputUrls\) \? item\.inputUrls : \[\]/, 'normalizer should capture raw inputs before display normalization')
+  assert.match(source, /recreateInputUrls: rawInputUrls/, 'normalized items should keep the raw inputs separately')
+  assert.match(source, /buildHistoryRepromptPayload\(\{ \.\.\.item, inputUrls: item\.recreateInputUrls \|\| item\.inputUrls \}\)/, 'Recreate payload should use raw inputs rather than display-only references')
+})
+
 test('History h5 preview keeps compact actions and a four-line scrolling prompt', () => {
   assert.match(source, /data-history-preview-actions[\s\S]*grid-cols-\[minmax\(0,1fr\)_44px_44px\]/)
   assert.match(source, /data-history-preview-prompt[\s\S]*max-h-24[\s\S]*overflow-y-auto[\s\S]*overscroll-contain/)

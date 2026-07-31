@@ -1,0 +1,262 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "talking-avatar-creator",
+  "topTool": {
+    "displayName": "Avatar parlante con IA",
+    "textOverrides": {
+      "imageTitle": "Subir imagen del avatar",
+      "imageHelper": "Usa un retrato frontal y claro. JPG, PNG o WebP funciona mejor.",
+      "audioTitle": "Subir audio de voz",
+      "audioHelper": "MP3, WAV, M4A u OGG. Mantén el audio por debajo de 10 MB y 15 segundos para una mejor sincronización labial.",
+      "promptLabel": "Dirige el avatar parlante",
+      "promptPlaceholder": "Movimiento natural de cabeza, contacto visual cálido, expresiones sutiles, iluminación de estudio, video limpio de avatar parlante.",
+      "resolutionLabel": "Resolución",
+      "generateLabel": "Crear avatar parlante",
+      "generatingLabel": "Creando video de avatar...",
+      "resultTitle": "Resultado del avatar parlante",
+      "resultEmptyTitle": "Tu resultado aparecerá aquí",
+      "resultEmptyText": "Sube un retrato y un archivo de audio para generar un video de avatar con labios sincronizados.",
+      "audioTrimTitle": "Elegir segmento de audio",
+      "audioTrimMessage": "Este audio dura más de 15 segundos. Elige la parte que quieres conservar antes de añadirla al cuadro de audio.",
+      "audioTrimStartLabel": "Hora de inicio",
+      "audioTrimLengthLabel": "Duración del clip",
+      "audioTrimRangeLabel": "Rango seleccionado",
+      "audioTrimConfirmAction": "Usar este segmento",
+      "audioTrimCancelAction": "Cancelar subida",
+      "audioTooLongMessage": "La subida de audio admite hasta 15 segundos. Elige un segmento o sube un archivo más corto.",
+      "audioReadFailedMessage": "No pudimos leer la duración del audio. Sube un archivo de audio de hasta 15 segundos.",
+      "audioTrimFailedMessage": "No pudimos recortar este audio. Sube un archivo de audio de hasta 15 segundos."
+    }
+  },
+  "metadata": {
+    "title": "Creador de avatar parlante con IA online | Toolaze",
+    "description": "Crea un video de avatar parlante desde un retrato y un audio de voz con sincronización labial, expresión facial y salida de video corto."
+  },
+  "hero": {
+    "h1": "Creador de <span class=\"text-gradient\">avatar parlante con IA</span>",
+    "desc": "Sube un retrato, añade un clip de voz claro y crea un video corto de avatar parlante con sincronización labial, movimiento facial y movimiento natural de cabeza. Úsalo para intros de creadores, explicaciones de producto, fragmentos de curso, ventas y videos sociales."
+  },
+  "sectionsOrder": [
+    "intro",
+    "howToUse",
+    "promptExamples",
+    "scenes",
+    "features",
+    "performanceMetrics",
+    "faq"
+  ],
+  "intro": {
+    "title": "Crea videos de avatar parlante desde un retrato y una voz",
+    "content": [
+      {
+        "title": "¿Qué es un avatar parlante con IA?",
+        "text": "Un avatar parlante con IA convierte un retrato estático en un video corto hablando. El audio subido controla la boca, mientras la instrucción guía la expresión, el movimiento de cabeza, la iluminación y la cámara."
+      },
+      {
+        "title": "Cuándo usarlo",
+        "text": "Úsalo cuando necesites un video estilo presentador sin grabar una nueva toma. Funciona mejor con un rostro claro, una pista de audio limpia y una instrucción enfocada."
+      },
+      {
+        "title": "Qué preparar",
+        "text": "Empieza con un retrato frontal y un clip de voz corto. Evita ruido, bocas cubiertas, perfiles laterales y guiones largos que necesiten cambios de escena."
+      }
+    ]
+  },
+  "performanceMetrics": {
+    "title": "Entradas importantes para avatares parlantes",
+    "metrics": [
+      {
+        "label": "Mejor entrada",
+        "value": "Un retrato claro más un archivo de voz."
+      },
+      {
+        "label": "Resolución",
+        "value": "480p para borradores rápidos, 720p para clips publicados más nítidos."
+      },
+      {
+        "label": "Guía de audio",
+        "value": "Usa voz limpia por debajo de 10 MB; los clips cortos son más fáciles de sincronizar y revisar."
+      },
+      {
+        "label": "Foco de la instrucción",
+        "value": "Describe expresión, movimiento de cabeza, contacto visual, ánimo, iluminación y estabilidad del fondo."
+      },
+      {
+        "label": "Mejor salida",
+        "value": "Clips cortos de presentador, intros de creador, explicaciones, videos de perfil y borradores tipo UGC."
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "Ejemplos de instrucciones para avatar parlante",
+    "subtitle": "Combina un retrato y un audio con una dirección enfocada para expresión y movimiento.",
+    "items": [
+      {
+        "title": "Intro de creador",
+        "prompt": "Natural creator intro, friendly eye contact, subtle smile, small head movement, soft studio lighting, stable background, realistic lip sync.",
+        "note": "Bueno para videos de perfil, intros de canal y clips de marca personal.",
+        "color": "linear-gradient(135deg, #4f46e5, #06b6d4)"
+      },
+      {
+        "title": "Explicador de producto",
+        "prompt": "Confident presenter explaining a product feature, professional expression, gentle camera presence, clean office lighting, natural blinking, accurate lip sync.",
+        "note": "Úsalo para borradores cortos de SaaS, comercio electrónico o aplicaciones.",
+        "color": "linear-gradient(135deg, #7c3aed, #ec4899)"
+      },
+      {
+        "title": "Avance de curso",
+        "prompt": "Warm instructor speaking to camera, calm face motion, slight nods, clear educational tone, neutral background, polished 720p talking avatar video.",
+        "note": "Ideal para fragmentos de curso y vistas previas de lecciones.",
+        "color": "linear-gradient(135deg, #0f172a, #22c55e)"
+      },
+      {
+        "title": "Contacto comercial",
+        "prompt": "Professional spokesperson greeting the viewer, relaxed smile, steady eye contact, subtle gestures, bright modern lighting, trustworthy tone.",
+        "note": "Úsalo para mensajes personalizados y onboarding.",
+        "color": "linear-gradient(135deg, #f97316, #ef4444)"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Cómo crear un avatar parlante con IA",
+    "steps": [
+      {
+        "title": "Sube un retrato",
+        "desc": "Elige una imagen clara con rostro visible, buena luz y mínima obstrucción alrededor de la boca."
+      },
+      {
+        "title": "Sube audio de voz",
+        "desc": "Usa un clip corto con poco ruido de fondo y una sola persona hablando."
+      },
+      {
+        "title": "Escribe la guía de movimiento",
+        "desc": "Describe expresión facial, movimiento de cabeza, ánimo, contacto visual, iluminación y si el fondo debe mantenerse estable."
+      },
+      {
+        "title": "Genera y revisa",
+        "desc": "Empieza con 480p para un borrador rápido y usa 720p cuando voz, rostro y ritmo estén listos."
+      }
+    ]
+  },
+  "scenesTitle": "Casos de uso para avatares parlantes con IA",
+  "scenes": [
+    {
+      "title": "Intros de creadores",
+      "desc": "Convierte una foto de perfil y un clip de voz en una breve intro hablando para redes sociales.",
+      "icon": "🎥"
+    },
+    {
+      "title": "Explicaciones de producto",
+      "desc": "Crea clips estilo presentador para lanzamientos, demos de funciones, landing pages y anuncios.",
+      "icon": "📢"
+    },
+    {
+      "title": "Fragmentos de formación",
+      "desc": "Prepara videos breves de cursos, onboarding o preguntas frecuentes sin programar otra grabación.",
+      "icon": "🎓"
+    }
+  ],
+  "features": {
+    "title": "Por qué usar Toolaze para avatares parlantes",
+    "items": [
+      {
+        "title": "Flujo de imagen y audio",
+        "desc": "La herramienta se centra en las entradas reales que necesita un avatar parlante: un retrato, una voz y una instrucción de dirección."
+      },
+      {
+        "title": "Control de movimiento por instrucción",
+        "desc": "Guía sincronización labial, expresión, movimiento de cabeza, estilo de cámara y estabilidad del fondo sin cambiar de herramienta."
+      },
+      {
+        "title": "Enfoque en salida breve",
+        "desc": "Crea borradores compactos para redes, producto, educación y ventas cuando basta un clip de presentador rápido."
+      },
+      {
+        "title": "Resultados con historial",
+        "desc": "Los videos generados pueden guardarse en el historial de la cuenta con página de origen y metadatos del modelo."
+      },
+      {
+        "title": "Límites claros de entrada",
+        "desc": "El flujo muestra calidad del retrato, limpieza del audio, resolución y comportamiento de clips cortos antes de generar."
+      },
+      {
+        "title": "Guía práctica para creadores",
+        "desc": "La página explica usos, límites y ejemplos con lenguaje claro antes de gastar créditos."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "¿Qué es un creador de avatar parlante con IA?",
+      "a": "Crea un video corto hablando desde un retrato y un archivo de audio. El audio define el ritmo y la instrucción controla la expresión y el estilo de presentación."
+    },
+    {
+      "q": "¿Qué imagen funciona mejor?",
+      "a": "Usa un retrato frontal claro, con buena luz y boca visible. Evita perfiles laterales, gafas oscuras, mucho desenfoque o rostros recortados."
+    },
+    {
+      "q": "¿Puedo usar mi propia voz?",
+      "a": "Sí. Sube un audio de voz que tengas derecho a usar. La voz corta y limpia con un solo hablante suele dar mejor sincronización."
+    },
+    {
+      "q": "¿Admite 720p?",
+      "a": "Sí. La página de Toolaze ofrece 480p para borradores y 720p para clips de avatar parlante más nítidos."
+    },
+    {
+      "q": "¿Es para video ASMR?",
+      "a": "No. Esta página es para videos de avatar guiados por voz. La generación de video ASMR está en una herramienta separada."
+    },
+    {
+      "q": "¿Qué debo escribir en la instrucción?",
+      "a": "Describe expresión facial, contacto visual, movimiento de cabeza, iluminación, estabilidad del fondo y el ánimo del presentador."
+    }
+  ],
+  "moreToolsLinks": [
+    {
+      "slug": "ai-video-generator",
+      "title": "Generador de video con IA",
+      "description": "Crea clips generales con IA desde texto o imágenes.",
+      "href": "/ai-video-generator",
+      "media": {
+        "type": "video",
+        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4",
+        "alt": "Video de demo del generador de video con IA"
+      }
+    },
+    {
+      "slug": "image-to-video-generator",
+      "title": "Generador de imagen a video",
+      "description": "Anima una imagen fija con movimiento guiado.",
+      "href": "/image-to-video-generator",
+      "media": {
+        "type": "video",
+        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4",
+        "alt": "Video de demo del generador de imagen a video"
+      }
+    },
+    {
+      "slug": "ai-image-generator",
+      "title": "Generador de imágenes con IA",
+      "description": "Crea retratos, imágenes de perfil y visuales de origen antes de animarlos.",
+      "href": "/ai-image-generator",
+      "media": {
+        "type": "image",
+        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/gpt-image-2.jpg",
+        "alt": "Imagen de demo del generador de imágenes con IA"
+      }
+    }
+  ],
+  "faqTitle": "Preguntas frecuentes sobre avatar parlante con IA",
+  "faqDescription": "Respuestas breves sobre retratos, audio de voz, sincronización labial, calidad de salida y uso seguro.",
+  "moreTools": "Más herramientas para avatares parlantes",
+  "heroDemoVideo": {
+    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/talking-avatar-creator/demo.mp4",
+    "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/talking-avatar-creator/demo-poster.webp",
+    "ariaLabel": "Video de demostración de un breve clip de avatar parlante con sincronización labial y movimiento facial de presentador",
+    "duration": "PT14.48S",
+    "uploadDate": "2026-07-31T07:08:59.000Z",
+    "sourceHistory": "Talking Avatar Creator demo · 14.48s · uploaded to Toolaze R2 on 2026-07-31"
+  }
+}

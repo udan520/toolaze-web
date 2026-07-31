@@ -19,6 +19,7 @@ const imageToolHrefs = [
 
 const videoToolHrefs = [
   '/ai-asmr-video-generator',
+  '/talking-avatar-creator',
   '/ai-kissing-video-generator',
   '/ai-dance-generator',
 ]
@@ -72,6 +73,11 @@ test('AI Tools category headings are translated in every locale', () => {
       'string',
       `${locale} aiAsmrVideoGenerator should exist`,
     )
+    assert.equal(
+      typeof common.nav.talkingAvatarCreator,
+      'string',
+      `${locale} talkingAvatarCreator should exist`,
+    )
     assert.notEqual(common.nav.imageTools.trim(), '', `${locale} imageTools should not be empty`)
     assert.notEqual(common.nav.videoTools.trim(), '', `${locale} videoTools should not be empty`)
   }
@@ -86,4 +92,5 @@ test('scene pages preserve AI Tools group translations in the navigation payload
   assert.match(sceneNavKeys, /'imageTools'/)
   assert.match(sceneNavKeys, /'videoTools'/)
   assert.match(sceneNavKeys, /'aiAsmrVideoGenerator'/)
+  assert.match(sceneNavKeys, /'talkingAvatarCreator'/)
 })

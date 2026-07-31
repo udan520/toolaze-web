@@ -102,7 +102,10 @@ function readCreditHold(body, taskId) {
     consumptionId: String(creditHold.consumptionId),
     requiredCredits,
     model: creditHold.model ? String(creditHold.model) : undefined,
+    modelLabel: creditHold.modelLabel ? String(creditHold.modelLabel) : undefined,
     mode: creditHold.mode === 'image-to-video' ? 'image-to-video' : 'text-to-video',
+    toolSlug: creditHold.toolSlug ? String(creditHold.toolSlug) : undefined,
+    toolLabel: creditHold.toolLabel ? String(creditHold.toolLabel) : undefined,
   };
 }
 
@@ -114,13 +117,16 @@ async function refundFailedVideoCredits(env, user, body, taskId, message) {
 
   const refund = await refundCredits(env, user.id, creditHold.requiredCredits, {
     reason: 'video_generation_refund',
-    description: getVideoGenerationCreditRefundDescription(creditHold.model, creditHold.mode),
+    description: getVideoGenerationCreditRefundDescription(creditHold.model, creditHold.mode, creditHold),
     consumptionId: creditHold.consumptionId,
     metadata: {
       taskId,
       model: creditHold.model,
+      modelLabel: creditHold.modelLabel,
       mode: creditHold.mode,
       mediaType: 'video',
+      toolSlug: creditHold.toolSlug,
+      toolLabel: creditHold.toolLabel,
       error: message || 'Video generation failed',
     },
   }).catch(() => null);
