@@ -15,12 +15,17 @@ const navigationSource = readFileSync(new URL('./Navigation.tsx', import.meta.ur
 const footerSource = readFileSync(new URL('./Footer.tsx', import.meta.url), 'utf8')
 const homePageSource = readFileSync(new URL('./home/HomePageMain.tsx', import.meta.url), 'utf8')
 const homeTrendingToolsRailSource = readFileSync(new URL('./home/HomeTrendingToolsRail.tsx', import.meta.url), 'utf8')
+const homeModelCardsRailPath = new URL('./home/HomeModelCardsRail.tsx', import.meta.url)
+const homeModelCardsRailSource = existsSync(homeModelCardsRailPath)
+  ? readFileSync(homeModelCardsRailPath, 'utf8')
+  : ''
 const homepageGridToolsSource = readFileSync(new URL('../lib/homepage-grid-tools.ts', import.meta.url), 'utf8')
 const homeAdvancedAiCardImagesSource = readFileSync(
   new URL('../lib/home-advanced-ai-card-images.ts', import.meta.url),
   'utf8',
 )
 const homeModelCardImagesSource = readFileSync(new URL('../lib/home-model-card-images.ts', import.meta.url), 'utf8')
+const adminSeoServerSource = readFileSync(new URL('../../scripts/admin-seo-server.js', import.meta.url), 'utf8')
 const aiToolsCopySource = readFileSync(new URL('../app/ai-tools/copy.ts', import.meta.url), 'utf8')
 const siteLanguageSwitchSource = readFileSync(new URL('../lib/site-language-switch.ts', import.meta.url), 'utf8')
 const aiImageGeneratorConfigSource = readFileSync(
@@ -168,13 +173,45 @@ test('homepage quick launch buttons use compact labels instead of generator suff
   )
   assert.doesNotMatch(homePageSource, /label: navCopy\.videoTools \|\| 'Video Tools', href: '#ai-tools-hub'/)
   assert.doesNotMatch(homePageSource, /label: navCopy\.imageTools \|\| 'Image Tools', href: '#ai-tools-hub'/)
-  assert.match(homePageSource, /border-indigo-600 bg-indigo-600 text-white/)
+  assert.ok(
+    homePageSource.includes('border border-slate-200 bg-white/85 px-5') &&
+      homePageSource.includes('text-slate-700'),
+  )
+  assert.doesNotMatch(homePageSource, /border-indigo-600 bg-indigo-600 text-white/)
   assert.doesNotMatch(homePageSource, /border-slate-950 bg-slate-950 text-white/)
   assert.doesNotMatch(homePageSource, /dashboardCopy\.videoEditor/)
   assert.doesNotMatch(homePageSource, /Video Editor/)
   assert.doesNotMatch(homePageSource, /quickActionCopy\.aiDance/)
   assert.doesNotMatch(homePageSource, /quickActionCopy\.watermark/)
   assert.doesNotMatch(homePageSource, /quickActionCopy\.restorePhoto/)
+})
+
+test('homepage quick launch cards link to the main video, image, and AI tools hubs', () => {
+  const firstScreenSource = sourceBetween(homePageSource, '{/* Dashboard-style first screen */}', '{/* AI Tools hub')
+
+  assert.match(homePageSource, /cardHref: localizeHomeHref\('\/ai-video-generator'\)/)
+  assert.match(homePageSource, /cardHref: localizeHomeHref\('\/ai-image-generator'\)/)
+  assert.match(homePageSource, /cardHref: localizeHomeHref\('\/ai-tools'\)/)
+  assert.match(firstScreenSource, /href=\{group\.cardHref\}/)
+  assert.match(firstScreenSource, /aria-label=\{`Open \$\{group\.title\}`\}/)
+  assert.match(firstScreenSource, /pointer-events-none/)
+  assert.match(firstScreenSource, /pointer-events-auto/)
+  assert.match(firstScreenSource, /className="absolute inset-0 z-0"\n\s*\/>/)
+  assert.match(
+    firstScreenSource,
+    /<div className="pointer-events-auto relative z-10 flex flex-wrap gap-3">\n\s*\{group\.links\.map/,
+  )
+})
+
+test('homepage quick launch cards provide restrained hover motion', () => {
+  const firstScreenSource = sourceBetween(homePageSource, '{/* Dashboard-style first screen */}', '{/* AI Tools hub')
+
+  assert.match(firstScreenSource, /motion-safe:hover:-translate-y-1/)
+  assert.match(firstScreenSource, /motion-safe:hover:scale-\[1\.01\]/)
+  assert.match(firstScreenSource, /hover:shadow-\[0_24px_70px_rgba\(79,70,229,0\.14\)\]/)
+  assert.match(firstScreenSource, /group-hover:-translate-y-0\.5/)
+  assert.match(firstScreenSource, /group-hover:scale-x-110/)
+  assert.match(firstScreenSource, /\[transition-timing-function:cubic-bezier\(0\.22,1,0\.36,1\)\]/)
 })
 
 test('homepage first screen removes numbered cards and the outer framed container', () => {
@@ -225,16 +262,94 @@ test('homepage Trending renders video media without relying on file extension', 
   )
 })
 
-test('homepage AI Models cards use a dark reading overlay above busy media', () => {
-  assert.match(homePageSource, /bg-slate-950 p-5 text-white/)
-  assert.match(homePageSource, /opacity-30 saturate-\[0\.72\] contrast-\[0\.9\]/)
-  assert.match(homePageSource, /bg-gradient-to-t from-slate-950\/98 via-slate-950\/94 to-slate-950\/86/)
-  assert.match(homePageSource, /text-slate-50 drop-shadow-md/)
-  assert.match(homePageSource, /text-slate-200 drop-shadow-sm/)
+test('homepage AI Models cards use light purple-tinted surfaces on the white home page', () => {
+  const firstScreenSource = sourceBetween(homePageSource, '{/* Dashboard-style first screen */}', '{/* AI Tools hub')
+  const modelBlock = sourceBetween(firstScreenSource, '<section aria-labelledby="home-ai-models-title">', '</section>')
+
+  assert.match(modelBlock, /bg-\[radial-gradient\(circle_at_top_left,_rgba\(99,102,241,0\.12\),_transparent_42%\)\]/)
+  assert.match(modelBlock, /bg-white p-5 text-slate-950/)
+  assert.match(modelBlock, /border border-indigo-100\/80/)
+  assert.match(modelBlock, /bg-indigo-50 text-indigo-700/)
+  assert.match(homePageSource, /text-slate-950/)
+  assert.match(homePageSource, /text-slate-600/)
+  assert.doesNotMatch(modelBlock, /bg-slate-950 p-5 text-white/)
+  assert.doesNotMatch(modelBlock, /border border-slate-800\/80/)
+  assert.doesNotMatch(modelBlock, /bg-indigo-400\/10 text-indigo-100/)
+  assert.doesNotMatch(homePageSource, /text-slate-50 drop-shadow-md/)
+  assert.doesNotMatch(homePageSource, /text-slate-200 drop-shadow-sm/)
+  assert.doesNotMatch(modelBlock, /getHomeModelCardImage\(item\.tool\)/)
+  assert.doesNotMatch(modelBlock, /<Image/)
+  assert.doesNotMatch(modelBlock, /object-cover/)
+  assert.doesNotMatch(modelBlock, /bg-gradient-to-t from-slate-950\/98 via-slate-950\/94 to-slate-950\/86/)
   assert.doesNotMatch(homePageSource, /opacity-85 transition-transform/)
   assert.doesNotMatch(homePageSource, /bg-gradient-to-t from-slate-950\/84 via-slate-950\/62 to-slate-950\/36/)
   assert.doesNotMatch(homePageSource, /bg-white\/76 backdrop-blur/)
   assert.doesNotMatch(homePageSource, /text-white\/86/)
+})
+
+test('homepage left hero banner restores image treatment with Seedance 2.0 Mini copy', () => {
+  const firstScreenSource = sourceBetween(homePageSource, '{/* Dashboard-style first screen */}', '{/* AI Tools hub')
+  const heroBannerSource = sourceBetween(
+    firstScreenSource,
+    '<div className="grid gap-6 xl:grid-cols-[minmax(0,1.15fr)_minmax(380px,0.95fr)]">',
+    '<section aria-labelledby="home-ai-models-title">',
+  )
+
+  assert.match(homePageSource, /import Image from 'next\/image'/)
+  assert.match(homePageSource, /title: 'Seedance 2\.0 Mini'/)
+  assert.match(homePageSource, /href: localizeHomeHref\('\/ai-video-generator\?model=seedance-2-mini'\)/)
+  assert.match(homePageSource, /Create faster 480p and 720p video drafts/)
+  assert.match(homePageSource, /const featuredLaunchThumb = getHomeModelCardImage\('seedance-2-5'\)/)
+  assert.match(heroBannerSource, /<Image/)
+  assert.match(heroBannerSource, /src=\{featuredLaunchThumb\.src\}/)
+  assert.match(heroBannerSource, /alt=\{`\$\{featuredLaunch\.title\} video generation preview`\}/)
+  assert.match(heroBannerSource, /object-cover transition-transform duration-500 group-hover:scale-\[1\.03\]/)
+  assert.match(heroBannerSource, /from-slate-950\/78 via-slate-950\/42 to-slate-950\/10/)
+  assert.match(heroBannerSource, /dashboardCopy\.liveNowSuffix/)
+  assert.doesNotMatch(homePageSource, /modelId: 'seedance-2-mini'/)
+  assert.doesNotMatch(homePageSource, /'480p \/ 720p drafts'/)
+  assert.doesNotMatch(heroBannerSource, /from-indigo-600 via-violet-600 to-sky-500/)
+  assert.doesNotMatch(heroBannerSource, /data-home-featured-mini-card/)
+  assert.doesNotMatch(heroBannerSource, /Mini workflow/)
+})
+
+test('homepage model sections use one-row rails with Trending arrow controls', () => {
+  const aiImageSectionSource = sourceBetween(homePageSource, '{/* AI Image Generator - aiease structure */}', '{/* AI Video Generator - aiease structure */}')
+  const aiVideoSectionSource = sourceBetween(homePageSource, '{/* AI Video Generator - aiease structure */}', '{/* Why Toolaze */}')
+
+  assert.match(homePageSource, /import HomeModelCardsRail, \{ type HomeModelCardsRailCard \}/)
+  assert.match(homePageSource, /const imageModelCards: HomeModelCardsRailCard\[\]/)
+  assert.match(homePageSource, /const videoModelCards: HomeModelCardsRailCard\[\]/)
+  assert.match(aiImageSectionSource, /<HomeModelCardsRail cards=\{imageModelCards\} mediaKind="image" \/>/)
+  assert.match(aiVideoSectionSource, /<HomeModelCardsRail cards=\{videoModelCards\} mediaKind="video" \/>/)
+  assert.doesNotMatch(aiImageSectionSource, /grid grid-cols-1 md:grid-cols-3/)
+  assert.doesNotMatch(aiVideoSectionSource, /grid grid-cols-1 md:grid-cols-3/)
+  assert.match(homeModelCardsRailSource, /const railRef = useRef<HTMLDivElement>\(null\)/)
+  assert.match(homeModelCardsRailSource, /scrollByPage\(direction: -1 \| 1\)/)
+  assert.match(homeModelCardsRailSource, /aria-label=\{`Previous \$\{mediaKind\} models`\}/)
+  assert.match(homeModelCardsRailSource, /aria-label=\{`Next \$\{mediaKind\} models`\}/)
+  assert.match(homeModelCardsRailSource, /flex h-9 w-9 items-center justify-center rounded-full border border-slate-300 bg-white transition-colors hover:border-indigo-200 hover:text-indigo-700/)
+  assert.match(homeModelCardsRailSource, /flex snap-x snap-mandatory gap-8 overflow-x-auto pb-2 \[scrollbar-width:none\] \[&::-webkit-scrollbar\]:hidden/)
+  assert.match(homeModelCardsRailSource, /basis-\[82%\][\s\S]*sm:basis-\[48%\][\s\S]*xl:basis-\[calc\(\(100%_-_4rem\)\/3\)\]/)
+})
+
+test('homepage AI Video Models section renders model landing page demo videos', () => {
+  const aiVideoSectionSource = sourceBetween(homePageSource, '{/* AI Video Generator - aiease structure */}', '{/* Why Toolaze */}')
+
+  assert.match(homePageSource, /heroDemoVideo\?: \{ src\?: string; poster\?: string; ariaLabel\?: string \}/)
+  assert.match(homePageSource, /heroDemoVideo: data\?\.heroDemoVideo/)
+  assert.match(homePageSource, /function getHomeVideoModelDemoMedia\(item: ToolCard\)/)
+  assert.match(homePageSource, /'seedance-2-5': \{[\s\S]*prompt-templates\/storyboard-scene\.mp4/)
+  assert.match(homePageSource, /getHomeVideoModelDemoMedia\(item\)/)
+  assert.match(homeModelCardsRailSource, /data-home-video-model-demo/)
+  assert.match(homeModelCardsRailSource, /src=\{card\.media\.src\}/)
+  assert.match(homeModelCardsRailSource, /poster=\{card\.media\.poster\}/)
+  assert.match(homeModelCardsRailSource, /\bautoPlay\b/)
+  assert.match(homeModelCardsRailSource, /\bloop\b/)
+  assert.match(homeModelCardsRailSource, /\bmuted\b/)
+  assert.match(homeModelCardsRailSource, /\bplaysInline\b/)
+  assert.match(homeModelCardsRailSource, /preload="metadata"/)
+  assert.doesNotMatch(aiVideoSectionSource, /const thumb = getHomeModelCardImage\(item\.tool\)[\s\S]{0,900}<Image/)
 })
 
 test('homepage model block uses All Models label for the whole row', () => {
@@ -309,6 +424,22 @@ test('Grok 1.5 Video is discoverable from AI Video navigation, footer, and homep
   assert.match(footerSource, /href=\{getLocalizedHref\('\/ai-video-generator'\)\}[\s\S]*grok15Video/)
   assert.match(homePageSource, /tool: 'grok-1-5-video'/)
   assert.match(homePageSource, /href: '\/ai-video-generator'/)
+})
+
+test('Wan 2.5 Video has a homepage card image and admin preview coverage', () => {
+  assert.match(homeModelCardImagesSource, /'wan-2-5-ai-video-generator': \{/)
+  assert.match(homeModelCardImagesSource, /prompt-templates\/storyboard-scene\.webp/)
+  assert.match(homeModelCardImagesSource, /alt: 'Wan 2\.5 AI video storyboard motion preview'/)
+  assert.match(homePageSource, /'wan-2-5-ai-video-generator': '\/model\/wan-2-5-ai-video-generator'/)
+  assert.match(
+    adminSeoServerSource,
+    /const HOME_PREVIEW_VIDEO_MODEL_L2S = \['wan-2-5-ai-video-generator', 'seedance-2-5', 'seedance-2', 'kling-3', 'grok-imagine-video-1-5'\]/,
+  )
+  assert.match(
+    adminSeoServerSource,
+    /'wan-2-5-ai-video-generator': 'https:\/\/pub-efeb0c7b9b53478d960218de80c52e3d\.r2\.dev\/uploads\/ai-video-generator\/prompt-templates\/storyboard-scene\.webp'/,
+  )
+  assert.match(adminSeoServerSource, /'wan-2-5-ai-video-generator': '\/model\/wan-2-5-ai-video-generator'/)
 })
 
 test('AI Video model tags are separated from tool links and show manufacturer icons', () => {

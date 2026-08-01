@@ -5,6 +5,7 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import HomeAiToolsTabs, { type HomeAiToolsTabCard } from '@/components/home/HomeAiToolsTabs'
 import HomeTrendingToolsRail from '@/components/home/HomeTrendingToolsRail'
+import HomeModelCardsRail, { type HomeModelCardsRailCard } from '@/components/home/HomeModelCardsRail'
 import { loadCommonTranslations, IMAGE_MODEL_L2S, VIDEO_MODEL_L2S } from '@/lib/seo-loader'
 import { HOME_ADVANCED_AI_TOOL_IDS } from '@/lib/homepage-grid-tools'
 import { getHomeAdvancedAiCardImage } from '@/lib/home-advanced-ai-card-images'
@@ -59,6 +60,7 @@ const AI_IMAGE_PATHS: Record<string, string> = {
 
 // AI Video model paths (under /model/)
 const AI_VIDEO_PATHS: Record<string, string> = {
+  'wan-2-5-ai-video-generator': '/model/wan-2-5-ai-video-generator',
   'seedance-2-5': '/model/seedance-2-5',
   'seedance-2': '/model/seedance-2',
   'kling-3': '/model/kling-3',
@@ -72,9 +74,36 @@ type ToolCard = {
   featuredDesc?: string
   modelName?: string
   modelType?: string
+  heroDemoVideo?: { src?: string; poster?: string; ariaLabel?: string }
 }
 
 const TRENDING_MODEL_IDS = ['seedream-5-0-pro', 'gpt-image-2', 'nano-banana-pro', 'seedance-2-5'] as const
+
+type HomeVideoDemoMedia = {
+  src: string
+  poster?: string
+  ariaLabel: string
+}
+
+const HOME_VIDEO_MODEL_DEMO_FALLBACKS: Record<string, HomeVideoDemoMedia> = {
+  'seedance-2-5': {
+    src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/prompt-templates/storyboard-scene.mp4',
+    poster:
+      'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/prompt-templates/storyboard-scene.webp',
+    ariaLabel: 'Seedance 2.5 demo video preview',
+  },
+  'seedance-2': {
+    src: '/videos/seedance-2-demo-16x9.mp4',
+    poster: '/videos/seedance-2-demo-16x9.jpg',
+    ariaLabel: 'Seedance 2.0 demo video preview',
+  },
+  'kling-3': {
+    src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/prompt-templates/image-guided-motion.mp4',
+    poster:
+      'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/prompt-templates/image-guided-motion.webp',
+    ariaLabel: 'Kling 3.0 demo video preview',
+  },
+}
 
 /** 可选：在 common.home.trendingCards 中按 tool id 覆盖 Trending 区卡片标题与描述 */
 type HomeTrendingCardOverride = {
@@ -109,6 +138,27 @@ function getHref(tool: string): string {
   return AI_IMAGE_PATHS[tool] || AI_VIDEO_PATHS[tool] || `/${tool}`
 }
 
+function isVideoMediaUrl(src?: string): boolean {
+  return /\.(mp4|webm|mov|m4v)(?:[?#].*)?$/i.test(src || '')
+}
+
+function getPlainCardTitle(value?: string): string {
+  return (value || '').replace(/<[^>]*>/g, '').trim()
+}
+
+function getHomeVideoModelDemoMedia(item: ToolCard): HomeVideoDemoMedia | undefined {
+  if (item.heroDemoVideo?.src && isVideoMediaUrl(item.heroDemoVideo.src)) {
+    return {
+      src: item.heroDemoVideo.src,
+      poster: item.heroDemoVideo.poster,
+      ariaLabel:
+        item.heroDemoVideo.ariaLabel || `${getPlainCardTitle(item.modelName || item.title)} demo video preview`,
+    }
+  }
+
+  return HOME_VIDEO_MODEL_DEMO_FALLBACKS[item.tool]
+}
+
 async function loadToolData(
   tool: string,
   locale: string,
@@ -133,6 +183,7 @@ async function loadToolData(
       featuredDesc,
       modelName: modelMeta?.modelName,
       modelType: modelMeta?.modelType,
+      heroDemoVideo: data?.heroDemoVideo,
     }
   } catch {
     return null
@@ -605,10 +656,13 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
   const cleanTitle = (value?: string) => (value || '').replace(/<[^>]*>/g, '').trim()
   const allHomeCards = [...aiVideoTools, ...aiImageTools, ...advancedAiTools]
   const findHomeCard = (tool: string) => allHomeCards.find((item) => item.tool === tool)
-  const featuredLaunch =
-    findHomeCard('seedance-2-5') || findHomeCard('seedance-2') || aiVideoTools[0] || trendingModels[0]
-  const featuredLaunchTitle = cleanTitle(featuredLaunch?.modelName || featuredLaunch?.title) || 'Seedance 2.5'
-  const featuredLaunchThumb = featuredLaunch ? getHomeModelCardImage(featuredLaunch.tool) : null
+  const featuredLaunch = {
+    title: 'Seedance 2.0 Mini',
+    href: localizeHomeHref('/ai-video-generator?model=seedance-2-mini'),
+    description:
+      'Create faster 480p and 720p video drafts with image-to-video starts, prompt tests, and lower-credit iteration before larger renders.',
+  }
+  const featuredLaunchThumb = getHomeModelCardImage('seedance-2-5')
   const dashboardModelCards = ['seedance-2', 'gpt-image-2', 'seedream-5-0-pro', 'kling-3']
     .map(findHomeCard)
     .filter((item): item is ToolCard => Boolean(item))
@@ -627,9 +681,66 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
     ...featuredTrendingCards,
     ...allAiToolCards.filter((item) => !featuredTrendingHrefSet.has(item.href)),
   ]
+  const imageModelCards: HomeModelCardsRailCard[] = aiImageTools.flatMap((item) => {
+    const thumb = getHomeModelCardImage(item.tool)
+    if (!thumb) return []
+    return [
+      {
+        id: item.tool,
+        title: cleanTitle(item.modelName || item.title) || item.title,
+        description: item.featuredDesc || item.description,
+        href: item.href,
+        media: {
+          type: 'image',
+          src: thumb.src,
+          alt: thumb.alt,
+          width: thumb.width,
+          height: thumb.height,
+        },
+      },
+    ]
+  })
+  const videoModelCards: HomeModelCardsRailCard[] = []
+  for (const item of aiVideoTools) {
+    const videoModelDemo = getHomeVideoModelDemoMedia(item)
+    const imageFallback = getHomeModelCardImage(item.tool)
+    const baseCard = {
+      id: item.tool,
+      title: cleanTitle(item.modelName || item.title) || item.title,
+      description: item.featuredDesc || item.description,
+      href: item.href,
+    }
+
+    if (videoModelDemo) {
+      videoModelCards.push({
+        ...baseCard,
+        media: {
+          type: 'video',
+          src: videoModelDemo.src,
+          poster: videoModelDemo.poster,
+          alt: videoModelDemo.ariaLabel,
+        },
+      })
+      continue
+    }
+
+    if (imageFallback) {
+      videoModelCards.push({
+        ...baseCard,
+        media: {
+          type: 'image',
+          src: imageFallback.src,
+          alt: imageFallback.alt,
+          width: imageFallback.width,
+          height: imageFallback.height,
+        },
+      })
+    }
+  }
   const quickLaunchGroups = [
     {
       title: dashboardCopy.aiVideoGeneration,
+      cardHref: localizeHomeHref('/ai-video-generator'),
       surface: 'from-sky-50 via-white to-indigo-50',
       line: 'from-sky-400/0 via-sky-400/70 to-indigo-400/0',
       links: [
@@ -645,6 +756,7 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
     },
     {
       title: dashboardCopy.aiImageGeneration,
+      cardHref: localizeHomeHref('/ai-image-generator'),
       surface: 'from-violet-50 via-white to-fuchsia-50',
       line: 'from-violet-400/0 via-violet-400/70 to-fuchsia-400/0',
       links: [
@@ -660,6 +772,7 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
     },
     {
       title: navCopy.aiTools || 'AI Tools',
+      cardHref: localizeHomeHref('/ai-tools'),
       surface: 'from-slate-50 via-white to-emerald-50',
       line: 'from-slate-400/0 via-emerald-400/70 to-slate-400/0',
       links: [
@@ -699,24 +812,29 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
             {quickLaunchGroups.map((group) => (
               <section
                 key={group.title}
-                className={`relative overflow-hidden rounded-[1.75rem] border border-slate-200/80 bg-gradient-to-br ${group.surface} p-5 shadow-[0_18px_50px_rgba(15,23,42,0.06)]`}
+                className={`group isolate relative overflow-hidden rounded-[1.75rem] border border-slate-200/80 bg-gradient-to-br ${group.surface} p-5 shadow-[0_18px_50px_rgba(15,23,42,0.06)] motion-safe:transition-all motion-safe:duration-300 motion-safe:[transition-timing-function:cubic-bezier(0.22,1,0.36,1)] motion-safe:hover:-translate-y-1 motion-safe:hover:scale-[1.01] hover:border-indigo-200/90 hover:shadow-[0_24px_70px_rgba(79,70,229,0.14)]`}
               >
-                <div className={`absolute inset-x-8 top-0 h-px bg-gradient-to-r ${group.line}`} />
-                <div className="mb-7">
+                {group.cardHref ? (
+                  <Link
+                    href={group.cardHref}
+                    aria-label={`Open ${group.title}`}
+                    className="absolute inset-0 z-0"
+                  />
+                ) : null}
+                <div
+                  className={`pointer-events-none absolute inset-x-8 top-0 h-px origin-center scale-x-95 bg-gradient-to-r ${group.line} opacity-70 motion-safe:transition-all motion-safe:duration-300 motion-safe:[transition-timing-function:cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-110 group-hover:opacity-100`}
+                />
+                <div className="pointer-events-none relative z-10 mb-7 motion-safe:transition-transform motion-safe:duration-300 motion-safe:[transition-timing-function:cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-0.5">
                   <h2 className="text-[1.35rem] font-extrabold leading-tight tracking-[-0.03em] text-slate-950">
                     {group.title}
                   </h2>
                 </div>
-                <div className="flex flex-wrap gap-3">
-                  {group.links.map((item, index) => (
+                <div className="pointer-events-auto relative z-10 flex flex-wrap gap-3">
+                  {group.links.map((item) => (
                     <Link
                       key={item.href}
                       href={item.href}
-                      className={`inline-flex min-h-11 items-center justify-center rounded-full border px-5 text-sm font-bold tracking-[-0.01em] shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md ${
-                        index === 0
-                          ? 'border-indigo-600 bg-indigo-600 text-white hover:border-indigo-700 hover:bg-indigo-700'
-                          : 'border-slate-200 bg-white/85 text-slate-700 hover:border-indigo-200 hover:bg-white hover:text-indigo-700'
-                      }`}
+                      className="inline-flex min-h-11 items-center justify-center rounded-full border border-slate-200 bg-white/85 px-5 text-sm font-bold tracking-[-0.01em] text-slate-700 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-slate-300 hover:bg-white hover:text-slate-950 hover:shadow-md"
                     >
                       {item.label}
                     </Link>
@@ -740,13 +858,13 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
 
             <div className="grid gap-6 xl:grid-cols-[minmax(0,1.15fr)_minmax(380px,0.95fr)]">
               <Link
-                href={featuredLaunch?.href || localizeHomeHref('/ai-video-generator')}
+                href={featuredLaunch.href}
                 className="group relative min-h-[290px] overflow-hidden rounded-[1.5rem] bg-slate-200 p-7 text-white shadow-sm ring-1 ring-slate-200"
               >
                 {featuredLaunchThumb ? (
                   <Image
                     src={featuredLaunchThumb.src}
-                    alt={featuredLaunchThumb.alt}
+                    alt={`${featuredLaunch.title} video generation preview`}
                     width={featuredLaunchThumb.width}
                     height={featuredLaunchThumb.height}
                     className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
@@ -757,13 +875,11 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
                 <div className="absolute inset-0 bg-gradient-to-r from-slate-950/78 via-slate-950/42 to-slate-950/10" />
                 <div className="relative flex h-full max-w-xl flex-col justify-center">
                   <h1 className="home-section-title mb-4 text-[30px] leading-tight text-white md:text-[34px]">
-                    {featuredLaunchTitle}
+                    {featuredLaunch.title}
                     {dashboardCopy.liveNowSuffix}
                   </h1>
                   <p className="mb-8 max-w-md text-sm font-medium leading-relaxed text-white/82">
-                    {featuredLaunch?.featuredDesc ||
-                      featuredLaunch?.description ||
-                      'Create premium AI video with reference images, motion control, and credit-based generation.'}
+                    {featuredLaunch.description}
                   </p>
                   <span className="inline-flex min-h-12 w-fit items-center justify-center rounded-xl bg-white px-10 text-sm font-bold text-slate-900 shadow-lg shadow-slate-950/10 transition-colors group-hover:text-indigo-700">
                     {dashboardCopy.tryForFree}
@@ -774,36 +890,32 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
 
               <section aria-labelledby="home-ai-models-title">
                 <div className="grid gap-4 sm:grid-cols-2">
-                  {dashboardModelCards.map((item) => {
-                    const thumb = getHomeModelCardImage(item.tool)
-                    return (
-                      <Link
-                        key={item.tool}
-                        href={item.href}
-                        className="group relative min-h-[137px] overflow-hidden rounded-[1.25rem] bg-slate-950 p-5 text-white ring-1 ring-slate-900/20 transition-colors hover:ring-indigo-300/70"
+                  {dashboardModelCards.map((item) => (
+                    <Link
+                      key={item.tool}
+                      href={item.href}
+                      className="group relative min-h-[137px] overflow-hidden rounded-[1.25rem] border border-indigo-100/80 bg-white p-5 text-slate-950 shadow-[0_14px_36px_rgba(79,70,229,0.08)] ring-1 ring-indigo-50/80 transition-colors hover:border-indigo-200 hover:ring-indigo-100"
+                    >
+                      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(99,102,241,0.12),_transparent_42%)]" />
+                      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-violet-100/50 to-transparent" />
+                      <span
+                        className="absolute right-4 top-4 inline-flex h-8 w-8 items-center justify-center rounded-full bg-indigo-50 text-indigo-700 transition-colors group-hover:bg-indigo-100"
+                        aria-hidden="true"
                       >
-                        {thumb ? (
-                          <Image
-                            src={thumb.src}
-                            alt={thumb.alt}
-                            width={thumb.width}
-                            height={thumb.height}
-                            className="absolute inset-0 h-full w-full object-cover opacity-30 saturate-[0.72] contrast-[0.9] transition-transform duration-500 group-hover:scale-[1.04]"
-                            sizes="(max-width: 768px) 100vw, 22vw"
-                          />
-                        ) : null}
-                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/98 via-slate-950/94 to-slate-950/86" />
-                        <div className="relative">
-                          <h3 className="mb-4 text-xl font-extrabold leading-tight text-slate-50 drop-shadow-md">
-                            {cleanTitle(item.modelName || item.title)}
-                          </h3>
-                          <p className="line-clamp-2 text-xs font-medium leading-relaxed text-slate-200 drop-shadow-sm">
-                            {item.featuredDesc || item.description}
-                          </p>
-                        </div>
-                      </Link>
-                    )
-                  })}
+                        <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M9 7h8v8" />
+                        </svg>
+                      </span>
+                      <div className="relative pr-9">
+                        <h3 className="mb-4 text-xl font-extrabold leading-tight text-slate-950">
+                          {cleanTitle(item.modelName || item.title)}
+                        </h3>
+                        <p className="line-clamp-2 text-xs font-medium leading-relaxed text-slate-600">
+                          {item.featuredDesc || item.description}
+                        </p>
+                      </div>
+                    </Link>
+                  ))}
                 </div>
               </section>
             </div>
@@ -858,33 +970,7 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {aiImageTools.map((item) => {
-              const thumb = getHomeModelCardImage(item.tool)
-              return (
-                <Link
-                  key={item.tool}
-                  href={item.href}
-                  className="home-model-card block p-4 rounded-lg border border-indigo-100 transition-all duration-300 hover:border-indigo-200"
-                >
-                  {thumb ? (
-                    <div className="relative mb-3 aspect-[4/3] w-full overflow-hidden rounded-md ring-1 ring-indigo-100 bg-slate-50">
-                      <Image
-                        src={thumb.src}
-                        alt={thumb.alt}
-                        width={thumb.width}
-                        height={thumb.height}
-                        className="h-full w-full object-cover transition-transform duration-300 hover:scale-[1.02]"
-                        sizes="(max-width: 768px) 100vw, 33vw"
-                      />
-                    </div>
-                  ) : null}
-                  <h3 className="text-xl font-bold text-indigo-600 mb-3">{item.modelName || item.title}</h3>
-                  <p className="text-sm text-slate-600 leading-relaxed">{item.featuredDesc || item.description}</p>
-                </Link>
-              )
-            })}
-          </div>
+          <HomeModelCardsRail cards={imageModelCards} mediaKind="image" />
         </div>
       </section>
 
@@ -906,33 +992,7 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {aiVideoTools.map((item) => {
-              const thumb = getHomeModelCardImage(item.tool)
-              return (
-                <Link
-                  key={item.tool}
-                  href={item.href}
-                  className="home-model-card block p-4 rounded-lg border border-indigo-100 transition-all duration-300 hover:border-indigo-200"
-                >
-                  {thumb ? (
-                    <div className="relative mb-3 aspect-[4/3] w-full overflow-hidden rounded-md ring-1 ring-indigo-100 bg-slate-50">
-                      <Image
-                        src={thumb.src}
-                        alt={thumb.alt}
-                        width={thumb.width}
-                        height={thumb.height}
-                        className="h-full w-full object-cover transition-transform duration-300 hover:scale-[1.02]"
-                        sizes="(max-width: 768px) 100vw, 33vw"
-                      />
-                    </div>
-                  ) : null}
-                  <h3 className="text-xl font-bold text-indigo-600 mb-3">{item.modelName || item.title}</h3>
-                  <p className="text-sm text-slate-600 leading-relaxed">{item.featuredDesc || item.description}</p>
-                </Link>
-              )
-            })}
-          </div>
+          <HomeModelCardsRail cards={videoModelCards} mediaKind="video" />
         </div>
       </section>
 

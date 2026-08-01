@@ -709,7 +709,7 @@ async function listTools() {
 }
 
 /** 与 src/app/page.tsx、src/lib/seo-loader.ts 一致（英文首页模型区） */
-const HOME_PREVIEW_VIDEO_MODEL_L2S = ['seedance-2', 'kling-3']
+const HOME_PREVIEW_VIDEO_MODEL_L2S = ['wan-2-5-ai-video-generator', 'seedance-2-5', 'seedance-2', 'kling-3', 'grok-imagine-video-1-5']
 const HOME_PREVIEW_IMAGE_MODEL_L2S = ['gpt-image-2', 'wan-2-7-image', 'nano-banana-pro', 'nano-banana-2']
 /** 与 src/lib/homepage-grid-tools.ts 保持一致 */
 const HOME_PREVIEW_ADVANCED_AI_TOOLS = ['unrestricted-ai-image-generator', 'ai-couple-photo-maker', 'ai-bikini-generator', 'watermark-remover', 'photo-restoration']
@@ -748,8 +748,11 @@ const HOME_MODEL_CARD_IMAGES = {
   'gpt-image-2': 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/gpt-image-2.jpg',
   'wan-2-7-image': '/model-assets/wan-2-7-image/gallery-event-poster.webp',
   'ai-dance-generator': '/model-assets/ai-dance-generator/ai-dance-demo-source.png',
+  'wan-2-5-ai-video-generator': 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/prompt-templates/storyboard-scene.webp',
   'seedance-2': 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/seedance-2.jpg',
+  'seedance-2-5': 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/seedance-2-5.jpg',
   'kling-3': 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/kling-3.jpg',
+  'grok-imagine-video-1-5': 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/prompt-templates/image-guided-motion.webp',
 }
 
 const HOME_PREVIEW_AI_IMAGE_PATHS = {
@@ -760,8 +763,11 @@ const HOME_PREVIEW_AI_IMAGE_PATHS = {
 }
 const HOME_PREVIEW_AI_VIDEO_PATHS = {
   'ai-dance-generator': '/ai-dance-generator',
+  'wan-2-5-ai-video-generator': '/model/wan-2-5-ai-video-generator',
+  'seedance-2-5': '/model/seedance-2-5',
   'seedance-2': '/model/seedance-2',
   'kling-3': '/model/kling-3',
+  'grok-imagine-video-1-5': '/model/grok-imagine-video-1-5',
 }
 
 function withImageCacheBust(publicPath) {

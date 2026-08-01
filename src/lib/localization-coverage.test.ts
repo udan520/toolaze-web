@@ -424,15 +424,21 @@ test('Credits page common copy exists for every supported locale', () => {
   }
 })
 
-test('localized home dashboard excludes the main video generator from quick actions', () => {
+test('localized home dashboard keeps main generators on card links, not quick action buttons', () => {
   const homePageMain = readProjectFile('src/components/home/HomePageMain.tsx')
   const quickLaunchBlock = homePageMain.slice(
     homePageMain.indexOf('const quickLaunchGroups = ['),
     homePageMain.indexOf('// Organization Schema for Google Search Logo'),
   )
+  const quickActionLinks = quickLaunchBlock.replace(/^\s*cardHref: .*$/gm, '')
 
   assert.doesNotMatch(quickLaunchBlock, /dashboardCopy\.videoEditor/)
-  assert.doesNotMatch(quickLaunchBlock, /localizeHomeHref\('\/ai-video-generator'\)/)
+  assert.match(quickLaunchBlock, /cardHref: localizeHomeHref\('\/ai-video-generator'\)/)
+  assert.match(quickLaunchBlock, /cardHref: localizeHomeHref\('\/ai-image-generator'\)/)
+  assert.match(quickLaunchBlock, /cardHref: localizeHomeHref\('\/ai-tools'\)/)
+  assert.doesNotMatch(quickActionLinks, /localizeHomeHref\('\/ai-video-generator'\)/)
+  assert.doesNotMatch(quickActionLinks, /localizeHomeHref\('\/ai-image-generator'\)/)
+  assert.doesNotMatch(quickActionLinks, /localizeHomeHref\('\/ai-tools'\)/)
 })
 
 test('localized homepage passes common translations into shared navigation and footer', () => {

@@ -31,6 +31,21 @@ const localizedFreeCreditPatterns = {
 }
 const staleTenCreditGrantPattern = /10\s*(?:free credits|kostenlose Credits|無料(?:credits|クレジット)|créditos gratis|créditos grátis|crédits gratuits|무료 크레딧|點免費 credits|crediti gratis)/i
 
+test('AI video generator can initialize a selected model from the URL query', () => {
+  const toolSource = readFileSync(componentPath, 'utf8')
+  const initEffect = toolSource.match(
+    /useEffect\(\(\) => \{[\s\S]*?window\.location\.search[\s\S]*?\}, \[defaultMode, modelId\]\)/,
+  )?.[0] || ''
+
+  assert.notEqual(initEffect, '', 'video generator should inspect URL search params when initializing')
+  assert.match(initEffect, /new URLSearchParams\(window\.location\.search\)\.get\('model'\)/)
+  assert.match(initEffect, /AI_VIDEO_GENERATOR_MODEL_OPTIONS\.some\(\(option\) => option\.id === queryModelId\)/)
+  assert.match(initEffect, /queryModelId as AiVideoGeneratorModelId/)
+  assert.match(initEffect, /applyModelSelection\(nextModel\)/)
+  assert.match(toolSource, /const applyModelSelection = \(nextModel: AiVideoGeneratorModelConfig\) => \{[\s\S]*setSelectedModelId\(nextModel\.id\)/)
+  assert.match(toolSource, /const applyModelSelection = \(nextModel: AiVideoGeneratorModelConfig\) => \{[\s\S]*setActiveModelGroupId\(getAiVideoGeneratorModelGroupId\(nextModel\.id\)\)/)
+})
+
 test('switching video models keeps the current page URL unchanged', () => {
   const toolSource = readFileSync(componentPath, 'utf8')
   const modelChangeHandler = toolSource.match(

@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import {
   AI_VIDEO_GENERATOR_MODE_OPTIONS,
+  AI_VIDEO_GENERATOR_MODEL_OPTIONS,
   type AiVideoGeneratorModeId,
   type AiVideoGeneratorModelConfig,
   type AiVideoGeneratorModelId,
@@ -602,7 +603,11 @@ export default function AiVideoGeneratorTool({
   }, [])
 
   useEffect(() => {
-    const nextModel = getAiVideoGeneratorModelConfig(modelId)
+    const queryModelId = new URLSearchParams(window.location.search).get('model')
+    const nextModelId = AI_VIDEO_GENERATOR_MODEL_OPTIONS.some((option) => option.id === queryModelId)
+      ? queryModelId as AiVideoGeneratorModelId
+      : modelId
+    const nextModel = getAiVideoGeneratorModelConfig(nextModelId)
     applyModelSelection(nextModel)
     setActiveMode(getInitialVideoMode(nextModel, defaultMode))
   }, [defaultMode, modelId])

@@ -72,6 +72,12 @@ export const HOME_MODEL_CARD_IMAGES = {
     height: 720,
     alt: 'Grok 1.5 Video image-to-video motion preview',
   },
+  'wan-2-5-ai-video-generator': {
+    src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/prompt-templates/storyboard-scene.webp',
+    width: 413,
+    height: 720,
+    alt: 'Wan 2.5 AI video storyboard motion preview',
+  },
   'seedance-2': {
     src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/seedance-2.jpg',
     width: 800,
