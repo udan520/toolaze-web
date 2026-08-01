@@ -16,7 +16,7 @@ test('unrestricted AI image generator publishes localized L2 content', () => {
     assert.equal(data.visiblePageType, 'scene')
     assert.equal(data.topComponent, 'gpt-image-2')
     assert.equal(data.topTool.mode, 'text-to-image')
-    assert.equal(data.topTool.modelId, 'wan-2-7-image')
+    assert.equal(data.topTool.modelId, 'seedream-5-0-lite')
     assert.notEqual(data.topTool.hideModelBranding, true)
     assert.equal(data.topTool.sampleImages[0].url, poolsideDemoUrl)
     assert.equal(data.topTool.sampleImages[0].width, 880)

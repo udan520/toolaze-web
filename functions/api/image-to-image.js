@@ -460,7 +460,7 @@ export async function onRequest(context) {
     });
 
     let response = await createTask(providerModelId);
-    let result = await response.json().catch(() => ({}));
+    let result = await response.clone().json().catch(() => ({}));
     const unsupportedMsg = String(result?.message ?? result?.msg ?? '');
     const defaultGptImage2ModelId = isImageToImage ? 'gpt-image-2-image-to-image' : 'gpt-image-2-text-to-image';
     if (
@@ -469,7 +469,7 @@ export async function onRequest(context) {
       providerModelId !== defaultGptImage2ModelId
     ) {
       response = await createTask(defaultGptImage2ModelId);
-      result = await response.json().catch(() => ({}));
+      result = await response.clone().json().catch(() => ({}));
     }
     if (!response.ok) {
       let msg = result?.message ?? result?.msg ?? await response.text();

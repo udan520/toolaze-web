@@ -483,6 +483,61 @@ test('provider balance failures are identified as upstream errors instead of use
   }
 })
 
+test('plain-text upstream task errors do not expose consumed body failures', async () => {
+  const originalFetch = globalThis.fetch
+
+  globalThis.fetch = async () => new Response('upstream task gateway failed', {
+    status: 502,
+    headers: { 'Content-Type': 'text/plain' },
+  })
+
+  try {
+    const response = await onRequest({
+      request: createGenerationRequest({
+        model: 'gpt-image-2',
+        isImageToImage: true,
+        imageUrls: ['https://example.com/watermarked.png'],
+      }),
+      env: { KIE_AI_API_KEY: 'test-key' },
+    })
+    const payload = await response.json()
+
+    assert.equal(response.status, 502)
+    assert.equal(payload.code, 'UPSTREAM_GENERATION_ERROR')
+    assert.equal(payload.error, 'The generation service is temporarily unavailable. Please try again later.')
+    assert.doesNotMatch(JSON.stringify(payload), /Body has already been used|tee\(\)/i)
+  } finally {
+    globalThis.fetch = originalFetch
+  }
+})
+
+test('plain-text upstream status errors do not expose consumed body failures', async () => {
+  const originalFetch = globalThis.fetch
+
+  globalThis.fetch = async () => new Response('upstream status gateway failed', {
+    status: 503,
+    headers: { 'Content-Type': 'text/plain' },
+  })
+
+  try {
+    const response = await checkImageGenerationStatus({
+      request: new Request('http://localhost:3016/api/image-to-image/status', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ taskId: 'task_watermark_status' }),
+      }),
+      env: { KIE_AI_API_KEY: 'test-key' },
+    })
+    const payload = await response.json()
+
+    assert.equal(response.status, 503)
+    assert.equal(payload.error, 'upstream status gateway failed')
+    assert.doesNotMatch(JSON.stringify(payload), /Body has already been used|tee\(\)/i)
+  } finally {
+    globalThis.fetch = originalFetch
+  }
+})
+
 test('image generation status returns videoUrl for Grok Video 1.5 results', async () => {
   const originalFetch = globalThis.fetch
 

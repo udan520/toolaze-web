@@ -233,7 +233,7 @@ export async function onRequest(context) {
       }
     );
 
-    const result = await response.json().catch(() => ({}));
+    const result = await response.clone().json().catch(() => ({}));
     if (!response.ok) {
       const msg = result?.message ?? result?.msg ?? await response.text();
       return jsonResponse({ error: msg || 'Failed to get task status' }, response.status);

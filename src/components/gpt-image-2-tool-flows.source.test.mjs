@@ -29,6 +29,18 @@ const aiBikiniGeneratorContent = existsSync(aiBikiniGeneratorPath)
   : null
 const aiBreastExpansionContent = JSON.parse(readFileSync(new URL('../data/en/ai-breast-expansion.json', import.meta.url), 'utf8'))
 const aiDanceLocales = ['en', 'de', 'es', 'fr', 'it', 'ja', 'ko', 'pt', 'zh-TW']
+const localizedFreeCreditPatterns = {
+  en: /20 free credits/i,
+  de: /20 kostenlose Credits/i,
+  es: /20 créditos gratis/i,
+  fr: /20 crédits gratuits/i,
+  it: /20 crediti gratis/i,
+  ja: /20無料クレジット|20\s*無料クレジット/i,
+  ko: /20 무료 크레딧|무료 크레딧 20개/i,
+  pt: /20 créditos grátis/i,
+  'zh-TW': /20 點免費 credits/i,
+}
+const staleTenCreditGrantPattern = /10\s*(?:free credits|kostenlose Credits|créditos gratis|crédits gratuits|crediti gratis|無料(?:credits|クレジット)|무료 크레딧|créditos grátis|點免費 credits)/i
 const aiDanceLocaleContent = Object.fromEntries(
   aiDanceLocales.map((locale) => [
     locale,
@@ -514,6 +526,8 @@ test('AI Bikini Generator visible SEO copy is user-facing and free-claim qualifi
       const visibleCopy = collectStrings(content).join('\n')
       assert.doesNotMatch(visibleCopy, /\b(use this page|the page is designed|search intent|SEO|keyword|ranking|AI Overview|API platform|integration)\b/i, locale)
       assert.doesNotMatch(visibleCopy, /\b(unlimited free|free forever|no signup|no login)\b/i, locale)
+      assert.match(visibleCopy, localizedFreeCreditPatterns[locale], `${locale} copy should disclose 20 signup credits`)
+      assert.doesNotMatch(visibleCopy, staleTenCreditGrantPattern, `${locale} copy should not mention a stale 10-credit signup grant`)
       if (locale !== 'en') {
         assert.doesNotMatch(
           visibleCopy,

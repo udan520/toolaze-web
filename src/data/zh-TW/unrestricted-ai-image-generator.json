@@ -5,7 +5,7 @@
   "topComponent": "gpt-image-2",
   "topTool": {
     "mode": "text-to-image",
-    "modelId": "wan-2-7-image",
+    "modelId": "seedream-5-0-lite",
     "displayName": "不受限制 AI 圖像生成器",
     "defaultPrompt": "Create a cinematic dark fantasy character concept sheet for an original warrior queen in obsidian armor, with three full-body poses, close-up face details, weapon variants, readable labels, controlled lighting, and a polished game-art presentation. Keep the character adult, original, non-celebrity, and non-explicit.",
     "hideModelBranding": false,

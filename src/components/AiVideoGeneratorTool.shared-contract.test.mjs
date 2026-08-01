@@ -18,6 +18,18 @@ const seedanceSlugPagePath = join(process.cwd(), 'src', 'app', 'model', 'seedanc
 const legacySeedanceSlugPagePath = join(process.cwd(), 'src', 'app', 'seedance-2', '[slug]', 'page.tsx')
 const seedanceAllToolsPagePath = join(process.cwd(), 'src', 'app', 'model', 'seedance-2', 'all-tools', 'page.tsx')
 const localizedLocales = ['de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
+const localizedFreeCreditPatterns = {
+  en: /20 free credits/i,
+  de: /20 kostenlose Credits/i,
+  ja: /20無料credits|20\s*無料credits/i,
+  es: /20 créditos gratis/i,
+  'zh-TW': /20 點免費 credits/i,
+  pt: /20 créditos grátis/i,
+  fr: /20 crédits gratuits/i,
+  ko: /20 무료 크레딧|무료 크레딧 20개/i,
+  it: /20 crediti gratis/i,
+}
+const staleTenCreditGrantPattern = /10\s*(?:free credits|kostenlose Credits|無料(?:credits|クレジット)|créditos gratis|créditos grátis|crédits gratuits|무료 크레딧|點免費 credits|crediti gratis)/i
 
 test('switching video models keeps the current page URL unchanged', () => {
   const toolSource = readFileSync(componentPath, 'utf8')
@@ -265,6 +277,19 @@ test('AI video generator SEO copy is direct, objective, and non-duplicative', ()
   assert.ok(pageData.performanceMetrics.metrics.every((item) => /credits/i.test(item.value)), 'each model row should expose its credit estimate')
   assert.ok(pageData.faq.some((item) => /credits/i.test(item.q) && /shown|estimate/i.test(item.a)), 'FAQ should answer the credit question directly')
   assert.ok(pageData.faq.some((item) => /audio/i.test(item.q) && /Kling 3\.0|720p|1080p/i.test(item.a)), 'FAQ should state the available native-audio behavior directly')
+})
+
+test('AI video generator localized copy discloses the 20-credit signup grant', () => {
+  for (const locale of ['en', ...localizedLocales]) {
+    const pageData = JSON.parse(readFileSync(join(process.cwd(), 'src', 'data', locale, 'ai-video-generator.json'), 'utf8'))
+    const visibleCopy = JSON.stringify({
+      metadata: pageData.metadata,
+      faq: pageData.faq,
+    })
+
+    assert.match(visibleCopy, localizedFreeCreditPatterns[locale], `${locale} copy should disclose 20 signup credits`)
+    assert.doesNotMatch(visibleCopy, staleTenCreditGrantPattern, `${locale} copy should not mention a stale 10-credit signup grant`)
+  }
 })
 
 test('AI video generator exposes FAQ and permanent prompt videos as structured data', () => {
