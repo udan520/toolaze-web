@@ -7,27 +7,49 @@ const l2Source = readFileSync(new URL('./blocks/ToolL2PageContent.tsx', import.m
 const featuresSource = readFileSync(new URL('./blocks/Features.tsx', import.meta.url), 'utf8')
 const promptExamplesSource = readFileSync(new URL('./blocks/PromptExamples.tsx', import.meta.url), 'utf8')
 const aiImageToolSource = readFileSync(new URL('./AiImageGenerationTool.tsx', import.meta.url), 'utf8')
-const imageToImageFunctionSource = readFileSync(new URL('../../functions/api/image-to-image.js', import.meta.url), 'utf8')
+const imageToImageFunctionSource = readFileSync(
+  new URL('../../functions/api/image-to-image.js', import.meta.url),
+  'utf8',
+)
 const navigationSource = readFileSync(new URL('./Navigation.tsx', import.meta.url), 'utf8')
 const footerSource = readFileSync(new URL('./Footer.tsx', import.meta.url), 'utf8')
 const homePageSource = readFileSync(new URL('./home/HomePageMain.tsx', import.meta.url), 'utf8')
+const homeTrendingToolsRailSource = readFileSync(new URL('./home/HomeTrendingToolsRail.tsx', import.meta.url), 'utf8')
 const homepageGridToolsSource = readFileSync(new URL('../lib/homepage-grid-tools.ts', import.meta.url), 'utf8')
-const homeAdvancedAiCardImagesSource = readFileSync(new URL('../lib/home-advanced-ai-card-images.ts', import.meta.url), 'utf8')
+const homeAdvancedAiCardImagesSource = readFileSync(
+  new URL('../lib/home-advanced-ai-card-images.ts', import.meta.url),
+  'utf8',
+)
 const homeModelCardImagesSource = readFileSync(new URL('../lib/home-model-card-images.ts', import.meta.url), 'utf8')
 const aiToolsCopySource = readFileSync(new URL('../app/ai-tools/copy.ts', import.meta.url), 'utf8')
 const siteLanguageSwitchSource = readFileSync(new URL('../lib/site-language-switch.ts', import.meta.url), 'utf8')
-const aiImageGeneratorConfigSource = readFileSync(new URL('../lib/ai-image-generator-config.ts', import.meta.url), 'utf8')
+const aiImageGeneratorConfigSource = readFileSync(
+  new URL('../lib/ai-image-generator-config.ts', import.meta.url),
+  'utf8',
+)
 const sitemapSource = readFileSync(new URL('../app/sitemap.ts', import.meta.url), 'utf8')
-const localeAiDancePageSource = readFileSync(new URL('../app/[locale]/ai-dance-generator/page.tsx', import.meta.url), 'utf8')
-const localeAiClothesChangerPageSource = readFileSync(new URL('../app/[locale]/ai-clothes-changer/page.tsx', import.meta.url), 'utf8')
+const localeAiDancePageSource = readFileSync(
+  new URL('../app/[locale]/ai-dance-generator/page.tsx', import.meta.url),
+  'utf8',
+)
+const localeAiClothesChangerPageSource = readFileSync(
+  new URL('../app/[locale]/ai-clothes-changer/page.tsx', import.meta.url),
+  'utf8',
+)
 const aiDanceContent = JSON.parse(readFileSync(new URL('../data/en/ai-dance-generator.json', import.meta.url), 'utf8'))
-const aiDanceFactoryContent = JSON.parse(readFileSync('_codex/seo-pipeline/tasks/2026-07-20-ai-dance-generator/content/en.json', 'utf8'))
-const aiClothesChangerContent = JSON.parse(readFileSync(new URL('../data/en/ai-clothes-changer.json', import.meta.url), 'utf8'))
+const aiDanceFactoryContent = JSON.parse(
+  readFileSync('_codex/seo-pipeline/tasks/2026-07-20-ai-dance-generator/content/en.json', 'utf8'),
+)
+const aiClothesChangerContent = JSON.parse(
+  readFileSync(new URL('../data/en/ai-clothes-changer.json', import.meta.url), 'utf8'),
+)
 const aiBikiniGeneratorPath = new URL('../data/en/ai-bikini-generator.json', import.meta.url)
 const aiBikiniGeneratorContent = existsSync(aiBikiniGeneratorPath)
   ? JSON.parse(readFileSync(aiBikiniGeneratorPath, 'utf8'))
   : null
-const aiBreastExpansionContent = JSON.parse(readFileSync(new URL('../data/en/ai-breast-expansion.json', import.meta.url), 'utf8'))
+const aiBreastExpansionContent = JSON.parse(
+  readFileSync(new URL('../data/en/ai-breast-expansion.json', import.meta.url), 'utf8'),
+)
 const aiDanceLocales = ['en', 'de', 'es', 'fr', 'it', 'ja', 'ko', 'pt', 'zh-TW']
 const localizedFreeCreditPatterns = {
   en: /20 free credits/i,
@@ -40,7 +62,8 @@ const localizedFreeCreditPatterns = {
   pt: /20 créditos grátis/i,
   'zh-TW': /20 點免費 credits/i,
 }
-const staleTenCreditGrantPattern = /10\s*(?:free credits|kostenlose Credits|créditos gratis|crédits gratuits|crediti gratis|無料(?:credits|クレジット)|무료 크레딧|créditos grátis|點免費 credits)/i
+const staleTenCreditGrantPattern =
+  /10\s*(?:free credits|kostenlose Credits|créditos gratis|crédits gratuits|crediti gratis|無料(?:credits|クレジット)|무료 크레딧|créditos grátis|點免費 credits)/i
 const aiDanceLocaleContent = Object.fromEntries(
   aiDanceLocales.map((locale) => [
     locale,
@@ -90,6 +113,148 @@ test('AI tools hub exposes baby, couple, dance, watermark, and World Cup entries
   }
 
   assert.doesNotMatch(aiToolsCopySource, /REVIEW_HIDDEN_AI_TOOL_HREFS/)
+})
+
+test('homepage AI Tools tabs include every concrete tool from the hub', () => {
+  for (const href of [
+    '/unrestricted-ai-image-generator',
+    '/world-cup-ai-image-generator',
+    '/ai-couple-photo-maker',
+    '/ai-baby-generator',
+    '/ai-dance-generator',
+    '/ai-kissing-video-generator',
+    '/talking-avatar-creator',
+    '/ai-hairstyle-changer',
+    '/ai-hair-color-changer',
+    '/ai-clothes-changer',
+    '/ai-bikini-generator',
+    '/ai-breast-expansion',
+    '/ai-asmr-video-generator',
+    '/watermark-remover',
+    '/photo-restoration',
+  ]) {
+    const slug = href.replace(/^\//, '')
+    const explicitHref = new RegExp(`localizeHomeHref\\('${href}'\\)`)
+    const dynamicSlug = new RegExp(`'${slug}'`)
+
+    assert.ok(
+      explicitHref.test(homePageSource) || dynamicSlug.test(homePageSource),
+      `homepage AI Tools should expose ${href}`,
+    )
+  }
+
+  assert.match(homePageSource, /navCopy\.aiAsmrVideoGenerator \|\| 'AI ASMR Video Generator'/)
+  assert.match(homePageSource, /getHomeModelCardImage\('ai-asmr-video-generator'\)/)
+  assert.doesNotMatch(homePageSource, /localizeHomeHref\('\/model\/wan-2-5-ai-video-generator'\)/)
+})
+
+test('homepage quick launch buttons use compact labels instead of generator suffixes', () => {
+  assert.match(homePageSource, /imageToVideo: 'Image to Video'/)
+  assert.match(homePageSource, /textToVideo: 'Text to Video'/)
+  assert.match(homePageSource, /imageToImage: 'Image to Image'/)
+  assert.match(homePageSource, /textToImage: 'Text to Image'/)
+
+  assert.doesNotMatch(homePageSource, /label: navCopy\.imageToVideoGenerator/)
+  assert.doesNotMatch(homePageSource, /label: navCopy\.textToVideoGenerator/)
+  assert.doesNotMatch(homePageSource, /label: navCopy\.aiImageToImageGenerator/)
+  assert.doesNotMatch(homePageSource, /label: navCopy\.textToImageGenerator/)
+  assert.match(
+    homePageSource,
+    /label: navCopy\.videoTools \|\| 'Video Tools', href: localizeHomeHref\('\/ai-tools\?tab=video'\)/,
+  )
+  assert.match(
+    homePageSource,
+    /label: navCopy\.imageTools \|\| 'Image Tools', href: localizeHomeHref\('\/ai-tools\?tab=image'\)/,
+  )
+  assert.doesNotMatch(homePageSource, /label: navCopy\.videoTools \|\| 'Video Tools', href: '#ai-tools-hub'/)
+  assert.doesNotMatch(homePageSource, /label: navCopy\.imageTools \|\| 'Image Tools', href: '#ai-tools-hub'/)
+  assert.match(homePageSource, /border-indigo-600 bg-indigo-600 text-white/)
+  assert.doesNotMatch(homePageSource, /border-slate-950 bg-slate-950 text-white/)
+  assert.doesNotMatch(homePageSource, /dashboardCopy\.videoEditor/)
+  assert.doesNotMatch(homePageSource, /Video Editor/)
+  assert.doesNotMatch(homePageSource, /quickActionCopy\.aiDance/)
+  assert.doesNotMatch(homePageSource, /quickActionCopy\.watermark/)
+  assert.doesNotMatch(homePageSource, /quickActionCopy\.restorePhoto/)
+})
+
+test('homepage first screen removes numbered cards and the outer framed container', () => {
+  const firstScreenSource = sourceBetween(homePageSource, '{/* Dashboard-style first screen */}', '{/* AI Tools hub')
+
+  assert.doesNotMatch(firstScreenSource, /index: '0[123]'/)
+  assert.doesNotMatch(firstScreenSource, /group\.index/)
+  assert.doesNotMatch(
+    firstScreenSource,
+    /max-w-\[1500px\][^"']*border border-indigo-100[^"']*bg-white[^"']*shadow-soft/,
+  )
+  assert.match(firstScreenSource, /<section className="bg-\[#F8FAFF\] px-2 pb-12 pt-3 sm:px-3 lg:px-4">/)
+  assert.match(firstScreenSource, /<div className="min-w-0">/)
+})
+
+test('homepage Trending prioritizes Kissing, Dance, and ASMR before the rest of AI Tools', () => {
+  const trendingHrefBlock = sourceBetween(
+    homePageSource,
+    'const featuredTrendingHrefs = [',
+    'const featuredTrendingCards',
+  )
+
+  assert.ok(
+    trendingHrefBlock.indexOf("localizeHomeHref('/ai-kissing-video-generator')") <
+      trendingHrefBlock.indexOf("localizeHomeHref('/ai-dance-generator')"),
+  )
+  assert.ok(
+    trendingHrefBlock.indexOf("localizeHomeHref('/ai-dance-generator')") <
+      trendingHrefBlock.indexOf("localizeHomeHref('/ai-asmr-video-generator')"),
+  )
+  assert.match(
+    homePageSource,
+    /\.\.\.allAiToolCards\.filter\(\(item\) => !featuredTrendingHrefSet\.has\(item\.href\)\)/,
+  )
+  assert.match(
+    homePageSource,
+    /<HomeTrendingToolsRail title=\{dashboardCopy\.trending\} cards=\{dashboardTrendingCards\} \/>/,
+  )
+})
+
+test('homepage Trending renders video media without relying on file extension', () => {
+  assert.match(homeTrendingToolsRailSource, /card\.media\.type === 'video'/)
+  assert.match(homeTrendingToolsRailSource, /<video[\s\S]*src=\{card\.media\.src\}/)
+  assert.doesNotMatch(homeTrendingToolsRailSource, /canRenderVideo/)
+  assert.match(
+    homePageSource,
+    /src: 'https:\/\/pub-efeb0c7b9b53478d960218de80c52e3d\.r2\.dev\/uploads\/83a8c5b91a4945beb66275c38a731dbf\.png'/,
+  )
+})
+
+test('homepage AI Models cards use a dark reading overlay above busy media', () => {
+  assert.match(homePageSource, /bg-slate-950 p-5 text-white/)
+  assert.match(homePageSource, /opacity-30 saturate-\[0\.72\] contrast-\[0\.9\]/)
+  assert.match(homePageSource, /bg-gradient-to-t from-slate-950\/98 via-slate-950\/94 to-slate-950\/86/)
+  assert.match(homePageSource, /text-slate-50 drop-shadow-md/)
+  assert.match(homePageSource, /text-slate-200 drop-shadow-sm/)
+  assert.doesNotMatch(homePageSource, /opacity-85 transition-transform/)
+  assert.doesNotMatch(homePageSource, /bg-gradient-to-t from-slate-950\/84 via-slate-950\/62 to-slate-950\/36/)
+  assert.doesNotMatch(homePageSource, /bg-white\/76 backdrop-blur/)
+  assert.doesNotMatch(homePageSource, /text-white\/86/)
+})
+
+test('homepage model block uses All Models label for the whole row', () => {
+  const firstScreenSource = sourceBetween(homePageSource, '{/* Dashboard-style first screen */}', '{/* AI Tools hub')
+  const modelBlock = sourceBetween(firstScreenSource, '<div className="mt-7">', '<HomeTrendingToolsRail')
+  const labelIndex = modelBlock.indexOf('id="home-ai-models-title"')
+  const modelGridIndex = modelBlock.indexOf('className="grid gap-6 xl:grid-cols')
+  const sideSectionIndex = modelBlock.indexOf('<section aria-labelledby="home-ai-models-title">')
+
+  assert.match(homePageSource, /aiModels: 'All Models'/)
+  assert.match(modelBlock, /<Link\s+href=\{localizeHomeHref\('\/model'\)\}/)
+  assert.notEqual(labelIndex, -1)
+  assert.notEqual(modelGridIndex, -1)
+  assert.notEqual(sideSectionIndex, -1)
+  assert.ok(labelIndex < modelGridIndex, 'All Models label should sit above the whole model row')
+  assert.ok(sideSectionIndex > modelGridIndex, 'right-side card section should sit inside the model row')
+  assert.doesNotMatch(
+    modelBlock,
+    /<section aria-labelledby="home-ai-models-title">[\s\S]{0,200}<h2 id="home-ai-models-title"/,
+  )
 })
 
 test('AI Dance is discoverable from global navigation, footer, homepage, and AI Tools hub', () => {
@@ -147,26 +312,32 @@ test('Grok 1.5 Video is discoverable from AI Video navigation, footer, and homep
 })
 
 test('AI Video model tags are separated from tool links and show manufacturer icons', () => {
-  const orderedRoutes = [
-    '/model/wan-2-5-ai-video-generator',
-    '/model/seedance-2-5',
-    '/model/seedance-2',
-    '/model/kling-3',
-    '/model/grok-imagine-video-1-5',
-  ]
+  const orderedRoutes = ['/model/seedance-2-5', '/model/seedance-2', '/model/kling-3', '/model/grok-imagine-video-1-5']
   const routeIndexes = orderedRoutes.map((route) => aiVideoModelMenuSource.indexOf(`href: '${route}'`))
 
   assert.ok(routeIndexes.every((index) => index >= 0))
-  assert.deepEqual(routeIndexes, [...routeIndexes].sort((a, b) => a - b))
+  assert.deepEqual(
+    routeIndexes,
+    [...routeIndexes].sort((a, b) => a - b),
+  )
   assert.doesNotMatch(aiVideoModelMenuSource, /href: '\/kling-ai-video-generator'/)
   assert.doesNotMatch(aiVideoModelMenuSource, /labelKey: 'klingAiVideoGenerator'/)
   assert.doesNotMatch(aiVideoModelMenuSource, /href: '\/ai-dance-generator'/)
   assert.doesNotMatch(aiVideoModelMenuSource, /href: '\/talking-avatar-creator'/)
-  assert.match(aiVideoModelMenuSource, /href: '\/model\/wan-2-5-ai-video-generator'[\s\S]*logoSrc: '\/model-logos\/wan\.ico'/)
+  assert.match(
+    aiVideoModelMenuSource,
+    /href: '\/model\/wan-2-5-ai-video-generator'[\s\S]*logoSrc: '\/model-logos\/wan\.ico'/,
+  )
   assert.match(aiVideoModelMenuSource, /href: '\/model\/seedance-2-5'[\s\S]*logoSrc: '\/model-logos\/bytedance\.svg'/)
-  assert.match(aiVideoModelMenuSource, /href: '\/model\/seedance-2'[\s\S]*logoSrc: '\/model-logos\/bytedance\.svg'[\s\S]*badgeKey: 'hot'/)
+  assert.match(
+    aiVideoModelMenuSource,
+    /href: '\/model\/seedance-2'[\s\S]*logoSrc: '\/model-logos\/bytedance\.svg'[\s\S]*badgeKey: 'hot'/,
+  )
   assert.match(aiVideoModelMenuSource, /href: '\/model\/kling-3'[\s\S]*logoSrc: '\/model-logos\/kling\.svg'/)
-  assert.match(aiVideoModelMenuSource, /href: '\/model\/grok-imagine-video-1-5'[\s\S]*logoSrc: '\/model-logos\/grok\.svg'[\s\S]*badgeKey: 'bestValue'/)
+  assert.match(
+    aiVideoModelMenuSource,
+    /href: '\/model\/grok-imagine-video-1-5'[\s\S]*logoSrc: '\/model-logos\/grok\.svg'[\s\S]*badgeKey: 'bestValue'/,
+  )
   assert.match(navigationSource, /data-ai-video-section="models"[\s\S]*AI_VIDEO_MODEL_MENU_ITEMS\.map/)
   assert.match(navigationSource, /navTranslations\.bestValue \|\| defaultNavTranslations\.bestValue/)
 })
@@ -185,18 +356,30 @@ test('AI Image model links show their manufacturer icons on desktop and mobile',
   const routeIndexes = modelIcons.map(([route]) => aiImageModelMenuSource.indexOf(`href: '${route}'`))
 
   assert.ok(routeIndexes.every((index) => index >= 0))
-  assert.deepEqual(routeIndexes, [...routeIndexes].sort((a, b) => a - b))
+  assert.deepEqual(
+    routeIndexes,
+    [...routeIndexes].sort((a, b) => a - b),
+  )
   for (const [route, icon, badge] of modelIcons) {
     const routeStart = aiImageModelMenuSource.indexOf(`href: '${route}'`)
     const nextItem = aiImageModelMenuSource.indexOf('\n  { href:', routeStart + 1)
-    const itemSource = aiImageModelMenuSource.slice(routeStart, nextItem >= 0 ? nextItem : aiImageModelMenuSource.length)
+    const itemSource = aiImageModelMenuSource.slice(
+      routeStart,
+      nextItem >= 0 ? nextItem : aiImageModelMenuSource.length,
+    )
     assert.match(itemSource, new RegExp(`logoSrc: '${icon.replaceAll('.', '\\.')}'`))
     if (badge) {
       assert.match(itemSource, new RegExp(badge))
     }
   }
-  assert.match(navigationSource, /AI_IMAGE_MODEL_MENU_ITEMS\.map\(\(item\) => renderAiImageModelMenuItem\(item, 'desktop'\)\)/)
-  assert.match(navigationSource, /AI_IMAGE_MODEL_MENU_ITEMS\.map\(\(item\) => renderAiImageModelMenuItem\(item, 'mobile'\)\)/)
+  assert.match(
+    navigationSource,
+    /AI_IMAGE_MODEL_MENU_ITEMS\.map\(\(item\) => renderAiImageModelMenuItem\(item, 'desktop'\)\)/,
+  )
+  assert.match(
+    navigationSource,
+    /AI_IMAGE_MODEL_MENU_ITEMS\.map\(\(item\) => renderAiImageModelMenuItem\(item, 'mobile'\)\)/,
+  )
   assert.match(navigationSource, /data-ai-image-model-tag/)
 })
 
@@ -258,7 +441,10 @@ test('AI Clothes Changer supports localized route switching, sitemap, and shell 
   assert.match(siteLanguageSwitchSource, /'ai-clothes-changer': ALL_LOCALE_CODES/)
   assert.match(localeAiClothesChangerPageSource, /generateStaticParams/)
   assert.match(localeAiClothesChangerPageSource, /hasLocaleL2JsonFile\('ai-clothes-changer', locale\)/)
-  assert.match(sitemapSource, /const path = locale === 'en' \? '\/ai-clothes-changer' : `\/\$\{locale\}\/ai-clothes-changer`/)
+  assert.match(
+    sitemapSource,
+    /const path = locale === 'en' \? '\/ai-clothes-changer' : `\/\$\{locale\}\/ai-clothes-changer`/,
+  )
   assert.match(sceneNavKeysBlock, /'aiHairstyleChanger'/)
   assert.match(sceneNavKeysBlock, /'aiHairColorChanger'/)
   assert.match(sceneNavKeysBlock, /'aiClothesChanger'/)
@@ -289,7 +475,10 @@ test('AI Dance localizes the top upload title in page data and Seo Factory conte
 
 test('AI Dance top navigation keeps language switch clickable at tablet widths', () => {
   assert.match(navigationSource, /className="absolute right-4 z-50 flex items-center gap-2 lg:hidden"/)
-  assert.match(navigationSource, /className="hidden lg:flex gap-4 xl:gap-5 text-sm font-bold text-slate-700 items-center"/)
+  assert.match(
+    navigationSource,
+    /className="hidden lg:flex gap-4 xl:gap-5 text-sm font-bold text-slate-700 items-center"/,
+  )
   assert.match(navigationSource, /className="hidden xl:inline">\{navCurrentLocaleInfo\.name\}<\/span>/)
   assert.match(navigationSource, /className="absolute right-6 hidden lg:flex items-center gap-3"/)
 })
@@ -342,10 +531,19 @@ test('AI Clothes Changer keeps workflow tabs above upload and clothing presets b
 
   assert.ok(workflowTabsIndex > -1, 'workflow tabs should render as the top-level clothes changer mode switch')
   assert.ok(uploaderIndex > workflowTabsIndex, 'upload component should sit directly under the workflow tabs')
-  assert.ok(clothingUploaderIndex > uploaderIndex, 'clothing reference mode should render a dedicated clothing upload component')
-  assert.ok(presetCardsIndex > clothingUploaderIndex, 'clothing preset cards should stay below the clothing upload component')
+  assert.ok(
+    clothingUploaderIndex > uploaderIndex,
+    'clothing reference mode should render a dedicated clothing upload component',
+  )
+  assert.ok(
+    presetCardsIndex > clothingUploaderIndex,
+    'clothing preset cards should stay below the clothing upload component',
+  )
   assert.deepEqual(aiClothesChangerContent.topTool?.defaultImageUrls, [])
-  assert.match(aiClothesChangerContent.topTool?.sampleImages?.[0]?.url, /^https:\/\/pub-[a-z0-9]+\.r2\.dev\/uploads\/[a-z0-9]+\.webp$/)
+  assert.match(
+    aiClothesChangerContent.topTool?.sampleImages?.[0]?.url,
+    /^https:\/\/pub-[a-z0-9]+\.r2\.dev\/uploads\/[a-z0-9]+\.webp$/,
+  )
   assert.equal(aiClothesChangerContent.topTool?.sampleImages?.[0]?.width, 1600)
   assert.equal(aiClothesChangerContent.topTool?.sampleImages?.[0]?.height, 900)
   assert.match(aiImageToolSource, /preset\.referenceImage \|\| preset\.image/)
@@ -364,7 +562,10 @@ test('AI Clothes Changer renders clothing presets as four compact import shortcu
   assert.match(presetShortcutBlock, /object-contain/)
   assert.doesNotMatch(presetShortcutBlock, /aria-pressed/)
   assert.doesNotMatch(presetShortcutBlock, /isSelected\s*\?|ring-2 ring-\[#4F46E5\]/)
-  assert.match(aiImageToolSource, /if \(promptPresetTabs\.length > 0\) \{[\s\S]*setSelectedPromptPreset\(''\)[\s\S]*applyPromptPresetReferenceImage\(undefined\)[\s\S]*return/)
+  assert.match(
+    aiImageToolSource,
+    /if \(promptPresetTabs\.length > 0\) \{[\s\S]*setSelectedPromptPreset\(''\)[\s\S]*applyPromptPresetReferenceImage\(undefined\)[\s\S]*return/,
+  )
 })
 
 test('AI Clothes Changer uses Seedream 5.0 Lite for generation', () => {
@@ -412,8 +613,10 @@ test('AI Breast Expansion is discoverable from public Toolaze entry points in ev
 })
 
 test('AI Clothes Changer presets use four generated R2 clothing references', () => {
-  const presets = aiClothesChangerContent.topTool?.functionalAcceptance?.presets
-    ?.filter((preset) => preset.group === 'clothing-reference') || []
+  const presets =
+    aiClothesChangerContent.topTool?.functionalAcceptance?.presets?.filter(
+      (preset) => preset.group === 'clothing-reference',
+    ) || []
 
   assert.equal(presets.length, 4)
   for (const preset of presets) {
@@ -446,8 +649,10 @@ test('AI Bikini Generator uses Seedream 5.0 Lite and preserves the source person
   assert.equal(aiBikiniGeneratorContent.topTool?.sampleImages?.[0]?.width, 1600)
   assert.equal(aiBikiniGeneratorContent.topTool?.sampleImages?.[0]?.height, 900)
 
-  const bikiniReferencePresets = aiBikiniGeneratorContent.topTool?.functionalAcceptance?.presets
-    ?.filter((preset) => preset.group === 'bikini-reference') || []
+  const bikiniReferencePresets =
+    aiBikiniGeneratorContent.topTool?.functionalAcceptance?.presets?.filter(
+      (preset) => preset.group === 'bikini-reference',
+    ) || []
   assert.equal(bikiniReferencePresets.length, 10)
   assert.equal(bikiniReferencePresets[0]?.label, 'Classic Black Bikini')
   for (const preset of bikiniReferencePresets) {
@@ -457,9 +662,10 @@ test('AI Bikini Generator uses Seedream 5.0 Lite and preserves the source person
 
   const prompts = [
     aiBikiniGeneratorContent.topTool?.defaultPrompt,
-    ...(aiBikiniGeneratorContent.topTool?.functionalAcceptance?.presets || [])
-      .map((preset) => preset.prompt),
-  ].filter(Boolean).join('\n')
+    ...(aiBikiniGeneratorContent.topTool?.functionalAcceptance?.presets || []).map((preset) => preset.prompt),
+  ]
+    .filter(Boolean)
+    .join('\n')
 
   for (const required of [
     'Keep everything else exactly the same',
@@ -484,12 +690,14 @@ test('AI Bikini Generator prompt ideas mirror eight bikini reference styles in e
   const factoryContentDirectory = '_codex/seo-pipeline/tasks/2026-07-31-ai-bikini-generator/content'
 
   for (const locale of aiDanceLocales) {
-    const pageContent = JSON.parse(readFileSync(new URL(`../data/${locale}/ai-bikini-generator.json`, import.meta.url), 'utf8'))
+    const pageContent = JSON.parse(
+      readFileSync(new URL(`../data/${locale}/ai-bikini-generator.json`, import.meta.url), 'utf8'),
+    )
     const factoryContent = JSON.parse(readFileSync(`${factoryContentDirectory}/${locale}.json`, 'utf8'))
 
     for (const content of [pageContent, factoryContent]) {
-      const referencePresets = content.topTool?.functionalAcceptance?.presets
-        ?.filter((preset) => preset.group === 'bikini-reference') || []
+      const referencePresets =
+        content.topTool?.functionalAcceptance?.presets?.filter((preset) => preset.group === 'bikini-reference') || []
       const promptItems = content.promptExamples?.items || []
 
       assert.equal(promptItems.length, 8, locale)
@@ -509,7 +717,17 @@ test('AI Bikini Generator prompt ideas mirror eight bikini reference styles in e
 
 test('AI Bikini Generator visible SEO copy is user-facing and free-claim qualified', () => {
   const factoryContentDirectory = '_codex/seo-pipeline/tasks/2026-07-31-ai-bikini-generator/content'
-  const skippedKeys = new Set(['defaultPrompt', 'prompt', 'image', 'referenceImage', 'url', 'color', 'swatch', 'recommendedMode', 'customPromptTabId'])
+  const skippedKeys = new Set([
+    'defaultPrompt',
+    'prompt',
+    'image',
+    'referenceImage',
+    'url',
+    'color',
+    'swatch',
+    'recommendedMode',
+    'customPromptTabId',
+  ])
   const collectStrings = (value, path = []) => {
     if (typeof value === 'string') {
       if (path.includes('sectionsOrder')) return []
@@ -525,15 +743,25 @@ test('AI Bikini Generator visible SEO copy is user-facing and free-claim qualifi
   }
 
   for (const locale of aiDanceLocales) {
-    const pageContent = JSON.parse(readFileSync(new URL(`../data/${locale}/ai-bikini-generator.json`, import.meta.url), 'utf8'))
+    const pageContent = JSON.parse(
+      readFileSync(new URL(`../data/${locale}/ai-bikini-generator.json`, import.meta.url), 'utf8'),
+    )
     const factoryContent = JSON.parse(readFileSync(`${factoryContentDirectory}/${locale}.json`, 'utf8'))
 
     for (const content of [pageContent, factoryContent]) {
       const visibleCopy = collectStrings(content).join('\n')
-      assert.doesNotMatch(visibleCopy, /\b(use this page|the page is designed|search intent|SEO|keyword|ranking|AI Overview|API platform|integration)\b/i, locale)
+      assert.doesNotMatch(
+        visibleCopy,
+        /\b(use this page|the page is designed|search intent|SEO|keyword|ranking|AI Overview|API platform|integration)\b/i,
+        locale,
+      )
       assert.doesNotMatch(visibleCopy, /\b(unlimited free|free forever|no signup|no login)\b/i, locale)
       assert.match(visibleCopy, localizedFreeCreditPatterns[locale], `${locale} copy should disclose 20 signup credits`)
-      assert.doesNotMatch(visibleCopy, staleTenCreditGrantPattern, `${locale} copy should not mention a stale 10-credit signup grant`)
+      assert.doesNotMatch(
+        visibleCopy,
+        staleTenCreditGrantPattern,
+        `${locale} copy should not mention a stale 10-credit signup grant`,
+      )
       if (locale !== 'en') {
         assert.doesNotMatch(
           visibleCopy,
@@ -581,8 +809,12 @@ test('AI Bikini Generator localizes visible SEO copy beyond metadata in every lo
   const readPath = (content, path) => path.split('.').reduce((current, key) => current?.[key], content)
 
   for (const locale of aiDanceLocales.filter((item) => item !== 'en')) {
-    const pageContent = JSON.parse(readFileSync(new URL(`../data/${locale}/ai-bikini-generator.json`, import.meta.url), 'utf8'))
-    const factoryContent = JSON.parse(readFileSync(`_codex/seo-pipeline/tasks/2026-07-31-ai-bikini-generator/content/${locale}.json`, 'utf8'))
+    const pageContent = JSON.parse(
+      readFileSync(new URL(`../data/${locale}/ai-bikini-generator.json`, import.meta.url), 'utf8'),
+    )
+    const factoryContent = JSON.parse(
+      readFileSync(`_codex/seo-pipeline/tasks/2026-07-31-ai-bikini-generator/content/${locale}.json`, 'utf8'),
+    )
 
     for (const content of [pageContent, factoryContent]) {
       for (const path of comparedPaths) {
@@ -593,7 +825,9 @@ test('AI Bikini Generator localizes visible SEO copy beyond metadata in every lo
         content.topTool?.defaultPrompt,
         ...(content.topTool?.functionalAcceptance?.presets || []).map((preset) => preset.prompt),
         ...(content.promptExamples?.items || []).map((item) => item.prompt),
-      ].filter(Boolean).join('\n')
+      ]
+        .filter(Boolean)
+        .join('\n')
       assert.doesNotMatch(
         localizedPrompts,
         /Image 1 is|Image 2 is|original person photo|Keep everything else exactly the same|Do not slim|Do not enlarge|Do not retouch|Do not reshape|adult swimwear preview/i,
@@ -640,17 +874,25 @@ test('Grok Video 1.5 image upload flow supports KIE multi-image references', () 
     aiImageGeneratorConfigSource,
     /'grok-video-1-5': \{[\s\S]*setting: \{ kind: 'resolution', options: \['480p', '720p'\], defaultValue: '480p' \}/,
   )
-  assert.match(aiImageToolSource, /const getResolutionOptionsForModel = \(id: ImageModelId\): string\[] =>\s+MODEL_CONFIG\[id\]\.setting\.options/)
+  assert.match(
+    aiImageToolSource,
+    /const getResolutionOptionsForModel = \(id: ImageModelId\): string\[] =>\s+MODEL_CONFIG\[id\]\.setting\.options/,
+  )
 })
 
 test('AI Kissing Video Generator keeps its upload, duration, and prompt contracts in every locale', () => {
   const localeDirectories = readdirSync(new URL('../data/', import.meta.url)).filter((locale) =>
     existsSync(new URL(`../data/${locale}/ai-kissing-video-generator.json`, import.meta.url)),
   )
-  const factoryContentDirectory = new URL('../../_codex/seo-pipeline/tasks/2026-07-23-ai-kissing-video-generator/content/', import.meta.url)
+  const factoryContentDirectory = new URL(
+    '../../_codex/seo-pipeline/tasks/2026-07-23-ai-kissing-video-generator/content/',
+    import.meta.url,
+  )
 
   for (const locale of localeDirectories) {
-    const pageContent = JSON.parse(readFileSync(new URL(`../data/${locale}/ai-kissing-video-generator.json`, import.meta.url), 'utf8'))
+    const pageContent = JSON.parse(
+      readFileSync(new URL(`../data/${locale}/ai-kissing-video-generator.json`, import.meta.url), 'utf8'),
+    )
     const factoryContent = JSON.parse(readFileSync(new URL(`${locale}.json`, factoryContentDirectory), 'utf8'))
 
     for (const content of [pageContent, factoryContent]) {
@@ -666,8 +908,10 @@ test('AI Kissing Video Generator keeps its upload, duration, and prompt contract
 })
 
 test('AI Dance demo uses the latest generated video sample', () => {
-  const expectedVideoUrl = 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/ai-dance-demo.mp4'
-  const expectedSourceImageUrl = 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/ai-dance-demo-source.png'
+  const expectedVideoUrl =
+    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/ai-dance-demo.mp4'
+  const expectedSourceImageUrl =
+    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/ai-dance-demo-source.png'
 
   for (const content of [aiDanceContent, aiDanceFactoryContent]) {
     const sample = content.topTool?.sampleImages?.[0]
@@ -711,9 +955,18 @@ test('AI Dance Grok Video exposes duration selection and submits duration', () =
   assert.match(aiImageToolSource, /const \[videoDurationSeconds, setVideoDurationSeconds\]/)
   assert.match(aiImageToolSource, /Video Duration/)
   assert.match(aiImageToolSource, /formData\.append\('duration', String\(requestVideoDurationSeconds\)\)/)
-  assert.match(aiImageToolSource, /calculateImageGenerationCredits\(selectedModelId, resolution, videoDurationSeconds\)/)
-  assert.match(aiImageToolSource, /getConfiguredVideoDurationSeconds\(defaultVideoDurationSeconds, configuredVideoDurationOptions\)/)
-  assert.match(l2Source, /defaultVideoDurationSeconds=\{typeof content\.topTool\?\.defaultVideoDurationSeconds === 'number'/)
+  assert.match(
+    aiImageToolSource,
+    /calculateImageGenerationCredits\(selectedModelId, resolution, videoDurationSeconds\)/,
+  )
+  assert.match(
+    aiImageToolSource,
+    /getConfiguredVideoDurationSeconds\(defaultVideoDurationSeconds, configuredVideoDurationOptions\)/,
+  )
+  assert.match(
+    l2Source,
+    /defaultVideoDurationSeconds=\{typeof content\.topTool\?\.defaultVideoDurationSeconds === 'number'/,
+  )
   for (const content of [aiDanceContent, aiDanceFactoryContent]) {
     assert.equal(content.topTool?.defaultVideoDurationSeconds, 5)
   }

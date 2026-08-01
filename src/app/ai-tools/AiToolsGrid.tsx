@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import type { AiToolsCard, AiToolsCategory } from './copy'
 
@@ -8,6 +8,14 @@ const AI_TOOL_CATEGORIES: AiToolsCategory[] = ['all', 'image', 'video']
 
 function localizeHref(href: string, locale: string) {
   return locale === 'en' ? href : `/${locale}${href}`
+}
+
+function getInitialCategoryFromUrl(): AiToolsCategory {
+  if (typeof window === 'undefined') return 'all'
+
+  const params = new URLSearchParams(window.location.search)
+  const tab = params.get('tab')
+  return AI_TOOL_CATEGORIES.includes(tab as AiToolsCategory) ? (tab as AiToolsCategory) : 'all'
 }
 
 function ToolPreview({ card }: { card: AiToolsCard }) {
@@ -45,7 +53,19 @@ export default function AiToolsGrid({
   filters: Record<AiToolsCategory, string>
   locale: string
 }) {
-  const [activeCategory, setActiveCategory] = useState<AiToolsCategory>('all')
+  const [activeCategory, setActiveCategory] = useState<AiToolsCategory>(getInitialCategoryFromUrl)
+
+  useEffect(() => {
+    const syncCategoryFromUrl = () => {
+      const nextCategory = getInitialCategoryFromUrl()
+      setActiveCategory(nextCategory)
+    }
+
+    syncCategoryFromUrl()
+    window.addEventListener('popstate', syncCategoryFromUrl)
+    return () => window.removeEventListener('popstate', syncCategoryFromUrl)
+  }, [])
+
   const visibleCards = activeCategory === 'all'
     ? cards
     : cards.filter((card) => card.category === activeCategory)

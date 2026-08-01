@@ -5,7 +5,7 @@
     "imageTools": "圖片工具",
     "videoTools": "影片工具",
     "supportedAiModels": "支援的 AI 模型",
-"aiAsmrVideoGenerator": "AI ASMR 影片產生器",
+    "aiAsmrVideoGenerator": "AI ASMR 影片產生器",
     "hot": "熱門",
     "new": "新品",
     "bestValue": "高性價比",
@@ -149,7 +149,7 @@
       }
     },
     "aiToolsHubTitle": "適用於圖片、影片和日常媒體工作流程的免費AI工具",
-    "aiToolsHubSubtitle": "一個集AI圖片生成、AI影片生成和快速瀏覽器實用工具於一體的中心——無需註冊，無付費牆。",
+    "aiToolsHubSubtitle": "聚焦肖像、風格預覽、清理、修復與實用媒體流程的具體創意工具。",
     "aiToolsHubIntro": "探索專為創作者和行銷人員設計的免費線上AI工具，他們需要可靠的輸出而無需在多個網站之間切換。將旗艦圖片和影片模型與實用的壓縮、轉換、修復和排版輔助工具結合——所有這些都旨在提供清晰的SEO登陸頁面和快速實驗。",
     "aiToolsHubItems": [
       {
@@ -161,38 +161,18 @@
         "title": "AI影片生成器",
         "description": "將腳本、參考畫面或單張上傳圖片轉成短影片概念。AI 跳舞生成器可快速製作課程宣傳與社群貼文用跳舞短片，影片模型頁則適合電影感宣傳片、分鏡與短篇敘事。",
         "href": "/zh-TW/seedance-2"
-      },
-      {
-        "title": "瀏覽器媒體實用工具",
-        "description": "透過有損圖片壓縮、格式轉換、風格化字體預覽和表情符號複製貼上來完善您的工作流程——輕量級、非生成性的實用工具，在您的瀏覽器中保持免費。",
-        "href": "/zh-TW/image-compressor"
       }
     ],
-    "advancedToolsTitle": "更多AI驅動的創意工具",
-    "advancedToolsSubtitle": "肖像生成、AI浮水印移除和AI照片修復——免費線上試用，無需註冊。",
-    "utilityToolsTitle": "免費瀏覽器圖片與文字工具",
-    "utilityToolsSubtitle": "圖片壓縮、格式轉換、風格化字體預覽和表情符號複製貼上——您的瀏覽器中快速實用工具，無需生成式AI。",
     "faqTitle": "有問題嗎？我們有答案！",
     "sectionAiImageTitle": "AI圖片模型",
     "sectionAiImageSubtitle": "免費線上AI圖片生成器。文字轉圖片和圖片轉圖片。4K輸出，快速生成，無需註冊。使用Nano Banana Pro和Nano Banana 2創建AI藝術。",
     "sectionAiVideoTitle": "AI影片模型",
     "sectionAiVideoSubtitle": "從提示詞、參考畫面或一張上傳圖片建立 AI 影片。AI 跳舞生成器適合短版社群跳舞片段，其他影片工具可用於宣傳片、分鏡與電影感場景。",
-    "sectionToolsTitle": "更多工具",
-    "sectionToolsSubtitle": "圖片壓縮、格式轉換、字體生成器——全部免費，都在您的瀏覽器中。",
     "seoIntro": {
       "title": "免費線上AI圖片生成器與AI影片生成器",
       "paragraph1": "Toolaze是您的免費線上AI圖片生成器和AI影片生成器。使用Nano Banana Pro和Nano Banana 2，透過文字轉圖片和圖片轉圖片，創建令人驚嘆的4K AI圖片。使用Seedance 2.0和Kling 3.0，透過文字轉影片和圖片轉影片，生成好萊塢品質的影片。無需註冊、無需信用卡、無每日限制。",
-      "paragraph2": "無論您需要免費AI圖片生成器用於行銷模型、社群內容或AI藝術——還是免費AI影片生成器用於廣告、故事板或短片——Toolaze都能滿足您的需求。我們的AI圖片模型支援高達4K解析度並快速生成。我們的AI影片模型接受文字、圖片、影片和音訊進行多模態影片生成。兩者都支援圖片轉圖片和圖片轉影片工作流程。",
-      "paragraph3": "使用我們的免費線上文字轉圖片生成器和文字轉影片生成器。壓縮圖片、轉換格式和生成字體——所有功能集中於一處。100%免費，無需註冊。"
+      "paragraph2": "無論您需要免費AI圖片生成器用於行銷模型、社群內容或AI藝術——還是免費AI影片生成器用於廣告、故事板或短片——Toolaze都能滿足您的需求。我們的AI圖片模型支援高達4K解析度並快速生成。我們的AI影片模型接受文字、圖片、影片和音訊進行多模態影片生成。兩者都支援圖片轉圖片和圖片轉影片工作流程。"
     },
-    "toolImageCompressor": "圖片壓縮器",
-    "toolImageCompressorDesc": "JPG/PNG的智能有損壓縮。",
-    "toolFormatConverter": "格式轉換器",
-    "toolFormatConverterDesc": "HEIC轉JPG，PNG轉WEBP。",
-    "toolFontGenerator": "免費字體生成器",
-    "toolFontGeneratorDesc": "免費線上生成自訂字體。創建草書、花式、粗體、斜體、哥德式和紋身字體。即時複製貼上。無需註冊。",
-    "toolEmojiCopyAndPaste": "表情符號複製貼上",
-    "toolEmojiCopyAndPasteDesc": "免費線上複製貼上表情符號。按類別瀏覽、搜尋、選擇膚色，一鍵複製。無需註冊。",
     "toolImageResize": "圖片尺寸調整",
     "toolImageResizeDesc": "將圖片調整為精確尺寸。",
     "toolVideoCompressor": "影片壓縮器",

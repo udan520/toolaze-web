@@ -303,10 +303,10 @@ const AI_VIDEO_FUNCTION_MENU_ITEMS: readonly AiVideoFunctionMenuItem[] = [
 ]
 
 const AI_VIDEO_MODEL_MENU_ITEMS: readonly AiVideoModelMenuItem[] = [
-  { href: '/model/wan-2-5-ai-video-generator', labelKey: 'wan25Video', logoSrc: '/model-logos/wan.ico' },
   { href: '/model/seedance-2-5', labelKey: 'seedance25', logoSrc: '/model-logos/bytedance.svg' },
   { href: '/model/seedance-2', labelKey: 'seedance2', logoSrc: '/model-logos/bytedance.svg', badgeKey: 'hot' },
   { href: '/model/kling-3', labelKey: 'kling3', logoSrc: '/model-logos/kling.svg' },
+  { href: '/model/wan-2-5-ai-video-generator', labelKey: 'wan25Video', logoSrc: '/model-logos/wan.ico' },
   { href: '/model/grok-imagine-video-1-5', labelKey: 'grok15Video', logoSrc: '/model-logos/grok.svg', badgeKey: 'bestValue' },
 ]
 

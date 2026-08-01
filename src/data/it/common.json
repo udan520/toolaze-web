@@ -5,7 +5,7 @@
     "imageTools": "Strumenti per immagini",
     "videoTools": "Strumenti video",
     "supportedAiModels": "Modelli IA supportati",
-"aiAsmrVideoGenerator": "Generatore di video ASMR con IA",
+    "aiAsmrVideoGenerator": "Generatore di video ASMR con IA",
     "hot": "Popolare",
     "new": "Nuovo",
     "bestValue": "Conveniente",
@@ -149,7 +149,7 @@
       }
     },
     "aiToolsHubTitle": "Strumenti AI Gratuiti per Immagini, Video e Flussi di Lavoro Multimediali Quotidiani",
-    "aiToolsHubSubtitle": "Un unico hub per la generazione di immagini AI, la generazione di video AI e utility veloci per browser — nessuna registrazione e nessun paywall.",
+    "aiToolsHubSubtitle": "Strumenti creativi concreti per ritratti, anteprime di stile, pulizia, restauro e workflow media pratici.",
     "aiToolsHubIntro": "Scopri strumenti AI gratuiti online creati per creatori e marketer che necessitano di output affidabili senza dover gestire più siti. Combina modelli di immagini e video di punta con utili strumenti pratici per la compressione, la conversione, il restauro e la tipografia — tutto strutturato per pagine di destinazione SEO chiare e sperimentazione rapida.",
     "aiToolsHubItems": [
       {
@@ -161,38 +161,18 @@
         "title": "Generatore AI di video",
         "description": "Trasforma script, fotogrammi di riferimento o una singola immagine caricata in brevi concept video. Il Generatore di danza IA aggiunge clip rapide per promo di lezioni e post social, mentre le pagine video supportano promo cinematografiche, storyboard e storytelling breve.",
         "href": "/it/seedance-2"
-      },
-      {
-        "title": "Utility multimediali per browser",
-        "description": "Completa il tuo flusso di lavoro con compressione immagini lossy, conversione formato, anteprime di font stilizzati e copia-incolla di emoji — utility leggere e non generative che rimangono gratuite nel tuo browser.",
-        "href": "/it/image-compressor"
       }
     ],
-    "advancedToolsTitle": "Altri Strumenti Creativi Alimentati dall'AI",
-    "advancedToolsSubtitle": "Generazione di ritratti, rimozione filigrana AI e restauro foto AI — prova gratuita online, nessuna registrazione richiesta.",
-    "utilityToolsTitle": "Strumenti Browser Gratuiti per Immagini e Testo",
-    "utilityToolsSubtitle": "Compressione immagini, conversione formato, anteprime di font stilizzati e copia-incolla di emoji — utility veloci nel tuo browser senza AI generativa.",
     "faqTitle": "Hai Domande? Abbiamo Risposte!",
     "sectionAiImageTitle": "Modelli AI di Immagini",
     "sectionAiImageSubtitle": "Generatore AI di immagini gratuito online. Da testo a immagine e da immagine a immagine. Output 4K, generazione veloce, nessuna registrazione. Crea arte AI con Nano Banana Pro e Nano Banana 2.",
     "sectionAiVideoTitle": "Modelli AI di Video",
     "sectionAiVideoSubtitle": "Crea video IA da prompt, fotogrammi di riferimento o una sola immagine caricata. Il Generatore di danza IA è pensato per brevi clip social di ballo, mentre gli strumenti video coprono promo, storyboard e scene cinematografiche.",
-    "sectionToolsTitle": "Altri Strumenti",
-    "sectionToolsSubtitle": "Compressione immagini, conversione formato, generatore di font — tutto gratuito, tutto nel tuo browser.",
     "seoIntro": {
       "title": "Generatore AI di Immagini e Generatore AI di Video Online Gratuito",
       "paragraph1": "Toolaze è il tuo generatore AI di immagini e generatore AI di video online gratuito. Crea splendide immagini AI 4K con da testo a immagine e da immagine a immagine — alimentato da Nano Banana Pro e Nano Banana 2. Genera video di qualità hollywoodiana con da testo a video e da immagine a video usando Seedance 2.0 e Kling 3.0. Nessuna registrazione, nessuna carta di credito, nessun limite giornaliero.",
-      "paragraph2": "Che tu abbia bisogno di un generatore AI di immagini gratuito per mockup di marketing, contenuti social o arte AI — o di un generatore AI di video gratuito per annunci, storyboard o video in formato breve — Toolaze offre. I nostri modelli AI di immagini supportano risoluzioni fino a 4K con generazione veloce. I nostri modelli AI di video accettano testo, immagini, video e audio per la generazione video multimodale. Entrambi supportano flussi di lavoro da immagine a immagine e da immagine a video.",
-      "paragraph3": "Usa il nostro generatore gratuito da testo a immagine e generatore da testo a video online. Comprimi immagini, converti formati e genera font — tutto in un unico posto. 100% gratuito, nessuna registrazione richiesta."
+      "paragraph2": "Che tu abbia bisogno di un generatore AI di immagini gratuito per mockup di marketing, contenuti social o arte AI — o di un generatore AI di video gratuito per annunci, storyboard o video in formato breve — Toolaze offre. I nostri modelli AI di immagini supportano risoluzioni fino a 4K con generazione veloce. I nostri modelli AI di video accettano testo, immagini, video e audio per la generazione video multimodale. Entrambi supportano flussi di lavoro da immagine a immagine e da immagine a video."
     },
-    "toolImageCompressor": "Compressore Immagini",
-    "toolImageCompressorDesc": "Compressione lossy intelligente per JPG/PNG.",
-    "toolFormatConverter": "Convertitore Formato",
-    "toolFormatConverterDesc": "Da HEIC a JPG, da PNG a WEBP.",
-    "toolFontGenerator": "Generatore di Font Gratuito",
-    "toolFontGeneratorDesc": "Genera font personalizzati online gratuitamente. Crea font corsivi, fantasiosi, in grassetto, corsivi, gotici e per tatuaggi. Copia e incolla istantaneamente. Nessuna registrazione richiesta.",
-    "toolEmojiCopyAndPaste": "Copia e Incolla Emoji",
-    "toolEmojiCopyAndPasteDesc": "Copia e incolla emoji online gratuitamente. Sfoglia per categoria, cerca, scegli la tonalità della pelle e copia con un clic. Nessuna registrazione richiesta.",
     "toolImageResize": "Ridimensiona Immagini",
     "toolImageResizeDesc": "Ridimensiona le immagini a dimensioni esatte.",
     "toolVideoCompressor": "Compressore Video",

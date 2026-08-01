@@ -9,6 +9,13 @@ test('AI Tools hub exposes All, image, and video tabs', () => {
   assert.match(source, /aria-pressed=\{activeCategory === category\}/)
 })
 
+test('AI Tools hub can open directly on image or video tabs from the URL', () => {
+  assert.match(source, /getInitialCategoryFromUrl/)
+  assert.match(source, /URLSearchParams\(window\.location\.search\)/)
+  assert.match(source, /params\.get\('tab'\)/)
+  assert.match(source, /setActiveCategory\(nextCategory\)/)
+})
+
 test('AI Tools hub keeps three cards per desktop row', () => {
   assert.match(source, /lg:grid-cols-3/)
 })

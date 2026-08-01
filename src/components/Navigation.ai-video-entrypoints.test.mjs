@@ -84,10 +84,10 @@ test('AI Video navigation keeps AI Dance and Talking Avatar in AI Tools only', (
 
 test('AI Video model links render as tag-style entries after the function cards', () => {
   const expectedModelLinks = [
-    '/model/wan-2-5-ai-video-generator',
     '/model/seedance-2-5',
     '/model/seedance-2',
     '/model/kling-3',
+    '/model/wan-2-5-ai-video-generator',
     '/model/grok-imagine-video-1-5',
   ]
 

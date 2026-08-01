@@ -5,7 +5,7 @@
     "imageTools": "Outils d'image",
     "videoTools": "Outils vidéo",
     "supportedAiModels": "Modèles IA pris en charge",
-"aiAsmrVideoGenerator": "Générateur de vidéos ASMR par IA",
+    "aiAsmrVideoGenerator": "Générateur de vidéos ASMR par IA",
     "hot": "Populaire",
     "new": "Nouveau",
     "bestValue": "Bon plan",
@@ -149,7 +149,7 @@
       }
     },
     "aiToolsHubTitle": "Outils IA Gratuits pour les Images, la Vidéo et les Flux de Travail Média Quotidiens",
-    "aiToolsHubSubtitle": "Un seul hub pour la génération d'images IA, la génération de vidéos IA et les utilitaires de navigateur rapides — sans inscription et sans barrière de paiement.",
+    "aiToolsHubSubtitle": "Des outils créatifs concrets pour portraits, aperçus de style, nettoyage, restauration et workflows média pratiques.",
     "aiToolsHubIntro": "Découvrez des outils IA gratuits en ligne conçus pour les créateurs et les marketeurs qui ont besoin d'un résultat fiable sans jongler avec plusieurs sites. Combinez les modèles d'images et de vidéos phares avec des aides pratiques pour la compression, la conversion, la restauration et la typographie — le tout structuré pour des pages de destination SEO claires et une expérimentation rapide.",
     "aiToolsHubItems": [
       {
@@ -161,38 +161,18 @@
         "title": "Générateurs de vidéos IA",
         "description": "Transformez des scripts, images de référence ou une seule image importée en concepts vidéo courts. Le Générateur de danse IA ajoute des clips de danse rapides pour les promotions de cours et les réseaux sociaux, tandis que les pages vidéo prennent en charge les promos cinématiques, storyboards et récits courts.",
         "href": "/fr/seedance-2"
-      },
-      {
-        "title": "Utilitaires média de navigateur",
-        "description": "Complétez votre flux de travail avec la compression d'images avec perte, la conversion de format, les aperçus de polices stylisées et le copier-coller d'emojis — des utilitaires légers et non génératifs qui restent gratuits dans votre navigateur.",
-        "href": "/fr/image-compressor"
       }
     ],
-    "advancedToolsTitle": "Plus d'Outils Créatifs Alimentés par l'IA",
-    "advancedToolsSubtitle": "Génération de portraits, suppression de filigrane IA et restauration de photos IA — essai gratuit en ligne, aucune inscription requise.",
-    "utilityToolsTitle": "Outils de Navigateur Gratuits pour Images et Texte",
-    "utilityToolsSubtitle": "Compression d'images, conversion de format, aperçus de polices stylisées et copier-coller d'emojis — des utilitaires rapides dans votre navigateur sans IA générative.",
     "faqTitle": "Des Questions ? Nous Avons les Réponses !",
     "sectionAiImageTitle": "Modèles d'Images IA",
     "sectionAiImageSubtitle": "Générateur d'images IA gratuit en ligne. Texte-vers-image et image-vers-image. Sortie 4K, génération rapide, sans inscription. Créez de l'art IA avec Nano Banana Pro et Nano Banana 2.",
     "sectionAiVideoTitle": "Modèles Vidéo IA",
     "sectionAiVideoSubtitle": "Créez des vidéos IA à partir de prompts, d’images de référence ou d’une image importée. Le Générateur de danse IA produit de courts clips sociaux, tandis que les outils vidéo couvrent les promotions, storyboards et scènes cinématiques.",
-    "sectionToolsTitle": "Plus d'Outils",
-    "sectionToolsSubtitle": "Compression d'images, conversion de format, générateur de polices — tout est gratuit, tout dans votre navigateur.",
     "seoIntro": {
       "title": "Générateur d'images IA et générateur de vidéos IA gratuit en ligne",
       "paragraph1": "Toolaze est votre générateur d'images IA et générateur de vidéos IA gratuit en ligne. Créez de superbes images IA 4K avec texte-vers-image et image-vers-image — alimenté par Nano Banana Pro et Nano Banana 2. Générez des vidéos de qualité hollywoodienne avec texte-vers-vidéo et image-vers-vidéo en utilisant Seedance 2.0 et Kling 3.0. Aucune inscription, aucune carte de crédit, aucune limite quotidienne.",
-      "paragraph2": "Que vous ayez besoin d'un générateur d'images IA gratuit pour des maquettes marketing, du contenu social ou de l'art IA — ou d'un générateur de vidéos IA gratuit pour des publicités, des storyboards ou des vidéos courtes — Toolaze vous offre la solution. Nos modèles d'images IA prennent en charge une résolution allant jusqu'à 4K avec une génération rapide. Nos modèles de vidéos IA acceptent le texte, les images, la vidéo et l'audio pour la génération de vidéos multimodales. Les deux prennent en charge les flux de travail image-vers-image et image-vers-vidéo.",
-      "paragraph3": "Utilisez notre générateur texte-vers-image et générateur texte-vers-vidéo gratuit en ligne. Compressez des images, convertissez des formats et générez des polices — tout en un seul endroit. 100% gratuit, aucune inscription requise."
+      "paragraph2": "Que vous ayez besoin d'un générateur d'images IA gratuit pour des maquettes marketing, du contenu social ou de l'art IA — ou d'un générateur de vidéos IA gratuit pour des publicités, des storyboards ou des vidéos courtes — Toolaze vous offre la solution. Nos modèles d'images IA prennent en charge une résolution allant jusqu'à 4K avec une génération rapide. Nos modèles de vidéos IA acceptent le texte, les images, la vidéo et l'audio pour la génération de vidéos multimodales. Les deux prennent en charge les flux de travail image-vers-image et image-vers-vidéo."
     },
-    "toolImageCompressor": "Compresseur d'Images",
-    "toolImageCompressorDesc": "Compression intelligente avec perte pour JPG/PNG.",
-    "toolFormatConverter": "Convertisseur de Format",
-    "toolFormatConverterDesc": "HEIC vers JPG, PNG vers WEBP.",
-    "toolFontGenerator": "Générateur de Polices Gratuit",
-    "toolFontGeneratorDesc": "Générez des polices personnalisées en ligne gratuitement. Créez des polices cursives, fantaisie, grasses, italiques, gothiques et tatouage. Copiez et collez instantanément. Aucune inscription requise.",
-    "toolEmojiCopyAndPaste": "Copier-Coller d'Emojis",
-    "toolEmojiCopyAndPasteDesc": "Copiez et collez des emojis en ligne gratuitement. Parcourez par catégorie, recherchez, choisissez la couleur de peau et copiez en un clic. Aucune inscription requise.",
     "toolImageResize": "Redimensionner l'Image",
     "toolImageResizeDesc": "Redimensionnez les images aux dimensions exactes.",
     "toolVideoCompressor": "Compresseur Vidéo",

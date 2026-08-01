@@ -50,8 +50,6 @@ const cardAssets = {
     'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/gpt-image-2/feature-image-editing.webp',
   aiVideo:
     'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/seedance-2.jpg',
-  wan25Video:
-    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/prompt-templates/storyboard-scene.webp',
   textToVideo:
     'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/prompt-templates/storyboard-scene.webp',
   imageToVideo:
@@ -83,8 +81,6 @@ const cardAssets = {
 const cardVideos = {
   aiVideo:
     'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4',
-  wan25Video:
-    '/model-assets/grok-imagine-video-1-5/grok-hero-demo-16x9.mp4',
   textToVideo:
     'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/1b0129b9d2504494825f8fd28b00f4af.png',
   imageToVideo:
@@ -101,9 +97,9 @@ const cardVideos = {
 
 const en: StoredAiToolsPageCopy = {
   metadata: {
-    title: 'AI Tools - AI Image Generator, AI Baby, Watermark Remover & Photo Restoration | Toolaze',
+    title: 'AI Tools - AI Baby, Watermark Remover, Photo Restoration & Creative Editors | Toolaze',
     description:
-      'Explore Toolaze AI tools with visual previews. Use the free AI Image Generator, AI Dance Generator, AI Baby Generator, Watermark Remover, Photo Restoration, AI Couple Photo Maker, and World Cup AI Image Generator online.',
+      'Explore Toolaze AI tools with visual previews: AI Dance Generator, AI Baby Generator, Watermark Remover, Photo Restoration, AI Couple Photo Maker, World Cup AI Image Generator, and style editors.',
   },
   breadcrumbs: {
     home: 'Home',
@@ -113,60 +109,15 @@ const en: StoredAiToolsPageCopy = {
     prefix: 'AI',
     highlight: 'Tools',
     description:
-      'Use AI-powered image tools with clear visual previews. Choose a feature and start in seconds.',
+      'Use concrete AI-powered creative tools with clear visual previews. Choose a feature and start in seconds.',
   },
   cards: [
-    {
-      title: 'AI Image Generator',
-      href: '/ai-image-generator',
-      image: cardAssets.aiImage,
-      description: 'Create high-quality AI images online from text prompts for ads, posters, concepts, and social visuals.',
-      category: 'image',
-    },
-    {
-      title: 'Text to Image Generator',
-      href: '/text-to-image-generator',
-      image: cardAssets.textToImage,
-      description: 'Turn written prompts into AI images for concepts, marketing visuals, posters, and social content.',
-      category: 'image',
-    },
-    {
-      title: 'AI Image to Image Generator',
-      href: '/ai-image-to-image-generator',
-      image: cardAssets.imageToImage,
-      description: 'Upload a reference image and use a prompt to restyle, edit, or transform it with AI.',
-      category: 'image',
-    },
     {
       title: 'Unrestricted / Unlimited AI Image Generator',
       href: '/unrestricted-ai-image-generator',
       image: cardAssets.unrestricted,
       description: 'Create broader unlimited-style AI image concepts online with text-to-image, image-to-image, direct prompt control, and visible creative boundaries.',
       category: 'image',
-    },
-    {
-      title: 'AI Video Generator',
-      href: '/ai-video-generator',
-      image: cardAssets.aiVideo,
-      video: cardVideos.aiVideo,
-      description: 'Create short AI videos online from text, images, video clips, or audio references.',
-      category: 'video',
-    },
-    {
-      title: 'Text to Video Generator',
-      href: '/text-to-video-generator',
-      image: cardAssets.textToVideo,
-      video: cardVideos.textToVideo,
-      description: 'Turn written prompts into short AI videos for ads, storyboards, social clips, and concept tests.',
-      category: 'video',
-    },
-    {
-      title: 'Image to Video Generator',
-      href: '/image-to-video-generator',
-      image: cardAssets.imageToVideo,
-      video: cardVideos.imageToVideo,
-      description: 'Animate photos, product images, artwork, and reference frames with controlled AI motion.',
-      category: 'video',
     },
     {
       title: 'World Cup AI Image Generator',
@@ -270,14 +221,6 @@ const en: StoredAiToolsPageCopy = {
       description: 'Create tactile AI ASMR videos with synchronized sound from a text prompt or reference image.',
       category: 'video',
     },
-    {
-      title: 'Wan 2.5 AI Video Generator',
-      href: '/model/wan-2-5-ai-video-generator',
-      image: cardAssets.wan25Video,
-      video: cardVideos.wan25Video,
-      description: 'Create Wan 2.5 text-to-video or image-to-video clips with 5/10 second, 720p/1080p, and native audio settings.',
-      category: 'video',
-    },
   ],
 }
 
@@ -296,7 +239,6 @@ const copies: Record<AiToolsLocale, StoredAiToolsPageCopy> = {
       description: 'Nutzen Sie KI-Bildtools mit klaren visuellen Vorschauen. Wählen Sie eine Funktion und starten Sie in Sekunden.',
     },
     cards: [
-      { href: '/ai-image-generator', title: 'KI-Bildgenerator', description: 'Erstellen Sie hochwertige KI-Bilder online aus Textprompts für Anzeigen, Poster, Konzepte und Social-Media-Visuals.' },
       { href: '/world-cup-ai-image-generator', title: 'World Cup KI-Bildgenerator', description: 'Erstellen Sie Fußballposter, Fan-Edits, Stickerpakete und Social-Media-Bilder mit GPT Image 2.' },
       { href: '/watermark-remover', title: 'Wasserzeichen-Entferner', description: 'Entfernen Sie Wasserzeichen aus Fotos online mit KI in einem Klick.' },
       { href: '/photo-restoration', title: 'Fotorestaurierung', description: 'Restaurieren und kolorieren Sie alte Fotos mit KI und verbessern Sie Details.' },
@@ -318,7 +260,6 @@ const copies: Record<AiToolsLocale, StoredAiToolsPageCopy> = {
       description: '見やすいプレビュー付きのAI画像ツールを選び、数秒で作成を始められます。',
     },
     cards: [
-      { href: '/ai-image-generator', title: 'AI画像生成', description: '広告、ポスター、コンセプト、SNS向けに、テキストプロンプトから高品質なAI画像をオンライン作成できます。' },
       { href: '/world-cup-ai-image-generator', title: 'ワールドカップAI画像生成', description: 'GPT Image 2でサッカーポスター、ファン編集、ステッカー、SNS画像を作成できます。' },
       { href: '/watermark-remover', title: '透かし削除', description: '写真の透かしをAIでオンライン削除できます。' },
       { href: '/photo-restoration', title: '写真修復', description: '古い写真をAIで修復・カラー化し、細部を改善できます。' },
@@ -340,7 +281,6 @@ const copies: Record<AiToolsLocale, StoredAiToolsPageCopy> = {
       description: 'Usa herramientas de imagen con IA y vistas previas claras. Elige una función y empieza en segundos.',
     },
     cards: [
-      { href: '/ai-image-generator', title: 'Generador de imágenes IA', description: 'Crea imágenes IA online de alta calidad desde prompts para anuncios, pósteres, conceptos y redes sociales.' },
       { href: '/world-cup-ai-image-generator', title: 'Generador IA de imágenes del Mundial', description: 'Crea pósteres de fútbol, ediciones de fans, stickers e imágenes sociales con GPT Image 2.' },
       { href: '/watermark-remover', title: 'Quitamarcas de agua', description: 'Elimina marcas de agua de fotos online con IA en un clic.' },
       { href: '/photo-restoration', title: 'Restauración de fotos', description: 'Restaura y colorea fotos antiguas con IA mientras mejoras los detalles.' },
@@ -362,7 +302,6 @@ const copies: Record<AiToolsLocale, StoredAiToolsPageCopy> = {
       description: '使用具備清楚視覺預覽的 AI 圖像工具。選擇功能後即可在數秒內開始。',
     },
     cards: [
-      { href: '/ai-image-generator', title: 'AI 圖像生成器', description: '從文字提示詞線上建立高品質 AI 圖像，適合廣告、海報、概念與社群視覺。' },
       { href: '/world-cup-ai-image-generator', title: '世界盃 AI 圖像生成器', description: '使用 GPT Image 2 製作足球海報、球迷改圖、貼圖包與社群圖片。' },
       { href: '/watermark-remover', title: '去浮水印', description: '使用 AI 一鍵線上移除照片浮水印。' },
       { href: '/photo-restoration', title: '照片修復', description: '使用 AI 修復舊照片、上色並改善細節。' },
@@ -384,7 +323,6 @@ const copies: Record<AiToolsLocale, StoredAiToolsPageCopy> = {
       description: 'Use ferramentas de imagem com IA e prévias claras. Escolha um recurso e comece em segundos.',
     },
     cards: [
-      { href: '/ai-image-generator', title: 'Gerador de imagens com IA', description: 'Crie imagens de IA online em alta qualidade a partir de prompts para anúncios, pôsteres, conceitos e redes sociais.' },
       { href: '/world-cup-ai-image-generator', title: 'Gerador de imagens da Copa com IA', description: 'Crie pôsteres de futebol, edições de fãs, pacotes de figurinhas e imagens sociais com GPT Image 2.' },
       { href: '/watermark-remover', title: 'Removedor de marca d’água', description: 'Remova marcas d’água de fotos online com IA em um clique.' },
       { href: '/photo-restoration', title: 'Restauração de fotos', description: 'Restaure e colorize fotos antigas com IA enquanto melhora os detalhes.' },
@@ -406,7 +344,6 @@ const copies: Record<AiToolsLocale, StoredAiToolsPageCopy> = {
       description: 'Utilisez des outils d’image IA avec des aperçus clairs. Choisissez une fonction et démarrez en quelques secondes.',
     },
     cards: [
-      { href: '/ai-image-generator', title: 'Générateur d’images IA', description: 'Créez en ligne des images IA de qualité à partir de prompts pour annonces, affiches, concepts et réseaux sociaux.' },
       { href: '/world-cup-ai-image-generator', title: 'Générateur d’images IA Coupe du Monde', description: 'Créez des affiches de football, montages de fans, packs de stickers et visuels sociaux avec GPT Image 2.' },
       { href: '/watermark-remover', title: 'Suppression de filigrane', description: 'Supprimez les filigranes des photos en ligne avec l’IA en un clic.' },
       { href: '/photo-restoration', title: 'Restauration photo', description: 'Restaurez et colorisez d’anciennes photos avec l’IA tout en améliorant les détails.' },
@@ -428,7 +365,6 @@ const copies: Record<AiToolsLocale, StoredAiToolsPageCopy> = {
       description: '명확한 미리보기가 있는 AI 이미지 도구를 사용하세요. 기능을 선택하고 몇 초 만에 시작할 수 있습니다.',
     },
     cards: [
-      { href: '/ai-image-generator', title: 'AI 이미지 생성기', description: '광고, 포스터, 콘셉트, 소셜 비주얼용 고품질 AI 이미지를 텍스트 프롬프트로 온라인 생성하세요.' },
       { href: '/world-cup-ai-image-generator', title: '월드컵 AI 이미지 생성기', description: 'GPT Image 2로 축구 포스터, 팬 편집 이미지, 스티커 팩, 소셜 이미지를 만드세요.' },
       { href: '/watermark-remover', title: '워터마크 제거', description: 'AI로 사진의 워터마크를 온라인에서 한 번에 제거하세요.' },
       { href: '/photo-restoration', title: '사진 복원', description: 'AI로 오래된 사진을 복원하고 색을 입히며 디테일을 개선하세요.' },
@@ -450,7 +386,6 @@ const copies: Record<AiToolsLocale, StoredAiToolsPageCopy> = {
       description: 'Usa strumenti per immagini con IA e anteprime chiare. Scegli una funzione e inizia in pochi secondi.',
     },
     cards: [
-      { href: '/ai-image-generator', title: 'Generatore di immagini IA', description: 'Crea online immagini IA di alta qualità da prompt per annunci, poster, concept e visual social.' },
       { href: '/world-cup-ai-image-generator', title: 'Generatore immagini IA Mondiali', description: 'Crea poster calcistici, fan edit, pacchetti sticker e immagini social con GPT Image 2.' },
       { href: '/watermark-remover', title: 'Rimuovi watermark', description: 'Rimuovi watermark dalle foto online con IA in un clic.' },
       { href: '/photo-restoration', title: 'Restauro foto', description: 'Restaura e colora vecchie foto con IA migliorandone i dettagli.' },
@@ -645,18 +580,6 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
   },
 }
 
-const wan25VideoCards: Record<AiToolsLocale, Pick<AiToolsCard, 'title' | 'description'>> = {
-  en: { title: 'Wan 2.5 AI Video Generator', description: 'Create Wan 2.5 text-to-video or image-to-video clips with 5/10 second, 720p/1080p, and native audio settings.' },
-  de: { title: 'Wan 2.5 KI-Videogenerator', description: 'Erstellen Sie Wan 2.5 Text-zu-Video- oder Bild-zu-Video-Clips mit 5/10 Sekunden, 720p/1080p und nativen Audioeinstellungen.' },
-  ja: { title: 'Wan 2.5 AI動画生成', description: 'Wan 2.5でテキスト動画または画像動画を作成し、5/10秒、720p/1080p、ネイティブ音声設定を使えます。' },
-  es: { title: 'Generador de video IA Wan 2.5', description: 'Crea clips Wan 2.5 de texto a video o imagen a video con 5/10 segundos, 720p/1080p y audio nativo.' },
-  'zh-TW': { title: 'Wan 2.5 AI 影片生成器', description: '使用 Wan 2.5 建立文字轉影片或圖片轉影片短片，支援 5/10 秒、720p/1080p 與原生音訊設定。' },
-  pt: { title: 'Gerador de vídeo IA Wan 2.5', description: 'Crie clipes Wan 2.5 de texto para vídeo ou imagem para vídeo com 5/10 segundos, 720p/1080p e áudio nativo.' },
-  fr: { title: 'Générateur vidéo IA Wan 2.5', description: 'Créez des clips Wan 2.5 texte vers vidéo ou image vers vidéo avec 5/10 secondes, 720p/1080p et audio natif.' },
-  ko: { title: 'Wan 2.5 AI 동영상 생성기', description: 'Wan 2.5로 5/10초, 720p/1080p, 네이티브 오디오 설정의 텍스트-동영상 또는 이미지-동영상을 만드세요.' },
-  it: { title: 'Generatore video IA Wan 2.5', description: 'Crea clip Wan 2.5 da testo o immagine con 5/10 secondi, 720p/1080p e audio nativo.' },
-}
-
 function applyLocalizedCard(
   baseCard: AiToolsCard,
   localizedCard: Pick<AiToolsCard, 'title' | 'description'>,
@@ -669,13 +592,7 @@ function applyLocalizedCard(
 }
 
 const aiToolsCardOrder = [
-  '/ai-image-generator',
-  '/text-to-image-generator',
-  '/ai-image-to-image-generator',
   '/unrestricted-ai-image-generator',
-  '/ai-video-generator',
-  '/text-to-video-generator',
-  '/image-to-video-generator',
   '/world-cup-ai-image-generator',
   '/ai-couple-photo-maker',
   '/ai-baby-generator',
@@ -688,7 +605,6 @@ const aiToolsCardOrder = [
   '/ai-bikini-generator',
   '/ai-breast-expansion',
   '/ai-asmr-video-generator',
-  '/model/wan-2-5-ai-video-generator',
   '/watermark-remover',
   '/photo-restoration',
 ] as const
@@ -722,7 +638,6 @@ function getSupplementalCardByHref(
     '/ai-bikini-generator': supplemental.bikini,
     '/ai-breast-expansion': supplemental.breastExpansion,
     '/ai-asmr-video-generator': supplemental.asmr,
-    '/model/wan-2-5-ai-video-generator': wan25VideoCards[locale],
   }
 
   return cardsByHref[href]

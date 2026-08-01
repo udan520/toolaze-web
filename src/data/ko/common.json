@@ -5,7 +5,7 @@
     "imageTools": "이미지 도구",
     "videoTools": "영상 도구",
     "supportedAiModels": "지원 AI 모델",
-"aiAsmrVideoGenerator": "AI ASMR 영상 생성기",
+    "aiAsmrVideoGenerator": "AI ASMR 영상 생성기",
     "hot": "인기",
     "new": "신규",
     "bestValue": "가성비",
@@ -149,7 +149,7 @@
       }
     },
     "aiToolsHubTitle": "이미지, 비디오 및 일상 미디어 워크플로우를 위한 무료 AI 도구",
-    "aiToolsHubSubtitle": "AI 이미지 생성, AI 비디오 생성, 빠른 브라우저 유틸리티를 위한 하나의 허브—가입 및 유료 장벽 없음.",
+    "aiToolsHubSubtitle": "인물, 스타일 미리보기, 정리, 복원, 실용적인 미디어 작업을 위한 구체적인 크리에이티브 도구입니다.",
     "aiToolsHubIntro": "여러 사이트를 오갈 필요 없이 안정적인 결과물을 필요로 하는 크리에이터와 마케터를 위해 구축된 무료 AI 도구를 온라인에서 만나보세요. 플래그십 이미지 및 비디오 모델을 압축, 변환, 복원, 타이포그래피를 위한 실용적인 도우미와 결합하세요—모두 명확한 SEO 랜딩 페이지와 빠른 실험을 위해 구성되었습니다.",
     "aiToolsHubItems": [
       {
@@ -161,38 +161,18 @@
         "title": "AI 비디오 생성기",
         "description": "스크립트와 참조 프레임을 영화 같은 클립으로 바꾸세요. Seedance 2.0 및 Kling 3.0은 다중 모드 입력으로 텍스트-비디오 및 이미지-비디오를 지원합니다—프로모션, 스토리보드, 짧은 형식의 스토리텔링에 이상적입니다.",
         "href": "/ko/seedance-2"
-      },
-      {
-        "title": "브라우저 미디어 유틸리티",
-        "description": "손실 이미지 압축, 형식 변환, 스타일화된 폰트 미리보기, 이모지 복사 및 붙여넣기로 워크플로우를 완성하세요—브라우저에서 무료로 유지되는 가볍고 비생성적인 유틸리티입니다.",
-        "href": "/ko/image-compressor"
       }
     ],
-    "advancedToolsTitle": "더 많은 AI 기반 크리에이티브 도구",
-    "advancedToolsSubtitle": "인물 사진 생성, AI 워터마크 제거, AI 사진 복원—온라인에서 무료로 사용 가능, 가입 불필요.",
-    "utilityToolsTitle": "이미지 및 텍스트를 위한 무료 브라우저 도구",
-    "utilityToolsSubtitle": "이미지 압축, 형식 변환, 스타일화된 폰트 미리보기, 이모지 복사 및 붙여넣기—생성형 AI 없이 브라우저에서 빠른 유틸리티.",
     "faqTitle": "질문이 있으신가요? 저희가 답변해 드립니다!",
     "sectionAiImageTitle": "AI 이미지 모델",
     "sectionAiImageSubtitle": "무료 AI 이미지 생성기 온라인. 텍스트-이미지 및 이미지-이미지. 4K 출력, 빠른 생성, 등록 불필요. Nano Banana Pro 및 Nano Banana 2로 AI 아트를 만드세요.",
     "sectionAiVideoTitle": "AI 비디오 모델",
     "sectionAiVideoSubtitle": "프롬프트, 참조 프레임 또는 업로드한 이미지 한 장으로 AI 영상을 만드세요. AI 댄스 생성기는 짧은 소셜 댄스 클립에, 비디오 도구는 홍보 영상, 스토리보드, 영화 같은 장면에 적합합니다.",
-    "sectionToolsTitle": "더 많은 도구",
-    "sectionToolsSubtitle": "이미지 압축, 형식 변환, 폰트 생성기—모두 무료, 모두 브라우저에서.",
     "seoIntro": {
       "title": "무료 AI 이미지 생성기 & AI 비디오 생성기 온라인",
       "paragraph1": "Toolaze는 온라인에서 무료 AI 이미지 생성기 및 AI 비디오 생성기입니다. Nano Banana Pro 및 Nano Banana 2를 기반으로 텍스트-이미지 및 이미지-이미지로 멋진 4K AI 이미지를 만드세요. Seedance 2.0 및 Kling 3.0을 사용하여 텍스트-비디오 및 이미지-비디오로 할리우드급 비디오를 생성하세요. 가입, 신용 카드, 일일 제한이 없습니다.",
-      "paragraph2": "마케팅 목업, 소셜 콘텐츠 또는 AI 아트를 위한 무료 AI 이미지 생성기가 필요하든—광고, 스토리보드 또는 짧은 형식의 비디오를 위한 무료 AI 비디오 생성기가 필요하든—Toolaze가 제공합니다. 당사의 AI 이미지 모델은 빠른 생성으로 최대 4K 해상도를 지원합니다. 당사의 AI 비디오 모델은 다중 모드 비디오 생성을 위해 텍스트, 이미지, 비디오 및 오디오를 허용합니다. 둘 다 이미지-이미지 및 이미지-비디오 워크플로우를 지원합니다.",
-      "paragraph3": "무료 텍스트-이미지 생성기 및 텍스트-비디오 생성기를 온라인에서 사용하세요. 이미지 압축, 형식 변환, 폰트 생성—모두 한 곳에서. 100% 무료, 등록 불필요."
+      "paragraph2": "마케팅 목업, 소셜 콘텐츠 또는 AI 아트를 위한 무료 AI 이미지 생성기가 필요하든—광고, 스토리보드 또는 짧은 형식의 비디오를 위한 무료 AI 비디오 생성기가 필요하든—Toolaze가 제공합니다. 당사의 AI 이미지 모델은 빠른 생성으로 최대 4K 해상도를 지원합니다. 당사의 AI 비디오 모델은 다중 모드 비디오 생성을 위해 텍스트, 이미지, 비디오 및 오디오를 허용합니다. 둘 다 이미지-이미지 및 이미지-비디오 워크플로우를 지원합니다."
     },
-    "toolImageCompressor": "이미지 압축기",
-    "toolImageCompressorDesc": "JPG/PNG를 위한 스마트 손실 압축.",
-    "toolFormatConverter": "형식 변환기",
-    "toolFormatConverterDesc": "HEIC를 JPG로, PNG를 WEBP로.",
-    "toolFontGenerator": "무료 폰트 생성기",
-    "toolFontGeneratorDesc": "온라인에서 무료로 맞춤 폰트를 생성하세요. 필기체, 멋진, 굵은, 기울임꼴, 고딕, 타투 폰트를 만드세요. 즉시 복사 및 붙여넣기. 가입 불필요.",
-    "toolEmojiCopyAndPaste": "이모지 복사 & 붙여넣기",
-    "toolEmojiCopyAndPasteDesc": "온라인에서 무료로 이모지를 복사하고 붙여넣으세요. 카테고리별로 찾아보고, 검색하고, 피부 톤을 선택하고, 한 번의 클릭으로 복사하세요. 가입 불필요.",
     "toolImageResize": "이미지 크기 조정",
     "toolImageResizeDesc": "이미지 크기를 정확한 치수로 조정합니다.",
     "toolVideoCompressor": "비디오 압축기",

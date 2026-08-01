@@ -424,22 +424,15 @@ test('Credits page common copy exists for every supported locale', () => {
   }
 })
 
-test('localized home hero includes AI Video Generator CTA copy', () => {
-  const englishCta = readJson('src/data/en/common.json').home?.ctaVideo
-
-  assert.equal(typeof englishCta, 'string', 'en.home.ctaVideo')
-  assert.notEqual(englishCta.trim(), '', 'en.home.ctaVideo')
-
-  for (const locale of localizedLocales) {
-    const cta = readJson(`src/data/${locale}/common.json`).home?.ctaVideo
-
-    assert.equal(typeof cta, 'string', `${locale}.home.ctaVideo`)
-    assert.notEqual(cta.trim(), '', `${locale}.home.ctaVideo`)
-    assert.notEqual(cta, englishCta, `${locale}.home.ctaVideo`)
-  }
-
+test('localized home dashboard excludes the main video generator from quick actions', () => {
   const homePageMain = readProjectFile('src/components/home/HomePageMain.tsx')
-  assert.match(homePageMain, /href="\/ai-video-generator"[\s\S]*home\?\.ctaVideo/)
+  const quickLaunchBlock = homePageMain.slice(
+    homePageMain.indexOf('const quickLaunchGroups = ['),
+    homePageMain.indexOf('// Organization Schema for Google Search Logo'),
+  )
+
+  assert.doesNotMatch(quickLaunchBlock, /dashboardCopy\.videoEditor/)
+  assert.doesNotMatch(quickLaunchBlock, /localizeHomeHref\('\/ai-video-generator'\)/)
 })
 
 test('localized homepage passes common translations into shared navigation and footer', () => {
@@ -447,6 +440,17 @@ test('localized homepage passes common translations into shared navigation and f
 
   assert.match(homePageMain, /<Navigation\s+initialTranslations=\{common\}\s*\/>/)
   assert.match(homePageMain, /<Footer\s+initialTranslations=\{common\}\s*\/>/)
+})
+
+test('homepage keeps the AI Tools hub as the only tools section', () => {
+  const homePageMain = readProjectFile('src/components/home/HomePageMain.tsx')
+
+  assert.match(homePageMain, /id="ai-tools-hub"/)
+  assert.doesNotMatch(homePageMain, /id="advanced-ai-tools"/)
+  assert.doesNotMatch(homePageMain, /id="browser-utility-tools"/)
+  assert.doesNotMatch(homePageMain, /More AI-Powered Creative Tools/)
+  assert.doesNotMatch(homePageMain, /HOME_UTILITY_TOOL_IDS/)
+  assert.doesNotMatch(homePageMain, /sectionToolsTitle|utilityToolsTitle|utilityToolsSubtitle/)
 })
 
 test('global AI Tools links remain locale-aware in navigation and breadcrumbs', () => {

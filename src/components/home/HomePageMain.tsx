@@ -4,25 +4,17 @@ import Script from 'next/script'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import HomeAiToolsTabs, { type HomeAiToolsTabCard } from '@/components/home/HomeAiToolsTabs'
+import HomeTrendingToolsRail from '@/components/home/HomeTrendingToolsRail'
 import { loadCommonTranslations, IMAGE_MODEL_L2S, VIDEO_MODEL_L2S } from '@/lib/seo-loader'
-import { HOME_ADVANCED_AI_TOOL_IDS, HOME_UTILITY_TOOL_IDS } from '@/lib/homepage-grid-tools'
+import { HOME_ADVANCED_AI_TOOL_IDS } from '@/lib/homepage-grid-tools'
 import { getHomeAdvancedAiCardImage } from '@/lib/home-advanced-ai-card-images'
 import { getHomeModelCardImage } from '@/lib/home-model-card-images'
 import { getSeedream45LandingCopy } from '@/lib/seedream-4-5-landing-copy'
 import { getWan27ImageLandingCopy } from '@/lib/wan-2-7-image-landing-copy'
-import {
-  applyHomepageToolCardSummary,
-  type HomepageToolCardSummaries,
-} from '@/lib/homepage-tool-card-summaries'
+import { applyHomepageToolCardSummary, type HomepageToolCardSummaries } from '@/lib/homepage-tool-card-summaries'
 
 /** Renders text with internal links for SEO */
-function TextWithLinks({
-  text,
-  links,
-}: {
-  text: string
-  links: Array<{ term: string; href: string }>
-}) {
+function TextWithLinks({ text, links }: { text: string; links: Array<{ term: string; href: string }> }) {
   const sorted = [...links].sort((a, b) => b.term.length - a.term.length)
   const parts: React.ReactNode[] = []
   let remaining = text
@@ -48,7 +40,7 @@ function TextWithLinks({
         className="text-indigo-600 hover:text-indigo-700 underline font-medium"
       >
         {match.term}
-      </Link>
+      </Link>,
     )
     remaining = remaining.slice(earliest + match.term.length)
   }
@@ -97,7 +89,7 @@ type HomeTrendingCardOverride = {
 
 function applyTrendingCardsOverrides(
   items: ToolCard[],
-  overrides: HomeTrendingCardOverride[] | Record<string, HomeTrendingCardOverride> | undefined
+  overrides: HomeTrendingCardOverride[] | Record<string, HomeTrendingCardOverride> | undefined,
 ): ToolCard[] {
   if (!overrides || (Array.isArray(overrides) && overrides.length === 0)) return items
   return items.map((item) => {
@@ -123,7 +115,7 @@ async function loadToolData(
   getTitle: (data: any) => string,
   getDesc: (data: any) => string,
   getFeaturedDesc?: (data: any) => string,
-  getModelMeta?: (data: any) => { modelName?: string; modelType?: string }
+  getModelMeta?: (data: any) => { modelName?: string; modelType?: string },
 ): Promise<ToolCard | null> {
   try {
     const { getL2SeoContent } = await import('@/lib/seo-loader')
@@ -191,8 +183,8 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
               href: '/model/grok-imagine-video-1-5',
             }
           : card,
-        cardSummaries
-      )
+        cardSummaries,
+      ),
     )
   }
 
@@ -213,7 +205,7 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
       modelName: wan27Copy.hero.modelName,
       modelType: 'AI Image Generator',
     },
-    cardSummaries
+    cardSummaries,
   )
   if (!aiImageTools.some((item) => item.tool === wan27Card.tool)) {
     const gptIndex = aiImageTools.findIndex((item) => item.tool === 'gpt-image-2')
@@ -230,7 +222,7 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
       modelName: seedream45Copy.hero.modelName,
       modelType: 'AI Image Generator',
     },
-    cardSummaries
+    cardSummaries,
   )
   if (!aiImageTools.some((item) => item.tool === seedream45Card.tool)) {
     aiImageTools.push(seedream45Card)
@@ -247,7 +239,7 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
       modelName: 'Seedream 5.0 Pro',
       modelType: 'AI Image Generator',
     },
-    cardSummaries
+    cardSummaries,
   )
   if (!aiImageTools.some((item) => item.tool === seedream50ProCard.tool)) {
     aiImageTools.unshift(seedream50ProCard)
@@ -255,9 +247,9 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
   // Curated Trending section（只放首页首屏下方的四个重点模型）
   const trendingModels = applyTrendingCardsOverrides(
     TRENDING_MODEL_IDS.map((tool) => [...aiImageTools, ...aiVideoTools].find((item) => item.tool === tool)).filter(
-      (item): item is ToolCard => Boolean(item)
+      (item): item is ToolCard => Boolean(item),
     ),
-    home?.trendingCards as Record<string, HomeTrendingCardOverride> | HomeTrendingCardOverride[] | undefined
+    home?.trendingCards as Record<string, HomeTrendingCardOverride> | HomeTrendingCardOverride[] | undefined,
   )
 
   async function loadHomeGridToolCard(tool: string): Promise<ToolCard | null> {
@@ -265,7 +257,7 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
       tool,
       locale,
       (d) => (d?.hero?.h1 ? d.hero.h1.replace(/<[^>]*>/g, '').trim() : tool),
-      (d) => d?.hero?.desc || d?.metadata?.description || ''
+      (d) => d?.hero?.desc || d?.metadata?.description || '',
     )
   }
 
@@ -283,8 +275,8 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
         modelName: 'World Cup AI Image Generator',
         modelType: 'AI Image Generator',
       },
-      cardSummaries
-    )
+      cardSummaries,
+    ),
   )
   for (const tool of HOME_ADVANCED_AI_TOOL_IDS) {
     const card = await loadHomeGridToolCard(tool)
@@ -302,38 +294,32 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
     }
 
     advancedAiTools.push(
-      applyHomepageToolCardSummary({ ...card, ...(localizedAdvancedOverrides[tool] || {}) }, cardSummaries)
+      applyHomepageToolCardSummary({ ...card, ...(localizedAdvancedOverrides[tool] || {}) }, cardSummaries),
     )
   }
+  const mergedAdvancedImageToolCards: HomeAiToolsTabCard[] = [
+    'unrestricted-ai-image-generator',
+    'ai-clothes-changer',
+    'ai-bikini-generator',
+    'ai-breast-expansion',
+  ].flatMap((tool) => {
+    const card = advancedAiTools.find((item) => item.tool === tool)
+    const thumb = getHomeAdvancedAiCardImage(tool)
+    if (!card || !thumb) return []
+
+    return [
+      {
+        title: (card.title || '').replace(/<[^>]*>/g, '').trim() || tool,
+        href: localizeHomeHref(card.href),
+        media: {
+          type: 'image' as const,
+          src: thumb.src,
+          alt: thumb.alt,
+        },
+      },
+    ]
+  })
   const homeVideoToolCards: HomeAiToolsTabCard[] = [
-    {
-      title: navCopy.aiVideoGenerator || 'AI Video Generator',
-      href: localizeHomeHref('/ai-video-generator'),
-      media: {
-        type: 'video',
-        src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4',
-        alt: 'AI Video Generator demo video',
-      },
-    },
-    {
-      title: navCopy.textToVideoGenerator || 'Text to Video Generator',
-      href: localizeHomeHref('/text-to-video-generator'),
-      media: {
-        type: 'video',
-        src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/1b0129b9d2504494825f8fd28b00f4af.png',
-        poster: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/c601d39d801e44938e5e33711e19df32.webp',
-        alt: 'Text to Video Generator demo video',
-      },
-    },
-    {
-      title: navCopy.imageToVideoGenerator || 'Image to Video Generator',
-      href: localizeHomeHref('/image-to-video-generator'),
-      media: {
-        type: 'video',
-        src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4',
-        alt: 'Image to Video Generator demo video',
-      },
-    },
     {
       title: navCopy.aiDanceGenerator || 'AI Dance Generator',
       href: localizeHomeHref('/ai-dance-generator'),
@@ -344,12 +330,23 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
       },
     },
     {
+      title: navCopy.aiAsmrVideoGenerator || 'AI ASMR Video Generator',
+      href: localizeHomeHref('/ai-asmr-video-generator'),
+      media: {
+        type: 'video',
+        src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/ai-asmr-video-generator/demo.mp4',
+        poster: getHomeModelCardImage('ai-asmr-video-generator')?.src,
+        alt: 'AI ASMR Video Generator demo video',
+      },
+    },
+    {
       title: navCopy.talkingAvatarCreator || 'AI Talking Avatar',
       href: localizeHomeHref('/talking-avatar-creator'),
       media: {
         type: 'video',
         src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/talking-avatar-creator/demo.mp4',
-        poster: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/talking-avatar-creator/demo-poster.webp',
+        poster:
+          'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/talking-avatar-creator/demo-poster.webp',
         alt: 'AI Talking Avatar demo video',
       },
     },
@@ -365,33 +362,6 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
     },
   ]
   const homeImageToolCards: HomeAiToolsTabCard[] = [
-    {
-      title: navCopy.aiImageGenerator || 'AI Image Generator',
-      href: localizeHomeHref('/ai-image-generator'),
-      media: {
-        type: 'image',
-        src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/gpt-image-2.jpg',
-        alt: 'AI Image Generator demo image',
-      },
-    },
-    {
-      title: navCopy.textToImageGenerator || 'Text to Image Generator',
-      href: localizeHomeHref('/text-to-image-generator'),
-      media: {
-        type: 'image',
-        src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/ai-image-generator/text-to-image-generator.webp',
-        alt: 'Text to Image Generator demo image',
-      },
-    },
-    {
-      title: navCopy.aiImageToImageGenerator || 'AI Image to Image Generator',
-      href: localizeHomeHref('/ai-image-to-image-generator'),
-      media: {
-        type: 'image',
-        src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/gpt-image-2/feature-image-editing.webp',
-        alt: 'AI Image to Image Generator demo image',
-      },
-    },
     {
       title: navCopy.aiHairstyleChanger || 'AI Hairstyle Changer',
       href: localizeHomeHref('/ai-hairstyle-changer'),
@@ -455,58 +425,34 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
         alt: 'Photo Restoration demo image',
       },
     },
+    ...mergedAdvancedImageToolCards,
   ]
-
-  const utilityTools: ToolCard[] = []
-  for (const tool of HOME_UTILITY_TOOL_IDS) {
-    const card = await loadHomeGridToolCard(tool)
-    if (!card) continue
-
-    const localizedUtilityOverrides: Record<string, Partial<ToolCard>> = {
-      'image-compressor': {
-        title: home?.toolImageCompressor || card.title,
-        description: home?.toolImageCompressorDesc || card.description,
-      },
-      'image-converter': {
-        title: home?.toolFormatConverter || card.title,
-        description: home?.toolFormatConverterDesc || card.description,
-      },
-      'font-generator': {
-        title: home?.toolFontGenerator || card.title,
-        description: home?.toolFontGeneratorDesc || card.description,
-      },
-      'emoji-copy-and-paste': {
-        title: home?.toolEmojiCopyAndPaste || card.title,
-        description: home?.toolEmojiCopyAndPasteDesc || card.description,
-      },
-    }
-    utilityTools.push({ ...card, ...(localizedUtilityOverrides[tool] || {}) })
-  }
 
   const faqItems = home?.faq?.items ?? []
   const whyToolaze = home?.whyToolaze
   const homeFeatureItems =
     home?.features && typeof home.features === 'object'
       ? Object.values(home.features).filter(
-          (item): item is { title?: string; desc?: string } => !!item && typeof item === 'object'
+          (item): item is { title?: string; desc?: string } => !!item && typeof item === 'object',
         )
       : []
 
-  const dashboardCopyByLocale: Record<string, {
-    aiVideoGeneration: string
-    aiImageGeneration: string
-    videoEditor: string
-    aiModels: string
-    trending: string
-    tryForFree: string
-    liveNowSuffix: string
-    freeDisclosure: string
-  }> = {
+  const dashboardCopyByLocale: Record<
+    string,
+    {
+      aiVideoGeneration: string
+      aiImageGeneration: string
+      aiModels: string
+      trending: string
+      tryForFree: string
+      liveNowSuffix: string
+      freeDisclosure: string
+    }
+  > = {
     en: {
       aiVideoGeneration: 'AI Video Generation',
       aiImageGeneration: 'AI Image Generation',
-      videoEditor: 'Video Editor',
-      aiModels: 'AI Models',
+      aiModels: 'All Models',
       trending: 'Trending',
       tryForFree: 'Try For Free',
       liveNowSuffix: ' is Live Now!',
@@ -515,17 +461,16 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
     de: {
       aiVideoGeneration: 'KI-Videogenerierung',
       aiImageGeneration: 'KI-Bildgenerierung',
-      videoEditor: 'Video-Editor',
       aiModels: 'KI-Modelle',
       trending: 'Trending',
       tryForFree: 'Kostenlos testen',
       liveNowSuffix: ' ist jetzt live!',
-      freeDisclosure: 'Neue Nutzer erhalten nach der Registrierung 20 Credits; höhere Einstellungen können mehr Credits benötigen.',
+      freeDisclosure:
+        'Neue Nutzer erhalten nach der Registrierung 20 Credits; höhere Einstellungen können mehr Credits benötigen.',
     },
     ja: {
       aiVideoGeneration: 'AI動画生成',
       aiImageGeneration: 'AI画像生成',
-      videoEditor: '動画エディター',
       aiModels: 'AIモデル',
       trending: 'トレンド',
       tryForFree: '無料で試す',
@@ -535,17 +480,16 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
     es: {
       aiVideoGeneration: 'Generación de Video IA',
       aiImageGeneration: 'Generación de Imagen IA',
-      videoEditor: 'Editor de Video',
       aiModels: 'Modelos IA',
       trending: 'Tendencias',
       tryForFree: 'Probar Gratis',
       liveNowSuffix: ' ya está disponible',
-      freeDisclosure: 'Los nuevos usuarios reciben 20 créditos al registrarse; los ajustes superiores pueden usar más créditos.',
+      freeDisclosure:
+        'Los nuevos usuarios reciben 20 créditos al registrarse; los ajustes superiores pueden usar más créditos.',
     },
     'zh-TW': {
       aiVideoGeneration: 'AI 影片生成',
       aiImageGeneration: 'AI 圖像生成',
-      videoEditor: '影片編輯器',
       aiModels: 'AI 模型',
       trending: '熱門趨勢',
       tryForFree: '免費試用',
@@ -555,27 +499,26 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
     pt: {
       aiVideoGeneration: 'Geração de Vídeo IA',
       aiImageGeneration: 'Geração de Imagem IA',
-      videoEditor: 'Editor de Vídeo',
       aiModels: 'Modelos de IA',
       trending: 'Em Alta',
       tryForFree: 'Testar Grátis',
       liveNowSuffix: ' já está disponível',
-      freeDisclosure: 'Novos usuários recebem 20 créditos após o cadastro; configurações mais altas podem usar mais créditos.',
+      freeDisclosure:
+        'Novos usuários recebem 20 créditos após o cadastro; configurações mais altas podem usar mais créditos.',
     },
     fr: {
       aiVideoGeneration: 'Génération Vidéo IA',
       aiImageGeneration: 'Génération Image IA',
-      videoEditor: 'Éditeur Vidéo',
       aiModels: 'Modèles IA',
       trending: 'Tendances',
       tryForFree: 'Essayer Gratuitement',
       liveNowSuffix: ' est disponible',
-      freeDisclosure: 'Les nouveaux utilisateurs reçoivent 20 crédits après inscription ; les réglages avancés peuvent utiliser plus de crédits.',
+      freeDisclosure:
+        'Les nouveaux utilisateurs reçoivent 20 crédits après inscription ; les réglages avancés peuvent utiliser plus de crédits.',
     },
     ko: {
       aiVideoGeneration: 'AI 비디오 생성',
       aiImageGeneration: 'AI 이미지 생성',
-      videoEditor: '비디오 편집기',
       aiModels: 'AI 모델',
       trending: '인기',
       tryForFree: '무료로 사용해보기',
@@ -585,67 +528,143 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
     it: {
       aiVideoGeneration: 'Generazione Video AI',
       aiImageGeneration: 'Generazione Immagini AI',
-      videoEditor: 'Editor Video',
       aiModels: 'Modelli AI',
       trending: 'Di Tendenza',
       tryForFree: 'Prova Gratis',
       liveNowSuffix: ' è disponibile',
-      freeDisclosure: 'I nuovi utenti ricevono 20 crediti dopo la registrazione; le impostazioni avanzate possono usare più crediti.',
+      freeDisclosure:
+        'I nuovi utenti ricevono 20 crediti dopo la registrazione; le impostazioni avanzate possono usare più crediti.',
     },
   }
   const dashboardCopy = dashboardCopyByLocale[locale] || dashboardCopyByLocale.en
+  const quickActionCopyByLocale: Record<
+    string,
+    {
+      imageToVideo: string
+      textToVideo: string
+      imageToImage: string
+      textToImage: string
+    }
+  > = {
+    en: {
+      imageToVideo: 'Image to Video',
+      textToVideo: 'Text to Video',
+      imageToImage: 'Image to Image',
+      textToImage: 'Text to Image',
+    },
+    de: {
+      imageToVideo: 'Bild zu Video',
+      textToVideo: 'Text zu Video',
+      imageToImage: 'Bild zu Bild',
+      textToImage: 'Text zu Bild',
+    },
+    ja: {
+      imageToVideo: '画像から動画',
+      textToVideo: 'テキストから動画',
+      imageToImage: '画像から画像',
+      textToImage: 'テキストから画像',
+    },
+    es: {
+      imageToVideo: 'Imagen a video',
+      textToVideo: 'Texto a video',
+      imageToImage: 'Imagen a imagen',
+      textToImage: 'Texto a imagen',
+    },
+    'zh-TW': {
+      imageToVideo: '圖像轉影片',
+      textToVideo: '文字轉影片',
+      imageToImage: '圖像轉圖像',
+      textToImage: '文字轉圖像',
+    },
+    pt: {
+      imageToVideo: 'Imagem para vídeo',
+      textToVideo: 'Texto para vídeo',
+      imageToImage: 'Imagem para imagem',
+      textToImage: 'Texto para imagem',
+    },
+    fr: {
+      imageToVideo: 'Image vers vidéo',
+      textToVideo: 'Texte vers vidéo',
+      imageToImage: 'Image vers image',
+      textToImage: 'Texte vers image',
+    },
+    ko: {
+      imageToVideo: '이미지→동영상',
+      textToVideo: '텍스트→동영상',
+      imageToImage: '이미지→이미지',
+      textToImage: '텍스트→이미지',
+    },
+    it: {
+      imageToVideo: 'Immagine a video',
+      textToVideo: 'Testo a video',
+      imageToImage: 'Immagine a immagine',
+      textToImage: 'Testo a immagine',
+    },
+  }
+  const quickActionCopy = quickActionCopyByLocale[locale] || quickActionCopyByLocale.en
   const cleanTitle = (value?: string) => (value || '').replace(/<[^>]*>/g, '').trim()
-  const allHomeCards = [...aiVideoTools, ...aiImageTools, ...advancedAiTools, ...utilityTools]
+  const allHomeCards = [...aiVideoTools, ...aiImageTools, ...advancedAiTools]
   const findHomeCard = (tool: string) => allHomeCards.find((item) => item.tool === tool)
   const featuredLaunch =
-    findHomeCard('seedance-2-5') ||
-    findHomeCard('seedance-2') ||
-    aiVideoTools[0] ||
-    trendingModels[0]
+    findHomeCard('seedance-2-5') || findHomeCard('seedance-2') || aiVideoTools[0] || trendingModels[0]
   const featuredLaunchTitle = cleanTitle(featuredLaunch?.modelName || featuredLaunch?.title) || 'Seedance 2.5'
   const featuredLaunchThumb = featuredLaunch ? getHomeModelCardImage(featuredLaunch.tool) : null
   const dashboardModelCards = ['seedance-2', 'gpt-image-2', 'seedream-5-0-pro', 'kling-3']
     .map(findHomeCard)
     .filter((item): item is ToolCard => Boolean(item))
     .slice(0, 4)
+  const allAiToolCards = [...homeVideoToolCards, ...homeImageToolCards]
+  const featuredTrendingHrefs = [
+    localizeHomeHref('/ai-kissing-video-generator'),
+    localizeHomeHref('/ai-dance-generator'),
+    localizeHomeHref('/ai-asmr-video-generator'),
+  ]
+  const featuredTrendingCards = featuredTrendingHrefs
+    .map((href) => allAiToolCards.find((item) => item.href === href))
+    .filter((item): item is HomeAiToolsTabCard => Boolean(item))
+  const featuredTrendingHrefSet = new Set(featuredTrendingCards.map((item) => item.href))
   const dashboardTrendingCards = [
-    {
-      title: navCopy.worldCupAiImageGenerator || 'World Cup AI Image Generator',
-      href: localizeHomeHref('/world-cup-ai-image-generator'),
-      image: getHomeAdvancedAiCardImage('world-cup-ai-image-generator'),
-    },
-    {
-      title: navCopy.aiDanceGenerator || 'AI Dance Generator',
-      href: localizeHomeHref('/ai-dance-generator'),
-      image: getHomeModelCardImage('ai-asmr-video-generator'),
-    },
-    {
-      title: navCopy.aiKissingVideoGenerator || 'AI Kissing Video Generator',
-      href: localizeHomeHref('/ai-kissing-video-generator'),
-      image: getHomeModelCardImage('ai-kissing-video-generator'),
-    },
-  ].filter((item) => Boolean(item.image))
+    ...featuredTrendingCards,
+    ...allAiToolCards.filter((item) => !featuredTrendingHrefSet.has(item.href)),
+  ]
   const quickLaunchGroups = [
     {
       title: dashboardCopy.aiVideoGeneration,
+      surface: 'from-sky-50 via-white to-indigo-50',
+      line: 'from-sky-400/0 via-sky-400/70 to-indigo-400/0',
       links: [
-        { label: navCopy.imageToVideoGenerator || 'Image to Video Generator', href: localizeHomeHref('/image-to-video-generator') },
-        { label: navCopy.textToVideoGenerator || 'Text to Video Generator', href: localizeHomeHref('/text-to-video-generator') },
-        { label: dashboardCopy.videoEditor, href: localizeHomeHref('/ai-video-generator') },
+        {
+          label: quickActionCopy.imageToVideo,
+          href: localizeHomeHref('/image-to-video-generator'),
+        },
+        {
+          label: quickActionCopy.textToVideo,
+          href: localizeHomeHref('/text-to-video-generator'),
+        },
       ],
     },
     {
       title: dashboardCopy.aiImageGeneration,
+      surface: 'from-violet-50 via-white to-fuchsia-50',
+      line: 'from-violet-400/0 via-violet-400/70 to-fuchsia-400/0',
       links: [
-        { label: navCopy.aiImageToImageGenerator || 'AI Image to Image Generator', href: localizeHomeHref('/ai-image-to-image-generator') },
-        { label: navCopy.textToImageGenerator || 'Text to Image Generator', href: localizeHomeHref('/text-to-image-generator') },
+        {
+          label: quickActionCopy.imageToImage,
+          href: localizeHomeHref('/ai-image-to-image-generator'),
+        },
+        {
+          label: quickActionCopy.textToImage,
+          href: localizeHomeHref('/text-to-image-generator'),
+        },
       ],
     },
     {
       title: navCopy.aiTools || 'AI Tools',
+      surface: 'from-slate-50 via-white to-emerald-50',
+      line: 'from-slate-400/0 via-emerald-400/70 to-slate-400/0',
       links: [
-        { label: navCopy.videoTools || 'Video Tools', href: localizeHomeHref('/ai-video-generator') },
-        { label: navCopy.imageTools || 'Image Tools', href: localizeHomeHref('/ai-image-generator') },
+        { label: navCopy.videoTools || 'Video Tools', href: localizeHomeHref('/ai-tools?tab=video') },
+        { label: navCopy.imageTools || 'Image Tools', href: localizeHomeHref('/ai-tools?tab=image') },
       ],
     },
   ]
@@ -674,29 +693,52 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
       <Navigation initialTranslations={common} />
 
       {/* Dashboard-style first screen */}
-      <section className="bg-[#F8FAFF] px-4 pb-16 pt-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-[1500px] overflow-hidden border border-indigo-100 bg-white shadow-soft lg:min-h-[calc(100vh-92px)]">
-          <div className="min-w-0 px-4 py-5 sm:px-6 lg:px-7">
-            <div className="grid gap-4 xl:grid-cols-3">
-              {quickLaunchGroups.map((group) => (
-                <section key={group.title} className="rounded-[1.25rem] bg-slate-100/80 p-5 ring-1 ring-slate-200/70">
-                  <h2 className="mb-6 text-base font-extrabold text-slate-950">{group.title}</h2>
-                  <div className="flex flex-wrap gap-3">
-                    {group.links.map((item) => (
-                      <Link
-                        key={item.href}
-                        href={item.href}
-                        className="inline-flex min-h-10 items-center justify-center rounded-xl bg-white px-4 text-sm font-semibold text-slate-700 shadow-sm ring-1 ring-slate-200 transition-colors hover:text-indigo-700 hover:ring-indigo-200"
-                      >
-                        {item.label}
-                      </Link>
-                    ))}
-                  </div>
-                </section>
-              ))}
+      <section className="bg-[#F8FAFF] px-2 pb-12 pt-3 sm:px-3 lg:px-4">
+        <div className="min-w-0">
+          <div className="grid gap-4 xl:grid-cols-3">
+            {quickLaunchGroups.map((group) => (
+              <section
+                key={group.title}
+                className={`relative overflow-hidden rounded-[1.75rem] border border-slate-200/80 bg-gradient-to-br ${group.surface} p-5 shadow-[0_18px_50px_rgba(15,23,42,0.06)]`}
+              >
+                <div className={`absolute inset-x-8 top-0 h-px bg-gradient-to-r ${group.line}`} />
+                <div className="mb-7">
+                  <h2 className="text-[1.35rem] font-extrabold leading-tight tracking-[-0.03em] text-slate-950">
+                    {group.title}
+                  </h2>
+                </div>
+                <div className="flex flex-wrap gap-3">
+                  {group.links.map((item, index) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className={`inline-flex min-h-11 items-center justify-center rounded-full border px-5 text-sm font-bold tracking-[-0.01em] shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md ${
+                        index === 0
+                          ? 'border-indigo-600 bg-indigo-600 text-white hover:border-indigo-700 hover:bg-indigo-700'
+                          : 'border-slate-200 bg-white/85 text-slate-700 hover:border-indigo-200 hover:bg-white hover:text-indigo-700'
+                      }`}
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              </section>
+            ))}
+          </div>
+
+          <div className="mt-7">
+            <div className="mb-2 flex items-center justify-end">
+              <h2 id="home-ai-models-title" className="text-sm font-bold text-slate-600">
+                <Link
+                  href={localizeHomeHref('/model')}
+                  className="inline-flex items-center transition-colors hover:text-indigo-700"
+                >
+                  {dashboardCopy.aiModels}
+                </Link>
+              </h2>
             </div>
 
-            <div className="mt-7 grid gap-6 xl:grid-cols-[minmax(0,1.15fr)_minmax(380px,0.95fr)]">
+            <div className="grid gap-6 xl:grid-cols-[minmax(0,1.15fr)_minmax(380px,0.95fr)]">
               <Link
                 href={featuredLaunch?.href || localizeHomeHref('/ai-video-generator')}
                 className="group relative min-h-[290px] overflow-hidden rounded-[1.5rem] bg-slate-200 p-7 text-white shadow-sm ring-1 ring-slate-200"
@@ -715,7 +757,8 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
                 <div className="absolute inset-0 bg-gradient-to-r from-slate-950/78 via-slate-950/42 to-slate-950/10" />
                 <div className="relative flex h-full max-w-xl flex-col justify-center">
                   <h1 className="home-section-title mb-4 text-[30px] leading-tight text-white md:text-[34px]">
-                    {featuredLaunchTitle}{dashboardCopy.liveNowSuffix}
+                    {featuredLaunchTitle}
+                    {dashboardCopy.liveNowSuffix}
                   </h1>
                   <p className="mb-8 max-w-md text-sm font-medium leading-relaxed text-white/82">
                     {featuredLaunch?.featuredDesc ||
@@ -725,18 +768,11 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
                   <span className="inline-flex min-h-12 w-fit items-center justify-center rounded-xl bg-white px-10 text-sm font-bold text-slate-900 shadow-lg shadow-slate-950/10 transition-colors group-hover:text-indigo-700">
                     {dashboardCopy.tryForFree}
                   </span>
-                  <span className="mt-3 text-xs font-medium text-white/72">
-                    {dashboardCopy.freeDisclosure}
-                  </span>
+                  <span className="mt-3 text-xs font-medium text-white/72">{dashboardCopy.freeDisclosure}</span>
                 </div>
               </Link>
 
               <section aria-labelledby="home-ai-models-title">
-                <div className="mb-2 flex items-center justify-end">
-                  <h2 id="home-ai-models-title" className="text-sm font-bold text-slate-600">
-                    {dashboardCopy.aiModels}
-                  </h2>
-                </div>
                 <div className="grid gap-4 sm:grid-cols-2">
                   {dashboardModelCards.map((item) => {
                     const thumb = getHomeModelCardImage(item.tool)
@@ -744,7 +780,7 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
                       <Link
                         key={item.tool}
                         href={item.href}
-                        className="group relative min-h-[137px] overflow-hidden rounded-[1.25rem] bg-slate-100 p-5 ring-1 ring-slate-200 transition-colors hover:ring-indigo-200"
+                        className="group relative min-h-[137px] overflow-hidden rounded-[1.25rem] bg-slate-950 p-5 text-white ring-1 ring-slate-900/20 transition-colors hover:ring-indigo-300/70"
                       >
                         {thumb ? (
                           <Image
@@ -752,16 +788,16 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
                             alt={thumb.alt}
                             width={thumb.width}
                             height={thumb.height}
-                            className="absolute inset-0 h-full w-full object-cover opacity-42 transition-transform duration-500 group-hover:scale-[1.04]"
+                            className="absolute inset-0 h-full w-full object-cover opacity-30 saturate-[0.72] contrast-[0.9] transition-transform duration-500 group-hover:scale-[1.04]"
                             sizes="(max-width: 768px) 100vw, 22vw"
                           />
                         ) : null}
-                        <div className="absolute inset-0 bg-white/76 backdrop-blur-[1px]" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/98 via-slate-950/94 to-slate-950/86" />
                         <div className="relative">
-                          <h3 className="mb-4 text-xl font-extrabold leading-tight text-slate-950">
+                          <h3 className="mb-4 text-xl font-extrabold leading-tight text-slate-50 drop-shadow-md">
                             {cleanTitle(item.modelName || item.title)}
                           </h3>
-                          <p className="line-clamp-2 text-xs font-medium leading-relaxed text-slate-700">
+                          <p className="line-clamp-2 text-xs font-medium leading-relaxed text-slate-200 drop-shadow-sm">
                             {item.featuredDesc || item.description}
                           </p>
                         </div>
@@ -771,52 +807,32 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
                 </div>
               </section>
             </div>
-
-            <section id="trending-models" className="mt-9" aria-labelledby="home-trending-title">
-              <div className="mb-4 flex items-center justify-between gap-4">
-                <h2 id="home-trending-title" className="home-section-title text-3xl text-slate-950">
-                  {dashboardCopy.trending}
-                </h2>
-                <div className="hidden items-center gap-2 text-slate-500 sm:flex" aria-hidden="true">
-                  <span className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-300 bg-white">
-                    <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                    </svg>
-                  </span>
-                  <span className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-300 bg-white">
-                    <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </span>
-                </div>
-              </div>
-
-              <div className="grid gap-4 md:grid-cols-3">
-                {dashboardTrendingCards.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className="group relative min-h-[240px] overflow-hidden rounded-[1.5rem] bg-slate-100 ring-1 ring-slate-200 transition-colors hover:ring-indigo-200"
-                  >
-                    {item.image ? (
-                      <Image
-                        src={item.image.src}
-                        alt={item.image.alt}
-                        width={item.image.width}
-                        height={item.image.height}
-                        className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                        sizes="(max-width: 768px) 100vw, 30vw"
-                      />
-                    ) : null}
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/72 via-slate-950/12 to-transparent" />
-                    <h3 className="absolute inset-x-5 bottom-5 text-center text-base font-extrabold text-white drop-shadow">
-                      {item.title}
-                    </h3>
-                  </Link>
-                ))}
-              </div>
-            </section>
           </div>
+
+          <HomeTrendingToolsRail title={dashboardCopy.trending} cards={dashboardTrendingCards} />
+        </div>
+      </section>
+
+      {/* AI Tools hub — image and video tools from the global navigation */}
+      <section id="ai-tools-hub" className="py-20 px-6 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-12">
+            <h2 className="home-section-title text-4xl text-slate-900 mb-4 tracking-tight">
+              {navCopy.aiTools || 'AI Tools'}
+            </h2>
+            <p className="text-slate-600 max-w-5xl text-base md:text-lg leading-relaxed">
+              {home?.aiToolsHubSubtitle ??
+                'Explore concrete creative tools for portraits, style previews, restoration, watermark cleanup, and fast browser utilities.'}
+            </p>
+          </div>
+          <HomeAiToolsTabs
+            copy={{
+              videoTools: navCopy.videoTools || 'Video Tools',
+              imageTools: navCopy.imageTools || 'Image Tools',
+            }}
+            videoTools={homeVideoToolCards}
+            imageTools={homeImageToolCards}
+          />
         </div>
       </section>
 
@@ -863,12 +879,8 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
                       />
                     </div>
                   ) : null}
-                  <h3 className="text-xl font-bold text-indigo-600 mb-3">
-                    {item.modelName || item.title}
-                  </h3>
-                  <p className="text-sm text-slate-600 leading-relaxed">
-                    {item.featuredDesc || item.description}
-                  </p>
+                  <h3 className="text-xl font-bold text-indigo-600 mb-3">{item.modelName || item.title}</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">{item.featuredDesc || item.description}</p>
                 </Link>
               )
             })}
@@ -885,11 +897,7 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
             </h2>
             <p className="text-slate-600 max-w-5xl text-base md:text-lg leading-relaxed">
               <TextWithLinks
-                text={
-                  home?.sectionAiVideoSubtitle ??
-                  home?.aiVideoIntro ??
-                  ''
-                }
+                text={home?.sectionAiVideoSubtitle ?? home?.aiVideoIntro ?? ''}
                 links={[
                   { term: 'AI Dance Generator', href: '/ai-dance-generator' },
                   { term: 'AI Video Generator', href: '/ai-video-generator' },
@@ -919,129 +927,8 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
                       />
                     </div>
                   ) : null}
-                  <h3 className="text-xl font-bold text-indigo-600 mb-3">
-                    {item.modelName || item.title}
-                  </h3>
-                  <p className="text-sm text-slate-600 leading-relaxed">
-                    {item.featuredDesc || item.description}
-                  </p>
-                </Link>
-              )
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* AI Tools hub — image and video tools from the global navigation */}
-      <section id="ai-tools-hub" className="py-20 px-6 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="mb-12">
-            <h2 className="home-section-title text-4xl text-slate-900 mb-4 tracking-tight">
-              {navCopy.aiTools || 'AI Tools'}
-            </h2>
-            <p className="text-slate-600 max-w-5xl text-base md:text-lg leading-relaxed">
-              {home?.aiToolsHubSubtitle ??
-                'Explore concrete creative tools for portraits, style previews, restoration, watermark cleanup, and fast browser utilities.'}
-            </p>
-          </div>
-          <HomeAiToolsTabs
-            copy={{
-              videoTools: 'Video Tools',
-              imageTools: 'Image Tools',
-            }}
-            videoTools={homeVideoToolCards}
-            imageTools={homeImageToolCards}
-          />
-        </div>
-      </section>
-
-      {/* AI-powered tools (couple portraits, watermark removal, restoration) */}
-      <section id="advanced-ai-tools" className="py-20 px-6 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="mb-12">
-            <h2 className="home-section-title text-4xl text-slate-900 mb-4 tracking-tight">
-              {home?.advancedToolsTitle ?? 'More AI-Powered Creative Tools'}
-            </h2>
-            <p className="text-slate-600 max-w-5xl text-base md:text-lg leading-relaxed">
-              {home?.advancedToolsSubtitle ??
-                'Portrait generation, authorized watermark cleanup, and photo restoration powered by AI. Try selected tools online and use credits for supported generation workflows.'}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {advancedAiTools.map((item) => {
-              const thumb = getHomeAdvancedAiCardImage(item.tool)
-
-              return (
-                <Link
-                  key={item.tool}
-                  href={item.href}
-                  className="group block p-6 rounded-[2rem] bg-white border border-indigo-100 hover:border-indigo-200 transition-all duration-300"
-                >
-                  {thumb ? (
-                    <div className="relative mb-4 aspect-[4/3] w-full overflow-hidden rounded-2xl ring-1 ring-indigo-100 bg-slate-50">
-                      <Image
-                        src={thumb.src}
-                        alt={thumb.alt}
-                        width={thumb.width}
-                        height={thumb.height}
-                        className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
-                        sizes="(max-width: 768px) 100vw, 33vw"
-                      />
-                    </div>
-                  ) : null}
-                  <h3 className="font-bold text-slate-900 mb-2 text-base">
-                    {(item.title || '').replace(/<[^>]*>/g, '').trim()}
-                  </h3>
-                  <p className="text-sm text-slate-600 leading-relaxed">
-                    {item.description || ''}
-                  </p>
-                </Link>
-              )
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Local / utility tools (compression, conversion, fonts, emoji)—not AI-generation features */}
-      <section id="browser-utility-tools" className="py-20 px-6 bg-[#F8FAFF]">
-        <div className="max-w-6xl mx-auto">
-          <div className="mb-12">
-            <h2 className="home-section-title text-4xl text-slate-900 mb-4 tracking-tight">
-              {home?.sectionToolsTitle ?? home?.utilityToolsTitle ?? 'Free Browser Tools for Images & Text'}
-            </h2>
-            <p className="text-slate-600 max-w-5xl text-base md:text-lg leading-relaxed">
-              {home?.sectionToolsSubtitle ??
-                home?.utilityToolsSubtitle ??
-                'Fast utility tools for image compression and format conversion, stylish font previews, and emoji copy-and-paste. No AI generation required.'}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {utilityTools.map((item) => {
-              const toolEmoji: Record<string, string> = {
-                'image-compressor': '🗜️',
-                'image-converter': '🔄',
-                'font-generator': '✏️',
-                'emoji-copy-and-paste': '😀',
-              }
-              const emoji = toolEmoji[item.tool] || '📌'
-
-              return (
-                <Link
-                  key={item.tool}
-                  href={item.href}
-                  className="group block p-6 rounded-[2rem] bg-white border border-indigo-100 hover:border-indigo-200 transition-all duration-300"
-                >
-                  <div className="w-14 h-14 rounded-2xl bg-indigo-50 flex items-center justify-center mb-4 text-2xl group-hover:scale-105 transition-transform duration-300">
-                    {emoji}
-                  </div>
-                  <h3 className="font-bold text-slate-900 mb-2 text-base">
-                    {(item.title || '').replace(/<[^>]*>/g, '').trim()}
-                  </h3>
-                  <p className="text-sm text-slate-600 leading-relaxed">
-                    {item.description || ''}
-                  </p>
+                  <h3 className="text-xl font-bold text-indigo-600 mb-3">{item.modelName || item.title}</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">{item.featuredDesc || item.description}</p>
                 </Link>
               )
             })}
@@ -1053,9 +940,7 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
       <section className="py-20 px-6 bg-white">
         <div className="max-w-6xl mx-auto">
           <div className="max-w-5xl">
-            <p className="mb-3 text-sm font-semibold text-indigo-600">
-              {whyToolaze?.badge ?? 'Why Toolaze?'}
-            </p>
+            <p className="mb-3 text-sm font-semibold text-indigo-600">{whyToolaze?.badge ?? 'Why Toolaze?'}</p>
             <h2 className="home-section-title text-4xl text-slate-900 mb-4 tracking-tight">
               {whyToolaze?.title ?? 'Built for Creators & Performance'}
             </h2>
@@ -1072,7 +957,10 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {homeFeatureItems.map((item, idx) => (
-              <div key={`${item.title || 'feature'}-${idx}`} className="rounded-2xl border border-indigo-100 bg-white p-6">
+              <div
+                key={`${item.title || 'feature'}-${idx}`}
+                className="rounded-2xl border border-indigo-100 bg-white p-6"
+              >
                 <h3 className="text-lg font-bold text-slate-900 mb-2">{item.title || ''}</h3>
                 <p className="text-sm text-slate-600 leading-relaxed">{item.desc || ''}</p>
               </div>
@@ -1106,7 +994,12 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
               // 内链密度限制：整块 FAQ ~400 词建议 ≤2 个内链。仅在 2 个答案中各放 1 个最相关链接。
               const faqLinks: Array<{ term: string; href: string }> =
                 idx === 0
-                  ? [{ term: 'Nano Banana Pro', href: '/model/nano-banana-pro' }]
+                  ? [
+                      {
+                        term: 'Nano Banana Pro',
+                        href: '/model/nano-banana-pro',
+                      },
+                    ]
                   : idx === 1
                     ? [{ term: 'Seedance 2.0', href: '/model/seedance-2' }]
                     : []

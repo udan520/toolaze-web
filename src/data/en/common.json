@@ -5,7 +5,7 @@
     "imageTools": "Image Tools",
     "videoTools": "Video Tools",
     "supportedAiModels": "Supported AI Models",
-"aiAsmrVideoGenerator": "AI ASMR Video Generator",
+    "aiAsmrVideoGenerator": "AI ASMR Video Generator",
     "hot": "Hot",
     "new": "New",
     "bestValue": "Best Value",
@@ -149,7 +149,7 @@
       }
     },
     "aiToolsHubTitle": "AI Tools for Images, Video & Everyday Media Workflows",
-    "aiToolsHubSubtitle": "One hub for AI image generation, AI video generation, selected free utilities, and credit-based creative workflows.",
+    "aiToolsHubSubtitle": "Concrete creative tools for portraits, style previews, cleanup, restoration, and practical media workflows.",
     "aiToolsHubIntro": "Discover AI tools built for creators and marketers who need reliable output without juggling multiple sites. Combine flagship image and video models with practical helpers for compression, conversion, restoration, and typography, with credit requirements shown before generation.",
     "aiToolsHubItems": [
       {
@@ -161,38 +161,18 @@
         "title": "AI video generators",
         "description": "Turn scripts, reference frames, or a single uploaded image into short video concepts. Use AI Video Generator for model-based text-to-video and image-to-video workflows, or AI Dance Generator for quick dance clips, class promos, and social posts.",
         "href": "/ai-video-generator"
-      },
-      {
-        "title": "Browser media utilities",
-        "description": "Round out your workflow with lossy image compression, format conversion, stylized font previews, and emoji copy-and-paste—lightweight, non-generative utilities that stay easy to use online.",
-        "href": "/image-compressor"
       }
     ],
-    "advancedToolsTitle": "More AI-Powered Creative Tools",
-    "advancedToolsSubtitle": "Portrait tools, authorized watermark cleanup, and AI photo restoration. Selected workflows are free to try; continued AI generation may require credits.",
-    "utilityToolsTitle": "Free Browser Tools for Images & Text",
-    "utilityToolsSubtitle": "Image compression, format conversion, stylized font previews, and emoji copy-and-paste—fast utilities online without generative AI.",
     "faqTitle": "Have Questions? We Have Answers!",
     "sectionAiImageTitle": "AI Image Models",
     "sectionAiImageSubtitle": "AI image generation online with text-to-image and image-to-image workflows. Try selected tools for free, then use credits for continued generation depending on model and settings.",
     "sectionAiVideoTitle": "AI Video Models",
     "sectionAiVideoSubtitle": "Create AI videos from prompts, reference frames, or one uploaded image. Explore AI Dance Generator for short social dance clips alongside video tools for promos, storyboards, and cinematic scenes.",
-    "sectionToolsTitle": "More Tools",
-    "sectionToolsSubtitle": "Image compression, format conversion, font generator—free and available online.",
     "seoIntro": {
       "title": "AI Image Generator & AI Video Generator Online",
       "paragraph1": "Toolaze brings AI image generation, AI video generation, and practical media utilities into one platform. Try selected features for free, then purchase credits when you need more generations or supported premium model workflows.",
-      "paragraph2": "Use text-to-image, image-to-image, text-to-video, and image-to-video workflows with supported third-party AI models. Credit requirements may vary by selected model, quality settings, duration, and account status.",
-      "paragraph3": "Browser-based utilities such as image compression, format conversion, font generation, and emoji copy-and-paste may be available for free. AI generation features use credits when shown in the generation flow."
+      "paragraph2": "Use text-to-image, image-to-image, text-to-video, and image-to-video workflows with supported third-party AI models. Credit requirements may vary by selected model, quality settings, duration, and account status."
     },
-    "toolImageCompressor": "Image Compressor",
-    "toolImageCompressorDesc": "Smart lossy compression for JPG/PNG.",
-    "toolFormatConverter": "Format Converter",
-    "toolFormatConverterDesc": "HEIC to JPG, PNG to WEBP.",
-    "toolFontGenerator": "Free Font Generator",
-    "toolFontGeneratorDesc": "Generate custom fonts online for free. Create cursive, fancy, bold, italic, gothic, and tattoo fonts. Copy and paste instantly. No sign-up required.",
-    "toolEmojiCopyAndPaste": "Emoji Copy & Paste",
-    "toolEmojiCopyAndPasteDesc": "Copy and paste emojis online for free. Browse by category, search, pick skin tone, and copy with one click. No sign-up required.",
     "toolImageResize": "Image Resize",
     "toolImageResizeDesc": "Resize images to exact dimensions.",
     "toolVideoCompressor": "Video Compressor",

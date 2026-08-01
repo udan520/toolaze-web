@@ -5,7 +5,7 @@
     "imageTools": "Herramientas de imagen",
     "videoTools": "Herramientas de video",
     "supportedAiModels": "Modelos de IA compatibles",
-"aiAsmrVideoGenerator": "Generador de videos ASMR con IA",
+    "aiAsmrVideoGenerator": "Generador de videos ASMR con IA",
     "hot": "Popular",
     "new": "Nuevo",
     "bestValue": "Mejor valor",
@@ -149,7 +149,7 @@
       }
     },
     "aiToolsHubTitle": "Herramientas de IA Gratis para Imágenes, Video y Flujos de Trabajo Multimedia Diarios",
-    "aiToolsHubSubtitle": "Un centro para la generación de imágenes con IA, generación de videos con IA y utilidades rápidas del navegador—sin registro y sin muro de pago.",
+    "aiToolsHubSubtitle": "Herramientas creativas concretas para retratos, pruebas de estilo, limpieza, restauración y flujos prácticos de medios.",
     "aiToolsHubIntro": "Descubre herramientas de IA gratis online creadas para creadores y especialistas en marketing que necesitan resultados fiables sin tener que manejar múltiples sitios. Combina modelos de imagen y video insignia con ayudantes prácticos para compresión, conversión, restauración y tipografía—todo estructurado para páginas de destino SEO claras y experimentación rápida.",
     "aiToolsHubItems": [
       {
@@ -161,38 +161,18 @@
         "title": "Generadores de videos con IA",
         "description": "Convierte guiones, fotogramas de referencia o una sola imagen subida en conceptos de video cortos. El Generador de baile IA añade clips rápidos de baile para promos de clases y publicaciones sociales, mientras las páginas de video admiten promos cinematográficas, storyboards y narración breve.",
         "href": "/es/seedance-2"
-      },
-      {
-        "title": "Utilidades multimedia del navegador",
-        "description": "Completa tu flujo de trabajo con compresión de imagen con pérdida, conversión de formato, previsualizaciones de fuentes estilizadas y copiar y pegar emojis—utilidades ligeras y no generativas que permanecen gratuitas en tu navegador.",
-        "href": "/es/image-compressor"
       }
     ],
-    "advancedToolsTitle": "Más Herramientas Creativas Impulsadas por IA",
-    "advancedToolsSubtitle": "Generación de retratos, eliminación de marcas de agua con IA y restauración de fotos con IA—gratis para probar online, no se requiere registro.",
-    "utilityToolsTitle": "Herramientas Gratuitas del Navegador para Imágenes y Texto",
-    "utilityToolsSubtitle": "Compresión de imágenes, conversión de formato, previsualizaciones de fuentes estilizadas y copiar y pegar emojis—utilidades rápidas en tu navegador sin IA generativa.",
     "faqTitle": "¿Tienes Preguntas? ¡Tenemos Respuestas!",
     "sectionAiImageTitle": "Modelos de Imágenes con IA",
     "sectionAiImageSubtitle": "Generador de imágenes con IA gratis online. Texto a imagen e imagen a imagen. Salida 4K, generación rápida, sin registro. Crea arte con IA con Nano Banana Pro y Nano Banana 2.",
     "sectionAiVideoTitle": "Modelos de Videos con IA",
     "sectionAiVideoSubtitle": "Crea videos IA desde prompts, fotogramas de referencia o una imagen subida. El Generador de baile IA sirve para clips sociales cortos, y las herramientas de video cubren promos, storyboards y escenas cinematográficas.",
-    "sectionToolsTitle": "Más Herramientas",
-    "sectionToolsSubtitle": "Compresión de imágenes, conversión de formato, generador de fuentes—todo gratis, todo en tu navegador.",
     "seoIntro": {
       "title": "Generador de Imágenes con IA y Generador de Videos con IA Gratis Online",
       "paragraph1": "Toolaze es tu generador de imágenes con IA y generador de videos con IA gratis online. Crea impresionantes imágenes con IA en 4K con texto a imagen e imagen a imagen—impulsado por Nano Banana Pro y Nano Banana 2. Genera videos con calidad de Hollywood con texto a video e imagen a video usando Seedance 2.0 y Kling 3.0. Sin registro, sin tarjeta de crédito, sin límites diarios.",
-      "paragraph2": "Ya sea que necesites un generador de imágenes con IA gratis para maquetas de marketing, contenido social o arte con IA—o un generador de videos con IA gratis para anuncios, guiones gráficos o videos de formato corto—Toolaze cumple. Nuestros modelos de imágenes con IA admiten hasta resolución 4K con generación rápida. Nuestros modelos de videos con IA aceptan texto, imágenes, video y audio para la generación de video multimodal. Ambos admiten flujos de trabajo de imagen a imagen e imagen a video.",
-      "paragraph3": "Usa nuestro generador de texto a imagen y generador de texto a video gratis online. Comprime imágenes, convierte formatos y genera fuentes—todo en un solo lugar. 100% gratis, no se requiere registro."
+      "paragraph2": "Ya sea que necesites un generador de imágenes con IA gratis para maquetas de marketing, contenido social o arte con IA—o un generador de videos con IA gratis para anuncios, guiones gráficos o videos de formato corto—Toolaze cumple. Nuestros modelos de imágenes con IA admiten hasta resolución 4K con generación rápida. Nuestros modelos de videos con IA aceptan texto, imágenes, video y audio para la generación de video multimodal. Ambos admiten flujos de trabajo de imagen a imagen e imagen a video."
     },
-    "toolImageCompressor": "Compresor de Imágenes",
-    "toolImageCompressorDesc": "Compresión inteligente con pérdida para JPG/PNG.",
-    "toolFormatConverter": "Convertidor de Formato",
-    "toolFormatConverterDesc": "HEIC a JPG, PNG a WEBP.",
-    "toolFontGenerator": "Generador de Fuentes Gratis",
-    "toolFontGeneratorDesc": "Genera fuentes personalizadas online gratis. Crea fuentes cursivas, elegantes, negritas, itálicas, góticas y de tatuaje. Copia y pega al instante. No se requiere registro.",
-    "toolEmojiCopyAndPaste": "Copiar y Pegar Emojis",
-    "toolEmojiCopyAndPasteDesc": "Copia y pega emojis online gratis. Navega por categoría, busca, elige tono de piel y copia con un clic. No se requiere registro.",
     "toolImageResize": "Redimensionar Imagen",
     "toolImageResizeDesc": "Redimensiona imágenes a dimensiones exactas.",
     "toolVideoCompressor": "Compresor de Video",

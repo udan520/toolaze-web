@@ -5,7 +5,7 @@
     "imageTools": "Bildwerkzeuge",
     "videoTools": "Videowerkzeuge",
     "supportedAiModels": "Unterstützte KI-Modelle",
-"aiAsmrVideoGenerator": "KI-ASMR-Videogenerator",
+    "aiAsmrVideoGenerator": "KI-ASMR-Videogenerator",
     "hot": "Beliebt",
     "new": "Neu",
     "bestValue": "Preiswert",
@@ -149,7 +149,7 @@
       }
     },
     "aiToolsHubTitle": "Kostenlose KI-Tools für Bilder, Videos & alltägliche Medien-Workflows",
-    "aiToolsHubSubtitle": "Eine zentrale Anlaufstelle für KI-Bilderzeugung, KI-Videoerzeugung und schnelle Browser-Dienstprogramme – keine Anmeldung und keine Paywall.",
+    "aiToolsHubSubtitle": "Konkrete Kreativ-Tools für Porträts, Style-Previews, Bereinigung, Restaurierung und praktische Medien-Workflows.",
     "aiToolsHubIntro": "Entdecken Sie kostenlose KI-Tools online, die für Kreative und Vermarkter entwickelt wurden, die zuverlässige Ergebnisse benötigen, ohne mehrere Websites jonglieren zu müssen. Kombinieren Sie führende Bild- und Videomodelle mit praktischen Helfern für Komprimierung, Konvertierung, Restaurierung und Typografie – alles strukturiert für klare SEO-Landingpages und schnelles Experimentieren.",
     "aiToolsHubItems": [
       {
@@ -161,38 +161,18 @@
         "title": "KI Videogeneratoren",
         "description": "Verwandeln Sie Skripte, Referenzbilder oder ein einzelnes hochgeladenes Bild in kurze Videokonzepte. Der KI-Tanzgenerator ergänzt schnelle Tanzclips für Kurs-Promos und Social Posts; die Videomodellseiten unterstützen filmische Promos, Storyboards und kurze Erzählformate.",
         "href": "/de/seedance-2"
-      },
-      {
-        "title": "Browser-Medien-Dienstprogramme",
-        "description": "Ergänzen Sie Ihren Workflow mit verlustbehafteter Bildkomprimierung, Formatkonvertierung, stilisierten Schriftvorschauen und Emoji-Kopieren-und-Einfügen – leichte, nicht-generative Dienstprogramme, die kostenlos in Ihrem Browser bleiben.",
-        "href": "/de/image-compressor"
       }
     ],
-    "advancedToolsTitle": "Weitere KI-gestützte Kreativ-Tools",
-    "advancedToolsSubtitle": "Porträtgenerierung, KI-Wasserzeichenentfernung und KI-Fotorestaurierung – kostenlos online ausprobieren, keine Anmeldung erforderlich.",
-    "utilityToolsTitle": "Kostenlose Browser-Tools für Bilder & Text",
-    "utilityToolsSubtitle": "Bildkomprimierung, Formatkonvertierung, stilisierte Schriftvorschauen und Emoji-Kopieren-und-Einfügen – schnelle Dienstprogramme in Ihrem Browser ohne generative KI.",
     "faqTitle": "Haben Sie Fragen? Wir haben Antworten!",
     "sectionAiImageTitle": "KI Bildmodelle",
     "sectionAiImageSubtitle": "Kostenloser KI Bildgenerator online. Text-zu-Bild und Bild-zu-Bild. 4K-Ausgabe, schnelle Generierung, keine Registrierung. Erstellen Sie KI-Kunst mit Nano Banana Pro und Nano Banana 2.",
     "sectionAiVideoTitle": "KI Videomodelle",
     "sectionAiVideoSubtitle": "Erstellen Sie KI-Videos aus Prompts, Referenzbildern oder einem hochgeladenen Bild. Der KI-Tanzgenerator eignet sich für kurze Social-Dance-Clips, während die Videotools Promos, Storyboards und filmische Szenen abdecken.",
-    "sectionToolsTitle": "Weitere Tools",
-    "sectionToolsSubtitle": "Bildkomprimierung, Formatkonvertierung, Schriftgenerator – alles kostenlos, alles in Ihrem Browser.",
     "seoIntro": {
       "title": "Kostenloser KI Bildgenerator & KI Videogenerator Online",
       "paragraph1": "Toolaze ist Ihr kostenloser KI Bildgenerator und KI Videogenerator online. Erstellen Sie beeindruckende 4K KI-Bilder mit Text-zu-Bild und Bild-zu-Bild – angetrieben von Nano Banana Pro und Nano Banana 2. Generieren Sie Hollywood-Qualitätsvideos mit Text-zu-Video und Bild-zu-Video mit Seedance 2.0 und Kling 3.0. Keine Anmeldung, keine Kreditkarte, keine täglichen Limits.",
-      "paragraph2": "Egal, ob Sie einen kostenlosen KI Bildgenerator für Marketing-Mockups, soziale Inhalte oder KI-Kunst benötigen – oder einen kostenlosen KI Videogenerator für Anzeigen, Storyboards oder Kurzvideos – Toolaze liefert. Unsere KI-Bildmodelle unterstützen bis zu 4K-Auflösung mit schneller Generierung. Unsere KI-Videomodelle akzeptieren Text, Bilder, Videos und Audio für multimodale Videogenerierung. Beide unterstützen Bild-zu-Bild- und Bild-zu-Video-Workflows.",
-      "paragraph3": "Nutzen Sie unseren kostenlosen Text-zu-Bild-Generator und Text-zu-Video-Generator online. Komprimieren Sie Bilder, konvertieren Sie Formate und generieren Sie Schriftarten – alles an einem Ort. 100% kostenlos, keine Registrierung erforderlich."
+      "paragraph2": "Egal, ob Sie einen kostenlosen KI Bildgenerator für Marketing-Mockups, soziale Inhalte oder KI-Kunst benötigen – oder einen kostenlosen KI Videogenerator für Anzeigen, Storyboards oder Kurzvideos – Toolaze liefert. Unsere KI-Bildmodelle unterstützen bis zu 4K-Auflösung mit schneller Generierung. Unsere KI-Videomodelle akzeptieren Text, Bilder, Videos und Audio für multimodale Videogenerierung. Beide unterstützen Bild-zu-Bild- und Bild-zu-Video-Workflows."
     },
-    "toolImageCompressor": "Bildkompressor",
-    "toolImageCompressorDesc": "Intelligente verlustbehaftete Komprimierung für JPG/PNG.",
-    "toolFormatConverter": "Formatkonverter",
-    "toolFormatConverterDesc": "HEIC zu JPG, PNG zu WEBP.",
-    "toolFontGenerator": "Kostenloser Schriftgenerator",
-    "toolFontGeneratorDesc": "Generieren Sie kostenlos benutzerdefinierte Schriftarten online. Erstellen Sie kursive, ausgefallene, fette, kursive, gotische und Tattoo-Schriftarten. Sofort kopieren und einfügen. Keine Anmeldung erforderlich.",
-    "toolEmojiCopyAndPaste": "Emoji Kopieren & Einfügen",
-    "toolEmojiCopyAndPasteDesc": "Kopieren und Einfügen von Emojis online kostenlos. Nach Kategorie durchsuchen, suchen, Hautton auswählen und mit einem Klick kopieren. Keine Anmeldung erforderlich.",
     "toolImageResize": "Bildgröße ändern",
     "toolImageResizeDesc": "Bilder auf exakte Abmessungen ändern.",
     "toolVideoCompressor": "Videokompressor",
