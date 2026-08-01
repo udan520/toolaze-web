@@ -287,23 +287,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })
   })
 
-  const MODEL_ALL_TOOLS_PAGES = ['seedance-2', 'kling-3']
+  const MODEL_ALL_TOOLS_PAGES = ['kling-3']
   MODEL_ALL_TOOLS_PAGES.forEach((model) => {
     entries.push({
       url: `${baseUrl}/model/${model}/all-tools`,
       lastModified: today,
       changeFrequency: 'weekly',
       priority: 0.8,
-    })
-  })
-
-  const seedanceSlugs = await getAllSlugs('seedance-2', 'en')
-  seedanceSlugs.forEach((slug) => {
-    entries.push({
-      url: `${baseUrl}/model/seedance-2/${slug}`,
-      lastModified: today,
-      changeFrequency: 'weekly',
-      priority: 0.7,
     })
   })
 

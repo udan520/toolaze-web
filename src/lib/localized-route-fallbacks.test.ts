@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict'
-import { readFileSync } from 'node:fs'
+import { existsSync, readFileSync } from 'node:fs'
 import test from 'node:test'
 import { ENGLISH_ONLY_ROOT_ROUTES } from './localized-route-fallbacks'
 import { BROWSER_LOCALE_REDIRECT_SCRIPT } from './browser-locale-redirect'
@@ -36,4 +36,26 @@ test('localized support routes have explicit locale pages and indexed support si
 
   assert.doesNotMatch(sitemap, /const STATIC_PAGES = \[[^\]]*['"]earn-credits['"]/)
   assert.match(sitemap, /SUPPORTED_LOCALES\.forEach\(\(locale\) => \{[\s\S]*ai-video-generator/, 'sitemap should enumerate localized AI Video Generator URLs')
+})
+
+test('localized Seedance model L3 URLs redirect back to the model page', () => {
+  const routePath = 'src/app/[locale]/model/seedance-2/[slug]/page.tsx'
+
+  assert.ok(existsSync(routePath), '/zh-TW/model/seedance-2/image-to-video should be handled')
+
+  const routeSource = readFileSync(routePath, 'utf8')
+  assert.match(routeSource, /generateStaticParams/)
+  assert.match(routeSource, /getAllSlugs\('seedance-2', 'en'\)/)
+  assert.doesNotMatch(routeSource, /permanentRedirect\(`\/model\/seedance-2\/\$\{resolvedParams\.slug\}`\)/)
+  assert.match(routeSource, /\/model\/seedance-2/)
+  assert.doesNotMatch(
+    readFileSync('src/app/sitemap.ts', 'utf8'),
+    /\/\$?\{?locale\}?\/model\/seedance-2/,
+    'localized Seedance model L3 redirects should stay out of the sitemap',
+  )
+  assert.doesNotMatch(
+    readFileSync('src/app/sitemap.ts', 'utf8'),
+    /\/model\/seedance-2\/\$\{slug\}/,
+    'Seedance workflow L3 pages should stay out of the sitemap',
+  )
 })

@@ -492,6 +492,164 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
         )
       : []
 
+  const dashboardCopyByLocale: Record<string, {
+    aiVideoGeneration: string
+    aiImageGeneration: string
+    videoEditor: string
+    aiModels: string
+    trending: string
+    tryForFree: string
+    liveNowSuffix: string
+    freeDisclosure: string
+  }> = {
+    en: {
+      aiVideoGeneration: 'AI Video Generation',
+      aiImageGeneration: 'AI Image Generation',
+      videoEditor: 'Video Editor',
+      aiModels: 'AI Models',
+      trending: 'Trending',
+      tryForFree: 'Try For Free',
+      liveNowSuffix: ' is Live Now!',
+      freeDisclosure: 'New users receive 20 credits after signing up; higher settings may use more credits.',
+    },
+    de: {
+      aiVideoGeneration: 'KI-Videogenerierung',
+      aiImageGeneration: 'KI-Bildgenerierung',
+      videoEditor: 'Video-Editor',
+      aiModels: 'KI-Modelle',
+      trending: 'Trending',
+      tryForFree: 'Kostenlos testen',
+      liveNowSuffix: ' ist jetzt live!',
+      freeDisclosure: 'Neue Nutzer erhalten nach der Registrierung 20 Credits; höhere Einstellungen können mehr Credits benötigen.',
+    },
+    ja: {
+      aiVideoGeneration: 'AI動画生成',
+      aiImageGeneration: 'AI画像生成',
+      videoEditor: '動画エディター',
+      aiModels: 'AIモデル',
+      trending: 'トレンド',
+      tryForFree: '無料で試す',
+      liveNowSuffix: 'が公開されました！',
+      freeDisclosure: '新規登録後に20 creditsを受け取れます。高品質設定では追加creditsが必要な場合があります。',
+    },
+    es: {
+      aiVideoGeneration: 'Generación de Video IA',
+      aiImageGeneration: 'Generación de Imagen IA',
+      videoEditor: 'Editor de Video',
+      aiModels: 'Modelos IA',
+      trending: 'Tendencias',
+      tryForFree: 'Probar Gratis',
+      liveNowSuffix: ' ya está disponible',
+      freeDisclosure: 'Los nuevos usuarios reciben 20 créditos al registrarse; los ajustes superiores pueden usar más créditos.',
+    },
+    'zh-TW': {
+      aiVideoGeneration: 'AI 影片生成',
+      aiImageGeneration: 'AI 圖像生成',
+      videoEditor: '影片編輯器',
+      aiModels: 'AI 模型',
+      trending: '熱門趨勢',
+      tryForFree: '免費試用',
+      liveNowSuffix: '現已上線！',
+      freeDisclosure: '新用戶註冊後可獲得 20 credits；更高規格設定可能需要更多 credits。',
+    },
+    pt: {
+      aiVideoGeneration: 'Geração de Vídeo IA',
+      aiImageGeneration: 'Geração de Imagem IA',
+      videoEditor: 'Editor de Vídeo',
+      aiModels: 'Modelos de IA',
+      trending: 'Em Alta',
+      tryForFree: 'Testar Grátis',
+      liveNowSuffix: ' já está disponível',
+      freeDisclosure: 'Novos usuários recebem 20 créditos após o cadastro; configurações mais altas podem usar mais créditos.',
+    },
+    fr: {
+      aiVideoGeneration: 'Génération Vidéo IA',
+      aiImageGeneration: 'Génération Image IA',
+      videoEditor: 'Éditeur Vidéo',
+      aiModels: 'Modèles IA',
+      trending: 'Tendances',
+      tryForFree: 'Essayer Gratuitement',
+      liveNowSuffix: ' est disponible',
+      freeDisclosure: 'Les nouveaux utilisateurs reçoivent 20 crédits après inscription ; les réglages avancés peuvent utiliser plus de crédits.',
+    },
+    ko: {
+      aiVideoGeneration: 'AI 비디오 생성',
+      aiImageGeneration: 'AI 이미지 생성',
+      videoEditor: '비디오 편집기',
+      aiModels: 'AI 모델',
+      trending: '인기',
+      tryForFree: '무료로 사용해보기',
+      liveNowSuffix: ' 출시!',
+      freeDisclosure: '신규 사용자는 가입 후 20 credits를 받으며, 고급 설정은 더 많은 credits가 필요할 수 있습니다.',
+    },
+    it: {
+      aiVideoGeneration: 'Generazione Video AI',
+      aiImageGeneration: 'Generazione Immagini AI',
+      videoEditor: 'Editor Video',
+      aiModels: 'Modelli AI',
+      trending: 'Di Tendenza',
+      tryForFree: 'Prova Gratis',
+      liveNowSuffix: ' è disponibile',
+      freeDisclosure: 'I nuovi utenti ricevono 20 crediti dopo la registrazione; le impostazioni avanzate possono usare più crediti.',
+    },
+  }
+  const dashboardCopy = dashboardCopyByLocale[locale] || dashboardCopyByLocale.en
+  const cleanTitle = (value?: string) => (value || '').replace(/<[^>]*>/g, '').trim()
+  const allHomeCards = [...aiVideoTools, ...aiImageTools, ...advancedAiTools, ...utilityTools]
+  const findHomeCard = (tool: string) => allHomeCards.find((item) => item.tool === tool)
+  const featuredLaunch =
+    findHomeCard('seedance-2-5') ||
+    findHomeCard('seedance-2') ||
+    aiVideoTools[0] ||
+    trendingModels[0]
+  const featuredLaunchTitle = cleanTitle(featuredLaunch?.modelName || featuredLaunch?.title) || 'Seedance 2.5'
+  const featuredLaunchThumb = featuredLaunch ? getHomeModelCardImage(featuredLaunch.tool) : null
+  const dashboardModelCards = ['seedance-2', 'gpt-image-2', 'seedream-5-0-pro', 'kling-3']
+    .map(findHomeCard)
+    .filter((item): item is ToolCard => Boolean(item))
+    .slice(0, 4)
+  const dashboardTrendingCards = [
+    {
+      title: navCopy.worldCupAiImageGenerator || 'World Cup AI Image Generator',
+      href: localizeHomeHref('/world-cup-ai-image-generator'),
+      image: getHomeAdvancedAiCardImage('world-cup-ai-image-generator'),
+    },
+    {
+      title: navCopy.aiDanceGenerator || 'AI Dance Generator',
+      href: localizeHomeHref('/ai-dance-generator'),
+      image: getHomeModelCardImage('ai-asmr-video-generator'),
+    },
+    {
+      title: navCopy.aiKissingVideoGenerator || 'AI Kissing Video Generator',
+      href: localizeHomeHref('/ai-kissing-video-generator'),
+      image: getHomeModelCardImage('ai-kissing-video-generator'),
+    },
+  ].filter((item) => Boolean(item.image))
+  const quickLaunchGroups = [
+    {
+      title: dashboardCopy.aiVideoGeneration,
+      links: [
+        { label: navCopy.imageToVideoGenerator || 'Image to Video Generator', href: localizeHomeHref('/image-to-video-generator') },
+        { label: navCopy.textToVideoGenerator || 'Text to Video Generator', href: localizeHomeHref('/text-to-video-generator') },
+        { label: dashboardCopy.videoEditor, href: localizeHomeHref('/ai-video-generator') },
+      ],
+    },
+    {
+      title: dashboardCopy.aiImageGeneration,
+      links: [
+        { label: navCopy.aiImageToImageGenerator || 'AI Image to Image Generator', href: localizeHomeHref('/ai-image-to-image-generator') },
+        { label: navCopy.textToImageGenerator || 'Text to Image Generator', href: localizeHomeHref('/text-to-image-generator') },
+      ],
+    },
+    {
+      title: navCopy.aiTools || 'AI Tools',
+      links: [
+        { label: navCopy.videoTools || 'Video Tools', href: localizeHomeHref('/ai-video-generator') },
+        { label: navCopy.imageTools || 'Image Tools', href: localizeHomeHref('/ai-image-generator') },
+      ],
+    },
+  ]
+
   // Organization Schema for Google Search Logo
   const organizationSchema = {
     '@context': 'https://schema.org',
@@ -515,82 +673,149 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
       />
       <Navigation initialTranslations={common} />
 
-      {/* Hero - aiease style: All-in-One Platform */}
-      <header className="relative pt-16 pb-24 px-6 bg-[#F8FAFF] home-hero-mesh overflow-hidden">
-        <div className="max-w-4xl mx-auto text-center mb-10 relative z-10">
-          <h1
-            className="home-section-title text-[40px] md:text-[44px] text-slate-900 mb-6 tracking-tight"
-            style={{ lineHeight: '1.25' }}
-          >
-            {home?.heroTitle ?? 'All-in-One AI Image & Video Creation Platform'}
-          </h1>
-          <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
-            {home?.heroTagline ??
-              'Create AI images and videos with leading AI models. Try selected features for free and purchase credits when you need more generations.'}
-          </p>
-        </div>
+      {/* Dashboard-style first screen */}
+      <section className="bg-[#F8FAFF] px-4 pb-16 pt-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-[1500px] overflow-hidden border border-indigo-100 bg-white shadow-soft lg:min-h-[calc(100vh-92px)]">
+          <div className="min-w-0 px-4 py-5 sm:px-6 lg:px-7">
+            <div className="grid gap-4 xl:grid-cols-3">
+              {quickLaunchGroups.map((group) => (
+                <section key={group.title} className="rounded-[1.25rem] bg-slate-100/80 p-5 ring-1 ring-slate-200/70">
+                  <h2 className="mb-6 text-base font-extrabold text-slate-950">{group.title}</h2>
+                  <div className="flex flex-wrap gap-3">
+                    {group.links.map((item) => (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        className="inline-flex min-h-10 items-center justify-center rounded-xl bg-white px-4 text-sm font-semibold text-slate-700 shadow-sm ring-1 ring-slate-200 transition-colors hover:text-indigo-700 hover:ring-indigo-200"
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
+                  </div>
+                </section>
+              ))}
+            </div>
 
-        <div className="flex flex-wrap justify-center gap-4 relative z-10">
-          <Link
-            href="/ai-image-generator"
-            className="inline-flex items-center gap-2 px-8 py-3.5 bg-gradient-brand text-white font-bold rounded-full home-cta-glow transition-all duration-300 hover:scale-[1.02]"
-          >
-            {home?.ctaImage ?? 'Try AI Image Generator'}
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </Link>
-          <Link
-            href="/ai-video-generator"
-            className="inline-flex items-center gap-2 px-8 py-3.5 bg-white text-indigo-600 font-bold rounded-full border-2 border-indigo-200 hover:border-indigo-400 hover:bg-indigo-50 transition-all duration-300"
-          >
-            {home?.ctaVideo ?? 'AI Video Generator'}
-          </Link>
-        </div>
-      </header>
-
-      {/* Trending AI Models - aiease: Featured highlights with descriptions */}
-      <section id="trending-models" className="py-20 px-6 bg-[#F8FAFF]">
-        <div className="max-w-6xl mx-auto">
-          <div className="mb-12">
-            <h2 className="home-section-title text-4xl text-slate-900 mb-4 tracking-tight">
-              {home?.trendingTitle ?? 'Trending AI Image & Video Models, All in One Place'}
-            </h2>
-            <p className="text-slate-600 max-w-5xl text-base md:text-lg leading-relaxed">
-              {home?.trendingSubtitle ?? 'Access Seedream 5.0 Pro, GPT Image 2, Nano Banana Pro, and Seedance 2.5 without switching platforms.'}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {trendingModels.map((item) => {
-              const thumb = getHomeModelCardImage(item.tool)
-              return (
-                <Link
-                  key={item.tool}
-                  href={item.href}
-                  className="home-model-card block p-4 rounded-lg border border-indigo-100 transition-all duration-300 hover:border-indigo-200"
-                >
-                  {thumb ? (
-                    <div className="relative mb-3 aspect-[4/3] w-full overflow-hidden rounded-md ring-1 ring-indigo-100 bg-slate-50">
-                      <Image
-                        src={thumb.src}
-                        alt={thumb.alt}
-                        width={thumb.width}
-                        height={thumb.height}
-                        className="h-full w-full object-cover transition-transform duration-300 hover:scale-[1.02]"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 33vw, 25vw"
-                      />
-                    </div>
-                  ) : null}
-                  <h3 className="text-base font-bold text-indigo-600 mb-2">
-                    {item.modelName || item.title}
-                  </h3>
-                  <p className="text-xs text-slate-600 leading-relaxed">
-                    {item.featuredDesc || item.description}
+            <div className="mt-7 grid gap-6 xl:grid-cols-[minmax(0,1.15fr)_minmax(380px,0.95fr)]">
+              <Link
+                href={featuredLaunch?.href || localizeHomeHref('/ai-video-generator')}
+                className="group relative min-h-[290px] overflow-hidden rounded-[1.5rem] bg-slate-200 p-7 text-white shadow-sm ring-1 ring-slate-200"
+              >
+                {featuredLaunchThumb ? (
+                  <Image
+                    src={featuredLaunchThumb.src}
+                    alt={featuredLaunchThumb.alt}
+                    width={featuredLaunchThumb.width}
+                    height={featuredLaunchThumb.height}
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                    sizes="(max-width: 1024px) 100vw, 48vw"
+                    priority
+                  />
+                ) : null}
+                <div className="absolute inset-0 bg-gradient-to-r from-slate-950/78 via-slate-950/42 to-slate-950/10" />
+                <div className="relative flex h-full max-w-xl flex-col justify-center">
+                  <h1 className="home-section-title mb-4 text-[30px] leading-tight text-white md:text-[34px]">
+                    {featuredLaunchTitle}{dashboardCopy.liveNowSuffix}
+                  </h1>
+                  <p className="mb-8 max-w-md text-sm font-medium leading-relaxed text-white/82">
+                    {featuredLaunch?.featuredDesc ||
+                      featuredLaunch?.description ||
+                      'Create premium AI video with reference images, motion control, and credit-based generation.'}
                   </p>
-                </Link>
-              )
-            })}
+                  <span className="inline-flex min-h-12 w-fit items-center justify-center rounded-xl bg-white px-10 text-sm font-bold text-slate-900 shadow-lg shadow-slate-950/10 transition-colors group-hover:text-indigo-700">
+                    {dashboardCopy.tryForFree}
+                  </span>
+                  <span className="mt-3 text-xs font-medium text-white/72">
+                    {dashboardCopy.freeDisclosure}
+                  </span>
+                </div>
+              </Link>
+
+              <section aria-labelledby="home-ai-models-title">
+                <div className="mb-2 flex items-center justify-end">
+                  <h2 id="home-ai-models-title" className="text-sm font-bold text-slate-600">
+                    {dashboardCopy.aiModels}
+                  </h2>
+                </div>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  {dashboardModelCards.map((item) => {
+                    const thumb = getHomeModelCardImage(item.tool)
+                    return (
+                      <Link
+                        key={item.tool}
+                        href={item.href}
+                        className="group relative min-h-[137px] overflow-hidden rounded-[1.25rem] bg-slate-100 p-5 ring-1 ring-slate-200 transition-colors hover:ring-indigo-200"
+                      >
+                        {thumb ? (
+                          <Image
+                            src={thumb.src}
+                            alt={thumb.alt}
+                            width={thumb.width}
+                            height={thumb.height}
+                            className="absolute inset-0 h-full w-full object-cover opacity-42 transition-transform duration-500 group-hover:scale-[1.04]"
+                            sizes="(max-width: 768px) 100vw, 22vw"
+                          />
+                        ) : null}
+                        <div className="absolute inset-0 bg-white/76 backdrop-blur-[1px]" />
+                        <div className="relative">
+                          <h3 className="mb-4 text-xl font-extrabold leading-tight text-slate-950">
+                            {cleanTitle(item.modelName || item.title)}
+                          </h3>
+                          <p className="line-clamp-2 text-xs font-medium leading-relaxed text-slate-700">
+                            {item.featuredDesc || item.description}
+                          </p>
+                        </div>
+                      </Link>
+                    )
+                  })}
+                </div>
+              </section>
+            </div>
+
+            <section id="trending-models" className="mt-9" aria-labelledby="home-trending-title">
+              <div className="mb-4 flex items-center justify-between gap-4">
+                <h2 id="home-trending-title" className="home-section-title text-3xl text-slate-950">
+                  {dashboardCopy.trending}
+                </h2>
+                <div className="hidden items-center gap-2 text-slate-500 sm:flex" aria-hidden="true">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-300 bg-white">
+                    <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                    </svg>
+                  </span>
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-300 bg-white">
+                    <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </span>
+                </div>
+              </div>
+
+              <div className="grid gap-4 md:grid-cols-3">
+                {dashboardTrendingCards.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className="group relative min-h-[240px] overflow-hidden rounded-[1.5rem] bg-slate-100 ring-1 ring-slate-200 transition-colors hover:ring-indigo-200"
+                  >
+                    {item.image ? (
+                      <Image
+                        src={item.image.src}
+                        alt={item.image.alt}
+                        width={item.image.width}
+                        height={item.image.height}
+                        className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                        sizes="(max-width: 768px) 100vw, 30vw"
+                      />
+                    ) : null}
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/72 via-slate-950/12 to-transparent" />
+                    <h3 className="absolute inset-x-5 bottom-5 text-center text-base font-extrabold text-white drop-shadow">
+                      {item.title}
+                    </h3>
+                  </Link>
+                ))}
+              </div>
+            </section>
           </div>
         </div>
       </section>

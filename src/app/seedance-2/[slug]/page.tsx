@@ -14,9 +14,6 @@ export async function generateStaticParams() {
 }
 
 export default async function Seedance2SlugRedirect({ params }: PageProps) {
-  const { slug } = await params
-  if (slug === 'ai-video-generator') {
-    permanentRedirect('/model/seedance-2')
-  }
-  permanentRedirect(`/model/seedance-2/${slug}`)
+  await params
+  permanentRedirect('/model/seedance-2')
 }

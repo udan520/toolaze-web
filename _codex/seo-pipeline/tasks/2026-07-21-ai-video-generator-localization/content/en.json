@@ -233,12 +233,12 @@
     {
       "title": "Text to Video",
       "description": "Start with a written prompt and generate short AI video clips.",
-      "href": "/model/seedance-2/text-to-video"
+      "href": "/model/seedance-2"
     },
     {
       "title": "Image to Video",
       "description": "Animate reference images into short AI videos.",
-      "href": "/model/seedance-2/image-to-video"
+      "href": "/model/seedance-2"
     },
     {
       "title": "Kling 3.0",

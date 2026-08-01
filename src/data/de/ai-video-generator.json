@@ -52,8 +52,8 @@
     {"title": "Spiel-, Figuren- und Konzeptszenen", "icon": "🕹️", "desc": "Erkunde Figurenbewegung, Atmosphäre, Umgebungen und filmische Szenen für Spiele, Geschichten oder visuelle Entwicklung. Nutze stärker steuerbare Modelle, wenn Konsistenz und Stimmung wichtig sind."}
   ],
   "moreTools": "Verwandte KI-Video-Arbeitsabläufe", "moreToolsLinks": [
-    {"title": "Text zu Video", "description": "Beginne mit einem geschriebenen Prompt und erstelle kurze KI-Videoclips.", "href": "/model/seedance-2/text-to-video"},
-    {"title": "Bild zu Video", "description": "Animiere Referenzbilder zu kurzen KI-Videos.", "href": "/model/seedance-2/image-to-video"},
+    {"title": "Text zu Video", "description": "Beginne mit einem geschriebenen Prompt und erstelle kurze KI-Videoclips.", "href": "/model/seedance-2"},
+    {"title": "Bild zu Video", "description": "Animiere Referenzbilder zu kurzen KI-Videos.", "href": "/model/seedance-2"},
     {"title": "Kling 3.0", "description": "Entdecke ein weiteres KI-Videomodell für filmische Clips und Videokonzepte.", "href": "/model/kling-3"}
   ],
   "faqTitle": "Häufige Fragen zum KI-Videogenerator", "faq": [

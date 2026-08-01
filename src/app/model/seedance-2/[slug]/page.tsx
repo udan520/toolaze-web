@@ -1,6 +1,4 @@
-import ToolSlugPageContent from '@/app/[locale]/[tool]/[slug]/ToolSlugPageContent'
-import { getAllSlugs, getSeoContent } from '@/lib/seo-loader'
-import { generateHreflangAlternates } from '@/lib/hreflang'
+import { getAllSlugs } from '@/lib/seo-loader'
 import type { Metadata } from 'next'
 import { permanentRedirect } from 'next/navigation'
 
@@ -18,52 +16,17 @@ export async function generateStaticParams() {
   return [...new Set([...slugs, 'ai-video-generator'])].map((slug) => ({ slug }))
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const resolvedParams = await params
-  if (resolvedParams.slug === 'ai-video-generator') {
-    return {
-      title: 'Seedance 2.0 AI Video Generator | Toolaze',
-      robots: { index: false, follow: true },
-      alternates: {
-        canonical: 'https://toolaze.com/model/seedance-2',
-      },
-    }
-  }
-
-  const content = await getSeoContent('seedance-2', resolvedParams.slug, 'en')
-
-  if (!content) {
-    return {
-      title: 'Tool Not Found | Toolaze',
-      robots: 'index, follow',
-    }
-  }
-
-  const pathWithoutLocale = `/model/seedance-2/${resolvedParams.slug}`
-  const hreflang = generateHreflangAlternates('en', pathWithoutLocale)
-
+export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: content.metadata.title,
-    description: content.metadata.description,
-    robots: 'index, follow',
+    title: 'Redirecting to Seedance 2.0 | Toolaze',
+    robots: { index: false, follow: true },
     alternates: {
-      canonical: hreflang.canonical,
-      languages: hreflang.languages,
+      canonical: 'https://toolaze.com/model/seedance-2',
     },
   }
 }
 
-export default async function Page({ params }: PageProps) {
-  const resolvedParams = await params
-  if (resolvedParams.slug === 'ai-video-generator') {
-    permanentRedirect('/model/seedance-2')
-  }
-
-  return (
-    <ToolSlugPageContent
-      locale="en"
-      tool="seedance-2"
-      slug={resolvedParams.slug}
-    />
-  )
+export default async function Seedance2ModelSlugRedirect({ params }: PageProps) {
+  await params
+  permanentRedirect('/model/seedance-2')
 }

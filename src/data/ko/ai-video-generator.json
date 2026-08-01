@@ -233,12 +233,12 @@
     {
       "title": "텍스트 동영상 변환",
       "description": "작성한 프롬프트로 시작해 짧은 AI 동영상을 생성하세요.",
-      "href": "/model/seedance-2/text-to-video"
+      "href": "/model/seedance-2"
     },
     {
       "title": "이미지 동영상 변환",
       "description": "참조 이미지를 짧은 AI 동영상으로 애니메이션화하세요.",
-      "href": "/model/seedance-2/image-to-video"
+      "href": "/model/seedance-2"
     },
     {
       "title": "Kling 3.0",

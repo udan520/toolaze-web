@@ -62,7 +62,7 @@ removeBuildOutput('out')
 
 const result = spawnSync(process.execPath, [nextCli, 'build'], {
   stdio: 'inherit',
-  env: { ...process.env, NODE_OPTIONS: merged },
+  env: { ...process.env, NODE_OPTIONS: merged, NEXT_PRIVATE_BUILD_WORKER: process.env.NEXT_PRIVATE_BUILD_WORKER || '1' },
   windowsHide: true,
 })
 

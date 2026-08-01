@@ -72,6 +72,11 @@ const aiVideoModelMenuSource = sourceBetween(
   'const AI_VIDEO_MODEL_MENU_ITEMS',
   'function getInitialNavTranslations',
 )
+const aiImageModelMenuSource = sourceBetween(
+  navigationSource,
+  'const AI_IMAGE_MODEL_MENU_ITEMS',
+  'type AiVideoNavLabelKey',
+)
 
 test('AI tools hub exposes baby, couple, dance, watermark, and World Cup entries', () => {
   for (const href of [
@@ -147,51 +152,52 @@ test('AI Video model tags are separated from tool links and show manufacturer ic
     '/model/seedance-2-5',
     '/model/seedance-2',
     '/model/kling-3',
-    '/kling-ai-video-generator',
     '/model/grok-imagine-video-1-5',
   ]
   const routeIndexes = orderedRoutes.map((route) => aiVideoModelMenuSource.indexOf(`href: '${route}'`))
 
   assert.ok(routeIndexes.every((index) => index >= 0))
   assert.deepEqual(routeIndexes, [...routeIndexes].sort((a, b) => a - b))
+  assert.doesNotMatch(aiVideoModelMenuSource, /href: '\/kling-ai-video-generator'/)
+  assert.doesNotMatch(aiVideoModelMenuSource, /labelKey: 'klingAiVideoGenerator'/)
   assert.doesNotMatch(aiVideoModelMenuSource, /href: '\/ai-dance-generator'/)
   assert.doesNotMatch(aiVideoModelMenuSource, /href: '\/talking-avatar-creator'/)
   assert.match(aiVideoModelMenuSource, /href: '\/model\/wan-2-5-ai-video-generator'[\s\S]*logoSrc: '\/model-logos\/wan\.ico'/)
   assert.match(aiVideoModelMenuSource, /href: '\/model\/seedance-2-5'[\s\S]*logoSrc: '\/model-logos\/bytedance\.svg'/)
-  assert.match(aiVideoModelMenuSource, /href: '\/model\/seedance-2'[\s\S]*logoSrc: '\/model-logos\/bytedance\.svg'/)
+  assert.match(aiVideoModelMenuSource, /href: '\/model\/seedance-2'[\s\S]*logoSrc: '\/model-logos\/bytedance\.svg'[\s\S]*badgeKey: 'hot'/)
   assert.match(aiVideoModelMenuSource, /href: '\/model\/kling-3'[\s\S]*logoSrc: '\/model-logos\/kling\.svg'/)
-  assert.match(aiVideoModelMenuSource, /href: '\/model\/grok-imagine-video-1-5'[\s\S]*logoSrc: '\/model-logos\/grok\.svg'/)
+  assert.match(aiVideoModelMenuSource, /href: '\/model\/grok-imagine-video-1-5'[\s\S]*logoSrc: '\/model-logos\/grok\.svg'[\s\S]*badgeKey: 'bestValue'/)
   assert.match(navigationSource, /data-ai-video-section="models"[\s\S]*AI_VIDEO_MODEL_MENU_ITEMS\.map/)
+  assert.match(navigationSource, /navTranslations\.bestValue \|\| defaultNavTranslations\.bestValue/)
 })
 
 test('AI Image model links show their manufacturer icons on desktop and mobile', () => {
-  const desktopAiImageBlock = navigationSource.slice(
-    navigationSource.indexOf('{/* 一级菜单：AI Image */}'),
-    navigationSource.indexOf('{/* 一级菜单：AI Video */}'),
-  )
-  const mobileAiImageBlock = navigationSource.slice(
-    navigationSource.indexOf('{/* AI Image 部分 */}'),
-    navigationSource.indexOf('{/* AI Video 部分 */}'),
-  )
   const modelIcons = [
-    ['/model/gpt-image-2', '/model-logos/openai.svg'],
-    ['/model/seedream-5-0-pro', '/model-logos/bytedance.svg'],
-    ['/model/wan-2-7-image', '/model-logos/wan.ico'],
+    ['/model/gpt-image-2', '/model-logos/openai.svg', "badgeKey: 'hot'"],
+    ['/model/seedream-5-0-pro', '/model-logos/bytedance.svg', "badgeKey: 'new'"],
     ['/model/nano-banana-pro', '/model-logos/google-gemini.png'],
+    ['/model/seedream-5-0-lite', '/model-logos/bytedance.svg'],
+    ['/model/wan-2-7-image', '/model-logos/wan.ico'],
     ['/model/nano-banana-2', '/model-logos/google-gemini.png'],
     ['/model/seedream-4-5', '/model-logos/bytedance.svg'],
-    ['/model/seedream-5-0-lite', '/model-logos/bytedance.svg'],
   ]
 
-  for (const block of [desktopAiImageBlock, mobileAiImageBlock]) {
-    for (const [route, icon] of modelIcons) {
-      const linkStart = block.indexOf(`href={getLocalizedHref('${route}')}`)
-      const nextLink = block.indexOf('<Link', linkStart + 1)
-      const link = block.slice(linkStart, nextLink >= 0 ? nextLink : block.length)
-      assert.ok(linkStart >= 0, `${route} should be present in AI Image navigation`)
-      assert.match(link, new RegExp(`<img src="${icon.replaceAll('.', '\\.')}`))
+  const routeIndexes = modelIcons.map(([route]) => aiImageModelMenuSource.indexOf(`href: '${route}'`))
+
+  assert.ok(routeIndexes.every((index) => index >= 0))
+  assert.deepEqual(routeIndexes, [...routeIndexes].sort((a, b) => a - b))
+  for (const [route, icon, badge] of modelIcons) {
+    const routeStart = aiImageModelMenuSource.indexOf(`href: '${route}'`)
+    const nextItem = aiImageModelMenuSource.indexOf('\n  { href:', routeStart + 1)
+    const itemSource = aiImageModelMenuSource.slice(routeStart, nextItem >= 0 ? nextItem : aiImageModelMenuSource.length)
+    assert.match(itemSource, new RegExp(`logoSrc: '${icon.replaceAll('.', '\\.')}'`))
+    if (badge) {
+      assert.match(itemSource, new RegExp(badge))
     }
   }
+  assert.match(navigationSource, /AI_IMAGE_MODEL_MENU_ITEMS\.map\(\(item\) => renderAiImageModelMenuItem\(item, 'desktop'\)\)/)
+  assert.match(navigationSource, /AI_IMAGE_MODEL_MENU_ITEMS\.map\(\(item\) => renderAiImageModelMenuItem\(item, 'mobile'\)\)/)
+  assert.match(navigationSource, /data-ai-image-model-tag/)
 })
 
 test('AI Kissing and AI Dance show localized Hot labels in AI Tools navigation', () => {

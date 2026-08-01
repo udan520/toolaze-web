@@ -20,6 +20,17 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   try {
     const resolvedParams = await params
     const locale = resolvedParams.locale || 'en'
+
+    if (resolvedParams.tool === 'seedance-2') {
+      const canonicalPath = locale === 'en' ? '/model/seedance-2' : `/${locale}/model/seedance-2`
+      return {
+        title: 'Redirecting to Seedance 2.0 | Toolaze',
+        robots: { index: false, follow: true },
+        alternates: {
+          canonical: `https://toolaze.com${canonicalPath}`,
+        },
+      }
+    }
     
     // 如果工具不支持多语言且不是英语，返回重定向元数据（目前没有不支持多语言的工具）
     // if (NON_MULTILINGUAL_TOOLS.includes(resolvedParams.tool) && locale !== 'en') {
@@ -203,18 +214,15 @@ export default async function LandingPage({ params }: PageProps) {
     return null
   }
   
-  // seedance-2 英语无 /en 前缀，重定向到 /model/seedance-2/[slug]
-  if (resolvedParams.tool === 'seedance-2' && locale === 'en') {
-    redirect(`/model/seedance-2/${resolvedParams.slug}`)
+  // Seedance 2.0 只保留模型 L2；工作流 L3 旧路径统一回模型页。
+  if (resolvedParams.tool === 'seedance-2') {
+    redirect(locale === 'en' ? '/model/seedance-2' : `/${locale}/model/seedance-2`)
   }
   
   // 无当前语种 SEO JSON：非英语一律跳到英文 canonical（避免 404；与 LANGUAGE_SWITCH_AND_REDIRECT 规则一致）
   const content = await getSeoContent(resolvedParams.tool, resolvedParams.slug, locale)
   if (!content) {
     if (locale !== 'en') {
-      if (resolvedParams.tool === 'seedance-2') {
-        redirect(`/model/seedance-2/${resolvedParams.slug}`)
-      }
       redirect(`/${resolvedParams.tool}/${resolvedParams.slug}`)
     }
     notFound()

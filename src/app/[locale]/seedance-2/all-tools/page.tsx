@@ -12,7 +12,7 @@ export async function generateStaticParams() {
 }
 
 export default async function Seedance2AllToolsLocalePage({ params }: PageProps) {
-  await params
-  // 英语无 /en 前缀，重定向到 /model/seedance-2/all-tools
-  redirect('/model/seedance-2/all-tools')
+  const { locale } = await params
+  // Seedance 2.0 只保留模型页；旧 all-tools 子路径统一回模型页。
+  redirect(locale === 'en' ? '/model/seedance-2' : `/${locale}/model/seedance-2`)
 }

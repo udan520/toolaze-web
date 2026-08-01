@@ -12,6 +12,14 @@ function getConstantBlock(start, end) {
   )
 }
 
+const aiImageFunctionMenuSource = getConstantBlock(
+  'const AI_IMAGE_FUNCTION_MENU_ITEMS',
+  'const AI_IMAGE_MODEL_MENU_ITEMS',
+)
+const aiImageModelMenuSource = getConstantBlock(
+  'const AI_IMAGE_MODEL_MENU_ITEMS',
+  'type AiVideoNavLabelKey',
+)
 const aiVideoFunctionMenuSource = getConstantBlock(
   'const AI_VIDEO_FUNCTION_MENU_ITEMS',
   'const AI_VIDEO_MODEL_MENU_ITEMS',
@@ -80,7 +88,6 @@ test('AI Video model links render as tag-style entries after the function cards'
     '/model/seedance-2-5',
     '/model/seedance-2',
     '/model/kling-3',
-    '/kling-ai-video-generator',
     '/model/grok-imagine-video-1-5',
   ]
 
@@ -88,6 +95,8 @@ test('AI Video model links render as tag-style entries after the function cards'
     const escapedHref = href.replace(/\//g, '\\/')
     assert.match(aiVideoModelMenuSource, new RegExp(`href: '${escapedHref}'`), `${href} should exist in AI Video model tags`)
   }
+
+  assert.doesNotMatch(aiVideoModelMenuSource, /href: '\/kling-ai-video-generator'/)
 
   for (const block of [getDesktopAiVideoBlock(), getMobileAiVideoBlock()]) {
     const modelSectionIndex = block.indexOf('data-ai-video-section="models"')
@@ -100,34 +109,45 @@ test('AI Video model links render as tag-style entries after the function cards'
   assert.match(navigationSource, /rounded-full[\s\S]*data-ai-video-model-tag/)
 })
 
-test('AI Image navigation puts GPT Image 2 first and keeps Seedream models grouped after Pro', () => {
-  const desktopAiImageBlock = navigationSource.slice(
-    navigationSource.indexOf('{/* 一级菜单：AI Image */}'),
-    navigationSource.indexOf('{/* 一级菜单：AI Video */}'),
-  )
-  const mobileAiImageBlock = navigationSource.slice(
-    navigationSource.indexOf('{/* AI Image 部分 */}'),
-    navigationSource.indexOf('{/* AI Video 部分 */}'),
-  )
-  const expectedModelOrder = [
+test('AI Image navigation separates functions from model tags ordered by rating', () => {
+  const expectedFunctionLinks = [
+    '/ai-image-generator',
+    '/text-to-image-generator',
+    '/ai-image-to-image-generator',
+  ]
+  const expectedModelLinks = [
     '/model/gpt-image-2',
     '/model/seedream-5-0-pro',
-    '/model/seedream-5-0-lite',
-    '/model/seedream-4-5',
-    '/model/wan-2-7-image',
     '/model/nano-banana-pro',
+    '/model/seedream-5-0-lite',
+    '/model/wan-2-7-image',
     '/model/nano-banana-2',
+    '/model/seedream-4-5',
   ]
-  const getOrder = (block, href) => {
-    const match = block.match(new RegExp(`href=\\{getLocalizedHref\\('${href}'\\)\\}[\\s\\S]*?className="[^"]*\\border-(\\d+)\\b`))
-    assert.notEqual(match, null, `${href} should exist in AI Image navigation`)
-    return Number(match[1])
+
+  for (const href of expectedFunctionLinks) {
+    const escapedHref = href.replace(/\//g, '\\/')
+    assert.match(aiImageFunctionMenuSource, new RegExp(`href: '${escapedHref}'`), `${href} should exist in AI Image function cards`)
   }
 
-  for (const block of [desktopAiImageBlock, mobileAiImageBlock]) {
-    const orders = expectedModelOrder.map((href) => getOrder(block, href))
-    assert.deepEqual(orders, [4, 5, 6, 7, 8, 9, 10])
+  const modelIndexes = expectedModelLinks.map((href) => aiImageModelMenuSource.indexOf(`href: '${href}'`))
+  assert.ok(modelIndexes.every((index) => index >= 0))
+  assert.deepEqual(modelIndexes, [...modelIndexes].sort((a, b) => a - b))
+  assert.match(aiImageModelMenuSource, /href: '\/model\/gpt-image-2'[\s\S]*badgeKey: 'hot'/)
+  assert.match(aiImageModelMenuSource, /href: '\/model\/seedream-5-0-pro'[\s\S]*badgeKey: 'new'/)
+
+  for (const block of [
+    navigationSource.slice(navigationSource.indexOf('{/* 一级菜单：AI Image */}'), navigationSource.indexOf('{/* 一级菜单：AI Video */}')),
+    navigationSource.slice(navigationSource.indexOf('{/* AI Image 部分 */}'), navigationSource.indexOf('{/* AI Video 部分 */}')),
+  ]) {
+    const functionSectionIndex = block.indexOf('data-ai-image-section="functions"')
+    const modelSectionIndex = block.indexOf('data-ai-image-section="models"')
+    assert.notEqual(functionSectionIndex, -1)
+    assert.notEqual(modelSectionIndex, -1)
+    assert.ok(functionSectionIndex < modelSectionIndex)
   }
+
+  assert.match(navigationSource, /rounded-full[\s\S]*data-ai-image-model-tag/)
 })
 
 test('every navigation label used by the component exists for every supported locale', () => {

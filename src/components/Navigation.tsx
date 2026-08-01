@@ -45,6 +45,8 @@ const defaultNavTranslations = {
   imageTools: 'Image Tools',
   videoTools: 'Video Tools',
   hot: 'Hot',
+  new: 'New',
+  bestValue: 'Best Value',
   imageCompression: 'Image Compression',
   imageConverter: 'Image Converter',
   watermarkRemover: 'Watermark Remover',
@@ -229,6 +231,47 @@ const AI_VIDEO_TOOL_MENU_ITEMS: readonly AiToolMenuItem[] = [
   { href: '/ai-dance-generator', labelKey: 'aiDanceGenerator', imageKey: 'aiDanceGenerator', hot: true },
 ]
 
+type AiImageNavLabelKey =
+  | 'aiImageGenerator'
+  | 'textToImageGenerator'
+  | 'aiImageToImageGenerator'
+  | 'gptImage2'
+  | 'seedream50Pro'
+  | 'nanoBananaPro'
+  | 'seedream50Lite'
+  | 'wan27Image'
+  | 'nanoBanana2'
+  | 'seedream45'
+
+type AiImageFunctionMenuItem = {
+  href: string
+  labelKey: AiImageNavLabelKey
+  icon: 'image' | 'text' | 'edit'
+}
+
+type AiImageModelMenuItem = {
+  href: string
+  labelKey: AiImageNavLabelKey
+  logoSrc: string
+  badgeKey?: 'hot' | 'new'
+}
+
+const AI_IMAGE_FUNCTION_MENU_ITEMS: readonly AiImageFunctionMenuItem[] = [
+  { href: '/ai-image-generator', labelKey: 'aiImageGenerator', icon: 'image' },
+  { href: '/text-to-image-generator', labelKey: 'textToImageGenerator', icon: 'text' },
+  { href: '/ai-image-to-image-generator', labelKey: 'aiImageToImageGenerator', icon: 'edit' },
+]
+
+const AI_IMAGE_MODEL_MENU_ITEMS: readonly AiImageModelMenuItem[] = [
+  { href: '/model/gpt-image-2', labelKey: 'gptImage2', logoSrc: '/model-logos/openai.svg', badgeKey: 'hot' },
+  { href: '/model/seedream-5-0-pro', labelKey: 'seedream50Pro', logoSrc: '/model-logos/bytedance.svg', badgeKey: 'new' },
+  { href: '/model/nano-banana-pro', labelKey: 'nanoBananaPro', logoSrc: '/model-logos/google-gemini.png' },
+  { href: '/model/seedream-5-0-lite', labelKey: 'seedream50Lite', logoSrc: '/model-logos/bytedance.svg' },
+  { href: '/model/wan-2-7-image', labelKey: 'wan27Image', logoSrc: '/model-logos/wan.ico' },
+  { href: '/model/nano-banana-2', labelKey: 'nanoBanana2', logoSrc: '/model-logos/google-gemini.png' },
+  { href: '/model/seedream-4-5', labelKey: 'seedream45', logoSrc: '/model-logos/bytedance.svg' },
+]
+
 type AiVideoNavLabelKey =
   | 'aiVideoGenerator'
   | 'textToVideoGenerator'
@@ -250,6 +293,7 @@ type AiVideoModelMenuItem = {
   href: string
   labelKey: AiVideoNavLabelKey
   logoSrc: string
+  badgeKey?: 'hot' | 'bestValue'
 }
 
 const AI_VIDEO_FUNCTION_MENU_ITEMS: readonly AiVideoFunctionMenuItem[] = [
@@ -261,10 +305,9 @@ const AI_VIDEO_FUNCTION_MENU_ITEMS: readonly AiVideoFunctionMenuItem[] = [
 const AI_VIDEO_MODEL_MENU_ITEMS: readonly AiVideoModelMenuItem[] = [
   { href: '/model/wan-2-5-ai-video-generator', labelKey: 'wan25Video', logoSrc: '/model-logos/wan.ico' },
   { href: '/model/seedance-2-5', labelKey: 'seedance25', logoSrc: '/model-logos/bytedance.svg' },
-  { href: '/model/seedance-2', labelKey: 'seedance2', logoSrc: '/model-logos/bytedance.svg' },
+  { href: '/model/seedance-2', labelKey: 'seedance2', logoSrc: '/model-logos/bytedance.svg', badgeKey: 'hot' },
   { href: '/model/kling-3', labelKey: 'kling3', logoSrc: '/model-logos/kling.svg' },
-  { href: '/kling-ai-video-generator', labelKey: 'klingAiVideoGenerator', logoSrc: '/model-logos/kling.svg' },
-  { href: '/model/grok-imagine-video-1-5', labelKey: 'grok15Video', logoSrc: '/model-logos/grok.svg' },
+  { href: '/model/grok-imagine-video-1-5', labelKey: 'grok15Video', logoSrc: '/model-logos/grok.svg', badgeKey: 'bestValue' },
 ]
 
 function getInitialNavTranslations(initialTranslations?: any) {
@@ -852,6 +895,10 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
     )
   }
 
+  const getAiImageLabel = (item: AiImageFunctionMenuItem | AiImageModelMenuItem): string => (
+    navTranslations[item.labelKey] || defaultNavTranslations[item.labelKey]
+  )
+
   const getAiVideoLabel = (item: AiVideoFunctionMenuItem | AiVideoModelMenuItem): string => (
     navTranslations[item.labelKey] || defaultNavTranslations[item.labelKey]
   )
@@ -880,6 +927,88 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
         <rect x="2" y="4" width="20" height="14" rx="2" fill="#EEF2FF"/>
         <path d="M10 8L16 12L10 16V8Z" fill="#4F46E5"/>
       </svg>
+    )
+  }
+
+  const renderAiImageFunctionIcon = (icon: AiImageFunctionMenuItem['icon']) => {
+    if (icon === 'edit') {
+      return (
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-7 w-7">
+          <rect x="2" y="4" width="20" height="14" rx="2" fill="#EEF2FF"/>
+          <path d="M5 9h7M5 13h5M14 8l4 4-4 4M18 12H11" stroke="#4F46E5" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      )
+    }
+
+    return renderAiVideoFunctionIcon(icon)
+  }
+
+  const renderAiImageFunctionMenuItem = (item: AiImageFunctionMenuItem, surface: 'desktop' | 'mobile') => {
+    const label = getAiImageLabel(item)
+    const isDesktop = surface === 'desktop'
+
+    return (
+      <Link
+        key={`${surface}-ai-image-function-${item.href}`}
+        href={getLocalizedHref(item.href)}
+        onClick={() => {
+          if (isDesktop) {
+            setOpenDesktopMenu(null)
+          } else {
+            setMobileMenuOpen(false)
+            setExpandedSubmenus(new Set())
+          }
+        }}
+        className={[
+          'flex items-center gap-3 rounded-xl border border-transparent text-slate-800 transition-colors hover:border-indigo-100 hover:bg-indigo-50 hover:text-indigo-600',
+          isDesktop ? 'px-4 py-3' : 'px-3 py-2.5',
+        ].join(' ')}
+      >
+        <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white shadow-sm ring-1 ring-indigo-50">
+          {renderAiImageFunctionIcon(item.icon)}
+        </span>
+        <span className="min-w-0 text-sm font-bold leading-tight">{label}</span>
+      </Link>
+    )
+  }
+
+  const renderAiImageModelMenuItem = (item: AiImageModelMenuItem, surface: 'desktop' | 'mobile') => {
+    const label = getAiImageLabel(item)
+    const isDesktop = surface === 'desktop'
+    const badgeLabel =
+      item.badgeKey === 'hot'
+        ? (navTranslations.hot || defaultNavTranslations.hot)
+        : item.badgeKey === 'new'
+          ? (navTranslations.new || defaultNavTranslations.new)
+          : ''
+    const badgeClass = item.badgeKey === 'hot' ? 'bg-red-500 text-white' : 'bg-emerald-500 text-white'
+
+    return (
+      <Link
+        key={`${surface}-ai-image-model-${item.href}`}
+        href={getLocalizedHref(item.href)}
+        onClick={() => {
+          if (isDesktop) {
+            setOpenDesktopMenu(null)
+          } else {
+            setMobileMenuOpen(false)
+            setExpandedSubmenus(new Set())
+          }
+        }}
+        className={[
+          'inline-flex items-center gap-2 rounded-full bg-indigo-50 px-3 py-2 text-sm font-semibold text-slate-600 transition-colors hover:bg-indigo-100 hover:text-indigo-700',
+          isDesktop ? 'max-w-full' : 'max-w-[calc(100vw-3.5rem)]',
+        ].join(' ')}
+        data-ai-image-model-tag
+      >
+        <img src={item.logoSrc} alt="" width="18" height="18" className="h-[18px] w-[18px] shrink-0 rounded" />
+        <span className="truncate">{label}</span>
+        {badgeLabel ? (
+          <span className={`shrink-0 rounded-full px-1.5 py-0.5 text-[10px] font-extrabold leading-none ${badgeClass}`}>
+            {badgeLabel}
+          </span>
+        ) : null}
+      </Link>
     )
   }
 
@@ -915,6 +1044,16 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
   const renderAiVideoModelMenuItem = (item: AiVideoModelMenuItem, surface: 'desktop' | 'mobile') => {
     const label = getAiVideoLabel(item)
     const isDesktop = surface === 'desktop'
+    const badgeLabel =
+      item.badgeKey === 'hot'
+        ? (navTranslations.hot || defaultNavTranslations.hot)
+        : item.badgeKey === 'bestValue'
+          ? (navTranslations.bestValue || defaultNavTranslations.bestValue)
+          : ''
+    const badgeClass =
+      item.badgeKey === 'hot'
+        ? 'bg-red-500 text-white'
+        : 'bg-emerald-500 text-white'
 
     return (
       <Link
@@ -936,6 +1075,11 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
       >
         <img src={item.logoSrc} alt="" width="18" height="18" className="h-[18px] w-[18px] shrink-0 rounded" />
         <span className="truncate">{label}</span>
+        {badgeLabel ? (
+          <span className={`shrink-0 rounded-full px-1.5 py-0.5 text-[10px] font-extrabold leading-none ${badgeClass}`}>
+            {badgeLabel}
+          </span>
+        ) : null}
       </Link>
     )
   }
@@ -1921,196 +2065,19 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
               </svg>
             </button>
-            <div className={'absolute top-full left-0 pt-1 w-auto min-w-[200px] bg-transparent transition-all duration-200 z-50 ' + (openDesktopMenu === 'ai-image' ? 'opacity-100 visible' : 'opacity-0 invisible group-hover:opacity-100 group-hover:visible')}>
-              <div className="flex flex-col bg-white rounded-xl shadow-lg border border-indigo-50 py-2">
-                <Link
-                  href={getLocalizedHref('/ai-image-generator')}
-                  onClick={() => setOpenDesktopMenu(null)}
-                  className="order-1 block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
-                >
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
-                    <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#aiImageGeneratorGradient)" opacity="0.2"/>
-                    <path d="M6 16l4-4 3 3 5-6" stroke="url(#aiImageGeneratorGradient)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M16 5l1 2 2 1-2 1-1 2-1-2-2-1 2-1 1-2Z" fill="url(#aiImageGeneratorGradient)"/>
-                    <defs>
-                      <linearGradient id="aiImageGeneratorGradient" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
-                        <stop stopColor="#9333EA"/>
-                        <stop offset="1" stopColor="#4F46E5"/>
-                      </linearGradient>
-                    </defs>
-                  </svg>
-                  <span>{navTranslations.aiImageGenerator || defaultNavTranslations.aiImageGenerator}</span>
-                </Link>
-                <Link
-                  href={getLocalizedHref('/text-to-image-generator')}
-                  onClick={() => setOpenDesktopMenu(null)}
-                  className="order-2 block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
-                >
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
-                    <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#textToImageGeneratorGradient)" opacity="0.2"/>
-                    <path d="M7 8h4M7 12h7M7 16h5" stroke="url(#textToImageGeneratorGradient)" strokeWidth="2" strokeLinecap="round"/>
-                    <path d="M16 7l1 2 2 1-2 1-1 2-1-2-2-1 2-1 1-2Z" fill="url(#textToImageGeneratorGradient)"/>
-                    <defs>
-                      <linearGradient id="textToImageGeneratorGradient" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
-                        <stop stopColor="#9333EA"/>
-                        <stop offset="1" stopColor="#4F46E5"/>
-                      </linearGradient>
-                    </defs>
-                  </svg>
-                  <span>{navTranslations.textToImageGenerator || defaultNavTranslations.textToImageGenerator}</span>
-                </Link>
-                <Link
-                  href={getLocalizedHref('/ai-image-to-image-generator')}
-                  onClick={() => setOpenDesktopMenu(null)}
-                  className="order-3 block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
-                >
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
-                    <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#aiImageToImageGradient)" opacity="0.2"/>
-                    <path d="M6 8h7M6 12h5M6 16h7" stroke="url(#aiImageToImageGradient)" strokeWidth="2" strokeLinecap="round"/>
-                    <path d="M15 7l3 3-3 3M18 10H12" stroke="url(#aiImageToImageGradient)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <defs>
-                      <linearGradient id="aiImageToImageGradient" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
-                        <stop stopColor="#9333EA"/>
-                        <stop offset="1" stopColor="#4F46E5"/>
-                      </linearGradient>
-                    </defs>
-                  </svg>
-                  <span>{navTranslations.aiImageToImageGenerator || defaultNavTranslations.aiImageToImageGenerator}</span>
-                </Link>
-                <Link
-                  href={getLocalizedHref('/model/gpt-image-2')}
-                  onClick={() => setOpenDesktopMenu(null)}
-                  className="order-4 block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
-                >
-                  <img src="/model-logos/openai.svg" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="hidden">
-                    <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#aiImageGradient3)" opacity="0.2"/>
-                    <path d="M7 15l3-3 2 2 5-5" stroke="url(#aiImageGradient3)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <defs>
-                      <linearGradient id="aiImageGradient3" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
-                        <stop stopColor="#9333EA"/>
-                        <stop offset="1" stopColor="#4F46E5"/>
-                      </linearGradient>
-                    </defs>
-                  </svg>
-                  <span className="inline-flex items-center gap-2">
-                    <span>{navTranslations.gptImage2 || defaultNavTranslations.gptImage2}</span>
-                    <span className="rounded-full bg-red-500 px-1.5 py-0.5 text-[10px] font-extrabold leading-none text-white">{navTranslations.hot || defaultNavTranslations.hot}</span>
-                  </span>
-                </Link>
-                <Link
-                  href={getLocalizedHref('/model/seedream-5-0-pro')}
-                  onClick={() => setOpenDesktopMenu(null)}
-                  className="order-5 block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
-                >
-                  <img src="/model-logos/bytedance.svg" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="hidden">
-                    <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#aiImageGradient50Pro)" opacity="0.2"/>
-                    <path d="M7 8h10M7 12h7M7 16h5M17 5l1.8 3.4L22 10l-3.2 1.6L17 15l-1.8-3.4L12 10l3.2-1.6L17 5Z" stroke="url(#aiImageGradient50Pro)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                    <defs>
-                      <linearGradient id="aiImageGradient50Pro" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
-                        <stop stopColor="#9333EA"/>
-                        <stop offset="1" stopColor="#4F46E5"/>
-                      </linearGradient>
-                    </defs>
-                  </svg>
-                  <span className="inline-flex items-center gap-2">
-                    <span>{navTranslations.seedream50Pro || defaultNavTranslations.seedream50Pro}</span>
-                    <span className="rounded-full bg-emerald-500 px-1.5 py-0.5 text-[10px] font-extrabold leading-none text-white">New</span>
-                  </span>
-                </Link>
-                <Link
-                  href={getLocalizedHref('/model/wan-2-7-image')}
-                  onClick={() => setOpenDesktopMenu(null)}
-                  className="order-8 block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
-                >
-                  <img src="/model-logos/wan.ico" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="hidden">
-                    <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#aiImageGradientWan27)" opacity="0.2"/>
-                    <path d="M7 8h10M7 12h7M7 16h10M17 6l1.5 3L21 10.5l-2.5 1.5L17 15l-1.5-3L13 10.5 15.5 9 17 6Z" stroke="url(#aiImageGradientWan27)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                    <defs>
-                      <linearGradient id="aiImageGradientWan27" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
-                        <stop stopColor="#9333EA"/>
-                        <stop offset="1" stopColor="#4F46E5"/>
-                      </linearGradient>
-                    </defs>
-                  </svg>
-                  <span>{navTranslations.wan27Image || defaultNavTranslations.wan27Image}</span>
-                </Link>
-                <Link
-                  href={getLocalizedHref('/model/nano-banana-pro')}
-                  onClick={() => setOpenDesktopMenu(null)}
-                  className="order-9 block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
-                >
-                  <img src="/model-logos/google-gemini.png" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="hidden">
-                    <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#aiImageGradient)" opacity="0.2"/>
-                    <path d="M8 8H16M8 12H14M8 16H12" stroke="url(#aiImageGradient)" strokeWidth="2" strokeLinecap="round"/>
-                    <circle cx="18" cy="6" r="2" fill="url(#aiImageGradient)"/>
-                    <defs>
-                      <linearGradient id="aiImageGradient" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
-                        <stop stopColor="#9333EA"/>
-                        <stop offset="1" stopColor="#4F46E5"/>
-                      </linearGradient>
-                    </defs>
-                  </svg>
-                  <span>{navTranslations.nanoBananaPro || defaultNavTranslations.nanoBananaPro}</span>
-                </Link>
-                <Link
-                  href={getLocalizedHref('/model/nano-banana-2')}
-                  onClick={() => setOpenDesktopMenu(null)}
-                  className="order-10 block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
-                >
-                  <img src="/model-logos/google-gemini.png" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="hidden">
-                    <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#aiImageGradient2)" opacity="0.2"/>
-                    <path d="M8 8H16M8 12H14M8 16H12" stroke="url(#aiImageGradient2)" strokeWidth="2" strokeLinecap="round"/>
-                    <circle cx="18" cy="6" r="2" fill="url(#aiImageGradient2)"/>
-                    <defs>
-                      <linearGradient id="aiImageGradient2" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
-                        <stop stopColor="#9333EA"/>
-                        <stop offset="1" stopColor="#4F46E5"/>
-                      </linearGradient>
-                    </defs>
-                  </svg>
-                  <span>{navTranslations.nanoBanana2 || defaultNavTranslations.nanoBanana2}</span>
-                </Link>
-                <Link
-                  href={getLocalizedHref('/model/seedream-4-5')}
-                  onClick={() => setOpenDesktopMenu(null)}
-                  className="order-7 block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
-                >
-                  <img src="/model-logos/bytedance.svg" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="hidden">
-                    <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#aiImageGradient4)" opacity="0.2"/>
-                    <path d="M6 16c3-6 9-8 12-8M7 8h5M7 12h8" stroke="url(#aiImageGradient4)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <defs>
-                      <linearGradient id="aiImageGradient4" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
-                        <stop stopColor="#9333EA"/>
-                        <stop offset="1" stopColor="#4F46E5"/>
-                      </linearGradient>
-                    </defs>
-                  </svg>
-                  <span>{navTranslations.seedream45 || defaultNavTranslations.seedream45}</span>
-                </Link>
-                <Link
-                  href={getLocalizedHref('/model/seedream-5-0-lite')}
-                  onClick={() => setOpenDesktopMenu(null)}
-                  className="order-6 block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors flex items-center gap-2 whitespace-nowrap cursor-pointer"
-                >
-                  <img src="/model-logos/bytedance.svg" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="hidden">
-                    <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#aiImageGradient50Lite)" opacity="0.2"/>
-                    <path d="M7 8h7M7 12h10M7 16h6M17 6l1.5 3L21 10.5l-2.5 1.5L17 15l-1.5-3L13 10.5 15.5 9 17 6Z" stroke="url(#aiImageGradient50Lite)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                    <defs>
-                      <linearGradient id="aiImageGradient50Lite" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
-                        <stop stopColor="#9333EA"/>
-                        <stop offset="1" stopColor="#4F46E5"/>
-                      </linearGradient>
-                    </defs>
-                  </svg>
-                  <span>{navTranslations.seedream50Lite || defaultNavTranslations.seedream50Lite}</span>
-                </Link>
+            <div className={'absolute top-full left-0 pt-2 w-[560px] max-w-[calc(100vw-2rem)] bg-transparent transition-all duration-200 z-50 ' + (openDesktopMenu === 'ai-image' ? 'opacity-100 visible' : 'opacity-0 invisible group-hover:opacity-100 group-hover:visible')}>
+              <div className="overflow-hidden rounded-xl border border-indigo-50 bg-white p-4 shadow-xl">
+                <div data-ai-image-section="functions" className="grid gap-2">
+                  {AI_IMAGE_FUNCTION_MENU_ITEMS.map((item) => renderAiImageFunctionMenuItem(item, 'desktop'))}
+                </div>
+                <div data-ai-image-section="models" className="mt-4 border-t border-indigo-50 pt-4">
+                  <div className="mb-3 text-xs font-extrabold uppercase tracking-wide text-slate-500">
+                    {navTranslations.supportedAiModels || defaultNavTranslations.supportedAiModels}
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {AI_IMAGE_MODEL_MENU_ITEMS.map((item) => renderAiImageModelMenuItem(item, 'desktop'))}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -2338,226 +2305,17 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
               </div>
               {/* AI Image 部分 */}
               <div className="order-1 border-b border-indigo-50 pb-4">
-                <div className="text-sm font-bold text-slate-700 mb-3">{navTranslations.aiImage || defaultNavTranslations.aiImage}</div>
-                <div className="flex flex-col gap-2">
-                  <Link
-                    href={getLocalizedHref('/ai-image-generator')}
-                    onClick={() => {
-                      setMobileMenuOpen(false)
-                      setExpandedSubmenus(new Set())
-                    }}
-                    className="order-1 flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
-                  >
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
-                      <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#aiImageGeneratorGradientMobile)" opacity="0.2"/>
-                      <path d="M6 16l4-4 3 3 5-6" stroke="url(#aiImageGeneratorGradientMobile)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                      <path d="M16 5l1 2 2 1-2 1-1 2-1-2-2-1 2-1 1-2Z" fill="url(#aiImageGeneratorGradientMobile)"/>
-                      <defs>
-                        <linearGradient id="aiImageGeneratorGradientMobile" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
-                          <stop stopColor="#9333EA"/>
-                          <stop offset="1" stopColor="#4F46E5"/>
-                        </linearGradient>
-                      </defs>
-                    </svg>
-                    <span>{navTranslations.aiImageGenerator || defaultNavTranslations.aiImageGenerator}</span>
-                  </Link>
-                  <Link
-                    href={getLocalizedHref('/text-to-image-generator')}
-                    onClick={() => {
-                      setMobileMenuOpen(false)
-                      setExpandedSubmenus(new Set())
-                    }}
-                    className="order-2 flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
-                  >
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
-                      <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#textToImageGeneratorGradientMobile)" opacity="0.2"/>
-                      <path d="M7 8h4M7 12h7M7 16h5" stroke="url(#textToImageGeneratorGradientMobile)" strokeWidth="2" strokeLinecap="round"/>
-                      <path d="M16 7l1 2 2 1-2 1-1 2-1-2-2-1 2-1 1-2Z" fill="url(#textToImageGeneratorGradientMobile)"/>
-                      <defs>
-                        <linearGradient id="textToImageGeneratorGradientMobile" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
-                          <stop stopColor="#9333EA"/>
-                          <stop offset="1" stopColor="#4F46E5"/>
-                        </linearGradient>
-                      </defs>
-                    </svg>
-                    <span>{navTranslations.textToImageGenerator || defaultNavTranslations.textToImageGenerator}</span>
-                  </Link>
-                  <Link
-                    href={getLocalizedHref('/ai-image-to-image-generator')}
-                    onClick={() => {
-                      setMobileMenuOpen(false)
-                      setExpandedSubmenus(new Set())
-                    }}
-                    className="order-3 flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
-                  >
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
-                      <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#aiImageToImageGradientMobile)" opacity="0.2"/>
-                      <path d="M6 8h7M6 12h5M6 16h7" stroke="url(#aiImageToImageGradientMobile)" strokeWidth="2" strokeLinecap="round"/>
-                      <path d="M15 7l3 3-3 3M18 10H12" stroke="url(#aiImageToImageGradientMobile)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                      <defs>
-                        <linearGradient id="aiImageToImageGradientMobile" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
-                          <stop stopColor="#9333EA"/>
-                          <stop offset="1" stopColor="#4F46E5"/>
-                        </linearGradient>
-                      </defs>
-                    </svg>
-                    <span>{navTranslations.aiImageToImageGenerator || defaultNavTranslations.aiImageToImageGenerator}</span>
-                  </Link>
-                  <Link
-                    href={getLocalizedHref('/model/gpt-image-2')}
-                    onClick={() => {
-                      setMobileMenuOpen(false)
-                      setExpandedSubmenus(new Set())
-                    }}
-                    className="order-4 flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
-                  >
-                    <img src="/model-logos/openai.svg" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="hidden">
-                      <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#aiImageGradientMobile3)" opacity="0.2"/>
-                      <path d="M7 15l3-3 2 2 5-5" stroke="url(#aiImageGradientMobile3)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                      <defs>
-                        <linearGradient id="aiImageGradientMobile3" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
-                          <stop stopColor="#9333EA"/>
-                          <stop offset="1" stopColor="#4F46E5"/>
-                        </linearGradient>
-                      </defs>
-                  </svg>
-                  <span className="inline-flex items-center gap-2">
-                    <span>{navTranslations.gptImage2 || defaultNavTranslations.gptImage2}</span>
-                    <span className="rounded-full bg-red-500 px-1.5 py-0.5 text-[10px] font-extrabold leading-none text-white">{navTranslations.hot || defaultNavTranslations.hot}</span>
-                  </span>
-                </Link>
-                <Link
-                  href={getLocalizedHref('/model/seedream-5-0-pro')}
-                  onClick={() => {
-                    setMobileMenuOpen(false)
-                    setExpandedSubmenus(new Set())
-                  }}
-                  className="order-5 flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
-                >
-                  <img src="/model-logos/bytedance.svg" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="hidden">
-                    <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#aiImageGradientMobile50Pro)" opacity="0.2"/>
-                    <path d="M7 8h10M7 12h7M7 16h5M17 5l1.8 3.4L22 10l-3.2 1.6L17 15l-1.8-3.4L12 10l3.2-1.6L17 5Z" stroke="url(#aiImageGradientMobile50Pro)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                    <defs>
-                      <linearGradient id="aiImageGradientMobile50Pro" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
-                        <stop stopColor="#9333EA"/>
-                        <stop offset="1" stopColor="#4F46E5"/>
-                      </linearGradient>
-                    </defs>
-                  </svg>
-                  <span className="inline-flex items-center gap-2">
-                    <span>{navTranslations.seedream50Pro || defaultNavTranslations.seedream50Pro}</span>
-                    <span className="rounded-full bg-emerald-500 px-1.5 py-0.5 text-[10px] font-extrabold leading-none text-white">New</span>
-                  </span>
-                </Link>
-                <Link
-                  href={getLocalizedHref('/model/wan-2-7-image')}
-                  onClick={() => {
-                    setMobileMenuOpen(false)
-                    setExpandedSubmenus(new Set())
-                  }}
-                  className="order-8 flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
-                >
-                  <img src="/model-logos/wan.ico" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="hidden">
-                    <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#aiImageGradientMobileWan27)" opacity="0.2"/>
-                    <path d="M7 8h10M7 12h7M7 16h10M17 6l1.5 3L21 10.5l-2.5 1.5L17 15l-1.5-3L13 10.5 15.5 9 17 6Z" stroke="url(#aiImageGradientMobileWan27)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                    <defs>
-                      <linearGradient id="aiImageGradientMobileWan27" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
-                        <stop stopColor="#9333EA"/>
-                        <stop offset="1" stopColor="#4F46E5"/>
-                      </linearGradient>
-                    </defs>
-                  </svg>
-                  <span>{navTranslations.wan27Image || defaultNavTranslations.wan27Image}</span>
-                </Link>
-                <Link
-                  href={getLocalizedHref('/model/nano-banana-pro')}
-                    onClick={() => {
-                      setMobileMenuOpen(false)
-                      setExpandedSubmenus(new Set())
-                    }}
-                    className="order-9 flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
-                  >
-                    <img src="/model-logos/google-gemini.png" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="hidden">
-                      <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#aiImageGradientMobile)" opacity="0.2"/>
-                      <path d="M8 8H16M8 12H14M8 16H12" stroke="url(#aiImageGradientMobile)" strokeWidth="2" strokeLinecap="round"/>
-                      <circle cx="18" cy="6" r="2" fill="url(#aiImageGradientMobile)"/>
-                      <defs>
-                        <linearGradient id="aiImageGradientMobile" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
-                          <stop stopColor="#9333EA"/>
-                          <stop offset="1" stopColor="#4F46E5"/>
-                        </linearGradient>
-                      </defs>
-                    </svg>
-                    <span>{navTranslations.nanoBananaPro || defaultNavTranslations.nanoBananaPro}</span>
-                  </Link>
-                  <Link
-                    href={getLocalizedHref('/model/nano-banana-2')}
-                    onClick={() => {
-                      setMobileMenuOpen(false)
-                      setExpandedSubmenus(new Set())
-                    }}
-                    className="order-10 flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
-                  >
-                    <img src="/model-logos/google-gemini.png" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="hidden">
-                      <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#aiImageGradientMobile2)" opacity="0.2"/>
-                      <path d="M8 8H16M8 12H14M8 16H12" stroke="url(#aiImageGradientMobile2)" strokeWidth="2" strokeLinecap="round"/>
-                      <circle cx="18" cy="6" r="2" fill="url(#aiImageGradientMobile2)"/>
-                      <defs>
-                        <linearGradient id="aiImageGradientMobile2" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
-                          <stop stopColor="#9333EA"/>
-                          <stop offset="1" stopColor="#4F46E5"/>
-                        </linearGradient>
-                      </defs>
-                    </svg>
-                    <span>{navTranslations.nanoBanana2 || defaultNavTranslations.nanoBanana2}</span>
-                  </Link>
-                  <Link
-                    href={getLocalizedHref('/model/seedream-4-5')}
-                    onClick={() => {
-                      setMobileMenuOpen(false)
-                      setExpandedSubmenus(new Set())
-                    }}
-                    className="order-7 flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
-                  >
-                    <img src="/model-logos/bytedance.svg" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="hidden">
-                      <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#aiImageGradientMobile4)" opacity="0.2"/>
-                      <path d="M6 16c3-6 9-8 12-8M7 8h5M7 12h8" stroke="url(#aiImageGradientMobile4)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                      <defs>
-                        <linearGradient id="aiImageGradientMobile4" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
-                          <stop stopColor="#9333EA"/>
-                          <stop offset="1" stopColor="#4F46E5"/>
-                        </linearGradient>
-                      </defs>
-                    </svg>
-                    <span>{navTranslations.seedream45 || defaultNavTranslations.seedream45}</span>
-                  </Link>
-                  <Link
-                    href={getLocalizedHref('/model/seedream-5-0-lite')}
-                    onClick={() => {
-                      setMobileMenuOpen(false)
-                      setExpandedSubmenus(new Set())
-                    }}
-                    className="order-6 flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"
-                  >
-                    <img src="/model-logos/bytedance.svg" alt="" width="20" height="20" className="flex-shrink-0 rounded" />
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="hidden">
-                      <rect x="2" y="2" width="20" height="20" rx="2" fill="url(#aiImageGradientMobile50Lite)" opacity="0.2"/>
-                      <path d="M7 8h7M7 12h10M7 16h6M17 6l1.5 3L21 10.5l-2.5 1.5L17 15l-1.5-3L13 10.5 15.5 9 17 6Z" stroke="url(#aiImageGradientMobile50Lite)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                      <defs>
-                        <linearGradient id="aiImageGradientMobile50Lite" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
-                          <stop stopColor="#9333EA"/>
-                          <stop offset="1" stopColor="#4F46E5"/>
-                        </linearGradient>
-                      </defs>
-                    </svg>
-                    <span>{navTranslations.seedream50Lite || defaultNavTranslations.seedream50Lite}</span>
-                  </Link>
+                <div className="mb-3 text-sm font-bold text-slate-700">{navTranslations.aiImage || defaultNavTranslations.aiImage}</div>
+                <div data-ai-image-section="functions" className="space-y-2">
+                  {AI_IMAGE_FUNCTION_MENU_ITEMS.map((item) => renderAiImageFunctionMenuItem(item, 'mobile'))}
+                </div>
+                <div data-ai-image-section="models" className="mt-4 border-t border-indigo-50 pt-4">
+                  <div className="mb-3 text-xs font-extrabold uppercase tracking-wide text-slate-500">
+                    {navTranslations.supportedAiModels || defaultNavTranslations.supportedAiModels}
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {AI_IMAGE_MODEL_MENU_ITEMS.map((item) => renderAiImageModelMenuItem(item, 'mobile'))}
+                  </div>
                 </div>
               </div>
               {/* AI Video 部分 */}

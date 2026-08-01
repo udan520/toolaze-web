@@ -19,3 +19,9 @@ test('Cloudflare static export temporarily excludes dynamic admin routes', () =>
   assert.match(nextBuildSource, /\.admin-backup/)
   assert.match(postbuildSource, /\.admin-backup/)
 })
+
+test('standard Next build wrapper enables the build worker for complete route manifests', () => {
+  const nextBuildSource = readProjectFile('scripts/next-build.js')
+
+  assert.match(nextBuildSource, /NEXT_PRIVATE_BUILD_WORKER:\s*process\.env\.NEXT_PRIVATE_BUILD_WORKER\s*\|\|\s*'1'/)
+})
