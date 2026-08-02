@@ -85,6 +85,7 @@ const AI_IMAGE_TOOL_TOP_COMPONENTS = new Set(['gpt-image-2'])
 const VIDEO_GENERATOR_DEFAULT_MODELS: Record<string, AiVideoGeneratorModelId> = {
   'ai-video-generator': 'grok-1-5-video',
   'ai-asmr-video-generator': 'grok-1-5-video',
+  'wan-2-7-ai-video-generator': 'wan-2-7',
   'wan-2-5-ai-video-generator': 'wan-2-5',
   'kling-ai-video-generator': 'kling-3',
   'seedance-2': 'seedance-2',
@@ -784,6 +785,12 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
           { label: breadcrumbT.model || 'Model', href: '/model' },
           { label: 'Seedance 2.5' },
         ]
+      : tool === 'wan-2-7-ai-video-generator'
+      ? [
+          { label: breadcrumbT.home, href: '/' },
+          { label: breadcrumbT.model || 'Model', href: '/model' },
+          { label: 'Wan 2.7 AI Video Generator' },
+        ]
       : tool === 'wan-2-5-ai-video-generator'
       ? [
           { label: breadcrumbT.home, href: '/' },
@@ -821,6 +828,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
       'gpt-image-2',
       'nano-banana-2',
       'ai-video-generator',
+      'wan-2-7-ai-video-generator',
       'wan-2-5-ai-video-generator',
       'text-to-video-generator',
       'talking-avatar-creator',
@@ -833,6 +841,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
       if (modelTool === 'nano-banana-pro') return locale === 'en' ? '/model/nano-banana-pro' : `/${locale}/model/nano-banana-pro`
       if (modelTool === 'nano-banana-2') return locale === 'en' ? '/model/nano-banana-2' : `/${locale}/model/nano-banana-2`
       if (modelTool === 'gpt-image-2') return locale === 'en' ? '/model/gpt-image-2' : `/${locale}/model/gpt-image-2`
+      if (modelTool === 'wan-2-7-ai-video-generator') return locale === 'en' ? '/model/wan-2-7-ai-video-generator' : `/${locale}/model/wan-2-7-ai-video-generator`
       if (modelTool === 'wan-2-5-ai-video-generator') return locale === 'en' ? '/model/wan-2-5-ai-video-generator' : `/${locale}/model/wan-2-5-ai-video-generator`
       if (modelTool === 'seedance-2-5') return locale === 'en' ? '/model/seedance-2-5' : `/${locale}/model/seedance-2-5`
       if (modelTool === 'seedance-2') return locale === 'en' ? '/model/seedance-2' : `/${locale}/model/seedance-2`
@@ -1331,7 +1340,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
             const sectionRenderers: Record<string, (bgClass: string, index: number) => React.ReactNode> = {
               modelIntro: () => {
                 const mi = content.modelIntro as { title?: string; description?: string | string[]; image?: { src: string; alt: string }; modelName?: string; modelType?: string; featureCards?: Array<{ title: string; content: string }> } | undefined
-                if (!mi?.title || !mi?.featureCards || mi.featureCards.length < 3) return null
+                if (!mi?.title) return null
                 return (
                   <ModelIntroBlock
                     key="modelIntro"
@@ -1340,7 +1349,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                     image={mi.image}
                     modelName={mi.modelName}
                     modelType={mi.modelType}
-                    featureCards={[mi.featureCards[0], mi.featureCards[1], mi.featureCards[2]]}
+                    featureCards={mi.featureCards?.slice(0, 3)}
                   />
                 )
               },
@@ -1396,14 +1405,18 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
               modelComparison: (bgClass: string) => {
                 const modelComparison = content.modelComparison as {
                   title?: string
-                  rows?: Array<{ label: string; baseline: string; target: string }>
-                  columnHeaders?: { metric?: string; baseline?: string; target?: string }
+                  subtitle?: string
+                  featuredColumn?: 'baseline' | 'middle' | 'target'
+                  rows?: Array<{ label: string; baseline: string; middle?: string; target: string }>
+                  columnHeaders?: { metric?: string; baseline?: string; middle?: string; target?: string }
                 } | undefined
                 if (!modelComparison?.rows || modelComparison.rows.length === 0) return null
                 return (
                   <ModelComparisonTable
                     key="modelComparison"
                     title={modelComparison.title}
+                    subtitle={modelComparison.subtitle}
+                    featuredColumn={modelComparison.featuredColumn}
                     rows={modelComparison.rows}
                     columnHeaders={modelComparison.columnHeaders}
                     bgClass={bgClass}
@@ -1413,14 +1426,18 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
               competitorComparison: (bgClass: string) => {
                 const competitorComparison = content.competitorComparison as {
                   title?: string
-                  rows?: Array<{ label: string; baseline: string; target: string }>
-                  columnHeaders?: { metric?: string; baseline?: string; target?: string }
+                  subtitle?: string
+                  featuredColumn?: 'baseline' | 'middle' | 'target'
+                  rows?: Array<{ label: string; baseline: string; middle?: string; target: string }>
+                  columnHeaders?: { metric?: string; baseline?: string; middle?: string; target?: string }
                 } | undefined
                 if (!competitorComparison?.rows || competitorComparison.rows.length === 0) return null
                 return (
                   <ModelComparisonTable
                     key="competitorComparison"
                     title={competitorComparison.title}
+                    subtitle={competitorComparison.subtitle}
+                    featuredColumn={competitorComparison.featuredColumn}
                     rows={competitorComparison.rows}
                     columnHeaders={competitorComparison.columnHeaders}
                     bgClass={bgClass}

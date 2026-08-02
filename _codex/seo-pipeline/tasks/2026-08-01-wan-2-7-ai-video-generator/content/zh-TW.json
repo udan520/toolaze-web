@@ -1,0 +1,304 @@
+{
+  "in_menu": true,
+  "seoFactoryTaskId": "2026-08-01-wan-2-7-ai-video-generator",
+  "topComponent": "wan-2-7-ai-video-generator",
+  "topTool": {
+    "modelId": "wan-2-7",
+    "defaultMode": "text-to-video",
+    "mode": "text-to-video",
+    "displayName": "Wan 2.7"
+  },
+  "metadata": {
+    "title": "Wan 2.7 AI 影片生成器 | 文字轉影片與圖片轉影片",
+    "description": "在 Toolaze 使用 Wan 2.7，從文字提示或最多兩張參考圖建立 AI 影片，支援 2 到 10 秒、16:9、9:16、1:1 與 720p/1080p。",
+    "published": true
+  },
+  "hero": {
+    "h1": "<span class=\"text-gradient\">Wan 2.7</span> AI 影片生成器",
+    "desc": "使用 Wan 2.7 從文字提示或最多兩張參考圖建立影片。可選文字轉影片或圖片轉影片，設定 16:9、9:16 或 1:1，選擇 2 到 10 秒與 720p/1080p，並清楚描述動作、鏡頭、燈光與聲音方向。"
+  },
+  "heroDemoVideo": {
+    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/c07d1db481dd4e9b8e190ebb39611f08.png",
+    "ariaLabel": "Toolaze Wan 2.7 16:9 示範影片預覽",
+    "width": 16,
+    "height": 9,
+    "sourceHistory": "User-provided Wan 2.7 demo video · 16:9 · 5.01s · 1920x1080 · 2026-08-02",
+    "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/6e2548965fc5487ca41221f9d663dfcb.webp",
+    "duration": "PT5.01S"
+  },
+  "sectionsOrder": [
+    "modelIntro",
+    "howToUse",
+    "promptExamples",
+    "troubleshooting",
+    "scenes",
+    "modelComparison",
+    "workflowComparison",
+    "faq"
+  ],
+  "modelIntro": {
+    "title": "什麼是 Wan 2.7 AI 影片生成器？",
+    "modelName": "Wan 2.7",
+    "modelType": "AI 影片模型",
+    "description": [
+      "Wan 2.7 是 Alibaba Wan 系列中較新的影片模型，適合用提示詞設計動態畫面。在 Toolaze 中，它整合在 AI 影片生成器裡，可以從文字開始，也可以上傳參考圖，再用同一段提示詞描述動作、鏡頭移動、光線、材質、節奏與聲音方向。",
+      "Toolaze 的 Wan 2.7 設定聚焦於短而可控的影片：2 到 10 秒、16:9、9:16 或 1:1，以及 720p 或 1080p。它適合觸感產品動態、ASMR 風格材質細節、社群短片、分鏡節拍，以及需要保留起始畫面辨識度的圖片引導動畫。",
+      "如果你想在 Toolaze 使用最新 Wan 選項，並需要彈性短片時長、最多兩張參考圖、模型選擇、提示詞範例、最近歷史、預覽、重新生成與下載集中在同一個瀏覽器流程中，Wan 2.7 是很直接的起點。"
+    ]
+  },
+  "promptExamples": {
+    "title": "Wan 2.7 提示詞範例",
+    "subtitle": "想要可控動態、短片節奏與能理解聲音方向的影片指令時，可以複製這些提示詞。",
+    "layout": "grid",
+    "items": [
+      {
+        "title": "雨夜市集音效運鏡",
+        "prompt": "建立一段 10 秒 9:16 的 Wan 2.7 影片，內容是小雨中的夜市小吃攤。鏡頭從發光菜單招牌推進到雙手在熱鐵板上翻動蔥油餅。加入蒸氣、街燈反射、同步滋滋聲、雨打帆布的聲音，以及柔和的人群環境音。",
+        "description": "用音效引導氛圍、食物動態、雨景細節與同步聲音的場景提示詞。",
+        "aspectRatio": "9:16"
+      },
+      {
+        "title": "露營燈組裝特寫",
+        "prompt": "建立一段 5 秒 9:16 特寫影片，呈現一盞小型露營燈在工作台上組裝完成。顯示髮絲紋金屬面板滑入定位、拇指按下開關、暖光穿過霧面玻璃、淺景深、乾淨產品陰影，以及精準的喀噠聲與低鳴聲。",
+        "description": "適合小型組裝、材質細節與短促同步聲音的觸感產品提示詞。",
+        "aspectRatio": "9:16"
+      },
+      {
+        "title": "單圖角色走路循環",
+        "prompt": "將上傳的全身角色概念圖製作成 5 秒 9:16 走路循環。保留參考圖中的臉、服裝、輪廓與色彩。加入緩慢側向跟拍、輕微外套與髮絲動態、潮濕霓虹反光與安靜腳步聲，不要改變角色身份。",
+        "description": "用一張參考角色圖保持身份一致，同時加入可控動態的圖片轉影片提示詞。",
+        "aspectRatio": "9:16"
+      },
+      {
+        "title": "清晨建築滑行鏡頭",
+        "prompt": "建立一段 10 秒 9:16 電影感滑行鏡頭，穿過日出時安靜的現代中庭住宅。從石材廚房中島開始，滑過玻璃拉門，最後停在中庭裡輕微擺動的植物。保持垂直線穩定、自然陰影、柔和室內環境音、戶外鳥鳴，並避免牆面變形。",
+        "description": "用於穩定建築、自然光與柔和環境音的鏡頭控制提示詞。",
+        "aspectRatio": "9:16"
+      }
+    ]
+  },
+  "workflowComparison": {
+    "title": "Wan 2.7 與其他 Toolaze 影片模型比較",
+    "subtitle": "花費點數前，先比較設定與各模型擅長的方向。",
+    "columns": [
+      "模型選擇",
+      "適合用途",
+      "需要確認"
+    ],
+    "rows": [
+      [
+        "Wan 2.7",
+        "支援文字或圖片輸入的彈性 Wan 短片，2 到 10 秒、最多兩張參考圖與 720p/1080p 輸出。",
+        "當你想用最新 Wan 選項並需要更廣的短片控制時使用。"
+      ],
+      [
+        "Kling 3.0",
+        "高階電影感動態、多圖輸入、聲音引導，以及 Toolaze 中最高 4K 設定。",
+        "當動態幅度或 4K 很重要時使用。"
+      ],
+      [
+        "Grok 1.5 Video",
+        "快速圖片轉影片草稿、創作者短片、產品動態，以及低成本 480p/720p 測試。",
+        "當速度與快速迭代最重要時使用。"
+      ],
+      [
+        "Seedance 2.0",
+        "具備更多參考輸入與較長設定選項的高控制 ByteDance 影片生成。",
+        "當多模態控制與較長短片很重要時使用。"
+      ]
+    ]
+  },
+  "howToUse": {
+    "title": "如何在 Toolaze 使用 Wan 2.7",
+    "steps": [
+      {
+        "title": "選擇 Wan 2.7",
+        "desc": "在 AI 影片生成器的模型選單中，從 Wan 模型群組選擇 Wan 2.7。"
+      },
+      {
+        "title": "選擇模式",
+        "desc": "需要完整文字場景時使用文字轉影片；需要參考圖引導畫面時使用圖片轉影片。"
+      },
+      {
+        "title": "設定輸出",
+        "desc": "選擇 16:9、9:16 或 1:1，設定 2 到 10 秒，並選擇 720p 或 1080p。"
+      },
+      {
+        "title": "生成並微調",
+        "desc": "預覽短片，調整動作或聲音描述，必要時重新生成，再下載想保留的影片。"
+      }
+    ]
+  },
+  "troubleshooting": {
+    "title": "讓 Wan 2.7 結果更好的提示詞技巧",
+    "subtitle": "Wan 2.7 在提示詞具體、簡短，且符合所選時長時通常更穩定。",
+    "items": [
+      {
+        "title": "描述一個主要動作",
+        "desc": "在 2 到 10 秒短片中，單一清楚動作通常比多次場景切換更穩定。"
+      },
+      {
+        "title": "加入鏡頭方向",
+        "desc": "可使用慢慢推近、固定腳架、俯拍微距、手持、環繞或輕微視差等描述。"
+      },
+      {
+        "title": "把聲音寫成場景的一部分",
+        "desc": "只有在需要聲音引導時，才描述清脆切割、柔和倒入、布料摩擦、室內聲、環境音或對話。"
+      }
+    ]
+  },
+  "scenesTitle": "你可以用 Wan 2.7 建立什麼",
+  "scenes": [
+    {
+      "title": "觸感 ASMR 短片",
+      "icon": "🧊",
+      "desc": "建立切割、壓碎、倒入、敲擊、刷拭、包裝與材質聲音的短篇特寫。"
+    },
+    {
+      "title": "產品動態廣告",
+      "icon": "🛍️",
+      "desc": "把產品照片轉成適合付費社群、電商頁面與活動測試的短篇商業影片。"
+    },
+    {
+      "title": "參考圖動畫",
+      "icon": "🖼️",
+      "desc": "讓最多兩張上傳圖片動起來，同時保留主體、形狀、版面、色彩與鏡頭角度。"
+    },
+    {
+      "title": "社群短片",
+      "icon": "📱",
+      "desc": "生成 Reels、TikTok 與 Shorts 可用的開場、揭示循環、直式短片與吸睛片段。"
+    },
+    {
+      "title": "分鏡節拍",
+      "icon": "🎬",
+      "desc": "快速草擬包含動作、鏡頭、光線、節奏與聲音方向的單一場景。"
+    },
+    {
+      "title": "氛圍循環",
+      "icon": "🌧️",
+      "desc": "建立雨打玻璃、桌面佈置、產品靜物或咖啡館場景等安靜氛圍循環。"
+    }
+  ],
+  "faqTitle": "Wan 2.7 AI 影片生成器常見問題",
+  "faq": [
+    {
+      "q": "什麼是 Wan 2.7 AI 影片生成器？",
+      "a": "Wan 2.7 會使用 Alibaba Wan 系列模型建立短篇 AI 影片。在 Toolaze 中，你可以使用文字轉影片或圖片轉影片，並控制提示詞、比例、時長、解析度與參考輸入。"
+    },
+    {
+      "q": "Wan 2.7 在 Toolaze 支援圖片轉影片嗎？",
+      "a": "支援。Toolaze 的 Wan 2.7 圖片轉影片可使用最多兩張上傳參考圖。提示詞應說明哪些內容要移動，哪些內容需要保持一致。"
+    },
+    {
+      "q": "Wan 2.7 支援文字轉影片嗎？",
+      "a": "支援。你可以從文字提示開始，描述主體、動作、鏡頭、燈光、風格與聲音方向，然後生成短篇影片。"
+    },
+    {
+      "q": "可以選擇哪些時長與解析度？",
+      "a": "Toolaze 的 Wan 2.7 設定提供 2 到 10 秒短片，可輸出 720p 或 1080p。"
+    },
+    {
+      "q": "可以描述聲音或 ASMR 節奏嗎？",
+      "a": "可以。當聲音有助於場景時，可以在提示詞中寫入聲音方向、ASMR 節奏、環境音與材質提示。生成器會在生成前顯示目前可用選項。"
+    },
+    {
+      "q": "Wan 2.7 可以使用幾張參考圖？",
+      "a": "在 Toolaze 中，Wan 2.7 的圖片轉影片可使用最多兩張上傳圖片。請選擇主體與構圖清楚可見的起始畫面。"
+    },
+    {
+      "q": "Wan 2.7 需要多少點數？",
+      "a": "Wan 2.7 的 2 秒 720p 生成從 64 點開始。更長時長或 1080p 輸出會在生成前提高所需點數。"
+    },
+    {
+      "q": "Wan 2.7 在 Toolaze 免費嗎？",
+      "a": "可用性可能取決於你目前的點數、帳戶狀態、模型供應、時長與解析度。生成器會在生成前顯示目前需求。"
+    },
+    {
+      "q": "什麼時候選 Wan 2.7 而不是 Wan 2.5？",
+      "a": "當你想使用 Toolaze 最新 Wan 模型、2 到 10 秒彈性時長與最多兩張參考圖時，選 Wan 2.7。若只需要較簡單的舊版 Wan 設定，可選 Wan 2.5。"
+    }
+  ],
+  "moreTools": "更多 AI 影片模型",
+  "moreToolsLinks": [
+    {
+      "title": "Wan 2.5 影片",
+      "description": "探索 Wan 2.5，使用較簡單的舊版 Wan 短片設定與熟悉控制。",
+      "href": "/model/wan-2-5-ai-video-generator",
+      "media": {
+        "type": "video",
+        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/prompt-templates/storyboard-scene.mp4",
+        "alt": "Wan 2.5 影片預覽"
+      }
+    },
+    {
+      "title": "Seedance 2.0",
+      "description": "使用 Seedance 2.0，從文字提示或參考圖建立電影感 AI 影片。",
+      "href": "/model/seedance-2",
+      "media": {
+        "type": "video",
+        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d0d55df5eef346809067197fddb1b251.png",
+        "alt": "Seedance 2.0 影片預覽"
+      }
+    },
+    {
+      "title": "Kling 3.0",
+      "description": "探索適合動態電影感運動的高階影片模型。",
+      "href": "/model/kling-3",
+      "media": {
+        "type": "video",
+        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
+        "alt": "Kling 3.0 影片預覽"
+      }
+    }
+  ],
+  "modelComparison": {
+    "title": "Wan 2.7 與 Wan 2.6 / Wan 2.5 比較",
+    "subtitle": "依照參考圖控制、時長範圍、聲音處理與起始點數選擇。Wan 2.7 適合需要最多兩張參考圖與彈性短片測試的情境；Wan 2.6 適合較長 Wan 短片與多鏡頭場景；Wan 2.5 則適合一張參考圖、5 或 10 秒的穩定短片。",
+    "columnHeaders": {
+      "metric": "決策重點",
+      "baseline": "Wan 2.7",
+      "middle": "Wan 2.6",
+      "target": "Wan 2.5"
+    },
+    "rows": [
+      {
+        "label": "輸入控制",
+        "baseline": "文字提示或最多兩張參考圖，提供更強的影像引導。",
+        "middle": "文字提示或一張參考圖，並支援多鏡頭場景。",
+        "target": "文字提示或一張參考圖，適合簡單圖片轉影片。"
+      },
+      {
+        "label": "短片時長",
+        "baseline": "可選 2 到 10 秒之間任意時長。",
+        "middle": "5、10 或 15 秒。",
+        "target": "5 或 10 秒。"
+      },
+      {
+        "label": "聲音處理",
+        "baseline": "可用理解音訊方向的提示詞描述 ASMR 節奏與氛圍。",
+        "middle": "原生音訊輸出加上多鏡頭控制。",
+        "target": "可使用原生音訊輸出產生同步聲音。"
+      },
+      {
+        "label": "解析度",
+        "baseline": "最新 Wan 控制下支援 720p 或 1080p。",
+        "middle": "較長預設短片支援 720p 或 1080p。",
+        "target": "熟悉草稿流程支援 720p 或 1080p。"
+      },
+      {
+        "label": "起始點數",
+        "baseline": "2 秒 720p 輸出從 64 點開始。",
+        "middle": "5 秒 720p 輸出從 140 點開始。",
+        "target": "5 秒 720p 輸出從 120 點開始。"
+      },
+      {
+        "label": "適合選擇",
+        "baseline": "需要快速 2 秒測試、彈性短片節奏，或兩張參考圖時。",
+        "middle": "需要較長 15 秒 Wan 短片，或多鏡頭場景控制時。",
+        "target": "需要一張參考圖與熟悉 5/10 秒節奏的穩定短片時。"
+      }
+    ],
+    "featuredColumn": "baseline"
+  }
+}

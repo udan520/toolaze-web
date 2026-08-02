@@ -416,6 +416,18 @@ const wan25VideoModelCards: Record<ModelPageLocale, ModelCard> = {
   it: { title: 'Wan 2.5 Video', href: '/model/wan-2-5-ai-video-generator', description: 'Crea clip Wan 2.5 da testo in video e immagine in video con 5/10 secondi, 720p/1080p e audio nativo.', tags: ['Testo in video', 'Immagine in video', 'Audio nativo'], cta: 'Prova Wan 2.5 Video', icon: 'plainText' },
 }
 
+const wan27VideoModelCards: Record<ModelPageLocale, ModelCard> = {
+  en: { title: 'Wan 2.7 Video', href: '/model/wan-2-7-ai-video-generator', description: 'Create Wan 2.7 text-to-video and image-to-video clips with 2–10 seconds, up to two reference images, and 720p/1080p output.', tags: ['Text to Video', 'Image to Video', '2–10s'], cta: 'Try Wan 2.7 Video', icon: 'plainText' },
+  de: { title: 'Wan 2.7 Video', href: '/model/wan-2-7-ai-video-generator', description: 'Erstellen Sie Wan 2.7 Text-zu-Video- und Bild-zu-Video-Clips mit 2–10 Sekunden, bis zu zwei Referenzbildern und 720p/1080p.', tags: ['Text zu Video', 'Bild zu Video', '2–10s'], cta: 'Wan 2.7 Video ausprobieren', icon: 'plainText' },
+  ja: { title: 'Wan 2.7動画', href: '/model/wan-2-7-ai-video-generator', description: 'Wan 2.7でテキスト動画と画像動画を作成し、2〜10秒、最大2枚の参照画像、720p/1080pを使えます。', tags: ['テキスト動画', '画像動画', '2〜10秒'], cta: 'Wan 2.7動画を試す', icon: 'plainText' },
+  es: { title: 'Wan 2.7 Video', href: '/model/wan-2-7-ai-video-generator', description: 'Crea clips Wan 2.7 de texto a video e imagen a video con 2 a 10 segundos, hasta dos imágenes de referencia y 720p/1080p.', tags: ['Texto a video', 'Imagen a video', '2–10s'], cta: 'Probar Wan 2.7 Video', icon: 'plainText' },
+  'zh-TW': { title: 'Wan 2.7 影片', href: '/model/wan-2-7-ai-video-generator', description: '使用 Wan 2.7 建立文字轉影片與圖片轉影片短片，支援 2 到 10 秒、最多兩張參考圖與 720p/1080p。', tags: ['文字轉影片', '圖片轉影片', '2 到 10 秒'], cta: '試用 Wan 2.7 影片', icon: 'plainText' },
+  pt: { title: 'Wan 2.7 Vídeo', href: '/model/wan-2-7-ai-video-generator', description: 'Crie clipes Wan 2.7 de texto para vídeo e imagem para vídeo com 2 a 10 segundos, até duas referências e 720p/1080p.', tags: ['Texto para vídeo', 'Imagem para vídeo', '2–10s'], cta: 'Testar Wan 2.7 Vídeo', icon: 'plainText' },
+  fr: { title: 'Vidéo Wan 2.7', href: '/model/wan-2-7-ai-video-generator', description: 'Créez des clips Wan 2.7 texte vers vidéo et image vers vidéo avec 2 à 10 secondes, jusqu’à deux références et 720p/1080p.', tags: ['Texte vers vidéo', 'Image vers vidéo', '2–10s'], cta: 'Essayer Wan 2.7 Vidéo', icon: 'plainText' },
+  ko: { title: 'Wan 2.7 동영상', href: '/model/wan-2-7-ai-video-generator', description: 'Wan 2.7로 2~10초, 최대 2장 참조 이미지, 720p/1080p 설정의 텍스트 동영상과 이미지 동영상을 만드세요.', tags: ['텍스트 동영상', '이미지 동영상', '2~10초'], cta: 'Wan 2.7 동영상 사용하기', icon: 'plainText' },
+  it: { title: 'Wan 2.7 Video', href: '/model/wan-2-7-ai-video-generator', description: 'Crea clip Wan 2.7 da testo in video e immagine in video con 2-10 secondi, fino a due riferimenti e 720p/1080p.', tags: ['Testo in video', 'Immagine in video', '2–10s'], cta: 'Prova Wan 2.7 Video', icon: 'plainText' },
+}
+
 export function isModelPageLocale(locale: string): locale is ModelPageLocale {
   return MODEL_PAGE_LOCALES.includes(locale as ModelPageLocale)
 }
@@ -435,7 +447,7 @@ export function getModelPageCopy(locale = 'en'): ModelPageCopy {
       ...copy.hero,
       description: summary.heroDescription,
     },
-    cards: [...copy.cards, wan25VideoModelCards[resolvedLocale]],
+    cards: [...copy.cards, wan27VideoModelCards[resolvedLocale], wan25VideoModelCards[resolvedLocale]],
     about: {
       ...copy.about,
       paragraphs: summary.aboutParagraphs,

@@ -1,0 +1,46 @@
+{
+  "taskId": "2026-08-01-wan-2-7-ai-video-generator",
+  "slug": "wan-2-7-ai-video-generator",
+  "pageType": "l2",
+  "status": "ready_for_publish",
+  "localeCoverage": [
+    "en",
+    "de",
+    "ja",
+    "es",
+    "zh-TW",
+    "pt",
+    "fr",
+    "ko",
+    "it"
+  ],
+  "sourceData": "src/data/en/wan-2-7-ai-video-generator.json",
+  "canonicalPath": "/model/wan-2-7-ai-video-generator",
+  "modelId": "wan-2-7",
+  "createdAt": "2026-08-01T00:00:00.000Z",
+  "owner": "Codex",
+  "intent": "Create a public Toolaze model SEO landing page for Wan 2.7 AI Video Generator with text-to-video, image-to-video, 2 to 10 second duration, and 720p/1080p intent.",
+  "researchSummary": {
+    "officialSignals": [
+      "Toolaze local model configuration exposes Wan 2.7 as a video model with text-to-video, image-to-video, up to two reference images, 2 to 10 second duration, 16:9/9:16/1:1, 720p/1080p, and 64 starting points.",
+      "Toolaze pricing configuration maps Wan 2.7 at 32 points per output second for 720p and 48 points per output second for 1080p, giving 64 points for the 720p × 2 second minimum."
+    ],
+    "competitorPatterns": [
+      "AI video model pages make duration, resolution, input mode, reference image support, and example prompts visible near the top.",
+      "Useful competitor pages place concrete prompt examples and how-to steps close to the generator rather than relying only on broad feature claims.",
+      "The Toolaze page should avoid copying higher competitor limits that are not exposed by Toolaze settings."
+    ]
+  },
+  "releaseBoundary": "Public landing-page release includes route files, desktop and mobile navigation, Footer, AI Tools hub, model hub, sitemap, supported locale data, SEO Factory run records, and targeted tests. SEO Factory dashboards, admin routes, backend migrations, production deploys, commits, and pushes remain excluded.",
+  "publicEntrypoints": [
+    "/model/wan-2-7-ai-video-generator",
+    "/de/model/wan-2-7-ai-video-generator",
+    "/ja/model/wan-2-7-ai-video-generator",
+    "/es/model/wan-2-7-ai-video-generator",
+    "/zh-TW/model/wan-2-7-ai-video-generator",
+    "/pt/model/wan-2-7-ai-video-generator",
+    "/fr/model/wan-2-7-ai-video-generator",
+    "/ko/model/wan-2-7-ai-video-generator",
+    "/it/model/wan-2-7-ai-video-generator"
+  ]
+}

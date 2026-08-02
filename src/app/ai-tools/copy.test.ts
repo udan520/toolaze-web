@@ -16,6 +16,7 @@ const expectedRoutes = [
   '/ai-bikini-generator',
   '/ai-breast-expansion',
   '/ai-asmr-video-generator',
+  '/model/wan-2-7-ai-video-generator',
   '/watermark-remover',
   '/photo-restoration',
 ]
@@ -35,11 +36,11 @@ test('AI Tools hub includes every global AI tool in every locale', () => {
     const cards = getAiToolsPageCopy(locale).cards
     assert.deepEqual(cards.map((card) => card.href), expectedRoutes, `${locale} has missing or mismatched tools`)
     assert.equal(cards.filter((card) => card.category === 'image').length, 11)
-    assert.equal(cards.filter((card) => card.category === 'video').length, 4)
+    assert.equal(cards.filter((card) => card.category === 'video').length, 5)
   }
 })
 
-test('AI Tools hub excludes main generator and model entry points', () => {
+test('AI Tools hub excludes generic generators and non-featured model entry points', () => {
   for (const locale of AI_TOOLS_LOCALES) {
     const routes = getAiToolsPageCopy(locale).cards.map((card) => card.href)
 
@@ -150,7 +151,7 @@ test('AI Tools video category cards provide real video previews', () => {
   for (const locale of AI_TOOLS_LOCALES) {
     const videoCards = getAiToolsPageCopy(locale).cards.filter((card) => card.category === 'video')
 
-    assert.equal(videoCards.length, 4)
+    assert.equal(videoCards.length, 5)
     for (const card of videoCards) {
       assert.ok(card.video, `${locale} ${card.href} should provide a video preview`)
       assert.match(card.video, /^(https:\/\/pub-efeb0c7b9b53478d960218de80c52e3d\.r2\.dev\/|\/model-assets\/)/)

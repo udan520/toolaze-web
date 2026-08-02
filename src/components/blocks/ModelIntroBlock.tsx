@@ -7,7 +7,7 @@ import SiteImage from '@/components/SiteImage'
  *
  * 用于模型介绍页（如 Seedance 2.0）的 SEO 优化内容区块，包含：
  * 1. 顶部概览：H1 标题 + 多段描述 + 右侧配图或模型名占位
- * 2. 底部功能卡片：三个并列的功能/优势介绍卡片
+ * 2. 底部功能卡片：可选的功能/优势介绍卡片
  *
  * 设计规范：Style 1 (Soft Smart Tech)，遵循 SEO_MASTER_LAYOUT.md
  * 无图片时右侧显示模型名占位（如 "Seedance 2.0"）
@@ -43,8 +43,8 @@ export interface ModelIntroBlockProps {
   modelName?: string
   /** 占位副标题，如 "AI Video Model" 或 "AI Image Model" */
   modelType?: string
-  /** 底部三个功能卡片 */
-  featureCards: [ModelIntroFeatureCard, ModelIntroFeatureCard, ModelIntroFeatureCard]
+  /** 底部功能卡片（可选） */
+  featureCards?: ModelIntroFeatureCard[]
   /** 顶部区块背景色，默认 bg-[#F8FAFF] */
   topBgClass?: string
   /** 底部区块背景色，默认 bg-white */
@@ -69,6 +69,7 @@ export default function ModelIntroBlock({
 }: ModelIntroBlockProps) {
   const paragraphs = Array.isArray(description) ? description : [description]
   const showRightColumn = image || modelName
+  const visibleFeatureCards = featureCards?.filter((card) => card.title && card.content) ?? []
 
   return (
     <>
@@ -129,26 +130,27 @@ export default function ModelIntroBlock({
         </div>
       </section>
 
-      {/* 底部功能卡片区块 */}
-      <section className={`${bottomBgClass} py-24 px-6 border-t border-indigo-50/50`}>
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {featureCards.map((card, idx) => (
-              <div
-                key={idx}
-                className={`${CARD_BG_CLASSES[idx]} rounded-[2.5rem] p-8 border border-indigo-100/50 shadow-sm hover:shadow-md transition-all`}
-              >
-                <h3 className="text-xl font-bold text-slate-900 mb-4">
-                  {card.title}
-                </h3>
-                <p className="text-base leading-relaxed text-slate-600">
-                  {card.content}
-                </p>
-              </div>
-            ))}
+      {visibleFeatureCards.length > 0 && (
+        <section className={`${bottomBgClass} py-24 px-6 border-t border-indigo-50/50`}>
+          <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {visibleFeatureCards.map((card, idx) => (
+                <div
+                  key={idx}
+                  className={`${CARD_BG_CLASSES[idx % CARD_BG_CLASSES.length]} rounded-[2.5rem] p-8 border border-indigo-100/50 shadow-sm hover:shadow-md transition-all`}
+                >
+                  <h3 className="text-xl font-bold text-slate-900 mb-4">
+                    {card.title}
+                  </h3>
+                  <p className="text-base leading-relaxed text-slate-600">
+                    {card.content}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
     </>
   )
 }

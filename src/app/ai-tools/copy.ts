@@ -50,6 +50,8 @@ const cardAssets = {
     'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/gpt-image-2/feature-image-editing.webp',
   aiVideo:
     'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/seedance-2.jpg',
+  wan27Video:
+    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/6e2548965fc5487ca41221f9d663dfcb.webp',
   textToVideo:
     'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/prompt-templates/storyboard-scene.webp',
   imageToVideo:
@@ -81,6 +83,8 @@ const cardAssets = {
 const cardVideos = {
   aiVideo:
     'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4',
+  wan27Video:
+    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/c07d1db481dd4e9b8e190ebb39611f08.png',
   textToVideo:
     'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/1b0129b9d2504494825f8fd28b00f4af.png',
   imageToVideo:
@@ -219,6 +223,14 @@ const en: StoredAiToolsPageCopy = {
       image: cardAssets.asmr,
       video: cardVideos.asmr,
       description: 'Create tactile AI ASMR videos with synchronized sound from a text prompt or reference image.',
+      category: 'video',
+    },
+    {
+      title: 'Wan 2.7 AI Video Generator',
+      href: '/model/wan-2-7-ai-video-generator',
+      image: cardAssets.wan27Video,
+      video: cardVideos.wan27Video,
+      description: 'Create Wan 2.7 text-to-video or image-to-video clips with 2-10 seconds, up to two reference images, and 720p/1080p output.',
       category: 'video',
     },
   ],
@@ -404,6 +416,7 @@ type SupplementalCopy = {
   unrestricted: Pick<AiToolsCard, 'title' | 'description'>
   video: Pick<AiToolsCard, 'title' | 'description'>
   asmr: Pick<AiToolsCard, 'title' | 'description'>
+  wan27Video: Pick<AiToolsCard, 'title' | 'description'>
   kissing: Pick<AiToolsCard, 'title' | 'description'>
   talkingAvatar: Pick<AiToolsCard, 'title' | 'description'>
   textToVideo: Pick<AiToolsCard, 'title' | 'description'>
@@ -424,6 +437,7 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     unrestricted: { title: 'Unrestricted / Unlimited AI Image Generator', description: 'Create broader unlimited-style image concepts with text-to-image, image-to-image, direct prompt control, and clear creative boundaries.' },
     video: { title: 'AI Video Generator', description: 'Create short AI videos online from text, images, video clips, or audio references.' },
     asmr: { title: 'AI ASMR Video Generator', description: 'Create tactile AI ASMR videos with synchronized sound from a text prompt or reference image.' },
+    wan27Video: { title: 'Wan 2.7 AI Video Generator', description: 'Create Wan 2.7 text-to-video or image-to-video clips with 2-10 seconds, up to two reference images, and 720p/1080p output.' },
     kissing: { title: 'AI Kissing Video Generator', description: 'Upload one or two photos and create short romantic AI kiss videos for couple edits, anniversaries, and story reels.' },
     talkingAvatar: { title: 'AI Talking Avatar', description: 'Upload a portrait and voice audio to create a short lip-synced talking avatar video.' },
     textToVideo: { title: 'Text to Video Generator', description: 'Turn written prompts into short AI videos for ads, storyboards, social clips, and concept tests.' },
@@ -442,6 +456,7 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     unrestricted: { title: 'Unrestricted / Unlimited KI-Bildgenerator', description: 'Erstellen Sie breitere unlimited-style Bildkonzepte mit Text-zu-Bild, Bild-zu-Bild, direkter Prompt-Kontrolle und klaren kreativen Grenzen.' },
     video: { title: 'KI-Videogenerator', description: 'Erstellen Sie kurze KI-Videos aus Text, Bildern, Videoclips oder Audioreferenzen.' },
     asmr: { title: 'KI-ASMR-Videogenerator', description: 'Erstellen Sie taktile KI-ASMR-Videos mit synchronisiertem Sound aus Text oder Referenzbild.' },
+    wan27Video: { title: 'Wan 2.7 KI-Videogenerator', description: 'Erstellen Sie Wan 2.7 Text-zu-Video- oder Bild-zu-Video-Clips mit 2-10 Sekunden, bis zu zwei Referenzbildern und 720p/1080p.' },
     kissing: { title: 'KI-Kuss-Video-Generator', description: 'Laden Sie ein oder zwei Fotos hoch und erstellen Sie kurze romantische KI-Kussvideos für Paar-Edits, Jubiläen und Story-Reels.' },
     talkingAvatar: { title: 'KI-Sprechavatar', description: 'Laden Sie ein Porträt und Sprachaudio hoch, um ein kurzes lippensynchrones Sprechavatar-Video zu erstellen.' },
     textToVideo: { title: 'Text-zu-Video-Generator', description: 'Verwandeln Sie Textprompts in kurze KI-Videos für Anzeigen, Storyboards, Social Clips und Konzepttests.' },
@@ -460,6 +475,7 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     unrestricted: { title: 'Unrestricted / Unlimited AI画像生成', description: 'テキスト画像生成、画像編集、直接的なプロンプト操作、明確な創作境界でunlimited-styleの幅広い画像案を作成できます。' },
     video: { title: 'AI動画生成', description: 'テキスト、画像、動画クリップ、音声参照から短いAI動画をオンライン作成できます。' },
     asmr: { title: 'AI ASMR動画ジェネレーター', description: 'テキストや参照画像から、同期した音付きの触感的なAI ASMR動画を作成できます。' },
+    wan27Video: { title: 'Wan 2.7 AI動画生成', description: 'Wan 2.7でテキスト動画または画像動画を作成し、2〜10秒、最大2枚の参照画像、720p/1080pを使えます。' },
     kissing: { title: 'AIキス動画ジェネレーター', description: '1枚または2枚の写真から、カップル編集、記念日、ストーリーリール向けの短いロマンチックなAIキス動画を作成できます。' },
     talkingAvatar: { title: 'AIトーキングアバター', description: 'ポートレートと音声をアップロードして、リップシンク付きの短いトーキングアバター動画を作成できます。' },
     textToVideo: { title: 'テキストから動画生成', description: '文章プロンプトを広告、絵コンテ、SNSクリップ、コンセプト検証向けの短いAI動画にできます。' },
@@ -478,6 +494,7 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     unrestricted: { title: 'Generador IA Unrestricted / Unlimited', description: 'Crea conceptos visuales unlimited-style más amplios con texto a imagen, imagen a imagen, control directo del prompt y límites creativos claros.' },
     video: { title: 'Generador de video IA', description: 'Crea videos cortos con IA desde texto, imágenes, clips de video o referencias de audio.' },
     asmr: { title: 'Generador de video ASMR IA', description: 'Crea videos ASMR táctiles con sonido sincronizado desde un prompt de texto o una imagen de referencia.' },
+    wan27Video: { title: 'Generador de video IA Wan 2.7', description: 'Crea clips Wan 2.7 de texto a video o imagen a video con 2 a 10 segundos, hasta dos imágenes de referencia y 720p/1080p.' },
     kissing: { title: 'Generador de videos de besos IA', description: 'Sube una o dos fotos y crea videos cortos de besos románticos para ediciones de pareja, aniversarios y reels.' },
     talkingAvatar: { title: 'Avatar parlante con IA', description: 'Sube un retrato y audio de voz para crear un video corto de avatar con labios sincronizados.' },
     textToVideo: { title: 'Generador de texto a video', description: 'Convierte prompts escritos en videos cortos con IA para anuncios, guiones visuales, clips sociales y pruebas de concepto.' },
@@ -496,6 +513,7 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     unrestricted: { title: 'Unrestricted / Unlimited AI 圖像生成器', description: '使用文字生成、圖像轉圖像、直接提示詞控制與清楚創作邊界，建立更廣的 unlimited-style AI 圖像概念。' },
     video: { title: 'AI 影片生成器', description: '使用文字、圖像、影片片段或音訊參考在線建立 AI 短片。' },
     asmr: { title: 'AI ASMR 影片生成器', description: '使用文字提示詞或參考圖像建立具備同步聲音的觸感式 AI ASMR 影片。' },
+    wan27Video: { title: 'Wan 2.7 AI 影片生成器', description: '使用 Wan 2.7 建立文字轉影片或圖片轉影片短片，支援 2 到 10 秒、最多兩張參考圖與 720p/1080p。' },
     kissing: { title: 'AI 親吻影片生成器', description: '上傳一張或兩張照片，生成適合情侶剪輯、紀念日與 Story Reels 的浪漫親吻短片。' },
     talkingAvatar: { title: 'AI 說話頭像', description: '上傳人像與語音音訊，建立短的唇形同步說話頭像影片。' },
     textToVideo: { title: '文字轉影片生成器', description: '將文字提示詞轉為適合廣告、分鏡、社群短片與概念測試的 AI 短片。' },
@@ -514,6 +532,7 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     unrestricted: { title: 'Gerador IA Unrestricted / Unlimited', description: 'Crie conceitos visuais unlimited-style mais amplos com texto para imagem, imagem para imagem, controle direto do prompt e limites criativos claros.' },
     video: { title: 'Gerador de vídeo IA', description: 'Crie vídeos curtos com IA a partir de texto, imagens, clipes ou referências de áudio.' },
     asmr: { title: 'Gerador de vídeo ASMR com IA', description: 'Crie vídeos ASMR táteis com som sincronizado a partir de texto ou imagem de referência.' },
+    wan27Video: { title: 'Gerador de vídeo IA Wan 2.7', description: 'Crie clipes Wan 2.7 de texto para vídeo ou imagem para vídeo com 2 a 10 segundos, até duas referências e 720p/1080p.' },
     kissing: { title: 'Gerador de vídeos de beijo com IA', description: 'Envie uma ou duas fotos e crie vídeos curtos de beijo romântico para edições de casal, aniversários e reels.' },
     talkingAvatar: { title: 'Avatar falante com IA', description: 'Envie um retrato e áudio de voz para criar um vídeo curto de avatar com lábios sincronizados.' },
     textToVideo: { title: 'Gerador de texto para vídeo', description: 'Transforme prompts em vídeos curtos com IA para anúncios, storyboards, clipes sociais e testes de conceito.' },
@@ -532,6 +551,7 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     unrestricted: { title: 'Générateur IA Unrestricted / Unlimited', description: 'Créez des concepts visuels unlimited-style plus larges avec texte vers image, image vers image, contrôle direct du prompt et limites créatives claires.' },
     video: { title: 'Générateur de vidéo IA', description: 'Créez de courtes vidéos IA à partir de texte, d’images, de clips ou de références audio.' },
     asmr: { title: 'Générateur de vidéo ASMR IA', description: 'Créez des vidéos ASMR tactiles avec son synchronisé depuis un prompt texte ou une image de référence.' },
+    wan27Video: { title: 'Générateur vidéo IA Wan 2.7', description: 'Créez des clips Wan 2.7 texte vers vidéo ou image vers vidéo avec 2 à 10 secondes, jusqu’à deux références et 720p/1080p.' },
     kissing: { title: 'Générateur de vidéos de baiser IA', description: 'Importez une ou deux photos et créez de courtes vidéos de baiser romantique pour montages de couple, anniversaires et reels.' },
     talkingAvatar: { title: 'Avatar parlant IA', description: 'Importez un portrait et un audio vocal pour créer une courte vidéo d’avatar synchronisée.' },
     textToVideo: { title: 'Générateur texte-vidéo', description: 'Transformez des prompts en courtes vidéos IA pour annonces, storyboards, clips sociaux et tests de concept.' },
@@ -550,6 +570,7 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     unrestricted: { title: 'Unrestricted / Unlimited AI 이미지 생성기', description: '텍스트 이미지, 이미지 편집, 직접 프롬프트 제어, 명확한 창작 경계로 더 넓은 unlimited-style 이미지 콘셉트를 만드세요.' },
     video: { title: 'AI 동영상 생성기', description: '텍스트, 이미지, 동영상 클립 또는 오디오 참조로 짧은 AI 동영상을 만드세요.' },
     asmr: { title: 'AI ASMR 동영상 생성기', description: '텍스트 프롬프트나 참조 이미지로 동기화된 사운드가 있는 촉각적인 AI ASMR 영상을 만드세요.' },
+    wan27Video: { title: 'Wan 2.7 AI 동영상 생성기', description: 'Wan 2.7로 2~10초, 최대 2장 참조 이미지, 720p/1080p의 텍스트 동영상 또는 이미지 동영상을 만드세요.' },
     kissing: { title: 'AI 키스 동영상 생성기', description: '사진 한 장 또는 두 장을 업로드해 커플 편집, 기념일, 스토리 릴용 짧은 로맨틱 AI 키스 영상을 만드세요.' },
     talkingAvatar: { title: 'AI 말하는 아바타', description: '인물 사진과 음성 오디오를 업로드해 짧은 립싱크 말하는 아바타 영상을 만드세요.' },
     textToVideo: { title: '텍스트-동영상 생성기', description: '텍스트 프롬프트를 광고, 스토리보드, 소셜 클립, 콘셉트 테스트용 짧은 AI 동영상으로 만드세요.' },
@@ -568,6 +589,7 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     unrestricted: { title: 'Generatore IA Unrestricted / Unlimited', description: 'Crea concept visivi unlimited-style più ampi con testo-immagine, immagine-immagine, controllo diretto del prompt e confini creativi chiari.' },
     video: { title: 'Generatore video IA', description: 'Crea brevi video IA da testo, immagini, clip video o riferimenti audio.' },
     asmr: { title: 'Generatore video ASMR IA', description: 'Crea video ASMR tattili con audio sincronizzato da un prompt testuale o da un’immagine di riferimento.' },
+    wan27Video: { title: 'Generatore video IA Wan 2.7', description: 'Crea clip Wan 2.7 da testo o immagine con 2-10 secondi, fino a due immagini di riferimento e 720p/1080p.' },
     kissing: { title: 'Generatore di video di baci IA', description: 'Carica una o due foto e crea brevi video di baci romantici per edit di coppia, anniversari e reel.' },
     talkingAvatar: { title: 'Avatar parlante IA', description: 'Carica un ritratto e audio vocale per creare un breve video avatar con labbra sincronizzate.' },
     textToVideo: { title: 'Generatore da testo a video', description: 'Trasforma prompt scritti in brevi video IA per annunci, storyboard, clip social e test di concept.' },
@@ -605,6 +627,7 @@ const aiToolsCardOrder = [
   '/ai-bikini-generator',
   '/ai-breast-expansion',
   '/ai-asmr-video-generator',
+  '/model/wan-2-7-ai-video-generator',
   '/watermark-remover',
   '/photo-restoration',
 ] as const
@@ -638,6 +661,7 @@ function getSupplementalCardByHref(
     '/ai-bikini-generator': supplemental.bikini,
     '/ai-breast-expansion': supplemental.breastExpansion,
     '/ai-asmr-video-generator': supplemental.asmr,
+    '/model/wan-2-7-ai-video-generator': supplemental.wan27Video,
   }
 
   return cardsByHref[href]
