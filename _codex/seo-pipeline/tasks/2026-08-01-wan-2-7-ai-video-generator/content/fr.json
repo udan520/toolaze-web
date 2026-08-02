@@ -9,17 +9,17 @@
     "displayName": "Wan 2.7"
   },
   "metadata": {
-    "title": "Générateur vidéo IA Wan 2.7 | Texte vers vidéo et image vers vidéo",
-    "description": "Utilisez Wan 2.7 sur Toolaze pour créer des vidéos IA depuis des prompts texte ou jusqu’à deux images de référence, avec des clips de 2 à 10 secondes, 16:9, 9:16, 1:1 et 720p/1080p.",
+    "title": "Générateur vidéo IA Wan 2.7 | Texte, image et vidéo de référence",
+    "description": "Créez des vidéos Wan 2.7 sur Toolaze avec texte vers vidéo, image vers vidéo, planification par références, contrôle premier/dernier plan, prompts multi-plans, audio natif et sortie 720p/1080p.",
     "published": true
   },
   "hero": {
-    "h1": "Générateur vidéo IA <span class=\"text-gradient\">Wan 2.7</span>",
-    "desc": "Créez des vidéos Wan 2.7 depuis un prompt écrit ou jusqu’à deux images de référence. Choisissez texte vers vidéo ou image vers vidéo, réglez 16:9, 9:16 ou 1:1, sélectionnez 2 à 10 secondes en 720p/1080p et décrivez clairement le mouvement, la caméra, la lumière et l’ambiance sonore."
+    "h1": "<span class=\"text-gradient\">Wan 2.7</span> générateur vidéo IA",
+    "desc": "Créez des vidéos Wan 2.7 à partir de texte, d’images, de références vidéo ou d’indications audio. Utilisez des prompts multi-plans, des transitions premier/dernier plan, des scènes de continuation et un son synchronisé pour de courts clips cinématographiques en 720p ou 1080p."
   },
   "heroDemoVideo": {
     "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/c07d1db481dd4e9b8e190ebb39611f08.png",
-    "ariaLabel": "Aperçu de la vidéo démo Toolaze Wan 2.7 en 16:9",
+    "ariaLabel": "Aperçu vidéo de démonstration Wan 2.7 sur Toolaze",
     "width": 16,
     "height": 9,
     "sourceHistory": "User-provided Wan 2.7 demo video · 16:9 · 5.01s · 1920x1080 · 2026-08-02",
@@ -28,12 +28,14 @@
   },
   "sectionsOrder": [
     "modelIntro",
+    "performanceMetrics",
     "howToUse",
     "promptExamples",
     "troubleshooting",
     "scenes",
     "modelComparison",
     "workflowComparison",
+    "testimonials",
     "faq"
   ],
   "modelIntro": {
@@ -41,220 +43,152 @@
     "modelName": "Wan 2.7",
     "modelType": "Modèle vidéo IA",
     "description": [
-      "Wan 2.7 est un modèle vidéo plus récent de la famille Alibaba Wan pour la conception de mouvement guidée par prompt. Sur Toolaze, il fonctionne dans le générateur vidéo IA partagé : vous pouvez partir d’un texte ou importer des images de référence, puis décrire action, mouvement de caméra, lumière, matières, rythme et direction sonore dans un seul prompt.",
-      "La configuration Wan 2.7 de Toolaze vise des clips courts et contrôlables : 2 à 10 secondes, cadrage 16:9, 9:16 ou 1:1, et sortie 720p ou 1080p. Elle convient aux mouvements produit tactiles, détails de matière type ASMR, clips sociaux, beats de storyboard et animations guidées par image où le premier visuel doit rester reconnaissable.",
-      "Utilisez Wan 2.7 lorsque vous voulez l’option Wan la plus récente sur Toolaze avec durée courte flexible, jusqu’à deux images de référence, sélection du modèle, exemples de prompts, historique récent, aperçu, recréation et téléchargement dans une seule session de navigateur."
+      "Wan 2.7 est la famille de modèles de génération vidéo d’Alibaba pour créer à partir de texte, d’images et de références. Elle convient aux clips courts qui demandent un meilleur suivi du prompt, des sujets guidés par références, une structure multi-plans, une direction de caméra et des signaux audio synchronisés.",
+      "Utilisez Wan 2.7 lorsqu’un seul prompt doit décrire la scène, les médias de référence, l’ordre des plans, le premier et le dernier plan, la continuité, le style de mouvement, l’éclairage et le son. Il convient aux publicités produit, clips ASMR de matières, vidéos sociales, tests de storyboard, mouvements de personnages et brouillons commerciaux guidés par références."
     ]
   },
-  "promptExamples": {
-    "title": "Exemples de prompts Wan 2.7",
-    "subtitle": "Copiez ces prompts lorsque vous voulez un mouvement contrôlé, une durée courte et une direction vidéo sensible à l’audio.",
-    "layout": "grid",
-    "items": [
+  "performanceMetrics": {
+    "title": "Aperçu des capacités de Wan 2.7",
+    "metrics": [
       {
-        "title": "Passage audio au marché sous la pluie",
-        "prompt": "Créez une vidéo Wan 2.7 de 10 secondes en 9:16 d’un stand de cuisine de nuit sous une pluie légère. La caméra avance d’une enseigne de menu lumineuse vers des mains qui retournent des crêpes aux oignons verts sur une plaque chaude. Ajoutez de la vapeur, des reflets de rue, un grésillement synchronisé, la pluie sur la bâche et une foule douce en fond.",
-        "description": "Prompt de scène guidé par l’audio pour ambiance, mouvement culinaire, pluie détaillée et son synchronisé.",
-        "aspectRatio": "9:16"
+        "label": "Modes de création",
+        "value": "Texte vers vidéo, image vers vidéo et référence vers vidéo"
       },
       {
-        "title": "Gros plan de lanterne assemblée",
-        "prompt": "Créez une vidéo verticale 9:16 de 5 secondes d’une lanterne de camping compacte qui s’assemble sur un établi. Montrez des panneaux en métal brossé qui glissent en place, un pouce qui actionne l’interrupteur, une lumière chaude dans le verre dépoli, une faible profondeur de champ, des ombres produit nettes et un audio précis de clic et de bourdonnement.",
-        "description": "Prompt produit tactile pour assemblage compact, détail des matières et courts repères audio synchronisés.",
-        "aspectRatio": "9:16"
+        "label": "Médias de référence",
+        "value": "Jusqu’à cinq références image ou vidéo au total en référence vers vidéo ; références audio lorsque le mode les prend en charge"
       },
       {
-        "title": "Marche de personnage depuis une image",
-        "prompt": "Animez le concept de personnage en pied importé en boucle de marche 9:16 de 5 secondes. Préservez le visage, la tenue, la silhouette et la palette de couleurs de l’image de référence. Ajoutez un travelling latéral lent, un léger mouvement du manteau et des cheveux, des reflets de néon mouillé et des pas discrets sans changer l’identité.",
-        "description": "Prompt image vers vidéo pour préserver un personnage de référence tout en ajoutant un mouvement contrôlé.",
-        "aspectRatio": "9:16"
+        "label": "Contrôle des plans",
+        "value": "Premier plan, premier et dernier plan, et prompts de continuation vidéo"
       },
       {
-        "title": "Glissé architectural du matin",
-        "prompt": "Créez un glissé cinématographique 9:16 de 10 secondes dans une maison moderne calme avec cour au lever du soleil. Commencez sur un îlot de cuisine en pierre, passez devant des portes vitrées coulissantes et terminez sur des plantes en mouvement dans la cour. Gardez les lignes verticales stables, les ombres naturelles, un son de pièce doux, des oiseaux dehors et aucune déformation des murs.",
-        "description": "Prompt de contrôle caméra pour architecture stable, lumière naturelle et ambiance sonore douce.",
-        "aspectRatio": "9:16"
+        "label": "Contrôle des séquences",
+        "value": "Clips à plan unique, séquences multi-plans, mouvement de caméra, échelle du plan et timing de scène"
+      },
+      {
+        "label": "Contrôle audio",
+        "value": "Synchronisation audio-vidéo, effets sonores, musique, ambiance et indications de style vocal"
+      },
+      {
+        "label": "Fenêtre de sortie",
+        "value": "Plage officielle de 2 à 15 secondes avec sortie 720p ou 1080p"
+      },
+      {
+        "label": "Crédits Toolaze",
+        "value": "À partir de 64 crédits pour une sortie 720p de 2 secondes ; la durée et la résolution choisies ajustent les crédits requis avant génération"
       }
-    ]
-  },
-  "workflowComparison": {
-    "title": "Wan 2.7 face aux autres modèles vidéo Toolaze",
-    "subtitle": "Comparez les réglages et les forces des modèles avant d’utiliser vos points.",
-    "columns": [
-      "Choix du modèle",
-      "Bon usage",
-      "À vérifier"
-    ],
-    "rows": [
-      [
-        "Wan 2.7",
-        "Clips Wan flexibles avec texte ou image, 2 à 10 secondes, jusqu’à deux images de référence et sortie 720p/1080p.",
-        "À utiliser pour l’option Wan la plus récente avec plus de contrôle sur les clips courts."
-      ],
-      [
-        "Kling 3.0",
-        "Mouvement cinématographique haut de gamme, entrée multi-image, guidage sonore et réglages jusqu’à 4K dans Toolaze.",
-        "À utiliser lorsque le mouvement dynamique ou la 4K compte."
-      ],
-      [
-        "Grok 1.5 Video",
-        "Brouillons rapides image vers vidéo, clips créateur, mouvement produit et tests 480p/720p à faible coût.",
-        "À utiliser lorsque la vitesse et l’itération rapide comptent le plus."
-      ],
-      [
-        "Seedance 2.0",
-        "Génération vidéo ByteDance à fort contrôle, avec plus d’entrées de référence et des options plus longues.",
-        "À utiliser lorsque le contrôle multimodal et les clips plus longs comptent."
-      ]
     ]
   },
   "howToUse": {
     "title": "Comment utiliser Wan 2.7 sur Toolaze",
     "steps": [
       {
-        "title": "Choisir Wan 2.7",
-        "desc": "Ouvrez le sélecteur du générateur vidéo IA et choisissez Wan 2.7 dans le groupe Wan."
+        "title": "Choisissez Wan 2.7",
+        "desc": "Ouvrez le générateur vidéo IA et sélectionnez Wan 2.7 lorsque vous voulez le dernier modèle vidéo de la famille Wan pour des clips guidés par prompt ou références."
       },
       {
-        "title": "Choisir le mode",
-        "desc": "Utilisez texte vers vidéo pour une scène complète ou image vers vidéo quand des références doivent guider le rendu."
+        "title": "Choisissez le point de départ",
+        "desc": "Commencez par du texte, une image, un premier et dernier plan, une idée de continuation vidéo ou un ensemble de références image, vidéo et audio lorsque le mode le permet."
       },
       {
-        "title": "Régler la sortie",
-        "desc": "Choisissez 16:9, 9:16 ou 1:1, sélectionnez 2 à 10 secondes puis 720p ou 1080p."
+        "title": "Rédigez le plan des prises",
+        "desc": "Décrivez le sujet, le rôle des références, l’ordre des plans, le mouvement de caméra, le timing, l’éclairage et le son dans un prompt clair."
       },
       {
-        "title": "Générer et ajuster",
-        "desc": "Prévisualisez le clip, ajustez les mots de mouvement ou de son, recréez si nécessaire, puis téléchargez la vidéo retenue."
+        "title": "Réglez la sortie et affinez",
+        "desc": "Choisissez le ratio, la durée et la résolution dans l’interface, générez le clip, puis ajustez le prompt si le mouvement, l’identité ou le son doivent être améliorés."
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "Exemples de prompts Wan 2.7",
+    "subtitle": "Copiez ces exemples lorsque vous avez besoin de mouvement multi-plans, de contrôle par références, de transition premier/dernier plan ou de son synchronisé.",
+    "layout": "grid",
+    "items": [
+      {
+        "title": "Lancement produit multi-plans",
+        "prompt": "Créez une vidéo Wan 2.7 pour une enceinte sans fil noir mat. Plan 1 : lent rapprochement vers l’enceinte posée sur une table en béton. Plan 2 : gros plan sur la grille textile qui vibre avec les basses. Plan 3 : des gouttes d’eau glissent sur la surface. Plan 4 : l’enceinte se trouve dans un salon chaleureux au coucher du soleil. Gardez la forme du produit cohérente et ajoutez un mouvement de caméra doux, des reflets propres, des pulsations de basse profondes et une ambiance de pièce subtile.",
+        "description": "Utilise un ordre de plans clair, la cohérence du produit, le mouvement de caméra, le détail matière et le timing audio.",
+        "aspectRatio": "16:9"
+      },
+      {
+        "title": "Transition premier et dernier plan",
+        "prompt": "Animez depuis le premier plan importé d’un carnet fermé sur un bureau jusqu’au dernier plan importé du même carnet ouvert avec une carte urbaine terminée. La caméra reste en vue du dessus, les pages se tournent naturellement, les traits de crayon se dessinent seuls sur le papier, les objets du bureau restent fixes et la carte finale correspond exactement au dernier plan de référence avec un léger froissement de papier.",
+        "description": "Montre comment écrire une transition contrôlée entre premier et dernier plan sans changer la composition.",
+        "aspectRatio": "9:16"
+      },
+      {
+        "title": "Scène de personnage avec références",
+        "prompt": "Utilisez trois références : une planche de personnage, un décor de ruelle pluvieuse et une courte vidéo d’enseigne néon. Créez un clip Wan 2.7 où le personnage marche vers la caméra, s’arrête sous l’enseigne et lève les yeux pendant que la pluie se reflète sur le manteau. Préservez le visage, la tenue, les couleurs et la disposition de la ruelle. Ajoutez un lent travelling latéral, des pas, la pluie sur le métal et un grondement urbain bas.",
+        "description": "Attribue un rôle clair à chaque référence afin d’organiser identité, décor, mouvement et son.",
+        "aspectRatio": "9:16"
+      },
+      {
+        "title": "Continuation avec son natif",
+        "prompt": "Continuez la vidéo importée du comptoir de café. Gardez le même cadrage, la même lumière, la position de la tasse et les mains du barista. Le filet de lait commence fin, devient une spirale douce et se termine en motif de feuille sur le latte. Ajoutez un son de versement synchronisé, un contact de céramique, un léger bourdonnement de machine et aucun saut brusque de caméra.",
+        "description": "Utilise le vocabulaire de continuation vidéo, un cadrage stable, un mouvement précis et des signaux audio synchronisés.",
+        "aspectRatio": "1:1"
       }
     ]
   },
   "troubleshooting": {
-    "title": "Conseils pour de meilleurs résultats avec Wan 2.7",
-    "subtitle": "Wan 2.7 donne les meilleurs résultats lorsque le prompt est concret, court et calé sur la durée choisie.",
+    "title": "Conseils de prompt pour de meilleurs résultats avec Wan 2.7",
+    "subtitle": "Les meilleurs prompts Wan 2.7 indiquent ce qui change, ce qui reste fixe et comment la caméra et le son évoluent dans le temps.",
     "items": [
       {
-        "title": "Décrire une action principale",
-        "desc": "Une action claire fonctionne souvent mieux que plusieurs changements de scène dans un clip de 2 à 10 secondes."
+        "title": "Transformer une idée large en ordre de plans",
+        "desc": "Prompt faible : une publicité de sneakers cool. Prompt amélioré :",
+        "prompt": "Créez une publicité de sneakers. Plan 1 : gros plan macro de la semelle touchant un sol mouillé. Plan 2 : suivi latéral lorsque le coureur accélère. Plan 3 : lent rapprochement sur le logo sous des reflets néon. Gardez le même design de chaussure et ajoutez des éclaboussures, une ambiance urbaine et une lumière nette."
       },
       {
-        "title": "Ajouter une direction de caméra",
-        "desc": "Utilisez des termes comme poussée lente, trépied fixe, macro vue du dessus, caméra portée, orbite ou parallaxe douce."
+        "title": "Donner un rôle à chaque référence",
+        "desc": "Prompt faible : utilisez ces images et faites une vidéo. Prompt amélioré :",
+        "prompt": "Utilisez l’image 1 pour le visage et la tenue du personnage, l’image 2 pour la disposition de la pièce et la vidéo 1 pour le mouvement de la lumière néon. Créez un clip où le personnage se tourne vers la fenêtre pendant que le reflet néon se déplace sur le mur. Préservez l’identité, les couleurs des vêtements et la géométrie de la pièce."
       },
       {
-        "title": "Écrire le son comme partie de la scène",
-        "desc": "Mentionnez découpe nette, versement doux, froissement de tissu, son de pièce, ambiance ou dialogue seulement si vous voulez une direction sensible à l’audio."
+        "title": "Écrire le son comme une action temporelle",
+        "desc": "Prompt faible : faites de l’ASMR avec un bon son. Prompt amélioré :",
+        "prompt": "Créez un clip macro ASMR d’un fruit en verre en train d’être coupé. La lame entre au début, le fruit se fissure au milieu de l’action et de petits morceaux glissent avant la fin. Ajoutez des tintements nets de verre, une pression de coupe douce, un contact discret avec la table et aucune musique de fond."
       }
     ]
   },
   "scenesTitle": "Ce que vous pouvez créer avec Wan 2.7",
   "scenes": [
     {
-      "title": "Clips ASMR tactiles",
-      "icon": "🧊",
-      "desc": "Créez de courts gros plans de découpe, écrasement, versement, tapotement, brossage, emballage et sons de matière."
+      "title": "Publicités produit multi-plans",
+      "icon": "🎥",
+      "desc": "Planifiez de courtes séquences commerciales avec gros plans produit, plans de révélation, mouvements de caméra et sons de matière synchronisés."
     },
     {
-      "title": "Publicités produit animées",
-      "icon": "🛍️",
-      "desc": "Transformez des photos produit en courts clips commerciaux pour paid social, marketplaces et tests de campagne."
+      "title": "Personnages guidés par références",
+      "icon": "🧑",
+      "desc": "Animez des planches de personnage, références de tenue et arrière-plans tout en gardant l’identité et le style stables."
     },
     {
-      "title": "Animation avec images de référence",
-      "icon": "🖼️",
-      "desc": "Animez jusqu’à deux images importées tout en préservant sujet, forme, mise en page, couleur et angle caméra."
+      "title": "Transitions premier et dernier plan",
+      "icon": "↔️",
+      "desc": "Passez d’un plan prévu à un autre pour des transformations, révélations, avant/après et moments narratifs."
     },
     {
-      "title": "Shorts sociaux",
+      "title": "Clips de continuation vidéo",
+      "icon": "▶️",
+      "desc": "Prolongez un court clip source en conservant cadrage, lumière, position du sujet et direction du mouvement."
+    },
+    {
+      "title": "Vidéos ASMR et guidées par le son",
+      "icon": "🔊",
+      "desc": "Créez des coupes tactiles, versements, tapotements, mouvements de tissu, bourdonnements de machine, pluie, ton de pièce et autres moments audio synchronisés."
+    },
+    {
+      "title": "Tests de storyboard et sociaux",
       "icon": "📱",
-      "desc": "Générez des ouvertures créateur, boucles de révélation, clips verticaux et accroches pour Reels, TikTok et Shorts."
-    },
-    {
-      "title": "Beats de storyboard",
-      "icon": "🎬",
-      "desc": "Ébauchez un beat de scène avec action, caméra, lumière, rythme et direction sonore."
-    },
-    {
-      "title": "Boucles d’ambiance",
-      "icon": "🌧️",
-      "desc": "Créez des boucles calmes comme pluie sur vitre, bureaux, natures mortes produit ou scènes de café."
-    }
-  ],
-  "faqTitle": "FAQ du générateur vidéo IA Wan 2.7",
-  "faq": [
-    {
-      "q": "Qu’est-ce que le générateur vidéo IA Wan 2.7 ?",
-      "a": "Wan 2.7 crée de courtes vidéos IA avec un modèle de la famille Wan d’Alibaba. Sur Toolaze, vous pouvez utiliser texte vers vidéo ou image vers vidéo, puis contrôler prompt, format, durée, résolution et entrée de référence."
-    },
-    {
-      "q": "Wan 2.7 prend-il en charge image vers vidéo sur Toolaze ?",
-      "a": "Oui. Toolaze propose image vers vidéo pour Wan 2.7 avec jusqu’à deux images de référence importées. Le prompt doit préciser ce qui bouge et ce qui reste cohérent."
-    },
-    {
-      "q": "Wan 2.7 prend-il en charge texte vers vidéo ?",
-      "a": "Oui. Vous pouvez partir d’un prompt texte, décrire sujet, action, caméra, lumière, style et direction sonore, puis générer une courte vidéo."
-    },
-    {
-      "q": "Quelle durée et quelle résolution puis-je choisir ?",
-      "a": "La configuration Wan 2.7 de Toolaze propose des clips de 2 à 10 secondes en 720p ou 1080p."
-    },
-    {
-      "q": "Puis-je décrire le son ou le rythme ASMR ?",
-      "a": "Oui. Ajoutez direction sonore, rythme ASMR, ambiance et indices de matière dans le prompt lorsqu’ils aident la scène. Le générateur affiche les options disponibles avant la création."
-    },
-    {
-      "q": "Combien d’images de référence Wan 2.7 peut-il utiliser ?",
-      "a": "Sur Toolaze, Wan 2.7 peut utiliser jusqu’à deux images importées pour image vers vidéo. Choisissez des visuels de départ nets avec sujet et composition visibles."
-    },
-    {
-      "q": "Combien de points coûte Wan 2.7 ?",
-      "a": "Wan 2.7 commence à 64 points pour une génération 720p de 2 secondes. Une durée plus longue ou une sortie 1080p augmente les points requis avant la génération."
-    },
-    {
-      "q": "Wan 2.7 est-il gratuit sur Toolaze ?",
-      "a": "L’accès peut dépendre de vos points actuels, de l’état du compte, de la disponibilité du modèle, de la durée et de la résolution. Le générateur affiche l’exigence actuelle avant la génération."
-    },
-    {
-      "q": "Quand choisir Wan 2.7 plutôt que Wan 2.5 ?",
-      "a": "Choisissez Wan 2.7 si vous voulez le modèle Wan le plus récent sur Toolaze, une durée flexible de 2 à 10 secondes et jusqu’à deux images de référence. Choisissez Wan 2.5 lorsqu’une configuration Wan plus simple et plus ancienne suffit."
-    }
-  ],
-  "moreTools": "Autres modèles vidéo IA",
-  "moreToolsLinks": [
-    {
-      "title": "Wan 2.5 Video",
-      "description": "Explorez Wan 2.5 pour une configuration Wan plus ancienne et plus simple avec des contrôles de vidéo courte familiers.",
-      "href": "/model/wan-2-5-ai-video-generator",
-      "media": {
-        "type": "video",
-        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/prompt-templates/storyboard-scene.mp4",
-        "alt": "Aperçu vidéo Wan 2.5"
-      }
-    },
-    {
-      "title": "Seedance 2.0",
-      "description": "Essayez Seedance 2.0 pour créer des vidéos IA cinématographiques depuis des prompts texte ou des images de référence.",
-      "href": "/model/seedance-2",
-      "media": {
-        "type": "video",
-        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d0d55df5eef346809067197fddb1b251.png",
-        "alt": "Aperçu vidéo Seedance 2.0"
-      }
-    },
-    {
-      "title": "Kling 3.0",
-      "description": "Explorez un modèle vidéo haut de gamme pour des mouvements cinématographiques dynamiques.",
-      "href": "/model/kling-3",
-      "media": {
-        "type": "video",
-        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
-        "alt": "Aperçu vidéo Kling 3.0"
-      }
+      "desc": "Esquissez des accroches verticales, moments cinématographiques, idées de campagne, intros de créateur et boucles d’ambiance avant la production finale."
     }
   ],
   "modelComparison": {
     "title": "Wan 2.7 face à Wan 2.6 et Wan 2.5",
-    "subtitle": "Choisissez selon le contrôle des références, la durée, la gestion du son et les points de départ. Wan 2.7 est fort pour des tests courts flexibles avec jusqu’à deux références; Wan 2.6 convient aux clips Wan plus longs et aux scènes multi-plans; Wan 2.5 reste simple pour les clips de 5 ou 10 secondes avec une référence.",
+    "subtitle": "Wan 2.7 est le meilleur choix Wan lorsque vous avez besoin de référence vers vidéo, contrôle premier/dernier plan, continuation, prompts multi-plans et meilleure synchronisation audio-vidéo. Wan 2.6 et Wan 2.5 restent utiles pour des clips Wan plus simples avec moins de réglages.",
     "columnHeaders": {
       "metric": "Critère de décision",
       "baseline": "Wan 2.7",
@@ -263,42 +197,184 @@
     },
     "rows": [
       {
-        "label": "Contrôle d’entrée",
-        "baseline": "Prompts texte ou jusqu’à deux images de référence pour mieux guider l’image.",
-        "middle": "Prompts texte ou une image de référence, avec prise en charge de scènes multi-plans.",
-        "target": "Prompts texte ou une image de référence pour une image vers vidéo simple."
+        "label": "Modes de création",
+        "baseline": "Texte vers vidéo, image vers vidéo et référence vers vidéo.",
+        "middle": "Texte vers vidéo et image vers vidéo avec des clips Wan prédéfinis plus longs.",
+        "target": "Texte vers vidéo et image vers vidéo pour des brouillons Wan plus simples."
       },
       {
-        "label": "Durée du clip",
-        "baseline": "Toute durée de 2 à 10 secondes.",
-        "middle": "5, 10 ou 15 secondes.",
-        "target": "5 ou 10 secondes."
+        "label": "Contrôle des références",
+        "baseline": "Jusqu’à cinq références image ou vidéo au total en référence vers vidéo, plus des références audio lorsque disponibles.",
+        "middle": "Image de référence avec moins de rôles avancés.",
+        "target": "Une image de référence pour une animation image vers vidéo directe."
       },
       {
-        "label": "Gestion du son",
-        "baseline": "Direction de prompt sensible à l’audio pour rythme ASMR et ambiance.",
-        "middle": "Sortie audio native plus contrôle multi-plans.",
-        "target": "Sortie audio native disponible pour un son synchronisé."
+        "label": "Contrôle des plans et vidéo",
+        "baseline": "Premier plan, premier et dernier plan, continuation vidéo et prompts multi-plans.",
+        "middle": "Clips Wan plus longs et prompts de type multi-plans lorsque disponibles.",
+        "target": "Prompts à scène unique et animation avec une référence."
       },
       {
-        "label": "Résolution",
-        "baseline": "720p ou 1080p avec les derniers contrôles Wan.",
-        "middle": "720p ou 1080p avec clips prédéfinis plus longs.",
-        "target": "720p ou 1080p pour des brouillons familiers."
+        "label": "Traitement audio",
+        "baseline": "Synchronisation audio-vidéo, effets sonores, musique, ambiance et indications de style vocal.",
+        "middle": "Sortie audio native et signaux sonores synchronisés.",
+        "target": "Audio natif pour des clips synchronisés plus simples."
       },
       {
-        "label": "Points de départ",
-        "baseline": "Commence à 64 points pour une sortie 720p de 2 secondes.",
-        "middle": "Commence à 140 points pour une sortie 720p de 5 secondes.",
-        "target": "Commence à 120 points pour une sortie 720p de 5 secondes."
+        "label": "Durée et sortie",
+        "baseline": "2 à 15 secondes, 720p ou 1080p, MP4 30fps.",
+        "middle": "5, 10 ou 15 secondes, 720p ou 1080p.",
+        "target": "5 ou 10 secondes, 720p ou 1080p."
       },
       {
-        "label": "À choisir si",
-        "baseline": "Vous avez besoin de tests rapides de 2 secondes, d’un timing court flexible ou de deux images de référence.",
-        "middle": "Vous avez besoin d’un clip Wan plus long de 15 secondes ou d’un contrôle multi-plans.",
-        "target": "Vous avez besoin d’un clip stable avec une référence et un timing familier 5/10 secondes."
+        "label": "Crédits de départ",
+        "baseline": "À partir de 64 crédits pour une sortie 720p de 2 secondes sur Toolaze.",
+        "middle": "À partir de 140 crédits pour une sortie 720p de 5 secondes sur Toolaze.",
+        "target": "À partir de 120 crédits pour une sortie 720p de 5 secondes sur Toolaze."
+      },
+      {
+        "label": "À choisir lorsque",
+        "baseline": "Vous avez besoin des derniers contrôles Wan, de références plus riches, de planification des plans, de transitions, de continuation ou d’un timing sonore plus précis.",
+        "middle": "Vous avez besoin d’un clip Wan plus long sans tout le jeu de références de Wan 2.7.",
+        "target": "Vous avez besoin d’un clip Wan plus simple avec une référence et des durées familières de 5 ou 10 secondes."
       }
     ],
     "featuredColumn": "baseline"
-  }
+  },
+  "workflowComparison": {
+    "title": "Wan 2.7 face aux autres modèles vidéo Toolaze",
+    "subtitle": "Utilisez cette comparaison pour choisir le modèle adapté à vos sources, besoins de mouvement, indications sonores et objectif de sortie.",
+    "columns": [
+      "Modèle",
+      "Bon usage",
+      "À vérifier avant génération"
+    ],
+    "rows": [
+      [
+        "Wan 2.7",
+        "Clips Wan guidés par références avec texte, images, références vidéo, indications audio, prompts multi-plans, contrôle premier/dernier plan et sortie 720p/1080p.",
+        "Choisissez-le lorsque le contrôle des références, les transitions, la continuation et le son synchronisé comptent plus que la résolution maximale."
+      ],
+      [
+        "Kling 3.0",
+        "Mouvement cinématographique dynamique, options haute résolution plus fortes, entrée multi-images et scènes d’action expressives.",
+        "Choisissez-le lorsque le mouvement rapide de caméra, la sortie 4K ou l’action dramatique est l’objectif principal."
+      ],
+      [
+        "Seedance 2.0",
+        "Génération multi-plans avec style de réalisation, forte planification caméra, mouvement de personnage et références multiples.",
+        "Choisissez-le lorsque la planification de scène plus longue, plusieurs types de références ou la structure commerciale comptent plus que les contrôles propres à Wan."
+      ],
+      [
+        "Grok Imagine Video 1.5",
+        "Brouillons rapides image vers vidéo, clips créateur, mouvement produit et tests légers 480p/720p.",
+        "Choisissez-le lorsque la vitesse et l’itération simple comptent plus qu’un contrôle détaillé des références."
+      ]
+    ]
+  },
+  "testimonials": {
+    "title": "Notes de créateurs sur Wan 2.7",
+    "subtitle": "Façons concrètes d’utiliser Wan 2.7 pour des clips guidés par références, tests de prompts et courtes scènes commerciales.",
+    "items": [
+      {
+        "name": "Maya Chen",
+        "role": "Monteuse vidéo produit",
+        "quote": "Les prompts avec ordre de plans rendent plus simple le test d’une révélation produit avant de consacrer du temps à un tournage complet."
+      },
+      {
+        "name": "Eli Morgan",
+        "role": "Artiste storyboard",
+        "quote": "J’utilise des images de référence pour le personnage et le décor, puis j’écris le mouvement comme un court beat. Le premier passage est plus clair pour les clients."
+      },
+      {
+        "name": "Nora Patel",
+        "role": "Responsable création sociale",
+        "quote": "Pour les clips tactiles, écrire le timing du son dans le prompt donne un mouvement plus intentionnel et moins aléatoire."
+      }
+    ]
+  },
+  "faqTitle": "FAQ du générateur vidéo IA Wan 2.7",
+  "faq": [
+    {
+      "q": "Qu’est-ce que le générateur vidéo IA Wan 2.7 ?",
+      "a": "Wan 2.7 est la famille de modèles d’Alibaba pour créer de courtes vidéos à partir de texte, d’images, de références vidéo et d’indications audio. Sur Toolaze, elle est proposée comme générateur Wan 2.7 dans le navigateur avec contrôles de prompt, sortie et références."
+    },
+    {
+      "q": "Quels modes de création Wan 2.7 prend-il en charge ?",
+      "a": "Wan 2.7 prend en charge texte vers vidéo, image vers vidéo et référence vers vidéo. La référence vers vidéo peut utiliser images, vidéos et audio pour guider sujet, scène, mouvement et son."
+    },
+    {
+      "q": "Wan 2.7 peut-il utiliser des images de référence ?",
+      "a": "Oui. Wan 2.7 peut utiliser des images de référence, avec contrôle du premier plan et du premier/dernier plan. En référence vers vidéo, il prend en charge jusqu’à cinq références image ou vidéo au total dans les modes compatibles."
+    },
+    {
+      "q": "Wan 2.7 peut-il utiliser des références vidéo ?",
+      "a": "Oui. La référence vers vidéo de Wan 2.7 peut utiliser des vidéos de référence, et l’image vers vidéo inclut la continuation afin de prolonger un clip source avec cadrage, lumière et direction de mouvement cohérents."
+    },
+    {
+      "q": "Wan 2.7 prend-il en charge l’audio natif ?",
+      "a": "Oui. Wan 2.7 prend en charge la synchronisation audio-vidéo pour effets, ambiance, musique et style vocal. Pour de meilleurs résultats, écrivez le son comme une action de scène temporelle plutôt qu’une demande vague."
+    },
+    {
+      "q": "Wan 2.7 prend-il en charge les vidéos multi-plans ?",
+      "a": "Oui. Wan 2.7 prend en charge les prompts multi-plans. Écrivez la séquence comme Plan 1, Plan 2 et Plan 3, puis indiquez ce qui change et ce qui doit rester cohérent."
+    },
+    {
+      "q": "Quelle durée et quelle résolution Wan 2.7 peut-il créer ?",
+      "a": "Wan 2.7 prend en charge une plage de 2 à 15 secondes avec sortie 720p ou 1080p. Toolaze affiche les choix disponibles avant la création de la vidéo."
+    },
+    {
+      "q": "Comment écrire un prompt Wan 2.7 ?",
+      "a": "Incluez le sujet, les rôles des références, le mouvement, la caméra, l’ordre des plans, le timing, l’éclairage et le son. Les prompts courts et structurés fonctionnent souvent mieux que les descriptions cinématographiques larges."
+    },
+    {
+      "q": "Combien de crédits Toolaze coûte Wan 2.7 ?",
+      "a": "Wan 2.7 commence à 64 crédits pour une génération 720p de 2 secondes sur Toolaze. Une durée plus longue ou une sortie 1080p augmente les crédits requis avant génération."
+    },
+    {
+      "q": "Wan 2.7 est-il gratuit sur Toolaze ?",
+      "a": "La génération vidéo Wan 2.7 dépend de vos crédits disponibles, de l’état du compte, de la durée choisie et de la résolution choisie. Le générateur affiche les crédits requis avant génération."
+    },
+    {
+      "q": "Quand choisir Wan 2.7 plutôt que Wan 2.6 ou Wan 2.5 ?",
+      "a": "Choisissez Wan 2.7 lorsque vous avez besoin des derniers contrôles Wan, de références plus riches, de transitions premier/dernier plan, de continuation vidéo, de prompts multi-plans et de son synchronisé. Choisissez Wan 2.6 ou Wan 2.5 pour des clips Wan plus simples."
+    },
+    {
+      "q": "Quand choisir un autre modèle vidéo Toolaze ?",
+      "a": "Choisissez Kling lorsque l’action haute résolution ou le mouvement dramatique est prioritaire, Seedance lorsque la planification de scène façon réalisation compte davantage, et Grok Imagine Video pour un brouillon rapide à partir d’une image."
+    }
+  ],
+  "moreTools": "Autres modèles vidéo IA",
+  "moreToolsLinks": [
+    {
+      "title": "Seedance 2.0",
+      "href": "/model/seedance-2",
+      "media": {
+        "type": "video",
+        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d0d55df5eef346809067197fddb1b251.png",
+        "alt": "Aperçu vidéo Seedance 2.0"
+      },
+      "description": "Utilisez Seedance 2.0 pour des vidéos multi-plans façon réalisation et des scènes commerciales riches en références."
+    },
+    {
+      "title": "Kling 3.0",
+      "href": "/model/kling-3",
+      "media": {
+        "type": "video",
+        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
+        "alt": "Aperçu vidéo Kling 3.0"
+      },
+      "description": "Essayez Kling 3.0 pour un mouvement dynamique, une caméra cinématographique et une sortie vidéo haute résolution."
+    },
+    {
+      "title": "Grok Imagine Video 1.5",
+      "href": "/model/grok-imagine-video-1-5",
+      "media": {
+        "type": "video",
+        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4",
+        "alt": "Aperçu de la démo vidéo Grok Imagine Video 1.5"
+      },
+      "description": "Utilisez Grok Imagine Video 1.5 pour des brouillons rapides image vers vidéo, du mouvement produit et des clips créateur."
+    }
+  ]
 }

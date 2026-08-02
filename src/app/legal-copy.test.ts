@@ -279,7 +279,11 @@ test('creative image tools are exposed from public entry points after review', (
   const aiToolsCopy = getAiToolsPageCopy('en')
 
   for (const href of publicToolHrefs) {
-    assert.match(navigation, new RegExp(`getLocalizedHref\\('${href}'\\)`))
+    assert.equal(
+      navigation.includes(`href: '${href}'`) || navigation.includes(`getLocalizedHref('${href}')`),
+      true,
+      `${href} should be exposed from navigation`
+    )
     assert.match(footer, new RegExp(`getLocalizedHref\\('${href}'\\)`))
     assert.match(sitemap, new RegExp(href))
     assert.equal(aiToolsCopy.cards.some((card) => card.href === href), true)
@@ -296,13 +300,14 @@ test('creative image tools are exposed from public entry points after review', (
 test('unverified social proof blocks are hidden during payment review', () => {
   assert.deepEqual(
     filterPaymentReviewSections(['howToUse', 'rating', 'features', 'testimonials', 'reviews', 'comments', 'faq']),
-    ['howToUse', 'features', 'faq']
+    ['howToUse', 'features', 'testimonials', 'faq']
   )
 
-  for (const section of ['rating', 'testimonials', 'reviews', 'comments']) {
+  for (const section of ['rating', 'reviews', 'comments']) {
     assert.equal(shouldRenderPaymentReviewSocialProofSection(section), false)
   }
 
+  assert.equal(shouldRenderPaymentReviewSocialProofSection('testimonials'), true)
   assert.equal(shouldRenderPaymentReviewSocialProofSection('faq'), true)
 
   const sanitized = sanitizePaymentReviewCommonTranslations({

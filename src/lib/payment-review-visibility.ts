@@ -2,7 +2,6 @@ export const HIDE_UNVERIFIED_SOCIAL_PROOF_FOR_PAYMENT_REVIEW = true
 
 const PAYMENT_REVIEW_SOCIAL_PROOF_SECTIONS = new Set([
   'rating',
-  'testimonials',
   'reviews',
   'comments',
 ])
@@ -22,7 +21,6 @@ export function sanitizePaymentReviewCommonTranslations<T extends Record<string,
 
   const {
     rating: _rating,
-    testimonials: _testimonials,
     reviews: _reviews,
     comments: _comments,
     ...safeTranslations

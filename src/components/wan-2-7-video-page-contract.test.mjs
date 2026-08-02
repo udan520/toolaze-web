@@ -56,6 +56,13 @@ function collectVisibleStrings(value, path = []) {
   return []
 }
 
+function collectCopyablePrompts(content) {
+  return [
+    ...(content.promptExamples?.items || []).map((item, index) => [`promptExamples.items[${index}].prompt`, item.prompt]),
+    ...(content.troubleshooting?.items || []).map((item, index) => [`troubleshooting.items[${index}].prompt`, item.prompt]),
+  ].filter(([, prompt]) => typeof prompt === 'string')
+}
+
 test('Wan 2.7 model page exposes English and localized model routes', () => {
   assert.ok(existsSync(join(root, 'src', 'app', 'model', slug, 'page.tsx')), 'English model route should exist')
   const localizedRoute = readFileSync(join(root, 'src', 'app', '[locale]', 'model', '[model]', 'page.tsx'), 'utf8')
@@ -125,22 +132,41 @@ test('Wan 2.7 content is published for every supported locale and traceable to S
   }
 })
 
+test('Wan 2.7 copyable prompts keep UI-selected ratio and duration out of the prompt text', () => {
+  const uiSelectedParameterPattern =
+    /\b\d+\s*:\s*\d+\b|\b\d+\s*-?\s*(?:second(?:s)?|segundos?|secondes?|secondi|sekündig(?:e[snm]?|es)?)\b|\b\d+\s*-?\s*(?:秒|초)/i
+
+  for (const locale of locales) {
+    const content = readJson(join(root, 'src', 'data', locale, `${slug}.json`))
+
+    for (const [promptPath, prompt] of collectCopyablePrompts(content)) {
+      assert.doesNotMatch(
+        prompt,
+        uiSelectedParameterPattern,
+        `${locale} ${promptPath} should not put aspect ratio or generation duration in copyable prompt text`
+      )
+    }
+  }
+})
+
 test('Wan 2.7 SEO sections follow the conversion-first order without duplicate use-case blocks', () => {
-  const expectedOrder = [
+  const expectedEnglishOrder = [
     'modelIntro',
+    'performanceMetrics',
     'howToUse',
     'promptExamples',
     'troubleshooting',
     'scenes',
     'modelComparison',
     'workflowComparison',
+    'testimonials',
     'faq',
   ]
 
   for (const locale of locales) {
     const content = readJson(join(root, 'src', 'data', locale, `${slug}.json`))
 
-    assert.deepEqual(content.sectionsOrder, expectedOrder, `${locale} should use the final SEO + conversion order`)
+    assert.deepEqual(content.sectionsOrder, expectedEnglishOrder, `${locale} should use the translated final SEO + conversion order`)
     assert.equal(content.sectionsOrder.includes('modelSelectionGuide'), false, `${locale} should not render the compact specs bar`)
     assert.equal('modelSelectionGuide' in content, false, `${locale} should remove the compact specs data`)
     assert.equal('featureCards' in content.modelIntro, false, `${locale} should not render duplicate intro feature cards`)
@@ -153,7 +179,21 @@ test('Wan 2.7 SEO sections follow the conversion-first order without duplicate u
     assert.ok(content.modelComparison?.rows?.length >= 6, `${locale} should include decision-useful same-family Wan comparison rows`)
     assert.ok(content.modelComparison.rows.every((row) => row.baseline && row.middle && row.target), `${locale} each same-family comparison row should compare all three Wan versions`)
     assert.equal(content.sectionsOrder.includes('features'), false, `${locale} should not render the generic Toolaze feature block`)
-    assert.equal(content.sectionsOrder.includes('performanceMetrics'), false, `${locale} should not render a separate settings block`)
+    assert.equal(content.sectionsOrder.includes('performanceMetrics'), true, `${locale} should render the official capability snapshot after the intro`)
+    assert.ok(content.performanceMetrics?.title, `${locale} capability snapshot should have a localized title`)
+    assert.ok(content.performanceMetrics?.metrics?.length >= 7, `${locale} capability snapshot should include official Wan 2.7 capability rows`)
+    assert.equal(content.sectionsOrder.includes('testimonials'), true, `${locale} should include user comments before FAQ`)
+    assert.equal(content.testimonials?.items?.length, 3, `${locale} should include three practical testimonials`)
+    if (locale === 'en') {
+      assert.match(content.performanceMetrics?.title || '', /Capability Snapshot/)
+      assert.ok(
+        content.troubleshooting?.items?.every((item) => /Weak prompt:/i.test(item.desc || '') && item.prompt),
+        `${locale} prompt tips should include weak and stronger prompt rewrites`
+      )
+    } else {
+      assert.notEqual(content.performanceMetrics?.title, 'Wan 2.7 Capability Snapshot', `${locale} capability snapshot title should be localized`)
+      assert.notEqual(content.testimonials?.title, 'Creator Notes on Wan 2.7', `${locale} testimonials title should be localized`)
+    }
     assert.ok(content.workflowComparison?.rows?.length >= 4, `${locale} should keep a cross-model comparison`)
     assert.doesNotMatch(
       JSON.stringify(content.workflowComparison),
@@ -203,13 +243,14 @@ test('Wan 2.7 same-family comparison uses concrete Toolaze differences', () => {
   const content = readJson(join(root, 'src', 'data', 'en', `${slug}.json`))
   const modelComparisonText = JSON.stringify(content.modelComparison)
 
-  assert.match(modelComparisonText, /up to two reference images/i)
+  assert.match(modelComparisonText, /up to five total image or video references/i)
   assert.match(modelComparisonText, /5, 10, or 15 seconds/i)
-  assert.match(modelComparisonText, /Any duration from 2 to 10 seconds/i)
-  assert.match(modelComparisonText, /Native audio output/i)
-  assert.match(modelComparisonText, /Starts at 120 points/)
-  assert.match(modelComparisonText, /Starts at 140 points/)
-  assert.match(modelComparisonText, /Starts at 64 points/)
+  assert.match(modelComparisonText, /2 to 15 seconds/i)
+  assert.match(modelComparisonText, /Audio-video synchronization/i)
+  assert.match(modelComparisonText, /First-frame, first-and-last-frame, video continuation/i)
+  assert.match(modelComparisonText, /Starts at 120 Credits/)
+  assert.match(modelComparisonText, /Starts at 140 Credits/)
+  assert.match(modelComparisonText, /Starts at 64 Credits/)
 })
 
 test('Wan 2.7 public entry points are wired into navigation, footer, hubs, sitemap, and language data', () => {
@@ -240,7 +281,7 @@ test('Wan 2.7 public entry points are wired into navigation, footer, hubs, sitem
   }
 })
 
-test('Wan 2.7 uses the real video model settings and published credit guidance', () => {
+test('Wan 2.7 keeps current Toolaze settings while English copy follows official Wan 2.7 capabilities', () => {
   const config = readFileSync(join(root, 'src', 'lib', 'ai-video-generator-config.ts'), 'utf8')
   const credits = readFileSync(join(root, 'src', 'lib', 'generation-credits.ts'), 'utf8')
   const content = readJson(join(root, 'src', 'data', 'en', `${slug}.json`))
@@ -250,12 +291,13 @@ test('Wan 2.7 uses the real video model settings and published credit guidance',
   assert.match(config, /id:\s*'wan-2-7'[\s\S]*maxImages:\s*2/)
   assert.match(credits, /'wan-2-7':\s*\{[\s\S]*ratesByResolution:\s*\{\s*'720p':\s*32,\s*'1080p':\s*48\s*\}/)
   assert.ok(
-    content.faq.some((item) => /points|credits/i.test(item.q) && /64/.test(item.a)),
-    'FAQ should keep the credit guidance after deleting the settings and specs blocks'
+    content.faq.some((item) => /Toolaze Credits/i.test(item.q) && /64 Credits/.test(item.a)),
+    'FAQ should keep the Toolaze Credits guidance'
   )
-  assert.doesNotMatch(
-    content.modelComparison.rows.map((row) => row.baseline).join('\n'),
-    /native audio output/i,
-    'Wan 2.7 left column should not claim native audio output'
-  )
+  const visibleCopy = collectVisibleStrings(content).join('\n')
+  assert.match(visibleCopy, /reference-to-video/i)
+  assert.match(visibleCopy, /first-and-last-frame/i)
+  assert.match(visibleCopy, /video continuation/i)
+  assert.match(visibleCopy, /audio-video synchronization/i)
+  assert.match(visibleCopy, /2 to 15 second/i)
 })
