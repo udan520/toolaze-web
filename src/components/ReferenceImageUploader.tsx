@@ -22,6 +22,9 @@ interface ReferenceImageUploaderProps {
   items: ReferenceImageUploaderItem[]
   maxImages: number
   maxFileSizeMb: number
+  acceptedTypes?: string
+  acceptedMimeTypes?: string[]
+  acceptedFileExtensions?: string[]
   onFiles: (files: File[]) => void
   onInvalidType?: (file: File) => void
   onValidationError?: (file: File) => void
@@ -38,10 +41,30 @@ interface ReferenceImageUploaderProps {
 
 const ACCEPTED_IMAGE_TYPES = 'image/jpeg,image/jpg,image/png,image/webp'
 
+function getFileExtension(file: File) {
+  return (file.name.split('.').pop() || '').trim().toLowerCase()
+}
+
+function isAcceptedImageFile(file: File, acceptedMimeTypes?: string[], acceptedFileExtensions?: string[]) {
+  const type = file.type.toLowerCase()
+  const extension = getFileExtension(file)
+  const normalizedMimeTypes = acceptedMimeTypes?.map((item) => item.toLowerCase()) || []
+  const normalizedExtensions = acceptedFileExtensions?.map((item) => item.replace(/^\./, '').toLowerCase()) || []
+
+  if (normalizedMimeTypes.length === 0 && normalizedExtensions.length === 0) {
+    return type.startsWith('image/')
+  }
+
+  return (type && normalizedMimeTypes.includes(type)) || (extension && normalizedExtensions.includes(extension))
+}
+
 export default function ReferenceImageUploader({
   items,
   maxImages,
   maxFileSizeMb,
+  acceptedTypes,
+  acceptedMimeTypes,
+  acceptedFileExtensions,
   onFiles,
   onInvalidType,
   onValidationError,
@@ -60,7 +83,7 @@ export default function ReferenceImageUploader({
   const maxBytes = maxFileSizeMb * 1024 * 1024
 
   const validateFiles = (files: File[]) => files.filter((file) => {
-    if (!file.type.startsWith('image/')) {
+    if (!isAcceptedImageFile(file, acceptedMimeTypes, acceptedFileExtensions)) {
       onInvalidType?.(file)
       return false
     }
@@ -102,7 +125,7 @@ export default function ReferenceImageUploader({
       <input
         ref={fileInputRef}
         type="file"
-        accept={ACCEPTED_IMAGE_TYPES}
+        accept={acceptedTypes || ACCEPTED_IMAGE_TYPES}
         multiple={maxImages > 1}
         className="hidden"
         onChange={(event) => {

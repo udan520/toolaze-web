@@ -6,6 +6,7 @@ import {
   getVideoGenerationCreditRefundDescription,
 } from '../_shared/generation-credit-label.mjs';
 import { attachGenerationTaskIdToConsumption } from '../_shared/generation-task-access.mjs';
+import { resolveUploadReferences } from '../_shared/upload-reference.mjs';
 
 /**
  * Cloudflare Pages Function: AI 视频生成 - 创建 Kie 视频任务
@@ -294,6 +295,35 @@ const VIDEO_MODEL_CONFIGS = {
     tooManyImagesError: `${displayName} supports one reference image`,
     unconfiguredError: `${displayName} video model is not configured`,
   }])),
+  'kling-2-6-motion-control': {
+    displayName: 'Kling 2.6 Motion Control',
+    envKey: 'KIE_KLING_2_6_MOTION_CONTROL_VIDEO_MODEL',
+    fallbackProviderModel: 'kling-2.6/motion-control',
+    creditModelId: 'kling-2-6-motion-control',
+    inputSchema: 'kling-motion-control',
+    supportedModes: new Set(['image-to-video']),
+    aliases: ['kling-2.6-motion-control', 'kling-2.6/motion-control'],
+    maxImages: 1,
+    maxVideos: 1,
+    promptRequired: false,
+    defaultAspectRatio: '16:9',
+    aspectRatios: new Set(['16:9', '9:16', '1:1']),
+    defaultResolution: '720p',
+    resolutions: new Set(['720p', '1080p']),
+    defaultDuration: 5,
+    minDuration: 3,
+    maxDuration: 30,
+    unsupportedModeError: 'Kling 2.6 Motion Control requires image-to-video mode',
+    unsupportedDurationError: 'Reference video duration must be between 3 and 30 seconds for Kling 2.6 Motion Control',
+    unsupportedAspectRatioError: 'Unsupported aspect ratio for Kling 2.6 Motion Control',
+    unsupportedResolutionError: 'Unsupported resolution for Kling 2.6 Motion Control',
+    tooManyImagesError: 'Kling 2.6 Motion Control supports one character image',
+    tooManyVideosError: 'Kling 2.6 Motion Control supports one motion reference video',
+    missingVideoError: 'Kling 2.6 Motion Control requires one motion reference video URL',
+    unsupportedImageUrlError: 'Kling 2.6 Motion Control character image URL must end in JPG, JPEG, or PNG',
+    unsupportedVideoUrlError: 'Kling 2.6 Motion Control reference video URL must end in MP4, MOV, or MKV',
+    unconfiguredError: 'Kling 2.6 Motion Control video model is not configured',
+  },
   ...Object.fromEntries([
     ['veo-3-1-lite', 'Veo 3.1 Lite', 'veo3_lite', 45],
     ['veo-3-1-fast', 'Veo 3.1 Fast', 'veo3_fast', 90],
@@ -383,6 +413,32 @@ const GENERATION_SERVICE_UNAVAILABLE_MESSAGE =
 
 function getApiKey(env) {
   return env.KIE_AI_API_KEY;
+}
+
+function shouldExposeProviderError(env) {
+  return env?.NODE_ENV === 'development' || env?.TOOLAZE_DEBUG_UPSTREAM_ERRORS === '1';
+}
+
+function getProviderErrorMessage(result, fallback = 'Failed to create video task') {
+  return String(
+    result?.message
+    ?? result?.msg
+    ?? result?.error
+    ?? result?.data?.message
+    ?? result?.data?.msg
+    ?? fallback
+  );
+}
+
+function hasProviderBusinessError(result) {
+  if (result?.code === undefined || result?.code === null) return false;
+  return Number(result.code) !== 200;
+}
+
+function getClientProviderError(env, message) {
+  return shouldExposeProviderError(env) && message
+    ? message
+    : GENERATION_SERVICE_UNAVAILABLE_MESSAGE;
 }
 
 function jsonResponse(body, status = 200) {
@@ -542,8 +598,58 @@ function parseImageUrls(formData) {
   return imageUrl ? [imageUrl] : [];
 }
 
+function parseVideoUrls(formData) {
+  const videoUrlsJson = formData.get('videoUrls');
+  const videoUrl = String(formData.get('videoUrl') || '').trim();
+
+  if (videoUrlsJson) {
+    try {
+      const parsed = JSON.parse(String(videoUrlsJson));
+      if (Array.isArray(parsed)) {
+        return parsed
+          .map((url) => String(url || '').trim())
+          .filter(Boolean);
+      }
+    } catch {
+      return [];
+    }
+  }
+
+  return videoUrl ? [videoUrl] : [];
+}
+
+function getUrlExtension(value) {
+  const raw = String(value || '').trim();
+  if (!raw) return '';
+
+  try {
+    return new URL(raw).pathname.split('.').pop()?.toLowerCase() || '';
+  } catch {
+    return raw.split(/[?#]/)[0].split('.').pop()?.toLowerCase() || '';
+  }
+}
+
+function validateKlingMotionControlUrlExtensions(modelConfig, imageUrls, videoUrls) {
+  if (modelConfig.inputSchema !== 'kling-motion-control') return null;
+
+  const imageExtensions = new Set(['jpg', 'jpeg', 'png']);
+  const videoExtensions = new Set(['mp4', 'mov', 'mkv']);
+  if (imageUrls.some((url) => !imageExtensions.has(getUrlExtension(url)))) {
+    return modelConfig.unsupportedImageUrlError;
+  }
+  if (videoUrls.some((url) => !videoExtensions.has(getUrlExtension(url)))) {
+    return modelConfig.unsupportedVideoUrlError;
+  }
+  return null;
+}
+
 function boolFormValue(formData, key) {
   return String(formData.get(key) || '').trim().toLowerCase() === 'true';
+}
+
+function normalizeCharacterOrientation(value) {
+  const orientation = String(value || '').trim().toLowerCase();
+  return orientation === 'image' ? 'image' : 'video';
 }
 
 function buildProviderInput({
@@ -552,6 +658,7 @@ function buildProviderInput({
   mode,
   prompt,
   imageUrls,
+  videoUrls,
   aspectRatio,
   resolution,
   duration,
@@ -640,6 +747,16 @@ function buildProviderInput({
     return versionedInput;
   }
 
+  if (modelConfig.inputSchema === 'kling-motion-control') {
+    return {
+      ...(prompt ? { prompt } : {}),
+      input_urls: imageUrls.slice(0, 1),
+      video_urls: videoUrls.slice(0, 1),
+      character_orientation: normalizeCharacterOrientation(formData.get('characterOrientation')),
+      mode: resolution,
+    };
+  }
+
   if (modelConfig.inputSchema === 'kling') {
     const providerMode = modelConfig.modeByResolution?.[resolution] || 'std';
     return {
@@ -713,19 +830,28 @@ export async function onRequest(context) {
     const mode = normalizeMode(formData);
     const modelConfig = getModelConfig(formData.get('model'));
     const prompt = String(formData.get('prompt') || '').trim();
-    const imageUrls = parseImageUrls(formData);
+    const imageUrlInputs = parseImageUrls(formData);
+    const videoUrlInputs = parseVideoUrls(formData);
 
-    if (!prompt) {
+    if (modelConfig.promptRequired !== false && !prompt) {
       return jsonResponse({ error: 'Prompt is required' }, 400);
     }
     if (modelConfig.supportedModes && !modelConfig.supportedModes.has(mode)) {
       return jsonResponse({ error: modelConfig.unsupportedModeError }, 400);
     }
-    if (mode === 'image-to-video' && imageUrls.length === 0) {
+    if (mode === 'image-to-video' && imageUrlInputs.length === 0) {
       return jsonResponse({ error: 'Image-to-video requires at least one image URL' }, 400);
     }
-    if (mode === 'image-to-video' && imageUrls.length > modelConfig.maxImages) {
+    if (mode === 'image-to-video' && imageUrlInputs.length > modelConfig.maxImages) {
       return jsonResponse({ error: modelConfig.tooManyImagesError }, 400);
+    }
+    if (modelConfig.maxVideos) {
+      if (videoUrlInputs.length === 0) {
+        return jsonResponse({ error: modelConfig.missingVideoError }, 400);
+      }
+      if (videoUrlInputs.length > modelConfig.maxVideos) {
+        return jsonResponse({ error: modelConfig.tooManyVideosError }, 400);
+      }
     }
 
     const aspectRatio = normalizeAspectRatio(formData.get('aspectRatio'), modelConfig);
@@ -741,6 +867,13 @@ export async function onRequest(context) {
     const duration = normalizeDuration(formData.get('duration'), modelConfig);
     if (duration.error) {
       return jsonResponse({ error: duration.error }, 400);
+    }
+    if (
+      modelConfig.inputSchema === 'kling-motion-control'
+      && normalizeCharacterOrientation(formData.get('characterOrientation')) === 'image'
+      && duration.value > 10
+    ) {
+      return jsonResponse({ error: 'Reference video duration must be between 3 and 10 seconds for image character orientation' }, 400);
     }
     const nativeAudio = Boolean(modelConfig.nativeAudioResolutions)
       && boolFormValue(formData, 'nativeAudio');
@@ -758,12 +891,20 @@ export async function onRequest(context) {
       return jsonResponse({ error: 'API key not configured (KIE_AI_API_KEY)' }, 500);
     }
 
+    const imageUrls = await resolveUploadReferences(imageUrlInputs, apiKey);
+    const videoUrls = await resolveUploadReferences(videoUrlInputs, apiKey);
+    const urlExtensionError = validateKlingMotionControlUrlExtensions(modelConfig, imageUrls, videoUrls);
+    if (urlExtensionError) {
+      return jsonResponse({ error: urlExtensionError }, 400);
+    }
+
     const input = buildProviderInput({
       formData,
       modelConfig,
       mode,
       prompt,
       imageUrls,
+      videoUrls,
       aspectRatio: aspectRatio.value,
       resolution: resolution.value,
       duration: duration.value,
@@ -815,8 +956,8 @@ export async function onRequest(context) {
     );
 
     const result = await response.json().catch(() => ({}));
-    if (!response.ok) {
-      const msg = result?.message ?? result?.msg ?? await response.text();
+    if (!response.ok || hasProviderBusinessError(result)) {
+      const msg = getProviderErrorMessage(result, response.statusText || 'Failed to create video task');
       const credits = await refundVideoGenerationCredits(env, creditContext, {
         ...creditMetadata,
         requiredCredits,
@@ -829,10 +970,10 @@ export async function onRequest(context) {
         error: String(msg || 'Failed to create video task'),
       });
       return jsonResponse({
-        error: GENERATION_SERVICE_UNAVAILABLE_MESSAGE,
+        error: getClientProviderError(env, msg),
         code: 'UPSTREAM_GENERATION_ERROR',
         credits,
-      }, response.status);
+      }, response.ok ? 502 : response.status);
     }
 
     const taskId = result?.data?.taskId ?? result?.taskId;
@@ -901,9 +1042,10 @@ export async function onRequest(context) {
       requiredCredits: creditMetadata?.requiredCredits,
       error: e instanceof Error ? e.message : 'Internal server error',
     });
+    const status = Number.isFinite(e?.status) ? e.status : 500;
     return jsonResponse({
       error: e instanceof Error ? e.message : 'Internal server error',
       credits,
-    }, 500);
+    }, status);
   }
 }

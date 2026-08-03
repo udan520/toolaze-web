@@ -140,6 +140,10 @@ export const VIDEO_GENERATION_CREDIT_RATES: Record<VideoGenerationModelId, {
     ratesByResolution: { '720p': 22, '1080p': 22 },
     nativeAudioRatesByResolution: { '720p': 44, '1080p': 44 },
   },
+  'kling-2-6-motion-control': {
+    source: 'Kie Kling 2.6 Motion Control pricing pending dedicated public rate; temporarily mapped to Kling 2.6 standard video cost × 2 and $0.005/credit',
+    ratesByResolution: { '720p': 22, '1080p': 22 },
+  },
   'kling-2-5': {
     source: 'Kie Kling 2.5 Turbo Pro pricing mapped at cost × 2 and $0.005/credit',
     ratesByResolution: { '1080p': 17 },

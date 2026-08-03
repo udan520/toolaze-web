@@ -13,6 +13,8 @@ import {
 
 const KIE_AI_BASE = 'https://api.kie.ai/api/v1/jobs';
 const KIE_VEO_BASE = 'https://api.kie.ai/api/v1/veo';
+const KIE_MOTION_CONTROL_FILE_FORMAT_MESSAGE =
+  'KIE rejected one of the uploaded files. Use a JPG/JPEG/PNG character image over 300px with a 2:5 to 5:2 aspect ratio, and an MP4/MOV/MKV motion reference video within the selected orientation duration limit.';
 const CORS = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Methods': 'POST, OPTIONS',
@@ -45,6 +47,14 @@ function normalizeVeoStatus(successFlag) {
   if (Number(successFlag) === 1) return 'SUCCEEDED';
   if (Number(successFlag) === 2 || Number(successFlag) === 3) return 'FAILED';
   return 'PENDING';
+}
+
+function normalizeProviderFailureMessage(message) {
+  const normalized = String(message || '').trim();
+  if (/file\s*format\s*not\s*support/i.test(normalized)) {
+    return KIE_MOTION_CONTROL_FILE_FORMAT_MESSAGE;
+  }
+  return normalized;
 }
 
 function firstUrlFrom(value) {
@@ -201,7 +211,7 @@ export async function onRequest(context) {
       ? normalizeVeoStatus(data?.successFlag)
       : normalizeStatus(data?.state ?? data?.status);
     const videoUrl = parseVideoUrl(veoResponse || data);
-    const message = data?.failMsg ?? data?.message;
+    const message = normalizeProviderFailureMessage(data?.failMsg ?? data?.message);
     const creditRefund = status === 'FAILED'
       ? await refundFailedVideoCredits(env, user, body, taskId, message)
       : null;

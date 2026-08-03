@@ -14,6 +14,7 @@ import { Seedream50ProLandingPage } from '@/components/Seedream50ProLandingPage'
 import { getSeedream50ProPageMetadata } from '@/lib/seedream-5-0-pro-landing-copy'
 import { GrokImagineVideo15LandingPage } from '@/components/GrokImagineVideo15LandingPage'
 import { getGrokImagineVideo15PageMetadata } from '@/lib/grok-imagine-video-1-5-landing-copy'
+import { generateHreflangAlternates } from '@/lib/hreflang'
 
 const SUPPORTED_LOCALES = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it'] as const
 
@@ -31,6 +32,7 @@ const MODEL_TOOL_MAP: Record<string, string> = {
   'seedance-2-5': 'seedance-2-5',
   'seedance-2': 'seedance-2',
   'kling-3': 'kling-3',
+  'kling-2-6-pro-motion-control': 'kling-2-6-pro-motion-control',
   'grok-imagine-video-1-5': 'grok-imagine-video-1-5',
 }
 
@@ -80,13 +82,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const content = await getL2SeoContent(tool, locale)
   const metadata = content?.metadata as { title?: string; description?: string } | undefined
+  const hreflang = generateHreflangAlternates(locale, `/model/${model}`)
 
   return {
     title: metadata?.title || `${model} | Toolaze`,
     description: metadata?.description || `Use ${model} online with Toolaze.`,
     robots: 'index, follow',
     alternates: {
-      canonical: `https://toolaze.com/${locale}/model/${model}`,
+      canonical: hreflang.canonical,
+      languages: hreflang.languages,
     },
   }
 }

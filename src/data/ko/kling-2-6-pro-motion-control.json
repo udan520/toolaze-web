@@ -1,0 +1,365 @@
+{
+  "in_menu": false,
+  "seoFactoryTaskId": "2026-08-02-kling-2-6-pro-motion-control",
+  "pageGroup": "model",
+  "topComponent": "kling-2-6-pro-motion-control",
+  "topTool": {
+    "defaultMode": "image-to-video",
+    "displayName": "Kling 2.6 Pro Motion Control",
+    "modelId": "kling-2-6-motion-control",
+    "initialImageUrls": [
+      "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/kling-2-6-pro-motion-control/character-reference.jpg"
+    ],
+    "initialMotionVideoUrls": [
+      "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/kling-2-6-pro-motion-control/motion-reference-video.mp4"
+    ],
+    "initialMotionVideoDurationSeconds": 7.934,
+    "initialCharacterOrientation": "video"
+  },
+  "metadata": {
+    "title": "Kling 2.6 Pro Motion Control AI 비디오 생성기 | Toolaze",
+    "description": "Toolaze에서 캐릭터 이미지 1장과 모션 참조 비디오 1개로 Kling 2.6 Motion Control 비디오를 만듭니다. 포즈, 제스처, 몸 동작 타이밍과 카메라 리듬을 전송하세요.",
+    "published": true
+  },
+  "sectionsOrder": [
+    "modelIntro",
+    "performanceMetrics",
+    "howToUse",
+    "scenes",
+    "modelComparison",
+    "competitorComparison",
+    "testimonials",
+    "faq"
+  ],
+  "hero": {
+    "h1": "<span class=\"text-gradient\">Kling 2.6 Pro Motion Control</span> AI 비디오 생성기",
+    "desc": "캐릭터 이미지를 업로드하고 모션 참조 비디오를 추가한 뒤 얼굴, 의상, 카메라, 스타일 중 무엇을 유지할지 설명하세요. Toolaze는 비디오의 포즈, 제스처, 몸 동작 타이밍과 카메라 리듬을 이미지 캐릭터에 적용합니다."
+  },
+  "heroDemoVideo": {
+    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/kling-2-6-pro-motion-control/motion-control-demo.mp4",
+    "ariaLabel": "Kling 2.6 Motion Control ko demo",
+    "width": 16,
+    "height": 9,
+    "sourceHistory": "User-generated Kling 2.6 Motion Control demo · character image + motion reference video · 7.9s · 1264x720 · R2",
+    "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/kling-2-6-pro-motion-control/motion-control-demo-poster.webp",
+    "duration": "PT7.9S",
+    "uploadDate": "2026-08-03T04:25:54.000Z"
+  },
+  "modelIntro": {
+    "title": "Kling 2.6 Motion Control이란?",
+    "modelName": "Kling 2.6 Motion Control",
+    "modelType": "AI 비디오 모델",
+    "description": [
+      "Kling 2.6 Motion Control은 참조 비디오의 움직임으로 캐릭터 이미지를 구동하는 Kuaishou Kling 비디오 모델입니다. 보존할 외형과 따라갈 모션 클립을 함께 제공합니다.",
+      "댄스 테스트, 인물 움직임, 패션 클립, 발표자 제스처, 손에 든 제품 데모, 소셜 비디오에 적합합니다. Toolaze에서는 캐릭터 이미지 1장, 모션 참조 비디오 1개, 720p 또는 1080p 출력을 사용하는 이미지-투-비디오 Motion Control 흐름입니다."
+    ]
+  },
+  "performanceMetrics": {
+    "title": "Kling 2.6 Motion Control 기능 요약",
+    "metrics": [
+      {
+        "label": "입력 모드",
+        "value": "이미지-투-비디오 Motion Control"
+      },
+      {
+        "label": "캐릭터 이미지",
+        "value": "Toolaze 업로더 기준 최대 10MB 이미지 1장"
+      },
+      {
+        "label": "모션 참조 비디오",
+        "value": "MP4, QuickTime 또는 Matroska 모션 참조 비디오 1개, 최대 100MB, 3-30초"
+      },
+      {
+        "label": "프롬프트",
+        "value": "선택 사항입니다. 정체성, 의상, 프레이밍, 스타일을 보존할 때 사용하세요."
+      },
+      {
+        "label": "길이",
+        "value": "이미지 방향은 3~10초 참조 영상을, 비디오 방향은 3~30초 참조 영상을 지원합니다. 출력 길이는 업로드한 모션 참조 비디오를 따릅니다."
+      },
+      {
+        "label": "캐릭터 방향",
+        "value": "이미지는 캐릭터 이미지 방향을 따르고(3~10초), 비디오는 참조 영상 속 캐릭터 방향을 따릅니다(3~30초)."
+      },
+      {
+        "label": "모션 제어 소스",
+        "value": "포즈, 제스처, 걸음, 손동작, 카메라 리듬은 업로드한 비디오에서 옵니다"
+      },
+      {
+        "label": "해상도",
+        "value": "720p 또는 1080p"
+      },
+      {
+        "label": "credits 안내",
+        "value": "credits는 업로드한 모션 참조 비디오 길이에 따라 계산됩니다. 현재 720p 또는 1080p는 출력 1초당 22 credits입니다."
+      },
+      {
+        "label": "사운드",
+        "value": "Toolaze의 Motion Control은 네이티브 오디오를 지원하므로 생성 클립에 제어된 움직임과 함께 사운드를 포함할 수 있습니다."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Toolaze에서 Kling 2.6 Motion Control 사용법",
+    "steps": [
+      {
+        "title": "Motion Control 선택",
+        "desc": "Kling 2.6 Motion Control을 선택해 생성기가 캐릭터 이미지와 모션 참조 비디오를 함께 받도록 합니다."
+      },
+      {
+        "title": "캐릭터 이미지 업로드",
+        "desc": "얼굴, 의상, 체형, 제품 또는 보존할 시각 스타일이 선명하게 보이는 이미지를 사용하세요."
+      },
+      {
+        "title": "모션 참조 비디오 추가",
+        "desc": "전송할 포즈, 제스처, 걷기, 춤, 손동작 또는 카메라 리듬이 담긴 MP4, QuickTime 또는 Matroska 클립(최대 100MB, 3-30초)을 업로드하세요."
+      },
+      {
+        "title": "품질 선택 및 조정",
+        "desc": "720p 또는 1080p를 선택하세요. 출력 길이는 업로드한 모션 참조 비디오를 따릅니다. 생성 후 정체성, 팔다리, 프레이밍이 흔들리면 프롬프트를 줄이거나 더 깨끗한 모션 클립을 사용하세요."
+      }
+    ]
+  },
+  "scenesTitle": "Kling 2.6 Motion Control로 만들 수 있는 것",
+  "scenes": [
+    {
+      "title": "댄스와 포즈 전송",
+      "desc": "참조 댄스, 걷기, 회전 또는 제스처를 캐릭터 이미지에 적용하면서 정체성, 의상, 신체 비율을 보존합니다."
+    },
+    {
+      "title": "패션 모션 클립",
+      "desc": "정지된 의상 이미지나 에디토리얼 포트레이트를 실제 모션 참조가 이끄는 런웨이형 클립으로 바꿉니다."
+    },
+    {
+      "title": "프레젠터와 아바타 제스처",
+      "desc": "손 타이밍과 자세가 제공된 영상에 맞춰지는 정면 설명, 반응, 인사 클립을 만듭니다."
+    },
+    {
+      "title": "손에 든 제품 데모",
+      "desc": "참조 제스처로 제품을 잡고, 돌리고, 들어 올리고, 카메라에 보여주는 방식을 안내합니다."
+    },
+    {
+      "title": "소셜 쇼츠",
+      "desc": "맞출 모션 영상이 있을 때 Reels, TikTok, Shorts, 광고용 세로 캐릭터 클립을 만듭니다."
+    },
+    {
+      "title": "스토리보드 모션 테스트",
+      "desc": "더 긴 캠페인이나 장면을 만들기 전에 포즈, 제스처, 신체 움직임이 맞는지 확인합니다."
+    }
+  ],
+  "modelComparison": {
+    "title": "Kling 2.6 Motion Control과 인접 Kling 모델 비교",
+    "subtitle": "참조 비디오가 동작을 이끌어야 할 때 Motion Control을 선택하세요. 동작 클립이 없거나 더 넓은 생성 설정이 필요하면 다른 Kling 모델을 선택하세요.",
+    "featuredColumn": "baseline",
+    "columnHeaders": {
+      "metric": "판단 기준",
+      "baseline": "Kling 2.6 Motion Control",
+      "middle": "Kling 2.6",
+      "target": "Kling 3.0"
+    },
+    "rows": [
+      {
+        "label": "Toolaze 모델",
+        "baseline": "Kling 2.6 Motion Control",
+        "middle": "Kling 2.6",
+        "target": "Kling 3.0"
+      },
+      {
+        "label": "입력 모드",
+        "baseline": "이미지-투-비디오 Motion Control: 캐릭터 이미지 1장 + 모션 참조 비디오 1개",
+        "middle": "프롬프트 또는 단일 이미지 기반 비디오 생성, 최대 이미지 1장",
+        "target": "프롬프트 또는 여러 이미지 기반 비디오 생성, 최대 이미지 4장"
+      },
+      {
+        "label": "비디오 참조",
+        "baseline": "필수: 모션 참조 비디오 1개",
+        "middle": "업로드한 모션 참조 비디오를 사용하지 않음",
+        "target": "업로드한 모션 참조 비디오를 사용하지 않음"
+      },
+      {
+        "label": "모션 제어 방식",
+        "baseline": "참조 비디오 동작 전송과 정체성 및 스타일 보존",
+        "middle": "프롬프트로 설명한 피사체 동작, 카메라 경로, 타이밍",
+        "target": "더 많은 참조와 긴 장면 계획에 맞는 디렉터형 프롬프트"
+      },
+      {
+        "label": "해상도",
+        "baseline": "720p 또는 1080p",
+        "middle": "720p 또는 1080p",
+        "target": "720p, 1080p 또는 4K"
+      },
+      {
+        "label": "credits 안내",
+        "baseline": "출력 1초당 22 credits. 총 비용은 업로드한 참조 비디오 길이를 따릅니다",
+        "middle": "5초 110 credits부터",
+        "target": "설정에 따라 84 credits부터"
+      },
+      {
+        "label": "선택할 때",
+        "baseline": "깨끗한 모션 참조 비디오가 있고 캐릭터 이미지가 이를 따라야 할 때",
+        "middle": "프롬프트만 쓰거나 단일 이미지로 Kling 비디오 초안을 만들 때",
+        "target": "더 많은 이미지 참조, 4K, 긴 장면 계획이 필요할 때"
+      }
+    ]
+  },
+  "competitorComparison": {
+    "title": "Kling Motion Control, Wan, Seedance 선택 기준",
+    "subtitle": "캐릭터 이미지를 업로드하고 모션 참조 비디오를 추가한 뒤 얼굴, 의상, 카메라, 스타일 중 무엇을 유지할지 설명하세요. Toolaze는 비디오의 포즈, 제스처, 몸 동작 타이밍과 카메라 리듬을 이미지 캐릭터에 적용합니다.",
+    "featuredColumn": "baseline",
+    "columnHeaders": {
+      "metric": "판단 기준",
+      "baseline": "Kling 2.6 Motion Control",
+      "middle": "Wan 2.7",
+      "target": "Seedance 2.5"
+    },
+    "rows": [
+      {
+        "label": "잘 맞는 용도",
+        "baseline": "캐릭터 이미지 1장과 모션 참조 비디오 1개를 이용한 동작 전송",
+        "middle": "유연한 장면 프레이밍의 짧은 시네마틱 클립",
+        "target": "시각 완성도가 높은 고디테일 ByteDance 비디오 초안"
+      },
+      {
+        "label": "먼저 확인할 점",
+        "baseline": "모션 비디오가 깨끗하고 잘 보이며 3-30초 길이이고 캐릭터 프레이밍과 가까운지",
+        "middle": "원하는 길이와 해상도가 Wan 설정과 맞는지",
+        "target": "선택한 Seedance 설정이 입력 유형과 품질 목표를 지원하는지"
+      },
+      {
+        "label": "프롬프트 방식",
+        "baseline": "참조 모션을 따르면서 정체성, 의상, 비율, 조명, 프레이밍, 스타일을 보존",
+        "middle": "장면 설정, 샷 리듬, 움직임 방향, 출력 설정 설명",
+        "target": "피사체, 스타일, 장면 변화, 조명, 품질 단서 설명"
+      },
+      {
+        "label": "참조 자료",
+        "baseline": "이미지가 캐릭터를 제공하고 비디오가 움직임을 제공합니다",
+        "middle": "Toolaze에서 최대 이미지 참조 2장",
+        "target": "참조 지원은 선택한 Seedance 설정에 따라 달라집니다"
+      },
+      {
+        "label": "다른 모델을 선택할 때",
+        "baseline": "모션 참조 비디오가 없다면 다른 모델 선택",
+        "middle": "정확한 포즈나 제스처 전송이 가장 중요하면 Motion Control 선택",
+        "target": "특정 동작 영상을 맞추는 것이 시각적 완성도보다 중요하면 Motion Control 선택"
+      }
+    ]
+  },
+  "testimonials": {
+    "title": "Motion Control 테스트에 대한 크리에이터 의견",
+    "reviewSafe": true,
+    "showStars": false,
+    "items": [
+      {
+        "name": "Maya Chen",
+        "role": "패션 모션 초안",
+        "quote": "이미지와 비디오를 함께 쓰니 런웨이 워크를 텍스트로 다시 설명하지 않아도 테스트할 수 있었습니다. 깨끗한 전신 참조 클립에서 결과 판단이 가장 쉬웠습니다."
+      },
+      {
+        "name": "Jordan Lee",
+        "role": "제품 비디오 기획",
+        "quote": "손동작 참조를 사용해 작은 기기가 화면 안에서 어떻게 회전해야 하는지 계획했습니다. 로고와 조명 보존에만 집중하니 검토하기 쉬운 초안이 나왔습니다."
+      },
+      {
+        "name": "Nina Patel",
+        "role": "아바타 제스처 테스트",
+        "quote": "프레젠터 클립에서는 긴 스타일 프롬프트보다 포트레이트와 모션 비디오의 크롭을 맞추는 것이 더 중요했습니다. 단순한 참조일수록 제스처가 선명했습니다."
+      }
+    ]
+  },
+  "faqTitle": "Kling 2.6 Motion Control 자주 묻는 질문",
+  "faq": [
+    {
+      "q": "Toolaze의 Kling 2.6 Motion Control은 무엇인가요?",
+      "a": "업로드한 캐릭터 이미지에 참조 비디오의 움직임을 적용하면서 정체성, 의상, 시각 스타일을 보존하는 이미지-투-비디오 생성 흐름입니다."
+    },
+    {
+      "q": "프롬프트만으로 만들 수 있나요?",
+      "a": "아니요. Kling 2.6 Motion Control에는 캐릭터 이미지와 모션 참조 비디오가 모두 필요합니다. 움직임 영상이 없다면 다른 Toolaze 비디오 모델을 선택하세요."
+    },
+    {
+      "q": "Motion Control에서 프롬프트가 필수인가요?",
+      "a": "아니요. 캐릭터 이미지와 모션 참조 비디오는 필수이고, 프롬프트는 선택 사항입니다. 정체성, 의상, 조명, 프레이밍, 스타일 보존에 유용합니다."
+    },
+    {
+      "q": "동작 전송용 비디오를 업로드할 수 있나요?",
+      "a": "네. 모션 참조 비디오 1개와 캐릭터 이미지 1장을 함께 업로드하세요. 비디오는 포즈, 제스처, 타이밍, 카메라 리듬, 최종 출력 길이를 제공합니다."
+    },
+    {
+      "q": "참조 파일은 몇 개까지 사용할 수 있나요?",
+      "a": "Toolaze는 이 흐름에서 캐릭터 이미지 1장과 모션 참조 비디오 1개를 지원합니다. 업로더는 MP4, QuickTime 또는 Matroska, 최대 100MB, 3-30초를 받습니다."
+    },
+    {
+      "q": "어떤 해상도를 선택할 수 있나요?",
+      "a": "Toolaze의 Kling 2.6 Motion Control은 720p와 1080p 출력을 지원합니다."
+    },
+    {
+      "q": "Motion Control은 소리를 생성하나요?",
+      "a": "네. Toolaze는 Kling 2.6 Motion Control의 네이티브 오디오를 활성화하므로 생성 클립에 전송된 움직임과 함께 사운드를 포함할 수 있습니다."
+    },
+    {
+      "q": "credits는 얼마나 사용하나요?",
+      "a": "credits는 업로드한 참조 비디오 길이에 따라 계산됩니다. 현재 Toolaze의 720p 또는 1080p Motion Control은 출력 1초당 22 credits입니다."
+    },
+    {
+      "q": "Kling 2.6 Motion Control은 무료인가요?",
+      "a": "비디오 생성에는 Toolaze credits가 사용됩니다. 시작 credits, 사용 가능한 설정, 참조 비디오 길이, 최종 비용은 계정 할당량과 해상도에 따라 달라질 수 있습니다."
+    },
+    {
+      "q": "더 좋은 프롬프트는 어떻게 쓰나요?",
+      "a": "프롬프트는 짧고 보호 중심으로 작성하세요. 업로드한 모션 참조를 따르면서 정체성, 의상, 조명, 프레이밍, 스타일을 보존하고, 비디오와 충돌하는 추가 장면 변화는 제거하세요."
+    },
+    {
+      "q": "Motion Control과 Kling 3.0 중 무엇을 선택해야 하나요?",
+      "a": "모션 참조 비디오가 있고 캐릭터 이미지가 그 움직임을 따라야 한다면 Motion Control을 선택하세요. 더 넓은 프롬프트 제어, 더 많은 이미지 참조, 4K, 긴 장면 계획이 필요하면 Kling 3.0을 선택하세요."
+    }
+  ],
+  "moreTools": "더 많은 AI 비디오 모델",
+  "moreToolsLinks": [
+    {
+      "slug": "kling-3",
+      "title": "Kling 3.0 비디오 생성기",
+      "description": "더 새로운 Kling 출력, 더 긴 길이, 더 많은 이미지 참조, 4K 옵션을 비교하세요.",
+      "href": "/model/kling-3",
+      "media": {
+        "type": "video",
+        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/prompt-templates/image-guided-motion.mp4",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/prompt-templates/image-guided-motion.webp",
+        "alt": "Kling 3.0 Video Generator preview"
+      }
+    },
+    {
+      "slug": "kling-ai-video-generator",
+      "title": "Kling AI 비디오 생성기",
+      "description": "다른 Kling 모델이나 더 넓은 생성 설정이 필요할 때 Kling 허브를 여세요.",
+      "href": "/kling-ai-video-generator",
+      "media": {
+        "type": "image",
+        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
+        "alt": "Kling AI Video Generator preview"
+      }
+    },
+    {
+      "slug": "wan-2-7-ai-video-generator",
+      "title": "Wan 2.7 비디오 생성기",
+      "description": "짧은 시네마틱 클립용 최신 Wan 비디오 모델을 사용해 보세요.",
+      "href": "/model/wan-2-7-ai-video-generator",
+      "media": {
+        "type": "image",
+        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
+        "alt": "Wan 2.7 Video Generator preview"
+      }
+    },
+    {
+      "slug": "seedance-2-5",
+      "title": "Seedance 2.5 비디오 생성기",
+      "description": "완성도 높은 시각 초안을 위한 다른 고품질 비디오 모델을 살펴보세요.",
+      "href": "/model/seedance-2-5",
+      "media": {
+        "type": "image",
+        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
+        "alt": "Seedance 2.5 Video Generator preview"
+      }
+    }
+  ]
+}

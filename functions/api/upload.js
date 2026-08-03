@@ -4,11 +4,29 @@
  * 需在 Pages 项目 Settings → Functions → Bindings 中绑定 R2（MY_BUCKET）并设置 R2_PUBLIC_BASE_URL。
  * 使用单一 onRequest 确保该路径由本 Function 处理，避免被静态或其它逻辑返回 405。
  */
+import { uploadFileToKie } from '../_shared/kie-file-upload.mjs';
+import {
+  createUploadReference,
+  getUploadReferenceMediaType,
+} from '../_shared/upload-reference.mjs';
+
 const CORS = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Methods': 'POST, OPTIONS',
   'Access-Control-Allow-Headers': 'Content-Type',
 };
+
+const MOTION_CONTROL_UPLOAD_PURPOSE = 'kling-motion-control';
+const MOTION_CONTROL_UPLOAD_OPTIONS = {
+  uploadPath: 'toolaze/kling-motion-control',
+  formatProfile: 'kling-motion-control',
+};
+
+function getMotionControlUploadOptions(formData) {
+  const uploadPurpose = String(formData.get('uploadPurpose') || '').trim();
+  if (uploadPurpose !== MOTION_CONTROL_UPLOAD_PURPOSE) return null;
+  return MOTION_CONTROL_UPLOAD_OPTIONS;
+}
 
 export async function onRequest(context) {
   const { request, env } = context;
@@ -34,6 +52,21 @@ export async function onRequest(context) {
       if (!file || !(file instanceof Blob)) {
         return new Response(JSON.stringify({ error: 'No file in form (use field: file or image)' }), {
           status: 400,
+          headers: { 'Content-Type': 'application/json', ...CORS },
+        });
+      }
+      const motionControlUploadOptions = getMotionControlUploadOptions(formData);
+      if (motionControlUploadOptions) {
+        const result = await uploadFileToKie(file, {
+          apiKey: env.KIE_AI_API_KEY,
+          ...motionControlUploadOptions,
+        });
+        return new Response(JSON.stringify({
+          uploadRef: await createUploadReference({
+            ...result,
+            mediaType: getUploadReferenceMediaType(file),
+          }, env.KIE_AI_API_KEY),
+        }), {
           headers: { 'Content-Type': 'application/json', ...CORS },
         });
       }
@@ -69,6 +102,7 @@ export async function onRequest(context) {
     });
   } catch (e) {
     const msg = e instanceof Error ? e.message : String(e);
+    const status = Number.isFinite(e?.status) ? e.status : 500;
     const hint = msg.includes('MY_BUCKET') || msg.includes('undefined')
       ? 'Bind R2 bucket (MY_BUCKET) in Cloudflare Pages → Functions → R2 bucket bindings'
       : undefined;
@@ -76,7 +110,7 @@ export async function onRequest(context) {
       error: msg,
       ...(hint && { hint }),
     }), {
-      status: 500,
+      status,
       headers: { 'Content-Type': 'application/json', ...CORS },
     });
   }

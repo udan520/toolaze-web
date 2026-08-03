@@ -1,0 +1,96 @@
+{
+  "taskId": "2026-08-02-kling-2-6-pro-motion-control",
+  "slug": "kling-2-6-pro-motion-control",
+  "pageType": "l2",
+  "status": "ready_for_publish",
+  "tool": "kling-2-6-pro-motion-control",
+  "topic": "Kling 2.6 Pro Motion Control AI Video Generator",
+  "generatedBy": "Codex",
+  "createdAt": "2026-08-02T00:00:00.000Z",
+  "workspace": "/Users/neva/Desktop/workspace/toolaze-worktrees/lp/kling-2-6-pro-motion-control",
+  "modelInstruction": "Create a Toolaze public model SEO landing page for Kling 2.6 Pro Motion Control, mapped to the supported kling-2-6 generation model without inventing unsupported reference-video controls.",
+  "localeCoverage": [
+    "en",
+    "de",
+    "ja",
+    "es",
+    "zh-TW",
+    "pt",
+    "fr",
+    "ko",
+    "it"
+  ],
+  "canonicalPath": "/model/kling-2-6-pro-motion-control",
+  "modelId": "kling-2-6-motion-control",
+  "sourceData": "src/data/en/kling-2-6-pro-motion-control.json",
+  "releaseBoundary": "Public landing-page release includes route files, desktop and mobile navigation, Footer, model hub, homepage model rail href/media, AI Tools hub card, sitemap, supported locale data, SEO Factory run records, and targeted tests. backend migrations, production deploys, commits, pushes, and SEO Factory dashboards remain excluded.",
+  "researchSummary": {
+    "officialSignals": [
+      "Kling 2.6 Motion Control uses one character image plus one motion reference video for image-to-video motion transfer.",
+      "The provider input contract uses input_urls, video_urls, character_orientation, and mode for the motion-control request.",
+      "Toolaze config exposes this page as Kling 2.6 Motion Control with one image, one motion reference video, 720p/1080p output, and a 100MB motion-video uploader limit.",
+      "The visible page follows the current model SEO skill order: What Is, capability snapshot, How To, prompts, tips, use cases, comparisons, review-safe comments, FAQ, and related models."
+    ],
+    "competitorPatterns": [
+      "Ranking competitor pages answer motion-control intent near the top with a direct definition, capability facts, how-to steps, prompt examples, and FAQ coverage.",
+      "Competitors often foreground driving-video motion transfer; Toolaze copy should acknowledge that user intent without claiming a control that is not available in the current Toolaze generator.",
+      "Useful pages place hard settings, prompt repair guidance, model comparisons, and use cases close to the generator instead of relying on broad marketing feature cards."
+    ],
+    "sourceNotes": [
+      "Official Kling 2.6 audio guide and official Kling Motion Control guide reviewed on 2026-08-02.",
+      "Competitor structure checked against KlingMotionControl.com, FluxMov, and Kapwing results for Kling 2.6 motion-control intent."
+    ]
+  },
+  "publicEntrypoints": [
+    "/model/kling-2-6-pro-motion-control",
+    "/de/model/kling-2-6-pro-motion-control",
+    "/ja/model/kling-2-6-pro-motion-control",
+    "/es/model/kling-2-6-pro-motion-control",
+    "/zh-TW/model/kling-2-6-pro-motion-control",
+    "/pt/model/kling-2-6-pro-motion-control",
+    "/fr/model/kling-2-6-pro-motion-control",
+    "/ko/model/kling-2-6-pro-motion-control",
+    "/it/model/kling-2-6-pro-motion-control"
+  ],
+  "files": [
+    "_codex/seo-pipeline/tasks/2026-08-02-kling-2-6-pro-motion-control/content/en.json",
+    "src/data/en/kling-2-6-pro-motion-control.json",
+    "_codex/seo-pipeline/tasks/2026-08-02-kling-2-6-pro-motion-control/content/de.json",
+    "src/data/de/kling-2-6-pro-motion-control.json",
+    "_codex/seo-pipeline/tasks/2026-08-02-kling-2-6-pro-motion-control/content/ja.json",
+    "src/data/ja/kling-2-6-pro-motion-control.json",
+    "_codex/seo-pipeline/tasks/2026-08-02-kling-2-6-pro-motion-control/content/es.json",
+    "src/data/es/kling-2-6-pro-motion-control.json",
+    "_codex/seo-pipeline/tasks/2026-08-02-kling-2-6-pro-motion-control/content/zh-TW.json",
+    "src/data/zh-TW/kling-2-6-pro-motion-control.json",
+    "_codex/seo-pipeline/tasks/2026-08-02-kling-2-6-pro-motion-control/content/pt.json",
+    "src/data/pt/kling-2-6-pro-motion-control.json",
+    "_codex/seo-pipeline/tasks/2026-08-02-kling-2-6-pro-motion-control/content/fr.json",
+    "src/data/fr/kling-2-6-pro-motion-control.json",
+    "_codex/seo-pipeline/tasks/2026-08-02-kling-2-6-pro-motion-control/content/ko.json",
+    "src/data/ko/kling-2-6-pro-motion-control.json",
+    "_codex/seo-pipeline/tasks/2026-08-02-kling-2-6-pro-motion-control/content/it.json",
+    "src/data/it/kling-2-6-pro-motion-control.json",
+    "src/app/model/kling-2-6-pro-motion-control/page.tsx",
+    "src/app/[locale]/model/[model]/page.tsx",
+    "src/lib/seo-loader.ts",
+    "src/components/blocks/ToolL2PageContent.tsx",
+    "src/components/Navigation.tsx",
+    "src/components/Footer.tsx",
+    "src/lib/model-hub.ts",
+    "src/app/sitemap.ts",
+    "src/lib/site-language-switch.ts",
+    "src/components/Breadcrumb.tsx",
+    "src/components/home/HomePageMain.tsx",
+    "src/lib/home-model-card-images.ts",
+    "src/components/kling-2-6-pro-motion-control-page-contract.test.mjs",
+    "src/app/ai-tools/copy.ts",
+    "src/app/ai-tools/copy.test.ts"
+  ],
+  "outputs": [
+    "/model/kling-2-6-pro-motion-control"
+  ],
+  "notes": [
+    "The visible page name uses Kling 2.6 Pro Motion Control, while topTool.modelId stays kling-2-6 so the live generator uses the supported local model."
+  ]
+}

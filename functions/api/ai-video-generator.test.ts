@@ -2,6 +2,7 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import { onRequest as createVideoTask } from './ai-video-generator.js'
 import { onRequest as getVideoTaskStatus } from './ai-video-generator/status.js'
+import { createUploadReference } from '../_shared/upload-reference.mjs'
 
 type FetchCall = {
   url: string
@@ -174,6 +175,283 @@ test('AI video generator creates a Kie Grok 1.5 image-to-video task', async () =
         nsfw_checker: true,
       },
     })
+  } finally {
+    globalThis.fetch = originalFetch
+  }
+})
+
+test('AI video generator creates a Kie Kling 2.6 Motion Control task', async () => {
+  const calls: FetchCall[] = []
+  const originalFetch = globalThis.fetch
+  globalThis.fetch = (async (url: RequestInfo | URL, init?: RequestInit) => {
+    calls.push({ url: String(url), init })
+    return new Response(JSON.stringify({ code: 200, data: { taskId: 'kling_motion_task' } }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    })
+  }) as typeof fetch
+
+  try {
+    const response = await createVideoTask({
+      request: createFormRequest({
+        mode: 'image-to-video',
+        model: 'kling-2-6-motion-control',
+        prompt: '',
+        imageUrls: JSON.stringify(['https://cdn.example.com/character.png']),
+        videoUrls: JSON.stringify(['https://cdn.example.com/motion.mp4']),
+        aspectRatio: '16:9',
+        resolution: '720p',
+        duration: '12',
+      }),
+      env: { KIE_AI_API_KEY: 'test-key' },
+    })
+
+    assert.equal(response.status, 200)
+    assert.deepEqual(await readJson(response), { taskId: 'kling_motion_task', requiredCredits: 264 })
+    assert.equal(calls.length, 1)
+    assert.equal(calls[0].url, 'https://api.kie.ai/api/v1/jobs/createTask')
+
+    const payload = JSON.parse(String(calls[0].init?.body))
+    assert.deepEqual(payload, {
+      model: 'kling-2.6/motion-control',
+      input: {
+        input_urls: ['https://cdn.example.com/character.png'],
+        video_urls: ['https://cdn.example.com/motion.mp4'],
+        character_orientation: 'video',
+        mode: '720p',
+      },
+    })
+  } finally {
+    globalThis.fetch = originalFetch
+  }
+})
+
+test('AI video generator resolves opaque motion-control upload references server-side', async () => {
+  const calls: FetchCall[] = []
+  const originalFetch = globalThis.fetch
+  const imageRef = await createUploadReference({
+    url: 'https://tempfile.redpandaai.co/kieai/231516/toolaze/kling-motion-control/character.png',
+  }, 'test-key')
+  const videoRef = await createUploadReference({
+    url: 'https://tempfile.redpandaai.co/kieai/231516/toolaze/kling-motion-control/motion.mp4',
+  }, 'test-key')
+
+  assert.equal(imageRef.includes('kieai'), false)
+  assert.equal(imageRef.includes('redpandaai'), false)
+  assert.equal(videoRef.includes('kieai'), false)
+  assert.equal(videoRef.includes('redpandaai'), false)
+
+  globalThis.fetch = (async (url: RequestInfo | URL, init?: RequestInit) => {
+    calls.push({ url: String(url), init })
+    return new Response(JSON.stringify({ code: 200, data: { taskId: 'kling_motion_ref_task' } }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    })
+  }) as typeof fetch
+
+  try {
+    const response = await createVideoTask({
+      request: createFormRequest({
+        mode: 'image-to-video',
+        model: 'kling-2-6-motion-control',
+        prompt: '',
+        imageUrls: JSON.stringify([imageRef]),
+        videoUrls: JSON.stringify([videoRef]),
+        aspectRatio: '16:9',
+        resolution: '720p',
+        duration: '8',
+      }),
+      env: { KIE_AI_API_KEY: 'test-key' },
+    })
+
+    assert.equal(response.status, 200)
+    const payload = JSON.parse(String(calls[0].init?.body))
+    assert.deepEqual(payload.input.input_urls, [
+      'https://tempfile.redpandaai.co/kieai/231516/toolaze/kling-motion-control/character.png',
+    ])
+    assert.deepEqual(payload.input.video_urls, [
+      'https://tempfile.redpandaai.co/kieai/231516/toolaze/kling-motion-control/motion.mp4',
+    ])
+  } finally {
+    globalThis.fetch = originalFetch
+  }
+})
+
+test('AI video generator forwards image character orientation to Kie Kling Motion Control', async () => {
+  const calls: FetchCall[] = []
+  const originalFetch = globalThis.fetch
+  globalThis.fetch = (async (url: RequestInfo | URL, init?: RequestInit) => {
+    calls.push({ url: String(url), init })
+    return new Response(JSON.stringify({ code: 200, data: { taskId: 'kling_image_orientation_task' } }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    })
+  }) as typeof fetch
+
+  try {
+    const response = await createVideoTask({
+      request: createFormRequest({
+        mode: 'image-to-video',
+        model: 'kling-2-6-motion-control',
+        prompt: '',
+        imageUrls: JSON.stringify(['https://cdn.example.com/character.png']),
+        videoUrls: JSON.stringify(['https://cdn.example.com/motion.mp4']),
+        characterOrientation: 'image',
+        resolution: '720p',
+        duration: '10',
+      }),
+      env: { KIE_AI_API_KEY: 'test-key' },
+    })
+
+    assert.equal(response.status, 200)
+    const payload = JSON.parse(String(calls[0].init?.body))
+    assert.equal(payload.input.character_orientation, 'image')
+  } finally {
+    globalThis.fetch = originalFetch
+  }
+})
+
+test('AI video generator surfaces Kie business errors during local Motion Control development', async () => {
+  const originalFetch = globalThis.fetch
+  globalThis.fetch = (async () => new Response(JSON.stringify({
+    code: 422,
+    msg: 'mode must be 720p or 1080p',
+  }), {
+    status: 200,
+    headers: { 'Content-Type': 'application/json' },
+  })) as typeof fetch
+
+  try {
+    const response = await createVideoTask({
+      request: createFormRequest({
+        mode: 'image-to-video',
+        model: 'kling-2-6-motion-control',
+        prompt: 'Keep the person centered and follow the motion reference.',
+        imageUrls: JSON.stringify(['https://cdn.example.com/character.png']),
+        videoUrls: JSON.stringify(['https://cdn.example.com/motion.mp4']),
+        characterOrientation: 'video',
+        resolution: '720p',
+        duration: '12',
+      }),
+      env: { KIE_AI_API_KEY: 'test-key', NODE_ENV: 'development' },
+    })
+
+    assert.equal(response.status, 502)
+    const payload = await readJson(response)
+    assert.equal(payload.error, 'mode must be 720p or 1080p')
+    assert.equal(payload.code, 'UPSTREAM_GENERATION_ERROR')
+  } finally {
+    globalThis.fetch = originalFetch
+  }
+})
+
+test('AI video generator rejects image-oriented Kling Motion Control videos over 10 seconds', async () => {
+  let providerCalled = false
+  const originalFetch = globalThis.fetch
+  globalThis.fetch = (async () => {
+    providerCalled = true
+    return new Response('{}', { status: 200 })
+  }) as typeof fetch
+
+  try {
+    const response = await createVideoTask({
+      request: createFormRequest({
+        mode: 'image-to-video',
+        model: 'kling-2-6-motion-control',
+        prompt: '',
+        imageUrls: JSON.stringify(['https://cdn.example.com/character.png']),
+        videoUrls: JSON.stringify(['https://cdn.example.com/motion.mp4']),
+        characterOrientation: 'image',
+        resolution: '720p',
+        duration: '11',
+      }),
+      env: { KIE_AI_API_KEY: 'test-key' },
+    })
+
+    assert.equal(response.status, 400)
+    assert.equal((await readJson(response)).error, 'Reference video duration must be between 3 and 10 seconds for image character orientation')
+    assert.equal(providerCalled, false)
+  } finally {
+    globalThis.fetch = originalFetch
+  }
+})
+
+test('AI video generator rejects Kling Motion Control reference video durations outside 3 to 30 seconds', async () => {
+  let providerCalled = false
+  const originalFetch = globalThis.fetch
+  globalThis.fetch = (async () => {
+    providerCalled = true
+    return new Response(JSON.stringify({ code: 200, data: { taskId: 'unexpected_task' } }))
+  }) as typeof fetch
+
+  try {
+    for (const duration of ['2', '31']) {
+      const response = await createVideoTask({
+        request: createFormRequest({
+          mode: 'image-to-video',
+          model: 'kling-2-6-motion-control',
+          imageUrls: JSON.stringify(['https://cdn.example.com/character.png']),
+          videoUrls: JSON.stringify(['https://cdn.example.com/motion.mp4']),
+          aspectRatio: '16:9',
+          resolution: '720p',
+          duration,
+        }),
+        env: { KIE_AI_API_KEY: 'test-key' },
+      })
+
+      assert.equal(response.status, 400)
+      assert.equal((await readJson(response)).error, 'Reference video duration must be between 3 and 30 seconds for Kling 2.6 Motion Control')
+    }
+    assert.equal(providerCalled, false)
+  } finally {
+    globalThis.fetch = originalFetch
+  }
+})
+
+test('AI video generator requires one motion reference video for Kling 2.6 Motion Control', async () => {
+  const response = await createVideoTask({
+    request: createFormRequest({
+      mode: 'image-to-video',
+      model: 'kling-2-6-motion-control',
+      prompt: 'Make the character follow the motion reference while preserving identity.',
+      imageUrls: JSON.stringify(['https://cdn.example.com/character.png']),
+      aspectRatio: '16:9',
+      resolution: '720p',
+      duration: '5',
+    }),
+    env: { KIE_AI_API_KEY: 'test-key' },
+  })
+
+  assert.equal(response.status, 400)
+  assert.equal((await readJson(response)).error, 'Kling 2.6 Motion Control requires one motion reference video URL')
+})
+
+test('AI video generator rejects non-video URLs for Kling Motion Control video_urls before provider request', async () => {
+  let providerCalled = false
+  const originalFetch = globalThis.fetch
+  globalThis.fetch = (async () => {
+    providerCalled = true
+    return new Response(JSON.stringify({ code: 200, data: { taskId: 'unexpected_task' } }))
+  }) as typeof fetch
+
+  try {
+    const response = await createVideoTask({
+      request: createFormRequest({
+        mode: 'image-to-video',
+        model: 'kling-2-6-motion-control',
+        prompt: '',
+        imageUrls: JSON.stringify(['https://cdn.example.com/character.png']),
+        videoUrls: JSON.stringify(['https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/motion.png']),
+        characterOrientation: 'video',
+        resolution: '720p',
+        duration: '8',
+      }),
+      env: { KIE_AI_API_KEY: 'test-key' },
+    })
+
+    assert.equal(response.status, 400)
+    assert.equal((await readJson(response)).error, 'Kling 2.6 Motion Control reference video URL must end in MP4, MOV, or MKV')
+    assert.equal(providerCalled, false)
   } finally {
     globalThis.fetch = originalFetch
   }
@@ -1076,6 +1354,39 @@ test('AI video generator status parses Kie video result URLs', async () => {
     assert.deepEqual(await readJson(response), {
       status: 'SUCCEEDED',
       videoUrl: 'https://cdn.example.com/output.mp4',
+    })
+  } finally {
+    globalThis.fetch = originalFetch
+  }
+})
+
+test('AI video generator status explains Kie motion-control file format failures', async () => {
+  const originalFetch = globalThis.fetch
+  globalThis.fetch = (async () => new Response(JSON.stringify({
+    code: 200,
+    data: {
+      state: 'failed',
+      failMsg: 'file format not support',
+    },
+  }), {
+    status: 200,
+    headers: { 'Content-Type': 'application/json' },
+  })) as typeof fetch
+
+  try {
+    const response = await getVideoTaskStatus({
+      request: new Request('https://toolaze.test/api/ai-video-generator/status', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ taskId: 'kling_motion_failed' }),
+      }),
+      env: { KIE_AI_API_KEY: 'test-key' },
+    })
+
+    assert.equal(response.status, 200)
+    assert.deepEqual(await readJson(response), {
+      status: 'FAILED',
+      message: 'KIE rejected one of the uploaded files. Use a JPG/JPEG/PNG character image over 300px with a 2:5 to 5:2 aspect ratio, and an MP4/MOV/MKV motion reference video within the selected orientation duration limit.',
     })
   } finally {
     globalThis.fetch = originalFetch

@@ -109,3 +109,27 @@ test('dev login prefers local test account when requested', async () => {
     await rm(dir, { recursive: true, force: true })
   }
 })
+
+test('dev login accepts localhost Host header when Next normalizes request URL to the bind address', async () => {
+  const dir = await mkdtemp(join(tmpdir(), 'toolaze-dev-login-'))
+  const { POST } = await loadRoute(join(dir, 'token.txt'), join(dir, 'state.json'))
+
+  try {
+    const response = await POST(new Request('http://0.0.0.0:3016/api/auth/dev-login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Host: 'localhost:3016',
+      },
+      body: JSON.stringify({
+        email: 'dianawu1202@gmail.com',
+        password: 'test123456',
+        preferLocal: true,
+      }),
+    }))
+
+    assert.equal(response.status, 200)
+  } finally {
+    await rm(dir, { recursive: true, force: true })
+  }
+})

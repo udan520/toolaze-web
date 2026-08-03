@@ -1,0 +1,365 @@
+{
+  "in_menu": false,
+  "seoFactoryTaskId": "2026-08-02-kling-2-6-pro-motion-control",
+  "pageGroup": "model",
+  "topComponent": "kling-2-6-pro-motion-control",
+  "topTool": {
+    "defaultMode": "image-to-video",
+    "displayName": "Kling 2.6 Pro Motion Control",
+    "modelId": "kling-2-6-motion-control",
+    "initialImageUrls": [
+      "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/kling-2-6-pro-motion-control/character-reference.jpg"
+    ],
+    "initialMotionVideoUrls": [
+      "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/kling-2-6-pro-motion-control/motion-reference-video.mp4"
+    ],
+    "initialMotionVideoDurationSeconds": 7.934,
+    "initialCharacterOrientation": "video"
+  },
+  "metadata": {
+    "title": "Kling 2.6 Pro Motion Control AI 影片生成器 | Toolaze",
+    "description": "在 Toolaze 上傳一張角色圖片和一段動作參考影片，建立 Kling 2.6 Motion Control 影片，轉移姿勢、手勢、節奏和鏡頭動作。",
+    "published": true
+  },
+  "sectionsOrder": [
+    "modelIntro",
+    "performanceMetrics",
+    "howToUse",
+    "scenes",
+    "modelComparison",
+    "competitorComparison",
+    "testimonials",
+    "faq"
+  ],
+  "hero": {
+    "h1": "<span class=\"text-gradient\">Kling 2.6 Pro Motion Control</span> AI 影片生成器",
+    "desc": "上傳一張角色圖片，再加入一段動作參考影片，並說明臉部、服裝、鏡頭和風格要如何保持一致。Toolaze 會用 Kling 2.6 Motion Control 將影片中的姿勢、手勢、身體節奏和鏡頭韻律轉移到圖片角色上。"
+  },
+  "heroDemoVideo": {
+    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/kling-2-6-pro-motion-control/motion-control-demo.mp4",
+    "ariaLabel": "Kling 2.6 Motion Control 16:9 示範預覽",
+    "width": 16,
+    "height": 9,
+    "sourceHistory": "User-generated Kling 2.6 Motion Control demo · character image + motion reference video · 7.9s · 1264x720 · R2",
+    "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/kling-2-6-pro-motion-control/motion-control-demo-poster.webp",
+    "duration": "PT7.9S",
+    "uploadDate": "2026-08-03T04:25:54.000Z"
+  },
+  "modelIntro": {
+    "title": "Kling 2.6 Motion Control 是什麼？",
+    "modelName": "Kling 2.6 Motion Control",
+    "modelType": "AI 影片模型",
+    "description": [
+      "Kling 2.6 Motion Control 是 Kuaishou Kling 的動作控制影片模型，用一張角色圖片承接外觀，再用一段動作參考影片提供姿勢與節奏。你不用只靠文字描述動作，而是提供要保留的外觀與要跟隨的動作片段。",
+      "適合舞蹈測試、人像動作、時裝短片、主持人手勢、手持產品展示和社群短影片。Toolaze 這個流程使用 1 張角色圖片、1 段動作參考影片，可選擇圖片或影片角色方向，並輸出 720p 或 1080p。"
+    ]
+  },
+  "performanceMetrics": {
+    "title": "Kling 2.6 Motion Control 能力摘要",
+    "metrics": [
+      {
+        "label": "輸入模式",
+        "value": "圖片轉影片 Motion Control"
+      },
+      {
+        "label": "角色圖片",
+        "value": "1 張圖片，目前 Toolaze 上傳器支援最高 10MB"
+      },
+      {
+        "label": "動作參考影片",
+        "value": "1 個 MP4、QuickTime 或 Matroska 動作參考影片，最高 100MB，3-30 秒"
+      },
+      {
+        "label": "提示詞",
+        "value": "可選；用來保留身份、服裝、構圖與風格。"
+      },
+      {
+        "label": "時長",
+        "value": "圖片方向支援 3-10 秒參考影片；影片方向支援 3-30 秒。輸出時長跟隨上傳的動作參考影片。"
+      },
+      {
+        "label": "角色方向",
+        "value": "選擇圖片以配合角色圖片方向（3-10 秒），或選擇影片以跟隨參考影片中的角色方向（3-30 秒）。"
+      },
+      {
+        "label": "動作控制來源",
+        "value": "姿勢、手勢、走路節奏、手部動作和鏡頭韻律來自上傳影片"
+      },
+      {
+        "label": "解析度",
+        "value": "720p 或 1080p"
+      },
+      {
+        "label": "點數提示",
+        "value": "點數會依上傳動作參考影片的時長計算；目前 720p 或 1080p 為每輸出秒 22 credits。"
+      },
+      {
+        "label": "聲音",
+        "value": "Toolaze 的 Motion Control 支援原生音訊，因此生成短片可以在受控動作之外包含生成聲音。"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "如何在 Toolaze 使用 Kling 2.6 Motion Control",
+    "steps": [
+      {
+        "title": "選擇 Motion Control",
+        "desc": "使用已選好的 Kling 2.6 Motion Control，生成器會要求同時提供角色圖片和動作參考影片。"
+      },
+      {
+        "title": "上傳角色圖片",
+        "desc": "選擇清楚展示臉部、服裝、身形、產品或視覺風格的圖片，作為需要保留的外觀。"
+      },
+      {
+        "title": "加入動作參考影片",
+        "desc": "上傳一段 MP4、QuickTime 或 Matroska 影片（最高 100MB，3-30 秒），包含要轉移的姿勢、手勢、走路、舞蹈、手部動作或鏡頭節奏。"
+      },
+      {
+        "title": "選擇畫質並微調",
+        "desc": "選擇 720p 或 1080p；輸出時長跟隨上傳的動作參考影片。生成後，如果身份、肢體或構圖漂移，請簡化提示詞或使用更乾淨的動作影片。"
+      }
+    ]
+  },
+  "scenesTitle": "Kling 2.6 Motion Control 可以做什麼",
+  "scenes": [
+    {
+      "title": "舞蹈與姿勢轉移",
+      "desc": "把參考舞蹈、走路、轉身或手勢套用到角色圖片，同時保留身份、服裝和身體比例。"
+    },
+    {
+      "title": "時裝動態短片",
+      "desc": "將靜態穿搭或 editorial 人像變成由真實動作參考引導的走秀感短片。"
+    },
+    {
+      "title": "主持人與 avatar 手勢",
+      "desc": "建立正面講解、回應或問候短片，讓手部節奏和姿勢跟隨提供的影片。"
+    },
+    {
+      "title": "手持產品展示",
+      "desc": "用參考手勢控制產品被拿起、旋轉、抬起或展示給鏡頭的方式。"
+    },
+    {
+      "title": "社群短影片",
+      "desc": "當你已經有要匹配的動作素材時，用於 Reels、TikTok、Shorts 和廣告角色短片。"
+    },
+    {
+      "title": "分鏡動作測試",
+      "desc": "在製作更長 campaign 或場景前，先檢查某個姿勢、手勢或身體動作是否可行。"
+    }
+  ],
+  "modelComparison": {
+    "title": "Kling 2.6 Motion Control 與鄰近 Kling 模型比較",
+    "subtitle": "需要讓參考影片驅動動作時選 Motion Control；沒有動作片段或需要更廣泛生成設定時，選其他 Kling 模型。",
+    "featuredColumn": "baseline",
+    "columnHeaders": {
+      "metric": "判斷項目",
+      "baseline": "Kling 2.6 Motion Control",
+      "middle": "Kling 2.6",
+      "target": "Kling 3.0"
+    },
+    "rows": [
+      {
+        "label": "Toolaze 模型",
+        "baseline": "Kling 2.6 Motion Control",
+        "middle": "Kling 2.6",
+        "target": "Kling 3.0"
+      },
+      {
+        "label": "輸入模式",
+        "baseline": "圖片轉影片 Motion Control：1 張角色圖片 + 1 段動作參考影片",
+        "middle": "提示詞或單圖影片生成，最多 1 張圖片",
+        "target": "提示詞或多圖影片生成，最多 4 張圖片"
+      },
+      {
+        "label": "影片參考支援",
+        "baseline": "必須提供 1 段動作參考影片",
+        "middle": "不使用上傳的動作參考影片",
+        "target": "不使用上傳的動作參考影片"
+      },
+      {
+        "label": "動作控制方式",
+        "baseline": "參考影片動作轉移，並用提示詞保護身份和風格",
+        "middle": "以提示詞描述主體動作、鏡頭路徑與節奏",
+        "target": "用更多參考圖和更長場景規劃做導演式提示"
+      },
+      {
+        "label": "解析度",
+        "baseline": "720p 或 1080p",
+        "middle": "720p 或 1080p",
+        "target": "720p、1080p 或 4K"
+      },
+      {
+        "label": "點數提示",
+        "baseline": "每輸出秒 22 credits；總點數跟隨上傳參考影片的時長",
+        "middle": "5 秒從 110 credits 起",
+        "target": "依設定從 84 credits 起"
+      },
+      {
+        "label": "適合情境",
+        "baseline": "你有乾淨的動作參考影片，且需要角色圖片跟隨它",
+        "middle": "你要只用提示詞或單張圖片生成 Kling 影片草稿",
+        "target": "你需要更多圖片參考、4K 或更長場景規劃"
+      }
+    ]
+  },
+  "competitorComparison": {
+    "title": "何時選 Kling Motion Control、Wan 或 Seedance",
+    "subtitle": "先看你手上有什麼輸入：動作參考素材、電影感提示詞，或需要更精緻的視覺草稿。",
+    "featuredColumn": "baseline",
+    "columnHeaders": {
+      "metric": "判斷項目",
+      "baseline": "Kling 2.6 Motion Control",
+      "middle": "Wan 2.7",
+      "target": "Seedance 2.5"
+    },
+    "rows": [
+      {
+        "label": "適合用途",
+        "baseline": "從 1 張角色圖片和 1 段動作參考影片做動作轉移",
+        "middle": "短篇電影感片段與彈性場景構圖",
+        "target": "高細節 ByteDance 影片草稿與精緻視覺"
+      },
+      {
+        "label": "先檢查",
+        "baseline": "動作影片是否乾淨、主體可見，且構圖接近角色圖片",
+        "middle": "需要的時長和解析度是否符合 Wan 設定",
+        "target": "所選 Seedance 設定是否支援你的輸入類型和畫質目標"
+      },
+      {
+        "label": "提示詞方式",
+        "baseline": "在跟隨參考動作時保留身份、服裝、比例、光線、鏡頭和風格",
+        "middle": "場景設定、鏡頭節奏、動作方向和輸出設定",
+        "target": "主體、風格、場景變化、光線和品質提示"
+      },
+      {
+        "label": "參考素材",
+        "baseline": "圖片提供角色；影片提供動作",
+        "middle": "Toolaze 最多兩張圖片參考",
+        "target": "參考支援取決於所選 Seedance 設定"
+      },
+      {
+        "label": "何時改選其他模型",
+        "baseline": "沒有動作參考影片時，改用其他影片模型",
+        "middle": "精確姿勢或手勢轉移最重要時選 Motion Control",
+        "target": "匹配特定動作影片比單純視覺精緻更重要時選 Motion Control"
+      }
+    ]
+  },
+  "testimonials": {
+    "title": "創作者對 Motion Control 測試的回饋",
+    "reviewSafe": true,
+    "showStars": false,
+    "items": [
+      {
+        "name": "Maya Chen",
+        "role": "時裝動態草稿",
+        "quote": "圖片加影片的流程讓我不用用文字重寫走秀動作。用乾淨的全身參考片段時，結果最容易判斷。"
+      },
+      {
+        "name": "Jordan Lee",
+        "role": "產品影片規劃",
+        "quote": "我用手部動作參考來規劃小型裝置如何在畫面中旋轉。提示詞只保留 logo 和光線時，草稿更容易給客戶看。"
+      },
+      {
+        "name": "Nina Patel",
+        "role": "Avatar 手勢測試",
+        "quote": "做主持人短片時，讓人像圖片和動作影片裁切接近，比寫很長的風格提示更重要。參考影片越簡單，手勢越清楚。"
+      }
+    ]
+  },
+  "faqTitle": "Kling 2.6 Motion Control 常見問題",
+  "faq": [
+    {
+      "q": "Toolaze 上的 Kling 2.6 Motion Control 是什麼？",
+      "a": "這是一個圖片轉影片流程，會把參考影片中的動作套用到上傳的角色圖片，同時保留身份、服裝與視覺風格。"
+    },
+    {
+      "q": "可以只用提示詞生成嗎？",
+      "a": "不行。Kling 2.6 Motion Control 需要 1 張角色圖片和 1 段動作參考影片；如果沒有動作素材，請選擇其他 Toolaze 影片模型。"
+    },
+    {
+      "q": "Motion Control 必須輸入提示詞嗎？",
+      "a": "不用。角色圖片和動作參考影片是必填；提示詞可選，適合用來保留身份、服裝、燈光、構圖和風格。"
+    },
+    {
+      "q": "可以上傳動作影片做轉移嗎？",
+      "a": "可以。請同時上傳 1 個動作參考影片和 1 張角色圖片。影片提供姿勢、手勢、節奏、鏡頭節奏，以及最終輸出時長。"
+    },
+    {
+      "q": "可以使用多少參考素材？",
+      "a": "Toolaze 在此流程支援 1 張角色圖片和 1 個動作參考影片。上傳器接受 MP4、QuickTime 或 Matroska，最高 100MB，3-30 秒。"
+    },
+    {
+      "q": "可以選什麼解析度？",
+      "a": "Kling 2.6 Motion Control 在 Toolaze 支援 720p 和 1080p。"
+    },
+    {
+      "q": "Motion Control 會生成聲音嗎？",
+      "a": "會。Toolaze 已為 Kling 2.6 Motion Control 啟用原生音訊，因此生成短片可以在轉移動作之外包含生成聲音。"
+    },
+    {
+      "q": "需要多少 credits？",
+      "a": "點數會依上傳參考影片的時長計算。目前 Toolaze 的 720p 或 1080p Motion Control 為每輸出秒 22 credits。"
+    },
+    {
+      "q": "Kling 2.6 Motion Control 可以免費用嗎？",
+      "a": "影片生成會使用 Toolaze credits。新手 credits、可用設定、參考影片長度和最終成本會依帳號額度與解析度而變。"
+    },
+    {
+      "q": "怎樣寫更好的提示詞？",
+      "a": "提示詞保持短而明確：跟隨上傳的動作參考影片，同時保留身份、服裝、光線、構圖和風格；刪掉會和影片動作衝突的額外場景變化。"
+    },
+    {
+      "q": "該選 Motion Control 還是 Kling 3.0？",
+      "a": "有動作參考影片且需要角色圖片跟隨它時選 Motion Control；需要更廣泛的提示詞控制、更多圖片參考、4K 或更長場景規劃時選 Kling 3.0。"
+    }
+  ],
+  "moreTools": "更多 AI 影片模型",
+  "moreToolsLinks": [
+    {
+      "slug": "kling-3",
+      "title": "Kling 3.0 影片生成器",
+      "description": "比較更新的 Kling 輸出、更長時長、更多圖片參考和 4K 選項。",
+      "href": "/model/kling-3",
+      "media": {
+        "type": "video",
+        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/prompt-templates/image-guided-motion.mp4",
+        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/prompt-templates/image-guided-motion.webp",
+        "alt": "Kling 3.0 Video Generator preview"
+      }
+    },
+    {
+      "slug": "kling-ai-video-generator",
+      "title": "Kling AI 影片生成器",
+      "description": "需要其他 Kling 模型或更廣泛生成設定時，開啟完整 Kling 工具。",
+      "href": "/kling-ai-video-generator",
+      "media": {
+        "type": "image",
+        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
+        "alt": "Kling AI Video Generator preview"
+      }
+    },
+    {
+      "slug": "wan-2-7-ai-video-generator",
+      "title": "Wan 2.7 影片生成器",
+      "description": "用更新的 Wan 影片模型製作短篇電影感片段。",
+      "href": "/model/wan-2-7-ai-video-generator",
+      "media": {
+        "type": "image",
+        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
+        "alt": "Wan 2.7 Video Generator preview"
+      }
+    },
+    {
+      "slug": "seedance-2-5",
+      "title": "Seedance 2.5 影片生成器",
+      "description": "探索另一個適合精緻視覺草稿的高品質影片模型。",
+      "href": "/model/seedance-2-5",
+      "media": {
+        "type": "image",
+        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
+        "alt": "Seedance 2.5 Video Generator preview"
+      }
+    }
+  ]
+}

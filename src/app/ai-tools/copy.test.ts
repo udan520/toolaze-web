@@ -16,6 +16,7 @@ const expectedRoutes = [
   '/ai-bikini-generator',
   '/ai-breast-expansion',
   '/ai-asmr-video-generator',
+  '/model/kling-2-6-pro-motion-control',
   '/model/wan-2-7-ai-video-generator',
   '/watermark-remover',
   '/photo-restoration',
@@ -36,7 +37,28 @@ test('AI Tools hub includes every global AI tool in every locale', () => {
     const cards = getAiToolsPageCopy(locale).cards
     assert.deepEqual(cards.map((card) => card.href), expectedRoutes, `${locale} has missing or mismatched tools`)
     assert.equal(cards.filter((card) => card.category === 'image').length, 11)
-    assert.equal(cards.filter((card) => card.category === 'video').length, 5)
+    assert.equal(cards.filter((card) => card.category === 'video').length, 6)
+  }
+})
+
+test('AI Tools hub lists Motion Control as a localized video tool', () => {
+  const englishCard = getAiToolsPageCopy('en').cards.find((card) => card.href === '/model/kling-2-6-pro-motion-control')
+
+  assert.ok(englishCard, 'English AI Tools hub should include Motion Control')
+  assert.equal(englishCard.category, 'video')
+  assert.match(englishCard.title, /Motion Control/)
+  assert.match(englishCard.description, /character image/i)
+  assert.match(englishCard.description, /motion reference video/i)
+  assert.equal(englishCard.image, 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/kling-2-6-pro-motion-control/motion-control-demo-poster.webp')
+  assert.equal(englishCard.video, 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/kling-2-6-pro-motion-control/motion-control-demo.mp4')
+
+  for (const locale of AI_TOOLS_LOCALES.filter((locale) => locale !== 'en')) {
+    const localizedCard = getAiToolsPageCopy(locale).cards.find((card) => card.href === '/model/kling-2-6-pro-motion-control')
+
+    assert.ok(localizedCard, `${locale} AI Tools hub should include Motion Control`)
+    assert.equal(localizedCard.category, 'video')
+    assert.notEqual(localizedCard.title, englishCard.title, `${locale} Motion Control title should be localized`)
+    assert.notEqual(localizedCard.description, englishCard.description, `${locale} Motion Control description should be localized`)
   }
 })
 
@@ -151,7 +173,7 @@ test('AI Tools video category cards provide real video previews', () => {
   for (const locale of AI_TOOLS_LOCALES) {
     const videoCards = getAiToolsPageCopy(locale).cards.filter((card) => card.category === 'video')
 
-    assert.equal(videoCards.length, 5)
+    assert.equal(videoCards.length, 6)
     for (const card of videoCards) {
       assert.ok(card.video, `${locale} ${card.href} should provide a video preview`)
       assert.match(card.video, /^(https:\/\/pub-efeb0c7b9b53478d960218de80c52e3d\.r2\.dev\/|\/model-assets\/)/)

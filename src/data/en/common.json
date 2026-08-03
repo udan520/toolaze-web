@@ -69,7 +69,9 @@
     "unrestrictedAiImageGenerator": "Unlimited AI Image",
     "talkingAvatarCreator": "AI Talking Avatar",
     "aiBreastExpansion": "AI Breast Expansion",
-    "wan27Video": "Wan 2.7 Video"
+    "wan27Video": "Wan 2.7 Video",
+    "kling26MotionControl": "Kling 2.6 Motion",
+    "aiMotionControlGenerator": "AI Motion Control Generator"
   },
   "home": {
     "metadata": {
@@ -280,7 +282,8 @@
     "unrestrictedAiImageGenerator": "Unrestricted / Unlimited AI Image Generator",
     "talkingAvatarCreator": "AI Talking Avatar",
     "aiBreastExpansion": "AI Breast Expansion",
-    "wan27Video": "Wan 2.7 Video"
+    "wan27Video": "Wan 2.7 Video",
+    "kling26MotionControl": "Kling 2.6 Motion"
   },
   "breadcrumb": {
     "home": "Home",
@@ -763,6 +766,7 @@
       "clear": "Clear",
       "delete": "Delete",
       "replace": "Replace",
+      "preview": "Preview",
       "prompt": "Prompt",
       "promptPlaceholder": "Describe the scene, motion, camera movement, and style.",
       "aspectRatio": "Aspect Ratio",
@@ -791,7 +795,17 @@
       "modelSwitchedTitle": "Model Switched",
       "modelSwitchedDescription": "{previousModel} doesn’t support {mode}. Switched to {nextModel}.",
       "noCompatibleModelTitle": "No Compatible Model",
-      "noCompatibleModelDescription": "No model currently supports {mode}. Please choose another mode."
+      "noCompatibleModelDescription": "No model currently supports {mode}. Please choose another mode.",
+      "optional": "Optional",
+      "motionReferenceVideo": "Motion Reference Video",
+      "motionReferenceVideoHelper": "MP4, QuickTime, or Matroska. Max {size}MB, {min}-{max} seconds. Output duration follows the motion reference video.",
+      "motionReferenceVideoDurationNote": "Duration follows the uploaded reference video ({min}-{max} seconds).",
+      "motionReferenceVideoInvalidType": "Use MP4, QuickTime, or Matroska for the motion reference video.",
+      "motionReferenceVideoInvalidDuration": "Motion reference video must be {min}-{max} seconds.",
+      "characterOrientation": "Character Orientation",
+      "characterOrientationImage": "Image",
+      "characterOrientationVideo": "Video",
+      "characterOrientationHelper": "Use Image to match the person's orientation in the character image (max 10s video). Use Video to follow the character orientation in the reference video (max 30s video)."
     }
   },
   "historyPage": {

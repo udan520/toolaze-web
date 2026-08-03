@@ -69,7 +69,9 @@
     "unrestrictedAiImageGenerator": "Imagem IA Unlimited",
     "talkingAvatarCreator": "Avatar falante IA",
     "aiBreastExpansion": "Aumento de busto com IA",
-    "wan27Video": "Wan 2.7 Vídeo"
+    "wan27Video": "Wan 2.7 Vídeo",
+    "kling26MotionControl": "Kling 2.6 Movimento",
+    "aiMotionControlGenerator": "Gerador Motion Control com IA"
   },
   "home": {
     "metadata": {
@@ -292,7 +294,8 @@
     "unrestrictedAiImageGenerator": "Gerador IA Unrestricted / Unlimited",
     "talkingAvatarCreator": "Avatar falante IA",
     "aiBreastExpansion": "Aumento de busto com IA",
-    "wan27Video": "Wan 2.7 Vídeo"
+    "wan27Video": "Wan 2.7 Vídeo",
+    "kling26MotionControl": "Kling 2.6 Movimento"
   },
   "breadcrumb": {
     "home": "Início",
@@ -779,6 +782,7 @@
       "clear": "Limpar",
       "delete": "Excluir",
       "replace": "Substituir",
+      "preview": "Prévia",
       "prompt": "Prompt",
       "promptPlaceholder": "Descreva a cena, o movimento, a câmera e o estilo.",
       "aspectRatio": "Proporção",
@@ -807,7 +811,17 @@
       "modelSwitchedTitle": "Modelo alterado",
       "modelSwitchedDescription": "{previousModel} não suporta {mode}. Mudámos para {nextModel}.",
       "noCompatibleModelTitle": "Nenhum modelo compatível",
-      "noCompatibleModelDescription": "Atualmente nenhum modelo suporta {mode}. Escolha outro modo."
+      "noCompatibleModelDescription": "Atualmente nenhum modelo suporta {mode}. Escolha outro modo.",
+      "optional": "Opcional",
+      "motionReferenceVideo": "Vídeo de movimento",
+      "motionReferenceVideoHelper": "MP4, QuickTime ou Matroska. Máx. {size}MB, {min}-{max} segundos. A duração de saída segue o vídeo de movimento.",
+      "motionReferenceVideoDurationNote": "A duração segue o vídeo de referência enviado ({min}-{max} segundos).",
+      "motionReferenceVideoInvalidType": "Use MP4, QuickTime ou Matroska para o vídeo de movimento.",
+      "motionReferenceVideoInvalidDuration": "O vídeo de movimento deve ter {min}-{max} segundos.",
+      "characterOrientation": "Orientação do personagem",
+      "characterOrientationImage": "Imagem",
+      "characterOrientationVideo": "Vídeo",
+      "characterOrientationHelper": "Imagem mantém a orientação da pessoa na imagem do personagem (vídeo de até 10 s). Vídeo segue a orientação do personagem no vídeo de referência (vídeo de até 30 s)."
     }
   },
   "imageCompressor": {
