@@ -18,6 +18,7 @@
     "desc": "Create Wan 2.7 videos from text, images, video references, or audio direction. Use multi-shot prompts, first/last-frame transitions, continuation scenes, and synchronized sound for short cinematic clips at 720p or 1080p."
   },
   "heroDemoVideo": {
+    "type": "video",
     "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/c07d1db481dd4e9b8e190ebb39611f08.png",
     "ariaLabel": "Toolaze Wan 2.7 16:9 demo video preview",
     "width": 16,

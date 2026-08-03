@@ -45,6 +45,14 @@
     "h1": "<span class=\"text-gradient\">Seedance 2.5</span> AI 影片生成器",
     "desc": "用更豐富的參考控制、更強的場景一致性，以及面向真實創意製作的工作流，建立更長、更連貫的 AI 影片。"
   },
+  "heroDemoVideo": {
+    "type": "video",
+    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d0d55df5eef346809067197fddb1b251.png",
+    "ariaLabel": "Seedance 2.5 AI 影片生成器的 16:9 示範預覽圖",
+    "width": 16,
+    "height": 9,
+    "sourceHistory": "Seedance 2.x demo video · 16:9 · R2"
+  },
   "launchUpdates": {
     "eyebrow": "上線更新",
     "title": "接收 Seedance 2.5 更新通知",

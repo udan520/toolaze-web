@@ -224,7 +224,7 @@ test('Kling 2.6 Pro Motion Control public entry points include model surfaces an
   const l2PageContent = readFileSync(join(root, 'src', 'components', 'blocks', 'ToolL2PageContent.tsx'), 'utf8')
   const breadcrumb = readFileSync(join(root, 'src', 'components', 'Breadcrumb.tsx'), 'utf8')
 
-  assert.equal(countOccurrences(navigation, `/model/${slug}`), 3, 'Navigation should include AI Tools, AI Video, and Prompts model menus')
+  assert.equal(countOccurrences(navigation, `/model/${slug}`), 2, 'Navigation should include AI Tools and AI Video model menus')
   assert.equal(countOccurrences(footer, `/model/${slug}`), 1, 'Footer should include the video model link once')
   assert.match(aiToolsCopy, new RegExp(`href:\\s*['"]/model/${slug}['"]`), 'AI Tools Hub should include a functional Motion Control card')
   assert.match(navigation, /aiMotionControlGenerator/, 'AI Tools navigation should include Motion Control as a functional video tool')

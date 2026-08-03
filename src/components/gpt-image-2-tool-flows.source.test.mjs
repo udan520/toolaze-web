@@ -174,7 +174,7 @@ test('homepage quick launch buttons use compact labels instead of generator suff
   assert.doesNotMatch(homePageSource, /label: navCopy\.videoTools \|\| 'Video Tools', href: '#ai-tools-hub'/)
   assert.doesNotMatch(homePageSource, /label: navCopy\.imageTools \|\| 'Image Tools', href: '#ai-tools-hub'/)
   assert.ok(
-    homePageSource.includes('border border-slate-200 bg-white/85 px-5') &&
+    homePageSource.includes('border border-slate-200 bg-white px-4') &&
       homePageSource.includes('text-slate-700'),
   )
   assert.doesNotMatch(homePageSource, /border-indigo-600 bg-indigo-600 text-white/)
@@ -199,8 +199,16 @@ test('homepage quick launch cards link to the main video, image, and AI tools hu
   assert.match(firstScreenSource, /className="absolute inset-0 z-0"\n\s*\/>/)
   assert.match(
     firstScreenSource,
-    /<div className="pointer-events-auto relative z-10 flex flex-wrap gap-3">\n\s*\{group\.links\.map/,
+    /<div className="pointer-events-auto relative z-20 flex max-w-none sm:max-w-\[calc\(100%-124px\)\] flex-wrap gap-3">\n\s*\{group\.links\.map/,
   )
+  assert.doesNotMatch(firstScreenSource, /group\.badge/)
+  assert.doesNotMatch(firstScreenSource, /badge: navCopy/)
+  assert.match(firstScreenSource, /right-2 top-1\/2 hidden h-\[108px\] w-\[118px\] -translate-y-1\/2/)
+  assert.match(firstScreenSource, /right-3 top-2 z-10 h-\[58px\] w-24 -rotate-2/)
+  assert.match(firstScreenSource, /bottom-2 right-0 z-20 h-\[58px\] w-24 rotate-\[3deg\]/)
+  assert.match(homePageSource, /src: '\/ai-image-generator\/text-to-image-generator\/golden-hour-portrait\.webp'/)
+  assert.match(homePageSource, /src: '\/ai-image-generator\/text-to-image-generator\/skincare-hero-brief\.webp'/)
+  assert.match(homePageSource, /previewCards: \[ecommerceImagePreviewCard, textToImagePreviewCard\]/)
 })
 
 test('homepage quick launch cards provide restrained hover motion', () => {
@@ -248,7 +256,7 @@ test('homepage Trending prioritizes Kissing, Dance, and ASMR before the rest of 
   )
   assert.match(
     homePageSource,
-    /<HomeTrendingToolsRail title=\{dashboardCopy\.trending\} cards=\{dashboardTrendingCards\} \/>/,
+    /<HomeTrendingToolsRail[\s\S]*title=\{dashboardCopy\.trending\}[\s\S]*subtitle=\{dashboardCopy\.trendingSubtitle\}[\s\S]*cards=\{dashboardTrendingCards\}/,
   )
 })
 
@@ -262,28 +270,39 @@ test('homepage Trending renders video media without relying on file extension', 
   )
 })
 
-test('homepage AI Models cards use light purple-tinted surfaces on the white home page', () => {
+test('homepage AI Models cards use restored clean cards with manufacturer logos', () => {
   const firstScreenSource = sourceBetween(homePageSource, '{/* Dashboard-style first screen */}', '{/* AI Tools hub')
   const modelBlock = sourceBetween(firstScreenSource, '<section aria-labelledby="home-ai-models-title">', '</section>')
 
+  assert.match(homePageSource, /const HOME_DASHBOARD_MODEL_LOGOS: Record<string, HomeDashboardModelLogo>/)
+  assert.match(homePageSource, /'seedance-2': \{ src: '\/model-logos\/bytedance\.svg', alt: 'ByteDance logo' \}/)
+  assert.match(homePageSource, /'gpt-image-2': \{ src: '\/model-logos\/openai\.svg', alt: 'OpenAI logo' \}/)
+  assert.match(homePageSource, /'seedream-5-0-pro': \{ src: '\/model-logos\/bytedance\.svg', alt: 'ByteDance logo' \}/)
+  assert.match(homePageSource, /'kling-3': \{ src: '\/model-logos\/kling\.svg', alt: 'Kling logo' \}/)
+  assert.match(modelBlock, /dashboardModelCards\.map\(\(item\) => \{/)
+  assert.match(modelBlock, /const logo = HOME_DASHBOARD_MODEL_LOGOS\[item\.tool\]/)
+  assert.match(modelBlock, /src=\{logo\.src\}/)
+  assert.match(modelBlock, /alt=\{logo\.alt\}/)
   assert.match(modelBlock, /bg-\[radial-gradient\(circle_at_top_left,_rgba\(99,102,241,0\.12\),_transparent_42%\)\]/)
   assert.match(modelBlock, /bg-white p-5 text-slate-950/)
-  assert.match(modelBlock, /border border-indigo-100\/80/)
   assert.match(modelBlock, /bg-indigo-50 text-indigo-700/)
+  assert.match(modelBlock, /border border-indigo-100\/80/)
   assert.match(homePageSource, /text-slate-950/)
   assert.match(homePageSource, /text-slate-600/)
+  assert.doesNotMatch(homePageSource, /const dashboardModelTiles = dashboardModelCards\.map/)
+  assert.doesNotMatch(modelBlock, /item\.media/)
+  assert.doesNotMatch(modelBlock, /<video/)
+  assert.doesNotMatch(modelBlock, /<Image/)
+  assert.doesNotMatch(modelBlock, /opacity-\[0\.34\]/)
+  assert.doesNotMatch(modelBlock, /bg-gradient-to-r from-white via-white\/96 to-white\/72/)
   assert.doesNotMatch(modelBlock, /bg-slate-950 p-5 text-white/)
   assert.doesNotMatch(modelBlock, /border border-slate-800\/80/)
   assert.doesNotMatch(modelBlock, /bg-indigo-400\/10 text-indigo-100/)
   assert.doesNotMatch(homePageSource, /text-slate-50 drop-shadow-md/)
   assert.doesNotMatch(homePageSource, /text-slate-200 drop-shadow-sm/)
-  assert.doesNotMatch(modelBlock, /getHomeModelCardImage\(item\.tool\)/)
-  assert.doesNotMatch(modelBlock, /<Image/)
-  assert.doesNotMatch(modelBlock, /object-cover/)
   assert.doesNotMatch(modelBlock, /bg-gradient-to-t from-slate-950\/98 via-slate-950\/94 to-slate-950\/86/)
   assert.doesNotMatch(homePageSource, /opacity-85 transition-transform/)
   assert.doesNotMatch(homePageSource, /bg-gradient-to-t from-slate-950\/84 via-slate-950\/62 to-slate-950\/36/)
-  assert.doesNotMatch(homePageSource, /bg-white\/76 backdrop-blur/)
   assert.doesNotMatch(homePageSource, /text-white\/86/)
 })
 
@@ -299,13 +318,19 @@ test('homepage left hero banner restores image treatment with Seedance 2.0 Mini 
   assert.match(homePageSource, /title: 'Seedance 2\.0 Mini'/)
   assert.match(homePageSource, /href: localizeHomeHref\('\/ai-video-generator\?model=seedance-2-mini'\)/)
   assert.match(homePageSource, /Create faster 480p and 720p video drafts/)
-  assert.match(homePageSource, /const featuredLaunchThumb = getHomeModelCardImage\('seedance-2-5'\)/)
+  assert.match(homePageSource, /src: '\/model-assets\/seedance-2-mini\/home-banner\.webp'/)
+  assert.match(homePageSource, /alt: 'Seedance 2\.0 Mini golden hour portrait video generation preview'/)
   assert.match(heroBannerSource, /<Image/)
   assert.match(heroBannerSource, /src=\{featuredLaunchThumb\.src\}/)
-  assert.match(heroBannerSource, /alt=\{`\$\{featuredLaunch\.title\} video generation preview`\}/)
+  assert.match(heroBannerSource, /alt=\{featuredLaunchThumb\.alt\}/)
   assert.match(heroBannerSource, /object-cover transition-transform duration-500 group-hover:scale-\[1\.03\]/)
-  assert.match(heroBannerSource, /from-slate-950\/78 via-slate-950\/42 to-slate-950\/10/)
+  assert.match(heroBannerSource, /from-slate-950\/86 via-indigo-950\/54 to-violet-950\/18/)
+  assert.match(heroBannerSource, /w-\[72%\] bg-\[linear-gradient\(90deg,rgba\(15,23,42,0\.84\)_0%,rgba\(30,41,59,0\.62\)_46%,rgba\(30,41,59,0\.18\)_76%,transparent_100%\)\]/)
+  assert.match(heroBannerSource, /bg-white px-8 text-sm font-extrabold text-indigo-700/)
   assert.match(heroBannerSource, /dashboardCopy\.liveNowSuffix/)
+  assert.doesNotMatch(heroBannerSource, /dashboardCopy\.aiVideoGeneration/)
+  assert.doesNotMatch(heroBannerSource, /dashboardCopy\.freeDisclosure/)
+  assert.doesNotMatch(heroBannerSource, /New users receive 20 credits/)
   assert.doesNotMatch(homePageSource, /modelId: 'seedance-2-mini'/)
   assert.doesNotMatch(homePageSource, /'480p \/ 720p drafts'/)
   assert.doesNotMatch(heroBannerSource, /from-indigo-600 via-violet-600 to-sky-500/)
@@ -354,7 +379,7 @@ test('homepage AI Video Models section renders model landing page demo videos', 
 
 test('homepage model block uses All Models label for the whole row', () => {
   const firstScreenSource = sourceBetween(homePageSource, '{/* Dashboard-style first screen */}', '{/* AI Tools hub')
-  const modelBlock = sourceBetween(firstScreenSource, '<div className="mt-7">', '<HomeTrendingToolsRail')
+  const modelBlock = sourceBetween(firstScreenSource, '<div className="mt-6">', '<HomeTrendingToolsRail')
   const labelIndex = modelBlock.indexOf('id="home-ai-models-title"')
   const modelGridIndex = modelBlock.indexOf('className="grid gap-6 xl:grid-cols')
   const sideSectionIndex = modelBlock.indexOf('<section aria-labelledby="home-ai-models-title">')
@@ -463,7 +488,14 @@ test('Wan 2.5 Video has a homepage card image and admin preview coverage', () =>
 })
 
 test('AI Video model tags are separated from tool links and show manufacturer icons', () => {
-  const orderedRoutes = ['/model/seedance-2-5', '/model/seedance-2', '/model/kling-3', '/model/grok-imagine-video-1-5']
+  const orderedRoutes = [
+    '/ai-video-generator?model=seedance-2-mini',
+    '/model/seedance-2',
+    '/model/kling-3-motion-control',
+    '/model/kling-3',
+    '/model/kling-2-6-pro-motion-control',
+    '/model/grok-imagine-video-1-5',
+  ]
   const routeIndexes = orderedRoutes.map((route) => aiVideoModelMenuSource.indexOf(`href: '${route}'`))
 
   assert.ok(routeIndexes.every((index) => index >= 0))
@@ -479,17 +511,27 @@ test('AI Video model tags are separated from tool links and show manufacturer ic
     aiVideoModelMenuSource,
     /href: '\/model\/wan-2-5-ai-video-generator'[\s\S]*logoSrc: '\/model-logos\/wan\.ico'/,
   )
-  assert.match(aiVideoModelMenuSource, /href: '\/model\/seedance-2-5'[\s\S]*logoSrc: '\/model-logos\/bytedance\.svg'/)
+  assert.doesNotMatch(aiVideoModelMenuSource, /href: '\/model\/seedance-2-5'/)
+  assert.match(
+    aiVideoModelMenuSource,
+    /href: '\/ai-video-generator\?model=seedance-2-mini'[\s\S]*logoSrc: '\/model-logos\/bytedance\.svg'[\s\S]*badgeKey: 'new'/,
+  )
   assert.match(
     aiVideoModelMenuSource,
     /href: '\/model\/seedance-2'[\s\S]*logoSrc: '\/model-logos\/bytedance\.svg'[\s\S]*badgeKey: 'hot'/,
   )
+  assert.match(aiVideoModelMenuSource, /href: '\/model\/kling-3-motion-control'[\s\S]*logoSrc: '\/model-logos\/kling\.svg'/)
   assert.match(aiVideoModelMenuSource, /href: '\/model\/kling-3'[\s\S]*logoSrc: '\/model-logos\/kling\.svg'/)
+  assert.match(
+    aiVideoModelMenuSource,
+    /href: '\/model\/kling-2-6-pro-motion-control'[\s\S]*logoSrc: '\/model-logos\/kling\.svg'[\s\S]*badgeKey: 'hot'/,
+  )
   assert.match(
     aiVideoModelMenuSource,
     /href: '\/model\/grok-imagine-video-1-5'[\s\S]*logoSrc: '\/model-logos\/grok\.svg'[\s\S]*badgeKey: 'bestValue'/,
   )
   assert.match(navigationSource, /data-ai-video-section="models"[\s\S]*AI_VIDEO_MODEL_MENU_ITEMS\.map/)
+  assert.match(navigationSource, /navTranslations\.new \|\| defaultNavTranslations\.new/)
   assert.match(navigationSource, /navTranslations\.bestValue \|\| defaultNavTranslations\.bestValue/)
 })
 

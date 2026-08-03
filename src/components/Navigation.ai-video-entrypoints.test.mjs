@@ -12,6 +12,10 @@ function getConstantBlock(start, end) {
   )
 }
 
+function escapeRegExp(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+}
+
 const aiImageFunctionMenuSource = getConstantBlock(
   'const AI_IMAGE_FUNCTION_MENU_ITEMS',
   'const AI_IMAGE_MODEL_MENU_ITEMS',
@@ -27,6 +31,10 @@ const aiVideoFunctionMenuSource = getConstantBlock(
 const aiVideoModelMenuSource = getConstantBlock(
   'const AI_VIDEO_MODEL_MENU_ITEMS',
   'function getInitialNavTranslations',
+)
+const promptMenuGroupsSource = getConstantBlock(
+  'const promptMenuGroups',
+  'return (',
 )
 
 test('AI Video navigation exposes video tools and Wan 2.5 model entry points', () => {
@@ -84,17 +92,26 @@ test('AI Video navigation keeps AI Dance and Talking Avatar in AI Tools only', (
 
 test('AI Video model links render as tag-style entries after the function cards', () => {
   const expectedModelLinks = [
-    '/model/seedance-2-5',
+    '/ai-video-generator?model=seedance-2-mini',
     '/model/seedance-2',
+    '/model/kling-3-motion-control',
     '/model/kling-3',
+    '/model/kling-2-6-pro-motion-control',
     '/model/wan-2-5-ai-video-generator',
     '/model/grok-imagine-video-1-5',
   ]
 
   for (const href of expectedModelLinks) {
-    const escapedHref = href.replace(/\//g, '\\/')
+    const escapedHref = escapeRegExp(href)
     assert.match(aiVideoModelMenuSource, new RegExp(`href: '${escapedHref}'`), `${href} should exist in AI Video model tags`)
   }
+
+  const modelIndexes = expectedModelLinks.map((href) => aiVideoModelMenuSource.indexOf(`href: '${href}'`))
+  assert.ok(modelIndexes.every((index) => index >= 0))
+  assert.deepEqual(modelIndexes, [...modelIndexes].sort((a, b) => a - b))
+  assert.doesNotMatch(aiVideoModelMenuSource, /href: '\/model\/seedance-2-5'/)
+  assert.match(aiVideoModelMenuSource, /href: '\/ai-video-generator\?model=seedance-2-mini'[\s\S]*badgeKey: 'new'/)
+  assert.match(aiVideoModelMenuSource, /href: '\/model\/kling-2-6-pro-motion-control'[\s\S]*badgeKey: 'hot'/)
 
   assert.doesNotMatch(aiVideoModelMenuSource, /href: '\/kling-ai-video-generator'/)
 
@@ -107,6 +124,30 @@ test('AI Video model links render as tag-style entries after the function cards'
   }
 
   assert.match(navigationSource, /rounded-full[\s\S]*data-ai-video-model-tag/)
+})
+
+test('Prompts model menu only keeps prompt-library model collections', () => {
+  const expectedPromptModelLinks = [
+    '/prompts/models/gpt-image-2',
+    '/prompts/models/seedance-2-0',
+    '/prompts/models/kling',
+    '/prompts/models/nano-banana',
+  ]
+  const removedPromptModelLinks = [
+    '/model/wan-2-7-ai-video-generator',
+    '/model/wan-2-6-ai-video-generator',
+    '/model/wan-2-5-ai-video-generator',
+    '/model/seedance-2-5',
+    '/model/kling-2-6-pro-motion-control',
+  ]
+
+  for (const href of expectedPromptModelLinks) {
+    assert.match(promptMenuGroupsSource, new RegExp(escapeRegExp(href)), `${href} should stay in Prompts model menu`)
+  }
+
+  for (const href of removedPromptModelLinks) {
+    assert.doesNotMatch(promptMenuGroupsSource, new RegExp(escapeRegExp(href)), `${href} should be removed from Prompts model menu`)
+  }
 })
 
 test('AI Image navigation separates functions from model tags ordered by rating', () => {

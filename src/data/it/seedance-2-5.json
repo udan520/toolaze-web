@@ -45,6 +45,14 @@
     "h1": "<span class=\"text-gradient\">Seedance 2.5</span> Generatore video IA",
     "desc": "Crea video IA piu lunghi e coerenti con controllo dei riferimenti piu ricco, maggiore coerenza di scena e un workflow pensato per la produzione creativa reale."
   },
+  "heroDemoVideo": {
+    "type": "video",
+    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d0d55df5eef346809067197fddb1b251.png",
+    "ariaLabel": "Anteprima demo 16:9 del generatore video IA Seedance 2.5",
+    "width": 16,
+    "height": 9,
+    "sourceHistory": "Seedance 2.x demo video · 16:9 · R2"
+  },
   "launchUpdates": {
     "eyebrow": "Aggiornamenti di lancio",
     "title": "Ricevi aggiornamenti Seedance 2.5",

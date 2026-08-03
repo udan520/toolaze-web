@@ -272,6 +272,38 @@ const VIDEO_MODEL_CONFIGS = {
     unsupportedDurationError: 'Duration must be between 3 and 15 seconds for Kling 3.0',
     unconfiguredError: 'Kling 3.0 video model is not configured',
   },
+  'kling-3-motion-control': {
+    displayName: 'Kling 3 Motion Control',
+    envKey: 'KIE_KLING_3_MOTION_CONTROL_VIDEO_MODEL',
+    fallbackProviderModel: 'kling-3.0/motion-control',
+    creditModelId: 'kling-3-motion-control',
+    inputSchema: 'kling-motion-control',
+    supportedModes: new Set(['image-to-video']),
+    aliases: ['kling-3.0-motion-control', 'kling-3.0/motion-control'],
+    maxImages: 1,
+    maxVideos: 1,
+    promptRequired: false,
+    defaultCharacterOrientation: 'image',
+    motionImageExtensions: new Set(['jpg', 'jpeg', 'png']),
+    motionVideoExtensions: new Set(['mp4', 'mov']),
+    defaultAspectRatio: '16:9',
+    aspectRatios: new Set(['16:9', '9:16', '1:1']),
+    defaultResolution: '720p',
+    resolutions: new Set(['720p', '1080p']),
+    defaultDuration: 3,
+    minDuration: 3,
+    maxDuration: 30,
+    unsupportedModeError: 'Kling 3 Motion Control requires image-to-video mode',
+    unsupportedDurationError: 'Reference video duration must be between 3 and 30 seconds for Kling 3 Motion Control',
+    unsupportedAspectRatioError: 'Unsupported aspect ratio for Kling 3 Motion Control',
+    unsupportedResolutionError: 'Unsupported resolution for Kling 3 Motion Control',
+    tooManyImagesError: 'Kling 3 Motion Control supports one character image',
+    tooManyVideosError: 'Kling 3 Motion Control supports one motion reference video',
+    missingVideoError: 'Kling 3 Motion Control requires one motion reference video URL',
+    unsupportedImageUrlError: 'Kling 3 Motion Control character image URL must end in JPG, JPEG, or PNG',
+    unsupportedVideoUrlError: 'Kling 3 Motion Control reference video URL must end in MP4 or MOV',
+    unconfiguredError: 'Kling 3 Motion Control video model is not configured',
+  },
   ...Object.fromEntries([
     ['kling-2-6', 'Kling 2.6', 'kling-2.6/text-to-video', 'kling-2.6/image-to-video', ['720p', '1080p'], true],
     ['kling-2-5', 'Kling 2.5 Turbo Pro', 'kling/v2-5-turbo-text-to-video-pro', 'kling/v2-5-turbo-image-to-video-pro', ['1080p'], false],
@@ -310,6 +342,8 @@ const VIDEO_MODEL_CONFIGS = {
     maxVideos: 1,
     promptRequired: false,
     imageToVideoAspectRatioMode: 'reference-image',
+    motionImageExtensions: new Set(['jpg', 'jpeg', 'png']),
+    motionVideoExtensions: new Set(['mp4', 'mov', 'mkv']),
     defaultAspectRatio: '16:9',
     aspectRatios: new Set(['16:9', '9:16', '1:1']),
     defaultResolution: '720p',
@@ -637,8 +671,8 @@ function getUrlExtension(value) {
 function validateKlingMotionControlUrlExtensions(modelConfig, imageUrls, videoUrls) {
   if (modelConfig.inputSchema !== 'kling-motion-control') return null;
 
-  const imageExtensions = new Set(['jpg', 'jpeg', 'png']);
-  const videoExtensions = new Set(['mp4', 'mov', 'mkv']);
+  const imageExtensions = modelConfig.motionImageExtensions || new Set(['jpg', 'jpeg', 'png']);
+  const videoExtensions = modelConfig.motionVideoExtensions || new Set(['mp4', 'mov']);
   if (imageUrls.some((url) => !imageExtensions.has(getUrlExtension(url)))) {
     return modelConfig.unsupportedImageUrlError;
   }
@@ -652,9 +686,10 @@ function boolFormValue(formData, key) {
   return String(formData.get(key) || '').trim().toLowerCase() === 'true';
 }
 
-function normalizeCharacterOrientation(value) {
+function normalizeCharacterOrientation(value, defaultOrientation = 'video') {
   const orientation = String(value || '').trim().toLowerCase();
-  return orientation === 'image' ? 'image' : 'video';
+  if (orientation === 'image' || orientation === 'video') return orientation;
+  return defaultOrientation === 'image' ? 'image' : 'video';
 }
 
 function buildProviderInput({
@@ -765,7 +800,8 @@ function buildProviderInput({
       ...(prompt ? { prompt } : {}),
       input_urls: imageUrls.slice(0, 1),
       video_urls: videoUrls.slice(0, 1),
-      character_orientation: normalizeCharacterOrientation(formData.get('characterOrientation')),
+      character_orientation: normalizeCharacterOrientation(formData.get('characterOrientation'), modelConfig.defaultCharacterOrientation),
+      ...(modelConfig.creditModelId === 'kling-3-motion-control' ? { background_source: 'input_video' } : {}),
       mode: resolution,
     };
   }
@@ -883,7 +919,7 @@ export async function onRequest(context) {
     }
     if (
       modelConfig.inputSchema === 'kling-motion-control'
-      && normalizeCharacterOrientation(formData.get('characterOrientation')) === 'image'
+      && normalizeCharacterOrientation(formData.get('characterOrientation'), modelConfig.defaultCharacterOrientation) === 'image'
       && duration.value > 10
     ) {
       return jsonResponse({ error: 'Reference video duration must be between 3 and 10 seconds for image character orientation' }, 400);

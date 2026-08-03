@@ -15,6 +15,7 @@ export type AiVideoGeneratorModelId =
   | 'wan-2-5'
   | 'wan-2-2'
   | 'kling-3-turbo'
+  | 'kling-3-motion-control'
   | 'kling-3'
   | 'kling-2-6-motion-control'
   | 'kling-2-6'
@@ -329,6 +330,46 @@ const AI_VIDEO_GENERATOR_MODEL_OPTIONS_BASE = [
     samplePrompt:
       'A sleek electric car crosses a rain-soaked downtown bridge at night, 6-shot commercial sequence, reflections, tire spray, cinematic 4K lighting.',
     previewTone: '4K multi-shot preview',
+  },
+  {
+    id: 'kling-3-motion-control',
+    name: 'Kling 3 Motion Control',
+    vendor: 'Kuaishou',
+    description: 'Reference-video motion control for one character image and one motion clip at 720p or 1080p.',
+    logoSrc: '/model-logos/kling.svg',
+    logoAlt: 'Kling logo',
+    qualityRating: 4.5,
+    badge: 'New',
+    minCredits: 120,
+    defaultMode: 'image-to-video',
+    supportedModes: ['image-to-video'],
+    maxImages: 1,
+    maxFileSizeMb: 10,
+    maxVideos: 1,
+    maxVideoFileSizeMb: 100,
+    supportsMotionReferenceVideo: true,
+    promptRequired: false,
+    durationMode: 'reference-video',
+    referenceVideoMinDurationSeconds: 3,
+    referenceVideoMaxDurationSeconds: 30,
+    acceptedMotionVideoFormats: ['MP4', 'QuickTime'],
+    uploadPurpose: 'kling-motion-control',
+    acceptedImageMimeTypes: ['image/jpeg', 'image/png'],
+    acceptedImageExtensions: ['jpg', 'jpeg', 'png'],
+    acceptedImageFormats: ['JPG', 'PNG'],
+    referenceImageMinDimensionPx: 300,
+    referenceImageAspectRatioMin: 2 / 5,
+    referenceImageAspectRatioMax: 5 / 2,
+    referenceImageHelperText: 'JPG or PNG up to {size}MB. Use an image over 300px with a 2:5 to 5:2 aspect ratio.',
+    invalidImageTypeMessage: 'Use JPG or PNG for the Kling 3 Motion Control character image.',
+    invalidImageDimensionsMessage: 'Use an image over 300px with a 2:5 to 5:2 aspect ratio for Kling 3 Motion Control.',
+    aspectRatios: [{ value: '16:9', label: '16:9' }, { value: '9:16', label: '9:16' }, { value: '1:1', label: '1:1' }],
+    durations: Array.from({ length: 28 }, (_, index) => index + 3),
+    defaultDuration: 3,
+    resolutions: ['720p', '1080p'],
+    promptPlaceholder: 'Describe how the character image should follow the uploaded motion reference video while preserving identity and style.',
+    samplePrompt: 'Make the character follow the motion reference naturally, preserve facial identity, outfit, proportions, lighting, and camera rhythm.',
+    previewTone: 'Motion reference transfer preview',
   },
   {
     id: 'kling-2-6-motion-control',

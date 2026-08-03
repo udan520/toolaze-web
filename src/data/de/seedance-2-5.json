@@ -45,6 +45,14 @@
     "h1": "<span class=\"text-gradient\">Seedance 2.5</span> KI-Videogenerator",
     "desc": "Erstelle laengere, kohärentere KI-Videos mit besserer Referenzsteuerung, stabileren Szenen und einem Workflow fuer echte Kreativproduktion."
   },
+  "heroDemoVideo": {
+    "type": "video",
+    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d0d55df5eef346809067197fddb1b251.png",
+    "ariaLabel": "16:9 Demo-Vorschaubild fuer den Seedance 2.5 KI-Videogenerator",
+    "width": 16,
+    "height": 9,
+    "sourceHistory": "Seedance 2.x demo video · 16:9 · R2"
+  },
   "launchUpdates": {
     "eyebrow": "Launch-Updates",
     "title": "Seedance 2.5 Updates erhalten",

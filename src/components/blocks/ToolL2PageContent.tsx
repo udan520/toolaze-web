@@ -54,6 +54,13 @@ type RecommendedTool = {
   media?: RecommendedToolMedia
 }
 
+type PromptRewrite = {
+  weakLabel: string
+  weakText: string
+  betterLabel: string
+  betterText: string
+}
+
 function normalizeRecommendedToolMedia(media: unknown): RecommendedToolMedia | undefined {
   if (!media || typeof media !== 'object') return undefined
 
@@ -70,11 +77,24 @@ function normalizeRecommendedToolMedia(media: unknown): RecommendedToolMedia | u
   }
 }
 
-function getHeroDemoMedia(data: { heroDemoVideo?: { src?: string; poster?: string; ariaLabel?: string } } | null | undefined, fallbackAlt: string): RecommendedToolMedia | undefined {
+function getRecommendedToolMediaType(src: string): RecommendedToolMedia['type'] {
+  const assetPath = src.split(/[?#]/)[0].toLowerCase()
+  if (/\.(mp4|webm|mov|m4v|ogv)$/.test(assetPath)) return 'video'
+  if (/\.(png|jpg|jpeg|webp|avif|gif|svg)$/.test(assetPath)) return 'image'
+  return 'image'
+}
+
+function getHeroDemoMediaType(heroDemoVideo: { src?: string; type?: unknown; mediaType?: unknown }): RecommendedToolMedia['type'] {
+  const explicitType = heroDemoVideo.type || heroDemoVideo.mediaType
+  if (explicitType === 'image' || explicitType === 'video') return explicitType
+  return getRecommendedToolMediaType(heroDemoVideo.src || '')
+}
+
+function getHeroDemoMedia(data: { heroDemoVideo?: { src?: string; poster?: string; ariaLabel?: string; type?: unknown; mediaType?: unknown } } | null | undefined, fallbackAlt: string): RecommendedToolMedia | undefined {
   if (!data?.heroDemoVideo?.src) return undefined
 
   return {
-    type: 'video',
+    type: getHeroDemoMediaType(data.heroDemoVideo),
     src: data.heroDemoVideo.src,
     poster: data.heroDemoVideo.poster,
     alt: data.heroDemoVideo.ariaLabel || fallbackAlt,
@@ -91,6 +111,7 @@ const VIDEO_GENERATOR_DEFAULT_MODELS: Record<string, AiVideoGeneratorModelId> = 
   'kling-ai-video-generator': 'kling-3',
   'seedance-2': 'seedance-2',
   'kling-3': 'kling-3',
+  'kling-3-motion-control': 'kling-3-motion-control',
   'kling-2-6-pro-motion-control': 'kling-2-6-motion-control',
 }
 const VIDEO_GENERATOR_MODEL_IDS = new Set<string>(AI_VIDEO_GENERATOR_MODEL_OPTIONS.map((model) => model.id))
@@ -132,6 +153,49 @@ function getTopToolVideoModelId(modelId: unknown): AiVideoGeneratorModelId | und
   return typeof modelId === 'string' && VIDEO_GENERATOR_MODEL_IDS.has(modelId)
     ? modelId as AiVideoGeneratorModelId
     : undefined
+}
+
+function parsePromptRewrite(prompt: string): PromptRewrite | null {
+  const match = prompt.match(/^\s*(Weak prompt|Weak|较差)\s*[:：]\s*([\s\S]+?)\s+(Better prompt|Better|较好)\s*[:：]\s*([\s\S]+?)\s*$/i)
+  if (!match) return null
+
+  return {
+    weakLabel: match[1],
+    weakText: match[2].trim(),
+    betterLabel: match[3],
+    betterText: match[4].trim(),
+  }
+}
+
+function PromptRewriteBlock({ prompt }: { prompt: string }) {
+  const rewrite = parsePromptRewrite(prompt)
+
+  if (!rewrite) {
+    return (
+      <p className="mt-4 rounded-2xl bg-slate-50 p-4 text-sm leading-relaxed text-slate-700">
+        {prompt}
+      </p>
+    )
+  }
+
+  return (
+    <div className="mt-4 space-y-3 rounded-2xl bg-slate-50 p-4 text-sm leading-relaxed text-slate-700">
+      <div className="flex gap-3">
+        <span aria-hidden="true" className="mt-0.5 shrink-0 text-base">❌</span>
+        <div>
+          <span className="font-bold text-rose-700">{rewrite.weakLabel}:</span>{' '}
+          <span>{rewrite.weakText}</span>
+        </div>
+      </div>
+      <div className="flex gap-3 border-t border-slate-200 pt-3">
+        <span aria-hidden="true" className="mt-0.5 shrink-0 text-base">✅</span>
+        <div>
+          <span className="font-bold text-emerald-700">{rewrite.betterLabel}:</span>{' '}
+          <span>{rewrite.betterText}</span>
+        </div>
+      </div>
+    </div>
+  )
 }
 
 function getLocalizedContentHref(href: string | undefined, locale: string): string {
@@ -903,6 +967,12 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
           { label: breadcrumbT.model || 'Model', href: '/model' },
           { label: 'Kling 3.0' },
         ]
+      : tool === 'kling-3-motion-control'
+      ? [
+          { label: breadcrumbT.home, href: '/' },
+          { label: breadcrumbT.model || 'Model', href: '/model' },
+          { label: 'Kling 3 Motion Control' },
+        ]
       : tool === 'kling-2-6-pro-motion-control'
       ? [
           { label: breadcrumbT.home, href: '/' },
@@ -931,6 +1001,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
       'wan-2-7-ai-video-generator',
       'wan-2-6-ai-video-generator',
       'wan-2-5-ai-video-generator',
+      'kling-3-motion-control',
       'kling-2-6-pro-motion-control',
       'text-to-video-generator',
       'talking-avatar-creator',
@@ -949,6 +1020,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
       if (modelTool === 'seedance-2-5') return locale === 'en' ? '/model/seedance-2-5' : `/${locale}/model/seedance-2-5`
       if (modelTool === 'seedance-2') return locale === 'en' ? '/model/seedance-2' : `/${locale}/model/seedance-2`
       if (modelTool === 'kling-3') return locale === 'en' ? '/model/kling-3' : `/${locale}/model/kling-3`
+      if (modelTool === 'kling-3-motion-control') return locale === 'en' ? '/model/kling-3-motion-control' : `/${locale}/model/kling-3-motion-control`
       if (modelTool === 'kling-2-6-pro-motion-control') return locale === 'en' ? '/model/kling-2-6-pro-motion-control' : `/${locale}/model/kling-2-6-pro-motion-control`
       return locale === 'en' ? `/${modelTool}` : `/${locale}/${modelTool}`
     }

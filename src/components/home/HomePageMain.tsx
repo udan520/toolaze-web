@@ -86,6 +86,18 @@ type HomeVideoDemoMedia = {
   ariaLabel: string
 }
 
+type HomeDashboardModelLogo = {
+  src: string
+  alt: string
+}
+
+const HOME_DASHBOARD_MODEL_LOGOS: Record<string, HomeDashboardModelLogo> = {
+  'seedance-2': { src: '/model-logos/bytedance.svg', alt: 'ByteDance logo' },
+  'gpt-image-2': { src: '/model-logos/openai.svg', alt: 'OpenAI logo' },
+  'seedream-5-0-pro': { src: '/model-logos/bytedance.svg', alt: 'ByteDance logo' },
+  'kling-3': { src: '/model-logos/kling.svg', alt: 'Kling logo' },
+}
+
 const HOME_VIDEO_MODEL_DEMO_FALLBACKS: Record<string, HomeVideoDemoMedia> = {
   'seedance-2-5': {
     src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/prompt-templates/storyboard-scene.mp4',
@@ -394,6 +406,8 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
       media: {
         type: 'video',
         src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/ai-dance-demo.mp4',
+        poster:
+          'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/ai-dance-demo-source.png',
         alt: 'AI Dance Generator demo video',
       },
     },
@@ -512,9 +526,9 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
       aiImageGeneration: string
       aiModels: string
       trending: string
+      trendingSubtitle?: string
       tryForFree: string
       liveNowSuffix: string
-      freeDisclosure: string
     }
   > = {
     en: {
@@ -522,9 +536,9 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
       aiImageGeneration: 'AI Image Generation',
       aiModels: 'All Models',
       trending: 'Trending',
+      trendingSubtitle: 'Popular creative workflows, ready to launch from the home screen.',
       tryForFree: 'Try For Free',
       liveNowSuffix: ' is Live Now!',
-      freeDisclosure: 'New users receive 20 credits after signing up; higher settings may use more credits.',
     },
     de: {
       aiVideoGeneration: 'KI-Videogenerierung',
@@ -533,8 +547,6 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
       trending: 'Trending',
       tryForFree: 'Kostenlos testen',
       liveNowSuffix: ' ist jetzt live!',
-      freeDisclosure:
-        'Neue Nutzer erhalten nach der Registrierung 20 Credits; höhere Einstellungen können mehr Credits benötigen.',
     },
     ja: {
       aiVideoGeneration: 'AI動画生成',
@@ -543,7 +555,6 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
       trending: 'トレンド',
       tryForFree: '無料で試す',
       liveNowSuffix: 'が公開されました！',
-      freeDisclosure: '新規登録後に20 creditsを受け取れます。高品質設定では追加creditsが必要な場合があります。',
     },
     es: {
       aiVideoGeneration: 'Generación de Video IA',
@@ -552,8 +563,6 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
       trending: 'Tendencias',
       tryForFree: 'Probar Gratis',
       liveNowSuffix: ' ya está disponible',
-      freeDisclosure:
-        'Los nuevos usuarios reciben 20 créditos al registrarse; los ajustes superiores pueden usar más créditos.',
     },
     'zh-TW': {
       aiVideoGeneration: 'AI 影片生成',
@@ -562,7 +571,6 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
       trending: '熱門趨勢',
       tryForFree: '免費試用',
       liveNowSuffix: '現已上線！',
-      freeDisclosure: '新用戶註冊後可獲得 20 credits；更高規格設定可能需要更多 credits。',
     },
     pt: {
       aiVideoGeneration: 'Geração de Vídeo IA',
@@ -571,8 +579,6 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
       trending: 'Em Alta',
       tryForFree: 'Testar Grátis',
       liveNowSuffix: ' já está disponível',
-      freeDisclosure:
-        'Novos usuários recebem 20 créditos após o cadastro; configurações mais altas podem usar mais créditos.',
     },
     fr: {
       aiVideoGeneration: 'Génération Vidéo IA',
@@ -581,8 +587,6 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
       trending: 'Tendances',
       tryForFree: 'Essayer Gratuitement',
       liveNowSuffix: ' est disponible',
-      freeDisclosure:
-        'Les nouveaux utilisateurs reçoivent 20 crédits après inscription ; les réglages avancés peuvent utiliser plus de crédits.',
     },
     ko: {
       aiVideoGeneration: 'AI 비디오 생성',
@@ -591,7 +595,6 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
       trending: '인기',
       tryForFree: '무료로 사용해보기',
       liveNowSuffix: ' 출시!',
-      freeDisclosure: '신규 사용자는 가입 후 20 credits를 받으며, 고급 설정은 더 많은 credits가 필요할 수 있습니다.',
     },
     it: {
       aiVideoGeneration: 'Generazione Video AI',
@@ -600,8 +603,6 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
       trending: 'Di Tendenza',
       tryForFree: 'Prova Gratis',
       liveNowSuffix: ' è disponibile',
-      freeDisclosure:
-        'I nuovi utenti ricevono 20 crediti dopo la registrazione; le impostazioni avanzate possono usare più crediti.',
     },
   }
   const dashboardCopy = dashboardCopyByLocale[locale] || dashboardCopyByLocale.en
@@ -679,12 +680,41 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
     description:
       'Create faster 480p and 720p video drafts with image-to-video starts, prompt tests, and lower-credit iteration before larger renders.',
   }
-  const featuredLaunchThumb = getHomeModelCardImage('seedance-2-5')
+  const featuredLaunchThumb = {
+    src: '/model-assets/seedance-2-mini/home-banner.webp',
+    width: 1400,
+    height: 788,
+    alt: 'Seedance 2.0 Mini golden hour portrait video generation preview',
+  }
   const dashboardModelCards = ['seedance-2', 'gpt-image-2', 'seedream-5-0-pro', 'kling-3']
     .map(findHomeCard)
     .filter((item): item is ToolCard => Boolean(item))
     .slice(0, 4)
   const allAiToolCards = [...homeVideoToolCards, ...homeImageToolCards]
+  const aiKissingPreviewCard = homeVideoToolCards.find(
+    (item) => item.href === localizeHomeHref('/ai-kissing-video-generator'),
+  )
+  const photoRestorationPreviewCard = homeImageToolCards.find(
+    (item) => item.href === localizeHomeHref('/photo-restoration'),
+  )
+  const textToImagePreviewCard: HomeAiToolsTabCard = {
+    title: quickActionCopy.textToImage,
+    href: localizeHomeHref('/text-to-image-generator'),
+    media: {
+      type: 'image',
+      src: '/ai-image-generator/text-to-image-generator/golden-hour-portrait.webp',
+      alt: 'Text to Image Generator golden hour portrait sample',
+    },
+  }
+  const ecommerceImagePreviewCard: HomeAiToolsTabCard = {
+    title: quickActionCopy.textToImage,
+    href: localizeHomeHref('/text-to-image-generator?preview=ecommerce'),
+    media: {
+      type: 'image',
+      src: '/ai-image-generator/text-to-image-generator/skincare-hero-brief.webp',
+      alt: 'Text to Image Generator ecommerce product sample',
+    },
+  }
   const featuredTrendingHrefs = [
     localizeHomeHref('/ai-kissing-video-generator'),
     localizeHomeHref('/ai-dance-generator'),
@@ -760,6 +790,7 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
       cardHref: localizeHomeHref('/ai-video-generator'),
       surface: 'from-sky-50 via-white to-indigo-50',
       line: 'from-sky-400/0 via-sky-400/70 to-indigo-400/0',
+      previewCards: homeVideoToolCards.slice(0, 2),
       links: [
         {
           label: quickActionCopy.imageToVideo,
@@ -776,6 +807,9 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
       cardHref: localizeHomeHref('/ai-image-generator'),
       surface: 'from-violet-50 via-white to-fuchsia-50',
       line: 'from-violet-400/0 via-violet-400/70 to-fuchsia-400/0',
+      previewCards: [ecommerceImagePreviewCard, textToImagePreviewCard].filter(
+        (item): item is HomeAiToolsTabCard => Boolean(item),
+      ),
       links: [
         {
           label: quickActionCopy.imageToImage,
@@ -792,6 +826,9 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
       cardHref: localizeHomeHref('/ai-tools'),
       surface: 'from-slate-50 via-white to-emerald-50',
       line: 'from-slate-400/0 via-emerald-400/70 to-slate-400/0',
+      previewCards: [aiKissingPreviewCard, photoRestorationPreviewCard].filter(
+        (item): item is HomeAiToolsTabCard => Boolean(item),
+      ),
       links: [
         { label: navCopy.videoTools || 'Video Tools', href: localizeHomeHref('/ai-tools?tab=video') },
         { label: navCopy.imageTools || 'Image Tools', href: localizeHomeHref('/ai-tools?tab=image') },
@@ -829,7 +866,7 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
             {quickLaunchGroups.map((group) => (
               <section
                 key={group.title}
-                className={`group isolate relative overflow-hidden rounded-[1.75rem] border border-slate-200/80 bg-gradient-to-br ${group.surface} p-5 shadow-[0_18px_50px_rgba(15,23,42,0.06)] motion-safe:transition-all motion-safe:duration-300 motion-safe:[transition-timing-function:cubic-bezier(0.22,1,0.36,1)] motion-safe:hover:-translate-y-1 motion-safe:hover:scale-[1.01] hover:border-indigo-200/90 hover:shadow-[0_24px_70px_rgba(79,70,229,0.14)]`}
+                className={`group isolate relative min-h-[156px] overflow-hidden rounded-[1.75rem] border border-slate-200/80 bg-gradient-to-br ${group.surface} p-4 shadow-[0_18px_50px_rgba(15,23,42,0.06)] motion-safe:transition-all motion-safe:duration-300 motion-safe:[transition-timing-function:cubic-bezier(0.22,1,0.36,1)] motion-safe:hover:-translate-y-1 motion-safe:hover:scale-[1.01] hover:border-indigo-200/90 hover:shadow-[0_24px_70px_rgba(79,70,229,0.14)]`}
               >
                 {group.cardHref ? (
                   <Link
@@ -838,20 +875,53 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
                     className="absolute inset-0 z-0"
                   />
                 ) : null}
+                <div className="pointer-events-none absolute right-2 top-1/2 hidden h-[108px] w-[118px] -translate-y-1/2 opacity-90 sm:block">
+                  {group.previewCards.map((card, index) => (
+                    <div
+                      key={card.href}
+                      className={`absolute overflow-hidden rounded-2xl border border-white/80 bg-white shadow-[0_14px_32px_rgba(79,70,229,0.16)] motion-safe:transition-transform motion-safe:duration-300 motion-safe:[transition-timing-function:cubic-bezier(0.22,1,0.36,1)] ${
+                        index === 0
+                          ? 'right-3 top-2 z-10 h-[58px] w-24 -rotate-2 group-hover:-translate-y-0.5'
+                          : 'bottom-2 right-0 z-20 h-[58px] w-24 rotate-[3deg] group-hover:-translate-y-1'
+                      }`}
+                    >
+                      {card.media.type === 'video' ? (
+                        <video
+                          className="h-full w-full object-cover"
+                          src={card.media.src}
+                          poster={card.media.poster}
+                          aria-label={card.media.alt}
+                          muted
+                          loop
+                          playsInline
+                          autoPlay
+                          preload="metadata"
+                        />
+                      ) : (
+                        <img
+                          src={card.media.src}
+                          alt={card.media.alt}
+                          className="h-full w-full object-cover"
+                        />
+                      )}
+                    </div>
+                  ))}
+                </div>
+                <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_85%_20%,rgba(99,102,241,0.11),transparent_34%)] opacity-80" />
                 <div
                   className={`pointer-events-none absolute inset-x-8 top-0 h-px origin-center scale-x-95 bg-gradient-to-r ${group.line} opacity-70 motion-safe:transition-all motion-safe:duration-300 motion-safe:[transition-timing-function:cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-110 group-hover:opacity-100`}
                 />
-                <div className="pointer-events-none relative z-10 mb-7 motion-safe:transition-transform motion-safe:duration-300 motion-safe:[transition-timing-function:cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-0.5">
-                  <h2 className="text-[1.35rem] font-extrabold leading-tight tracking-[-0.03em] text-slate-950">
+                <div className="pointer-events-none relative z-10 mb-7 max-w-none sm:max-w-[calc(100%-124px)] motion-safe:transition-transform motion-safe:duration-300 motion-safe:[transition-timing-function:cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-0.5">
+                  <h2 className="text-[1.28rem] font-extrabold leading-tight tracking-[-0.03em] text-slate-950">
                     {group.title}
                   </h2>
                 </div>
-                <div className="pointer-events-auto relative z-10 flex flex-wrap gap-3">
+                <div className="pointer-events-auto relative z-20 flex max-w-none sm:max-w-[calc(100%-124px)] flex-wrap gap-3">
                   {group.links.map((item) => (
                     <Link
                       key={item.href}
                       href={item.href}
-                      className="inline-flex min-h-11 items-center justify-center rounded-full border border-slate-200 bg-white/85 px-5 text-sm font-bold tracking-[-0.01em] text-slate-700 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-slate-300 hover:bg-white hover:text-slate-950 hover:shadow-md"
+                      className="inline-flex min-h-10 items-center justify-center rounded-full border border-slate-200 bg-white px-4 text-sm font-bold tracking-[-0.01em] text-slate-700 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-slate-300 hover:text-slate-950 hover:shadow-md"
                     >
                       {item.label}
                     </Link>
@@ -861,7 +931,7 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
             ))}
           </div>
 
-          <div className="mt-7">
+          <div className="mt-6">
             <div className="mb-2 flex items-center justify-end">
               <h2 id="home-ai-models-title" className="text-sm font-bold text-slate-600">
                 <Link
@@ -876,12 +946,12 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
             <div className="grid gap-6 xl:grid-cols-[minmax(0,1.15fr)_minmax(380px,0.95fr)]">
               <Link
                 href={featuredLaunch.href}
-                className="group relative min-h-[290px] overflow-hidden rounded-[1.5rem] bg-slate-200 p-7 text-white shadow-sm ring-1 ring-slate-200"
+                className="group relative min-h-[282px] overflow-hidden rounded-[1.75rem] bg-slate-900 p-7 text-white shadow-[0_22px_70px_rgba(79,70,229,0.18)] ring-1 ring-indigo-100/80"
               >
                 {featuredLaunchThumb ? (
                   <Image
                     src={featuredLaunchThumb.src}
-                    alt={`${featuredLaunch.title} video generation preview`}
+                    alt={featuredLaunchThumb.alt}
                     width={featuredLaunchThumb.width}
                     height={featuredLaunchThumb.height}
                     className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
@@ -889,56 +959,72 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
                     priority
                   />
                 ) : null}
-                <div className="absolute inset-0 bg-gradient-to-r from-slate-950/78 via-slate-950/42 to-slate-950/10" />
+                <div className="absolute inset-0 bg-gradient-to-r from-slate-950/86 via-indigo-950/54 to-violet-950/18" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_18%,rgba(199,210,254,0.22),transparent_30%)]" />
+                <div className="pointer-events-none absolute inset-y-0 left-0 w-[72%] bg-[linear-gradient(90deg,rgba(15,23,42,0.84)_0%,rgba(30,41,59,0.62)_46%,rgba(30,41,59,0.18)_76%,transparent_100%)]" />
                 <div className="relative flex h-full max-w-xl flex-col justify-center">
-                  <h1 className="home-section-title mb-4 text-[30px] leading-tight text-white md:text-[34px]">
+                  <h1 className="home-section-title mb-4 text-[30px] leading-tight text-white drop-shadow md:text-[35px]">
                     {featuredLaunch.title}
                     {dashboardCopy.liveNowSuffix}
                   </h1>
-                  <p className="mb-8 max-w-md text-sm font-medium leading-relaxed text-white/82">
+                  <p className="mb-6 max-w-md text-sm font-semibold leading-relaxed text-white/85 drop-shadow-sm">
                     {featuredLaunch.description}
                   </p>
-                  <span className="inline-flex min-h-12 w-fit items-center justify-center rounded-xl bg-white px-10 text-sm font-bold text-slate-900 shadow-lg shadow-slate-950/10 transition-colors group-hover:text-indigo-700">
+                  <span className="inline-flex min-h-11 w-fit items-center justify-center rounded-full bg-white px-8 text-sm font-extrabold text-indigo-700 shadow-lg shadow-slate-950/20 transition-all duration-200 group-hover:-translate-y-0.5 group-hover:bg-indigo-50">
                     {dashboardCopy.tryForFree}
                   </span>
-                  <span className="mt-3 text-xs font-medium text-white/72">{dashboardCopy.freeDisclosure}</span>
                 </div>
               </Link>
 
               <section aria-labelledby="home-ai-models-title">
                 <div className="grid gap-4 sm:grid-cols-2">
-                  {dashboardModelCards.map((item) => (
-                    <Link
-                      key={item.tool}
-                      href={item.href}
-                      className="group relative min-h-[137px] overflow-hidden rounded-[1.25rem] border border-indigo-100/80 bg-white p-5 text-slate-950 shadow-[0_14px_36px_rgba(79,70,229,0.08)] ring-1 ring-indigo-50/80 transition-colors hover:border-indigo-200 hover:ring-indigo-100"
-                    >
-                      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(99,102,241,0.12),_transparent_42%)]" />
-                      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-violet-100/50 to-transparent" />
-                      <span
-                        className="absolute right-4 top-4 inline-flex h-8 w-8 items-center justify-center rounded-full bg-indigo-50 text-indigo-700 transition-colors group-hover:bg-indigo-100"
-                        aria-hidden="true"
+                  {dashboardModelCards.map((item) => {
+                    const logo = HOME_DASHBOARD_MODEL_LOGOS[item.tool]
+
+                    return (
+                      <Link
+                        key={item.tool}
+                        href={item.href}
+                        className="group relative min-h-[137px] overflow-hidden rounded-[1.25rem] border border-indigo-100/80 bg-white p-5 text-slate-950 shadow-[0_14px_36px_rgba(79,70,229,0.08)] ring-1 ring-indigo-50/80 transition-colors hover:border-indigo-200 hover:ring-indigo-100"
                       >
-                        <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M9 7h8v8" />
-                        </svg>
-                      </span>
-                      <div className="relative pr-9">
-                        <h3 className="mb-4 text-xl font-extrabold leading-tight text-slate-950">
-                          {cleanTitle(item.modelName || item.title)}
-                        </h3>
-                        <p className="line-clamp-2 text-xs font-medium leading-relaxed text-slate-600">
-                          {item.featuredDesc || item.description}
-                        </p>
-                      </div>
-                    </Link>
-                  ))}
+                        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(99,102,241,0.12),_transparent_42%)]" />
+                        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-violet-100/50 to-transparent" />
+                        <span
+                          className="absolute bottom-4 right-4 inline-flex h-7 w-7 items-center justify-center rounded-full bg-indigo-50 text-indigo-700 transition-colors group-hover:bg-indigo-100"
+                          aria-hidden="true"
+                        >
+                          <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M9 7h8v8" />
+                          </svg>
+                        </span>
+                        <div className="relative">
+                          <div className="mb-3 flex min-w-0 items-center gap-2.5">
+                            {logo ? (
+                              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl border border-indigo-100 bg-white shadow-sm">
+                                <img src={logo.src} alt={logo.alt} className="h-5 w-5 object-contain" />
+                              </span>
+                            ) : null}
+                            <h3 className="min-w-0 truncate text-xl font-extrabold leading-tight text-slate-950">
+                              {cleanTitle(item.modelName || item.title)}
+                            </h3>
+                          </div>
+                          <p className="line-clamp-2 pr-8 text-xs font-medium leading-relaxed text-slate-600">
+                            {item.featuredDesc || item.description}
+                          </p>
+                        </div>
+                      </Link>
+                    )
+                  })}
                 </div>
               </section>
             </div>
           </div>
 
-          <HomeTrendingToolsRail title={dashboardCopy.trending} cards={dashboardTrendingCards} />
+          <HomeTrendingToolsRail
+            title={dashboardCopy.trending}
+            subtitle={dashboardCopy.trendingSubtitle}
+            cards={dashboardTrendingCards}
+          />
         </div>
       </section>
 

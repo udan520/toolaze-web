@@ -222,9 +222,9 @@ const FALLBACK_TEXT = {
   noCompatibleModelTitle: 'No Compatible Model',
   noCompatibleModelDescription: 'No model currently supports {mode}. Please choose another mode.',
   motionReferenceVideo: 'Motion Reference Video',
-  motionReferenceVideoHelper: 'MP4, QuickTime, or Matroska. Max {size}MB, {min}-{max} seconds. Output duration follows the motion reference video.',
+  motionReferenceVideoHelper: '{formats}. Max {size}MB, {min}-{max} seconds. Output duration follows the motion reference video.',
   motionReferenceVideoDurationNote: 'Duration follows the uploaded reference video ({min}-{max} seconds).',
-  motionReferenceVideoInvalidType: 'Use MP4, QuickTime, or Matroska for the motion reference video.',
+  motionReferenceVideoInvalidType: 'Use a supported video format for the motion reference video.',
   motionReferenceVideoInvalidDuration: 'Motion reference video must be {min}-{max} seconds.',
   characterOrientation: 'Character Orientation',
   characterOrientationImage: 'Image',
@@ -251,6 +251,7 @@ const VIDEO_HISTORY_MODEL_SLUGS: Record<AiVideoGeneratorModelId, string> = {
   'wan-2-2': 'wan-2-2',
   'kling-3-turbo': 'kling-3-turbo',
   'kling-3': 'kling-3',
+  'kling-3-motion-control': 'kling-3-motion-control',
   'kling-2-6-motion-control': 'kling-2-6-motion-control',
   'kling-2-6': 'kling-2-6',
   'kling-2-5': 'kling-2-5',
@@ -1142,7 +1143,10 @@ export default function AiVideoGeneratorTool({
   }
 
   const buildMotionVideoItem = async (file: File): Promise<VideoItem | null> => {
-    const hasAcceptedType = ['video/mp4', 'video/quicktime', 'video/x-matroska'].includes(file.type)
+    const acceptedVideoTypes = modelConfig.acceptedMotionVideoFormats?.includes('Matroska')
+      ? ['video/mp4', 'video/quicktime', 'video/x-matroska']
+      : ['video/mp4', 'video/quicktime']
+    const hasAcceptedType = acceptedVideoTypes.includes(file.type)
       || ACCEPTED_MOTION_REFERENCE_VIDEO_FILE_RE.test(file.name)
     if (!hasAcceptedType) {
       showMotionVideoInvalidTypeNotice()

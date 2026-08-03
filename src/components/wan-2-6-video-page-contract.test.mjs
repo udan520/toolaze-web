@@ -150,7 +150,7 @@ test('Wan 2.6 public entry points are wired for an English-only model launch', (
   const toolContent = readFileSync(join(root, 'src', 'components', 'blocks', 'ToolL2PageContent.tsx'), 'utf8')
   const common = readJson(join(root, 'src', 'data', 'en', 'common.json'))
 
-  assert.equal(countOccurrences(navigation, `/model/${slug}`), 2, 'Navigation should include the video model menu and Prompts model links')
+  assert.equal(countOccurrences(navigation, `/model/${slug}`), 1, 'Navigation should include the AI Video model menu')
   assert.equal(countOccurrences(footer, `/model/${slug}`), 1, 'Footer should include the video model link once')
   assert.match(modelHub, new RegExp(`'wan-2-6':\\s*'/model/${slug}'`))
   assert.match(sitemap, new RegExp(`['"]${slug}['"]`))

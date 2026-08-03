@@ -110,6 +110,10 @@ export const VIDEO_GENERATION_CREDIT_RATES = {
       '1080p': 54,
     },
   },
+  'kling-3-motion-control': {
+    source: 'Kie pricing: 720p $0.10/output second, 1080p $0.135/output second; Toolaze price = Kie cost × 2, then round(price / $0.005 per credit)',
+    ratesByResolution: { '720p': 40, '1080p': 54 },
+  },
   'kling-2-6': {
     source: 'Kie Kling 2.6 pricing mapped at cost × 2 and $0.005/credit',
     ratesByResolution: { '720p': 22, '1080p': 22 },

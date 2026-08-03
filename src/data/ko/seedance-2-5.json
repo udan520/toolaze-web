@@ -45,6 +45,14 @@
     "h1": "<span class=\"text-gradient\">Seedance 2.5</span> AI 비디오 생성기",
     "desc": "풍부한 레퍼런스 제어, 더 강한 장면 일관성, 실제 크리에이티브 제작을 위한 워크플로로 더 길고 일관된 AI 영상을 만듭니다."
   },
+  "heroDemoVideo": {
+    "type": "video",
+    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d0d55df5eef346809067197fddb1b251.png",
+    "ariaLabel": "Seedance 2.5 AI 비디오 생성기 16:9 데모 미리보기",
+    "width": 16,
+    "height": 9,
+    "sourceHistory": "Seedance 2.x demo video · 16:9 · R2"
+  },
   "launchUpdates": {
     "eyebrow": "출시 업데이트",
     "title": "Seedance 2.5 업데이트 알림 받기",

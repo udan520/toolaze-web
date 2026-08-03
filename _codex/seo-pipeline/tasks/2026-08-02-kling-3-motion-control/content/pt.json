@@ -1,0 +1,318 @@
+{
+  "in_menu": false,
+  "seoFactoryTaskId": "2026-08-02-kling-3-motion-control",
+  "pageGroup": "model",
+  "topComponent": "kling-3-motion-control",
+  "topTool": {
+    "defaultMode": "image-to-video",
+    "displayName": "Kling 3 Motion Control",
+    "modelId": "kling-3-motion-control"
+  },
+  "metadata": {
+    "title": "Gerador de vídeo com IA Kling 3 Motion Control | Toolaze",
+    "description": "Crie vídeos Kling 3 Motion Control com uma imagem de personagem e um vídeo de referência de movimento. Transfira pose, gesto, ritmo de câmera e estilo em 720p ou 1080p.",
+    "published": true
+  },
+  "sectionsOrder": [
+    "modelIntro",
+    "performanceMetrics",
+    "howToUse",
+    "scenes",
+    "modelComparison",
+    "competitorComparison",
+    "testimonials",
+    "faq"
+  ],
+  "hero": {
+    "h1": "<span class=\"text-gradient\">Kling 3 Motion Control</span> Gerador de vídeo com IA",
+    "desc": "Envie uma imagem de personagem, adicione um vídeo de referência de movimento e use Kling 3 Motion Control para transferir pose, gesto, timing corporal e ritmo de câmera enquanto preserva identidade e estilo do sujeito."
+  },
+  "heroDemoVideo": {
+    "type": "video",
+    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
+    "width": 16,
+    "height": 9,
+    "ariaLabel": "Quadro de exemplo do Kling 3 Motion Control",
+    "sourceHistory": "Stable Toolaze demo media selected for the English launch."
+  },
+  "modelIntro": {
+    "title": "O que é Kling 3 Motion Control?",
+    "modelName": "Kling 3 Motion Control",
+    "modelType": "Modelo de vídeo com IA",
+    "description": [
+      "Kling 3 Motion Control é um modelo de vídeo da família Kuaishou Kling que anima uma imagem estática de personagem com movimento de um vídeo de referência. A imagem fornece o sujeito a preservar, enquanto o vídeo de movimento fornece ação, timing corporal, sequência de poses e ritmo de câmera.",
+      "Use quando o movimento exato for mais importante do que uma direção apenas textual: transferência de dança, movimento de moda, gestos de apresentador, movimento de avatar, demos de produto na mão e variações para vídeo social. No Toolaze, este fluxo usa uma imagem de personagem, um vídeo de referência de movimento, orientação de personagem por Imagem ou Vídeo, e saída em 720p ou 1080p."
+    ]
+  },
+  "performanceMetrics": {
+    "title": "Resumo de capacidades do Kling 3 Motion Control",
+    "metrics": [
+      {
+        "label": "Modo de entrada",
+        "value": "Controle de movimento de imagem para vídeo"
+      },
+      {
+        "label": "Entradas necessárias",
+        "value": "1 imagem de personagem mais 1 vídeo de referência de movimento"
+      },
+      {
+        "label": "Imagem de personagem",
+        "value": "1 imagem JPEG, PNG ou JPG, máximo 10MB; a imagem deve ter mais de 300px e proporção de 2:5 a 5:2."
+      },
+      {
+        "label": "Vídeo de referência de movimento",
+        "value": "1 vídeo MP4 ou QuickTime de referência de movimento, máximo 100MB. A orientação Imagem aceita referências de 3-10 segundos; a orientação Vídeo aceita 3-30 segundos."
+      },
+      {
+        "label": "Instrução textual",
+        "value": "A instrução textual é opcional; use para preservar identidade, roupa, iluminação, enquadramento e estilo. Mantenha abaixo de 2500 caracteres."
+      },
+      {
+        "label": "Orientação do personagem",
+        "value": "Escolha Imagem para seguir a orientação da imagem de personagem, ou Vídeo para seguir a orientação do personagem no vídeo de referência."
+      },
+      {
+        "label": "Duração",
+        "value": "A duração de saída segue a duração do vídeo de referência de movimento enviado, em vez de uma duração manual fixa."
+      },
+      {
+        "label": "Fonte do controle de movimento",
+        "value": "Pose, gesto, ciclo de caminhada, movimento das mãos, timing corporal e ritmo de câmera vêm do vídeo enviado."
+      },
+      {
+        "label": "Resolução",
+        "value": "720p ou 1080p"
+      },
+      {
+        "label": "Guia de créditos",
+        "value": "Os créditos variam conforme a duração do vídeo de referência de movimento enviado; a taxa atual do Toolaze é 40 créditos por segundo de saída em 720p ou 54 créditos por segundo de saída em 1080p."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Como usar Kling 3 Motion Control no Toolaze",
+    "steps": [
+      {
+        "title": "Escolha Kling 3 Motion Control",
+        "desc": "Comece com Kling 3 Motion Control selecionado para que o gerador espere uma imagem de personagem e um vídeo de referência de movimento."
+      },
+      {
+        "title": "Envie a imagem de personagem",
+        "desc": "Use uma imagem JPEG, PNG ou JPG clara que mostre o rosto, a roupa, o formato do corpo, o produto ou o estilo que você quer preservar."
+      },
+      {
+        "title": "Adicione o vídeo de referência de movimento",
+        "desc": "Envie um clipe MP4 ou QuickTime com a pose, gesto, caminhada, dança, ação de mãos ou ritmo de câmera que você quer transferir. Escolha orientação Imagem ou Vídeo conforme a fonte que deve definir a direção do personagem."
+      },
+      {
+        "title": "Defina a qualidade e refine",
+        "desc": "Escolha 720p ou 1080p. A duração de saída e os créditos totais seguem a duração do vídeo de referência; a instrução textual opcional pode proteger identidade, roupa, iluminação, enquadramento e estilo."
+      }
+    ]
+  },
+  "scenesTitle": "O que você pode criar com Kling 3 Motion Control",
+  "scenes": [
+    {
+      "title": "Transferência de dança e pose",
+      "desc": "Aplique uma dança, caminhada, giro ou gesto de referência a uma imagem de personagem preservando identidade, roupa e proporções corporais."
+    },
+    {
+      "title": "Clipes de moda em movimento",
+      "desc": "Transforme uma roupa estática ou retrato editorial em um vídeo estilo passarela guiado por uma referência de movimento limpa."
+    },
+    {
+      "title": "Gestos de apresentador e avatar",
+      "desc": "Crie clipes frontais de explicação, saudação, reação ou perfil em que postura e timing das mãos seguem o material enviado."
+    },
+    {
+      "title": "Demos de produto na mão",
+      "desc": "Use um gesto de referência para guiar como um produto é segurado, girado, levantado ou mostrado para a câmera."
+    },
+    {
+      "title": "Shorts sociais",
+      "desc": "Rascunhe clipes verticais de personagem para Reels, TikTok, Shorts e anúncios quando você já tiver movimento para combinar."
+    },
+    {
+      "title": "Testes de movimento para storyboard",
+      "desc": "Confira se uma pose, gesto ou movimento corporal funciona antes de produzir uma campanha, cena ou vídeo de criador mais longo."
+    }
+  ],
+  "modelComparison": {
+    "title": "Kling 3 Motion Control comparado a modelos Kling próximos",
+    "subtitle": "Escolha Motion Control quando um vídeo de referência deve guiar a ação. Escolha um modelo Kling padrão quando você não tiver filmagem de movimento ou precisar de ajustes mais amplos de texto para vídeo.",
+    "featuredColumn": "baseline",
+    "columnHeaders": {
+      "metric": "Ponto de decisão",
+      "baseline": "Kling 3 Motion Control",
+      "middle": "Kling 2.6 Pro Motion Control",
+      "target": "Kling 3.0"
+    },
+    "rows": [
+      {
+        "label": "Modelo Toolaze",
+        "baseline": "Kling 3 Motion Control",
+        "middle": "Kling 2.6 Pro Motion Control",
+        "target": "Kling 3.0"
+      },
+      {
+        "label": "Modos de entrada",
+        "baseline": "Controle de movimento de imagem para vídeo com 1 imagem de personagem + 1 vídeo de referência de movimento",
+        "middle": "Controle de movimento de imagem para vídeo com 1 imagem de personagem + 1 vídeo de referência de movimento",
+        "target": "Geração de vídeo por instrução textual ou várias imagens, até 4 imagens"
+      },
+      {
+        "label": "Suporte a referência de vídeo",
+        "baseline": "Obrigatório: 1 vídeo de referência de movimento",
+        "middle": "Obrigatório: 1 vídeo de referência de movimento",
+        "target": "Não usa vídeo de referência de movimento enviado"
+      },
+      {
+        "label": "Estilo do controle de movimento",
+        "baseline": "Transferência de movimento por vídeo de referência com guia textual opcional para identidade, roupa, enquadramento e estilo",
+        "middle": "Transferência de movimento por vídeo de referência com guia textual opcional para identidade e estilo",
+        "target": "Ação do sujeito, caminho da câmera, sequência de cenas e estilo descritos por texto"
+      },
+      {
+        "label": "Duração da referência",
+        "baseline": "Orientação Imagem aceita 3-10 segundos; orientação Vídeo aceita 3-30 segundos; a saída segue o vídeo de referência",
+        "middle": "Orientação Imagem aceita 3-10 segundos; orientação Vídeo aceita 3-30 segundos; a saída segue o vídeo de referência",
+        "target": "Escolhas manuais de duração no seletor padrão do Kling 3.0"
+      },
+      {
+        "label": "Resolução",
+        "baseline": "720p ou 1080p",
+        "middle": "720p ou 1080p",
+        "target": "720p, 1080p ou 4K"
+      },
+      {
+        "label": "Guia de créditos",
+        "baseline": "40 créditos por segundo de saída em 720p ou 54 créditos por segundo de saída em 1080p",
+        "middle": "22 créditos por segundo de saída na tabela de preços atual do Toolaze",
+        "target": "Começa em 28 créditos por segundo de saída para 720p padrão"
+      },
+      {
+        "label": "Quando escolher",
+        "baseline": "Quando você quer que o modelo Kling de controle de movimento mais recente siga um vídeo de ação específico",
+        "middle": "Quando precisa de transferência de movimento com custo menor no fluxo Kling 2.6 Motion Control",
+        "target": "Quando quer geração mais ampla por texto, mais referências de imagem, 4K ou planejamento de cena mais longo"
+      }
+    ]
+  },
+  "competitorComparison": {
+    "title": "Quando escolher Kling Motion Control, Wan ou Seedance",
+    "subtitle": "Escolha o modelo pelo material que você já tem: filmagem de referência de movimento, uma ideia cinematográfica ou um rascunho visual polido.",
+    "featuredColumn": "baseline",
+    "columnHeaders": {
+      "metric": "Ponto de decisão",
+      "baseline": "Kling 3 Motion Control",
+      "middle": "Wan 2.7",
+      "target": "Seedance 2.5"
+    },
+    "rows": [
+      {
+        "label": "Boa opção para",
+        "baseline": "Transferência de movimento de uma imagem de personagem e um vídeo de referência de movimento",
+        "middle": "Clipes cinematográficos curtos a partir de texto, imagem ou instruções guiadas por referência",
+        "target": "Rascunhos de vídeo com alto detalhe, bom acabamento visual e continuidade de cena"
+      },
+      {
+        "label": "O que verificar primeiro",
+        "baseline": "Se o vídeo de movimento está limpo, visível, dentro da duração aceita e próximo ao enquadramento do personagem",
+        "middle": "Se sua ideia precisa de direção no estilo Wan com texto, imagem ou referência de vídeo em vez de transferência corporal exata",
+        "target": "Se a configuração Seedance escolhida aceita seu tipo de entrada, duração e meta de qualidade"
+      },
+      {
+        "label": "Estilo da instrução textual",
+        "baseline": "Preservar identidade, roupa, proporções, iluminação, enquadramento de câmera e estilo enquanto segue o movimento de referência",
+        "middle": "Configuração de cena, ritmo de tomada, direção de movimento, movimento de câmera e ajuste de saída",
+        "target": "Sujeito, estilo, mudança de cena, iluminação, ritmo e sinais de qualidade"
+      },
+      {
+        "label": "Guia por referência",
+        "baseline": "Uma imagem fornece o sujeito; um vídeo fornece o movimento",
+        "middle": "Mídias de referência podem guiar a cena, mas o movimento não é copiado tão diretamente quanto em um vídeo condutor",
+        "target": "O suporte a referências depende da configuração Seedance selecionada e da disponibilidade"
+      },
+      {
+        "label": "Quando escolher outro modelo",
+        "baseline": "Escolha outro modelo de vídeo quando não tiver um vídeo de referência de movimento",
+        "middle": "Escolha Motion Control quando pose, gesto ou transferência de dança exatos forem o mais importante",
+        "target": "Escolha Motion Control quando combinar um vídeo de ação específico for mais importante do que apenas o acabamento visual"
+      }
+    ]
+  },
+  "faqTitle": "Perguntas frequentes sobre Kling 3 Motion Control",
+  "faq": [
+    {
+      "q": "O que é Kling 3 Motion Control no Toolaze?",
+      "a": "É um fluxo de imagem para vídeo que aplica movimento de um vídeo de referência a uma imagem de personagem enviada, preservando identidade, roupa, enquadramento e estilo visual."
+    },
+    {
+      "q": "Posso criar apenas com uma instrução textual?",
+      "a": "Não. Kling 3 Motion Control exige uma imagem de personagem e um vídeo de referência de movimento. Escolha um modelo de vídeo padrão se você não tiver filmagem de movimento."
+    },
+    {
+      "q": "A instrução textual é obrigatória no Motion Control?",
+      "a": "Não. A imagem de personagem e o vídeo de referência de movimento são obrigatórios; a instrução textual é opcional e ajuda a preservar identidade, roupa, iluminação, enquadramento e estilo."
+    },
+    {
+      "q": "Quantos arquivos de referência posso usar?",
+      "a": "Toolaze aceita uma imagem de personagem e um vídeo de referência de movimento neste fluxo. A imagem pode ser JPEG, PNG ou JPG até 10MB; o vídeo de movimento pode ser MP4 ou QuickTime até 100MB."
+    },
+    {
+      "q": "Qual pode ser a duração do vídeo de referência de movimento?",
+      "a": "A orientação Imagem aceita vídeos de referência de 3-10 segundos. A orientação Vídeo aceita vídeos de referência de 3-30 segundos. A duração gerada segue a duração do vídeo de referência enviado."
+    },
+    {
+      "q": "O que significa orientação do personagem?",
+      "a": "A orientação Imagem combina com a direção do personagem na imagem enviada. A orientação Vídeo segue a direção do personagem no vídeo de referência de movimento enviado."
+    },
+    {
+      "q": "Qual resolução posso escolher?",
+      "a": "Kling 3 Motion Control no Toolaze aceita opções de saída em 720p e 1080p."
+    },
+    {
+      "q": "Quantos créditos ele usa?",
+      "a": "Os créditos variam conforme a duração do vídeo de referência enviado. A taxa atual do Toolaze é 40 créditos por segundo de saída em 720p ou 54 créditos por segundo de saída em 1080p."
+    },
+    {
+      "q": "Kling 3 Motion Control é gratuito?",
+      "a": "A geração de vídeo usa créditos Toolaze. Créditos iniciais, configurações disponíveis, duração do vídeo de referência e custo final podem variar conforme a cota da conta e a resolução escolhida."
+    },
+    {
+      "q": "Qual é a diferença entre Kling 3 Motion Control e Kling 2.6 Motion Control?",
+      "a": "Ambos usam uma imagem de personagem e um vídeo de referência de movimento. Kling 3 Motion Control usa o modelo Kling 3 Motion Control mais novo, enquanto Kling 2.6 Motion Control continua sendo uma opção próxima de menor custo no Toolaze."
+    },
+    {
+      "q": "Devo escolher Motion Control ou Kling 3.0 padrão?",
+      "a": "Escolha Motion Control quando tiver um vídeo de referência de movimento e precisar que uma imagem de personagem o siga. Escolha Kling 3.0 padrão para geração mais ampla por texto, mais referências de imagem, 4K ou planejamento de cenas mais longo."
+    },
+    {
+      "q": "Como escrevo uma instrução textual opcional mais forte?",
+      "a": "Mantenha curta e protetiva: preservar identidade, roupa, proporções corporais, iluminação, enquadramento de câmera e estilo enquanto segue a referência de movimento enviada. Remova mudanças de cena extras que competem com o vídeo."
+    }
+  ],
+  "moreTools": "Mais modelos de vídeo com IA",
+  "testimonials": {
+    "title": "Comentários de criadores sobre testes Kling Motion Control",
+    "reviewSafe": true,
+    "showStars": false,
+    "items": [
+      {
+        "name": "Maya Chen",
+        "role": "Rascunho de movimento de moda",
+        "quote": "A configuração com imagem e vídeo torna mais fácil testar movimento de passarela do que escrever movimento corporal do zero. Referências limpas de corpo inteiro me deram os rascunhos mais úteis."
+      },
+      {
+        "name": "Jordan Lee",
+        "role": "Planejamento de vídeo de produto",
+        "quote": "Usei uma referência de movimento de mão para planejar como um pequeno dispositivo deveria girar no quadro. Manter a instrução focada em forma, clareza do logotipo e iluminação deixou o rascunho mais fácil de revisar."
+      },
+      {
+        "name": "Nina Patel",
+        "role": "Teste de gesto de avatar",
+        "quote": "Para clipes de apresentador, combinar o corte entre o retrato e o vídeo de movimento importou mais do que adicionar uma instrução de estilo longa. O gesto ficou mais claro quando a referência era simples."
+      }
+    ]
+  }
+}

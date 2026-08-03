@@ -923,6 +923,84 @@ test('AI video generator prices and sends Kling 3.0 Native Audio requests', asyn
   }
 })
 
+test('AI video generator creates a Kie Kling 3 Motion Control task with a motion reference video', async () => {
+  const calls: FetchCall[] = []
+  const originalFetch = globalThis.fetch
+  globalThis.fetch = (async (url: RequestInfo | URL, init?: RequestInit) => {
+    calls.push({ url: String(url), init })
+    return new Response(JSON.stringify({ code: 200, data: { taskId: 'kling_motion_task' } }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    })
+  }) as typeof fetch
+
+  try {
+    const response = await createVideoTask({
+      request: createFormRequest({
+        mode: 'image-to-video',
+        model: 'kling-3-motion-control',
+        prompt: 'Make the character follow the uploaded motion reference while preserving identity and outfit.',
+        imageUrls: JSON.stringify(['https://cdn.example.com/character.png']),
+        videoUrls: JSON.stringify(['https://cdn.example.com/motion.mp4']),
+        aspectRatio: '16:9',
+        resolution: '720p',
+        duration: '5',
+      }),
+      env: { KIE_AI_API_KEY: 'test-key' },
+    })
+
+    assert.equal(response.status, 200)
+    assert.deepEqual(await readJson(response), {
+      taskId: 'kling_motion_task',
+      requiredCredits: 200,
+    })
+    assert.equal(calls.length, 1)
+
+    const payload = JSON.parse(String(calls[0].init?.body))
+    assert.equal(payload.model, 'kling-3.0/motion-control')
+    assert.deepEqual(payload.input, {
+      prompt: 'Make the character follow the uploaded motion reference while preserving identity and outfit.',
+      input_urls: ['https://cdn.example.com/character.png'],
+      video_urls: ['https://cdn.example.com/motion.mp4'],
+      character_orientation: 'image',
+      background_source: 'input_video',
+      mode: '720p',
+    })
+  } finally {
+    globalThis.fetch = originalFetch
+  }
+})
+
+test('AI video generator rejects Kling 3 Motion Control without a motion reference video', async () => {
+  let providerCalled = false
+  const originalFetch = globalThis.fetch
+  globalThis.fetch = (async () => {
+    providerCalled = true
+    return new Response(JSON.stringify({ code: 200, data: { taskId: 'unexpected' } }))
+  }) as typeof fetch
+
+  try {
+    const response = await createVideoTask({
+      request: createFormRequest({
+        mode: 'image-to-video',
+        model: 'kling-3-motion-control',
+        prompt: 'Make the character follow a reference motion.',
+        imageUrls: JSON.stringify(['https://cdn.example.com/character.png']),
+        aspectRatio: '16:9',
+        resolution: '720p',
+        duration: '5',
+      }),
+      env: { KIE_AI_API_KEY: 'test-key' },
+    })
+
+    assert.equal(response.status, 400)
+    assert.equal((await readJson(response)).error, 'Kling 3 Motion Control requires one motion reference video URL')
+    assert.equal(providerCalled, false)
+  } finally {
+    globalThis.fetch = originalFetch
+  }
+})
+
 test('AI video generator rejects Kling 3.0 Native Audio for 4K', async () => {
   const originalFetch = globalThis.fetch
   let providerCalled = false

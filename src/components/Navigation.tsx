@@ -81,6 +81,7 @@ const defaultNavTranslations = {
   wan27Video: 'Wan 2.7 Video',
   wan26Video: 'Wan 2.6 Video',
   wan25Video: 'Wan 2.5 Video',
+  kling3MotionControl: 'Kling 3 Motion Control',
   pricing: 'Pricing',
   nanoBananaPro: 'Nano Banana Pro',
   nanoBanana2: 'Nano Banana 2',
@@ -91,6 +92,7 @@ const defaultNavTranslations = {
   seedream50Pro: 'Seedream 5.0 Pro',
   seedance25: 'Seedance 2.5',
   seedance2: 'Seedance 2.0',
+  seedance2Mini: 'Seedance 2.0 Mini',
   kling3: 'Kling 3.0',
   kling26MotionControl: 'Kling 2.6 Motion',
   promptLibrary: 'Prompts',
@@ -289,7 +291,9 @@ type AiVideoNavLabelKey =
   | 'wan25Video'
   | 'seedance25'
   | 'seedance2'
+  | 'seedance2Mini'
   | 'kling3'
+  | 'kling3MotionControl'
   | 'kling26MotionControl'
   | 'klingAiVideoGenerator'
   | 'grok15Video'
@@ -304,7 +308,7 @@ type AiVideoModelMenuItem = {
   href: string
   labelKey: AiVideoNavLabelKey
   logoSrc: string
-  badgeKey?: 'hot' | 'bestValue'
+  badgeKey?: 'hot' | 'new' | 'bestValue'
 }
 
 const AI_VIDEO_FUNCTION_MENU_ITEMS: readonly AiVideoFunctionMenuItem[] = [
@@ -314,10 +318,11 @@ const AI_VIDEO_FUNCTION_MENU_ITEMS: readonly AiVideoFunctionMenuItem[] = [
 ]
 
 const AI_VIDEO_MODEL_MENU_ITEMS: readonly AiVideoModelMenuItem[] = [
-  { href: '/model/seedance-2-5', labelKey: 'seedance25', logoSrc: '/model-logos/bytedance.svg' },
+  { href: '/ai-video-generator?model=seedance-2-mini', labelKey: 'seedance2Mini', logoSrc: '/model-logos/bytedance.svg', badgeKey: 'new' },
   { href: '/model/seedance-2', labelKey: 'seedance2', logoSrc: '/model-logos/bytedance.svg', badgeKey: 'hot' },
+  { href: '/model/kling-3-motion-control', labelKey: 'kling3MotionControl', logoSrc: '/model-logos/kling.svg' },
   { href: '/model/kling-3', labelKey: 'kling3', logoSrc: '/model-logos/kling.svg' },
-  { href: '/model/kling-2-6-pro-motion-control', labelKey: 'kling26MotionControl', logoSrc: '/model-logos/kling.svg' },
+  { href: '/model/kling-2-6-pro-motion-control', labelKey: 'kling26MotionControl', logoSrc: '/model-logos/kling.svg', badgeKey: 'hot' },
   { href: '/model/wan-2-7-ai-video-generator', labelKey: 'wan27Video', logoSrc: '/model-logos/wan.ico' },
   { href: '/model/wan-2-6-ai-video-generator', labelKey: 'wan26Video', logoSrc: '/model-logos/wan.ico' },
   { href: '/model/wan-2-5-ai-video-generator', labelKey: 'wan25Video', logoSrc: '/model-logos/wan.ico' },
@@ -868,7 +873,13 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
 
   const getLocalizedHref = (href: string): string => {
     if (href.startsWith('http')) return href
-    return getPreferredLocalizedUrl(href, navEffectiveLocale)
+    const hashIndex = href.indexOf('#')
+    const hrefWithoutHash = hashIndex >= 0 ? href.slice(0, hashIndex) : href
+    const hash = hashIndex >= 0 ? href.slice(hashIndex) : ''
+    const queryIndex = hrefWithoutHash.indexOf('?')
+    const path = queryIndex >= 0 ? hrefWithoutHash.slice(0, queryIndex) : hrefWithoutHash
+    const query = queryIndex >= 0 ? hrefWithoutHash.slice(queryIndex) : ''
+    return `${getPreferredLocalizedUrl(path, navEffectiveLocale)}${query}${hash}`
   }
 
   const getAiToolLabel = (item: AiToolMenuItem): string => (
@@ -1061,6 +1072,8 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
     const badgeLabel =
       item.badgeKey === 'hot'
         ? (navTranslations.hot || defaultNavTranslations.hot)
+        : item.badgeKey === 'new'
+          ? (navTranslations.new || defaultNavTranslations.new)
         : item.badgeKey === 'bestValue'
           ? (navTranslations.bestValue || defaultNavTranslations.bestValue)
           : ''
@@ -1839,22 +1852,6 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
       key: 'prompt-models',
       items: [
         {
-          title: navTranslations.wan27Video || defaultNavTranslations.wan27Video,
-          href: getLocalizedHref('/model/wan-2-7-ai-video-generator'),
-        },
-        {
-          title: navTranslations.wan26Video || defaultNavTranslations.wan26Video,
-          href: getLocalizedHref('/model/wan-2-6-ai-video-generator'),
-        },
-        {
-          title: navTranslations.wan25Video || defaultNavTranslations.wan25Video,
-          href: getLocalizedHref('/model/wan-2-5-ai-video-generator'),
-        },
-        {
-          title: navTranslations.seedance25 || defaultNavTranslations.seedance25,
-          href: getLocalizedHref('/model/seedance-2-5'),
-        },
-        {
           title: navTranslations.gptImage2 || defaultNavTranslations.gptImage2,
           href: getLocalizedHref('/prompts/models/gpt-image-2'),
         },
@@ -1865,10 +1862,6 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
         {
           title: navTranslations.kling || defaultNavTranslations.kling,
           href: getLocalizedHref('/prompts/models/kling'),
-        },
-        {
-          title: navTranslations.kling26MotionControl || defaultNavTranslations.kling26MotionControl,
-          href: getLocalizedHref('/model/kling-2-6-pro-motion-control'),
         },
         {
           title: navTranslations.nanoBanana || defaultNavTranslations.nanoBanana,
@@ -1987,18 +1980,6 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
             </button>
             <div className={'absolute top-full left-0 mt-2 w-auto min-w-[220px] max-w-[320px] bg-white rounded-xl shadow-lg border border-indigo-50 transition-all duration-200 z-50 overflow-visible ' + (openDesktopMenu === 'prompts' ? 'opacity-100 visible' : 'opacity-0 invisible group-hover:opacity-100 group-hover:visible')}>
               <div className="py-2">
-                <Link
-                  href={getLocalizedHref('/ai-asmr-video-generator')}
-                  onClick={() => setOpenDesktopMenu(null)}
-                  className="flex items-center gap-3 px-4 py-2 text-sm text-slate-700 transition-colors hover:bg-indigo-50 hover:text-indigo-600"
-                >
-                  <img
-                    src={AI_TOOLS_DEMO_IMAGES.aiAsmrVideoGenerator}
-                    alt="AI ASMR Video Generator"
-                    className="w-14 aspect-[4/3] rounded-lg object-cover border border-indigo-100 flex-shrink-0"
-                  />
-                  <span>AI ASMR Video Generator</span>
-                </Link>
                 <Link
                   href={getLocalizedHref('/prompts')}
                   onClick={() => setOpenDesktopMenu(null)}

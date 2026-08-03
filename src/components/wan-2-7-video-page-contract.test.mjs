@@ -263,7 +263,7 @@ test('Wan 2.7 public entry points are wired into navigation, footer, hubs, sitem
   const languageSwitch = readFileSync(join(root, 'src', 'lib', 'site-language-switch.ts'), 'utf8')
   const seoLoader = readFileSync(join(root, 'src', 'lib', 'seo-loader.ts'), 'utf8')
 
-  assert.equal(countOccurrences(navigation, `/model/${slug}`), 2, 'Navigation should include the video model menu and Prompts model links')
+  assert.equal(countOccurrences(navigation, `/model/${slug}`), 1, 'Navigation should include the AI Video model menu')
   assert.equal(countOccurrences(footer, `/model/${slug}`), 1, 'Footer should include the video model link once')
   assert.match(aiToolsCopy, new RegExp(`href:\\s*['"]/model/${slug}['"]`))
   assert.match(aiToolsCopy, new RegExp(`wan27Video:[\\s\\S]*['"]${wan27DemoPoster.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}['"]`))

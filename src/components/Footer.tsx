@@ -42,6 +42,7 @@ const defaultTranslations = {
   wan27Video: 'Wan 2.7 Video',
   wan26Video: 'Wan 2.6 Video',
   wan25Video: 'Wan 2.5 Video',
+  kling3MotionControl: 'Kling 3 Motion Control',
   aiImage: 'AI Image',
   aiVideo: 'AI Video',
   aiImageGenerator: 'AI Image Generator',
@@ -404,6 +405,14 @@ export default function Footer({ initialTranslations }: FooterProps = {}) {
               {translations.aiVideoModel || 'AI Video Model'}
             </Link>
             <ul className="space-y-2 mt-4">
+              <li>
+                <Link
+                  href={getLocalizedHref('/model/kling-3-motion-control')}
+                  className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
+                >
+                  {translations.kling3MotionControl || 'Kling 3 Motion Control'}
+                </Link>
+              </li>
               <li>
                 <Link
                   href={getLocalizedHref('/model/wan-2-7-ai-video-generator')}

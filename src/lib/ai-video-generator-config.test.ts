@@ -78,6 +78,7 @@ test('AI video generator exposes all configured video model variants', () => {
       'wan-2-2',
       'kling-3-turbo',
       'kling-3',
+      'kling-3-motion-control',
       'kling-2-6-motion-control',
       'kling-2-6',
       'kling-2-5',
@@ -118,7 +119,7 @@ test('AI video generator exposes a two-level visible model menu for every video 
         id: 'kling',
         logoSrc: '/model-logos/kling.svg',
         logoAlt: 'Kling logo',
-        modelIds: ['kling-3-turbo', 'kling-3', 'kling-2-6-motion-control', 'kling-2-6', 'kling-2-5', 'kling-2-1'],
+        modelIds: ['kling-3-turbo', 'kling-3', 'kling-3-motion-control', 'kling-2-6-motion-control', 'kling-2-6', 'kling-2-5', 'kling-2-1'],
       },
       {
         id: 'veo',
@@ -140,6 +141,35 @@ test('AI video generator exposes a two-level visible model menu for every video 
       },
     ]
   )
+})
+
+test('Kling 3 Motion Control follows reference-video motion-control constraints', () => {
+  const model = getAiVideoGeneratorModelConfig('kling-3-motion-control')
+
+  assert.equal(model.name, 'Kling 3 Motion Control')
+  assert.equal(model.defaultMode, 'image-to-video')
+  assert.deepEqual(model.supportedModes, ['image-to-video'])
+  assert.equal(model.maxImages, 1)
+  assert.equal(model.maxVideos, 1)
+  assert.equal(model.maxVideoFileSizeMb, 100)
+  assert.equal(model.supportsMotionReferenceVideo, true)
+  assert.equal(model.promptRequired, false)
+  assert.equal(model.durationMode, 'reference-video')
+  assert.equal(model.referenceVideoMinDurationSeconds, 3)
+  assert.equal(model.referenceVideoMaxDurationSeconds, 30)
+  assert.deepEqual(model.acceptedImageMimeTypes, ['image/jpeg', 'image/png'])
+  assert.deepEqual(model.acceptedImageExtensions, ['jpg', 'jpeg', 'png'])
+  assert.deepEqual(model.acceptedImageFormats, ['JPG', 'PNG'])
+  assert.equal(model.referenceImageMinDimensionPx, 300)
+  assert.equal(model.referenceImageAspectRatioMin, 2 / 5)
+  assert.equal(model.referenceImageAspectRatioMax, 5 / 2)
+  assert.match(model.referenceImageHelperText || '', /JPG or PNG up to \{size\}MB/)
+  assert.match(model.invalidImageDimensionsMessage || '', /over 300px/)
+  assert.match(model.invalidImageDimensionsMessage || '', /2:5 to 5:2/)
+  assert.deepEqual(model.acceptedMotionVideoFormats, ['MP4', 'QuickTime'])
+  assert.deepEqual(model.resolutions, ['720p', '1080p'])
+  assert.deepEqual(model.durations, Array.from({ length: 28 }, (_, index) => index + 3))
+  assert.equal(model.defaultDuration, 3)
 })
 
 test('PixVerse and HappyHorse expose only text-to-video and image-to-video settings', () => {
@@ -314,6 +344,7 @@ test('AI video generator model menu minimum credits match shared pricing', () =>
     ['wan-2-2', 16],
     ['kling-3-turbo', 180],
     ['kling-3', 84],
+    ['kling-3-motion-control', 120],
     ['kling-2-6-motion-control', 66],
     ['kling-2-6', 110],
     ['kling-2-5', 85],

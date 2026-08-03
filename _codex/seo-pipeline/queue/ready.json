@@ -95,6 +95,12 @@
       "slug": "kling-2-6-pro-motion-control",
       "pageType": "l2",
       "status": "ready_for_publish"
+    },
+    {
+      "taskId": "2026-08-02-kling-3-motion-control",
+      "slug": "kling-3-motion-control",
+      "pageType": "l2",
+      "status": "ready_for_publish"
     }
   ]
 }

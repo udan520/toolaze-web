@@ -220,6 +220,7 @@ test('top navigation common copy includes every visible model and AI tool menu k
     'seedream50Lite',
     'seedream50Pro',
     'seedance25',
+    'seedance2Mini',
   ]
   const keysThatMustTranslate = [
     'aiBabyGenerator',

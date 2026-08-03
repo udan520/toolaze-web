@@ -45,6 +45,14 @@
     "h1": "<span class=\"text-gradient\">Seedance 2.5</span> AI動画生成",
     "desc": "より長く一貫したAI動画を、豊かな参照制御、安定したシーン一貫性、実制作向けワークフローで作成します。"
   },
+  "heroDemoVideo": {
+    "type": "video",
+    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d0d55df5eef346809067197fddb1b251.png",
+    "ariaLabel": "Seedance 2.5 AI動画生成の16:9デモプレビュー",
+    "width": 16,
+    "height": 9,
+    "sourceHistory": "Seedance 2.x demo video · 16:9 · R2"
+  },
   "launchUpdates": {
     "eyebrow": "リリース更新",
     "title": "Seedance 2.5の更新通知を受け取る",

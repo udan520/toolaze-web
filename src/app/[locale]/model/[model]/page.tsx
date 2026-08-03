@@ -33,6 +33,7 @@ const MODEL_TOOL_MAP: Record<string, string> = {
   'seedance-2-5': 'seedance-2-5',
   'seedance-2': 'seedance-2',
   'kling-3': 'kling-3',
+  'kling-3-motion-control': 'kling-3-motion-control',
   'kling-2-6-pro-motion-control': 'kling-2-6-pro-motion-control',
   'grok-imagine-video-1-5': 'grok-imagine-video-1-5',
 }

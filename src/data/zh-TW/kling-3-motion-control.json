@@ -1,0 +1,318 @@
+{
+  "in_menu": false,
+  "seoFactoryTaskId": "2026-08-02-kling-3-motion-control",
+  "pageGroup": "model",
+  "topComponent": "kling-3-motion-control",
+  "topTool": {
+    "defaultMode": "image-to-video",
+    "displayName": "Kling 3 Motion Control",
+    "modelId": "kling-3-motion-control"
+  },
+  "metadata": {
+    "title": "Kling 3 Motion Control AI 影片生成器 | Toolaze",
+    "description": "用一張角色圖片和一段動作參考影片建立 Kling 3 Motion Control 影片。以 720p 或 1080p 轉移姿勢、手勢、鏡頭節奏與風格。",
+    "published": true
+  },
+  "sectionsOrder": [
+    "modelIntro",
+    "performanceMetrics",
+    "howToUse",
+    "scenes",
+    "modelComparison",
+    "competitorComparison",
+    "testimonials",
+    "faq"
+  ],
+  "hero": {
+    "h1": "<span class=\"text-gradient\">Kling 3 Motion Control</span> AI 影片生成器",
+    "desc": "上傳角色圖片，加入一段動作參考影片，使用 Kling 3 Motion Control 轉移姿勢、手勢、身體節奏與鏡頭律動，同時保留主體的身份與風格。"
+  },
+  "heroDemoVideo": {
+    "type": "video",
+    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
+    "width": 16,
+    "height": 9,
+    "ariaLabel": "Kling 3 Motion Control 範例畫面",
+    "sourceHistory": "Stable Toolaze demo media selected for the English launch."
+  },
+  "modelIntro": {
+    "title": "什麼是 Kling 3 Motion Control？",
+    "modelName": "Kling 3 Motion Control",
+    "modelType": "AI 影片模型",
+    "description": [
+      "Kling 3 Motion Control 是 Kuaishou Kling 系列的影片模型，可用參考影片的動作驅動一張靜態角色圖片。圖片提供需要保留的主體，動作參考影片則提供動作、身體節奏、姿勢序列與鏡頭律動。",
+      "當精準動作比單純文字描述更重要時使用它：舞蹈轉移、時裝動態、主持人手勢、虛擬角色動作、手持產品展示，以及社群短片變體。在 Toolaze 上，這個流程使用一張角色圖片、一段動作參考影片，可選圖片或影片角色方向，並支援 720p 或 1080p 輸出。"
+    ]
+  },
+  "performanceMetrics": {
+    "title": "Kling 3 Motion Control 功能快照",
+    "metrics": [
+      {
+        "label": "輸入模式",
+        "value": "圖片轉影片動作控制"
+      },
+      {
+        "label": "必要輸入",
+        "value": "1 張角色圖片加 1 段動作參考影片"
+      },
+      {
+        "label": "角色圖片",
+        "value": "1 張 JPEG、PNG 或 JPG 圖片，最大 10MB；圖片尺寸必須大於 300px，長寬比需介於 2:5 到 5:2。"
+      },
+      {
+        "label": "動作參考影片",
+        "value": "1 段 MP4 或 QuickTime 動作參考影片，最大 100MB。圖片方向支援 3-10 秒參考；影片方向支援 3-30 秒。"
+      },
+      {
+        "label": "文字提示",
+        "value": "文字提示為選填；可用來保留身份、服裝、光線、構圖與風格。請控制在 2500 字元以內。"
+      },
+      {
+        "label": "角色方向",
+        "value": "選擇圖片可依角色圖片方向匹配；選擇影片可依參考影片中的角色方向匹配。"
+      },
+      {
+        "label": "時長",
+        "value": "輸出時長會依上傳的動作參考影片長度，而不是固定手動時長。"
+      },
+      {
+        "label": "動作控制來源",
+        "value": "姿勢、手勢、走路循環、手部動作、身體節奏與鏡頭律動都來自上傳影片。"
+      },
+      {
+        "label": "解析度",
+        "value": "720p 或 1080p"
+      },
+      {
+        "label": "積分說明",
+        "value": "積分會隨上傳的動作參考影片長度計算；目前 Toolaze 費率為 720p 每輸出秒 40 積分，1080p 每輸出秒 54 積分。"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "如何在 Toolaze 使用 Kling 3 Motion Control",
+    "steps": [
+      {
+        "title": "選擇 Kling 3 Motion Control",
+        "desc": "先選中 Kling 3 Motion Control，讓生成器同時要求角色圖片與動作參考影片。"
+      },
+      {
+        "title": "上傳角色圖片",
+        "desc": "使用一張清楚的 JPEG、PNG 或 JPG 圖片，呈現你想保留的臉部、服裝、身形、產品或風格。"
+      },
+      {
+        "title": "加入動作參考影片",
+        "desc": "上傳一段 MP4 或 QuickTime 片段，包含你想轉移的姿勢、手勢、走路、舞蹈、手部動作或鏡頭律動。依照要由哪個素材決定角色方向，選擇圖片或影片方向。"
+      },
+      {
+        "title": "設定品質並微調",
+        "desc": "選擇 720p 或 1080p。輸出時長和總積分會依參考影片長度計算，選填文字提示可保護身份、服裝、光線、構圖與風格。"
+      }
+    ]
+  },
+  "scenesTitle": "你可以用 Kling 3 Motion Control 建立什麼",
+  "scenes": [
+    {
+      "title": "舞蹈與姿勢轉移",
+      "desc": "將參考舞蹈、走路、轉身或手勢套用到角色圖片，同時保留身份、服裝與身體比例。"
+    },
+    {
+      "title": "時裝動態短片",
+      "desc": "把靜態穿搭或編輯肖像轉成由乾淨動作參考引導的伸展台風格影片。"
+    },
+    {
+      "title": "主持人與虛擬角色手勢",
+      "desc": "建立正面說明、問候、反應或個人簡介短片，讓姿態與手部節奏跟隨提供的影片。"
+    },
+    {
+      "title": "手持產品展示",
+      "desc": "使用參考手勢引導產品被握持、旋轉、舉起或展示給鏡頭的方式。"
+    },
+    {
+      "title": "社群短片",
+      "desc": "當你已有要匹配的動作素材時，可草擬 Reels、TikTok、Shorts 與廣告用的直式角色短片。"
+    },
+    {
+      "title": "分鏡動作測試",
+      "desc": "在製作更長的行銷影片、場景或創作者影片前，檢查姿勢、手勢或身體動作是否可行。"
+    }
+  ],
+  "modelComparison": {
+    "title": "Kling 3 Motion Control 與相近 Kling 模型比較",
+    "subtitle": "當參考影片需要驅動動作時，選擇 Motion Control。若沒有動作素材，或需要更廣泛的文字轉影片設定，請選擇標準 Kling 模型。",
+    "featuredColumn": "baseline",
+    "columnHeaders": {
+      "metric": "決策點",
+      "baseline": "Kling 3 Motion Control",
+      "middle": "Kling 2.6 Pro Motion Control",
+      "target": "Kling 3.0"
+    },
+    "rows": [
+      {
+        "label": "Toolaze 模型",
+        "baseline": "Kling 3 Motion Control",
+        "middle": "Kling 2.6 Pro Motion Control",
+        "target": "Kling 3.0"
+      },
+      {
+        "label": "輸入模式",
+        "baseline": "1 張角色圖片 + 1 段動作參考影片的圖片轉影片動作控制",
+        "middle": "1 張角色圖片 + 1 段動作參考影片的圖片轉影片動作控制",
+        "target": "文字提示或多圖片影片生成，最多 4 張圖片"
+      },
+      {
+        "label": "影片參考支援",
+        "baseline": "必要：1 段動作參考影片",
+        "middle": "必要：1 段動作參考影片",
+        "target": "不使用上傳的動作參考影片"
+      },
+      {
+        "label": "動作控制方式",
+        "baseline": "以參考影片轉移動作，並可用選填文字提示保護身份、服裝、構圖與風格",
+        "middle": "以參考影片轉移動作，並可用選填文字提示保護身份與風格",
+        "target": "用文字描述主體動作、鏡頭路徑、鏡頭順序與場景風格"
+      },
+      {
+        "label": "參考時長",
+        "baseline": "圖片方向支援 3-10 秒；影片方向支援 3-30 秒；輸出時長跟隨參考影片",
+        "middle": "圖片方向支援 3-10 秒；影片方向支援 3-30 秒；輸出時長跟隨參考影片",
+        "target": "在標準 Kling 3.0 選擇器中手動選擇時長"
+      },
+      {
+        "label": "解析度",
+        "baseline": "720p 或 1080p",
+        "middle": "720p 或 1080p",
+        "target": "720p、1080p 或 4K"
+      },
+      {
+        "label": "積分說明",
+        "baseline": "720p 每輸出秒 40 積分，或 1080p 每輸出秒 54 積分",
+        "middle": "目前 Toolaze 定價表為每輸出秒 22 積分",
+        "target": "標準 720p 每輸出秒 28 積分起"
+      },
+      {
+        "label": "何時選擇",
+        "baseline": "想用較新的 Kling 動作控制模型跟隨特定動作影片時",
+        "middle": "需要以較低成本使用 Kling 2.6 Motion Control 流程做動作轉移時",
+        "target": "需要更廣泛的文字驅動生成、更多圖片參考、4K 或更長場景規劃時"
+      }
+    ]
+  },
+  "competitorComparison": {
+    "title": "何時選擇 Kling Motion Control、Wan 或 Seedance",
+    "subtitle": "依你已有的輸入素材選模型：動作參考影片、電影感文字構想，或精修的視覺草稿。",
+    "featuredColumn": "baseline",
+    "columnHeaders": {
+      "metric": "決策點",
+      "baseline": "Kling 3 Motion Control",
+      "middle": "Wan 2.7",
+      "target": "Seedance 2.5"
+    },
+    "rows": [
+      {
+        "label": "適合用途",
+        "baseline": "從一張角色圖片與一段動作參考影片做動作轉移",
+        "middle": "用文字、圖片或參考引導提示建立短篇電影感片段",
+        "target": "建立細節豐富、視覺完成度高且場景連續性強的影片草稿"
+      },
+      {
+        "label": "先檢查什麼",
+        "baseline": "你的動作影片是否乾淨、可見、在允許時長內，且接近角色構圖",
+        "middle": "你的想法是否需要 Wan 風格的文字、圖片或影片參考引導，而不是精準身體動作轉移",
+        "target": "所選 Seedance 設定是否支援你的輸入類型、時長與品質目標"
+      },
+      {
+        "label": "文字提示風格",
+        "baseline": "在跟隨參考動作時，保留身份、服裝、比例、光線、鏡頭構圖與風格",
+        "middle": "場景設定、鏡頭節奏、動作方向、鏡頭運動與輸出設定",
+        "target": "主體、風格、場景變化、光線、節奏與品質線索"
+      },
+      {
+        "label": "參考引導",
+        "baseline": "一張圖片提供主體；一段影片提供動作",
+        "middle": "參考媒體可以引導場景，但動作不會像驅動影片那樣直接複製",
+        "target": "參考支援取決於所選 Seedance 設定與可用性"
+      },
+      {
+        "label": "何時選其他模型",
+        "baseline": "如果沒有動作參考影片，請選擇其他影片模型",
+        "middle": "當精準姿勢、手勢或舞蹈轉移最重要時，選擇 Motion Control",
+        "target": "當匹配特定動作影片比單純視覺精修更重要時，選擇 Motion Control"
+      }
+    ]
+  },
+  "faqTitle": "Kling 3 Motion Control 常見問題",
+  "faq": [
+    {
+      "q": "Toolaze 上的 Kling 3 Motion Control 是什麼？",
+      "a": "它是圖片轉影片生成流程，可將一段參考影片的動作套用到上傳的角色圖片，同時保留身份、服裝、構圖與視覺風格。"
+    },
+    {
+      "q": "我可以只用文字提示生成嗎？",
+      "a": "不可以。Kling 3 Motion Control 需要角色圖片和動作參考影片。若沒有動作素材，請選擇標準影片模型。"
+    },
+    {
+      "q": "Motion Control 一定需要文字提示嗎？",
+      "a": "不需要。角色圖片和動作參考影片是必要輸入；文字提示為選填，可用來保留身份、服裝、光線、構圖與風格。"
+    },
+    {
+      "q": "我可以使用幾個參考檔案？",
+      "a": "Toolaze 在這個流程支援一張角色圖片與一段動作參考影片。圖片可為 JPEG、PNG 或 JPG，最大 10MB；動作影片可為 MP4 或 QuickTime，最大 100MB。"
+    },
+    {
+      "q": "動作參考影片可以多長？",
+      "a": "圖片方向支援 3-10 秒參考影片。影片方向支援 3-30 秒參考影片。生成輸出時長會跟隨上傳的參考影片長度。"
+    },
+    {
+      "q": "角色方向是什麼意思？",
+      "a": "圖片方向會匹配上傳圖片中的角色方向。影片方向會跟隨上傳動作參考影片中的角色方向。"
+    },
+    {
+      "q": "我可以選擇什麼解析度？",
+      "a": "Toolaze 上的 Kling 3 Motion Control 支援 720p 和 1080p 輸出選項。"
+    },
+    {
+      "q": "會使用多少積分？",
+      "a": "積分會依上傳參考影片長度計算。目前 Toolaze 費率為 720p 每輸出秒 40 積分，1080p 每輸出秒 54 積分。"
+    },
+    {
+      "q": "Kling 3 Motion Control 可以免費使用嗎？",
+      "a": "影片生成會使用 Toolaze 積分。新手積分、可用設定、參考影片長度和最終成本，可能因帳戶額度與所選解析度而不同。"
+    },
+    {
+      "q": "Kling 3 Motion Control 和 Kling 2.6 Motion Control 有什麼不同？",
+      "a": "兩者都使用一張角色圖片和一段動作參考影片。Kling 3 Motion Control 使用較新的 Kling 3 Motion Control 模型，而 Kling 2.6 Motion Control 在 Toolaze 上仍是成本較低的相近選項。"
+    },
+    {
+      "q": "我該選 Motion Control 還是標準 Kling 3.0？",
+      "a": "如果你有動作參考影片，且需要角色圖片跟隨它，請選擇 Motion Control。若想要更廣泛的文字驅動生成、更多圖片參考、4K 或更長場景規劃，請選擇標準 Kling 3.0。"
+    },
+    {
+      "q": "如何寫出更好的選填文字提示？",
+      "a": "保持簡短且保護重點：在跟隨上傳動作參考時，保留身份、服裝、身體比例、光線、鏡頭構圖與風格。刪除會和影片競爭的額外場景變化。"
+    }
+  ],
+  "moreTools": "更多 AI 影片模型",
+  "testimonials": {
+    "title": "創作者對 Kling Motion Control 測試的回饋",
+    "reviewSafe": true,
+    "showStars": false,
+    "items": [
+      {
+        "name": "Maya Chen",
+        "role": "時裝動態草稿",
+        "quote": "圖片加影片的設定讓伸展台動作比從零寫身體動作更容易測試。乾淨的全身參考給了我最可用的草稿。"
+      },
+      {
+        "name": "Jordan Lee",
+        "role": "產品影片規劃",
+        "quote": "我用手部動作參考來規劃小型裝置在畫面中應該如何旋轉。把文字提示聚焦在形狀、Logo 清晰度和光線上，讓草稿更容易審閱。"
+      },
+      {
+        "name": "Nina Patel",
+        "role": "虛擬角色手勢測試",
+        "quote": "對主持人短片來說，讓肖像和動作影片的裁切接近，比加入很長的風格提示更重要。參考越簡單，手勢越清楚。"
+      }
+    ]
+  }
+}

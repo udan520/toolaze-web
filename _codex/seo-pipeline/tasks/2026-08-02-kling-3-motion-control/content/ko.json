@@ -1,0 +1,318 @@
+{
+  "in_menu": false,
+  "seoFactoryTaskId": "2026-08-02-kling-3-motion-control",
+  "pageGroup": "model",
+  "topComponent": "kling-3-motion-control",
+  "topTool": {
+    "defaultMode": "image-to-video",
+    "displayName": "Kling 3 Motion Control",
+    "modelId": "kling-3-motion-control"
+  },
+  "metadata": {
+    "title": "Kling 3 Motion Control AI 동영상 생성기 | Toolaze",
+    "description": "캐릭터 이미지 1장과 모션 참고 영상 1개로 Kling 3 Motion Control 동영상을 만드세요. 포즈, 제스처, 카메라 리듬, 스타일을 720p 또는 1080p로 옮길 수 있습니다.",
+    "published": true
+  },
+  "sectionsOrder": [
+    "modelIntro",
+    "performanceMetrics",
+    "howToUse",
+    "scenes",
+    "modelComparison",
+    "competitorComparison",
+    "testimonials",
+    "faq"
+  ],
+  "hero": {
+    "h1": "<span class=\"text-gradient\">Kling 3 Motion Control</span> AI 동영상 생성기",
+    "desc": "캐릭터 이미지를 업로드하고 모션 참고 영상을 추가한 뒤 Kling 3 Motion Control로 포즈, 제스처, 신체 타이밍, 카메라 리듬을 전송하면서 피사체의 정체성과 스타일을 유지하세요."
+  },
+  "heroDemoVideo": {
+    "type": "video",
+    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
+    "width": 16,
+    "height": 9,
+    "ariaLabel": "Kling 3 Motion Control 샘플 프레임",
+    "sourceHistory": "Stable Toolaze demo media selected for the English launch."
+  },
+  "modelIntro": {
+    "title": "Kling 3 Motion Control이란?",
+    "modelName": "Kling 3 Motion Control",
+    "modelType": "AI 동영상 모델",
+    "description": [
+      "Kling 3 Motion Control은 정지된 캐릭터 이미지를 참고 영상의 움직임으로 구동하는 Kuaishou Kling 계열 동영상 모델입니다. 이미지는 보존할 피사체를 제공하고, 모션 참고 영상은 동작, 신체 타이밍, 포즈 순서, 카메라 리듬을 제공합니다.",
+      "텍스트 지시만으로는 부족하고 정확한 움직임이 더 중요할 때 사용하세요. 댄스 전송, 패션 동작, 발표자 제스처, 아바타 모션, 손에 든 제품 데모, 소셜 동영상 변형에 적합합니다. Toolaze에서는 캐릭터 이미지 1장, 모션 참고 영상 1개, 이미지 또는 영상 캐릭터 방향 선택, 720p 또는 1080p 출력을 사용합니다."
+    ]
+  },
+  "performanceMetrics": {
+    "title": "Kling 3 Motion Control 기능 요약",
+    "metrics": [
+      {
+        "label": "입력 모드",
+        "value": "이미지에서 동영상으로 이어지는 모션 제어"
+      },
+      {
+        "label": "필수 입력",
+        "value": "캐릭터 이미지 1장과 모션 참고 영상 1개"
+      },
+      {
+        "label": "캐릭터 이미지",
+        "value": "JPEG, PNG 또는 JPG 이미지 1장, 최대 10MB; 이미지 크기는 300px보다 커야 하며 비율은 2:5에서 5:2 사이여야 합니다."
+      },
+      {
+        "label": "모션 참고 영상",
+        "value": "MP4 또는 QuickTime 모션 참고 영상 1개, 최대 100MB. 이미지 방향은 3-10초 참고 영상을 지원하고, 영상 방향은 3-30초를 지원합니다."
+      },
+      {
+        "label": "텍스트 지시",
+        "value": "텍스트 지시는 선택 사항입니다. 정체성, 의상, 조명, 프레이밍, 스타일을 보존하는 데 사용하고 2500자 이내로 유지하세요."
+      },
+      {
+        "label": "캐릭터 방향",
+        "value": "캐릭터 이미지의 방향을 맞추려면 이미지를, 참고 영상 속 캐릭터 방향을 따르려면 영상을 선택하세요."
+      },
+      {
+        "label": "길이",
+        "value": "출력 길이는 고정 수동 길이가 아니라 업로드한 모션 참고 영상의 길이를 따릅니다."
+      },
+      {
+        "label": "모션 제어 소스",
+        "value": "포즈, 제스처, 걷기 주기, 손동작, 신체 타이밍, 카메라 리듬은 업로드한 영상에서 가져옵니다."
+      },
+      {
+        "label": "해상도",
+        "value": "720p 또는 1080p"
+      },
+      {
+        "label": "크레딧 안내",
+        "value": "크레딧은 업로드한 모션 참고 영상 길이에 따라 달라집니다. 현재 Toolaze 요금은 720p 출력 1초당 40크레딧, 1080p 출력 1초당 54크레딧입니다."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Toolaze에서 Kling 3 Motion Control 사용 방법",
+    "steps": [
+      {
+        "title": "Kling 3 Motion Control 선택",
+        "desc": "Kling 3 Motion Control을 선택한 상태에서 시작하면 생성기가 캐릭터 이미지와 모션 참고 영상을 모두 요구합니다."
+      },
+      {
+        "title": "캐릭터 이미지 업로드",
+        "desc": "보존하려는 얼굴, 의상, 체형, 제품 또는 스타일이 선명하게 보이는 JPEG, PNG 또는 JPG 이미지 1장을 사용하세요."
+      },
+      {
+        "title": "모션 참고 영상 추가",
+        "desc": "전송하려는 포즈, 제스처, 걷기, 춤, 손동작 또는 카메라 리듬이 담긴 MP4 또는 QuickTime 클립을 업로드하세요. 어떤 소스가 캐릭터 방향을 정의해야 하는지에 따라 이미지 또는 영상 방향을 선택합니다."
+      },
+      {
+        "title": "품질 설정 및 조정",
+        "desc": "720p 또는 1080p를 선택하세요. 출력 길이와 총 크레딧은 참고 영상 길이를 따르며, 선택 텍스트 지시는 정체성, 의상, 조명, 프레이밍, 스타일을 보호하는 데 쓸 수 있습니다."
+      }
+    ]
+  },
+  "scenesTitle": "Kling 3 Motion Control로 만들 수 있는 것",
+  "scenes": [
+    {
+      "title": "댄스와 포즈 전송",
+      "desc": "참고 댄스, 걷기, 회전 또는 제스처를 캐릭터 이미지에 적용하면서 정체성, 의상, 신체 비율을 유지합니다."
+    },
+    {
+      "title": "패션 모션 클립",
+      "desc": "정지된 의상 사진이나 에디토리얼 초상을 깨끗한 모션 참고 영상이 이끄는 런웨이 스타일 영상으로 바꿉니다."
+    },
+    {
+      "title": "발표자와 아바타 제스처",
+      "desc": "자세와 손 타이밍이 제공된 영상에 따르는 정면 설명, 인사, 반응 또는 프로필 클립을 만듭니다."
+    },
+    {
+      "title": "손에 든 제품 데모",
+      "desc": "참고 제스처를 사용해 제품을 잡고, 돌리고, 들어 올리고, 카메라에 보여주는 방식을 안내합니다."
+    },
+    {
+      "title": "소셜 쇼트 영상",
+      "desc": "일치시킬 모션 영상이 이미 있을 때 Reels, TikTok, Shorts, 광고용 세로 캐릭터 클립을 초안으로 만듭니다."
+    },
+    {
+      "title": "스토리보드 모션 테스트",
+      "desc": "긴 캠페인, 장면 또는 크리에이터 영상을 만들기 전에 포즈, 제스처, 신체 움직임이 잘 맞는지 확인합니다."
+    }
+  ],
+  "modelComparison": {
+    "title": "Kling 3 Motion Control과 가까운 Kling 모델 비교",
+    "subtitle": "참고 영상이 동작을 이끌어야 하면 Motion Control을 선택하세요. 모션 영상이 없거나 더 넓은 텍스트-동영상 설정이 필요하면 표준 Kling 모델을 선택하세요.",
+    "featuredColumn": "baseline",
+    "columnHeaders": {
+      "metric": "결정 기준",
+      "baseline": "Kling 3 Motion Control",
+      "middle": "Kling 2.6 Pro Motion Control",
+      "target": "Kling 3.0"
+    },
+    "rows": [
+      {
+        "label": "Toolaze 모델",
+        "baseline": "Kling 3 Motion Control",
+        "middle": "Kling 2.6 Pro Motion Control",
+        "target": "Kling 3.0"
+      },
+      {
+        "label": "입력 모드",
+        "baseline": "캐릭터 이미지 1장 + 모션 참고 영상 1개로 이미지-동영상 모션 제어",
+        "middle": "캐릭터 이미지 1장 + 모션 참고 영상 1개로 이미지-동영상 모션 제어",
+        "target": "텍스트 지시 또는 여러 이미지 기반 동영상 생성, 최대 4장 이미지"
+      },
+      {
+        "label": "영상 참고 지원",
+        "baseline": "필수: 모션 참고 영상 1개",
+        "middle": "필수: 모션 참고 영상 1개",
+        "target": "업로드한 모션 참고 영상을 사용하지 않음"
+      },
+      {
+        "label": "모션 제어 방식",
+        "baseline": "참고 영상 모션 전송과 정체성, 의상, 프레이밍, 스타일을 위한 선택 텍스트 지시",
+        "middle": "참고 영상 모션 전송과 정체성 및 스타일을 위한 선택 텍스트 지시",
+        "target": "텍스트로 설명하는 피사체 동작, 카메라 경로, 샷 순서, 장면 스타일"
+      },
+      {
+        "label": "참고 길이",
+        "baseline": "이미지 방향은 3-10초, 영상 방향은 3-30초를 지원하며 출력 길이는 참고 영상을 따름",
+        "middle": "이미지 방향은 3-10초, 영상 방향은 3-30초를 지원하며 출력 길이는 참고 영상을 따름",
+        "target": "표준 Kling 3.0 선택기에서 수동 길이 선택"
+      },
+      {
+        "label": "해상도",
+        "baseline": "720p 또는 1080p",
+        "middle": "720p 또는 1080p",
+        "target": "720p, 1080p 또는 4K"
+      },
+      {
+        "label": "크레딧 안내",
+        "baseline": "720p 출력 1초당 40크레딧 또는 1080p 출력 1초당 54크레딧",
+        "middle": "현재 Toolaze 가격표 기준 출력 1초당 22크레딧",
+        "target": "표준 720p는 출력 1초당 28크레딧부터 시작"
+      },
+      {
+        "label": "선택할 때",
+        "baseline": "더 새로운 Kling 모션 제어 모델이 특정 액션 영상을 따라가길 원할 때",
+        "middle": "Kling 2.6 Motion Control 흐름으로 더 낮은 비용의 모션 전송이 필요할 때",
+        "target": "더 넓은 텍스트 기반 생성, 더 많은 이미지 참고, 4K 또는 긴 장면 계획이 필요할 때"
+      }
+    ]
+  },
+  "competitorComparison": {
+    "title": "Kling Motion Control, Wan, Seedance 선택 기준",
+    "subtitle": "이미 갖고 있는 입력에 따라 모델을 고르세요. 모션 참고 영상, 영화적인 아이디어, 또는 다듬어진 시각 초안입니다.",
+    "featuredColumn": "baseline",
+    "columnHeaders": {
+      "metric": "결정 기준",
+      "baseline": "Kling 3 Motion Control",
+      "middle": "Wan 2.7",
+      "target": "Seedance 2.5"
+    },
+    "rows": [
+      {
+        "label": "잘 맞는 경우",
+        "baseline": "캐릭터 이미지 1장과 모션 참고 영상 1개에서 모션 전송",
+        "middle": "텍스트, 이미지 또는 참고 기반 지시로 만드는 짧은 영화적 클립",
+        "target": "강한 시각 완성도와 장면 연속성을 가진 고디테일 동영상 초안"
+      },
+      {
+        "label": "먼저 확인할 점",
+        "baseline": "모션 영상이 깨끗하고 잘 보이며 허용 길이 범위 안에 있고 캐릭터 프레이밍과 가까운지",
+        "middle": "정확한 신체 모션 전송보다 Wan 스타일의 텍스트, 이미지, 영상 참고 방향이 필요한지",
+        "target": "선택한 Seedance 설정이 입력 유형, 길이, 품질 목표를 지원하는지"
+      },
+      {
+        "label": "텍스트 지시 스타일",
+        "baseline": "참고 모션을 따르면서 정체성, 의상, 비율, 조명, 카메라 프레이밍, 스타일을 유지",
+        "middle": "장면 설정, 샷 리듬, 움직임 방향, 카메라 이동, 출력 설정",
+        "target": "피사체, 스타일, 장면 전환, 조명, 속도, 품질 단서"
+      },
+      {
+        "label": "참고 안내",
+        "baseline": "이미지 1장이 피사체를 제공하고 영상 1개가 움직임을 제공합니다",
+        "middle": "참고 미디어가 장면을 안내할 수 있지만, 구동 영상처럼 움직임을 직접 복사하지는 않습니다",
+        "target": "참고 지원은 선택한 Seedance 설정과 사용 가능 여부에 따라 달라집니다"
+      },
+      {
+        "label": "다른 모델을 선택할 때",
+        "baseline": "모션 참고 영상이 없으면 다른 동영상 모델을 선택하세요",
+        "middle": "정확한 포즈, 제스처 또는 댄스 전송이 가장 중요하면 Motion Control을 선택하세요",
+        "target": "특정 액션 영상과 맞추는 것이 시각적 완성도만큼이나 중요하면 Motion Control을 선택하세요"
+      }
+    ]
+  },
+  "faqTitle": "Kling 3 Motion Control 자주 묻는 질문",
+  "faq": [
+    {
+      "q": "Toolaze의 Kling 3 Motion Control은 무엇인가요?",
+      "a": "업로드한 캐릭터 이미지에 참고 영상의 움직임을 적용하면서 정체성, 의상, 프레이밍, 시각 스타일을 유지하는 이미지-동영상 생성 흐름입니다."
+    },
+    {
+      "q": "텍스트 지시만으로 만들 수 있나요?",
+      "a": "아니요. Kling 3 Motion Control은 캐릭터 이미지와 모션 참고 영상이 모두 필요합니다. 모션 영상이 없다면 표준 동영상 모델을 선택하세요."
+    },
+    {
+      "q": "Motion Control에서 텍스트 지시는 필수인가요?",
+      "a": "아니요. 캐릭터 이미지와 모션 참고 영상은 필수이고, 텍스트 지시는 선택 사항입니다. 정체성, 의상, 조명, 프레이밍, 스타일을 보존하는 데 유용합니다."
+    },
+    {
+      "q": "참고 파일은 몇 개까지 사용할 수 있나요?",
+      "a": "이 흐름에서 Toolaze는 캐릭터 이미지 1장과 모션 참고 영상 1개를 지원합니다. 이미지는 JPEG, PNG 또는 JPG 형식으로 최대 10MB, 모션 영상은 MP4 또는 QuickTime 형식으로 최대 100MB입니다."
+    },
+    {
+      "q": "모션 참고 영상은 얼마나 길 수 있나요?",
+      "a": "이미지 방향은 3-10초 참고 영상을 지원합니다. 영상 방향은 3-30초 참고 영상을 지원합니다. 생성된 출력 길이는 업로드한 참고 영상 길이를 따릅니다."
+    },
+    {
+      "q": "캐릭터 방향은 무엇을 의미하나요?",
+      "a": "이미지 방향은 업로드한 이미지의 캐릭터 방향과 맞춥니다. 영상 방향은 업로드한 모션 참고 영상 속 캐릭터 방향을 따릅니다."
+    },
+    {
+      "q": "어떤 해상도를 선택할 수 있나요?",
+      "a": "Toolaze의 Kling 3 Motion Control은 720p와 1080p 출력 옵션을 지원합니다."
+    },
+    {
+      "q": "크레딧은 얼마나 사용되나요?",
+      "a": "크레딧은 업로드한 참고 영상 길이에 따라 달라집니다. 현재 Toolaze 요금은 720p 출력 1초당 40크레딧, 1080p 출력 1초당 54크레딧입니다."
+    },
+    {
+      "q": "Kling 3 Motion Control은 무료로 사용할 수 있나요?",
+      "a": "동영상 생성에는 Toolaze 크레딧이 사용됩니다. 시작 크레딧, 사용 가능한 설정, 참고 영상 길이, 최종 비용은 계정 할당량과 선택한 해상도에 따라 달라질 수 있습니다."
+    },
+    {
+      "q": "Kling 3 Motion Control은 Kling 2.6 Motion Control과 어떻게 다른가요?",
+      "a": "둘 다 캐릭터 이미지 1장과 모션 참고 영상 1개를 사용합니다. Kling 3 Motion Control은 더 새로운 Kling 3 Motion Control 모델을 사용하고, Kling 2.6 Motion Control은 Toolaze에서 더 낮은 비용의 가까운 옵션입니다."
+    },
+    {
+      "q": "Motion Control과 표준 Kling 3.0 중 무엇을 선택해야 하나요?",
+      "a": "모션 참고 영상이 있고 캐릭터 이미지가 이를 따라가야 한다면 Motion Control을 선택하세요. 더 넓은 텍스트 기반 생성, 더 많은 이미지 참고, 4K 또는 긴 장면 계획이 필요하면 표준 Kling 3.0을 선택하세요."
+    },
+    {
+      "q": "더 강한 선택 텍스트 지시는 어떻게 쓰나요?",
+      "a": "짧고 보호적으로 작성하세요. 업로드한 모션 참고를 따르면서 정체성, 의상, 신체 비율, 조명, 카메라 프레이밍, 스타일을 보존하도록 쓰고, 영상과 충돌하는 추가 장면 변화는 제거하세요."
+    }
+  ],
+  "moreTools": "더 많은 AI 동영상 모델",
+  "testimonials": {
+    "title": "Kling Motion Control 테스트에 대한 크리에이터 의견",
+    "reviewSafe": true,
+    "showStars": false,
+    "items": [
+      {
+        "name": "Maya Chen",
+        "role": "패션 모션 초안",
+        "quote": "이미지와 영상을 함께 쓰는 설정은 몸 움직임을 처음부터 글로 쓰는 것보다 런웨이 모션을 테스트하기 쉬웠습니다. 깨끗한 전신 참고가 가장 쓸 만한 초안을 줬습니다."
+      },
+      {
+        "name": "Jordan Lee",
+        "role": "제품 동영상 기획",
+        "quote": "작은 기기가 프레임 안에서 어떻게 돌아가야 할지 계획하려고 손동작 참고를 사용했습니다. 형태, 로고 선명도, 조명에 집중한 지시가 초안 검토를 더 쉽게 만들었습니다."
+      },
+      {
+        "name": "Nina Patel",
+        "role": "아바타 제스처 테스트",
+        "quote": "발표자 클립에서는 긴 스타일 지시를 추가하는 것보다 초상과 모션 영상의 크롭을 맞추는 것이 더 중요했습니다. 참고가 단순할수록 제스처가 더 선명하게 유지됐습니다."
+      }
+    ]
+  }
+}
