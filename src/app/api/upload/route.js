@@ -187,11 +187,13 @@ export async function POST(request) {
           apiKey,
           ...motionControlUploadOptions,
         })
+        const publicCopy = await uploadToR2(file, await getR2Config())
         return json({
           uploadRef: await createUploadReference({
             ...result,
             mediaType: getUploadReferenceMediaType(file),
           }, apiKey),
+          ...publicCopy,
         })
       }
 

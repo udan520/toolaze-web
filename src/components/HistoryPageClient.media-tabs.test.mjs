@@ -57,6 +57,15 @@ test('History Recreate preserves the raw generation inputs for the target landin
   assert.match(source, /buildHistoryRepromptPayload\(\{ \.\.\.item, inputUrls: item\.recreateInputUrls \|\| item\.inputUrls \}\)/, 'Recreate payload should use raw inputs rather than display-only references')
 })
 
+test('History preview renders every reference media item including motion reference videos', () => {
+  assert.match(source, /function isReferenceVideoUrl\(url: string\)/, 'history should classify reference videos separately from images')
+  assert.match(source, /data-history-reference-video/, 'history preview should expose reference video thumbnails')
+  assert.match(source, /isReferenceVideoUrl\(url\) \? \(/, 'reference renderer should branch on video URLs')
+  assert.match(source, /<video[\s\S]*src=\{url\}[\s\S]*preload="metadata"/, 'reference videos should render with video metadata previews')
+  assert.match(source, /data-history-fullscreen-reference-video/, 'fullscreen reference preview should support videos')
+  assert.match(source, /isReferenceVideoUrl\(fullScreenPreviewUrl\) \? \(/, 'fullscreen preview should not render reference videos through an img tag')
+})
+
 test('History h5 preview keeps compact actions and a four-line scrolling prompt', () => {
   assert.match(source, /data-history-preview-actions[\s\S]*grid-cols-\[minmax\(0,1fr\)_44px_44px\]/)
   assert.match(source, /data-history-preview-prompt[\s\S]*max-h-24[\s\S]*overflow-y-auto[\s\S]*overscroll-contain/)

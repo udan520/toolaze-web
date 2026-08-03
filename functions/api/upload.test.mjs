@@ -89,7 +89,9 @@ test('upload can stream motion-control media from a neutral browser purpose', as
     const body = await response.json()
 
     assert.equal(response.status, 200)
-    assert.equal(writes.length, 0)
+    assert.equal(writes.length, 1)
+    assert.match(writes[0].key, /^uploads\/[a-f0-9]+\.mp4$/)
+    assert.equal(writes[0].options.httpMetadata.contentType, 'video/mp4')
     assert.equal(calls.length, 1)
     assert.equal(calls[0].url, 'https://kieai.redpandaai.co/api/file-stream-upload')
     assert.equal(calls[0].init.method, 'POST')
@@ -97,10 +99,10 @@ test('upload can stream motion-control media from a neutral browser purpose', as
     assert.equal(calls[0].init.body.get('uploadPath'), 'toolaze/kling-motion-control')
     assert.match(calls[0].init.body.get('fileName'), /^motion-[a-f0-9]+\.mp4$/)
     assert.match(body.uploadRef, /^toolaze-upload-ref:/)
+    assert.match(body.url, /^https:\/\/pub-efeb0c7b9b53478d960218de80c52e3d\.r2\.dev\/uploads\/[a-f0-9]+\.mp4$/)
+    assert.match(body.key, /^uploads\/[a-f0-9]+\.mp4$/)
     assert.equal(String(body.uploadRef).includes('redpandaai'), false)
     assert.equal(String(body.uploadRef).includes('kieai'), false)
-    assert.equal('url' in body, false)
-    assert.equal('key' in body, false)
     assert.equal('provider' in body, false)
   } finally {
     globalThis.fetch = originalFetch
@@ -145,8 +147,8 @@ test('Kie motion-control upload returns the extension-preserving file URL for ge
     assert.match(body.uploadRef, /^toolaze-upload-ref:/)
     assert.equal(String(body.uploadRef).includes('redpandaai'), false)
     assert.equal(String(body.uploadRef).includes('kieai'), false)
-    assert.equal('url' in body, false)
-    assert.equal('key' in body, false)
+    assert.match(body.url, /^https:\/\/pub-efeb0c7b9b53478d960218de80c52e3d\.r2\.dev\/uploads\/[a-f0-9]+\.png$/)
+    assert.match(body.key, /^uploads\/[a-f0-9]+\.png$/)
     assert.equal('provider' in body, false)
   } finally {
     globalThis.fetch = originalFetch

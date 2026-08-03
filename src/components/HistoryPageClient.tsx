@@ -109,6 +109,10 @@ function isVideoHistoryUrl(url: string) {
   return /\.(mp4|webm|mov|m4v)(?:[?#].*)?$/i.test(String(url || '').trim())
 }
 
+function isReferenceVideoUrl(url: string) {
+  return /\.(mp4|webm|mov|m4v|mkv)(?:[?#].*)?$/i.test(String(url || '').trim())
+}
+
 function normalizeGenerationHistoryItem(item: GenerationHistoryItem): GenerationHistoryItem {
   const mediaType: GenerationHistoryItem['mediaType'] =
     item.mediaType === 'video' || isVideoHistoryUrl(item.outputUrl) ? 'video' : 'image'
@@ -118,11 +122,14 @@ function normalizeGenerationHistoryItem(item: GenerationHistoryItem): Generation
     mediaType,
     inputUrls: rawInputUrls,
   }
+  const displayInputUrls = rawInputUrls.length > 0
+    ? rawInputUrls
+    : getOriginalHistoryInputImageUrls(normalizedItem)
 
   return {
     ...normalizedItem,
     recreateInputUrls: rawInputUrls,
-    inputUrls: getOriginalHistoryInputImageUrls(normalizedItem),
+    inputUrls: displayInputUrls,
   }
 }
 
@@ -623,13 +630,24 @@ export default function HistoryPageClient({ initialTranslations, locale = 'en' }
                     data-history-card-reference
                     className="absolute bottom-2 left-2 right-2 flex items-center gap-2 rounded-xl bg-white/95 p-1.5 text-xs font-extrabold text-slate-700 shadow-sm ring-1 ring-slate-200"
                   >
-                    <img
-                      src={getHistoryReferenceThumbnailUrl(item.inputUrls[0])}
-                      alt=""
-                      className="h-10 w-10 shrink-0 rounded-lg object-cover ring-1 ring-slate-200"
-                      loading="lazy"
-                      decoding="async"
-                    />
+                    {isReferenceVideoUrl(item.inputUrls[0]) ? (
+                      <video
+                        data-history-card-reference-video
+                        src={item.inputUrls[0]}
+                        className="h-10 w-10 shrink-0 rounded-lg object-cover ring-1 ring-slate-200"
+                        preload="metadata"
+                        muted
+                        playsInline
+                      />
+                    ) : (
+                      <img
+                        src={getHistoryReferenceThumbnailUrl(item.inputUrls[0])}
+                        alt=""
+                        className="h-10 w-10 shrink-0 rounded-lg object-cover ring-1 ring-slate-200"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    )}
                     <span className="min-w-0 truncate">{copy.referenceMedia}</span>
                   </span>
                 )}
@@ -728,13 +746,24 @@ export default function HistoryPageClient({ initialTranslations, locale = 'en' }
                             className="h-20 w-20 cursor-zoom-in overflow-hidden rounded-xl border border-slate-200 bg-slate-100 p-0 transition hover:border-indigo-300"
                             aria-label={`${copy.previewReferenceMedia} ${index + 1}`}
                           >
-                            <img
-                              src={getHistoryReferenceThumbnailUrl(url)}
-                              alt=""
-                              className="h-full w-full object-cover"
-                              loading="lazy"
-                              decoding="async"
-                            />
+                            {isReferenceVideoUrl(url) ? (
+                              <video
+                                data-history-reference-video
+                                src={url}
+                                className="h-full w-full object-cover"
+                                preload="metadata"
+                                muted
+                                playsInline
+                              />
+                            ) : (
+                              <img
+                                src={getHistoryReferenceThumbnailUrl(url)}
+                                alt=""
+                                className="h-full w-full object-cover"
+                                loading="lazy"
+                                decoding="async"
+                              />
+                            )}
                           </button>
                         )
                       })}
@@ -873,12 +902,23 @@ export default function HistoryPageClient({ initialTranslations, locale = 'en' }
           >
             <span className="text-2xl leading-none">×</span>
           </button>
-          <img
-            src={fullScreenPreviewUrl}
-            alt=""
-            className="max-h-[96vh] max-w-[96vw] object-contain"
-            onClick={(event) => event.stopPropagation()}
-          />
+          {isReferenceVideoUrl(fullScreenPreviewUrl) ? (
+            <video
+              data-history-fullscreen-reference-video
+              src={fullScreenPreviewUrl}
+              className="max-h-[96vh] max-w-[96vw] object-contain"
+              controls
+              playsInline
+              onClick={(event) => event.stopPropagation()}
+            />
+          ) : (
+            <img
+              src={fullScreenPreviewUrl}
+              alt=""
+              className="max-h-[96vh] max-w-[96vw] object-contain"
+              onClick={(event) => event.stopPropagation()}
+            />
+          )}
         </div>
       )}
     </main>

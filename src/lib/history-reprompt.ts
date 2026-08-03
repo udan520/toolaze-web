@@ -12,7 +12,7 @@ type HistoryRepromptSource = {
   outputFormat?: string | null
 }
 
-type HistoryImageRecreateMode = 'text-to-image' | 'image-to-image'
+type HistoryRecreateMode = 'text-to-image' | 'image-to-image' | 'image-to-video'
 
 type HistoryRecreateSource = {
   mediaType?: 'image' | 'video' | null
@@ -74,6 +74,17 @@ function getHistoryToolSlug(item: HistoryRepromptSource): string {
   return sourceSegments[0] && LOCALE_PATTERN.test(sourceSegments[0])
     ? sourceSegments[1] || ''
     : sourceSegments[0] || ''
+}
+
+function isReusableVideoUrl(url: string): boolean {
+  return /\.(m4v|mkv|mov|mp4|webm)(?:[?#].*)?$/i.test(url)
+}
+
+function isKling3MotionControlHistory(item: HistoryRepromptSource, toolSlug: string): boolean {
+  return item.model === 'kling-3-motion-control'
+    || item.model === 'kling-2-6-motion-control'
+    || toolSlug === 'kling-3-motion-control'
+    || toolSlug === 'kling-2-6-motion-control'
 }
 
 function getPathRootSlug(pathname: string): string {
@@ -180,13 +191,21 @@ export function buildHistoryRepromptPayload(item: HistoryRepromptSource) {
     ? item.inputUrls.map(normalizeReusableReferenceImageUrl).filter(Boolean)
     : getOriginalHistoryInputImageUrls(item)
   const isTalkingAvatar = toolSlug === 'talking-avatar-creator'
-  const imageUrls = isTalkingAvatar && originalInputUrls[0] ? [originalInputUrls[0]] : originalInputUrls
+  const isKling3MotionControl = isKling3MotionControlHistory(item, toolSlug)
+  const motionVideoUrls = isKling3MotionControl ? originalInputUrls.filter(isReusableVideoUrl) : []
+  const nonVideoInputUrls = isKling3MotionControl
+    ? originalInputUrls.filter((url) => !isReusableVideoUrl(url))
+    : originalInputUrls
+  const imageUrls = isTalkingAvatar && nonVideoInputUrls[0] ? [nonVideoInputUrls[0]] : nonVideoInputUrls
   const talkingAvatarAudioUrl = isTalkingAvatar && originalInputUrls[1] ? originalInputUrls[1] : ''
-  const mode: HistoryImageRecreateMode = imageUrls.length > 0 ? 'image-to-image' : 'text-to-image'
+  const mode: HistoryRecreateMode = isKling3MotionControl
+    ? 'image-to-video'
+    : imageUrls.length > 0 ? 'image-to-image' : 'text-to-image'
 
   return {
     prompt: item.prompt || '',
     imageUrls,
+    ...(motionVideoUrls.length > 0 ? { videoUrls: motionVideoUrls } : {}),
     ...(isTalkingAvatar && originalInputUrls.length > 0 ? { inputUrls: originalInputUrls } : {}),
     ...(talkingAvatarAudioUrl ? { audioUrl: talkingAvatarAudioUrl, audioUrls: [talkingAvatarAudioUrl] } : {}),
     modelId: item.model || undefined,

@@ -28,6 +28,35 @@ function getMotionControlUploadOptions(formData) {
   return MOTION_CONTROL_UPLOAD_OPTIONS;
 }
 
+function getPublicUploadExtension(file, fallbackContentType = '') {
+  const name = (file?.name || '').toLowerCase();
+  const type = (file?.type || fallbackContentType || '').toLowerCase();
+  if (name.endsWith('.jpg') || name.endsWith('.jpeg') || type.includes('jpeg') || type.includes('jpg')) return 'jpg';
+  if (name.endsWith('.webp') || type.includes('webp')) return 'webp';
+  if (name.endsWith('.mp4') || type.includes('video/mp4')) return 'mp4';
+  if (name.endsWith('.mov') || type.includes('quicktime')) return 'mov';
+  if (name.endsWith('.mkv') || type.includes('matroska')) return 'mkv';
+  if (name.endsWith('.mp3') || type.includes('mpeg')) return 'mp3';
+  if (name.endsWith('.wav') || type.includes('wav')) return 'wav';
+  if (name.endsWith('.m4a') || type.includes('audio/mp4') || type.includes('x-m4a')) return 'm4a';
+  if (name.endsWith('.ogg') || type.includes('ogg')) return 'ogg';
+  return 'png';
+}
+
+async function uploadPublicCopyToR2(env, file, fallbackContentType = 'image/png') {
+  const ext = getPublicUploadExtension(file, fallbackContentType);
+  const randomId = crypto.randomUUID().replace(/-/g, '');
+  const key = `uploads/${randomId}.${ext}`;
+  await env.MY_BUCKET.put(key, file, {
+    httpMetadata: { contentType: file.type || fallbackContentType },
+  });
+  const base = (env.R2_PUBLIC_BASE_URL || 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev').replace(/\/$/, '');
+  return {
+    url: `${base}/${key}`,
+    key,
+  };
+}
+
 export async function onRequest(context) {
   const { request, env } = context;
   const method = request.method;
@@ -45,7 +74,6 @@ export async function onRequest(context) {
   try {
     const contentType = request.headers.get('Content-Type') || '';
     let blob;
-    let ext = 'png';
     if (contentType.includes('multipart/form-data')) {
       const formData = await request.formData();
       const file = formData.get('file') || formData.get('image');
@@ -61,42 +89,27 @@ export async function onRequest(context) {
           apiKey: env.KIE_AI_API_KEY,
           ...motionControlUploadOptions,
         });
+        const publicCopy = await uploadPublicCopyToR2(env, file, file.type || 'application/octet-stream');
         return new Response(JSON.stringify({
           uploadRef: await createUploadReference({
             ...result,
             mediaType: getUploadReferenceMediaType(file),
           }, env.KIE_AI_API_KEY),
+          ...publicCopy,
         }), {
           headers: { 'Content-Type': 'application/json', ...CORS },
         });
       }
       blob = file;
-      const name = (file.name || '').toLowerCase();
-      const type = (file.type || '').toLowerCase();
-      if (name.endsWith('.jpg') || name.endsWith('.jpeg') || type.includes('jpeg') || type.includes('jpg')) ext = 'jpg';
-      else if (name.endsWith('.webp') || type.includes('webp')) ext = 'webp';
-      else if (name.endsWith('.mp4') || type.includes('video/mp4')) ext = 'mp4';
-      else if (name.endsWith('.mp3') || type.includes('mpeg')) ext = 'mp3';
-      else if (name.endsWith('.wav') || type.includes('wav')) ext = 'wav';
-      else if (name.endsWith('.m4a') || type.includes('audio/mp4') || type.includes('x-m4a')) ext = 'm4a';
-      else if (name.endsWith('.ogg') || type.includes('ogg')) ext = 'ogg';
     } else if (contentType.includes('application/octet-stream') || contentType.includes('image/')) {
       blob = await request.blob();
-      if (contentType.includes('jpeg') || contentType.includes('jpg')) ext = 'jpg';
-      else if (contentType.includes('webp')) ext = 'webp';
     } else {
       return new Response(JSON.stringify({ error: 'Send multipart/form-data with file or image' }), {
         status: 400,
         headers: { 'Content-Type': 'application/json', ...CORS },
       });
     }
-    const randomId = crypto.randomUUID().replace(/-/g, '');
-    const key = `uploads/${randomId}.${ext}`;
-    await env.MY_BUCKET.put(key, blob, {
-      httpMetadata: { contentType: blob.type || 'image/png' },
-    });
-    const base = (env.R2_PUBLIC_BASE_URL || 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev').replace(/\/$/, '');
-    const publicUrl = `${base}/${key}`;
+    const { url: publicUrl, key } = await uploadPublicCopyToR2(env, blob, blob.type || contentType || 'image/png');
     return new Response(JSON.stringify({ url: publicUrl, key }), {
       headers: { 'Content-Type': 'application/json', ...CORS },
     });

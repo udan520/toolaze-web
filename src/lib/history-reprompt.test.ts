@@ -175,6 +175,36 @@ test('keeps talking avatar image and audio inputs in the pending Recreate payloa
   })
 })
 
+test('separates Kling 3 Motion Control image and motion video inputs for Recreate', () => {
+  const item = {
+    ...baseHistoryItem,
+    mediaType: 'video' as const,
+    model: 'kling-3-motion-control',
+    toolSlug: 'kling-3-motion-control',
+    sourcePath: '/model/kling-3-motion-control',
+    inputUrls: [
+      'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/character.webp',
+      'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/motion-reference.mp4',
+    ],
+    resolution: '720p',
+    outputFormat: '5s',
+  }
+
+  assert.deepEqual(buildHistoryRepromptPayload(item), {
+    prompt: item.prompt,
+    imageUrls: [item.inputUrls[0]],
+    videoUrls: [item.inputUrls[1]],
+    modelId: item.model,
+    aspectRatio: item.aspectRatio,
+    resolution: item.resolution,
+    outputFormat: item.outputFormat,
+    mode: 'image-to-video',
+    toolSlug: item.toolSlug,
+    sourcePath: item.sourcePath,
+    mediaType: item.mediaType,
+  })
+})
+
 
 test('keeps same-origin reference paths for Create Similar', () => {
   const item = {

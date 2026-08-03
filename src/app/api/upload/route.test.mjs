@@ -35,11 +35,24 @@ test('upload route streams motion-control uploads locally from a neutral browser
   const { POST } = await loadRoute()
   const originalFetch = globalThis.fetch
   const previousApiKey = process.env.KIE_AI_API_KEY
+  const previousAccessKey = process.env.R2_ACCESS_KEY_ID
+  const previousSecretKey = process.env.R2_SECRET_ACCESS_KEY
+  const previousEndpoint = process.env.R2_ENDPOINT_URL
+  const previousBucket = process.env.R2_BUCKET
+  const previousPublicBase = process.env.R2_PUBLIC_BASE_URL
   const calls = []
 
   process.env.KIE_AI_API_KEY = 'test-key'
+  process.env.R2_ACCESS_KEY_ID = 'test-access-key'
+  process.env.R2_SECRET_ACCESS_KEY = 'test-secret-key'
+  process.env.R2_ENDPOINT_URL = 'https://example.r2.cloudflarestorage.com'
+  process.env.R2_BUCKET = 'toolaze'
+  process.env.R2_PUBLIC_BASE_URL = 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev'
   globalThis.fetch = async (url, init) => {
     calls.push({ url: String(url), init })
+    if (String(url).includes('example.r2.cloudflarestorage.com')) {
+      return new Response(null, { status: 200 })
+    }
     return Response.json({
       success: true,
       code: 200,
@@ -64,15 +77,17 @@ test('upload route streams motion-control uploads locally from a neutral browser
     const payload = await response.json()
 
     assert.equal(response.status, 200)
-    assert.equal(calls.length, 1)
+    assert.equal(calls.length, 2)
     assert.equal(calls[0].url, 'https://kieai.redpandaai.co/api/file-stream-upload')
     assert.equal(calls[0].init.headers.Authorization, 'Bearer test-key')
     assert.equal(calls[0].init.body.get('uploadPath'), 'toolaze/kling-motion-control')
+    assert.match(calls[1].url, /^https:\/\/example\.r2\.cloudflarestorage\.com\/toolaze\/uploads\/[a-f0-9]+\.mp4$/)
+    assert.equal(calls[1].init.method, 'PUT')
     assert.match(payload.uploadRef, /^toolaze-upload-ref:/)
+    assert.match(payload.url, /^https:\/\/pub-efeb0c7b9b53478d960218de80c52e3d\.r2\.dev\/uploads\/[a-f0-9]+\.mp4$/)
+    assert.match(payload.key, /^uploads\/[a-f0-9]+\.mp4$/)
     assert.equal(String(payload.uploadRef).includes('redpandaai'), false)
     assert.equal(String(payload.uploadRef).includes('kieai'), false)
-    assert.equal('url' in payload, false)
-    assert.equal('key' in payload, false)
     assert.equal('provider' in payload, false)
   } finally {
     globalThis.fetch = originalFetch
@@ -81,6 +96,16 @@ test('upload route streams motion-control uploads locally from a neutral browser
     } else {
       process.env.KIE_AI_API_KEY = previousApiKey
     }
+    if (previousAccessKey === undefined) delete process.env.R2_ACCESS_KEY_ID
+    else process.env.R2_ACCESS_KEY_ID = previousAccessKey
+    if (previousSecretKey === undefined) delete process.env.R2_SECRET_ACCESS_KEY
+    else process.env.R2_SECRET_ACCESS_KEY = previousSecretKey
+    if (previousEndpoint === undefined) delete process.env.R2_ENDPOINT_URL
+    else process.env.R2_ENDPOINT_URL = previousEndpoint
+    if (previousBucket === undefined) delete process.env.R2_BUCKET
+    else process.env.R2_BUCKET = previousBucket
+    if (previousPublicBase === undefined) delete process.env.R2_PUBLIC_BASE_URL
+    else process.env.R2_PUBLIC_BASE_URL = previousPublicBase
   }
 })
 
@@ -88,9 +113,23 @@ test('upload route returns Kie fileUrl before downloadUrl for local motion-contr
   const { POST } = await loadRoute()
   const originalFetch = globalThis.fetch
   const previousApiKey = process.env.KIE_AI_API_KEY
+  const previousAccessKey = process.env.R2_ACCESS_KEY_ID
+  const previousSecretKey = process.env.R2_SECRET_ACCESS_KEY
+  const previousEndpoint = process.env.R2_ENDPOINT_URL
+  const previousBucket = process.env.R2_BUCKET
+  const previousPublicBase = process.env.R2_PUBLIC_BASE_URL
 
   process.env.KIE_AI_API_KEY = 'test-key'
-  globalThis.fetch = async () => Response.json({
+  process.env.R2_ACCESS_KEY_ID = 'test-access-key'
+  process.env.R2_SECRET_ACCESS_KEY = 'test-secret-key'
+  process.env.R2_ENDPOINT_URL = 'https://example.r2.cloudflarestorage.com'
+  process.env.R2_BUCKET = 'toolaze'
+  process.env.R2_PUBLIC_BASE_URL = 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev'
+  globalThis.fetch = async (url) => {
+    if (String(url).includes('example.r2.cloudflarestorage.com')) {
+      return new Response(null, { status: 200 })
+    }
+    return Response.json({
     success: true,
     code: 200,
     data: {
@@ -100,7 +139,8 @@ test('upload route returns Kie fileUrl before downloadUrl for local motion-contr
       fileUrl: 'https://kieai.redpandaai.co/files/toolaze/kling-motion-control/character.png',
       downloadUrl: 'https://kieai.redpandaai.co/download/file_no_extension',
     },
-  })
+    })
+  }
 
   const body = new FormData()
   body.set('image', new File(['image-bytes'], 'character.png', { type: 'image/png' }))
@@ -118,8 +158,8 @@ test('upload route returns Kie fileUrl before downloadUrl for local motion-contr
     assert.match(payload.uploadRef, /^toolaze-upload-ref:/)
     assert.equal(String(payload.uploadRef).includes('redpandaai'), false)
     assert.equal(String(payload.uploadRef).includes('kieai'), false)
-    assert.equal('url' in payload, false)
-    assert.equal('key' in payload, false)
+    assert.match(payload.url, /^https:\/\/pub-efeb0c7b9b53478d960218de80c52e3d\.r2\.dev\/uploads\/[a-f0-9]+\.png$/)
+    assert.match(payload.key, /^uploads\/[a-f0-9]+\.png$/)
     assert.equal('provider' in payload, false)
   } finally {
     globalThis.fetch = originalFetch
@@ -128,6 +168,16 @@ test('upload route returns Kie fileUrl before downloadUrl for local motion-contr
     } else {
       process.env.KIE_AI_API_KEY = previousApiKey
     }
+    if (previousAccessKey === undefined) delete process.env.R2_ACCESS_KEY_ID
+    else process.env.R2_ACCESS_KEY_ID = previousAccessKey
+    if (previousSecretKey === undefined) delete process.env.R2_SECRET_ACCESS_KEY
+    else process.env.R2_SECRET_ACCESS_KEY = previousSecretKey
+    if (previousEndpoint === undefined) delete process.env.R2_ENDPOINT_URL
+    else process.env.R2_ENDPOINT_URL = previousEndpoint
+    if (previousBucket === undefined) delete process.env.R2_BUCKET
+    else process.env.R2_BUCKET = previousBucket
+    if (previousPublicBase === undefined) delete process.env.R2_PUBLIC_BASE_URL
+    else process.env.R2_PUBLIC_BASE_URL = previousPublicBase
   }
 })
 

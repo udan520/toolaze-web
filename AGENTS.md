@@ -18,6 +18,7 @@
 - 图片生成历史或结果卡片里的 `Edit Image` 操作默认跳转到当前 locale 下的 `/ai-image-to-image-generator`，并通过 pending reprompt 传入输出图作为参考图、选中 `image-to-image` tab；不要跳到 `/ai-image-generator` 或默认文字生图 tab。
 - 所有公开落地页、模型页、图片工具页和视频工具页的生成历史默认共用账户级 `/api/history` feed；不要按 `toolSlug`、页面 slug、locale 或模型拆分历史列表。功能名只作为记录标签/metadata，不作为历史读取过滤条件。
 - 任何生成历史里的 `Recreate` 按钮必须回到生成该记录的原落地页或工具页，并带回生成时使用的全部参数，包括 prompt、模型/模式、尺寸/分辨率/时长、参考图片、参考音频/视频、native audio 等；不得只回填 prompt，也不得跳到通用页面后丢失原始输入。若历史记录含 `toolSlug` 或 `sourcePath`，优先使用它们定位原页面。
+- 生成历史 UI 必须显示生成该结果所用的全部参考资源，而不是只显示第一张参考图；图生视频、Motion Control、Talking Avatar 等多资源流程要同时展示参考图片、参考视频和参考音频，并确保 `Recreate` 使用同一批资源回填原页面的对应输入位。若生成请求使用 provider 专用 `uploadRef`，历史记录还必须保存可展示、可回填的公网资源 URL。
 
 ## 执行节奏
 

@@ -61,6 +61,11 @@ type VideoGenerationStatus = 'processing' | 'succeeded' | 'failed'
 type RightPanelMode = 'sample' | 'history'
 type SharedHistoryMode = AiVideoGeneratorModeId | 'text-to-image' | 'image-to-image'
 
+type UploadedMediaReferences = {
+  generationUrls: string[]
+  historyUrls: string[]
+}
+
 interface VideoGenerationRequest {
   id: string
   modelId: AiVideoGeneratorModelId
@@ -969,7 +974,9 @@ export default function AiVideoGeneratorTool({
   const motionReferenceVideoCount = remoteMotionVideoUrls.length + motionVideoFiles.length
   const referenceVideoMaxDurationSeconds = characterOrientation === 'image' ? 10 : modelConfig.referenceVideoMaxDurationSeconds || 30
   const shouldShowGenerationCreditCost = modelConfig.durationMode !== 'reference-video' || motionReferenceVideoCount > 0
+  const motionReferenceVideoFormats = modelConfig.acceptedMotionVideoFormats?.join(', ') || 'MP4, QuickTime'
   const motionReferenceVideoHelperText = formatText(text.motionReferenceVideoHelper, {
+    formats: motionReferenceVideoFormats,
     size: modelConfig.maxVideoFileSizeMb || 50,
     min: modelConfig.referenceVideoMinDurationSeconds || 3,
     max: referenceVideoMaxDurationSeconds,
@@ -1361,10 +1368,11 @@ export default function AiVideoGeneratorTool({
     uploadForm.append('uploadPurpose', modelConfig.uploadPurpose)
   }
 
-  const uploadImages = async () => {
-    if (activeMode !== 'image-to-video') return []
+  const uploadImages = async (): Promise<UploadedMediaReferences> => {
+    if (activeMode !== 'image-to-video') return { generationUrls: [], historyUrls: [] }
 
-    const imageUrls: string[] = [...remoteImageUrls]
+    const generationUrls: string[] = [...remoteImageUrls]
+    const historyUrls: string[] = [...remoteImageUrls]
     const uploadUrl = getUploadUrlForModel(modelConfig)
 
     for (const imageItem of imageFiles) {
@@ -1385,20 +1393,23 @@ export default function AiVideoGeneratorTool({
       }
 
       const mediaReference = String(uploadResult.uploadRef || uploadResult.url || '').trim()
-      if (!mediaReference) {
+      const historyReference = String(uploadResult.url || uploadResult.uploadRef || '').trim()
+      if (!mediaReference || !historyReference) {
         throw new Error(text.uploadRequestFailed)
       }
 
-      imageUrls.push(mediaReference)
+      generationUrls.push(mediaReference)
+      historyUrls.push(historyReference)
     }
 
-    return imageUrls
+    return { generationUrls, historyUrls }
   }
 
-  const uploadMotionVideos = async () => {
-    if (!supportsMotionReferenceVideo) return []
+  const uploadMotionVideos = async (): Promise<UploadedMediaReferences> => {
+    if (!supportsMotionReferenceVideo) return { generationUrls: [], historyUrls: [] }
 
-    const motionVideoUrls: string[] = [...remoteMotionVideoUrls]
+    const generationUrls: string[] = [...remoteMotionVideoUrls]
+    const historyUrls: string[] = [...remoteMotionVideoUrls]
     const uploadUrl = getUploadUrlForModel(modelConfig)
 
     for (const videoItem of motionVideoFiles) {
@@ -1419,14 +1430,16 @@ export default function AiVideoGeneratorTool({
       }
 
       const mediaReference = String(uploadResult.uploadRef || uploadResult.url || '').trim()
-      if (!mediaReference) {
+      const historyReference = String(uploadResult.url || uploadResult.uploadRef || '').trim()
+      if (!mediaReference || !historyReference) {
         throw new Error(text.uploadRequestFailed)
       }
 
-      motionVideoUrls.push(mediaReference)
+      generationUrls.push(mediaReference)
+      historyUrls.push(historyReference)
     }
 
-    return motionVideoUrls
+    return { generationUrls, historyUrls }
   }
 
   const addHistoryItemToFeed = (item: VideoHistoryItem) => {
@@ -1590,8 +1603,10 @@ export default function AiVideoGeneratorTool({
     setRightMode('history')
 
     try {
-      const imageUrls = await uploadImages()
-      const motionVideoUrls = await uploadMotionVideos()
+      const uploadedImageMedia = await uploadImages()
+      const uploadedMotionVideoMedia = await uploadMotionVideos()
+      const imageUrls = uploadedImageMedia.historyUrls
+      const motionVideoUrls = uploadedMotionVideoMedia.historyUrls
       setCurrentRequest((current) => current?.id === request.id ? { ...current, inputUrls: imageUrls, motionVideoUrls } : current)
       const formData = new FormData()
       formData.append('mode', activeMode)
@@ -1603,11 +1618,11 @@ export default function AiVideoGeneratorTool({
       if (supportsNativeAudio) {
         formData.append('nativeAudio', String(nativeAudio))
       }
-      if (imageUrls.length > 0) {
-        formData.append('imageUrls', JSON.stringify(imageUrls))
+      if (uploadedImageMedia.generationUrls.length > 0) {
+        formData.append('imageUrls', JSON.stringify(uploadedImageMedia.generationUrls))
       }
-      if (motionVideoUrls.length > 0) {
-        formData.append('videoUrls', JSON.stringify(motionVideoUrls))
+      if (uploadedMotionVideoMedia.generationUrls.length > 0) {
+        formData.append('videoUrls', JSON.stringify(uploadedMotionVideoMedia.generationUrls))
         formData.append('characterOrientation', characterOrientation)
       }
 
@@ -1643,7 +1658,7 @@ export default function AiVideoGeneratorTool({
         characterOrientation: request.characterOrientation,
         inputPreview: request.inputPreview,
       }
-      const savedItem = await persistGeneratedVideoHistoryItem(completedRequest, videoUrl, [...imageUrls, ...motionVideoUrls], requestHistoryTool)
+      const savedItem = await persistGeneratedVideoHistoryItem(completedRequest, videoUrl, [...uploadedImageMedia.historyUrls, ...uploadedMotionVideoMedia.historyUrls], requestHistoryTool)
       const historyItem: VideoHistoryItem = {
         id: savedItem?.id || completedRequest.id,
         mediaType: 'video',
@@ -1795,51 +1810,89 @@ export default function AiVideoGeneratorTool({
   const renderPromptPreview = (promptText: string) => (
     <p
       data-video-history-prompt
-      className="max-h-[6rem] overflow-y-auto overscroll-contain pr-2 text-sm leading-6 whitespace-pre-wrap text-slate-600"
+      className="max-h-[8rem] overflow-y-auto overscroll-contain pr-2 text-sm leading-6 whitespace-pre-wrap text-slate-600"
     >
       {promptText}
     </p>
   )
 
-  const renderDesktopPendingVideoItem = (item: VideoGenerationRequest) => (
-    <div
-      key={item.id}
-      data-video-result-item
-      className="grid gap-4 border-b border-[#E0E7FF] pb-6 lg:grid-cols-[minmax(0,240px)_minmax(0,1fr)] xl:grid-cols-[minmax(0,280px)_minmax(0,1fr)]"
-    >
-      <div
-        data-video-generating-panel
-        className="flex min-h-[140px] items-center justify-center rounded-xl bg-slate-50 p-2"
-      >
-        <div className="flex flex-col items-center gap-4">
-          <div className="flex gap-2">
-            <div className="h-2.5 w-2.5 rounded-full bg-[#4F46E5] animate-pulse" style={{ animationDelay: '0s' }} />
-            <div className="h-2.5 w-2.5 rounded-full bg-[#4F46E5] animate-pulse" style={{ animationDelay: '0.2s' }} />
-            <div className="h-2.5 w-2.5 rounded-full bg-[#4F46E5] animate-pulse" style={{ animationDelay: '0.4s' }} />
-            <div className="h-2.5 w-2.5 rounded-full bg-[#4F46E5] animate-pulse" style={{ animationDelay: '0.6s' }} />
-          </div>
-          <p className="text-sm font-semibold text-[#4F46E5]">
-            {formatText(text.generatingSeconds, { seconds: generatingSeconds })}
-          </p>
-        </div>
-      </div>
+  const renderVideoReferenceMedia = ({
+    imageUrls,
+    motionVideoUrls,
+  }: {
+    imageUrls: string[]
+    motionVideoUrls: string[]
+  }) => {
+    const hasReferences = imageUrls.length > 0 || motionVideoUrls.length > 0
+    if (!hasReferences) return null
 
-      <div className="min-w-0 space-y-4">
-        {renderVideoMetaTags(item, item.createdAt)}
-        <div>
-          <p className="mb-2 text-sm font-extrabold text-slate-900">{text.prompt}</p>
-          {renderPromptPreview(item.prompt)}
-        </div>
-        {item.inputPreview && (
-          <img
-            src={item.inputPreview}
-            alt={text.referenceImage}
-            className="h-14 w-14 rounded-lg object-cover ring-1 ring-[#E0E7FF]"
-          />
-        )}
+    return (
+      <div className="flex flex-wrap gap-2">
+        {imageUrls.map((url, index) => (
+          <div key={`image-${url}-${index}`} data-video-history-reference-image className="shrink-0">
+            <img
+              src={url}
+              alt={text.referenceImage}
+              className="h-14 w-14 rounded-lg object-cover ring-1 ring-[#E0E7FF]"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        ))}
+        {motionVideoUrls.map((url, index) => (
+          <div key={`video-${url}-${index}`} className="shrink-0">
+            <video
+              data-video-history-reference-video
+              src={url}
+              className="h-14 w-20 rounded-lg object-cover ring-1 ring-[#E0E7FF]"
+              preload="metadata"
+              muted
+              playsInline
+            />
+          </div>
+        ))}
       </div>
-    </div>
-  )
+    )
+  }
+
+  const renderDesktopPendingVideoItem = (item: VideoGenerationRequest) => {
+    return (
+      <div
+        key={item.id}
+        data-video-result-item
+        className="grid gap-4 border-b border-[#E0E7FF] pb-6 lg:grid-cols-[minmax(0,240px)_minmax(0,1fr)] xl:grid-cols-[minmax(0,280px)_minmax(0,1fr)]"
+      >
+        <div
+          data-video-generating-panel
+          className="flex min-h-[140px] items-center justify-center rounded-xl bg-slate-50 p-2"
+        >
+          <div className="flex flex-col items-center gap-4">
+            <div className="flex gap-2">
+              <div className="h-2.5 w-2.5 rounded-full bg-[#4F46E5] animate-pulse" style={{ animationDelay: '0s' }} />
+              <div className="h-2.5 w-2.5 rounded-full bg-[#4F46E5] animate-pulse" style={{ animationDelay: '0.2s' }} />
+              <div className="h-2.5 w-2.5 rounded-full bg-[#4F46E5] animate-pulse" style={{ animationDelay: '0.4s' }} />
+              <div className="h-2.5 w-2.5 rounded-full bg-[#4F46E5] animate-pulse" style={{ animationDelay: '0.6s' }} />
+            </div>
+            <p className="text-sm font-semibold text-[#4F46E5]">
+              {formatText(text.generatingSeconds, { seconds: generatingSeconds })}
+            </p>
+          </div>
+        </div>
+
+        <div className="min-w-0 space-y-4">
+          {renderVideoMetaTags(item, item.createdAt)}
+          <div>
+            <p className="mb-2 text-sm font-extrabold text-slate-900">{text.prompt}</p>
+            {renderPromptPreview(item.prompt)}
+          </div>
+          {renderVideoReferenceMedia({
+            imageUrls: item.inputUrls.length > 0 ? item.inputUrls : (item.inputPreview ? [item.inputPreview] : []),
+            motionVideoUrls: item.motionVideoUrls || [],
+          })}
+        </div>
+      </div>
+    )
+  }
 
   const renderDesktopFailedVideoItem = (item: VideoGenerationRequest) => (
     <div
@@ -1871,104 +1924,99 @@ export default function AiVideoGeneratorTool({
     </div>
   )
 
-  const renderDesktopVideoHistoryItem = (item: VideoHistoryItem) => (
-    <div
-      key={item.id}
-      ref={(node) => setHistoryItemRef(item.id, node)}
-      data-video-result-item
-      className={`grid gap-4 rounded-2xl border-b border-[#E0E7FF] pb-6 transition-colors last:border-b-0 last:pb-0 lg:grid-cols-[minmax(0,240px)_minmax(0,1fr)] xl:grid-cols-[minmax(0,280px)_minmax(0,1fr)] ${
-        activeSettingsHistoryItemId === item.id ? 'bg-[#EEF2FF]/60 p-4 ring-1 ring-[#C7D2FE]' : ''
-      }`}
-    >
+  const renderDesktopVideoHistoryItem = (item: VideoHistoryItem) => {
+    return (
       <div
-        data-video-result-panel
-        className="flex h-full items-start justify-center lg:h-[260px]"
+        key={item.id}
+        ref={(node) => setHistoryItemRef(item.id, node)}
+        data-video-result-item
+        className={`grid gap-4 rounded-2xl border-b border-[#E0E7FF] pb-6 transition-colors last:border-b-0 last:pb-0 lg:grid-cols-[minmax(0,240px)_minmax(0,1fr)] xl:grid-cols-[minmax(0,280px)_minmax(0,1fr)] ${
+          activeSettingsHistoryItemId === item.id ? 'bg-[#EEF2FF]/60 p-4 ring-1 ring-[#C7D2FE]' : ''
+        }`}
       >
-        {item.mediaType === 'video' ? (
-          <video
-            src={item.outputPreview}
-            controls
-            playsInline
-            className="h-full max-h-[260px] max-w-full object-contain"
-          />
-        ) : (
-          <img
-            src={item.outputPreview}
-            alt={text.resultReady}
-            className="h-full max-h-[260px] max-w-full object-contain"
-            loading="lazy"
-            decoding="async"
-          />
-        )}
-      </div>
-
-      <div data-video-result-details className="flex min-w-0 flex-col gap-4 lg:min-h-[260px]">
-        {renderVideoMetaTags(item, item.time)}
-        <div data-video-history-prompt-block className="min-w-0">
-          <div className="mb-2 flex items-center justify-between gap-4">
-            <p className="text-sm font-extrabold text-slate-900">{text.prompt}</p>
-            <button
-              type="button"
-              onClick={() => void copyPromptToClipboard(item.prompt)}
-              className="shrink-0 rounded-lg p-1.5 text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-800"
-              title={text.copyPrompt}
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
-                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-              </svg>
-            </button>
-          </div>
-          {renderPromptPreview(item.prompt)}
-        </div>
-
-        {item.inputPreview && (
-          <div data-video-history-reference-image className="shrink-0">
+        <div
+          data-video-result-panel
+          className="flex h-full items-start justify-center lg:h-[260px]"
+        >
+          {item.mediaType === 'video' ? (
+            <video
+              src={item.outputPreview}
+              controls
+              playsInline
+              className="h-full max-h-[260px] max-w-full object-contain"
+            />
+          ) : (
             <img
-              src={item.inputPreview}
-              alt={text.referenceImage}
-              className="h-14 w-14 rounded-lg object-cover ring-1 ring-[#E0E7FF]"
+              src={item.outputPreview}
+              alt={text.resultReady}
+              className="h-full max-h-[260px] max-w-full object-contain"
               loading="lazy"
               decoding="async"
             />
-          </div>
-        )}
+          )}
+        </div>
 
-        <div data-video-result-actions className="mt-auto flex flex-wrap gap-2 pt-1">
-          <button
-            type="button"
-            onClick={() => applyHistoryItemToForm(item)}
-            className="rounded-xl bg-gradient-to-br from-[#4F46E5] to-[#9333EA] px-5 py-2.5 text-center text-sm font-bold text-white shadow-md transition-all duration-200 hover:shadow-lg"
-          >
-            {text.recreate}
-          </button>
-          <a
-            href={item.outputPreview}
-            download
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center justify-center gap-2 rounded-xl border border-[#C7D2FE] px-4 py-2.5 text-sm font-bold text-[#4F46E5] transition-colors hover:bg-[#EEF2FF]"
-            title={text.download}
-          >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-              <polyline points="7 10 12 15 17 10" />
-              <line x1="12" y1="15" x2="12" y2="3" />
-            </svg>
-            <span>{text.download}</span>
-          </a>
-          <button
-            type="button"
-            onClick={() => void handleDeleteHistoryItem(item)}
-            className="flex items-center justify-center rounded-xl border border-[#C7D2FE] px-3 py-2.5 text-[#4F46E5] transition-colors hover:bg-[#EEF2FF]"
-            title={text.delete}
-          >
-            <DeleteIcon size={20} />
-          </button>
+        <div data-video-result-details className="flex h-full min-w-0 flex-col gap-4 lg:h-[260px]">
+          {renderVideoMetaTags(item, item.time)}
+          <div data-video-history-prompt-block className="min-w-0">
+            <div className="mb-2 flex items-center justify-between gap-4">
+              <p className="text-sm font-extrabold text-slate-900">{text.prompt}</p>
+              <button
+                type="button"
+                onClick={() => void copyPromptToClipboard(item.prompt)}
+                className="shrink-0 rounded-lg p-1.5 text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-800"
+                title={text.copyPrompt}
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                </svg>
+              </button>
+            </div>
+            {renderPromptPreview(item.prompt)}
+          </div>
+
+          {renderVideoReferenceMedia({
+            imageUrls: item.inputUrls,
+            motionVideoUrls: item.motionVideoUrls || [],
+          })}
+
+          <div data-video-result-actions className="mt-auto flex flex-wrap gap-2 pt-1">
+            <button
+              type="button"
+              onClick={() => applyHistoryItemToForm(item)}
+              className="rounded-xl bg-gradient-to-br from-[#4F46E5] to-[#9333EA] px-5 py-2.5 text-center text-sm font-bold text-white shadow-md transition-all duration-200 hover:shadow-lg"
+            >
+              {text.recreate}
+            </button>
+            <a
+              href={item.outputPreview}
+              download
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center justify-center gap-2 rounded-xl border border-[#C7D2FE] px-4 py-2.5 text-sm font-bold text-[#4F46E5] transition-colors hover:bg-[#EEF2FF]"
+              title={text.download}
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+              <span>{text.download}</span>
+            </a>
+            <button
+              type="button"
+              onClick={() => void handleDeleteHistoryItem(item)}
+              className="flex items-center justify-center rounded-xl border border-[#C7D2FE] px-3 py-2.5 text-[#4F46E5] transition-colors hover:bg-[#EEF2FF]"
+              title={text.delete}
+            >
+              <DeleteIcon size={20} />
+            </button>
+          </div>
         </div>
       </div>
-    </div>
-  )
+    )
+  }
 
   const renderDesktopVideoResultFeed = () => (
     <div
