@@ -207,6 +207,28 @@ test('Kling 2.6 Motion Control is an image-and-motion-video model', () => {
   assert.equal(model.defaultDuration, 3)
 })
 
+test('image-to-video models with reference-shaped output disable manual aspect-ratio selection', () => {
+  const referenceShapedModelIds = [
+    'seedance-1-pro-fast',
+    'seedance-1-pro',
+    'seedance-1-lite',
+    'wan-2-6',
+    'wan-2-5',
+    'wan-2-2',
+    'kling-2-6-motion-control',
+    'happyhorse-1-1',
+    'happyhorse',
+  ] as const
+
+  for (const modelId of referenceShapedModelIds) {
+    assert.equal(
+      getAiVideoGeneratorModelConfig(modelId).imageToVideoAspectRatioMode,
+      'reference-image',
+      `${modelId} image-to-video output should use the Match Reference aspect-ratio control`,
+    )
+  }
+})
+
 test('AI video generator model configs define practical video output defaults', () => {
   const grok = getAiVideoGeneratorModelConfig('grok-1-5-video')
   const seedance = getAiVideoGeneratorModelConfig('seedance-2')
@@ -388,6 +410,8 @@ test('AI video generator translation slots exist for every supported locale', ()
     'upload',
     'prompt',
     'aspectRatio',
+    'referenceImageAspectRatioLabel',
+    'referenceImageAspectRatioHelper',
     'duration',
     'resolution',
     'generate',
@@ -438,6 +462,8 @@ test('AI video generator translation slots exist for every supported locale', ()
       'modelSwitchedDescription',
       'noCompatibleModelTitle',
       'noCompatibleModelDescription',
+      'referenceImageAspectRatioLabel',
+      'referenceImageAspectRatioHelper',
     ]) {
       assert.notEqual(localizedToolText[key], englishToolText[key], `${locale}.${key}`)
     }

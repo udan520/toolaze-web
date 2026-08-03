@@ -64,6 +64,7 @@
     "aiKissingVideoGenerator": "Generador de videos de besos IA",
     "aiClothesChanger": "Cambiador de ropa con IA",
     "wan25Video": "Wan 2.5 Video",
+    "wan26Video": "Wan 2.6 Video",
     "klingAiVideoGenerator": "Generador de video IA Kling",
     "aiBikiniGenerator": "Generador de bikini con IA",
     "unrestrictedAiImageGenerator": "Imagen IA Unlimited",
@@ -289,6 +290,7 @@
     "aiKissingVideoGenerator": "Generador de videos de besos IA",
     "aiClothesChanger": "Cambiador de ropa con IA",
     "wan25Video": "Wan 2.5 Video",
+    "wan26Video": "Wan 2.6 Video",
     "klingAiVideoGenerator": "Generador de video IA Kling",
     "aiBikiniGenerator": "Generador de bikini con IA",
     "unrestrictedAiImageGenerator": "Generador IA Unrestricted / Unlimited",
@@ -821,7 +823,9 @@
       "characterOrientation": "Orientación del personaje",
       "characterOrientationImage": "Imagen",
       "characterOrientationVideo": "Video",
-      "characterOrientationHelper": "Imagen mantiene la orientación de la persona en la imagen del personaje (video máx. 10 s). Video sigue la orientación del personaje en el video de referencia (video máx. 30 s)."
+      "characterOrientationHelper": "Imagen mantiene la orientación de la persona en la imagen del personaje (video máx. 10 s). Video sigue la orientación del personaje en el video de referencia (video máx. 30 s).",
+      "referenceImageAspectRatioLabel": "Sigue la imagen de referencia",
+      "referenceImageAspectRatioHelper": "La salida sigue la forma de la referencia subida. Recorta la referencia a 16:9 antes de subirla."
     }
   },
   "imageCompressor": {

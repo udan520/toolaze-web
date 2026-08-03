@@ -79,6 +79,7 @@ const defaultNavTranslations = {
   supportedAiModels: 'Supported AI Models',
   grok15Video: 'Grok 1.5 Video',
   wan27Video: 'Wan 2.7 Video',
+  wan26Video: 'Wan 2.6 Video',
   wan25Video: 'Wan 2.5 Video',
   pricing: 'Pricing',
   nanoBananaPro: 'Nano Banana Pro',
@@ -284,6 +285,7 @@ type AiVideoNavLabelKey =
   | 'textToVideoGenerator'
   | 'imageToVideoGenerator'
   | 'wan27Video'
+  | 'wan26Video'
   | 'wan25Video'
   | 'seedance25'
   | 'seedance2'
@@ -317,6 +319,7 @@ const AI_VIDEO_MODEL_MENU_ITEMS: readonly AiVideoModelMenuItem[] = [
   { href: '/model/kling-3', labelKey: 'kling3', logoSrc: '/model-logos/kling.svg' },
   { href: '/model/kling-2-6-pro-motion-control', labelKey: 'kling26MotionControl', logoSrc: '/model-logos/kling.svg' },
   { href: '/model/wan-2-7-ai-video-generator', labelKey: 'wan27Video', logoSrc: '/model-logos/wan.ico' },
+  { href: '/model/wan-2-6-ai-video-generator', labelKey: 'wan26Video', logoSrc: '/model-logos/wan.ico' },
   { href: '/model/wan-2-5-ai-video-generator', labelKey: 'wan25Video', logoSrc: '/model-logos/wan.ico' },
   { href: '/model/grok-imagine-video-1-5', labelKey: 'grok15Video', logoSrc: '/model-logos/grok.svg', badgeKey: 'bestValue' },
 ]
@@ -1838,6 +1841,10 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
         {
           title: navTranslations.wan27Video || defaultNavTranslations.wan27Video,
           href: getLocalizedHref('/model/wan-2-7-ai-video-generator'),
+        },
+        {
+          title: navTranslations.wan26Video || defaultNavTranslations.wan26Video,
+          href: getLocalizedHref('/model/wan-2-6-ai-video-generator'),
         },
         {
           title: navTranslations.wan25Video || defaultNavTranslations.wan25Video,

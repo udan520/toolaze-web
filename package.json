@@ -19,6 +19,7 @@
     "sync-individual": "tsx scripts/sync-individual-locales.ts",
     "sync-exact": "tsx scripts/sync-exact-copy.ts",
     "check:generation-contract": "tsx scripts/check-generation-contract.ts",
+    "check:visible-copy": "node --test src/data/visible-copy-guardrails.test.mjs",
     "pre-deploy": "node scripts/pre-deploy-check.js",
     "prebuild": "node scripts/prebuild-check.js",
     "build:prompt-shards": "node scripts/build-prompt-data-shards.js",

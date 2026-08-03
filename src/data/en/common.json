@@ -64,6 +64,7 @@
     "aiKissingVideoGenerator": "AI Kissing Video Generator",
     "aiClothesChanger": "AI Clothes Changer",
     "wan25Video": "Wan 2.5 Video",
+    "wan26Video": "Wan 2.6 Video",
     "klingAiVideoGenerator": "Kling AI Video Generator",
     "aiBikiniGenerator": "AI Bikini Generator",
     "unrestrictedAiImageGenerator": "Unlimited AI Image",
@@ -277,6 +278,7 @@
     "aiKissingVideoGenerator": "AI Kissing Video Generator",
     "aiClothesChanger": "AI Clothes Changer",
     "wan25Video": "Wan 2.5 Video",
+    "wan26Video": "Wan 2.6 Video",
     "klingAiVideoGenerator": "Kling AI Video Generator",
     "aiBikiniGenerator": "AI Bikini Generator",
     "unrestrictedAiImageGenerator": "Unrestricted / Unlimited AI Image Generator",
@@ -805,7 +807,9 @@
       "characterOrientation": "Character Orientation",
       "characterOrientationImage": "Image",
       "characterOrientationVideo": "Video",
-      "characterOrientationHelper": "Use Image to match the person's orientation in the character image (max 10s video). Use Video to follow the character orientation in the reference video (max 30s video)."
+      "characterOrientationHelper": "Use Image to match the person's orientation in the character image (max 10s video). Use Video to follow the character orientation in the reference video (max 30s video).",
+      "referenceImageAspectRatioLabel": "Match Reference",
+      "referenceImageAspectRatioHelper": "Output follows the uploaded reference shape. Crop the reference before upload for 16:9 output."
     }
   },
   "historyPage": {

@@ -64,6 +64,7 @@
     "aiKissingVideoGenerator": "KI-Kuss-Video-Generator",
     "aiClothesChanger": "KI-Kleiderwechsler",
     "wan25Video": "Wan 2.5 Video",
+    "wan26Video": "Wan 2.6 Video",
     "klingAiVideoGenerator": "Kling KI-Videogenerator",
     "aiBikiniGenerator": "KI-Bikini-Generator",
     "unrestrictedAiImageGenerator": "Unlimited KI-Bild",
@@ -289,6 +290,7 @@
     "aiKissingVideoGenerator": "KI-Kuss-Video-Generator",
     "aiClothesChanger": "KI-Kleiderwechsler",
     "wan25Video": "Wan 2.5 Video",
+    "wan26Video": "Wan 2.6 Video",
     "klingAiVideoGenerator": "Kling KI-Videogenerator",
     "aiBikiniGenerator": "KI-Bikini-Generator",
     "unrestrictedAiImageGenerator": "Unrestricted / Unlimited KI-Bildgenerator",
@@ -821,7 +823,9 @@
       "characterOrientation": "Figurenausrichtung",
       "characterOrientationImage": "Bild",
       "characterOrientationVideo": "Video",
-      "characterOrientationHelper": "Bild übernimmt die Ausrichtung der Person im Charakterbild (Video max. 10 s). Video folgt der Figurenausrichtung im Referenzvideo (Video max. 30 s)."
+      "characterOrientationHelper": "Bild übernimmt die Ausrichtung der Person im Charakterbild (Video max. 10 s). Video folgt der Figurenausrichtung im Referenzvideo (Video max. 30 s).",
+      "referenceImageAspectRatioLabel": "Folgt dem Referenzbild",
+      "referenceImageAspectRatioHelper": "Die Ausgabe folgt der Form der hochgeladenen Referenz. Schneide die Referenz vor dem Upload auf 16:9 zu."
     }
   },
   "imageCompressor": {

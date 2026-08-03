@@ -425,3 +425,47 @@ test('AI video generator page uses the selected Grok history video as the hero d
   assert.equal(sourceMeta.history.resolution, '480p')
   assert.match(l2PageSource, /demoVideo=\{content\.heroDemoVideo/, 'AI Video Generator should pass the page demo video into the shared video tool')
 })
+
+test('Wan image-to-video follows the reference image aspect ratio instead of exposing manual ratio buttons', () => {
+  const toolSource = readFileSync(componentPath, 'utf8')
+  const configSource = readFileSync(configPath, 'utf8')
+
+  assert.match(
+    configSource,
+    /imageToVideoAspectRatioMode\?: 'manual' \| 'reference-image'/,
+    'model config should support image-to-video models whose output shape follows the reference image',
+  )
+  assert.match(
+    configSource,
+    /imageToVideoAspectRatioMode:\s*'reference-image'/,
+    'Wan image-to-video models should be marked as following the uploaded reference image shape',
+  )
+  assert.match(
+    toolSource,
+    /const followsReferenceImageAspectRatio = activeMode === 'image-to-video' && modelConfig\.imageToVideoAspectRatioMode === 'reference-image'/,
+    'the generator should detect reference-image aspect-ratio mode at render time',
+  )
+  assert.match(
+    toolSource,
+    /data-video-reference-aspect-ratio-note/,
+    'the generator should render a read-only note instead of manual ratio buttons for this mode',
+  )
+  assert.match(toolSource, /Match Reference/)
+  assert.match(toolSource, /disabled[\s\S]*\{text\.referenceImageAspectRatioLabel\}/)
+})
+
+test('desktop video history keeps long prompts scrollable above the reference image', () => {
+  const toolSource = readFileSync(componentPath, 'utf8')
+  const promptPreview = toolSource.match(/const renderPromptPreview = [\s\S]*?\n  \)/)?.[0] || ''
+  const desktopHistoryRenderer = toolSource.match(/const renderDesktopVideoHistoryItem = [\s\S]*?\n  const renderDesktopVideoResultFeed/)?.[0] || ''
+
+  assert.match(promptPreview, /max-h-\[6rem\]/, 'history prompts should be capped at four 1.5rem lines before scrolling')
+  assert.match(promptPreview, /overflow-y-auto/, 'overflowing history prompts should scroll inside the prompt block')
+  assert.match(desktopHistoryRenderer, /data-video-history-prompt-block/, 'desktop history should isolate prompt content in its own block')
+  assert.match(desktopHistoryRenderer, /data-video-history-reference-image/, 'desktop history should render the reference image in a separate block')
+  assert.ok(
+    desktopHistoryRenderer.indexOf('data-video-history-prompt-block') < desktopHistoryRenderer.indexOf('data-video-history-reference-image'),
+    'the reference image should be rendered below the prompt block',
+  )
+  assert.match(desktopHistoryRenderer, /lg:min-h-\[260px\]/, 'desktop history details should avoid fixed-height clipping that can overlap content')
+})

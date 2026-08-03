@@ -86,6 +86,7 @@ const VIDEO_GENERATOR_DEFAULT_MODELS: Record<string, AiVideoGeneratorModelId> = 
   'ai-video-generator': 'grok-1-5-video',
   'ai-asmr-video-generator': 'grok-1-5-video',
   'wan-2-7-ai-video-generator': 'wan-2-7',
+  'wan-2-6-ai-video-generator': 'wan-2-6',
   'wan-2-5-ai-video-generator': 'wan-2-5',
   'kling-ai-video-generator': 'kling-3',
   'seedance-2': 'seedance-2',
@@ -697,6 +698,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
       'aiVideo',
       'textToVideoGenerator',
       'wan25Video',
+      'wan26Video',
       'pricing',
       'wan27Image',
       'seedream45',
@@ -735,6 +737,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
       'aiVideo',
       'textToVideoGenerator',
       'wan25Video',
+      'wan26Video',
       'aiImage',
       'aiImageGenerator',
       'textToImageGenerator',
@@ -876,6 +879,12 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
           { label: breadcrumbT.model || 'Model', href: '/model' },
           { label: 'Wan 2.7 AI Video Generator' },
         ]
+      : tool === 'wan-2-6-ai-video-generator'
+      ? [
+          { label: breadcrumbT.home, href: '/' },
+          { label: breadcrumbT.model || 'Model', href: '/model' },
+          { label: 'Wan 2.6 AI Video Generator' },
+        ]
       : tool === 'wan-2-5-ai-video-generator'
       ? [
           { label: breadcrumbT.home, href: '/' },
@@ -920,6 +929,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
       'nano-banana-2',
       'ai-video-generator',
       'wan-2-7-ai-video-generator',
+      'wan-2-6-ai-video-generator',
       'wan-2-5-ai-video-generator',
       'kling-2-6-pro-motion-control',
       'text-to-video-generator',
@@ -934,6 +944,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
       if (modelTool === 'nano-banana-2') return locale === 'en' ? '/model/nano-banana-2' : `/${locale}/model/nano-banana-2`
       if (modelTool === 'gpt-image-2') return locale === 'en' ? '/model/gpt-image-2' : `/${locale}/model/gpt-image-2`
       if (modelTool === 'wan-2-7-ai-video-generator') return locale === 'en' ? '/model/wan-2-7-ai-video-generator' : `/${locale}/model/wan-2-7-ai-video-generator`
+      if (modelTool === 'wan-2-6-ai-video-generator') return locale === 'en' ? '/model/wan-2-6-ai-video-generator' : `/${locale}/model/wan-2-6-ai-video-generator`
       if (modelTool === 'wan-2-5-ai-video-generator') return locale === 'en' ? '/model/wan-2-5-ai-video-generator' : `/${locale}/model/wan-2-5-ai-video-generator`
       if (modelTool === 'seedance-2-5') return locale === 'en' ? '/model/seedance-2-5' : `/${locale}/model/seedance-2-5`
       if (modelTool === 'seedance-2') return locale === 'en' ? '/model/seedance-2' : `/${locale}/model/seedance-2`

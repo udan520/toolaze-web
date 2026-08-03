@@ -28,6 +28,7 @@ const MODEL_TOOL_MAP: Record<string, string> = {
   'seedream-5-0-pro': 'seedream-5-0-pro',
   'wan-2-7-image': 'wan-2-7-image',
   'wan-2-7-ai-video-generator': 'wan-2-7-ai-video-generator',
+  'wan-2-6-ai-video-generator': 'wan-2-6-ai-video-generator',
   'wan-2-5-ai-video-generator': 'wan-2-5-ai-video-generator',
   'seedance-2-5': 'seedance-2-5',
   'seedance-2': 'seedance-2',

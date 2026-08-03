@@ -57,6 +57,7 @@ export interface AiVideoGeneratorModelConfig {
   supportsMotionReferenceVideo?: boolean
   promptRequired?: boolean
   durationMode?: 'manual' | 'reference-video'
+  imageToVideoAspectRatioMode?: 'manual' | 'reference-image'
   referenceVideoMinDurationSeconds?: number
   referenceVideoMaxDurationSeconds?: number
   acceptedImageMimeTypes?: string[]
@@ -215,6 +216,9 @@ const AI_VIDEO_GENERATOR_MODEL_OPTIONS_BASE = [
     supportedModes: id === 'seedance-1-pro-fast'
       ? ['image-to-video' as const]
       : ['image-to-video' as const, 'text-to-video' as const],
+    imageToVideoAspectRatioMode: id === 'seedance-1-pro-fast' || id === 'seedance-1-pro' || id === 'seedance-1-lite'
+      ? 'reference-image' as const
+      : undefined,
     maxImages,
     maxFileSizeMb: id.startsWith('seedance-2') ? 30 : 10,
     aspectRatios: ['16:9', '9:16', '1:1', '4:3', '3:4'].map((value) => ({ value, label: value })),
@@ -262,6 +266,7 @@ const AI_VIDEO_GENERATOR_MODEL_OPTIONS_BASE = [
     qualityRating: id === 'wan-2-6' ? 4.5 : 4,
     minCredits,
     defaultMode: 'text-to-video' as const,
+    imageToVideoAspectRatioMode: 'reference-image' as const,
     maxImages: 1,
     maxFileSizeMb: 10,
     aspectRatios: [{ value: '16:9', label: '16:9' }, { value: '9:16', label: '9:16' }, { value: '1:1', label: '1:1' }],
@@ -344,6 +349,7 @@ const AI_VIDEO_GENERATOR_MODEL_OPTIONS_BASE = [
     supportsMotionReferenceVideo: true,
     promptRequired: false,
     durationMode: 'reference-video',
+    imageToVideoAspectRatioMode: 'reference-image',
     referenceVideoMinDurationSeconds: 3,
     referenceVideoMaxDurationSeconds: 30,
     acceptedMotionVideoFormats: ['MP4', 'QuickTime', 'Matroska'],
@@ -455,6 +461,7 @@ const AI_VIDEO_GENERATOR_MODEL_OPTIONS_BASE = [
     qualityRating,
     minCredits,
     defaultMode: 'text-to-video' as const,
+    imageToVideoAspectRatioMode: 'reference-image' as const,
     maxImages: 1,
     maxFileSizeMb: 20,
     aspectRatios: [

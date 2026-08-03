@@ -64,6 +64,7 @@
     "aiKissingVideoGenerator": "AI 키스 동영상 생성기",
     "aiClothesChanger": "AI 의상 체인저",
     "wan25Video": "Wan 2.5 동영상",
+    "wan26Video": "Wan 2.6 동영상",
     "klingAiVideoGenerator": "Kling AI 동영상 생성기",
     "aiBikiniGenerator": "AI 비키니 생성기",
     "unrestrictedAiImageGenerator": "Unlimited AI 이미지",
@@ -289,6 +290,7 @@
     "aiKissingVideoGenerator": "AI 키스 동영상 생성기",
     "aiClothesChanger": "AI 의상 체인저",
     "wan25Video": "Wan 2.5 동영상",
+    "wan26Video": "Wan 2.6 동영상",
     "klingAiVideoGenerator": "Kling AI 동영상 생성기",
     "aiBikiniGenerator": "AI 비키니 생성기",
     "unrestrictedAiImageGenerator": "Unrestricted / Unlimited AI 이미지 생성기",
@@ -821,7 +823,9 @@
       "characterOrientation": "캐릭터 방향",
       "characterOrientationImage": "이미지",
       "characterOrientationVideo": "비디오",
-      "characterOrientationHelper": "이미지는 캐릭터 이미지 속 인물의 방향을 유지합니다(비디오 최대 10초). 비디오는 참조 비디오 속 캐릭터 방향을 따릅니다(비디오 최대 30초)."
+      "characterOrientationHelper": "이미지는 캐릭터 이미지 속 인물의 방향을 유지합니다(비디오 최대 10초). 비디오는 참조 비디오 속 캐릭터 방향을 따릅니다(비디오 최대 30초).",
+      "referenceImageAspectRatioLabel": "참조 이미지를 따름",
+      "referenceImageAspectRatioHelper": "출력은 업로드한 참조의 비율을 따릅니다. 16:9 출력이 필요하면 업로드 전에 참조를 잘라 주세요."
     }
   },
   "imageCompressor": {

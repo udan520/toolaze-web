@@ -131,6 +131,7 @@ const VIDEO_MODEL_CONFIGS = {
     creditModelId: 'seedance-1-pro-fast',
     supportedModes: new Set(['image-to-video']),
     maxImages: 1,
+    imageToVideoAspectRatioMode: 'reference-image',
     defaultAspectRatio: '16:9',
     aspectRatios: new Set(['16:9', '9:16', '1:1', '4:3', '3:4']),
     defaultResolution: '720p',
@@ -155,6 +156,7 @@ const VIDEO_MODEL_CONFIGS = {
     inputSchema: 'seedance-1',
     creditModelId: id,
     maxImages: 1,
+    imageToVideoAspectRatioMode: 'reference-image',
     defaultAspectRatio: '16:9',
     aspectRatios: new Set(['16:9', '9:16', '1:1', '4:3', '3:4']),
     defaultResolution: '480p',
@@ -207,6 +209,7 @@ const VIDEO_MODEL_CONFIGS = {
     maxImages: 1,
     defaultAspectRatio: '16:9',
     aspectRatios: new Set(['16:9', '9:16', '1:1']),
+    imageToVideoAspectRatioMode: 'reference-image',
     defaultResolution: resolutions[0],
     resolutions: new Set(resolutions),
     defaultDuration: 5,
@@ -306,6 +309,7 @@ const VIDEO_MODEL_CONFIGS = {
     maxImages: 1,
     maxVideos: 1,
     promptRequired: false,
+    imageToVideoAspectRatioMode: 'reference-image',
     defaultAspectRatio: '16:9',
     aspectRatios: new Set(['16:9', '9:16', '1:1']),
     defaultResolution: '720p',
@@ -385,6 +389,7 @@ const VIDEO_MODEL_CONFIGS = {
     inputSchema: 'happyhorse',
     aliases: [],
     maxImages: 1,
+    imageToVideoAspectRatioMode: 'reference-image',
     defaultAspectRatio: '16:9',
     aspectRatios: new Set([
       '16:9',
@@ -721,14 +726,22 @@ function buildProviderInput({
   }
 
   if (modelConfig.inputSchema === 'wan') {
-    if (mode === 'image-to-video') {
-      if (modelConfig.imageField === 'image_urls') input.image_urls = imageUrls;
-      else if (modelConfig.imageField === 'first_frame_url') {
-        input.first_frame_url = imageUrls[0];
-        if (imageUrls[1]) input.last_frame_url = imageUrls[1];
-      } else input.image_url = imageUrls[0];
+    const wanInput = {
+      prompt,
+      resolution,
+      duration: String(duration),
+    };
+    if (mode === 'text-to-video' || modelConfig.imageToVideoAspectRatioMode !== 'reference-image') {
+      wanInput.aspect_ratio = aspectRatio;
     }
-    return input;
+    if (mode === 'image-to-video') {
+      if (modelConfig.imageField === 'image_urls') wanInput.image_urls = imageUrls;
+      else if (modelConfig.imageField === 'first_frame_url') {
+        wanInput.first_frame_url = imageUrls[0];
+        if (imageUrls[1]) wanInput.last_frame_url = imageUrls[1];
+      } else wanInput.image_url = imageUrls[0];
+    }
+    return wanInput;
   }
 
   if (modelConfig.inputSchema === 'kling-versioned') {
@@ -921,13 +934,17 @@ export async function onRequest(context) {
       return jsonResponse({ error: 'Video pricing is not configured for this model.' }, 500);
     }
 
+    const metadataAspectRatio = modelConfig.imageToVideoAspectRatioMode === 'reference-image' && mode === 'image-to-video'
+      ? 'Match Reference'
+      : aspectRatio.value;
+
     creditMetadata = {
       model: modelConfig.creditModelId,
       providerModel,
       mode,
       mediaType: 'video',
       resolution: resolution.value,
-      aspectRatio: aspectRatio.value,
+      aspectRatio: metadataAspectRatio,
       duration: duration.value,
       nativeAudio,
       requiredCredits,

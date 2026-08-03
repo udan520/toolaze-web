@@ -64,6 +64,7 @@
     "aiKissingVideoGenerator": "Générateur de vidéos de baiser IA",
     "aiClothesChanger": "Changeur de vêtements IA",
     "wan25Video": "Vidéo Wan 2.5",
+    "wan26Video": "Vidéo Wan 2.6",
     "klingAiVideoGenerator": "Générateur de vidéo IA Kling",
     "aiBikiniGenerator": "Générateur de bikini IA",
     "unrestrictedAiImageGenerator": "Image IA Unlimited",
@@ -289,6 +290,7 @@
     "aiKissingVideoGenerator": "Générateur de vidéos de baiser IA",
     "aiClothesChanger": "Changeur de vêtements IA",
     "wan25Video": "Vidéo Wan 2.5",
+    "wan26Video": "Vidéo Wan 2.6",
     "klingAiVideoGenerator": "Générateur de vidéo IA Kling",
     "aiBikiniGenerator": "Générateur de bikini IA",
     "unrestrictedAiImageGenerator": "Générateur IA Unrestricted / Unlimited",
@@ -821,7 +823,9 @@
       "characterOrientation": "Orientation du personnage",
       "characterOrientationImage": "Image",
       "characterOrientationVideo": "Vidéo",
-      "characterOrientationHelper": "Image conserve l’orientation de la personne dans l’image du personnage (vidéo de 10 s max.). Vidéo suit l’orientation du personnage dans la vidéo de référence (vidéo de 30 s max.)."
+      "characterOrientationHelper": "Image conserve l’orientation de la personne dans l’image du personnage (vidéo de 10 s max.). Vidéo suit l’orientation du personnage dans la vidéo de référence (vidéo de 30 s max.).",
+      "referenceImageAspectRatioLabel": "Suit l’image de référence",
+      "referenceImageAspectRatioHelper": "La sortie suit le format de la référence importée. Recadrez la référence en 16:9 avant l’import."
     }
   },
   "imageCompressor": {

@@ -55,6 +55,12 @@
       "status": "ready_for_publish"
     },
     {
+      "taskId": "2026-08-03-wan-2-6-ai-video-generator",
+      "slug": "wan-2-6-ai-video-generator",
+      "pageType": "l2",
+      "status": "ready_for_publish"
+    },
+    {
       "taskId": "2026-07-30-kling-ai-video-generator",
       "slug": "kling-ai-video-generator",
       "pageType": "l2",

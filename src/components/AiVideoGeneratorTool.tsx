@@ -230,7 +230,11 @@ const FALLBACK_TEXT = {
   characterOrientationImage: 'Image',
   characterOrientationVideo: 'Video',
   characterOrientationHelper: "Use Image to match the person's orientation in the character image (max 10s video). Use Video to follow the character orientation in the reference video (max 30s video).",
+  referenceImageAspectRatioLabel: 'Match Reference',
+  referenceImageAspectRatioHelper: 'Output follows the uploaded reference shape. Crop the reference before upload for 16:9 output.',
 }
+
+const REFERENCE_IMAGE_ASPECT_RATIO_LABEL = FALLBACK_TEXT.referenceImageAspectRatioLabel
 
 const VIDEO_HISTORY_MODEL_SLUGS: Record<AiVideoGeneratorModelId, string> = {
   'grok-1-5-video': 'grok-imagine-video-1-5',
@@ -372,6 +376,10 @@ function mapPersistedVideoHistoryItem(item: PersistedVideoHistoryItem): VideoHis
 
   const modelId = getVideoModelIdFromHistoryModel(item.model)
   const modelConfig = getAiVideoGeneratorModelConfig(modelId)
+  const historyMode: AiVideoGeneratorModeId = inputUrls.length > 0 ? 'image-to-video' : 'text-to-video'
+  const historyAspectRatio = historyMode === 'image-to-video' && modelConfig.imageToVideoAspectRatioMode === 'reference-image'
+    ? REFERENCE_IMAGE_ASPECT_RATIO_LABEL
+    : item.aspectRatio || modelConfig.aspectRatios[0]?.value || '16:9'
 
   return {
     id,
@@ -379,9 +387,9 @@ function mapPersistedVideoHistoryItem(item: PersistedVideoHistoryItem): VideoHis
     model: String(item.model || '').trim() || null,
     modelId,
     modelName: modelConfig.name,
-    mode: inputUrls.length > 0 ? 'image-to-video' : 'text-to-video',
+    mode: historyMode,
     prompt,
-    aspectRatio: item.aspectRatio || modelConfig.aspectRatios[0]?.value || '16:9',
+    aspectRatio: historyAspectRatio,
     duration: getHistoryDuration(item.outputFormat, modelConfig.defaultDuration || modelConfig.durations[0] || 5),
     resolution: item.resolution || modelConfig.resolutions[0] || '480p',
     outputFormat: item.outputFormat || null,
@@ -413,6 +421,12 @@ function getImageHistoryModeLabel(mode: SharedHistoryMode, text: typeof FALLBACK
   if (mode === 'image-to-image') return text.imageToImage
   if (mode === 'text-to-image') return text.textToImage
   return getModeLabel(mode, text)
+}
+
+function getValidVideoAspectRatio(value: string | null | undefined, modelConfig: AiVideoGeneratorModelConfig) {
+  return value && modelConfig.aspectRatios.some((option) => option.value === value)
+    ? value
+    : modelConfig.aspectRatios[0]?.value || '16:9'
 }
 
 function getInitialVideoMode(
@@ -639,6 +653,7 @@ export default function AiVideoGeneratorTool({
   const supportsMotionReferenceVideo = Boolean(modelConfig.supportsMotionReferenceVideo)
   const promptRequired = modelConfig.promptRequired !== false
   const promptLabel = promptRequired ? text.prompt : `${text.prompt} (${text.optional})`
+  const followsReferenceImageAspectRatio = activeMode === 'image-to-video' && modelConfig.imageToVideoAspectRatioMode === 'reference-image'
   const minimumCreditCost = useMemo(() => getAiVideoGeneratorModelMinimumCredits(modelConfig), [modelConfig])
   const generationCreditCost = useMemo(
     () => calculateVideoGenerationCredits(selectedModelId, resolution, duration, {
@@ -1554,7 +1569,7 @@ export default function AiVideoGeneratorTool({
       modelName: modelConfig.name,
       mode: activeMode,
       prompt: prompt.trim(),
-      aspectRatio,
+      aspectRatio: followsReferenceImageAspectRatio ? text.referenceImageAspectRatioLabel : aspectRatio,
       duration,
       resolution,
       nativeAudio: supportsNativeAudio && nativeAudio,
@@ -1701,7 +1716,7 @@ export default function AiVideoGeneratorTool({
     setActiveModelGroupId(getAiVideoGeneratorModelGroupId(item.modelId))
     setActiveMode(item.inputUrls.length > 0 ? 'image-to-video' : item.mode as AiVideoGeneratorModeId)
     setPrompt(item.prompt)
-    setAspectRatio(item.aspectRatio || itemConfig.aspectRatios[0]?.value || '16:9')
+    setAspectRatio(getValidVideoAspectRatio(item.aspectRatio, itemConfig))
     setDuration(item.duration || itemConfig.defaultDuration || itemConfig.durations[0] || 5)
     setResolution(item.resolution || itemConfig.resolutions[0] || '480p')
     setNativeAudio(Boolean(itemConfig.supportsNativeAudio && item.nativeAudio))
@@ -1776,7 +1791,7 @@ export default function AiVideoGeneratorTool({
   const renderPromptPreview = (promptText: string) => (
     <p
       data-video-history-prompt
-      className="max-h-[8rem] overflow-y-auto overscroll-contain pr-2 text-sm leading-6 whitespace-pre-wrap text-slate-600"
+      className="max-h-[6rem] overflow-y-auto overscroll-contain pr-2 text-sm leading-6 whitespace-pre-wrap text-slate-600"
     >
       {promptText}
     </p>
@@ -1883,34 +1898,36 @@ export default function AiVideoGeneratorTool({
         )}
       </div>
 
-      <div data-video-result-details className="flex h-full min-w-0 flex-col gap-4 lg:h-[260px]">
+      <div data-video-result-details className="flex min-w-0 flex-col gap-4 lg:min-h-[260px]">
         {renderVideoMetaTags(item, item.time)}
-        <div className="flex min-h-0 items-start justify-between gap-4">
-          <div className="min-w-0 flex-1">
-            <p className="mb-2 text-sm font-extrabold text-slate-900">{text.prompt}</p>
-            {renderPromptPreview(item.prompt)}
+        <div data-video-history-prompt-block className="min-w-0">
+          <div className="mb-2 flex items-center justify-between gap-4">
+            <p className="text-sm font-extrabold text-slate-900">{text.prompt}</p>
+            <button
+              type="button"
+              onClick={() => void copyPromptToClipboard(item.prompt)}
+              className="shrink-0 rounded-lg p-1.5 text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-800"
+              title={text.copyPrompt}
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+              </svg>
+            </button>
           </div>
-          <button
-            type="button"
-            onClick={() => void copyPromptToClipboard(item.prompt)}
-            className="shrink-0 rounded-lg p-1.5 text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-800"
-            title={text.copyPrompt}
-          >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
-              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-            </svg>
-          </button>
+          {renderPromptPreview(item.prompt)}
         </div>
 
         {item.inputPreview && (
-          <img
-            src={item.inputPreview}
-            alt={text.referenceImage}
-            className="h-14 w-14 rounded-lg object-cover ring-1 ring-[#E0E7FF]"
-            loading="lazy"
-            decoding="async"
-          />
+          <div data-video-history-reference-image className="shrink-0">
+            <img
+              src={item.inputPreview}
+              alt={text.referenceImage}
+              className="h-14 w-14 rounded-lg object-cover ring-1 ring-[#E0E7FF]"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
         )}
 
         <div data-video-result-actions className="mt-auto flex flex-wrap gap-2 pt-1">
@@ -2236,22 +2253,38 @@ export default function AiVideoGeneratorTool({
                   <div className="grid gap-3 grid-cols-1">
                     <div>
                       <span className="mb-2 block text-xs font-semibold tracking-wide text-slate-500">{text.aspectRatio}</span>
-                      <div role="group" aria-label={text.aspectRatio} className="grid grid-cols-3 gap-2">
-                        {modelConfig.aspectRatios.map((ratio) => {
-                          const isSelected = aspectRatio === ratio.value
-                          return (
+                      {followsReferenceImageAspectRatio ? (
+                        <div data-video-reference-aspect-ratio-note>
+                          <div role="group" aria-label={text.aspectRatio} className="grid grid-cols-1 gap-2">
                             <button
-                              key={ratio.value}
                               type="button"
-                              aria-pressed={isSelected}
-                              onClick={() => setAspectRatio(ratio.value)}
-                              className={getOptionButtonClassName(isSelected)}
+                              aria-pressed="true"
+                              disabled
+                              className={`${getOptionButtonClassName(true)} cursor-default opacity-100`}
                             >
-                              {ratio.label}
+                              {text.referenceImageAspectRatioLabel}
                             </button>
-                          )
-                        })}
-                      </div>
+                          </div>
+                          <p className="mt-1 text-[11px] leading-4 text-slate-500">{text.referenceImageAspectRatioHelper}</p>
+                        </div>
+                      ) : (
+                        <div role="group" aria-label={text.aspectRatio} className="grid grid-cols-3 gap-2">
+                          {modelConfig.aspectRatios.map((ratio) => {
+                            const isSelected = aspectRatio === ratio.value
+                            return (
+                              <button
+                                key={ratio.value}
+                                type="button"
+                                aria-pressed={isSelected}
+                                onClick={() => setAspectRatio(ratio.value)}
+                                className={getOptionButtonClassName(isSelected)}
+                              >
+                                {ratio.label}
+                              </button>
+                            )
+                          })}
+                        </div>
+                      )}
                     </div>
 
                     <div>
