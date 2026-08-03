@@ -1,5 +1,5 @@
-import test from 'node:test'
 import assert from 'node:assert/strict'
+import test from 'node:test'
 import { mkdtempSync } from 'node:fs'
 import { join } from 'node:path'
 import { tmpdir } from 'node:os'
@@ -9,6 +9,7 @@ import {
   createLocalDevHistoryItem,
   getLocalDevDailyCheckInStatus,
   getLocalDevCreditSummary,
+  isLocalRequest,
   resetLocalDevCreditsForTests,
 } from './local-dev-auth.js'
 
@@ -83,4 +84,20 @@ test('local dev credit summary ignores video history when backfilling image cred
   const [usageTransaction] = getLocalDevCreditSummary().transactions
   assert.equal(usageTransaction.description, 'Image generation')
   assert.equal(usageTransaction.metadata, undefined)
+})
+
+test('local request detection accepts localhost Host when the URL uses the dev bind address', () => {
+  const request = new Request('http://0.0.0.0:3016/api/ai-video-generator', {
+    headers: { Host: 'localhost:3016' },
+  })
+
+  assert.equal(isLocalRequest(request), true)
+})
+
+test('local request detection rejects a remote URL and remote Host', () => {
+  const request = new Request('https://toolaze.com/api/ai-video-generator', {
+    headers: { Host: 'toolaze.com' },
+  })
+
+  assert.equal(isLocalRequest(request), false)
 })

@@ -25,6 +25,7 @@ const VIDEO_MODEL_PAGE_HREFS: Partial<Record<AiVideoGeneratorModelId, string>> =
   'grok-1-5-video': '/model/grok-imagine-video-1-5',
   'seedance-2': '/model/seedance-2',
   'kling-3': '/model/kling-3',
+  'kling-2-6-motion-control': '/model/kling-2-6-pro-motion-control',
 }
 
 const IMAGE_MODEL_PAGE_HREFS: Record<string, string> = {

@@ -1,13 +1,12 @@
 import { onRequest } from '../../../../../functions/api/ai-video-generator/status.js'
-import { isLocalhost } from '../../_shared/local-dev-auth.js'
+import { isLocalRequest } from '../../_shared/local-dev-auth.js'
 import { proxyToPagesFunctions } from '../../_shared/backend-proxy.js'
 
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
 
 function run(request) {
-  const url = new URL(request.url)
-  if (!isLocalhost(url.hostname)) {
+  if (!isLocalRequest(request)) {
     return proxyToPagesFunctions(request, '/api/ai-video-generator/status')
   }
 

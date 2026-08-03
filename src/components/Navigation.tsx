@@ -56,6 +56,7 @@ const defaultNavTranslations = {
   aiAsmrVideoGenerator: 'AI ASMR Video Generator',
   aiKissingVideoGenerator: 'AI Kissing Video Generator',
   aiDanceGenerator: 'AI Dance Generator',
+  aiMotionControlGenerator: 'AI Motion Control Generator',
   talkingAvatarCreator: 'AI Talking Avatar',
   aiHairstyleChanger: 'AI Hairstyle Changer',
   aiHairColorChanger: 'AI Hair Color Changer',
@@ -90,6 +91,7 @@ const defaultNavTranslations = {
   seedance25: 'Seedance 2.5',
   seedance2: 'Seedance 2.0',
   kling3: 'Kling 3.0',
+  kling26MotionControl: 'Kling 2.6 Motion',
   promptLibrary: 'Prompts',
   allPrompts: 'All Prompts',
   promptModels: 'Model',
@@ -179,6 +181,8 @@ const AI_TOOLS_DEMO_IMAGES = {
   aiAsmrVideoGenerator:
     'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/ai-asmr-video-generator/demo-poster.webp',
   aiDanceGenerator: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/ai-dance-demo-source.png',
+  motionControlGenerator:
+    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/kling-2-6-pro-motion-control/motion-control-demo-poster.webp',
   talkingAvatarCreator:
     'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/talking-avatar-creator/demo-poster.webp',
   aiImageToImageGenerator:
@@ -202,6 +206,7 @@ type AiToolNavLabelKey =
   | 'aiAsmrVideoGenerator'
   | 'aiKissingVideoGenerator'
   | 'aiDanceGenerator'
+  | 'aiMotionControlGenerator'
   | 'talkingAvatarCreator'
 
 type AiToolMenuItem = {
@@ -226,6 +231,7 @@ const AI_IMAGE_TOOL_MENU_ITEMS: readonly AiToolMenuItem[] = [
 ]
 
 const AI_VIDEO_TOOL_MENU_ITEMS: readonly AiToolMenuItem[] = [
+  { href: '/model/kling-2-6-pro-motion-control', labelKey: 'aiMotionControlGenerator', imageKey: 'motionControlGenerator' },
   { href: '/ai-asmr-video-generator', labelKey: 'aiAsmrVideoGenerator', imageKey: 'aiAsmrVideoGenerator' },
   { href: '/talking-avatar-creator', labelKey: 'talkingAvatarCreator', imageKey: 'talkingAvatarCreator' },
   { href: '/ai-kissing-video-generator', labelKey: 'aiKissingVideoGenerator', imageKey: 'aiKissingVideoGenerator', hot: true },
@@ -282,6 +288,7 @@ type AiVideoNavLabelKey =
   | 'seedance25'
   | 'seedance2'
   | 'kling3'
+  | 'kling26MotionControl'
   | 'klingAiVideoGenerator'
   | 'grok15Video'
 
@@ -308,6 +315,7 @@ const AI_VIDEO_MODEL_MENU_ITEMS: readonly AiVideoModelMenuItem[] = [
   { href: '/model/seedance-2-5', labelKey: 'seedance25', logoSrc: '/model-logos/bytedance.svg' },
   { href: '/model/seedance-2', labelKey: 'seedance2', logoSrc: '/model-logos/bytedance.svg', badgeKey: 'hot' },
   { href: '/model/kling-3', labelKey: 'kling3', logoSrc: '/model-logos/kling.svg' },
+  { href: '/model/kling-2-6-pro-motion-control', labelKey: 'kling26MotionControl', logoSrc: '/model-logos/kling.svg' },
   { href: '/model/wan-2-7-ai-video-generator', labelKey: 'wan27Video', logoSrc: '/model-logos/wan.ico' },
   { href: '/model/wan-2-5-ai-video-generator', labelKey: 'wan25Video', logoSrc: '/model-logos/wan.ico' },
   { href: '/model/grok-imagine-video-1-5', labelKey: 'grok15Video', logoSrc: '/model-logos/grok.svg', badgeKey: 'bestValue' },
@@ -1850,6 +1858,10 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
         {
           title: navTranslations.kling || defaultNavTranslations.kling,
           href: getLocalizedHref('/prompts/models/kling'),
+        },
+        {
+          title: navTranslations.kling26MotionControl || defaultNavTranslations.kling26MotionControl,
+          href: getLocalizedHref('/model/kling-2-6-pro-motion-control'),
         },
         {
           title: navTranslations.nanoBanana || defaultNavTranslations.nanoBanana,

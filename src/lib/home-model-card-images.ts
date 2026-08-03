@@ -96,6 +96,12 @@ export const HOME_MODEL_CARD_IMAGES = {
     height: 640,
     alt: 'AI video — cinematic still preview for Kling 3.0',
   },
+  'kling-2-6-pro-motion-control': {
+    src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/kling-3.jpg',
+    width: 800,
+    height: 640,
+    alt: 'AI video — cinematic still preview for Kling 2.6 motion control',
+  },
 } as const
 
 export type HomeModelCardToolId = keyof typeof HOME_MODEL_CARD_IMAGES

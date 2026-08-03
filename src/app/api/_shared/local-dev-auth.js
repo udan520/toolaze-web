@@ -351,6 +351,20 @@ export function isLocalhost(hostname) {
   return hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '::1' || hostname === '[::1]'
 }
 
+export function isLocalRequest(request) {
+  const url = new URL(request.url)
+  if (isLocalhost(url.hostname)) return true
+
+  const host = request.headers.get('host')?.trim()
+  if (!host) return false
+
+  try {
+    return isLocalhost(new URL(`http://${host}`).hostname)
+  } catch {
+    return false
+  }
+}
+
 export function normalizeLocalDevEmail(email) {
   return typeof email === 'string' ? email.trim().toLowerCase() : ''
 }

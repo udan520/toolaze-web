@@ -21,6 +21,7 @@ const imageToolHrefs = [
 ]
 
 const videoToolHrefs = [
+  '/model/kling-2-6-pro-motion-control',
   '/ai-asmr-video-generator',
   '/talking-avatar-creator',
   '/ai-kissing-video-generator',
@@ -42,7 +43,7 @@ test('AI Tools navigation defines the approved image and video groups once', () 
   )
   const videoGroup = sourceBetween(
     'const AI_VIDEO_TOOL_MENU_ITEMS',
-    'type AiVideoNavLabelKey',
+    'type AiImageNavLabelKey',
   )
 
   for (const href of imageToolHrefs) assert.match(imageGroup, new RegExp(`href: '${href}'`))
@@ -75,6 +76,11 @@ test('AI Tools category headings are translated in every locale', () => {
       typeof common.nav.aiAsmrVideoGenerator,
       'string',
       `${locale} aiAsmrVideoGenerator should exist`,
+    )
+    assert.equal(
+      typeof common.nav.aiMotionControlGenerator,
+      'string',
+      `${locale} aiMotionControlGenerator should exist`,
     )
     assert.equal(
       typeof common.nav.aiBikiniGenerator,

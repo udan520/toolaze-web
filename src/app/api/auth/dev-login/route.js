@@ -4,7 +4,7 @@ import {
   buildLocalDevSessionCookie,
   getLocalDevAuthState,
   getLocalDevSessionToken,
-  isLocalhost,
+  isLocalRequest,
   isValidLocalDevCredential,
   normalizeLocalDevEmail,
 } from '../../_shared/local-dev-auth.js'
@@ -59,8 +59,7 @@ async function getRemoteAuthStateForToken(token) {
 }
 
 export async function POST(request) {
-  const url = new URL(request.url)
-  if (!isLocalhost(url.hostname)) {
+  if (!isLocalRequest(request)) {
     return Response.json({ error: 'Dev login is only available on localhost.' }, { status: 403 })
   }
 

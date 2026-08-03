@@ -5,6 +5,12 @@ import test from 'node:test'
 
 const source = readFileSync(join(process.cwd(), 'src', 'components', 'AiVideoGeneratorTool.tsx'), 'utf8')
 const uploaderSource = readFileSync(join(process.cwd(), 'src', 'components', 'ReferenceImageUploader.tsx'), 'utf8')
+const motionReferenceVideoUploaderPath = join(process.cwd(), 'src', 'components', 'MotionReferenceVideoUploader.tsx')
+
+function readMotionReferenceVideoUploaderSource() {
+  assert.equal(existsSync(motionReferenceVideoUploaderPath), true, 'shared motion reference video uploader component should exist')
+  return readFileSync(motionReferenceVideoUploaderPath, 'utf8')
+}
 
 function extractConstFunctionSource(name: string) {
   const start = source.indexOf(`const ${name} =`)
@@ -54,6 +60,19 @@ test('AI video generator accepts hero breadcrumbs above the right-panel title', 
   assert.ok(breadcrumbRenderIndex < heroTitleIndex, 'hero breadcrumbs should sit above the title')
 })
 
+test('AI video generator can preload page demo inputs from content data', () => {
+  assert.match(source, /initialImageUrls\?: string\[\]/, 'video tool should accept initial reference image URLs')
+  assert.match(source, /initialMotionVideoUrls\?: string\[\]/, 'video tool should accept initial motion reference video URLs')
+  assert.match(source, /initialMotionVideoDurationSeconds\?: number/, 'video tool should accept an initial motion reference duration')
+  assert.match(source, /initialPrompt\?: string/, 'video tool should accept an initial prompt')
+  assert.match(source, /initialCharacterOrientation\?: 'image' \| 'video'/, 'video tool should accept an initial character orientation')
+  assert.match(source, /useState<string\[\]>\(\(\) => \(\s*Array\.isArray\(initialImageUrls\)/, 'remote image URL state should seed from initialImageUrls')
+  assert.match(source, /useState<string\[\]>\(\(\) => \(\s*Array\.isArray\(initialMotionVideoUrls\)/, 'remote motion video URL state should seed from initialMotionVideoUrls')
+  assert.match(source, /Math\.ceil\(Number\(initialMotionVideoDurationSeconds\)\)/, 'reference-video pages should seed the generated duration from the preloaded video')
+  assert.match(source, /useState<'image' \| 'video'>\(initialCharacterOrientation \|\| 'video'\)/, 'character orientation should seed from page data')
+  assert.match(source, /useState\(initialPrompt \|\| ''\)/, 'prompt should seed from page data')
+})
+
 test('AI video generator keeps desktop hero H1 compact on laptop viewports', () => {
   assert.match(source, /data-video-hero-title[\s\S]*text-\[30px\][\s\S]*xl:text-\[32px\]/)
   assert.doesNotMatch(source, /data-video-hero-title[\s\S]{0,220}md:text-\[36px\]\s+xl:text-\[38px\]/)
@@ -91,16 +110,163 @@ test('AI video generator keeps prompt sizing aligned with the image tool', () =>
   assert.equal(source.includes('rounded-2xl border border-slate-200 bg-slate-50/70'), false, 'prompt textarea should not keep the older video-only styling')
 })
 
+test('Kling character orientation sits directly below the prompt field', () => {
+  const promptFieldIndex = source.indexOf('{promptLabel}</label>')
+  const orientationIndex = source.indexOf('<div data-character-orientation>')
+  const settingsIndex = source.indexOf('<div className="grid gap-3 grid-cols-1">', promptFieldIndex)
+
+  assert.notEqual(promptFieldIndex, -1, 'prompt field should exist')
+  assert.notEqual(orientationIndex, -1, 'character orientation should exist')
+  assert.notEqual(settingsIndex, -1, 'video settings should exist after the prompt')
+  assert.ok(promptFieldIndex < orientationIndex, 'character orientation should render below the prompt field')
+  assert.ok(orientationIndex < settingsIndex, 'character orientation should stay immediately before the remaining video settings')
+})
+
 test('AI video generator uses the shared compact reference-image tile', () => {
   assert.match(source, /<ReferenceImageUploader/, 'video upload should reuse the global reference uploader')
   assert.match(source, /size="compact"/, 'video reference uploads should use the compact tile shared with image generators')
   assert.match(uploaderSource, /data-reference-upload-tile/, 'shared upload should expose a square upload tile')
   assert.match(uploaderSource, /max-w-28/, 'shared compact upload should stay close to the image generator grid tile size')
   assert.match(uploaderSource, /<ImageReplaceButton/, 'shared uploader should expose image replacement')
+  assert.match(source, /remoteImageUrls\.map[\s\S]*onReplace: \(file: File\) => replaceRemoteImageWithFile\(index, file\)/, 'preloaded remote video reference images should keep the same replace action')
+  assert.match(source, /const replaceRemoteImageWithFile = async \(index: number, file: File\)/, 'remote video reference image replacement should be handled explicitly')
   assert.notEqual(source.indexOf('removeImage(index)'), -1, 'uploaded video references should support the same inline delete action')
   assert.match(uploaderSource, /maxImages > 1/, 'single-reference models should not open a multi-file picker')
   assert.equal(source.includes('min-h-[150px]'), false, 'video upload should not use the old large dropzone')
   assert.equal(source.includes('clearImages'), false, 'video upload should not keep a separate clear-all control')
+})
+
+test('Kling motion control restricts character image uploads to KIE-supported image formats', () => {
+  const configSource = readFileSync(join(process.cwd(), 'src', 'lib', 'ai-video-generator-config.ts'), 'utf8')
+
+  assert.match(configSource, /id: 'kling-2-6-motion-control'[\s\S]*acceptedImageMimeTypes: \['image\/jpeg', 'image\/png'\]/)
+  assert.match(configSource, /id: 'kling-2-6-motion-control'[\s\S]*acceptedImageExtensions: \['jpg', 'jpeg', 'png'\]/)
+  assert.match(configSource, /id: 'kling-2-6-motion-control'[\s\S]*referenceImageMinDimensionPx: 300/)
+  assert.match(configSource, /id: 'kling-2-6-motion-control'[\s\S]*referenceImageAspectRatioMin: 2 \/ 5/)
+  assert.match(configSource, /id: 'kling-2-6-motion-control'[\s\S]*referenceImageAspectRatioMax: 5 \/ 2/)
+  assert.match(source, /import \{ getReferenceImageConstraintError/)
+  assert.match(source, /const getReferenceImageDimensions = \(file: File\): Promise<\{ width: number; height: number \}>/)
+  assert.match(source, /const validateReferenceImageFile = async \(file: File\)/)
+  assert.match(source, /showImageInvalidDimensionsNotice/)
+  assert.match(source, /await validateReferenceImageFile\(file\)/)
+  assert.match(source, /acceptedTypes=\{modelConfig\.acceptedImageMimeTypes\?\.join\(','\)\}/)
+  assert.match(source, /acceptedMimeTypes=\{modelConfig\.acceptedImageMimeTypes\}/)
+  assert.match(source, /acceptedFileExtensions=\{modelConfig\.acceptedImageExtensions\}/)
+  assert.match(source, /onInvalidType=\{showImageInvalidTypeNotice\}/)
+  assert.match(source, /helperText=\{referenceImageHelperText\}/)
+  assert.match(source, /uploadForm\.append\('uploadPurpose', modelConfig\.uploadPurpose\)/)
+  assert.equal(source.includes("uploadForm.append('uploadProvider'"), false, 'browser upload payload must not expose provider fields')
+  assert.equal(source.includes("uploadForm.append('uploadPath'"), false, 'browser upload payload must not expose internal upload paths')
+  assert.equal(source.includes("uploadForm.append('uploadFormatProfile'"), false, 'browser upload payload must not expose provider format profiles')
+  assert.doesNotMatch(source, /helperText=\{formatText\(text\.fileLimit, \{ size: modelConfig\.maxFileSizeMb \}\)\}/)
+})
+
+test('AI video generator exposes a motion reference video upload for Kling motion models', () => {
+  const motionUploaderSource = readMotionReferenceVideoUploaderSource()
+
+  assert.notEqual(source.indexOf('supportsMotionReferenceVideo'), -1, 'motion-control models should expose a config flag')
+  assert.notEqual(source.indexOf('motionVideoFiles'), -1, 'video generator should track local motion reference videos')
+  assert.notEqual(source.indexOf('uploadMotionVideos'), -1, 'video generator should upload motion reference videos before creating a task')
+  assert.notEqual(source.indexOf("const getUploadUrlForModel = (config: AiVideoGeneratorModelConfig) => config.uploadPurpose === 'kling-motion-control' ? '/api/upload' : getImageUploadUrl()"), -1, 'motion-control uploads should use the current app upload route instead of the default remote Pages upload URL')
+  assert.equal(source.includes('const uploadUrl = getImageUploadUrl()'), false, 'model uploads should not call the generic upload URL directly')
+  assert.match(source, /const uploadUrl = getUploadUrlForModel\(modelConfig\)[\s\S]*for \(const imageItem of imageFiles\)/, 'reference image uploads should use the model-aware upload URL')
+  assert.match(source, /const uploadUrl = getUploadUrlForModel\(modelConfig\)[\s\S]*for \(const videoItem of motionVideoFiles\)/, 'motion video uploads should use the model-aware upload URL')
+  assert.notEqual(source.indexOf("uploadForm.append('uploadPurpose', modelConfig.uploadPurpose)"), -1, 'motion-control uploads should send only a neutral upload purpose')
+  assert.equal(source.includes("uploadForm.append('uploadProvider'"), false, 'motion-control uploads should not expose provider names in browser payloads')
+  assert.equal(source.includes("uploadForm.append('uploadPath'"), false, 'motion-control uploads should not expose internal upload paths in browser payloads')
+  assert.equal(source.includes("uploadForm.append('uploadFormatProfile'"), false, 'motion-control uploads should not expose provider format profiles in browser payloads')
+  assert.match(source, /const mediaReference = String\(uploadResult\.uploadRef \|\| uploadResult\.url \|\| ''\)\.trim\(\)/, 'generation payloads should prefer opaque upload references over provider URLs')
+  assert.equal(source.includes('const url = String(uploadResult.url || \'\').trim()'), false, 'motion-control upload results should not force real provider URLs into browser payloads')
+  assert.match(source, /formData\.append\('videoUrls', JSON\.stringify\(motionVideoUrls\)\)/, 'generation request should submit KIE motion-control videoUrls')
+  assert.match(source, /<MotionReferenceVideoUploader/, 'motion-control models should render the shared video upload control')
+  assert.notEqual(motionUploaderSource.indexOf('data-motion-reference-video-uploader'), -1, 'motion-control uploader component should render a dedicated wrapper')
+  assert.notEqual(source.indexOf('ACCEPTED_MOTION_REFERENCE_VIDEO_TYPES'), -1, 'motion reference upload should centralize its accepted formats')
+  assert.notEqual(source.indexOf('video/mp4,video/quicktime,video/x-matroska,.mp4,.mov,.mkv'), -1, 'motion reference upload should accept MP4, QuickTime, and Matroska only')
+  assert.notEqual(source.indexOf('MP4, QuickTime, or Matroska. Max {size}MB, {min}-{max} seconds.'), -1, 'motion reference helper should show KIE format, size, and dynamic length requirements')
+  assert.match(source, /formatText\(text\.motionReferenceVideoHelper, \{[\s\S]*size: modelConfig\.maxVideoFileSizeMb \|\| 50,[\s\S]*max: referenceVideoMaxDurationSeconds/, 'motion reference helper should render the configured 100MB limit and orientation-specific duration')
+  assert.notEqual(source.indexOf('Output duration follows the motion reference video.'), -1, 'motion reference helper should explain duration is reference-video derived')
+  assert.notEqual(source.indexOf('replaceMotionVideoWithFile'), -1, 'motion reference previews should support replacement')
+  assert.notEqual(motionUploaderSource.indexOf('data-motion-video-replace'), -1, 'motion reference previews should expose a hover replace button')
+  assert.notEqual(motionUploaderSource.indexOf('data-motion-video-large-dropzone'), -1, 'motion reference upload should use one large upload box')
+  assert.notEqual(motionUploaderSource.indexOf('data-motion-video-empty-requirements'), -1, 'empty motion reference upload should show format, size, and duration requirements inside the box')
+  assert.notEqual(motionUploaderSource.indexOf('data-motion-video-selected-card'), -1, 'selected motion reference video should cover the upload box')
+  assert.notEqual(motionUploaderSource.indexOf('data-motion-video-preview-button'), -1, 'selected motion reference video should expose a preview button')
+  assert.notEqual(source.indexOf('data-motion-video-preview-dialog'), -1, 'preview button should open a video preview dialog')
+  assert.notEqual(source.indexOf('setMotionVideoPreview'), -1, 'motion reference preview dialog should be state-driven')
+  const motionUploaderBlock = motionUploaderSource
+  const selectedMotionVideoBlock = motionUploaderSource.slice(motionUploaderSource.indexOf('data-motion-video-selected-card'), motionUploaderSource.indexOf('data-motion-video-empty-requirements'))
+  const emptyMotionVideoBlock = motionUploaderSource.slice(motionUploaderSource.indexOf('data-motion-video-empty-requirements'))
+  assert.notEqual(motionUploaderBlock.indexOf('data-motion-video-heading'), -1, 'motion reference component should keep its title above the upload box')
+  assert.ok(
+    motionUploaderBlock.indexOf('data-motion-video-heading') < motionUploaderBlock.indexOf('data-motion-video-large-dropzone'),
+    'motion reference title should sit outside and above the upload box',
+  )
+  assert.equal(selectedMotionVideoBlock.includes('>{title}</'), false, 'selected motion video box should not repeat the title')
+  assert.equal(emptyMotionVideoBlock.includes('>{title}</'), false, 'empty motion video box should not repeat the title')
+  assert.equal(selectedMotionVideoBlock.includes('helperText'), false, 'selected motion video should hide requirements after upload')
+  assert.equal(emptyMotionVideoBlock.includes('helperText'), true, 'empty motion video box should show requirements before upload')
+  assert.notEqual(selectedMotionVideoBlock.indexOf('data-motion-video-delete'), -1, 'selected motion video should expose a top-right delete button')
+  assert.notEqual(selectedMotionVideoBlock.indexOf('aria-label={deleteLabel}'), -1, 'delete button should keep an accessible label')
+  assert.match(selectedMotionVideoBlock, /data-motion-video-preview-button[\s\S]*opacity-0[\s\S]*group-hover:opacity-100[\s\S]*group-focus-within:opacity-100/, 'preview action should only appear on hover or focus')
+  assert.match(selectedMotionVideoBlock, /data-motion-video-replace[\s\S]*opacity-0[\s\S]*group-hover:opacity-100[\s\S]*group-focus-within:opacity-100/, 'replace action should only appear on hover or focus')
+  assert.notEqual(source.indexOf('src: motionVideoFiles[0].preview'), -1, 'uploaded motion reference videos should render an in-form video preview')
+  assert.notEqual(motionUploaderSource.indexOf('preload="metadata"'), -1, 'motion reference previews should load video metadata without eager full playback')
+  assert.notEqual(source.indexOf('getMotionReferenceVideoDuration'), -1, 'local motion videos should be validated from video metadata')
+  assert.notEqual(source.indexOf('referenceVideoMinDurationSeconds'), -1, 'motion-control video validation should use configured min duration')
+  assert.notEqual(source.indexOf('referenceVideoMaxDurationSeconds'), -1, 'motion-control video validation should use configured max duration')
+  assert.notEqual(source.indexOf('setDuration(Math.ceil(videoDurationSeconds))'), -1, 'generation duration should follow the uploaded motion reference video duration')
+  assert.equal(source.includes('accept="video/mp4,video/webm,video/quicktime"'), false, 'KIE motion reference upload should not accept WebM')
+  assert.equal(source.includes('MP4, WebM, or MOV'), false, 'KIE motion reference helper should not advertise WebM')
+  assert.equal(source.includes('h-24 w-24'), false, 'motion reference upload should not use tiny square thumbnails')
+})
+
+test('motion reference video upload is extracted into a reusable component', () => {
+  assert.equal(existsSync(motionReferenceVideoUploaderPath), true, 'shared motion reference video uploader component should exist')
+  const motionUploaderSource = readFileSync(motionReferenceVideoUploaderPath, 'utf8')
+
+  assert.match(source, /import MotionReferenceVideoUploader/, 'video generator should import the shared motion reference video uploader')
+  assert.match(source, /<MotionReferenceVideoUploader/, 'video generator should render the shared motion reference video uploader')
+  assert.match(motionUploaderSource, /export type MotionReferenceVideoUploaderItem/, 'shared uploader should expose a reusable selected video item type')
+  assert.match(motionUploaderSource, /data-motion-reference-video-uploader/, 'shared uploader should own the motion reference wrapper')
+  assert.match(motionUploaderSource, /data-motion-video-heading/, 'shared uploader should own the title placement')
+  assert.match(motionUploaderSource, /data-motion-video-empty-requirements/, 'shared uploader should own the empty requirements state')
+  assert.match(motionUploaderSource, /data-motion-video-selected-card/, 'shared uploader should own the selected preview state')
+  assert.match(motionUploaderSource, /data-motion-video-preview-button[\s\S]*group-hover:opacity-100/, 'shared uploader should keep preview as a hover action')
+  assert.match(motionUploaderSource, /data-motion-video-replace[\s\S]*group-hover:opacity-100/, 'shared uploader should keep replace as a hover action')
+  assert.match(motionUploaderSource, /data-motion-video-delete/, 'shared uploader should keep the top-right delete action')
+})
+
+test('Kling motion control exposes character orientation and applies its video-length limit', () => {
+  assert.notEqual(source.indexOf("const [characterOrientation, setCharacterOrientation] = useState<'image' | 'video'>(initialCharacterOrientation || 'video')"), -1)
+  assert.notEqual(source.indexOf('data-character-orientation'), -1, 'motion-control models should render the required orientation selector')
+  assert.match(source, /characterOrientation === 'image'[^\n]*\? 10[^\n]*: modelConfig\.referenceVideoMaxDurationSeconds/, 'image orientation should cap motion references at 10 seconds')
+  assert.match(source, /formData\.append\('characterOrientation', characterOrientation\)/, 'generation requests should submit the selected orientation')
+  assert.equal(source.includes("formData.append('characterOrientation', 'video')"), false, 'orientation must not be hard-coded')
+})
+
+test('Kling motion control preserves character orientation in history Recreate', () => {
+  assert.notEqual(source.indexOf("characterOrientation?: 'image' | 'video'"), -1)
+  assert.notEqual(source.indexOf('getHistoryCharacterOrientation'), -1)
+  assert.match(source, /characterOrientation: supportsMotionReferenceVideo \? characterOrientation : undefined/)
+  assert.match(source, /setCharacterOrientation\(item\.characterOrientation \|\| 'video'\)/)
+  assert.match(source, /characterOrientation: request\.characterOrientation/)
+})
+
+test('reference-video models hide generate credits until a valid reference video is present', () => {
+  assert.match(source, /const shouldShowGenerationCreditCost = modelConfig\.durationMode !== 'reference-video' \|\| motionReferenceVideoCount > 0/)
+  assert.match(source, /!isPreparing && shouldShowGenerationCreditCost/)
+  assert.match(source, /data-generate-credit-cost/)
+})
+
+test('Kling motion control prompts are optional and duration is not a fixed selector', () => {
+  assert.notEqual(source.indexOf('const promptRequired = modelConfig.promptRequired !== false'), -1, 'prompt requiredness should come from model config')
+  assert.match(source, /const canGenerate = \(!promptRequired \|\| prompt\.trim\(\)\.length > 0\)/, 'optional-prompt models should generate without prompt text')
+  assert.match(source, /promptRequired \? text\.prompt : `\$\{text\.prompt\} \(\$\{text\.optional\}\)`/, 'optional-prompt models should label the prompt clearly')
+  assert.notEqual(source.indexOf("optional: 'Optional'"), -1, 'fallback copy should include Optional for prompt labels')
+  assert.notEqual(source.indexOf("modelConfig.durationMode === 'reference-video'"), -1, 'reference-video models should branch away from manual duration selection')
+  assert.notEqual(source.indexOf('data-video-reference-duration-note'), -1, 'reference-video models should show a duration note instead of fixed options')
+  assert.notEqual(source.indexOf("motionReferenceVideoDurationNote: 'Duration follows the uploaded reference video ({min}-{max} seconds).'"), -1, 'reference-video duration note should explain the dynamic KIE duration rule')
+  assert.match(source, /const renderDurationMenu = \(\) => \{[\s\S]*if \(modelConfig\.durationMode === 'reference-video'\) return null/, 'reference-video models should not render the manual duration menu')
 })
 
 test('AI video generator uses the image-tool style two-level model selector above upload', () => {
@@ -210,6 +376,8 @@ test('AI video generator matches image tool generating and result panel structur
   assert.notEqual(source.indexOf('data-video-result-actions'), -1, 'video result should expose result actions')
   assert.equal(source.includes('absolute right-3 top-3 flex items-center gap-2'), false, 'video result actions should not overlay the video')
   assert.match(source, /data-video-result-actions[\s\S]*\{text\.recreate\}[\s\S]*\{text\.download\}[\s\S]*<DeleteIcon/, 'video result actions should sit with recreate and delete controls')
+  assert.equal(source.includes('inputPreview: imageUrls[0] || request.inputPreview'), false, 'opaque upload references should not replace the visible input preview')
+  assert.match(source, /inputPreview: request\.inputPreview/, 'completed requests should preserve the local visible input preview after opaque upload refs are created')
   assert.match(source, /data-video-result-item[\s\S]{0,320}pb-6/, 'completed video history items should keep padding before the divider')
   assert.doesNotMatch(source, /data-video-result-item[\s\S]{0,320}lg:pb-0/, 'desktop history items should not remove divider padding')
   assert.match(source, /data-video-result-panel[\s\S]{0,100}className="flex h-full items-start justify-center lg:h-\[260px\]"/, 'history media should use the approved 260px desktop content height')

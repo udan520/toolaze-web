@@ -16,6 +16,7 @@ export type AiVideoGeneratorModelId =
   | 'wan-2-2'
   | 'kling-3-turbo'
   | 'kling-3'
+  | 'kling-2-6-motion-control'
   | 'kling-2-6'
   | 'kling-2-5'
   | 'kling-2-1'
@@ -51,6 +52,24 @@ export interface AiVideoGeneratorModelConfig {
   supportedModes: AiVideoGeneratorModeId[]
   maxImages: number
   maxFileSizeMb: number
+  maxVideos?: number
+  maxVideoFileSizeMb?: number
+  supportsMotionReferenceVideo?: boolean
+  promptRequired?: boolean
+  durationMode?: 'manual' | 'reference-video'
+  referenceVideoMinDurationSeconds?: number
+  referenceVideoMaxDurationSeconds?: number
+  acceptedImageMimeTypes?: string[]
+  acceptedImageExtensions?: string[]
+  acceptedImageFormats?: string[]
+  referenceImageMinDimensionPx?: number
+  referenceImageAspectRatioMin?: number
+  referenceImageAspectRatioMax?: number
+  referenceImageHelperText?: string
+  invalidImageTypeMessage?: string
+  invalidImageDimensionsMessage?: string
+  acceptedMotionVideoFormats?: string[]
+  uploadPurpose?: 'kling-motion-control'
   aspectRatios: Array<AiVideoGeneratorOption>
   durations: number[]
   defaultDuration?: number
@@ -223,7 +242,7 @@ const AI_VIDEO_GENERATOR_MODEL_OPTIONS_BASE = [
     maxFileSizeMb: 10,
     aspectRatios: [{ value: '16:9', label: '16:9' }, { value: '9:16', label: '9:16' }, { value: '1:1', label: '1:1' }],
     durations: Array.from({ length: 9 }, (_, index) => index + 2),
-    defaultDuration: 5,
+    defaultDuration: 3,
     resolutions: ['720p', '1080p'],
     promptPlaceholder: 'Describe the visuals, motion, camera, and synchronized ASMR sound.',
     samplePrompt: 'Macro ASMR glass fruit cutting, slow precise blade motion, crisp synchronized sound, soft studio light.',
@@ -305,6 +324,46 @@ const AI_VIDEO_GENERATOR_MODEL_OPTIONS_BASE = [
     samplePrompt:
       'A sleek electric car crosses a rain-soaked downtown bridge at night, 6-shot commercial sequence, reflections, tire spray, cinematic 4K lighting.',
     previewTone: '4K multi-shot preview',
+  },
+  {
+    id: 'kling-2-6-motion-control',
+    name: 'Kling 2.6 Motion Control',
+    vendor: 'Kuaishou',
+    description: 'Reference-video motion transfer for one character image and one motion video.',
+    logoSrc: '/model-logos/kling.svg',
+    logoAlt: 'Kling logo',
+    qualityRating: 4.5,
+    badge: 'New',
+    minCredits: 66,
+    defaultMode: 'image-to-video',
+    supportedModes: ['image-to-video'],
+    maxImages: 1,
+    maxFileSizeMb: 10,
+    maxVideos: 1,
+    maxVideoFileSizeMb: 100,
+    supportsMotionReferenceVideo: true,
+    promptRequired: false,
+    durationMode: 'reference-video',
+    referenceVideoMinDurationSeconds: 3,
+    referenceVideoMaxDurationSeconds: 30,
+    acceptedMotionVideoFormats: ['MP4', 'QuickTime', 'Matroska'],
+    uploadPurpose: 'kling-motion-control',
+    acceptedImageMimeTypes: ['image/jpeg', 'image/png'],
+    acceptedImageExtensions: ['jpg', 'jpeg', 'png'],
+    acceptedImageFormats: ['JPG', 'PNG'],
+    referenceImageMinDimensionPx: 300,
+    referenceImageAspectRatioMin: 2 / 5,
+    referenceImageAspectRatioMax: 5 / 2,
+    referenceImageHelperText: 'JPG or PNG up to {size}MB. Use an image over 300px with a 2:5 to 5:2 aspect ratio.',
+    invalidImageTypeMessage: 'Use JPG or PNG for the Kling 2.6 Motion Control character image.',
+    invalidImageDimensionsMessage: 'Use an image over 300px with a 2:5 to 5:2 aspect ratio for Kling 2.6 Motion Control.',
+    aspectRatios: [{ value: '16:9', label: '16:9' }, { value: '9:16', label: '9:16' }, { value: '1:1', label: '1:1' }],
+    durations: Array.from({ length: 28 }, (_, index) => index + 3),
+    defaultDuration: 3,
+    resolutions: ['720p', '1080p'],
+    promptPlaceholder: 'Describe how the character should follow the uploaded motion reference video while preserving identity and style.',
+    samplePrompt: 'Make the character follow the motion reference naturally, preserve facial identity, outfit, body proportions, and clean studio lighting.',
+    previewTone: 'Motion reference transfer preview',
   },
   ...([
     ['kling-2-6', 'Kling 2.6', 110, ['720p', '1080p'], true],
@@ -424,6 +483,7 @@ const NATIVE_AUDIO_OUTPUT_MODEL_IDS = new Set<AiVideoGeneratorModelId>([
   'wan-2-5',
   'kling-3-turbo',
   'kling-3',
+  'kling-2-6-motion-control',
   'kling-2-6',
   'veo-3-1-lite',
   'veo-3-1-fast',
@@ -454,8 +514,8 @@ const MULTI_SHOT_MODEL_IDS = new Set<AiVideoGeneratorModelId>([
 export const AI_VIDEO_GENERATOR_MODEL_OPTIONS: AiVideoGeneratorModelConfig[] =
   AI_VIDEO_GENERATOR_MODEL_OPTIONS_BASE.map((model) => ({
     ...model,
-    supportedModes: 'supportedModes' in model
-      ? [...model.supportedModes]
+    supportedModes: Array.isArray((model as { supportedModes?: AiVideoGeneratorModeId[] }).supportedModes)
+      ? [...(model as { supportedModes: AiVideoGeneratorModeId[] }).supportedModes]
       : ['image-to-video', 'text-to-video'],
     supportsNativeAudioOutput: NATIVE_AUDIO_OUTPUT_MODEL_IDS.has(model.id as AiVideoGeneratorModelId),
     supportsMultiShot: MULTI_SHOT_MODEL_IDS.has(model.id as AiVideoGeneratorModelId),

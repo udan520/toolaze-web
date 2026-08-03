@@ -72,6 +72,7 @@ const MODEL_SUPPORTED_LOCALES: Record<string, readonly string[]> = {
   'seedance-2-5': ALL_LOCALE_CODES,
   'seedance-2': ALL_LOCALE_CODES,
   'kling-3': ALL_LOCALE_CODES,
+  'kling-2-6-pro-motion-control': ALL_LOCALE_CODES,
   'grok-imagine-video-1-5': ALL_LOCALE_CODES,
 }
 

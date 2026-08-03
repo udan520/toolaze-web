@@ -1,6 +1,6 @@
 # Toolaze 模型成本定价表
 
-最后同步日期：2026-07-31
+最后同步日期：2026-08-02
 
 ## 覆盖范围
 
@@ -64,6 +64,7 @@
 | Kling 3 Turbo | `kling-3-turbo` | Kuaishou | 180+ credits | 720p × 5秒 | 能力标签支持输出；无独立加价表 |
 | Kling 3.0 | `kling-3` | Kuaishou | 84+ credits | 720p × 3秒 | 有独立加价表 |
 | Kling 2.6 | `kling-2-6` | Kuaishou | 110+ credits | 720p × 5秒 | 有独立加价表 |
+| Kling 2.6 Motion Control | `kling-2-6-motion-control` | Kuaishou | 66+ credits | 720p × 3秒参考视频 | 不支持 |
 | Kling 2.5 Turbo Pro | `kling-2-5` | Kuaishou | 85+ credits | 1080p × 5秒 | 不支持 |
 | Kling 2.1 Master | `kling-2-1` | Kuaishou | 320+ credits | 1080p × 5秒 | 不支持 |
 | Veo 3.1 Lite | `veo-3-1-lite` | Google | 30+ credits | 720p × 1个视频 | 能力标签支持输出；无独立加价表 |
@@ -93,6 +94,7 @@
 | Kling 3 Turbo | `kling-3-turbo` | 按秒 | 720p: 36/s<br>1080p: 45/s | 无独立加价表 |
 | Kling 3.0 | `kling-3` | 按秒 | 720p: 28/s<br>1080p: 36/s<br>4K: 134/s | 720p: 40/s<br>1080p: 54/s |
 | Kling 2.6 | `kling-2-6` | 按秒 | 720p: 22/s<br>1080p: 22/s | 720p: 44/s<br>1080p: 44/s |
+| Kling 2.6 Motion Control | `kling-2-6-motion-control` | 按参考视频秒数 | 720p: 22/s<br>1080p: 22/s<br>KIE 独立成本待核实，当前临时映射 | 不支持 |
 | Kling 2.5 Turbo Pro | `kling-2-5` | 按秒 | 1080p: 17/s | 不支持 |
 | Kling 2.1 Master | `kling-2-1` | 按秒 | 1080p: 64/s | 不支持 |
 | Veo 3.1 Lite | `veo-3-1-lite` | 固定每条 | 720p: 30/video<br>1080p: 45/video | 无独立加价表 |
@@ -123,6 +125,7 @@
 | Wan 2.2 | 480p 5秒 | $0.0400/视频 | 16/视频 | $0.0800/视频 | 50.0% | 50.0% |
 | Kling 3.0 | 4K | $0.3350/s | 134/s | $0.6700/s | 50.0% | 50.0% |
 | Kling 3.0 + Native Audio | 1080p | $0.1350/s | 54/s | $0.2700/s | 50.0% | 50.0% |
+| Kling 2.6 Motion Control | 720p / 1080p | 独立成本待核实 | 临时 22/s | 临时 $0.1100/s | 待确认 | 待确认 |
 | Veo 3.1 Fast | 1080p | $0.1875/视频 | 75/视频 | $0.3750/视频 | 50.0% | 50.0% |
 | HappyHorse | 1080p | $0.2400/s | 96/s | $0.4800/s | 50.0% | 50.0% |
 
@@ -138,6 +141,7 @@
 | Wan 2.7 | KIE Wan 2.7：720p $0.08/s，1080p $0.12/s | `VIDEO_GENERATION_CREDIT_RATES['wan-2-7']` |
 | Wan 2.6 / Wan 2.5 | KIE Wan 2.6：720p $0.07/s，1080p $0.105/s；Wan 2.5：720p $0.06/s，1080p $0.10/s | `VIDEO_GENERATION_CREDIT_RATES['wan-2-6']` / `['wan-2-5']` |
 | Kling 3.0 | KIE Kling 3.0：720p $0.07/s，1080p $0.09/s，4K $0.335/s；Native Audio：720p $0.10/s，1080p $0.135/s | `VIDEO_GENERATION_CREDIT_RATES['kling-3']` |
+| Kling 2.6 Motion Control | KIE 独立 pricing / registry 成本待核实；当前临时沿用 Kling 2.6 标准无音频 $0.055/s 对应的 22 credits/s | `VIDEO_GENERATION_CREDIT_RATES['kling-2-6-motion-control']` |
 | Veo 3.1 | KIE Veo 3.1 固定视频价：Lite / Fast / Quality 三档 | `VIDEO_GENERATION_CREDIT_RATES['veo-3-1-*']` |
 | PixVerse V6 | PixVerse V6 官方价格映射到 Toolaze credits | `VIDEO_GENERATION_CREDIT_RATES['pixverse-v6']` |
 | HappyHorse | KIE HappyHorse 产品价映射到 Toolaze credits | `VIDEO_GENERATION_CREDIT_RATES['happyhorse*']` |

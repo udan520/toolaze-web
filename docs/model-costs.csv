@@ -436,6 +436,17 @@ Toolaze收入 $0.2200 / 输出秒
 Toolaze定价 44 积分 / 输出秒
 成本率 50.0%
 毛利率 50.0%",,按输出秒计费; 原生音频按输出秒计费
+视频模型,视频,Kling 2.6 Motion Control,kling-2-6-motion-control,,,,,Kuaishou,66+ 积分,720p × 3秒（参考视频最短时长）,KIE 独立成本待核实,KIE 模型页参数已核实; 独立 pricing/registry 成本待核实; functions/_shared/generation-credits.mjs; src/lib/generation-credits.ts,https://kie.ai/kling-2.6-motion-control,KIE页面参数支持 Image 3-10秒 / Video 3-30秒；当前 Toolaze 暂按 Kling 2.6 标准无音频成本 $0.055/s 映射 22 credits/s，不能视为 Motion Control 独立成本已核实。,,,,"每输出秒:
+KIE独立成本待核实
+Toolaze临时收入 $0.1100 / 输出秒
+Toolaze临时定价 22 积分 / 输出秒
+成本率待确认
+毛利率待确认","每输出秒:
+KIE独立成本待核实
+Toolaze临时收入 $0.1100 / 输出秒
+Toolaze临时定价 22 积分 / 输出秒
+成本率待确认
+毛利率待确认",,按上传参考视频的有效时长向上取整后计费；Image 3-10秒，Video 3-30秒
 视频模型,视频,Kling 2.5 Turbo Pro,kling-2-5,,,,,Kuaishou,85+ 积分,1080p × 5秒,KIE官网已核实,KIE官方价格页; functions/_shared/generation-credits.mjs; src/lib/generation-credits.ts,https://kie.ai/kling-2-5,KIE模型页 pricingDesc：5秒 $0.21、10秒 $0.42，折算 $0.042/s。,,,,,"每输出秒:
 KIE API成本 $0.0420 / 输出秒
 Toolaze收入 $0.0850 / 输出秒

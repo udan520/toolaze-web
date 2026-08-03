@@ -417,6 +417,26 @@ test('AI Kissing is discoverable from global navigation, footer, homepage, and A
   assert.match(siteLanguageSwitchSource, /'ai-kissing-video-generator': ALL_LOCALE_CODES/)
 })
 
+test('Kling 2.6 Motion Control is discoverable from AI Tools menu and homepage video tools', () => {
+  assert.match(
+    aiVideoToolMenuSource,
+    /href: '\/model\/kling-2-6-pro-motion-control'[\s\S]*labelKey: 'aiMotionControlGenerator'[\s\S]*imageKey: 'motionControlGenerator'/,
+  )
+  assert.match(
+    navigationSource,
+    /motionControlGenerator:\s*'https:\/\/pub-efeb0c7b9b53478d960218de80c52e3d\.r2\.dev\/model-assets\/kling-2-6-pro-motion-control\/motion-control-demo-poster\.webp'/,
+  )
+  assert.match(
+    homePageSource,
+    /title: navCopy\.aiMotionControlGenerator \|\| 'AI Motion Control Generator'/,
+  )
+  assert.match(homePageSource, /alt: navCopy\.aiMotionControlGenerator \|\| 'AI Motion Control Generator'/)
+  assert.match(homePageSource, /href: localizeHomeHref\('\/model\/kling-2-6-pro-motion-control'\)/)
+  assert.match(homePageSource, /motion-control-demo\.mp4/)
+  assert.match(homePageSource, /motion-control-demo-poster\.webp/)
+  assert.match(aiToolsCopySource, /href: '\/model\/kling-2-6-pro-motion-control'/)
+})
+
 test('Grok 1.5 Video is discoverable from AI Video navigation, footer, and homepage models', () => {
   assert.match(navigationSource, /grok15Video/)
   assert.match(aiVideoModelMenuSource, /href: '\/model\/grok-imagine-video-1-5'[\s\S]*labelKey: 'grok15Video'/)

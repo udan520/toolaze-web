@@ -63,6 +63,7 @@ const defaultTranslations = {
   seedance2: 'Seedance 2.0',
   seedance25: 'Seedance 2.5',
   kling3: 'Kling 3.0',
+  kling26MotionControl: 'Kling 2.6 Motion',
   gptImage2: 'GPT Image 2',
   wan27Image: 'Wan 2.7 Image',
   nanoBananaPro: 'Nano Banana Pro',
@@ -448,6 +449,14 @@ export default function Footer({ initialTranslations }: FooterProps = {}) {
                   className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
                 >
                   {translations.kling3 || 'Kling 3.0'}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={getLocalizedHref('/model/kling-2-6-pro-motion-control')}
+                  className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
+                >
+                  {translations.kling26MotionControl || 'Kling 2.6 Motion'}
                 </Link>
               </li>
               <li>

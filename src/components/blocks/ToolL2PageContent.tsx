@@ -90,6 +90,7 @@ const VIDEO_GENERATOR_DEFAULT_MODELS: Record<string, AiVideoGeneratorModelId> = 
   'kling-ai-video-generator': 'kling-3',
   'seedance-2': 'seedance-2',
   'kling-3': 'kling-3',
+  'kling-2-6-pro-motion-control': 'kling-2-6-motion-control',
 }
 const VIDEO_GENERATOR_MODEL_IDS = new Set<string>(AI_VIDEO_GENERATOR_MODEL_OPTIONS.map((model) => model.id))
 type TopToolImageModelId =
@@ -324,6 +325,87 @@ interface StrategyCardSection {
   items?: StrategyCardItem[]
 }
 
+type WeakBetterPrompt = {
+  weakLabel: string
+  weakText: string
+  betterLabel: string
+  betterText: string
+}
+
+const WEAK_PROMPT_LABELS = [
+  'Weak',
+  'Schwach',
+  '弱い例',
+  'Débil',
+  '弱',
+  'Fraco',
+  'Faible',
+  '약함',
+  'Debole',
+]
+
+const BETTER_PROMPT_LABELS = [
+  'Better',
+  'Besser',
+  '改善例',
+  'Mejor',
+  '更好',
+  'Melhor',
+  'Mieux',
+  '개선',
+  'Meglio',
+]
+
+function escapeRegExp(value: string): string {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+}
+
+function splitWeakBetterPrompt(prompt: string): WeakBetterPrompt | null {
+  const weakPattern = WEAK_PROMPT_LABELS.map(escapeRegExp).join('|')
+  const betterPattern = BETTER_PROMPT_LABELS.map(escapeRegExp).join('|')
+  const match = prompt.match(new RegExp(`^\\s*(${weakPattern})\\s*[:：]\\s*([\\s\\S]+?)\\s*(${betterPattern})\\s*[:：]\\s*([\\s\\S]+?)\\s*$`, 'iu'))
+
+  if (!match) return null
+
+  return {
+    weakLabel: match[1],
+    weakText: match[2].trim(),
+    betterLabel: match[3],
+    betterText: match[4].trim(),
+  }
+}
+
+function PromptTipPrompt({ prompt }: { prompt: string }) {
+  const splitPrompt = splitWeakBetterPrompt(prompt)
+
+  if (!splitPrompt) {
+    return (
+      <p className="mt-4 rounded-2xl bg-slate-50 p-4 text-sm leading-relaxed text-slate-700">
+        {prompt}
+      </p>
+    )
+  }
+
+  return (
+    <div className="mt-4 space-y-3 rounded-2xl bg-slate-50 p-4 text-sm leading-relaxed text-slate-700">
+      <div className="prompt-tip-weak flex gap-3 rounded-xl border border-rose-100 bg-rose-50/70 p-3">
+        <span className="mt-0.5 shrink-0" aria-hidden="true">❌</span>
+        <div>
+          <p className="text-xs font-bold text-rose-700">{splitPrompt.weakLabel}</p>
+          <p className="mt-1 text-slate-700">{splitPrompt.weakText}</p>
+        </div>
+      </div>
+      <div className="prompt-tip-better flex gap-3 rounded-xl border border-emerald-100 bg-emerald-50/70 p-3">
+        <span className="mt-0.5 shrink-0" aria-hidden="true">✅</span>
+        <div>
+          <p className="text-xs font-bold text-emerald-700">{splitPrompt.betterLabel}</p>
+          <p className="mt-1 text-slate-700">{splitPrompt.betterText}</p>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 interface StrategyTableSection {
   title?: string
   subtitle?: string
@@ -340,6 +422,8 @@ interface TestimonialItem {
 interface TestimonialsSection {
   title?: string
   subtitle?: string
+  reviewSafe?: boolean
+  showStars?: boolean
   items?: TestimonialItem[]
 }
 
@@ -360,8 +444,8 @@ function Testimonials({
   section?: TestimonialsSection
   bgClass: string
 }) {
-  if (!shouldRenderPaymentReviewSocialProofSection('testimonials')) return null
   if (!section?.items || section.items.length === 0) return null
+  if (!section.reviewSafe && !shouldRenderPaymentReviewSocialProofSection('testimonials')) return null
 
   return (
     <section className={`${bgClass} py-24 px-6`}>
@@ -382,11 +466,13 @@ function Testimonials({
               key={`${item.name || 'review'}-${idx}`}
               className="flex h-full flex-col rounded-3xl border border-indigo-50 bg-white p-7 shadow-sm"
             >
-              <div className="mb-5 flex gap-1 text-amber-400" aria-label="rating stars">
-                {Array.from({ length: 5 }).map((_, starIndex) => (
-                  <span key={starIndex}>★</span>
-                ))}
-              </div>
+              {section.showStars !== false && (
+                <div className="mb-5 flex gap-1 text-amber-400" aria-label="rating stars">
+                  {Array.from({ length: 5 }).map((_, starIndex) => (
+                    <span key={starIndex}>★</span>
+                  ))}
+                </div>
+              )}
               <p className="flex-1 text-sm leading-7 text-slate-600">“{item.quote}”</p>
               {(item.name || item.role) && (
                 <div className="mt-6 border-t border-slate-100 pt-4">
@@ -461,9 +547,7 @@ function StrategyCardGrid({
                 <p className="text-sm leading-relaxed text-slate-600">{item.desc}</p>
               )}
               {item.prompt && (
-                <p className="mt-4 rounded-2xl bg-slate-50 p-4 text-sm leading-relaxed text-slate-700">
-                  {item.prompt}
-                </p>
+                <PromptTipPrompt prompt={item.prompt} />
               )}
             </article>
           ))}
@@ -620,6 +704,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
       'seedance25',
       'seedance2',
       'kling3',
+      'kling26MotionControl',
       'promptLibrary',
       'allPrompts',
       'promptModels',
@@ -809,6 +894,12 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
           { label: breadcrumbT.model || 'Model', href: '/model' },
           { label: 'Kling 3.0' },
         ]
+      : tool === 'kling-2-6-pro-motion-control'
+      ? [
+          { label: breadcrumbT.home, href: '/' },
+          { label: breadcrumbT.model || 'Model', href: '/model' },
+          { label: 'Kling 2.6 Pro Motion Control' },
+        ]
       : isAiImageToolPage
       ? [
           { label: breadcrumbT.home, href: locale === 'en' ? '/' : `/${locale}` },
@@ -830,6 +921,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
       'ai-video-generator',
       'wan-2-7-ai-video-generator',
       'wan-2-5-ai-video-generator',
+      'kling-2-6-pro-motion-control',
       'text-to-video-generator',
       'talking-avatar-creator',
     ].includes(topComp)
@@ -846,6 +938,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
       if (modelTool === 'seedance-2-5') return locale === 'en' ? '/model/seedance-2-5' : `/${locale}/model/seedance-2-5`
       if (modelTool === 'seedance-2') return locale === 'en' ? '/model/seedance-2' : `/${locale}/model/seedance-2`
       if (modelTool === 'kling-3') return locale === 'en' ? '/model/kling-3' : `/${locale}/model/kling-3`
+      if (modelTool === 'kling-2-6-pro-motion-control') return locale === 'en' ? '/model/kling-2-6-pro-motion-control' : `/${locale}/model/kling-2-6-pro-motion-control`
       return locale === 'en' ? `/${modelTool}` : `/${locale}/${modelTool}`
     }
     let filteredRecommendedTools: RecommendedTool[] = []
@@ -950,7 +1043,10 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
     if (IMAGE_MODEL_L2S.includes(tool) || (VIDEO_MODEL_L2S.includes(tool) && tool !== 'seedance-2-5')) {
       sectionsOrder = sectionsOrder.filter((s: string) => s !== 'comparison')
     }
-    const filteredSectionsOrder = filterPaymentReviewSections(sectionsOrder)
+    const hasReviewSafeTestimonials = (content.testimonials as TestimonialsSection | undefined)?.reviewSafe === true
+    const filteredSectionsOrder = hasReviewSafeTestimonials
+      ? sectionsOrder
+      : filterPaymentReviewSections(sectionsOrder)
     sectionsOrder = filteredSectionsOrder.length > 0
       ? filteredSectionsOrder
       : sectionsOrder.filter((sectionKey: string) => sectionKey !== 'testimonials' && sectionKey !== 'rating')
@@ -1275,6 +1371,19 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                           : 'AI Video Generator'
                     )}
                     heroDescription={content.hero?.desc}
+                    initialImageUrls={Array.isArray(content.topTool?.initialImageUrls) ? content.topTool.initialImageUrls : undefined}
+                    initialMotionVideoUrls={Array.isArray(content.topTool?.initialMotionVideoUrls) ? content.topTool.initialMotionVideoUrls : undefined}
+                    initialMotionVideoDurationSeconds={
+                      typeof content.topTool?.initialMotionVideoDurationSeconds === 'number'
+                        ? content.topTool.initialMotionVideoDurationSeconds
+                        : undefined
+                    }
+                    initialPrompt={typeof content.topTool?.initialPrompt === 'string' ? content.topTool.initialPrompt : undefined}
+                    initialCharacterOrientation={
+                      content.topTool?.initialCharacterOrientation === 'image' || content.topTool?.initialCharacterOrientation === 'video'
+                        ? content.topTool.initialCharacterOrientation
+                        : undefined
+                    }
                     demoVideo={content.heroDemoVideo as { src?: string; poster?: string; ariaLabel?: string } | undefined}
                     initialTranslations={pageTranslations}
                   />

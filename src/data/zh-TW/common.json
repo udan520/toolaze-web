@@ -69,7 +69,9 @@
     "unrestrictedAiImageGenerator": "Unlimited AI 圖像",
     "talkingAvatarCreator": "AI 說話頭像",
     "aiBreastExpansion": "AI 豐胸預覽",
-    "wan27Video": "Wan 2.7 影片"
+    "wan27Video": "Wan 2.7 影片",
+    "kling26MotionControl": "Kling 2.6 動作控制",
+    "aiMotionControlGenerator": "AI 動作控制生成器"
   },
   "home": {
     "metadata": {
@@ -292,7 +294,8 @@
     "unrestrictedAiImageGenerator": "Unrestricted / Unlimited AI 圖像生成器",
     "talkingAvatarCreator": "AI 說話頭像",
     "aiBreastExpansion": "AI 豐胸預覽",
-    "wan27Video": "Wan 2.7 影片"
+    "wan27Video": "Wan 2.7 影片",
+    "kling26MotionControl": "Kling 2.6 動作控制"
   },
   "breadcrumb": {
     "home": "首頁",
@@ -779,6 +782,7 @@
       "clear": "清除",
       "delete": "刪除",
       "replace": "替換",
+      "preview": "預覽",
       "prompt": "提示詞",
       "promptPlaceholder": "描述場景、動作、鏡頭運動和風格。",
       "aspectRatio": "長寬比",
@@ -807,7 +811,17 @@
       "modelSwitchedTitle": "已切換模型",
       "modelSwitchedDescription": "{previousModel} 不支援{mode}，已切換至 {nextModel}。",
       "noCompatibleModelTitle": "沒有相容模型",
-      "noCompatibleModelDescription": "目前沒有模型支援{mode}，請選擇其他模式。"
+      "noCompatibleModelDescription": "目前沒有模型支援{mode}，請選擇其他模式。",
+      "optional": "可選",
+      "motionReferenceVideo": "動作參考影片",
+      "motionReferenceVideoHelper": "MP4、QuickTime 或 Matroska。最高 {size}MB，{min}-{max} 秒。輸出時長跟隨動作參考影片。",
+      "motionReferenceVideoDurationNote": "時長跟隨上傳的參考影片（{min}-{max} 秒）。",
+      "motionReferenceVideoInvalidType": "動作參考影片請使用 MP4、QuickTime 或 Matroska。",
+      "motionReferenceVideoInvalidDuration": "動作參考影片必須為 {min}-{max} 秒。",
+      "characterOrientation": "角色方向",
+      "characterOrientationImage": "圖片",
+      "characterOrientationVideo": "影片",
+      "characterOrientationHelper": "選擇圖片時，角色方向與角色圖片中的人物一致（影片最長 10 秒）；選擇影片時，角色方向跟隨參考影片中的角色（影片最長 30 秒）。"
     }
   },
   "imageCompressor": {

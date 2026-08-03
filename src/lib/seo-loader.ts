@@ -58,7 +58,7 @@ export const FONT_GENERATOR_SLUGS = [
 ]
 
 // 视频模型 L2 列表（用于「更多工具」推荐，仅推荐同类型 L2）
-export const VIDEO_MODEL_L2S = ['wan-2-7-ai-video-generator', 'wan-2-5-ai-video-generator', 'seedance-2-5', 'seedance-2', 'kling-3', 'grok-imagine-video-1-5']
+export const VIDEO_MODEL_L2S = ['wan-2-7-ai-video-generator', 'wan-2-5-ai-video-generator', 'seedance-2-5', 'seedance-2', 'kling-3', 'kling-2-6-pro-motion-control', 'grok-imagine-video-1-5']
 
 // 图片模型 L2 列表（用于「更多工具」推荐，仅推荐同类型 L2）
 export const IMAGE_MODEL_L2S = ['gpt-image-2', 'nano-banana-pro', 'nano-banana-2', 'seedream-5-0-pro']
@@ -316,11 +316,11 @@ async function loadToolJsonFile(locale: string, tool: string, slug: string) {
     }
 
     if (tool === 'emoji-copy-and-paste') {
-      const localeFile = path.join(process.cwd(), 'src', 'data', normalizedLocale, 'emoji-copy-and-paste', `${slug}.json`)
+      const localeFile = path.join(process.cwd(), 'src', 'data', normalizedLocale, 'emoji-copy-and-paste', `kling-2-6-pro-motion-control.json`)
       if (fs.existsSync(localeFile)) {
         return JSON.parse(fs.readFileSync(localeFile, 'utf-8'))
       }
-      const englishFile = path.join(process.cwd(), 'src', 'data', 'en', 'emoji-copy-and-paste', `${slug}.json`)
+      const englishFile = path.join(process.cwd(), 'src', 'data', 'en', 'emoji-copy-and-paste', `kling-2-6-pro-motion-control.json`)
       if (fs.existsSync(englishFile)) {
         return JSON.parse(fs.readFileSync(englishFile, 'utf-8'))
       }
@@ -386,7 +386,7 @@ async function loadToolJsonFile(locale: string, tool: string, slug: string) {
               case 'how-to-remove-watermark': data = await import('@/data/en/watermark-remover/how-to-remove-watermark.json'); break
               default:
                 try {
-                  const fp = path.join(process.cwd(), 'src', 'data', 'en', 'watermark-remover', `${slug}.json`)
+                  const fp = path.join(process.cwd(), 'src', 'data', 'en', 'watermark-remover', `kling-2-6-pro-motion-control.json`)
                   if (fs.existsSync(fp)) {
                     data = { default: JSON.parse(fs.readFileSync(fp, 'utf-8')) }
                   }
@@ -598,7 +598,7 @@ async function loadToolJsonFile(locale: string, tool: string, slug: string) {
 
       if (!data && tool === 'font-generator') {
         try {
-          const fp = path.join(process.cwd(), 'src', 'data', normalizedLocale, 'font-generator', `${slug}.json`)
+          const fp = path.join(process.cwd(), 'src', 'data', normalizedLocale, 'font-generator', `kling-2-6-pro-motion-control.json`)
           if (fs.existsSync(fp)) {
             data = { default: JSON.parse(fs.readFileSync(fp, 'utf-8')) }
           }
@@ -609,7 +609,7 @@ async function loadToolJsonFile(locale: string, tool: string, slug: string) {
       // 这样页面 metadata/H1/内容和导航三级菜单标题都能保持多语言一致。
       if (!data && tool === 'emoji-copy-and-paste') {
         try {
-          const fp = path.join(process.cwd(), 'src', 'data', normalizedLocale, 'emoji-copy-and-paste', `${slug}.json`)
+          const fp = path.join(process.cwd(), 'src', 'data', normalizedLocale, 'emoji-copy-and-paste', `kling-2-6-pro-motion-control.json`)
           if (fs.existsSync(fp)) {
             data = { default: JSON.parse(fs.readFileSync(fp, 'utf-8')) }
           }
@@ -631,7 +631,7 @@ async function loadToolJsonFile(locale: string, tool: string, slug: string) {
       // switch 里此前只为 en 写了 import/fs；其它语言会漏加载并落到末尾 return null
       if (!data && tool === 'watermark-remover') {
         try {
-          const fp = path.join(process.cwd(), 'src', 'data', normalizedLocale, 'watermark-remover', `${slug}.json`)
+          const fp = path.join(process.cwd(), 'src', 'data', normalizedLocale, 'watermark-remover', `kling-2-6-pro-motion-control.json`)
           if (fs.existsSync(fp)) {
             data = { default: JSON.parse(fs.readFileSync(fp, 'utf-8')) }
           }
@@ -640,7 +640,7 @@ async function loadToolJsonFile(locale: string, tool: string, slug: string) {
         }
         if (!data && normalizedLocale !== 'en') {
           try {
-            const fpEn = path.join(process.cwd(), 'src', 'data', 'en', 'watermark-remover', `${slug}.json`)
+            const fpEn = path.join(process.cwd(), 'src', 'data', 'en', 'watermark-remover', `kling-2-6-pro-motion-control.json`)
             if (fs.existsSync(fpEn)) {
               data = { default: JSON.parse(fs.readFileSync(fpEn, 'utf-8')) }
             }
@@ -720,7 +720,7 @@ async function loadToolJsonFile(locale: string, tool: string, slug: string) {
             }
           } else if (tool === 'watermark-remover') {
             try {
-              const fp = path.join(process.cwd(), 'src', 'data', 'en', 'watermark-remover', `${slug}.json`)
+              const fp = path.join(process.cwd(), 'src', 'data', 'en', 'watermark-remover', `kling-2-6-pro-motion-control.json`)
               if (fs.existsSync(fp)) {
                 data = { default: JSON.parse(fs.readFileSync(fp, 'utf-8')) }
               }
@@ -847,6 +847,8 @@ export async function getL2SeoContent(tool: string, locale: string = 'en') {
         data = await importL2FlatJson('seedance-2', normalizedLocale)
       } else if (tool === 'kling-3') {
         data = await importL2FlatJson('kling-3', normalizedLocale)
+      } else if (tool === 'kling-2-6-pro-motion-control') {
+        data = await importL2FlatJson('kling-2-6-pro-motion-control', normalizedLocale)
       } else if (tool === 'grok-imagine-video-1-5') {
         data = await importL2FlatJson('grok-imagine-video-1-5', normalizedLocale)
       } else if (tool === 'watermark-remover') {
@@ -918,6 +920,8 @@ export async function getL2SeoContent(tool: string, locale: string = 'en') {
             data = await import('@/data/en/seedance-2.json')
           } else if (tool === 'kling-3') {
             data = await import('@/data/en/kling-3.json')
+          } else if (tool === 'kling-2-6-pro-motion-control') {
+            data = await import('@/data/en/kling-2-6-pro-motion-control.json')
           } else if (tool === 'grok-imagine-video-1-5') {
             data = await import('@/data/en/grok-imagine-video-1-5.json')
           } else if (tool === 'watermark-remover') {

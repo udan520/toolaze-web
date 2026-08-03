@@ -64,6 +64,7 @@ const AI_VIDEO_PATHS: Record<string, string> = {
   'seedance-2-5': '/model/seedance-2-5',
   'seedance-2': '/model/seedance-2',
   'kling-3': '/model/kling-3',
+  'kling-2-6-pro-motion-control': '/model/kling-2-6-pro-motion-control',
 }
 
 type ToolCard = {
@@ -102,6 +103,11 @@ const HOME_VIDEO_MODEL_DEMO_FALLBACKS: Record<string, HomeVideoDemoMedia> = {
     poster:
       'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/prompt-templates/image-guided-motion.webp',
     ariaLabel: 'Kling 3.0 demo video preview',
+  },
+  'kling-2-6-pro-motion-control': {
+    src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/prompt-templates/image-guided-motion.mp4',
+    poster: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/prompt-templates/image-guided-motion.webp',
+    ariaLabel: 'Kling 2.6 motion control demo video preview',
   },
 }
 
@@ -371,6 +377,17 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
     ]
   })
   const homeVideoToolCards: HomeAiToolsTabCard[] = [
+    {
+      title: navCopy.aiMotionControlGenerator || 'AI Motion Control Generator',
+      href: localizeHomeHref('/model/kling-2-6-pro-motion-control'),
+      media: {
+        type: 'video',
+        src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/kling-2-6-pro-motion-control/motion-control-demo.mp4',
+        poster:
+          'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/kling-2-6-pro-motion-control/motion-control-demo-poster.webp',
+        alt: navCopy.aiMotionControlGenerator || 'AI Motion Control Generator',
+      },
+    },
     {
       title: navCopy.aiDanceGenerator || 'AI Dance Generator',
       href: localizeHomeHref('/ai-dance-generator'),

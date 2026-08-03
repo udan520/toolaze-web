@@ -4,6 +4,12 @@ export const dynamic = 'force-dynamic'
 import { createHash, createHmac } from 'node:crypto'
 import { readFile } from 'node:fs/promises'
 import { proxyToPagesFunctions } from '../_shared/backend-proxy.js'
+import { isLocalRequest } from '../_shared/local-dev-auth.js'
+import { uploadFileToKie } from '../../../../functions/_shared/kie-file-upload.mjs'
+import {
+  createUploadReference,
+  getUploadReferenceMediaType,
+} from '../../../../functions/_shared/upload-reference.mjs'
 
 function proxy(request) {
   return proxyToPagesFunctions(request, '/api/upload')
@@ -16,16 +22,18 @@ const R2_ENV_KEYS = [
   'R2_BUCKET',
   'R2_PUBLIC_BASE_URL',
 ]
-
-function isLocalhost(hostname) {
-  return hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '::1' || hostname === '[::1]'
+const LOCAL_ENV_KEYS = [...R2_ENV_KEYS, 'KIE_AI_API_KEY']
+const MOTION_CONTROL_UPLOAD_PURPOSE = 'kling-motion-control'
+const MOTION_CONTROL_UPLOAD_OPTIONS = {
+  uploadPath: 'toolaze/kling-motion-control',
+  formatProfile: 'kling-motion-control',
 }
 
 async function readLocalEnvFallback() {
   try {
     const text = await readFile('.env.local', 'utf8')
     return Object.fromEntries(
-      R2_ENV_KEYS
+      LOCAL_ENV_KEYS
         .map((key) => {
           const match = text.match(new RegExp(`^(?:export\\s+)?${key}=[\\"']?([^\\"'\\n]+)[\\"']?`, 'm'))
           return [key, match?.[1]?.trim() || '']
@@ -35,6 +43,11 @@ async function readLocalEnvFallback() {
   } catch {
     return {}
   }
+}
+
+async function getKieApiKey() {
+  const fallback = await readLocalEnvFallback()
+  return process.env.KIE_AI_API_KEY || fallback.KIE_AI_API_KEY || ''
 }
 
 async function getR2Config() {
@@ -148,13 +161,18 @@ async function uploadToR2(file, config) {
   }
 }
 
+function getMotionControlUploadOptions(formData) {
+  const uploadPurpose = String(formData.get('uploadPurpose') || '').trim()
+  if (uploadPurpose !== MOTION_CONTROL_UPLOAD_PURPOSE) return null
+  return MOTION_CONTROL_UPLOAD_OPTIONS
+}
+
 export async function OPTIONS(request) {
   return proxy(request)
 }
 
 export async function POST(request) {
-  const url = new URL(request.url)
-  if (isLocalhost(url.hostname)) {
+  if (isLocalRequest(request)) {
     try {
       const formData = await request.formData()
       const file = formData.get('image') || formData.get('file')
@@ -162,10 +180,26 @@ export async function POST(request) {
         return json({ error: 'No file in form (use field: image or file)' }, 400)
       }
 
+      const motionControlUploadOptions = getMotionControlUploadOptions(formData)
+      if (motionControlUploadOptions) {
+        const apiKey = await getKieApiKey()
+        const result = await uploadFileToKie(file, {
+          apiKey,
+          ...motionControlUploadOptions,
+        })
+        return json({
+          uploadRef: await createUploadReference({
+            ...result,
+            mediaType: getUploadReferenceMediaType(file),
+          }, apiKey),
+        })
+      }
+
       const result = await uploadToR2(file, await getR2Config())
       return json(result)
     } catch (error) {
-      return json({ error: error instanceof Error ? error.message : 'Local upload failed' }, 500)
+      const status = Number.isFinite(error?.status) ? error.status : 500
+      return json({ error: error instanceof Error ? error.message : 'Local upload failed' }, status)
     }
   }
 
