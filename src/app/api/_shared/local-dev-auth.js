@@ -589,6 +589,7 @@ function normalizeLocalDevHistoryInputUrls(inputUrls) {
 
 export function createLocalDevHistoryItem(item) {
   const state = getLocalDevCreditState()
+  const mediaType = item?.mediaType === 'video' ? 'video' : 'image'
   const outputUrl = String(item?.outputUrl || '').trim()
   const prompt = String(item?.prompt || '').trim()
   const model = String(item?.model || '').trim()
@@ -596,7 +597,7 @@ export function createLocalDevHistoryItem(item) {
   if (!outputUrl.startsWith('http')) {
     return { ok: false, status: 400, error: 'Output URL is required.' }
   }
-  if (!prompt) {
+  if (mediaType !== 'video' && !prompt) {
     return { ok: false, status: 400, error: 'Prompt is required.' }
   }
   if (!model) {
@@ -605,7 +606,7 @@ export function createLocalDevHistoryItem(item) {
 
   const historyItem = {
     id: createLocalDevHistoryId(),
-    mediaType: item?.mediaType === 'video' ? 'video' : 'image',
+    mediaType,
     model,
     prompt,
     outputUrl,

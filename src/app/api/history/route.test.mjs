@@ -75,3 +75,34 @@ test('history route preserves Native Audio for local video history', async () =>
   assert.equal(response.status, 201)
   assert.equal(payload.item.nativeAudio, true)
 })
+
+test('history route accepts promptless video history for motion control', async () => {
+  resetLocalDevHistoryForTests()
+
+  const request = new Request('http://localhost:3016/api/history', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Cookie: 'toolaze_session=toolaze-local-dev-session',
+    },
+    body: JSON.stringify({
+      mediaType: 'video',
+      model: 'kling-3-motion-control',
+      prompt: '',
+      outputUrl: 'https://example.com/kling-motion-output.mp4',
+      inputUrls: [
+        'https://example.com/character.png',
+        'https://example.com/reference-motion.mp4',
+      ],
+      outputFormat: JSON.stringify({ duration: 10, characterOrientation: 'image' }),
+    }),
+  })
+
+  const response = await POST(request)
+  const payload = await response.json()
+
+  assert.equal(response.status, 201)
+  assert.equal(payload.item.mediaType, 'video')
+  assert.equal(payload.item.model, 'kling-3-motion-control')
+  assert.equal(payload.item.prompt, '')
+})

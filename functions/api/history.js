@@ -23,6 +23,7 @@ export async function onRequest(context) {
 
   if (request.method === 'POST') {
     const body = await request.json().catch(() => ({}));
+    const mediaType = body.mediaType === 'video' ? 'video' : 'image';
     const outputUrl = String(body.outputUrl || '').trim();
     const prompt = String(body.prompt || '').trim();
     const model = String(body.model || '').trim();
@@ -30,7 +31,7 @@ export async function onRequest(context) {
     if (!outputUrl.startsWith('http')) {
       return jsonResponse({ error: 'Output URL is required.' }, 400);
     }
-    if (!prompt) {
+    if (mediaType !== 'video' && !prompt) {
       return jsonResponse({ error: 'Prompt is required.' }, 400);
     }
     if (!model) {
@@ -38,7 +39,7 @@ export async function onRequest(context) {
     }
 
     const item = await createGenerationHistoryItem(env, user.id, {
-      mediaType: body.mediaType,
+      mediaType,
       model,
       prompt,
       outputUrl,
