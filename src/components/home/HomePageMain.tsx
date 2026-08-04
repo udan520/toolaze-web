@@ -536,7 +536,6 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
       aiImageGeneration: 'AI Image Generation',
       aiModels: 'All Models',
       trending: 'Trending',
-      trendingSubtitle: 'Popular creative workflows, ready to launch from the home screen.',
       tryForFree: 'Try For Free',
       liveNowSuffix: ' is Live Now!',
     },

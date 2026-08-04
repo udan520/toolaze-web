@@ -27,6 +27,7 @@
 - 只有用户明确说“上线 / 发布 / 过审核前最终检查 / 发 main”时，才执行完整验证链路：测试、build、本地 smoke、sitemap/关键路由检查。
 - 上线页面前，页面级图片 / 视频资源必须使用 R2 公网 URL；本地 `/public` 只允许保留 logo、favicon、图标、极小 UI 装饰或开发临时占位。新增落地页、模型页、工具页的 hero、demo、gallery、prompt 示例媒体不得以本地 `/model-assets`、`/images` 等路径作为最终发布资源。
 - 工具或模型的入口封面图必须与对应页面的 Demo 图 / Demo 视频保持一致；顶部导航下拉、首页卡片、AI Tools Hub、相关工具推荐等位置不得使用另一套随机封面。更新页面 Demo 媒体时，需要同步检查这些入口图。
+- 视频模型落地页默认应该加入 AI Video 下拉菜单的模型分组，以及 Model Hub、Footer 模型分组和 sitemap；ASMR、Kissing、Dance 等功能型视频工具页应留在 AI Video/AI Tools 对应入口。除非用户明确要求，或已有真实 `/prompts/models/...` / `/prompts/categories/...` 提示词库页面，否则不得把模型页或生成器落地页加入 Prompts 下拉菜单。
 - 新增或改写 SEO 落地页的 More Tools / 相关工具卡片时，卡片顶部默认复用被推荐页面的顶部 Demo 图或 Demo 视频；不要使用纯 icon 卡片，除非目标页还没有可用 Demo 媒体且必须临时兜底。
 - 不为纯视觉微调启动过重流程；优先快速交付可见结果，再按风险补验证。
 

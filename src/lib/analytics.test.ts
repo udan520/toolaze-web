@@ -8,8 +8,9 @@ test('sends analytics events through gtag when GA4 is loaded', () => {
     gtag: (...args: unknown[]) => calls.push(args),
   }
 
-  trackToolazeEvent('credit_insufficient_modal_view', {
+  trackToolazeEvent('credit_low_view', {
     source: 'nano_banana_tool',
+    media_type: 'image',
     credit_cost: 10,
     ignored: undefined,
   })
@@ -17,9 +18,10 @@ test('sends analytics events through gtag when GA4 is loaded', () => {
   assert.deepEqual(calls, [
     [
       'event',
-      'credit_insufficient_modal_view',
+      'credit_low_view',
       {
         source: 'nano_banana_tool',
+        media_type: 'image',
         credit_cost: 10,
       },
     ],
@@ -32,14 +34,16 @@ test('falls back to dataLayer when gtag is not ready', () => {
   const dataLayer: unknown[] = []
   ;(globalThis as any).window = { dataLayer }
 
-  trackToolazeEvent('image_generate_click', {
+  trackToolazeEvent('generate_click', {
+    media_type: 'image',
     model_id: 'nano-banana-pro',
     has_reference_images: false,
   })
 
   assert.deepEqual(dataLayer, [
     {
-      event: 'image_generate_click',
+      event: 'generate_click',
+      media_type: 'image',
       model_id: 'nano-banana-pro',
       has_reference_images: false,
     },
@@ -52,7 +56,7 @@ test('does not throw during server rendering', () => {
   delete (globalThis as any).window
 
   assert.doesNotThrow(() => {
-    trackToolazeEvent('credit_insufficient_buy_credits_button_click', {
+    trackToolazeEvent('credit_low_buy_click', {
       destination: '/pricing',
     })
   })

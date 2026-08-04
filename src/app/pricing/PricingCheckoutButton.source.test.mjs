@@ -22,15 +22,16 @@ test('pricing checkout keeps hosted redirect as the default fallback', () => {
 })
 
 test('pricing buy credits button click is tracked with clear naming and plan context', () => {
-  assert.match(buttonSource, /trackToolazeEvent\('pricing_buy_credits_button_click'/)
+  assert.match(buttonSource, /trackToolazeEvent\('pricing_buy_click'/)
   assert.match(buttonSource, /plan_id:\s*planId/)
   assert.match(buttonSource, /plan_credits:\s*credits/)
   assert.match(buttonSource, /plan_price:\s*price/)
   assert.match(buttonSource, /page_path/)
   assert.ok(
-    buttonSource.indexOf("trackToolazeEvent('pricing_buy_credits_button_click'") <
+    buttonSource.indexOf("trackToolazeEvent('pricing_buy_click'") <
       buttonSource.indexOf("fetch('/api/billing/checkout'"),
     'buy credits click should be tracked before checkout request starts',
   )
+  assert.doesNotMatch(buttonSource, /pricing_buy_credits_button_click/)
   assert.doesNotMatch(buttonSource, /email|userId|balance/)
 })

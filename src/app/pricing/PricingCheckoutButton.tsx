@@ -41,7 +41,7 @@ export default function PricingCheckoutButton({
     setError('')
 
     try {
-      trackToolazeEvent('pricing_buy_credits_button_click', {
+      trackToolazeEvent('pricing_buy_click', {
         page_path: typeof window === 'undefined' ? undefined : window.location.pathname || '/',
         plan_id: planId,
         plan_credits: credits,

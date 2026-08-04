@@ -117,7 +117,6 @@ const VIDEO_GENERATOR_DEFAULT_MODELS: Record<string, AiVideoGeneratorModelId> = 
 const VIDEO_GENERATOR_MODEL_IDS = new Set<string>(AI_VIDEO_GENERATOR_MODEL_OPTIONS.map((model) => model.id))
 type TopToolImageModelId =
   | 'gpt-image-2'
-  | 'grok-1-5-image'
   | 'grok-video-1-5'
   | 'nano-banana-pro'
   | 'nano-banana-2'
@@ -127,7 +126,6 @@ type TopToolImageModelId =
   | 'wan-2-7-image'
 const TOP_TOOL_IMAGE_MODEL_IDS = new Set([
   'gpt-image-2',
-  'grok-1-5-image',
   'grok-video-1-5',
   'nano-banana-pro',
   'nano-banana-2',

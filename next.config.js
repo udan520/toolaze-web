@@ -23,7 +23,9 @@ const nextConfig = {
     },
   },
   images: {
-    unoptimized: isStaticExport,
+    // Vercel Image Optimization can return 402 when the project quota/payment state changes.
+    // Serve public/R2 images directly so production pages never render broken alt text.
+    unoptimized: true,
     // 允许从 Cloudflare R2 加载远程图片
     remotePatterns: [
       {

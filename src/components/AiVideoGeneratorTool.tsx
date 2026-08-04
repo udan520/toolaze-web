@@ -43,6 +43,7 @@ import {
 import { getReferenceImageConstraintError } from '@/lib/reference-image-constraints'
 import { getGenerationModelLabel } from '@/lib/generation-history-display'
 import { trackGenerationHistoryRecreateClick } from '@/lib/generation-history-analytics'
+import { trackToolazeEvent } from '@/lib/analytics'
 import { dispatchToolazeTopNotice } from '@/lib/top-notice'
 import { parseLocalePath } from '@/lib/site-language-switch'
 
@@ -1012,6 +1013,62 @@ export default function AiVideoGeneratorTool({
   const isGenerating = currentRequest?.status === 'processing'
   const hasDesktopResultTabs = isGenerating || currentRequest?.status === 'failed' || history.length > 0
 
+  const getVideoAnalyticsPayload = useCallback((extra?: Record<string, string | number | boolean | undefined>) => {
+    const referenceMediaCount = referenceImageCount + motionReferenceVideoCount
+
+    return {
+      source: 'ai_video_generator_tool',
+      page_path: pathname || '',
+      media_type: 'video',
+      model_id: selectedModelId,
+      model_name: modelConfig.name,
+      generation_mode: activeMode,
+      resolution,
+      aspect_ratio: followsReferenceImageAspectRatio ? text.referenceImageAspectRatioLabel : aspectRatio,
+      duration_seconds: duration,
+      native_audio: supportsNativeAudio && nativeAudio,
+      credit_cost: generationCreditCost,
+      has_reference_images: referenceMediaCount > 0,
+      reference_image_count: referenceImageCount,
+      ...(extra || {}),
+    }
+  }, [
+    activeMode,
+    aspectRatio,
+    duration,
+    followsReferenceImageAspectRatio,
+    generationCreditCost,
+    modelConfig.name,
+    motionReferenceVideoCount,
+    nativeAudio,
+    pathname,
+    referenceImageCount,
+    resolution,
+    selectedModelId,
+    supportsNativeAudio,
+    text.referenceImageAspectRatioLabel,
+  ])
+
+  useEffect(() => {
+    if (!creditExhaustedModalOpen) return
+
+    trackToolazeEvent('credit_low_view', getVideoAnalyticsPayload())
+  }, [creditExhaustedModalOpen, getVideoAnalyticsPayload])
+
+  const handleVideoCreditLowBuyCreditsClick = () => {
+    trackToolazeEvent('credit_low_buy_click', getVideoAnalyticsPayload({
+      destination: '/pricing',
+    }))
+    setCreditExhaustedModalOpen(false)
+  }
+
+  const handleVideoCreditLowEarnFreeCreditsClick = () => {
+    trackToolazeEvent('credit_low_earn_click', getVideoAnalyticsPayload({
+      destination: '/earn-credits',
+    }))
+    setCreditExhaustedModalOpen(false)
+  }
+
   const showFileTooLargeNotice = (file: File) => {
     dispatchToolazeTopNotice({
       type: 'warning',
@@ -1561,6 +1618,8 @@ export default function AiVideoGeneratorTool({
   const handleGenerate = async () => {
     if (!canGenerate) return
     const requestCreditCost = generationCreditCost
+
+    trackToolazeEvent('generate_click', getVideoAnalyticsPayload())
     const authState = await ensureSignedInForGeneration(requestCreditCost)
     if (!authState.isSignedIn) {
       dispatchToolazeTopNotice({
@@ -1602,6 +1661,7 @@ export default function AiVideoGeneratorTool({
     setCurrentRequest(request)
     setRightMode('history')
 
+    let failureStage: 'upload' | 'create_or_poll' = 'upload'
     try {
       const uploadedImageMedia = await uploadImages()
       const uploadedMotionVideoMedia = await uploadMotionVideos()
@@ -1626,6 +1686,8 @@ export default function AiVideoGeneratorTool({
         formData.append('characterOrientation', characterOrientation)
       }
 
+      failureStage = 'create_or_poll'
+      trackToolazeEvent('generate_start', getVideoAnalyticsPayload())
       const createResponse = await fetch('/api/ai-video-generator', {
         method: 'POST',
         body: formData,
@@ -1639,6 +1701,7 @@ export default function AiVideoGeneratorTool({
       const taskId = String(createResult.taskId || '').trim()
       const creditHold = createResult.creditHold || null
       const taskProvider = String(createResult.taskProvider || '').trim()
+      const resultDelivery = videoUrl ? 'direct' : 'polling'
       if (!videoUrl && taskId) {
         videoUrl = await pollVideoStatus(taskId, creditHold, taskProvider)
       }
@@ -1659,6 +1722,11 @@ export default function AiVideoGeneratorTool({
         inputPreview: request.inputPreview,
       }
       const savedItem = await persistGeneratedVideoHistoryItem(completedRequest, videoUrl, [...uploadedImageMedia.historyUrls, ...uploadedMotionVideoMedia.historyUrls], requestHistoryTool)
+      trackToolazeEvent('generate_success', getVideoAnalyticsPayload({
+        result_delivery: resultDelivery,
+        task_provider: taskProvider || undefined,
+        history_persisted: Boolean(savedItem?.id),
+      }))
       const historyItem: VideoHistoryItem = {
         id: savedItem?.id || completedRequest.id,
         mediaType: 'video',
@@ -1692,6 +1760,9 @@ export default function AiVideoGeneratorTool({
         status: 'failed',
         error: error instanceof Error ? error.message : text.videoGenerationFailed,
       })
+      trackToolazeEvent('generate_fail', getVideoAnalyticsPayload({
+        failure_stage: failureStage,
+      }))
     } finally {
       setIsPreparing(false)
     }
@@ -2598,14 +2669,14 @@ export default function AiVideoGeneratorTool({
               <div className="mt-6 grid gap-2 sm:grid-cols-[1.1fr_0.9fr]">
                 <Link
                   href={getLocalizedInternalPath(pathname, '/pricing')}
-                  onClick={() => setCreditExhaustedModalOpen(false)}
+                  onClick={handleVideoCreditLowBuyCreditsClick}
                   className="inline-flex w-full items-center justify-center rounded-2xl bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-600 px-4 py-3 text-sm font-extrabold text-white shadow-[0_14px_30px_rgba(99,102,241,0.28)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_38px_rgba(99,102,241,0.34)]"
                 >
                   {text.creditsUsedUpBuyAction}
                 </Link>
                 <Link
                   href={getLocalizedInternalPath(pathname, '/earn-credits')}
-                  onClick={() => setCreditExhaustedModalOpen(false)}
+                  onClick={handleVideoCreditLowEarnFreeCreditsClick}
                   className="inline-flex w-full items-center justify-center rounded-2xl border border-indigo-100 bg-white px-4 py-3 text-sm font-extrabold text-indigo-700 shadow-sm transition hover:-translate-y-0.5 hover:border-violet-200 hover:bg-indigo-50"
                 >
                   {text.creditsUsedUpEarnAction}

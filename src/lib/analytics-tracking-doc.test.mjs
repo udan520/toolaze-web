@@ -5,6 +5,7 @@ import test from 'node:test'
 
 const srcDir = new URL('../', import.meta.url)
 const docsSource = readFileSync(new URL('../../docs/ANALYTICS_TRACKING.md', import.meta.url), 'utf8')
+const GA4_EVENT_NAME_MAX_LENGTH = 40
 
 function listSourceFiles(dir) {
   return readdirSync(dir).flatMap((entry) => {
@@ -69,6 +70,22 @@ test('custom analytics events in production code are documented', () => {
     assert.ok(
       eventNames.has(eventName),
       `${eventName} is documented but not found in production analytics code`,
+    )
+  }
+})
+
+test('custom analytics event names follow GA4 naming limits', () => {
+  const documentedEvents = extractDocumentedEvents(docsSource)
+
+  for (const eventName of documentedEvents) {
+    assert.ok(
+      eventName.length <= GA4_EVENT_NAME_MAX_LENGTH,
+      `${eventName} is ${eventName.length} chars; GA4 event names must be ${GA4_EVENT_NAME_MAX_LENGTH} chars or less`,
+    )
+    assert.match(
+      eventName,
+      /^[a-z][a-z0-9_]*$/,
+      `${eventName} should use simple lowercase snake_case`,
     )
   }
 })

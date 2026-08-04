@@ -2137,12 +2137,13 @@ export default function AiImageGenerationTool({
     return {
       source: 'nano_banana_tool',
       page_path: pathname || '',
+      media_type: selectedMediaType,
       model_id: selectedModelId,
       model_name: selectedModelName,
       generation_mode: activeTab,
       resolution,
       aspect_ratio: aspectRatio,
-      video_duration_seconds: selectedMediaType === 'video' ? videoDurationSeconds : undefined,
+      duration_seconds: selectedMediaType === 'video' ? videoDurationSeconds : undefined,
       output_format: modelConfig.supportsOutputFormat && !isCouplePhotoMakerMode ? outputFormat : undefined,
       credit_cost: generationCreditCost,
       has_reference_images: referenceImageCount > 0,
@@ -2173,18 +2174,18 @@ export default function AiImageGenerationTool({
   useEffect(() => {
     if (!creditExhaustedModalOpen) return
 
-    trackToolazeEvent('credit_insufficient_modal_view', getGenerationAnalyticsPayload())
+    trackToolazeEvent('credit_low_view', getGenerationAnalyticsPayload())
   }, [creditExhaustedModalOpen, getGenerationAnalyticsPayload])
 
   const handleCreditInsufficientBuyCreditsClick = () => {
-    trackToolazeEvent('credit_insufficient_buy_credits_button_click', getGenerationAnalyticsPayload({
+    trackToolazeEvent('credit_low_buy_click', getGenerationAnalyticsPayload({
       destination: '/pricing',
     }))
     setCreditExhaustedModalOpen(false)
   }
 
   const handleCreditInsufficientEarnFreeCreditsClick = () => {
-    trackToolazeEvent('credit_insufficient_earn_free_credits_button_click', getGenerationAnalyticsPayload({
+    trackToolazeEvent('credit_low_earn_click', getGenerationAnalyticsPayload({
       destination: '/earn-credits',
     }))
     setCreditExhaustedModalOpen(false)
@@ -2222,7 +2223,7 @@ export default function AiImageGenerationTool({
     if (requestActiveTab === 'image-to-image' && !hasReferenceImages) return
     if (!requestPrompt) return
 
-    trackToolazeEvent('image_generate_click', getGenerationAnalyticsPayload())
+    trackToolazeEvent('generate_click', getGenerationAnalyticsPayload())
     const authState = await ensureSignedInForGeneration(requestCreditCost)
     if (!authState.isSignedIn) {
       showToast('Please sign in with Google to generate images.', 'warning')
@@ -2365,6 +2366,7 @@ export default function AiImageGenerationTool({
         formData.append('imageUrls', JSON.stringify(generationInputUrls))
       }
 
+      trackToolazeEvent('generate_start', getGenerationAnalyticsPayload())
       const generateResponse = await requestImageGenerationTask(formData, toolText)
 
       if (!generateResponse.ok) {
@@ -2446,6 +2448,10 @@ export default function AiImageGenerationTool({
             sourcePath: savedItem?.sourcePath || requestHistoryTool.sourcePath,
             generationMode: requestActiveTab,
           }
+          trackToolazeEvent('generate_success', getGenerationAnalyticsPayload({
+            result_delivery: 'direct',
+            history_persisted: Boolean(savedItem?.id),
+          }))
           addHistoryItemToFeed(item)
           setRightMode('history')
           return
@@ -2565,6 +2571,10 @@ export default function AiImageGenerationTool({
           sourcePath: savedItem?.sourcePath || requestHistoryTool.sourcePath,
           generationMode: requestActiveTab,
         }
+        trackToolazeEvent('generate_success', getGenerationAnalyticsPayload({
+          result_delivery: 'polling',
+          history_persisted: Boolean(savedItem?.id),
+        }))
         addHistoryItemToFeed(item)
         setRightMode('history')
       }
@@ -2577,6 +2587,9 @@ export default function AiImageGenerationTool({
         setRightMode(currentResult ? 'history' : 'sample')
         return
       }
+      trackToolazeEvent('generate_fail', getGenerationAnalyticsPayload({
+        failure_stage: 'create_or_poll',
+      }))
       dispatchToolazeTopNotice({
         type: 'error',
         title: 'Generation Failed',

@@ -1461,6 +1461,11 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
   function startGoogleSignIn() {
     if (typeof window === 'undefined' || authRedirecting) return
 
+    trackToolazeEvent('login_google_click', {
+      source: 'navigation_auth_modal',
+      page_path: pathname || '/',
+      auth_provider: 'google',
+    })
     setAuthRedirecting(true)
     const popup = window.open(getSignInHref(), AUTH_POPUP_NAME, AUTH_POPUP_FEATURES)
 

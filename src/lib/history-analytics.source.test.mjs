@@ -9,13 +9,26 @@ const read = (path) => readFileSync(join(root, path), 'utf8')
 test('login modal view uses a clear login event name', () => {
   const navigation = read('src/components/Navigation.tsx')
   const docs = read('docs/ANALYTICS_TRACKING.md')
+  const signInFlow = navigation.slice(
+    navigation.indexOf('function startGoogleSignIn()'),
+    navigation.indexOf('async function startDevLogin()'),
+  )
 
   assert.match(navigation, /trackToolazeEvent\('login_modal_view'/)
   assert.match(navigation, /authModalOpen[\s\S]*trackToolazeEvent\('login_modal_view'/)
+  assert.match(signInFlow, /trackToolazeEvent\('login_google_click'/)
+  assert.ok(
+    signInFlow.indexOf("trackToolazeEvent('login_google_click'") <
+      signInFlow.indexOf('window.open(getSignInHref()'),
+    'Google login click should be tracked before opening the OAuth popup',
+  )
+  assert.match(signInFlow, /auth_provider:\s*'google'/)
   assert.match(navigation, /page_path/)
   assert.match(docs, /`login_modal_view`/)
+  assert.match(docs, /`login_google_click`/)
   assert.doesNotMatch(navigation, /auth_modal_view/)
   assert.doesNotMatch(docs, /`auth_modal_view`/)
+  assert.doesNotMatch(signInFlow, /email|userId|token|credential/)
 })
 
 test('generation history action clicks are tracked without prompt or media URLs', () => {
@@ -25,9 +38,9 @@ test('generation history action clicks are tracked without prompt or media URLs'
   const docs = read('docs/ANALYTICS_TRACKING.md')
 
   const eventNames = [
-    'generation_history_recreate_button_click',
-    'generation_history_download_button_click',
-    'generation_history_delete_button_click',
+    'history_recreate_click',
+    'history_download_click',
+    'history_delete_click',
   ]
 
   for (const eventName of eventNames) {
@@ -44,7 +57,7 @@ test('generation history action clicks are tracked without prompt or media URLs'
 
   assert.doesNotMatch(helper, /prompt/)
   assert.doesNotMatch(helper, /outputUrl|outputPreview|imageUrl|inputPreview/)
-  assert.doesNotMatch(helper, /generation_history_recreate_click/)
-  assert.doesNotMatch(helper, /generation_history_download_click/)
-  assert.doesNotMatch(helper, /generation_history_delete_click/)
+  assert.doesNotMatch(helper, /generation_history_recreate_button_click/)
+  assert.doesNotMatch(helper, /generation_history_download_button_click/)
+  assert.doesNotMatch(helper, /generation_history_delete_button_click/)
 })

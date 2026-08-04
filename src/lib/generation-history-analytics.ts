@@ -41,19 +41,19 @@ export function trackGenerationHistoryRecreateClick(
   item: GenerationHistoryAnalyticsItem,
   options: GenerationHistoryAnalyticsOptions,
 ) {
-  trackToolazeEvent('generation_history_recreate_button_click', getGenerationHistoryAnalyticsPayload(item, options))
+  trackToolazeEvent('history_recreate_click', getGenerationHistoryAnalyticsPayload(item, options))
 }
 
 export function trackGenerationHistoryDownloadClick(
   item: GenerationHistoryAnalyticsItem,
   options: GenerationHistoryAnalyticsOptions,
 ) {
-  trackToolazeEvent('generation_history_download_button_click', getGenerationHistoryAnalyticsPayload(item, options))
+  trackToolazeEvent('history_download_click', getGenerationHistoryAnalyticsPayload(item, options))
 }
 
 export function trackGenerationHistoryDeleteClick(
   item: GenerationHistoryAnalyticsItem,
   options: GenerationHistoryAnalyticsOptions,
 ) {
-  trackToolazeEvent('generation_history_delete_button_click', getGenerationHistoryAnalyticsPayload(item, options))
+  trackToolazeEvent('history_delete_click', getGenerationHistoryAnalyticsPayload(item, options))
 }
