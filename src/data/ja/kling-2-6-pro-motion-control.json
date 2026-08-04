@@ -17,8 +17,8 @@
     "initialCharacterOrientation": "video"
   },
   "metadata": {
-    "title": "Kling 2.6 Pro Motion Control AI動画ジェネレーター | Toolaze",
-    "description": "Toolazeでキャラクター画像1枚とモーション参照動画1本を使い、Kling 2.6 Motion Control動画を作成します。ポーズ、ジェスチャー、タイミング、カメラリズムを転写できます。",
+    "title": "Kling 2.6 Pro Motion Control AI動画ジェネレーター | 低コストなモーション転写",
+    "description": "Kling 2.6 Pro Motion Control で、1枚のキャラクター画像とドライビング動画から低コストにモーションを転写できます。MP4、QuickTime、Matroska の参照動画に対応し、720p または 1080p で出力できます。",
     "published": true
   },
   "sectionsOrder": [
@@ -26,18 +26,15 @@
     "performanceMetrics",
     "howToUse",
     "scenes",
-    "modelComparison",
-    "competitorComparison",
-    "testimonials",
     "faq"
   ],
   "hero": {
     "h1": "<span class=\"text-gradient\">Kling 2.6 Pro Motion Control</span> AI動画ジェネレーター",
-    "desc": "キャラクター画像をアップロードし、モーション参照動画を1本追加して、保ちたい顔・服装・カメラ・スタイルを指定します。Toolazeは動画のポーズ、ジェスチャー、身体タイミング、カメラリズムを画像キャラクターへ転写します。"
+    "desc": "きれいな動きの素材があり、キャラクター画像にその動きを追わせたいときは、低コストな Kling Motion Control フローを選びます。画像と動画を使う実用的なモーション下書きに集中できます。"
   },
   "heroDemoVideo": {
     "src": "https://assets.toolaze.com/model-assets/kling-2-6-pro-motion-control/motion-control-demo.mp4",
-    "ariaLabel": "Kling 2.6 Motion Control ja demo",
+    "ariaLabel": "Kling 2.6 Motion Control の16:9デモプレビュー",
     "width": 16,
     "height": 9,
     "sourceHistory": "User-generated Kling 2.6 Motion Control demo · character image + motion reference video · 7.9s · 1264x720 · R2",
@@ -46,276 +43,132 @@
     "uploadDate": "2026-08-03T04:25:54.000Z"
   },
   "modelIntro": {
-    "title": "Kling 2.6 Motion Controlとは？",
-    "modelName": "Kling 2.6 Motion Control",
+    "title": "Kling 2.6 Pro Motion Controlとは？",
+    "modelName": "Kling 2.6 Pro Motion Control",
     "modelType": "AI動画モデル",
     "description": [
-      "Kling 2.6 Motion Controlは、参照動画の動きでキャラクター画像を動かすKuaishou Klingの動画モデルです。保ちたい見た目と、追従したい動きの動画を指定します。",
-      "ダンステスト、ポートレート動作、ファッション動画、プレゼンターのジェスチャー、手持ち商品デモ、SNS動画に向いています。Toolazeでは、キャラクター画像1枚、モーション参照動画1本、720pまたは1080p出力の画像から動画Motion Controlとして使えます。"
+      "Kling 2.6 Pro Motion Control は、ドライビング動画の動きを静止したキャラクター画像へ適用するための、Toolaze の低コストな Motion Control オプションです。適した動きの素材をすでに持っていて、Kling 3 Motion Control の高い秒単価を使う前に制御された下書きを作りたい場合に向いています。",
+      "簡単な動作テスト、社内レビュー用の下書き、Matroska ソースクリップ、720p または 1080p で十分な短いモーション転写実験に使えます。より新しい Kling Motion Control フローや厳密な入力ガイドが必要な場合は、先に Kling 3 Motion Control と比較してください。"
     ]
   },
   "performanceMetrics": {
-    "title": "Kling 2.6 Motion Control 機能概要",
+    "title": "Kling 2.6 Pro Motion Control の概要",
     "metrics": [
       {
-        "label": "入力モード",
-        "value": "画像から動画 Motion Control"
+        "label": "位置づけ",
+        "value": "短時間でモーション転写の下書きを作るための、低コストな Motion Control オプションです。"
       },
       {
-        "label": "キャラクター画像",
-        "value": "Toolaze アップローダーで最大10MBの画像1枚"
+        "label": "必要な構成",
+        "value": "キャラクター画像1枚とモーション参照動画1本。プロンプトは任意です。"
       },
       {
-        "label": "モーション参照動画",
-        "value": "MP4、QuickTime、Matroska のモーション参照動画 1本、最大100MB、3-30秒"
+        "label": "動画互換性",
+        "value": "MP4、QuickTime、Matroska のモーション参照動画、最大100MB、3-30秒。"
       },
       {
-        "label": "プロンプト",
-        "value": "任意。人物の同一性、衣装、構図、スタイルを保つために使います。"
+        "label": "長さの挙動",
+        "value": "出力の長さはアップロードしたモーション参照動画に従います。"
       },
       {
-        "label": "長さ",
-        "value": "画像方向は3〜10秒、動画方向は3〜30秒の参照動画に対応します。出力の長さはアップロードしたモーション参照動画に従います。"
+        "label": "出力",
+        "value": "720p または 1080p。Toolaze ではネイティブ音声が有効です。"
       },
       {
-        "label": "キャラクター方向",
-        "value": "画像ではキャラクター画像の向き（参照動画3〜10秒）に合わせ、動画では参照動画の向き（3〜30秒）に従います。"
+        "label": "クレジット目安",
+        "value": "アップロードしたモーション参照動画の長さから計算され、720p または 1080p で出力1秒あたり22 creditsです。"
       },
       {
-        "label": "動きの制御元",
-        "value": "ポーズ、ジェスチャー、歩き方、手の動き、カメラリズムはアップロード動画から取得"
-      },
-      {
-        "label": "解像度",
-        "value": "720p または 1080p"
-      },
-      {
-        "label": "credits の目安",
-        "value": "credits はアップロードしたモーション参照動画の長さに応じて変わります。現在は720pまたは1080pで1秒あたり22 creditsです。"
-      },
-      {
-        "label": "音声",
-        "value": "Toolaze の Motion Control はネイティブ音声と生成音声に対応しているため、生成クリップには制御された動きと合わせた音声を含められます。"
+        "label": "上位に切り替えるタイミング",
+        "value": "より新しい Kling 3 Motion Control フローや、より厳密な画像/動画入力ガイドが必要なとき。"
       }
     ]
   },
   "howToUse": {
-    "title": "ToolazeでKling 2.6 Motion Controlを使う方法",
+    "title": "Kling 2.6 Pro Motion Control を効率よく使う方法",
     "steps": [
       {
-        "title": "Motion Control を選ぶ",
-        "desc": "Kling 2.6 Motion Control を選び、キャラクター画像とモーション参照動画の両方を使う状態にします。"
+        "title": "シンプルな転写目的から始める",
+        "desc": "短いジェスチャー、歩き、ターン、手の動き、レビュー用クリップなど、実用的なモーション下書きが目的なら 2.6 を使います。"
       },
       {
-        "title": "キャラクター画像をアップロード",
-        "desc": "顔、服装、体型、商品、または保ちたい視覚スタイルが分かる鮮明な画像を使います。"
+        "title": "読み取りやすいキャラクター画像をアップロードする",
+        "desc": "顔、体型、衣装、商品シルエットが保持しやすいほど明確な画像を選びます。"
       },
       {
-        "title": "モーション参照動画を追加",
-        "desc": "転送したいポーズ、ジェスチャー、歩き、ダンス、手の動き、カメラリズムを含む MP4、QuickTime、Matroska クリップ（最大100MB、3-30秒）をアップロードします。"
+        "title": "互換性のあるドライビング動画を使う",
+        "desc": "100MB以内の MP4、QuickTime、Matroska クリップをアップロードします。動きが見える状態にし、急なカットや隠れた手足を避けます。"
       },
       {
-        "title": "品質を選んで調整",
-        "desc": "720p または1080pを選びます。出力の長さはアップロードしたモーション参照動画に従います。生成後、同一性や手足、構図がずれる場合はプロンプトを短くするか、より明瞭な動画を使います。"
+        "title": "プロンプトは保持内容に絞る",
+        "desc": "保持したい人物性、衣装、ロゴ、照明、構図を説明します。ドライビング動画と競合する新しい動作は加えないでください。"
       }
     ]
   },
-  "scenesTitle": "Kling 2.6 Motion Controlで作れるもの",
+  "scenesTitle": "Kling 2.6 Pro Motion Control で十分な場面",
   "scenes": [
     {
-      "title": "ダンスとポーズの転写",
-      "desc": "参照ダンス、歩行、ターン、ジェスチャーをキャラクター画像に適用し、同一性、服装、体の比率を保ちます。"
+      "title": "低コストなモーション下書き",
+      "desc": "新しい Motion Control オプションに多くの credits を使う前に、ドライビング動作が合うかを初期レビュー用クリップで確認します。"
     },
     {
-      "title": "ファッション動作クリップ",
-      "desc": "静止した衣装写真や編集風ポートレートを、実際の動きに沿ったランウェイ風クリップにします。"
+      "title": "Matroska ソース素材",
+      "desc": "モーション参照がすでに Matroska 形式で、アップロード前に変換したくない場合は 2.6 フローを検討します。"
     },
     {
-      "title": "プレゼンターとアバターのジェスチャー",
-      "desc": "手のタイミングと姿勢が参照動画に従う、正面向きの解説、リアクション、挨拶クリップを作ります。"
-    },
-    {
-      "title": "手持ち商品のデモ",
-      "desc": "参照ジェスチャーを使って、商品を持つ、回す、持ち上げる、カメラに見せる動きを導きます。"
-    },
-    {
-      "title": "SNS向けショート動画",
-      "desc": "一致させたい動き素材があるとき、Reels、TikTok、Shorts、広告向けの縦型キャラクタークリップを作ります。"
-    },
-    {
-      "title": "ストーリーボード動作テスト",
-      "desc": "長いキャンペーンやシーンを作る前に、ポーズ、ジェスチャー、身体動作が合うか確認します。"
+      "title": "シンプルなジェスチャーレビュー",
+      "desc": "最終版で Kling 3 に切り替える前に、手振り、ターン、手の動き、歩行ループ、ラフな振り付けを試します。"
     }
   ],
-  "modelComparison": {
-    "title": "Kling 2.6 Motion Controlと近いKlingモデルの比較",
-    "subtitle": "参照動画で動きを制御したい場合は Motion Control を選びます。動きのクリップがない場合や、より幅広い生成設定が必要な場合は別の Kling モデルを選んでください。",
-    "featuredColumn": "baseline",
-    "columnHeaders": {
-      "metric": "判断項目",
-      "baseline": "Kling 2.6 Motion Control",
-      "middle": "Kling 2.6",
-      "target": "Kling 3.0"
-    },
-    "rows": [
-      {
-        "label": "Toolaze モデル",
-        "baseline": "Kling 2.6 Motion Control",
-        "middle": "Kling 2.6",
-        "target": "Kling 3.0"
-      },
-      {
-        "label": "入力モード",
-        "baseline": "画像から動画 Motion Control: キャラクター画像1枚 + モーション参照動画1本",
-        "middle": "プロンプトまたは単一画像からの動画生成、最大1枚の画像",
-        "target": "プロンプトまたは複数画像からの動画生成、最大4枚の画像"
-      },
-      {
-        "label": "動画参照",
-        "baseline": "必須: モーション参照動画1本",
-        "middle": "アップロードしたモーション参照動画は使わない",
-        "target": "アップロードしたモーション参照動画は使わない"
-      },
-      {
-        "label": "動きの制御",
-        "baseline": "参照動画の動きを転写し、同一性とスタイルを保護",
-        "middle": "プロンプトで被写体の動き、カメラ経路、タイミングを指定",
-        "target": "より多い参照画像と長めのシーン設計に向いたディレクター型プロンプト"
-      },
-      {
-        "label": "解像度",
-        "baseline": "720p または 1080p",
-        "middle": "720p または 1080p",
-        "target": "720p、1080p、または 4K"
-      },
-      {
-        "label": "credits の目安",
-        "baseline": "出力1秒あたり22 credits。合計はアップロードした参照動画の長さに従います",
-        "middle": "5秒は110 creditsから",
-        "target": "設定により84 creditsから"
-      },
-      {
-        "label": "選ぶ場面",
-        "baseline": "整理されたモーション参照動画があり、キャラクター画像にそれを追わせたい場合",
-        "middle": "プロンプトのみ、または単一画像から Kling 動画草稿を作りたい場合",
-        "target": "より多い画像参照、4K、長めのシーン設計が必要な場合"
-      }
-    ]
-  },
-  "competitorComparison": {
-    "title": "Kling Motion Control、Wan、Seedanceの選び方",
-    "subtitle": "キャラクター画像をアップロードし、モーション参照動画を1本追加して、保ちたい顔・服装・カメラ・スタイルを指定します。Toolazeは動画のポーズ、ジェスチャー、身体タイミング、カメラリズムを画像キャラクターへ転写します。",
-    "featuredColumn": "baseline",
-    "columnHeaders": {
-      "metric": "判断項目",
-      "baseline": "Kling 2.6 Motion Control",
-      "middle": "Wan 2.7",
-      "target": "Seedance 2.5"
-    },
-    "rows": [
-      {
-        "label": "向いている用途",
-        "baseline": "1枚のキャラクター画像と1本のモーション参照動画からの動作転写",
-        "middle": "柔軟なシーン構図の短い映画的クリップ",
-        "target": "高精細な ByteDance 動画ドラフトと polished な見た目"
-      },
-      {
-        "label": "先に確認すること",
-        "baseline": "モーション動画が明瞭で、3-30秒の範囲にあり、キャラクターの構図に近いか",
-        "middle": "必要な長さと解像度が Wan の設定に合うか",
-        "target": "選んだ Seedance 設定が入力タイプと品質目標に合うか"
-      },
-      {
-        "label": "プロンプトの書き方",
-        "baseline": "参照動作に従いながら、同一性、服装、比率、照明、構図、スタイルを守る",
-        "middle": "シーン設定、ショットのリズム、動き方向、出力設定を書く",
-        "target": "被写体、スタイル、シーン変化、照明、品質の手がかりを書く"
-      },
-      {
-        "label": "参照素材",
-        "baseline": "画像がキャラクターを、動画が動きを与える",
-        "middle": "Toolaze では最大2枚の画像参照",
-        "target": "参照サポートは選んだ Seedance 設定による"
-      },
-      {
-        "label": "別モデルを選ぶ場面",
-        "baseline": "モーション参照動画がない場合",
-        "middle": "正確なポーズやジェスチャー転写が最重要なら Motion Control",
-        "target": "特定の動作動画に合わせることが視覚の磨き込みより重要なら Motion Control"
-      }
-    ]
-  },
-  "testimonials": {
-    "title": "Motion Controlテストへのクリエイターコメント",
-    "reviewSafe": true,
-    "showStars": false,
-    "items": [
-      {
-        "name": "Maya Chen",
-        "role": "ファッション動作ドラフト",
-        "quote": "画像と動画を組み合わせることで、動きを文章で書き直さずにランウェイ歩行を試せました。整理された全身参照が一番判断しやすかったです。"
-      },
-      {
-        "name": "Jordan Lee",
-        "role": "商品動画の計画",
-        "quote": "手の動きの参照を使って、小型デバイスが画面内でどう回るかを確認しました。ロゴと光だけに絞るとレビューしやすい草稿になりました。"
-      },
-      {
-        "name": "Nina Patel",
-        "role": "アバターのジェスチャーテスト",
-        "quote": "プレゼンター動画では、長いスタイル指定よりもポートレートとモーション動画の切り抜きを近づけることが重要でした。シンプルな参照ほどジェスチャーが明確でした。"
-      }
-    ]
-  },
-  "faqTitle": "Kling 2.6 Motion Control よくある質問",
+  "faqTitle": "Kling 2.6 Pro Motion Control よくある質問",
   "faq": [
     {
-      "q": "Toolaze の Kling 2.6 Motion Control とは？",
-      "a": "アップロードしたキャラクター画像に参照動画の動きを適用し、同一性、衣装、ビジュアルスタイルを保つ画像から動画の生成フローです。"
+      "q": "なぜ Kling 2.6 Pro Motion Control を使い続けるのですか？",
+      "a": "低コストなモーション転写の下書きを作りたい場合や、きれいなドライビング動画をすでに持っている場合に使います。Kling 3 Motion Control に多くの credits を使う前の確認に役立ちます。"
     },
     {
-      "q": "プロンプトだけで作成できますか？",
-      "a": "いいえ。Kling 2.6 Motion Control にはキャラクター画像とモーション参照動画の両方が必要です。動きの素材がない場合は、別の Toolaze 動画モデルを選んでください。"
+      "q": "Kling 3 Motion Control と比べた主な利点は？",
+      "a": "現在の 2.6 フローは、アップロードしたモーション参照動画の長さから計算され、720p または 1080p で出力1秒あたり22 creditsです。MP4 と QuickTime に加えて Matroska も受け付けます。"
     },
     {
-      "q": "Motion Control でプロンプトは必須ですか？",
-      "a": "いいえ。キャラクター画像とモーション参照動画は必須ですが、プロンプトは任意です。同一性、衣装、照明、構図、スタイルを保つ指定に役立ちます。"
+      "q": "生成前に何が必要ですか？",
+      "a": "読み取りやすいキャラクター画像1枚と、モーション参照動画1本を用意します。動画は出力のタイミングと動作を決めるため、動きがはっきり見える必要があります。"
     },
     {
-      "q": "動き転写用の動画をアップロードできますか？",
-      "a": "はい。キャラクター画像と一緒にモーション参照動画を1本アップロードします。動画がポーズ、ジェスチャー、タイミング、カメラリズム、最終出力の長さを決めます。"
+      "q": "2.6 は Matroska ファイルを扱えますか？",
+      "a": "はい。この 2.6 Motion Control フローでは、Toolaze は MP4、QuickTime、Matroska を表示しており、ファイル上限は100MB、参照範囲は3-30秒です。"
     },
     {
-      "q": "参照ファイルはいくつ使えますか？",
-      "a": "Toolaze はこのフローでキャラクター画像1枚とモーション参照動画1本をサポートします。アップローダーは MP4、QuickTime、Matroska、最大100MB、3-30秒に対応します。"
+      "q": "Kling 2.6 Pro Motion Control はプロンプトだけの動画に使えますか？",
+      "a": "いいえ。このフローはドライビング動画によるモーション転写用です。テキストプロンプトや静止画像のアイデアだけの場合は、標準の Kling 3.0 または別の動画モデルを使ってください。"
     },
     {
-      "q": "どの解像度を選べますか？",
-      "a": "Toolaze の Kling 2.6 Motion Control は 720p と 1080p に対応しています。"
+      "q": "2.6 の結果で十分なことが多いのはいつですか？",
+      "a": "社内レビュー、初期の振り付け確認、シンプルな手の動き、720p または 1080p で十分な低リスクの下書きでは、多くの場合十分です。"
     },
     {
-      "q": "Motion Control は音声を生成しますか？",
-      "a": "はい。Toolaze では Kling 2.6 Motion Control のネイティブ音声と生成音声を有効にしているため、生成クリップには転写された動きと合わせた音声を含められます。"
+      "q": "いつ Kling 3 Motion Control に切り替えるべきですか？",
+      "a": "より新しい Motion Control フロー、より厳密な入力ガイド、または 2.6 の下書きで動きの方向性を確認した後の最終試行が必要なときです。"
     },
     {
-      "q": "credits はどれくらい使いますか？",
-      "a": "credits はアップロードした参照動画の長さに応じて変わります。現在の Toolaze レートは 720p または1080p の Motion Control で出力1秒あたり22 creditsです。"
-    },
-    {
-      "q": "Kling 2.6 Motion Control は無料で使えますか？",
-      "a": "動画生成には Toolaze credits を使用します。初回 credits、利用可能な設定、参照動画の長さ、最終コストはアカウント枠と解像度によって変わる場合があります。"
-    },
-    {
-      "q": "より良いプロンプトを書くには？",
-      "a": "短く、保護したい内容を明確にします。アップロードした動きに従いながら、人物の同一性、服装、照明、構図、スタイルを保つよう書き、動画と競合する余計な場面変更は外します。"
-    },
-    {
-      "q": "Motion Control と Kling 3.0 のどちらを選ぶべきですか？",
-      "a": "モーション参照動画があり、キャラクター画像にその動きを追わせたい場合は Motion Control を選びます。より広いプロンプト制御、多い画像参照、4K、長めのシーン設計が必要なら Kling 3.0 を選んでください。"
+      "q": "任意プロンプトはどう書けばよいですか？",
+      "a": "映画的に広げるのではなく、保持内容を短く指定します。人物性、衣装、ロゴ、商品形状、照明、構図、スタイルを保ち、ドライビング動画に従わせます。"
     }
   ],
   "moreTools": "その他のAI動画モデル",
   "moreToolsLinks": [
+    {
+      "slug": "kling-3-motion-control",
+      "title": "Kling 3 Motion Control",
+      "description": "より多くの credits を使う新しい Kling Motion Control オプションでモーション転写を行います。",
+      "href": "/model/kling-3-motion-control",
+      "media": {
+        "type": "video",
+        "src": "https://assets.toolaze.com/model-assets/kling-3-motion-control/motion-control-demo.mp4",
+        "poster": "https://assets.toolaze.com/model-assets/kling-3-motion-control/motion-control-demo-poster.webp",
+        "alt": "Kling 3 Motion Control preview"
+      }
+    },
     {
       "slug": "kling-3",
       "title": "Kling 3.0 動画ジェネレーター",
@@ -348,17 +201,6 @@
         "type": "image",
         "src": "https://assets.toolaze.com/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
         "alt": "Wan 2.7 Video Generator preview"
-      }
-    },
-    {
-      "slug": "seedance-2-5",
-      "title": "Seedance 2.5 動画ジェネレーター",
-      "description": "磨き込んだ視覚ドラフト向けの別の高品質動画モデルを確認できます。",
-      "href": "/model/seedance-2-5",
-      "media": {
-        "type": "image",
-        "src": "https://assets.toolaze.com/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
-        "alt": "Seedance 2.5 Video Generator preview"
       }
     }
   ]

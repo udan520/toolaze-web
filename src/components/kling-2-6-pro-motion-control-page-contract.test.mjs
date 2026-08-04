@@ -11,16 +11,7 @@ const klingReferenceImage = 'https://assets.toolaze.com/model-assets/kling-2-6-p
 const klingReferenceVideo = 'https://assets.toolaze.com/model-assets/kling-2-6-pro-motion-control/motion-reference-video.mp4'
 const klingDemoVideo = 'https://assets.toolaze.com/model-assets/kling-2-6-pro-motion-control/motion-control-demo.mp4'
 const klingDemoPoster = 'https://assets.toolaze.com/model-assets/kling-2-6-pro-motion-control/motion-control-demo-poster.webp'
-const canonicalSectionOrder = [
-  'modelIntro',
-  'performanceMetrics',
-  'howToUse',
-  'scenes',
-  'modelComparison',
-  'competitorComparison',
-  'testimonials',
-  'faq',
-]
+const motionControlSectionOrder = ['modelIntro', 'performanceMetrics', 'howToUse', 'scenes', 'faq']
 
 function readJson(path) {
   return JSON.parse(readFileSync(path, 'utf8'))
@@ -125,10 +116,11 @@ test('Kling 2.6 Pro Motion Control content is localized and traceable to SEO Fac
     assert.ok(publicContent.topTool.initialMotionVideoUrls?.[0]?.startsWith('https://'), `${locale} reference video should use a public R2 URL`)
     assert.ok(publicContent.heroDemoVideo?.src?.startsWith('https://'), `${locale} hero demo video should use a public R2 URL`)
     assert.ok(publicContent.heroDemoVideo?.poster?.startsWith('https://'), `${locale} hero demo poster should use a public R2 URL`)
-    assert.deepEqual(publicContent.sectionsOrder, canonicalSectionOrder, `${locale} should follow the current model SEO skill section order`)
+    assert.deepEqual(publicContent.sectionsOrder, motionControlSectionOrder, `${locale} should follow the shortened model SEO section order`)
     assert.equal('promptExamples' in publicContent, false, `${locale} should omit Prompt Examples when the generator has no prompt input`)
     assert.equal('troubleshooting' in publicContent, false, `${locale} should omit Prompt Tips / Troubleshooting when the generator has no prompt input`)
     assert.equal(publicContent.howToUse.steps.length, 4)
+    assert.ok([3, 6].includes(publicContent.scenes.length), `${locale} use-case cards should keep a 3- or 6-card layout`)
     assert.ok(publicContent.modelIntro.title)
     assert.equal('featureCards' in publicContent.modelIntro, false, `${locale} What Is block should not render extra feature cards under the new model SEO skill`)
     assert.match(publicContent.modelIntro.title, /Motion Control|动作控制|動作控制|モーション|Movimiento|Mouvement|Movimento|모션/i, `${locale} intro should be the model SEO What Is block for Motion Control`)
@@ -136,30 +128,27 @@ test('Kling 2.6 Pro Motion Control content is localized and traceable to SEO Fac
     assert.ok(publicContent.performanceMetrics.metrics.some((item) => /100s?MB|100MB/i.test(`${item.value || ''}`)), `${locale} specs should show the motion reference video size limit`)
     assert.ok(publicContent.performanceMetrics.metrics.some((item) => /MP4/i.test(`${item.value || ''}`) && /QuickTime/i.test(`${item.value || ''}`) && /Matroska/i.test(`${item.value || ''}`)), `${locale} specs should show MP4, QuickTime, and Matroska as supported video formats`)
     assert.ok(publicContent.performanceMetrics.metrics.some((item) => /3\s*(?:-|–|to|a|à|bis|から|到|至|~)\s*30/i.test(`${item.value || ''}`)), `${locale} specs should show the 3-30 second motion reference video range`)
-    assert.ok(publicContent.performanceMetrics.metrics.some((item) => /motion reference video|reference video|动作参考视频|動作參考影片|動作參考視頻|モーション参照動画|Bewegungsvideo|vídeo de movimiento|video de movimiento|vídeo de movimento|vidéo de mouvement|video di movimento|motion video|모션 참조 비디오/i.test(`${item.value || ''}`)), `${locale} specs should show motion reference video support`)
+    assert.ok(publicContent.performanceMetrics.metrics.some((item) => /motion reference video|reference video|动作参考视频|動作參考影片|動作參考視頻|モーション参照動画|Bewegungsvideo|Bewegungsreferenzvideo|vídeo de movimiento|vídeo de referencia|video de movimiento|video de referencia|vídeo de movimento|vídeo de referência|vidéo de mouvement|vidéo de référence|video di movimento|video di riferimento|motion video|모션 참조 비디오|모션 참조 영상/i.test(`${item.value || ''}`)), `${locale} specs should show motion reference video support`)
     assert.ok(publicContent.performanceMetrics.metrics.some((item) => /22/.test(`${item.value || ''}`) && /duration|时长|時長|長さ|Dauer|duración|duração|durée|durata|길이/i.test(`${item.value || ''}`)), `${locale} specs should show credit guidance tied to reference-video duration`)
-    assert.equal(publicContent.modelComparison.columnHeaders.baseline, 'Kling 2.6 Motion Control', `${locale} same-family comparison should put Motion Control in the leftmost column`)
-    assert.ok(publicContent.modelComparison.rows.length >= 5, `${locale} should include same-family comparison rows`)
-    assert.ok(publicContent.modelComparison.rows.some((item) => /Input|输入|輸入|入力|Entrada|Entrées|Eingabe|Ingressi|입력/i.test(item.label) && /image.*video|character.*motion|图片.*视频|圖片.*影片|画像.*動画|Bild.*Video|imagen.*vídeo|imagen.*video|imagem.*vídeo|imagem.*video|image.*vidéo|immagine.*video|이미지.*비디오/i.test(item.baseline)), `${locale} same-family comparison should describe image plus video Motion Control input`)
-    assert.equal(publicContent.competitorComparison.columnHeaders.baseline, 'Kling 2.6 Motion Control', `${locale} cross-model comparison should put Motion Control in the leftmost column`)
-    assert.ok(publicContent.competitorComparison.rows.length >= 4, `${locale} should include cross-model comparison rows`)
-    assert.equal(publicContent.testimonials?.reviewSafe, true, `${locale} comments should be explicitly marked review-safe before rendering through the payment-review gate`)
-    assert.equal(publicContent.testimonials?.showStars, false, `${locale} comments should not render fake rating stars`)
-    assert.equal(publicContent.testimonials?.items?.length, 3, `${locale} should include 3 user comments after comparisons`)
-    assert.ok(publicContent.testimonials.items.every((item) => item.name && item.role && item.quote), `${locale} testimonials should include name, role, and concrete quote`)
+    assert.equal(publicContent.modelComparison, undefined, `${locale} rewrite should remove the same-family comparison block`)
+    assert.equal(publicContent.competitorComparison, undefined, `${locale} rewrite should remove the cross-model comparison block`)
+    assert.equal(publicContent.testimonials, undefined, `${locale} rewrite should remove generic creator comments`)
+    if (locale === 'en') {
+      assert.match(publicContent.scenesTitle, /When Kling 2\.6 Pro Motion Control Is Enough/i, 'English rewrite should rename use cases around 2.6-specific fit')
+    }
     assert.doesNotMatch(
       collectVisibleStrings(publicContent).join('\n'),
       /model page|Best for|Use this section|the page|SEO|keyword|ranking|search intent|AI Overview|current integration|placeholder|KIE|API platform|provider route|No Signup|No Login|Unlimited Free|Free Forever/i,
       `${locale} visible copy should not expose SEO/editor/internal page language or unverified access claims`
     )
     const visibleCopy = collectVisibleStrings(publicContent).join('\n')
-    assert.match(visibleCopy, /character image|角色图|角色圖片|参照画像|Bild|imagen|image|immagine|캐릭터 이미지/i, `${locale} copy should explain the required character image`)
-    assert.match(visibleCopy, /motion reference video|动作参考视频|動作參考影片|動作參考視頻|モーション参照動画|Bewegungsvideo|vídeo de movimiento|vídeo de movimento|vidéo de mouvement|video di movimento|모션 참조 비디오/i, `${locale} copy should explain the required motion reference video`)
-    assert.match(visibleCopy, /image-to-video|图像转视频|圖片轉影片|画像から動画|Bild-zu-Video|imagen a vídeo|imagen a video|imagem para vídeo|image vers vidéo|immagine in video|이미지-투-비디오/i, `${locale} copy should describe Motion Control as image-to-video`)
+    assert.match(visibleCopy, /character image|角色图|角色圖片|参照画像|キャラクター画像|Bild|imagen|image|immagine|캐릭터 이미지/i, `${locale} copy should explain the required character image`)
+    assert.match(visibleCopy, /motion reference video|动作参考视频|動作參考影片|動作參考視頻|モーション参照動画|Bewegungsvideo|Bewegungsreferenzvideo|vídeo de movimiento|vídeo de referencia|video de referencia|vídeo de movimento|vídeo de referência|vidéo de mouvement|vidéo de référence|video di movimento|video di riferimento|모션 참조 비디오|모션 참조 영상/i, `${locale} copy should explain the required motion reference video`)
+    assert.match(visibleCopy, /image-to-video|image-plus-video|still character image|character image plus|图像转视频|圖片轉影片|圖片加影片|画像から動画|画像と動画|Bild-zu-Video|Bild-plus-Video|imagen a vídeo|imagen a video|imagen más vídeo|imagem para vídeo|imagem mais vídeo|image vers vidéo|image plus vidéo|immagine in video|immagine più video|이미지-투-비디오|이미지와 영상/i, `${locale} copy should describe Motion Control as image-to-video`)
     assert.match(visibleCopy, /MP4[\s\S]{0,80}QuickTime[\s\S]{0,80}Matroska/i, `${locale} visible copy should show KIE-supported motion video formats`)
     assert.match(visibleCopy, /3\s*(?:-|–|to|a|à|bis|から|到|至|~)\s*30/i, `${locale} visible copy should show the 3-30 second reference video length`)
     assert.match(visibleCopy, /duration follows|时长跟随|時長跟隨|長さは.*従|Dauer.*folgt|duración.*sigue|duração.*segue|durée.*suit|durata.*segue|길이.*따릅니다/i, `${locale} visible copy should explain output duration follows the uploaded motion reference video`)
-    assert.match(visibleCopy, /native audio|generated sound|原生音频|生成聲音|原生音訊|生成音声|natives Audio|erzeugten Ton|audio nativo|sonido generado|som gerado|audio généré|suono generato|네이티브 오디오|생성 사운드/i, `${locale} visible copy should explain Motion Control can generate audio`)
+    assert.match(visibleCopy, /native audio|generated sound|原生音频|生成聲音|原生音訊|生成音声|ネイティブ音声|natives Audio|nativem Audio|erzeugten Ton|audio nativo|áudio nativo|sonido generado|som gerado|audio généré|audio natif|suono generato|네이티브 오디오|생성 사운드/i, `${locale} visible copy should explain Motion Control can generate audio`)
     assert.doesNotMatch(visibleCopy, /visual video only|only visual video|只输出视觉|只輸出視覺|映像のみ|nur visuelle Videos|solo video visual|apenas vídeo visual|uniquement une vidéo visuelle|solo video visivo|시각 영상만/i, `${locale} visible copy should not say Motion Control is visual-only`)
     assert.doesNotMatch(visibleCopy, /WebM/i, `${locale} visible copy should not advertise WebM for KIE Motion Control`)
     assert.doesNotMatch(visibleCopy, /current 5 second credit preset|5 second credit preset|5秒.*preset|5 秒.*preset|5 secondes.*préréglage|preset.*5 secondi/i, `${locale} visible copy should not describe Motion Control as a fixed 5-second preset`)

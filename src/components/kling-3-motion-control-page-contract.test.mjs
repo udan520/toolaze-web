@@ -14,6 +14,7 @@ const seedance25DemoImage = 'https://assets.toolaze.com/uploads/d0d55df5eef34680
 const supportedLocales = ['en', 'de', 'es', 'fr', 'it', 'ja', 'ko', 'pt', 'zh-TW']
 const localizedLocales = supportedLocales.filter((locale) => locale !== 'en')
 const seedance25Locales = supportedLocales
+const motionControlSectionOrder = ['modelIntro', 'performanceMetrics', 'howToUse', 'scenes', 'modelComparison', 'faq']
 
 function readJson(path) {
   return JSON.parse(readFileSync(path, 'utf8'))
@@ -184,14 +185,11 @@ test('Kling 3 Motion Control localized content is traceable to SEO Factory', () 
     assert.match(publicContent.topTool.initialMotionVideoUrls?.[0] || '', /\.mp4$/)
     assert.match(publicContent.heroDemoVideo?.src || '', /\.mp4$/)
     assert.match(publicContent.heroDemoVideo?.poster || '', /\.webp$/)
-    assert.deepEqual(
-      publicContent.sectionsOrder,
-      ['modelIntro', 'performanceMetrics', 'howToUse', 'scenes', 'modelComparison', 'competitorComparison', 'testimonials', 'faq'],
-      `${locale} Kling 3 Motion Control should keep the approved 2.6-style SEO section order`
-    )
+    assert.deepEqual(publicContent.sectionsOrder, motionControlSectionOrder, `${locale} Kling 3 Motion Control should keep its shortened SEO section order`)
     assert.equal(publicContent.promptExamples, undefined, `${locale} Motion Control rewrite should not render a standalone prompt examples section`)
     assert.equal(publicContent.troubleshooting, undefined, `${locale} Motion Control rewrite should not render a standalone prompt tips section`)
     assert.equal(publicContent.howToUse.steps.length, 4)
+    assert.ok([3, 6].includes(publicContent.scenes.length), `${locale} use-case cards should keep a 3- or 6-card layout`)
     assert.ok(!publicContent.sectionsOrder.includes('features'), `${locale} model page should not include a standalone Why Toolaze feature-card section`)
     assert.ok(!publicContent.sectionsOrder.includes('promptExamples'), `${locale} section order should remove prompt examples for this rewrite`)
     assert.ok(!publicContent.sectionsOrder.includes('troubleshooting'), `${locale} section order should remove prompt tips for this rewrite`)
@@ -205,9 +203,9 @@ test('Kling 3 Motion Control localized content is traceable to SEO Factory', () 
     assert.ok(publicContent.performanceMetrics.metrics.some((item) => /MP4.*QuickTime|QuickTime.*MP4/.test(`${item.value || ''}`)), `${locale} specs should show provider-supported motion video formats`)
     assert.ok(!publicContent.performanceMetrics.metrics.some((item) => /Matroska|WebM/i.test(`${item.value || ''}`)), `${locale} specs should not inherit unsupported 2.6/WebM video format copy`)
     assert.ok(publicContent.performanceMetrics.metrics.some((item) => /40.*54|54.*40/.test(`${item.value || ''}`)), `${locale} specs should show verified credit guidance`)
-    assert.ok(publicContent.testimonials?.items?.length >= 3, `${locale} structure should include modest creator comments`)
     assert.ok(publicContent.modelComparison.rows.length >= 5, `${locale} same-family comparison should include decision rows`)
-    assert.ok(publicContent.competitorComparison.rows.length >= 4, `${locale} cross-model comparison should include decision rows`)
+    assert.equal(publicContent.competitorComparison, undefined, `${locale} rewrite should remove the generic cross-model comparison block`)
+    assert.equal(publicContent.testimonials, undefined, `${locale} rewrite should remove the generic creator comments block`)
 
     const visibleCopy = collectVisibleStrings(publicContent).join('\n')
     assert.doesNotMatch(
@@ -219,6 +217,7 @@ test('Kling 3 Motion Control localized content is traceable to SEO Factory', () 
   }
 
   const publicContent = localizedContent.en
+  assert.deepEqual(publicContent.sectionsOrder, motionControlSectionOrder, 'English Kling 3 Motion Control should use the shorter differentiated structure')
   assert.ok(publicContent.performanceMetrics.metrics.some((item) => /720p.*1080p|1080p.*720p/i.test(`${item.value || ''}`)), 'specs should show Toolaze resolutions')
   assert.ok(publicContent.performanceMetrics.metrics.some((item) => /3-10|3 to 10/i.test(`${item.value || ''}`)), 'specs should show Image orientation reference-video duration limits')
   assert.ok(publicContent.performanceMetrics.metrics.some((item) => /3-30|3 to 30/i.test(`${item.value || ''}`)), 'specs should show Video orientation reference-video duration limits')
@@ -228,9 +227,9 @@ test('Kling 3 Motion Control localized content is traceable to SEO Factory', () 
   assert.ok(!publicContent.performanceMetrics.metrics.some((item) => /Matroska|WebM/i.test(`${item.value || ''}`)), 'Kling 3.0 specs should not inherit unsupported 2.6/WebM video format copy')
   assert.ok(publicContent.performanceMetrics.metrics.some((item) => /Image.*Video|Video.*Image/i.test(`${item.value || ''}`)), 'specs should show character orientation choices')
   assert.ok(publicContent.performanceMetrics.metrics.some((item) => /40.*54|54.*40/.test(`${item.value || ''}`)), 'specs should show verified KIE-derived credit guidance')
-  assert.ok(publicContent.testimonials?.items?.length >= 3, '2.6-style SEO structure should include modest creator comments')
+  assert.equal(publicContent.testimonials, undefined, 'English Kling 3 rewrite should not keep generic testimonials')
   assert.ok(publicContent.modelComparison.rows.length >= 5, 'same-family comparison should include decision rows')
-  assert.ok(publicContent.competitorComparison.rows.length >= 4, 'cross-model comparison should include decision rows')
+  assert.equal(publicContent.competitorComparison, undefined, 'English Kling 3 rewrite should not keep the generic cross-model comparison')
 
   const visibleCopy = collectVisibleStrings(publicContent).join('\n')
   assert.doesNotMatch(
@@ -239,11 +238,14 @@ test('Kling 3 Motion Control localized content is traceable to SEO Factory', () 
     'visible copy should not expose SEO/editor/internal page language or unverified access claims'
   )
   assert.doesNotMatch(visibleCopy, /Why Use .* On Toolaze/i, 'visible copy should not include the removed Why Toolaze block')
+  assert.match(visibleCopy, /Reference Inputs That Work Best With Kling 3 Motion Control/i, 'English copy should rename use cases around reference-input quality')
+  assert.match(visibleCopy, /Not a fit for/i, 'English copy should include a concise no-fit boundary instead of generic use cases')
+  assert.match(visibleCopy, /Kling 2\.6 Pro Motion Control/i, 'English comparison should keep the direct 2.6 decision path')
   assert.match(visibleCopy, /character image/i, 'copy should explain the required character image')
   assert.match(visibleCopy, /motion reference video/i, 'copy should explain the required motion reference video')
   assert.match(visibleCopy, /720p/i, 'copy should expose 720p support')
   assert.match(visibleCopy, /1080p/i, 'copy should expose 1080p support')
-  assert.match(visibleCopy, /Prompt is optional|prompt is optional/i, 'copy should explain that media inputs are required and prompt is optional')
+  assert.match(visibleCopy, /Prompt[\s\S]{0,80}Optional|optional prompt|prompt is optional/i, 'copy should explain that media inputs are required and prompt is optional')
   assert.match(visibleCopy, /reference video duration|Output duration follows/i, 'copy should explain that duration follows the uploaded reference video')
 
   const englishVisibleStrings = new Set(collectVisibleStrings(publicContent).filter((value) => value.trim().length > 18))

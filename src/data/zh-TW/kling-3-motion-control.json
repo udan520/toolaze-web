@@ -27,8 +27,6 @@
     "howToUse",
     "scenes",
     "modelComparison",
-    "competitorComparison",
-    "testimonials",
     "faq"
   ],
   "hero": {
@@ -56,11 +54,11 @@
     ]
   },
   "performanceMetrics": {
-    "title": "Kling 3 Motion Control 功能快照",
+    "title": "Kling 3 Motion Control 輸入要求",
     "metrics": [
       {
-        "label": "輸入模式",
-        "value": "圖片轉影片動作控制"
+        "label": "主要任務",
+        "value": "將驅動影片中的動作轉移到一張上傳的角色圖片。"
       },
       {
         "label": "必要輸入",
@@ -87,8 +85,8 @@
         "value": "輸出時長會依上傳的動作參考影片長度，而不是固定手動時長。"
       },
       {
-        "label": "動作控制來源",
-        "value": "姿勢、手勢、走路循環、手部動作、身體節奏與鏡頭律動都來自上傳影片。"
+        "label": "不適合用於",
+        "value": "只有提示詞的影片構想、大範圍場景生成、4K 輸出，或沒有可用動作參考影片的片段。"
       },
       {
         "label": "解析度",
@@ -121,36 +119,24 @@
       }
     ]
   },
-  "scenesTitle": "你可以用 Kling 3 Motion Control 建立什麼",
+  "scenesTitle": "最適合 Kling 3 Motion Control 的參考輸入",
   "scenes": [
     {
-      "title": "舞蹈與姿勢轉移",
-      "desc": "將參考舞蹈、走路、轉身或手勢套用到角色圖片，同時保留身份、服裝與身體比例。"
+      "title": "全身動作參考",
+      "desc": "使用全身保持可見、姿勢順序容易辨識，且動作中沒有突然切鏡的影片。"
     },
     {
-      "title": "時裝動態短片",
-      "desc": "把靜態穿搭或編輯肖像轉成由乾淨動作參考引導的伸展台風格影片。"
+      "title": "主持人或虛擬角色手勢",
+      "desc": "當靜態主持人或虛擬角色圖片需要跟隨指定手勢時，請對齊人像裁切、身體角度、手部可見度與角色方向。"
     },
     {
-      "title": "主持人與虛擬角色手勢",
-      "desc": "建立正面說明、問候、反應或個人簡介短片，讓姿態與手部節奏跟隨提供的影片。"
-    },
-    {
-      "title": "手持產品展示",
-      "desc": "使用參考手勢引導產品被握持、旋轉、舉起或展示給鏡頭的方式。"
-    },
-    {
-      "title": "社群短片",
-      "desc": "當你已有要匹配的動作素材時，可草擬 Reels、TikTok、Shorts 與廣告用的直式角色短片。"
-    },
-    {
-      "title": "分鏡動作測試",
-      "desc": "在製作更長的行銷影片、場景或創作者影片前，檢查姿勢、手勢或身體動作是否可行。"
+      "title": "手持產品動作",
+      "desc": "要呈現產品被拿起、旋轉、輕觸或展示時，使用近距離且穩定的手部動作影片。避免肢體被遮擋、硬切鏡與不匹配的鏡頭角度。"
     }
   ],
   "modelComparison": {
-    "title": "Kling 3 Motion Control 與相近 Kling 模型比較",
-    "subtitle": "當參考影片需要驅動動作時，選擇 Motion Control。若沒有動作素材，或需要更廣泛的文字轉影片設定，請選擇標準 Kling 模型。",
+    "title": "Kling 3 Motion Control 與 Kling 2.6 Motion Control 比較",
+    "subtitle": "當兩個選項都看起來合適時，請在較新的 Kling Motion Control 選項與成本較低的 2.6 流程之間做選擇。",
     "featuredColumn": "baseline",
     "columnHeaders": {
       "metric": "決策點",
@@ -209,49 +195,6 @@
       }
     ]
   },
-  "competitorComparison": {
-    "title": "何時選擇 Kling Motion Control、Wan 或 Seedance",
-    "subtitle": "依你已有的輸入素材選模型：動作參考影片、電影感文字構想，或精修的視覺草稿。",
-    "featuredColumn": "baseline",
-    "columnHeaders": {
-      "metric": "決策點",
-      "baseline": "Kling 3 Motion Control",
-      "middle": "Wan 2.7",
-      "target": "Seedance 2.5"
-    },
-    "rows": [
-      {
-        "label": "適合用途",
-        "baseline": "從一張角色圖片與一段動作參考影片做動作轉移",
-        "middle": "用文字、圖片或參考引導提示建立短篇電影感片段",
-        "target": "建立細節豐富、視覺完成度高且場景連續性強的影片草稿"
-      },
-      {
-        "label": "先檢查什麼",
-        "baseline": "你的動作影片是否乾淨、可見、在允許時長內，且接近角色構圖",
-        "middle": "你的想法是否需要 Wan 風格的文字、圖片或影片參考引導，而不是精準身體動作轉移",
-        "target": "所選 Seedance 設定是否支援你的輸入類型、時長與品質目標"
-      },
-      {
-        "label": "文字提示風格",
-        "baseline": "在跟隨參考動作時，保留身份、服裝、比例、光線、鏡頭構圖與風格",
-        "middle": "場景設定、鏡頭節奏、動作方向、鏡頭運動與輸出設定",
-        "target": "主體、風格、場景變化、光線、節奏與品質線索"
-      },
-      {
-        "label": "參考引導",
-        "baseline": "一張圖片提供主體；一段影片提供動作",
-        "middle": "參考媒體可以引導場景，但動作不會像驅動影片那樣直接複製",
-        "target": "參考支援取決於所選 Seedance 設定與可用性"
-      },
-      {
-        "label": "何時選其他模型",
-        "baseline": "如果沒有動作參考影片，請選擇其他影片模型",
-        "middle": "當精準姿勢、手勢或舞蹈轉移最重要時，選擇 Motion Control",
-        "target": "當匹配特定動作影片比單純視覺精修更重要時，選擇 Motion Control"
-      }
-    ]
-  },
   "faqTitle": "Kling 3 Motion Control 常見問題",
   "faq": [
     {
@@ -303,27 +246,5 @@
       "a": "保持簡短且保護重點：在跟隨上傳動作參考時，保留身份、服裝、身體比例、光線、鏡頭構圖與風格。刪除會和影片競爭的額外場景變化。"
     }
   ],
-  "moreTools": "更多 AI 影片模型",
-  "testimonials": {
-    "title": "創作者對 Kling Motion Control 測試的回饋",
-    "reviewSafe": true,
-    "showStars": false,
-    "items": [
-      {
-        "name": "Maya Chen",
-        "role": "時裝動態草稿",
-        "quote": "圖片加影片的設定讓伸展台動作比從零寫身體動作更容易測試。乾淨的全身參考給了我最可用的草稿。"
-      },
-      {
-        "name": "Jordan Lee",
-        "role": "產品影片規劃",
-        "quote": "我用手部動作參考來規劃小型裝置在畫面中應該如何旋轉。把文字提示聚焦在形狀、Logo 清晰度和光線上，讓草稿更容易審閱。"
-      },
-      {
-        "name": "Nina Patel",
-        "role": "虛擬角色手勢測試",
-        "quote": "對主持人短片來說，讓肖像和動作影片的裁切接近，比加入很長的風格提示更重要。參考越簡單，手勢越清楚。"
-      }
-    ]
-  }
+  "moreTools": "更多 AI 影片模型"
 }

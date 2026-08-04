@@ -27,8 +27,6 @@
     "howToUse",
     "scenes",
     "modelComparison",
-    "competitorComparison",
-    "testimonials",
     "faq"
   ],
   "hero": {
@@ -56,11 +54,11 @@
     ]
   },
   "performanceMetrics": {
-    "title": "Kling 3 Motion Control Überblick der Fähigkeiten",
+    "title": "Kling 3 Motion Control Eingabeanforderungen",
     "metrics": [
       {
-        "label": "Eingabemodus",
-        "value": "Bild-zu-Video-Bewegungssteuerung"
+        "label": "Hauptaufgabe",
+        "value": "Überträgt Bewegung aus einem Steuerungsvideo auf ein hochgeladenes Charakterbild."
       },
       {
         "label": "Erforderliche Eingaben",
@@ -87,8 +85,8 @@
         "value": "Die Ausgabedauer folgt der Länge des hochgeladenen Bewegungsreferenzvideos statt einer festen manuellen Dauer."
       },
       {
-        "label": "Quelle der Bewegungssteuerung",
-        "value": "Pose, Geste, Laufzyklus, Handbewegung, Körper-Timing und Kamerarhythmus kommen aus dem hochgeladenen Video."
+        "label": "Nicht geeignet für",
+        "value": "Reine Prompt-Ideen, breite Szenengenerierung, 4K-Ausgabe oder Clips ohne brauchbares Bewegungsreferenzvideo."
       },
       {
         "label": "Auflösung",
@@ -121,36 +119,24 @@
       }
     ]
   },
-  "scenesTitle": "Was du mit Kling 3 Motion Control erstellen kannst",
+  "scenesTitle": "Referenzeingaben, die mit Kling 3 Motion Control am besten funktionieren",
   "scenes": [
     {
-      "title": "Tanz- und Posenübertragung",
-      "desc": "Übertrage einen Referenztanz, Gang, Drehung oder eine Geste auf ein Charakterbild, während Identität, Kleidung und Körperproportionen erhalten bleiben."
+      "title": "Ganzkörper-Bewegungsreferenz",
+      "desc": "Nutze einen Clip, in dem der ganze Körper sichtbar bleibt, die Posenfolge leicht zu lesen ist und die Kamera während der Aktion nicht wegschneidet."
     },
     {
-      "title": "Fashion-Bewegungsclips",
-      "desc": "Verwandle ein stehendes Outfit oder Editorial-Porträt in ein Laufsteg-Video, geführt von einer sauberen Bewegungsreferenz."
+      "title": "Presenter- oder Avatar-Geste",
+      "desc": "Gleiche Porträtzuschnitt, Körperwinkel, sichtbare Hände und Charakterausrichtung ab, wenn ein Standbild gelieferte Gesten übernehmen soll."
     },
     {
-      "title": "Moderator- und Avatar-Gesten",
-      "desc": "Erstelle frontale Erklär-, Begrüßungs-, Reaktions- oder Profilclips, bei denen Haltung und Hand-Timing dem gelieferten Material folgen."
-    },
-    {
-      "title": "Produktdemos in der Hand",
-      "desc": "Nutze eine Referenzgeste, um zu steuern, wie ein Produkt gehalten, gedreht, angehoben oder vor der Kamera gezeigt wird."
-    },
-    {
-      "title": "Social Shorts",
-      "desc": "Entwirf vertikale Charakterclips für Reels, TikTok, Shorts und Anzeigen, wenn du bereits passende Bewegungsaufnahmen hast."
-    },
-    {
-      "title": "Storyboard-Bewegungstests",
-      "desc": "Prüfe, ob eine Pose, Geste oder Körperbewegung funktioniert, bevor du eine längere Kampagne, Szene oder Creator-Video produzierst."
+      "title": "Produktaktion in der Hand",
+      "desc": "Nutze ein nahes, stabiles Handbewegungs-Video zum Anheben, Drehen, Antippen oder Präsentieren eines Produkts. Vermeide verdeckte Gliedmaßen, harte Schnitte und stark abweichende Kamerawinkel."
     }
   ],
   "modelComparison": {
-    "title": "Kling 3 Motion Control im Vergleich mit nahen Kling-Modellen",
-    "subtitle": "Wähle Motion Control, wenn ein Referenzvideo die Aktion steuern soll. Wähle ein Standard-Kling-Modell, wenn du kein Bewegungsmaterial hast oder breitere Text-zu-Video-Einstellungen brauchst.",
+    "title": "Kling 3 Motion Control vs. Kling 2.6 Motion Control",
+    "subtitle": "Wenn beide Seiten passend wirken, entscheide zwischen der neueren Kling-Motion-Control-Option und dem günstigeren 2.6-Ablauf.",
     "featuredColumn": "baseline",
     "columnHeaders": {
       "metric": "Entscheidungspunkt",
@@ -209,49 +195,6 @@
       }
     ]
   },
-  "competitorComparison": {
-    "title": "Wann du Kling Motion Control, Wan oder Seedance wählen solltest",
-    "subtitle": "Wähle das Modell nach dem Material, das du schon hast: Bewegungsreferenz, filmische Textidee oder ausgearbeiteter visueller Entwurf.",
-    "featuredColumn": "baseline",
-    "columnHeaders": {
-      "metric": "Entscheidungspunkt",
-      "baseline": "Kling 3 Motion Control",
-      "middle": "Wan 2.7",
-      "target": "Seedance 2.5"
-    },
-    "rows": [
-      {
-        "label": "Gute Wahl für",
-        "baseline": "Bewegungsübertragung aus einem Charakterbild und einem Bewegungsreferenzvideo",
-        "middle": "Kurze filmische Clips aus Text, Bild oder referenzgestützten Anweisungen",
-        "target": "Detailreiche Videoentwürfe mit starker visueller Ausarbeitung und Szenenkontinuität"
-      },
-      {
-        "label": "Vorher prüfen",
-        "baseline": "Ob dein Bewegungsvideo sauber, sichtbar, im akzeptierten Dauerbereich und nah am Bildausschnitt des Charakters ist",
-        "middle": "Ob deine Idee Wan-typische Steuerung über Text, Bild oder Videoreferenz braucht statt exakter Körperbewegungsübertragung",
-        "target": "Ob die gewählte Seedance-Konfiguration deinen Eingabetyp, die Dauer und das Qualitätsziel unterstützt"
-      },
-      {
-        "label": "Stil der Textanweisung",
-        "baseline": "Identität, Outfit, Proportionen, Licht, Kamerabild und Stil bewahren, während die Referenzbewegung befolgt wird",
-        "middle": "Szenenaufbau, Shot-Rhythmus, Bewegungsrichtung, Kamerabewegung und Ausgabeeinstellung",
-        "target": "Motiv, Stil, Szenenwechsel, Licht, Tempo und Qualitätsangaben"
-      },
-      {
-        "label": "Referenzsteuerung",
-        "baseline": "Ein Bild liefert das Motiv; ein Video liefert die Bewegung",
-        "middle": "Referenzmedien können die Szene führen, aber Bewegung wird nicht so direkt kopiert wie bei einem antreibenden Video",
-        "target": "Referenzunterstützung hängt von gewählter Seedance-Konfiguration und Verfügbarkeit ab"
-      },
-      {
-        "label": "Wann ein anderes Modell wählen",
-        "baseline": "Wähle ein anderes Videomodell, wenn du kein Bewegungsreferenzvideo hast",
-        "middle": "Wähle Motion Control, wenn exakte Pose, Geste oder Tanzübertragung am wichtigsten ist",
-        "target": "Wähle Motion Control, wenn das Angleichen an ein bestimmtes Aktionsvideo wichtiger ist als reine visuelle Politur"
-      }
-    ]
-  },
   "faqTitle": "Häufige Fragen zu Kling 3 Motion Control",
   "faq": [
     {
@@ -303,27 +246,5 @@
       "a": "Halte sie kurz und schützend: Identität, Outfit, Körperproportionen, Licht, Kamerabild und Stil bewahren, während der hochgeladenen Bewegungsreferenz gefolgt wird. Entferne zusätzliche Szenenwechsel, die mit dem Video konkurrieren."
     }
   ],
-  "moreTools": "Weitere KI-Videomodelle",
-  "testimonials": {
-    "title": "Creator-Kommentare zu Kling-Motion-Control-Tests",
-    "reviewSafe": true,
-    "showStars": false,
-    "items": [
-      {
-        "name": "Maya Chen",
-        "role": "Fashion-Bewegungsentwurf",
-        "quote": "Die Bild-plus-Video-Eingabe macht Laufstegbewegung leichter testbar als Körperbewegung komplett aus Text zu schreiben. Saubere Ganzkörperreferenzen lieferten mir die brauchbarsten Entwürfe."
-      },
-      {
-        "name": "Jordan Lee",
-        "role": "Produktvideo-Planung",
-        "quote": "Ich habe eine Handbewegungsreferenz genutzt, um zu planen, wie sich ein kleines Gerät im Bild drehen soll. Eine fokussierte Textanweisung zu Form, Logo-Klarheit und Licht machte den Entwurf leichter prüfbar."
-      },
-      {
-        "name": "Nina Patel",
-        "role": "Avatar-Gestentest",
-        "quote": "Bei Moderatorclips war ein ähnlicher Bildausschnitt zwischen Porträt und Bewegungsvideo wichtiger als eine lange Stilbeschreibung. Die Geste blieb klarer, wenn die Referenz einfach war."
-      }
-    ]
-  }
+  "moreTools": "Weitere KI-Videomodelle"
 }

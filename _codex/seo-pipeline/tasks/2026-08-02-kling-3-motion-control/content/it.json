@@ -27,8 +27,6 @@
     "howToUse",
     "scenes",
     "modelComparison",
-    "competitorComparison",
-    "testimonials",
     "faq"
   ],
   "hero": {
@@ -56,11 +54,11 @@
     ]
   },
   "performanceMetrics": {
-    "title": "Sintesi capacità di Kling 3 Motion Control",
+    "title": "Requisiti di input di Kling 3 Motion Control",
     "metrics": [
       {
-        "label": "Modalità di input",
-        "value": "Controllo movimento da immagine a video"
+        "label": "Compito principale",
+        "value": "Trasferisce il movimento da un video guida a un’immagine personaggio caricata."
       },
       {
         "label": "Input richiesti",
@@ -87,8 +85,8 @@
         "value": "La durata dell’output segue la durata del video di riferimento del movimento caricato, invece di una durata manuale fissa."
       },
       {
-        "label": "Sorgente del controllo movimento",
-        "value": "Posa, gesto, ciclo di camminata, movimento mani, timing del corpo e ritmo camera provengono dal video caricato."
+        "label": "Non adatto per",
+        "value": "Idee solo da prompt, generazione ampia di scene, output 4K o clip senza un video di riferimento del movimento utilizzabile."
       },
       {
         "label": "Risoluzione",
@@ -121,36 +119,24 @@
       }
     ]
   },
-  "scenesTitle": "Cosa puoi creare con Kling 3 Motion Control",
+  "scenesTitle": "Input di riferimento più adatti a Kling 3 Motion Control",
   "scenes": [
     {
-      "title": "Trasferimento danza e pose",
-      "desc": "Applica una danza, camminata, rotazione o gesto di riferimento a un’immagine personaggio mantenendo identità, abiti e proporzioni del corpo."
+      "title": "Riferimento di movimento a figura intera",
+      "desc": "Usa una clip in cui tutto il corpo resta visibile, la sequenza delle pose è facile da seguire e la camera non taglia durante l’azione."
     },
     {
-      "title": "Clip moda in movimento",
-      "desc": "Trasforma un outfit statico o un ritratto editoriale in un video stile passerella guidato da un riferimento di movimento pulito."
+      "title": "Gesto di presenter o avatar",
+      "desc": "Allinea taglio ritratto, angolo del corpo, visibilità delle mani e orientamento del personaggio quando un’immagine statica deve seguire gesti forniti."
     },
     {
-      "title": "Gesti per presenter e avatar",
-      "desc": "Crea clip frontali di spiegazione, saluto, reazione o profilo in cui postura e timing delle mani seguono il filmato fornito."
-    },
-    {
-      "title": "Demo prodotto in mano",
-      "desc": "Usa un gesto di riferimento per guidare come un prodotto viene tenuto, ruotato, sollevato o mostrato alla camera."
-    },
-    {
-      "title": "Short social",
-      "desc": "Prepara clip verticali di personaggi per Reels, TikTok, Shorts e annunci quando hai già un filmato di movimento da abbinare."
-    },
-    {
-      "title": "Test movimento per storyboard",
-      "desc": "Verifica se una posa, un gesto o un movimento corporeo funziona prima di produrre una campagna, scena o video creator più lungo."
+      "title": "Azione prodotto in mano",
+      "desc": "Usa un video ravvicinato e stabile del movimento della mano per sollevare, ruotare, toccare o presentare un prodotto. Evita arti coperti, tagli netti e angoli camera incompatibili."
     }
   ],
   "modelComparison": {
-    "title": "Kling 3 Motion Control a confronto con modelli Kling vicini",
-    "subtitle": "Scegli Motion Control quando un video di riferimento deve guidare l’azione. Scegli un modello Kling standard quando non hai filmati di movimento o ti servono impostazioni più ampie da testo a video.",
+    "title": "Kling 3 Motion Control vs Kling 2.6 Motion Control",
+    "subtitle": "Quando entrambe le opzioni sembrano pertinenti, scegli tra il percorso Kling Motion Control più recente e il flusso 2.6 a costo inferiore.",
     "featuredColumn": "baseline",
     "columnHeaders": {
       "metric": "Criterio decisionale",
@@ -209,49 +195,6 @@
       }
     ]
   },
-  "competitorComparison": {
-    "title": "Quando scegliere Kling Motion Control, Wan o Seedance",
-    "subtitle": "Scegli il modello in base all’input che hai già: filmato di movimento, idea cinematografica o bozza visiva rifinita.",
-    "featuredColumn": "baseline",
-    "columnHeaders": {
-      "metric": "Criterio decisionale",
-      "baseline": "Kling 3 Motion Control",
-      "middle": "Wan 2.7",
-      "target": "Seedance 2.5"
-    },
-    "rows": [
-      {
-        "label": "Adatto per",
-        "baseline": "Trasferimento movimento da un’immagine personaggio e un video di riferimento del movimento",
-        "middle": "Clip cinematografiche brevi da testo, immagine o istruzioni guidate da riferimenti",
-        "target": "Bozze video ad alto dettaglio con forte finitura visiva e continuità di scena"
-      },
-      {
-        "label": "Cosa verificare prima",
-        "baseline": "Se il tuo video di movimento è pulito, visibile, dentro l’intervallo di durata accettato e vicino all’inquadratura del personaggio",
-        "middle": "Se la tua idea richiede direzione in stile Wan tramite testo, immagine o riferimento video invece di trasferimento esatto del movimento corporeo",
-        "target": "Se la configurazione Seedance selezionata supporta tipo di input, durata e obiettivo qualità"
-      },
-      {
-        "label": "Stile dell’istruzione testuale",
-        "baseline": "Preservare identità, outfit, proporzioni, illuminazione, inquadratura camera e stile seguendo il movimento di riferimento",
-        "middle": "Impostazione scena, ritmo inquadrature, direzione movimento, movimento camera e impostazione output",
-        "target": "Soggetto, stile, cambio scena, illuminazione, ritmo e indicazioni qualità"
-      },
-      {
-        "label": "Guida con riferimenti",
-        "baseline": "Un’immagine fornisce il soggetto; un video fornisce il movimento",
-        "middle": "I media di riferimento possono guidare la scena, ma il movimento non viene copiato direttamente come con un video guida",
-        "target": "Il supporto dei riferimenti dipende dalla configurazione Seedance selezionata e dalla disponibilità"
-      },
-      {
-        "label": "Quando scegliere un altro modello",
-        "baseline": "Scegli un altro modello video quando non hai un video di riferimento del movimento",
-        "middle": "Scegli Motion Control quando contano soprattutto posa, gesto o trasferimento danza esatti",
-        "target": "Scegli Motion Control quando abbinare uno specifico video d’azione conta più della sola rifinitura visiva"
-      }
-    ]
-  },
   "faqTitle": "Domande frequenti su Kling 3 Motion Control",
   "faq": [
     {
@@ -303,27 +246,5 @@
       "a": "Tienila breve e protettiva: preservare identità, outfit, proporzioni del corpo, illuminazione, inquadratura camera e stile seguendo il riferimento di movimento caricato. Rimuovi cambi scena extra che competono con il video."
     }
   ],
-  "moreTools": "Altri modelli video AI",
-  "testimonials": {
-    "title": "Commenti dei creator sui test Kling Motion Control",
-    "reviewSafe": true,
-    "showStars": false,
-    "items": [
-      {
-        "name": "Maya Chen",
-        "role": "Bozza movimento moda",
-        "quote": "La configurazione immagine più video rende più facile testare il movimento passerella rispetto a scrivere il movimento del corpo da zero. I riferimenti puliti a figura intera mi hanno dato le bozze più utilizzabili."
-      },
-      {
-        "name": "Jordan Lee",
-        "role": "Pianificazione video prodotto",
-        "quote": "Ho usato un riferimento di movimento mano per pianificare come un piccolo dispositivo dovrebbe ruotare nell’inquadratura. Mantenere l’istruzione focalizzata su forma, chiarezza logo e luce ha reso la bozza più facile da rivedere."
-      },
-      {
-        "name": "Nina Patel",
-        "role": "Test gesto avatar",
-        "quote": "Per clip da presenter, far combaciare il crop tra ritratto e video di movimento contava più di aggiungere una lunga istruzione di stile. Il gesto rimaneva più chiaro quando il riferimento era semplice."
-      }
-    ]
-  }
+  "moreTools": "Altri modelli video AI"
 }

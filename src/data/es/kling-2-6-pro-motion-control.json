@@ -17,8 +17,8 @@
     "initialCharacterOrientation": "video"
   },
   "metadata": {
-    "title": "Generador de video IA Kling 2.6 Pro Motion Control | Toolaze",
-    "description": "Crea videos Kling 2.6 Motion Control con una imagen de personaje y un vídeo de movimiento. Transfiere pose, gesto, ritmo corporal y cámara en 720p o 1080p.",
+    "title": "Generador de vídeo IA Kling 2.6 Pro Motion Control | Transferencia de movimiento de menor coste",
+    "description": "Usa Kling 2.6 Pro Motion Control para transferir movimiento con menor coste desde una imagen de personaje y un vídeo guía. Admite referencias MP4, QuickTime o Matroska con salida 720p o 1080p.",
     "published": true
   },
   "sectionsOrder": [
@@ -26,18 +26,15 @@
     "performanceMetrics",
     "howToUse",
     "scenes",
-    "modelComparison",
-    "competitorComparison",
-    "testimonials",
     "faq"
   ],
   "hero": {
-    "h1": "<span class=\"text-gradient\">Kling 2.6 Pro Motion Control</span> Generador de video IA",
-    "desc": "Sube una imagen de personaje, añade un vídeo de movimiento y describe qué debe mantenerse estable. Toolaze transfiere pose, gesto, ritmo corporal y cámara del vídeo a la imagen."
+    "h1": "<span class=\"text-gradient\">Kling 2.6 Pro Motion Control</span> Generador de vídeo IA",
+    "desc": "Elige el flujo Kling Motion Control de menor coste cuando ya tengas metraje limpio y necesites que una imagen de personaje lo siga. Mantiene la tarea imagen más vídeo centrada en borradores prácticos de movimiento."
   },
   "heroDemoVideo": {
     "src": "https://assets.toolaze.com/model-assets/kling-2-6-pro-motion-control/motion-control-demo.mp4",
-    "ariaLabel": "Kling 2.6 Motion Control es demo",
+    "ariaLabel": "Vista previa 16:9 para Kling 2.6 Motion Control",
     "width": 16,
     "height": 9,
     "sourceHistory": "User-generated Kling 2.6 Motion Control demo · character image + motion reference video · 7.9s · 1264x720 · R2",
@@ -46,276 +43,132 @@
     "uploadDate": "2026-08-03T04:25:54.000Z"
   },
   "modelIntro": {
-    "title": "¿Qué es Kling 2.6 Motion Control?",
-    "modelName": "Kling 2.6 Motion Control",
-    "modelType": "Modelo de video IA",
+    "title": "¿Qué es Kling 2.6 Pro Motion Control?",
+    "modelName": "Kling 2.6 Pro Motion Control",
+    "modelType": "Modelo de vídeo IA",
     "description": [
-      "Kling 2.6 Motion Control es un modelo de video Kling de Kuaishou que anima una imagen de personaje con movimiento de un vídeo de referencia. Aportas la apariencia que debe conservarse y el clip de movimiento que debe seguirse.",
-      "Úsalo para pruebas de baile, retratos en movimiento, clips de moda, gestos de presentador, demos de producto en mano y videos sociales. En Toolaze funciona como imagen a vídeo Motion Control con una imagen de personaje, un vídeo de movimiento y salida 720p o 1080p."
+      "Kling 2.6 Pro Motion Control es la opción Motion Control de menor coste en Toolaze para aplicar movimiento de un vídeo guía a una imagen fija de personaje. Está pensada para usuarios que ya tienen metraje adecuado y quieren un borrador controlado sin pagar la tarifa por segundo más alta de Kling 3 Motion Control.",
+      "Úsalo para pruebas simples de acción, borradores de revisión interna, clips fuente Matroska y experimentos cortos de transferencia de movimiento donde 720p o 1080p bastan. Si necesitas el flujo Kling Motion Control más nuevo o reglas de entrada más estrictas, compáralo antes con Kling 3 Motion Control."
     ]
   },
   "performanceMetrics": {
-    "title": "Resumen de capacidades de Kling 2.6 Motion Control",
+    "title": "Resumen de Kling 2.6 Pro Motion Control",
     "metrics": [
       {
-        "label": "Modo de entrada",
-        "value": "Imagen a vídeo Motion Control"
+        "label": "Por qué existe",
+        "value": "Una opción Motion Control de menor coste para borradores rápidos de transferencia de movimiento."
       },
       {
-        "label": "Imagen de personaje",
-        "value": "1 imagen, hasta 10MB en el cargador de Toolaze"
+        "label": "Configuración requerida",
+        "value": "1 imagen de personaje más 1 vídeo de referencia de movimiento; el prompt es opcional."
       },
       {
-        "label": "Video de movimiento",
-        "value": "1 video de movimiento en MP4, QuickTime o Matroska, máximo 100MB y 3-30 segundos"
+        "label": "Compatibilidad de vídeo",
+        "value": "Vídeo de referencia MP4, QuickTime o Matroska, máximo 100MB, 3-30 segundos."
       },
       {
-        "label": "Prompt",
-        "value": "Opcional; úsalo para preservar identidad, vestuario, encuadre y estilo."
+        "label": "Comportamiento de duración",
+        "value": "La duración de salida sigue el vídeo de referencia de movimiento subido."
       },
       {
-        "label": "Duración",
-        "value": "La orientación de imagen admite referencias de 3-10 segundos; la orientación de video, de 3-30 segundos. La duración de salida sigue el video de referencia subido."
+        "label": "Salida",
+        "value": "720p o 1080p, con audio nativo activado en Toolaze."
       },
       {
-        "label": "Orientación del personaje",
-        "value": "Elige Imagen para usar la orientación de la imagen del personaje (3-10 s) o Video para seguir la orientación del personaje en el video (3-30 s)."
+        "label": "Guía de créditos",
+        "value": "22 credits por segundo de salida, calculados desde la duración del vídeo de referencia subido, en 720p o 1080p."
       },
       {
-        "label": "Fuente del movimiento",
-        "value": "Pose, gesto, caminata, manos y ritmo de cámara vienen del video subido"
-      },
-      {
-        "label": "Resolución",
-        "value": "720p o 1080p"
-      },
-      {
-        "label": "Guía de credits",
-        "value": "Los credits escalan con la duración del video de movimiento subido; la tarifa actual es 22 credits por segundo de salida en 720p o 1080p."
-      },
-      {
-        "label": "Sonido",
-        "value": "Motion Control admite audio nativo en Toolaze, por lo que los clips generados pueden incluir sonido generado junto con el movimiento controlado."
+        "label": "Sube de nivel cuando",
+        "value": "Quieres el flujo Kling 3 Motion Control más nuevo o una guía de entrada de imagen/vídeo más estricta."
       }
     ]
   },
   "howToUse": {
-    "title": "Cómo usar Kling 2.6 Motion Control en Toolaze",
+    "title": "Cómo usar Kling 2.6 Pro Motion Control de forma eficiente",
     "steps": [
       {
-        "title": "Elegir Motion Control",
-        "desc": "Empieza con Kling 2.6 Motion Control seleccionado para que el generador espere una imagen de personaje y un video de movimiento."
+        "title": "Empieza con un objetivo simple de transferencia",
+        "desc": "Usa 2.6 cuando el objetivo sea un borrador práctico de movimiento: gesto corto, caminata, giro, acción de manos o clip de revisión."
       },
       {
-        "title": "Subir la imagen del personaje",
-        "desc": "Usa una imagen clara que muestre rostro, ropa, forma del cuerpo, producto o estilo visual que quieres conservar."
+        "title": "Sube una imagen de personaje legible",
+        "desc": "Elige una imagen donde rostro, forma corporal, vestuario o silueta del producto sean claros para conservarlos."
       },
       {
-        "title": "Añadir el video de movimiento",
-        "desc": "Sube un clip MP4, QuickTime o Matroska (máximo 100MB, 3-30 segundos) con la pose, gesto, caminata, baile, acción de manos o ritmo de cámara que quieres transferir."
+        "title": "Usa un vídeo guía compatible",
+        "desc": "Sube un clip MP4, QuickTime o Matroska de hasta 100MB. Mantén el movimiento visible y evita cortes bruscos o extremidades ocultas."
       },
       {
-        "title": "Elegir calidad y ajustar",
-        "desc": "Elige 720p o 1080p; la duración de salida sigue el video de movimiento subido. Genera y luego simplifica el prompt o usa un clip más limpio si se mueve la identidad, las extremidades o el encuadre."
+        "title": "Limita el prompt a preservar",
+        "desc": "Describe identidad, vestuario, logo, iluminación y encuadre que deben mantenerse. Evita añadir acciones nuevas que compitan con el vídeo guía."
       }
     ]
   },
-  "scenesTitle": "Qué puedes crear con Kling 2.6 Motion Control",
+  "scenesTitle": "Cuándo Kling 2.6 Pro Motion Control es suficiente",
   "scenes": [
     {
-      "title": "Transferencia de baile y pose",
-      "desc": "Aplica un baile, caminata, giro o gesto de referencia a una imagen de personaje conservando identidad, ropa y proporciones."
+      "title": "Borradores de movimiento de menor coste",
+      "desc": "Usa 2.6 para clips de revisión temprana cuando quieras comprobar si el movimiento guía funciona antes de gastar más credits en la opción Motion Control más nueva."
     },
     {
-      "title": "Clips de movimiento de moda",
-      "desc": "Convierte una imagen de outfit o retrato editorial en un clip tipo pasarela guiado por una referencia real."
+      "title": "Metraje fuente Matroska",
+      "desc": "Ten en cuenta el flujo 2.6 cuando tu referencia de movimiento ya esté en Matroska y no quieras convertirla antes de subirla."
     },
     {
-      "title": "Gestos de presentador y avatar",
-      "desc": "Crea clips frontales de explicación, reacción o saludo donde manos y postura siguen el metraje indicado."
-    },
-    {
-      "title": "Demos de producto en mano",
-      "desc": "Usa un gesto de referencia para guiar cómo se sostiene, gira, levanta o muestra un producto a cámara."
-    },
-    {
-      "title": "Shorts sociales",
-      "desc": "Crea clips verticales de personajes para Reels, TikTok, Shorts y anuncios cuando ya tienes movimiento que igualar."
-    },
-    {
-      "title": "Pruebas de movimiento para storyboard",
-      "desc": "Comprueba si una pose, gesto o movimiento corporal funciona antes de producir una campaña o escena más larga."
+      "title": "Revisión de gestos simples",
+      "desc": "Prueba saludos, giros, movimientos de mano, bucles de caminata o coreografía aproximada antes de cambiar a Kling 3 para un intento final."
     }
   ],
-  "modelComparison": {
-    "title": "Kling 2.6 Motion Control frente a otros modelos Kling",
-    "subtitle": "Elige Motion Control cuando un video de referencia debe dirigir la acción. Elige otro modelo Kling si no tienes un clip de movimiento o necesitas ajustes de generación más amplios.",
-    "featuredColumn": "baseline",
-    "columnHeaders": {
-      "metric": "Punto de decisión",
-      "baseline": "Kling 2.6 Motion Control",
-      "middle": "Kling 2.6",
-      "target": "Kling 3.0"
-    },
-    "rows": [
-      {
-        "label": "Modelo Toolaze",
-        "baseline": "Kling 2.6 Motion Control",
-        "middle": "Kling 2.6",
-        "target": "Kling 3.0"
-      },
-      {
-        "label": "Entradas",
-        "baseline": "Imagen a vídeo Motion Control: 1 imagen de personaje + 1 video de movimiento",
-        "middle": "Generación de video con prompt o una sola imagen, hasta 1 imagen",
-        "target": "Generación de video con prompt o varias imágenes, hasta 4 imágenes"
-      },
-      {
-        "label": "Referencia de video",
-        "baseline": "Obligatorio: 1 video de movimiento",
-        "middle": "No usa un video de movimiento subido",
-        "target": "No usa un video de movimiento subido"
-      },
-      {
-        "label": "Control de movimiento",
-        "baseline": "Transferencia desde video de referencia con preservación de identidad y estilo",
-        "middle": "Acción del sujeto, recorrido de cámara y ritmo descritos por prompt",
-        "target": "Prompts de dirección con más referencias y planificación de escenas más largas"
-      },
-      {
-        "label": "Resolución",
-        "baseline": "720p o 1080p",
-        "middle": "720p o 1080p",
-        "target": "720p, 1080p o 4K"
-      },
-      {
-        "label": "Guía de credits",
-        "baseline": "22 credits por segundo de salida; el coste total sigue la duración del video de referencia subido",
-        "middle": "Desde 110 credits para 5 segundos",
-        "target": "Desde 84 credits según ajustes"
-      },
-      {
-        "label": "Elegir cuando",
-        "baseline": "Tienes un video de movimiento limpio y necesitas que la imagen lo siga",
-        "middle": "Quieres un borrador Kling solo con prompt o una imagen",
-        "target": "Necesitas más referencias de imagen, 4K o escenas más largas"
-      }
-    ]
-  },
-  "competitorComparison": {
-    "title": "Cuándo elegir Kling Motion Control, Wan o Seedance",
-    "subtitle": "Sube una imagen de personaje, añade un vídeo de movimiento y describe qué debe mantenerse estable. Toolaze transfiere pose, gesto, ritmo corporal y cámara del vídeo a la imagen.",
-    "featuredColumn": "baseline",
-    "columnHeaders": {
-      "metric": "Punto de decisión",
-      "baseline": "Kling 2.6 Motion Control",
-      "middle": "Wan 2.7",
-      "target": "Seedance 2.5"
-    },
-    "rows": [
-      {
-        "label": "Buen encaje",
-        "baseline": "Transferencia de movimiento desde 1 imagen de personaje y 1 video de movimiento",
-        "middle": "Clips cinematográficos cortos con encuadre flexible",
-        "target": "Borradores de video ByteDance con alto detalle y acabado visual"
-      },
-      {
-        "label": "Revisar primero",
-        "baseline": "Si el video de movimiento está limpio, visible y cerca del encuadre del personaje",
-        "middle": "Si duración y resolución deseadas coinciden con la configuración Wan",
-        "target": "Si la configuración Seedance elegida admite tu tipo de entrada y objetivo de calidad"
-      },
-      {
-        "label": "Estilo de prompt",
-        "baseline": "Conserva identidad, ropa, proporciones, luz, encuadre y estilo mientras sigue el movimiento",
-        "middle": "Define escena, ritmo de plano, dirección de movimiento y ajustes de salida",
-        "target": "Describe sujeto, estilo, cambio de escena, luz y señales de calidad"
-      },
-      {
-        "label": "Referencias",
-        "baseline": "La imagen da el personaje; el video da el movimiento",
-        "middle": "Hasta dos imágenes de referencia en Toolaze",
-        "target": "El soporte de referencias depende de la configuración Seedance elegida"
-      },
-      {
-        "label": "Cuándo elegir otro modelo",
-        "baseline": "Elige otro modelo si no tienes video de movimiento",
-        "middle": "Elige Motion Control cuando pose o gesto exactos importan más",
-        "target": "Elige Motion Control cuando igualar una acción específica importa más que el acabado visual solo"
-      }
-    ]
-  },
-  "testimonials": {
-    "title": "Comentarios de creadores sobre pruebas Motion Control",
-    "reviewSafe": true,
-    "showStars": false,
-    "items": [
-      {
-        "name": "Maya Chen",
-        "role": "Borrador de moda en movimiento",
-        "quote": "La configuración de imagen más video me ayudó a probar una caminata de pasarela sin reescribir el movimiento en texto. Los mejores resultados llegaron con una referencia limpia de cuerpo completo."
-      },
-      {
-        "name": "Jordan Lee",
-        "role": "Planificación de video de producto",
-        "quote": "Usé una referencia de movimiento de manos para planear cómo girar un dispositivo pequeño en cuadro. Mantener el prompt centrado en logo e iluminación hizo el borrador más fácil de revisar."
-      },
-      {
-        "name": "Nina Patel",
-        "role": "Prueba de gesto para avatar",
-        "quote": "En clips de presentador, igualar el recorte entre retrato y video de movimiento importó más que añadir un prompt largo de estilo. La referencia simple mantuvo el gesto más claro."
-      }
-    ]
-  },
-  "faqTitle": "Preguntas frecuentes de Kling 2.6 Motion Control",
+  "faqTitle": "Preguntas frecuentes sobre Kling 2.6 Pro Motion Control",
   "faq": [
     {
-      "q": "¿Qué es Kling 2.6 Motion Control en Toolaze?",
-      "a": "Es un flujo de imagen a video que aplica el movimiento de un video de referencia a una imagen de personaje subida, preservando identidad, vestuario y estilo visual."
+      "q": "¿Por qué seguir usando Kling 2.6 Pro Motion Control?",
+      "a": "Úsalo cuando quieras un borrador de transferencia de movimiento de menor coste y ya tengas un vídeo guía limpio. Sirve antes de gastar más credits en Kling 3 Motion Control."
     },
     {
-      "q": "¿Puedo crear solo con un prompt?",
-      "a": "No. Kling 2.6 Motion Control requiere una imagen de personaje y un video de movimiento de referencia. Elige otro modelo de video de Toolaze si no tienes metraje de movimiento."
+      "q": "¿Cuál es la principal ventaja frente a Kling 3 Motion Control?",
+      "a": "El flujo 2.6 actual cuesta 22 credits por segundo de salida, calculados desde la duración del vídeo de referencia subido, en 720p o 1080p. También acepta vídeos Matroska además de MP4 y QuickTime."
     },
     {
-      "q": "¿El prompt es obligatorio en Motion Control?",
-      "a": "No. La imagen del personaje y el video de movimiento son obligatorios; el prompt es opcional y sirve para preservar identidad, vestuario, iluminación, encuadre y estilo."
+      "q": "¿Qué necesito antes de generar?",
+      "a": "Prepara una imagen de personaje legible y un vídeo de referencia de movimiento. El vídeo debe mostrar claramente el movimiento porque define el timing y la acción de salida."
     },
     {
-      "q": "¿Puedo subir un video de movimiento?",
-      "a": "Sí. Sube un video de movimiento junto con una imagen de personaje. El video aporta pose, gesto, timing, ritmo de cámara y la duración final de salida."
+      "q": "¿Puede 2.6 usar un archivo Matroska?",
+      "a": "Sí. Toolaze lista MP4, QuickTime y Matroska para este flujo 2.6 Motion Control, con límite de 100MB y rango de referencia de 3-30 segundos."
     },
     {
-      "q": "¿Cuántos archivos de referencia puedo usar?",
-      "a": "Toolaze admite una imagen de personaje y un video de movimiento en este flujo. El cargador acepta MP4, QuickTime o Matroska, hasta 100MB y 3-30 segundos."
+      "q": "¿Puedo usar Kling 2.6 Pro Motion Control para vídeos solo con prompt?",
+      "a": "No. Este flujo es para transferencia de movimiento con vídeo guía. Usa Kling 3.0 estándar u otro modelo de vídeo cuando solo tengas un prompt de texto o una idea de imagen."
     },
     {
-      "q": "¿Qué resolución puedo elegir?",
-      "a": "Kling 2.6 Motion Control en Toolaze admite opciones de salida 720p y 1080p."
+      "q": "¿Cuándo suele bastar el resultado de 2.6?",
+      "a": "Suele bastar para revisiones internas, primeras comprobaciones de coreografía, clips simples de manos y borradores de bajo riesgo donde 720p o 1080p sean aceptables."
     },
     {
-      "q": "¿Motion Control genera sonido?",
-      "a": "Sí. Toolaze activa audio nativo para Kling 2.6 Motion Control, así que los clips generados pueden incluir sonido generado junto con el movimiento transferido."
+      "q": "¿Cuándo debería cambiar a Kling 3 Motion Control?",
+      "a": "Cambia cuando quieras el flujo Motion Control más reciente, una guía de entrada más estricta o un intento final después de que el borrador 2.6 confirme la dirección del movimiento."
     },
     {
-      "q": "¿Cuántos credits usa?",
-      "a": "Los credits escalan con la duración del video de referencia subido. La tarifa actual de Toolaze es 22 credits por segundo de salida para Motion Control en 720p o 1080p."
-    },
-    {
-      "q": "¿Kling 2.6 Motion Control es gratis?",
-      "a": "La generación de video usa credits de Toolaze. Los credits iniciales, los ajustes disponibles, la duración del video de referencia y el coste final pueden variar según la cuota de la cuenta y la resolución."
-    },
-    {
-      "q": "¿Cómo escribo un prompt más fuerte?",
-      "a": "Mantén el prompt corto y protector: conserva identidad, ropa, iluminación, encuadre y estilo mientras sigue el video de movimiento subido. Elimina cambios de escena extra que compitan con el video."
-    },
-    {
-      "q": "¿Debo elegir Motion Control o Kling 3.0?",
-      "a": "Elige Motion Control si tienes un video de movimiento y necesitas que una imagen de personaje lo siga. Elige Kling 3.0 si quieres prompts más amplios, más referencias de imagen, 4K o planificación de escenas más largas."
+      "q": "¿Cómo debería escribir el prompt opcional?",
+      "a": "Hazlo protector, no cinematográfico: conserva identidad, vestuario, logo, forma del producto, iluminación, encuadre y estilo mientras sigues el vídeo guía."
     }
   ],
-  "moreTools": "Más modelos de video IA",
+  "moreTools": "Más modelos de vídeo IA",
   "moreToolsLinks": [
+    {
+      "slug": "kling-3-motion-control",
+      "title": "Kling 3 Motion Control",
+      "description": "Usa la opción Kling Motion Control más reciente para transferencia de movimiento con más credits.",
+      "href": "/model/kling-3-motion-control",
+      "media": {
+        "type": "video",
+        "src": "https://assets.toolaze.com/model-assets/kling-3-motion-control/motion-control-demo.mp4",
+        "poster": "https://assets.toolaze.com/model-assets/kling-3-motion-control/motion-control-demo-poster.webp",
+        "alt": "Kling 3 Motion Control preview"
+      }
+    },
     {
       "slug": "kling-3",
       "title": "Generador de video Kling 3.0",
@@ -348,17 +201,6 @@
         "type": "image",
         "src": "https://assets.toolaze.com/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
         "alt": "Wan 2.7 Video Generator preview"
-      }
-    },
-    {
-      "slug": "seedance-2-5",
-      "title": "Generador de video Seedance 2.5",
-      "description": "Explora otro modelo de video de alta calidad para borradores visuales pulidos.",
-      "href": "/model/seedance-2-5",
-      "media": {
-        "type": "image",
-        "src": "https://assets.toolaze.com/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
-        "alt": "Seedance 2.5 Video Generator preview"
       }
     }
   ]

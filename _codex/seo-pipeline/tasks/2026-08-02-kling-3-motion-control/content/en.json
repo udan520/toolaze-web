@@ -17,8 +17,8 @@
     "initialCharacterOrientation": "video"
   },
   "metadata": {
-    "title": "Kling 3 Motion Control AI Video Generator | Toolaze",
-    "description": "Create Kling 3 Motion Control videos from one character image and one motion reference video. Transfer pose, gesture, camera rhythm, and style at 720p or 1080p.",
+    "title": "Kling 3 Motion Control AI Video Generator | Reference Motion Transfer",
+    "description": "Use Kling 3 Motion Control when exact pose, gesture, and body timing should come from a driving video. Upload one character image, one MP4 or QuickTime motion reference, then generate 720p or 1080p output.",
     "published": true
   },
   "sectionsOrder": [
@@ -27,13 +27,11 @@
     "howToUse",
     "scenes",
     "modelComparison",
-    "competitorComparison",
-    "testimonials",
     "faq"
   ],
   "hero": {
     "h1": "<span class=\"text-gradient\">Kling 3 Motion Control</span> AI Video Generator",
-    "desc": "Upload a character image, add one motion reference video, and use Kling 3 Motion Control to transfer pose, gesture, body timing, and camera rhythm while preserving the subject's identity and style."
+    "desc": "Use the newer Kling motion-control flow when the uploaded video should drive pose, gesture, body timing, and camera rhythm. Add one character image, one motion reference video, and an optional preservation prompt."
   },
   "heroDemoVideo": {
     "type": "video",
@@ -51,20 +49,20 @@
     "modelName": "Kling 3 Motion Control",
     "modelType": "AI Video Model",
     "description": [
-      "Kling 3 Motion Control is a Kuaishou Kling video model for driving a still character image with movement from a reference video. The image supplies the subject to preserve, while the motion video supplies the action, body timing, pose sequence, and camera rhythm.",
-      "Use it when exact movement matters more than prompt-only direction: dance transfer, fashion movement, presenter gestures, avatar motion, product-in-hand demos, and social video variations. On Toolaze, this flow uses one character image, one motion reference video, selectable Image or Video character orientation, and 720p or 1080p output."
+      "Kling 3 Motion Control is the Toolaze Kling 3 flow for motion-reference transfer. The uploaded image defines the character or subject to preserve, while the uploaded video defines the action path, body timing, pose sequence, and camera rhythm.",
+      "Choose it when matching a specific movement matters more than writing a broad text-to-video prompt. Use it for clean driving footage, higher-control identity preservation, orientation-aware character movement, and 720p or 1080p output where credits scale with the reference-video length."
     ]
   },
   "performanceMetrics": {
-    "title": "Kling 3 Motion Control Capability Snapshot",
+    "title": "Kling 3 Motion Control Input Requirements",
     "metrics": [
       {
-        "label": "Input mode",
-        "value": "Image-to-video motion control"
+        "label": "Primary job",
+        "value": "Transfer motion from a driving video to one uploaded character image."
       },
       {
         "label": "Required inputs",
-        "value": "1 character image plus 1 motion reference video"
+        "value": "1 character image plus 1 motion reference video."
       },
       {
         "label": "Character image",
@@ -76,117 +74,99 @@
       },
       {
         "label": "Prompt",
-        "value": "Prompt is optional; use it to preserve identity, outfit, lighting, framing, and style. Keep it under 2500 characters."
+        "value": "Optional. Use it to preserve identity, outfit, body proportions, lighting, camera framing, and style. Keep it under 2500 characters."
       },
       {
         "label": "Character orientation",
-        "value": "Choose Image to match the character image orientation, or Video to follow the character orientation in the reference video."
+        "value": "Choose Image when the uploaded image should define character direction, or Video when the motion reference should define character direction."
       },
       {
         "label": "Duration",
         "value": "Output duration follows the uploaded motion reference video duration instead of a fixed manual duration."
       },
       {
-        "label": "Motion control source",
-        "value": "Pose, gesture, walk cycle, hand movement, body timing, and camera rhythm come from the uploaded video."
-      },
-      {
         "label": "Resolution",
-        "value": "720p or 1080p"
+        "value": "720p or 1080p."
       },
       {
         "label": "Credit guidance",
         "value": "Credits scale with the uploaded motion reference video duration; current Toolaze rate is 40 credits per output second at 720p or 54 credits per output second at 1080p."
+      },
+      {
+        "label": "Not a fit for",
+        "value": "Prompt-only video ideas, broad scene generation, 4K output, or clips without a usable motion reference video."
       }
     ]
   },
   "howToUse": {
-    "title": "How To Use Kling 3 Motion Control On Toolaze",
+    "title": "How To Prepare Kling 3 Motion Control Inputs",
     "steps": [
       {
-        "title": "Choose Kling 3 Motion Control",
-        "desc": "Start with Kling 3 Motion Control selected so the generator expects both a character image and a motion reference video."
+        "title": "Pick the character source",
+        "desc": "Upload one clear JPEG, PNG, or JPG image where the face, body, outfit, or product shape is easy to read."
       },
       {
-        "title": "Upload the character image",
-        "desc": "Use one clear JPEG, PNG, or JPG image that shows the face, outfit, body shape, product, or style you want to preserve."
+        "title": "Match the driving motion",
+        "desc": "Use an MP4 or QuickTime reference video with visible body motion, limited occlusion, and framing close to the character image."
       },
       {
-        "title": "Add the motion reference video",
-        "desc": "Upload one MP4 or QuickTime clip with the pose, gesture, walk, dance, hand action, or camera rhythm you want to transfer. Choose Image or Video orientation based on which source should define character direction."
+        "title": "Choose character orientation",
+        "desc": "Use Image orientation when the still image should control direction. Use Video orientation when the reference clip should control direction and can run up to 30 seconds."
       },
       {
-        "title": "Set quality and refine",
-        "desc": "Choose 720p or 1080p. Output duration and total credits follow the uploaded reference-video length, and the optional prompt can protect identity, outfit, lighting, framing, and style."
+        "title": "Keep the prompt protective",
+        "desc": "Describe what must stay stable: identity, outfit, body proportions, lighting, framing, and style. Avoid asking for scene changes that conflict with the driving video."
       }
     ]
   },
-  "scenesTitle": "What You Can Create With Kling 3 Motion Control",
+  "scenesTitle": "Reference Inputs That Work Best With Kling 3 Motion Control",
   "scenes": [
     {
-      "title": "Dance and pose transfer",
-      "desc": "Apply a reference dance, walk, turn, or gesture to a character image while preserving identity, clothing, and body proportions."
+      "title": "Full-body motion reference",
+      "desc": "Use a driving clip where the whole body stays visible, the pose sequence is easy to follow, and the camera does not cut away mid-action."
     },
     {
-      "title": "Fashion movement clips",
-      "desc": "Turn a still outfit or editorial portrait into a runway-style video guided by a clean motion reference."
+      "title": "Presenter or avatar gesture",
+      "desc": "Match portrait crop, body angle, hand visibility, and character orientation when a still presenter or avatar image should follow supplied gestures."
     },
     {
-      "title": "Presenter and avatar gestures",
-      "desc": "Create front-facing explainer, greeting, reaction, or profile clips where posture and hand timing follow supplied footage."
-    },
-    {
-      "title": "Product-in-hand demos",
-      "desc": "Use a reference gesture to guide how a product is held, rotated, lifted, or shown to camera."
-    },
-    {
-      "title": "Social shorts",
-      "desc": "Draft vertical character clips for Reels, TikTok, Shorts, and ads when you already have motion footage to match."
-    },
-    {
-      "title": "Storyboard motion tests",
-      "desc": "Check whether a pose, gesture, or body movement works before producing a longer campaign, scene, or creator video."
+      "title": "Product-in-hand action",
+      "desc": "Use a close, stable hand-motion video for lifting, rotating, tapping, or presenting a product. Avoid blocked limbs, hard cuts, and mismatched camera angles."
     }
   ],
   "modelComparison": {
-    "title": "Kling 3 Motion Control Compared With Nearby Kling Models",
-    "subtitle": "Choose Motion Control when a reference video should drive the action. Choose a standard Kling model when you do not have motion footage or need broader text-to-video settings.",
+    "title": "Kling 3 Motion Control vs Kling 2.6 Motion Control",
+    "subtitle": "When both pages look relevant, decide whether you want the newer Kling motion-control option or the lower-cost 2.6 flow.",
     "featuredColumn": "baseline",
     "columnHeaders": {
       "metric": "Decision Point",
       "baseline": "Kling 3 Motion Control",
       "middle": "Kling 2.6 Pro Motion Control",
-      "target": "Kling 3.0"
+      "target": "Standard Kling 3.0"
     },
     "rows": [
       {
-        "label": "Toolaze model",
-        "baseline": "Kling 3 Motion Control",
-        "middle": "Kling 2.6 Pro Motion Control",
-        "target": "Kling 3.0"
+        "label": "Best fit",
+        "baseline": "Newer motion-control generation when exact action transfer is the main task",
+        "middle": "Lower-cost motion transfer when the 2.6 flow is enough",
+        "target": "Prompt-driven video generation without a driving motion video"
       },
       {
-        "label": "Input modes",
-        "baseline": "Image-to-video motion control with 1 character image + 1 motion reference video",
-        "middle": "Image-to-video motion control with 1 character image + 1 motion reference video",
-        "target": "Prompt or multi-image video generation, up to 4 images"
+        "label": "Required inputs",
+        "baseline": "1 character image plus 1 MP4 or QuickTime motion reference video",
+        "middle": "1 character image plus 1 MP4, QuickTime, or Matroska motion reference video",
+        "target": "Prompt or image references, depending on selected Kling settings"
       },
       {
-        "label": "Video reference support",
-        "baseline": "Required: 1 motion reference video",
-        "middle": "Required: 1 motion reference video",
-        "target": "Does not use an uploaded motion reference video"
-      },
-      {
-        "label": "Motion control style",
-        "baseline": "Reference-video motion transfer with optional prompt guidance for identity, outfit, framing, and style",
-        "middle": "Reference-video motion transfer with optional prompt guidance for identity and style",
-        "target": "Prompt-described subject action, camera path, shot sequence, and scene style"
+        "label": "Image constraints",
+        "baseline": "JPEG, PNG, or JPG; max 10MB; greater than 300px; aspect ratio from 2:5 to 5:2",
+        "middle": "1 image up to 10MB in the Toolaze uploader",
+        "target": "Uses the standard Kling generator input limits"
       },
       {
         "label": "Reference duration",
-        "baseline": "Image orientation supports 3-10 seconds; Video orientation supports 3-30 seconds; output duration follows the reference video",
-        "middle": "Image orientation supports 3-10 seconds; Video orientation supports 3-30 seconds; output duration follows the reference video",
+        "baseline": "Image orientation supports 3-10 seconds; Video orientation supports 3-30 seconds",
+        "middle": "Image orientation supports 3-10 seconds; Video orientation supports 3-30 seconds",
         "target": "Manual duration choices in the standard Kling 3.0 selector"
       },
       {
@@ -196,134 +176,61 @@
         "target": "720p, 1080p, or 4K"
       },
       {
-        "label": "Credit guidance",
+        "label": "Credit profile",
         "baseline": "40 credits per output second at 720p or 54 credits per output second at 1080p",
-        "middle": "22 credits per output second in the current Toolaze pricing table",
+        "middle": "22 credits per output second at 720p or 1080p",
         "target": "Starts at 28 credits per output second for standard 720p"
       },
       {
-        "label": "Choose it when",
-        "baseline": "You want the newer Kling motion-control model to follow a specific action video",
-        "middle": "You need lower-cost motion transfer with the Kling 2.6 motion-control flow",
-        "target": "You want broader prompt-driven generation, more image references, 4K, or longer scene planning"
-      }
-    ]
-  },
-  "competitorComparison": {
-    "title": "When To Choose Kling Motion Control, Wan, Or Seedance",
-    "subtitle": "Pick the model by the input you already have: motion reference footage, a cinematic prompt, or a polished visual draft.",
-    "featuredColumn": "baseline",
-    "columnHeaders": {
-      "metric": "Decision Point",
-      "baseline": "Kling 3 Motion Control",
-      "middle": "Wan 2.7",
-      "target": "Seedance 2.5"
-    },
-    "rows": [
-      {
-        "label": "Good fit",
-        "baseline": "Motion transfer from one character image and one motion reference video",
-        "middle": "Short cinematic clips from text, image, or reference-led prompts",
-        "target": "High-detail video drafts with strong visual finish and scene continuity"
-      },
-      {
-        "label": "What to check first",
-        "baseline": "Whether your motion video is clean, visible, within the accepted duration range, and close to the character framing",
-        "middle": "Whether your idea needs Wan-style text/image/video reference direction rather than exact body-motion transfer",
-        "target": "Whether the selected Seedance setup supports your input type, duration, and quality target"
-      },
-      {
-        "label": "Prompt style",
-        "baseline": "Preserve identity, outfit, proportions, lighting, camera framing, and style while following the reference motion",
-        "middle": "Scene setup, shot rhythm, motion direction, camera movement, and output setting",
-        "target": "Subject, style, scene change, lighting, pacing, and quality cues"
-      },
-      {
-        "label": "Reference guidance",
-        "baseline": "One image gives the subject; one video gives the movement",
-        "middle": "Reference media can guide the scene, but motion is not copied as directly as a driving video",
-        "target": "Reference support depends on selected Seedance setup and availability"
-      },
-      {
-        "label": "When to choose another model",
-        "baseline": "Choose another video model when you do not have a motion reference video",
-        "middle": "Choose Motion Control when exact pose, gesture, or dance transfer matters most",
-        "target": "Choose Motion Control when matching a specific action video matters more than visual polish alone"
+        "label": "Choose another option when",
+        "baseline": "You need the lower-cost 2.6 flow, Matroska input, 4K output, or prompt-only generation",
+        "middle": "You want the newer Kling motion-control option or stricter image/video input guidance",
+        "target": "You need exact pose, gesture, or body timing from a supplied motion video"
       }
     ]
   },
   "faqTitle": "Kling 3 Motion Control FAQ",
   "faq": [
     {
-      "q": "What is Kling 3 Motion Control on Toolaze?",
-      "a": "It is an image-to-video generator flow for applying motion from one reference video to one uploaded character image while preserving identity, outfit, framing, and visual style."
-    },
-    {
-      "q": "Can I create from a prompt only?",
-      "a": "No. Kling 3 Motion Control requires both a character image and a motion reference video. Choose a standard video model if you do not have motion footage."
-    },
-    {
-      "q": "Is the prompt required for Motion Control?",
-      "a": "No. The character image and motion reference video are required; the prompt is optional and useful for preserving identity, outfit, lighting, framing, and style."
-    },
-    {
-      "q": "How many reference files can I use?",
-      "a": "Toolaze supports one character image and one motion reference video for this flow. The image can be JPEG, PNG, or JPG up to 10MB; the motion video can be MP4 or QuickTime up to 100MB."
-    },
-    {
-      "q": "How long can the motion reference video be?",
-      "a": "Image orientation supports 3-10 second reference videos. Video orientation supports 3-30 second reference videos. The generated output duration follows the uploaded reference video duration."
-    },
-    {
-      "q": "What does character orientation mean?",
-      "a": "Image orientation matches the character direction from the uploaded image. Video orientation follows the character direction from the uploaded motion reference video."
-    },
-    {
-      "q": "What resolution can I choose?",
-      "a": "Kling 3 Motion Control on Toolaze supports 720p and 1080p output options."
-    },
-    {
-      "q": "How many credits does it use?",
-      "a": "Credits scale with the uploaded reference-video duration. The current Toolaze rate is 40 credits per output second at 720p or 54 credits per output second at 1080p."
-    },
-    {
-      "q": "Is Kling 3 Motion Control free to use?",
-      "a": "Video generation uses Toolaze credits. Starter credits, available settings, reference-video length, and final cost can vary by account quota and selected resolution."
+      "q": "Who should use Kling 3 Motion Control?",
+      "a": "Use it when you already have a character image and a driving video, and the output needs to follow that video's pose, gesture, body timing, or camera rhythm."
     },
     {
       "q": "How is Kling 3 Motion Control different from Kling 2.6 Motion Control?",
-      "a": "Both use one character image and one motion reference video. Kling 3 Motion Control uses the newer Kling 3 motion-control model, while Kling 2.6 Motion Control remains a lower-cost nearby option on Toolaze."
+      "a": "Both use one character image and one motion reference video. Kling 3 Motion Control is the newer Toolaze motion-control option with stricter image guidance and higher per-second credits, while Kling 2.6 Pro Motion Control remains the lower-cost nearby flow."
     },
     {
-      "q": "Should I choose Motion Control or standard Kling 3.0?",
-      "a": "Choose Motion Control when you have a motion reference video and need a character image to follow it. Choose standard Kling 3.0 when you want broader prompt-driven generation, more image references, 4K, or longer scene planning."
+      "q": "When should I choose Kling 2.6 Pro Motion Control instead?",
+      "a": "Choose Kling 2.6 when cost is the main constraint, when the 2.6 motion-control flow is already sufficient, or when your source video is Matroska and you do not want to convert it first."
     },
     {
-      "q": "How do I write a stronger optional prompt?",
-      "a": "Keep it short and protective: preserve identity, outfit, body proportions, lighting, camera framing, and style while following the uploaded motion reference. Remove extra scene changes that compete with the video."
+      "q": "Can I create from a prompt only?",
+      "a": "No. Kling 3 Motion Control requires both a character image and a motion reference video. Use standard Kling 3.0 or another video model for prompt-only generation."
+    },
+    {
+      "q": "What image formats can I upload?",
+      "a": "Use one JPEG, PNG, or JPG image up to 10MB. The image should be larger than 300px and stay within the 2:5 to 5:2 aspect-ratio range."
+    },
+    {
+      "q": "What video formats can I upload?",
+      "a": "Use one MP4 or QuickTime motion reference video up to 100MB. Image orientation supports 3-10 second references, while Video orientation supports 3-30 second references."
+    },
+    {
+      "q": "What does character orientation control?",
+      "a": "Image orientation follows the character direction in the uploaded still image. Video orientation follows the character direction in the uploaded motion reference video."
+    },
+    {
+      "q": "How are credits calculated?",
+      "a": "Credits follow the output duration, which comes from the uploaded reference video. The current Toolaze rate is 40 credits per second at 720p or 54 credits per second at 1080p."
+    },
+    {
+      "q": "What makes a good motion reference video?",
+      "a": "Use clear footage with visible limbs or hands, stable framing, limited occlusion, and motion that matches the character image's angle and crop."
+    },
+    {
+      "q": "What should the optional prompt say?",
+      "a": "Keep it short and protective: preserve identity, outfit, body proportions, lighting, camera framing, and style while following the uploaded motion reference."
     }
   ],
-  "moreTools": "More AI Video Models",
-  "testimonials": {
-    "title": "Creator Comments On Kling Motion-Control Tests",
-    "reviewSafe": true,
-    "showStars": false,
-    "items": [
-      {
-        "name": "Maya Chen",
-        "role": "Fashion motion draft",
-        "quote": "The image-plus-video setup makes runway motion easier to test than writing body movement from scratch. Cleaner full-body references gave me the most usable drafts."
-      },
-      {
-        "name": "Jordan Lee",
-        "role": "Product video planning",
-        "quote": "I used a hand-motion reference to plan how a small device should turn in frame. Keeping the prompt focused on shape, logo clarity, and lighting made the draft easier to review."
-      },
-      {
-        "name": "Nina Patel",
-        "role": "Avatar gesture test",
-        "quote": "For presenter clips, matching the crop between the portrait and motion video mattered more than adding a long style prompt. The gesture stayed clearer when the reference was simple."
-      }
-    ]
-  }
+  "moreTools": "More AI Video Models"
 }

@@ -27,8 +27,6 @@
     "howToUse",
     "scenes",
     "modelComparison",
-    "competitorComparison",
-    "testimonials",
     "faq"
   ],
   "hero": {
@@ -56,11 +54,11 @@
     ]
   },
   "performanceMetrics": {
-    "title": "Aperçu des capacités de Kling 3 Motion Control",
+    "title": "Exigences d’entrée de Kling 3 Motion Control",
     "metrics": [
       {
-        "label": "Mode d’entrée",
-        "value": "Contrôle du mouvement image vers vidéo"
+        "label": "Tâche principale",
+        "value": "Transfère le mouvement d’une vidéo de pilotage vers une image de personnage importée."
       },
       {
         "label": "Entrées requises",
@@ -87,8 +85,8 @@
         "value": "La durée de sortie suit la durée de la vidéo de référence de mouvement importée au lieu d’une durée manuelle fixe."
       },
       {
-        "label": "Source du contrôle de mouvement",
-        "value": "Pose, geste, cycle de marche, mouvement des mains, timing corporel et rythme de caméra proviennent de la vidéo importée."
+        "label": "À éviter pour",
+        "value": "Les idées uniquement basées sur un prompt, la génération de scène large, la sortie 4K ou les clips sans vidéo de référence de mouvement exploitable."
       },
       {
         "label": "Résolution",
@@ -121,36 +119,24 @@
       }
     ]
   },
-  "scenesTitle": "Ce que vous pouvez créer avec Kling 3 Motion Control",
+  "scenesTitle": "Entrées de référence les plus adaptées à Kling 3 Motion Control",
   "scenes": [
     {
-      "title": "Transfert de danse et de pose",
-      "desc": "Appliquez une danse, une marche, une rotation ou un geste de référence à une image de personnage tout en préservant identité, vêtements et proportions du corps."
+      "title": "Référence de mouvement en pied",
+      "desc": "Utilisez un clip où tout le corps reste visible, où la suite de poses se lit facilement et où la caméra ne coupe pas pendant l’action."
     },
     {
-      "title": "Clips mode en mouvement",
-      "desc": "Transformez une tenue fixe ou un portrait éditorial en vidéo de style défilé guidée par une référence de mouvement nette."
+      "title": "Geste de présentateur ou d’avatar",
+      "desc": "Alignez le cadrage portrait, l’angle du corps, la visibilité des mains et l’orientation du personnage lorsqu’une image fixe doit suivre des gestes fournis."
     },
     {
-      "title": "Gestes de présentateur et d’avatar",
-      "desc": "Créez des clips face caméra pour expliquer, saluer, réagir ou présenter un profil, avec posture et timing des mains issus du métrage fourni."
-    },
-    {
-      "title": "Démonstrations de produit en main",
-      "desc": "Utilisez un geste de référence pour guider la manière dont un produit est tenu, tourné, levé ou montré à la caméra."
-    },
-    {
-      "title": "Shorts sociaux",
-      "desc": "Préparez des clips verticaux de personnages pour Reels, TikTok, Shorts et publicités lorsque vous avez déjà un mouvement à reproduire."
-    },
-    {
-      "title": "Tests de mouvement pour storyboard",
-      "desc": "Vérifiez si une pose, un geste ou un mouvement du corps fonctionne avant de produire une campagne, une scène ou une vidéo de créateur plus longue."
+      "title": "Action produit en main",
+      "desc": "Utilisez une vidéo proche et stable de mouvement de main pour soulever, tourner, tapoter ou présenter un produit. Évitez les membres masqués, les coupes brusques et les angles de caméra incompatibles."
     }
   ],
   "modelComparison": {
-    "title": "Kling 3 Motion Control comparé aux modèles Kling proches",
-    "subtitle": "Choisissez Motion Control quand une vidéo de référence doit guider l’action. Choisissez un modèle Kling standard si vous n’avez pas de séquence de mouvement ou si vous avez besoin de réglages texte vers vidéo plus larges.",
+    "title": "Kling 3 Motion Control vs Kling 2.6 Motion Control",
+    "subtitle": "Si les deux options semblent pertinentes, choisissez entre l’option Kling Motion Control plus récente et le flux 2.6 moins coûteux.",
     "featuredColumn": "baseline",
     "columnHeaders": {
       "metric": "Critère de décision",
@@ -209,49 +195,6 @@
       }
     ]
   },
-  "competitorComparison": {
-    "title": "Quand choisir Kling Motion Control, Wan ou Seedance",
-    "subtitle": "Choisissez le modèle selon l’entrée dont vous disposez déjà : séquence de mouvement, idée cinématographique ou brouillon visuel abouti.",
-    "featuredColumn": "baseline",
-    "columnHeaders": {
-      "metric": "Critère de décision",
-      "baseline": "Kling 3 Motion Control",
-      "middle": "Wan 2.7",
-      "target": "Seedance 2.5"
-    },
-    "rows": [
-      {
-        "label": "Bon choix pour",
-        "baseline": "Transfert de mouvement depuis une image de personnage et une vidéo de référence de mouvement",
-        "middle": "Clips cinématographiques courts depuis texte, image ou consignes guidées par références",
-        "target": "Brouillons vidéo détaillés avec finition visuelle solide et continuité de scène"
-      },
-      {
-        "label": "À vérifier d’abord",
-        "baseline": "Que votre vidéo de mouvement est propre, visible, dans la plage de durée acceptée et proche du cadrage du personnage",
-        "middle": "Si votre idée demande une direction façon Wan par texte, image ou référence vidéo plutôt qu’un transfert exact du mouvement corporel",
-        "target": "Si la configuration Seedance choisie prend en charge votre type d’entrée, la durée et l’objectif de qualité"
-      },
-      {
-        "label": "Style de consigne textuelle",
-        "baseline": "Préserver identité, tenue, proportions, lumière, cadrage caméra et style tout en suivant le mouvement de référence",
-        "middle": "Mise en place de scène, rythme des plans, direction du mouvement, mouvement caméra et réglage de sortie",
-        "target": "Sujet, style, changement de scène, lumière, rythme et indications de qualité"
-      },
-      {
-        "label": "Guidage par référence",
-        "baseline": "Une image donne le sujet ; une vidéo donne le mouvement",
-        "middle": "Les médias de référence peuvent guider la scène, mais le mouvement n’est pas copié aussi directement qu’avec une vidéo conductrice",
-        "target": "La prise en charge des références dépend de la configuration Seedance choisie et de sa disponibilité"
-      },
-      {
-        "label": "Quand choisir un autre modèle",
-        "baseline": "Choisissez un autre modèle vidéo si vous n’avez pas de vidéo de référence de mouvement",
-        "middle": "Choisissez Motion Control quand la pose, le geste ou le transfert de danse exact compte le plus",
-        "target": "Choisissez Motion Control quand correspondre à une vidéo d’action précise compte plus que la seule finition visuelle"
-      }
-    ]
-  },
   "faqTitle": "Questions fréquentes sur Kling 3 Motion Control",
   "faq": [
     {
@@ -303,27 +246,5 @@
       "a": "Gardez-la courte et protectrice : préserver identité, tenue, proportions du corps, lumière, cadrage caméra et style tout en suivant la référence de mouvement importée. Retirez les changements de scène supplémentaires qui concurrencent la vidéo."
     }
   ],
-  "moreTools": "Autres modèles vidéo IA",
-  "testimonials": {
-    "title": "Commentaires de créateurs sur les tests Kling Motion Control",
-    "reviewSafe": true,
-    "showStars": false,
-    "items": [
-      {
-        "name": "Maya Chen",
-        "role": "Brouillon de mouvement mode",
-        "quote": "La configuration image plus vidéo rend le mouvement de défilé plus facile à tester que l’écriture du mouvement corporel depuis zéro. Les références plein corps propres m’ont donné les brouillons les plus exploitables."
-      },
-      {
-        "name": "Jordan Lee",
-        "role": "Planification de vidéo produit",
-        "quote": "J’ai utilisé une référence de mouvement de main pour planifier la rotation d’un petit appareil dans le cadre. Une consigne centrée sur la forme, la lisibilité du logo et la lumière a facilité la revue du brouillon."
-      },
-      {
-        "name": "Nina Patel",
-        "role": "Test de geste d’avatar",
-        "quote": "Pour les clips de présentateur, faire correspondre le cadrage entre le portrait et la vidéo de mouvement comptait plus qu’ajouter une longue consigne de style. Le geste restait plus clair avec une référence simple."
-      }
-    ]
-  }
+  "moreTools": "Autres modèles vidéo IA"
 }
