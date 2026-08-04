@@ -83,7 +83,7 @@ test('shared generator can hide fixed internal prompts for one-click tools', () 
   assert.match(aiImageToolSource, /setPrompt\(hidePromptInput \? defaultPrompt : ''\)/)
 })
 
-test('shared generator places the mobile hero breadcrumb below the demo panel', () => {
+test('shared generator places the mobile hero copy above the demo panel', () => {
   const mobileTopPanel = aiImageToolSource.slice(
     aiImageToolSource.indexOf('const renderMobileTopPanel = () => {'),
     aiImageToolSource.indexOf('const rightPanelShadowClass'),
@@ -92,8 +92,8 @@ test('shared generator places the mobile hero breadcrumb below the demo panel', 
   assert.match(mobileTopPanel, /data-mobile-demo-panel/)
   assert.match(mobileTopPanel, /data-mobile-result-hero/)
   assert.ok(
-    mobileTopPanel.indexOf('data-mobile-demo-panel') < mobileTopPanel.indexOf('data-mobile-result-hero'),
-    'mobile demo panel should render before the mobile hero breadcrumb block',
+    mobileTopPanel.indexOf('data-mobile-result-hero') < mobileTopPanel.indexOf('data-mobile-demo-panel'),
+    'mobile hero copy should render before the mobile demo panel',
   )
 })
 

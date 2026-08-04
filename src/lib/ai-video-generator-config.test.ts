@@ -280,7 +280,8 @@ test('AI video generator model configs define practical video output defaults', 
   assert.equal(grok.defaultDuration, 3)
   assert.deepEqual(grok.resolutions, ['480p', '720p'])
 
-  assert.equal(seedance.maxImages, 2)
+  assert.equal(seedance.maxImages, 9)
+  assert.equal(seedance.supportsFirstLastFrame, true)
   assert.ok(seedance.durations.includes(15))
   assert.equal(seedance.logoSrc, '/model-logos/bytedance.svg')
   assert.equal(seedance.qualityRating, 5)
@@ -289,13 +290,16 @@ test('AI video generator model configs define practical video output defaults', 
 
   assert.equal(seedanceMini.name, 'Seedance 2.0 Mini')
   assert.equal(seedanceMini.defaultMode, 'image-to-video')
-  assert.equal(seedanceMini.maxImages, 2)
+  assert.equal(seedanceMini.maxImages, 9)
+  assert.equal(seedanceMini.supportsFirstLastFrame, true)
   assert.equal(seedanceMini.logoSrc, '/model-logos/bytedance.svg')
   assert.equal(seedanceMini.qualityRating, 4.5)
   assert.equal(seedanceMini.minCredits, 95)
   assert.deepEqual(seedanceMini.resolutions, ['480p', '720p'])
   assert.ok(seedanceMini.aspectRatios.some((ratio) => ratio.value === 'adaptive'))
 
+  assert.equal(seedanceFast.maxImages, 9)
+  assert.equal(seedanceFast.supportsFirstLastFrame, true)
   assert.equal(seedanceFast.minCredits, 155)
   assert.deepEqual(seedanceFast.resolutions, ['480p', '720p'])
   assert.equal(seedanceFast.supportsNativeAudio, false)
@@ -393,6 +397,9 @@ test('video capability labels match the audited KIE model matrix', () => {
   const multiShotModels = AI_VIDEO_GENERATOR_MODEL_OPTIONS
     .filter((model) => model.supportsMultiShot)
     .map((model) => model.id)
+  const firstLastFrameModels = AI_VIDEO_GENERATOR_MODEL_OPTIONS
+    .filter((model) => model.supportsFirstLastFrame)
+    .map((model) => model.id)
 
   assert.deepEqual(nativeAudioModels, [
     'grok-1-5-video',
@@ -428,6 +435,15 @@ test('video capability labels match the audited KIE model matrix', () => {
     'pixverse-v6',
     'happyhorse-1-1',
     'happyhorse',
+  ])
+  assert.deepEqual(firstLastFrameModels, [
+    'seedance-2',
+    'seedance-2-mini',
+    'seedance-2-fast',
+    'wan-2-7',
+    'kling-3-turbo',
+    'kling-3',
+    'kling-2-5',
   ])
 })
 

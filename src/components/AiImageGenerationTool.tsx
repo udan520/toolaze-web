@@ -3772,9 +3772,6 @@ export default function AiImageGenerationTool({
           renderMobileHistoryFeed()
         ) : (
           <>
-            <div data-mobile-demo-panel className="aspect-[4/3] overflow-hidden rounded-2xl border border-[#E0E7FF] bg-white p-2 shadow-lg shadow-[#4F46E5]/8">
-              {renderDemoPreview()}
-            </div>
             {showMobileHero && (
               <div data-mobile-result-hero className="text-left">
                 {heroBreadcrumbItems?.length ? (
@@ -3803,6 +3800,9 @@ export default function AiImageGenerationTool({
                 )}
               </div>
             )}
+            <div data-mobile-demo-panel className="aspect-[4/3] overflow-hidden rounded-2xl border border-[#E0E7FF] bg-white p-2 shadow-lg shadow-[#4F46E5]/8">
+              {renderDemoPreview()}
+            </div>
           </>
         )}
       </div>
@@ -3846,6 +3846,8 @@ export default function AiImageGenerationTool({
         data-generation-tool-shell
         className={`flex min-h-0 min-w-0 flex-col gap-4 ${fitParentHeight ? 'md:h-full md:min-h-0' : 'md:h-[calc(100dvh-6rem)] md:max-h-[calc(100dvh-6rem)] md:min-h-0'} md:flex-row md:items-stretch md:gap-3 xl:gap-4 2xl:gap-5`}
       >
+        {renderMobileTopPanel()}
+
         {/* Left: 生图参数区 — 桌面可滚动+固定按钮；h5 上下流式布局，自然高度 */}
         <div
           data-left-generation-panel
@@ -4475,8 +4477,6 @@ export default function AiImageGenerationTool({
             )}
           </div>
         </div>
-
-        {renderMobileTopPanel()}
 
         <div className="hidden min-h-0 min-w-0 flex-1 flex-col gap-4 md:flex md:h-full">
           {hasDesktopResultTabs ? renderDesktopResultTabs() : null}

@@ -34,6 +34,8 @@ test('Talking avatar creator uses the standard left controls and right demo layo
   assert.ok(controlsIndex < demoIndex, 'controls should render before the demo panel')
   assert.ok(demoIndex < heroIndex, 'hero title should render inside the right demo panel')
   assert.ok(heroIndex < previewRenderIndex, 'hero copy should sit above the demo preview')
+  assert.match(source, /data-talking-avatar-controls-panel[\s\S]*className="order-2[\s\S]*md:order-none/, 'mobile controls should render after the hero/demo panel')
+  assert.match(source, /data-talking-avatar-demo-panel className="order-1[\s\S]*md:order-none/, 'mobile hero/demo panel should render before controls')
   assert.match(source, /md:w-\[380px\][\s\S]*xl:w-\[400px\][\s\S]*2xl:w-\[420px\]/, 'left panel should match the shared fixed generator width')
   assert.doesNotMatch(source, /mt-8 max-w-4xl[\s\S]*data-talking-avatar-layout/, 'hero copy should not sit in a separate full-width block above the tool')
 })

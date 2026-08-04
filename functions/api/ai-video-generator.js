@@ -48,7 +48,7 @@ const VIDEO_MODEL_CONFIGS = {
     creditModelId: 'seedance-2',
     aliases: ['seedance-2-0'],
     inputSchema: 'seedance',
-    maxImages: 2,
+    maxImages: 9,
     defaultAspectRatio: '16:9',
     aspectRatios: new Set(['16:9', '9:16', '1:1', '4:3', '3:4']),
     defaultResolution: '480p',
@@ -57,7 +57,7 @@ const VIDEO_MODEL_CONFIGS = {
     allowedDurations: new Set([5, 10, 15]),
     unsupportedAspectRatioError: 'Unsupported aspect ratio for Seedance 2.0',
     unsupportedResolutionError: 'Unsupported resolution for Seedance 2.0',
-    tooManyImagesError: 'Seedance 2.0 supports a first and optional last frame',
+    tooManyImagesError: 'Seedance 2.0 supports up to 9 reference images',
     unsupportedDurationError: 'Duration must be 5, 10, or 15 seconds for Seedance 2.0',
     unconfiguredError: 'Seedance 2.0 video model is not configured',
   },
@@ -68,7 +68,7 @@ const VIDEO_MODEL_CONFIGS = {
     aliases: ['seedance-2-0-mini', 'bytedance/seedance-2-mini', 'bytedance/seedance-2 mini'],
     inputSchema: 'seedance',
     creditModelId: 'seedance-2-mini',
-    maxImages: 2,
+    maxImages: 9,
     defaultAspectRatio: 'adaptive',
     aspectRatios: new Set(['adaptive', '16:9', '9:16', '1:1', '4:3', '3:4', '21:9']),
     defaultResolution: '720p',
@@ -77,7 +77,7 @@ const VIDEO_MODEL_CONFIGS = {
     allowedDurations: new Set([5, 10, 15]),
     unsupportedAspectRatioError: 'Unsupported aspect ratio for Seedance 2.0 Mini',
     unsupportedResolutionError: 'Unsupported resolution for Seedance 2.0 Mini',
-    tooManyImagesError: 'Seedance 2.0 Mini supports a first and optional last frame',
+    tooManyImagesError: 'Seedance 2.0 Mini supports up to 9 reference images',
     unsupportedDurationError: 'Duration must be 5, 10, or 15 seconds for Seedance 2.0 Mini',
     unconfiguredError: 'Seedance 2.0 Mini video model is not configured',
   },
@@ -88,7 +88,7 @@ const VIDEO_MODEL_CONFIGS = {
     aliases: [],
     inputSchema: 'seedance',
     creditModelId: 'seedance-2-fast',
-    maxImages: 2,
+    maxImages: 9,
     defaultAspectRatio: '16:9',
     aspectRatios: new Set(['16:9', '9:16', '1:1', '4:3', '3:4']),
     defaultResolution: '480p',
@@ -98,7 +98,7 @@ const VIDEO_MODEL_CONFIGS = {
     unsupportedDurationError: 'Duration must be 5, 10, or 15 seconds for Seedance 2.0 Fast',
     unsupportedAspectRatioError: 'Unsupported aspect ratio for Seedance 2.0 Fast',
     unsupportedResolutionError: 'Unsupported resolution for Seedance 2.0 Fast',
-    tooManyImagesError: 'Seedance 2.0 Fast supports a first and optional last frame',
+    tooManyImagesError: 'Seedance 2.0 Fast supports up to 9 reference images',
     unconfiguredError: 'Seedance 2.0 Fast video model is not configured',
   },
   'seedance-1-5-pro': {
@@ -180,7 +180,7 @@ const VIDEO_MODEL_CONFIGS = {
     inputSchema: 'wan',
     aliases: [],
     imageField: 'first_frame_url',
-    maxImages: 2,
+    maxImages: 1,
     defaultAspectRatio: '16:9',
     aspectRatios: new Set(['16:9', '9:16', '1:1']),
     defaultResolution: '720p',
@@ -191,7 +191,7 @@ const VIDEO_MODEL_CONFIGS = {
     unsupportedDurationError: 'Duration must be between 2 and 10 seconds for Wan 2.7',
     unsupportedAspectRatioError: 'Unsupported aspect ratio for Wan 2.7',
     unsupportedResolutionError: 'Unsupported resolution for Wan 2.7',
-    tooManyImagesError: 'Wan 2.7 supports a first frame and an optional last frame',
+    tooManyImagesError: 'Wan 2.7 supports one reference image',
     unconfiguredError: 'Wan 2.7 video model is not configured',
   },
   ...Object.fromEntries([
@@ -231,7 +231,7 @@ const VIDEO_MODEL_CONFIGS = {
     inputSchema: 'kling-versioned',
     aliases: [],
     imageField: 'image_urls',
-    maxImages: 2,
+    maxImages: 1,
     defaultAspectRatio: '16:9',
     aspectRatios: new Set(['16:9', '9:16', '1:1']),
     defaultResolution: '720p',
@@ -242,7 +242,7 @@ const VIDEO_MODEL_CONFIGS = {
     unsupportedDurationError: 'Duration must be 5 or 10 seconds for Kling 3 Turbo',
     unsupportedAspectRatioError: 'Unsupported aspect ratio for Kling 3 Turbo',
     unsupportedResolutionError: 'Unsupported resolution for Kling 3 Turbo',
-    tooManyImagesError: 'Kling 3 Turbo supports a start frame and an optional end frame',
+    tooManyImagesError: 'Kling 3 Turbo supports one reference image',
     unconfiguredError: 'Kling 3 Turbo video model is not configured',
   },
   'kling-3': {
@@ -316,6 +316,7 @@ const VIDEO_MODEL_CONFIGS = {
     inputSchema: 'kling-versioned',
     aliases: [],
     imageField: 'image_url',
+    tailImageField: id === 'kling-2-5' ? 'tail_image_url' : undefined,
     maxImages: 1,
     defaultAspectRatio: '16:9',
     aspectRatios: new Set(['16:9', '9:16', '1:1']),
@@ -637,6 +638,34 @@ function parseImageUrls(formData) {
   return imageUrl ? [imageUrl] : [];
 }
 
+function parseSingleUrlField(formData, key) {
+  return String(formData.get(key) || '').trim();
+}
+
+function parseFirstLastFrameUrls(formData) {
+  const firstLastFrameUrlsJson = formData.get('firstLastFrameUrls');
+  let frameUrls = [];
+
+  if (firstLastFrameUrlsJson) {
+    try {
+      const parsed = JSON.parse(String(firstLastFrameUrlsJson));
+      if (Array.isArray(parsed)) {
+        frameUrls = parsed
+          .map((url) => String(url || '').trim())
+          .filter(Boolean)
+          .slice(0, 2);
+      }
+    } catch {
+      frameUrls = [];
+    }
+  }
+
+  return {
+    firstFrameUrl: parseSingleUrlField(formData, 'firstFrameUrl') || frameUrls[0] || '',
+    lastFrameUrl: parseSingleUrlField(formData, 'lastFrameUrl') || frameUrls[1] || '',
+  };
+}
+
 function parseVideoUrls(formData) {
   const videoUrlsJson = formData.get('videoUrls');
   const videoUrl = String(formData.get('videoUrl') || '').trim();
@@ -692,12 +721,24 @@ function normalizeCharacterOrientation(value, defaultOrientation = 'video') {
   return defaultOrientation === 'image' ? 'image' : 'video';
 }
 
+function supportsExplicitFirstLastFrameFields(modelConfig) {
+  if (modelConfig.inputSchema === 'seedance') return true;
+  if (modelConfig.inputSchema === 'wan' && modelConfig.imageField === 'first_frame_url') return true;
+  if (modelConfig.inputSchema === 'kling') return true;
+  if (modelConfig.inputSchema === 'kling-versioned') {
+    return modelConfig.imageField === 'image_urls' || Boolean(modelConfig.tailImageField);
+  }
+  return false;
+}
+
 function buildProviderInput({
   formData,
   modelConfig,
   mode,
   prompt,
   imageUrls,
+  firstFrameUrl,
+  lastFrameUrl,
   videoUrls,
   aspectRatio,
   resolution,
@@ -716,9 +757,13 @@ function buildProviderInput({
     input.return_last_frame = boolFormValue(formData, 'returnLastFrame');
     input.web_search = boolFormValue(formData, 'webSearch');
     if (mode === 'image-to-video') {
-      input.first_frame_url = imageUrls[0];
-      if (imageUrls[1]) {
-        input.last_frame_url = imageUrls[1];
+      if (firstFrameUrl) {
+        input.first_frame_url = firstFrameUrl;
+        if (lastFrameUrl) {
+          input.last_frame_url = lastFrameUrl;
+        }
+      } else {
+        input.reference_image_urls = imageUrls;
       }
     }
     return input;
@@ -772,8 +817,8 @@ function buildProviderInput({
     if (mode === 'image-to-video') {
       if (modelConfig.imageField === 'image_urls') wanInput.image_urls = imageUrls;
       else if (modelConfig.imageField === 'first_frame_url') {
-        wanInput.first_frame_url = imageUrls[0];
-        if (imageUrls[1]) wanInput.last_frame_url = imageUrls[1];
+        wanInput.first_frame_url = firstFrameUrl || imageUrls[0];
+        if (lastFrameUrl || imageUrls[1]) wanInput.last_frame_url = lastFrameUrl || imageUrls[1];
       } else wanInput.image_url = imageUrls[0];
     }
     return wanInput;
@@ -788,9 +833,15 @@ function buildProviderInput({
       ...(modelConfig.nativeAudioResolutions ? { sound: Boolean(nativeAudio) } : {}),
     };
     if (mode === 'image-to-video') {
+      const versionedImageUrls = firstFrameUrl
+        ? [firstFrameUrl, lastFrameUrl].filter(Boolean)
+        : imageUrls;
       versionedInput[modelConfig.imageField] = modelConfig.imageField === 'image_urls'
-        ? imageUrls
-        : imageUrls[0];
+        ? versionedImageUrls
+        : versionedImageUrls[0];
+      if (modelConfig.tailImageField && versionedImageUrls[1]) {
+        versionedInput[modelConfig.tailImageField] = versionedImageUrls[1];
+      }
     }
     return versionedInput;
   }
@@ -815,7 +866,7 @@ function buildProviderInput({
       duration,
       sound: Boolean(nativeAudio),
       multi_shots: false,
-      ...(mode === 'image-to-video' ? { image_urls: imageUrls } : {}),
+      ...(mode === 'image-to-video' ? { image_urls: firstFrameUrl ? [firstFrameUrl, lastFrameUrl].filter(Boolean) : imageUrls } : {}),
     };
   }
 
@@ -880,6 +931,8 @@ export async function onRequest(context) {
     const modelConfig = getModelConfig(formData.get('model'));
     const prompt = String(formData.get('prompt') || '').trim();
     const imageUrlInputs = parseImageUrls(formData);
+    const firstLastFrameInputs = parseFirstLastFrameUrls(formData);
+    const hasFirstLastFrameInput = mode === 'image-to-video' && Boolean(firstLastFrameInputs.firstFrameUrl);
     const videoUrlInputs = parseVideoUrls(formData);
 
     if (modelConfig.promptRequired !== false && !prompt) {
@@ -888,10 +941,16 @@ export async function onRequest(context) {
     if (modelConfig.supportedModes && !modelConfig.supportedModes.has(mode)) {
       return jsonResponse({ error: modelConfig.unsupportedModeError }, 400);
     }
-    if (mode === 'image-to-video' && imageUrlInputs.length === 0) {
+    if (mode === 'image-to-video' && firstLastFrameInputs.lastFrameUrl && !firstLastFrameInputs.firstFrameUrl) {
+      return jsonResponse({ error: 'First/last-frame mode requires a first frame URL' }, 400);
+    }
+    if (hasFirstLastFrameInput && !supportsExplicitFirstLastFrameFields(modelConfig)) {
+      return jsonResponse({ error: `${modelConfig.displayName} does not support first/last-frame inputs` }, 400);
+    }
+    if (mode === 'image-to-video' && imageUrlInputs.length === 0 && !hasFirstLastFrameInput) {
       return jsonResponse({ error: 'Image-to-video requires at least one image URL' }, 400);
     }
-    if (mode === 'image-to-video' && imageUrlInputs.length > modelConfig.maxImages) {
+    if (mode === 'image-to-video' && !hasFirstLastFrameInput && imageUrlInputs.length > modelConfig.maxImages) {
       return jsonResponse({ error: modelConfig.tooManyImagesError }, 400);
     }
     if (modelConfig.maxVideos) {
@@ -941,6 +1000,10 @@ export async function onRequest(context) {
     }
 
     const imageUrls = await resolveUploadReferences(imageUrlInputs, apiKey);
+    const firstLastFrameUrls = await resolveUploadReferences(
+      [firstLastFrameInputs.firstFrameUrl, firstLastFrameInputs.lastFrameUrl].filter(Boolean),
+      apiKey
+    );
     const videoUrls = await resolveUploadReferences(videoUrlInputs, apiKey);
     const urlExtensionError = validateKlingMotionControlUrlExtensions(modelConfig, imageUrls, videoUrls);
     if (urlExtensionError) {
@@ -953,6 +1016,8 @@ export async function onRequest(context) {
       mode,
       prompt,
       imageUrls,
+      firstFrameUrl: firstLastFrameUrls[0] || '',
+      lastFrameUrl: firstLastFrameUrls[1] || '',
       videoUrls,
       aspectRatio: aspectRatio.value,
       resolution: resolution.value,

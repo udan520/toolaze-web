@@ -457,7 +457,7 @@ test('AI video generator rejects non-video URLs for Kling Motion Control video_u
   }
 })
 
-test('AI video generator creates a Kie Seedance 2.0 first-and-last-frame task', async () => {
+test('AI video generator sends Seedance 2.0 multi-reference images by default', async () => {
   const calls: FetchCall[] = []
   const originalFetch = globalThis.fetch
   globalThis.fetch = (async (url: RequestInfo | URL, init?: RequestInit) => {
@@ -477,6 +477,7 @@ test('AI video generator creates a Kie Seedance 2.0 first-and-last-frame task', 
         imageUrls: JSON.stringify([
           'https://cdn.example.com/one.png',
           'https://cdn.example.com/two.png',
+          'https://cdn.example.com/three.png',
         ]),
         aspectRatio: '16:9',
         resolution: '1080p',
@@ -493,9 +494,13 @@ test('AI video generator creates a Kie Seedance 2.0 first-and-last-frame task', 
 
     const payload = JSON.parse(String(calls[0].init?.body))
     assert.equal(payload.model, 'bytedance/seedance-2')
-    assert.equal(payload.input.first_frame_url, 'https://cdn.example.com/one.png')
-    assert.equal(payload.input.last_frame_url, 'https://cdn.example.com/two.png')
-    assert.equal(payload.input.reference_image_urls, undefined)
+    assert.deepEqual(payload.input.reference_image_urls, [
+      'https://cdn.example.com/one.png',
+      'https://cdn.example.com/two.png',
+      'https://cdn.example.com/three.png',
+    ])
+    assert.equal(payload.input.first_frame_url, undefined)
+    assert.equal(payload.input.last_frame_url, undefined)
     assert.equal(payload.input.image_urls, undefined)
     assert.equal(payload.input.resolution, '1080p')
     assert.equal(payload.input.duration, 15)
@@ -503,6 +508,53 @@ test('AI video generator creates a Kie Seedance 2.0 first-and-last-frame task', 
     assert.equal(payload.input.return_last_frame, false)
     assert.equal(payload.input.web_search, false)
     assert.equal(payload.input.nsfw_checker, undefined)
+  } finally {
+    globalThis.fetch = originalFetch
+  }
+})
+
+test('AI video generator sends Seedance 2.0 first-and-last frames only from explicit frame fields', async () => {
+  const calls: FetchCall[] = []
+  const originalFetch = globalThis.fetch
+  globalThis.fetch = (async (url: RequestInfo | URL, init?: RequestInit) => {
+    calls.push({ url: String(url), init })
+    return new Response(JSON.stringify({ code: 200, data: { taskId: 'seedance_frames_task' } }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    })
+  }) as typeof fetch
+
+  try {
+    const response = await createVideoTask({
+      request: createFormRequest({
+        mode: 'image-to-video',
+        model: 'seedance-2',
+        prompt: 'Animate the first frame into the last frame.',
+        firstFrameUrl: 'https://cdn.example.com/start.png',
+        lastFrameUrl: 'https://cdn.example.com/end.png',
+        imageUrls: JSON.stringify([
+          'https://cdn.example.com/reference-a.png',
+          'https://cdn.example.com/reference-b.png',
+        ]),
+        aspectRatio: '16:9',
+        resolution: '1080p',
+        duration: '15',
+      }),
+      env: {
+        KIE_AI_API_KEY: 'test-key',
+      },
+    })
+
+    assert.equal(response.status, 200)
+    assert.deepEqual(await readJson(response), { taskId: 'seedance_frames_task', requiredCredits: 3060 })
+    assert.equal(calls.length, 1)
+
+    const payload = JSON.parse(String(calls[0].init?.body))
+    assert.equal(payload.model, 'bytedance/seedance-2')
+    assert.equal(payload.input.first_frame_url, 'https://cdn.example.com/start.png')
+    assert.equal(payload.input.last_frame_url, 'https://cdn.example.com/end.png')
+    assert.equal(payload.input.reference_image_urls, undefined)
+    assert.equal(payload.input.image_urls, undefined)
   } finally {
     globalThis.fetch = originalFetch
   }
@@ -542,8 +594,8 @@ test('AI video generator creates a Kie Seedance 2.0 Mini task and returns mapped
 
     const payload = JSON.parse(String(calls[0].init?.body))
     assert.equal(payload.model, 'bytedance/seedance-2-mini')
-    assert.equal(payload.input.first_frame_url, 'https://cdn.example.com/mini.png')
-    assert.equal(payload.input.reference_image_urls, undefined)
+    assert.deepEqual(payload.input.reference_image_urls, ['https://cdn.example.com/mini.png'])
+    assert.equal(payload.input.first_frame_url, undefined)
     assert.equal(payload.input.aspect_ratio, 'adaptive')
     assert.equal(payload.input.resolution, '720p')
     assert.equal(payload.input.duration, 10)
@@ -918,6 +970,127 @@ test('AI video generator prices and sends Kling 3.0 Native Audio requests', asyn
     assert.equal(payload.input.mode, 'pro')
     assert.equal(payload.input.sound, true)
     assert.equal(payload.input.duration, 10)
+  } finally {
+    globalThis.fetch = originalFetch
+  }
+})
+
+test('AI video generator sends first-and-last-frame references for Kling image-to-video models', async () => {
+  const calls: FetchCall[] = []
+  const originalFetch = globalThis.fetch
+  globalThis.fetch = (async (url: RequestInfo | URL, init?: RequestInit) => {
+    calls.push({ url: String(url), init })
+    return new Response(JSON.stringify({ code: 200, data: { taskId: `kling_first_last_${calls.length}` } }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    })
+  }) as typeof fetch
+
+  try {
+    const cases = [
+      {
+        model: 'kling-3-turbo',
+        providerModel: 'kling/v3-turbo-image-to-video',
+        resolution: '720p',
+        expectedCredits: 180,
+        expectedInput: {
+          image_urls: [
+            'https://cdn.example.com/kling-start.png',
+            'https://cdn.example.com/kling-end.png',
+          ],
+        },
+      },
+      {
+        model: 'kling-3',
+        providerModel: 'kling-3.0/video',
+        resolution: '720p',
+        expectedCredits: 140,
+        expectedInput: {
+          image_urls: [
+            'https://cdn.example.com/kling-start.png',
+            'https://cdn.example.com/kling-end.png',
+          ],
+          multi_shots: false,
+        },
+      },
+      {
+        model: 'kling-2-5',
+        providerModel: 'kling/v2-5-turbo-image-to-video-pro',
+        resolution: '1080p',
+        expectedCredits: 85,
+        expectedInput: {
+          image_url: 'https://cdn.example.com/kling-start.png',
+          tail_image_url: 'https://cdn.example.com/kling-end.png',
+        },
+      },
+    ] as const
+
+    for (const testCase of cases) {
+      const response = await createVideoTask({
+        request: createFormRequest({
+          mode: 'image-to-video',
+          model: testCase.model,
+          prompt: 'Animate the start frame into the end frame with controlled cinematic motion.',
+          firstFrameUrl: 'https://cdn.example.com/kling-start.png',
+          lastFrameUrl: 'https://cdn.example.com/kling-end.png',
+          aspectRatio: '16:9',
+          resolution: testCase.resolution,
+          duration: '5',
+        }),
+        env: {
+          KIE_AI_API_KEY: 'test-key',
+          KIE_KLING_3_VIDEO_MODEL: 'kling-3.0/video',
+        },
+      })
+
+      assert.equal(response.status, 200, `${testCase.model} should accept start and end frames`)
+      assert.deepEqual(await readJson(response), {
+        taskId: `kling_first_last_${calls.length}`,
+        requiredCredits: testCase.expectedCredits,
+      })
+
+      const payload = JSON.parse(String(calls.at(-1)?.init?.body))
+      assert.equal(payload.model, testCase.providerModel)
+      for (const [key, value] of Object.entries(testCase.expectedInput)) {
+        assert.deepEqual(payload.input[key], value)
+      }
+    }
+  } finally {
+    globalThis.fetch = originalFetch
+  }
+})
+
+test('AI video generator keeps Kling 2.5 ordinary reference-image limit separate from first/last frames', async () => {
+  const originalFetch = globalThis.fetch
+  let providerCalled = false
+  globalThis.fetch = (async () => {
+    providerCalled = true
+    return new Response(JSON.stringify({ code: 200, data: { taskId: 'unexpected_task' } }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    })
+  }) as typeof fetch
+
+  try {
+    const response = await createVideoTask({
+      request: createFormRequest({
+        mode: 'image-to-video',
+        model: 'kling-2-5',
+        prompt: 'Animate these reference images.',
+        imageUrls: JSON.stringify([
+          'https://cdn.example.com/kling-reference-a.png',
+          'https://cdn.example.com/kling-reference-b.png',
+        ]),
+        aspectRatio: '16:9',
+        resolution: '1080p',
+        duration: '5',
+      }),
+      env: { KIE_AI_API_KEY: 'test-key' },
+    })
+
+    assert.equal(response.status, 400)
+    assert.equal((await readJson(response)).error, 'Kling 2.5 Turbo Pro supports one reference image')
+    assert.equal(providerCalled, false)
   } finally {
     globalThis.fetch = originalFetch
   }

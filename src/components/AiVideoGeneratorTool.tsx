@@ -52,6 +52,10 @@ interface ImageItem {
   preview: string
 }
 
+type ReferenceImageSource =
+  | { source: 'remote'; url: string }
+  | { source: 'local'; file: File; preview: string }
+
 interface VideoItem {
   file: File
   preview: string
@@ -65,6 +69,13 @@ type SharedHistoryMode = AiVideoGeneratorModeId | 'text-to-image' | 'image-to-im
 type UploadedMediaReferences = {
   generationUrls: string[]
   historyUrls: string[]
+}
+
+type UploadedImageMediaReferences = {
+  referenceGenerationUrls: string[]
+  referenceHistoryUrls: string[]
+  firstLastFrameGenerationUrls: string[]
+  firstLastFrameHistoryUrls: string[]
 }
 
 interface VideoGenerationRequest {
@@ -81,6 +92,7 @@ interface VideoGenerationRequest {
   inputUrls: string[]
   motionVideoUrls?: string[]
   characterOrientation?: 'image' | 'video'
+  firstLastFrame?: boolean
   createdAt: string
   startedAt: number
   status: VideoGenerationStatus
@@ -108,6 +120,7 @@ interface VideoHistoryItem {
   inputUrls: string[]
   motionVideoUrls?: string[]
   characterOrientation?: 'image' | 'video'
+  firstLastFrame?: boolean
   outputPreview: string
   time: string
   persisted: boolean
@@ -178,6 +191,10 @@ const FALLBACK_TEXT = {
   uploadUpTo: 'Upload up to {count} images',
   uploadYourImage: 'Upload your image',
   upload: 'Upload',
+  firstLastFrame: 'First/Last Frames',
+  firstFrame: 'First Frame',
+  lastFrame: 'Last Frame',
+  swapFrames: 'Swap first and last frames',
   fileLimit: 'JPG, PNG, WEBP up to {size}MB each',
   fileTooLarge: 'File {name} exceeds {size}MB limit',
   referenceImageInvalidType: 'Use a supported image format for this model.',
@@ -321,6 +338,15 @@ function getHistoryCharacterOrientation(outputFormat: string | null | undefined)
   }
 }
 
+function getHistoryUsesFirstLastFrame(outputFormat: string | null | undefined) {
+  try {
+    const parsed = JSON.parse(String(outputFormat || ''))
+    return parsed?.firstLastFrame === true
+  } catch {
+    return false
+  }
+}
+
 function isVideoHistoryMediaType(item: PersistedVideoHistoryItem) {
   return item.mediaType === 'video' || /\.(mp4|webm|mov|m4v)(?:[?#].*)?$/i.test(String(item.outputUrl || '').trim())
 }
@@ -404,6 +430,7 @@ function mapPersistedVideoHistoryItem(item: PersistedVideoHistoryItem): VideoHis
     inputPreview: inputUrls[0] || '',
     inputUrls,
     motionVideoUrls,
+    firstLastFrame: getHistoryUsesFirstLastFrame(item.outputFormat),
     characterOrientation: modelConfig.supportsMotionReferenceVideo
       ? getHistoryCharacterOrientation(item.outputFormat)
       : undefined,
@@ -525,6 +552,7 @@ function getVideoModelOptionMetadata(option: AiVideoGeneratorModelConfig) {
     { label: `${minimumCredits}+`, iconSrc: '/credits-icons/diamond-3d-indigo.svg', ariaLabel: `${minimumCredits}+ credits` },
     { label: durationLabel },
     { label: option.resolutions.join('/') },
+    ...(option.supportsFirstLastFrame ? [{ label: 'First/Last Frames', tone: 'positive' as const }] : []),
     {
       label: option.supportsNativeAudioOutput ? 'Native Audio' : 'No Native Audio',
       tone: option.supportsNativeAudioOutput ? 'positive' : 'neutral',
@@ -594,6 +622,7 @@ export default function AiVideoGeneratorTool({
     return modelSelectorBadgeLabels?.[badge.toLowerCase()] || badge
   }
   const imageFilesRef = useRef<ImageItem[]>([])
+  const firstLastFrameImagesRef = useRef<Array<ReferenceImageSource | null>>([null, null])
   const motionVideoFilesRef = useRef<VideoItem[]>([])
   const modelSelectorRef = useRef<HTMLDivElement>(null)
   const durationSelectorRef = useRef<HTMLDivElement>(null)
@@ -630,6 +659,8 @@ export default function AiVideoGeneratorTool({
   const [remoteImageUrls, setRemoteImageUrls] = useState<string[]>(() => (
     Array.isArray(initialImageUrls) ? initialImageUrls.filter(Boolean).slice(0, modelConfig.maxImages) : []
   ))
+  const [firstLastFrameEnabled, setFirstLastFrameEnabled] = useState(false)
+  const [firstLastFrameImages, setFirstLastFrameImages] = useState<Array<ReferenceImageSource | null>>([null, null])
   const [motionVideoFiles, setMotionVideoFiles] = useState<VideoItem[]>([])
   const [remoteMotionVideoUrls, setRemoteMotionVideoUrls] = useState<string[]>(() => (
     Array.isArray(initialMotionVideoUrls) ? initialMotionVideoUrls.filter(Boolean).slice(0, modelConfig.maxVideos || 1) : []
@@ -658,6 +689,7 @@ export default function AiVideoGeneratorTool({
   const shouldAllowLeftOverlay = isModelMenuOpen
   const supportsNativeAudio = Boolean(modelConfig.supportsNativeAudio)
   const supportsMotionReferenceVideo = Boolean(modelConfig.supportsMotionReferenceVideo)
+  const supportsFirstLastFrame = activeMode === 'image-to-video' && Boolean(modelConfig.supportsFirstLastFrame)
   const promptRequired = modelConfig.promptRequired !== false
   const promptLabel = promptRequired ? text.prompt : `${text.prompt} (${text.optional})`
   const followsReferenceImageAspectRatio = activeMode === 'image-to-video' && modelConfig.imageToVideoAspectRatioMode === 'reference-image'
@@ -669,7 +701,51 @@ export default function AiVideoGeneratorTool({
     [selectedModelId, resolution, duration, supportsNativeAudio, nativeAudio, minimumCreditCost],
   )
 
+  const revokeReferenceImageSource = (item: ReferenceImageSource | null | undefined) => {
+    if (item?.source === 'local') URL.revokeObjectURL(item.preview)
+  }
+
+  const getReferenceImageSourcePreview = (item: ReferenceImageSource | null | undefined) => {
+    if (!item) return ''
+    return item.source === 'remote' ? item.url : item.preview
+  }
+
+  const clearFirstLastFrameImages = () => {
+    firstLastFrameImagesRef.current.forEach(revokeReferenceImageSource)
+    firstLastFrameImagesRef.current = [null, null]
+    setFirstLastFrameImages([null, null])
+  }
+
+  const handleFirstLastFrameToggle = () => {
+    if (!supportsFirstLastFrame) return
+    setFirstLastFrameEnabled((current) => !current)
+  }
+
+  const firstLastFrameToggle = supportsFirstLastFrame ? (
+    <button
+      type="button"
+      data-first-last-frame-toggle
+      aria-pressed={firstLastFrameEnabled}
+      aria-label={text.firstLastFrame}
+      onClick={handleFirstLastFrameToggle}
+      className={`inline-flex items-center gap-2 rounded-md p-0 text-[12px] font-bold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4F46E5]/30 ${
+        firstLastFrameEnabled
+          ? 'text-[#3730A3]'
+          : 'text-slate-500 hover:text-slate-700'
+      }`}
+    >
+      <span className={`relative inline-flex h-4 w-7 shrink-0 items-center rounded-full transition-colors ${firstLastFrameEnabled ? 'bg-[#4F46E5]' : 'bg-slate-200'}`} aria-hidden="true">
+        <span className={`inline-block h-3 w-3 rounded-full bg-white shadow-sm transition-transform ${firstLastFrameEnabled ? 'translate-x-3.5' : 'translate-x-0.5'}`} />
+      </span>
+      <span>{text.firstLastFrame}</span>
+    </button>
+  ) : null
+
   const applyModelSelection = (nextModel: AiVideoGeneratorModelConfig) => {
+    if (firstLastFrameEnabled && !nextModel.supportsFirstLastFrame) {
+      clearFirstLastFrameImages()
+      setFirstLastFrameEnabled(false)
+    }
     const nextResolution = nextModel.resolutions.includes(resolution)
       ? resolution
       : nextModel.resolutions[0] || '1080p'
@@ -764,24 +840,41 @@ export default function AiVideoGeneratorTool({
   }, [imageFiles])
 
   useEffect(() => {
+    firstLastFrameImagesRef.current = firstLastFrameImages
+  }, [firstLastFrameImages])
+
+  useEffect(() => {
     motionVideoFilesRef.current = motionVideoFiles
   }, [motionVideoFiles])
 
   useEffect(() => {
+    if (supportsFirstLastFrame || !firstLastFrameEnabled) return
+
+    clearFirstLastFrameImages()
+    setFirstLastFrameEnabled(false)
+  }, [supportsFirstLastFrame, firstLastFrameEnabled])
+
+  useEffect(() => {
     return () => {
       imageFilesRef.current.forEach((item) => URL.revokeObjectURL(item.preview))
+      firstLastFrameImagesRef.current.forEach(revokeReferenceImageSource)
       motionVideoFilesRef.current.forEach((item) => URL.revokeObjectURL(item.preview))
     }
   }, [])
 
   useEffect(() => {
-    const queryModelId = new URLSearchParams(window.location.search).get('model')
+    const queryParams = new URLSearchParams(window.location.search)
+    const queryModelId = queryParams.get('model')
+    const queryModeId = queryParams.get('mode')
     const nextModelId = AI_VIDEO_GENERATOR_MODEL_OPTIONS.some((option) => option.id === queryModelId)
       ? queryModelId as AiVideoGeneratorModelId
       : modelId
     const nextModel = getAiVideoGeneratorModelConfig(nextModelId)
+    const nextMode = nextModel.supportedModes.includes(queryModeId as AiVideoGeneratorModeId)
+      ? queryModeId as AiVideoGeneratorModeId
+      : getInitialVideoMode(nextModel, defaultMode)
     applyModelSelection(nextModel)
-    setActiveMode(getInitialVideoMode(nextModel, defaultMode))
+    setActiveMode(nextMode)
   }, [defaultMode, modelId])
 
   useEffect(() => {
@@ -862,6 +955,9 @@ export default function AiVideoGeneratorTool({
       ? requestedMode
       : getInitialVideoMode(nextModel, undefined)
     const nextDuration = getHistoryDuration(detail?.outputFormat, nextModel.defaultDuration || nextModel.durations[0] || 5)
+    const shouldUseFirstLastFrame = nextMode === 'image-to-video'
+      && Boolean(nextModel.supportsFirstLastFrame)
+      && getHistoryUsesFirstLastFrame(detail?.outputFormat)
 
     setSelectedModelId(nextModel.id)
     setActiveModelGroupId(getAiVideoGeneratorModelGroupId(nextModel.id))
@@ -891,10 +987,20 @@ export default function AiVideoGeneratorTool({
     imageFilesRef.current.forEach((item) => URL.revokeObjectURL(item.preview))
     imageFilesRef.current = []
     setImageFiles([])
+    clearFirstLastFrameImages()
     motionVideoFilesRef.current.forEach((item) => URL.revokeObjectURL(item.preview))
     motionVideoFilesRef.current = []
     setMotionVideoFiles([])
-    setRemoteImageUrls(nextMode === 'image-to-video' ? referenceUrls.slice(0, nextModel.maxImages) : [])
+    if (shouldUseFirstLastFrame) {
+      const remoteSlots = referenceUrls.slice(0, 2).map((url) => ({ source: 'remote' as const, url }))
+      firstLastFrameImagesRef.current = [remoteSlots[0] || null, remoteSlots[1] || null]
+      setFirstLastFrameImages([remoteSlots[0] || null, remoteSlots[1] || null])
+      setFirstLastFrameEnabled(true)
+      setRemoteImageUrls([])
+    } else {
+      setFirstLastFrameEnabled(false)
+      setRemoteImageUrls(nextMode === 'image-to-video' ? referenceUrls.slice(0, nextModel.maxImages) : [])
+    }
     setRemoteMotionVideoUrls(nextModel.supportsMotionReferenceVideo && Array.isArray(detail?.videoUrls)
       ? detail.videoUrls.map(normalizeReusableReferenceImageUrl).filter(Boolean).slice(0, nextModel.maxVideos || 1)
       : [])
@@ -971,7 +1077,12 @@ export default function AiVideoGeneratorTool({
     }
   }, [])
 
+  const firstLastFrameImageCount = firstLastFrameImages.filter(Boolean).length
   const referenceImageCount = remoteImageUrls.length + imageFiles.length
+  const isUsingFirstLastFrame = supportsFirstLastFrame && firstLastFrameEnabled
+  const hasRequiredReferenceImage = isUsingFirstLastFrame
+    ? Boolean(firstLastFrameImages[0])
+    : referenceImageCount > 0
   const motionReferenceVideoCount = remoteMotionVideoUrls.length + motionVideoFiles.length
   const referenceVideoMaxDurationSeconds = characterOrientation === 'image' ? 10 : modelConfig.referenceVideoMaxDurationSeconds || 30
   const shouldShowGenerationCreditCost = modelConfig.durationMode !== 'reference-video' || motionReferenceVideoCount > 0
@@ -998,6 +1109,15 @@ export default function AiVideoGeneratorTool({
         durationSeconds: motionVideoFiles[0].durationSeconds,
       }
       : null
+  const firstLastFramePreviewImage = firstLastFrameImages.find((item): item is ReferenceImageSource => Boolean(item))
+  const currentReferenceImagePreview = isUsingFirstLastFrame
+    ? getReferenceImageSourcePreview(firstLastFramePreviewImage)
+    : remoteImageUrls[0] || imageFiles[0]?.preview || ''
+  const currentReferenceImageUrls = isUsingFirstLastFrame
+    ? firstLastFrameImages
+      .filter((item): item is ReferenceImageSource => Boolean(item))
+      .map(getReferenceImageSourcePreview)
+    : remoteImageUrls
   const referenceImageHelperText = modelConfig.referenceImageHelperText
     ? formatText(modelConfig.referenceImageHelperText, { size: modelConfig.maxFileSizeMb })
     : formatText(text.fileLimit, { size: modelConfig.maxFileSizeMb })
@@ -1007,7 +1127,7 @@ export default function AiVideoGeneratorTool({
       || modelConfig.referenceImageAspectRatioMax,
   )
   const canGenerate = (!promptRequired || prompt.trim().length > 0)
-    && (activeMode === 'text-to-video' || referenceImageCount > 0)
+    && (activeMode === 'text-to-video' || hasRequiredReferenceImage)
     && (!supportsMotionReferenceVideo || motionReferenceVideoCount > 0)
   const historyPageHref = getLocalizedInternalPath(pathname, '/history')
   const isGenerating = currentRequest?.status === 'processing'
@@ -1139,15 +1259,14 @@ export default function AiVideoGeneratorTool({
     return false
   }
 
-  const handleFiles = async (files: FileList | File[]) => {
+  const buildReferenceImageItems = async (files: FileList | File[], limit: number): Promise<ImageItem[]> => {
     const list = Array.isArray(files) ? files : Array.from(files)
-    const remainingSlots = modelConfig.maxImages - referenceImageCount
-    if (remainingSlots <= 0) return
+    if (limit <= 0) return []
 
     const maxSize = modelConfig.maxFileSizeMb * 1024 * 1024
     const candidateFiles = list
       .filter((file) => file.type.startsWith('image/'))
-      .slice(0, remainingSlots)
+      .slice(0, limit)
       .filter((file) => {
         if (file.size <= maxSize) return true
         showFileTooLargeNotice(file)
@@ -1159,15 +1278,22 @@ export default function AiVideoGeneratorTool({
       if (await validateReferenceImageFile(file)) validFiles.push(file)
     }
 
-    if (validFiles.length === 0) return
+    return validFiles.map((file) => ({
+      file,
+      preview: URL.createObjectURL(file),
+    }))
+  }
+
+  const handleFiles = async (files: FileList | File[]) => {
+    const remainingSlots = modelConfig.maxImages - referenceImageCount
+    const validItems = await buildReferenceImageItems(files, remainingSlots)
+
+    if (validItems.length === 0) return
 
     setRemoteImageUrls([])
     setImageFiles((prev) => [
       ...prev,
-      ...validFiles.map((file) => ({
-        file,
-        preview: URL.createObjectURL(file),
-      })),
+      ...validItems,
     ])
   }
 
@@ -1331,6 +1457,61 @@ export default function AiVideoGeneratorTool({
     })
   }
 
+  const setFirstLastFrameImageSlot = (slotIndex: number, image: ReferenceImageSource | null) => {
+    setFirstLastFrameImages((prev) => {
+      const nextImages = [prev[0] || null, prev[1] || null]
+      revokeReferenceImageSource(nextImages[slotIndex])
+      nextImages[slotIndex] = image
+      return nextImages
+    })
+  }
+
+  const handleFilesForReferenceSlot = async (slotIndex: number, files: FileList | File[]) => {
+    const [item] = await buildReferenceImageItems(files, 1)
+    if (!item) return
+    setFirstLastFrameImageSlot(slotIndex, {
+      source: 'local',
+      file: item.file,
+      preview: item.preview,
+    })
+  }
+
+  const replaceFirstLastFrameImageWithFile = async (slotIndex: number, file: File) => {
+    if (!(await validateReferenceImageFile(file))) return
+    setFirstLastFrameImageSlot(slotIndex, {
+      source: 'local',
+      file,
+      preview: URL.createObjectURL(file),
+    })
+  }
+
+  const removeFirstLastFrameImage = (slotIndex: number) => {
+    setFirstLastFrameImageSlot(slotIndex, null)
+  }
+
+  const swapReferenceImageSlots = (fromIndex: number, toIndex: number) => {
+    setFirstLastFrameImages((prev) => {
+      const nextImages = [prev[0] || null, prev[1] || null]
+      const fromImage = nextImages[fromIndex]
+      nextImages[fromIndex] = nextImages[toIndex]
+      nextImages[toIndex] = fromImage
+      return nextImages
+    })
+  }
+
+  const buildFirstLastFrameUploaderItems = (slotIndex: number) => {
+    const image = firstLastFrameImages[slotIndex]
+    if (!image) return []
+    const isFirstFrame = slotIndex === 0
+    return [{
+      id: image.source === 'remote' ? `first-last-remote-${slotIndex}-${image.url}` : `first-last-local-${slotIndex}-${image.file.name}`,
+      src: image.source === 'remote' ? image.url : image.preview,
+      alt: isFirstFrame ? text.firstFrame : text.lastFrame,
+      onRemove: () => removeFirstLastFrameImage(slotIndex),
+      onReplace: (file: File) => replaceFirstLastFrameImageWithFile(slotIndex, file),
+    }]
+  }
+
   const handleModelChange = (nextModelId: AiVideoGeneratorModelId) => {
     if (nextModelId === selectedModelId) {
       setIsModelMenuOpen(false)
@@ -1425,14 +1606,19 @@ export default function AiVideoGeneratorTool({
     uploadForm.append('uploadPurpose', modelConfig.uploadPurpose)
   }
 
-  const uploadImages = async (): Promise<UploadedMediaReferences> => {
-    if (activeMode !== 'image-to-video') return { generationUrls: [], historyUrls: [] }
+  const uploadImages = async (): Promise<UploadedImageMediaReferences> => {
+    if (activeMode !== 'image-to-video') {
+      return {
+        referenceGenerationUrls: [],
+        referenceHistoryUrls: [],
+        firstLastFrameGenerationUrls: [],
+        firstLastFrameHistoryUrls: [],
+      }
+    }
 
-    const generationUrls: string[] = [...remoteImageUrls]
-    const historyUrls: string[] = [...remoteImageUrls]
     const uploadUrl = getUploadUrlForModel(modelConfig)
 
-    for (const imageItem of imageFiles) {
+    const uploadImageItem = async (imageItem: ImageItem) => {
       const uploadForm = new FormData()
       uploadForm.append('image', imageItem.file)
       appendUploadPurposeField(uploadForm)
@@ -1455,11 +1641,53 @@ export default function AiVideoGeneratorTool({
         throw new Error(text.uploadRequestFailed)
       }
 
-      generationUrls.push(mediaReference)
-      historyUrls.push(historyReference)
+      return { generationUrl: mediaReference, historyUrl: historyReference }
     }
 
-    return { generationUrls, historyUrls }
+    const uploadReferenceImages = async (images: ReferenceImageSource[]) => {
+      const generationUrls: Array<string | undefined> = new Array(images.length)
+      const historyUrls: Array<string | undefined> = new Array(images.length)
+
+      images.forEach((image, index) => {
+        if (image.source !== 'remote') return
+        generationUrls[index] = image.url
+        historyUrls[index] = image.url
+      })
+
+      for (const [index, image] of images.entries()) {
+        if (image.source !== 'local') continue
+        const uploadedImage = await uploadImageItem({ file: image.file, preview: image.preview })
+        generationUrls[index] = uploadedImage.generationUrl
+        historyUrls[index] = uploadedImage.historyUrl
+      }
+
+      return {
+        generationUrls: generationUrls.filter((url): url is string => Boolean(url)),
+        historyUrls: historyUrls.filter((url): url is string => Boolean(url)),
+      }
+    }
+
+    const generationUrls: string[] = isUsingFirstLastFrame ? [] : [...remoteImageUrls]
+    const historyUrls: string[] = isUsingFirstLastFrame ? [] : [...remoteImageUrls]
+
+    if (!isUsingFirstLastFrame) {
+      for (const imageItem of imageFiles) {
+        const uploadedImage = await uploadImageItem(imageItem)
+        generationUrls.push(uploadedImage.generationUrl)
+        historyUrls.push(uploadedImage.historyUrl)
+      }
+    }
+
+    const firstLastFrameMedia = isUsingFirstLastFrame
+      ? await uploadReferenceImages(firstLastFrameImages.filter((item): item is ReferenceImageSource => Boolean(item)))
+      : { generationUrls: [], historyUrls: [] }
+
+    return {
+      referenceGenerationUrls: generationUrls,
+      referenceHistoryUrls: historyUrls,
+      firstLastFrameGenerationUrls: firstLastFrameMedia.generationUrls,
+      firstLastFrameHistoryUrls: firstLastFrameMedia.historyUrls,
+    }
   }
 
   const uploadMotionVideos = async (): Promise<UploadedMediaReferences> => {
@@ -1522,9 +1750,11 @@ export default function AiVideoGeneratorTool({
           inputUrls,
           aspectRatio: request.aspectRatio,
           resolution: request.resolution,
-          outputFormat: request.characterOrientation
-            ? JSON.stringify({ duration: request.duration, characterOrientation: request.characterOrientation })
-            : `${request.duration}s`,
+          outputFormat: JSON.stringify({
+            duration: request.duration,
+            ...(request.characterOrientation ? { characterOrientation: request.characterOrientation } : {}),
+            ...(request.firstLastFrame ? { firstLastFrame: true } : {}),
+          }),
           nativeAudio: request.nativeAudio,
           ...historyTool,
         }),
@@ -1649,10 +1879,11 @@ export default function AiVideoGeneratorTool({
       duration,
       resolution,
       nativeAudio: supportsNativeAudio && nativeAudio,
-      inputPreview: remoteImageUrls[0] || imageFiles[0]?.preview || '',
-      inputUrls: remoteImageUrls,
+      inputPreview: currentReferenceImagePreview,
+      inputUrls: currentReferenceImageUrls,
       motionVideoUrls: remoteMotionVideoUrls,
       characterOrientation: supportsMotionReferenceVideo ? characterOrientation : undefined,
+      firstLastFrame: isUsingFirstLastFrame,
       createdAt: formatLocalTimestampToSeconds(new Date(startedAt).toISOString()),
       startedAt,
       status: 'processing',
@@ -1665,7 +1896,9 @@ export default function AiVideoGeneratorTool({
     try {
       const uploadedImageMedia = await uploadImages()
       const uploadedMotionVideoMedia = await uploadMotionVideos()
-      const imageUrls = uploadedImageMedia.historyUrls
+      const imageUrls = isUsingFirstLastFrame
+        ? uploadedImageMedia.firstLastFrameHistoryUrls
+        : uploadedImageMedia.referenceHistoryUrls
       const motionVideoUrls = uploadedMotionVideoMedia.historyUrls
       setCurrentRequest((current) => current?.id === request.id ? { ...current, inputUrls: imageUrls, motionVideoUrls } : current)
       const formData = new FormData()
@@ -1678,8 +1911,13 @@ export default function AiVideoGeneratorTool({
       if (supportsNativeAudio) {
         formData.append('nativeAudio', String(nativeAudio))
       }
-      if (uploadedImageMedia.generationUrls.length > 0) {
-        formData.append('imageUrls', JSON.stringify(uploadedImageMedia.generationUrls))
+      if (isUsingFirstLastFrame && uploadedImageMedia.firstLastFrameGenerationUrls[0]) {
+        formData.append('firstFrameUrl', uploadedImageMedia.firstLastFrameGenerationUrls[0])
+        if (uploadedImageMedia.firstLastFrameGenerationUrls[1]) {
+          formData.append('lastFrameUrl', uploadedImageMedia.firstLastFrameGenerationUrls[1])
+        }
+      } else if (uploadedImageMedia.referenceGenerationUrls.length > 0) {
+        formData.append('imageUrls', JSON.stringify(uploadedImageMedia.referenceGenerationUrls))
       }
       if (uploadedMotionVideoMedia.generationUrls.length > 0) {
         formData.append('videoUrls', JSON.stringify(uploadedMotionVideoMedia.generationUrls))
@@ -1719,9 +1957,10 @@ export default function AiVideoGeneratorTool({
         inputUrls: imageUrls,
         motionVideoUrls,
         characterOrientation: request.characterOrientation,
+        firstLastFrame: request.firstLastFrame,
         inputPreview: request.inputPreview,
       }
-      const savedItem = await persistGeneratedVideoHistoryItem(completedRequest, videoUrl, [...uploadedImageMedia.historyUrls, ...uploadedMotionVideoMedia.historyUrls], requestHistoryTool)
+      const savedItem = await persistGeneratedVideoHistoryItem(completedRequest, videoUrl, [...imageUrls, ...uploadedMotionVideoMedia.historyUrls], requestHistoryTool)
       trackToolazeEvent('generate_success', getVideoAnalyticsPayload({
         result_delivery: resultDelivery,
         task_provider: taskProvider || undefined,
@@ -1743,6 +1982,7 @@ export default function AiVideoGeneratorTool({
         inputUrls: imageUrls,
         motionVideoUrls,
         characterOrientation: completedRequest.characterOrientation,
+        firstLastFrame: completedRequest.firstLastFrame,
         outputPreview: videoUrl,
         time: formatLocalTimestampToSeconds(savedItem?.createdAt || new Date().toISOString()),
         persisted: Boolean(savedItem?.id),
@@ -1802,16 +2042,30 @@ export default function AiVideoGeneratorTool({
 
     if (!item.modelId) return
     const itemConfig = getAiVideoGeneratorModelConfig(item.modelId)
+    const nextMode = item.inputUrls.length > 0 ? 'image-to-video' : item.mode as AiVideoGeneratorModeId
+    const shouldUseFirstLastFrame = nextMode === 'image-to-video'
+      && Boolean(itemConfig.supportsFirstLastFrame)
+      && item.firstLastFrame === true
     setSelectedModelId(item.modelId)
     setActiveModelGroupId(getAiVideoGeneratorModelGroupId(item.modelId))
-    setActiveMode(item.inputUrls.length > 0 ? 'image-to-video' : item.mode as AiVideoGeneratorModeId)
+    setActiveMode(nextMode)
     setPrompt(item.prompt)
     setAspectRatio(getValidVideoAspectRatio(item.aspectRatio, itemConfig))
     setDuration(item.duration || itemConfig.defaultDuration || itemConfig.durations[0] || 5)
     setResolution(item.resolution || itemConfig.resolutions[0] || '480p')
     setNativeAudio(Boolean(itemConfig.supportsNativeAudio && item.nativeAudio))
     setCharacterOrientation(item.characterOrientation || 'video')
-    setRemoteImageUrls(item.inputUrls.slice(0, itemConfig.maxImages))
+    clearFirstLastFrameImages()
+    if (shouldUseFirstLastFrame) {
+      const remoteSlots = item.inputUrls.slice(0, 2).map((url) => ({ source: 'remote' as const, url }))
+      firstLastFrameImagesRef.current = [remoteSlots[0] || null, remoteSlots[1] || null]
+      setFirstLastFrameImages([remoteSlots[0] || null, remoteSlots[1] || null])
+      setFirstLastFrameEnabled(true)
+      setRemoteImageUrls([])
+    } else {
+      setFirstLastFrameEnabled(false)
+      setRemoteImageUrls(item.inputUrls.slice(0, itemConfig.maxImages))
+    }
     setRemoteMotionVideoUrls(itemConfig.supportsMotionReferenceVideo ? (item.motionVideoUrls || []).slice(0, itemConfig.maxVideos || 1) : [])
     setImageFiles((prev) => {
       prev.forEach((image) => URL.revokeObjectURL(image.preview))
@@ -2147,7 +2401,7 @@ export default function AiVideoGeneratorTool({
         data-generation-tool-shell
         className="flex min-h-0 min-w-0 flex-col gap-4 md:h-[calc(100dvh-6rem)] md:max-h-[calc(100dvh-6rem)] md:min-h-0 md:flex-row md:items-stretch md:gap-3 xl:gap-4 2xl:gap-5"
       >
-              <aside data-left-generation-panel className="w-full md:h-full md:w-[380px] xl:w-[400px] 2xl:w-[420px] flex-shrink-0 flex flex-col rounded-2xl border border-[#E0E7FF] bg-white shadow-lg shadow-[#4F46E5]/8 overflow-visible">
+              <aside data-left-generation-panel className="order-2 w-full md:order-none md:h-full md:w-[380px] xl:w-[400px] 2xl:w-[420px] flex-shrink-0 flex flex-col rounded-2xl border border-[#E0E7FF] bg-white shadow-lg shadow-[#4F46E5]/8 overflow-visible">
                 <div data-left-settings-scroll className={`p-2 md:p-6 space-y-4 md:space-y-5 md:flex-1 md:min-h-0 md:overscroll-contain ${shouldAllowLeftOverlay ? 'md:overflow-visible' : 'md:overflow-y-auto'}`}>
                   <div className="rounded-2xl bg-[#EEF2FF] p-1">
                     <div className="grid grid-cols-2 gap-1">
@@ -2282,39 +2536,106 @@ export default function AiVideoGeneratorTool({
                   ) : null}
 
                   {activeMode === 'image-to-video' ? (
-                    <ReferenceImageUploader
-                      items={[
-                        ...remoteImageUrls.map((url, index) => ({
-                          id: `remote-${url}-${index}`,
-                          src: url,
-                          alt: `${text.referenceImage} ${index + 1}`,
-                          onRemove: () => setRemoteImageUrls((prev) => prev.filter((_, itemIndex) => itemIndex !== index)),
-                          onReplace: (file: File) => replaceRemoteImageWithFile(index, file),
-                        })),
-                        ...imageFiles.map((item, index) => ({
-                          id: `local-${item.file.name}-${index}`,
-                          src: item.preview,
-                          alt: `${text.upload} ${index + 1}`,
-                          onRemove: () => removeImage(index),
-                          onReplace: (file: File) => replaceImageWithFile(index, file),
-                        })),
-                      ]}
-                      maxImages={modelConfig.maxImages}
-                      maxFileSizeMb={modelConfig.maxFileSizeMb}
-                      acceptedTypes={modelConfig.acceptedImageMimeTypes?.join(',')}
-                      acceptedMimeTypes={modelConfig.acceptedImageMimeTypes}
-                      acceptedFileExtensions={modelConfig.acceptedImageExtensions}
-                      onFiles={handleFiles}
-                      onInvalidType={showImageInvalidTypeNotice}
-                      onValidationError={showFileTooLargeNotice}
-                      label={modelConfig.maxImages === 1 ? text.uploadYourImage : formatText(text.uploadUpTo, { count: modelConfig.maxImages })}
-                      helperText={referenceImageHelperText}
-                      uploadLabel={text.upload}
-                      replaceLabel={text.replace}
-                      deleteLabel={text.delete}
-                      size="compact"
-                      testIdPrefix="video-reference"
-                    />
+                    firstLastFrameEnabled ? (
+                        <div data-first-last-frame-slots>
+                          <div className="mb-2 flex items-center justify-between gap-3">
+                            <span className="text-xs font-semibold tracking-wide text-slate-500">{text.firstLastFrame}</span>
+                            {firstLastFrameToggle}
+                          </div>
+                          <div className="flex w-fit items-start gap-3">
+                            <div className="w-28 shrink-0">
+                              <ReferenceImageUploader
+                                items={buildFirstLastFrameUploaderItems(0)}
+                                maxImages={1}
+                                maxFileSizeMb={modelConfig.maxFileSizeMb}
+                                acceptedTypes={modelConfig.acceptedImageMimeTypes?.join(',')}
+                                acceptedMimeTypes={modelConfig.acceptedImageMimeTypes}
+                                acceptedFileExtensions={modelConfig.acceptedImageExtensions}
+                                onFiles={(files) => void handleFilesForReferenceSlot(0, files)}
+                                onInvalidType={showImageInvalidTypeNotice}
+                                onValidationError={showFileTooLargeNotice}
+                                label={text.firstFrame}
+                                helperText=""
+                                uploadLabel={text.upload}
+                                replaceLabel={text.replace}
+                                deleteLabel={text.delete}
+                                size="compact"
+                                testIdPrefix="video-first-frame"
+                              />
+                            </div>
+                            <button
+                              type="button"
+                              data-first-last-frame-swap
+                              aria-label={text.swapFrames}
+                              title={text.swapFrames}
+                              disabled={firstLastFrameImageCount === 0}
+                              onClick={() => swapReferenceImageSlots(0, 1)}
+                              className="mt-16 inline-flex h-8 w-8 items-center justify-center rounded-full border border-[#E0E7FF] bg-white text-[#4F46E5] shadow-sm transition hover:border-[#C7D2FE] hover:bg-[#EEF2FF] disabled:cursor-not-allowed disabled:text-slate-300 disabled:hover:bg-white"
+                            >
+                              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                                <path d="M7 7h11l-3-3" />
+                                <path d="M17 17H6l3 3" />
+                              </svg>
+                            </button>
+                            <div className="w-28 shrink-0">
+                              <ReferenceImageUploader
+                                items={buildFirstLastFrameUploaderItems(1)}
+                                maxImages={1}
+                                maxFileSizeMb={modelConfig.maxFileSizeMb}
+                                acceptedTypes={modelConfig.acceptedImageMimeTypes?.join(',')}
+                                acceptedMimeTypes={modelConfig.acceptedImageMimeTypes}
+                                acceptedFileExtensions={modelConfig.acceptedImageExtensions}
+                                onFiles={(files) => void handleFilesForReferenceSlot(1, files)}
+                                onInvalidType={showImageInvalidTypeNotice}
+                                onValidationError={showFileTooLargeNotice}
+                                label={text.lastFrame}
+                                helperText=""
+                                uploadLabel={text.upload}
+                                replaceLabel={text.replace}
+                                deleteLabel={text.delete}
+                                size="compact"
+                                testIdPrefix="video-last-frame"
+                              />
+                            </div>
+                          </div>
+                          <p className="mt-1.5 text-xs text-slate-400">{referenceImageHelperText}</p>
+                        </div>
+                    ) : (
+                      <ReferenceImageUploader
+                        items={[
+                          ...remoteImageUrls.map((url, index) => ({
+                            id: `remote-${url}-${index}`,
+                            src: url,
+                            alt: `${text.referenceImage} ${index + 1}`,
+                            onRemove: () => setRemoteImageUrls((prev) => prev.filter((_, itemIndex) => itemIndex !== index)),
+                            onReplace: (file: File) => replaceRemoteImageWithFile(index, file),
+                          })),
+                          ...imageFiles.map((item, index) => ({
+                            id: `local-${item.file.name}-${index}`,
+                            src: item.preview,
+                            alt: `${text.upload} ${index + 1}`,
+                            onRemove: () => removeImage(index),
+                            onReplace: (file: File) => replaceImageWithFile(index, file),
+                          })),
+                        ]}
+                        maxImages={modelConfig.maxImages}
+                        maxFileSizeMb={modelConfig.maxFileSizeMb}
+                        acceptedTypes={modelConfig.acceptedImageMimeTypes?.join(',')}
+                        acceptedMimeTypes={modelConfig.acceptedImageMimeTypes}
+                        acceptedFileExtensions={modelConfig.acceptedImageExtensions}
+                        onFiles={handleFiles}
+                        onInvalidType={showImageInvalidTypeNotice}
+                        onValidationError={showFileTooLargeNotice}
+                        label={modelConfig.maxImages === 1 ? text.uploadYourImage : formatText(text.uploadUpTo, { count: modelConfig.maxImages })}
+                        helperText={referenceImageHelperText}
+                        uploadLabel={text.upload}
+                        replaceLabel={text.replace}
+                        deleteLabel={text.delete}
+                        size="compact"
+                        testIdPrefix="video-reference"
+                        headerAction={firstLastFrameToggle}
+                      />
+                    )
                   ) : null}
 
                   {activeMode === 'image-to-video' && supportsMotionReferenceVideo ? (
@@ -2529,7 +2850,7 @@ export default function AiVideoGeneratorTool({
                 </div>
               </aside>
 
-              <div data-video-demo-panel className="flex min-h-0 min-w-0 flex-1 flex-col gap-4 md:h-full">
+              <div data-video-demo-panel className="order-1 flex min-h-0 min-w-0 flex-1 flex-col gap-4 md:order-none md:h-full">
                 {hasDesktopResultTabs ? renderDesktopResultTabs() : null}
                 {rightMode !== 'history' && (heroBreadcrumbItems?.length || heroTitleHtml || heroDescription) ? (
                   <div className="shrink-0 text-center md:px-4 md:pt-1 xl:pt-0">

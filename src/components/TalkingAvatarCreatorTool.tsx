@@ -1274,7 +1274,7 @@ export default function TalkingAvatarCreatorTool({
           >
             <aside
               data-talking-avatar-controls-panel
-              className="flex w-full flex-shrink-0 flex-col overflow-hidden rounded-2xl border border-[#E0E7FF] bg-white shadow-lg shadow-[#4F46E5]/8 md:h-full md:w-[380px] xl:w-[400px] 2xl:w-[420px]"
+              className="order-2 flex w-full flex-shrink-0 flex-col overflow-hidden rounded-2xl border border-[#E0E7FF] bg-white shadow-lg shadow-[#4F46E5]/8 md:order-none md:h-full md:w-[380px] xl:w-[400px] 2xl:w-[420px]"
             >
               <div className="space-y-4 p-2 md:min-h-0 md:flex-1 md:space-y-5 md:overflow-y-auto md:overscroll-contain md:p-6">
                 <label className="block cursor-pointer rounded-2xl border border-dashed border-[#A5B4FC] bg-[#F8FAFF] p-4 transition hover:border-[#4F46E5]">
@@ -1375,7 +1375,7 @@ export default function TalkingAvatarCreatorTool({
               </div>
             </aside>
 
-            <div data-talking-avatar-demo-panel className="flex min-h-0 min-w-0 flex-1 flex-col gap-4 md:h-full">
+            <div data-talking-avatar-demo-panel className="order-1 flex min-h-0 min-w-0 flex-1 flex-col gap-4 md:order-none md:h-full">
               {hasDesktopResultTabs ? renderDesktopResultTabs() : null}
 
               {rightMode !== 'history' ? (

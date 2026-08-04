@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef } from 'react'
+import { type ReactNode, useRef } from 'react'
 import DeleteIcon from '@/components/icons/DeleteIcon'
 import ImageReplaceButton from '@/components/ImageReplaceButton'
 
@@ -37,6 +37,7 @@ interface ReferenceImageUploaderProps {
   failedLabel?: string
   size?: 'compact' | 'large'
   testIdPrefix?: string
+  headerAction?: ReactNode
 }
 
 const ACCEPTED_IMAGE_TYPES = 'image/jpeg,image/jpg,image/png,image/webp'
@@ -77,6 +78,7 @@ export default function ReferenceImageUploader({
   failedLabel = 'Image Failed',
   size = 'compact',
   testIdPrefix = 'reference-image',
+  headerAction,
 }: ReferenceImageUploaderProps) {
   const fileInputRef = useRef<HTMLInputElement>(null)
   const replacementIndexRef = useRef<number | null>(null)
@@ -120,7 +122,7 @@ export default function ReferenceImageUploader({
     <div data-reference-image-uploader={testIdPrefix}>
       <div className="mb-2 flex items-center justify-between gap-3">
         <label className="text-xs font-semibold tracking-wide text-slate-500">{label}</label>
-        {items.length > 0 ? <span className="text-xs font-medium text-slate-400">{items.length}/{maxImages}</span> : null}
+        {headerAction || (items.length > 0 ? <span className="text-xs font-medium text-slate-400">{items.length}/{maxImages}</span> : null)}
       </div>
       <input
         ref={fileInputRef}
@@ -196,7 +198,7 @@ export default function ReferenceImageUploader({
           )
         })}
       </div>
-      <p className="mt-1.5 text-xs text-slate-400">{helperText}</p>
+      {helperText ? <p className="mt-1.5 text-xs text-slate-400">{helperText}</p> : null}
     </div>
   )
 }

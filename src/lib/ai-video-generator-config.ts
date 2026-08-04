@@ -53,6 +53,7 @@ export interface AiVideoGeneratorModelConfig {
   supportedModes: AiVideoGeneratorModeId[]
   maxImages: number
   maxFileSizeMb: number
+  supportsFirstLastFrame?: boolean
   maxVideos?: number
   maxVideoFileSizeMb?: number
   supportsMotionReferenceVideo?: boolean
@@ -147,7 +148,8 @@ const AI_VIDEO_GENERATOR_MODEL_OPTIONS_BASE = [
     badge: 'Hot',
     minCredits: 190,
     defaultMode: 'image-to-video',
-    maxImages: 2,
+    maxImages: 9,
+    supportsFirstLastFrame: true,
     maxFileSizeMb: 30,
     aspectRatios: [
       { value: '16:9', label: '16:9' },
@@ -175,7 +177,8 @@ const AI_VIDEO_GENERATOR_MODEL_OPTIONS_BASE = [
     badge: 'New',
     minCredits: 95,
     defaultMode: 'image-to-video',
-    maxImages: 2,
+    maxImages: 9,
+    supportsFirstLastFrame: true,
     maxFileSizeMb: 30,
     aspectRatios: [
       { value: 'adaptive', label: 'Adaptive' },
@@ -196,7 +199,7 @@ const AI_VIDEO_GENERATOR_MODEL_OPTIONS_BASE = [
     previewTone: 'Fast 720p video preview',
   },
   ...([
-    ['seedance-2-fast', 'Seedance 2.0 Fast', 155, ['480p', '720p'], [5, 10, 15], 2, false],
+    ['seedance-2-fast', 'Seedance 2.0 Fast', 155, ['480p', '720p'], [5, 10, 15], 9, false],
     ['seedance-1-5-pro', 'Seedance 1.5 Pro', 16, ['480p', '720p', '1080p'], [4, 8, 12], 2, true],
     ['seedance-1-pro-fast', 'Seedance 1.0 Pro Fast', 32, ['720p', '1080p'], [5, 10], 1, false],
     ['seedance-1-pro', 'Seedance 1.0 Pro', 30, ['480p', '720p', '1080p'], [5, 10], 1, false],
@@ -221,6 +224,7 @@ const AI_VIDEO_GENERATOR_MODEL_OPTIONS_BASE = [
       ? 'reference-image' as const
       : undefined,
     maxImages,
+    supportsFirstLastFrame: id === 'seedance-2-fast',
     maxFileSizeMb: id.startsWith('seedance-2') ? 30 : 10,
     aspectRatios: ['16:9', '9:16', '1:1', '4:3', '3:4'].map((value) => ({ value, label: value })),
     durations: [...durations],
@@ -243,7 +247,8 @@ const AI_VIDEO_GENERATOR_MODEL_OPTIONS_BASE = [
     badge: 'New',
     minCredits: 64,
     defaultMode: 'text-to-video',
-    maxImages: 2,
+    maxImages: 1,
+    supportsFirstLastFrame: true,
     maxFileSizeMb: 10,
     aspectRatios: [{ value: '16:9', label: '16:9' }, { value: '9:16', label: '9:16' }, { value: '1:1', label: '1:1' }],
     durations: Array.from({ length: 9 }, (_, index) => index + 2),
@@ -291,7 +296,8 @@ const AI_VIDEO_GENERATOR_MODEL_OPTIONS_BASE = [
     badge: 'New' as const,
     minCredits,
     defaultMode: 'text-to-video' as const,
-    maxImages: 2,
+    maxImages: 1,
+    supportsFirstLastFrame: true,
     maxFileSizeMb: 10,
     aspectRatios: [{ value: '16:9', label: '16:9' }, { value: '9:16', label: '9:16' }, { value: '1:1', label: '1:1' }],
     durations: [5, 10],
@@ -314,6 +320,7 @@ const AI_VIDEO_GENERATOR_MODEL_OPTIONS_BASE = [
     minCredits: 84,
     defaultMode: 'text-to-video',
     maxImages: 4,
+    supportsFirstLastFrame: true,
     maxFileSizeMb: 30,
     aspectRatios: [
       { value: '16:9', label: '16:9' },
@@ -427,6 +434,7 @@ const AI_VIDEO_GENERATOR_MODEL_OPTIONS_BASE = [
     minCredits,
     defaultMode: 'text-to-video' as const,
     maxImages: 1,
+    supportsFirstLastFrame: id === 'kling-2-5',
     maxFileSizeMb: 10,
     aspectRatios: [{ value: '16:9', label: '16:9' }, { value: '9:16', label: '9:16' }, { value: '1:1', label: '1:1' }],
     durations: [5, 10],
