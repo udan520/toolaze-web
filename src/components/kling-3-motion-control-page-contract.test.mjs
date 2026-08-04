@@ -6,7 +6,10 @@ import test from 'node:test'
 const root = process.cwd()
 const slug = 'kling-3-motion-control'
 const taskId = '2026-08-02-kling-3-motion-control'
-const klingDemoVideo = 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/56bb211041b34c5f8f27d3c0208322e7.png'
+const klingReferenceImage = 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/kling-3-motion-control/character-reference.jpg'
+const klingReferenceVideo = 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/kling-3-motion-control/motion-reference-video.mp4'
+const klingDemoVideo = 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/kling-3-motion-control/motion-control-demo.mp4'
+const klingDemoPoster = 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/kling-3-motion-control/motion-control-demo-poster.webp'
 const seedance25DemoImage = 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d0d55df5eef346809067197fddb1b251.png'
 const supportedLocales = ['en', 'de', 'es', 'fr', 'it', 'ja', 'ko', 'pt', 'zh-TW']
 const localizedLocales = supportedLocales.filter((locale) => locale !== 'en')
@@ -36,6 +39,10 @@ function collectVisibleStrings(value, path = []) {
     'icon',
     'iconType',
     'image',
+    'initialCharacterOrientation',
+    'initialImageUrls',
+    'initialMotionVideoDurationSeconds',
+    'initialMotionVideoUrls',
     'layout',
     'logoAlt',
     'logoSrc',
@@ -49,6 +56,7 @@ function collectVisibleStrings(value, path = []) {
     'sourceHistory',
     'src',
     'topComponent',
+    'uploadDate',
     'video',
     'type',
     'width',
@@ -75,6 +83,10 @@ function collectVisibleEntries(value, path = []) {
     'icon',
     'iconType',
     'image',
+    'initialCharacterOrientation',
+    'initialImageUrls',
+    'initialMotionVideoDurationSeconds',
+    'initialMotionVideoUrls',
     'layout',
     'logoAlt',
     'logoSrc',
@@ -88,6 +100,7 @@ function collectVisibleEntries(value, path = []) {
     'sourceHistory',
     'src',
     'topComponent',
+    'uploadDate',
     'video',
     'type',
     'width',
@@ -159,9 +172,18 @@ test('Kling 3 Motion Control localized content is traceable to SEO Factory', () 
     assert.equal(publicContent.topTool.modelId, 'kling-3-motion-control')
     assert.equal(publicContent.topTool.defaultMode, 'image-to-video')
     assert.match(publicContent.topTool.displayName, /Kling 3/)
+    assert.deepEqual(publicContent.topTool.initialImageUrls, [klingReferenceImage])
+    assert.deepEqual(publicContent.topTool.initialMotionVideoUrls, [klingReferenceVideo])
+    assert.equal(publicContent.topTool.initialMotionVideoDurationSeconds, 10)
+    assert.equal(publicContent.topTool.initialCharacterOrientation, 'video')
     assert.equal(publicContent.heroDemoVideo?.src, klingDemoVideo)
+    assert.equal(publicContent.heroDemoVideo?.poster, klingDemoPoster)
     assert.equal(publicContent.heroDemoVideo?.width, 16)
     assert.equal(publicContent.heroDemoVideo?.height, 9)
+    assert.match(publicContent.topTool.initialImageUrls?.[0] || '', /\.(?:jpg|jpeg|png)$/)
+    assert.match(publicContent.topTool.initialMotionVideoUrls?.[0] || '', /\.mp4$/)
+    assert.match(publicContent.heroDemoVideo?.src || '', /\.mp4$/)
+    assert.match(publicContent.heroDemoVideo?.poster || '', /\.webp$/)
     assert.deepEqual(
       publicContent.sectionsOrder,
       ['modelIntro', 'performanceMetrics', 'howToUse', 'scenes', 'modelComparison', 'competitorComparison', 'testimonials', 'faq'],
@@ -251,7 +273,7 @@ test('Kling 3 Motion Control prompt tips render weak and better rewrites as sepa
   assert.match(l2PageContent, /border-t border-slate-200 pt-3/, 'better prompt should be visually separated from weak prompt')
 })
 
-test('Kling 3 Motion Control related video model cards respect explicit video media type for R2 keys ending in png', () => {
+test('Kling 3 Motion Control uses stable R2 video demo media instead of png placeholders', () => {
   const l2PageContent = readFileSync(join(root, 'src', 'components', 'blocks', 'ToolL2PageContent.tsx'), 'utf8')
   const wan27 = readJson(join(root, 'src', 'data', 'en', 'wan-2-7-ai-video-generator.json'))
   const wan27Factory = readJson(join(root, '_codex', 'seo-pipeline', 'tasks', '2026-08-01-wan-2-7-ai-video-generator', 'content', 'en.json'))
@@ -261,7 +283,10 @@ test('Kling 3 Motion Control related video model cards respect explicit video me
   assert.equal(wan27.heroDemoVideo?.type, 'video', 'Wan 2.7 R2 png-key demo loads as video/mp4 and must render as video')
   assert.equal(wan27Factory.heroDemoVideo?.type, 'video', 'queued Wan 2.7 SEO Factory content must keep the same video media type')
   assert.equal(seedance25.heroDemoVideo?.type, 'video', 'Seedance 2.5 R2 png-key demo loads as video/mp4 and must render as video')
-  assert.equal(kling3Motion.heroDemoVideo?.type, 'video', 'Kling 3 Motion Control R2 png-key demo loads as video/mp4 and must render as video')
+  assert.equal(kling3Motion.heroDemoVideo?.src, klingDemoVideo, 'Kling 3 Motion Control should use the stable R2 mp4 demo')
+  assert.equal(kling3Motion.heroDemoVideo?.poster, klingDemoPoster, 'Kling 3 Motion Control should use the stable R2 poster')
+  assert.match(kling3Motion.heroDemoVideo?.src || '', /\.mp4$/, 'Kling 3 Motion Control demo should not point to a png placeholder')
+  assert.match(kling3Motion.heroDemoVideo?.poster || '', /\.webp$/, 'Kling 3 Motion Control poster should be a webp image')
   assert.match(l2PageContent, /function getHeroDemoMediaType/, 'related-card media should support explicit hero demo media types')
   assert.match(l2PageContent, /heroDemoVideo\.(type|mediaType)/, 'related-card media should not rely only on file extension inference')
   assert.doesNotMatch(
