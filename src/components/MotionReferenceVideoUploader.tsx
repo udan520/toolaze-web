@@ -72,7 +72,7 @@ export default function MotionReferenceVideoUploader({
           data-motion-video-selected-card
           className="group relative min-h-[164px] overflow-hidden rounded-2xl border border-indigo-100 bg-slate-950 shadow-sm"
         >
-          <video src={selectedVideo.src} className="absolute inset-0 h-full w-full object-cover" muted playsInline preload="metadata" />
+          <video src={selectedVideo.src} className="absolute inset-0 h-full w-full object-contain object-center" muted playsInline preload="metadata" />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-slate-950/35" />
           <button
             type="button"

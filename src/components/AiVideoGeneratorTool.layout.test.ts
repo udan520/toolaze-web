@@ -196,6 +196,8 @@ test('AI video generator exposes a motion reference video upload for Kling motio
   const motionUploaderBlock = motionUploaderSource
   const selectedMotionVideoBlock = motionUploaderSource.slice(motionUploaderSource.indexOf('data-motion-video-selected-card'), motionUploaderSource.indexOf('data-motion-video-empty-requirements'))
   const emptyMotionVideoBlock = motionUploaderSource.slice(motionUploaderSource.indexOf('data-motion-video-empty-requirements'))
+  assert.match(selectedMotionVideoBlock, /className="[^"]*object-contain[^"]*object-center/, 'selected motion reference video should show the full source frame centered without cropping')
+  assert.equal(selectedMotionVideoBlock.includes('object-cover'), false, 'selected motion reference video should not crop portrait or square reference videos')
   assert.notEqual(motionUploaderBlock.indexOf('data-motion-video-heading'), -1, 'motion reference component should keep its title above the upload box')
   assert.ok(
     motionUploaderBlock.indexOf('data-motion-video-heading') < motionUploaderBlock.indexOf('data-motion-video-large-dropzone'),
