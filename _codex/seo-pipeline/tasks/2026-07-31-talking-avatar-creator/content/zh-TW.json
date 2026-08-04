@@ -221,7 +221,7 @@
       "href": "/ai-video-generator",
       "media": {
         "type": "video",
-        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4",
+        "src": "https://assets.toolaze.com/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4",
         "alt": "AI 影片生成器示範影片"
       }
     },
@@ -232,7 +232,7 @@
       "href": "/image-to-video-generator",
       "media": {
         "type": "video",
-        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4",
+        "src": "https://assets.toolaze.com/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4",
         "alt": "圖像轉影片生成器示範影片"
       }
     },
@@ -243,7 +243,7 @@
       "href": "/ai-image-generator",
       "media": {
         "type": "image",
-        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/gpt-image-2.jpg",
+        "src": "https://assets.toolaze.com/home-model-cards/gpt-image-2.jpg",
         "alt": "AI 圖像生成器示範圖片"
       }
     }
@@ -252,8 +252,8 @@
   "faqDescription": "快速了解人像、語音音訊、唇形同步、輸出品質與安全使用。",
   "moreTools": "更多說話頭像工具",
   "heroDemoVideo": {
-    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/talking-avatar-creator/demo.mp4",
-    "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/talking-avatar-creator/demo-poster.webp",
+    "src": "https://assets.toolaze.com/landing-pages/talking-avatar-creator/demo.mp4",
+    "poster": "https://assets.toolaze.com/landing-pages/talking-avatar-creator/demo-poster.webp",
     "ariaLabel": "展示短篇 AI 說話頭像、唇形同步與主持人式臉部動作的示範影片",
     "duration": "PT14.48S",
     "uploadDate": "2026-07-31T07:08:59.000Z",

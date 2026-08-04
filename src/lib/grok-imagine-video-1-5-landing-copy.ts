@@ -175,7 +175,7 @@ const englishCopy: GrokImagineVideo15LandingCopy = {
     description:
       "Animate a starting image with controlled camera movement, more believable motion and physics, and synchronized sound. Use Grok Imagine Video 1.5 on Toolaze to create 1-15 second clips at 480p or 720p for product visuals, social content, and cinematic scene tests.",
     demoVideo: {
-      src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/7b12e05c8c564a18b1ce7b02887051ac.png',
+      src: 'https://assets.toolaze.com/uploads/7b12e05c8c564a18b1ce7b02887051ac.png',
       label: 'Grok Imagine Video 1.5 16:9 product motion demo',
     },
   },
@@ -204,7 +204,7 @@ const englishCopy: GrokImagineVideo15LandingCopy = {
         slot: 'feature-image-to-video',
         title: 'Source-Image Fidelity',
         label: 'Reference image animation workflow',
-        imageSrc: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/c98962e0262d4ed08a5f5d144afc9a5e.webp',
+        imageSrc: 'https://assets.toolaze.com/uploads/c98962e0262d4ed08a5f5d144afc9a5e.webp',
         imageAlt: 'A studio product scene with controlled motion cues generated from one reference image',
         paragraphs: [
           'Start with a clean product shot, character frame, room concept, poster, or campaign visual. Grok uses that image as the opening frame and carries its composition, lighting, color, and subject detail into the generated motion.',
@@ -215,7 +215,7 @@ const englishCopy: GrokImagineVideo15LandingCopy = {
         slot: 'feature-text-to-video',
         title: 'Motion and Physics',
         label: 'Prompt-only scene generation workflow',
-        imageSrc: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/95dce42675f34bdb90aa722004904758.webp',
+        imageSrc: 'https://assets.toolaze.com/uploads/95dce42675f34bdb90aa722004904758.webp',
         imageAlt: 'A cinematic electric sports car scene created as a prompt-only video concept',
         paragraphs: [
           'Video 1.5 improves how movement holds together across a short clip, including weight, momentum, environmental motion, and camera-driven perspective changes.',
@@ -226,7 +226,7 @@ const englishCopy: GrokImagineVideo15LandingCopy = {
         slot: 'feature-spec-controls',
         title: '1-15 Second Clips With Practical Output Settings',
         label: 'Duration, resolution, and aspect ratio controls',
-        imageSrc: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/30bbc85166e24e05b7cf83b4bfa4a246.webp',
+        imageSrc: 'https://assets.toolaze.com/uploads/30bbc85166e24e05b7cf83b4bfa4a246.webp',
         imageAlt: 'One action scene composed across widescreen, vertical, and square video formats',
         paragraphs: [
           'Grok Imagine Video 1.5 on Toolaze defaults to 3-second clips and lets you choose 1-15 seconds, with 480p and 720p output options. Keep early prompts short enough to fit the selected duration clearly.',
@@ -237,7 +237,7 @@ const englishCopy: GrokImagineVideo15LandingCopy = {
         slot: 'feature-preview-download',
         title: 'Native Audio and Speech',
         label: 'Synchronized audio generation',
-        imageSrc: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/72429cd40f56456c8ff18e7620b124a3.webp',
+        imageSrc: 'https://assets.toolaze.com/uploads/72429cd40f56456c8ff18e7620b124a3.webp',
         imageAlt: 'A creator reviewing synchronized video and audio results at a professional workstation',
         paragraphs: [
           'Grok Imagine Video 1.5 can generate sound effects, ambience, music, and speech in the same pass as the video, helping audio events land closer to the visible action.',
@@ -254,56 +254,56 @@ const englishCopy: GrokImagineVideo15LandingCopy = {
         slot: 'gallery-product-motion',
         title: 'Product Motion Reveal',
         text: 'Animate a still product image with a slow push-in, polished lighting, realistic reflections, and a short commercial-style camera move.',
-        imageSrc: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/f56d19a415b5472c8c02303e45d432d1.webp',
+        imageSrc: 'https://assets.toolaze.com/uploads/f56d19a415b5472c8c02303e45d432d1.webp',
         imageAlt: 'A cinematic luxury watch product reveal with polished reflections and dramatic motion lighting',
       },
       {
         slot: 'gallery-social-clip',
         title: 'Social Clip Concept',
         text: 'Create a vertical or square video idea for short-form channels using clear action, readable mood, and simple scene direction.',
-        imageSrc: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/c6b6b43ba3f14a37964bfe0092da6b2b.webp',
+        imageSrc: 'https://assets.toolaze.com/uploads/c6b6b43ba3f14a37964bfe0092da6b2b.webp',
         imageAlt: 'A dynamic skateboarder framed as a colorful short-form social video concept',
       },
       {
         slot: 'gallery-storyboard-beat',
         title: 'Storyboard Beat',
         text: 'Turn a written scene into a quick moving shot that helps evaluate pacing, camera angle, and visual tone.',
-        imageSrc: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/787cf8661b984d04a895f6683fda9498.webp',
+        imageSrc: 'https://assets.toolaze.com/uploads/787cf8661b984d04a895f6683fda9498.webp',
         imageAlt: 'A cinematic character entering an abandoned train station for a storyboard sequence',
       },
       {
         slot: 'gallery-character-motion',
         title: 'Character Motion Test',
         text: 'Use a reference character image and describe subtle motion, expression, lighting, and background atmosphere.',
-        imageSrc: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/a7e3ca80a80b4e58a5f62530836ecfdc.webp',
+        imageSrc: 'https://assets.toolaze.com/uploads/a7e3ca80a80b4e58a5f62530836ecfdc.webp',
         imageAlt: 'A character portrait with wind-swept hair, moving fabric, and atmospheric lighting',
       },
       {
         slot: 'gallery-interior-preview',
         title: 'Interior or Space Preview',
         text: 'Animate an architectural still with a gentle camera drift, daylight changes, and realistic environmental motion.',
-        imageSrc: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/dd4a6bc26ac0400192481c3a7041bbfe.webp',
+        imageSrc: 'https://assets.toolaze.com/uploads/dd4a6bc26ac0400192481c3a7041bbfe.webp',
         imageAlt: 'A modern interior animated by changing daylight, soft curtains, and natural atmosphere',
       },
       {
         slot: 'gallery-ad-variant',
         title: 'Ad Creative Variant',
         text: 'Generate quick visual options for campaign testing before spending time on editing, sound design, and finishing.',
-        imageSrc: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/62dd9661051944d794af65f837047f4c.webp',
+        imageSrc: 'https://assets.toolaze.com/uploads/62dd9661051944d794af65f837047f4c.webp',
         imageAlt: 'An energetic unbranded beverage advertising concept with splash and studio lighting',
       },
       {
         slot: 'gallery-cinematic-shot',
         title: 'Cinematic Establishing Shot',
         text: 'Describe a location, weather, movement, and camera direction to test the mood of a trailer or film sequence.',
-        imageSrc: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/7f3bfa0f0eeb43019b63c26dd5624e6f.webp',
+        imageSrc: 'https://assets.toolaze.com/uploads/7f3bfa0f0eeb43019b63c26dd5624e6f.webp',
         imageAlt: 'A storm-lit coastal valley captured as a cinematic establishing shot',
       },
       {
         slot: 'gallery-moodboard-motion',
         title: 'Moodboard to Motion',
         text: 'Use a still image as a style anchor, then explore how the visual language feels once it moves.',
-        imageSrc: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/5bae33bae2204740bfdcee8ea4dbb7c9.webp',
+        imageSrc: 'https://assets.toolaze.com/uploads/5bae33bae2204740bfdcee8ea4dbb7c9.webp',
         imageAlt: 'An editorial fashion scene with flowing fabric and a distinctive blue-violet visual language',
       },
     ],
@@ -373,7 +373,7 @@ const englishCopy: GrokImagineVideo15LandingCopy = {
         title: 'Product Reveal Prompt',
         prompt:
           'Animate the uploaded product image into a 5-second premium product reveal. Slow push-in camera, subtle rotation, glossy reflections, clean studio lighting, realistic shadow movement, no extra text, commercial style.',
-        videoSrc: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/8de0b3095d15419a8a71f762d6235166.png',
+        videoSrc: 'https://assets.toolaze.com/uploads/8de0b3095d15419a8a71f762d6235166.png',
         videoLabel: '16:9 product reveal prompt example video',
       },
       {
@@ -382,7 +382,7 @@ const englishCopy: GrokImagineVideo15LandingCopy = {
         title: 'Short-Form Social Prompt',
         prompt:
           'Create a 16:9 short-form video of a futuristic city street at night. A courier walks through neon rain, camera follows from behind, reflections on pavement, cinematic lighting, smooth motion, atmospheric but clear.',
-        videoSrc: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/96060cfc87204bdba24d208dbc9e1f15.png',
+        videoSrc: 'https://assets.toolaze.com/uploads/96060cfc87204bdba24d208dbc9e1f15.png',
         videoLabel: '16:9 neon city social prompt example video',
       },
       {
@@ -391,7 +391,7 @@ const englishCopy: GrokImagineVideo15LandingCopy = {
         title: 'Interior Camera Move Prompt',
         prompt:
           'Use the uploaded room image as the reference. Preserve the layout and furniture. Add a gentle left-to-right camera drift, soft daylight through the window, moving curtain fabric, warm interior mood, realistic motion.',
-        videoSrc: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/dbed78470f784d01a3cb413be3614ccf.png',
+        videoSrc: 'https://assets.toolaze.com/uploads/dbed78470f784d01a3cb413be3614ccf.png',
         videoLabel: '16:9 interior camera move prompt example video',
       },
       {
@@ -400,7 +400,7 @@ const englishCopy: GrokImagineVideo15LandingCopy = {
         title: 'Character Motion Prompt',
         prompt:
           'Animate the reference character with subtle breathing, blinking, wind in hair, and a small camera push-in. Keep identity, outfit, color palette, and background style consistent. Cinematic portrait lighting.',
-        videoSrc: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d0d55df5eef346809067197fddb1b251.png',
+        videoSrc: 'https://assets.toolaze.com/uploads/d0d55df5eef346809067197fddb1b251.png',
         videoLabel: '16:9 character motion prompt example video',
       },
       {
@@ -409,7 +409,7 @@ const englishCopy: GrokImagineVideo15LandingCopy = {
         title: 'Food Commercial Prompt',
         prompt:
           'A close-up food commercial shot of a dessert plate on a marble table. Steam, syrup movement, shallow depth of field, slow macro camera glide, elegant restaurant lighting, appetizing and realistic.',
-        videoSrc: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/536bedba1104401ab11ff573fcce3587.png',
+        videoSrc: 'https://assets.toolaze.com/uploads/536bedba1104401ab11ff573fcce3587.png',
         videoLabel: '16:9 food commercial prompt example video',
       },
       {
@@ -418,7 +418,7 @@ const englishCopy: GrokImagineVideo15LandingCopy = {
         title: 'Storyboard Shot Prompt',
         prompt:
           'Create an establishing shot for a science-fiction short film. A small research vehicle crosses a frozen plain under green aurora, wide-angle camera, slow forward motion, wind-blown snow, quiet cinematic tension.',
-        videoSrc: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/56bb211041b34c5f8f27d3c0208322e7.png',
+        videoSrc: 'https://assets.toolaze.com/uploads/56bb211041b34c5f8f27d3c0208322e7.png',
         videoLabel: '16:9 storyboard prompt example video',
       },
     ],

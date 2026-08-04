@@ -221,7 +221,7 @@
       "href": "/ai-video-generator",
       "media": {
         "type": "video",
-        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4",
+        "src": "https://assets.toolaze.com/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4",
         "alt": "AI 동영상 생성기 데모 동영상"
       }
     },
@@ -232,7 +232,7 @@
       "href": "/image-to-video-generator",
       "media": {
         "type": "video",
-        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4",
+        "src": "https://assets.toolaze.com/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4",
         "alt": "이미지-동영상 생성기 데모 동영상"
       }
     },
@@ -243,7 +243,7 @@
       "href": "/ai-image-generator",
       "media": {
         "type": "image",
-        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/gpt-image-2.jpg",
+        "src": "https://assets.toolaze.com/home-model-cards/gpt-image-2.jpg",
         "alt": "AI 이미지 생성기 데모 이미지"
       }
     }
@@ -252,8 +252,8 @@
   "faqDescription": "인물 사진, 음성 오디오, 립싱크, 출력 품질, 안전한 사용에 대한 짧은 답변입니다.",
   "moreTools": "말하는 아바타 관련 도구",
   "heroDemoVideo": {
-    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/talking-avatar-creator/demo.mp4",
-    "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/talking-avatar-creator/demo-poster.webp",
+    "src": "https://assets.toolaze.com/landing-pages/talking-avatar-creator/demo.mp4",
+    "poster": "https://assets.toolaze.com/landing-pages/talking-avatar-creator/demo-poster.webp",
     "ariaLabel": "립싱크와 발표자 스타일 얼굴 움직임을 보여주는 짧은 AI 말하는 아바타 데모 영상",
     "duration": "PT14.48S",
     "uploadDate": "2026-07-31T07:08:59.000Z",

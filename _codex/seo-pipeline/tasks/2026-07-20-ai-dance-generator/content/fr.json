@@ -19,7 +19,7 @@
     },
     "sampleImages": [
       {
-        "url": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/ai-dance-demo.mp4",
+        "url": "https://assets.toolaze.com/model-assets/ai-dance-generator/ai-dance-demo.mp4",
         "title": "Démo de vidéo de danse IA",
         "width": 16,
         "height": 9,
@@ -28,7 +28,7 @@
     ],
     "defaultVideoDurationSeconds": 5,
     "defaultImageUrls": [
-      "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/ai-dance-demo-source.png"
+      "https://assets.toolaze.com/model-assets/ai-dance-generator/ai-dance-demo-source.png"
     ]
   },
   "metadata": {
@@ -73,35 +73,35 @@
         "prompt": "Fais faire à la personne dans l’image une danse hip-hop simple.",
         "note": "Utile pour les promos de cours, clips musicaux et concepts de performance urbaine.",
         "color": "linear-gradient(135deg, #111827, #6366f1)",
-        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/prompt-hip-hop-stage.mp4"
+        "video": "https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-hip-hop-stage.mp4"
       },
       {
         "title": "Mouvement gracieux",
         "prompt": "Fais danser la personne dans l’image avec grâce.",
         "note": "À utiliser quand la vidéo doit montrer élégance, équilibre et lignes corporelles claires.",
         "color": "linear-gradient(135deg, #f5d0fe, #7c3aed)",
-        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/prompt-ballet-motion.mp4"
+        "video": "https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-ballet-motion.mp4"
       },
       {
         "title": "Performance K-Pop",
         "prompt": "Fais faire à la personne dans l’image une danse K-Pop.",
         "note": "Idéal pour montages de fans énergiques, covers et clips de campagnes sociales.",
         "color": "linear-gradient(135deg, #f9a8d4, #2563eb)",
-        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/prompt-k-pop-performance.mp4"
+        "video": "https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-k-pop-performance.mp4"
       },
       {
         "title": "Danse vive",
         "prompt": "Fais danser la personne dans l’image avec énergie.",
         "note": "Utile pour salsa, bachata, danse de salon et concepts de scène.",
         "color": "linear-gradient(135deg, #fecaca, #dc2626)",
-        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/prompt-latin-dance.mp4"
+        "video": "https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-latin-dance.mp4"
       },
       {
         "title": "Danse de rue",
         "prompt": "Fais danser la personne dans l’image dans une rue de ville.",
         "note": "Utile pour crews de danse, événements locaux et clips créateur décontractés.",
         "color": "linear-gradient(135deg, #bfdbfe, #0f766e)",
-        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/prompt-street-dance.mp4"
+        "video": "https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-street-dance.mp4"
       }
     ]
   },

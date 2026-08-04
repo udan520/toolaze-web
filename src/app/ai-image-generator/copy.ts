@@ -2,7 +2,7 @@ export const AI_IMAGE_GENERATOR_LOCALES = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt'
 
 export type AiImageGeneratorLocale = (typeof AI_IMAGE_GENERATOR_LOCALES)[number]
 
-const AI_IMAGE_GENERATOR_ASSET_BASE_URL = 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/ai-image-generator'
+const AI_IMAGE_GENERATOR_ASSET_BASE_URL = 'https://assets.toolaze.com/ai-image-generator'
 
 const aiImageAsset = (fileName: string) => `${AI_IMAGE_GENERATOR_ASSET_BASE_URL}/${fileName}`
 
@@ -184,25 +184,25 @@ const en: AiImageGeneratorPageCopy = {
   },
   samples: [
     {
-      url: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/gpt-image-2.jpg',
+      url: 'https://assets.toolaze.com/home-model-cards/gpt-image-2.jpg',
       title: 'Commercial poster sample',
       width: 800,
       height: 600,
     },
     {
-      url: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/wan-2-7-image/gallery-event-poster.webp',
+      url: 'https://assets.toolaze.com/model-assets/wan-2-7-image/gallery-event-poster.webp',
       title: 'Event poster sample',
       width: 960,
       height: 720,
     },
     {
-      url: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/seedream-4-5/gallery-ecommerce-product.webp',
+      url: 'https://assets.toolaze.com/model-assets/seedream-4-5/gallery-ecommerce-product.webp',
       title: 'Product image sample',
       width: 1280,
       height: 960,
     },
     {
-      url: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/nano-banana-pro.jpg',
+      url: 'https://assets.toolaze.com/home-model-cards/nano-banana-pro.jpg',
       title: 'Creative concept sample',
       width: 800,
       height: 597,

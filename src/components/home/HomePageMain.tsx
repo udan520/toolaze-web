@@ -100,9 +100,9 @@ const HOME_DASHBOARD_MODEL_LOGOS: Record<string, HomeDashboardModelLogo> = {
 
 const HOME_VIDEO_MODEL_DEMO_FALLBACKS: Record<string, HomeVideoDemoMedia> = {
   'seedance-2-5': {
-    src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/prompt-templates/storyboard-scene.mp4',
+    src: 'https://assets.toolaze.com/uploads/ai-video-generator/prompt-templates/storyboard-scene.mp4',
     poster:
-      'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/prompt-templates/storyboard-scene.webp',
+      'https://assets.toolaze.com/uploads/ai-video-generator/prompt-templates/storyboard-scene.webp',
     ariaLabel: 'Seedance 2.5 demo video preview',
   },
   'seedance-2': {
@@ -111,14 +111,14 @@ const HOME_VIDEO_MODEL_DEMO_FALLBACKS: Record<string, HomeVideoDemoMedia> = {
     ariaLabel: 'Seedance 2.0 demo video preview',
   },
   'kling-3': {
-    src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/prompt-templates/image-guided-motion.mp4',
+    src: 'https://assets.toolaze.com/uploads/ai-video-generator/prompt-templates/image-guided-motion.mp4',
     poster:
-      'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/prompt-templates/image-guided-motion.webp',
+      'https://assets.toolaze.com/uploads/ai-video-generator/prompt-templates/image-guided-motion.webp',
     ariaLabel: 'Kling 3.0 demo video preview',
   },
   'kling-2-6-pro-motion-control': {
-    src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/prompt-templates/image-guided-motion.mp4',
-    poster: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/prompt-templates/image-guided-motion.webp',
+    src: 'https://assets.toolaze.com/uploads/ai-video-generator/prompt-templates/image-guided-motion.mp4',
+    poster: 'https://assets.toolaze.com/uploads/ai-video-generator/prompt-templates/image-guided-motion.webp',
     ariaLabel: 'Kling 2.6 motion control demo video preview',
   },
 }
@@ -394,9 +394,9 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
       href: localizeHomeHref('/model/kling-2-6-pro-motion-control'),
       media: {
         type: 'video',
-        src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/kling-2-6-pro-motion-control/motion-control-demo.mp4',
+        src: 'https://assets.toolaze.com/model-assets/kling-2-6-pro-motion-control/motion-control-demo.mp4',
         poster:
-          'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/kling-2-6-pro-motion-control/motion-control-demo-poster.webp',
+          'https://assets.toolaze.com/model-assets/kling-2-6-pro-motion-control/motion-control-demo-poster.webp',
         alt: navCopy.aiMotionControlGenerator || 'AI Motion Control Generator',
       },
     },
@@ -405,9 +405,9 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
       href: localizeHomeHref('/ai-dance-generator'),
       media: {
         type: 'video',
-        src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/ai-dance-demo.mp4',
+        src: 'https://assets.toolaze.com/model-assets/ai-dance-generator/ai-dance-demo.mp4',
         poster:
-          'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/ai-dance-demo-source.png',
+          'https://assets.toolaze.com/model-assets/ai-dance-generator/ai-dance-demo-source.png',
         alt: 'AI Dance Generator demo video',
       },
     },
@@ -416,7 +416,7 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
       href: localizeHomeHref('/ai-asmr-video-generator'),
       media: {
         type: 'video',
-        src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/ai-asmr-video-generator/demo.mp4',
+        src: 'https://assets.toolaze.com/landing-pages/ai-asmr-video-generator/demo.mp4',
         poster: getHomeModelCardImage('ai-asmr-video-generator')?.src,
         alt: 'AI ASMR Video Generator demo video',
       },
@@ -426,9 +426,9 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
       href: localizeHomeHref('/talking-avatar-creator'),
       media: {
         type: 'video',
-        src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/talking-avatar-creator/demo.mp4',
+        src: 'https://assets.toolaze.com/landing-pages/talking-avatar-creator/demo.mp4',
         poster:
-          'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/talking-avatar-creator/demo-poster.webp',
+          'https://assets.toolaze.com/landing-pages/talking-avatar-creator/demo-poster.webp',
         alt: 'AI Talking Avatar demo video',
       },
     },
@@ -437,8 +437,8 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
       href: localizeHomeHref('/ai-kissing-video-generator'),
       media: {
         type: 'video',
-        src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/83a8c5b91a4945beb66275c38a731dbf.png',
-        poster: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/15ccbe71d8eb4921930b8b7638bcebab.webp',
+        src: 'https://assets.toolaze.com/uploads/83a8c5b91a4945beb66275c38a731dbf.png',
+        poster: 'https://assets.toolaze.com/uploads/15ccbe71d8eb4921930b8b7638bcebab.webp',
         alt: 'AI Kissing Video Generator demo video',
       },
     },
@@ -485,7 +485,7 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
       href: localizeHomeHref('/world-cup-ai-image-generator'),
       media: {
         type: 'image',
-        src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d67aebd7cde5431abd3a7bb74a89bac1.webp',
+        src: 'https://assets.toolaze.com/uploads/d67aebd7cde5431abd3a7bb74a89bac1.webp',
         alt: 'World Cup AI Image Generator demo image',
       },
     },
@@ -494,7 +494,7 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
       href: localizeHomeHref('/watermark-remover'),
       media: {
         type: 'image',
-        src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-advanced-ai/watermark-remover-demo-before-after.webp',
+        src: 'https://assets.toolaze.com/home-advanced-ai/watermark-remover-demo-before-after.webp',
         alt: 'Watermark Remover demo image',
       },
     },
@@ -503,7 +503,7 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
       href: localizeHomeHref('/photo-restoration'),
       media: {
         type: 'image',
-        src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-advanced-ai/photo-restoration-demo-before-after.webp',
+        src: 'https://assets.toolaze.com/home-advanced-ai/photo-restoration-demo-before-after.webp',
         alt: 'Photo Restoration demo image',
       },
     },

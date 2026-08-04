@@ -39,7 +39,7 @@ Generation failed: Image-to-image requires uploading the image to R2 first to ge
    - Variable name: `MY_BUCKET`
    - R2 bucket: 选择你的 R2 桶（如 `toolaze`）
 4. 确认 **Environment variables** 中设置了：
-   - `R2_PUBLIC_BASE_URL` = `https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev`（替换为你的 R2 公网域名）
+   - `R2_PUBLIC_BASE_URL` = `https://assets.toolaze.com`（替换为你的 R2 公网域名）
 
 ### 方法 3：使用单独的 Cloudflare Worker（备选）
 

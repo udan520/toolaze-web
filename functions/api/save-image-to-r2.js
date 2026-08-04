@@ -4,12 +4,13 @@
  * 部署后地址：https://toolaze-web.pages.dev/api/save-image-to-r2
  * 需绑定 R2（MY_BUCKET）并设置 R2_PUBLIC_BASE_URL。
  */
+import { getCanonicalR2PublicBaseUrl } from '../_shared/r2-public-url.mjs';
+
 const CORS = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Methods': 'POST, OPTIONS',
   'Access-Control-Allow-Headers': 'Content-Type',
 };
-const DEFAULT_R2_PUBLIC_BASE_URL = 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev';
 
 export async function onRequest(context) {
   const { request, env } = context;
@@ -55,7 +56,7 @@ export async function onRequest(context) {
       httpMetadata: { contentType },
     });
 
-    const base = (env.R2_PUBLIC_BASE_URL || DEFAULT_R2_PUBLIC_BASE_URL).replace(/\/$/, '');
+    const base = getCanonicalR2PublicBaseUrl(env);
     const publicUrl = `${base}/${key}`;
     return new Response(JSON.stringify({ url: publicUrl, key }), {
       headers: { 'Content-Type': 'application/json', ...CORS },

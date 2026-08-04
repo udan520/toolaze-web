@@ -96,8 +96,8 @@ test('text-to-video generator English copy covers competitor-backed decision poi
   assert.deepEqual(reusedPromptVideos, [])
 
   for (const item of page.promptExamples.items) {
-    assert.match(item.video, /^https:\/\/pub-efeb0c7b9b53478d960218de80c52e3d\.r2\.dev\/uploads\//)
-    assert.match(item.poster, /^https:\/\/pub-efeb0c7b9b53478d960218de80c52e3d\.r2\.dev\/uploads\/.*\.webp$/)
+    assert.match(item.video, /^https:\/\/assets\.toolaze\.com\/uploads\//)
+    assert.match(item.poster, /^https:\/\/assets\.toolaze\.com\/uploads\/.*\.webp$/)
     assert.equal(item.aspectRatio, '16:9')
     assert.equal(item.duration, 'PT5S')
     assert.match(item.uploadDate, /^2026-07-22T/)

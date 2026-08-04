@@ -33,80 +33,80 @@
           "label": "經典黑色比基尼",
           "group": "bikini-reference",
           "prompt": "圖片 1 是原始人物照片。圖片 2 是比基尼或泳裝參考圖。只將圖片 1 中每個清楚可見人物身上的可見服裝替換為圖片 2 的經典黑色三角比基尼。如果圖片 1 中有多人，請將同一泳裝風格套用到每個清楚可見的人物。每個人物與場景的其他所有內容都要完全保持不變：臉、身分、年齡、膚色、頭髮、身形、身體比例、姿勢、手、表情、相對位置、背景、光線、鏡頭角度、構圖與畫質。不要瘦身、不要放大、不要修飾、不要重塑、不要改變姿勢、不要改變臉、不要改變身體，不要改變相對位置，也不要修改場景。盡可能貼近圖片 2 的黑色布料、細肩帶、覆蓋度、上身形狀、下身形狀與輪廓。結果需真實、得體、非露骨，適合泳裝預覽。",
-          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3d80ed2905334169b0a2d06d1f86c01d.webp",
-          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3d80ed2905334169b0a2d06d1f86c01d.webp",
+          "image": "https://assets.toolaze.com/uploads/3d80ed2905334169b0a2d06d1f86c01d.webp",
+          "referenceImage": "https://assets.toolaze.com/uploads/3d80ed2905334169b0a2d06d1f86c01d.webp",
           "swatch": "linear-gradient(135deg, #111827, #020617)"
         },
         {
           "label": "經典白色比基尼",
           "group": "bikini-reference",
           "prompt": "圖片 1 是原始人物照片。圖片 2 是比基尼或泳裝參考圖。只將圖片 1 中每個清楚可見人物身上的可見服裝替換為圖片 2 的經典白色三角比基尼。如果圖片 1 中有多人，請將同一泳裝風格套用到每個清楚可見的人物。每個人物與場景的其他所有內容都要完全保持不變：臉、身分、年齡、膚色、頭髮、身形、身體比例、姿勢、手、表情、相對位置、背景、光線、鏡頭角度、構圖與畫質。不要瘦身、不要放大、不要修飾、不要重塑、不要改變姿勢、不要改變臉、不要改變身體，不要改變相對位置，也不要修改場景。盡可能貼近圖片 2 的覆蓋度、細肩帶、乾淨白色布料、上身形狀、下身形狀與輪廓。結果需真實、得體、非露骨，適合泳裝預覽。",
-          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/95db19f5e40a4afa9cc89731f091a5ce.webp",
-          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/95db19f5e40a4afa9cc89731f091a5ce.webp",
+          "image": "https://assets.toolaze.com/uploads/95db19f5e40a4afa9cc89731f091a5ce.webp",
+          "referenceImage": "https://assets.toolaze.com/uploads/95db19f5e40a4afa9cc89731f091a5ce.webp",
           "swatch": "linear-gradient(135deg, #ffffff, #e5e7eb)"
         },
         {
           "label": "紅色高腰比基尼",
           "group": "bikini-reference",
           "prompt": "圖片 1 是原始人物照片。圖片 2 是比基尼或泳裝參考圖。只將圖片 1 中每個清楚可見人物身上的可見服裝替換為圖片 2 的紅色高腰復古比基尼。如果圖片 1 中有多人，請將同一泳裝風格套用到每個清楚可見的人物。每個人物與場景的其他所有內容都要完全保持不變：臉、身分、年齡、膚色、頭髮、身形、身體比例、姿勢、手、表情、相對位置、背景、光線、鏡頭角度、構圖與畫質。不要瘦身、不要放大、不要修飾、不要重塑、不要改變姿勢、不要改變臉、不要改變身體，不要改變相對位置，也不要修改場景。盡可能貼近圖片 2 的高腰線、有支撐感的上身、乾淨車線、紅色布料、覆蓋度與輪廓。結果需真實、得體、非露骨，適合泳裝預覽。",
-          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3028cca8904b49249b517c0ef32386ee.webp",
-          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3028cca8904b49249b517c0ef32386ee.webp",
+          "image": "https://assets.toolaze.com/uploads/3028cca8904b49249b517c0ef32386ee.webp",
+          "referenceImage": "https://assets.toolaze.com/uploads/3028cca8904b49249b517c0ef32386ee.webp",
           "swatch": "linear-gradient(135deg, #ef4444, #991b1b)"
         },
         {
           "label": "海軍藍航海風比基尼",
           "group": "bikini-reference",
           "prompt": "圖片 1 是原始人物照片。圖片 2 是比基尼或泳裝參考圖。只將圖片 1 中每個清楚可見人物身上的可見服裝替換為圖片 2 的海軍藍航海風比基尼。如果圖片 1 中有多人，請將同一泳裝風格套用到每個清楚可見的人物。每個人物與場景的其他所有內容都要完全保持不變：臉、身分、年齡、膚色、頭髮、身形、身體比例、姿勢、手、表情、相對位置、背景、光線、鏡頭角度、構圖與畫質。不要瘦身、不要放大、不要修飾、不要重塑、不要改變姿勢、不要改變臉、不要改變身體，不要改變相對位置，也不要修改場景。盡可能貼近圖片 2 的海軍藍顏色、白色滾邊或條紋細節、肩帶、覆蓋度、布料與輪廓。結果需真實、得體、非露骨，適合泳裝預覽。",
-          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3312de502e7344c493d7aaa3796ef6fc.webp",
-          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3312de502e7344c493d7aaa3796ef6fc.webp",
+          "image": "https://assets.toolaze.com/uploads/3312de502e7344c493d7aaa3796ef6fc.webp",
+          "referenceImage": "https://assets.toolaze.com/uploads/3312de502e7344c493d7aaa3796ef6fc.webp",
           "swatch": "linear-gradient(135deg, #1e3a8a, #f8fafc)"
         },
         {
           "label": "熱帶花卉比基尼",
           "group": "bikini-reference",
           "prompt": "圖片 1 是原始人物照片。圖片 2 是比基尼或泳裝參考圖。只將圖片 1 中每個清楚可見人物身上的可見服裝替換為圖片 2 的熱帶花卉比基尼。如果圖片 1 中有多人，請將同一泳裝風格套用到每個清楚可見的人物。每個人物與場景的其他所有內容都要完全保持不變：臉、身分、年齡、膚色、頭髮、身形、身體比例、姿勢、手、表情、相對位置、背景、光線、鏡頭角度、構圖與畫質。不要瘦身、不要放大、不要修飾、不要重塑、不要改變姿勢、不要改變臉、不要改變身體，不要改變相對位置，也不要修改場景。盡可能貼近圖片 2 的植物印花、配色、肩帶、覆蓋度、布料與輪廓。結果需真實、得體、非露骨，適合泳裝預覽。",
-          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/bad0f5902cb643df87a8fe34210dc99c.webp",
-          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/bad0f5902cb643df87a8fe34210dc99c.webp",
+          "image": "https://assets.toolaze.com/uploads/bad0f5902cb643df87a8fe34210dc99c.webp",
+          "referenceImage": "https://assets.toolaze.com/uploads/bad0f5902cb643df87a8fe34210dc99c.webp",
           "swatch": "linear-gradient(135deg, #22c55e, #f97316, #f43f5e)"
         },
         {
           "label": "運動感青綠比基尼",
           "group": "bikini-reference",
           "prompt": "圖片 1 是原始人物照片。圖片 2 是比基尼或泳裝參考圖。只將圖片 1 中每個清楚可見人物身上的可見服裝替換為圖片 2 的運動感青綠色 racerback 風格比基尼。如果圖片 1 中有多人，請將同一泳裝風格套用到每個清楚可見的人物。每個人物與場景的其他所有內容都要完全保持不變：臉、身分、年齡、膚色、頭髮、身形、身體比例、姿勢、手、表情、相對位置、背景、光線、鏡頭角度、構圖與畫質。不要瘦身、不要放大、不要修飾、不要重塑、不要改變姿勢、不要改變臉、不要改變身體，不要改變相對位置，也不要修改場景。盡可能貼近圖片 2 的運動感上身形狀、青綠色、穩定肩帶、覆蓋度、布料與輪廓。結果需真實、得體、非露骨，適合泳裝預覽。",
-          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/49b1ef80a71344b6990bc71150c35644.webp",
-          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/49b1ef80a71344b6990bc71150c35644.webp",
+          "image": "https://assets.toolaze.com/uploads/49b1ef80a71344b6990bc71150c35644.webp",
+          "referenceImage": "https://assets.toolaze.com/uploads/49b1ef80a71344b6990bc71150c35644.webp",
           "swatch": "linear-gradient(135deg, #0f766e, #22d3ee)"
         },
         {
           "label": "黃色羅紋比基尼",
           "group": "bikini-reference",
           "prompt": "圖片 1 是原始人物照片。圖片 2 是比基尼或泳裝參考圖。只將圖片 1 中每個清楚可見人物身上的可見服裝替換為圖片 2 的黃色羅紋比基尼。如果圖片 1 中有多人，請將同一泳裝風格套用到每個清楚可見的人物。每個人物與場景的其他所有內容都要完全保持不變：臉、身分、年齡、膚色、頭髮、身形、身體比例、姿勢、手、表情、相對位置、背景、光線、鏡頭角度、構圖與畫質。不要瘦身、不要放大、不要修飾、不要重塑、不要改變姿勢、不要改變臉、不要改變身體，不要改變相對位置，也不要修改場景。盡可能貼近圖片 2 的溫暖黃色、羅紋布料質感、肩帶、覆蓋度、布料與輪廓。結果需真實、得體、非露骨，適合泳裝預覽。",
-          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/f2eadccf020a4fe1a733b91335d23ceb.webp",
-          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/f2eadccf020a4fe1a733b91335d23ceb.webp",
+          "image": "https://assets.toolaze.com/uploads/f2eadccf020a4fe1a733b91335d23ceb.webp",
+          "referenceImage": "https://assets.toolaze.com/uploads/f2eadccf020a4fe1a733b91335d23ceb.webp",
           "swatch": "linear-gradient(135deg, #facc15, #f59e0b)"
         },
         {
           "label": "珊瑚色單肩比基尼",
           "group": "bikini-reference",
           "prompt": "圖片 1 是原始人物照片。圖片 2 是比基尼或泳裝參考圖。只將圖片 1 中每個清楚可見人物身上的可見服裝替換為圖片 2 的珊瑚色單肩比基尼。如果圖片 1 中有多人，請將同一泳裝風格套用到每個清楚可見的人物。每個人物與場景的其他所有內容都要完全保持不變：臉、身分、年齡、膚色、頭髮、身形、身體比例、姿勢、手、表情、相對位置、背景、光線、鏡頭角度、構圖與畫質。不要瘦身、不要放大、不要修飾、不要重塑、不要改變姿勢、不要改變臉、不要改變身體，不要改變相對位置，也不要修改場景。盡可能貼近圖片 2 的單肩上身形狀、珊瑚色、不對稱領口、覆蓋度、布料與輪廓。結果需真實、得體、非露骨，適合泳裝預覽。",
-          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/5020adfd323e4cf9a3fd7154e243a1b0.webp",
-          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/5020adfd323e4cf9a3fd7154e243a1b0.webp",
+          "image": "https://assets.toolaze.com/uploads/5020adfd323e4cf9a3fd7154e243a1b0.webp",
+          "referenceImage": "https://assets.toolaze.com/uploads/5020adfd323e4cf9a3fd7154e243a1b0.webp",
           "swatch": "linear-gradient(135deg, #fb7185, #f97316)"
         },
         {
           "label": "祖母綠交叉比基尼",
           "group": "bikini-reference",
           "prompt": "圖片 1 是原始人物照片。圖片 2 是比基尼或泳裝參考圖。只將圖片 1 中每個清楚可見人物身上的可見服裝替換為圖片 2 的祖母綠交疊細節比基尼。如果圖片 1 中有多人，請將同一泳裝風格套用到每個清楚可見的人物。每個人物與場景的其他所有內容都要完全保持不變：臉、身分、年齡、膚色、頭髮、身形、身體比例、姿勢、手、表情、相對位置、背景、光線、鏡頭角度、構圖與畫質。不要瘦身、不要放大、不要修飾、不要重塑、不要改變姿勢、不要改變臉、不要改變身體，不要改變相對位置，也不要修改場景。盡可能貼近圖片 2 的交疊感上身細節、祖母綠色、肩帶、覆蓋度、布料與輪廓。結果需真實、得體、非露骨，適合泳裝預覽。",
-          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/cb70d59d82a6425a9e02350f87f3acec.webp",
-          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/cb70d59d82a6425a9e02350f87f3acec.webp",
+          "image": "https://assets.toolaze.com/uploads/cb70d59d82a6425a9e02350f87f3acec.webp",
+          "referenceImage": "https://assets.toolaze.com/uploads/cb70d59d82a6425a9e02350f87f3acec.webp",
           "swatch": "linear-gradient(135deg, #047857, #10b981)"
         },
         {
           "label": "薰衣草波浪邊比基尼",
           "group": "bikini-reference",
           "prompt": "圖片 1 是原始人物照片。圖片 2 是比基尼或泳裝參考圖。只將圖片 1 中每個清楚可見人物身上的可見服裝替換為圖片 2 的薰衣草色波浪邊比基尼。如果圖片 1 中有多人，請將同一泳裝風格套用到每個清楚可見的人物。每個人物與場景的其他所有內容都要完全保持不變：臉、身分、年齡、膚色、頭髮、身形、身體比例、姿勢、手、表情、相對位置、背景、光線、鏡頭角度、構圖與畫質。不要瘦身、不要放大、不要修飾、不要重塑、不要改變姿勢、不要改變臉、不要改變身體，不要改變相對位置，也不要修改場景。盡可能貼近圖片 2 的薰衣草色、波浪邊飾、肩帶、覆蓋度、布料與輪廓。結果需真實、得體、非露骨，適合泳裝預覽。",
-          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/30aae7250fd54652a4da62137d3d398c.webp",
-          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/30aae7250fd54652a4da62137d3d398c.webp",
+          "image": "https://assets.toolaze.com/uploads/30aae7250fd54652a4da62137d3d398c.webp",
+          "referenceImage": "https://assets.toolaze.com/uploads/30aae7250fd54652a4da62137d3d398c.webp",
           "swatch": "linear-gradient(135deg, #c4b5fd, #8b5cf6)"
         },
         {
@@ -117,7 +117,7 @@
     },
     "sampleImages": [
       {
-        "url": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/6bcf91ffd06e45a8bcda2ea867015141.webp",
+        "url": "https://assets.toolaze.com/uploads/6bcf91ffd06e45a8bcda2ea867015141.webp",
         "title": "AI 比基尼生成器",
         "width": 1600,
         "height": 900
@@ -210,8 +210,8 @@
     "items": [
       {
         "title": "經典黑色比基尼",
-        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3d80ed2905334169b0a2d06d1f86c01d.webp",
-        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3d80ed2905334169b0a2d06d1f86c01d.webp",
+        "image": "https://assets.toolaze.com/uploads/3d80ed2905334169b0a2d06d1f86c01d.webp",
+        "referenceImage": "https://assets.toolaze.com/uploads/3d80ed2905334169b0a2d06d1f86c01d.webp",
         "prompt": "圖片 1 是原始人物照片。圖片 2 是比基尼或泳裝參考圖。只將圖片 1 中每個清楚可見人物身上的可見服裝替換為圖片 2 的經典黑色三角比基尼。如果圖片 1 中有多人，請將同一泳裝風格套用到每個清楚可見的人物。每個人物與場景的其他所有內容都要完全保持不變：臉、身分、年齡、膚色、頭髮、身形、身體比例、姿勢、手、表情、相對位置、背景、光線、鏡頭角度、構圖與畫質。不要瘦身、不要放大、不要修飾、不要重塑、不要改變姿勢、不要改變臉、不要改變身體，不要改變相對位置，也不要修改場景。盡可能貼近圖片 2 的黑色布料、細肩帶、覆蓋度、上身形狀、下身形狀與輪廓。結果需真實、得體、非露骨，適合泳裝預覽。",
         "note": "使用此樣式對應的比基尼參考圖。",
         "color": "linear-gradient(135deg, #111827, #020617)",
@@ -219,8 +219,8 @@
       },
       {
         "title": "經典白色比基尼",
-        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/95db19f5e40a4afa9cc89731f091a5ce.webp",
-        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/95db19f5e40a4afa9cc89731f091a5ce.webp",
+        "image": "https://assets.toolaze.com/uploads/95db19f5e40a4afa9cc89731f091a5ce.webp",
+        "referenceImage": "https://assets.toolaze.com/uploads/95db19f5e40a4afa9cc89731f091a5ce.webp",
         "prompt": "圖片 1 是原始人物照片。圖片 2 是比基尼或泳裝參考圖。只將圖片 1 中每個清楚可見人物身上的可見服裝替換為圖片 2 的經典白色三角比基尼。如果圖片 1 中有多人，請將同一泳裝風格套用到每個清楚可見的人物。每個人物與場景的其他所有內容都要完全保持不變：臉、身分、年齡、膚色、頭髮、身形、身體比例、姿勢、手、表情、相對位置、背景、光線、鏡頭角度、構圖與畫質。不要瘦身、不要放大、不要修飾、不要重塑、不要改變姿勢、不要改變臉、不要改變身體，不要改變相對位置，也不要修改場景。盡可能貼近圖片 2 的覆蓋度、細肩帶、乾淨白色布料、上身形狀、下身形狀與輪廓。結果需真實、得體、非露骨，適合泳裝預覽。",
         "note": "使用此樣式對應的比基尼參考圖。",
         "color": "linear-gradient(135deg, #ffffff, #e5e7eb)",
@@ -228,8 +228,8 @@
       },
       {
         "title": "紅色高腰比基尼",
-        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3028cca8904b49249b517c0ef32386ee.webp",
-        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3028cca8904b49249b517c0ef32386ee.webp",
+        "image": "https://assets.toolaze.com/uploads/3028cca8904b49249b517c0ef32386ee.webp",
+        "referenceImage": "https://assets.toolaze.com/uploads/3028cca8904b49249b517c0ef32386ee.webp",
         "prompt": "圖片 1 是原始人物照片。圖片 2 是比基尼或泳裝參考圖。只將圖片 1 中每個清楚可見人物身上的可見服裝替換為圖片 2 的紅色高腰復古比基尼。如果圖片 1 中有多人，請將同一泳裝風格套用到每個清楚可見的人物。每個人物與場景的其他所有內容都要完全保持不變：臉、身分、年齡、膚色、頭髮、身形、身體比例、姿勢、手、表情、相對位置、背景、光線、鏡頭角度、構圖與畫質。不要瘦身、不要放大、不要修飾、不要重塑、不要改變姿勢、不要改變臉、不要改變身體，不要改變相對位置，也不要修改場景。盡可能貼近圖片 2 的高腰線、有支撐感的上身、乾淨車線、紅色布料、覆蓋度與輪廓。結果需真實、得體、非露骨，適合泳裝預覽。",
         "note": "使用此樣式對應的比基尼參考圖。",
         "color": "linear-gradient(135deg, #ef4444, #991b1b)",
@@ -237,8 +237,8 @@
       },
       {
         "title": "海軍藍航海風比基尼",
-        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3312de502e7344c493d7aaa3796ef6fc.webp",
-        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3312de502e7344c493d7aaa3796ef6fc.webp",
+        "image": "https://assets.toolaze.com/uploads/3312de502e7344c493d7aaa3796ef6fc.webp",
+        "referenceImage": "https://assets.toolaze.com/uploads/3312de502e7344c493d7aaa3796ef6fc.webp",
         "prompt": "圖片 1 是原始人物照片。圖片 2 是比基尼或泳裝參考圖。只將圖片 1 中每個清楚可見人物身上的可見服裝替換為圖片 2 的海軍藍航海風比基尼。如果圖片 1 中有多人，請將同一泳裝風格套用到每個清楚可見的人物。每個人物與場景的其他所有內容都要完全保持不變：臉、身分、年齡、膚色、頭髮、身形、身體比例、姿勢、手、表情、相對位置、背景、光線、鏡頭角度、構圖與畫質。不要瘦身、不要放大、不要修飾、不要重塑、不要改變姿勢、不要改變臉、不要改變身體，不要改變相對位置，也不要修改場景。盡可能貼近圖片 2 的海軍藍顏色、白色滾邊或條紋細節、肩帶、覆蓋度、布料與輪廓。結果需真實、得體、非露骨，適合泳裝預覽。",
         "note": "使用此樣式對應的比基尼參考圖。",
         "color": "linear-gradient(135deg, #1e3a8a, #f8fafc)",
@@ -246,8 +246,8 @@
       },
       {
         "title": "熱帶花卉比基尼",
-        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/bad0f5902cb643df87a8fe34210dc99c.webp",
-        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/bad0f5902cb643df87a8fe34210dc99c.webp",
+        "image": "https://assets.toolaze.com/uploads/bad0f5902cb643df87a8fe34210dc99c.webp",
+        "referenceImage": "https://assets.toolaze.com/uploads/bad0f5902cb643df87a8fe34210dc99c.webp",
         "prompt": "圖片 1 是原始人物照片。圖片 2 是比基尼或泳裝參考圖。只將圖片 1 中每個清楚可見人物身上的可見服裝替換為圖片 2 的熱帶花卉比基尼。如果圖片 1 中有多人，請將同一泳裝風格套用到每個清楚可見的人物。每個人物與場景的其他所有內容都要完全保持不變：臉、身分、年齡、膚色、頭髮、身形、身體比例、姿勢、手、表情、相對位置、背景、光線、鏡頭角度、構圖與畫質。不要瘦身、不要放大、不要修飾、不要重塑、不要改變姿勢、不要改變臉、不要改變身體，不要改變相對位置，也不要修改場景。盡可能貼近圖片 2 的植物印花、配色、肩帶、覆蓋度、布料與輪廓。結果需真實、得體、非露骨，適合泳裝預覽。",
         "note": "使用此樣式對應的比基尼參考圖。",
         "color": "linear-gradient(135deg, #22c55e, #f97316, #f43f5e)",
@@ -255,8 +255,8 @@
       },
       {
         "title": "運動感青綠比基尼",
-        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/49b1ef80a71344b6990bc71150c35644.webp",
-        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/49b1ef80a71344b6990bc71150c35644.webp",
+        "image": "https://assets.toolaze.com/uploads/49b1ef80a71344b6990bc71150c35644.webp",
+        "referenceImage": "https://assets.toolaze.com/uploads/49b1ef80a71344b6990bc71150c35644.webp",
         "prompt": "圖片 1 是原始人物照片。圖片 2 是比基尼或泳裝參考圖。只將圖片 1 中每個清楚可見人物身上的可見服裝替換為圖片 2 的運動感青綠色 racerback 風格比基尼。如果圖片 1 中有多人，請將同一泳裝風格套用到每個清楚可見的人物。每個人物與場景的其他所有內容都要完全保持不變：臉、身分、年齡、膚色、頭髮、身形、身體比例、姿勢、手、表情、相對位置、背景、光線、鏡頭角度、構圖與畫質。不要瘦身、不要放大、不要修飾、不要重塑、不要改變姿勢、不要改變臉、不要改變身體，不要改變相對位置，也不要修改場景。盡可能貼近圖片 2 的運動感上身形狀、青綠色、穩定肩帶、覆蓋度、布料與輪廓。結果需真實、得體、非露骨，適合泳裝預覽。",
         "note": "使用此樣式對應的比基尼參考圖。",
         "color": "linear-gradient(135deg, #0f766e, #22d3ee)",
@@ -264,8 +264,8 @@
       },
       {
         "title": "黃色羅紋比基尼",
-        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/f2eadccf020a4fe1a733b91335d23ceb.webp",
-        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/f2eadccf020a4fe1a733b91335d23ceb.webp",
+        "image": "https://assets.toolaze.com/uploads/f2eadccf020a4fe1a733b91335d23ceb.webp",
+        "referenceImage": "https://assets.toolaze.com/uploads/f2eadccf020a4fe1a733b91335d23ceb.webp",
         "prompt": "圖片 1 是原始人物照片。圖片 2 是比基尼或泳裝參考圖。只將圖片 1 中每個清楚可見人物身上的可見服裝替換為圖片 2 的黃色羅紋比基尼。如果圖片 1 中有多人，請將同一泳裝風格套用到每個清楚可見的人物。每個人物與場景的其他所有內容都要完全保持不變：臉、身分、年齡、膚色、頭髮、身形、身體比例、姿勢、手、表情、相對位置、背景、光線、鏡頭角度、構圖與畫質。不要瘦身、不要放大、不要修飾、不要重塑、不要改變姿勢、不要改變臉、不要改變身體，不要改變相對位置，也不要修改場景。盡可能貼近圖片 2 的溫暖黃色、羅紋布料質感、肩帶、覆蓋度、布料與輪廓。結果需真實、得體、非露骨，適合泳裝預覽。",
         "note": "使用此樣式對應的比基尼參考圖。",
         "color": "linear-gradient(135deg, #facc15, #f59e0b)",
@@ -273,8 +273,8 @@
       },
       {
         "title": "珊瑚色單肩比基尼",
-        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/5020adfd323e4cf9a3fd7154e243a1b0.webp",
-        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/5020adfd323e4cf9a3fd7154e243a1b0.webp",
+        "image": "https://assets.toolaze.com/uploads/5020adfd323e4cf9a3fd7154e243a1b0.webp",
+        "referenceImage": "https://assets.toolaze.com/uploads/5020adfd323e4cf9a3fd7154e243a1b0.webp",
         "prompt": "圖片 1 是原始人物照片。圖片 2 是比基尼或泳裝參考圖。只將圖片 1 中每個清楚可見人物身上的可見服裝替換為圖片 2 的珊瑚色單肩比基尼。如果圖片 1 中有多人，請將同一泳裝風格套用到每個清楚可見的人物。每個人物與場景的其他所有內容都要完全保持不變：臉、身分、年齡、膚色、頭髮、身形、身體比例、姿勢、手、表情、相對位置、背景、光線、鏡頭角度、構圖與畫質。不要瘦身、不要放大、不要修飾、不要重塑、不要改變姿勢、不要改變臉、不要改變身體，不要改變相對位置，也不要修改場景。盡可能貼近圖片 2 的單肩上身形狀、珊瑚色、不對稱領口、覆蓋度、布料與輪廓。結果需真實、得體、非露骨，適合泳裝預覽。",
         "note": "使用此樣式對應的比基尼參考圖。",
         "color": "linear-gradient(135deg, #fb7185, #f97316)",

@@ -43,7 +43,7 @@
     "desc": "將照片、商品拍攝圖、插畫或參考影格轉為短篇 AI 影片，並在同一個 Toolaze 工作流程中控制動作、鏡頭運動與模型設定。"
   },
   "heroDemoVideo": {
-    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4",
+    "src": "https://assets.toolaze.com/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4",
     "ariaLabel": "Grok 1.5 Video 圖片轉影片示範，使用自動比例、5 秒片長與 480p 解析度",
     "sourceHistory": "Grok 1.5 Video · Image to Video · auto · 5s · 480p · 2026-07-21 12:31:57"
   },
@@ -169,9 +169,9 @@
       {
         "title": "商品照片動畫",
         "prompt": "Start from the uploaded 16:9 product photo and create a short marketplace-ready motion clip. Preserve the diffuser shape, ceramic texture, three-quarter angle, pedestal placement, and warm beige studio lighting while adding a controlled half-turn, soft shadow movement, a subtle foreground light sweep, and a clean final product hold.",
-        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/880154a7e9874c2eb41e2beb2a9bab67.webp",
-        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/generated/239f15b24b5741efbb1a384e4c38a06f.png",
-        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/880154a7e9874c2eb41e2beb2a9bab67.webp",
+        "referenceImage": "https://assets.toolaze.com/uploads/880154a7e9874c2eb41e2beb2a9bab67.webp",
+        "video": "https://assets.toolaze.com/generated/239f15b24b5741efbb1a384e4c38a06f.png",
+        "poster": "https://assets.toolaze.com/uploads/880154a7e9874c2eb41e2beb2a9bab67.webp",
         "description": "以相符參考圖片產生的 16:9 圖片轉影片範例。",
         "duration": "PT5S",
         "uploadDate": "2026-07-23T10:30:59.824Z"
@@ -179,9 +179,9 @@
       {
         "title": "從參考圖片製作社群短片",
         "prompt": "Use the uploaded 16:9 creator lifestyle image as the visual anchor for a horizontal social clip. Keep the face, outfit, cafe window setting, laptop, and warm daylight recognizable while adding a small camera push-in, natural handheld micro-movement, slight background motion outside the window, and one clean ending frame for a cover.",
-        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d94dc2c421ed40bd89f0811484b581bc.webp",
-        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/generated/a5b41cf6b4b246aa8facc3e12ae19ecc.png",
-        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d94dc2c421ed40bd89f0811484b581bc.webp",
+        "referenceImage": "https://assets.toolaze.com/uploads/d94dc2c421ed40bd89f0811484b581bc.webp",
+        "video": "https://assets.toolaze.com/generated/a5b41cf6b4b246aa8facc3e12ae19ecc.png",
+        "poster": "https://assets.toolaze.com/uploads/d94dc2c421ed40bd89f0811484b581bc.webp",
         "description": "以相符參考圖片產生的 16:9 圖片轉影片範例。",
         "duration": "PT5S",
         "uploadDate": "2026-07-23T10:31:49.931Z"
@@ -189,9 +189,9 @@
       {
         "title": "分鏡影格轉電影感片段",
         "prompt": "Turn the uploaded 16:9 coastal cyclist storyboard frame into one continuous cinematic shot. Preserve the rider scale, road curve, ocean horizon, golden-hour lighting, and wide composition while adding background parallax, a slow lens drift, light wind in the scene, and a final frame that still matches the original board.",
-        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/2b49461525a74c4fa3679a2c4e40a5db.webp",
-        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/generated/2321a8e52ff243cf91086755405ebeef.png",
-        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/2b49461525a74c4fa3679a2c4e40a5db.webp",
+        "referenceImage": "https://assets.toolaze.com/uploads/2b49461525a74c4fa3679a2c4e40a5db.webp",
+        "video": "https://assets.toolaze.com/generated/2321a8e52ff243cf91086755405ebeef.png",
+        "poster": "https://assets.toolaze.com/uploads/2b49461525a74c4fa3679a2c4e40a5db.webp",
         "description": "以相符參考圖片產生的 16:9 圖片轉影片範例。",
         "duration": "PT5S",
         "uploadDate": "2026-07-23T10:32:51.369Z"
@@ -199,9 +199,9 @@
       {
         "title": "從靜態圖片製作廣告概念",
         "prompt": "Use the uploaded 16:9 campaign still as the source frame for a 5-second ad motion test. Lock the bottle shape, citrus props, reflective tabletop, teal and coral panels, and product scale, then add a slow push-in, foreground light sweep, subtle condensation sparkle, reflection movement, and a brand-safe final hold.",
-        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d45047f7914948c28a6249cb2e32bbbc.webp",
-        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/generated/96a796f9943c42519381d15b22ab1d1d.png",
-        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d45047f7914948c28a6249cb2e32bbbc.webp",
+        "referenceImage": "https://assets.toolaze.com/uploads/d45047f7914948c28a6249cb2e32bbbc.webp",
+        "video": "https://assets.toolaze.com/generated/96a796f9943c42519381d15b22ab1d1d.png",
+        "poster": "https://assets.toolaze.com/uploads/d45047f7914948c28a6249cb2e32bbbc.webp",
         "description": "以相符參考圖片產生的 16:9 圖片轉影片範例。",
         "duration": "PT5S",
         "uploadDate": "2026-07-23T10:33:56.418Z"

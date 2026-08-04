@@ -16,13 +16,13 @@ type ModelDemoImage = {
 
 export const MODEL_DEMO_IMAGES: Record<ModelDemoImageId, ModelDemoImage> = {
   'nano-banana-pro': {
-    src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/nano-banana-pro.jpg',
+    src: 'https://assets.toolaze.com/home-model-cards/nano-banana-pro.jpg',
     width: 800,
     height: 597,
     alt: 'Nano Banana Pro sample output preview',
   },
   'nano-banana-2': {
-    src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/nano-banana-2.jpg',
+    src: 'https://assets.toolaze.com/home-model-cards/nano-banana-2.jpg',
     width: 800,
     height: 597,
     alt: 'Nano Banana 2 sample output preview',
@@ -40,7 +40,7 @@ export const MODEL_DEMO_IMAGES: Record<ModelDemoImageId, ModelDemoImage> = {
     alt: 'Seedream 4.5 commercial image generation preview',
   },
   'seedream-5-0-lite': {
-    src: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/seedream-5-0-lite/gallery-search-grounded-product.webp',
+    src: 'https://assets.toolaze.com/model-assets/seedream-5-0-lite/gallery-search-grounded-product.webp',
     width: 1280,
     height: 960,
     alt: 'Seedream 5.0 Lite search grounded product image preview',

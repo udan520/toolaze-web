@@ -253,7 +253,7 @@ checks.push({
     !homeAdvancedAiCardImages.includes('/model-assets/world-cup-2026/fan-poster.webp') &&
     !navigation.includes('/model-assets/world-cup-2026/fan-poster.webp') &&
     [aiToolsSurface, homeAdvancedAiCardImages, navigation].every((source) =>
-      source.includes('https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d67aebd7cde5431abd3a7bb74a89bac1.webp')
+      source.includes('https://assets.toolaze.com/uploads/d67aebd7cde5431abd3a7bb74a89bac1.webp')
     ),
 })
 
@@ -365,8 +365,8 @@ checks.push({
   name: 'World Cup Create similar uses source reference images instead of rendered results',
   pass:
     page.includes('referenceImage:') &&
-    worldCupAssetUrls.includes('https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/2f7e02a626ad467085366dbd5b438d53.webp') &&
-    worldCupAssetUrls.includes('https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ca3b5b87ba61497aacecfbd0b80713b6.webp') &&
+    worldCupAssetUrls.includes('https://assets.toolaze.com/uploads/2f7e02a626ad467085366dbd5b438d53.webp') &&
+    worldCupAssetUrls.includes('https://assets.toolaze.com/uploads/ca3b5b87ba61497aacecfbd0b80713b6.webp') &&
     page.includes('/model-assets/world-cup-2026/references/male-reference.webp') &&
     page.includes('/model-assets/world-cup-2026/references/female-reference.webp') &&
     referenceAssetPaths.every((assetPath) => fs.existsSync(assetPath) && fs.statSync(assetPath).size <= 100 * 1024) &&

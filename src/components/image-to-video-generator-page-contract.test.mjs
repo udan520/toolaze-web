@@ -95,10 +95,10 @@ test('image-to-video model selection cards use model logos and prominent model n
 test('image-to-video prompt cards send their poster image into the video generator', () => {
   const page = readJson(pagePath)
   const expectedFirstFrames = [
-    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/880154a7e9874c2eb41e2beb2a9bab67.webp',
-    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d94dc2c421ed40bd89f0811484b581bc.webp',
-    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/2b49461525a74c4fa3679a2c4e40a5db.webp',
-    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d45047f7914948c28a6249cb2e32bbbc.webp',
+    'https://assets.toolaze.com/uploads/880154a7e9874c2eb41e2beb2a9bab67.webp',
+    'https://assets.toolaze.com/uploads/d94dc2c421ed40bd89f0811484b581bc.webp',
+    'https://assets.toolaze.com/uploads/2b49461525a74c4fa3679a2c4e40a5db.webp',
+    'https://assets.toolaze.com/uploads/d45047f7914948c28a6249cb2e32bbbc.webp',
   ]
   const promptUseDetailSource = readFileSync(promptUseDetailPath, 'utf8')
   const promptExamplesSource = readFileSync(promptExamplesPath, 'utf8')

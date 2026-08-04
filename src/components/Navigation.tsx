@@ -163,35 +163,35 @@ const defaultCreditTypeTranslations: CreditTransactionTypeLabels = {
 
 const AI_TOOLS_DEMO_IMAGES = {
   unrestrictedAiImageGenerator:
-    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/unrestricted-ai-image-generator/pool-bikini-demo.webp',
+    'https://assets.toolaze.com/model-assets/unrestricted-ai-image-generator/pool-bikini-demo.webp',
   aiBabyGenerator: '/ai-baby-generator/hero-baby-portrait.webp',
   aiHairstyleChanger: '/ai-hairstyle-changer/hero-before-after.webp',
   aiHairColorChanger: '/ai-hair-color-changer/rose-pink-before-after.webp',
-  aiClothesChanger: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/84b9bf50f4414a2c962ebd3f74cb07f0.webp',
-  aiBikiniGenerator: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/6bcf91ffd06e45a8bcda2ea867015141.webp',
+  aiClothesChanger: 'https://assets.toolaze.com/uploads/84b9bf50f4414a2c962ebd3f74cb07f0.webp',
+  aiBikiniGenerator: 'https://assets.toolaze.com/uploads/6bcf91ffd06e45a8bcda2ea867015141.webp',
   aiBreastExpansion: '/ai-breast-expansion/demo-before-after.webp',
   aiImageGenerator:
-    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/gpt-image-2.jpg',
+    'https://assets.toolaze.com/home-model-cards/gpt-image-2.jpg',
   textToImageGenerator:
-    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/ai-image-generator/text-to-image-generator.webp',
+    'https://assets.toolaze.com/ai-image-generator/text-to-image-generator.webp',
   watermarkRemover:
     WATERMARK_REMOVER_DEMO_IMAGE,
   photoRestoration:
-    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-advanced-ai/photo-restoration-demo-before-after.webp',
+    'https://assets.toolaze.com/home-advanced-ai/photo-restoration-demo-before-after.webp',
   aiCouplePhotoMaker: '/ai-couple-photo-maker/rainy-eiffel-4x3.jpg',
   aiKissingVideoGenerator:
-    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/15ccbe71d8eb4921930b8b7638bcebab.webp',
+    'https://assets.toolaze.com/uploads/15ccbe71d8eb4921930b8b7638bcebab.webp',
   aiAsmrVideoGenerator:
-    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/ai-asmr-video-generator/demo-poster.webp',
-  aiDanceGenerator: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/ai-dance-demo-source.png',
+    'https://assets.toolaze.com/landing-pages/ai-asmr-video-generator/demo-poster.webp',
+  aiDanceGenerator: 'https://assets.toolaze.com/model-assets/ai-dance-generator/ai-dance-demo-source.png',
   motionControlGenerator:
-    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/kling-2-6-pro-motion-control/motion-control-demo-poster.webp',
+    'https://assets.toolaze.com/model-assets/kling-2-6-pro-motion-control/motion-control-demo-poster.webp',
   talkingAvatarCreator:
-    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/talking-avatar-creator/demo-poster.webp',
+    'https://assets.toolaze.com/landing-pages/talking-avatar-creator/demo-poster.webp',
   aiImageToImageGenerator:
-    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/gpt-image-2/feature-image-editing.webp',
+    'https://assets.toolaze.com/model-assets/gpt-image-2/feature-image-editing.webp',
   worldCupAiImageGenerator:
-    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d67aebd7cde5431abd3a7bb74a89bac1.webp',
+    'https://assets.toolaze.com/uploads/d67aebd7cde5431abd3a7bb74a89bac1.webp',
 }
 
 type AiToolNavLabelKey =

@@ -51,7 +51,7 @@ test('routes history Recreate back to the original localized tool page when avai
 const baseHistoryItem = {
   prompt: 'Create a premium citrus soda campaign image.',
   model: 'seedream-5-0-pro',
-  outputUrl: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/generations/output-original.png',
+  outputUrl: 'https://assets.toolaze.com/generations/output-original.png',
   inputUrls: [] as string[],
   aspectRatio: '16:9',
   resolution: '1K',
@@ -62,8 +62,8 @@ test('uses original input references for Create Similar when they exist', () => 
   const item = {
     ...baseHistoryItem,
     inputUrls: [
-      'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/reference-one.png',
-      'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/reference-two.png',
+      'https://assets.toolaze.com/uploads/reference-one.png',
+      'https://assets.toolaze.com/uploads/reference-two.png',
     ],
   }
 
@@ -81,8 +81,8 @@ test('uses original input references for Create Similar when they exist', () => 
 
 test('splits dual-upload Recreate references into person and clothing slots', () => {
   const inputUrls = [
-    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/person.webp',
-    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/bikini-reference.webp',
+    'https://assets.toolaze.com/uploads/person.webp',
+    'https://assets.toolaze.com/uploads/bikini-reference.webp',
   ]
 
   assert.deepEqual(splitDualUploadReferenceImageUrls(inputUrls, true), {
@@ -93,8 +93,8 @@ test('splits dual-upload Recreate references into person and clothing slots', ()
 
 test('keeps normal Recreate references in the primary upload slot', () => {
   const inputUrls = [
-    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/reference-one.webp',
-    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/reference-two.webp',
+    'https://assets.toolaze.com/uploads/reference-one.webp',
+    'https://assets.toolaze.com/uploads/reference-two.webp',
   ]
 
   assert.deepEqual(splitDualUploadReferenceImageUrls(inputUrls, false), {
@@ -151,8 +151,8 @@ test('keeps talking avatar image and audio inputs in the pending Recreate payloa
     toolSlug: 'talking-avatar-creator',
     sourcePath: '/zh-TW/talking-avatar-creator',
     inputUrls: [
-      'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/avatar-reference.webp',
-      'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/reference-audio.wav',
+      'https://assets.toolaze.com/uploads/avatar-reference.webp',
+      'https://assets.toolaze.com/uploads/reference-audio.wav',
     ],
     resolution: '720p',
     outputFormat: 'audio-driven',
@@ -183,8 +183,8 @@ test('separates Kling 3 Motion Control image and motion video inputs for Recreat
     toolSlug: 'kling-3-motion-control',
     sourcePath: '/model/kling-3-motion-control',
     inputUrls: [
-      'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/character.webp',
-      'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/motion-reference.mp4',
+      'https://assets.toolaze.com/uploads/character.webp',
+      'https://assets.toolaze.com/uploads/motion-reference.mp4',
     ],
     resolution: '720p',
     outputFormat: '5s',
@@ -234,13 +234,13 @@ test('drops browser-only and unsafe reference URLs for Create Similar', () => {
       'javascript:alert(1)',
       '//example.com/protocol-relative.png',
       '/ai-hair-color-changer/default-reference.png',
-      'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/input.webp',
+      'https://assets.toolaze.com/uploads/input.webp',
     ],
   }
 
   assert.deepEqual(buildHistoryRepromptPayload(item).imageUrls, [
     '/ai-hair-color-changer/default-reference.png',
-    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/input.webp',
+    'https://assets.toolaze.com/uploads/input.webp',
   ])
 })
 
@@ -261,7 +261,7 @@ test('keeps image-to-image Recreate tied to original input references', () => {
   const item = {
     ...baseHistoryItem,
     inputUrls: [
-      'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/reference-one.png',
+      'https://assets.toolaze.com/uploads/reference-one.png',
     ],
   }
 

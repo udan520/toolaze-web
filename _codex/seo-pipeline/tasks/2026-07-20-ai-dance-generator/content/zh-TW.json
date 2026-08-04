@@ -19,7 +19,7 @@
     },
     "sampleImages": [
       {
-        "url": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/ai-dance-demo.mp4",
+        "url": "https://assets.toolaze.com/model-assets/ai-dance-generator/ai-dance-demo.mp4",
         "title": "AI 舞蹈影片示範",
         "width": 16,
         "height": 9,
@@ -28,7 +28,7 @@
     ],
     "defaultVideoDurationSeconds": 5,
     "defaultImageUrls": [
-      "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/ai-dance-demo-source.png"
+      "https://assets.toolaze.com/model-assets/ai-dance-generator/ai-dance-demo-source.png"
     ]
   },
   "metadata": {
@@ -73,35 +73,35 @@
         "prompt": "讓圖片中的人物做一段簡單嘻哈舞。",
         "note": "適合課程宣傳、音樂短片與都會表演概念。",
         "color": "linear-gradient(135deg, #111827, #6366f1)",
-        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/prompt-hip-hop-stage.mp4"
+        "video": "https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-hip-hop-stage.mp4"
       },
       {
         "title": "優雅動作",
         "prompt": "讓圖片中的人物優雅地跳舞。",
         "note": "當影片需要優雅感、平衡與清楚身體線條時使用。",
         "color": "linear-gradient(135deg, #f5d0fe, #7c3aed)",
-        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/prompt-ballet-motion.mp4"
+        "video": "https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-ballet-motion.mp4"
       },
       {
         "title": "K-Pop 表演",
         "prompt": "讓圖片中的人物做一段 K-Pop 舞蹈。",
         "note": "適合有活力的粉絲剪輯、翻跳和社群活動短片。",
         "color": "linear-gradient(135deg, #f9a8d4, #2563eb)",
-        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/prompt-k-pop-performance.mp4"
+        "video": "https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-k-pop-performance.mp4"
       },
       {
         "title": "活力舞蹈",
         "prompt": "讓圖片中的人物活力跳舞。",
         "note": "可用於 salsa、bachata、ballroom 和舞台展示概念。",
         "color": "linear-gradient(135deg, #fecaca, #dc2626)",
-        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/prompt-latin-dance.mp4"
+        "video": "https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-latin-dance.mp4"
       },
       {
         "title": "街頭舞蹈",
         "prompt": "讓圖片中的人物在城市街道上跳舞。",
         "note": "適合舞團、在地活動與輕鬆的創作者短片。",
         "color": "linear-gradient(135deg, #bfdbfe, #0f766e)",
-        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/prompt-street-dance.mp4"
+        "video": "https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-street-dance.mp4"
       }
     ]
   },

@@ -8,10 +8,10 @@
     "displayName": "Kling 2.6 Pro Motion Control",
     "modelId": "kling-2-6-motion-control",
     "initialImageUrls": [
-      "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/kling-2-6-pro-motion-control/character-reference.jpg"
+      "https://assets.toolaze.com/model-assets/kling-2-6-pro-motion-control/character-reference.jpg"
     ],
     "initialMotionVideoUrls": [
-      "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/kling-2-6-pro-motion-control/motion-reference-video.mp4"
+      "https://assets.toolaze.com/model-assets/kling-2-6-pro-motion-control/motion-reference-video.mp4"
     ],
     "initialMotionVideoDurationSeconds": 7.934,
     "initialCharacterOrientation": "video"
@@ -36,12 +36,12 @@
     "desc": "Carica una immagine del personaggio, aggiungi un video di movimento e descrivi cosa deve restare coerente. Toolaze trasferisce posa, gesto, timing corporeo e ritmo della camera dal video all’immagine."
   },
   "heroDemoVideo": {
-    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/kling-2-6-pro-motion-control/motion-control-demo.mp4",
+    "src": "https://assets.toolaze.com/model-assets/kling-2-6-pro-motion-control/motion-control-demo.mp4",
     "ariaLabel": "Kling 2.6 Motion Control it demo",
     "width": 16,
     "height": 9,
     "sourceHistory": "User-generated Kling 2.6 Motion Control demo · character image + motion reference video · 7.9s · 1264x720 · R2",
-    "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/kling-2-6-pro-motion-control/motion-control-demo-poster.webp",
+    "poster": "https://assets.toolaze.com/model-assets/kling-2-6-pro-motion-control/motion-control-demo-poster.webp",
     "duration": "PT7.9S",
     "uploadDate": "2026-08-03T04:25:54.000Z"
   },
@@ -323,8 +323,8 @@
       "href": "/model/kling-3",
       "media": {
         "type": "video",
-        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/prompt-templates/image-guided-motion.mp4",
-        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/prompt-templates/image-guided-motion.webp",
+        "src": "https://assets.toolaze.com/uploads/ai-video-generator/prompt-templates/image-guided-motion.mp4",
+        "poster": "https://assets.toolaze.com/uploads/ai-video-generator/prompt-templates/image-guided-motion.webp",
         "alt": "Kling 3.0 Video Generator preview"
       }
     },
@@ -335,7 +335,7 @@
       "href": "/kling-ai-video-generator",
       "media": {
         "type": "image",
-        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
+        "src": "https://assets.toolaze.com/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
         "alt": "Kling AI Video Generator preview"
       }
     },
@@ -346,7 +346,7 @@
       "href": "/model/wan-2-7-ai-video-generator",
       "media": {
         "type": "image",
-        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
+        "src": "https://assets.toolaze.com/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
         "alt": "Wan 2.7 Video Generator preview"
       }
     },
@@ -357,7 +357,7 @@
       "href": "/model/seedance-2-5",
       "media": {
         "type": "image",
-        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
+        "src": "https://assets.toolaze.com/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
         "alt": "Seedance 2.5 Video Generator preview"
       }
     }

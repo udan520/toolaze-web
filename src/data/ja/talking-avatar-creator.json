@@ -221,7 +221,7 @@
       "href": "/ai-video-generator",
       "media": {
         "type": "video",
-        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4",
+        "src": "https://assets.toolaze.com/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4",
         "alt": "AI動画生成のデモ動画"
       }
     },
@@ -232,7 +232,7 @@
       "href": "/image-to-video-generator",
       "media": {
         "type": "video",
-        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4",
+        "src": "https://assets.toolaze.com/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4",
         "alt": "画像から動画生成のデモ動画"
       }
     },
@@ -243,7 +243,7 @@
       "href": "/ai-image-generator",
       "media": {
         "type": "image",
-        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/gpt-image-2.jpg",
+        "src": "https://assets.toolaze.com/home-model-cards/gpt-image-2.jpg",
         "alt": "AI画像生成のデモ画像"
       }
     }
@@ -252,8 +252,8 @@
   "faqDescription": "ポートレート、音声、リップシンク、出力品質、安全な利用についての短い回答です。",
   "moreTools": "関連するトーキングアバターツール",
   "heroDemoVideo": {
-    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/talking-avatar-creator/demo.mp4",
-    "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/talking-avatar-creator/demo-poster.webp",
+    "src": "https://assets.toolaze.com/landing-pages/talking-avatar-creator/demo.mp4",
+    "poster": "https://assets.toolaze.com/landing-pages/talking-avatar-creator/demo-poster.webp",
     "ariaLabel": "リップシンクとプレゼンター風の表情を備えた短いAIトーキングアバターのデモ動画",
     "duration": "PT14.48S",
     "uploadDate": "2026-07-31T07:08:59.000Z",

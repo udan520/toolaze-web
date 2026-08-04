@@ -18,12 +18,12 @@
     "desc": "텍스트, 이미지, 동영상 참조 또는 오디오 지시로 Wan 2.7 동영상을 만드세요. 멀티샷 프롬프트, 첫/마지막 프레임 전환, 이어지는 장면, 동기화된 사운드를 사용해 720p 또는 1080p의 짧은 시네마틱 클립을 만들 수 있습니다."
   },
   "heroDemoVideo": {
-    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/c07d1db481dd4e9b8e190ebb39611f08.png",
+    "src": "https://assets.toolaze.com/uploads/c07d1db481dd4e9b8e190ebb39611f08.png",
     "ariaLabel": "Toolaze Wan 2.7 데모 동영상 미리보기",
     "width": 16,
     "height": 9,
     "sourceHistory": "User-provided Wan 2.7 demo video · 16:9 · 5.01s · 1920x1080 · 2026-08-02",
-    "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/6e2548965fc5487ca41221f9d663dfcb.webp",
+    "poster": "https://assets.toolaze.com/uploads/6e2548965fc5487ca41221f9d663dfcb.webp",
     "duration": "PT5.01S"
   },
   "sectionsOrder": [
@@ -351,7 +351,7 @@
       "href": "/model/seedance-2",
       "media": {
         "type": "video",
-        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d0d55df5eef346809067197fddb1b251.png",
+        "src": "https://assets.toolaze.com/uploads/d0d55df5eef346809067197fddb1b251.png",
         "alt": "Seedance 2.0 동영상 미리보기"
       },
       "description": "Seedance 2.0은 감독 스타일 멀티샷 동영상과 참조가 많은 상업 장면에 적합합니다."
@@ -361,7 +361,7 @@
       "href": "/model/kling-3",
       "media": {
         "type": "video",
-        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
+        "src": "https://assets.toolaze.com/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
         "alt": "Kling 3.0 동영상 미리보기"
       },
       "description": "Kling 3.0은 동적인 움직임, 시네마틱 카메라, 고해상도 동영상 출력에 적합합니다."
@@ -371,7 +371,7 @@
       "href": "/model/grok-imagine-video-1-5",
       "media": {
         "type": "video",
-        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4",
+        "src": "https://assets.toolaze.com/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4",
         "alt": "Grok Imagine Video 1.5 데모 동영상 미리보기"
       },
       "description": "Grok Imagine Video 1.5는 빠른 이미지 동영상 초안, 제품 모션, 크리에이터 클립에 사용할 수 있습니다."

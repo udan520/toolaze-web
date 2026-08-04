@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs'
 import { test } from 'node:test'
 
 const root = new URL('../../', import.meta.url)
-const DEMO_IMAGE = 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-advanced-ai/photo-restoration-demo-before-after.webp'
+const DEMO_IMAGE = 'https://assets.toolaze.com/home-advanced-ai/photo-restoration-demo-before-after.webp'
 const read = (path) => readFileSync(new URL(path, root), 'utf8')
 const escaped = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
 

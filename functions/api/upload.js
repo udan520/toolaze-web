@@ -9,6 +9,7 @@ import {
   createUploadReference,
   getUploadReferenceMediaType,
 } from '../_shared/upload-reference.mjs';
+import { getCanonicalR2PublicBaseUrl } from '../_shared/r2-public-url.mjs';
 
 const CORS = {
   'Access-Control-Allow-Origin': '*',
@@ -50,7 +51,7 @@ async function uploadPublicCopyToR2(env, file, fallbackContentType = 'image/png'
   await env.MY_BUCKET.put(key, file, {
     httpMetadata: { contentType: file.type || fallbackContentType },
   });
-  const base = (env.R2_PUBLIC_BASE_URL || 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev').replace(/\/$/, '');
+  const base = getCanonicalR2PublicBaseUrl(env);
   return {
     url: `${base}/${key}`,
     key,

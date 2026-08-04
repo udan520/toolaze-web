@@ -16,8 +16,8 @@
     "desc": "將觸覺提示或參考影像轉換為帶有特寫鏡頭和匹配聲音的短 ASMR 影片。 描述材質、動作、鏡頭、節奏和聲音特性，然後選擇最符合您的輸入、音訊和品質需求的 Toolaze 視訊模型。"
   },
   "heroDemoVideo": {
-    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/ai-asmr-video-generator/demo.mp4",
-    "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/ai-asmr-video-generator/demo-poster.webp",
+    "src": "https://assets.toolaze.com/landing-pages/ai-asmr-video-generator/demo.mp4",
+    "poster": "https://assets.toolaze.com/landing-pages/ai-asmr-video-generator/demo-poster.webp",
     "ariaLabel": "AI 產生的 ASMR 演示視頻"
   },
   "sectionsOrder": [

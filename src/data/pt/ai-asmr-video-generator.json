@@ -16,8 +16,8 @@
     "desc": "Transforme um prompt tátil ou uma imagem de referência em um vídeo ASMR curto, com movimentos em close e som correspondente. Descreva o material, a ação, a câmera, o ritmo e as características do som; depois, escolha o modelo de vídeo da Toolaze que melhor atenda às suas necessidades de entrada, áudio e qualidade."
   },
   "heroDemoVideo": {
-    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/ai-asmr-video-generator/demo.mp4",
-    "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/ai-asmr-video-generator/demo-poster.webp",
+    "src": "https://assets.toolaze.com/landing-pages/ai-asmr-video-generator/demo.mp4",
+    "poster": "https://assets.toolaze.com/landing-pages/ai-asmr-video-generator/demo-poster.webp",
     "ariaLabel": "Vídeo de demonstração ASMR gerado por IA"
   },
   "sectionsOrder": [

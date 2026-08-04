@@ -15,10 +15,10 @@ const factoryDir = join(
   '2026-07-31-talking-avatar-creator',
   'content',
 )
-const demoVideoUrl = 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/talking-avatar-creator/demo.mp4'
-const demoPosterUrl = 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/talking-avatar-creator/demo-poster.webp'
-const aiVideoDemoUrl = 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4'
-const aiImageDemoUrl = 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/gpt-image-2.jpg'
+const demoVideoUrl = 'https://assets.toolaze.com/landing-pages/talking-avatar-creator/demo.mp4'
+const demoPosterUrl = 'https://assets.toolaze.com/landing-pages/talking-avatar-creator/demo-poster.webp'
+const aiVideoDemoUrl = 'https://assets.toolaze.com/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4'
+const aiImageDemoUrl = 'https://assets.toolaze.com/home-model-cards/gpt-image-2.jpg'
 
 const trimCopyKeys = [
   'audioTrimTitle',

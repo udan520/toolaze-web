@@ -9,7 +9,7 @@ const MAX_FILE_SIZE = 30 * 1024 * 1024
 const DAILY_LIMIT_KEY = 'photo_restoration_last_used_date'
 
 const RESTORE_COLORIZE_PROMPT = 'Restore and colorize this old photo by removing scratches, dust, and noise. Enhance clarity, sharpness, and details while preserving the original colors and natural look.'
-const DEMO_IMAGE_URL = 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-advanced-ai/photo-restoration-demo-before-after.webp'
+const DEMO_IMAGE_URL = 'https://assets.toolaze.com/home-advanced-ai/photo-restoration-demo-before-after.webp'
 
 interface PhotoRestorationProps {
   initialTranslations?: any

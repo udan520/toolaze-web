@@ -28,7 +28,7 @@ test('keeps the generated output in the detail preview when a reference is selec
 })
 
 test('uses the original reference image for full screen preview when the URL is a Next thumbnail', () => {
-  const originalUrl = 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/reference-original.webp'
+  const originalUrl = 'https://assets.toolaze.com/uploads/reference-original.webp'
   const thumbnailUrl = `/_next/image?url=${encodeURIComponent(originalUrl)}&w=128&q=60`
 
   assert.equal(
@@ -38,14 +38,14 @@ test('uses the original reference image for full screen preview when the URL is 
 })
 
 test('keeps remote R2 library thumbnails direct before opening the original preview', () => {
-  const originalUrl = 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/generations/output-original.png'
+  const originalUrl = 'https://assets.toolaze.com/generations/output-original.png'
   const thumbnailUrl = getHistoryLibraryThumbnailUrl(originalUrl)
 
   assert.equal(thumbnailUrl, originalUrl)
 })
 
 test('keeps remote R2 reference thumbnails direct while preserving original click targets', () => {
-  const originalUrl = 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/reference-original.webp'
+  const originalUrl = 'https://assets.toolaze.com/uploads/reference-original.webp'
   const thumbnailUrl = getHistoryReferenceThumbnailUrl(originalUrl)
 
   assert.equal(thumbnailUrl, originalUrl)

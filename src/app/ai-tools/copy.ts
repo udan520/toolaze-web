@@ -41,66 +41,66 @@ type StoredAiToolsPageCopy = Omit<AiToolsPageCopy, 'filters' | 'cards'> & {
 
 const cardAssets = {
   unrestricted:
-    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/unrestricted-ai-image-generator/pool-bikini-demo.webp',
+    'https://assets.toolaze.com/model-assets/unrestricted-ai-image-generator/pool-bikini-demo.webp',
   aiImage:
-    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/gpt-image-2.jpg',
+    'https://assets.toolaze.com/home-model-cards/gpt-image-2.jpg',
   textToImage:
-    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/ai-image-generator/text-to-image-generator.webp',
+    'https://assets.toolaze.com/ai-image-generator/text-to-image-generator.webp',
   imageToImage:
-    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/gpt-image-2/feature-image-editing.webp',
+    'https://assets.toolaze.com/model-assets/gpt-image-2/feature-image-editing.webp',
   aiVideo:
-    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/seedance-2.jpg',
+    'https://assets.toolaze.com/home-model-cards/seedance-2.jpg',
   wan27Video:
-    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/6e2548965fc5487ca41221f9d663dfcb.webp',
+    'https://assets.toolaze.com/uploads/6e2548965fc5487ca41221f9d663dfcb.webp',
   textToVideo:
-    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/prompt-templates/storyboard-scene.webp',
+    'https://assets.toolaze.com/uploads/ai-video-generator/prompt-templates/storyboard-scene.webp',
   imageToVideo:
-    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/880154a7e9874c2eb41e2beb2a9bab67.webp',
+    'https://assets.toolaze.com/uploads/880154a7e9874c2eb41e2beb2a9bab67.webp',
   worldCup:
-    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d67aebd7cde5431abd3a7bb74a89bac1.webp',
+    'https://assets.toolaze.com/uploads/d67aebd7cde5431abd3a7bb74a89bac1.webp',
   watermark:
-    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-advanced-ai/watermark-remover-demo-before-after.webp',
+    'https://assets.toolaze.com/home-advanced-ai/watermark-remover-demo-before-after.webp',
   restoration:
-    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-advanced-ai/photo-restoration-demo-before-after.webp',
+    'https://assets.toolaze.com/home-advanced-ai/photo-restoration-demo-before-after.webp',
   couple: '/ai-couple-photo-maker/rainy-eiffel-4x3.jpg',
   baby: '/ai-baby-generator/hero-baby-portrait.webp',
-  dance: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/ai-dance-demo-source.png',
+  dance: 'https://assets.toolaze.com/model-assets/ai-dance-generator/ai-dance-demo-source.png',
   kissing:
-    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/15ccbe71d8eb4921930b8b7638bcebab.webp',
+    'https://assets.toolaze.com/uploads/15ccbe71d8eb4921930b8b7638bcebab.webp',
   asmr:
-    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/ai-asmr-video-generator/demo-poster.webp',
+    'https://assets.toolaze.com/landing-pages/ai-asmr-video-generator/demo-poster.webp',
   talkingAvatar:
-    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/talking-avatar-creator/demo-poster.webp',
+    'https://assets.toolaze.com/landing-pages/talking-avatar-creator/demo-poster.webp',
   hairstyle: '/ai-hairstyle-changer/hero-before-after.webp',
   hairColor: '/ai-hair-color-changer/rose-pink-before-after.webp',
   clothes:
-    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/84b9bf50f4414a2c962ebd3f74cb07f0.webp',
+    'https://assets.toolaze.com/uploads/84b9bf50f4414a2c962ebd3f74cb07f0.webp',
   bikini:
-    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/6bcf91ffd06e45a8bcda2ea867015141.webp',
+    'https://assets.toolaze.com/uploads/6bcf91ffd06e45a8bcda2ea867015141.webp',
   breastExpansion: '/ai-breast-expansion/demo-before-after.webp',
   motionControl:
-    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/kling-2-6-pro-motion-control/motion-control-demo-poster.webp',
+    'https://assets.toolaze.com/model-assets/kling-2-6-pro-motion-control/motion-control-demo-poster.webp',
 }
 
 const cardVideos = {
   aiVideo:
-    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4',
+    'https://assets.toolaze.com/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4',
   wan27Video:
-    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/c07d1db481dd4e9b8e190ebb39611f08.png',
+    'https://assets.toolaze.com/uploads/c07d1db481dd4e9b8e190ebb39611f08.png',
   textToVideo:
-    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/1b0129b9d2504494825f8fd28b00f4af.png',
+    'https://assets.toolaze.com/uploads/1b0129b9d2504494825f8fd28b00f4af.png',
   imageToVideo:
-    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4',
+    'https://assets.toolaze.com/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4',
   dance:
-    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/ai-dance-demo.mp4',
+    'https://assets.toolaze.com/model-assets/ai-dance-generator/ai-dance-demo.mp4',
   kissing:
-    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/83a8c5b91a4945beb66275c38a731dbf.png',
+    'https://assets.toolaze.com/uploads/83a8c5b91a4945beb66275c38a731dbf.png',
   asmr:
-    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/ai-asmr-video-generator/demo.mp4',
+    'https://assets.toolaze.com/landing-pages/ai-asmr-video-generator/demo.mp4',
   talkingAvatar:
-    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/talking-avatar-creator/demo.mp4',
+    'https://assets.toolaze.com/landing-pages/talking-avatar-creator/demo.mp4',
   motionControl:
-    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/kling-2-6-pro-motion-control/motion-control-demo.mp4',
+    'https://assets.toolaze.com/model-assets/kling-2-6-pro-motion-control/motion-control-demo.mp4',
 }
 
 const en: StoredAiToolsPageCopy = {

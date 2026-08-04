@@ -6,11 +6,11 @@ import test from 'node:test'
 const root = process.cwd()
 const slug = 'kling-3-motion-control'
 const taskId = '2026-08-02-kling-3-motion-control'
-const klingReferenceImage = 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/kling-3-motion-control/character-reference.jpg'
-const klingReferenceVideo = 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/kling-3-motion-control/motion-reference-video.mp4'
-const klingDemoVideo = 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/kling-3-motion-control/motion-control-demo.mp4'
-const klingDemoPoster = 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/kling-3-motion-control/motion-control-demo-poster.webp'
-const seedance25DemoImage = 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d0d55df5eef346809067197fddb1b251.png'
+const klingReferenceImage = 'https://assets.toolaze.com/model-assets/kling-3-motion-control/character-reference.jpg'
+const klingReferenceVideo = 'https://assets.toolaze.com/model-assets/kling-3-motion-control/motion-reference-video.mp4'
+const klingDemoVideo = 'https://assets.toolaze.com/model-assets/kling-3-motion-control/motion-control-demo.mp4'
+const klingDemoPoster = 'https://assets.toolaze.com/model-assets/kling-3-motion-control/motion-control-demo-poster.webp'
+const seedance25DemoImage = 'https://assets.toolaze.com/uploads/d0d55df5eef346809067197fddb1b251.png'
 const supportedLocales = ['en', 'de', 'es', 'fr', 'it', 'ja', 'ko', 'pt', 'zh-TW']
 const localizedLocales = supportedLocales.filter((locale) => locale !== 'en')
 const seedance25Locales = supportedLocales

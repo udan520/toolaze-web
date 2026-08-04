@@ -207,7 +207,7 @@ const checks = [
       component.includes('function ImagePlaceholder') &&
       !pageSources.includes('slot="hero"') &&
       !pageSources.includes("slot: 'hero'") &&
-      !pageSources.includes('pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/gpt-image-2'),
+      !pageSources.includes('assets.toolaze.com/uploads/gpt-image-2'),
   },
   {
     name: 'FAQ schema includes free, no-signup, 4K, editing, and comparison questions',

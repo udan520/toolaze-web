@@ -16,8 +16,8 @@
     "desc": "Transformez une consigne textuelle (prompt) ou une image de référence en une courte vidéo ASMR alliant mouvements en gros plan et son correspondant. Décrivez le matériau, l'action, le cadrage, le rythme et la nature du son, puis choisissez le modèle vidéo Toolaze le mieux adapté à vos besoins en matière de contenu, d'audio et de qualité."
   },
   "heroDemoVideo": {
-    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/ai-asmr-video-generator/demo.mp4",
-    "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/ai-asmr-video-generator/demo-poster.webp",
+    "src": "https://assets.toolaze.com/landing-pages/ai-asmr-video-generator/demo.mp4",
+    "poster": "https://assets.toolaze.com/landing-pages/ai-asmr-video-generator/demo-poster.webp",
     "ariaLabel": "Vidéo de démonstration ASMR générée par IA"
   },
   "sectionsOrder": [

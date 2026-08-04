@@ -47,7 +47,7 @@ test('upload route streams motion-control uploads locally from a neutral browser
   process.env.R2_SECRET_ACCESS_KEY = 'test-secret-key'
   process.env.R2_ENDPOINT_URL = 'https://example.r2.cloudflarestorage.com'
   process.env.R2_BUCKET = 'toolaze'
-  process.env.R2_PUBLIC_BASE_URL = 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev'
+  process.env.R2_PUBLIC_BASE_URL = 'https://assets.toolaze.com'
   globalThis.fetch = async (url, init) => {
     calls.push({ url: String(url), init })
     if (String(url).includes('example.r2.cloudflarestorage.com')) {
@@ -84,7 +84,7 @@ test('upload route streams motion-control uploads locally from a neutral browser
     assert.match(calls[1].url, /^https:\/\/example\.r2\.cloudflarestorage\.com\/toolaze\/uploads\/[a-f0-9]+\.mp4$/)
     assert.equal(calls[1].init.method, 'PUT')
     assert.match(payload.uploadRef, /^toolaze-upload-ref:/)
-    assert.match(payload.url, /^https:\/\/pub-efeb0c7b9b53478d960218de80c52e3d\.r2\.dev\/uploads\/[a-f0-9]+\.mp4$/)
+    assert.match(payload.url, /^https:\/\/assets\.toolaze\.com\/uploads\/[a-f0-9]+\.mp4$/)
     assert.match(payload.key, /^uploads\/[a-f0-9]+\.mp4$/)
     assert.equal(String(payload.uploadRef).includes('redpandaai'), false)
     assert.equal(String(payload.uploadRef).includes('kieai'), false)
@@ -124,7 +124,7 @@ test('upload route returns Kie fileUrl before downloadUrl for local motion-contr
   process.env.R2_SECRET_ACCESS_KEY = 'test-secret-key'
   process.env.R2_ENDPOINT_URL = 'https://example.r2.cloudflarestorage.com'
   process.env.R2_BUCKET = 'toolaze'
-  process.env.R2_PUBLIC_BASE_URL = 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev'
+  process.env.R2_PUBLIC_BASE_URL = 'https://assets.toolaze.com'
   globalThis.fetch = async (url) => {
     if (String(url).includes('example.r2.cloudflarestorage.com')) {
       return new Response(null, { status: 200 })
@@ -158,7 +158,7 @@ test('upload route returns Kie fileUrl before downloadUrl for local motion-contr
     assert.match(payload.uploadRef, /^toolaze-upload-ref:/)
     assert.equal(String(payload.uploadRef).includes('redpandaai'), false)
     assert.equal(String(payload.uploadRef).includes('kieai'), false)
-    assert.match(payload.url, /^https:\/\/pub-efeb0c7b9b53478d960218de80c52e3d\.r2\.dev\/uploads\/[a-f0-9]+\.png$/)
+    assert.match(payload.url, /^https:\/\/assets\.toolaze\.com\/uploads\/[a-f0-9]+\.png$/)
     assert.match(payload.key, /^uploads\/[a-f0-9]+\.png$/)
     assert.equal('provider' in payload, false)
   } finally {

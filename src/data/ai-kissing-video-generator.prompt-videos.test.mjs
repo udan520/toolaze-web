@@ -6,7 +6,7 @@ import path from 'node:path'
 const root = path.resolve(import.meta.dirname, '../..')
 const locales = ['en', 'es', 'fr', 'de', 'it', 'pt', 'ja', 'ko', 'zh-TW']
 const localizedLocales = locales.filter((locale) => locale !== 'en')
-const r2Base = 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/'
+const r2Base = 'https://assets.toolaze.com/uploads/'
 
 async function readJson(file) {
   return JSON.parse(await readFile(file, 'utf8'))

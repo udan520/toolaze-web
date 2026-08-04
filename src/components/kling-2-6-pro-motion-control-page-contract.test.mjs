@@ -7,10 +7,10 @@ const root = process.cwd()
 const slug = 'kling-2-6-pro-motion-control'
 const taskId = '2026-08-02-kling-2-6-pro-motion-control'
 const locales = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
-const klingReferenceImage = 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/kling-2-6-pro-motion-control/character-reference.jpg'
-const klingReferenceVideo = 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/kling-2-6-pro-motion-control/motion-reference-video.mp4'
-const klingDemoVideo = 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/kling-2-6-pro-motion-control/motion-control-demo.mp4'
-const klingDemoPoster = 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/kling-2-6-pro-motion-control/motion-control-demo-poster.webp'
+const klingReferenceImage = 'https://assets.toolaze.com/model-assets/kling-2-6-pro-motion-control/character-reference.jpg'
+const klingReferenceVideo = 'https://assets.toolaze.com/model-assets/kling-2-6-pro-motion-control/motion-reference-video.mp4'
+const klingDemoVideo = 'https://assets.toolaze.com/model-assets/kling-2-6-pro-motion-control/motion-control-demo.mp4'
+const klingDemoPoster = 'https://assets.toolaze.com/model-assets/kling-2-6-pro-motion-control/motion-control-demo-poster.webp'
 const canonicalSectionOrder = [
   'modelIntro',
   'performanceMetrics',

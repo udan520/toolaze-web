@@ -441,7 +441,7 @@ test('AI video generator rejects non-video URLs for Kling Motion Control video_u
         model: 'kling-2-6-motion-control',
         prompt: '',
         imageUrls: JSON.stringify(['https://cdn.example.com/character.png']),
-        videoUrls: JSON.stringify(['https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/motion.png']),
+        videoUrls: JSON.stringify(['https://assets.toolaze.com/uploads/motion.png']),
         characterOrientation: 'video',
         resolution: '720p',
         duration: '8',

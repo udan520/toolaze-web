@@ -19,7 +19,7 @@
     "h1": "<span class=\"text-gradient\">Grok Imagine Video 1.5</span> AI Video Generator",
     "desc": "Use xAI's Grok Imagine Video 1.5 image-to-video model on Toolaze to turn a starting image into short motion clips, or draft a prompt-only scene in the Toolaze video workflow. Choose 1-15 seconds, 480p/720p, and aspect ratios for social clips, product motion, and storyboards.",
     "demoVideo": {
-      "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/7b12e05c8c564a18b1ce7b02887051ac.png",
+      "src": "https://assets.toolaze.com/uploads/7b12e05c8c564a18b1ce7b02887051ac.png",
       "label": "Grok Imagine Video 1.5 16:9 product motion demo"
     }
   },
@@ -152,19 +152,19 @@
       {
         "title": "Product Reveal Prompt",
         "prompt": "Animate the uploaded product image into a 5-second premium product reveal. Slow push-in camera, subtle rotation, glossy reflections, clean studio lighting, realistic shadow movement, no extra text, commercial style.",
-        "videoSrc": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/8de0b3095d15419a8a71f762d6235166.png",
+        "videoSrc": "https://assets.toolaze.com/uploads/8de0b3095d15419a8a71f762d6235166.png",
         "videoLabel": "16:9 product reveal prompt example video"
       },
       {
         "title": "Interior Camera Move Prompt",
         "prompt": "Use the uploaded room image as the reference. Preserve the layout and furniture. Add a gentle left-to-right camera drift, soft daylight through the window, moving curtain fabric, warm interior mood, realistic motion.",
-        "videoSrc": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/dbed78470f784d01a3cb413be3614ccf.png",
+        "videoSrc": "https://assets.toolaze.com/uploads/dbed78470f784d01a3cb413be3614ccf.png",
         "videoLabel": "16:9 interior camera move prompt example video"
       },
       {
         "title": "Storyboard Shot Prompt",
         "prompt": "Create an establishing shot for a science-fiction short film. A small research vehicle crosses a frozen plain under green aurora, wide-angle camera, slow forward motion, wind-blown snow, quiet cinematic tension.",
-        "videoSrc": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
+        "videoSrc": "https://assets.toolaze.com/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
         "videoLabel": "16:9 storyboard prompt example video"
       }
     ]

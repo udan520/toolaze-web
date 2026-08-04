@@ -16,8 +16,8 @@
     "desc": "촉각적 요소가 담긴 프롬프트나 참조 이미지를 활용해, 클로즈업 동작과 그에 어울리는 사운드가 포함된 짧은 ASMR 영상을 만들어 보세요. 소재, 동작, 카메라 구도, 속도, 사운드 특성을 설명한 뒤, 입력 내용과 오디오, 품질 요구 사항에 가장 적합한 Toolaze 영상 모델을 선택하면 됩니다."
   },
   "heroDemoVideo": {
-    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/ai-asmr-video-generator/demo.mp4",
-    "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/ai-asmr-video-generator/demo-poster.webp",
+    "src": "https://assets.toolaze.com/landing-pages/ai-asmr-video-generator/demo.mp4",
+    "poster": "https://assets.toolaze.com/landing-pages/ai-asmr-video-generator/demo-poster.webp",
     "ariaLabel": "AI로 생성된 ASMR 데모 영상"
   },
   "sectionsOrder": [

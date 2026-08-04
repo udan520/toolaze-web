@@ -10,7 +10,7 @@ const templateExamples: WorldCupTemplateItem[] = [
   {
     id: 'fan-poster',
     title: 'Match-day Fan Poster',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d67aebd7cde5431abd3a7bb74a89bac1.webp',
+    image: 'https://assets.toolaze.com/uploads/d67aebd7cde5431abd3a7bb74a89bac1.webp',
     referenceImage: '/model-assets/world-cup-2026/references/male-reference.webp',
     width: 358,
     height: 357,
@@ -21,7 +21,7 @@ const templateExamples: WorldCupTemplateItem[] = [
   {
     id: 'fan-edit',
     title: 'Neon Fan Edit Poster',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/783fea34e35f4f888e5255a60c04270e.webp',
+    image: 'https://assets.toolaze.com/uploads/783fea34e35f4f888e5255a60c04270e.webp',
     referenceImage: '/model-assets/world-cup-2026/references/female-reference.webp',
     width: 358,
     height: 357,
@@ -32,7 +32,7 @@ const templateExamples: WorldCupTemplateItem[] = [
   {
     id: 'sticker-pack',
     title: 'Football Fan Sticker Pack',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ca0e08fb103044ca9adb4d2d2b18760e.webp',
+    image: 'https://assets.toolaze.com/uploads/ca0e08fb103044ca9adb4d2d2b18760e.webp',
     width: 342,
     height: 357,
     prompt:
@@ -42,7 +42,7 @@ const templateExamples: WorldCupTemplateItem[] = [
   {
     id: 'retro-travel-poster',
     title: 'Retro Football Travel Poster',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/8a58b45bd05a4f26a9dda7417a62988d.webp',
+    image: 'https://assets.toolaze.com/uploads/8a58b45bd05a4f26a9dda7417a62988d.webp',
     width: 354,
     height: 357,
     prompt:
@@ -55,7 +55,7 @@ const expandedTemplateExamples: WorldCupTemplateItem[] = [
   {
     id: 'wc-001',
     title: 'Match Day Portrait',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/db6519460bc4499f8f30686c9c86d37a.webp',
+    image: 'https://assets.toolaze.com/uploads/db6519460bc4499f8f30686c9c86d37a.webp',
     referenceImage: '/model-assets/world-cup-2026/references/female-reference.webp',
     width: 900,
     height: 1200,
@@ -66,7 +66,7 @@ const expandedTemplateExamples: WorldCupTemplateItem[] = [
   {
     id: 'wc-002',
     title: 'Goal Reaction Cover',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/a9cbf924ac1d4350b7f4c23a2f8a73ca.webp',
+    image: 'https://assets.toolaze.com/uploads/a9cbf924ac1d4350b7f4c23a2f8a73ca.webp',
     referenceImage: '/model-assets/world-cup-2026/references/female-reference.webp',
     width: 900,
     height: 1200,
@@ -77,7 +77,7 @@ const expandedTemplateExamples: WorldCupTemplateItem[] = [
   {
     id: 'wc-003',
     title: 'We Won Celebration',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/7344ccda81cf44a6b19207563217f1ff.webp',
+    image: 'https://assets.toolaze.com/uploads/7344ccda81cf44a6b19207563217f1ff.webp',
     referenceImage: '/model-assets/world-cup-2026/references/female-reference.webp',
     width: 900,
     height: 1200,
@@ -88,7 +88,7 @@ const expandedTemplateExamples: WorldCupTemplateItem[] = [
   {
     id: 'wc-004',
     title: 'Missed Chance Meme',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/48f662d750c149bf86e43cab177ea14e.webp',
+    image: 'https://assets.toolaze.com/uploads/48f662d750c149bf86e43cab177ea14e.webp',
     referenceImage: '/model-assets/world-cup-2026/references/female-reference.webp',
     width: 900,
     height: 1200,
@@ -99,7 +99,7 @@ const expandedTemplateExamples: WorldCupTemplateItem[] = [
   {
     id: 'wc-005',
     title: 'Fan Cam Moment',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d5f3e94971ac41dd8629e3e5a1867469.webp',
+    image: 'https://assets.toolaze.com/uploads/d5f3e94971ac41dd8629e3e5a1867469.webp',
     referenceImage: '/model-assets/world-cup-2026/references/female-reference.webp',
     width: 900,
     height: 1200,
@@ -110,7 +110,7 @@ const expandedTemplateExamples: WorldCupTemplateItem[] = [
   {
     id: 'wc-006',
     title: 'Fan Zone Selfie',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/699001c5d5134451a47a728379808bc7.webp',
+    image: 'https://assets.toolaze.com/uploads/699001c5d5134451a47a728379808bc7.webp',
     referenceImage: '/model-assets/world-cup-2026/references/female-reference.webp',
     width: 900,
     height: 1200,
@@ -121,7 +121,7 @@ const expandedTemplateExamples: WorldCupTemplateItem[] = [
   {
     id: 'wc-007',
     title: 'Watch Party Flyer',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/6c314678235c4471b30198358e437718.webp',
+    image: 'https://assets.toolaze.com/uploads/6c314678235c4471b30198358e437718.webp',
     referenceImage: '/model-assets/world-cup-2026/references/female-reference.webp',
     width: 900,
     height: 1200,
@@ -132,7 +132,7 @@ const expandedTemplateExamples: WorldCupTemplateItem[] = [
   {
     id: 'wc-008',
     title: '2026 Fan Kit Stickers',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/c859f0681f114bcfbbce5b2fde5a4031.webp',
+    image: 'https://assets.toolaze.com/uploads/c859f0681f114bcfbbce5b2fde5a4031.webp',
     width: 900,
     height: 1200,
     prompt:
@@ -142,7 +142,7 @@ const expandedTemplateExamples: WorldCupTemplateItem[] = [
   {
     id: 'wc-009',
     title: 'Circular Fan Badge',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/be7bc6e349f4483495224805adef2fd6.webp',
+    image: 'https://assets.toolaze.com/uploads/be7bc6e349f4483495224805adef2fd6.webp',
     referenceImage: '/model-assets/world-cup-2026/references/female-reference.webp',
     width: 900,
     height: 1200,
@@ -153,7 +153,7 @@ const expandedTemplateExamples: WorldCupTemplateItem[] = [
   {
     id: 'wc-010',
     title: 'Fan Grid Collage',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/2111d3bcc8b34669b32fcb82c1da1586.webp',
+    image: 'https://assets.toolaze.com/uploads/2111d3bcc8b34669b32fcb82c1da1586.webp',
     referenceImage: '/model-assets/world-cup-2026/references/female-reference.webp',
     width: 900,
     height: 1200,
@@ -164,7 +164,7 @@ const expandedTemplateExamples: WorldCupTemplateItem[] = [
   {
     id: 'wc-011',
     title: 'Victory Selfie',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/6fe08b26cd174bd3aaed3769719d2e71.webp',
+    image: 'https://assets.toolaze.com/uploads/6fe08b26cd174bd3aaed3769719d2e71.webp',
     referenceImage: '/model-assets/world-cup-2026/references/female-reference.webp',
     width: 900,
     height: 1200,
@@ -175,7 +175,7 @@ const expandedTemplateExamples: WorldCupTemplateItem[] = [
   {
     id: 'wc-012',
     title: 'Kickoff Countdown',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/a5047cc289d048c192ff0ac3a1a44b5a.webp',
+    image: 'https://assets.toolaze.com/uploads/a5047cc289d048c192ff0ac3a1a44b5a.webp',
     referenceImage: '/model-assets/world-cup-2026/references/female-reference.webp',
     width: 900,
     height: 1200,
@@ -186,7 +186,7 @@ const expandedTemplateExamples: WorldCupTemplateItem[] = [
   {
     id: 'wc-013',
     title: 'Stadium Spotlight Poster',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/0997028671e64a65814a64e198d35c0c.webp',
+    image: 'https://assets.toolaze.com/uploads/0997028671e64a65814a64e198d35c0c.webp',
     referenceImage: '/model-assets/world-cup-2026/references/female-reference.webp',
     width: 900,
     height: 1200,
@@ -197,7 +197,7 @@ const expandedTemplateExamples: WorldCupTemplateItem[] = [
   {
     id: 'wc-014',
     title: 'Scoreless Stress Meme',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/6e0a5e563a5c4da2a5fce1e4a664a3dc.webp',
+    image: 'https://assets.toolaze.com/uploads/6e0a5e563a5c4da2a5fce1e4a664a3dc.webp',
     referenceImage: '/model-assets/world-cup-2026/references/female-reference.webp',
     width: 900,
     height: 1200,
@@ -208,7 +208,7 @@ const expandedTemplateExamples: WorldCupTemplateItem[] = [
   {
     id: 'wc-015',
     title: 'Fit Check Poster',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/2db131ad037949a1a1029a1e6a52826e.webp',
+    image: 'https://assets.toolaze.com/uploads/2db131ad037949a1a1029a1e6a52826e.webp',
     referenceImage: '/model-assets/world-cup-2026/references/female-reference.webp',
     width: 900,
     height: 1200,
@@ -219,7 +219,7 @@ const expandedTemplateExamples: WorldCupTemplateItem[] = [
   {
     id: 'wc-016',
     title: 'Fan Card',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/6a2e10f174744e268760e4bbb317604c.webp',
+    image: 'https://assets.toolaze.com/uploads/6a2e10f174744e268760e4bbb317604c.webp',
     referenceImage: '/model-assets/world-cup-2026/references/female-reference.webp',
     width: 900,
     height: 1200,
@@ -230,7 +230,7 @@ const expandedTemplateExamples: WorldCupTemplateItem[] = [
   {
     id: 'wc-017',
     title: 'Mood Pack Template',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/031284ca000547d7a8972e0289c48858.webp',
+    image: 'https://assets.toolaze.com/uploads/031284ca000547d7a8972e0289c48858.webp',
     referenceImage: '/model-assets/world-cup-2026/references/female-reference.webp',
     width: 900,
     height: 1200,
@@ -241,7 +241,7 @@ const expandedTemplateExamples: WorldCupTemplateItem[] = [
   {
     id: 'wc-018',
     title: 'Street Parade Poster',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/249aad1df887448fa31fc38d812df4f3.webp',
+    image: 'https://assets.toolaze.com/uploads/249aad1df887448fa31fc38d812df4f3.webp',
     referenceImage: '/model-assets/world-cup-2026/references/female-reference.webp',
     width: 900,
     height: 1200,
@@ -252,7 +252,7 @@ const expandedTemplateExamples: WorldCupTemplateItem[] = [
   {
     id: 'wc-019',
     title: 'Match Day Dump',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/0b914c9e68d141228051269dbcf89f2d.webp',
+    image: 'https://assets.toolaze.com/uploads/0b914c9e68d141228051269dbcf89f2d.webp',
     referenceImage: '/model-assets/world-cup-2026/references/female-reference.webp',
     width: 900,
     height: 1200,
@@ -263,7 +263,7 @@ const expandedTemplateExamples: WorldCupTemplateItem[] = [
   {
     id: 'wc-020',
     title: 'We Did It Poster',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/60a39626267f4f8d84b87c7251a646d7.webp',
+    image: 'https://assets.toolaze.com/uploads/60a39626267f4f8d84b87c7251a646d7.webp',
     referenceImage: '/model-assets/world-cup-2026/references/female-reference.webp',
     width: 900,
     height: 1200,
@@ -274,7 +274,7 @@ const expandedTemplateExamples: WorldCupTemplateItem[] = [
   {
     id: 'wc-021',
     title: 'Match Draw Ticket',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/026fff5f46344690a9857a36f7883ad6.webp',
+    image: 'https://assets.toolaze.com/uploads/026fff5f46344690a9857a36f7883ad6.webp',
     referenceImage: '/model-assets/world-cup-2026/references/female-reference.webp',
     width: 900,
     height: 1200,
@@ -285,7 +285,7 @@ const expandedTemplateExamples: WorldCupTemplateItem[] = [
   {
     id: 'wc-022',
     title: 'Fan Bingo Sheet',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/334cf8ded71146f091633668119122d0.webp',
+    image: 'https://assets.toolaze.com/uploads/334cf8ded71146f091633668119122d0.webp',
     width: 760,
     height: 1013,
     prompt:
@@ -295,7 +295,7 @@ const expandedTemplateExamples: WorldCupTemplateItem[] = [
   {
     id: 'wc-023',
     title: 'Group Chat Reaction',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/e585c94e325e41748904bdddd3c34b75.webp',
+    image: 'https://assets.toolaze.com/uploads/e585c94e325e41748904bdddd3c34b75.webp',
     referenceImage: '/model-assets/world-cup-2026/references/female-reference.webp',
     width: 860,
     height: 1147,
@@ -306,7 +306,7 @@ const expandedTemplateExamples: WorldCupTemplateItem[] = [
   {
     id: 'wc-024',
     title: 'Fan Face Challenge',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/1019cac311fb4492b218ad32a3fafe38.webp',
+    image: 'https://assets.toolaze.com/uploads/1019cac311fb4492b218ad32a3fafe38.webp',
     referenceImage: '/model-assets/world-cup-2026/references/female-reference.webp',
     width: 820,
     height: 1093,
@@ -317,7 +317,7 @@ const expandedTemplateExamples: WorldCupTemplateItem[] = [
   {
     id: 'wc-025',
     title: 'Snack Time Kickoff',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/69ee0d79863a4ae59b3e4b2656ab3fb3.webp',
+    image: 'https://assets.toolaze.com/uploads/69ee0d79863a4ae59b3e4b2656ab3fb3.webp',
     referenceImage: '/model-assets/world-cup-2026/references/female-reference.webp',
     width: 900,
     height: 1200,
@@ -328,7 +328,7 @@ const expandedTemplateExamples: WorldCupTemplateItem[] = [
   {
     id: 'wc-026',
     title: 'Fan Issue Cover',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/f490c22b63b7480197a1bd952b46f003.webp',
+    image: 'https://assets.toolaze.com/uploads/f490c22b63b7480197a1bd952b46f003.webp',
     referenceImage: '/model-assets/world-cup-2026/references/female-reference.webp',
     width: 900,
     height: 1200,
@@ -339,7 +339,7 @@ const expandedTemplateExamples: WorldCupTemplateItem[] = [
   {
     id: 'wc-027',
     title: 'Match Night Ticket',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/75d01eb7f5d64b609082565c96f967fc.webp',
+    image: 'https://assets.toolaze.com/uploads/75d01eb7f5d64b609082565c96f967fc.webp',
     width: 740,
     height: 987,
     prompt:
@@ -349,7 +349,7 @@ const expandedTemplateExamples: WorldCupTemplateItem[] = [
   {
     id: 'wc-028',
     title: 'Fan Wall Poster',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/63e046d0fa1f4830bfcd7e9e9218c6c0.webp',
+    image: 'https://assets.toolaze.com/uploads/63e046d0fa1f4830bfcd7e9e9218c6c0.webp',
     referenceImage: '/model-assets/world-cup-2026/references/female-reference.webp',
     width: 860,
     height: 1147,
@@ -360,7 +360,7 @@ const expandedTemplateExamples: WorldCupTemplateItem[] = [
   {
     id: 'wc-029',
     title: 'Stadium Key Frame',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/af54a7d07fb3456998a878bd4997e04b.webp',
+    image: 'https://assets.toolaze.com/uploads/af54a7d07fb3456998a878bd4997e04b.webp',
     width: 900,
     height: 1200,
     prompt:
@@ -373,7 +373,7 @@ const latestGeneratedTemplateExamples: WorldCupTemplateItem[] = [
   {
     id: 'wc-030',
     title: 'Country Color Cheer Fan',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/world-cup-2026/templates/wc-030.webp',
+    image: 'https://assets.toolaze.com/uploads/world-cup-2026/templates/wc-030.webp',
     referenceImage: '/model-assets/world-cup-2026/selfie-references/selfie-001.webp',
     width: 900,
     height: 1200,
@@ -384,7 +384,7 @@ const latestGeneratedTemplateExamples: WorldCupTemplateItem[] = [
   {
     id: 'wc-031',
     title: 'Face Flag Sticker Selfie',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/world-cup-2026/templates/wc-031.webp',
+    image: 'https://assets.toolaze.com/uploads/world-cup-2026/templates/wc-031.webp',
     referenceImage: '/model-assets/world-cup-2026/selfie-references/selfie-002.webp',
     width: 900,
     height: 1200,
@@ -395,7 +395,7 @@ const latestGeneratedTemplateExamples: WorldCupTemplateItem[] = [
   {
     id: 'wc-032',
     title: 'Fan Paint Close-Up',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/world-cup-2026/templates/wc-032.webp',
+    image: 'https://assets.toolaze.com/uploads/world-cup-2026/templates/wc-032.webp',
     referenceImage: '/model-assets/world-cup-2026/selfie-references/selfie-003.webp',
     width: 900,
     height: 1200,
@@ -406,7 +406,7 @@ const latestGeneratedTemplateExamples: WorldCupTemplateItem[] = [
   {
     id: 'wc-033',
     title: 'Match Day Cheer Poster',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/world-cup-2026/templates/wc-033.webp',
+    image: 'https://assets.toolaze.com/uploads/world-cup-2026/templates/wc-033.webp',
     referenceImage: '/model-assets/world-cup-2026/selfie-references/selfie-004.webp',
     width: 900,
     height: 1200,
@@ -417,7 +417,7 @@ const latestGeneratedTemplateExamples: WorldCupTemplateItem[] = [
   {
     id: 'wc-034',
     title: 'Flag Sticker Photo Booth',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/world-cup-2026/templates/wc-034.webp',
+    image: 'https://assets.toolaze.com/uploads/world-cup-2026/templates/wc-034.webp',
     referenceImage: '/model-assets/world-cup-2026/selfie-references/selfie-005.webp',
     width: 900,
     height: 1200,
@@ -428,7 +428,7 @@ const latestGeneratedTemplateExamples: WorldCupTemplateItem[] = [
   {
     id: 'wc-035',
     title: 'Street Fan Parade',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/world-cup-2026/templates/wc-035.webp',
+    image: 'https://assets.toolaze.com/uploads/world-cup-2026/templates/wc-035.webp',
     referenceImage: '/model-assets/world-cup-2026/selfie-references/selfie-006.webp',
     width: 900,
     height: 1200,
@@ -439,7 +439,7 @@ const latestGeneratedTemplateExamples: WorldCupTemplateItem[] = [
   {
     id: 'wc-036',
     title: 'Couple Rival Fans',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/world-cup-2026/templates/wc-036.webp',
+    image: 'https://assets.toolaze.com/uploads/world-cup-2026/templates/wc-036.webp',
     referenceImage: '/model-assets/world-cup-2026/selfie-references/selfie-007.webp',
     width: 900,
     height: 1200,
@@ -450,7 +450,7 @@ const latestGeneratedTemplateExamples: WorldCupTemplateItem[] = [
   {
     id: 'wc-037',
     title: 'Best Friends Fan Selfie',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/world-cup-2026/templates/wc-037.webp',
+    image: 'https://assets.toolaze.com/uploads/world-cup-2026/templates/wc-037.webp',
     referenceImage: '/model-assets/world-cup-2026/selfie-references/selfie-008.webp',
     width: 900,
     height: 1200,
@@ -461,7 +461,7 @@ const latestGeneratedTemplateExamples: WorldCupTemplateItem[] = [
   {
     id: 'wc-038',
     title: 'Beauty Fan Close-Up',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/world-cup-2026/templates/wc-038.webp',
+    image: 'https://assets.toolaze.com/uploads/world-cup-2026/templates/wc-038.webp',
     referenceImage: '/model-assets/world-cup-2026/selfie-references/selfie-009.webp',
     width: 900,
     height: 1200,
@@ -472,7 +472,7 @@ const latestGeneratedTemplateExamples: WorldCupTemplateItem[] = [
   {
     id: 'wc-039',
     title: 'Split Nation Colors',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/world-cup-2026/templates/wc-039.webp',
+    image: 'https://assets.toolaze.com/uploads/world-cup-2026/templates/wc-039.webp',
     referenceImage: '/model-assets/world-cup-2026/selfie-references/selfie-010.webp',
     width: 900,
     height: 1200,
@@ -483,7 +483,7 @@ const latestGeneratedTemplateExamples: WorldCupTemplateItem[] = [
   {
     id: 'wc-040',
     title: 'Fan ID Badge',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/world-cup-2026/templates/wc-040.webp',
+    image: 'https://assets.toolaze.com/uploads/world-cup-2026/templates/wc-040.webp',
     referenceImage: '/model-assets/world-cup-2026/selfie-references/selfie-young-001.webp',
     width: 900,
     height: 1200,
@@ -494,7 +494,7 @@ const latestGeneratedTemplateExamples: WorldCupTemplateItem[] = [
   {
     id: 'wc-041',
     title: 'Match Day Newspaper',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/world-cup-2026/templates/wc-041.webp',
+    image: 'https://assets.toolaze.com/uploads/world-cup-2026/templates/wc-041.webp',
     referenceImage: '/model-assets/world-cup-2026/selfie-references/selfie-young-002.webp',
     width: 768,
     height: 1024,
@@ -505,7 +505,7 @@ const latestGeneratedTemplateExamples: WorldCupTemplateItem[] = [
   {
     id: 'wc-042',
     title: 'AR Face Filter Preview',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/world-cup-2026/templates/wc-042.webp',
+    image: 'https://assets.toolaze.com/uploads/world-cup-2026/templates/wc-042.webp',
     referenceImage: '/model-assets/world-cup-2026/selfie-references/selfie-young-003.webp',
     width: 900,
     height: 1200,
@@ -516,7 +516,7 @@ const latestGeneratedTemplateExamples: WorldCupTemplateItem[] = [
   {
     id: 'wc-043',
     title: 'Vinyl Record Cover',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/world-cup-2026/templates/wc-043.webp',
+    image: 'https://assets.toolaze.com/uploads/world-cup-2026/templates/wc-043.webp',
     referenceImage: '/model-assets/world-cup-2026/selfie-references/selfie-young-004.webp',
     width: 900,
     height: 1200,
@@ -527,7 +527,7 @@ const latestGeneratedTemplateExamples: WorldCupTemplateItem[] = [
   {
     id: 'wc-044',
     title: 'Museum Guide Card',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/world-cup-2026/templates/wc-044.webp',
+    image: 'https://assets.toolaze.com/uploads/world-cup-2026/templates/wc-044.webp',
     referenceImage: '/model-assets/world-cup-2026/selfie-references/selfie-young-005.webp',
     width: 900,
     height: 1200,
@@ -538,7 +538,7 @@ const latestGeneratedTemplateExamples: WorldCupTemplateItem[] = [
   {
     id: 'wc-045',
     title: 'Airport Boarding Pass',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/world-cup-2026/templates/wc-045.webp',
+    image: 'https://assets.toolaze.com/uploads/world-cup-2026/templates/wc-045.webp',
     referenceImage: '/model-assets/world-cup-2026/selfie-references/selfie-young-006.webp',
     width: 900,
     height: 1200,
@@ -549,7 +549,7 @@ const latestGeneratedTemplateExamples: WorldCupTemplateItem[] = [
   {
     id: 'wc-046',
     title: 'Comic Panel Reaction',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/world-cup-2026/templates/wc-046.webp',
+    image: 'https://assets.toolaze.com/uploads/world-cup-2026/templates/wc-046.webp',
     referenceImage: '/model-assets/world-cup-2026/selfie-references/selfie-young-007.webp',
     width: 900,
     height: 1200,
@@ -560,7 +560,7 @@ const latestGeneratedTemplateExamples: WorldCupTemplateItem[] = [
   {
     id: 'wc-047',
     title: 'Breakfast Table Preview',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/world-cup-2026/templates/wc-047.webp',
+    image: 'https://assets.toolaze.com/uploads/world-cup-2026/templates/wc-047.webp',
     referenceImage: '/model-assets/world-cup-2026/selfie-references/selfie-young-008.webp',
     width: 900,
     height: 1200,
@@ -571,7 +571,7 @@ const latestGeneratedTemplateExamples: WorldCupTemplateItem[] = [
   {
     id: 'wc-048',
     title: 'Minimal Swiss Poster',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/world-cup-2026/templates/wc-048.webp',
+    image: 'https://assets.toolaze.com/uploads/world-cup-2026/templates/wc-048.webp',
     referenceImage: '/model-assets/world-cup-2026/selfie-references/selfie-young-009.webp',
     width: 816,
     height: 1088,
@@ -582,7 +582,7 @@ const latestGeneratedTemplateExamples: WorldCupTemplateItem[] = [
   {
     id: 'wc-049',
     title: 'Fan Trading Card Foil',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/world-cup-2026/templates/wc-049.webp',
+    image: 'https://assets.toolaze.com/uploads/world-cup-2026/templates/wc-049.webp',
     referenceImage: '/model-assets/world-cup-2026/selfie-references/selfie-young-010.webp',
     width: 900,
     height: 1200,
@@ -686,7 +686,7 @@ export default async function WorldCupAiImageGeneratorPageContent({ locale = 'en
                 heroDescription={copy.hero.description}
                 sampleImages={[
                   {
-                    url: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/world-cup-2026/templates/wc-030.webp',
+                    url: 'https://assets.toolaze.com/uploads/world-cup-2026/templates/wc-030.webp',
                     title: 'World Cup fan portrait sample output',
                     width: 900,
                     height: 1200,

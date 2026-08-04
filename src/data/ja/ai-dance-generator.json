@@ -19,7 +19,7 @@
     },
     "sampleImages": [
       {
-        "url": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/ai-dance-demo.mp4",
+        "url": "https://assets.toolaze.com/model-assets/ai-dance-generator/ai-dance-demo.mp4",
         "title": "AIダンス動画デモ",
         "width": 16,
         "height": 9,
@@ -28,7 +28,7 @@
     ],
     "defaultVideoDurationSeconds": 5,
     "defaultImageUrls": [
-      "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/ai-dance-demo-source.png"
+      "https://assets.toolaze.com/model-assets/ai-dance-generator/ai-dance-demo-source.png"
     ]
   },
   "metadata": {
@@ -73,35 +73,35 @@
         "prompt": "画像の人物にシンプルなヒップホップダンスをさせてください。",
         "note": "レッスン告知、音楽クリップ、都会的なパフォーマンス案に向いています。",
         "color": "linear-gradient(135deg, #111827, #6366f1)",
-        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/prompt-hip-hop-stage.mp4"
+        "video": "https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-hip-hop-stage.mp4"
       },
       {
         "title": "優雅な動き",
         "prompt": "画像の人物に優雅なダンスをさせてください。",
         "note": "上品さ、バランス、きれいな身体のラインを見せたい動画に使えます。",
         "color": "linear-gradient(135deg, #f5d0fe, #7c3aed)",
-        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/prompt-ballet-motion.mp4"
+        "video": "https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-ballet-motion.mp4"
       },
       {
         "title": "K-Popパフォーマンス",
         "prompt": "画像の人物にK-Popダンスをさせてください。",
         "note": "エネルギーのあるファン編集、カバー、SNSキャンペーンクリップに向いています。",
         "color": "linear-gradient(135deg, #f9a8d4, #2563eb)",
-        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/prompt-k-pop-performance.mp4"
+        "video": "https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-k-pop-performance.mp4"
       },
       {
         "title": "明るいダンス",
         "prompt": "画像の人物に元気なダンスをさせてください。",
         "note": "サルサ、バチャータ、社交ダンス、ステージ案に使えます。",
         "color": "linear-gradient(135deg, #fecaca, #dc2626)",
-        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/prompt-latin-dance.mp4"
+        "video": "https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-latin-dance.mp4"
       },
       {
         "title": "ストリートダンス",
         "prompt": "画像の人物に街中でダンスをさせてください。",
         "note": "ダンスクルー、地域イベント、カジュアルなクリエイター動画に向いています。",
         "color": "linear-gradient(135deg, #bfdbfe, #0f766e)",
-        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/prompt-street-dance.mp4"
+        "video": "https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-street-dance.mp4"
       }
     ]
   },

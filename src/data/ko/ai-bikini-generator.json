@@ -33,80 +33,80 @@
           "label": "클래식 블랙 비키니",
           "group": "bikini-reference",
           "prompt": "이미지 1은 원본 인물 사진입니다. 이미지 2는 비키니 또는 수영복 참조 이미지입니다. 이미지 1에서 명확하게 보이는 각 인물의 보이는 의상만 이미지 2의 클래식한 검은색 트라이앵글 비키니(으)로 교체하세요. 이미지 1에 여러 사람이 있는 경우, 명확하게 보이는 각 인물에게 동일한 수영복 스타일을 적용하세요. 각 인물과 장면의 그 외 모든 것은 정확히 그대로 유지하세요: 얼굴, 정체성, 나이, 피부 톤, 머리카락, 체형, 신체 비율, 포즈, 손, 표정, 상대 위치, 배경, 조명, 카메라 각도, 구도, 이미지 품질. 날씬하게 만들지 말고, 확대하지 말고, 보정하지 말고, 체형을 바꾸지 말고, 포즈를 바꾸지 말고, 얼굴을 바꾸지 말고, 몸을 바꾸지 말고, 상대 위치를 바꾸지 말고, 장면을 수정하지 마세요. 이미지 2의 검은색 원단, 얇은 스트랩, 커버 범위, 상의 형태, 하의 형태, 실루엣을(를) 최대한 가깝게 맞추세요. 결과는 사실적이고 단정하며 노골적이지 않고 수영복 미리보기에 적합해야 합니다.",
-          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3d80ed2905334169b0a2d06d1f86c01d.webp",
-          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3d80ed2905334169b0a2d06d1f86c01d.webp",
+          "image": "https://assets.toolaze.com/uploads/3d80ed2905334169b0a2d06d1f86c01d.webp",
+          "referenceImage": "https://assets.toolaze.com/uploads/3d80ed2905334169b0a2d06d1f86c01d.webp",
           "swatch": "linear-gradient(135deg, #111827, #020617)"
         },
         {
           "label": "클래식 화이트 비키니",
           "group": "bikini-reference",
           "prompt": "이미지 1은 원본 인물 사진입니다. 이미지 2는 비키니 또는 수영복 참조 이미지입니다. 이미지 1에서 명확하게 보이는 각 인물의 보이는 의상만 이미지 2의 클래식한 흰색 트라이앵글 비키니(으)로 교체하세요. 이미지 1에 여러 사람이 있는 경우, 명확하게 보이는 각 인물에게 동일한 수영복 스타일을 적용하세요. 각 인물과 장면의 그 외 모든 것은 정확히 그대로 유지하세요: 얼굴, 정체성, 나이, 피부 톤, 머리카락, 체형, 신체 비율, 포즈, 손, 표정, 상대 위치, 배경, 조명, 카메라 각도, 구도, 이미지 품질. 날씬하게 만들지 말고, 확대하지 말고, 보정하지 말고, 체형을 바꾸지 말고, 포즈를 바꾸지 말고, 얼굴을 바꾸지 말고, 몸을 바꾸지 말고, 상대 위치를 바꾸지 말고, 장면을 수정하지 마세요. 이미지 2의 커버 범위, 얇은 스트랩, 깨끗한 흰색 원단, 상의 형태, 하의 형태, 실루엣을(를) 최대한 가깝게 맞추세요. 결과는 사실적이고 단정하며 노골적이지 않고 수영복 미리보기에 적합해야 합니다.",
-          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/95db19f5e40a4afa9cc89731f091a5ce.webp",
-          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/95db19f5e40a4afa9cc89731f091a5ce.webp",
+          "image": "https://assets.toolaze.com/uploads/95db19f5e40a4afa9cc89731f091a5ce.webp",
+          "referenceImage": "https://assets.toolaze.com/uploads/95db19f5e40a4afa9cc89731f091a5ce.webp",
           "swatch": "linear-gradient(135deg, #ffffff, #e5e7eb)"
         },
         {
           "label": "레드 하이웨이스트 비키니",
           "group": "bikini-reference",
           "prompt": "이미지 1은 원본 인물 사진입니다. 이미지 2는 비키니 또는 수영복 참조 이미지입니다. 이미지 1에서 명확하게 보이는 각 인물의 보이는 의상만 이미지 2의 빨간색 하이웨이스트 레트로 비키니(으)로 교체하세요. 이미지 1에 여러 사람이 있는 경우, 명확하게 보이는 각 인물에게 동일한 수영복 스타일을 적용하세요. 각 인물과 장면의 그 외 모든 것은 정확히 그대로 유지하세요: 얼굴, 정체성, 나이, 피부 톤, 머리카락, 체형, 신체 비율, 포즈, 손, 표정, 상대 위치, 배경, 조명, 카메라 각도, 구도, 이미지 품질. 날씬하게 만들지 말고, 확대하지 말고, 보정하지 말고, 체형을 바꾸지 말고, 포즈를 바꾸지 말고, 얼굴을 바꾸지 말고, 몸을 바꾸지 말고, 상대 위치를 바꾸지 말고, 장면을 수정하지 마세요. 이미지 2의 하이웨이스트 라인, 지지력 있는 상의, 깔끔한 솔기, 빨간 원단, 커버 범위, 실루엣을(를) 최대한 가깝게 맞추세요. 결과는 사실적이고 단정하며 노골적이지 않고 수영복 미리보기에 적합해야 합니다.",
-          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3028cca8904b49249b517c0ef32386ee.webp",
-          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3028cca8904b49249b517c0ef32386ee.webp",
+          "image": "https://assets.toolaze.com/uploads/3028cca8904b49249b517c0ef32386ee.webp",
+          "referenceImage": "https://assets.toolaze.com/uploads/3028cca8904b49249b517c0ef32386ee.webp",
           "swatch": "linear-gradient(135deg, #ef4444, #991b1b)"
         },
         {
           "label": "네이비 마린 비키니",
           "group": "bikini-reference",
           "prompt": "이미지 1은 원본 인물 사진입니다. 이미지 2는 비키니 또는 수영복 참조 이미지입니다. 이미지 1에서 명확하게 보이는 각 인물의 보이는 의상만 이미지 2의 네이비 마린 비키니(으)로 교체하세요. 이미지 1에 여러 사람이 있는 경우, 명확하게 보이는 각 인물에게 동일한 수영복 스타일을 적용하세요. 각 인물과 장면의 그 외 모든 것은 정확히 그대로 유지하세요: 얼굴, 정체성, 나이, 피부 톤, 머리카락, 체형, 신체 비율, 포즈, 손, 표정, 상대 위치, 배경, 조명, 카메라 각도, 구도, 이미지 품질. 날씬하게 만들지 말고, 확대하지 말고, 보정하지 말고, 체형을 바꾸지 말고, 포즈를 바꾸지 말고, 얼굴을 바꾸지 말고, 몸을 바꾸지 말고, 상대 위치를 바꾸지 말고, 장면을 수정하지 마세요. 이미지 2의 네이비 색상, 흰색 트림 또는 스트라이프 디테일, 스트랩, 커버 범위, 원단, 실루엣을(를) 최대한 가깝게 맞추세요. 결과는 사실적이고 단정하며 노골적이지 않고 수영복 미리보기에 적합해야 합니다.",
-          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3312de502e7344c493d7aaa3796ef6fc.webp",
-          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3312de502e7344c493d7aaa3796ef6fc.webp",
+          "image": "https://assets.toolaze.com/uploads/3312de502e7344c493d7aaa3796ef6fc.webp",
+          "referenceImage": "https://assets.toolaze.com/uploads/3312de502e7344c493d7aaa3796ef6fc.webp",
           "swatch": "linear-gradient(135deg, #1e3a8a, #f8fafc)"
         },
         {
           "label": "트로피컬 플로럴 비키니",
           "group": "bikini-reference",
           "prompt": "이미지 1은 원본 인물 사진입니다. 이미지 2는 비키니 또는 수영복 참조 이미지입니다. 이미지 1에서 명확하게 보이는 각 인물의 보이는 의상만 이미지 2의 트로피컬 플로럴 비키니(으)로 교체하세요. 이미지 1에 여러 사람이 있는 경우, 명확하게 보이는 각 인물에게 동일한 수영복 스타일을 적용하세요. 각 인물과 장면의 그 외 모든 것은 정확히 그대로 유지하세요: 얼굴, 정체성, 나이, 피부 톤, 머리카락, 체형, 신체 비율, 포즈, 손, 표정, 상대 위치, 배경, 조명, 카메라 각도, 구도, 이미지 품질. 날씬하게 만들지 말고, 확대하지 말고, 보정하지 말고, 체형을 바꾸지 말고, 포즈를 바꾸지 말고, 얼굴을 바꾸지 말고, 몸을 바꾸지 말고, 상대 위치를 바꾸지 말고, 장면을 수정하지 마세요. 이미지 2의 식물 무늬, 색상 팔레트, 스트랩, 커버 범위, 원단, 실루엣을(를) 최대한 가깝게 맞추세요. 결과는 사실적이고 단정하며 노골적이지 않고 수영복 미리보기에 적합해야 합니다.",
-          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/bad0f5902cb643df87a8fe34210dc99c.webp",
-          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/bad0f5902cb643df87a8fe34210dc99c.webp",
+          "image": "https://assets.toolaze.com/uploads/bad0f5902cb643df87a8fe34210dc99c.webp",
+          "referenceImage": "https://assets.toolaze.com/uploads/bad0f5902cb643df87a8fe34210dc99c.webp",
           "swatch": "linear-gradient(135deg, #22c55e, #f97316, #f43f5e)"
         },
         {
           "label": "스포티 틸 비키니",
           "group": "bikini-reference",
           "prompt": "이미지 1은 원본 인물 사진입니다. 이미지 2는 비키니 또는 수영복 참조 이미지입니다. 이미지 1에서 명확하게 보이는 각 인물의 보이는 의상만 이미지 2의 스포티한 틸 컬러 레이서백풍 비키니(으)로 교체하세요. 이미지 1에 여러 사람이 있는 경우, 명확하게 보이는 각 인물에게 동일한 수영복 스타일을 적용하세요. 각 인물과 장면의 그 외 모든 것은 정확히 그대로 유지하세요: 얼굴, 정체성, 나이, 피부 톤, 머리카락, 체형, 신체 비율, 포즈, 손, 표정, 상대 위치, 배경, 조명, 카메라 각도, 구도, 이미지 품질. 날씬하게 만들지 말고, 확대하지 말고, 보정하지 말고, 체형을 바꾸지 말고, 포즈를 바꾸지 말고, 얼굴을 바꾸지 말고, 몸을 바꾸지 말고, 상대 위치를 바꾸지 말고, 장면을 수정하지 마세요. 이미지 2의 스포티한 상의 형태, 틸 색상, 안정적인 스트랩, 커버 범위, 원단, 실루엣을(를) 최대한 가깝게 맞추세요. 결과는 사실적이고 단정하며 노골적이지 않고 수영복 미리보기에 적합해야 합니다.",
-          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/49b1ef80a71344b6990bc71150c35644.webp",
-          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/49b1ef80a71344b6990bc71150c35644.webp",
+          "image": "https://assets.toolaze.com/uploads/49b1ef80a71344b6990bc71150c35644.webp",
+          "referenceImage": "https://assets.toolaze.com/uploads/49b1ef80a71344b6990bc71150c35644.webp",
           "swatch": "linear-gradient(135deg, #0f766e, #22d3ee)"
         },
         {
           "label": "옐로 리브드 비키니",
           "group": "bikini-reference",
           "prompt": "이미지 1은 원본 인물 사진입니다. 이미지 2는 비키니 또는 수영복 참조 이미지입니다. 이미지 1에서 명확하게 보이는 각 인물의 보이는 의상만 이미지 2의 노란색 리브 조직 비키니(으)로 교체하세요. 이미지 1에 여러 사람이 있는 경우, 명확하게 보이는 각 인물에게 동일한 수영복 스타일을 적용하세요. 각 인물과 장면의 그 외 모든 것은 정확히 그대로 유지하세요: 얼굴, 정체성, 나이, 피부 톤, 머리카락, 체형, 신체 비율, 포즈, 손, 표정, 상대 위치, 배경, 조명, 카메라 각도, 구도, 이미지 품질. 날씬하게 만들지 말고, 확대하지 말고, 보정하지 말고, 체형을 바꾸지 말고, 포즈를 바꾸지 말고, 얼굴을 바꾸지 말고, 몸을 바꾸지 말고, 상대 위치를 바꾸지 말고, 장면을 수정하지 마세요. 이미지 2의 따뜻한 노란색, 리브 원단 질감, 스트랩, 커버 범위, 원단, 실루엣을(를) 최대한 가깝게 맞추세요. 결과는 사실적이고 단정하며 노골적이지 않고 수영복 미리보기에 적합해야 합니다.",
-          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/f2eadccf020a4fe1a733b91335d23ceb.webp",
-          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/f2eadccf020a4fe1a733b91335d23ceb.webp",
+          "image": "https://assets.toolaze.com/uploads/f2eadccf020a4fe1a733b91335d23ceb.webp",
+          "referenceImage": "https://assets.toolaze.com/uploads/f2eadccf020a4fe1a733b91335d23ceb.webp",
           "swatch": "linear-gradient(135deg, #facc15, #f59e0b)"
         },
         {
           "label": "원숄더 코럴 비키니",
           "group": "bikini-reference",
           "prompt": "이미지 1은 원본 인물 사진입니다. 이미지 2는 비키니 또는 수영복 참조 이미지입니다. 이미지 1에서 명확하게 보이는 각 인물의 보이는 의상만 이미지 2의 코럴 컬러 원숄더 비키니(으)로 교체하세요. 이미지 1에 여러 사람이 있는 경우, 명확하게 보이는 각 인물에게 동일한 수영복 스타일을 적용하세요. 각 인물과 장면의 그 외 모든 것은 정확히 그대로 유지하세요: 얼굴, 정체성, 나이, 피부 톤, 머리카락, 체형, 신체 비율, 포즈, 손, 표정, 상대 위치, 배경, 조명, 카메라 각도, 구도, 이미지 품질. 날씬하게 만들지 말고, 확대하지 말고, 보정하지 말고, 체형을 바꾸지 말고, 포즈를 바꾸지 말고, 얼굴을 바꾸지 말고, 몸을 바꾸지 말고, 상대 위치를 바꾸지 말고, 장면을 수정하지 마세요. 이미지 2의 원숄더 상의 형태, 코럴 색상, 비대칭 네크라인, 커버 범위, 원단, 실루엣을(를) 최대한 가깝게 맞추세요. 결과는 사실적이고 단정하며 노골적이지 않고 수영복 미리보기에 적합해야 합니다.",
-          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/5020adfd323e4cf9a3fd7154e243a1b0.webp",
-          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/5020adfd323e4cf9a3fd7154e243a1b0.webp",
+          "image": "https://assets.toolaze.com/uploads/5020adfd323e4cf9a3fd7154e243a1b0.webp",
+          "referenceImage": "https://assets.toolaze.com/uploads/5020adfd323e4cf9a3fd7154e243a1b0.webp",
           "swatch": "linear-gradient(135deg, #fb7185, #f97316)"
         },
         {
           "label": "에메랄드 랩 비키니",
           "group": "bikini-reference",
           "prompt": "이미지 1은 원본 인물 사진입니다. 이미지 2는 비키니 또는 수영복 참조 이미지입니다. 이미지 1에서 명확하게 보이는 각 인물의 보이는 의상만 이미지 2의 에메랄드 그린 랩 디테일 비키니(으)로 교체하세요. 이미지 1에 여러 사람이 있는 경우, 명확하게 보이는 각 인물에게 동일한 수영복 스타일을 적용하세요. 각 인물과 장면의 그 외 모든 것은 정확히 그대로 유지하세요: 얼굴, 정체성, 나이, 피부 톤, 머리카락, 체형, 신체 비율, 포즈, 손, 표정, 상대 위치, 배경, 조명, 카메라 각도, 구도, 이미지 품질. 날씬하게 만들지 말고, 확대하지 말고, 보정하지 말고, 체형을 바꾸지 말고, 포즈를 바꾸지 말고, 얼굴을 바꾸지 말고, 몸을 바꾸지 말고, 상대 위치를 바꾸지 말고, 장면을 수정하지 마세요. 이미지 2의 랩 스타일 상의 디테일, 에메랄드 색상, 스트랩, 커버 범위, 원단, 실루엣을(를) 최대한 가깝게 맞추세요. 결과는 사실적이고 단정하며 노골적이지 않고 수영복 미리보기에 적합해야 합니다.",
-          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/cb70d59d82a6425a9e02350f87f3acec.webp",
-          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/cb70d59d82a6425a9e02350f87f3acec.webp",
+          "image": "https://assets.toolaze.com/uploads/cb70d59d82a6425a9e02350f87f3acec.webp",
+          "referenceImage": "https://assets.toolaze.com/uploads/cb70d59d82a6425a9e02350f87f3acec.webp",
           "swatch": "linear-gradient(135deg, #047857, #10b981)"
         },
         {
           "label": "라벤더 스캘럽 비키니",
           "group": "bikini-reference",
           "prompt": "이미지 1은 원본 인물 사진입니다. 이미지 2는 비키니 또는 수영복 참조 이미지입니다. 이미지 1에서 명확하게 보이는 각 인물의 보이는 의상만 이미지 2의 라벤더 스캘럽 엣지 비키니(으)로 교체하세요. 이미지 1에 여러 사람이 있는 경우, 명확하게 보이는 각 인물에게 동일한 수영복 스타일을 적용하세요. 각 인물과 장면의 그 외 모든 것은 정확히 그대로 유지하세요: 얼굴, 정체성, 나이, 피부 톤, 머리카락, 체형, 신체 비율, 포즈, 손, 표정, 상대 위치, 배경, 조명, 카메라 각도, 구도, 이미지 품질. 날씬하게 만들지 말고, 확대하지 말고, 보정하지 말고, 체형을 바꾸지 말고, 포즈를 바꾸지 말고, 얼굴을 바꾸지 말고, 몸을 바꾸지 말고, 상대 위치를 바꾸지 말고, 장면을 수정하지 마세요. 이미지 2의 라벤더 색상, 스캘럽 엣지 장식, 스트랩, 커버 범위, 원단, 실루엣을(를) 최대한 가깝게 맞추세요. 결과는 사실적이고 단정하며 노골적이지 않고 수영복 미리보기에 적합해야 합니다.",
-          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/30aae7250fd54652a4da62137d3d398c.webp",
-          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/30aae7250fd54652a4da62137d3d398c.webp",
+          "image": "https://assets.toolaze.com/uploads/30aae7250fd54652a4da62137d3d398c.webp",
+          "referenceImage": "https://assets.toolaze.com/uploads/30aae7250fd54652a4da62137d3d398c.webp",
           "swatch": "linear-gradient(135deg, #c4b5fd, #8b5cf6)"
         },
         {
@@ -117,7 +117,7 @@
     },
     "sampleImages": [
       {
-        "url": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/6bcf91ffd06e45a8bcda2ea867015141.webp",
+        "url": "https://assets.toolaze.com/uploads/6bcf91ffd06e45a8bcda2ea867015141.webp",
         "title": "AI 비키니 생성기",
         "width": 1600,
         "height": 900
@@ -210,8 +210,8 @@
     "items": [
       {
         "title": "클래식 블랙 비키니",
-        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3d80ed2905334169b0a2d06d1f86c01d.webp",
-        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3d80ed2905334169b0a2d06d1f86c01d.webp",
+        "image": "https://assets.toolaze.com/uploads/3d80ed2905334169b0a2d06d1f86c01d.webp",
+        "referenceImage": "https://assets.toolaze.com/uploads/3d80ed2905334169b0a2d06d1f86c01d.webp",
         "prompt": "이미지 1은 원본 인물 사진입니다. 이미지 2는 비키니 또는 수영복 참조 이미지입니다. 이미지 1에서 명확하게 보이는 각 인물의 보이는 의상만 이미지 2의 클래식한 검은색 트라이앵글 비키니(으)로 교체하세요. 이미지 1에 여러 사람이 있는 경우, 명확하게 보이는 각 인물에게 동일한 수영복 스타일을 적용하세요. 각 인물과 장면의 그 외 모든 것은 정확히 그대로 유지하세요: 얼굴, 정체성, 나이, 피부 톤, 머리카락, 체형, 신체 비율, 포즈, 손, 표정, 상대 위치, 배경, 조명, 카메라 각도, 구도, 이미지 품질. 날씬하게 만들지 말고, 확대하지 말고, 보정하지 말고, 체형을 바꾸지 말고, 포즈를 바꾸지 말고, 얼굴을 바꾸지 말고, 몸을 바꾸지 말고, 상대 위치를 바꾸지 말고, 장면을 수정하지 마세요. 이미지 2의 검은색 원단, 얇은 스트랩, 커버 범위, 상의 형태, 하의 형태, 실루엣을(를) 최대한 가깝게 맞추세요. 결과는 사실적이고 단정하며 노골적이지 않고 수영복 미리보기에 적합해야 합니다.",
         "note": "이 스타일에 해당하는 비키니 참조 이미지를 사용합니다.",
         "color": "linear-gradient(135deg, #111827, #020617)",
@@ -219,8 +219,8 @@
       },
       {
         "title": "클래식 화이트 비키니",
-        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/95db19f5e40a4afa9cc89731f091a5ce.webp",
-        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/95db19f5e40a4afa9cc89731f091a5ce.webp",
+        "image": "https://assets.toolaze.com/uploads/95db19f5e40a4afa9cc89731f091a5ce.webp",
+        "referenceImage": "https://assets.toolaze.com/uploads/95db19f5e40a4afa9cc89731f091a5ce.webp",
         "prompt": "이미지 1은 원본 인물 사진입니다. 이미지 2는 비키니 또는 수영복 참조 이미지입니다. 이미지 1에서 명확하게 보이는 각 인물의 보이는 의상만 이미지 2의 클래식한 흰색 트라이앵글 비키니(으)로 교체하세요. 이미지 1에 여러 사람이 있는 경우, 명확하게 보이는 각 인물에게 동일한 수영복 스타일을 적용하세요. 각 인물과 장면의 그 외 모든 것은 정확히 그대로 유지하세요: 얼굴, 정체성, 나이, 피부 톤, 머리카락, 체형, 신체 비율, 포즈, 손, 표정, 상대 위치, 배경, 조명, 카메라 각도, 구도, 이미지 품질. 날씬하게 만들지 말고, 확대하지 말고, 보정하지 말고, 체형을 바꾸지 말고, 포즈를 바꾸지 말고, 얼굴을 바꾸지 말고, 몸을 바꾸지 말고, 상대 위치를 바꾸지 말고, 장면을 수정하지 마세요. 이미지 2의 커버 범위, 얇은 스트랩, 깨끗한 흰색 원단, 상의 형태, 하의 형태, 실루엣을(를) 최대한 가깝게 맞추세요. 결과는 사실적이고 단정하며 노골적이지 않고 수영복 미리보기에 적합해야 합니다.",
         "note": "이 스타일에 해당하는 비키니 참조 이미지를 사용합니다.",
         "color": "linear-gradient(135deg, #ffffff, #e5e7eb)",
@@ -228,8 +228,8 @@
       },
       {
         "title": "레드 하이웨이스트 비키니",
-        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3028cca8904b49249b517c0ef32386ee.webp",
-        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3028cca8904b49249b517c0ef32386ee.webp",
+        "image": "https://assets.toolaze.com/uploads/3028cca8904b49249b517c0ef32386ee.webp",
+        "referenceImage": "https://assets.toolaze.com/uploads/3028cca8904b49249b517c0ef32386ee.webp",
         "prompt": "이미지 1은 원본 인물 사진입니다. 이미지 2는 비키니 또는 수영복 참조 이미지입니다. 이미지 1에서 명확하게 보이는 각 인물의 보이는 의상만 이미지 2의 빨간색 하이웨이스트 레트로 비키니(으)로 교체하세요. 이미지 1에 여러 사람이 있는 경우, 명확하게 보이는 각 인물에게 동일한 수영복 스타일을 적용하세요. 각 인물과 장면의 그 외 모든 것은 정확히 그대로 유지하세요: 얼굴, 정체성, 나이, 피부 톤, 머리카락, 체형, 신체 비율, 포즈, 손, 표정, 상대 위치, 배경, 조명, 카메라 각도, 구도, 이미지 품질. 날씬하게 만들지 말고, 확대하지 말고, 보정하지 말고, 체형을 바꾸지 말고, 포즈를 바꾸지 말고, 얼굴을 바꾸지 말고, 몸을 바꾸지 말고, 상대 위치를 바꾸지 말고, 장면을 수정하지 마세요. 이미지 2의 하이웨이스트 라인, 지지력 있는 상의, 깔끔한 솔기, 빨간 원단, 커버 범위, 실루엣을(를) 최대한 가깝게 맞추세요. 결과는 사실적이고 단정하며 노골적이지 않고 수영복 미리보기에 적합해야 합니다.",
         "note": "이 스타일에 해당하는 비키니 참조 이미지를 사용합니다.",
         "color": "linear-gradient(135deg, #ef4444, #991b1b)",
@@ -237,8 +237,8 @@
       },
       {
         "title": "네이비 마린 비키니",
-        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3312de502e7344c493d7aaa3796ef6fc.webp",
-        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3312de502e7344c493d7aaa3796ef6fc.webp",
+        "image": "https://assets.toolaze.com/uploads/3312de502e7344c493d7aaa3796ef6fc.webp",
+        "referenceImage": "https://assets.toolaze.com/uploads/3312de502e7344c493d7aaa3796ef6fc.webp",
         "prompt": "이미지 1은 원본 인물 사진입니다. 이미지 2는 비키니 또는 수영복 참조 이미지입니다. 이미지 1에서 명확하게 보이는 각 인물의 보이는 의상만 이미지 2의 네이비 마린 비키니(으)로 교체하세요. 이미지 1에 여러 사람이 있는 경우, 명확하게 보이는 각 인물에게 동일한 수영복 스타일을 적용하세요. 각 인물과 장면의 그 외 모든 것은 정확히 그대로 유지하세요: 얼굴, 정체성, 나이, 피부 톤, 머리카락, 체형, 신체 비율, 포즈, 손, 표정, 상대 위치, 배경, 조명, 카메라 각도, 구도, 이미지 품질. 날씬하게 만들지 말고, 확대하지 말고, 보정하지 말고, 체형을 바꾸지 말고, 포즈를 바꾸지 말고, 얼굴을 바꾸지 말고, 몸을 바꾸지 말고, 상대 위치를 바꾸지 말고, 장면을 수정하지 마세요. 이미지 2의 네이비 색상, 흰색 트림 또는 스트라이프 디테일, 스트랩, 커버 범위, 원단, 실루엣을(를) 최대한 가깝게 맞추세요. 결과는 사실적이고 단정하며 노골적이지 않고 수영복 미리보기에 적합해야 합니다.",
         "note": "이 스타일에 해당하는 비키니 참조 이미지를 사용합니다.",
         "color": "linear-gradient(135deg, #1e3a8a, #f8fafc)",
@@ -246,8 +246,8 @@
       },
       {
         "title": "트로피컬 플로럴 비키니",
-        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/bad0f5902cb643df87a8fe34210dc99c.webp",
-        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/bad0f5902cb643df87a8fe34210dc99c.webp",
+        "image": "https://assets.toolaze.com/uploads/bad0f5902cb643df87a8fe34210dc99c.webp",
+        "referenceImage": "https://assets.toolaze.com/uploads/bad0f5902cb643df87a8fe34210dc99c.webp",
         "prompt": "이미지 1은 원본 인물 사진입니다. 이미지 2는 비키니 또는 수영복 참조 이미지입니다. 이미지 1에서 명확하게 보이는 각 인물의 보이는 의상만 이미지 2의 트로피컬 플로럴 비키니(으)로 교체하세요. 이미지 1에 여러 사람이 있는 경우, 명확하게 보이는 각 인물에게 동일한 수영복 스타일을 적용하세요. 각 인물과 장면의 그 외 모든 것은 정확히 그대로 유지하세요: 얼굴, 정체성, 나이, 피부 톤, 머리카락, 체형, 신체 비율, 포즈, 손, 표정, 상대 위치, 배경, 조명, 카메라 각도, 구도, 이미지 품질. 날씬하게 만들지 말고, 확대하지 말고, 보정하지 말고, 체형을 바꾸지 말고, 포즈를 바꾸지 말고, 얼굴을 바꾸지 말고, 몸을 바꾸지 말고, 상대 위치를 바꾸지 말고, 장면을 수정하지 마세요. 이미지 2의 식물 무늬, 색상 팔레트, 스트랩, 커버 범위, 원단, 실루엣을(를) 최대한 가깝게 맞추세요. 결과는 사실적이고 단정하며 노골적이지 않고 수영복 미리보기에 적합해야 합니다.",
         "note": "이 스타일에 해당하는 비키니 참조 이미지를 사용합니다.",
         "color": "linear-gradient(135deg, #22c55e, #f97316, #f43f5e)",
@@ -255,8 +255,8 @@
       },
       {
         "title": "스포티 틸 비키니",
-        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/49b1ef80a71344b6990bc71150c35644.webp",
-        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/49b1ef80a71344b6990bc71150c35644.webp",
+        "image": "https://assets.toolaze.com/uploads/49b1ef80a71344b6990bc71150c35644.webp",
+        "referenceImage": "https://assets.toolaze.com/uploads/49b1ef80a71344b6990bc71150c35644.webp",
         "prompt": "이미지 1은 원본 인물 사진입니다. 이미지 2는 비키니 또는 수영복 참조 이미지입니다. 이미지 1에서 명확하게 보이는 각 인물의 보이는 의상만 이미지 2의 스포티한 틸 컬러 레이서백풍 비키니(으)로 교체하세요. 이미지 1에 여러 사람이 있는 경우, 명확하게 보이는 각 인물에게 동일한 수영복 스타일을 적용하세요. 각 인물과 장면의 그 외 모든 것은 정확히 그대로 유지하세요: 얼굴, 정체성, 나이, 피부 톤, 머리카락, 체형, 신체 비율, 포즈, 손, 표정, 상대 위치, 배경, 조명, 카메라 각도, 구도, 이미지 품질. 날씬하게 만들지 말고, 확대하지 말고, 보정하지 말고, 체형을 바꾸지 말고, 포즈를 바꾸지 말고, 얼굴을 바꾸지 말고, 몸을 바꾸지 말고, 상대 위치를 바꾸지 말고, 장면을 수정하지 마세요. 이미지 2의 스포티한 상의 형태, 틸 색상, 안정적인 스트랩, 커버 범위, 원단, 실루엣을(를) 최대한 가깝게 맞추세요. 결과는 사실적이고 단정하며 노골적이지 않고 수영복 미리보기에 적합해야 합니다.",
         "note": "이 스타일에 해당하는 비키니 참조 이미지를 사용합니다.",
         "color": "linear-gradient(135deg, #0f766e, #22d3ee)",
@@ -264,8 +264,8 @@
       },
       {
         "title": "옐로 리브드 비키니",
-        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/f2eadccf020a4fe1a733b91335d23ceb.webp",
-        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/f2eadccf020a4fe1a733b91335d23ceb.webp",
+        "image": "https://assets.toolaze.com/uploads/f2eadccf020a4fe1a733b91335d23ceb.webp",
+        "referenceImage": "https://assets.toolaze.com/uploads/f2eadccf020a4fe1a733b91335d23ceb.webp",
         "prompt": "이미지 1은 원본 인물 사진입니다. 이미지 2는 비키니 또는 수영복 참조 이미지입니다. 이미지 1에서 명확하게 보이는 각 인물의 보이는 의상만 이미지 2의 노란색 리브 조직 비키니(으)로 교체하세요. 이미지 1에 여러 사람이 있는 경우, 명확하게 보이는 각 인물에게 동일한 수영복 스타일을 적용하세요. 각 인물과 장면의 그 외 모든 것은 정확히 그대로 유지하세요: 얼굴, 정체성, 나이, 피부 톤, 머리카락, 체형, 신체 비율, 포즈, 손, 표정, 상대 위치, 배경, 조명, 카메라 각도, 구도, 이미지 품질. 날씬하게 만들지 말고, 확대하지 말고, 보정하지 말고, 체형을 바꾸지 말고, 포즈를 바꾸지 말고, 얼굴을 바꾸지 말고, 몸을 바꾸지 말고, 상대 위치를 바꾸지 말고, 장면을 수정하지 마세요. 이미지 2의 따뜻한 노란색, 리브 원단 질감, 스트랩, 커버 범위, 원단, 실루엣을(를) 최대한 가깝게 맞추세요. 결과는 사실적이고 단정하며 노골적이지 않고 수영복 미리보기에 적합해야 합니다.",
         "note": "이 스타일에 해당하는 비키니 참조 이미지를 사용합니다.",
         "color": "linear-gradient(135deg, #facc15, #f59e0b)",
@@ -273,8 +273,8 @@
       },
       {
         "title": "원숄더 코럴 비키니",
-        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/5020adfd323e4cf9a3fd7154e243a1b0.webp",
-        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/5020adfd323e4cf9a3fd7154e243a1b0.webp",
+        "image": "https://assets.toolaze.com/uploads/5020adfd323e4cf9a3fd7154e243a1b0.webp",
+        "referenceImage": "https://assets.toolaze.com/uploads/5020adfd323e4cf9a3fd7154e243a1b0.webp",
         "prompt": "이미지 1은 원본 인물 사진입니다. 이미지 2는 비키니 또는 수영복 참조 이미지입니다. 이미지 1에서 명확하게 보이는 각 인물의 보이는 의상만 이미지 2의 코럴 컬러 원숄더 비키니(으)로 교체하세요. 이미지 1에 여러 사람이 있는 경우, 명확하게 보이는 각 인물에게 동일한 수영복 스타일을 적용하세요. 각 인물과 장면의 그 외 모든 것은 정확히 그대로 유지하세요: 얼굴, 정체성, 나이, 피부 톤, 머리카락, 체형, 신체 비율, 포즈, 손, 표정, 상대 위치, 배경, 조명, 카메라 각도, 구도, 이미지 품질. 날씬하게 만들지 말고, 확대하지 말고, 보정하지 말고, 체형을 바꾸지 말고, 포즈를 바꾸지 말고, 얼굴을 바꾸지 말고, 몸을 바꾸지 말고, 상대 위치를 바꾸지 말고, 장면을 수정하지 마세요. 이미지 2의 원숄더 상의 형태, 코럴 색상, 비대칭 네크라인, 커버 범위, 원단, 실루엣을(를) 최대한 가깝게 맞추세요. 결과는 사실적이고 단정하며 노골적이지 않고 수영복 미리보기에 적합해야 합니다.",
         "note": "이 스타일에 해당하는 비키니 참조 이미지를 사용합니다.",
         "color": "linear-gradient(135deg, #fb7185, #f97316)",

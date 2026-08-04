@@ -41,25 +41,25 @@ const en: AiImageGeneratorPageCopy = {
   },
   samples: [
     {
-      url: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-image-to-image-generator/reference-guided-product-edit.webp',
+      url: 'https://assets.toolaze.com/model-assets/ai-image-to-image-generator/reference-guided-product-edit.webp',
       title: 'Reference-guided product edit sample',
       width: 1024,
       height: 1024,
     },
     {
-      url: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-image-to-image-generator/seasonal-product-ad.webp',
+      url: 'https://assets.toolaze.com/model-assets/ai-image-to-image-generator/seasonal-product-ad.webp',
       title: 'Ecommerce product variation sample',
       width: 1024,
       height: 1024,
     },
     {
-      url: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-image-to-image-generator/portrait-restyle-before-after.webp',
+      url: 'https://assets.toolaze.com/model-assets/ai-image-to-image-generator/portrait-restyle-before-after.webp',
       title: 'Portrait restyle sample',
       width: 1024,
       height: 1024,
     },
     {
-      url: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-image-to-image-generator/social-media-poster.webp',
+      url: 'https://assets.toolaze.com/model-assets/ai-image-to-image-generator/social-media-poster.webp',
       title: 'Commercial image variation sample',
       width: 1280,
       height: 960,
@@ -103,7 +103,7 @@ const en: AiImageGeneratorPageCopy = {
       {
         title: 'Reference-Guided Editing',
         text: 'Keep the main subject, product, pose, layout, or composition recognizable while changing the final image with plain-language instructions.',
-        image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-image-to-image-generator/reference-guided-product-edit.webp',
+        image: 'https://assets.toolaze.com/model-assets/ai-image-to-image-generator/reference-guided-product-edit.webp',
         alt: 'AI image to image reference-guided editing example',
         width: 1024,
         height: 1024,
@@ -111,7 +111,7 @@ const en: AiImageGeneratorPageCopy = {
       {
         title: 'Product Photo Variations',
         text: 'Turn one product reference into studio shots, ecommerce images, lifestyle scenes, seasonal concepts, and campaign-ready product visuals.',
-        image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-image-to-image-generator/seasonal-product-ad.webp',
+        image: 'https://assets.toolaze.com/model-assets/ai-image-to-image-generator/seasonal-product-ad.webp',
         alt: 'AI image to image product photo variation example',
         width: 1024,
         height: 1024,
@@ -119,7 +119,7 @@ const en: AiImageGeneratorPageCopy = {
       {
         title: 'Background Replacement',
         text: 'Replace the original background with a cleaner scene, branded setup, indoor room, outdoor location, studio backdrop, or social media composition.',
-        image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-image-to-image-generator/background-replacement-before-after.webp',
+        image: 'https://assets.toolaze.com/model-assets/ai-image-to-image-generator/background-replacement-before-after.webp',
         alt: 'AI image to image before and after background replacement example',
         width: 1024,
         height: 1024,
@@ -127,7 +127,7 @@ const en: AiImageGeneratorPageCopy = {
       {
         title: 'Style Transfer and Restyle',
         text: 'Restyle a photo as an editorial portrait, anime avatar, watercolor illustration, 3D render, sticker, poster, or cinematic concept.',
-        image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-image-to-image-generator/portrait-restyle-before-after.webp',
+        image: 'https://assets.toolaze.com/model-assets/ai-image-to-image-generator/portrait-restyle-before-after.webp',
         alt: 'AI image to image before and after style transfer example',
         width: 1024,
         height: 1024,
@@ -142,7 +142,7 @@ const en: AiImageGeneratorPageCopy = {
       {
         title: 'Studio Product Shot',
         text: 'Keep the same product shape and label placement while creating a clean studio background with soft shadows.',
-        image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-image-to-image-generator/reference-guided-product-edit.webp',
+        image: 'https://assets.toolaze.com/model-assets/ai-image-to-image-generator/reference-guided-product-edit.webp',
         alt: 'AI image to image product photo with clean studio background',
         width: 1024,
         height: 1024,
@@ -150,7 +150,7 @@ const en: AiImageGeneratorPageCopy = {
       {
         title: 'Seasonal Product Ad',
         text: 'Keep the product unchanged and place it in a warm holiday campaign scene with premium retail styling.',
-        image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-image-to-image-generator/seasonal-product-ad.webp',
+        image: 'https://assets.toolaze.com/model-assets/ai-image-to-image-generator/seasonal-product-ad.webp',
         alt: 'AI image variation of a product in a seasonal ad scene',
         width: 1024,
         height: 1024,
@@ -158,7 +158,7 @@ const en: AiImageGeneratorPageCopy = {
       {
         title: 'Portrait to Editorial',
         text: 'Restyle a portrait as an editorial fashion image with dramatic lighting and a clean backdrop.',
-        image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-image-to-image-generator/portrait-restyle-before-after.webp',
+        image: 'https://assets.toolaze.com/model-assets/ai-image-to-image-generator/portrait-restyle-before-after.webp',
         alt: 'AI portrait restyle before and after example',
         width: 1024,
         height: 1024,
@@ -166,7 +166,7 @@ const en: AiImageGeneratorPageCopy = {
       {
         title: 'Room Redesign',
         text: 'Keep the room layout and camera angle while testing new furniture, materials, and lighting direction.',
-        image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-image-to-image-generator/interior-redesign-before-after.webp',
+        image: 'https://assets.toolaze.com/model-assets/ai-image-to-image-generator/interior-redesign-before-after.webp',
         alt: 'AI interior redesign before and after example',
         width: 1024,
         height: 1024,
@@ -174,7 +174,7 @@ const en: AiImageGeneratorPageCopy = {
       {
         title: 'Background Replacement',
         text: 'Keep the subject and pose unchanged while replacing the original scene with a polished new background.',
-        image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-image-to-image-generator/background-replacement-before-after.webp',
+        image: 'https://assets.toolaze.com/model-assets/ai-image-to-image-generator/background-replacement-before-after.webp',
         alt: 'AI portrait background replacement before and after example',
         width: 1024,
         height: 1024,
@@ -182,7 +182,7 @@ const en: AiImageGeneratorPageCopy = {
       {
         title: '3D Product Render',
         text: 'Convert a product reference into a high-quality render with glossy materials and soft studio reflections.',
-        image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-image-to-image-generator/three-d-product-render.webp',
+        image: 'https://assets.toolaze.com/model-assets/ai-image-to-image-generator/three-d-product-render.webp',
         alt: 'AI 3D product render from an uploaded product image',
         width: 1280,
         height: 960,
@@ -190,7 +190,7 @@ const en: AiImageGeneratorPageCopy = {
       {
         title: 'Social Media Poster',
         text: 'Use the reference subject as the visual anchor for a bold vertical poster or campaign graphic.',
-        image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-image-to-image-generator/social-media-poster.webp',
+        image: 'https://assets.toolaze.com/model-assets/ai-image-to-image-generator/social-media-poster.webp',
         alt: 'AI social media poster generated from a reference image',
         width: 1024,
         height: 1024,
@@ -198,7 +198,7 @@ const en: AiImageGeneratorPageCopy = {
       {
         title: 'Concept Art Variation',
         text: 'Turn a rough visual direction into a more polished scene, environment, or creative moodboard.',
-        image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-image-to-image-generator/concept-art-variation.webp',
+        image: 'https://assets.toolaze.com/model-assets/ai-image-to-image-generator/concept-art-variation.webp',
         alt: 'AI concept art variation generated from a reference image',
         width: 800,
         height: 600,
@@ -310,7 +310,7 @@ const en: AiImageGeneratorPageCopy = {
         title: 'Product Photo Template',
         prompt:
           'Keep the same product shape, color, logo placement, and key details. Replace the background with a clean studio scene. Use soft shadows, premium ecommerce lighting, and a polished product photography look.',
-        image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-image-to-image-generator/reference-guided-product-edit.webp',
+        image: 'https://assets.toolaze.com/model-assets/ai-image-to-image-generator/reference-guided-product-edit.webp',
         alt: 'Product image to image prompt example',
         width: 1024,
         height: 1024,
@@ -319,7 +319,7 @@ const en: AiImageGeneratorPageCopy = {
         title: 'Portrait Restyle Template',
         prompt:
           'Keep the same person, face structure, pose, and expression. Restyle the image as an editorial portrait with a clean background, dramatic side lighting, natural skin tones, and high-end magazine color grading.',
-        image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-image-to-image-generator/portrait-restyle-before-after.webp',
+        image: 'https://assets.toolaze.com/model-assets/ai-image-to-image-generator/portrait-restyle-before-after.webp',
         alt: 'Portrait image to image before and after prompt example',
         width: 1024,
         height: 1024,
@@ -328,7 +328,7 @@ const en: AiImageGeneratorPageCopy = {
         title: 'Interior Design Template',
         prompt:
           'Keep the same room layout, windows, and camera angle. Redesign the space with modern Japandi furniture, warm wood textures, neutral fabrics, indoor plants, and soft natural light.',
-        image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-image-to-image-generator/interior-redesign-before-after.webp',
+        image: 'https://assets.toolaze.com/model-assets/ai-image-to-image-generator/interior-redesign-before-after.webp',
         alt: 'Interior image to image before and after prompt example',
         width: 1024,
         height: 1024,
@@ -337,7 +337,7 @@ const en: AiImageGeneratorPageCopy = {
         title: 'Creative Variation Template',
         prompt:
           'Use the uploaded image as the main reference. Create a new version for a social media campaign with bold composition, modern colors, clean spacing for headline text, and a polished commercial look.',
-        image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-image-to-image-generator/social-media-poster.webp',
+        image: 'https://assets.toolaze.com/model-assets/ai-image-to-image-generator/social-media-poster.webp',
         alt: 'Creative image to image prompt example',
         width: 1024,
         height: 1024,

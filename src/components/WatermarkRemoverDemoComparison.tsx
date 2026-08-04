@@ -1,10 +1,10 @@
 import type { HTMLAttributes } from 'react'
 
 export const WATERMARK_REMOVER_SOURCE_IMAGE =
-  'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-advanced-ai/watermark-remover.jpg'
+  'https://assets.toolaze.com/home-advanced-ai/watermark-remover.jpg'
 
 export const WATERMARK_REMOVER_DEMO_IMAGE =
-  'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-advanced-ai/watermark-remover-demo-before-after.webp'
+  'https://assets.toolaze.com/home-advanced-ai/watermark-remover-demo-before-after.webp'
 
 export type WatermarkRemoverDemoComparisonProps = HTMLAttributes<HTMLDivElement> & {
   imageUrl?: string

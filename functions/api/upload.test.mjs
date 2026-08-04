@@ -18,7 +18,7 @@ async function uploadFile({ file, type }) {
           writes.push({ key, type: blob.type, options })
         },
       },
-      R2_PUBLIC_BASE_URL: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev',
+      R2_PUBLIC_BASE_URL: 'https://assets.toolaze.com',
     },
   })
 
@@ -34,7 +34,7 @@ test('upload stores mp4 video with a video extension and content type', async ()
   assert.equal(writes.length, 1)
   assert.match(writes[0].key, /^uploads\/[a-f0-9]+\.mp4$/)
   assert.equal(writes[0].options.httpMetadata.contentType, 'video/mp4')
-  assert.match(body.url, /^https:\/\/pub-efeb0c7b9b53478d960218de80c52e3d\.r2\.dev\/uploads\/[a-f0-9]+\.mp4$/)
+  assert.match(body.url, /^https:\/\/assets\.toolaze\.com\/uploads\/[a-f0-9]+\.mp4$/)
 })
 
 test('upload keeps m4a audio distinct from mp4 video', async () => {
@@ -46,7 +46,33 @@ test('upload keeps m4a audio distinct from mp4 video', async () => {
   assert.equal(writes.length, 1)
   assert.match(writes[0].key, /^uploads\/[a-f0-9]+\.m4a$/)
   assert.equal(writes[0].options.httpMetadata.contentType, 'audio/mp4')
-  assert.match(body.url, /^https:\/\/pub-efeb0c7b9b53478d960218de80c52e3d\.r2\.dev\/uploads\/[a-f0-9]+\.m4a$/)
+  assert.match(body.url, /^https:\/\/assets\.toolaze\.com\/uploads\/[a-f0-9]+\.m4a$/)
+})
+
+test('upload ignores the legacy R2 development base URL', async () => {
+  const writes = []
+  const formData = new FormData()
+  formData.set('file', new File(['image-bytes'], 'demo.png', { type: 'image/png' }))
+
+  const response = await onRequest({
+    request: new Request('https://toolaze.test/api/upload', {
+      method: 'POST',
+      body: formData,
+    }),
+    env: {
+      MY_BUCKET: {
+        put: async (key, blob, options) => {
+          writes.push({ key, type: blob.type, options })
+        },
+      },
+      R2_PUBLIC_BASE_URL: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev',
+    },
+  })
+  const body = await response.json()
+
+  assert.equal(response.status, 200)
+  assert.equal(writes.length, 1)
+  assert.match(body.url, /^https:\/\/assets\.toolaze\.com\/uploads\/[a-f0-9]+\.png$/)
 })
 
 test('upload can stream motion-control media from a neutral browser purpose', async () => {
@@ -99,7 +125,7 @@ test('upload can stream motion-control media from a neutral browser purpose', as
     assert.equal(calls[0].init.body.get('uploadPath'), 'toolaze/kling-motion-control')
     assert.match(calls[0].init.body.get('fileName'), /^motion-[a-f0-9]+\.mp4$/)
     assert.match(body.uploadRef, /^toolaze-upload-ref:/)
-    assert.match(body.url, /^https:\/\/pub-efeb0c7b9b53478d960218de80c52e3d\.r2\.dev\/uploads\/[a-f0-9]+\.mp4$/)
+    assert.match(body.url, /^https:\/\/assets\.toolaze\.com\/uploads\/[a-f0-9]+\.mp4$/)
     assert.match(body.key, /^uploads\/[a-f0-9]+\.mp4$/)
     assert.equal(String(body.uploadRef).includes('redpandaai'), false)
     assert.equal(String(body.uploadRef).includes('kieai'), false)
@@ -147,7 +173,7 @@ test('Kie motion-control upload returns the extension-preserving file URL for ge
     assert.match(body.uploadRef, /^toolaze-upload-ref:/)
     assert.equal(String(body.uploadRef).includes('redpandaai'), false)
     assert.equal(String(body.uploadRef).includes('kieai'), false)
-    assert.match(body.url, /^https:\/\/pub-efeb0c7b9b53478d960218de80c52e3d\.r2\.dev\/uploads\/[a-f0-9]+\.png$/)
+    assert.match(body.url, /^https:\/\/assets\.toolaze\.com\/uploads\/[a-f0-9]+\.png$/)
     assert.match(body.key, /^uploads\/[a-f0-9]+\.png$/)
     assert.equal('provider' in body, false)
   } finally {

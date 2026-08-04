@@ -33,80 +33,80 @@
           "label": "Bikini nero classico",
           "group": "bikini-reference",
           "prompt": "L’immagine 1 è la foto originale della persona. L’immagine 2 è il riferimento bikini o costume da bagno. Sostituisci solo i vestiti visibili su ogni persona chiaramente visibile nell’immagine 1 con il bikini triangolo nero classico dell’immagine 2. Se l’immagine 1 contiene più persone, applica lo stesso stile di costume da bagno a ogni persona chiaramente visibile. Mantieni tutto il resto esattamente uguale per ogni persona e per la scena: volto, identità, età, tono della pelle, capelli, forma del corpo, proporzioni corporee, posa, mani, espressione, posizione relativa, sfondo, luce, angolo camera, inquadratura e qualità immagine. Non snellire, non ingrandire, non ritoccare, non rimodellare, non cambiare posa, non cambiare volto, non cambiare corpo, non cambiare le posizioni relative e non modificare la scena. Fai corrispondere il tessuto nero, le spalline sottili, la copertura, la forma del top, la forma dello slip e la silhouette dell’immagine 2 il più possibile. Mantieni il risultato realistico, di buon gusto, non esplicito e adatto a un’anteprima di costume da bagno.",
-          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3d80ed2905334169b0a2d06d1f86c01d.webp",
-          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3d80ed2905334169b0a2d06d1f86c01d.webp",
+          "image": "https://assets.toolaze.com/uploads/3d80ed2905334169b0a2d06d1f86c01d.webp",
+          "referenceImage": "https://assets.toolaze.com/uploads/3d80ed2905334169b0a2d06d1f86c01d.webp",
           "swatch": "linear-gradient(135deg, #111827, #020617)"
         },
         {
           "label": "Bikini bianco classico",
           "group": "bikini-reference",
           "prompt": "L’immagine 1 è la foto originale della persona. L’immagine 2 è il riferimento bikini o costume da bagno. Sostituisci solo i vestiti visibili su ogni persona chiaramente visibile nell’immagine 1 con il bikini triangolo bianco classico dell’immagine 2. Se l’immagine 1 contiene più persone, applica lo stesso stile di costume da bagno a ogni persona chiaramente visibile. Mantieni tutto il resto esattamente uguale per ogni persona e per la scena: volto, identità, età, tono della pelle, capelli, forma del corpo, proporzioni corporee, posa, mani, espressione, posizione relativa, sfondo, luce, angolo camera, inquadratura e qualità immagine. Non snellire, non ingrandire, non ritoccare, non rimodellare, non cambiare posa, non cambiare volto, non cambiare corpo, non cambiare le posizioni relative e non modificare la scena. Fai corrispondere la copertura, le spalline sottili, il tessuto bianco pulito, la forma del top, la forma dello slip e la silhouette dell’immagine 2 il più possibile. Mantieni il risultato realistico, di buon gusto, non esplicito e adatto a un’anteprima di costume da bagno.",
-          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/95db19f5e40a4afa9cc89731f091a5ce.webp",
-          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/95db19f5e40a4afa9cc89731f091a5ce.webp",
+          "image": "https://assets.toolaze.com/uploads/95db19f5e40a4afa9cc89731f091a5ce.webp",
+          "referenceImage": "https://assets.toolaze.com/uploads/95db19f5e40a4afa9cc89731f091a5ce.webp",
           "swatch": "linear-gradient(135deg, #ffffff, #e5e7eb)"
         },
         {
           "label": "Bikini rosso a vita alta",
           "group": "bikini-reference",
           "prompt": "L’immagine 1 è la foto originale della persona. L’immagine 2 è il riferimento bikini o costume da bagno. Sostituisci solo i vestiti visibili su ogni persona chiaramente visibile nell’immagine 1 con il bikini rosso rétro a vita alta dell’immagine 2. Se l’immagine 1 contiene più persone, applica lo stesso stile di costume da bagno a ogni persona chiaramente visibile. Mantieni tutto il resto esattamente uguale per ogni persona e per la scena: volto, identità, età, tono della pelle, capelli, forma del corpo, proporzioni corporee, posa, mani, espressione, posizione relativa, sfondo, luce, angolo camera, inquadratura e qualità immagine. Non snellire, non ingrandire, non ritoccare, non rimodellare, non cambiare posa, non cambiare volto, non cambiare corpo, non cambiare le posizioni relative e non modificare la scena. Fai corrispondere la vita alta, il top di supporto, le cuciture pulite, il tessuto rosso, la copertura e la silhouette dell’immagine 2 il più possibile. Mantieni il risultato realistico, di buon gusto, non esplicito e adatto a un’anteprima di costume da bagno.",
-          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3028cca8904b49249b517c0ef32386ee.webp",
-          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3028cca8904b49249b517c0ef32386ee.webp",
+          "image": "https://assets.toolaze.com/uploads/3028cca8904b49249b517c0ef32386ee.webp",
+          "referenceImage": "https://assets.toolaze.com/uploads/3028cca8904b49249b517c0ef32386ee.webp",
           "swatch": "linear-gradient(135deg, #ef4444, #991b1b)"
         },
         {
           "label": "Bikini nautico blu navy",
           "group": "bikini-reference",
           "prompt": "L’immagine 1 è la foto originale della persona. L’immagine 2 è il riferimento bikini o costume da bagno. Sostituisci solo i vestiti visibili su ogni persona chiaramente visibile nell’immagine 1 con il bikini nautico blu navy dell’immagine 2. Se l’immagine 1 contiene più persone, applica lo stesso stile di costume da bagno a ogni persona chiaramente visibile. Mantieni tutto il resto esattamente uguale per ogni persona e per la scena: volto, identità, età, tono della pelle, capelli, forma del corpo, proporzioni corporee, posa, mani, espressione, posizione relativa, sfondo, luce, angolo camera, inquadratura e qualità immagine. Non snellire, non ingrandire, non ritoccare, non rimodellare, non cambiare posa, non cambiare volto, non cambiare corpo, non cambiare le posizioni relative e non modificare la scena. Fai corrispondere il colore blu navy, i dettagli bianchi di bordo o righe, le spalline, la copertura, il tessuto e la silhouette dell’immagine 2 il più possibile. Mantieni il risultato realistico, di buon gusto, non esplicito e adatto a un’anteprima di costume da bagno.",
-          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3312de502e7344c493d7aaa3796ef6fc.webp",
-          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3312de502e7344c493d7aaa3796ef6fc.webp",
+          "image": "https://assets.toolaze.com/uploads/3312de502e7344c493d7aaa3796ef6fc.webp",
+          "referenceImage": "https://assets.toolaze.com/uploads/3312de502e7344c493d7aaa3796ef6fc.webp",
           "swatch": "linear-gradient(135deg, #1e3a8a, #f8fafc)"
         },
         {
           "label": "Bikini floreale tropicale",
           "group": "bikini-reference",
           "prompt": "L’immagine 1 è la foto originale della persona. L’immagine 2 è il riferimento bikini o costume da bagno. Sostituisci solo i vestiti visibili su ogni persona chiaramente visibile nell’immagine 1 con il bikini floreale tropicale dell’immagine 2. Se l’immagine 1 contiene più persone, applica lo stesso stile di costume da bagno a ogni persona chiaramente visibile. Mantieni tutto il resto esattamente uguale per ogni persona e per la scena: volto, identità, età, tono della pelle, capelli, forma del corpo, proporzioni corporee, posa, mani, espressione, posizione relativa, sfondo, luce, angolo camera, inquadratura e qualità immagine. Non snellire, non ingrandire, non ritoccare, non rimodellare, non cambiare posa, non cambiare volto, non cambiare corpo, non cambiare le posizioni relative e non modificare la scena. Fai corrispondere la stampa botanica, la palette colori, le spalline, la copertura, il tessuto e la silhouette dell’immagine 2 il più possibile. Mantieni il risultato realistico, di buon gusto, non esplicito e adatto a un’anteprima di costume da bagno.",
-          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/bad0f5902cb643df87a8fe34210dc99c.webp",
-          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/bad0f5902cb643df87a8fe34210dc99c.webp",
+          "image": "https://assets.toolaze.com/uploads/bad0f5902cb643df87a8fe34210dc99c.webp",
+          "referenceImage": "https://assets.toolaze.com/uploads/bad0f5902cb643df87a8fe34210dc99c.webp",
           "swatch": "linear-gradient(135deg, #22c55e, #f97316, #f43f5e)"
         },
         {
           "label": "Bikini sportivo verde acqua",
           "group": "bikini-reference",
           "prompt": "L’immagine 1 è la foto originale della persona. L’immagine 2 è il riferimento bikini o costume da bagno. Sostituisci solo i vestiti visibili su ogni persona chiaramente visibile nell’immagine 1 con il bikini sportivo verde acqua ispirato al racerback dell’immagine 2. Se l’immagine 1 contiene più persone, applica lo stesso stile di costume da bagno a ogni persona chiaramente visibile. Mantieni tutto il resto esattamente uguale per ogni persona e per la scena: volto, identità, età, tono della pelle, capelli, forma del corpo, proporzioni corporee, posa, mani, espressione, posizione relativa, sfondo, luce, angolo camera, inquadratura e qualità immagine. Non snellire, non ingrandire, non ritoccare, non rimodellare, non cambiare posa, non cambiare volto, non cambiare corpo, non cambiare le posizioni relative e non modificare la scena. Fai corrispondere la forma sportiva del top, il colore verde acqua, le spalline stabili, la copertura, il tessuto e la silhouette dell’immagine 2 il più possibile. Mantieni il risultato realistico, di buon gusto, non esplicito e adatto a un’anteprima di costume da bagno.",
-          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/49b1ef80a71344b6990bc71150c35644.webp",
-          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/49b1ef80a71344b6990bc71150c35644.webp",
+          "image": "https://assets.toolaze.com/uploads/49b1ef80a71344b6990bc71150c35644.webp",
+          "referenceImage": "https://assets.toolaze.com/uploads/49b1ef80a71344b6990bc71150c35644.webp",
           "swatch": "linear-gradient(135deg, #0f766e, #22d3ee)"
         },
         {
           "label": "Bikini giallo a coste",
           "group": "bikini-reference",
           "prompt": "L’immagine 1 è la foto originale della persona. L’immagine 2 è il riferimento bikini o costume da bagno. Sostituisci solo i vestiti visibili su ogni persona chiaramente visibile nell’immagine 1 con il bikini giallo a coste dell’immagine 2. Se l’immagine 1 contiene più persone, applica lo stesso stile di costume da bagno a ogni persona chiaramente visibile. Mantieni tutto il resto esattamente uguale per ogni persona e per la scena: volto, identità, età, tono della pelle, capelli, forma del corpo, proporzioni corporee, posa, mani, espressione, posizione relativa, sfondo, luce, angolo camera, inquadratura e qualità immagine. Non snellire, non ingrandire, non ritoccare, non rimodellare, non cambiare posa, non cambiare volto, non cambiare corpo, non cambiare le posizioni relative e non modificare la scena. Fai corrispondere il giallo caldo, la texture a coste, le spalline, la copertura, il tessuto e la silhouette dell’immagine 2 il più possibile. Mantieni il risultato realistico, di buon gusto, non esplicito e adatto a un’anteprima di costume da bagno.",
-          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/f2eadccf020a4fe1a733b91335d23ceb.webp",
-          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/f2eadccf020a4fe1a733b91335d23ceb.webp",
+          "image": "https://assets.toolaze.com/uploads/f2eadccf020a4fe1a733b91335d23ceb.webp",
+          "referenceImage": "https://assets.toolaze.com/uploads/f2eadccf020a4fe1a733b91335d23ceb.webp",
           "swatch": "linear-gradient(135deg, #facc15, #f59e0b)"
         },
         {
           "label": "Bikini corallo monospalla",
           "group": "bikini-reference",
           "prompt": "L’immagine 1 è la foto originale della persona. L’immagine 2 è il riferimento bikini o costume da bagno. Sostituisci solo i vestiti visibili su ogni persona chiaramente visibile nell’immagine 1 con il bikini corallo monospalla dell’immagine 2. Se l’immagine 1 contiene più persone, applica lo stesso stile di costume da bagno a ogni persona chiaramente visibile. Mantieni tutto il resto esattamente uguale per ogni persona e per la scena: volto, identità, età, tono della pelle, capelli, forma del corpo, proporzioni corporee, posa, mani, espressione, posizione relativa, sfondo, luce, angolo camera, inquadratura e qualità immagine. Non snellire, non ingrandire, non ritoccare, non rimodellare, non cambiare posa, non cambiare volto, non cambiare corpo, non cambiare le posizioni relative e non modificare la scena. Fai corrispondere la forma del top monospalla, il colore corallo, lo scollo asimmetrico, la copertura, il tessuto e la silhouette dell’immagine 2 il più possibile. Mantieni il risultato realistico, di buon gusto, non esplicito e adatto a un’anteprima di costume da bagno.",
-          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/5020adfd323e4cf9a3fd7154e243a1b0.webp",
-          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/5020adfd323e4cf9a3fd7154e243a1b0.webp",
+          "image": "https://assets.toolaze.com/uploads/5020adfd323e4cf9a3fd7154e243a1b0.webp",
+          "referenceImage": "https://assets.toolaze.com/uploads/5020adfd323e4cf9a3fd7154e243a1b0.webp",
           "swatch": "linear-gradient(135deg, #fb7185, #f97316)"
         },
         {
           "label": "Bikini incrociato smeraldo",
           "group": "bikini-reference",
           "prompt": "L’immagine 1 è la foto originale della persona. L’immagine 2 è il riferimento bikini o costume da bagno. Sostituisci solo i vestiti visibili su ogni persona chiaramente visibile nell’immagine 1 con il bikini verde smeraldo con dettaglio avvolgente dell’immagine 2. Se l’immagine 1 contiene più persone, applica lo stesso stile di costume da bagno a ogni persona chiaramente visibile. Mantieni tutto il resto esattamente uguale per ogni persona e per la scena: volto, identità, età, tono della pelle, capelli, forma del corpo, proporzioni corporee, posa, mani, espressione, posizione relativa, sfondo, luce, angolo camera, inquadratura e qualità immagine. Non snellire, non ingrandire, non ritoccare, non rimodellare, non cambiare posa, non cambiare volto, non cambiare corpo, non cambiare le posizioni relative e non modificare la scena. Fai corrispondere il dettaglio superiore avvolgente, il colore smeraldo, le spalline, la copertura, il tessuto e la silhouette dell’immagine 2 il più possibile. Mantieni il risultato realistico, di buon gusto, non esplicito e adatto a un’anteprima di costume da bagno.",
-          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/cb70d59d82a6425a9e02350f87f3acec.webp",
-          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/cb70d59d82a6425a9e02350f87f3acec.webp",
+          "image": "https://assets.toolaze.com/uploads/cb70d59d82a6425a9e02350f87f3acec.webp",
+          "referenceImage": "https://assets.toolaze.com/uploads/cb70d59d82a6425a9e02350f87f3acec.webp",
           "swatch": "linear-gradient(135deg, #047857, #10b981)"
         },
         {
           "label": "Bikini lavanda con bordo smerlato",
           "group": "bikini-reference",
           "prompt": "L’immagine 1 è la foto originale della persona. L’immagine 2 è il riferimento bikini o costume da bagno. Sostituisci solo i vestiti visibili su ogni persona chiaramente visibile nell’immagine 1 con il bikini lavanda con bordo smerlato dell’immagine 2. Se l’immagine 1 contiene più persone, applica lo stesso stile di costume da bagno a ogni persona chiaramente visibile. Mantieni tutto il resto esattamente uguale per ogni persona e per la scena: volto, identità, età, tono della pelle, capelli, forma del corpo, proporzioni corporee, posa, mani, espressione, posizione relativa, sfondo, luce, angolo camera, inquadratura e qualità immagine. Non snellire, non ingrandire, non ritoccare, non rimodellare, non cambiare posa, non cambiare volto, non cambiare corpo, non cambiare le posizioni relative e non modificare la scena. Fai corrispondere il colore lavanda, il bordo smerlato, le spalline, la copertura, il tessuto e la silhouette dell’immagine 2 il più possibile. Mantieni il risultato realistico, di buon gusto, non esplicito e adatto a un’anteprima di costume da bagno.",
-          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/30aae7250fd54652a4da62137d3d398c.webp",
-          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/30aae7250fd54652a4da62137d3d398c.webp",
+          "image": "https://assets.toolaze.com/uploads/30aae7250fd54652a4da62137d3d398c.webp",
+          "referenceImage": "https://assets.toolaze.com/uploads/30aae7250fd54652a4da62137d3d398c.webp",
           "swatch": "linear-gradient(135deg, #c4b5fd, #8b5cf6)"
         },
         {
@@ -117,7 +117,7 @@
     },
     "sampleImages": [
       {
-        "url": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/6bcf91ffd06e45a8bcda2ea867015141.webp",
+        "url": "https://assets.toolaze.com/uploads/6bcf91ffd06e45a8bcda2ea867015141.webp",
         "title": "Generatore di bikini IA",
         "width": 1600,
         "height": 900
@@ -210,8 +210,8 @@
     "items": [
       {
         "title": "Bikini nero classico",
-        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3d80ed2905334169b0a2d06d1f86c01d.webp",
-        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3d80ed2905334169b0a2d06d1f86c01d.webp",
+        "image": "https://assets.toolaze.com/uploads/3d80ed2905334169b0a2d06d1f86c01d.webp",
+        "referenceImage": "https://assets.toolaze.com/uploads/3d80ed2905334169b0a2d06d1f86c01d.webp",
         "prompt": "L’immagine 1 è la foto originale della persona. L’immagine 2 è il riferimento bikini o costume da bagno. Sostituisci solo i vestiti visibili su ogni persona chiaramente visibile nell’immagine 1 con il bikini triangolo nero classico dell’immagine 2. Se l’immagine 1 contiene più persone, applica lo stesso stile di costume da bagno a ogni persona chiaramente visibile. Mantieni tutto il resto esattamente uguale per ogni persona e per la scena: volto, identità, età, tono della pelle, capelli, forma del corpo, proporzioni corporee, posa, mani, espressione, posizione relativa, sfondo, luce, angolo camera, inquadratura e qualità immagine. Non snellire, non ingrandire, non ritoccare, non rimodellare, non cambiare posa, non cambiare volto, non cambiare corpo, non cambiare le posizioni relative e non modificare la scena. Fai corrispondere il tessuto nero, le spalline sottili, la copertura, la forma del top, la forma dello slip e la silhouette dell’immagine 2 il più possibile. Mantieni il risultato realistico, di buon gusto, non esplicito e adatto a un’anteprima di costume da bagno.",
         "note": "Usa l’immagine di riferimento bikini corrispondente per questo stile.",
         "color": "linear-gradient(135deg, #111827, #020617)",
@@ -219,8 +219,8 @@
       },
       {
         "title": "Bikini bianco classico",
-        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/95db19f5e40a4afa9cc89731f091a5ce.webp",
-        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/95db19f5e40a4afa9cc89731f091a5ce.webp",
+        "image": "https://assets.toolaze.com/uploads/95db19f5e40a4afa9cc89731f091a5ce.webp",
+        "referenceImage": "https://assets.toolaze.com/uploads/95db19f5e40a4afa9cc89731f091a5ce.webp",
         "prompt": "L’immagine 1 è la foto originale della persona. L’immagine 2 è il riferimento bikini o costume da bagno. Sostituisci solo i vestiti visibili su ogni persona chiaramente visibile nell’immagine 1 con il bikini triangolo bianco classico dell’immagine 2. Se l’immagine 1 contiene più persone, applica lo stesso stile di costume da bagno a ogni persona chiaramente visibile. Mantieni tutto il resto esattamente uguale per ogni persona e per la scena: volto, identità, età, tono della pelle, capelli, forma del corpo, proporzioni corporee, posa, mani, espressione, posizione relativa, sfondo, luce, angolo camera, inquadratura e qualità immagine. Non snellire, non ingrandire, non ritoccare, non rimodellare, non cambiare posa, non cambiare volto, non cambiare corpo, non cambiare le posizioni relative e non modificare la scena. Fai corrispondere la copertura, le spalline sottili, il tessuto bianco pulito, la forma del top, la forma dello slip e la silhouette dell’immagine 2 il più possibile. Mantieni il risultato realistico, di buon gusto, non esplicito e adatto a un’anteprima di costume da bagno.",
         "note": "Usa l’immagine di riferimento bikini corrispondente per questo stile.",
         "color": "linear-gradient(135deg, #ffffff, #e5e7eb)",
@@ -228,8 +228,8 @@
       },
       {
         "title": "Bikini rosso a vita alta",
-        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3028cca8904b49249b517c0ef32386ee.webp",
-        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3028cca8904b49249b517c0ef32386ee.webp",
+        "image": "https://assets.toolaze.com/uploads/3028cca8904b49249b517c0ef32386ee.webp",
+        "referenceImage": "https://assets.toolaze.com/uploads/3028cca8904b49249b517c0ef32386ee.webp",
         "prompt": "L’immagine 1 è la foto originale della persona. L’immagine 2 è il riferimento bikini o costume da bagno. Sostituisci solo i vestiti visibili su ogni persona chiaramente visibile nell’immagine 1 con il bikini rosso rétro a vita alta dell’immagine 2. Se l’immagine 1 contiene più persone, applica lo stesso stile di costume da bagno a ogni persona chiaramente visibile. Mantieni tutto il resto esattamente uguale per ogni persona e per la scena: volto, identità, età, tono della pelle, capelli, forma del corpo, proporzioni corporee, posa, mani, espressione, posizione relativa, sfondo, luce, angolo camera, inquadratura e qualità immagine. Non snellire, non ingrandire, non ritoccare, non rimodellare, non cambiare posa, non cambiare volto, non cambiare corpo, non cambiare le posizioni relative e non modificare la scena. Fai corrispondere la vita alta, il top di supporto, le cuciture pulite, il tessuto rosso, la copertura e la silhouette dell’immagine 2 il più possibile. Mantieni il risultato realistico, di buon gusto, non esplicito e adatto a un’anteprima di costume da bagno.",
         "note": "Usa l’immagine di riferimento bikini corrispondente per questo stile.",
         "color": "linear-gradient(135deg, #ef4444, #991b1b)",
@@ -237,8 +237,8 @@
       },
       {
         "title": "Bikini nautico blu navy",
-        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3312de502e7344c493d7aaa3796ef6fc.webp",
-        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3312de502e7344c493d7aaa3796ef6fc.webp",
+        "image": "https://assets.toolaze.com/uploads/3312de502e7344c493d7aaa3796ef6fc.webp",
+        "referenceImage": "https://assets.toolaze.com/uploads/3312de502e7344c493d7aaa3796ef6fc.webp",
         "prompt": "L’immagine 1 è la foto originale della persona. L’immagine 2 è il riferimento bikini o costume da bagno. Sostituisci solo i vestiti visibili su ogni persona chiaramente visibile nell’immagine 1 con il bikini nautico blu navy dell’immagine 2. Se l’immagine 1 contiene più persone, applica lo stesso stile di costume da bagno a ogni persona chiaramente visibile. Mantieni tutto il resto esattamente uguale per ogni persona e per la scena: volto, identità, età, tono della pelle, capelli, forma del corpo, proporzioni corporee, posa, mani, espressione, posizione relativa, sfondo, luce, angolo camera, inquadratura e qualità immagine. Non snellire, non ingrandire, non ritoccare, non rimodellare, non cambiare posa, non cambiare volto, non cambiare corpo, non cambiare le posizioni relative e non modificare la scena. Fai corrispondere il colore blu navy, i dettagli bianchi di bordo o righe, le spalline, la copertura, il tessuto e la silhouette dell’immagine 2 il più possibile. Mantieni il risultato realistico, di buon gusto, non esplicito e adatto a un’anteprima di costume da bagno.",
         "note": "Usa l’immagine di riferimento bikini corrispondente per questo stile.",
         "color": "linear-gradient(135deg, #1e3a8a, #f8fafc)",
@@ -246,8 +246,8 @@
       },
       {
         "title": "Bikini floreale tropicale",
-        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/bad0f5902cb643df87a8fe34210dc99c.webp",
-        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/bad0f5902cb643df87a8fe34210dc99c.webp",
+        "image": "https://assets.toolaze.com/uploads/bad0f5902cb643df87a8fe34210dc99c.webp",
+        "referenceImage": "https://assets.toolaze.com/uploads/bad0f5902cb643df87a8fe34210dc99c.webp",
         "prompt": "L’immagine 1 è la foto originale della persona. L’immagine 2 è il riferimento bikini o costume da bagno. Sostituisci solo i vestiti visibili su ogni persona chiaramente visibile nell’immagine 1 con il bikini floreale tropicale dell’immagine 2. Se l’immagine 1 contiene più persone, applica lo stesso stile di costume da bagno a ogni persona chiaramente visibile. Mantieni tutto il resto esattamente uguale per ogni persona e per la scena: volto, identità, età, tono della pelle, capelli, forma del corpo, proporzioni corporee, posa, mani, espressione, posizione relativa, sfondo, luce, angolo camera, inquadratura e qualità immagine. Non snellire, non ingrandire, non ritoccare, non rimodellare, non cambiare posa, non cambiare volto, non cambiare corpo, non cambiare le posizioni relative e non modificare la scena. Fai corrispondere la stampa botanica, la palette colori, le spalline, la copertura, il tessuto e la silhouette dell’immagine 2 il più possibile. Mantieni il risultato realistico, di buon gusto, non esplicito e adatto a un’anteprima di costume da bagno.",
         "note": "Usa l’immagine di riferimento bikini corrispondente per questo stile.",
         "color": "linear-gradient(135deg, #22c55e, #f97316, #f43f5e)",
@@ -255,8 +255,8 @@
       },
       {
         "title": "Bikini sportivo verde acqua",
-        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/49b1ef80a71344b6990bc71150c35644.webp",
-        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/49b1ef80a71344b6990bc71150c35644.webp",
+        "image": "https://assets.toolaze.com/uploads/49b1ef80a71344b6990bc71150c35644.webp",
+        "referenceImage": "https://assets.toolaze.com/uploads/49b1ef80a71344b6990bc71150c35644.webp",
         "prompt": "L’immagine 1 è la foto originale della persona. L’immagine 2 è il riferimento bikini o costume da bagno. Sostituisci solo i vestiti visibili su ogni persona chiaramente visibile nell’immagine 1 con il bikini sportivo verde acqua ispirato al racerback dell’immagine 2. Se l’immagine 1 contiene più persone, applica lo stesso stile di costume da bagno a ogni persona chiaramente visibile. Mantieni tutto il resto esattamente uguale per ogni persona e per la scena: volto, identità, età, tono della pelle, capelli, forma del corpo, proporzioni corporee, posa, mani, espressione, posizione relativa, sfondo, luce, angolo camera, inquadratura e qualità immagine. Non snellire, non ingrandire, non ritoccare, non rimodellare, non cambiare posa, non cambiare volto, non cambiare corpo, non cambiare le posizioni relative e non modificare la scena. Fai corrispondere la forma sportiva del top, il colore verde acqua, le spalline stabili, la copertura, il tessuto e la silhouette dell’immagine 2 il più possibile. Mantieni il risultato realistico, di buon gusto, non esplicito e adatto a un’anteprima di costume da bagno.",
         "note": "Usa l’immagine di riferimento bikini corrispondente per questo stile.",
         "color": "linear-gradient(135deg, #0f766e, #22d3ee)",
@@ -264,8 +264,8 @@
       },
       {
         "title": "Bikini giallo a coste",
-        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/f2eadccf020a4fe1a733b91335d23ceb.webp",
-        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/f2eadccf020a4fe1a733b91335d23ceb.webp",
+        "image": "https://assets.toolaze.com/uploads/f2eadccf020a4fe1a733b91335d23ceb.webp",
+        "referenceImage": "https://assets.toolaze.com/uploads/f2eadccf020a4fe1a733b91335d23ceb.webp",
         "prompt": "L’immagine 1 è la foto originale della persona. L’immagine 2 è il riferimento bikini o costume da bagno. Sostituisci solo i vestiti visibili su ogni persona chiaramente visibile nell’immagine 1 con il bikini giallo a coste dell’immagine 2. Se l’immagine 1 contiene più persone, applica lo stesso stile di costume da bagno a ogni persona chiaramente visibile. Mantieni tutto il resto esattamente uguale per ogni persona e per la scena: volto, identità, età, tono della pelle, capelli, forma del corpo, proporzioni corporee, posa, mani, espressione, posizione relativa, sfondo, luce, angolo camera, inquadratura e qualità immagine. Non snellire, non ingrandire, non ritoccare, non rimodellare, non cambiare posa, non cambiare volto, non cambiare corpo, non cambiare le posizioni relative e non modificare la scena. Fai corrispondere il giallo caldo, la texture a coste, le spalline, la copertura, il tessuto e la silhouette dell’immagine 2 il più possibile. Mantieni il risultato realistico, di buon gusto, non esplicito e adatto a un’anteprima di costume da bagno.",
         "note": "Usa l’immagine di riferimento bikini corrispondente per questo stile.",
         "color": "linear-gradient(135deg, #facc15, #f59e0b)",
@@ -273,8 +273,8 @@
       },
       {
         "title": "Bikini corallo monospalla",
-        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/5020adfd323e4cf9a3fd7154e243a1b0.webp",
-        "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/5020adfd323e4cf9a3fd7154e243a1b0.webp",
+        "image": "https://assets.toolaze.com/uploads/5020adfd323e4cf9a3fd7154e243a1b0.webp",
+        "referenceImage": "https://assets.toolaze.com/uploads/5020adfd323e4cf9a3fd7154e243a1b0.webp",
         "prompt": "L’immagine 1 è la foto originale della persona. L’immagine 2 è il riferimento bikini o costume da bagno. Sostituisci solo i vestiti visibili su ogni persona chiaramente visibile nell’immagine 1 con il bikini corallo monospalla dell’immagine 2. Se l’immagine 1 contiene più persone, applica lo stesso stile di costume da bagno a ogni persona chiaramente visibile. Mantieni tutto il resto esattamente uguale per ogni persona e per la scena: volto, identità, età, tono della pelle, capelli, forma del corpo, proporzioni corporee, posa, mani, espressione, posizione relativa, sfondo, luce, angolo camera, inquadratura e qualità immagine. Non snellire, non ingrandire, non ritoccare, non rimodellare, non cambiare posa, non cambiare volto, non cambiare corpo, non cambiare le posizioni relative e non modificare la scena. Fai corrispondere la forma del top monospalla, il colore corallo, lo scollo asimmetrico, la copertura, il tessuto e la silhouette dell’immagine 2 il più possibile. Mantieni il risultato realistico, di buon gusto, non esplicito e adatto a un’anteprima di costume da bagno.",
         "note": "Usa l’immagine di riferimento bikini corrispondente per questo stile.",
         "color": "linear-gradient(135deg, #fb7185, #f97316)",

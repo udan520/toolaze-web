@@ -16,8 +16,8 @@
     "desc": "触覚的な要素を含むプロンプトや参考画像から、クローズアップ映像とそれに合った音声を組み合わせた短いASMR動画を生成します。 素材、動作、カメラワーク、テンポ、音の質感を指定し、入力内容や音声、品質のニーズに最適なToolazeの動画モデルを選択してください。"
   },
   "heroDemoVideo": {
-    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/ai-asmr-video-generator/demo.mp4",
-    "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/ai-asmr-video-generator/demo-poster.webp",
+    "src": "https://assets.toolaze.com/landing-pages/ai-asmr-video-generator/demo.mp4",
+    "poster": "https://assets.toolaze.com/landing-pages/ai-asmr-video-generator/demo-poster.webp",
     "ariaLabel": "AI生成ASMRデモ動画"
   },
   "sectionsOrder": [

@@ -266,7 +266,7 @@ test('homepage Trending renders video media without relying on file extension', 
   assert.doesNotMatch(homeTrendingToolsRailSource, /canRenderVideo/)
   assert.match(
     homePageSource,
-    /src: 'https:\/\/pub-efeb0c7b9b53478d960218de80c52e3d\.r2\.dev\/uploads\/83a8c5b91a4945beb66275c38a731dbf\.png'/,
+    /src: 'https:\/\/assets\.toolaze\.com\/uploads\/83a8c5b91a4945beb66275c38a731dbf\.png'/,
   )
 })
 
@@ -449,7 +449,7 @@ test('Kling 2.6 Motion Control is discoverable from AI Tools menu and homepage v
   )
   assert.match(
     navigationSource,
-    /motionControlGenerator:\s*'https:\/\/pub-efeb0c7b9b53478d960218de80c52e3d\.r2\.dev\/model-assets\/kling-2-6-pro-motion-control\/motion-control-demo-poster\.webp'/,
+    /motionControlGenerator:\s*'https:\/\/assets\.toolaze\.com\/model-assets\/kling-2-6-pro-motion-control\/motion-control-demo-poster\.webp'/,
   )
   assert.match(
     homePageSource,
@@ -482,7 +482,7 @@ test('Wan 2.5 Video has a homepage card image and admin preview coverage', () =>
   )
   assert.match(
     adminSeoServerSource,
-    /'wan-2-5-ai-video-generator': 'https:\/\/pub-efeb0c7b9b53478d960218de80c52e3d\.r2\.dev\/uploads\/ai-video-generator\/prompt-templates\/storyboard-scene\.webp'/,
+    /'wan-2-5-ai-video-generator': 'https:\/\/assets\.toolaze\.com\/uploads\/ai-video-generator\/prompt-templates\/storyboard-scene\.webp'/,
   )
   assert.match(adminSeoServerSource, /'wan-2-5-ai-video-generator': '\/model\/wan-2-5-ai-video-generator'/)
 })
@@ -735,7 +735,7 @@ test('AI Clothes Changer keeps workflow tabs above upload and clothing presets b
   assert.deepEqual(aiClothesChangerContent.topTool?.defaultImageUrls, [])
   assert.match(
     aiClothesChangerContent.topTool?.sampleImages?.[0]?.url,
-    /^https:\/\/pub-[a-z0-9]+\.r2\.dev\/uploads\/[a-z0-9]+\.webp$/,
+    /^https:\/\/assets\.toolaze\.com\/uploads\/[a-z0-9]+\.webp$/,
   )
   assert.equal(aiClothesChangerContent.topTool?.sampleImages?.[0]?.width, 1600)
   assert.equal(aiClothesChangerContent.topTool?.sampleImages?.[0]?.height, 900)
@@ -813,7 +813,7 @@ test('AI Clothes Changer presets use four generated R2 clothing references', () 
 
   assert.equal(presets.length, 4)
   for (const preset of presets) {
-    assert.match(preset.image, /^https:\/\/pub-[a-z0-9]+\.r2\.dev\/uploads\/[a-z0-9]+\.webp$/)
+    assert.match(preset.image, /^https:\/\/assets\.toolaze\.com\/uploads\/[a-z0-9]+\.webp$/)
     assert.equal(preset.referenceImage, preset.image)
   }
 })
@@ -823,7 +823,7 @@ test('AI Clothes Changer prompt ideas use four 9:16 R2 images', () => {
 
   assert.equal(promptItems.length, 4)
   for (const item of promptItems) {
-    assert.match(item.image, /^https:\/\/pub-[a-z0-9]+\.r2\.dev\/uploads\/[a-z0-9]+\.webp$/)
+    assert.match(item.image, /^https:\/\/assets\.toolaze\.com\/uploads\/[a-z0-9]+\.webp$/)
   }
   assert.match(promptExamplesSource, /aspect-\[9\/16\]/)
 })
@@ -837,7 +837,7 @@ test('AI Bikini Generator uses Seedream 5.0 Lite and preserves the source person
   assert.doesNotMatch(JSON.stringify(aiBikiniGeneratorContent), /GPT Image 2/i)
   assert.match(
     aiBikiniGeneratorContent.topTool?.sampleImages?.[0]?.url || '',
-    /^https:\/\/pub-[a-z0-9]+\.r2\.dev\/uploads\/[a-z0-9]+\.webp$/,
+    /^https:\/\/assets\.toolaze\.com\/uploads\/[a-z0-9]+\.webp$/,
   )
   assert.equal(aiBikiniGeneratorContent.topTool?.sampleImages?.[0]?.width, 1600)
   assert.equal(aiBikiniGeneratorContent.topTool?.sampleImages?.[0]?.height, 900)
@@ -849,7 +849,7 @@ test('AI Bikini Generator uses Seedream 5.0 Lite and preserves the source person
   assert.equal(bikiniReferencePresets.length, 10)
   assert.equal(bikiniReferencePresets[0]?.label, 'Classic Black Bikini')
   for (const preset of bikiniReferencePresets) {
-    assert.match(preset.image, /^https:\/\/pub-[a-z0-9]+\.r2\.dev\/uploads\/[a-z0-9]+\.webp$/)
+    assert.match(preset.image, /^https:\/\/assets\.toolaze\.com\/uploads\/[a-z0-9]+\.webp$/)
     assert.equal(preset.referenceImage, preset.image)
   }
 
@@ -902,7 +902,7 @@ test('AI Bikini Generator prompt ideas mirror eight bikini reference styles in e
         assert.equal(promptItem.image, preset.image, `${locale} prompt image ${index}`)
         assert.equal(promptItem.referenceImage, preset.referenceImage, `${locale} prompt reference image ${index}`)
         assert.equal(promptItem.prompt, preset.prompt, `${locale} prompt text ${index}`)
-        assert.match(promptItem.image, /^https:\/\/pub-[a-z0-9]+\.r2\.dev\/uploads\/[a-z0-9]+\.webp$/)
+        assert.match(promptItem.image, /^https:\/\/assets\.toolaze\.com\/uploads\/[a-z0-9]+\.webp$/)
       })
     }
   }
@@ -1102,9 +1102,9 @@ test('AI Kissing Video Generator keeps its upload, duration, and prompt contract
 
 test('AI Dance demo uses the latest generated video sample', () => {
   const expectedVideoUrl =
-    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/ai-dance-demo.mp4'
+    'https://assets.toolaze.com/model-assets/ai-dance-generator/ai-dance-demo.mp4'
   const expectedSourceImageUrl =
-    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/ai-dance-demo-source.png'
+    'https://assets.toolaze.com/model-assets/ai-dance-generator/ai-dance-demo-source.png'
 
   for (const content of [aiDanceContent, aiDanceFactoryContent]) {
     const sample = content.topTool?.sampleImages?.[0]
@@ -1121,11 +1121,11 @@ test('AI Dance demo uses the latest generated video sample', () => {
 
 test('AI Dance prompt ideas support one-row 9:16 video examples', () => {
   const expectedVideos = [
-    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/prompt-hip-hop-stage.mp4',
-    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/prompt-ballet-motion.mp4',
-    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/prompt-k-pop-performance.mp4',
-    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/prompt-latin-dance.mp4',
-    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/ai-dance-generator/prompt-street-dance.mp4',
+    'https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-hip-hop-stage.mp4',
+    'https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-ballet-motion.mp4',
+    'https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-k-pop-performance.mp4',
+    'https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-latin-dance.mp4',
+    'https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-street-dance.mp4',
   ]
 
   for (const content of [aiDanceContent, aiDanceFactoryContent]) {

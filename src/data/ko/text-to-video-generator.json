@@ -51,9 +51,9 @@
     "desc": "Toolaze에서 프롬프트, 스크립트, 제품 아이디어, 소셜 후크, 스토리보드 메모를 짧은 AI 동영상으로 바꾸세요. 텍스트에서 시작해 지원 동영상 모델을 선택하고 움직임, 카메라 방향, 속도, 비율, 길이, 오디오 설정, 형식을 조정합니다."
   },
   "heroDemoVideo": {
-    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/1b0129b9d2504494825f8fd28b00f4af.png",
+    "src": "https://assets.toolaze.com/uploads/1b0129b9d2504494825f8fd28b00f4af.png",
     "ariaLabel": "Toolaze 여행 제품 콘셉트 프롬프트에서 생성한 텍스트-동영상 데모",
-    "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/c601d39d801e44938e5e33711e19df32.webp",
+    "poster": "https://assets.toolaze.com/uploads/c601d39d801e44938e5e33711e19df32.webp",
     "sourceHistory": "Grok text-to-video · 40622216026309ff8f4410d965143e74 · 5s · 16:9"
   },
   "performanceMetrics": {
@@ -167,8 +167,8 @@
       {
         "title": "에디토리얼 인물 샷 프롬프트",
         "prompt": "Create a 5-second widescreen editorial portrait video of a young creative professional standing near a large studio window. Use a slow push-in camera, a gentle head turn, subtle hair and fabric movement, soft natural light, shallow depth of field, realistic skin texture, calm confident mood, and a clean neutral background. No logos, no celebrity likeness.",
-        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/21430f5f6ed54b72910b26b4f73b0ca2.png",
-        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/74292aa585fb494ebe467dbcd3858996.webp",
+        "video": "https://assets.toolaze.com/uploads/21430f5f6ed54b72910b26b4f73b0ca2.png",
+        "poster": "https://assets.toolaze.com/uploads/74292aa585fb494ebe467dbcd3858996.webp",
         "description": "부드러운 창가 조명, 섬세한 움직임, 느린 푸시인 카메라가 있는 와이드 Grok 텍스트-동영상 인물 예시입니다.",
         "aspectRatio": "16:9",
         "duration": "PT5S",
@@ -180,8 +180,8 @@
       {
         "title": "재생에너지 설명 B-roll 프롬프트",
         "prompt": "Create a 5-second explainer B-roll clip for a lesson about renewable energy. Show sunlight moving across rooftop solar panels, a close-up of an energy meter rising, and a clean classroom-style graphic transition. Calm motion, realistic daylight, gentle camera pan, educational presentation tone.",
-        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/c1430e47f07f42f18c90ba0eb1c75d19.png",
-        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/8e50266141384e78b7b0e5e2a864d463.webp",
+        "video": "https://assets.toolaze.com/uploads/c1430e47f07f42f18c90ba0eb1c75d19.png",
+        "poster": "https://assets.toolaze.com/uploads/8e50266141384e78b7b0e5e2a864d463.webp",
         "description": "교육용 재생에너지 B-roll을 위한 와이드 Grok 텍스트-동영상 예시입니다.",
         "aspectRatio": "16:9",
         "duration": "PT5S",
@@ -193,8 +193,8 @@
       {
         "title": "다리 트래킹 샷 프롬프트",
         "prompt": "Create a 5-second widescreen cinematic shot of a cyclist crossing a quiet bridge at sunset. Use one smooth left-to-right tracking move, warm backlight, shallow depth of field, realistic motion blur, and a final frame where the cyclist exits into the glow.",
-        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/33f7fe1f247e42ababbbe11202793cee.png",
-        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/f6ffbf3298544f06b258e353586e0128.webp",
+        "video": "https://assets.toolaze.com/uploads/33f7fe1f247e42ababbbe11202793cee.png",
+        "poster": "https://assets.toolaze.com/uploads/f6ffbf3298544f06b258e353586e0128.webp",
         "description": "자전거 주행 동작 하나와 부드러운 트래킹 샷 하나를 테스트하는 와이드 Grok 텍스트-동영상 예시입니다.",
         "aspectRatio": "16:9",
         "duration": "PT5S",
@@ -206,8 +206,8 @@
       {
         "title": "여행 제품 콘셉트 프롬프트",
         "prompt": "Create a 5-second product concept video for a compact travel coffee grinder. Show the grinder on a hotel desk, beans pouring into the top, a quick close-up of the dial, and a final frame with a clean cup beside a city window. Soft morning light, premium travel gear mood, steady push-in camera.",
-        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/1b0129b9d2504494825f8fd28b00f4af.png",
-        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/c601d39d801e44938e5e33711e19df32.webp",
+        "video": "https://assets.toolaze.com/uploads/1b0129b9d2504494825f8fd28b00f4af.png",
+        "poster": "https://assets.toolaze.com/uploads/c601d39d801e44938e5e33711e19df32.webp",
         "description": "가상의 휴대용 여행 커피 그라인더 콘셉트를 위한 와이드 Grok 텍스트-동영상 예시입니다.",
         "aspectRatio": "16:9",
         "duration": "PT5S",

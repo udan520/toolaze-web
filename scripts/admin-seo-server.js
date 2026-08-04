@@ -735,24 +735,24 @@ const HOMEPAGE_TOOL_CARD_KEYS = [
 
 /** 与 src/lib/home-advanced-ai-card-images.ts 路径一致；缩略图长边≤800px、约≤100KB（最终使用 R2 URL） */
 const HOME_ADVANCED_AI_CARD_IMAGES = {
-  'unrestricted-ai-image-generator': 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/unrestricted-ai-image-generator/pool-bikini-demo.webp',
-  'ai-couple-photo-maker': 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-advanced-ai/ai-couple-photo-maker.jpg',
-  'ai-bikini-generator': 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/6bcf91ffd06e45a8bcda2ea867015141.webp',
-  'watermark-remover': 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-advanced-ai/watermark-remover-demo-before-after.webp',
-  'photo-restoration': 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-advanced-ai/photo-restoration-demo-before-after.webp',
+  'unrestricted-ai-image-generator': 'https://assets.toolaze.com/model-assets/unrestricted-ai-image-generator/pool-bikini-demo.webp',
+  'ai-couple-photo-maker': 'https://assets.toolaze.com/home-advanced-ai/ai-couple-photo-maker.jpg',
+  'ai-bikini-generator': 'https://assets.toolaze.com/uploads/6bcf91ffd06e45a8bcda2ea867015141.webp',
+  'watermark-remover': 'https://assets.toolaze.com/home-advanced-ai/watermark-remover-demo-before-after.webp',
+  'photo-restoration': 'https://assets.toolaze.com/home-advanced-ai/photo-restoration-demo-before-after.webp',
 }
 /** 与 src/lib/home-model-card-images.ts 一致（首页 AI Video / AI Image / Trending，最终使用 R2 URL） */
 const HOME_MODEL_CARD_IMAGES = {
-  'nano-banana-pro': 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/nano-banana-pro.jpg',
-  'nano-banana-2': 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/nano-banana-2.jpg',
-  'gpt-image-2': 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/gpt-image-2.jpg',
+  'nano-banana-pro': 'https://assets.toolaze.com/home-model-cards/nano-banana-pro.jpg',
+  'nano-banana-2': 'https://assets.toolaze.com/home-model-cards/nano-banana-2.jpg',
+  'gpt-image-2': 'https://assets.toolaze.com/home-model-cards/gpt-image-2.jpg',
   'wan-2-7-image': '/model-assets/wan-2-7-image/gallery-event-poster.webp',
   'ai-dance-generator': '/model-assets/ai-dance-generator/ai-dance-demo-source.png',
-  'wan-2-5-ai-video-generator': 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/prompt-templates/storyboard-scene.webp',
-  'seedance-2': 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/seedance-2.jpg',
-  'seedance-2-5': 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/seedance-2-5.jpg',
-  'kling-3': 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/kling-3.jpg',
-  'grok-imagine-video-1-5': 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/prompt-templates/image-guided-motion.webp',
+  'wan-2-5-ai-video-generator': 'https://assets.toolaze.com/uploads/ai-video-generator/prompt-templates/storyboard-scene.webp',
+  'seedance-2': 'https://assets.toolaze.com/home-model-cards/seedance-2.jpg',
+  'seedance-2-5': 'https://assets.toolaze.com/home-model-cards/seedance-2-5.jpg',
+  'kling-3': 'https://assets.toolaze.com/home-model-cards/kling-3.jpg',
+  'grok-imagine-video-1-5': 'https://assets.toolaze.com/uploads/ai-video-generator/prompt-templates/image-guided-motion.webp',
 }
 
 const HOME_PREVIEW_AI_IMAGE_PATHS = {

@@ -51,9 +51,9 @@
     "desc": "Verwandeln Sie Prompts, Skripte, Produktideen, Social Hooks und Storyboard-Notizen mit Toolaze in kurze KI-Videos. Starten Sie mit Text, wählen Sie ein unterstütztes Videomodell und verfeinern Sie Bewegung, Kameraführung, Tempo, Seitenverhältnis, Dauer, Audioeinstellungen und Format."
   },
   "heroDemoVideo": {
-    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/1b0129b9d2504494825f8fd28b00f4af.png",
+    "src": "https://assets.toolaze.com/uploads/1b0129b9d2504494825f8fd28b00f4af.png",
     "ariaLabel": "Text-zu-Video-Demo, erstellt aus dem Prompt für das Reiseproduktkonzept in Toolaze",
-    "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/c601d39d801e44938e5e33711e19df32.webp",
+    "poster": "https://assets.toolaze.com/uploads/c601d39d801e44938e5e33711e19df32.webp",
     "sourceHistory": "Grok text-to-video · 40622216026309ff8f4410d965143e74 · 5s · 16:9"
   },
   "performanceMetrics": {
@@ -167,8 +167,8 @@
       {
         "title": "Prompt für Editorial-Porträtaufnahme",
         "prompt": "Create a 5-second widescreen editorial portrait video of a young creative professional standing near a large studio window. Use a slow push-in camera, a gentle head turn, subtle hair and fabric movement, soft natural light, shallow depth of field, realistic skin texture, calm confident mood, and a clean neutral background. No logos, no celebrity likeness.",
-        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/21430f5f6ed54b72910b26b4f73b0ca2.png",
-        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/74292aa585fb494ebe467dbcd3858996.webp",
+        "video": "https://assets.toolaze.com/uploads/21430f5f6ed54b72910b26b4f73b0ca2.png",
+        "poster": "https://assets.toolaze.com/uploads/74292aa585fb494ebe467dbcd3858996.webp",
         "description": "Breitbild-Grok-Text-zu-Video-Porträtbeispiel mit weichem Fensterlicht, subtiler Bewegung und langsamem Push-in.",
         "aspectRatio": "16:9",
         "duration": "PT5S",
@@ -180,8 +180,8 @@
       {
         "title": "Prompt für B-Roll-Erklärvideo zu erneuerbarer Energie",
         "prompt": "Create a 5-second explainer B-roll clip for a lesson about renewable energy. Show sunlight moving across rooftop solar panels, a close-up of an energy meter rising, and a clean classroom-style graphic transition. Calm motion, realistic daylight, gentle camera pan, educational presentation tone.",
-        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/c1430e47f07f42f18c90ba0eb1c75d19.png",
-        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/8e50266141384e78b7b0e5e2a864d463.webp",
+        "video": "https://assets.toolaze.com/uploads/c1430e47f07f42f18c90ba0eb1c75d19.png",
+        "poster": "https://assets.toolaze.com/uploads/8e50266141384e78b7b0e5e2a864d463.webp",
         "description": "Breitbild-Grok-Text-zu-Video-Beispiel für pädagogische B-Roll zu erneuerbarer Energie.",
         "aspectRatio": "16:9",
         "duration": "PT5S",
@@ -193,8 +193,8 @@
       {
         "title": "Prompt für Brücken-Tracking-Shot",
         "prompt": "Create a 5-second widescreen cinematic shot of a cyclist crossing a quiet bridge at sunset. Use one smooth left-to-right tracking move, warm backlight, shallow depth of field, realistic motion blur, and a final frame where the cyclist exits into the glow.",
-        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/33f7fe1f247e42ababbbe11202793cee.png",
-        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/f6ffbf3298544f06b258e353586e0128.webp",
+        "video": "https://assets.toolaze.com/uploads/33f7fe1f247e42ababbbe11202793cee.png",
+        "poster": "https://assets.toolaze.com/uploads/f6ffbf3298544f06b258e353586e0128.webp",
         "description": "Breitbild-Grok-Text-zu-Video-Beispiel zum Testen einer Radfahreraktion und eines ruhigen Tracking-Shots.",
         "aspectRatio": "16:9",
         "duration": "PT5S",
@@ -206,8 +206,8 @@
       {
         "title": "Prompt für Reiseprodukt-Konzept",
         "prompt": "Create a 5-second product concept video for a compact travel coffee grinder. Show the grinder on a hotel desk, beans pouring into the top, a quick close-up of the dial, and a final frame with a clean cup beside a city window. Soft morning light, premium travel gear mood, steady push-in camera.",
-        "video": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/1b0129b9d2504494825f8fd28b00f4af.png",
-        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/c601d39d801e44938e5e33711e19df32.webp",
+        "video": "https://assets.toolaze.com/uploads/1b0129b9d2504494825f8fd28b00f4af.png",
+        "poster": "https://assets.toolaze.com/uploads/c601d39d801e44938e5e33711e19df32.webp",
         "description": "Breitbild-Grok-Text-zu-Video-Beispiel für ein fiktives kompaktes Reise-Kaffeemühlenkonzept.",
         "aspectRatio": "16:9",
         "duration": "PT5S",

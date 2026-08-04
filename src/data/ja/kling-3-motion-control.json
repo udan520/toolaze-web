@@ -8,10 +8,10 @@
     "displayName": "Kling 3 Motion Control",
     "modelId": "kling-3-motion-control",
     "initialImageUrls": [
-      "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/kling-3-motion-control/character-reference.jpg"
+      "https://assets.toolaze.com/model-assets/kling-3-motion-control/character-reference.jpg"
     ],
     "initialMotionVideoUrls": [
-      "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/kling-3-motion-control/motion-reference-video.mp4"
+      "https://assets.toolaze.com/model-assets/kling-3-motion-control/motion-reference-video.mp4"
     ],
     "initialMotionVideoDurationSeconds": 10,
     "initialCharacterOrientation": "video"
@@ -37,12 +37,12 @@
   },
   "heroDemoVideo": {
     "type": "video",
-    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/kling-3-motion-control/motion-control-demo.mp4",
+    "src": "https://assets.toolaze.com/model-assets/kling-3-motion-control/motion-control-demo.mp4",
     "width": 16,
     "height": 9,
     "ariaLabel": "Kling 3 Motion Controlのサンプルフレーム",
     "sourceHistory": "User-generated Kling 3 Motion Control demo from one character image and one motion reference video. Stabilized to R2 for Toolaze model page.",
-    "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/kling-3-motion-control/motion-control-demo-poster.webp",
+    "poster": "https://assets.toolaze.com/model-assets/kling-3-motion-control/motion-control-demo-poster.webp",
     "duration": "PT10S",
     "uploadDate": "2026-08-03T16:19:54.000Z"
   },

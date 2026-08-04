@@ -18,12 +18,12 @@
     "desc": "Create Wan 2.6 videos from text prompts or one uploaded image. Use multi-shot structure, cinematic camera direction, synchronized sound cues, 5/10/15 second timing, and 720p or 1080p output for polished short clips."
   },
   "heroDemoVideo": {
-    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/c07d1db481dd4e9b8e190ebb39611f08.png",
+    "src": "https://assets.toolaze.com/uploads/c07d1db481dd4e9b8e190ebb39611f08.png",
     "ariaLabel": "Toolaze Wan 2.6 16:9 demo video preview",
     "width": 16,
     "height": 9,
     "sourceHistory": "Temporary stable R2 video preview reused until a dedicated Wan 2.6 16:9 demo is available",
-    "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/6e2548965fc5487ca41221f9d663dfcb.webp",
+    "poster": "https://assets.toolaze.com/uploads/6e2548965fc5487ca41221f9d663dfcb.webp",
     "duration": "PT5.01S"
   },
   "sectionsOrder": [
@@ -360,8 +360,8 @@
       "href": "/model/wan-2-7-ai-video-generator",
       "media": {
         "type": "video",
-        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/c07d1db481dd4e9b8e190ebb39611f08.png",
-        "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/6e2548965fc5487ca41221f9d663dfcb.webp",
+        "src": "https://assets.toolaze.com/uploads/c07d1db481dd4e9b8e190ebb39611f08.png",
+        "poster": "https://assets.toolaze.com/uploads/6e2548965fc5487ca41221f9d663dfcb.webp",
         "alt": "Wan 2.7 video preview"
       }
     },
@@ -371,7 +371,7 @@
       "href": "/model/seedance-2",
       "media": {
         "type": "video",
-        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d0d55df5eef346809067197fddb1b251.png",
+        "src": "https://assets.toolaze.com/uploads/d0d55df5eef346809067197fddb1b251.png",
         "alt": "Seedance 2.0 video preview"
       }
     },
@@ -381,7 +381,7 @@
       "href": "/model/kling-3",
       "media": {
         "type": "video",
-        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
+        "src": "https://assets.toolaze.com/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
         "alt": "Kling 3.0 video preview"
       }
     }

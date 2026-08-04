@@ -170,7 +170,7 @@ test('AI video generator page includes prompt examples after how-to guidance', (
     'each prompt example should include a title and copyable prompt'
   )
   assert.ok(
-    pageData.promptExamples.items.every((item) => /^https:\/\/pub-efeb0c7b9b53478d960218de80c52e3d\.r2\.dev\/uploads\/ai-video-generator\/prompt-templates\/.+\.mp4$/.test(item.video)),
+    pageData.promptExamples.items.every((item) => /^https:\/\/assets\.toolaze\.com\/uploads\/ai-video-generator\/prompt-templates\/.+\.mp4$/.test(item.video)),
     'each AI video prompt example should reference its stable R2-hosted MP4'
   )
   assert.match(promptExamplesSource, /video\?: string/, 'shared prompt examples should accept optional video media')
@@ -194,7 +194,7 @@ test('AI video generator page includes prompt examples after how-to guidance', (
     assert.equal(`PT${sourceAsset.durationSeconds}S`, item.duration, `${item.title} source duration should match the page metadata`)
     assert.match(
       item.poster,
-      /^https:\/\/pub-efeb0c7b9b53478d960218de80c52e3d\.r2\.dev\/uploads\/ai-video-generator\/prompt-templates\/.+\.webp$/,
+      /^https:\/\/assets\.toolaze\.com\/uploads\/ai-video-generator\/prompt-templates\/.+\.webp$/,
       `${item.title} poster should use its stable R2-hosted WebP`,
     )
   }
@@ -414,7 +414,7 @@ test('AI video generator page uses the selected Grok history video as the hero d
   assert.ok(existsSync(aiVideoGeneratorDemoPath), 'AI Video Generator Grok demo video should be a local public asset')
   assert.equal(
     pageData.heroDemoVideo?.src,
-    'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4',
+    'https://assets.toolaze.com/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4',
   )
   assert.match(pageData.heroDemoVideo?.ariaLabel || '', /Grok 1\.5 Video image-to-video demo/)
   assert.equal(sourceMeta.history.createdAt, '2026-07-21 12:31:57')

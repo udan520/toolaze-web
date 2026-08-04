@@ -120,7 +120,7 @@ export default {
      - Variable name: `MY_BUCKET`  
      - R2 bucket: 选择你用来存上传图片的桶（如 `toolaze` 或 `toolaze-uploads`）。  
    - 在 **Environment variables**（Functions 用）里添加（可选，不填则用默认 R2 公网域名）：  
-     - name: `R2_PUBLIC_BASE_URL`，value: `https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev`
+     - name: `R2_PUBLIC_BASE_URL`，value: `https://assets.toolaze.com`
 3. **本地上传地址**：在 `.env.local` 里设：
    ```bash
    NEXT_PUBLIC_IMAGE_UPLOAD_URL=https://toolaze-web.pages.dev/api/upload
@@ -180,7 +180,7 @@ export R2_ACCESS_KEY_ID="你的 R2 Access Key ID"
 export R2_SECRET_ACCESS_KEY="你的 R2 Secret Access Key"
 export R2_ENDPOINT_URL="https://<account_id>.r2.cloudflarestorage.com"
 export R2_BUCKET="toolaze"
-export R2_PUBLIC_BASE_URL="https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev"
+export R2_PUBLIC_BASE_URL="https://assets.toolaze.com"
 ```
 
 R2 的 Access Key 在 **Cloudflare Dashboard → R2 → Manage R2 API Tokens** 里创建；Endpoint 在桶所在账号的 R2 概览页可见。

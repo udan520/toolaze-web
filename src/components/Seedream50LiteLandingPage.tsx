@@ -9,7 +9,7 @@ import { loadCommonTranslations } from '@/lib/seo-loader'
 import { getSeedream50LiteLandingCopy } from '@/lib/seedream-5-0-lite-landing-copy'
 
 const pageUrl = 'https://toolaze.com/model/seedream-5-0-lite'
-const imageBaseUrl = 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/seedream-5-0-lite'
+const imageBaseUrl = 'https://assets.toolaze.com/model-assets/seedream-5-0-lite'
 
 const seedream50LiteDemoImages = [
   {

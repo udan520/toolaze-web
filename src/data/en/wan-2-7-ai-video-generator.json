@@ -19,12 +19,12 @@
   },
   "heroDemoVideo": {
     "type": "video",
-    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/c07d1db481dd4e9b8e190ebb39611f08.png",
+    "src": "https://assets.toolaze.com/uploads/c07d1db481dd4e9b8e190ebb39611f08.png",
     "ariaLabel": "Toolaze Wan 2.7 16:9 demo video preview",
     "width": 16,
     "height": 9,
     "sourceHistory": "User-provided Wan 2.7 demo video · 16:9 · 5.01s · 1920x1080 · 2026-08-02",
-    "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/6e2548965fc5487ca41221f9d663dfcb.webp",
+    "poster": "https://assets.toolaze.com/uploads/6e2548965fc5487ca41221f9d663dfcb.webp",
     "duration": "PT5.01S"
   },
   "sectionsOrder": [
@@ -353,7 +353,7 @@
       "href": "/model/seedance-2",
       "media": {
         "type": "video",
-        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d0d55df5eef346809067197fddb1b251.png",
+        "src": "https://assets.toolaze.com/uploads/d0d55df5eef346809067197fddb1b251.png",
         "alt": "Seedance 2.0 video preview"
       }
     },
@@ -363,7 +363,7 @@
       "href": "/model/kling-3",
       "media": {
         "type": "video",
-        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
+        "src": "https://assets.toolaze.com/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
         "alt": "Kling 3.0 video preview"
       }
     },
@@ -373,7 +373,7 @@
       "href": "/model/grok-imagine-video-1-5",
       "media": {
         "type": "video",
-        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4",
+        "src": "https://assets.toolaze.com/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4",
         "alt": "Grok Imagine Video 1.5 demo video preview"
       }
     }

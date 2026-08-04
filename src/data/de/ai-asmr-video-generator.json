@@ -16,8 +16,8 @@
     "desc": "Verwandeln Sie eine taktile Eingabeaufforderung (Prompt) oder ein Referenzbild in ein kurzes ASMR-Video mit Nahaufnahmen und passendem Ton. Beschreiben Sie Material, Aktion, Kameraführung, Tempo und Klangcharakter, und wählen Sie dann das Toolaze-Videomodell, das am besten zu Ihren Anforderungen hinsichtlich Eingabe, Audio und Qualität passt."
   },
   "heroDemoVideo": {
-    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/ai-asmr-video-generator/demo.mp4",
-    "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/ai-asmr-video-generator/demo-poster.webp",
+    "src": "https://assets.toolaze.com/landing-pages/ai-asmr-video-generator/demo.mp4",
+    "poster": "https://assets.toolaze.com/landing-pages/ai-asmr-video-generator/demo-poster.webp",
     "ariaLabel": "KI-generiertes ASMR-Demo-Video"
   },
   "sectionsOrder": [

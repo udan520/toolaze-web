@@ -4,7 +4,7 @@ import test from 'node:test'
 
 const slug = 'unrestricted-ai-image-generator'
 const locales = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
-const poolsideDemoUrl = 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/unrestricted-ai-image-generator/pool-bikini-demo.webp'
+const poolsideDemoUrl = 'https://assets.toolaze.com/model-assets/unrestricted-ai-image-generator/pool-bikini-demo.webp'
 
 test('unrestricted AI image generator publishes localized L2 content', () => {
   for (const locale of locales) {

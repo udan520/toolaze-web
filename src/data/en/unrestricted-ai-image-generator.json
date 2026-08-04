@@ -12,7 +12,7 @@
     "compactResultPanel": true,
     "sampleImages": [
       {
-        "url": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/unrestricted-ai-image-generator/pool-bikini-demo.webp",
+        "url": "https://assets.toolaze.com/model-assets/unrestricted-ai-image-generator/pool-bikini-demo.webp",
         "title": "Poolside bikini demo image",
         "width": 880,
         "height": 495
@@ -83,28 +83,28 @@
     "items": [
       {
         "title": "Dark fantasy character sheet",
-        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/gpt-image-2/prompt-character-sheet.webp",
+        "image": "https://assets.toolaze.com/model-assets/gpt-image-2/prompt-character-sheet.webp",
         "aspectRatio": "16:9",
         "prompt": "Create a cinematic dark fantasy character concept sheet for an original warrior queen in obsidian armor, with three full-body poses, close-up face details, weapon variants, readable labels, controlled lighting, and a polished game-art presentation. Keep the character adult, original, non-celebrity, and non-explicit.",
         "note": "Original dark fantasy character work."
       },
       {
         "title": "Sci-fi action storyboard",
-        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/gpt-image-2/prompt-storyboard.webp",
+        "image": "https://assets.toolaze.com/model-assets/gpt-image-2/prompt-storyboard.webp",
         "aspectRatio": "16:9",
         "prompt": "Create a widescreen sci-fi action storyboard with four clean panels showing an original pilot escaping a neon orbital station, dynamic camera angles, readable panel captions, smoke, sparks, motion blur, and a polished cinematic color grade. Keep it intense but non-graphic.",
         "note": "Action scene planning without graphic detail."
       },
       {
         "title": "Synthwave album poster",
-        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/gpt-image-2/prompt-product-poster.webp",
+        "image": "https://assets.toolaze.com/model-assets/gpt-image-2/prompt-product-poster.webp",
         "aspectRatio": "16:9",
         "prompt": "Create a bold album-cover style poster for an imaginary synthwave artist named NIGHT SIGNAL, with large readable typography, chrome lettering, a surreal city skyline, dramatic magenta-blue lighting, and a print-ready square composition.",
         "note": "Typography-heavy poster concept."
       },
       {
         "title": "Surreal interior concept",
-        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/seedream-4-5/prompt-interior-redesign.webp",
+        "image": "https://assets.toolaze.com/model-assets/seedream-4-5/prompt-interior-redesign.webp",
         "aspectRatio": "16:9",
         "prompt": "Create a surreal interior design concept for a private creative studio inside a glass cliffside room, with sculptural furniture, warm natural light, plants, art objects, clean spatial layout, and realistic materials. No people, no brands, no logos.",
         "note": "Surreal space design and interior mood."
@@ -244,7 +244,7 @@
       "href": "/ai-image-generator",
       "media": {
         "type": "image",
-        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-model-cards/gpt-image-2.jpg",
+        "src": "https://assets.toolaze.com/home-model-cards/gpt-image-2.jpg",
         "alt": "AI Image Generator"
       }
     },
@@ -255,7 +255,7 @@
       "href": "/ai-image-to-image-generator",
       "media": {
         "type": "image",
-        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/gpt-image-2/feature-image-editing.webp",
+        "src": "https://assets.toolaze.com/model-assets/gpt-image-2/feature-image-editing.webp",
         "alt": "AI Image to Image Generator"
       }
     },
@@ -266,7 +266,7 @@
       "href": "/ai-clothes-changer",
       "media": {
         "type": "image",
-        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/84b9bf50f4414a2c962ebd3f74cb07f0.webp",
+        "src": "https://assets.toolaze.com/uploads/84b9bf50f4414a2c962ebd3f74cb07f0.webp",
         "alt": "AI Clothes Changer"
       }
     }

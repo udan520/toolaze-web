@@ -18,12 +18,12 @@
     "desc": "Crie vídeos Wan 2.7 a partir de texto, imagens, referências de vídeo ou direção de áudio. Use prompts multicena, transições de primeiro/último quadro, cenas de continuação e som sincronizado para clipes cinematográficos curtos em 720p ou 1080p."
   },
   "heroDemoVideo": {
-    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/c07d1db481dd4e9b8e190ebb39611f08.png",
+    "src": "https://assets.toolaze.com/uploads/c07d1db481dd4e9b8e190ebb39611f08.png",
     "ariaLabel": "Prévia do vídeo demo Wan 2.7 no Toolaze",
     "width": 16,
     "height": 9,
     "sourceHistory": "User-provided Wan 2.7 demo video · 16:9 · 5.01s · 1920x1080 · 2026-08-02",
-    "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/6e2548965fc5487ca41221f9d663dfcb.webp",
+    "poster": "https://assets.toolaze.com/uploads/6e2548965fc5487ca41221f9d663dfcb.webp",
     "duration": "PT5.01S"
   },
   "sectionsOrder": [
@@ -351,7 +351,7 @@
       "href": "/model/seedance-2",
       "media": {
         "type": "video",
-        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d0d55df5eef346809067197fddb1b251.png",
+        "src": "https://assets.toolaze.com/uploads/d0d55df5eef346809067197fddb1b251.png",
         "alt": "Prévia de vídeo do Seedance 2.0"
       },
       "description": "Use Seedance 2.0 para geração multicena com estilo de direção e cenas comerciais com muitas referências."
@@ -361,7 +361,7 @@
       "href": "/model/kling-3",
       "media": {
         "type": "video",
-        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
+        "src": "https://assets.toolaze.com/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
         "alt": "Prévia de vídeo do Kling 3.0"
       },
       "description": "Experimente Kling 3.0 para movimento dinâmico, câmera cinematográfica e saída de vídeo em alta resolução."
@@ -371,7 +371,7 @@
       "href": "/model/grok-imagine-video-1-5",
       "media": {
         "type": "video",
-        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4",
+        "src": "https://assets.toolaze.com/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4",
         "alt": "Prévia do demo de Grok Imagine Video 1.5"
       },
       "description": "Use Grok Imagine Video 1.5 para rascunhos rápidos de imagem para vídeo, movimento de produto e clipes de criador."

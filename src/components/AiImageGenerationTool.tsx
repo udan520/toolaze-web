@@ -978,7 +978,7 @@ const NANO_BANANA_2_COUPLE_TEMPLATES: CoupleTemplate[] = [
     id: 'rainy-eiffel',
     title: 'Rainy Paris + Eiffel Tower',
     category: 'style',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/ai-couple-photo-maker/rainy-eiffel-4x3.jpg',
+    image: 'https://assets.toolaze.com/ai-couple-photo-maker/rainy-eiffel-4x3.jpg',
     prompt:
       'Medium frontal portrait of a couple standing side-by-side under a large transparent umbrella on a rainy Paris street, both facing the camera. Both subjects MUST match the facial features, identity, and appearance of the uploaded reference images, with no deviation. Both subjects are wearing coordinated elegant evening outfits with refined styling. They stand close together under the umbrella, subtle intimacy, joyful and confident expressions. Background: a rainy Paris street with the Eiffel Tower softly glowing in the misty distance. Wet pavement reflecting warm street lamps and city lights. Cinematic rain atmosphere with visible rain droplets on the transparent umbrella, soft diffusion from moisture in the air. Lighting: moody cinematic lighting with contrast between warm street lights and cool rainy tones. Extremely realistic skin texture, hyper-detailed, sharp focus, premium editorial photography. Lens: 50mm, shallow depth of field, subjects in sharp focus, background softly blurred. Color grading: rich, vibrant, high-end cinematic style.',
   },
@@ -986,7 +986,7 @@ const NANO_BANANA_2_COUPLE_TEMPLATES: CoupleTemplate[] = [
     id: 'rooftop',
     title: 'Rooftop Night',
     category: 'style',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/ai-couple-photo-maker/rooftop-4x3.jpg',
+    image: 'https://assets.toolaze.com/ai-couple-photo-maker/rooftop-4x3.jpg',
     prompt:
       'Medium frontal portrait of a stylish couple standing side-by-side at a rooftop bar at night, both facing the camera. Both subjects MUST match the facial features, identity, and appearance of the uploaded reference images, with no deviation. Both subjects are wearing modern upscale evening outfits suitable for a rooftop setting. They are each holding a champagne glass, standing close together with subtle intimacy, relaxed and confident expressions. Background: a high-end rooftop bar with a stunning city skyline at night, filled with glowing neon lights and soft bokeh. Glass railings and modern architectural elements subtly visible. Lighting: warm ambient lighting from the bar mixed with cool city light reflections, creating cinematic contrast and a modern luxury atmosphere. Extremely realistic skin texture, hyper-detailed, sharp focus, premium editorial lifestyle photography. Lens: 50mm, shallow depth of field, subjects in sharp focus, background smoothly blurred with rich bokeh. Color grading: high contrast, rich tones, modern luxury cinematic style.',
   },
@@ -994,7 +994,7 @@ const NANO_BANANA_2_COUPLE_TEMPLATES: CoupleTemplate[] = [
     id: 'red-carpet',
     title: 'Red Carpet Event',
     category: 'style',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/ai-couple-photo-maker/red-carpet-4x3.jpg',
+    image: 'https://assets.toolaze.com/ai-couple-photo-maker/red-carpet-4x3.jpg',
     prompt:
       'Medium frontal portrait of a glamorous couple standing shoulder-to-shoulder on a red carpet, both facing the camera. Both subjects MUST match the facial features, identity, and appearance of the uploaded reference images, with no deviation. Both subjects are wearing premium red-carpet formal outfits with black and gold accents. They stand close together with confident and elegant posture, maintaining refined expressions and strong eye contact with the camera. Composition: centered and symmetrical framing, clean foreground with the couple as the clear focal point. Background: a red carpet event setting with a softly blurred crowd, subtle silhouettes, and controlled camera flash bokeh, ensuring no background figures are sharp or distracting. Lighting: cinematic, high-fashion lighting with soft key light on faces and subtle rim light separation, combined with gentle flash highlights for a premium editorial look. Extremely realistic skin texture, clean and sharp facial details, high resolution, premium fashion photography. Lens: 50mm, shallow depth of field, subjects in crisp focus, background smoothly blurred. Color grading: high contrast with rich blacks and luminous gold tones, modern luxury editorial style.',
   },
@@ -1002,7 +1002,7 @@ const NANO_BANANA_2_COUPLE_TEMPLATES: CoupleTemplate[] = [
     id: 'candlelight-dinner',
     title: 'Candlelight Dinner',
     category: 'style',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/ai-couple-photo-maker/candlelight-dinner-4x3.jpg',
+    image: 'https://assets.toolaze.com/ai-couple-photo-maker/candlelight-dinner-4x3.jpg',
     prompt:
       'Intimate frontal portrait of a couple seated at a candlelit dinner table in a sophisticated restaurant. Both subjects are looking and smiling at the camera, holding up fine red wine glasses for a toast. Their faces are softly illuminated by the warm, flickering orange glow of many candles on the table. Soft bokeh of a luxury dimly lit interior in the background. Dramatic shadows, deeply romantic atmosphere, hyper-realistic skin texture, elegant formal evening outfits.',
   },
@@ -1010,7 +1010,7 @@ const NANO_BANANA_2_COUPLE_TEMPLATES: CoupleTemplate[] = [
     id: 'rose-wall',
     title: 'Rose Wall',
     category: 'style',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/ai-couple-photo-maker/rose-wall-4x3.jpg',
+    image: 'https://assets.toolaze.com/ai-couple-photo-maker/rose-wall-4x3.jpg',
     prompt:
       'Medium frontal portrait of a happily smiling couple standing side-by-side. One subject holds a luxurious bouquet of deep red roses with velvet ribbon, while the other leans naturally on their partner\'s shoulder, both looking confidently at the camera. Background is a lush, textured wall of red rose. Sunlight filtering through leaves (dappled light), extremely realistic skin texture, vibrant and rich colors, romantic high-end lifestyle photography.',
   },
@@ -1018,7 +1018,7 @@ const NANO_BANANA_2_COUPLE_TEMPLATES: CoupleTemplate[] = [
     id: 'opera-formal',
     title: 'Opera Formal',
     category: 'style',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/ai-couple-photo-maker/opera-formal-4x3.jpg',
+    image: 'https://assets.toolaze.com/ai-couple-photo-maker/opera-formal-4x3.jpg',
     prompt:
       'Medium frontal portrait of a couple standing side-by-side on the grand staircase of an opulent opera house, both facing the camera. Both subjects MUST match the facial features, identity, and appearance of the uploaded reference images, with no deviation. Subject A has polished styling and is wearing a premium formal outfit. Subject B is wearing a shimmering formal outfit, with their arm elegantly linked with their partner. They stand centered on a plush red-carpeted staircase, with confident and joyful expressions, maintaining a poised and regal posture. Background: a luxurious opera house interior with gilded arches, a massive crystal chandelier overhead, and rich red velvet curtains. Architectural symmetry emphasized. Lighting: warm, golden cinematic lighting inspired by reference images, casting soft highlights on skin and fabric, with gentle falloff and dramatic shadows for depth. Extremely realistic skin texture, clean and detailed facial features, high sharpness, premium editorial photography. Lens: 50mm, shallow depth of field, subjects in sharp focus, background slightly softened while preserving grandeur. Color grading: rich gold and deep red tones, high contrast, cinematic luxury style.',
   },
@@ -1026,7 +1026,7 @@ const NANO_BANANA_2_COUPLE_TEMPLATES: CoupleTemplate[] = [
     id: 'beach-outdoor',
     title: 'Beach Outdoor',
     category: 'style',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/ai-couple-photo-maker/beach-outdoor-4x3.jpg',
+    image: 'https://assets.toolaze.com/ai-couple-photo-maker/beach-outdoor-4x3.jpg',
     prompt:
       'Medium close-up frontal portrait of a couple, both facing the camera. Both subjects MUST match the facial features, identity, and appearance of the uploaded reference images, with no deviation. Subject B has neatly styled hair and is wearing an elegant white ceremonial outfit with refined details. Subject B leans gently toward Subject A with a joyful and relaxed expression. Subject A has polished styling and is wearing a tailored navy formal outfit with refined details. Both are smiling radiantly and confidently, maintaining natural intimacy and a relaxed posture. Composition: symmetrical, centered on their faces, filling the center third of the frame. Lighting: soft natural sunlight filtering through unseen palm leaves, creating dappled light patterns across their faces and shoulders, warm and organic highlights with gentle shadow contrast. Background: softly blurred lush palm foliage with subtle hints of ocean waves, creating a tropical, romantic atmosphere. Extremely realistic skin texture, clean and detailed facial features, high sharpness, premium lifestyle wedding photography. Lens: 50mm, shallow depth of field, subjects in crisp focus, background smoothly blurred. Color grading: warm, soft, inviting tones with a high-end editorial finish.',
   },
@@ -1034,7 +1034,7 @@ const NANO_BANANA_2_COUPLE_TEMPLATES: CoupleTemplate[] = [
     id: 'garden-tea',
     title: 'Garden Tea',
     category: 'style',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/ai-couple-photo-maker/garden-tea-4x3.jpg',
+    image: 'https://assets.toolaze.com/ai-couple-photo-maker/garden-tea-4x3.jpg',
     prompt:
       'Medium frontal portrait of a couple sitting close together at an elegant outdoor tea table in a lush, sunlit garden, both facing the camera. Both subjects MUST match the facial features, identity, and appearance of the uploaded reference images, with no deviation. Both subjects are wearing coordinated elegant garden-party outfits. They are seated side-by-side, leaning slightly toward each other with relaxed posture, smiling warmly and confidently at the camera. Composition: centered and symmetrical framing, medium shot, with both faces clearly visible and unobstructed, table elements placed neatly in the foreground. Table details: a refined tea setting with delicate macarons, teacups, and tableware arranged neatly and not blocking the subjects. Lighting: soft natural sunlight filtering through leaves, creating controlled dappled light patterns across their faces, clothing, and table, with balanced highlights and gentle shadows. Background: a lush garden with greenery, flowers, and soft palm elements, smoothly blurred to create depth while maintaining a bright and airy atmosphere. Extremely realistic skin texture, clean facial details, high resolution, sharp focus, premium high-fashion lifestyle photography. Lens: 50mm, shallow depth of field, subjects in crisp focus, foreground and background softly blurred. Color grading: soft pastel tones with warm highlights, refined and elegant editorial finish.',
   },
@@ -1042,7 +1042,7 @@ const NANO_BANANA_2_COUPLE_TEMPLATES: CoupleTemplate[] = [
     id: 'snow-ring',
     title: 'Snow + Ring',
     category: 'style',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/ai-couple-photo-maker/snow-ring-4x3.jpg',
+    image: 'https://assets.toolaze.com/ai-couple-photo-maker/snow-ring-4x3.jpg',
     prompt:
       'Medium frontal portrait of a couple standing close together in a romantic setting surrounded by abundant red rose arrangements, both facing the camera. Both subjects MUST match the facial features, identity, and appearance of the uploaded reference images, with no deviation. Subject A is holding a luxurious bouquet of deep red roses wrapped with a velvet ribbon, positioned slightly to the side and below chest level to keep both faces fully visible. Subject B gently leans toward Subject A, with a warm and elegant smile, showing natural intimacy. Both are looking directly at the camera with confident, joyful expressions. Composition: centered and symmetrical framing, medium close-up, with both subjects clearly visible and unobstructed. Environment: layered rose arrangements including foreground bouquets, mid-ground floral clusters, and soft background rose decor, creating depth instead of a flat wall. Background: softly blurred romantic floral setting with rich red tones, subtle greenery accents, and hints of a styled indoor or garden environment. Lighting: soft natural light combined with gentle warm highlights, creating a romantic glow with controlled dappled light and balanced shadows. Extremely realistic skin texture, clean facial details, high resolution, sharp focus, premium lifestyle photography. Lens: 50mm, shallow depth of field, subjects in crisp focus, foreground and background softly blurred for depth. Color grading: rich, controlled reds with warm cinematic tones, avoiding oversaturation while maintaining vibrancy, high-end editorial finish.',
   },
@@ -1050,7 +1050,7 @@ const NANO_BANANA_2_COUPLE_TEMPLATES: CoupleTemplate[] = [
     id: 'cozy-home',
     title: 'Cozy Home',
     category: 'style',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/ai-couple-photo-maker/cozy-home-4x3.jpg',
+    image: 'https://assets.toolaze.com/ai-couple-photo-maker/cozy-home-4x3.jpg',
     prompt:
       'Medium frontal portrait of a couple in their early 30s seated closely together on a plush cream-colored sofa in a warm and cozy living room, both facing the camera. Both subjects MUST match the facial features, identity, and appearance of the uploaded reference images, with no deviation. Subject A is wearing a cozy knit outfit, with an arm gently around Subject B. Subject B is wearing a soft cream home outfit, snuggled closely with their head resting on Subject A\'s shoulder, holding a warm mug. Both are smiling naturally and warmly, with relaxed expressions and subtle intimacy. Composition: centered and balanced, medium close framing, the couple filling the central area with clean, symmetrical composition. Lighting: soft warm ambient lighting from a nearby fireplace combined with gentle diffused indoor light, creating natural highlights and soft shadow transitions across their faces. Background: a tastefully styled living room with softly blurred bookshelves, potted plants, textured walls, and a glowing fireplace, providing depth while keeping focus on the subjects. Extremely realistic skin texture, clean facial details, high resolution, sharp focus, premium lifestyle photography. Lens: 50mm, shallow depth of field, subjects in crisp focus, background smoothly blurred. Color grading: warm, soft, inviting tones with a refined high-end editorial finish.',
   },
@@ -1058,7 +1058,7 @@ const NANO_BANANA_2_COUPLE_TEMPLATES: CoupleTemplate[] = [
     id: 'sunset-beach',
     title: 'Sunset Beach',
     category: 'style',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/ai-couple-photo-maker/sunset-beach-4x3.jpg',
+    image: 'https://assets.toolaze.com/ai-couple-photo-maker/sunset-beach-4x3.jpg',
     prompt:
       'Medium frontal portrait of a couple standing side-by-side on a beach during sunset, both facing the camera. Both subjects MUST match the facial features of the uploaded reference images. Subject A is holding a bouquet of flowers, Subject B gently leaning toward Subject A. Both are smiling softly and confidently. Golden sunset light casting warm glow, soft rim light around their hair. Ocean waves and horizon visible in the background, sky filled with orange, pink, and purple tones. Wind slightly moving hair and clothes, romantic cinematic atmosphere. Extremely realistic skin texture, high detail, premium lifestyle photography, 50mm lens, shallow depth of field.',
   },
@@ -1066,7 +1066,7 @@ const NANO_BANANA_2_COUPLE_TEMPLATES: CoupleTemplate[] = [
     id: 'mountain',
     title: 'Mountain Peak',
     category: 'style',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/ai-couple-photo-maker/mountain-4x3.jpg',
+    image: 'https://assets.toolaze.com/ai-couple-photo-maker/mountain-4x3.jpg',
     prompt:
       'Medium frontal portrait of a couple standing together on a mountain peak, both facing the camera. Both subjects MUST match the facial features of the uploaded reference images. They are wearing stylish outdoor clothing, standing close together with subtle physical interaction (hand on shoulder or holding hands). Background shows dramatic mountains, snow-covered peaks, and vast sky. Natural sunlight with cinematic contrast, slightly cool tone. Wind blowing slightly, giving dynamic motion to clothing and hair. Extremely realistic skin texture, sharp focus, cinematic outdoor photography, high-end editorial style.',
   },
@@ -1074,7 +1074,7 @@ const NANO_BANANA_2_COUPLE_TEMPLATES: CoupleTemplate[] = [
     id: 'night-street',
     title: 'Night Street',
     category: 'style',
-    image: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/ai-couple-photo-maker/night-street-4x3.jpg',
+    image: 'https://assets.toolaze.com/ai-couple-photo-maker/night-street-4x3.jpg',
     prompt:
       'Medium frontal portrait of a couple standing side-by-side in a city at night, both facing the camera. Both subjects MUST match the facial features of the uploaded reference images. City lights, neon signs, and blurred traffic lights in the background creating strong bokeh. Cool and cinematic lighting with contrast between warm and cool tones. The couple dressed in stylish urban outfits, confident expression, slight intimacy. Extremely realistic skin texture, sharp focus on subjects, background softly blurred, premium editorial photography.',
   },

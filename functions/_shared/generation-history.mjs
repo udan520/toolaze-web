@@ -1,3 +1,5 @@
+import { rewriteLegacyR2PublicUrl } from './r2-public-url.mjs';
+
 function nowIso() {
   return new Date().toISOString();
 }
@@ -16,14 +18,16 @@ function parseJsonArray(value) {
   }
 }
 
-function normalizeHistoryReferenceImageUrl(url) {
+function normalizeHistoryReferenceImageUrl(url, env) {
   const imageUrl = typeof url === 'string' ? url.trim() : '';
   if (!imageUrl) return '';
   if (imageUrl.startsWith('/')) return imageUrl.startsWith('//') || imageUrl.length === 1 ? '' : imageUrl;
 
   try {
     const parsed = new URL(imageUrl);
-    return parsed.protocol === 'http:' || parsed.protocol === 'https:' ? imageUrl : '';
+    return parsed.protocol === 'http:' || parsed.protocol === 'https:'
+      ? rewriteLegacyR2PublicUrl(imageUrl, env)
+      : '';
   } catch {
     return '';
   }
@@ -32,8 +36,9 @@ function normalizeHistoryReferenceImageUrl(url) {
 export async function createGenerationHistoryItem(env, userId, item) {
   const now = nowIso();
   const id = createId('gen');
+  const outputUrl = rewriteLegacyR2PublicUrl(String(item.outputUrl || '').trim(), env);
   const inputUrls = Array.isArray(item.inputUrls)
-    ? item.inputUrls.map(normalizeHistoryReferenceImageUrl).filter(Boolean)
+    ? item.inputUrls.map((url) => normalizeHistoryReferenceImageUrl(url, env)).filter(Boolean)
     : [];
   const toolSlug = String(item.toolSlug || '').trim() || null;
   const toolLabel = String(item.toolLabel || '').trim() || null;
@@ -51,7 +56,7 @@ export async function createGenerationHistoryItem(env, userId, item) {
     item.mediaType === 'video' ? 'video' : 'image',
     String(item.model || '').trim() || 'unknown',
     String(item.prompt || '').trim(),
-    String(item.outputUrl || '').trim(),
+    outputUrl,
     inputUrls.length > 0 ? JSON.stringify(inputUrls) : null,
     item.aspectRatio || null,
     item.resolution || null,
@@ -68,7 +73,7 @@ export async function createGenerationHistoryItem(env, userId, item) {
     mediaType: item.mediaType === 'video' ? 'video' : 'image',
     model: String(item.model || '').trim() || 'unknown',
     prompt: String(item.prompt || '').trim(),
-    outputUrl: String(item.outputUrl || '').trim(),
+    outputUrl,
     inputUrls,
     aspectRatio: item.aspectRatio || null,
     resolution: item.resolution || null,
@@ -97,8 +102,10 @@ export async function listGenerationHistory(env, userId, limit = 100) {
     mediaType: row.media_type,
     model: row.model,
     prompt: row.prompt,
-    outputUrl: row.output_url,
-    inputUrls: parseJsonArray(row.input_urls),
+    outputUrl: rewriteLegacyR2PublicUrl(row.output_url, env),
+    inputUrls: parseJsonArray(row.input_urls)
+      .map((url) => normalizeHistoryReferenceImageUrl(url, env))
+      .filter(Boolean),
     aspectRatio: row.aspect_ratio,
     resolution: row.resolution,
     outputFormat: row.output_format,

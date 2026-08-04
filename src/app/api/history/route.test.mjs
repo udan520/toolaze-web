@@ -31,8 +31,8 @@ function createHistoryPostRequest() {
       mediaType: 'image',
       model: 'seedream-5-0-pro',
       prompt: 'test prompt',
-      outputUrl: 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/test.webp',
-      inputUrls: ['https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/input.webp'],
+      outputUrl: 'https://assets.toolaze.com/uploads/test.webp',
+      inputUrls: ['https://assets.toolaze.com/uploads/input.webp'],
       aspectRatio: '16:9',
       resolution: '1K',
       outputFormat: 'Auto',
@@ -48,7 +48,7 @@ test('history route accepts local dev POST requests', async () => {
 
   assert.equal(response.status, 201)
   assert.equal(payload.item.model, 'seedream-5-0-pro')
-  assert.equal(payload.item.outputUrl, 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/test.webp')
+  assert.equal(payload.item.outputUrl, 'https://assets.toolaze.com/uploads/test.webp')
 })
 
 test('history route preserves Native Audio for local video history', async () => {

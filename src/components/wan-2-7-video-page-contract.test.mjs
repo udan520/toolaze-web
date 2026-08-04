@@ -7,11 +7,11 @@ const root = process.cwd()
 const slug = 'wan-2-7-ai-video-generator'
 const taskId = '2026-08-01-wan-2-7-ai-video-generator'
 const locales = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
-const wan27DemoVideo = 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/c07d1db481dd4e9b8e190ebb39611f08.png'
-const wan27DemoPoster = 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/6e2548965fc5487ca41221f9d663dfcb.webp'
+const wan27DemoVideo = 'https://assets.toolaze.com/uploads/c07d1db481dd4e9b8e190ebb39611f08.png'
+const wan27DemoPoster = 'https://assets.toolaze.com/uploads/6e2548965fc5487ca41221f9d663dfcb.webp'
 const relatedVideoR2Assets = new Set([
-  'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d0d55df5eef346809067197fddb1b251.png',
-  'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/56bb211041b34c5f8f27d3c0208322e7.png',
+  'https://assets.toolaze.com/uploads/d0d55df5eef346809067197fddb1b251.png',
+  'https://assets.toolaze.com/uploads/56bb211041b34c5f8f27d3c0208322e7.png',
 ])
 const r2UrlPattern = /^https:\/\/pub-[a-z0-9]+\.r2\.dev\/.+/i
 

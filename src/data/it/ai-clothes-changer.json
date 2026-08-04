@@ -33,32 +33,32 @@
           "label": "Abito business",
           "group": "clothing-reference",
           "prompt": "Image 1 is the person photo. Image 2 is the target clothing reference. Put the formal business suit from image 2 onto the person in image 1. Preserve the same face, identity, age, skin tone, hair, body proportions, pose, hands, background, lighting, and camera angle from image 1. Match the suit structure, shirt, trousers, fabric, color, and fit from image 2 as closely as possible. Keep the result realistic and professionally styled.",
-          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ab409a2a358c44fb8e4178b8062ca365.webp",
-          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ab409a2a358c44fb8e4178b8062ca365.webp",
+          "image": "https://assets.toolaze.com/uploads/ab409a2a358c44fb8e4178b8062ca365.webp",
+          "referenceImage": "https://assets.toolaze.com/uploads/ab409a2a358c44fb8e4178b8062ca365.webp",
           "swatch": "linear-gradient(135deg, #e5e7eb, #334155)"
         },
         {
           "label": "Abito da sera",
           "group": "clothing-reference",
           "prompt": "Image 1 is the person photo. Image 2 is the target clothing reference. Put the luxurious formal gown from image 2 onto the person in image 1. Preserve the same face, identity, age, skin tone, hair, body proportions, pose, hands, background, lighting, and camera angle from image 1. Match the gown silhouette, fabric shine, color, length, neckline, and elegant styling from image 2 as closely as possible. Keep the result realistic and tasteful.",
-          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d18eb177f182452c9a619f36c4007df4.webp",
-          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d18eb177f182452c9a619f36c4007df4.webp",
+          "image": "https://assets.toolaze.com/uploads/d18eb177f182452c9a619f36c4007df4.webp",
+          "referenceImage": "https://assets.toolaze.com/uploads/d18eb177f182452c9a619f36c4007df4.webp",
           "swatch": "linear-gradient(135deg, #312e81, #c084fc)"
         },
         {
           "label": "Bikini nero",
           "group": "clothing-reference",
           "prompt": "Image 1 is the person photo. Image 2 is the target clothing reference. Put the tasteful black bikini from image 2 onto the adult person in image 1. Preserve the same face, identity, age, skin tone, hair, body proportions, pose, hands, background, lighting, and camera angle from image 1. Match the swimwear shape, coverage, straps, color, and fabric from image 2 as closely as possible. Keep the result realistic, non-explicit, and suitable for a swimwear preview.",
-          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d9c58f4a47544904909fc28a0e9cd584.webp",
-          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d9c58f4a47544904909fc28a0e9cd584.webp",
+          "image": "https://assets.toolaze.com/uploads/d9c58f4a47544904909fc28a0e9cd584.webp",
+          "referenceImage": "https://assets.toolaze.com/uploads/d9c58f4a47544904909fc28a0e9cd584.webp",
           "swatch": "linear-gradient(135deg, #111827, #020617)"
         },
         {
           "label": "Bikini resort",
           "group": "clothing-reference",
           "prompt": "Image 1 is the person photo. Image 2 is the target clothing reference. Put the colorful resort bikini from image 2 onto the adult person in image 1. Preserve the same face, identity, age, skin tone, hair, body proportions, pose, hands, background, lighting, and camera angle from image 1. Match the swimwear shape, coverage, straps, color palette, pattern, and fabric from image 2 as closely as possible. Keep the result realistic, non-explicit, and suitable for a swimwear preview.",
-          "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3f39d75486cc4e20994d4780c322336a.webp",
-          "referenceImage": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/3f39d75486cc4e20994d4780c322336a.webp",
+          "image": "https://assets.toolaze.com/uploads/3f39d75486cc4e20994d4780c322336a.webp",
+          "referenceImage": "https://assets.toolaze.com/uploads/3f39d75486cc4e20994d4780c322336a.webp",
           "swatch": "linear-gradient(135deg, #f97316, #ec4899)"
         },
         {
@@ -69,7 +69,7 @@
     },
     "sampleImages": [
       {
-        "url": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/84b9bf50f4414a2c962ebd3f74cb07f0.webp",
+        "url": "https://assets.toolaze.com/uploads/84b9bf50f4414a2c962ebd3f74cb07f0.webp",
         "title": "AI clothes changer before and after preview",
         "width": 1600,
         "height": 900
@@ -163,28 +163,28 @@
     "items": [
       {
         "title": "Abito business",
-        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/0953e4dfb6e94ce4ac2de2f7454055b2.webp",
+        "image": "https://assets.toolaze.com/uploads/0953e4dfb6e94ce4ac2de2f7454055b2.webp",
         "prompt": "Image 1 is the person photo. Image 2 is the target clothing reference. Put the formal business suit from image 2 onto the person in image 1. Preserve the same face, identity, body proportions, pose, hands, background, lighting, and camera angle from image 1. Match the suit structure, shirt, trousers, fabric, color, and fit from image 2 as closely as possible.",
         "note": "Ideale per profili professionali, preview formali a figura intera e test di styling.",
         "color": "linear-gradient(135deg, #e5e7eb, #334155)"
       },
       {
         "title": "Abito da sera",
-        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/6f759339ca844449b5f0a527528660e6.webp",
+        "image": "https://assets.toolaze.com/uploads/6f759339ca844449b5f0a527528660e6.webp",
         "prompt": "Image 1 is the person photo. Image 2 is the target clothing reference. Put the luxurious formal gown from image 2 onto the person in image 1. Preserve the same face, identity, body proportions, pose, hands, background, lighting, and camera angle from image 1. Match the gown silhouette, fabric shine, color, length, neckline, and elegant styling from image 2 as closely as possible.",
         "note": "Ideale per styling eventi, concept red carpet e preview moda premium.",
         "color": "linear-gradient(135deg, #312e81, #c084fc)"
       },
       {
         "title": "Bikini nero",
-        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/356f99aafcde4d3a896a58f01eec038a.webp",
+        "image": "https://assets.toolaze.com/uploads/356f99aafcde4d3a896a58f01eec038a.webp",
         "prompt": "Image 1 is the person photo. Image 2 is the target clothing reference. Put the tasteful black bikini from image 2 onto the adult person in image 1. Preserve the same face, identity, body proportions, pose, hands, background, lighting, and camera angle from image 1. Match the swimwear shape, coverage, straps, color, and fabric from image 2 as closely as possible. Keep the result non-explicit and suitable for a swimwear preview.",
         "note": "Ideale per preview swimwear adulto di buon gusto con stile classico.",
         "color": "linear-gradient(135deg, #111827, #020617)"
       },
       {
         "title": "Bikini resort",
-        "image": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/6f282bf0828b4635b42f88777a24bc3d.webp",
+        "image": "https://assets.toolaze.com/uploads/6f282bf0828b4635b42f88777a24bc3d.webp",
         "prompt": "Image 1 is the person photo. Image 2 is the target clothing reference. Put the colorful resort bikini from image 2 onto the adult person in image 1. Preserve the same face, identity, body proportions, pose, hands, background, lighting, and camera angle from image 1. Match the swimwear shape, coverage, straps, color palette, pattern, and fabric from image 2 as closely as possible. Keep the result non-explicit and suitable for a swimwear preview.",
         "note": "Ideale per preview swimwear adulto con stile vacanza più luminoso.",
         "color": "linear-gradient(135deg, #f97316, #ec4899)"

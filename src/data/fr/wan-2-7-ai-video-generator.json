@@ -18,12 +18,12 @@
     "desc": "Créez des vidéos Wan 2.7 à partir de texte, d’images, de références vidéo ou d’indications audio. Utilisez des prompts multi-plans, des transitions premier/dernier plan, des scènes de continuation et un son synchronisé pour de courts clips cinématographiques en 720p ou 1080p."
   },
   "heroDemoVideo": {
-    "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/c07d1db481dd4e9b8e190ebb39611f08.png",
+    "src": "https://assets.toolaze.com/uploads/c07d1db481dd4e9b8e190ebb39611f08.png",
     "ariaLabel": "Aperçu vidéo de démonstration Wan 2.7 sur Toolaze",
     "width": 16,
     "height": 9,
     "sourceHistory": "User-provided Wan 2.7 demo video · 16:9 · 5.01s · 1920x1080 · 2026-08-02",
-    "poster": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/6e2548965fc5487ca41221f9d663dfcb.webp",
+    "poster": "https://assets.toolaze.com/uploads/6e2548965fc5487ca41221f9d663dfcb.webp",
     "duration": "PT5.01S"
   },
   "sectionsOrder": [
@@ -351,7 +351,7 @@
       "href": "/model/seedance-2",
       "media": {
         "type": "video",
-        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d0d55df5eef346809067197fddb1b251.png",
+        "src": "https://assets.toolaze.com/uploads/d0d55df5eef346809067197fddb1b251.png",
         "alt": "Aperçu vidéo Seedance 2.0"
       },
       "description": "Utilisez Seedance 2.0 pour des vidéos multi-plans façon réalisation et des scènes commerciales riches en références."
@@ -361,7 +361,7 @@
       "href": "/model/kling-3",
       "media": {
         "type": "video",
-        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
+        "src": "https://assets.toolaze.com/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
         "alt": "Aperçu vidéo Kling 3.0"
       },
       "description": "Essayez Kling 3.0 pour un mouvement dynamique, une caméra cinématographique et une sortie vidéo haute résolution."
@@ -371,7 +371,7 @@
       "href": "/model/grok-imagine-video-1-5",
       "media": {
         "type": "video",
-        "src": "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4",
+        "src": "https://assets.toolaze.com/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4",
         "alt": "Aperçu de la démo vidéo Grok Imagine Video 1.5"
       },
       "description": "Utilisez Grok Imagine Video 1.5 pour des brouillons rapides image vers vidéo, du mouvement produit et des clips créateur."

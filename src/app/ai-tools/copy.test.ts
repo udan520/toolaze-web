@@ -49,8 +49,8 @@ test('AI Tools hub lists Motion Control as a localized video tool', () => {
   assert.match(englishCard.title, /Motion Control/)
   assert.match(englishCard.description, /character image/i)
   assert.match(englishCard.description, /motion reference video/i)
-  assert.equal(englishCard.image, 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/kling-2-6-pro-motion-control/motion-control-demo-poster.webp')
-  assert.equal(englishCard.video, 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/model-assets/kling-2-6-pro-motion-control/motion-control-demo.mp4')
+  assert.equal(englishCard.image, 'https://assets.toolaze.com/model-assets/kling-2-6-pro-motion-control/motion-control-demo-poster.webp')
+  assert.equal(englishCard.video, 'https://assets.toolaze.com/model-assets/kling-2-6-pro-motion-control/motion-control-demo.mp4')
 
   for (const locale of AI_TOOLS_LOCALES.filter((locale) => locale !== 'en')) {
     const localizedCard = getAiToolsPageCopy(locale).cards.find((card) => card.href === '/model/kling-2-6-pro-motion-control')
@@ -86,7 +86,7 @@ test('Photo Restoration cards use the shared page demo image instead of the old 
     const restorationCard = getAiToolsPageCopy(locale).cards.find((card) => card.href === '/photo-restoration')
 
     assert.ok(restorationCard, `${locale} is missing Photo Restoration`)
-    assert.equal(restorationCard.image, 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-advanced-ai/photo-restoration-demo-before-after.webp')
+    assert.equal(restorationCard.image, 'https://assets.toolaze.com/home-advanced-ai/photo-restoration-demo-before-after.webp')
     assert.doesNotMatch(restorationCard.image, /images.unsplash.com/)
   }
 })
@@ -96,7 +96,7 @@ test('Watermark Remover cards use the shared page demo image instead of the old 
     const watermarkCard = getAiToolsPageCopy(locale).cards.find((card) => card.href === '/watermark-remover')
 
     assert.ok(watermarkCard, `${locale} is missing Watermark Remover`)
-    assert.equal(watermarkCard.image, 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/home-advanced-ai/watermark-remover-demo-before-after.webp')
+    assert.equal(watermarkCard.image, 'https://assets.toolaze.com/home-advanced-ai/watermark-remover-demo-before-after.webp')
     assert.doesNotMatch(watermarkCard.image, /images.unsplash.com/)
   }
 })
@@ -121,7 +121,7 @@ test('AI Clothes Changer hub card is localized outside English', () => {
 test('AI Bikini Generator hub card is localized outside English', () => {
   const englishCard = getAiToolsPageCopy('en').cards.find((card) => card.href === '/ai-bikini-generator')
   assert.ok(englishCard)
-  assert.equal(englishCard.image, 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/6bcf91ffd06e45a8bcda2ea867015141.webp')
+  assert.equal(englishCard.image, 'https://assets.toolaze.com/uploads/6bcf91ffd06e45a8bcda2ea867015141.webp')
 
   for (const locale of AI_TOOLS_LOCALES.filter((locale) => locale !== 'en')) {
     const localizedCard = getAiToolsPageCopy(locale).cards.find((card) => card.href === '/ai-bikini-generator')
@@ -163,7 +163,7 @@ test('AI Talking Avatar hub card uses the shared R2 demo poster', () => {
     assert.ok(talkingAvatarCard, `${locale} is missing AI Talking Avatar`)
     assert.equal(
       talkingAvatarCard.image,
-      'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/landing-pages/talking-avatar-creator/demo-poster.webp',
+      'https://assets.toolaze.com/landing-pages/talking-avatar-creator/demo-poster.webp',
     )
     assert.doesNotMatch(talkingAvatarCard.image, /^\/ai-image-generator\//)
   }
@@ -176,7 +176,7 @@ test('AI Tools video category cards provide real video previews', () => {
     assert.equal(videoCards.length, 6)
     for (const card of videoCards) {
       assert.ok(card.video, `${locale} ${card.href} should provide a video preview`)
-      assert.match(card.video, /^(https:\/\/pub-efeb0c7b9b53478d960218de80c52e3d\.r2\.dev\/|\/model-assets\/)/)
+      assert.match(card.video, /^(https:\/\/assets\.toolaze\.com\/|\/model-assets\/)/)
       assert.ok(card.image, `${locale} ${card.href} should keep a poster image`)
     }
   }
