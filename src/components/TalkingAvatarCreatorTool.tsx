@@ -733,6 +733,21 @@ export default function TalkingAvatarCreatorTool({
     setHistory((prev) => [item, ...prev.filter((historyItem) => historyItem.id !== item.id)].slice(0, 20))
   }
 
+  const persistGeneratedMediaToR2 = async (outputUrl: string, mediaType: 'image' | 'video') => {
+    try {
+      const response = await fetch('/api/save-image-to-r2', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ mediaUrl: outputUrl, mediaType }),
+      })
+      if (!response.ok) return outputUrl
+      const data = await parseJsonSafely(response)
+      return typeof data.url === 'string' && data.url ? data.url : outputUrl
+    } catch {
+      return outputUrl
+    }
+  }
+
   const persistHistory = async (
     outputUrl: string,
     imageUrl: string,
@@ -870,8 +885,9 @@ export default function TalkingAvatarCreatorTool({
       if (!nextVideoUrl) {
         throw new Error('Talking avatar generation returned no video.')
       }
+      const persistedVideoUrl = await persistGeneratedMediaToR2(nextVideoUrl, 'video')
 
-      const savedItem = await persistHistory(nextVideoUrl, imageUrl, audioUrl, requestPrompt, requestResolution)
+      const savedItem = await persistHistory(persistedVideoUrl, imageUrl, audioUrl, requestPrompt, requestResolution)
       const historyItem: TalkingAvatarHistoryItem = {
         id: savedItem?.id || request.id,
         mediaType: 'video',
@@ -883,7 +899,7 @@ export default function TalkingAvatarCreatorTool({
         inputUrls: [imageUrl, audioUrl],
         audioPreviewUrl: audioUrl,
         audioName: requestAudioName,
-        outputPreview: nextVideoUrl,
+        outputPreview: persistedVideoUrl,
         time: formatLocalTimestampToSeconds(savedItem?.createdAt || new Date().toISOString()),
         persisted: Boolean(savedItem?.id),
         toolSlug: savedItem?.toolSlug || 'talking-avatar-creator',
@@ -898,7 +914,7 @@ export default function TalkingAvatarCreatorTool({
         taskId: taskId || undefined,
         creditHold,
         taskProvider: taskProvider || undefined,
-        videoUrl: nextVideoUrl,
+        videoUrl: persistedVideoUrl,
         inputUrls: [imageUrl, audioUrl],
         inputPreview: imageUrl,
         audioPreviewUrl: audioUrl,
@@ -1167,6 +1183,33 @@ export default function TalkingAvatarCreatorTool({
     </div>
   )
 
+  const renderMobileTalkingAvatarHistoryPanel = () => {
+    const currentInlineRequest = currentRequest?.status === 'processing' || currentRequest?.status === 'failed'
+      ? currentRequest
+      : null
+    const latestHistoryItem = history[0]
+
+    if (!currentInlineRequest && !latestHistoryItem) return null
+
+    return (
+      <div data-mobile-talking-avatar-history-panel className="order-3 space-y-2 md:hidden">
+        <div className="flex items-center justify-between gap-3">
+          <h2 className="text-sm font-extrabold text-slate-900">{text.historyLabel}</h2>
+          {history.length > 0 ? (
+            <Link href={historyPageHref} className="text-xs font-bold text-[#4F46E5] hover:text-[#3730A3]">
+              {text.viewAll}
+            </Link>
+          ) : null}
+        </div>
+        {currentInlineRequest
+          ? currentInlineRequest.status === 'failed'
+            ? renderDesktopFailedVideoItem(currentInlineRequest)
+            : renderDesktopPendingVideoItem(currentInlineRequest)
+          : renderDesktopVideoHistoryItem(latestHistoryItem)}
+      </div>
+    )
+  }
+
   const renderDesktopVideoResultFeed = () => (
     <div
       data-talking-avatar-result-feed
@@ -1188,7 +1231,7 @@ export default function TalkingAvatarCreatorTool({
   const renderDesktopResultTabs = () => (
     <div
       data-desktop-result-tabs
-      className="flex w-fit shrink-0 items-center justify-start gap-1 rounded-full border border-[#E0E7FF] bg-white/90 p-1 shadow-sm shadow-[#4F46E5]/5"
+      className="hidden w-fit shrink-0 items-center justify-start gap-1 rounded-full border border-[#E0E7FF] bg-white/90 p-1 shadow-sm shadow-[#4F46E5]/5 md:flex"
     >
       <button
         type="button"
@@ -1219,10 +1262,10 @@ export default function TalkingAvatarCreatorTool({
     </div>
   )
 
-  const renderSamplePreview = () => (
+  const renderSamplePreview = (className = '') => (
     <div
       data-talking-avatar-preview-canvas
-      className="relative flex min-h-[320px] min-w-0 flex-1 items-center justify-center overflow-hidden rounded-2xl bg-[#F7F5FF] p-4 md:p-6"
+      className={`relative flex min-h-[320px] min-w-0 flex-1 items-center justify-center overflow-hidden rounded-2xl bg-[#F7F5FF] p-4 md:p-6 ${className}`}
     >
       <div data-talking-avatar-preview-frame className="relative aspect-video w-full max-w-3xl overflow-hidden rounded-2xl bg-slate-950 shadow-lg shadow-slate-200/70 ring-1 ring-slate-200/80">
         {demoVideo?.src ? (
@@ -1374,34 +1417,42 @@ export default function TalkingAvatarCreatorTool({
                 </button>
               </div>
             </aside>
+            {renderMobileTalkingAvatarHistoryPanel()}
 
             <div data-talking-avatar-demo-panel className="order-1 flex min-h-0 min-w-0 flex-1 flex-col gap-4 md:order-none md:h-full">
               {hasDesktopResultTabs ? renderDesktopResultTabs() : null}
 
-              {rightMode !== 'history' ? (
-                <div className="shrink-0 text-center md:px-4 md:pt-1 xl:pt-0">
-                  {heroBreadcrumbItems?.length ? (
-                    <Breadcrumb items={heroBreadcrumbItems} variant="inline" />
-                  ) : null}
-                  <h1
-                    data-talking-avatar-hero-title
-                    className="text-[30px] font-extrabold leading-tight tracking-tight text-slate-950 xl:text-[32px]"
-                    dangerouslySetInnerHTML={{ __html: heroTitleHtml }}
-                  />
-                  {heroDescription ? (
-                    <p className="mx-auto mt-3 max-w-4xl text-base leading-7 text-slate-600 md:text-[17px] md:leading-7">
-                      {heroDescription}
-                    </p>
-                  ) : null}
-                </div>
-              ) : null}
+              <div className={`${rightMode === 'history' ? 'md:hidden' : ''} shrink-0 text-center md:px-4 md:pt-1 xl:pt-0`}>
+                {heroBreadcrumbItems?.length ? (
+                  <Breadcrumb items={heroBreadcrumbItems} variant="inline" />
+                ) : null}
+                <h1
+                  data-talking-avatar-hero-title
+                  className="text-[30px] font-extrabold leading-tight tracking-tight text-slate-950 xl:text-[32px]"
+                  dangerouslySetInnerHTML={{ __html: heroTitleHtml }}
+                />
+                {heroDescription ? (
+                  <p className="mx-auto mt-3 max-w-4xl text-base leading-7 text-slate-600 md:text-[17px] md:leading-7">
+                    {heroDescription}
+                  </p>
+                ) : null}
+              </div>
 
               <div className="flex min-h-0 min-w-0 flex-1 flex-col rounded-2xl border border-[#E0E7FF] bg-white shadow-lg shadow-[#4F46E5]/8">
-                {rightMode === 'history' ? renderDesktopVideoResultFeed() : renderSamplePreview()}
+                {rightMode === 'history' ? (
+                  <>
+                    {renderSamplePreview('md:hidden')}
+                    <div className="hidden min-h-0 min-w-0 flex-1 flex-col md:flex">
+                      {renderDesktopVideoResultFeed()}
+                    </div>
+                  </>
+                ) : (
+                  renderSamplePreview()
+                )}
               </div>
 
               {rightMode === 'history' ? (
-                <div className="flex justify-end">
+                <div className="hidden justify-end md:flex">
                   <Link href={historyPageHref} className="text-xs font-bold text-[#4F46E5] hover:text-[#3730A3]">
                     {text.viewAll}
                   </Link>

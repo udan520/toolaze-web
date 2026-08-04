@@ -1,6 +1,7 @@
 import { getCurrentUser } from '../../_shared/auth.mjs';
 import { getCreditSummary } from '../../_shared/credits.mjs';
 import { handleOptions, jsonResponse } from '../../_shared/http.mjs';
+import { isMediaLibraryAdminEmail } from '../../_shared/media-library.mjs';
 
 export async function onRequest(context) {
   const { request, env } = context;
@@ -21,6 +22,7 @@ export async function onRequest(context) {
       email: user.email,
       name: user.name,
       avatarUrl: user.avatarUrl,
+      isAdmin: isMediaLibraryAdminEmail(user.email, env),
     },
     credits,
   });

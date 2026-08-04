@@ -376,9 +376,21 @@ export function isValidLocalDevCredential(email, password) {
 export function getLocalDevAuthState() {
   return {
     ok: true,
-    user: localDevUser,
+    user: {
+      ...localDevUser,
+      isAdmin: isLocalDevAdminEmail(localDevUser.email),
+    },
     credits: getLocalDevCreditSummary(),
   }
+}
+
+function isLocalDevAdminEmail(email) {
+  const normalized = normalizeLocalDevEmail(email)
+  if (!normalized) return false
+  return String(process.env.MEDIA_LIBRARY_ADMIN_EMAILS || process.env.TOOLAZE_ADMIN_EMAILS || '')
+    .split(/[,\n]/)
+    .map(normalizeLocalDevEmail)
+    .includes(normalized)
 }
 
 export function getLocalDevDailyCheckInStatus(now = new Date()) {

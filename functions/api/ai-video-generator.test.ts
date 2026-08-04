@@ -560,6 +560,56 @@ test('AI video generator sends Seedance 2.0 first-and-last frames only from expl
   }
 })
 
+test('AI video generator sends Wan 2.7 first-and-last frames with numeric duration', async () => {
+  const calls: FetchCall[] = []
+  const originalFetch = globalThis.fetch
+  globalThis.fetch = (async (url: RequestInfo | URL, init?: RequestInit) => {
+    calls.push({ url: String(url), init })
+    return new Response(JSON.stringify({ code: 200, data: { taskId: 'wan_2_7_frames_task' } }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    })
+  }) as typeof fetch
+
+  try {
+    const response = await createVideoTask({
+      request: createFormRequest({
+        mode: 'image-to-video',
+        model: 'wan-2-7',
+        prompt: 'Animate the first frame into the last frame.',
+        firstFrameUrl: 'https://cdn.example.com/start.png',
+        lastFrameUrl: 'https://cdn.example.com/end.png',
+        imageUrls: JSON.stringify([
+          'https://cdn.example.com/reference-a.png',
+          'https://cdn.example.com/reference-b.png',
+        ]),
+        aspectRatio: '16:9',
+        resolution: '720p',
+        duration: '3',
+      }),
+      env: { KIE_AI_API_KEY: 'test-key' },
+    })
+
+    assert.equal(response.status, 200)
+    assert.deepEqual(await readJson(response), { taskId: 'wan_2_7_frames_task', requiredCredits: 96 })
+    assert.equal(calls.length, 1)
+
+    const payload = JSON.parse(String(calls[0].init?.body))
+    assert.equal(payload.model, 'wan/2-7-image-to-video')
+    assert.equal(payload.input.first_frame_url, 'https://cdn.example.com/start.png')
+    assert.equal(payload.input.last_frame_url, 'https://cdn.example.com/end.png')
+    assert.equal(payload.input.image_url, undefined)
+    assert.equal(payload.input.image_urls, undefined)
+    assert.equal(payload.input.reference_image_urls, undefined)
+    assert.equal(payload.input.aspect_ratio, undefined)
+    assert.equal(payload.input.ratio, undefined)
+    assert.equal(payload.input.duration, 3)
+    assert.equal(typeof payload.input.duration, 'number')
+  } finally {
+    globalThis.fetch = originalFetch
+  }
+})
+
 test('AI video generator creates a Kie Seedance 2.0 Mini task and returns mapped Toolaze credits', async () => {
   const calls: FetchCall[] = []
   const originalFetch = globalThis.fetch
@@ -749,12 +799,48 @@ test('AI video generator creates a Kie Veo 3.1 Fast task through the Veo endpoin
   }
 })
 
-test('AI video generator maps Veo 3.1 Lite to the Kie Lite provider model', async () => {
+test('AI video generator maps Veo 3.1 Lite and Quality to the documented Kie provider models', async () => {
+  const payloads: Array<Record<string, any>> = []
+  const originalFetch = globalThis.fetch
+  globalThis.fetch = (async (_url: RequestInfo | URL, init?: RequestInit) => {
+    payloads.push(JSON.parse(String(init?.body)))
+    return new Response(JSON.stringify({ code: 200, data: { taskId: `veo_task_${payloads.length}` } }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    })
+  }) as typeof fetch
+
+  try {
+    for (const [model, expectedProviderModel] of [
+      ['veo-3-1-lite', 'veo3_lite'],
+      ['veo-3-1-quality', 'veo3'],
+    ] as const) {
+      const response = await createVideoTask({
+        request: createFormRequest({
+          mode: 'text-to-video',
+          model,
+          prompt: 'A quiet cinematic scene with synchronized natural audio.',
+          aspectRatio: '16:9',
+          resolution: '720p',
+          duration: '8',
+        }),
+        env: { KIE_AI_API_KEY: 'test-key' },
+      })
+
+      assert.equal(response.status, 200, model)
+      assert.equal(payloads.at(-1)?.model, expectedProviderModel)
+    }
+  } finally {
+    globalThis.fetch = originalFetch
+  }
+})
+
+test('AI video generator accepts Veo Auto aspect ratio from the KIE capability matrix', async () => {
   let payload: Record<string, any> | undefined
   const originalFetch = globalThis.fetch
   globalThis.fetch = (async (_url: RequestInfo | URL, init?: RequestInit) => {
     payload = JSON.parse(String(init?.body))
-    return new Response(JSON.stringify({ code: 200, data: { taskId: 'veo_lite_task' } }), {
+    return new Response(JSON.stringify({ code: 200, data: { taskId: 'veo_auto_task' } }), {
       status: 200,
       headers: { 'Content-Type': 'application/json' },
     })
@@ -764,9 +850,9 @@ test('AI video generator maps Veo 3.1 Lite to the Kie Lite provider model', asyn
     const response = await createVideoTask({
       request: createFormRequest({
         mode: 'text-to-video',
-        model: 'veo-3-1-lite',
-        prompt: 'A quiet cinematic scene with synchronized natural audio.',
-        aspectRatio: '16:9',
+        model: 'veo-3-1-fast',
+        prompt: 'A cinematic scene that lets KIE choose the best aspect ratio.',
+        aspectRatio: 'auto',
         resolution: '720p',
         duration: '8',
       }),
@@ -774,7 +860,12 @@ test('AI video generator maps Veo 3.1 Lite to the Kie Lite provider model', asyn
     })
 
     assert.equal(response.status, 200)
-    assert.equal(payload?.model, 'veo3_lite')
+    assert.deepEqual(await readJson(response), {
+      taskId: 'veo_auto_task',
+      requiredCredits: 60,
+      taskProvider: 'veo',
+    })
+    assert.equal(payload?.aspect_ratio, 'auto')
   } finally {
     globalThis.fetch = originalFetch
   }
@@ -1478,6 +1569,140 @@ test('AI video generator rejects more than one Grok reference image before provi
   }
 })
 
+test('AI video generator accepts KIE-expanded Seedance, Wan, Kling Turbo, and PixVerse inputs', async () => {
+  const calls: FetchCall[] = []
+  const originalFetch = globalThis.fetch
+  globalThis.fetch = (async (url: RequestInfo | URL, init?: RequestInit) => {
+    calls.push({ url: String(url), init })
+    return new Response(JSON.stringify({ code: 200, data: { taskId: `kie_expanded_${calls.length}` } }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    })
+  }) as typeof fetch
+
+  try {
+    const cases = [
+      {
+        model: 'seedance-1-5-pro',
+        mode: 'text-to-video',
+        aspectRatio: '21:9',
+        resolution: '480p',
+        duration: '4',
+        expectedCredits: 16,
+        expectedInput: { aspect_ratio: '21:9', duration: 4 },
+      },
+      {
+        model: 'seedance-2',
+        mode: 'text-to-video',
+        aspectRatio: '21:9',
+        resolution: '720p',
+        duration: '4',
+        expectedCredits: 328,
+        expectedInput: { aspect_ratio: '21:9', duration: 4 },
+      },
+      {
+        model: 'wan-2-7',
+        mode: 'text-to-video',
+        aspectRatio: '4:3',
+        resolution: '720p',
+        duration: '15',
+        expectedCredits: 480,
+        expectedInput: { ratio: '4:3', duration: 15 },
+      },
+      {
+        model: 'kling-3-turbo',
+        mode: 'text-to-video',
+        aspectRatio: '1:1',
+        resolution: '720p',
+        duration: '3',
+        expectedCredits: 108,
+        expectedInput: { aspect_ratio: '1:1', duration: '3' },
+      },
+      {
+        model: 'pixverse-v6',
+        mode: 'image-to-video',
+        imageUrls: JSON.stringify([
+          'https://cdn.example.com/pixverse-start.png',
+          'https://cdn.example.com/pixverse-style.png',
+        ]),
+        aspectRatio: '21:9',
+        resolution: '720p',
+        duration: '5',
+        expectedCredits: 70,
+        expectedInput: {
+          image_urls: [
+            'https://cdn.example.com/pixverse-start.png',
+            'https://cdn.example.com/pixverse-style.png',
+          ],
+        },
+      },
+    ] as const
+
+    for (const testCase of cases) {
+      const {
+        expectedCredits,
+        expectedInput,
+        ...requestFields
+      } = testCase
+      const response = await createVideoTask({
+        request: createFormRequest({
+          prompt: 'A KIE capability matrix alignment test.',
+          ...requestFields,
+        }),
+        env: { KIE_AI_API_KEY: 'test-key' },
+      })
+
+      assert.equal(response.status, 200, testCase.model)
+      assert.deepEqual(await readJson(response), {
+        taskId: `kie_expanded_${calls.length}`,
+        requiredCredits: expectedCredits,
+      })
+
+      const payload = JSON.parse(String(calls.at(-1)?.init?.body))
+      for (const [key, value] of Object.entries(expectedInput)) {
+        assert.deepEqual(payload.input[key], value, `${testCase.model}.${key}`)
+      }
+    }
+  } finally {
+    globalThis.fetch = originalFetch
+  }
+})
+
+test('AI video generator rejects Kling 3.0 ratios not present in the KIE enum', async () => {
+  const originalFetch = globalThis.fetch
+  let providerCalled = false
+  globalThis.fetch = (async () => {
+    providerCalled = true
+    return new Response(JSON.stringify({ code: 200, data: { taskId: 'unexpected' } }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    })
+  }) as typeof fetch
+
+  try {
+    const response = await createVideoTask({
+      request: createFormRequest({
+        mode: 'text-to-video',
+        model: 'kling-3',
+        prompt: 'Kling 3 should follow the documented aspect ratio enum.',
+        aspectRatio: '21:9',
+        resolution: '720p',
+        duration: '5',
+      }),
+      env: {
+        KIE_AI_API_KEY: 'test-key',
+        KIE_KLING_3_VIDEO_MODEL: 'kling-3.0/video',
+      },
+    })
+
+    assert.equal(response.status, 400)
+    assert.equal((await readJson(response)).error, 'Unsupported aspect ratio for Kling 3.0')
+    assert.equal(providerCalled, false)
+  } finally {
+    globalThis.fetch = originalFetch
+  }
+})
+
 test('AI video status rejects unauthenticated checks before provider request', async () => {
   const originalFetch = globalThis.fetch
   let providerCalled = false
@@ -1637,7 +1862,7 @@ test('AI video generator status explains Kie motion-control file format failures
     assert.equal(response.status, 200)
     assert.deepEqual(await readJson(response), {
       status: 'FAILED',
-      message: 'KIE rejected one of the uploaded files. Use a JPG/JPEG/PNG character image over 300px with a 2:5 to 5:2 aspect ratio, and an MP4/MOV/MKV motion reference video within the selected orientation duration limit.',
+      message: 'KIE rejected one of the uploaded files. Use a JPG/JPEG/PNG character image over 340px with a 2:5 to 5:2 aspect ratio, and an MP4/MOV/MKV motion reference video within the selected orientation duration limit.',
     })
   } finally {
     globalThis.fetch = originalFetch

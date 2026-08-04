@@ -1,7 +1,6 @@
 'use client'
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { createPortal } from 'react-dom'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import {
@@ -625,9 +624,6 @@ export default function AiVideoGeneratorTool({
   const firstLastFrameImagesRef = useRef<Array<ReferenceImageSource | null>>([null, null])
   const motionVideoFilesRef = useRef<VideoItem[]>([])
   const modelSelectorRef = useRef<HTMLDivElement>(null)
-  const durationSelectorRef = useRef<HTMLDivElement>(null)
-  const durationButtonRef = useRef<HTMLButtonElement>(null)
-  const durationMenuRef = useRef<HTMLDivElement>(null)
   const historyItemRefs = useRef(new Map<string, HTMLDivElement>())
   const [selectedModelId, setSelectedModelId] = useState<AiVideoGeneratorModelId>(modelId)
   const modelConfig = useMemo(() => getAiVideoGeneratorModelConfig(selectedModelId), [selectedModelId])
@@ -652,7 +648,6 @@ export default function AiVideoGeneratorTool({
   const selectedModelOption = modelOptions.find((option) => option.id === selectedModelId) || modelConfig
   const selectedModelGroup = modelGroups.find((group) => group.models.some((model) => model.id === selectedModelId)) || modelGroups[0]
   const [isModelMenuOpen, setIsModelMenuOpen] = useState(false)
-  const [isDurationMenuOpen, setIsDurationMenuOpen] = useState(false)
   const [activeModelGroupId, setActiveModelGroupId] = useState(() => getAiVideoGeneratorModelGroupId(modelId))
   const activeModelGroup = modelGroups.find((group) => group.id === activeModelGroupId) || modelGroups[0]
   const [imageFiles, setImageFiles] = useState<ImageItem[]>([])
@@ -685,7 +680,6 @@ export default function AiVideoGeneratorTool({
   const [activeSettingsHistoryItemId, setActiveSettingsHistoryItemId] = useState<string | null>(null)
   const [rightMode, setRightMode] = useState<RightPanelMode>('sample')
   const [motionVideoPreview, setMotionVideoPreview] = useState<{ src: string; label: string } | null>(null)
-  const [durationMenuRect, setDurationMenuRect] = useState<{ left: number; top: number; width: number } | null>(null)
   const shouldAllowLeftOverlay = isModelMenuOpen
   const supportsNativeAudio = Boolean(modelConfig.supportsNativeAudio)
   const supportsMotionReferenceVideo = Boolean(modelConfig.supportsMotionReferenceVideo)
@@ -776,12 +770,10 @@ export default function AiVideoGeneratorTool({
       setRemoteMotionVideoUrls([])
     }
     setIsModelMenuOpen(false)
-    setIsDurationMenuOpen(false)
   }
 
   const handleModeChange = (nextMode: AiVideoGeneratorModeId) => {
     setIsModelMenuOpen(false)
-    setIsDurationMenuOpen(false)
     if (modelConfig.supportedModes.includes(nextMode)) {
       setActiveMode(nextMode)
       return
@@ -811,28 +803,6 @@ export default function AiVideoGeneratorTool({
         nextModel: fallbackModel.name,
       }),
     })
-  }
-
-  const updateDurationMenuRect = useCallback(() => {
-    const rect = durationButtonRef.current?.getBoundingClientRect()
-    if (!rect) {
-      setDurationMenuRect(null)
-      return
-    }
-
-    setDurationMenuRect({ left: rect.left, top: rect.top, width: rect.width })
-  }, [])
-
-  const toggleDurationMenu = () => {
-    if (modelConfig.durationMode === 'reference-video') return
-    setIsModelMenuOpen(false)
-    if (isDurationMenuOpen) {
-      setIsDurationMenuOpen(false)
-      return
-    }
-
-    updateDurationMenuRect()
-    setIsDurationMenuOpen(true)
   }
 
   useEffect(() => {
@@ -898,38 +868,6 @@ export default function AiVideoGeneratorTool({
   }, [isModelMenuOpen])
 
   useEffect(() => {
-    if (!isDurationMenuOpen) {
-      setDurationMenuRect(null)
-      return
-    }
-
-    updateDurationMenuRect()
-
-    const handlePointerDown = (event: MouseEvent) => {
-      if (
-        !durationSelectorRef.current?.contains(event.target as Node) &&
-        !durationMenuRef.current?.contains(event.target as Node)
-      ) {
-        setIsDurationMenuOpen(false)
-      }
-    }
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setIsDurationMenuOpen(false)
-    }
-
-    document.addEventListener('mousedown', handlePointerDown)
-    document.addEventListener('keydown', handleKeyDown)
-    window.addEventListener('resize', updateDurationMenuRect)
-    window.addEventListener('scroll', updateDurationMenuRect, true)
-    return () => {
-      document.removeEventListener('mousedown', handlePointerDown)
-      document.removeEventListener('keydown', handleKeyDown)
-      window.removeEventListener('resize', updateDurationMenuRect)
-      window.removeEventListener('scroll', updateDurationMenuRect, true)
-    }
-  }, [isDurationMenuOpen, updateDurationMenuRect])
-
-  useEffect(() => {
     if (!supportsNativeAudio && nativeAudio) {
       setNativeAudio(false)
     }
@@ -983,7 +921,6 @@ export default function AiVideoGeneratorTool({
       ? detail?.characterOrientation || getHistoryCharacterOrientation(detail?.outputFormat)
       : 'video')
     setIsModelMenuOpen(false)
-    setIsDurationMenuOpen(false)
     imageFilesRef.current.forEach((item) => URL.revokeObjectURL(item.preview))
     imageFilesRef.current = []
     setImageFiles([])
@@ -1132,6 +1069,17 @@ export default function AiVideoGeneratorTool({
   const historyPageHref = getLocalizedInternalPath(pathname, '/history')
   const isGenerating = currentRequest?.status === 'processing'
   const hasDesktopResultTabs = isGenerating || currentRequest?.status === 'failed' || history.length > 0
+  const durationOptions = modelConfig.durations
+  const selectedDurationIndex = Math.max(0, durationOptions.indexOf(duration))
+  const durationSliderMax = Math.max(durationOptions.length - 1, 0)
+  const durationSliderProgress = durationSliderMax > 0
+    ? (selectedDurationIndex / durationSliderMax) * 100
+    : 0
+  const handleDurationSliderChange = (nextIndex: number | string) => {
+    const index = Math.max(0, Math.min(durationSliderMax, Number(nextIndex)))
+    const nextDuration = durationOptions[index]
+    if (typeof nextDuration === 'number') setDuration(nextDuration)
+  }
 
   const getVideoAnalyticsPayload = useCallback((extra?: Record<string, string | number | boolean | undefined>) => {
     const referenceMediaCount = referenceImageCount + motionReferenceVideoCount
@@ -1731,6 +1679,21 @@ export default function AiVideoGeneratorTool({
     setHistory((prev) => [item, ...prev.filter((historyItem) => historyItem.id !== item.id)].slice(0, 20))
   }
 
+  const persistGeneratedMediaToR2 = async (outputUrl: string, mediaType: 'image' | 'video') => {
+    try {
+      const response = await fetch('/api/save-image-to-r2', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ mediaUrl: outputUrl, mediaType }),
+      })
+      if (!response.ok) return outputUrl
+      const data = await parseJsonSafely(response, text.serverNonJson)
+      return typeof data.url === 'string' && data.url ? data.url : outputUrl
+    } catch {
+      return outputUrl
+    }
+  }
+
   const persistGeneratedVideoHistoryItem = async (
     request: VideoGenerationRequest,
     videoUrl: string,
@@ -1796,52 +1759,42 @@ export default function AiVideoGeneratorTool({
     throw new Error(text.generationTimeout)
   }
 
-  const renderDurationMenu = () => {
+  const renderManualDurationSlider = () => {
     if (modelConfig.durationMode === 'reference-video') return null
-    if (!isDurationMenuOpen || !durationMenuRect || typeof document === 'undefined') return null
 
-    return createPortal(
+    return (
       <div
-        ref={durationMenuRef}
-        data-video-duration-menu
-        className="fixed z-[9999] max-h-44 overflow-y-auto rounded-2xl border border-[#E0E7FF] bg-white p-2 shadow-xl shadow-[#4F46E5]/12"
-        style={{
-          left: durationMenuRect.left,
-          top: durationMenuRect.top,
-          width: durationMenuRect.width,
-          transform: 'translateY(calc(-100% - 0.5rem))',
-        }}
-        role="listbox"
+        data-video-duration-slider
+        className="rounded-lg bg-[#EEF2FF]/25 px-3 py-2 transition-colors duration-200 hover:bg-[#EEF2FF]/40"
       >
-        {modelConfig.durations.map((value) => {
-          const isSelected = duration === value
-          return (
-            <button
-              key={value}
-              type="button"
-              role="option"
-              aria-selected={isSelected}
-              onClick={() => {
-                setDuration(value)
-                setIsDurationMenuOpen(false)
-              }}
-              className={`flex w-full items-center justify-between rounded-xl px-3 py-2.5 text-left text-sm font-bold transition-colors ${
-                isSelected
-                  ? 'bg-[#E0E7FF] text-[#3730A3]'
-                  : 'text-slate-600 hover:bg-[#F8FAFF] hover:text-slate-900'
-              }`}
-            >
-              <span>{value}s</span>
-              {isSelected ? (
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 text-[#4F46E5]">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-              ) : null}
-            </button>
-          )
-        })}
-      </div>,
-      document.body,
+        <div className="relative h-6">
+          <div className="absolute left-0 right-0 top-1/2 h-1 -translate-y-1/2 rounded-full bg-[#E0E7FF]" />
+          <div
+            data-video-duration-slider-fill
+            className="absolute left-0 top-1/2 h-1 -translate-y-1/2 rounded-full bg-[#4F46E5]"
+            style={{ width: `${durationSliderProgress}%` }}
+          />
+          <input
+            data-video-duration-range
+            type="range"
+            min={0}
+            max={durationSliderMax}
+            step={1}
+            value={selectedDurationIndex}
+            onChange={(event) => handleDurationSliderChange(event.target.value)}
+            className="absolute inset-x-[-2px] top-0 h-6 w-[calc(100%+4px)] cursor-pointer opacity-0"
+            aria-label={text.duration}
+            aria-valuetext={`${duration}s`}
+          />
+          <div
+            data-video-duration-thumb
+            className="pointer-events-none absolute top-1/2 flex h-5 w-5 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-[#4F46E5] shadow-md shadow-[#4F46E5]/20 ring-2 ring-white"
+            style={{ left: `${durationSliderProgress}%` }}
+          >
+            <span className="sr-only">{duration}s</span>
+          </div>
+        </div>
+      </div>
     )
   }
 
@@ -1946,6 +1899,7 @@ export default function AiVideoGeneratorTool({
       if (!videoUrl) {
         throw new Error(text.videoGenerationFailed)
       }
+      const persistedVideoUrl = await persistGeneratedMediaToR2(videoUrl, 'video')
 
       const completedRequest: VideoGenerationRequest = {
         ...request,
@@ -1953,14 +1907,14 @@ export default function AiVideoGeneratorTool({
         taskId: taskId || undefined,
         creditHold,
         taskProvider: taskProvider || undefined,
-        videoUrl,
+        videoUrl: persistedVideoUrl,
         inputUrls: imageUrls,
         motionVideoUrls,
         characterOrientation: request.characterOrientation,
         firstLastFrame: request.firstLastFrame,
         inputPreview: request.inputPreview,
       }
-      const savedItem = await persistGeneratedVideoHistoryItem(completedRequest, videoUrl, [...imageUrls, ...uploadedMotionVideoMedia.historyUrls], requestHistoryTool)
+      const savedItem = await persistGeneratedVideoHistoryItem(completedRequest, persistedVideoUrl, [...imageUrls, ...uploadedMotionVideoMedia.historyUrls], requestHistoryTool)
       trackToolazeEvent('generate_success', getVideoAnalyticsPayload({
         result_delivery: resultDelivery,
         task_provider: taskProvider || undefined,
@@ -1983,7 +1937,7 @@ export default function AiVideoGeneratorTool({
         motionVideoUrls,
         characterOrientation: completedRequest.characterOrientation,
         firstLastFrame: completedRequest.firstLastFrame,
-        outputPreview: videoUrl,
+        outputPreview: persistedVideoUrl,
         time: formatLocalTimestampToSeconds(savedItem?.createdAt || new Date().toISOString()),
         persisted: Boolean(savedItem?.id),
         toolSlug: savedItem?.toolSlug || null,
@@ -2343,6 +2297,164 @@ export default function AiVideoGeneratorTool({
     )
   }
 
+  const renderMobileVideoHistoryItem = (item: VideoHistoryItem) => (
+    <div
+      key={item.id}
+      data-mobile-video-history-item
+      className="rounded-2xl border border-[#E0E7FF] bg-white p-2 shadow-sm"
+    >
+      <div className="flex aspect-video w-full items-center justify-center overflow-hidden rounded-xl bg-slate-50">
+        {item.mediaType === 'video' ? (
+          <video
+            src={item.outputPreview}
+            controls
+            playsInline
+            className="h-full w-full object-contain"
+          />
+        ) : (
+          <img
+            src={item.outputPreview}
+            alt={text.resultReady}
+            className="h-full w-full object-contain"
+            loading="lazy"
+            decoding="async"
+          />
+        )}
+      </div>
+
+      <div className="mt-3 space-y-3 px-1 pb-1">
+        {renderVideoMetaTags(item, item.time)}
+        <div>
+          <div className="mb-1.5 flex items-center justify-between gap-3">
+            <p className="text-xs font-extrabold text-slate-900">{text.prompt}</p>
+            <button
+              type="button"
+              onClick={() => void copyPromptToClipboard(item.prompt)}
+              className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-800"
+              title={text.copyPrompt}
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+              </svg>
+            </button>
+          </div>
+          {renderPromptPreview(item.prompt)}
+        </div>
+
+        {renderVideoReferenceMedia({
+          imageUrls: item.inputUrls,
+          motionVideoUrls: item.motionVideoUrls || [],
+        })}
+
+        <div data-mobile-video-history-actions className="grid grid-cols-3 gap-2">
+          <button
+            type="button"
+            onClick={() => applyHistoryItemToForm(item)}
+            className="min-w-0 truncate rounded-xl bg-[#4F46E5] px-2.5 py-2.5 text-xs font-extrabold text-white shadow-sm transition-colors hover:bg-[#4338CA]"
+          >
+            {text.recreate}
+          </button>
+          <a
+            href={item.outputPreview}
+            download
+            target="_blank"
+            rel="noreferrer"
+            className="flex min-w-0 items-center justify-center rounded-xl border border-[#C7D2FE] px-2.5 py-2.5 text-xs font-extrabold text-[#4F46E5] transition-colors hover:bg-[#EEF2FF]"
+            title={text.download}
+          >
+            {text.download}
+          </a>
+          <button
+            type="button"
+            onClick={() => void handleDeleteHistoryItem(item)}
+            className="flex min-w-0 items-center justify-center rounded-xl border border-[#C7D2FE] px-2.5 py-2.5 text-[#4F46E5] transition-colors hover:bg-[#EEF2FF]"
+            title={text.delete}
+          >
+            <DeleteIcon size={16} />
+          </button>
+        </div>
+      </div>
+    </div>
+  )
+
+  const renderMobileVideoRequestItem = (item: VideoGenerationRequest) => {
+    const isFailed = item.status === 'failed'
+
+    return (
+      <div
+        key={item.id}
+        data-mobile-video-history-item
+        className="rounded-2xl border border-[#E0E7FF] bg-white p-2 shadow-sm"
+      >
+        <div className={`flex aspect-video w-full items-center justify-center rounded-xl p-5 text-center ${isFailed ? 'border border-red-100 bg-red-50/70' : 'bg-slate-50'}`}>
+          {isFailed ? (
+            <div className="space-y-2">
+              <div className="mx-auto flex h-9 w-9 items-center justify-center rounded-full bg-white text-red-600 ring-1 ring-red-200">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="12" y1="8" x2="12" y2="12" />
+                  <line x1="12" y1="16" x2="12.01" y2="16" />
+                </svg>
+              </div>
+              <p className="text-sm font-extrabold text-red-700">{text.videoGenerationFailed}</p>
+              <p className="text-xs leading-5 text-red-600">{item.error || text.videoGenerationFailed}</p>
+            </div>
+          ) : (
+            <div className="flex flex-col items-center gap-4">
+              <div className="flex gap-2">
+                <div className="h-3 w-3 animate-pulse rounded-full bg-[#4F46E5]" style={{ animationDelay: '0s' }} />
+                <div className="h-3 w-3 animate-pulse rounded-full bg-[#4F46E5]" style={{ animationDelay: '0.2s' }} />
+                <div className="h-3 w-3 animate-pulse rounded-full bg-[#4F46E5]" style={{ animationDelay: '0.4s' }} />
+                <div className="h-3 w-3 animate-pulse rounded-full bg-[#4F46E5]" style={{ animationDelay: '0.6s' }} />
+              </div>
+              <p className="text-sm font-semibold text-[#4F46E5]">
+                {formatText(text.generatingSeconds, { seconds: generatingSeconds })}
+              </p>
+            </div>
+          )}
+        </div>
+
+        <div className="mt-3 space-y-3 px-1 pb-1">
+          {renderVideoMetaTags(item, item.createdAt)}
+          <div>
+            <p className="mb-1.5 text-xs font-extrabold text-slate-900">{text.prompt}</p>
+            {renderPromptPreview(item.prompt)}
+          </div>
+          {renderVideoReferenceMedia({
+            imageUrls: item.inputUrls.length > 0 ? item.inputUrls : (item.inputPreview ? [item.inputPreview] : []),
+            motionVideoUrls: item.motionVideoUrls || [],
+          })}
+        </div>
+      </div>
+    )
+  }
+
+  const renderMobileVideoHistoryPanel = () => {
+    const currentInlineRequest = currentRequest?.status === 'processing' || currentRequest?.status === 'failed'
+      ? currentRequest
+      : null
+    const latestHistoryItem = history[0]
+
+    if (!currentInlineRequest && !latestHistoryItem) return null
+
+    return (
+      <div data-mobile-video-history-panel className="order-3 space-y-2 md:hidden">
+        <div className="flex items-center justify-between gap-3">
+          <h2 className="text-sm font-extrabold text-slate-900">{text.history}</h2>
+          {history.length > 0 ? (
+            <Link href={historyPageHref} className="text-xs font-bold text-[#4F46E5] hover:text-[#3730A3]">
+              {text.viewAll}
+            </Link>
+          ) : null}
+        </div>
+        {currentInlineRequest
+          ? renderMobileVideoRequestItem(currentInlineRequest)
+          : renderMobileVideoHistoryItem(latestHistoryItem)}
+      </div>
+    )
+  }
+
   const renderDesktopVideoResultFeed = () => (
     <div
       data-video-result-feed
@@ -2361,10 +2473,50 @@ export default function AiVideoGeneratorTool({
     </div>
   )
 
+  const renderVideoDemoCanvas = (className = '') => (
+    <div
+      data-video-preview-canvas
+      className={`relative flex min-h-[320px] min-w-0 flex-1 items-center justify-center overflow-hidden rounded-2xl bg-[#F7F5FF] p-6 ${className}`}
+      aria-label={text.previewHint}
+    >
+      <div
+        data-video-preview-frame
+        className={demoVideo?.src
+          ? 'relative inline-flex max-h-full max-w-full overflow-hidden rounded-2xl bg-transparent shadow-lg shadow-slate-200/70 ring-1 ring-slate-200/80'
+          : 'relative aspect-video w-full max-w-3xl overflow-hidden rounded-2xl bg-slate-950 shadow-lg shadow-slate-200/70 ring-1 ring-slate-200/80'}
+      >
+        {demoVideo?.src ? (
+          <video
+            data-video-demo-media
+            suppressHydrationWarning
+            className="block h-auto max-h-[520px] w-auto max-w-full object-contain"
+            src={demoVideo.src}
+            poster={demoVideo.poster}
+            aria-label={demoVideo.ariaLabel || text.previewHint}
+            controls
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+          />
+        ) : (
+          <>
+            <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(15,23,42,0.98),rgba(79,70,229,0.66)),radial-gradient(circle_at_70%_30%,rgba(34,211,238,0.34),transparent_32%)]" />
+            <div className="absolute inset-8 rounded-[1.25rem] border border-white/10 bg-white/[0.02]" />
+            <div className="absolute left-7 right-7 bottom-7 h-1.5 overflow-hidden rounded-full bg-white/15">
+              <div className="h-full w-1/3 rounded-full bg-white/45" />
+            </div>
+          </>
+        )}
+      </div>
+    </div>
+  )
+
   const renderDesktopResultTabs = () => (
     <div
       data-desktop-result-tabs
-      className="flex w-fit shrink-0 items-center justify-start gap-1 rounded-full border border-[#E0E7FF] bg-white/90 p-1 shadow-sm shadow-[#4F46E5]/5"
+      className="hidden w-fit shrink-0 items-center justify-start gap-1 rounded-full border border-[#E0E7FF] bg-white/90 p-1 shadow-sm shadow-[#4F46E5]/5 md:flex"
     >
       <button
         type="button"
@@ -2431,7 +2583,6 @@ export default function AiVideoGeneratorTool({
                         <button
                           type="button"
                           onClick={() => {
-                            setIsDurationMenuOpen(false)
                             setActiveModelGroupId(selectedModelGroup.id)
                             setIsModelMenuOpen((open) => !open)
                           }}
@@ -2764,32 +2915,12 @@ export default function AiVideoGeneratorTool({
                         })}
                       </div>
                     ) : (
-                      <div data-video-duration-selector ref={durationSelectorRef} className="relative">
-                        <span className="mb-2 block text-xs font-semibold tracking-wide text-slate-500">{text.duration}</span>
-                        <button
-                          ref={durationButtonRef}
-                          data-video-duration-button
-                          type="button"
-                          onClick={toggleDurationMenu}
-                          className="!flex w-full items-center justify-between gap-3 rounded-xl border border-[#E0E7FF] bg-[#EEF2FF]/30 px-4 py-2.5 text-left text-sm font-medium text-slate-800 shadow-sm transition-all duration-200 hover:border-[#C7D2FE] hover:bg-[#EEF2FF]/50 focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/40"
-                          aria-haspopup="listbox"
-                          aria-expanded={isDurationMenuOpen}
-                        >
-                          <span className="font-bold text-slate-900">{duration}s</span>
-                          <svg
-                            width="16"
-                            height="16"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2.5"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            className={`shrink-0 text-[#4F46E5] transition-transform duration-200 ${isDurationMenuOpen ? 'rotate-180' : ''}`}
-                          >
-                            <polyline points="6 9 12 15 18 9" />
-                          </svg>
-                        </button>
+                      <div data-video-duration-selector>
+                        <div className="mb-2 flex items-center justify-between gap-3">
+                          <span className="block text-xs font-semibold tracking-wide text-slate-500">{text.duration}</span>
+                          <span data-video-duration-value className="text-xs font-extrabold text-[#3730A3]">{duration}s</span>
+                        </div>
+                        {renderManualDurationSlider()}
                       </div>
                     )}
 
@@ -2849,11 +2980,12 @@ export default function AiVideoGeneratorTool({
                   </button>
                 </div>
               </aside>
+              {renderMobileVideoHistoryPanel()}
 
               <div data-video-demo-panel className="order-1 flex min-h-0 min-w-0 flex-1 flex-col gap-4 md:order-none md:h-full">
                 {hasDesktopResultTabs ? renderDesktopResultTabs() : null}
-                {rightMode !== 'history' && (heroBreadcrumbItems?.length || heroTitleHtml || heroDescription) ? (
-                  <div className="shrink-0 text-center md:px-4 md:pt-1 xl:pt-0">
+                {(heroBreadcrumbItems?.length || heroTitleHtml || heroDescription) ? (
+                  <div className={`${rightMode === 'history' ? 'md:hidden' : ''} shrink-0 text-center md:px-4 md:pt-1 xl:pt-0`}>
                     {heroBreadcrumbItems?.length ? (
                       <Breadcrumb items={heroBreadcrumbItems} variant="inline" />
                     ) : null}
@@ -2874,50 +3006,19 @@ export default function AiVideoGeneratorTool({
 
                 <div className="flex min-h-0 min-w-0 flex-1 flex-col rounded-2xl border border-[#E0E7FF] bg-white shadow-lg shadow-[#4F46E5]/8">
                   {rightMode === 'history' ? (
-                    renderDesktopVideoResultFeed()
-                  ) : (
-                    <div
-                      data-video-preview-canvas
-                      className="relative flex min-h-[320px] min-w-0 flex-1 items-center justify-center overflow-hidden rounded-2xl bg-[#F7F5FF] p-6"
-                      aria-label={text.previewHint}
-                    >
-                      <div
-                        data-video-preview-frame
-                        className={demoVideo?.src
-                          ? 'relative inline-flex max-h-full max-w-full overflow-hidden rounded-2xl bg-transparent shadow-lg shadow-slate-200/70 ring-1 ring-slate-200/80'
-                          : 'relative aspect-video w-full max-w-3xl overflow-hidden rounded-2xl bg-slate-950 shadow-lg shadow-slate-200/70 ring-1 ring-slate-200/80'}
-                      >
-                        {demoVideo?.src ? (
-                          <video
-                            data-video-demo-media
-                            suppressHydrationWarning
-                            className="block h-auto max-h-[520px] w-auto max-w-full object-contain"
-                            src={demoVideo.src}
-                            poster={demoVideo.poster}
-                            aria-label={demoVideo.ariaLabel || text.previewHint}
-                            controls
-                            autoPlay
-                            loop
-                            muted
-                            playsInline
-                            preload="metadata"
-                          />
-                        ) : (
-                          <>
-                            <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(15,23,42,0.98),rgba(79,70,229,0.66)),radial-gradient(circle_at_70%_30%,rgba(34,211,238,0.34),transparent_32%)]" />
-                            <div className="absolute inset-8 rounded-[1.25rem] border border-white/10 bg-white/[0.02]" />
-                            <div className="absolute left-7 right-7 bottom-7 h-1.5 overflow-hidden rounded-full bg-white/15">
-                              <div className="h-full w-1/3 rounded-full bg-white/45" />
-                            </div>
-                          </>
-                        )}
+                    <>
+                      {renderVideoDemoCanvas('md:hidden')}
+                      <div className="hidden min-h-0 min-w-0 flex-1 flex-col md:flex">
+                        {renderDesktopVideoResultFeed()}
                       </div>
-                    </div>
+                    </>
+                  ) : (
+                    renderVideoDemoCanvas()
                   )}
                 </div>
 
                 {rightMode === 'history' ? (
-                  <div className="flex justify-end">
+                  <div className="hidden justify-end md:flex">
                     <Link href={historyPageHref} className="text-xs font-bold text-[#4F46E5] hover:text-[#3730A3]">
                       {text.viewAll}
                     </Link>
@@ -3007,7 +3108,6 @@ export default function AiVideoGeneratorTool({
           </div>
         </div>
       )}
-      {renderDurationMenu()}
     </section>
   )
 }

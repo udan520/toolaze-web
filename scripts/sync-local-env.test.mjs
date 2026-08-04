@@ -18,6 +18,7 @@ test('syncLocalEnv copies allowed shared keys without leaking values', async () 
     [
       `KIE_AI_API_KEY=${secret}`,
       'CREEM_API_KEY=creem-secret-value',
+      'TOOLAZE_ADMIN_EMAILS=admin@example.com',
       'UNRELATED_SECRET=should-not-copy',
       '',
     ].join('\n'),
@@ -41,9 +42,10 @@ test('syncLocalEnv copies allowed shared keys without leaking values', async () 
   assert.match(next, /^EXISTING_ONLY=keep-me$/m)
   assert.match(next, /^KIE_AI_API_KEY=sk-test-secret-value$/m)
   assert.match(next, /^CREEM_API_KEY=creem-secret-value$/m)
+  assert.match(next, /^TOOLAZE_ADMIN_EMAILS=admin@example.com$/m)
   assert.doesNotMatch(next, /UNRELATED_SECRET/)
   assert.deepEqual(result.updated, ['KIE_AI_API_KEY'])
-  assert.deepEqual(result.added, ['CREEM_API_KEY'])
+  assert.deepEqual(result.added, ['CREEM_API_KEY', 'TOOLAZE_ADMIN_EMAILS'])
   assert.doesNotMatch(serialized, /sk-test-secret-value|creem-secret-value/)
 })
 

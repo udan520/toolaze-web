@@ -14,7 +14,7 @@ import {
 const KIE_AI_BASE = 'https://api.kie.ai/api/v1/jobs';
 const KIE_VEO_BASE = 'https://api.kie.ai/api/v1/veo';
 const KIE_MOTION_CONTROL_FILE_FORMAT_MESSAGE =
-  'KIE rejected one of the uploaded files. Use a JPG/JPEG/PNG character image over 300px with a 2:5 to 5:2 aspect ratio, and an MP4/MOV/MKV motion reference video within the selected orientation duration limit.';
+  'KIE rejected one of the uploaded files. Use a JPG/JPEG/PNG character image over 340px with a 2:5 to 5:2 aspect ratio, and an MP4/MOV/MKV motion reference video within the selected orientation duration limit.';
 const CORS = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Methods': 'POST, OPTIONS',

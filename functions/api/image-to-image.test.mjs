@@ -185,6 +185,59 @@ test('new image models reject invalid settings before calling KIE', async () => 
   }
 })
 
+test('KIE image models reject reference counts and resolutions beyond audited limits', async () => {
+  const originalFetch = globalThis.fetch
+  let fetchCount = 0
+  globalThis.fetch = async () => {
+    fetchCount += 1
+    return Response.json({ code: 200, data: { taskId: 'should_not_exist' } })
+  }
+
+  try {
+    const cases = [
+      {
+        overrides: {
+          model: 'nano-banana-2-lite',
+          isImageToImage: true,
+          imageUrls: Array.from({ length: 11 }, (_, index) => `https://example.com/nano-lite-${index}.png`),
+        },
+        expectedError: 'Maximum 10 images allowed',
+      },
+      {
+        overrides: {
+          model: 'seedream-5-0-pro',
+          isImageToImage: true,
+          imageUrls: Array.from({ length: 11 }, (_, index) => `https://example.com/seedream-pro-${index}.png`),
+        },
+        expectedError: 'Maximum 10 images allowed',
+      },
+      {
+        overrides: {
+          model: 'grok-1-5-image',
+          isImageToImage: false,
+          imageUrls: false,
+          resolution: '2K',
+        },
+        expectedError: 'Resolution must be 1K for Grok 1.5 Image',
+      },
+    ]
+
+    for (const testCase of cases) {
+      const response = await onRequest({
+        request: createGenerationRequest(testCase.overrides),
+        env: { KIE_AI_API_KEY: 'test-key' },
+      })
+      const payload = await response.json()
+
+      assert.equal(response.status, 400)
+      assert.equal(payload.error, testCase.expectedError)
+    }
+    assert.equal(fetchCount, 0)
+  } finally {
+    globalThis.fetch = originalFetch
+  }
+})
+
 test('unknown image models are rejected instead of falling back to Nano Banana Pro', async () => {
   const originalFetch = globalThis.fetch
   let fetchCount = 0

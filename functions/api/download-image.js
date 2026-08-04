@@ -29,6 +29,7 @@ function isAllowedUrl(url, allowedBase) {
   if (hostname.endsWith('.r2.dev')) return true;
   // KIE / third-party result files can be temporary CDN URLs before we persist them to R2.
   if (hostname === 'tempfile.aiquickdraw.com' || hostname.endsWith('.aiquickdraw.com')) return true;
+  if (hostname === 'tempfile.redpandaai.co' || hostname === 'kieai.redpandaai.co') return true;
   // AI 图生图 / 去水印等接口返回的 CDN 域名（如 ai.t8star.cn）
   if (hostname.endsWith('t8star.cn')) return true;
   return false;

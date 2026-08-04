@@ -1050,6 +1050,14 @@ test('AI Dance Grok Video results are handled as video media', () => {
   assert.match(aiImageToolSource, /<video/)
 })
 
+test('AI image and Grok Video generated results are persisted to R2 before history', () => {
+  assert.match(aiImageToolSource, /const saveGeneratedMediaToR2 = useCallback\(async \(outputUrl: string, mediaType: GenerationMediaType = 'image'\)/)
+  assert.match(aiImageToolSource, /fetch\('\/api\/save-image-to-r2'[\s\S]*mediaUrl: outputUrl[\s\S]*mediaType/)
+  assert.match(aiImageToolSource, /const finalUrl = await saveGeneratedMediaToR2\(outputUrl, mediaType\)/)
+  assert.match(aiImageToolSource, /const finalUrl = await saveGeneratedMediaToR2\(syncOutputUrl, syncMediaType\)/)
+  assert.doesNotMatch(aiImageToolSource, /mediaType === 'image' \? await saveGeneratedImageToR2\(outputUrl\) : outputUrl/)
+})
+
 test('Grok Video 1.5 image upload flow supports KIE multi-image references', () => {
   const grokConfigBlock = aiImageToolSource.slice(
     aiImageToolSource.indexOf("'grok-video-1-5': {"),

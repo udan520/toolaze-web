@@ -66,3 +66,44 @@ test('save-image-to-r2 ignores the legacy R2 development base URL', async () => 
     globalThis.fetch = originalFetch
   }
 })
+
+test('save-image-to-r2 persists generated videos with video metadata', async () => {
+  const originalFetch = globalThis.fetch
+  const writes = []
+  globalThis.fetch = async () => new Response('video-bytes', {
+    status: 200,
+    headers: { 'content-type': 'video/mp4' },
+  })
+
+  try {
+    const response = await onRequest({
+      request: new Request('https://toolaze.test/api/save-image-to-r2', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({
+          mediaUrl: 'https://tempfile.redpandaai.co/kieai/231516/toolaze/generated-output.mp4',
+          mediaType: 'video',
+        }),
+      }),
+      env: {
+        MY_BUCKET: {
+          put: async (key, blob, options) => {
+            writes.push({ key, text: await blob.text(), options })
+          },
+        },
+      },
+    })
+
+    const body = await response.json()
+
+    assert.equal(response.status, 200)
+    assert.equal(writes.length, 1)
+    assert.equal(writes[0].text, 'video-bytes')
+    assert.equal(writes[0].options.httpMetadata.contentType, 'video/mp4')
+    assert.match(writes[0].key, /^generated\/.+\.mp4$/)
+    assert.equal(body.mediaType, 'video')
+    assert.match(body.url, /^https:\/\/assets\.toolaze\.com\/generated\/.+\.mp4$/)
+  } finally {
+    globalThis.fetch = originalFetch
+  }
+})

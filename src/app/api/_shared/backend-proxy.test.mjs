@@ -221,18 +221,29 @@ test('localhost checkout prefers the saved backend session over a local dev cook
 
 
 test('local dev session cookie returns local test account for auth state', async () => {
+  const previousAdminEmails = process.env.TOOLAZE_ADMIN_EMAILS
+  process.env.TOOLAZE_ADMIN_EMAILS = 'dianawu1202@gmail.com'
   const request = new Request('http://localhost:3016/api/auth/me', {
     headers: {
       Cookie: 'toolaze_session=toolaze-local-dev-session',
     },
   })
 
-  const response = await proxyToPagesFunctions(request, '/api/auth/me')
-  const payload = await response.json()
+  try {
+    const response = await proxyToPagesFunctions(request, '/api/auth/me')
+    const payload = await response.json()
 
-  assert.equal(response.status, 200)
-  assert.equal(payload.user.email, 'dianawu1202@gmail.com')
-  assert.equal(payload.credits.balance, 1000)
+    assert.equal(response.status, 200)
+    assert.equal(payload.user.email, 'dianawu1202@gmail.com')
+    assert.equal(payload.user.isAdmin, true)
+    assert.equal(payload.credits.balance, 1000)
+  } finally {
+    if (previousAdminEmails === undefined) {
+      delete process.env.TOOLAZE_ADMIN_EMAILS
+    } else {
+      process.env.TOOLAZE_ADMIN_EMAILS = previousAdminEmails
+    }
+  }
 })
 
 test('local dev session cookie returns wrapped credit activity', async () => {

@@ -1337,7 +1337,6 @@ export default function AiImageGenerationTool({
   const historyPageHref = getLocalizedInternalPath(pathname, '/history')
   const isGenerating = pendingGenerationItems.length > 0
   const hasDesktopResultTabs = isGenerating || failedGenerationItems.length > 0 || history.length > 0
-  const hasMobileResultTabs = isGenerating || failedGenerationItems.length > 0 || history.length > 0
   const resolutionOptions = useMemo(
     () => getResolutionOptionsForModel(selectedModelId),
     [selectedModelId]
@@ -1703,12 +1702,12 @@ export default function AiImageGenerationTool({
     }
   }, [toolText.serverNonJson])
 
-  const saveGeneratedImageToR2 = useCallback(async (outputUrl: string) => {
+  const saveGeneratedMediaToR2 = useCallback(async (outputUrl: string, mediaType: GenerationMediaType = 'image') => {
     try {
       const saveRes = await fetch('/api/save-image-to-r2', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ imageUrl: outputUrl }),
+        body: JSON.stringify({ mediaUrl: outputUrl, mediaType }),
       })
       if (!saveRes.ok) return outputUrl
       const data = await parseJsonSafely(saveRes)
@@ -1831,7 +1830,7 @@ export default function AiImageGenerationTool({
       }
 
       const { outputUrl, mediaType } = await pollStatus()
-      const finalUrl = mediaType === 'image' ? await saveGeneratedImageToR2(outputUrl) : outputUrl
+      const finalUrl = await saveGeneratedMediaToR2(outputUrl, mediaType)
       const savedItem = await persistGeneratedHistoryItem({
         outputUrl: finalUrl,
         inputUrls: item.inputUrls || [],
@@ -1877,7 +1876,7 @@ export default function AiImageGenerationTool({
     addHistoryItemToFeed,
     parseJsonSafely,
     persistGeneratedHistoryItem,
-    saveGeneratedImageToR2,
+    saveGeneratedMediaToR2,
     toolText.checkStatusFailed,
     toolText.generationTimeout,
     toolText.imageGenerationFailed,
@@ -2415,8 +2414,9 @@ export default function AiImageGenerationTool({
         if (syncOutputUrl) {
           const syncMediaType: GenerationMediaType =
             generateResult.mediaType === 'video' || generateResult.videoUrl ? 'video' : requestMediaType
+          const finalUrl = await saveGeneratedMediaToR2(syncOutputUrl, syncMediaType)
           const savedItem = await persistGeneratedHistoryItem({
-            outputUrl: syncOutputUrl,
+            outputUrl: finalUrl,
             inputUrls: generationInputUrls,
             prompt: effectivePrompt,
             modelId: requestModelId,
@@ -2433,7 +2433,7 @@ export default function AiImageGenerationTool({
             id: savedItem?.id || createLocalId('sync'),
             inputPreview: savedInputUrls[0] || generationPreviewInputUrls[0] || '',
             inputUrls: savedInputUrls,
-            outputPreview: syncOutputUrl,
+            outputPreview: finalUrl,
             mediaType: syncMediaType,
             prompt: effectivePrompt,
             time: formatLocalTimestampToSeconds(savedItem?.createdAt || new Date().toISOString()),
@@ -2536,7 +2536,7 @@ export default function AiImageGenerationTool({
       const { outputUrl, mediaType } = await pollStatus()
 
       if (outputUrl) {
-        const finalUrl = mediaType === 'image' ? await saveGeneratedImageToR2(outputUrl) : outputUrl
+        const finalUrl = await saveGeneratedMediaToR2(outputUrl, mediaType)
 
         const savedItem = await persistGeneratedHistoryItem({
           outputUrl: finalUrl,
@@ -3528,40 +3528,6 @@ export default function AiImageGenerationTool({
     </div>
   )
 
-  const renderMobileResultTabs = () => (
-    <div
-      data-mobile-result-tabs
-      className="flex w-fit shrink-0 items-center justify-center gap-1 rounded-full border border-[#E0E7FF] bg-white/90 p-1 shadow-sm shadow-[#4F46E5]/5"
-    >
-      <button
-        type="button"
-        data-mobile-result-tab="sample"
-        aria-pressed={rightMode !== 'history'}
-        onClick={() => setRightMode('sample')}
-        className={`inline-flex h-8 min-w-[76px] items-center justify-center rounded-full px-3 text-xs font-semibold transition-colors ${
-          rightMode !== 'history'
-            ? 'bg-[#EEF2FF] text-[#4F46E5] shadow-sm'
-            : 'text-slate-500 hover:bg-[#F8FAFF] hover:text-slate-700'
-        }`}
-      >
-        {toolText.demo}
-      </button>
-      <button
-        type="button"
-        data-mobile-result-tab="history"
-        aria-pressed={rightMode === 'history'}
-        onClick={() => setRightMode('history')}
-        className={`inline-flex h-8 min-w-[76px] items-center justify-center rounded-full px-3 text-xs font-semibold transition-colors ${
-          rightMode === 'history'
-            ? 'bg-[#EEF2FF] text-[#4F46E5] shadow-sm'
-            : 'text-slate-500 hover:bg-[#F8FAFF] hover:text-slate-700'
-        }`}
-      >
-        {toolText.history}
-      </button>
-    </div>
-  )
-
   const renderMobileGeneratingCard = () => (
     <div
       data-mobile-generating-card
@@ -3582,7 +3548,7 @@ export default function AiImageGenerationTool({
   const renderMobileHistoryFeed = () => {
     if (!isGenerating && !currentResult && !isUserSignedIn) return null
 
-    const recentHistory = history.slice(0, 4)
+    const recentHistory = history.slice(0, 1)
     const currentResultRecreateDisabled = !currentResult?.prompt?.trim()
 
     return (
@@ -3719,7 +3685,7 @@ export default function AiImageGenerationTool({
           </div>
         ) : isUserSignedIn ? (
           recentHistory.length > 0 ? (
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-1 gap-2">
               {recentHistory.map((item) => (
                 <button
                   key={item.id}
@@ -3763,48 +3729,41 @@ export default function AiImageGenerationTool({
   }
 
   const renderMobileTopPanel = () => {
-    const showMobileHero = rightMode !== 'history' && (heroBreadcrumbItems?.length || heroEyebrow || heroTitle || heroDescription)
+    const showMobileHero = heroBreadcrumbItems?.length || heroEyebrow || heroTitle || heroDescription
 
     return (
       <div className="space-y-4 md:hidden">
-        {hasMobileResultTabs ? renderMobileResultTabs() : null}
-        {rightMode === 'history' ? (
-          renderMobileHistoryFeed()
-        ) : (
-          <>
-            {showMobileHero && (
-              <div data-mobile-result-hero className="text-left">
-                {heroBreadcrumbItems?.length ? (
-                  <div className="mb-1 flex justify-start">
-                    <Breadcrumb items={heroBreadcrumbItems} variant="inline" />
-                  </div>
-                ) : null}
-                {heroEyebrow && (
-                  <div className="mb-3 flex flex-wrap items-center justify-start gap-3">
-                    {heroEyebrow}
-                  </div>
-                )}
-                {heroTitle && (
-                  <div
-                    role="heading"
-                    aria-level={1}
-                    className="text-[30px] font-extrabold leading-tight tracking-tight text-slate-950"
-                  >
-                    {heroTitle}
-                  </div>
-                )}
-                {heroDescription && (
-                  <p className="mt-3 max-w-none text-base leading-7 text-slate-600">
-                    {heroDescription}
-                  </p>
-                )}
+        {showMobileHero && (
+          <div data-mobile-result-hero className="text-left">
+            {heroBreadcrumbItems?.length ? (
+              <div className="mb-1 flex justify-start">
+                <Breadcrumb items={heroBreadcrumbItems} variant="inline" />
+              </div>
+            ) : null}
+            {heroEyebrow && (
+              <div className="mb-3 flex flex-wrap items-center justify-start gap-3">
+                {heroEyebrow}
               </div>
             )}
-            <div data-mobile-demo-panel className="aspect-[4/3] overflow-hidden rounded-2xl border border-[#E0E7FF] bg-white p-2 shadow-lg shadow-[#4F46E5]/8">
-              {renderDemoPreview()}
-            </div>
-          </>
+            {heroTitle && (
+              <div
+                role="heading"
+                aria-level={1}
+                className="text-[30px] font-extrabold leading-tight tracking-tight text-slate-950"
+              >
+                {heroTitle}
+              </div>
+            )}
+            {heroDescription && (
+              <p className="mt-3 max-w-none text-base leading-7 text-slate-600">
+                {heroDescription}
+              </p>
+            )}
+          </div>
         )}
+        <div data-mobile-demo-panel className="aspect-[4/3] overflow-hidden rounded-2xl border border-[#E0E7FF] bg-white p-2 shadow-lg shadow-[#4F46E5]/8">
+          {renderDemoPreview()}
+        </div>
       </div>
     )
   }
@@ -4477,6 +4436,7 @@ export default function AiImageGenerationTool({
             )}
           </div>
         </div>
+        {renderMobileHistoryFeed()}
 
         <div className="hidden min-h-0 min-w-0 flex-1 flex-col gap-4 md:flex md:h-full">
           {hasDesktopResultTabs ? renderDesktopResultTabs() : null}

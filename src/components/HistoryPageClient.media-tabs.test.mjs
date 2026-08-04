@@ -78,3 +78,15 @@ test('History prompt copy reports success and failure through the global notice'
   assert.match(source, /dispatchToolazeTopNotice\(\{[\s\S]*type: 'success'[\s\S]*copy\.promptCopied/)
   assert.match(source, /dispatchToolazeTopNotice\(\{[\s\S]*type: 'error'[\s\S]*copy\.promptCopyFailed/)
 })
+
+
+test('History cards expose a media-library import action only for admin users', () => {
+  assert.match(source, /const \[isMediaLibraryAdmin, setIsMediaLibraryAdmin\] = useState\(false\)/)
+  assert.match(source, /fetch\('\/api\/auth\/me', \{[\s\S]*credentials: 'include'/)
+  assert.match(source, /setIsMediaLibraryAdmin\(Boolean\(data\.user\?\.isAdmin\)\)/)
+  assert.match(source, /const handleImportToMediaLibrary = async \(item: GenerationHistoryItem\)/)
+  assert.match(source, /fetch\('\/api\/media-library\/import-history', \{[\s\S]*method: 'POST'[\s\S]*credentials: 'include'[\s\S]*historyId: item\.id/)
+  assert.match(source, /\{isMediaLibraryAdmin && !selectionMode && \(/)
+  assert.match(source, /data-history-import-media-library/)
+  assert.match(source, /copy\.importToMediaLibrary/)
+})

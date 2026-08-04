@@ -322,6 +322,8 @@ test('Kling 3 Motion Control uses the real Toolaze model configuration and KIE-d
   assert.match(config, /id:\s*'kling-3-motion-control'[\s\S]*supportsMotionReferenceVideo:\s*true/)
   assert.match(config, /id:\s*'kling-3-motion-control'[\s\S]*durationMode:\s*'reference-video'/)
   assert.match(config, /id:\s*'kling-3-motion-control'[\s\S]*acceptedMotionVideoFormats:\s*\['MP4',\s*'QuickTime'\]/)
+  assert.match(config, /id:\s*'kling-3-motion-control'[\s\S]*referenceImageMinDimensionPx:\s*340/)
+  assert.match(config, /id:\s*'kling-3-motion-control'[\s\S]*invalidImageDimensionsMessage:\s*'Use an image over 340px/)
   assert.match(config, /id:\s*'kling-3-motion-control'[\s\S]*referenceImageAspectRatioMin:\s*2\s*\/\s*5/)
   assert.match(config, /id:\s*'kling-3-motion-control'[\s\S]*referenceImageAspectRatioMax:\s*5\s*\/\s*2/)
   assert.match(credits, /'kling-3-motion-control':\s*\{[\s\S]*Kie pricing: 720p \$0\.10\/output second, 1080p \$0\.135\/output second[\s\S]*ratesByResolution:\s*\{\s*'720p':\s*40,\s*'1080p':\s*54\s*\}/)

@@ -181,6 +181,8 @@ test('Kling 2.6 Pro Motion Control uses the real Toolaze model configuration and
   assert.match(config, /id:\s*'kling-2-6-motion-control'[\s\S]*maxVideos:\s*1/)
   assert.match(config, /id:\s*'kling-2-6-motion-control'[\s\S]*maxVideoFileSizeMb:\s*100/)
   assert.match(config, /id:\s*'kling-2-6-motion-control'[\s\S]*supportsMotionReferenceVideo:\s*true/)
+  assert.match(config, /id:\s*'kling-2-6-motion-control'[\s\S]*referenceImageMinDimensionPx:\s*300/)
+  assert.match(config, /id:\s*'kling-2-6-motion-control'[\s\S]*invalidImageDimensionsMessage:\s*'Use an image over 300px/)
   assert.match(credits, /'kling-2-6-motion-control':\s*\{[\s\S]*ratesByResolution:\s*\{\s*'720p':\s*22,\s*'1080p':\s*22\s*\}/)
   assert.match(functionCredits, /'kling-2-6-motion-control':\s*\{[\s\S]*ratesByResolution:\s*\{\s*'720p':\s*22,\s*'1080p':\s*22\s*\}/)
   assert.match(apiRoute, /'kling-2-6-motion-control':\s*\{[\s\S]*fallbackProviderModel:\s*'kling-2\.6\/motion-control'/)

@@ -419,21 +419,26 @@ test('desktop result tabs stay compact and hidden only when there is no history 
   assert.match(source, /data-desktop-result-tab="history"[\s\S]*className=\{`inline-flex h-9 min-w-\[84px\]/)
 })
 
-test('mobile demo and history tabs follow the same compact panel switching rules', () => {
+test('mobile demo stays fixed and one latest history item renders below the generator', () => {
   const mobileTopPanel = source.slice(
     source.indexOf('const renderMobileTopPanel'),
     source.indexOf('const rightPanelShadowClass'),
   )
+  const shellBlock = source.slice(
+    source.indexOf('data-generation-tool-shell'),
+    source.indexOf('<div className="hidden min-h-0 min-w-0 flex-1 flex-col gap-4 md:flex md:h-full">'),
+  )
 
-  assert.match(source, /const hasMobileResultTabs = isGenerating \|\| failedGenerationItems\.length > 0 \|\| history\.length > 0/)
-  assert.match(mobileTopPanel, /\{hasMobileResultTabs \? renderMobileResultTabs\(\) : null\}/)
-  assert.match(mobileTopPanel, /rightMode === 'history' \? \(\s*renderMobileHistoryFeed\(\)\s*\) : \(/)
-  assert.match(mobileTopPanel, /const showMobileHero = rightMode !== 'history' && \(heroBreadcrumbItems\?\.length \|\| heroEyebrow \|\| heroTitle \|\| heroDescription\)/)
+  assert.doesNotMatch(source, /const hasMobileResultTabs =/)
+  assert.doesNotMatch(source, /const renderMobileResultTabs =/)
+  assert.doesNotMatch(source, /data-mobile-result-tabs/)
+  assert.doesNotMatch(mobileTopPanel, /rightMode === 'history'/)
+  assert.match(mobileTopPanel, /const showMobileHero = heroBreadcrumbItems\?\.length \|\| heroEyebrow \|\| heroTitle \|\| heroDescription/)
   assert.match(mobileTopPanel, /\{showMobileHero && \(/)
-  assert.match(source, /data-mobile-result-tabs[\s\S]*className="flex w-fit shrink-0/)
-  assert.doesNotMatch(source, /data-mobile-result-tabs[\s\S]{0,180}mx-auto/)
-  assert.match(source, /data-mobile-result-tab="sample"[\s\S]*>\s*\{toolText\.demo\}/)
-  assert.match(source, /data-mobile-result-tab="history"[\s\S]*>\s*\{toolText\.history\}/)
+  assert.match(mobileTopPanel, /data-mobile-demo-panel/)
+  assert.match(source, /const recentHistory = history\.slice\(0, 1\)/)
+  assert.match(source, /<div className="grid grid-cols-1 gap-2">/)
+  assert.match(shellBlock, /\{renderMobileTopPanel\(\)\}[\s\S]*\{renderMobileHistoryFeed\(\)\}/)
 })
 
 test('history action uses settings instead of generating immediately', () => {

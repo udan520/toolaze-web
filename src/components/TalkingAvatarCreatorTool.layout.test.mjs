@@ -66,6 +66,29 @@ test('Talking avatar creator follows the shared video generation result flow', (
   assert.doesNotMatch(source, /videoUrl \? \([\s\S]*data-talking-avatar-result-panel/, 'result should not only replace the static demo canvas')
 })
 
+test('Talking avatar creator keeps mobile Demo fixed and shows one latest History item below the generator', () => {
+  const demoPanel = source.slice(
+    source.indexOf('<div data-talking-avatar-demo-panel'),
+    source.indexOf('{pendingAudioTrim ? ('),
+  )
+
+  assert.match(source, /data-mobile-talking-avatar-history-panel/)
+  assert.match(source, /const latestHistoryItem = history\[0\]/)
+  assert.match(source, /\{renderMobileTalkingAvatarHistoryPanel\(\)\}\s*<div data-talking-avatar-demo-panel/)
+  assert.match(source, /data-desktop-result-tabs[\s\S]*className="hidden w-fit[\s\S]*md:flex/)
+  assert.match(demoPanel, /renderSamplePreview\('md:hidden'\)/)
+  assert.match(demoPanel, /<div className="hidden min-h-0 min-w-0 flex-1 flex-col md:flex">[\s\S]*renderDesktopVideoResultFeed\(\)/)
+  assert.match(demoPanel, /className=\{`\$\{rightMode === 'history' \? 'md:hidden' : ''\} shrink-0/)
+})
+
+test('Talking avatar creator persists generated videos to R2 before history', () => {
+  assert.match(source, /const persistGeneratedMediaToR2 = async \(/, 'Talking Avatar should centralize generated media persistence')
+  assert.match(source, /fetch\('\/api\/save-image-to-r2'[\s\S]*mediaUrl[\s\S]*mediaType/, 'Talking Avatar should call the shared R2 media persistence endpoint')
+  assert.match(source, /const persistedVideoUrl = await persistGeneratedMediaToR2\(nextVideoUrl, 'video'\)/, 'Talking Avatar should persist provider video URLs before saving history')
+  assert.match(source, /persistHistory\(persistedVideoUrl, imageUrl, audioUrl, requestPrompt, requestResolution\)/, 'Talking Avatar history should store the persisted R2 video URL')
+  assert.match(source, /outputPreview: persistedVideoUrl/, 'Talking Avatar inline history should preview the persisted R2 video URL')
+})
+
 test('Talking avatar creator uses shared auth, credits, and account history mechanics', () => {
   assert.match(source, /ensureSignedInForTalkingAvatarGeneration/)
   assert.match(source, /fetch\('\/api\/auth\/me'/)

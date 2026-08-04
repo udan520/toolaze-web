@@ -256,6 +256,9 @@ function WorkspaceSidebar({ pathname }: { pathname: string | null }) {
 
 export default function GlobalWorkspaceShell({ children }: { children: ReactNode }) {
   const pathname = usePathname()
+  const isAdminRoute = getPathWithoutLocale(pathname).startsWith('/admin')
+
+  if (isAdminRoute) return <>{children}</>
 
   return (
     <>

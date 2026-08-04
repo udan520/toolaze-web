@@ -160,11 +160,11 @@ test('Kling 3 Motion Control follows reference-video motion-control constraints'
   assert.deepEqual(model.acceptedImageMimeTypes, ['image/jpeg', 'image/png'])
   assert.deepEqual(model.acceptedImageExtensions, ['jpg', 'jpeg', 'png'])
   assert.deepEqual(model.acceptedImageFormats, ['JPG', 'PNG'])
-  assert.equal(model.referenceImageMinDimensionPx, 300)
+  assert.equal(model.referenceImageMinDimensionPx, 340)
   assert.equal(model.referenceImageAspectRatioMin, 2 / 5)
   assert.equal(model.referenceImageAspectRatioMax, 5 / 2)
   assert.match(model.referenceImageHelperText || '', /JPG or PNG up to \{size\}MB/)
-  assert.match(model.invalidImageDimensionsMessage || '', /over 300px/)
+  assert.match(model.invalidImageDimensionsMessage || '', /over 340px/)
   assert.match(model.invalidImageDimensionsMessage || '', /2:5 to 5:2/)
   assert.deepEqual(model.acceptedMotionVideoFormats, ['MP4', 'QuickTime'])
   assert.deepEqual(model.resolutions, ['720p', '1080p'])
@@ -178,7 +178,7 @@ test('PixVerse and HappyHorse expose only text-to-video and image-to-video setti
   const happyhorse = getAiVideoGeneratorModelConfig('happyhorse')
 
   assert.equal(pixverse.defaultMode, 'text-to-video')
-  assert.equal(pixverse.maxImages, 1)
+  assert.equal(pixverse.maxImages, 2)
   assert.deepEqual(pixverse.durations, Array.from({ length: 15 }, (_, index) => index + 1))
   assert.deepEqual(pixverse.resolutions, ['360p', '540p', '720p', '1080p'])
   assert.equal(pixverse.supportsNativeAudio, true)
@@ -189,6 +189,8 @@ test('PixVerse and HappyHorse expose only text-to-video and image-to-video setti
     assert.deepEqual(model.durations, Array.from({ length: 13 }, (_, index) => index + 3))
     assert.deepEqual(model.resolutions, ['720p', '1080p'])
   }
+  assert.equal(happyhorse11.maxFileSizeMb, 20)
+  assert.equal(happyhorse.maxFileSizeMb, 10)
 })
 
 test('Seedance 1.0 Pro Fast is an image-to-video-only model', () => {
@@ -242,6 +244,7 @@ test('image-to-video models with reference-shaped output disable manual aspect-r
     'seedance-1-pro-fast',
     'seedance-1-pro',
     'seedance-1-lite',
+    'wan-2-7',
     'wan-2-6',
     'wan-2-5',
     'wan-2-2',
@@ -257,6 +260,20 @@ test('image-to-video models with reference-shaped output disable manual aspect-r
       `${modelId} image-to-video output should use the Match Reference aspect-ratio control`,
     )
   }
+})
+
+test('video generator page configs mirror KIE ratio and duration ranges', () => {
+  const values = (modelId: Parameters<typeof getAiVideoGeneratorModelConfig>[0]) =>
+    getAiVideoGeneratorModelConfig(modelId).aspectRatios.map((ratio) => ratio.value)
+
+  const wan27 = getAiVideoGeneratorModelConfig('wan-2-7')
+  assert.deepEqual(values('wan-2-7'), ['16:9', '9:16', '1:1', '4:3', '3:4'])
+  assert.deepEqual(wan27.durations, Array.from({ length: 14 }, (_, index) => index + 2))
+
+  assert.deepEqual(values('seedance-1-5-pro'), ['16:9', '9:16', '1:1', '4:3', '3:4', '21:9'])
+  assert.deepEqual(values('seedance-1-pro'), ['16:9', '9:16', '1:1', '4:3', '3:4', '21:9'])
+  assert.deepEqual(values('seedance-1-lite'), ['16:9', '9:16', '1:1', '4:3', '3:4', '9:21'])
+  assert.deepEqual(values('wan-2-2'), ['16:9', '9:16'])
 })
 
 test('AI video generator model configs define practical video output defaults', () => {
@@ -282,7 +299,8 @@ test('AI video generator model configs define practical video output defaults', 
 
   assert.equal(seedance.maxImages, 9)
   assert.equal(seedance.supportsFirstLastFrame, true)
-  assert.ok(seedance.durations.includes(15))
+  assert.deepEqual(seedance.aspectRatios.map((ratio) => ratio.value), ['adaptive', '16:9', '9:16', '1:1', '4:3', '3:4', '21:9'])
+  assert.deepEqual(seedance.durations, Array.from({ length: 11 }, (_, index) => index + 5))
   assert.equal(seedance.logoSrc, '/model-logos/bytedance.svg')
   assert.equal(seedance.qualityRating, 5)
   assert.equal(seedance.minCredits, 190)
@@ -296,18 +314,22 @@ test('AI video generator model configs define practical video output defaults', 
   assert.equal(seedanceMini.qualityRating, 4.5)
   assert.equal(seedanceMini.minCredits, 95)
   assert.deepEqual(seedanceMini.resolutions, ['480p', '720p'])
-  assert.ok(seedanceMini.aspectRatios.some((ratio) => ratio.value === 'adaptive'))
+  assert.deepEqual(seedanceMini.aspectRatios.map((ratio) => ratio.value), ['adaptive', '16:9', '9:16', '1:1', '4:3', '3:4', '21:9'])
+  assert.deepEqual(seedanceMini.durations, Array.from({ length: 11 }, (_, index) => index + 5))
 
   assert.equal(seedanceFast.maxImages, 9)
   assert.equal(seedanceFast.supportsFirstLastFrame, true)
   assert.equal(seedanceFast.minCredits, 155)
   assert.deepEqual(seedanceFast.resolutions, ['480p', '720p'])
+  assert.deepEqual(seedanceFast.aspectRatios.map((ratio) => ratio.value), ['adaptive', '16:9', '9:16', '1:1', '4:3', '3:4', '21:9'])
+  assert.deepEqual(seedanceFast.durations, Array.from({ length: 11 }, (_, index) => index + 5))
   assert.equal(seedanceFast.supportsNativeAudio, false)
   assert.equal(seedanceFast.nativeAudioResolutions, undefined)
 
   assert.equal(kling.logoSrc, '/model-logos/kling.svg')
   assert.equal(kling.qualityRating, 4.5)
   assert.equal(kling.minCredits, 84)
+  assert.deepEqual(kling.aspectRatios.map((ratio) => ratio.value), ['16:9', '9:16', '1:1'])
   assert.deepEqual(kling.resolutions, ['720p', '1080p', '4K'])
   assert.deepEqual(kling.durations, Array.from({ length: 13 }, (_, index) => index + 3))
   assert.equal(kling.supportsNativeAudio, true)
@@ -320,7 +342,7 @@ test('AI video generator model configs define practical video output defaults', 
     assert.equal(veo.logoAlt, 'Google Gemini logo')
     assert.equal(veo.maxImages, 2)
     assert.equal(veo.defaultMode, 'text-to-video')
-    assert.deepEqual(veo.aspectRatios.map((ratio) => ratio.value), ['16:9', '9:16'])
+    assert.deepEqual(veo.aspectRatios.map((ratio) => ratio.value), ['16:9', '9:16', 'auto'])
     assert.deepEqual(veo.durations, [4, 6, 8])
     assert.equal(veo.defaultDuration, 8)
     assert.deepEqual(veo.resolutions, ['720p', '1080p'])
@@ -346,7 +368,7 @@ test('AI video generator model menu minimum credits match shared pricing', () =>
     ['wan-2-6', 140],
     ['wan-2-5', 120],
     ['wan-2-2', 16],
-    ['kling-3-turbo', 180],
+    ['kling-3-turbo', 108],
     ['kling-3', 84],
     ['kling-3-motion-control', 120],
     ['kling-2-6-motion-control', 66],

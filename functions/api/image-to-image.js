@@ -173,10 +173,11 @@ function resolveProviderModelId(model, env, isImageToImage, resolution) {
 }
 
 function getMaxImagesForModel(model) {
-  if (model === 'nano-banana-2' || model === 'nano-banana-2-lite') return 14;
+  if (model === 'nano-banana-2') return 14;
+  if (model === 'nano-banana-2-lite') return 10;
   if (model === 'seedream-4-5') return 14;
   if (model === 'seedream-5-0-lite') return 14;
-  if (model === 'seedream-5-0-pro') return 14;
+  if (model === 'seedream-5-0-pro') return 10;
   if (model === 'wan-2-7-image') return 9;
   if (model === 'grok-1-5-image') return 1;
   if (isVideoGenerationModel(model)) return 7;
@@ -374,6 +375,9 @@ export async function onRequest(context) {
       if (requestedAspectRatio && !FLUX_2_ASPECT_RATIOS.has(requestedAspectRatio)) {
         return jsonResponse({ error: 'Unsupported aspect ratio for Flux 2' }, 400);
       }
+    }
+    if (model === 'grok-1-5-image' && String(resolution || '1K').trim().toUpperCase() !== '1K') {
+      return jsonResponse({ error: 'Resolution must be 1K for Grok 1.5 Image' }, 400);
     }
 
     const moderation = await moderatePromptBeforeGeneration({

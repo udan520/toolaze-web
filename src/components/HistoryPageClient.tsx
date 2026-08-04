@@ -91,6 +91,10 @@ const defaultHistoryPageCopy = {
   modeVideo: 'Video',
   modeTextToImage: 'Text to Image',
   modeImageToImage: 'Image to Image',
+  importToMediaLibrary: 'Import',
+  importingToMediaLibrary: 'Importing',
+  importedToMediaLibrary: 'Imported',
+  importMediaLibraryFailed: 'Import Failed',
 }
 
 function getHistoryPageCopy(initialTranslations?: any) {
@@ -152,6 +156,8 @@ export default function HistoryPageClient({ initialTranslations, locale = 'en' }
   const [selectionMode, setSelectionMode] = useState(false)
   const [activeFilter, setActiveFilter] = useState<HistoryFilter>('all')
   const [deleteDialog, setDeleteDialog] = useState<HistoryDeleteDialog | null>(null)
+  const [isMediaLibraryAdmin, setIsMediaLibraryAdmin] = useState(false)
+  const [importingMediaLibraryIds, setImportingMediaLibraryIds] = useState<Set<string>>(new Set())
 
   const sortedItems = useMemo(
     () => [...items].sort((left, right) => Date.parse(right.createdAt) - Date.parse(left.createdAt)),
@@ -230,6 +236,28 @@ export default function HistoryPageClient({ initialTranslations, locale = 'en' }
       cancelled = true
     }
   }, [copy.loadError, copy.signInRequired])
+
+  useEffect(() => {
+    let cancelled = false
+    const loadAdminState = async () => {
+      try {
+        const response = await fetch('/api/auth/me', {
+          cache: 'no-store',
+          credentials: 'include',
+        })
+        if (!response.ok) return
+        const data = await response.json().catch(() => ({ user: null }))
+        if (!cancelled) setIsMediaLibraryAdmin(Boolean(data.user?.isAdmin))
+      } catch {
+        if (!cancelled) setIsMediaLibraryAdmin(false)
+      }
+    }
+
+    void loadAdminState()
+    return () => {
+      cancelled = true
+    }
+  }, [])
 
   useEffect(() => {
     const itemIds = new Set(items.map((item) => item.id))
@@ -317,6 +345,47 @@ export default function HistoryPageClient({ initialTranslations, locale = 'en' }
       triggerBlobDownload,
       triggerUrlDownload,
     })
+  }
+
+  const handleImportToMediaLibrary = async (item: GenerationHistoryItem) => {
+    if (importingMediaLibraryIds.has(item.id)) return
+
+    setImportingMediaLibraryIds((currentIds) => {
+      const nextIds = new Set(currentIds)
+      nextIds.add(item.id)
+      return nextIds
+    })
+    try {
+      const response = await fetch('/api/media-library/import-history', {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ historyId: item.id }),
+      })
+      if (!response.ok) {
+        const body = await response.json().catch(() => ({}))
+        throw new Error(body.error || copy.importMediaLibraryFailed)
+      }
+      dispatchToolazeTopNotice({
+        type: 'success',
+        title: copy.importedToMediaLibrary,
+        message: '',
+      })
+    } catch (err) {
+      dispatchToolazeTopNotice({
+        type: 'error',
+        title: copy.importMediaLibraryFailed,
+        message: err instanceof Error ? err.message : '',
+      })
+    } finally {
+      setImportingMediaLibraryIds((currentIds) => {
+        const nextIds = new Set(currentIds)
+        nextIds.delete(item.id)
+        return nextIds
+      })
+    }
   }
 
   const deleteHistoryItem = async (item: GenerationHistoryItem) => {
@@ -582,6 +651,17 @@ export default function HistoryPageClient({ initialTranslations, locale = 'en' }
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5">
           {filteredItems.map((item) => (
             <article key={item.id} className="relative overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-sm">
+              {isMediaLibraryAdmin && !selectionMode && (
+                <button
+                  type="button"
+                  data-history-import-media-library
+                  onClick={() => void handleImportToMediaLibrary(item)}
+                  disabled={importingMediaLibraryIds.has(item.id)}
+                  className="absolute left-2 top-2 z-10 inline-flex min-h-7 items-center justify-center rounded-lg bg-white/95 px-2.5 py-1 text-[11px] font-extrabold text-indigo-700 shadow-sm ring-1 ring-indigo-100 hover:bg-indigo-50 disabled:cursor-not-allowed disabled:opacity-60"
+                >
+                  {importingMediaLibraryIds.has(item.id) ? copy.importingToMediaLibrary : copy.importToMediaLibrary}
+                </button>
+              )}
               {selectionMode && (
                 <label className="absolute left-2 top-2 z-10 inline-flex cursor-pointer items-center justify-center">
                   <input

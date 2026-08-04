@@ -107,6 +107,9 @@ export const AI_VIDEO_GENERATOR_MODE_OPTIONS: AiVideoGeneratorModeOption[] = [
   },
 ]
 
+const SEEDANCE_2_DURATIONS = Array.from({ length: 11 }, (_, index) => index + 5)
+const SEEDANCE_2_ASPECT_RATIOS = ['adaptive', '16:9', '9:16', '1:1', '4:3', '3:4', '21:9']
+
 const AI_VIDEO_GENERATOR_MODEL_OPTIONS_BASE = [
   {
     id: 'grok-1-5-video',
@@ -151,14 +154,8 @@ const AI_VIDEO_GENERATOR_MODEL_OPTIONS_BASE = [
     maxImages: 9,
     supportsFirstLastFrame: true,
     maxFileSizeMb: 30,
-    aspectRatios: [
-      { value: '16:9', label: '16:9' },
-      { value: '9:16', label: '9:16' },
-      { value: '1:1', label: '1:1' },
-      { value: '4:3', label: '4:3' },
-      { value: '3:4', label: '3:4' },
-    ],
-    durations: [5, 10, 15],
+    aspectRatios: SEEDANCE_2_ASPECT_RATIOS.map((value) => ({ value, label: value === 'adaptive' ? 'Adaptive' : value })),
+    durations: SEEDANCE_2_DURATIONS,
     resolutions: ['480p', '720p', '1080p', '4K'],
     promptPlaceholder:
       'Describe the motion, camera path, lighting, and audio mood for the video.',
@@ -189,7 +186,7 @@ const AI_VIDEO_GENERATOR_MODEL_OPTIONS_BASE = [
       { value: '3:4', label: '3:4' },
       { value: '21:9', label: '21:9' },
     ],
-    durations: [5, 10, 15],
+    durations: SEEDANCE_2_DURATIONS,
     defaultDuration: 5,
     resolutions: ['480p', '720p'],
     promptPlaceholder:
@@ -199,7 +196,7 @@ const AI_VIDEO_GENERATOR_MODEL_OPTIONS_BASE = [
     previewTone: 'Fast 720p video preview',
   },
   ...([
-    ['seedance-2-fast', 'Seedance 2.0 Fast', 155, ['480p', '720p'], [5, 10, 15], 9, false],
+    ['seedance-2-fast', 'Seedance 2.0 Fast', 155, ['480p', '720p'], SEEDANCE_2_DURATIONS, 9, false],
     ['seedance-1-5-pro', 'Seedance 1.5 Pro', 16, ['480p', '720p', '1080p'], [4, 8, 12], 2, true],
     ['seedance-1-pro-fast', 'Seedance 1.0 Pro Fast', 32, ['720p', '1080p'], [5, 10], 1, false],
     ['seedance-1-pro', 'Seedance 1.0 Pro', 30, ['480p', '720p', '1080p'], [5, 10], 1, false],
@@ -226,7 +223,15 @@ const AI_VIDEO_GENERATOR_MODEL_OPTIONS_BASE = [
     maxImages,
     supportsFirstLastFrame: id === 'seedance-2-fast',
     maxFileSizeMb: id.startsWith('seedance-2') ? 30 : 10,
-    aspectRatios: ['16:9', '9:16', '1:1', '4:3', '3:4'].map((value) => ({ value, label: value })),
+    aspectRatios: (
+      id === 'seedance-2-fast'
+        ? SEEDANCE_2_ASPECT_RATIOS
+        : id === 'seedance-1-5-pro' || id === 'seedance-1-pro'
+          ? ['16:9', '9:16', '1:1', '4:3', '3:4', '21:9']
+          : id === 'seedance-1-lite'
+            ? ['16:9', '9:16', '1:1', '4:3', '3:4', '9:21']
+            : ['16:9', '9:16', '1:1', '4:3', '3:4']
+    ).map((value) => ({ value, label: value === 'adaptive' ? 'Adaptive' : value })),
     durations: [...durations],
     defaultDuration: durations[0],
     resolutions: [...resolutions],
@@ -249,9 +254,10 @@ const AI_VIDEO_GENERATOR_MODEL_OPTIONS_BASE = [
     defaultMode: 'text-to-video',
     maxImages: 1,
     supportsFirstLastFrame: true,
+    imageToVideoAspectRatioMode: 'reference-image' as const,
     maxFileSizeMb: 10,
-    aspectRatios: [{ value: '16:9', label: '16:9' }, { value: '9:16', label: '9:16' }, { value: '1:1', label: '1:1' }],
-    durations: Array.from({ length: 9 }, (_, index) => index + 2),
+    aspectRatios: ['16:9', '9:16', '1:1', '4:3', '3:4'].map((value) => ({ value, label: value })),
+    durations: Array.from({ length: 14 }, (_, index) => index + 2),
     defaultDuration: 3,
     resolutions: ['720p', '1080p'],
     promptPlaceholder: 'Describe the visuals, motion, camera, and synchronized ASMR sound.',
@@ -275,7 +281,7 @@ const AI_VIDEO_GENERATOR_MODEL_OPTIONS_BASE = [
     imageToVideoAspectRatioMode: 'reference-image' as const,
     maxImages: 1,
     maxFileSizeMb: 10,
-    aspectRatios: [{ value: '16:9', label: '16:9' }, { value: '9:16', label: '9:16' }, { value: '1:1', label: '1:1' }],
+    aspectRatios: (id === 'wan-2-2' ? ['16:9', '9:16'] : ['16:9', '9:16', '1:1']).map((value) => ({ value, label: value })),
     durations: [...durations],
     defaultDuration: 5,
     resolutions: [...resolutions],
@@ -284,7 +290,7 @@ const AI_VIDEO_GENERATOR_MODEL_OPTIONS_BASE = [
     previewTone: 'Cinematic Wan video preview',
   })),
   ...([
-    ['kling-3-turbo', 'Kling 3 Turbo', 180, ['720p', '1080p'], true],
+    ['kling-3-turbo', 'Kling 3 Turbo', 108, ['720p', '1080p'], true],
   ] as const).map(([id, name, minCredits, resolutions, supportsNativeAudio]) => ({
     id,
     name,
@@ -300,7 +306,7 @@ const AI_VIDEO_GENERATOR_MODEL_OPTIONS_BASE = [
     supportsFirstLastFrame: true,
     maxFileSizeMb: 10,
     aspectRatios: [{ value: '16:9', label: '16:9' }, { value: '9:16', label: '9:16' }, { value: '1:1', label: '1:1' }],
-    durations: [5, 10],
+    durations: Array.from({ length: 13 }, (_, index) => index + 3),
     defaultDuration: 5,
     resolutions: [...resolutions],
     supportsNativeAudio,
@@ -326,7 +332,6 @@ const AI_VIDEO_GENERATOR_MODEL_OPTIONS_BASE = [
       { value: '16:9', label: '16:9' },
       { value: '9:16', label: '9:16' },
       { value: '1:1', label: '1:1' },
-      { value: '21:9', label: '21:9' },
     ],
     durations: Array.from({ length: 13 }, (_, index) => index + 3),
     resolutions: ['720p', '1080p', '4K'],
@@ -364,12 +369,12 @@ const AI_VIDEO_GENERATOR_MODEL_OPTIONS_BASE = [
     acceptedImageMimeTypes: ['image/jpeg', 'image/png'],
     acceptedImageExtensions: ['jpg', 'jpeg', 'png'],
     acceptedImageFormats: ['JPG', 'PNG'],
-    referenceImageMinDimensionPx: 300,
+    referenceImageMinDimensionPx: 340,
     referenceImageAspectRatioMin: 2 / 5,
     referenceImageAspectRatioMax: 5 / 2,
-    referenceImageHelperText: 'JPG or PNG up to {size}MB. Use an image over 300px with a 2:5 to 5:2 aspect ratio.',
+    referenceImageHelperText: 'JPG or PNG up to {size}MB. Use an image over 340px with a 2:5 to 5:2 aspect ratio.',
     invalidImageTypeMessage: 'Use JPG or PNG for the Kling 3 Motion Control character image.',
-    invalidImageDimensionsMessage: 'Use an image over 300px with a 2:5 to 5:2 aspect ratio for Kling 3 Motion Control.',
+    invalidImageDimensionsMessage: 'Use an image over 340px with a 2:5 to 5:2 aspect ratio for Kling 3 Motion Control.',
     aspectRatios: [{ value: '16:9', label: '16:9' }, { value: '9:16', label: '9:16' }, { value: '1:1', label: '1:1' }],
     durations: Array.from({ length: 28 }, (_, index) => index + 3),
     defaultDuration: 3,
@@ -465,6 +470,7 @@ const AI_VIDEO_GENERATOR_MODEL_OPTIONS_BASE = [
     aspectRatios: [
       { value: '16:9', label: '16:9' },
       { value: '9:16', label: '9:16' },
+      { value: 'auto', label: 'Auto' },
     ],
     durations: [4, 6, 8],
     defaultDuration: 8,
@@ -484,7 +490,7 @@ const AI_VIDEO_GENERATOR_MODEL_OPTIONS_BASE = [
     badge: 'New',
     minCredits: 8,
     defaultMode: 'text-to-video',
-    maxImages: 1,
+    maxImages: 2,
     maxFileSizeMb: 20,
     aspectRatios: ['16:9', '4:3', '1:1', '3:4', '9:16', '2:3', '3:2', '21:9']
       .map((value) => ({ value, label: value })),
@@ -512,7 +518,7 @@ const AI_VIDEO_GENERATOR_MODEL_OPTIONS_BASE = [
     defaultMode: 'text-to-video' as const,
     imageToVideoAspectRatioMode: 'reference-image' as const,
     maxImages: 1,
-    maxFileSizeMb: 20,
+    maxFileSizeMb: id === 'happyhorse-1-1' ? 20 : 10,
     aspectRatios: [
       '16:9',
       '9:16',
