@@ -59,3 +59,25 @@ test('localized Seedance model L3 URLs redirect back to the model page', () => {
     'Seedance workflow L3 pages should stay out of the sitemap',
   )
 })
+
+test('Seedance 2 legacy aliases use permanent redirects to consolidate ranking signals', () => {
+  const seedanceRootPage = readFileSync('src/app/seedance-2/page.tsx', 'utf8')
+  const localizedSeedanceRootPage = readFileSync('src/app/[locale]/seedance-2/page.tsx', 'utf8')
+  const localizedSeedanceAllToolsPage = readFileSync('src/app/[locale]/seedance-2/all-tools/page.tsx', 'utf8')
+  const localizedToolSlugPage = readFileSync('src/app/[locale]/[tool]/[slug]/page.tsx', 'utf8')
+
+  assert.match(seedanceRootPage, /permanentRedirect\('\/model\/seedance-2'\)/)
+  assert.doesNotMatch(seedanceRootPage, /useRouter|router\.push/)
+
+  assert.match(localizedSeedanceRootPage, /permanentRedirect\(locale === 'en' \? '\/model\/seedance-2' : `\/\$\{locale\}\/model\/seedance-2`\)/)
+  assert.doesNotMatch(localizedSeedanceRootPage, /import \{ redirect \} from 'next\/navigation'/)
+
+  assert.match(localizedSeedanceAllToolsPage, /permanentRedirect\(locale === 'en' \? '\/model\/seedance-2' : `\/\$\{locale\}\/model\/seedance-2`\)/)
+  assert.doesNotMatch(localizedSeedanceAllToolsPage, /import \{ redirect \} from 'next\/navigation'/)
+
+  assert.match(localizedToolSlugPage, /permanentRedirect\(locale === 'en' \? '\/model\/seedance-2' : `\/\$\{locale\}\/model\/seedance-2`\)/)
+  assert.doesNotMatch(
+    localizedToolSlugPage,
+    /if \(resolvedParams\.tool === 'seedance-2'\)[\s\S]*redirect\(locale === 'en' \? '\/model\/seedance-2'/,
+  )
+})

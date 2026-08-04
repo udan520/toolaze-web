@@ -1,4 +1,4 @@
-import { redirect } from 'next/navigation'
+import { permanentRedirect } from 'next/navigation'
 
 interface PageProps {
   params: Promise<{
@@ -12,7 +12,7 @@ export async function generateStaticParams() {
 }
 
 export default async function Seedance2LocalePage({ params }: PageProps) {
-  await params
-  // 英语无 /en 前缀，重定向到 /model/seedance-2
-  redirect('/model/seedance-2')
+  const { locale } = await params
+  // 英语无 /en 前缀；其它语言旧入口永久归并到对应模型页。
+  permanentRedirect(locale === 'en' ? '/model/seedance-2' : `/${locale}/model/seedance-2`)
 }

@@ -1,6 +1,6 @@
 import { getSeoContent, getAllSlugs } from '@/lib/seo-loader'
 import { generateHreflangAlternates } from '@/lib/hreflang'
-import { notFound, redirect } from 'next/navigation'
+import { notFound, permanentRedirect, redirect } from 'next/navigation'
 import ToolSlugPageContent from './ToolSlugPageContent'
 import type { Metadata } from 'next'
 
@@ -216,7 +216,7 @@ export default async function LandingPage({ params }: PageProps) {
   
   // Seedance 2.0 只保留模型 L2；工作流 L3 旧路径统一回模型页。
   if (resolvedParams.tool === 'seedance-2') {
-    redirect(locale === 'en' ? '/model/seedance-2' : `/${locale}/model/seedance-2`)
+    permanentRedirect(locale === 'en' ? '/model/seedance-2' : `/${locale}/model/seedance-2`)
   }
   
   // 无当前语种 SEO JSON：非英语一律跳到英文 canonical（避免 404；与 LANGUAGE_SWITCH_AND_REDIRECT 规则一致）
