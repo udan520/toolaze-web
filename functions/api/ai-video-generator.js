@@ -295,6 +295,7 @@ const VIDEO_MODEL_CONFIGS = {
     maxVideos: 1,
     promptRequired: false,
     defaultCharacterOrientation: 'image',
+    imageToVideoAspectRatioMode: 'reference-image',
     motionImageExtensions: new Set(['jpg', 'jpeg', 'png']),
     motionVideoExtensions: new Set(['mp4', 'mov']),
     defaultAspectRatio: '16:9',

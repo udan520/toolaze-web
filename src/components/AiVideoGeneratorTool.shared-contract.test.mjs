@@ -38,7 +38,8 @@ test('AI video generator can initialize a selected model from the URL query', ()
   )?.[0] || ''
 
   assert.notEqual(initEffect, '', 'video generator should inspect URL search params when initializing')
-  assert.match(initEffect, /new URLSearchParams\(window\.location\.search\)\.get\('model'\)/)
+  assert.match(initEffect, /const queryParams = new URLSearchParams\(window\.location\.search\)/)
+  assert.match(initEffect, /const queryModelId = queryParams\.get\('model'\)/)
   assert.match(initEffect, /AI_VIDEO_GENERATOR_MODEL_OPTIONS\.some\(\(option\) => option\.id === queryModelId\)/)
   assert.match(initEffect, /queryModelId as AiVideoGeneratorModelId/)
   assert.match(initEffect, /applyModelSelection\(nextModel\)/)
@@ -72,10 +73,12 @@ test('video model cards expose native-audio and shot-structure capability tags',
   const toolSource = readFileSync(componentPath, 'utf8')
 
   assert.match(toolSource, /Native Audio/)
+  assert.match(toolSource, /Reference Audio/)
   assert.match(toolSource, /No Native Audio/)
   assert.match(toolSource, /Multi-shot/)
   assert.match(toolSource, /Single-shot/)
   assert.match(toolSource, /supportsNativeAudioOutput/)
+  assert.match(toolSource, /supportsMotionReferenceVideo/)
   assert.match(toolSource, /supportsMultiShot/)
 })
 
@@ -459,13 +462,15 @@ test('desktop video history keeps long prompts scrollable above the reference im
   const promptPreview = toolSource.match(/const renderPromptPreview = [\s\S]*?\n  \)/)?.[0] || ''
   const desktopHistoryRenderer = toolSource.match(/const renderDesktopVideoHistoryItem = [\s\S]*?\n  const renderDesktopVideoResultFeed/)?.[0] || ''
 
-  assert.match(promptPreview, /max-h-\[6rem\]/, 'history prompts should be capped at four 1.5rem lines before scrolling')
+  assert.match(promptPreview, /max-h-\[8rem\]/, 'history prompts should be capped before scrolling')
   assert.match(promptPreview, /overflow-y-auto/, 'overflowing history prompts should scroll inside the prompt block')
+  assert.match(toolSource, /data-video-history-reference-image/, 'reference media renderer should expose image references')
+  assert.match(toolSource, /data-video-history-reference-video/, 'reference media renderer should expose video references')
   assert.match(desktopHistoryRenderer, /data-video-history-prompt-block/, 'desktop history should isolate prompt content in its own block')
-  assert.match(desktopHistoryRenderer, /data-video-history-reference-image/, 'desktop history should render the reference image in a separate block')
+  assert.match(desktopHistoryRenderer, /renderVideoReferenceMedia/, 'desktop history should render reference media in a separate block')
   assert.ok(
-    desktopHistoryRenderer.indexOf('data-video-history-prompt-block') < desktopHistoryRenderer.indexOf('data-video-history-reference-image'),
-    'the reference image should be rendered below the prompt block',
+    desktopHistoryRenderer.indexOf('data-video-history-prompt-block') < desktopHistoryRenderer.indexOf('renderVideoReferenceMedia'),
+    'the reference media should be rendered below the prompt block',
   )
-  assert.match(desktopHistoryRenderer, /lg:min-h-\[260px\]/, 'desktop history details should avoid fixed-height clipping that can overlap content')
+  assert.match(desktopHistoryRenderer, /lg:h-\[260px\]/, 'desktop history details should avoid fixed-height clipping that can overlap content')
 })

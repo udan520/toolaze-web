@@ -546,6 +546,11 @@ function getVideoModelOptionMetadata(option: AiVideoGeneratorModelConfig) {
   const durationLabel = option.durationMode === 'reference-video'
     ? `${option.referenceVideoMinDurationSeconds || firstDuration}-${option.referenceVideoMaxDurationSeconds || lastDuration}s reference`
     : `${firstDuration}-${lastDuration}s`
+  const audioOutputLabel = option.supportsNativeAudioOutput
+    ? option.supportsMotionReferenceVideo
+      ? 'Reference Audio'
+      : 'Native Audio'
+    : 'No Native Audio'
   const minimumCredits = getAiVideoGeneratorModelMinimumCredits(option)
   return [
     { label: `${minimumCredits}+`, iconSrc: '/credits-icons/diamond-3d-indigo.svg', ariaLabel: `${minimumCredits}+ credits` },
@@ -553,7 +558,7 @@ function getVideoModelOptionMetadata(option: AiVideoGeneratorModelConfig) {
     { label: option.resolutions.join('/') },
     ...(option.supportsFirstLastFrame ? [{ label: 'First/Last Frames', tone: 'positive' as const }] : []),
     {
-      label: option.supportsNativeAudioOutput ? 'Native Audio' : 'No Native Audio',
+      label: audioOutputLabel,
       tone: option.supportsNativeAudioOutput ? 'positive' : 'neutral',
     },
     {

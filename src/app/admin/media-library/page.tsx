@@ -26,31 +26,60 @@ export default async function AdminMediaLibraryPage() {
   const requestHeaders = await headers()
   const host = requestHeaders.get('x-forwarded-host') || requestHeaders.get('host')
 
-  if (!isMediaLibraryAdminHost(host) || !isAdminRequestAllowed({
-    host,
-    adminEmail: getAdminEmailFromHeaders(requestHeaders),
-  })) {
+  if (isLocalMediaLibraryAdminHost(host)) {
+    if (!isAdminRequestAllowed({
+      host,
+      adminEmail: getAdminEmailFromHeaders(requestHeaders),
+    })) {
+      notFound()
+    }
+
+    const storagePath = process.env.TOOLAZE_MEDIA_LIBRARY_FILE || DEFAULT_MEDIA_LIBRARY_PATH
+    const data = await loadMediaLibrary(storagePath)
+
+    return renderMediaLibraryAdmin({
+      assets: data.assets,
+      storagePath,
+      mode: 'local',
+    })
+  }
+
+  if (!isOnlineMediaLibraryAdminHost(host)) {
     notFound()
   }
 
-  const storagePath = process.env.TOOLAZE_MEDIA_LIBRARY_FILE || DEFAULT_MEDIA_LIBRARY_PATH
-  const data = await loadMediaLibrary(storagePath)
+  return renderMediaLibraryAdmin({
+    assets: [],
+    storagePath: 'Cloudflare D1: media_library_assets',
+    mode: 'online',
+  })
+}
 
+function renderMediaLibraryAdmin({
+  assets,
+  storagePath,
+  mode,
+}: {
+  assets: Awaited<ReturnType<typeof loadMediaLibrary>>['assets']
+  storagePath: string
+  mode: 'local' | 'online'
+}) {
   return (
     <main className="min-h-screen bg-[#f6f7fb] text-slate-900">
       <AdminHeader storagePath={storagePath} />
       <section className="mx-auto max-w-[1480px] px-5 py-7 lg:px-8">
         <MediaLibraryAdminClient
-          initialAssets={data.assets}
-          initialStats={buildMediaAssetStats(data.assets)}
+          initialAssets={assets}
+          initialStats={buildMediaAssetStats(assets)}
           storagePath={storagePath}
+          mode={mode}
         />
       </section>
     </main>
   )
 }
 
-function isMediaLibraryAdminHost(host: string | null): boolean {
+function isLocalMediaLibraryAdminHost(host: string | null): boolean {
   if (!host) return false
   const normalized = host.trim().toLowerCase()
   const hostname = normalized.startsWith('[')
@@ -63,6 +92,20 @@ function isMediaLibraryAdminHost(host: string | null): boolean {
   return (
     (hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '[::1]')
     && port === '3010'
+  )
+}
+
+function isOnlineMediaLibraryAdminHost(host: string | null): boolean {
+  if (!host) return false
+  const normalized = host.trim().toLowerCase()
+  const hostname = normalized.startsWith('[')
+    ? normalized.slice(0, normalized.indexOf(']') + 1)
+    : normalized.split(':')[0]
+
+  return (
+    hostname === 'toolaze.com'
+    || hostname === 'www.toolaze.com'
+    || hostname.endsWith('.vercel.app')
   )
 }
 

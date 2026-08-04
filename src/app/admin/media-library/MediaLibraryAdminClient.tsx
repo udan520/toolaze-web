@@ -19,6 +19,7 @@ type MediaLibraryAdminClientProps = {
   initialAssets: MediaAsset[]
   initialStats: MediaAssetStats
   storagePath: string
+  mode?: 'local' | 'online'
 }
 
 type ApiPayload = {
@@ -90,7 +91,9 @@ export function MediaLibraryAdminClient({
   initialAssets,
   initialStats,
   storagePath,
+  mode = 'local',
 }: MediaLibraryAdminClientProps) {
+  const isOnlineMode = mode === 'online'
   const [assets, setAssets] = useState(initialAssets)
   const [stats, setStats] = useState(initialStats)
   const [filters, setFilters] = useState<Filters>(emptyFilters)
@@ -149,6 +152,10 @@ export function MediaLibraryAdminClient({
     }
   }, [selectedAsset, selectedId])
 
+  useEffect(() => {
+    if (isOnlineMode) void refreshAssets()
+  }, [isOnlineMode])
+
   return (
     <div className={`grid gap-6 ${selectedAsset ? 'xl:grid-cols-[minmax(0,1fr)_420px]' : ''}`}>
       <div className="min-w-0 space-y-6">
@@ -159,7 +166,7 @@ export function MediaLibraryAdminClient({
             <div>
               <h2 className="text-base font-semibold text-slate-950">素材操作</h2>
               <p className="mt-1 text-xs leading-5 text-slate-500">
-                上传会先走现有 R2 上传接口，再把返回 URL 写入素材库；History 导入读取最近 200 条生成记录。
+                {isOnlineMode ? '线上模式直接读取 Cloudflare D1 中的 media_library_assets，适合查看 History 卡片导入后的资源。' : '上传会先走现有 R2 上传接口，再把返回 URL 写入素材库；History 导入读取最近 200 条生成记录。'}
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
@@ -171,22 +178,26 @@ export function MediaLibraryAdminClient({
               >
                 重新读取
               </button>
-              <button
-                type="button"
-                onClick={importRecentHistory}
-                disabled={Boolean(busyAction)}
-                className="inline-flex h-10 items-center rounded-lg bg-slate-950 px-4 text-sm font-semibold text-white transition hover:bg-indigo-700 disabled:cursor-not-allowed disabled:opacity-50"
-              >
-                导入最近 History
-              </button>
-              <button
-                type="button"
-                onClick={() => fileInputRef.current?.click()}
-                disabled={Boolean(busyAction)}
-                className="inline-flex h-10 items-center rounded-lg border border-indigo-200 bg-indigo-50 px-4 text-sm font-semibold text-indigo-700 transition hover:border-indigo-300 hover:bg-indigo-100 disabled:cursor-not-allowed disabled:opacity-50"
-              >
-                上传素材
-              </button>
+              {!isOnlineMode ? (
+                <>
+                  <button
+                    type="button"
+                    onClick={importRecentHistory}
+                    disabled={Boolean(busyAction)}
+                    className="inline-flex h-10 items-center rounded-lg bg-slate-950 px-4 text-sm font-semibold text-white transition hover:bg-indigo-700 disabled:cursor-not-allowed disabled:opacity-50"
+                  >
+                    导入最近 History
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => fileInputRef.current?.click()}
+                    disabled={Boolean(busyAction)}
+                    className="inline-flex h-10 items-center rounded-lg border border-indigo-200 bg-indigo-50 px-4 text-sm font-semibold text-indigo-700 transition hover:border-indigo-300 hover:bg-indigo-100 disabled:cursor-not-allowed disabled:opacity-50"
+                  >
+                    上传素材
+                  </button>
+                </>
+              ) : null}
               <input
                 ref={fileInputRef}
                 type="file"
@@ -201,7 +212,8 @@ export function MediaLibraryAdminClient({
             </div>
           </div>
 
-          <div className="mt-5 grid gap-3 lg:grid-cols-[minmax(0,1fr)_220px_180px]">
+          {!isOnlineMode ? (
+            <div className="mt-5 grid gap-3 lg:grid-cols-[minmax(0,1fr)_220px_180px]">
             <input
               value={urlDraft}
               onChange={(event) => setUrlDraft(event.target.value)}
@@ -223,9 +235,11 @@ export function MediaLibraryAdminClient({
               URL 入库
             </button>
           </div>
+          ) : null}
 
-          <div className="mt-4 flex flex-wrap gap-2">
-            {quickTagSets.map((tags) => (
+          {!isOnlineMode ? (
+            <div className="mt-4 flex flex-wrap gap-2">
+              {quickTagSets.map((tags) => (
               <button
                 key={tags.join('|')}
                 type="button"
@@ -234,8 +248,9 @@ export function MediaLibraryAdminClient({
               >
                 {tags.join(' + ')}
               </button>
-            ))}
-          </div>
+              ))}
+            </div>
+          ) : null}
 
           {notice ? (
             <p className="mt-4 rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2 text-sm text-emerald-700">{notice}</p>
@@ -245,9 +260,10 @@ export function MediaLibraryAdminClient({
           ) : null}
         </section>
 
-        <section className="rounded-xl border border-slate-200 bg-white shadow-sm">
-          <div className="border-b border-slate-200 bg-slate-50/80 px-5 py-4">
-            <div className="flex flex-col gap-4 xl:flex-row xl:items-end xl:justify-between">
+        {!isOnlineMode ? (
+          <section className="rounded-xl border border-slate-200 bg-white shadow-sm">
+            <div className="border-b border-slate-200 bg-slate-50/80 px-5 py-4">
+              <div className="flex flex-col gap-4 xl:flex-row xl:items-end xl:justify-between">
               <div>
                 <h2 className="text-base font-semibold text-slate-950">线上资源池</h2>
                 <p className="mt-1 text-xs leading-5 text-slate-500">
@@ -362,7 +378,8 @@ export function MediaLibraryAdminClient({
               </tbody>
             </table>
           </div>
-        </section>
+          </section>
+        ) : null}
 
         <section className="rounded-xl border border-slate-200 bg-white shadow-sm">
           <div className="border-b border-slate-200 bg-slate-50/80 px-5 py-4">
@@ -466,6 +483,7 @@ export function MediaLibraryAdminClient({
           busyAction={busyAction}
           onTagWithAi={tagSelectedAssetWithAi}
           onSave={saveAssetPatch}
+          readOnly={isOnlineMode}
         />
       ) : null}
     </div>
@@ -475,9 +493,9 @@ export function MediaLibraryAdminClient({
     setBusyAction('refresh')
     clearMessages()
     try {
-      const payload = await requestJson('/api/admin/media-library')
+      const payload = await requestJson(isOnlineMode ? '/api/media-library/assets' : '/api/admin/media-library')
       replaceAssets(payload)
-      setNotice('素材库已重新读取。')
+      setNotice(isOnlineMode ? '线上素材库已重新读取。' : '素材库已重新读取。')
     } catch (requestError) {
       setError(readErrorMessage(requestError))
     } finally {
@@ -649,6 +667,11 @@ export function MediaLibraryAdminClient({
   }
 
   async function tagSelectedAssetWithAi(assetId: string) {
+    if (isOnlineMode) {
+      setError('线上 D1 素材库当前先提供只读查看，编辑和 AI 打标下一步接入。')
+      return
+    }
+
     setBusyAction(`ai-${assetId}`)
     clearMessages()
     try {
@@ -674,6 +697,11 @@ export function MediaLibraryAdminClient({
     reviewStatus?: MediaAssetReviewStatus
     notes?: string
   }) {
+    if (isOnlineMode) {
+      setError('线上 D1 素材库当前先提供只读查看，编辑和审核下一步接入。')
+      return
+    }
+
     setBusyAction(`save-${assetId}`)
     clearMessages()
     try {
@@ -721,6 +749,7 @@ function AssetDetailPanel({
   busyAction,
   onTagWithAi,
   onSave,
+  readOnly = false,
 }: {
   asset?: MediaAsset
   storagePath: string
@@ -733,6 +762,7 @@ function AssetDetailPanel({
     reviewStatus?: MediaAssetReviewStatus
     notes?: string
   }) => Promise<void>
+  readOnly?: boolean
 }) {
   const [title, setTitle] = useState('')
   const [manualTags, setManualTags] = useState('')
@@ -812,7 +842,10 @@ function AssetDetailPanel({
             </div>
           ) : null}
 
-          <div className="mt-5 flex flex-wrap gap-3">
+          {readOnly ? (
+            <p className="mt-5 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-xs font-semibold text-slate-500">线上 D1 素材库当前为只读查看，标签编辑会在下一步接入。</p>
+          ) : (
+            <div className="mt-5 flex flex-wrap gap-3">
             <button
               type="button"
               onClick={() => onSave(asset.id, { title, manualTags, safetyTags, reviewStatus, notes })}
@@ -830,8 +863,10 @@ function AssetDetailPanel({
               AI 打标签
             </button>
           </div>
+          )}
 
-          <div className="mt-4 grid grid-cols-2 gap-3">
+          {!readOnly ? (
+            <div className="mt-4 grid grid-cols-2 gap-3">
             <button
               type="button"
               onClick={() => onSave(asset.id, { title, manualTags, safetyTags, reviewStatus: 'approved', notes })}
@@ -848,7 +883,8 @@ function AssetDetailPanel({
             >
               拒绝
             </button>
-          </div>
+            </div>
+          ) : null}
 
           <dl className="mt-5 grid gap-2 border-t border-slate-100 pt-4 text-xs text-slate-500">
             <Meta label="来源" value={`${sourceLabels[asset.source]} / ${asset.sourceRole || '—'}`} />
@@ -978,7 +1014,7 @@ function Select({
 }
 
 async function requestJson(url: string, init?: RequestInit): Promise<ApiPayload> {
-  const response = await fetch(url, init)
+  const response = await fetch(url, { credentials: 'include', ...init })
   const payload = await response.json().catch(() => ({})) as ApiPayload
   if (!response.ok) throw new Error(payload.error || `请求失败：${response.status}`)
   return payload

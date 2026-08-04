@@ -153,6 +153,7 @@ test('Kling 3 Motion Control follows reference-video motion-control constraints'
   assert.equal(model.maxVideos, 1)
   assert.equal(model.maxVideoFileSizeMb, 100)
   assert.equal(model.supportsMotionReferenceVideo, true)
+  assert.equal(model.supportsNativeAudioOutput, true)
   assert.equal(model.promptRequired, false)
   assert.equal(model.durationMode, 'reference-video')
   assert.equal(model.referenceVideoMinDurationSeconds, 3)
@@ -248,6 +249,7 @@ test('image-to-video models with reference-shaped output disable manual aspect-r
     'wan-2-6',
     'wan-2-5',
     'wan-2-2',
+    'kling-3-motion-control',
     'kling-2-6-motion-control',
     'happyhorse-1-1',
     'happyhorse',
@@ -432,6 +434,7 @@ test('video capability labels match the audited KIE model matrix', () => {
     'wan-2-5',
     'kling-3-turbo',
     'kling-3',
+    'kling-3-motion-control',
     'kling-2-6-motion-control',
     'kling-2-6',
     'veo-3-1-lite',

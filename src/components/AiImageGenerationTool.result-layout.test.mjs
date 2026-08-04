@@ -237,6 +237,14 @@ test('desktop generation controls keep generate visible in the first viewport', 
   assert.match(source, /data-generate-button/)
 })
 
+test('image generation CTA keeps the shared Generate label', () => {
+  const button = source.match(/data-generate-button[\s\S]*?<\/button>/)?.[0] || ''
+
+  assert.notEqual(button, '', 'generate button should be present')
+  assert.match(button, /\{toolText\.generate\}/)
+  assert.doesNotMatch(button, /sceneText\?\.generateLabel/)
+})
+
 test('desktop generation and history columns use compact spacing', () => {
   assert.match(source, /<section className="[^"]*md:pl-3[^"]*md:pr-3[^"]*xl:pl-4[^"]*xl:pr-4[^"]*2xl:pl-5[^"]*2xl:pr-5/)
   assert.doesNotMatch(source, /md:px-6/)

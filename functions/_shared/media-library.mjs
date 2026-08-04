@@ -34,6 +34,17 @@ function parseJsonArray(value) {
   }
 }
 
+function parseJsonObject(value) {
+  if (!value) return {};
+  if (typeof value === 'object' && !Array.isArray(value)) return value;
+  try {
+    const parsed = JSON.parse(String(value));
+    return parsed && typeof parsed === 'object' && !Array.isArray(parsed) ? parsed : {};
+  } catch {
+    return {};
+  }
+}
+
 function normalizeMediaUrl(value, env) {
   const url = String(value || '').trim();
   if (!url) return '';
@@ -113,25 +124,99 @@ function buildMetadata(record) {
 }
 
 function serializeAssetForResponse(row) {
+  const metadata = parseJsonObject(row.metadata);
   return {
     id: row.id,
     type: row.type,
     url: row.url,
     title: row.title,
     source: row.source,
-    sourceRole: row.sourceRole,
-    sourceHistoryId: row.sourceHistoryId,
-    sourceToolSlug: row.sourceToolSlug,
-    sourceToolLabel: row.sourceToolLabel,
-    sourcePath: row.sourcePath,
-    sourceModel: row.sourceModel,
-    sourcePrompt: row.sourcePrompt,
-    sourceUserEmail: row.sourceUserEmail,
-    sourceCreatedAt: row.sourceCreatedAt,
-    reviewStatus: row.reviewStatus,
-    metadata: row.metadata,
-    createdAt: row.createdAt,
-    updatedAt: row.updatedAt,
+    posterUrl: row.posterUrl || row.poster_url || metadata.posterUrl,
+    sourceRole: row.sourceRole || row.source_role,
+    sourceHistoryId: row.sourceHistoryId || row.source_history_id,
+    sourceToolSlug: row.sourceToolSlug || row.source_tool_slug,
+    sourceToolLabel: row.sourceToolLabel || row.source_tool_label,
+    sourcePath: row.sourcePath || row.source_path,
+    sourceModel: row.sourceModel || row.source_model,
+    sourcePrompt: row.sourcePrompt || row.source_prompt,
+    sourceUserEmail: row.sourceUserEmail || row.source_user_email,
+    sourceCreatedAt: row.sourceCreatedAt || row.source_created_at,
+    reviewStatus: row.reviewStatus || row.review_status || 'candidate',
+    metadata,
+    aiTags: parseJsonArray(row.aiTags || row.ai_tags),
+    manualTags: parseJsonArray(row.manualTags || row.manual_tags),
+    safetyTags: parseJsonArray(row.safetyTags || row.safety_tags),
+    confidence: parseJsonObject(row.confidence),
+    usageCount: Number(row.usageCount ?? row.usage_count ?? 0),
+    createdAt: row.createdAt || row.created_at,
+    updatedAt: row.updatedAt || row.updated_at,
+  };
+}
+
+function clampAssetListLimit(value) {
+  const limit = Number(value || 100);
+  if (!Number.isFinite(limit)) return 100;
+  return Math.min(Math.max(Math.trunc(limit), 1), 200);
+}
+
+function buildMediaAssetStats(assets) {
+  return {
+    total: assets.length,
+    images: assets.filter((asset) => asset.type === 'image').length,
+    videos: assets.filter((asset) => asset.type === 'video').length,
+    approved: assets.filter((asset) => asset.reviewStatus === 'approved').length,
+    needsReview: assets.filter((asset) => asset.reviewStatus === 'needs_review').length,
+    candidates: assets.filter((asset) => asset.reviewStatus === 'candidate').length,
+    rejected: assets.filter((asset) => asset.reviewStatus === 'rejected').length,
+    history: assets.filter((asset) => asset.source === 'history').length,
+    upload: assets.filter((asset) => asset.source === 'upload').length,
+    generated: assets.filter((asset) => asset.source === 'generated').length,
+  };
+}
+
+export async function listMediaLibraryAssets(env, options = {}) {
+  const limit = clampAssetListLimit(options.limit);
+  const where = [];
+  const values = [];
+  const type = String(options.type || 'all');
+  const reviewStatus = String(options.reviewStatus || 'all');
+  const query = String(options.query || '').trim().toLowerCase();
+
+  if (type === 'image' || type === 'video') {
+    where.push('type = ?');
+    values.push(type);
+  }
+  if (['candidate', 'needs_review', 'approved', 'rejected'].includes(reviewStatus)) {
+    where.push('review_status = ?');
+    values.push(reviewStatus);
+  }
+  if (query) {
+    where.push(`(
+      lower(id) like ? or lower(url) like ? or lower(coalesce(title, '')) like ?
+      or lower(coalesce(source_tool_label, '')) like ? or lower(coalesce(source_model, '')) like ?
+      or lower(coalesce(source_prompt, '')) like ?
+    )`);
+    const like = `%${query}%`;
+    values.push(like, like, like, like, like, like);
+  }
+
+  const sql = `
+    select id, type, url, title, source, source_role, source_history_id,
+      source_tool_slug, source_tool_label, source_path, source_model, source_prompt,
+      source_user_email, source_created_at, review_status, metadata,
+      ai_tags, manual_tags, safety_tags, confidence, usage_count, created_at, updated_at
+    from media_library_assets
+    ${where.length ? `where ${where.join(' and ')}` : ''}
+    order by created_at desc
+    limit ?
+  `;
+  const result = await env.DB.prepare(sql).bind(...values, limit).all();
+  const assets = (result?.results || []).map(serializeAssetForResponse);
+
+  return {
+    ok: true,
+    assets,
+    stats: buildMediaAssetStats(assets),
   };
 }
 

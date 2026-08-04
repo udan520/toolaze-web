@@ -4413,7 +4413,7 @@ export default function AiImageGenerationTool({
                 }}
               >
                 <span className="flex items-center justify-center gap-2">
-                  <span>{sceneText?.generateLabel || toolText.generate}</span>
+                  <span>{toolText.generate}</span>
                   <span
                     className="inline-flex items-center gap-1.5 px-1 text-sm font-extrabold text-white"
                     aria-label={`${generationCreditCost} credits`}
