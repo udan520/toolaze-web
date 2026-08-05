@@ -187,56 +187,68 @@
     }
   ],
   "modelComparison": {
-    "title": "Wan 2.7 face à Wan 2.6 et Wan 2.5",
-    "subtitle": "Wan 2.7 est le meilleur choix Wan lorsque vous avez besoin de référence vers vidéo, contrôle premier/dernier plan, continuation, prompts multi-plans et meilleure synchronisation audio-vidéo. Wan 2.6 et Wan 2.5 restent utiles pour des clips Wan plus simples avec moins de réglages.",
+    "title": "Wan 2.7 vs Wan 2.6 vs Wan 2.5",
+    "subtitle": "Comparez les fonctions qui changent le résultat : contrôle des images, références, audio, durée, résolution et quota.",
     "columnHeaders": {
-      "metric": "Critère de décision",
+      "metric": "Fonction",
       "baseline": "Wan 2.7",
       "middle": "Wan 2.6",
       "target": "Wan 2.5"
     },
     "rows": [
       {
-        "label": "Modes de création",
-        "baseline": "Texte vers vidéo, image vers vidéo et référence vers vidéo.",
-        "middle": "Texte vers vidéo et image vers vidéo avec des clips Wan prédéfinis plus longs.",
-        "target": "Texte vers vidéo et image vers vidéo pour des brouillons Wan plus simples."
+        "label": "Texte vers vidéo",
+        "baseline": "Oui",
+        "middle": "Oui",
+        "target": "Oui"
       },
       {
-        "label": "Contrôle des références",
-        "baseline": "Jusqu’à cinq références image ou vidéo au total en référence vers vidéo, plus des références audio lorsque disponibles.",
-        "middle": "Image de référence avec moins de rôles avancés.",
-        "target": "Une image de référence pour une animation image vers vidéo directe."
+        "label": "Référence image vers vidéo",
+        "baseline": "Une première image plus une dernière image facultative.",
+        "middle": "Une image importée.",
+        "target": "Une image fixe importée."
       },
       {
-        "label": "Contrôle des plans et vidéo",
-        "baseline": "Premier plan, premier et dernier plan, continuation vidéo et prompts multi-plans.",
-        "middle": "Clips Wan plus longs et prompts de type multi-plans lorsque disponibles.",
-        "target": "Prompts à scène unique et animation avec une référence."
+        "label": "Contrôle début/fin",
+        "baseline": "Oui",
+        "middle": "Non",
+        "target": "Non"
       },
       {
-        "label": "Traitement audio",
-        "baseline": "Synchronisation audio-vidéo, effets sonores, musique, ambiance et indications de style vocal.",
-        "middle": "Sortie audio native et signaux sonores synchronisés.",
-        "target": "Audio natif pour des clips synchronisés plus simples."
+        "label": "Contrôle de continuation",
+        "baseline": "Planification avec première image, première/dernière image et continuation.",
+        "middle": "Non",
+        "target": "Non"
       },
       {
-        "label": "Durée et sortie",
-        "baseline": "2 à 15 secondes, 720p ou 1080p, MP4 30fps.",
-        "middle": "5, 10 ou 15 secondes, 720p ou 1080p.",
-        "target": "5 ou 10 secondes, 720p ou 1080p."
+        "label": "Gestion audio",
+        "baseline": "Indications de synchronisation audio-vidéo dans le prompt.",
+        "middle": "Audio natif avec indications sonores synchronisées.",
+        "target": "Indications de son natif pour des clips simples."
       },
       {
-        "label": "Crédits de départ",
-        "baseline": "À partir de 64 crédits pour une sortie 720p de 2 secondes sur Toolaze.",
-        "middle": "À partir de 140 crédits pour une sortie 720p de 5 secondes sur Toolaze.",
-        "target": "À partir de 120 crédits pour une sortie 720p de 5 secondes sur Toolaze."
+        "label": "Durée",
+        "baseline": "2 à 15 secondes.",
+        "middle": "5, 10 ou 15 secondes.",
+        "target": "5 ou 10 secondes."
       },
       {
-        "label": "À choisir lorsque",
-        "baseline": "Vous avez besoin des derniers contrôles Wan, de références plus riches, de planification des plans, de transitions, de continuation ou d’un timing sonore plus précis.",
-        "middle": "Vous avez besoin d’un clip Wan plus long sans tout le jeu de références de Wan 2.7.",
-        "target": "Vous avez besoin d’un clip Wan plus simple avec une référence et des durées familières de 5 ou 10 secondes."
+        "label": "Résolution",
+        "baseline": "720p ou 1080p.",
+        "middle": "720p ou 1080p.",
+        "target": "720p ou 1080p."
+      },
+      {
+        "label": "Quota de départ",
+        "baseline": "Commence à 64 de quota pour 2 secondes en 720p.",
+        "middle": "Commence à 140 de quota pour 5 secondes en 720p.",
+        "target": "Commence à 120 de quota pour 5 secondes en 720p."
+      },
+      {
+        "label": "À choisir quand",
+        "baseline": "Le début, l’image finale ou la trajectoire de transition doit être explicite.",
+        "middle": "Vous avez besoin d’un clip Wan plus long et stable à partir de texte ou d’une image.",
+        "target": "Vous avez besoin de brouillons rapides et de tests simples de mouvement avec une image."
       }
     ],
     "featuredColumn": "baseline"
@@ -273,23 +285,47 @@
     ]
   },
   "testimonials": {
-    "title": "Notes de créateurs sur Wan 2.7",
-    "subtitle": "Façons concrètes d’utiliser Wan 2.7 pour des clips guidés par références, tests de prompts et courtes scènes commerciales.",
+    "title": "Ce que les utilisateurs disent du Générateur de Vidéos IA Wan 2.7",
+    "subtitle": "Retours de créateurs utilisant Wan 2.7 lorsque la première image, la dernière image, le chemin de transition et la composition finale comptent tous.",
+    "maxItems": 6,
+    "showStars": false,
+    "showAvatars": true,
     "items": [
       {
         "name": "Maya Chen",
-        "role": "Monteuse vidéo produit",
-        "quote": "Les prompts avec ordre de plans rendent plus simple le test d’une révélation produit avant de consacrer du temps à un tournage complet."
+        "role": "Product video editor",
+        "avatar": "photo",
+        "quote": "J'utilise Wan 2.7 lorsqu'une révélation produit doit atterrir sur une composition finale spécifique au lieu de dériver vers une fin aléatoire. L'ancrage de la dernière image facilite la revue client car tout le monde peut voir la destination prévue."
       },
       {
         "name": "Eli Morgan",
-        "role": "Artiste storyboard",
-        "quote": "J’utilise des images de référence pour le personnage et le décor, puis j’écris le mouvement comme un court beat. Le premier passage est plus clair pour les clients."
+        "role": "Storyboard artist",
+        "avatar": "motion",
+        "quote": "La configuration première et dernière image m'aide à montrer aux clients le changement exact que je veux avant de construire un projet plus long. Je peux esquisser le début, définir l'image d'arrivée et utiliser le prompt pour décrire le chemin de mouvement entre les deux."
       },
       {
         "name": "Nora Patel",
-        "role": "Responsable création sociale",
-        "quote": "Pour les clips tactiles, écrire le timing du son dans le prompt donne un mouvement plus intentionnel et moins aléatoire."
+        "role": "Retail creative lead",
+        "avatar": "studio",
+        "quote": "Pour les transformations d'emballage et de présentation, j'écris le chemin de transition et je garde l'image finale comme ancre. Wan 2.7 est utile lorsque la disposition en rayon, l'orientation du produit et la carte de fin doivent rester intentionnelles."
+      },
+      {
+        "name": "Jon Bell",
+        "role": "Campaign motion director",
+        "avatar": "growth",
+        "quote": "Wan 2.7 est la version que je choisis lorsque l'état final compte autant que le mouvement. Il me permet de tester un temps de campagne qui commence par une image héros propre et se résout en un verrouillage produit planifié."
+      },
+      {
+        "name": "Clara Evans",
+        "role": "Social launch editor",
+        "avatar": "social",
+        "quote": "Quand un clip de lancement doit s'ouvrir sur un visuel et se terminer sur une révélation précise, Wan 2.7 m'évite de deviner. Je peux garder l'accroche courte tout en contrôlant où le spectateur atterrit."
+      },
+      {
+        "name": "Owen Miller",
+        "role": "Performance creative strategist",
+        "avatar": "performance",
+        "quote": "Pour les tests créatifs payants, j'utilise Wan 2.7 quand nous connaissons déjà le message de début et de fin du produit. Le contrôle première-et-dernière-image nous donne des variantes plus propres pour comparer la vitesse de transition, le cadrage et la mémorisation finale."
       }
     ]
   },

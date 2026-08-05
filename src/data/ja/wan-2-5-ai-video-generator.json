@@ -9,331 +9,298 @@
     "displayName": "Wan 2.5"
   },
   "metadata": {
-    "title": "Wan 2.5 AI動画生成 | テキスト動画・画像動画",
-    "description": "ToolazeでWan 2.5を使い、テキストまたは1枚の参照画像から5秒/10秒、16:9、9:16、1:1、720p/1080p、ネイティブ音声出力のAI動画を作成できます。",
+    "title": "Wan 2.5 AI動画生成 | 低コストWanテスト",
+    "description": "コストを抑えたいときはWan 2.5で、120クレジットからテキスト動画や1枚の参照画像動画を素早くテストできます。広告フック、商品モーション、ポスターアニメーション、サムネイル案、音の質感を比べてから追加制作に進めます。",
     "published": true
   },
   "hero": {
-    "h1": "<span class=\"text-gradient\">Wan 2.5</span> AI動画生成",
-    "desc": "テキストプロンプトまたは1枚の参照画像からWan 2.5動画を作成します。テキスト動画・画像動画、16:9/9:16/1:1、5秒/10秒、720p/1080pを選び、動き、カメラ、素材感、同期音を指定できます。"
+    "h1": "<span class=\"text-gradient\">Wan 2.5</span> AI動画ジェネレーター",
+    "desc": "Wan 2.5なら、テキストプロンプトまたは1枚の参照画像から低コストでWanの動画案を試せます。5秒または10秒の720p/1080pクリップで、広告フック、商品モーション、ポスターアニメーション、サムネイル案、音の質感を確認し、次に進める案だけ残します。"
   },
   "heroDemoVideo": {
     "src": "/model-assets/grok-imagine-video-1-5/grok-hero-demo-16x9.mp4",
-    "ariaLabel": "Toolaze Wan 2.5の16:9デモクリッププレビュー",
+    "ariaLabel": "Toolaze Wan 2.5 16:9 demo clip preview",
     "width": 16,
     "height": 9,
-    "sourceHistory": "Existing Toolaze Grok Imagine Video 1.5 hero demo asset · 16:9"
+    "sourceHistory": "Existing Toolaze Grok Imagine Video 1.5 hero demo asset · 16:9",
+    "poster": "https://assets.toolaze.com/model-assets/grok-imagine-video-1-5/grok-hero-demo-16x9-poster.webp",
+    "duration": "PT5.042S",
+    "uploadDate": "2026-08-04T20:01:05.000Z",
+    "type": "video"
   },
   "sectionsOrder": [
     "modelIntro",
     "performanceMetrics",
-    "modelSelectionGuide",
-    "features",
-    "promptExamples",
-    "workflowComparison",
     "howToUse",
+    "promptExamples",
     "troubleshooting",
-    "scenes",
+    "modelComparison",
+    "testimonials",
     "faq"
   ],
   "modelIntro": {
     "title": "Wan 2.5 AI動画生成とは？",
     "modelName": "Wan 2.5",
-    "modelType": "AI動画モデル",
+    "modelType": "低コスト動画テスト向けAIモデル",
     "description": [
-      "Wan 2.5はAlibaba Wanファミリーの動画モデルです。Toolazeでは共有AI動画生成ツール内で動作し、テキストまたは1枚の参照画像から動き、カメラ、光、音を1つのプロンプトで指定できます。",
-      "ToolazeのWan 2.5設定は短く制御しやすい動画向けです。5秒または10秒、16:9、9:16、1:1、720p/1080pに対応し、商品モーション、ASMR風素材感、SNS動画、画像ベースのアニメーションに向いています。",
-      "モデル選択、アップロード、プロンプト例、履歴、プレビュー、ダウンロードまでブラウザ内で扱えます。"
-    ],
-    "featureCards": [
-      {
-        "title": "テキスト動画と画像動画",
-        "content": "文章から始めるか、1枚の参照画像をアップロードして、動き、カメラ、構図、音を指定できます。"
-      },
-      {
-        "title": "5秒または10秒",
-        "content": "商品ループ、クリエイター向けショート動画、ストーリーボードの一場面、ASMR風の瞬間、素早い検証に合う短い動画を作れます。"
-      },
-      {
-        "title": "720pと1080p",
-        "content": "下書きは720p、細部を確認したい広告やレビュー用途は1080pを選べます。"
-      }
+      "Wan 2.5はToolaze上で低コストに使えるWanオプションです。広告フック、商品角度、ポスター表現、サムネイル案、静止画アニメーションが次の生成に値するかを確認できます。",
+      "短いアイデア確認に使ってください。小さな試作を作り、有望な方向を2、3個残し、詰め込みすぎた結果は捨て、伸ばすべき案のメモを残します。"
     ]
   },
   "performanceMetrics": {
-    "title": "ToolazeのWan 2.5設定",
+    "title": "Wan 2.5 低コストテスト概要",
     "metrics": [
       {
-        "label": "提供元",
-        "value": "Alibaba Wanファミリー"
+        "label": "主な用途",
+        "value": "広告フック、商品モーション、サムネイル、ポスターアニメーション、音の質感の短時間テスト"
       },
       {
-        "label": "モード",
-        "value": "テキスト動画と画像動画"
+        "label": "クレジット位置",
+        "value": "720p / 5秒出力は120クレジットから。ToolazeのWanで最も低コストの選択肢"
       },
       {
-        "label": "参照入力",
-        "value": "画像動画では1枚のアップロード画像"
+        "label": "最適な入力",
+        "value": "短いクリエイティブプロンプト、または10MBまでのJPG、PNG、WebP静止画1枚"
       },
       {
-        "label": "アスペクト比",
-        "value": "16:9、9:16、1:1"
+        "label": "テストパターン",
+        "value": "回転、浮遊、光、まばたき、折れ、スライド、リビールなど明確な合図を1つ"
+      },
+      {
+        "label": "音の役割",
+        "value": "泡、タップ、紙のこすれ、キークリック、紙の持ち上がり、こすり、注ぐ音などの簡単な質感"
       },
       {
         "label": "長さ",
-        "value": "5秒または10秒"
+        "value": "5秒または10秒。完全な物語より素早い確認向け"
       },
       {
-        "label": "解像度",
-        "value": "720pまたは1080p"
+        "label": "出力",
+        "value": "720pまたは1080p。テキストモードは16:9、9:16、1:1に対応"
       },
       {
-        "label": "ネイティブ音声出力",
-        "value": "Wan 2.5ではToolaze上でネイティブ音声を利用できます"
-      },
-      {
-        "label": "クレジット目安",
-        "value": "Wan 2.5は長さと解像度調整前で100クレジットから"
+        "label": "費用管理",
+        "value": "弱い案は早めに止め、フック、商品モーション、音の方向が明確な案だけ追加で使う"
       }
-    ]
-  },
-  "modelSelectionGuide": {
-    "title": "Wan 2.5に向く用途",
-    "subtitle": "広い映画風リクエストではなく、具体的な動画作業に合わせて書きます。",
-    "items": [
-      {
-        "title": "触覚・ASMR系の動き",
-        "desc": "切る、つぶす、注ぐ、叩く、ブラッシング、包装など、動きのタイミングが重要な近接動画。",
-        "badge": "ネイティブ音声出力",
-        "logoSrc": "/model-logos/wan.ico",
-        "logoAlt": "Wan logo"
-      },
-      {
-        "title": "商品・SNS動画",
-        "desc": "短い商品リビール、クリエイター向けオープニング、生活感のあるループ、EC動画、広告バリエーション。",
-        "badge": "5/10秒の下書き",
-        "logoSrc": "/model-logos/wan.ico",
-        "logoAlt": "Wan logo"
-      },
-      {
-        "title": "画像ガイドのアニメーション",
-        "desc": "商品写真、ポスター、キャラクターフレーム、コンセプト画像を認識可能なまま動かします。",
-        "badge": "1枚の参照画像",
-        "logoSrc": "/model-logos/wan.ico",
-        "logoAlt": "Wan logo"
-      }
-    ]
-  },
-  "features": {
-    "title": "ToolazeでWan 2.5を使う理由",
-    "items": [
-      {
-        "title": "実際のモデル設定",
-        "desc": "Wan 2.5を直接選び、モード、比率、長さ、解像度、音声、プロンプト、アップロードを同じ生成器で設定できます。",
-        "iconType": "easy"
-      },
-      {
-        "title": "プロンプトからプレビューまで",
-        "desc": "プロンプト例、最近の生成、プレビュー再生、再生成、ダウンロードをツールを切り替えずに使えます。",
-        "iconType": "speed"
-      },
-      {
-        "title": "モデル比較が明確",
-        "desc": "Wan 2.6、Wan 2.7、Kling、Grok、Seedance、Veo、PixVerseなどとセレクター内で比較できます。",
-        "iconType": "browser"
-      }
-    ]
-  },
-  "promptExamples": {
-    "title": "Wan 2.5プロンプト例",
-    "subtitle": "制御された動き、短い尺、音を意識した動画指示に使えます。",
-    "layout": "grid",
-    "items": [
-      {
-        "title": "雨の夜市オーディオパス",
-        "prompt": "Wan 2.5で、軽い雨の夜市フード屋台を10秒の9:16動画にしてください。光るメニュー看板から、熱い鉄板でねぎ餅を返す手元へカメラをゆっくり押し込みます。湯気、濡れた街灯の反射、同期した焼ける音、テントを打つ雨音、柔らかな人混みの環境音を入れてください。",
-        "description": "環境音、食べ物の動き、雨の質感、同期音を試すネイティブ音声向けプロンプト。",
-        "aspectRatio": "9:16"
-      },
-      {
-        "title": "ランタン組み立て接写",
-        "prompt": "作業台の上でコンパクトなキャンプランタンが組み上がる5秒の9:16接写動画を作成してください。ヘアライン金属パネルが滑り込む動き、親指がスイッチを押す瞬間、曇りガラス越しに広がる暖かな光、浅い被写界深度、きれいな商品影、正確なクリック音と低い駆動音を入れてください。",
-        "description": "組み立て、素材感、短い同期音を見せる触感重視の商品プロンプト。",
-        "aspectRatio": "9:16"
-      },
-      {
-        "title": "一枚絵キャラクター歩行",
-        "prompt": "アップロードした全身キャラクター設定画を、5秒の9:16歩行ループにアニメーション化してください。参照画像の顔、衣装、シルエット、配色を保ちます。横方向にゆっくり追従するカメラ、控えめなコートと髪の揺れ、濡れたネオン反射、静かな足音を加え、同一性は変えないでください。",
-        "description": "1枚の参照キャラクターを保ちながら制御された動きを加える画像-to-動画プロンプト。",
-        "aspectRatio": "9:16"
-      },
-      {
-        "title": "朝の建築グライド",
-        "prompt": "日の出の静かなモダン中庭住宅を、10秒の9:16シネマティックなグライド動画にしてください。石のキッチンアイランドから始め、スライドガラス戸を抜け、中庭の植物が揺れる場面で終わります。垂直線を安定させ、自然な影、柔らかな室内音、外の鳥の声を入れ、壁を歪ませないでください。",
-        "description": "安定した建築、自然光、穏やかな環境音を確認するカメラ制御プロンプト。",
-        "aspectRatio": "9:16"
-      }
-    ]
-  },
-  "workflowComparison": {
-    "title": "Wan 2.5と他のToolaze動画モデル",
-    "subtitle": "クレジットを使う前に、設定とモデルごとの強みを比較できます。",
-    "columns": [
-      "モデル選択",
-      "向いている用途",
-      "確認ポイント"
-    ],
-    "rows": [
-      [
-        "Wan 2.5",
-        "1枚参照、5/10秒、720p/1080p、音を意識した短いT2V/I2V。",
-        "触覚動作、商品ループ、シンプル設定に向きます。"
-      ],
-      [
-        "Wan 2.6またはWan 2.7",
-        "Toolazeセレクターで選べる、より広い時間と制御設定を持つ新しいWanオプション。",
-        "最新のWanモデルや追加の画像制御を、Wan 2.5特化より優先したい場合に使います。"
-      ],
-      [
-        "Kling 3.0",
-        "よりシャープな高品質モーション、複数画像入力、ネイティブ音声、Toolaze上の最大4K設定。",
-        "ダイナミックな映画的動きや4Kが重要な場合。"
-      ],
-      [
-        "Grok 1.5 Video",
-        "速い画像動画下書き、クリエイター向け動画、商品モーション、480p/720pテスト。",
-        "速度と反復を優先する場合。"
-      ],
-      [
-        "Seedance 2.0",
-        "参照入力を増やし、より長い設定を使える高制御のByteDance動画生成。",
-        "マルチモーダル制御と長めのクリップが重要な場合。"
-      ]
     ]
   },
   "howToUse": {
-    "title": "ToolazeでWan 2.5を使う方法",
+    "title": "Wan 2.5で動画案を低コストに試す方法",
     "steps": [
       {
-        "title": "Wan 2.5を選ぶ",
-        "desc": "AI動画生成器のモデルセレクターを開き、WanグループからWan 2.5を選びます。"
+        "title": "明確なテスト目標を1つ選ぶ",
+        "desc": "1回の生成で確認するのは1つだけです。商品モーションが伝わるか、冒頭が目を引くか、ポスターの動きが有効か、音が素材に合うかを見ます。"
       },
       {
-        "title": "モードを選ぶ",
-        "desc": "文章だけならテキスト動画、1枚の画像を使うなら画像動画を選びます。"
+        "title": "短い動きの説明を書く",
+        "desc": "主役を1つ、カメラ動作を1つ、質感または音の合図を1つだけ書きます。結果を判断しやすいよう、動きはシンプルにします。"
       },
       {
-        "title": "出力を設定する",
-        "desc": "16:9、9:16、1:1、5秒/10秒、720p/1080p、必要ならネイティブ音声を設定します。"
+        "title": "正確さが必要なら参照画像を追加",
+        "desc": "ロゴ、形、シルエット、構図を保ちたい場合は、商品、ポスター、キャラクター、レイアウトの鮮明な画像をアップロードします。"
       },
       {
-        "title": "生成して調整する",
-        "desc": "プレビューを確認し、動きや音の表現を調整して、必要な動画をダウンロードします。"
+        "title": "使える結果だけ残す",
+        "desc": "明確な手応えがあるバリエーションを保存します。動きが混みすぎたり商品が読みにくい場合は、追加クレジットを使う前にプロンプトを書き直します。"
+      }
+    ]
+  },
+  "testimonials": {
+    "title": "Wan 2.5についてのユーザーの声",
+    "subtitle": "クリエイターは、制作クレジットをさらに使う前に安価な確認が必要なときWan 2.5を使います。",
+    "maxItems": 3,
+    "showStars": false,
+    "showAvatars": true,
+    "items": [
+      {
+        "name": "Maya Chen",
+        "role": "グロースデザイナー",
+        "avatar": "growth",
+        "quote": "Wan 2.5は低コストのテスト用オプションです。商品モーション、ラベルの光、注ぐ音を試し、次の生成に値する案だけ残せます。"
+      },
+      {
+        "name": "Daniel Brooks",
+        "role": "パフォーマンスマーケティング責任者",
+        "avatar": "performance",
+        "quote": "120クレジットの基準は、弱いフックを早く落とすのに役立ちます。サムネイルの動きを3案比べ、最もきれいな出だしだけを残し、追加予算は一番強い方向にだけ使います。"
+      },
+      {
+        "name": "Sofia Reyes",
+        "role": "ソーシャル動画エディター",
+        "avatar": "social",
+        "quote": "縦型カバーでは、最初の一拍が効くかだけ知りたいことが多いです。Wan 2.5なら、すべてのテストを完成CMにせず十分な判断材料が得られます。"
+      }
+    ]
+  },
+  "faqTitle": "Wan 2.5 AI動画生成 FAQ",
+  "faq": [
+    {
+      "q": "Wan 2.5が安いWanの入り口になる理由は？",
+      "a": "Wan 2.5は720p・5秒出力が120クレジットからです。まず「このアイデアに追加予算を使う価値があるか」を判断したいときに使います。"
+    },
+    {
+      "q": "追加で使う前に何案のフックを試すべきですか？",
+      "a": "冒頭、商品角度、音の手がかりを変えた小さな案を2〜4個試します。最初の1秒で最も明確なシグナルがあるものだけを残します。"
+    },
+    {
+      "q": "Wan 2.5で商品やポスターの静止画を動かせますか？",
+      "a": "はい。包装、ロゴ、ポスターレイアウト、シルエット、サムネイル構図を小さな動きの中でも認識できるようにしたい場合は、明確な静止画を1枚アップロードします。"
+    },
+    {
+      "q": "5秒と10秒のどちらを選ぶべきですか？",
+      "a": "最も安いフック確認には5秒を選びます。スライドして止まる、注いで落ち着く、光ってホールドするなど、2つ目のビートが必要な場合だけ10秒を選びます。"
+    },
+    {
+      "q": "弱いWan 2.5結果はどう扱うべきですか？",
+      "a": "弱い結果は有用な却下データです。ロゴが崩れる、動きが混みすぎる、フックが不明確な場合は、磨き込まずにその方向を捨てます。"
+    },
+    {
+      "q": "Wan 2.5で音のアイデアを試せますか？",
+      "a": "はい。ただし音の手がかりは、泡、タップ、紙の音、注ぐ音、擦れ、クリック、布の擦れ、短い環境音のようにシンプルにします。"
+    },
+    {
+      "q": "Wan 2.5に合うプロンプトは？",
+      "a": "主役1つ、小さな動き1つ、カメラ挙動1つ、音または質感の手がかり1つにします。完全な物語ではなく、具体的な創作上の問いに答えるプロンプトにします。"
+    },
+    {
+      "q": "そのアイデアでWan 2.5を止めるべきタイミングは？",
+      "a": "ロゴが読めない、動きが混み合う、またはクリエイティブな問いがマイクロテストではなく完全なシーケンスを必要とする場合は止めます。"
+    }
+  ],
+  "moreTools": "その他のAI動画モデル",
+  "moreToolsLinks": [
+    {
+      "title": "AI動画ジェネレーター",
+      "description": "複数の対応動画モデルと設定で、テキストや画像から動画を作成します。",
+      "href": "/ai-video-generator",
+      "media": {
+        "type": "video",
+        "src": "https://assets.toolaze.com/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4",
+        "poster": "https://assets.toolaze.com/uploads/ai-video-generator/ai-video-generator-grok-demo-poster.webp",
+        "duration": "PT5.042S",
+        "uploadDate": "2026-07-21T16:03:14.000Z",
+        "alt": "AI動画ジェネレーターのデモプレビュー"
+      }
+    },
+    {
+      "title": "画像から動画ジェネレーター",
+      "description": "参照画像をアップロードし、商品、ポスター、キャラクター、アートワークをオンラインで動かします。",
+      "href": "/image-to-video-generator",
+      "media": {
+        "type": "video",
+        "src": "https://assets.toolaze.com/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4",
+        "poster": "https://assets.toolaze.com/uploads/ai-video-generator/ai-video-generator-grok-demo-poster.webp",
+        "duration": "PT5.042S",
+        "uploadDate": "2026-07-21T16:03:14.000Z",
+        "alt": "画像から動画のデモプレビュー"
+      }
+    },
+    {
+      "title": "Grok Imagine Video 1.5",
+      "description": "Grok Imagine Video 1.5で画像から動画の短い下書きやクリエイター向けクリップを作成します。",
+      "href": "/model/grok-imagine-video-1-5",
+      "media": {
+        "type": "video",
+        "src": "https://assets.toolaze.com/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4",
+        "alt": "Grok Imagine Video 1.5のデモプレビュー",
+        "poster": "https://assets.toolaze.com/uploads/ai-video-generator/ai-video-generator-grok-demo-poster.webp",
+        "duration": "PT5.042S",
+        "uploadDate": "2026-07-21T16:03:14.000Z"
+      }
+    }
+  ],
+  "modelComparison": {
+    "title": "Wan 2.5 低コストテストチェックリスト",
+    "subtitle": "この表で、小さなテストを実行するか、書き直すか、追加クレジットを使う前に止めるか判断できます。",
+    "columnHeaders": {
+      "metric": "テスト判断",
+      "baseline": "Wan 2.5に向く内容",
+      "target": "一時停止または書き直し"
+    },
+    "rows": [
+      {
+        "label": "予算上の役割",
+        "baseline": "フック、商品モーション、ポスターアニメーション、サムネイル、音の質感の安価な初回確認。",
+        "target": "完全なキャンペーン物語、複数シーン構成、正確な最終構図はこの選択肢向きではありません。"
+      },
+      {
+        "label": "クレジット管理",
+        "baseline": "720p / 5秒は120クレジットで、初期テストの費用を抑えられます。",
+        "target": "フックや商品モーションが明確に有望になるまで追加利用を待ちます。"
+      },
+      {
+        "label": "入力形式",
+        "baseline": "短いテキストプロンプト、または主役が明確な静止画1枚。",
+        "target": "参照が多すぎる、構図が混みすぎる、ストーリーボード説明が長すぎる。"
+      },
+      {
+        "label": "出力の長さ",
+        "baseline": "5秒または10秒の短いクリップで素早く判断。",
+        "target": "単純な確認ではなく完全な物語テンポが必要。"
+      },
+      {
+        "label": "良いサイン",
+        "baseline": "ロゴが読める、動きが明確、音の合図が効く、終わりが安定している。",
+        "target": "ブランド要素が崩れる、動きが多すぎる、最初の1秒が曖昧。"
+      },
+      {
+        "label": "次の行動",
+        "baseline": "勝ち案を残し、正確なプロンプトメモを保存。",
+        "target": "プロンプトを書き直す、静止画を変える、またはその方向への利用を止める。"
+      }
+    ],
+    "featuredColumn": "baseline"
+  },
+  "promptExamples": {
+    "title": "Wan 2.5 低コストテスト用プロンプト",
+    "subtitle": "追加制作クレジットを使う前にアイデアを確認したいとき、このプロンプトをコピーできます。",
+    "layout": "grid",
+    "items": [
+      {
+        "title": "商品回転テスト",
+        "prompt": "Use the uploaded product photo for a five-second paid-social test. Rotate the bottle a few degrees, flash the label once, add a soft tabletop tap, and stop on a readable logo. Plain background, tiny movement, no extra story.",
+        "description": "シンプルな商品モーションが次の制作に値するか確認します。",
+        "aspectRatio": "9:16"
+      },
+      {
+        "title": "ポスター動きテスト",
+        "prompt": "Turn the uploaded campaign poster into a short test clip. Add subtle paper lift, one narrow light sweep across the headline, and tiny metallic sparkle near the offer. Keep all text placement stable and use just enough movement to decide whether the still earns another pass.",
+        "description": "静止ビジュアルに軽いアニメーションを加える価値があるか確認します。",
+        "aspectRatio": "16:9"
+      },
+      {
+        "title": "音と質感の確認",
+        "prompt": "Create a tight close-up of sparkling water poured into a glass on a clean counter. Keep the setup simple for testing only. Add fizz, ice clink, liquid pour, and a small glass tap so the texture cue can be accepted or rejected fast.",
+        "description": "Wan 2.5で音と質感の小さな方向性を素早く試します。",
+        "aspectRatio": "1:1"
+      },
+      {
+        "title": "残すか書き直すフック",
+        "prompt": "Make a short test of a phone case sliding into view, catching one highlight, then stopping in the center. Use a plain backdrop, no extra story beats, and a clear ending hold. The goal is to decide whether this simple hook deserves another paid render.",
+        "description": "初期フックを残すか書き直すか判断しやすくします。",
+        "aspectRatio": "9:16"
       }
     ]
   },
   "troubleshooting": {
-    "title": "Wan 2.5の結果を良くするプロンプトのコツ",
-    "subtitle": "選んだ尺に合う具体的で短いプロンプトが安定します。",
+    "title": "Wan 2.5テスト用プロンプトのコツ",
+    "subtitle": "Wan 2.5のプロンプトは絞り込み、1回の生成で1つの創作判断に答えます。",
     "items": [
       {
-        "title": "主動作を1つにする",
-        "desc": "5秒または10秒では複数場面より1つの明確な動作が安定します。"
+        "title": "はい/いいえで判断できる質問にする",
+        "desc": "弱いプロンプト：かっこいい広告を作る。改善したプロンプト：",
+        "prompt": "Test only the opening hook: a compact serum bottle enters from the left, catches one clean highlight, and stops with the label readable. Plain backdrop, no scene change, one soft glass tap at the end."
       },
       {
-        "title": "カメラ方向を書く",
-        "desc": "slow push-in、locked tripod、top-down macro、handheld、orbit、gentle parallaxなどを指定します。"
+        "title": "フルストーリーボードを避ける",
+        "desc": "弱いプロンプト：ローンチ全体の流れを見せる。改善したプロンプト：",
+        "prompt": "Create a short shelf-test clip for one snack bag. The bag lifts slightly, the corner crinkles, and a small shadow moves under it. Keep the camera locked and use a quick paper-crinkle cue."
       },
       {
-        "title": "音を場面に含める",
-        "desc": "切る音、注ぐ音、布の音、室内音、環境音、会話などは必要な場合だけ書きます。"
+        "title": "却下前提の言葉を入れる",
+        "desc": "弱いプロンプト：これを完璧にする。改善したプロンプト：",
+        "prompt": "Generate a rough budget test only. If the logo becomes unreadable or the movement feels crowded, reject the concept instead of polishing it. Keep the action small and easy to judge."
       }
     ]
-  },
-  "scenesTitle": "Wan 2.5で作れる動画",
-  "scenes": [
-    {
-      "title": "触覚ASMR動画",
-      "icon": "🧊",
-      "desc": "切る、つぶす、注ぐ、叩く、ブラシ、包装、素材音の短いクローズアップ。"
-    },
-    {
-      "title": "商品モーション広告",
-      "icon": "🛍️",
-      "desc": "商品画像を広告、Marketplace、キャンペーン検証向けの短い動画にします。"
-    },
-    {
-      "title": "参照画像アニメーション",
-      "icon": "🖼️",
-      "desc": "1枚の画像を動かしつつ、被写体、形、構図、色、角度を保ちます。"
-    },
-    {
-      "title": "SNS Shorts",
-      "icon": "📱",
-      "desc": "Reels、TikTok、Shorts向けのオープナー、リビール、縦動画、フック。"
-    },
-    {
-      "title": "ストーリーボードの一場面",
-      "icon": "🎬",
-      "desc": "1つのシーンを動き、カメラ、光、テンポ、音で素早く試作します。"
-    },
-    {
-      "title": "ムードループ",
-      "icon": "🌧️",
-      "desc": "雨、デスク、商品静物、カフェなど静かな雰囲気動画を作れます。"
-    }
-  ],
-  "faqTitle": "Wan 2.5 AI動画生成 FAQ",
-  "faq": [
-    {
-      "q": "Wan 2.5 AI動画生成とは？",
-      "a": "Wan 2.5はAlibabaのWanファミリーモデルで短いAI動画を作成します。Toolazeではテキスト動画または画像動画を使い、プロンプト、比率、長さ、解像度、ネイティブ音声を調整できます。"
-    },
-    {
-      "q": "画像動画に対応していますか？",
-      "a": "はい。ToolazeではWan 2.5の画像動画で1枚の参照画像を使えます。"
-    },
-    {
-      "q": "テキスト動画に対応していますか？",
-      "a": "はい。主題、動作、カメラ、光、スタイル、音を文章で指定できます。"
-    },
-    {
-      "q": "選べる長さと解像度は？",
-      "a": "5秒または10秒、720pまたは1080pです。"
-    },
-    {
-      "q": "音付き動画を作れますか？",
-      "a": "Wan 2.5はToolaze上でネイティブ音声に対応しています。設定を有効にすると、同期した音、環境音、素材音、音の雰囲気をプロンプトに含められます。"
-    },
-    {
-      "q": "参照画像は何枚使えますか？",
-      "a": "Wan 2.5の画像動画では1枚のアップロード画像を使います。"
-    },
-    {
-      "q": "Wan 2.5は無料ですか？",
-      "a": "利用条件はクレジット、アカウント状態、モデルの利用可否、長さ、解像度で変わります。生成前に画面で確認できます。"
-    },
-    {
-      "q": "Wan 2.7ではなくWan 2.5を選ぶ場面は？",
-      "a": "5秒または10秒の短い動画をシンプルに作りたい場合はWan 2.5、最新Wanを試したい場合はセレクターでWan 2.7を選びます。"
-    }
-  ],
-  "moreTools": "さらにAI動画モデルを見る",
-  "moreToolsLinks": [
-    {
-      "title": "Seedance 2.0",
-      "description": "テキストから動画、画像から動画のワークフローで映画的なAI動画を作るならSeedance 2.0を試せます。",
-      "href": "/model/seedance-2"
-    },
-    {
-      "title": "Kling 3.0",
-      "description": "映画的な動きに向く高品質な動画モデルを確認します。",
-      "href": "/model/kling-3"
-    },
-    {
-      "title": "Grok Imagine Video 1.5",
-      "description": "クリエイター動画や商品モーション向けの素早い画像動画下書きに使えます。",
-      "href": "/model/grok-imagine-video-1-5"
-    }
-  ]
+  }
 }

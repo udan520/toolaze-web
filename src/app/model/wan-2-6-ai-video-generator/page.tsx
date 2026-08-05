@@ -1,6 +1,7 @@
 import ToolL2PageContent from '@/components/blocks/ToolL2PageContent'
 import type { Metadata } from 'next'
 import { getL2SeoContent } from '@/lib/seo-loader'
+import { generateHreflangAlternates } from '@/lib/hreflang'
 
 export const dynamic = 'force-static'
 
@@ -8,7 +9,7 @@ const slug = 'wan-2-6-ai-video-generator'
 
 export async function generateMetadata(): Promise<Metadata> {
   const content = await getL2SeoContent(slug, 'en')
-  const canonical = `https://toolaze.com/model/${slug}`
+  const hreflang = generateHreflangAlternates('en', `/model/${slug}`)
   const title = content?.metadata?.title || 'Wan 2.6 AI Video Generator | Toolaze'
   const description =
     content?.metadata?.description ||
@@ -19,8 +20,8 @@ export async function generateMetadata(): Promise<Metadata> {
     description,
     robots: 'index, follow',
     alternates: {
-      canonical,
-      languages: { en: canonical },
+      canonical: hreflang.canonical,
+      languages: hreflang.languages,
     },
   }
 }

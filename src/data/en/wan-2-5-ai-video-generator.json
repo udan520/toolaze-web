@@ -9,331 +9,298 @@
     "displayName": "Wan 2.5"
   },
   "metadata": {
-    "title": "Wan 2.5 AI Video Generator | Text to Video & Image to Video",
-    "description": "Use Wan 2.5 on Toolaze to create AI videos from text prompts or one reference image, with 5 or 10 second clips, 16:9, 9:16, 1:1, 720p/1080p, and native audio output.",
+    "title": "Wan 2.5 AI Video Generator | Budget Wan Tests",
+    "description": "Use Wan 2.5 when price matters: run quick text-to-video or single-still tests from 120 Credits, compare ad hooks, product motion, poster animation, thumbnail ideas, and sound textures before spending more.",
     "published": true
   },
   "hero": {
     "h1": "<span class=\"text-gradient\">Wan 2.5</span> AI Video Generator",
-    "desc": "Create Wan 2.5 videos from a written prompt or one reference image. Choose text-to-video or image-to-video, set 16:9, 9:16, or 1:1, pick 5 or 10 seconds at 720p/1080p, and prompt for motion, camera, materials, and synchronized sound."
+    "desc": "Use Wan 2.5 for lower-cost Wan testing from a text prompt or one reference still. Create 5 or 10 second 720p/1080p clips for ad hooks, product motion, poster animation, thumbnail variants, and sound texture checks; keep only the ideas worth another render."
   },
   "heroDemoVideo": {
     "src": "/model-assets/grok-imagine-video-1-5/grok-hero-demo-16x9.mp4",
     "ariaLabel": "Toolaze Wan 2.5 16:9 demo clip preview",
     "width": 16,
     "height": 9,
-    "sourceHistory": "Existing Toolaze Grok Imagine Video 1.5 hero demo asset · 16:9"
+    "sourceHistory": "Existing Toolaze Grok Imagine Video 1.5 hero demo asset · 16:9",
+    "poster": "https://assets.toolaze.com/model-assets/grok-imagine-video-1-5/grok-hero-demo-16x9-poster.webp",
+    "duration": "PT5.042S",
+    "uploadDate": "2026-08-04T20:01:05.000Z",
+    "type": "video"
   },
   "sectionsOrder": [
     "modelIntro",
     "performanceMetrics",
-    "modelSelectionGuide",
-    "features",
-    "promptExamples",
-    "workflowComparison",
     "howToUse",
+    "promptExamples",
     "troubleshooting",
-    "scenes",
+    "modelComparison",
+    "testimonials",
     "faq"
   ],
   "modelIntro": {
     "title": "What Is Wan 2.5 AI Video Generator?",
     "modelName": "Wan 2.5",
-    "modelType": "AI Video Model",
+    "modelType": "Lower-Cost AI Video Test Model",
     "description": [
-      "Wan 2.5 is an Alibaba Wan family video model for prompt-driven video creation. On Toolaze, it runs inside the shared AI video generator so you can start from text or upload one reference image, then describe motion, camera movement, lighting, and sound direction in one prompt.",
-      "The Toolaze Wan 2.5 setup focuses on short, controllable clips rather than long scenes: 5 or 10 seconds, 16:9, 9:16, or 1:1 framing, and 720p or 1080p output. It is useful when you want tactile product movement, ASMR-style material detail, clean social clips, or image-guided motion without switching tools.",
-      "Use Wan 2.5 when motion cues and audio-aware prompts matter, with model selection, upload, prompt examples, recent history, preview, and download available in one browser session."
-    ],
-    "featureCards": [
-      {
-        "title": "Text-to-Video and Image-to-Video",
-        "content": "Start from a written scene or upload one reference image, then guide subject motion, camera movement, composition, and sound in the prompt."
-      },
-      {
-        "title": "5 or 10 Second Clips",
-        "content": "Keep clips tight for product loops, creator shorts, storyboard beats, ASMR moments, social variants, and fast creative testing."
-      },
-      {
-        "title": "720p and 1080p Output",
-        "content": "Choose 720p for faster drafts or 1080p when the final clip needs cleaner detail for review, ads, and publishing."
-      }
+      "Wan 2.5 is the lower-cost Wan option on Toolaze. It helps you test whether an ad hook, product angle, poster treatment, thumbnail variant, or still-image animation deserves another render.",
+      "Use it for quick idea checks: create small trials, keep two or three promising directions, reject crowded attempts, and save notes for the concept worth developing further."
     ]
   },
   "performanceMetrics": {
-    "title": "Wan 2.5 Settings on Toolaze",
+    "title": "Wan 2.5 Lower-Cost Testing Snapshot",
     "metrics": [
       {
-        "label": "Provider",
-        "value": "Alibaba Wan family"
+        "label": "Primary job",
+        "value": "Quick tests for ad hooks, product motion, thumbnails, poster animation, and sound texture"
       },
       {
-        "label": "Modes",
-        "value": "Text-to-video and image-to-video"
+        "label": "Credit position",
+        "value": "Starts at 120 Credits for 720p 5-second output, making it the cheapest Wan option on Toolaze"
       },
       {
-        "label": "Reference input",
-        "value": "One uploaded image for image-to-video"
+        "label": "Best input",
+        "value": "Short creative prompt or one JPG, PNG, or WebP still up to 10MB"
       },
       {
-        "label": "Aspect ratio",
-        "value": "16:9, 9:16, 1:1"
+        "label": "Test pattern",
+        "value": "One clear cue: turn, float, glint, blink, fold, slide, or reveal"
+      },
+      {
+        "label": "Sound role",
+        "value": "Simple texture cues such as fizz, tap, crinkle, key click, paper lift, scrape, or pour"
       },
       {
         "label": "Duration",
-        "value": "5 seconds or 10 seconds"
+        "value": "5 or 10 seconds, built for quick tests rather than complete narratives"
       },
       {
-        "label": "Resolution",
-        "value": "720p or 1080p"
+        "label": "Output",
+        "value": "720p or 1080p; text mode supports 16:9, 9:16, and 1:1"
       },
       {
-        "label": "Native audio output",
-        "value": "Native audio is available for Wan 2.5 on Toolaze"
-      },
-      {
-        "label": "Credit guide",
-        "value": "Wan 2.5 starts from 100 credits before duration and resolution adjustments"
+        "label": "Spend control",
+        "value": "Stop weak concepts early; spend more only after a hook, product motion, or sound cue is clear"
       }
-    ]
-  },
-  "modelSelectionGuide": {
-    "title": "Best Wan 2.5 Use Cases",
-    "subtitle": "Match the prompt to a concrete video job instead of writing a broad cinematic request.",
-    "items": [
-      {
-        "title": "Tactile and ASMR Motion",
-        "desc": "Close-up cutting, squeezing, pouring, tapping, brushing, packaging, and material sounds where action timing matters.",
-        "badge": "Native audio output",
-        "logoSrc": "/model-logos/wan.ico",
-        "logoAlt": "Wan logo"
-      },
-      {
-        "title": "Product and Social Clips",
-        "desc": "Short product reveals, creator openers, lifestyle loops, ecommerce motion, and paid social variants.",
-        "badge": "5/10s drafts",
-        "logoSrc": "/model-logos/wan.ico",
-        "logoAlt": "Wan logo"
-      },
-      {
-        "title": "Image-Guided Animation",
-        "desc": "Animate a product shot, poster, character frame, or concept image while keeping the subject recognizable.",
-        "badge": "One reference image",
-        "logoSrc": "/model-logos/wan.ico",
-        "logoAlt": "Wan logo"
-      }
-    ]
-  },
-  "features": {
-    "title": "Why Use Toolaze for Wan 2.5?",
-    "items": [
-      {
-        "title": "Real Model Controls",
-        "desc": "Pick Wan 2.5 directly, then set mode, aspect ratio, duration, resolution, native audio, prompt, and upload inputs in the same generator.",
-        "iconType": "easy"
-      },
-      {
-        "title": "Prompt to Preview",
-        "desc": "Use prompt examples, recent generations, preview playback, recreate actions, and downloads without switching tools.",
-        "iconType": "speed"
-      },
-      {
-        "title": "Clear Model Comparison",
-        "desc": "Compare Wan 2.5 against Wan 2.6, Wan 2.7, Kling, Grok, Seedance, Veo, PixVerse, and other video models in the selector.",
-        "iconType": "browser"
-      }
-    ]
-  },
-  "promptExamples": {
-    "title": "Wan 2.5 Prompt Examples",
-    "subtitle": "Copy these prompts when you want controlled motion, concise duration, and audio-aware video direction.",
-    "layout": "grid",
-    "items": [
-      {
-        "title": "Rainy Market Audio Pass",
-        "prompt": "Create a 10-second 9:16 Wan 2.5 video of a night market food stall in light rain. The camera pushes from a glowing menu sign to hands flipping scallion pancakes on a hot griddle. Add steam, reflected street lights, synchronized sizzling, rain on the tarp, and soft crowd ambience.",
-        "description": "Native-audio scene prompt for ambience, food motion, rain detail, and synchronized sound.",
-        "aspectRatio": "9:16"
-      },
-      {
-        "title": "Lantern Assembly Close-Up",
-        "prompt": "Create a 5-second 9:16 close-up video of a compact camping lantern assembling on a workbench. Show brushed metal panels sliding into place, a thumb clicking the switch, warm light blooming through frosted glass, shallow depth of field, clean product shadows, and precise click and hum audio.",
-        "description": "Tactile product prompt for compact assembly, material detail, and short synced audio cues.",
-        "aspectRatio": "9:16"
-      },
-      {
-        "title": "One-Image Character Walk",
-        "prompt": "Animate the uploaded full-body character concept into a 5-second 9:16 walking loop. Preserve the face, outfit, silhouette, and color palette from the reference image. Add a slow side-tracking camera, subtle coat and hair motion, wet neon reflections, and quiet footsteps without changing identity.",
-        "description": "Image-to-video prompt for preserving one reference character while adding controlled motion.",
-        "aspectRatio": "9:16"
-      },
-      {
-        "title": "Architectural Morning Glide",
-        "prompt": "Create a 10-second 9:16 cinematic glide through a quiet modern courtyard house at sunrise. Start at a stone kitchen island, move past sliding glass doors, and end on plants moving in the courtyard. Keep vertical lines stable, natural shadows, soft room tone, birds outside, and no warped walls.",
-        "description": "Camera-control prompt for stable architecture, natural lighting, and gentle environmental sound.",
-        "aspectRatio": "9:16"
-      }
-    ]
-  },
-  "workflowComparison": {
-    "title": "Wan 2.5 vs Other Toolaze Video Models",
-    "subtitle": "Compare settings and model strengths before spending credits.",
-    "columns": [
-      "Model choice",
-      "Good fit",
-      "What to check"
-    ],
-    "rows": [
-      [
-        "Wan 2.5",
-        "Short T2V/I2V clips with one reference image, 5/10 seconds, 720p/1080p, and audio-aware prompting.",
-        "Use when you want tactile motion, product loops, and simple settings."
-      ],
-      [
-        "Wan 2.6 or Wan 2.7",
-        "Newer Wan options with broader duration and control choices in the Toolaze selector.",
-        "Use when the latest Wan model or extra image control matters more than Wan 2.5 specificity."
-      ],
-      [
-        "Kling 3.0",
-        "Sharper high-end motion, multi-image input, native audio, and up to 4K settings in Toolaze.",
-        "Use when dynamic cinematic movement or 4K matters."
-      ],
-      [
-        "Grok 1.5 Video",
-        "Fast image-to-video drafts, creator clips, product motion, and low-cost 480p/720p tests.",
-        "Use when speed and quick iteration matter most."
-      ],
-      [
-        "Seedance 2.0",
-        "High-control ByteDance video generation with more reference inputs and longer setting options.",
-        "Use when multimodal control and longer clips matter."
-      ]
     ]
   },
   "howToUse": {
-    "title": "How to Use Wan 2.5 on Toolaze",
+    "title": "How to Test Wan 2.5 Ideas at Lower Cost",
     "steps": [
       {
-        "title": "Choose Wan 2.5",
-        "desc": "Open the model selector in the AI video generator and pick Wan 2.5 from the Wan model group."
+        "title": "Choose one clear test",
+        "desc": "Use one run to answer a practical question: does the product turn read, does the opening hook stand out, does the poster motion feel useful, or does the sound cue match the material?"
       },
       {
-        "title": "Pick a mode",
-        "desc": "Use text-to-video for a full scene prompt, or image-to-video when you want one uploaded reference image to guide the result."
+        "title": "Write a small motion brief",
+        "desc": "Name one subject, one camera move, and one texture or sound cue. Keep the action simple so the result is easy to judge."
       },
       {
-        "title": "Set output options",
-        "desc": "Choose 16:9, 9:16, or 1:1, select 5 or 10 seconds, pick 720p or 1080p, and enable native audio when it fits the prompt."
+        "title": "Add a reference still when accuracy matters",
+        "desc": "Upload a clean product, poster, character, or layout image when the logo, shape, silhouette, or composition should stay recognizable."
       },
       {
-        "title": "Generate and refine",
-        "desc": "Preview the clip, adjust motion or audio wording, recreate if needed, then download the video you want to keep."
+        "title": "Keep the useful result",
+        "desc": "Save variants with a clear signal. If the motion is crowded or the product becomes hard to read, rewrite the brief before spending more credits."
       }
     ]
   },
-  "troubleshooting": {
-    "title": "Prompt Tips for Better Wan 2.5 Results",
-    "subtitle": "Wan 2.5 performs best when the prompt is concrete, short, and timed to the selected duration.",
+  "testimonials": {
+    "title": "What Users Say About Wan 2.5 AI Video Generator",
+    "subtitle": "Creators use Wan 2.5 when they need inexpensive proof before spending more production credits.",
+    "maxItems": 3,
+    "showStars": false,
+    "showAvatars": true,
     "items": [
       {
-        "title": "Describe one main action",
-        "desc": "A single clear action usually works better than several scene changes in a 5 or 10 second clip."
+        "name": "Maya Chen",
+        "role": "Growth designer",
+        "avatar": "growth",
+        "quote": "Wan 2.5 is my low-cost testing lane. I can try a product turn, a label glint, or a pour cue, then keep only the variants that deserve another pass."
       },
       {
-        "title": "Add camera direction",
-        "desc": "Use words like slow push-in, locked tripod, top-down macro, handheld, orbit, or gentle parallax."
+        "name": "Daniel Brooks",
+        "role": "Performance marketing lead",
+        "avatar": "performance",
+        "quote": "The 120-credit base helps our paid-social team kill weak hooks fast. We compare three thumbnail moves, keep the cleanest opener, then reserve extra budget only for the strongest angle."
       },
       {
-        "title": "Write audio as part of the scene",
-        "desc": "Mention crisp cutting, soft pouring, cloth rustle, room tone, ambience, or dialogue only when you want native audio output."
+        "name": "Sofia Reyes",
+        "role": "Social video editor",
+        "avatar": "social",
+        "quote": "For vertical covers, I just need to know whether the first beat pops. Wan 2.5 gives me enough signal without turning every early test into a full campaign spot."
       }
     ]
   },
-  "scenesTitle": "What You Can Create with Wan 2.5",
-  "scenes": [
-    {
-      "title": "Tactile ASMR Clips",
-      "icon": "🧊",
-      "desc": "Create short close-ups of cutting, crushing, pouring, tapping, brushing, packaging, and material sounds."
-    },
-    {
-      "title": "Product Motion Ads",
-      "icon": "🛍️",
-      "desc": "Turn product shots into short commercial clips for paid social, marketplace pages, and campaign tests."
-    },
-    {
-      "title": "Reference Image Animation",
-      "icon": "🖼️",
-      "desc": "Animate one uploaded image while preserving the subject, shape, layout, color, and camera angle."
-    },
-    {
-      "title": "Social Shorts",
-      "icon": "📱",
-      "desc": "Generate creator openers, reveal loops, vertical clips, and hooks for Reels, TikTok, and Shorts."
-    },
-    {
-      "title": "Storyboard Beats",
-      "icon": "🎬",
-      "desc": "Draft a single scene beat with action, camera, lighting, pacing, and sound direction."
-    },
-    {
-      "title": "Mood Loops",
-      "icon": "🌧️",
-      "desc": "Create quiet ambience loops such as rain on glass, desk setups, product still life, or cafe scenes."
-    }
-  ],
   "faqTitle": "Wan 2.5 AI Video Generator FAQ",
   "faq": [
     {
-      "q": "What is Wan 2.5 AI Video Generator?",
-      "a": "Wan 2.5 creates short AI videos with Alibaba’s Wan family model. On Toolaze, you can use text-to-video or image-to-video, then control prompt, aspect ratio, duration, resolution, and native audio output."
+      "q": "Why is Wan 2.5 the cheaper Wan starting point?",
+      "a": "Wan 2.5 starts at 120 Credits for 720p 5-second output. Use it when the first decision is whether an idea deserves more spend."
     },
     {
-      "q": "Does Wan 2.5 support image-to-video on Toolaze?",
-      "a": "Yes. Toolaze exposes image-to-video for Wan 2.5 with one uploaded reference image. The prompt should explain what should move and what should stay consistent."
+      "q": "How many hook variants should I test before spending more?",
+      "a": "Run two to four small variants with different openings, product angles, or sound cues. Keep only the one with the clearest first-second signal."
     },
     {
-      "q": "Does Wan 2.5 support text-to-video?",
-      "a": "Yes. You can start with a text prompt, describe the subject, action, camera, lighting, style, and sound, then generate a short video."
+      "q": "Can Wan 2.5 animate a product or poster still?",
+      "a": "Yes. Upload one clear still when a package, logo, poster layout, character silhouette, or thumbnail composition should stay recognizable during a small movement test."
     },
     {
-      "q": "What duration and resolution can I choose?",
-      "a": "The Toolaze Wan 2.5 setup offers 5 or 10 second clips at 720p or 1080p."
+      "q": "Should I choose 5 seconds or 10 seconds?",
+      "a": "Choose 5 seconds for the cheapest hook check. Choose 10 seconds only when the motion needs a second beat, such as slide then stop, pour then settle, or sparkle then hold."
     },
     {
-      "q": "Can Wan 2.5 create videos with sound?",
-      "a": "Wan 2.5 supports native audio output on Toolaze, so prompts can include synchronized sound, ambience, material sound, or audio mood when that setting is enabled."
+      "q": "What should I do with weak Wan 2.5 results?",
+      "a": "Treat weak results as useful rejection data. If the logo breaks, the motion feels crowded, or the hook is unclear, discard the direction instead of polishing it."
     },
     {
-      "q": "How many reference images can Wan 2.5 use?",
-      "a": "On Toolaze, Wan 2.5 uses one uploaded image for image-to-video. Choose a clear starting frame with the subject already visible."
+      "q": "Can Wan 2.5 test sound ideas?",
+      "a": "Yes, but keep sound cues simple: fizz, tap, crinkle, pour, scrape, click, fabric rustle, or a short room tone."
     },
     {
-      "q": "Is Wan 2.5 free on Toolaze?",
-      "a": "Access can depend on your current credits, account state, model availability, duration, and resolution. The generator shows the current requirement before generation."
+      "q": "What prompt style fits Wan 2.5?",
+      "a": "Use one subject, one small motion, one camera behavior, and one sound or texture cue. The prompt should answer a narrow creative question instead of describing a full story."
     },
     {
-      "q": "When should I choose Wan 2.5 instead of Wan 2.7?",
-      "a": "Choose Wan 2.5 for a focused short-form page and straightforward 5 or 10 second clips. Try Wan 2.7 from the model selector when you want the latest Wan option or broader current controls."
+      "q": "When should I stop using Wan 2.5 for an idea?",
+      "a": "Stop when the result cannot keep the logo readable, the motion feels crowded, or the creative question needs a complete sequence instead of a micro test."
     }
   ],
   "moreTools": "More AI Video Models",
   "moreToolsLinks": [
     {
-      "title": "Seedance 2.0",
-      "description": "Try Seedance 2.0 for cinematic AI video generation from text prompts or reference images.",
-      "href": "/model/seedance-2"
+      "title": "AI Video Generator",
+      "description": "Create videos from text or images with multiple supported video models and settings.",
+      "href": "/ai-video-generator",
+      "media": {
+        "type": "video",
+        "src": "https://assets.toolaze.com/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4",
+        "poster": "https://assets.toolaze.com/uploads/ai-video-generator/ai-video-generator-grok-demo-poster.webp",
+        "duration": "PT5.042S",
+        "uploadDate": "2026-07-21T16:03:14.000Z",
+        "alt": "AI video generator demo preview"
+      }
     },
     {
-      "title": "Kling 3.0",
-      "description": "Explore a high-end video model for dynamic cinematic movement.",
-      "href": "/model/kling-3"
+      "title": "Image to Video Generator",
+      "description": "Upload a reference image and animate products, posters, characters, or artwork online.",
+      "href": "/image-to-video-generator",
+      "media": {
+        "type": "video",
+        "src": "https://assets.toolaze.com/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4",
+        "poster": "https://assets.toolaze.com/uploads/ai-video-generator/ai-video-generator-grok-demo-poster.webp",
+        "duration": "PT5.042S",
+        "uploadDate": "2026-07-21T16:03:14.000Z",
+        "alt": "Image to video generator demo preview"
+      }
     },
     {
       "title": "Grok Imagine Video 1.5",
-      "description": "Use fast image-to-video drafts for creator and product motion.",
-      "href": "/model/grok-imagine-video-1-5"
+      "description": "Use Grok Imagine Video 1.5 for fast image-to-video drafts and creator clips.",
+      "href": "/model/grok-imagine-video-1-5",
+      "media": {
+        "type": "video",
+        "src": "https://assets.toolaze.com/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4",
+        "alt": "Grok Imagine Video 1.5 demo video preview",
+        "poster": "https://assets.toolaze.com/uploads/ai-video-generator/ai-video-generator-grok-demo-poster.webp",
+        "duration": "PT5.042S",
+        "uploadDate": "2026-07-21T16:03:14.000Z"
+      }
     }
-  ]
+  ],
+  "modelComparison": {
+    "title": "Wan 2.5 Lower-Cost Testing Checklist",
+    "subtitle": "Use this table to decide whether a small test should run, be rewritten, or stop before more credits are spent.",
+    "columnHeaders": {
+      "metric": "Testing decision",
+      "baseline": "Wan 2.5 fit",
+      "target": "Pause or rewrite"
+    },
+    "rows": [
+      {
+        "label": "Budget role",
+        "baseline": "Cheap first pass for hooks, product motion, poster animation, thumbnails, and sound texture.",
+        "target": "Full campaign story, multi-scene plan, or exact final composition is not ready for this option."
+      },
+      {
+        "label": "Credit control",
+        "baseline": "120 Credits at 720p / 5s keeps early testing contained.",
+        "target": "Delay extra spend until one hook or product motion is clearly worth it."
+      },
+      {
+        "label": "Input shape",
+        "baseline": "Short text prompt or one clean still with a single subject.",
+        "target": "Too many references, crowded layouts, or long storyboard notes."
+      },
+      {
+        "label": "Output length",
+        "baseline": "5 or 10 second clips for quick judgment.",
+        "target": "Needs full narrative pacing instead of a simple signal check."
+      },
+      {
+        "label": "Good signal",
+        "baseline": "Readable logo, clear motion, useful sound cue, and a clean hold.",
+        "target": "Broken branding, crowded movement, or unclear first-second hook."
+      },
+      {
+        "label": "Next action",
+        "baseline": "Keep the winner and save the exact prompt notes.",
+        "target": "Rewrite the prompt, change the still, or stop spending on that direction."
+      }
+    ],
+    "featuredColumn": "baseline"
+  },
+  "promptExamples": {
+    "title": "Wan 2.5 Lower-Cost Test Prompts",
+    "subtitle": "Copy these when you want to test an idea before spending more production credits.",
+    "layout": "grid",
+    "items": [
+      {
+        "title": "Product Turn Test",
+        "prompt": "Use the uploaded product photo for a five-second paid-social test. Rotate the bottle a few degrees, flash the label once, add a soft tabletop tap, and stop on a readable logo. Plain background, tiny movement, no extra story.",
+        "description": "Checks whether a simple product motion is worth a stronger render.",
+        "aspectRatio": "9:16"
+      },
+      {
+        "title": "Poster Motion Test",
+        "prompt": "Turn the uploaded campaign poster into a short test clip. Add subtle paper lift, one narrow light sweep across the headline, and tiny metallic sparkle near the offer. Keep all text placement stable and use just enough movement to decide whether the still earns another pass.",
+        "description": "Checks whether a static visual has useful animation potential.",
+        "aspectRatio": "16:9"
+      },
+      {
+        "title": "Sound Texture Check",
+        "prompt": "Create a tight close-up of sparkling water poured into a glass on a clean counter. Keep the setup simple for testing only. Add fizz, ice clink, liquid pour, and a small glass tap so the texture cue can be accepted or rejected fast.",
+        "description": "Uses Wan 2.5 to test a simple sound-and-texture idea.",
+        "aspectRatio": "1:1"
+      },
+      {
+        "title": "Keep-or-Rewrite Hook",
+        "prompt": "Make a short test of a phone case sliding into view, catching one highlight, then stopping in the center. Use a plain backdrop, no extra story beats, and a clear ending hold. The goal is to decide whether this simple hook deserves another paid render.",
+        "description": "Turns an early hook into a clear keep-or-rewrite decision.",
+        "aspectRatio": "9:16"
+      }
+    ]
+  },
+  "troubleshooting": {
+    "title": "Prompt Tips for Wan 2.5 Tests",
+    "subtitle": "Keep Wan 2.5 prompts narrow so each run answers one creative question.",
+    "items": [
+      {
+        "title": "Ask one yes/no question",
+        "desc": "Weak prompt: make a cool commercial. Better prompt:",
+        "prompt": "Test only the opening hook: a compact serum bottle enters from the left, catches one clean highlight, and stops with the label readable. Plain backdrop, no scene change, one soft glass tap at the end."
+      },
+      {
+        "title": "Avoid full storyboards",
+        "desc": "Weak prompt: show the whole launch journey. Better prompt:",
+        "prompt": "Create a short shelf-test clip for one snack bag. The bag lifts slightly, the corner crinkles, and a small shadow moves under it. Keep the camera locked and use a quick paper-crinkle cue."
+      },
+      {
+        "title": "Use rejection language",
+        "desc": "Weak prompt: make this perfect. Better prompt:",
+        "prompt": "Generate a rough budget test only. If the logo becomes unreadable or the movement feels crowded, reject the concept instead of polishing it. Keep the action small and easy to judge."
+      }
+    ]
+  }
 }

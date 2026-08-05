@@ -187,56 +187,68 @@
     }
   ],
   "modelComparison": {
-    "title": "Wan 2.7 im Vergleich zu Wan 2.6 und Wan 2.5",
-    "subtitle": "Wan 2.7 ist die stärkste Wan-Option, wenn du Referenz-zu-Video, Steuerung von erstem und letztem Frame, Fortsetzung, Multi-Shot-Prompts und stärkere Audio-Video-Synchronisierung brauchst. Wan 2.6 und Wan 2.5 bleiben nützlich für einfachere Wan-Clips mit weniger Einstellungen.",
+    "title": "Wan 2.7 vs. Wan 2.6 vs. Wan 2.5",
+    "subtitle": "Vergleiche die Funktionen, die das Ergebnis verändern: Frame-Kontrolle, Referenzen, Audio, Laufzeit, Auflösung und Guthaben.",
     "columnHeaders": {
-      "metric": "Entscheidungspunkt",
+      "metric": "Funktion",
       "baseline": "Wan 2.7",
       "middle": "Wan 2.6",
       "target": "Wan 2.5"
     },
     "rows": [
       {
-        "label": "Erstellungsmodi",
-        "baseline": "Text-zu-Video, Bild-zu-Video und Referenz-zu-Video.",
-        "middle": "Text-zu-Video und Bild-zu-Video mit längeren Wan-Presets.",
-        "target": "Text-zu-Video und Bild-zu-Video für einfachere Wan-Entwürfe."
+        "label": "Text-zu-Video",
+        "baseline": "Ja",
+        "middle": "Ja",
+        "target": "Ja"
       },
       {
-        "label": "Referenzkontrolle",
-        "baseline": "Bis zu fünf Bild- oder Videoreferenzen insgesamt im Referenz-zu-Video-Modus, plus Audioreferenzen, sofern unterstützt.",
-        "middle": "Referenzbild-Eingabe mit weniger erweiterten Referenzrollen.",
-        "target": "Eine Referenzbild-Eingabe für unkompliziertes Bild-zu-Video."
+        "label": "Bild-zu-Video-Referenz",
+        "baseline": "Ein erster Frame plus optionaler letzter Frame.",
+        "middle": "Ein hochgeladenes Bild.",
+        "target": "Ein hochgeladenes Standbild."
       },
       {
-        "label": "Frame- und Videosteuerung",
-        "baseline": "Erster Frame, erster und letzter Frame, Videofortsetzung und Multi-Shot-Prompts.",
-        "middle": "Längere Wan-Clips und Multi-Shot-ähnliche Prompts, sofern verfügbar.",
-        "target": "Einzelszenen-Prompts und Animation mit einer Referenz."
+        "label": "Start-/Endframe-Kontrolle",
+        "baseline": "Ja",
+        "middle": "Nein",
+        "target": "Nein"
       },
       {
-        "label": "Audioverarbeitung",
-        "baseline": "Audio-Video-Synchronisierung, Soundeffekte, Musik, Atmosphäre und Vorgaben für Stimmstil.",
-        "middle": "Native Audioausgabe und synchrone Audiocues.",
-        "target": "Native Audioausgabe für einfachere synchrone Clips."
+        "label": "Fortsetzungssteuerung",
+        "baseline": "Planung mit erstem Frame, erstem und letztem Frame sowie Fortsetzungslogik.",
+        "middle": "Nein",
+        "target": "Nein"
       },
       {
-        "label": "Dauer und Ausgabe",
-        "baseline": "2 bis 15 Sekunden, 720p oder 1080p, 30fps MP4.",
-        "middle": "5, 10 oder 15 Sekunden, 720p oder 1080p.",
-        "target": "5 oder 10 Sekunden, 720p oder 1080p."
+        "label": "Audio-Verarbeitung",
+        "baseline": "Hinweise zur Audio-Video-Synchronisierung im Prompt.",
+        "middle": "Native Audioausgabe mit synchronisierten Soundhinweisen.",
+        "target": "Native Soundhinweise für einfachere Clips."
       },
       {
-        "label": "Startendes Guthaben",
-        "baseline": "Startet bei 64 Guthaben für 2 Sekunden in 720p auf Toolaze.",
-        "middle": "Startet bei 140 Guthaben für 5 Sekunden in 720p auf Toolaze.",
-        "target": "Startet bei 120 Guthaben für 5 Sekunden in 720p auf Toolaze."
+        "label": "Dauer",
+        "baseline": "2 bis 15 Sekunden.",
+        "middle": "5, 10 oder 15 Sekunden.",
+        "target": "5 oder 10 Sekunden."
       },
       {
-        "label": "Wähle es, wenn",
-        "baseline": "Du die neuesten Wan-Steuerungen, reichere Referenzen, Shot-Planung, Frame-Übergänge, Fortsetzung oder stärkeres Ton-Timing brauchst.",
-        "middle": "Du einen längeren Wan-Clip brauchst, aber nicht das volle Wan 2.7 Referenzset.",
-        "target": "Du einen einfacheren Wan-Clip mit einer Referenz und vertrauter 5- oder 10-Sekunden-Dauer brauchst."
+        "label": "Auflösung",
+        "baseline": "720p oder 1080p.",
+        "middle": "720p oder 1080p.",
+        "target": "720p oder 1080p."
+      },
+      {
+        "label": "Startguthaben",
+        "baseline": "Startet bei 64 Guthaben für 2 Sekunden in 720p.",
+        "middle": "Startet bei 140 Guthaben für 5 Sekunden in 720p.",
+        "target": "Startet bei 120 Guthaben für 5 Sekunden in 720p."
+      },
+      {
+        "label": "Wählen, wenn",
+        "baseline": "Start, Endframe oder Übergangspfad müssen explizit sein.",
+        "middle": "Du brauchst einen stabilen längeren Wan-Clip aus Text oder einem Bild.",
+        "target": "Du brauchst schnelle Entwürfe und einfache Bewegungstests mit einem Bild."
       }
     ],
     "featuredColumn": "baseline"
@@ -273,23 +285,47 @@
     ]
   },
   "testimonials": {
-    "title": "Creator-Notizen zu Wan 2.7",
-    "subtitle": "Praktische Wege, wie Creator Wan 2.7 für referenzgeführte Clips, Prompt-Tests und kurze Commercial-Szenen nutzen.",
+    "title": "Was Nutzer über den Wan 2.7 KI-Videogenerator sagen",
+    "subtitle": "Feedback von Kreativen, die Wan 2.7 nutzen, wenn der erste Frame, letzte Frame, Übergangspfad und die finale Komposition alle wichtig sind.",
+    "maxItems": 6,
+    "showStars": false,
+    "showAvatars": true,
     "items": [
       {
         "name": "Maya Chen",
-        "role": "Produktvideo-Editorin",
-        "quote": "Die Shot-Reihenfolge in den Prompts macht es leichter, einen Produkt-Reveal zu testen, bevor wir Zeit in einen kompletten Dreh stecken."
+        "role": "Product video editor",
+        "avatar": "photo",
+        "quote": "Ich nutze Wan 2.7, wenn eine Produktenthüllung auf einer bestimmten finalen Komposition landen muss, anstatt in ein zufälliges Ende abzudriften. Der Letzter-Frame-Anker erleichtert das Kunden-Review, weil jeder das beabsichtigte Ziel sehen kann."
       },
       {
         "name": "Eli Morgan",
-        "role": "Storyboard-Artist",
-        "quote": "Ich nutze Referenzbilder für Figur und Umgebung und schreibe die Bewegung dann als kurzen Beat. So bekommen Kunden einen klareren ersten Entwurf."
+        "role": "Storyboard artist",
+        "avatar": "motion",
+        "quote": "Das Erster-und-Letzter-Frame-Setup hilft mir, Kunden die genaue Veränderung zu zeigen, die ich möchte, bevor ich ein längeres Stück baue. Ich kann den Start skizzieren, den Landeframe definieren und den Prompt nutzen, um den Bewegungspfad dazwischen zu beschreiben."
       },
       {
         "name": "Nora Patel",
-        "role": "Social Creative Lead",
-        "quote": "Bei taktilen Clips hilft es, das Ton-Timing in die Eingabe zu schreiben. Die Bewegung wirkt dadurch gezielter statt zufällig."
+        "role": "Retail creative lead",
+        "avatar": "studio",
+        "quote": "Für Verpackungs- und Display-Transformationen schreibe ich den Übergangspfad und behalte den Endframe als Anker. Wan 2.7 ist nützlich, wenn Regal-Layout, Produktausrichtung und Endkarte absichtlich bleiben müssen."
+      },
+      {
+        "name": "Jon Bell",
+        "role": "Campaign motion director",
+        "avatar": "growth",
+        "quote": "Wan 2.7 ist die Version, die ich wähle, wenn der Endzustand genauso wichtig ist wie die Bewegung. Es erlaubt mir, einen Kampagnenbeat zu testen, der von einem sauberen Hero-Frame startet und in einem geplanten Produkt-Lockup endet."
+      },
+      {
+        "name": "Clara Evans",
+        "role": "Social launch editor",
+        "avatar": "social",
+        "quote": "Wenn ein Launch-Clip mit einem visuellen Element öffnen und mit einer präzisen Enthüllung enden muss, erspart mir Wan 2.7 das Raten. Ich kann den Hook kurz halten und trotzdem kontrollieren, wo der Betrachter landet."
+      },
+      {
+        "name": "Owen Miller",
+        "role": "Performance creative strategist",
+        "avatar": "performance",
+        "quote": "Für Paid-Creative-Tests nutze ich Wan 2.7, wenn wir bereits den Start und die finale Produktbotschaft kennen. Die Erstes/Letztes-Frame-Steuerung gibt uns sauberere Varianten zum Vergleich von Übergangsgeschwindigkeit, Framing und finaler Erinnerung."
       }
     ]
   },

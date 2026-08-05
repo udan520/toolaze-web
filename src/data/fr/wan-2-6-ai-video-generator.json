@@ -1,0 +1,310 @@
+{
+  "in_menu": true,
+  "seoFactoryTaskId": "2026-08-03-wan-2-6-ai-video-generator",
+  "topComponent": "wan-2-6-ai-video-generator",
+  "topTool": {
+    "modelId": "wan-2-6",
+    "defaultMode": "text-to-video",
+    "mode": "text-to-video",
+    "displayName": "Wan 2.6"
+  },
+  "metadata": {
+    "title": "Générateur vidéo IA Wan 2.6 | Cuts de revue 15 s avec audio",
+    "description": "Utilisez Wan 2.6 pour des brouillons Wan plus longs de 5, 10 ou 15 secondes avec audio natif, animation plus stable depuis une image et assez de timing pour demos produit ou étapes pédagogiques.",
+    "published": true
+  },
+  "hero": {
+    "h1": "<span class=\"text-gradient\">Wan 2.6</span> Générateur vidéo IA",
+    "desc": "Générez des vidéos Wan 2.6 lorsqu’un croquis Wan 2.5 rapide a besoin de plus de durée, d’une animation plus stable depuis une image et d’audio natif. Créez des cuts de revue 720p/1080p de 5, 10 ou 15 secondes pour demos produit, étapes de formation, mouvements storefront, beats de recette et brouillons de marque guidés par le son."
+  },
+  "heroDemoVideo": {
+    "src": "https://assets.toolaze.com/uploads/c07d1db481dd4e9b8e190ebb39611f08.png",
+    "ariaLabel": "Toolaze Wan 2.6 16:9 demo video preview",
+    "width": 16,
+    "height": 9,
+    "sourceHistory": "Temporary stable R2 video preview reused until a dedicated Wan 2.6 16:9 demo is available",
+    "poster": "https://assets.toolaze.com/uploads/6e2548965fc5487ca41221f9d663dfcb.webp",
+    "duration": "PT5.01S",
+    "uploadDate": "2026-08-02T02:59:44.000Z",
+    "type": "video"
+  },
+  "sectionsOrder": [
+    "modelIntro",
+    "performanceMetrics",
+    "howToUse",
+    "promptExamples",
+    "troubleshooting",
+    "modelComparison",
+    "testimonials",
+    "faq"
+  ],
+  "modelIntro": {
+    "title": "Qu’est-ce que le générateur vidéo IA Wan 2.6 ?",
+    "modelName": "Wan 2.6",
+    "modelType": "Longer AI Video Review Model",
+    "description": [
+      "Wan 2.6 est la version Wan qui transforme une idée prometteuse en cut de revue plus long. Le setup reste simple — texte ou une image de référence — tout en offrant jusqu’à 15 secondes pour montrer une séquence lisible.",
+      "Choisissez-le une fois que le concept mérite d’être développé : walkthroughs produit, étapes de recette ou d’assemblage, displays retail, mouvements beauté, clips de formation et brouillons calés sur le son avec début, détail d’action et hold final."
+    ]
+  },
+  "performanceMetrics": {
+    "title": "Aperçu du cut de revue Wan 2.6",
+    "metrics": [
+      {
+        "label": "Tâche principale",
+        "value": "Brouillons de revue plus longs après qu’un croquis a validé l’idée"
+      },
+      {
+        "label": "Avantage de durée",
+        "value": "Ajoute une option de 15 secondes que Wan 2.5 ne propose pas"
+      },
+      {
+        "label": "Meilleure entrée",
+        "value": "Prompt texte ou image JPG, PNG ou WebP nette jusqu’à 10 Mo et au moins 256x256px"
+      },
+      {
+        "label": "Style de séquence",
+        "value": "Setup d’ouverture, un détail d’action, timing sonore et hold final pour reviewers"
+      },
+      {
+        "label": "Audio natif",
+        "value": "Utile pour ambiance, sons d’outil, mouvement de tissu, manipulation d’ingrédients, packaging et contacts produit"
+      },
+      {
+        "label": "Durée",
+        "value": "5, 10 ou 15 secondes pour pacing de revue et beats pédagogiques"
+      },
+      {
+        "label": "Résolution",
+        "value": "720p ou 1080p ; le mode texte prend en charge 16:9, 9:16 et 1:1"
+      },
+      {
+        "label": "Position coût",
+        "value": "Démarre à 140 crédits pour une sortie 720p de 5 secondes, car c’est le passage Wan plus long et plus stable après le screening"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Comment utiliser Wan 2.6 pour des cuts de revue de 15 secondes",
+    "steps": [
+      {
+        "title": "Apportez une direction validée",
+        "desc": "Partez d’un hook, d’un shot produit ou d’une idée de mouvement qui a déjà survécu à une passe de croquis moins coûteuse."
+      },
+      {
+        "title": "Planifiez la séquence de revue",
+        "desc": "Écrivez le setup d’ouverture, l’action principale, ce qui doit rester stable, le moment sonore et le hold final."
+      },
+      {
+        "title": "Utilisez une référence comme ancre",
+        "desc": "Importez une image fixe lorsque packaging, layout, visage, pièce ou identité d’objet doivent rester reconnaissables tout au long du clip plus long."
+      },
+      {
+        "title": "Vérifiez pacing et audio ensemble",
+        "desc": "Vérifiez si le timing de 10 ou 15 secondes laisse assez d’espace pour l’action, le signal audio et le hold final."
+      }
+    ]
+  },
+  "modelComparison": {
+    "title": "Cuts de revue Wan 2.6 vs tests budget Wan 2.5",
+    "subtitle": "Utilisez ce tableau quand un croquis peu coûteux a validé l’idée et que vous avez besoin de plus de temps, de pacing et de direction sonore.",
+    "columnHeaders": {
+      "metric": "Décision de cut de revue",
+      "baseline": "Wan 2.6",
+      "target": "Wan 2.5"
+    },
+    "rows": [
+      {
+        "label": "Rôle production",
+        "baseline": "Passage de revue plus long pour séquences de 5, 10 ou 15 secondes.",
+        "target": "Passage de screening peu coûteux avant décisions de production."
+      },
+      {
+        "label": "Avantage durée",
+        "baseline": "Ajoute un timing de 15 secondes pour un pacing plus complet.",
+        "target": "Limité à 5 ou 10 secondes pour des checks de brouillon."
+      },
+      {
+        "label": "Question de revue",
+        "baseline": "L’action se lit-elle clairement dans le temps ?",
+        "target": "L’idée de mouvement de base mérite-t-elle de continuer ?"
+      },
+      {
+        "label": "Planification prompt",
+        "baseline": "Ouverture, détail d’action, référence stable, audio natif, hold final.",
+        "target": "Un objet ou une scène, un mouvement court, un signal sonore."
+      },
+      {
+        "label": "Type de travail",
+        "baseline": "Démos produit, instructions, mouvement storefront, clips de formation.",
+        "target": "Tests de hook, rotations produit, échantillons texture, animation rapide d’image fixe."
+      },
+      {
+        "label": "Choisir une autre version quand",
+        "baseline": "Utilisez Wan 2.6 quand l’idée mérite plus de durée.",
+        "target": "Utilisez Wan 2.5 quand vous avez encore besoin d’un rejet moins coûteux."
+      }
+    ],
+    "featuredColumn": "baseline"
+  },
+  "testimonials": {
+    "title": "Ce que les utilisateurs disent de Wan 2.6",
+    "subtitle": "Les créateurs utilisent Wan 2.6 quand un concept est prêt pour un brouillon de revue plus long avec pacing, audio et continuité depuis une image.",
+    "maxItems": 3,
+    "showStars": false,
+    "showAvatars": true,
+    "items": [
+      {
+        "name": "Lena Ortiz",
+        "role": "Productrice vidéo social",
+        "avatar": "social",
+        "quote": "Wan 2.6 est la version que j’utilise après qu’un premier hook fonctionne. Le timing de 15 secondes me laisse ajouter le setup, montrer l’action produit et garder un hold final pour revue."
+      },
+      {
+        "name": "Marcus Lee",
+        "role": "Créatif produit",
+        "avatar": "photo",
+        "quote": "Pour les vidéos retail, la forme du produit et l’étiquette doivent rester stables plus longtemps qu’une boucle rapide. Wan 2.6 me donne un meilleur brouillon de revue avant la validation finale de production."
+      },
+      {
+        "name": "Ari Novak",
+        "role": "Éditeur contenu formation",
+        "avatar": "studio",
+        "quote": "Les clips pédagogiques ont besoin de pacing. J’utilise Wan 2.6 pour les étapes d’assemblage ou de recette, car je peux décrire la séquence et les signaux audio sans compliquer le brouillon."
+      }
+    ]
+  },
+  "faqTitle": "FAQ du générateur vidéo IA Wan 2.6",
+  "faq": [
+    {
+      "q": "Qu’est-ce qui fait de Wan 2.6 un modèle de cut de revue ?",
+      "a": "Wan 2.6 donne à une idée validée assez d’espace pour montrer setup, détail d’action, timing audio et hold final. Il est plus fort après l’étape de screening bon marché, pas avant."
+    },
+    {
+      "q": "Quand choisir l’option 15 secondes ?",
+      "a": "Choisissez 15 secondes lorsque les reviewers doivent inspecter plus qu’un hook : walkthrough produit, étape d’assemblage, mouvement retail ou beat de recette avec début, milieu et hold."
+    },
+    {
+      "q": "Comment structurer un prompt Wan 2.6 ?",
+      "a": "Écrivez-le comme une timeline compacte : setup, action principale, moment de détail, éléments stables, cue audio et hold final. Cela aide à juger pacing et continuité."
+    },
+    {
+      "q": "Wan 2.6 fonctionne-t-il avec une seule image de référence ?",
+      "a": "Oui. Utilisez une image importée lorsque packaging, layout de pièce, forme du produit, visage ou identité d’objet doivent rester reconnaissables dans le clip plus long."
+    },
+    {
+      "q": "Quels détails audio inclure ?",
+      "a": "Nommez des moments audio pratiques : clics d’outil, contact packaging, mouvement de tissu, manipulation d’ingrédients, ambiance de pièce, raclement de surface ou hold final calme."
+    },
+    {
+      "q": "Wan 2.6 convient-il à une validation client ?",
+      "a": "Oui, quand le client doit comprendre le timing et le mouvement avant la production finale. Il donne plus de contexte que Wan 2.5 tout en gardant une configuration simple."
+    },
+    {
+      "q": "Quand éviter Wan 2.6 ?",
+      "a": "Évitez-le si vous testez encore beaucoup de hooks peu coûteux ; utilisez d’abord Wan 2.5. Évitez-le aussi si la séquence, la référence stable ou le plan audio ne sont pas clairs."
+    },
+    {
+      "q": "Combien de crédits Toolaze coûte Wan 2.6 ?",
+      "a": "Wan 2.6 démarre à 140 crédits pour une sortie 720p de 5 secondes. Une durée plus longue ou 1080p augmente les crédits nécessaires avant génération."
+    },
+    {
+      "q": "Wan 2.6 a-t-il besoin d’une image finale séparée ?",
+      "a": "Non. Wan 2.6 repose sur du texte ou une image de référence, une timeline compacte, des signaux audio natifs et un hold final généré depuis le prompt."
+    }
+  ],
+  "moreTools": "Plus de modèles vidéo IA",
+  "moreToolsLinks": [
+    {
+      "title": "Wan 2.5",
+      "description": "Utilisez Wan 2.5 pour un screening de hook moins coûteux avant un cut de revue plus long.",
+      "href": "/model/wan-2-5-ai-video-generator",
+      "media": {
+        "type": "video",
+        "src": "/model-assets/grok-imagine-video-1-5/grok-hero-demo-16x9.mp4",
+        "poster": "https://assets.toolaze.com/model-assets/grok-imagine-video-1-5/grok-hero-demo-16x9-poster.webp",
+        "duration": "PT5.042S",
+        "uploadDate": "2026-08-04T20:01:05.000Z",
+        "alt": "Aperçu vidéo Wan 2.5"
+      }
+    },
+    {
+      "title": "Seedance 2.0",
+      "description": "Utilisez Seedance 2.0 pour une planification de scènes façon réalisateur et des clips commerciaux riches en références.",
+      "href": "/model/seedance-2",
+      "media": {
+        "type": "video",
+        "src": "https://assets.toolaze.com/uploads/d0d55df5eef346809067197fddb1b251.png",
+        "alt": "Aperçu vidéo Seedance 2.0",
+        "poster": "https://assets.toolaze.com/uploads/d0d55df5eef346809067197fddb1b251-poster.webp",
+        "duration": "PT5.042S",
+        "uploadDate": "2026-07-21T17:20:41.000Z"
+      }
+    },
+    {
+      "title": "Kling 3.0",
+      "description": "Essayez Kling 3.0 pour du mouvement dynamique, une caméra cinématique et des scènes d’action plus nettes.",
+      "href": "/model/kling-3",
+      "media": {
+        "type": "video",
+        "src": "https://assets.toolaze.com/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
+        "alt": "Aperçu vidéo Kling 3.0",
+        "poster": "https://assets.toolaze.com/uploads/56bb211041b34c5f8f27d3c0208322e7-poster.webp",
+        "duration": "PT5.042S",
+        "uploadDate": "2026-07-21T17:21:01.000Z"
+      }
+    }
+  ],
+  "promptExamples": {
+    "title": "Prompts de cuts de revue Wan 2.6",
+    "subtitle": "Utilisez-les quand un concept dépasse le screening bon marché et nécessite timing, audio et une séquence de revue plus claire.",
+    "layout": "grid",
+    "items": [
+      {
+        "title": "Walkthrough produit de 15 secondes",
+        "prompt": "Create a 15-second review draft from the uploaded product image. Open on the full package, move into a close detail of the texture and label, show a hand interaction, then end with a stable final hold. Add soft studio ambience, packaging contact sounds, and a clean product placement rhythm.",
+        "description": "Utilise Wan 2.6 pour une séquence de revue produit plus complète.",
+        "aspectRatio": "16:9"
+      },
+      {
+        "title": "Brouillon étape de formation",
+        "prompt": "Generate a clear instructional clip showing a technician placing a small part, tightening one screw, checking alignment, and pausing for the final inspection. Keep the camera steady, the hands readable, and each step separated by natural tool sounds so reviewers can follow the action.",
+        "description": "Montre pourquoi Wan 2.6 convient au mouvement pédagogique lisible.",
+        "aspectRatio": "16:9"
+      },
+      {
+        "title": "Mouvement display retail",
+        "prompt": "Animate the uploaded storefront display as a 10-second brand review cut. Start with a wide view, push slowly toward the featured shelf, let small lights turn on in sequence, and finish on the hero product. Keep signage, packaging edges, and shelf layout stable while adding gentle store ambience.",
+        "description": "Utilise une image comme ancre pour un brouillon display plus long.",
+        "aspectRatio": "9:16"
+      },
+      {
+        "title": "Beat recette guidé par le son",
+        "prompt": "Create a 15-second overhead cooking draft: ingredients slide into place, sauce pours into a bowl, a spoon stirs twice, and the final plated texture holds for review. Add pour, scrape, bowl contact, and soft kitchen room tone. Keep the sequence paced for stakeholder feedback.",
+        "description": "Met l’accent sur l’audio natif et le pacing de 15 secondes.",
+        "aspectRatio": "1:1"
+      }
+    ]
+  },
+  "troubleshooting": {
+    "title": "Conseils de prompt pour les cuts de revue Wan 2.6",
+    "subtitle": "Wan 2.6 fonctionne mieux lorsque le prompt ressemble à une timeline compacte pour reviewers.",
+    "items": [
+      {
+        "title": "Écrire des beats de timeline",
+        "desc": "Prompt faible : rends-le professionnel. Meilleur prompt :",
+        "prompt": "Build a 15-second review timeline: three seconds of setup, six seconds of the main handling action, three seconds for detail texture, then a final three-second hold for feedback. Keep camera speed slow and stable."
+      },
+      {
+        "title": "Nommer ce que les reviewers doivent inspecter",
+        "desc": "Prompt faible : montre bien le produit. Meilleur prompt :",
+        "prompt": "Show the closure, seam, label edge, and hand contact clearly enough for stakeholder review. Keep the package shape consistent, add soft studio ambience, and pause on the final front-facing view."
+      },
+      {
+        "title": "Associer pacing et audio",
+        "desc": "Prompt faible : ajoute du son. Meilleur prompt :",
+        "prompt": "Time the audio to the review sequence: room tone during setup, one soft tool click during the action, a light surface scrape during the detail moment, and a quiet final ambience bed during the hold."
+      }
+    ]
+  }
+}

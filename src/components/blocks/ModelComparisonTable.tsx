@@ -21,6 +21,65 @@ interface ModelComparisonTableProps {
   bgClass?: string
 }
 
+type BooleanCellKind = 'yes' | 'no'
+
+const yesValues = new Set(['yes', 'ja', 'sí', 'oui', 'sì', 'sim', 'はい', '예', '是'])
+const noValues = new Set(['no', 'nein', 'non', 'não', 'いいえ', '아니요', '否'])
+
+function getBooleanCellKind(value?: string) {
+  const normalized = value?.trim().toLowerCase()
+
+  if (!normalized) return null
+  if (yesValues.has(normalized)) return 'yes'
+  if (noValues.has(normalized)) return 'no'
+
+  return null
+}
+
+function BooleanComparisonIcon({ kind, label }: { kind: BooleanCellKind; label: string }) {
+  const isSupported = kind === 'yes'
+
+  return (
+    <span aria-label={label} className="flex w-full items-center justify-center" role="img">
+      <span
+        className={`inline-flex h-6 w-6 items-center justify-center rounded-full ${
+          isSupported ? 'bg-emerald-50 text-emerald-600 ring-1 ring-emerald-200' : 'bg-rose-50 text-rose-500 ring-1 ring-rose-200'
+        }`}
+      >
+        {isSupported ? (
+          <svg aria-hidden="true" className="h-4 w-4" fill="none" viewBox="0 0 20 20">
+            <path
+              d="M5 10.2 8.4 13.5 15 6.5"
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2.4"
+            />
+          </svg>
+        ) : (
+          <svg aria-hidden="true" className="h-4 w-4" fill="none" viewBox="0 0 20 20">
+            <path
+              d="m6.3 6.3 7.4 7.4m0-7.4-7.4 7.4"
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2.3"
+            />
+          </svg>
+        )}
+      </span>
+    </span>
+  )
+}
+
+function renderComparisonValue(value?: string) {
+  const kind = getBooleanCellKind(value)
+
+  if (kind) return <BooleanComparisonIcon kind={kind} label={value || kind} />
+
+  return value
+}
+
 export default function ModelComparisonTable({
   title,
   subtitle,
@@ -79,15 +138,15 @@ export default function ModelComparisonTable({
                       {row.label}
                     </td>
                     <td className={`px-6 py-5 text-sm align-top leading-relaxed ${getCellTone('baseline')}`}>
-                      {row.baseline}
+                      {renderComparisonValue(row.baseline)}
                     </td>
                     {hasMiddleColumn && (
                       <td className={`px-6 py-5 text-sm align-top leading-relaxed ${getCellTone('middle')}`}>
-                        {row.middle}
+                        {renderComparisonValue(row.middle)}
                       </td>
                     )}
                     <td className={`px-6 py-5 text-sm align-top leading-relaxed ${getCellTone('target')}`}>
-                      {row.target}
+                      {renderComparisonValue(row.target)}
                     </td>
                   </tr>
                 ))}

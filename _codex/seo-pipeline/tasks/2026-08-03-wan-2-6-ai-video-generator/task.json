@@ -4,14 +4,22 @@
   "pageType": "l2",
   "status": "ready_for_publish",
   "localeCoverage": [
-    "en"
+    "en",
+    "de",
+    "ja",
+    "es",
+    "zh-TW",
+    "pt",
+    "fr",
+    "ko",
+    "it"
   ],
   "sourceData": "src/data/en/wan-2-6-ai-video-generator.json",
   "canonicalPath": "/model/wan-2-6-ai-video-generator",
   "modelId": "wan-2-6",
   "createdAt": "2026-08-03T00:00:00.000Z",
   "owner": "Codex",
-  "intent": "Create an English-only public Toolaze model SEO landing page for Wan 2.6 AI Video Generator with text-to-video, image-to-video, multi-shot prompting, native audio output, 5/10/15 second duration, and 720p/1080p output.",
+  "intent": "Create a localized public Toolaze model SEO landing page for Wan 2.6 AI Video Generator with text-to-video, image-to-video, structured shot prompting, native audio output, 5/10/15 second duration, and 720p/1080p output.",
   "researchSummary": {
     "officialSignals": [
       "Alibaba Cloud Model Studio positions Wan 2.6 as the video-generation upgrade after Wan 2.5, with stronger scene consistency, camera motion, aspect-ratio handling, and audio-video synchronization.",
@@ -24,8 +32,16 @@
       "The Toolaze page should keep claims limited to official Wan 2.6 signals and Toolaze-supported controls rather than copying unsupported reference-video limits."
     ]
   },
-  "releaseBoundary": "Public landing-page scope includes English route, localized redirect mapping, model navigation entry points, footer entry, model hub href, sitemap English URL, language-switch English-only support, public English data, SEO Factory run records, and targeted tests. SEO Factory dashboards, admin routes, backend migrations, production deploys, commits, pushes, and non-English page data remain excluded.",
+  "releaseBoundary": "Public landing-page scope includes English and localized model routes, hreflang alternates, model navigation entry points, footer entry, model hub href, sitemap localized URLs, language-switch all-locale support, public multilingual data, SEO Factory run records, and targeted tests. SEO Factory dashboards, admin routes, backend migrations, production deploys, commits, and pushes remain excluded.",
   "publicEntrypoints": [
-    "/model/wan-2-6-ai-video-generator"
+    "/model/wan-2-6-ai-video-generator",
+    "/de/model/wan-2-6-ai-video-generator",
+    "/ja/model/wan-2-6-ai-video-generator",
+    "/es/model/wan-2-6-ai-video-generator",
+    "/zh-TW/model/wan-2-6-ai-video-generator",
+    "/pt/model/wan-2-6-ai-video-generator",
+    "/fr/model/wan-2-6-ai-video-generator",
+    "/ko/model/wan-2-6-ai-video-generator",
+    "/it/model/wan-2-6-ai-video-generator"
   ]
 }

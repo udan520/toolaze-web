@@ -13,7 +13,21 @@ const relatedVideoR2Assets = new Set([
   'https://assets.toolaze.com/uploads/d0d55df5eef346809067197fddb1b251.png',
   'https://assets.toolaze.com/uploads/56bb211041b34c5f8f27d3c0208322e7.png',
 ])
-const r2UrlPattern = /^https:\/\/pub-[a-z0-9]+\.r2\.dev\/.+/i
+const stableLandingAssetUrlPattern = /^https:\/\/(?:pub-[a-z0-9]+\.r2\.dev|assets\.toolaze\.com\/uploads)\/.+/i
+const onlineBaselineFaqQuestions = [
+  'What is Wan 2.7 AI Video Generator?',
+  'What creation modes does Wan 2.7 support?',
+  'Can Wan 2.7 use image references?',
+  'Can Wan 2.7 use video references?',
+  'Does Wan 2.7 support native audio?',
+  'Does Wan 2.7 support multi-shot videos?',
+  'What duration and resolution can Wan 2.7 create?',
+  'How should I write a Wan 2.7 prompt?',
+  'How many Toolaze Credits does Wan 2.7 cost?',
+  'Is Wan 2.7 free on Toolaze?',
+  'When should I choose Wan 2.7 instead of Wan 2.6 or Wan 2.5?',
+  'When should I choose another Toolaze video model?',
+]
 
 function readJson(path) {
   return JSON.parse(readFileSync(path, 'utf8'))
@@ -25,6 +39,7 @@ function countOccurrences(source, value) {
 
 function collectVisibleStrings(value, path = []) {
   const ignoredKeys = new Set([
+    'avatar',
     'defaultMode',
     'featuredColumn',
     'href',
@@ -72,8 +87,8 @@ test('Wan 2.7 model page exposes English and localized model routes', () => {
 test('Wan 2.7 content is published for every supported locale and traceable to SEO Factory', () => {
   const queue = readJson(join(root, '_codex', 'seo-pipeline', 'queue', 'ready.json'))
   assert.ok(queue.tasks.some((task) => task.taskId === taskId && task.slug === slug && task.status === 'ready_for_publish'))
-  assert.match(wan27DemoVideo, r2UrlPattern, 'Wan 2.7 demo video should use R2 before publishing')
-  assert.match(wan27DemoPoster, r2UrlPattern, 'Wan 2.7 demo poster should use R2 before publishing')
+  assert.match(wan27DemoVideo, stableLandingAssetUrlPattern, 'Wan 2.7 demo video should use a stable landing asset URL')
+  assert.match(wan27DemoPoster, stableLandingAssetUrlPattern, 'Wan 2.7 demo poster should use a stable landing asset URL')
 
   const task = readJson(join(root, '_codex', 'seo-pipeline', 'tasks', taskId, 'task.json'))
   assert.equal(task.slug, slug)
@@ -183,16 +198,31 @@ test('Wan 2.7 SEO sections follow the conversion-first order without duplicate u
     assert.ok(content.performanceMetrics?.title, `${locale} capability snapshot should have a localized title`)
     assert.ok(content.performanceMetrics?.metrics?.length >= 7, `${locale} capability snapshot should include official Wan 2.7 capability rows`)
     assert.equal(content.sectionsOrder.includes('testimonials'), true, `${locale} should include user comments before FAQ`)
-    assert.equal(content.testimonials?.items?.length, 3, `${locale} should include three practical testimonials`)
     if (locale === 'en') {
       assert.match(content.performanceMetrics?.title || '', /Capability Snapshot/)
+      assert.equal(content.testimonials?.maxItems, 6, `${locale} should render six testimonial cards`)
+      assert.equal(content.testimonials?.showStars, false, `${locale} should avoid fake star ratings`)
+      assert.equal(content.testimonials?.showAvatars, true, `${locale} should use line-drawn character avatars`)
+      assert.equal(content.testimonials?.items?.length, 6, `${locale} should include six scenario-rich testimonials`)
+      assert.equal(new Set(content.testimonials.items.map((item) => item.avatar)).size, 6, `${locale} should use distinct non-human avatar variants`)
+      assert.equal(new Set(content.testimonials.items.map((item) => item.role)).size, 6, `${locale} should cover distinct creator roles`)
+      assert.ok(
+        content.testimonials.items.every((item) => item.quote.split(/\s+/).length >= 28),
+        `${locale} testimonials should read like specific user notes, not short generic blurbs`
+      )
       assert.ok(
         content.troubleshooting?.items?.every((item) => /Weak prompt:/i.test(item.desc || '') && item.prompt),
         `${locale} prompt tips should include weak and stronger prompt rewrites`
       )
     } else {
+      assert.equal(content.testimonials?.maxItems, 6, `${locale} should render six testimonial cards`)
+      assert.equal(content.testimonials?.showStars, false, `${locale} should avoid fake star ratings`)
+      assert.equal(content.testimonials?.showAvatars, true, `${locale} should use line-drawn character avatars`)
+      assert.equal(content.testimonials?.items?.length, 6, `${locale} should include six localized testimonials`)
+      assert.equal(new Set(content.testimonials.items.map((item) => item.avatar)).size, 6, `${locale} should use distinct non-human avatar variants`)
       assert.notEqual(content.performanceMetrics?.title, 'Wan 2.7 Capability Snapshot', `${locale} capability snapshot title should be localized`)
-      assert.notEqual(content.testimonials?.title, 'Creator Notes on Wan 2.7', `${locale} testimonials title should be localized`)
+      assert.notEqual(content.testimonials?.title, 'What Users Say About Wan 2.7 AI Video Generator', `${locale} testimonials title should be localized`)
+      assert.doesNotMatch(content.testimonials?.title || '', /Creator Notes/i, `${locale} testimonials title should not use editor-note wording`)
     }
     assert.ok(content.workflowComparison?.rows?.length >= 4, `${locale} should keep a cross-model comparison`)
     assert.doesNotMatch(
@@ -227,14 +257,40 @@ test('Wan 2.7 SEO sections follow the conversion-first order without duplicate u
   }
 })
 
+test('Wan 2.7 keeps the live English baseline outside comparison and testimonials', () => {
+  const content = readJson(join(root, 'src', 'data', 'en', `${slug}.json`))
+
+  assert.equal(content.metadata.title, 'Wan 2.7 AI Video Generator | Text, Image & Reference Video')
+  assert.equal(
+    content.hero.desc,
+    'Create Wan 2.7 videos from text, images, video references, or audio direction. Use multi-shot prompts, first/last-frame transitions, continuation scenes, and synchronized sound for short cinematic clips at 720p or 1080p.'
+  )
+  assert.equal(
+    content.modelIntro.description[0],
+    "Wan 2.7 is Alibaba's video generation model family for text-to-video, image-to-video, and reference-to-video creation. It is built for short clips that need stronger prompt following, reference-guided subjects, multi-shot structure, camera direction, and synchronized audio cues."
+  )
+  assert.equal(
+    content.promptExamples.subtitle,
+    'Copy these examples when you need multi-shot motion, reference control, first/last-frame transitions, or synchronized sound.'
+  )
+  assert.equal(content.scenes[0]?.title, 'Multi-Shot Product Ads')
+  assert.equal(content.workflowComparison.title, 'Wan 2.7 vs Other Toolaze Video Models')
+})
+
+test('Wan 2.7 FAQ keeps the live 12-question coverage instead of over-pruning', () => {
+  const content = readJson(join(root, 'src', 'data', 'en', `${slug}.json`))
+
+  assert.deepEqual(content.faq.map((item) => item.q), onlineBaselineFaqQuestions)
+})
+
 test('Wan 2.7 production release media can be gated to R2 URLs', { skip: process.env.TOOLAZE_RELEASE_CHECK === '1' ? false : 'Set TOOLAZE_RELEASE_CHECK=1 before publishing Wan 2.7' }, () => {
   const content = readJson(join(root, 'src', 'data', 'en', `${slug}.json`))
   const aiToolsCopy = readFileSync(join(root, 'src', 'app', 'ai-tools', 'copy.ts'), 'utf8')
 
-  assert.match(content.heroDemoVideo.src, r2UrlPattern, 'Wan 2.7 hero demo video should use an R2 URL before production release')
-  assert.match(content.heroDemoVideo.poster, r2UrlPattern, 'Wan 2.7 hero demo poster should use an R2 URL before production release')
+  assert.match(content.heroDemoVideo.src, stableLandingAssetUrlPattern, 'Wan 2.7 hero demo video should use a stable landing asset URL before production release')
+  assert.match(content.heroDemoVideo.poster, stableLandingAssetUrlPattern, 'Wan 2.7 hero demo poster should use a stable landing asset URL before production release')
   for (const item of content.moreToolsLinks) {
-    assert.match(item.media.src, r2UrlPattern, `${item.title} related model media should use an R2 URL before production release`)
+    assert.match(item.media.src, stableLandingAssetUrlPattern, `${item.title} related model media should use a stable landing asset URL before production release`)
   }
   assert.doesNotMatch(aiToolsCopy, /\/model-assets\/wan-2-7-ai-video-generator\//, 'AI Tools Wan 2.7 card should not ship local Wan 2.7 demo assets')
 })
@@ -243,11 +299,11 @@ test('Wan 2.7 same-family comparison uses concrete Toolaze differences', () => {
   const content = readJson(join(root, 'src', 'data', 'en', `${slug}.json`))
   const modelComparisonText = JSON.stringify(content.modelComparison)
 
-  assert.match(modelComparisonText, /up to five total image or video references/i)
+  assert.match(modelComparisonText, /One first frame plus an optional last frame/i)
   assert.match(modelComparisonText, /5, 10, or 15 seconds/i)
   assert.match(modelComparisonText, /2 to 15 seconds/i)
   assert.match(modelComparisonText, /Audio-video synchronization/i)
-  assert.match(modelComparisonText, /First-frame, first-and-last-frame, video continuation/i)
+  assert.match(modelComparisonText, /First-frame, first-and-last-frame, and video continuation-style planning/i)
   assert.match(modelComparisonText, /Starts at 120 Credits/)
   assert.match(modelComparisonText, /Starts at 140 Credits/)
   assert.match(modelComparisonText, /Starts at 64 Credits/)
@@ -286,16 +342,15 @@ test('Wan 2.7 keeps current Toolaze settings while English copy follows official
   const credits = readFileSync(join(root, 'src', 'lib', 'generation-credits.ts'), 'utf8')
   const content = readJson(join(root, 'src', 'data', 'en', `${slug}.json`))
 
-  assert.match(config, /id:\s*'wan-2-7'[\s\S]*durations:\s*Array\.from\(\{\s*length:\s*9\s*\},\s*\(_,\s*index\)\s*=>\s*index\s*\+\s*2\)/)
+  assert.match(config, /id:\s*'wan-2-7'[\s\S]*durations:\s*Array\.from\(\{\s*length:\s*14\s*\},\s*\(_,\s*index\)\s*=>\s*index\s*\+\s*2\)/)
   assert.match(config, /id:\s*'wan-2-7'[\s\S]*resolutions:\s*\['720p',\s*'1080p'\]/)
-  assert.match(config, /id:\s*'wan-2-7'[\s\S]*maxImages:\s*2/)
+  assert.match(config, /id:\s*'wan-2-7'[\s\S]*maxImages:\s*1/)
   assert.match(credits, /'wan-2-7':\s*\{[\s\S]*ratesByResolution:\s*\{\s*'720p':\s*32,\s*'1080p':\s*48\s*\}/)
   assert.ok(
     content.faq.some((item) => /Toolaze Credits/i.test(item.q) && /64 Credits/.test(item.a)),
     'FAQ should keep the Toolaze Credits guidance'
   )
   const visibleCopy = collectVisibleStrings(content).join('\n')
-  assert.match(visibleCopy, /reference-to-video/i)
   assert.match(visibleCopy, /first-and-last-frame/i)
   assert.match(visibleCopy, /video continuation/i)
   assert.match(visibleCopy, /audio-video synchronization/i)

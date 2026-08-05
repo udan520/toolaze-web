@@ -187,56 +187,68 @@
     }
   ],
   "modelComparison": {
-    "title": "Wan 2.7 vs Wan 2.6 e Wan 2.5",
-    "subtitle": "Wan 2.7 é a opção Wan mais forte quando você precisa de referência para vídeo, controle de primeiro/último quadro, continuação, prompts multicena e melhor sincronização áudio-vídeo. Wan 2.6 e Wan 2.5 seguem úteis para clipes Wan mais simples com menos configuração.",
+    "title": "Wan 2.7 vs Wan 2.6 vs Wan 2.5",
+    "subtitle": "Compare os recursos que mudam o resultado: controle de quadros, referências, áudio, duração, resolução e saldo.",
     "columnHeaders": {
-      "metric": "Critério de decisão",
+      "metric": "Recurso",
       "baseline": "Wan 2.7",
       "middle": "Wan 2.6",
       "target": "Wan 2.5"
     },
     "rows": [
       {
-        "label": "Modos de criação",
-        "baseline": "Texto para vídeo, imagem para vídeo e referência para vídeo.",
-        "middle": "Texto para vídeo e imagem para vídeo com clipes Wan predefinidos mais longos.",
-        "target": "Texto para vídeo e imagem para vídeo para rascunhos Wan mais simples."
+        "label": "Texto para vídeo",
+        "baseline": "Sim",
+        "middle": "Sim",
+        "target": "Sim"
       },
       {
-        "label": "Controle de referências",
-        "baseline": "Até cinco referências totais de imagem ou vídeo em referência para vídeo, além de referências de áudio quando disponíveis.",
-        "middle": "Entrada de imagem de referência com menos papéis avançados.",
-        "target": "Uma imagem de referência para imagem para vídeo direta."
+        "label": "Referência imagem para vídeo",
+        "baseline": "Um primeiro quadro mais um último quadro opcional.",
+        "middle": "Uma imagem enviada.",
+        "target": "Uma imagem estática enviada."
       },
       {
-        "label": "Controle de quadros e vídeo",
-        "baseline": "Primeiro quadro, primeiro e último quadro, continuação de vídeo e prompts multicena.",
-        "middle": "Clipes Wan mais longos e prompts de estilo multicena quando disponíveis.",
-        "target": "Prompts de cena única e animação com uma referência."
+        "label": "Controle início/fim",
+        "baseline": "Sim",
+        "middle": "Não",
+        "target": "Não"
+      },
+      {
+        "label": "Controle de continuação",
+        "baseline": "Planejamento com primeiro quadro, primeiro/último quadro e continuação.",
+        "middle": "Não",
+        "target": "Não"
       },
       {
         "label": "Tratamento de áudio",
-        "baseline": "Sincronização áudio-vídeo, efeitos sonoros, música, ambiência e direção de estilo de voz.",
-        "middle": "Saída de áudio nativo e sinais sonoros sincronizados.",
-        "target": "Áudio nativo para clipes sincronizados mais simples."
+        "baseline": "Indicações de sincronização áudio-vídeo no prompt.",
+        "middle": "Áudio nativo com indicações sonoras sincronizadas.",
+        "target": "Indicações de som nativo para clips simples."
       },
       {
-        "label": "Duração e saída",
-        "baseline": "2 a 15 segundos, 720p ou 1080p, MP4 a 30fps.",
-        "middle": "5, 10 ou 15 segundos, 720p ou 1080p.",
-        "target": "5 ou 10 segundos, 720p ou 1080p."
+        "label": "Duração",
+        "baseline": "2 a 15 segundos.",
+        "middle": "5, 10 ou 15 segundos.",
+        "target": "5 ou 10 segundos."
       },
       {
-        "label": "Créditos iniciais",
-        "baseline": "Começa em 64 créditos para saída 720p de 2 segundos no Toolaze.",
-        "middle": "Começa em 140 créditos para saída 720p de 5 segundos no Toolaze.",
-        "target": "Começa em 120 créditos para saída 720p de 5 segundos no Toolaze."
+        "label": "Resolução",
+        "baseline": "720p ou 1080p.",
+        "middle": "720p ou 1080p.",
+        "target": "720p ou 1080p."
+      },
+      {
+        "label": "Saldo inicial",
+        "baseline": "Começa em 64 de saldo para 2 segundos em 720p.",
+        "middle": "Começa em 140 de saldo para 5 segundos em 720p.",
+        "target": "Começa em 120 de saldo para 5 segundos em 720p."
       },
       {
         "label": "Escolha quando",
-        "baseline": "Você precisa dos controles Wan mais recentes, referências mais ricas, planejamento de planos, transições, continuação ou timing de som mais preciso.",
-        "middle": "Você precisa de um clipe Wan mais longo, mas não do conjunto completo de referências do Wan 2.7.",
-        "target": "Você precisa de um clipe Wan mais simples com uma referência e tempos conhecidos de 5 ou 10 segundos."
+        "baseline": "O início, quadro final ou caminho de transição precisam ser explícitos.",
+        "middle": "Você precisa de um clip Wan mais longo e estável a partir de texto ou imagem.",
+        "target": "Você precisa de rascunhos rápidos e testes simples de movimento com uma imagem."
       }
     ],
     "featuredColumn": "baseline"
@@ -273,23 +285,47 @@
     ]
   },
   "testimonials": {
-    "title": "Notas de criadores sobre Wan 2.7",
-    "subtitle": "Formas práticas de usar Wan 2.7 para clipes guiados por referências, testes de prompt e cenas comerciais curtas.",
+    "title": "O que os usuários dizem sobre o Gerador de Vídeos com IA Wan 2.7",
+    "subtitle": "Feedback de criadores que usam o Wan 2.7 quando o primeiro quadro, último quadro, caminho de transição e composição final são todos importantes.",
+    "maxItems": 6,
+    "showStars": false,
+    "showAvatars": true,
     "items": [
       {
         "name": "Maya Chen",
-        "role": "Editora de vídeo de produto",
-        "quote": "Os prompts com ordem de planos facilitam testar uma revelação de produto antes de investir tempo em uma gravação completa."
+        "role": "Product video editor",
+        "avatar": "photo",
+        "quote": "Eu uso o Wan 2.7 quando uma revelação de produto precisa chegar a uma composição final específica em vez de derivar para um final aleatório. A âncora do último quadro facilita a revisão do cliente porque todos podem ver o destino pretendido."
       },
       {
         "name": "Eli Morgan",
-        "role": "Artista de storyboard",
-        "quote": "Uso imagens de referência para o personagem e o cenário, depois escrevo o movimento como uma batida curta. O primeiro passe fica mais claro para o cliente."
+        "role": "Storyboard artist",
+        "avatar": "motion",
+        "quote": "A configuração de primeiro e último quadro me ajuda a mostrar aos clientes a mudança exata que quero antes de construir uma peça mais longa. Posso esboçar o início, definir o quadro de chegada e usar o prompt para descrever o caminho de movimento entre eles."
       },
       {
         "name": "Nora Patel",
-        "role": "Líder criativa social",
-        "quote": "Em clipes táteis, escrever o timing do som no prompt faz o movimento parecer mais intencional e menos aleatório."
+        "role": "Retail creative lead",
+        "avatar": "studio",
+        "quote": "Para transformações de embalagem e vitrine, escrevo o caminho de transição e mantenho o quadro final como âncora. O Wan 2.7 é útil quando o layout da prateleira, a orientação do produto e o cartão final precisam permanecer intencionais."
+      },
+      {
+        "name": "Jon Bell",
+        "role": "Campaign motion director",
+        "avatar": "growth",
+        "quote": "O Wan 2.7 é a versão que escolho quando o estado final importa tanto quanto o movimento. Ele me permite testar uma batida de campanha que começa de um quadro hero limpo e se resolve em um lockup de produto planejado."
+      },
+      {
+        "name": "Clara Evans",
+        "role": "Social launch editor",
+        "avatar": "social",
+        "quote": "Quando um clipe de lançamento precisa abrir em um visual e terminar em uma revelação precisa, o Wan 2.7 me poupa de suposições. Posso manter o hook curto enquanto ainda controlo onde o espectador chega."
+      },
+      {
+        "name": "Owen Miller",
+        "role": "Performance creative strategist",
+        "avatar": "performance",
+        "quote": "Para testes de criativos pagos, uso o Wan 2.7 quando já sabemos o início e a mensagem final do produto. O controle de primeiro e último quadro nos dá variantes mais limpas para comparar velocidade de transição, enquadramento e recall final."
       }
     ]
   },

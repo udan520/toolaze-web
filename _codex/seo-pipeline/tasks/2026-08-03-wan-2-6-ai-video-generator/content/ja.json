@@ -1,0 +1,310 @@
+{
+  "in_menu": true,
+  "seoFactoryTaskId": "2026-08-03-wan-2-6-ai-video-generator",
+  "topComponent": "wan-2-6-ai-video-generator",
+  "topTool": {
+    "modelId": "wan-2-6",
+    "defaultMode": "text-to-video",
+    "mode": "text-to-video",
+    "displayName": "Wan 2.6"
+  },
+  "metadata": {
+    "title": "Wan 2.6 AI動画生成 | 音声付き15秒レビューカット",
+    "description": "Wan 2.6は、5秒・10秒・15秒の長めのWanレビュー下書き、ネイティブ音声、より安定した1枚画像アニメーション、商品デモや手順説明に必要なタイミングに向いています。",
+    "published": true
+  },
+  "hero": {
+    "h1": "<span class=\"text-gradient\">Wan 2.6</span> AI動画ジェネレーター",
+    "desc": "Wan 2.5の短いスケッチに、より長い尺、安定した1枚画像アニメーション、ネイティブ音声が必要なときWan 2.6を使います。5秒・10秒・15秒の720p/1080pレビューカットで、商品デモ、トレーニング手順、店頭演出、レシピのビート、音主導のブランド下書きを作れます。"
+  },
+  "heroDemoVideo": {
+    "src": "https://assets.toolaze.com/uploads/c07d1db481dd4e9b8e190ebb39611f08.png",
+    "ariaLabel": "Toolaze Wan 2.6 16:9 demo video preview",
+    "width": 16,
+    "height": 9,
+    "sourceHistory": "Temporary stable R2 video preview reused until a dedicated Wan 2.6 16:9 demo is available",
+    "poster": "https://assets.toolaze.com/uploads/6e2548965fc5487ca41221f9d663dfcb.webp",
+    "duration": "PT5.01S",
+    "uploadDate": "2026-08-02T02:59:44.000Z",
+    "type": "video"
+  },
+  "sectionsOrder": [
+    "modelIntro",
+    "performanceMetrics",
+    "howToUse",
+    "promptExamples",
+    "troubleshooting",
+    "modelComparison",
+    "testimonials",
+    "faq"
+  ],
+  "modelIntro": {
+    "title": "Wan 2.6 AI動画生成とは？",
+    "modelName": "Wan 2.6",
+    "modelType": "Longer AI Video Review Model",
+    "description": [
+      "Wan 2.6は、有望なアイデアをより長いレビューカットに変えるWanバージョンです。テキストまたは参照画像1枚というシンプルなセットアップのまま、最大15秒で読みやすいシーケンスを見せられます。",
+      "すでに発展させる価値があるコンセプトに使います。商品ウォークスルー、レシピや組み立て手順、リテールディスプレイ、ビューティー動作、トレーニングクリップ、音に合わせた下書きなど、始まり・動作詳細・最後のホールドが必要な場合に向いています。"
+    ]
+  },
+  "performanceMetrics": {
+    "title": "Wan 2.6 レビューカット概要",
+    "metrics": [
+      {
+        "label": "主な役割",
+        "value": "スケッチで方向性が確認された後の、より長いレビュー用下書き"
+      },
+      {
+        "label": "尺の利点",
+        "value": "Wan 2.5にはない15秒オプションを追加"
+      },
+      {
+        "label": "最適な入力",
+        "value": "テキストプロンプト、または10MBまで・256x256px以上のきれいなJPG/PNG/WebP画像1枚"
+      },
+      {
+        "label": "シーケンス形式",
+        "value": "オープニング設定、1つの動作詳細、音のタイミング、レビュー用の最後のホールド"
+      },
+      {
+        "label": "ネイティブ音声",
+        "value": "環境音、ツール音、布の動き、食材の扱い、パッケージ、商品接触音に有効"
+      },
+      {
+        "label": "長さ",
+        "value": "レビューのペーシングや手順ビートに使える5秒、10秒、15秒"
+      },
+      {
+        "label": "解像度",
+        "value": "720pまたは1080p。テキストモードは16:9、9:16、1:1に対応"
+      },
+      {
+        "label": "コスト位置",
+        "value": "720p・5秒出力は140クレジットからで、スクリーニング後に使う長めで安定したWanパスです"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Wan 2.6で15秒レビューカットを作る方法",
+    "steps": [
+      {
+        "title": "検証済みの方向性を持ち込む",
+        "desc": "低コストのスケッチパスを通過したフック、商品ショット、動きの案から始めます。"
+      },
+      {
+        "title": "レビュー用シーケンスを計画する",
+        "desc": "オープニング設定、メイン動作、安定させる要素、音の瞬間、最後のホールドを書きます。"
+      },
+      {
+        "title": "参照画像をアンカーにする",
+        "desc": "パッケージ、レイアウト、顔、部屋、物体の同一性を長いクリップ内で保ちたい場合、静止画をアップロードします。"
+      },
+      {
+        "title": "ペーシングと音声を一緒に確認する",
+        "desc": "10秒または15秒のタイミングが、アクション、音の手がかり、最後のホールドに十分な余白を与えているか確認します。"
+      }
+    ]
+  },
+  "modelComparison": {
+    "title": "Wan 2.6レビューカット vs Wan 2.5低コストテスト",
+    "subtitle": "安いスケッチでアイデアが証明され、より長い尺、ペーシング、音の方向づけが必要なときに使う表です。",
+    "columnHeaders": {
+      "metric": "レビューカット判断",
+      "baseline": "Wan 2.6",
+      "target": "Wan 2.5"
+    },
+    "rows": [
+      {
+        "label": "制作上の役割",
+        "baseline": "5秒・10秒・15秒のシーケンス向けの長めのレビュー用パス。",
+        "target": "制作判断の前に行う低コストのスクリーニングパス。"
+      },
+      {
+        "label": "尺の利点",
+        "baseline": "15秒のタイミングで、より充実したペーシングを作れます。",
+        "target": "下書き確認用に5秒または10秒に限定されます。"
+      },
+      {
+        "label": "レビューの問い",
+        "baseline": "時間の中でアクションが明確に読めるか。",
+        "target": "基本の動きのアイデアを続ける価値があるか。"
+      },
+      {
+        "label": "プロンプト設計",
+        "baseline": "冒頭セットアップ、アクション詳細、安定した参照、ネイティブ音声、最後のホールド。",
+        "target": "1つの物体またはシーン、短い動き、1つの音の手がかり。"
+      },
+      {
+        "label": "適した仕事",
+        "baseline": "商品デモ、手順説明、店頭演出、トレーニングクリップ。",
+        "target": "フックテスト、商品回転、質感サンプル、短い静止画アニメーション。"
+      },
+      {
+        "label": "別のバージョンを選ぶ場合",
+        "baseline": "アイデアにより長い尺が必要ならWan 2.6を使います。",
+        "target": "まだ低コストで却下判断をしたいならWan 2.5を使います。"
+      }
+    ],
+    "featuredColumn": "baseline"
+  },
+  "testimonials": {
+    "title": "Wan 2.6についてのユーザーの声",
+    "subtitle": "クリエイターは、ペーシング、音声、1枚画像の連続性を備えた長めのレビュー下書きが必要なときWan 2.6を使います。",
+    "maxItems": 3,
+    "showStars": false,
+    "showAvatars": true,
+    "items": [
+      {
+        "name": "Lena Ortiz",
+        "role": "ソーシャル動画プロデューサー",
+        "avatar": "social",
+        "quote": "最初のフックが機能した後に使うのがWan 2.6です。15秒のタイミングで、セットアップを入れ、商品の動作を見せ、レビュー用の最後のホールドを残せます。"
+      },
+      {
+        "name": "Marcus Lee",
+        "role": "商品クリエイティブ",
+        "avatar": "photo",
+        "quote": "小売向け動画では、商品の形やラベルが短いループ以上に安定している必要があります。Wan 2.6なら、最終制作レビューの前により分かりやすいレビュー用下書きを作れます。"
+      },
+      {
+        "name": "Ari Novak",
+        "role": "トレーニングコンテンツ編集者",
+        "avatar": "studio",
+        "quote": "手順説明クリップにはペーシングが必要です。Wan 2.6では、組み立てやレシピの手順、音の手がかりを、下書きを複雑にしすぎずに説明できます。"
+      }
+    ]
+  },
+  "faqTitle": "Wan 2.6 AI動画生成 FAQ",
+  "faq": [
+    {
+      "q": "Wan 2.6がレビューカット向けモデルになる理由は？",
+      "a": "Wan 2.6は検証済みの案に、セットアップ、動作詳細、音声タイミング、最後のホールドを見せる十分な余白を与えます。安いスクリーニングの後に強いモデルで、前段階向けではありません。"
+    },
+    {
+      "q": "15秒オプションはいつ選ぶべきですか？",
+      "a": "レビュアーがフック以上の内容を確認する必要があるとき選びます。商品ウォークスルー、組み立て手順、リテール動作、始まり・中間・ホールドを含むレシピのビートなどです。"
+    },
+    {
+      "q": "Wan 2.6のプロンプトはどう構成しますか？",
+      "a": "短いタイムラインとして書きます。セットアップ、メイン動作、詳細の瞬間、安定要素、音声キュー、最後のホールドです。これによりペーシングと連続性を判断しやすくなります。"
+    },
+    {
+      "q": "Wan 2.6は1枚の参照画像から使えますか？",
+      "a": "はい。パッケージ、部屋のレイアウト、商品の形、顔、物体の同一性を長いクリップの中で保ちたい場合に1枚画像を使います。"
+    },
+    {
+      "q": "どんな音声ディテールを入れるべきですか？",
+      "a": "ツールクリック、パッケージ接触、布の動き、食材の扱い、室内環境音、表面のこすれ、静かな最後のホールドなど、実用的な音を指定します。"
+    },
+    {
+      "q": "Wan 2.6はクライアント承認に向いていますか？",
+      "a": "はい。クライアントが最終制作前にタイミングと動きを理解する必要がある場合に向いています。Wan 2.5より多くの文脈を示しながら、設定はシンプルです。"
+    },
+    {
+      "q": "Wan 2.6を避けるべき場面は？",
+      "a": "まだ安いフックをたくさん試している段階なら避け、先にWan 2.5を使います。明確なシーケンス、安定した参照、音声プランがない場合も避けます。"
+    },
+    {
+      "q": "Wan 2.6はToolazeで何クレジット必要ですか？",
+      "a": "Wan 2.6は720p・5秒出力で140クレジットからです。長い尺や1080pでは、生成前に必要クレジットが増えます。"
+    },
+    {
+      "q": "Wan 2.6には別の終了画像が必要ですか？",
+      "a": "いいえ。Wan 2.6は、テキストまたは1枚の参照画像、コンパクトなタイムライン、ネイティブ音声の手がかり、プロンプトから生成される最後のホールドを中心に作られています。"
+    }
+  ],
+  "moreTools": "その他のAI動画モデル",
+  "moreToolsLinks": [
+    {
+      "title": "Wan 2.5",
+      "description": "長めのレビューカットの前に、Wan 2.5で低コストにフックを選別します。",
+      "href": "/model/wan-2-5-ai-video-generator",
+      "media": {
+        "type": "video",
+        "src": "/model-assets/grok-imagine-video-1-5/grok-hero-demo-16x9.mp4",
+        "poster": "https://assets.toolaze.com/model-assets/grok-imagine-video-1-5/grok-hero-demo-16x9-poster.webp",
+        "duration": "PT5.042S",
+        "uploadDate": "2026-08-04T20:01:05.000Z",
+        "alt": "Wan 2.5動画プレビュー"
+      }
+    },
+    {
+      "title": "Seedance 2.0",
+      "description": "Seedance 2.0で、監督的なシーン設計や参照の多い商用クリップを作成します。",
+      "href": "/model/seedance-2",
+      "media": {
+        "type": "video",
+        "src": "https://assets.toolaze.com/uploads/d0d55df5eef346809067197fddb1b251.png",
+        "alt": "Seedance 2.0動画プレビュー",
+        "poster": "https://assets.toolaze.com/uploads/d0d55df5eef346809067197fddb1b251-poster.webp",
+        "duration": "PT5.042S",
+        "uploadDate": "2026-07-21T17:20:41.000Z"
+      }
+    },
+    {
+      "title": "Kling 3.0",
+      "description": "Kling 3.0で、動的な動き、映画的なカメラ、よりシャープなアクションシーンを試せます。",
+      "href": "/model/kling-3",
+      "media": {
+        "type": "video",
+        "src": "https://assets.toolaze.com/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
+        "alt": "Kling 3.0動画プレビュー",
+        "poster": "https://assets.toolaze.com/uploads/56bb211041b34c5f8f27d3c0208322e7-poster.webp",
+        "duration": "PT5.042S",
+        "uploadDate": "2026-07-21T17:21:01.000Z"
+      }
+    }
+  ],
+  "promptExamples": {
+    "title": "Wan 2.6 レビューカット用プロンプト",
+    "subtitle": "低コストの選別を通過したコンセプトに、タイミング・音声・より明確なレビューシーケンスが必要なとき使います。",
+    "layout": "grid",
+    "items": [
+      {
+        "title": "15秒の商品ウォークスルー",
+        "prompt": "Create a 15-second review draft from the uploaded product image. Open on the full package, move into a close detail of the texture and label, show a hand interaction, then end with a stable final hold. Add soft studio ambience, packaging contact sounds, and a clean product placement rhythm.",
+        "description": "Wan 2.6を使って、より完全な商品レビューシーケンスを作ります。",
+        "aspectRatio": "16:9"
+      },
+      {
+        "title": "トレーニング手順の下書き",
+        "prompt": "Generate a clear instructional clip showing a technician placing a small part, tightening one screw, checking alignment, and pausing for the final inspection. Keep the camera steady, the hands readable, and each step separated by natural tool sounds so reviewers can follow the action.",
+        "description": "Wan 2.6が読みやすい手順動作に向く理由を示します。",
+        "aspectRatio": "16:9"
+      },
+      {
+        "title": "リテールディスプレイの動き",
+        "prompt": "Animate the uploaded storefront display as a 10-second brand review cut. Start with a wide view, push slowly toward the featured shelf, let small lights turn on in sequence, and finish on the hero product. Keep signage, packaging edges, and shelf layout stable while adding gentle store ambience.",
+        "description": "1枚の画像をアンカーにして長めのディスプレイ下書きを作ります。",
+        "aspectRatio": "9:16"
+      },
+      {
+        "title": "音主導のレシピビート",
+        "prompt": "Create a 15-second overhead cooking draft: ingredients slide into place, sauce pours into a bowl, a spoon stirs twice, and the final plated texture holds for review. Add pour, scrape, bowl contact, and soft kitchen room tone. Keep the sequence paced for stakeholder feedback.",
+        "description": "ネイティブ音声と15秒ペーシングを強調します。",
+        "aspectRatio": "1:1"
+      }
+    ]
+  },
+  "troubleshooting": {
+    "title": "Wan 2.6レビューカットのプロンプトTips",
+    "subtitle": "Wan 2.6は、レビュアー向けの短いタイムラインとして読めるプロンプトで最も扱いやすくなります。",
+    "items": [
+      {
+        "title": "タイムラインのビートを書く",
+        "desc": "弱いプロンプト：プロっぽくする。より良いプロンプト：",
+        "prompt": "Build a 15-second review timeline: three seconds of setup, six seconds of the main handling action, three seconds for detail texture, then a final three-second hold for feedback. Keep camera speed slow and stable."
+      },
+      {
+        "title": "レビュアーが確認すべき点を名指しする",
+        "desc": "弱いプロンプト：商品をきれいに見せる。より良いプロンプト：",
+        "prompt": "Show the closure, seam, label edge, and hand contact clearly enough for stakeholder review. Keep the package shape consistent, add soft studio ambience, and pause on the final front-facing view."
+      },
+      {
+        "title": "ペーシングと音声を組み合わせる",
+        "desc": "弱いプロンプト：音を追加する。より良いプロンプト：",
+        "prompt": "Time the audio to the review sequence: room tone during setup, one soft tool click during the action, a light surface scrape during the detail moment, and a quiet final ambience bed during the hold."
+      }
+    ]
+  }
+}

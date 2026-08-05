@@ -396,6 +396,17 @@ type WeakBetterPrompt = {
 }
 
 const WEAK_PROMPT_LABELS = [
+  'Weak prompt',
+  'Schwacher Prompt',
+  'Prompt débil',
+  'Prompt faible',
+  'Prompt debole',
+  '弱いプロンプト',
+  '약한 프롬프트',
+  'Prompt fraco',
+  '較弱提示詞',
+  '较弱提示词',
+  '较差',
   'Weak',
   'Schwach',
   '弱い例',
@@ -408,6 +419,17 @@ const WEAK_PROMPT_LABELS = [
 ]
 
 const BETTER_PROMPT_LABELS = [
+  'Better prompt',
+  'Besserer Prompt',
+  'Prompt mejorado',
+  'Meilleur prompt',
+  'Prompt migliore',
+  '改善したプロンプト',
+  '더 나은 프롬프트',
+  'Prompt melhor',
+  '更好的提示詞',
+  '更好的提示词',
+  '较好',
   'Better',
   'Besser',
   '改善例',
@@ -426,7 +448,7 @@ function escapeRegExp(value: string): string {
 function splitWeakBetterPrompt(prompt: string): WeakBetterPrompt | null {
   const weakPattern = WEAK_PROMPT_LABELS.map(escapeRegExp).join('|')
   const betterPattern = BETTER_PROMPT_LABELS.map(escapeRegExp).join('|')
-  const match = prompt.match(new RegExp(`^\\s*(${weakPattern})\\s*[:：]\\s*([\\s\\S]+?)\\s*(${betterPattern})\\s*[:：]\\s*([\\s\\S]+?)\\s*$`, 'iu'))
+  const match = prompt.match(new RegExp(`^\\s*(${weakPattern})\\s*[:：]\\s*([\\s\\S]+?)\\s*(${betterPattern})\\s*[:：]\\s*([\\s\\S]*?)\\s*$`, 'iu'))
 
   if (!match) return null
 
@@ -438,10 +460,90 @@ function splitWeakBetterPrompt(prompt: string): WeakBetterPrompt | null {
   }
 }
 
-function PromptTipPrompt({ prompt }: { prompt: string }) {
+function PromptTipStatusIcon({ kind }: { kind: 'weak' | 'better' }) {
+  const isBetter = kind === 'better'
+
+  return (
+    <span
+      aria-hidden="true"
+      className={`mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full ${
+        isBetter
+          ? 'prompt-tip-status-icon-better bg-emerald-50 text-emerald-600 ring-1 ring-emerald-200'
+          : 'prompt-tip-status-icon-weak bg-rose-50 text-rose-500 ring-1 ring-rose-200'
+      }`}
+    >
+      {isBetter ? (
+        <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 20 20">
+          <path
+            d="M5 10.2 8.4 13.5 15 6.5"
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2.4"
+          />
+        </svg>
+      ) : (
+        <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 20 20">
+          <path
+            d="m6.3 6.3 7.4 7.4m0-7.4-7.4 7.4"
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2.3"
+          />
+        </svg>
+      )}
+    </span>
+  )
+}
+
+function PromptTipDescription({ desc, hasSeparateBetterPrompt }: { desc: string; hasSeparateBetterPrompt: boolean }) {
+  const splitPrompt = splitWeakBetterPrompt(desc)
+
+  if (!splitPrompt) {
+    return <p className="text-sm leading-relaxed text-slate-600">{desc}</p>
+  }
+
+  return (
+    <div className="mt-4 space-y-3 text-sm leading-relaxed text-slate-700">
+      <div className="prompt-tip-weak flex gap-3 rounded-xl border border-rose-100 bg-rose-50/70 p-3">
+        <PromptTipStatusIcon kind="weak" />
+        <div>
+          <p className="text-xs font-bold text-rose-700">{splitPrompt.weakLabel}</p>
+          <p className="mt-1 text-slate-700">{splitPrompt.weakText}</p>
+        </div>
+      </div>
+      {!hasSeparateBetterPrompt && splitPrompt.betterText && (
+        <div className="prompt-tip-better flex gap-3 rounded-xl border border-emerald-100 bg-emerald-50/70 p-3">
+          <PromptTipStatusIcon kind="better" />
+          <div>
+            <p className="text-xs font-bold text-emerald-700">{splitPrompt.betterLabel}</p>
+            <p className="mt-1 text-slate-700">{splitPrompt.betterText}</p>
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}
+
+function PromptTipPrompt({ prompt, betterLabel }: { prompt: string; betterLabel?: string }) {
   const splitPrompt = splitWeakBetterPrompt(prompt)
 
   if (!splitPrompt) {
+    if (betterLabel) {
+      return (
+        <div className="prompt-tip-better mt-4 rounded-2xl border border-emerald-100 bg-emerald-50/70 p-3 text-sm leading-relaxed text-slate-700">
+          <div className="flex gap-3">
+            <PromptTipStatusIcon kind="better" />
+            <p className="text-xs font-bold text-emerald-700">{betterLabel}</p>
+          </div>
+          <p className="mt-3 rounded-xl bg-white/80 p-4 text-slate-700 shadow-sm">
+            {prompt}
+          </p>
+        </div>
+      )
+    }
+
     return (
       <p className="mt-4 rounded-2xl bg-slate-50 p-4 text-sm leading-relaxed text-slate-700">
         {prompt}
@@ -452,14 +554,14 @@ function PromptTipPrompt({ prompt }: { prompt: string }) {
   return (
     <div className="mt-4 space-y-3 rounded-2xl bg-slate-50 p-4 text-sm leading-relaxed text-slate-700">
       <div className="prompt-tip-weak flex gap-3 rounded-xl border border-rose-100 bg-rose-50/70 p-3">
-        <span className="mt-0.5 shrink-0" aria-hidden="true">❌</span>
+        <PromptTipStatusIcon kind="weak" />
         <div>
           <p className="text-xs font-bold text-rose-700">{splitPrompt.weakLabel}</p>
           <p className="mt-1 text-slate-700">{splitPrompt.weakText}</p>
         </div>
       </div>
       <div className="prompt-tip-better flex gap-3 rounded-xl border border-emerald-100 bg-emerald-50/70 p-3">
-        <span className="mt-0.5 shrink-0" aria-hidden="true">✅</span>
+        <PromptTipStatusIcon kind="better" />
         <div>
           <p className="text-xs font-bold text-emerald-700">{splitPrompt.betterLabel}</p>
           <p className="mt-1 text-slate-700">{splitPrompt.betterText}</p>
@@ -476,18 +578,102 @@ interface StrategyTableSection {
   rows?: string[][]
 }
 
+type TestimonialAvatarVariant = 'growth' | 'performance' | 'social' | 'photo' | 'studio' | 'motion'
+
 interface TestimonialItem {
   name?: string
   role?: string
+  avatar?: TestimonialAvatarVariant
   quote: string
 }
 
 interface TestimonialsSection {
   title?: string
   subtitle?: string
+  maxItems?: number
   reviewSafe?: boolean
+  showAvatars?: boolean
   showStars?: boolean
   items?: TestimonialItem[]
+}
+
+const testimonialAvatarStyles: Record<TestimonialAvatarVariant, string> = {
+  growth: 'from-indigo-100 via-sky-50 to-cyan-100 text-indigo-600 ring-indigo-100',
+  performance: 'from-violet-100 via-fuchsia-50 to-rose-100 text-violet-600 ring-violet-100',
+  social: 'from-cyan-100 via-teal-50 to-emerald-100 text-teal-600 ring-teal-100',
+  photo: 'from-amber-100 via-orange-50 to-rose-100 text-orange-600 ring-orange-100',
+  studio: 'from-slate-100 via-indigo-50 to-violet-100 text-slate-700 ring-slate-200',
+  motion: 'from-blue-100 via-indigo-50 to-purple-100 text-blue-600 ring-blue-100',
+}
+
+function TestimonialAvatar({ variant = 'studio' }: { variant?: TestimonialAvatarVariant }) {
+  const hair: Record<TestimonialAvatarVariant, React.ReactNode> = {
+    growth: (
+      <path className="testimonial-avatar-hair" d="M22 26c2-11 18-15 23-2" />
+    ),
+    performance: (
+      <path className="testimonial-avatar-hair" d="M23 23c7-10 21-7 22 4" />
+    ),
+    social: (
+      <path className="testimonial-avatar-hair" d="M21 27c3-13 23-13 26 0" />
+    ),
+    photo: (
+      <path className="testimonial-avatar-hair" d="M22 23c4-7 17-10 24 3" />
+    ),
+    studio: (
+      <path className="testimonial-avatar-hair" d="M20 28c5-14 22-14 27 0" />
+    ),
+    motion: (
+      <path className="testimonial-avatar-hair" d="M22 24c7-8 20-8 24 3" />
+    ),
+  }
+  const props: Record<TestimonialAvatarVariant, React.ReactNode> = {
+    growth: (
+      <path className="testimonial-avatar-prop" d="M12 45h13M15 42l4-5 4 3 5-9" />
+    ),
+    performance: (
+      <path className="testimonial-avatar-prop" d="M49 39a7 7 0 1 1-3-6M49 33h4v4" />
+    ),
+    social: (
+      <path className="testimonial-avatar-prop" d="M47 34h9v18h-9zM50 48h3" />
+    ),
+    photo: (
+      <path className="testimonial-avatar-prop" d="M10 38h15v11H10zM14 38l3-4h5l3 4M18 44h.1" />
+    ),
+    studio: (
+      <path className="testimonial-avatar-prop" d="M10 43h7l4 7h-11zM22 43h7l4 7h-11z" />
+    ),
+    motion: (
+      <path className="testimonial-avatar-prop" d="M47 39h11v9H47zM51 41l4 3-4 3z" />
+    ),
+  }
+
+  return (
+    <div
+      className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-gradient-to-br ring-1 ${testimonialAvatarStyles[variant]}`}
+      aria-hidden="true"
+    >
+      <svg
+        data-avatar-style="line-character"
+        aria-label="Line-drawn creator avatar"
+        viewBox="0 0 64 64"
+        className="h-12 w-12"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="3.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path className="testimonial-avatar-shoulders" d="M17 57c4-11 26-11 30 0" />
+        <path d="M28 45v5M36 45v5" />
+        <circle className="testimonial-avatar-head fill-[#FFF7ED] stroke-current" cx="32" cy="31" r="12" />
+        {hair[variant]}
+        <path d="M28 32h.1M36 32h.1" />
+        <path d="M29 38c2 2 5 2 7 0" />
+        {props[variant]}
+      </svg>
+    </div>
+  )
 }
 
 interface PromptPreset {
@@ -509,6 +695,7 @@ function Testimonials({
 }) {
   if (!section?.items || section.items.length === 0) return null
   if (!section.reviewSafe && !shouldRenderPaymentReviewSocialProofSection('testimonials')) return null
+  const visibleCount = section.maxItems ?? 3
 
   return (
     <section className={`${bgClass} py-24 px-6`}>
@@ -524,7 +711,7 @@ function Testimonials({
           </p>
         )}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {section.items.slice(0, 3).map((item, idx) => (
+          {section.items.slice(0, visibleCount).map((item, idx) => (
             <article
               key={`${item.name || 'review'}-${idx}`}
               className="flex h-full flex-col rounded-3xl border border-indigo-50 bg-white p-7 shadow-sm"
@@ -536,8 +723,17 @@ function Testimonials({
                   ))}
                 </div>
               )}
+              {section.showAvatars && (item.name || item.role) && (
+                <div className="mb-5 flex items-center gap-3">
+                  <TestimonialAvatar variant={item.avatar} />
+                  <div>
+                    {item.name && <p className="font-bold text-slate-900">{item.name}</p>}
+                    {item.role && <p className="mt-1 text-xs font-semibold text-indigo-600">{item.role}</p>}
+                  </div>
+                </div>
+              )}
               <p className="flex-1 text-sm leading-7 text-slate-600">“{item.quote}”</p>
-              {(item.name || item.role) && (
+              {!section.showAvatars && (item.name || item.role) && (
                 <div className="mt-6 border-t border-slate-100 pt-4">
                   {item.name && <p className="font-bold text-slate-900">{item.name}</p>}
                   {item.role && <p className="mt-1 text-xs font-semibold text-indigo-600">{item.role}</p>}
@@ -554,9 +750,11 @@ function Testimonials({
 function StrategyCardGrid({
   section,
   bgClass,
+  showFallbackSwatch = true,
 }: {
   section?: StrategyCardSection
   bgClass: string
+  showFallbackSwatch?: boolean
 }) {
   if (!section?.items || section.items.length === 0) return null
   const gridClass =
@@ -578,42 +776,49 @@ function StrategyCardGrid({
           </p>
         )}
         <div className={gridClass}>
-          {section.items.map((item, idx) => (
-            <article
-              key={`${item.title}-${idx}`}
-              className="rounded-3xl border border-indigo-50 bg-white p-6 shadow-sm"
-            >
-              <div className="flex items-center gap-3 mb-5">
-                {item.logoSrc ? (
-                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-slate-100 bg-white shadow-sm">
-                    <img
-                      src={item.logoSrc}
-                      alt={item.logoAlt || `${item.title} logo`}
-                      className="h-9 w-9 object-contain"
-                      loading="lazy"
-                    />
+          {section.items.map((item, idx) => {
+            const descRewrite = item.desc ? splitWeakBetterPrompt(item.desc) : null
+            const shouldRenderHeader = Boolean(item.logoSrc || item.badge || showFallbackSwatch)
+
+            return (
+              <article
+                key={`${item.title}-${idx}`}
+                className="rounded-3xl border border-indigo-50 bg-white p-6 shadow-sm"
+              >
+                {shouldRenderHeader && (
+                  <div className="mb-5 flex items-center gap-3">
+                    {item.logoSrc ? (
+                      <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-slate-100 bg-white shadow-sm">
+                        <img
+                          src={item.logoSrc}
+                          alt={item.logoAlt || `${item.title} logo`}
+                          className="h-9 w-9 object-contain"
+                          loading="lazy"
+                        />
+                      </div>
+                    ) : showFallbackSwatch ? (
+                      <div
+                        className="h-12 w-12 rounded-2xl border-4 border-white shadow-sm"
+                        style={{ background: item.color || 'linear-gradient(135deg, #6366f1, #ec4899)' }}
+                      />
+                    ) : null}
+                    {item.badge && (
+                      <span className="rounded-full bg-indigo-50 px-3 py-1 text-xs font-bold text-indigo-700">
+                        {item.badge}
+                      </span>
+                    )}
                   </div>
-                ) : (
-                  <div
-                    className="h-12 w-12 rounded-2xl border-4 border-white shadow-sm"
-                    style={{ background: item.color || 'linear-gradient(135deg, #6366f1, #ec4899)' }}
-                  />
                 )}
-                {item.badge && (
-                  <span className="rounded-full bg-indigo-50 px-3 py-1 text-xs font-bold text-indigo-700">
-                    {item.badge}
-                  </span>
+                <h3 className={item.logoSrc ? 'text-2xl font-extrabold text-slate-950 mb-3' : 'text-xl font-bold text-slate-900 mb-3'}>{item.title}</h3>
+                {item.desc && (
+                  <PromptTipDescription desc={item.desc} hasSeparateBetterPrompt={Boolean(item.prompt)} />
                 )}
-              </div>
-              <h3 className={item.logoSrc ? 'text-2xl font-extrabold text-slate-950 mb-3' : 'text-xl font-bold text-slate-900 mb-3'}>{item.title}</h3>
-              {item.desc && (
-                <p className="text-sm leading-relaxed text-slate-600">{item.desc}</p>
-              )}
-              {item.prompt && (
-                <PromptTipPrompt prompt={item.prompt} />
-              )}
-            </article>
-          ))}
+                {item.prompt && (
+                  <PromptTipPrompt prompt={item.prompt} betterLabel={descRewrite?.betterLabel} />
+                )}
+              </article>
+            )
+          })}
         </div>
       </div>
     </section>
@@ -1590,6 +1795,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                   key="troubleshooting"
                   section={content.troubleshooting as StrategyCardSection | undefined}
                   bgClass={bgClass}
+                  showFallbackSwatch={false}
                 />
               ),
               modelComparison: (bgClass: string) => {

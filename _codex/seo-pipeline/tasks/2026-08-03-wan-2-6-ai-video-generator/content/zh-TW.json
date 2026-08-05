@@ -1,0 +1,310 @@
+{
+  "in_menu": true,
+  "seoFactoryTaskId": "2026-08-03-wan-2-6-ai-video-generator",
+  "topComponent": "wan-2-6-ai-video-generator",
+  "topTool": {
+    "modelId": "wan-2-6",
+    "defaultMode": "text-to-video",
+    "mode": "text-to-video",
+    "displayName": "Wan 2.6"
+  },
+  "metadata": {
+    "title": "Wan 2.6 AI 影片生成器 | 15 秒有聲審核片段",
+    "description": "使用 Wan 2.6 生成更長的 5、10 或 15 秒 Wan 審核草稿，支援原生音訊、更穩定的單圖動畫，適合產品展示或教學步驟。",
+    "published": true
+  },
+  "hero": {
+    "h1": "<span class=\"text-gradient\">Wan 2.6</span> AI 影片生成器",
+    "desc": "當快速 Wan 2.5 草稿需要更長時長、更穩定的單圖動畫和原生音訊時，使用 Wan 2.6 生成影片。建立 5、10 或 15 秒的 720p/1080p 審核片段，適合產品展示、訓練步驟、店面動態、食譜節拍和聲音導向的品牌草稿。"
+  },
+  "heroDemoVideo": {
+    "src": "https://assets.toolaze.com/uploads/c07d1db481dd4e9b8e190ebb39611f08.png",
+    "ariaLabel": "Toolaze Wan 2.6 16:9 demo video preview",
+    "width": 16,
+    "height": 9,
+    "sourceHistory": "Temporary stable R2 video preview reused until a dedicated Wan 2.6 16:9 demo is available",
+    "poster": "https://assets.toolaze.com/uploads/6e2548965fc5487ca41221f9d663dfcb.webp",
+    "duration": "PT5.01S",
+    "uploadDate": "2026-08-02T02:59:44.000Z",
+    "type": "video"
+  },
+  "sectionsOrder": [
+    "modelIntro",
+    "performanceMetrics",
+    "howToUse",
+    "promptExamples",
+    "troubleshooting",
+    "modelComparison",
+    "testimonials",
+    "faq"
+  ],
+  "modelIntro": {
+    "title": "什麼是 Wan 2.6 AI 影片生成器？",
+    "modelName": "Wan 2.6",
+    "modelType": "Longer AI Video Review Model",
+    "description": [
+      "Wan 2.6 是把有潛力的想法變成更長審核片段的 Wan 版本。它保持文字或單張參考圖的簡單設定，同時提供最多 15 秒來呈現可讀的序列。",
+      "當概念已經值得發展時選它：產品 walkthrough、食譜或組裝步驟、零售展示、美妝動作、訓練短片，以及需要開場、動作細節和結尾停留的聲音節奏草稿。"
+    ]
+  },
+  "performanceMetrics": {
+    "title": "Wan 2.6 審核片段摘要",
+    "metrics": [
+      {
+        "label": "主要任務",
+        "value": "在草稿驗證想法後，建立更長的審核草稿"
+      },
+      {
+        "label": "時長優勢",
+        "value": "新增 Wan 2.5 沒有的 15 秒選項"
+      },
+      {
+        "label": "最佳輸入",
+        "value": "文字 prompt，或 10MB 以內且至少 256x256px 的清晰 JPG、PNG、WebP 圖片"
+      },
+      {
+        "label": "序列型態",
+        "value": "開場設定、一個動作細節、聲音節奏，以及給審核者看的結尾停留"
+      },
+      {
+        "label": "原生音訊",
+        "value": "適合環境音、工具聲、布料動作、食材處理、包裝和產品接觸聲"
+      },
+      {
+        "label": "時長",
+        "value": "5、10 或 15 秒，用於審核節奏和教學節拍"
+      },
+      {
+        "label": "解析度",
+        "value": "720p 或 1080p；文字模式支援 16:9、9:16 和 1:1"
+      },
+      {
+        "label": "成本位置",
+        "value": "720p、5 秒輸出從 140 點數開始，因為它是篩選後使用的較長且更穩定 Wan 通過"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "如何使用 Wan 2.6 做 15 秒審核片段",
+    "steps": [
+      {
+        "title": "帶入已驗證方向",
+        "desc": "從已通過較便宜草稿測試的鉤子、產品畫面或動作想法開始。"
+      },
+      {
+        "title": "規劃審核序列",
+        "desc": "寫出開場設定、主要動作、需要保持穩定的元素、聲音時刻和結尾停留。"
+      },
+      {
+        "title": "用一張參考圖作為錨點",
+        "desc": "當包裝、版面、臉部、空間或物件身份需要在更長片段中保持可辨識時，上傳一張靜態圖。"
+      },
+      {
+        "title": "一起檢查節奏和音訊",
+        "desc": "一起檢查 10 或 15 秒節奏是否給動作、音訊提示和最後停格足夠空間。"
+      }
+    ]
+  },
+  "modelComparison": {
+    "title": "Wan 2.6 審核片段 vs Wan 2.5 低成本測試",
+    "subtitle": "當低成本草稿已證明想法成立，而你需要更長時間、節奏和聲音方向時，使用這張表。",
+    "columnHeaders": {
+      "metric": "審核片段決策",
+      "baseline": "Wan 2.6",
+      "target": "Wan 2.5"
+    },
+    "rows": [
+      {
+        "label": "製作角色",
+        "baseline": "用於 5、10 或 15 秒序列的較長審核通過。",
+        "target": "製作決策前的低成本篩選通過。"
+      },
+      {
+        "label": "時長優勢",
+        "baseline": "加入 15 秒時長，讓節奏更完整。",
+        "target": "限制在 5 或 10 秒，用於草稿檢查。"
+      },
+      {
+        "label": "審核問題",
+        "baseline": "動作是否能隨時間清楚讀懂？",
+        "target": "基礎動作想法是否值得繼續？"
+      },
+      {
+        "label": "提示詞規劃",
+        "baseline": "開場設定、動作細節、穩定參考、原生音訊和最後停格。",
+        "target": "單一物件或場景、短動作和一個聲音提示。"
+      },
+      {
+        "label": "適合工作",
+        "baseline": "產品展示、教學、店面動態、訓練短片。",
+        "target": "鉤子測試、產品旋轉、質感樣本、快速靜態圖動畫。"
+      },
+      {
+        "label": "何時選另一版本",
+        "baseline": "當想法值得更長時長時使用 Wan 2.6。",
+        "target": "仍需要更低成本淘汰測試時使用 Wan 2.5。"
+      }
+    ],
+    "featuredColumn": "baseline"
+  },
+  "testimonials": {
+    "title": "使用者如何評價 Wan 2.6",
+    "subtitle": "當概念已準備好進入更長審核草稿，並需要節奏、音訊和單圖連續性時，創作者會使用 Wan 2.6。",
+    "maxItems": 3,
+    "showStars": false,
+    "showAvatars": true,
+    "items": [
+      {
+        "name": "Lena Ortiz",
+        "role": "社群影片製作人",
+        "avatar": "social",
+        "quote": "第一個鉤子有效後，我會使用 Wan 2.6。15 秒時長讓我能加入開場、展示產品動作，並留下可供審核的結尾停留。"
+      },
+      {
+        "name": "Marcus Lee",
+        "role": "產品創意",
+        "avatar": "photo",
+        "quote": "零售影片裡，產品形狀和標籤需要比快速 loop 更久保持穩定。Wan 2.6 讓我在最後製作審核前取得更好的審核草稿。"
+      },
+      {
+        "name": "Ari Novak",
+        "role": "訓練內容剪輯師",
+        "avatar": "studio",
+        "quote": "教學短片需要節奏。我用 Wan 2.6 做組裝或食譜步驟，因為可以描述序列和音訊提示，又不會讓草稿變得太複雜。"
+      }
+    ]
+  },
+  "faqTitle": "Wan 2.6 AI 影片生成器常見問題",
+  "faq": [
+    {
+      "q": "Wan 2.6 為什麼是審核片段模型？",
+      "a": "Wan 2.6 會給已驗證的想法足夠空間，呈現開場、動作細節、音訊時機和結尾停留。它更適合低成本篩選之後，而不是篩選之前。"
+    },
+    {
+      "q": "什麼時候應該選 15 秒？",
+      "a": "當審核者需要檢查的不只是鉤子時選 15 秒，例如產品 walkthrough、組裝步驟、零售動態，或有開頭、中段和停留的食譜節拍。"
+    },
+    {
+      "q": "Wan 2.6 prompt 應該怎麼組織？",
+      "a": "把它寫成精簡時間線：設定、主要動作、細節時刻、穩定元素、音訊提示和結尾停留。這有助於審核節奏和連續性。"
+    },
+    {
+      "q": "Wan 2.6 可以用一張參考圖嗎？",
+      "a": "可以。當包裝、空間版面、產品形狀、臉部或物件身份需要在更長片段中保持可辨識時，使用一張上傳圖片。"
+    },
+    {
+      "q": "應該加入哪些音訊細節？",
+      "a": "說明實用的聲音時刻，例如工具點擊、包裝接觸、布料動作、食材處理、空間環境音、表面刮擦或安靜的結尾停留。"
+    },
+    {
+      "q": "Wan 2.6 適合客戶審核嗎？",
+      "a": "可以，當客戶需要在最終製作前理解節奏和動作時很適合。它比 Wan 2.5 提供更多上下文，同時設定仍然簡單。"
+    },
+    {
+      "q": "什麼時候應該避免 Wan 2.6？",
+      "a": "如果你還在測很多低成本鉤子，先使用 Wan 2.5。若專案還缺少清楚序列、穩定參考或音訊規劃，也應避免使用。"
+    },
+    {
+      "q": "Wan 2.6 需要多少 Toolaze 點數？",
+      "a": "Wan 2.6 的 720p 5 秒輸出從 140 點數開始。更長時長或 1080p 會在生成前增加所需點數。"
+    },
+    {
+      "q": "Wan 2.6 需要獨立結尾圖片嗎？",
+      "a": "不需要。Wan 2.6 以文字或一張參考圖、精簡時間線、原生音訊提示，以及從提示詞生成的最後停格為核心。"
+    }
+  ],
+  "moreTools": "更多 AI 影片模型",
+  "moreToolsLinks": [
+    {
+      "title": "Wan 2.5",
+      "description": "在較長審核片段前，先用 Wan 2.5 做成本更低的鉤子篩選。",
+      "href": "/model/wan-2-5-ai-video-generator",
+      "media": {
+        "type": "video",
+        "src": "/model-assets/grok-imagine-video-1-5/grok-hero-demo-16x9.mp4",
+        "poster": "https://assets.toolaze.com/model-assets/grok-imagine-video-1-5/grok-hero-demo-16x9-poster.webp",
+        "duration": "PT5.042S",
+        "uploadDate": "2026-08-04T20:01:05.000Z",
+        "alt": "Wan 2.5 影片預覽"
+      }
+    },
+    {
+      "title": "Seedance 2.0",
+      "description": "使用 Seedance 2.0 做導演式場景規劃和參考素材較多的商業短片。",
+      "href": "/model/seedance-2",
+      "media": {
+        "type": "video",
+        "src": "https://assets.toolaze.com/uploads/d0d55df5eef346809067197fddb1b251.png",
+        "alt": "Seedance 2.0 影片預覽",
+        "poster": "https://assets.toolaze.com/uploads/d0d55df5eef346809067197fddb1b251-poster.webp",
+        "duration": "PT5.042S",
+        "uploadDate": "2026-07-21T17:20:41.000Z"
+      }
+    },
+    {
+      "title": "Kling 3.0",
+      "description": "嘗試 Kling 3.0 製作動態運動、電影感鏡頭和更銳利的動作場景。",
+      "href": "/model/kling-3",
+      "media": {
+        "type": "video",
+        "src": "https://assets.toolaze.com/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
+        "alt": "Kling 3.0 影片預覽",
+        "poster": "https://assets.toolaze.com/uploads/56bb211041b34c5f8f27d3c0208322e7-poster.webp",
+        "duration": "PT5.042S",
+        "uploadDate": "2026-07-21T17:21:01.000Z"
+      }
+    }
+  ],
+  "promptExamples": {
+    "title": "Wan 2.6 審核片段 Prompt",
+    "subtitle": "當概念已通過低成本篩選，需要時長、音訊和更清楚的審核序列時使用。",
+    "layout": "grid",
+    "items": [
+      {
+        "title": "15 秒產品 Walkthrough",
+        "prompt": "Create a 15-second review draft from the uploaded product image. Open on the full package, move into a close detail of the texture and label, show a hand interaction, then end with a stable final hold. Add soft studio ambience, packaging contact sounds, and a clean product placement rhythm.",
+        "description": "使用 Wan 2.6 建立更完整的產品審核序列。",
+        "aspectRatio": "16:9"
+      },
+      {
+        "title": "訓練步驟草稿",
+        "prompt": "Generate a clear instructional clip showing a technician placing a small part, tightening one screw, checking alignment, and pausing for the final inspection. Keep the camera steady, the hands readable, and each step separated by natural tool sounds so reviewers can follow the action.",
+        "description": "展示 Wan 2.6 為何適合可讀的教學動作。",
+        "aspectRatio": "16:9"
+      },
+      {
+        "title": "零售展示動態",
+        "prompt": "Animate the uploaded storefront display as a 10-second brand review cut. Start with a wide view, push slowly toward the featured shelf, let small lights turn on in sequence, and finish on the hero product. Keep signage, packaging edges, and shelf layout stable while adding gentle store ambience.",
+        "description": "用一張圖片作為較長展示草稿的錨點。",
+        "aspectRatio": "9:16"
+      },
+      {
+        "title": "聲音導向食譜節拍",
+        "prompt": "Create a 15-second overhead cooking draft: ingredients slide into place, sauce pours into a bowl, a spoon stirs twice, and the final plated texture holds for review. Add pour, scrape, bowl contact, and soft kitchen room tone. Keep the sequence paced for stakeholder feedback.",
+        "description": "強調原生音訊和 15 秒節奏。",
+        "aspectRatio": "1:1"
+      }
+    ]
+  },
+  "troubleshooting": {
+    "title": "Wan 2.6 審核片段 Prompt Tips",
+    "subtitle": "Wan 2.6 最適合像給審核者看的精簡時間線一樣撰寫 prompt。",
+    "items": [
+      {
+        "title": "寫出時間線節拍",
+        "desc": "弱 prompt：讓它看起來很專業。更好的 prompt：",
+        "prompt": "Build a 15-second review timeline: three seconds of setup, six seconds of the main handling action, three seconds for detail texture, then a final three-second hold for feedback. Keep camera speed slow and stable."
+      },
+      {
+        "title": "說明審核者需要檢查什麼",
+        "desc": "弱 prompt：把產品展示得好看。更好的 prompt：",
+        "prompt": "Show the closure, seam, label edge, and hand contact clearly enough for stakeholder review. Keep the package shape consistent, add soft studio ambience, and pause on the final front-facing view."
+      },
+      {
+        "title": "把節奏和音訊配對",
+        "desc": "弱 prompt：加上聲音。更好的 prompt：",
+        "prompt": "Time the audio to the review sequence: room tone during setup, one soft tool click during the action, a light surface scrape during the detail moment, and a quiet final ambience bed during the hold."
+      }
+    ]
+  }
+}

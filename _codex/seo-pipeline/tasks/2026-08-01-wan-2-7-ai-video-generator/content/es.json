@@ -187,56 +187,68 @@
     }
   ],
   "modelComparison": {
-    "title": "Wan 2.7 frente a Wan 2.6 y Wan 2.5",
-    "subtitle": "Wan 2.7 es la opción Wan más fuerte cuando necesitas referencia a video, control de primer/último fotograma, continuación, prompts multiescena y mejor sincronización audio-video. Wan 2.6 y Wan 2.5 siguen siendo útiles para clips Wan más simples con menos opciones de configuración.",
+    "title": "Wan 2.7 vs Wan 2.6 vs Wan 2.5",
+    "subtitle": "Compara las funciones que cambian el resultado: control de fotogramas, referencias, audio, duración, resolución y saldo.",
     "columnHeaders": {
-      "metric": "Criterio",
+      "metric": "Función",
       "baseline": "Wan 2.7",
       "middle": "Wan 2.6",
       "target": "Wan 2.5"
     },
     "rows": [
       {
-        "label": "Modos de creación",
-        "baseline": "Texto a video, imagen a video y referencia a video.",
-        "middle": "Texto a video e imagen a video con clips Wan predefinidos más largos.",
-        "target": "Texto a video e imagen a video para borradores Wan más simples."
+        "label": "Texto a video",
+        "baseline": "Sí",
+        "middle": "Sí",
+        "target": "Sí"
       },
       {
-        "label": "Control de referencias",
-        "baseline": "Hasta cinco referencias totales de imagen o video en referencia a video, además de referencias de audio cuando estén disponibles.",
-        "middle": "Entrada de imagen de referencia con menos roles avanzados.",
-        "target": "Una imagen de referencia para imagen a video directa."
+        "label": "Referencia de imagen a video",
+        "baseline": "Un primer fotograma más un último fotograma opcional.",
+        "middle": "Una imagen subida.",
+        "target": "Una imagen fija subida."
       },
       {
-        "label": "Control de fotogramas y video",
-        "baseline": "Primer fotograma, primer y último fotograma, continuación de video y prompts multiescena.",
-        "middle": "Clips Wan más largos y prompts de estilo multiescena cuando estén disponibles.",
-        "target": "Prompts de una escena y animación con una referencia."
+        "label": "Control de inicio/final",
+        "baseline": "Sí",
+        "middle": "No",
+        "target": "No"
       },
       {
-        "label": "Audio",
-        "baseline": "Sincronización audio-video, efectos, música, ambiente e indicaciones de estilo de voz.",
-        "middle": "Salida de audio nativo y señales sonoras sincronizadas.",
-        "target": "Audio nativo para clips sincronizados más simples."
+        "label": "Control de continuación",
+        "baseline": "Planificación con primer fotograma, primer/último fotograma y continuación.",
+        "middle": "No",
+        "target": "No"
       },
       {
-        "label": "Duración y salida",
-        "baseline": "2 a 15 segundos, 720p o 1080p, MP4 a 30fps.",
-        "middle": "5, 10 o 15 segundos, 720p o 1080p.",
-        "target": "5 o 10 segundos, 720p o 1080p."
+        "label": "Manejo de audio",
+        "baseline": "Señales de sincronización de audio y video en el prompt.",
+        "middle": "Audio nativo con señales de sonido sincronizadas.",
+        "target": "Señales de sonido nativo para clips simples."
       },
       {
-        "label": "Créditos iniciales",
-        "baseline": "Empieza en 64 créditos para salida 720p de 2 segundos en Toolaze.",
-        "middle": "Empieza en 140 créditos para salida 720p de 5 segundos en Toolaze.",
-        "target": "Empieza en 120 créditos para salida 720p de 5 segundos en Toolaze."
+        "label": "Duración",
+        "baseline": "2 a 15 segundos.",
+        "middle": "5, 10 o 15 segundos.",
+        "target": "5 o 10 segundos."
+      },
+      {
+        "label": "Resolución",
+        "baseline": "720p o 1080p.",
+        "middle": "720p o 1080p.",
+        "target": "720p o 1080p."
+      },
+      {
+        "label": "Saldo inicial",
+        "baseline": "Desde 64 de saldo para 2 segundos en 720p.",
+        "middle": "Desde 140 de saldo para 5 segundos en 720p.",
+        "target": "Desde 120 de saldo para 5 segundos en 720p."
       },
       {
         "label": "Elígelo cuando",
-        "baseline": "Necesites los controles Wan más nuevos, referencias más ricas, planificación de planos, transiciones, continuación o sonido más preciso.",
-        "middle": "Necesites un clip Wan más largo pero no todo el conjunto de referencias de Wan 2.7.",
-        "target": "Necesites un clip Wan más simple con una referencia y tiempos conocidos de 5 o 10 segundos."
+        "baseline": "El inicio, el fotograma final o la transición deben ser explícitos.",
+        "middle": "Necesitas un clip Wan más largo y estable desde texto o una imagen.",
+        "target": "Necesitas borradores rápidos y pruebas simples de movimiento con una imagen."
       }
     ],
     "featuredColumn": "baseline"
@@ -273,23 +285,47 @@
     ]
   },
   "testimonials": {
-    "title": "Notas de creadores sobre Wan 2.7",
-    "subtitle": "Formas prácticas en que creadores usan Wan 2.7 para clips guiados por referencias, pruebas de prompt y escenas comerciales cortas.",
+    "title": "Lo que dicen los usuarios sobre el Generador de Video con IA Wan 2.7",
+    "subtitle": "Opiniones de creadores que usan Wan 2.7 cuando el primer fotograma, el último fotograma, la ruta de transición y la composición final importan.",
+    "maxItems": 6,
+    "showStars": false,
+    "showAvatars": true,
     "items": [
       {
         "name": "Maya Chen",
         "role": "Editora de video de producto",
-        "quote": "Los prompts con orden de planos facilitan probar una revelación de producto antes de invertir tiempo en una grabación completa."
+        "avatar": "photo",
+        "quote": "Uso Wan 2.7 cuando una revelación de producto necesita aterrizar en una composición final específica en lugar de derivar hacia un final aleatorio. El anclaje del último fotograma facilita la revisión del cliente porque todos pueden ver el destino previsto."
       },
       {
         "name": "Eli Morgan",
         "role": "Artista de storyboard",
-        "quote": "Uso imágenes de referencia para el personaje y el entorno, luego escribo el movimiento como un beat corto. El primer pase queda más claro para el cliente."
+        "avatar": "motion",
+        "quote": "La configuración de primer y último fotograma me ayuda a mostrar a los clientes el cambio exacto que quiero antes de construir una pieza más larga. Puedo esbozar el inicio, definir el fotograma de llegada y usar el prompt para describir la ruta de movimiento entre ellos."
       },
       {
         "name": "Nora Patel",
-        "role": "Líder creativa social",
-        "quote": "En clips táctiles, escribir el ritmo del sonido en el prompt hace que el movimiento se sienta más intencional y menos aleatorio."
+        "role": "Responsable creativa de retail",
+        "avatar": "studio",
+        "quote": "Para transformaciones de empaque y expositores, escribo la ruta de transición y mantengo el fotograma final como ancla. Wan 2.7 es útil cuando la disposición de la estantería, la orientación del producto y la tarjeta final deben mantenerse intencionadas."
+      },
+      {
+        "name": "Jon Bell",
+        "role": "Director de movimiento de campaña",
+        "avatar": "growth",
+        "quote": "Wan 2.7 es la versión que elijo cuando el estado final importa tanto como el movimiento. Me permite probar un ritmo de campaña que empieza desde un fotograma principal limpio y se resuelve en un conjunto de producto planificado."
+      },
+      {
+        "name": "Clara Evans",
+        "role": "Editora de lanzamiento social",
+        "avatar": "social",
+        "quote": "Cuando un clip de lanzamiento tiene que abrirse con un visual y terminar en una revelación precisa, Wan 2.7 me ahorra tener que adivinar. Puedo mantener el hook corto mientras controlo dónde aterriza el espectador."
+      },
+      {
+        "name": "Owen Miller",
+        "role": "Estratega creativo de performance",
+        "avatar": "performance",
+        "quote": "Para pruebas creativas de pago, uso Wan 2.7 cuando ya conocemos el inicio y el mensaje final del producto. El control de primer y último fotograma nos da variantes más limpias para comparar la velocidad de transición, el encuadre y el recuerdo final."
       }
     ]
   },

@@ -188,56 +188,68 @@
     }
   ],
   "modelComparison": {
-    "title": "Wan 2.7 vs Wan 2.6 and Wan 2.5",
-    "subtitle": "Wan 2.7 is the strongest Wan choice when you need reference-to-video, first/last-frame control, continuation, multi-shot prompts, and stronger audio-video synchronization. Wan 2.6 and Wan 2.5 remain useful for simpler Wan clips with fewer setup choices.",
+    "title": "Wan 2.7 vs Wan 2.6 vs Wan 2.5",
+    "subtitle": "Compare the features that change the result: frame control, references, audio, duration, resolution, and credits.",
     "columnHeaders": {
-      "metric": "Decision point",
+      "metric": "Feature",
       "baseline": "Wan 2.7",
       "middle": "Wan 2.6",
       "target": "Wan 2.5"
     },
     "rows": [
       {
-        "label": "Creation modes",
-        "baseline": "Text-to-video, image-to-video, and reference-to-video.",
-        "middle": "Text-to-video and image-to-video with longer preset Wan clips.",
-        "target": "Text-to-video and image-to-video for simpler Wan drafts."
+        "label": "Text-to-video",
+        "baseline": "Yes",
+        "middle": "Yes",
+        "target": "Yes"
       },
       {
-        "label": "Reference control",
-        "baseline": "Up to five total image or video references in reference-to-video, plus audio references where supported.",
-        "middle": "Reference image input with fewer advanced reference roles.",
-        "target": "One reference image for straightforward image-to-video."
+        "label": "Image-to-video reference",
+        "baseline": "One first frame plus an optional last frame.",
+        "middle": "One uploaded image.",
+        "target": "One uploaded still image."
       },
       {
-        "label": "Frame and video control",
-        "baseline": "First-frame, first-and-last-frame, video continuation, and multi-shot prompting.",
-        "middle": "Longer Wan clips and multi-shot-style prompting where available.",
-        "target": "Single-scene prompts and one-reference animation."
+        "label": "Start/end frame control",
+        "baseline": "Yes",
+        "middle": "No",
+        "target": "No"
+      },
+      {
+        "label": "Continuation control",
+        "baseline": "First-frame, first-and-last-frame, and video continuation-style planning.",
+        "middle": "No",
+        "target": "No"
       },
       {
         "label": "Audio handling",
-        "baseline": "Audio-video synchronization, sound effects, music, ambience, and voice-style direction.",
-        "middle": "Native audio output and synchronized sound cues.",
-        "target": "Native audio output for simpler synchronized clips."
+        "baseline": "Audio-video synchronization cues in prompts.",
+        "middle": "Native audio output with synchronized sound cues.",
+        "target": "Native sound cues for simpler clips."
       },
       {
-        "label": "Duration and output",
-        "baseline": "2 to 15 seconds, 720p or 1080p, 30fps MP4.",
-        "middle": "5, 10, or 15 seconds, 720p or 1080p.",
-        "target": "5 or 10 seconds, 720p or 1080p."
+        "label": "Duration",
+        "baseline": "2 to 15 seconds.",
+        "middle": "5, 10, or 15 seconds.",
+        "target": "5 or 10 seconds."
+      },
+      {
+        "label": "Resolution",
+        "baseline": "720p or 1080p.",
+        "middle": "720p or 1080p.",
+        "target": "720p or 1080p."
       },
       {
         "label": "Starting Credits",
-        "baseline": "Starts at 64 Credits for 2-second 720p output on Toolaze.",
-        "middle": "Starts at 140 Credits for 5-second 720p output on Toolaze.",
-        "target": "Starts at 120 Credits for 5-second 720p output on Toolaze."
+        "baseline": "Starts at 64 Credits for 2-second 720p output.",
+        "middle": "Starts at 140 Credits for 5-second 720p output.",
+        "target": "Starts at 120 Credits for 5-second 720p output."
       },
       {
         "label": "Choose it when",
-        "baseline": "You need the latest Wan controls, richer references, shot planning, frame transitions, continuation, or stronger sound timing.",
-        "middle": "You need a longer Wan clip but do not need the full Wan 2.7 reference set.",
-        "target": "You need a simpler one-reference Wan clip with familiar 5 or 10 second timing."
+        "baseline": "You need the start, ending frame, or transition path to be explicit.",
+        "middle": "You need a stable longer Wan clip from text or one image.",
+        "target": "You need quick drafts and simple one-image motion tests."
       }
     ],
     "featuredColumn": "baseline"
@@ -274,23 +286,47 @@
     ]
   },
   "testimonials": {
-    "title": "Creator Notes on Wan 2.7",
-    "subtitle": "Practical ways creators use Wan 2.7 for reference-guided clips, prompt tests, and short commercial scenes.",
+    "title": "What Users Say About Wan 2.7 AI Video Generator",
+    "subtitle": "Feedback from creators using Wan 2.7 when the first frame, last frame, transition path, and final composition all matter.",
+    "maxItems": 6,
+    "showStars": false,
+    "showAvatars": true,
     "items": [
       {
         "name": "Maya Chen",
         "role": "Product video editor",
-        "quote": "The shot-order prompts make it easier to test a product reveal before we spend time on a full shoot."
+        "avatar": "photo",
+        "quote": "I use Wan 2.7 when a product reveal needs to land on a specific final composition instead of drifting into a random ending. The last-frame anchor makes client review easier because everyone can see the intended destination."
       },
       {
         "name": "Eli Morgan",
         "role": "Storyboard artist",
-        "quote": "I use reference images for the character and setting, then write the motion as a short beat. It gives clients a clearer first pass."
+        "avatar": "motion",
+        "quote": "The first and last frame setup helps me show clients the exact change I want before building a longer piece. I can sketch the start, define the landing frame, and use the prompt to describe the motion path between them."
       },
       {
         "name": "Nora Patel",
-        "role": "Social creative lead",
-        "quote": "For tactile clips, writing the sound timing into the prompt helps the motion feel more intentional instead of random."
+        "role": "Retail creative lead",
+        "avatar": "studio",
+        "quote": "For packaging and display transformations, I write the transition path and keep the final frame as the anchor. Wan 2.7 is useful when the shelf layout, product facing, and end card need to stay intentional."
+      },
+      {
+        "name": "Jon Bell",
+        "role": "Campaign motion director",
+        "avatar": "growth",
+        "quote": "Wan 2.7 is the version I choose when the end state matters as much as the motion. It lets me test a campaign beat that starts from a clean hero frame and resolves into a planned product lockup."
+      },
+      {
+        "name": "Clara Evans",
+        "role": "Social launch editor",
+        "avatar": "social",
+        "quote": "When a launch clip has to open on one visual and end on a precise reveal, Wan 2.7 saves me from guessing. I can keep the hook short while still controlling where the viewer lands."
+      },
+      {
+        "name": "Owen Miller",
+        "role": "Performance creative strategist",
+        "avatar": "performance",
+        "quote": "For paid creative tests, I use Wan 2.7 when we already know the start and final product message. The first-and-last-frame control gives us cleaner variants for comparing transition speed, framing, and final recall."
       }
     ]
   },

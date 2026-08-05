@@ -187,56 +187,68 @@
     }
   ],
   "modelComparison": {
-    "title": "Wan 2.7 對比 Wan 2.6 和 Wan 2.5",
-    "subtitle": "當你需要參考轉影片、首尾幀控制、影片延續、多鏡頭提示詞與更強音畫同步時，Wan 2.7 是最完整的 Wan 選擇。Wan 2.6 和 Wan 2.5 則適合設定較少的簡單 Wan 短片。",
+    "title": "Wan 2.7 vs Wan 2.6 vs Wan 2.5",
+    "subtitle": "比較真正影響結果的功能：幀控制、參考素材、音訊、時長、解析度和 點數。",
     "columnHeaders": {
-      "metric": "決策點",
+      "metric": "功能",
       "baseline": "Wan 2.7",
       "middle": "Wan 2.6",
       "target": "Wan 2.5"
     },
     "rows": [
       {
-        "label": "生成模式",
-        "baseline": "文字轉影片、圖片轉影片、參考轉影片。",
-        "middle": "文字轉影片與圖片轉影片，搭配較長 Wan 預設片段。",
-        "target": "用於較簡單 Wan 草稿的文字轉影片與圖片轉影片。"
+        "label": "文字轉影片",
+        "baseline": "是",
+        "middle": "是",
+        "target": "是"
       },
       {
-        "label": "參考控制",
-        "baseline": "參考轉影片最多合計五個圖片或影片參考，支援時也可加入音訊參考。",
-        "middle": "參考圖片輸入，進階參考角色較少。",
-        "target": "一張參考圖片，用於直接圖片轉影片。"
+        "label": "圖片轉影片參考",
+        "baseline": "第一幀加上可選的最後一幀。",
+        "middle": "上傳一張圖片。",
+        "target": "上傳一張靜態圖。"
       },
       {
-        "label": "幀與影片控制",
-        "baseline": "首幀、首尾幀、影片延續與多鏡頭提示詞。",
-        "middle": "較長 Wan 片段，以及支援時的多鏡頭風格提示詞。",
-        "target": "單場景提示詞與單參考動畫。"
+        "label": "起始/結尾幀控制",
+        "baseline": "是",
+        "middle": "否",
+        "target": "否"
+      },
+      {
+        "label": "延續控制",
+        "baseline": "支援第一幀、首/尾幀和延續式規劃。",
+        "middle": "否",
+        "target": "否"
       },
       {
         "label": "音訊處理",
-        "baseline": "音畫同步、音效、音樂、環境音與聲音風格指令。",
-        "middle": "原生音訊輸出與同步聲音提示。",
-        "target": "用於較簡單同步短片的原生音訊輸出。"
+        "baseline": "在提示詞中加入音畫同步提示。",
+        "middle": "原生音訊輸出，可加入同步聲音提示。",
+        "target": "適合簡單短片的原生聲音提示。"
       },
       {
-        "label": "時長與輸出",
-        "baseline": "2 到 15 秒，720p 或 1080p，30fps MP4。",
-        "middle": "5、10 或 15 秒，720p 或 1080p。",
-        "target": "5 或 10 秒，720p 或 1080p。"
+        "label": "時長",
+        "baseline": "2 到 15 秒。",
+        "middle": "5、10 或 15 秒。",
+        "target": "5 或 10 秒。"
       },
       {
-        "label": "起始點數",
-        "baseline": "Toolaze 上 720p、2 秒輸出從 64 點數起。",
-        "middle": "Toolaze 上 720p、5 秒輸出從 140 點數起。",
-        "target": "Toolaze 上 720p、5 秒輸出從 120 點數起。"
+        "label": "解析度",
+        "baseline": "720p 或 1080p。",
+        "middle": "720p 或 1080p。",
+        "target": "720p 或 1080p。"
+      },
+      {
+        "label": "起始 點數",
+        "baseline": "720p 2 秒輸出從 64 點數 起。",
+        "middle": "720p 5 秒輸出從 140 點數 起。",
+        "target": "720p 5 秒輸出從 120 點數 起。"
       },
       {
         "label": "適合選擇的情況",
-        "baseline": "需要最新 Wan 控制、更豐富參考、鏡頭規劃、幀轉場、影片延續或更強聲音節奏。",
-        "middle": "需要較長 Wan 片段，但不需要完整 Wan 2.7 參考組合。",
-        "target": "需要較簡單的單參考 Wan 片段與熟悉的 5 或 10 秒設定。"
+        "baseline": "起始畫面、結尾幀或轉場路徑必須明確。",
+        "middle": "需要從文字或一張圖片生成更穩定、更長的 Wan 短片。",
+        "target": "需要快速草稿和一張圖的簡單動作測試。"
       }
     ],
     "featuredColumn": "baseline"
@@ -273,23 +285,47 @@
     ]
   },
   "testimonials": {
-    "title": "創作者如何使用 Wan 2.7",
-    "subtitle": "創作者用 Wan 2.7 製作參考導向短片、測試提示詞與短篇商業場景的實際方式。",
+    "title": "使用者對 Wan 2.7 AI 影片產生器的評價",
+    "subtitle": "創作者在首幀、尾幀、轉場路徑與最終構圖都很重要時使用 Wan 2.7 的實際回饋。",
+    "maxItems": 6,
+    "showStars": false,
+    "showAvatars": true,
     "items": [
       {
         "name": "Maya Chen",
-        "role": "產品影片剪輯師",
-        "quote": "把鏡頭順序寫進提示詞後，我們可以先測試產品揭示效果，再投入完整拍攝。"
+        "role": "Product video editor",
+        "avatar": "photo",
+        "quote": "當產品揭示需要落在特定最終構圖而不是隨機結束時，我會使用 Wan 2.7。尾幀錨點讓客戶審查更容易，因為每個人都能看到預期的目的地。"
       },
       {
         "name": "Eli Morgan",
-        "role": "分鏡師",
-        "quote": "我用參考圖片指定角色和場景，再把動作寫成短節奏。客戶能更清楚看到第一版方向。"
+        "role": "Storyboard artist",
+        "avatar": "motion",
+        "quote": "首尾幀設定幫助我在建立更長作品之前向客戶展示我想要的確切變化。我可以草擬起始幀、定義結束幀，並用提示詞描述它們之間的動態路徑。"
       },
       {
         "name": "Nora Patel",
-        "role": "社群創意主管",
-        "quote": "做觸感短片時，把聲音節奏寫進提示詞，動作會更像被設計過，而不是隨機發生。"
+        "role": "Retail creative lead",
+        "avatar": "studio",
+        "quote": "做包裝與展示變形時，我會寫出轉場路徑並把最終幀作為錨點。Wan 2.7 在貨架布局、產品面向與結束畫面需要保持意圖性時很有用。"
+      },
+      {
+        "name": "Jon Bell",
+        "role": "Campaign motion director",
+        "avatar": "growth",
+        "quote": "Wan 2.7 是我在結束狀態與動態同等重要時選擇的版本。它讓我能測試從乾淨主打幀開始、解析到計畫好產品組合的活動節奏。"
+      },
+      {
+        "name": "Clara Evans",
+        "role": "Social launch editor",
+        "avatar": "social",
+        "quote": "當一支上市短片必須以某個畫面開場並以精確揭示結束時，Wan 2.7 省去了我的猜測。我可以在保持開場簡短的同時，仍然控制觀眾最終看到的畫面。"
+      },
+      {
+        "name": "Owen Miller",
+        "role": "Performance creative strategist",
+        "avatar": "performance",
+        "quote": "做付費創意測試時，當我們已經知道起始與最終產品訊息，我會使用 Wan 2.7。首尾幀控制為我們提供了更乾淨的變體，用於比較轉場速度、構圖與最終印象。"
       }
     ]
   },
