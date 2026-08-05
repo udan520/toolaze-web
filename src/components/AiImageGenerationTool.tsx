@@ -440,6 +440,8 @@ interface PromptInsertEventDetail {
   demoImageTitle?: string
   demoImageWidth?: number
   demoImageHeight?: number
+  demoImageMediaType?: GenerationMediaType
+  demoImagePoster?: string
   modelId?: ImageModelId
   aspectRatio?: string
   resolution?: string
@@ -490,6 +492,22 @@ const EMPTY_PROMPT_PRESET_TABS: PromptPresetTab[] = []
 
 const AUTH_CACHE_STORAGE_KEY = 'toolaze.authSnapshot'
 type RemoteReferenceImageState = 'loading' | 'loaded' | 'retrying' | 'failed'
+
+function isSameOriginStaticReferenceImageUrl(url: string): boolean {
+  const imageUrl = normalizeReusableReferenceImageUrl(url)
+  return imageUrl.startsWith('/') && /\.(?:avif|gif|jpe?g|png|svg|webp)(?:[?#].*)?$/i.test(imageUrl)
+}
+
+function getInitialRemoteImagePreviewState(url: string): RemoteReferenceImageState {
+  return isSameOriginStaticReferenceImageUrl(url) ? 'loaded' : 'loading'
+}
+
+function buildRemoteImagePreviewStates(urls: string[]): Record<string, RemoteReferenceImageState> {
+  return urls.reduce<Record<string, RemoteReferenceImageState>>((states, url) => {
+    states[url] = getInitialRemoteImagePreviewState(url)
+    return states
+  }, {})
+}
 
 const composePromptParts = (...parts: Array<string | undefined>) =>
   parts
@@ -1287,7 +1305,7 @@ export default function AiImageGenerationTool({
   const [remoteImageUrls, setRemoteImageUrls] = useState<string[]>(defaultImageUrls.slice(0, MAX_IMAGES))
   const [clothingReferenceFiles, setClothingReferenceFiles] = useState<ImageItem[]>([])
   const [clothingReferenceRemoteUrls, setClothingReferenceRemoteUrls] = useState<string[]>([])
-  const [remoteImagePreviewStates, setRemoteImagePreviewStates] = useState<Record<string, RemoteReferenceImageState>>({})
+  const [remoteImagePreviewStates, setRemoteImagePreviewStates] = useState<Record<string, RemoteReferenceImageState>>(() => buildRemoteImagePreviewStates(defaultImageUrls.slice(0, MAX_IMAGES)))
   const [previewImage, setPreviewImage] = useState<string | null>(null)
   const [promptDemoImage, setPromptDemoImage] = useState<PromptDemoImage | null>(null)
   const [downloadingUrl, setDownloadingUrl] = useState<string | null>(null)
@@ -1523,7 +1541,7 @@ export default function AiImageGenerationTool({
       const nextStates: Record<string, RemoteReferenceImageState> = {}
       const referenceUrls = [...remoteImageUrls, ...clothingReferenceRemoteUrls]
       referenceUrls.forEach((url) => {
-        nextStates[url] = prev[url] || 'loading'
+        nextStates[url] = prev[url] || getInitialRemoteImagePreviewState(url)
       })
       return nextStates
     })
@@ -1612,8 +1630,20 @@ export default function AiImageGenerationTool({
       ? detail.imageUrls.map(normalizeReusableReferenceImageUrl).filter(Boolean)
       : []
     const urls = imageUrls.length > 0 ? imageUrls : imageUrl ? [imageUrl] : []
-    if (!nextPrompt && urls.length === 0) return false
+    if (!nextPrompt && urls.length === 0 && !detail.demoImageUrl?.trim()) return false
     const demoImageUrl = detail.demoImageUrl?.trim()
+
+    if (demoImageUrl) {
+      setRightMode('sample')
+      setPromptDemoImage({
+        url: demoImageUrl,
+        title: detail.demoImageTitle || toolText.sampleImage,
+        width: detail.demoImageWidth || 900,
+        height: detail.demoImageHeight || 1200,
+        mediaType: detail.demoImageMediaType,
+        poster: detail.demoImagePoster,
+      })
+    }
 
     if (detail.aspectRatio) setAspectRatio(detail.aspectRatio)
     if (detail.resolution) setResolution(detail.resolution)
@@ -1624,16 +1654,6 @@ export default function AiImageGenerationTool({
       shouldPositionInsertedPromptRef.current = true
       setPrompt(nextPrompt)
       setRightMode('sample')
-      setPromptDemoImage(
-        demoImageUrl
-          ? {
-              url: demoImageUrl,
-              title: detail.demoImageTitle || toolText.sampleImage,
-              width: detail.demoImageWidth || 900,
-              height: detail.demoImageHeight || 1200,
-            }
-          : null
-      )
     }
 
     const nextMode = resolvePromptInsertMode({
@@ -3217,23 +3237,25 @@ export default function AiImageGenerationTool({
           modelName: getHistoryItemModelName(item),
         }, item.time)}
 
-        <div className="flex items-start justify-between gap-4">
-          <div className="min-w-0">
-            <p className="mb-2 text-sm font-extrabold text-slate-900">{toolText.prompt}</p>
-            {renderDesktopPromptPreview(item.prompt, 'data-desktop-result-prompt')}
+        {!hidePromptInput && (
+          <div className="flex items-start justify-between gap-4">
+            <div className="min-w-0">
+              <p className="mb-2 text-sm font-extrabold text-slate-900">{toolText.prompt}</p>
+              {renderDesktopPromptPreview(item.prompt, 'data-desktop-result-prompt')}
+            </div>
+            <button
+              type="button"
+              onClick={() => void copyPromptToClipboard(item.prompt)}
+              className="shrink-0 rounded-lg p-1.5 text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-800"
+              title={toolText.copyPrompt}
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+              </svg>
+            </button>
           </div>
-          <button
-            type="button"
-            onClick={() => void copyPromptToClipboard(item.prompt)}
-            className="shrink-0 rounded-lg p-1.5 text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-800"
-            title={toolText.copyPrompt}
-          >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
-              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-            </svg>
-          </button>
-        </div>
+        )}
 
         {getHistoryReferencePreviewUrls(item).length > 0 && (
           <div className="flex max-w-md flex-wrap gap-2">
@@ -3333,10 +3355,12 @@ export default function AiImageGenerationTool({
       <div className="min-w-0 space-y-4">
         {renderInlineHistoryMeta(item, new Date().toLocaleString())}
 
-        <div>
-          <p className="mb-2 text-sm font-extrabold text-slate-900">{toolText.prompt}</p>
-          {renderDesktopPromptPreview(item.prompt, 'data-desktop-pending-result-prompt')}
-        </div>
+        {!hidePromptInput && (
+          <div>
+            <p className="mb-2 text-sm font-extrabold text-slate-900">{toolText.prompt}</p>
+            {renderDesktopPromptPreview(item.prompt, 'data-desktop-pending-result-prompt')}
+          </div>
+        )}
         {item.inputPreview && (
           <button
             type="button"
@@ -3399,23 +3423,25 @@ export default function AiImageGenerationTool({
       <div className="min-w-0 space-y-4">
         {renderInlineHistoryMeta(item, new Date(item.startedAt).toLocaleString())}
 
-        <div className="flex items-start justify-between gap-4">
-          <div className="min-w-0">
-            <p className="mb-2 text-sm font-extrabold text-slate-900">{toolText.prompt}</p>
-            {renderDesktopPromptPreview(item.prompt, 'data-desktop-failed-result-prompt')}
+        {!hidePromptInput && (
+          <div className="flex items-start justify-between gap-4">
+            <div className="min-w-0">
+              <p className="mb-2 text-sm font-extrabold text-slate-900">{toolText.prompt}</p>
+              {renderDesktopPromptPreview(item.prompt, 'data-desktop-failed-result-prompt')}
+            </div>
+            <button
+              type="button"
+              onClick={() => void copyPromptToClipboard(item.prompt)}
+              className="shrink-0 rounded-lg p-1.5 text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-800"
+              title={toolText.copyPrompt}
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+              </svg>
+            </button>
           </div>
-          <button
-            type="button"
-            onClick={() => void copyPromptToClipboard(item.prompt)}
-            className="shrink-0 rounded-lg p-1.5 text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-800"
-            title={toolText.copyPrompt}
-          >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
-              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-            </svg>
-          </button>
-        </div>
+        )}
 
         {item.inputPreview && (
           <button
@@ -3587,25 +3613,27 @@ export default function AiImageGenerationTool({
               ...currentResult,
               modelName: getHistoryItemModelName(currentResult),
             }, currentResult.time)}
-            <div data-mobile-result-prompt className="mt-3 space-y-1.5 px-1">
-              <div className="flex items-center justify-between gap-3">
-                <p className="text-xs font-extrabold text-slate-900">{toolText.prompt}</p>
-                <button
-                  type="button"
-                  onClick={() => void copyPromptToClipboard(currentResult.prompt)}
-                  className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-800"
-                  title={toolText.copyPrompt}
-                >
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
-                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-                  </svg>
-                </button>
+            {!hidePromptInput && (
+              <div data-mobile-result-prompt className="mt-3 space-y-1.5 px-1">
+                <div className="flex items-center justify-between gap-3">
+                  <p className="text-xs font-extrabold text-slate-900">{toolText.prompt}</p>
+                  <button
+                    type="button"
+                    onClick={() => void copyPromptToClipboard(currentResult.prompt)}
+                    className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-800"
+                    title={toolText.copyPrompt}
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                    </svg>
+                  </button>
+                </div>
+                <p className="max-h-24 overflow-y-auto text-xs leading-5 text-slate-600">
+                  {currentResult.prompt}
+                </p>
               </div>
-              <p className="max-h-24 overflow-y-auto text-xs leading-5 text-slate-600">
-                {currentResult.prompt}
-              </p>
-            </div>
+            )}
             {getHistoryReferencePreviewUrls(currentResult).length > 0 && (
               <div className="mt-3 flex flex-wrap gap-2">
                 {getHistoryReferencePreviewUrls(currentResult).map((url, index) => (

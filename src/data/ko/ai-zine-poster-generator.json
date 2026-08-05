@@ -1,0 +1,231 @@
+{
+  "in_menu": false,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 1,
+    "modelId": "gpt-image-2",
+    "defaultAspectRatio": "9:16",
+    "defaultPrompt": "Use the uploaded image as the only visual reference. Identify the clearest main subject, object, person, product, pet, plant, room detail, or visual fragment, then reinterpret that subject as a quiet minimal zine poster rather than copying the original photo exactly.\n\nCreate a paper-poster composition that follows the output canvas selected on the page. Use full-frame aged off-white paper, 70% to 90% calm negative space, and one small visual cluster occupying about 8% to 25% of the canvas. Place the cluster away from the edges, preferably center, upper-middle, lower-left, or upper-right. Do not force an alternate crop or nested frame.\n\nTreat the subject as a tiny faded photo crop, torn-paper clipping, flat silhouette, old printed illustration, object specimen, or paper texture window. Blend it into the paper using xerox softness, halftone wear, risograph grain, scan noise, paper fibers, subtle ink bleed, and slight misregistration. Keep the main subject recognizable, but make the final image feel regenerated as archival print design.\n\nAdd sparse serif, typewriter, or monospaced microtype with one very short readable phrase and optional tiny date or archive marks. Use one unmistakably saturated high-chroma ink accent, such as cobalt blue, ultramarine, tomato red, lemon yellow, pear green, cyan, violet, or orange. The accent should be a visible printed block, cutout, subject fragment, or type element occupying about 0.8% to 2.5% of the whole canvas or 15% to 35% of the small cluster.\n\nKeep the whole image flat like a scanned paper sheet with matte absorbent texture, diffuse light, low-to-medium contrast, and a quiet Japanese or Korean indie editorial zine mood. Avoid full-bleed scenes, commercial headlines, logo lockups, CTA layout, glossy mockups, clean digital UI white, cinematic lighting, 3D depth, neon, cute cartoon style, dense scrapbook collage, too many colors, and long clean text blocks.",
+    "defaultImageUrls": [
+      "https://assets.toolaze.com/model-assets/ai-zine-poster-generator/zine-poster-reference.webp"
+    ],
+    "sampleImages": [
+      {
+        "url": "https://assets.toolaze.com/model-assets/ai-zine-poster-generator/zine-poster-demo.webp",
+        "title": "바다 풍경 참조에서 생성한 미니멀 진 포스터",
+        "width": 1200,
+        "height": 675
+      }
+    ],
+    "hideModelBranding": true,
+    "hidePromptInput": true,
+    "compactResultPanel": true,
+    "displayName": "AI 진 포스터 생성기",
+    "textOverrides": {
+      "uploadTitle": "이미지 한 장 업로드",
+      "uploadHelper": "인식하기 쉬운 주제가 있는 선명한 사진을 사용하세요. JPG, PNG, WebP 최대 30MB.",
+      "generateLabel": "진 포스터 생성"
+    }
+  },
+  "heroDemoVideo": {
+    "type": "image",
+    "src": "https://assets.toolaze.com/model-assets/ai-zine-poster-generator/zine-poster-demo.webp",
+    "width": 16,
+    "height": 9,
+    "ariaLabel": "바다 풍경 참조에서 생성한 미니멀 진 포스터 데모",
+    "sourceHistory": "User-provided generated zine poster demo and matching seascape reference, uploaded to R2 for stable Toolaze public preview."
+  },
+  "metadata": {
+    "title": "AI 진 포스터 생성기 | 사진을 종이 포스터로 | Toolaze",
+    "description": "사진 한 장을 업로드하고 주요 주제를 종이 질감, 절제된 타이포그래피, 큰 여백, 선명한 색상 포인트가 있는 조용한 진 스타일 AI 포스터로 변환하세요."
+  },
+  "sectionsOrder": [
+    "intro",
+    "howToUse",
+    "features",
+    "photoTips",
+    "scenes",
+    "faq"
+  ],
+  "hero": {
+    "h1": "AI <span class=\"text-gradient\">진 포스터</span> 생성기",
+    "desc": "이미지 한 장을 업로드하고 주요 주제를 조용한 종이 포스터 구성으로 바꾸세요. Toolaze는 낡은 질감, 절제된 타이포그래피, 넓은 여백, 선명한 잉크 포인트가 있는 미니멀 진 스타일을 사용합니다."
+  },
+  "intro": {
+    "title": "이 진 포스터 생성기가 만드는 것",
+    "content": [
+      {
+        "title": "사진 한 장에서 조용한 포스터로",
+        "text": "생성기는 업로드된 이미지를 읽고 가장 분명한 주제를 찾아 진 스타일 종이 포스터로 바꿉니다. 결과는 사진을 그대로 복사하지 않습니다. 작은 초점 클러스터, 아카이브 질감, 절제된 에디토리얼 무드가 있는 새로운 종이 구성이 됩니다."
+      },
+      {
+        "title": "글 작성은 필요 없음",
+        "text": "스타일 지시를 작성할 필요가 없습니다. 이미지 한 장을 업로드하고 사용 가능한 출력 설정을 선택한 뒤 생성하세요. 진 포스터 스타일 로직이 주제 배치, 종이 질감, 절제된 글자, 색상 포인트를 자동으로 처리합니다."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "사진을 진 포스터로 바꾸는 방법",
+    "steps": [
+      {
+        "title": "이미지 한 장 업로드",
+        "desc": "사람, 제품, 물건, 반려동물, 식물, 방 디테일 또는 시각적 주제가 뚜렷한 사진을 선택하세요."
+      },
+      {
+        "title": "출력 형태 선택",
+        "desc": "생성 전에 원하는 화면비를 선택하세요. 진 스타일은 해당 캔버스에 맞춰 주제를 여백 있게 배치합니다."
+      },
+      {
+        "title": "생성하고 다운로드",
+        "desc": "포스터를 만들고 주제, 질감, 글자, 색상 포인트를 확인한 뒤 결과를 다운로드하세요."
+      }
+    ]
+  },
+  "features": {
+    "title": "미니멀 진 포스터 스타일",
+    "items": [
+      {
+        "icon": "□",
+        "iconType": "layout",
+        "title": "넓은 여백",
+        "desc": "주제를 작게 유지해 종이 표면, 고요함, 구성이 이미지의 일부가 되게 합니다."
+      },
+      {
+        "icon": "◎",
+        "iconType": "anchor",
+        "title": "인식 가능한 주제 앵커",
+        "desc": "업로드한 사람, 제품, 반려동물, 식물, 물건 또는 방 디테일은 작은 초점으로 읽을 수 있게 남습니다."
+      },
+      {
+        "icon": "⌁",
+        "iconType": "texture",
+        "title": "낡은 종이 질감",
+        "desc": "부드러운 스캔 노이즈, 하프톤 마모, 종이 섬유, 잉크 번짐이 아날로그 편집감을 만듭니다."
+      },
+      {
+        "icon": "Aa",
+        "iconType": "typography",
+        "title": "절제된 타이포그래피",
+        "desc": "작은 세리프, 타자기체 또는 고정폭 글자 표시가 큰 헤드라인이 되지 않으면서 진 표지 리듬을 더합니다."
+      },
+      {
+        "icon": "◐",
+        "iconType": "mood",
+        "title": "조용한 에디토리얼 무드",
+        "desc": "결과는 광택 광고나 전체 장면이 아니라 차분하고 평면적인 인디 포스터처럼 유지됩니다."
+      },
+      {
+        "icon": "●",
+        "iconType": "accent",
+        "title": "하나의 선명한 잉크 포인트",
+        "desc": "코발트, 토마토 레드, 레몬 옐로, 배 그린 같은 단일 고채도 색이 포스터를 한눈에 읽히게 합니다."
+      }
+    ]
+  },
+  "photoTips": {
+    "title": "업로드하기 좋은 사진",
+    "subtitle": "변환 전에 주요 주제가 쉽게 인식될수록 이 스타일이 더 안정적으로 작동합니다.",
+    "items": [
+      {
+        "title": "명확한 주제 하나 사용",
+        "desc": "제품, 얼굴, 꽃, 의자, 반려동물, 신발, 책 또는 작은 물건이 복잡한 장면보다 대체로 더 잘 맞습니다.",
+        "color": "linear-gradient(135deg, #dbeafe, #4f46e5)"
+      },
+      {
+        "title": "가장자리 유지",
+        "desc": "주제의 형태가 중요할 때는 과도한 크롭, 가려진 윤곽, 모션 블러를 피하세요.",
+        "color": "linear-gradient(135deg, #fef3c7, #f59e0b)"
+      },
+      {
+        "title": "단순한 배경이 도움됨",
+        "desc": "복잡한 사진도 가능하지만 배경이 깔끔하면 주제를 선택하고 포스터를 단순화하기 쉽습니다.",
+        "color": "linear-gradient(135deg, #dcfce7, #16a34a)"
+      },
+      {
+        "title": "작은 글자에 의존하지 않기",
+        "desc": "진 스타일은 형태, 분위기, 질감, 색상에 강합니다. 작은 로고, 라벨, 세밀한 글자는 바뀔 수 있습니다.",
+        "color": "linear-gradient(135deg, #fce7f3, #db2777)"
+      }
+    ]
+  },
+  "scenesTitle": "무엇을 만들 수 있나요",
+  "scenes": [
+    {
+      "icon": "▣",
+      "title": "소셜 커버",
+      "desc": "게시물, 프로필 업데이트, 플레이리스트, 뉴스레터, 무드 중심 소셜 콘텐츠용 조용한 종이 비주얼을 만드세요."
+    },
+    {
+      "icon": "◐",
+      "title": "제품 무드 포스터",
+      "desc": "제품이나 사물 사진을 초기 캠페인 방향과 브랜드 무드보드용 부드러운 에디토리얼 포스터로 바꾸세요."
+    },
+    {
+      "icon": "✶",
+      "title": "인물 및 사물 스터디",
+      "desc": "인물, 꽃, 책, 방 디테일, 발견한 물건, 일상 사진을 미니멀 진 스타일 스터디로 변환하세요."
+    }
+  ],
+  "faqTitle": "AI 진 포스터 생성기 FAQ",
+  "faq": [
+    {
+      "q": "프롬프트를 써야 하나요?",
+      "a": "아니요. 이미지 한 장을 업로드하면 Toolaze가 진 포스터 스타일을 자동으로 적용합니다."
+    },
+    {
+      "q": "결과가 내 사진을 그대로 복사하나요?",
+      "a": "아니요. 생성기는 주요 주제를 인식 가능하게 유지하지만 최종 이미지는 새로운 질감, 레이아웃, 타이포그래피가 있는 미니멀 종이 포스터로 다시 생성됩니다."
+    },
+    {
+      "q": "어떤 이미지가 가장 좋나요?",
+      "a": "주제가 하나로 명확하고 가장자리가 보이며 물건이나 사람을 인식할 수 있을 만큼 대비가 있는 사진을 사용하세요."
+    },
+    {
+      "q": "제품 또는 브랜드 비주얼에 사용할 수 있나요?",
+      "a": "네, 무드보드, 소셜 비주얼, 포스터 초안, 에디토리얼 콘셉트를 만드는 데 도움이 됩니다. 업로드에 로고, 사람 또는 보호된 자산이 포함된 경우 상업적 사용 전 최종 결과를 검토하세요."
+    },
+    {
+      "q": "어떤 모델이 결과를 만드나요?",
+      "a": "이 페이지는 GPT Image 2와 Toolaze의 진 포스터 스타일 로직을 사용해 참조 기반 이미지를 생성합니다."
+    }
+  ],
+  "moreTools": "관련 AI 이미지 도구",
+  "moreToolsLinks": [
+    {
+      "slug": "gpt-image-2",
+      "title": "GPT Image 2",
+      "description": "Toolaze의 GPT Image 2 생성기로 이미지를 만들고 편집하세요.",
+      "href": "/model/gpt-image-2",
+      "media": {
+        "type": "image",
+        "src": "/model-assets/gpt-image-2/feature-image-editing.webp",
+        "alt": "GPT Image 2 이미지 편집 미리보기"
+      }
+    },
+    {
+      "slug": "ai-image-to-image-generator",
+      "title": "AI 이미지-이미지 생성기",
+      "description": "참조 이미지를 업로드하고 텍스트 기반 이미지 편집으로 변환하세요.",
+      "href": "/ai-image-to-image-generator",
+      "media": {
+        "type": "image",
+        "src": "/ai-image-generator/image-to-image-generator.webp",
+        "alt": "AI 이미지-이미지 생성기 미리보기"
+      }
+    },
+    {
+      "slug": "text-to-image-generator",
+      "title": "텍스트-이미지 생성기",
+      "description": "이미지 브리프를 직접 제어하고 싶을 때 글로 된 아이디어에서 시작하세요.",
+      "href": "/text-to-image-generator",
+      "media": {
+        "type": "image",
+        "src": "/ai-image-generator/text-to-image-generator.webp",
+        "alt": "텍스트-이미지 생성기 미리보기"
+      }
+    }
+  ]
+}

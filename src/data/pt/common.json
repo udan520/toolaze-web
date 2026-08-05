@@ -15,6 +15,7 @@
     "watermarkRemover": "Remover marca d'água",
     "photoRestoration": "Restauração de fotos",
     "aiCouplePhotoMaker": "Foto de casal IA",
+    "aiZinePosterGenerator": "Gerador de pôster zine com IA",
     "fontGenerator": "Gerador de Fontes",
     "emojiCopyAndPaste": "Emoji copiar e colar",
     "aiImage": "Imagem IA",
@@ -137,6 +138,10 @@
         "cardTitle": "Gerador de imagens IA da Copa do Mundo",
         "summary": "Crie pôsteres de futebol, retratos de torcedor, pacotes de stickers e artes para assistir aos jogos com GPT Image 2. Comece por um modelo ou selfie e gere imagens estáticas prontas para compartilhar no navegador."
       },
+      "ai-zine-poster-generator": {
+        "cardTitle": "Gerador de pôster zine com IA",
+        "summary": "Envie uma imagem e transforme o assunto principal em um pôster zine de papel com textura, tipografia mínima, espaço negativo e um acento de cor vivo."
+      },
       "ai-dance-generator": {
         "cardTitle": "Gerador de dança com IA",
         "summary": "Envie uma imagem e crie um vídeo curto de dança para ideias de coreografia, promos de aulas e clipes sociais. Escolha duração e proporção no gerador."
@@ -256,6 +261,7 @@
     "watermarkRemover": "Remover marca d'água",
     "photoRestoration": "Restauração de fotos",
     "aiCouplePhotoMaker": "Foto de casal IA",
+    "aiZinePosterGenerator": "Gerador de pôster zine com IA",
     "aiImage": "Imagem IA",
     "aiVideo": "Vídeo IA",
     "aiImageModel": "Modelo de imagem IA",
@@ -322,6 +328,7 @@
     "aiBabyGenerator": "Gerador de bebê IA",
     "textToImageGenerator": "Gerador de texto para imagem",
     "aiImageToImageGenerator": "Gerador IA de imagem para imagem",
+    "aiZinePosterGenerator": "Gerador de pôster zine com IA",
     "worldCupAiImageGenerator": "Gerador de imagens IA da Copa do Mundo",
     "refundPolicy": "Política de reembolso",
     "acceptableUse": "Política de uso aceitável",

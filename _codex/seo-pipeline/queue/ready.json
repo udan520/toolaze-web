@@ -101,6 +101,12 @@
       "slug": "kling-3-motion-control",
       "pageType": "l2",
       "status": "ready_for_publish"
+    },
+    {
+      "taskId": "2026-08-05-ai-zine-poster-generator",
+      "slug": "ai-zine-poster-generator",
+      "pageType": "l2",
+      "status": "ready_for_publish"
     }
   ]
 }

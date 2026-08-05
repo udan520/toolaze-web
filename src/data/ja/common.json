@@ -15,6 +15,7 @@
     "watermarkRemover": "透かし除去",
     "photoRestoration": "写真復元",
     "aiCouplePhotoMaker": "AIカップルフォト",
+    "aiZinePosterGenerator": "AIジンポスタージェネレーター",
     "fontGenerator": "フォントジェネレーター",
     "emojiCopyAndPaste": "絵文字のコピー＆ペースト",
     "aiImage": "AI画像",
@@ -137,6 +138,10 @@
         "cardTitle": "ワールドカップAI画像ジェネレーター",
         "summary": "GPT Image 2でサッカーポスター、ファンポートレート、ステッカーパック、観戦パーティー用ビジュアルを作成できます。テンプレートや自撮りから始めて、ブラウザで共有向けの静止画像を生成します。"
       },
+      "ai-zine-poster-generator": {
+        "cardTitle": "AIジンポスタージェネレーター",
+        "summary": "画像を1枚アップロードし、主題を紙質感、控えめな文字、大きな余白、鮮やかな色アクセントの静かなジンポスターに変換できます。"
+      },
       "ai-dance-generator": {
         "cardTitle": "AIダンスジェネレーター",
         "summary": "1枚の画像をアップロードして、振付案、クラス告知、SNSクリップ向けの短いダンス動画を作成できます。生成画面で長さとアスペクト比を選べます。"
@@ -256,6 +261,7 @@
     "watermarkRemover": "透かし除去",
     "photoRestoration": "写真復元",
     "aiCouplePhotoMaker": "AIカップルフォト",
+    "aiZinePosterGenerator": "AIジンポスタージェネレーター",
     "aiImage": "AI画像",
     "aiVideo": "AI動画",
     "aiImageModel": "AI画像モデル",
@@ -322,6 +328,7 @@
     "aiBabyGenerator": "AIベビージェネレーター",
     "textToImageGenerator": "テキストから画像生成",
     "aiImageToImageGenerator": "AI画像から画像生成",
+    "aiZinePosterGenerator": "AIジンポスタージェネレーター",
     "worldCupAiImageGenerator": "ワールドカップAI画像ジェネレーター",
     "refundPolicy": "返金ポリシー",
     "acceptableUse": "利用許可ポリシー",

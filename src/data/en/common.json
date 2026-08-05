@@ -15,6 +15,7 @@
     "watermarkRemover": "Watermark Remover",
     "photoRestoration": "Photo Restoration",
     "aiCouplePhotoMaker": "AI Couple Photo Maker",
+    "aiZinePosterGenerator": "AI Zine Poster Generator",
     "worldCupAiImageGenerator": "World Cup AI Image Generator",
     "fontGenerator": "Font Generator",
     "emojiCopyAndPaste": "Emoji Copy & Paste",
@@ -133,6 +134,10 @@
         "cardTitle": "World Cup AI Image Generator",
         "summary": "Generate football posters, fan edits, sticker packs, and watch-party visuals with GPT Image 2. Start with a reusable template or selfie, then download a share-ready still image."
       },
+      "ai-zine-poster-generator": {
+        "cardTitle": "AI Zine Poster Generator",
+        "summary": "Upload one image and turn the main subject into a quiet paper zine poster with texture, sparse typography, negative space, and one vivid color accent."
+      },
       "wan-2-7-image": {
         "cardTitle": "Wan 2.7 Image",
         "summary": "AI image generator for complex prompts, multi-reference inputs, prompt-based edits, readable text layouts, and 2K to 4K creative workflows on Toolaze."
@@ -244,6 +249,7 @@
     "watermarkRemover": "Watermark Remover",
     "photoRestoration": "Photo Restoration",
     "aiCouplePhotoMaker": "AI Couple Photo Maker",
+    "aiZinePosterGenerator": "AI Zine Poster Generator",
     "aiImage": "AI Image",
     "aiVideo": "AI Video",
     "aiImageModel": "AI Image Model",
@@ -310,6 +316,7 @@
     "aiBabyGenerator": "AI Baby Generator",
     "textToImageGenerator": "Text to Image Generator",
     "aiImageToImageGenerator": "AI Image to Image Generator",
+    "aiZinePosterGenerator": "AI Zine Poster Generator",
     "worldCupAiImageGenerator": "World Cup AI Image Generator",
     "refundPolicy": "Refund Policy",
     "acceptableUse": "Acceptable Use Policy",

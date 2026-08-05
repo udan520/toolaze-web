@@ -181,6 +181,23 @@ test('desktop history prompts scroll instead of clipping long text', () => {
   assert.doesNotMatch(source, /data-desktop-(?:result|pending-result|failed-result)-prompt[\s\S]{0,120}title=\{item\.prompt\}/)
 })
 
+test('inline history prompt blocks stay hidden for automatic prompt tools', () => {
+  const assertHiddenPromptGate = (startMarker, endMarker, promptMarker) => {
+    const block = source.slice(source.indexOf(startMarker), source.indexOf(endMarker))
+    const promptIndex = block.indexOf(promptMarker)
+    assert.ok(promptIndex > 0, `${promptMarker} should exist in ${startMarker}`)
+    assert.ok(
+      block.lastIndexOf('!hidePromptInput', promptIndex) >= 0,
+      `${promptMarker} should be gated by hidePromptInput`,
+    )
+  }
+
+  assertHiddenPromptGate('const renderDesktopResultItem', 'const renderDesktopPendingResultItem', 'data-desktop-result-prompt')
+  assertHiddenPromptGate('const renderDesktopPendingResultItem', 'const applyGenerationItemToForm', 'data-desktop-pending-result-prompt')
+  assertHiddenPromptGate('const renderDesktopFailedResultItem', 'const renderDesktopResultFeed', 'data-desktop-failed-result-prompt')
+  assertHiddenPromptGate('const renderMobileHistoryFeed', 'const desktopTopPaddingClass', 'data-mobile-result-prompt')
+})
+
 test('desktop history metadata appears as light tags above the prompt', () => {
   const resultBlock = source.slice(
     source.indexOf('const renderDesktopResultItem'),
@@ -354,9 +371,11 @@ test('successful history renders every original reference image', () => {
 
 test('left remote reference images show loading and fallback states', () => {
   assert.match(source, /type RemoteReferenceImageState = 'loading' \| 'loaded' \| 'retrying' \| 'failed'/)
-  assert.match(source, /const \[remoteImagePreviewStates, setRemoteImagePreviewStates\] = useState<Record<string, RemoteReferenceImageState>>\(\{\}\)/)
+  assert.match(source, /const \[remoteImagePreviewStates, setRemoteImagePreviewStates\] = useState<Record<string, RemoteReferenceImageState>>\(\(\) => buildRemoteImagePreviewStates\(defaultImageUrls\.slice\(0, MAX_IMAGES\)\)\)/)
   assert.match(source, /const referenceUrls = \[\.\.\.remoteImageUrls, \.\.\.clothingReferenceRemoteUrls\]/)
-  assert.match(source, /referenceUrls\.forEach\(\(url\) => \{[\s\S]*nextStates\[url\] = prev\[url\] \|\| 'loading'/)
+  assert.match(source, /function getInitialRemoteImagePreviewState\(url: string\): RemoteReferenceImageState/)
+  assert.match(source, /function buildRemoteImagePreviewStates\(urls: string\[\]\): Record<string, RemoteReferenceImageState>/)
+  assert.match(source, /referenceUrls\.forEach\(\(url\) => \{[\s\S]*nextStates\[url\] = prev\[url\] \|\| getInitialRemoteImagePreviewState\(url\)/)
   assert.match(source, /<ReferenceImageUploader/)
   assert.match(source, /src: previewState === 'retrying' \? normalizeReusableReferenceImageUrl\(url\) : getReferencePreviewUrl\(url\)/)
   assert.match(source, /onLoad: \(\) => setRemoteImagePreviewState\(url, 'loaded'\)/)
@@ -539,7 +558,7 @@ test('pending reprompt can apply an image-only edit payload', () => {
   const promptInsert = source.match(/const applyPromptInsertDetail = useCallback\(\(detail: PromptInsertEventDetail\) => \{[\s\S]*?\n  \}, \[/)?.[0] || ''
 
   assert.match(promptInsert, /const nextPrompt = detail\.prompt\?\.trim\(\)/)
-  assert.match(promptInsert, /if \(!nextPrompt && urls\.length === 0\) return false/)
+  assert.match(promptInsert, /if \(!nextPrompt && urls\.length === 0 && !detail\.demoImageUrl\?\.trim\(\)\) return false/)
   assert.match(promptInsert, /if \(nextPrompt\) \{[\s\S]*setPrompt\(nextPrompt\)/)
   assert.match(promptInsert, /setRemoteImageUrls\(resolvePromptInsertRemoteImageUrls\(\{[\s\S]*referenceUrls: urls/)
   assert.match(promptInsert, /setActiveTab\(nextMode\)/)

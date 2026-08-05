@@ -64,6 +64,7 @@ const defaultNavTranslations = {
   aiBikiniGenerator: 'AI Bikini Generator',
   aiBreastExpansion: 'AI Breast Expansion',
   unrestrictedAiImageGenerator: 'Unlimited AI Image',
+  aiZinePosterGenerator: 'AI Zine Poster Generator',
   worldCupAiImageGenerator: 'World Cup AI Image Generator',
   fontGenerator: 'Font Generator',
   emojiCopyAndPaste: 'Emoji Copy & Paste',
@@ -190,6 +191,8 @@ const AI_TOOLS_DEMO_IMAGES = {
     'https://assets.toolaze.com/landing-pages/talking-avatar-creator/demo-poster.webp',
   aiImageToImageGenerator:
     'https://assets.toolaze.com/model-assets/gpt-image-2/feature-image-editing.webp',
+  aiZinePosterGenerator:
+    'https://assets.toolaze.com/model-assets/ai-zine-poster-generator/zine-poster-demo.webp',
   worldCupAiImageGenerator:
     'https://assets.toolaze.com/uploads/d67aebd7cde5431abd3a7bb74a89bac1.webp',
 }
@@ -203,6 +206,7 @@ type AiToolNavLabelKey =
   | 'aiBreastExpansion'
   | 'aiBabyGenerator'
   | 'aiCouplePhotoMaker'
+  | 'aiZinePosterGenerator'
   | 'worldCupAiImageGenerator'
   | 'watermarkRemover'
   | 'photoRestoration'
@@ -228,6 +232,7 @@ const AI_IMAGE_TOOL_MENU_ITEMS: readonly AiToolMenuItem[] = [
   { href: '/ai-breast-expansion', labelKey: 'aiBreastExpansion', imageKey: 'aiBreastExpansion' },
   { href: '/ai-baby-generator', labelKey: 'aiBabyGenerator', imageKey: 'aiBabyGenerator' },
   { href: '/ai-couple-photo-maker', labelKey: 'aiCouplePhotoMaker', imageKey: 'aiCouplePhotoMaker' },
+  { href: '/ai-zine-poster-generator', labelKey: 'aiZinePosterGenerator', imageKey: 'aiZinePosterGenerator', hot: true },
   { href: '/world-cup-ai-image-generator', labelKey: 'worldCupAiImageGenerator', imageKey: 'worldCupAiImageGenerator' },
   { href: '/watermark-remover', labelKey: 'watermarkRemover', imageKey: 'watermarkRemover' },
   { href: '/photo-restoration', labelKey: 'photoRestoration', imageKey: 'photoRestoration' },

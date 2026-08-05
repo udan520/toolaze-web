@@ -15,6 +15,7 @@
     "watermarkRemover": "Suppression du filigrane",
     "photoRestoration": "Restauration photo",
     "aiCouplePhotoMaker": "Photo couple IA",
+    "aiZinePosterGenerator": "Générateur d’affiches zine IA",
     "fontGenerator": "Générateur de Polices",
     "emojiCopyAndPaste": "Emoji copier-coller",
     "aiImage": "Image IA",
@@ -137,6 +138,10 @@
         "cardTitle": "Générateur d’images IA Coupe du monde",
         "summary": "Créez des affiches de football, portraits de supporters, packs de stickers et visuels de soirée match avec GPT Image 2. Partez d’un modèle ou d’un selfie et générez des images fixes prêtes à partager dans le navigateur."
       },
+      "ai-zine-poster-generator": {
+        "cardTitle": "Générateur d’affiches zine IA",
+        "summary": "Importez une image et transformez le sujet principal en affiche zine papier avec texture, typographie discrète, espace négatif et un accent de couleur vif."
+      },
       "ai-dance-generator": {
         "cardTitle": "Générateur de danse IA",
         "summary": "Importez une image et créez une courte vidéo de danse pour des idées de chorégraphie, promotions de cours et clips sociaux. Choisissez la durée et le format dans le générateur."
@@ -256,6 +261,7 @@
     "watermarkRemover": "Suppression du filigrane",
     "photoRestoration": "Restauration photo",
     "aiCouplePhotoMaker": "Photo couple IA",
+    "aiZinePosterGenerator": "Générateur d’affiches zine IA",
     "aiImage": "Image IA",
     "aiVideo": "Vidéo IA",
     "aiImageModel": "Modèle d’image IA",
@@ -322,6 +328,7 @@
     "aiBabyGenerator": "Générateur de bébé IA",
     "textToImageGenerator": "Générateur texte-image",
     "aiImageToImageGenerator": "Générateur image-à-image IA",
+    "aiZinePosterGenerator": "Générateur d’affiches zine IA",
     "worldCupAiImageGenerator": "Générateur d’images IA Coupe du monde",
     "refundPolicy": "Politique de remboursement",
     "acceptableUse": "Politique d’utilisation acceptable",

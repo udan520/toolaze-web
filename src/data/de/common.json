@@ -15,6 +15,7 @@
     "watermarkRemover": "Wasserzeichen entfernen",
     "photoRestoration": "Fotorestaurierung",
     "aiCouplePhotoMaker": "KI-Paarfoto",
+    "aiZinePosterGenerator": "KI-Zine-Poster-Generator",
     "fontGenerator": "Schriftgenerator",
     "emojiCopyAndPaste": "Emoji kopieren & einfügen",
     "aiImage": "KI-Bild",
@@ -137,6 +138,10 @@
         "cardTitle": "WM-KI-Bildgenerator",
         "summary": "Erstellen Sie Fußballposter, Fan-Porträts, Sticker-Packs und Watch-Party-Grafiken mit GPT Image 2. Starten Sie mit einer Vorlage oder einem Selfie und erzeugen Sie teilbare Standbilder direkt im Browser."
       },
+      "ai-zine-poster-generator": {
+        "cardTitle": "KI-Zine-Poster-Generator",
+        "summary": "Laden Sie ein Bild hoch und verwandeln Sie das Hauptmotiv in ein ruhiges Papier-Zine-Poster mit Textur, sparsamer Typografie, Negativraum und einem kräftigen Farbakzent."
+      },
       "ai-dance-generator": {
         "cardTitle": "KI-Tanzgenerator",
         "summary": "Laden Sie ein Bild hoch und erstellen Sie ein kurzes Tanzvideo für Choreografie-Ideen, Kurs-Promos und Social Clips. Dauer und Seitenverhältnis lassen sich im Generator wählen."
@@ -256,6 +261,7 @@
     "watermarkRemover": "Wasserzeichen entfernen",
     "photoRestoration": "Fotorestaurierung",
     "aiCouplePhotoMaker": "KI-Paarfoto",
+    "aiZinePosterGenerator": "KI-Zine-Poster-Generator",
     "aiImage": "KI-Bild",
     "aiVideo": "KI-Video",
     "aiImageModel": "KI-Bildmodell",
@@ -322,6 +328,7 @@
     "aiBabyGenerator": "KI-Babygenerator",
     "textToImageGenerator": "Text-zu-Bild-Generator",
     "aiImageToImageGenerator": "KI-Bild-zu-Bild-Generator",
+    "aiZinePosterGenerator": "KI-Zine-Poster-Generator",
     "worldCupAiImageGenerator": "WM-KI-Bildgenerator",
     "refundPolicy": "Rückerstattungsrichtlinie",
     "acceptableUse": "Richtlinie zur zulässigen Nutzung",

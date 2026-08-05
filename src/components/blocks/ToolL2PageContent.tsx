@@ -946,6 +946,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
       'photoRestoration',
       'aiCouplePhotoMaker',
       'aiBabyGenerator',
+      'aiZinePosterGenerator',
       'aiAsmrVideoGenerator',
       'aiKissingVideoGenerator',
       'talkingAvatarCreator',
@@ -1014,6 +1015,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
       'photoRestoration',
       'aiCouplePhotoMaker',
       'aiBabyGenerator',
+      'aiZinePosterGenerator',
       'aiKissingVideoGenerator',
       'aiDanceGenerator',
       'aiHairstyleChanger',
@@ -1605,10 +1607,12 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                     defaultMode={content.topTool?.mode === 'image-to-image' ? 'image-to-image' : undefined}
                     defaultPrompt={content.topTool?.defaultPrompt || ''}
                     defaultImageUrls={Array.isArray(content.topTool?.defaultImageUrls) ? content.topTool.defaultImageUrls : []}
+                    defaultAspectRatio={typeof content.topTool?.defaultAspectRatio === 'string' ? content.topTool.defaultAspectRatio : undefined}
                     defaultVideoDurationSeconds={typeof content.topTool?.defaultVideoDurationSeconds === 'number' ? content.topTool.defaultVideoDurationSeconds : undefined}
                     videoDurationOptions={Array.isArray(content.topTool?.videoDurationOptions) ? content.topTool.videoDurationOptions : undefined}
                     maxUploadImages={typeof content.topTool?.maxUploadImages === 'number' ? content.topTool.maxUploadImages : undefined}
                     hideModelBranding={content.topTool?.hideModelBranding === true}
+                    hidePromptInput={content.topTool?.hidePromptInput === true}
                     sampleImages={Array.isArray(content.topTool?.sampleImages) ? content.topTool.sampleImages : undefined}
                     sampleImageVariant="sharp"
                     promptPresets={promptPresets}

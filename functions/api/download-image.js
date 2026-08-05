@@ -26,6 +26,7 @@ function isAllowedUrl(url, allowedBase) {
     return false;
   }
   if (allowedBase && (url === allowedBase || url.startsWith(allowedBase + '/'))) return true;
+  if (hostname === 'assets.toolaze.com') return true;
   if (hostname.endsWith('.r2.dev')) return true;
   // KIE / third-party result files can be temporary CDN URLs before we persist them to R2.
   if (hostname === 'tempfile.aiquickdraw.com' || hostname.endsWith('.aiquickdraw.com')) return true;

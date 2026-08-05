@@ -113,6 +113,7 @@ test('AI tools hub exposes baby, couple, dance, watermark, and World Cup entries
     '/ai-dance-generator',
     '/watermark-remover',
     '/world-cup-ai-image-generator',
+    '/ai-zine-poster-generator',
   ]) {
     assert.match(aiToolsCopySource, new RegExp(`href: '${href}'`))
   }
@@ -124,6 +125,7 @@ test('homepage AI Tools tabs include every concrete tool from the hub', () => {
   for (const href of [
     '/unrestricted-ai-image-generator',
     '/world-cup-ai-image-generator',
+    '/ai-zine-poster-generator',
     '/ai-couple-photo-maker',
     '/ai-baby-generator',
     '/ai-dance-generator',
@@ -409,7 +411,8 @@ test('AI Dance is discoverable from global navigation, footer, homepage, and AI 
   assert.match(homePageSource, /href: localizeHomeHref\('\/ai-dance-generator'\)/)
   assert.match(homeModelCardImagesSource, /'ai-dance-generator'/)
   assert.match(aiToolsCopySource, /cardAssets\.dance/)
-  assert.match(aiToolsCopySource, /\/model-assets\/ai-dance-generator\/ai-dance-demo-source\.png/)
+  assert.match(aiToolsCopySource, /\/model-assets\/ai-dance-generator\/ai-dance-demo-poster\.webp/)
+  assert.match(aiToolsCopySource, /\/model-assets\/ai-dance-generator\/ai-dance-demo\.mp4/)
   assert.doesNotMatch(aiToolsCopySource, /Grok/)
 })
 

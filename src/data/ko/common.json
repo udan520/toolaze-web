@@ -15,6 +15,7 @@
     "watermarkRemover": "워터마크 제거",
     "photoRestoration": "사진 복원",
     "aiCouplePhotoMaker": "AI 커플 사진",
+    "aiZinePosterGenerator": "AI 진 포스터 생성기",
     "fontGenerator": "폰트 생성기",
     "emojiCopyAndPaste": "이모지 복사 및 붙여넣기",
     "aiImage": "AI 이미지",
@@ -137,6 +138,10 @@
         "cardTitle": "월드컵 AI 이미지 생성기",
         "summary": "GPT Image 2로 축구 포스터, 팬 초상화, 스티커 팩, 경기 관람 파티 이미지를 만드세요. 템플릿이나 셀피로 시작해 브라우저에서 바로 공유할 수 있는 정지 이미지를 생성합니다."
       },
+      "ai-zine-poster-generator": {
+        "cardTitle": "AI 진 포스터 생성기",
+        "summary": "이미지 한 장을 업로드해 주요 주제를 종이 질감, 절제된 타이포그래피, 넓은 여백, 선명한 색상 포인트가 있는 조용한 진 포스터로 바꾸세요."
+      },
       "ai-dance-generator": {
         "cardTitle": "AI 댄스 생성기",
         "summary": "이미지 한 장을 업로드해 안무 아이디어, 클래스 홍보, 소셜 클립용 짧은 댄스 영상을 만드세요. 생성기에서 길이와 비율을 선택할 수 있습니다."
@@ -256,6 +261,7 @@
     "watermarkRemover": "워터마크 제거",
     "photoRestoration": "사진 복원",
     "aiCouplePhotoMaker": "AI 커플 사진",
+    "aiZinePosterGenerator": "AI 진 포스터 생성기",
     "aiImage": "AI 이미지",
     "aiVideo": "AI 동영상",
     "aiImageModel": "AI 이미지 모델",
@@ -322,6 +328,7 @@
     "aiBabyGenerator": "AI 아기 생성기",
     "textToImageGenerator": "텍스트-이미지 생성기",
     "aiImageToImageGenerator": "AI 이미지-이미지 생성기",
+    "aiZinePosterGenerator": "AI 진 포스터 생성기",
     "worldCupAiImageGenerator": "월드컵 AI 이미지 생성기",
     "refundPolicy": "환불 정책",
     "acceptableUse": "허용 사용 정책",

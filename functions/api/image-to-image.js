@@ -12,6 +12,10 @@ import {
 } from '../_shared/creem-moderation.mjs';
 import { attachGenerationTaskIdToConsumption } from '../_shared/generation-task-access.mjs';
 import { SUPPORTED_IMAGE_GENERATION_MODEL_IDS } from '../_shared/image-generation-contract.mjs';
+import {
+  compileZinePosterPromptFromImage,
+  isZinePosterTool,
+} from '../_shared/zine-poster-compiler.mjs';
 
 /**
  * Cloudflare Pages Function: Nano Banana Pro 生图 - 创建任务
@@ -294,7 +298,7 @@ export async function onRequest(context) {
     const formData = await request.formData();
     const imageUrl = (formData.get('imageUrl') || '').trim();
     const imageUrlsJson = formData.get('imageUrls');
-    const prompt = (formData.get('prompt') || '').trim();
+    let prompt = (formData.get('prompt') || '').trim();
     const requestedAspectRatio = mapAspectRatio(formData.get('aspectRatio'));
     const outputFormat = formData.get('outputFormat') || 'Auto';
     const resolution = formData.get('resolution') || '1K';
@@ -335,10 +339,6 @@ export async function onRequest(context) {
       sourcePath: formData.get('sourcePath'),
     });
 
-    if (!prompt) {
-      return jsonResponse({ error: 'Prompt is required' }, 400);
-    }
-
     let imageUrls = [];
     if (imageUrlsJson) {
       try {
@@ -360,6 +360,10 @@ export async function onRequest(context) {
     if (isImageToImage && imageUrls.length > maxImages) {
       return jsonResponse({ error: `Maximum ${maxImages} images allowed` }, 400);
     }
+    const shouldCompileZinePoster = isZinePosterTool(formData.get('toolSlug')) && isImageToImage && imageUrls.length > 0;
+    if (!prompt && !shouldCompileZinePoster) {
+      return jsonResponse({ error: 'Prompt is required' }, 400);
+    }
     if (model === 'gpt-image-1-5') {
       if (!['medium', 'high'].includes(normalizedResolution)) {
         return jsonResponse({ error: 'Quality must be medium or high' }, 400);
@@ -380,29 +384,70 @@ export async function onRequest(context) {
       return jsonResponse({ error: 'Resolution must be 1K for Grok 1.5 Image' }, 400);
     }
 
+    let apiKey = null;
+    let dailyCapChecked = false;
+
+    if (shouldCompileZinePoster) {
+      apiKey = getApiKey(env);
+      if (!apiKey) {
+        return jsonResponse({ error: 'API key not configured (KIE_AI_API_KEY)' }, 500);
+      }
+
+      if (!checkAndIncrementDaily(env)) {
+        return jsonResponse(
+          { error: 'Daily generation limit reached. Please try again tomorrow.' },
+          429
+        );
+      }
+      dailyCapChecked = true;
+
+      creditContext = await consumeGenerationCredits(env, request, model, normalizedResolution, creditMetadata);
+      if (creditContext.response) return creditContext.response;
+
+      const zinePrompt = await compileZinePosterPromptFromImage({
+        imageUrl: imageUrls[0],
+        env,
+        fetchImpl: fetch,
+        seed: `${formData.get('sourcePath') || ''}|${formData.get('toolLabel') || ''}`,
+      });
+      prompt = zinePrompt.prompt;
+    }
+
+    if (!prompt) {
+      return jsonResponse({ error: 'Prompt is required' }, 400);
+    }
+
     const moderation = await moderatePromptBeforeGeneration({
       prompt,
       env,
       externalId: createModerationExternalId(`image-${model}`),
     });
     if (!moderation.allowed) {
+      await refundGenerationCredits(env, creditContext, {
+        ...creditMetadata,
+        error: 'Prompt moderation blocked generation',
+      });
       return jsonResponse(moderation.body, moderation.status);
     }
 
-    const apiKey = getApiKey(env);
     if (!apiKey) {
-      return jsonResponse({ error: 'API key not configured (KIE_AI_API_KEY)' }, 500);
+      apiKey = getApiKey(env);
+      if (!apiKey) {
+        return jsonResponse({ error: 'API key not configured (KIE_AI_API_KEY)' }, 500);
+      }
     }
 
-    if (!checkAndIncrementDaily(env)) {
+    if (!dailyCapChecked && !checkAndIncrementDaily(env)) {
       return jsonResponse(
         { error: 'Daily generation limit reached. Please try again tomorrow.' },
         429
       );
     }
 
-    creditContext = await consumeGenerationCredits(env, request, model, normalizedResolution, creditMetadata);
-    if (creditContext.response) return creditContext.response;
+    if (!creditContext) {
+      creditContext = await consumeGenerationCredits(env, request, model, normalizedResolution, creditMetadata);
+      if (creditContext.response) return creditContext.response;
+    }
 
     const input = model === 'gpt-image-1-5'
       ? {

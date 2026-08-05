@@ -49,6 +49,7 @@ export const TOOL_SUPPORTED_LOCALES: Record<string, readonly string[]> = {
   'kling-ai-video-generator': ALL_LOCALE_CODES,
   'text-to-image-generator': ALL_LOCALE_CODES,
   'ai-image-to-image-generator': ALL_LOCALE_CODES,
+  'ai-zine-poster-generator': ALL_LOCALE_CODES,
   'world-cup-ai-image-generator': ALL_LOCALE_CODES,
   'prompts': ALL_LOCALE_CODES,
   /** 无各语言 SEO 数据时由页面重定向到 `/ai-tools` */

@@ -1,0 +1,231 @@
+{
+  "in_menu": false,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 1,
+    "modelId": "gpt-image-2",
+    "defaultAspectRatio": "9:16",
+    "defaultPrompt": "Use the uploaded image as the only visual reference. Identify the clearest main subject, object, person, product, pet, plant, room detail, or visual fragment, then reinterpret that subject as a quiet minimal zine poster rather than copying the original photo exactly.\n\nCreate a paper-poster composition that follows the output canvas selected on the page. Use full-frame aged off-white paper, 70% to 90% calm negative space, and one small visual cluster occupying about 8% to 25% of the canvas. Place the cluster away from the edges, preferably center, upper-middle, lower-left, or upper-right. Do not force an alternate crop or nested frame.\n\nTreat the subject as a tiny faded photo crop, torn-paper clipping, flat silhouette, old printed illustration, object specimen, or paper texture window. Blend it into the paper using xerox softness, halftone wear, risograph grain, scan noise, paper fibers, subtle ink bleed, and slight misregistration. Keep the main subject recognizable, but make the final image feel regenerated as archival print design.\n\nAdd sparse serif, typewriter, or monospaced microtype with one very short readable phrase and optional tiny date or archive marks. Use one unmistakably saturated high-chroma ink accent, such as cobalt blue, ultramarine, tomato red, lemon yellow, pear green, cyan, violet, or orange. The accent should be a visible printed block, cutout, subject fragment, or type element occupying about 0.8% to 2.5% of the whole canvas or 15% to 35% of the small cluster.\n\nKeep the whole image flat like a scanned paper sheet with matte absorbent texture, diffuse light, low-to-medium contrast, and a quiet Japanese or Korean indie editorial zine mood. Avoid full-bleed scenes, commercial headlines, logo lockups, CTA layout, glossy mockups, clean digital UI white, cinematic lighting, 3D depth, neon, cute cartoon style, dense scrapbook collage, too many colors, and long clean text blocks.",
+    "defaultImageUrls": [
+      "https://assets.toolaze.com/model-assets/ai-zine-poster-generator/zine-poster-reference.webp"
+    ],
+    "sampleImages": [
+      {
+        "url": "https://assets.toolaze.com/model-assets/ai-zine-poster-generator/zine-poster-demo.webp",
+        "title": "海辺の参照画像から生成したミニマルなジンポスター",
+        "width": 1200,
+        "height": 675
+      }
+    ],
+    "hideModelBranding": true,
+    "hidePromptInput": true,
+    "compactResultPanel": true,
+    "displayName": "AIジンポスタージェネレーター",
+    "textOverrides": {
+      "uploadTitle": "画像を1枚アップロード",
+      "uploadHelper": "主題がはっきり分かる写真を使ってください。JPG、PNG、WebP、最大30MB。",
+      "generateLabel": "ジンポスターを生成"
+    }
+  },
+  "heroDemoVideo": {
+    "type": "image",
+    "src": "https://assets.toolaze.com/model-assets/ai-zine-poster-generator/zine-poster-demo.webp",
+    "width": 16,
+    "height": 9,
+    "ariaLabel": "海辺の参照画像から生成したミニマルなジンポスターのデモ",
+    "sourceHistory": "User-provided generated zine poster demo and matching seascape reference, uploaded to R2 for stable Toolaze public preview."
+  },
+  "metadata": {
+    "title": "AIジンポスタージェネレーター | 写真を紙のポスターへ | Toolaze",
+    "description": "写真を1枚アップロードして、主題を紙質感、控えめな文字、大きな余白、鮮やかなアクセントカラーの静かなジン風AIポスターに変換します。"
+  },
+  "sectionsOrder": [
+    "intro",
+    "howToUse",
+    "features",
+    "photoTips",
+    "scenes",
+    "faq"
+  ],
+  "hero": {
+    "h1": "AI<span class=\"text-gradient\">ジンポスター</span>ジェネレーター",
+    "desc": "画像を1枚アップロードすると、主題を静かな紙ポスター構図へ変換できます。Toolazeはミニマルなジンスタイルで、古びた質感、控えめな文字、大きな余白、鮮やかなインクアクセントを加えます。"
+  },
+  "intro": {
+    "title": "このジンポスタージェネレーターで作れるもの",
+    "content": [
+      {
+        "title": "1枚の写真から静かなポスターへ",
+        "text": "ジェネレーターはアップロード画像を読み取り、最も明確な主題を見つけてジン風の紙ポスターに変換します。写真をそのままコピーするのではなく、小さな焦点、アーカイブ感のある質感、抑えたエディトリアルムードを持つ紙の構図として再生成します。"
+      },
+      {
+        "title": "文章入力は不要",
+        "text": "スタイル指示を書く必要はありません。画像を1枚アップロードし、利用できる出力設定を選んで生成します。ジンポスターのスタイルロジックが主題配置、紙質感、控えめな文字、色のアクセントを自動で処理します。"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "写真をジンポスターに変える方法",
+    "steps": [
+      {
+        "title": "画像を1枚アップロード",
+        "desc": "人物、商品、物、ペット、植物、部屋のディテールなど、主題が分かりやすい写真を選びます。"
+      },
+      {
+        "title": "出力の形を選ぶ",
+        "desc": "生成前に希望のアスペクト比を選びます。ジンスタイルはそのキャンバスに合わせ、主題を余白の中に軽く配置します。"
+      },
+      {
+        "title": "生成してダウンロード",
+        "desc": "ポスターを作成し、主題、質感、文字、色アクセントを確認してから結果をダウンロードします。"
+      }
+    ]
+  },
+  "features": {
+    "title": "ミニマルなジンポスタースタイル",
+    "items": [
+      {
+        "icon": "□",
+        "iconType": "layout",
+        "title": "大きな余白",
+        "desc": "主題を小さく保ち、紙面の静けさと構図そのものを画像の一部にします。"
+      },
+      {
+        "icon": "◎",
+        "iconType": "anchor",
+        "title": "認識しやすい主題アンカー",
+        "desc": "アップロードした人物、商品、ペット、植物、物、部屋のディテールを小さな焦点として読みやすく残します。"
+      },
+      {
+        "icon": "⌁",
+        "iconType": "texture",
+        "title": "古びた紙質感",
+        "desc": "柔らかなスキャンノイズ、ハーフトーンの擦れ、紙繊維、インクのにじみでアナログな編集感を作ります。"
+      },
+      {
+        "icon": "Aa",
+        "iconType": "typography",
+        "title": "控えめなタイポグラフィ",
+        "desc": "小さなセリフ体、タイプライター、等幅文字の印で、見出しになりすぎないジンカバーのリズムを加えます。"
+      },
+      {
+        "icon": "◐",
+        "iconType": "mood",
+        "title": "静かなエディトリアルムード",
+        "desc": "光沢広告や全面的なシーンではなく、静かで平面的なインディーポスターの雰囲気に保ちます。"
+      },
+      {
+        "icon": "●",
+        "iconType": "accent",
+        "title": "鮮やかなインクアクセント",
+        "desc": "コバルト、トマトレッド、レモンイエロー、ペアグリーンなどの単色アクセントで視認性を高めます。"
+      }
+    ]
+  },
+  "photoTips": {
+    "title": "アップロードに向いた写真",
+    "subtitle": "変換前に主題が認識しやすいほど、このスタイルは安定します。",
+    "items": [
+      {
+        "title": "主題を1つに絞る",
+        "desc": "商品、顔、花、椅子、ペット、靴、本、小物などは、混み合った場面よりうまくいきやすいです。",
+        "color": "linear-gradient(135deg, #dbeafe, #4f46e5)"
+      },
+      {
+        "title": "輪郭を見せる",
+        "desc": "形が重要な場合は、強いトリミング、隠れた輪郭、モーションブラーを避けてください。",
+        "color": "linear-gradient(135deg, #fef3c7, #f59e0b)"
+      },
+      {
+        "title": "背景はシンプルに",
+        "desc": "賑やかな写真でも使えますが、背景が整理されていると主題選択と単純化がしやすくなります。",
+        "color": "linear-gradient(135deg, #dcfce7, #16a34a)"
+      },
+      {
+        "title": "細かい文字に頼らない",
+        "desc": "ジンスタイルは形、ムード、質感、色に向いています。小さなロゴ、ラベル、細かな文字は変わることがあります。",
+        "color": "linear-gradient(135deg, #fce7f3, #db2777)"
+      }
+    ]
+  },
+  "scenesTitle": "作れるもの",
+  "scenes": [
+    {
+      "icon": "▣",
+      "title": "ソーシャルカバー",
+      "desc": "投稿、プロフィール更新、プレイリスト、ニュースレター、ムード重視のSNS素材に使える静かな紙のビジュアルを作れます。"
+    },
+    {
+      "icon": "◐",
+      "title": "商品ムードポスター",
+      "desc": "商品や物の写真を、初期キャンペーン方向やブランドムードボード向けの柔らかな編集ポスターに変換します。"
+    },
+    {
+      "icon": "✶",
+      "title": "ポートレートと物の習作",
+      "desc": "ポートレート、花、本、部屋のディテール、拾った物、日常写真をミニマルなジン風スタディに変換します。"
+    }
+  ],
+  "faqTitle": "AIジンポスタージェネレーターFAQ",
+  "faq": [
+    {
+      "q": "プロンプトを書く必要はありますか？",
+      "a": "いいえ。画像を1枚アップロードすると、Toolazeがジンポスタースタイルを自動で適用します。"
+    },
+    {
+      "q": "出力は写真をそのままコピーしますか？",
+      "a": "いいえ。主題は認識できるように残しますが、最終画像は新しい質感、レイアウト、文字を持つミニマルな紙ポスターとして再生成されます。"
+    },
+    {
+      "q": "どんな画像が向いていますか？",
+      "a": "主題が1つで、輪郭が見え、人物や物を認識できる十分なコントラストがある写真がおすすめです。"
+    },
+    {
+      "q": "商品やブランド用のビジュアルに使えますか？",
+      "a": "はい。ムードボード、SNSビジュアル、ポスター案、エディトリアルコンセプトに役立ちます。ロゴ、人物、保護された素材が含まれる場合は、商用利用前に最終出力を確認してください。"
+    },
+    {
+      "q": "結果はどのモデルで作られますか？",
+      "a": "このページはGPT Image 2とToolazeのジンポスタースタイルロジックを使い、参照画像に基づいて生成します。"
+    }
+  ],
+  "moreTools": "関連AI画像ツール",
+  "moreToolsLinks": [
+    {
+      "slug": "gpt-image-2",
+      "title": "GPT Image 2",
+      "description": "ToolazeのGPT Image 2ジェネレーターで画像を作成・編集できます。",
+      "href": "/model/gpt-image-2",
+      "media": {
+        "type": "image",
+        "src": "/model-assets/gpt-image-2/feature-image-editing.webp",
+        "alt": "GPT Image 2画像編集プレビュー"
+      }
+    },
+    {
+      "slug": "ai-image-to-image-generator",
+      "title": "AI画像から画像生成",
+      "description": "参照画像をアップロードし、テキスト指示でスタイル変更や変換を行えます。",
+      "href": "/ai-image-to-image-generator",
+      "media": {
+        "type": "image",
+        "src": "/ai-image-generator/image-to-image-generator.webp",
+        "alt": "AI画像から画像生成のプレビュー"
+      }
+    },
+    {
+      "slug": "text-to-image-generator",
+      "title": "テキストから画像生成",
+      "description": "画像の方向性を文章で直接コントロールしたいときに使えます。",
+      "href": "/text-to-image-generator",
+      "media": {
+        "type": "image",
+        "src": "/ai-image-generator/text-to-image-generator.webp",
+        "alt": "テキストから画像生成のプレビュー"
+      }
+    }
+  ]
+}

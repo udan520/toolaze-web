@@ -1,0 +1,231 @@
+{
+  "in_menu": false,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 1,
+    "modelId": "gpt-image-2",
+    "defaultAspectRatio": "9:16",
+    "defaultPrompt": "Use the uploaded image as the only visual reference. Identify the clearest main subject, object, person, product, pet, plant, room detail, or visual fragment, then reinterpret that subject as a quiet minimal zine poster rather than copying the original photo exactly.\n\nCreate a paper-poster composition that follows the output canvas selected on the page. Use full-frame aged off-white paper, 70% to 90% calm negative space, and one small visual cluster occupying about 8% to 25% of the canvas. Place the cluster away from the edges, preferably center, upper-middle, lower-left, or upper-right. Do not force an alternate crop or nested frame.\n\nTreat the subject as a tiny faded photo crop, torn-paper clipping, flat silhouette, old printed illustration, object specimen, or paper texture window. Blend it into the paper using xerox softness, halftone wear, risograph grain, scan noise, paper fibers, subtle ink bleed, and slight misregistration. Keep the main subject recognizable, but make the final image feel regenerated as archival print design.\n\nAdd sparse serif, typewriter, or monospaced microtype with one very short readable phrase and optional tiny date or archive marks. Use one unmistakably saturated high-chroma ink accent, such as cobalt blue, ultramarine, tomato red, lemon yellow, pear green, cyan, violet, or orange. The accent should be a visible printed block, cutout, subject fragment, or type element occupying about 0.8% to 2.5% of the whole canvas or 15% to 35% of the small cluster.\n\nKeep the whole image flat like a scanned paper sheet with matte absorbent texture, diffuse light, low-to-medium contrast, and a quiet Japanese or Korean indie editorial zine mood. Avoid full-bleed scenes, commercial headlines, logo lockups, CTA layout, glossy mockups, clean digital UI white, cinematic lighting, 3D depth, neon, cute cartoon style, dense scrapbook collage, too many colors, and long clean text blocks.",
+    "defaultImageUrls": [
+      "https://assets.toolaze.com/model-assets/ai-zine-poster-generator/zine-poster-reference.webp"
+    ],
+    "sampleImages": [
+      {
+        "url": "https://assets.toolaze.com/model-assets/ai-zine-poster-generator/zine-poster-demo.webp",
+        "title": "Pôster zine minimalista gerado a partir de uma referência de paisagem marítima",
+        "width": 1200,
+        "height": 675
+      }
+    ],
+    "hideModelBranding": true,
+    "hidePromptInput": true,
+    "compactResultPanel": true,
+    "displayName": "Gerador de pôster zine com IA",
+    "textOverrides": {
+      "uploadTitle": "Envie uma imagem",
+      "uploadHelper": "Use uma foto clara com um assunto reconhecível. JPG, PNG ou WebP até 30 MB.",
+      "generateLabel": "Gerar pôster zine"
+    }
+  },
+  "heroDemoVideo": {
+    "type": "image",
+    "src": "https://assets.toolaze.com/model-assets/ai-zine-poster-generator/zine-poster-demo.webp",
+    "width": 16,
+    "height": 9,
+    "ariaLabel": "Demo de pôster zine minimalista gerado a partir de uma referência de paisagem marítima",
+    "sourceHistory": "User-provided generated zine poster demo and matching seascape reference, uploaded to R2 for stable Toolaze public preview."
+  },
+  "metadata": {
+    "title": "Gerador de pôster zine com IA | Foto para pôster de papel | Toolaze",
+    "description": "Envie uma foto e transforme o assunto principal em um pôster IA estilo zine com textura de papel, tipografia mínima, espaço negativo e um acento de cor vivo."
+  },
+  "sectionsOrder": [
+    "intro",
+    "howToUse",
+    "features",
+    "photoTips",
+    "scenes",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Gerador de <span class=\"text-gradient\">pôster zine</span> com IA",
+    "desc": "Envie uma imagem e transforme o assunto principal em uma composição tranquila de pôster de papel. O Toolaze usa um estilo zine minimalista com textura envelhecida, tipografia esparsa, grande espaço negativo e um acento de tinta vivo."
+  },
+  "intro": {
+    "title": "O que este gerador de pôster zine cria",
+    "content": [
+      {
+        "title": "Um pôster tranquilo a partir de uma única foto",
+        "text": "O gerador lê a imagem enviada, encontra o assunto mais claro e o transforma em um pôster de papel estilo zine. O resultado não é uma cópia literal da foto. É uma nova composição de papel com um pequeno foco visual, textura de arquivo e clima editorial contido."
+      },
+      {
+        "title": "Não é preciso escrever",
+        "text": "Você não precisa escrever direções de estilo. Envie uma imagem, escolha as configurações de saída disponíveis e gere. A lógica de pôster zine cuida automaticamente do posicionamento do assunto, textura do papel, tipografia esparsa e acento de cor."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Como transformar uma foto em pôster zine",
+    "steps": [
+      {
+        "title": "Envie uma imagem",
+        "desc": "Escolha uma foto com pessoa, produto, objeto, pet, planta, detalhe de ambiente ou assunto visual claro."
+      },
+      {
+        "title": "Escolha o formato de saída",
+        "desc": "Selecione a proporção desejada antes de gerar. O estilo zine se adapta a essa tela mantendo o assunto com bastante ar."
+      },
+      {
+        "title": "Gere e baixe",
+        "desc": "Crie o pôster, revise assunto, textura, tipografia e acento de cor, depois baixe o resultado."
+      }
+    ]
+  },
+  "features": {
+    "title": "Estilo minimalista de pôster zine",
+    "items": [
+      {
+        "icon": "□",
+        "iconType": "layout",
+        "title": "Grande espaço negativo",
+        "desc": "O assunto fica pequeno para que a superfície do papel, o silêncio e a composição façam parte da imagem."
+      },
+      {
+        "icon": "◎",
+        "iconType": "anchor",
+        "title": "Âncora de assunto reconhecível",
+        "desc": "A pessoa, produto, pet, planta, objeto ou detalhe de ambiente enviado permanece legível como pequeno ponto focal."
+      },
+      {
+        "icon": "⌁",
+        "iconType": "texture",
+        "title": "Textura de papel envelhecido",
+        "desc": "Ruído suave de scan, desgaste de meio-tom, fibras de papel e sangramento de tinta criam uma sensação editorial analógica."
+      },
+      {
+        "icon": "Aa",
+        "iconType": "typography",
+        "title": "Tipografia esparsa",
+        "desc": "Pequenas marcas serifadas, de máquina de escrever ou monoespaçadas dão ritmo de capa zine sem virar manchete."
+      },
+      {
+        "icon": "◐",
+        "iconType": "mood",
+        "title": "Clima editorial tranquilo",
+        "desc": "O resultado permanece calmo, plano e parecido com pôster indie, em vez de anúncio brilhante ou cena completa."
+      },
+      {
+        "icon": "●",
+        "iconType": "accent",
+        "title": "Um acento de tinta vivo",
+        "desc": "Uma única cor saturada, como cobalto, vermelho tomate, amarelo limão ou verde pera, mantém o pôster claro de imediato."
+      }
+    ]
+  },
+  "photoTips": {
+    "title": "Melhores fotos para enviar",
+    "subtitle": "O estilo funciona melhor quando o assunto principal é fácil de reconhecer antes da transformação.",
+    "items": [
+      {
+        "title": "Use um assunto claro",
+        "desc": "Produto, rosto, flor, cadeira, pet, sapato, livro ou pequeno objeto costuma funcionar melhor que uma cena cheia.",
+        "color": "linear-gradient(135deg, #dbeafe, #4f46e5)"
+      },
+      {
+        "title": "Mantenha as bordas visíveis",
+        "desc": "Evite cortes fortes, contornos cobertos ou desfoque de movimento quando a forma do assunto importa.",
+        "color": "linear-gradient(135deg, #fef3c7, #f59e0b)"
+      },
+      {
+        "title": "Fundos simples ajudam",
+        "desc": "Fotos ocupadas ainda podem funcionar, mas fundos limpos facilitam escolher o assunto e simplificar o pôster.",
+        "color": "linear-gradient(135deg, #dcfce7, #16a34a)"
+      },
+      {
+        "title": "Não dependa de texto minúsculo",
+        "desc": "O estilo zine é mais forte em forma, clima, textura e cor. Logos pequenos, rótulos e texto fino podem mudar.",
+        "color": "linear-gradient(135deg, #fce7f3, #db2777)"
+      }
+    ]
+  },
+  "scenesTitle": "O que você pode criar",
+  "scenes": [
+    {
+      "icon": "▣",
+      "title": "Capas sociais",
+      "desc": "Crie visuais tranquilos de papel para posts, perfis, playlists, newsletters e conteúdo social guiado por mood."
+    },
+    {
+      "icon": "◐",
+      "title": "Pôsteres de atmosfera de produto",
+      "desc": "Transforme uma foto de produto ou objeto em um pôster editorial suave para direção inicial de campanha e quadros de atmosfera da marca."
+    },
+    {
+      "icon": "✶",
+      "title": "Estudos de retrato e objeto",
+      "desc": "Transforme retratos, flores, livros, detalhes de ambiente, objetos encontrados e fotos cotidianas em estudos zine minimalistas."
+    }
+  ],
+  "faqTitle": "FAQ do gerador de pôster zine com IA",
+  "faq": [
+    {
+      "q": "Preciso escrever um prompt?",
+      "a": "Não. Envie uma imagem e o Toolaze aplica automaticamente o estilo de pôster zine."
+    },
+    {
+      "q": "A saída copia exatamente minha foto?",
+      "a": "Não. O gerador mantém o assunto principal reconhecível, mas a imagem final é regenerada como um pôster de papel minimalista com nova textura, layout e tipografia."
+    },
+    {
+      "q": "Qual imagem funciona melhor?",
+      "a": "Use uma foto clara com um assunto principal, bordas visíveis e contraste suficiente para reconhecer o objeto ou a pessoa."
+    },
+    {
+      "q": "Posso usar para visuais de produto ou marca?",
+      "a": "Sim, pode ajudar a criar quadros de atmosfera, visuais para redes sociais, rascunhos de pôster e conceitos editoriais. Revise os resultados finais antes do uso comercial, especialmente se o envio incluir logotipos, pessoas ou ativos protegidos."
+    },
+    {
+      "q": "Qual modelo gera o resultado?",
+      "a": "A página usa GPT Image 2 com a lógica de estilo zine do Toolaze para geração de imagem guiada por referência."
+    }
+  ],
+  "moreTools": "Ferramentas de imagem IA relacionadas",
+  "moreToolsLinks": [
+    {
+      "slug": "gpt-image-2",
+      "title": "GPT Image 2",
+      "description": "Crie e edite imagens com o gerador GPT Image 2 do Toolaze.",
+      "href": "/model/gpt-image-2",
+      "media": {
+        "type": "image",
+        "src": "/model-assets/gpt-image-2/feature-image-editing.webp",
+        "alt": "Prévia de edição de imagem GPT Image 2"
+      }
+    },
+    {
+      "slug": "ai-image-to-image-generator",
+      "title": "Gerador IA de imagem para imagem",
+      "description": "Envie uma imagem de referência e transforme-a com edição guiada por texto.",
+      "href": "/ai-image-to-image-generator",
+      "media": {
+        "type": "image",
+        "src": "/ai-image-generator/image-to-image-generator.webp",
+        "alt": "Prévia do gerador IA de imagem para imagem"
+      }
+    },
+    {
+      "slug": "text-to-image-generator",
+      "title": "Gerador de texto para imagem",
+      "description": "Comece por ideias escritas quando quiser controle criativo direto sobre o briefing visual.",
+      "href": "/text-to-image-generator",
+      "media": {
+        "type": "image",
+        "src": "/ai-image-generator/text-to-image-generator.webp",
+        "alt": "Prévia do gerador de texto para imagem"
+      }
+    }
+  ]
+}

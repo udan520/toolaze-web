@@ -8,6 +8,7 @@
 export const HOME_GRID_TOOLS = [
   { id: 'unrestricted-ai-image-generator', usesAi: true },
   { id: 'ai-hair-color-changer', usesAi: true },
+  { id: 'ai-zine-poster-generator', usesAi: true },
   { id: 'ai-clothes-changer', usesAi: true },
   { id: 'ai-bikini-generator', usesAi: true },
   { id: 'ai-breast-expansion', usesAi: true },

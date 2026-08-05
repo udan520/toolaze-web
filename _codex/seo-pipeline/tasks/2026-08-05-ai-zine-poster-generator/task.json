@@ -1,0 +1,53 @@
+{
+  "taskId": "2026-08-05-ai-zine-poster-generator",
+  "slug": "ai-zine-poster-generator",
+  "pageType": "l2",
+  "pageGroup": "ai-tools",
+  "status": "ready_for_publish",
+  "tool": "ai-zine-poster-generator",
+  "topic": "AI Zine Poster Generator multilingual landing page",
+  "generatedBy": "Codex local implementation",
+  "createdAt": "2026-08-05T00:00:00+08:00",
+  "modelInstruction": "Use GPT Image 2 image-to-image with a hidden Minimal Zine Poster v0.1 style direction. The user uploads one image and does not need to write a prompt.",
+  "localeCoverage": [
+    "en",
+    "de",
+    "ja",
+    "es",
+    "zh-TW",
+    "pt",
+    "fr",
+    "ko",
+    "it"
+  ],
+  "sourceData": "src/data/en/ai-zine-poster-generator.json",
+  "canonicalPath": "/ai-zine-poster-generator",
+  "releaseBoundary": "Public multilingual landing-page release includes canonical English route, localized routes, R2 demo media, navigation, footer, AI Tools Hub, homepage entry, sitemap, SEO Factory records, and targeted contract tests. Unrelated admin, media-library, migration, and other SEO pipeline WIP remain outside the scoped release.",
+  "notes": [
+    "Functional top tool reuses the shared GPT Image 2 image-to-image component.",
+    "Prompt input is intentionally hidden; the page is scoped to one uploaded image and automatic zine-poster generation.",
+    "Standalone example-prompt cards are intentionally omitted because the user flow does not ask visitors to write text directions."
+  ],
+  "outputs": [
+    "src/app/ai-zine-poster-generator/page.tsx",
+    "src/app/[locale]/ai-zine-poster-generator/page.tsx",
+    "src/data/en/ai-zine-poster-generator.json",
+    "src/data/de/ai-zine-poster-generator.json",
+    "src/data/ja/ai-zine-poster-generator.json",
+    "src/data/es/ai-zine-poster-generator.json",
+    "src/data/zh-TW/ai-zine-poster-generator.json",
+    "src/data/pt/ai-zine-poster-generator.json",
+    "src/data/fr/ai-zine-poster-generator.json",
+    "src/data/ko/ai-zine-poster-generator.json",
+    "src/data/it/ai-zine-poster-generator.json",
+    "_codex/seo-pipeline/tasks/2026-08-05-ai-zine-poster-generator/content/en.json",
+    "_codex/seo-pipeline/tasks/2026-08-05-ai-zine-poster-generator/content/de.json",
+    "_codex/seo-pipeline/tasks/2026-08-05-ai-zine-poster-generator/content/ja.json",
+    "_codex/seo-pipeline/tasks/2026-08-05-ai-zine-poster-generator/content/es.json",
+    "_codex/seo-pipeline/tasks/2026-08-05-ai-zine-poster-generator/content/zh-TW.json",
+    "_codex/seo-pipeline/tasks/2026-08-05-ai-zine-poster-generator/content/pt.json",
+    "_codex/seo-pipeline/tasks/2026-08-05-ai-zine-poster-generator/content/fr.json",
+    "_codex/seo-pipeline/tasks/2026-08-05-ai-zine-poster-generator/content/ko.json",
+    "_codex/seo-pipeline/tasks/2026-08-05-ai-zine-poster-generator/content/it.json"
+  ]
+}

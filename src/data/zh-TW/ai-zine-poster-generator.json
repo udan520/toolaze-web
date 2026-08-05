@@ -1,0 +1,231 @@
+{
+  "in_menu": false,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 1,
+    "modelId": "gpt-image-2",
+    "defaultAspectRatio": "9:16",
+    "defaultPrompt": "Use the uploaded image as the only visual reference. Identify the clearest main subject, object, person, product, pet, plant, room detail, or visual fragment, then reinterpret that subject as a quiet minimal zine poster rather than copying the original photo exactly.\n\nCreate a paper-poster composition that follows the output canvas selected on the page. Use full-frame aged off-white paper, 70% to 90% calm negative space, and one small visual cluster occupying about 8% to 25% of the canvas. Place the cluster away from the edges, preferably center, upper-middle, lower-left, or upper-right. Do not force an alternate crop or nested frame.\n\nTreat the subject as a tiny faded photo crop, torn-paper clipping, flat silhouette, old printed illustration, object specimen, or paper texture window. Blend it into the paper using xerox softness, halftone wear, risograph grain, scan noise, paper fibers, subtle ink bleed, and slight misregistration. Keep the main subject recognizable, but make the final image feel regenerated as archival print design.\n\nAdd sparse serif, typewriter, or monospaced microtype with one very short readable phrase and optional tiny date or archive marks. Use one unmistakably saturated high-chroma ink accent, such as cobalt blue, ultramarine, tomato red, lemon yellow, pear green, cyan, violet, or orange. The accent should be a visible printed block, cutout, subject fragment, or type element occupying about 0.8% to 2.5% of the whole canvas or 15% to 35% of the small cluster.\n\nKeep the whole image flat like a scanned paper sheet with matte absorbent texture, diffuse light, low-to-medium contrast, and a quiet Japanese or Korean indie editorial zine mood. Avoid full-bleed scenes, commercial headlines, logo lockups, CTA layout, glossy mockups, clean digital UI white, cinematic lighting, 3D depth, neon, cute cartoon style, dense scrapbook collage, too many colors, and long clean text blocks.",
+    "defaultImageUrls": [
+      "https://assets.toolaze.com/model-assets/ai-zine-poster-generator/zine-poster-reference.webp"
+    ],
+    "sampleImages": [
+      {
+        "url": "https://assets.toolaze.com/model-assets/ai-zine-poster-generator/zine-poster-demo.webp",
+        "title": "由海景參考圖生成的極簡 Zine 海報",
+        "width": 1200,
+        "height": 675
+      }
+    ],
+    "hideModelBranding": true,
+    "hidePromptInput": true,
+    "compactResultPanel": true,
+    "displayName": "AI Zine 海報生成器",
+    "textOverrides": {
+      "uploadTitle": "上傳一張圖片",
+      "uploadHelper": "使用主體清楚、容易辨識的照片。支援 JPG、PNG 或 WebP，最大 30MB。",
+      "generateLabel": "生成 Zine 海報"
+    }
+  },
+  "heroDemoVideo": {
+    "type": "image",
+    "src": "https://assets.toolaze.com/model-assets/ai-zine-poster-generator/zine-poster-demo.webp",
+    "width": 16,
+    "height": 9,
+    "ariaLabel": "由海景參考圖生成的極簡 Zine 海報示範",
+    "sourceHistory": "User-provided generated zine poster demo and matching seascape reference, uploaded to R2 for stable Toolaze public preview."
+  },
+  "metadata": {
+    "title": "AI Zine 海報生成器 | 照片轉紙感海報 | Toolaze",
+    "description": "上傳一張照片，將主要主體轉換成安靜的 Zine 風格 AI 海報，包含紙張質感、少量字體、大面積留白與一個鮮明色彩點綴。"
+  },
+  "sectionsOrder": [
+    "intro",
+    "howToUse",
+    "features",
+    "photoTips",
+    "scenes",
+    "faq"
+  ],
+  "hero": {
+    "h1": "AI <span class=\"text-gradient\">Zine 海報</span>生成器",
+    "desc": "上傳一張圖片，將主要主體轉換成安靜的紙感海報構圖。Toolaze 使用極簡 Zine 風格，加入舊紙質感、稀疏字體、大面積留白與一個鮮明墨色點綴。"
+  },
+  "intro": {
+    "title": "這個 Zine 海報生成器會建立什麼",
+    "content": [
+      {
+        "title": "由單張照片生成安靜海報",
+        "text": "生成器會讀取上傳圖片，找到最清楚的主體，並將它轉換成 Zine 風格紙感海報。輸出不會逐字複製原照片，而是重新生成帶有小焦點、檔案感質地與克制編輯氛圍的紙面構圖。"
+      },
+      {
+        "title": "不需要寫提示詞",
+        "text": "你不需要撰寫風格指令。上傳一張圖片，選擇可用的輸出設定並生成。Zine 海報風格邏輯會自動處理主體位置、紙張質感、稀疏字體與色彩點綴。"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "如何把照片變成 Zine 海報",
+    "steps": [
+      {
+        "title": "上傳一張圖片",
+        "desc": "選擇人物、產品、物件、寵物、植物、房間細節或其他視覺主體清楚的照片。"
+      },
+      {
+        "title": "選擇輸出比例",
+        "desc": "生成前先選擇你想要的長寬比。Zine 風格會適應該畫布，同時保留主體的留白感。"
+      },
+      {
+        "title": "生成並下載",
+        "desc": "建立海報後，檢查主體、質感、字體與色彩點綴，然後下載結果。"
+      }
+    ]
+  },
+  "features": {
+    "title": "極簡 Zine 海報風格",
+    "items": [
+      {
+        "icon": "□",
+        "iconType": "layout",
+        "title": "大面積留白",
+        "desc": "主體保持小尺寸，讓紙面、安靜感與構圖本身成為畫面的一部分。"
+      },
+      {
+        "icon": "◎",
+        "iconType": "anchor",
+        "title": "可辨識主體錨點",
+        "desc": "上傳的人物、產品、寵物、植物、物件或房間細節會以小焦點形式保持可讀。"
+      },
+      {
+        "icon": "⌁",
+        "iconType": "texture",
+        "title": "舊紙張質感",
+        "desc": "柔和掃描雜訊、網點磨損、紙纖維與墨水暈染帶出類比編輯質感。"
+      },
+      {
+        "icon": "Aa",
+        "iconType": "typography",
+        "title": "稀疏字體",
+        "desc": "小型襯線、打字機或等寬文字記號加入 Zine 封面節奏，但不會變成大標題。"
+      },
+      {
+        "icon": "◐",
+        "iconType": "mood",
+        "title": "安靜編輯氛圍",
+        "desc": "結果保持平面、冷靜、獨立海報感，而不是光亮廣告或完整場景。"
+      },
+      {
+        "icon": "●",
+        "iconType": "accent",
+        "title": "單一鮮明墨色點綴",
+        "desc": "以鈷藍、番茄紅、檸檬黃或梨綠等單一飽和色，讓海報一眼可讀。"
+      }
+    ]
+  },
+  "photoTips": {
+    "title": "最適合上傳的照片",
+    "subtitle": "主體在轉換前越容易辨識，這個風格的效果越穩定。",
+    "items": [
+      {
+        "title": "使用單一清楚主體",
+        "desc": "產品、臉、花、椅子、寵物、鞋子、書或小物件通常比擁擠場景更適合。",
+        "color": "linear-gradient(135deg, #dbeafe, #4f46e5)"
+      },
+      {
+        "title": "保留邊緣輪廓",
+        "desc": "如果主體形狀重要，請避免過度裁切、輪廓被遮擋或動態模糊。",
+        "color": "linear-gradient(135deg, #fef3c7, #f59e0b)"
+      },
+      {
+        "title": "簡單背景更好",
+        "desc": "繁忙照片仍可能有效，但乾淨背景更容易選出主體並簡化成海報。",
+        "color": "linear-gradient(135deg, #dcfce7, #16a34a)"
+      },
+      {
+        "title": "不要依賴細小文字",
+        "desc": "Zine 風格最擅長形狀、氛圍、質感與色彩。小型 logo、標籤和細字可能會改變。",
+        "color": "linear-gradient(135deg, #fce7f3, #db2777)"
+      }
+    ]
+  },
+  "scenesTitle": "你可以製作什麼",
+  "scenes": [
+    {
+      "icon": "▣",
+      "title": "社群封面",
+      "desc": "為貼文、個人檔案更新、播放清單、電子報與氛圍導向社群內容建立安靜紙感視覺。"
+    },
+    {
+      "icon": "◐",
+      "title": "產品 Mood 海報",
+      "desc": "將產品或物件照片轉換成柔和編輯海報，用於早期活動方向與品牌 moodboard。"
+    },
+    {
+      "icon": "✶",
+      "title": "肖像與物件研究",
+      "desc": "把肖像、花、書、房間細節、拾得物與日常照片轉換成極簡 Zine 風格研究。"
+    }
+  ],
+  "faqTitle": "AI Zine 海報生成器常見問題",
+  "faq": [
+    {
+      "q": "我需要寫提示詞嗎？",
+      "a": "不需要。上傳一張圖片，Toolaze 會自動套用 Zine 海報風格。"
+    },
+    {
+      "q": "輸出會完全複製我的照片嗎？",
+      "a": "不會。生成器會讓主要主體保持可辨識，但最終圖片會以新的質感、版面和字體重新生成為極簡紙感海報。"
+    },
+    {
+      "q": "哪種圖片最適合？",
+      "a": "使用主體單一清楚、邊緣可見且有足夠對比的照片，讓物件或人物容易被辨識。"
+    },
+    {
+      "q": "可以用於產品或品牌視覺嗎？",
+      "a": "可以，它能協助建立 moodboard、社群視覺、海報草稿與編輯概念。若上傳內容包含 logo、人物或受保護素材，商用前請先檢查最終輸出。"
+    },
+    {
+      "q": "結果由哪個模型生成？",
+      "a": "此頁使用 GPT Image 2 搭配 Toolaze 的 Zine 海報風格邏輯，進行參考圖引導的圖片生成。"
+    }
+  ],
+  "moreTools": "相關 AI 圖像工具",
+  "moreToolsLinks": [
+    {
+      "slug": "gpt-image-2",
+      "title": "GPT Image 2",
+      "description": "使用 Toolaze 的 GPT Image 2 生成器建立與編輯圖片。",
+      "href": "/model/gpt-image-2",
+      "media": {
+        "type": "image",
+        "src": "/model-assets/gpt-image-2/feature-image-editing.webp",
+        "alt": "GPT Image 2 圖像編輯預覽"
+      }
+    },
+    {
+      "slug": "ai-image-to-image-generator",
+      "title": "AI 圖像轉圖像生成器",
+      "description": "上傳參考圖片，透過文字引導的圖像編輯進行轉換。",
+      "href": "/ai-image-to-image-generator",
+      "media": {
+        "type": "image",
+        "src": "/ai-image-generator/image-to-image-generator.webp",
+        "alt": "AI 圖像轉圖像生成器預覽"
+      }
+    },
+    {
+      "slug": "text-to-image-generator",
+      "title": "文字轉圖像生成器",
+      "description": "當你想用文字直接控制創作方向時，可以從文字想法開始。",
+      "href": "/text-to-image-generator",
+      "media": {
+        "type": "image",
+        "src": "/ai-image-generator/text-to-image-generator.webp",
+        "alt": "文字轉圖像生成器預覽"
+      }
+    }
+  ]
+}

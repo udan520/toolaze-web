@@ -5,7 +5,12 @@ import { onRequest as checkImageGenerationStatus } from './image-to-image/status
 
 function createGenerationRequest(overrides = {}) {
   const formData = new FormData()
-  formData.append('prompt', overrides.prompt || 'Change the hair color to rose pink.')
+  formData.append(
+    'prompt',
+    Object.prototype.hasOwnProperty.call(overrides, 'prompt')
+      ? String(overrides.prompt || '')
+      : 'Change the hair color to rose pink.',
+  )
   formData.append('aspectRatio', overrides.aspectRatio || 'auto')
   formData.append('resolution', overrides.resolution || '1K')
   if (overrides.quality) {
@@ -16,6 +21,12 @@ function createGenerationRequest(overrides = {}) {
   }
   formData.append('isImageToImage', String(overrides.isImageToImage ?? true))
   formData.append('model', overrides.model || 'gpt-image-2')
+  if (overrides.toolSlug) {
+    formData.append('toolSlug', overrides.toolSlug)
+  }
+  if (overrides.toolLabel) {
+    formData.append('toolLabel', overrides.toolLabel)
+  }
   if (overrides.imageUrls !== false) {
     const imageUrls = Array.isArray(overrides.imageUrls)
       ? overrides.imageUrls
@@ -354,6 +365,135 @@ test('GPT Image 2 image-to-image requests use the image-to-image provider model'
     assert.equal(fetchUrls[0], 'https://api.kie.ai/api/v1/jobs/createTask')
     assert.equal(requestBody.model, 'gpt-image-2-image-to-image')
     assert.deepEqual(requestBody.input.input_urls, ['https://example.com/reference.png'])
+  } finally {
+    globalThis.fetch = originalFetch
+  }
+})
+
+test('AI Zine Poster Generator compiles uploaded reference into a skill prompt before KIE generation', async () => {
+  const originalFetch = globalThis.fetch
+  const fetchCalls = []
+  let kieRequestBody = null
+
+  globalThis.fetch = async (url, init) => {
+    fetchCalls.push(String(url))
+    if (String(url) === 'https://api.openai.com/v1/responses') {
+      return Response.json({
+        output: [
+          {
+            content: [
+              {
+                type: 'output_text',
+                text: JSON.stringify({
+                  subjectType: 'landscape',
+                  mainSubject: 'seaside cliffs and calm blue water',
+                  visualFragment: 'a long narrow horizon strip',
+                  moodHints: ['seaside', 'quiet', 'memory'],
+                  dominantColors: ['blue', 'sand', 'gray'],
+                  suggestedShortText: 'quiet is enough.',
+                  safetyNotes: [],
+                }),
+              },
+            ],
+          },
+        ],
+      })
+    }
+
+    kieRequestBody = JSON.parse(String(init.body))
+    return Response.json({ code: 200, data: { taskId: 'task_zine_compiled' } })
+  }
+
+  try {
+    const response = await onRequest({
+      request: createGenerationRequest({
+        prompt: '',
+        toolSlug: 'ai-zine-poster-generator',
+        toolLabel: 'AI Zine Poster Generator',
+        imageUrls: ['https://assets.toolaze.com/uploads/reference-seaside.webp'],
+        aspectRatio: '9:16',
+      }),
+      env: {
+        OPENAI_API_KEY: 'openai-test-key',
+        ZINE_POSTER_VISION_MODEL: 'gpt-test-vision',
+        KIE_AI_API_KEY: 'kie-test-key',
+      },
+    })
+
+    assert.equal(response.status, 200)
+    assert.deepEqual(fetchCalls, [
+      'https://api.openai.com/v1/responses',
+      'https://api.kie.ai/api/v1/jobs/createTask',
+    ])
+    assert.equal(kieRequestBody.model, 'gpt-image-2-image-to-image')
+    assert.deepEqual(kieRequestBody.input.input_urls, ['https://assets.toolaze.com/uploads/reference-seaside.webp'])
+    assert.match(kieRequestBody.input.prompt, /seaside cliffs and calm blue water/i)
+    assert.match(kieRequestBody.input.prompt, /quiet is enough\./i)
+    assert.match(kieRequestBody.input.prompt, /70% to 90%/)
+    assert.match(kieRequestBody.input.prompt, /Avoid full-bleed/i)
+    assert.doesNotMatch(kieRequestBody.input.prompt, /Change the hair color/i)
+  } finally {
+    globalThis.fetch = originalFetch
+  }
+})
+
+test('AI Zine Poster Generator falls back to deterministic compiler when OpenAI vision is not configured', async () => {
+  const originalFetch = globalThis.fetch
+  const fetchCalls = []
+  let kieRequestBody = null
+
+  globalThis.fetch = async (url, init) => {
+    fetchCalls.push(String(url))
+    kieRequestBody = JSON.parse(String(init.body))
+    return Response.json({ code: 200, data: { taskId: 'task_zine_fallback' } })
+  }
+
+  try {
+    const response = await onRequest({
+      request: createGenerationRequest({
+        prompt: '',
+        toolSlug: 'ai-zine-poster-generator',
+        imageUrls: ['https://assets.toolaze.com/uploads/reference-object.webp'],
+      }),
+      env: { KIE_AI_API_KEY: 'kie-test-key' },
+    })
+
+    assert.equal(response.status, 200)
+    assert.deepEqual(fetchCalls, ['https://api.kie.ai/api/v1/jobs/createTask'])
+    assert.match(kieRequestBody.input.prompt, /the clearest subject in the uploaded reference image/i)
+    assert.match(kieRequestBody.input.prompt, /70% to 90%/)
+  } finally {
+    globalThis.fetch = originalFetch
+  }
+})
+
+test('AI Zine Poster Generator checks account credits before OpenAI vision analysis', async () => {
+  const originalFetch = globalThis.fetch
+  let fetchCount = 0
+
+  globalThis.fetch = async () => {
+    fetchCount += 1
+    return Response.json({ code: 200, data: { taskId: 'should_not_start' } })
+  }
+
+  try {
+    const response = await onRequest({
+      request: createGenerationRequest({
+        prompt: '',
+        toolSlug: 'ai-zine-poster-generator',
+        imageUrls: ['https://assets.toolaze.com/uploads/reference-before-auth.webp'],
+      }),
+      env: {
+        OPENAI_API_KEY: 'openai-test-key',
+        KIE_AI_API_KEY: 'kie-test-key',
+        DB: createUnauthenticatedDb(),
+      },
+    })
+    const payload = await response.json()
+
+    assert.equal(response.status, 401)
+    assert.equal(payload.error, 'Please sign in with Google to generate images.')
+    assert.equal(fetchCount, 0)
   } finally {
     globalThis.fetch = originalFetch
   }

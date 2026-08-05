@@ -5,6 +5,7 @@ import { AI_TOOLS_LOCALES, getAiToolsPageCopy } from './copy'
 const expectedRoutes = [
   '/unrestricted-ai-image-generator',
   '/world-cup-ai-image-generator',
+  '/ai-zine-poster-generator',
   '/ai-couple-photo-maker',
   '/ai-baby-generator',
   '/ai-dance-generator',
@@ -36,7 +37,7 @@ test('AI Tools hub includes every global AI tool in every locale', () => {
   for (const locale of AI_TOOLS_LOCALES) {
     const cards = getAiToolsPageCopy(locale).cards
     assert.deepEqual(cards.map((card) => card.href), expectedRoutes, `${locale} has missing or mismatched tools`)
-    assert.equal(cards.filter((card) => card.category === 'image').length, 11)
+    assert.equal(cards.filter((card) => card.category === 'image').length, 12)
     assert.equal(cards.filter((card) => card.category === 'video').length, 6)
   }
 })
@@ -148,6 +149,28 @@ test('Unrestricted AI Image Generator hub card is localized and keeps unlimited 
     assert.ok(localizedCard, `${locale} is missing the Unrestricted AI Image Generator hub card`)
     assert.match(localizedCard.title, /Unrestricted|Unlimited/, `${locale} title should keep the SEO entry keyword`)
     assert.match(localizedCard.description, /unlimited-style/, `${locale} description should keep unlimited-style coverage`)
+    assert.notEqual(
+      localizedCard.description,
+      englishCard.description,
+      `${locale} description should not fall back to English`,
+    )
+  }
+})
+
+test('AI Zine Poster Generator hub card is localized and uses the page demo image', () => {
+  const englishCard = getAiToolsPageCopy('en').cards.find((card) => card.href === '/ai-zine-poster-generator')
+  assert.ok(englishCard)
+  assert.equal(
+    englishCard.image,
+    'https://assets.toolaze.com/model-assets/ai-zine-poster-generator/zine-poster-demo.webp',
+  )
+
+  for (const locale of AI_TOOLS_LOCALES.filter((locale) => locale !== 'en')) {
+    const localizedCard = getAiToolsPageCopy(locale).cards.find((card) => card.href === '/ai-zine-poster-generator')
+
+    assert.ok(localizedCard, `${locale} is missing the AI Zine Poster Generator hub card`)
+    assert.equal(localizedCard.category, 'image')
+    assert.notEqual(localizedCard.title, englishCard.title, `${locale} title should not fall back to English`)
     assert.notEqual(
       localizedCard.description,
       englishCard.description,

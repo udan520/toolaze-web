@@ -61,6 +61,7 @@ const defaultTranslations = {
   aiBikiniGenerator: 'AI Bikini Generator',
   aiBreastExpansion: 'AI Breast Expansion',
   unrestrictedAiImageGenerator: 'Unrestricted / Unlimited AI Image Generator',
+  aiZinePosterGenerator: 'AI Zine Poster Generator',
   worldCupAiImageGenerator: 'World Cup AI Image Generator',
   seedance2: 'Seedance 2.0',
   seedance25: 'Seedance 2.5',
@@ -231,6 +232,14 @@ export default function Footer({ initialTranslations }: FooterProps = {}) {
                   className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
                 >
                   {translations.aiCouplePhotoMaker || 'AI Couple Photo Maker'}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={getLocalizedHref('/ai-zine-poster-generator')}
+                  className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
+                >
+                  {translations.aiZinePosterGenerator || 'AI Zine Poster Generator'}
                 </Link>
               </li>
               <li>

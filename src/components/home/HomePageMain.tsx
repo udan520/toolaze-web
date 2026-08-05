@@ -490,6 +490,15 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
       },
     },
     {
+      title: navCopy.aiZinePosterGenerator || 'AI Zine Poster Generator',
+      href: localizeHomeHref('/ai-zine-poster-generator'),
+      media: {
+        type: 'image',
+        src: 'https://assets.toolaze.com/model-assets/ai-zine-poster-generator/zine-poster-demo.webp',
+        alt: 'AI Zine Poster Generator demo image',
+      },
+    },
+    {
       title: navCopy.watermarkRemover || 'Watermark Remover',
       href: localizeHomeHref('/watermark-remover'),
       media: {

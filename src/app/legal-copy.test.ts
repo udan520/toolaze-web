@@ -271,6 +271,7 @@ test('creative image tools are exposed from public entry points after review', (
     '/ai-couple-photo-maker',
     '/watermark-remover',
     '/world-cup-ai-image-generator',
+    '/ai-zine-poster-generator',
   ]
   const navigation = readProjectFile('src/components/Navigation.tsx')
   const footer = readProjectFile('src/components/Footer.tsx')
@@ -289,7 +290,7 @@ test('creative image tools are exposed from public entry points after review', (
     assert.equal(aiToolsCopy.cards.some((card) => card.href === href), true)
   }
 
-  for (const href of ['/ai-baby-generator', '/ai-couple-photo-maker', '/watermark-remover']) {
+  for (const href of ['/ai-baby-generator', '/ai-couple-photo-maker', '/watermark-remover', '/ai-zine-poster-generator']) {
     assert.match(seoLoader, new RegExp(`importL2FlatJson\\('${href.slice(1)}'`))
   }
 

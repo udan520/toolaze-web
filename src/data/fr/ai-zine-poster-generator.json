@@ -1,0 +1,231 @@
+{
+  "in_menu": false,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 1,
+    "modelId": "gpt-image-2",
+    "defaultAspectRatio": "9:16",
+    "defaultPrompt": "Use the uploaded image as the only visual reference. Identify the clearest main subject, object, person, product, pet, plant, room detail, or visual fragment, then reinterpret that subject as a quiet minimal zine poster rather than copying the original photo exactly.\n\nCreate a paper-poster composition that follows the output canvas selected on the page. Use full-frame aged off-white paper, 70% to 90% calm negative space, and one small visual cluster occupying about 8% to 25% of the canvas. Place the cluster away from the edges, preferably center, upper-middle, lower-left, or upper-right. Do not force an alternate crop or nested frame.\n\nTreat the subject as a tiny faded photo crop, torn-paper clipping, flat silhouette, old printed illustration, object specimen, or paper texture window. Blend it into the paper using xerox softness, halftone wear, risograph grain, scan noise, paper fibers, subtle ink bleed, and slight misregistration. Keep the main subject recognizable, but make the final image feel regenerated as archival print design.\n\nAdd sparse serif, typewriter, or monospaced microtype with one very short readable phrase and optional tiny date or archive marks. Use one unmistakably saturated high-chroma ink accent, such as cobalt blue, ultramarine, tomato red, lemon yellow, pear green, cyan, violet, or orange. The accent should be a visible printed block, cutout, subject fragment, or type element occupying about 0.8% to 2.5% of the whole canvas or 15% to 35% of the small cluster.\n\nKeep the whole image flat like a scanned paper sheet with matte absorbent texture, diffuse light, low-to-medium contrast, and a quiet Japanese or Korean indie editorial zine mood. Avoid full-bleed scenes, commercial headlines, logo lockups, CTA layout, glossy mockups, clean digital UI white, cinematic lighting, 3D depth, neon, cute cartoon style, dense scrapbook collage, too many colors, and long clean text blocks.",
+    "defaultImageUrls": [
+      "https://assets.toolaze.com/model-assets/ai-zine-poster-generator/zine-poster-reference.webp"
+    ],
+    "sampleImages": [
+      {
+        "url": "https://assets.toolaze.com/model-assets/ai-zine-poster-generator/zine-poster-demo.webp",
+        "title": "Affiche zine minimaliste générée depuis une référence de paysage marin",
+        "width": 1200,
+        "height": 675
+      }
+    ],
+    "hideModelBranding": true,
+    "hidePromptInput": true,
+    "compactResultPanel": true,
+    "displayName": "Générateur d’affiches zine IA",
+    "textOverrides": {
+      "uploadTitle": "Importez une image",
+      "uploadHelper": "Utilisez une photo claire avec un sujet reconnaissable. JPG, PNG ou WebP jusqu’à 30 Mo.",
+      "generateLabel": "Générer une affiche zine"
+    }
+  },
+  "heroDemoVideo": {
+    "type": "image",
+    "src": "https://assets.toolaze.com/model-assets/ai-zine-poster-generator/zine-poster-demo.webp",
+    "width": 16,
+    "height": 9,
+    "ariaLabel": "Démo d’affiche zine minimaliste générée depuis une référence de paysage marin",
+    "sourceHistory": "User-provided generated zine poster demo and matching seascape reference, uploaded to R2 for stable Toolaze public preview."
+  },
+  "metadata": {
+    "title": "Générateur d’affiches zine IA | Photo en affiche papier | Toolaze",
+    "description": "Importez une photo et transformez le sujet principal en affiche IA style zine avec texture papier, typographie discrète, espace négatif et un accent de couleur vif."
+  },
+  "sectionsOrder": [
+    "intro",
+    "howToUse",
+    "features",
+    "photoTips",
+    "scenes",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Générateur d’<span class=\"text-gradient\">affiches zine</span> IA",
+    "desc": "Importez une image et transformez son sujet principal en composition calme d’affiche papier. Toolaze utilise un style zine minimal avec texture vieillie, typographie rare, grand espace négatif et un accent d’encre vif."
+  },
+  "intro": {
+    "title": "Ce que crée ce générateur d’affiches zine",
+    "content": [
+      {
+        "title": "Une affiche calme à partir d’une seule photo",
+        "text": "Le générateur lit l’image importée, trouve le sujet le plus clair et le transforme en affiche papier de style zine. Le résultat n’est pas une copie littérale de la photo. C’est une nouvelle composition papier avec un petit point focal, une texture d’archive et une ambiance éditoriale retenue."
+      },
+      {
+        "title": "Aucune rédaction nécessaire",
+        "text": "Vous n’avez pas besoin d’écrire des directions de style. Importez une image, choisissez les réglages de sortie disponibles et générez. La logique zine gère automatiquement le placement du sujet, la texture papier, la typographie discrète et l’accent de couleur."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Comment transformer une photo en affiche zine",
+    "steps": [
+      {
+        "title": "Importez une image",
+        "desc": "Choisissez une photo avec une personne, un produit, un objet, un animal, une plante, un détail de pièce ou un sujet visuel clair."
+      },
+      {
+        "title": "Choisissez le format de sortie",
+        "desc": "Sélectionnez le ratio voulu avant de générer. Le style zine s’adapte à cette toile tout en gardant un sujet aéré."
+      },
+      {
+        "title": "Générez et téléchargez",
+        "desc": "Créez l’affiche, vérifiez sujet, texture, typographie et accent de couleur, puis téléchargez le résultat."
+      }
+    ]
+  },
+  "features": {
+    "title": "Style d’affiche zine minimaliste",
+    "items": [
+      {
+        "icon": "□",
+        "iconType": "layout",
+        "title": "Grand espace négatif",
+        "desc": "Le sujet reste petit pour que la surface papier, le silence et la composition fassent partie de l’image."
+      },
+      {
+        "icon": "◎",
+        "iconType": "anchor",
+        "title": "Ancrage de sujet reconnaissable",
+        "desc": "La personne, le produit, l’animal, la plante, l’objet ou le détail de pièce importé reste lisible comme petit point focal."
+      },
+      {
+        "icon": "⌁",
+        "iconType": "texture",
+        "title": "Texture papier vieillie",
+        "desc": "Bruit de scan doux, usure demi-teinte, fibres papier et léger saignement d’encre créent une sensation éditoriale analogique."
+      },
+      {
+        "icon": "Aa",
+        "iconType": "typography",
+        "title": "Typographie discrète",
+        "desc": "De petites marques serif, machine à écrire ou monospace ajoutent un rythme de couverture zine sans devenir un grand titre."
+      },
+      {
+        "icon": "◐",
+        "iconType": "mood",
+        "title": "Ambiance éditoriale calme",
+        "desc": "Le résultat reste calme, plat et proche d’une affiche indie, plutôt qu’une publicité brillante ou une scène complète."
+      },
+      {
+        "icon": "●",
+        "iconType": "accent",
+        "title": "Un accent d’encre vif",
+        "desc": "Une seule couleur saturée, comme cobalt, rouge tomate, jaune citron ou vert poire, rend l’affiche lisible d’un coup d’œil."
+      }
+    ]
+  },
+  "photoTips": {
+    "title": "Les meilleures photos à importer",
+    "subtitle": "Le style fonctionne mieux lorsque le sujet principal est facile à reconnaître avant la transformation.",
+    "items": [
+      {
+        "title": "Utilisez un sujet clair",
+        "desc": "Un produit, visage, fleur, fauteuil, animal, chaussure, livre ou petit objet fonctionne souvent mieux qu’une scène chargée.",
+        "color": "linear-gradient(135deg, #dbeafe, #4f46e5)"
+      },
+      {
+        "title": "Gardez les contours visibles",
+        "desc": "Évitez les recadrages forts, les contours masqués ou le flou de mouvement lorsque la forme du sujet compte.",
+        "color": "linear-gradient(135deg, #fef3c7, #f59e0b)"
+      },
+      {
+        "title": "Les fonds simples aident",
+        "desc": "Les photos chargées peuvent fonctionner, mais les fonds propres facilitent le choix du sujet et la simplification de l’affiche.",
+        "color": "linear-gradient(135deg, #dcfce7, #16a34a)"
+      },
+      {
+        "title": "Ne comptez pas sur le tout petit texte",
+        "desc": "Le style zine est plus fort sur la forme, l’ambiance, la texture et la couleur. Les petits logos, étiquettes et textes fins peuvent changer.",
+        "color": "linear-gradient(135deg, #fce7f3, #db2777)"
+      }
+    ]
+  },
+  "scenesTitle": "Ce que vous pouvez créer",
+  "scenes": [
+    {
+      "icon": "▣",
+      "title": "Couvertures sociales",
+      "desc": "Créez des visuels papier calmes pour posts, profils, playlists, newsletters et contenus sociaux guidés par l’ambiance."
+    },
+    {
+      "icon": "◐",
+      "title": "Affiches d’ambiance produit",
+      "desc": "Transformez une photo de produit ou d’objet en affiche éditoriale douce pour directions de campagne et planches d’ambiance de marque."
+    },
+    {
+      "icon": "✶",
+      "title": "Études de portrait et d’objet",
+      "desc": "Transformez portraits, fleurs, livres, détails de pièce, objets trouvés et photos quotidiennes en études zine minimalistes."
+    }
+  ],
+  "faqTitle": "FAQ du générateur d’affiches zine IA",
+  "faq": [
+    {
+      "q": "Dois-je écrire un prompt ?",
+      "a": "Non. Importez une image et Toolaze applique automatiquement le style d’affiche zine."
+    },
+    {
+      "q": "Le résultat copie-t-il exactement ma photo ?",
+      "a": "Non. Le générateur garde le sujet principal reconnaissable, mais l’image finale est régénérée comme une affiche papier minimaliste avec une nouvelle texture, une nouvelle mise en page et une nouvelle typographie."
+    },
+    {
+      "q": "Quelle image fonctionne le mieux ?",
+      "a": "Utilisez une photo claire avec un sujet principal, des contours visibles et assez de contraste pour reconnaître l’objet ou la personne."
+    },
+    {
+      "q": "Puis-je l’utiliser pour des visuels produit ou marque ?",
+      "a": "Oui, il peut aider à créer des planches d’ambiance, des visuels sociaux, brouillons d’affiche et concepts éditoriaux. Vérifiez les résultats finaux avant usage commercial, surtout si votre import contient logos, personnes ou éléments protégés."
+    },
+    {
+      "q": "Quel modèle produit le résultat ?",
+      "a": "La page utilise GPT Image 2 avec la logique de style zine de Toolaze pour la génération d’image guidée par référence."
+    }
+  ],
+  "moreTools": "Outils IA d’image associés",
+  "moreToolsLinks": [
+    {
+      "slug": "gpt-image-2",
+      "title": "GPT Image 2",
+      "description": "Créez et modifiez des images avec le générateur GPT Image 2 de Toolaze.",
+      "href": "/model/gpt-image-2",
+      "media": {
+        "type": "image",
+        "src": "/model-assets/gpt-image-2/feature-image-editing.webp",
+        "alt": "Aperçu d’édition d’image GPT Image 2"
+      }
+    },
+    {
+      "slug": "ai-image-to-image-generator",
+      "title": "Générateur image-à-image IA",
+      "description": "Importez une image de référence et transformez-la avec une retouche guidée par texte.",
+      "href": "/ai-image-to-image-generator",
+      "media": {
+        "type": "image",
+        "src": "/ai-image-generator/image-to-image-generator.webp",
+        "alt": "Aperçu du générateur image-à-image IA"
+      }
+    },
+    {
+      "slug": "text-to-image-generator",
+      "title": "Générateur texte-image",
+      "description": "Commencez par des idées écrites lorsque vous voulez contrôler directement le brief visuel.",
+      "href": "/text-to-image-generator",
+      "media": {
+        "type": "image",
+        "src": "/ai-image-generator/text-to-image-generator.webp",
+        "alt": "Aperçu du générateur texte-image"
+      }
+    }
+  ]
+}

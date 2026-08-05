@@ -15,6 +15,7 @@
     "watermarkRemover": "浮水印移除",
     "photoRestoration": "照片修復",
     "aiCouplePhotoMaker": "AI 情侶合照",
+    "aiZinePosterGenerator": "AI Zine 海報生成器",
     "fontGenerator": "字體生成器",
     "emojiCopyAndPaste": "Emoji 複製貼上",
     "aiImage": "AI 圖片",
@@ -137,6 +138,10 @@
         "cardTitle": "世界盃 AI 圖像產生器",
         "summary": "使用 GPT Image 2 製作足球海報、球迷肖像、貼紙包與觀賽派對視覺。可從範本或自拍開始，直接在瀏覽器產生適合分享的靜態圖片。"
       },
+      "ai-zine-poster-generator": {
+        "cardTitle": "AI Zine 海報生成器",
+        "summary": "上傳一張圖片，將主要主體轉換成有紙張質感、稀疏字體、大面積留白與鮮明色彩點綴的安靜 Zine 海報。"
+      },
       "ai-dance-generator": {
         "cardTitle": "AI 跳舞生成器",
         "summary": "上傳一張圖片，建立適合編舞概念、課程宣傳與社群短片的跳舞影片。可在生成器中選擇時長與比例。"
@@ -256,6 +261,7 @@
     "watermarkRemover": "浮水印移除",
     "photoRestoration": "照片修復",
     "aiCouplePhotoMaker": "AI 情侶合照",
+    "aiZinePosterGenerator": "AI Zine 海報生成器",
     "aiImage": "AI 圖片",
     "aiVideo": "AI 影片",
     "aiImageModel": "AI 圖像模型",
@@ -322,6 +328,7 @@
     "aiBabyGenerator": "AI 寶寶生成器",
     "textToImageGenerator": "文字轉圖像生成器",
     "aiImageToImageGenerator": "AI 圖像轉圖像生成器",
+    "aiZinePosterGenerator": "AI Zine 海報生成器",
     "worldCupAiImageGenerator": "世界盃 AI 圖像產生器",
     "refundPolicy": "退款政策",
     "acceptableUse": "可接受使用政策",

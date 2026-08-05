@@ -14,6 +14,7 @@ const HISTORY_TOOL_LABELS: Record<string, string> = {
   'ai-bikini-generator': 'AI Bikini Generator',
   'ai-breast-expansion': 'AI Breast Expansion',
   'unrestricted-ai-image-generator': 'Unrestricted AI Image Generator',
+  'ai-zine-poster-generator': 'AI Zine Poster Generator',
   'ai-dance-generator': 'AI Dance Generator',
   'ai-kissing-video-generator': 'AI Kissing Video Generator',
   'ai-asmr-video-generator': 'AI ASMR Video Generator',

@@ -24,6 +24,12 @@ export const HOME_ADVANCED_AI_CARD_IMAGES = {
     height: 450,
     alt: 'AI Hair Color Changer rose pink before and after preview',
   },
+  'ai-zine-poster-generator': {
+    src: 'https://assets.toolaze.com/model-assets/ai-zine-poster-generator/zine-poster-demo.webp',
+    width: 1200,
+    height: 675,
+    alt: 'AI Zine Poster Generator minimal paper poster preview',
+  },
   'ai-clothes-changer': {
     src: 'https://assets.toolaze.com/uploads/84b9bf50f4414a2c962ebd3f74cb07f0.webp',
     width: 1600,

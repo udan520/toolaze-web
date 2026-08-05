@@ -78,8 +78,38 @@ const LineIcon = ({ type }: { type: string }) => {
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 18h6M10 21h4M12 3a6 6 0 00-3 11.2c.7.4 1 1.1 1 1.8h4c0-.7.3-1.4 1-1.8A6 6 0 0012 3z" />
       </svg>
     ),
+    layout: (
+      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 5h14v14H5V5zm9 4h2v2h-2V9zm-6 6h3" />
+      </svg>
+    ),
+    anchor: (
+      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 5v14M5 12h14M8 8.5A5.5 5.5 0 1112 17.5A5.5 5.5 0 018 8.5z" />
+      </svg>
+    ),
+    texture: (
+      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 7.5c2.2-1.3 4.1-1.3 5.8 0s3.6 1.3 5.8 0M6 12h12M5 16.5c2.2 1.3 4.1 1.3 5.8 0s3.6-1.3 5.8 0" />
+      </svg>
+    ),
+    typography: (
+      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 7h8M10 7v10M7 17h6M15 13h3m-3 4h3" />
+      </svg>
+    ),
+    mood: (
+      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.5 4.5A7.5 7.5 0 1019.5 16A6 6 0 0117.5 4.5zM6.5 17.5h.01M9 19h.01" />
+      </svg>
+    ),
+    accent: (
+      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 5.5c2.8 3 4.2 5.2 4.2 7.3A4.2 4.2 0 117.8 12.8c0-2.1 1.4-4.3 4.2-7.3zM17.5 6.5h1.8M18.4 5.6v1.8" />
+      </svg>
+    ),
   }
-  return icons[type] || icons.privacy
+  return icons[type] || icons.guidance
 }
 
 const fallbackFeatureIconTypes = ['workflow', 'motion', 'output', 'history', 'limits', 'guidance'] as const

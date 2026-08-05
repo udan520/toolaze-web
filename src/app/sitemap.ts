@@ -17,6 +17,7 @@ const AI_IMAGE_L2_PAGES = [
   { path: '/ai-couple-photo-maker', priority: 0.88 },
   { path: '/ai-baby-generator', priority: 0.88 },
   { path: '/ai-bikini-generator', priority: 0.88 },
+  { path: '/ai-zine-poster-generator', priority: 0.88 },
   { path: '/ai-breast-expansion', priority: 0.84 },
 ] as const
 
