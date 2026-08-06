@@ -490,6 +490,12 @@ interface PromptModifierConfig {
 const EMPTY_PROMPT_PRESETS: PromptPreset[] = []
 const EMPTY_PROMPT_PRESET_TABS: PromptPresetTab[] = []
 
+function getInitialPromptPresetTabId(promptPresetTabs: PromptPresetTab[], defaultPromptPresetTabId?: string): string {
+  const configuredTabId = defaultPromptPresetTabId?.trim()
+  if (configuredTabId && promptPresetTabs.some((tab) => tab.id === configuredTabId)) return configuredTabId
+  return promptPresetTabs[0]?.id || ''
+}
+
 const AUTH_CACHE_STORAGE_KEY = 'toolaze.authSnapshot'
 type RemoteReferenceImageState = 'loading' | 'loaded' | 'retrying' | 'failed'
 
@@ -625,7 +631,12 @@ interface AiImageGenerationToolProps {
   promptPresets?: PromptPreset[]
   promptPresetTitle?: string
   promptPresetTabs?: PromptPresetTab[]
+  defaultPromptPresetTabId?: string
   hidePresetPromptInput?: boolean
+  showPromptPresetSelectedState?: boolean
+  hidePresetReferenceUploader?: boolean
+  enableCustomReferenceImageUpload?: boolean
+  customReferencePrompt?: string
   hidePromptInput?: boolean
   defaultAspectRatio?: string
   customPromptTabId?: string
@@ -634,6 +645,14 @@ interface AiImageGenerationToolProps {
   sceneText?: {
     uploadTitle?: string
     uploadHelper?: string
+    personUploadTitle?: string
+    personUploadHelper?: string
+    presetReferenceUploadHelper?: string
+    presetChoiceTitle?: string
+    customReferenceUploadTitle?: string
+    customReferenceUploadHelper?: string
+    customTextModeLabel?: string
+    customReferenceModeLabel?: string
     promptLabel?: string
     promptPlaceholder?: string
     generateLabel?: string
@@ -1121,7 +1140,12 @@ export default function AiImageGenerationTool({
   promptPresets = EMPTY_PROMPT_PRESETS,
   promptPresetTitle = 'Hair Color Presets',
   promptPresetTabs = EMPTY_PROMPT_PRESET_TABS,
+  defaultPromptPresetTabId,
   hidePresetPromptInput = false,
+  showPromptPresetSelectedState = false,
+  hidePresetReferenceUploader = false,
+  enableCustomReferenceImageUpload = false,
+  customReferencePrompt = '',
   hidePromptInput = false,
   defaultAspectRatio,
   customPromptTabId = 'custom',
@@ -1270,11 +1294,12 @@ export default function AiImageGenerationTool({
       ''
   )
   const [customPromptDraft, setCustomPromptDraft] = useState('')
+  const [customInputMode, setCustomInputMode] = useState<'prompt' | 'reference'>('prompt')
   const [activePromptPresetTab, setActivePromptPresetTab] = useState(
-    promptPresetTabs[0]?.id || ''
+    getInitialPromptPresetTabId(promptPresetTabs, defaultPromptPresetTabId)
   )
   const [selectedPromptPreset, setSelectedPromptPreset] = useState<string>(() => {
-    const firstTabId = promptPresetTabs[0]?.id
+    const firstTabId = getInitialPromptPresetTabId(promptPresetTabs, defaultPromptPresetTabId)
     const firstPreset = promptPresets.find(
       (item) => item.prompt?.trim() && (!firstTabId || item.group === firstTabId)
     )
@@ -1425,9 +1450,18 @@ export default function AiImageGenerationTool({
   }, [configuredVideoDurationOptions, defaultVideoDurationSeconds])
 
   useEffect(() => {
-    const nextTabId = promptPresetTabs[0]?.id || ''
+    const nextTabId = getInitialPromptPresetTabId(promptPresetTabs, defaultPromptPresetTabId)
     setActivePromptPresetTab(nextTabId)
     if (promptPresetTabs.length > 0) {
+      const firstPreset = promptPresets.find(
+        (item) => item.prompt?.trim() && item.group === nextTabId
+      )
+      if (showPromptPresetSelectedState && firstPreset?.prompt?.trim()) {
+        setSelectedPromptPreset(firstPreset.label)
+        setPrompt(firstPreset.prompt)
+        applyPromptPresetReferenceImage(firstPreset.referenceImage || firstPreset.image)
+        return
+      }
       setSelectedPromptPreset('')
       setPrompt(defaultPrompt)
       applyPromptPresetReferenceImage(undefined)
@@ -1441,7 +1475,7 @@ export default function AiImageGenerationTool({
       setPrompt(firstPreset.prompt)
     }
     applyPromptPresetReferenceImage(firstPreset?.referenceImage || firstPreset?.image)
-  }, [applyPromptPresetReferenceImage, defaultPrompt, promptPresetTabs, promptPresets])
+  }, [applyPromptPresetReferenceImage, defaultPrompt, defaultPromptPresetTabId, promptPresetTabs, promptPresets, showPromptPresetSelectedState])
 
   const visiblePromptPresets = promptPresets.filter((preset) => {
     if (preset.label.toLowerCase() === 'custom') return false
@@ -1460,6 +1494,10 @@ export default function AiImageGenerationTool({
     (option) => (option.value || option.label) === selectedPromptModifier
   )
   const shouldRenderWorkflowTabsAboveUpload = promptPresetTabs.length > 0
+  const shouldUsePresetReferenceUploader = shouldRenderWorkflowTabsAboveUpload && activePromptPresetTab !== customPromptTabId && !hidePresetReferenceUploader
+  const shouldShowCustomInputModeSwitch = shouldRenderWorkflowTabsAboveUpload && activePromptPresetTab === customPromptTabId && enableCustomReferenceImageUpload
+  const shouldUseCustomReferenceUploader = shouldShowCustomInputModeSwitch && customInputMode === 'reference'
+  const shouldUseSecondaryReferenceUploader = shouldUsePresetReferenceUploader || shouldUseCustomReferenceUploader
   const currentMaxUploadImages = shouldRenderWorkflowTabsAboveUpload && activePromptPresetTab === customPromptTabId
     ? Math.min(1, MAX_IMAGES)
     : MAX_IMAGES
@@ -1495,9 +1533,20 @@ export default function AiImageGenerationTool({
 
     if (tabId === customPromptTabId) {
       setSelectedPromptPreset('Custom')
+      setCustomInputMode('prompt')
       setPrompt(customPromptDraft)
       applyPromptPresetReferenceImage(undefined)
       requestAnimationFrame(() => promptTextareaRef.current?.focus())
+      return
+    }
+
+    const firstPreset = promptPresets.find(
+      (item) => item.prompt?.trim() && item.group === tabId
+    )
+    if (showPromptPresetSelectedState && firstPreset?.prompt?.trim()) {
+      setSelectedPromptPreset(firstPreset.label)
+      setPrompt(firstPreset.prompt)
+      applyPromptPresetReferenceImage(firstPreset.referenceImage || firstPreset.image)
       return
     }
 
@@ -1513,18 +1562,18 @@ export default function AiImageGenerationTool({
     }
 
     const baseImageUrls = defaultImageUrls.filter((url) => !presetReferenceImages.has(url))
-    const presetReferenceImage = activePromptPresetTab === customPromptTabId ? undefined : selectedPromptPresetReferenceImage
+    const presetReferenceImage = shouldUsePresetReferenceUploader ? selectedPromptPresetReferenceImage : undefined
     const nextRemoteImageUrls = shouldRenderWorkflowTabsAboveUpload
       ? baseImageUrls.slice(0, personUploadMaxImages)
       : (presetReferenceImage ? [...baseImageUrls, presetReferenceImage] : baseImageUrls).slice(0, MAX_IMAGES)
     setRemoteImageUrls((prev) => areStringArraysEqual(prev, nextRemoteImageUrls) ? prev : nextRemoteImageUrls)
-    if (shouldRenderWorkflowTabsAboveUpload) {
+    if (shouldRenderWorkflowTabsAboveUpload && !shouldUseCustomReferenceUploader) {
       setClothingReferenceRemoteUrls((prev) => {
         const nextUrls = presetReferenceImage ? [presetReferenceImage] : []
         return areStringArraysEqual(prev, nextUrls) ? prev : nextUrls
       })
     }
-  }, [activePromptPresetTab, customPromptTabId, defaultImageUrls, MAX_IMAGES, personUploadMaxImages, presetReferenceImages, selectedPromptPresetReferenceImage, shouldRenderWorkflowTabsAboveUpload])
+  }, [activePromptPresetTab, customPromptTabId, defaultImageUrls, MAX_IMAGES, personUploadMaxImages, presetReferenceImages, selectedPromptPresetReferenceImage, shouldRenderWorkflowTabsAboveUpload, shouldUseCustomReferenceUploader, shouldUsePresetReferenceUploader])
 
   useEffect(() => {
     if (!shouldRenderWorkflowTabsAboveUpload || activePromptPresetTab !== customPromptTabId) return
@@ -2215,10 +2264,10 @@ export default function AiImageGenerationTool({
     const requestActiveTab = activeTab
     const requestImageFiles = [...imageFiles]
     const requestRemoteImageUrls = [...remoteImageUrls]
-    const requestClothingReferenceFiles = shouldRenderWorkflowTabsAboveUpload && activePromptPresetTab !== customPromptTabId
+    const requestClothingReferenceFiles = shouldUseSecondaryReferenceUploader
       ? [...clothingReferenceFiles]
       : []
-    const requestClothingReferenceRemoteUrls = shouldRenderWorkflowTabsAboveUpload && activePromptPresetTab !== customPromptTabId
+    const requestClothingReferenceRemoteUrls = shouldUseSecondaryReferenceUploader
       ? [...clothingReferenceRemoteUrls]
       : []
     const requestAspectRatio = aspectRatio
@@ -2235,12 +2284,13 @@ export default function AiImageGenerationTool({
     const requestTemplateReferenceImage = shouldRenderWorkflowTabsAboveUpload ? undefined : selectedPromptPresetReferenceImage
     const hasPersonReferenceImages = requestImageFiles.length > 0 || requestRemoteImageUrls.length > 0
     const hasClothingReferenceImages = requestClothingReferenceFiles.length > 0 || requestClothingReferenceRemoteUrls.length > 0
-    const hasReferenceImages = shouldRenderWorkflowTabsAboveUpload && activePromptPresetTab !== customPromptTabId
+    const effectiveRequestPrompt = shouldUseCustomReferenceUploader ? customReferencePrompt.trim() : requestPrompt
+    const hasReferenceImages = shouldUsePresetReferenceUploader || shouldUseCustomReferenceUploader
       ? hasPersonReferenceImages && hasClothingReferenceImages
       : hasPersonReferenceImages
 
     if (requestActiveTab === 'image-to-image' && !hasReferenceImages) return
-    if (!requestPrompt) return
+    if (!effectiveRequestPrompt) return
 
     trackToolazeEvent('generate_click', getGenerationAnalyticsPayload())
     const authState = await ensureSignedInForGeneration(requestCreditCost)
@@ -2256,7 +2306,7 @@ export default function AiImageGenerationTool({
     setIsUserSignedIn(true)
 
     const effectivePrompt = composePromptParts(
-      requestPrompt,
+      effectiveRequestPrompt,
       requestPromptModifierPrompt,
       isCouplePhotoMakerMode ? COUPLE_IDENTITY_LOCK_INSTRUCTION : undefined,
     )
@@ -3796,34 +3846,39 @@ export default function AiImageGenerationTool({
     )
   }
 
-  const renderWorkflowPresetTabs = () => (
-    <div
-      role="tablist"
-      aria-label={promptPresetTitle}
-      data-workflow-preset-tabs
-      className="grid grid-cols-2 gap-1 rounded-xl bg-slate-100 p-1"
-    >
-      {promptPresetTabs.map((tab) => {
-        const isActive = activePromptPresetTab === tab.id
-        return (
-          <button
-            key={tab.id}
-            type="button"
-            role="tab"
-            aria-selected={isActive}
-            onClick={() => selectPromptPresetTab(tab.id)}
-            className={`min-h-9 rounded-lg px-2 py-2 text-xs font-bold transition-colors ${
-              isActive
-                ? 'bg-white text-[#4F46E5] shadow-sm'
-                : 'text-slate-500 hover:bg-white/70 hover:text-slate-800'
-            }`}
-          >
-            {tab.label}
-          </button>
-        )
-      })}
-    </div>
-  )
+  const renderWorkflowPresetTabs = () => {
+    const workflowPresetTabCount = Math.max(promptPresetTabs.length, 1)
+
+    return (
+      <div
+        role="tablist"
+        aria-label={promptPresetTitle}
+        data-workflow-preset-tabs
+        className="grid gap-1 rounded-xl bg-slate-100 p-1"
+        style={{ gridTemplateColumns: `repeat(${workflowPresetTabCount}, minmax(0, 1fr))` }}
+      >
+        {promptPresetTabs.map((tab) => {
+          const isActive = activePromptPresetTab === tab.id
+          return (
+            <button
+              key={tab.id}
+              type="button"
+              role="tab"
+              aria-selected={isActive}
+              onClick={() => selectPromptPresetTab(tab.id)}
+              className={`min-h-9 rounded-lg px-2 py-2 text-xs font-bold transition-colors ${
+                isActive
+                  ? 'bg-white text-[#4F46E5] shadow-sm'
+                  : 'text-slate-500 hover:bg-white/70 hover:text-slate-800'
+              }`}
+            >
+              {tab.label}
+            </button>
+          )
+        })}
+      </div>
+    )
+  }
 
   const rightPanelShadowClass = plainRightPanel ? 'shadow-none' : 'shadow-lg shadow-[#4F46E5]/8'
 
@@ -4036,8 +4091,8 @@ export default function AiImageGenerationTool({
                 maxFileSizeMb={MAX_FILE_SIZE_MB}
                 onFiles={handleFiles}
                 onValidationError={(file) => showToast(formatToolText(toolText.fileTooLarge, { name: file.name }), 'error')}
-                label={shouldRenderWorkflowTabsAboveUpload ? 'Upload person photo' : (sceneText?.uploadTitle || (personUploadMaxImages === 1 ? 'Upload your image' : formatToolText(toolText.uploadUpTo, { count: personUploadMaxImages })))}
-                helperText={shouldRenderWorkflowTabsAboveUpload ? 'Image 1: upload the person photo you want to edit.' : (sceneText?.uploadHelper || formatToolText(toolText.fileLimit, { count: personUploadMaxImages }).replace('30MB', `${MAX_FILE_SIZE_MB}MB`))}
+                label={shouldRenderWorkflowTabsAboveUpload ? (sceneText?.personUploadTitle || 'Upload person photo') : (sceneText?.uploadTitle || (personUploadMaxImages === 1 ? 'Upload your image' : formatToolText(toolText.uploadUpTo, { count: personUploadMaxImages })))}
+                helperText={shouldRenderWorkflowTabsAboveUpload ? (sceneText?.personUploadHelper || 'Image 1: upload the person photo you want to edit.') : (sceneText?.uploadHelper || formatToolText(toolText.fileLimit, { count: personUploadMaxImages }).replace('30MB', `${MAX_FILE_SIZE_MB}MB`))}
                 uploadLabel={toolText.upload}
                 replaceLabel={toolText.replace}
                 deleteLabel={toolText.delete}
@@ -4046,7 +4101,35 @@ export default function AiImageGenerationTool({
                 testIdPrefix="image-reference"
               />
             )}
-            {activeTab === 'image-to-image' && shouldRenderWorkflowTabsAboveUpload && activePromptPresetTab !== customPromptTabId && (
+            {shouldShowCustomInputModeSwitch && (
+              <div data-custom-input-mode-switch className="grid grid-cols-2 gap-2 rounded-xl bg-slate-100 p-1">
+                <button
+                  type="button"
+                  aria-pressed={customInputMode === 'prompt'}
+                  onClick={() => setCustomInputMode('prompt')}
+                  className={`min-h-10 rounded-lg px-3 py-2 text-center text-xs font-bold transition-colors ${
+                    customInputMode === 'prompt'
+                      ? 'bg-white text-[#4F46E5] shadow-sm'
+                      : 'text-slate-500 hover:bg-white/70 hover:text-slate-800'
+                  }`}
+                >
+                  {sceneText?.customTextModeLabel || 'Describe hair style'}
+                </button>
+                <button
+                  type="button"
+                  aria-pressed={customInputMode === 'reference'}
+                  onClick={() => setCustomInputMode('reference')}
+                  className={`min-h-10 rounded-lg px-3 py-2 text-center text-xs font-bold transition-colors ${
+                    customInputMode === 'reference'
+                      ? 'bg-white text-[#4F46E5] shadow-sm'
+                      : 'text-slate-500 hover:bg-white/70 hover:text-slate-800'
+                  }`}
+                >
+                  {sceneText?.customReferenceModeLabel || 'Reference hair style'}
+                </button>
+              </div>
+            )}
+            {activeTab === 'image-to-image' && shouldUseSecondaryReferenceUploader && (
               <ReferenceImageUploader
                 items={[
                   ...clothingReferenceRemoteUrls.map((url, index) => {
@@ -4054,7 +4137,7 @@ export default function AiImageGenerationTool({
                     return {
                       id: `clothing-remote-${url}-${index}`,
                       src: previewState === 'retrying' ? normalizeReusableReferenceImageUrl(url) : getReferencePreviewUrl(url),
-                      alt: `Clothing Reference ${index + 1}`,
+                      alt: `${shouldUseCustomReferenceUploader ? 'Hairstyle Reference' : 'Clothing Reference'} ${index + 1}`,
                       status: previewState,
                       onLoad: () => setRemoteImagePreviewState(url, 'loaded'),
                       onError: () => setRemoteImagePreviewState(url, previewState === 'retrying' ? 'failed' : 'retrying'),
@@ -4066,7 +4149,7 @@ export default function AiImageGenerationTool({
                   ...clothingReferenceFiles.map((item, index) => ({
                     id: `clothing-local-${item.file.name}-${index}`,
                     src: item.preview,
-                    alt: `Clothing Reference ${index + 1}`,
+                    alt: `${shouldUseCustomReferenceUploader ? 'Hairstyle Reference' : 'Clothing Reference'} ${index + 1}`,
                     onRemove: () => removeClothingReferenceImage(index),
                     onReplace: (file: File) => replaceClothingReferenceLocalImageWithFile(index, file),
                   })),
@@ -4075,8 +4158,10 @@ export default function AiImageGenerationTool({
                 maxFileSizeMb={MAX_FILE_SIZE_MB}
                 onFiles={handleClothingReferenceFiles}
                 onValidationError={(file) => showToast(formatToolText(toolText.fileTooLarge, { name: file.name }), 'error')}
-                label={promptPresetTitle}
-                helperText="Image 2: upload your target clothing image, or choose one preset below."
+                label={shouldUseCustomReferenceUploader ? (sceneText?.customReferenceUploadTitle || 'Upload hairstyle reference') : promptPresetTitle}
+                helperText={shouldUseCustomReferenceUploader
+                  ? (sceneText?.customReferenceUploadHelper || '')
+                  : (sceneText?.presetReferenceUploadHelper || 'Image 2: upload your target clothing image, or choose one preset below.')}
                 uploadLabel={toolText.upload}
                 replaceLabel={toolText.replace}
                 deleteLabel={toolText.delete}
@@ -4165,10 +4250,10 @@ export default function AiImageGenerationTool({
                     </div>
                   </div>
                 )}
-                {promptPresets.length > 0 && (
+                {promptPresets.length > 0 && activePromptPresetTab !== customPromptTabId && (
                   <div className="mb-3">
                     <label className="block text-xs font-semibold text-slate-500 tracking-wide mb-2">
-                      {shouldRenderWorkflowTabsAboveUpload ? 'Or choose a built-in clothing reference' : promptPresetTitle}
+                      {shouldRenderWorkflowTabsAboveUpload ? (sceneText?.presetChoiceTitle || 'Or choose a built-in clothing reference') : promptPresetTitle}
                     </label>
                     {!shouldRenderWorkflowTabsAboveUpload && promptPresetTabs.length > 0 && (
                       <div
@@ -4210,12 +4295,14 @@ export default function AiImageGenerationTool({
                       {visiblePromptPresets.map((preset) => {
                         const hasImage = Boolean(preset.image)
                         const isBreastExpansionPreset = preset.group === BREAST_EXPANSION_PRESET_GROUP
+                        const isPromptPresetSelected = showPromptPresetSelectedState && selectedPromptPreset === preset.label
                         return (
                           <button
                             key={preset.label}
                             type="button"
                             title={preset.label}
                             aria-label={preset.label}
+                            aria-pressed={showPromptPresetSelectedState ? isPromptPresetSelected : undefined}
                             onClick={() => {
                               setSelectedPromptPreset(preset.label)
                               if (preset.prompt?.trim()) {
@@ -4231,7 +4318,11 @@ export default function AiImageGenerationTool({
                                 })
                               }
                             }}
-                            className="group overflow-hidden rounded-lg border border-slate-200 bg-white text-left transition-colors hover:border-[#A5B4FC] hover:bg-[#F8FAFF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4F46E5]/30"
+                            className={`group overflow-hidden rounded-lg border bg-white text-left transition-colors hover:border-[#A5B4FC] hover:bg-[#F8FAFF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4F46E5]/30 ${
+                              isPromptPresetSelected
+                                ? 'border-[#4F46E5] ring-2 ring-[#4F46E5]/25'
+                                : 'border-slate-200'
+                            }`}
                           >
                             {hasImage ? (
                               <>
@@ -4276,7 +4367,7 @@ export default function AiImageGenerationTool({
                     )}
                   </div>
                 )}
-                {!(hidePresetPromptInput && activePromptPresetTab !== customPromptTabId) && (
+                {!((hidePresetPromptInput && activePromptPresetTab !== customPromptTabId) || shouldUseCustomReferenceUploader) && (
                   <>
                     <label className="block text-xs font-semibold text-slate-500 tracking-wide mb-2">{sceneText?.promptLabel || toolText.prompt}</label>
                     <div data-left-prompt-field className="relative">

@@ -1,0 +1,285 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 1,
+    "modelId": "gpt-image-2",
+    "defaultAspectRatio": "auto",
+    "defaultPrompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a close even buzz cut with very short uniform length, realistic scalp shading, precise edges, and a natural hairline. Preserve the same face, age, expression, pose, clothing, lighting, and background.",
+    "defaultImageUrls": [
+      "https://assets.toolaze.com/model-assets/buzz-cut-filter/buzz-cut-reference.webp"
+    ],
+    "hideModelBranding": true,
+    "compactResultPanel": true,
+    "displayName": "バズカットフィルター",
+    "functionalAcceptance": {
+      "recommendedMode": "gender-tab-preset-first-with-custom",
+      "presetTitle": "男性ヘアスタイルを選択",
+      "presetTabs": [
+        {
+          "id": "men",
+          "label": "男性"
+        },
+        {
+          "id": "custom",
+          "label": "カスタム"
+        }
+      ],
+      "hidePresetPromptInput": true,
+      "showPresetSelectedState": true,
+      "customPromptTabId": "custom",
+      "presets": [
+        {
+          "label": "バズカット",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a close even buzz cut with very short uniform length, realistic scalp shading, precise edges, and a natural hairline. Preserve the same face, age, expression, pose, clothing, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/men/buzz-cut.webp"
+        },
+        {
+          "label": "クルーカット",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a classic crew cut with short tapered sides and slightly longer structured hair on top, realistic texture, clean edges, and a natural hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/crew-cut.webp"
+        },
+        {
+          "label": "スキンヘッド",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Remove only the visible hair and create a clean fully shaved bald head with realistic scalp texture, natural skin shading, and anatomically believable head shape. Preserve the same face, eyebrows, facial hair, age, expression, pose, clothing, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/men/bald.webp"
+        },
+        {
+          "label": "テクスチャードクロップ",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a short textured crop with neat sides, separated natural texture on top, subtle forward styling, realistic strands, and a clean hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/textured-crop.webp"
+        },
+        {
+          "label": "テーパーフェード",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a clean taper fade with gradual blending around the temples and neckline, controlled length on top, realistic texture, and a natural hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/taper-fade.webp"
+        },
+        {
+          "label": "メッシーフェード",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a messy textured top with a modern faded side profile, natural separation, controlled volume, realistic strands, and a believable hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/messy-fade.webp"
+        },
+        {
+          "label": "ショートカール",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to short defined curls with tidy sides, balanced natural volume, realistic curl texture, and a believable hairline. Preserve the face and every non-hair detail.",
+          "image": "/ai-hairstyle-changer/templates/men/short-curly.webp"
+        },
+        {
+          "label": "スリックバック",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a polished slicked-back style with controlled volume, visible natural strand direction, a clean silhouette, and a realistic hairline. Preserve all facial and non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/slick-back.webp"
+        },
+        {
+          "label": "ソフトマッシュ",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a modern soft bowl cut with rounded shape, lightweight fringe, subtle texture, tidy sides, and a natural hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/soft-bowl.webp"
+        },
+        {
+          "label": "テクスチャードフロー",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to medium-length textured flow swept naturally back and to the sides, with layered movement, realistic strands, and a believable hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/textured-flow.webp"
+        },
+        {
+          "label": "ショートボックスブレイズ",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to short box braids with clean geometric parting, realistic braided texture, natural roots, balanced length, and a believable hairline. Preserve all facial and non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/short-box-braids.webp"
+        },
+        {
+          "label": "カスタム",
+          "group": "custom",
+          "prompt": ""
+        }
+      ],
+      "hidePresetReferenceUploader": true,
+      "enableCustomReferenceImageUpload": true,
+      "customReferencePrompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to match the uploaded hairstyle reference image. Preserve the same face, age, expression, pose, clothing, lighting, and background. Do not copy the reference person identity, face, clothing, or background."
+    },
+    "sampleImages": [
+      {
+        "url": "https://assets.toolaze.com/model-assets/buzz-cut-filter/buzz-cut-before-after-demo.webp",
+        "title": "バズカットフィルターのビフォーアフターデモ",
+        "width": 1600,
+        "height": 900
+      }
+    ],
+    "textOverrides": {
+      "promptLabel": "カスタムの髪型指示",
+      "promptPlaceholder": "バリカンの長さ、フェードの高さ、生え際、短髪スタイルを説明してください。",
+      "personUploadTitle": "人物写真をアップロード",
+      "personUploadHelper": "画像1：編集したいポートレートをアップロードします。",
+      "presetChoiceTitle": "内蔵の男性ヘアスタイルを選択",
+      "customReferenceUploadTitle": "髪型参考画像をアップロード",
+      "customTextModeLabel": "髪型を説明",
+      "customReferenceModeLabel": "髪型を参照"
+    }
+  },
+  "metadata": {
+    "title": "無料バズカットフィルター｜登録不要｜Toolaze",
+    "description": "Toolazeの無料バズカットフィルターを登録なしで試せます。ポートレートを1枚アップロードし、顔を保ちながらバズカット、スキンヘッド、クルーカット、テーパーフェードなど男性向け短髪を比較できます。"
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "intro",
+    "features",
+    "photoTips",
+    "faq"
+  ],
+  "hero": {
+    "h1": "無料AI<span class=\"text-gradient\">バズカットフィルター</span>",
+    "desc": "鮮明なポートレートを1枚アップロードすると、男性タブでバズカットが選択された状態から始まります。Toolazeはプリセット用の内蔵プロンプトを非表示にし、カスタム入力も残したまま、登録なしで短髪プレビューを比較できます。"
+  },
+  "safetyNotice": "結果は視覚的な髪型コンセプトであり、毛量、毛流れ、頭の形で実際の仕上がりがどう見えるかを保証するものではありません。",
+  "intro": {
+    "title": "AIバズカットフィルターとは？",
+    "content": [
+      {
+        "title": "バリカンを入れる前に短髪をプレビュー",
+        "text": "AIバズカットフィルターは、ポートレートの見える髪型だけを短いバリカンスタイルのイメージに変え、顔、表情、服、光、背景を保ちます。美容室に行く前に、バズカット、スキンヘッド、クルーカット、テーパーフェードなどが頭の形に合うか比較できます。"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "バズカットフィルターの使い方",
+    "steps": [
+      {
+        "title": "ポートレートを1枚アップロード",
+        "desc": "頭全体、顔、生え際が見える正面または少し斜めの鮮明な写真を使います。"
+      },
+      {
+        "title": "バズカットのまま、または男性スタイルを比較",
+        "desc": "男性タブはバズカットが選択済みで開き、スキンヘッド、クルーカット、テーパーフェード、スリックバック、短いカールなども試せます。"
+      },
+      {
+        "title": "生成して結果を確認",
+        "desc": "Toolazeは選択した内蔵の髪型指示を送信し、プリセットではプロンプト欄を隠します。履歴では使用されたプロンプトを確認できます。"
+      }
+    ]
+  },
+  "photoTips": {
+    "title": "短髪プレビューを良くする写真のコツ",
+    "subtitle": "頭の形、生え際、光がはっきりしているほど、バズカットやスキンヘッドの結果が安定します。",
+    "items": [
+      {
+        "title": "頭全体を見せる",
+        "desc": "頭頂部を切らず、帽子、フード、手、重い前髪で生え際を隠さないでください。",
+        "color": "linear-gradient(135deg, #dbeafe, #2563eb)"
+      },
+      {
+        "title": "正面から均一な光を使う",
+        "desc": "柔らかい光はこめかみ、頭皮の陰影、輪郭を編集しやすくします。",
+        "color": "linear-gradient(135deg, #ede9fe, #7c3aed)"
+      },
+      {
+        "title": "極端な角度を避ける",
+        "desc": "正面または少し斜めの写真は、横顔や傾いたポーズより適しています。",
+        "color": "linear-gradient(135deg, #dcfce7, #15803d)"
+      },
+      {
+        "title": "顔の細部をクリアに",
+        "desc": "ブレ、強い加工、サングラス、顔を大きく覆う髪は避けてください。",
+        "color": "linear-gradient(135deg, #fef3c7, #ea580c)"
+      }
+    ]
+  },
+  "faqTitle": "バズカットフィルターFAQ",
+  "faq": [
+    {
+      "q": "バズカットフィルターは無料で登録不要ですか？",
+      "a": "はい。画像ツールを開き、ポートレートをアップロードして、登録なしでバズカットを試せます。無制限利用の約束ではなく、生成上限やモデル提供状況が変わる場合があります。"
+    },
+    {
+      "q": "なぜ男性とカスタムだけですか？",
+      "a": "バズカットの検索は主に男性向け短髪です。女性スタイルを混ぜず、目的に集中した体験にしています。"
+    },
+    {
+      "q": "バズカットは標準で選択されていますか？",
+      "a": "はい。男性タブが先に開き、バズカットが選択済みなので、最初の生成は内蔵のバズカット指示を使います。"
+    },
+    {
+      "q": "スキンヘッド、クルーカット、フェードも試せますか？",
+      "a": "はい。男性タブにはAI Hairstyle Changerの男性プリセット一式があり、スキンヘッド、クルーカット、テクスチャークロップ、テーパーフェード、メッシーフェード、短いカールなどを含みます。"
+    },
+    {
+      "q": "なぜプリセットの下にプロンプト欄がないのですか？",
+      "a": "プリセットは非表示の内蔵プロンプトを使うため、ユーザーは文字を編集せずに髪型を選べます。生成履歴では使用プロンプトを確認できます。"
+    },
+    {
+      "q": "プレビューは正確な散髪シミュレーションですか？",
+      "a": "いいえ。視覚的なコンセプトです。実際の仕上がりは毛量、毛流れ、生え際、頭の形、技術、バリカンの長さに左右されます。"
+    },
+    {
+      "q": "理容師への参考画像にできますか？",
+      "a": "はい。好みの長さや形を伝える参考として使い、実際に可能かは理容師に相談してください。"
+    }
+  ],
+  "moreTools": "関連AIツール",
+  "moreToolsLinks": [
+    {
+      "title": "AI Hairstyle Changer",
+      "description": "1枚の写真で長髪、質感のある髪、巻き髪などを試せます。",
+      "href": "/ai-hairstyle-changer",
+      "media": {
+        "type": "image",
+        "src": "/ai-hairstyle-changer/hero-before-after.webp",
+        "alt": "AI Hairstyle Changer"
+      }
+    },
+    {
+      "title": "AI Hair Color Changer",
+      "description": "髪型を保ったまま、自然色やクリエイティブな髪色を試せます。",
+      "href": "/ai-hair-color-changer",
+      "media": {
+        "type": "image",
+        "src": "/ai-hair-color-changer/rose-pink-before-after.webp",
+        "alt": "AI Hair Color Changer"
+      }
+    },
+    {
+      "title": "AI Image-to-Image Generator",
+      "description": "アップロード画像の別の部分を独自の文章指示で編集します。",
+      "href": "/ai-image-to-image-generator",
+      "media": {
+        "type": "image",
+        "src": "https://assets.toolaze.com/model-assets/gpt-image-2/feature-image-editing.webp",
+        "alt": "AI Image-to-Image Generator"
+      }
+    }
+  ],
+  "features": {
+    "title": "Toolazeバズカットフィルターを使う理由",
+    "items": [
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "無料で登録なしに開始",
+        "desc": "ツールを開き、ポートレートをアップロードして、アカウントなしでバズカットや短髪を試せます。"
+      },
+      {
+        "icon": "✂️",
+        "iconType": "guidance",
+        "title": "男性スタイルを内蔵",
+        "desc": "男性タブにはAI Hairstyle Changerと同じ男性プリセットがあり、バズカット、スキンヘッド、クルーカット、テーパーフェードなどを選べます。"
+      },
+      {
+        "icon": "👤",
+        "iconType": "privacy",
+        "title": "プリセットのプロンプトは非表示",
+        "desc": "内蔵プロンプトで本人らしさを保ち、文章入力を減らします。細かい長さやフェードを指定したい場合はカスタムへ切り替えます。"
+      }
+    ]
+  }
+}

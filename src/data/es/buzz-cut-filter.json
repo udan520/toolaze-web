@@ -1,0 +1,285 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 1,
+    "modelId": "gpt-image-2",
+    "defaultAspectRatio": "auto",
+    "defaultPrompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a close even buzz cut with very short uniform length, realistic scalp shading, precise edges, and a natural hairline. Preserve the same face, age, expression, pose, clothing, lighting, and background.",
+    "defaultImageUrls": [
+      "https://assets.toolaze.com/model-assets/buzz-cut-filter/buzz-cut-reference.webp"
+    ],
+    "hideModelBranding": true,
+    "compactResultPanel": true,
+    "displayName": "Buzz Cut Filter",
+    "functionalAcceptance": {
+      "recommendedMode": "gender-tab-preset-first-with-custom",
+      "presetTitle": "Elige un peinado masculino",
+      "presetTabs": [
+        {
+          "id": "men",
+          "label": "Hombre"
+        },
+        {
+          "id": "custom",
+          "label": "Personalizado"
+        }
+      ],
+      "hidePresetPromptInput": true,
+      "showPresetSelectedState": true,
+      "customPromptTabId": "custom",
+      "presets": [
+        {
+          "label": "Rapado",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a close even buzz cut with very short uniform length, realistic scalp shading, precise edges, and a natural hairline. Preserve the same face, age, expression, pose, clothing, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/men/buzz-cut.webp"
+        },
+        {
+          "label": "Corte militar",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a classic crew cut with short tapered sides and slightly longer structured hair on top, realistic texture, clean edges, and a natural hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/crew-cut.webp"
+        },
+        {
+          "label": "Calvo",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Remove only the visible hair and create a clean fully shaved bald head with realistic scalp texture, natural skin shading, and anatomically believable head shape. Preserve the same face, eyebrows, facial hair, age, expression, pose, clothing, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/men/bald.webp"
+        },
+        {
+          "label": "Crop texturizado",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a short textured crop with neat sides, separated natural texture on top, subtle forward styling, realistic strands, and a clean hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/textured-crop.webp"
+        },
+        {
+          "label": "Degradado taper",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a clean taper fade with gradual blending around the temples and neckline, controlled length on top, realistic texture, and a natural hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/taper-fade.webp"
+        },
+        {
+          "label": "Degradado desenfadado",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a messy textured top with a modern faded side profile, natural separation, controlled volume, realistic strands, and a believable hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/messy-fade.webp"
+        },
+        {
+          "label": "Rizo corto",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to short defined curls with tidy sides, balanced natural volume, realistic curl texture, and a believable hairline. Preserve the face and every non-hair detail.",
+          "image": "/ai-hairstyle-changer/templates/men/short-curly.webp"
+        },
+        {
+          "label": "Peinado hacia atrás",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a polished slicked-back style with controlled volume, visible natural strand direction, a clean silhouette, and a realistic hairline. Preserve all facial and non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/slick-back.webp"
+        },
+        {
+          "label": "Corte tazón suave",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a modern soft bowl cut with rounded shape, lightweight fringe, subtle texture, tidy sides, and a natural hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/soft-bowl.webp"
+        },
+        {
+          "label": "Flow texturizado",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to medium-length textured flow swept naturally back and to the sides, with layered movement, realistic strands, and a believable hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/textured-flow.webp"
+        },
+        {
+          "label": "Trenzas africanas cortas",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to short box braids with clean geometric parting, realistic braided texture, natural roots, balanced length, and a believable hairline. Preserve all facial and non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/short-box-braids.webp"
+        },
+        {
+          "label": "Personalizado",
+          "group": "custom",
+          "prompt": ""
+        }
+      ],
+      "hidePresetReferenceUploader": true,
+      "enableCustomReferenceImageUpload": true,
+      "customReferencePrompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to match the uploaded hairstyle reference image. Preserve the same face, age, expression, pose, clothing, lighting, and background. Do not copy the reference person identity, face, clothing, or background."
+    },
+    "sampleImages": [
+      {
+        "url": "https://assets.toolaze.com/model-assets/buzz-cut-filter/buzz-cut-before-after-demo.webp",
+        "title": "Demo antes y después del filtro de corte rapado",
+        "width": 1600,
+        "height": 900
+      }
+    ],
+    "textOverrides": {
+      "promptLabel": "Instrucción personalizada de peinado",
+      "promptPlaceholder": "Describe la longitud de máquina, altura del fade, forma de la línea o corte corto que quieres.",
+      "personUploadTitle": "Sube la foto de la persona",
+      "personUploadHelper": "Imagen 1: sube el retrato que quieres editar.",
+      "presetChoiceTitle": "Elige uno de los peinados masculinos integrados",
+      "customReferenceUploadTitle": "Sube una referencia de peinado",
+      "customTextModeLabel": "Describir peinado",
+      "customReferenceModeLabel": "Peinado de referencia"
+    }
+  },
+  "metadata": {
+    "title": "Filtro Buzz Cut gratis online | Sin registro | Toolaze",
+    "description": "Prueba gratis el filtro Buzz Cut de Toolaze sin registrarte. Sube un retrato, conserva tu rostro y compara rapado, calvo, crew cut, taper fade y otros cortes cortos masculinos."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "intro",
+    "features",
+    "photoTips",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Filtro AI <span class=\"text-gradient\">Buzz Cut</span> gratis online",
+    "desc": "Sube un retrato claro y empieza en la pestaña Hombre con Rapado ya seleccionado. Toolaze oculta el prompt interno para los estilos predefinidos, mantiene Personalizado disponible y te permite comparar cortes cortos sin registro."
+  },
+  "safetyNotice": "El resultado es un concepto visual de corte, no una garantía de cómo se verá un corte real con tu densidad, patrón de crecimiento o forma de cabeza.",
+  "intro": {
+    "title": "¿Qué es un filtro Buzz Cut con AI?",
+    "content": [
+      {
+        "title": "Prueba el pelo corto antes de usar la máquina",
+        "text": "Un filtro Buzz Cut con AI cambia el peinado visible de un retrato por un concepto de corte corto con máquina, conservando rostro, expresión, ropa, luz y fondo. Úsalo para comparar si un rapado, look calvo, crew cut, taper fade u otro estilo corto masculino encaja con tu cabeza antes de ir al barbero."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Cómo usar el filtro Buzz Cut",
+    "steps": [
+      {
+        "title": "Sube un retrato",
+        "desc": "Usa una foto nítida de frente o tres cuartos donde se vean cabeza, rostro y línea del cabello."
+      },
+      {
+        "title": "Mantén Rapado o compara estilos masculinos",
+        "desc": "La pestaña Hombre abre con Rapado seleccionado; también puedes probar Calvo, Crew Cut, Taper Fade, Slick Back, Rizado corto y más."
+      },
+      {
+        "title": "Genera y revisa el resultado",
+        "desc": "Toolaze envía la instrucción integrada del corte seleccionado y oculta el campo de prompt en presets. El historial conserva el prompt usado para consultarlo."
+      }
+    ]
+  },
+  "photoTips": {
+    "title": "Consejos de foto para una mejor vista previa",
+    "subtitle": "Una cabeza, línea de cabello y luz claras dan mejores pistas para un rapado o look calvo.",
+    "items": [
+      {
+        "title": "Muestra toda la cabeza",
+        "desc": "No cortes la coronilla ni escondas la línea del cabello con gorra, capucha, manos o flequillo pesado.",
+        "color": "linear-gradient(135deg, #dbeafe, #2563eb)"
+      },
+      {
+        "title": "Usa luz frontal uniforme",
+        "desc": "La luz suave facilita editar sienes, sombreado del cuero cabelludo y bordes.",
+        "color": "linear-gradient(135deg, #ede9fe, #7c3aed)"
+      },
+      {
+        "title": "Evita ángulos extremos",
+        "desc": "Frente o tres cuartos funciona mejor que perfil, poses inclinadas o distorsión de gran angular.",
+        "color": "linear-gradient(135deg, #dcfce7, #15803d)"
+      },
+      {
+        "title": "Mantén el rostro claro",
+        "desc": "Evita desenfoque, filtros fuertes, gafas oscuras y cabello tapando rasgos importantes.",
+        "color": "linear-gradient(135deg, #fef3c7, #ea580c)"
+      }
+    ]
+  },
+  "faqTitle": "Preguntas frecuentes del filtro Buzz Cut",
+  "faq": [
+    {
+      "q": "¿El filtro Buzz Cut es gratis y sin registro?",
+      "a": "Sí. Puedes abrir la herramienta de imagen, subir un retrato y empezar a probar un rapado sin registrarte. No promete uso ilimitado; pueden aplicar límites de generación o disponibilidad del modelo."
+    },
+    {
+      "q": "¿Por qué solo muestra Hombre y Personalizado?",
+      "a": "Las búsquedas de buzz cut suelen tratar cortes cortos masculinos. La experiencia se mantiene enfocada y no mezcla peinados femeninos en esta página de corte."
+    },
+    {
+      "q": "¿Rapado está seleccionado por defecto?",
+      "a": "Sí. La pestaña Hombre se abre primero y Rapado está seleccionado, así que la primera generación usa la instrucción integrada de buzz cut."
+    },
+    {
+      "q": "¿Puedo probar calvo, crew cut o fade?",
+      "a": "Sí. La pestaña Hombre incluye todos los presets masculinos de AI Hairstyle Changer, como Calvo, Crew Cut, Textured Crop, Taper Fade, Messy Fade, Short Curly, Slick Back, Soft Bowl, Textured Flow y Short Box Braids."
+    },
+    {
+      "q": "¿Por qué no hay campo de prompt debajo de los presets?",
+      "a": "Los presets usan prompts internos ocultos para elegir el corte visualmente sin editar texto. El historial generado puede mostrar el prompt usado."
+    },
+    {
+      "q": "¿La vista previa es una simulación exacta del corte?",
+      "a": "No. Es un concepto visual. El resultado real depende de densidad, dirección de crecimiento, línea de cabello, forma de cabeza, técnica y número de máquina."
+    },
+    {
+      "q": "¿Puedo usar el resultado como referencia para el barbero?",
+      "a": "Sí. Úsalo para explicar longitud y forma generales, y pregunta al barbero qué es realista para tu pelo y cabeza."
+    }
+  ],
+  "moreTools": "Herramientas IA relacionadas",
+  "moreToolsLinks": [
+    {
+      "title": "AI Hairstyle Changer",
+      "description": "Prueba estilos largos, texturizados, rizados y otros cortes desde un retrato.",
+      "href": "/ai-hairstyle-changer",
+      "media": {
+        "type": "image",
+        "src": "/ai-hairstyle-changer/hero-before-after.webp",
+        "alt": "AI Hairstyle Changer"
+      }
+    },
+    {
+      "title": "AI Hair Color Changer",
+      "description": "Mantén el peinado y prueba otro color natural o creativo.",
+      "href": "/ai-hair-color-changer",
+      "media": {
+        "type": "image",
+        "src": "/ai-hair-color-changer/rose-pink-before-after.webp",
+        "alt": "AI Hair Color Changer"
+      }
+    },
+    {
+      "title": "AI Image-to-Image Generator",
+      "description": "Edita otra parte de una imagen subida con una instrucción de texto personalizada.",
+      "href": "/ai-image-to-image-generator",
+      "media": {
+        "type": "image",
+        "src": "https://assets.toolaze.com/model-assets/gpt-image-2/feature-image-editing.webp",
+        "alt": "AI Image-to-Image Generator"
+      }
+    }
+  ],
+  "features": {
+    "title": "Por qué usar Toolaze Buzz Cut Filter",
+    "items": [
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Empieza gratis sin registro",
+        "desc": "Abre la herramienta, sube un retrato y prueba un rapado u otro corte corto masculino sin crear cuenta."
+      },
+      {
+        "icon": "✂️",
+        "iconType": "guidance",
+        "title": "Estilos masculinos integrados",
+        "desc": "La pestaña Hombre reutiliza los mismos presets de AI Hairstyle Changer: Rapado, Calvo, Crew Cut, Taper Fade, Slick Back, Rizado corto y más."
+      },
+      {
+        "icon": "👤",
+        "iconType": "privacy",
+        "title": "Prompts de preset ocultos",
+        "desc": "Los presets usan prompts internos para preservar identidad y reducir trabajo de texto. Para longitud exacta o fade específico, cambia a Personalizado."
+      }
+    ]
+  }
+}

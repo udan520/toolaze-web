@@ -7,6 +7,7 @@
     "mode": "image-to-image",
     "maxUploadImages": 1,
     "modelId": "gpt-image-2",
+    "defaultAspectRatio": "auto",
     "defaultPrompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a polished short bob ending near the jaw, with clean rounded shape, soft natural volume, realistic strands, and a believable hairline. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background.",
     "defaultImageUrls": [
       "/ai-hairstyle-changer/default-reference.png"
@@ -167,7 +168,12 @@
         }
       ],
       "hidePresetPromptInput": true,
-      "customPromptTabId": "custom"
+      "customPromptTabId": "custom",
+      "defaultPromptPresetTabId": "women",
+      "hidePresetReferenceUploader": true,
+      "enableCustomReferenceImageUpload": true,
+      "showPresetSelectedState": true,
+      "customReferencePrompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to match the uploaded hairstyle reference image. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background. Do not copy the reference person identity, face, clothing, or background."
     },
     "sampleImages": [
       {
@@ -179,7 +185,11 @@
     ],
     "textOverrides": {
       "promptLabel": "Gewünschte Frisur beschreiben",
-      "promptPlaceholder": "Beschreibe Schnitt, Länge, Pony, Struktur, Volumen oder Styling."
+      "promptPlaceholder": "Beschreibe Schnitt, Länge, Pony, Struktur, Volumen oder Styling.",
+      "presetChoiceTitle": "Frisur auswählen",
+      "customTextModeLabel": "Frisur beschreiben",
+      "customReferenceModeLabel": "Frisurreferenz",
+      "customReferenceUploadTitle": "Frisur-Referenz hochladen"
     }
   },
   "metadata": {

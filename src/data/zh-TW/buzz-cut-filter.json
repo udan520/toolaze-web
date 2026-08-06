@@ -1,0 +1,285 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 1,
+    "modelId": "gpt-image-2",
+    "defaultAspectRatio": "auto",
+    "defaultPrompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a close even buzz cut with very short uniform length, realistic scalp shading, precise edges, and a natural hairline. Preserve the same face, age, expression, pose, clothing, lighting, and background.",
+    "defaultImageUrls": [
+      "https://assets.toolaze.com/model-assets/buzz-cut-filter/buzz-cut-reference.webp"
+    ],
+    "hideModelBranding": true,
+    "compactResultPanel": true,
+    "displayName": "寸頭濾鏡",
+    "functionalAcceptance": {
+      "recommendedMode": "gender-tab-preset-first-with-custom",
+      "presetTitle": "選擇男性髮型",
+      "presetTabs": [
+        {
+          "id": "men",
+          "label": "男性"
+        },
+        {
+          "id": "custom",
+          "label": "自訂"
+        }
+      ],
+      "hidePresetPromptInput": true,
+      "showPresetSelectedState": true,
+      "customPromptTabId": "custom",
+      "presets": [
+        {
+          "label": "寸頭",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a close even buzz cut with very short uniform length, realistic scalp shading, precise edges, and a natural hairline. Preserve the same face, age, expression, pose, clothing, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/men/buzz-cut.webp"
+        },
+        {
+          "label": "平頭",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a classic crew cut with short tapered sides and slightly longer structured hair on top, realistic texture, clean edges, and a natural hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/crew-cut.webp"
+        },
+        {
+          "label": "光頭",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Remove only the visible hair and create a clean fully shaved bald head with realistic scalp texture, natural skin shading, and anatomically believable head shape. Preserve the same face, eyebrows, facial hair, age, expression, pose, clothing, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/men/bald.webp"
+        },
+        {
+          "label": "紋理短髮",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a short textured crop with neat sides, separated natural texture on top, subtle forward styling, realistic strands, and a clean hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/textured-crop.webp"
+        },
+        {
+          "label": "漸層短髮",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a clean taper fade with gradual blending around the temples and neckline, controlled length on top, realistic texture, and a natural hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/taper-fade.webp"
+        },
+        {
+          "label": "凌亂漸層",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a messy textured top with a modern faded side profile, natural separation, controlled volume, realistic strands, and a believable hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/messy-fade.webp"
+        },
+        {
+          "label": "短捲髮",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to short defined curls with tidy sides, balanced natural volume, realistic curl texture, and a believable hairline. Preserve the face and every non-hair detail.",
+          "image": "/ai-hairstyle-changer/templates/men/short-curly.webp"
+        },
+        {
+          "label": "後梳油頭",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a polished slicked-back style with controlled volume, visible natural strand direction, a clean silhouette, and a realistic hairline. Preserve all facial and non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/slick-back.webp"
+        },
+        {
+          "label": "柔和鍋蓋頭",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a modern soft bowl cut with rounded shape, lightweight fringe, subtle texture, tidy sides, and a natural hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/soft-bowl.webp"
+        },
+        {
+          "label": "紋理流線髮型",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to medium-length textured flow swept naturally back and to the sides, with layered movement, realistic strands, and a believable hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/textured-flow.webp"
+        },
+        {
+          "label": "短箱型辮",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to short box braids with clean geometric parting, realistic braided texture, natural roots, balanced length, and a believable hairline. Preserve all facial and non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/short-box-braids.webp"
+        },
+        {
+          "label": "自訂",
+          "group": "custom",
+          "prompt": ""
+        }
+      ],
+      "hidePresetReferenceUploader": true,
+      "enableCustomReferenceImageUpload": true,
+      "customReferencePrompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to match the uploaded hairstyle reference image. Preserve the same face, age, expression, pose, clothing, lighting, and background. Do not copy the reference person identity, face, clothing, or background."
+    },
+    "sampleImages": [
+      {
+        "url": "https://assets.toolaze.com/model-assets/buzz-cut-filter/buzz-cut-before-after-demo.webp",
+        "title": "寸頭濾鏡前後對比 Demo",
+        "width": 1600,
+        "height": 900
+      }
+    ],
+    "textOverrides": {
+      "promptLabel": "自訂髮型指令",
+      "promptPlaceholder": "描述想要的推剪長度、漸層高度、髮際線形狀或短髮樣式。",
+      "personUploadTitle": "上傳人物照片",
+      "personUploadHelper": "圖片 1：上傳你想編輯的人像。",
+      "presetChoiceTitle": "選擇一個內建男性髮型",
+      "customReferenceUploadTitle": "上傳髮型參考圖",
+      "customTextModeLabel": "描述髮型",
+      "customReferenceModeLabel": "參考髮型"
+    }
+  },
+  "metadata": {
+    "title": "免費寸頭濾鏡線上使用｜免註冊｜Toolaze",
+    "description": "免註冊使用 Toolaze 免費寸頭濾鏡。上傳一張人像，保留臉部細節，並比較寸頭、光頭、Crew Cut、Taper Fade 與更多男性短髮。"
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "intro",
+    "features",
+    "photoTips",
+    "faq"
+  ],
+  "hero": {
+    "h1": "免費 AI <span class=\"text-gradient\">寸頭濾鏡</span>線上使用",
+    "desc": "上傳一張清楚人像，工具會從男性分頁開始，並預設選中寸頭。Toolaze 會隱藏預設髮型的內建提示詞，同時保留自訂模式，讓你免註冊比較短髮效果。"
+  },
+  "safetyNotice": "結果是視覺髮型概念，不保證真實剪髮在你的髮量、髮流或頭型上會完全相同。",
+  "intro": {
+    "title": "AI 寸頭濾鏡是什麼？",
+    "content": [
+      {
+        "title": "真正推剪前先預覽短髮",
+        "text": "AI 寸頭濾鏡會把人像中可見的髮型改成短推剪概念，同時保留臉、表情、服裝、光線與背景。去理髮前，可先比較寸頭、光頭、Crew Cut、Taper Fade 或其他男性短髮是否適合你的頭型。"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "如何使用寸頭濾鏡",
+    "steps": [
+      {
+        "title": "上傳一張人像",
+        "desc": "使用清楚的正面或微側臉照片，讓頭部、臉和髮際線完整可見。"
+      },
+      {
+        "title": "保留寸頭或比較男性髮型",
+        "desc": "男性分頁會預設選中寸頭，也可嘗試光頭、Crew Cut、Taper Fade、Slick Back、短捲髮等。"
+      },
+      {
+        "title": "生成並查看結果",
+        "desc": "Toolaze 會送出已選髮型的內建指令，預設樣式下不顯示提示詞輸入框。生成歷史仍可查看實際使用的提示詞。"
+      }
+    ]
+  },
+  "photoTips": {
+    "title": "讓短髮預覽更好的照片技巧",
+    "subtitle": "清楚的頭型、髮際線與光線能讓寸頭或光頭預覽更穩定。",
+    "items": [
+      {
+        "title": "顯示完整頭部",
+        "desc": "不要裁掉頭頂，也不要用帽子、帽T、手或厚瀏海遮住髮際線。",
+        "color": "linear-gradient(135deg, #dbeafe, #2563eb)"
+      },
+      {
+        "title": "使用均勻正面光",
+        "desc": "柔和均衡的光線能讓太陽穴、頭皮陰影與邊線更容易編輯。",
+        "color": "linear-gradient(135deg, #ede9fe, #7c3aed)"
+      },
+      {
+        "title": "避免極端角度",
+        "desc": "正面或微側臉比側面、歪斜姿勢和廣角變形更適合。",
+        "color": "linear-gradient(135deg, #dcfce7, #15803d)"
+      },
+      {
+        "title": "保持臉部清楚",
+        "desc": "避免模糊、強濾鏡、太陽眼鏡或頭髮遮住大部分五官。",
+        "color": "linear-gradient(135deg, #fef3c7, #ea580c)"
+      }
+    ]
+  },
+  "faqTitle": "寸頭濾鏡 FAQ",
+  "faq": [
+    {
+      "q": "寸頭濾鏡可以免費且免註冊使用嗎？",
+      "a": "可以。你能開啟圖片工具、上傳人像，並免註冊開始預覽寸頭。這不是無限使用承諾；生成限制或模型可用性仍可能適用。"
+    },
+    {
+      "q": "為什麼只保留男性和自訂？",
+      "a": "寸頭搜尋主要是男性短髮意圖。此頁聚焦在男性短髮，不把女性髮型混入這個髮型頁。"
+    },
+    {
+      "q": "寸頭會預設選中嗎？",
+      "a": "會。男性分頁會先開啟，寸頭是已選預設，第一次生成會使用內建寸頭指令。"
+    },
+    {
+      "q": "可以嘗試光頭、Crew Cut 或漸層嗎？",
+      "a": "可以。男性分頁包含 AI Hairstyle Changer 的完整男性髮型預設，包括光頭、Crew Cut、Textured Crop、Taper Fade、Messy Fade、Short Curly、Slick Back、Soft Bowl、Textured Flow 和 Short Box Braids。"
+    },
+    {
+      "q": "為什麼預設髮型下方沒有提示詞輸入框？",
+      "a": "預設髮型使用隱藏的內建提示詞，讓使用者直接用視覺選髮型，不必編輯文字。生成歷史仍可顯示使用過的提示詞。"
+    },
+    {
+      "q": "預覽是精確的理髮模擬嗎？",
+      "a": "不是。它是視覺概念。真實效果取決於髮量、髮流、髮際線、頭型、理髮師手法和推剪長度。"
+    },
+    {
+      "q": "可以把結果給理髮師參考嗎？",
+      "a": "可以。用它說明想要的長度和形狀，再請理髮師判斷你的髮質和頭型是否適合。"
+    }
+  ],
+  "moreTools": "相關 AI 工具",
+  "moreToolsLinks": [
+    {
+      "title": "AI Hairstyle Changer",
+      "description": "用一張人像嘗試長髮、紋理髮、捲髮與其他剪髮方向。",
+      "href": "/ai-hairstyle-changer",
+      "media": {
+        "type": "image",
+        "src": "/ai-hairstyle-changer/hero-before-after.webp",
+        "alt": "AI Hairstyle Changer"
+      }
+    },
+    {
+      "title": "AI Hair Color Changer",
+      "description": "保留原本髮型，預覽不同自然或創意髮色。",
+      "href": "/ai-hair-color-changer",
+      "media": {
+        "type": "image",
+        "src": "/ai-hair-color-changer/rose-pink-before-after.webp",
+        "alt": "AI Hair Color Changer"
+      }
+    },
+    {
+      "title": "AI Image-to-Image Generator",
+      "description": "用自訂文字指令編輯上傳圖片的其他部分。",
+      "href": "/ai-image-to-image-generator",
+      "media": {
+        "type": "image",
+        "src": "https://assets.toolaze.com/model-assets/gpt-image-2/feature-image-editing.webp",
+        "alt": "AI Image-to-Image Generator"
+      }
+    }
+  ],
+  "features": {
+    "title": "為什麼使用 Toolaze 寸頭濾鏡？",
+    "items": [
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "免費開始，免註冊",
+        "desc": "開啟工具、上傳一張人像，就能不用建立帳號嘗試寸頭或其他男性短髮。"
+      },
+      {
+        "icon": "✂️",
+        "iconType": "guidance",
+        "title": "內建男性髮型",
+        "desc": "男性分頁沿用 AI Hairstyle Changer 的髮型預設，包含寸頭、光頭、Crew Cut、Taper Fade、Slick Back、短捲髮等。"
+      },
+      {
+        "icon": "👤",
+        "iconType": "privacy",
+        "title": "預設提示詞隱藏",
+        "desc": "預設髮型使用內建提示詞來保留身份並降低文字輸入成本。若要指定推剪長度或漸層，可切到自訂。"
+      }
+    ]
+  }
+}

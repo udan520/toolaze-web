@@ -75,6 +75,7 @@ const cardAssets = {
   talkingAvatar:
     'https://assets.toolaze.com/landing-pages/talking-avatar-creator/demo-poster.webp',
   hairstyle: '/ai-hairstyle-changer/hero-before-after.webp',
+  buzzCut: 'https://assets.toolaze.com/model-assets/buzz-cut-filter/buzz-cut-before-after-demo.webp',
   hairColor: '/ai-hair-color-changer/rose-pink-before-after.webp',
   clothes:
     'https://assets.toolaze.com/uploads/84b9bf50f4414a2c962ebd3f74cb07f0.webp',
@@ -201,6 +202,13 @@ const en: StoredAiToolsPageCopy = {
       href: '/ai-hairstyle-changer',
       image: cardAssets.hairstyle,
       description: 'Try different hairstyles on a reference photo while keeping the person and overall look consistent.',
+      category: 'image',
+    },
+    {
+      title: 'Buzz Cut Filter',
+      href: '/buzz-cut-filter',
+      image: cardAssets.buzzCut,
+      description: 'Upload one portrait and preview a close buzz cut or short clipper-cut variation while keeping the face and photo context stable.',
       category: 'image',
     },
     {
@@ -446,6 +454,7 @@ type SupplementalCopy = {
   textToVideo: Pick<AiToolsCard, 'title' | 'description'>
   imageToVideo: Pick<AiToolsCard, 'title' | 'description'>
   hairstyle: Pick<AiToolsCard, 'title' | 'description'>
+  buzzCut: Pick<AiToolsCard, 'title' | 'description'>
   hairColor: Pick<AiToolsCard, 'title' | 'description'>
   clothes: Pick<AiToolsCard, 'title' | 'description'>
   bikini: Pick<AiToolsCard, 'title' | 'description'>
@@ -469,6 +478,7 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     textToVideo: { title: 'Text to Video Generator', description: 'Turn written prompts into short AI videos for ads, storyboards, social clips, and concept tests.' },
     imageToVideo: { title: 'Image to Video Generator', description: 'Animate photos, product images, artwork, and reference frames with controlled AI motion.' },
     hairstyle: { title: 'AI Hairstyle Changer', description: 'Try different hairstyles on a reference photo while keeping the person and overall look consistent.' },
+    buzzCut: { title: 'Buzz Cut Filter', description: 'Upload one portrait and preview a close buzz cut or short clipper-cut variation while keeping the face and photo context stable.' },
     hairColor: { title: 'AI Hair Color Changer', description: 'Preview natural and creative hair colors on your photo with reference-guided AI editing.' },
     clothes: { title: 'AI Clothes Changer', description: 'Upload a person photo and preview realistic outfit changes with virtual try-on style prompts.' },
     bikini: { title: 'AI Bikini Generator', description: 'Upload an adult person photo and a bikini reference to preview tasteful swimwear edits while preserving the original person.' },
@@ -490,6 +500,7 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     textToVideo: { title: 'Text-zu-Video-Generator', description: 'Verwandeln Sie Textprompts in kurze KI-Videos für Anzeigen, Storyboards, Social Clips und Konzepttests.' },
     imageToVideo: { title: 'Bild-zu-Video-Generator', description: 'Animieren Sie Fotos, Produktbilder, Kunstwerke und Referenzframes mit kontrollierter KI-Bewegung.' },
     hairstyle: { title: 'KI-Frisurenwechsler', description: 'Probieren Sie verschiedene Frisuren auf einem Referenzfoto aus und bewahren Sie das Aussehen der Person.' },
+    buzzCut: { title: 'Buzz-Cut-Filter', description: 'Laden Sie ein Porträt hoch und testen Sie einen kurzen Buzz Cut oder eine Maschinenschnitt-Variante, während Gesicht und Foto stimmig bleiben.' },
     hairColor: { title: 'KI-Haarfarbenwechsler', description: 'Testen Sie natürliche und kreative Haarfarben auf Ihrem Foto mit referenzbasierter KI-Bearbeitung.' },
     clothes: { title: 'KI-Kleiderwechsler', description: 'Laden Sie ein Personenfoto hoch und testen Sie realistische Outfitwechsel mit virtuellen Anprobe-Prompts.' },
     bikini: { title: 'KI-Bikini-Generator', description: 'Laden Sie ein Erwachsenenfoto und eine Bikini-Referenz hoch, um geschmackvolle Swimwear-Edits mit stabiler Personenvorschau zu testen.' },
@@ -511,6 +522,7 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     textToVideo: { title: 'テキストから動画生成', description: '文章プロンプトを広告、絵コンテ、SNSクリップ、コンセプト検証向けの短いAI動画にできます。' },
     imageToVideo: { title: '画像から動画生成', description: '写真、商品画像、アート、参照フレームに制御可能なAIモーションを加えられます。' },
     hairstyle: { title: 'AIヘアスタイルチェンジャー', description: '人物の印象を保ちながら、参照写真でさまざまな髪型を試せます。' },
+    buzzCut: { title: 'バズカットフィルター', description: 'ポートレートを1枚アップロードし、顔と写真全体の雰囲気を保ちながら短いバズカットを確認できます。' },
     hairColor: { title: 'AIヘアカラー変更', description: '参照画像を使ったAI編集で、自然な髪色や個性的なカラーを写真上で確認できます。' },
     clothes: { title: 'AI服装チェンジャー', description: '人物写真をアップロードし、バーチャル試着向けプロンプトでリアルな衣装変更をプレビューできます。' },
     bikini: { title: 'AIビキニジェネレーター', description: '成人の人物写真とビキニ参照をアップロードし、人物を保ったまま上品なスイムウェア編集をプレビューできます。' },
@@ -532,6 +544,7 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     textToVideo: { title: 'Generador de texto a video', description: 'Convierte prompts escritos en videos cortos con IA para anuncios, guiones visuales, clips sociales y pruebas de concepto.' },
     imageToVideo: { title: 'Generador de imagen a video', description: 'Anima fotos, imágenes de producto, ilustraciones y fotogramas de referencia con movimiento IA controlado.' },
     hairstyle: { title: 'Cambiador de peinados IA', description: 'Prueba distintos peinados en una foto de referencia manteniendo el aspecto de la persona.' },
+    buzzCut: { title: 'Filtro Buzz Cut', description: 'Sube un retrato y prueba un corte rapado o una variante corta a máquina conservando el rostro y el contexto de la foto.' },
     hairColor: { title: 'Cambiador de color de pelo IA', description: 'Prueba colores de pelo naturales y creativos con edición IA guiada por referencia.' },
     clothes: { title: 'Cambiador de ropa con IA', description: 'Sube una foto de persona y previsualiza cambios de outfit realistas con prompts de prueba virtual.' },
     bikini: { title: 'Generador de bikini con IA', description: 'Sube una foto adulta y una referencia de bikini para previsualizar ediciones de swimwear de buen gusto sin cambiar a la persona.' },
@@ -553,6 +566,7 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     textToVideo: { title: '文字轉影片生成器', description: '將文字提示詞轉為適合廣告、分鏡、社群短片與概念測試的 AI 短片。' },
     imageToVideo: { title: '圖像轉影片生成器', description: '以可控的 AI 動態為照片、產品圖、藝術作品和參考畫面製作動畫。' },
     hairstyle: { title: 'AI 髮型變換器', description: '在保留人物整體外觀的同時，透過參考照片嘗試不同髮型。' },
+    buzzCut: { title: '寸頭濾鏡', description: '上傳一張人像，預覽寸頭或短推剪髮型變化，同時保留臉部與照片整體氛圍。' },
     hairColor: { title: 'AI 髮色變換器', description: '使用參考圖引導的 AI 編輯，在照片上預覽自然或創意髮色。' },
     clothes: { title: 'AI 換衣工具', description: '上傳人物照片，使用虛擬試穿提示詞預覽逼真的換裝效果。' },
     bikini: { title: 'AI 比基尼生成器', description: '上傳成人人物照片與比基尼參考圖，在保留原人物的同時預覽得體的泳裝編輯效果。' },
@@ -574,6 +588,7 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     textToVideo: { title: 'Gerador de texto para vídeo', description: 'Transforme prompts em vídeos curtos com IA para anúncios, storyboards, clipes sociais e testes de conceito.' },
     imageToVideo: { title: 'Gerador de imagem para vídeo', description: 'Anime fotos, imagens de produtos, obras de arte e quadros de referência com movimento de IA controlado.' },
     hairstyle: { title: 'Alterador de penteado IA', description: 'Teste penteados diferentes em uma foto mantendo a pessoa e o visual geral consistentes.' },
+    buzzCut: { title: 'Filtro Buzz Cut', description: 'Envie um retrato e visualize um Buzz Cut ou uma variação curta à máquina mantendo o rosto e o contexto da foto.' },
     hairColor: { title: 'Alterador de cor de cabelo IA', description: 'Visualize cores naturais e criativas no cabelo com edição de IA guiada por referência.' },
     clothes: { title: 'Trocador de roupas com IA', description: 'Envie uma foto da pessoa e visualize trocas de roupa realistas com prompts de prova virtual.' },
     bikini: { title: 'Gerador de biquíni com IA', description: 'Envie uma foto adulta e uma referência de biquíni para visualizar edições de swimwear de bom gosto mantendo a pessoa original.' },
@@ -595,6 +610,7 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     textToVideo: { title: 'Générateur texte-vidéo', description: 'Transformez des prompts en courtes vidéos IA pour annonces, storyboards, clips sociaux et tests de concept.' },
     imageToVideo: { title: 'Générateur image-vidéo', description: 'Animez photos, images produit, créations et images de référence avec des mouvements IA contrôlés.' },
     hairstyle: { title: 'Changeur de coiffure IA', description: 'Essayez différentes coiffures sur une photo de référence tout en conservant l’apparence de la personne.' },
+    buzzCut: { title: 'Filtre Buzz Cut', description: 'Importez un portrait et prévisualisez une Buzz Cut ou une coupe courte à la tondeuse en conservant le visage et le contexte de la photo.' },
     hairColor: { title: 'Changeur de couleur de cheveux IA', description: 'Prévisualisez des couleurs naturelles ou créatives grâce à une retouche IA guidée par référence.' },
     clothes: { title: 'Changeur de vêtements IA', description: 'Importez une photo de personne et prévisualisez des changements de tenue réalistes avec des prompts d’essayage virtuel.' },
     bikini: { title: 'Générateur de bikini IA', description: 'Importez une photo adulte et une référence bikini pour prévisualiser des retouches swimwear sobres en conservant la personne.' },
@@ -616,6 +632,7 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     textToVideo: { title: '텍스트-동영상 생성기', description: '텍스트 프롬프트를 광고, 스토리보드, 소셜 클립, 콘셉트 테스트용 짧은 AI 동영상으로 만드세요.' },
     imageToVideo: { title: '이미지-동영상 생성기', description: '사진, 제품 이미지, 아트워크, 참조 프레임에 제어 가능한 AI 모션을 적용하세요.' },
     hairstyle: { title: 'AI 헤어스타일 변경기', description: '인물의 전체적인 모습을 유지하면서 참조 사진에서 다양한 헤어스타일을 시험해 보세요.' },
+    buzzCut: { title: '버즈컷 필터', description: '인물 사진 한 장을 업로드하고 얼굴과 사진 분위기를 유지한 채 짧은 버즈컷을 미리 확인하세요.' },
     hairColor: { title: 'AI 헤어 컬러 변경기', description: '참조 기반 AI 편집으로 사진에서 자연스럽거나 창의적인 헤어 컬러를 미리 확인하세요.' },
     clothes: { title: 'AI 의상 체인저', description: '인물 사진을 업로드하고 가상 착용 스타일 프롬프트로 현실적인 의상 변경을 미리보세요.' },
     bikini: { title: 'AI 비키니 생성기', description: '성인 인물 사진과 비키니 참조 이미지를 업로드해 원본 인물을 유지한 깔끔한 수영복 편집을 미리보세요.' },
@@ -637,6 +654,7 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     textToVideo: { title: 'Generatore da testo a video', description: 'Trasforma prompt scritti in brevi video IA per annunci, storyboard, clip social e test di concept.' },
     imageToVideo: { title: 'Generatore da immagine a video', description: 'Anima foto, immagini di prodotto, opere e fotogrammi di riferimento con movimenti IA controllati.' },
     hairstyle: { title: 'Cambia acconciatura IA', description: 'Prova diverse acconciature su una foto mantenendo coerenti la persona e l’aspetto generale.' },
+    buzzCut: { title: 'Filtro Buzz Cut', description: 'Carica un ritratto e visualizza un Buzz Cut o una variante corta a macchinetta mantenendo volto e contesto della foto.' },
     hairColor: { title: 'Cambia colore capelli IA', description: 'Visualizza colori naturali e creativi con editing IA guidato da un’immagine di riferimento.' },
     clothes: { title: 'Cambia abiti con IA', description: 'Carica una foto della persona e visualizza cambi outfit realistici con prompt da prova virtuale.' },
     bikini: { title: 'Generatore di bikini IA', description: 'Carica una foto adulta e un riferimento bikini per visualizzare edit swimwear di buon gusto mantenendo la persona originale.' },
@@ -665,6 +683,7 @@ const aiToolsCardOrder = [
   '/ai-kissing-video-generator',
   '/talking-avatar-creator',
   '/ai-hairstyle-changer',
+  '/buzz-cut-filter',
   '/ai-hair-color-changer',
   '/ai-clothes-changer',
   '/ai-bikini-generator',
@@ -701,6 +720,7 @@ function getSupplementalCardByHref(
     '/ai-kissing-video-generator': supplemental.kissing,
     '/talking-avatar-creator': supplemental.talkingAvatar,
     '/ai-hairstyle-changer': supplemental.hairstyle,
+    '/buzz-cut-filter': supplemental.buzzCut,
     '/ai-hair-color-changer': supplemental.hairColor,
     '/ai-clothes-changer': supplemental.clothes,
     '/ai-bikini-generator': supplemental.bikini,

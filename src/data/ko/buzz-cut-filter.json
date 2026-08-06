@@ -1,0 +1,285 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 1,
+    "modelId": "gpt-image-2",
+    "defaultAspectRatio": "auto",
+    "defaultPrompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a close even buzz cut with very short uniform length, realistic scalp shading, precise edges, and a natural hairline. Preserve the same face, age, expression, pose, clothing, lighting, and background.",
+    "defaultImageUrls": [
+      "https://assets.toolaze.com/model-assets/buzz-cut-filter/buzz-cut-reference.webp"
+    ],
+    "hideModelBranding": true,
+    "compactResultPanel": true,
+    "displayName": "버즈 컷 필터",
+    "functionalAcceptance": {
+      "recommendedMode": "gender-tab-preset-first-with-custom",
+      "presetTitle": "남성 헤어스타일 선택",
+      "presetTabs": [
+        {
+          "id": "men",
+          "label": "남성"
+        },
+        {
+          "id": "custom",
+          "label": "사용자 지정"
+        }
+      ],
+      "hidePresetPromptInput": true,
+      "showPresetSelectedState": true,
+      "customPromptTabId": "custom",
+      "presets": [
+        {
+          "label": "버즈 컷",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a close even buzz cut with very short uniform length, realistic scalp shading, precise edges, and a natural hairline. Preserve the same face, age, expression, pose, clothing, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/men/buzz-cut.webp"
+        },
+        {
+          "label": "크루 컷",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a classic crew cut with short tapered sides and slightly longer structured hair on top, realistic texture, clean edges, and a natural hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/crew-cut.webp"
+        },
+        {
+          "label": "삭발",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Remove only the visible hair and create a clean fully shaved bald head with realistic scalp texture, natural skin shading, and anatomically believable head shape. Preserve the same face, eyebrows, facial hair, age, expression, pose, clothing, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/men/bald.webp"
+        },
+        {
+          "label": "텍스처드 크롭",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a short textured crop with neat sides, separated natural texture on top, subtle forward styling, realistic strands, and a clean hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/textured-crop.webp"
+        },
+        {
+          "label": "테이퍼 페이드",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a clean taper fade with gradual blending around the temples and neckline, controlled length on top, realistic texture, and a natural hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/taper-fade.webp"
+        },
+        {
+          "label": "메시 페이드",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a messy textured top with a modern faded side profile, natural separation, controlled volume, realistic strands, and a believable hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/messy-fade.webp"
+        },
+        {
+          "label": "쇼트 컬",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to short defined curls with tidy sides, balanced natural volume, realistic curl texture, and a believable hairline. Preserve the face and every non-hair detail.",
+          "image": "/ai-hairstyle-changer/templates/men/short-curly.webp"
+        },
+        {
+          "label": "슬릭 백",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a polished slicked-back style with controlled volume, visible natural strand direction, a clean silhouette, and a realistic hairline. Preserve all facial and non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/slick-back.webp"
+        },
+        {
+          "label": "소프트 볼 컷",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a modern soft bowl cut with rounded shape, lightweight fringe, subtle texture, tidy sides, and a natural hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/soft-bowl.webp"
+        },
+        {
+          "label": "텍스처드 플로우",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to medium-length textured flow swept naturally back and to the sides, with layered movement, realistic strands, and a believable hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/textured-flow.webp"
+        },
+        {
+          "label": "쇼트 박스 브레이드",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to short box braids with clean geometric parting, realistic braided texture, natural roots, balanced length, and a believable hairline. Preserve all facial and non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/short-box-braids.webp"
+        },
+        {
+          "label": "사용자 지정",
+          "group": "custom",
+          "prompt": ""
+        }
+      ],
+      "hidePresetReferenceUploader": true,
+      "enableCustomReferenceImageUpload": true,
+      "customReferencePrompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to match the uploaded hairstyle reference image. Preserve the same face, age, expression, pose, clothing, lighting, and background. Do not copy the reference person identity, face, clothing, or background."
+    },
+    "sampleImages": [
+      {
+        "url": "https://assets.toolaze.com/model-assets/buzz-cut-filter/buzz-cut-before-after-demo.webp",
+        "title": "버즈컷 필터 전후 비교 데모",
+        "width": 1600,
+        "height": 900
+      }
+    ],
+    "textOverrides": {
+      "promptLabel": "사용자 지정 헤어스타일 지시문",
+      "promptPlaceholder": "클리퍼 길이, 페이드 높이, 헤어라인 모양 또는 원하는 짧은 머리를 설명하세요.",
+      "personUploadTitle": "인물 사진 업로드",
+      "personUploadHelper": "이미지 1: 편집할 초상 사진을 업로드하세요.",
+      "presetChoiceTitle": "내장 남성 헤어스타일 선택",
+      "customReferenceUploadTitle": "헤어스타일 참고 이미지 업로드",
+      "customTextModeLabel": "헤어스타일 설명",
+      "customReferenceModeLabel": "헤어스타일 참고"
+    }
+  },
+  "metadata": {
+    "title": "무료 버즈 컷 필터 온라인 | 가입 없이 | Toolaze",
+    "description": "가입 없이 Toolaze의 무료 버즈 컷 필터를 사용해 보세요. 초상 사진 한 장을 올리고 얼굴은 유지한 채 버즈 컷, 민머리, 크루 컷, 테이퍼 페이드 등 남성 짧은 머리를 비교할 수 있습니다."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "intro",
+    "features",
+    "photoTips",
+    "faq"
+  ],
+  "hero": {
+    "h1": "무료 AI <span class=\"text-gradient\">버즈 컷 필터</span> 온라인",
+    "desc": "선명한 초상 사진을 올리면 남성 탭에서 버즈 컷이 선택된 상태로 시작합니다. Toolaze는 프리셋 스타일의 내장 프롬프트를 숨기고 사용자 지정은 유지해, 가입 없이 짧은 머리 미리보기를 비교할 수 있게 합니다."
+  },
+  "safetyNotice": "결과는 시각적 헤어컷 콘셉트이며, 모발 밀도, 성장 방향, 두상에서 실제 컷이 어떻게 보일지 보장하지 않습니다.",
+  "intro": {
+    "title": "AI 버즈 컷 필터란?",
+    "content": [
+      {
+        "title": "실제로 자르기 전에 짧은 머리 미리보기",
+        "text": "AI 버즈 컷 필터는 초상 사진의 보이는 머리만 짧은 클리퍼 컷 콘셉트로 바꾸고 얼굴, 표정, 옷, 조명, 배경은 유지합니다. 바버숍에 가기 전에 버즈 컷, 민머리, 크루 컷, 테이퍼 페이드 등 남성 짧은 스타일이 두상에 어울리는지 비교할 수 있습니다."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "버즈 컷 필터 사용 방법",
+    "steps": [
+      {
+        "title": "초상 사진 한 장 업로드",
+        "desc": "머리 전체, 얼굴, 헤어라인이 보이는 정면 또는 약간 비스듬한 선명한 사진을 사용하세요."
+      },
+      {
+        "title": "버즈 컷을 유지하거나 남성 스타일 비교",
+        "desc": "남성 탭은 버즈 컷이 선택된 상태로 열리며, 민머리, 크루 컷, 테이퍼 페이드, 슬릭 백, 짧은 곱슬머리 등도 시험할 수 있습니다."
+      },
+      {
+        "title": "생성 후 결과 확인",
+        "desc": "Toolaze는 선택한 헤어스타일의 내장 지시문을 보내고 프리셋에서는 프롬프트 입력창을 숨깁니다. 생성 기록에는 사용된 프롬프트가 남습니다."
+      }
+    ]
+  },
+  "photoTips": {
+    "title": "더 나은 짧은 머리 미리보기를 위한 사진 팁",
+    "subtitle": "두상, 헤어라인, 조명이 명확할수록 버즈 컷이나 민머리 결과가 안정적입니다.",
+    "items": [
+      {
+        "title": "머리 전체 보이기",
+        "desc": "정수리를 자르거나 모자, 후드, 손, 무거운 앞머리로 헤어라인을 가리지 마세요.",
+        "color": "linear-gradient(135deg, #dbeafe, #2563eb)"
+      },
+      {
+        "title": "균일한 정면 조명 사용",
+        "desc": "부드러운 빛은 관자놀이, 두피 음영, 가장자리 편집을 돕습니다.",
+        "color": "linear-gradient(135deg, #ede9fe, #7c3aed)"
+      },
+      {
+        "title": "극단적 각도 피하기",
+        "desc": "정면 또는 약간 비스듬한 사진이 옆모습이나 기울어진 포즈보다 좋습니다.",
+        "color": "linear-gradient(135deg, #dcfce7, #15803d)"
+      },
+      {
+        "title": "얼굴 세부 유지",
+        "desc": "흐림, 강한 필터, 선글라스, 얼굴을 덮는 머리는 피하세요.",
+        "color": "linear-gradient(135deg, #fef3c7, #ea580c)"
+      }
+    ]
+  },
+  "faqTitle": "버즈 컷 필터 FAQ",
+  "faq": [
+    {
+      "q": "버즈 컷 필터는 무료이고 가입이 필요 없나요?",
+      "a": "네. 이미지 도구를 열고 초상 사진을 업로드해 가입 없이 버즈 컷을 미리볼 수 있습니다. 무제한 사용 약속은 아니며, 생성 제한이나 모델 사용 가능 여부가 적용될 수 있습니다."
+    },
+    {
+      "q": "왜 남성과 사용자 지정만 있나요?",
+      "a": "버즈 컷 검색은 주로 남성 짧은 머리 의도입니다. 이 페이지는 여성 헤어스타일을 섞지 않고 목적에 집중합니다."
+    },
+    {
+      "q": "버즈 컷이 기본 선택인가요?",
+      "a": "네. 남성 탭이 먼저 열리고 버즈 컷이 선택되어 첫 생성에 내장 버즈 컷 지시문이 사용됩니다."
+    },
+    {
+      "q": "민머리, 크루 컷, 페이드도 시험할 수 있나요?",
+      "a": "네. 남성 탭에는 AI Hairstyle Changer의 남성 프리셋 전체가 있으며 민머리, 크루 컷, Textured Crop, Taper Fade, Messy Fade, Short Curly, Slick Back, Soft Bowl, Textured Flow, Short Box Braids를 포함합니다."
+    },
+    {
+      "q": "프리셋 아래에 왜 프롬프트 입력창이 없나요?",
+      "a": "프리셋은 숨겨진 내장 프롬프트를 사용해 텍스트 편집 없이 시각적으로 머리를 선택하게 합니다. 생성 기록에서는 사용된 프롬프트를 볼 수 있습니다."
+    },
+    {
+      "q": "미리보기가 정확한 이발 시뮬레이션인가요?",
+      "a": "아니요. 시각적 콘셉트입니다. 실제 결과는 모발 밀도, 성장 방향, 헤어라인, 두상, 기술, 클리퍼 가드에 따라 달라집니다."
+    },
+    {
+      "q": "결과를 바버에게 참고로 보여줘도 되나요?",
+      "a": "네. 원하는 길이와 형태를 설명하는 참고 이미지로 쓰고, 실제 가능 여부는 바버와 상의하세요."
+    }
+  ],
+  "moreTools": "관련 AI 도구",
+  "moreToolsLinks": [
+    {
+      "title": "AI Hairstyle Changer",
+      "description": "한 장의 인물 사진으로 긴 머리, 질감 있는 머리, 곱슬머리와 다른 커트를 시도하세요.",
+      "href": "/ai-hairstyle-changer",
+      "media": {
+        "type": "image",
+        "src": "/ai-hairstyle-changer/hero-before-after.webp",
+        "alt": "AI Hairstyle Changer"
+      }
+    },
+    {
+      "title": "AI Hair Color Changer",
+      "description": "헤어스타일을 유지하고 자연스럽거나 창의적인 다른 머리색을 확인하세요.",
+      "href": "/ai-hair-color-changer",
+      "media": {
+        "type": "image",
+        "src": "/ai-hair-color-changer/rose-pink-before-after.webp",
+        "alt": "AI Hair Color Changer"
+      }
+    },
+    {
+      "title": "AI Image-to-Image Generator",
+      "description": "직접 작성한 문장으로 업로드 이미지의 다른 부분을 편집하세요.",
+      "href": "/ai-image-to-image-generator",
+      "media": {
+        "type": "image",
+        "src": "https://assets.toolaze.com/model-assets/gpt-image-2/feature-image-editing.webp",
+        "alt": "AI Image-to-Image Generator"
+      }
+    }
+  ],
+  "features": {
+    "title": "Toolaze 버즈 컷 필터를 쓰는 이유",
+    "items": [
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "무료로 가입 없이 시작",
+        "desc": "도구를 열고 초상 사진을 업로드해 계정 없이 버즈 컷이나 다른 남성 짧은 머리를 시험하세요."
+      },
+      {
+        "icon": "✂️",
+        "iconType": "guidance",
+        "title": "남성 스타일 내장",
+        "desc": "남성 탭은 AI Hairstyle Changer의 같은 남성 프리셋을 사용해 버즈 컷, 민머리, 크루 컷, 테이퍼 페이드, 슬릭 백 등을 제공합니다."
+      },
+      {
+        "icon": "👤",
+        "iconType": "privacy",
+        "title": "프리셋 프롬프트 숨김",
+        "desc": "프리셋은 내장 프롬프트로 정체성을 보존하고 텍스트 입력을 줄입니다. 정확한 길이나 페이드를 원하면 사용자 지정으로 전환하세요."
+      }
+    ]
+  }
+}

@@ -1,0 +1,285 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 1,
+    "modelId": "gpt-image-2",
+    "defaultAspectRatio": "auto",
+    "defaultPrompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a close even buzz cut with very short uniform length, realistic scalp shading, precise edges, and a natural hairline. Preserve the same face, age, expression, pose, clothing, lighting, and background.",
+    "defaultImageUrls": [
+      "https://assets.toolaze.com/model-assets/buzz-cut-filter/buzz-cut-reference.webp"
+    ],
+    "hideModelBranding": true,
+    "compactResultPanel": true,
+    "displayName": "Buzz Cut Filter",
+    "functionalAcceptance": {
+      "recommendedMode": "gender-tab-preset-first-with-custom",
+      "presetTitle": "Choose a Men's Hairstyle",
+      "presetTabs": [
+        {
+          "id": "men",
+          "label": "Men"
+        },
+        {
+          "id": "custom",
+          "label": "Custom"
+        }
+      ],
+      "hidePresetPromptInput": true,
+      "showPresetSelectedState": true,
+      "customPromptTabId": "custom",
+      "presets": [
+        {
+          "label": "Buzz Cut",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a close even buzz cut with very short uniform length, realistic scalp shading, precise edges, and a natural hairline. Preserve the same face, age, expression, pose, clothing, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/men/buzz-cut.webp"
+        },
+        {
+          "label": "Crew Cut",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a classic crew cut with short tapered sides and slightly longer structured hair on top, realistic texture, clean edges, and a natural hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/crew-cut.webp"
+        },
+        {
+          "label": "Bald",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Remove only the visible hair and create a clean fully shaved bald head with realistic scalp texture, natural skin shading, and anatomically believable head shape. Preserve the same face, eyebrows, facial hair, age, expression, pose, clothing, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/men/bald.webp"
+        },
+        {
+          "label": "Textured Crop",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a short textured crop with neat sides, separated natural texture on top, subtle forward styling, realistic strands, and a clean hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/textured-crop.webp"
+        },
+        {
+          "label": "Taper Fade",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a clean taper fade with gradual blending around the temples and neckline, controlled length on top, realistic texture, and a natural hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/taper-fade.webp"
+        },
+        {
+          "label": "Messy Fade",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a messy textured top with a modern faded side profile, natural separation, controlled volume, realistic strands, and a believable hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/messy-fade.webp"
+        },
+        {
+          "label": "Short Curly",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to short defined curls with tidy sides, balanced natural volume, realistic curl texture, and a believable hairline. Preserve the face and every non-hair detail.",
+          "image": "/ai-hairstyle-changer/templates/men/short-curly.webp"
+        },
+        {
+          "label": "Slick Back",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a polished slicked-back style with controlled volume, visible natural strand direction, a clean silhouette, and a realistic hairline. Preserve all facial and non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/slick-back.webp"
+        },
+        {
+          "label": "Soft Bowl",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a modern soft bowl cut with rounded shape, lightweight fringe, subtle texture, tidy sides, and a natural hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/soft-bowl.webp"
+        },
+        {
+          "label": "Textured Flow",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to medium-length textured flow swept naturally back and to the sides, with layered movement, realistic strands, and a believable hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/textured-flow.webp"
+        },
+        {
+          "label": "Short Box Braids",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to short box braids with clean geometric parting, realistic braided texture, natural roots, balanced length, and a believable hairline. Preserve all facial and non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/short-box-braids.webp"
+        },
+        {
+          "label": "Custom",
+          "group": "custom",
+          "prompt": ""
+        }
+      ],
+      "hidePresetReferenceUploader": true,
+      "enableCustomReferenceImageUpload": true,
+      "customReferencePrompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to match the uploaded hairstyle reference image. Preserve the same face, age, expression, pose, clothing, lighting, and background. Do not copy the reference person identity, face, clothing, or background."
+    },
+    "sampleImages": [
+      {
+        "url": "https://assets.toolaze.com/model-assets/buzz-cut-filter/buzz-cut-before-after-demo.webp",
+        "title": "Buzz Cut Filter before-after demo",
+        "width": 1600,
+        "height": 900
+      }
+    ],
+    "textOverrides": {
+      "promptLabel": "Custom Hairstyle Instruction",
+      "promptPlaceholder": "Describe the guard length, fade height, hairline shape, or short hairstyle you want.",
+      "personUploadTitle": "Upload person photo",
+      "personUploadHelper": "Image 1: upload the portrait you want to edit.",
+      "presetChoiceTitle": "Choose one of the built-in men's hairstyles",
+      "customReferenceUploadTitle": "Upload hairstyle reference",
+      "customTextModeLabel": "Describe hair style",
+      "customReferenceModeLabel": "Reference hair style"
+    }
+  },
+  "metadata": {
+    "title": "Free Buzz Cut Filter Online | No Signup | Toolaze",
+    "description": "Try Toolaze's free Buzz Cut Filter online with no signup. Upload one portrait, keep your face intact, and compare buzz cut, bald, crew cut, taper fade, and other men's short hairstyles."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "intro",
+    "features",
+    "photoTips",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Free AI <span class=\"text-gradient\">Buzz Cut Filter</span> Online",
+    "desc": "Upload one clear portrait and start from the Men tab with Buzz Cut already selected. Toolaze hides the built-in haircut prompt for preset styles, keeps Custom available, and lets you compare realistic short-hair previews with no signup."
+  },
+  "safetyNotice": "The result is a visual haircut concept, not a guarantee of how a real cut will look with your hair density, growth pattern, or head shape.",
+  "intro": {
+    "title": "What Is an AI Buzz Cut Filter?",
+    "content": [
+      {
+        "title": "Preview short hair before the clippers come out",
+        "text": "An AI buzz cut filter changes the visible hairstyle in a portrait into a short clipper-cut concept while preserving the face, expression, clothing, lighting, and background. Use it to compare whether a buzz cut, bald look, crew cut, taper fade, or another short men's style fits your head shape before you visit a barber."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "How to Use the Buzz Cut Filter",
+    "steps": [
+      {
+        "title": "Upload one portrait",
+        "desc": "Use a sharp front-facing or slight three-quarter photo where your full head, face, and hairline are visible."
+      },
+      {
+        "title": "Keep Buzz Cut selected or compare men's styles",
+        "desc": "The Men tab opens with Buzz Cut selected, and you can also try Bald, Crew Cut, Taper Fade, Slick Back, Short Curly, and more."
+      },
+      {
+        "title": "Generate and review the hidden prompt result",
+        "desc": "Toolaze sends the selected built-in haircut instruction while keeping the prompt box hidden for presets. The generated history still stores the prompt so you can review what was used."
+      }
+    ]
+  },
+  "photoTips": {
+    "title": "Photo Tips for a Better Short Hair Preview",
+    "subtitle": "Clear head shape, hairline, and lighting give the model more reliable cues for a buzz cut or bald preview.",
+    "items": [
+      {
+        "title": "Show the full head",
+        "desc": "Do not crop the crown or hide the hairline with a hat, hood, hands, or heavy fringe.",
+        "color": "linear-gradient(135deg, #dbeafe, #2563eb)"
+      },
+      {
+        "title": "Use even front lighting",
+        "desc": "Soft, balanced light makes temples, scalp shading, and edge lines easier to edit.",
+        "color": "linear-gradient(135deg, #ede9fe, #7c3aed)"
+      },
+      {
+        "title": "Avoid extreme angles",
+        "desc": "Front-facing and slight three-quarter portraits work better than profiles, tilted poses, or wide-angle distortion.",
+        "color": "linear-gradient(135deg, #dcfce7, #15803d)"
+      },
+      {
+        "title": "Keep face details clear",
+        "desc": "Skip blur, strong beauty filters, sunglasses, and hair covering most facial features.",
+        "color": "linear-gradient(135deg, #fef3c7, #ea580c)"
+      }
+    ]
+  },
+  "faqTitle": "Buzz Cut Filter FAQ",
+  "faq": [
+    {
+      "q": "Is the Buzz Cut Filter free with no signup?",
+      "a": "Yes. You can open the image tool, upload a portrait, and start previewing a buzz cut without signing up. This is not an unlimited-use promise; generation limits or model availability may still apply."
+    },
+    {
+      "q": "Why does the tool show only Men and Custom?",
+      "a": "Buzz cut searches are mainly about men's short hair. The page keeps the Men preset tab and Custom so the default experience stays focused instead of mixing women's hairstyles into this haircut page."
+    },
+    {
+      "q": "Is Buzz Cut selected by default?",
+      "a": "Yes. The Men tab opens first and Buzz Cut is the selected preset, so the first generation uses the built-in buzz cut instruction."
+    },
+    {
+      "q": "Can I try bald, crew cut, or fade styles too?",
+      "a": "Yes. The Men tab includes the full men's hairstyle preset set from AI Hairstyle Changer, including Bald, Crew Cut, Textured Crop, Taper Fade, Messy Fade, Short Curly, Slick Back, Soft Bowl, Textured Flow, and Short Box Braids."
+    },
+    {
+      "q": "Why is there no prompt box under the preset styles?",
+      "a": "Preset styles use hidden built-in prompts so users can choose a haircut visually without editing text. Generated history can still show the prompt that was used."
+    },
+    {
+      "q": "Is the preview an exact haircut simulation?",
+      "a": "No. It is a visual concept. Real results depend on hair density, growth direction, hairline, head shape, barber technique, and clipper guard."
+    },
+    {
+      "q": "Can I use the result as a barber reference?",
+      "a": "Yes. Use the image to explain the general length and shape you like, then ask your barber what is realistic for your hair and head shape."
+    }
+  ],
+  "moreTools": "Related AI Tools",
+  "moreToolsLinks": [
+    {
+      "title": "AI Hairstyle Changer",
+      "description": "Explore longer, textured, curly, and other haircut directions from one portrait.",
+      "href": "/ai-hairstyle-changer",
+      "media": {
+        "type": "image",
+        "src": "/ai-hairstyle-changer/hero-before-after.webp",
+        "alt": "AI Hairstyle Changer"
+      }
+    },
+    {
+      "title": "AI Hair Color Changer",
+      "description": "Keep your hairstyle and preview a different natural or creative hair color.",
+      "href": "/ai-hair-color-changer",
+      "media": {
+        "type": "image",
+        "src": "/ai-hair-color-changer/rose-pink-before-after.webp",
+        "alt": "AI Hair Color Changer"
+      }
+    },
+    {
+      "title": "AI Image-to-Image Generator",
+      "description": "Apply a custom text instruction to edit another part of an uploaded image.",
+      "href": "/ai-image-to-image-generator",
+      "media": {
+        "type": "image",
+        "src": "https://assets.toolaze.com/model-assets/gpt-image-2/feature-image-editing.webp",
+        "alt": "AI Image-to-Image Generator"
+      }
+    }
+  ],
+  "features": {
+    "title": "Why Use Toolaze Buzz Cut Filter?",
+    "items": [
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Free, no-signup start",
+        "desc": "Open the tool, upload one portrait, and try a buzz cut or another men's short hairstyle without creating an account."
+      },
+      {
+        "icon": "✂️",
+        "iconType": "guidance",
+        "title": "Men's styles are built in",
+        "desc": "The Men tab reuses the same hairstyle presets as AI Hairstyle Changer, so Buzz Cut sits beside Bald, Crew Cut, Taper Fade, Slick Back, Short Curly, and more."
+      },
+      {
+        "icon": "👤",
+        "iconType": "privacy",
+        "title": "Preset prompts stay hidden",
+        "desc": "Preset styles use built-in prompts to preserve identity and reduce guesswork. If you need exact guard length or fade wording, switch to Custom."
+      }
+    ]
+  }
+}

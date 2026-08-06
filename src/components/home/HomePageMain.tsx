@@ -454,6 +454,15 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
       },
     },
     {
+      title: navCopy.buzzCutFilter || 'Buzz Cut Filter',
+      href: localizeHomeHref('/buzz-cut-filter'),
+      media: {
+        type: 'image',
+        src: 'https://assets.toolaze.com/model-assets/buzz-cut-filter/buzz-cut-before-after-demo.webp',
+        alt: 'Buzz Cut Filter demo image',
+      },
+    },
+    {
       title: navCopy.aiHairColorChanger || 'AI Hair Color Changer',
       href: localizeHomeHref('/ai-hair-color-changer'),
       media: {

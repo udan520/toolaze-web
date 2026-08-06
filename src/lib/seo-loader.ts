@@ -875,6 +875,8 @@ export async function getL2SeoContent(tool: string, locale: string = 'en') {
         data = await importL2FlatJson('ai-baby-generator', normalizedLocale)
       } else if (tool === 'ai-hairstyle-changer') {
         data = await importL2FlatJson('ai-hairstyle-changer', normalizedLocale)
+      } else if (tool === 'buzz-cut-filter') {
+        data = await importL2FlatJson('buzz-cut-filter', normalizedLocale)
       } else if (tool === 'ai-hair-color-changer') {
         data = await importL2FlatJson('ai-hair-color-changer', normalizedLocale)
       } else if (tool === 'ai-clothes-changer') {
@@ -956,6 +958,8 @@ export async function getL2SeoContent(tool: string, locale: string = 'en') {
             data = await import('@/data/en/ai-baby-generator.json')
           } else if (tool === 'ai-hairstyle-changer') {
             data = await import('@/data/en/ai-hairstyle-changer.json')
+          } else if (tool === 'buzz-cut-filter') {
+            data = await import('@/data/en/buzz-cut-filter.json')
           } else if (tool === 'ai-hair-color-changer') {
             data = await import('@/data/en/ai-hair-color-changer.json')
           } else if (tool === 'ai-clothes-changer') {

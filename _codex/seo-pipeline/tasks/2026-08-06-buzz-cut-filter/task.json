@@ -1,0 +1,28 @@
+{
+  "taskId": "2026-08-06-buzz-cut-filter",
+  "slug": "buzz-cut-filter",
+  "pageType": "l2",
+  "pageGroup": "ai-tools",
+  "status": "ready_for_publish",
+  "localeCoverage": [
+    "en",
+    "de",
+    "ja",
+    "es",
+    "zh-TW",
+    "pt",
+    "fr",
+    "ko",
+    "it"
+  ],
+  "sourceData": "src/data/en/buzz-cut-filter.json",
+  "canonicalPath": "/buzz-cut-filter",
+  "releaseBoundary": {
+    "requiresPublicR2AssetsBeforeProduction": true,
+    "currentPreviewAssets": "local"
+  },
+  "outputs": {
+    "route": "src/app/buzz-cut-filter/page.tsx",
+    "localeRoute": "src/app/[locale]/buzz-cut-filter/page.tsx"
+  }
+}

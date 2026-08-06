@@ -953,6 +953,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
       'talkingAvatarCreator',
       'aiDanceGenerator',
       'aiHairstyleChanger',
+      'buzzCutFilter',
       'aiHairColorChanger',
       'aiClothesChanger',
       'aiBikiniGenerator',
@@ -1020,6 +1021,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
       'aiKissingVideoGenerator',
       'aiDanceGenerator',
       'aiHairstyleChanger',
+      'buzzCutFilter',
       'aiHairColorChanger',
       'aiClothesChanger',
       'aiBikiniGenerator',
@@ -1619,7 +1621,12 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                     promptPresets={promptPresets}
                     promptPresetTitle={content.topTool?.functionalAcceptance?.presetTitle || 'Hair Color Presets'}
                     promptPresetTabs={Array.isArray(content.topTool?.functionalAcceptance?.presetTabs) ? content.topTool.functionalAcceptance.presetTabs : undefined}
+                    defaultPromptPresetTabId={content.topTool?.functionalAcceptance?.defaultPromptPresetTabId}
                     hidePresetPromptInput={content.topTool?.functionalAcceptance?.hidePresetPromptInput === true}
+                    showPromptPresetSelectedState={content.topTool?.functionalAcceptance?.showPresetSelectedState === true}
+                    hidePresetReferenceUploader={content.topTool?.functionalAcceptance?.hidePresetReferenceUploader === true}
+                    enableCustomReferenceImageUpload={content.topTool?.functionalAcceptance?.enableCustomReferenceImageUpload === true}
+                    customReferencePrompt={content.topTool?.functionalAcceptance?.customReferencePrompt}
                     compactResultPanel={content.topTool?.compactResultPanel === true}
                     customPromptTabId={content.topTool?.functionalAcceptance?.customPromptTabId || 'custom'}
                     sceneText={content.topTool?.textOverrides}

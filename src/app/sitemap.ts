@@ -20,6 +20,7 @@ const AI_IMAGE_L2_PAGES = [
   { path: '/ai-zine-poster-generator', priority: 0.88 },
   { path: '/ai-breast-expansion', priority: 0.84 },
   { path: '/ai-hairstyle-changer', priority: 0.88 },
+  { path: '/buzz-cut-filter', priority: 0.86 },
 ] as const
 
 // Sitemap lastmod should reflect real page launch or meaningful content updates,
@@ -57,6 +58,7 @@ const LAST_MODIFIED_BY_CANONICAL_PATH: Record<string, string> = {
   '/model/kling-3-motion-control': '2026-08-02',
   '/model/wan-2-6-ai-video-generator': '2026-08-03',
   '/ai-zine-poster-generator': '2026-08-05',
+  '/buzz-cut-filter': '2026-08-06',
 }
 
 function toLastModifiedDate(date: string): Date {
