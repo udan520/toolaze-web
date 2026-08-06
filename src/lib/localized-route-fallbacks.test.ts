@@ -1,9 +1,12 @@
 import assert from 'node:assert/strict'
 import { existsSync, readFileSync } from 'node:fs'
 import test from 'node:test'
+import sitemap from '../app/sitemap'
 import { ENGLISH_ONLY_ROOT_ROUTES } from './localized-route-fallbacks'
 import { BROWSER_LOCALE_REDIRECT_SCRIPT } from './browser-locale-redirect'
 import { getPreferredLocalizedUrl } from './site-language-switch'
+
+const sitemapLocales = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it'] as const
 
 test('formerly English-only support routes now have localized URLs', () => {
   const localizedRoutes = ['refund-policy', 'acceptable-use', 'contact', 'earn-credits', 'ai-video-generator']
@@ -38,6 +41,40 @@ test('localized support routes have explicit locale pages and indexed support si
   assert.match(sitemap, /SUPPORTED_LOCALES\.forEach\(\(locale\) => \{[\s\S]*ai-video-generator/, 'sitemap should enumerate localized AI Video Generator URLs')
 })
 
+test('sitemap includes linked AI landing pages and localized AI hubs', async () => {
+  const urls = new Set((await sitemap()).map((entry) => entry.url))
+
+  const localizedRoutes = [
+    '/ai-asmr-video-generator',
+    '/ai-hairstyle-changer',
+    '/ai-tools',
+    '/model',
+  ]
+
+  for (const route of localizedRoutes) {
+    for (const locale of sitemapLocales) {
+      const path = locale === 'en' ? route : `/${locale}${route}`
+      assert.ok(urls.has(`https://toolaze.com${path}`), `${path} should be indexed in sitemap`)
+    }
+  }
+})
+
+test('sitemap lastmod uses stable page dates instead of build time', async () => {
+  const source = readFileSync('src/app/sitemap.ts', 'utf8')
+  assert.doesNotMatch(source, /const\s+today\s*=\s*new Date/)
+  assert.doesNotMatch(source, /lastModified:\s*today/)
+
+  const entries = await sitemap()
+  const byUrl = new Map(entries.map((entry) => [entry.url, entry]))
+  const toLastModifiedIso = (value: Date | string | undefined) => value instanceof Date ? value.toISOString() : String(value)
+  const lastModifiedValues = entries.map((entry) => toLastModifiedIso(entry.lastModified))
+
+  assert.ok(new Set(lastModifiedValues).size > 1, 'sitemap should not stamp every URL with one build date')
+  assert.equal(toLastModifiedIso(byUrl.get('https://toolaze.com/ai-dance-generator')?.lastModified), '2026-07-20T00:00:00.000Z')
+  assert.equal(toLastModifiedIso(byUrl.get('https://toolaze.com/de/ai-dance-generator')?.lastModified), '2026-07-20T00:00:00.000Z')
+  assert.equal(toLastModifiedIso(byUrl.get('https://toolaze.com/ai-asmr-video-generator')?.lastModified), '2026-07-29T00:00:00.000Z')
+  assert.equal(toLastModifiedIso(byUrl.get('https://toolaze.com/ai-zine-poster-generator')?.lastModified), '2026-08-05T00:00:00.000Z')
+})
 test('localized Seedance model L3 URLs redirect back to the model page', () => {
   const routePath = 'src/app/[locale]/model/seedance-2/[slug]/page.tsx'
 

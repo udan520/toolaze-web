@@ -19,7 +19,54 @@ const AI_IMAGE_L2_PAGES = [
   { path: '/ai-bikini-generator', priority: 0.88 },
   { path: '/ai-zine-poster-generator', priority: 0.88 },
   { path: '/ai-breast-expansion', priority: 0.84 },
+  { path: '/ai-hairstyle-changer', priority: 0.88 },
 ] as const
+
+// Sitemap lastmod should reflect real page launch or meaningful content updates,
+// not the deployment/build time. Add explicit paths here when a page receives a
+// substantial update; old pages fall back to a stable legacy date.
+const LEGACY_LAST_MODIFIED_DATE = '2026-07-01'
+const LAST_MODIFIED_BY_CANONICAL_PATH: Record<string, string> = {
+  '/ai-dance-generator': '2026-07-20',
+  '/ai-video-generator': '2026-07-21',
+  '/text-to-video-generator': '2026-07-22',
+  '/ai-kissing-video-generator': '2026-07-23',
+  '/image-to-video-generator': '2026-07-23',
+  '/ai-asmr-video-generator': '2026-07-29',
+  '/kling-ai-video-generator': '2026-07-30',
+  '/model/wan-2-5-ai-video-generator': '2026-07-30',
+  '/ai-bikini-generator': '2026-07-31',
+  '/ai-breast-expansion': '2026-07-31',
+  '/talking-avatar-creator': '2026-07-31',
+  '/unrestricted-ai-image-generator': '2026-07-31',
+  '/ai-hairstyle-changer': '2026-08-01',
+  '/model/wan-2-7-ai-video-generator': '2026-08-01',
+  '/model/kling-2-6-pro-motion-control': '2026-08-02',
+  '/model/kling-3-motion-control': '2026-08-02',
+  '/model/wan-2-6-ai-video-generator': '2026-08-03',
+  '/ai-zine-poster-generator': '2026-08-05',
+}
+
+function toLastModifiedDate(date: string): Date {
+  return new Date(`${date}T00:00:00.000Z`)
+}
+
+function toCanonicalPath(path: string): string {
+  const normalized = path.startsWith('/') ? path : `/${path}`
+  const segments = normalized.split('/').filter(Boolean)
+
+  if (segments.length > 0 && SUPPORTED_LOCALES.includes(segments[0])) {
+    const withoutLocale = segments.slice(1).join('/')
+    return withoutLocale ? `/${withoutLocale}` : '/'
+  }
+
+  return normalized === '' ? '/' : normalized
+}
+
+function getLastModified(path: string): Date {
+  const canonicalPath = toCanonicalPath(path)
+  return toLastModifiedDate(LAST_MODIFIED_BY_CANONICAL_PATH[canonicalPath] || LEGACY_LAST_MODIFIED_DATE)
+}
 
 interface SitemapEntry {
   url: string
@@ -30,14 +77,12 @@ interface SitemapEntry {
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const entries: SitemapEntry[] = []
-  const today = new Date()
-
   // 1. 首页（所有语言版本）
   SUPPORTED_LOCALES.forEach((locale) => {
     const path = locale === 'en' ? '' : `/${locale}`
     entries.push({
       url: `${baseUrl}${path}`,
-      lastModified: today,
+      lastModified: getLastModified(path),
       changeFrequency: 'daily',
       priority: 1.0,
     })
@@ -49,7 +94,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       const path = locale === 'en' ? `/${page}` : `/${locale}/${page}`
       entries.push({
         url: `${baseUrl}${path}`,
-        lastModified: today,
+        lastModified: getLastModified(path),
         changeFrequency: 'monthly',
         priority: 0.8,
       })
@@ -62,7 +107,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       const path = locale === 'en' ? `/${tool}` : `/${locale}/${tool}`
       entries.push({
         url: `${baseUrl}${path}`,
-        lastModified: today,
+        lastModified: getLastModified(path),
         changeFrequency: 'weekly',
         priority: 0.9,
       })
@@ -75,7 +120,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       const path = locale === 'en' ? page.path : `/${locale}${page.path}`
       entries.push({
         url: `${baseUrl}${path}`,
-        lastModified: today,
+        lastModified: getLastModified(path),
         changeFrequency: 'weekly',
         priority: page.priority,
       })
@@ -83,15 +128,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   })
 
   // 3b. 单语言功能页面（仅英文）
-  entries.push({
-    url: `${baseUrl}/ai-tools`,
-    lastModified: today,
-    changeFrequency: 'weekly',
-    priority: 0.9,
+  SUPPORTED_LOCALES.forEach((locale) => {
+    const path = locale === 'en' ? '/ai-tools' : `/${locale}/ai-tools`
+    entries.push({
+      url: `${baseUrl}${path}`,
+      lastModified: getLastModified(path),
+      changeFrequency: 'weekly',
+      priority: locale === 'en' ? 0.9 : 0.87,
+    })
   })
   entries.push({
     url: `${baseUrl}/ai-image-generator`,
-    lastModified: today,
+    lastModified: getLastModified('/ai-image-generator'),
     changeFrequency: 'weekly',
     priority: 0.94,
   })
@@ -99,7 +147,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const path = locale === 'en' ? '/ai-video-generator' : `/${locale}/ai-video-generator`
     entries.push({
       url: `${baseUrl}${path}`,
-      lastModified: today,
+      lastModified: getLastModified(path),
       changeFrequency: 'weekly',
       priority: locale === 'en' ? 0.94 : 0.9,
     })
@@ -109,7 +157,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       const path = locale === 'en' ? `/${slug}` : `/${locale}/${slug}`
       entries.push({
         url: `${baseUrl}${path}`,
-        lastModified: today,
+        lastModified: getLastModified(path),
         changeFrequency: 'weekly',
         priority: locale === 'en' ? 0.93 : 0.88,
       })
@@ -119,14 +167,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     if (locale === 'en') return
     entries.push({
       url: `${baseUrl}/${locale}/ai-image-generator`,
-      lastModified: today,
+      lastModified: getLastModified(`/${locale}/ai-image-generator`),
       changeFrequency: 'weekly',
       priority: 0.9,
     })
   })
   entries.push({
     url: `${baseUrl}/text-to-image-generator`,
-    lastModified: today,
+    lastModified: getLastModified('/text-to-image-generator'),
     changeFrequency: 'weekly',
     priority: 0.94,
   })
@@ -134,14 +182,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     if (locale === 'en') return
     entries.push({
       url: `${baseUrl}/${locale}/text-to-image-generator`,
-      lastModified: today,
+      lastModified: getLastModified(`/${locale}/text-to-image-generator`),
       changeFrequency: 'weekly',
       priority: 0.9,
     })
   })
   entries.push({
     url: `${baseUrl}/ai-image-to-image-generator`,
-    lastModified: today,
+    lastModified: getLastModified('/ai-image-to-image-generator'),
     changeFrequency: 'weekly',
     priority: 0.94,
   })
@@ -149,14 +197,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     if (locale === 'en') return
     entries.push({
       url: `${baseUrl}/${locale}/ai-image-to-image-generator`,
-      lastModified: today,
+      lastModified: getLastModified(`/${locale}/ai-image-to-image-generator`),
       changeFrequency: 'weekly',
       priority: 0.9,
     })
   })
   entries.push({
     url: `${baseUrl}/ai-dance-generator`,
-    lastModified: today,
+    lastModified: getLastModified('/ai-dance-generator'),
     changeFrequency: 'weekly',
     priority: 0.9,
   })
@@ -164,29 +212,32 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     if (locale === 'en') return
     entries.push({
       url: `${baseUrl}/${locale}/ai-dance-generator`,
-      lastModified: today,
+      lastModified: getLastModified(`/${locale}/ai-dance-generator`),
       changeFrequency: 'weekly',
       priority: 0.87,
     })
   })
-  entries.push({
-    url: `${baseUrl}/ai-asmr-video-generator`,
-    lastModified: today,
-    changeFrequency: 'weekly',
-    priority: 0.9,
+  SUPPORTED_LOCALES.forEach((locale) => {
+    const path = locale === 'en' ? '/ai-asmr-video-generator' : `/${locale}/ai-asmr-video-generator`
+    entries.push({
+      url: `${baseUrl}${path}`,
+      lastModified: getLastModified(path),
+      changeFrequency: 'weekly',
+      priority: locale === 'en' ? 0.9 : 0.87,
+    })
   })
   SUPPORTED_LOCALES.forEach((locale) => {
     const path = locale === 'en' ? '/talking-avatar-creator' : `/${locale}/talking-avatar-creator`
     entries.push({
       url: `${baseUrl}${path}`,
-      lastModified: today,
+      lastModified: getLastModified(path),
       changeFrequency: 'weekly',
       priority: locale === 'en' ? 0.9 : 0.87,
     })
   })
   entries.push({
     url: `${baseUrl}/ai-kissing-video-generator`,
-    lastModified: today,
+    lastModified: getLastModified('/ai-kissing-video-generator'),
     changeFrequency: 'weekly',
     priority: 0.9,
   })
@@ -194,7 +245,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     if (locale === 'en') return
     entries.push({
       url: `${baseUrl}/${locale}/ai-kissing-video-generator`,
-      lastModified: today,
+      lastModified: getLastModified(`/${locale}/ai-kissing-video-generator`),
       changeFrequency: 'weekly',
       priority: 0.87,
     })
@@ -204,7 +255,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const path = locale === 'en' ? '/ai-hair-color-changer' : `/${locale}/ai-hair-color-changer`
     entries.push({
       url: `${baseUrl}${path}`,
-      lastModified: today,
+      lastModified: getLastModified(path),
       changeFrequency: 'weekly',
       priority: locale === 'en' ? 0.92 : 0.87,
     })
@@ -213,14 +264,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const path = locale === 'en' ? '/ai-clothes-changer' : `/${locale}/ai-clothes-changer`
     entries.push({
       url: `${baseUrl}${path}`,
-      lastModified: today,
+      lastModified: getLastModified(path),
       changeFrequency: 'weekly',
       priority: locale === 'en' ? 0.92 : 0.87,
     })
   })
   entries.push({
     url: `${baseUrl}/world-cup-ai-image-generator`,
-    lastModified: today,
+    lastModified: getLastModified('/world-cup-ai-image-generator'),
     changeFrequency: 'weekly',
     priority: 0.86,
   })
@@ -228,23 +279,26 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     if (locale === 'en') return
     entries.push({
       url: `${baseUrl}/${locale}/world-cup-ai-image-generator`,
-      lastModified: today,
+      lastModified: getLastModified(`/${locale}/world-cup-ai-image-generator`),
       changeFrequency: 'weekly',
       priority: 0.84,
     })
   })
 
-  entries.push({
-    url: `${baseUrl}/model`,
-    lastModified: today,
-    changeFrequency: 'weekly',
-    priority: 0.85,
+  SUPPORTED_LOCALES.forEach((locale) => {
+    const path = locale === 'en' ? '/model' : `/${locale}/model`
+    entries.push({
+      url: `${baseUrl}${path}`,
+      lastModified: getLastModified(path),
+      changeFrequency: 'weekly',
+      priority: locale === 'en' ? 0.85 : 0.82,
+    })
   })
   SUPPORTED_LOCALES.forEach((locale) => {
     const path = locale === 'en' ? '/prompts' : `/${locale}/prompts`
     entries.push({
       url: `${baseUrl}${path}`,
-      lastModified: today,
+      lastModified: getLastModified(path),
       changeFrequency: 'weekly',
       priority: 0.9,
     })
@@ -263,16 +317,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       const localizedPath = locale === 'en' ? path : `/${locale}${path}`
       entries.push({
         url: `${baseUrl}${localizedPath}`,
-        lastModified: today,
+        lastModified: getLastModified(localizedPath),
         changeFrequency: 'weekly',
         priority: 0.82,
       })
     })
   })
   getPromptItems().forEach((item) => {
+    const path = `/prompts/${item.tweetId}`
     entries.push({
-      url: `${baseUrl}/prompts/${item.tweetId}`,
-      lastModified: today,
+      url: `${baseUrl}${path}`,
+      lastModified: getLastModified(path),
       changeFrequency: 'monthly',
       priority: 0.65,
     })
@@ -280,9 +335,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // 4. Model 页面（AI 图像模型，仅英文）
   const MODEL_PAGES = ['nano-banana', 'nano-banana-pro', 'nano-banana-2', 'gpt-image-2', 'wan-2-7-image', 'wan-2-7-ai-video-generator', 'wan-2-6-ai-video-generator', 'wan-2-5-ai-video-generator', 'seedream-4-5', 'seedream-5-0-lite', 'seedream-5-0-pro', 'seedance-2-5', 'seedance-2', 'kling-3-motion-control', 'kling-3', 'kling-2-6-pro-motion-control', 'grok-imagine-video-1-5']
   MODEL_PAGES.forEach((model) => {
+    const path = `/model/${model}`
     entries.push({
-      url: `${baseUrl}/model/${model}`,
-      lastModified: today,
+      url: `${baseUrl}${path}`,
+      lastModified: getLastModified(path),
       changeFrequency: 'weekly',
       priority: 0.9,
     })
@@ -290,9 +346,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const MODEL_ALL_TOOLS_PAGES = ['kling-3']
   MODEL_ALL_TOOLS_PAGES.forEach((model) => {
+    const path = `/model/${model}/all-tools`
     entries.push({
-      url: `${baseUrl}/model/${model}/all-tools`,
-      lastModified: today,
+      url: `${baseUrl}${path}`,
+      lastModified: getLastModified(path),
       changeFrequency: 'weekly',
       priority: 0.8,
     })
@@ -305,9 +362,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       if (locale === 'en') return
       const tool = model
       if (tool !== 'wan-2-7-image' && tool !== 'wan-2-7-ai-video-generator' && tool !== 'wan-2-6-ai-video-generator' && tool !== 'wan-2-5-ai-video-generator' && tool !== 'seedream-4-5' && tool !== 'seedream-5-0-lite' && tool !== 'seedream-5-0-pro' && tool !== 'grok-imagine-video-1-5' && !hasLocaleL2JsonFile(tool, locale)) return
+      const path = `/${locale}/model/${model}`
       entries.push({
-        url: `${baseUrl}/${locale}/model/${model}`,
-        lastModified: today,
+        url: `${baseUrl}${path}`,
+        lastModified: getLastModified(path),
         changeFrequency: 'weekly',
         priority: 0.85,
       })
@@ -320,7 +378,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       const path = locale === 'en' ? `/${tool}/all-tools` : `/${locale}/${tool}/all-tools`
       entries.push({
         url: `${baseUrl}${path}`,
-        lastModified: today,
+        lastModified: getLastModified(path),
         changeFrequency: 'weekly',
         priority: 0.8,
       })
@@ -344,7 +402,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
           entries.push({
             url: `${baseUrl}${path}`,
-            lastModified: today,
+            lastModified: getLastModified(path),
             changeFrequency: 'weekly',
             priority: 0.7,
           })
