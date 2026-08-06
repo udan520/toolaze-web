@@ -27,6 +27,17 @@ const AI_IMAGE_L2_PAGES = [
 // substantial update; old pages fall back to a stable legacy date.
 const LEGACY_LAST_MODIFIED_DATE = '2026-07-01'
 const LAST_MODIFIED_BY_CANONICAL_PATH: Record<string, string> = {
+  '/world-cup-ai-image-generator': '2026-07-14',
+  '/watermark-remover': '2026-07-16',
+  '/photo-restoration': '2026-07-16',
+  '/ai-couple-photo-maker': '2026-05-10',
+  '/ai-baby-generator': '2026-07-14',
+  '/ai-hair-color-changer': '2026-07-16',
+  '/ai-clothes-changer': '2026-08-04',
+  '/ai-image-to-image-generator': '2026-08-04',
+  '/ai-image-generator': '2026-08-04',
+  '/model': '2026-08-02',
+  '/ai-tools': '2026-08-05',
   '/ai-dance-generator': '2026-07-20',
   '/ai-video-generator': '2026-07-21',
   '/text-to-video-generator': '2026-07-22',
